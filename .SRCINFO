@@ -1,6 +1,6 @@
 pkgbase = widgie
 	pkgdesc = A lightweight widget library for applications which do not need a splashscreen.
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitlab.com/manner/widgie
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = widgie
 	optdepends = ttf-nerd-fonts-symbols: (or a nerd font) for icon support
 	conflicts = widgie-git
 	options = staticlibs
-	source = https://gitlab.com/manner/widgie/-/archive/0.2.3/widgie-0.2.3.tar.gz
-	sha256sums = 6471a8df0711c286ffaeccadd5288902672c3191e4a277c2a4ee4346d8d62071
+	source = https://gitlab.com/manner/widgie/-/archive/0.3.0/widgie-0.3.0.tar.gz
+	sha256sums = 95e96f799ab98c81ec461eb2eea1f1b3ab17b4f58e9c1063d0dba36f2cf15256
 
 pkgname = widgie
