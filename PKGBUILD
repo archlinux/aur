@@ -4,7 +4,7 @@
 
 pkgname=firefox-xdg
 _pkgname=${pkgname//-xdg/}
-pkgver=119.0.1
+pkgver=120.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org but with .mozilla moved to .config"
 url="https://www.mozilla.org/firefox/"
@@ -81,16 +81,16 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('48cc43cab060e97467e9a17617f511a177e7b91b7e77e408425351a2cbb07f70'
+sha256sums=('e710058701074eda53ca9f5fd52c57254858a027984f735bdcd58d6906f6b574'
             'SKIP'
             '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '5732867242b1a2372646c9e6a20bac4c889f1913290c8bc181405cf2f0646242')
-b2sums=('b5a2ceadf05692d482dc8114634902d33c32c908e60394bf2e6b38afd8d83830d40c83afec28f7257e269595196140c0a8a1f345232f29c649a202d51ca39c68'
+            '6041685023b50b1b76da0f5cf63cad3151e2b497430d2083349e395a44a8abbd')
+b2sums=('06f11d9d6f705c13c3288f1757d68c7c910e258b3efa643f0f0168fba0d585f758082af3905c951e227894df0c092965663f52196ee1fc3477195748e0049767'
         'SKIP'
         'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        'b5b8c8bf500687a8432e74857b1f4a29a0d80d940b0861bb637a43b4bc6406c6347c051d5ab65f8e15eae144edc82040a478a4105578379852ef1d0402279298')
+        'f9024830898e2d2b4fa51146a11c805ba58fbb1a636b83fd1f21bb733eda194a0c83c033fe5db14493cd14162ce468c7a60829afbdd728e10c214a836a3794df')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please

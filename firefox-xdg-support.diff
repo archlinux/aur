@@ -14,21 +14,20 @@ index f5150fc329..b343a4e903 100644
    // The linux only tests are the ones that can behave differently based on
    // existence of XDG_CONFIG_HOME
    add_task(testFileAccessLinuxOnly); // eslint-disable-line no-undef
-diff --git a/security/sandbox/test/browser_xdg.ini b/security/sandbox/test/browser_xdg.ini
+diff --git a/security/sandbox/test/browser_xdg.toml b/security/sandbox/test/browser_xdg.toml
 index aee4c63c5a..31c2108c02 100644
---- a/security/sandbox/test/browser_xdg.ini
-+++ b/security/sandbox/test/browser_xdg.ini
-@@ -8,7 +8,9 @@ support-files =
-   browser_content_sandbox_fs_tests.js
- test-directories =
-   /tmp/.xdg_config_home_test
--environment=XDG_CONFIG_HOME=/tmp/.xdg_config_home_test
-+environment =
-+  XDG_CONFIG_HOME=/tmp/.xdg_config_home_test
-+  MOZ_LEGACY_HOME=0
+@@ -11,7 +11,10 @@
+   "browser_content_sandbox_fs_tests.js",
+ ]
+ test-directories = "/tmp/.xdg_config_home_test"
+-environment = "XDG_CONFIG_HOME=/tmp/.xdg_config_home_test"
++environment ="""
++XDG_CONFIG_HOME=/tmp/.xdg_config_home_test
++MOZ_LEGACY_HOME=0
++"""
  
- [browser_content_sandbox_fs_xdg.js]
- run-if = (os == 'linux')
+ ["browser_content_sandbox_fs_xdg.js"]
+ run-if = ["os == 'linux'"]
 diff --git a/toolkit/moz.build b/toolkit/moz.build
 index 30ec614ef1..b42f4e9721 100644
 --- a/toolkit/moz.build
