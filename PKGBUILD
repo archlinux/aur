@@ -5,7 +5,7 @@
 _pkgname=pamac
 pkgname=${_pkgname}-nosnap
 pkgver=11.6.0
-pkgrel=2
+pkgrel=3
 _srcdir="$_pkgname-$pkgver"
 pkgdesc="A Gtk3 frontend, Package Manager based on libalpm with AUR and Appstream support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -37,7 +37,8 @@ makedepends=(
     'vala'
     'xorgproto'
 )
-provides=(pamac)
+#provides=(pamac)
+provides=("${_pkgname}=${pkgver}-${pkgrel}")
 conflicts=(
     'pamac'
     'pamac-aur'
