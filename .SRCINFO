@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal
 	pkgdesc = Desktop integration portals for sandboxed apps
-	pkgver = 1.18.1
+	pkgver = 1.18.2
 	pkgrel = 1
 	url = https://flatpak.github.io/xdg-desktop-portal/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = xdg-desktop-portal
 	depends = rtkit
 	depends = systemd
 	optdepends = xdg-desktop-portal-impl: Portal backends
-	source = git+https://github.com/flatpak/xdg-desktop-portal#commit=37a6f7c8b8e08b9861f05e172cd4e0d07a832c4d
+	source = git+https://github.com/flatpak/xdg-desktop-portal#commit=fa8d41a2f9a5d30a1e41568b6fb53b046dce14dc
 	b2sums = SKIP
 
 pkgname = xdg-desktop-portal
