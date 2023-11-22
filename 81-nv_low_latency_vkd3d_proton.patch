@@ -1,0 +1,1285 @@
+From 189c87cbc3e9fd3732028d950dc5623df7103a57 Mon Sep 17 00:00:00 2001
+From: Eric Sullivan <esullivan@nvidia.com>
+Date: Thu, 7 Sep 2023 09:27:14 -0700
+Subject: [PATCH] vkd3d: Add support for VK_NV_low_latency2
+
+This commit add support for the VK_NV_low_latency2 extension, and
+implements the ID3DLowLatencyDevice, and ID3D12CommandQueueExt
+interfaces.
+---
+ include/meson.build                       |   1 +
+ include/vkd3d_command_queue_vkd3d_ext.idl |  30 +++
+ include/vkd3d_device_vkd3d_ext.idl        |  15 ++
+ include/vkd3d_vk_includes.h               |  34 ++-
+ libs/vkd3d/command.c                      |  41 ++-
+ libs/vkd3d/command_queue_vkd3d_ext.c      | 100 +++++++
+ libs/vkd3d/device.c                       |  14 +-
+ libs/vkd3d/device_vkd3d_ext.c             | 158 ++++++++++-
+ libs/vkd3d/meson.build                    |   1 +
+ libs/vkd3d/swapchain.c                    | 315 +++++++++++++++++++++-
+ libs/vkd3d/vkd3d_private.h                |  68 ++++-
+ libs/vkd3d/vulkan_procs.h                 |   7 +
+ 12 files changed, 763 insertions(+), 21 deletions(-)
+ create mode 100644 include/vkd3d_command_queue_vkd3d_ext.idl
+ create mode 100644 libs/vkd3d/command_queue_vkd3d_ext.c
+
+diff --git a/include/meson.build b/include/meson.build
+index c58579e9..e6ef1767 100644
+--- a/include/meson.build
++++ b/include/meson.build
+@@ -12,6 +12,7 @@ vkd3d_idl = [
+   'vkd3d_dxgitype.idl',
+   'vkd3d_swapchain_factory.idl',
+   'vkd3d_command_list_vkd3d_ext.idl',
++  'vkd3d_command_queue_vkd3d_ext.idl',
+   'vkd3d_device_vkd3d_ext.idl',
+   'vkd3d_core_interface.idl',
+ ]
+diff --git a/include/vkd3d_command_queue_vkd3d_ext.idl b/include/vkd3d_command_queue_vkd3d_ext.idl
+new file mode 100644
+index 00000000..3c69f00a
+--- /dev/null
++++ b/include/vkd3d_command_queue_vkd3d_ext.idl
+@@ -0,0 +1,30 @@
++/*
++ * * Copyright 2023 NVIDIA Corporation
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ */
++import "vkd3d_d3d12.idl";
++import "vkd3d_vk_includes.h";
++
++[
++    uuid(40ed3f96-e773-e9bc-fc0c-e95560c99ad6),
++    object,
++    local,
++    pointer_default(unique)
++]
++interface ID3D12CommandQueueExt : IUnknown
++{
++    HRESULT NotifyOutOfBandCommandQueue(D3D12_OUT_OF_BAND_CQ_TYPE type);
++}
+diff --git a/include/vkd3d_device_vkd3d_ext.idl b/include/vkd3d_device_vkd3d_ext.idl
+index 3e615d76..4a21ba76 100644
+--- a/include/vkd3d_device_vkd3d_ext.idl
++++ b/include/vkd3d_device_vkd3d_ext.idl
+@@ -54,3 +54,18 @@ interface ID3D12DXVKInteropDevice : IUnknown
+     HRESULT LockCommandQueue(ID3D12CommandQueue *queue);
+     HRESULT UnlockCommandQueue(ID3D12CommandQueue *queue);
+ }
++
++[
++    uuid(f3112584-41f9-348d-a59b-00b7e1d285d6),
++    object,
++    local,
++    pointer_default(unique)
++]
++interface ID3DLowLatencyDevice : IUnknown
++{
++    BOOL SupportsLowLatency();
++    HRESULT LatencySleep();
++    HRESULT SetLatencySleepMode(BOOL low_latency_mode, BOOL low_latency_boost, UINT32 minimum_interval_us);
++    HRESULT SetLatencyMarker(UINT64 frameID, UINT32 markerType);
++    HRESULT GetLatencyInfo(D3D12_LATENCY_RESULTS *latency_results);
++}
+diff --git a/include/vkd3d_vk_includes.h b/include/vkd3d_vk_includes.h
+index c43e0189..02059613 100644
+--- a/include/vkd3d_vk_includes.h
++++ b/include/vkd3d_vk_includes.h
+@@ -41,9 +41,16 @@ typedef enum VkImageLayout VkImageLayout;
+ typedef enum D3D12_VK_EXTENSION
+ {
+     D3D12_VK_NVX_BINARY_IMPORT      = 0x1,
+-    D3D12_VK_NVX_IMAGE_VIEW_HANDLE  = 0x2
++    D3D12_VK_NVX_IMAGE_VIEW_HANDLE  = 0x2,
++    D3D12_VK_NV_LOW_LATENCY_2       = 0x3
+ } D3D12_VK_EXTENSION;
+ 
++typedef enum D3D12_OUT_OF_BAND_CQ_TYPE
++{
++    OUT_OF_BAND_RENDER  = 0,
++    OUT_OF_BAND_PRESENT = 1
++} D3D12_OUT_OF_BAND_CQ_TYPE;
++
+ typedef struct D3D12_CUBIN_DATA_HANDLE
+ {
+     VkCuFunctionNVX vkCuFunction;
+@@ -61,5 +68,30 @@ typedef struct D3D12_UAV_INFO
+     UINT64 gpuVASize;  
+ } D3D12_UAV_INFO;
+ 
++typedef struct D3D12_LATENCY_RESULTS
++{
++    UINT32 version;
++    struct D3D12_FRAME_REPORT {
++        UINT64 frameID;
++        UINT64 inputSampleTime;
++        UINT64 simStartTime;
++        UINT64 simEndTime;
++        UINT64 renderSubmitStartTime;
++        UINT64 renderSubmitEndTime;
++        UINT64 presentStartTime;
++        UINT64 presentEndTime;
++        UINT64 driverStartTime;
++        UINT64 driverEndTime;
++        UINT64 osRenderQueueStartTime;
++        UINT64 osRenderQueueEndTime;
++        UINT64 gpuRenderStartTime;
++        UINT64 gpuRenderEndTime;
++        UINT32 gpuActiveRenderTimeUs;
++        UINT32 gpuFrameTimeUs;
++        UINT8 rsvd[120];
++    } frame_reports[64];
++    UINT8 rsvd[32];
++} D3D12_LATENCY_RESULTS;
++
+ #endif  // __VKD3D_VK_INCLUDES_H
+ 
+diff --git a/libs/vkd3d/command.c b/libs/vkd3d/command.c
+index a041bcf8..7789dd98 100644
+--- a/libs/vkd3d/command.c
++++ b/libs/vkd3d/command.c
+@@ -15367,12 +15367,14 @@ static struct d3d12_command_list *d3d12_command_list_from_iface(ID3D12CommandLis
+ }
+ 
+ /* ID3D12CommandQueue */
++extern ULONG STDMETHODCALLTYPE d3d12_command_queue_vkd3d_ext_AddRef(d3d12_command_queue_vkd3d_ext_iface *iface);
++
+ static inline struct d3d12_command_queue *impl_from_ID3D12CommandQueue(ID3D12CommandQueue *iface)
+ {
+     return CONTAINING_RECORD(iface, struct d3d12_command_queue, ID3D12CommandQueue_iface);
+ }
+ 
+-static HRESULT STDMETHODCALLTYPE d3d12_command_queue_QueryInterface(ID3D12CommandQueue *iface,
++HRESULT STDMETHODCALLTYPE d3d12_command_queue_QueryInterface(ID3D12CommandQueue *iface,
+         REFIID riid, void **object)
+ {
+     TRACE("iface %p, riid %s, object %p.\n", iface, debugstr_guid(riid), object);
+@@ -15391,6 +15393,14 @@ static HRESULT STDMETHODCALLTYPE d3d12_command_queue_QueryInterface(ID3D12Comman
+         return S_OK;
+     }
+ 
++    if (IsEqualGUID(riid, &IID_ID3D12CommandQueueExt))
++    {
++        struct d3d12_command_queue *command_queue = impl_from_ID3D12CommandQueue(iface);
++        d3d12_command_queue_vkd3d_ext_AddRef(&command_queue->ID3D12CommandQueueExt_iface);
++        *object = &command_queue->ID3D12CommandQueueExt_iface;
++        return S_OK;
++    }
++
+     if (IsEqualGUID(riid, &IID_IDXGIVkSwapChainFactory))
+     {
+         struct d3d12_command_queue *command_queue = impl_from_ID3D12CommandQueue(iface);
+@@ -15405,7 +15415,7 @@ static HRESULT STDMETHODCALLTYPE d3d12_command_queue_QueryInterface(ID3D12Comman
+     return E_NOINTERFACE;
+ }
+ 
+-static ULONG STDMETHODCALLTYPE d3d12_command_queue_AddRef(ID3D12CommandQueue *iface)
++ULONG STDMETHODCALLTYPE d3d12_command_queue_AddRef(ID3D12CommandQueue *iface)
+ {
+     struct d3d12_command_queue *command_queue = impl_from_ID3D12CommandQueue(iface);
+     ULONG refcount = InterlockedIncrement(&command_queue->refcount);
+@@ -15415,7 +15425,7 @@ static ULONG STDMETHODCALLTYPE d3d12_command_queue_AddRef(ID3D12CommandQueue *if
+     return refcount;
+ }
+ 
+-static ULONG STDMETHODCALLTYPE d3d12_command_queue_Release(ID3D12CommandQueue *iface)
++ULONG STDMETHODCALLTYPE d3d12_command_queue_Release(ID3D12CommandQueue *iface)
+ {
+     struct d3d12_command_queue *command_queue = impl_from_ID3D12CommandQueue(iface);
+     ULONG refcount = InterlockedDecrement(&command_queue->refcount);
+@@ -15901,6 +15911,7 @@ static void STDMETHODCALLTYPE d3d12_command_queue_ExecuteCommandLists(ID3D12Comm
+     sub.execute.cmd_count = num_command_buffers;
+     sub.execute.command_allocators = allocators;
+     sub.execute.num_command_allocators = command_list_count;
++    sub.execute.frame_id = command_queue->device->frame_markers.render;
+ #ifdef VKD3D_ENABLE_BREADCRUMBS
+     sub.execute.breadcrumb_indices = breadcrumb_indices;
+     sub.execute.breadcrumb_indices_count = breadcrumb_indices ? command_list_count : 0;
+@@ -16063,6 +16074,8 @@ static D3D12_COMMAND_QUEUE_DESC * STDMETHODCALLTYPE d3d12_command_queue_GetDesc(
+     return desc;
+ }
+ 
++extern CONST_VTBL struct ID3D12CommandQueueExtVtbl d3d12_command_queue_vkd3d_ext_vtbl;
++
+ static CONST_VTBL struct ID3D12CommandQueueVtbl d3d12_command_queue_vtbl =
+ {
+     /* IUnknown methods */
+@@ -16570,13 +16583,15 @@ static void d3d12_command_queue_execute(struct d3d12_command_queue *command_queu
+         const VkCommandBufferSubmitInfo *transition_cmd,
+         const VkSemaphoreSubmitInfo *transition_semaphore,
+         struct d3d12_command_allocator **command_allocators, size_t num_command_allocators,
+-        bool debug_capture, bool split_submissions)
++        uint64_t frame_id, bool debug_capture,
++        bool split_submissions)
+ {
+     const struct vkd3d_vk_device_procs *vk_procs = &command_queue->device->vk_procs;
+     struct vkd3d_queue *vkd3d_queue = command_queue->vkd3d_queue;
+     VkSemaphoreSubmitInfo signal_semaphore_info;
+     VkSemaphoreSubmitInfo binary_semaphore_info;
+     VkSubmitInfo2 submit_desc[4];
++    VkLatencySubmissionPresentIdNV latency_submit_present_info;
+     uint32_t num_submits;
+     VkQueue vk_queue;
+     unsigned int i;
+@@ -16656,6 +16671,18 @@ static void d3d12_command_queue_execute(struct d3d12_command_queue *command_queu
+         num_submits += 2;
+     }
+ 
++    if (command_queue->device->vk_info.NV_low_latency2 &&
++        command_queue->device->swapchain_info.low_latency_swapchain &&
++        dxgi_vk_swap_chain_low_latency_enabled(command_queue->device->swapchain_info.low_latency_swapchain))
++    {
++        latency_submit_present_info.sType = VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV;
++        latency_submit_present_info.pNext = NULL;
++        latency_submit_present_info.presentID = frame_id;
++
++        for (i = 0; i < num_submits; i++)
++            submit_desc[i].pNext = &latency_submit_present_info;
++    }
++
+ #ifdef VKD3D_ENABLE_RENDERDOC
+     /* For each submission we have marked to be captured, we will first need to filter it
+      * based on VKD3D_AUTO_CAPTURE_COUNTS.
+@@ -17156,7 +17183,9 @@ static void *d3d12_command_queue_submission_worker_main(void *userdata)
+                     &transition_cmd, &transition_semaphore,
+                     submission.execute.command_allocators,
+                     submission.execute.num_command_allocators,
+-                    submission.execute.debug_capture, submission.execute.split_submission);
++                    submission.execute.frame_id,
++                    submission.execute.debug_capture,
++                    submission.execute.split_submission);
+ 
+             /* command_queue_execute takes ownership of the outstanding_submission_counters allocation.
+              * The atomic counters are decremented when the submission is observed to be freed.
+@@ -17218,6 +17247,7 @@ static HRESULT d3d12_command_queue_init(struct d3d12_command_queue *queue,
+     int rc;
+ 
+     queue->ID3D12CommandQueue_iface.lpVtbl = &d3d12_command_queue_vtbl;
++    queue->ID3D12CommandQueueExt_iface.lpVtbl = &d3d12_command_queue_vkd3d_ext_vtbl;
+     queue->refcount = 1;
+ 
+     queue->desc = *desc;
+@@ -17346,6 +17376,7 @@ void vkd3d_enqueue_initial_transition(ID3D12CommandQueue *queue, ID3D12Resource
+ 
+     memset(&sub, 0, sizeof(sub));
+     sub.type = VKD3D_SUBMISSION_EXECUTE;
++    sub.execute.frame_id = d3d12_queue->device->frame_markers.render;
+     sub.execute.transition_count = 1;
+     sub.execute.transitions = vkd3d_malloc(sizeof(*sub.execute.transitions));
+     sub.execute.transitions[0].type = VKD3D_INITIAL_TRANSITION_TYPE_RESOURCE;
+diff --git a/libs/vkd3d/command_queue_vkd3d_ext.c b/libs/vkd3d/command_queue_vkd3d_ext.c
+new file mode 100644
+index 00000000..0fba03b0
+--- /dev/null
++++ b/libs/vkd3d/command_queue_vkd3d_ext.c
+@@ -0,0 +1,100 @@
++/*
++ * * Copyright 2023 NVIDIA Corporation
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ */
++
++#define VKD3D_DBG_CHANNEL VKD3D_DBG_CHANNEL_API
++
++#include "vkd3d_private.h"
++
++static inline struct d3d12_command_queue *d3d12_command_queue_from_ID3D12CommandQueueExt(d3d12_command_queue_vkd3d_ext_iface *iface)
++{
++    return CONTAINING_RECORD(iface, struct d3d12_command_queue, ID3D12CommandQueueExt_iface);
++}
++
++extern ULONG STDMETHODCALLTYPE d3d12_command_queue_AddRef(d3d12_command_queue_iface *iface);
++
++ULONG STDMETHODCALLTYPE d3d12_command_queue_vkd3d_ext_AddRef(d3d12_command_queue_vkd3d_ext_iface *iface)
++{
++    struct d3d12_command_queue *command_queue = d3d12_command_queue_from_ID3D12CommandQueueExt(iface);
++    return d3d12_command_queue_AddRef(&command_queue->ID3D12CommandQueue_iface);
++}
++
++extern ULONG STDMETHODCALLTYPE d3d12_command_queue_Release(d3d12_command_queue_iface *iface);
++
++static ULONG STDMETHODCALLTYPE d3d12_command_queue_vkd3d_ext_Release(d3d12_command_queue_vkd3d_ext_iface *iface)
++{
++    struct d3d12_command_queue *command_queue = d3d12_command_queue_from_ID3D12CommandQueueExt(iface);
++    return d3d12_command_queue_Release(&command_queue->ID3D12CommandQueue_iface);
++}
++
++extern HRESULT STDMETHODCALLTYPE d3d12_command_queue_QueryInterface(d3d12_command_queue_iface *iface,
++        REFIID iid, void **object);
++
++static HRESULT STDMETHODCALLTYPE d3d12_command_queue_vkd3d_ext_QueryInterface(d3d12_command_queue_vkd3d_ext_iface *iface,
++        REFIID iid, void **out)
++{
++    struct d3d12_command_queue *command_queue = d3d12_command_queue_from_ID3D12CommandQueueExt(iface);
++    TRACE("iface %p, iid %s, out %p.\n", iface, debugstr_guid(iid), out);
++    return d3d12_command_queue_QueryInterface(&command_queue->ID3D12CommandQueue_iface, iid, out);
++}
++
++static HRESULT STDMETHODCALLTYPE d3d12_command_queue_vkd3d_ext_NotifyOutOfBandCommandQueue(d3d12_command_queue_vkd3d_ext_iface *iface, D3D12_OUT_OF_BAND_CQ_TYPE type)
++{
++    const struct vkd3d_vk_device_procs *vk_procs;
++    struct d3d12_command_queue* command_queue;
++    VkOutOfBandQueueTypeInfoNV queue_info;
++    VkOutOfBandQueueTypeNV queue_type;
++
++    command_queue = d3d12_command_queue_from_ID3D12CommandQueueExt(iface);
++
++    if (!command_queue->device->vk_info.NV_low_latency2)
++        return E_NOTIMPL;
++
++    vk_procs = &command_queue->device->vk_procs;
++
++    switch (type)
++    {
++        case OUT_OF_BAND_RENDER:
++            queue_type = VK_OUT_OF_BAND_QUEUE_TYPE_RENDER_NV;
++            break;
++        case OUT_OF_BAND_PRESENT:
++            queue_type = VK_OUT_OF_BAND_QUEUE_TYPE_PRESENT_NV;
++            break;
++        default:
++            WARN("Invalid queue type %x\n", type);
++    }
++
++    queue_info.sType = VK_STRUCTURE_TYPE_OUT_OF_BAND_QUEUE_TYPE_INFO_NV;
++    queue_info.pNext = NULL;
++    queue_info.queueType = queue_type;
++
++    VK_CALL(vkQueueNotifyOutOfBandNV(command_queue->vkd3d_queue->vk_queue, &queue_info));
++
++    return S_OK;
++}
++
++CONST_VTBL struct ID3D12CommandQueueExtVtbl d3d12_command_queue_vkd3d_ext_vtbl =
++{
++    /* IUnknown methods */
++    d3d12_command_queue_vkd3d_ext_QueryInterface,
++    d3d12_command_queue_vkd3d_ext_AddRef,
++    d3d12_command_queue_vkd3d_ext_Release,
++
++    /* ID3D12CommandQueueExt methods */
++    d3d12_command_queue_vkd3d_ext_NotifyOutOfBandCommandQueue
++};
++
+diff --git a/libs/vkd3d/device.c b/libs/vkd3d/device.c
+index c7a1054f..6fe95d48 100644
+--- a/libs/vkd3d/device.c
++++ b/libs/vkd3d/device.c
+@@ -121,6 +121,7 @@ static const struct vkd3d_optional_extension_info optional_device_extensions[] =
+     VK_EXTENSION(NV_SHADER_SUBGROUP_PARTITIONED, NV_shader_subgroup_partitioned),
+     VK_EXTENSION(NV_MEMORY_DECOMPRESSION, NV_memory_decompression),
+     VK_EXTENSION(NV_DEVICE_GENERATED_COMMANDS_COMPUTE, NV_device_generated_commands_compute),
++    VK_EXTENSION(NV_LOW_LATENCY_2, NV_low_latency2),
+     /* VALVE extensions */
+     VK_EXTENSION(VALVE_MUTABLE_DESCRIPTOR_TYPE, VALVE_mutable_descriptor_type),
+     VK_EXTENSION(VALVE_DESCRIPTOR_SET_HOST_MAPPING, VALVE_descriptor_set_host_mapping),
+@@ -3194,8 +3195,9 @@ void d3d12_device_return_query_pool(struct d3d12_device *device, const struct vk
+ }
+ 
+ /* ID3D12Device */
+-extern ULONG STDMETHODCALLTYPE d3d12_device_vkd3d_ext_AddRef(ID3D12DeviceExt *iface);
++extern ULONG STDMETHODCALLTYPE d3d12_device_vkd3d_ext_AddRef(d3d12_device_vkd3d_ext_iface *iface);
+ extern ULONG STDMETHODCALLTYPE d3d12_dxvk_interop_device_AddRef(ID3D12DXVKInteropDevice *iface);
++extern ULONG STDMETHODCALLTYPE d3d12_low_latency_device_AddRef(ID3DLowLatencyDevice *iface);
+ 
+ HRESULT STDMETHODCALLTYPE d3d12_device_QueryInterface(d3d12_device_iface *iface,
+         REFIID riid, void **object)
+@@ -3242,6 +3244,14 @@ HRESULT STDMETHODCALLTYPE d3d12_device_QueryInterface(d3d12_device_iface *iface,
+         return S_OK;
+     }
+ 
++    if (IsEqualGUID(riid, &IID_ID3DLowLatencyDevice))
++    {
++        struct d3d12_device *device = impl_from_ID3D12Device(iface);
++        d3d12_low_latency_device_AddRef(&device->ID3DLowLatencyDevice_iface);
++        *object = &device->ID3DLowLatencyDevice_iface;
++        return S_OK;
++    }
++
+     WARN("%s not implemented, returning E_NOINTERFACE.\n", debugstr_guid(riid));
+ 
+     *object = NULL;
+@@ -8188,6 +8198,7 @@ static void d3d12_device_replace_vtable(struct d3d12_device *device)
+ 
+ extern CONST_VTBL struct ID3D12DeviceExtVtbl d3d12_device_vkd3d_ext_vtbl;
+ extern CONST_VTBL struct ID3D12DXVKInteropDeviceVtbl d3d12_dxvk_interop_device_vtbl;
++extern CONST_VTBL struct ID3DLowLatencyDeviceVtbl d3d_low_latency_device_vtbl;
+ 
+ static void vkd3d_scratch_pool_init(struct d3d12_device *device)
+ {
+@@ -8258,6 +8269,7 @@ static HRESULT d3d12_device_init(struct d3d12_device *device,
+ 
+     device->ID3D12DeviceExt_iface.lpVtbl = &d3d12_device_vkd3d_ext_vtbl;
+     device->ID3D12DXVKInteropDevice_iface.lpVtbl = &d3d12_dxvk_interop_device_vtbl;
++    device->ID3DLowLatencyDevice_iface.lpVtbl = &d3d_low_latency_device_vtbl;
+ 
+     if ((rc = rwlock_init(&device->vertex_input_lock)))
+     {
+diff --git a/libs/vkd3d/device_vkd3d_ext.c b/libs/vkd3d/device_vkd3d_ext.c
+index 5bb7eca8..cf102474 100644
+--- a/libs/vkd3d/device_vkd3d_ext.c
++++ b/libs/vkd3d/device_vkd3d_ext.c
+@@ -20,18 +20,18 @@
+ 
+ #include "vkd3d_private.h"
+ 
+-static inline struct d3d12_device *d3d12_device_from_ID3D12DeviceExt(ID3D12DeviceExt *iface)
++static inline struct d3d12_device *d3d12_device_from_ID3D12DeviceExt(d3d12_device_vkd3d_ext_iface *iface)
+ {
+     return CONTAINING_RECORD(iface, struct d3d12_device, ID3D12DeviceExt_iface);
+ }
+ 
+-ULONG STDMETHODCALLTYPE d3d12_device_vkd3d_ext_AddRef(ID3D12DeviceExt *iface)
++ULONG STDMETHODCALLTYPE d3d12_device_vkd3d_ext_AddRef(d3d12_device_vkd3d_ext_iface *iface)
+ {
+     struct d3d12_device *device = d3d12_device_from_ID3D12DeviceExt(iface);
+     return d3d12_device_add_ref(device);
+ }
+ 
+-static ULONG STDMETHODCALLTYPE d3d12_device_vkd3d_ext_Release(ID3D12DeviceExt *iface)
++static ULONG STDMETHODCALLTYPE d3d12_device_vkd3d_ext_Release(d3d12_device_vkd3d_ext_iface *iface)
+ {
+     struct d3d12_device *device = d3d12_device_from_ID3D12DeviceExt(iface);
+     return d3d12_device_release(device);
+@@ -40,7 +40,7 @@ static ULONG STDMETHODCALLTYPE d3d12_device_vkd3d_ext_Release(ID3D12DeviceExt *i
+ extern HRESULT STDMETHODCALLTYPE d3d12_device_QueryInterface(d3d12_device_iface *iface,
+         REFIID riid, void **object);
+ 
+-static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_QueryInterface(ID3D12DeviceExt *iface,
++static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_QueryInterface(d3d12_device_vkd3d_ext_iface *iface,
+         REFIID iid, void **out)
+ {
+     struct d3d12_device *device = d3d12_device_from_ID3D12DeviceExt(iface);
+@@ -48,7 +48,7 @@ static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_QueryInterface(ID3D12Dev
+     return d3d12_device_QueryInterface(&device->ID3D12Device_iface, iid, out);
+ }
+ 
+-static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetVulkanHandles(ID3D12DeviceExt *iface, VkInstance *vk_instance, VkPhysicalDevice *vk_physical_device, VkDevice *vk_device)
++static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetVulkanHandles(d3d12_device_vkd3d_ext_iface *iface, VkInstance *vk_instance, VkPhysicalDevice *vk_physical_device, VkDevice *vk_device)
+ {
+     struct d3d12_device *device = d3d12_device_from_ID3D12DeviceExt(iface);
+     TRACE("iface %p, vk_instance %p, vk_physical_device %p, vk_device %p \n", iface, vk_instance, vk_physical_device, vk_device);
+@@ -61,7 +61,7 @@ static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetVulkanHandles(ID3D12D
+     return S_OK;
+ }
+ 
+-static BOOL STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetExtensionSupport(ID3D12DeviceExt *iface, D3D12_VK_EXTENSION extension)
++static BOOL STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetExtensionSupport(d3d12_device_vkd3d_ext_iface *iface, D3D12_VK_EXTENSION extension)
+ {
+     const struct d3d12_device *device = d3d12_device_from_ID3D12DeviceExt(iface);
+     bool ret_val = false;
+@@ -75,6 +75,9 @@ static BOOL STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetExtensionSupport(ID3D12D
+         case D3D12_VK_NVX_IMAGE_VIEW_HANDLE:
+             ret_val = device->vk_info.NVX_image_view_handle;
+             break;
++        case D3D12_VK_NV_LOW_LATENCY_2:
++            ret_val = device->vk_info.NV_low_latency2;
++            break;
+         default:
+             WARN("Invalid extension %x\n", extension);
+     }
+@@ -82,7 +85,7 @@ static BOOL STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetExtensionSupport(ID3D12D
+     return ret_val;
+ }
+ 
+-static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_CreateCubinComputeShaderWithName(ID3D12DeviceExt *iface, const void *cubin_data,
++static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_CreateCubinComputeShaderWithName(d3d12_device_vkd3d_ext_iface *iface, const void *cubin_data,
+        UINT32 cubin_size, UINT32 block_x, UINT32 block_y, UINT32 block_z, const char *shader_name, D3D12_CUBIN_DATA_HANDLE **out_handle)
+ {
+     VkCuFunctionCreateInfoNVX functionCreateInfo = { VK_STRUCTURE_TYPE_CU_FUNCTION_CREATE_INFO_NVX };
+@@ -129,7 +132,7 @@ static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_CreateCubinComputeShader
+     return S_OK;
+ }
+ 
+-static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_DestroyCubinComputeShader(ID3D12DeviceExt *iface, D3D12_CUBIN_DATA_HANDLE *handle)
++static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_DestroyCubinComputeShader(d3d12_device_vkd3d_ext_iface *iface, D3D12_CUBIN_DATA_HANDLE *handle)
+ {   
+     const struct vkd3d_vk_device_procs *vk_procs;
+     struct d3d12_device *device;
+@@ -149,7 +152,7 @@ static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_DestroyCubinComputeShade
+     return S_OK;
+ }
+ 
+-static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetCudaTextureObject(ID3D12DeviceExt *iface, D3D12_CPU_DESCRIPTOR_HANDLE srv_handle,
++static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetCudaTextureObject(d3d12_device_vkd3d_ext_iface *iface, D3D12_CPU_DESCRIPTOR_HANDLE srv_handle,
+        D3D12_CPU_DESCRIPTOR_HANDLE sampler_handle, UINT32 *cuda_texture_handle)
+ {
+     VkImageViewHandleInfoNVX imageViewHandleInfo = { VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX };
+@@ -177,7 +180,7 @@ static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetCudaTextureObject(ID3
+     return S_OK;
+ }
+ 
+-static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetCudaSurfaceObject(ID3D12DeviceExt *iface, D3D12_CPU_DESCRIPTOR_HANDLE uav_handle, 
++static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetCudaSurfaceObject(d3d12_device_vkd3d_ext_iface *iface, D3D12_CPU_DESCRIPTOR_HANDLE uav_handle, 
+         UINT32 *cuda_surface_handle)
+ {
+     VkImageViewHandleInfoNVX imageViewHandleInfo = { VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX };
+@@ -202,7 +205,7 @@ static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_GetCudaSurfaceObject(ID3
+ 
+ extern VKD3D_THREAD_LOCAL struct D3D12_UAV_INFO *d3d12_uav_info;
+ 
+-static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_CaptureUAVInfo(ID3D12DeviceExt *iface, D3D12_UAV_INFO *uav_info)
++static HRESULT STDMETHODCALLTYPE d3d12_device_vkd3d_ext_CaptureUAVInfo(d3d12_device_vkd3d_ext_iface *iface, D3D12_UAV_INFO *uav_info)
+ {
+     if (!uav_info)
+        return E_INVALIDARG;
+@@ -417,3 +420,136 @@ CONST_VTBL struct ID3D12DXVKInteropDeviceVtbl d3d12_dxvk_interop_device_vtbl =
+     d3d12_dxvk_interop_device_LockCommandQueue,
+     d3d12_dxvk_interop_device_UnlockCommandQueue,
+ };
++
++static inline struct d3d12_device *d3d12_device_from_ID3DLowLatencyDevice(d3d_low_latency_device_iface *iface)
++{
++    return CONTAINING_RECORD(iface, struct d3d12_device, ID3DLowLatencyDevice_iface);
++}
++
++ULONG STDMETHODCALLTYPE d3d12_low_latency_device_AddRef(d3d_low_latency_device_iface *iface)
++{
++    struct d3d12_device *device = d3d12_device_from_ID3DLowLatencyDevice(iface);
++    return d3d12_device_add_ref(device);
++}
++
++static ULONG STDMETHODCALLTYPE d3d12_low_latency_device_Release(d3d_low_latency_device_iface *iface)
++{
++    struct d3d12_device *device = d3d12_device_from_ID3DLowLatencyDevice(iface);
++    return d3d12_device_release(device);
++}
++
++extern HRESULT STDMETHODCALLTYPE d3d12_device_QueryInterface(d3d12_device_iface *iface,
++        REFIID riid, void **object);
++
++static HRESULT STDMETHODCALLTYPE d3d12_low_latency_device_QueryInterface(d3d_low_latency_device_iface *iface,
++        REFIID iid, void **out)
++{
++    struct d3d12_device *device = d3d12_device_from_ID3DLowLatencyDevice(iface);
++    TRACE("iface %p, iid %s, out %p.\n", iface, debugstr_guid(iid), out);
++    return d3d12_device_QueryInterface(&device->ID3D12Device_iface, iid, out);
++}
++
++static BOOL STDMETHODCALLTYPE d3d12_low_latency_device_SupportsLowLatency(d3d_low_latency_device_iface *iface)
++{
++    struct d3d12_device *device;
++
++    device = d3d12_device_from_ID3DLowLatencyDevice(iface);
++
++    return device->vk_info.NV_low_latency2;
++}
++
++static HRESULT STDMETHODCALLTYPE d3d12_low_latency_device_LatencySleep(d3d_low_latency_device_iface *iface)
++{
++    struct d3d12_device *device;
++
++    device = d3d12_device_from_ID3DLowLatencyDevice(iface);
++
++    if (!device->vk_info.NV_low_latency2)
++        return E_NOTIMPL;
++
++    if (device->swapchain_info.low_latency_swapchain)
++        return dxgi_vk_swap_chain_latency_sleep(device->swapchain_info.low_latency_swapchain);
++
++    return S_OK;
++}
++
++static HRESULT STDMETHODCALLTYPE d3d12_low_latency_device_SetLatencySleepMode(d3d_low_latency_device_iface *iface, BOOL low_latency_mode, BOOL low_latency_boost,
++        UINT32 minimum_interval_us)
++{
++    struct d3d12_device *device;
++
++    device = d3d12_device_from_ID3DLowLatencyDevice(iface);
++
++    if (!device->vk_info.NV_low_latency2)
++        return E_NOTIMPL;
++
++    if (device->swapchain_info.low_latency_swapchain)
++        return dxgi_vk_swap_chain_set_latency_sleep_mode(device->swapchain_info.low_latency_swapchain, low_latency_mode, low_latency_boost, minimum_interval_us);
++
++    return S_OK;
++}
++
++static HRESULT STDMETHODCALLTYPE d3d12_low_latency_device_SetLatencyMarker(d3d_low_latency_device_iface *iface, UINT64 frameID, UINT32 markerType)
++{
++    struct d3d12_device *device;
++    VkLatencyMarkerNV vk_marker;
++    uint64_t internal_frame_id;
++
++    device = d3d12_device_from_ID3DLowLatencyDevice(iface);
++    vk_marker = (VkLatencyMarkerNV)markerType;
++
++    if (!device->vk_info.NV_low_latency2)
++        return E_NOTIMPL;
++
++    // Offset the frameID by one to ensure it will always
++    // be a valid presentID
++    internal_frame_id = frameID + 1;
++
++    switch (vk_marker)
++    {
++        case VK_LATENCY_MARKER_SIMULATION_START_NV:
++            device->frame_markers.simulation = internal_frame_id;
++            break;
++        case VK_LATENCY_MARKER_RENDERSUBMIT_START_NV:
++            device->frame_markers.render = internal_frame_id;
++            break;
++        case VK_LATENCY_MARKER_PRESENT_START_NV:
++            device->frame_markers.present = internal_frame_id;
++            break;
++    }
++
++    if (device->swapchain_info.low_latency_swapchain)
++        return dxgi_vk_swap_chain_set_latency_marker(device->swapchain_info.low_latency_swapchain, internal_frame_id, vk_marker);
++
++    return S_OK;
++}
++
++static HRESULT STDMETHODCALLTYPE d3d12_low_latency_device_GetLatencyInfo(d3d_low_latency_device_iface *iface, D3D12_LATENCY_RESULTS *latency_results)
++{
++    struct d3d12_device *device;
++
++    device = d3d12_device_from_ID3DLowLatencyDevice(iface);
++
++    if (!device->vk_info.NV_low_latency2)
++        return E_NOTIMPL;
++
++    if (device->swapchain_info.low_latency_swapchain)
++        return dxgi_vk_swap_chain_get_latency_info(device->swapchain_info.low_latency_swapchain, latency_results);
++
++    return S_OK;
++}
++
++CONST_VTBL struct ID3DLowLatencyDeviceVtbl d3d_low_latency_device_vtbl =
++{
++    /* IUnknown methods */
++    d3d12_low_latency_device_QueryInterface,
++    d3d12_low_latency_device_AddRef,
++    d3d12_low_latency_device_Release,
++
++    /* ID3DLowLatencyDevice methods */
++    d3d12_low_latency_device_SupportsLowLatency,
++    d3d12_low_latency_device_LatencySleep,
++    d3d12_low_latency_device_SetLatencySleepMode,
++    d3d12_low_latency_device_SetLatencyMarker,
++    d3d12_low_latency_device_GetLatencyInfo
++};
+diff --git a/libs/vkd3d/meson.build b/libs/vkd3d/meson.build
+index 54955a89..3b551ce0 100644
+--- a/libs/vkd3d/meson.build
++++ b/libs/vkd3d/meson.build
+@@ -48,6 +48,7 @@ vkd3d_src = [
+   'cache.c',
+   'command.c',
+   'command_list_vkd3d_ext.c',
++  'command_queue_vkd3d_ext.c',
+   'device.c',
+   'device_vkd3d_ext.c',
+   'heap.c',
+diff --git a/libs/vkd3d/swapchain.c b/libs/vkd3d/swapchain.c
+index 99174040..627a3514 100644
+--- a/libs/vkd3d/swapchain.c
++++ b/libs/vkd3d/swapchain.c
+@@ -58,6 +58,7 @@ struct dxgi_vk_swap_chain_present_request
+     DXGI_COLOR_SPACE_TYPE dxgi_color_space_type;
+     DXGI_VK_HDR_METADATA dxgi_hdr_metadata;
+     uint32_t swap_interval;
++    uint64_t frame_id;
+     bool modifies_hdr_metadata;
+ };
+ 
+@@ -67,6 +68,13 @@ struct present_wait_entry
+     uint64_t begin_frame_time_ns;
+ };
+ 
++struct low_latency_state
++{
++    bool mode;
++    bool boost;
++    uint32_t minimum_interval_us;
++};
++
+ struct dxgi_vk_swap_chain
+ {
+     IDXGIVkSwapChain IDXGIVkSwapChain_iface;
+@@ -133,6 +141,16 @@ struct dxgi_vk_swap_chain
+         /* State tracking in present tasks on how to deal with swapchain recreation. */
+         bool force_swapchain_recreation;
+         bool is_surface_lost;
++
++        /* Info about the current low latency state of the swapchain */
++        pthread_mutex_t low_latency_lock;
++
++        VkSemaphore low_latency_sem;
++        uint64_t low_latency_sem_value;
++        
++        bool low_latency_update_requested;
++        struct low_latency_state requested_low_latency_state;
++        struct low_latency_state low_latency_state;
+     } present;
+ 
+     struct dxgi_vk_swap_chain_present_request request, request_ring[DXGI_MAX_SWAP_CHAIN_BUFFERS];
+@@ -317,6 +335,13 @@ static ULONG STDMETHODCALLTYPE dxgi_vk_swap_chain_Release(IDXGIVkSwapChain *ifac
+ 
+     if (!refcount)
+     {
++        if (chain->queue->device->vk_info.NV_low_latency2)
++        {
++            pthread_mutex_lock(&chain->present.low_latency_lock);
++            d3d12_device_remove_swapchain(chain->queue->device, chain);
++            pthread_mutex_unlock(&chain->present.low_latency_lock);
++        }
++
+         dxgi_vk_swap_chain_drain_queue(chain);
+         dxgi_vk_swap_chain_cleanup(chain);
+         vkd3d_free(chain);
+@@ -760,6 +785,7 @@ static HRESULT STDMETHODCALLTYPE dxgi_vk_swap_chain_Present(IDXGIVkSwapChain *if
+     request->dxgi_hdr_metadata = chain->user.dxgi_hdr_metadata;
+     request->modifies_hdr_metadata = chain->user.modifies_hdr_metadata;
+     request->begin_frame_time_ns = chain->user.begin_frame_time_ns;
++    request->frame_id = chain->queue->device->frame_markers.present;
+     chain->user.modifies_hdr_metadata = false;
+ 
+     /* Need to process this task in queue thread to deal with wait-before-signal.
+@@ -1283,6 +1309,8 @@ static void dxgi_vk_swap_chain_recreate_swapchain_in_present_task(struct dxgi_vk
+     VkDevice vk_device = chain->queue->device->vk_device;
+     VkCommandPoolCreateInfo command_pool_create_info;
+     VkSwapchainCreateInfoKHR swapchain_create_info;
++    VkSwapchainLatencyCreateInfoNV swapchain_latency_create_info;
++    VkLatencySleepModeInfoNV swapchain_latency_sleep_mode_info;
+     VkSurfaceCapabilitiesKHR surface_caps;
+     VkSurfaceFormatKHR surface_format;
+     VkImageViewCreateInfo view_info;
+@@ -1374,6 +1402,15 @@ static void dxgi_vk_swap_chain_recreate_swapchain_in_present_task(struct dxgi_vk
+     swapchain_create_info.imageExtent.height = max(swapchain_create_info.imageExtent.height, surface_caps.minImageExtent.height);
+     swapchain_create_info.imageExtent.height = min(swapchain_create_info.imageExtent.height, surface_caps.maxImageExtent.height);
+ 
++    if (chain->queue->device->vk_info.NV_low_latency2)
++    {
++        memset(&swapchain_latency_create_info, 0, sizeof(swapchain_latency_create_info));
++        swapchain_latency_create_info.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV;
++        swapchain_latency_create_info.pNext = NULL;
++        swapchain_latency_create_info.latencyModeEnable = true;
++        swapchain_create_info.pNext = &swapchain_latency_create_info;
++    }
++
+     vr = VK_CALL(vkCreateSwapchainKHR(vk_device, &swapchain_create_info, NULL, &chain->present.vk_swapchain));
+     if (vr < 0)
+     {
+@@ -1387,6 +1424,29 @@ static void dxgi_vk_swap_chain_recreate_swapchain_in_present_task(struct dxgi_vk
+ 
+     INFO("Got %u swapchain images.\n", chain->present.backbuffer_count);
+ 
++    /* If low latency is supported restore the current low latency state now */
++    if (chain->queue->device->vk_info.NV_low_latency2)
++    {
++        struct low_latency_state* low_latency_state = chain->present.low_latency_update_requested ?
++            &chain->present.requested_low_latency_state : &chain->present.low_latency_state;
++
++        memset(&swapchain_latency_sleep_mode_info, 0, sizeof(swapchain_latency_sleep_mode_info));
++        swapchain_latency_sleep_mode_info.sType = VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV;
++        swapchain_latency_sleep_mode_info.pNext = NULL;
++
++        swapchain_latency_sleep_mode_info.lowLatencyMode = low_latency_state->mode;
++        swapchain_latency_sleep_mode_info.lowLatencyBoost = low_latency_state->boost;
++        swapchain_latency_sleep_mode_info.minimumIntervalUs = low_latency_state->minimum_interval_us;
++
++        VK_CALL(vkSetLatencySleepModeNV(chain->queue->device->vk_device, chain->present.vk_swapchain, &swapchain_latency_sleep_mode_info));
++
++        if (chain->present.low_latency_update_requested)
++        {
++            memcpy(&chain->present.low_latency_state, &chain->present.requested_low_latency_state, sizeof(struct low_latency_state));
++            chain->present.low_latency_update_requested = false;
++        }
++    }
++
+     memset(&view_info, 0, sizeof(view_info));
+     view_info.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+     view_info.format = swapchain_create_info.imageFormat;
+@@ -1795,9 +1855,12 @@ static void dxgi_vk_swap_chain_present_iteration(struct dxgi_vk_swap_chain *chai
+      * Non-FIFO swapchains will pump their frame latency handles through the fallback path of blit command being done.
+      * Especially on Xwayland, the present ID is updated when images actually hit on-screen due to MAILBOX behavior.
+      * This would unnecessarily stall our progress. */
+-    if (chain->wait_thread.active && !chain->present.present_id_valid && chain->request.swap_interval > 0)
++    if (chain->wait_thread.active && !chain->present.present_id_valid &&
++        (chain->request.swap_interval > 0 || chain->present.low_latency_state.mode))
+     {
+-        chain->present.present_id += 1;
++        chain->present.present_id = (chain->present.low_latency_state.mode) ?
++            chain->request.frame_id : chain->present.present_id + 1;
++
+         present_id.sType = VK_STRUCTURE_TYPE_PRESENT_ID_KHR;
+         present_id.pNext = NULL;
+         present_id.swapchainCount = 1;
+@@ -1905,6 +1968,9 @@ static void dxgi_vk_swap_chain_present_callback(void *chain_)
+     if (!chain->wait_thread.active)
+         present_count = 1;
+ 
++    if (chain->queue->device->vk_info.NV_low_latency2)
++        pthread_mutex_lock(&chain->present.low_latency_lock);
++
+     for (i = 0; i < present_count; i++)
+     {
+         /* A present iteration may or may not render to backbuffer. We'll apply best effort here.
+@@ -1912,6 +1978,9 @@ static void dxgi_vk_swap_chain_present_callback(void *chain_)
+         dxgi_vk_swap_chain_present_iteration(chain, 0);
+     }
+ 
++    if (chain->queue->device->vk_info.NV_low_latency2)
++        pthread_mutex_unlock(&chain->present.low_latency_lock);
++
+     /* When this is signalled, lets main thread know that it's safe to free user buffers.
+      * Signal this just once on the outside since we might have retries, swap_interval > 1, etc, which complicates command buffer recycling. */
+     dxgi_vk_swap_chain_present_signal_blit_semaphore(chain);
+@@ -2045,6 +2114,52 @@ static HRESULT dxgi_vk_swap_chain_init_waiter_thread(struct dxgi_vk_swap_chain *
+     return S_OK;
+ }
+ 
++static HRESULT dxgi_vk_swap_chain_init_low_latency(struct dxgi_vk_swap_chain* chain)
++{
++    const struct vkd3d_vk_device_procs *vk_procs = &chain->queue->device->vk_procs;
++
++    VkSemaphoreTypeCreateInfoKHR semaphore_type_info;
++    VkSemaphoreCreateInfo semaphore_info;
++    VkResult vr;
++
++    chain->present.low_latency_sem = VK_NULL_HANDLE;
++    chain->present.low_latency_sem_value = 0;
++
++    chain->present.low_latency_update_requested = false;
++    chain->present.requested_low_latency_state.mode = false;
++    chain->present.requested_low_latency_state.boost = false;
++    chain->present.requested_low_latency_state.minimum_interval_us = 0;
++
++    chain->present.low_latency_state.mode = false;
++    chain->present.low_latency_state.boost = false;
++    chain->present.low_latency_state.minimum_interval_us = 0;
++
++    if (chain->queue->device->vk_info.NV_low_latency2)
++    {
++        memset(&semaphore_type_info, 0, sizeof(semaphore_type_info));
++        semaphore_type_info.sType = VK_STRUCTURE_TYPE_SEMAPHORE_TYPE_CREATE_INFO_KHR;
++        semaphore_type_info.pNext = NULL;
++        semaphore_type_info.semaphoreType = VK_SEMAPHORE_TYPE_TIMELINE_KHR;
++        semaphore_type_info.initialValue = 0;
++
++        memset(&semaphore_info, 0, sizeof(semaphore_info));
++        semaphore_info.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
++        semaphore_info.pNext = &semaphore_type_info;
++        semaphore_info.flags = 0;
++
++        if ((vr = VK_CALL(vkCreateSemaphore(chain->queue->device->vk_device,
++            &semaphore_info, NULL, &chain->present.low_latency_sem))) < 0)
++        {
++            ERR("Failed to create semaphore, vr %d.\n", vr);
++            return hresult_from_vk_result(vr);
++        }
++
++        pthread_mutex_init(&chain->present.low_latency_lock, NULL);
++    }
++
++    return S_OK;
++}
++
+ static HRESULT dxgi_vk_swap_chain_init(struct dxgi_vk_swap_chain *chain, IDXGIVkSurfaceFactory *pFactory,
+         const DXGI_SWAP_CHAIN_DESC1 *pDesc, struct d3d12_command_queue *queue)
+ {
+@@ -2070,6 +2185,9 @@ static HRESULT dxgi_vk_swap_chain_init(struct dxgi_vk_swap_chain *chain, IDXGIVk
+     if (FAILED(hr = dxgi_vk_swap_chain_init_waiter_thread(chain)))
+         goto err;
+ 
++    if (FAILED(hr = dxgi_vk_swap_chain_init_low_latency(chain)))
++        goto err;
++
+     ID3D12CommandQueue_AddRef(&queue->ID3D12CommandQueue_iface);
+     return S_OK;
+ 
+@@ -2097,6 +2215,13 @@ static HRESULT STDMETHODCALLTYPE dxgi_vk_swap_chain_factory_CreateSwapChain(IDXG
+         return hr;
+     }
+ 
++    if (chain->queue->device->vk_info.NV_low_latency2)
++    {
++        pthread_mutex_lock(&chain->present.low_latency_lock);
++        d3d12_device_register_swapchain(chain->queue->device, chain);
++        pthread_mutex_unlock(&chain->present.low_latency_lock);
++    }
++
+     *ppSwapchain = &chain->IDXGIVkSwapChain_iface;
+     return S_OK;
+ }
+@@ -2112,6 +2237,192 @@ static CONST_VTBL struct IDXGIVkSwapChainFactoryVtbl dxgi_vk_swap_chain_factory_
+     dxgi_vk_swap_chain_factory_CreateSwapChain,
+ };
+ 
++bool dxgi_vk_swap_chain_low_latency_enabled(struct dxgi_vk_swap_chain* chain)
++{
++    return chain->present.low_latency_state.mode;
++}
++
++HRESULT dxgi_vk_swap_chain_latency_sleep(struct dxgi_vk_swap_chain* chain)
++{
++    const struct vkd3d_vk_device_procs *vk_procs = &chain->queue->device->vk_procs;
++
++    VkLatencySleepInfoNV latency_sleep_info;
++    VkSemaphoreWaitInfo sem_wait_info;
++
++    if (chain->present.low_latency_state.mode)
++    {
++        // Increment the low latency sem value before the wait
++        chain->present.low_latency_sem_value++;
++
++        memset(&latency_sleep_info, 0, sizeof(latency_sleep_info));
++        latency_sleep_info.sType = VK_STRUCTURE_TYPE_LATENCY_SLEEP_INFO_NV;
++        latency_sleep_info.pNext = NULL;
++        latency_sleep_info.signalSemaphore = chain->present.low_latency_sem;
++        latency_sleep_info.value = chain->present.low_latency_sem_value;
++
++        pthread_mutex_lock(&chain->present.low_latency_lock);
++        VK_CALL(vkLatencySleepNV(chain->queue->device->vk_device, chain->present.vk_swapchain, &latency_sleep_info));
++        pthread_mutex_unlock(&chain->present.low_latency_lock);
++
++        memset(&sem_wait_info, 0, sizeof(sem_wait_info));
++        sem_wait_info.sType = VK_STRUCTURE_TYPE_SEMAPHORE_WAIT_INFO;
++        sem_wait_info.pNext = NULL;
++        sem_wait_info.flags = 0;
++        sem_wait_info.semaphoreCount = 1;
++        sem_wait_info.pSemaphores = &chain->present.low_latency_sem;
++        sem_wait_info.pValues = &chain->present.low_latency_sem_value;
++
++        VK_CALL(vkWaitSemaphores(chain->queue->device->vk_device, &sem_wait_info, UINT64_MAX));
++    }
++
++    return S_OK;
++}
++
++HRESULT dxgi_vk_swap_chain_set_latency_sleep_mode(struct dxgi_vk_swap_chain* chain, bool low_latency_mode,
++	bool low_latency_boost, uint32_t minimum_interval_us)
++{
++    const struct vkd3d_vk_device_procs *vk_procs = &chain->queue->device->vk_procs;
++
++    VkLatencySleepModeInfoNV latency_sleep_mode_info;
++
++    if (low_latency_mode == chain->present.low_latency_state.mode &&
++        low_latency_boost == chain->present.low_latency_state.boost &&
++        minimum_interval_us == chain->present.low_latency_state.minimum_interval_us)
++    {
++        return S_OK;
++    }
++
++    // If we are enabling low latency mode, recreate the swapchain
++    // to sync the frameIds provided by nvapi to the presentID
++    // used a present time
++    if (low_latency_mode && !chain->present.low_latency_state.mode)
++    {
++        chain->present.requested_low_latency_state.mode = low_latency_mode;
++        chain->present.requested_low_latency_state.boost = low_latency_boost;
++        chain->present.requested_low_latency_state.minimum_interval_us = minimum_interval_us;
++
++        // In order to use the frameId provided by the application
++        // the swapchain will have to be recreated to reset the
++        // present ID
++        chain->present.low_latency_update_requested = true;
++        chain->present.force_swapchain_recreation = true;
++    }
++    else
++    {
++        memset(&latency_sleep_mode_info, 0, sizeof(latency_sleep_mode_info));
++        latency_sleep_mode_info.sType = VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV;
++        latency_sleep_mode_info.pNext = NULL;
++        latency_sleep_mode_info.lowLatencyMode = low_latency_mode;
++        latency_sleep_mode_info.lowLatencyBoost = low_latency_boost;
++        latency_sleep_mode_info.minimumIntervalUs = minimum_interval_us;
++
++        pthread_mutex_lock(&chain->present.low_latency_lock);
++        VK_CALL(vkSetLatencySleepModeNV(chain->queue->device->vk_device, chain->present.vk_swapchain, &latency_sleep_mode_info));
++        pthread_mutex_unlock(&chain->present.low_latency_lock);
++
++        chain->present.low_latency_state.mode = low_latency_mode;
++        chain->present.low_latency_state.boost = low_latency_boost;
++        chain->present.low_latency_state.minimum_interval_us = minimum_interval_us;
++    }
++
++    return S_OK;
++}
++
++HRESULT dxgi_vk_swap_chain_set_latency_marker(struct dxgi_vk_swap_chain* chain, uint64_t frameID, VkLatencyMarkerNV marker)
++{
++    const struct vkd3d_vk_device_procs *vk_procs = &chain->queue->device->vk_procs;
++
++    VkSetLatencyMarkerInfoNV latency_marker_info;
++
++    if (chain->present.low_latency_state.mode)
++    {
++        memset(&latency_marker_info, 0, sizeof(latency_marker_info));
++        latency_marker_info.sType = VK_STRUCTURE_TYPE_SET_LATENCY_MARKER_INFO_NV;
++        latency_marker_info.pNext = NULL;
++        latency_marker_info.presentID = frameID;
++        latency_marker_info.marker = marker;
++
++        pthread_mutex_lock(&chain->present.low_latency_lock);
++        VK_CALL(vkSetLatencyMarkerNV(chain->queue->device->vk_device, chain->present.vk_swapchain, &latency_marker_info));
++        pthread_mutex_unlock(&chain->present.low_latency_lock);
++    }
++
++    return S_OK;
++}
++
++HRESULT dxgi_vk_swap_chain_get_latency_info(struct dxgi_vk_swap_chain* chain, D3D12_LATENCY_RESULTS *latency_results)
++{
++    const struct vkd3d_vk_device_procs *vk_procs = &chain->queue->device->vk_procs;
++
++    VkGetLatencyMarkerInfoNV marker_info;
++    VkLatencyTimingsFrameReportNV* frame_reports;
++    uint32_t report_count;
++    uint32_t i;
++
++    if (!chain->present.low_latency_state.mode)
++    {
++        memset(latency_results->frame_reports, 0, sizeof(latency_results->frame_reports));
++        return S_OK;
++    }
++
++    memset(&marker_info, 0, sizeof(marker_info));
++    marker_info.sType = VK_STRUCTURE_TYPE_GET_LATENCY_MARKER_INFO_NV;
++
++    pthread_mutex_lock(&chain->present.low_latency_lock);
++
++    VK_CALL(vkGetLatencyTimingsNV(chain->queue->device->vk_device, chain->present.vk_swapchain, &report_count, &marker_info));
++
++    if (report_count >= 64)
++    {
++        report_count = 64;
++        frame_reports = vkd3d_calloc(report_count, sizeof(VkLatencyTimingsFrameReportNV));
++        for (i = 0; i < report_count; i++)
++            frame_reports[i].sType = VK_STRUCTURE_TYPE_LATENCY_TIMINGS_FRAME_REPORT_NV;
++
++        marker_info.pTimings = frame_reports;
++
++        VK_CALL(vkGetLatencyTimingsNV(chain->queue->device->vk_device, chain->present.vk_swapchain, &report_count, &marker_info));
++
++        for (i = 0; i < report_count; i++)
++        {
++            latency_results->frame_reports[i].frameID = frame_reports[i].presentID - 1;
++            latency_results->frame_reports[i].inputSampleTime = frame_reports[i].inputSampleTimeUs;
++            latency_results->frame_reports[i].simStartTime = frame_reports[i].simStartTimeUs;
++            latency_results->frame_reports[i].simEndTime = frame_reports[i].simEndTimeUs;
++            latency_results->frame_reports[i].renderSubmitStartTime = frame_reports[i].renderSubmitStartTimeUs;
++            latency_results->frame_reports[i].renderSubmitEndTime = frame_reports[i].renderSubmitEndTimeUs;
++            latency_results->frame_reports[i].presentStartTime = frame_reports[i].presentStartTimeUs;
++            latency_results->frame_reports[i].presentEndTime = frame_reports[i].presentEndTimeUs;
++            latency_results->frame_reports[i].driverStartTime = frame_reports[i].driverStartTimeUs;
++            latency_results->frame_reports[i].driverEndTime = frame_reports[i].driverEndTimeUs;
++            latency_results->frame_reports[i].osRenderQueueStartTime = frame_reports[i].osRenderQueueStartTimeUs;
++            latency_results->frame_reports[i].osRenderQueueEndTime = frame_reports[i].osRenderQueueEndTimeUs;
++            latency_results->frame_reports[i].gpuRenderStartTime = frame_reports[i].gpuRenderStartTimeUs;
++            latency_results->frame_reports[i].gpuRenderEndTime = frame_reports[i].gpuRenderEndTimeUs;
++            latency_results->frame_reports[i].gpuActiveRenderTimeUs =
++                frame_reports[i].gpuRenderEndTimeUs - frame_reports[i].gpuRenderStartTimeUs;
++            latency_results->frame_reports[i].gpuFrameTimeUs = 0;
++
++            if (i) {
++                latency_results->frame_reports[i].gpuFrameTimeUs =
++                    frame_reports[i].gpuRenderEndTimeUs - frame_reports[i - 1].gpuRenderEndTimeUs;
++            }
++        }
++
++        vkd3d_free(frame_reports);
++    }
++    else
++    {
++        // If there are less than 64 frame reports, zero out the frame report
++        // buffer returned to the app.
++        memset(latency_results->frame_reports, 0, sizeof(latency_results->frame_reports));
++    }
++
++    pthread_mutex_unlock(&chain->present.low_latency_lock);
++
++    return S_OK;
++}
++
+ HRESULT dxgi_vk_swap_chain_factory_init(struct d3d12_command_queue *queue, struct dxgi_vk_swap_chain_factory *chain)
+ {
+     chain->IDXGIVkSwapChainFactory_iface.lpVtbl = &dxgi_vk_swap_chain_factory_vtbl;
+diff --git a/libs/vkd3d/vkd3d_private.h b/libs/vkd3d/vkd3d_private.h
+index 124cd75a..16234e94 100644
+--- a/libs/vkd3d/vkd3d_private.h
++++ b/libs/vkd3d/vkd3d_private.h
+@@ -37,6 +37,7 @@
+ #include "vkd3d_platform.h"
+ #include "vkd3d_swapchain_factory.h"
+ #include "vkd3d_command_list_vkd3d_ext.h"
++#include "vkd3d_command_queue_vkd3d_ext.h"
+ #include "vkd3d_device_vkd3d_ext.h"
+ #include "vkd3d_string.h"
+ #include "vkd3d_file_utils.h"
+@@ -169,6 +170,7 @@ struct vkd3d_vulkan_info
+     bool NV_shader_subgroup_partitioned;
+     bool NV_memory_decompression;
+     bool NV_device_generated_commands_compute;
++    bool NV_low_latency2;
+     /* VALVE extensions */
+     bool VALVE_mutable_descriptor_type;
+     bool VALVE_descriptor_set_host_mapping;
+@@ -3012,6 +3014,7 @@ struct d3d12_command_queue_submission_execute
+     struct d3d12_command_allocator **command_allocators;
+     UINT cmd_count;
+     UINT num_command_allocators;
++    uint64_t frame_id;
+ 
+     struct vkd3d_initial_transition *transitions;
+     size_t transition_count;
+@@ -3067,12 +3070,30 @@ struct dxgi_vk_swap_chain_factory
+     struct d3d12_command_queue *queue;
+ };
+ 
++struct dxgi_vk_swap_chain;
++
++bool dxgi_vk_swap_chain_low_latency_enabled(struct dxgi_vk_swap_chain* chain);
++HRESULT dxgi_vk_swap_chain_latency_sleep(struct dxgi_vk_swap_chain* chain);
++HRESULT dxgi_vk_swap_chain_set_latency_sleep_mode(struct dxgi_vk_swap_chain* chain,
++	bool low_latency_mode, bool low_latency_boost, uint32_t minimum_interval_us);
++HRESULT dxgi_vk_swap_chain_set_latency_marker(struct dxgi_vk_swap_chain* chain,
++	uint64_t frameID, VkLatencyMarkerNV marker);
++HRESULT dxgi_vk_swap_chain_get_latency_info(struct dxgi_vk_swap_chain* chain,
++	D3D12_LATENCY_RESULTS *latency_results);
++
+ HRESULT dxgi_vk_swap_chain_factory_init(struct d3d12_command_queue *queue, struct dxgi_vk_swap_chain_factory *chain);
+ 
++/* ID3D12CommandQueueExt */
++typedef ID3D12CommandQueueExt d3d12_command_queue_vkd3d_ext_iface;
++
+ /* ID3D12CommandQueue */
++typedef ID3D12CommandQueue d3d12_command_queue_iface;
++
+ struct d3d12_command_queue
+ {
+-    ID3D12CommandQueue ID3D12CommandQueue_iface;
++    d3d12_command_queue_iface ID3D12CommandQueue_iface;
++    d3d12_command_queue_vkd3d_ext_iface ID3D12CommandQueueExt_iface;
++
+     LONG refcount;
+ 
+     D3D12_COMMAND_QUEUE_DESC desc;
+@@ -4266,6 +4287,19 @@ struct vkd3d_cached_command_allocator
+     uint32_t vk_family_index;
+ };
+ 
++struct vkd3d_device_swapchain_info
++{
++    struct dxgi_vk_swap_chain* low_latency_swapchain;
++    uint32_t swapchain_count;
++};
++
++struct vkd3d_device_frame_markers
++{
++    uint64_t simulation;
++    uint64_t render;
++    uint64_t present;
++};
++
+ /* ID3D12Device */
+ typedef ID3D12Device12 d3d12_device_iface;
+ 
+@@ -4278,6 +4312,9 @@ typedef ID3D12DeviceExt d3d12_device_vkd3d_ext_iface;
+ /* ID3D12DXVKInteropDevice */
+ typedef ID3D12DXVKInteropDevice d3d12_dxvk_interop_device_iface;
+ 
++/* ID3DLowLatencyDevice */
++typedef ID3DLowLatencyDevice d3d_low_latency_device_iface;
++
+ struct d3d12_device_scratch_pool
+ {
+     struct vkd3d_scratch_buffer scratch_buffers[VKD3D_MAX_SCRATCH_BUFFER_COUNT];
+@@ -4292,6 +4329,7 @@ struct d3d12_device
+     d3d12_device_iface ID3D12Device_iface;
+     d3d12_device_vkd3d_ext_iface ID3D12DeviceExt_iface;
+     d3d12_dxvk_interop_device_iface ID3D12DXVKInteropDevice_iface;
++    d3d_low_latency_device_iface ID3DLowLatencyDevice_iface;
+     LONG refcount;
+ 
+     VkDevice vk_device;
+@@ -4362,6 +4400,9 @@ struct d3d12_device
+ #endif
+     uint64_t shader_interface_key;
+     uint32_t device_has_dgc_templates;
++
++    struct vkd3d_device_swapchain_info swapchain_info;
++    struct vkd3d_device_frame_markers frame_markers;
+ };
+ 
+ HRESULT d3d12_device_create(struct vkd3d_instance *instance,
+@@ -4584,6 +4625,31 @@ UINT d3d12_determine_shading_rate_image_tile_size(struct d3d12_device *device);
+ bool d3d12_device_supports_required_subgroup_size_for_stage(
+         struct d3d12_device *device, VkShaderStageFlagBits stage);
+ 
++static inline void d3d12_device_register_swapchain(struct d3d12_device* device, struct dxgi_vk_swap_chain* swapchain)
++{
++    if (!device->swapchain_info.low_latency_swapchain &&
++        device->swapchain_info.swapchain_count == 0)
++    {
++        device->swapchain_info.low_latency_swapchain = swapchain;
++    }
++    else
++    {
++        device->swapchain_info.low_latency_swapchain = NULL;
++    }
++
++    device->swapchain_info.swapchain_count++;
++}
++
++static inline void d3d12_device_remove_swapchain(struct d3d12_device* device, struct dxgi_vk_swap_chain* swapchain)
++{
++    if (device->swapchain_info.low_latency_swapchain == swapchain)
++    {
++        device->swapchain_info.low_latency_swapchain = NULL;
++    }
++
++    device->swapchain_info.swapchain_count--;
++}
++
+ /* ID3DBlob */
+ struct d3d_blob
+ {
+diff --git a/libs/vkd3d/vulkan_procs.h b/libs/vkd3d/vulkan_procs.h
+index 6b32bca1..554d223a 100644
+--- a/libs/vkd3d/vulkan_procs.h
++++ b/libs/vkd3d/vulkan_procs.h
+@@ -347,6 +347,13 @@ VK_DEVICE_EXT_PFN(vkSetDeviceMemoryPriorityEXT)
+ VK_DEVICE_EXT_PFN(vkCmdDecompressMemoryNV)
+ VK_DEVICE_EXT_PFN(vkCmdDecompressMemoryIndirectCountNV)
+ 
++/* VK_NV_low_latency2 */
++VK_DEVICE_EXT_PFN(vkSetLatencySleepModeNV)
++VK_DEVICE_EXT_PFN(vkLatencySleepNV)
++VK_DEVICE_EXT_PFN(vkSetLatencyMarkerNV)
++VK_DEVICE_EXT_PFN(vkGetLatencyTimingsNV)
++VK_DEVICE_EXT_PFN(vkQueueNotifyOutOfBandNV)
++
+ #undef VK_INSTANCE_PFN
+ #undef VK_INSTANCE_EXT_PFN
+ #undef VK_DEVICE_PFN
+-- 
+2.43.0
+
