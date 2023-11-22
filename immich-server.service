@@ -9,8 +9,8 @@ Wants=network-online.target
 After=network-online.target
 
 # for convenience, all services start with immich-server
-BindsTo=immich-microservices.service immich-web.service immich-machine-learning.service
-After=immich-microservices.service immich-web.service immich-machine-learning.service
+BindsTo=immich-microservices.service immich-machine-learning.service
+After=immich-microservices.service immich-machine-learning.service
 
 [Service]
 User=immich

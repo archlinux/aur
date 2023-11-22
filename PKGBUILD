@@ -1,6 +1,8 @@
+# Maintainer: wabi <aschrafl@jetnet.ch>
+# Maintainer: pikl <me@pikl.uk>
 pkgname=immich
-pkgrel=7
-pkgver=1.87.0
+pkgrel=1
+pkgver=1.88.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
@@ -42,7 +44,6 @@ optdepends=(
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}-server.service"
 	"${pkgname}-microservices.service"
-	"${pkgname}-web.service"
 	"${pkgname}-machine-learning.service"
 	"${pkgname}.sysusers"
 	"${pkgname}.tmpfiles"
@@ -50,15 +51,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'nginx.immich.conf'
         'media.util.ts.patch'
 )
-sha256sums=('f9196aa5567415d2b71cd50ce9ec8830adc8a2dfac65acea9287fcf470cb91c5'
-            '46a7ace4f315e0a69a0da49a9a54d442baa6573092572f1e4323d1373a0cabb5'
+sha256sums=('3fe1ac4e0840fcd997cf3a7df68248039fdbe0d5a540f0414e5f3311d6670746'
+            '42792b6b7c5461385395907af9bf724e02c6622603a741e86c73b1204a5ad973'
             '08df269485ebea360dc1156409d148c959ba28040017cd02be2606c5d28be5b0'
-            '64da5f28147c40a2285ed2295d85951c932d155069295a692a25995e6e56028e'
             'd20455349cdb9409adb42cdbde48c30a176d2a5337ad148c6d2227ecc523c88a'
             '01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e'
             '23894fe92e02f8d69d045ece73d68ba5122549a39c60475780a5b03bebcab3aa'
             '89819defe1108056f1bf876a6e0c1d6ecc10382a931fb832fccc132eaeaece1b'
-            '00827701798731c13fbd2d37f8ffb14816bfab579c0f75d532ab119295c4148c'
+            'cc405c774e34cd161f00ccd882e66c2d2ce28405964bf62472ebc3f59d642060'
             'd38cdaa031f741998f2d31504381bce4db1a8771c774a2c2bac547d7d2b3c70b')
 
 backup=("etc/immich.conf")
@@ -126,17 +126,9 @@ package() {
     cp -r server/bin "${pkgdir}/usr/lib/immich/app/server/bin"
     install -Dm644 server/package.json "${pkgdir}/usr/lib/immich/app/server/package.json"
     install -Dm644 server/package-lock.json "${pkgdir}/usr/lib/immich/app/server/package-lock.json"
-    install -Dm644 server/LICENSE "${pkgdir}/usr/lib/immich/app/server/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/lib/immich/app/LICENSE"
     cp -r server/assets "${pkgdir}/usr/lib/immich/app/server/assets"
-
-    # install web frontend
-    # from: web/Dockerfile COPY commands (entrypoint.sh not required)
-    #   * setting NODE_ENV=production picked up in systemd service file
-    install -dm755 "${pkgdir}/usr/lib/immich/app/web"
-    cp -r web/node_modules "${pkgdir}/usr/lib/immich/app/web/node_modules"
-    cp -r web/build "${pkgdir}/usr/lib/immich/app/web/build"
-    install -Dm644 web/package.json "${pkgdir}/usr/lib/immich/app/web/package.json"
-    install -Dm644 web/package-lock.json "${pkgdir}/usr/lib/immich/app/web/package-lock.json"
+    cp -r web/build "${pkgdir}/usr/lib/immich/app/server/www"
 
     # install machine-learning
     # from: machine-learning/Dockerfile COPY commands
@@ -150,7 +142,6 @@ package() {
 
     # install systemd service files
     install -Dm644 immich-server.service "${pkgdir}/usr/lib/systemd/system/immich-server.service"
-    install -Dm644 immich-web.service "${pkgdir}/usr/lib/systemd/system/immich-web.service"
     install -Dm644 immich-microservices.service "${pkgdir}/usr/lib/systemd/system/immich-microservices.service"
     install -Dm644 immich-machine-learning.service "${pkgdir}/usr/lib/systemd/system/immich-machine-learning.service"
 
