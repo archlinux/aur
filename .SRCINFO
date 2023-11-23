@@ -1,7 +1,7 @@
 pkgbase = jost-font
 	pkgdesc = A sans-serif font by indestructible type* inspired by 1920s German sans-serifs
 	pkgver = 3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://indestructibletype.com/Jost
 	arch = any
 	license = OFL

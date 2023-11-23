@@ -5,7 +5,7 @@ _pkgname=jost
 pkgname=(otf-$_pkgname ttf-$_pkgname ttf-$_pkgname-variable)
 pkgbase=$_pkgname-font
 pkgver=3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A sans-serif font by indestructible type* inspired by 1920s German sans-serifs'
 arch=(any)
 url=https://indestructibletype.com/Jost
@@ -20,22 +20,22 @@ package_otf-jost() {
     cd "$srcdir"/Jost-$_commit
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/otf/*.otf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
-    install -Dm644 -t "$pkgdir"/usr/share/$pkgname AUTHORS.txt \
-        CONTRIBUTORS.txt FONTLOG.txt README.md
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
+        AUTHORS.txt CONTRIBUTORS.txt FONTLOG.txt README.md
 }
 
 package_ttf-jost() {
     cd "$srcdir"/Jost-$_commit
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/ttf/*.ttf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
-    install -Dm644 -t "$pkgdir"/usr/share/$pkgname AUTHORS.txt \
-        CONTRIBUTORS.txt FONTLOG.txt README.md
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
+        AUTHORS.txt CONTRIBUTORS.txt FONTLOG.txt README.md
 }
 
 package_ttf-jost-variable() {
     cd "$srcdir"/Jost-$_commit
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/Jost-VF.ttf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
-    install -Dm644 -t "$pkgdir"/usr/share/$pkgname AUTHORS.txt \
-        CONTRIBUTORS.txt FONTLOG.txt README.md
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
+        AUTHORS.txt CONTRIBUTORS.txt FONTLOG.txt README.md
 }
