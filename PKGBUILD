@@ -1,7 +1,7 @@
 # Maintainer: Mika Cousin <mika dot cousin at gmail dot com>
 
 pkgname=olc-git
-pkgver=0.7.2.beta
+pkgver=0.8.beta
 pkgrel=1
 pkgdesc='Open Lighting Console'
 arch=(any)
@@ -15,6 +15,8 @@ depends=(
   portmidi
   python-mido
   python-pyliblo
+  python-scipy
+  python-charset-normalizer
 )
 makedepends=(
   git

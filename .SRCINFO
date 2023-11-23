@@ -1,6 +1,6 @@
 pkgbase = olc-git
 	pkgdesc = Open Lighting Console
-	pkgver = 0.7.2.beta
+	pkgver = 0.8.beta
 	pkgrel = 1
 	url = https://mikacousin.github.io/olc/
 	arch = any
@@ -15,6 +15,8 @@ pkgbase = olc-git
 	depends = portmidi
 	depends = python-mido
 	depends = python-pyliblo
+	depends = python-scipy
+	depends = python-charset-normalizer
 	provides = olc
 	source = git+https://github.com/mikacousin/olc
 	md5sums = SKIP
