@@ -1,6 +1,6 @@
 pkgbase = hiddify-next
 	pkgdesc = Multi-platform proxy client made with Flutter
-	pkgver = 0.10.7.dev
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/hiddify/hiddify-next
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = hiddify-next
 	makedepends = flutter
 	makedepends = go
 	options = !strip
-	source = https://github.com/hiddify/hiddify-next/archive/refs/tags/v0.10.7.dev.tar.gz
-	source = https://github.com/hiddify/hiddify-next-core/archive/refs/tags/v0.8.0.tar.gz
+	source = https://github.com/hiddify/hiddify-next/archive/refs/tags/v0.11.1.tar.gz
+	source = https://github.com/hiddify/hiddify-next-core/archive/refs/tags/v0.8.2.tar.gz
 	source = hiddify-next.desktop
-	sha256sums = 37a3a3e42155fa58338e9d85d0bd2584c916e12076da69d0b3613936add67410
-	sha256sums = e70293a75252480649cbca240911197fe0113ec08919ea375f93c0e23ce5a604
+	sha256sums = 8e32e4e7f5f8aa54bd61c61a137c7c1121ba7a4f34a3cb1bcd5a90502f44af9b
+	sha256sums = bb65e576fd6d1f10711213cc0df91c358ff7dddb477955632abbb9a26bfa02d1
 	sha256sums = 5bb8bcdf1657c8e8b86e39a23925587753488689a7d973d6a5756e19c209e6e0
 
 pkgname = hiddify-next

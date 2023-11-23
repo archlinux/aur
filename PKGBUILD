@@ -1,8 +1,8 @@
 # Maintainer: Aloxaf <aloxafx at gamil>
 
 pkgname=hiddify-next
-pkgver=0.10.7.dev
-_corever=0.8.0
+pkgver=0.11.1
+_corever=0.8.2
 pkgrel=1
 pkgdesc="Multi-platform proxy client made with Flutter"
 url='https://github.com/hiddify/hiddify-next'
@@ -15,14 +15,9 @@ source=(
   "https://github.com/hiddify/hiddify-next-core/archive/refs/tags/v${_corever}.tar.gz"
   "hiddify-next.desktop"
 )
-sha256sums=('37a3a3e42155fa58338e9d85d0bd2584c916e12076da69d0b3613936add67410'
-            'e70293a75252480649cbca240911197fe0113ec08919ea375f93c0e23ce5a604'
+sha256sums=('8e32e4e7f5f8aa54bd61c61a137c7c1121ba7a4f34a3cb1bcd5a90502f44af9b'
+            'bb65e576fd6d1f10711213cc0df91c358ff7dddb477955632abbb9a26bfa02d1'
             '5bb8bcdf1657c8e8b86e39a23925587753488689a7d973d6a5756e19c209e6e0')
-
-prepare() {
-  # https://github.com/hiddify/hiddify-next/pull/161
-  sed -i 's/linux-amd64.dll/linux-amd64.so/g' hiddify-next-${pkgver}/Makefile
-}
 
 build() {
   cd hiddify-next-${pkgver}
