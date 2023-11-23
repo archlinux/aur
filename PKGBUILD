@@ -4,7 +4,7 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio-git
-pkgver=0.9.2.20
+pkgver=0.9.2.19.r18.g97d0608
 pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
@@ -12,7 +12,7 @@ url="http://www.coderholic.com/pyradio/"
 license=('MIT')
 depends=('python-dnspython' 'python-requests' 'python-psutil' 'python-netifaces' 'python-rich' 'python-dateutil')
 optdepends=('mplayer: as backend' 'mpv: as backend' 'vlc: as backend' 'mkvtoolnix-cli: fix mplayer recordings, add chapters to recordings')
-makedepends=('git' 'python-pip' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-pip' 'python-setuptools'  'python-build' 'python-installer' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=($pkgname::git+https://github.com/coderholic/pyradio.git)
