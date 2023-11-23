@@ -2,8 +2,8 @@
 # Contributor: lsf <lsf@lsf>
 pkgname=wifite-git
 _pkgname=${pkgname%-git}
-pkgver=r679.71a2bf30a
-pkgrel=1
+pkgver=r729.dccebcdde
+pkgrel=2
 pkgdesc="A tool to attack multiple WEP and WPA encrypted networks at the same time"
 arch=(any)
 url="https://github.com/kimocoder/wifite2"
@@ -21,8 +21,10 @@ optdepends=(
   'hcxdumptool: capturing PMKID hashes'
   'hcxtools: converting PMKID packet captures into hashcat format'
 )
-makedepends=('git' 'python-build' 'python-installer' 'python-pytest'
-            'python-setuptools' 'python-wheel')
+makedepends=( 'git' 
+              'python-pytest' 
+              'python-setuptools'
+              'python-poetry')
 checkdepends=('cowpatty')
 source=(${pkgname}::git+${url}.git)
 sha256sums=('SKIP')
@@ -42,12 +44,12 @@ prepare() {
 
 build() {
   cd "${pkgname}"
-  python -m build --wheel --no-isolation
+  python setup.py build
 
 }
 
 package() {
   cd "${pkgname}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  python setup.py install --root="$pkgdir" --optimize=1
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
