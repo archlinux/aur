@@ -9,7 +9,7 @@ pkgdesc='A KDE plasmoid that displays live local telemetry data about the train 
 license=('GPL')
 depends=('qt5-base' 'plasma-workspace' 'networkmanager-qt5')
 
-makedepends=('cmake' 'ninja' 'qt5-tools' 'plasma-framework5' 'extra-cmake-modules' 'c++utilities' 'qtutilities')
+makedepends=('cmake' 'ninja' 'qt5-tools' 'appstream' 'plasma-framework5' 'extra-cmake-modules' 'c++utilities' 'qtutilities')
 
 url="https://github.com/ThePBone/${_reponame}"
 source=("git+https://github.com/ThePBone/${_reponame}.git"

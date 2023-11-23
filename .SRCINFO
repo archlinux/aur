@@ -12,6 +12,7 @@ pkgbase = onboard-plasmoid-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = qt5-tools
+	makedepends = appstream
 	makedepends = plasma-framework5
 	makedepends = extra-cmake-modules
 	makedepends = c++utilities
