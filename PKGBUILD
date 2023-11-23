@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-insiders-bin
 _pkgname=visual-studio-code-insiders
-pkgver=1700112950
+pkgver=1700717804
 pkgrel=1
 pkgdesc="Editor for building and debugging modern web and cloud applications (insiders version)"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -16,13 +16,13 @@ provides=(vscode)
 
 pkgver() {
     if [ "${CARCH}" = "x86_64" ]; then
-        IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://update.code.visualstudio.com/latest/linux-x64/insider); echo "${ADDR[5]}" | sed 's/code-insider-x64-//g' | sed 's/.tar.gz//g' | sed 's/-/./g'
+        IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://update.code.visualstudio.com/latest/linux-x64/insider); echo "${ADDR[7]}" | sed 's/code-insider-x64-//g' | sed 's/.tar.gz//g' | sed 's/-/./g'
     elif [ "${CARCH}" = "aarch64" ]; then
-        IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://update.code.visualstudio.com/latest/linux-arm64/insider); echo "${ADDR[5]}" | sed 's/code-insider-arm64-//g' | sed 's/.tar.gz//g' | sed 's/-/./g'
+        IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://update.code.visualstudio.com/latest/linux-arm64/insider); echo "${ADDR[7]}" | sed 's/code-insider-arm64-//g' | sed 's/.tar.gz//g' | sed 's/-/./g'
     elif [ "${CARCH}" = "armv7h" ]; then
-        IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://update.code.visualstudio.com/latest/linux-armhf/insider); echo "${ADDR[5]}" | sed 's/code-insider-armhf-//g' | sed 's/.tar.gz//g' | sed 's/-/./g'
+        IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://update.code.visualstudio.com/latest/linux-armhf/insider); echo "${ADDR[7]}" | sed 's/code-insider-armhf-//g' | sed 's/.tar.gz//g' | sed 's/-/./g'
     else
-        IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://update.code.visualstudio.com/latest/linux-ia32/insider); echo "${ADDR[5]}" | sed 's/code-insider-//g' | sed 's/.tar.gz//g' | sed 's/-/./g'
+        IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://update.code.visualstudio.com/latest/linux-ia32/insider); echo "${ADDR[7]}" | sed 's/code-insider-//g' | sed 's/.tar.gz//g' | sed 's/-/./g'
     fi
 }
 source=(${_pkgname}.desktop ${_pkgname}-url-handler.desktop ${_pkgname}-bin.sh)

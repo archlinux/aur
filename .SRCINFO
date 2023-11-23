@@ -1,6 +1,6 @@
 pkgbase = visual-studio-code-insiders-bin
 	pkgdesc = Editor for building and debugging modern web and cloud applications (insiders version)
-	pkgver = 1700112950
+	pkgver = 1700717804
 	pkgrel = 1
 	url = https://code.visualstudio.com/
 	arch = x86_64
@@ -27,13 +27,13 @@ pkgbase = visual-studio-code-insiders-bin
 	sha256sums = d18aab23c38721aa210fa074a8dc035c607114e6a742260be814ab2538f65c65
 	sha256sums = 7038bc7d02c692be00ee4bed411bc4b7e475d233e2193528f3dd34e0bfd1106c
 	sha256sums = 67d83f676135ca14806aab7292361a4a737f3076527860258176c886cdb3f0c1
-	source_x86_64 = code_x64_1700112950.tar.gz::https://update.code.visualstudio.com/latest/linux-x64/insider
+	source_x86_64 = code_x64_1700717804.tar.gz::https://update.code.visualstudio.com/latest/linux-x64/insider
 	sha256sums_x86_64 = SKIP
-	source_i686 = code_ia32_1700112950.tar.gz::https://update.code.visualstudio.com/latest/linux-ia32/insider
+	source_i686 = code_ia32_1700717804.tar.gz::https://update.code.visualstudio.com/latest/linux-ia32/insider
 	sha256sums_i686 = SKIP
-	source_aarch64 = code_arm64_1700112950.tar.gz::https://update.code.visualstudio.com/latest/linux-arm64/insider
+	source_aarch64 = code_arm64_1700717804.tar.gz::https://update.code.visualstudio.com/latest/linux-arm64/insider
 	sha256sums_aarch64 = SKIP
-	source_armv7h = code_armhf_1700112950.tar.gz::https://update.code.visualstudio.com/latest/linux-armhf/insider
+	source_armv7h = code_armhf_1700717804.tar.gz::https://update.code.visualstudio.com/latest/linux-armhf/insider
 	sha256sums_armv7h = SKIP
 
 pkgname = visual-studio-code-insiders-bin
