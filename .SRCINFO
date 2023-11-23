@@ -12,7 +12,7 @@ pkgbase = runelite-launcher-appimage
 	source = runelite-launcher.desktop
 	sha256sums = SKIP
 	source_x86_64 = https://github.com/runelite/launcher/releases/download/2.6.10/RuneLite.AppImage
-	sha256sums_x86_64 = af11fc0863641dd5ed3f24edbed4e61822d3d945ca12ee34ef9f54ffbb4f9131
+	sha256sums_x86_64 = 4d0a0d91ae313c98acbde062fb96cc902e82478fe9235988485974b3017e4912
 	source_aarch64 = https://github.com/runelite/launcher/releases/download/2.6.10/RuneLite-aarch64.AppImage
 	sha256sums_aarch64 = 268a9140491f5bbe2d93604be149a255fc1c9634abe83c30a7448969423703bb
 
