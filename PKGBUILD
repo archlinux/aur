@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ndi-sdk
-pkgver=5.6.0.r135585.20230726
+pkgver=5.6.0.r137264.20231117
 pkgrel=1
 _majver="${pkgver%%.*}"
 pkgdesc='NewTek NDI SDK'
@@ -16,10 +16,10 @@ options=('!strip')
 _srcfile="Install_NDI_SDK_v${pkgver}_Linux.tar.gz"
 source=("$_srcfile"::"https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v${_majver}_Linux.tar.gz")
 noextract=("$_srcfile")
-sha256sums=('7e5c54693d6aee6b6f1d6d49f48d4effd7281abd216d9ff601be2d55af12f7f5')
+sha256sums=('4ff4b92f2c5f42d234aa7d142e2de7e9b045c72b46ad5149a459d48efd9218de')
 
 prepare() {
-    mkdir -p "${pkgname}-${pkgver}"/{,icons}
+    mkdir -p "${pkgname}-${pkgver}"
     bsdtar -x -f "$_srcfile" -C "${pkgname}-${pkgver}"
     
     local _target_line
@@ -28,12 +28,6 @@ prepare() {
     _target_line="$((_target_line + 1))"
     
     tail -n +"$_target_line" "Install_NDI_SDK_v${_majver}_Linux.sh" | tar -zxvf -
-    
-    #local _icon
-    #while read -r -d '' _icon
-    #do
-    #    icotool -x "$_icon" -o "${srcdir}/${pkgname}-${pkgver}/icons" 2>/dev/null
-    #done < <(find "${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux/logos" -type f -name '*.ico' -print0)
 }
 
 package() {
@@ -53,17 +47,6 @@ package() {
     
     # docs
     install -D -m644 "${_sdkdir}/documentation/"*.pdf -t "${pkgdir}/usr/share/doc/${pkgname}"
-    
-    #icons
-    #local _icon
-    #local _name
-    #local _res
-    #while read -r -d '' _icon
-    #do
-    #    _name="$(sed 's|^.*/||;s/_[0-9]*_[0-9]*x[0-9]*x[0-9]*\.png//' <<< "$_icon")"
-    #    _res="$(sed 's/\.png$//;s/^.*_//;s/x.*$//' <<< "$_icon")"
-    #    install -D -m644 "$_icon" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/${_name}.png"
-    #done < <(find "${srcdir}/${pkgname}-${pkgver}/icons" -type f -name "*x32.png" -print0)
     
     # license
     install -D -m644 "${_sdkdir}/NDI SDK License Agreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
