@@ -1,6 +1,6 @@
 pkgbase = waybox-git
 	pkgdesc = Openbox clone on Wayland (git version)
-	pkgver = 0.2.0.r21.ge938552
+	pkgver = 0.2.0.r29.g7fb889d
 	pkgrel = 1
 	url = https://github.com/wizbright/waybox
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = waybox-git
 	provides = waybox
 	conflicts = waybox
 	source = git+https://github.com/wizbright/waybox.git
+	source = 0001-missing_libxml2_import.patch
 	md5sums = SKIP
+	md5sums = d5c41683ab89c4f6e011ee35fdd52f0e
 
 pkgname = waybox-git
