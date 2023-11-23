@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=linux-assistant-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A daily linux helper with powerful integrated search, routines checks and administrative tasks. The Project is built with flutter and python."
 arch=('x86_64')
@@ -23,14 +23,9 @@ depends=(
     'libepoxy'
     'gobject-introspection-runtime'
     'fontconfig'
-    'libgpg-error'
-    'util-linux-libs'
-    'lz4'
-    'libgcrypt'
-    'xz'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}.deb")
-sha256sums=('16a70b5a677e4740a90600194c0941c7e6669b0b1779ad7d602553efb2dd36a9')
+sha256sums=('a0ba636e38bd4b060f59e75882bc796a9af0c7eee1152ab454723af1ad244031')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
 }
