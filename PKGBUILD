@@ -3,7 +3,7 @@
 
 _pkgname=SerialTest
 pkgname=serialtest-git
-pkgver=0.3.2.r2.gf1dd9cf
+pkgver=0.3.3.r0.g5799817
 pkgrel=1
 pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('qt5-tools' 'git')
 backup=()
 options=('!strip')
 install=${pkgname}.install
-source=("${_pkgname}::git+${url}.git"
+source=("${_pkgname}::git+${url}.git#branch=dev"
         "${pkgname}.install")
 sha256sums=('SKIP'
             '303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4')
@@ -35,16 +35,13 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}/src/"
     qmake
-    make -j4
+    make -j$((`nproc` + 1))
 }
 
 package() {
     install -Dm0755 "${srcdir}/${_pkgname}/src/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
-
     install -Dm0644 "${srcdir}/${_pkgname}/pack/aur/io.github.wh201906.serialtest.metainfo.xml" "${pkgdir}/usr/share/metainfo/io.github.wh201906.serialtest.metainfo.xml"
-
     install -Dm0644 "${srcdir}/${_pkgname}/pack/aur/io.github.wh201906.serialtest.desktop" "${pkgdir}/usr/share/applications/io.github.wh201906.serialtest.desktop"
-
     install -Dm0644 ${srcdir}/${_pkgname}/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 "$srcdir/${_pkgname}/src/icon/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 #    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}/pkg/20-usb-serial.rules" "${pkgdir}/etc/udev/rules.d/20-usb-serial.rules"
