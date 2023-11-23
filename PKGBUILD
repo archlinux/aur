@@ -30,10 +30,11 @@ prepare() {
 }
 
 sha256sums=('77a5ce9dc8044c5e5bf5770a6c3e16a252f8cef8c80ecc6eed9fefddc6ec825b'
-            '296fe1fce542643ee21d1714ce8986f493ddaec6ac63b7aea5bdcbfb1b73d89e'
+            'b9233e3ae649cd1a0f91cb2d1f3ddc8eb48e475882a0d3ff5ab51295f0a30d56'
             'afe7e64dbde2ea599b319e8632d72a3c237b5c4275dd31d0f40e39719193a67b'
             'c89514e12efcb161d678e6c0c978e08faf41a08625bd4a83b893c1e05cd8429e'
 )
+
 
 
 build() {
