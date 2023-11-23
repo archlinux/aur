@@ -1,6 +1,6 @@
 pkgbase = python-desktop-entry-lib
 	pkgdesc = A library for working with .desktop files
-	pkgver = 3.2
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://codeberg.org/JakobDev/desktop-entry-lib
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-desktop-entry-lib
 	depends = python
 	depends = xdg-user-dirs
 	depends = desktop-file-utils
-	source = python-desktop-entry-lib-3.2.tar.gz::https://codeberg.org/JakobDev/desktop-entry-lib/archive/3.2.tar.gz
-	sha256sums = 73358153d9117c79b920e2674b01bd90962e338a2fa4bc654f014ce4cd897706
+	source = python-desktop-entry-lib-4.0.tar.gz::https://codeberg.org/JakobDev/desktop-entry-lib/archive/4.0.tar.gz
+	sha256sums = 88f8ae9c3ef2b8c271e4928121d9d7abad6a7ed1c99ccef993e0e3328060d3d6
 
 pkgname = python-desktop-entry-lib

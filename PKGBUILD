@@ -1,7 +1,7 @@
 # Maintainer:  JakobDev<jakobdev at gmx dot de>
 
 pkgname=python-desktop-entry-lib
-pkgver=3.2
+pkgver=4.0
 pkgrel=1
 pkgdesc="A library for working with .desktop files"
 url="https://codeberg.org/JakobDev/desktop-entry-lib"
@@ -10,7 +10,7 @@ license=("BSD")
 depends=("python" "xdg-user-dirs" "desktop-file-utils")
 makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel" "python-sphinx" "python-sphinx-furo" "python-sphinx-copybutton" "make")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/desktop-entry-lib/archive/${pkgver}.tar.gz")
-sha256sums=("73358153d9117c79b920e2674b01bd90962e338a2fa4bc654f014ce4cd897706")
+sha256sums=("88f8ae9c3ef2b8c271e4928121d9d7abad6a7ed1c99ccef993e0e3328060d3d6")
 
 build() {
       cd desktop-entry-lib
