@@ -1,14 +1,14 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=qwlroots-git
-pkgver=r166.093e076
+pkgver=r224.16b01b7
 pkgrel=1
 pkgdesc='Qt and QML bindings for wlroots.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/vioken/qwlroots"
 license=('Apache' 'GPL2' 'GPL3' 'LGPL3')
 depends=()
-makedepends=('git' 'wlroots-git')
+makedepends=('git' 'wlroots' 'ninja')
 provides=('qwlroots')
 source=("$pkgname::git+https://github.com/vioken/qwlroots")
 sha512sums=('SKIP')
@@ -20,11 +20,11 @@ pkgver() {
 
 build() {
   cd $pkgname
-  cmake -B . -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake -B . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build .
 }
 
 package() {
   cd $pkgname
-  DESTDIR="$pkgdir" make install
+  DESTDIR="$pkgdir" ninja install
 }
