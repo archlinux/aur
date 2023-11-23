@@ -2,7 +2,7 @@
 # Maintainer: Vedran Miletic <vedran AT miletic DOT net>
 # Contributor: Samo Turk <samo.turk@gmail.com>
 pkgname=rdkit
-pkgver=2023_03_2
+pkgver=2023_09_2
 pkgrel=1
 pkgdesc="RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python."
 arch=("i686" "x86_64" "armv7h")
@@ -14,7 +14,7 @@ source=(
     "https://github.com/rdkit/rdkit/archive/Release_${pkgver}.tar.gz"
 )
 sha256sums=(
-    'bb43216b075b93b767e6cbaecd5e95d087da887bcdc51afd36d940d8bd9f9819'
+    'd6ed9e0cdf231550fa850070be7ea53154d46ec6cf32a9b5fd5fec2d34a60c6b'
 )
 conflicts=('rdkit-python2' 'rdkit-git')
 provides=(rdkit)
