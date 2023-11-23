@@ -12,7 +12,7 @@
 _fragment="${FRAGMENT:-#branch=master}"
 
 pkgname=upbge-git
-pkgver=135830.73346754b94
+pkgver=136340.df8f20a0abb
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -94,7 +94,7 @@ build() {
     export PYTHON_VERSION=${_pyver}
     _CMAKE_FLAGS+=( -DPYTHON_VERSION=$_pyver \
                     -DPYTHON_LIBRARY=/usr/lib/libpython${_pyver}.so \
-                    -DWITH_PYTHON_INSTALL=ON \
+                    -DWITH_PYTHON_INSTALL=OFF \
                     -DWITH_PYTHON_SAFETY=OFF )
   fi
 
