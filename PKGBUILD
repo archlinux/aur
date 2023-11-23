@@ -4,7 +4,7 @@
 pkgname=nodejs-lts-iron
 pkgver=20.10.0
 pkgrel=1
-pkgdesc="Evented I/O for V8 javascript (LTS release: Hydrogen)"
+pkgdesc="Evented I/O for V8 javascript (LTS release: Iron)"
 arch=(x86_64)
 url="https://nodejs.org/"
 license=(MIT)
