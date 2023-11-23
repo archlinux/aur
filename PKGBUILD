@@ -4,7 +4,7 @@ pkgrel=2
 pkgdesc='general environment for the Treatment of Discrete Problems'
 arch=('x86_64')
 url='http://getdp.info/'
-license=('LGPL3')
+license=('GPL-2.0-or-later')
 depends=(
 python
 gmsh
