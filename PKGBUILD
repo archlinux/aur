@@ -36,4 +36,4 @@ package() {
 
 }
 
-replaces='whisper.cpp-model-large'
+replaces=('whisper.cpp-model-large')
