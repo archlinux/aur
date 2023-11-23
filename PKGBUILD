@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=net-player
 _pkgname="${pkgname//-p/P}"
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A Subsonic based music player.基于Subsonic API的桌面端播放器"
 arch=(
