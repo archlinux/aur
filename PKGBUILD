@@ -26,7 +26,6 @@ pkgver() {
 }
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=stable
     cd "$srcdir"/$_pkgname
     cargo update
     cargo fetch --locked --target $CARCH-unknown-linux-gnu
@@ -38,7 +37,6 @@ build() {
 }
 
 check() {
-    export RUSTUP_TOOLCHAIN=stable
     cd "$srcdir"/$_pkgname
     cargo test --frozen --workspace --features desktop-notifications
 }
