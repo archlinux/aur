@@ -53,7 +53,7 @@ sha256sums=('SKIP'
             '96d2bf957f7a0dfa3c25bd9345d7ca18d4fd89f7a6d3cae946eaf0d623917171'
             '8b7083d8aeedb2adecf078e06da028120c2f8354280c7ec7424b304ab3fd29bd'
             'f81448ae200a3bd549dd551fd6f5db9bff4bd07270bb91e57672d2b1275e938b'
-            '33bde7ca00b08ce568d07d70bf324104abe0b38f22e81531de459e98723828b4'
+            'affd6f2808d233cb1bbf92fa35c4b02a8ca160fccbe5500e3d4d277b6396f75f'
             '10375ea78ab9c1454211992179368a9fa84b79700a4a2ef2b47cb2f1c908699b'
             'bdf0e8167a4e26cc251846b4b8a8827571f8ac9478f7a2400f6776bfe6b99375')
 b2sums=('SKIP'
@@ -64,7 +64,7 @@ b2sums=('SKIP'
         '58e2e5f6706f17040a7674f6ae81c49e4bdac586228c51374615e7821a70cad8f508bdbd1dbb9d53db98713e5cb456c9b065512199385becdcaf7cb9bd7c1f4b'
         '7b15d54811fd1d8ef908963abd76fe552f6149ea32e6f83eaecc6f0636d5e58ece857f86828bf650a2f762a02ca58640ff60dd0f9268666033da67be6e5e7ae1'
         '8e35b9a826592b1a2f2adaa7400cf6cae1c43f04edec7f6a84f2a7c67b56d762685d484863c8f5b49cf55ed6c91c2d3935e851a4446415cc420104707e06201a'
-        '0b93c67f7a5c7d1a8f3e62eb94f70a5b93b1c2f7cdbce99dd5444ac52f27aa7198ed9a3172efbea382dd7a7f8aeb97fe54acecafc41bb48ac34379952867724e'
+        'db503abd1f18c2d0a035bc7c8e11e9430427cc153a241834642837b7189b570fa474fada146cab0ea96d7fd666ceb300115013340f411f657713aa9256545b36'
         '798b7e21d44f8c68022b5f212f0235ef1558629db2d7356128b23736a9f97009cc85f48c77e30f5908832da46204d54444f0221675e917d3e3f85c0027c547dd'
         '537301a740c8cbbb45905d28d8fb58069e3839020208e911515a4c0e7aba39bf3d5d53699ee54b42efead2d499b30f1fb77e5dde3aa7faadd0ac9bd45445f8dd')
 
@@ -87,7 +87,6 @@ prepare() {
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info.major,version_info.minor))")
   CMAKE_FLAGS+=("-DPYTHON_V=${_pyver}")
-  CMAKE_FLAGS+=(-DCMAKE_CXX_STANDARD=14)
   cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}"/${_name} -B build -G Ninja
 # shellcheck disable=SC2046
   ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
