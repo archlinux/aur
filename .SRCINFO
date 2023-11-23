@@ -1,7 +1,7 @@
 pkgbase = python-mapnik
 	pkgdesc = Python3 bindings for Mapnik
 	pkgver = 3.0.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mapnik/python-mapnik
 	arch = any
 	license = LGPL
@@ -9,6 +9,7 @@ pkgbase = python-mapnik
 	depends = python
 	depends = mapnik
 	depends = python-cairo
+	depends = python-pyarrow
 	depends = python-pypdf2
 	source = https://github.com/mapnik/python-mapnik/archive/v3.0.16.tar.gz
 	sha1sums = 8e30049954b14282667677a5d5a145eddedfc8df
