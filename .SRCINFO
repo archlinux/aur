@@ -1,0 +1,19 @@
+pkgbase = r-tweedeseqcountdata
+	pkgdesc = RNA-seq count data employed in the vignette of the tweeDEseq package
+	pkgver = 1.40.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/tweeDEseqCountData
+	arch = any
+	license = MIT
+	depends = r-biobase
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/tweeDEseqCountData_1.40.0.tar.gz
+	source = tweeDEseqCountData-LICENSE::https://github.com/isglobal-brge/tweeDEseqCountData/raw/main/LICENSE
+	md5sums = d63e819cedf93ffbe115ed518bc9feaf
+	md5sums = ea74422d64281c76f02c6a40dd626880
+	sha256sums = db14f527829f488876baed853758cb299462bf4a6d66ea8929b8518c4e0907e8
+	sha256sums = f82bc75278eb264d7bcb42674251c46d7c2283113e34ff85d98cc5c1d01a407f
+
+pkgname = r-tweedeseqcountdata
