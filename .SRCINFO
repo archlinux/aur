@@ -1,6 +1,6 @@
 pkgbase = bitrix24
 	pkgdesc = Official Bitrix24 client for Linux.
-	pkgver = 14.2.12.71
+	pkgver = 14.3.10
 	pkgrel = 1
 	url = https://www.bitrix24.com/applications.php
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = bitrix24
 	depends = libxss
 	depends = alsa-lib
 	source = https://dl.bitrix24.com/b24/bitrix24_desktop.rpm
-	md5sums = e7d5749cb418e197658d845087a2f285
+	md5sums = f7f8a61288f8ad0354beeea6a00ebd00
 
 pkgname = bitrix24
