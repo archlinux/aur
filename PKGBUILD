@@ -8,11 +8,11 @@
 
 ## Mozc compile option
 _bldtype='Release'
-_mozc_commit=289b1bf
+_mozc_commit=4c6aef2
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20231008
+_utdicdate=20231105
 _dict=(alt-cannadic
        edict2
        jawiki
@@ -24,7 +24,7 @@ _dict=(alt-cannadic
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.29.5250.102.20231008
+pkgver=2.29.5268.102.20231105
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
@@ -34,8 +34,8 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
 #         2023-07-13: osdn.net is unstable due to Amazon
 #         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip"
 #         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip"
-        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/x-ken-all-${_zipcode_rel}.zip"
-        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/jigyosyo-${_zipcode_rel}.zip"
+        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut-full/x-ken-all-${_zipcode_rel}.zip"
+        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut-full/jigyosyo-${_zipcode_rel}.zip"
         git+https://github.com/abseil/abseil-cpp.git
         git+https://chromium.googlesource.com/breakpad/breakpad
         git+https://github.com/google/googletest.git
@@ -44,11 +44,11 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         git+https://github.com/open-source-parsers/jsoncpp.git
         git+https://github.com/google/protobuf.git
         git+https://github.com/utuhiro78/merge-ut-dictionaries.git
-        "jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz")
-noextract=("jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz")
+        jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
+noextract=(jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz)
 
 for dict in "${_dict[@]}"; do
-  source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.tar.bz2::https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2")
+  source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.tar.bz2"::"https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2")
 done
 sha512sums=('SKIP'
             'dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302'
@@ -61,13 +61,13 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '36a284bc0c21f7a394188c2fdfb303c02026261b2684e201689b0c38768f4315262682bc36241f1aee6b3418e9114196875a545d4e602515b38658f68973e0f9'
+            '9d587c87b541da699f497d756ba29064f916b762917634e2426d1a25c12422026e3bee072598b5dd40013bb02d064b293bddc1726eaa16b79f6804b2802a6cdf'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
-            'dcd016c66709b361c538732325e16b2f280ca88481e87d17d19a9c35205a7b9af249b1190ef2d52e50cc42056579096b5a331006e853f15c5220a8b138754b96'
-            '8429646c25c33fd083d6399ea6101e0a9c92e78fcdf1d9310a374df8fbfcbde01f30f10445211af309fae1fc68a3a486fc0eb1e525f633af18d72a5ed19aa018'
+            '2b86aecad9b75451ce9d99a63a26927a64f3215ef7387e04d649cac85d4c944570f2f8402ab18a594df9bb30a67d98148e53b4dd7ec41401d79f4ba2f91098fd'
+            '172efc2172b92d0259d211a2ec01a24a41936841ac40dee85915df332e063960810387a5b5597fc82f973a29d0bbd88f5ae2884ec8cfc58d3415175d88a24d9c'
             '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
-            '554f7ec63ec14759663f77975fa67b8b19ce54ea1563264c156ef048a7878f2e47b028e63444ba49d5049903db9d251fddebe6be8e759fbfaae0f76835f641e5'
-            'e31a91257af818da76e531f151e99992aa9100d5c2d678e8c150e96481104a5aed143b994b0b5f013aad73e553ad4713d5da13e7e669f5a3494b74976a35b292'
+            '567d8d37678475467ceab8d240cea6c232f039be1f3126125111b6d08d105e4f2d90da713b7a250c6d53628cd9f261bb2f2b3d42deef3d26c2bc1e56933f0c10'
+            '13d758583eeb9b49ce84540daa14e8ee37aeefc489c73353212e2c38dd4e891239569fa2798dd99a73e624b00e14074b27e0b984e71dcb911d4eed5baa43abb7'
             '0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6'
             '04cae106412de32b72dce2e30dd9d95d34ed5def78cdd7c7461dcc71a99750afbb8f3905100c0ea5cba7ff6298a9ee10fe65b04cff69252097ff88bcfb1addef')
 
