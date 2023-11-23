@@ -2,20 +2,6 @@ post_install() {
     # This is needed on SELinux enabled systems (see also ConditionPathExists in .service)
     touch /var/log/auto-cpufreq.log
 
-	DIR="/opt/auto-cpufreq/"
-	
-	echo -e "\nInstalling necessary Python packages\n"
-	
-	python -m venv $DIR/venv
-	source $DIR/venv/bin/activate
-	echo $(which python)
-	python3 -m pip install --upgrade pip wheel
-	
-	echo -e "\nBuilding auto-cpufreq\n"
-
-	git config --global --add safe.directory $DIR
-	POETRY_DYNAMIC_VERSIONING_BYPASS=1 python3 -m pip install $DIR/src
-
     echo -e "\nauto-cpufreq $1 installed\n"
 
     echo -e 'Important notice: the daemon installer provided does not work, instead run the following command:\n'
@@ -28,21 +14,7 @@ post_install() {
     echo -e 'sudo systemctl mask power-profiles-daemon.service\n'
 }
 
-post_upgrade() {
-    DIR="/opt/auto-cpufreq/"
-	
-	echo -e "\nInstalling necessary Python packages\n"
-	
-	python -m venv $DIR/venv
-	source $DIR/venv/bin/activate
-	echo $(which python)
-	python3 -m pip install --upgrade pip wheel
-	
-	echo -e "\nBuilding auto-cpufreq\n"
-
-	git config --global --add safe.directory $DIR
-	POETRY_DYNAMIC_VERSIONING_BYPASS=1 python3 -m pip install $DIR/src
-
+post_upgrade() {	
     echo -e "\nauto-cpufreq $1 installed\n"
 
     echo -e 'Reload systemd manager configuration:\n'
@@ -55,6 +27,4 @@ post_upgrade() {
 post_remove() {
     # Remove auto-cpufreq log file
     rm /var/log/auto-cpufreq.log
-
-    rm -R /opt/cpu-autofreq/
 }

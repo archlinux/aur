@@ -1,0 +1,12 @@
+[Unit]
+Description=auto-cpufreq - Automatic CPU speed & power optimizer for Linux
+After=network.target network-online.target
+
+[Service]
+Type=simple
+User=root
+ExecStart= auto-cpufreq --daemon
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
