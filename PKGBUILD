@@ -1,59 +1,57 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-aiohttp-middlewares
-_pypiname=aiohttp-middlewares
-pkgver=2.2.0
-pkgrel=2
+_name=${pkgname#python-}
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Collection of useful middlewares for aiohttp.web applications"
-arch=('any')
+arch=(any)
 url="https://github.com/playpauseandstop/aiohttp-middlewares"
-license=('custom:BSD3')
+license=(custom:BSD3)
 depends=(
-  'python'
-  'python-aiohttp'
-  'python-async-timeout'
-  'python-yarl'
+  python
+  python-aiohttp
+  python-async-timeout
+  python-attrs
+  python-yarl
 )
 makedepends=(
-  'python-build'
-  'python-installer'
-  'python-poetry-core'
-  'python-wheel'
+  python-build
+  python-installer
+  python-poetry-core
+  python-wheel
 )
 checkdepends=(
-  'python-pytest'
-  'python-pytest-aiohttp'
-  'python-pytest-asyncio'
+  python-pytest
+  python-pytest-aiohttp
+  python-pytest-asyncio
 )
 
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-)
-sha256sums=(
-  '354e97552937cc881ffb36f7c0bb5a679d7a81d485bf0dba6367eb5294586f60'
-)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('823bb0598079563ab06d18daf500796c9d8a3893bdd89678f9960185ce04a4e1')
+
+_archive="$_name-$pkgver"
 
 prepare() {
-  rm "$_pypiname-$pkgver/.python-version"
+  rm "$_archive/.python-version"
 }
 
-
 build() {
-  cd "$_pypiname-$pkgver"
+  cd "$_archive"
 
   GIT_DIR=$PWD python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_pypiname-$pkgver"
+  cd "$_archive"
 
   PYTHONPATH=src/ python -m pytest --override-ini='addopts=""'
 }
 
 package() {
-  cd "$_pypiname-$pkgver"
+  cd "$_archive"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
