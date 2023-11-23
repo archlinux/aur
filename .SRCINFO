@@ -1,12 +1,12 @@
 pkgbase = php-ast
 	pkgdesc = Extension exposing PHP 7 abstract syntax tree
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://pecl.php.net/package/ast
 	arch = x86_64
 	license = BSD
 	depends = php>=7.1
-	source = php-ast-1.1.0.tar.gz::http://pecl.php.net/get/ast-1.1.0.tgz
-	sha256sums = ee3d4f67e24d82e4d340806a24052012e4954d223122949377665427443e6d13
+	source = php-ast-1.1.1.tar.gz::http://pecl.php.net/get/ast-1.1.1.tgz
+	sha256sums = 0c55e09a4da43b9cc1da72ecb4ae892941f73e157b73d46326bc6a5ed7fc44b1
 
 pkgname = php-ast
