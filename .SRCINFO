@@ -1,7 +1,7 @@
 pkgbase = plotjuggler
 	pkgdesc = The Time Series Visualization Tool that you deserve. Without ROS dependencies.
-	pkgver = 3.8.0
-	pkgrel = 2
+	pkgver = 3.8.1
+	pkgrel = 1
 	url = https://github.com/facontidavide/PlotJuggler
 	arch = x86_64
 	license = MPL-2.0
@@ -15,7 +15,7 @@ pkgbase = plotjuggler
 	depends = qt5-x11extras
 	depends = arrow
 	depends = zeromq
-	source = plotjuggler-3.8.0.tar.gz::https://github.com/facontidavide/PlotJuggler/archive/3.8.0.tar.gz
-	sha256sums = 2c17cca3c8bc192e9b6e5aa5fc8dd45723448d303dad5bf7c3027d49fd4a1038
+	source = plotjuggler-3.8.1.tar.gz::https://github.com/facontidavide/PlotJuggler/archive/3.8.1.tar.gz
+	sha256sums = 1a7ffac7e43cc50d23f7109b9db8c3848f9ece22ce163c4662e18dbacf744e33
 
 pkgname = plotjuggler
