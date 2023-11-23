@@ -6,13 +6,35 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
+pkgver() {
+    _body="$(curl -sL "https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html")"
+    _pkgver="$(echo "${_body}" | grep -oP "(?<=linuxx64-)\d+\.\d+\.\d+\.\d+(?=\.tar\.gz\?__gda__)")"
+
+    if [[ -n "${_pkgver}" ]]; then
+      _dl_urls="$(echo "${_body}" | grep -F ".tar.gz?__gda__")"  
+    else
+      _body="$(curl -sL "https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html")"
+      _pkgver="$(echo "${_body}" | grep -oP "(?<=linuxx64-)\d+\.\d+\.\d+\.\d+(?=\.tar\.gz\?__gda__)")"
+      _dl_urls="$(echo "${_body}" | grep -F ".tar.gz?__gda__")"  
+    fi
+
+    if [[ -n "${_pkgver}" ]]; then
+        if [[ "$1" == "init" ]]; then
+            printf "%s" "${_dl_urls}"
+        else
+            printf "%s" "${_pkgver}"
+        fi
+    else
+      echo "FATAL ERROR : version nout found, report to package author"
+      exit 1
+    fi
+}
+pkgver="$(pkgver "")"
 pkgname=icaclient-beta
-pkgver=23.11.0.62
 pkgrel=1
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology Preview]"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html'
-#url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
 license=('custom:Citrix')
 depends=('alsa-lib' 'curl' 'gst-plugins-base-libs' 'gtk2' 'libc++' 'libc++abi' 'libidn11'
          'libjpeg6-turbo' 'libpng12' 'libsecret' 'libsoup' 'libvorbis' 'libxaw' 'libxp'
@@ -25,8 +47,7 @@ conflicts=('bin32-citrix-client' 'citrix-client' 'icaclient')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
 _artefactid=icaclient
-_dl_urls_="$(curl -sL "$url" | grep -F ".tar.gz?__gda__")"
-_dl_urls="$(echo "$_dl_urls_" | grep -F "$pkgver.tar.gz?__gda__")"
+_dl_urls="$(pkgver "init")"
 _source32=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx86-[^"]*)".*$|\1|p')"
 _source64=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx64-[^"]*)".*$|\1|p')"
 _sourcearmhf=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxarmhf-[^"]*)".*$|\1|p')"
@@ -45,9 +66,9 @@ sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             'cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe'
             'fe0b92bb9bfa32010fe304da5427d9ca106e968bad0e62a5a569e3323a57443f'
             'a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4')
-sha256sums_x86_64=('7a2874f0337da011dda2a7626f2e696e0927dfb95be7b4418967a94a643a60fe')
-sha256sums_i686=('d145cf71251370ab4025afc7c025173eaedd90d6c54e0dadffb7af6f43d72e93')
-sha256sums_armv7h=('e3df6a6ddbea52d3916ee88622c7ed1086e8552ccb2c92851b5e315b86137b74')
+sha256sums_x86_64=('SKIP')
+sha256sums_i686=('SKIP')
+sha256sums_armv7h=('SKIP')
 install=citrix-client.install
 
 package() {
