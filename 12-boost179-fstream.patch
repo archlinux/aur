@@ -1,0 +1,37 @@
+From a6fa314427f99b3d24018490e8dfa18177184445 Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Sun, 3 Jul 2022 20:02:31 +0200
+Subject: [PATCH 12/14] boost179 fstream
+
+---
+ src/luxrays/utils/cuda.cpp | 1 +
+ src/luxrays/utils/ocl.cpp  | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/luxrays/utils/cuda.cpp b/src/luxrays/utils/cuda.cpp
+index 6ae9e9f42..888e12497 100644
+--- a/src/luxrays/utils/cuda.cpp
++++ b/src/luxrays/utils/cuda.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include <boost/algorithm/string/replace.hpp>
+ #include <boost/algorithm/string/trim.hpp>
++#include <boost/filesystem/fstream.hpp>
+ 
+ #include "luxrays/luxrays.h"
+ #include "luxrays/utils/utils.h"
+diff --git a/src/luxrays/utils/ocl.cpp b/src/luxrays/utils/ocl.cpp
+index 785836cef..80b7a8f45 100644
+--- a/src/luxrays/utils/ocl.cpp
++++ b/src/luxrays/utils/ocl.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include <boost/algorithm/string/replace.hpp>
+ #include <boost/algorithm/string/trim.hpp>
++#include <boost/filesystem/fstream.hpp>
+ 
+ #include "luxrays/luxrays.h"
+ #include "luxrays/utils/utils.h"
+-- 
+2.41.0
+
