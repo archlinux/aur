@@ -1,4 +1,4 @@
-pkgbase = ktermlaunch
+pkgbase = ktermlaunch5
 	pkgdesc = Launch your preferred terminal emulator per your KDE settings
 	pkgver = 0.2.0
 	pkgrel = 3
@@ -10,7 +10,8 @@ pkgbase = ktermlaunch
 	makedepends = cmake
 	makedepends = ninja
 	depends = kservice5
+	conflicts = ktermlaunch
 	source = https://code.aether.earth/nogweii/ktermlaunch/-/archive/v0.2.0/ktermlaunch-v0.2.0.tar.gz
 	sha256sums = 39c87fec981ef2a29df7c8fc95341ca6b5664410028adc3a124477e2d913d26e
 
-pkgname = ktermlaunch
+pkgname = ktermlaunch5
