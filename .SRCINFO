@@ -5,7 +5,7 @@ pkgbase = whisper.cpp-model-medium
 	url = https://github.com/ggerganov/whisper.cpp/tree/master/models
 	arch = i686
 	arch = x86_64
-	license = GPLv3
+	license = MIT
 	source = medium.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-medium.bin
 	sha1sums = fd9727b6e1217c2f614f9b698455c4ffd82463b4
 
