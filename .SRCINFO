@@ -1,7 +1,7 @@
 pkgbase = open-adventure
 	pkgdesc = Port of the 'Colossal Cave Adventure' text-based adventure game
 	pkgver = 1.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.catb.org/~esr/open-adventure/
 	arch = i686
 	arch = x86_64
