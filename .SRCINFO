@@ -1,0 +1,27 @@
+pkgbase = r3playx-git
+	pkgdesc = A music player forked from YesPlayMusic。高颜值的第三方网易云播放器，支持 Windows / macOS / Linux
+	pkgver = 2.7.1.r12.gc531131
+	pkgrel = 1
+	url = https://github.com/Sherlockouo/music
+	arch = x86_64
+	license = AGPL3
+	makedepends = gendesk
+	makedepends = git
+	makedepends = nvm
+	makedepends = npm
+	makedepends = pnpm>=7.20.0
+	makedepends = make
+	makedepends = gcc
+	depends = electron23
+	depends = hicolor-icon-theme
+	depends = python
+	provides = yesplaymusic
+	conflicts = r3playx
+	conflicts = yesplaymusic
+	conflicts = r3play
+	source = r3playx::git+https://github.com/Sherlockouo/music.git
+	source = r3playx.sh
+	sha256sums = SKIP
+	sha256sums = f3ecacd977fa9a41efe35eb2e228f0d8e1dc71bca33002d4838bf41df6438055
+
+pkgname = r3playx-git
