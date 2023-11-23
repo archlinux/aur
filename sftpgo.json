@@ -9,6 +9,7 @@
     },
     "setstat_mode": 0,
     "rename_mode": 0,
+    "resume_max_size": 0,
     "temp_path": "",
     "proxy_protocol": 0,
     "proxy_allowed": [],
@@ -90,6 +91,7 @@
     "kex_algorithms": [],
     "ciphers": [],
     "macs": [],
+    "public_key_algorithms": [],
     "trusted_user_ca_keys": [],
     "revoked_user_certs_file": "",
     "login_banner_file": "",
@@ -154,6 +156,7 @@
         "min_tls_version": 12,
         "client_auth_type": 0,
         "tls_cipher_suites": [],
+        "tls_protocols": [],
         "prefix": "",
         "proxy_allowed": [],
         "client_ip_proxy_header": "",
@@ -266,12 +269,12 @@
         "min_tls_version": 12,
         "client_auth_type": 0,
         "tls_cipher_suites": [],
+        "tls_protocols": [],
         "proxy_allowed": [],
         "client_ip_proxy_header": "",
         "client_ip_header_depth": 0,
         "hide_login_url": 0,
         "render_openapi": true,
-        "web_client_integrations": [],
         "oidc": {
           "client_id": "",
           "client_secret": "",
@@ -315,7 +318,7 @@
             "login_image_path": "",
             "disclaimer_name": "",
             "disclaimer_path": "",
-            "default_css": "",
+            "default_css": [],
             "extra_css": []
           },
           "web_client": {
@@ -326,7 +329,7 @@
             "login_image_path": "",
             "disclaimer_name": "",
             "disclaimer_path": "",
-            "default_css": "",
+            "default_css": [],
             "extra_css": []
           }
         }
@@ -369,7 +372,8 @@
     "certificate_file": "",
     "certificate_key_file": "",
     "min_tls_version": 12,
-    "tls_cipher_suites": []
+    "tls_cipher_suites": [],
+    "tls_protocols": []
   },
   "http": {
     "timeout": 20,
