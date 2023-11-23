@@ -1,7 +1,7 @@
 pkgbase = ignition-plugin
 	pkgdesc = Cross-platform C++ library for dynamically loading plugins.
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-plugin
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ignition-plugin
 	makedepends = cmake
 	makedepends = ignition-cmake
 	makedepends = ignition-utils
-	source = https://github.com/gazebosim/gz-plugin/archive/gz-plugin2_2.0.1.tar.gz
-	sha256sums = c5f1a9eb3addf7becf0597f18eadd124951febd14fe270fe250990f92e977c2c
+	source = https://github.com/gazebosim/gz-plugin/archive/gz-plugin2_2.0.2.tar.gz
+	sha256sums = 678ef78860469b421f6eb8856aacaa21ce00cc88578609a2a4d6d7c8c700b21e
 
 pkgname = ignition-plugin

@@ -2,8 +2,8 @@
 # Contributor: Cody <aur AT codyps.com>
 
 pkgname=ignition-plugin
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Cross-platform C++ library for dynamically loading plugins."
 arch=('i686' 'x86_64')
 url="https://github.com/gazebosim/gz-plugin"
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=()
 makedepends=('cmake' 'ignition-cmake' 'ignition-utils')
 source=("https://github.com/gazebosim/gz-plugin/archive/gz-plugin2_${pkgver}.tar.gz")
-sha256sums=('c5f1a9eb3addf7becf0597f18eadd124951febd14fe270fe250990f92e977c2c')
+sha256sums=('678ef78860469b421f6eb8856aacaa21ce00cc88578609a2a4d6d7c8c700b21e')
 
 _dir="gz-plugin-gz-plugin2_${pkgver}"
 
