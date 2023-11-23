@@ -6,7 +6,7 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=2.6.10
+pkgver=2.6.11
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=('x86_64')
@@ -51,11 +51,12 @@ build() {
         -e "3i\  \"author\": \"Streetwriters (Private) Limited,support@streetwriters.co,https://streetwriters.co\"," \
         -e "55i\    \"electron\": \"25.9.3\"," \
         -i package.json
-    npm install --ignore-scripts --prefer-offline --no-audit --cache "${srcdir}/npm-cache" 
-    npm run bootstrap -- --scope=desktop
+    npm install --ignore-scripts --prefer-offline --no-audit --cache "${srcdir}/npm-cache"
+    npm run bootstrap -- --scope=web
     npx nx build:desktop @notesnook/web
+    npm run bootstrap -- --scope=desktop
     npx nx run release --project @notesnook/desktop
-    npx electron-builder --linux tar.xz -p never
+    npx electron-builder --linux AppImage -p never
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/${pkgname},usr/bin}
