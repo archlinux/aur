@@ -17,7 +17,7 @@ source=(
 	"https://github.com/Xtr126/Android-x86-installer/releases/download/app-v${pkgver}/android-x86-installer_${pkgver}_amd64.deb"
 )
 
-sha256sums=('d691ddef1f8e165eb09da1d95c99e819503c37a858132ce90c9409d6177c2347')
+sha256sums=('c404db59cdecb2b86464f763270b6164871289f5ff5b1abf922360a116985001')
 
 package() {
   cd "$srcdir"
