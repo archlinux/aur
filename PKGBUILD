@@ -3,7 +3,7 @@
 
 pkgname=python-spacy-en_core_web_trf
 _pkg="${pkgname#python-spacy-}"
-pkgver=3.7.2
+pkgver=3.7.3
 pkgrel=1
 pkgdesc="English transformer pipeline (roberta-base). Components: transformer, tagger, parser, ner, attribute_ruler, lemmatizer."
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(
     python-setuptools
 )
 source=("https://github.com/explosion/spacy-models/releases/download/$_pkg-$pkgver/$_pkg-$pkgver.tar.gz")
-sha256sums=("756e9f0c35564a11ee87216898c3ab2b8884e71ca21948c88d1a3553f308c285")
+sha256sums=("dae355f7f419bee53f2804a8e62a6473425e8680ac8ff8e8a7b30b7e2b8b0c4f")
 
 build() {
 	cd $_pkg-$pkgver
