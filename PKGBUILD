@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
-pkgver=2.5.0
+pkgver=2.6.0
 _nvmdver="${pkgver}"
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
@@ -44,7 +44,7 @@ source=(
     "nvmd-${_nvmdver}.zip::https://github.com/1111mp/nvmd-command/releases/download/v${_nvmdver}/Linux-x64.zip"
 )
 sha256sums=('SKIP'
-            '9a389e55af795d81ef124af1a723a4ac282f1d330b7a1dec3b27c7639010e6e9')
+            'ba75aa9d91ba42bc0b651e1e2787cd8aceabf2ea311a385a0d2e241d0f10b759')
 build() {
     gendesk -f -n -q --categories "Development;Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
