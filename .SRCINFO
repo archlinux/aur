@@ -5,7 +5,7 @@ pkgbase = whisper.cpp-model-tiny
 	url = https://github.com/ggerganov/whisper.cpp/tree/master/models
 	arch = i686
 	arch = x86_64
-	license = GPLv3
+	license = MIT
 	source = tiny.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin
 	sha1sums = bd577a113a864445d4c299885e0cb97d4ba92b5f
 
