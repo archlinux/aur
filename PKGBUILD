@@ -1,6 +1,6 @@
 # Maintainer : Christian Hesse <mail@eworm.de>
-# Maintainer : Ronald van Haren <ronald.archlinux.org>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer : Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 ## "1" to enable IA32-EFI build in Arch x86_64, "0" to disable
@@ -18,15 +18,14 @@ _GRUB_EMU_BUILD="0"
 pkgname='grub-libzfs'
 pkgdesc='GNU GRand Unified Bootloader (2) - libzfs support'
 epoch=2
-_tag='53c5000739db114c229fe69ec3d4b76b92441098' # git rev-parse grub-${_pkgver}
-_gnulib_commit='be584c56eb1311606e5ea1a36363b97bddb6eed3'
-_unifont_ver='13.0.06'
-_pkgver=2.06
+_tag='bb59f566e1e5c387dbfd342bb3767f761422c744' # git rev-parse grub-${_pkgver}
+_pkgver=2.12rc1
+_unifont_ver='15.1.04'
 pkgver=${_pkgver/-/}
-pkgrel=2
+pkgrel=5
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 backup=('etc/default/grub'
         'etc/grub.d/40_custom')
 install="${pkgname}.install"
@@ -37,11 +36,12 @@ replaces=('grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}" 'grub')
 provides=('grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}" 'grub')
 
 makedepends=('git' 'rsync' 'xz' 'freetype2' 'ttf-dejavu' 'python' 'autogen'
-             'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse2')
+             'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse3')
 depends=('sh' 'xz' 'gettext' 'device-mapper' 'zfs-utils')
 optdepends=('freetype2: For grub-mkfont usage'
-            'fuse2: For grub-mount usage'
+            'fuse3: For grub-mount usage'
             'dosfstools: For grub-mkrescue FAT FS and EFI support'
+            'lzop: For grub-mkrescue LZO support'
             'efibootmgr: For grub-install EFI support'
             'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
             'os-prober: To detect other OSes when generating grub.cfg in BIOS systems'
@@ -58,29 +58,38 @@ validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' S
               '95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
 
 source=("git+https://git.savannah.gnu.org/git/grub.git#tag=${_tag}?signed"
-        "git+https://git.savannah.gnu.org/git/gnulib.git#commit=${_gnulib_commit}"
+        'git+https://git.savannah.gnu.org/git/gnulib.git'
         "https://ftp.gnu.org/gnu/unifont/unifont-${_unifont_ver}/unifont-${_unifont_ver}.bdf.gz"{,.sig}
         '0001-00_header-add-GRUB_COLOR_-variables.patch'
         '0002-10_linux-detect-archlinux-initramfs.patch'
-        'grub.default')
+        '0003-support-dropins-for-default-configuration.patch'
+        '0004-ntfs-module-security.patch'
+        '0005-fix-xfs-boundary-check.patch'
+        'grub.default'
+        'sbat.csv')
 
 sha256sums=('SKIP'
             'SKIP'
-            'b7668a5d498972dc4981250c49f83601babce797be19b4fdd0f2f1c6cfbd0fc5'
+            '88e00954b10528407e62e97ce6eaa88c847ebfd9a464cafde6bf55c7e4eeed54'
             'SKIP'
             '5dee6628c48eef79812bb9e86ee772068d85e7fcebbd2b2b8d1e19d24eda9dab'
             '8488aec30a93e8fe66c23ef8c23aefda39c38389530e9e73ba3fbcc8315d244d'
-            '791fadf182edf8d5bee4b45c008b08adce9689a9624971136527891a8f67d206')
+            'b5d9fcd62ffb3c3950fdeb7089ec2dc2294ac52e9861980ad90a437dedbd3d47'
+            '4bdd5ceb13dbd4c41fde24163f16a0ba05447d821e74d938a0b9e5fce0431140'
+            '9f8921b2bacd69bde7ab0c3aff88c678d52c2a625c89264fb92184e7427b819b'
+            '7df3f5cb5df7d2dfb17f4c9b5c5dedc9519ddce6f8d2c6cd43d1be17cecb65cb'
+            'f34c2b0aa2ed4ab9c7e7bcab5197470c30fedc6c2148f337839dd24bceae35fd')
 
 _backports=(
-	# fs/xfs: Fix unreadable filesystem with v4 superblock
-	'a4b495520e4dc41a896a8b916a64eda9970c50ea'
+)
+
+_reverts=(
 )
 
 _configure_options=(
+	PACKAGE_VERSION="${epoch}:${pkgver}-${pkgrel}"
 	FREETYPE="pkg-config freetype2"
 	BUILD_FREETYPE="pkg-config freetype2"
-	--enable-mm-debug
 	--enable-nls
 	--enable-device-mapper
 	--enable-cache-stats
@@ -111,12 +120,32 @@ prepare() {
 		git cherry-pick -n "${_c}"
 	done
 
+	echo "Apply reverts..."
+	local _c
+	for _c in "${_reverts[@]}"; do
+		git log --oneline -1 "${_c}"
+		git revert -n "${_c}"
+	done
+
 	echo "Patch to enable GRUB_COLOR_* variables in grub-mkconfig..."
 	## Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
-        patch -Np1 -i "${srcdir}/0001-00_header-add-GRUB_COLOR_-variables.patch"
+	patch -Np1 -i "${srcdir}/0001-00_header-add-GRUB_COLOR_-variables.patch"
 
 	echo "Patch to detect of Arch Linux initramfs images by grub-mkconfig..."
-        patch -Np1 -i "${srcdir}/0002-10_linux-detect-archlinux-initramfs.patch"
+	patch -Np1 -i "${srcdir}/0002-10_linux-detect-archlinux-initramfs.patch"
+
+	echo "Patch to support dropins for default configuration..."
+	patch -Np1 -i "${srcdir}/0003-support-dropins-for-default-configuration.patch"
+
+	# #79857 
+	# https://lists.gnu.org/archive/html/grub-devel/2023-09/msg00113.html
+	# https://savannah.gnu.org/bugs/?64514
+	echo "Patch to fo fix XFS incorrect short form directory data boundary check"
+	patch -Np1 -i "${srcdir}/0005-fix-xfs-boundary-check.patch"
+
+	echo "Patch to fix ntfs module security vulnerabilities"
+	patch -Np1 -i "${srcdir}/0004-ntfs-module-security.patch"
+
 
 	echo "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme..."
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
@@ -273,6 +302,8 @@ _package_grub-efi() {
 	rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/*.module || true
 	rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/*.image || true
 	rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/{kernel.exec,gdb_grub,gmodule.pl} || true
+
+	sed -e "s/%PKGVER%/${epoch}:${pkgver}-${pkgrel}/" < "${srcdir}/sbat.csv" > "${pkgdir}/usr/share/grub/sbat.csv"
 }
 
 _package_grub-emu() {
