@@ -4,8 +4,8 @@
 
 pkgname=globalplatform
 pkgver=7.3.0
-_commit=f78f210824219636edc17bd9d4125289276ee12a
-pkgrel=2
+_commit=d99bbe1bbe5c538a89fb23bb8118ce0dcc2feec4
+pkgrel=3
 pkgdesc="GlobalPlatform libraries"
 license=('GPL3')
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/kaoh/globalplatform"
 depends=('glibc' 'pcsclite' 'openssl')
 makedepends=('cmake')
 source=(https://github.com/kaoh/globalplatform/archive/$_commit.zip)
-md5sums=('0c008d0e8a589da08d3e2b155bf2f5f8')
+md5sums=('226359d5e53cfcd0462a01302612d4b3')
 
 build() {
   cd globalplatform-$_commit/globalplatform
