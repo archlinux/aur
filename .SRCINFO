@@ -1,6 +1,6 @@
 pkgbase = wio-wl
 	pkgdesc = Wayland compositor similar to Plan 9's rio
-	pkgver = 0.16.2
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://gitlab.com/Rubo/wio
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = wio-wl
 	depends = alacritty
 	depends = cage
 	depends = cairo
-	depends = wlroots
-	source = https://gitlab.com/Rubo/wio/-/archive/0.16.2/wio-0.16.2.tar.gz
-	b2sums = 725a180244360c84fbe81729158351eabef0c562039e6c90a890d3aee6d3b17376c00abf7dcf596a83e8781a2c8481ebd50f15454a8f69f7bb4e40a19fd8fe31
+	depends = wlroots>=0.17.0
+	source = https://gitlab.com/Rubo/wio/-/archive/0.17.0/wio-0.17.0.tar.gz
+	b2sums = d0ebb5b70264ec3c7d72cfa4f8f8921ea795912cbd2905450f61a91ff47b7ff77b2032c0feeedf494f344e90974a728923b9cdf59f15df5917381e953a3e9849
 
 pkgname = wio-wl
