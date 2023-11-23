@@ -2,8 +2,8 @@
 pkgdesc='Wayfire Configuration Manager'
 pkgname=wcm
 pkgver=0.8.0
-pkgrel=2
-arch=(x86_64)
+pkgrel=3
+arch=(x86_64 aarch64)
 url=https://wayfire.org
 license=(custom:MIT)
 depends=("wayfire>=${pkgver%.*}" "wf-shell>=${pkgver%.*}" gtkmm3 wdisplays)
