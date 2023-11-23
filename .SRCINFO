@@ -1,6 +1,6 @@
 pkgbase = trilinos-sacado
 	pkgdesc = automatic differentiation library within the trilinos framework
-	pkgver = 13.4.0
+	pkgver = 15.0.0
 	pkgrel = 1
 	url = http://trilinos.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = trilinos-sacado
 	makedepends = cmake
 	depends = boost
 	conflicts = trilinos
-	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-13-4-0.tar.gz
-	sha256sums = 39550006e059043b7e2177f10467ae2f77fe639901aee91cbc1e359516ff8d3e
+	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-15-0-0.tar.gz
+	sha256sums = 5651f1f967217a807f2c418a73b7e649532824dbf2742fa517951d6cc11518fb
 
 pkgname = trilinos-sacado
