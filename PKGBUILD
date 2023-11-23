@@ -3,7 +3,7 @@
 
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gtk3')
 makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git')
 options=('!makeflags')
 source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('516eb34835cd8f301e639fa77f9f12297300ce012ebc3b7b6a73275c6245011d')
+sha256sums=('18b4e9e656a03bc0ae5f382b207ace07bc8944c3db7c252a6c1c5b67da169f64')
 
 build() {
   cd PrusaSlicer-version_${pkgver}
@@ -23,6 +23,11 @@ build() {
   # it's really not worth the fight. There were multiple bugs when we didn't
   # use their vendored deps.
   cd deps
+
+  # Delete JPEG dir to force usage of our shared JPEG lib. Otherwise, we get stuff such as this:
+  # https://bugs.archlinux.org/task/80091
+  rm -r +JPEG
+
   cmake \
       -G Ninja \
       -B build \
