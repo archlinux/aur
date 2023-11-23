@@ -1,6 +1,6 @@
 pkgbase = slack-export-viewer
 	pkgdesc = A Slack Export archive viewer
-	pkgver = 1.1.6
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/hfaran/slack-export-viewer
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = slack-export-viewer
 	depends = python-emoji
 	depends = python-flask
 	depends = python-markdown2
-	source = slack-export-viewer-1.1.6.tar.gz::https://github.com/hfaran/slack-export-viewer/archive/refs/tags/1.1.6.tar.gz
-	b2sums = 65999e41a26c66b9b0520f2235b636cca1e025c72d4f184f24e67edd11a2a6baa67ead4de54420fe93241f18406aca17f6acd8cbdb8057d349d5066c24743cc9
+	source = slack-export-viewer-1.2.0.tar.gz::https://github.com/hfaran/slack-export-viewer/archive/refs/tags/1.2.0.tar.gz
+	b2sums = b1637323fb1135279fd9b535712b12558b2b3000da7049ce5a5ad4efebfbf699018a93d91ffafeea812b26597da19a2390e99814dc12e226d1b18e8c7dd86d19
 
 pkgname = slack-export-viewer
