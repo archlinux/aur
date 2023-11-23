@@ -17,9 +17,9 @@
 #
 pkgbase="zfs-linux"
 pkgname=("zfs-linux" "zfs-linux-headers")
-_zfsver="2.2.0"
-_kernelver="6.6.1.arch1-1"
-_kernelver_full="6.6.1.arch1-1"
+_zfsver="2.2.1"
+_kernelver="6.6.2.arch1-1"
+_kernelver_full="6.6.2.arch1-1"
 _extramodules="${_kernelver_full/.arch/-arch}"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -27,14 +27,10 @@ pkgrel=1
 makedepends=("linux-headers=${_kernelver}")
 arch=("x86_64")
 url="https://openzfs.org/"
-source=("https://github.com/openzfs/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz" "linux-6.6-compat.patch")
-sha256sums=("42035fd059faa25a09cd511b24a57b8ad1285cb69127f2a0043b98562c5ec690" "c2da9ec5d15335fa35b3380d66ff1da1f1cb2e173ac7eb8fb0c9205de8d1fad0")
+source=("https://github.com/openzfs/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
+sha256sums=("4ff2de43d39710283ae8ff1744aa96e6cdc83c8efe86a715294d4f6bc34a8e8e")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux=${_kernelver}")
-prepare() {
-    cd "${srcdir}/zfs-${_zfsver}"
-    patch -Np1 -i ${srcdir}/linux-6.6-compat.patch
-}
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
