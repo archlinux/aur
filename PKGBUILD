@@ -18,11 +18,11 @@
 }
 
 pkgname=luxcorerender
-pkgver=2.6
-#_rel="rc1"
+pkgver=2.7
+_rel="beta1"
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
 _name=LuxCore-${pkgname}_v${_pkgver}
-pkgrel=12
+pkgrel=1
 epoch=2
 pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')
@@ -49,7 +49,7 @@ source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}
         "0013-spdlog.patch"
         "0014-fmt9.patch"
         )
-sha256sums=('b844989b8229bf02f3c8aa6845be6a587aa5ae55a45861591119ad0e1a195867'
+sha256sums=('24adaf0da781921ed18c2aee55468ee94138db023e5cff95a5ede0fb394f8c09'
             '818366af720ef49b57c604791caeef0dc5dccf549b764001fdfe2be5016296d6'
             'a8293ca87b18bfd12e05c8fec42c7a29001ec50a5996fb0038cdbc5eb8167b55'
             '11471500540a53b2ca4e2289c187a388c76aa388a8f51fd6b9981d36e6cb95f7'
@@ -64,7 +64,7 @@ sha256sums=('b844989b8229bf02f3c8aa6845be6a587aa5ae55a45861591119ad0e1a195867'
             '069ca9caef3b7c85ffc4a55de79122488b1b513135b0536b24772c483c8d0cab'
             'b8b3d9d4432198e34a281f24c0ffedb4a9f69ce8ee36c30125b83b4a6c6358f6'
             'e4ad9b7a0b77e0ca00136159f8f7c8e5940d26918421f18114ad5657fbf32359')
-b2sums=('ead966b0df7bb72ac9aa2aefb1e5f2dd020156a8e66f67aeff75d29606072ea7b147ddc4d6effea687baf4653e670bd3ad93fc9c7b0e7cac340cb1d5976adb14'
+b2sums=('0f6203610dbef2fd2d43c6465502459337eb99da00b494d7bfcab245b8fdb3d9f9179018e6d9b2f927024f6a21fba4d5cfb51e9e14049d1a56ce8aabaea2312d'
         '1a1f4de4f70564216a99f1a27c6321c85187eaea80d9a2a47c66be07fa4a1d825eeef526167aaeb89e4bd67a376a56728af95ee00ee8c1bcc7556afce5f126b0'
         '56fa362f1a79e735377b85b1a5303d0761b0b022b9b4a6063af8aee19643bcef0663105cefd969e746ace5cf7e13f3d0da2b7fc696ba0b500f2c21bb57f1bddb'
         'fde24f909b7f639ac4b1d113710a0e4fb2b1fde97bdbdd905c76fc864bd016fa13965452d5d63dd522ac40663ed8a2e609b93d391e01891f5e780e712f3169c4'
