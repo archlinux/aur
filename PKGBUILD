@@ -28,6 +28,7 @@ makedepends=(git meson gi-docgen sassc gobject-introspection vala pkg-config pat
 
 prepare() {
   cd $pkgname   # Support appstream 1.0
+  git checkout "${pkgver}" # Required for some AUR configurations according to TechXero
   git cherry-pick -n c579fbe0c10d2b761cfe1fe4e825aaa19fe81c77
   git cherry-pick -n 3e3967d5f69180644519936991cad10136e84ca9
   patch -p1 < ../appstream-1.0-test.patch
