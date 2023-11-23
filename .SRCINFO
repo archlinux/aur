@@ -8,6 +8,7 @@ pkgbase = bs-manager-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = npm
+	depends = libvips
 	depends = dotnet-runtime-6.0
 	provides = bs-manager
 	conflicts = bs-manager
