@@ -12,7 +12,7 @@ _fragment=${FRAGMENT:-#branch=master}
   optdepends+=("opencl-driver: for gpu acceleration")
 }
 # shellcheck disable=SC2015
-((DISABLE_CUDA)) && {
+((DISABLE_CUDA||DISABLE_OPENCL)) && {
   CMAKE_FLAGS+=("-DLUXRAYS_DISABLE_CUDA=ON")
 } || {
   makedepends+=(cuda)
@@ -20,7 +20,7 @@ _fragment=${FRAGMENT:-#branch=master}
 
 _name="luxcorerender"
 pkgname=${_name}-git
-pkgver=2.6.r27.g8a048104b
+pkgver=2.7.beta1.r1.ga061ca97e
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
