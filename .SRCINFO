@@ -1,6 +1,6 @@
 pkgbase = handbrake-full
 	pkgdesc = Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://handbrake.fr/
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = handbrake-full
 	noextract = x265-snapshot-20230403-12776.tar.gz
 	noextract = zimg-3.0.5.tar.gz
 	options = !lto
-	source = handbrake::git+https://github.com/HandBrake/HandBrake.git#tag=1.7.0
+	source = handbrake::git+https://github.com/HandBrake/HandBrake.git#tag=1.7.1
 	source = https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/AMF-1.4.30-slim.tar.gz
 	source = https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/dav1d-1.3.0.tar.bz2
 	source = https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/fdk-aac-2.0.2.tar.gz
