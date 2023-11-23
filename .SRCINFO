@@ -1,7 +1,7 @@
 pkgbase = drafting-font
 	pkgdesc = A monospace font by indestructible type* inspired by typewriters
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://indestructibletype.com/Drafting
 	arch = any
 	license = OFL
