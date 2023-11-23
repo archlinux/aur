@@ -1,6 +1,6 @@
 pkgbase = focus-timer-bin
 	pkgdesc = Focus is a cross-platform productivity timer for the command line written in Go.
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/ayoisaiah/focus
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = focus-timer-bin
 	provides = focus
 	conflicts = focus
 	options = !strip
-	source = focus-timer-bin-1.4.0.tar.gz::https://github.com/ayoisaiah/focus/releases/download/v1.4.0/focus_1.4.0_linux_amd64.tar.gz
-	b2sums = 61284e594e5ab2acd9a7ac8f83d9ba5d02d1282957ae519f8d0af336b6b423d946275c6075fe477517f2a078120bf93e73588aa12bbced20e0ea6edc6e366edd
+	source = focus-timer-bin-1.4.1.tar.gz::https://github.com/ayoisaiah/focus/releases/download/v1.4.1/focus_1.4.1_linux_amd64.tar.gz
+	b2sums = 56ca18415d2632fa6e32645e41aa8fe66a9fa721d887c1e9ef3c5671ad48333f996fff3f7410da80906470fe62b47746746712a493b07fb581fda557fab047b7
 
 pkgname = focus-timer-bin

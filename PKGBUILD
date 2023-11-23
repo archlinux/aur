@@ -1,7 +1,7 @@
 # Maintainer: Jan-Philipp Fischer <mail at jpfischer dot de>
 _name=focus
 pkgname=$_name-timer-bin
-pkgver=1.4.0 # renovate: datasource=github-tags depName=ayoisaiah/focus
+pkgver=1.4.1 # renovate: datasource=github-tags depName=ayoisaiah/focus
 pkgrel=1
 pkgdesc="Focus is a cross-platform productivity timer for the command line written in Go."
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=($_name)
 conflicts=($_name)
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ayoisaiah/${_name}/releases/download/v${pkgver}/${_name}_${pkgver}_linux_amd64.tar.gz")
-b2sums=('61284e594e5ab2acd9a7ac8f83d9ba5d02d1282957ae519f8d0af336b6b423d946275c6075fe477517f2a078120bf93e73588aa12bbced20e0ea6edc6e366edd')
+b2sums=('56ca18415d2632fa6e32645e41aa8fe66a9fa721d887c1e9ef3c5671ad48333f996fff3f7410da80906470fe62b47746746712a493b07fb581fda557fab047b7')
 
 package() {
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
