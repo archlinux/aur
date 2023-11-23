@@ -14,6 +14,7 @@ pkgbase = luxcorerender-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = pyside2-tools
+	makedepends = pyside6-tools-wrappers
 	depends = opencl-icd-loader
 	depends = blosc
 	depends = boost-libs

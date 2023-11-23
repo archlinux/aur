@@ -29,7 +29,7 @@ url="https://www.luxcorerender.org/"
 license=('Apache')
 depends+=(blosc boost-libs embree3 glfw gtk3 openimagedenoise openimageio openvdb)
 optdepends+=("pyside2: for pyluxcoretools gui")
-makedepends+=(boost cmake doxygen git ninja pyside2-tools)
+makedepends+=(boost cmake doxygen git ninja pyside2-tools pyside6-tools-wrappers)
 conflicts=(luxcorerender)
 provides=(luxrays "luxcorerender=${pkgver%.r*}")
 options=('!buildflags')
