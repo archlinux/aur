@@ -1,6 +1,6 @@
 pkgbase = wayfire-wlroots-017-git
 	pkgdesc = 3D wayland compositor, tracking wlroots 0.17, integrating the wlroots hidpi-xprop patch set
-	pkgver = 0.8.0.r37.gf4ea727a
+	pkgver = 0.8.0.r38.g33b165ca
 	pkgrel = 1
 	url = https://github.com/WayfireWM/wayfire
 	arch = x86_64
@@ -37,18 +37,14 @@ pkgbase = wayfire-wlroots-017-git
 	depends = wayland-protocols
 	optdepends = xorg-xeyes
 	optdepends = xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications
-	provides = wayfire
-	provides = wayfire-git
+	provides = wayfire=0.8
 	provides = wlroots=0.17
-	provides = wlroots-hidpi-xprop-git
-	provides = wf-config
-	provides = wlroots-git
-	provides = wf-config-git
+	provides = wlroots-hidpi-xprop=0.17
+	provides = wf-config=0.9.0
+	provides = wlroots=0.17
 	provides = libwlroots.so
-	conflicts = wayfire-wlroots-017-git
-	conflicts = wlroots-git
+	conflicts = wayfire
 	conflicts = wlroots
-	conflicts = wf-config-git
 	conflicts = wf-config
 	source = git+https://github.com/WayfireWM/wayfire#branch=track-wlroots
 	source = 0001-xwayland-support-HiDPI-scale.patch

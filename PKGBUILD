@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Co-Maintainer: Frank Tao <frank.tao@uwaterloo.ca>
 pkgname=wayfire-wlroots-017-git
-pkgver=0.8.0.r37.gf4ea727a
+pkgver=0.8.0.r38.g33b165ca
 pkgrel=1
 pkgdesc="3D wayland compositor, tracking wlroots 0.17, integrating the wlroots hidpi-xprop patch set"
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=('cairo' 'pango' 'doctest' 'freetype2' 'glm' 'nlohmann-json'
 makedepends=('git' 'glslang' 'meson' 'ninja' 'cmake' 'vulkan-headers')
 optdepends=('xorg-xeyes'
             'xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications')
-provides=('wayfire' 'wayfire-git' 'wlroots=0.17' 'wlroots-hidpi-xprop-git' 'wf-config' 'wlroots-git' 'wf-config-git' 'libwlroots.so')
-conflicts=("$pkgname" 'wlroots-git' 'wlroots' 'wf-config-git' 'wf-config')
+provides=('wayfire=0.8' 'wlroots=0.17' 'wlroots-hidpi-xprop=0.17' 'wf-config=0.9.0' 'wlroots=0.17' 'libwlroots.so')
+conflicts=('wayfire' 'wlroots' 'wf-config')
 replaces=()
 options=()
 
