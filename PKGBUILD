@@ -1,30 +1,29 @@
 # Maintaner: JackMacWindows <jackmacwindowslinux@gmail.com>
 # Co-Maintainer: Thomas Girod <tgirod@altu.fr>
 # Co-Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
-pkgname=open-stage-control-bin
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+
 _pkgname=open-stage-control
-pkgver=1.23.0
+pkgname=$_pkgname-bin
+pkgver=1.25.5
 pkgrel=1
+_dist=${_pkgname}_${pkgver}_linux-x64
 pkgdesc='A libre desktop OSC bi-directional control surface application'
 arch=(x86_64)
 url='http://openstagecontrol.ammd.net/'
-license=('GPL3')
-depends=('alsa-lib' 'gtk3' 'libxss' 'libxtst' 'nss')
-optdepends=('python-rtmidi: send and receive midi messages')
-makedepends=('npm')
-replaces=('open-stage-control')
-source=("https://github.com/jean-emmanuel/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux-x64.zip")
-
-_name=${_pkgname}_${pkgver}_linux-x64
+license=(GPL3)
+depends=(gtk3 libcups libx11 nss)
+optdepends=('python-rtmidi: send and receive MIDI messages')
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("https://github.com/jean-emmanuel/$_pkgname/releases/download/v$pkgver/$_dist.zip")
+sha256sums=('cec016c982f884dda36f4fdd6546c14200086ea3402c05e4c2bb6e0d49d23677')
 
 package() {
-  cd ${srcdir}/${_name}
-  mkdir -p ${pkgdir}/opt/${pkgname}
-  cp -R * ${pkgdir}/opt/${pkgname}
+  cd $_dist
+  install -vdm 755 "$pkgdir"/opt/$_pkgname
+  cp -R * "$pkgdir"/opt/$_pkgname
 
-  mkdir -p "${pkgdir}/usr/bin"
-  cd "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/open-stage-control"
+  install -vdm 755 "$pkgdir"/usr/bin
+  ln -s /opt/$_pkgname/$_pkgname "$pkgdir"/usr/bin
 }
-
-sha256sums=('b1c3dced79182dc7e3c1db4b6902bae78e120ba87eb6d1e1ca78de5118fd6fa5')
