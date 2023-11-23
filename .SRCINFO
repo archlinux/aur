@@ -1,7 +1,7 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Low-latency audio/video router and processor
 	pkgver = 0.3.85.r31.ga3e86f17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pipewire.org
 	arch = x86_64
 	license = MIT
@@ -32,7 +32,7 @@ pkgbase = pipewire-common-git
 	makedepends = meson
 	makedepends = ncurses
 	makedepends = opus
-	makedepends = python-docutils
+	makedepends = python
 	makedepends = readline
 	makedepends = roc-toolkit
 	makedepends = rtkit
@@ -51,7 +51,7 @@ pkgname = pipewire-common-git
 	license = LGPL
 	depends = gcc-libs
 	depends = glibc
-	depends = libpipewire-common-git=0.3.85.r31.ga3e86f17-1
+	depends = libpipewire-common-git=0.3.85.r31.ga3e86f17-2
 	depends = libcamera-base.so
 	depends = libcamera.so
 	depends = libdbus-1.so
