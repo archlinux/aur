@@ -1,3 +1,25 @@
+Mullvad Browser 13.0.4 - November 16 2023
+ * All Platforms
+   * Updated Firefox to 115.5.0esr
+   * Updated uBlock Origin to 1.53.0
+   * Bug 250: Enable storage.sync to fix broken webextensions [mullvad-browser]
+   * Bug 253: Rebase Mullvad Browser Stable to 115.5.0esr [mullvad-browser]
+   * Bug 42194: Blank Net Error page on name resolution failure [tor-browser]
+ * Windows + macOS
+   * Bug 42154: Empty the clipboard on browser shutdown only if content comes from private browsing windows [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 40934: Remove $bundle_locales from signing scripts now that we're on ALL for everything [tor-browser-build]
+     * Bug 40982: Fix logging in tools/signing/do-all-signing [tor-browser-build]
+     * Bug 40989: Add .nobackup files to reproducible and disposable directores [tor-browser-build]
+     * Bug 41006: Fix typo in finished-signing-clean-linux signer [tor-browser-build]
+   * macOS
+     * Bug 29815: Sign our macOS bundles on Linux [tor-browser-build]
+     * Bug 41005: Unpack macOS bundle to /var/tmp instead of /tmp in rcodesign-notary-submit step [tor-browser-build]
+     * Bug 41007: gatekeeper-bundling.sh refers to old .tar.gz archive [tor-browser-build]
+     * Bug 41014: Update libdmg-hfsplus to drop the OpenSSL patch [tor-browser-build]
+     * Bug 41020: Opening MacOS dmg file is causing a warning, since 13.0 [tor-browser-build]
+
 Mullvad Browser 13.0.1 - October 24 2023
  * All Platforms
    * Updated Firefox to 115.4.0esr
