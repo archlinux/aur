@@ -22,7 +22,7 @@ pkgname=(
   pipewire-full-vulkan-git
   pipewire-full-ffmpeg-git
 )
-pkgver=0.3.85.r8.g7cd242bf
+pkgver=0.3.85.r31.ga3e86f17
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -55,8 +55,7 @@ makedepends=(
   meson
   ncurses
   opus
-  pandoc
-  python-docutils
+  python
   readline
   roc-toolkit
   rtkit
