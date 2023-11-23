@@ -1,7 +1,7 @@
 pkgbase = python-validio-cli
 	pkgdesc = CLI to interact with the Validio platform
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.10.1
+	pkgrel = 1
 	url = https://pypi.org/project/validio-cli/
 	arch = any
 	license = Apache-2.0
@@ -14,7 +14,7 @@ pkgbase = python-validio-cli
 	depends = python-tabulate
 	depends = python-typer
 	depends = python-validio-sdk
-	source = https://files.pythonhosted.org/packages/source/v/validio_cli/validio_cli-0.9.0.tar.gz
-	sha256sums = 74e49aa68c68b4602ff5d0b1b943ae8a8f82358d0cef13b93b7fde3b0866b7c6
+	source = https://files.pythonhosted.org/packages/source/v/validio_cli/validio_cli-0.10.1.tar.gz
+	sha256sums = 74cdc2f3f9eacd1d21548dd11e6a205adbe06f087364fe34c0da2d0b8d51bea3
 
 pkgname = python-validio-cli
