@@ -1,0 +1,18 @@
+pkgbase = power-profiles-hooks-git
+	pkgdesc = Daemon to launch commands on power-profiles-daemon profile change
+	pkgver = r5.8338b75
+	pkgrel = 1
+	url = https://github.com/thesola10/power-profiles-hooks
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = git
+	makedepends = make
+	makedepends = gettext
+	depends = power-profiles-daemon
+	depends = python
+	depends = dbus-python
+	depends = python-gobject
+	source = git+https://github.com/thesola10/power-profiles-hooks.git
+	sha256sums = SKIP
+
+pkgname = power-profiles-hooks-git
