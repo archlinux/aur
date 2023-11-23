@@ -2,7 +2,7 @@
 # Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
-pkgver=3.181.23
+pkgver=3.181.32
 pkgrel=1
 _nodeversion=16
 _electronversion=27
@@ -15,9 +15,9 @@ makedepends=('git' 'libxcrypt-compat' 'nvm' 'python' 'yarn')
 source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "standard-notes.desktop"
         "standard-notes.sh")
-sha256sums=('8299e34114553a4fa8e1172f0a402002b48f354fd8aa6ad4633a782c937589aa'
+sha256sums=('a29f2a331b1ea391a40e845f67d67aa0ce260e0c5f4aa151cbb259b78b26c901'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
-            '340c01f232b7d4bbf3778e66666c78567bf61ef71a3db4a0d8d00d83565be1a3')
+            'c13baaf5e71174a46a5a315885794cf50a80a30b8105f0ac28c109d62f47fe9d')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -59,17 +59,17 @@ package() {
 
   if [ "$CARCH" == "aarch64" ]; then
     install -Dm644 dist/linux-arm64-unpacked/resources/app.asar -t \
-      "$pkgdir/usr/lib/standard-notes/resources/"
+      "$pkgdir/usr/lib/standard-notes/"
   else
     install -Dm644 dist/linux-unpacked/resources/app.asar -t \
-      "$pkgdir/usr/lib/standard-notes/resources/"
+      "$pkgdir/usr/lib/standard-notes/"
   fi
 
-  for icon_size in 16x16 32x32 128x128 256x256 512x512; do
-    install -Dm644 build/icon.iconset/icon_${icon_size}.png \
-      "$pkgdir/usr/share/icons/hicolor/${icon_size}/apps/standard-notes.png"
-    install -Dm644 build/icon.iconset/icon_${icon_size}@2x.png \
-      "$pkgdir/usr/share/icons/hicolor/${icon_size}@2x/apps/standard-notes.png"
+  for i in 16x16 32x32 128x128 256x256 512x512; do
+    install -Dm644 "build/icon.iconset/icon_${i}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}/apps/standard-notes.png"
+    install -Dm644 "build/icon.iconset/icon_${i}@2x.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}@2x/apps/standard-notes.png"
   done
 
   install -Dm755 "$srcdir/standard-notes.sh" "$pkgdir/usr/bin/standard-notes"

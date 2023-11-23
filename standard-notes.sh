@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron25 /usr/lib/standard-notes/resources/app.asar "$@"
+exec electron27 /usr/lib/standard-notes/app.asar "$@"
