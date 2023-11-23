@@ -17,9 +17,10 @@ provides=()
 
 # https://github.com/ggerganov/whisper.cpp/blob/master/models/download-ggml-model.sh
 _url="https://huggingface.co/ggerganov/whisper.cpp"
-_pfx="resolve/main/ggml"
+_pfx="blob/main"
 _model_file="${_model}.bin"
 
+# https://huggingface.co/ggerganov/whisper.cpp/blob/main/ggml-large-v3.bin
 source=("${_model_file}::${_url}/${_pfx}-${_model_file}")
 sha1sums=("${_model_sha1sum}")
 
