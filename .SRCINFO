@@ -1,7 +1,7 @@
 pkgbase = erpnext
 	pkgdesc = Free and open source Enterprise Resource Planning (ERP).
 	pkgver = 15.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frappe/erpnext
 	install = erpnext.install
 	arch = x86_64
