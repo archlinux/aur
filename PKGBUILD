@@ -1,10 +1,12 @@
 # Maintainer: Kimiblock Moe
+# Contributor: JohanChane
+
 pkgname=clashtui-git
-pkgdesc="Clash Meta TUI 客户端"
+pkgdesc="Clash Meta TUI Client"
 url="https://github.com/JohanChane/clashtui"
 license=("MIT")
 arch=("any")
-pkgver=r4.a1e9deb
+pkgver=r8.2a18a09
 pkgrel=1
 makedepends=("rust" "cargo" "git")
 depends=()
@@ -38,5 +40,7 @@ function check() {
 
 function package() {
 	install -Dm755 "${srcdir}/clashtui/target/release/clashtui" "${pkgdir}/usr/bin/clashtui"
+	mkdir -p "${pkgdir}/usr/share/clashtui"
+	cp -a "${srcdir}/clashtui/App"/* "${pkgdir}/usr/share/clashtui"
 }
 

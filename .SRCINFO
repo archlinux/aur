@@ -1,6 +1,6 @@
 pkgbase = clashtui-git
-	pkgdesc = Clash Meta TUI 客户端
-	pkgver = r4.a1e9deb
+	pkgdesc = Clash Meta TUI Client
+	pkgver = r8.2a18a09
 	pkgrel = 1
 	url = https://github.com/JohanChane/clashtui
 	arch = any
