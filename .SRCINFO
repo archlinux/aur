@@ -1,6 +1,6 @@
 pkgbase = vim-coc-sh-git
 	pkgdesc = SH language server extension using bash-language-server for coc.nvim.
-	pkgver = 0.5.1.r0.g179138e
+	pkgver = 1.2.0.r0.g5bb12e6
 	pkgrel = 1
 	url = https://github.com/josa42/coc-sh
 	arch = any

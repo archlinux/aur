@@ -13,7 +13,7 @@ depends=("${_variant}-coc")
 makedepends=('yarn' 'npm' 'git')
 license=('MIT')
 source=("${_extname}::git+${url}.git")
-pkgver=0.5.1.r0.g179138e
+pkgver=1.2.0.r0.g5bb12e6
 pkgrel=1
 sha256sums=('SKIP')
 
@@ -40,5 +40,5 @@ package() {
     rm -rf "${srcdir}/${_extname}/package"
     find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
     chown -R root:root "${pkgdir}"
-    chmod +x "${pkgdir}/${_packdir}/node_modules/bash-language-server/bin/main.js"
+    chmod +x "${pkgdir}/${_packdir}/node_modules/bash-language-server/out/cli.js"
 }
