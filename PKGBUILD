@@ -3,18 +3,19 @@
 pkgbase=python-reproject
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Python-based Astronomical image reprojection"
 arch=('i686' 'x86_64')
 url="http://reproject.readthedocs.io"
 license=('BSD')
-makedepends=('cython0>=0.29.32'
+makedepends=('cython>=3.0.4'
              'python-setuptools-scm'
              'python-extension-helpers'
              'python-wheel'
              'python-build'
              'python-installer'
+             'python-numpy'
              'python-sphinx-astropy'
              'python-astropy-healpix'
              'python-dask'
@@ -31,7 +32,7 @@ checkdepends=('python-pytest-arraydiff'
               'python-shapely'
               'python-zarr')     # astropy-healpix dask scipy already in makedep
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('80ce5a5e773d208f6933b8e7ae24640f')
+md5sums=('d9abe12e3411657a6c01fb5abcf3ef4c')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
