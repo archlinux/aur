@@ -4,10 +4,10 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht
-pkgver=feature_10
+pkgver=feature_11
 _aspver=3.7.3
-_vsver=R65-RC1
-pkgrel=5
+_vsver=R65
+pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=(x86_64)
 url=https://github.com/arch1t3cht/Aegisub
@@ -66,22 +66,20 @@ source=(
   "$pkgname-gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip"
   "$pkgname-gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip"
   "0001-bas-to-bs.patch"
-  "0002-luajit.patch::https://github.com/arch1t3cht/Aegisub/commit/4a97bb0dd25cc9753b85715793f60ff8883d3430.patch"
 )
 noextract=(
   $pkgname-gtest-1.8.1.zip
   $pkgname-gtest-1.8.1-1-wrap.zip
 )
 sha256sums=(
-  '7410109623998b22d6e4b1dbfc1dec84c6d5d10b4d410511cc0277a909c5b512'
+  '20ec6d042d7879f8a0a1a778ca2197a59216428c4ec35d669ef2b93e7bd55120'
   'SKIP'
   'b847705af6f16fa26664d06e0fea2bda14a7f6aac8249a9c37e4106ecb8fd44c'
-  '99200d6f1ee9145985b1a1fb64888e70ab0ff2ad9056faf4ab4e27da0d4ae468'
+  '2bde5233b82d914b5e985119ed9cc344e3c27c3c068b5c4ab909176cd1751dce'
   'SKIP'
   '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
   'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805'
-  '693f2c569c2d4321a67c201fcafbd12774bc1f963c41c21f4943d0933e2d0a5f'
-  'a561a52460d0e2332840d177e138f264d4cd9a956443966bbb824d18c9af3f61'
+  '3e113a5eaf02d3b85f59487cdbe30b4e004b095d02ad0231c013b7a4cb95c466'
 )
 
 AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT=${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT:=PulseAudio}
@@ -89,7 +87,6 @@ AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT=${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT:=PulseAudio}
 prepare() {
   cd Aegisub-$pkgver
   patch -p1 < $srcdir/0001-bas-to-bs.patch
-  patch -p1 < $srcdir/0002-luajit.patch
 
   # If build dir exists (it won't ever if makepkg is passed --cleanbuild)
   # call --reconfigure rather than setup without it which will fail)

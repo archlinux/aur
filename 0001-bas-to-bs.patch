@@ -12,10 +12,10 @@ index da928b0..f207637 100644
  
  
 diff --git a/automation/vapoursynth/aegisub_vs.py b/automation/vapoursynth/aegisub_vs.py
-index 6ccd7b9..248a5fb 100644
+index 65449a4..16bfaf4 100644
 --- a/automation/vapoursynth/aegisub_vs.py
 +++ b/automation/vapoursynth/aegisub_vs.py
-@@ -258,13 +258,13 @@ def get_keyframes(filename: str, clip: vs.VideoNode, fallback: str | List[int],
+@@ -311,15 +311,15 @@ def get_keyframes(filename: str, clip: vs.VideoNode, fallback: str | List[int],
  def check_audio(filename: str, **kwargs: Any) -> bool:
      """
      Checks whether the given file has an audio track by trying to open it with
@@ -25,6 +25,8 @@ index 6ccd7b9..248a5fb 100644
 -    Additional keyword arguments are passed on to BestAudioSource.
 +    Additional keyword arguments are passed on to BestSource.
      """
+     progress_set_message("Checking if the file has an audio track")
+     progress_set_indeterminate()
      try:
 -        ensure_plugin("bas", "BestAudioSource", "")
 -        vs.core.bas.Source(source=filename, **kwargs)
@@ -34,10 +36,10 @@ index 6ccd7b9..248a5fb 100644
      except AttributeError:
          pass
 diff --git a/src/libresrc/default_config.json b/src/libresrc/default_config.json
-index bafd52e..ef4c9d2 100644
+index 240998f..b97431a 100644
 --- a/src/libresrc/default_config.json
 +++ b/src/libresrc/default_config.json
-@@ -351,7 +351,7 @@
+@@ -352,7 +352,7 @@
  				"Aegisub Cache" : true
  			},
  			"VapourSynth" : {
@@ -46,7 +48,7 @@ index bafd52e..ef4c9d2 100644
  			}
  		},
  		"Avisynth" : {
-@@ -392,7 +392,7 @@
+@@ -394,7 +394,7 @@
  			},
  			"VapourSynth" : {
  				"Log Level": "Information",
@@ -56,5 +58,5 @@ index bafd52e..ef4c9d2 100644
  		}
  	},
 -- 
-2.41.0
+2.43.0
 
