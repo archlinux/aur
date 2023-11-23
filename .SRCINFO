@@ -6,7 +6,6 @@ pkgbase = whisper.cpp-model-large-v3
 	arch = i686
 	arch = x86_64
 	license = GPLv3
-	replaces = whisper.cpp-model-large
 	source = large-v3.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3.bin
 	sha1sums = ad82bf6a9043ceed055076d0fd39f5f186ff8062
 

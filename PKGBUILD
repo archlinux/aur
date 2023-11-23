@@ -35,5 +35,3 @@ package() {
 
 
 }
-
-replaces=('whisper.cpp-model-large')
