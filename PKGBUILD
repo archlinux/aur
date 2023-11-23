@@ -11,7 +11,7 @@ url="https://github.com/coderholic/pyradio"
 license=('MIT')
 depends=('python-dnspython' 'python-requests' 'python-psutil' 'python-netifaces' 'python-rich' 'python-dateutil')
 optdepends=('mplayer: as backend' 'mpv: as backend' 'vlc: as backend' 'mkvtoolnix-cli: fix mplayer recordings, add chapters to recordings')
-makedepends=('python-pip' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-pip' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/coderholic/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('af9066069bd6f2467e8d66812ead72acbf6e3e5bacc1ce07ba47a59af13598c9')
 
