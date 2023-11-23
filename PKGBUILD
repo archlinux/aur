@@ -4,8 +4,8 @@
 
 pkgname=gpshell
 pkgver=2.3.1
-pkgrel=1
-_commit=d317cc12d29fe8d38275b8c78d53a2b6a77dd07b
+pkgrel=2
+_commit=380b79869277706757bcca7df2f4d2f005d141cc
 pkgdesc="gpshell GlobalPlatform command shell"
 license=('GPL3')
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/kaoh/globalplatform"
 depends=('glibc' 'globalplatform')
 makedepends=('pandoc' 'cmake')
 source=(https://github.com/kaoh/globalplatform/archive/$_commit.zip)
-md5sums=('f08c4f76b5d670246570dd9e18c6709a')
+md5sums=('9d6db6ab81ae23f22b15d189aff56c21')
 
 build() {
   cd globalplatform-$_commit/gpshell
