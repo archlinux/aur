@@ -1,19 +1,15 @@
 # Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
 pkgname=scalar_blocks-git
-pkgver=240.6698eeb
-pkgrel=3
+pkgver=259.c8130c5
+pkgrel=1
 pkgdesc="Algorithm for computing numerical derivatives of scalar conformal blocks"
 arch=(x86_64)
 license=('MIT')
 url="https://gitlab.com/bootstrapcollaboration/scalar_blocks"
 depends=('trilinos-sacado' 'eigen' 'gmp') 
 makedepends=('git' 'python')
-source=('git+https://gitlab.com/bootstrapcollaboration/scalar_blocks.git'
-        'libname-and-dl.patch'
-        'string_file_deprecated.patch')
-sha256sums=('SKIP'
-            '96f526ad07ae2447dcfc721b8fb06a3dba11ffd3ae2b1a9d33161a8f2e33e07d'
-            '6194d95d5f290d508876910a10f93b4b76f475014e31fcf11e7b36e43a7cfbd9')
+source=('git+https://gitlab.com/bootstrapcollaboration/scalar_blocks.git')
+sha256sums=('SKIP')
 
 pkgver() {
         cd "$srcdir"/scalar_blocks
@@ -22,9 +18,6 @@ pkgver() {
 
 build () {
         cd "$srcdir"/scalar_blocks
-
-        git apply ../libname-and-dl.patch
-        git apply ../string_file_deprecated.patch
 
         if command -v mpicxx &> /dev/null
         then
