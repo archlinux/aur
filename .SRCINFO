@@ -1,0 +1,25 @@
+pkgbase = fishing-funds-bin
+	pkgdesc = 基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发.
+	pkgver = 8.1.1
+	pkgrel = 1
+	url = https://ff.1zilc.top/
+	arch = x86_64
+	license = GPL3
+	makedepends = asar
+	makedepends = squashfuse
+	depends = electron27
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
+	provides = fishing-funds=8.1.1
+	conflicts = fishing-funds
+	source = fishing-funds-8.1.1.AppImage::https://github.com/1zilc/fishing-funds/releases/download/v8.1.1/Fishing-Funds-8.1.1.AppImage
+	source = fishing-funds.sh
+	sha256sums = ea68b80929fb292701e3180a898f75f36d5183decc915629c4a2986920078bb0
+	sha256sums = 7469cb4ef004815b0ae6797d6079cb6f702fd9f140fcc4d46edc7432f8b9e1a6
+
+pkgname = fishing-funds-bin
