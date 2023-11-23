@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lisk-desktop-bin
-pkgver=3.0.0_rc.4
+pkgver=3.0.0_rc.5
 pkgrel=1
 pkgdesc="Lisk graphical user interface for desktop"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-desktop-bin}-linux-${CARCH}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('16c1fd5b587b1d67d14abe56b0fdaf56433961081783fa48e394de26a05158f6'
+sha256sums=('70a5076d84531d7c7b4f15071e57c10dfec9d34ded52147f9753b5236b769ece'
             'ed2d2a181a7199c99e132ee5ca64a53776d31de753f1ed9a715a514106333299')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
