@@ -1,7 +1,7 @@
 pkgbase = bpftool-bin
 	pkgdesc = bpftool is a tool for inspection and simple manipulation of eBPF programs and maps
-	pkgver = 7.2.0
-	pkgrel = 2
+	pkgver = 7.3.0
+	pkgrel = 1
 	url = https://github.com/libbpf/bpftool
 	changelog = CHANGELOG
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = bpftool-bin
 	makedepends = python-docutils
 	provides = bpftool
 	conflicts = bpftool
-	source = https://github.com/libbpf/bpftool/archive/refs/tags/v7.2.0.tar.gz
-	b2sums = b74cf49cd30b67c474cfd3a842110180a179f0dfe0d6921fc4bf35f5c7ed50659dd75ad06aaa92bcff865a49b862697bc5f494c6d7a5d458eb80e5232e673875
-	source_x86_64 = https://github.com/libbpf/bpftool/releases/download/v7.2.0/bpftool-v7.2.0-amd64.tar.gz
-	b2sums_x86_64 = 30dcd2127a7d6a0a6b15140d2d849fe4548b8ea7c177607e00780ce8b25d307fa80f4f1414fbc79a3ea378f2d34cc4229b2ab29f9c7b8399dafe06bee7e60875
-	source_aarch64 = https://github.com/libbpf/bpftool/releases/download/v7.2.0/bpftool-v7.2.0-arm64.tar.gz
-	b2sums_aarch64 = bd6d0d3dce357a25279d995b8744519c9d78744dc207afb66c60805b1264838a701c786e1ba7686a433e383b9f00d43586d8bf767e31564ba00d486ed068851d
+	source = https://github.com/libbpf/bpftool/archive/refs/tags/v7.3.0.tar.gz
+	b2sums = 653ecbe71c35b59fbea347771a714158bf914335d419c40bffe69d18b2cbb07a9f0654fb97d49755e543d6a8c0b3a7f0c9123a170f6e492da8d5b3f45b4afc0a
+	source_x86_64 = https://github.com/libbpf/bpftool/releases/download/v7.3.0/bpftool-v7.3.0-amd64.tar.gz
+	b2sums_x86_64 = 5a7da1c466974844ae91f1bd25258708bb62169f924a73751f4467fb51f6a46c73ac65d72b54c5ad0f9236c16235f44736daf356da4cdf93ee71dde1bb634792
+	source_aarch64 = https://github.com/libbpf/bpftool/releases/download/v7.3.0/bpftool-v7.3.0-arm64.tar.gz
+	b2sums_aarch64 = 1c30c45fe3b12460d9c255520946d55a60741f54c4c4b0147f7a63e460ec542d656651566354387be5c87982f103253bf471b671cba90751cd28f78a23e5ed28
 
 pkgname = bpftool-bin

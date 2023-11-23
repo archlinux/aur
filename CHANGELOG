@@ -1,4 +1,85 @@
-# Changes in version 0.7.2:
+# Changes in version 7.3.0:
+
+### Deprecation
+
+- Keyword dev for specifying an interface name to use for program and map offload
+  with bpftool prog load ... dev <ifname> and bpftool map create ... dev <ifname>
+  is deprecated. Use offload_dev instead. (3270b21)
+
+### New features
+
+The objective for the above deprecation is to avoid confusion with a new
+interface-related keyword:
+
+- Support passing an interface name with xdpmeta_dev <ifname> for resolving XDP
+  hints kfuncs when loading programs with bpftool prog load. (3270b21)
+
+The information displayed for BPF links (bpftool link list) has been enriched:
+
+- Show map IDs along with struct_ops links. (d89768b)
+- Show target_obj_id and target_btf_id along with tracing links information. (57fc1ef)
+- Show details for multi-kprobes links. (b65dc7b)
+- Show details for perf event links. (bd2f4d6, 7561b06)
+- Show details for netfilter links. (103f441)
+- Show details (interface, attach types) for tcx links. (b76b36e)
+- Show details (interface) for XDP links. (9f6d353)
+- Show details (interface, attach types) for netkit links. (0fcd8de)
+- Show the count of missed kprobes for multi-kprobes links and perf event links. (aa4f5fb, 58046e2)
+
+Several new networking program types also get their information displayed with bpftool net list:
+
+- Print information on netfilter programs. (103f441)
+- Print information on tcx programs. (4294230)
+- Print information on netkit programs. (d712a3e)
+
+Other features:
+
+- Support the new cgroup UNIX socket attach points for attaching programs with
+  bpftool prog attach. These attach points are: connect_unix, sendmsg_unix,
+  recvmsg_unix, getpeername_unix, getsockname_unix. (087d22a)
+- For struct_ops, support registering structs in the .struct_ops.link ELF
+  section (in addition to .struct_ops), and also create a link for structs in that
+  section. Accept an optional directory path when registering struct_ops (bpftool
+  struct_ops register OBJ [LINK_DIR]), to indicate where to pin such links.
+  (9d58b65, 6b24c3e)
+- Dump inner map IDs instead of raw values when dumping maps of maps with
+  bpftool map dump. (e552682)
+- Display kernel module name when relevant for symbols printed as part of a
+  program dump (bpftool prog dump xlated). (eb8a15a)
+- Support LLVM's v4 instructions in the disassembler. (ad25b69)
+
+### Bug fixes
+
+- Fix the long-standing bug (#17) what would prevent from building bpftool with
+  features requiring the use of “skeletons” (feature-clang-bpf-co-re compilation
+  option) with kernels older than 5.15 or without CONFIG_PERF_EVENTS set.
+  (1f5829e, 0773871, fc96090, b00d0c5)
+- On aarch64, when probing features (bpftool feature probe), fix the value of
+  the global memory limit for JIT compiler for unprivileged users, which was
+  previously reported as a negative value (expecting an int instead of a long).
+  (b2489e0)
+- When passing a directory to pin programs to bpftool prog loadall, avoid
+  re-mounting accidentally the bpffs to the parent of that directory. (fb96eed)
+- Fix a warning (-Wcast-qual) that might appear when compiling skeletons
+  generated with bpftool gen. (24f4661)
+- When generating skeletons, align on a 8-byte boundary the data retrieved from
+  ELF files to avoid potential alignment issues and errors from libbpf. (e8b7df5,
+  f12f538)
+- When printing pointers in JSON, for example as part of a struct_ops dump with
+  bpftool -j struct_ops dump, enquote the pointer address (or (nil) value) to
+  avoid breaking JSON. (5978b98)
+- Fix JSON for struct_ops dumps from an ID with bpftool -j struct_ops dump id
+  <id> by wrapping the information for the structs in an array. (b9530de)
+- Fix a subcommand name (prog instead of program) in bpftool.8 manual page.
+  (fa46ebb)
+- Fix the interactive help message for bpftool perf. (dc53c79)
+
+### Known bugs
+
+- Command bpftool cgroup tree may be broken when running with kernels under v6.1 (#41).
+
+
+# Changes in version 7.2.0:
 
 ### Breaking change:
 
