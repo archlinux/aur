@@ -15,11 +15,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v
         'mimetype.xml'
         'pgmodeler.install'
         'patch_no_check_update.diff'
+        'fix_libxml_2.0.12.patch'
         'pgmodeler.appdata.xml')
 sha256sums=('cfc80f9311e6c3863b80fdf9891793f00da3362f5c016331831e7b35b4681ab9'
             '91c6ab0df840823a4de21a953592134fb7b4367565eebff8523dc08ea6c7cd36'
             'fed8d615a3b732a83e1bd9c9562c81f3bfcb0ce5a4abba96191bca0d602bdd33'
             '740f785beedc87f6e50f48a7c89f6fae83ac25c57b242531feaf835bd34d3b02'
+            '148f86776609fc3d5155c875deb9e0048e043a63b6b4e145412f2f0bb4037653'
             '047466a4841cb312d2660ed53875fb34437017bec87c134f9048b542e381e30a')
 
 options=('emptydirs')
@@ -29,6 +31,7 @@ install=pgmodeler.install
 build() {
     cd "$srcdir/$pkgname-${pkgver//_/-}"
     patch -p1 < ../patch_no_check_update.diff
+    patch -p1 < ../fix_libxml_2.0.12.patch
 
     # release is needed to get the full dummy and xml2object plugins (doesn't seem to work)
     qmake6 CONFIG+=release \

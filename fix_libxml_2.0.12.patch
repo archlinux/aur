@@ -1,0 +1,20 @@
+diff -r -c pgmodeler-1.0.6-orig/libs/libparsers/src/xmlparser.cpp pgmodeler-1.0.6/libs/libparsers/src/xmlparser.cpp
+*** pgmodeler-1.0.6-orig/libs/libparsers/src/xmlparser.cpp	2023-11-23 18:26:48.597362645 +0100
+--- pgmodeler-1.0.6/libs/libparsers/src/xmlparser.cpp	2023-11-23 18:27:21.644351113 +0100
+***************
+*** 152,158 ****
+  {
+  	QByteArray buffer;
+  	QString msg, file;
+! 	xmlError *xml_error=nullptr;
+  	int parser_opt;
+  
+  	if(!xml_buffer.isEmpty())
+--- 152,158 ----
+  {
+  	QByteArray buffer;
+  	QString msg, file;
+! 	const xmlError *xml_error=nullptr;
+  	int parser_opt;
+  
+  	if(!xml_buffer.isEmpty())
