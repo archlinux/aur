@@ -1,0 +1,23 @@
+pkgbase = r-enrichviewnet
+	pkgdesc = From functional enrichment results to biological networks
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/enrichViewNet
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = r-enrichplot
+	depends = r-gprofiler2
+	depends = r-jsonlite
+	depends = r-rcy3
+	depends = r-strex
+	depends = r-stringr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/enrichViewNet_1.0.0.tar.gz
+	md5sums = 5b2eb51ee4f57abd3b77da182e7e5d1a
+	sha256sums = 9b7bdd6591da9e94251ed4599287814b53ccae5eeace8c5fd689e9818160e510
+
+pkgname = r-enrichviewnet
