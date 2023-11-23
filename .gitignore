@@ -1,5 +1,6 @@
 *.xz
 *.gz
+*.zst
 /src/
 /pkg/
 /Lidarr/

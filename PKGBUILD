@@ -42,6 +42,10 @@ sha512sums=(
   'cabbd3d6387f4198097573da23032d80c1fec11835c180e55a28ee54c79c821d3c49c039762cc3ddc5126efc37d50d93cdd89a75ff809a3d533533a30353933e'
 )
 
+pkgver() {
+  printf  "%s.%s" "$pkgver" "$(git rev-parse HEAD | head -c7)"
+}
+
 _runtime() {
   case "$CARCH" in
     x86_64)  RUNTIME="linux-x64";;
@@ -53,7 +57,7 @@ _runtime() {
 }
 
 _runtime_srcdir() {
-	echo "${srcdir}/Lidarr/_artifacts/$(_runtime)/net6.0/Lidarr"
+  echo "${srcdir}/Lidarr/_artifacts/$(_runtime)/net6.0/Lidarr"
 }
 
 build() {
