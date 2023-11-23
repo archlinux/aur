@@ -1,0 +1,13 @@
+pkgbase = sizeof-go
+	pkgdesc = Simple and fast calculate size of directories
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	makedepends = go
+	provides = sizeof
+	conflicts = sizeof
+	conflicts = sizeof-pypy
+	source = https://codeberg.org/balaraz/sizeof/archive/v1.0.tar.gz
+	sha256sums = 4dae89ded56b37bc8aeeac52c34e7f70469e12bd70d651b9511a65886856bfc8
+
+pkgname = sizeof-go
