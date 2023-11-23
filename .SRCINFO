@@ -1,0 +1,19 @@
+pkgbase = mixbus9
+	pkgdesc = Harrison Consoles Mixbus DAW (Version 9)
+	pkgver = 9.2.172
+	pkgrel = 1
+	url = https://store.harrisonaudio.com/all-products/mixbus
+	arch = x86_64
+	groups = pro-audio
+	license = EULA
+	makedepends = xdg-user-dirs
+	depends = glibc
+	depends = libcurl-gnutls
+	optdepends = avldrums.lv2: AVLinux drumkits
+	optdepends = gmsynth.lv2: General MIDI LV2 Synth
+	optdepends = setbfree-lv2: Tonewheel organ
+	optdepends = x42-plugins-lv2: Set of plugins and utilities from the X42 Project
+	source = https://s3.eu-west-1.amazonaws.com/eu1.download.solidstatelogic.com/Harrison/Mixbus-9.2.172-x86_64.run
+	sha256sums = cb6255b757f876477d60269ca3198097a36dfbac537f0e47b9c8f3c76c2acd78
+
+pkgname = mixbus9
