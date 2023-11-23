@@ -1,0 +1,8 @@
+
+# lemmeknow v0.8.0 (https://github.com/swanandx/lemmeknow/releases/tag/v0.8.0)
+
+We switched from `Lazy<Vec<Regex>>` to `Vec<Lazy<Regex>>` !
+This release provides major performance boost by compiling only those regular expressions that are required.
+
+It was storing regexes as `Lazy<Vec<Regex>>`, so even though we were compiling it only once, we were compiling them all! But some regex like URL are huge, and regex compilation is expensive. Fixing it is easy, just don't compile all regex at once, instead compile them as required, i.e. `Vec<Lazy<Regex>>` !
+

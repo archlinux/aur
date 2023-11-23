@@ -1,0 +1,21 @@
+# Maintainer: icecamphor <camphor@skiff.com>
+
+pkgname='lemmeknow-bin'
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="The fastest way to identify anything"
+arch=('x86_64')
+url="https://swanandx.github.io/lemmeknow-frontend/"
+license=('MIT')
+depends=('gcc-libs' 'glibc')
+provides=('lemmeknow')
+conflicts=('lemmeknow')
+changelog=ChangeLog
+source=('lemmeknow::https://github.com/swanandx/lemmeknow/releases/download/v0.8.0/lemmeknow-linux')
+md5sums=('bc2233ca3b691475fac8a5af87451a67')
+sha256sums=('f6d6943780fb328b13847a367b0f8aee8077dfb1993c9cde7f04911bd9469a9f')
+
+
+package() {
+	install -Dm755 ./lemmeknow "$pkgdir/usr/bin/lemmeknow"
+}
