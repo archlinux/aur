@@ -5,7 +5,7 @@
 _pkgname=tiny-irc-client
 pkgname=$_pkgname-git
 pkgver=0.11.0.r18.e125c77
-pkgrel=2
+pkgrel=3
 pkgdesc='A terminal IRC client written in Rust'
 arch=(x86_64)
 url=https://github.com/osa1/tiny
@@ -21,23 +21,33 @@ sha512sums=(SKIP)
 _pkgname=${_pkgname%-irc-client}
 
 pkgver() {
-    cd $_pkgname
-    git describe --tags --long | \
-        sed -e 's/\([^-]*-\)g/r\1/' -e 's/-/./g' -e 's/^v//'
+    cd "$srcdir"/$_pkgname
+    git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//'
+}
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "$srcdir"/$_pkgname
+    cargo update
+    cargo fetch --locked --target $CARCH-unknown-linux-gnu
 }
 
 build() {
-    cd $_pkgname
-    cargo install --path crates/$_pkgname --features=desktop-notifications
+    cd "$srcdir"/$_pkgname
+    cargo build --frozen --release --features desktop-notifications
+}
+
+check() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "$srcdir"/$_pkgname
+    cargo test --frozen --workspace --features desktop-notifications
 }
 
 package() {
-    cd $_pkgname
-    install -Dm755 target/release/$_pkgname "$pkgdir"/usr/bin/$_pkgname
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
-    install -Dm644 crates/$_pkgname/config.yml \
-        "$pkgdir"/usr/share/$_pkgname/config.yml
-    mkdir -p "$pkgdir"/usr/share/doc/$_pkgname
-    install -Dm644 ARCHITECTURE.md CHANGELOG.md README.md \
-        "$pkgdir"/usr/share/doc/$_pkgname
+    cd "$srcdir"/$_pkgname
+    install -Dm755 -t "$pkgdir"/usr/bin target/release/$_pkgname
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$_pkgname \
+        ARCHITECTURE.md CHANGELOG.md README.md
+    install -Dm644 -t "$pkgdir"/usr/share/$_pkgname crates/$_pkgname/config.yml
 }
