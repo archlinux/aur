@@ -8,11 +8,11 @@
 
 ## Mozc compile option
 _bldtype='Release'
-_mozc_commit=4c6aef2
+_mozc_commit=8d8ea39
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20231105
+_utdicdate=20231122
 _dict=(alt-cannadic
        edict2
        jawiki
@@ -24,8 +24,8 @@ _dict=(alt-cannadic
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.29.5268.102.20231105
-pkgrel=2
+pkgver=2.29.5291.102.20231122
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -61,12 +61,12 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '9d587c87b541da699f497d756ba29064f916b762917634e2426d1a25c12422026e3bee072598b5dd40013bb02d064b293bddc1726eaa16b79f6804b2802a6cdf'
+            '3840b68d921b54bf62558ec52bcb6b4f138918038bdf5e7c51403d98d76f1b19237da336966d4dc41e2dadaaf49368ca3da04c0802289cf249df4c8411a788bc'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
             '2b86aecad9b75451ce9d99a63a26927a64f3215ef7387e04d649cac85d4c944570f2f8402ab18a594df9bb30a67d98148e53b4dd7ec41401d79f4ba2f91098fd'
-            '172efc2172b92d0259d211a2ec01a24a41936841ac40dee85915df332e063960810387a5b5597fc82f973a29d0bbd88f5ae2884ec8cfc58d3415175d88a24d9c'
+            '5135204ab245daa939f3b9410af852ea4a4630e03a0dd29d4cbe739ee716416db02ba54c95a1b1e2f3d9d33a8aa73ac57d9e3baa47d50924eefc3da8a2c6b5de'
             '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
-            '567d8d37678475467ceab8d240cea6c232f039be1f3126125111b6d08d105e4f2d90da713b7a250c6d53628cd9f261bb2f2b3d42deef3d26c2bc1e56933f0c10'
+            '7b5f6cdddb1feba65cd39d5d7e0eddb643e7614e1f9ed3f44066992989a488b8107e433051c3e8e936f4dd2053d180a5ece4d2729cf4deb7a7f5ecc27dca541a'
             '13d758583eeb9b49ce84540daa14e8ee37aeefc489c73353212e2c38dd4e891239569fa2798dd99a73e624b00e14074b27e0b984e71dcb911d4eed5baa43abb7'
             '0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6'
             '04cae106412de32b72dce2e30dd9d95d34ed5def78cdd7c7461dcc71a99750afbb8f3905100c0ea5cba7ff6298a9ee10fe65b04cff69252097ff88bcfb1addef')
