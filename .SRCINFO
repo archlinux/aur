@@ -1,15 +1,15 @@
 pkgbase = ruby-acme-client
 	pkgdesc = Client for the ACME protocol.
-	pkgver = 2.0.9
+	pkgver = 2.0.15
 	pkgrel = 1
 	url = http://github.com/unixcharles/acme-client
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-faraday
-	noextract = acme-client-2.0.9.gem
+	noextract = acme-client-2.0.15.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/acme-client-2.0.9.gem
-	sha1sums = e43dcec9ad4776d75820c7a12784b61faf566468
+	source = https://rubygems.org/downloads/acme-client-2.0.15.gem
+	sha1sums = f1a38ebe1e7096a764add3c7329ba9960f2fcd04
 
 pkgname = ruby-acme-client
