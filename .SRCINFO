@@ -1,13 +1,14 @@
 pkgbase = nouveau-fw-gsp
 	pkgdesc = NVIDIA GSP (Turing+) firmware for the latest GSP kernel code
 	pkgver = 535.113.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://us.download.nvidia.com/XFree86/Linux-x86_64/535.113.01/README/gsp.html
 	arch = any
 	license = MIT
 	license = custom
 	makedepends = git
 	makedepends = python3
+	conflicts = linux-firmware>=20231110.74158e7a
 	options = !strip
 	source = git+https://github.com/NVIDIA/open-gpu-kernel-modules.git#tag=535.113.01
 	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/535.113.01/NVIDIA-Linux-x86_64-535.113.01.run

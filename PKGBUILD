@@ -5,13 +5,14 @@
 
 pkgname=nouveau-fw-gsp
 pkgver=535.113.01
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA GSP (Turing+) firmware for the latest GSP kernel code"
 arch=('any')
 url="https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/README/gsp.html"
 license=('MIT' 'custom')
 options=('!strip') # Disabled for now to prevent potential issues
 makedepends=('git' 'python3')
+conflicts=('linux-firmware>=20231110.74158e7a') # This package version has the GSP firmware now
 _nvidia="NVIDIA-Linux-x86_64-${pkgver}"
 _gsp_output="_out/nvidia"
 source=("git+https://github.com/NVIDIA/open-gpu-kernel-modules.git#tag=${pkgver}"
