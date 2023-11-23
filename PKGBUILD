@@ -1,27 +1,35 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Prostar
-_pkgver=1.34.1
+_pkgver=1.34.2
 pkgname=r-${_pkgname,,}
-pkgver=1.34.1
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Provides a GUI for DAPAR'
-arch=('any')
+pkgdesc="Provides a GUI for DAPAR"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+license=(Artistic2.0)
 depends=(
-  r
+  r-colourpicker
   r-dapar
   r-dapardata
   r-data.table
+  r-dt
   r-future
   r-ggplot2
   r-gplots
+  r-gtools
   r-highcharter
   r-htmlwidgets
+  r-knitr
   r-later
   r-promises
+  r-r.utils
+  r-rclipboard
+  r-rcolorbrewer
   r-rhandsontable
+  r-sass
   r-shiny
   r-shinyace
   r-shinybs
@@ -29,35 +37,28 @@ depends=(
   r-shinyjqui
   r-shinyjs
   r-shinythemes
+  r-shinytree
+  r-shinywidgets
   r-tibble
   r-vioplot
   r-webshot
+  r-xml
 )
 optdepends=(
   r-biocmanager
   r-biocstyle
-  r-colourpicker
-  r-dt
-  r-gtools
-  r-knitr
-  r-r.utils
-  r-rclipboard
-  r-rcolorbrewer
-  r-sass
-  r-shinytree
-  r-shinywidgets
   r-testthat
-  r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('07bf4d888ce71f94d7f1a2103ef5dc0fc7f6df0286a63f99aec47274e4d0feb8')
+md5sums=('34a72c2121a4ed0a6f2535570f3c2f35')
+sha256sums=('69376ff380a77ac9ba0f2342d595ccdc5ff58cff2aa4ff698857a5ec51f1fc95')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
