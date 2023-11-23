@@ -1,7 +1,7 @@
 pkgbase = getdp
 	pkgdesc = general environment for the Treatment of Discrete Problems
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://getdp.info/
 	arch = x86_64
 	license = LGPL3
@@ -16,9 +16,10 @@ pkgbase = getdp
 	makedepends = flex
 	makedepends = bison
 	makedepends = texinfo
+	makedepends = ninja
 	depends = python
 	depends = gmsh
-	source = http://getdp.info/src/getdp-3.5.0-source.tgz
-	sha256sums = 0bf76c49efa9b88401a457c12f7aabd97597ad49ef632d3fb9308aa8ea437bdc
+	source = git+https://gitlab.onelab.info/getdp/getdp.git#tag=getdp_3_5_0
+	sha256sums = SKIP
 
 pkgname = getdp
