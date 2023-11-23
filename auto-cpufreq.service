@@ -5,7 +5,7 @@ After=network.target network-online.target
 [Service]
 Type=simple
 User=root
-ExecStart= auto-cpufreq --daemon
+ExecStart=auto-cpufreq --daemon
 Restart=on-failure
 
 [Install]
