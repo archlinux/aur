@@ -18,8 +18,7 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "$srcdir"/$_pkgname
-    git describe --tags --long | \
-        sed -e 's/\([^-]*-\)g/r\1/' -e 's/-/./g' -e 's/^v//'
+    git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
@@ -42,8 +41,7 @@ check() {
 
 package() {
     cd "$srcdir"/$_pkgname
-    install -Dm 755 -t "$pkgdir"/usr/bin target/release/$_pkgname
-    install -Dm 644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
-    mkdir -p "$pkgdir"/usr/share/doc/$_pkgname
-    install -Dm 644 CHANGELOG.md README.md "$pkgdir"/usr/share/doc/$_pkgname
+    install -Dm755 -t "$pkgdir"/usr/bin target/release/$_pkgname
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$_pkgname CHANGELOG.md README.md
 }
