@@ -1,6 +1,6 @@
 pkgbase = mozc-ut-full
 	pkgver = 2.29.5268.102.20231105
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = custom
@@ -20,8 +20,8 @@ pkgbase = mozc-ut-full
 	makedepends = ruby
 	noextract = jawiki-latest-all-titles-in-ns0-20231105.gz
 	source = git+https://github.com/fcitx/mozc.git#commit=4c6aef2
-	source = https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut-full/x-ken-all-202110.zip
-	source = https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut-full/jigyosyo-202110.zip
+	source = https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/x-ken-all-202110.zip
+	source = https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/jigyosyo-202110.zip
 	source = git+https://github.com/abseil/abseil-cpp.git
 	source = git+https://chromium.googlesource.com/breakpad/breakpad
 	source = git+https://github.com/google/googletest.git
