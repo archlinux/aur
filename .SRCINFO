@@ -1,12 +1,15 @@
 pkgbase = vorta
 	pkgdesc = A GUI for BorgBackup
-	pkgver = 0.8.12
-	pkgrel = 1
+	pkgver = v0.8.12
+	pkgrel = 2
 	url = https://github.com/borgbase/vorta
 	arch = any
 	license = GPL
 	makedepends = qt5-tools
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = borg
 	depends = python-appdirs
 	depends = python-pyqt5
@@ -17,7 +20,7 @@ pkgbase = vorta
 	depends = python-llfuse
 	depends = python-setuptools
 	options = !emptydirs
-	source = vorta-0.8.12.tar.gz::https://github.com/borgbase/vorta/archive/v0.8.12.tar.gz
+	source = vorta-v0.8.12.tar.gz::https://github.com/borgbase/vorta/archive/vv0.8.12.tar.gz
 	sha256sums = 697a1d6f6f93b1b2447c7f19cf250d24d72e2f784e62c54287d9ee39cac59f38
 
 pkgname = vorta
