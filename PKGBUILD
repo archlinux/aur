@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-sensors
-pkgver=7.1.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Provides numerous sensor models designed to generate realistic data
 from simulation environments."
@@ -16,10 +16,10 @@ depends=(
     sdformat
 )
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-sensors/archive/gz-sensors7_${pkgver}.tar.gz")
-sha256sums=('b9b1aae94c20fa849015a203e9dbf4ed97e0152ae5f5c3de88cb4e44900ea6cd')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-sensors/archive/gz-sensors8_${pkgver}.tar.gz")
+sha256sums=('f86d6572f31efc199a623462faaa1b380c91a3706a60561aa498562aa939184e')
 
-_dir="gz-sensors-gz-sensors7_${pkgver}"
+_dir="gz-sensors-gz-sensors8_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
