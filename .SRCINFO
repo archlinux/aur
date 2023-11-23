@@ -1,6 +1,6 @@
 pkgbase = srsran-4g-git
 	pkgdesc = Open source SDR 4G software suite from Software Radio Systems (SRS)
-	pkgver = 22.10.0.r4.g5a4eb5d
+	pkgver = 23.11.0.r0.geea87b1
 	pkgrel = 1
 	url = https://www.srsran.com
 	arch = x86_64

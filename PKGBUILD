@@ -3,7 +3,7 @@
 pkgbase=srsran-4g-git
 pkgname=$pkgbase
 _pkgname=srsRAN_4G
-pkgver=22.10.0.r4.g5a4eb5d
+pkgver=23.11.0.r0.geea87b1
 pkgrel=1
 pkgdesc='Open source SDR 4G software suite from Software Radio Systems (SRS)'
 arch=('x86_64' 'aarch64')
@@ -57,6 +57,7 @@ build() {
     -B "build" \
     -S "${_pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_WERROR=False \
     -DCMAKE_BUILD_TYPE=Release
   make -C "build"
 }
