@@ -1,7 +1,7 @@
 pkgbase = woodpecker-agent-sudo
 	pkgdesc = A simple CI engine with great extensibility (agent), patched to use sudo to run local pipelines
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://woodpecker-ci.org
 	arch = x86_64
 	license = Apache
@@ -15,7 +15,7 @@ pkgbase = woodpecker-agent-sudo
 	replaces = woodpecker-agent
 	options = !lto
 	backup = etc/woodpecker/agent.env
-	source = woodpecker::git+https://github.com/woodpecker-ci/woodpecker#commit=d9e06696bf85f260a0550d58301ac396874b32e3
+	source = woodpecker::git+https://github.com/woodpecker-ci/woodpecker#commit=0fc428aa8eb8152aafd186d5232f27008c78add8
 	source = agent-systemd.service
 	source = agent-sysusers.conf
 	source = agent-tmpfiles.conf
@@ -27,7 +27,7 @@ pkgbase = woodpecker-agent-sudo
 	b2sums = 373a5889c899445c4b583a48e6d0ff67d4572e30e0dfd0842b389e9338712771ec053ee3771202fe2874ee8bbfb7cb5965a04cf10d4071100c4f7c89cf2a14f3
 	b2sums = b6479a7f3b3cf1ecaf0fc4e0653de10176af29b780ff716bf038077d70b0440e45a649ccd5ad9a12d5f52c9eecf9b5d8b5a01510a53eec7b664162c8bb9153ab
 	b2sums = 9d64fa22d5fcfb8634926220aeb89b0fa914d8e04ee39fe14abf3f170292ab2dc875fe3fe14b054ca8173c167cec4d93518d15d5f08698bd70d86dec7728dee8
-	b2sums = 3f7cb5620859d171b0fc9c177c09388a830bdc2343f8182bb794c18544070a78f6fd692c699c5c9fda262bf4919bb53a696ea7396c4e9c7e987788f052e9f19f
-	b2sums = 85b75986c0df0853126eb20ce80861337654646bb3df02666b6c77962090df12be35eac11dab724d96c4c4b1e6c373ce0a8d6b99843232be0311273bddb1141a
+	b2sums = 1e586f4ef03c0928a9371c24c222b3dbe08cf11fd3ea912eff86103085faf04b5c19391d16bfb6d5ec67e5cb5556485825b3bee8124359bbaa89c6e6ea3357b8
+	b2sums = 86cbff1c5554c4426b3de872696cae6eed093987ccec940283e340e6cc23d226d268b38f0843b19d2706167f13ac4e20d9340f47ce5dc8ad3cbdb80d501c4fc4
 
 pkgname = woodpecker-agent-sudo
