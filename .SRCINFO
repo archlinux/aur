@@ -1,0 +1,20 @@
+pkgbase = r-gdnainrnaseqdata
+	pkgdesc = RNA-seq data with different levels of gDNA contamination
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/gDNAinRNAseqData
+	arch = any
+	license = Artistic2.0
+	depends = r-biocgenerics
+	depends = r-experimenthub
+	depends = r-rcurl
+	depends = r-rsamtools
+	depends = r-xml
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/gDNAinRNAseqData_1.2.0.tar.gz
+	md5sums = 52e275ca255493684657a091667f987f
+	sha256sums = 887fb03e45da8cbb10d1924c34e8cccc4e2815ae0a815f58bfb386c56123618f
+
+pkgname = r-gdnainrnaseqdata
