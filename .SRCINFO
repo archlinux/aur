@@ -1,6 +1,6 @@
 pkgbase = freshfetch-git
 	pkgdesc = A fresh take on Neofetch
-	pkgver = v0.2.0.r7.gace04ea
+	pkgver = 0.2.0.r7.gace04ea
 	pkgrel = 1
 	url = https://github.com/K4rakara/freshfetch
 	arch = any
