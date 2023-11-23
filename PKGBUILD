@@ -4,8 +4,8 @@ pkgname=wsjtx-improved
 _pkgname=wsjtx
 pkgver=2.7.1
 _pkgver="-devel"
-_build=231110
-pkgrel=8
+_build=231124
+pkgrel=9
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wsjt-x-improved/"
@@ -37,8 +37,8 @@ install=wsjtx-improved.install
 provides=('wsjtx')
 conflicts=('wsjtx')
 source=("https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$pkgver/Source%20code/$_pkgname-${pkgver}${_pkgver}_improved_PLUS_${_build}.tgz")
-md5sums=('e9ee9a0a241ada9ac1ff092097217ccd')
-sha1sums=('ae22914678a9740abbfcca28ce27d934667585b2')
+md5sums=('7f49f7e558d880f8d8bfe58526127773')
+sha1sums=('b5fdf8cd33ba1466dc15abbbea3a054a9d9e4604')
 
 options=(!lto)
 
