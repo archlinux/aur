@@ -1,42 +1,52 @@
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: VargArch <roels.jorick@gmail.com>
 # Contributor: zsrkmyn
 # Contributor: marsam
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ctags-git
-pkgver=5.9.20220417.0.r9.gb35f157c4
+pkgver=6.0.0.r525.gc480d71e1
 pkgrel=1
-pkgdesc='Generates an index (or tag) file of language objects found in source files'
-arch=('x86_64')
-url=https://ctags.io
+pkgdesc="Generates an index file of language objects found in source files"
+arch=('i686' 'x86_64')
+url="https://ctags.io/"
 license=('GPL')
-depends=('jansson' 'libseccomp' 'libxml2' 'libyaml')
+depends=('glibc' 'jansson' 'libseccomp' 'libseccomp.so' 'libxml2' 'libyaml' 'pcre2')
 makedepends=('git' 'python-docutils')
-provides=('ctags')
+provides=("ctags=$pkgver")
 conflicts=('ctags')
 source=("git+https://github.com/universal-ctags/ctags.git")
-b2sums=('SKIP')
+sha256sums=('SKIP')
+
 
 pkgver() {
-  cd ctags
-  git describe --long --tags | sed 's/^p//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "ctags"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-  cd ctags
+  cd "ctags"
+
   ./autogen.sh
-  ./configure --prefix=/usr \
-              --libexecdir=/usr/lib \
-              --sysconfdir=/etc
+  ./configure \
+    --prefix="/usr"
   make
 }
 
 check() {
-  make -C ctags check
+  cd "ctags"
+
+  #make check
 }
 
 package() {
-  make -C ctags DESTDIR="$pkgdir" install
+  cd "ctags"
+
+  make DESTDIR="$pkgdir" install
 }
