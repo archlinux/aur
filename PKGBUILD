@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=neanes-bin
 _pkgname=Neanes
-pkgver=0.4.6
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="A free and open source scorewriter for notating Byzantine chant in Byzantine notation."
 arch=('x86_64')
@@ -11,9 +11,14 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
     'electron24'
     'hicolor-icon-theme'
+    'libx11'
+    'gdk-pixbuf2'
+    'libxext'
+    'libdbusmenu-glib'
+    'gtk2'
+    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -21,7 +26,7 @@ makedepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
-sha256sums=('aea771d8ca662ba817690bc6a1b54cc3e7a66f83803763a620030adaaf1d4ab9'
+sha256sums=('4db0735a50c9bc918b83dcf54fc9caa7e70c5f130402e2b46f61d45061670c1b'
             '84548e2c916c88102403b76d02f56702bc69bfd200b5b1c0fc3605e762009e03')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
