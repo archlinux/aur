@@ -1,0 +1,35 @@
+pkgbase = r-mashr
+	pkgdesc = Multivariate Adaptive Shrinkage
+	pkgver = 0.2.79
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mashr
+	arch = x86_64
+	license = BSD
+	checkdepends = r-testthat
+	makedepends = r-rcpparmadillo
+	makedepends = r-rcppgsl
+	depends = blas
+	depends = gsl
+	depends = lapack
+	depends = r-abind
+	depends = r-ashr
+	depends = r-assertthat
+	depends = r-mvtnorm
+	depends = r-plyr
+	depends = r-rcpp
+	depends = r-rmeta
+	depends = r-softimpute
+	optdepends = r-corrplot
+	optdepends = r-ebnm
+	optdepends = r-flashier
+	optdepends = r-kableextra
+	optdepends = r-knitr
+	optdepends = r-profmem
+	optdepends = r-rebayes
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/mashr_0.2.79.tar.gz
+	md5sums = 3ddec828c72b1d1b594f35a3934e7f88
+	sha256sums = 158b3670277523fa3168a46a9d80a1f6dd7063091b54584cd170eb70bf85f886
+
+pkgname = r-mashr
