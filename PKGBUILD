@@ -1,8 +1,8 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-physics
-pkgver=6.3.0
-pkgrel=2
+pkgver=7.0.0
+pkgrel=1
 pkgdesc="Abstract physics interface designed to support simulation and rapid
 development of robot applications."
 arch=('x86_64')
@@ -11,10 +11,10 @@ license=('Apache')
 depends=('ignition-cmake>2' 'ignition-math>6' 'ignition-plugin'
          'ignition-common>3' 'libdart' 'sdformat>9')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-physics/archive/gz-physics6_${pkgver}.tar.gz")
-sha256sums=('30be46667ab4db00de64580019ab4f27c0cd0e517b463750188e07f2e89c7fa9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-physics/archive/gz-physics7_${pkgver}.tar.gz")
+sha256sums=('d352b68bec5d2e28cb20237d2cb68917e4acfe122e6df0dc059ed436d65fd270')
 
-_dir="gz-physics-gz-physics6_${pkgver}"
+_dir="gz-physics-gz-physics7_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
