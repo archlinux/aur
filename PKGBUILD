@@ -7,10 +7,10 @@
 # Contributor: 
 # 
 pkgname='wg_tool'
-pkgdesc='Tool to manage wireguard server and user configs'
+pkgdesc='Tool administer wireguard VPN (server and users)'
 _gitname='wg_tool'
 
-pkgver=5.4.1
+pkgver=5.5.0
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
@@ -22,7 +22,7 @@ depends=('python>3.9' 'python-packaging' 'python-netaddr'
          'python-tomli'
         )
 # To build docs uncommont sphinx/texlive
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry' 'rsync'
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
              #'python-sphinx' 'texlive-latexextra' # Docs
             )
 
