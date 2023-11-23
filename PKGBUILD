@@ -1,10 +1,10 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wf-shell
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK3-based panel for the Wayfire compositor'
 url=https://wayfire.org
-arch=(x86_64)
+arch=(x86_64 aarch6)
 license=(custom:MIT)
 conflicts=("${pkgname}-git")
 depends=('gtk-layer-shell>=0.5' "wayfire>=${pkgver%.*}" libpulse gtkmm3 alsa-lib libdbusmenu-gtk3)
