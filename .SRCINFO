@@ -1,7 +1,7 @@
 pkgbase = r-crosstalk
 	pkgdesc = Inter-Widget Interactivity for HTML Widgets
-	pkgver = 1.2.0
-	pkgrel = 7
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=crosstalk
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = r-crosstalk
 	optdepends = r-sass
 	optdepends = r-shiny
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/crosstalk_1.2.0.tar.gz
-	sha256sums = 4237baab35cd246a8a98fb9cf4ce53b6ddbc31d00742ded4edea0479613d1ea0
+	source = https://cran.r-project.org/src/contrib/crosstalk_1.2.1.tar.gz
+	sha256sums = 680cf08416d6d5a1194dd85ee5695c268af9d4d01b201448e1d486c6e06014f1
 
 pkgname = r-crosstalk
