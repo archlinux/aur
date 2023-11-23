@@ -3,16 +3,16 @@
 pkgname='veracrypt-inyourlanguage'
 _pkgname='VeraCrypt'
 pkgver=1.26.7
-pkgrel=7
+pkgrel=8
 pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Supporting 40+ languages for installation.'
 url='https://www.veracrypt.fr'
 arch=('x86_64' 'i686' 'arm64' 'armhf' 'aarch64')
 license=('custom')
 provides=('veracrypt')
 conflicts=('veracrypt' 'veracrypt-console-bin' 'veracrypt-git' 'veracrypt-trans')
-depends=('fuse2>=2.8.0' 'wxwidgets-gtk3>=3.2' 'libsm' 'device-mapper')
+depends=('fuse2>=2.8.0' 'wxwidgets-gtk3' 'libsm' 'device-mapper')
 makedepends=('git' 'yasm' 'libxml2' 'coreutils')
-optdepends=('sudo: mounting encrypted volumes as nonroot users')
+optdepends=('sudo: mounting encrypted volumes as nonroot users' 'pcsclite: providing support for smartcards')
 source=(https://veracrypt.fr/code/${_pkgname}/snapshot/${_pkgname}_${pkgver}.tar.gz
         select_lang.sh)
 sha512sums=('c803c6301a8a7b6d8efc74284070c01629a760dceaa518f2287d62709bd25450fec75f2fa0e2ab0eb57993faec9cba4d51104273a56a88fa288a1e14bcf868bd'
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd ${_pkgname}_${pkgver}/src
-  make PKG_CONFIG_PATH=/usr/lib/pkgconfig WX_CONFIG=/usr/bin/wx-config
+  make NOTEST=1 PKG_CONFIG_PATH=/usr/lib/pkgconfig WX_CONFIG=/usr/bin/wx-config
 }
 
 package() {

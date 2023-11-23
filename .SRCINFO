@@ -1,7 +1,7 @@
 pkgbase = veracrypt-inyourlanguage
 	pkgdesc = Disk encryption with strong security based on TrueCrypt 7.1a. Supporting 40+ languages for installation.
 	pkgver = 1.26.7
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.veracrypt.fr
 	arch = x86_64
 	arch = i686
@@ -14,10 +14,11 @@ pkgbase = veracrypt-inyourlanguage
 	makedepends = libxml2
 	makedepends = coreutils
 	depends = fuse2>=2.8.0
-	depends = wxwidgets-gtk3>=3.2
+	depends = wxwidgets-gtk3
 	depends = libsm
 	depends = device-mapper
 	optdepends = sudo: mounting encrypted volumes as nonroot users
+	optdepends = pcsclite: providing support for smartcards
 	provides = veracrypt
 	conflicts = veracrypt
 	conflicts = veracrypt-console-bin
