@@ -1,8 +1,8 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-gazebo
-pkgver=7.4.0
-pkgrel=3
+pkgver=8.0.0
+pkgrel=1
 pkgdesc="Open source robotics simulator. The latest version of Gazebo."
 arch=('x86_64')
 url="https://gazebosim.org/libs/gazebo"
@@ -13,10 +13,10 @@ depends=('benchmark' 'gflags' 'tinyxml2' 'tinyxml' 'eigen' 'qt5-declarative'
          'ignition-tools>1' 'ignition-transport>8' 'ignition-gui' 'ignition-msgs>5'
          'sdformat' 'ignition-fuel_tools>4' 'ignition-sensors')
 makedepends=('cmake' 'ruby-ronn' 'doxygen')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-sim/archive/gz-sim7_${pkgver}.tar.gz")
-sha256sums=('f8707038bc692f5157e3ff6852f83f876f5939697aafd0393747ee171479fd29')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-sim/archive/gz-sim8_${pkgver}.tar.gz")
+sha256sums=('c6298a9d03b9a6e5badd1a78a3b178201e9efac2209bbc2fe5a6b6bbba85125c')
 
-_dir="gz-sim-gz-sim7_${pkgver}"
+_dir="gz-sim-gz-sim8_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"

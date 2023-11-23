@@ -1,7 +1,7 @@
 pkgbase = ignition-gazebo
 	pkgdesc = Open source robotics simulator. The latest version of Gazebo.
-	pkgver = 7.4.0
-	pkgrel = 3
+	pkgver = 8.0.0
+	pkgrel = 1
 	url = https://gazebosim.org/libs/gazebo
 	arch = x86_64
 	license = Apache
@@ -27,7 +27,7 @@ pkgbase = ignition-gazebo
 	depends = sdformat
 	depends = ignition-fuel_tools>4
 	depends = ignition-sensors
-	source = ignition-gazebo-7.4.0.tar.gz::https://github.com/gazebosim/gz-sim/archive/gz-sim7_7.4.0.tar.gz
-	sha256sums = f8707038bc692f5157e3ff6852f83f876f5939697aafd0393747ee171479fd29
+	source = ignition-gazebo-8.0.0.tar.gz::https://github.com/gazebosim/gz-sim/archive/gz-sim8_8.0.0.tar.gz
+	sha256sums = c6298a9d03b9a6e5badd1a78a3b178201e9efac2209bbc2fe5a6b6bbba85125c
 
 pkgname = ignition-gazebo
