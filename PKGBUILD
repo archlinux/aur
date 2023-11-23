@@ -37,6 +37,8 @@ prepare() {
       popd
     popd
 
+    # Remove any existing package
+    rm -rf heroku/
     # final installation
     mv package heroku
     pushd heroku
