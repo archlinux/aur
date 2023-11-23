@@ -5,7 +5,7 @@
 _name="luxcorerender"
 
 pkgname=blender-plugin-${_name}-git
-pkgver=2.6.r14.gd435660
+pkgver=2.7.beta1.r1.g51501293
 pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
