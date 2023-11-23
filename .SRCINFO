@@ -6,6 +6,7 @@ pkgbase = mingw-w64-libmixmod
 	arch = any
 	license = GPL
 	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-eigen
 	depends = mingw-w64-crt
 	options = !buildflags
 	options = !strip
