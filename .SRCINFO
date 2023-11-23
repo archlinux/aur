@@ -1,11 +1,11 @@
 pkgbase = jbr17-imfix
 	pkgdesc = jetbrains runtime environment with imfix patch
-	pkgver = 17.0.8.1b1080.1
+	pkgver = 17.0.9b1087.7
 	pkgrel = 1
 	url = https://github.com/AlanSune/JetBrainsRuntime-for-Linux-x64
 	arch = x86_64
 	license = GPL
-	source = https://github.com/AlanSune/JetBrainsRuntime-for-Linux-x64/releases/download/jbr-release-17.0.8.1b1080.1/jbr_jcef-17.0.8.1-linux-x64-b1080.1.tar.gz
-	sha256sums = 4409917fd1df80d0dcc157ad4e1bef8e45807d761bcdb2b2fd5a106600df8b08
+	source = https://github.com/AlanSune/JetBrainsRuntime-for-Linux-x64/releases/download/jbr-release-17.0.9b1087.7/jbr_jcef-17.0.9-linux-x64-b1087.7.tar.gz
+	sha256sums = 947372efd90474c9891619ecd3038bdd72842c6b11129ccae507b8c390153a77
 
 pkgname = jbr17-imfix
