@@ -4,8 +4,8 @@
 
 pkgname=siril-git
 _pkgname=${pkgname%-git}
-pkgver=1.2.0.6073.e36485055
-pkgrel=3
+pkgver=1.2.0.6313.272d5c6a8
+pkgrel=2
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -20,6 +20,7 @@ depends=(
 		'libxisf'
 		'ffms2'
 		'libraw'
+		'libheif'
 		)
 checkdepends=('criterion' 'libcurl-gnutls')
 makedepends=('git' 'cmake' 'meson' 'ninja')
@@ -32,7 +33,6 @@ source=('git+https://gitlab.com/free-astro/siril.git')
 sha1sums=('SKIP')
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
-replaces=($_pkgname)
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
