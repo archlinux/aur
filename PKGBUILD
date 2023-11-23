@@ -3,7 +3,7 @@
 # Original contributor: Félix Saparelli <aur@passcod.name>
 
 pkgname=talon-bin
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Powerful hands-free voice and gaze input scriptable with Python'
 url='https://talonvoice.com/'

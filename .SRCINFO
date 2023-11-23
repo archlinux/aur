@@ -1,6 +1,6 @@
 pkgbase = talon-bin
 	pkgdesc = Powerful hands-free voice and gaze input scriptable with Python
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://talonvoice.com/
 	install = talon.install
