@@ -1,6 +1,6 @@
 pkgbase = r-lefser
 	pkgdesc = R implementation of the LEfSE method for microbiome biomarker discovery
-	pkgver = 1.11.5
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/lefser
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = r-lefser
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/lefser_1.11.5.tar.gz
-	md5sums = a65d492fab0511df011242671a8055c3
-	sha256sums = 4273d86f862935ac23ced81899bbdb1ce86e4c067bb34a5b28ae3f4aa565ccba
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/lefser_1.12.1.tar.gz
+	md5sums = c3b2deaf4b58de1bb930164df11a388f
+	sha256sums = 157dbfc094dc414ae49baa7b55a3ff48d857a6bb0f189c45509c73726de4dc2b
 
 pkgname = r-lefser

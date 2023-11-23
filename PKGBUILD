@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lefser
-_pkgver=1.11.5
+_pkgver=1.12.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a65d492fab0511df011242671a8055c3')
-sha256sums=('4273d86f862935ac23ced81899bbdb1ce86e4c067bb34a5b28ae3f4aa565ccba')
+md5sums=('c3b2deaf4b58de1bb930164df11a388f')
+sha256sums=('157dbfc094dc414ae49baa7b55a3ff48d857a6bb0f189c45509c73726de4dc2b')
 
 build() {
   mkdir -p build
