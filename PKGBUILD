@@ -3,7 +3,7 @@
 # Contributor: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname=python-simple-term-menu
-pkgver=1.6.1
+pkgver=1.6.3
 pkgrel=2
 pkgdesc='A Python package which creates simple interactive menus on the command line.'
 arch=('any')
@@ -16,8 +16,8 @@ makedepends=(
 checkdepends=()
 optdepends=()
 source=("https://pypi.python.org/packages/source/s/simple-term-menu/simple-term-menu-${pkgver}.tar.gz")
-sha512sums=('3b24f3b0cff60897f83644901f58fbe9d1131694cd3b62adf219893a771b170ce2183558cba299309d592a8a76c53eb38924a98bdf8ab7cbea341ace1407b9aa')
-b2sums=('4aa46609d386638e8e9ff0863f8161de77dd2f2ef3d5c0b0e193a916c1b7484effa72487760fb010998a442d24cd5bcfe93b9debf739b61fd556fddad92d2e26')
+sha512sums=('58dbbc0c01d8b16d12d546568373f88c580c365c7e175b553656a27fc58ceddd608435a2976ee9654e451f9cb76fcd590e37e3417cee3ebaf72c6ebf48d79452')
+b2sums=('b38b04a7ba34c0cc95bfd2ae990bd6472f663d819a7362f8fec9dcdb0c59d8aa21da49a78b32739b8ebbbc83c655d92a259af545f5d1d82920b533bf387d343b')
 
 pkgver() {
   echo $pkgver
