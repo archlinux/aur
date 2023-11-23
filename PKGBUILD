@@ -5,11 +5,11 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2023.5
-_channel=stable
+_pkgver=2023.6
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -21,9 +21,9 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=93fcf31a5ea75fff5277d2698df1670d5019552f  # tags/2023.5^0
-_commit=29a4c7205e78c651fcd1b8c3a55181c0d86a50d3
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}"  # signed by raksooo, public key not uploaded yet
+_tag=cc08c585e53991c00deb6733526bb703c477c086  # tags/2023.6-beta1^0
+_commit=d9db5c930cb3eb1d3ee048e5546be6377dedf8ab
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}"  # signed by Oskar Nyberg (raksooo), public key not uploaded yet
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         'no-rpm.diff'
         "${pkgname%-beta}.sh")
@@ -31,18 +31,18 @@ sha256sums=('SKIP'
             'SKIP'
             'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
-validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87' # Linus Färnstrand (code signing key) <linus@mullvad.net>
+validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
               '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
               )
 
 prepare() {
-  cd "$srcdir/mullvadvpn-app"
+  cd mullvadvpn-app
   git submodule init
   git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
   git -c protocol.file.allow=always submodule update
 
-  # Disable building of rpm
+  # Disable building rpm
   patch --strip=1 gui/tasks/distribution.js < ../no-rpm.diff
 
   export CARGO_HOME="$srcdir/cargo-home"
@@ -63,7 +63,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/mullvadvpn-app"
+  cd mullvadvpn-app
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -131,7 +131,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/mullvadvpn-app"
+  cd mullvadvpn-app
 
   # Install main files
   install -d "$pkgdir/opt/Mullvad VPN"
