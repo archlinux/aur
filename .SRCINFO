@@ -1,6 +1,6 @@
 pkgbase = libxml2
 	pkgdesc = XML C parser and toolkit
-	pkgver = 2.12.0
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = libxml2
 	depends = readline
 	depends = xz
 	depends = zlib
-	source = git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=5e9b167dce73bd6a804ab107ae4c4b95e6849597
+	source = git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=f4ac9926a463ecb628f73049e4fd7ecced8fb7cf
 	source = 0001-HACK-Don-t-run-fuzzing-tests.patch
 	source = https://www.w3.org/XML/Test/xmlts20130923.tar.gz
 	b2sums = SKIP
