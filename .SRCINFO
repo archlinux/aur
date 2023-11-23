@@ -1,7 +1,7 @@
 pkgbase = icaclient-beta
 	pkgdesc = Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology Preview]
 	pkgver = 23.11.0.62
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html
 	install = citrix-client.install
 	arch = x86_64
@@ -48,11 +48,11 @@ pkgbase = icaclient-beta
 	sha256sums = cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe
 	sha256sums = fe0b92bb9bfa32010fe304da5427d9ca106e968bad0e62a5a569e3323a57443f
 	sha256sums = a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4
-	source_x86_64 = icaclient-x64-23.11.0.62.tar.gz::https://downloads.citrix.com/22343/linuxx64-23.11.0.62.tar.gz?__gda__=exp=1700775626~acl=/*~hmac=b4c60f14b47a26d90a0715ee94642d705cf76ce5ccebc22c4f0ee4ad7dc3bf3f
+	source_x86_64 = icaclient-x64-23.11.0.62.tar.gz::https://downloads.citrix.com/22343/linuxx64-23.11.0.62.tar.gz?__gda__=exp=1700776239~acl=/*~hmac=5725f0a6ce12de99d6ce77925dcd2e890e472fdd0bbc66e4cf1d31e0806b5c22
 	sha256sums_x86_64 = SKIP
-	source_i686 = icaclient-x86-23.11.0.62.tar.gz::https://downloads.citrix.com/22343/linuxx86-23.11.0.62.tar.gz?__gda__=exp=1700775626~acl=/*~hmac=b4c60f14b47a26d90a0715ee94642d705cf76ce5ccebc22c4f0ee4ad7dc3bf3f
+	source_i686 = icaclient-x86-23.11.0.62.tar.gz::https://downloads.citrix.com/22343/linuxx86-23.11.0.62.tar.gz?__gda__=exp=1700776239~acl=/*~hmac=5725f0a6ce12de99d6ce77925dcd2e890e472fdd0bbc66e4cf1d31e0806b5c22
 	sha256sums_i686 = SKIP
-	source_armv7h = icaclient-armhf-23.11.0.62.tar.gz::https://downloads.citrix.com/22343/linuxarmhf-23.11.0.62.tar.gz?__gda__=exp=1700775626~acl=/*~hmac=b4c60f14b47a26d90a0715ee94642d705cf76ce5ccebc22c4f0ee4ad7dc3bf3f
+	source_armv7h = icaclient-armhf-23.11.0.62.tar.gz::https://downloads.citrix.com/22343/linuxarmhf-23.11.0.62.tar.gz?__gda__=exp=1700776239~acl=/*~hmac=5725f0a6ce12de99d6ce77925dcd2e890e472fdd0bbc66e4cf1d31e0806b5c22
 	sha256sums_armv7h = SKIP
 
 pkgname = icaclient-beta

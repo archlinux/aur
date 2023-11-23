@@ -31,7 +31,7 @@ pkgver() {
 }
 pkgver="$(pkgver "")"
 pkgname=icaclient-beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology Preview]"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html'
