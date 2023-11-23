@@ -1,7 +1,7 @@
 pkgbase = wcm
 	pkgdesc = Wayfire Configuration Manager
 	pkgver = 0.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wayfire.org
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,9 @@ pkgbase = wcm
 	makedepends = ninja
 	makedepends = glm
 	depends = wayfire>=0.8
+	depends = wayfire<0.9
 	depends = wf-shell>=0.8
+	depends = wf-shell<0.9
 	depends = gtkmm3
 	depends = wdisplays
 	source = https://github.com/WayfireWM/wcm/releases/download/v0.8.0/wcm-0.8.0.tar.xz
