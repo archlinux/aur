@@ -5,7 +5,7 @@ pkgbase = whisper.cpp-model-large-v1
 	url = https://github.com/ggerganov/whisper.cpp/tree/master/models
 	arch = i686
 	arch = x86_64
-	license = GPLv3
+	license = MIT
 	source = large-v1.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v1.bin
 	sha1sums = b1caaf735c4cc1429223d5a74f0f4d0b9b59a299
 
