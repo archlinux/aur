@@ -11,16 +11,22 @@ Restart=on-failure
 User=iceshrimp
 Group=iceshrimp
 
-WorkingDirectory=/usr/share/iceshrimp
 Environment="NODE_ENV=production"
+Environment="COREPACK_HOME=/var/lib/iceshrimp/cache/corepack"
+Environment="YARN_HOME=/var/lib/iceshrimp/cache/yarn"
+Environment="ICESHRIMP_CONFIG=/etc/iceshrimp/configuration.yml"
+Environment="ICESHRIMP_MEDIA_DIR=/var/lib/iceshrimp/files"
+Environment="ICESHRIMP_CUSTOM_DIR=/usr/share/iceshrimp/custom"
+
+WorkingDirectory=/usr/share/iceshrimp
 SyslogIdentifier=iceshrimp
 ExecStart=/usr/bin/corepack yarn migrateandstart
 
 ReadOnlyPaths=/usr/share/iceshrimp
-ReadOnlyPaths=/etc/iceshrimp/default.yml
+ReadOnlyPaths=/etc/iceshrimp/configuration.yml
 ReadWritePaths=/var/lib/iceshrimp/files
-ReadWritePaths=/var/lib/iceshrimp/.cache
-NoExecPaths=/var/lib/iceshrimp/.cache
+ReadWritePaths=/var/lib/iceshrimp/cache
+NoExecPaths=/var/lib/iceshrimp/cache
 NoExecPaths=/var/lib/iceshrimp/files
 
 RestrictSUIDSGID=true
