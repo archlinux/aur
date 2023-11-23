@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=qbittorrent-enhanced-nox
-pkgver=4.6.0.10
+pkgver=4.6.1.10
 pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition), w/o GUI"
@@ -28,7 +28,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-	'22ef335a4fa2f8d90c97cbf48efbf6d77fb86853c2faee7271400a5466427112'
+	'e140f4434e5c91d466930ecf3f9bd8d2390ebfe1802e1933dde70eb280fb41e5'
 	'SKIP'
 	'SKIP'
 	'SKIP'
