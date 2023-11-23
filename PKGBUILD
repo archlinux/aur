@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=lib32-libheif
-pkgver=1.17.3
+pkgver=1.17.5
 pkgrel=1
 pkgdesc="HEIF file format decoder and encoder (32-bit)"
 arch=('x86_64')
@@ -12,18 +12,18 @@ depends=(
   'lib32-gcc-libs'
   'lib32-glibc'
   "libheif=${pkgver}"
+  'lib32-gdk-pixbuf2' 'libgdk_pixbuf-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
+  'lib32-libwebp' 'libsharpyuv.so'
 )
 makedepends=(
   'cmake'
-  'lib32-gdk-pixbuf2'
-  'lib32-libwebp'
   'lib32-libjpeg'
   'lib32-libpng'
   'lib32-svt-av1'
   'lib32-rav1e'
   'lib32-libde265'
   'lib32-x265'
-  'lib32-libdav1d'
+#   'lib32-libdav1d'
   'lib32-aom'
 )
 optdepends=(
@@ -38,7 +38,8 @@ optdepends=(
 )
 provides=('libheif.so')
 source=("https://github.com/strukturag/libheif/releases/download/v${pkgver}/libheif-${pkgver}.tar.gz")
-sha256sums=('8d5b6292e7931324f81f871f250ecbb9f874aa3c66b4f6f35ceb0bf3163b53ea')
+sha256sums=('38ab01938ef419dbebb98346dc0b1c8bb503a0449ea61a0e409a988786c2af5b')
+options=('debug')
 
 build() {
 
@@ -60,10 +61,6 @@ build() {
 }
 
 package() {
-  depends+=(
-    'lib32-gdk-pixbuf2' 'libgdk_pixbuf-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
-    'lib32-libwebp' 'libsharpyuv.so'
-  )
   DESTDIR="${pkgdir}" cmake --install build
 
   (
