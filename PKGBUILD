@@ -1,3 +1,4 @@
+# shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Mateen Ulhaq <mulhaq2005+aur at gmail dot com>
 # Original contributor: Félix Saparelli <aur@passcod.name>
 
@@ -34,7 +35,7 @@ package() {
   install -Dm644 talon.desktop "$pkgdir/usr/share/applications/talon.desktop"
 
   # --- talon itself ---
-  cd "$srcdir/talon"
+  cd "$srcdir/talon" || exit 1
   install -Dm644 10-talon.rules "$pkgdir/usr/lib/udev/rules.d/10-talon.rules"
   install -Dm755 talon "$pkgdir/usr/share/talon/talon-bin"
 
