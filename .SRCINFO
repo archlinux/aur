@@ -1,6 +1,6 @@
 pkgbase = python-validio-sdk
 	pkgdesc = SDK for the Validio platform
-	pkgver = 0.9.1
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://pypi.org/project/validio-sdk/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-validio-sdk
 	depends = python-httpx
 	depends = python-platformdirs
 	depends = python-pydantic
-	source = https://files.pythonhosted.org/packages/source/v/validio_sdk/validio_sdk-0.9.1.tar.gz
-	sha256sums = 8e45deb2b3d01751a4ca4bf2017380c7f701dda8b76231f605ab29790c903500
+	source = https://files.pythonhosted.org/packages/source/v/validio_sdk/validio_sdk-0.10.1.tar.gz
+	sha256sums = 3015ecb4d05e98654a663bed81f5efb3aeab3f682f0c214aa94f15f6c89ece8c
 
 pkgname = python-validio-sdk
