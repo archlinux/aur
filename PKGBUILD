@@ -2,11 +2,10 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Gregory BELLIER <gregory.bellier -- gmail -- com>
 pkgname='ocaml-inotify'
-pkgver='2.4.1'
-_commit='2ff22475bbb6e88273768ac21964fb603746631b'
-pkgrel='3'
+pkgver='2.5'
+_commit='5e5853680c2b2e41091c1ed030eef9ab008203bb'
+pkgrel='1'
 pkgdesc='OCaml bindings for inotify'
-# If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/whitequark/$pkgname"
 license=('custom:LGPL2.1 with linking exception')
