@@ -1,7 +1,7 @@
 # Maintainer: Paolo Palmieri <palmaway@gmx.it>
 # Contributor: David Mehren <david.mehren@udo.edu>
 pkgname=sdaps
-pkgver=1.9.12
+pkgver=1.9.13
 pkgrel=1
 pkgdesc="Scripts for data acquisition with paper based surveys"
 arch=('any')
@@ -37,8 +37,8 @@ checkdepends=('python-pillow'
 )
 conflicts=('sdaps-git')
 
-source=('https://github.com/sdaps/sdaps/releases/download/v1.9.12/sdaps-1.9.12.tar.xz')
-sha256sums=('1f4723946ecf17d5a9e40ff3a42010d6dff46ad67a6592fc6668268fd3d3ccf0')
+source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('bbdb37d92a75e87e845d0e99ea7bdcb46d629168f8595324d2750e76fb59b4c6')
 
 build() {
 	arch-meson $pkgname-$pkgver build
