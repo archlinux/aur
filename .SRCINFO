@@ -1,0 +1,13 @@
+pkgbase = python-lingua
+	pkgdesc = Translation toolset
+	pkgver = 4.15.0
+	pkgrel = 1
+	url = https://github.com/wichert/lingua
+	arch = any
+	license = custom:DFSG approved
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/l/lingua/lingua-4.15.0.tar.gz
+	sha256sums = 0e1a946741db288a40361ad04ff38fe04bf0819834b8abb84c4b535fed9ba4ef
+
+pkgname = python-lingua
