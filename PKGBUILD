@@ -3,7 +3,7 @@
 
 pkgname=python-spacy-en_core_web_md
 _pkg="${pkgname#python-spacy-}"
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="English pipeline optimized for CPU. Components: tok2vec, tagger, parser, senter, ner, attribute_ruler, lemmatizer."
 arch=(any)
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(python-spacy)
 makedepends=(python-setuptools)
 source=("https://github.com/explosion/spacy-models/releases/download/$_pkg-$pkgver/$_pkg-$pkgver.tar.gz")
-sha256sums=("af9594ee67e3ac4d2fb2b972b21550810011e230096e8597e4fdda68f59dc2f3")
+sha256sums=("3273a1335fcb688be09949c5cdb73e85eb584ec3dfc50d4338c17daf6ccd4628")
 
 build() {
 	cd $_pkg-$pkgver
