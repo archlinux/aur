@@ -1,6 +1,6 @@
 pkgbase = electerm-git
 	pkgdesc = Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)
-	pkgver = 1.34.68.r1.gd03a6e5c
+	pkgver = 1.35.6.r1.g3aa78475
 	pkgrel = 1
 	url = https://electerm.html5beta.com/
 	arch = any
@@ -9,12 +9,12 @@ pkgbase = electerm-git
 	makedepends = git
 	makedepends = nodejs>=18.0.0
 	makedepends = gendesk
-	depends = bash
 	depends = electron26
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	depends = python
-	source = electerm.git::git+https://github.com/electerm/electerm.git
+	depends = java-runtime
+	source = electerm::git+https://github.com/electerm/electerm.git
 	source = electerm.sh
 	sha256sums = SKIP
 	sha256sums = 897293c8ec9302f5b69d333f2467a597c6010cee782f0df6c27489cf13345ae7
