@@ -5,7 +5,7 @@
 
 pkgname=tuba
 pkgver=0.5.0
-pkgrel=0.1
+pkgrel=0.2
 pkgdesc='Browse the Fediverse'
 arch=(
   aarch64 #ALARM
@@ -18,7 +18,6 @@ license=('GPL3')
 depends=(
   dconf
   gdk-pixbuf2
-  gspell
   gtk4
   gtksourceview5
   hicolor-icon-theme
@@ -27,8 +26,10 @@ depends=(
   libgee
   libsecret
   libsoup3
+  libspelling
   libxml2
   pango
+  webp-pixbuf-loader
 )
 makedepends=(
   git
@@ -36,10 +37,6 @@ makedepends=(
   vala
 )
 
-optdepends=(
-  ## https://github.com/GeopJr/Tuba/issues/32#issuecomment-1483280966
-  'webp-pixbuf-loader: calckey support (webp)'
-)
 _commit=f702912954387808e238a5421460a7598f4c1984 # tags/0.5.0^0
 validpgpkeys=(
   ## curl -sS https://github.com/GeopJr.gpg | gpg --import -
