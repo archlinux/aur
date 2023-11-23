@@ -6,7 +6,7 @@ pkgdesc="Easy and fast (both in the sense of performance and development speed) 
 arch=('x86_64')
 url="https://github.com/machitgarha/parvaj"
 license=('AGPL3')
-depends=('fuse2' 'base-devel' 'gtkwave' 'ghdl-gcc-git')
+depends=('fuse2' 'gtkwave' 'ghdl-git')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 source=(
   "${url}/releases/download/${pkgver}/parvaj-x86_64.AppImage"
