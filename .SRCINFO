@@ -1,0 +1,19 @@
+pkgbase = waylib-git
+	pkgdesc = A wrapper for wlroots based on Qt.
+	pkgver = r221.24784fa
+	pkgrel = 1
+	url = https://github.com/vioken/waylib
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	license = GPL2
+	license = GPL3
+	license = LGPL3
+	makedepends = git
+	makedepends = qwlroots
+	makedepends = ninja
+	provides = waylib
+	source = waylib-git::git+https://github.com/vioken/waylib
+	sha512sums = SKIP
+
+pkgname = waylib-git
