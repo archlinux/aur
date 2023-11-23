@@ -5,7 +5,7 @@
 
 pkgname=aegisub-arch1t3cht-qt5-git
 _subproj=aegisub-arch1t3cht-sub
-pkgver=3.2.2.r1062.61ec2bc3e
+pkgver=3.2.2.r1103.20caaabc0
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -58,7 +58,7 @@ source=(
   "$pkgname::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature"
   "$pkgname-bestsource::git+https://github.com/vapoursynth/bestsource.git#branch=master"
   "$_subproj-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.3"
-  "$pkgname-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R65-RC1"
+  "$pkgname-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R65"
   "$pkgname-luajit::git+https://luajit.org/git/luajit.git#branch=v2.1"
   "$pkgname-gtest-1.14.0.tar.gz::https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz"
   "$pkgname-gtest_1.14.0-1_patch.zip::https://wrapdb.mesonbuild.com/v2/gtest_1.14.0-1/get_patch"
