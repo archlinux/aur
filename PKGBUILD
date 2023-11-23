@@ -2,7 +2,7 @@
 
 _pkgname=hockeypuck
 pkgname=${_pkgname}-git
-pkgver=2.1.0.r258.gae6c1b3c
+pkgver=2.1.1.r0.gd2753aef
 pkgrel=1
 pkgdesc='An OpenPGP public keyserver.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('postgresql')
 makedepends=('go' 'git')
 backup=("etc/${_pkgname}/${_pkgname}.conf")
-source=("${_pkgname}::git+https://github.com/hockeypuck/hockeypuck.git"
+source=("${_pkgname}::git+https://github.com/hockeypuck/hockeypuck.git#tag=2.1.1"
         sysusers.conf
         tmpfiles.conf
         logrotate
