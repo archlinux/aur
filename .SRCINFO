@@ -1,19 +1,19 @@
 pkgbase = chatd-bin
 	pkgdesc = Chat with your documents using local AI
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://chatd.ai/
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = electron24
 	depends = hicolor-icon-theme
 	depends = libvips
-	provides = chatd
+	depends = python
+	provides = chatd=1.0.1
 	conflicts = chatd
-	source = chatd-1.0.0.zip::https://github.com/BruceMacD/chatd/releases/download/v1.0.0/chatd-linux-x64.zip
+	source = chatd-1.0.1.zip::https://github.com/BruceMacD/chatd/releases/download/v1.0.1/chatd-linux-x64.zip
 	source = chatd.sh
-	sha256sums = 065a71170cfa0fe00ed042fec90f0d2d051daa96c488fd66b5060edfb6365508
+	sha256sums = d403be8aa8a26ec555db850efbc59277ec57e0d4f393795919d9b125029e2a2d
 	sha256sums = fcaeb0dbb5ef834b40ae32c177deed39a8a79e280305c6195a84fa70b525b844
 
 pkgname = chatd-bin
