@@ -2,12 +2,13 @@
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=otf-literata
 pkgver=2.00
-pkgrel=5
+pkgrel=6
 pkgdesc="Google's contemporary serif typeface family for long-form reading; default typeface for Play Books. Android distribution."
 arch=('any')
 url="https://play.google.com/store/apps/details?id=com.google.android.apps.books"
 license=('custom:propietary')
 makedepends=('git')
+conflicts=('ttf-literata' 'ttf-literata-opticals')
 provides=('ttf-literata' 'ttf-literata-opticals')
 replaces=('ttf-literata' 'ttf-literata-opticals')
 #
