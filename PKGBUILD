@@ -2,7 +2,7 @@
 
 _pkgname="discimagecreator"
 pkgname="$_pkgname-git"
-pkgver=2023.09.09.r12.g6d3b62c
+pkgver=2023.09.09.r15.g801da23
 pkgrel=1
 pkgdesc="This is the disc (CD, GD, DVD, HD-DVD, BD, GC/Wii, XBOX, XBOX 360) and disk (Floppy, MO, USB, etc) image creation tool"
 url="https://github.com/saramibreak/DiscImageCreator"
@@ -40,13 +40,7 @@ build() {
 package() {
   cd "$_pkgsrc"
 
-  # commands in makefile are wrong
-  #make -C DiscImageCreator/ DESTDIR="$pkgdir" PREFIX="/usr" install
-
-  install -Dm644 Release_ANSI/default.dat -t "${pkgdir}/usr/share/DiscImageCreator/"
-  install -Dm644 Release_ANSI/driveOffset.txt -t "${pkgdir}/usr/share/DiscImageCreator/"
-  install -Dm755 DiscImageCreator/DiscImageCreator -t "${pkgdir}/usr/bin/"
-  ln -s "DiscImageCreator" "${pkgdir}/usr/bin/$_pkgname"
+  make -C DiscImageCreator/ DESTDIR="$pkgdir" PREFIX="/usr" install
 
   # license
   install -Dm644 "LICENSE" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
