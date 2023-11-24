@@ -1,6 +1,6 @@
 pkgbase = tresorit
 	pkgdesc = Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.
-	pkgver = 3.5.1095.3320
+	pkgver = 3.5.1192.4010
 	pkgrel = 1
 	url = http://www.tresorit.com/
 	install = tresorit.install
@@ -11,10 +11,10 @@ pkgbase = tresorit
 	makedepends = sed
 	depends = bash
 	depends = libglvnd
-	source = tresorit_installer_3.5.1095.3320.run::https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run
+	source = tresorit_installer_3.5.1192.4010.run::https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run
 	source = https://support.tresorit.com/hc/article_attachments/360009964719/check_signature.sh
 	source = tresorit.service
-	sha512sums = 1c8bbedce9909660fe9ca163b91c15a2fc19d9b7af2793fdd12bfb9b9ca5a578af5fcf3f38998cc3b6c16df7d7d018e52d3a4972a2dd07731fc00f52bf789712
+	sha512sums = f51f7afb574ec1f54180ff543c78351a9b1f325e945fe2965a7c3e21ca011dbdc08a044270aab45e9872de5fa1b114b063449d2196510adb795edb29a77084bd
 	sha512sums = 5893b9ebaa62e5fb3c4c491532b19fce5c2f52be3caee03b47ce99a347da56b08712add62f8039fdffec18d7f7ff77198d9698e91a1f6f765290d124c516661c
 	sha512sums = 58aa3738fd17d5930ed76b9491a3ef0dd481b918f5329b56650e6d77078ad74caeea60c9cf83d524a483a9be7fc41aba2712400922d4ab3db775f1c2a1365765
 
