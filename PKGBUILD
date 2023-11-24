@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=open-ecard-app-bin
-pkgver=2.1.7
-pkgrel=4
+pkgver=2.1.9
+pkgrel=1
 pkgdesc="Client side implementation of the eCard-API-Framework (BSI TR-03112) and related international standards, such as ISO/IEC 24727."
 arch=('x86_64')
 url="http://www.openecard.org/"
 _ghurl="https://github.com/ecsec/open-ecard"
-license=("Apache2" "BouncyCastle" "GPL" "GPL2" "LGPL" "MIT")
+license=("Apache" "custom:BouncyCastle" "GPL" "GPL2" "LGPL" "MIT")
 provides=("${pkgname%-app-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "openecardapp")
 depends=(
@@ -28,7 +28,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
 )
-sha256sums=('140646747f8098fcfcef1c95763fde21b9d7fd7289c7ef2989d88470054c23d6')
+sha256sums=('c138daed80f7162762b6e1d476c8529ba1d3ffef23d6b8aae6a1f04920d7d636')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/bin/${pkgname%-bin}|${pkgname%-bin}|g;s|.png||g" \
