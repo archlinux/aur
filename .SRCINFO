@@ -1,0 +1,15 @@
+pkgbase = lockit
+	pkgdesc = Simple script that makes use of GPG to encrypt and decrypt files and folders
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/a4to/lockit
+	arch = x86_64
+	license = MIT
+	depends = gnupg
+	depends = dialog
+	source = https://software.concise.cc/x86_64/lockit-0.1.0-1-x86_64.pkg.tar.xz
+	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
+	md5sums = 2b3055843a3c812ddf195f8d1e45288f
+	sha512sums = ac5824c525bea22a21a9a5b6adacdd94a98ef641958c108ac9f1fc66c2682e7a7bdb5e6b64c81b99e084b339d6969d01cfa586452abf0cf51be7692ac6e29ff7
+
+pkgname = lockit
