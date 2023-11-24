@@ -1,44 +1,54 @@
+diff --git a/dune-project b/dune-project
+index 4805fbb..f5be52a 100644
+--- a/dune-project
++++ b/dune-project
+@@ -11,7 +11,6 @@
+  (synopsis "Collection of parallelism-safe data structures for Multicore OCaml")
+  (depends
+   (ocaml (>= 4.12))
+-  (domain_shims (>= 0.1.0))
+   (saturn_lockfree (= :version))
+   (qcheck (and (>= 0.18.1) :with-test))
+   (qcheck-stm (and (>= 0.2) :with-test))
+@@ -23,7 +22,6 @@
+  (synopsis "Collection of lock-free data structures for Multicore OCaml")
+  (depends
+   (ocaml (>= 4.12))
+-  (domain_shims (>= 0.1.0))
+   (qcheck (and (>= 0.18.1) :with-test))
+   (qcheck-stm (and (>= 0.2) :with-test))
+   (qcheck-alcotest (and (>= 0.18.1) :with-test))
 diff --git a/saturn.opam b/saturn.opam
-index 08bed7f..15f8656 100644
+index 20dbb25..66aae1a 100644
 --- a/saturn.opam
 +++ b/saturn.opam
-@@ -11,7 +11,6 @@ tags: []
+@@ -11,7 +11,6 @@ bug-reports: "https://github.com/ocaml-multicore/saturn/issues"
  depends: [
+   "dune" {>= "3.2"}
    "ocaml" {>= "4.12"}
-   "dune" {>= "3.0"}
 -  "domain_shims" {>= "0.1.0"}
-   "qcheck" {with-test & >= "0.18.1"}
-   "qcheck-stm" {with-test & >= "0.2"}
-   "qcheck-alcotest" {with-test & >= "0.18.1"}
+   "saturn_lockfree" {= version}
+   "qcheck" {>= "0.18.1" & with-test}
+   "qcheck-stm" {>= "0.2" & with-test}
 diff --git a/saturn_lockfree.opam b/saturn_lockfree.opam
-index c1d073b..e3f4ab6 100644
+index b5c2d30..44009c4 100644
 --- a/saturn_lockfree.opam
 +++ b/saturn_lockfree.opam
-@@ -11,7 +11,6 @@ tags: []
+@@ -10,7 +10,6 @@ bug-reports: "https://github.com/ocaml-multicore/saturn/issues"
  depends: [
+   "dune" {>= "3.2"}
    "ocaml" {>= "4.12"}
-   "dune" {>= "3.0"}
 -  "domain_shims" {>= "0.1.0"}
-   "qcheck" {with-test & >= "0.18.1"}
-   "qcheck-stm" {with-test & >= "0.2"}
-   "qcheck-alcotest" {with-test & >= "0.18.1"}
-diff --git a/src/dune b/src/dune
-index ca2afd5..322a19b 100644
---- a/src/dune
-+++ b/src/dune
-@@ -1,4 +1,4 @@
- (library
-  (name saturn)
-  (public_name saturn)
-- (libraries saturn_lockfree domain_shims))
-+ (libraries saturn_lockfree))
+   "qcheck" {>= "0.18.1" & with-test}
+   "qcheck-stm" {>= "0.2" & with-test}
+   "qcheck-alcotest" {>= "0.18.1" & with-test}
 diff --git a/src_lockfree/dune b/src_lockfree/dune
-index 536acc0..b73078d 100644
+index 7a76425..2a9802f 100644
 --- a/src_lockfree/dune
 +++ b/src_lockfree/dune
 @@ -1,4 +1,3 @@
  (library
-  (name lockfree)
+  (name saturn_lockfree)
 - (public_name saturn_lockfree)
 - (libraries domain_shims))
 + (public_name saturn_lockfree))
