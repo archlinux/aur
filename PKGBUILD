@@ -10,9 +10,9 @@
 # vercheck-gnome: name=${pkgname%-*}, majorver=3.27
 
 pkgname=gsettings-desktop-schemas-ubuntu
-_ubuntu_ver=43.0
+_ubuntu_ver=44.0
 _ubuntu_rel=1ubuntu1
-pkgver=43.0
+pkgver=44.0
 pkgrel=1
 pkgdesc="Shared GSettings schemas for the desktop"
 arch=(any)
@@ -22,11 +22,11 @@ depends=(glib2 dconf)
 makedepends=(git gobject-introspection meson)
 provides=(gsettings-desktop-schemas=$pkgver)
 conflicts=(gsettings-desktop-schemas)
-_commit=742f0023b484bcf62f89731a2916fe3f2d30377a  # 43.0
+_commit=eff0b3609ff745fcb58cba7198397c642702736e  # 44.0
 source=("git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas#commit=$_commit"
         "https://launchpad.net/ubuntu/+archive/primary/+files/gsettings-desktop-schemas_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
 sha512sums=('SKIP'
-            '305eaaa04982c9a1e43713437062cb15c50c6d214e110be221a0623f9122096b34dda2010b2db0e109b45b583fb5f008c46604d56477039b6c15e72aeae6cf9d')
+            '8d1b35c333831de7143b910d855d7050a755abda9f8c0c30718af9978680fa7a2bb93eb82a1e3107e6dd418ee6d81a5732fbdea856cd9fc1547a0865caac9d26')
 
 pkgver(){
   cd ${pkgname%-*}
