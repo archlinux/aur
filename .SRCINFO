@@ -1,0 +1,27 @@
+pkgbase = r-tomoseqr
+	pkgdesc = R Package for Analyzing Tomo-seq Data
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/tomoseqr
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-animation
+	depends = r-biocfilecache
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-plotly
+	depends = r-purrr
+	depends = r-readr
+	depends = r-shiny
+	depends = r-stringr
+	depends = r-tibble
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tomoseqr_1.6.0.tar.gz
+	md5sums = b881e4b272396cc4696d840658ec0ef5
+	sha256sums = 7c574a2561e393693a8a8b2d09121826efc3b9721c2616f64480d4b9c4ffdc1f
+
+pkgname = r-tomoseqr
