@@ -1,17 +1,17 @@
 # Maintainer: CYBERDEViL <cyberdevilnl at protonmail dot com>
 pkgname=searx-qt
-_pkgver=0.3-beta3
+_pkgver=0.4.0-alpha1
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Lightweight desktop application for Searx"
+pkgdesc="Desktop client application for Searx/SearXNG/searx-space"
 arch=('any')
 url="https://notabug.org/CYBERDEViL/searx-qt"
 license=('GPL3')
-depends=('python-requests' 'python-pyqt5')
+depends=('python-requests' 'python-pyqt5' 'python-jsonschema')
 optdepends=('python-pysocks: socks proxy support')
 makedepends=('gettext' 'qt5-tools')
 source=("$pkgname-$_pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
-sha256sums=('4c2a316dfb638ac9145edbd2ab9ff41555ca141172cc00ae08ea8db03ebd2816')
+sha256sums=('cee17ff483b5c344f1159b7ccd1c2068782becdceb03f47b05727c48fb847299')
 
 build() {
     cd "$srcdir/$pkgname"
