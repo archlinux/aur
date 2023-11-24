@@ -1,5 +1,5 @@
 # Maintainer: Alfred Roos alfred@stensatter.se
-pkgname=ArrayList
+pkgname=arraylist-git
 pkgver=1
 pkgrel=1
 pkgdesc="Dynamic array list simular to javas ArrayList in c"
@@ -13,12 +13,12 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
-	cd $pkgname
+	cd ArrayList
 	./build.sh
 }
 
 package() {
-	cd $pkgname
+	cd ArrayList
 	cd build
 	install -Dm755 "./libarraylist.so" "$pkgdir/usr/lib/libarraylist.so"
 	install -Dm655 "./arraylist.h" "$pkgdir/usr/include/arraylist.h"

@@ -1,4 +1,4 @@
-pkgbase = ArrayList
+pkgbase = arraylist-git
 	pkgdesc = Dynamic array list simular to javas ArrayList in c
 	pkgver = 1
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = ArrayList
 	source = git+https://github.com/spynetS/ArrayList.git
 	md5sums = SKIP
 
-pkgname = ArrayList
+pkgname = arraylist-git
