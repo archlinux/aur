@@ -2,12 +2,12 @@
 _appname=jan
 pkgname="${_appname}-electron-bin"
 _pkgname=Jan
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Run AI on your own PC"
 arch=("x86_64")
 url="https://jan.ai/"
-_githuburl="https://github.com/janhq/jan"
+_ghurl="https://github.com/janhq/jan"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${_appname}")
@@ -28,13 +28,13 @@ depends=(
     'libxfixes'
     'expat'
     'cairo'
-    'dbus'
+    'hicolor-icon-theme'
     'nss'
     'libxrandr'
     'libdrm'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-linux-amd64-${pkgver}.deb")
-sha256sums=('3ce569054d496ae911f186d73a7d1fba84f224d2e86e2e420d71a392106c5bc0')
+source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-linux-amd64-${pkgver}.deb")
+sha256sums=('6da494a0bcdc4fc6dfec86c9e21bb073a6408bd98ef58ef0c8355b50024c9d41')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_appname}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
