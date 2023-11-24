@@ -2,12 +2,12 @@
 
 pkgname=tetris-rs
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal based tetris game written in rust.'
 url='https://crates.io/crates/tetris-rs'
 arch=('x86_64')
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs'  'glibc')
 makedepends=('cargo')
 conflicts=('tetris')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
