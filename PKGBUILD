@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=119.0a1+20230912.1+h3cf19f416a7b
+pkgver=122.0a1+20231124.1+h29d489a7e05a
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -14,7 +14,7 @@ license=(
   MPL
 )
 depends=(
-  dbus-glib
+  dbus
   ffmpeg
   gtk3
   libpulse
