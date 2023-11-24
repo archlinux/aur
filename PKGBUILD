@@ -43,10 +43,8 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}"::"git+${_ghurl}.git"
-    "${pkgname%-git}.sh"
 )
-sha256sums=('SKIP'
-            '2a13e2f248c0d7a5d941bff397e04ae142cec1886e0bd6cdb657f386248a6289')
+sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'

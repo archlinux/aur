@@ -30,8 +30,6 @@ pkgbase = aero-browser-git
 	provides = aero-browser
 	conflicts = aero-browser
 	source = aero-browser::git+https://github.com/FrostBreker/Aero.git
-	source = aero-browser.sh
 	sha256sums = SKIP
-	sha256sums = 2a13e2f248c0d7a5d941bff397e04ae142cec1886e0bd6cdb657f386248a6289
 
 pkgname = aero-browser-git
