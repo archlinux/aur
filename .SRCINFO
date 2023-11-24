@@ -1,7 +1,7 @@
 pkgbase = open-ai-translator-bin
 	pkgdesc = 基于 ChatGPT API 的划词翻译浏览器插件和跨平台桌面端应用 - Browser extension and cross-platform desktop application for translation based on ChatGPT API.
-	pkgver = 0.0.89
-	pkgrel = 2
+	pkgver = 0.0.91
+	pkgrel = 1
 	url = https://github.com/openai-translator/openai-translator
 	arch = x86_64
 	license = AGPL3
@@ -16,10 +16,10 @@ pkgbase = open-ai-translator-bin
 	depends = pango
 	depends = webkit2gtk
 	depends = openssl
-	provides = open-ai-translator=0.0.89
+	provides = open-ai-translator=0.0.91
 	conflicts = open-ai-translator
 	conflicts = openai-translator
-	source = open-ai-translator-bin-0.0.89.deb::https://github.com/openai-translator/openai-translator/releases/download/v0.0.89/open-ai-translator_0.0.89_amd64.deb
-	sha256sums = 92ccd14283e4766b5a519c37bd8e2ae0ce656b1d38ede3cb02d48881272ddb85
+	source = open-ai-translator-bin-0.0.91.deb::https://github.com/openai-translator/openai-translator/releases/download/v0.0.91/open-ai-translator_0.0.91_amd64.deb
+	sha256sums = 76d86e241fbbb737ee00a697d0ef78b2bc00df7a6ca1cb8500013dcc7d6ebe86
 
 pkgname = open-ai-translator-bin
