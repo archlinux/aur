@@ -10,7 +10,6 @@ pkgbase = kahip
 	depends = openmp
 	depends = metis
 	depends = openmpi
-	depends = gperftools
 	depends = python
 	optdepends = gurobi: for ILP solver in ilp_improve
 	source = KaHIP-3.16.tar.gz::https://github.com/KaHIP/KaHIP/archive/v3.16.tar.gz
