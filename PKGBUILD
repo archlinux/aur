@@ -2,14 +2,16 @@ _pkgname=onagre
 pkgname=$_pkgname-git
 pkgver=1.0.0_alpha.0.r172.ga7628b1
 pkgname=onagre-git
-pkgrel=1
+pkgrel=2
 pkgdesc='A general purpose application launcher for X and wayland inspired by rofi/wofi and alfred'
 arch=('x86_64')
 url='https://github.com/oknozor/onagre'
 license=('MIT')
-makedepends=('rust' 'fontconfig' 'freetype2' 'libxkbcommon')
-depends=('pop-launcher')
-optdepends=('libqalculate: calculator and unit conversion support')
+depends=('fontconfig' 'freetype2' 'libxkbcommon' 'pop-launcher')
+makedepends=('cargo' 'git')
+optdepends=('libqalculate: calculator and unit conversion support'
+            'vulkan-radeon: icon support for AMD GPUs'
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url")
