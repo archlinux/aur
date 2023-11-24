@@ -1,20 +1,23 @@
+_pkgname=onagre
+pkgname=$_pkgname-git
+pkgver=1.0.0_alpha.0.r172.ga7628b1
 pkgname=onagre-git
-pkgver=0.1.0.r116.g6168926
 pkgrel=1
 pkgdesc='A general purpose application launcher for X and wayland inspired by rofi/wofi and alfred'
 arch=('x86_64')
 url='https://github.com/oknozor/onagre'
 license=('MIT')
-makedepends=('git' 'rust' 'fontconfig' 'cmake' 'freetype2' 'libxkbcommon')
-provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
-#install="${pkgname%-*}.install"
-source=("${pkgname%-*}::git+$url")
+makedepends=('rust' 'fontconfig' 'freetype2' 'libxkbcommon')
+depends=('pop-launcher')
+optdepends=('libqalculate: calculator and unit conversion support')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url")
 sha1sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --always)
+  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|sed 's/-/_/g').r$(git rev-list --count HEAD).g$(git describe --always)
 }
 
 prepare() {
