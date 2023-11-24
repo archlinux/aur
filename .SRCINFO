@@ -1,6 +1,6 @@
 pkgbase = fblog-git
 	pkgdesc = Small command-line JSON log viewer (git)
-	pkgver = 4.4.0.r16.g0a387c5
+	pkgver = 4.6.0.r2.g8a1c87f
 	pkgrel = 1
 	url = https://github.com/brocode/fblog
 	arch = x86_64
