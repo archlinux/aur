@@ -26,22 +26,19 @@ pkgbase = gtk3-git
 	depends = shared-mime-info
 	depends = wayland
 	depends = wayland-protocols
+	depends = gtk-update-icon-cache
 	optdepends = gnome-icon-theme: Default icon theme
 	optdepends = gnome-themes-standard: Default widget theme
 	provides = gtk3=3.24.38.r84.g73d5663a8c
-	provides = gtk-update-icon-cache
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so
 	provides = libgailutil-3.so
 	conflicts = gtk3
-	conflicts = gtk-update-icon-cache
 	backup = usr/share/gtk-3.0/settings.ini
 	source = git+https://gitlab.gnome.org/GNOME/gtk.git#branch=gtk-3-24
 	source = settings.ini
 	source = gtk-query-immodules-3.0.hook
-	source = gtk-update-icon-cache.hook
-	source = gtk-update-icon-cache.script
 	sha256sums = SKIP
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
