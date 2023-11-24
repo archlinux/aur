@@ -7,6 +7,7 @@ pkgbase = local-ai
 	arch = x86_64
 	license = MIT
 	makedepends = c-ares
+	makedepends = cmake
 	makedepends = git
 	makedepends = go
 	makedepends = grpc

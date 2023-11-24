@@ -9,7 +9,7 @@ url="https://github.com/mudler/LocalAI"
 license=('MIT')
 backup=("etc/conf.d/${pkgname}.conf")
 depends=('glibc')
-makedepends=('c-ares' 'git' 'go' 'grpc' 'make' 'openssl' 're2')
+makedepends=('c-ares' 'cmake' 'git' 'go' 'grpc' 'make' 'openssl' 're2')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgname}.conf"
   "${pkgname}.tmpfiles"
@@ -19,7 +19,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 
 build() {
   cd "${_pkgname}-${pkgver}"
-# export GO_TAGS="stablediffusion tts"
+  # export GO_TAGS="stablediffusion tts"
   make build
 }
 
