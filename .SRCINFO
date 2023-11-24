@@ -1,0 +1,15 @@
+pkgbase = sshlog-bin
+	pkgdesc = SSH Session Monitoring Daemon (.deb build).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.sshlog.com/
+	arch = x86_64
+	arch = aarch64
+	license = RSALv2
+	depends = openssh
+	source_x86_64 = https://github.com/sshlog/agent/releases/download/v1.0.0/sshlog_1.0.0_amd64.deb
+	sha256sums_x86_64 = d4326879928e9c22e16eaa488fe2e786adb59c378a93af83505f3a96eda07e85
+	source_aarch64 = https://github.com/sshlog/agent/releases/download/v1.0.0/sshlog_1.0.0_arm64.deb
+	sha256sums_aarch64 = e7ee8c4d58adfb58af167663185d70e2f064eb27e1be3c18aea951a8184ac355
+
+pkgname = sshlog-bin
