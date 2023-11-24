@@ -1,7 +1,7 @@
 # Maintainer: snafu
 pkgname=env-modules
 pkgver=5.3.1
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
