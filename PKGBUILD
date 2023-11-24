@@ -2,7 +2,7 @@
 
 pkgname=macli
 _pkgname=macli
-_pkgver=1.20.5
+_pkgver=1.21.0
 pkgver="v$_pkgver"
 pkgrel=1
 pkgdesc='Unofficial CLI-Based MyAnimeList Client'
