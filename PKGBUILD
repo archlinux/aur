@@ -14,7 +14,7 @@ options=('!strip' '!emptydirs')
 source_x86_64=("macli-${pkgver}-linux_amd64.tar.gz::${url}/releases/${_pkgver}/macli-${pkgver}-linux_amd64.tar.gz")
 provides=("macli")
 conflicts=("macli" "macli-git")
-sha256sums_x86_64=('6826ada7643098de98bf369b5b3a143c28debab0fe0386296891c3e3ec7268c2')
+sha256sums_x86_64=('b65f6613f7a85208cfa6b7e4d14f52525008f0f36890541111943247acdc28b5')
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/macli-${pkgver}-linux_amd64/macli"
