@@ -1,0 +1,14 @@
+pkgbase = maildir-rank-addr
+	pkgdesc = Generates a ranked addressbook from a maildir folder
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/ferdinandyb/maildir-rank-addr
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = maildir-rank-addr
+	conflicts = maildir-rank-addr
+	source = maildir-rank-addr-1.3.0.tar.gz::https://github.com/ferdinandyb/maildir-rank-addr/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = f28398765dd91aa4d0775fd1f7022dae5550c90919a2d84ba1d7d81370af283c
+
+pkgname = maildir-rank-addr
