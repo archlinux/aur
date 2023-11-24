@@ -2,7 +2,7 @@
 # Maintainer: Joseph Donofry <joe at joedonofry dot com>
 
 pkgname=nheko-git
-pkgver=0.11.3.r307.g8259891a
+pkgver=0.11.3.r577.ge49a65e6
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64" "aarch64")
@@ -10,7 +10,7 @@ arch=("i686" "x86_64" "aarch64")
 url="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
 
-depends=("qt6-base" "lmdb" "qt6-multimedia" "qt6-svg" "qt6-declarative" "qtkeychain-qt6" "cmark" "openssl" "hicolor-icon-theme" "gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "gst-plugin-qmlgl" "gst-plugin-pipewire" "libnice" "libolm" "spdlog" "curl" "libevent" "pkg-config" "re2")
+depends=("qt6-base" "lmdb" "qt6-multimedia" "qt6-svg" "qt6-declarative" "qtkeychain-qt6" "cmark" "openssl" "hicolor-icon-theme" "gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "gst-plugin-qmlgl" "gst-plugin-pipewire" "libnice" "libolm" "spdlog" "curl" "libevent" "pkg-config" "re2" "kdsingleapplication" )
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt6-tools" "nlohmann-json" "asciidoc")
 optdepends=("kimageformats" "qt6-imageformats" "qt-jdenticon")
 provides=("nheko=${pkgver}")
