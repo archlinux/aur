@@ -1,14 +1,16 @@
 pkgbase = python-tika-client
 	pkgdesc = A modern Python REST client for Apache Tika server
-	pkgver = 0.1.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/stumpylog/tika-client
 	arch = any
-	license = GPL3
+	license = MPL2
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
-	source = python-tika-client-0.1.1.src.tar.gz::https://github.com/stumpylog/tika-client/archive/0.1.1.tar.gz
-	sha256sums = bad14e09ffd07b6c54182e15beed74a1e05e35a13f83008200859f20069ceb5b
+	makedepends = python-editables
+	makedepends = python-pathspec
+	source = python-tika-client-0.5.0.src.tar.gz::https://github.com/stumpylog/tika-client/archive/0.5.0.tar.gz
+	sha256sums = e329b8433802058745bdda3ca40ec01dd703275cbbba9b28f252e4a094b1f440
 
 pkgname = python-tika-client
