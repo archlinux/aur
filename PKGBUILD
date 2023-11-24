@@ -1,7 +1,7 @@
 pkgname=jdprocessfilewatcher
 pkgver=1.0
-pkgrel=1
-pkgdesc="Edit autostart entries"
+pkgrel=2
+pkgdesc="Effortlessly monitor and display real-time file access for any process"
 arch=("any")
 url="https://codeberg.org/JakobDev/jdProcessFileWatcher"
 license=("GPL3")
