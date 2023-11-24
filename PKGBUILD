@@ -19,13 +19,12 @@ depends=(
 	"libjson-c.so"
 	"libudev.so"
 	"libwayland-server.so"
-	"libwlroots.so"
+	"libwlroots.so=11"
 	"libxcb"
 	"libxkbcommon.so"
 	"pango"
 	"pcre2"
 	"ttf-font"
-	"wlroots<0.17"
 )
 optdepends=(
 	"alacritty: Terminal emulator used by the default config"
@@ -53,8 +52,8 @@ options=(debug)
 install=sway.install
 
 build() {
+	export PKG_CONFIG_PATH='/usr/lib/wlroots0.16/pkgconfig'
 	arch-meson \
-		-Dsd-bus-provider=libsystemd \
 		-Dwerror=false \
 		"${_pkgname}-${pkgver}" build
 	meson compile -C build
