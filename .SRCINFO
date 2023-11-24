@@ -1,16 +1,16 @@
 pkgbase = discord-chat-exporter-cli
-	pkgdesc = Export message history from a Discord channel to a file
+	pkgdesc = Exports Discord chat logs to a file
 	pkgver = 2.42.3
 	pkgrel = 1
 	url = https://github.com/Tyrrrz/DiscordChatExporter
 	arch = any
-	license = GPL
-	makedepends = unzip
-	depends = dotnet-runtime>=6
-	noextract = discord-chat-exporter-cli-2.42.3.zip
-	source = discord-chat-exporter-cli-2.42.3.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.42.3/DiscordChatExporter.CLI.zip
+	license = GPL3
+	makedepends = dotnet-sdk-7.0
+	depends = dotnet-runtime-7.0
+	options = !strip
+	source = discord-chat-exporter-cli-2.42.3.tar.gz::https://github.com/Tyrrrz/DiscordChatExporter/archive/refs/tags/2.42.3.tar.gz
 	source = discord-chat-exporter-cli
-	md5sums = dd950ea5a9990815b048218da7cb6e73
-	md5sums = 8077678acad67ad31578593deee8bcc6
+	b2sums = 36d031776bece2c9d72cd7d64c955158464faca3fac2b5dd422bbcec7c6f34b6da4cf3cf8fa8ce7cfbbf1880c7df68204e42f5eed52479860eff016ae3107e16
+	b2sums = 7540fb95f81c1041c87778c590a9438ffb64bf417c3d4d3f1363da5a25898c98f9dcd1209b9237bd595374a33326b7f23043bd6156cc7e14f0bff230ee0f6de6
 
 pkgname = discord-chat-exporter-cli
