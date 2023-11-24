@@ -1,6 +1,6 @@
 pkgbase = gosign
 	pkgdesc = Nuovo tool di firma e rinnovo online per i certificati digitali emessi da InfoCert
-	pkgver = 2.0.3
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://www.firma.infocert.it
 	install = gosign.install
@@ -52,6 +52,6 @@ pkgbase = gosign
 	options = !strip
 	options = !emptydirs
 	source = https://rinnovofirma.infocert.it/gosign/download/linux/latest/GoSign-Desktop-installer-linux.deb
-	sha512sums = 21bb1315c360aac4e3d5bcd521b3816f88e09990363e3f3971096d2449959bb89458d29424f99cbd52273a60b13f752368414f7f1096ce9411cd688fb26dbff5
+	sha512sums = 32e5fc14aa33e4e101b537e9ad393baaeef69d142ef689603a1b116cb810dc9e76086f999ab972f9c48f5c55b34358d917e688c4ab335bd4e9126758ebd4283e
 
 pkgname = gosign
