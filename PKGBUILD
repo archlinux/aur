@@ -1,12 +1,12 @@
 # Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="jellyfin-web-intro-skipper"
-pkgver=10.8.10
-_commit=4d9c94b8f109435b68ea864bcea3bc41dfceb128
-pkgrel=2
+pkgver=10.8.12
+_commit=1c7c7937bb29fd71b5e4714c1445cb5bcd291609
+pkgrel=1
 pkgdesc="Modified jellyfin web client to use with the 'Intro Skipper' plugin"
 arch=('any')
-url="https://github.com/ConfusedPolarBear/jellyfin-web"
+url="https://github.com/Bobby306/jellyfin-web"
 license=('GPL2')
 provides=("${pkgname%-intro-skipper}=$pkgver")
 conflicts=("${pkgname%-intro-skipper}")
