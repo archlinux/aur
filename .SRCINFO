@@ -1,17 +1,17 @@
 pkgbase = fblog-bin
 	pkgdesc = Small command-line JSON log viewer
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://github.com/brocode/fblog
 	arch = x86_64
 	license = custom:WTFPL
 	provides = fblog
 	conflicts = fblog
-	source_x86_64 = fblog-bin-4.5.0::https://github.com/brocode/fblog/releases/download/v4.5.0/fblog
-	source_x86_64 = fblog-bin-4.5.0-LICENSE::https://github.com/brocode/fblog/raw/v4.5.0/LICENSE
-	source_x86_64 = fblog-bin-4.5.0-README.org::https://github.com/brocode/fblog/raw/v4.5.0/README.org
-	sha512sums_x86_64 = a36a1bf4155ef928a2a51802c80f7d5381f73e48b7254f240a0fa4f0295742cf3c59e1fac7d09962dd4c5698ac247975394e7891b09a069ed646728e6a359e04
+	source_x86_64 = fblog-bin-4.6.0::https://github.com/brocode/fblog/releases/download/v4.6.0/fblog
+	source_x86_64 = fblog-bin-4.6.0-LICENSE::https://github.com/brocode/fblog/raw/v4.6.0/LICENSE
+	source_x86_64 = fblog-bin-4.6.0-README.md::https://github.com/brocode/fblog/raw/v4.6.0/README.md
+	sha512sums_x86_64 = a30fb25a342c9359f1a8c8968f4c6a7ebe6de896b718d23181357f1e5c2183c36b7f306828c0fea46e04497f3cb2ebdfb45ffd377e13aeb9fd1fc3e042143483
 	sha512sums_x86_64 = 1b4064171fa88f41d05e3d1d1c14ceb8a5cb4cca9e6f08f7e267d7740b7d65e4765cb56f0ccf3765ee9c85654559d2d7726d71516b890b0174b68e6cc62ef421
-	sha512sums_x86_64 = 2c38965b48d6269a17a0b16db47e68aa28f285966994421dae3c7711a63125db3bff3c02036bdd91cdaa8c560a380fd1b06025d1d911b83fcdf497d1bc648af9
+	sha512sums_x86_64 = 00daaffeb33ce6ff8c1bad4ff5d9c8dcaaa54f17bdf012f869adadd334f6bcddfe5d472dad08d0fc3f3062bafe16b7621158a74ff93e0908f6135d34c1381548
 
 pkgname = fblog-bin
