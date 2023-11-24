@@ -1,7 +1,7 @@
 pkgbase = r-webutils
 	pkgdesc = Utility Functions for Developing Web Applications
-	pkgver = 1.1
-	pkgrel = 7
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=webutils
 	arch = x86_64
 	license = MIT
@@ -11,8 +11,8 @@ pkgbase = r-webutils
 	depends = r-jsonlite
 	optdepends = r-httpuv
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/webutils_1.1.tar.gz
-	md5sums = 6f8fbad13141beacbc6c00b769a34841
-	sha256sums = 33e2b408d2b9ca12e158e0007d4a55a3ace6838341ad944344de2ceb806e4699
+	source = https://cran.r-project.org/src/contrib/webutils_1.2.0.tar.gz
+	md5sums = b22bccdb361730d8aa1d7cf2cbd3e9fa
+	sha256sums = 51243a1d7843dbb3968e7725c2266e1d68dcec43b919c320033f611ff9ca7f3c
 
 pkgname = r-webutils
