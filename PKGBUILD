@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.35.6.r1.g3aa78475
+pkgver=1.36.1.r0.g34a9cfae
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
 arch=('any')
@@ -19,6 +19,7 @@ makedepends=(
     'git'
     'nodejs>=18.0.0'
     'gendesk'
+    'python-setuptools'
 )
 source=(
     "${pkgname%-git}::git+${_ghurl}.git"
@@ -30,14 +31,22 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install 18
+    nvm use 18
+}
 build() {
+    _ensure_local_nvm
     gendesk -q -f -n --categories "System;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
     cd "${srcdir}/${pkgname%-git}"
     sed -e "60s|snap|tar.gz|g" -e '57,59d' -i electron-builder.json
     sed '16,19d' -i build/bin/build-linux-deb-tar.js
     rm -rf build/bin/build-linux-rpm-snap.js
     sed "s|pre-test|prepare-test|g" -i package.json
-    npm install --force #--cache "${srcdir}/npm-cache"
+    npm i #--cache "${srcdir}/npm-cache"
+    PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm i -D -E playwright@1.28.1 @playwright/test@1.28.1
     npm run prepare-build
     npm run release
 }
