@@ -10,7 +10,7 @@ __pkgname=firedragon
 pkgname=$__pkgname-unsigned-extensions
 _pkgname=FireDragon
 pkgver=120.0
-pkgrel=1
+pkgrel=2
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -42,19 +42,17 @@ options=(!emptydirs !makeflags !strip !lto !debug)
 install=$__pkgname.install
 source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefox-"$pkgver".source.tar.xz{,.asc}
   "$__pkgname.desktop"
-  "common::git+https://codeberg.org/stefanwimmer128/firedragon-common.git"
+  "git+https://codeberg.org/stefanwimmer128/firedragon-unsigned-extensions.git#tag=120.0-1"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
-  "librewolf-source::git+https://codeberg.org/librewolf/source.git#tag=120.0-1"
-  "librewolf-settings::git+https://codeberg.org/librewolf/settings.git"
-  "unity-menubar.patch")
+  "librewolf-source::git+https://codeberg.org/librewolf/source.git#tag=120.0-2"
+  "librewolf-settings::git+https://codeberg.org/librewolf/settings.git")
 sha256sums=('e710058701074eda53ca9f5fd52c57254858a027984f735bdcd58d6906f6b574'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'cd7db7d4dd607826bc6098392d6e2f90ae8f7f529650e27b8d00f9dec3bac382')
+            'SKIP')
 # sha256sums_aarch64=()
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -80,7 +78,7 @@ prepare() {
   cd firefox-"$pkgver"
 
   local _patches_dir
-  _patches_dir="${srcdir}/common/patches"
+  _patches_dir="${srcdir}/firedragon-unsigned-extensions/patches"
 
   local _librewolf_patches_dir
   _librewolf_patches_dir="${srcdir}/librewolf-source/patches"
@@ -235,10 +233,10 @@ END
   patch -Np1 -i "${_patches_dir}"/custom/privacy-preferences.patch
 
   # Unity menubar
-  patch -Np1 -i "${srcdir}"/unity-menubar.patch
+  patch -Np1 -i "${_patches_dir}"/kde-upstream/unity-menubar.patch
 
-  rm -f "${srcdir}"/common/source_files/mozconfig
-  cp -r "${srcdir}"/common/source_files/* ./
+  rm -f "${srcdir}"/firedragon-unsigned-extensions/source_files/mozconfig
+  cp -r "${srcdir}"/firedragon-unsigned-extensions/source_files/* ./
 }
 
 build() {
