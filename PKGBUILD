@@ -1,12 +1,13 @@
-# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Maintainer: Richardn <rniu at umich dot edu>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Łukasz Mariański <lmarianski at protonmail dot com>
 
 _pkgname=vscodium
-_electron=electron22
- _nodejs="16.17.1"
+_electron=electron25
+_nodejs="18.16.1"
 
 pkgname=${_pkgname}-electron
-pkgver=1.81.1.23222
+pkgver=1.84.2.23314
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,10 +17,10 @@ depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('x11-ssh-askpass: SSH authentication'
 	    'gvfs: For move to trash functionality'
 	    'libdbusmenu-glib: For KDE global menu')
-makedepends=('git' 'gulp' 'python' 'yarn' 'nvm' 'imagemagick' 'jq')
+makedepends=('git' 'python' 'nvm' 'jq')
 conflicts=('vscodium')
 source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
-        "git+https://github.com/microsoft/vscode.git#tag=${pkgver%.*}"
+		"vscodium-electron.patch"
 		"${_pkgname}.sh"
 		"${_pkgname}.js"
 		"${_pkgname}.desktop"
@@ -55,7 +56,7 @@ shopt -s extglob
 _ensure_local_nvm() {
     # let's be sure we are starting clean
     which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
+    export NVM_DIR="${srcdir}/nvm"
 
     # The init script returns 3 if version specified
     # in ./.nvrc is not (yet) installed in $NVM_DIR
@@ -64,61 +65,55 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-	cd "$srcdir/$_pkgname"
-	ln -sf ../vscode vscode
+	# Abort early if the user does not have the selected electron version installed
+	if ! which $_electron; then
+		echo "Selected electron missing from system. Modify PKGBUILD and retry."
+		exit 1
+	fi
 
-	sed -i "s:\.\./:../vscodium/:" "prepare_vscode.sh" "update_settings.sh"
-	sed -i -e "s:\.\./:../vscodium/:" -e 's:\grep -rl --exclude-dir=\.git -E "${TELEMETRY_URLS}" \.:rg --no-ignore --iglob "!*.map" -l "${TELEMETRY_URLS}" .:' "undo_telemetry.sh"
+	# Point to system electron in launcher scripts
+	# Do not use inplace sed so that user could change electron version in rebuilds
+	sed "s/@ELECTRON@/${_electron}/" "$srcdir/vscodium.sh" > "$srcdir/vscodium-electron.sh"
+	sed "s/@ELECTRON@/${_electron}/" "$srcdir/vscodium.js" > "$srcdir/vscodium-electron.js"
 
-	sed -i "s/@ELECTRON@/${_electron}/" "$srcdir/$_pkgname.sh" "$srcdir/$_pkgname.js"
+	cd "$srcdir/vscodium"
 
-	_ensure_local_nvm
-	nvm install "${_nodejs}"
+	# Remove old build
+	if [ -d vscode ]; then
+		rm -rf vscode VSCode*
+	fi
 
-	# Build native modules for system electron
-	local _target=$(</usr/lib/$_electron/version)
-	sed -i "s/^target .*/target \"${_target//v/}\"/" "$srcdir/vscode/.yarnrc"
+	# Mangle original vscodium build script to build against system electron
+	patch -u build.sh -i ../../vscodium-electron.patch
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-
-	# Increase JS heap size to avoid OOM issues
-	export NODE_OPTIONS=--max-old-space-size=8192
-
 	_ensure_local_nvm
+	nvm install "${_nodejs}"
 	nvm use "${_nodejs}"
+	npm install --global yarn
 
-	export OS_NAME=linux
-	export RELEASE_VERSION="${pkgver}"
-	HOME="$srcdir" ./prepare_vscode.sh
+	cd "$srcdir/vscodium"
 
-	cd "$srcdir/vscode"
-	HOME="$srcdir" CHILD_CONCURRENCY=1 yarn install --cache-folder "$srcdir/yarn-cache" --arch="$_vscode_arch"
-
-	gulp compile-build
-	gulp compile-extension-media
-	gulp compile-extensions-build
-	gulp minify-vscode
-	gulp "vscode-linux-$_vscode_arch-min"
+	. build/build.sh
 }
 
 package() {
-	cd "$srcdir/VSCode-linux-$_vscode_arch"
+	cd "$srcdir/vscodium/VSCode-linux-$_vscode_arch"
 
 	install -Dm644 resources/app/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 resources/app/ThirdPartyNotices.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-	install -Dm755 "$srcdir/${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}"
-  	ln -s "/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/codium"
+	install -Dm755 "$srcdir/vscodium-electron.sh" "$pkgdir/usr/bin/${_pkgname}"
+	ln -s "/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/codium"
 
-	install -Dm 755 "$srcdir/${_pkgname}.js" -t "$pkgdir/usr/lib/${_pkgname}/"
+	install -Dm755 "$srcdir/vscodium-electron.js" "$pkgdir/usr/lib/${_pkgname}/vscodium.js"
 
 	install -dm755 "$pkgdir/usr/lib/${_pkgname}"
 	cp -r --no-preserve=ownership --preserve=mode resources/app/!(LICENSE.txt|ThirdPartyNotices.txt) "$pkgdir/usr/lib/${_pkgname}/"
 	ln -sf /usr/bin/rg "$pkgdir/usr/lib/$_pkgname/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg"
 
-  	install -Dm644 "$srcdir/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dm644 "$srcdir/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	install -Dm644 "$srcdir/${_pkgname}-uri-handler.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-uri-handler.desktop"
 
 	install -Dm 644 "resources/completions/bash/codium" "$pkgdir/usr/share/bash-completion/completions/codium"
