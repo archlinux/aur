@@ -1,9 +1,9 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 
-pkgname=android-sdk-cmake-3.18
+pkgname=android-sdk-cmake-3.22
 _major=3
-_minor=18
+_minor=22
 _micro=1
 pkgver=$_major.$_minor.$_micro
 _magic=ba34c321f92f6e6fd696c8354c262c122f56abf8
@@ -18,7 +18,7 @@ source=("https://dl-ssl.google.com/android/repository/cmake-${pkgver}-linux.zip"
         package.xml)
 install=android-sdk-cmake.install
 # sha1sum is from https://dl.google.com/android/repository/repository2-1.xml
-sha1sums=('9435bbe2120763871c75c37a365451b48c007fed'
+sha1sums=('fd0a48b4a758310df8c7aa51f59840ed48fe7ed8'
           '6c281bb95f51b12495c3fd73158544293d6c5427')
 options=('!strip')
 
