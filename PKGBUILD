@@ -11,17 +11,17 @@ license=('MIT')
 provides=('sunbeam')
 conflicts=('sunbeam')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.95/sunbeam-linux_arm64.tar.gz")
-sha256sums_aarch64=('e2a2696e02eee8e5fd9bf611c27392839890bd79e0b84365f709652de4873cc2')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.96/sunbeam-linux_arm64.tar.gz")
+sha256sums_aarch64=('8f70289bebb865776cf2b479dd5fd08bc107a8b65b67623277e1b65e36b9333d')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.95/sunbeam-linux_arm.tar.gz")
-sha256sums_armv7h=('85ab83e357f3af66d84210a2c8d230b3734fcbb3c886249258a64eec5b4c27be')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.96/sunbeam-linux_arm.tar.gz")
+sha256sums_armv7h=('8643db3753ac0284b2050d7b8ec215d6e4f555fe14d2f370af5ec78251118b19')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.95/sunbeam-linux_386.tar.gz")
-sha256sums_i686=('e67ac9cf5f2fa092ebbd9841dd9258b0e475cb79df50f5e0c6e4d6a3dbfbe4fc')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.96/sunbeam-linux_386.tar.gz")
+sha256sums_i686=('46c51c30fbc972c78602364270224853abbab1db9f3cf2bb950848942de839c3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.95/sunbeam-linux_amd64.tar.gz")
-sha256sums_x86_64=('470813b808aae1c1d642b8283805a7a8a5c7c20a69583a7c7cb777ce4c47c79b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.96/sunbeam-linux_amd64.tar.gz")
+sha256sums_x86_64=('318d1e0d334573460982dca00d48572d84ec616dc11e574bed2ef685b4930ffe')
 
 package() {
   # bin
