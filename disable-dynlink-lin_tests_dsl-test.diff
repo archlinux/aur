@@ -1,0 +1,61 @@
+diff --git a/src/dynlink/dune b/src/dynlink/dune
+index 34cb167..72db257 100644
+--- a/src/dynlink/dune
++++ b/src/dynlink/dune
+@@ -9,11 +9,3 @@
+  (name libB)
+  (modules libB)
+ )
+-
+-(test
+- (name lin_tests_dsl)
+- (modules lin_tests_dsl)
+- (package multicoretests)
+- (libraries qcheck-lin.domain dynlink libA libB)
+- (action (run %{test} --verbose))
+-)
+diff --git a/src/dynlink/lin_tests_dsl.ml b/src/dynlink/lin_tests_dsl.ml
+deleted file mode 100644
+index 665d00d..0000000
+--- a/src/dynlink/lin_tests_dsl.ml
++++ /dev/null
+@@ -1,39 +0,0 @@
+-(* ************************************ *)
+-(*           Tests of Dynlink           *)
+-(* ************************************ *)
+-
+-open Lin
+-
+-(* Two libraries that should exist, one that should not *)
+-let library_name = QCheck.Gen.oneofl ["libA.cma"; "libB.cma"; "libC.cma"]
+-let arb_library = QCheck.make library_name
+-let print_library l = QCheck.Print.string (Dynlink.adapt_filename l)
+-
+-(** A {!Lin} {i type} for files that can be dynamically linked *)
+-let library = gen_deconstructible arb_library print_library (=)
+-
+-let loadfile f = Dynlink.loadfile (Dynlink.adapt_filename f)
+-
+-module DynConf =
+-struct
+-  type t = unit
+-
+-  let init () = ()
+-  let cleanup _ = ()
+-
+-  let api =
+-    [ val_ "Dynlink.loadfile"           loadfile                   (library @-> returning_or_exc unit);
+-      val_ "Dynlink.main_program_units" Dynlink.main_program_units (unit @-> returning (list string));
+-      val_ "Dynlink.all_units"          Dynlink.all_units          (unit @-> returning (list string));
+-    ]
+-end
+-
+-module DynT = Lin_domain.Make(DynConf)
+-
+-let _ =
+-  if Sys.win32 then
+-    Printf.printf "negative Lin DSL Dynlink test with Domain disabled under Windows\n\n%!"
+-  else
+-    QCheck_base_runner.run_tests_main [
+-      DynT.neg_lin_test ~count:100 ~name:"negative Lin DSL Dynlink test with Domain";
+-    ]

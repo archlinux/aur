@@ -11,6 +11,8 @@ pkgbase = ocaml-multicoretests
 	depends = ocaml-qcheck>=0.20.0
 	options = !strip
 	source = ocaml-multicoretests-0.3.tar.gz::https://github.com/ocaml-multicore/multicoretests/archive/0.3.tar.gz
+	source = disable-dynlink-lin_tests_dsl-test.diff
 	sha512sums = 32e1808e6228df93c2f017259dbb70cd7c8b399a07b04d2e1a84e1d729fb5c478bf706bfc3ec342d160011c990f1520c43ff9a8cd13dd718eec8399a31618d6e
+	sha512sums = 03b4d703ddce013313a24ac6d850db2debde77023843ee5917cbe89da576f61fbfa0f84675e00af2db59ac52e10f28be0cdda5d2953afe6ecf159bc2895f51d8
 
 pkgname = ocaml-multicoretests
