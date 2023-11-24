@@ -16,7 +16,7 @@ _architecture="i686-w64-mingw32 x86_64-w64-mingw32"
 build () {
   cd "$srcdir"/mixmod-${pkgver}
   for _arch in $_architecture; do
-    ${_arch}-cmake -B build-${_arch} .
+    ${_arch}-cmake -B build-${_arch} -DCMAKE_UNITY_BUILD=ON .
     make -C build-${_arch}
   done
 }
