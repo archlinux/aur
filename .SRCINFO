@@ -1,0 +1,16 @@
+pkgbase = argumentum
+	pkgdesc = C++ command line parsing library
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/mmahnic/argumentum/
+	arch = x86_64
+	groups = libraries
+	license = MPL2
+	makedepends = cmake
+	makedepends = make
+	optdepends = cmake
+	provides = libargumentum.a
+	source = https://github.com/mmahnic/argumentum/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 3db84bfbd4d459b3128f449de9b88ae1e222cb62a4ba95dc4db6eb48a2af9f80
+
+pkgname = argumentum
