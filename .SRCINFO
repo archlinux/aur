@@ -1,19 +1,22 @@
 pkgbase = gtk4-layer-shell
 	pkgdesc = A library to create panels and other desktop components for Wayland using the Layer Shell protocol and GTK4
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/wmww/gtk4-layer-shell
 	arch = x86_64
+	arch = aarch64
 	license = MIT
+	checkdepends = lua51-lgi
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = ninja
 	makedepends = valabind
 	makedepends = python
+	makedepends = luajit
 	depends = gtk4
 	depends = wayland
-	source = gtk4-layer-shell-1.0.1.tar.gz::https://github.com/wmww/gtk4-layer-shell/archive/v1.0.1.tar.gz
-	sha256sums = f7b8d352065a540d4cb7b0cbfdeb2c2efea55b57cfb717de5c880fde41e65cb1
+	source = gtk4-layer-shell-1.0.2.tar.gz::https://github.com/wmww/gtk4-layer-shell/archive/v1.0.2.tar.gz
+	sha256sums = a3a827845612fa15de30734eb29c01db329c32f8e279d8bc5251facc69220b86
 
 pkgname = gtk4-layer-shell

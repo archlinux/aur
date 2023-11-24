@@ -4,9 +4,9 @@
 
 pkgdesc='A library to create panels and other desktop components for Wayland using the Layer Shell protocol and GTK4'
 pkgname=gtk4-layer-shell
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(MIT)
 url="https://github.com/wmww/gtk4-layer-shell"
 depends=(
@@ -20,12 +20,17 @@ makedepends=(
     "ninja"
     "valabind"
     "python"
+    "luajit"
+)
+checkdepends=(
+    "lua51-lgi"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f7b8d352065a540d4cb7b0cbfdeb2c2efea55b57cfb717de5c880fde41e65cb1')
+sha256sums=('a3a827845612fa15de30734eb29c01db329c32f8e279d8bc5251facc69220b86')
 
 build() {
-    meson --prefix=/usr \
+    meson setup \
+          --prefix=/usr \
           --wrap-mode=nofallback \
           --buildtype=plain \
           -Dtests=true \
@@ -38,7 +43,12 @@ build() {
     ninja -C build
 }
 
-# See: https://github.com/wmww/gtk4-layer-shell/issues/12
+
+
+
+# See:
+# - https://github.com/wmww/gtk4-layer-shell/issues/28
+# - https://github.com/mesonbuild/meson/issues/6999
 # check() {
 # ninja -C build test
 # }
