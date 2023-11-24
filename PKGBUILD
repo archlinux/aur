@@ -18,8 +18,8 @@ package() {
   cp -r ${srcdir}/Wave-linux-x64/* ${pkgdir}/opt/waveterm/
   chmod +x ${pkgdir}/opt/waveterm/Wave
   mv ${pkgdir}/opt/waveterm/Wave ${pkgdir}/opt/waveterm/waveterm
-  mkdir -p ${pkgdir}/usr/bin/waveterm
-  ln -s ${pkgdir}/opt/waveterm/waveterm ${pkgdir}/usr/bin/waveterm
+  mkdir -p ${pkgdir}/usr/bin/
+  ln -s ${pkgdir}/opt/waveterm/waveterm ${pkgdir}/usr/bin/
 
   # license
   mkdir -p ${pkgdir}/usr/share/licenses/waveterm
