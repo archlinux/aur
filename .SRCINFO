@@ -1,6 +1,6 @@
 pkgbase = kikoplay
 	pkgdesc = linux danmaku player
-	pkgver = 0.9.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/KikoPlayProject/KikoPlay
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = kikoplay
 	depends = qhttpengine
 	optdepends = aria2: for downloading
 	conflicts = kikoplay-bin
-	source = https://github.com/KikoPlayProject/KikoPlay/archive/refs/tags/0.9.3.tar.gz
+	source = https://github.com/KikoPlayProject/KikoPlay/archive/refs/tags/1.0.0.tar.gz
 	source = git+https://github.com/KikoPlayProject/KikoPlayScript
-	sha256sums = 96b8818450a8354ea960e1eec575830d7ed2800e90b1025ec4f9358d390e8669
+	sha256sums = a8e20f9880fc3418e12f836c28684607e6486d1d2e504e7e829daa5c2344a47f
 	sha256sums = SKIP
 
 pkgname = kikoplay

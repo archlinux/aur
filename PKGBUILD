@@ -2,7 +2,7 @@
 # Contributor: pureboys <yuyuud@yuyuud@gmail.com>
 
 pkgname='kikoplay'
-pkgver=0.9.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "git+https://github.com/KikoPlayProject/KikoPlayScript"
 )
 sha256sums=(
-    "96b8818450a8354ea960e1eec575830d7ed2800e90b1025ec4f9358d390e8669"
+    "a8e20f9880fc3418e12f836c28684607e6486d1d2e504e7e829daa5c2344a47f"
     SKIP
 )
 
@@ -32,17 +32,17 @@ prepare() {
 build() {
     # https://github.com/KikoPlayProject/KikoPlay/issues/97#issuecomment-1427057614
     # compile a standalone liblua53.a, remove lua53 from depends.
-    cmake -B"${srcdir}/build-lua53" -S"${srcdir}/KikoPlay/Script/lua"
+    cmake -B"${srcdir}/build-lua53" -S"${srcdir}/KikoPlay/Extension/Lua"
     cd "${srcdir}/build-lua53"
     make
     ln -sf "${srcdir}/build-lua53/libmyLua53.a" "${srcdir}/KikoPlay/lib/x64/linux/liblua53.a"
-    ln -sf "${srcdir}/build-lua53/libmyLua53.a" "${srcdir}/KikoPlay/Script/lua/liblua53.a"
+    ln -sf "${srcdir}/build-lua53/libmyLua53.a" "${srcdir}/KikoPlay/Extension/Lua/liblua53.a"
 
     # compile kikoplay
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/build"
     qmake "${srcdir}/KikoPlay"
-    make
+    make -j
 
     ## only for test, place the "script" under the path of KikoPlay binary
     ## then we can test the script function without packaging or installing KikoPlay
