@@ -1,0 +1,19 @@
+pkgbase = ocaml-qcheck
+	pkgdesc = QuickCheck inspired property-based testing for OCaml
+	pkgver = 0.21.2
+	pkgrel = 1
+	url = https://github.com/c-cube/qcheck
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = dune>=2.8.0
+	depends = ocaml>=4.08.0
+	depends = ocaml-alcotest>=0.8.1
+	depends = ocaml-ounit>=2.0.0
+	depends = ocaml-ppx_deriving>=5.2.1
+	depends = ocaml-ppxlib>=0.22.0
+	options = !strip
+	source = ocaml-qcheck-0.21.2.tar.gz::https://github.com/c-cube/qcheck/archive/v0.21.2.tar.gz
+	sha512sums = 67ff77a66ccf046dfede9123a322002f232a0a65b8ce1890795a4a4ba247bc5413f988e7cfd53412418036c2b907e4cbcd7dcd39d7f1fd2481aee60107b075cc
+
+pkgname = ocaml-qcheck
