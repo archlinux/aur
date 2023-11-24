@@ -1,9 +1,9 @@
-pkgbase = android-ndk
+pkgbase = android-ndk-25
 	pkgdesc = Android C/C++ developer kit
 	pkgver = r25.c
-	pkgrel = 4
+	pkgrel = 1
 	url = https://developer.android.com/ndk/
-	install = android-ndk.install
+	install = android-ndk-25.install
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -23,6 +23,8 @@ pkgbase = android-ndk
 	optdepends = python: various helper scripts
 	optdepends = perl: various helper scripts
 	optdepends = libc++: for some LLVM components
+	provides = android-ndk=r25.c
+	conflicts = android-ndk
 	replaces = android-ndk64
 	options = !strip
 	options = staticlibs
@@ -34,4 +36,4 @@ pkgbase = android-ndk
 	sha1sums_x86_64 = 53af80a1cce9144025b81c78c8cd556bff42bd0e
 	sha256sums_x86_64 = 769ee342ea75f80619d985c2da990c48b3d8eaf45f48783a2d48870d04b46108
 
-pkgname = android-ndk
+pkgname = android-ndk-25
