@@ -1,6 +1,6 @@
 # Maintainer: Vasya Pupkin <dvorak.dwarf@gmail.com>
 pkgname=fauxnix-git
-pkgver=r68.d8c5b2d
+pkgver=r72.2c45106
 pkgrel=1
 pkgdesc="Non-invasive* Reproducible* Declarative* config management for Nix non-believers"
 arch=('any')
