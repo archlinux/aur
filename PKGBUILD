@@ -4,7 +4,7 @@ _pkgname=MetaVolcanoR
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Gene Expression Meta-analysis Visualization Tool"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -31,7 +31,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('697e849a45f3ceae9ff730fc7717d6ca')
 sha256sums=('d25e4304b5f8ae7c405c29004d9afe638b23011903e6338460bc9835c196dd85')
 
