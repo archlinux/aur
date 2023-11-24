@@ -1,14 +1,14 @@
 pkgbase = anime4k-git
 	pkgdesc = A High-Quality Real Time Upscaler for Anime Video
-	pkgver = r415.0ec6859
+	pkgver = 4.0.1.r40.g8e39551
 	pkgrel = 1
-	url = https://github.com/bloc97/Anime4K#anime4k
+	url = https://github.com/bloc97/Anime4K
 	arch = any
 	license = MIT
 	makedepends = go-md2man
-	provides = anime4k
+	provides = anime4k=4.0.1
 	conflicts = anime4k
-	source = anime4k::git+https://github.com/bloc97/Anime4K
-	sha512sums = SKIP
+	source = anime4k::git+https://github.com/bloc97/Anime4K.git
+	sha256sums = SKIP
 
 pkgname = anime4k-git

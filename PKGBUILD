@@ -1,37 +1,42 @@
-# Maintainer: Adler Neves <adlerosn@gmail.com>
+# Maintainer:
+# Contributor: Adler Neves <adlerosn@gmail.com>
 
-provides=('anime4k')
-conflicts=('anime4k')
-pkgver=r415.0ec6859
-pkgname=anime4k-git
+_pkgname="anime4k"
+pkgname="$_pkgname-git"
+pkgver=4.0.1.r40.g8e39551
 pkgrel=1
 pkgdesc="A High-Quality Real Time Upscaler for Anime Video"
-arch=('any')
-depends=()
-makedepends=('go-md2man')
-url="https://github.com/bloc97/Anime4K#anime4k"
-options=()
+url="https://github.com/bloc97/Anime4K"
 license=('MIT')
-source=('anime4k::git+https://github.com/bloc97/Anime4K')
-sha512sums=('SKIP')
+arch=('any')
+
+makedepends=('go-md2man')
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd anime4k
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}"
   go-md2man -in anime4k/md/GLSL_Instructions_Linux.md -out glsl.man
   go-md2man -in anime4k/md/GLSL_Instructions_Advanced.md -out glsladv.man
 }
 
 package() {
-  cd "${pkgdir}"
-  install -d "${pkgdir}"/usr/share/anime4k
-  install -d "${pkgdir}"/usr/share/man/man1
-  install "${srcdir}"/glsl.man -m 644 "${pkgdir}"/usr/share/man/man1/anime4k.1
-  install "${srcdir}"/glsladv.man -m 644 "${pkgdir}"/usr/share/man/man1/anime4k-advanced.1
-  cp -rf "${srcdir}"/anime4k/glsl/. "${pkgdir}"/usr/share/anime4k/.
-  cp -rf "${srcdir}"/anime4k/tensorflow/. "${pkgdir}"/usr/share/anime4k/tensorflow
+  install -d "${pkgdir}/usr/share/anime4k/tensorflow"
+  cp -rf "$_pkgsrc/glsl"/* "${pkgdir:?}/usr/share/anime4k/"
+  cp -rf "$_pkgsrc/tensorflow"/* "${pkgdir:?}/usr/share/anime4k/tensorflow/"
+
+  install -Dm644 glsl.man "${pkgdir}/usr/share/man/man1/anime4k.1"
+  install -Dm644 glsladv.man "${pkgdir}/usr/share/man/man1/anime4k-advanced.1"
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/"
 }

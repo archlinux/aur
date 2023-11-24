@@ -1,7 +1,4 @@
-anime4k/**
-anime4k*
-*.pkg.tar.*
-pkg
-pkg/**
-src
-src/**
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
