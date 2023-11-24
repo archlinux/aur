@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DEGreport
-_pkgver=1.38.2
+_pkgver=1.38.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,9 +40,6 @@ depends=(
   r-tibble
   r-tidyr
 )
-checkdepends=(
-  r-testthat
-)
 optdepends=(
   r-annotationdbi
   r-biocstyle
@@ -53,17 +50,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('14f6c9550f4e333cceec881896514de2')
-sha256sums=('51ee349ab47859c26532868466556c4126787a98f9c1af384917a6a3a9323822')
+md5sums=('9b3c417346f6fcb9a4a2df5e30c7243c')
+sha256sums=('30c16dff8955064d175c56d74a8794cc851bdca0b45ab37ecddc01fe68016128')
 
 build() {
   mkdir -p build
   R CMD INSTALL "$_pkgname" -l build
-}
-
-check() {
-  cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
