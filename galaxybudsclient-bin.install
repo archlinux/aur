@@ -1,4 +1,5 @@
 post_install() {
+    echo "bluez must be activated (if using systemd, the bluetooth.service) before the app is started"
     echo "If your system language is set to a language that has non-Latin characters (Korean, Japanese, Chinese), you need to start the app like this: LC_ALL=C galaxybudsclient"
     echo "This application collects crash dumps in case of fatal application crashes and sends them to my sentry.io dashboard (can be disabled in settings)."
     echo "To help me support Buds models I don't own, this app includes a crowdsourcing feature to share data about Samsung's proprietary Bluetooth serial protocol on demand. You can disable this permanently by navigating to 'Settings > Developer options'."
