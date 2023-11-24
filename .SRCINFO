@@ -1,0 +1,21 @@
+pkgbase = jdprocessfilewatcher
+	pkgdesc = Edit autostart entries
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/JakobDev/jdProcessFileWatcher
+	arch = any
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyqt6
+	depends = python-desktop-entry-lib
+	depends = strace
+	depends = polkit
+	source = jdprocessfilewatcher-1.0.tar.gz::https://codeberg.org/JakobDev/jdProcessFileWatcher/archive/1.0.tar.gz
+	sha256sums = b7483cc91ca8b4e0249de7d612929a2d68f794f4693118652899d02209a80c67
+
+pkgname = jdprocessfilewatcher
