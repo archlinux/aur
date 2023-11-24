@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-async-tkinter-loop
 _name=${pkgname#python-}
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Asynchronous mainloop implementation for tkinter."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'tk')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("$_name-$pkgver.tar.gz::https://github.com/insolor/async-tkinter-loop/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('53f69bab78ebec89077572049de5dc9f15b1d090026ca31162d12de2c0ead045')
+sha256sums=('164e57e9438ee61e7d9e5e487b972a93617ee1a552c953f2ecdc5f9c71f938b3')
 
 build() {
   cd "$_name-$pkgver"
