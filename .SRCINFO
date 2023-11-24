@@ -1,6 +1,6 @@
 pkgbase = scanservjs
 	pkgdesc = SANE scanner nodejs web ui
-	pkgver = 2.27.0
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/sbs20/scanservjs
 	install = scanservjs.install
@@ -14,9 +14,11 @@ pkgbase = scanservjs
 	depends = tesseract
 	backup = etc/webapps/scanservjs/config.js
 	backup = etc/webapps/scanservjs/devices.json
-	source = https://github.com/sbs20/scanservjs/archive/refs/tags/v2.27.0.tar.gz
+	source = https://github.com/sbs20/scanservjs/archive/refs/tags/v3.0.3.tar.gz
 	source = scanservjs.sysusersd
-	sha512sums = bd2604a5af9da9d9f38b08f216827166a1bdeccd7c33cf3a7be6407764338a3b8c0a88bcf042d9aa570a38ea6034ec0c867ea9924249964afe23104c798fd624
+	source = scanservjs.service
+	sha512sums = e3746cfab118b08b75fe5a862e1b06d35bce3fafe7b5cf482ddfd28aad8ac9879981eef5bdadc35a783607aac49eef95b966ff1d2ddf431eaf6e2d7e335623fb
 	sha512sums = 48cfc5f2ec0fb1428d6d745cfe9e63f1a020d8bdd94225058b9ab16e077ad83492a68b2b974a4c55f071bddf90202a8b3a7b25fdabdb20ac7a94cef8acd7e6d6
+	sha512sums = 07659a9b3e65f32b42977e2d39d114ae45fcab5fcb486b0f3c7a653e7656b27a95af00f3a1af51ec953c37ffa6c6983bf7c9b1c70ca7bcd85b615781231f753f
 
 pkgname = scanservjs
