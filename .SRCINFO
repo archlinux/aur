@@ -1,0 +1,19 @@
+pkgbase = necrolog-git
+	pkgdesc = Tiny but powerful logging for C++
+	pkgver = r106.11d001e
+	pkgrel = 1
+	url = https://github.com/fvacek/necrolog
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = doctest
+	provides = necrolog
+	conflicts = necrolog
+	conflicts = necrolog-git
+	source = git+https://github.com/syyyr/necrolog.git#branch=pkgconfig
+	md5sums = SKIP
+
+pkgname = necrolog-git
