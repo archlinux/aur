@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=tabby
-pkgver=1.0.201
+pkgver=1.0.202
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
