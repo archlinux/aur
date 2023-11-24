@@ -5,7 +5,7 @@
 _pkgname=cura
 pkgname=$_pkgname-bin
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='State-of-the-art slicer app to prepare your 3D models for your 3D printer'
 url='https://ultimaker.com/software/ultimaker-cura'
 license=('LGPL3')
@@ -34,6 +34,10 @@ prepare() {
   ./UltiMaker-Cura-${pkgver}-linux-X64.AppImage --appimage-extract
   hardlink --content --maximize squashfs-root
   cd squashfs-root
+  sed -i 's|^Comment=.*|Comment=Cura converts 3D models into paths for a 3D printer. It prepares your print for maximum accuracy, minimum printing time and good reliability with many extra features that make your print come out great.|' com.ultimaker.cura.desktop
+  sed -i 's|^Icon=|Icon=/usr/share/pixmaps/|' com.ultimaker.cura.desktop
+  printf '%s\n' 'MimeType=model/stl;application/vnd.ms-3mfdocument;application/prs.wavefront-obj;image/bmp;image/gif;image/jpeg;image/png;text/x-gcode;application/x-amf;application/x-ply;application/x-ctm;model/vnd.collada+xml;model/gltf-binary;model/gltf+json;model/vnd.collada+xml+zip;' >> com.ultimaker.cura.desktop
+  printf '%s\n' 'Keywords=3D;Printing;' >> com.ultimaker.cura.desktop
   patch -p1 < ../AppRun.env.patch
 }
 
