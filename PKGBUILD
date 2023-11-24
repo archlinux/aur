@@ -5,7 +5,7 @@
 pkgname=xl2tpd-watchguard
 pkgver=1.3.18
 pkgrel=1
-pkgdesc="an open source implementation of the L2TP maintained by Xelerance Corporation, with path to fix disconnects from Watchguard server"
+pkgdesc="an open source implementation of the L2TP maintained by Xelerance Corporation, with patсh to fix disconnects from Watchguard server"
 arch=('x86_64')
 #url="https://www.xelerance.com/services/software/xl2tpd/"
 url="https://github.com/xelerance/xl2tpd"
