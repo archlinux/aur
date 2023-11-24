@@ -2,7 +2,7 @@
 
 pkgname="wlroots-nvidia"
 pkgver="0.17.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Modular Wayland compositor library, with fix for nvidia flickering"
 license=("MIT")
 
@@ -19,6 +19,7 @@ conflicts=(
 	"wlroots-git"
 )
 depends=(
+	'libdisplay-info.so'
 	'libglvnd'
 	'libinput'
 	'libpixman-1.so'

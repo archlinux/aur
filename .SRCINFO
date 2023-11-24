@@ -1,7 +1,7 @@
 pkgbase = wlroots-nvidia
 	pkgdesc = Modular Wayland compositor library, with fix for nvidia flickering
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = wlroots-nvidia
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
 	makedepends = xorg-xwayland
+	depends = libdisplay-info.so
 	depends = libglvnd
 	depends = libinput
 	depends = libpixman-1.so
@@ -39,6 +40,6 @@ pkgbase = wlroots-nvidia
 	validpgpkeys = 4100929B33EEB0FD1DB852797BC79407090047CA
 	sha256sums = 9da3475a6834a6a9a8fd93de84f4ef91f9ee48ff70c305aa9522bf0db9e61128
 	sha256sums = SKIP
-	sha256sums = 83cbb8211265fed66b4320e6fd986606731b8f5f04bf6cabe7280e8f5fdba783
+	sha256sums = 980f4e7c37b30412d2726e5628d41541b76511a36297be7bdd305ba50ed89588
 
 pkgname = wlroots-nvidia
