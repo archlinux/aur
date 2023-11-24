@@ -1,20 +1,19 @@
 pkgbase = faraday-bin
 	pkgdesc = Faraday is a suite of tools built to help node operators and businesses run lnd, the leading implementation of the Lightning Network.
-	pkgver = 0.2.8_alpha
-	pkgrel = 3
+	pkgver = 0.2.11_alpha
+	pkgrel = 1
 	url = https://github.com/lightninglabs/faraday
 	arch = any
 	license = MIT
 	depends = lnd
 	provides = faraday
 	provides = frcli
-	source = faraday-linux-amd64-v0.2.8-alpha.tar.gz::https://github.com/lightninglabs/faraday/releases/download/v0.2.8-alpha/faraday-linux-amd64-v0.2.8-alpha.tar.gz
-	source = manifest-v0.2.8-alpha.txt.sig::https://github.com/lightninglabs/faraday/releases/download/v0.2.8-alpha/manifest-v0.2.8-alpha.sig
-	source = manifest-v0.2.8-alpha.txt::https://github.com/lightninglabs/faraday/releases/download/v0.2.8-alpha/manifest-v0.2.8-alpha.txt
+	source = https://github.com/lightninglabs/faraday/releases/download/v0.2.11-alpha/faraday-linux-amd64-v0.2.11-alpha.tar.gz
+	source = manifest-v0.2.11-alpha.txt.sig::https://github.com/lightninglabs/faraday/releases/download/v0.2.11-alpha/manifest-v0.2.11-alpha.sig
+	source = https://github.com/lightninglabs/faraday/releases/download/v0.2.11-alpha/manifest-v0.2.11-alpha.txt
 	validpgpkeys = F4FC70F07310028424EFC20A8E4256593F177720
-	validpgpkeys = 15E7ECF257098A4EF91655EB4CA7FE54A6213C91
-	sha256sums = 388d98124742ed0cc835e10a760565efabe61e30355be044cfc9b288025f77e3
+	sha256sums = 892d1bbbc194ec3649af7b4e8298d034d84b6a379b3c2e943c16082911e0f894
 	sha256sums = SKIP
-	sha256sums = c2f2041ce1cce35516f64974cdb1042618318bfadc9774693dc14c17619e5836
+	sha256sums = 0066409f4db00e370974a60771302114a5b58aba120722c907f7e111442073b3
 
 pkgname = faraday-bin
