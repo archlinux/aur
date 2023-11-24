@@ -1,7 +1,7 @@
 pkgbase = intune-portal-bin
 	pkgdesc = Enroll devices in Microsoft Azure Endpoint
-	pkgver = 1.2307.12
-	pkgrel = 5
+	pkgver = 1.2310.8
+	pkgrel = 1
 	url = http://intune.microsoft.com
 	install = intune-portal-bin.install
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = intune-portal-bin
 	depends = libx11
 	depends = sqlite
 	provides = intune-portal
-	source = https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/intune-portal/intune-portal_1.2307.12_amd64.deb
+	source = https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/intune-portal/intune-portal_1.2310.8_amd64.deb
 	source = os-release
-	sha256sums = e3d68d9182856d91b4874e376be063d30f4f87bd04aa141bbcb2d6ed80e7bc57
+	sha256sums = 6b561c89312bcb8c6166e5c29b9adda7672bb71921bfbfd600ebe30db6f8f8b5
 	sha256sums = ef3177044475bb6ab8cc77a97b889742eebf0854bbdab5f098a4c55a62c8c39e
 
 pkgname = intune-portal-bin
