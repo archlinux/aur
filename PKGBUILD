@@ -4,7 +4,7 @@
 
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-nvlax
-pkgver=545.29.02
+pkgver=545.29.06
 pkgrel=1
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
@@ -40,7 +40,7 @@ source=(
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
-            'b3d31d19f2912e4926446b609c07f181fae00b1dc4b025ddb52f8c28a1f14904d29ff6514fd04c734776bec82a351476009d60be9293968fbea7dc62ed580de8'
+            'b80e1643471c48477479a48d2e8a9c4a241874d6207ddeaccdeedd3f9f1121d79be90be07d37df094fa6f7cc5806857bf2368337ba40cb5cfe6d04c117c5c45d'
             'SKIP')
 
 create_links() {
