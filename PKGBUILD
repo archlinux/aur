@@ -19,7 +19,7 @@ package() {
   chmod +x ${pkgdir}/opt/waveterm/Wave
   mv ${pkgdir}/opt/waveterm/Wave ${pkgdir}/opt/waveterm/waveterm
   mkdir -p ${pkgdir}/usr/bin/
-  ln -s ${pkgdir}/opt/waveterm/waveterm ${pkgdir}/usr/bin/
+  ln -s /opt/waveterm/waveterm ${pkgdir}/usr/bin/
 
   # license
   mkdir -p ${pkgdir}/usr/share/licenses/waveterm
@@ -29,5 +29,5 @@ package() {
   mkdir -p ${pkgdir}/usr/share/pixmaps/
   cp -r ${srcdir}/Wave-linux-x64/resources/app/public/waveterm.icns ${pkgdir}/usr/share/pixmaps/waveterm.icns
   mkdir -p ${pkgdir}/usr/share/applications/
-  ln -s ${pkgdir}/opt/waveterm/waveterm ${pkgdir}/usr/share/applications/waveterm.desktop
+  ln -s /opt/waveterm/waveterm ${pkgdir}/usr/share/applications/waveterm.desktop
 }
