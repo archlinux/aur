@@ -1,0 +1,13 @@
+pkgbase = printer-git
+	pkgdesc = Ncurses like c library
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/spynetS/printer
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	source = git+https://github.com/spynetS/printer.git
+	md5sums = SKIP
+
+pkgname = printer-git
