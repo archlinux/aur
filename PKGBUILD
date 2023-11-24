@@ -1,6 +1,6 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux at freso.dk>
 pkgname=obs-vertical-canvas
-pkgver=1.2.5
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Add vertical canvas to OBS'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('obs-studio')
 makedepends=('cmake')
 source=($pkgname-$pkgver.tar.gz::https://github.com/Aitum/$pkgname/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('cbe40bdaebcca878a0ca7415f42bcbefec3b8191bfca46341ca1f4c9f03ef401535c33e7833901aa5e412eba9bc9437c78f078768f8eb3e2dcdb0716b64c876d')
+b2sums=('02495e494ef9274d046c69a50ab3b5787fa14fa4db3ecdedbda4c54359ffc41ecead00b0f49a6fd2798062de76d4d25b10dadafb4e803b634b1bf2c0596be5e9')
 
 build() {
   cd $pkgname-$pkgver
