@@ -1,19 +1,20 @@
 # Maintainer: Conrad Kleinespel <conradk@conradk.com>
 
 pkgname=rooster
-pkgver=2.9.0
+pkgver=2.12.0
 pkgrel=1
-pkgdesc="A simple password manager for geeks"
+pkgdesc="A simple password manager"
 url="https://github.com/conradkleinespel/rooster"
-makedepends=('cargo' 'pkg-config' 'libx11' 'libxmu' 'python3' 'libsodium' 'openssl')
-depends=('libx11' 'libxmu' 'libsodium' 'openssl' 'xsel' 'wl-clipboard')
+makedepends=('cargo' 'pkg-config' 'libx11' 'libxmu' 'python3')
+depends=('libx11' 'libxmu' 'xsel' 'wl-clipboard')
 arch=('i686' 'x86_64')
 license=('Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/conradkleinespel/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('2cb08c90c9604951c810038dffd1dfca1de71bfe1d76b22f951dc3f14c0efab4')
+sha256sums=('8d9ee02c81330491517320cf89247c25329403ca06056d412edfb440a95da569')
 
 build() {
   cd "$pkgname-$pkgver"
+  sed -i 's# path = "../[a-z0-9]\+",##g' Cargo.toml
   cargo build --release
 }
 
