@@ -8,8 +8,8 @@ pkgdesc="The Unit Converter app: easy, immediate and multi-platform (binary rele
 url="https://github.com/ferraridamiano/ConverterNOW"
 arch=('x86_64')
 license=('GPL3')
-conflicts=("$_pkgname")
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=($_pkgname-$pkgver.tar.gz::"$url/releases/download/v$pkgver/$_pkgname-linux-x64.tar.gz")
 sha256sums=('5fe8235d5d89b020e792eed4b8d5b7234ceec97cce3cff832b708366a0020d1e')
 
