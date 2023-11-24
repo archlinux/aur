@@ -1,4 +1,4 @@
-# Maintainer: Norbert Morawski <norbert.morawski@archworks.co>
+# Maintainer: Norbert <sandwich@archworks.co>
 
 pkgname=sshlog-bin
 pkgver=1.0.0
