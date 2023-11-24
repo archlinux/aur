@@ -1,17 +1,17 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Based on core/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 #
 # Pull requests are welcome here:
 # https://github.com/yurikoles-aur/linux-drm-tip-git
 #
 
 pkgbase=linux-drm-tip-git
-pkgver=6.5.r1202741.7a825a06c6ee6
+pkgver=6.7.r1234279.002e96d8067f
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
+url=https://cgit.freedesktop.org/drm-tip
 _product="${pkgbase%-git}"
 _branch=drm-tip
-url=https://cgit.freedesktop.org/drm-tip
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -38,8 +38,10 @@ source=(
   "$_srcname::git://anongit.freedesktop.org/drm-tip#branch=#branch=$_branch"
   config  # the main kernel config file
 )
+sha256sums=('SKIP'
+            'f77aab33af83c635e0445c6e424922cdc054efe2430c8c831f8bead23e08ba88')
 b2sums=('SKIP'
-        'edfe3c41fcecef398197215663240ec15f1c30c35aa789e39bd02194ed3cda5582b61e9696825fe663b23750d717583d94c8443c3d8d065985c53194a0753280')
+        'eee80b262d447770f89bb16e4c84a5faedd8e2a46d57a5b6ad6371f5a9a8e11194f82c9160d78486fc1a889ad9dea6f0b2d90b8a21235aefc30bf7fe3ef355f6')
 
 pkgver() {
   cd $_srcname
@@ -54,25 +56,18 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-_make() {
-  test -s version
-  make KERNELRELEASE="$(<version)" "$@"
-}
-
 prepare() {
   cd $_srcname
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-  make defconfig
-  make -s kernelrelease > version
-  make mrproper
 
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    src="${src%.zst}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
@@ -80,16 +75,17 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  _make olddefconfig
+  make olddefconfig
   diff -u ../config .config || :
 
+  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  _make all
-#  _make htmldocs
+  make all
+  make htmldocs
 }
 
 _package() {
@@ -119,17 +115,17 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
@@ -236,7 +232,7 @@ _package-docs() {
 pkgname=(
   "${_product}-git"
   "${_product}-headers-git"
-#  "${_product}-docs-git"
+  "${_product}-docs-git"
 )
 for _package in "${pkgname[@]}"; do
   local _package_no_git="${_package%-git}"
