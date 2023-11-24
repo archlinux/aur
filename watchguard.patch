@@ -1,0 +1,11 @@
+--- control.c	2023-11-24 13:57:16.061621270 +0400
++++ control.c.cust	2023-11-24 13:57:44.151534700 +0400
+@@ -845,7 +845,7 @@
+         /* FIXME: Packet Processing Delay */
+         /* We don't need any kind of proxy PPP stuff */
+         /* Can we proxy authenticate ourselves??? */
+-        add_rxspeed_avp (buf, t->rxspeed);
++        /* add_rxspeed_avp (buf, t->rxspeed); */
+ #endif
+ /* add_seqreqd_avp (buf); *//* We don't have sequencing code, so
+  * don't ask for sequencing */
