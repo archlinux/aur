@@ -1,7 +1,7 @@
 pkgbase = terrax
 	pkgdesc = Terrax is a simple orchestration tool that simplify the adoption of aws-vault, chamber and tfsec while terraforming.
-	pkgver = 3.0.1
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://gitlab.com/alvaro-fdez/terrax
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = terrax
 	depends = chamber
 	depends = terraform
 	depends = tfsec
-	source = terrax-3.0.1.tar.gz::https://gitlab.com/alvaro-fdez/terrax/-/archive/v3.0.1/terrax-v3.0.1.tar.gz
-	sha256sums = ec22faba57b2c12d6427bdb46bb6de546c1621e9003a4a30069a314e2fff5196
+	source = terrax-3.1.0.tar.gz::https://gitlab.com/alvaro-fdez/terrax/-/archive/v3.1.0/terrax-v3.1.0.tar.gz
+	sha256sums = 9e6b23f2a1b942896c71afd9835d7310901e382df892302a5b4a639f364eb48d
 
 pkgname = terrax
