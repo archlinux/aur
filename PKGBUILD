@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: syntheit <daniel@matv.io>
 pkgname=tagspaces
-pkgver=5.6.1
+pkgver=5.6.2
 pkgrel=1
 _electronversion=26
 pkgdesc="An offline, open source, document manager with tagging support"
@@ -13,7 +13,7 @@ makedepends=('git' 'libxcrypt-compat' 'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('699f8321dcf6baee470213ed77b1ad851f0944e652b396d4ac9708038f47c2b2'
+sha256sums=('2f881eac0f5de2e69ae2ef364e8f927c25f9b0f3f1ac7e321bfce7e2beedfa39'
             'a548e2b62a61a93d80482ebe43ef11e33e2c2bfef9db641fc583bd5539ac6948'
             '28aea5402d15b91a681e52cbcb3a7a0fafb12eec2313ad9be3bd933c52a8f680')
 
@@ -46,8 +46,8 @@ build() {
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   npm run build
   npm run install-ext-node-linux
-  ./node_modules/.bin/electron-builder --linux --config resources/builder.json \
-    ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer}
+  npm exec -c "electron-builder --linux --config resources/builder.json \
+    ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer}"
 }
 
 package() {
