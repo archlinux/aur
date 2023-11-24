@@ -1,0 +1,15 @@
+pkgbase = ocaml-tsort
+	pkgdesc = Easy to use and user-friendly topological sort module for OCaml
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/dmbaturin/ocaml-tsort
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=1.9.0
+	depends = ocaml>=4.03.0
+	options = !strip
+	source = ocaml-tsort-2.1.0.tar.gz::https://github.com/dmbaturin/ocaml-tsort/archive/2.1.0.tar.gz
+	sha512sums = cf0a6295eed3ca29dbedb1b32c736b37e98587d5420d2f6443b70ca3c50c8d75c508a245d243a3f28bfe9c250abc3a37d4f461b187d2459670eae4cb088514aa
+
+pkgname = ocaml-tsort
