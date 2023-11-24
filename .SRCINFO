@@ -1,7 +1,7 @@
 pkgbase = flexo
 	pkgdesc = A central pacman cache
 	pkgver = 1.6.9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/nroi/flexo
 	arch = x86_64
 	arch = armv6h
@@ -17,8 +17,10 @@ pkgbase = flexo
 	backup = etc/flexo/flexo.toml
 	source = flexo-1.6.9.tar.gz::https://github.com/nroi/flexo/archive/1.6.9.tar.gz
 	source = flexo.service
+	source = sysuser.conf
 	source = tmpfiles.conf
 	sha256sums = c51484fa8935e520bbfbcf74a76f6a09b77e4e14a4206a6446490c445e0eb1e7
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
