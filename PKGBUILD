@@ -1,4 +1,3 @@
-# Maintainer: Allan M. de Azevedo <4lln.medeiros@gmail.com>
 # Contributor: schuay <jakob.gruber@gmail.com>
 # Contributor: quantax -- contact via Arch Linux forum or AUR
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
