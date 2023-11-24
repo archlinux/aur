@@ -1,0 +1,17 @@
+pkgbase = ocaml-qtest
+	pkgdesc = Inline (Unit) Tests for OCaml
+	pkgver = 2.11.2
+	pkgrel = 1
+	url = https://github.com/vincent-hugot/qtest
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = dune>=1.1.0
+	depends = ocaml>=4.03.0
+	depends = ocaml-ounit
+	depends = ocaml-qcheck
+	options = !strip
+	source = ocaml-qtest-2.11.2.tar.gz::https://github.com/vincent-hugot/qtest/archive/v2.11.2.tar.gz
+	sha512sums = 3edb8471b29c9eb2f6ba11b157abf7ca43ef965d4b1500aaaf1acaeb261972a61c9b104887ada6ca63dc85e06b1d27e34f391885b2fbeb7ea5646323d3be08d0
+
+pkgname = ocaml-qtest
