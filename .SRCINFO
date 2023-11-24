@@ -1,0 +1,13 @@
+pkgbase = ArrayList
+	pkgdesc = Dynamic array list simular to javas ArrayList in c
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/spynetS/ArrayList
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	source = git+https://github.com/spynetS/ArrayList.git
+	md5sums = SKIP
+
+pkgname = ArrayList
