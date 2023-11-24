@@ -1,0 +1,9 @@
+#!/bin/bash
+working_dir=$(pwd)
+
+ln -s "/usr/share/tf2cdownloader/tf2cdownloader" "$working_dir/tf2cdownloader"
+"$working_dir/tf2cdownloader"
+wait
+
+rm "$working_dir/tf2cdownloader"
+exit
