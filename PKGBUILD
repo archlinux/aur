@@ -1,17 +1,41 @@
-_cranname=animation
-pkgname=r-$_cranname
-pkgver=2.6
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+
+_pkgname=animation
+_pkgver=2.7
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Provides functions for animations in statistics"
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
-arch=('any')
-depends=('r-magick')
-license=('GPL3')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${pkgver}.tar.gz")
-md5sums=('8f134dc582376d6e0bd47690a001d2b5')
- 
+pkgdesc="A Gallery of Animations in Statistics and Utilities to Create Animations"
+arch=(any)
+url="https://cran.r-project.org/package=${_pkgname}"
+license=(GPL)
+depends=(
+  r-magick
+)
+checkdepends=(
+  r-testit
+)
+optdepends=(
+  'ffmpeg: saveVideo()'
+  'swftools: saveSWF()'
+  'texlive-bin: saveLatex()'
+  r-testit
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('57e4bbd7c116ac0e6077eb613aa5ecf4')
+sha256sums=('88418f1b04ec785963bad492f30eb48b05914e9e5d88c7eef705d949cbd7e469')
+
+build() {
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" _R_CHECK_PACKAGE_NAME_=false Rscript --vanilla run-all.R
+}
+
 package() {
-    mkdir -p ${pkgdir}/usr/lib/R/library
-    cd ${srcdir}
-    R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
