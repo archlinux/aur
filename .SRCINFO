@@ -1,8 +1,10 @@
 pkgbase = sizeof-go
 	pkgdesc = Simple and fast calculate size of directories
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://codeberg.org/balaraz/sizeof
 	arch = any
+	license = GPL3
 	makedepends = go
 	provides = sizeof
 	conflicts = sizeof
