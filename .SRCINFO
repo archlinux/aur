@@ -1,6 +1,6 @@
 pkgbase = glaze
 	pkgdesc = An Extremely fast, In-Memory JSON and Interface Library for Modern C++
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/stephenberry/glaze
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = glaze
 	optdepends = gcc: for building with gcc
 	provides = glaze
 	conflicts = glaze
-	source = glaze-1.6.0.tar.gz::https://github.com/stephenberry/glaze/archive/refs/tags/v1.6.0.tar.gz
-	sha512sums = 8c39fd370d46251dc528d09145efb7cb0645e02d3590fca1734a2e66ab46ff762128e80bec83abea98827786c475d2d647b5f0a7405f9e0d78f7cf0348bca515
+	source = glaze-1.6.1.tar.gz::https://github.com/stephenberry/glaze/archive/refs/tags/v1.6.1.tar.gz
+	sha512sums = 654dd5d4ac1dbc022ad7ad6fb94b144757c7740ab34954c1153552e13ec7721fc754b3723b30ea350127a00ce2b98c2ac5cfa786dfc93e597d7a55706448fa70
 
 pkgname = glaze
