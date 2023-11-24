@@ -1,6 +1,6 @@
 pkgbase = r-fixest
 	pkgdesc = Fast Fixed-Effects Estimations
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fixest
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = r-fixest
 	optdepends = r-plm
 	optdepends = r-rmarkdown
 	optdepends = r-tinytex
-	source = https://cran.r-project.org/src/contrib/fixest_0.11.1.tar.gz
-	md5sums = bac798f161856e3faab38b599132754c
-	sha256sums = 13fce103daeba66c3960aa6589eb948b9166c467dc91be2ec1bfe953d30fe7e0
+	source = https://cran.r-project.org/src/contrib/fixest_0.11.2.tar.gz
+	md5sums = 9d2027d25c8a0081b878554544caf58b
+	sha256sums = 2dee113a0689e5c4dd842c451d35c9a94a5b37536f9484611a877c1ea10e2b65
 
 pkgname = r-fixest
