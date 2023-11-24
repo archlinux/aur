@@ -19,7 +19,7 @@ package() {
   chmod +x ${pkgdir}/opt/waveterm/Wave
   mv ${pkgdir}/opt/waveterm/Wave ${pkgdir}/opt/waveterm/waveterm
   mkdir -p ${pkgdir}/usr/bin/
-  ln -s /opt/waveterm/waveterm ${pkgdir}/usr/bin/
+  cp /opt/waveterm/waveterm ${pkgdir}/usr/bin/
 
   # license
   mkdir -p ${pkgdir}/usr/share/licenses/waveterm
