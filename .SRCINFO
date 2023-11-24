@@ -1,24 +1,20 @@
 pkgbase = netpad-bin
 	pkgdesc = A cross-platform C# editor and playground.
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/tareqimbasher/NetPad
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = electron23
-	depends = gcc-libs
 	depends = hicolor-icon-theme
-	depends = glibc
-	depends = zlib
 	depends = dotnet-sdk
-	provides = netpad=0.5.1
+	provides = netpad=0.6.0
 	conflicts = netpad
-	source = netpad-0.5.1.pacman::https://github.com/tareqimbasher/NetPad/releases/download/v0.5.1/netpad-0.5.1-linux-x64.pacman
-	source = LICENSE::https://raw.githubusercontent.com/tareqimbasher/NetPad/v0.5.1/LICENSE
+	source = netpad-0.6.0.pacman::https://github.com/tareqimbasher/NetPad/releases/download/v0.6.0/netpad-0.6.0-linux-x64.pacman
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/tareqimbasher/NetPad/v0.6.0/LICENSE
 	source = netpad.sh
-	sha256sums = f6eb3060a9fc29c00040e84cf4db8d60a7b40c45e2590b3daec1aa90769932ce
+	sha256sums = dd873d409a81a6f5215232ce0534d9c363c531d1af5b0ecb257edd9b0ed58f84
 	sha256sums = 43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6
-	sha256sums = 41bd27cd80f1c5a18fa79813ff0fe812024e506b34c16fc6c1bc6dbd379a6036
+	sha256sums = f88716600efbd08a3a7e8828df9a19d4af1727fbb435b3de61129354c37cdb90
 
 pkgname = netpad-bin
