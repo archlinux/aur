@@ -22,8 +22,10 @@ install="${pkgname}.install"
 # https://github.com/goatpig/BitcoinArmory/releases with GPG ID 8C5211764922589A
 _signatures="https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/sha256sum.txt.asc"
 source=("https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/armory_${pkgver}_source.tar.xz"
+        '0001-Fix-compilation.patch'
         'run-armory.sh')
 sha512sums=('aba9627a58414d9a5b9781753d6c09b3970f2728f317419b3dc8547a8ad2b9e7f9615a650a56441122647406ea846c64383677f220f26ef395029cdb8d25812c'
+            '10d10d449652de81d2bdeff5cd2bc72015071354720b80650a243f51a16e2b6da8f0600134ab03364819d0e916ae368a1ef81a5df71cddbf48fe9c1980e99dff'
             'af44a8edfdf751f3343a8bdf6fa21c125389de3435c4b03c7f581b980525a9f32af177f496830f847b70c8e2619c42908536698e0fd28f862f16083cf7396715')
 
 _parentdir=Armory3
@@ -44,6 +46,7 @@ check() {
 
 prepare() {
   cd "$srcdir/$_parentdir"
+  patch --strip=1 --input=../../0001-Fix-compilation.patch
 
   ## Get Python2 Version
   _py2longver=$(pacman -Qi python2 | grep "Version" | sed 's/^Version\s*:\s//')
@@ -81,4 +84,7 @@ package() {
   rm -rf "$pkgdir/opt/$pkgname/cppForSwig/"
   rm -rf "$pkgdir/opt/$pkgname/.git/"
   rm -rf "$pkgdir/opt/$pkgname/.gitignore"
+  rm -rf "$pkgdir/opt/$pkgname/Makefile"
+  rm -rf "$pkgdir/opt/$pkgname/config.log"
+  rm -rf "$pkgdir/opt/$pkgname/config.status"
 }

@@ -1,0 +1,25 @@
+From d799101e93d75409b783a419deeb40db9a8cadfd Mon Sep 17 00:00:00 2001
+From: LingMan <LingMan@users.noreply.github.com>
+Date: Fri, 24 Nov 2023 21:42:30 +0100
+Subject: [PATCH] Fix compilation
+
+Not sure why this wasn't needed before. Maybe some of the standard headers included it in the past.
+---
+ cppForSwig/ReentrantLock.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cppForSwig/ReentrantLock.h b/cppForSwig/ReentrantLock.h
+index 74efaae..dc074d5 100644
+--- a/cppForSwig/ReentrantLock.h
++++ b/cppForSwig/ReentrantLock.h
+@@ -14,6 +14,7 @@ using namespace std;
+ #include <thread>
+ #include <mutex>
+ #include <memory>
++#include <stdexcept>
+ #include <string>
+ 
+ #include "make_unique.h"
+-- 
+2.42.1
+
