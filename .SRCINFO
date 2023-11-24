@@ -1,6 +1,6 @@
 pkgbase = openmc-git
 	pkgdesc = The OpenMC project aims to provide a fully-featured Monte Carlo particle transport code based on modern methods.
-	pkgver = v0.13.3.r314.g7fe80e149
+	pkgver = v0.14.0.r5.g9830efaf2
 	pkgrel = 1
 	url = https://github.com/openmc-dev/openmc
 	install = post.install
@@ -33,6 +33,6 @@ pkgbase = openmc-git
 	source = openmc-git::git+https://github.com/openmc-dev/openmc.git
 	source = openmc.sh
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = c1afc88f84acf577a0d4fd9fb73a3412
 
 pkgname = openmc-git

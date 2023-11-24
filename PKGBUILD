@@ -1,7 +1,7 @@
 # Maintainer: Gavin Ridley <gavin dot keith dot ridley at gmail dot com>
 # Maintainer: Luke Labrie-Cleary <luke dot cleary at copenhagenatomics dot com>
 pkgname=openmc-git
-pkgver=v0.13.3.r314.g7fe80e149
+pkgver=v0.14.0.r5.g9830efaf2
 pkgrel=1
 pkgdesc="The OpenMC project aims to provide a fully-featured Monte Carlo particle 
 		 transport code based on modern methods."
@@ -15,7 +15,7 @@ pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' 'c1afc88f84acf577a0d4fd9fb73a3412')
 
 depends=(
 	python-lxml
