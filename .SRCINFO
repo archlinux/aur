@@ -10,10 +10,10 @@ pkgbase = ddev-edge-bin
 	conflicts = ddev
 	provides = ddev
 	arch = aarch64
-	source_aarch64 = https://github.com/ddev/ddev/releases/download/v1.22.5-alpha1/ddev_linux-arm64.v1.22.5-alpha1.tar.gz
-	sha256sums_aarch64 = 22be7f2fd378f7892b5837276dac956b05a263b387538325cf5f152aef5ef258
+	source_aarch64 = https://github.com/ddev/ddev/releases/download/v1.22.5-rc1/ddev_linux-arm64.v1.22.5-rc1.tar.gz
+	sha256sums_aarch64 = 5ef53fa3a33d08bae2562e89c2df8b71620669608e12a8c133e9a610c4640be6
 	arch = x86_64
-	source_x86_64 = https://github.com/ddev/ddev/releases/download/v1.22.5-alpha1/ddev_linux-amd64.v1.22.5-alpha1.tar.gz
-	sha256sums_x86_64 = 7a22c1f49978ac12e8f41d78dd84242581f8f215ce65022c50a7dee81035a1ac
+	source_x86_64 = https://github.com/ddev/ddev/releases/download/v1.22.5-rc1/ddev_linux-amd64.v1.22.5-rc1.tar.gz
+	sha256sums_x86_64 = 47e7bf31590c7d9618de598f09842a822f05a5a65c576104ae116acf03000525
 	
 pkgname = ddev-edge-bin
