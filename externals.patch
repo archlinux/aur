@@ -1,11 +1,11 @@
 --- cvmfs-2.5.0.orig/bootstrap.sh	2018-05-09 10:12:39.413044457 +0200
 +++ cvmfs-2.5.0/bootstrap.sh	2018-05-09 10:13:14.543027028 +0200
-@@ -251,7 +251,7 @@
+@@ -269,7 +269,7 @@
  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
  
  # Build a list of libs that need to be built
--missing_libs="libcurl libcrypto pacparser zlib sparsehash leveldb googletest ipaddress maxminddb protobuf googlebench sqlite3 vjson sha3 libarchive go"
+-missing_libs="libcurl libcrypto pacparser zlib sparsehash leveldb googletest ipaddress maxminddb protobuf googlebench sqlite3 vjson sha3 libarchive"
 +missing_libs="libcrypto vjson sha3"
+
  if [ x"$BUILD_QC_TESTS" != x"" ]; then
      missing_libs="$missing_libs rapidcheck"
- fi

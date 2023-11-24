@@ -4,7 +4,7 @@
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 # Contributor: Lin Further 
 pkgname=cvmfs
-pkgver=2.10.1
+pkgver=2.11.2
 pkgrel=1
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64')
@@ -19,9 +19,9 @@ source=("https://ecsft.cern.ch/dist/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.t
         'settings.cmake'
         'externals.patch' # TODO: use libcrypto from system openssl instead of building libressl here?
        )
-md5sums=('d57b2a87992ce983405e22a4b3cdc24e'
+md5sums=('d1183cd48b2100c7f84699d98319dbd1'
          '20dc60c61077f4a3711463e8686d260d'
-         'b6f47be4cf99ca4ee6a4c183fc6ba92a')
+         'd2755bfb647c20eb4c05b3a4471d0589')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
