@@ -4,18 +4,21 @@ _pkgname=AirVPN-Suite
 pkgver=2.0.0
 _pkgver=2.0
 _prstage=alpha
-_prver=1
-pkgrel=1
+_prver=2
+pkgrel=2
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – prebuilt beta"
 arch=('x86_64' 'armv7l' 'aarch64')
 url="https://airvpn.org/linux/suite"
+_dlurl="https://eddie.website/repository"
 license=('GPL3')
 provides=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-bin')
 conflicts=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-bin')
 depends=('glibc' 'gcc-libs' 'dbus' 'openssl' 'libxml2')
 makedepends=('curl')
-source=("https://eddie.website/repository/$_pkgname/$_pkgver-$_prstage$_prver/$_pkgname-$arch-$pkgver-$_prstage-$_prver.tar.gz")
-sha512sums=(`curl -sLo - "https://eddie.website/repository/$_pkgname/$_pkgver-$_prstage$_prver/$_pkgname-$arch-$pkgver-$_prstage-$_prver.tar.gz.sha512"|cut -f1 -d " "`)
+source=("$_dlurl/$_pkgname/$_pkgver-$_prstage$_prver/$_pkgname-$arch-$pkgver-$_prstage-$_prver.tar.gz"
+        "airvpn-suite.sysusers")
+sha512sums=(`curl -sLo - "$_dlurl/$_pkgname/$_pkgver-$_prstage$_prver/$_pkgname-$arch-$pkgver-$_prstage-$_prver.tar.gz.sha512"|cut -f1 -d " "`
+            'bae4fad4ef209f91f2473101713f0d58db7d4db9eb6b706508527422cf029aa631a7d877eb88d80bcb6c14ecf562f2cc88816200d83a8288cb7b3619261ba72c')
 backup=('etc/airvpn/bluetit.rc')
 install="$pkgname.install"
 changelog="Changelog-Suite.txt"
@@ -41,6 +44,7 @@ package() {
     # place D-Bus config
     install -Dm644 -t "$pkgdir/etc/dbus-1/system.d/" etc/dbus-1/system.d/*
 
-    # place Systemd service
+    # place Systemd files
     install -Dm644 etc/systemd/system/bluetit.service "$pkgdir/usr/lib/systemd/system/bluetit.service"
+    install -Dm644 ../airvpn-suite.sysusers "$pkgdir/usr/lib/sysusers.d/airvpn-suite.conf"
 }

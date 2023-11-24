@@ -1,5 +1,53 @@
 Changelog for AirVPN Suite
 
+Version 2.0.0 alpha 2 - 24 November 2023
+
+execproc.c
+
+- [ProMIND] added macros EXEC_MODE_VECTOR, EXEC_MODE_VECTOR_PATH, EXEC_MODE_VECTOR_PATH_ENV and EXEC_MODE_DEFAULT
+- [ProMIND] added functions exec_set_mode(), exec_set_environ() and exec_reset()
+- [ProMIND] do_execute(): added mode and environment handling
+- [ProMIND] execute_process(), execute_process_args(): call exec_reset() before returning
+- [ProMIND] get_exec_path(): renamed to exec_get_path() and added an extra argument to specify the column separated search path
+
+dnsmanager
+
+- [ProMIND] addAddressToResolvDotConf() now requires IPAddress type
+
+
+logger
+
+- [ProMIND] added overloaded log metoths for std::ostringstream
+
+
+network
+
+- [ProMIND] added methods setupInterface(), enableInterface() and setInterfaceMtu()
+- [ProMIND] added method setIPAddress() to Interface class
+- [ProMIND] scanLocalIpAddresses() renamed to scanLocalInterfaces()
+- [ProMIND] Interface: added method getAddressCount()
+
+
+openvpnclient
+
+- [ProMIND] added inheritance from vpnclient class
+- [ProMIND] get_connection_stats(): added timestamp item
+
+
+wireguardclient
+
+- [ProMIND] added inheritance from vpnclient class
+- [ProMIND] implemented connection management methods
+
+
+vpnclient
+
+- [ProMIND] new class
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 2.0.0 alpha 1 - 15 September 2023
 
 - [ProMIND] updated to OpenVPN3 AirVPN 3.9

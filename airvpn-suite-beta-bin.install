@@ -1,10 +1,3 @@
-pre_install() {
-	getent passwd airvpn >/dev/null
-    if [ $? -eq '2' ]; then
-        useradd -Um airvpn
-    fi
-}
-
 post_install() {
     chown -R airvpn:airvpn /etc/airvpn
     echo "############################################################"
@@ -19,7 +12,10 @@ post_install() {
 }
 
 pre_upgrade() {
-    systemctl stop bluetit.service
+    # systemctl stop bluetit.service
+    # temporary for 2.0.0-2, will be removed with 2.0.0-3
+    pre_remove
+	post_remove
 }
 
 post_upgrade() {
