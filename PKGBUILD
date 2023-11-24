@@ -11,7 +11,7 @@ url="http://pypi.python.org/pypi/figleaf/$pkgver"
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("http://darcs.idyll.org/~t/projects/figleaf-$pkgver.tar.gz")
+source=("https://web.archive.org/web/20150803033715_/http://darcs.idyll.org/~t/projects/figleaf-$pkgver.tar.gz")
 sha256sums=('04d22485db08f9f60c7de92407753423fa0f574c00211e409e8b0f9482f2f062')
 
 prepare() {
