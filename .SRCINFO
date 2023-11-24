@@ -1,0 +1,20 @@
+pkgbase = ocaml-dscheck
+	pkgdesc = Experimental model checker for testing concurrent algorithms
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ocaml-multicore/dscheck
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	checkdepends = ocaml-alcotest>=1.6.0
+	makedepends = dune>=2.9.0
+	depends = ocaml>=5.0.0
+	depends = ocaml-cmdliner
+	depends = ocaml-containers
+	depends = ocaml-oseq
+	depends = ocaml-tsort
+	options = !strip
+	source = ocaml-dscheck-0.3.0.tar.gz::https://github.com/ocaml-multicore/dscheck/archive/0.3.0.tar.gz
+	sha512sums = 8f745c9e42b14e04d217c1039ce013c0268d640abe75f70002032a43f8de7a3c73758ccead65d0dfeb2ea504868aa0ed1a5753e72eac8c8be339edb9c3d7ba5a
+
+pkgname = ocaml-dscheck
