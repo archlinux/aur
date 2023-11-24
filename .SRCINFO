@@ -1,5 +1,5 @@
 pkgbase = i3gopher
-	pkgdesc = i3 / sway wm helper rodent - focus the last focused window (per workspace)
+	pkgdesc = i3/sway helper rodent - focus the last focused window (per workspace)
 	pkgver = 1.2.0
 	pkgrel = 3
 	url = https://github.com/quite/i3gopher
