@@ -1,6 +1,6 @@
 # Maintainer: Luke Labrie-Cleary <luke.cleary@copenhagenatomics.com>
 pkgname=python-cad_to_openmc
-pkgver=0.2.2.r137.gb91fe0f
+pkgver=0.2.6.r9.gfba782c
 pkgrel=2
 pkgdesc="code to target the conversion from a step-file to a h5m-geometry 
 		     for neutronics"
