@@ -1,11 +1,11 @@
-# Maintainer: Michał Kopeć <michal@nozomi.space>
+# Maintainer: detiam <dehe_tian@outlook.com>
 # Contributor: Michał Kopeć <michal@nozomi.space>
 
 _pkgname=xone
-pkgname=xone-dkms-git
-pkgver=0.3.r0.g8311a25
-pkgrel=2
-pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
+pkgname=xone-dkms-dlundqvist-git
+pkgver=0.3.r21.gc654623
+pkgrel=1
+pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers (dlundqvist fork)'
 arch=('x86_64')
 url='https://github.com/medusalix/xone'
 license=('GPL2')
@@ -15,7 +15,7 @@ makedepends=('git')
 conflicts=('xone-dkms'
 		   'xow')
 provides=('xone-dkms')
-source=("git+https://github.com/medusalix/xone.git")
+source=("git+https://github.com/dlundqvist/xone.git")
 sha256sums=('SKIP')
 
 pkgver() {
