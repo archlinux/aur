@@ -1,0 +1,27 @@
+pkgbase = r-gdrstyle
+	pkgdesc = A package with style requirements for the gDR suite
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/gDRstyle
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = r-bioccheck
+	depends = r-biocmanager
+	depends = r-desc
+	depends = r-git2r
+	depends = r-lintr
+	depends = r-pkgbuild
+	depends = r-rcmdcheck
+	depends = r-remotes
+	depends = r-rjson
+	depends = r-withr
+	depends = r-yaml
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gDRstyle_1.0.0.tar.gz
+	md5sums = 473f3c2e73e05f50ec3af2b72bb18a55
+	sha256sums = f53cb21a5b145f43d12a5a9d872151221d85775a22e96b0300ba96c0c131499f
+
+pkgname = r-gdrstyle
