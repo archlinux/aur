@@ -1,6 +1,6 @@
 pkgbase = cellframe-dashboard
 	pkgdesc = Super application for managing Cellframe node
-	pkgver = 2.10.25
+	pkgver = 2.12.72
 	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-dashboard.install
@@ -10,12 +10,19 @@ pkgbase = cellframe-dashboard
 	makedepends = git
 	makedepends = qt5-base
 	makedepends = qt5-declarative
-	depends = cellframe-node
+	makedepends = cmake
+	makedepends = python3
 	depends = qt5-graphicaleffects
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	depends = qt5-quickcontrols
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=50ab34941438c86e043094e92b50516874016bb4
+	depends = logrotate
+	depends = libxcrypt-compat
+	conflicts = cellframe-node
+	conflicts = cellframe-wallet
+	options = !makeflags
+	options = !buildflags
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=a46d03cd37cef3c8d3560e6f79cac780e8e4f9df
 	md5sums = SKIP
 
 pkgname = cellframe-dashboard

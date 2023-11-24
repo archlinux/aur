@@ -1,13 +1,44 @@
 post_install() {
+    echo "+++ Generating node configuration file..."
+    cp /opt/cellframe-node/share/configs/cellframe-node.cfg.tpl /opt/cellframe-node/etc/cellframe-node.cfg
+    chmod 0666 /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{DEBUG_MODE}|false|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{PREFIX}|/opt/cellframe-node|g' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{AUTO_ONLINE}|true|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{SERVER_ENABLED}|true|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{SERVER_ADDR}|0.0.0.0|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{SERVER_PORT}|8079|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{NOTIFY_SRV_ADDR}|127.0.0.1|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{NOTIFY_SRV_PORT}|8080|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i "s|{DB_DRIVER}|mdbx|" /opt/cellframe-node/etc/cellframe-node.cfg
+    
+    echo "+++ Generating network configuration files..."
+    for _networks in mileena KelVPN Backbone subzero
+    do
+        cp /opt/cellframe-node/share/configs/network/$_networks.cfg.tpl /opt/cellframe-node/etc/network/$_networks.cfg
+        sed -i 's|{NODE_TYPE}|full|' /opt/cellframe-node/etc/network/$_networks.cfg
+    done
+    
     systemctl daemon-reload
-    systemctl is-enabled --quiet cellframe-dashboard.service && systemctl start cellframe-dashboard.service
+
+    echo "+++ Creating symbolic links for executables..."
+    for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
+	do
+		chmod a+x /opt/cellframe-node/bin/$_executables
+		ln -sf /opt/cellframe-node/bin/$_executables /usr/local/bin/$_executables
+	done
+
+    chmod +x /opt/cellframe-dashboard/bin/*
+    ln -sf /opt/cellframe-dashboard/bin/Cellframe-Dashboard /usr/local/bin/Cellframe-Dashboard
+    
+    mkdir -p /opt/cellframe-node/var/{run,lib/wallet,lib/global_db,lib/plugins,log}
 
     cat << EOF
 
     ########################################################################
     ########################################################################
     ##                                                                    ##
-    ##  Cellframe Dashboard - The super application for Cellframe node    ##
+    ##  Cellframe Dashboard - The super application with Cellframe node   ##
     ##  ______________________________________________________________    ##
     ##                                                                    ##
     ##  To start:                                                         ##
@@ -27,13 +58,35 @@ EOF
 }
 
 pre_upgrade() {
-    systemctl is-active --quiet cellframe-dashboard.service && systemctl stop cellframe-dashboard.service
-	post_install
+    for _active in cellframe-dashboard cellframe-node
+    do
+        systemctl is-active --quiet $_active.service && systemctl stop $_active.service && echo "+++ Stopped $_active service..."
+    done
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    for _active in cellframe-dashboard cellframe-node
+    do
+        systemctl is-enabled --quiet $_active.service && systemctl start $_active.service && echo "+++ Started $_active service..."
+    done
 }
 
 pre_remove() {
-    systemctl is-active --quiet cellframe-dashboard.service && systemctl stop cellframe-dashboard.service
-    systemctl is-enabled --quiet cellframe-dashboard.service && systemctl disable cellframe-dashboard.service
+    systemctl is-active --quiet $_active.service && systemctl stop --quiet $_active.service && echo "+++ Stopped $_active service..."
+    systemctl is-enabled --quiet $_active.service && systemctl disable --quiet $_active.service && echo "+++ Disabled $_active service..."
+}
+
+
+post_remove() {
     systemctl daemon-reload
+    
+    echo "+++ Removing symbolic links..."
+    for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
+	do
+		unlink /usr/local/bin/$_executables
+	done
+
+    unlink /usr/local/bin/Cellframe-Dashboard
 }
 
