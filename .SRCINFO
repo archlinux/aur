@@ -1,18 +1,18 @@
 pkgbase = realm-studio-bin
 	pkgdesc = A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.
-	pkgver = 14.0.4
-	pkgrel = 2
+	pkgver = 14.1.0
+	pkgrel = 1
 	url = https://realm.io/products/realm-studio/
 	arch = x86_64
 	license = Apache
 	makedepends = gendesk
 	depends = electron24
-	provides = realm-studio=14.0.4
+	provides = realm-studio=14.1.0
 	conflicts = realm-studio
-	source = realm-studio-14.0.4.tar.gz::https://github.com/realm/realm-studio/releases/download/v14.0.4/realm-studio-14.0.4.tar.gz
-	source = realm-studio.png::https://raw.githubusercontent.com/realm/realm-studio/v14.0.4/resources/icon.png
+	source = realm-studio-14.1.0.tar.gz::https://github.com/realm/realm-studio/releases/download/v14.1.0/realm-studio-14.1.0.tar.gz
+	source = realm-studio.png::https://raw.githubusercontent.com/realm/realm-studio/v14.1.0/resources/icon.png
 	source = realm-studio.sh
-	sha256sums = b096cfbca171f856a96b931f690b815f13c3f5d4889d48559f1bec7042a9a800
+	sha256sums = 802d2b3c8074103d55de2adb4fda67d24a4b05b9d552f2807ee58dd97b0682ea
 	sha256sums = b805ac8f6d254316eb3d5bb052d58e36054a933401e4f493af66e1c6cd2ed0fb
 	sha256sums = aa87b86d8b35f283ece808bb9c13b3e55307c616c24107958494bf911b884324
 

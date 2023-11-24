@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=realm-studio-bin
-pkgver=14.0.4
-pkgrel=2
+_pkgname="Realm Studio"
+pkgver=14.1.0
+pkgrel=1
 pkgdesc='A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.'
 arch=('x86_64')
 url="https://realm.io/products/realm-studio/"
@@ -20,11 +21,11 @@ source=(
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/realm/realm-studio/v${pkgver}/resources/icon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b096cfbca171f856a96b931f690b815f13c3f5d4889d48559f1bec7042a9a800'
+sha256sums=('802d2b3c8074103d55de2adb4fda67d24a4b05b9d552f2807ee58dd97b0682ea'
             'b805ac8f6d254316eb3d5bb052d58e36054a933401e4f493af66e1c6cd2ed0fb'
             'aa87b86d8b35f283ece808bb9c13b3e55307c616c24107958494bf911b884324')
 build() {
-    gendesk -q -f -n --categories "Development;Utility" --name "Realm Studio" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Development;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
