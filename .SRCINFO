@@ -7,8 +7,7 @@ pkgbase = figleaf
 	license = BSD
 	makedepends = python2-setuptools
 	depends = python2
-	source = http://darcs.idyll.org/~t/projects/figleaf-0.6.1.tar.gz
+	source = https://web.archive.org/web/20150803033715_/http://darcs.idyll.org/~t/projects/figleaf-0.6.1.tar.gz
 	sha256sums = 04d22485db08f9f60c7de92407753423fa0f574c00211e409e8b0f9482f2f062
 
 pkgname = figleaf
-
