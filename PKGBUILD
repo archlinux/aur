@@ -1,7 +1,8 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-dashboard"
+_nodename="cellframe-node"
 pkgver=2.12.72
-pkgrel=2
+pkgrel=3
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
 url="https://cellframe.net"
