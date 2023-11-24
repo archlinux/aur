@@ -5,7 +5,7 @@
 
 pkgname=cronet
 pkgver=119.0.6045.159
-pkgrel=3
+pkgrel=4
 _manual_clone=0
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
@@ -62,6 +62,7 @@ declare -gA _system_libs=(
   [icu]=icu
   [libevent]=libevent
   [zlib]=minizip
+  [zstd]=zstd
 )
 declare -gA _system_make_libs=(
   [jsoncpp]=jsoncpp
@@ -120,6 +121,7 @@ _unwanted_bundled_libs=(
   third_party/vulkan-deps/spirv-tools/src
   third_party/woff2
   third_party/zlib
+  third_party/zstd
 
   third_party/node
   third_party/jdk
@@ -157,6 +159,9 @@ prepare() {
 
   # Fixes `implicit instantiation of undefined template 'std::numeric_limits<unsigned long>'` error
   patch -p0 -i ../fix-numeric_limits.patch
+
+  # Make building with system zstd possible
+  patch -Np1 -i ../chromium-patches-*/chromium-117-system-zstd.patch
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
