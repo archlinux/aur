@@ -1,7 +1,7 @@
 pkgbase = ttf-literata
 	pkgdesc = Google's contemporary serif typeface family for long-form reading; default typeface for Play Books. Truetype, open source (OFL) distribution.
 	pkgver = 3.103
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/googlefonts/literata
 	arch = any
 	license = custom:OFL
@@ -12,13 +12,28 @@ pkgbase = ttf-literata
 	b2sums = 2a91a436d60192c0794f4114ef755a23f99a062b1485f96ee4196f862cd8c022079cbb2310d3406dc5059a01d6986663e7ecf2411a52d2d5425cbe07301bc2d6
 
 pkgname = ttf-literata
-	pkgdesc = Google's default typeface for Play Books. Truetype collections, open source (OFL) distribution.
+	pkgdesc = Google's default typeface for Play Books. Truetype variable fonts, open source (OFL) distribution.
+	provides = ttf-literata-opticals
+	conflicts = ttf-literata-opticals
+	replaces = ttf-literata-opticals
 
 pkgname = ttf-literata-opticals
-	pkgdesc = Google's default typeface for Play Books. Truetype opticals, open source (OFL) distribution.
+	pkgdesc = Google's default typeface for Play Books. Truetype in optical sizes, open source (OFL) distribution.
+	provides = ttf-literata
+	conflicts = ttf-literata
+	replaces = ttf-literata
 
 pkgname = ttf-literata-webfonts
-	pkgdesc = Google's default typeface for Play Books. Truetype collection webfonts, open source (OFL) distribution.
+	pkgdesc = Google's default typeface for Play Books. Truetype variable webfonts, open source (OFL) distribution.
+	provides = ttf-literata-webfonts-opticals
+	provides = ttf-literata-webfont-opticals
+	conflicts = ttf-literata-webfonts-opticals
+	conflicts = ttf-literata-webfont-opticals
+	replaces = ttf-literata-webfonts-opticals
+	replaces = ttf-literata-webfont-opticals
 
-pkgname = ttf-literata-webfonts-opticals
-	pkgdesc = Google's default typeface for Play Books. Truetype webfonts opticals, open source (OFL) distribution.
+pkgname = ttf-literata-webfont-opticals
+	pkgdesc = Google's default typeface for Play Books. Truetype webfonts in optical sizes, open source (OFL) distribution.
+	provides = ttf-literata-webfonts-opticals
+	conflicts = ttf-literata-webfonts-opticals
+	replaces = ttf-literata-webfonts-opticals
