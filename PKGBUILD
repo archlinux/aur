@@ -18,10 +18,10 @@
 ###############################################################################
 _phpbase="81"
 _suffix=""
-pkgver="8.1.25"
+pkgver="8.1.26"
 pkgrel="1"
 pkgbase="php81"
-pkgdesc="PHP 8.1.25 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.1.26 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -214,20 +214,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "openssl"
 )
 _ext_depends_intl=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "icu"
 )
 _ext_depends_imap=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "pam"
     "krb5"
     "c-client"
@@ -235,45 +235,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "gd"
 )
 _ext_depends_mysql=(
-    "php81=8.1.25"
-    "php81-pdo=8.1.25"
-    "php81-openssl=8.1.25"
+    "php81=8.1.26"
+    "php81-pdo=8.1.26"
+    "php81-openssl=8.1.26"
 )
 _ext_depends_dba=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "unixodbc"
-    "php81-pdo=8.1.25"
+    "php81-pdo=8.1.26"
 )
 _ext_depends_pgsql=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "postgresql-libs"
-    "php81-pdo=8.1.25"
+    "php81-pdo=8.1.26"
 )
 _ext_depends_firebird=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "libfbclient"
-    "php81-pdo=8.1.25"
+    "php81-pdo=8.1.26"
 )
 _ext_depends_sqlite=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "sqlite"
-    "php81-pdo=8.1.25"
+    "php81-pdo=8.1.26"
 )
 _ext_depends_mbstring=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php81=8.1.25"
+    "php81=8.1.26"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -1533,7 +1533,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            '66fdba064aa119b1463a7969571d42f4642690275d8605ab5149bcc5107e2484'
+            '17f87133596449327451ad4b8d9911bfaea59ff5109f3a6f2bb679f967a8ea0f'
             'e757f84d2d72ea39259450c32f3a83c72262da4294152ae3e9fbc0cada622bba'
             'd1778f038dd742400707307d6845c1dc40ea1962ff9676f880be88a5ebdd8577'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
