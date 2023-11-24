@@ -1,16 +1,16 @@
 pkgbase = betterbird-es-bin
 	pkgdesc = SPANISH // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will.
-	pkgver = 115.4.2
+	pkgver = 115.5.0
 	pkgrel = 1
 	url = https://www.betterbird.eu/index.html
 	arch = x86_64
 	license = MPL2
 	depends = dbus-glib
-	provides = betterbird=115.4.2
+	provides = betterbird=115.5.0
 	conflicts = betterbird
-	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-115.4.2-bb17.es-AR.linux-x86_64.tar.bz2
+	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-115.5.0-bb18.es-AR.linux-x86_64.tar.bz2
 	source = betterbird.desktop
-	sha256sums = 2d0a278aae7ed69b39d528ecd18f6d5b01dfa871583722523b0ab83076658487
+	sha256sums = 4a17f8a3b16f24046f453a3dd87a76b2ffef4934ed336a16f41dd2ab89178753
 	sha256sums = 816a97383c4eba202d9993736d14d3f728064d1bea7301adc93ed1248a096ca8
 
 pkgname = betterbird-es-bin
