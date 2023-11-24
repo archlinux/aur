@@ -1,6 +1,6 @@
 --- render/gles2/renderer.c	2022-12-25 10:50:12.000000000 -0500
 +++ render/gles2/renderer.c	2023-01-04 18:34:37.961431132 -0500
-@@ -165,7 +165,7 @@
+@@ -179,7 +179,7 @@
  		assert(wlr_egl_is_current(renderer->egl));
  
  		push_gles2_debug(renderer);
