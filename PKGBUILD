@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname="thorium-reader"
 pkgname="${_pkgname}-git"
-pkgver=2.3.0.r29.gec61bea8
+pkgver=2.3.0.r35.g4b5ede9a
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 arch=('any')
@@ -14,12 +14,13 @@ provides=(
     "${_pkgname}"
 )
 depends=(
-    'electron25'
+    'electron27'
+    'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
     'git'
-    'nodejs>=18.0.0'
+    'nvm'
     'npm>=9.0.0'
 )
 _pkgsrc="${_pkgname}"
@@ -28,23 +29,31 @@ source=(
     "${_pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'b4b89c1666a3893cf0e3733301cc328f81b70915b9e8041fe872d6d21b9c0e83')
+            '67372e4273ddd69a6df951c66643230c114533e584f9f131d2a0847e9c833c3c')
 pkgver() {
     cd "${_pkgsrc}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-prepare() {
-    gendesk -q -f -n --categories "Utility" --pkgname="${_pkgname}" --name="Thorium Reader" --exec="${_pkgname}"
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install 18
+    nvm use 18
 }
 build() {
-    cd "${_pkgsrc}"
-    npm ci
+    _ensure_local_nvm
+    gendesk -q -f -n --categories "Utility" --pkgname="${_pkgname}" --name="Thorium Reader" --exec="${_pkgname}"
+    cd "${srcdir}/${_pkgsrc}"
+    npm ci --cache "${srcdir}/npm-cache"
     npm run package:pack-only
 }
 package() {
     install -Dm755 "${srcdir:?}/${_pkgname}.sh" "${pkgdir:?}/usr/bin/${_pkgname}" 
     install -Dm644 "${srcdir:?}/${_pkgsrc}/release/linux-unpacked/resources/app.asar" -t "${pkgdir:?}/usr/lib/${_pkgname}/"
-    install -Dm644 "${srcdir:?}/${_pkgsrc}/resources/icon.png" "${pkgdir:?}/usr/share/pixmaps/${_pkgname}.png"
+    for _icons in 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir:?}/${_pkgsrc}/dist/assets/icons/icons/${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png"
+    done
     install -Dm644 "${srcdir:?}/${_pkgname}.desktop" -t "${pkgdir:?}/usr/share/applications/"
     install -Dm644 "${srcdir:?}/${_pkgsrc}/LICENSE" -t "${pkgdir:?}/usr/share/licenses/${pkgname}"
 }
