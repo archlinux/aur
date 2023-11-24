@@ -1,12 +1,12 @@
 pkgbase = version
 	pkgdesc = What version do I have of ___?
-	pkgver = 1.5.0
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/bit101/version
 	arch = any
 	license = MIT
 	depends = bash
-	source = version-1.5.0.tar.gz::https://github.com/bit101/version/archive/v1.5.0.tar.gz
-	sha256sums = 6a2ab4bdae92c3f90c32a88ffd7c61e027894d07bf8c229e7194150dc47e5447
+	source = version-1.5.2.tar.gz::https://github.com/bit101/version/archive/v1.5.2.tar.gz
+	sha256sums = 1e1413d482ee8cb6cd0c0b44ee4545c64590cc0921717a5184de399190050848
 
 pkgname = version
