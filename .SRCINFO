@@ -1,7 +1,7 @@
 pkgbase = ripperx
-	pkgdesc = GTK2 program to rip and encode mp3 files
+	pkgdesc = GTK2 program to rip Audio CDs and encode to FLAC, OGG and MP3.
 	pkgver = 2.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://ripperx.sourceforge.net/
 	arch = x86_64
 	arch = i686

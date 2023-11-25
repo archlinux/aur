@@ -6,8 +6,8 @@
 
 pkgname=ripperx
 pkgver=2.8.0
-pkgrel=4
-pkgdesc="GTK2 program to rip and encode mp3 files"
+pkgrel=5
+pkgdesc="GTK2 program to rip Audio CDs and encode to FLAC, OGG and MP3."
 arch=(
   'x86_64'
   'i686'
