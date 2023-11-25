@@ -1,6 +1,6 @@
 pkgbase = otf-unscii-8-mcr
 	pkgdesc = Based on retrofuturistic MCR-like 8x8 fonts used in various games, demos, etc
-	pkgver = 1.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = http://viznut.fi/unscii/
 	install = otf-unscii-8-mcr.install

@@ -1,7 +1,7 @@
 # Maintainer: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 # Contributor: Evgeni Kunev <evgeni at kunev dot me>>
 pkgname=otf-unscii-8-mcr
-pkgver=1.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Based on retrofuturistic MCR-like 8x8 fonts used in various games, demos, etc"
 url="http://viznut.fi/unscii/"
