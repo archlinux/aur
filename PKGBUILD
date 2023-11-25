@@ -2,7 +2,7 @@
 # Contributor: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=cpp-coveralls-git
-pkgver=0.4.2.r4.g800231f
+pkgver=0.4.2.r7.g47f6387
 pkgrel=1
 pkgdesc='Upload gcov results to coveralls.io'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 provides=('cpp-coveralls')
 conflicts=('cpp-coveralls')
 depends=('python' 'python-requests' 'python-future' 'python-certifi'
-         'python-cryptography' 'python-pyopenssl' 'python-ipaddress')
+         'python-cryptography' 'python-pyopenssl')
 makedepends=('python-setuptools' 'git')
 source=('git+https://github.com/eddyxu/cpp-coveralls.git')
 sha256sums=('SKIP')

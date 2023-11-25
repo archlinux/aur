@@ -1,6 +1,6 @@
 pkgbase = cpp-coveralls-git
 	pkgdesc = Upload gcov results to coveralls.io
-	pkgver = 0.4.2.r4.g800231f
+	pkgver = 0.4.2.r7.g47f6387
 	pkgrel = 1
 	url = https://github.com/eddyxu/cpp-coveralls
 	arch = x86_64
@@ -13,11 +13,9 @@ pkgbase = cpp-coveralls-git
 	depends = python-certifi
 	depends = python-cryptography
 	depends = python-pyopenssl
-	depends = python-ipaddress
 	provides = cpp-coveralls
 	conflicts = cpp-coveralls
 	source = git+https://github.com/eddyxu/cpp-coveralls.git
 	sha256sums = SKIP
 
 pkgname = cpp-coveralls-git
-
