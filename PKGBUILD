@@ -1,8 +1,8 @@
 # Maintainer: Forrest Hilton <forrestmhilton at gmail dot com>
 pkgname=mandel
 pkgver=5.19
-pkgrel=1
-pkgdesc="Wolf Jung's mandel"
+pkgrel=2
+pkgdesc="Wolf Jung's program and tutorials for complex dynamics researchers"
 arch=('i686' 'x86_64')
 url="https://www.mndynamics.com/"
 # "https://github.com/ForrestHilton/mandel"
