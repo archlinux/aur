@@ -1,15 +1,16 @@
 pkgbase = likwid
 	pkgdesc = Lightweight performance tools
-	pkgver = 5.2.2
-	pkgrel = 2
+	pkgver = 5.3.0
+	pkgrel = 1
 	url = https://hpc.fau.de/research/tools/likwid/
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	makedepends = git
 	optdepends = perl: for likwid-mpirun and likwid-perfscope
 	optdepends = openmpi: for likwid-mpirun
 	optdepends = gnuplot: for likwid-perfscope
-	source = likwid::git+https://github.com/RRZE-HPC/likwid#tag=v5.2.2
+	source = likwid::git+https://github.com/RRZE-HPC/likwid#tag=v5.3.0
 	sha256sums = SKIP
 
 pkgname = likwid

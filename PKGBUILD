@@ -1,8 +1,8 @@
 # Maintainer: Holger Obermaier <holgerob[at]gmx[dot]de>
 # Contributor: Steven Vancoillie <steven<dot>vancoillie[at]gmail[dot]com>
 pkgname=likwid
-pkgver=5.2.2
-pkgrel=2
+pkgver=5.3.0
+pkgrel=1
 pkgdesc="Lightweight performance tools"
 url="https://hpc.fau.de/research/tools/likwid/"
 arch=('x86_64' 'i686')
