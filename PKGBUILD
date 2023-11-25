@@ -2,7 +2,7 @@
 # Contributor: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=hyprland-nvidia-git
-pkgver=0.31.0.r105.g29e0a711
+pkgver=0.32.3.r64.g512a5973
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA patch)"
 arch=(any)
@@ -69,7 +69,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$pkgname"
     git submodule update --init
-    sed -E -i -e 's/(soversion = 12)([^032]|$$)/soversion = 12032/g' ./subprojects/wlroots/meson.build
+    sed -E -i -e 's/(soversion = 13)([^032]|$$)/soversion = 13032/g' ./subprojects/wlroots/meson.build
     rm -rf ./subprojects/wlroots/build
     sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
     cd "$srcdir/$pkgname/subprojects/wlroots"
@@ -121,5 +121,5 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/licenses/hyprland" LICENSE
     install -Dm644 -t "$pkgdir/usr/share/pkgconfig" build/hyprland.pc
     install -Dm644 -t "$pkgdir/usr/share/wayland-sessions" example/hyprland.desktop
-    install -Dm755 -t "$pkgdir/usr/lib" "$srcdir/tmpwlr/lib/libwlroots.so.12032"
+    install -Dm755 -t "$pkgdir/usr/lib" "$srcdir/tmpwlr/lib/libwlroots.so.13032"
 }
