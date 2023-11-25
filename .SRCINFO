@@ -1,6 +1,6 @@
 pkgbase = udev-media-automount
 	pkgdesc = Automatic mounting of removable devices in /media using simple udev rules
-	pkgver = 55.429e445
+	pkgver = 60.c9859b7
 	pkgrel = 1
 	url = http://github.com/Ferk/udev-media-automount
 	arch = any
