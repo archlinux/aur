@@ -7,19 +7,20 @@
 
 pkgname=gadmin-rsync
 pkgver=0.1.9
-pkgrel=4
+pkgrel=5
 pkgdesc="An easy to use GTK+ frontend for the rsync backup client and server"
 arch=('i686' 'x86_64')
 url="https://web.archive.org/web/20180720061609/http://dalalven.dtdns.net:80/linux/gadmintools-webpage"
 license=('GPL3')
 depends=('gtk2' 'rsync')
-optdepends=("gksu: for launching with the desktop shortcut")
-options=(!emptydirs)
-source=("https://github.com/sedwards/gadmintools_src_pkgs/raw/master/gadmin-rsync-$pkgver.tar.gz")
-md5sums=('9ea479cdeeb5a831b9df4c8cc92faa41')
+optdepends=("zenity: for launching with the desktop shortcut")
+source=("https://github.com/sedwards/gadmintools_src_pkgs/raw/master/gadmin-rsync-0.1.9.tar.gz"
+        "$pkgname.sh")
+md5sums=('9ea479cdeeb5a831b9df4c8cc92faa41'
+         '853ce8d2db4badef7bbe62d150d7c18e')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname-0.1.9
   export CFLAGS+=" -fcommon"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
   make || return 1
@@ -27,11 +28,12 @@ build() {
 
 package() {
 # Install
-  cd $pkgname-$pkgver
+  install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname-desktop"
+  cd $pkgname-0.1.9
   make DESTDIR=$pkgdir install
 # Remove an unnecessary folder
   rm -dr "$pkgdir/usr/share/pixmaps/$pkgname"
-# Use gksu in the desktop file
-  sed -i 's/Exec=gadmin-rsync/Exec=gksu gadmin-rsync/' desktop/$pkgname.desktop
+# Use the script in the desktop shortcut
+  sed -i 's/Exec=gadmin-rsync/Exec=gadmin-rsync-desktop/' desktop/$pkgname.desktop
   install -Dm755 desktop/$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
