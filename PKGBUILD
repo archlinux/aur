@@ -2,15 +2,14 @@
 _pkgname=ofxclient
 pkgname=python-ofxclient-git
 pkgver=2.0.4.r0.g4da2719
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple ofxclient command line utility and OFX client libraries for development."
 arch=('x86_64' 'i686')
 url="https://github.com/captin411/ofxclient"
 license=('MIT')
 depends=('python>=3.7'
 		'python-beautifulsoup4'
-		'ofxparse'
-		'ofxhome'
+		'python-ofxhome'
 		'python-keyring'
 		'python-configargparse'
 		'python-ofxparse'
