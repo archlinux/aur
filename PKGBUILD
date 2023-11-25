@@ -8,7 +8,7 @@
 # basic info
 _pkgname="yuzu"
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=r25806.24548b1f5
+pkgver=r25899.093eb075a
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch'
 url="https://github.com/yuzu-emu/yuzu"
@@ -19,14 +19,15 @@ arch=('i686' 'x86_64')
 _main_package() {
   depends=(
     'boost-libs'
-    'cubeb'
-    'enet'
     'fmt'
-    'libinih'
-    'mbedtls'
-    'qt5-multimedia'
-    'qt5-webengine'
+    'qt6-multimedia'
+    'qt6-webengine'
     'sdl2'
+
+    #'cubeb'
+    #'enet'
+    #'libinih'
+    #'mbedtls'
   )
   makedepends=(
     'boost'
@@ -36,18 +37,25 @@ _main_package() {
     'gcc'
     'git'
     'glslang'
-    'llvm'
     'mold'
     'ninja'
     'nlohmann-json'
-    'qt5-tools'
+    'qt6-tools'
     'rapidjson'
     'robin-map'
-    'spirv-headers'
-    'vulkan-headers'
+    'stb'
+
+    #'clang'
+    #'cpp-httplib'
+    #'cpp-jwt'
+    #'llvm'
+    #'renderdoc'
+    #'spirv-headers'
+    #'vulkan-headers'
+    #'vulkan-memory-allocator'
   )
   optdepends=(
-    "qt5-wayland: Wayland support"
+    "qt6-wayland: Wayland support"
   )
 
   provides=("$_pkgname")
@@ -219,7 +227,7 @@ pkgver() {
   cd "$_pkgsrc"
   printf 'r%s.%s' \
     "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+    "$(git rev-parse --short=9 HEAD)"
 }
 
 prepare() {
@@ -262,21 +270,17 @@ build() {
     -DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF
     -DYUZU_USE_QT_MULTIMEDIA=ON
     -DYUZU_USE_QT_WEB_ENGINE=ON
-    -DENABLE_QT6=OFF
+    -DENABLE_QT6=ON
     -DENABLE_QT_TRANSLATION=ON
     -DUSE_DISCORD_PRESENCE=ON
-    -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
+    -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=OFF
 
     -DBUILD_REPOSITORY=yuzu-emu/yuzu
-    -DBUILD_TAG="${pkgver}"
     -DTITLE_BAR_FORMAT_IDLE="yuzu | ${pkgver} {}"
     -DTITLE_BAR_FORMAT_RUNNING="yuzu | ${pkgver} | {}"
     -Wno-dev
 
-    -DDYNARMIC_NO_BUNDLED_ROBIN_MAP=ON
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON
-    -DYUZU_USE_BUNDLED_LIBUSB=OFF
-    -DYUZU_USE_BUNDLED_OPUS=OFF
   )
 
   cmake "${_cmake_options[@]}"
