@@ -2,8 +2,8 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=wine-lol-staging
-pkgver=8.12
-_winever=8.12
+pkgver=8.21
+_winever=8.21
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch) with LoL patches'
 arch=('x86_64')

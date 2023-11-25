@@ -1,6 +1,6 @@
 pkgbase = wine-lol-staging
 	pkgdesc = A compatibility layer for running Windows programs (staging branch) with LoL patches
-	pkgver = 8.12
+	pkgver = 8.21
 	pkgrel = 1
 	url = https://wiki.winehq.org/Wine-Staging
 	arch = x86_64
@@ -111,8 +111,8 @@ pkgbase = wine-lol-staging
 	options = staticlibs
 	options = !lto
 	options = !strip
-	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v8.12
-	source = git+https://gitlab.winehq.org/wine/wine.git#tag=wine-8.12
+	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v8.21
+	source = git+https://gitlab.winehq.org/wine/wine.git#tag=wine-8.21
 	source = 0004-LoL-broken-client-update-fix.patch
 	source = 0005-LoL-client-slow-start-fix.patch
 	source = 0008-ntdll-nopguard-call_vectored_handlers.patch
