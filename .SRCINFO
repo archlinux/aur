@@ -1,7 +1,7 @@
 pkgbase = discord-chat-exporter-cli
 	pkgdesc = Exports Discord chat logs to a file
 	pkgver = 2.42.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tyrrrz/DiscordChatExporter
 	arch = any
 	license = GPL3

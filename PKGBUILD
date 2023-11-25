@@ -6,7 +6,7 @@
 pkgname="discord-chat-exporter-cli"
 _apkgname="DiscordChatExporter"
 pkgver=2.42.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Exports Discord chat logs to a file"
 url="https://github.com/Tyrrrz/$_apkgname"
