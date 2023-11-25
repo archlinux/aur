@@ -1,0 +1,30 @@
+pkgbase = r-shinylogs
+	pkgdesc = Record Everything that Happens in a 'Shiny' Application
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=shinylogs
+	arch = any
+	license = GPL3
+	checkdepends = r-dbi
+	checkdepends = r-rsqlite
+	checkdepends = r-testthat
+	depends = r-anytime
+	depends = r-bit64
+	depends = r-data.table
+	depends = r-digest
+	depends = r-htmltools
+	depends = r-jsonlite
+	depends = r-nanotime
+	depends = r-shiny
+	optdepends = r-covr
+	optdepends = r-dbi
+	optdepends = r-googledrive
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rsqlite
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/shinylogs_0.2.1.tar.gz
+	md5sums = 25ffc5c472d557ee69e2d18aa4ae352d
+	sha256sums = 527e362c0f00571d2463187c90486563922e813c988037d989764cc13ff829f0
+
+pkgname = r-shinylogs
