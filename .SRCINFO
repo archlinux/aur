@@ -1,13 +1,13 @@
 pkgbase = hodoku
 	pkgdesc = Sudoku generator/solver/analyzer
-	pkgver = 2.3.1
+	pkgver = 2.3.2_WIP
 	pkgrel = 1
 	url = https://github.com/PseudoFish/Hodoku/
 	arch = any
 	license = GPL3
 	depends = java-runtime
 	noextract = hodoku.jar
-	source = https://github.com/PseudoFish/Hodoku/releases/download/2.3.1/Hodoku.jar
+	source = https://github.com/PseudoFish/Hodoku/releases/download/2.3.2-WIP/Hodoku.jar
 	source = hodoku.sh
 	source = hodoku.png
 	source = hodoku.desktop
@@ -17,4 +17,3 @@ pkgbase = hodoku
 	md5sums = 557ca158902fddf06cbda7c7c9480c08
 
 pkgname = hodoku
-

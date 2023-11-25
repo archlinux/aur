@@ -3,14 +3,15 @@
 # Contributor: SiD/sidious <miste78 web de>
 
 pkgname=hodoku
-pkgver=2.3.1
+_pkgver=2.3.2-WIP
+pkgver=2.3.2_WIP
 pkgrel=1
 pkgdesc="Sudoku generator/solver/analyzer"
 url="https://github.com/PseudoFish/Hodoku/"
 license=('GPL3')
 arch=('any')
 depends=('java-runtime')
-source=("https://github.com/PseudoFish/Hodoku/releases/download/$pkgver/Hodoku.jar"
+source=("https://github.com/PseudoFish/Hodoku/releases/download/$_pkgver/Hodoku.jar"
         $pkgname.sh
         $pkgname.png
         $pkgname.desktop)
