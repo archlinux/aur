@@ -1,6 +1,6 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=lact-git
-pkgver=r295.2108864
+pkgver=r419.e9229ad
 pkgrel=1
 license=("MIT")
 pkgdesc="AMDGPU Controller application (git version)"
@@ -26,5 +26,5 @@ build() {
 
 package() {
     cd LACT
-    DESTDIR=${pkgdir}/usr make install
+    DESTDIR=${pkgdir} PREFIX=/usr make install
 }
