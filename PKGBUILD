@@ -2,7 +2,7 @@
 
 pkgname=bicep
 pkgver=0.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A declarative language for describing and deploying Azure resources'
 arch=(x86_64)
 url='https://github.com/Azure/bicep'
@@ -38,7 +38,7 @@ build() {
     --configuration Release \
     --framework net7.0 \
     --no-self-contained \
-    --output bin \
+    --output lib \
     --runtime linux-x64 \
     src/Bicep.Cli/
 }
@@ -56,11 +56,11 @@ package() {
 
   local pkgnum=${pkgver:0:1}
 
-  mkdir -p "$pkgdir/opt/azure/$pkgname/$pkgnum"
-  cp -ar bin/. "$pkgdir/opt/azure/$pkgname/$pkgnum/"
+  install -dm755 "$pkgdir/usr/lib/$pkgname-$pkgnum/"
+  cp --archive --no-preserve=ownership lib/. "$pkgdir/usr/lib/$pkgname-$pkgnum/"
 
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/azure/$pkgname/$pkgnum/bicep" "$pkgdir/usr/bin/bicep"
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s "/usr/lib/$pkgname-$pkgnum/bicep" "$pkgdir/usr/bin/bicep"
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
