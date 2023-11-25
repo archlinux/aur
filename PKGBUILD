@@ -1,0 +1,49 @@
+# Maintainer: Kimiblock Moe
+
+pkgname=browsers-git
+pkgdesc="Open the right browser at the right time"
+url="https://github.com/Browsers-software/browsers"
+license=("custom")
+arch=("any")
+pkgver=r394.acfebf4
+pkgrel=1
+makedepends=("rust" "cargo" "git")
+depends=()
+source=("git+https://github.com/Browsers-software/browsers.git")
+md5sums=("SKIP")
+provides=("browsers")
+
+function pkgver() {
+	cd "${srcdir}/browsers"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+function prepare() {
+	cd "${srcdir}/browsers"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
+function build() {
+	cd "${srcdir}/browsers"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features --locked
+}
+
+function check() {
+	cd "${srcdir}/browsers"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features
+}
+
+function package() {
+	install -Dm755 "${srcdir}/browsers/target/release/browsers" "${pkgdir}/usr/bin/browsers"
+	mkdir -p "${pkgdir}/usr/share/browsers"
+	install -Dm644 "${srcdir}/browsers/extra/linux/dist/software.Browsers.template.desktop" "${pkgdir}/usr/share/applications/software.Browsers.template.desktop"
+	mkdir -p "${pkgdir}/usr/share/icons"
+	cp -r "${srcdir}/browsers/resources/icons/*" "${pkgdir}/usr/share/icons"
+	sed -i 's/€ExecCommand€/browsers/g' "${pkgdir}/usr/share/applications/software.Browsers.template.desktop"
+}
+
+

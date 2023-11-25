@@ -1,0 +1,15 @@
+pkgbase = browsers-git
+	pkgdesc = Open the right browser at the right time
+	pkgver = r394.acfebf4
+	pkgrel = 1
+	url = https://github.com/Browsers-software/browsers
+	arch = any
+	license = custom
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = browsers
+	source = git+https://github.com/Browsers-software/browsers.git
+	md5sums = SKIP
+
+pkgname = browsers-git
