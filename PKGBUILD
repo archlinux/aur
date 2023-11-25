@@ -1,7 +1,7 @@
 # Maintainer: Rankyn Bass <rankyn@proton.me>
 pkgname=xivlauncher-rb
 pkgver=1.0.6.4
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Custom launcher for Final Fantasy XIV Online with RB Patches!"
 arch=('x86_64')
@@ -43,15 +43,13 @@ sha512sums=(
 prepare() {
     cd "${srcdir}/XIVLauncher.Core"
     git submodule update --init --recursive
-    git checkout 
-    _hash=$(git rev-parse --short HEAD)
-    echo $_hash
 }
 
 build() {
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/XIVLauncher.Core/src/XIVLauncher.Core/"
-    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release -clp:ErrorsOnly -p:BuildHash=${_hash}
+    echo "dotnet publish -r linux-x64 --sc -o \"${srcdir}/build\" --configuration Release -p:BuildHash=$(git rev-parse --short HEAD)"
+    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release -p:BuildHash=$(git rev-parse --short HEAD)
 }
 
 package() {

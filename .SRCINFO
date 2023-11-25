@@ -1,7 +1,7 @@
 pkgbase = xivlauncher-rb
 	pkgdesc = Custom launcher for Final Fantasy XIV Online with RB Patches!
 	pkgver = 1.0.6.4
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://github.com/rankynbass/XIVLauncher.Core/tree/RB-patched
 	arch = x86_64
