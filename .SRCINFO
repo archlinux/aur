@@ -1,7 +1,7 @@
 pkgbase = swig3
-	pkgdesc = Generate scripting interfaces to C/C++ code
+	pkgdesc = Generate scripting interfaces to C/C++ code (Legacy version 3)
 	pkgver = 3.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.swig.org/
 	arch = x86_64
 	license = custom
@@ -19,7 +19,6 @@ pkgbase = swig3
 	depends = pcre
 	depends = gcc-libs
 	source = https://downloads.sourceforge.net/swig/swig-3.0.12.tar.gz
-	sha1sums = 5cc1af41d041e4cc609580b99bb3dcf720effa25
+	sha512sums = 5eaa2e06d8e4197fd02194051db1e518325dbb074a4c55a91099ad9c55193874f577764afc9029409a41bd520a95154095f26e33ef5add5c102bb2c1d98d33eb
 
 pkgname = swig3
-
