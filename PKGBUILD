@@ -2,7 +2,7 @@
 _pkgname=ofxclient
 pkgname=python-ofxclient-git
 pkgver=2.0.4.r0.g4da2719
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple ofxclient command line utility and OFX client libraries for development."
 arch=('x86_64' 'i686')
 url="https://github.com/captin411/ofxclient"
@@ -14,7 +14,7 @@ depends=('python>=3.7'
 		'python-configargparse'
 		'python-ofxparse'
 		)
-# makedepends=()
+makedepends=(python-build python-installer python-wheel)
 provides=(ofxclient)
 conflicts=(ofxclient)
 source=('ofxclient::git+https://github.com/captin411/ofxclient.git#branch=master')
@@ -29,13 +29,12 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	python setup.py build
+    cd "$_pkgname"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	# install package
-	cd "$srcdir/$_pkgname"
-	python setup.py install --root="$pkgdir/"
+    cd "$_pkgname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
