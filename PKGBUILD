@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgver=3.20.1
-pkgrel=1
+pkgrel=2
 pkgname=petsc
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -50,16 +50,15 @@ build() {
   export PETSC_ARCH=${_petsc_arch}
   export PETSC_DIR=${_build_dir}
 
-  OPTFLAGS='-O3 -march=native'
   CONFOPTS="--with-shared-libraries=1 \
             --with-petsc4py=1 \
             --with-mpi-f90module-visibility=0 \
-            --with-cc=$(which mpicc) --with-cxx=$(which mpicxx) --with-fc=$(which mpifort) \
+            --with-mpi-dir=/usr \
             $(sh ${srcdir}/test_optdepends.sh)"
 
   echo ${CONFOPTS}
   python ./configure --prefix=${_install_dir} ${CONFOPTS} \
-                     --COPTFLAGS=${OPTFLAGS} --CXXOPTFLAGS=${OPTFLAGS} --FOPTFLAGS=${OPTFLAGS}
+                     --COPTFLAGS='-O3 -march=native' --CXXOPTFLAGS='-O3 -march=native' --FOPTFLAGS='-O3 -march=native'
 
   make ${MAKEFLAGS} all
   make DESTDIR=${srcdir}/tmp install
