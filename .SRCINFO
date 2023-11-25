@@ -1,9 +1,10 @@
 pkgbase = scanbd-git
 	pkgdesc = Scanner button daemon looking for scanner button pressed
 	pkgver = r224.f909458
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sane-project/frontend/scanbd
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	depends = sane
 	depends = confuse

@@ -4,9 +4,9 @@
 
 pkgname=scanbd-git
 pkgver=r224.f909458
-pkgrel=1
+pkgrel=2
 pkgdesc="Scanner button daemon looking for scanner button pressed"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/sane-project/frontend/scanbd"
 license=('GPL2')
 depends=('sane' 'confuse' 'libusb-compat')
@@ -35,6 +35,7 @@ prepare() {
 
     # Arch uses the 'daemon' user and 'scanner' group.
     sed -i 's/"saned">.*/"daemon">/' integration/scanbd_dbus.conf
+    sed -i 's/GROUP="saned"/GROUP="scanner"/' integration/99-saned.rules
 
     sed -i 's@\(user    = \)saned$@\1daemon@' conf/scanbd.conf
     sed -i 's@\(group   = \)lp$@\1scanner@' conf/scanbd.conf
@@ -54,6 +55,7 @@ package() {
     make DESTDIR="$pkgdir" install
 
     install -Dm644 integration/scanbd_dbus.conf -t "$pkgdir/etc/dbus-1/system.d/"
+    install -Dm644 integration/99-saned.rules -t "$pkgdir/usr/lib/udev/rules.d/"
     install -Dm644 integration/systemd/{scanbd,scanbm@}.service -t "$pkgdir/usr/lib/systemd/system/"
     install -Dm644 integration/systemd/scanbm.socket -t "$pkgdir/usr/lib/systemd/system/"
 
