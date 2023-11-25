@@ -1,6 +1,6 @@
 # Maintainer: Curve <curve.platin at gmail.com>
 pkgname=aawmtt
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Another AwesomeWM Testing Tool, with Live Reload and 'proper' display detection"
 arch=('any')
