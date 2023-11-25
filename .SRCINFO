@@ -1,0 +1,19 @@
+pkgbase = kdiagram5
+	pkgdesc = Powerful libraries for creating business diagrams
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://www.kde.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = qt5-svg
+	conflicts = kdiagram<2.8.0-2
+	replaces = kdiagram<2.8.0-2
+	source = https://download.kde.org/stable/kdiagram/2.8.0/kdiagram-2.8.0.tar.xz
+	source = https://download.kde.org/stable/kdiagram/2.8.0/kdiagram-2.8.0.tar.xz.sig
+	validpgpkeys = 42A60D06F449E895F40F09C01638B8A616108B8A
+	sha256sums = 579dad3bd1ea44b5a20c0f133ebf47622e38960f9c7c8b3a316be30a369f431f
+	sha256sums = SKIP
+
+pkgname = kdiagram5
