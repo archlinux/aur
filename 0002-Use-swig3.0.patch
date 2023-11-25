@@ -1,0 +1,40 @@
+From 3cba10fc5377be5bded634431b0da72ee301ad33 Mon Sep 17 00:00:00 2001
+From: LingMan <LingMan@users.noreply.github.com>
+Date: Sat, 25 Nov 2023 00:10:32 +0100
+Subject: [PATCH] Use swig3.0
+
+Building with swig4.0 results in "ImportError: cannot import name ConfigFile_fleshOutArgs" at runtime.
+---
+ configure.ac           | 2 +-
+ cppForSwig/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index eb0d1c5..3a815b8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -64,7 +64,7 @@ AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory], [nodefault])
+ if test "x$with_gui" = "xyes"; then
+ #check for  swig
+ 
+-AC_CHECK_PROG([HAVE_SWIG], [swig], [yes], [no])
++AC_CHECK_PROG([HAVE_SWIG], [swig3.0], [yes], [no])
+ AS_IF([test $HAVE_SWIG == yes], [],
+ 	[AC_MSG_ERROR([missing swig!])]) 
+ 
+diff --git a/cppForSwig/Makefile.am b/cppForSwig/Makefile.am
+index 6d7e4fe..dabfb19 100644
+--- a/cppForSwig/Makefile.am
++++ b/cppForSwig/Makefile.am
+@@ -100,7 +100,7 @@ endif
+ 
+ #custom rules
+ CppBlockUtils_wrap.cxx: CppBlockUtils.i
+-	swig $(SWIG_FLAGS) CppBlockUtils.i 
++	swig3.0 $(SWIG_FLAGS) CppBlockUtils.i
+ 
+ .PHONY: CppBlockUtils_wrap.cxx
+ 
+-- 
+2.42.1
+
