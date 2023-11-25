@@ -1,6 +1,6 @@
 pkgbase = python-wikitextparser
 	pkgdesc = A simple parsing tool for MediaWiki's wikitext markup
-	pkgver = 0.55.5
+	pkgver = 0.55.6
 	pkgrel = 1
 	url = https://github.com/5j9/wikitextparser
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-wikitextparser
 	makedepends = python-wheel
 	depends = python-regex
 	depends = python-wcwidth
-	source = wikitextparser-0.55.5.tar.gz::https://github.com/5j9/wikitextparser/archive/v0.55.5.tar.gz
-	sha512sums = 76c2b9266780c7b92798243c9e673ebff07bdd7d28913344b6c0989d9d3b1064a128cd82ba362d2c2f9d1bc7b1231639149d053d86035b758868dc1d124117ba
+	source = wikitextparser-0.55.6.tar.gz::https://github.com/5j9/wikitextparser/archive/v0.55.6.tar.gz
+	sha512sums = 1721ddb9288f13042d8dade2a86eaf549a829a2b403954dabc2e7f85c7095386834167a3de14aa0f81964f128daa52e207de602d66a9fd2c8d473514afcdc67b
 
 pkgname = python-wikitextparser
