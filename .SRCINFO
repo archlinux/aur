@@ -1,10 +1,10 @@
 pkgbase = junction-zhfix
 	pkgdesc = Application/browser chooser
 	pkgver = 1.6
-	pkgrel = 3
-	epoch = 0
+	pkgrel = 4
 	url = https://github.com/sonnyp/Junction
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = git
@@ -15,7 +15,8 @@ pkgbase = junction-zhfix
 	depends = libportal-gtk4
 	depends = gjs
 	provides = junction
-	source = junction-1.6::git+https://github.com/sonnyp/Junction.git#tag=v1.6
+	conflicts = junction
+	source = junction-1.6::git+https://github.com/sonnyp/Junction.git#commit=53ca01d7f3eca72a4a6bb0727ca6aa5eec3e63db
 	b2sums = SKIP
 
 pkgname = junction-zhfix

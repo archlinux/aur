@@ -3,46 +3,44 @@
 
 _pkgname=junction
 pkgname=junction-zhfix
-pkgver=1.6
-_tag=v$pkgver
-pkgrel=3
-epoch=0
 pkgdesc="Application/browser chooser"
-arch=('x86_64')
+pkgver=1.6
+pkgrel=4
+#_tag=v$pkgver
+_commit=53ca01d7f3eca72a4a6bb0727ca6aa5eec3e63db
+arch=('x86_64' 'aarch64')
 url="https://github.com/sonnyp/Junction"
 license=('GPL3')
-provides=("${_pkgname}")
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 depends=('libadwaita' 'libportal-gtk4' 'gjs')
 makedepends=('git' 'meson' 'python-gobject' 'blueprint-compiler')
 checkdepends=('appstream-glib')
-source=("${_pkgname}-${pkgver}::git+$url.git#tag=$_tag")
+source=("${_pkgname}-${pkgver}::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
 prepare() {
   cd "$_pkgname-$pkgver"
 
-  # fix zh
-  pushd po
-  ln -vf zh_Hans.po zh_CN.po
-  grep zh_CN LINGUAS || echo zh_CN >> LINGUAS
-  cp -vf zh_Hans.po zh_SG.po
-  grep zh_SG LINGUAS || echo zh_SG >> LINGUAS
+  git -c protocol.file.allow=always submodule update --init --recursive
 
-  rm zh_Hans.po && sed -i '/zh_Hans/d' LINGUAS
+  # fix Simplified Chinese translation
+  pushd po
+  sed -i 's/zh_Hans/zh_CN\nzh_SG/' LINGUAS
+  ln -v zh_Hans.po zh_CN.po
+  ln -v zh_Hans.po zh_SG.po
   popd
 
-  # fix crash when not in flatpak environment
+  # fix crash that happened when not in flatpak environment
   pushd src
-  sed -i 's|XDG_DATA_DIRS.*e |FLATPAK_ID=fromAUR |' bin.js
+  sed -i 's|XDG_DATA_DIRS.*e ||' bin.js
   popd
 
   # redirect output
-  # so when use `xdg-open` there will be no annoying log printed to terminal
+  # if not, when use `xdg-open` there will have annoying log printed to terminal
   pushd data
   sed -i '/^Exec=/ s|$| 2>/dev/null|' re.sonny.Junction.desktop
   popd
-
-  git submodule update --init --recursive
 }
 
 build() {
@@ -50,9 +48,9 @@ build() {
   meson compile -C build
 }
 
-#check() {
-#  meson test -C build --print-errorlogs || :
-#}
+check() {
+  meson test -C build --print-errorlogs || :
+}
 
 package() {
   meson install -C build --destdir "$pkgdir"
