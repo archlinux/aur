@@ -1,8 +1,8 @@
 # Maintainer: Marcanicus <marcanicus@proton.me>
 pkgname=xivlauncher-rb
-pkgver=1.0.12
+pkgver=1.0.6.4
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Custom launcher for Final Fantasy XIV Online with RB Patches!"
 arch=('x86_64')
 url='https://github.com/Marcanicus/XIVLauncher.Core'
@@ -32,7 +32,7 @@ makedepends=('dotnet-sdk>=6' 'git')
 optdepends=('steam')
 options=('!strip')
 source=(
-    "XIVLauncher.Core::git+https://github.com/Marcanicus/XIVLauncher.Core.git#branch=RB-patched"
+    "XIVLauncher.Core::git+https://github.com/rankynbass/XIVLauncher.Core.git#tag=rb-v${pkgver}"
     "XIVLauncher.desktop"
 )
 sha512sums=(
@@ -43,12 +43,13 @@ sha512sums=(
 prepare() {
     cd "${srcdir}/XIVLauncher.Core"
     git submodule update --init --recursive
+    _hash=$(git rev-parse --short HEAD)
 }
 
 build() {
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/XIVLauncher.Core/src/XIVLauncher.Core/"
-    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release -p:DefineConstants=WINE_XIV_ARCH_LINUX
+    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release -p:BuildHash=${_hash}
 }
 
 package() {
