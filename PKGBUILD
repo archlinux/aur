@@ -1,15 +1,16 @@
-# Maintainer: Evgeni Kunev <evgeni at kunev dot me>>
+# Maintainer: Fernando Carmona Varo <ferkiwi @t gmail dot com>
+# Contributor: Evgeni Kunev <evgeni at kunev dot me>>
 pkgname=otf-unscii-8-fantasy
-pkgver=1.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Unscii is a set of bitmapped Unicode fonts based on classic system fonts. Unscii attempts to support character cell art well while also being suitable for terminal and programming use. Full unicode support."
-url="http://pelulamu.net/unscii/"
+url="http://viznut.fi/unscii/"
 arch=('any')
 license=('gpl')
 depends=('fontconfig' 'xorg-font-utils')
 install=$pkgname.install
-source=("http://pelulamu.net/unscii/unscii-8-fantasy.otf")
-sha512sums=('df90932a9ec3d52bace89a4ab51bd304e6b687dfd96fffc8743a62718bcbc60624a054f82e60da67504ab345d840a2c1e12bc9cc95d80e05add87a59e9786ec9')
+source=("http://viznut.fi/unscii/unscii-8-fantasy.otf")
+sha512sums=('6267bb66880146d6c2f56a3412cb72a317a852d9af22682b6f6d34e1a04b84aaeba7c9c757cf778ffbb06ae254c94b1ef52001593aad9536e4a912651846e0de')
 
 package() {
   cd "${srcdir}"
