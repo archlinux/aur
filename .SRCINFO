@@ -1,6 +1,6 @@
 pkgbase = systemd-stub-x64
 	pkgdesc = A simple UEFI kernel boot stub
-	pkgver = 251.4
+	pkgver = 254.6
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = systemd-stub-x64
 	license = LGPL2.1
 	provides = systemd-stub
 	conflicts = systemd-stub
-	source = https://archive.archlinux.org/packages/s/systemd/systemd-251.4-1-x86_64.pkg.tar.zst
-	sha256sums = aa439ec93a6b7094a50d0cb128c0659ec303539dc3eda4aa51c8bb24a20d499d
+	source = https://archive.archlinux.org/packages/s/systemd/systemd-254.6-2-x86_64.pkg.tar.zst
+	sha256sums = 56f3629ea1656b0d55cc40e7d7bcdf4aa4b3e2526d0b2e293eaa1beadee2f229
 
 pkgname = systemd-stub-x64
