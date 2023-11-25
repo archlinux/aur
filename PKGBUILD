@@ -1,6 +1,6 @@
 # Maintainer: Reinhold Gschweicher <pyro4hell@gmail.com>
 pkgname=infinisim-git
-pkgver=r79.e4a3aa0
+pkgver=v1.13.0.r13.g43880fd
 pkgrel=1
 pkgdesc="Simulator for InfiniTime user interface without needing a PineTime "
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -18,12 +18,11 @@ install=
 source=(
 	"${pkgname}::git+https://github.com/InfiniTimeOrg/InfiniSim.git"
 	"git+https://github.com/InfiniTimeOrg/InfiniTime.git"
-	"git+https://github.com/glennrp/libpng.git"
 	"git+https://github.com/lvgl/lv_drivers.git"
-	"git+https://github.com/joaquimorg/lvgl.git"
-	"git+https://github.com/laurencelundblade/QCBOR.git"
+	"git+https://github.com/InfiniTimeOrg/lvgl.git"
 	"git+https://github.com/littlefs-project/littlefs.git"
-	"git+https://github.com/HowardHinnant/date.git"
+	"git+https://github.com/laurencelundblade/QCBOR.git"
+	"git+https://github.com/kosme/arduinoFFT.git"
 )
 noextract=()
 md5sums=(
@@ -34,39 +33,31 @@ md5sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'SKIP'
 	)
 
 pkgver() {
-	cd "$srcdir/${pkgname}"
-
 # Git, tags available
-#	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-
-# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
 	cd "$srcdir/${pkgname}"
 	# install lv_font_conv dependency to local directory
 	npm install lv_font_conv@1.5.2
-	# install lv_img_conv dependency to local directory
-	npm install ts-node@10.9.1 @swc/core lv_img_conv@0.3.0
 	git submodule init
-	git config submodule.InfiniTime.url "$srcdir/InfiniTime"
-	git config submodule.libpng.url "$srcdir/libpng"
 	git config submodule.lv_drivers.url "$srcdir/lv_drivers"
-	git submodule update
+	git config submodule.InfiniTime.url "$srcdir/InfiniTime"
+	git -c protocol.file.allow=always submodule update
 	cd "$srcdir/${pkgname}/InfiniTime"
 	git config submodule.src/libs/lvgl.url "${srcdir}/lvgl"
-	git config submodule.src/libs/QCBOR.url "${srcdir}/QCBOR"
 	git config submodule.src/libs/littlefs.url "${srcdir}/littlefs"
-	git config submodule.src/libs/date.url "${srcdir}/date"
-	git submodule update --init src/libs/lvgl
-	git submodule update --init src/libs/QCBOR
-	git submodule update --init src/libs/littlefs
-	git submodule update --init src/libs/date
+	git config submodule.src/libs/QCBOR.url "${srcdir}/QCBOR"
+	git config submodule.src/libs/arduinoFFT.url "${srcdir}/arduinoFFT"
+	git -c protocol.file.allow=always submodule update --init src/libs/lvgl
+	git -c protocol.file.allow=always submodule update --init src/libs/littlefs
+	git -c protocol.file.allow=always submodule update --init src/libs/QCBOR
+	git -c protocol.file.allow=always submodule update --init src/libs/arduinoFFT
 }
 
 build() {
