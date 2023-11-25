@@ -1,17 +1,15 @@
-pkgbase = scanbd
+pkgbase = scanbd-git
 	pkgdesc = Scanner button daemon looking for scanner button pressed
-	pkgver = 1.5.1
-	pkgrel = 5
-	url = http://scanbd.sourceforge.net/
+	pkgver = r224.f909458
+	pkgrel = 1
+	url = https://gitlab.com/sane-project/frontend/scanbd
 	arch = x86_64
 	license = GPL2
 	depends = sane
 	depends = confuse
+	depends = libusb-compat
 	backup = etc/scanbd/scanbd.conf
-	source = https://downloads.sourceforge.net/scanbd/scanbd-1.5.1.tgz
-	source = string-bounds.patch
-	sha256sums = b69ca5a474b81516d19c38082d949363c243df9ab9742315aaae499723267e5f
+	source = scanbd::git+https://gitlab.com/sane-project/frontend/scanbd.git
 	sha256sums = SKIP
 
-pkgname = scanbd
-
+pkgname = scanbd-git
