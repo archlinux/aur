@@ -1,7 +1,7 @@
 pkgbase = python-ofxclient-git
 	pkgdesc = Simple ofxclient command line utility and OFX client libraries for development.
 	pkgver = 2.0.4.r0.g4da2719
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/captin411/ofxclient
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,9 @@ pkgbase = python-ofxclient-git
 	depends = python-configargparse
 	depends = python-ofxparse
 	provides = ofxclient
+	provides = python-ofxclient
 	conflicts = ofxclient
+	conflicts = python-ofxclient
 	source = ofxclient::git+https://github.com/captin411/ofxclient.git#branch=master
 	md5sums = SKIP
 
