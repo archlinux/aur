@@ -1,7 +1,7 @@
 pkgbase = mandel
-	pkgdesc = Wolf Jung's mandel
+	pkgdesc = Wolf Jung's program and tutorials for complex dynamics researchers
 	pkgver = 5.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mndynamics.com/
 	arch = i686
 	arch = x86_64
