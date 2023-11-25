@@ -1,6 +1,6 @@
 pkgbase = conky-cli
 	pkgdesc = Lightweight system monitor for X, without X11 dependencies
-	pkgver = 1.19.4
+	pkgver = 1.19.6
 	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = conky-cli
 	depends = libxml2
 	provides = conky
 	conflicts = conky
-	source = conky-1.19.4.tar.gz::https://github.com/brndnmtthws/conky/archive/refs/tags/v1.19.4.tar.gz
-	sha256sums = 2f5df519398ce21fea2e242bbff1a49cc4194d62494378759e37379a43cf571c
+	source = conky-1.19.6.tar.gz::https://github.com/brndnmtthws/conky/archive/refs/tags/v1.19.6.tar.gz
+	sha256sums = 1bf5868da44056badd4718a3c8dcc6905f7118a9f86e785b354a8ecdb157a59e
 
 pkgname = conky-cli
