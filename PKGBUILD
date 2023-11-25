@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=kana-gtk4-git
-pkgver=1.2.r1.g4d38467
+pkgver=1.3.r0.gc5a171f
 pkgrel=1
 pkgdesc="Learn Japanese characters (latest commit)"
 url="https://gitlab.gnome.org/fkinoshita/kana"
