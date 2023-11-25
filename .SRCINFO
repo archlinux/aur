@@ -1,5 +1,5 @@
 pkgbase = wayland-protocols-explicit-sync-git
-	pkgdesc = Wayland protocols that add functionalities not available in the core protocol
+	pkgdesc = Wayland protocols with explicit sync patch
 	pkgver = 1.32.r18.gc4f5598
 	pkgrel = 1
 	url = https://wayland.freedesktop.org/
