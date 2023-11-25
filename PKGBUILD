@@ -2,13 +2,14 @@
 
 pkgname=akonadi-notes
 pkgver=23.08.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Libraries and daemons to implement management of notes in Akonadi'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
 depends=(kmime)
 makedepends=(extra-cmake-modules qt5-tools doxygen)
+provides=(akonadi-notes5)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('2f396d28fc85bdc40d1b5458f8151ade725d02cd3f0c98f9011e4f711a3f31fd'
             'SKIP')
