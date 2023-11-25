@@ -1,0 +1,26 @@
+pkgbase = r-hoodscanr
+	pkgdesc = Spatial cellular neighbourhood scanning in R
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/hoodscanR
+	arch = x86_64
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-circlize
+	depends = r-complexheatmap
+	depends = r-ggplot2
+	depends = r-knitr
+	depends = r-rann
+	depends = r-rcpp
+	depends = r-rlang
+	depends = r-rmarkdown
+	depends = r-scico
+	depends = r-spatialexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hoodscanR_1.0.0.tar.gz
+	md5sums = c5ac598990d1f80bfa526c576abc8d84
+	sha256sums = cde7b3938f36850be64055e44aa6a0ca4cbfde55e517c00ff325bdefb659dfbf
+
+pkgname = r-hoodscanr
