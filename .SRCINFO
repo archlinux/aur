@@ -1,0 +1,19 @@
+pkgbase = xorgproto-explicit-sync-git
+	pkgdesc = combined X.Org X11 Protocol headers with explicit sync support (git version)
+	pkgver = 2023.2.8.r2754.g1c8128d
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	checkdepends = python-libevdev
+	makedepends = git
+	makedepends = meson
+	makedepends = xorg-util-macros
+	provides = xorgproto
+	conflicts = xorgproto
+	source = xorgproto::git+https://gitlab.freedesktop.org/xorg/proto/xorgproto.git
+	source = https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/merge_requests/59.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = xorgproto-explicit-sync-git
