@@ -5,7 +5,7 @@ _pkgname=pure-maps
 pkgname="${_pkgname}-git"
 pkgdesc="Display vector and raster maps, places, routes, etc."
 pkgver=3.2.1+13.r2795.20230312.d801dfc1
-pkgrel=1
+pkgrel=2
 arch=(
   'x86_64'
   'i686'
@@ -24,7 +24,7 @@ depends=(
   kirigami2
   mapbox-gl-qml
   nemo-qml-plugin-dbus
-  python-geomag
+  # python-geomag
   python-gpxpy
   python-pyotherside
   qt5-location

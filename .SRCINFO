@@ -1,7 +1,7 @@
 pkgbase = pure-maps-git
 	pkgdesc = Display vector and raster maps, places, routes, etc.
 	pkgver = 3.2.1+13.r2795.20230312.d801dfc1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rinigus.github.io/pure-maps
 	arch = x86_64
 	arch = i686
@@ -19,7 +19,6 @@ pkgbase = pure-maps-git
 	depends = kirigami2
 	depends = mapbox-gl-qml
 	depends = nemo-qml-plugin-dbus
-	depends = python-geomag
 	depends = python-gpxpy
 	depends = python-pyotherside
 	depends = qt5-location
