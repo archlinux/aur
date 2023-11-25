@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=6.2.r112838.g7212466e73
+pkgver=6.2.r112841.g2d9ed64859
 pkgrel=1
 _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
 _svt_vp9_ver='43ef8e5e96932421858762392adbbab57c84aebf'
@@ -13,6 +13,7 @@ depends=(
     'alsa-lib'
     'aom'
     'aribb24'
+    'libaribcaption'
     'avisynthplus'
     'bzip2'
     'cairo'
@@ -123,6 +124,8 @@ depends=(
     'vo-amrwbenc'
     'xavs'
     'xavs2'
+    'xevd'
+    'xeve'
 )
 makedepends=('git' 'clang' 'amf-headers' 'ffnvcodec-headers' 'nasm' 'opencl-headers'
              'vulkan-headers' 'decklink-sdk')
@@ -204,6 +207,7 @@ build() {
         --enable-lcms2 \
         --enable-libaom \
         --enable-libaribb24 \
+        --enable-libaribcaption \
         --enable-libass \
         --enable-libbluray \
         --enable-libbs2b \
@@ -273,6 +277,8 @@ build() {
         --enable-libwebp \
         --enable-libx264 \
         --enable-libx265 \
+        --enable-libxevd \
+        --enable-libxeve \
         --enable-libxavs \
         --enable-libxavs2 \
         --enable-libxcb \
