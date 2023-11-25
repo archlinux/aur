@@ -5,7 +5,7 @@
 # Contributor: Tristero <tristero at online dot de>
 # Contributor: funkyou
 
-## default options
+## options
 # whether to build and install plugins
 : ${_plugin_feedreader:=false}
 : ${_plugin_voip:=false} # currently broken
@@ -30,6 +30,7 @@
 _pkgname="retroshare"
 pkgname="$_pkgname"
 pkgver=0.6.7
+_pkgtag=v0.6.7
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 #url="http://retroshare.cc/"
@@ -37,59 +38,74 @@ url="https://github.com/retroshare/retroshare"
 license=('AGPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 
-depends=(
-  'libxss'
-  'miniupnpc'
-  'qt5-multimedia'
-  'qt5-x11extras'
-  'sqlcipher'
-)
-makedepends=(
-  'cmake'
-  'git'
-  'qt5-tools'
-  'rapidjson'
-)
-optdepends=(
-  'tor: tor hidden node support'
-  'i2p: i2p hidden node support'
-  'i2pd: i2p hidden node support'
-)
+## main package
+_main_package() {
+  depends=(
+    'libxss'
+    'miniupnpc'
+    'qt5-multimedia'
+    'qt5-x11extras'
+    'sqlcipher'
+  )
+  makedepends=(
+    'cmake'
+    'git'
+    'qt5-tools'
+    'rapidjson'
+  )
+  optdepends=(
+    'tor: tor hidden node support'
+    'i2p: i2p hidden node support'
+    'i2pd: i2p hidden node support'
+  )
 
-# Add extra dependencies
-if [[ "${_plugin_voip::1}" =~ 't|y|1' ]] ; then
-  depends+=('ffmpeg' 'opencv3-opt')
-fi
+  # Add extra dependencies
+  if [[ "${_plugin_voip::1}" =~ 't|y|1' ]] ; then
+    depends+=('ffmpeg' 'opencv3-opt')
+  fi
 
-if [[ "${_plugin_feedreader::1}" =~ 't|y|1' ]] ; then
-  depends+=('curl' 'libxslt')
-fi
+  if [[ "${_plugin_feedreader::1}" =~ 't|y|1' ]] ; then
+    depends+=('curl' 'libxslt')
+  fi
 
-if [[ "${_jsonapi::1}" =~ 't|y|1' ]] ; then
-  makedepends+=('doxygen')
-fi
+  if [[ "${_jsonapi::1}" =~ 't|y|1' ]] ; then
+    makedepends+=('doxygen')
+  fi
 
-if [[ "${_clang::1}" =~ 't|y|1' ]] ; then
-  makedepends+=('clang')
-fi
+  if [[ "${_clang::1}" =~ 't|y|1' ]] ; then
+    makedepends+=('clang')
+  fi
 
-if [[ "${_autologin::1}" =~ 't|y|1' ]] ; then
-  depends+=('libsecret')
-fi
+  if [[ "${_autologin::1}" =~ 't|y|1' ]] ; then
+    depends+=('libsecret')
+  fi
 
-# package type
-if [ x"$pkgname" == x"$_pkgname" ] ; then
-  # normal package
+  # package type
+  if [ x"$pkgname" == x"$_pkgname" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+
+  _source_retroshare
+  _source_rapidjson
+  _source_restbed
+}
+
+## stable package
+_main_stable() {
   _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
+  source=("$_pkgsrc"::"git+$url.git#tag=$_pkgtag")
   sha256sums=('SKIP')
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/-/./g;s/\.RC/RC/;s/\.g.*$//'
+    echo "${_pkgtag}" | sed -E 's/^v//;s/(.*[0-9])([a-z])/\1.\2/'
   }
-else
-  # git package
+}
+
+## git package
+_main_git() {
   provides=("$_pkgname=${pkgver%%.r*}")
   conflicts=("$_pkgname")
 
@@ -99,10 +115,11 @@ else
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g ; s/\.RC/RC/'
+    git describe --long --tags --exclude='*[a-z][a-z]*' --exclude='*[a-z]' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g ; s/\.RC/RC/'
   }
-fi
+}
 
+## submodules
 _source_retroshare() {
   source+=(
     'retroshare.openpgp-sdk'::'git+https://github.com/RetroShare/OpenPGP-SDK.git'
@@ -195,10 +212,7 @@ _source_restbed() {
   )
 }
 
-_source_retroshare
-_source_rapidjson
-_source_restbed
-
+## common functions
 prepare() {
   _submodule_update() {
     local key;
@@ -286,3 +300,6 @@ package() {
   cd "$_pkgsrc"
   make INSTALL_ROOT="${pkgdir:?}" install
 }
+
+## execute
+_main_package
