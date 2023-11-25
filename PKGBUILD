@@ -12,24 +12,17 @@ license=(GPL3)
 makedepends=(cmake make git gcc imagemagick)
 depends=(qt5-base glew sdl2)
 
-_vendor="com.github.nba-emu"
-_identifier="${_vendor}.NanoBoyAdvance"
-
 source=(
 	"git+https://github.com/nba-emu/NanoBoyAdvance.git" 
 	"git+https://github.com/fmtlib/fmt.git"
 	"git+https://github.com/ToruNiina/toml11.git"
 	"git+https://github.com/selmf/unarr.git"
-	NanoBoyAdvance-Qt.sh
-	NanoBoyAdvance.desktop
 )
 
 sha256sums=('SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        'd4518786256bbe6c5525c9200b3978cd774ffa74b7a3cd411de0aa483903f4ea'
-        'c7bb57aa68471e06b98ba85bcc5260ce58570fdfc3812b0e8241c9ccdbbd2874')
+        'SKIP')
 
 pkgver() {
 	cd NanoBoyAdvance
@@ -47,21 +40,16 @@ prepare() {
 
 build() {
 	cd "$srcdir/NanoBoyAdvance"
-	cmake -B build -DCMAKE_BUILD_TYPE=Release
+	cmake -B build \
+		-DCMAKE_BUILD_TYPE=None \
+		-DPORTABLE_MODE=OFF \
+		-DCMAKE_INSTALL_PREFIX=/usr
+
 	cmake --build build
 }
 
 package() {
 	cd "$srcdir/NanoBoyAdvance"
 
-	install -Dm755 build/bin/qt/NanoBoyAdvance "${pkgdir}/usr/lib/NanoBoyAdvance-Qt"
-	install -Dm755 "${srcdir}/NanoBoyAdvance-Qt.sh" "${pkgdir}/usr/bin/NanoBoyAdvance-Qt"
-	install -Dm644 "${srcdir}/NanoBoyAdvance.desktop" "${pkgdir}/usr/share/applications/${_identifier}.desktop"
-	
-	convert "${srcdir}/NanoBoyAdvance/src/platform/qt/rc/app.ico" icon.png
-	
-	for icon in icon-*.png; do
-		size=$(identify -format "%[fx:w]x%[fx:h]" "$icon")
-		install -Dm644 "$icon" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${_identifier}.png"
-	done
+	DESTDIR="$pkgdir" cmake -P build/bin/qt/cmake_install.cmake
 }
