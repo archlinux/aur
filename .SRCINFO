@@ -1,0 +1,31 @@
+pkgbase = r-comparegroups
+	pkgdesc = Descriptive Analysis by Groups
+	pkgver = 4.7.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=compareGroups
+	arch = any
+	license = GPL
+	depends = r-chron
+	depends = r-flextable
+	depends = r-hardyweinberg
+	depends = r-kableextra
+	depends = r-knitr
+	depends = r-officer
+	depends = r-rmarkdown
+	depends = r-writexl
+	optdepends = r-dt
+	optdepends = r-haven
+	optdepends = r-readxl
+	optdepends = r-shiny
+	optdepends = r-shinybs
+	optdepends = r-shinydashboardplus
+	optdepends = r-shinyjqui
+	optdepends = r-shinyjs
+	optdepends = r-shinythemes
+	optdepends = r-shinywidgets
+	optdepends = r-tcltk2
+	source = https://cran.r-project.org/src/contrib/compareGroups_4.7.2.tar.gz
+	md5sums = e9dbc5905e2f1d7bfb7bb5fe372d4e7a
+	sha256sums = a83f3e4cd8e83c24f8e867cbbca9f1fbeea611cbb77af31bab6506008772779b
+
+pkgname = r-comparegroups
