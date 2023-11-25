@@ -1,4 +1,4 @@
-From 5e26600239c7361eb097b1ff20658f296c3435b5 Mon Sep 17 00:00:00 2001
+From 08791422fb74b1161da5ad6bf075859de45936b9 Mon Sep 17 00:00:00 2001
 From: Faith Ekstrand <faith.ekstrand@collabora.com>
 Date: Tue, 1 Aug 2023 18:49:15 -0500
 Subject: [PATCH] nvk: Advertise Vulkan 1.1
@@ -10,7 +10,7 @@ Subject: [PATCH] nvk: Advertise Vulkan 1.1
  3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/docs/features.txt b/docs/features.txt
-index 1dd49e3d5a0..b6af3d925ce 100644
+index 9bc0718d591..d949671ca1c 100644
 --- a/docs/features.txt
 +++ b/docs/features.txt
 @@ -420,7 +420,7 @@ we DO NOT WANT implementations of these extensions for Mesa.
@@ -23,31 +23,31 @@ index 1dd49e3d5a0..b6af3d925ce 100644
    VK_KHR_16bit_storage                                  DONE (anv/gen8+, dzn, hasvk, lvp, radv, tu/a650, v3dv, vn)
    VK_KHR_bind_memory2                                   DONE (anv, dzn, hasvk, lvp, nvk, pvr, radv, tu, v3dv, vn)
 diff --git a/src/nouveau/vulkan/nvk_instance.c b/src/nouveau/vulkan/nvk_instance.c
-index e37b648662f..c8022ccc557 100644
+index c0b28add1f2..21d99bc2ae3 100644
 --- a/src/nouveau/vulkan/nvk_instance.c
 +++ b/src/nouveau/vulkan/nvk_instance.c
-@@ -15,7 +15,7 @@
- VKAPI_ATTR VkResult VKAPI_CALL
- nvk_EnumerateInstanceVersion(uint32_t *pApiVersion)
+@@ -17,7 +17,7 @@ nvk_EnumerateInstanceVersion(uint32_t *pApiVersion)
  {
--   *pApiVersion = VK_MAKE_VERSION(1, 0, VK_HEADER_VERSION);
-+   *pApiVersion = VK_MAKE_VERSION(1, 1, VK_HEADER_VERSION);
+    uint32_t version_override = vk_get_version_override();
+    *pApiVersion = version_override ? version_override :
+-                  VK_MAKE_VERSION(1, 0, VK_HEADER_VERSION);
++                  VK_MAKE_VERSION(1, 1, VK_HEADER_VERSION);
+ 
     return VK_SUCCESS;
  }
- 
 diff --git a/src/nouveau/vulkan/nvk_physical_device.c b/src/nouveau/vulkan/nvk_physical_device.c
-index 004421ed1e3..a7de117c236 100644
+index ace03c133f9..31932cb2757 100644
 --- a/src/nouveau/vulkan/nvk_physical_device.c
 +++ b/src/nouveau/vulkan/nvk_physical_device.c
-@@ -412,7 +412,7 @@ nvk_get_device_properties(const struct nvk_instance *instance,
-                                                VK_SAMPLE_COUNT_8_BIT;
+@@ -429,7 +429,7 @@ nvk_get_device_properties(const struct nvk_instance *instance,
  
     *properties = (struct vk_properties) {
--      .apiVersion = VK_MAKE_VERSION(1, 0, VK_HEADER_VERSION),
-+      .apiVersion = VK_MAKE_VERSION(1, 1, VK_HEADER_VERSION),
+       .apiVersion = version_override ? version_override :
+-                    VK_MAKE_VERSION(1, 0, VK_HEADER_VERSION),
++                    VK_MAKE_VERSION(1, 1, VK_HEADER_VERSION),
        .driverVersion = vk_get_driver_version(),
        .vendorID = NVIDIA_VENDOR_ID,
        .deviceID = info->device_id,
 -- 
-2.42.0
+2.42.1
 
