@@ -2,7 +2,7 @@
 
 pkgname=amiberry
 pkgver=873103af0df5044044501d5807f119bcce582da8
-pkgrel=1
+pkgrel=2
 epoch=20231118
 pkgdesc="Amiga Emulator for ARM Boards (amd64 build)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 build() {
   cd $pkgname
-  make PLATFORM=x86-64 -j$(nproc)
+  make PLATFORM=x86-64
 }
 
 package() {
