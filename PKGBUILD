@@ -1,7 +1,7 @@
 # Maintainer: criptixo <therealcriptixo@gmail.com>
 pkgname=waveterm-bin
 pkgver=0.5
-pkgrel=8
+pkgrel=10
 pkgdesc='an open-source, cross-platform terminal for seamless workflows'
 arch=('x86_64')
 url="https://www.waveterm.dev"
@@ -26,8 +26,11 @@ package() {
   cp -r ${srcdir}/Wave-linux-x64/LICENSE ${pkgdir}/usr/share/licenses/waveterm/LICENSE
 
   # desktop icon and entry
-  mkdir -p ${pkgdir}/usr/share/pixmaps/
-  cp -r ${srcdir}/Wave-linux-x64/resources/app/public/waveterm.icns ${pkgdir}/usr/share/pixmaps/waveterm.icns
-  mkdir -p ${pkgdir}/usr/share/applications/
-  ln -s /opt/waveterm/waveterm ${pkgdir}/usr/share/applications/waveterm.desktop
+  #
+  # currently broken becuase the icon needs to be a png and there is no .desktop from source
+  #
+  # mkdir -p ${pkgdir}/usr/share/pixmaps/
+  # cp -r ${srcdir}/Wave-linux-x64/resources/app/public/waveterm.icns ${pkgdir}/usr/share/pixmaps/waveterm.icns
+  # mkdir -p ${pkgdir}/usr/share/applications/
+  # ln -s /opt/waveterm/waveterm ${pkgdir}/usr/share/applications/waveterm.desktop
 }
