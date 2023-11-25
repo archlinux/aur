@@ -54,6 +54,8 @@ _main_stable() {
 
 # git package
 _main_git() {
+  makedepends+=('git')
+
   provides+=("$_pkgname=${pkgver%%.r*}")
   conflicts+=("$_pkgname")
 
