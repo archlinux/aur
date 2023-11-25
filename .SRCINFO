@@ -1,0 +1,17 @@
+pkgbase = vtracer-git
+	pkgdesc = An open source software to convert raster images (like jpg & png) into vector graphics (svg). It can vectorize graphics and photographs and trace the curves to output compact vector files.
+	pkgver = 0.6.3.r4.g74f2a04
+	pkgrel = 1
+	url = https://github.com/visioncortex/vtracer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	provides = vtracer
+	conflicts = vtracer
+	source = vtracer::git+https://github.com/visioncortex/vtracer
+	sha256sums = SKIP
+
+pkgname = vtracer-git
