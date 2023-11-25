@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=6.1
-pkgrel=2
+pkgrel=3
 _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
 _svt_vp9_ver='43ef8e5e96932421858762392adbbab57c84aebf'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
@@ -14,6 +14,7 @@ depends=(
     'alsa-lib'
     'aom'
     'aribb24'
+    'libaribcaption'
     'avisynthplus'
     'bzip2'
     'cairo'
@@ -192,6 +193,7 @@ build() {
         --enable-lcms2 \
         --enable-libaom \
         --enable-libaribb24 \
+        --enable-libaribcaption \
         --enable-libass \
         --enable-libbluray \
         --enable-libbs2b \
