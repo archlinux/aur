@@ -2,8 +2,8 @@
 # Contributor: Matthew Hague <matthewhague@zoho.com>
 
 pkgname=ruby-icalendar
-pkgver=2.3.0
-pkgrel=3
+pkgver=2.10.0
+pkgrel=4
 pkgdesc='Internet calendaring, Ruby style'
 arch=('any')
 url='https://github.com/icalendar/icalendar'
@@ -13,7 +13,7 @@ optdepends=('ruby-activesupport-3: ActiveSupport is required for TimeWithZone su
 options=('!emptydirs')
 source=("http://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem")
 noextract=("${pkgname#*-}-${pkgver}.gem")
-sha256sums=('e03c0b2a52438c78661ab56297b0cbeef48c53528814ca0e0169a2235d43527f')
+sha256sums=('7c6f14397ba22ad7b03743bd26780ac90bd17641956fa225ba912024168eb797')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
