@@ -5,7 +5,7 @@
 _author=DrTimothyAldenDavis
 _pkgname=GraphBLAS
 pkgname=graphblas
-pkgver=8.0.2
+pkgver=8.2.1
 pkgrel=1
 pkgdesc="A full implementation of the GraphBLAS standard (graphblas.org)"
 arch=('any')
@@ -17,7 +17,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 # source=("http://faculty.cse.tamu.edu/$_author/$_pkgname/$_pkgname-$pkgver.tar.gz")
 source=("https://github.com/$_author/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cedecdcff130c3b7e5d571b693dc2c28bc96ef5f09b33e52f0bcd42b23593ea0')
+sha256sums=('a4847751f20535e229ebcba6da2f66510414f01c23702c543bf0d89b5f5e8cfa')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
