@@ -1,6 +1,6 @@
 pkgbase = jwildfire
 	pkgdesc = Fractal flame image and animation processor written in Java
-	pkgver = 7.30
+	pkgver = 8.20
 	pkgrel = 1
 	url = http://www.andreas-maschke.com
 	arch = any

@@ -1,7 +1,7 @@
 #Maintainer: John Gleezowood <psyrccio@gmail.com>
 #Contributor: John Gleezowood <psyrccio@gmail.com>
 pkgname=jwildfire
-pkgver=7.30
+pkgver=8.20
 pkgrel=1
 pkgdesc="Fractal flame image and animation processor written in Java"
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('af2611bc3a7b797852baa6474a5134c3baf2651c59374e0eebaa90e8425f0cb7' '
 
 build() {
   cd "$srcdir"
-  rm -rf ./j-wildfire-7.30.zip
+  rm -rf ./j-wildfire-8.20.zip
   rm -rf ./*.exe
   rm -rf ./start_mac.command
   echo "[Desktop Entry]" > ./jwildfire.desktop
