@@ -1,0 +1,19 @@
+pkgbase = wayland-protocols-explicit-sync-git
+	pkgdesc = Wayland protocols that add functionalities not available in the core protocol
+	pkgver = 1.32.r18.gc4f5598
+	pkgrel = 1
+	url = https://wayland.freedesktop.org/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = wayland
+	makedepends = meson
+	makedepends = ninja
+	provides = wayland-protocols
+	conflicts = wayland-protocols
+	source = git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git
+	source = https://gitlab.freedesktop.org/wayland/wayland-protocols/-/merge_requests/90.patch
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = wayland-protocols-explicit-sync-git
