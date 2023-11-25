@@ -1,0 +1,33 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+
+_name=akonadi
+pkgname=libakonadi5
+pkgver=23.08.3
+pkgrel=1
+pkgdesc='Libraries used by applications based on Akonadi'
+arch=(x86_64)
+url='https://kontact.kde.org'
+license=(LGPL)
+depends=(kitemmodels5 kio5)
+makedepends=(extra-cmake-modules postgresql qt5-tools)
+conflicts=('libakonadi<24')
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$_name-$pkgver.tar.xz{,.sig})
+sha256sums=('c4209f1240f03ab8f299f2799ea5ac2e6adf80268591851bbbcceb3b46fb3e41'
+            'SKIP')
+validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S $_name-$pkgver \
+    -DBUILD_TESTING=OFF
+  cmake --build build/src/widgets
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build/src/core
+  DESTDIR="$pkgdir" cmake --install build/src/widgets
+}
