@@ -1,0 +1,14 @@
+pkgbase = libaribcaption
+	pkgdesc = Caption decoder/renderer library for handling ARIB STD-B24 based TV broadcast captions
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/xqq/libaribcaption/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = fontconfig
+	depends = freetype2
+	source = https://github.com/xqq/libaribcaption/archive/v1.1.1/libaribcaption-1.1.1.tar.gz
+	sha256sums = 278d03a0a662d00a46178afc64f32535ede2d78c603842b6fd1c55fa9cd44683
+
+pkgname = libaribcaption
