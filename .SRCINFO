@@ -1,7 +1,7 @@
 pkgbase = python-kibom
 	pkgdesc = Bill of Materials generation tool for KiCad EDA
-	pkgver = 1.9.0
-	pkgrel = 2
+	pkgver = 1.9.1
+	pkgrel = 1
 	url = https://pypi.org/project/kibom
 	arch = any
 	license = MIT
@@ -9,13 +9,12 @@ pkgbase = python-kibom
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = flake8
 	depends = python
 	depends = python-xlsxwriter
 	provides = kibom
 	conflicts = kibom
 	options = !strip
-	source = kibom-1.9.0.tar.gz::https://files.pythonhosted.org/packages/source/k/kibom/kibom-1.9.0.tar.gz
-	sha256sums = 89ad0fa95bb36bb6aaed666d9685c68974557febf96d51492a5b80d7803923ff
+	source = kibom-1.9.1.tar.gz::https://files.pythonhosted.org/packages/source/k/kibom/kibom-1.9.1.tar.gz
+	sha256sums = 48c44b30223913121a562ddebf07d5d915dd08de2cdf33126211f58511d2fc05
 
 pkgname = python-kibom
