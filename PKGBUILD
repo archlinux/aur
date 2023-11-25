@@ -1,60 +1,47 @@
-# Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname=perl-extutils-makemaker-cpanfile
-pkgver=0.07
-pkgrel=1
-_author="I/IS/ISHIGAKI"
-_perlmod="ExtUtils-MakeMaker-CPANfile"
-pkgdesc="ExtUtils::MakeMaker::CPANfile - cpanfile support for EUMM"
+pkgname='perl-extutils-makemaker-cpanfile'
+pkgver='0.09'
+pkgrel='1'
+pkgdesc="cpanfile support for EUMM"
 arch=('any')
-url="http://search.cpan.org/dist/ExtUtils-MakeMaker-CPANfile/"
-license=('GPL' 'PerlArtistic')
-depends=(perl-module-cpanfile)
-options=(!emptydirs)
-source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha512sums=('4a40428f27f37203fac922c802ac9f774fbba4790a5c106a6cecce444be1072c9010a9c53ac3232bdcf38a84790b6defa32696dd6ef46da1e6506b5179ac2192')
-build(){
-  cd "$srcdir"/$_perlmod-$pkgver
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-module-cpanfile>=0')
+url='https://metacpan.org/release/ExtUtils-MakeMaker-CPANfile'
+source=('http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/ExtUtils-MakeMaker-CPANfile-0.09.tar.gz')
+sha512sums=('ff5b9d81ce5d8204fcd84ee88a2b5d8fe037cf5cae7a7291d7ccdc411301979093ae66d90203c6c16fddad5173a663f20fef0504ae684a8e522ef4b21c9edc13')
+_distdir="ExtUtils-MakeMaker-CPANfile-0.09"
 
-  # Setting these env variables overwrites any command-line-options we don't want...
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
 
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
+    cd "$srcdir/$_distdir"
     /usr/bin/perl Makefile.PL
     make
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    /usr/bin/perl Build.PL
-    perl Build
-  fi
+  )
 }
-check(){
-  cd "$srcdir"/$_perlmod-$pkgver
 
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build test
-  fi
+  )
 }
-package(){
-  cd "$srcdir"/$_perlmod-$pkgver
 
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    make install
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build install
-  fi
-
-  # remove perllocal.pod and .packlist
+package() {
+  cd "$srcdir/$_distdir"
+  make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
