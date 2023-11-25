@@ -1,6 +1,6 @@
 # Maintainer: Douglas Creager <dcreager@dcreager.net>
 pkgname=gotestsum
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='run go tests with formatted test output and a summar of the test run'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/gotestyourself/gotestsum'
 license=('Apache-2.0')
 depends=('go')
 source=("https://github.com/gotestyourself/${pkgname}/archive/v${pkgver}.tar.gz")
-b2sums=('768389957a4fbff857d9230f6425c06f801bf02426e0ca2c715643954a8e3e5fa512c974d2c78d7b6227f2accb575557e0821e346395119e2fcd63c2814cb753')
+b2sums=('89fb263c17f04e448a6771762b7912e96634d9a8fa25381c5ebd0e8f927fe3ebf65ce0238aa71499c4f0baf3da4c90eb6dd04aac21ddedc309ac26bdcd6b72bc')
 
 prepare() {
     export GOPATH="${srcdir}"
