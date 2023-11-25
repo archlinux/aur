@@ -1,6 +1,5 @@
-# Maintainer: 
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=plex-remote
 pkgver=1.0.2+5+gc29ef95
