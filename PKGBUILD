@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=legion+
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Asset Extraction tool for Apex Legends and Titanfall 2 (Wine)'
 arch=('x86_64')
@@ -10,11 +10,11 @@ license=('GPL3')
 depends=('wine')
 makedepends=('imagemagick')
 source=("$url/releases/download/$pkgver/Legion+$pkgver.zip"
-        "$pkgver-LegionIcon.ico::https://raw.githubusercontent.com/r-ex/LegionPlus/$pkgver/Resources/LegionIcon.ico"
+        "$pkgver-LegionIcon.ico::https://github.com/r-ex/LegionPlus/raw/$pkgver/Resources/LegionIcon.ico"
         "$pkgname.xml"
         "$pkgname.desktop"
         "$pkgname")
-sha256sums=('c9eb00382727f39370e981be222b8f5427c12333bcad4284d333619a2e067a54'
+sha256sums=('69767586d56df072ec15322d17f99901725980d8712caba478d22a3f2743ae75'
             'SKIP'
             '86e01fd95376f33b22ed16fd53b9d3cebe4f902711a9709eb583d71fc94d12e5'
             '5c57644fc35bd713fa32586b512d3741536d1fa2c6641c4b0d399d02ab58cab0'
