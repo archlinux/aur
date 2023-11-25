@@ -1,0 +1,4 @@
+pkg/
+src/
+/*.pkg.*
+/reaver-wps-fork-t6x-git

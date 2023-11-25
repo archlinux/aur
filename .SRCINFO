@@ -1,6 +1,6 @@
 pkgbase = reaver-wps-fork-t6x-git
 	pkgdesc = reaver-wps-fork-t6x is a community forked version of reaver, which has included various bug fixes and additional attack method (the offline Pixie Dust attack).
-	pkgver = 1.6.5.r224.140507a
+	pkgver = 1.6.6.r21.bd0f382
 	pkgrel = 1
 	url = https://github.com/t6x/reaver-wps-fork-t6x
 	arch = arm
@@ -18,12 +18,7 @@ pkgbase = reaver-wps-fork-t6x-git
 	conflicts = reaver-svn
 	conflicts = reaver-git
 	conflicts = reaver-wps-fork-t6x
-	replaces = reaver
-	replaces = reaver-svn
-	replaces = reaver-git
-	replaces = reaver-wps-fork-t6x
 	source = reaver-wps-fork-t6x-git::git+https://github.com/t6x/reaver-wps-fork-t6x.git
 	sha256sums = SKIP
 
 pkgname = reaver-wps-fork-t6x-git
-

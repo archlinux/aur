@@ -4,7 +4,7 @@
 
 pkgname=reaver-wps-fork-t6x-git
 _pkgname=reaver-wps-fork-t6x
-pkgver=1.6.5.r224.140507a
+pkgver=1.6.6.r21.bd0f382
 pkgrel=1
 pkgdesc="reaver-wps-fork-t6x is a community forked version of reaver, which has included various bug fixes and additional attack method (the offline Pixie Dust attack)."
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/t6x/reaver-wps-fork-t6x"
 license=('GPL2')
 depends=('libpcap' 'pixiewps' 'aircrack-ng')
 makedepends=('git')
-replaces=('reaver' 'reaver-svn' 'reaver-git' 'reaver-wps-fork-t6x')
+replaces=()
 conflicts=('reaver' 'reaver-svn' 'reaver-git' 'reaver-wps-fork-t6x')
 provides=('reaver')
 source=("$pkgname::git+https://github.com/t6x/$_pkgname.git")
@@ -38,4 +38,3 @@ package() {
   install -Dvm644 docs/README "$pkgdir/usr/share/doc/reaver/README"
   install -Dvm644 docs/reaver.1 "$pkgdir/usr/share/man/man1/reaver.1"
 }
-
