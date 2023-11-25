@@ -1,13 +1,13 @@
 pkgbase = cloudflarespeedtest
 	pkgdesc = Cloudflare IP Batch Test Tool
-	pkgver = 2.2.4
-	pkgrel = 2
+	pkgver = 2.2.5
+	pkgrel = 1
 	url = https://github.com/XIU2/CloudflareSpeedTest
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/XIU2/CloudflareSpeedTest.git#tag=v2.2.4
+	source = git+https://github.com/XIU2/CloudflareSpeedTest.git#tag=v2.2.5
 	sha256sums = SKIP
 
 pkgname = cloudflarespeedtest
