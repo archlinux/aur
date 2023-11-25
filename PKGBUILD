@@ -1,50 +1,110 @@
-# Maintainer: Digimezzo <raphael@digimezzo.com>
-_pkgname=Knowte
-pkgname=knowte
-pkgver=2.0.9
+# Maintainer:
+# Contributor: Digimezzo <raphael@digimezzo.com>
+
+# options
+#: ${_pkgtype:=git}
+
+# basic info
+_pkgname=knowte
+pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="A note taking application that allows you to quickly and easily organize and find your notes"
-arch=('x86_64')
-url="https://www.digimezzo.com"
+pkgdesc="Cross platform note taking application"
+url="https://github.com/digimezzo/knowte"
 license=('GPL3')
-provides=(${pkgname})
-conflicts=(${pkgname})
-replaces=(${pkgname})
-depends=()
-makedepends=('coreutils')
-backup=()
-options=(!strip)
-source=("${_pkgname}-${pkgver}.AppImage::https://github.com/digimezzo/${pkgname}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver}.AppImage"
-	"${pkgname}.desktop")
-sha256sums=('0e72b151ec422d1c660b97f70a5b01969e5fce06d96ffac0708b8d6cd6049823'
-		'2e0022cf360af289e0fecb677ecd629759299f9e845e628bfb10eda88201f154')
+arch=('x86_64')
 
+# main package
+_main_package() {
+  makedepends=(
+    'gendesk'
+    'nvm'
+  )
+
+  if [ x"$pkgname" == x"$_pkgname" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+
+  source+=(
+    "$_pkgname.sh"
+  )
+  sha256sums+=(
+    '4fc173bf2c4c7f210e4a3fa1983ed6e502aa3bd2845b1947a472952189272b6f'
+  )
+}
+
+# stable package
+_main_stable() {
+  _pkgsrc="$_pkgname-${pkgver%%.r*}"
+  _pkgext="tar.gz"
+  source+=(
+    "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v${pkgver%%.r*}.$_pkgext"
+  )
+  sha256sums+=(
+    '32247fbec85fcd9340e35bcb0c2655e216899ac568e7dbe91844a873da280f64'
+  )
+
+  pkgver() {
+    local _pkgver="${pkgver%%.r*}"
+    echo "${_pkgver:?}"
+  }
+}
+
+# git package
+_main_git() {
+  provides+=("$_pkgname=${pkgver%%.r*}")
+  conflicts+=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --exclude='*[A-Za-z][A-Za-z]*' \
+      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
+}
+
+# common functions
 prepare() {
-    chmod u+x      ${srcdir}/${_pkgname}-${pkgver}.AppImage
+  gendesk -q -f -n --categories "Utility" --pkgname="${_pkgname}" --pkgdesc="$pkgdesc" --name="Knowte" --exec="${_pkgname}"
+}
 
-    ${srcdir}/${_pkgname}-${pkgver}.AppImage --appimage-extract
+_ensure_local_nvm() {
+  export NVM_DIR="${srcdir:?}/nvm"
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  nvm install 16
+  nvm use 16
+}
+
+build() {
+  _ensure_local_nvm
+
+  export XDG_CACHE_HOME="${srcdir:?}/cache"
+  export XDG_CONFIG_HOME="${srcdir:?}/config"
+
+  cd "$_pkgsrc"
+  npm install --force --no-audit --no-fund
+  npm install --force --no-audit --no-fund querystring
+  npm run electron:linux || true
 }
 
 package() {
-    find           ${srcdir}/squashfs-root/locales/ -type d -exec chmod 755 {} +
-    find           ${srcdir}/squashfs-root/resources/ -type d -exec chmod 755 {} +
+  depends+=(
+    'electron'
+  )
 
-    install -d     ${pkgdir}/opt/${pkgname}
-    cp -r          ${srcdir}/squashfs-root/*                       ${pkgdir}/opt/${pkgname}
+  install -Dm755 "$_pkgname.sh" "${pkgdir:?}/usr/bin/$_pkgname" 
 
-    # remove broken or unused files and directories
-    rm -r          ${pkgdir}/opt/${pkgname}/usr/
-    rm             ${pkgdir}/opt/${pkgname}/AppRun
-    rm             ${pkgdir}/opt/${pkgname}/${pkgname}.desktop
-    rm             ${pkgdir}/opt/${pkgname}/${pkgname}.png
+  install -Dm644 "$_pkgsrc/release/linux-unpacked/resources/app.asar" -t "${pkgdir:?}/usr/lib/$_pkgname/"
 
-    find           ${srcdir}/squashfs-root/usr/share/icons/ -type d -exec chmod 755 {} +
+  install -Dm644 "$_pkgsrc/build/icon.png" "${pkgdir:?}/usr/share/pixmaps/$_pkgname.png"
 
-    install -d     ${pkgdir}/usr/share/icons
-    cp -r          ${srcdir}/squashfs-root/usr/share/icons/hicolor ${pkgdir}/usr/share/icons/hicolor
-
-    install -d     ${pkgdir}/usr/bin
-    ln -s          ../../opt/${pkgname}/${pkgname}                ${pkgdir}/usr/bin/${pkgname}
-
-    install -Dm644 ${srcdir}/${pkgname}.desktop                   ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  install -Dm644 "${srcdir:?}/$_pkgname.desktop" -t "${pkgdir:?}/usr/share/applications/"
 }
+
+# execute
+_main_package

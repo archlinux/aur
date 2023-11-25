@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Knowte
-Exec=knowte
-Terminal=false
-Type=Application
-Icon=knowte
-StartupWMClass=Knowte
-Comment=A note taking application that allows you to quickly and easily organize and find your notes
-Categories=Utility;
