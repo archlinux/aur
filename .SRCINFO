@@ -1,0 +1,18 @@
+pkgbase = perl-test-kwalitee
+	pkgdesc = Test the Kwalitee of a distribution before you release it
+	pkgver = 1.28
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Kwalitee
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-cpan-meta-check>=0.011
+	depends = perl-module-cpants-analyse>=0.92
+	depends = perl-test-deep>=0
+	depends = perl-test-warnings>=0.009
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-Kwalitee-1.28.tar.gz
+	sha512sums = 155d029ae92365c719720db0252a0a9edf731280409c4c2a5e787d44c18c6d999d8018e83ee85b4fba5569b5dc8bfa1851080825b31d269ac58c8d6e26de2f26
+
+pkgname = perl-test-kwalitee
