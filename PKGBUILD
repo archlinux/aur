@@ -56,6 +56,7 @@ shopt -s extglob
 _ensure_local_nvm() {
     # let's be sure we are starting clean
     which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    # Use non-hidden nvm folder
     export NVM_DIR="${srcdir}/nvm"
 
     # The init script returns 3 if version specified
@@ -92,6 +93,11 @@ build() {
 	nvm install "${_nodejs}"
 	nvm use "${_nodejs}"
 	npm install --global yarn
+
+	# Contain yarn, electron and node
+	export HOME=$srcdir
+	# Use non-hidden yarn cache folder
+	yarn config set cache-folder "$srcdir/yarn-cache"
 
 	cd "$srcdir/vscodium"
 
