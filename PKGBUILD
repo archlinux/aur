@@ -5,7 +5,7 @@ pkgrel=1
 epoch=2
 pkgdesc="Custom launcher for Final Fantasy XIV Online with RB Patches!"
 arch=('x86_64')
-url='https://github.com/Marcanicus/XIVLauncher.Core'
+url='https://github.com/rankynbass/XIVLauncher.Core/tree/RB-patched'
 license=('GPL')
 depends=(
     'aria2'
@@ -44,12 +44,13 @@ prepare() {
     cd "${srcdir}/XIVLauncher.Core"
     git submodule update --init --recursive
     _hash=$(git rev-parse --short HEAD)
+    echo $_hash
 }
 
 build() {
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/XIVLauncher.Core/src/XIVLauncher.Core/"
-    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release -p:BuildHash=${_hash}
+    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release -clp:ErrorsOnly -p:BuildHash=${_hash}
 }
 
 package() {
