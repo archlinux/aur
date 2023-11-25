@@ -1,45 +1,35 @@
-# Maintainer: Spencer Harmon <spencer at rsitex dot com>
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: Spencer Harmon <spencer at rsitex dot com>
 
-pkgname="jackmidi2osc-git"
-pkgver=0.2.r2.gedc653c
-pkgrel=3
-epoch=
-pkgdesc="Github version of jackmidi2osc"
-arch=('any')
-url="https://github.com/x42/jackmidi2osc"
-license=('(L)GPL3')
-groups=()
-depends=('liblo'
-	'jack')
-makedepends=('make'
-	'gcc'
-	'perl'
-	'git')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=('!buildflags' '!makeflags')
-install=
-changelog=
-source=("git://github.com/x42/jackmidi2osc")
-noextract=()
-md5sums=('SKIP')
+_pkgname=jackmidi2osc
+pkgname=$_pkgname-git
+pkgver=0.2.r4.g19b67b2
+pkgrel=1
+pkgdesc='Generate OSC messages triggered by JACK MIDI events (git version)'
+arch=(x86_64)
+url='https://github.com/x42/jackmidi2osc'
+license=(GPL2)
+groups=(pro-audio)
+depends=(glibc)
+makedepends=(git jack liblo)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("$_pkgname::git+https://github.com/x42/jackmidi2osc.git")
+sha256sums=('SKIP')
+
 pkgver(){
-	cd jackmidi2osc
-	git describe --tags| sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare(){
-	perl -0777 -i -pe 's/(\/usr)\/local/$1/' jackmidi2osc/Makefile
+  cd $_pkgname
+  git describe --tags| sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	make -C jackmidi2osc
+  cd $_pkgname
+  make
 }
 
 package() {
-	make -C "$srcdir/jackmidi2osc" DESTDIR="$pkgdir/" install
+  depends+=(libjack.so liblo.so)
+  cd $_pkgname
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -vDm 644 README.md cfg/*.cfg -t "$pkgdir"/usr/share/doc/$pkgname
 }
