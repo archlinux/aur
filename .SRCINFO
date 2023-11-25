@@ -1,0 +1,20 @@
+pkgbase = r-dashboardthemes
+	pkgdesc = Customise the Appearance of 'shinydashboard' Applications using Themes
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=dashboardthemes
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-htmltools
+	optdepends = r-covr
+	optdepends = r-glue
+	optdepends = r-knitr
+	optdepends = r-lintr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/dashboardthemes_1.1.6.tar.gz
+	md5sums = 0412aef1b3d96fb04a725bfeb02938d2
+	sha256sums = cc80bcd4b66d2418fe08636a25425083574d406e4bd9dfa8d170663aeb23717a
+
+pkgname = r-dashboardthemes
