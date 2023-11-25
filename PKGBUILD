@@ -4,8 +4,7 @@
 pkgname=gtkcord4-bin
 _pkgname=gtkcord4
 _fqpn=so.libdb.${_pkgname}
-pkgver=0.0.15.1
-_pkgver=0.0.15-1
+pkgver=0.0.16
 pkgrel=1
 pkgdesc='Discord client written in go and gtk4 (binary version)'
 arch=('x86_64' 'aarch64')
@@ -15,10 +14,10 @@ provides=('gtkcord4')
 conflicts=('gtkcord4' 'gtkcord4-git')
 depends=('gtk4>=4.10.3' 'gobject-introspection' 'libadwaita>=1.3.2')
 
-sha256sums_x86_64=('5ccd29b39ba8ffd898b00e32d66c20221c1deb1c363f4dd1eb80052ffef8e243')
-sha256sums_aarch64=('12b000ac6ee8101372868ab60efe83bbeca73c1c993001a7b70da19b61a562e1')
-source_x86_64=("https://github.com/diamondburned/gtkcord4/releases/download/v${_pkgver}/gtkcord4-linux-amd64-v${_pkgver}-.tar.zst")
-source_aarch64=("https://github.com/diamondburned/gtkcord4/releases/download/v${_pkgver}/gtkcord4-linux-arm64-v${_pkgver}-.tar.zst")
+sha256sums_x86_64=('38b82cf4af96667823da335404e052aa6a7cef2d53bab50e00f13b7266013a83')
+sha256sums_aarch64=('c41e8049cc7e59d9fb1ca5263c987b9ad45015b2a5675abe46e05712f793035f')
+source_x86_64=("https://github.com/diamondburned/gtkcord4/releases/download/v${pkgver}/gtkcord4-linux-amd64-v${pkgver}-.tar.zst")
+source_aarch64=("https://github.com/diamondburned/gtkcord4/releases/download/v${pkgver}/gtkcord4-linux-arm64-v${pkgver}-.tar.zst")
 
 package() {
     install -Dm 755 "${srcdir}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
