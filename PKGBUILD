@@ -2,9 +2,9 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=spirv-tools-git
-pkgver="2023.4".r3803.a996591
+epoch=3
+pkgver="2023.5".3845.2a238ed24
 pkgrel=1
-epoch=2
 pkgdesc='API and commands for processing SPIR-V modules'
 url='https://github.com/KhronosGroup/SPIRV-Tools'
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ depends=(glibc gcc-libs sh)
 makedepends=(cmake python git spirv-headers-git)
 conflicts=(spirv-tools)
 provides=(spirv-tools)
+
 
 cmake_args=(
   -G "Unix Makefiles"
@@ -48,24 +49,23 @@ prepare() {
   ln -s "$srcdir"/effcee
   ln -s "$srcdir"/re2
   popd
-
+  
+#  patch --directory="SPIRV-Tools" --forward --strip=1 --input="${srcdir}"/212dd9247ad60d5dcd262e43c24ec92de1a8ef1d.patch
+#  patch --directory="SPIRV-Tools" --forward --strip=1 --input="${srcdir}"/5cf47a9f90e192a1c799a04d7416b6dcd7dd59a8.patch
+  
   cmake   -S SPIRV-Tools -B _build "${cmake_args[@]}" -Wno-dev
   make -C _build spirv-tools-build-version
 }
 
 pkgver() {
-  local _ver1 _ver2 _rev _hash
+  local _ver1 _ver2
   # read fails if only 1 var is used
   IFS="," read -r _ver1 _ver2 < _build/build-version.inc || [ -n "_ver1" ]
   
-  # remove leading v
-  _ver1=${_ver1//v/}
   cd SPIRV-Tools  
-  _rev=$(git rev-list --count HEAD)
-  _hash=$(git rev-parse --short=7 HEAD)
-
-  printf "$_ver1"".r""$_rev"".""$_hash"
+  echo ${_ver1//v/}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
+
 
 
 build() {
