@@ -1,22 +1,26 @@
 post_install() {
+    NODE_PATH="/opt/cellframe-node"
+    DASHBOARD_PATH="/opt/cellframe-dashboard"
+    NODE_CFG="$NODE_PATH/etc/cellframe-node.cfg"
+    
     echo "+++ Generating node configuration file..."
-    cp /opt/cellframe-node/share/configs/cellframe-node.cfg.tpl /opt/cellframe-node/etc/cellframe-node.cfg
-    chmod 0666 /opt/cellframe-node/etc/cellframe-node.cfg
-    sed -i 's|{DEBUG_MODE}|false|' /opt/cellframe-node/etc/cellframe-node.cfg
-    sed -i 's|{PREFIX}|/opt/cellframe-node|g' /opt/cellframe-node/etc/cellframe-node.cfg
-    sed -i 's|{AUTO_ONLINE}|true|' /opt/cellframe-node/etc/cellframe-node.cfg
-    sed -i 's|{SERVER_ENABLED}|true|' /opt/cellframe-node/etc/cellframe-node.cfg
-    sed -i 's|{SERVER_ADDR}|0.0.0.0|' /opt/cellframe-node/etc/cellframe-node.cfg
-    sed -i 's|{SERVER_PORT}|8079|' /opt/cellframe-node/etc/cellframe-node.cfg
-    sed -i 's|{NOTIFY_SRV_ADDR}|127.0.0.1|' /opt/cellframe-node/etc/cellframe-node.cfg
-    sed -i 's|{NOTIFY_SRV_PORT}|8080|' /opt/cellframe-node/etc/cellframe-node.cfg
-    sed -i "s|{DB_DRIVER}|mdbx|" /opt/cellframe-node/etc/cellframe-node.cfg
+    cp $NODE_PATH/share/configs/cellframe-node.cfg.tpl $NODE_PATH/etc/cellframe-node.cfg
+    chmod 0666 $NODE_CFG
+    sed -i 's|{DEBUG_MODE}|false|' $NODE_CFG
+    sed -i 's|{PREFIX}|/opt/cellframe-node|g' $NODE_CFG
+    sed -i 's|{AUTO_ONLINE}|true|' $NODE_CFG
+    sed -i 's|{SERVER_ENABLED}|true|' $NODE_CFG
+    sed -i 's|{SERVER_ADDR}|0.0.0.0|' $NODE_CFG
+    sed -i 's|{SERVER_PORT}|8079|' $NODE_CFG
+    sed -i 's|{NOTIFY_SRV_ADDR}|127.0.0.1|' $NODE_PATH/etc/cellframe-node.cfg
+    sed -i 's|{NOTIFY_SRV_PORT}|8080|' $NODE_PATH/etc/cellframe-node.cfg
+    sed -i "s|{DB_DRIVER}|mdbx|" $NODE_PATH/etc/cellframe-node.cfg
     
     echo "+++ Generating network configuration files..."
     for _networks in mileena KelVPN Backbone subzero
     do
-        cp /opt/cellframe-node/share/configs/network/$_networks.cfg.tpl /opt/cellframe-node/etc/network/$_networks.cfg
-        sed -i 's|{NODE_TYPE}|full|' /opt/cellframe-node/etc/network/$_networks.cfg
+        cp $NODE_PATH/share/configs/network/$_networks.cfg.tpl $NODE_PATH/etc/network/$_networks.cfg
+        sed -i 's|{NODE_TYPE}|full|' $NODE_PATH/etc/network/$_networks.cfg
     done
     
     systemctl daemon-reload
@@ -24,14 +28,15 @@ post_install() {
     echo "+++ Creating symbolic links for executables..."
     for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
 	do
-		chmod a+x /opt/cellframe-node/bin/$_executables
-		ln -sf /opt/cellframe-node/bin/$_executables /usr/local/bin/$_executables
+		chmod a+x $NODE_PATH/bin/$_executables
+		ln -sf $NODE_PATH/bin/$_executables /usr/local/bin/$_executables
 	done
 
-    chmod +x /opt/cellframe-dashboard/bin/*
-    ln -sf /opt/cellframe-dashboard/bin/Cellframe-Dashboard /usr/local/bin/Cellframe-Dashboard
+    chmod +x $DASHBOARD_PATH/bin/*
+    ln -sf $DASHBOARD_PATH/bin/Cellframe-Dashboard /usr/local/bin/Cellframe-Dashboard
     
-    mkdir -p /opt/cellframe-node/var/{run,lib/wallet,lib/global_db,lib/plugins,log}
+    mkdir -p $NODE_PATH/var/{run,lib/wallet,lib/global_db,lib/plugins,log}
+    mkdir -p $DASHBOARD_PATH/dapps/download && chmod -R 0777 $DASHBOARD_PATH/dapps
 
     cat << EOF
 
