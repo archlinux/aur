@@ -12,8 +12,8 @@ depends=('java-environment' 'bash')
 provides=('jwildfire')
 conflicts=('jwildfire')
 
-source=("https://jwildfire.overwhale.com/downloads/j-wildfire-7.30.zip" "https://raw.githubusercontent.com/thargor6/JWildfire/master/Delphi/jwildfire_icon.png")
-sha256sums=('e6d77ccf10b19adc00bc0d72e14c708bb1fd45d0c50d6d5880e5e0501fdbe5a1' 'c4b30c591d3f00ca163f8b48da7980e0a6f327552aa7e03828d2c5b3f01c66e8')
+source=("https://jwildfire.overwhale.com/downloads/j-wildfire-8.20.zip" "https://raw.githubusercontent.com/thargor6/JWildfire/master/Delphi/jwildfire_icon.png")
+sha256sums=('af2611bc3a7b797852baa6474a5134c3baf2651c59374e0eebaa90e8425f0cb7' 'c4b30c591d3f00ca163f8b48da7980e0a6f327552aa7e03828d2c5b3f01c66e8')
 
 build() {
   cd "$srcdir"
