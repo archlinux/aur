@@ -2,12 +2,12 @@
 
 _pkgname=3dtk
 pkgname="$_pkgname-svn"
-pkgver=r2390
+pkgver=r2394
 pkgrel=1
 pkgdesc='3D Toolkit with algorithms and methods to process 3D point clouds'
 url='https://slam6d.sourceforge.io'
 license=(GPL3)
-arch=(any)
+arch=(x86_64)
 provides=("$_pkgname")
 makedepends=(subversion 
 	     cmake)
@@ -18,7 +18,13 @@ depends=(boost
 	 gmp 
 	 mpfr 
 	 onetbb
-	 qt5-base)
+	 suitesparse
+	 glu
+	 glut
+	 libzip
+	 python
+	 qt5-base
+	 qt6-base)
 optdepends=(ann  
 	    newmat 
 	    cuda 
@@ -50,6 +56,7 @@ build() {
 	cd build
 
 	cmake \
+		-DWITH_WXWIDGETS=OFF \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
 		..
