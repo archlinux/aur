@@ -1,0 +1,21 @@
+pkgbase = md-to-html2
+	pkgdesc = Convert Markdown to HTML using Jinja2 templates
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://codeberg.org/gi1242/md-to-html
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-frontmatter
+	depends = python-jinja
+	depends = python-markdown
+	depends = python-pyxdg
+	depends = python-pillow
+	depends = python-pygments
+	source = https://files.pythonhosted.org/packages/source/m/md-to-html2/md-to-html2-0.2.tar.gz
+	sha256sums = 297217f496a2d0f55f93c1353a439d03cff78cd858b65dae3f5ce67477a2668b
+
+pkgname = md-to-html2
