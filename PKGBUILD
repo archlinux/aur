@@ -1,7 +1,7 @@
-# Maintainer: Marcanicus <marcanicus@proton.me>
+# Maintainer: Rankyn Bass <rankyn@proton.me>
 pkgname=xivlauncher-rb
 pkgver=1.0.6.4
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Custom launcher for Final Fantasy XIV Online with RB Patches!"
 arch=('x86_64')
@@ -37,12 +37,13 @@ source=(
 )
 sha512sums=(
     'SKIP'
-    'b9a4beedda1dd1d83ce9eab84b9d2e74d1b5f51fbf4ce5900f864fb882450c486301701b959916e7459dcce65a4911355e08ed53494ec8046c0c1d638e9035e8'
+    '1d500eaa424fd484d96441252f6efa4239fedc37dc4a465c5a2d59478c82cb2d03913ad2fe2fb8bf140430cbe75b5b82dcad0a8b062790253401e8729a58f4df'
 )
 
 prepare() {
     cd "${srcdir}/XIVLauncher.Core"
     git submodule update --init --recursive
+    git checkout 
     _hash=$(git rev-parse --short HEAD)
     echo $_hash
 }
@@ -55,9 +56,9 @@ build() {
 
 package() {
     install -d "${pkgdir}/usr/bin/"
-    install -d "${pkgdir}/opt/XIVLauncher/"
-    install -D -m644 "${srcdir}/XIVLauncher.desktop" "${pkgdir}/usr/share/applications/XIVLauncher.desktop"
-    install -D -m644 "${srcdir}/XIVLauncher.Core/misc/linux_distrib/512.png" "${pkgdir}/usr/share/pixmaps/xivlauncher.png"
-    cp -r "${srcdir}/build/." "${pkgdir}/opt/XIVLauncher/"
-    ln -s ../../opt/XIVLauncher/XIVLauncher.Core "${pkgdir}/usr/bin/XIVLauncher.Core"
+    install -d "${pkgdir}/opt/xivlauncher-rb/"
+    install -D -m644 "${srcdir}/XIVLauncher.desktop" "${pkgdir}/usr/share/applications/XIVLauncher-RB.desktop"
+    install -D -m644 "${srcdir}/XIVLauncher.Core/misc/linux_distrib/512.png" "${pkgdir}/usr/share/pixmaps/xivlauncher-rb.png"
+    cp -r "${srcdir}/build/." "${pkgdir}/opt/xivlauncher-rb/"
+    ln -s "../../opt/xivlauncher-rb/XIVLauncher.Core" "${pkgdir}/usr/bin/xivlauncher-rb"
 }

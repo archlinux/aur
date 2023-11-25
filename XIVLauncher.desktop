@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=XIVLauncher RB Patched
+Name=XIVLauncher-RB (AUR)
 Comment=Custom launcher for Final Fantasy XIV Online with RB Patches
-Exec=XIVLauncher.Core
-Icon=xivlauncher
+Exec=/usr/bin/xivlauncher-rb
+Icon=xivlauncher-rb
 Terminal=false
 Type=Application
 Categories=Application;Game;
