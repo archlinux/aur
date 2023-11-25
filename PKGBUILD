@@ -4,7 +4,7 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
-pkgver=5.3.2
+pkgver=5.4.0
 pkgrel=1
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
@@ -62,18 +62,16 @@ package() {
   install -Dm0644 "$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 }
 
-sha512sums=(
-  '4678fb763d33e904a03c163f0092b05f0ecf9b95ea507188091259cd7bfd6d7d1508c2f90b34fd87e9946e47fd1bf40c2659661e183cb1fdeb3254f214658767'
+sha256sums=(
+  '530baf45dd705cd66d8efb3ab55c6ab668eb10dfc17fe8ccd571dd6710eb4278'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
 # 🪷 Beyond the Known — 365 Days of Exploration
 #
-# 📆 23rd October
+# 📆 25th November
 #
-# There are no higher or lower states.
-#
-# There is only the state you are in.
+# …you'll never have a question of how to see…
 #
 # 🔗 https://magnetic-ink.dk/users/btk
 
