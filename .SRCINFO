@@ -1,0 +1,20 @@
+pkgbase = xevd-git
+	pkgdesc = MPEG-5 EVC (Essential Video Coding) decoder (git version)
+	pkgver = 0.4.1.r6.g418ed6d
+	pkgrel = 1
+	url = https://github.com/mpeg5/xevd/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = xevd
+	conflicts = xevd
+	source = git+https://github.com/mpeg5/xevd.git
+	source = 010-xevd-disable-werror.patch
+	source = 020-xevd-fix-pkg-config.patch
+	sha256sums = SKIP
+	sha256sums = 2a7eff2690c0d4d441df97ad37fd7a0e3e0a03705665dad12201f8d8d997f191
+	sha256sums = 28e46788d188dbbd27c0b47d2c4510029491f434cccfa41967b60d94def36d4a
+
+pkgname = xevd-git
