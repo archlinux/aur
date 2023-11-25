@@ -2,7 +2,7 @@
 pkgname="cellframe-dashboard"
 _nodename="cellframe-node"
 pkgver=2.12.72
-pkgrel=3
+pkgrel=4
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
 url="https://cellframe.net"
@@ -40,7 +40,7 @@ prepare() {
     branch = master
 
 EOF
-	echo "==> Fetching submodule sources..."
+	echo "+++ Fetching submodule sources..."
 	git submodule sync &> /dev/null
 	git submodule update --init --recursive &> /dev/null
 }

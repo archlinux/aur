@@ -1,7 +1,7 @@
 pkgbase = cellframe-dashboard
 	pkgdesc = Super application for managing Cellframe node
 	pkgver = 2.12.72
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cellframe.net
 	install = cellframe-dashboard.install
 	arch = x86_64

@@ -73,14 +73,16 @@ post_upgrade() {
 }
 
 pre_remove() {
-    systemctl is-active --quiet $_active.service && systemctl stop --quiet $_active.service && echo "+++ Stopped $_active service..."
-    systemctl is-enabled --quiet $_active.service && systemctl disable --quiet $_active.service && echo "+++ Disabled $_active service..."
+    for _active in cellframe-dashboard cellframe-node
+    do
+        systemctl is-active --quiet $_active.service && systemctl stop --quiet $_active.service && echo "+++ Stopped $_active service..."
+        systemctl is-enabled --quiet $_active.service && systemctl disable --quiet $_active.service && echo "+++ Disabled $_active service..."
+    done
 }
 
 
 post_remove() {
     systemctl daemon-reload
-    
     echo "+++ Removing symbolic links..."
     for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
 	do
