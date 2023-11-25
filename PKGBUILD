@@ -2,7 +2,7 @@
 # Contributors: Det, Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-snapshot-bin
-pkgver=121.0.6108.0.r1219958
+pkgver=121.0.6149.0.r1229008
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
 arch=('x86_64')
@@ -52,7 +52,7 @@ package() {
   find -type d -exec chmod 755 {} ';'
   find -type f -exec chmod +r {} ';'
   cd chrome-linux
-  chmod 755 chrome chrome-wrapper nacl_* xdg-*
+  chmod 755 chrome chrome-wrapper xdg-*
   chmod 4755 chrome_sandbox
   cd ..
 
