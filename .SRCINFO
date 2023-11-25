@@ -1,0 +1,11 @@
+pkgbase = pacdate
+	pkgdesc = Automates downgrading packages to a specific date
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = none
+	depends = pacman
+	source = pacdate.sh
+	sha256sums = SKIP
+
+pkgname = pacdate
