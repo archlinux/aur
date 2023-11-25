@@ -1,4 +1,5 @@
-# Maintainer: Viste <viste02@gmail.com> 
+# Maintainer: vetu104 <janne.p.w.vetelainen@gmail.com>
+# Contributor: Viste <viste02@gmail.com> 
 # Contributor: alrii <alrii@gmail.com> 
 # Contributor: jjpk <julienjpk@email.com>
 # Contributor: Benjamin Chrétien <chretien at lirmm dot fr>
