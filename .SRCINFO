@@ -1,0 +1,24 @@
+pkgbase = r-harmonizr
+	pkgdesc = Handles missing values and makes more data available
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/HarmonizR
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-janitor
+	depends = r-limma
+	depends = r-plyr
+	depends = r-seriation
+	depends = r-summarizedexperiment
+	depends = r-sva
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HarmonizR_1.0.0.tar.gz
+	md5sums = 6e81c009fe8678273d8091378ae2f8e3
+	sha256sums = 9226855ffafdcbdedb160b454e31faa2d368646d90b6c8975ae19ac973c44fbf
+
+pkgname = r-harmonizr
