@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.0.0_devel.179916.655cbf203d1
+pkgver=24.0.0_devel.181139.827bbe48298
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -47,7 +47,7 @@ pkgver() {
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-build () {
+build() {
     
     meson setup mesa _build \
        -D b_ndebug=true \
@@ -84,7 +84,7 @@ build () {
        -D tools=[] \
        -D zstd=enabled \
        -D microsoft-clc=disabled \
-       -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
+       -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av1enc,vp9dec \
        -D gallium-rusticl=true \
        -D rust_std=2021 \
        -D opencl-external-clang-headers=disabled
