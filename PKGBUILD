@@ -2,7 +2,7 @@
 pkgname="cellframe-dashboard"
 _nodename="cellframe-node"
 pkgver=2.12.72
-pkgrel=4
+pkgrel=5
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
 url="https://cellframe.net"
