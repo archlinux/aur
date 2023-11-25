@@ -1,7 +1,7 @@
 pkgbase = gtk4-layer-shell
 	pkgdesc = A library to create panels and other desktop components for Wayland using the Layer Shell protocol and GTK4
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wmww/gtk4-layer-shell
 	arch = x86_64
 	arch = aarch64
