@@ -6,7 +6,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-nvidia-hidpi-git"
-pkgver=0.32.3.r23.859841f4
+pkgver=0.32.3.r74.ad3f6886
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA + HiDPI patch)"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64" "riscv64")
@@ -92,6 +92,7 @@ prepare() {
 	patch -Np1 -i "${srcdir}/0002-Fix-configure_notify-event.patch"
 	patch -Np1 -i "${srcdir}/0003-Fix-size-hints-under-Xwayland-scaling.patch"
 	patch --forward --strip=0 --input="${srcdir}/nvidia.patch"
+	sed -i 's/soversion = 12/soversion = 13/g' ../packagefiles/wlroots-meson-build.patch
 	patch -p1 <../packagefiles/wlroots-meson-build.patch
 
 	rm -rf build/
