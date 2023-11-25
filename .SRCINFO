@@ -1,0 +1,14 @@
+pkgbase = python-ofxhome
+	pkgdesc = ofxhome.com financial institution lookup REST client
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/captin411/ofxhome
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/o/ofxhome/ofxhome-0.3.3.tar.gz
+	sha256sums = 8510451fd228c30627c3d18c2e530df35944afc2a4c97c888df6262c3276fee6
+
+pkgname = python-ofxhome
+	depends = python
