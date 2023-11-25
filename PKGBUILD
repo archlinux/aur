@@ -2,7 +2,7 @@
 
 pkgname=python-numpy-git
 _pkgname=numpy
-pkgver=2.0.0.dev0.r1369.gb3f09c6787
+pkgver=2.0.0.dev0.r1851.g94bc56402a
 pkgrel=1
 pkgdesc="Scientific tools for Python - git version"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:BSD 3-clause')
 url="https://www.numpy.org/"
 depends=('cblas' 'lapack' 'python')
 optdepends=('python-nose: testsuite' 'blas-openblas: faster linear algebra')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'gcc-fortran' 'python-nose' 'cython' 'python-pyproject-metadata' 'patchelf')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'gcc-fortran' 'python-nose' 'cython' 'python-pyproject-metadata' 'patchelf' 'meson-python')
 checkdepends=('python-pytest' 'python-hypothesis')
 conflicts=('python-numpy')
 provides=('python-numpy')

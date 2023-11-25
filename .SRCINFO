@@ -1,6 +1,6 @@
 pkgbase = python-numpy-git
 	pkgdesc = Scientific tools for Python - git version
-	pkgver = 2.0.0.dev0.r1369.gb3f09c6787
+	pkgver = 2.0.0.dev0.r1851.g94bc56402a
 	pkgrel = 1
 	url = https://www.numpy.org/
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = python-numpy-git
 	makedepends = cython
 	makedepends = python-pyproject-metadata
 	makedepends = patchelf
+	makedepends = meson-python
 	depends = cblas
 	depends = lapack
 	depends = python
