@@ -1,27 +1,21 @@
 pkgbase = alphaplot
 	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot
-	pkgver = 1.011
+	pkgver = 1.02
 	pkgrel = 1
-	url = http://alphaplot.sourceforge.net/
-	install = alphaplot.install
+	url = https://github.com/narunlifescience/AlphaPlot
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = boost
 	makedepends = cmake
+	makedepends = glu
 	makedepends = qt5-tools
 	depends = gsl
-	depends = mesa
-	depends = shared-mime-info
 	depends = hicolor-icon-theme
 	depends = qt5-datavis3d
 	depends = qt5-script
-	depends = qt5-xmlpatterns
 	depends = qt5-svg
-	source = https://sourceforge.net/projects/alphaplot/files/1.011/AlphaPlot%20Release%202020-2.zip
-	source = https://sourceforge.net/projects/alphaplot/files/1.011/qpainterpath.patch
-	sha512sums = 447c1188ef546940f626a683b32e8e5ba41d89d3b1b8f9030cc1aa4564fd4e9fe9dec8b3dc80e9fa3702d1579831dc0239a197e8a9d618119432ab0e481d09c9
-	sha512sums = ede9a647fdce68383dc0a150cedfb387a35677173b2e8ceff50fc4f2e89975ec111b5361f9d571fd335e0dcb404d32614c7c38efdf874ab76333dddd4a97d17c
+	source = alphaplot-1.02.tar.gz::https://github.com/narunlifescience/AlphaPlot/archive/refs/tags/1.02.tar.gz
+	sha256sums = 90952b2036b9d25b31c0c8fb34c47ff700bb2847234dda42d900070fc60d3c61
 
 pkgname = alphaplot
-

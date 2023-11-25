@@ -1,37 +1,86 @@
-# Maintainer: Arun Narayanankutty <n.arun.lifescience@gmail.com>
+# Maintainer:
+# Contributor: Arun Narayanankutty <n.arun.lifescience@gmail.com>
 
-pkgname=alphaplot
-pkgver=1.011
+#: ${_pkgtype:=git}
+
+# basic info
+_pkgname="alphaplot"
+pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgver=1.02
 pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot"
-url='http://alphaplot.sourceforge.net/'
+#url="http://alphaplot.sourceforge.net/"
+url="https://github.com/narunlifescience/AlphaPlot"
 arch=('i686' 'x86_64')
 license=('GPL2')
 
-# make dependancies
-makedepends=('boost' 'cmake' 'qt5-tools')
-depends=('gsl' 'mesa' 'shared-mime-info' 'hicolor-icon-theme' 'qt5-datavis3d' 'qt5-script' 'qt5-xmlpatterns' 'qt5-svg')
+# main package
+_main_package() {
+  depends=(
+    'gsl'
+    'hicolor-icon-theme'
+    'qt5-datavis3d'
+    'qt5-script'
+    'qt5-svg'
+  )
+  makedepends=(
+    'boost'
+    'cmake'
+    'glu'
+    'qt5-tools'
+  )
 
-# source download from git repo & prepare
-source=("https://sourceforge.net/projects/alphaplot/files/1.011/AlphaPlot%20Release%202020-2.zip"
-        "https://sourceforge.net/projects/alphaplot/files/1.011/qpainterpath.patch")
-install=${pkgname}.install
-sha512sums=('447c1188ef546940f626a683b32e8e5ba41d89d3b1b8f9030cc1aa4564fd4e9fe9dec8b3dc80e9fa3702d1579831dc0239a197e8a9d618119432ab0e481d09c9' 'ede9a647fdce68383dc0a150cedfb387a35677173b2e8ceff50fc4f2e89975ec111b5361f9d571fd335e0dcb404d32614c7c38efdf874ab76333dddd4a97d17c')
-prepare() {
-  cd "${srcdir}"
-  mv */ "${pkgname}"
-  patch -d "${pkgname}/alphaplot/src/future/table" -i "${srcdir}/qpainterpath.patch"
+  if [ x"$pkgname" == x"$_pkgname" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
 }
 
-# start building
+# stable package
+_main_stable() {
+  _pkgver="${pkgver%%.r*}"
+  _pkgsrc="AlphaPlot-$_pkgver"
+  _pkgext="tar.gz"
+  source+=("$_pkgname-$_pkgver.$_pkgext"::"$url/archive/refs/tags/$_pkgver.$_pkgext")
+  sha256sums+=('90952b2036b9d25b31c0c8fb34c47ff700bb2847234dda42d900070fc60d3c61')
+
+  pkgver() {
+    echo "${_pkgver:?}"
+  }
+}
+
+# git package
+_main_git() {
+  makedepends+=('git')
+
+  provides=("$_pkgname=${pkgver%%.r*}")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums=('SKIP')
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
+}
+
+# common functions
 build() {
-  cd "${pkgname}"
+  cd "$_pkgsrc"
+  # Note: PREFIX is not used
   qmake
   make
 }
 
-# prepare package
 package() {
-  cd "${srcdir}/${pkgname}"
-  make INSTALL_ROOT="${pkgdir}" DESTDIR="${pkgdir}" install
+  cd "$_pkgsrc"
+  # Note: DESTDIR is ignored
+  make INSTALL_ROOT="${pkgdir}" install
 } 
+
+# execute
+_main_package
