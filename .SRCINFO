@@ -1,7 +1,7 @@
 pkgbase = pgagent
 	pkgdesc = Job scheduler for PostgreSQL which may be managed using pgAdmin
-	pkgver = 4.2.1
-	pkgrel = 2
+	pkgver = 4.2.2
+	pkgrel = 1
 	url = https://www.pgadmin.org/docs/pgadmin4/latest/pgagent.html
 	install = pgagent.install
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = pgagent
 	depends = postgresql-libs
 	depends = boost
 	backup = etc/conf.d/pgagent@localhost
-	source = https://ftp.postgresql.org/pub/pgadmin/pgagent/pgAgent-4.2.1-Source.tar.gz
+	source = https://github.com/pgadmin-org/pgagent/archive/refs/tags/pgagent-4.2.2.tar.gz
 	source = pgagent@localhost
 	source = pgagent@.service
-	sha256sums = caa8fa0587433839d733d0ad1d45f5cd6e2e47c9cd9ce5ab62ab2d0e6b317fb8
+	sha256sums = 6eb6c96eafaeb996b510b8ea683c1612e8120f5b33a1ec428eeb7360a4803f70
 	sha256sums = 27621bcd7b0f9c5ce5a3680e3df5b7696c3573add25a5ae5730ee6cdbd57e759
 	sha256sums = 4bded1fb970358ff7c98d38b28be1568967f22055bc98cb23f9ae4e3385e3610
 
