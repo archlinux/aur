@@ -40,10 +40,10 @@ function check() {
 function package() {
 	install -Dm755 "${srcdir}/browsers/target/release/browsers" "${pkgdir}/usr/bin/browsers"
 	mkdir -p "${pkgdir}/usr/share/browsers"
-	install -Dm644 "${srcdir}/browsers/extra/linux/dist/software.Browsers.template.desktop" "${pkgdir}/usr/share/applications/software.Browsers.template.desktop"
-	mkdir -p "${pkgdir}/usr/share/icons"
-	cp -r "${srcdir}/browsers/resources/icons/*" "${pkgdir}/usr/share/icons"
-	sed -i 's/€ExecCommand€/browsers/g' "${pkgdir}/usr/share/applications/software.Browsers.template.desktop"
+	install -Dm644 "${srcdir}/browsers/extra/linux/dist/software.Browsers.template.desktop" "${pkgdir}/usr/share/applications/software.Browsers.desktop"
+	mkdir -p "${pkgdir}/usr/share/icons/hicolor"
+	cp -r "${srcdir}"/browsers/resources/icons/* "${pkgdir}/usr/share/icons/hicolor"
+	sed -i 's/€ExecCommand€/browsers/g' "${pkgdir}/usr/share/applications/software.Browsers.desktop"
 }
 
 
