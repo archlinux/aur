@@ -1,6 +1,6 @@
 pkgbase = miniconda3
 	pkgdesc = Mini version of Anaconda Python distribution
-	pkgver = 23.9.0
+	pkgver = 23.10.0
 	pkgrel = 1
 	url = https://conda.io/en/latest/miniconda
 	install = miniconda3.install
@@ -10,7 +10,7 @@ pkgbase = miniconda3
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = miniconda3-23.9.0.sh::https://repo.continuum.io/miniconda/Miniconda3-py311_23.9.0-0-Linux-x86_64.sh
-	sha512sums = 3fdbd7430679454674dec5c4f975b756ad796bf33e594755d0d6106acc53615ba0b2735b13565937c164bd9d75c12500f65ffeb9b1a9ea5304fad0dffb72c0d6
+	source = miniconda3-23.10.0.sh::https://repo.continuum.io/miniconda/Miniconda3-py311_23.10.0-1-Linux-x86_64.sh
+	sha512sums = 91bf4689bf8dc69e56a7779926890ad648c1da50ac8a45dea6e65d1bda472c3727474125b087c73b1193da244d79bb29d934199e8c5114e3662f809c4cca6b47
 
 pkgname = miniconda3
