@@ -6,7 +6,7 @@
 _name=akonadi
 pkgname=libakonadi5
 pkgver=23.08.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Libraries used by applications based on Akonadi'
 arch=(x86_64)
 url='https://kontact.kde.org'
@@ -24,10 +24,10 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
 build() {
   cmake -B build -S $_name-$pkgver \
     -DBUILD_TESTING=OFF
-  cmake --build build/src/widgets
+  cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build/src/core
-  DESTDIR="$pkgdir" cmake --install build/src/widgets
+  DESTDIR="$pkgdir" cmake --install build
+  rm -r "$pkgdir"/{etc,usr/{bin,share}}
 }
