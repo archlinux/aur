@@ -1,7 +1,9 @@
-# Maintainer : pianoslum <pianoslum@mailbox.org>
+# Maintainer : fft
+# Contributor : pianoslum <pianoslum@mailbox.org>
+# Contributor : Florent H. CARRÉ<colundrum@users.noreply.github.com>
 
 pkgname=gprof2dot
-pkgver=2021.2.21
+pkgver=2022.07.29
 pkgrel=1
 pkgdesc='A Python script to convert the output from many profilers into a dot graph.'
 arch=('any')
@@ -10,8 +12,8 @@ license=('LGPL')
 depends=('python' 'graphviz')
 makedepends=('python-setuptools')
 provides=(gprof2dot)
-source=("https://files.pythonhosted.org/packages/0f/80/11d3ec1703cc61606ddc68851747d1d1df3700d5e6c2b559af6dbeb398c5/${pkgname}-${pkgver}.tar.gz")
-md5sums=('bafd2e4b3d6f1cd62795c90cff5b3ad9')
+source=("https://github.com/jrfonseca/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('f1c1e0347fe773d8a73117645f58cbefef03fb56e4abb10cb897d57a51cbe01a')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
