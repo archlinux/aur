@@ -1,46 +1,87 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Based on community/firefox-developer-edition by Andrew Crerar <crerar@archlinux.org>
+# Based on extra/firefox-developer-edition by Andrew Crerar <crerar@archlinux.org>
 # Based on extra/thunderbird by Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=118.0b6
+pkgver=121.0b1
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.thunderbird.net/channel/#beta"
-depends=('dbus-glib'
-         'ffmpeg'
-         'gtk3'
-         'libpulse'
-         'libxt'
-         'mime-types'
-         'nss'
-         'ttf-font')
-makedepends=('cbindgen'
-             'clang'
-             'diffutils'
-             'dump_syms'
-             'imake'
-             'inetutils'
-             'jack'
-             'lld'
-             'llvm'
-             'mesa'
-             'nasm'
-             'nodejs'
-             'python'
-             'rust'
-             'unzip'
-             'wasi-compiler-rt'
-             'wasi-libc'
-             'wasi-libc++'
-             'wasi-libc++abi'
-             'xorg-server-xvfb'
-             'yasm'
-             'zip')
-makedepends+=('libotr')
+depends=(
+  alsa-lib
+  botan2
+  bzip2 libbz2.so
+  cairo
+  dbus-glib
+  dbus libdbus-1.so
+  ffmpeg
+  fontconfig libfontconfig.so
+  freetype2 libfreetype.so
+  gcc-libs
+  gdk-pixbuf2
+  glib2 libglib-2.0.so
+  glibc
+  gnupg
+  gtk3
+  gtk3 libgdk-3.so libgtk-3.so
+  hunspell
+  icu libicui18n.so libicuuc.so
+  json-c
+  libcanberra
+  libevent
+  libffi libffi.so
+  libjpeg-turbo
+  libpulse
+  libvpx libvpx.so
+  libwebp libwebp.so libwebpdemux.so
+  libx11
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxrender
+  libxt
+  mime-types
+  nspr
+  nss
+  pango libpango-1.0.so
+  pixman libpixman-1.so
+  sqlite
+  ttf-font
+  zlib
+)
+makedepends=(
+  cbindgen
+  clang
+  diffutils
+  dump_syms
+  findutils
+  gawk
+  imake
+  inetutils
+  jack
+  libice
+  libotr
+  libsm
+  lld
+  llvm
+  mesa
+  nasm
+  nodejs
+  perl
+  python
+  rust
+  unzip
+  wasi-compiler-rt
+  wasi-libc
+  wasi-libc++
+  wasi-libc++abi
+  yasm
+  zip
+)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -54,7 +95,7 @@ source=(https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thun
         install-dir.patch
         "$pkgname".desktop
 )
-b2sums=('e4b3de3b47d290069c1504454cfc7ad789c4d2aba7aaba3be883006b8352b931c6f9f421afb097353a56c2cac5d75589234aacbfe4e7278a0c66d97d34e70ed3'
+b2sums=('5f57b0b9fdcb49c3ad5ace7f8aebd0bddba5e2d2be28d7dc08b87098de7c0ba808015556f7d21906d0e02cfcc1239c98511d32ffd9f0bd85a3a85389046a8af5'
         'SKIP'
         'ba188a0c1359f49390a789621b2c0bec67f4152f62c0dced26b31ec291abccfb5636dba0f8ed1f879e1a2a237e183b96b092d760e04e148a64da18660b87dcfb'
         '3518012290b5b358d882d7d12bc2455345b89cef4abfbccaca025dfb935fcefe49806dd534e75b10c0c6a3495b7133a7feb3f11d7773a0ce252f8d68e15b5a24')
@@ -90,7 +131,6 @@ prepare() {
   # Make icon transparent
   sed -i '/^<rect/d' comm/mail/branding/thunderbird/TB-symbolic.svg
 
-
   echo -n "$_google_api_key" > google-api-key
   echo -n "$_mozilla_api_key" > mozilla-api-key
   cat > .mozconfig << END
@@ -111,8 +151,6 @@ ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=aurora
 ac_add_options --with-distribution-id=org.archlinux
-ac_add_options --with-unsigned-addon-scopes=app,system
-ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 export MOZ_REQUIRE_SIGNING=
@@ -123,8 +161,21 @@ ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-jsonc
+# does not have APNG support
+# ac_add_options --with-system-png
+ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-botan
+ac_add_options --with-system-webp
+ac_add_options --with-system-libevent
+ac_add_options --with-system-ffi
+ac_add_options --with-system-pixman
 
 # Features
 ac_add_options --enable-alsa
@@ -146,6 +197,10 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_ENABLE_FULL_SYMBOLS=1
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE="pip"
+
+  # malloc_usable_size is used in various parts of the codebase
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
   echo "Building thunderbird..."
   ./mach build
