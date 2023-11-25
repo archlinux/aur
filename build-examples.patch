@@ -1,0 +1,38 @@
+diff --git a/psvpfsparser/cmake/CMakeLists.txt b/psvpfsparser/cmake/CMakeLists.txt
+--- a/psvpfsparser/cmake/CMakeLists.txt
++++ b/psvpfsparser/cmake/CMakeLists.txt
+@@ -85,6 +85,10 @@ list(FIND CMAKE_CXX_KNOWN_FEATURES cxx_std_17 HAS_CXX17)
+ if(${HAS_CXX17})
+     set(FILESYSTEM_NAMESPACE "std")
+     set(FILESYSTEM_INCLUDE "filesystem")
++
++    if(${BUILD_EXAMPLES})
++        find_package(Boost COMPONENTS program_options REQUIRED)
++    endif()
+ else()
+     set(FILESYSTEM_NAMESPACE "boost")
+     set(FILESYSTEM_INCLUDE "boost/filesystem.hpp")
+@@ -93,9 +97,9 @@ else()
+     set(Boost_USE_MULTITHREADED ON)
+ 
+     if(${BUILD_EXAMPLES})
+-        find_package(BOOST COMPONENTS filesystem system program_options REQUIRED)
++        find_package(Boost COMPONENTS filesystem system program_options REQUIRED)
+     else()
+-        find_package(BOOST COMPONENTS filesystem system REQUIRED)
++        find_package(Boost COMPONENTS filesystem system REQUIRED)
+     endif()
+ endif()
+ 
+@@ -125,4 +129,11 @@ if(NOT ${HAS_CXX17})
+     endif()
+ else()
+     target_compile_features(${PROJECT} PUBLIC cxx_std_17)
++
++    if(${BUILD_EXAMPLES})
++        add_executable(example_project MACOSX_BUNDLE "../example/psvpfsparserconfig.cpp")
++        target_link_libraries(example_project PRIVATE ${Boost_LIBRARIES})
++        target_include_directories(example_project PRIVATE ${Boost_INCLUDE_DIRS})
++        target_link_libraries(example_project PRIVATE ${PROJECT})
++    endif()
+ endif() 

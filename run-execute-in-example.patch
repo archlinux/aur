@@ -1,0 +1,41 @@
+diff --git a/psvpfsparser/example/psvpfsparserconfig.cpp b/psvpfsparser/example/psvpfsparserconfig.cpp
+index a203347..541c77a 100644
+--- a/psvpfsparser/example/psvpfsparserconfig.cpp
++++ b/psvpfsparser/example/psvpfsparserconfig.cpp
+@@ -15,7 +15,7 @@
+ 
+ boost::program_options::options_description get_options_desc(bool include_deprecated) {
+     boost::program_options::options_description desc("Options");
+-    desc.add_options()((std::string(HELP_NAME) + ",h").c_str(), "Show help")((std::string(TITLE_ID_SRC_NAME) + ",i").c_str(), boost::program_options::value<std::string>(), "Source directory that contains the application. Like PCSC00000.")((std::string(TITLE_ID_DST_NAME) + ",o").c_str(), boost::program_options::value<std::string>(), "Destination directory where everything will be unpacked. Like PCSC00000_dec.")((std::string(KLICENSEE_NAME) + ",k").c_str(), boost::program_options::value<std::string>(), "klicensee hex coded string. Like 00112233445566778899AABBCCDDEEFF.")((std::string(ZRIF_NAME) + ",z").c_str(), boost::program_options::value<std::string>(), "zRIF string.")((std::string(F00D_CACHE_NAME) + ",c").c_str(), boost::program_options::value<std::string>(), "Path to flat or json file with F00D cache.");
++    desc.add_options()((std::string(HELP_NAME) + ",h").c_str(), "Show help")((std::string(TITLE_ID_SRC_NAME) + ",i").c_str(), boost::program_options::value<std::string>(), "Source directory that contains the application. Like PCSC00000.")((std::string(TITLE_ID_DST_NAME) + ",o").c_str(), boost::program_options::value<std::string>(), "Destination directory where everything will be unpacked. Like PCSC00000_dec.")((std::string(ZRIF_NAME) + ",z").c_str(), boost::program_options::value<std::string>(), "zRIF string.")((std::string(F00D_CACHE_NAME) + ",c").c_str(), boost::program_options::value<std::string>(), "Path to flat or json file with F00D cache.");
+ 
+     if (include_deprecated) {
+         desc.add_options()((std::string(F00D_URL_NAME) + ",f").c_str(), boost::program_options::value<std::string>(), "Url of F00D service. [DEPRECATED] Native implementation of F00D will be used.");
+@@ -53,15 +53,11 @@ int parse_options(int argc, char *argv[], PsvPfsParserConfig &cfg) {
+             return -1;
+         }
+ 
+-        if (vm.count(KLICENSEE_NAME)) {
+-            cfg.klicensee = vm[KLICENSEE_NAME].as<std::string>();
++        if (vm.count(ZRIF_NAME)) {
++            cfg.zRIF = vm[ZRIF_NAME].as<std::string>();
+         } else {
+-            if (vm.count(ZRIF_NAME)) {
+-                cfg.zRIF = vm[ZRIF_NAME].as<std::string>();
+-            } else {
+-                std::cout << "Missing option --" << KLICENSEE_NAME << " or --" ZRIF_NAME << std::endl;
+-                std::cout << "sealedkey will be used" << std::endl;
+-            }
++            std::cout << "Missing option --" ZRIF_NAME << std::endl;
++            return -1;
+         }
+ 
+         std::string f00d_url;
+@@ -106,5 +102,7 @@ int main(int argc, char *argv[]) {
+     if (parse_options(argc, argv, cfg) < 0)
+         return -1;
+ 
++    execute(cfg.zRIF, cfg.title_id_src, cfg.title_id_dst, cfg.f00d_enc_type, cfg.f00d_arg);
++
+     return 0;
+ }
