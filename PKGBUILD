@@ -1,7 +1,7 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 _pkgname=ansel
 pkgname="${_pkgname}-git"
-pkgver=r35234.43e4fcebe
+pkgver=0.0.0.r440.g57ed58dd5
 pkgrel=1
 pkgdesc="Ansel is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs."
 arch=("i686" "x86_64")
@@ -26,7 +26,7 @@ sha512sums=("SKIP")
 pkgver() {
   cd "${_pkgname}"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  tools/get_git_version_string.sh | sed "s/+/.r/;s/~/./;s/-dirty//"
 }
 
 prepare() {
