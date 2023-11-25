@@ -1,25 +1,44 @@
 pkgbase = perl-finance-quote
-	pkgdesc = Perl/CPAN Module Finance::Quote : Fetch stock prices over the Internet
-	pkgver = 1.55
-	pkgrel = 2
-	url = https://search.cpan.org/dist/Finance-Quote/
+	pkgdesc = Get stock and mutual fund quotes from various exchanges
+	pkgver = 1.58
+	pkgrel = 1
+	url = https://metacpan.org/release/Finance-Quote
 	arch = any
-	license = GPL
 	license = PerlArtistic
-	depends = perl-html-tree
-	depends = perl-html-tableextract
-	depends = perl-crypt-ssleay
-	depends = perl-libwww
-	depends = perl-date-calc
-	depends = perl-json
-	depends = perl-datetime
-	depends = perl-cgi
-	depends = perl-text-template
-	depends = perl-datetime-format-strptime
-	depends = perl-json-parse
-	depends = perl-string-util
-	depends = perl-mozilla-ca
-	source = https://search.cpan.org/CPAN/authors/id/B/BP/BPSCHUCK/Finance-Quote-1.55.tar.gz
-	sha256sums = e2e000b67c66b6af50d4761858492110510a55a030a891017d40c7de218b748f
+	license = GPL
+	checkdepends = perl-test-kwalitee>=0
+	checkdepends = perl-test-perl-critic>=0
+	checkdepends = perl-test-pod>=0
+	checkdepends = perl-test-pod-coverage>=1.00
+	depends = perl-date-manip>=0
+	depends = perl-date-range>=0
+	depends = perl-date-simple>=0
+	depends = perl-datetime>=0
+	depends = perl-datetime-format-iso8601>=0
+	depends = perl-datetime-format-strptime>=0
+	depends = perl-html-parser>=0
+	depends = perl-html-tableextract>=0
+	depends = perl-html-tokeparser-simple>=0
+	depends = perl-html-tree>=0
+	depends = perl-html-treebuilder-xpath>=0
+	depends = perl-http-cookiejar>=0
+	depends = perl-http-cookies>=0
+	depends = perl-http-message>=0
+	depends = perl-io-string>=0
+	depends = perl-json>=0
+	depends = perl-lwp-protocol-https>=0
+	depends = perl-mozilla-ca>=0
+	depends = perl-readonly>=0
+	depends = perl-spreadsheet-xlsx>=0
+	depends = perl-string-util>=0
+	depends = perl-text-template>=0
+	depends = perl-try-tiny>=0
+	depends = perl-web-scraper>=0
+	depends = perl-xml-libxml>=0
+	depends = perl-libwww>=0
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BP/BPSCHUCK/Finance-Quote-1.58.tar.gz
+	sha512sums = d14cb997b1cf7ae4442bedfbbe7384d35f3b9d50c1436267c2ce1e30811f018e6a64b62679e4a7d2c150668ec0e3fb20140739ee9e1cdddcf0b90727febcee4c
 
 pkgname = perl-finance-quote
