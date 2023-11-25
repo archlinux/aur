@@ -6,16 +6,16 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="yamlfix"
-pkgver="1.15.0"
+pkgver="1.16.0"
 pkgrel="1"
 pkgdesc="A simple, opinionated yaml formatter that keeps your comments!"
 arch=("any")
 url="https://github.com/lyz-code/${pkgname}"
 license=("GPL3")
 depends=("python" "python-click" "python-maison" "python-ruyaml")
-makedepends=("python-build" "python-installer" "python-pdm" "python-pdm-pep517" "python-pip")
+makedepends=("python-build" "python-installer" "python-pdm" "python-pdm-backend" "python-pip")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("4b3986f93594bbf9823c54c649f842fecfdf1c9d3a4ce18f7a1b15934b748be7bd122910bad0dfb4aa67739e691ee261953aa83dc96f2b37d188bde489b44d16")
+sha512sums=("e4ec341b47b8557db85bb2b2706d94d2158ecdceb28be375d2ffa327ec2ee482bb7c6493bf96abe38284b9febb57db371bb5b8a6822d36518a5b3bdaced8f0ab")
 
 build()
 {
