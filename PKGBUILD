@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Gorbunov <truedaemon@gmail.com>
 
 pkgname=gmtrn-cli
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Simple CLI client for https://www.multitran.com"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 options=('!emptydirs')
 source=("https://github.com/vladimir-g/gmtrn/archive/v${pkgver}.tar.gz")
-sha256sums=('ca2fb0ee02d4990839ecc1e56c47752b1c357f388b4d4bdcdb1e53ab32c2b6f7')
+sha256sums=('b12fb6112e542859f9b44a5bbe156d16bc3b633323308e5cd2d3fd054cdceff8')
 _srcname=gmtrn
 
 build() {

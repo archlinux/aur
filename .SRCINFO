@@ -1,6 +1,6 @@
 pkgbase = gmtrn-cli
 	pkgdesc = Simple CLI client for https://www.multitran.com
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/vladimir-g/gmtrn
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gmtrn-cli
 	license = MIT
 	makedepends = go
 	options = !emptydirs
-	source = https://github.com/vladimir-g/gmtrn/archive/v0.3.0.tar.gz
-	sha256sums = ca2fb0ee02d4990839ecc1e56c47752b1c357f388b4d4bdcdb1e53ab32c2b6f7
+	source = https://github.com/vladimir-g/gmtrn/archive/v0.3.1.tar.gz
+	sha256sums = b12fb6112e542859f9b44a5bbe156d16bc3b633323308e5cd2d3fd054cdceff8
 
 pkgname = gmtrn-cli
