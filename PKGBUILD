@@ -3,7 +3,7 @@
 # Updated by https://github.com/Freed-Wu/tree-sitter-lsp/blob/main/.github/workflows/main.yml
 _pkgname=tree-sitter-lsp
 pkgname=python-$_pkgname
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="a library to create language servers"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('044a95a69924ec002df8e11b238d04a7a625b2770930204dfd9686bb80d21940')
+sha256sums=('dd00a7c08df1e86bd899f9bc56753d2041bbebf17b2fbead43a98296754ea904')
 
 package() {
 	python -minstaller -d"$pkgdir" ./*.whl
