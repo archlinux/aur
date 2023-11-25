@@ -1,0 +1,11 @@
+--- a/pkgconfig/xevd.pc.in
++++ b/pkgconfig/xevd.pc.in
+@@ -10,7 +10,6 @@ Description: eXtra-fast Essential Video
+ Version: @PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@
+ 
+ Requires:
+-Libs: -L${libdir} -lxevd
+-Libs.private: -lm
++Libs: -L${libdir} -lxevd -lm
+ 
+ Cflags: -I${includedir}
