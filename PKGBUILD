@@ -4,7 +4,7 @@
 
 pkgname=ttf-apple-emoji
 pkgver=16.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Apple Color Emoji is a color typeface used by iOS and macOS to display emoji'
 arch=('any')
 url='https://github.com/samuelngs/apple-emoji-linux'
@@ -36,6 +36,6 @@ package() {
     # Install fontconfig files
     install -Dm 644 45-apple-emoji.conf -t "${pkgdir}/usr/share/fontconfig/conf.avail/"
     install -d "${pkgdir}/etc/fonts/conf.d"
-    ln -s "${pkgdir}/usr/share/fontconfig/conf.avail/45-apple-emoji.conf" "${pkgdir}/etc/fonts/conf.d/"
+    ln -s "/usr/share/fontconfig/conf.avail/45-apple-emoji.conf" "${pkgdir}/etc/fonts/conf.d/"
 }
 

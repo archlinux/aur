@@ -1,7 +1,7 @@
 pkgbase = ttf-apple-emoji
 	pkgdesc = Apple Color Emoji is a color typeface used by iOS and macOS to display emoji
 	pkgver = 16.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/samuelngs/apple-emoji-linux
 	arch = any
 	license = custom
