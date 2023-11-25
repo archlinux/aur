@@ -6,7 +6,7 @@
 
 pkgname=python-pdoc
 _pypiname=${pkgname/python-/}
-pkgver=13.1.1
+pkgver=14.1.0
 pkgrel=1
 pkgdesc='A simple program and library to auto generate API documentation for Python modules.'
 arch=('any')
@@ -15,8 +15,8 @@ license=('Unlicense')
 depends=('python-jinja' 'python-pygments' 'python-markupsafe')
 checkdepends=('python-pytest' 'python-pytest-timeout' 'python-hypothesis' 'nodejs')
 makedepends=('python-setuptools' 'python-build' 'python-installer')
-source=("https://files.pythonhosted.org/packages/b8/87/21dd506901c7987e36e3e59d001901ff92086f133d0533cba8e9dfb37c00/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=("2b8e341b1882ed8217e95c1f3f1f11d34f9ef93a5796287590162e2035296815")
+source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
+sha256sums=("3a0bd921a05c39a82b1505089eb6dc99d857b71b856aa60d1aca4d9086d0e18c")
 
 build() {
   cd $srcdir/${_pypiname}-${pkgver}
