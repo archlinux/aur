@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=symfem
 pkgname=python-${_base}
-pkgver=2023.8.2
+pkgver=2023.11.0
 pkgrel=1
 pkgdesc="a symbolic finite element definition library"
 url="https://github.com/mscroggs/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-numpy python-cairosvg texlive-latexextra	python-fenics-basix)
 optdepends=('python-cairosvg: for plotting PNGs')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f4309532d8ec8efa6d711c26e6151957461e70d0f61e8b369749564fa1fb17ed2d12cfc916c65b042626ae48413d2b9c4b47133a014366d70f47e0c210ea029c')
+sha512sums=('6a224d52f48483b4879913e058bf9fa31d73d198eb9d9f5262f920ee4cba9cc21ff30ca4573179e7b17db39c8e6634764080da75f8cc6d9cd01a75636de9e14f')
 
 build() {
   cd ${_base}-${pkgver}
