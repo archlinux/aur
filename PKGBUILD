@@ -12,8 +12,6 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=2.1.0}
-
 : ${_pkgtype:=git}
 
 # basic info
@@ -28,8 +26,6 @@ arch=('x86_64')
 
 # main package
 _main_package() {
-  _update_version
-
   depends=(
     gtk4
   )
@@ -47,6 +43,8 @@ _main_package() {
 
 # stable package
 _main_stable() {
+  _update_version
+
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git#tag=${_pkgver:?}")
   sha256sums+=('SKIP')
@@ -114,28 +112,26 @@ package() {
 
 # update version
 _update_version() {
-  case "${_autoupdate::1}" in
-    't'|'y'|'1')
-      _repo="${url#*//*/}"
-      _response=$(curl "https://api.github.com/repos/${_repo:?}/tags" -s)
+  : ${_pkgver:=${pkgver%%.r*}}
 
-      _get() {
-        printf '%s' "$_response" \
-          | awk -F '"' '/"'"$1"'":/{print $4}' \
-          | sed 's@^.*[a-z-].*$@@' | sort -rV | head -1
-      }
-      _pkgver_new=$(_get name)
+  if [[ x"${_autoupdate::1}" != "xt" ]] ; then
+    return
+  fi
 
-      # update pkgver
-      _pkgver="${pkgver%%.r*}"
-      if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
-        _pkgver="${_pkgver_new:?}"
-        sed -E \
-          -e 's@^(\s*: \$\{_pkgver):=.*\}$@\1:='"${_pkgver:?}"'}@' \
-          -i "$startdir/PKGBUILD"
-      fi
-      ;;
-  esac
+  _repo="${url#*//*/}"
+  _response=$(curl "https://api.github.com/repos/${_repo:?}/tags" -s)
+
+  _get() {
+    printf '%s' "$_response" \
+      | awk -F '"' '/"'"$1"'":/{print $4}' \
+      | sed 's@^.*[a-z-].*$@@' | sort -rV | head -1
+  }
+  _pkgver_new=$(_get name)
+
+  # update pkgver
+  if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
+    _pkgver="${_pkgver_new:?}"
+  fi
 }
 
 # execute
