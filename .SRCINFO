@@ -1,0 +1,18 @@
+pkgbase = xp-pen-tablet-systemlibs
+	pkgdesc = XP-Pen (Official) Linux utility (New UI driver)
+	pkgver = 3.4.9.231023
+	pkgrel = 1
+	epoch = 0
+	url = https://www.xp-pen.com/download/index.html
+	arch = x86_64
+	depends = icu
+	depends = qt5-base
+	depends = qt5-x11extras
+	conflicts = xp-pen-tablet
+	replaces = xp-pen-tablet
+	source = https://download01.xp-pen.com/file/2023/11/XPPenLinux3.4.9-231023.tar.gz
+	source = PenTablet.sh
+	sha512sums = 3732abdb444ae6ee0ff585b8fadb750761f194936054c392a3cf0e93f59468acedff79e864f6e751aac2b398e0ba6d951b55048ffe11bcb68c5b690062adf441
+	sha512sums = e58efdc2cbafa024fc63a4a4740b2f1ad185f78fe78c740f0a10aac894603dd8cbb4b9d64cc0306525ea9d0bfd5661f02ea662316ef9acb494b91f7a8325551c
+
+pkgname = xp-pen-tablet-systemlibs
