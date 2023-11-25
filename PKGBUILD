@@ -30,6 +30,11 @@ _main_package() {
     'qt5-tools'
   )
 
+  conflicts=(
+    alphaplot-bin
+    alphaplot-git
+  )
+
   if [ x"$pkgname" == x"$_pkgname" ] ; then
     _main_stable
   else
@@ -54,8 +59,8 @@ _main_stable() {
 _main_git() {
   makedepends+=('git')
 
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
+  provides+=("$_pkgname=${pkgver%%.r*}")
+  conflicts+=("$_pkgname")
 
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git")
