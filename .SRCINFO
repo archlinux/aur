@@ -1,6 +1,6 @@
 pkgbase = nextpnr-generic-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - generic
-	pkgver = 20231125_nextpnr_0.6_147_ge3f4578b
+	pkgver = 20231126_nextpnr_0.6_147_ge3f4578b
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
