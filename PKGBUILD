@@ -36,7 +36,6 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         "${pkgname}-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git"
         "${pkgname}-cutlass::git+https://github.com/NVIDIA/cutlass.git"
         "${pkgname}-eigen::git+https://gitlab.com/libeigen/eigen.git"
-        "${pkgname}-enum34::git+https://github.com/PeachPy/enum34.git"
         "${pkgname}-fbgemm::git+https://github.com/pytorch/fbgemm"
         "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
         "${pkgname}-flatbuffers::git+https://github.com/google/flatbuffers.git"
@@ -50,6 +49,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         "${pkgname}-ittapi::git+https://github.com/intel/ittapi.git"
         "${pkgname}-json::git+https://github.com/nlohmann/json.git"
         "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
+        "${pkgname}-mimalloc::git+https://github.com/microsoft/mimalloc.git"
         "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
         "${pkgname}-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt"
         "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
@@ -58,7 +58,6 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         "${pkgname}-psimd::git+https://github.com/Maratyszcza/psimd.git"
         "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
         "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
-        "${pkgname}-six::git+https://github.com/benjaminp/six.git"
         "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
         "${pkgname}-tbb::git+https://github.com/01org/tbb"
         "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
@@ -76,7 +75,6 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         pytorch-rocm-jit.patch
         pytorch-missing-iostream.patch)
 b2sums=('SKIP'
-        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -167,6 +165,7 @@ prepare() {
   git config submodule."third_party/ios-cmake".url "${srcdir}/${pkgname}"-ios-cmake
   git config submodule."third_party/ittapi".url "${srcdir}/${pkgname}"-ittapi
   git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
+  git config submodule."third_party/mimalloc".url "${srcdir}/${pkgname}"-mimalloc
   git config submodule."third_party/nccl/nccl".url "${srcdir}/${pkgname}"-nccl
   git config submodule."third_party/neon2sse".url "${srcdir}/${pkgname}"-ARM_NEON_2_x86_SSE
   git config submodule."third_party/nlohmann".url "${srcdir}/${pkgname}"-json
@@ -175,9 +174,7 @@ prepare() {
   git config submodule."third_party/pocketfft".url "${srcdir}/${pkgname}"-pocketfft
   git config submodule."third_party/protobuf".url "${srcdir}/${pkgname}"-protobuf
   git config submodule."third_party/pybind11".url "${srcdir}/${pkgname}"-pybind11
-  git config submodule."third_party/python-enum".url "${srcdir}/${pkgname}"-enum34
   git config submodule."third_party/python-peachpy".url "${srcdir}/${pkgname}"-PeachPy
-  git config submodule."third_party/python-six".url "${srcdir}/${pkgname}"-six
   git config submodule."third_party/sleef".url "${srcdir}/${pkgname}"-sleef
   git config submodule."third_party/tbb".url "${srcdir}/${pkgname}"-tbb
   git config submodule."third_party/tensorpipe".url "${srcdir}/${pkgname}"-tensorpipe
