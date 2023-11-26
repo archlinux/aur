@@ -2,7 +2,7 @@
 pkgname=cyme-bin
 _pkgname=cyme
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="List system USB buses and devices; a modern cross-platform lsusb"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tuna-f1sh/cyme"
@@ -16,10 +16,11 @@ sha512sums_aarch64=('c19495ec60e202b7a07b7921e6e692ecdf24568e3d0632a7831f5200b0f
 package() {
   cd ${srcdir}/cyme-v${pkgver}-${CARCH}-unknown-linux-gnu
 
-  install -Dm 755 -t "${pkgdir}/usr/bin" cyme
+  install -Dm 755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${_pkgname}/" LICENSE
-  install -Dm 644 -t "${pkgdir}/usr/share/man/man1/${_pkgname}.1" ${_pkgname}.1
-  install -Dm 644 -t "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}" autocomplete/${_pkgname}.bash
-  install -Dm 644 -t "${pkgdir}/usr/share/zsh/site-functions/" autocomplete/_${_pkgname}
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE" 
+  install -Dm 644 ${_pkgname}.1 "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+  install -Dm 644 autocomplete/${_pkgname}.bash "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}" 
+  install -Dm 644 autocomplete/_${_pkgname} "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm 644 autocomplete/${_pkgname}.fish "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 }

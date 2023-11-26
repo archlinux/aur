@@ -1,7 +1,7 @@
 pkgbase = cyme-bin
 	pkgdesc = List system USB buses and devices; a modern cross-platform lsusb
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tuna-f1sh/cyme
 	arch = x86_64
 	arch = aarch64
