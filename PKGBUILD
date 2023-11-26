@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=6.1
-pkgrel=3
+pkgrel=4
 _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
 _svt_vp9_ver='43ef8e5e96932421858762392adbbab57c84aebf'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
@@ -83,6 +83,7 @@ depends=(
     'onevpl-intel-gpu'
     'openal'
     'opencore-amr'
+    'opencv2'
     'openh264'
     'openjpeg2'
     'openvino'
@@ -224,7 +225,7 @@ build() {
         --enable-libmp3lame \
         --enable-libopencore-amrnb \
         --enable-libopencore-amrwb \
-        --disable-libopencv \
+        --enable-libopencv \
         --enable-libopenh264 \
         --enable-libopenjpeg \
         --enable-libopenmpt \
