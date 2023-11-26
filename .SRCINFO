@@ -1,0 +1,18 @@
+pkgbase = prevodb-git
+	pkgdesc = Tools for building and reading Reta Vortaro (Esperanto dictionary) databases.
+	pkgver = 0.2.r12.ee4b73e
+	pkgrel = 1
+	url = https://www.busydoingnothing.co.uk/prevo/
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = glibc
+	depends = glib2
+	depends = expat
+	optdepends = prevodb-databases-git
+	provides = prevodb
+	conflicts = prevodb
+	source = git+https://github.com/bpeel/prevodb.git
+	md5sums = SKIP
+
+pkgname = prevodb-git
