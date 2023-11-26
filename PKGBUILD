@@ -5,7 +5,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 pkgname=nwjs-sdk-bin
-pkgver=0.80.0
+pkgver=0.82.0
 pkgrel=1
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js. SDK release with DevTools"
 arch=("x86_64")
@@ -19,7 +19,7 @@ optdepends=(
 provides=("nwjs-sdk")
 conflicts=("nwjs-sdk")
 source=("${pkgname}-${pkgver}.tar.gz::http://dl.nwjs.io/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-x64.tar.gz")
-sha512sums=('d73e36b1b8c8e7e384fb6018710abfd37a7b0501aae9c4c8d4321d658b33d70bed58d1eb0d7ed29ee9db3ef29827053d795693fa810423f0afd0c193b0aedc36')
+sha512sums=('5813ccdd6886d66cb3932bd6f4426a00c5bf54189856a0f2595867730534a4ce79be498d0e201e33e8bf601956cfb189e4ec4ea4a8fca62f907ecd5cd58c94eb')
 
 package() {
   cd "${pkgname%-bin}-v${pkgver}-linux-x64"
@@ -27,7 +27,7 @@ package() {
   install -d "${pkgdir}/opt/${pkgname%-bin}"
   cp -dr * "${pkgdir}/opt/${pkgname%-bin}/"
   chmod -R 644 "${pkgdir}/opt/${pkgname%-bin}/"
-  chmod 755 "${pkgdir}/opt/${pkgname%-bin}/"{,swiftshader,lib,locales,nw,chrome_crashpad_handler,nacl_helper}
+  chmod 755 "${pkgdir}/opt/${pkgname%-bin}/"{,swiftshader,lib,locales,nw,chrome_crashpad_handler}
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname%-bin}/nw" "${pkgdir}/usr/bin/nw-sdk"
