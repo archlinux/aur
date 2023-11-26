@@ -23,12 +23,12 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  cargo build --release --target-dir build
+  cargo build --release --frozen --target-dir build
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
-  cargo test
+  cargo test --frozen
 }
 
 package() {
