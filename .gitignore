@@ -1,0 +1,9 @@
+# Arch package related
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.pkg.tar.gz
+/pkg
+/src
+
+# Specific
+*.src.tgz

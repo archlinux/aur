@@ -1,13 +1,16 @@
 pkgbase = minivmacii
 	pkgdesc = a miniature Macintosh II emulator
-	pkgver = 3.5.8
+	pkgver = 36.04
 	pkgrel = 1
-	url = http://www.gryphel.com/c/minivmac/
+	url = https://www.gryphel.com/c/minivmac/
 	arch = x86_64
-	license = GPL
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
 	makedepends = tar
-	source = https://www.gryphel.com/d/minivmac/minivmac-3.5.8/mnvm0026-3.5.8-lx64.bin.tgz
-	md5sums = e81655df670a0422702006c96da10b75
+	depends = libx11
+	source = https://www.gryphel.com/d/minivmac/minivmac-36.04/minivmac-36.04.src.tgz
+	md5sums = c84168a8d7df5f1f66270720c48c906c
 
 pkgname = minivmacii
-
