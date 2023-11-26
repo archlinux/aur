@@ -1,6 +1,6 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 pkgname=kdotool-git
-pkgver=0.1.0.d7cac10
+pkgver=0.2.1.17a492f
 pkgrel=1
 pkgdesc='xdotool-like for KDE Wayland'
 arch=(x86_64)
