@@ -2,7 +2,7 @@
 
 pkgname=necrolog-git
 _gitname=necrolog
-pkgver=r106.11d001e
+pkgver=r107.91f80ca
 pkgrel=1
 pkgdesc='Tiny but powerful logging for C++'
 url='https://github.com/fvacek/necrolog'

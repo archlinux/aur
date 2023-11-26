@@ -1,6 +1,6 @@
 pkgbase = necrolog-git
 	pkgdesc = Tiny but powerful logging for C++
-	pkgver = r106.11d001e
+	pkgver = r107.91f80ca
 	pkgrel = 1
 	url = https://github.com/fvacek/necrolog
 	arch = i686
