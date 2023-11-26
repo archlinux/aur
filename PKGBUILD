@@ -8,14 +8,12 @@ pkgdesc='An RPC framework build around the ChainPack packing schema'
 url='https://github.com/silicon-heaven/libshv/'
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL-3')
-depends=('glibc' 'gcc-libs')
+depends=('necrolog' 'glibc' 'gcc-libs')
 makedepends=('git' 'cmake' 'pkg-config' 'doctest')
 conflicts=('libshv' 'libshv-git')
 provides=('libshv')
-source=('git+https://github.com/silicon-heaven/libshv.git#branch=cmake-pkg'
-		'git+https://github.com/syyyr/necrolog.git#branch=pkgconfig')
-md5sums=('SKIP'
-		 'SKIP')
+source=('git+https://github.com/silicon-heaven/libshv.git#branch=cmake-pkg')
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"

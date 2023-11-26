@@ -11,14 +11,13 @@ pkgbase = libshv-git
 	makedepends = cmake
 	makedepends = pkg-config
 	makedepends = doctest
+	depends = necrolog
 	depends = glibc
 	depends = gcc-libs
 	provides = libshv
 	conflicts = libshv
 	conflicts = libshv-git
 	source = git+https://github.com/silicon-heaven/libshv.git#branch=cmake-pkg
-	source = git+https://github.com/syyyr/necrolog.git#branch=pkgconfig
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = libshv-git
