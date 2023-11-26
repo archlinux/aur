@@ -21,6 +21,9 @@ if [[ ! -d "$dir" ]]; then
     ln -s $bin/mp3 "$dir" || exit 1
     ln -s $bin/wavhq "$dir" || exit 1 
 fi
-
+if [[ ! -d "$dir/ogg" ]]
+then
+    ln -s $bin/ogg "$dir" || exit 1
+fi
 cd "$dir"
 exec $bin/doomrl $1
