@@ -1,15 +1,23 @@
 pkgbase = r-deseq2
 	pkgdesc = Differential gene expression analysis based on the negative binomial distribution.
 	pkgver = 1.42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/DESeq2
 	arch = x86_64
 	license = LGPL3
+	makedepends = r-rcpparmadillo
 	depends = r
 	depends = r-s4vectors
 	depends = r-iranges
 	depends = r-genomicranges
 	depends = r-summarizedexperiment
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-biocparallel
+	depends = r-ggplot2
+	depends = r-locfit
+	depends = r-matrixstats
+	depends = r-rcpp
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/DESeq2_1.42.0.tar.gz
 	sha256sums = 2af89dce722843a3824f9637419d98dae0052122b30e23b7fc811cca36d8e7d7
 
