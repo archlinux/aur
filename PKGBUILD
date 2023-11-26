@@ -2,22 +2,26 @@
 # Contributor: Stoyan Minaev <stoyan.minaev@gmail.com>
 
 pkgname=waybox
-pkgver=0.2.0
-pkgrel=4
+pkgver=0.2.2
+pkgrel=1
 pkgdesc='Openbox clone on Wayland'
 url="https://github.com/wizbright/waybox"
 arch=('x86_64')
 license=('MIT')
-depends=('wlroots0.15')
+depends=('wlroots>=0.17.0' 'wlroots<0.18.0')
 makedepends=('meson' 'wayland-protocols')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/wizbright/${pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('065e5d3488223e128536fca6a1198554')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/wizbright/${pkgname}/archive/${pkgver}.tar.gz
+        0001-missing_libxml2_import.patch)
+b2sums=('68a2eac9d8f3986a75365ddcf9fcc33c2578e96d4024eb44b4b7ea90e018dc43bf44d3a82fbae105dcea80bf1ff193a9b76c660d934ef145d4eecd949e2eb8e0'
+        'eaacd3fc5cd167db7739434eab50b619cf2b063780bfbe166fee70736fd186fbeae149548114ba82f7c5207f83e37550ccef619b42c2ea1011e5bae0da329ed7')
 
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -Np2 -i "$srcdir"/0001-missing_libxml2_import.patch
+}
 
 build() {
-  # To build against wlroots0.15
-  export PKG_CONFIG_PATH='/usr/lib/wlroots0.15/pkgconfig'
-
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }

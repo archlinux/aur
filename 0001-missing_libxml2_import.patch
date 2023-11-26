@@ -1,0 +1,10 @@
+--- a/waybox-0.2.2/waybox/config.c
++++ b/waybox-0.2.2/waybox/config.c
+@@ -1,5 +1,6 @@
+ #include <libxml/xpath.h>
+ #include <libxml/xpathInternals.h>
++#include <libxml/parser.h>
+ 
+ #include "config.h"
+ 
+
