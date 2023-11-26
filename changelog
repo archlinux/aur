@@ -1,69 +1,32 @@
 ### Added
 
-* added 'stats' that serves to centralise a bunch of numbers used internally that might be interesting to the user.
-    - see the `more stats` button in the bottom left corner.
-* Github rate limit information is now fetched as part of the stats.
-    - but no more than once a minute.
-    - see: https://github.com/ogri-la/strongbox#user-content-github-api-authentication
-* manually refreshing the user catalogue will now switch to the `log` pane before doing so.
-    - the intent is to show that *something* is happening.
-    - see: `Catalogue -> Refresh user catalogue`
-* new (opt-in) preference to automaticaly refresh the user-catalogue every 28 days.
-    - the user-catalogue are addons added to strongbox using `File -> Import addon` or by 'starring' a regular addon.
-    - see: `Preferences -> Keep user catalogue updated`.
-* added a "clear" button to the addons search that removes all search filters, including search terms.
-* added new column for installed addons "starred" that will add an installed addon to the 'user-catalogue'.
-    - star button disabled when addon is being ignored or isn't matched against the catalogue.
-* new column for installed addons "size" with the total size of the addon on disk, including any grouped addons.
-    - see: `View -> Columns -> size`
-* `user.clj`, where the REPL will take you by default during development.
-    - this lets me separate some development dependencies and logic from what is released.
+* added checkbox to bottom of search tab that will toggle search results sampling when search results are unfiltered.
+    - this lets you browse a catalogue page by page.
+* added patch tooltips for Dragonflight 10.1 and 10.2
+* added support for the `NO_COLOR` environment variable.
+    - it turns off coloured output in the console if that is where you launched strongbox from.
+* added new command line action `print-config` that prints the final config and exits.
+    - usage: `./strongbox --action print-config`
+* added new information captured from the environment when using `--debug` or `--action print-config`.
+    - `state.paths.config-dir`, path to where Strongbox is storing the application *config*.
+    - `state.paths.data-dir`, path to where Strongbox is storing the application *data*.
+    - `flatpak-id`, looks like `la.ogri.strongbox` when running within a Flatpak.
+* added plain-text and JSON views of the raw addon data to the 'raw data' widget on the addon detail tab.
+    - it's pretty basic but JavaFX really resists being able to select text within it's widgets.
+* added new preference 'check for update' that toggles checking for an update to Strongbox on startup (default is `true`).
+* added new command line flag `--update-check` and it's complement `--no-update-check` that toggles update checks.
+* added Flatpak distribution hosted by Flathub
+    - see: https://flathub.org/en-GB/apps/la.ogri.strongbox
 
 ### Changed
 
-* the main window is now always split with the bottom pane hidden by default.
-    - if can be dragged open or toggled open by either of the two status bar buttons.
-* clicking the status bar buttons to open the bottom pane is now much quicker.
-* refreshing the user-catalogue now checks imported/starred addons against the full catalogue before checking online.
-    - if it fails to find addon in catalogue, it will fall back to checking online like before.
-    - the user-catalogue was originally for imported addons without a catalogue (github, gitlab) but is now also for 'starred' addons. Refreshing it now that we have a Github catalogue is much faster.
-* menu labels for the installed addons table columns have been tweaked (see `View -> Columns`)
-    - "installed" is now "installed version"
-    - "available" is now "available version"
-    - "version" is now "installed+available version"
-    - "WoW" is now "game version (WoW)"
-* the "fat" column profile now uses the "installed" and "available" columns rather than the combined "version" column.
-* the "fat" column profile includes the new "starred" and "size" columns.
-    - see: `View -> Columns -> fat`
-* `jlink compress=2` changed to `jlink compress=1` during the building of the linux AppImage.
-    - `2` means "zip", which interferes with the final AppImage compression.
-    - this shaves off ~7MB from the final AppImage.
-* replaced the compressed, static, "emergency" catalogue with a simple JSON string.
-    1. it wasn't working at compile time like I thought.
-    2. regular strings are more compressible ultimately when building an AppImage.
-* bumped dependencies.
-    - removed `apache.commons.compressors` as no longer required.
-* some dependencies used for development are no longer bundled during release.
-* strongbox release data will only be downloaded once the app has finished loading.
-* strongbox release data will only be downloaded once per-session.
-    - it would previously re-attempt to download the release data on failure endlessly.
+* bumped JavaFX dependencies from 17.x to 19.x.
+* removed the fixed widths on the 'updated' and 'downloads' columns in the search pane.
+    - attempting to control column widths in a JavaFX table is futile.
+* some `info` level logging has been dropped to `debug` to reduce console noise.
 
 ### Fixed
 
-* search tab filter buttons are now a uniform height.
-* `key` column in the addon detail "raw data" widget is now wide enough for the text "supported game tracks".
-* `updated` column in the installed addon tab is now wide enough for the text "12 months ago".
-* possible cache stampede fetching strongbox release info. A lock is now acquired to ensure checks happen sequentially.
-    - it was possible for the GUI to fire off many requests to Github simultaneously, bypassing cache and overwriting each other.
-
-### Removed
-
-* Tukui support. Tukui addons are:
-    - no longer checked for updates.
-    - excluded from being imported.
-    - excluded from the user-catalogue.
-    - no longer scraped from the tukui.org API into a catalogue.
-    - no longer present in the "full" or "short" catalogues.
-    - excluded from search results.
-    - removed from the 'emergency' (built-in, hardcoded) catalogue (used when remote catalogues are unavailable).
-    - removed from lists of available addon hosts to switch an addon between.
+* tag buttons in search pane are now centred vertically.
+* selecting hosts in search pane no longer samples results.
+* 'interface version' was being treated as an integer and being localised in the raw data widget.
