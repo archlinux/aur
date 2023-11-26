@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Goudry <goudry.nicolas@gmail.com>
 pkgname=k8sgpt-git
 _pkgname=k8sgpt
-pkgver=v0.3.22
+pkgver=v0.3.23
 pkgrel=1
 pkgdesc="Giving Kubernetes Superpowers to everyone"
 arch=('x86_64' 'arm64' 'i386')
@@ -11,7 +11,7 @@ provides=('k8sgpt')
 options=()
 license=('Apache')
 makedepends=('go' 'git')
-source=("git+https://github.com/k8sgpt-ai/k8sgpt.git#commit=b780105807ff16f52c7d6011439c8852d27344a5")
+source=("git+https://github.com/k8sgpt-ai/k8sgpt.git#commit=eb32a0f2bcdd645161b86ce50ef353da7fd6abf9")
 sha256sums=('SKIP')
 
 pkgver() {
