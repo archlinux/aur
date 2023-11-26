@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=nerd-fonts-sf-mono
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 _fontver=11
 pkgdesc="Monospaced variant of San Francisco. Sourced directly from Apple, patched with the Nerd Fonts Patcher"
@@ -12,7 +12,7 @@ conflicts=('nerd-fonts-sf-mono')
 provides=('nerd-fonts-sf-mono')
 source=("SF-Mono-$_fontver.dmg::https://developer.apple.com/design/downloads/SF-Mono.dmg" "font-patcher-$pkgver::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/FontPatcher.zip")
 sha256sums=('a6a91880966db4a287a936286c1523b9dd1f5bbf5d4b9b5dcd8276df07bd4d6e'
-            '73cbf6cd548a69d64a5db5910a22b7eddfdee8ae1ae187616ae748e4c7f16ea4')
+            '7b11bdbbe645ff817192233f7fab1dc026cea201959dc4617f5217d5250de4f2')
 
 build() {
   # remove previous files
