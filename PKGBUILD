@@ -12,7 +12,7 @@ depends=('gcc-libs')
 provides=('jaguar')
 conflicts=('jaguar')
 source=("$pkgname-$pkgver.tgz::$url/releases/download/v$pkgver/jag_linux.tgz")
-sha256sums=('08c2c06e3c844c378a4bc569001e87491abedce790034d13607b41371be254d7')
+sha256sums=('835bd3971be01622230b59348b00cebbb6a2f59f67a67de243402b7cf682b875')
 
 package() {
 	install -D jag -t "$pkgdir/usr/bin/"
