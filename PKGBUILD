@@ -5,8 +5,8 @@
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
-pkgver=2.1.0
-_pkgver=2.1.0
+pkgver=2.1.1
+_pkgver=2.1.1
 pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
@@ -389,7 +389,7 @@ package_python-pytorch() {
 package_python-pytorch-opt() {
   pkgdesc="${_pkgdesc} (with AVX2 CPU optimizations)"
   conflicts=(python-pytorch)
-  provides=(python-pytorch)
+  provides=(python-pytorch=${pkgver})
 
   cd "${srcdir}/${_pkgname}-opt"
   _package
@@ -399,7 +399,7 @@ package_python-pytorch-cuda() {
   pkgdesc="${_pkgdesc} (with CUDA)"
   depends+=(cuda nccl cudnn magma-cuda onednn)
   conflicts=(python-pytorch)
-  provides=(python-pytorch)
+  provides=(python-pytorch=${pkgver})
 
   cd "${srcdir}/${_pkgname}-cuda"
   _package
@@ -409,7 +409,7 @@ package_python-pytorch-opt-cuda() {
   pkgdesc="${_pkgdesc} (with CUDA and AVX2 CPU optimizations)"
   depends+=(cuda nccl cudnn magma-cuda onednn)
   conflicts=(python-pytorch)
-  provides=(python-pytorch python-pytorch-cuda)
+  provides=(python-pytorch=${pkgver} python-pytorch-cuda=${pkgver})
 
   cd "${srcdir}/${_pkgname}-opt-cuda"
   _package
@@ -419,7 +419,7 @@ package_python-pytorch-rocm() {
   pkgdesc="${_pkgdesc} (with ROCm)"
   depends+=(rocm-hip-sdk roctracer miopen magma-hip onednn)
   conflicts=(python-pytorch)
-  provides=(python-pytorch)
+  provides=(python-pytorch=${pkgver})
 
   cd "${srcdir}/${_pkgname}-rocm"
   _package
@@ -429,7 +429,7 @@ package_python-pytorch-opt-rocm() {
   pkgdesc="${_pkgdesc} (with ROCm and AVX2 CPU optimizations)"
   depends+=(rocm-hip-sdk roctracer miopen magma-hip onednn)
   conflicts=(python-pytorch)
-  provides=(python-pytorch python-pytorch-rocm)
+  provides=(python-pytorch=${pkgver} python-pytorch-rocm=${pkgver})
 
   cd "${srcdir}/${_pkgname}-opt-rocm"
   _package
