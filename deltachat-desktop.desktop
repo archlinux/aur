@@ -7,4 +7,4 @@ Type=Application
 Icon=deltachat
 StartupWMClass="DeltaChat"
 Categories=Network;InstantMessaging;Chat;IRCClient
-MimeType=x-scheme-handler/openpgp4fpr;x-scheme-handler/mailto;
+MimeType=application/x-webxdc;x-scheme-handler/openpgp4fpr;x-scheme-handler/mailto;x-scheme-handler/dcaccount;x-scheme-handler/dclogin;
