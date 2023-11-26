@@ -1,6 +1,6 @@
 pkgbase = r-skewhyperbolic
 	pkgdesc = The Skew Hyperbolic Student t-Distribution
-	pkgver = 0.4.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=SkewHyperbolic
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-skewhyperbolic
 	depends = r-distributionutils
 	depends = r-generalizedhyperbolic
 	optdepends = r-runit
-	source = https://cran.r-project.org/src/contrib/SkewHyperbolic_0.4-0.tar.gz
-	sha256sums = 995b31e8e528840b9ff6a1a007bd82c77ad3062677abe50546e3ac97e58a9dae
+	source = https://cran.r-project.org/src/contrib/SkewHyperbolic_0.4-2.tar.gz
+	sha256sums = e64a548bc24157c0b0bfbd9c6f7629a85d911fc52a666a59da21553d71e2167e
 
 pkgname = r-skewhyperbolic
