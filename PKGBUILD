@@ -2,22 +2,24 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.33.1
+pkgver=0.33.2
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
 license=(MIT)
 depends=(python-matplotlib python-numba python-scipy python-sympy python-tqdm)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
-checkdepends=(python-pytest-cov python-h5py-openmpi python-pandas jupyter-notebook python-numba-mpi) # napari
+checkdepends=(python-pytest-cov python-h5py-openmpi python-pandas jupyter-notebook python-numba-mpi)
 optdepends=('python-h5py: for storing data in the hierarchical file format'
-  'python-pandas: for handling tabular data'
+  'python-ipywidgets: for Jupyter notebook support'
+  'python-mpi4py: for parallel processing using MPI'
   'napari: for displaying images interactively'
-  'python-ipywidgets: for interactive widgets'
-  'python-numba-mpi: for njittable MPI wrapper'
-  'python-mpi4py: for parallel processing using MPI')
+  'python-numba-mpi: for parallel processing using MPI+numba'
+  'python-pandas: for handling tabular data'
+  'python-pyfftw: for Faster Fourier transforms'
+  'python-rocket-fft: Numba-compiled fast Fourier transforms')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('8ab271c6ecd9e8fe42cc9303d1a3bd27b609979c4ee0aa855160445306dafd5e6c558301da80560126c7b0b307c79c1cc42dcbbe18ef2c87c49a986efc3c3bac')
+sha512sums=('6fcb4abf22f631829593be371c1b7192d9518995825be0deb64f637394842b6b7bafce664367fcdf25fac9f1900f38c93c19f9cf3c5c40aaa106caa0c9b77e32')
 
 build() {
   cd ${_base}-${pkgver}
