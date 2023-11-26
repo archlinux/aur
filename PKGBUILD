@@ -80,7 +80,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.7.0.rc2.1.bcachefs.git.00085.g45ebe8bf0e6d.dirty
+pkgver=6.7.0.rc2.1.bcachefs.git.00102.gc80a1d564930.dirty
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -90,6 +90,7 @@ makedepends=(
     bc
     cpio
     gettext
+    git
     libelf
     pahole
     perl
@@ -134,9 +135,12 @@ validpgpkeys=(
     647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
     A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
+sha256sums=('SKIP'
+            'SKIP'
+            '6e0bf273a2334f21e622f4a1dc6c1bf94bfce4e3031ab4c3ec2228028dd8f502')
 b2sums=('SKIP'
         'SKIP'
-        '91056af79153079e3c658601ea71610f8e2db43743eca1ce1b36d52a832be910804f585e5b4917adf5777a47a75e7c19d2588a7193140914c82fea79708bb988')
+        '77aa132600098813a99253fc2caa93765374d42ef28ee22af45774ec5f36c1bfa8deffafd26e677a43b43d826980fa863bba12a67f31eaab295e96f16975041f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
