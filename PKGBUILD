@@ -10,8 +10,7 @@ license=('GPL3')
 depends=('qt5-base'
          'java-runtime>=8'
          'hicolor-icon-theme'
-         'android-sdk-build-tools'
-         'android-sdk-platform-tools'
+         'android-tools'
          'android-apktool')
 optdepends=('libsecret: Enable password manager backend')
 makedepends=('qt5-base' 'cmake')
