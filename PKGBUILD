@@ -14,6 +14,7 @@ arch=('x86_64')
 url='https://github.com/P3TERX/Aria2-Pro-Core'
 license=('GPL')
 depends=('gnutls' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates' 'libssh2')
+makedepends=('patch')
 checkdepends=('cppunit')
 provides=('aria2')
 conflicts=('aria2')

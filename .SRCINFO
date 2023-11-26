@@ -6,6 +6,7 @@ pkgbase = aria2-pro
 	arch = x86_64
 	license = GPL
 	checkdepends = cppunit
+	makedepends = patch
 	depends = gnutls
 	depends = libxml2
 	depends = sqlite
