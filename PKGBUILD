@@ -6,10 +6,10 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=gtk3-ubuntu
-_ubuntu_ver=3.24.34
-_ubuntu_rel=3ubuntu2
-_import_pkgver=3.24.34
-pkgver=3.24.34
+_ubuntu_ver=3.24.38
+_ubuntu_rel=5ubuntu2
+_import_pkgver=3.24.38
+pkgver=3.24.38
 pkgrel=1
 pkgdesc="GObject-based multi-platform toolkit"
 arch=(x86_64)
@@ -20,7 +20,7 @@ lib{cloudproviders,colord,cups,epoxy,rsvg,xcomposite,xcursor,xdamage,xi,xinerama
 mesa pango shared-mime-info tracker3 wayland)
 makedepends=(gobject-introspection git gtk-doc glib2-docs sassc meson wayland-protocols)
 license=(LGPL)
-_commit=4e3a3f05533789e1a68c70c185e1755d386d6c47 # tags/3.24.34^0
+_commit=3e6fd55ee00d4209ce2f2af292829e4d6f674adc # tags/3.24.38^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-query-immodules-3.0.hook
         add_ubuntu_headers_to_meson_build.patch)
@@ -28,7 +28,7 @@ source+=("https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_${_ubuntu
 sha256sums=('SKIP'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
             '5d283c23657a2301fec22cec5130ea7d5edb659e0e50e7a2a5e87fea234893af'
-            'c0ad9402a78d621d20c7e0887980be11a7fab326394cf47d0760132c2a2675ab')
+            'd6c6614a2c9915dc728745d225970ab9eac7f1b973cdf60afd4fd1c827f4cc84')
 
 pkgver() {
   cd gtk
@@ -39,27 +39,62 @@ prepare() {
   cd gtk
 
   local patches=(
-   #updateiconcache-Sort-list-of-entries.patch
-   gdk-Don-t-distribute-generated-files-in-tarballs.patch
-   gtk-Really-don-t-distribute-built-files.patch
-   demos-examples-tests-Don-t-distribute-built-files.patch
-   016_no_offscreen_widgets_grabbing.patch
-   017_no_offscreen_device_grabbing.patch
-   060_ignore-random-icons.patch
-   #reftest-known-fail.patch
-   Disable-accessibility-dump-aka-a11ytests-test.patch
-   073_treeview_almost_fixed.patch
-   bzg_gtkcellrenderer_grabbing_modifier.patch
-   ubuntu_gtk_custom_menu_items.patch
-   print-dialog-show-options-of-remote-dnssd-printers.patch
-   uimanager-guard-against-nested-node-updates.patch
-   x-canonical-accel.patch
-   message-dialog-restore-traditional-look-on-unity.patch
-   0001-gtk-reftest-Force-icon-theme-to-Adwaita.patch
-   0001-calendar-always-emit-day-selected-once.patch
-   0001-gtkwindow-set-transparent-background-color.patch
-   unity-border-radius.patch
-   unity-headerbar-maximized-mode.patch
+  Use-correct-stat-struct-for-ftw.patch
+  Make-sure-that-the-charcode-is-signless.patch
+  Update-Turkish-translation.patch
+  Fix-a-typo.patch
+  This-commit-fixes-a-performance-issue-on-X11-systems-in-r.patch
+  x11-Trap-XRandr-errors-when-getting-outputs-during-init-a.patch
+  gtkmountoperation-avoid-SEGV-after-bad-password-input.patch
+  ScrolledWindow-Frame-on-viewport-is-not-optional.patch
+  popover-Remove-useless-if-case.patch
+  Popover-Clarify-guard-out-rect-of-get_pointing_to.patch
+  Update-Czech-translation.patch
+  Update-Slovak-translation.patch
+  gdk-wayland-Create-pad-devices-on-enter.patch
+  gdk-wayland-Ensure-device-added-removed-emission-in-GdkSe.patch
+  gdk-wayland-Return-pad-devices-querying-for-all-devices.patch
+  Update-Catalan-translation.patch
+  Update-British-English-translation.patch
+  gdkgl-Check-for-GLsync-before-using-it.patch
+  gdk-wayland-Switch-behavior-of-BTN_STYLUS-STYLUS2-as-midd.patch
+  a11y-atspi-Fix-reporting-table-cell-pos-at-index-0-0.patch
+  GdkWindow-Check-for-offscreen-windows-in-set_transient_fo.patch
+  GtkMenu-Take-offscreen-windows-in-account-for-positioning.patch
+  Update-fa.po.patch
+  Update-Spanish-translation.patch
+  GtkApplicationImplDBus-Cancel-DBus-method-calls-on-shutdo.patch
+  Update-Greek-translation.patch
+  Update-Slovenian-translation.patch
+  Update-Romanian-translation.patch
+  Update-Turkish-translation-1.patch
+  Update-Turkish-translation-2.patch
+  Update-Georgian-translation.patch
+  Update-Kazakh-translation.patch
+  Update-Georgian-translation-1.patch
+  Update-fa.po-1.patch
+  Fix-_gtk_get_slowdown.patch
+  Update-Punjabi-translation.patch
+  Update-Georgian-translation-2.patch
+  Update-Korean-translation.patch
+  016_no_offscreen_widgets_grabbing.patch
+  017_no_offscreen_device_grabbing.patch
+  060_ignore-random-icons.patch
+  reftest_compare_surfaces-Report-how-much-the-images-diffe.patch
+  reftests-Allow-minor-differences-to-be-tolerated.patch
+  073_treeview_almost_fixed.patch
+  bzg_gtkcellrenderer_grabbing_modifier.patch
+  ubuntu_gtk_custom_menu_items.patch
+  print-dialog-show-options-of-remote-dnssd-printers.patch
+  uimanager-guard-against-nested-node-updates.patch
+  x-canonical-accel.patch
+  message-dialog-restore-traditional-look-on-unity.patch
+  0001-gtk-reftest-Force-icon-theme-to-Adwaita.patch
+  0001-calendar-always-emit-day-selected-once.patch
+  0001-gtkwindow-set-transparent-background-color.patch
+  unity-border-radius.patch
+  unity-headerbar-maximized-mode.patch
+  gitlab_opengl_fallback.patch
   )
 
   for i in "${patches[@]}"; do
