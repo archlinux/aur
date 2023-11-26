@@ -9,7 +9,7 @@ pkgbase = rbfeeder
 	license = GPL2
 	depends = protobuf-c
 	depends = jansson
-	depends = rtl-sdr=0.8.0
+	depends = rtl-sdr=1:0.8.0
 	backup = etc/rbfeeder.ini
 	source = rbfeeder.sysusers
 	source = rbfeeder.tmpfiles
