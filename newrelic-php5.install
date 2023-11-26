@@ -1,13 +1,10 @@
 post_install() {
-    # Setup "newrelic" user/group
+    # Setup "newrelic"
     useradd --system -M --home / --shell /sbin/nologin newrelic || true
 
     # Setup permissions
     mkdir -p /var/log/newrelic
     chmod 755 /var/log/newrelic
-
-    # Enable the service
-    systemctl enable newrelic-daemon.service
 
     # When first installing the package, the license key will not be set.
     # Instead of throwing an error, we want to whine to the user and then exit cleanly.
@@ -15,20 +12,17 @@ post_install() {
         if [ -z "${NR_SILENT}" -a -z "${SILENT}" ]; then
             echo \
 "
-:: The service cannot be started until a valid licence is inserted in the following file:
+:: The service cannot be started until a valid licence is detected in:
 
    /etc/php/conf.d/newrelic.ini
 
-:: Edit the above referenced file and in newrelic.license=\"REPLACE_WITH_REAL_KEY\"
-   replace the value with your licence key. More information here:
+:: Edit the above file and replace \"newrelic.license\" parameter with your licence key.
+   More information here:
 
-   https://docs.newrelic.com/docs/apm/agents/php-agent/getting-started/introduction-new-relic-php/#installation
+   https://docs.newrelic.com/docs/apm/agents/php-agent/installation/php-agent-installation-overview/#install-overview
 
-:: No data will be reported until the daemon can be started.
-   Get your license key in \"Settings\" of the \"Support\" menu in your NewRelic account.
-   (accessible at https://rpm.newrelic.com)
-
-:: Once the license key is configured, start the NewRelic daemon, PHP and the web server.
+:: Get your license key under \"Settings\" in the \"Support\" menu of your NewRelic account.
+   (accessible at https://one.newrelic.com/api-keys)
 "
         fi
         return 0
@@ -37,5 +31,4 @@ post_install() {
 
 post_remove() {
     userdel newrelic || true
-    rm -rf /var/log/newrelic
 }
