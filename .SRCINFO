@@ -1,7 +1,7 @@
 pkgbase = fw
 	pkgdesc = Workspace productivity booster
 	pkgver = 2.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brocode/fw
 	arch = x86_64
 	license = custom:WTFPL

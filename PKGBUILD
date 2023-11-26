@@ -2,7 +2,7 @@
 
 pkgname=fw
 pkgver=2.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Workspace productivity booster"
 arch=('x86_64')
 url="https://github.com/brocode/fw"
@@ -27,7 +27,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.org -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 man/$pkgname.1 $pkgdir/usr/share/man/man1/$pkgname.1
