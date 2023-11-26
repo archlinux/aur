@@ -14,7 +14,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/toitlang/jaguar/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e93cabf84f90ac65f4311039d20c5ce669441fded0422ce468ea8368dd008d9c')
+sha256sums=('f746575d06a04c4d8881cbf120c8cc217332a79d2e6d2ad31a1bbeb40f0c4fa6')
 
 build() {
 	cd "$pkgname-$pkgver"
