@@ -27,8 +27,8 @@ package() {
 	cd $srcdir/tinyfugue-$pkgver
 	cp src/tf $pkgdir/usr/bin/
 	cd lib/
-	cp tf/*.* $pkgdir/usr/share/tf-lib/
-	cp lua/*.* $pkgdir/usr/share/tf-lib/
-	cp py/*.* $pkgdir/usr/share/tf-lib/
+	cp tf/* $pkgdir/usr/share/tf-lib/
+	cp lua/* $pkgdir/usr/share/tf-lib/
+	cp py/* $pkgdir/usr/share/tf-lib/
 }
 sha256sums=('85b342925675e39e17cf95e8a65d69a3927657e066efd52c301a20e6d36c2f98')
