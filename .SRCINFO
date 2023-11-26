@@ -1,6 +1,6 @@
 pkgbase = rooster
 	pkgdesc = A simple password manager
-	pkgver = 2.12.0
+	pkgver = 2.13.0
 	pkgrel = 1
 	url = https://github.com/conradkleinespel/rooster
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = rooster
 	depends = libxmu
 	depends = xsel
 	depends = wl-clipboard
-	source = rooster-2.12.0.tar.gz::https://github.com/conradkleinespel/rooster/archive/v2.12.0.tar.gz
-	sha256sums = 8d9ee02c81330491517320cf89247c25329403ca06056d412edfb440a95da569
+	source = rooster-2.13.0.tar.gz::https://github.com/conradkleinespel/rooster/archive/v2.13.0.tar.gz
+	sha256sums = 09d549ba03d7dfb605001667c7c7cc75877f6b70a05df45ff97a963b924e59d5
 
 pkgname = rooster

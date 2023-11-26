@@ -1,7 +1,7 @@
 # Maintainer: Conrad Kleinespel <conradk@conradk.com>
 
 pkgname=rooster
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="A simple password manager"
 url="https://github.com/conradkleinespel/rooster"
@@ -10,7 +10,7 @@ depends=('libx11' 'libxmu' 'xsel' 'wl-clipboard')
 arch=('i686' 'x86_64')
 license=('Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/conradkleinespel/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8d9ee02c81330491517320cf89247c25329403ca06056d412edfb440a95da569')
+sha256sums=('09d549ba03d7dfb605001667c7c7cc75877f6b70a05df45ff97a963b924e59d5')
 
 build() {
   cd "$pkgname-$pkgver"
