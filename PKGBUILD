@@ -1,7 +1,7 @@
 # Maintainer: Willy Micieli <micieli@vivaldi.net>
 
 pkgname=continuous-testing
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="An rust program to test in continuous application"
 provides=("again")
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('packer' 'docker' 'rust' 'git' 'wget' 'unzip')
 optdepends=('go: Go support')
 source=("${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('83275a04f592b4ca8b71b4dbf381643d9d1cadeec4ca34c384743731117462d0')
+sha256sums=('4fa345d3e3ace8e06e33154fe28d6c51cabd13f1094de5af159e294b9ec61414')
 
 package() {
     cd "${pkgname}-${pkgver}"

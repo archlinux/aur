@@ -1,6 +1,6 @@
 pkgbase = continuous-testing
 	pkgdesc = An rust program to test in continuous application
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/taishingi/continuous-testing
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = continuous-testing
 	depends = unzip
 	optdepends = go: Go support
 	provides = again
-	source = 0.3.5.tar.gz::https://github.com/taishingi/continuous-testing/archive/refs/tags/0.3.5.tar.gz
-	sha256sums = 83275a04f592b4ca8b71b4dbf381643d9d1cadeec4ca34c384743731117462d0
+	source = 0.3.6.tar.gz::https://github.com/taishingi/continuous-testing/archive/refs/tags/0.3.6.tar.gz
+	sha256sums = 4fa345d3e3ace8e06e33154fe28d6c51cabd13f1094de5af159e294b9ec61414
 
 pkgname = continuous-testing
