@@ -16,7 +16,7 @@ provides=('bitwig-studio-earlyaccess')
 replaces=()
 conflicts=('bitwig-studio-legacy' 'bitwig-8-track' 'bitwig-studio')
 options=(!strip)
-source=("https://downloads.bitwig.com/5.1%20Beta%206/bitwig-studio-5.1-beta-6.deb")
+source=("https://downloads.bitwig.com/5.1%20Beta%207/bitwig-studio-5.1-beta-7.deb")
 #source=("https://downloads.bitwig.com/${_pkgver}/bitwig-studio-${_pkgver}.deb")
 
 
