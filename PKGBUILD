@@ -2,7 +2,7 @@
 
 pkgname=libshv-git
 _gitname=libshv
-pkgver=r2342.fe058f25
+pkgver=r2348.a6a3e3a1
 pkgrel=1
 pkgdesc='An RPC framework build around the ChainPack packing schema'
 url='https://github.com/silicon-heaven/libshv/'
@@ -12,8 +12,8 @@ depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cmake' 'pkg-config' 'doctest')
 conflicts=('libshv' 'libshv-git')
 provides=('libshv')
-source=('git+https://github.com/silicon-heaven/libshv.git'
-		'git+https://github.com/fvacek/necrolog.git')
+source=('git+https://github.com/silicon-heaven/libshv.git#branch=cmake-pkg'
+		'git+https://github.com/syyyr/necrolog.git#branch=pkgconfig')
 md5sums=('SKIP'
 		 'SKIP')
 
@@ -23,13 +23,6 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/$_gitname"
-	git submodule init
-	git config submodule.3rdparty/necrolog.url "$srcdir/necrolog"
-	git -c protocol.file.allow=always submodule update
-}
-
 check() {
 	ctest --test-dir "$srcdir/build"
 }
@@ -37,6 +30,7 @@ check() {
 build() {
 	cmake -S "$srcdir/$_gitname" -B "$srcdir/build" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DLIBSHV_USE_LOCAL_NECROLOG=ON \
 	-DWITH_CLI_EXAMPLES=ON
 
 	cmake --build "$srcdir/build"
