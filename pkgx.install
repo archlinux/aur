@@ -1,7 +1,35 @@
 post_install() {
   cat << 'EOF'
-    try it out:
+    Try it out:
 
-      pkgx node@18 --eval 'console.log("pkgx: run anything")'
+        pkgx node@18 --eval 'console.log("pkgx: run anything")'
+
+    Shell integration:
+
+        pkgx integrate --dry-run
+        # ^^ https://docs.pkgx.sh/shell-integration
+EOF
+}
+
+post_upgrade() {
+  # New in v1.1.1
+  cat << 'EOF'
+    Shell integration:
+
+        pkgx integrate --dry-run
+        # ^^ https://docs.pkgx.sh/shell-integration
+EOF
+}
+
+post_remove() {
+  cat << 'EOF'
+    To clean up pkgx leftovers from your home directory, run:
+
+        pkgx deintegrate
+        pkgx unload
+        unset -f cd dev env
+        rm -rf ~/.pkgx
+        rm -rf "${XDG_CACHE_HOME:-$HOME/.cache}/pkgx"
+        rm -rf "${XDG_DATA_HOME:-$HOME/.local/share}"/pkgx
 EOF
 }
