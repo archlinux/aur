@@ -1,18 +1,19 @@
 pkgbase = airwindows-lv2-git
-	pkgdesc = This is an LV2 port of the Airwindows plugins made by Chris Johnson. Porting accomplished by Hannes Braun
-	pkgver = 12.0
-	pkgrel = 2
-	url = https://github.com/hannesbraun/airwindows-lv2
-	arch = i686
+	pkgdesc = LV2 port of Airwindows audio plugins (git version)
+	pkgver = 30.0.r2.g15b4540
+	pkgrel = 1
+	url = https://sr.ht/~hannes/airwindows-lv2
 	arch = x86_64
 	groups = lv2-plugins
+	groups = pro-audio
 	license = MIT
 	makedepends = git
+	makedepends = lv2
 	makedepends = meson
 	depends = glibc
 	provides = airwindows-lv2
 	conflicts = airwindows-lv2
-	source = git+https://github.com/hannesbraun/airwindows-lv2
-	md5sums = SKIP
+	source = airwindows-lv2::git+https://git.sr.ht/~hannes/airwindows-lv2#branch=dev
+	sha256sums = SKIP
 
 pkgname = airwindows-lv2-git

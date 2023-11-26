@@ -1,34 +1,46 @@
 # Maintainer:  <castix at autistici dot org>
-pkgname=airwindows-lv2-git
-pkgver='12.0'
-pkgrel=2
-epoch=
-pkgdesc="This is an LV2 port of the Airwindows plugins made by Chris Johnson. Porting accomplished by Hannes Braun"
-arch=('i686' 'x86_64')
-url="https://github.com/hannesbraun/airwindows-lv2"
-license=('MIT')
-groups=('lv2-plugins')
-depends=('glibc')
-makedepends=('git' 'meson')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git+https://github.com/hannesbraun/airwindows-lv2')
-md5sums=('SKIP')
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot de>
 
+_pkgname=airwindows-lv2
+pkgname=$_pkgname-git
+pkgver=30.0.r2.g15b4540
+pkgrel=1
+pkgdesc="LV2 port of Airwindows audio plugins (git version)"
+arch=(x86_64)
+url='https://sr.ht/~hannes/airwindows-lv2'
+license=(MIT)
+groups=(lv2-plugins pro-audio)
+depends=(glibc)
+makedepends=(git lv2 meson)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("$_pkgname::git+https://git.sr.ht/~hannes/airwindows-lv2#branch=dev")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  local ver="$(grep -A 5 ^project meson.build | grep '^ *version:' | cut -d "'" -f 2)"
+
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  )
+}
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  mkdir -p build
-  meson setup build -Dlv2dir=/usr/lib/lv2
-  meson compile -C $srcdir/${pkgname%-git}/build
+  meson setup \
+    --prefix=/usr \
+    --buildtype=release \
+     $_pkgname-build $_pkgname
+  meson compile -C $_pkgname-build
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  meson install -C $srcdir/${pkgname%-git}/build --destdir ${pkgdir}
-
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp "../${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  meson install -C $_pkgname-build --destdir "$pkgdir"
+  install -vDm 644 $_pkgname/{NOTES,README}.md \
+    -t "$pkgdir"/usr/share/doc/$pkgname
+  install -vDm 644 $_pkgname/LICENSE \
+    -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
 # vim:set ts=2 sw=2 et:
