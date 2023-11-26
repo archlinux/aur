@@ -9,9 +9,9 @@
 pkgname=aria2-pro
 pkgver=1.37.0
 pkgrel=1
-pkgdesc='Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink'
+pkgdesc='Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink (with Aria2 Pro patches)'
 arch=('x86_64')
-url='https://aria2.github.io'
+url='https://github.com/P3TERX/Aria2-Pro-Core'
 license=('GPL')
 depends=('gnutls' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates' 'libssh2')
 checkdepends=('cppunit')
