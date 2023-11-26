@@ -1,12 +1,12 @@
 pkgbase = wipeout-rewrite-git
 	pkgdesc = A re-implementation of the 1995 PSX game wipEout
-	pkgver = 9e90c47
+	pkgver = 90702ce
 	pkgrel = 1
 	url = https://github.com/phoboslab/wipeout-rewrite
 	arch = x86_64
 	license = custom
 	makedepends = git
-	makedepends = make
+	makedepends = cmake
 	makedepends = gcc
 	makedepends = imagemagick
 	depends = sdl2

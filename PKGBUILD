@@ -1,14 +1,14 @@
 # Maintainer: uint2048_t
 
 pkgname=wipeout-rewrite-git
-pkgver=9e90c47
+pkgver=90702ce
 pkgrel=1
 pkgdesc="A re-implementation of the 1995 PSX game wipEout"
 arch=(x86_64)
 url="https://github.com/phoboslab/wipeout-rewrite"
 license=(custom)
 depends=(sdl2 glew)
-makedepends=(git make gcc imagemagick)
+makedepends=(git cmake gcc imagemagick)
              
 source=("git+https://github.com/phoboslab/wipeout-rewrite.git"
 	"https://archive.org/download/wipeout-data.tar/wipeout-data.tar.zst"
@@ -26,13 +26,17 @@ pkgver() {
 }
 
 build() {
+  mkdir wipeout-rewrite/build
   cd wipeout-rewrite
-  make sdl
+  #cmake ..
+  #cmake --build .
+  cmake -B build -S .
+  cmake --build build
 }
 
 package() {
   install -dm757 "${pkgdir}"/opt/wipeout-rewrite
-  install -Dm755 "${srcdir}/wipeout-rewrite/wipegame" "${pkgdir}/opt/wipeout-rewrite"
+  install -Dm755 "${srcdir}/wipeout-rewrite/build/wipeout" "${pkgdir}/opt/wipeout-rewrite/wipegame"
   cp -rv "wipeout" "${pkgdir}/opt/wipeout-rewrite"
   for _size in "512x512" "256x256" "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
   do
