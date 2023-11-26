@@ -11,8 +11,8 @@ url="https://www.gryphel.com/c/minivmac/"
 license=('GPL2')
 makedepends=(tar)
 depends=('libx11')
-source=("https://www.gryphel.com/d/minivmac/minivmac-${pkgver}/minivmac-${pkgver}.src.tgz")
-md5sums=('c84168a8d7df5f1f66270720c48c906c')
+source=("https://www.gryphel.com/d/minivmac/minivmac-${pkgver}/minivmac-${pkgver}.src.tgz" 'minivmacii.desktop')
+md5sums=('c84168a8d7df5f1f66270720c48c906c' '023f65e824000e7f213df2b467a59a99')
 
 # Custom variables below this
 # Screen depth. See https://www.gryphel.com/c/minivmac/options.html#option_depth
@@ -71,5 +71,5 @@ package() {
     cd $srcdir/minivmac
     install -Dm755 minivmac "$pkgdir"/usr/bin/$pkgname
     install -Dm644 src/ICONAPPW.ico "${pkgdir}/usr/share/${pkgname}/${pkgname}.ico"
-    install -Dm644 minivmacii.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 $srcdir/minivmacii.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
