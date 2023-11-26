@@ -1,17 +1,17 @@
 # Maintainer: Jaron Kent-Dobias <jaron@kent-dobias.com>
 
 pkgname=prepare-lastboot
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc='Support for ZFS fallback to a previous boot'
 arch=(any)
 license=(GPL3)
 url='https://kent-dobias.com/system/prepare-lastboot'
-depends=('zfs' 'zfs-utils')
+depends=('zfs' 'zfs-utils' 'binutils')
 makedepends=()
 optdepends=('systemd-ukify: create addon efi executable')
 source=(https://git.kent-dobias.com/system/prepare-lastboot/snapshot/prepare-lastboot-${pkgver}.tar.gz)
-sha256sums=('aaba6dff6cc61d34f146deb0eee38e645d87e77f8b025f13bb284270e65cafea')
+sha256sums=('673a87988de6fb619dbfa2ac31c173b70195a9d200c8b3b2548ce7a4620be527')
 install='prepare-lastboot.install'
 
 package() {
