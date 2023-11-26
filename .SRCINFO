@@ -1,18 +1,18 @@
 pkgbase = vpn-minute
 	pkgdesc = Create an on-demand/disposable VPN in a minute
-	pkgver = 0.3.4
-	pkgrel = 1
+	pkgver = 0.4.0
+	pkgrel = 2
 	url = https://gitlab.com/gui-don/vpn-minute/-/wikis/home
 	arch = any
 	license = GPL3
-	depends = terraform>=1.0.0,
-	depends = ldns>=1.7,
-	depends = wireguard-tools>=1,
-	depends = jq>=1,
+	depends = terraform>=1.5.0
+	depends = ldns>=1.7
+	depends = wireguard-tools>=1
+	depends = jq>=1
 	depends = sudo
 	optdepends = openssh: to SSH to the VPN
 	provides = vpnm
-	source = https://gitlab.com/gui-don/vpn-minute/-/archive/0.3.4/vpn-minute-0.3.4.tar.gz
-	b2sums = 75ce2167509cb0f6e2c962d3d7f1338c88c494708ee17848c0a7cbc1bf4f52e0b017c99ba6f5dbefefca94dbd54f44341768a37c8c8508e1e4ebffd76b91c9a9
+	source = https://gitlab.com/gui-don/vpn-minute/-/archive/0.4.0/vpn-minute-0.4.0.tar.gz
+	b2sums = a4b5362571d16bd5ec615a14f7bcff127bc10796e505d22a0ed6ae5af503512256695e3fb4c7f8b60dd6c5418133f99c96087892108ba7512869529d6ab9aa1f
 
 pkgname = vpn-minute
