@@ -1,3 +1,15 @@
+mlat-client (0.2.13) stable; urgency=medium
+
+  * Support for Python 3.11 PyFloat_Unpack4 API change
+  * Move the CLI scripts {fa-,}mlat-client into their respective packages;
+    replace the existing scripts with setuptools APIs
+  * Add a pyproject.toml with most of the build metadata. setup.py is still needed
+    for building with older Python and for the extension module.
+  * Switch package builds to use pybuild, since everything should be recent enough
+    for that now.
+
+ -- Oliver Jowett <oliver.jowett@flightaware.com>  Mon, 23 Oct 2023 19:52:21 +0800
+
 mlat-client (0.2.12) stable; urgency=medium
 
   * Treat a wider range of timestamps as synthetic
