@@ -15,7 +15,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=0.3.82.7.g11320cf20
+pkgver=1.0.0.0.g4debdcd40
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -50,7 +50,7 @@ makedepends=(
   'opus'
   'python-docutils'
   'readline'
-  'roc-toolkit'
+  'roc-toolkit-git'
   'rtkit'
   'sbc'
   'sdl2'
@@ -97,7 +97,9 @@ build() {
     -D session-managers=[] \
     -D bluez5-codec-lc3plus=disabled \
     -D volume=enabled \
-    -D selinux=disabled
+    -D selinux=disabled \
+    -D man=enabled \
+    -D docs=enabled
 
   meson compile -C build
 }
@@ -116,11 +118,13 @@ _pick() {
   done
 }
 
-_ver=${pkgver:0:3}
-
 package_pipewire-git() {
+
+  _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _spa_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 spaversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+
   depends=(
-    "libpipewire-git=${pkgver}" "libpipewire-${_ver}.so"
+    "libpipewire-git=${pkgver}" "libpipewire-${_api_ver}.so"
     'libcamera' 'libcamera-base.so' 'libcamera.so'
     'openssl' 'libcrypto.so'
     'dbus' 'libdbus-1.so'
@@ -171,48 +175,47 @@ package_pipewire-git() {
 
   (
   cd "${pkgdir}"
-
-  _pick lib usr/include/{pipewire-${_ver},spa-0.2}
-  _pick lib usr/lib/libpipewire-${_ver}.so*
-  _pick lib usr/lib/pkgconfig/lib{pipewire-${_ver},spa-0.2}.pc
+  _pick lib usr/include/{"pipewire-${_api_ver}","spa-${_spa_ver}"}
+  _pick lib "usr/lib/libpipewire-${_api_ver}".so*
+  _pick lib usr/lib/pkgconfig/lib{pipewire-"${_api_ver}","spa-${_spa_ver}"}.pc
 
   _pick audio usr/bin/pipewire-{aes67,avb}
   _pick audio usr/bin/pw-{cat,play,record,midi{play,record},dsdplay}
   _pick audio usr/bin/pw-{loopback,mididump}
   _pick audio usr/bin/spa-{acp-tool,resample}
-  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-avb.so"
-  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-echo-cancel.so"
-  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-fallback-sink.so"
-  _pick audio "usr/lib/pipewire-${_ver}/"libpipewire-module-filter-chain*.so
-  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-loopback.so"
-  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-pipe-tunnel.so"
-  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-protocol-simple.so"
-  _pick audio "usr/lib/pipewire-${_ver}/"libpipewire-module-rtp-{sap,sink,source}.so
-  _pick audio usr/lib/spa-0.2/{aec,audio*,avb,ffmpeg,bluez5,volume}
+  _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-avb.so"
+  _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-echo-cancel.so"
+  _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-fallback-sink.so"
+  _pick audio "usr/lib/pipewire-${_api_ver}/"libpipewire-module-filter-chain*.so
+  _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-loopback.so"
+  _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-pipe-tunnel.so"
+  _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-protocol-simple.so"
+  _pick audio "usr/lib/pipewire-${_api_ver}/"libpipewire-module-rtp-{sap,sink,source}.so
+  _pick audio "usr/lib/spa-${_spa_ver}"/{aec,audio*,avb,ffmpeg,bluez5,volume}
   _pick audio usr/lib/systemd/user/filter-chain.service
   _pick audio usr/share/man/man1/pw-{cat,mididump}.1
   _pick audio usr/share/pipewire/filter-chain*
   _pick audio usr/share/pipewire/pipewire-{aes67,avb}.conf
-  _pick audio usr/share/spa-0.2/bluez5
+  _pick audio "usr/share/spa-${_spa_ver}/bluez5"
 
-  _pick ffado "usr/lib/pipewire-${_ver}/"libpipewire-module-ffado*.so
+  _pick ffado "usr/lib/pipewire-${_api_ver}/libpipewire-module-ffado"*.so
 
   _pick docs usr/share/doc
 
   _pick jack usr/bin/pw-jack
   _pick jack usr/include/jack
   _pick jack usr/lib/libjack*
-  _pick jack "usr/lib/pipewire-${_ver}/libpipewire-module-jackdbus-detect.so"
-  _pick jack "usr/lib/pipewire-${_ver}/libpipewire-module-jack-tunnel.so"
-  _pick jack "usr/lib/pipewire-${_ver}/"libpipewire-module-netjack2-*.so
+  _pick jack "usr/lib/pipewire-${_api_ver}/libpipewire-module-jackdbus-detect.so"
+  _pick jack "usr/lib/pipewire-${_api_ver}/libpipewire-module-jack-tunnel.so"
+  _pick jack "usr/lib/pipewire-${_api_ver}/libpipewire-module-netjack2-"*.so
   _pick jack usr/lib/pkgconfig/jack.pc
-  _pick jack usr/lib/spa-0.2/jack
+  _pick jack "usr/lib/spa-${_spa_ver}/jack"
   _pick jack usr/share/pipewire/jack.conf
   _pick jack usr/share/man/man1/pw-jack.1
 
   _pick pulse usr/bin/pipewire-pulse
-  _pick pulse "usr/lib/pipewire-${_ver}/libpipewire-module-protocol-pulse.so"
-  _pick pulse "usr/lib/pipewire-${_ver}/libpipewire-module-pulse-tunnel.so"
+  _pick pulse "usr/lib/pipewire-${_api_ver}/libpipewire-module-protocol-pulse.so"
+  _pick pulse "usr/lib/pipewire-${_api_ver}/libpipewire-module-pulse-tunnel.so"
   _pick pulse usr/lib/systemd/user/pipewire-pulse.*
   _pick pulse usr/share/pipewire/pipewire-pulse.conf
   _pick pulse usr/share/man/man1/pipewire-pulse.1
@@ -220,49 +223,52 @@ package_pipewire-git() {
   _pick pulse usr/share/alsa-card-profile
 
   _pick alsa usr/lib/alsa-lib
-  _pick alsa usr/lib/spa-0.2/alsa
+  _pick alsa "usr/lib/spa-${_spa_ver}/alsa"
   _pick alsa usr/share/alsa
 
-  _pick zeroconf "usr/lib/pipewire-${_ver}/libpipewire-module-zeroconf-discover.so"
-  _pick zeroconf "usr/lib/pipewire-${_ver}/libpipewire-module-raop-discover.so"
-  _pick zeroconf "usr/lib/pipewire-${_ver}/libpipewire-module-rtp-session.so"
+  _pick zeroconf "usr/lib/pipewire-${_api_ver}/libpipewire-module-zeroconf-discover.so"
+  _pick zeroconf "usr/lib/pipewire-${_api_ver}/libpipewire-module-raop-discover.so"
+  _pick zeroconf "usr/lib/pipewire-${_api_ver}/libpipewire-module-rtp-session.so"
 
   _pick v4l2 usr/bin/pw-v4l2
-  _pick v4l2 "usr/lib/pipewire-${_ver}/v4l2"
-  _pick v4l2 usr/lib/spa-0.2/v4l2
+  _pick v4l2 "usr/lib/pipewire-${_api_ver}/v4l2"
+  _pick v4l2 "usr/lib/spa-${_spa_ver}/v4l2"
 
-  _pick roc "usr/lib/pipewire-${_ver}/libpipewire-module-roc-sink.so"
-  _pick roc "usr/lib/pipewire-${_ver}/libpipewire-module-roc-source.so"
+  _pick roc "usr/lib/pipewire-${_api_ver}/libpipewire-module-roc-sink.so"
+  _pick roc "usr/lib/pipewire-${_api_ver}/libpipewire-module-roc-source.so"
 
-  _pick x11-bell "usr/lib/pipewire-${_ver}/libpipewire-module-x11-bell.so"
+  _pick x11-bell "usr/lib/pipewire-${_api_ver}/libpipewire-module-x11-bell.so"
 
   )
 
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-access.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-adapter.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-client-device.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-client-node.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-combine-stream.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-link-factory.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-metadata.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-portal.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-profiler.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-protocol-native.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-raop-sink.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rt.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rtkit.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-session-manager.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-access.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-adapter.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-client-device.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-client-node.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-combine-stream.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-link-factory.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-metadata.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-portal.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-profiler.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-protocol-native.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-raop-sink.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-rt.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-rtkit.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-session-manager.so"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_libpipewire-git() {
+
+  _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+
   pkgdesc+=" - client library"
   depends=(
     'gcc-libs'
     'glibc'
   )
-  provides=("libpipewire=${pkgver}" "libpipewire-${_ver}.so")
+  provides=("libpipewire=${pkgver}" "libpipewire-${_api_ver}.so")
   conflicts=('libpipewire')
 
   mv lib/* "${pkgdir}"
@@ -282,10 +288,13 @@ package_pipewire-docs-git() {
 }
 
 package_pipewire-audio-git() {
+
+  _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+
   pkgdesc+=" - Audio support"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_api_ver}.so"
     'gcc-libs'
     'glibc'
     'glib2' 'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
@@ -314,23 +323,26 @@ package_pipewire-audio-git() {
 
   mv audio/* "${pkgdir}"
 
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-echo-cancel.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-fallback-sink.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-filter-chain.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-loopback.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-pipe-tunnel.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-protocol-simple.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rtp-sink.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rtp-source.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-echo-cancel.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-fallback-sink.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-filter-chain.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-loopback.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-pipe-tunnel.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-protocol-simple.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-rtp-sink.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-rtp-source.so"
 
   install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
 
 package_pipewire-alsa-git() {
+
+  _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+
   pkgdesc+=" - ALSA configuration"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_api_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'pipewire-session-manager'
     'gcc-libs'
@@ -363,9 +375,12 @@ package_pipewire-alsa-git() {
 }
 
 package_pipewire-ffado-git() {
+
+  _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+
   pkgdesc+=" - FireWire support"
   depends=(
-    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_api_ver}.so"
     "pipewire-git=${pkgver}"
     "pipewire-audio-git=${pkgver}"
     'libffado' 'libffado.so'
@@ -378,11 +393,14 @@ package_pipewire-ffado-git() {
 }
 
 package_pipewire-jack-git() {
+
+  _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+
   pkgdesc+=" - JACK support"
   license+=('GPL2')  # libjackserver
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_api_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'pipewire-session-manager'
     'glibc'
@@ -416,10 +434,13 @@ package_pipewire-jack-git() {
 }
 
 package_pipewire-pulse-git() {
+
+  _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+
   pkgdesc+=" - PulseAudio replacement"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_api_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'pipewire-session-manager'
     'gcc-libs'
@@ -452,17 +473,20 @@ package_pipewire-pulse-git() {
 
   install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-pulseaudio"
 
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-protocol-pulse.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-pulse-tunnel.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-protocol-pulse.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-pulse-tunnel.so"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-roc-git() {
+
+  _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+
   pkgdesc+=" - ROC support"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_api_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'glibc'
     'roc-toolkit' 'libroc.so'
@@ -472,17 +496,20 @@ package_pipewire-roc-git() {
 
   mv roc/* "${pkgdir}"
 
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-roc-sink.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-roc-source.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-roc-sink.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-roc-source.so"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-v4l2-git() {
+
+  _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+
   pkgdesc+=" - V4L2 interceptor"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_api_ver}.so"
     'pipewire-session-manager'
     'glibc'
     'systemd-libs' 'libudev.so'
@@ -497,10 +524,13 @@ package_pipewire-v4l2-git() {
 }
 
 package_pipewire-x11-bell-git() {
+
+  _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+
   pkgdesc+=" - X11 bell"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_api_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'glibc'
     'libcanberra' 'libcanberra.so'
@@ -512,16 +542,19 @@ package_pipewire-x11-bell-git() {
 
   mv x11-bell/* "${pkgdir}"
 
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-x11-bell.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-x11-bell.so"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-zeroconf-git() {
+
+  _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
+
   pkgdesc+=" - Zeroconf support"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_api_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'glibc'
     'avahi' 'libavahi-client.so' 'libavahi-common.so'
@@ -532,8 +565,8 @@ package_pipewire-zeroconf-git() {
 
   mv zeroconf/* "${pkgdir}"
 
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-raop-discover.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-zeroconf-discover.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-raop-discover.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-zeroconf-discover.so"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
