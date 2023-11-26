@@ -1,7 +1,8 @@
-From 8adbc01dc5975a64c55fe594d8c758c71e8183b3 Mon Sep 17 00:00:00 2001
+From dd26e7f35ac8d7bf5e3ede51423f2153b68697db Mon Sep 17 00:00:00 2001
 From: myfreeer <myfreeer@users.noreply.github.com>
 Date: Sun, 22 Jul 2018 19:59:02 +0800
-Subject: [PATCH] option: add option to retry on http 400, 403, 406, or unknown
+Subject: [PATCH 3/3] option: add option to retry on http 400, 403, 406, or
+ unknown
 
  --retry-on-400[=true|false]  Configure whether retry or not when
                               HTTP server returns 400 Bad Request.
@@ -43,7 +44,7 @@ Subject: [PATCH] option: add option to retry on http 400, 403, 406, or unknown
  5 files changed, 108 insertions(+), 6 deletions(-)
 
 diff --git a/src/HttpSkipResponseCommand.cc b/src/HttpSkipResponseCommand.cc
-index a722d77..de4ad6c 100644
+index a722d774..de4ad6ce 100644
 --- a/src/HttpSkipResponseCommand.cc
 +++ b/src/HttpSkipResponseCommand.cc
 @@ -204,7 +204,7 @@ bool HttpSkipResponseCommand::processResponse()
@@ -120,7 +121,7 @@ index a722d77..de4ad6c 100644
                         error_code::HTTP_PROTOCOL_ERROR);
    }
 diff --git a/src/OptionHandlerFactory.cc b/src/OptionHandlerFactory.cc
-index 5768f7b..decb03e 100644
+index 666f914d..6efc2b60 100644
 --- a/src/OptionHandlerFactory.cc
 +++ b/src/OptionHandlerFactory.cc
 @@ -934,6 +934,46 @@ std::vector<OptionHandler*> OptionHandlerFactory::createOptionHandlers()
@@ -171,10 +172,10 @@ index 5768f7b..decb03e 100644
      OptionHandler* op(new BooleanOptionHandler(
          PREF_REUSE_URI, TEXT_REUSE_URI, A2_V_TRUE, OptionHandler::OPT_ARG));
 diff --git a/src/prefs.cc b/src/prefs.cc
-index 937e927..33eff91 100644
+index 2591b9f0..153e66b3 100644
 --- a/src/prefs.cc
 +++ b/src/prefs.cc
-@@ -327,6 +327,14 @@ PrefPtr PREF_ENABLE_ASYNC_DNS6 = makePref("enable-async-dns6");
+@@ -326,6 +326,14 @@ PrefPtr PREF_ENABLE_ASYNC_DNS6 = makePref("enable-async-dns6");
  PrefPtr PREF_MAX_DOWNLOAD_RESULT = makePref("max-download-result");
  // value: 1*digit
  PrefPtr PREF_RETRY_WAIT = makePref("retry-wait");
@@ -190,10 +191,10 @@ index 937e927..33eff91 100644
  PrefPtr PREF_ASYNC_DNS_SERVER = makePref("async-dns-server");
  // value: true | false
 diff --git a/src/prefs.h b/src/prefs.h
-index e1f8397..019e774 100644
+index 338fd6e6..883edc5c 100644
 --- a/src/prefs.h
 +++ b/src/prefs.h
-@@ -280,6 +280,14 @@ extern PrefPtr PREF_ENABLE_ASYNC_DNS6;
+@@ -279,6 +279,14 @@ extern PrefPtr PREF_ENABLE_ASYNC_DNS6;
  extern PrefPtr PREF_MAX_DOWNLOAD_RESULT;
  // value: 1*digit
  extern PrefPtr PREF_RETRY_WAIT;
@@ -209,7 +210,7 @@ index e1f8397..019e774 100644
  extern PrefPtr PREF_ASYNC_DNS_SERVER;
  // value: true | false
 diff --git a/src/usage_text.h b/src/usage_text.h
-index d73b50d..75d34a0 100644
+index 48684565..8ea2541d 100644
 --- a/src/usage_text.h
 +++ b/src/usage_text.h
 @@ -64,6 +64,22 @@
@@ -236,5 +237,5 @@ index d73b50d..75d34a0 100644
    _(" -t, --timeout=SEC            Set timeout in seconds.")
  #define TEXT_MAX_TRIES                                                  \
 -- 
-2.18.0
+2.43.0
 
