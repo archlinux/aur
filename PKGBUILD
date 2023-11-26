@@ -26,10 +26,7 @@ pkgver() {
 }
 
 build() {
-  mkdir wipeout-rewrite/build
   cd wipeout-rewrite
-  #cmake ..
-  #cmake --build .
   cmake -B build -S .
   cmake --build build
 }
