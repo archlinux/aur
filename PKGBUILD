@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=6.2.r112841.g2d9ed64859
+pkgver=6.2.r112846.ge7111ba44a
 pkgrel=1
 _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
 _svt_vp9_ver='43ef8e5e96932421858762392adbbab57c84aebf'
@@ -82,6 +82,7 @@ depends=(
     'onevpl-intel-gpu'
     'openal'
     'opencore-amr'
+    'opencv2'
     'openh264'
     'openjpeg2'
     'openvino'
@@ -238,7 +239,7 @@ build() {
         --enable-libmp3lame \
         --enable-libopencore-amrnb \
         --enable-libopencore-amrwb \
-        --disable-libopencv \
+        --enable-libopencv \
         --enable-libopenh264 \
         --enable-libopenjpeg \
         --enable-libopenmpt \
