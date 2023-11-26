@@ -3,7 +3,7 @@
 _name=grantleetheme
 pkgname=${_name}5
 pkgver=23.08.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for Grantlee theming support'
 arch=(x86_64)
 url='https://kontact.kde.org'
@@ -26,4 +26,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  rm -r "$pkgdir"/usr/share/locale # Conflicts with Qt5 version
 }
