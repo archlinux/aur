@@ -1,13 +1,13 @@
 pkgbase = image-file-name-fixer
 	pkgdesc = A tool to enforce a consistent naming scheme for image files.
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/jeremymreed/image-file-name-fixer
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = pandoc-cli
-	source = image-file-name-fixer-0.0.5.tar.gz::https://github.com/jeremymreed/image-file-name-fixer/archive/refs/tags/v0.0.5.tar.gz
+	source = image-file-name-fixer-0.0.6.tar.gz::https://github.com/jeremymreed/image-file-name-fixer/archive/refs/tags/v0.0.6.tar.gz
 	sha512sums = b58ae405f2141dfd97dad27250b248e8a2066daf0d61626e40d12549d3edf548c4a01850a5cc2820b284dd5f37823cb4f1b03528170850528e6b202715ddef9f
 
 pkgname = image-file-name-fixer
