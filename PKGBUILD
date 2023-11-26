@@ -8,8 +8,8 @@ pkgdesc='Another fork of Chatterino2 with features (or fixes) that are not accep
 arch=('any')
 url=https://github.com/2547techno/technorino
 license=('MIT')
-depends=('qt5-base' 'qt5-tools' 'boost-libs' 'openssl' 'qt5-imageformats' 'qtkeychain-qt5')
-makedepends=('git' 'qt5-svg' 'boost' 'cmake')
+depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6' 'qt6-5compat' 'qt6-svg')
+makedepends=('git' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output')
 provides=('chatterino')
@@ -76,7 +76,9 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_SYSTEM_QTKEYCHAIN=ON \
         -DUSE_PRECOMPILED_HEADERS=OFF \
+		-DBUILD_WITH_QT6=ON \
 		-DCHATTERINO_STATIC_AVIF=OFF \
+		-DCHATTERINO_UPDATER=OFF \
         "${flags[@]}" \
         ..
     cmake --build .
