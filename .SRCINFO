@@ -1,7 +1,7 @@
 pkgbase = dotree
 	pkgdesc = A small, interactive command runner
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KnorrFG/dotree
 	arch = any
 	license = GPL-3.0
