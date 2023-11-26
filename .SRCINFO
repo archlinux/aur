@@ -1,0 +1,32 @@
+pkgbase = r-fuzzyjoin
+	pkgdesc = Join Tables Together on Inexact Matching
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=fuzzyjoin
+	arch = any
+	license = MIT
+	checkdepends = r-ggplot2
+	checkdepends = r-iranges
+	checkdepends = r-testthat
+	depends = r-dplyr
+	depends = r-geosphere
+	depends = r-purrr
+	depends = r-stringdist
+	depends = r-stringr
+	depends = r-tibble
+	depends = r-tidyr
+	optdepends = r-covr
+	optdepends = r-ggplot2
+	optdepends = r-iranges
+	optdepends = r-knitr
+	optdepends = r-maps
+	optdepends = r-qdapdictionaries
+	optdepends = r-readr
+	optdepends = r-rmarkdown
+	optdepends = r-rvest
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/fuzzyjoin_0.1.6.tar.gz
+	md5sums = d472d77dec7889760a9323a90aacc89e
+	sha256sums = 47eaefb73ce8553301e15359bc0e071222fc463c334ca486fa04c68d3e86b968
+
+pkgname = r-fuzzyjoin
