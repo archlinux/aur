@@ -10,7 +10,7 @@ pkgname='dns_tools'
 pkgdesc='DNS Tools for managing DNSSEC aka easy dnssec'
 _gitname='dns_tools'
 
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 url="https://github.com/gene-git/dns_tools"
 
@@ -19,7 +19,7 @@ license=(MIT)
 # tomli only needed for python < 3.11
 depends=('python>3.9' 'python-tomli' 'ldns')
 # To build docs uncommont sphinx/texlive
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry' 'rsync'
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
             # #'python-sphinx' 'texlive-latexextra' # Docs
             )
 _mkpkg_depends=('python>minor')
