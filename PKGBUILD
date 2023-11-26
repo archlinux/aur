@@ -2,7 +2,7 @@
 
 pkgname=sizeof-go
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sizeof"
@@ -11,7 +11,7 @@ depends=()
 makedepends=(go)
 provides=(sizeof)
 conflicts=(sizeof sizeof-pypy)
-source=("https://codeberg.org/balaraz/sizeof/archive/v1.0.tar.gz")
+source=("https://codeberg.org/balaraz/sizeof/archive/v${pkgver}.tar.gz")
 sha256sums=("4dae89ded56b37bc8aeeac52c34e7f70469e12bd70d651b9511a65886856bfc8")
 
 package() {
