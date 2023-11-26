@@ -12,7 +12,7 @@ arch=(x86_64)
 url='https://github.com/midori-browser/core'
 license=(LGPL)
 depends=(aria2 gcr libarchive libpeas libxss webkit2gtk zeitgeist)
-makedepends=(breezy cmake git gobject-introspection intltool ninja vala)
+makedepends=(cmake git gobject-introspection intltool ninja vala)
 optdepends=('gst-plugins-base: HTML5 OGG videos support'
             'gst-plugins-good: HTML5 H264 and WebM videos support'
             'gst-libav: HTML5 H264 videos support')
