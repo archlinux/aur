@@ -1,8 +1,8 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=6.0
-pkgrel=2
+pkgver=6.1
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -54,7 +54,7 @@ depends=(
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'git' 'yasm')
 # 'mingw-w64-opencl-headers'
-_tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
+_tag=3cdfac27d3ea06f8719faed48b4ae2e75e94a463
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
         add-av_stream_get_first_dts-for-chromium.patch
