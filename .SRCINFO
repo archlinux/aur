@@ -1,6 +1,6 @@
 pkgbase = fauxnix-git
 	pkgdesc = Non-invasive* Reproducible* Declarative* config management for Nix non-believers
-	pkgver = r61.2f893ee
+	pkgver = r84.883885a
 	pkgrel = 1
 	url = https://github.com/DvorakDwarf/fauxnix
 	arch = any
