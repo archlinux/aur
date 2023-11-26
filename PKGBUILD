@@ -2,7 +2,7 @@
 # Maintainer: Kevin Concilio (kevin.concilio1@gmail.com)
 
 pkgname=gnome-shell-extension-pano
-pkgver=20
+pkgver=22
 pkgrel=1
 pkgdesc="Next-gen Clipboard Manager (forked from -git package)"
 arch=('any')
