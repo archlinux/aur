@@ -1,7 +1,7 @@
 # Maintainer: wabi <aschrafl@jetnet.ch>
 # Maintainer: pikl <me@pikl.uk>
 pkgname=immich
-pkgrel=1
+pkgrel=2
 pkgver=1.88.2
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -35,6 +35,8 @@ depends=('redis' 'postgresql' 'nodejs' 'nginx'
     # because otherwise a local copy will be built
     # breaking heif conversion
     'libvips>=8.14.3'
+    'openslide'
+    'poppler-glib'
     'imagemagick'
     'libraw'
 )
