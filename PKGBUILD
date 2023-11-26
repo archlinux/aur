@@ -53,29 +53,21 @@ prepare() {
   patch ./tools/build-companion.sh < $srcdir/install.patch
   patch ./companion/src/CMakeLists.txt < $srcdir/remove-ssl-check.patch
   
-  cd $_pkgbase/companion/src/thirdparty/
-  git submodule init
-  git config submodule.yaml-cpp.url $srcdir/yaml-cpp
-  git submodule update --init
-  
-  cd $_pkgbase/radio/src/thirdparty/
-  git submodule init
-  git config submodule.AccessDenied.url $srcdir/AccessDenied
-  git config submodule.FreeRTOS-Kernel.url $srcdir/FreeRTOS
-  git config submodule.libopenui.url $srcdir/libopenui
-  git submodule update --init
-  
-  cd $_pkgbase/radio/src/thirdparty/FreeRTOS/portable/ThirdParty/
-  git submodule init
-  git config submodule.FreeRTOS-Kernel-Community-Supported-Ports.url $srcdir/Community-Supported-Ports
-  git config submodule.FreeRTOS-Kernel-Partner-Supported-Ports.url $srcdir/FreeRTOS-Kernel-Partner-Supported-Ports
-  git submodule update --init
-  
-  cd $_pkgbase/radio/src/thirdparty/libopenui/thirdparty/
-  git submodule init
-  git config submodule.lvgl.url $srcdir/lvgl
-  git config submodule.stb.url $srcdir/stb
-  git submodule update --init
+  declare -A submodules=(
+    ["$_pkgbase/companion/src/thirdparty/"]="yaml-cpp"
+    ["$_pkgbase/radio/src/thirdparty/"]="AccessDenied FreeRTOS-Kernel libopenui"
+    ["$_pkgbase/radio/src/thirdparty/FreeRTOS/portable/ThirdParty/"]="FreeRTOS-Kernel-Community-Supported-Ports FreeRTOS-Kernel-Partner-Supported-Ports"
+    ["$_pkgbase/radio/src/thirdparty/libopenui/thirdparty/"]="lvgl stb"
+  )
+
+  for path in "${!submodules[@]}"; do
+    cd $path
+    git submodule init
+    for module in ${submodules[$path]}; do
+      git config submodule.$module.url $srcdir/$module
+    done
+    git submodule update --init
+  done
 }
 
 build() {
