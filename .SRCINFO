@@ -1,0 +1,23 @@
+pkgbase = phomemo-tools-git
+	pkgdesc = Tools for Phomemo M02/M110/M220 (&c.?) thermal printers
+	pkgver = r49.a97488f
+	pkgrel = 1
+	url = https://github.com/vivier/phomemo-tools
+	arch = any
+	groups = print
+	license = GPL3
+	makedepends = git
+	makedepends = bash
+	depends = bluez-cups
+	depends = python-pybluez
+	depends = python-pycups
+	depends = python-pillow
+	depends = python-pyserial
+	depends = python-setuptools
+	depends = python-pyusb
+	provides = phomemo-tools-git
+	conflicts = phomemo-tools-git
+	source = git+https://github.com/vivier/phomemo-tools.git
+	b2sums = SKIP
+
+pkgname = phomemo-tools-git
