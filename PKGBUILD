@@ -1,18 +1,19 @@
-# Maintainer: Chih-Hsuan Yan <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yan <base64_decode("eXUzYWN0eHQydHR0ZmlteEBjaHllbi5jYwo=")>
 # Contributor: Marcin Mikołajczak <me@m4sk.in>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=lximage-qt
 pkgname=$_pkgname-git
-pkgver=0.14.1.55.g8cc1a6f
-pkgrel=2
+pkgver=1.4.0.2.g6771174
+pkgrel=1
 pkgdesc="The LXQt image viewer"
 arch=("i686" "x86_64")
-url="https://lxqt.org"
+url="https://github.com/lxqt/$_pkgname"
 license=("GPL2")
 depends=("libfm-qt-git" "qt5-x11extras" "qt5-svg" "hicolor-icon-theme" "libexif")
 optdepends=(
   "qt5-imageformats: support for additional image formats (WEBP, TIFF, etc.)"
+  "kimageformats5: support for additional image formats (PCX, XCF, HEIF, etc.)"
 )
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname=$pkgver")
