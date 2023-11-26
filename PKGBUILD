@@ -1,12 +1,12 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Based on core/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 #
 # Pull requests are welcome here:
 # https://github.com/yurikoles-aur/linux-amd-staging-drm-next-git
 #
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgver=6.2.r1160701.672228ae9ba1a
+pkgver=6.3.r1177048.5e4d5d939dd6
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge AMDGPU drivers'
 _product="${pkgbase%-git}"
@@ -35,11 +35,13 @@ makedepends=(
 options=('!strip')
 _srcname=$pkgbase
 source=(
-  "$_srcname::git+ssh://git@gitlab.freedesktop.org/agd5f/linux.git#branch=$_branch"
+  "$_srcname::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=$_branch"
   config  # the main kernel config file
 )
+sha256sums=('SKIP'
+            '6508516de94ed941ae755d89807610dc51fe1229dbfecdf8a82604a8d33242ce')
 b2sums=('SKIP'
-        '09dca0a9339ab9c7958c65a240e6b04b1de56696adaeb919caf1cefbfe62ac06283c1978cd7432576b104a94c177e382bf506ba26cd4150d291af2381db02d91')
+        '10f3d6c5c45bdd49b8863f3fb824404f89625c8be4633dce13ae20cd67c542114f73e30b9d09c5365a1728e0ae411f287610d064f3f9039635162191af3292bb')
 
 pkgver() {
   cd $_srcname
@@ -54,25 +56,18 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-_make() {
-  test -s version
-  make KERNELRELEASE="$(<version)" "$@"
-}
-
 prepare() {
   cd $_srcname
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-  make defconfig
-  make -s kernelrelease > version
-  make mrproper
 
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    src="${src%.zst}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
@@ -80,16 +75,17 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  _make olddefconfig
+  make olddefconfig
   diff -u ../config .config || :
 
+  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  _make all
-#  _make htmldocs
+  make all
+  make htmldocs
 }
 
 _package() {
@@ -119,17 +115,17 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
@@ -236,7 +232,7 @@ _package-docs() {
 pkgname=(
   "${_product}-git"
   "${_product}-headers-git"
-#  "${_product}-docs-git"
+  "${_product}-docs-git"
 )
 for _package in "${pkgname[@]}"; do
   local _package_no_git="${_package%-git}"

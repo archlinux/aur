@@ -1,6 +1,6 @@
 pkgbase = linux-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with bleeding-edge AMDGPU drivers
-	pkgver = 6.2.r1160701.672228ae9ba1a
+	pkgver = 6.3.r1177048.5e4d5d939dd6
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64
@@ -20,10 +20,12 @@ pkgbase = linux-amd-staging-drm-next-git
 	makedepends = python-sphinx
 	makedepends = texlive-latexextra
 	options = !strip
-	source = linux-amd-staging-drm-next-git::git+ssh://git@gitlab.freedesktop.org/agd5f/linux.git#branch=amd-staging-drm-next
+	source = linux-amd-staging-drm-next-git::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=amd-staging-drm-next
 	source = config
+	sha256sums = SKIP
+	sha256sums = 6508516de94ed941ae755d89807610dc51fe1229dbfecdf8a82604a8d33242ce
 	b2sums = SKIP
-	b2sums = 09dca0a9339ab9c7958c65a240e6b04b1de56696adaeb919caf1cefbfe62ac06283c1978cd7432576b104a94c177e382bf506ba26cd4150d291af2381db02d91
+	b2sums = 10f3d6c5c45bdd49b8863f3fb824404f89625c8be4633dce13ae20cd67c542114f73e30b9d09c5365a1728e0ae411f287610d064f3f9039635162191af3292bb
 
 pkgname = linux-amd-staging-drm-next-git
 	pkgdesc = The Linux kernel with bleeding-edge AMDGPU drivers kernel and modules
@@ -41,3 +43,6 @@ pkgname = linux-amd-staging-drm-next-git
 pkgname = linux-amd-staging-drm-next-headers-git
 	pkgdesc = Headers and scripts for building modules for the Linux kernel with bleeding-edge AMDGPU drivers kernel
 	depends = pahole
+
+pkgname = linux-amd-staging-drm-next-docs-git
+	pkgdesc = Documentation for the Linux kernel with bleeding-edge AMDGPU drivers kernel
