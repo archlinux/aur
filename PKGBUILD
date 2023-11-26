@@ -5,7 +5,7 @@
 pkgbase=snes9x-git
 _pkgbase=snes9x
 pkgname=(snes9x-git snes9x-gtk-git)
-pkgver=1.62.3.r128.g153965e5
+pkgver=1.62.3.r149.g97291767
 pkgrel=1
 pkgdesc="Port of the Snes9x emulator (git version)"
 arch=('x86_64')
@@ -43,9 +43,11 @@ build() {
   make
 
 
+  export CFLAGS="$CFLAGS -Wno-error=format-security"
+  export CXXFLAGS="$CXXFLAGS -Wno-error=format=security"
   cd "${srcdir}" && mkdir -p build
   cd "${srcdir}"/build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ../snes9x/gtk
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS="-Wno-error=format-security" -DCMAKE_CXX_FLAGS="-Wno-error=format-security" ../snes9x/gtk
   cmake --build .
 }
 
