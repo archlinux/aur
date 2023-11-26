@@ -1,13 +1,13 @@
 pkgbase = dependency-check-cli
 	pkgdesc = Dependency-Check is a Software Composition Analysis (SCA) tool that attempts to detect publicly disclosed vulnerabilities contained within a project's dependencies.
-	pkgver = 8.4.0
+	pkgver = 9.0.1
 	pkgrel = 1
 	url = https://github.com/jeremylong/DependencyCheck
 	install = dependency-check-cli.install
 	arch = any
 	license = Apache
 	depends = java-runtime
-	source = https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip
-	sha256sums = 937a6bf8ced9d8494767082c1f588f26ea379324cb089dabb045321e8b0ab01a
+	source = https://github.com/jeremylong/DependencyCheck/releases/download/v9.0.1/dependency-check-9.0.1-release.zip
+	sha256sums = 4b1ad9bbbbc300b1955adc47570d7f0c7b9e70261e1dd1c03392de717ae392f9
 
 pkgname = dependency-check-cli
