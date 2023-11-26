@@ -11,7 +11,6 @@ DIM="\e[2m"
 Y="\e[33m"
 R="\e[31m"
 G="\e[32m"
-B="\e[34m"
 
 die() {
   >&2 echo -e "${R}ERROR: $*${NC}"
@@ -26,12 +25,12 @@ needs_arg() {
 
 usage() {
   echo
-  echo -e "${BOLD}Release new AUR version of package.${NC}"
+  echo -e "Release new AUR version of package."
   echo
-  echo -e "${B}Usage:${NC}"
-  echo "    $SCRIPT_NAME [OPTION]..."
+  echo -e "${BOLD}Usage:${NC}"
+  echo -e "    ${DIM}\$${NC} $SCRIPT_NAME [OPTION]..."
   echo
-  echo -e "${B}Options:${NC}"
+  echo -e "${BOLD}Options:${NC}"
   echo "    -c, --commit     Autocommit and push to release repository"
   echo "    -m, --mode       Set cloning method (allowed values: https, ssh)"
   echo -e "${DIM}                     Default: ssh${NC}"
@@ -152,6 +151,7 @@ while getopts 'cm:v:h-:' OPT; do
     # shellcheck disable=SC2295
     OPTARG="${OPTARG#$OPT}" # extract long option argument (may be empty)
     OPTARG="${OPTARG#=}" # if long option argument, remove assigning `=`
+    OPTARG="${OPTARG# }" # if long option argument, remove assigning ` `
   fi
 
   case "$OPT" in
