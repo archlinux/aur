@@ -1,13 +1,13 @@
 pkgbase = aria2-pro
 	pkgdesc = Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink (with Aria2 Pro patches)
 	pkgver = 1.37.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/P3TERX/Aria2-Pro-Core
 	arch = x86_64
 	license = GPL
 	checkdepends = cppunit
 	makedepends = patch
-	depends = gnutls
+	depends = openssl
 	depends = libxml2
 	depends = sqlite
 	depends = c-ares

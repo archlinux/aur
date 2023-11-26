@@ -8,12 +8,12 @@
 
 pkgname=aria2-pro
 pkgver=1.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink (with Aria2 Pro patches)'
 arch=('x86_64')
 url='https://github.com/P3TERX/Aria2-Pro-Core'
 license=('GPL')
-depends=('gnutls' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates' 'libssh2')
+depends=('openssl' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates' 'libssh2')
 makedepends=('patch')
 checkdepends=('cppunit')
 provides=('aria2')
@@ -54,9 +54,7 @@ build() {
 
 check() {
   cd aria2-$pkgver
-  # https://github.com/aria2/aria2/issues/1476
-  # Upstream states "I don't see any issues with aria2 code."
-  make check || echo "Ignoring test failures"
+  make check
 }
 
 package() {
