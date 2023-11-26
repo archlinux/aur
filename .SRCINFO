@@ -1,13 +1,13 @@
 pkgbase = rmenu
 	pkgdesc = Dynamic Wayland Menu Launcher
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/kaedwen/rmenu/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = rmenu-0.1.0.tar.gz::https://github.com/kaedwen/rmenu/archive/refs/tags/0.1.0-1.tar.gz
-	sha256sums = 27fc8d1a4eed1ad8d4311c72459a0c8f1ae91a06347d5884138294517d7c3708
+	source = rmenu-0.1.1.tar.gz::https://github.com/kaedwen/rmenu/archive/refs/tags/0.1.1-1.tar.gz
+	sha256sums = f423779308da5d41ccfc023f7f6565e53560d01cd545cadf6de8675193423707
 
 pkgname = rmenu
