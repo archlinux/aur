@@ -3,7 +3,7 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 
 pkgname=kcgi
-pkgver=0.13.0
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="Minimal CGI and FastCGI library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://kristaps.bsd.lv/kcgi/"
 license=('custom:ISC')
 depends=('glibc')
 makedepends=('git' 'bmake' 'libseccomp' 'libmd')
-_commit='2601ac1ef77345902f4c86f08924cfc678227e86'
+_commit='b5e880fd47041d9f2f88f6e62c54b6e6689de4d5'
 source=("git+https://github.com/kristapsdz/kcgi.git#commit=$_commit")
 b2sums=('SKIP')
 
