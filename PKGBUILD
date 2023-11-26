@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=apk-editor-studio
-pkgver=1.4.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Powerful yet easy to use APK editor"
 arch=('x86_64')
@@ -14,31 +14,27 @@ depends=('qt5-base'
          'android-sdk-platform-tools'
          'android-apktool')
 optdepends=('libsecret: Enable password manager backend')
-makedepends=('qt5-base')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kefir500/apk-editor-studio/archive/v${pkgver}.tar.gz"
-        'deploy.pri.patch')
-sha256sums=('62f2830a282f44d4860330a8f371b1ac27676257fe39a70f6203d34a6633a5e5'
-            'SKIP')
+makedepends=('qt5-base' 'cmake')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kefir500/apk-editor-studio/archive/v${pkgver}.tar.gz")
+sha256sums=('676d236c8025ae1b1ac15e9ebe0617eba1fb7bb7a2728841e6bbab451174d5c9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch < "${srcdir}/deploy.pri.patch"
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
   rm -rf build
   mkdir build
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
-  qmake PREFIX=/usr ..
-  make
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cmake -B ./build -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="/usr/lib/qt"
+  cmake --build ./build --config Release
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -d "${pkgdir}/usr"
-  cp -R bin/linux/bin "${pkgdir}/usr"
-  cp -R bin/linux/share "${pkgdir}/usr"
-  chown -R root:root "${pkgdir}/"
+  install -Dm755 build/bin/apk-editor-studio -t "${pkgdir}/usr/bin/"
+  install -Dm644 dist/linux/share/applications/* -t "${pkgdir}/usr/share/applications/"
+  cp -r dist/linux/share/icons/ "${pkgdir}/usr/share/"
 }
 # vim:set ts=2 sw=2 et:
