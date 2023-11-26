@@ -1,7 +1,7 @@
 pkgbase = akonadi-contacts5
 	pkgdesc = Libraries and daemons to implement Contact Management in Akonadi
 	pkgver = 23.08.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kontact.kde.org
 	arch = x86_64
 	license = LGPL
