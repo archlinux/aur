@@ -1,7 +1,7 @@
 pkgbase = rbfeeder
 	pkgdesc = Software for uploading ADS-B data to RadarBox24.com
 	pkgver = 1.0.10+bullseye
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.radarbox.com/sharing-data
 	arch = armv6h
 	arch = armv7h
@@ -9,7 +9,7 @@ pkgbase = rbfeeder
 	license = GPL2
 	depends = protobuf-c
 	depends = jansson
-	depends = rtl-sdr
+	depends = rtl-sdr=0.8.0
 	backup = etc/rbfeeder.ini
 	source = rbfeeder.sysusers
 	source = rbfeeder.tmpfiles
