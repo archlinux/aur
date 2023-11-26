@@ -1,0 +1,28 @@
+pkgbase = hexcellent-git
+	pkgdesc = Kreative Hexcellent, in the latest snapshot version
+	pkgver = 1.0.r41.0184952
+	pkgrel = 1
+	url = https://github.com/kreativekorp/hexcellent
+	arch = any
+	license = MPL
+	makedepends = jdk-openjdk
+	makedepends = make
+	makedepends = git
+	depends = java-runtime
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = bash
+	depends = libxrender
+	depends = libxtst
+	depends = fontconfig
+	depends = xorg-mkfontscale
+	depends = ttf-font
+	provides = hexcellent
+	source = hexcellent-git::git+https://github.com/kreativekorp/hexcellent.git#branch=main
+	source = hexcellent
+	source = hexcellent.desktop
+	sha256sums = SKIP
+	sha256sums = e162dcb2e837e8403aca06abb9940e755744bd436c73abf1750e072148b5ef48
+	sha256sums = ebcfcd391126ad3243775f771a4ad41092095ff0b3eb80de6d74535467ab3d7c
+
+pkgname = hexcellent-git
