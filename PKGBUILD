@@ -1,12 +1,16 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander
 pkgver=7.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple CLI-based Matrix client"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
 license=('GPL')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel)
 depends=(
   # adapted from requirements.txt:
   "python>3.7"
