@@ -2,7 +2,7 @@
 
 pkgname=tinyfugue-rebirth
 pkgver=5.1.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="flexible, screen-oriented MUD client, with python,lua,atcp,gmcp and option102 support"
 url="http://https://github.com/ingwarsw/tinyfugue"
