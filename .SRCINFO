@@ -1,0 +1,15 @@
+pkgbase = hysp-git
+	pkgdesc = An independent package manager that every hacker deserves
+	pkgver = 0.1.1.r0.g1270871
+	pkgrel = 1
+	url = https://github.com/pwnwriter/hysp
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = hysp
+	conflicts = hysp
+	source = git+https://github.com/pwnwriter/hysp
+	sha512sums = SKIP
+
+pkgname = hysp-git
