@@ -11,6 +11,7 @@ depends=('qt5-base'
          'java-runtime>=8'
          'hicolor-icon-theme'
          'android-tools'
+         'android-sdk-build-tools'
          'android-apktool')
 optdepends=('libsecret: Enable password manager backend')
 makedepends=('qt5-base' 'cmake')

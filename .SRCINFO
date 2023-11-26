@@ -11,6 +11,7 @@ pkgbase = apk-editor-studio
 	depends = java-runtime>=8
 	depends = hicolor-icon-theme
 	depends = android-tools
+	depends = android-sdk-build-tools
 	depends = android-apktool
 	optdepends = libsecret: Enable password manager backend
 	source = apk-editor-studio-1.7.1.tar.gz::https://github.com/kefir500/apk-editor-studio/archive/v1.7.1.tar.gz
