@@ -355,7 +355,8 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
     zvbi lv2 lilv libmysofa openal
     vapoursynth libomxil-bellagio 'rockchip-mpp' libplacebo #'pocketsphinx'
-    lcms2 cairo glib2 harfbuzz libraw1394 openvino
+    lcms2 cairo glib2 harfbuzz libraw1394 openvino libaribcaption
+    opencv2 
   )
   _args+=(
     --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-frei0r --enable-gcrypt
@@ -366,7 +367,8 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-libtwolame --enable-libuavs3d --enable-libvo-amrwbenc --enable-libxavs --enable-libxavs2 --enable-libzmq
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal
     --enable-vapoursynth --enable-omx --enable-rkmpp --enable-libplacebo #--enable-pocketsphinx
-    --enable-lcms2 -enable-libharfbuzz --enable-libopenvino
+    --enable-lcms2 --enable-libharfbuzz --enable-libopenvino --enable-libaribcaption
+    --enable-libopencv
   )
   provides+=(ffmpeg-full)
 else
