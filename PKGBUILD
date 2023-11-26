@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=wildcard
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Test your regular expressions"
 url="https://gitlab.gnome.org/World/Wildcard"

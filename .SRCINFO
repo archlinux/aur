@@ -1,6 +1,6 @@
 pkgbase = wildcard
 	pkgdesc = Test your regular expressions
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Wildcard
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = wildcard
 	makedepends = git
 	makedepends = meson
 	depends = libadwaita
-	source = git+https://gitlab.gnome.org/World/Wildcard.git#tag=v0.3.2
+	source = git+https://gitlab.gnome.org/World/Wildcard.git#tag=v0.3.3
 	sha256sums = SKIP
 
 pkgname = wildcard
