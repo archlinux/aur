@@ -19,8 +19,6 @@ makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib'
 options=('!debug')
 provides=('companion')
 conflicts=('companion')
-_pkgbase=${pkgname%%-*}
-_versuff=${pkgver/./} && _versuff=${_versuff%%.*}
 source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/jbeder/yaml-cpp.git"
         "git+https://github.com/raphaelcoeffic/AccessDenied.git"
@@ -45,6 +43,9 @@ b2sums=('SKIP'
         '6ad8cfff9f623c1d0182713839419b633f421e762d01cd46b2ce817c1552929d9ffadcb38f112d6ac9d3d196346b781d842ad0d9c34d4dbe0d5709a3edbc6026')
 
 prepare() {
+  _pkgbase=$srcdir/${pkgname%%-*}
+  _versuff=${pkgver/./} && _versuff=${_versuff%%.*}
+  
   export EDGETX_VERSION_TAG=$pkgver
   
   cd $_pkgbase
@@ -52,25 +53,25 @@ prepare() {
   patch ./tools/build-companion.sh < $srcdir/install.patch
   patch ./companion/src/CMakeLists.txt < $srcdir/remove-ssl-check.patch
   
-  cd $srcdir/$_pkgbase/companion/src/thirdparty/
+  cd $_pkgbase/companion/src/thirdparty/
   git submodule init
   git config submodule.yaml-cpp.url $srcdir/yaml-cpp
   git submodule update --init
   
-  cd $srcdir/$_pkgbase/radio/src/thirdparty/
+  cd $_pkgbase/radio/src/thirdparty/
   git submodule init
   git config submodule.AccessDenied.url $srcdir/AccessDenied
   git config submodule.FreeRTOS-Kernel.url $srcdir/FreeRTOS
   git config submodule.libopenui.url $srcdir/libopenui
   git submodule update --init
   
-  cd $srcdir/$_pkgbase/radio/src/thirdparty/FreeRTOS/portable/ThirdParty/
+  cd $_pkgbase/radio/src/thirdparty/FreeRTOS/portable/ThirdParty/
   git submodule init
   git config submodule.FreeRTOS-Kernel-Community-Supported-Ports.url $srcdir/Community-Supported-Ports
   git config submodule.FreeRTOS-Kernel-Partner-Supported-Ports.url $srcdir/FreeRTOS-Kernel-Partner-Supported-Ports
   git submodule update --init
   
-  cd $srcdir/$_pkgbase/radio/src/thirdparty/libopenui/thirdparty/
+  cd $_pkgbase/radio/src/thirdparty/libopenui/thirdparty/
   git submodule init
   git config submodule.lvgl.url $srcdir/lvgl
   git config submodule.stb.url $srcdir/stb
@@ -79,7 +80,7 @@ prepare() {
 
 build() {
   cd $_pkgbase
-  ./tools/build-companion.sh $MAKEFLAGS $srcdir/$_pkgbase $srcdir/build $_versuff
+  ./tools/build-companion.sh $MAKEFLAGS $_pkgbase $srcdir/build $_versuff
 }
 
 package() {
