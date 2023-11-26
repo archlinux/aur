@@ -1,12 +1,12 @@
 pkgname=ark-pixel-font-12px-monospaced
-pkgver=2023.08.24
+pkgver=2023.11.26
 pkgrel=1
 pkgdesc="Open source Pan-CJK pixel font / 开源的泛中日韩像素字体 (12px monospaced)"
 arch=('any')
 url="https://github.com/TakWolf/ark-pixel-font"
 license=('OFL')
-source=("https://github.com/TakWolf/ark-pixel-font/releases/download/2023.08.24/ark-pixel-font-12px-monospaced-otf-v2023.08.24.zip")
-sha256sums=('9afb0a1f93c822a6d1802be66f074c6777194ce27ea30924bf410f776be74d5d')  # Calculated SHA256 checksum of the zip file
+source=("https://github.com/TakWolf/ark-pixel-font/releases/download/2023.11.26/ark-pixel-font-12px-monospaced-otf-v2023.11.26.zip")
+sha256sums=('f15d13734fe44831c87509e61ec95256bf0967770e35b75924ef74bcff56725b')  # Calculated SHA256 checksum of the zip file
 
 package() {
   cd "${srcdir}"
