@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=snowfall
-_pkgver=1.84-6.2
+_pkgver=1.84-6.3
 pkgname=r-${_pkgname,,}
-pkgver=1.84.6.2
+pkgver=1.84.6.3
 pkgrel=1
 pkgdesc='Easier cluster computing (based on snow).'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-rmpi
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9b467ab2b992455c6e1aeabe375c5694761fa1cf8aaf4f003ca47102b656353b')
+sha256sums=('2641932b01041e34b7afb1261f649755b4c8d6560080e0e2ee549ffdf3b8b143')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
