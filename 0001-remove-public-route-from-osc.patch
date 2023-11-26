@@ -1,0 +1,36 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Marco Strigl <mstrigl@suse.com>
+Date: Wed, 22 Nov 2023 14:33:06 +0100
+Subject: [PATCH] remove public route from osc
+
+---
+ osc/commandline.py | 2 +-
+ osc/core.py        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/osc/commandline.py b/osc/commandline.py
+index f2892b827c795b4e0218761a20243bf8c4985093..b7c19bc63e1dbd5566ead116890df62a72a4bb05 100644
+--- a/osc/commandline.py
++++ b/osc/commandline.py
+@@ -4860,7 +4860,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+         return (parent_project, parent_package)
+ 
+     def _pdiff_get_exists_and_parent(self, apiurl, project, package):
+-        link_url = makeurl(apiurl, ['public', 'source', project, package])
++        link_url = makeurl(apiurl, ['source', project, package])
+         try:
+             file = http_GET(link_url)
+             root = ET.parse(file).getroot()
+diff --git a/osc/core.py b/osc/core.py
+index bda78ddf70a8990588ebb3752802cce46ef8bd4d..3a5543dc356d9831d5f868ff0ae62155e4135682 100644
+--- a/osc/core.py
++++ b/osc/core.py
+@@ -3938,7 +3938,7 @@ def show_pattern_meta(apiurl: str, prj: str, pattern: str):
+ 
+ 
+ def show_configuration(apiurl):
+-    u = makeurl(apiurl, ['public', 'configuration'])
++    u = makeurl(apiurl, ['configuration'])
+     f = http_GET(u)
+     return f.readlines()
+ 

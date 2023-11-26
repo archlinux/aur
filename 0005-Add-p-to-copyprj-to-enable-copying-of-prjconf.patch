@@ -9,10 +9,10 @@ Subject: [PATCH] Add -p to copyprj to enable copying of prjconf
  2 files changed, 8 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index d1d95e6ea060a76c672ef30278ba5c75f46ad849..92eddde45027feb6d9730263c84a4dcdecdf47d5 100644
+index d67a4184afac79795c2e3dd7a2ca1ad64d77fe9a..2eff6bfb2a38a7919d2c1850a57f49ebe7feba92 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -2106,6 +2106,8 @@ class Osc(cmdln.Cmdln):
+@@ -2114,6 +2114,8 @@ class Osc(cmdln.Cmdln):
                          help='replicate the history of each package.')
      @cmdln.option('-o', '--make-older', action='store_true',
                          help='No idea')
@@ -21,7 +21,7 @@ index d1d95e6ea060a76c672ef30278ba5c75f46ad849..92eddde45027feb6d9730263c84a4dcd
      @cmdln.option('-r', '--re-sign', action='store_true',
                          help='re-sign the binaries')
      @cmdln.option('-m', '--message', metavar='TEXT',
-@@ -2151,6 +2153,7 @@ class Osc(cmdln.Cmdln):
+@@ -2159,6 +2161,7 @@ class Osc(cmdln.Cmdln):
                       makeolder = opts.make_older,
                       resign = opts.re_sign,
                       now = opts.now,
@@ -30,10 +30,10 @@ index d1d95e6ea060a76c672ef30278ba5c75f46ad849..92eddde45027feb6d9730263c84a4dcd
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index a0672d3338b777acda32fb02ac49ae02a3295c26..b7a09c85b71bb403b0334dd51ca9c8754b7c0842 100644
+index d3d4ca9cf3b3cfc6ad966fa3692cfa019d8d567c..66b51f437df47cb09cb7b440338836cf9a79ec62 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -6250,6 +6250,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -6284,6 +6284,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
               withhistory = False,
               makeolder = False,
               resign = False,
@@ -42,7 +42,7 @@ index a0672d3338b777acda32fb02ac49ae02a3295c26..b7a09c85b71bb403b0334dd51ca9c875
               comment = None):
      """
      Create a copy of a project.
-@@ -6271,6 +6273,9 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -6305,6 +6307,9 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['comment'] = comment
      if now:
          query['nodelay'] = '1'

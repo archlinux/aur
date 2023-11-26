@@ -8,10 +8,10 @@ Subject: [PATCH] Add sb2install support to osc
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/osc/build.py b/osc/build.py
-index f59bb6520649fe1388165388e46982413029d3ac..429217916e4673cd67a954e57be04adb62b105ce 100644
+index c93072af1d98e8ba4575f3084a39087a7920d483..096e6c40998e35650b857d09cce41cfc95e10f67 100644
 --- a/osc/build.py
 +++ b/osc/build.py
-@@ -191,6 +191,7 @@ class Buildinfo:
+@@ -192,6 +192,7 @@ class Buildinfo:
                  self.urls[node.get('project') + "/" + node.get('repository')] = baseurl + '/%(arch)s/%(filename)s'
  
          self.vminstall_list = [dep.name for dep in self.deps if dep.vminstall]
@@ -19,7 +19,7 @@ index f59bb6520649fe1388165388e46982413029d3ac..429217916e4673cd67a954e57be04adb
          self.preinstall_list = [dep.name for dep in self.deps if dep.preinstall]
          self.runscripts_list = [dep.name for dep in self.deps if dep.runscripts]
          self.noinstall_list = [dep.name for dep in self.deps if dep.noinstall]
-@@ -236,7 +237,8 @@ class Pac:
+@@ -237,7 +238,8 @@ class Pac:
                    'project', 'repository', 'sysroot',
                    'preinstall', 'vminstall', 'runscripts',
                    'noinstall', 'installonly', 'notmeta',
@@ -29,7 +29,7 @@ index f59bb6520649fe1388165388e46982413029d3ac..429217916e4673cd67a954e57be04adb
              self.mp[i] = node.get(i)
  
          self.mp['buildarch'] = buildarch
-@@ -1421,6 +1423,7 @@ def main(apiurl, store, opts, argv):
+@@ -1430,6 +1432,7 @@ def main(apiurl, store, opts, argv):
  
      rpmlist.append('preinstall: ' + ' '.join(bi.preinstall_list) + '\n')
      rpmlist.append('vminstall: ' + ' '.join(bi.vminstall_list) + '\n')
