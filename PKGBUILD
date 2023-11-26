@@ -1,20 +1,22 @@
+# Maintainer: Yvaniak <ewen at philippot dot biz>
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
 # For ISSUES, REQUESTS, and QUESTIONS:
-# https://github.com/sudoforge/pkgbuilds
+# feel free to let on the aur package page
+
 
 pkgname=buildifier-bin
-pkgver=4.2.5
+pkgver=6.4.0
 pkgrel=1
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64')
 license=('Apache')
 url='https://github.com/bazelbuild/buildtools'
 source=(
-  "${pkgname%-bin}-${pkgver}::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-amd64"
-  "LICENSE-${pkgver}::https://raw.githubusercontent.com/bazelbuild/buildtools/${pkgver}/LICENSE"
+  "${pkgname%-bin}-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64"
+  "LICENSE-${pkgver}::https://raw.githubusercontent.com/bazelbuild/buildtools/v${pkgver}/LICENSE"
 )
-sha256sums=('f94e71b22925aff76ce01a49e1c6c6d31f521bbbccff047b81f2ea01fd01a945'
+sha256sums=('be63db12899f48600bad94051123b1fd7b5251e7661b9168582ce52396132e92'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
