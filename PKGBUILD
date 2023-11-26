@@ -33,10 +33,8 @@ prepare() {
 build() {
 	cd "$srcdir/$_pkgname-$_ver"
 
-	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib/openssl-1.1 \
-		shared no-ssl3-method enable-ec_nistp_64_gcc_128 linux-x86_64 \
-		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
+		shared no-ssl3-method enable-ec_nistp_64_gcc_128 linux-x86_64
 
 	make depend
 	make
