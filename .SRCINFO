@@ -1,4 +1,4 @@
-pkgbase = python-lava
+pkgbase = python-lava-nc
 	pkgdesc = A software framework for developing neuro-inspired applications and mapping them to neuromorphic hardware
 	pkgver = 0.9.0
 	pkgrel = 1
@@ -9,7 +9,7 @@ pkgbase = python-lava
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = python-lava-0.9.0.tar.gz::https://github.com/lava-nc/lava/archive/v0.9.0.tar.gz
+	source = python-lava-nc-0.9.0.tar.gz::https://github.com/lava-nc/lava/archive/v0.9.0.tar.gz
 	sha512sums = 84d7d327979b72a862ef81ae66efdbc4e4c4696290e2fa1d9b56f368816018772d044350bcd705618b1a296d23d994d105eafb50dcef09226c09e2eefe4c99df
 
-pkgname = python-lava
+pkgname = python-lava-nc

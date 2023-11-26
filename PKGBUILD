@@ -1,6 +1,6 @@
 # Maintainer: Alexey Nurmukhametov [nurmukhametov] <echo YWxleEBudXJtdWtoYW1ldG92LnJ1Cg== | base64 -d>
 
-pkgname=python-lava
+pkgname=python-lava-nc
 pkgver=0.9.0
 pkgrel=1
 pkgdesc='A software framework for developing neuro-inspired applications and mapping them to neuromorphic hardware'
