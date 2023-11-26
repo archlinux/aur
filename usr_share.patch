@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Fredrick R. Brennan <copypaste@kittens.ph>
+Date: Thu, 12 Sep 2013 21:01:00 +0800
+Subject: [PATCH] jpeg2eps: fix hardcoded paths
+
+---
+ jpeg2eps | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/jpeg2eps_source/jpeg2eps b/src/jpeg2eps_source/jpeg2eps
+old mode 100755
+new mode 100644
+index 5d5c36d..e2097e9
+--- a/src/jpeg2eps_source/jpeg2eps
++++ b/src/jpeg2eps_source/jpeg2eps
+@@ -42,12 +42,12 @@
+ # Auto-detect paths for jpeg2eps.ps and viewjpeg.ps
+ # ... flexible but slow.
+ # uses which ==> need to chmod +x jpeg2eps.ps viewjpeg.ps
+-	jpeg2epspath=`which jpeg2eps.ps | tail -1`
+-	viewjpegpath=`which viewjpeg.ps | tail -1`
++#	jpeg2epspath=`which jpeg2eps.ps | tail -1`
++#	viewjpegpath=`which viewjpeg.ps | tail -1`
+ 
+ # Hard-coded paths for speed (change these to suit your installation):
+-#	jpeg2epspath="~/bin/jpeg2eps.ps"
+-#	viewjpegpath="~/bin/viewjpeg.ps"
++	jpeg2epspath="/usr/share/jpeg2eps/bin/jpeg2eps.ps"
++	viewjpegpath="/usr/share/jpeg2eps/bin/viewjpeg.ps"
+ 
+ 	exitcode=0
+ 	display=0

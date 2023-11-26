@@ -1,0 +1,18 @@
+# .gitignore for Arch Linux packages
+
+# download files
+*.tar.*
+# package files
+*.pkg.tar.*
+# patch generated files
+**.orig
+**.rej
+**.log
+# vim swap files
+**.swp
+**.swo
+# pacman package signature files
+**.sig
+# makepkg generated files
+src/
+pkg/
