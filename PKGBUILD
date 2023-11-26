@@ -2,7 +2,7 @@
 # Maintainer: KreativeKorp <support@kreativekorp.com>
 pkgname=bitsnpicas-git
 pkgver=2.0.2.r319.8c20bb4
-pkgrel=2
+pkgrel=3
 pkgdesc="Kreative BitsNPicas, with MapEdit and KeyEdit, in the latest snapshot version"
 arch=("any")
 url="https://github.com/kreativekorp/bitsnpicas"
