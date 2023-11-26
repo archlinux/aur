@@ -1,0 +1,11 @@
+--- a/cmake/OpenCVCompilerOptions.cmake
++++ b/cmake/OpenCVCompilerOptions.cmake
+@@ -114,8 +114,6 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+   add_extra_compiler_option(-Wformat)
+   add_extra_compiler_option(-Werror=format-security -Wformat)
+   add_extra_compiler_option(-Wmissing-declarations)
+-  add_extra_compiler_option(-Wmissing-prototypes)
+-  add_extra_compiler_option(-Wstrict-prototypes)
+   add_extra_compiler_option(-Wundef)
+   add_extra_compiler_option(-Winit-self)
+   add_extra_compiler_option(-Wpointer-arith)
