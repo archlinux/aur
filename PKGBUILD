@@ -44,7 +44,6 @@ b2sums=('SKIP'
 
 prepare() {
   _pkgbase=$srcdir/${pkgname%%-*}
-  _versuff=${pkgver/./} && _versuff=${_versuff%%.*}
   
   export EDGETX_VERSION_TAG=$pkgver
   
@@ -72,13 +71,10 @@ prepare() {
 
 build() {
   cd $_pkgbase
-  ./tools/build-companion.sh $MAKEFLAGS $_pkgbase $srcdir/build $_versuff
+  ./tools/build-companion.sh $MAKEFLAGS $_pkgbase $srcdir/build
 }
 
 package() {
   cd $srcdir/build/native
   make DESTDIR=$pkgdir/ install
-  cd $pkgdir/usr/share/applications
-  sed -i -e 's/Categories=Application/Categories=Utility/' companion$_versuff.desktop
-  sed -i -e 's/Categories=Application/Categories=Utility/' simulator$_versuff.desktop
 }
