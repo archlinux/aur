@@ -2,7 +2,7 @@
 pkgname=cyme-bin
 _pkgname=cyme
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="List system USB buses and devices; a modern cross-platform lsusb"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tuna-f1sh/cyme"
@@ -21,5 +21,5 @@ package() {
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${_pkgname}/" LICENSE
   install -Dm 644 -t "${pkgdir}/usr/share/man/man1/${_pkgname}.1" ${_pkgname}.1
   install -Dm 644 -t "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}" autocomplete/${_pkgname}.bash
-  install -Dm 644 -t "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}" autocomplete/_${_pkgname}
+  install -Dm 644 -t "${pkgdir}/usr/share/zsh/site-functions/" autocomplete/_${_pkgname}
 }
