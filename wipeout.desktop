@@ -1,6 +1,6 @@
 [Desktop Entry]
 Categories=Game
-Comment[en_US]=
+Comment[en_US]=A re-implementation of the 1995 PSX game WipEout
 Comment=
 Exec=/opt/wipeout-rewrite/wipegame
 GenericName[en_US]=
@@ -9,7 +9,6 @@ Icon=wipeout
 MimeType=
 Name[en_US]=WipEout
 Name=WipEout
-Path=/opt/wipeout-rewrite
 StartupNotify=false
 Terminal=false
 TerminalOptions=
