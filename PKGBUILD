@@ -6,7 +6,7 @@ _pkgid="${pkgname%-bin}-${pkgver}"
 arch=("any")
 url="https://github.com/KnorrFG/dotree"
 _branch='main'
-pkgver=r53.513fa04
+pkgver=r56.fe473a6
 pkgrel=1
 license=("GPL-3.0")
 makedepends=("git" "cargo")
@@ -26,12 +26,12 @@ pkgver() {
 build() {
   cd $pkgname
 
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "$pkgname"
-  # Do we need to do any checks?
+  cargo test --frozen
 }
 
 package() {

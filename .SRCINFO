@@ -1,6 +1,6 @@
 pkgbase = dotree-git
 	pkgdesc = A small, interactive command runner
-	pkgver = r53.513fa04
+	pkgver = r56.fe473a6
 	pkgrel = 1
 	url = https://github.com/KnorrFG/dotree
 	arch = any
