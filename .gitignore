@@ -1,3 +1,4 @@
-/pkg/
-/src/
-/mitmproxy*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

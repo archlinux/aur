@@ -1,45 +1,56 @@
 pkgbase = mitmproxy-git
-	pkgdesc = An interactive TLS-capable intercepting HTTP proxy.
-	pkgver = 5.0.0.dev.a08c22d
+	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
+	pkgver = 10.1.5.r2.gd72b92bdf
 	pkgrel = 1
 	url = https://mitmproxy.org/
 	arch = any
 	license = MIT
-	checkdepends = python-beautifulsoup4
-	checkdepends = python-flask
-	checkdepends = python-pytest-runner
+	checkdepends = python-asynctest
+	checkdepends = python-hypothesis
+	checkdepends = python-parver
 	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-timeout
+	checkdepends = python-tox-current-env
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-aioquic
+	depends = python-asgiref
 	depends = python-blinker
-	depends = python-brotlipy
-	depends = python-click
+	depends = python-brotli
+	depends = python-certifi
 	depends = python-cryptography
+	depends = python-flask
 	depends = python-h11
 	depends = python-h2
 	depends = python-hyperframe
 	depends = python-kaitaistruct
 	depends = python-ldap3
+	depends = python-mitmproxy-rs
+	depends = python-msgpack
 	depends = python-passlib
-	depends = python-pyasn1
+	depends = python-protobuf
+	depends = python-psutil
+	depends = python-publicsuffix2
+	depends = python-pylsqpack
 	depends = python-pyopenssl
 	depends = python-pyparsing
 	depends = python-pyperclip
 	depends = python-requests
 	depends = python-ruamel-yaml
-	depends = python-setuptools
 	depends = python-sortedcontainers
 	depends = python-tornado
+	depends = python-typing_extensions
 	depends = python-urwid
+	depends = python-werkzeug
 	depends = python-wsproto
-	depends = python-asynctest
-	depends = python-parver
-	depends = python-protobuf>=3.6.0
-	depends = python-brotli>=1.0
-	depends = python-zstandard>=0.11.0
-	depends = python-publicsuffix2>=2.20190812
+	depends = python-zstandard
 	provides = mitmproxy
 	conflicts = mitmproxy
 	source = git+https://github.com/mitmproxy/mitmproxy.git
 	sha1sums = SKIP
 
 pkgname = mitmproxy-git
-
