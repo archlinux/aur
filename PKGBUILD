@@ -1,4 +1,5 @@
-# Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
+# Maintainer: Dingisoul <dingiso dot oah at gmail dot com>
+# Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-hidpi-git
 _pkgname=sway
