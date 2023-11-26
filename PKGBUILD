@@ -33,10 +33,8 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared enable-ktls enable-ec_nistp_64_gcc_128 linux-x86_64 \
-		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
+		shared enable-ktls enable-ec_nistp_64_gcc_128 linux-x86_64
 
 	make depend
 	make
