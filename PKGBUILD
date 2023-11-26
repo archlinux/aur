@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Python ESC/POS is a library which lets the user have access to all those printers handled by ESC/POS commands, as defined by Epson, from a Python application.'
 arch=('any')
 license=('MIT')
-url='https://github.com/python-escpos/python-escpos'
+url='https://pypi.python.org/pypi/python-escpos'
 
 depends=('python' 'python-pyusb' 'python-pyserial' 'python-pillow' 'python-qrcode' 'python-barcode' 'python-importlib_resources')
 provides=('python-escpos')
