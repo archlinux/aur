@@ -31,7 +31,7 @@ usage() {
   echo -e "    ${DIM}\$${NC} $SCRIPT_NAME [OPTION]..."
   echo
   echo -e "${BOLD}Options:${NC}"
-  echo "    -c, --commit     Autocommit and push to release repository"
+  echo "    -c, --commit     Autocommit release changes"
   echo "    -m, --mode       Set cloning method (allowed values: https, ssh)"
   echo -e "${DIM}                     Default: ssh${NC}"
   echo "    -v, --version    Release from given version"
