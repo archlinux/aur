@@ -1,7 +1,7 @@
 pkgbase = xeve-git
 	pkgdesc = MPEG-5 EVC (Essential Video Coding) encoder (git version)
 	pkgver = 0.4.3.r5.gcebfd5c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mpeg5/xeve/
 	arch = x86_64
 	license = BSD

@@ -2,7 +2,7 @@
 
 pkgname=xeve-git
 pkgver=0.4.3.r5.gcebfd5c
-pkgrel=1
+pkgrel=2
 pkgdesc='MPEG-5 EVC (Essential Video Coding) encoder (git version)'
 arch=('x86_64')
 url='https://github.com/mpeg5/xeve/'
@@ -28,7 +28,7 @@ pkgver() {
 }
 
 build() {
-    export CFLAGS+=' -ffat-lto-objects'
+    export CFLAGS+=' -mno-xsave -ffat-lto-objects'
     cmake -B build -S xeve \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
