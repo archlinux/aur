@@ -1,6 +1,6 @@
 pkgbase = ugene
 	pkgdesc = A free open-source cross-platform bioinformatics software
-	pkgver = 48.1
+	pkgver = 49.1
 	pkgrel = 1
 	url = http://ugene.net
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = ugene
 	depends = libxtst
 	depends = qt5-script
 	depends = qt5-svg
-	source = ugene-48.1.tar.gz::https://github.com/ugeneunipro/ugene/archive/refs/tags/48.1.tar.gz
-	sha256sums = 6c17825fe072a07b936e9fbbcbc0cf2d16d6cac94578a354b02502771ea2ec05
+	source = ugene-49.1.tar.gz::https://github.com/ugeneunipro/ugene/archive/refs/tags/49.1.tar.gz
+	sha256sums = 618cd06dd72ab9cb0ba91b0557a2c66f36a7d592b45f628eb787519bed14cb1c
 
 pkgname = ugene
 
@@ -24,5 +24,5 @@ pkgname = ugene-cuda
 	depends = qt5-script
 	depends = qt5-svg
 	depends = cuda
-	provides = ugene=48.1
+	provides = ugene=49.1
 	conflicts = ugene
