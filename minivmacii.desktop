@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Mini vMac II
+Comment=A miniature Macintosh II emulator
+Exec=/usr/bin/minivmacii
+Icon=/usr/share/minivmacii/minivmacii.ico
+Terminal=False

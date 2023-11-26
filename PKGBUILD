@@ -70,4 +70,6 @@ build() {
 package() {
     cd $srcdir/minivmac
     install -Dm755 minivmac "$pkgdir"/usr/bin/$pkgname
+    install -Dm644 src/ICONAPPW.ico "${pkgdir}/usr/share/${pkgname}/${pkgname}.ico"
+    install -Dm644 minivmacii.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
