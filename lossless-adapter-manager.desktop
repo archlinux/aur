@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Lossless Adapter Manager
+Comment=Management application for the Input Integrety Lossless Adapter Gamecube adapter
+Path=~/.config/LosslessAdapterManager2/
+Exec=lossless-adapter-manager
+Icon=lossless-adapter-manager
+Terminal=false
+Categories=Game;
