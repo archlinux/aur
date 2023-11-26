@@ -1,25 +1,23 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Szymon Scholz <first name last name [at] gmail [dot] com>
 
 pkgname=emulsion-bin
-_name="${pkgname%-bin}"
-pkgver=9.0
-pkgrel=3
+pkgver=10.4
+pkgrel=1
 pkgdesc="A fast and minimalistic image viewer (binary release)"
+url="https://github.com/ArturKovacs/emulsion"
 arch=('x86_64')
-url="https://arturkovacs.github.io/emulsion-website"
 license=('MIT')
-depends=('gcc-libs')
-optdepends=('hicolor-icon-theme')
-provides=("$_name")
-conflicts=("$_name")
-options=(!emptydirs)
-source=("$_name-$pkgver.deb::https://github.com/arturkovacs/emulsion/releases/download/v$pkgver/Emulsion-Linux.deb-v$pkgver.deb")
-sha256sums=('f66ab3b655af4da6e4c3fb60540c241cc9e7055ab70a0638aedd8af484d90427')
+depends=('hicolor-icon-theme' 'libavif')
+provides=("emulsion")
+conflicts=("emulsion")
+source=("$url/releases/download/v$pkgver/Emulsion-Linux.deb-v$pkgver.deb")
+sha256sums=('823fde86860ded2335c59114fc377fc02d14738ba5c1040cce54c501f5516a3f')
 
 package() {
-  tar -C "${pkgdir}" -xf data.tar.gz
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  mv "$pkgdir/usr/lib/$_name/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/"
-  chown -R root:root "$pkgdir/"
+  tar -C "$pkgdir" -xf data.tar.gz
+  install -Dm644 "$pkgdir/usr/lib/emulsion/LICENSE.txt" -t "$pkgdir/usr/share/licenses/emulsion"
+# Fix error
+  ln -s /usr/lib/libdav1d.so "$pkgdir/usr/lib/libdav1d.so.6"
 }
