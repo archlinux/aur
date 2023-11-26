@@ -5,10 +5,10 @@ pkgbase = kanha-bin
 	url = https://github.com/pwnwriter/kanha
 	arch = x86_64
 	license = MIT
-	makedepends = rust
-	makedepends = cargo
 	depends = openssl
 	depends = gcc-libs
+	provides = kanha
+	conflicts = kanha
 	source = kanha-bin-0.1.1.tar.gz::https://github.com/pwnwriter/kanha/releases/download/v0.1.1/kanha-0.1.1-x86_64-unknown-linux-gnu.tar.gz
 	sha512sums = e168fbadfcce2b0db12fdff89a9ab21bfb782fce7e2b0a09a84e67f5604471dbf9f3eb984d219c69df989f50320d0f82dc99002a244af86d38cf7c9ccd2f0e35
 
