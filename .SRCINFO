@@ -1,17 +1,17 @@
 pkgbase = r-spelling
 	pkgdesc = Tools for Spell Checking in R
-	pkgver = 2.2
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spelling
 	arch = any
 	license = MIT
-	depends = r
 	depends = r-commonmark
-	depends = r-xml2
-	depends = r-hunspell>=3.0
+	depends = r-hunspell
 	depends = r-knitr
+	depends = r-xml2
 	optdepends = r-pdftools
-	source = https://cran.r-project.org/src/contrib/spelling_2.2.tar.gz
-	sha256sums = 740dc8546d096f89d796d8778d522ae980fbde6e0d105170c2f8881d7892369d
+	source = https://cran.r-project.org/src/contrib/spelling_2.2.1.tar.gz
+	md5sums = 47128c93e6cace1644edddfbb127de7b
+	sha256sums = 4fd4afcb5caa010630372c2dd32c34e8fc02ae385425c1f4b7dae697f8ab256f
 
 pkgname = r-spelling
