@@ -2,7 +2,7 @@
 
 pkgname='ttf-whatsapp-emoji'
 pkgver='2.23.2.72'
-pkgrel=2
+pkgrel=3
 pkgdesc='TrueType WhatsApp emoji'
 arch=('any')
 url='https://github.com/dmlls/whatsapp-emoji-linux'
@@ -19,7 +19,7 @@ conflicts=(
 
 source=(
     "WhatsAppEmoji.ttf::$url/releases/download/2.23.2.72-1/WhatsAppEmoji.ttf"
-    "45-whatsapp-emoji.conf"
+    "66-whatsapp-emoji.conf"
 )
 
 sha512sums=(
@@ -32,7 +32,8 @@ package() {
     install -m 644 WhatsAppEmoji.ttf "${pkgdir}/usr/share/fonts/TTF/"
 
     # Install fontconfig files
-    install -Dm 644 45-whatsapp-emoji.conf -t "${pkgdir}/usr/share/fontconfig/conf.avail/"
+    install -Dm 644 66-whatsapp-emoji.conf -t "${pkgdir}/usr/share/fontconfig/conf.avail/"
     install -d "${pkgdir}/etc/fonts/conf.d"
-    ln -s "/usr/share/fontconfig/conf.avail/45-whatsapp-emoji.conf" "${pkgdir}/etc/fonts/conf.d/"
+    ln -s "/usr/share/fontconfig/conf.avail/66-whatsapp-emoji.conf" "${pkgdir}/etc/fonts/conf.d/"
 }
+
