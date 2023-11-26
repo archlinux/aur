@@ -9,6 +9,7 @@ Icon=wipeout
 MimeType=
 Name[en_US]=WipEout
 Name=WipEout
+Path=/opt/wipeout-rewrite
 StartupNotify=false
 Terminal=false
 TerminalOptions=
