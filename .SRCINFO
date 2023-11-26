@@ -15,7 +15,7 @@ pkgbase = bitsnpicas-git
 	depends = libxrender
 	depends = libxtst
 	depends = fontconfig
-	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
 	depends = ttf-font
 	provides = bitsnpicas
 	source = bitsnpicas-git::git+https://github.com/kreativekorp/bitsnpicas.git#branch=master

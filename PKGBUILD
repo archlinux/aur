@@ -7,7 +7,7 @@ pkgdesc="Kreative BitsNPicas, with MapEdit and KeyEdit, in the latest snapshot v
 arch=("any")
 url="https://github.com/kreativekorp/bitsnpicas"
 license=("MPL")
-depends=("java-runtime" "hicolor-icon-theme" "xdg-utils" "bash" "libxrender" "libxtst" "fontconfig" "xorg-mkfontdir" "ttf-font")
+depends=("java-runtime" "hicolor-icon-theme" "xdg-utils" "bash" "libxrender" "libxtst" "fontconfig" "xorg-mkfontscale" "ttf-font")
 makedepends=("jdk-openjdk" "make" "git")
 provides=("bitsnpicas")
 source=(
@@ -49,8 +49,13 @@ package() {
   install -D -m644 -T "${srcdir}/${pkgname}/main/java/BitsNPicas/dep/mapedit.desktop" "${pkgdir}/usr/share/applications/mapedit.desktop"
   install -D -m644 -T "${srcdir}/${pkgname}/main/java/BitsNPicas/dep/keyedit.desktop" "${pkgdir}/usr/share/applications/keyedit.desktop"
 
-  # (doesn't work)
-  # mkdir -p ${pkgdir}/usr/local
-  # ln -s ${pkgdir}/usr/lib ${pkgdir}/usr/local
-  # ln -s ${pkgdir}/usr/bin ${pkgdir}/usr/local
+  # That should work...
+  ln -sf /usr/lib/bitsnpicas.jar /usr/local/lib/bitsnpicas.jar
+  ln -sf /usr/lib/mapedit.jar /usr/local/lib/mapedit.jar
+  ln -sf /usr/lib/keyedit.jar /usr/local/lib/keyedit.jar
+  ln -sf /usr/lib/KSFL.jar /usr/local/lib/KSFL.jar
+  ln -sf /usr/lib/ual.jar /usr/local/lib/ual.jar
+  ln -sf /usr/bin/bitsnpicas /usr/local/bin/bitsnpicas
+  ln -sf /usr/bin/keyedit /usr/local/bin/keyedit
+  ln -sf /usr/bin/mapedit /usr/local/bin/mapedit
 }
