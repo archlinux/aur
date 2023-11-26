@@ -1,15 +1,15 @@
 # Maintainer: ldev <ldev dot eu dot org>
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 
 pkgname=git-credential-pass
-pkgdesc="A simple git credentials helper for gnu pass"
+pkgdesc="A simple git credentials helper for pass"
 license=('MIT')
 url="https://github.com/Xgames123/$pkgname"
 arch=('any')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('168dac3e27c068e4747415dbbb56a53df8a699c649a7fca860bcdabf32710289')
+sha256sums=('e18a238ccc7b1718be383d6a5acffaef259085fb6fbfab2ec96516b500243840')
 conflicts=("git-credential-pass-git")
 makedepends=(
 cargo
