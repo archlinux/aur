@@ -1,7 +1,7 @@
 # Maintainer: Your name <bros at brocode dot sh>
 
 pkgname=fw
-pkgver=2.18.0
+pkgver=2.19.0
 pkgrel=1
 pkgdesc="Workspace productivity booster"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:WTFPL')
 depends=('fzf')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('44ccad2e630b6d8dd46475af957213b49b8062789a25d75f1e1c62feb56a0a6b')
+sha256sums=('4daae47d2398aa0d5269baa6b416ddd2c58c9bc47c0238884392e765d4fed0b0')
 
 build() {
   cd "$pkgname-$pkgver"
