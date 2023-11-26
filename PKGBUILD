@@ -2,8 +2,8 @@
 
 pkgname=retroshare-bin
 _pkgname=retroshare
-pkgver='0.6.6'
-_subver='20210324'
+pkgver='0.6.7'
+_subver='20231116'
 pkgrel=1
 pkgdesc='Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.'
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}-${_subver}-x86_64.pkg.tar.zst::https://download.opensuse.org/repositories/network:/retroshare/Arch_Community_standard/x86_64/${_pkgname}-gui-${pkgver}-${_subver}-x86_64.pkg.tar.zst"
                "${pkgname}-${pkgver}-${_subver}-x86_64.pkg.tar.zst.sig::https://download.opensuse.org/repositories/network:/retroshare/Arch_Community_standard/x86_64/${_pkgname}-gui-${pkgver}-${_subver}-x86_64.pkg.tar.zst.sig")
 
-b2sums_x86_64=('31596d898a7e918e994b52426c156a231a6a78417df1af7ad950abf5a30a21035d0ead0f3c4b0087bbb9128d8d08c6f027b515b971a1e6a29a909cfa5de79dda'
+b2sums_x86_64=('4f300f6c27df5afad4fe41cbfdd687d7f024e5d5213acadae7f42e5aaa225d16a1dbd8692f01c5dd641d8e181d5740e43f387034158c1e251989f60f53460f26'
                'SKIP')
 
 # Import key with:
