@@ -2,12 +2,17 @@
 
 pkgname=xkcd-git
 pkgver=r56.9c26c67
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='CLI tool to fetch XKCD comics'
 url='https://github.com/itsron717/XKCD'
 depends=('python-click' 'python-pillow' 'python-requests')
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+optdepends=(
+    'python-sh: to display the XKCD banner'
+    'lolcat: to display the XKCD banner'
+    'figlet: to display the XKCD banner'
+)
 license=('MIT')
 arch=('any')
 provides=("xkcd")
