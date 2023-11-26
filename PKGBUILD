@@ -1,6 +1,6 @@
 pkgname=openloco
 _pkgname=OpenLoco
-pkgver=23.10
+pkgver=23.11
 pkgrel=1
 pkgdesc="An open source re-implementation of Chris Sawyer's Locomotion"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ if [[ "$CARCH" = "x86_64" ]]; then
 fi
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	"openloco.desktop")
-sha256sums=('c7e592bec24136a100e180b58434542dc021a5501ba32189345ef2dca46a11bd'
+sha256sums=('b2e769b46c3d045ff761ee52e4ae2128b4e6eb86ca6896f5663db8cefc11c51b'
             '57512f00144c1e0d2cc91c3adbf38460d5ec1223afc27bd16e1271760bce02ae')
 
 build() {
