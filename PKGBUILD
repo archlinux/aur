@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Roth <elthoro@gmx.de>
 pkgname=inyokaedit
-pkgver=0.27.3
+pkgver=0.27.4
 pkgrel=1
 pkgdesc='Editor for Inyoka based portals'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-webengine' 'hicolor-icon-theme')
 optdepends=('inyokaedit-plugins: Plugins for InyokaEdit'
             'inyokaedit-data-ubuntuusersde: ubuntuusers.de community files')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/inyokaproject/inyokaedit/archive/v$pkgver.tar.gz")
-sha256sums=('21606e7f71fb044b79742fdaee21d25574b5a969b19c8e0379667cefc281e47d')
+sha256sums=('14b3bc661c2de31fae63cc099778545c65195f410b3402340bf734388af8edda')
 
 build() {
     cd "$pkgname-$pkgver"
