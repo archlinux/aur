@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+new_sha = `makepkg -g`
+pkgbuild = File.read("PKGBUILD").to_str.gsub(/^sha256sums=\([^\)]*\)/,new_sha.rstrip)
+File.write("PKGBUILD", pkgbuild)
+system("makepkg --printsrcinfo > .SRCINFO")
+# puts new_sha
+puts "done!"
+
