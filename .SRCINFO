@@ -1,7 +1,7 @@
 pkgbase = immich
 	pkgdesc = Self-hosted photos and videos backup tool
 	pkgver = 1.88.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/immich-app/immich
 	install = immich.install
 	arch = x86_64
@@ -34,6 +34,8 @@ pkgbase = immich
 	depends = libtool
 	depends = ffmpeg
 	depends = libvips>=8.14.3
+	depends = openslide
+	depends = poppler-glib
 	depends = imagemagick
 	depends = libraw
 	optdepends = libva-mesa-driver: GPU acceleration
