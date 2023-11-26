@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=119.0
-pkgrel=1
+pkgver=120.0
+pkgrel=3
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(
@@ -17,7 +17,7 @@ license=(
   MPL
 )
 depends=(
-  dbus-glib
+  dbus
   ffmpeg
   gtk3
   icu
@@ -81,7 +81,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch")
-sha256sums=('f63e44194548f246e1396508800739a24c0517e65e920002a6f67ee099be39dd'
+sha256sums=('e710058701074eda53ca9f5fd52c57254858a027984f735bdcd58d6906f6b574'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -93,6 +93,8 @@ prepare() {
     mkdir -p mozbuild
     cd firefox-$pkgver
 
+    local _cachycommon_dir="${srcdir}/cachyos-browser-common"
+    local _cachysettings_dir="${srcdir}/cachyos-browser-settings"
     local _patches_dir="${srcdir}/cachyos-browser-common/patches"
 
     cat >../mozconfig <<END
@@ -168,107 +170,32 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 
 END
 
-    # Gentoo patches
-    msg2 "---- Gentoo patches"
+    # Apply patches
+    msg2 "=+=+=+=+= Applying patches =+=+=+=+="
+    ${_cachycommon_dir}/apply-patches.py "${srcdir}/firefox-$pkgver" ${_cachycommon_dir} ${_cachysettings_dir}
 
-    for gentoo_patch in "${_patches_dir}/gentoo/"*; do
-        local _patch_name="`basename "${gentoo_patch}"`"
-
-        if [ ${_patch_name} != "0032-bmo-1773259-cbindgen-root_clip_chain-fix.patch" ]; then
-            msg2 "Patching with ${_patch_name}.."
-            patch -Np1 -i "${gentoo_patch}"
-        fi
-    done
-
-    msg2 "---- Librewolf patches"
-
-    msg2 "allow JXL in non nightly browser"
-    patch -Np1 -i ${_patches_dir}/librewolf/allow-JXL-in-non-nightly-browser.patch
-
-    msg2 "Remove some pre-installed addons that might be questionable"
-    patch -Np1 -i ${_patches_dir}/librewolf/remove_addons.patch
-
-    msg2  "Disabling Pocket"
-    patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
-
-    msg2  "allow SearchEngines option in non-ESR builds"
-    patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
-
-    msg2 "Assorted patches"
-    patch -Np1 -i ${_patches_dir}/librewolf/context-menu.patch
-    patch -Np1 -i ${_patches_dir}/librewolf/urlbarprovider-interventions.patch
+    # Applying additional patches
+    msg2 "=+=+=+=+= Applying additional patches =+=+=+=+="
 
     msg2 "fix an URL in 'about' dialog"
     patch -Np1 -i ${_patches_dir}/about-dialog.patch
 
-    msg2 "change some hardcoded directory strings that could lead to unnecessarily created directories"
-    patch -Np1 -i ${_patches_dir}/librewolf/mozilla_dirs.patch
-
-    msg2 "allow uBlockOrigin to run in private mode by default, without user intervention."
-    patch -Np1 -i ${_patches_dir}/librewolf/allow-ubo-private-mode.patch
-
-    msg2 "add custom uBO assets (on first launch only)"
-    patch -Np1 -i ${_patches_dir}/librewolf/custom-ubo-assets-bootstrap-location.patch
-
-    msg2 "remove references to firefox from the settings UI, change text in some of the links"
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch
-
-    msg2 "remove firefox references in the urlbar, when suggesting opened tabs."
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-branding-urlbar.patch
-
-    msg2 "remove cfr UI elements, as they are disabled and locked already."
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-cfrprefs.patch
-
-    msg2 "do not display your browser is being managed by your organization in the settings."
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-organization-policy-banner.patch
-
-    msg2 "hide \"snippets\" section from the home page settings, as it was already locked."
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-snippets-from-home.patch
-
-
     # we keep that until we actually create locale for Firefox to replace strings with "Cachy"
-    msg2 "add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings"
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/sanitizing-description.patch
-
-    msg2 "website-appearance-ui-rfp.patch"
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/website-appearance-ui-rfp.patch
-
-    msg2 "lw-logo-devtools.patch"
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/lw-logo-devtools-cachy.patch
-
-    msg2 "hide password manager.patch"
-    patch -Np1 -i ${_patches_dir}/librewolf/hide-passwordmgr.patch
-
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/handlers.patch
-#    msg2 "Firefox View"
-#    patch -Np1 -i ${_patches_dir}/librewolf-ui/firefox-view.patch
-    msg2 "change bus/dbus/remoting names to org.cachyos"
-    patch -Np1 -i ${_patches_dir}/librewolf/dbus_name.patch
-
-    msg2 "customized pref panel"
-    patch -Np1 -i ${_patches_dir}/librewolf/librewolf-pref-pane.patch
-    msg2 "fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example"
-    patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
-
-    msg2 "Patch Devtools to bypass devtool detection"
-    patch -Np1 -i ${_patches_dir}/devtools-bypass.patch
+    msg2 "add warning that sanitizing exceptions are bypassed by the options in History > Clear History when Cachy closes > Settings"
+    patch -Np1 -i ${_patches_dir}/sanitizing-description.patch
 
     #msg2 "KDE menu and unity menubar"
     #patch -Np1 -i ${_patches_dir}/unity_kde/mozilla-kde.patch
     #patch -Np1 -i ${_patches_dir}/unity_kde/firefox-kde.patch
     #patch -Np1 -i ${_patches_dir}/unity_kde/unity-menubar.patch
+
     msg2 "mozilla-nongnome-proxies"
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-    msg2  "some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
-    patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
     # msg2 "Match to system libs"
     # patch -Np1 -i ../match.patch
 
     rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
-    cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
 }
 
 
