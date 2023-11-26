@@ -6,7 +6,7 @@ _major=${pkgver%%.*}
 _minor=${pkgver#2.}
 _minor=${_minor%%.*}
 _dirname="MG5_aMC_v${pkgver//./_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="MadGraph5_aMC@NLO is a framework that aims at providing all the elements necessary for SM and BSM phenomenology"
 url="https://launchpad.net/mg5amcnlo"
 arch=('i686' 'x86_64')
@@ -23,7 +23,6 @@ optdepends=(
     'golem95'
     'hepmc'
     'lhapdf'
-    'madanalysis5'
     'madgraph-pythia-pgs'
     'madgraph-pythia8-interface'
 )
