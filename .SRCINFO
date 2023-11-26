@@ -1,0 +1,17 @@
+pkgbase = prevodb-databases-git
+	pkgdesc = Dictionary databases for prevodb
+	pkgver = 89173
+	pkgrel = 1
+	url = https://revuloj.github.io/
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = prevodb
+	provides = prevodb-databases
+	conflicts = prevodb-databases
+	source = git+https://github.com/revuloj/revo-fonto.git
+	source = git+https://github.com/revuloj/voko-grundo.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = prevodb-databases-git
