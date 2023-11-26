@@ -3,7 +3,7 @@
 
 pkgname=xemu-bin
 pkgver=0.7.117
-pkgrel=1
+pkgrel=2
 pkgdesc="Original Xbox Emulator"
 arch=('x86_64')
 url='https://xemu.app/'
