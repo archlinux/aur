@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang krasjet
 pkgname=fontbase
-pkgver=2.18.1
+pkgver=2.19.4
 pkgrel=1
 pkgdesc="FontBase is the font manager of the new generation, built by designers, for designers."
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ license=('custom:FontBase')
 depends=('electron')
 makedepends=('p7zip')
 source=("$pkgname-$pkgver.AppImage::https://releases.fontba.se/linux/FontBase-$pkgver.AppImage")
-sha256sums=('bbf9f4efe67dfedc544b17f9c58217848e6549794516b224743c043634d52c11')
+sha256sums=('e2f5c7ce8dcaee52b92ad38e89a1e7545f7bb78018a0e16048c0e47c9dd713bc')
 
 prepare() {
 	mkdir -p "$pkgname"
