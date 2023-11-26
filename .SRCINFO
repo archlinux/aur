@@ -1,6 +1,6 @@
 pkgbase = r-generalizedhyperbolic
 	pkgdesc = The Generalized Hyperbolic Distribution
-	pkgver = 0.8.4
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=GeneralizedHyperbolic
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-generalizedhyperbolic
 	optdepends = r-runit
 	optdepends = r-skewhyperbolic
 	optdepends = r-variancegamma
-	source = https://cran.r-project.org/src/contrib/GeneralizedHyperbolic_0.8-4.tar.gz
-	sha256sums = 95967156dd694d40654fd5a1f626c866c2525a1e74fd176deb906af7eb76f805
+	source = https://cran.r-project.org/src/contrib/GeneralizedHyperbolic_0.8-6.tar.gz
+	sha256sums = 994454f356ec598b887cb6112f4efd2adc438fb970eacb68d4e97666164c36a9
 
 pkgname = r-generalizedhyperbolic
