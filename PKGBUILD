@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=kcaldav
 pkgdesc='Simple, safe, minimal CalDAV server'
-pkgver=0.2.0
+pkgver=0.2.4
 pkgrel=1
 url='https://kristaps.bsd.lv/kcaldav/'
 license=(custom:BSD)
@@ -15,8 +15,8 @@ build () {
 	cd "${pkgname}-${pkgver}"
 	./configure PREFIX=/usr
 	cat >> Makefile.configure <<-EOF
-	CPPFLAGS += -D_GNU_SOURCE
-	CFLAGS += ${CFLAGS} $(pkg-config libbsd --cflags)
+	CFLAGS += ${CFLAGS} $(pkg-config libbsd --cflags) \
+		-include stdint.h -D_GNU_SOURCE -include errno.h
 	LDFLAGS += ${LDFLAGS} $(pkg-config libbsd --libs)
 	EOF
 	make LDADD_STATIC=''
@@ -33,3 +33,4 @@ package () {
 	awk '/^\/\*/,/\*\// { print ; }' kcaldav.c > COPYING
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
+sha512sums=('fcde895297704ad77272e10463ea7636463360a6c8ab52e46ad811b86cf89464fed044883867636292e0ec1ac5060cb05deb93a18261218c8de74bfd0eac6630')
