@@ -2,18 +2,48 @@
 requires = ["setuptools>=40.8.0", "wheel", 'pyusb', 'pyserial', 'pillow', 'qrcode', "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
+[tool.black]
+extend-exclude = 'capabilities-data'
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--doctest-modules --cov escpos --cov-report=xml"
+testpaths = [
+    "test",
+    "src",
+    "src/escpos",
+    "escpos",
+]
+
+[[tool.mypy.overrides]]
+module = ["pytest",
+          "jaconv",
+          "scripttest",
+          "barcode.*",
+          "qrcode",
+          "usb.*",
+          "cups",
+          "win32print"
+         ]
+ignore_missing_imports = true
+
 [project]
 name = "python-escpos"
-version = "2.2.0"
+version = "3.0"
 description = "Python ESC/POS is a library which lets the user have access to all those printers handled by ESC/POS commands, as defined by Epson, from a Python application."
 readme = "README.rst"
-requires-python = ">=3.6"
-license = {text = "GNU GPL v3"}
+requires-python = ">=3.8"
+license = {text = "MIT"}
 keywords = ["egg", "bacon", "sausage", "tomatoes", "Lobster Thermidor"]
 authors = [
   {email = "manpaz@bashlinux.com"},
   {name = "Manuel F Martinez and others"}
 ]
+dynamic = ["classifiers", "scripts"]
+
 maintainers = [
   {name = "Bill Sideris", email = "bill88t@feline.gr"}
 ]
