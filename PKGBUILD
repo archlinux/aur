@@ -2,30 +2,23 @@
 
 _pkgname=waybox
 pkgname=waybox-git
-pkgver=0.2.0.r29.g7fb889d
+pkgver=0.2.2.r1.gae42d9d
 pkgrel=1
 pkgdesc='Openbox clone on Wayland (git version)'
 url="https://github.com/wizbright/waybox"
 arch=('x86_64')
 license=('MIT')
-depends=('wlroots>=0.16.0' 'wlroots<0.18.0')
+depends=('wlroots>=0.17.0' 'wlroots<0.19.0')
 makedepends=('git' 'meson' 'wayland-protocols')
 conflicts=(waybox)
 provides=(waybox)
-source=("git+https://github.com/wizbright/${_pkgname}.git"
-        0001-missing_libxml2_import.patch)
-md5sums=('SKIP'
-         'd5c41683ab89c4f6e011ee35fdd52f0e')
+source=("git+https://github.com/wizbright/${_pkgname}.git")
+md5sums=('SKIP')
 
 
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$_pkgname"
-  patch -Np2 -i "$srcdir"/0001-missing_libxml2_import.patch
 }
 
 build() {
