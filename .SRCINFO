@@ -10,16 +10,15 @@ pkgbase = alphaplot-git
 	makedepends = boost
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = glu
 	depends = gsl
-	depends = mesa
-	depends = shared-mime-info
 	depends = hicolor-icon-theme
 	depends = qt5-datavis3d
 	depends = qt5-script
-	depends = qt5-xmlpatterns
 	depends = qt5-svg
+	provides = alphaplot
+	conflicts = alphaplot
 	source = alphaplot-git::git+https://github.com/narunlifescience/AlphaPlot.git/#branch=master
 	sha512sums = SKIP
 
 pkgname = alphaplot-git
-
