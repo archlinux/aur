@@ -1,7 +1,7 @@
 # Contributor: Jonas Lähnemann <jonas at pdi-berlin dot de>
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-pyebsdindex
-pkgshort=pyebsdindex
+pkgshort=PyEBSDIndex
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="Python based tool for Radon based EBSD orientation indexing."
