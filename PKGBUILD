@@ -10,7 +10,7 @@ url='https://www.pgadmin.org/'
 arch=(x86_64)
 license=(GPL3)
 makedepends=('python-pip' 'python-build' 'python-installer' 'python-wheel' 'python-authlib')
-depends=('postgresql' 'translate-shell' 'openbsd-netcat')
+depends=('postgresql' 'translate-shell' 'openbsd-netcat' 'e2fsprogs')
 
 # Alistar ficheros en el directorio de instalación.
 package() {
@@ -84,7 +84,21 @@ if [ "$EUID" -ne 0 ]; then
         sudo -iu postgres initdb -D $data --data-checksums
 
         # Sistema de ficheros es BTRFS?
-        [ `stat -f -c %T $data` == btrfs ] && sudo chattr +C $data
+        #[ `stat -f -c %T $data` == btrfs ] && sudo chattr +C $data
+
+        # Sistema de ficheros es BTRFS?
+        if [ `stat -f -c %T $data` == btrfs ]; then
+            echo "Sistema de ficheros es BTRFS"
+
+            # Copia en escritura (copy on write) activo en BTRFS?
+            if [[ `sudo lsattr -dl $data` =~ No_COW ]]; then
+                echo "No_COW activo en BTRFS $data"
+            else
+                echo "No_COW activando en BTRFS $data"
+                sudo chattr +C $data
+                sudo lsattr -dl $data
+            fi
+        fi
 
         # Restricts access rights to the database superuser by default.
         sudo grep -E 'local +all +all +trust' $pg_hba || sudo sed -Ei.back \
@@ -134,7 +148,7 @@ cd -
 # makepkg --printsrcinfo > .SRCINFO
 
 ## Clean:
-# sudo pacman -Rnsc pgadmin4 --noconfirm
+# sudo pacman -Rnsc pgadmin4-py --noconfirm
 # sudo rm -rf /var/lib/p{ostgres,gadmin}/
 # git clean -dfx
 

@@ -13,5 +13,6 @@ pkgbase = pgadmin4-py
 	depends = postgresql
 	depends = translate-shell
 	depends = openbsd-netcat
+	depends = e2fsprogs
 
 pkgname = pgadmin4-py
