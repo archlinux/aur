@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=realm-studio-bin
 _pkgname="Realm Studio"
-pkgver=14.1.0
+pkgver=14.1.2
 pkgrel=1
 pkgdesc='A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/realm/realm-studio/v${pkgver}/resources/icon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('802d2b3c8074103d55de2adb4fda67d24a4b05b9d552f2807ee58dd97b0682ea'
+sha256sums=('927cbb21cf043d08218bcee442767fceeae9007ac182d4c191ec2f4ab2347abd'
             'b805ac8f6d254316eb3d5bb052d58e36054a933401e4f493af66e1c6cd2ed0fb'
             'aa87b86d8b35f283ece808bb9c13b3e55307c616c24107958494bf911b884324')
 build() {
