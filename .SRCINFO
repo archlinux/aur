@@ -1,0 +1,17 @@
+pkgbase = python-aocd-example-parser
+	pkgdesc = Implementation of example parser plugins for advent-of-code-data
+	pkgver = 2023.2
+	pkgrel = 1
+	url = https://github.com/wimglenn/aocd-example-parser
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
+	depends = python
+	source = https://github.com/wimglenn/aocd-example-parser/archive/refs/tags/2023.2.tar.gz
+	sha256sums = ef388d07012ed3bca8b84a7700642f581b93d94bbacd6ec9dfe6b2fb44f97148
+	b2sums = 417f7e43182fd37ecc85b6d7c907bff0ee4f6b22f65760e6ad18b9d6ddc8ebb39a8e22df086851cc1f3f75c3272e6a94a1016a44028eb67600afe3bea6e650b5
+
+pkgname = python-aocd-example-parser
