@@ -1,18 +1,17 @@
 pkgbase = geforcenow-electron-bin
 	pkgdesc = Linux Desktop client for Nvidia's GeForce NOW game streaming service
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hmlendea/gfn-electron
 	arch = x86_64
 	license = GPL3
-	makedepends = asar
-	depends = bash
 	depends = electron27
+	depends = python
 	provides = geforcenow-electron=2.0.0
 	conflicts = geforcenow-electron
 	source = geforcenow-electron-2.0.0.zip::https://github.com/hmlendea/gfn-electron/releases/download/v2.0.0/geforcenow-electron_2.0.0_linux.zip
 	source = geforcenow-electron.sh
 	sha256sums = 4cfc47596035f96f702caf9b05bef909601ee08daa3d1a4d674d0384c87f2c2c
-	sha256sums = c9e0879757bb0764c83ce5dd9be4bc6d97dc15aee9987932d32d8e612c0cfdfb
+	sha256sums = eae362d8b9a29f4fdf62507da11c57c51b060aa31df336d7009103648d37c8cb
 
 pkgname = geforcenow-electron-bin
