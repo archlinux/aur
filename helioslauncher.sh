@@ -1,5 +1,5 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron24
+_ELECTRON=/usr/bin/electron27
 APPDIR=/usr/lib/helioslauncher
 export PATH="${APPDIR}:${PATH}"
 export LD_LIBRARY_PATH="${APPDIR}/lib:${LD_LIBRARY_PATH}"
