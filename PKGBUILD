@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=zlib-ng-compat
-pkgver=2.1.4
-pkgrel=2
+pkgver=2.1.5
+pkgrel=1
 pkgdesc="zlib replacement with optimizations for 'next generation' systems (replaces zlib)"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/zlib-ng/zlib-ng"
@@ -13,7 +13,7 @@ provides=('zlib' 'libz.so')
 conflicts=('zlib')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/zlib-ng/zlib-ng/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a0293475e6a44a3f6c045229fe50f69dc0eebc62a42405a51f19d46a5541e77a')
+sha256sums=('6cd2ba3fa97ed795e1f2bc87a1140a070ba712b7eb4b7ba5b3521694ea0ec91a')
 
 
 build() {
