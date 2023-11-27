@@ -38,6 +38,8 @@ depends=(
     'libxfixes'
     'libxcb'
     'pango'
+    'python'
+    'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
@@ -64,8 +66,11 @@ package() {
         _osarch=linux-unpacked
     fi
     cp -r "${srcdir}/${pkgname}-${pkgver}/dist/${_osarch}/"* "${pkgdir}/opt/${pkgname}"
-    ln -sf "/opt/${pkgname}/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    ln -sf "/opt/${pkgname}/${_appname}" "${pkgdir}/usr/bin/${pkgname}"
+    for _icons in 32x32 64x64 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/${pkgname}/public/icons/${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
+    done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.MD" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
