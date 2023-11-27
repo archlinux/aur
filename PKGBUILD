@@ -1,14 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jamesdsp-git
 _app_id=me.timschneeberger.jdsp4linux
-pkgver=2.6.0.r34.gdaf5cd3
+pkgver=2.6.1.r67.g31bf9d3
 pkgrel=1
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
 license=('GPL3')
-depends=('glibmm' 'hicolor-icon-theme' 'libarchive' 'libportal-qt5' 'libpipewire'
-         'qt5-svg')
+depends=('glibmm' 'hicolor-icon-theme' 'libarchive' 'libpipewire' 'qt6-svg')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
@@ -46,7 +45,7 @@ build() {
   cd "$srcdir/JDSP4Linux"
 
   pushd build
-  qmake-qt5 ..
+  qmake6 ..
   make
   strip --strip-unneeded src/jamesdsp
   popd
