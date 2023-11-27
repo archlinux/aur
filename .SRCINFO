@@ -1,12 +1,12 @@
 pkgbase = himitsu-git
 	pkgdesc = Himitsu is a secret storage system for Unix systems
-	pkgver = r96.414e5c3
+	pkgver = r157.c657d70
 	pkgrel = 1
 	url = https://sr.ht/~sircmpwn/himitsu
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = hare-git
-	makedepends = hiprompt-gtk-git
+	optdepends = hiprompt-gtk-py: prompter support (GTK+)
 	provides = himitsu
 	source = git+https://git.sr.ht/~sircmpwn/himitsu
 	sha256sums = SKIP
