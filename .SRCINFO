@@ -1,0 +1,19 @@
+pkgbase = python-pyebsdindex
+	pkgdesc = Python based tool for Radon based EBSD orientation indexing.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pyebsdindex.readthedocs.io
+	arch = any
+	license = Custom
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-h5py-openmpi>=2.10
+	depends = pythin-matplotlib
+	depends = python-numpy
+	depends = python-numba
+	depends = python-scipy
+	provides = pyebsdindex
+	source = https://github.com/USNavalResearchLaboratory/PyEBSDIndex/archive/v0.2.0.tar.gz
+	md5sums = 5aa5913980ab370a5a830f9e6fb044aa
+
+pkgname = python-pyebsdindex
