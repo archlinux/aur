@@ -1,7 +1,7 @@
 pkgbase = flutter-engine-google-bin
 	pkgdesc = Engine for flutter applications (Binaries from google).
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/flutter/engine
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = flutter-engine-google-bin
 	depends = yq
 	provides = flutter-engine
 	conflicts = flutter-engine
-	source = flutter-engine-prepare.sh
-	source = flutter-engine-build.sh
+	source = flutter-engine-google-bin-prepare.sh
+	source = flutter-engine-google-bin-build.sh
 	sha256sums = 38aebea0e495017846da5ac09f440fafb74cd7d5b042f6b42038210672a160f4
 	sha256sums = d5493a84fbac63f741dc561dc681903ece25a2313717989a655b44a52934f314
 
