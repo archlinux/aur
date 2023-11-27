@@ -5,9 +5,12 @@ _pkgname="AeroBrowser"
 pkgver=0.2.2.alpha.r19.gf5ad712
 pkgrel=1
 pkgdesc="A fast and lightweight web browser made with electron and react that allows you to navigate the Internet with ease."
-arch=('any')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://aero-mymeiy532-frostbreker.vercel.app/"
-_ghurl="https://github.com/FrostBreker/Aero"
+_ghurl="https://github.com/FrostBreker/AeroBrowser"
 license=('MIT')
 conflicts=(
     "${pkgname%-git}"
@@ -35,6 +38,8 @@ depends=(
     'libxfixes'
     'libxcb'
     'pango'
+    'python'
+    'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
@@ -58,9 +63,17 @@ build() {
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
-    cp -r "${srcdir}/${pkgname%-git}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname%-git}"
-    ln -sf "/opt/${pkgname%-git}/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-git}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    if [ "${CARCH}" == "aarch64" ];then
+        _osarch=linux-armv7l-unpacked
+    elif [ "${CARCH}" == "x86_64" ];then
+        _osarch=linux-unpacked
+    fi
+    cp -r "${srcdir}/${pkgname%-git}/dist/${_osarch}/"* "${pkgdir}/opt/${pkgname%-git}"
+    ln -sf "/opt/${pkgname%-git}/${_appname}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    for _icons in 32x32 64x64 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/${pkgname%-git}/public/icons/${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+    done
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE.MD" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
