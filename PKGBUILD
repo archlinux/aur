@@ -1,6 +1,6 @@
 pkgname=mingw-w64-lapack
 pkgname=('mingw-w64-lapack' 'mingw-w64-blas' 'mingw-w64-cblas' 'mingw-w64-lapacke')
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 arch=('any')
 pkgdesc="Linear Algebra PACKage (mingw-w64)"
@@ -9,7 +9,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 license=('LGPL')
 url="http://www.netlib.org/lapack"
 source=("https://github.com/Reference-LAPACK/lapack/archive/v${pkgver}.tar.gz")
-sha256sums=('4b9ba79bfd4921ca820e83979db76ab3363155709444a787979e81c22285ffa9')
+sha256sums=('eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -29,7 +29,6 @@ build()
       -DLAPACKE=ON \
       -DCBLAS=ON \
       -DBUILD_TESTING=OFF \
-      -DTEST_FORTRAN_COMPILER=OFF \
       ..
     make
     popd
@@ -39,7 +38,6 @@ build()
       -DLAPACKE=ON \
       -DCBLAS=ON \
       -DBUILD_TESTING=OFF \
-      -DTEST_FORTRAN_COMPILER=OFF \
       ..
     make
     popd
