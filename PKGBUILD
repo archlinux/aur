@@ -11,15 +11,15 @@
 _pkgname="pulseaudio"
 pkgname="$_pkgname-git"
 pkgdesc="A featureful, general-purpose sound server (development version)"
-pkgver=15.0.r136.g484b69863
+pkgver=16.99.1.r11.g81a6cc496
 pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
 license=("GPL" "LGPL")
 install=pulseaudio.install
 depends=(lib{ltdl,soxr,asyncns,xtst,sndfile} "rtkit" "speexdsp" "tdb" "orc"
-         "webrtc-audio-processing" jack2 "lirc" bluez{,-libs} "sbc"
-         python-{pyqt5,dbus,sip} "fftw" dconf libwrap gst-plugins-base-libs)
+         "webrtc-audio-processing-1" jack2 "lirc" bluez{,-libs} "sbc"
+         python-{pyqt5,dbus} sip "fftw" dconf libwrap gst-plugins-base-libs)
 makedepends=("git" lib{asyncns,xtst,tool,soxr,sndfile} "attr" "rtkit" "speexdsp"
              "tdb" jack2 bluez{,-libs} "intltool"  "sbc" "lirc" "fftw"
              "orc" "gtk3" "webrtc-audio-processing" "check" "meson" "valgrind"
@@ -54,9 +54,9 @@ check() {
   meson test -C build --print-errorlogs
   ninja -C build test-daemon
 }
- 
+
 package() {
-    
+
 
     DESTDIR="$pkgdir" meson install -C build
 
@@ -82,7 +82,5 @@ package() {
     # Required by qpaeq
     sed -e '/Load several protocols/aload-module module-dbus-protocol' \
         -i etc/pulse/default.pa
-
-    rm -r etc/dbus-1
 
 }
