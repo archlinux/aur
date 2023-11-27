@@ -1,7 +1,7 @@
 pkgbase = spx-translation
 	pkgdesc = 聚合翻译程序(谷歌+deepl)
-	pkgver = 2.0.4
-	pkgrel = 2
+	pkgver = 2.0.5_1
+	pkgrel = 1
 	url = https://github.com/mlmdflr/spx-translation
 	arch = x86_64
 	license = custom
@@ -33,7 +33,7 @@ pkgbase = spx-translation
 	depends = at-spi2-core
 	depends = pango
 	conflicts = spx-translation
-	source = spx-translation-2.0.4.tar.gz::https://github.com/mlmdflr/spx-translation/archive/refs/tags/vv2.0.4.tar.gz
-	sha256sums = a943252e2e5ef7bdc7dbffdfc79d41b3f94913112009d0d6bb9420557bae5656
+	source = spx-translation-2.0.5_1::git+https://github.com/mlmdflr/spx-translation#tag=vv2.0.5-1
+	sha256sums = SKIP
 
 pkgname = spx-translation
