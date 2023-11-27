@@ -26,7 +26,7 @@ provides=('pyebsdindex')
 source=(https://github.com/USNavalResearchLaboratory/PyEBSDIndex/archive/v$pkgver.tar.gz)
 
 package() {
-  cd "$srcdir/$pkgshort-$pkgver"
+  cd "$srcdir/PyEBSDIndex-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
