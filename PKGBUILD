@@ -25,7 +25,9 @@ build() {
         -B "$srcdir/build" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DLITH_FORCE_LOCAL_PACKAGES_ONLY=ON
+        -DLITH_FORCE_LOCAL_PACKAGES_ONLY=ON \
+        -DVERSION="$(pkgver)"
+
     cmake --build "$srcdir/build"
 }
 
