@@ -1,12 +1,12 @@
 pkgbase = r-rjsonio
 	pkgdesc = Serialize R Objects to JSON, JavaScript Object Notation
-	pkgver = 1.3.1.8
+	pkgver = 1.3.1.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RJSONIO
 	arch = x86_64
 	license = BSD
 	depends = r
-	source = https://cran.r-project.org/src/contrib/RJSONIO_1.3-1.8.tar.gz
-	sha256sums = f6f0576d3c7852b16295dfc897feebca064fe5dd29cdce7592f94c56823553f5
+	source = https://cran.r-project.org/src/contrib/RJSONIO_1.3-1.9.tar.gz
+	sha256sums = f173034b0c28873f417ee804b9e278aedd92e76eb56c7c6d71b1c02fa1193ece
 
 pkgname = r-rjsonio
