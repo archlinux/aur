@@ -1,0 +1,11 @@
+post_install() {
+  echo -e "\e[91;1m
+Before setting up Semaphore, ensure you have a working database configured with proper access for the service.
+\e[0m
+To initialize Semaphore, use the following command:
+\e[1;32m# semaphore setup --config /etc/semaphore/config.json\e[0m
+
+Once initialized, enable and start the Semaphore service:
+\e[1;32m# systemctl enable --now semaphore.service\e[0m
+"
+}

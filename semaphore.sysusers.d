@@ -1,0 +1,1 @@
+u semaphore - "Ansible Semaphore user" /var/lib/semaphore
