@@ -1,7 +1,7 @@
-# Maintainer: Rayr https://rayr.ml/LinkInBio/
+# Maintainer: Rayr https://rayr.link/LinkInBio/
 
 pkgname=currencyconverter
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A CLI program that converts currencies using currency exchange rates"
 arch=('x86_64')
