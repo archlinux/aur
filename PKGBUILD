@@ -2,14 +2,14 @@
 
 pkgname=shvcli-git
 _gitname=shvcli
-pkgver=r52.639c03c
+pkgver=r62.86131cb
 pkgrel=1
 pkgdesc='An easy-to-use CLI interface to access the SHV network'
 url='https://gitlab.com/elektroline-predator/shvcli'
 arch=('any')
 license=('MIT')
 depends=('pyshv' 'python-prompt_toolkit')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 conflicts=('shvcli' 'shvcli-git')
 provides=('shvcli')
 source=('git+https://gitlab.com/elektroline-predator/shvcli.git')
@@ -29,4 +29,5 @@ build() {
 package() {
 	cd "$srcdir/$_gitname"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgbase
 }
