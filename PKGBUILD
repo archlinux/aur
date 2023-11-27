@@ -14,6 +14,8 @@ _ollamacommit=16a900630616f47ea18026150cad82d5e8008c01 # tag: v0.1.12
 _ggmlcommit=9e232f0234073358e7031c1b8d7aa45020469a3b
 _ggufcommit=9656026b53236ed7328458269c4c798dd50ac8d1
 makedepends=(cmake cuda git go setconf)
+provides=(ollama)
+conflicts=(ollama)
 source=(git+$url#commit=$_ollamacommit
         ggml::git+https://github.com/ggerganov/llama.cpp#commit=$_ggmlcommit
         gguf::git+https://github.com/ggerganov/llama.cpp#commit=$_ggufcommit
