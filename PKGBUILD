@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spacemesh-bin
 _pkgname=Spacemesh
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Spacemesh App (Smesher + Wallet)"
 arch=(
@@ -25,8 +25,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c73bbcc54adb1003fe11400766b85b050e56c58ebb56c82a85ed2b4aec33cfa7')
-sha256sums_aarch64=('f1a5c98de4354c0d64499dd004fdde1afaedfbfc304db6a66d26f44fc79fea0e')
-sha256sums_x86_64=('3793c73bbc8603eeb494a4696cd5754df92b0902de65b8f47d7a480ddac69d54')
+sha256sums_aarch64=('28eb3ded7770a5a99d9a74db0c584d7765f4b2a81693db74fd7bb7ee5e213314')
+sha256sums_x86_64=('0c26529d1460f856f854f7b4528b4c70f3b4465e7fbf2455d672caa9d79e0389')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}_app|${pkgname%-bin} --no-sandbox|g;s|${pkgname%-bin}_app|${pkgname%-bin}|g" \
