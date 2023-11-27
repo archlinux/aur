@@ -1,5 +1,5 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron26
+_ELECTRON=/usr/bin/electron27
 APPDIR="/usr/lib/min-browser"
 export PATH="${APPDIR}:${PATH}"
 #export LD_LIBRARY_PATH="${APPDIR}/lib:${LD_LIBRARY_PATH}"
