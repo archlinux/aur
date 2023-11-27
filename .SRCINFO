@@ -1,7 +1,7 @@
 pkgbase = mapton-latest-bin
 	pkgdesc = Some kind of map application
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trixon/mapton
 	arch = x86_64
 	license = Apache
