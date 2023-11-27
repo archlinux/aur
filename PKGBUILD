@@ -29,8 +29,8 @@
 ## basic info
 _pkgname="retroshare"
 pkgname="$_pkgname"
-pkgver=0.6.7
-_pkgtag=v0.6.7
+pkgver=0.6.7.1
+_pkgtag=v0.6.7.1
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 #url="http://retroshare.cc/"
