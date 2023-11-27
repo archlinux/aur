@@ -1,6 +1,6 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.85.r31.ga3e86f17
+	pkgver = 1.0.0.r2.g9daca346
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -54,10 +54,10 @@ pkgbase = pipewire-full-git
 pkgname = pipewire-full-git
 	install = pipewire.install
 	license = MIT
-	license = LGPL
+	license = LGPL-2.1-or-later
 	depends = gcc-libs
 	depends = glibc
-	depends = libpipewire-full-git=0.3.85.r31.ga3e86f17-1
+	depends = libpipewire-full-git=1.0.0.r2.g9daca346-1
 	depends = libcamera-base.so
 	depends = libcamera.so
 	depends = libdbus-1.so
@@ -81,14 +81,14 @@ pkgname = pipewire-full-git
 	optdepends = pipewire-full-zeroconf-git: Zeroconf support
 	optdepends = realtime-privileges: realtime privileges with rt module
 	optdepends = rtkit: realtime privileges with rtkit module
-	provides = pipewire=0.3.85
+	provides = pipewire=1.0.0
 	conflicts = pipewire
 
 pkgname = libpipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor - client library
 	depends = glibc
 	depends = gcc-libs
-	provides = libpipewire=0.3.85
+	provides = libpipewire=1.0.0
 	provides = libpipewire-0.3.so
 	conflicts = libpipewire
 
@@ -150,9 +150,10 @@ pkgname = pipewire-full-ffado-git
 	conflicts = pipewire-ffado
 
 pkgname = pipewire-full-jack-git
-	pkgdesc = Low-latency audio/video router and processor - JACK support
+	pkgdesc = Low-latency audio/video router and processor - JACK replacement
 	license = MIT
-	license = GPL2
+	license = LGPL-2.1-or-later
+	license = GPL-2.0-only
 	depends = glibc
 	depends = libpipewire-0.3.so
 	depends = pipewire-full-git
