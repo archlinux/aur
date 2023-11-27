@@ -4,7 +4,7 @@
 _electron='electron25'
 
 pkgname="ferdium-electron"
-pkgver=6.5.1
+pkgver=6.6.0
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -32,8 +32,9 @@ prepare() {
 
   local node_ver=$(node -v | sed -e 's/^v//')
   local pnpm_ver=$(pnpm -v)
+  local electron_ver=$(cat "/usr/lib/${_electron}/version")
 
-  local jq_expr=".engines.node = \"$node_ver\" | .engines.pnpm = \"$pnpm_ver\""
+  local jq_expr=".engines.node = \"$node_ver\" | .engines.pnpm = \"$pnpm_ver\" | .devDependencies.electron = \"$electron_ver\""
 
   jq "$jq_expr" package.json > package.tmp.json
   mv package.tmp.json package.json
