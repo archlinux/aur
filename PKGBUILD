@@ -2,7 +2,7 @@
 
 pkgname=hunspell-bg
 _LOver=7.6.3
-pkgver=7.6.3.1
+pkgver=7.6.3.2
 pkgrel=0
 pkgdesc='Bulgarian dictionary for Hunspell'
 arch=('any')
@@ -10,7 +10,7 @@ url="https://bgoffice.sourceforge.net/"
 license=('GPL2')
 optdepends=('hunspell:	the spell checking libraries and apps')
 source=("https://download.documentfoundation.org/libreoffice/src/${_LOver}/libreoffice-dictionaries-${pkgver}.tar.xz")
-md5sums=('45ecbaed999bfab64a274c77e211ea8b')
+md5sums=('8f45d0f565ced013322a39e9ff82560f')
 
 package() {
   cd "${srcdir}/libreoffice-${pkgver}/dictionaries/bg_BG/"
