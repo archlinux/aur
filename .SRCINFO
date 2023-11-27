@@ -1,7 +1,7 @@
 pkgbase = r-plsgenomics
 	pkgdesc = PLS Analyses for Genomics
-	pkgver = 1.5.2
-	pkgrel = 3
+	pkgver = 1.5.2.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=plsgenomics
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = r-plsgenomics
 	depends = r-plyr
 	depends = r-reshape2
 	depends = r-rhpcblasctl
-	source = https://cran.r-project.org/src/contrib/plsgenomics_1.5-2.tar.gz
-	sha256sums = e4c6f57590464ad64b8d9c7322a24fc41bf1befab76b28ea4a8949b32d286bdf
+	source = https://cran.r-project.org/src/contrib/plsgenomics_1.5-2.1.tar.gz
+	sha256sums = 8a0b49d74e3812ba503efb5caa9c7745502d4a850fba085ea96c573bb0a4c7b2
 
 pkgname = r-plsgenomics
