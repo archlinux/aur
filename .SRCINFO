@@ -1,0 +1,17 @@
+pkgbase = pgadmin4
+	pkgdesc = Most popular and feature rich Open Source administration and development platform for PostgreSQL
+	pkgver = 7.8
+	pkgrel = 1
+	url = https://www.pgadmin.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-authlib
+	depends = postgresql
+	depends = translate-shell
+	depends = openbsd-netcat
+
+pkgname = pgadmin4
