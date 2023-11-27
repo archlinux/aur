@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1627.r0.g52ce8ee
+pkgver=1633.r0.g50f6d91
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -66,7 +66,7 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/libusb/libusb.git'
         'git+https://github.com/yuzu-emu/discord-rpc.git'
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-        'git+https://github.com/yuzu-emu/sirit'
+        'git+https://github.com/yuzu-emu/sirit.git'
         'git+https://github.com/yuzu-emu/mbedtls.git'
         'git+https://github.com/herumi/xbyak.git'
         'git+https://github.com/xiph/opus.git'
@@ -82,7 +82,7 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/brofield/simpleini.git'
         # cubeb dependencies
         'git+https://github.com/arsenm/sanitizers-cmake.git'
-        'git+https://github.com/google/googletest'
+        'git+https://github.com/google/googletest.git'
         # sirit dependencies
         'git+https://github.com/KhronosGroup/SPIRV-Headers.git'
         # libadrenotools' dependencies
