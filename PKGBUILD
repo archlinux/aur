@@ -2,12 +2,12 @@
 
 pkgname=emulsion
 pkgver=10.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and minimalistic image viewer"
 arch=('i686' 'x86_64')
 url="https://github.com/ArturKovacs/emulsion"
 license=('MIT')
-depends=('gcc-libs' 'hicolor-icon-theme')
+depends=('gcc-libs' 'hicolor-icon-theme' 'libavif')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver%.*}.tar.gz"
         "emulsion.desktop")
