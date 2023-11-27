@@ -1,0 +1,13 @@
+pkgbase = timer-rs-bin
+	pkgdesc = Simple countdown terminal alarm. Useful for pomodoros too. Git release binary
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/pando85/timer
+	arch = x86_64
+	license = GPL
+	provides = timer
+	conflicts = timer-rs-git
+	source = https://github.com/pando85/timer/releases/download/v0.6.0/timer-0.6.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = ba9174643bf33757d5df93c8aecded59552941100eb46c243059283c7891d1e8
+
+pkgname = timer-rs-bin
