@@ -35,12 +35,19 @@ pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install 18
+    nvm use 18
+}
 build() {
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name="${pkgname%-git}" --exec="${pkgname%-git}"
     sed "2i Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname//-/.}/app"
     sed '/- target: "tar.gz"/d' -i electron-builder-linux.yml
-    pnpm install --no-frozen-lockfile --cache "${srcdir}/npm-cache" 
+    pnpm install --no-frozen-lockfile
     pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
     export CGO_ENABLED=1
