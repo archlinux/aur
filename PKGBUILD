@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fw-git
-pkgver=2.17.1.r14.g8d438bc
+pkgver=2.19.0.r0.g564ce2f
 pkgrel=1
 pkgdesc="Workspace productivity booster (git)"
 arch=('x86_64')
@@ -39,6 +39,6 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.org -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
