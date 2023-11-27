@@ -1,0 +1,27 @@
+pkgbase = cargo-bisect-rustc-git
+	pkgdesc = Bisects rustc, either nightlies or CI artifacts
+	pkgver = 0.6.7.r557.9af234f
+	pkgrel = 1
+	url = https://github.com/rust-lang/cargo-bisect-rustc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = gcc
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = libgit2.so
+	depends = liblzma.so
+	provides = cargo-bisect-rustc
+	conflicts = cargo-bisect-rustc
+	options = !lto
+	source = cargo-bisect-rustc::git+https://github.com/rust-lang/cargo-bisect-rustc.git
+	sha256sums = SKIP
+
+pkgname = cargo-bisect-rustc-git
