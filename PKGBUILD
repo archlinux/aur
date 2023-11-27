@@ -6,7 +6,7 @@
 
 pkgname=wine-staging-wow64
 _name=wine
-pkgver=8.20
+pkgver=8.21
 pkgrel=1
 provides=("wine=$pkgver")
 conflicts=("wine")
@@ -14,10 +14,10 @@ source=(git+https://gitlab.winehq.org/wine/wine.git#tag=wine-$pkgver
         git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$pkgver
         30-win32-aliases.conf
         wine-binfmt.conf)
-sha512sums=('SKIP'
-            'SKIP'
-            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
+b2sums=('SKIP'
+        'SKIP'
+        '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
+        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 arch=(x86_64)
