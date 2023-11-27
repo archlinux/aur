@@ -3,12 +3,12 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-_pkgname='hiddify-linux'
+_pkgname='hiddify-next'
 
 # Maintainer: Meow King <mr.meowking@anche.no>
 pkgname="hiddify-next-appimage"
 pkgver="0.11.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free. "
 arch=('any')
 # Appimage should contains exclude "strip" option
@@ -20,7 +20,7 @@ source=("https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hi
         "hiddify-next-appimage.desktop"
         "LICENSE.md")
 sha256sums=('eb08f622288636acd9f40bc263010df6c92750744b0161fd7f4e842d11650f68'
-            '07d4c746f8f6bb5c8a9788d378e8873c83390f49237a1157a4282017db885cf8'
+            '480389ec46cb38845fda0430c8bd4732732722b1ec62681f608b240ede1e0aea'
             'f609d73370ca62925ba8c796afeeb7fb42f4a1569124f84cb25b7026c026d78a')
 
 prepare() {
