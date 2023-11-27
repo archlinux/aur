@@ -15,6 +15,6 @@ pkgbase = nuclear-player
 	source = nuclear-player-0.6.30::git+https://github.com/nukeop/nuclear#tag=v0.6.30
 	source = nuclear-player.sh
 	sha256sums = SKIP
-	sha256sums = b3c8c080b48b5ecf1e3ed83493495f9e04c955c3976fe87ad8b646a7134e7840
+	sha256sums = 882f9b949271ad0718d2d72b2663faf02b521dbb614c0cc51269768332ff5124
 
 pkgname = nuclear-player
