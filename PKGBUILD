@@ -2,7 +2,7 @@
 # Contributor: <agustinballesteros04@gmail.com>
 pkgname=kew
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line music player"
 arch=('x86_64')
 url="https://github.com/ravachol/kew"
@@ -12,7 +12,7 @@ replaces=('cue-music-command')
 conflicts=('kew-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('2d2711c002a1bfde6824e54e1a6c9b5ff47e110ae8a92f6f0fa560cad1fc51077423ea5dc95c4d0f42351872cdc8803d58607e810afc92f8d11aafc38a0f8f01')
+sha512sums=('d1302afe77cb16cfd252694e63f5abfbdffdd1cd48b44f625d41881cbab1e7da453e66cfadaad34e3af0ac8aff25af22d0db410352e742a316fc10871d722613')
 
 build() {
     cd "$pkgname-$pkgver"
