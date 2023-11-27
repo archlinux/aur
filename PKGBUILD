@@ -2,7 +2,7 @@
 _pkgname=butterfly
 pkgname="linwood-${_pkgname}-bin"
 _appname="dev.linwood.${_pkgname}"
-pkgver=2.0.0_beta.15
+pkgver=2.0.0_beta.16
 pkgrel=1
 pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app"
 arch=("x86_64")
@@ -11,7 +11,7 @@ _ghurl="https://github.com/LinwoodDev/Butterfly"
 license=(
     'Apache'
     'AGPL3'
-    'CC-BY-4.0'
+    'custom:CC-BY-4.0'
 )
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -24,15 +24,14 @@ depends=(
     'pango'
     'hicolor-icon-theme'
     'harfbuzz'
-    'jsoncpp'
     'gdk-pixbuf2'
     'fontconfig'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux.deb"
-    "LICENSE::https://raw.githubusercontent.com/LinwoodDev/Butterfly/v${pkgver//_/-}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/LinwoodDev/Butterfly/v${pkgver//_/-}/LICENSE"
 )
-sha256sums=('8361ef5c9caa0baf76de2c7434d7b12de6aef1ec373c5485b01d9b1f02c4a8e3'
+sha256sums=('9f0a5abc591683ed4b51bbbf4caba6833c1e002c862647454e06444930daf118'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
 build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
@@ -47,5 +46,5 @@ package() {
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${_appname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/metainfo/${_appname}.appdata.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.appdata.xml"
     install -Dm644 "${srcdir}/usr/share/mime/packages/${_appname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname%-bin}.xml"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
