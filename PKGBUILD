@@ -1,9 +1,9 @@
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
-_pkgname=hiddify.next
+_pkgname=hiddify-next
 pkgname=${_pkgname}-bin
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
@@ -16,7 +16,7 @@ provides=('hiddify')
 conflicts=(${_pkgname} ${_pkgname}-git)
 options=(!strip)
 source=(
-    "https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
+    "$_pkgname-$pkgver.zip::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
 )
 sha256sums=(
     "eb08f622288636acd9f40bc263010df6c92750744b0161fd7f4e842d11650f68"
