@@ -1,9 +1,9 @@
 # Maintainer: Xyne <ca archlinux xyne, backwards>
 _pkgname=pyzotero
 pkgname="$_pkgname-git"
-pkgver=v1.5.9.r5.g5e0c4da
+pkgver=v1.5.18.r1.gc208d4f
 pkgrel=1
-pkgdesc="A Python wrapper fro the Zotero API"
+pkgdesc="A Python wrapper for the Zotero API"
 arch=('any')
 url="https://github.com/urschrei/$_pkgname"
 license=('GPL')
@@ -18,11 +18,6 @@ sha512sums=('SKIP')
 pkgver() {
   cd -- "$_pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd -- "$_pkgname"
-  sed -i 's/4, <6/4/' pyproject.toml
 }
 
 build() {
