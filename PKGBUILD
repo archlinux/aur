@@ -33,4 +33,6 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install "$srcdir/build"
+	install -Dm644 necrolog/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgbase
+
 }
