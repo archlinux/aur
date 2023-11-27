@@ -3,7 +3,7 @@
 _pkgname=flet
 pkgname=python-${_pkgname}
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
@@ -41,10 +41,11 @@ sha256sums=('fc1947b5bf23de4887ef15c91ddd6ff9034aa3382afa6225547f220a3058a202'
             'af9718b926a07ac8e8689a2c623fe6921d88d0bcd52263f63848d11175e3b828')
 
 _srcdir="${_pkgname}-${pkgver}"
+_engine_version=3.13.9
 
 prepare() {
-	source '/opt/flutter-engine/pkgbuild-prepare.sh'
 	cd "${_srcdir}"
+	source '/opt/flutter-engine/pkgbuild-prepare.sh'
 	
 	patch -p1 -i "${srcdir}/flet-linux.patch"
 	
@@ -54,8 +55,8 @@ prepare() {
 }
 
 build() {
-	source '/opt/flutter-engine/pkgbuild-build.sh'
 	cd "${_srcdir}"
+	source '/opt/flutter-engine/pkgbuild-build.sh'
 	
 	pushd 'client'
 		flutter build linux --release
