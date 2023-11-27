@@ -1,6 +1,6 @@
 pkgbase = aero-browser-git
 	pkgdesc = A fast and lightweight web browser made with electron and react that allows you to navigate the Internet with ease.
-	pkgver = 0.2.1.alpha.r1.g8a3f665
+	pkgver = 0.2.2.alpha.r19.gf5ad712
 	pkgrel = 1
 	url = https://aero-mymeiy532-frostbreker.vercel.app/
 	arch = any

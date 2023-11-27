@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=aero
 pkgname="${_appname}-browser-git"
-_pkgname="Aero Browser"
-pkgver=0.2.1.alpha.r1.g8a3f665
+_pkgname="AeroBrowser"
+pkgver=0.2.2.alpha.r19.gf5ad712
 pkgrel=1
 pkgdesc="A fast and lightweight web browser made with electron and react that allows you to navigate the Internet with ease."
 arch=('any')
@@ -53,7 +53,6 @@ build() {
     gendesk -q -f -n --comment "${pkgdesc}" --categories "Network" --pkgname "${_appname}-browser-git" --name "${_pkgname}" --exec "${pkgname%-git}"
     cd "${srcdir}/${pkgname%-git}"
     sed "s|https://www.google.fr/|about:blank|g" -i src/App.js
-    npm add glob
     npm install --cache "${srcdir}/npm-cache"
     npm run electron:package:linux
 }
