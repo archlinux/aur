@@ -1,20 +1,25 @@
 pkgbase = sbe-bin
 	pkgdesc = An unofficial Scrapbox desktop app
-	pkgver = 3.4.0
-	pkgrel = 3
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://github.com/kondoumh/sbe
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
-	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
-	provides = sbe=3.4.0
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
+	provides = sbe=3.5.0
 	conflicts = sbe
-	source = sbe-3.4.0.AppImage::https://github.com/kondoumh/sbe/releases/download/v3.4.0/sbe-3.4.0.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/kondoumh/sbe/v3.4.0/LICENSE
+	source = sbe-3.5.0.AppImage::https://github.com/kondoumh/sbe/releases/download/v3.5.0/sbe-3.5.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/kondoumh/sbe/v3.5.0/LICENSE
 	source = sbe.sh
-	sha256sums = 0e1c0f7a8b7db2919490432b7c01d94af54f22b3470389049b24e48a0e5bc0b9
+	sha256sums = 0256de2b0bb80cbd30d53948808a645c3b9898a136ba2754d39a21007b2a383c
 	sha256sums = 0c0557908ff74a92af66c9b4435403c14e230c11e56eace0016fcfb7151187d2
 	sha256sums = 805e881185e90a89d04d6e380536d0963164fe84257e039e6a9f41db25901e85
 

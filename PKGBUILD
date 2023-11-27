@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sbe-bin
-pkgver=3.4.0
-pkgrel=3
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="An unofficial Scrapbox desktop app"
 arch=('x86_64')
 url="https://github.com/kondoumh/sbe"
@@ -9,9 +9,14 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
     'electron25'
     'hicolor-icon-theme'
+    'libx11'
+    'gdk-pixbuf2'
+    'libxext'
+    'libdbusmenu-glib'
+    'gtk2'
+    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -21,7 +26,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/kondoumh/sbe/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0e1c0f7a8b7db2919490432b7c01d94af54f22b3470389049b24e48a0e5bc0b9'
+sha256sums=('0256de2b0bb80cbd30d53948808a645c3b9898a136ba2754d39a21007b2a383c'
             '0c0557908ff74a92af66c9b4435403c14e230c11e56eace0016fcfb7151187d2'
             '805e881185e90a89d04d6e380536d0963164fe84257e039e6a9f41db25901e85')
 build() {
