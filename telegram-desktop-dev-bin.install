@@ -1,6 +1,6 @@
 post_install() {
 	echo "Remember to delete the official (non-tweaked) launcher by using:"
-	echo "rm ~/.local/share/applications/telegramdesktop.desktop"
+	echo "rm ~/.local/share/applications/*.telegram.*.desktop"
 	echo "After running Telegram Desktop"
 }
 
