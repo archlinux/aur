@@ -2,7 +2,7 @@
 
 _name=reacton
 pkgname=python-${_name,,}
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="React for ipywidgets"
 arch=('any')
@@ -14,8 +14,8 @@ depends=('python>=3.8'
 makedepends=('python-installer' 'python-wheel')
 
 _whl="${_name//-/_}-$pkgver-py2.py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl")
-sha256sums=('8c718758cc249f1724b30469d9503205fbb782533c70760b6956ece25cf183eb')
+source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_whl}")
+sha256sums=('c9500e99b819cbededbaf9a17dad51dfa201b709cbba88f1deaec6b0d52a0174')
 
 noextract=("$_whl")
 package() {
