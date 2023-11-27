@@ -1,12 +1,12 @@
 pkgbase = r-diptest
 	pkgdesc = Hartigan's Dip Test Statistic for Unimodality - Corrected
-	pkgver = 0.76.0
-	pkgrel = 4
+	pkgver = 0.77.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=diptest
 	arch = x86_64
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/diptest_0.76-0.tar.gz
-	sha256sums = 508a5ebb161519cd0fcd156dc047b51becb216d545d62c6522496463f94ec280
+	source = https://cran.r-project.org/src/contrib/diptest_0.77-0.tar.gz
+	sha256sums = c3c835155e6bddce730623c4e9b4eeed00624c26d493076e79db203a55f8ca32
 
 pkgname = r-diptest
