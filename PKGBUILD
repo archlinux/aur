@@ -2,7 +2,7 @@
 pkgname=ttkmusicplayer-bin
 _pkgname=TTKMusicPlayer
 pkgver=3.4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="TTKMusicPlayer that imitation Kugou music, the music player uses of qmmp core library based on Qt for windows and linux.(支持网易云音乐、酷我音乐、酷狗音乐)"
 arch=('x86_64')
 url="https://github.com/Greedysky/TTKMusicPlayer"
@@ -37,7 +37,6 @@ depends=(
     'libxext'
     'libxcursor'
     'alsa-lib'
-    'sh'
     'libxi'
     'libxdamage'
     'qt5-declarative'
@@ -46,7 +45,9 @@ makedepends=(
     'gendesk'
 )
 options=('!strip')
-source=("${pkgname%-bin}-${pkgver}.7z::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-x64.7z")
+source=(
+    "${pkgname%-bin}-${pkgver}.7z::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-x64.7z"
+)
 sha256sums=('8e69eceff065b67479ecd38841287842c87c093e719a2596309476944d3a2809')
 build() {
     gendesk -q -f -n --categories "AudioVideo;Player;Audio;Qt" --name "${_pkgname}" --exec "${pkgname%-bin}"
