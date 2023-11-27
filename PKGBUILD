@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=selenium-ide-appimage
 _appname="@seleniumhq${pkgname%-appimage}"
-pkgver=4.0.0_alpha.56
-pkgrel=2
+pkgver=4.0.0_alpha.57
+pkgrel=1
 pkgdesc="Open Source record and playback test automation for the web."
 arch=('x86_64')
 url="https://selenium.dev/selenium-ide/"
-_githuburl="https://github.com/SeleniumHQ/selenium-ide"
+_ghurl="https://github.com/SeleniumHQ/selenium-ide"
 license=('Apache')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
@@ -16,8 +16,10 @@ makedepends=(
 )
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver//_/-}/Selenium.IDE-${pkgver//_/-}.AppImage")
-sha256sums=('a658ba75f3d7d608e350cf909e767d784d6a5c72b0f630ce969b0e82077b6c7d')
+source=(
+    "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver//_/-}/Selenium.IDE-${pkgver//_/-}.AppImage"
+)
+sha256sums=('7937c999bafa080ba4516259308074fef25f5a770b69a79660be5cacb84fb0f6')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
