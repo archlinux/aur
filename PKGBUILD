@@ -2,7 +2,7 @@
 
 _pkgname=edi
 pkgname=${_pkgname}-git
-pkgver=v0.7.1.2.ga752979
+pkgver=v0.8.0.28.ge9d30f6
 pkgrel=1
 pkgdesc="The EFL IDE"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://phab.enlightenment.org/w/projects/${_pkgname}/"
 license=('GPL2')
 depends=('efl' 'clang' 'check')
 makedepends=('git' 'meson')
-source=("git+https://github.com/Enlightenment/edi.git")
+source=("git+https://git.enlightenment.org/enlightenment/edi.git")
 md5sums=('SKIP')
 
 pkgver() {
