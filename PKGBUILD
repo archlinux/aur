@@ -1,42 +1,59 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer:
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
-pkgname=sourcetrail
-_pkgname=Sourcetrail
+_pkgname=sourcetrail
+pkgname="$_pkgname"
 pkgver=2021.4.19
-_pkgver=${pkgver/\./\_}
-_pkgver=${_pkgver/\./\_}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform source explorer for C/C++ and Java'
 arch=('x86_64')
-url='https://www.sourcetrail.com'
+url="https://github.com/CoatiSoftware/Sourcetrail"
 license=('LGPL3')
-conflicts=('coati')
-replaces=('coati')
+
 depends=('libglvnd')
-makedepends=('rsync')
-provides=("${pkgname}=${pkgver}")
+makedepends=(
+  'gendesk'
+  'rsync'
+)
+
 options=(!strip)
-_url="https://github.com/CoatiSoftware/Sourcetrail/releases/download"
-source=("${pkgname}-${pkgver}.tar.gz::${_url}/${pkgver}/${_pkgname}_${_pkgver}_Linux_64bit.tar.gz"
-        "${pkgname}.desktop")
-sha256sums=('f65a401daad8e16f29f7b2ff062a559999b6a8d44606db36cdf803de0cd7816d'
-            '34d978813c1bba26ed243b15af11ea22800c5d95e4acc430496025d4caf4cc71')
+
+source=(
+  "${pkgname}-${pkgver}.tar.gz"::"$url/releases/download/${pkgver}/Sourcetrail_${pkgver//\./\_}_Linux_64bit.tar.gz"
+)
+sha256sums=(
+  'f65a401daad8e16f29f7b2ff062a559999b6a8d44606db36cdf803de0cd7816d'
+)
+
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
 prepare() {
-  mkdir -p "${srcdir}/opt/${pkgname}"
-  bsdtar --strip-components 1 -xf "${pkgname}-${pkgver}.tar.gz" \
-         -C "${srcdir}/opt/${pkgname}"
+  local _gendesk_options=(
+    -q -f -n
+    --pkgname="${_pkgname}"
+    --pkgdesc="$pkgdesc"
+    --name="Sourcetrail"
+    --exec="${_pkgname}"
+    --categories="Development"
+    --startupnotify=true
+    --mimetypes="application/x-sourcetrail"
+  )
+
+  gendesk "${_gendesk_options[@]}"
 }
 
 package() {
-  rsync -rtl "${srcdir}/opt" "${pkgdir}"
+  install -dm755 "${pkgdir:?}/opt/$_pkgname"
+  bsdtar --strip-components 1 \
+    -C "${pkgdir:?}/opt/$_pkgname" \
+    -xf "${pkgname}-${pkgver}.tar.gz"
 
-  mkdir -p "${pkgdir}/usr/share/applications"
-  install -m 644 "${srcdir}/${pkgname}.desktop" \
-            "${pkgdir}/usr/share/applications/"
-  # license
-  #mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  #ln -s "/opt/${pkgname}/EULA.txt" \
-  #          "${pkgdir}/usr/share/licenses/${pkgname}"
+  rm -rf "${pkgdir:?}/opt/$_pkgname"/{install,uninstall}.sh
+
+  install -dm755 "${pkgdir:?}/usr/bin"
+  ln -s "/opt/$_pkgname/Sourcetrail.sh" "${pkgdir:?}/usr/bin/$_pkgname"
+
+  install -Dm644 "${pkgdir:?}/opt/$_pkgname/share/icons/hicolor/256x256/apps/sourcetrail.png" "${pkgdir:?}/usr/share/pixmaps/$_pkgname.png"
+
+  install -Dm644 "${srcdir:?}/$_pkgname.desktop" -t "${pkgdir:?}/usr/share/applications/"
 }
