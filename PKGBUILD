@@ -14,10 +14,10 @@ depends=('docker' 'mkcert')
 optdepends=('bash-completion: subcommand completion support')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.22.5-rc2/ddev_linux-arm64.v1.22.5-rc2.tar.gz")
-sha256sums_aarch64=('7ec605b8f07872f97c24e836122647ac284bcf58b25e73d2ef51f16a29dd62f1')
+sha256sums_aarch64=('ee36c32f1f5929f37f9618170baa971d092a9ac9287b0b2bc0c2e515c0c00279')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.22.5-rc2/ddev_linux-amd64.v1.22.5-rc2.tar.gz")
-sha256sums_x86_64=('53d4915ad6bd2ebe8bccbad773d6026ad6d1ef44aa4ac400e33a6740d1aafcb8')
+sha256sums_x86_64=('ea83dadca13526983fdb29b28de179f1ee004305449bcfcafc4463adb243af73')
 
 package() {
   # bin
