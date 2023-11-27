@@ -1,0 +1,11 @@
+pkgbase = mmt-bin
+	pkgdesc = Media management tool for GoPros and other action cameras
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/KonradIT/mmt
+	arch = x86_64
+	provides = mmt
+	source = https://github.com/KonradIT/mmt/releases/download/v1.8/mmt_1.8_linux_amd64.tar.gz
+	sha256sums = c92f464a4a50ea016ce4d5e6741493856c7025c4764089a47bf5732f748cd748
+
+pkgname = mmt-bin
