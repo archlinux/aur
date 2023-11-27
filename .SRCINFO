@@ -4,14 +4,13 @@ pkgbase = apk-installer
 	pkgrel = 4
 	url = https://github.com/zhujiaming/apk-installer
 	arch = any
-	license = ISC
-	depends = bash
+	license = MIT
 	depends = electron10
 	depends = java-runtime
 	conflicts = apk-installer
-	source = apk-installer-1.6.0.tar.gz::https://github.com/zhujiaming/apk-installer/archive/refs/tags/1.6.0.tar.gz
+	source = apk-installer-1.6.0::git+https://github.com/zhujiaming/apk-installer.git#tag=1.6.0
 	source = apk-installer.sh
-	sha256sums = f58d1e672a98961307577251a5952521f723607d4920138e1d325bf14297c52c
-	sha256sums = bc5e84d645e5c04223ac6543b066340297aa1c84c23082d6d269acc228b07ea3
+	sha256sums = SKIP
+	sha256sums = c5d20773888fa2483956696b14936f0458d0968180e229a7f05c76628eb8577b
 
 pkgname = apk-installer
