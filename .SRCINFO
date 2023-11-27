@@ -1,6 +1,6 @@
 pkgbase = ruby-slather
 	pkgdesc = Test coverage reports for Xcode projects
-	pkgver = 2.7.5
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/SlatherOrg/slather
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = ruby-slather
 	depends = ruby-clamp
 	depends = ruby-nokogiri
 	depends = ruby-xcodeproj
-	noextract = slather-2.7.5.gem
+	noextract = slather-2.8.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/slather-2.7.5.gem
-	sha256sums = 7c44574e78a30d11b48e1fc4ca366151b2c2bbae9edfb043cc0c28f3368e89ff
+	source = https://rubygems.org/downloads/slather-2.8.0.gem
+	sha256sums = 27f170bba4d5157613fa583ef260d2a556a9b9fa07d609c753afefc4b06d58a6
 
 pkgname = ruby-slather
