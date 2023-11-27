@@ -1,11 +1,11 @@
 pkgbase = cnquery
 	pkgdesc = Cloud-Native Query - Asset Inventory Framework
-	pkgver = 9.8.0
+	pkgver = 9.9.0
 	pkgrel = 1
 	url = https://mondoo.com
 	arch = x86_64
 	license = MPL 2.0
-	source = https://releases.mondoo.com/cnquery/9.8.0/cnquery_9.8.0_linux_amd64.tar.gz
-	sha256sums = 76d51e7ca3546556044a46193c0394dc2238d30afa92d8d6b746ed2ecda46b3b
+	source = https://releases.mondoo.com/cnquery/9.9.0/cnquery_9.9.0_linux_amd64.tar.gz
+	sha256sums = 8a40c76c84bd6e24e3135ee45e3375c9a43f0ae5c3c222f4ad093f879ed83411
 
 pkgname = cnquery
