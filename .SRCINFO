@@ -1,6 +1,6 @@
 pkgbase = rtx
 	pkgdesc = Polyglot runtime manager
-	pkgver = 2023.11.5
+	pkgver = 2023.11.7
 	pkgrel = 1
 	url = https://github.com/jdx/rtx
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rtx
 	makedepends = cargo
 	provides = rtx
 	conflicts = rtx
-	source = rtx-2023.11.5.tar.gz::https://github.com/jdx/rtx/archive/v2023.11.5.tar.gz
-	sha512sums = e9e0acb91967cb6222f7ef5e1b841e082c4682e1e1c8e66d0ad0c59edec6fe0f0b1123ec158011b7e05ef5c35f3261ec85d453487a35d7eb2d998ce9cf7b8406
+	source = rtx-2023.11.7.tar.gz::https://github.com/jdx/rtx/archive/v2023.11.7.tar.gz
+	sha512sums = 6a854ea966873f13409c31f85fbbd3587015a98ac716bf77344b3e0cd4f845b53608a3f6cd81d27ec61425a9ed8aded7b64e44dba34c49594c37eb0b0bddf815
 
 pkgname = rtx
