@@ -1,6 +1,6 @@
-pkgbase = freeglut-svn
-	pkgver = r1877
-	pkgrel = 2
+pkgbase = freeglut-git
+	pkgver = 3.4.0.r27.g3f4a4dff
+	pkgrel = 1
 	url = http://freeglut.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -13,20 +13,21 @@ pkgbase = freeglut-svn
 	makedepends = libxxf86vm
 	provides = glut
 	provides = freeglut
-	provides = freeglut-svn
+	provides = freeglut-git
 	conflicts = glut
 	conflicts = freeglut
-	conflicts = freeglut-svn
-	source = svn+https://svn.code.sf.net/p/freeglut/code/trunk/freeglut/freeglut
+	conflicts = freeglut-git
+	replaces = freeglut-svn
+	source = git+https://github.com/FreeGLUTProject/freeglut
 	md5sums = SKIP
 
-pkgname = freeglut-x11-svn
+pkgname = freeglut-x11-git
 	pkgdesc = Provides functionality for small OpenGL programs - X11 version
 	depends = libxi
 	depends = libxrandr
 	depends = libgl
 
-pkgname = freeglut-wayland-svn
+pkgname = freeglut-wayland-git
 	pkgdesc = Provides functionality for small OpenGL programs - Wayland version
 	depends = wayland
 	depends = libxkbcommon

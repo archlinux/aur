@@ -2,26 +2,26 @@
 # Contributor: Andrew Wong <andrew@wongdev.com>
 
 _pkgname="freeglut"
-pkgbase="$_pkgname-svn"
-pkgname=("$_pkgname-x11-svn" "$_pkgname-wayland-svn")
-pkgver=r1877
-pkgrel=2
+pkgbase="$_pkgname-git"
+pkgname=("$_pkgname-x11-git" "$_pkgname-wayland-git")
+pkgver=3.4.0.r27.g3f4a4dff
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://freeglut.sourceforge.net/"
 license=('MIT')
 makedepends=('subversion' 'cmake' 'mesa' 'glu' 'wayland' 'libxxf86vm')
-provides=('glut' 'freeglut' 'freeglut-svn')
-conflicts=('glut' 'freeglut' 'freeglut-svn')
-source=("svn+https://svn.code.sf.net/p/freeglut/code/trunk/freeglut/freeglut")
+provides=('glut' 'freeglut' 'freeglut-git')
+conflicts=('glut' 'freeglut' 'freeglut-git')
+replaces=('freeglut-svn')
+source=("git+https://github.com/FreeGLUTProject/freeglut")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  local ver="$(svnversion)"
-  echo "r${ver//[[:alpha:]]}"
+    cd "$srcdir/$_pkgname"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package_freeglut-x11-svn() {
+package_freeglut-x11-git() {
   depends=('libxi' 'libxrandr' 'libgl')
   pkgdesc="Provides functionality for small OpenGL programs - X11 version"
 
@@ -35,7 +35,7 @@ package_freeglut-x11-svn() {
   install -Dm644 $_pkgname/COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
-package_freeglut-wayland-svn() {
+package_freeglut-wayland-git() {
   depends=('wayland' 'libxkbcommon' 'libgl')
   pkgdesc="Provides functionality for small OpenGL programs - Wayland version"
 
