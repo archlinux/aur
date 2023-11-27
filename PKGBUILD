@@ -3,7 +3,7 @@
 pkgname=python-pyebsdindex
 pkgshort=PyEBSDIndex
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python based tool for Radon based EBSD orientation indexing."
 arch=('any')
 url="https://pyebsdindex.readthedocs.io"
@@ -26,7 +26,7 @@ provides=('pyebsdindex')
 source=(https://github.com/USNavalResearchLaboratory/PyEBSDIndex/archive/v$pkgver.tar.gz)
 
 package() {
-  cd "$srcdir/PyEBSDIndex-$pkgver"
+  cd "$srcdir/$pkgshort-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 

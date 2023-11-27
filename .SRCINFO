@@ -1,7 +1,7 @@
 pkgbase = python-pyebsdindex
 	pkgdesc = Python based tool for Radon based EBSD orientation indexing.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyebsdindex.readthedocs.io
 	arch = any
 	license = Custom
