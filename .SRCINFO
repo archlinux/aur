@@ -1,0 +1,19 @@
+pkgbase = airisp-next-git
+	pkgdesc = An ISP tool for Air MCU (Rust)
+	pkgver = r3.0340f17
+	pkgrel = 1
+	url = https://github.com/Air-duino/AirISP-next
+	arch = any
+	license = unknow
+	makedepends = git
+	makedepends = rust
+	makedepends = mold
+	depends = cargo
+	provides = airisp-next
+	conflicts = airisp-next
+	options = !strip
+	options = !lto
+	source = airisp-next-git::git+https://github.com/Air-duino/AirISP-next.git
+	sha256sums = SKIP
+
+pkgname = airisp-next-git
