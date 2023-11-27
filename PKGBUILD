@@ -1,9 +1,9 @@
 # Maintainer: Althorion <althorion <at> protonmail <dot> com>
 
-pkgname=python-advent-of-code-data
-_name=${pkgname#python-}
+pkgname=python-aocd
+_name=advent-of-code-data
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Get your AOC puzzle data with a single import"
 arch=('any')
 url='https://github.com/wimglenn/advent-of-code-data'
