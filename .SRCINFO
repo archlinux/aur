@@ -1,7 +1,7 @@
 pkgbase = perl-file-map
 	pkgdesc = Memory mapping made simple and safe.
-	pkgver = 0.67
-	pkgrel = 3
+	pkgver = 0.71
+	pkgrel = 1
 	url = https://metacpan.org/release/File-Map
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = perl-file-map
 	depends = perl-sub-exporter-progressive>=0.001013
 	depends = perl>=5.008
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/File-Map-0.67.tar.gz
-	md5sums = abcc4cbd9a8765b18f8a107859d69df0
-	sha512sums = 52bd9ebb546e6b0e0d58cce3e5f5983c0f89bf05ba3f29d220b6d83ca150e200ac9c6e7d2adb717838c0b20e9ddd68c94509b47775d27273c37bc44dcff1d507
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/File-Map-0.71.tar.gz
+	md5sums = af467d5449071f61ddcc03bc84ea6e55
+	sha512sums = 12c79d0209462b8db629225b565b8366ca14183010a13abe7a93e3c8a4489b29721962ca08fd5b7b8accf9f98506427e3d3dfd4a9da3bcd3127c6316509d4e6f
 
 pkgname = perl-file-map
