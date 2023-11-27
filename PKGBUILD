@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pomota-bin
 pkgver=0.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple user-friendly cross-platform tauri based pomodoro timer app that forces you to take a break"
 arch=('x86_64')
 url="https://github.com/p32929/pomota"
@@ -13,11 +13,9 @@ depends=(
     'cairo'
     'pango'
     'webkit2gtk'
-    'dbus'
     'gtk3'
     'openssl-1.1'
     'gdk-pixbuf2'
-    'glib2'
 )
 options=('!strip')
 source=(
