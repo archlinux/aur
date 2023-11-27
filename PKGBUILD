@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-devel-caller'
-pkgver='2.06'
+pkgver='2.07'
 pkgrel='1'
 pkgdesc="meatier versions of caller"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-padwalker>=0.08')
 makedepends=()
-url='http://search.cpan.org/dist/Devel-Caller'
-source=('http://search.cpan.org/CPAN/authors/id/R/RC/RCLAMP/Devel-Caller-2.06.tar.gz')
-md5sums=('af52f47979b3c9358af9e5d8c283f263')
-sha512sums=('f15a59169e191c8526f613d21c415e5d8d51b59eabf309952468fdee15277b2e8f831a2263a9dc006d9f3144a234fbc9c46ad3ab464b6fc055360c6445b209f9')
-_distdir="Devel-Caller-2.06"
+url='https://metacpan.org/release/Devel-Caller'
+source=('http://search.cpan.org/CPAN/authors/id/R/RC/RCLAMP/Devel-Caller-2.07.tar.gz')
+md5sums=('29c5c2e4e46b508debf85525ac35c8e5')
+sha512sums=('9c4bc1bfbd012c803ce7e0ec1c586558e6e4198ed19dac6608eb05939a74cfe2e6613942696451cfa1aad4f98f2acea6a2e43fa32b5d377787c00b560d7d8111')
+_distdir="Devel-Caller-2.07"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
