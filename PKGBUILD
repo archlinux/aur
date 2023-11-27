@@ -2,7 +2,7 @@
 
 pkgname=necrolog-git
 _gitname=necrolog
-pkgver=r107.91f80ca
+pkgver=r108.d7309e7
 pkgrel=1
 pkgdesc='Tiny but powerful logging for C++'
 url='https://github.com/fvacek/necrolog'
@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cmake' 'doctest')
 conflicts=('necrolog' 'necrolog-git')
 provides=('necrolog')
-source=('git+https://github.com/syyyr/necrolog.git#branch=pkgconfig')
+source=('git+https://github.com/fvacek/necrolog.git')
 md5sums=('SKIP')
 
 pkgver() {

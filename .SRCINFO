@@ -1,6 +1,6 @@
 pkgbase = necrolog-git
 	pkgdesc = Tiny but powerful logging for C++
-	pkgver = r107.91f80ca
+	pkgver = r108.d7309e7
 	pkgrel = 1
 	url = https://github.com/fvacek/necrolog
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = necrolog-git
 	provides = necrolog
 	conflicts = necrolog
 	conflicts = necrolog-git
-	source = git+https://github.com/syyyr/necrolog.git#branch=pkgconfig
+	source = git+https://github.com/fvacek/necrolog.git
 	md5sums = SKIP
 
 pkgname = necrolog-git
