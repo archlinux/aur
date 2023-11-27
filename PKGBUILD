@@ -1,26 +1,29 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aniship-bin
 pkgver=0.0.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A convenient and functional unofficial client that allows for easy viewing of anime on PCs and laptops."
 arch=('x86_64')
 url="https://t.me/aniship"
-_githuburl="https://github.com/progzone122/AniShip"
+_ghurl="https://github.com/progzone122/AniShip"
 license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron16')
-makedepends=('squashfuse' 'asar')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}night/setup-${pkgver//.2/-2}.AppImage"
-    "${pkgname%-bin}.sh")
+depends=(
+    'electron16'
+)
+makedepends=(
+    'squashfuse'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}night/setup-${pkgver//.2/-2}.AppImage"
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('1fbe0e6388982d71268c4f4f04bf7c3f82ac0a6dee8310f8599d93be565525d2'
-            '79c7eb23fcafd633fb357bc462ac457d781f027dfe1ccb55ee966dec94c32489')
+            'cddaabf4858314eee5ef72d0dbde9a89db52483e8ba51d1e799f4c6466034e6a')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${srcdir}"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     sed -e "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" \
         -e "s|Icon=${pkgname%-bin}-night|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/squashfs-root/${pkgname%-bin}-night.desktop"
@@ -28,9 +31,9 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644  "${srcdir}/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
-    cp -r "${srcdir}/squashfs-root/resources/sources" "${pkgdir}/opt/${pkgname%-bin}/resources"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/opt/${pkgname%-bin}/usr/lib"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/resources/"{app.asar.unpacked,sources} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/opt/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/opt/${pkgname%-bin}/swiftshader"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}-night.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}-night.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
