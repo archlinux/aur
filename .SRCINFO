@@ -1,6 +1,6 @@
 pkgbase = iceshrimp-pre
 	pkgdesc = YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023
-	pkgver = v2023.12.pre2
+	pkgver = v2023.12.pre3
 	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp
 	install = iceshrimp.install
@@ -16,7 +16,7 @@ pkgbase = iceshrimp-pre
 	provides = iceshrimp
 	conflicts = iceshrimp
 	backup = etc/iceshrimp/configuration.yml
-	source = iceshrimp::git-lfs+https://iceshrimp.dev/iceshrimp/iceshrimp.git#tag=v2023.12-pre2
+	source = iceshrimp::git-lfs+https://iceshrimp.dev/iceshrimp/iceshrimp.git#tag=v2023.12-pre3
 	source = iceshrimp.service
 	source = iceshrimp.sysusers
 	source = iceshrimp.tmpfiles
