@@ -3,7 +3,7 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=2677.r0.gf4c1c51
+pkgver=2698.r0.g24ccdfa
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
         "soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git"
-        "catch2::git+https://github.com/catchorg/Catch2"
+        "catch2::git+https://github.com/catchorg/Catch2.git"
         "dynarmic::git+https://github.com/merryhime/dynarmic.git"
         "git+https://github.com/herumi/xbyak.git"
         "git+https://github.com/fmtlib/fmt.git"
@@ -36,7 +36,7 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "git+https://github.com/benhoyt/inih.git"
         "libressl::git+https://github.com/citra-emu/ext-libressl-portable.git"
         "git+https://github.com/libusb/libusb.git"
-        "git+https://github.com/mozilla/cubeb"
+        "git+https://github.com/mozilla/cubeb.git"
         "git+https://github.com/yuzu-emu/discord-rpc.git"
         "git+https://github.com/arun11299/cpp-jwt.git"
         "git+https://github.com/wwylele/teakra.git"
@@ -54,13 +54,13 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "git+https://github.com/yuzu-emu/sirit.git"
         "library-headers::git+https://github.com/citra-emu/ext-library-headers.git"
         "git+https://github.com/bylaws/libadrenotools.git"
-        "git+https://github.com/knik0/faad2"
+        "git+https://github.com/knik0/faad2.git"
         "git+https://github.com/merryhime/oaknut.git"
         # cubeb's submodule
-        "git+https://github.com/google/googletest"
-        "git+https://github.com/arsenm/sanitizers-cmake"
+        "git+https://github.com/google/googletest.git"
+        "git+https://github.com/arsenm/sanitizers-cmake.git"
         #dynarmic's zydis submodule
-        "zycore::git+https://github.com/zyantific/zycore-c"
+        "zycore::git+https://github.com/zyantific/zycore-c.git"
         #sirit's submodules
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         #libadrenotools' submodule
@@ -166,7 +166,7 @@ build() {
       -DUSE_SYSTEM_JSON=ON \
       -DUSE_SYSTEM_LIBUSB=ON \
       -DUSE_SYSTEM_SOUNDTOUCH=ON \
-      -DUSE_SYSTEM_GLSLANG=ON \
+      -DUSE_SYSTEM_GLSLANG=OFF \
       -DUSE_SYSTEM_INIH=ON \
       -DUSE_SYSTEM_ZSTD=ON \
       -DCMAKE_C_COMPILER=gcc \
