@@ -10,7 +10,7 @@
 
 pkgname=aseprite-skia-bin
 pkgver=1.3
-pkgrel=3
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
