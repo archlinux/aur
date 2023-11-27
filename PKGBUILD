@@ -3,44 +3,47 @@
 _name=networkx
 
 pkgname=python-networkx-git
-pkgver=2.8.4.r97.gd7903fe6c
+pkgver=3.2.r57.gf93f0e2a0
 pkgrel=1
 pkgdesc="Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks."
 
-arch=('any')
-license=('BSD')
+arch=("any")
+license=("BSD")
 url="https://github.com/networkx/networkx"
 
 source=("git+$url#branch=main")
-sha512sums=('SKIP')
+sha512sums=("SKIP")
 
-conflicts=('python-networkx')
+conflicts=("python-networkx")
 provides=("python-networkx=$pkgver")
 
 depends=(
-	'python-decorator'
-	'python-matplotlib'
-	'python-numpy'
-	'python-pandas'
-	'python-scipy'
+    "python-decorator"
+    "python-matplotlib"
+    "python-numpy"
+    "python-pandas"
+    "python-scipy"
 )
-makedepends=('git')
+makedepends=(
+    "git"
+    "python-build"
+    "python-installer"
+    "python-setuptools"
+    "python-wheel"
+)
 
-pkgver ()
-{
-	cd "$srcdir/$_name"
-	git describe --long --tags | sed 's/^networkx-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+pkgver () {
+    cd "$srcdir/$_name" || exit
+    git describe --long --tags | sed 's/^networkx-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build ()
-{
-	cd "$srcdir/$_name"
-	python setup.py build
+build () {
+    cd "$srcdir/$_name" || exit
+    python -m build --wheel --no-isolation
 }
 
-package ()
-{
-	cd "$srcdir/$_name"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package () {
+    cd "$srcdir/$_name" || exit
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
