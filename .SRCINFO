@@ -1,0 +1,24 @@
+pkgbase = bdebstrap
+	pkgdesc = YAML config based multi-mirror Debian chroot creation tool
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/bdrung/bdebstrap
+	arch = any
+	license = ISC
+	checkdepends = python-black
+	checkdepends = python-isort
+	checkdepends = python-pylint
+	checkdepends = python-coverage
+	checkdepends = flake8
+	checkdepends = shellcheck
+	makedepends = pandoc
+	makedepends = python-setuptools
+	depends = mmdebstrap
+	depends = python-ruamel-yaml
+	depends = python
+	source = https://github.com/bdrung/bdebstrap/releases/download/v0.5.0/bdebstrap-0.5.0.tar.xz
+	source = extract-hook.patch
+	sha256sums = f66cb56ea8ffa713da1a8dd7bc24ed0d11606619ea6730ccef1f6b251222b114
+	sha256sums = 564d577734f288195e46f1692f55bcfeda883ecf9275ba963062feb566f7cedd
+
+pkgname = bdebstrap
