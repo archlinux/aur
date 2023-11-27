@@ -1,7 +1,7 @@
 # Maintainer: Daniele Basso <d dot bass05 at proton dot me>
 pkgname=rustic-rs
 _pkgname=rustic
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Fast, encrypted, deduplicated backups powered by Rust"
 arch=(x86_64)
@@ -14,7 +14,7 @@ provides=()
 conflicts=()
 replaces=()
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('ffd78edb12a24b1a0756abeafe2eeb42a9212a36f2bd9e485645fa0aa0c0e1a7')
+b2sums=('f65dd3bc48ff5680615e04fd11a58aa46ff21e6d710943573ce10c0953f534d47b62581da610293558b530261fd07acb9881c829dfbc4f5feeb7d55fee700475')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
