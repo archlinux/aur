@@ -1,0 +1,4 @@
+hare-ssh-git-*.pkg.*
+hare-ssh/
+pkg/
+src/
