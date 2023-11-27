@@ -3,7 +3,7 @@
 _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
@@ -24,23 +24,24 @@ sha256sums=('SKIP'
             'SKIP')
 
 _srcdir="${_pkgreponame}"
+_engine_version=3.13.9
 
 prepare() {
-	source '/opt/flutter-engine/pkgbuild-prepare.sh'
 	cd "${_srcdir}"
+	source '/opt/flutter-engine/pkgbuild-prepare.sh'
 
 	local dartpkg="$(yq -er .name 'pubspec.yaml')"
-	flutter create $flutter_select_engine --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
+	flutter create --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
 
-	flutter clean $flutter_select_engine
-	flutter pub $flutter_select_engine get
+	flutter clean
+	flutter pub get
 }
 
 build() {
-	source '/opt/flutter-engine/pkgbuild-build.sh'
 	cd "${_srcdir}"
+	source '/opt/flutter-engine/pkgbuild-build.sh'
 
-	flutter build linux --release $flutter_select_engine
+	flutter build linux --release
 }
 
 package() {
