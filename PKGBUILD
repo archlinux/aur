@@ -1,7 +1,7 @@
 # Maintainer: Manuel Lladosa <$(base64 --decode <<<'bWFub2xvbGxyQHJpc2V1cC5uZXQK')>
 # Contributor: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer-git'
-pkgver=20230203.r4.gdf1f2a9da
+pkgver=20230203.r394.g8d54d5011
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64')
@@ -23,10 +23,10 @@ build() {
   cd $pkgname
 
   # https://github.com/pioneerspacesim/pioneer/issues/5387#issuecomment-1172955235
-  CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
+  # Not needed now?
+  # CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
 
-  ./bootstrap -D CMAKE_INSTALL_PREFIX:PATH=/usr \
-    -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/
+  ./bootstrap -D CMAKE_INSTALL_PREFIX:PATH=/usr
   make -C build
 
   # If game is installed models don't get compiled
@@ -40,8 +40,8 @@ build() {
     make -C build modelcompiler
     build/modelcompiler -b inplace
 
-    ./bootstrap cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr \
-     -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/
+    ./bootstrap -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+      -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/data/
   else
     build/modelcompiler -b inplace
   fi
