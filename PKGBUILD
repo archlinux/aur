@@ -1,7 +1,7 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 pkgname=bdebstrap
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="YAML config based multi-mirror Debian chroot creation tool"
 arch=('any')
 url="https://github.com/bdrung/bdebstrap"
@@ -15,6 +15,12 @@ checkdepends=(
 	'python-coverage'
 	'flake8'
 	'shellcheck')
+optdepends=(
+	'debian-archive-keyring: Debian PKI support'
+	'ubuntu-keyring: Ubuntu PKI support'
+	'qemu-user-static: foreign-architecture support'
+	'qemu-user-static-binfmt: foreign-architecture support'
+	'arch-test: foreign-architecture support')
 source=(
 	"https://github.com/bdrung/bdebstrap/releases/download/v0.5.0/$pkgname-$pkgver.tar.xz"
 	'extract-hook.patch')
