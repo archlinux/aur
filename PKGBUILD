@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatd
 pkgver=1.0.1
-_ollamaver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat with your documents using local AI"
 arch=('x86_64')
 url="https://chatd.ai/"
 _ghurl="https://github.com/BruceMacD/chatd"
 _ollamaurl="https://github.com/jmorganca/ollama"
+_ollamaver=0.1.12
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '70b5e5d0683cef44c290a6ead0903fa6d07504af67698b411d59234ab13a3fde'
+            'a890d66c37621aed531dc7795fa62b2ac1b8bebcce87f56c5cef35b026a3ad0f'
             'fcaeb0dbb5ef834b40ae32c177deed39a8a79e280305c6195a84fa70b525b844')
 build() {
     gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
