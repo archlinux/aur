@@ -10,6 +10,8 @@ pkgbase = cloudflarespeedtest-bin
 	license = GPL3
 	provides = cloudflarespeedtest=2.2.5
 	conflicts = cloudflarespeedtest
+	source = cloudflarespeedtest.sh
+	sha256sums = 92816952a7c7edbce4eb594b05d4fb5c23a0597bb5d63380d75dd9f0cb1f99b2
 	source_aarch64 = cloudflarespeedtest-bin-2.2.5-aarch64.tar.gz::https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz
 	sha256sums_aarch64 = 8e00483443159c40885b6d204291ab7c1b7a2df85987ef94030072213afb6f5e
 	source_armv7h = cloudflarespeedtest-bin-2.2.5-armv7h.tar.gz::https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_armv7.tar.gz
