@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=reactome.db
-_pkgver=1.86.0
+_pkgver=1.86.2
 pkgname=r-${_pkgname,,}
-pkgver=1.86.0
+pkgver=1.86.2
 pkgrel=1
 pkgdesc='A set of annotation maps for reactome'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-rsqlite
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('51e6b1ff44cf4cf0b2448dd69d46be1abc509ff3f9c59654cee9c9de516e2854')
+sha256sums=('0c319b4164ab7e590233437ab715dd9a0092287611ac588b74ec42a01b8ce80a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
