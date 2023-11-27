@@ -1,3 +1,14 @@
+## GE-Proton8-25
+
+HOTFIX:
+
+- Remove Baldur's Gate 3 launcher workaround (no longer needed)
+- Add mpegvideo codec to ffmpeg, should complete Crimson Skies, Azumanga Fighter and possibly a lot of other early 2000s games. (thanks loathingKernel)
+
+FYI: github Actions builds the release files now. If they are not attatched wait an hour or so and github Actions will attach them when finished building:
+
+https://github.com/GloriousEggroll/proton-ge-custom/actions/runs/6950027102
+
 ## GE-Proton8-24
 
 - Added protonfix for Fable III
