@@ -1,6 +1,6 @@
 pkgbase = r-topicmodels
 	pkgdesc = Topic Models
-	pkgver = 0.2.14
+	pkgver = 0.2.15
 	pkgrel = 1
 	url = https://cran.r-project.org/package=topicmodels
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-topicmodels
 	optdepends = r-lda
 	optdepends = r-oaiharvester
 	optdepends = r-snowballc
-	source = https://cran.r-project.org/src/contrib/topicmodels_0.2-14.tar.gz
-	sha256sums = acd40ff8ea973692bd9e9acf175afc5c74ccf54b93297a0a054c15caa44b5cc9
+	source = https://cran.r-project.org/src/contrib/topicmodels_0.2-15.tar.gz
+	sha256sums = 71b50f78e4d7b95b5c3663d766eb15ad2061cc49d58436dc3aa56960cdaf77d0
 
 pkgname = r-topicmodels
