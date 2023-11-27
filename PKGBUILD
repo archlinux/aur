@@ -3,7 +3,7 @@
 
 pkgname=typeracer-bin
 _pkgname=terminal-typeracer
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Terminal typing speed tester"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('openssl' 'sqlite')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
-_md5=f242603dec7f789dd4eb83f417fcf4e3
+_md5=586c0dc2df67e8ac2b02dd66b2b35122
 source_x86_64=("$pkgname-$pkgver::$url/uploads/$_md5/${pkgname%-bin}"
               "$pkgname-$pkgver-README.md::$url/-/raw/v$pkgver/README.md")
 sha512sums_x86_64=('36a4ec600a29b942d62723663cd11e407a4ac3a6e676e12339cdf5085fa179af3ad1374eba69c02d429a3bdb7cb2372b82c7e103ee91122dda8ebbf5f843703c'
