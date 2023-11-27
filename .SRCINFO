@@ -1,17 +1,17 @@
 pkgbase = php-pear
 	pkgdesc = PHP Extension and Application Repository
-	pkgver = 1.10.21
-	pkgrel = 3
+	pkgver = 1.10.22
+	pkgrel = 1
 	epoch = 1
 	url = https://pear.php.net/package/pearweb_phars/
 	arch = any
 	license = PHP
 	depends = php
 	backup = etc/php/pear.conf
-	source = install-pear-nozlib-1.10.21.phar::https://github.com/pear/pearweb_phars/raw/v1.10.21/install-pear-nozlib.phar
-	source = install-pear-nozlib-1.10.21.phar.sig::https://github.com/pear/pearweb_phars/raw/v1.10.21/install-pear-nozlib.sig
+	source = install-pear-nozlib-1.10.22.phar::https://github.com/pear/pearweb_phars/raw/v1.10.22/install-pear-nozlib.phar
+	source = install-pear-nozlib-1.10.22.phar.sig::https://github.com/pear/pearweb_phars/raw/v1.10.22/install-pear-nozlib.sig
 	validpgpkeys = 10F68CF73F8AA426F617752972A321BAC245F175
-	sha256sums = 51b94a55cb26d37d2d35203a99d79a6fe87b66100d373ecc9057f86758a2823b
+	sha256sums = f2b964aac2f5d9c7293fe7aedf55d4a1dc657a728e130abf9bb613561b7d9047
 	sha256sums = SKIP
 
 pkgname = php-pear
