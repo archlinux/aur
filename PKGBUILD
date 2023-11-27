@@ -1,6 +1,6 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=ytmdl
-pkgver=2023.2.28
+pkgver=2023.11.26
 pkgrel=0
 pkgdesc="Download songs from YouTube with metadata from sources like Itunes, Gaana, Deezer etc."
 arch=("any")
@@ -13,7 +13,7 @@ depends=(
     "python-mutagen"
     "python-beautifulsoup4"
     "python-colorama"
-    "downloader-cli"
+    "downloader-cli>=0.3.4"
     "python-itunespy"
     "python-ffmpeg"
     "python-pysocks"
@@ -43,7 +43,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://files.pythonhosted.org/packages/ef/99/a7de28eb06797d63126c5655590998d1389adf81547e4a876e678d1904f7/ytmdl-2023.2.28.tar.gz")
+source=("https://files.pythonhosted.org/packages/ae/e3/e0ab2e483e89477a492470b93b99c349a3ef648552e795878b303d65d839/ytmdl-2023.11.26.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
