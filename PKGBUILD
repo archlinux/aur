@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=lith-git
 pkgver=1.7.1.r1.g77842ae
-pkgrel=1
+pkgrel=2
 pkgdesc='A multiplatform WeeChat relay client'
 arch=('x86_64')
 url='https://github.com/LithApp/Lith'
@@ -35,4 +35,5 @@ package() {
     DESTDIR="$pkgdir" cmake --install "$srcdir/build"
     # The executable has an uppercase L, I think it is sensible to change that to a lowercase l.
     mv "$pkgdir/usr/bin/Lith" "$pkgdir/usr/bin/lith"
+    sed -i s/Exec=Lith/Exec=lith/ "$pkgdir/usr/share/applications/app.lith.Lith.desktop"
 }
