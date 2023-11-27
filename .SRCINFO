@@ -1,8 +1,8 @@
 pkgbase = junction-zhfix
-	pkgdesc = Application/browser chooser
-	pkgver = 1.6
-	pkgrel = 4
-	url = https://github.com/sonnyp/Junction
+	pkgdesc = Application/browser chooser (zhfix fork)
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/detiam/Junction-zhfix
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
@@ -11,12 +11,13 @@ pkgbase = junction-zhfix
 	makedepends = meson
 	makedepends = python-gobject
 	makedepends = blueprint-compiler
+	makedepends = xdg-utils
 	depends = libadwaita
 	depends = libportal-gtk4
 	depends = gjs
 	provides = junction
 	conflicts = junction
-	source = junction-1.6::git+https://github.com/sonnyp/Junction.git#commit=53ca01d7f3eca72a4a6bb0727ca6aa5eec3e63db
+	source = junction-1.6.1::git+https://github.com/detiam/Junction-zhfix.git#tag=v1.6.1
 	b2sums = SKIP
 
 pkgname = junction-zhfix
