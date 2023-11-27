@@ -1,6 +1,6 @@
 pkgbase = labwc-git
 	pkgdesc = stacking wayland compositor with look and feel from openbox (git version)
-	pkgver = 0.6.5.r117.g1b8e404c
+	pkgver = 0.6.6.r21.gaab8061d
 	pkgrel = 1
 	url = https://github.com/labwc/labwc
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = labwc-git
 	depends = librsvg
 	depends = pango
 	depends = seatd
-	depends = wlroots0.16
+	depends = wlroots>=0.17
+	depends = wlroots<0.18
 	depends = wayland
 	depends = xorg-xwayland
 	optdepends = bemenu: default launcher via Alt+F3
