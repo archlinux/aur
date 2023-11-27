@@ -1,6 +1,6 @@
 pkgbase = deltachat-desktop-bin
 	pkgdesc = Email-based instant messaging for Desktop.
-	pkgver = 1.41.4
+	pkgver = 1.42.1
 	pkgrel = 1
 	url = https://delta.chat/
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = deltachat-desktop-bin
 	depends = python-cffi
 	depends = python-requests
 	depends = python-pluggy
-	provides = deltachat=1.41.4
-	provides = deltachat-desktop=1.41.4
+	provides = deltachat=1.42.1
+	provides = deltachat-desktop=1.42.1
 	conflicts = deltachat-desktop
-	source = deltachat-desktop-1.41.4.pacman::https://download.delta.chat/desktop/v1.41.4/deltachat-desktop-1.41.4.pacman
+	source = deltachat-desktop-1.42.1.pacman::https://download.delta.chat/desktop/v1.42.1/deltachat-desktop-1.42.1.pacman
 	source = deltachat-desktop.sh
-	sha256sums = 28f1df7647a8c323b3273cda9fbbae881dd04e9996ce14f29d4d40e9709b65ef
+	sha256sums = ea437921a8cdbab0c5bcc170d3d504ec5a74e873d4e3abcc4aa63ce34527d991
 	sha256sums = 03c891ec47df246c3bce1480ffa8425ac633d291d05b5c05c47b0d1f1f5f2dcc
 
 pkgname = deltachat-desktop-bin
