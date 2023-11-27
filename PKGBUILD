@@ -1,23 +1,19 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="xsnow-bin"
-pkgver=3.7.4
+pkgver=3.7.6
 pkgrel=1
 pkgdesc="Let it snow on your desktop"
 url="https://www.ratrabbit.nl/ratrabbit/xsnow/"
 license=("GPL3")
-arch=("x86_64" "i386" "armv7h" "aarch64")
+arch=("x86_64" "aarch64")
 provides=("xsnow")
 conflicts=("xsnow" "xsnow-legacy" "xsnow-comp-patch-git")
 depends=("atk" "cairo" "gsl<2.6" "gtk3" "libx11" "libxpm" "libxml2")
-source_x86_64=("https://master.dl.sourceforge.net/project/xsnow/xsnow_$pkgver-1_amd64.deb")
-source_i386=("https://master.dl.sourceforge.net/project/xsnow/xsnow_$pkgver-1_i386.deb")
-source_armv7h=("https://master.dl.sourceforge.net/project/xsnow/xsnow_$pkgver-1_armhf.deb")
-source_aarch64=("https://master.dl.sourceforge.net/project/xsnow/xsnow_$pkgver-1_arm64.deb")
-sha256sums_x86_64=('63c15da4c5edc7c760b71edabd86ca2f79ca4f12547d5bd41739a7196839f3a7')
-sha256sums_i386=('1f62912569d2f777cf601a07246c187ddd47cb9c2f72fc3de990d2f08c8f2b9d')
-sha256sums_armv7h=('11cc08b9540f24549707c320f0b7c496428ec4677cb42736267cc48bfc4ba530')
-sha256sums_aarch64=('525ed9679e3b7e351320b389b0ab6ed66319e1f01cc4dfd11c3bf330cf01cbbc')
+source_x86_64=("http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_$pkgver-1_amd64.deb")
+source_aarch64=("http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_$pkgver-1_arm64.deb")
+b2sums_x86_64=('78dcf2ca2e3fce60f8cd4d5625e67e8dff0e7ce02b770e6d3477c50a7239ab7cc30f0bef4f2b7959f6e3e46c8b2aff9277882c596631939c5da00bd97bbc91d1')
+b2sums_aarch64=('e4da5f558cf7383fbd01b100a33e625f47839b0f8a33336257864c9f087d12385874f1ff818a084091cec0720c3b24c5a1aa3e1d97d7650a41f543b2d5a7d471')
 
 prepare(){
  tar -xf "data.tar.xz"
