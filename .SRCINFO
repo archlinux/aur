@@ -1,8 +1,8 @@
 pkgbase = libshv-git
 	pkgdesc = An RPC framework build around the ChainPack packing schema
-	pkgver = r2348.a6a3e3a1
-	pkgrel = 2
-	url = https://github.com/silicon-heaven/libshv/
+	pkgver = r2362.087ab526
+	pkgrel = 1
+	url = https://github.com/silicon-heaven/libshv
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -20,7 +20,7 @@ pkgbase = libshv-git
 	provides = libshv
 	conflicts = libshv
 	conflicts = libshv-git
-	source = git+https://github.com/silicon-heaven/libshv.git#branch=cmake-pkg
+	source = git+https://github.com/silicon-heaven/libshv.git
 	md5sums = SKIP
 
 pkgname = libshv-git
