@@ -2,7 +2,7 @@
 _pkgname="fireblocks recovery utility"
 pkgname="${_pkgname// /-}-bin"
 _appname="Fireblocks Recovery Utility"
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Recover Fireblocks assets and keys in a disaster, verify a Recovery Kit, or generate keys to set up a new Recovery Kit."
 arch=('x86_64')
@@ -15,7 +15,6 @@ depends=(
     'libxcomposite'
     'libcups'
     'libxkbcommon'
-    'dbus'
     'mesa'
     'libdbusmenu-glib'
     'expat'
@@ -42,8 +41,10 @@ depends=(
 makedepends=(
     'squashfuse'
 )
-source=("${pkgname}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver%.2}/Recovery.Utility.Ubuntu.${CARCH//_/-}.zip")
-sha256sums=('d84464e4cbaa1b64efa12d8469f39ab0733721d46c4632b1f3045f834d7579dc')
+source=(
+    "${pkgname}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver%.2}/Recovery.Utility.Ubuntu.${CARCH//_/-}.zip
+")
+sha256sums=('365860a35536f396d085e532feca1faa04f23ffbaafeb1d412a0561aced60e89')
 build() {
     chmod a+x "${srcdir}/${_appname}-${pkgver}.AppImage"
     "${srcdir}/${_appname}-${pkgver}.AppImage" --appimage-extract > /dev/null
