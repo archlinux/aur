@@ -4,607 +4,711 @@ pkgbase = libreoffice-dev-i18n
 	url = https://www.documentfoundation.org
 	arch = any
 	license = LGPL
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_af.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_am.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_am.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ar.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ar.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_as.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ast.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ast.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_be.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_bg.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_bg.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_bn-IN.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_bn-IN.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_bn.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_bn.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_bo.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_bo.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_br.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_brx.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_bs.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_bs.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ca-valencia.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ca-valencia.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ca.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ca.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_cs.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_cs.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_cy.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_da.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_da.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_de.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_de.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_dgo.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_dsb.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_dz.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_dz.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_el.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_el.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_en-GB.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_en-GB.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_en-ZA.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_en-ZA.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_eo.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_eo.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_es.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_es.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_et.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_et.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_eu.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_eu.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_fa.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_fi.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_fi.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_fr.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_fr.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_fur.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_fy.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ga.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_gd.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_gl.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_gl.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_gu.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_gu.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_gug.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_he.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_he.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_hi.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_hi.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_hr.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_hr.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_hsb.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_hu.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_hu.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_id.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_id.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_is.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_is.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_it.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_it.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ja.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ja.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ka.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ka.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_kab.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_kk.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_km.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_km.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_kmr-Latn.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_kn.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ko.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ko.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_kok.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ks.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_lb.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_lo.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_lo.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_lt.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_lt.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_lv.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_lv.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_mai.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_mk.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_mk.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ml.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_mn.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_mni.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_mr.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_my.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_nb.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_nb.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ne.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ne.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_nl.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_nl.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_nn.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_nn.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_nr.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_nso.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_oc.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_om.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_om.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_or.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_pa-IN.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_pl.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_pl.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_pt-BR.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_pt-BR.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_pt.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_pt.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_qtz.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_qtz.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ro.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ro.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ru.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ru.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_rw.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sa-IN.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sat.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sd.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_si.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_si.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sid.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sid.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sk.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sk.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sl.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sl.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sq.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sq.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sr-Latn.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sr.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ss.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_st.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sv.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sv.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sw-TZ.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_szl.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ta.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ta.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_te.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_tg.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_tg.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_th.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_tn.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_tr.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_tr.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ts.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_tt.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ug.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ug.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_uk.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_uk.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_uz.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ve.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_vec.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_vi.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_vi.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_xh.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_zh-CN.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_zh-CN.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_zh-TW.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_zh-TW.tar.gz
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_zu.tar.gz
-
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = libreoffice-dev-af
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_af.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_af.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-am
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_am.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_am.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ar
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ar.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ar.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-as
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_as.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_as.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ast
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ast.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ast.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-be
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_be.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_be.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-bg
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_bg.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_bg.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-bn-in
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_bn-in.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_bn-in.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-bn
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_bn.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_bn.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-bo
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_bo.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_bo.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-br
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_br.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_br.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-brx
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_brx.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_brx.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-bs
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_bs.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_bs.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ca-valencia
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ca-valencia.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ca-valencia.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ca
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ca.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ca.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-cs
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_cs.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_cs.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-cy
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_cy.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_cy.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-da
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_da.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_da.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-de
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_de.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_de.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-dgo
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_dgo.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_dgo.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-dsb
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_dsb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_dsb.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-dz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_dz.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_dz.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-el
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_el.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_el.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-en-gb
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_en-gb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_en-gb.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-en-za
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_en-za.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_en-za.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-eo
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_eo.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_eo.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-es
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_es.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_es.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-et
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_et.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_et.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-eu
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_eu.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_eu.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-fa
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_fa.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_fa.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-fi
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_fi.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_fi.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-fr
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_fr.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_fr.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-fur
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_fur.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_fur.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-fy
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_fy.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_fy.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ga
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ga.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ga.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-gd
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_gd.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_gd.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-gl
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_gl.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_gl.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-gu
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_gu.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_gu.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-gug
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_gug.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_gug.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-he
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_he.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_he.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-hi
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_hi.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_hi.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-hr
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_hr.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_hr.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-hsb
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_hsb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_hsb.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-hu
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_hu.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_hu.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-id
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_id.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_id.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-is
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_is.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_is.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-it
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_it.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_it.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ja
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ja.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ja.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ka
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ka.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ka.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-kab
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_kab.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_kab.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-kk
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_kk.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_kk.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-km
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_km.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_km.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-kmr-latn
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_kmr-latn.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_kmr-latn.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-kn
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_kn.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_kn.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ko
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ko.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ko.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-kok
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_kok.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_kok.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ks
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ks.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ks.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-lb
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_lb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_lb.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-lo
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_lo.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_lo.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-lt
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_lt.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_lt.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-lv
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_lv.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_lv.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-mai
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_mai.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_mai.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-mk
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_mk.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_mk.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ml
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ml.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ml.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-mn
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_mn.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_mn.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-mni
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_mni.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_mni.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-mr
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_mr.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_mr.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-my
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_my.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_my.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-nb
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_nb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_nb.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ne
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ne.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ne.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-nl
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_nl.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_nl.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-nn
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_nn.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_nn.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-nr
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_nr.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_nr.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-nso
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_nso.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_nso.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-oc
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_oc.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_oc.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-om
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_om.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_om.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-or
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_or.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_or.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-pa-in
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_pa-in.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_pa-in.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-pl
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_pl.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_pl.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-pt-br
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_pt-br.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_pt-br.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-pt
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_pt.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_pt.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-qtz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_qtz.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_qtz.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ro
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ro.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ro.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ru
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ru.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ru.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-rw
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_rw.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_rw.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-sa-in
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sa-in.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sa-in.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-sat
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sat.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sat.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-sd
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sd.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sd.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-si
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_si.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_si.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-sid
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sid.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sid.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-sk
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sk.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sk.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-sl
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sl.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sl.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-sq
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sq.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sq.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-sr-latn
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sr-latn.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sr-latn.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-sr
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sr.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sr.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ss
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ss.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ss.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-st
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_st.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_st.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-sv
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sv.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sv.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-sw-tz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_sw-tz.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_sw-tz.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-szl
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_szl.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_szl.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ta
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ta.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ta.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-te
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_te.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_te.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-tg
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_tg.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_tg.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-th
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_th.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_th.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-tn
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_tn.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_tn.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-tr
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_tr.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_tr.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ts
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ts.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ts.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-tt
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_tt.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_tt.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ug
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ug.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ug.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-uk
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_uk.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_uk.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-uz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_uz.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_uz.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-ve
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_ve.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_ve.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-vec
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_vec.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_vec.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-vi
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_vi.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_vi.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-xh
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_xh.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_xh.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-zh-cn
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_zh-cn.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_zh-cn.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-zh-tw
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_zh-tw.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_zh-tw.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
 
 pkgname = libreoffice-dev-zu
-
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_langpack_zu.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_7.6.1.2_Linux_x86-64_rpm_helppack_zu.tar.gz
+    sha256sums = SKIP
+    sha256sums = SKIP
