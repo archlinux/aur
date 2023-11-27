@@ -1,0 +1,25 @@
+pkgbase = r-partcnv
+	pkgdesc = Infer locally aneuploid cells using single cell RNA-seq data
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/partCNV
+	arch = any
+	license = GPL2
+	checkdepends = r-testthat
+	depends = r-annotationhub
+	depends = r-data.table
+	depends = r-depmixs4
+	depends = r-genomicranges
+	depends = r-magrittr
+	depends = r-seurat
+	depends = r-singlecellexperiment
+	optdepends = r-biocstyle
+	optdepends = r-iranges
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/partCNV_1.0.0.tar.gz
+	md5sums = e004f2129cbb1fe1e84e33cf223c06f6
+	sha256sums = 4a948e65fe1f20118f9f5642e23fa35b92bfae680b5da1762084e88e187d8a95
+
+pkgname = r-partcnv
