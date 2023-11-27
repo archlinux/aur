@@ -8,6 +8,7 @@ pkgdesc='Tiny but powerful logging for C++'
 url='https://github.com/fvacek/necrolog'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
+depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cmake' 'doctest')
 conflicts=('necrolog' 'necrolog-git')
 provides=('necrolog')
