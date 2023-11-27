@@ -5,7 +5,7 @@
 
 pkgname=typeracer
 _pkgname=terminal-typeracer
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Terminal typing speed tester"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('zlib' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/terminal-typeracer-v$pkgver.tar.gz")
-sha256sums=('74bf733d7e80e891081e1212113cd52d3d0ca536e526a80175a91ac9e21e8ed1')
+sha256sums=('8643daa2e96675328cda3c565a87b54095befc8fc678f0f059d06e2806686db4')
 
 prepare() {
   cd "$_pkgname-v$pkgver"
