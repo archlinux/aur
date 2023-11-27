@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.36.1.r0.g34a9cfae
+pkgver=1.37.6.r0.gd8ce6ed8
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 makedepends=(
     'npm'
     'git'
-    'nodejs>=18.0.0'
+    'nvm'
     'gendesk'
     'python-setuptools'
 )
@@ -45,8 +45,7 @@ build() {
     sed '16,19d' -i build/bin/build-linux-deb-tar.js
     rm -rf build/bin/build-linux-rpm-snap.js
     sed "s|pre-test|prepare-test|g" -i package.json
-    npm i #--cache "${srcdir}/npm-cache"
-    PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm i -D -E playwright@1.28.1 @playwright/test@1.28.1
+    npm i --cache "${srcdir}/npm-cache"
     npm run prepare-build
     npm run release
 }
