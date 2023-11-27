@@ -1,7 +1,7 @@
 pkgbase = chaos-client-bin
 	pkgdesc = Go client to communicate with Chaos DB API.
 	pkgver = 0.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://chaos.projectdiscovery.io/
 	arch = aarch64
 	arch = armv7h

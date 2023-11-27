@@ -2,18 +2,23 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=chaos-client-bin
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Go client to communicate with Chaos DB API."
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=(
+    'aarch64'
+    'armv7h'
+    'i686'
+    'x86_64'
+)
 url="https://chaos.projectdiscovery.io/"
-_githuburl='https://github.com/projectdiscovery/chaos-client'
+_ghurl='https://github.com/projectdiscovery/chaos-client'
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.zip")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_armv6.zip")
-source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.zip")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.zip")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.zip")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_armv6.zip")
+source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.zip")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.zip")
 sha256sums_aarch64=('993297a08cf1fbf1850b2b9fe217a3bcd8188bae8ddf6534cde079e4a29216f0')
 sha256sums_armv7h=('404fee57485f55fba4918638b1a30b5feaa0dd9e4ac4abb1ba1ee9aac8527c67')
 sha256sums_i686=('ca213025272cf77b72198ddf2f135011cbfcb6e4b66c0ec4cb273b8494b6e980')
