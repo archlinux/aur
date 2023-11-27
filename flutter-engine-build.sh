@@ -1,4 +1,3 @@
 export PATH="${srcdir}/flutter/bin:$PATH"
 export FLUTTER_ENGINE="${srcdir}/flutter-engine"
-
-local flutter_select_engine='--local-engine=arch_release --local-engine-host=arch_release'
+export ARCH_FLUTTER_OPTS='--local-engine=arch_release --no-version-check --suppress-analytics'

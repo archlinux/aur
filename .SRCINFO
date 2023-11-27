@@ -1,13 +1,13 @@
 pkgbase = flutter-engine
 	pkgdesc = Engine for flutter applications.
-	pkgver = 3.16.0
-	pkgrel = 2
+	pkgver = 3.13.9
+	pkgrel = 1
 	url = https://github.com/flutter/engine
 	arch = x86_64
 	license = BSD
 	makedepends = gn
-	makedepends = mold
 	makedepends = llvm
+	makedepends = lld
 	makedepends = python-httplib2
 	makedepends = python-six
 	makedepends = git
@@ -23,13 +23,13 @@ pkgbase = flutter-engine
 	depends = python
 	depends = unzip
 	depends = gtk3
-	source = flutter-engine::git+https://github.com/flutter/engine.git#tag=3.16.0
+	source = flutter-engine::git+https://github.com/flutter/engine.git#tag=3.13.9
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = flutter-engine-prepare.sh
 	source = flutter-engine-build.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 02d44bf225bd5d01a641e654b90a4e7b3b627e15c2906ad4c0412012de91eca2
-	sha256sums = 73250c1c5b7064ddd89969f2c012be6c7c70731ba95f82e40fd8f8d47c4cae8b
+	sha256sums = 6da498122a8990edc91ff1b20fcedbf197459d6d9d092fdea176f35a10ab1239
+	sha256sums = 8374ed051a9f9c003a93a7bd69f6f90673cf5d5678015b05880c48843cfae88d
 
 pkgname = flutter-engine

@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=flutter-engine
-pkgver=3.16.0
-pkgrel=2
+pkgver=3.13.9
+pkgrel=1
 pkgdesc='Engine for flutter applications.'
 url='https://github.com/flutter/engine'
 arch=('x86_64')
@@ -18,8 +18,8 @@ depends=(
 	'gtk3')
 makedepends=(
 	'gn'
-	'mold'
 	'llvm'
+	'lld'
 	'python-httplib2'
 	'python-six'
 	'git'
@@ -36,8 +36,8 @@ source=(
 	# 'git+https://github.com/emscripten-core/emsdk.git#tag=3.1.44'
 sha256sums=('SKIP'
             'SKIP'
-            '02d44bf225bd5d01a641e654b90a4e7b3b627e15c2906ad4c0412012de91eca2'
-            '73250c1c5b7064ddd89969f2c012be6c7c70731ba95f82e40fd8f8d47c4cae8b')
+            '6da498122a8990edc91ff1b20fcedbf197459d6d9d092fdea176f35a10ab1239'
+            '8374ed051a9f9c003a93a7bd69f6f90673cf5d5678015b05880c48843cfae88d')
 
 _srcdir="${pkgname}"
 
@@ -87,13 +87,13 @@ EOF
 	sed -i '/-Wno-deprecated-literal-operator/d' 'build/config/compiler/BUILD.gn'
 	sed -i '/G_DEFINE_AUTOPTR_CLEANUP_FUNC(PangoLayout, g_object_unref)/d' 'flutter/shell/platform/linux/fl_accessible_text_field.cc'
 	
-	cat > 'third_party/dart/build/dart/prebuilt_dart_sdk.gni' <<EOF
-import("../executable_suffix.gni")
-_dart_root = rebase_path("../..")
-#_prebuilt_dart_exe = ""
-#_prebuilt_dart_exe_trial = ""
-prebuilt_dart_exe_works = true
-EOF
+	cat > 'third_party/dart/build/dart/prebuilt_dart_sdk.gni' <<-EOF
+		import("../executable_suffix.gni")
+		_dart_root = rebase_path("../..")
+		#_prebuilt_dart_exe = ""
+		#_prebuilt_dart_exe_trial = ""
+		prebuilt_dart_exe_works = true
+	EOF
 	
 	#_ln "${srcdir}/emsdk" 'buildtools/emsdk'
 }
@@ -103,27 +103,27 @@ build() {
 	
 	_setup_env
 	
-	gn gen --no-prebuilt-dart-sdk -qv 'out/host_arch_release' --args='
-target_os = "linux"
-host_cpu = "x64"
-target_cpu = "x64"
-dart_use_crashpad = false
-dart_use_fallback_root_certificates = true
-dart_use_compressed_pointers = true
-dart_vm_code_coverage = false
-dart_debug = false
-dart_runtime_mode = "release"
-is_debug = false
-exclude_kernel_service = false
-is_clang = true
-skia_use_piex = false
-target_sysroot = "/"
-verify_sdk_hash = false
-enable_unittests = false
-flutter_runtime_mode = "release"
-'
+	gn gen --no-prebuilt-dart-sdk -qv 'out/host_arch_release' --args="$(cat <<-EOF
+		target_os = "linux"
+		target_cpu = "x64"
+		dart_use_crashpad = false
+		dart_use_fallback_root_certificates = true
+		dart_use_compressed_pointers = true
+		dart_vm_code_coverage = false
+		dart_debug = false
+		dart_runtime_mode = "release"
+		is_debug = false
+		exclude_kernel_service = false
+		is_clang = true
+		skia_use_piex = false
+		target_sysroot = "/"
+		verify_sdk_hash = false
+		enable_unittests = false
+		flutter_runtime_mode = "release"
+	EOF
+	)"
 	
-	sed -i 's|ldflags}|ldflags} -fuse-ld=mold|g' 'out/host_arch_release/toolchain.ninja' # use system linker
+	sed -i 's|ldflags}|ldflags} -fuse-ld=lld|g' 'out/host_arch_release/toolchain.ninja' # use system linker
 	ninja -v -C 'out/host_arch_release'
 	
 	#export PATH+=":${srcdir}/src/flutter/lib/web_ui/dev"
