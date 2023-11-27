@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wubi-dict-editor
 _zhname="五笔码表助手"
-pkgver=1.21
-pkgrel=4
+pkgver=1.22
+pkgrel=1
 pkgdesc="五笔码表助手 for Rime ( Windows、macOS、Ubuntu ) 基于 electron 开发."
 arch=("x86_64")
 url="https://github.com/KyleBing/wubi-dict-editor"
@@ -18,12 +18,13 @@ makedepends=(
     'nodejs>=18'
     'gendesk'
     'imagemagick'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('8948abfa58980007c8b352bd953672693f23b264e68d9350a7739db01506d7f5'
+sha256sums=('SKIP'
             'dc3a133add1ec4b5e06160b475480614b39490f0e95655c6ae027d169ea6802b')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --genericname="${_zhname} for Rime" --exec "${pkgname}"
