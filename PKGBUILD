@@ -16,23 +16,22 @@ source=('git+https://github.com/syyyr/necrolog.git#branch=pkgconfig')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_gitname"
+    cd "$srcdir/$_gitname"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 check() {
-	ctest --test-dir "$srcdir/build"
+    ctest --test-dir "$srcdir/build"
 }
 
 build() {
-	cmake -S "$srcdir/$_gitname" -B "$srcdir/build" -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -S "$srcdir/$_gitname" -B "$srcdir/build" -DCMAKE_INSTALL_PREFIX=/usr
 
-	cmake --build "$srcdir/build"
+    cmake --build "$srcdir/build"
 }
 
 package() {
-	DESTDIR="$pkgdir" cmake --install "$srcdir/build"
-	install -Dm644 necrolog/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgbase
-
+    DESTDIR="$pkgdir" cmake --install "$srcdir/build"
+    install -Dm644 necrolog/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgbase
 }
