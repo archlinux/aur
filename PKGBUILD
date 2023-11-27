@@ -157,9 +157,6 @@ _build_zfs=${_build_zfs-}
 # This does replace the requirement of nvidia-dkms
 _build_nvidia=${_build_nvidia-}
 
-# Enable bcachefs
-_bcachefs=${_bcachefs-}
-
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ -n "$_use_lto_suffix" ]; then
     pkgsuffix=cachyos-rc-lto
     pkgbase=linux-$pkgsuffix
@@ -171,7 +168,7 @@ fi
 _major=6.7
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc1
+_rcver=rc3
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -201,7 +198,7 @@ if [ "$_cpusched" = "sched-ext" ]; then
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=545.29.02
+_nv_ver=545.29.06
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 source=(
     "https://github.com/torvalds/linux/archive/refs/tags/v${_major}-${_rcver}.tar.gz"
@@ -217,7 +214,7 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=043c6ee3b6bfb55f8d36e1f048ff13128c279fb8")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=55dd24c4ccee2da61d5396289ef560f9b7bc6a68")
 fi
 
 # NVIDIA pre-build module support
@@ -251,10 +248,6 @@ case "$_cpusched" in
                  "${_patchsource}/sched/0001-bore-cachy.patch");;
 esac
 
-## bcachefs Support
-if [ -n "$_bcachefs" ]; then
-    source+=("${_patchsource}/misc/0001-bcachefs.patch")
-fi
 ## lrng patchset
 if [ -n "$_lrng_enable" ]; then
     source+=("${_patchsource}/misc/0001-lrng.patch")
@@ -670,9 +663,6 @@ build() {
         local CONFIGURE_FLAGS=()
         [ "$_use_llvm_lto" != "none" ] && CONFIGURE_FLAGS+=("KERNEL_LLVM=1")
 
-        export KCPPFLAGS+=' -Wno-error=uninitialized'
-        export KCFLAGS+=' -Wno-error=uninitialized'
-
         ./autogen.sh
         sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
         ./configure ${CONFIGURE_FLAGS[*]} --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
@@ -860,8 +850,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('948f9f92828020503b14711e1593b6308e955f2b3021f0f779e007d4c8cb1b93b22265534691eff3dd42cca9afc81488dc7c445c2c66de28ac3cb291b9e423a9'
+b2sums=('52a6d49e2cfe332155598377332ffb1cbcc0f01247744b879db8c5c4cda650c0ce076a1da70d7afe8ee2e710bedb95262d3236a08a0d1ec1ed40ae354f0e7eb2'
         'ecc74fa604ab9a2b917a20fe3e5f0cc5caa95fbe83e57d29987aac2bcf180f5040eebabc80cbd66c2d7cedc1da4d8e185c09210143c4cb8fc30299e492bbbaa6'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        'b0761adc6a220a6e25acc17719b4885bfb8570348df4f6ce5387955fd1253d4c3ab6b7379e374b06eb2d34f81757d0d9fd615413c79b2016f5b66ba5a1f8f792'
-        'b8ad2e51222c5882f44e3849a2deb505d57cbbf278b4af0c1d383ddfdd218a57797b70137a8be4c6738c15fe819eac2c76719748ba9328a79ba9371ea43064a7')
+        '20f72a9445f5dfb3129d647dab9c89af88cde48064fcf69bfabb67bdef31df3868ed8dc455db69595893ee712692c602dfaac5a30e28d62248843b2116d11705'
+        'abea0c043bb41f7f54c69e2f3f11bf473861c0daf35c8b0c824eb25bf6a2bba1ca1e373f875a0b50540108271cb116105712ad192791acec0ff6d707db83ea0d')
