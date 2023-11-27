@@ -4,7 +4,7 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-bin"
-pkgver=3.3.4_linux1
+pkgver=3.3.5_linux1
 pkgrel=1
 _pkgver="${pkgver//_/-}"
 _gitname="release-${_pkgver}"
@@ -30,9 +30,9 @@ source_x86_64=(https://github.com/shiftkey/desktop/releases/download/${_gitname}
 source_aarch64=(https://github.com/shiftkey/desktop/releases/download/${_gitname}/GitHubDesktop-linux-arm64-${_pkgver}.deb)
 source_armv7h=(https://github.com/shiftkey/desktop/releases/download/${_gitname}/GitHubDesktop-linux-armhf-${_pkgver}.deb)
 sha256sums=('932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c')
-sha256sums_x86_64=('c77c2e10d1f990c9d88991aa14b1679ed6a0a7d6d539ccbff6f716227b0ec4c2')
-sha256sums_aarch64=('0a6b77746a037841ed5cf9be83276ce1784b25f8a040d8d5e4f2ff9f84c60955')
-sha256sums_armv7h=('6f30ce04d8976acac1a69f89cce37d0a52f3aa6f5ac2b0f2b621a4f9be470a5d')
+sha256sums_x86_64=('095cfb54fa61e1bfc44eda6789ad0b5aa5638d20cf16da45e1faa66875b84345')
+sha256sums_aarch64=('56fc86c06bd6e9cdffa992a8f67ba6a3cdbbb446b8ea0cd2b16a60024e89049a')
+sha256sums_armv7h=('9d086f8fcb92d457fa86de6ecfe3de00803ff30a822073980cdbcedf944ac322')
 package() {
     tar xf data.tar.xz -C "${pkgdir}"
     install -d "${pkgdir}/opt/${_pkgname}"
