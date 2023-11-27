@@ -1,12 +1,12 @@
 pkgbase = ydb-cli-bin
 	pkgdesc = YDB CLI is the client-side command line interface for YDB databases.
-	pkgver = 2.5.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://ydb.tech/en/docs/reference/ydb-cli/
 	arch = x86_64
 	license = Apache
 	makedepends = curl
-	source = ydb-2.5.0::https://storage.yandexcloud.net/yandexcloud-ydb/release/2.5.0/linux/amd64/ydb
-	sha256sums = 53a991b68dc2694934f1675730501080625e99d601cd8ffae60f0d66b85adc9d
+	source = ydb-2.7.0::https://storage.yandexcloud.net/yandexcloud-ydb/release/2.7.0/linux/amd64/ydb
+	sha256sums = b560f2958aa02fc414e7722d18cb737cca6bb74bcfb79e917fb1c5ebe12be0f4
 
 pkgname = ydb-cli-bin
