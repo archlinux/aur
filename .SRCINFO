@@ -1,20 +1,20 @@
 pkgbase = altus
 	pkgdesc = Desktop client for WhatsApp Web with themes, notifications and multiple account support
 	pkgver = 4.8.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/amanharwara/altus
 	arch = any
 	license = GPL3
 	makedepends = yarn
 	makedepends = npm
-	makedepends = nodejs>=18.11.18
+	makedepends = nvm
 	makedepends = gendesk
-	depends = bash
+	makedepends = git
 	depends = electron22
 	conflicts = altus
-	source = altus-4.8.6.tar.gz::https://github.com/amanharwara/altus/archive/refs/tags/4.8.6.tar.gz
+	source = altus-4.8.6::git+https://github.com/amanharwara/altus.git#tag=4.8.6
 	source = altus.sh
-	sha256sums = ca5cb6f78df1a04beb1113d152171db8d2bab7d41d65658ff511af4de9dc0171
-	sha256sums = 6b70548f28be57598013faceba7b82aaf5ffed534d049f90b3eb891e95b75cb0
+	sha256sums = SKIP
+	sha256sums = 97d22512b105afc6ca0441342fb615b561816279e0a6922be82b1e3fff53cb2b
 
 pkgname = altus
