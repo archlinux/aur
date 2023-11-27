@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A standalone, multiplatform Twitch.tv chat as overlay on windowed/windowed fullscreen applications."
 arch=('any')
@@ -22,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname}.sh"
 )
-sha256sums=('4dfa6419effed09599e1e82f57e761a2636eb3486d94f28d74039f951f0cbfeb'
+sha256sums=('c91a402d913aa49a0183ed54e3cdbe13ef1c76dc76704e9671c74e1190032f45'
             'b5235b0b418d6e9a6e90b8689b2ea05280a3fd4b666e94735beae17ae33c3df6')
 build() {
     gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
