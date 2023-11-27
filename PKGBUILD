@@ -3,7 +3,7 @@
 pkgname=css-namespaces-3-docs
 _version=20140320
 pkgver=3.0.${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="CSS Namespaces Module Level 3"
 arch=('any')
 url="http://www.w3.org/TR/css3-namespace/"
@@ -11,8 +11,8 @@ license=(custom:"W3C document license")
 options=('docs' '!strip' '!libtool' '!staticlibs' '!zipman')
 source=("index.html::http://www.w3.org/TR/2014/REC-css-namespaces-3-20140320/"
        "http://www.w3.org/TR/2014/REC-css-namespaces-3-20140320/default.css")
-md5sums=('66760f53fbfcaa43c5bde9876e87dcc8'
-         '9710de6ddde129d3f047fac200806fdf')
+sha256sums=('0ee58b6124366e81c95807810b2bba30cdca1b416ce03c4ee6a2a57792f3b8b2'
+         '8ce0d2536f30edd1132fd2bd68ff835ef7149cff6046318dc7fecaae4d3da444')
 
 package() {
   cd "$srcdir"
