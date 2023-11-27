@@ -13,6 +13,7 @@ pkgbase = shvspy-git
 	depends = libshv
 	depends = glibc
 	depends = gcc-libs
+	depends = qt6-networkauth
 	provides = shvspy
 	conflicts = shvspy
 	conflicts = shvspy-git
