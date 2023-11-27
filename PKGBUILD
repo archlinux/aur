@@ -3,18 +3,48 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
+_pkgname='hiddify-linux'
+
 # Maintainer: Meow King <mr.meowking@anche.no>
 pkgname="hiddify-next-appimage"
 pkgver="0.11.1"
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free. "
 arch=('any')
+# Appimage should contains exclude "strip" option
+options=(!strip)
 url="https://github.com/hiddify/hiddify-next"
 license=('custom:CC-BY-NC-SA-4.0')
 conflicts=('hiddify-next')
-source=("https://github.com/hiddify/hiddify-next/releases/tag/v${pkgver}"
+source=("https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
+        "hiddify-next-appimage.desktop"
         "LICENSE.md")
+sha256sums=('eb08f622288636acd9f40bc263010df6c92750744b0161fd7f4e842d11650f68'
+            '07d4c746f8f6bb5c8a9788d378e8873c83390f49237a1157a4282017db885cf8'
+            'f609d73370ca62925ba8c796afeeb7fb42f4a1569124f84cb25b7026c026d78a')
+
+prepare() {
+    sed -i "s/VERSION_PLACEHOLDER/${pkgver}/" hiddify-next-appimage.desktop
+    mv ./hiddify-linux-x64.AppImage "./${_pkgname}.AppImage"
+    ./"${_pkgname}".AppImage --appimage-extract
+}
 
 package() {
+    # License
     install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    
+    # Appimage
+    install -Dm755 "${srcdir}/${_pkgname}.AppImage" "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
+    
+    # Symlink executable
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -sf "/opt/${pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    
+    # logo
+    mkdir -p ${pkgdir}/usr/share/icons/
+    chmod 755 ${pkgdir}/usr/share/icons
+    cp -r "${srcdir}/squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons/"
+    
+    # desktop file
+    install -Dm644 "${srcdir}/hiddify-next-appimage.desktop" -t "${pkgdir}/usr/share/applications/hiddify-next-appimage.desktop"
 }
