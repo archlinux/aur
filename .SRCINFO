@@ -1,0 +1,12 @@
+pkgbase = audacity-plugins
+	pkgdesc = Additional Nyquist plugins for Audacity
+	pkgver = 20171216
+	pkgrel = 1
+	url = https://github.com/nyancat18/audacity-plugin
+	arch = any
+	license = None
+	depends = audacity
+	source = git+https://github.com/nyancat18/audacity-plugin.git
+	sha384sums = SKIP
+
+pkgname = audacity-plugins
