@@ -4,14 +4,14 @@ pkgname=flaresolverr-bin
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
 pkgver=3.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=('x86_64')
 url='https://github.com/FlareSolverr/FlareSolverr'
 license=('MIT')
 depends=('alsa-lib' 'at-spi2-core' 'bash' 'bzip2' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'libcups' 'libdrm'
          'libffi' 'libx11' 'libxcb' 'libxkbcommon' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxrandr'
-         'mesa' 'nspr' 'nss' 'openssl' 'pango' 'readline' 'util-linux-libs' 'xz' 'zlib')
+         'mesa' 'nspr' 'nss' 'openssl' 'pango' 'readline' 'util-linux-libs' 'xorg-server-xvfb' 'xz' 'zlib')
 conflicts=('flaresolverr' 'flaresolverr-git')
 options=('!strip')
 install='flaresolverr.install'
