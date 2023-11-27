@@ -1,7 +1,7 @@
 pkgbase = css-2-docs
 	pkgdesc = Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification
 	pkgver = 2.1.20110607
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.w3.org/TR/CSS2/
 	arch = any
 	license = custom:W3C document license
@@ -13,7 +13,6 @@ pkgbase = css-2-docs
 	options = !staticlibs
 	options = !zipman
 	source = http://www.w3.org/TR/2011/REC-CSS2-20110607/css2.tgz
-	md5sums = 1302f4bf35285879aeebf4ee9b282cb2
+	sha256sums = 6546858f785a498fa21d1fcd8192907e9cedbd20bf10142bdd5838498f5a46b8
 
 pkgname = css-2-docs
-

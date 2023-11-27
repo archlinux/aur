@@ -3,14 +3,14 @@
 pkgname=css-2-docs
 _version=20110607
 pkgver=2.1.${_version}
-pkgrel=2
+pkgrel=3
 pkgdesc="Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification"
 arch=('any')
 url="http://www.w3.org/TR/CSS2/"
 license=(custom:"W3C document license")
 options=('docs' '!strip' '!libtool' '!staticlibs' '!zipman')
 source=("http://www.w3.org/TR/2011/REC-CSS2-${_version}/css2.tgz")
-md5sums=('1302f4bf35285879aeebf4ee9b282cb2')
+sha256sums=('6546858f785a498fa21d1fcd8192907e9cedbd20bf10142bdd5838498f5a46b8')
 noextract=('css2.tgz')
 replaces=('css21-doc')
 
