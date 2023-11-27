@@ -22,8 +22,8 @@ sha256sums=('831bdc5358a700e6158fb7949326e1e34eb1581ab810eb09e51b641176de0bf5'
 
 
 prepare() {
-tar -xf data.tar.xz -C "${srcdir}"
-cat >aliyunpan-gaozhangmin.sh <<EOF
+  tar -xf data.tar.xz -C "${srcdir}"
+  cat > aliyunpan-gaozhangmin.sh <<EOF
 #!/bin/sh
 set -eu
 
@@ -33,22 +33,28 @@ export ELECTRON_IS_DEV=0
 exec $_electron --no-sandbox /usr/lib/aliyunpan-gaozhangmin/app.asar "\$@"
 
 EOF
-mv aliyunpan-gaozhangmin.desktop ${srcdir}/usr/share/applications
 }
 
 package() {
-  install -Dm644 ${srcdir}/opt/小白羊云盘/resources/app.asar -t ${pkgdir}/usr/lib/aliyunpan-gaozhangmin/
+  install -Dm644 ${srcdir}/opt/小白羊云盘/resources/app.asar \
+              -t ${pkgdir}/usr/lib/aliyunpan-gaozhangmin/
   cp -a ${srcdir}/opt/小白羊云盘/resources/crx/ ${pkgdir}/usr/lib/aliyunpan-gaozhangmin/
 
   mkdir -p ${pkgdir}/usr/lib/aliyunpan-gaozhangmin/engine
-  install -Dm644 ${srcdir}/opt/小白羊云盘/resources/engine/aria2.conf -t ${pkgdir}/usr/lib/aliyunpan-gaozhangmin/engine/
+  install -Dm644 ${srcdir}/opt/小白羊云盘/resources/engine/aria2.conf \
+              -t ${pkgdir}/usr/lib/aliyunpan-gaozhangmin/engine/
   ln -s /usr/bin/aria2c ${pkgdir}/usr/lib/aliyunpan-gaozhangmin/engine/
   ln -s /usr/bin/alist ${pkgdir}/usr/lib/aliyunpan-gaozhangmin/engine/
   
   cp -a ${srcdir}/opt/小白羊云盘/resources/images/ ${pkgdir}/usr/lib/aliyunpan-gaozhangmin/
   mkdir -p ${pkgdir}/usr/share/icons
-  ln -s /usr/lib/aliyunpan-gaozhangmin/images/icon_256x256.png ${pkgdir}/usr/share/icons/aliyunpan-gaozhangmin.png
+  ln -s /usr/lib/aliyunpan-gaozhangmin/images/icon_256x256.png \
+        ${pkgdir}/usr/share/icons/aliyunpan-gaozhangmin.png
 
-  install -Dm644 ${srcdir}/usr/share/applications/aliyunpan-gaozhangmin.desktop -t ${pkgdir}/usr/share/applications/
+  # fix windows icon
+  _desktopFileName=xbyyunpan
+  install -Dm644 ${srcdir}/aliyunpan-gaozhangmin.desktop \
+                  ${pkgdir}/usr/share/applications/${_desktopFileName}.desktop
   install -Dm755 ${srcdir}/aliyunpan-gaozhangmin.sh ${pkgdir}/usr/bin/aliyunpan-gaozhangmin
 }
+# vim: set sw=2 ts=2 et:
