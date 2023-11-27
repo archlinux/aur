@@ -2,7 +2,7 @@
 
 pkgname=localsend
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source cross-platform alternative to AirDrop.'
 url='https://localsend.org/'
 arch=('x86_64')
@@ -18,24 +18,25 @@ sha256sums=('4e96bc41c9505e4f1a51b074811ab3dd9892d228b7e5bbf9026faaf42c67b6d6'
             'SKIP')
 
 _srcdir="${pkgname}-${pkgver}"
+_engine_version=3.13.9
 
 prepare() {
-	source '/opt/flutter-engine/pkgbuild-prepare.sh'
 	cd "${_srcdir}/app"
+	source '/opt/flutter-engine/pkgbuild-prepare.sh'
 	
 	local dartpkg="$(yq -er .name 'pubspec.yaml')"
-	flutter create $flutter_select_engine --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
+	flutter create --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
 	
-	flutter clean $flutter_select_engine
-	flutter pub $flutter_select_engine get
+	flutter clean
+	flutter pub get
 }
 
 build() {
-	source '/opt/flutter-engine/pkgbuild-build.sh'
 	cd "${_srcdir}/app"
+	source '/opt/flutter-engine/pkgbuild-build.sh'
 	
-	flutter pub $flutter_select_engine run build_runner build --release --delete-conflicting-outputs
-	flutter build linux --release $flutter_select_engine
+	flutter pub run build_runner build --release --delete-conflicting-outputs
+	flutter build linux --release
 }
 
 package() {
