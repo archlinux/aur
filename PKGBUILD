@@ -1,4 +1,4 @@
-# Maintainer: Slavi Pantaleev <s.pantaleev at gmail.com>
+# Maintainer: Slavi Pantaleev <slavi at devture.com>
 
 pkgname=hunspell-bg
 _LOver=7.6.3
