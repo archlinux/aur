@@ -3,7 +3,7 @@
 _pkgname=3dslicer
 pkgname=3dslicer
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
 url='https://www.slicer.org'
@@ -30,7 +30,6 @@ depends=(
 )
 makedepends=(
   cmake
-  gcc12
   gendesk
   git
   subversion
@@ -57,9 +56,8 @@ build() {
   cmake -B build -S "${srcdir}/${_pkgname}" \
     -DBUILD_TESTING=OFF \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_COMPILER=g++-12 \
-    -DCMAKE_C_COMPILER=gcc-12 \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DEXTERNAL_PROJECT_OPTIONAL_CMAKE_ARGS="-DSQLite3_INCLUDE_DIRS=/usr/include;-DSQLite3_LIBRARIES=/usr/lib/libsqlite3.so" \
     -DSlicer_BUILD_DOCUMENTATION=OFF \
     -DSlicer_BUILD_I18N_SUPPORT=ON \
     -DSlicer_STORE_SETTINGS_IN_APPLICATION_HOME_DIR=OFF \
