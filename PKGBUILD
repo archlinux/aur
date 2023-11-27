@@ -2,10 +2,10 @@
 _pkgname=github-desktop
 _appname=GitHubDesktop
 pkgname="${_pkgname}-zh-bin"
-pkgver=3.3.3_linux2
+pkgver=3.3.5_linux1
 #_zhpkgver="${pkgver%_linux2}"
 _zhpkgver=3.3.5
-pkgrel=3
+pkgrel=1
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
 arch=(
     'aarch64'
@@ -22,7 +22,6 @@ depends=(
     'hicolor-icon-theme'
     'bash'
     'electron24'
-    'git'
     'libsecret'
     'perl'
     'curl'
@@ -33,21 +32,21 @@ source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${_githuburl}/releases/downloa
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/release-${pkgver//_/-}/${_appname}-linux-amd64-${pkgver//_/-}.deb")
 source=(
     "${_pkgname}-${_zhpkgver}-zh.7z::${_githubzhurl}/releases/download/${_zhpkgver}/${_appname}.7z"
-    "LICENSE::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('583b614389c03ae83b0099c76233183836fac8c136409bb957a17fd31ee1a6b6'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
             '830ca18c25d35f6008a6cb911d9783936f9f61e61a6cd0de502237cb0548fe30')
-sha256sums_aarch64=('2635ba8006d7b25aad2589632014869c6540b9efeaa7b7cade3cc3d211c031e1')
-sha256sums_armv7h=('c4913a8017f2a0b705b2bb0a17a1b88f7c96a9188558524bbdc68525ba161bd8')
-sha256sums_x86_64=('dd252a4686243f8fea17ff6cf96d23db951658deda258fcbacbcc30fa83d1dbf')
+sha256sums_aarch64=('56fc86c06bd6e9cdffa992a8f67ba6a3cdbbb446b8ea0cd2b16a60024e89049a')
+sha256sums_armv7h=('9d086f8fcb92d457fa86de6ecfe3de00803ff30a822073980cdbcedf944ac322')
+sha256sums_x86_64=('095cfb54fa61e1bfc44eda6789ad0b5aa5638d20cf16da45e1faa66875b84345')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm644 "${srcdir}/GithubDesktop汉化工具/Linux/"*.js -t "${srcdir}/usr/lib/${_pkgname}/resources/app"
-    echo -e "Name[zh_CN]=Github桌面版" >> "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-    echo -e "Comment[zh_CN]=从桌面版对Github进行简单"${pkgver}"协作" >> "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-    sed "s|${_pkgname} %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
+    sed -e "5i\Name[zh_CN]=Github桌面版" \
+        -e "6i\Comment[zh_CN]=从桌面版对Github进行简单"${pkgver}"协作" \
+        -e "s|${_pkgname} %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
@@ -55,7 +54,7 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/usr/lib/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     for _icons in 32x32 64x64 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
