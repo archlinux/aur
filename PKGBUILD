@@ -9,10 +9,10 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.2.40
+pkgver=1.3
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=9
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -42,9 +42,6 @@ makedepends=(# "Meta" dependencies
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
-        IXWebSocket-GCC13pt1.patch::https://patch-diff.githubusercontent.com/raw/machinezone/IXWebSocket/pull/389.patch
-        IXWebSocket-GCC13pt2.patch::https://patch-diff.githubusercontent.com/raw/machinezone/IXWebSocket/pull/443.patch
-        laf-GCC13.patch::https://patch-diff.githubusercontent.com/raw/aseprite/laf/pull/55.patch
         desktop.patch
         shared-fmt.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
@@ -55,13 +52,10 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         optional-pixman.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('cd67eaf34ee19ae5584f9052f3b385dcfa41232f38016baf08723b987ae583fb'
+sha256sums=('ccbb08d7d76b267eea26b601c573111a8c046982f6e38847280da6e16012e3a6'
             '8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad'
-            '540bdd2985ec1295137deab99b95cb484934ab5d6d3b080fbc21d15e50a5e429'
-            '5c188f30ebf15013f346ef2868d6cfeb84f7ee8ac68f837fee6269aabfa4ae59'
-            '1eba75501a0b1635a379499d930a66dd83d8bdb6b251c62c89f3cfab9c13213e'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
-            '821f1354dbbc0bb3fa700e63037ed3c89b0d32bd2ab253450f91eeacd7d47c06'
+            'c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3'
             'd7f2f8c43d24382453273ed17b1c0e05928980a36ad0b7c988da3aa0fe32de53'
             '320ed456512fb26f30aa682d7d34529d6fc3372d76daba3812cecb8fc21d5f1d'
             'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
@@ -84,10 +78,6 @@ prepare() {
 	# Their "FindSkia" module forcefully tries to use Skia's FreeType and HarfBuzz,
 	# but we don't clone those because we use the shared ones. Avoid overwriting the settings instead.
 	env -C aseprite patch -tp1 <shared-skia-deps.patch
-	env -C aseprite/third_party/IXWebSocket rm -f ixwebsocket/IXBase64.h
-	env -C aseprite/third_party/IXWebSocket patch -tp1 <IXWebSocket-GCC13pt1.patch
-	env -C aseprite/third_party/IXWebSocket patch -tp1 <IXWebSocket-GCC13pt2.patch
-	env -C aseprite/laf patch -tp1 <laf-GCC13.patch
 }
 
 build() {

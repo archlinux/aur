@@ -34,13 +34,14 @@
    find_package(ZLIB REQUIRED)
 --- a/src/app/CMakeLists.txt	2022-01-08 00:37:07.378671200 +0100
 +++ b/src/app/CMakeLists.txt	2022-01-08 00:53:13.669969512 +0100
-@@ -698,7 +698,7 @@
+@@ -741,7 +741,7 @@ target_link_libraries(app-lib
    ${HARFBUZZ_LIBRARIES}
    json11
    archive_static
 -  fmt
 +  ${FMT_LIBRARIES}
-   tinyexpr)
+   tinyexpr
+   qoi)
  
  if(ENABLE_PSD)
 --- a/src/dio/CMakeLists.txt	2022-01-08 00:41:50.712726972 +0100
