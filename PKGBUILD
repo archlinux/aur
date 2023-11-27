@@ -1,7 +1,7 @@
 # Maintainer: Bink <B-Interactive@users.noreply.github.com>
 
 pkgname=air-sdk
-pkgver=50.2.3.8
+pkgver=50.2.4.1
 pkgrel=1
 pkgdesc="A multi-operating system, multi-screen runtime that allows you to leverage your web development skills to build and deploy rich Internet applications to the desktop and mobile devices."
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('custom:Harman Connected Services, Inc. (“Harman”) SDK License Agre
 depends=('jdk11-openjdk')
 makedepends=('wget' 'unzip')
 source=()
-_sha256sum='61b63d56040df29ea54d350da0d183ef095f840151e11fce368d6871478249b4'
+_sha256sum='96ba6424eb964616908a4b99c70d62a0edb3a5c18a8ab296a5373494f203d9b4'
 install="$pkgname.install"
 
 package() {
