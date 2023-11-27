@@ -2,13 +2,14 @@
 
 pkgname=python-aioesphomeapi
 pkgver=18.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Client for ESPHome native API. Used by Home Assistant."
 url="https://github.com/esphome/aioesphomeapi"
 depends=('python-setuptools'
     'python-cryptography'
     'python-protobuf'
     'python-zeroconf'
+    'python-chacha20poly1305-reuseable'
     'python-noiseprotocol-git')
 license=('MIT')
 arch=('any')
