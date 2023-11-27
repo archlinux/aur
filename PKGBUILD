@@ -10,7 +10,7 @@ pkgname=tenacity
 pkgver=1.3.3
 _vcpkg_commit=4db549d1960563b4999b70303dd58d97ff55d5c3
 _nyquist_commit=3678ee6bfff9e0edc721a1b8865ab625e40f9ce4
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
@@ -26,7 +26,7 @@ source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/tenacityteam/$pkgname/arc
         "$pkgname-libnyquist-$_nyquist_commit.tar.gz::https://codeberg.org/tenacityteam/libnyquist/archive/$_nyquist_commit.tar.gz")
 b2sums=('176fd7d62a864851576c6273cd6704a897dfd0a925266c02cd98ce2b1d981e5b8bad66f0b7124284329131c5c988b36cec23c2434f8e24b72ca6ded50bb18c07'
         '0b51356a0ead658c766d2294dfe19fb47d96eb1fbc3b749b0b229782e8625bd01ef2dedd8024dd4a1a33052d5f859caba410854f30642737715c3ebfa4d8ce92'
-        '8c1e0fef8c243ec6c649f8481f764394c147d93abae2828812e53f949035cb79e8f8c7966adef9d70c0991108637b81811b42eb189c7a5cf5f4ec8c4f0dd695f')
+        '33ea64eaeaf588ae3c6a7ea963f95adb7f06b502d41e0d309dd51e333130bc07975503bc8c0b059d20a9f7fe09a169ee02113a2575ea0beb34a8050d8f2cca64')
 
 prepare() {
   mv libnyquist tenacity/lib-src/
