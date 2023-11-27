@@ -1,9 +1,11 @@
 pkgbase = soh
 	pkgver = 8.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shipofharkinian.com/
 	arch = x86_64
 	arch = i686
+	arch = armv7h
+	arch = aarch64
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
