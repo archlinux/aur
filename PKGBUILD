@@ -11,7 +11,7 @@ license=('Custom')
 
 depends=('python>=3.7'
 	 'python-h5py-openmpi>=2.10' # openmpi for pyxem/pyfai compatibility
-         'pythin-matplotlib'
+         'python-matplotlib'
 	 'python-numpy'
 	 'python-numba'
          'python-scipy'

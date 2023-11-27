@@ -8,7 +8,7 @@ pkgbase = python-pyebsdindex
 	makedepends = python-setuptools
 	depends = python>=3.7
 	depends = python-h5py-openmpi>=2.10
-	depends = pythin-matplotlib
+	depends = python-matplotlib
 	depends = python-numpy
 	depends = python-numba
 	depends = python-scipy
