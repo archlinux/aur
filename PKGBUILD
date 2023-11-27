@@ -8,9 +8,24 @@ url="https://github.com/mlmdflr/spx-translation"
 license=('custom')
 conflicts=("${pkgname}")
 depends=(
-    'libxkbcommon' 'gcc-libs' 'mesa' 'glibc' 'libxrandr' 'dbus' 'libxcomposite' 'libcups' \
-    'expat' 'glib2' 'gtk3' 'libxdamage' 'alsa-lib' 'libxfixes' 'libdrm' 'cairo' 'nss' 'nspr' \
-    'libx11' 'libxext' 'libxcb' 'at-spi2-core' 'pango'
+    'libxkbcommon'
+    'mesa'
+    'libxcomposite'
+    'libcups'
+    'expat'
+    'gtk3'
+    'libxdamage'
+    'alsa-lib'
+    'libxfixes'
+    'libdrm'
+    'cairo'
+    'nss'
+    'nspr'
+    'libx11'
+    'libxext'
+    'libxcb'
+    'at-spi2-core'
+    'pango'
 )
 makedepends=(
     'gendesk'
