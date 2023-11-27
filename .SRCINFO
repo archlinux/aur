@@ -1,6 +1,6 @@
 pkgbase = albert
 	pkgdesc = A sophisticated standalone keyboard launcher
-	pkgver = 0.22.16
+	pkgver = 0.22.17
 	pkgrel = 1
 	url = https://github.com/albertlauncher
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = albert
 	optdepends = python-pylatexenc: TeX plugin
 	optdepends = python-urllib3: python web plugins
 	optdepends = python-virtualbox: virtualbox plugin
-	source = https://github.com/albertlauncher/albert/releases/download/v0.22.16/v0.22.16.tar.gz
-	sha512sums = 25dba1482b6113dd08bb03b59a3687c2d18e604008f29f0e435633fe50564e388cb76008e42818155f9cdc7b340ace0a9ba00fc0a821bb6be233e07e4727a9e3
+	source = https://github.com/albertlauncher/albert/releases/download/v0.22.17/v0.22.17.tar.gz
+	sha512sums = 35b10c8f364099c975c5ab5fba42c22dde5d630cff42c54aeaed019f1762d201110c7d76b40e32a8a43b7a7db1af6ace7468d73d58d2e175ab561a67dd046448
 
 pkgname = albert
