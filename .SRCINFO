@@ -1,20 +1,20 @@
 pkgbase = nuclear-player
 	pkgdesc = A free, multiplatform music player app that streams from multiple sources.
 	pkgver = 0.6.30
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nuclear.gumblert.tech/
 	arch = any
-	license = GPL3
+	license = AGPL3
 	makedepends = gendesk
 	makedepends = npm>=8.0.0
-	makedepends = nodejs>=18.0.0
+	makedepends = nvm
 	makedepends = make
-	makedepends = asar
-	depends = bash
+	makedepends = git
+	makedepends = python
 	depends = electron12
-	source = nuclear-player-0.6.30.tar.gz::https://github.com/nukeop/nuclear/archive/refs/tags/v0.6.30.tar.gz
+	source = nuclear-player-0.6.30::git+https://github.com/nukeop/nuclear#tag=v0.6.30
 	source = nuclear-player.sh
-	sha256sums = ba98bb6e4766c8a63ddba0254e4b9a80197196dea8b7f4a73693ba4602ebfdf4
-	sha256sums = 200b71666dd12149ef2eee2426d7115ead1b460b7aed196f5b1c1354c5feba84
+	sha256sums = SKIP
+	sha256sums = b3c8c080b48b5ecf1e3ed83493495f9e04c955c3976fe87ad8b646a7134e7840
 
 pkgname = nuclear-player
