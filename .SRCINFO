@@ -27,7 +27,6 @@ pkgbase = mozc-with-jp-dict
 	source = LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL
 	source = LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING
 	source = 0001-Zombie-Process-Prevention.patch
-	source = 0002-mozc-version.patch
 	source = https://github.com/phoepsilonix/mozcdic-ut-neologd/raw/main/mozcdic-ut-neologd.txt.tar.bz2
 	source = LICENSE-neologd::https://github.com/phoepsilonix/mozcdic-ut-neologd/raw/main/LICENSE
 	sha512sums = SKIP

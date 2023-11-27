@@ -48,7 +48,6 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
         "LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING"
         "0001-Zombie-Process-Prevention.patch"
-        "0002-mozc-version.patch"
         )
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
@@ -102,9 +101,9 @@ prepare() {
   patch -p1 -i ${srcdir}/0001-Zombie-Process-Prevention.patch
 
   # mozc date and version
-  patch -p1 -i ${srcdir}/0002-mozc-version.patch
   _date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
-  sed -i -e "s/PKGVER/${pkgver}.${pkgrel}/" -e "s/DATE/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
+  sed -i -e "/2.25.4150.102.1/d"  -e "s/2.26.4220.106.1/${pkgver}.${pkgrel}/" -e "s/2021-01-16/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
+
 }
 
 build() {
