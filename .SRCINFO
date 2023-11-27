@@ -1,12 +1,13 @@
 pkgbase = pyshv-git
 	pkgdesc = Python implementation of CPON, Chainpack and SHV RPC
 	pkgver = r159.55379a9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/elektroline-predator/pyshv
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-build
+	makedepends = python-setuptools
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-pytest
