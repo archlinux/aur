@@ -1,14 +1,21 @@
 # Maintainer: Sin Kim <kimsin98@gmail.com>
 
 pkgname=webchanges
-pkgver=3.14
+pkgver=3.15
 pkgrel=1
 pkgdesc='Check web content for changes and notify'
 arch=('any')
 url='https://github.com/mborsetti/webchanges'
 license=('MIT' 'BSD')
-depends=('python-cssselect' 'python-html2text' 'python-lxml' 'python-markdown2' 'python-msgpack'
-         'python-platformdirs' 'python-yaml' 'python-requests' 'python-urllib3')
+depends=('python-cssselect'
+         'python-html2text'
+         'python-lxml'
+         'python-markdown2'
+         'python-msgpack'
+         'python-platformdirs'
+         'python-yaml'
+         'python-requests'
+         'python-urllib3')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('python-playwright: option to use browser'
             'python-psutil: option to use browser'
@@ -29,7 +36,7 @@ optdepends=('python-playwright: option to use browser'
             'python-redis: redis database'
             'python-keyring: password keyring storage')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('c657355cbf00bcc9745391e744fe801d12aa5045d4a57a195393eff025a9d672')
+sha256sums=('8a79076af803f75608144f06958570763ec5f58b4c768e86c8fa665039a6e249')
 
 build() {
     cd "$pkgname-$pkgver"
