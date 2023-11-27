@@ -1,7 +1,8 @@
 # Maintainer: dakataca <🐬danieldakataca@gmail.com>
 
-pkgname=pgadmin4
+pkgname=pgadmin4-py
 _pkgname=${pkgname%[0-9]*}
+__pkgname=${pkgname%-*}
 pkgver=7.8
 pkgrel=1
 pkgdesc='Most popular and feature rich Open Source administration and development platform for PostgreSQL'
@@ -23,9 +24,9 @@ package() {
         install -o postgres -g postgres -dvm 755 "$pkgdir/var/lib/postgres/"
     fi
     cd $pkgdir/opt/venvs/
-    python3 -m venv $pkgname 
-    source $pkgname/bin/activate
-    pip install $pkgname
+    python3 -m venv $__pkgname 
+    source $__pkgname/bin/activate
+    pip install $__pkgname
 
     # Script de ejecución pgadmin4.
     install -Dvm755 <(cat <<'EOF'
@@ -119,7 +120,7 @@ else
     "Error: No puede realizar esta operación siendo superusuario."
 fi
 EOF
-) $pkgdir/usr/bin/$pkgname
+) $pkgdir/usr/bin/$__pkgname
 cd -
 }
 

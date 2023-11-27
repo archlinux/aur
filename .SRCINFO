@@ -1,4 +1,4 @@
-pkgbase = pgadmin4
+pkgbase = pgadmin4-py
 	pkgdesc = Most popular and feature rich Open Source administration and development platform for PostgreSQL
 	pkgver = 7.8
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = pgadmin4
 	depends = translate-shell
 	depends = openbsd-netcat
 
-pkgname = pgadmin4
+pkgname = pgadmin4-py
