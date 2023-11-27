@@ -7,7 +7,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9853.86566f1c1
+pkgver=r9909.83b329f6e
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -175,7 +175,7 @@ build() {
       -DUSE_SYSTEM_JSON=ON \
       -DUSE_SYSTEM_LIBUSB=ON \
       -DUSE_SYSTEM_SOUNDTOUCH=ON \
-      -DUSE_SYSTEM_GLSLANG=ON \
+      -DUSE_SYSTEM_GLSLANG=OFF \
       -DUSE_SYSTEM_INIH=ON \
       -DUSE_SYSTEM_ZSTD=ON \
       -DCMAKE_C_COMPILER=gcc \
