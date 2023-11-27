@@ -9,7 +9,7 @@ url="https://github.com/Rayrsn/currencyConverter"
 license=('GPL')
 makedepends=('go')
 source=("https://github.com/Rayrsn/currencyConverter/archive/refs/tags/$pkgver.zip")
-md5sums=('61f93217474d3577ce99f21697b0d0ff')
+md5sums=('97f728b4b00aa20ac66d07a7e1c5eb80')
 
 # Go Flags https://wiki.archlinux.org/title/Go_package_guidelines#Flags_and_build_options
 export CGO_CPPFLAGS="${CPPFLAGS}"
