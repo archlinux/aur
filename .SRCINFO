@@ -1,7 +1,7 @@
 pkgbase = xsnow
 	pkgdesc = Let it snow on your desktop
-	pkgver = 3.7.5
-	pkgrel = 2
+	pkgver = 3.7.6
+	pkgrel = 1
 	url = https://www.ratrabbit.nl/ratrabbit/xsnow/
 	arch = x86_64
 	arch = i386
@@ -18,7 +18,7 @@ pkgbase = xsnow
 	conflicts = xsnow-bin
 	conflicts = xsnow-legacy
 	conflicts = xsnow-comp-patch-git
-	source = https://www.ratrabbit.nl/downloads/xsnow/xsnow-3.7.5.tar.gz
-	b2sums = 7ee2100abcff7d5224315f0fe1ce906c0d1cc24f0e695e3d3914d5eb58f50ab39c0d8e2dc89185c887175a018c3732ef3c943c3184fb10b87106105612bb37bb
+	source = https://www.ratrabbit.nl/downloads/xsnow/xsnow-3.7.6.tar.gz
+	b2sums = 184db3cfc252186ac219857479deebc587f1f67a7234143a79eb2c90ee713462821cd6db181f12add9caf64d84dc378d1dc4240d9ca15ea0995ff7764cf5afaf
 
 pkgname = xsnow
