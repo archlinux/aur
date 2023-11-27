@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gee
-_pkgver=4.13-25
+_pkgver=4.13-26
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5893e45bd896a40a3aaf1ca848a2f5b5')
-sha256sums=('e140881e2febe793a24086a2d179062b9995db901257d678f85d220441400e89')
+md5sums=('0dfe58c9fb7b6f6627d0b501eb3ba15e')
+sha256sums=('9a8553b5ab51f3aa929ce80597b0b5cecd8a8bdb2ea3c578edd1c608c5c6438c')
 
 build() {
   mkdir -p build
