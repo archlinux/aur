@@ -3,9 +3,9 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=8.0.0.r0.g30ab8e9ed
+pkgver=8.0.2.r9.gc3ae82937
 pkgrel=1
-arch=("x86_64" "i686")
+arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
 _depends_soh=("sdl2" "sdl2_net" "libpulse" "glew" "zenity")
 _depends_soh_otr_exporter=("libpng")
@@ -77,15 +77,15 @@ build() {
     cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
         -DNON_PORTABLE=On -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX .
 
-  cmake --build build --target ZAPD --config $BUILD_TYPE
+  cmake --build build --target ZAPD --config $BUILD_TYPE $NINJAFLAGS
 
   if [ "$__generate_headers" = 1 ]; then
-    cmake --build build --target ExtractAssetsHeaders
+    cmake --build build --target ExtractAssetsHeaders $NINJAFLAGS
   else
-    cmake --build build --target GenerateSohOtr
+    cmake --build build --target GenerateSohOtr $NINJAFLAGS
   fi
 
-  cmake --build build --target soh --config $BUILD_TYPE
+  cmake --build build --target soh --config $BUILD_TYPE $NINJAFLAGS
 }
 
 package_soh-git() {
