@@ -4,8 +4,8 @@
 # Contributor: zhangkaizhao <zhangkaizhao at gmail dot com>
 pkgname=dooble-bin
 _pkgname=Dooble
-pkgver=2023.08.30
-pkgrel=4
+pkgver=2023.11.30
+pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
 arch=("x86_64")
 url="https://textbrowser.github.io/dooble"
@@ -50,14 +50,11 @@ depends=(
   'xcb-util-renderutil'
   'xcb-util-wm'
   'libxshmfence'
-  'sqlite'
   'nspr'
   'alsa-lib'
   'krb5'
-  'libassuan'
   'libxtst'
   'libxcomposite'
-  'libgpg-error'
   'libxfixes'
   'expat'
   'libxrender'
@@ -72,35 +69,27 @@ optdependes=(
 )
 makedepends=(
   'findutils'
-  'gendesk'
 )
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=(
-  "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-  "LICENSE::https://raw.githubusercontent.com/textbrowser/dooble/${pkgver}/LICENSE"
+  "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}_amd64.deb"
+  "LICENSE-${pkgver}::https://raw.githubusercontent.com/textbrowser/dooble/${pkgver}/LICENSE"
   "${pkgname%-bin}.sh"
 )
-sha256sums=('407057d48fa3aaf78c378c9b8e9ad8181cf0ee25eb5dbe75801e133718a9d34c'
+sha256sums=('ccbe838464b18cb3ae16580f0173df4346914504bccc6fc14db1bf537eb9da6d'
             'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
-            '845fbb33d7152f74b5d7bbdf5566f9985ca73d1865c517c8fe820eabae923be1')
+            '2cbee36cf9e2b0a2c47c72ea97b5412e87009bc47b60bea9f8730af584b3e2c2')
 build() {
-    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin}"
-    # Fix incorrect permissions
-    find "${srcdir}/${pkgname%-bin}" -type d              -print0 | xargs -r0 chmod 0755
-    find "${srcdir}/${pkgname%-bin}" -type f -perm 0664   -print0 | xargs -r0 chmod 0644
-    find "${srcdir}/${pkgname%-bin}" -type f -perm 0775   -print0 | xargs -r0 chmod 0755
-    find "${srcdir}/${pkgname%-bin}" -type f -name '*.so' -print0 | xargs -r0 chmod 0755
-    # Remove libraries provided by upstream
-    rm -rf "${srcdir}/${pkgname%-bin}/Lib/"{libc.so.6,libm.so.6}
-    cp "${srcdir}/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN_simple.qm" "${srcdir}/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN.qm"
+    bsdtar -xf "${srcdir}/data.tar.zst"
+    cp "${srcdir}/opt/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN_simple.qm" \
+      "${srcdir}/opt/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN.qm"
+    sed "s|/usr/bin/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/opt"
-    cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
-    # Add a symlink to dooble.sh for those who prefer to not use a mouse
+    cp -r "${srcdir}/opt" "${pkgdir}/opt"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
