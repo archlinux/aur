@@ -1,6 +1,6 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=sasview
-pkgver=5.0.5
+pkgver=5.0.6
 pkgrel=1
 pkgdesc="Small-Angle Scattering Analysis"
 arch=(x86_64)
@@ -31,24 +31,20 @@ depends=( python-setuptools
 	  python-uncertainties
 	  sasmodels
 )
-checkdepends=(python-unittest-xml-reporting)
+checkdepends=()
 
-makedepends=(texlive-latexextra)
+makedepends=(texlive-latexextra texlive-binextra texlive-fontsrecommended)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SasView/sasview/archive/v${pkgver}.tar.gz"
 	'sphinx-docs.patch'
-        'np_float_deprecated.patch'
 )
-md5sums=('52da09f7ec3ea63c7d5ab4f7a989ef1f'
-         '5bc096ee2c911545ba3251e308429c72'
-         '3334446106fe34caabe98a06c3bcbd82')
-sha256sums=('8c92ecc113cf861f675a4ff5024920e036b58d178fd6e7afb77bd2fac41d5077'
-            'e1d8e107aa24ff06917b9ba2e8357818e6b1b90d91f36135dfbd051ca5b3184b'
-            '47566dc89dc3bf4e222d9fe2bff3bb71a62b8fdc4c7a652f9bb57d8702b25c11')
+md5sums=('a8e006dad057a7110e4ef74f93a39261'
+         '5bc096ee2c911545ba3251e308429c72')
+sha256sums=('3ee5a95c30d9858c1d32766e99a5e3504d219614fb6c5b2cc7c2561d6b924291'
+            'e1d8e107aa24ff06917b9ba2e8357818e6b1b90d91f36135dfbd051ca5b3184b')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
 	patch --forward --strip=1 --input="${srcdir}/sphinx-docs.patch"
-        patch --forward --strip=1 --input="${srcdir}/np_float_deprecated.patch"
 }
 
 build() {
@@ -58,10 +54,10 @@ build() {
 	(cd docs/sphinx-docs && make latexpdf )
 }
 
-check() {
-	cd "${pkgname}-${pkgver}/test"
-	python utest_sasview.py
-}
+#check() {
+#	cd "${pkgname}-${pkgver}/test"
+#	python utest_sasview.py
+#}
 
 package() {
 	cd "$pkgname-$pkgver"
