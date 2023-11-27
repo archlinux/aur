@@ -3,8 +3,8 @@
 
 _pkgname=mod-cv-plugins
 pkgname="$_pkgname-git"
-pkgver=r258.5b17548
-pkgrel=3
+pkgver=r259.a2feb53
+pkgrel=2
 pkgdesc='CV (audio-rate control) LV2 plugins from MOD Devices (git version)'
 arch=(i686 x86_64)
 url='https://github.com/moddevices/mod-cv-plugins'
@@ -33,6 +33,8 @@ prepare() {
   git submodule init
   git submodule set-url source/mod-logic-operators/dpf "$srcdir/dpf"
   git -c protocol.file.allow=always submodule update
+  # fix syntax error in .ttl file
+  sed -i -e 's/html ;/html" ;/' source/mod-cv-meter/mod-cv-meter.lv2/mod-cv-meter.ttl
 }
 
 build() {
