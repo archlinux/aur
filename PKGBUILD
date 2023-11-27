@@ -6,16 +6,16 @@
 
 pkgname=wine-wow64
 _name=wine
-pkgver=8.19
+pkgver=8.21
 pkgrel=1
 provides=("wine=$pkgver")
 conflicts=("wine")
 source=(https://dl.winehq.org/wine/source/8.x/$_name-$pkgver.tar.xz
         30-win32-aliases.conf
         wine-binfmt.conf)
-sha512sums=('ad4178c5e9f336eb968f0c378e3819794507447728acd10d642c1d66e0745837e47a70579bc9c7d9bec4510ca47e230bf4ab05ddf39323669ed24a6fce9f8c02'
-            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
+b2sums=('2e1c135d1c247f4b268c0323538748944b01fe65c82dee27d81f70613aa2fe632c1b4d696f05838a6ab801579a4d13a191de0f4c1a2e2222d40ca767499a98c3'
+        '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
+        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 arch=(x86_64)
