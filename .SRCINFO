@@ -1,6 +1,6 @@
 pkgbase = sdpb-git
 	pkgdesc = Semidefinite program solver designed for the conformal bootstrap
-	pkgver = 1521.b359336
+	pkgver = 1691.d6b948b
 	pkgrel = 1
 	url = https://arxiv.org/abs/1909.09745
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = sdpb-git
 	depends = mpfr
 	depends = rapidjson
 	depends = elemental-gmp-git
+	depends = intel-oneapi-mkl
 	optdepends = openmpi
 	source = git+https://github.com/davidsd/sdpb.git
 	sha256sums = SKIP

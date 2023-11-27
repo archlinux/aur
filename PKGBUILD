@@ -1,13 +1,13 @@
 # Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
 
 pkgname=sdpb-git
-pkgver=1521.b359336
+pkgver=1691.d6b948b
 pkgrel=1
 pkgdesc="Semidefinite program solver designed for the conformal bootstrap"
 arch=(x86_64)
 license=('MIT')
 url="https://arxiv.org/abs/1909.09745"
-depends=('boost' 'libarchive' 'libxml2' 'mpfr' 'rapidjson' 'elemental-gmp-git')
+depends=('boost' 'libarchive' 'libxml2' 'mpfr' 'rapidjson' 'elemental-gmp-git' 'intel-oneapi-mkl')
 optdepends=('openmpi')
 makedepends=('git' 'python')
 source=('git+https://github.com/davidsd/sdpb.git')
