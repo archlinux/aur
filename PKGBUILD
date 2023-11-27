@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=owntracks-frontend
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Web interface for OwnTracks built with Vue.js'
 arch=('any')
 url='https://github.com/owntracks/frontend'
@@ -43,5 +43,10 @@ build() {
 package() {
   mkdir -p "${pkgdir}/usr/share/webapps/${pkgname}"
   cp -r "${srcdir}"/frontend-${pkgver}/dist/* "${pkgdir}/usr/share/webapps/${pkgname}"
+
+  mkdir -p "${pkgdir}/etc"
+  cp "${pkgdir}"/usr/share/webapps/${pkgname}/config/config{.example.js,.js}
+
+  ln -s /usr/share/webapps/${pkgname}/config/config.js "${pkgdir}"/etc/${pkgname}.config.js
 }
 
