@@ -1,8 +1,8 @@
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
-_pkgname=hiddify.next
+_pkgname=hiddify-next
 pkgname=$_pkgname-git
-pkgver=0.10.9.dev
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
