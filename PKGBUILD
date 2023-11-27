@@ -8,7 +8,7 @@ _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
 pkgver=r9909.83b329f6e
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
@@ -30,7 +30,7 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
         "soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git"
-        "catch2::git+https://github.com/catchorg/Catch2"
+        "catch2::git+https://github.com/catchorg/Catch2.git"
         "dynarmic::git+https://github.com/merryhime/dynarmic.git"
         "git+https://github.com/herumi/xbyak.git"
         "git+https://github.com/fmtlib/fmt.git"
@@ -38,7 +38,7 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "git+https://github.com/benhoyt/inih.git"
         "libressl::git+https://github.com/citra-emu/ext-libressl-portable.git"
         "git+https://github.com/libusb/libusb.git"
-        "git+https://github.com/mozilla/cubeb"
+        "git+https://github.com/mozilla/cubeb.git"
         "git+https://github.com/yuzu-emu/discord-rpc.git"
         "git+https://github.com/arun11299/cpp-jwt.git"
         "git+https://github.com/wwylele/teakra.git"
@@ -60,10 +60,10 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "git+https://github.com/bylaws/libadrenotools.git"
         "git+https://github.com/merryhime/oaknut.git"
         # cubeb's submodule
-        "git+https://github.com/google/googletest"
-        "git+https://github.com/arsenm/sanitizers-cmake"
+        "git+https://github.com/google/googletest.git"
+        "git+https://github.com/arsenm/sanitizers-cmake.git"
         #dynarmic's zydis submodule
-        "zycore::git+https://github.com/zyantific/zycore-c"
+        "zycore::git+https://github.com/zyantific/zycore-c.git"
         #libadrenotools' submodule
         "git+https://github.com/bylaws/liblinkernsbypass.git"
         )
