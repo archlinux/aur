@@ -1,8 +1,9 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=flutter-engine-google-bin
-pkgver=3.16.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
+epoch=1
 pkgdesc='Engine for flutter applications (Binaries from google).'
 provides=(flutter-engine)
 conflicts=(flutter-engine)
@@ -16,12 +17,13 @@ depends=(
 	'clang'
 	'python'
 	'unzip'
-	'gtk3')
+	'gtk3'
+	'yq')
 source=(
 	'flutter-engine-prepare.sh'
 	'flutter-engine-build.sh')
-sha256sums=('9c7e99946d899843f4f0b8a84fbfc70626caf6a325f47e38efe7f0bcdaed49bd'
-            'dba43ee05d581213721ed0e58ded9fed46508a09906325349749ff8eae7d4017')
+sha256sums=('38aebea0e495017846da5ac09f440fafb74cd7d5b042f6b42038210672a160f4'
+            'd5493a84fbac63f741dc561dc681903ece25a2313717989a655b44a52934f314')
 
 package() {
 	install -dm755 "${pkgdir}/opt/flutter-engine"
