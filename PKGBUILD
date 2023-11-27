@@ -6,8 +6,8 @@ pkgname="citra-appimage"
 #       2. go to https://github.com/citra-emu/citra-nightly/releases
 #       3. copy release to $pkgver
 #       4. copy date-commit to $_ref
-_ref=20230927-6cfb8e0
-pkgver=1997
+_ref=20231126-83b329f
+pkgver=2045
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger, GUI version, already compiled"
 url="https://citra-emu.org"
@@ -29,7 +29,7 @@ depends=("ffmpeg"
          "sdl2")
 source=("https://github.com/citra-emu/citra-nightly/releases/download/nightly-$pkgver/citra-linux-appimage-$_ref.tar.gz"
         "citra.desktop")
-b2sums=('311fc393dd8301143ff751460f52b28e08a68bb3ec976e53b4b9bf14f7c16b676f312ae3801fee6dfb826f7764aab758f6af6afc273cbcbf3b632e397ae2b38e'
+b2sums=('0789fddc5f6b526ce0bec5ad8fbaba2acd8ec584a41530a4f18728d1b0b4602ae09ad8d6767ba845b6eb4c945583767e58bf8ae0b348751ef687d86bd9bd789d'
         '1c12c015380367b599cb56cabfdcf9065e2cbb04e3145d0dcfdfc5e2cb404926c2851e58383c930f569b67da8f89095164b7d1f482f39fb5e1f5a1c26e1853b0')
 options=("!strip")
 
