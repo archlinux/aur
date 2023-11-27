@@ -3,12 +3,12 @@
 pkgname=shvspy-git
 _gitname=shvspy
 pkgver=r414.950bc1b
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt GUI tool for shvbroker administration and browsing'
 url='https://github.com/silicon-heaven/shvspy/'
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL3')
-depends=('necrolog' 'libshv' 'glibc' 'gcc-libs' 'qt6-networkauth')
+depends=('necrolog' 'libshv' 'glibc' 'gcc-libs' 'qt6-networkauth' 'qt6-svg')
 makedepends=('git' 'cmake')
 conflicts=('shvspy' 'shvspy-git')
 provides=('shvspy')
