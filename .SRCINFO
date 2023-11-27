@@ -1,13 +1,13 @@
 pkgbase = r-fastica
 	pkgdesc = FastICA Algorithms to Perform ICA and Projection Pursuit
-	pkgver = 1.2.3
-	pkgrel = 4
+	pkgver = 1.2.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=fastICA
 	arch = x86_64
 	license = GPL
 	depends = r
 	optdepends = r-mass
-	source = https://cran.r-project.org/src/contrib/fastICA_1.2-3.tar.gz
-	sha256sums = e9ef82644cb64bb49ae3b7b6e0885f4fb2dc08ae030f8c76fe8dd8507b658950
+	source = https://cran.r-project.org/src/contrib/fastICA_1.2-4.tar.gz
+	sha256sums = ed6988ea410d1a75bf4f4925edcac5a660a417e33ba0a939bc0351e534df5f2f
 
 pkgname = r-fastica
