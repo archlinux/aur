@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jamesdsp-pulse-git
 _app_id=me.timschneeberger.jdsp4linux.pulse
-pkgver=2.6.0.r34.gdaf5cd3
+pkgver=2.6.1.r67.g31bf9d3
 pkgrel=1
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
 license=('GPL3')
 depends=('glibmm' 'gst-plugins-good' 'hicolor-icon-theme' 'libarchive' 'libpulse'
-         'qt5-svg')
+         'qt6-svg')
 makedepends=('git')
 provides=("${pkgname%-git}" 'jamesdsp')
 conflicts=("${pkgname%-git}" 'jamesdsp' 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
@@ -46,7 +46,7 @@ build() {
   cd "$srcdir/JDSP4Linux"
 
   pushd build
-  qmake-qt5 .. "CONFIG += USE_PULSEAUDIO"
+  qmake6 .. "CONFIG += USE_PULSEAUDIO"
   make
   strip --strip-unneeded src/jamesdsp
   popd
