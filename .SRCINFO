@@ -4,6 +4,7 @@ pkgbase = himitsu-git
 	pkgrel = 1
 	url = https://sr.ht/~sircmpwn/himitsu
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0
 	makedepends = hare-git
 	optdepends = hiprompt-gtk-py: prompter support (GTK+)
