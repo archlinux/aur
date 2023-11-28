@@ -1,8 +1,8 @@
-# Maintainer: Hayate NAKA-MURA <is01.njb at gmail dot com>
+# Maintainer: Hayate NAKA-MURA <hayatehay.njb at gmail dot com>
 
 pkgname="nako-git"
 _pkgname="nako"
-pkgver=r29.745e633
+pkgver=v1.0.r39.4d30686
 pkgrel=1
 pkgdesc="An AUR helper written in Bash and Pyalpm (development version)"
 arch=('any')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ${_pkgname}
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "v%s.r%s.%s" "$(git describe --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
