@@ -1,0 +1,14 @@
+pkgbase = rofi-randr
+	pkgdesc = Script to work configure xorg via rofi
+	pkgver = 1.0.0
+	pkgrel = 0
+	arch = any
+	license = GPL2
+	depends = xorg-xrandr
+	depends = dmenu
+	conflicts = rofi-randr
+	conflicts = rofi-randr-git
+	source = rofi-randr::https://raw.githubusercontent.com/carnager/scripts/master/rofi-randr
+	sha512sums = 7d792bf10d2567058f40c46a2e0dfb82dc8a6fe7ed9f7514c92d70698c93bd58e7869c341375cfc2295b2a7335b0420dcd984d19e34073ceb2943987f0bed191
+
+pkgname = rofi-randr
