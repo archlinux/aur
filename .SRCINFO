@@ -1,6 +1,6 @@
 pkgbase = casparcg-server-git
 	pkgdesc = Software used to play out professional graphics, audio and video to multiple outputs
-	pkgver = 2.3.3.r109.g77480d1
+	pkgver = 2.3.3.r151.g9212c29
 	pkgrel = 1
 	url = https://github.com/CasparCG/server
 	arch = x86_64
@@ -31,12 +31,10 @@ pkgbase = casparcg-server-git
 	source = casparcg-server::git+https://github.com/CasparCG/server.git
 	source = https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1308.patch
 	source = ffmpeg-cmake.patch
-	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_4638_linux64.tar.bz2
 	source = casparcg
 	sha256sums = SKIP
 	sha256sums = 5c6f2a3007e3a8739bc1f3eaec3c694af9836aed1943217843a92acff80950c1
 	sha256sums = e7f0e0dd123b1cccac21611f4e32ba7d27ce24a9a0587ef6f2180fb3c63894c0
-	sha256sums = 54aba14a7228bb8f2573e081d795b4161bf3568796f8729ad42a9f8ef9c6d1ec
 	sha256sums = ce9dd83ae2ef9289e551f0a3ecbe246537195049c15f69bbfdc6c3ddd23291c2
 
 pkgname = casparcg-server-git
