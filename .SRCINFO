@@ -1,7 +1,7 @@
 pkgbase = r-interp
 	pkgdesc = Interpolation Methods
-	pkgver = 1.1.4
-	pkgrel = 3
+	pkgver = 1.1.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=interp
 	arch = x86_64
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = r-interp
 	optdepends = r-sp
 	optdepends = r-stringi
 	optdepends = r-stringr
-	source = https://cran.r-project.org/src/contrib/interp_1.1-4.tar.gz
-	sha256sums = 4f7b5d388132a4d76e8635e2a7c4fa0d705df2b49e7d108faa16ce2236e34d06
+	source = https://cran.r-project.org/src/contrib/interp_1.1-5.tar.gz
+	sha256sums = 0c520971a10156162e4430873066e73b798be2f45aa0f222d64c987aba0e4b20
 
 pkgname = r-interp
