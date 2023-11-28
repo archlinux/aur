@@ -4,25 +4,32 @@
 pkgname=string-machine
 _plugin_uri="http://jpcima.sdf1.org/lv2/$pkgname"
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A virtual-analog string ensemble synthesizer LV2 and VST2 plugin'
 arch=(x86_64 aarch64)
 url='https://github.com/jpcima/string-machine'
 license=(Boost)
-depends=(gcc-libs libx11 cairo)
-makedepends=(boost mesa)
+depends=(glibc gcc-libs libx11)
+makedepends=(boost cairo libglvnd)
 checkdepends=(kxstudio-lv2-extensions lv2lint)
-groups=(pro-audio lv2-plugins vst-plugins)
+optdepends=(
+  'lv2-host: for loading the LV2 format plugins'
+  'vst-host: for loading the VST2 format plugins'
+)
+groups=(lv2-plugins pro-audio vst-plugins)
 _dpf_commit='05d91f5852f4bccfd2bce1d4d2e2b3036e29db03'
 source=("https://github.com/jpcima/string-machine/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
-        "${pkgname}-Makefile.base.mk::https://raw.githubusercontent.com/DISTRHO/DPF/$_dpf_commit/Makefile.base.mk")
+        "$pkgname-Makefile.base.mk::https://raw.githubusercontent.com/DISTRHO/DPF/$_dpf_commit/Makefile.base.mk"
+        'fix-missing-stdint-include.patch')
 sha256sums=('5b0d2eb2185199c1de6c7c35700a2caafbc6ba564529a2e7614c15c3aceacc6f'
-            'ef890c65422c8c73ffea7687a45317689378ff2b0f3ccadd497ca1cdc77e08a4')
+            'ef890c65422c8c73ffea7687a45317689378ff2b0f3ccadd497ca1cdc77e08a4'
+            '9c2d6ba762b64c395cb4eb35393eaaaca560692bf48513d34bf6c81fbe350cf5')
 
 prepare() {
   cd $pkgname-$pkgver
   # Update DPF base makefile to fix arm64 build
   cp -f "$srcdir"/$pkgname-Makefile.base.mk dpf/Makefile.base.mk
+  patch -p1 -N -r - -i "$srcdir"/fix-missing-stdint-include.patch
 }
 
 build() {
@@ -39,6 +46,7 @@ check() {
 }
 
 package() {
+  depends+=(libcairo.so)
   cd $pkgname-$pkgver
   # LV2 bundle
   install -Dm755 bin/$pkgname.lv2/*.so -t \
