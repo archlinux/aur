@@ -1,0 +1,35 @@
+pkgbase = musescore3-git
+	pkgdesc = Create, play and print beautiful sheet music (Jojo Schmitz fork)
+	pkgver = 3.7.0.r19945.ba87541
+	pkgrel = 1
+	url = https://musescore.org/
+	arch = x86_64
+	groups = pro-audio
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	makedepends = lame
+	makedepends = texlive-core
+	depends = alsa-lib
+	depends = freetype2
+	depends = libpulse
+	depends = libsndfile
+	depends = libvorbis
+	depends = portaudio
+	depends = portmidi
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-xmlpatterns
+	depends = zlib
+	optdepends = lame: MP3 export
+	provides = musescore3
+	source = git+https://github.com/Jojo-Schmitz/MuseScore.git#branch=3.x
+	sha256sums = SKIP
+
+pkgname = musescore3-git
