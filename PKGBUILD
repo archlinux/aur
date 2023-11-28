@@ -24,7 +24,7 @@ depends=(
 provides=('r-studio-for-linux-bin')
 conflicts=('r-studio-for-linux-bin')
 source=("${pkgname}-eula-PopupEulaDRC-R-Studio-For-Linux.shtml::https://www.r-studio.com/includes/eula/PopupEulaDRC.shtml?R-Studio-for-Linux",
-  "${pkgname}-usage-recovery-manual.pdf::https://www.r-studio.com/downloads/Free_Linux_Recovery_Manual.pdf"
+  "${pkgname}-Free-Linux-Recovery-Manual.pdf::https://www.r-studio.com/downloads/Free_Linux_Recovery_Manual.pdf"
 )
 source_x86_64=("https://www.r-studio.com/downloads/RStudio5_x64.rpm")
 source_i686=("https://www.r-studio.com/downloads/RStudio5_i386.rpm")
@@ -70,5 +70,5 @@ package() {
   install -D -m644 "${srcdir}/${pkgname}-eula-PopupEulaDRC-R-Studio-For-Linux.shtml" "${pkgdir}/usr/share/licenses/${pkgname}/${pkgname}-eula-PopupEulaDRC-R-Studio-For-Linux.shtml"
 
   # install usage / recovery manual
-  install -D -m644 "${srcdir}/${pkgname}-usage-recovery-manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/${pkgname}-usage-recovery-manual.pdf"
+  install -D -m644 "${srcdir}/${pkgname}-Free-Linux-Recovery-Manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/${pkgname}-Free-Linux-Recovery-Manual.pdf"
 }
