@@ -1,4 +1,4 @@
-# Maintainer: Hayate NAKA-MURA <is01.njb@gmail.com>
+# Maintainer: Hayate NAKA-MURA <hayatehay.njb@gmail.com>
 # Contributor: Weitian Leung <weitianleung@gmail.com>
 
 pkgbase=wps-office-mui
