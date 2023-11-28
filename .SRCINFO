@@ -1,0 +1,22 @@
+pkgbase = qt5-opcua
+	pkgdesc = Qt wrapper for existing OPC UA stacks
+	pkgver = 5.15.2
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt5
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = git
+	depends = qt5-base
+	depends = mbedtls2
+	source = git+https://code.qt.io/qt/qtopcua.git#branch=5.15.2
+	source = fix-conversion-errors.patch
+	source = fix-build-error.patch
+	sha256sums = SKIP
+	sha256sums = 406fcd9e4621b9674f8fbef60aa5fba08892cd947e83e9d7d09da0577c3bd09f
+	sha256sums = becae32d741f86105e24a62ca3718fa908523b6d81c79d9bf3f6a22311c4ab50
+
+pkgname = qt5-opcua
