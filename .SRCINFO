@@ -1,6 +1,6 @@
 pkgbase = rtl_433
 	pkgdesc = is a generic data receiver, mainly for the 433.92 MHz, 868 MHz (SRD), 315 MHz, 345 MHz, and 915 MHz ISM bands
-	pkgver = 22.11
+	pkgver = 23.11
 	pkgrel = 1
 	url = https://github.com/merbanan/rtl_433
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = rtl_433
 	makedepends = doxygen
 	depends = rtl-sdr
 	depends = soapysdr
-	source = rtl_433-22.11::https://github.com/merbanan/rtl_433/archive/22.11.tar.gz
-	sha256sums = 61a9163d69cc4b1da46aebbcaf969bd180a055a6b90f42ad281218cc4fbefb86
+	source = rtl_433-23.11::https://github.com/merbanan/rtl_433/archive/23.11.tar.gz
+	sha256sums = 1260c58400bf35832ac1b76cb3cccf3dc1335ffa2416909c63c7d7060c74663b
 
 pkgname = rtl_433
