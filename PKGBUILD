@@ -1,4 +1,4 @@
-# Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
+# Maintainer: Hayate Nakamura <hayatehay.njb at gmail dot com>
 pkgname=jmpx-git
 _pkgname=jmpx
 pkgver=r66.c8a3c5f
