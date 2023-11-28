@@ -4,8 +4,8 @@
 
 pkgname=dasel
 pkgver=2.5.0
-pkgrel=1
-pkgdesc='Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single tool'
+pkgrel=2
+pkgdesc='Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single CLI tool'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/TomWright/dasel'
 license=('MIT')
