@@ -2,12 +2,12 @@
 
 pkgname=xreader-git
 _pkgbasename=xreader
-pkgver=3.2.2.r0.g93d2696
+pkgver=3.8.2.r5.g31c9f12
 pkgrel=1
 pkgdesc="Document viewer for files like PDF and Postscript. X-Apps Project (git version)."
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('poppler-glib' 'webkit2gtk' 'xapps-git')
+depends=('poppler-glib' 'webkit2gtk' 'xapp')
 makedepends=('git' 'meson' 'samurai' 'gobject-introspection' 'mathjax2'
     'libgxps' 'intltool' 'itstool' 'djvulibre' 'libspectre' 'texlive-bin')
 optdepends=(
@@ -18,6 +18,7 @@ optdepends=(
     'djvulibre: support for djvu files'
     'libgxps: support for xps files'
     'libspectre: support for dvi and ps files'
+    'yelp: View help and documentation from the app'
 )
 provides=($pkgname)
 conflicts=("${_pkgbasename}")
