@@ -57,9 +57,9 @@ validate_postgres_password() {
     declare -r command="$1" level="$2"
     
     while true; do
-        # Solicitar la contraseña
-        translate_str "Enter the postgres user's password at the $level" \
-	"Ingrese la contraseña del usuario postgres a nivel de $level:"
+        # Solicitar la credenciales.
+        translate_str "Enter the postgres user's credentials at the $level" \
+	"Ingrese las credenciales del usuario postgres a nivel de $level:"
         bash -c "$command"
 
         # Validar el éxito del comando anterior
@@ -84,9 +84,7 @@ if [ "$EUID" -ne 0 ]; then
         sudo -iu postgres initdb -D $data --data-checksums
 
         # Sistema de ficheros es BTRFS?
-        #[ `stat -f -c %T $data` == btrfs ] && sudo chattr +C $data
-
-        # Sistema de ficheros es BTRFS?
+	# 🌐 wiki: https://wiki.archlinux.org/title/Btrfs#Copy-on-Write_(CoW)
         if [ `stat -f -c %T $data` == btrfs ]; then
             echo "Sistema de ficheros es BTRFS"
 
@@ -101,10 +99,14 @@ if [ "$EUID" -ne 0 ]; then
         fi
 
         # Restricts access rights to the database superuser by default.
-        sudo grep -E 'local +all +all +trust' $pg_hba || sudo sed -Ei.back \
-            "s/(host +all +)all +([0-9]{,3}.[0-9]{,3}.[0-9]{,3}.[0-9]{,3}\/[0-9]{,2} +)trust$/\1postgres\t\2peer/ ; \
-            s/(local +all +all +)trust$/\1scram-sha-256/" $pg_hba
+	# 🌐 wiki: https://wiki.archlinux.org/title/PostgreSQL#Restricts_access_rights_to_the_database_superuser_by_default
+        sudo grep -E 'local +all +postgres +peer' $pg_hba || sudo sed -Ei.back \
+"s/^(local +all +)all +trust$/\1postgres\t\t\t\tpeer\n\
+# "local" is for Unix domain socket connections only\n\
+local\tall\t\t$USER\t\t\t\t\tscram-sha-256/" $pg_hba
 
+	# Require password for login.
+        # 🌐 wiki: https://wiki.archlinux.org/title/PostgreSQL#Require_password_for_login
         sudo grep -E "^listen_addresses = 'localhost'*" $postgres_config || sudo sed -i.back \
             "/^#password_encryption =*/  s/^#// ; \
             /listen_addresses = 'localhost'/ s/^#//" $postgres_config
@@ -112,13 +114,19 @@ if [ "$EUID" -ne 0 ]; then
         [[ `systemctl is-active --quiet postgresql.service` ]] && sudo systemctl restart postgresql.service || sudo systemctl start postgresql.service
 
         # Contraseña de usuario postgres a nivel de Base de Datos postgresql.
+	# 🌐 wiki: https://www.postgresql.org/docs/current/app-psql.html
+	# 📜 man-page: https://wiki.archlinux.org/title/PostgreSQL#Access_the_database_shell
         validate_postgres_password "sudo -u postgres psql -c '\password'" "postgresql"
-    
+   
         # Contraseña de usuario postgres a nivel de Base de Datos postgresql.
         translate_str "User password \"postgres\" at the level of ArchLinux Operating System:" "Contraseña de usuario \"postgres\" a nivel de Sistema Operativo ArchLinux:"
 
         # Contraseña de usuario postgres a nivel de Sistema Operativo Linux.
         validate_postgres_password "sudo passwd postgres" "S.O Archlinux"
+
+        # Crear credenciales de superusuario.
+	# 📜 man-page: https://www.postgresql.org/docs/current/app-createuser.html
+        validate_postgres_password "sudo -iu postgres createuser --password --interactive --createrole --superuser --createdb" "superusuario $USER"
     fi
 
     # Servicio postgresql.service está activo?
@@ -135,13 +143,13 @@ else
 fi
 EOF
 ) $pkgdir/usr/bin/$__pkgname
-cd -
 }
 
 ## References:
 # Support: pgadmin-support@lists.postgresql.org
 # Website: https://www.pgadmin.org/
 # Tracker: https://github.com/pgadmin-org/pgadmin4/issues https://www.pgadmin.org/
+# Guide: https://www.pgadmin.org/download/pgadmin-4-python/
 
 ## Test:
 # updpkgsums
