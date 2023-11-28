@@ -17,7 +17,7 @@ depends=(
 )
 
 _latest() {
-    curl -s https://api.github.com/repos/loft-sh/vcluster/releases | jq -r '.[0].tag_name'
+    curl -s https://api.github.com/repos/loft-sh/vcluster/releases | jq -r '. | map(select(.prerelease | not)) | .[0].tag_name'
 }
 
 source=(
