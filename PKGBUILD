@@ -3,7 +3,7 @@
 # Contributor: Vlad Petrov <ejiek@mail.ru>
 
 pkgname=nb
-pkgver=7.8.0
+pkgver=7.9.0
 pkgrel=1
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
@@ -66,13 +66,21 @@ b2sums=(
   'f2980c0809f57bf993eef18aaab73a6bdfeb34e12a66db3c56bd57454c4e7c4e217a768fd443e6362dcc7c003d374cb99eb0bb3374368fdf51962e69da411560'
 )
 
+sha256sums=(
+  '213c1138d9a87ebc4e0e6e956cf19812d10e8ddd2373fd97cab15437a46e6f1b'
+)
+b2sums=(
+  '526954d09782c13a71cfea4b70680e49ddd9533e1faab0436aa3cf1944e9d8550b92b4d78a73d2dda11fb6d7f686eb7cba233b70db8efccb267722a3dda26ed8'
+)
+
 # 🪷 Beyond the Known — 365 Days of Exploration
 #
-# 📆 11th November
+# 📆 28th November
 #
-# Oneness? Wholeness? Liberation?
+# Go into the darkest cave for yourself.
 #
-# These words are not important.
+# You may find, in the deepest recesses, there is far more light
+# than you ever thought possible.
 #
 # 🔗 https://magnetic-ink.dk/users/btk
 
