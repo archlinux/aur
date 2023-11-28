@@ -2,14 +2,14 @@
 pkgname=python-flake8-pyproject
 _name=Flake8-pyproject
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Flake8 plug-in loading the configuration from pyproject.toml"
 arch=(any)
 url="https://github.com/john-hen/${_name}"
 license=('MIT')
 groups=()
-depends=(flake8 python-tomli)
-makedepends=(python-build python-installer)
+depends=(flake8)
+makedepends=(python-build python-installer python-flit-core)
 provides=()
 conflicts=()
 replaces=()

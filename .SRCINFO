@@ -1,14 +1,14 @@
 pkgbase = python-flake8-pyproject
 	pkgdesc = Flake8 plug-in loading the configuration from pyproject.toml
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/john-hen/Flake8-pyproject
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-flit-core
 	depends = flake8
-	depends = python-tomli
 	options = !emptydirs
 	source = https://github.com/john-hen/Flake8-pyproject/archive/1.2.3.tar.gz
 	sha256sums = 8f065721c53c1fe22d423d82db99eef6559b463a8701aa03b03668d43abfc851
