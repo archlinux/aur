@@ -1,7 +1,7 @@
 pkgbase = pinocchio
 	pkgdesc = Dynamic computations using Spatial Algebra
-	pkgver = 2.6.20
-	pkgrel = 2
+	pkgver = 2.6.21
+	pkgrel = 1
 	url = https://github.com/stack-of-tasks/pinocchio
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,11 @@ pkgbase = pinocchio
 	optdepends = lua52
 	optdepends = cppad
 	optdepends = cppadcodegen
-	source = https://github.com/stack-of-tasks/pinocchio/releases/download/v2.6.20/pinocchio-2.6.20.tar.gz
-	source = https://github.com/stack-of-tasks/pinocchio/releases/download/v2.6.20/pinocchio-2.6.20.tar.gz.sig
+	source = https://github.com/stack-of-tasks/pinocchio/releases/download/v2.6.21/pinocchio-2.6.21.tar.gz
+	source = https://github.com/stack-of-tasks/pinocchio/releases/download/v2.6.21/pinocchio-2.6.21.tar.gz.sig
 	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
-	sha256sums = 2fcead7b1b2f08aa47acd28891e4b204f2e9cc14a4e4c9027168b8c58f9aedd2
+	validpgpkeys = 1462AF00C9CF3C9E7AFC905E63380359F089A579
+	sha256sums = 11131e2a694388f7364f9d8d91615507ad2e13faf58a27a898b930f36f5e3db3
 	sha256sums = SKIP
 
 pkgname = pinocchio
