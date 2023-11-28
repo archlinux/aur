@@ -1,6 +1,6 @@
 pkgbase = nekoray-bin
 	pkgdesc = Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)
-	pkgver = 3.24
+	pkgver = 3.25
 	pkgrel = 1
 	url = https://github.com/MatsuriDayo/nekoray
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = nekoray-bin
 	provides = nekoray
 	conflicts = nekoray-git
 	conflicts = nekoray
-	source = nekoray-bin-3.24.zip::https://github.com/MatsuriDayo/nekoray/releases/download/3.24/nekoray-3.24-2023-10-28-linux64.zip
+	source = nekoray-bin-3.25.zip::https://github.com/MatsuriDayo/nekoray/releases/download/3.25/nekoray-3.25-2023-11-25-linux64.zip
 	source = nekoray.desktop
 	source = nekoray.sh
-	sha256sums = a1d5b57309f8c02b033a115c116ce12d822a9f25dd703ecce5843bf26e754582
+	sha256sums = 2f7bf7ec139a46f77c40f62255d7ea868279895bbc8ba684d478a5c5df4a9095
 	sha256sums = 86f1332c81be2c346a4cdc80a3550f6484ef89e4ee8d4f23afada0c2d0a184e2
 	sha256sums = 5a7cbb61608137924fb1ba3ecb057adb7973f5775f64758736b447041fa15377
 
