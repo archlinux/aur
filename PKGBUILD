@@ -35,7 +35,7 @@ _main_package() {
     #qt5-sensors
 
     # AUR
-    #mapbox-gl-qml
+    mapbox-gl-qml
       # maplibre-native
     nemo-qml-plugin-dbus
     s2geometry
