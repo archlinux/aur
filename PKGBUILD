@@ -9,7 +9,7 @@ url="https://github.com/capnproto/pycapnp"
 license=(BSD)
 arch=(x86_64)
 depends=(gcc-libs glibc python)
-makedepends=(git capnproto cython python-build python-installer python-pkgconfig python-setuptools python-wheel)
+makedepends=(git capnproto cython0 python-build python-installer python-pkgconfig python-setuptools python-wheel)
 checkdepends=(python-pytest)
 optdepends=('python-jinja: for capnpc-cython')
 source=(git+https://github.com/capnproto/pycapnp.git#commit=$_commit)
