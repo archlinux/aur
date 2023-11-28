@@ -2,7 +2,7 @@
 
 _pkgname=linux-terminal-battery-status
 pkgname="${_pkgname}-git"
-pkgver=20230717.03.r34.20230717.9e735ae
+pkgver=20231128.06.r40.b58c130
 pkgrel=1
 pkgdesc="Prints information about system batteries and power supplies to the terminal, optionally also from devices connected via KDE Connect."
 url="https://gitlab.com/dreieckli/linux-terminal-battery-status"
@@ -13,6 +13,7 @@ license=(
 arch=(any)
 depends=(
   'bash'
+  'bc'
   'coreutils'
   'gawk'
 )
@@ -44,14 +45,15 @@ pkgver() {
 
   _ver="$(bash linux-terminal-battery-status.sh --version)"
   _rev="$(git rev-list --count HEAD)"
-  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  # _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")" # Don't process date since the upstream version also has some notion of date.
   _hash="$(git rev-parse --short HEAD)"
 
   if [ -z "${_ver}" ]; then
     error "Version could not be determined."
     return 1
   else
-    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+    # printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+    printf '%s' "${_ver}.r${_rev}.${_hash}"
   fi
 }
 

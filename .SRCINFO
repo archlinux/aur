@@ -1,6 +1,6 @@
 pkgbase = linux-terminal-battery-status-git
 	pkgdesc = Prints information about system batteries and power supplies to the terminal, optionally also from devices connected via KDE Connect.
-	pkgver = 20230717.03.r34.20230717.9e735ae
+	pkgver = 20231128.06.r40.b58c130
 	pkgrel = 1
 	url = https://gitlab.com/dreieckli/linux-terminal-battery-status
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = linux-terminal-battery-status-git
 	license = custom: CC_BY-SA_3.0
 	makedepends = git
 	depends = bash
+	depends = bc
 	depends = coreutils
 	depends = gawk
 	optdepends = acpi: To display remaining battery time.
@@ -15,7 +16,7 @@ pkgbase = linux-terminal-battery-status-git
 	optdepends = sed: To display remaining battery time.
 	optdepends = kdeconnect: To display information about devices connected via KDE Connect.
 	optdepends = qt5-tools: To display information about devices connected via KDE Connect.
-	provides = linux-terminal-battery-status=20230717.03.r34.20230717.9e735ae
+	provides = linux-terminal-battery-status=20231128.06.r40.b58c130
 	conflicts = linux-terminal-battery-status
 	source = linux-terminal-battery-status::git+https://gitlab.com/dreieckli/linux-terminal-battery-status.git
 	sha256sums = SKIP
