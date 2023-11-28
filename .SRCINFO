@@ -1,8 +1,8 @@
 pkgbase = pure-maps-git
 	pkgdesc = Display vector and raster maps, places, routes, etc.
-	pkgver = 3.2.1+13.r2795.20230312.d801dfc1
-	pkgrel = 2
-	url = https://rinigus.github.io/pure-maps
+	pkgver = 3.2.1.r13.gd801dfc1
+	pkgrel = 1
+	url = https://github.com/rinigus/pure-maps
 	arch = x86_64
 	arch = i686
 	arch = armv6
@@ -10,25 +10,28 @@ pkgbase = pure-maps-git
 	arch = aarch64
 	license = GPL3
 	makedepends = cmake
-	makedepends = geoclue
 	makedepends = git
 	makedepends = qt5-tools
 	depends = abseil-cpp
 	depends = gettext
 	depends = hicolor-icon-theme
 	depends = kirigami2
-	depends = mapbox-gl-qml
-	depends = nemo-qml-plugin-dbus
-	depends = python-gpxpy
 	depends = python-pyotherside
 	depends = qt5-location
 	depends = qt5-quickcontrols2
 	depends = qt5-sensors
+	depends = mapbox-gl-qml
+	depends = nemo-qml-plugin-dbus
 	depends = s2geometry
-	optdepends = geoclue
-	provides = pure-maps=3.2.1+13.r2795.20230312.d801dfc1
+	provides = pure-maps=3.2.1
 	conflicts = pure-maps
 	source = pure-maps::git+https://github.com/rinigus/pure-maps.git
-	b2sums = SKIP
+	source = rinigus.geomag::git+https://github.com/rinigus/geomag.git
+	source = tkrajina.gpxpy::git+https://github.com/tkrajina/gpxpy.git
+	source = heremaps.flexible-polyline::git+https://github.com/heremaps/flexible-polyline.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pure-maps-git

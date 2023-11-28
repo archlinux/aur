@@ -1,11 +1,18 @@
-# Maintainer: dreieck
+# Maintainer:
+# Contributor: dreieck
 # Contributor: éclairevoyant
 
+# options
+: ${_pkgtype:=git}
+
+# basic info
 _pkgname=pure-maps
-pkgname="${_pkgname}-git"
+pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgver=3.2.1.r13.gd801dfc1
+pkgrel=1
 pkgdesc="Display vector and raster maps, places, routes, etc."
-pkgver=3.2.1+13.r2795.20230312.d801dfc1
-pkgrel=2
+url="https://github.com/rinigus/pure-maps"
+license=('GPL3')
 arch=(
   'x86_64'
   'i686'
@@ -13,85 +20,109 @@ arch=(
   'armv7'
   'aarch64'
 )
-url="https://rinigus.github.io/${_pkgname}"
-license=(
-  'GPL3'
-)
-depends=(
-  abseil-cpp
-  gettext
-  hicolor-icon-theme
-  kirigami2
-  mapbox-gl-qml
-  nemo-qml-plugin-dbus
-  # python-geomag
-  python-gpxpy
-  python-pyotherside
-  qt5-location
-  qt5-quickcontrols2
-  qt5-sensors
-  s2geometry
-)
-optdepends=(
-  'geoclue'
-)
-provides=(
-  "${_pkgname}=${pkgver}"
-)
-conflicts=(
-  "${_pkgname}"
-)
-makedepends=(
-  'cmake'
-  'geoclue'
-  'git'
-  'qt5-tools'
-)
-source=("${_pkgname}::git+https://github.com/rinigus/${_pkgname}.git")
-b2sums=(SKIP)
+
+# main package
+_main_package() {
+  depends=(
+    abseil-cpp
+    gettext
+    hicolor-icon-theme
+    kirigami2
+    python-pyotherside
+    qt5-location
+    qt5-quickcontrols2
+    qt5-sensors
+
+    # AUR
+    mapbox-gl-qml
+      # maplibre-native
+    nemo-qml-plugin-dbus
+    s2geometry
+  )
+  makedepends=(
+    'cmake'
+    'git'
+    'qt5-tools'
+  )
+
+  provides=("${_pkgname}=${pkgver%%.r*}")
+  conflicts=("${_pkgname}")
+
+  _pkgsrc="$_pkgname"
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums=('SKIP')
+
+  _source_pure_maps
+}
+
+# submodules
+_source_pure_maps() {
+  source+=(
+    'rinigus.geomag'::'git+https://github.com/rinigus/geomag.git'
+    'tkrajina.gpxpy'::'git+https://github.com/tkrajina/gpxpy.git'
+    'heremaps.flexible-polyline'::'git+https://github.com/heremaps/flexible-polyline.git'
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+  )
+
+  _prepare_pure_maps() (
+    cd "${srcdir:?}/$_pkgsrc"
+    local -A _submodules=(
+      ['rinigus.geomag']='thirdparty/geomag'
+      ['tkrajina.gpxpy']='thirdparty/gpxpy'
+      ['heremaps.flexible-polyline']='thirdparty/flexible-polyline'
+    )
+    _submodule_update
+  )
+}
+
+# common functions
+prepare() {
+  _submodule_update() {
+    local key;
+    for key in ${!_submodules[@]} ; do
+      git submodule init "${_submodules[${key}]}"
+      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    done
+  }
+
+  _prepare_pure_maps
+}
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  _ver="$(grep -E '^[[:space:]]*Version:' rpm/harbour-pure-maps.spec | head -n1 | awk '{print $2}' | tr -d \'\")"
-  _additionalcommits="$(git describe --tags | awk -F- '{print $2}' | sed -E 's|g[0-9a-f]*||g')"
-  _rev="$(git rev-list --count HEAD)"
-  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
-  _hash="$(git rev-parse --short HEAD)"
-
-  if [ -z "${_ver}" ]; then
-    error "Version could not be determined."
-    return 1
-  fi
-
-  if [ -n "${_additionalcommits}" ]; then
-    _ver+="+${_additionalcommits}"
-  fi
-
-  printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}"
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_LIBDIR='lib'
 
-  cmake -B build -S "${_pkgname}" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DDEFAULT_BASEMAP=MapTiler \
-    -DDEFAULT_FONTPROVIDER=openmaptiles \
-    -DDEFAULT_GEOCODER=photon \
-    -DDEFAULT_GUIDE=foursquare \
-    -DDEFAULT_PROFILE=online \
-    -DDEFAULT_ROUTER=stadiamaps \
-    -DFLAVOR=kirigami \
-    -DUSE_BUNDLED_GEOCLUE2=OFF \
-    -DUSE_BUNDLED_GEOMAG=OFF \
-    -DUSE_BUNDLED_GPXPY=OFF \
-    -DCMAKE_CXX_STANDARD=17 # use the same C++ standard as abseil-cpp
-    # -DFLAVOR allows for "kirigami", "silica", "qtcontrols" and "uuitk".
-  make -C build
+    -Wno-dev
+
+    -DUSE_BUNDLED_GEOCLUE2=ON
+    -DUSE_BUNDLED_GEOMAG=ON
+    -DUSE_BUNDLED_GPXPY=ON
+
+    -DCMAKE_CXX_STANDARD=17
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
+
+# execute
+_main_package
