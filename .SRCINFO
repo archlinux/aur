@@ -7,9 +7,12 @@ pkgbase = himitsu-git
 	arch = aarch64
 	license = GPL-3.0
 	makedepends = hare-git
+	makedepends = scdoc
 	optdepends = hiprompt-gtk-py: prompter support (GTK+)
 	provides = himitsu
 	source = git+https://git.sr.ht/~sircmpwn/himitsu
+	source = himitsud.service
 	sha256sums = SKIP
+	sha256sums = 0d84a1ceb17b6be53066f9f617ee35f233ada2283c3f9b3cbea5f2c8b6c7001e
 
 pkgname = himitsu-git
