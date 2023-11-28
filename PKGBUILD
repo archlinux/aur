@@ -4,16 +4,16 @@
 
 pkgname=plasma-essential-meta
 pkgver=5.27
-pkgrel=3.5
+pkgrel=3.6
 pkgdesc='Meta-PKG to install essential (and optional) KDE Plasma packages'
 arch=(any)
 license=(None)
-url='https://kde.org/plasma-desktop/'
+url='https://community.kde.org/Distributions/Packaging_Recommendations'
 conflicts=(
   plasma-meta
-  dunst         # will take over Plasma notifications
-  mako      # will take over Plasma notifications
-  qt5ct         # conflicts with plasma-integration, breaks Qt app themes
+  dunst                     # will take over Plasma notifications
+  mako                      # will take over Plasma notifications
+  qt5ct                     # conflicts with plasma-integration, breaks Qt app themes
   xdg-desktop-portal-gnome  # conflicts with xdg-desktop-portal-kde
   xf86-input-synaptics      # provides subpar experience with touchpads
 )
@@ -54,9 +54,11 @@ package() {
             'khotkeys: Deprecated hotkeys management (only needed if user has legacy bindings defined in this)'
             'kinfocenter: System information application'
             'kio-admin: Manage files as administrator using the admin:// KIO protocol'
+            'kio-gdrive: Virtual filesystem access to Google Drive'
             'kio-fuse: Mount remote filesystems and access them in KDE and non-KDE apps'
             "kwrited: Local System Message Service daemon for multiuser installations (listens for 'wall' and 'write' messages)"
             'maliit-keyboard: Virtual keyboard for Wayland'
+            'orca: Screen reader for visually impaired users'
             'oxygen-sounds: Default KDE sound theme'
             'oxygen: KDE Oxygen style (legacy)'
             'plasma-disks: Monitors S.M.A.R.T. capable drives for imminent failure'
