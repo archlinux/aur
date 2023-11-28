@@ -24,17 +24,18 @@ arch=(
 # main package
 _main_package() {
   depends=(
-    abseil-cpp
-    gettext
-    hicolor-icon-theme
-    kirigami2
+    python-lxml
     python-pyotherside
     qt5-location
-    qt5-quickcontrols2
-    qt5-sensors
+
+    #abseil-cpp
+    #gettext
+    #kirigami2
+    #qt5-quickcontrols2
+    #qt5-sensors
 
     # AUR
-    mapbox-gl-qml
+    #mapbox-gl-qml
       # maplibre-native
     nemo-qml-plugin-dbus
     s2geometry
@@ -121,6 +122,10 @@ build() {
 }
 
 package() {
+  depends+=(
+    hicolor-icon-theme
+  )
+
   DESTDIR="${pkgdir:?}" cmake --install build
 }
 

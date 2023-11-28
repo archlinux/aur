@@ -12,15 +12,9 @@ pkgbase = pure-maps-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-tools
-	depends = abseil-cpp
-	depends = gettext
-	depends = hicolor-icon-theme
-	depends = kirigami2
+	depends = python-lxml
 	depends = python-pyotherside
 	depends = qt5-location
-	depends = qt5-quickcontrols2
-	depends = qt5-sensors
-	depends = mapbox-gl-qml
 	depends = nemo-qml-plugin-dbus
 	depends = s2geometry
 	provides = pure-maps=3.2.1
@@ -35,3 +29,9 @@ pkgbase = pure-maps-git
 	sha256sums = SKIP
 
 pkgname = pure-maps-git
+	depends = python-lxml
+	depends = python-pyotherside
+	depends = qt5-location
+	depends = nemo-qml-plugin-dbus
+	depends = s2geometry
+	depends = hicolor-icon-theme
