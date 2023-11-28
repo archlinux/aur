@@ -1,6 +1,6 @@
 pkgbase = cpod-git
 	pkgdesc = A simple, beautiful podcast app
-	pkgver = 1.28.0.r24.gb60930d
+	pkgver = 1.28.0.r27.ga648efd
 	pkgrel = 1
 	url = https://github.com/z-------------/CPod
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = cpod-git
 	depends = nss
 	provides = cpod
 	conflicts = cpod
-	replaces = cumulonimbus
 	source = cpod-git::git+https://github.com/z-------------/CPod.git
 	sha256sums = SKIP
 
