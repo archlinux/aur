@@ -1,0 +1,18 @@
+pkgbase = newpad-bin
+	pkgdesc = An OblivionOcean Software, Bro.高颜值、易上手的Markdown记事本
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/OblivionOcean/NewPad
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	makedepends = gendesk
+	depends = electron22
+	provides = newpad=1.3.0
+	conflicts = newpad
+	source = newpad-1.3.0.zip::https://github.com/OblivionOcean/NewPad/releases/download/1.3.0/linux.zip
+	source = newpad.sh
+	sha256sums = cf2934d09001055e05fbf6bcdfdfd355ef6c5ca96f8419da0a2b18f1368f152a
+	sha256sums = 88c08a089e6c6d073fec6010efc67916ec06e3f380f42c5326d4ab129605dd41
+
+pkgname = newpad-bin
