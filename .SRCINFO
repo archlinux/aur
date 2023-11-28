@@ -1,7 +1,7 @@
 pkgbase = r-cairo
 	pkgdesc = R Graphics Device using Cairo Graphics Library for Creating High-Quality Bitmap (PNG, JPEG, TIFF), Vector (PDF, SVG, PostScript) and Display (X11 and Win32) Output
-	pkgver = 1.6.1
-	pkgrel = 3
+	pkgver = 1.6.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=Cairo
 	arch = x86_64
 	license = GPL
@@ -15,8 +15,8 @@ pkgbase = r-cairo
 	depends = libx11
 	depends = r
 	optdepends = r-png
-	source = https://cran.r-project.org/src/contrib/Cairo_1.6-1.tar.gz
-	md5sums = 7445f9bedd02656711d7aa7b31983378
-	sha256sums = e64dcfc4d7081f909c947643ff08241e14a4e6e68bf9c8459c6d64ede0c23714
+	source = https://cran.r-project.org/src/contrib/Cairo_1.6-2.tar.gz
+	md5sums = 335f168eee7a37b4f8e2d97b3873b8b4
+	sha256sums = 6b6f4c6f93178a1295860a9dc6dc45e60fec70f684d5c8d0b59baf5b8dd44d62
 
 pkgname = r-cairo

@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Cairo
-_pkgver=1.6-1
+_pkgver=1.6-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="R Graphics Device using Cairo Graphics Library for Creating High-Quality Bitmap (PNG, JPEG, TIFF), Vector (PDF, SVG, PostScript) and Display (X11 and Win32) Output"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,8 +25,8 @@ optdepends=(
   r-png
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7445f9bedd02656711d7aa7b31983378')
-sha256sums=('e64dcfc4d7081f909c947643ff08241e14a4e6e68bf9c8459c6d64ede0c23714')
+md5sums=('335f168eee7a37b4f8e2d97b3873b8b4')
+sha256sums=('6b6f4c6f93178a1295860a9dc6dc45e60fec70f684d5c8d0b59baf5b8dd44d62')
 
 build() {
   mkdir -p build
