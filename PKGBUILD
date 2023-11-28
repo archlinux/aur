@@ -2,9 +2,9 @@
 
 pkgname=python-pycapnp
 _name=pycapnp
-pkgver=1.3.0
-_commit=33c453eff788295804c094601b657ec4fdadc6f8
-pkgrel=3
+pkgver=2.0.0b2
+_commit=c89174e80c4017dd9c2f85d26aa19792fa856855
+pkgrel=1
 pkgdesc="A cython wrapping of the C++ Cap'n Proto library"
 url="https://github.com/capnproto/pycapnp"
 license=(BSD-2-Clause)
@@ -24,7 +24,10 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-checkdepends=(python-pytest)
+checkdepends=(
+  python-pytest
+  python-pytest-asyncio
+)
 optdepends=('python-jinja: for capnpc-cython')
 source=(git+$url#commit=$_commit)
 sha512sums=('SKIP')
@@ -40,9 +43,16 @@ build() {
 }
 
 check() {
-  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  local pytest_options=(
+    -vv
+  )
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
   cd $_name
-  PYTHONPATH="build/lib.linux-$CARCH-cpython-$python_version" pytest
+  # install to temporary location, as importlib is used
+  python -m installer --destdir=test_dir dist/*.whl
+  export PYTHONPATH="$PWD/test_dir/$site_packages:$PYTHONPATH"
+  pytest "${pytest_options[@]}" test/
 }
 
 package() {
