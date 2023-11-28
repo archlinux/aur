@@ -1,7 +1,7 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 _pkgname=pdf4qt
 pkgname="${_pkgname}-bin"
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
@@ -28,8 +28,8 @@ optdepends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-bin")
 
-source=("https://github.com/JakubMelka/${_pkgname^^}/releases/download/v${pkgver}/${_pkgname^^}-${pkgver}.deb")
-b2sums=(994bc536362feafa42b11f924a4ad565f62ff59fd15f03560812a45a188ff70f205b95ea993931461810935aa784b85498d339bf8fa4e5f002b494293aa6027d)
+source=("https://github.com/JakubMelka/${_pkgname^^}/releases/download/v${pkgver}/${_pkgname^^}-${pkgver}_Ubuntu_23_10.deb")
+b2sums=('a16bd61b177df1c2fb39783fcdccb1937008c71a2dd0c0eba8fac2f5d66fbb5486891deca3d73496b8f32057a343a4d6fd005f304a9d60ba1caaa2873b249609')
 
 prepare() {
 	cd "${srcdir}"
@@ -44,4 +44,3 @@ package() {
 	install -D --mode=755 ./lib/*.so* --target-directory="${pkgdir}/usr/lib"
 	install -D --mode=755 ./lib/pdf4qt/*.so* --target-directory="${pkgdir}/usr/lib/pdf4qt"
 }
-

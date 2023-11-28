@@ -1,6 +1,6 @@
 pkgbase = pdf4qt-bin
 	pkgdesc = Open source PDF editor
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://jakubmelka.github.io/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = pdf4qt-bin
 	conflicts = pdf4qt
 	conflicts = pdf4qt-git
 	conflicts = pdf4qt-bin
-	source = https://github.com/JakubMelka/PDF4QT/releases/download/v1.3.5/PDF4QT-1.3.5.deb
-	b2sums = 994bc536362feafa42b11f924a4ad565f62ff59fd15f03560812a45a188ff70f205b95ea993931461810935aa784b85498d339bf8fa4e5f002b494293aa6027d
+	source = https://github.com/JakubMelka/PDF4QT/releases/download/v1.3.6/PDF4QT-1.3.6_Ubuntu_23_10.deb
+	b2sums = a16bd61b177df1c2fb39783fcdccb1937008c71a2dd0c0eba8fac2f5d66fbb5486891deca3d73496b8f32057a343a4d6fd005f304a9d60ba1caaa2873b249609
 
 pkgname = pdf4qt-bin
