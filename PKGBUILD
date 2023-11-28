@@ -19,18 +19,11 @@ arch=('x86_64' 'i686')
 url="https://www.r-studio.com/data_recovery_linux/"
 license=('custom')
 depends=(
-  'xdg-utils'
-  'polkit'
-  'hicolor-icon-theme'
-  'gcc-libs'
-  'glibc'
-  'alsa-lib'
-  'freetype2'
   'qt4'
 )
 provides=('r-studio-for-linux-bin')
 conflicts=('r-studio-for-linux-bin')
-source=("${pkgname}-eula.html::https://www.r-studio.com/includes/eula/PopupEulaDRC.shtml?R-Studio-for-Linux",
+source=("${pkgname}-eula-PopupEulaDRC-R-Studio-For-Linux.shtml::https://www.r-studio.com/includes/eula/PopupEulaDRC.shtml?R-Studio-for-Linux",
   "${pkgname}-usage-recovery-manual.pdf::https://www.r-studio.com/downloads/Free_Linux_Recovery_Manual.pdf"
 )
 source_x86_64=("https://www.r-studio.com/downloads/RStudio5_x64.rpm")
@@ -74,7 +67,7 @@ package() {
   done
 
   # install end-user license agreement
-  install -D -m644 "${srcdir}/${pkgname}-eula.html" "${pkgdir}/usr/share/licenses/${pkgname}/${pkgname}-eula.html"
+  install -D -m644 "${srcdir}/${pkgname}-eula-PopupEulaDRC-R-Studio-For-Linux.shtml" "${pkgdir}/usr/share/licenses/${pkgname}/${pkgname}-eula-PopupEulaDRC-R-Studio-For-Linux.shtml"
 
   # install usage / recovery manual
   install -D -m644 "${srcdir}/${pkgname}-usage-recovery-manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/${pkgname}-usage-recovery-manual.pdf"
