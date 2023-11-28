@@ -35,8 +35,6 @@ pkgbase = pix-git
 	provides = pix
 	conflicts = pix
 	source = pix-git::git+https://github.com/linuxmint/pix.git
-	source = 0001-exiv-0.28.patch
 	md5sums = SKIP
-	md5sums = 9c20e12ed62c5d023c9dd81fe6e4e3ab
 
 pkgname = pix-git
