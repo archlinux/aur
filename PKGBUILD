@@ -5,26 +5,24 @@ _name=${pkgname#python-}
 pkgdesc="Python QR Code and Micro QR Code encoder"
 url="https://segno.readthedocs.io/"
 
-pkgver=1.5.3
+pkgver=1.6.0
 pkgrel=1
 
 arch=("any")
 license=("BSD")
 
+depends=(
+    "python"
+)
 makedepends=(
     "python-build"
     "python-installer"
     "python-setuptools"
     "python-wheel"
 )
-depends=(
-    "python"
-    "python-pypng"
-    "pyzbar"
-)
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("9e20d53917445698c9d64a728d057c783610ec2cc25e619a55813c0300ac3502efc153c8e2e67ae39ecd30bd9e53ff9be21c869ab1fe7a3c5d2bb1afe3ddf0bf")
+b2sums=("38567330621f4883a0b5da7dcca529f1b1072bf9bd0ad6adab42268d484ee566d49b00e8f85413318c8ffe81d348bb0f35163e7d69dc780fc95ea389f8278627")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
