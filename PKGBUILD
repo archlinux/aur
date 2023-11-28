@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
 source_x86_64=("dt"::"${url}/releases/download/${pkgver}/dt")
-sha256sums_x86_64=('8ab408801272c728300ac18926e4e1a991d7d38249c1f96fccb405e5d5d1594a')
+sha256sums_x86_64=('d5cbb5a2f0f2ec7062c434bf10a80e56505a478abfdd94b8f39d23eb81b6b03f')
 
 prepare() {
   chmod +x dt
