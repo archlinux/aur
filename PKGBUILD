@@ -3,10 +3,10 @@
 pkgname=sdpb-git
 pkgver=1691.d6b948b
 pkgrel=1
-pkgdesc="Semidefinite program solver designed for the conformal bootstrap"
+pkgdesc="A semidefinite program solver for the conformal bootstrap"
 arch=(x86_64)
 license=('MIT')
-url="https://arxiv.org/abs/1909.09745"
+url="https://github.com/davidsd/sdpb"
 depends=('boost' 'libarchive' 'libxml2' 'mpfr' 'rapidjson' 'elemental-gmp-git' 'intel-oneapi-mkl')
 optdepends=('openmpi')
 makedepends=('git' 'python')

@@ -1,8 +1,8 @@
 pkgbase = sdpb-git
-	pkgdesc = Semidefinite program solver designed for the conformal bootstrap
+	pkgdesc = A semidefinite program solver for the conformal bootstrap
 	pkgver = 1691.d6b948b
 	pkgrel = 1
-	url = https://arxiv.org/abs/1909.09745
+	url = https://github.com/davidsd/sdpb
 	arch = x86_64
 	license = MIT
 	makedepends = git
