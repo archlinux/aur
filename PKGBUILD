@@ -16,9 +16,16 @@ depends=(
 source=("https://gitlab.com/peertube-viewer/peertube-viewer-rs/-/archive/v$pkgver/peertube-viewer-rs-v$pkgver.tar.gz")
 sha256sums=('a72ecdf09abd74c993498b0c8f1e25863bbc00f44b7b57ac1ae8a301472760f7')
 
+prepare() {
+    cd $pkgname-v$pkgver
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
     cd $pkgname-v$pkgver
-    cargo b --release --locked
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 package() {
