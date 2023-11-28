@@ -1,0 +1,21 @@
+pkgbase = ladder
+	pkgdesc = Bypass paywalls and remove CORS headers from any URL
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = https://github.com/everywall/ladder
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL3
+	makedepends = go
+	depends = glibc
+	backup = etc/ladder/ruleset.yaml
+	source = git+https://github.com/everywall/ladder.git#tag=v0.0.20
+	source = ruleset.yaml
+	source = ladder.service
+	sha256sums = SKIP
+	sha256sums = 9717057548ec40f5b9e4caa7d960dd95dd9821eef3cbeffd2110ed5a79e1972d
+	sha256sums = 3557270490a1e12d6f64a2afad9392225f738d7b551328120cbcfbdb8c192970
+
+pkgname = ladder

@@ -1,0 +1,211 @@
+- domains: 
+  - www.thestar.com
+  - www.niagarafallsreview.ca
+  - www.stcatharinesstandard.ca
+  - www.thepeterboroughexaminer.com
+  - www.therecord.com
+  - www.thespec.com
+  - www.wellandtribune.ca
+  injections:
+    - position: head
+      append: |
+        <script>
+          window.localStorage.clear();
+          document.addEventListener("DOMContentLoaded", () => {
+            const paywall = document.querySelectorAll('div.subscriber-offers');
+            paywall.forEach(el => { el.remove(); });
+            const subscriber_only = document.querySelectorAll('div.subscriber-only');
+            for (const elem of subscriber_only) {
+              if (elem.classList.contains('encrypted-content') && dompurify_loaded) {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString('<div>' + DOMPurify.sanitize(unscramble(elem.innerText)) + '</div>', 'text/html');
+                const content_new = doc.querySelector('div');
+                elem.parentNode.replaceChild(content_new, elem);
+              }
+              elem.removeAttribute('style');
+              elem.removeAttribute('class');
+            }
+            const banners = document.querySelectorAll('div.subscription-required, div.redacted-overlay, div.subscriber-hide, div.tnt-ads-container');
+            banners.forEach(el => { el.remove(); });
+            const ads = document.querySelectorAll('div.tnt-ads-container, div[class*="adLabelWrapper"]');
+            ads.forEach(el => { el.remove(); });
+            const recommendations = document.querySelectorAll('div[id^="tncms-region-article"]');
+            recommendations.forEach(el => { el.remove(); });
+          });
+        </script>
+
+- domains: 
+  - www.nytimes.com
+  - www.time.com
+  headers:
+    ueser-agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+    cookie: nyt-a=; nyt-gdpr=0; nyt-geo=DE; nyt-privacy=1
+    referer: https://www.google.com/ 
+  injections:
+    - position: head
+      append: |
+        <script>
+          window.localStorage.clear();
+          document.addEventListener("DOMContentLoaded", () => {
+            const banners = document.querySelectorAll('div[data-testid="inline-message"], div[id^="ad-"], div[id^="leaderboard-"], div.expanded-dock, div.pz-ad-box, div[id="top-wrapper"], div[id="bottom-wrapper"]');
+            banners.forEach(el => { el.remove(); });
+          });
+        </script>
+
+- domains: 
+  - www.architecturaldigest.com
+  - www.bonappetit.com
+  - www.cntraveler.com
+  - www.epicurious.com
+  - www.gq.com
+  - www.newyorker.com
+  - www.vanityfair.com
+  - www.vogue.com
+  - www.wired.com
+  injections:
+    - position: head
+      append: |
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const banners = document.querySelectorAll('.paywall-bar, div[class^="MessageBannerWrapper-"');
+            banners.forEach(el => { el.remove(); });
+          });
+        </script>
+
+- domain: americanbanker.com
+  paths:
+    - /news
+  injections:
+    - position: head
+      append: |
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const inlineGate = document.querySelector('.inline-gate');
+            if (inlineGate) {
+              inlineGate.classList.remove('inline-gate');
+              const inlineGated = document.querySelectorAll('.inline-gated');
+              for (const elem of inlineGated) { elem.classList.remove('inline-gated'); }
+            }
+          });
+        </script>
+
+- domain: www.washingtonpost.com
+  injections:
+    - position: head
+      append: |
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            let paywall = document.querySelectorAll('div[data-qa$="-ad"], div[id="leaderboard-wrapper"], div[data-qa="subscribe-promo"]');
+            paywall.forEach(el => { el.remove(); });
+            const images = document.querySelectorAll('img');
+            images.forEach(image => { image.parentElement.style.filter = ''; });
+            const headimage = document.querySelectorAll('div .aspect-custom');
+            headimage.forEach(image => { image.style.filter = ''; });
+          });
+        </script>
+
+- domain: www.usatoday.com
+  injections:
+    - position: head
+      append: |
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const banners = document.querySelectorAll('div.roadblock-container, .gnt_nb, [aria-label="advertisement"], div[id="main-frame-error"]');
+            banners.forEach(el => { el.remove(); });
+          });
+        </script>
+
+- domain: medium.com
+  headers:
+    referer: https://t.co/x?amp=1
+    x-forwarded-for: none
+    user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36
+    content-security-policy: script-src 'self';
+    cookie: 
+
+# loads amp version of page
+- domain: tagesspiegel.de
+  headers:
+    content-security-policy: script-src 'self';
+    user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36
+  urlMods:
+    query:
+      - key: amp
+        value: 1
+
+- domain: www.nzz.ch
+  paths:
+    - /international
+    - /sport
+    - /wirtschaft
+    - /technologie
+    - /feuilleton
+    - /zuerich
+    - /wissenschaft
+    - /gesellschaft
+    - /panorama
+    - /mobilitaet
+    - /reisen
+    - /meinung
+    - /finanze
+  injections:
+    - position: head
+      append: |
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const paywall = document.querySelector('.dynamic-regwall');
+            removeDOMElement(paywall)
+          });
+        </script>
+
+- domains:
+  - myprivacy.dpgmedia.be
+  - myprivacy.dpgmedia.nl
+  headers:
+    cookie: isBot=true; authId=1
+    x-forwarded-for: none
+    referer: https://news.google.com
+- domains:
+  - demorgen.be
+  headers:
+    cookie: isBot=true; authId=1
+    user-agent: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; Googlebot-News; +http://www.google.com/bot.html) Chrome/121.0.6140.0 Safari/537.36
+    x-forwarded-for: none
+    referer: https://news.google.com
+  regexRules:
+    - match: (\s&&\s)?window\.temptation(\s&&\s)?(\.init)?(\s&&\s)?(\(([^)]\s*)*\);)?
+      replace: true
+  injections:
+    - position: head
+      prepend: |
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            // remove paywall items
+            let paywall = document.querySelectorAll('script[src*="advertising-cdn.dpgmedia.cloud"], div[data-temptation-position="ARTICLE_BOTTOM"]');
+            paywall.forEach(el => { el.remove(); });
+            // remove empty advert
+            document.querySelector('div[data-advert-placeholder-collapses]').remove();
+          });
+        </script>
+
+- domain: www.ft.com
+  headers:
+    referer: https://t.co/x?amp=1
+  injections:
+    - position: head
+      append: |
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const styleTags = document.querySelectorAll('link[rel="stylesheet"]');
+            styleTags.forEach(el => { 
+              const href = el.getAttribute('href').substring(1);
+              const updatedHref = href.replace(/(https?:\/\/.+?)\/{2,}/, '$1/');
+              el.setAttribute('href', updatedHref);
+            });
+            setTimeout(() => {
+              const cookie = document.querySelectorAll('.o-cookie-message, .js-article-ribbon, .o-ads, .o-banner, .o-message, .article__content-sign-up');
+              cookie.forEach(el => { el.remove(); });
+            }, 1000);
+          })
+        </script>
+
