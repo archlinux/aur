@@ -4,8 +4,8 @@
 
 pkgname=nb
 pkgver=7.9.0
-pkgrel=1
-pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
+pkgrel=2
+pkgdesc="A command-line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
 url="https://github.com/xwmx/${pkgname}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
