@@ -1,0 +1,33 @@
+pkgbase = localai-git
+	pkgdesc = The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first.
+	pkgver = 944.20d637e
+	pkgrel = 1
+	url = https://github.com/mudler/LocalAI
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = cmake
+	makedepends = ffmpeg
+	makedepends = opencv
+	makedepends = blas-openblas
+	makedepends = rocm-hip-sdk
+	depends = ffmpeg
+	depends = opencv
+	depends = blas-openblas
+	provides = localai=944.20d637e
+	provides = localai
+	conflicts = localai
+	source = localai::git+https://github.com/mudler/LocalAI
+	source = whisper-gpu.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = localai-git
+
+pkgname = localai-git-rocm
+	pkgdesc = The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first. (with ROCM support)
+	depends = ffmpeg
+	depends = opencv
+	depends = blas-openblas
+	depends = rocm-hip-runtime
