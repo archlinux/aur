@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tiff
-_pkgver=0.1-11
+_pkgver=0.1-12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=13
+pkgrel=1
 pkgdesc="Read and Write TIFF Images"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,8 +15,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f7938b61f5aefe606017680e1ead9712')
-sha256sums=('b8c3ea15114d972f8140541c7b01f5ce2e5322af1f63c1a083aaf766fd3eec75')
+md5sums=('2e24ff9e6afffa8243c6d1a5356aa374')
+sha256sums=('df10ce719f92597572763182f7cb03686b8d7fb9123d036a4daf5b10738e815c')
 
 build() {
   mkdir -p build
