@@ -1,4 +1,4 @@
-# Maintainer: Hayate Naka-mura <is01.njb at gmail dot com>
+# Maintainer: Hayate Naka-mura <hayatehay.njb at gmail dot com>
 
 _gitname='dnfpac'
 pkgname="dnfpac"
