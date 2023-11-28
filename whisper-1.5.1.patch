@@ -1,5 +1,15 @@
+From 90f96c5ea447ff7a9e796e772a4e53cec3d38235 Mon Sep 17 00:00:00 2001
+From: Felix Erkinger <wuxxin@gmail.com>
+Date: Sat, 18 Nov 2023 00:58:03 +0100
+Subject: [PATCH] update whisper_cpp to 1.5.1 with OPENBLAS, METAL, HIPBLAS,
+ CUBLAS, CLBLAST support
+
+---
+ Makefile | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
 diff --git a/Makefile b/Makefile
-index 666bc8d..d487165 100644
+index 22689eb31..f7c7ca80e 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -22,7 +22,7 @@ RWKV_REPO?=https://github.com/donomii/go-rwkv.cpp
@@ -7,7 +17,7 @@ index 666bc8d..d487165 100644
  
  # whisper.cpp version
 -WHISPER_CPP_VERSION?=85ed71aaec8e0612a84c0b67804bde75aa75a273
-+WHISPER_CPP_VERSION?=d38af151a1ed5378c5a9ae368e767ed22c8ab141
++WHISPER_CPP_VERSION?=9d6ebd877ce7d99053423d186e6f5387a4a4753c
  
  # bert.cpp version
  BERT_VERSION?=6abe312cded14042f6b7c3cd8edf082713334a4d
@@ -37,7 +47,7 @@ index 666bc8d..d487165 100644
  ifeq ($(BUILD_TYPE),metal)
  	CGO_LDFLAGS+=-framework Foundation -framework Metal -framework MetalKit -framework MetalPerformanceShaders
  	export LLAMA_METAL=1
-+	# export WHISPER_METAL=1
++	export WHISPER_METAL=1
  endif
  
  ifeq ($(BUILD_TYPE),clblas)
@@ -45,8 +55,8 @@ index 666bc8d..d487165 100644
 +	export WHISPER_CLBLAST=1
  endif
  
- # glibc-static or glibc-devel-static required
-@@ -224,6 +229,7 @@ replace:
+ ifeq ($(OS),Darwin)
+@@ -233,6 +238,7 @@ replace:
  	$(GOCMD) mod edit -replace github.com/go-skynet/go-ggml-transformers.cpp=$(shell pwd)/sources/go-ggml-transformers
  	$(GOCMD) mod edit -replace github.com/donomii/go-rwkv.cpp=$(shell pwd)/sources/go-rwkv
  	$(GOCMD) mod edit -replace github.com/ggerganov/whisper.cpp=$(shell pwd)/sources/whisper.cpp
