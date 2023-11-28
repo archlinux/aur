@@ -1,7 +1,7 @@
 pkgbase = xviewer
 	pkgdesc = A simple and easy to use image viewer. X-Apps Project.
-	pkgver = 3.4.1
-	pkgrel = 4
+	pkgver = 3.4.2
+	pkgrel = 1
 	url = https://github.com/linuxmint/xviewer
 	arch = i686
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = xviewer
 	optdepends = libheif: Load .heif, .heic, and .avif
 	optdepends = libavif: Load .avif
 	optdepends = yelp: View xviewer help and documentation from the app
-	source = xviewer-3.4.1.tar.gz::https://github.com/linuxmint/xviewer/archive/3.4.1.tar.gz
-	md5sums = d60bed21be83c22a6aa003eb524f01bd
+	source = xviewer-3.4.2.tar.gz::https://github.com/linuxmint/xviewer/archive/3.4.2.tar.gz
+	md5sums = e45c0e811b740e08a7cb01c0b3cc47c8
 
 pkgname = xviewer

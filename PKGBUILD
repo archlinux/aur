@@ -1,8 +1,8 @@
 # Maintainer: Nate Simon <njsimon10@gmail.com>
 
 pkgname=xviewer
-pkgver=3.4.1
-pkgrel=4
+pkgver=3.4.2
+pkgrel=1
 pkgdesc="A simple and easy to use image viewer. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -20,7 +20,7 @@ optdepends=('xviewer-plugins: Extra plugins'
 url='https://github.com/linuxmint/xviewer'
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('d60bed21be83c22a6aa003eb524f01bd')
+md5sums=('e45c0e811b740e08a7cb01c0b3cc47c8')
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
 
