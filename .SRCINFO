@@ -5,7 +5,7 @@ pkgbase = music-dl-bin
 	url = https://github.com/guanguans/music-dl
 	arch = x86_64
 	license = MIT
-	depends = php
+	depends = php>=8.1
 	provides = music-dl=4.1.7
 	conflicts = music-dl
 	source = music-dl-4.1.7::https://github.com/guanguans/music-dl/raw/4.1.7/builds/music-dl
