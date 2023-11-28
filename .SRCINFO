@@ -23,7 +23,7 @@ pkgbase = kmscon-macslow
 	provides = kmscon
 	conflicts = kmscon
 	options = !libtool
-	source = git+https://github.com/MacSlow/kmscon.git
+	source = git+https://github.com/MacSlow/kmscon.git#branch=shader-background
 	md5sums = SKIP
 
 pkgname = kmscon-macslow

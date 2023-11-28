@@ -15,7 +15,7 @@ makedepends=(libxslt docbook-xsl linux-api-headers git meson)
 options=(!libtool)
 provides=(kmscon)
 conflicts=(kmscon)
-source=("git+https://github.com/MacSlow/kmscon.git")
+source=("git+https://github.com/MacSlow/kmscon.git#branch=shader-background")
 md5sums=('SKIP')
 
 #pkgver() {
