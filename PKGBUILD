@@ -28,7 +28,7 @@ source=("${pkgname}-eula-PopupEulaDRC-R-Studio-For-Linux.shtml::https://www.r-st
 )
 source_x86_64=("https://www.r-studio.com/downloads/RStudio5_x64.rpm")
 source_i686=("https://www.r-studio.com/downloads/RStudio5_i386.rpm")
-sha512sums=('81abed629b7c6198ec2e7dc360663ee0955418b910fb8f0f02afd0c862b4d8db0a1e88725b232e0acc2f540336bad15e5a3e57ff4ab5be28639e83be0d9e0ffa'
+sha512sums=('SKIP'
 'c567249d385e6fbaf548bd79d0523cafd6b13d404d3be139ffa4925437f135aa0ac027d48d734186466116f395a84e831f088667acf13207947ebfe97e890f5a')
 sha512sums_x86_64=('da424d62555588723510d126d64727f87d9f0c0c616567d52f10c86c88bfff243a139953564fc6cf79d81eeb68bde4b37a4f64594c17664c7a7a62ed1dccbb85')
 sha512sums_i686=('eb4d57a9a4d0d7be77c833f375d38d0434387cd8c8e2aba312776e8e3b007076b74bb1cc53dfa74100b03e74618e5f336005462bda912df7e5fff7eeed9545ec')
