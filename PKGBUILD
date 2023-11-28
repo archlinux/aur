@@ -2,7 +2,7 @@
 _pkgname=pdf4qt
 pkgname="${_pkgname}-bin"
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
 url="https://jakubmelka.github.io/"
@@ -39,8 +39,9 @@ prepare() {
 package() {
 	echo "package"
 	install -D --mode=755 ./usr/share/applications/* --target-directory="${pkgdir}/usr/share/applications"
-	install -D --mode=755 ./usr/share/icons/* --target-directory="${pkgdir}/usr/share/icons"
-	install -D --mode=755 ./bin/* --target-directory="${pkgdir}/usr/bin"
-	install -D --mode=755 ./lib/*.so* --target-directory="${pkgdir}/usr/lib"
-	install -D --mode=755 ./lib/pdf4qt/*.so* --target-directory="${pkgdir}/usr/lib/pdf4qt"
+	install -D --mode=755 ./usr/share/icons/hicolor/128x128/apps/* --target-directory="${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+	install -D --mode=755 ./usr/share/icons/hicolor/scalable/apps/* --target-directory="${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+	install -D --mode=755 ./usr/bin/* --target-directory="${pkgdir}/usr/bin"
+	install -D --mode=755 ./usr/lib/*.so* --target-directory="${pkgdir}/usr/lib"
+	install -D --mode=755 ./usr/lib/pdf4qt/*.so* --target-directory="${pkgdir}/usr/lib/pdf4qt"
 }

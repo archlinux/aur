@@ -1,7 +1,7 @@
 pkgbase = pdf4qt-bin
 	pkgdesc = Open source PDF editor
 	pkgver = 1.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jakubmelka.github.io/
 	arch = x86_64
 	license = LGPL3
