@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-uhashring
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="Full featured consistent hashing python library compatible with ketama"
 url="https://github.com/ultrabug/uhashring"
 license=('BSD')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 checkdepends=('python-pytest' 'python-memcached')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ultrabug/uhashring/archive/$pkgver.tar.gz")
-sha512sums=('b9cbe614cda9a487e176aa994625f03986c3ecad84c7dd2c2ce654bf9d65ab2205a8038eff5a7782a34714d533fcf8963e9b6f93f0d560c4ba08678fbd899357')
+sha512sums=('36f3ac1914a6cdfa903685931831a88a8b75300b8775ac9f865295650c777296a61fa4dd804e005821354ce796780445b06f7c3757ed0df4f8b068d5815539f8')
 
 build() {
   cd uhashring-$pkgver
