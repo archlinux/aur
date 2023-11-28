@@ -4,7 +4,7 @@ _plgname=go-ds-s3
 _pkgplgname=$_pkgname-s3
 pkgname=$_pkgplgname-git
 pkgver=0.24.0.r0.ge70db65
-pkgrel=1
+pkgrel=2
 pkgdesc="IPFS Kubo with S3 Datastore Implementation"
 arch=('x86_64')
 url="https://github.com/chixodo-xyz/kubo-s3"
@@ -25,7 +25,7 @@ source=('git+https://github.com/ipfs/kubo'
 noextract=()
 b2sums=('SKIP'
 				'SKIP'
-				'6b0d5ea366c044d3ab88433a5d4e9613f605fb994c3772b8d2e38c4dc675b7e1fea46819f04f148733f4e67a981701e00bab679613211f6f4906fabad89916e2'
+				'182e0a3a925415920088fb2ba956d61fdde0bcc6d50f1844e1e29d823897ac526c1bcf7887e294423945f470514031550f2d0e1e75174eef5da8ebeeb3bb2d6c'
 				'e7df78fa46537d2f54a83c8e65ca2aeb30c4b88b4ab52a4da241e22504e80d724ed2eb2a46620616a0a486575a0aeb1d49d016dc4293e1276d61b7d3f7ee2d2e')
 
 prepare() {
@@ -94,7 +94,7 @@ pkgver() {
 build() {
 	cd "$srcdir/$_pkgname"
 	printf "\033[34;1mBuild Kubo\n\033[0m"
-	make build
+	make build || true #first build attempt will probably fail
 	
 	printf "Fetch dependencies\n"
 	$srcdir/go mod tidy
