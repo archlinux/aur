@@ -2,7 +2,7 @@
 # Contributor: Alexandr Parkhomenko <it@52tour.ru>
 
 pkgname=python-opentsne-git
-pkgver=1.0.0.r3.g994cf0b
+pkgver=1.0.0.r12.g2f7eb25
 pkgrel=1
 pkgdesc="Extensible, parallel implementations of t-SNE"
 url="https://opentsne.readthedocs.io/en/latest/"
@@ -16,10 +16,8 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/pavlin-policar/openTSNE.git"
-        "fix_get_numpy_include.patch")
-sha256sums=('SKIP'
-            'b7e2ef8a66e665851333a93a44dd0d6d657d6d77988dc159a14b14abeead20a1')
+source=("git+https://github.com/pavlin-policar/openTSNE.git")
+sha256sums=('SKIP')
 
 pkgver () {
   cd "openTSNE"
@@ -29,7 +27,6 @@ pkgver () {
 prepare() {
   cd "openTSNE"
   sed -i 's/oldest-supported-//' pyproject.toml
-  patch -p1 < ../fix_get_numpy_include.patch
 }
 
 build() {
