@@ -1,6 +1,77 @@
 --- old/doc/makedoc.py	2018-12-23 22:04:36.000000000 +0300
-+++ new/doc/makedoc.py	2021-02-14 20:05:15.398512668 +0300
-@@ -564,6 +564,7 @@
++++ new/doc/makedoc.py	2023-11-29 00:52:18.652610083 +0300
+@@ -10,9 +10,10 @@
+ 
+ import xml.sax
+ 
+-import string
+ import re
+ 
++string = str
++
+ def remove_duplicate_blanks(text):
+     result=text
+ 
+@@ -61,7 +62,7 @@
+     return result
+ 
+ def format_email_and_url(text):
+-    result=text	
++    result=text 
+ 
+     email=re.compile('"([\w\-\.]+@[\w\-\.]+)"')
+     result=email.sub(r'\1',result);
+@@ -366,7 +367,7 @@
+         self.write("\n\\end{verbatim}\n")
+     def translate(self,data,tag):
+         result=data
+-	result=format_email_and_url(result)
++        result=format_email_and_url(result)
+         if (tag!="code"):
+             result=format_tex(result)
+         return result
+@@ -405,7 +406,7 @@
+         self.write("\n")
+     def translate(self,data,tag):
+         result=data
+-	result=format_email_and_url(result)
++        result=format_email_and_url(result)
+         result=string.replace(result,"\\","\\\\")
+         result=string.replace(result,".","\.")
+         result=string.replace(result,"-","\-")
+@@ -460,7 +461,7 @@
+         self.write("\n")
+     def translate(self,data,tag):
+         result=data
+-	result=format_email_and_url(result)
++        result=format_email_and_url(result)
+         if (tag=="code"):
+             result=" "*self.indent+\
+                     string.replace(result,"\n","\n"+" "*self.indent)
+@@ -505,7 +506,7 @@
+         self.write("\n@end example\n")
+     def translate(self,data,tag):
+         result=data
+-	result=format_email_and_url(result)
++        result=format_email_and_url(result)
+ 
+         if (tag!="code"):
+             result=remove_duplicate_blanks(result)
+@@ -548,7 +549,7 @@
+         self.write("\n")
+     def translate(self,data,tag):
+         result=data
+-	result=format_email_and_url(result)
++        result=format_email_and_url(result)
+ 
+         if (tag=="code"):
+             result=format_uwc_code(result)
+@@ -560,10 +561,11 @@
+         return result
+ 
+ def run_parser(handler,dst,src):
+-    dst_file=open(dst,"w")
++    dst_file=open(dst,"wb")
      src_file=open(src,"r")
      #src_code=src_file.read()
      parser=xml.sax.make_parser()
