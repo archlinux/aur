@@ -2,13 +2,14 @@
 
 pkgname=semaphore-bin
 pkgver=2.9.37
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern UI for Ansible (Binary Release)"
 arch=('x86_64' 'aarch64')
 url="https://www.ansible-semaphore.com/"
 license=('MIT')
-depends=('ansible')
+depends=('ansible-core')
 optdepends=(
+  'ansible: Full Ansible assortment'
   'postgresql: PostgreSQL database support'
   'mariadb: MariaDB database support'
   'postfix: Mail server support'
