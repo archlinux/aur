@@ -1,13 +1,14 @@
 pkgbase = semaphore-bin
 	pkgdesc = Modern UI for Ansible (Binary Release)
 	pkgver = 2.9.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ansible-semaphore.com/
 	install = semaphore.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = ansible
+	depends = ansible-core
+	optdepends = ansible: Full Ansible assortment
 	optdepends = postgresql: PostgreSQL database support
 	optdepends = mariadb: MariaDB database support
 	optdepends = postfix: Mail server support
