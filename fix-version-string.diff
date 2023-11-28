@@ -1,0 +1,49 @@
+diff --git a/Makefile b/Makefile
+index 51637e9..884378f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ LIBPE_DIR = lib/libpe
+ PEV_DIR = src
+-VERSION = 0.82
++VERSION = 0.83
+ ZIPDIR = pev-$(VERSION)-win
+ ZIPFILE = $(ZIPDIR).zip
+ 
+diff --git a/include/common.h b/include/common.h
+index 2ba551b..594e143 100644
+--- a/include/common.h
++++ b/include/common.h
+@@ -59,7 +59,7 @@
+ 
+ #define MAX_MSG 81
+ #define MAX_PATH 256
+-#define VERSION "0.82"
++#define VERSION "0.83"
+ #define TOOLKIT "from pev " VERSION " <https://github.com/mentebinaria/readpe/> toolkit"
+ #define COPY \
+ "License GPLv2+: GNU GPL version 2 or later <https://www.gnu.org/licenses/gpl-2.0.txt>.\n" \
+diff --git a/lib/libpe/Makefile b/lib/libpe/Makefile
+index c9dfbe6..7330c6c 100644
+--- a/lib/libpe/Makefile
++++ b/lib/libpe/Makefile
+@@ -62,7 +62,7 @@ LIBS = -lssl -lcrypto -lm
+ #	override CFLAGS += -fPIC
+ #endif
+ 
+-VERSION = 0.82
++VERSION = 0.83
+ LIBNAME = libpe
+ 
+ SRC_DIRS = $(srcdir) $(srcdir)/libfuzzy
+diff --git a/pev.spec b/pev.spec
+index 28a08f2..0bf4d9f 100644
+--- a/pev.spec
++++ b/pev.spec
+@@ -1,5 +1,5 @@
+ Name:           pev
+-Version:        0.82
++Version:        0.83
+ Release:        1
+ License:        GPL2
+ URL:            http://pev.sf.net/
