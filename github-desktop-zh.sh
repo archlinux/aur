@@ -1,5 +1,5 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron24
+_ELECTRON=/usr/bin/electron26
 APPDIR="/usr/lib/github-desktop-zh"
 export PATH="${APPDIR}:${PATH}"
 _ASAR="${APPDIR}/app"

@@ -2,9 +2,9 @@
 _pkgname=github-desktop
 _appname=GitHubDesktop
 pkgname="${_pkgname}-zh-bin"
-pkgver=3.3.5_linux1
-#_zhpkgver="${pkgver%_linux2}"
-_zhpkgver=3.3.5
+pkgver=3.3.5_linux2
+_zhpkgver="${pkgver%_linux2}"
+#_zhpkgver=3.3.5
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
 arch=(
@@ -21,7 +21,7 @@ conflicts=("${_pkgname}" "${pkgname%-zh}")
 depends=(
     'hicolor-icon-theme'
     'bash'
-    'electron24'
+    'electron26'
     'libsecret'
     'perl'
     'curl'
@@ -37,10 +37,10 @@ source=(
 )
 sha256sums=('583b614389c03ae83b0099c76233183836fac8c136409bb957a17fd31ee1a6b6'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
-            '830ca18c25d35f6008a6cb911d9783936f9f61e61a6cd0de502237cb0548fe30')
-sha256sums_aarch64=('56fc86c06bd6e9cdffa992a8f67ba6a3cdbbb446b8ea0cd2b16a60024e89049a')
-sha256sums_armv7h=('9d086f8fcb92d457fa86de6ecfe3de00803ff30a822073980cdbcedf944ac322')
-sha256sums_x86_64=('095cfb54fa61e1bfc44eda6789ad0b5aa5638d20cf16da45e1faa66875b84345')
+            'af2c7520372be84048540ce80ecd61f30154071f8947e4b76698de7c3e4cf520')
+sha256sums_aarch64=('72a17980515c707488fff7195bbed30fd6f701fdeccbf4d69f73ab8ca6860d93')
+sha256sums_armv7h=('50fa487561001a26d9770e5af818d167e591f55e9fe656c64bf8939db58b6c33')
+sha256sums_x86_64=('1bedd13b85e60a18ee0aa9bf23b6a0f07368d80d95927c3db09ac0881b22a2ce')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm644 "${srcdir}/GithubDesktop汉化工具/Linux/"*.js -t "${srcdir}/usr/lib/${_pkgname}/resources/app"
