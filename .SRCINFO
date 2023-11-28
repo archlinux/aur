@@ -1,7 +1,7 @@
 pkgbase = nodeinfo
 	pkgdesc = return nodeinfo as json based on a given domain
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/thefederationinfo/nodeinfo-go
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,6 @@ pkgbase = nodeinfo
 	makedepends = go
 	depends = glibc
 	source = https://codeberg.org/thefederationinfo/nodeinfo-go/archive/v0.3.0.tar.gz
-	sha1sums = 5bb2a5ce3d55fa31738455a238def7945195e17a
+	sha1sums = 282765c4adb2f722d84429ee7768c1fed67c091f
 
 pkgname = nodeinfo
