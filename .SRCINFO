@@ -1,6 +1,6 @@
 pkgbase = r-stringfish
 	pkgdesc = Alt String Implementation
-	pkgver = 0.15.8
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=stringfish
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-stringfish
 	optdepends = r-rmarkdown
 	optdepends = r-stringr
 	optdepends = r-usethis
-	source = https://cran.r-project.org/src/contrib/stringfish_0.15.8.tar.gz
-	sha256sums = dfb21e2941b1884f5ee1f2d286b986bb4b7f607eb68edc3f0c5a7079da88839b
+	source = https://cran.r-project.org/src/contrib/stringfish_0.16.0.tar.gz
+	sha256sums = 3608bc83900246297b38df46954bd9aa3b6f463a56eefbe80cfc713eab797993
 
 pkgname = r-stringfish
