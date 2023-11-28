@@ -19,7 +19,7 @@ _pkgname=vision
 pkgbase='torchvision'
 pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
 pkgver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
@@ -33,39 +33,33 @@ depends=(
   python-sympy
 )
 optdepends=(
-  'ffmpeg4.4: video reader backend (the recommended one with better performance)'
+  'ffmpeg: video reader backend (the recommended one with better performance)'
   'python-pycocotools: support for MS-COCO dataset'
 )
 makedepends=(
   cmake
   ninja
   cuda
-  ffmpeg4.4
+  ffmpeg
   python-pytorch-opt-cuda
   python-setuptools
   qt5-base
   nvidia-utils
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
+        $pkgname-ffmpeg6.patch::https://patch-diff.githubusercontent.com/raw/pytorch/vision/pull/8096.patch
         "https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/cuviddec.h"
         "https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/nvcuvid.h"
 )
 b2sums=('b32f3f2142af2645c514364e0e5632e05af7a3f28b05af8200b8fbdc4edd0ded8d8595f1bcae0e21cfa795e1d557ef41dd2f21a584d0f4fd67e0fb4661f4ee8a'
+        'd9320af6029932045b95043728853a80c99d27ff919dc43eb2cac185181cee8a5ccbb4657ec77d281ceed22f27b8cfed4e7a7d783eecd477569641fd75ce4e95'
         '9ccff204a4e1e93340d8b12c2b1d17e01663c12957b4665c0043eccf76d507a7308745a5d9e4d89657840aaf8abf0aa8f51bd79d6e0d5dc57a376d54a754755a'
         '7db5d621f3099bc5455f1faeb7f4c3575a9cf70153ba56a6efc6d67d0ef2ac5438f6e117e621c5ef35c239eb3bce3fe17ce160e6b7765e8203d67a7299085429')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  # fix building with ffmpeg4.4 by manually setup include and lib dir
-  # and remove other codes to find ffmpeg exe, as ffmpeg4.4 are only headers and libs without ffmpeg cmd
-  sed -e 's#ffmpeg_include_dir = os.path.join(ffmpeg_root, "include")#ffmpeg_include_dir = "/usr/include/ffmpeg4.4"#' \
-      -e 's#ffmpeg_library_dir = os.path.join(ffmpeg_root, "lib")#ffmpeg_library_dir = "/usr/lib/ffmpeg4.4"#' \
-      -e 's#has_ffmpeg = ffmpeg_exe is not None#has_ffmpeg = True#' \
-      -e '/ffmpeg_exe/d' \
-      -e '/ffmpeg_bin/d' \
-      -e '/ffmpeg_root/d' \
-      -i setup.py
+  patch -Np1 -i "${srcdir}"/$pkgname-ffmpeg6.patch
 
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}-cuda-${pkgver}"
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/python-${_pkgname}-${pkgver}"
