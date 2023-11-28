@@ -1,7 +1,7 @@
 pkgbase = librime
 	pkgdesc = Rime input method engine
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/rime/librime
 	arch = x86_64
