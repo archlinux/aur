@@ -2,7 +2,7 @@
 
 _upstream_pkgname=trane-cli
 pkgname=trane
-pkgver=0.4.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='Automated system for learning complex skills'
 arch=('x86_64')
@@ -15,9 +15,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/trane-project/trane-cli/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  'de5a3f40fe8d3418619db1584a231a04343076734058a604cefca03f31cc057fee354b1d11a2fb0e81c4848e09c40321fed408ab17ad9cd3caf6598d8632fbf0'
-)
+sha512sums=('a4a7124afefb9dbeac8c5f36800db9cb43f5cf0c30c41ecc652b48d05e250f58de474709554a1fdcc6451f5608f03e45509fccd08b3667612cc4d692e3e7ee21')
 
 prepare() {
   cargo fetch \
@@ -32,7 +30,7 @@ build() {
   #
   # Set the following value back to `stable` once upstream has
   # released a fixed version of the `parking_lot` crate.
-  export RUSTUP_TOOLCHAIN=1.59
+  # export RUSTUP_TOOLCHAIN=1.59
 
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features \
