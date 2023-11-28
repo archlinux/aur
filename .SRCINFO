@@ -1,0 +1,15 @@
+pkgbase = hexo-deployer-git
+	pkgdesc = Git deployer plugin for Hexo
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://www.npmjs.com/package/hexo-deployer-git
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = git
+	noextract = hexo-deployer-git-4.0.0.tgz
+	source = https://registry.npmjs.org/hexo-deployer-git/-/hexo-deployer-git-4.0.0.tgz
+	sha256sums = 3a374697e31617e09f89664f42bd495eeb3cdf189f8eb8a6d90f71ad30fb4a21
+
+pkgname = hexo-deployer-git
