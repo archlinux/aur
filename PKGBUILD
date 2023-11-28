@@ -1,4 +1,4 @@
-# Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
+# Maintainer: Hayate Nakamura <hayatehay.njb at gmail dot com>
 
 pkgname=anthy-unicode
 pkgver=1.0.0.20211224
