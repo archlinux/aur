@@ -1,0 +1,25 @@
+pkgbase = r-phantasuslite
+	pkgdesc = Loading and annotation RNA-Seq counts matrices
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/phantasusLite
+	arch = any
+	license = MIT
+	checkdepends = r-geoquery
+	checkdepends = r-testthat
+	depends = r-biobase
+	depends = r-data.table
+	depends = r-httr
+	depends = r-rhdf5client
+	depends = r-stringr
+	optdepends = r-biocstyle
+	optdepends = r-geoquery
+	optdepends = r-knitr
+	optdepends = r-rhdf5
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/phantasusLite_1.0.0.tar.gz
+	md5sums = 5fe0e101ac53a89dd49e077d5fb4c07d
+	sha256sums = 8a2f8cd5194d5e3c3626d2e80fb27a0f98cada91ec8c59d2466b744b0105055f
+
+pkgname = r-phantasuslite
