@@ -3,7 +3,7 @@
 _pkgname=hex2dec
 pkgname="${_pkgname}"
 pkgver=20231128.01
-pkgrel=2
+pkgrel=3
 pkgdesc="Converts hexadecimal numbers to decimal numbers using only bash."
 url="https://aur.archlinux.org/packages/hex2dec"
 license=(
@@ -15,7 +15,9 @@ arch=(
 depends=(
   'bash'
 )
-optdepends=()
+optdepends=(
+  "dec2hex: To convert the other way round: From decimal to hexadecimal."
+)
 makedepends=()
 provides=()
 conflicts=()

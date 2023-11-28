@@ -1,11 +1,12 @@
 pkgbase = hex2dec
 	pkgdesc = Converts hexadecimal numbers to decimal numbers using only bash.
 	pkgver = 20231128.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aur.archlinux.org/packages/hex2dec
 	arch = any
 	license = GPL3
 	depends = bash
+	optdepends = dec2hex: To convert the other way round: From decimal to hexadecimal.
 	source = hex2dec
 	sha256sums = d7463913dd7a83e1733f38f2f5322bd099082eda3eea63247d53a20ffe114311
 
