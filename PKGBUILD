@@ -2,7 +2,7 @@
 
 pkgname=zlib-ng-compat
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="zlib replacement with optimizations for 'next generation' systems (replaces zlib)"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/zlib-ng/zlib-ng"
@@ -13,7 +13,7 @@ provides=('zlib' 'libz.so')
 conflicts=('zlib')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/zlib-ng/zlib-ng/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6cd2ba3fa97ed795e1f2bc87a1140a070ba712b7eb4b7ba5b3521694ea0ec91a')
+sha256sums=('3f6576971397b379d4205ae5451ff5a68edf6c103b2f03c4188ed7075fbb5f04')
 
 
 build() {
