@@ -1,0 +1,13 @@
+pkgbase = dec2hex
+	pkgdesc = Converts decimal numbers to hexadecimal numbers using only sh.
+	pkgver = 20231128.01
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/dec2hex
+	arch = any
+	license = GPL3
+	depends = sh
+	optdepends = hex2dec: To convert the other way round: From hexadecimal to decimal.
+	source = dec2hex
+	sha256sums = b2145ccc5f2d973dc1ff9a7d36b58970032c92e0b8174f05f72ea5ad0e1f4858
+
+pkgname = dec2hex
