@@ -1,0 +1,18 @@
+pkgbase = venom86-bin
+	pkgdesc = An x86 emulator/VM by Qrodex. Or a GUI wrapper for the v86-module
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Qrodex/venom86
+	arch = x86_64
+	license = AGPL3
+	depends = electron25
+	depends = perl
+	depends = python
+	provides = venom86=1.0.2
+	conflicts = venom86
+	source = venom86-1.0.2.deb::https://github.com/Qrodex/venom86/releases/download/v1.0.2/venom86_1.0.2_amd64.deb
+	source = venom86.sh
+	sha256sums = 6f12508a814e41ecbcf45c7a165ddce88c8ee402dcefbd7af36763c489946b3a
+	sha256sums = ec4194e4fb301bf5e1c4ea807f6552acb22b04fbbf73894cfb4860f115951b1f
+
+pkgname = venom86-bin
