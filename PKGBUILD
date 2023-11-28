@@ -1,4 +1,4 @@
-# Maintainer: Hayate NAKA-MURA <is01.njb at gmail dot com>
+# Maintainer: Hayate NAKA-MURA <hayatehay.njb at gmail dot com>
 
 pkgname="nako"
 pkgver=1.0
