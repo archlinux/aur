@@ -1,4 +1,4 @@
-# Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
+# Maintainer: Hayate Nakamura <hayatehay.njb at gmail dot com>
 pkgname=unifetch
 pkgver=1.3.2
 pkgrel=1
