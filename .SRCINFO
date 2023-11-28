@@ -1,23 +1,23 @@
 pkgbase = siyuan-git
 	pkgdesc = A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.
-	pkgver = 2.10.16.r0.gfad7f0512
+	pkgver = 2.11.0.r0.ga75abfb81
 	pkgrel = 1
 	url = https://b3log.org/siyuan
 	arch = any
 	license = AGPL3
 	makedepends = gendesk
 	makedepends = git
-	makedepends = nodejs>=18.18.2
-	makedepends = npm>=9.8.1
+	makedepends = nvm
+	makedepends = npm
 	makedepends = go>=1.21.3
 	makedepends = pnpm
-	depends = electron25
+	depends = electron27
 	provides = siyuan
 	conflicts = siyuan
 	conflicts = siyuan-note
 	source = siyuan.git::git+https://github.com/siyuan-note/siyuan.git
 	source = siyuan.sh
 	sha256sums = SKIP
-	sha256sums = cc2ebfbab7be3507a090131219cf76eb05a10b7131a1e9b24552b22fed20098f
+	sha256sums = eb673414fef4621fdd24a454b94be674860bdcc262a5a6aa9ada0719e81dc5f7
 
 pkgname = siyuan-git

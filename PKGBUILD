@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=2.10.16.r0.gfad7f0512
+pkgver=2.11.0.r0.ga75abfb81
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
 arch=('any')
@@ -15,13 +15,13 @@ provides=(
     "${pkgname%-git}"
 )
 depends=(
-    'electron25'
+    'electron27'
 )
 makedepends=(
     'gendesk'
     'git'
-    'nodejs>=18.18.2'
-    'npm>=9.8.1'
+    'nvm'
+    'npm'
     'go>=1.21.3'
     'pnpm'
 )
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'cc2ebfbab7be3507a090131219cf76eb05a10b7131a1e9b24552b22fed20098f')
+            'eb673414fef4621fdd24a454b94be674860bdcc262a5a6aa9ada0719e81dc5f7')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
