@@ -1,7 +1,7 @@
 pkgbase = android-studio-for-platform
 	pkgdesc = The official Android IDE for Platform Development
 	pkgver = 2023.1.1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/studio/platform
 	arch = x86_64
 	license = APACHE
@@ -18,7 +18,7 @@ pkgbase = android-studio-for-platform
 	source = android-studio-for-platform.desktop
 	source = license.html
 	sha256sums = e4fa09fa5df9cbae249d69a3d92ef0d121b7b5c6628baff9558c66e3ae0ca0a4
-	sha256sums = f32c6ee5c8c338477c20cd2ef9c0e7a9f8404dca044cb9458d13692326517c89
+	sha256sums = 7d8615a69925b0685775546873997bdb967426e24b4fc265d120a04dc8367dda
 	sha256sums = 9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e
 
 pkgname = android-studio-for-platform
