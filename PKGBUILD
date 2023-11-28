@@ -7,14 +7,14 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 pkgver=2.1.1
 _pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'openmpi' 'pybind11' 'python' 'python-yaml' 'libuv'
-         'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt6-base'
+         'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg' 'python-future' 'qt6-base'
          'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
          'python-networkx' 'python-filelock')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
@@ -69,11 +69,11 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         disable-werror1.patch
         disable-werror2.patch
         disable-werror4.patch
-        ffmpeg4.4.patch
         rocblas-batched.patch
         protobuf-23.patch
         pytorch-rocm-jit.patch
-        pytorch-missing-iostream.patch)
+        pytorch-missing-iostream.patch
+        python-pytorch-ffmpeg6.patch)
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -122,11 +122,11 @@ b2sums=('SKIP'
         '844d0b7b39777492a6d456fa845d5399f673b4bb37b62473393449c9ad0c29dca3c33276dc3980f2e766680100335c0acfb69d51781b79575f4da112d9c4018c'
         '985e331b2025e1ca5a4fba5188af0900f1f38bd0fd32c9173deb8bed7358af01e387d4654c7e0389e5f98b6f7cbed053226934d180b8b3b1270bdbbb36fc89b2'
         'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
-        '6286b05d5b5143f117363e3ce3c7d693910f53845aeb6f501b3eea64aa71778cb2d7dcd4ac945d5321ef23b4da02446e86dedc6a9b6a998df4a7f3b1ce50550a'
         '232d2aca7cae8da511d1451890f8696d47da72276929ac5731a1a1a481d2a515fa7288bf33730d8ea2c892616551a74ca2439b53de6b1dfee156c30919120741'
         '738199e7a11940c839a43ac4e3152d84e15b9cde638227d3d87ecb45f82c5e76630a56c49bcfb08e841f92be1b2311f2fad4fafdcc17f5b00b7a8ef6d962f250'
         'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
-        '77458fa568692020ae4e437b1ebae6ebbf59f040b3414ba03e32cc829f1befb9f39dde6e0c0525e30d42dd08d482d2f213dd8294a9877476c7d0d6aabb0f08d3')
+        '77458fa568692020ae4e437b1ebae6ebbf59f040b3414ba03e32cc829f1befb9f39dde6e0c0525e30d42dd08d482d2f213dd8294a9877476c7d0d6aabb0f08d3'
+        'c17c2d2c085795861cb46974e8e251a0eb576c35a1dd2d75bcb880119bcc800c49bf6bc25c8f671c984b48787b5b919ef946352e299dc13d3ff763ae1bcc33a4')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -202,9 +202,6 @@ prepare() {
   patch -Np1 -d third_party/benchmark -i "${srcdir}/disable-werror2.patch"
   patch -Np1 -i "${srcdir}/disable-werror4.patch"
 
-  # build against ffmpeg4.4
-  patch -Np1 -i "${srcdir}/ffmpeg4.4.patch"
-
   # fix https://github.com/pytorch/pytorch/issues/97640
   patch -Np1 -i "${srcdir}/rocblas-batched.patch"
 
@@ -215,6 +212,9 @@ prepare() {
   patch -Np1 -i "${srcdir}/protobuf-23.patch"
 
   patch -Np1 -i "${srcdir}/pytorch-missing-iostream.patch"
+
+  # build against ffmpeg 6
+  patch -Np1 -i "${srcdir}/python-pytorch-ffmpeg6.patch"
 
   cd "${srcdir}"
 
