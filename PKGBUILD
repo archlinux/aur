@@ -4,7 +4,7 @@ pkgorg='humanoid-path-planner'
 _pkgname='hpp-fcl'
 #pkgname=("$_pkgname" "$_pkgname-docs")
 pkgname=("$_pkgname")
-pkgver=2.3.7
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('assimp' 'eigenpy' 'octomap' 'qhull' 'python-numpy')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen' 'boost')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('b5588c0661bd90a979ad98984cdbf9f5af57a983f1354bc375fd1966d633735d'
+sha256sums=('15b5f1d6fe98fd3bf175913821296c14b31ce1822ef303d9c6dff8ad2fefc733'
             'SKIP')
 validpgpkeys=(
         '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'  # https://github.com/nim65s.gpg
