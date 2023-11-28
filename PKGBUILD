@@ -11,7 +11,7 @@ url="https://zfsonlinux.org/"
 license=('CDDL')
 optdepends=('python: for arcstat/arc_summary/dbufstat')
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
-		"zfs-node-permission.conf"
+        "zfs-node-permission.conf"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
 sha256sums=('4ff2de43d39710283ae8ff1744aa96e6cdc83c8efe86a715294d4f6bc34a8e8e'
@@ -67,9 +67,9 @@ package() {
     make DESTDIR="${pkgdir}" install
     install -D -m644 contrib/bash_completion.d/zfs "${pkgdir}"/usr/share/bash-completion/completions/zfs
 
-	# Fix for permissions being overwritten on /dev/zfs. Related issues:
-	# https://github.com/openzfs/zfs/issues/15146
-	# https://github.com/systemd/systemd/issues/28653
+    # Fix for permissions being overwritten on /dev/zfs. Related issues:
+    # https://github.com/openzfs/zfs/issues/15146
+    # https://github.com/systemd/systemd/issues/28653
     install -D -m644 "${srcdir}"/zfs-node-permission.conf "${pkgdir}"/usr/lib/tmpfiles.d/zfs-node-permission.conf
 
     # Remove uneeded files
