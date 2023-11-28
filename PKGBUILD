@@ -3,12 +3,13 @@
 
 # options
 #: ${_pkgtype:=git}
+: ${_clang_version:=15}
 
 # basic info
 _pkgname=sourcetrail
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
 pkgver=2023.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive source explorer for C/C++ and Java'
 url='https://github.com/petermost/Sourcetrail'
 license=('GPL3')
@@ -17,20 +18,22 @@ arch=('x86_64')
 # main package
 _main_package() {
   depends=(
+    "clang${_clang_version:?}"
+    "llvm${_clang_version:?}-libs"
+
     'boost-libs'
-    'clang14'
     'java-runtime'
-    'llvm14-libs'
     'qt5-svg'
     'sqlite'
     'tinyxml'
   )
   makedepends=(
+    "llvm${_clang_version:?}"
+
     'boost'
     'catch2'
     'cmake'
     'jdk-openjdk'
-    'llvm14'
     'maven'
     'ninja'
     'qt5-base'
@@ -103,11 +106,12 @@ prepare() {
 }
 
 build() {
-  export Clang_DIR="/usr/lib/llvm14/lib/cmake/clang/"
+  export Clang_DIR="/usr/lib/llvm${_clang_version:?}/lib/cmake/clang/"
 
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_BUILD_TYPE="Release"
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DBUILD_TESTING="OFF"
