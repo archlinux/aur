@@ -1,14 +1,23 @@
 pkgbase = r-seqminer
 	pkgdesc = Efficiently Read Sequence Data (VCF Format, BCF Format, METAL Format and BGEN Format) into R
 	pkgver = 9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=seqminer
 	arch = x86_64
 	license = GPL
+	checkdepends = r-testthat
+	depends = bzip2
 	depends = r
+	depends = sqlite
+	depends = zlib
+	depends = zstd
 	optdepends = r-skat
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/seqminer_9.1.tar.gz
+	source = seqminer-fix-buffer-overflows.patch::https://github.com/zhanxw/seqminer/pull/29.patch
+	md5sums = c1a395cd5a427013fc7b784d35ec37ac
+	md5sums = e156bd312594f28f4f9b90d050e06d05
 	sha256sums = 79e2e74cdc20cf00d7c78354c5de5511140c6265af0f32cb4dac11dfb5cab76d
+	sha256sums = 6f4d3fd8acf0d370ca3100ff85f1ae8eb409cfc15a88585e4b5d8c92e1e69527
 
 pkgname = r-seqminer
