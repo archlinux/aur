@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=stringdist
-_pkgver=0.9.10
+_pkgver=0.9.12
 pkgname=r-${_pkgname,,}
-pkgver=0.9.10
+pkgver=0.9.12
 pkgrel=1
 pkgdesc='Approximate String Matching, Fuzzy Text Search, and String Distance Functions'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6fd42e0b7ff25843ca7f45acf9a183facfe14a6cde2dc7a97ef7126ab0f06ce8')
+sha256sums=('e1843452ff4184b8d3bc5168732c0c65d3fce11f0df9fcf92173a22ef92e66c4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

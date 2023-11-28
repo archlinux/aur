@@ -1,13 +1,13 @@
 pkgbase = r-stringdist
 	pkgdesc = Approximate String Matching, Fuzzy Text Search, and String Distance Functions
-	pkgver = 0.9.10
+	pkgver = 0.9.12
 	pkgrel = 1
 	url = https://cran.r-project.org/package=stringdist
 	arch = x86_64
 	license = GPL
 	depends = r
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/stringdist_0.9.10.tar.gz
-	sha256sums = 6fd42e0b7ff25843ca7f45acf9a183facfe14a6cde2dc7a97ef7126ab0f06ce8
+	source = https://cran.r-project.org/src/contrib/stringdist_0.9.12.tar.gz
+	sha256sums = e1843452ff4184b8d3bc5168732c0c65d3fce11f0df9fcf92173a22ef92e66c4
 
 pkgname = r-stringdist
