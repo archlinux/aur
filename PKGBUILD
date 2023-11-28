@@ -7,7 +7,8 @@ pkgrel=1
 arch=('any')
 url="https://github.com/alphatechnolog/cutefetch"
 source=("cutefetch::git+https://github.com/alphatechnolog/cutefetch.git")
-makedepends=('clang')
+makedepends=('clang' 'git')
+license=("gpl")
 sha256sums=(SKIP)
 depends=()
 

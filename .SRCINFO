@@ -3,10 +3,10 @@ pkgbase = cutefetch
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/alphatechnolog/cutefetch
-	arch = x86_64
-	makedepends = base-devel
-	makedepends = gcc
-	makedepends = make
+	arch = any
+	license = gpl
+	makedepends = clang
+	makedepends = git
 	source = cutefetch::git+https://github.com/alphatechnolog/cutefetch.git
 	sha256sums = SKIP
 
