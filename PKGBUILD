@@ -2,7 +2,7 @@
 # Contributor: LLL2yu <lll2yu@protonmail.com>
 
 pkgname=gallery-dl
-pkgver=1.26.2
+pkgver=1.26.3
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites'
 arch=(any)
@@ -19,7 +19,7 @@ optdepends=('ffmpeg: Pixiv Ugoira conversion'
             'python-yaml: YAML configuration file support'
             'python-toml: TOML configuration file support for Python<3.11'
             'python-secretstorage: GNOME keyring passwords for --cookies-from-browser')
-_tag=122deb2a2aee16fc4a78298ba2e8a23f0060f2ba # git rev-parse v${pkgver}
+_tag=e166384ed02faabfe9c1a0331f062770453a8c24 # git rev-parse v${pkgver}
 source=(git+"${url}".git#tag="${_tag}"?signed)
 validpgpkeys=(3E09F5908333DD83DBDCE7375680CA389D365A88) #Mike Fährmann
 sha512sums=('SKIP')
