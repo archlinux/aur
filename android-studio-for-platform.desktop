@@ -8,5 +8,5 @@ Comment=The official Android IDE for Platform Development
 Categories=Development;IDE;
 Terminal=false
 StartupNotify=true
-StartupWMClass=jetbrains-studio
+StartupWMClass=jetbrains-studio-platform
 MimeType=application/x-extension-iml;
