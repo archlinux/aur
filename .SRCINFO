@@ -1,0 +1,14 @@
+pkgbase = python-compiler
+	pkgdesc = Python bytecode compiler written in Python
+	pkgver = 1.1
+	pkgrel = 5
+	url = https://github.com/facebookincubator/python-compiler
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	source = git+https://github.com/facebookincubator/python-compiler#commit=5a9a30b3d5fae5337ff449030873a58b35e875a4
+	b2sums = SKIP
+
+pkgname = python-compiler
