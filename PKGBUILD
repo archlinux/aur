@@ -1,3 +1,4 @@
+# Maintainer: bitcoinlizard <bitcoinlizard at fastmail dot com>
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-pytz-deprecation-shim
 _pkgname=pytz_deprecation_shim
