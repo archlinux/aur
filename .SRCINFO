@@ -1,6 +1,6 @@
 pkgbase = frr
 	pkgdesc = FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP
-	pkgver = 9.0.1
+	pkgver = 9.1
 	pkgrel = 1
 	url = https://frrouting.org
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = frr
 	depends = json-c
 	depends = net-snmp
 	depends = rtrlib
-	depends = libyang<=2.1.80
+	depends = libyang>=2.1.128
 	depends = libunwind
 	depends = c-ares
 	depends = protobuf-c
@@ -36,11 +36,11 @@ pkgbase = frr
 	backup = etc/frr/frr.conf
 	backup = etc/frr/daemons
 	backup = etc/frr/vtysh.conf
-	source = https://github.com/FRRouting/frr/archive/frr-9.0.1.tar.gz
+	source = https://github.com/FRRouting/frr/archive/frr-9.1.tar.gz
 	source = frr.sysusers
 	source = frr.tmpfiles
 	source = frr_9.0_Archlinux.patch
-	sha256sums = 3a371ece41cdf334b070811287f6733acabbadb442c8e693f8b66ec517592db7
+	sha256sums = c4516fa3ef4286c665af809cfbe3a6e7e24a254a7bfb7247e1f7744dcd3bd5da
 	sha256sums = 9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e
 	sha256sums = 6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89
 	sha256sums = f4964d2138496ec883e149cf888d7b6456b0e3eea01e494a1e834475568749f7
