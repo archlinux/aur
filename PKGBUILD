@@ -1,25 +1,31 @@
-# Maintainer: Aetf <7437103@gmail.com>
+# Maintainer: sirspudd <sirspudd _at_ gmail.com>
+# Contributor: Aetf <7437103@gmail.com>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: David Herrmann <dh.herrmann@googlemail.com>
-pkgname=kmscon-patched-git
+pkgname=kmscon-macslow
 _gitname=kmscon
-pkgver=9.0.0.r3.g1bf602f
-pkgrel=2
-pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS) (forked and patched version)'
+pkgver=r1552
+pkgrel=1
+pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS) (forked and patched version, additional changes by macslow)'
 arch=('x86_64' 'armv7h' 'aarch64')
-url='https://github.com/Aetf/kmscon'
+url='https://github.com/MacSlow/kmscon'
 license=('MIT')
 depends=(systemd libdrm mesa libgl pango libxkbcommon xkeyboard-config libtsm-patched)
 makedepends=(libxslt docbook-xsl linux-api-headers git meson)
 options=(!libtool)
 provides=(kmscon)
 conflicts=(kmscon)
-source=("git+https://github.com/Aetf/kmscon.git")
+source=("git+https://github.com/MacSlow/kmscon.git")
 md5sums=('SKIP')
 
+#pkgver() {
+#  cd $srcdir/$_gitname
+#  git describe --long | sed -r "s/^$_gitname-//;s/^v//;s/([^-]*-g)/r\\1/;s/-/./g"
+#}
+
 pkgver() {
-  cd $srcdir/$_gitname
-  git describe --long | sed -r "s/^$_gitname-//;s/^v//;s/([^-]*-g)/r\\1/;s/-/./g"
+    cd $srcdir/$_gitname
+	echo "r$(git rev-list --count HEAD)"
 }
 
 build() {
