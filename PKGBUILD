@@ -15,6 +15,11 @@ optdepends=('python-jinja: for capnpc-cython')
 source=(git+https://github.com/capnproto/pycapnp.git#commit=$_commit)
 sha512sums=('SKIP')
 
+pkgver() {
+  cd pycapnp
+  git describe --tags | sed 's/^[vV]//;s/-/+/g'
+}
+
 build() {
   cd pycapnp
   python -m build --wheel --no-isolation
