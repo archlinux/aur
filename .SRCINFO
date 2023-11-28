@@ -1,0 +1,15 @@
+pkgbase = python-md-toc
+	pkgdesc = Markdown Table of Contents for Python
+	pkgver = 8.2.2
+	pkgrel = 1
+	url = https://blog.franco.net.eu.org/software/#md-toc
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-fpyutils
+	source = https://files.pythonhosted.org/packages/source/m/md-toc/md_toc-8.2.2.tar.gz
+	b2sums = 991422c7ade129cd71483e2b37d14aac59f8d08c941ae33d1d1a065af14766f7fef1de9cb4687bd2ee64a5fddc9d64297fd95add63bf468f87e2bdc8b021a3d5
+
+pkgname = python-md-toc
