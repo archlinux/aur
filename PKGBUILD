@@ -11,6 +11,7 @@ pkgrel=1
 arch=('any')
 url="https://www.documentfoundation.org"
 license=('LGPL')
+depends=("libreoffice-dev-bin>=${pkgver}")
 
 _url="https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/"
 
@@ -98,7 +99,7 @@ _languages=(
   'or           "Oriya"                        0'
   'pa-IN        "Punjabi (India)"              0'
   'pl           "Polish"                       1'
-  'pt-BR        "Portuguese (Brasil)"          1'
+  'pt-BR        "Portuguese (Brazil)"          1'
   'pt           "Portuguese"                   1'
   'ro           "Romanian"                     1'
   'ru           "Russian"                      1'
@@ -177,7 +178,6 @@ prepare() {
 
 _package() {
   pkgdesc="$2 language pack for LibreOffice Dev"
-  depends=('libreoffice-dev-bin')
 
   cd "$srcdir"/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_$1/RPMS
   cp -R opt "$pkgdir"
