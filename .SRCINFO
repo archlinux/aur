@@ -1,6 +1,6 @@
 pkgbase = dict-freedict-fra-deu
 	pkgdesc = French -> German dictionary for dictd et al. from FreeDict.org
-	pkgver = 2022.04.06
+	pkgver = 2022.11.18
 	pkgrel = 1
 	url = https://freedict.org/
 	install = dict-freedict-fra-deu.install
@@ -9,7 +9,7 @@ pkgbase = dict-freedict-fra-deu
 	license = FDL
 	makedepends = freedict-tools
 	optdepends = dictd: dict client and server
-	source = https://download.freedict.org/dictionaries/fra-deu/2022.04.06/freedict-fra-deu-2022.04.06.src.tar.xz
-	sha512sums = 8a615b676b80adf8964fc603c1002767af6da055e24bfd89ae2f3fd562af50c71944d699ff17892d773935109b73f438ec44565905f6ca5104d63db2521d12da
+	source = https://download.freedict.org/dictionaries/fra-deu/2022.11.18/freedict-fra-deu-2022.11.18.src.tar.xz
+	sha512sums = 875503bea6cce69410eca4963fb1adf882c0492522f97d72d1c98c6a85aee2a325b42fd004a8f2426115ce954acae7af4cd6ca2ccb930e4d3cfa19c2d9787563
 
 pkgname = dict-freedict-fra-deu
