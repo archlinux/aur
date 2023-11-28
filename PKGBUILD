@@ -1,7 +1,7 @@
 # Maintainer: 6543 <6543@obermui.de>
 # Contributor: 6543 <6543@obermui.de>
 pkgname=nodeinfo
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=0
 pkgdesc="return nodeinfo as json based on a given domain"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h' 'riscv64')
