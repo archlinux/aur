@@ -1,32 +1,28 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=ttyplot
-pkgver=1.5
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='A realtime plotting utility for terminal with data input from stdin'
 arch=(x86_64)
 url=https://github.com/tenox7/ttyplot
-license=('custom:The Unlicense')
-depends=(ncurses)
-makedepends=(make gcc)
+license=(Apache)
+depends=(ncurses glibc)
+makedepends=(make gcc pkg-config)
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tenox7/${pkgname}/archive/${pkgver}.tar.gz"
-        "${url}/raw/95eb2641040568e86f83d4de0b97b3033a10a908/ttyplot.1")
-sha256sums=('c494c31e7808a6e3bf8e3c399024b9aeb7d77967db6008a62d110ad9ed1b8bec'
-            '83df05ae00a05fb01d034e2493e99fa77b26a332aec5a31feeaa0ccdd5d97be9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tenox7/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('a0279e55c1996133645437ccb02574c82d62f0baa9744065779b5667c1f1cb8d')
+b2sums=('a8ebf0529f1d3e65ec5887d0fc45c51840ddb26ed982ea5bc2e47d66c03878a642576c7b3052c717f296af9b3fe0fca15080cbf252cb274238e6b664372f219e')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  make
+	make -C "${pkgname}-${pkgver}" PREFIX=/usr MANPREFIX=/usr/share/man
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+	make -C "${pkgname}-${pkgver}" PREFIX=/usr MANPREFIX=/usr/share/man \
+		DESTDIR="${pkgdir}" install
 
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
-  install -Dm644 -t "${pkgdir}/usr/share/man/man1" "${srcdir}/ttyplot.1"
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
+		"${pkgname}-${pkgver}/README.md"
 }
-
