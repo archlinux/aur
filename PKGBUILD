@@ -1,6 +1,6 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
-pkgname=opengate
-pkgver=9.3
+pkgname=opengate-git
+pkgver=v9.3.83.ga1f0a36a
 pkgrel=1
 pkgdesc="Open GATE - numerical simulations in medical imaging and radiotherapy"
 arch=('x86_64')
@@ -9,21 +9,26 @@ license=('LGPL3')
 groups=()
 makedepends=('cmake' 'gcc')
 depends=('root' 'geant4')
-provides=()
-conflicts=()
+provides=('opengate')
+conflicts=('opengate')
 replaces=()
 backup=()
 options=('!emptydirs' 'staticlibs' 'libtool' '!strip')
 install=
 changelog=
-source=("https://github.com/OpenGATE/Gate/archive/v${pkgver}.tar.gz")
+source=($pkgname::git://github.com/OpenGATE/Gate/Gate.git)
 noextract=()
-md5sums=('e3e507776d9347e0903e8721ec03cd03')
+md5sums=('SKIP')
 
 # Do not compress the package for installation
 # PKGEXT='.pkg.tar'
 # Compress using lightweight gzip
 PKGEXT='.pkg.tar.gz'
+
+pkgver() {
+    cd $pkgname/
+    git describe --tags --long | sed 's|Release-||;s|[_-]|.|g'
+}
 
 prepare() {
 	# Execute cmake
