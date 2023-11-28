@@ -1,14 +1,16 @@
 pkgbase = mapbox-gl-qml
 	pkgdesc = Mapbox GL Native bindings for Qt QML
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rinigus/mapbox-gl-qml
 	arch = x86_64
 	arch = aarch64
 	license = LGPL3
-	depends = mapbox-gl-native
+	makedepends = cmake
+	depends = maplibre-native
 	depends = qt5-location
+	depends = qt5-svg
 	source = mapbox-gl-qml-2.1.1.tar.gz::https://github.com/rinigus/mapbox-gl-qml/archive/refs/tags/2.1.1.tar.gz
-	b2sums = 0d9495767e300889521d3fe0f8d4caa36cfcc02a25279a078f6b71e2041d3a8b14c52f0e89f42a3c95d6e311aea761d214cc50cd820f335632faea495f08ed2f
+	sha256sums = 1a5e3369832e5d71b13db42d86cfd24ffe4573f8a8732fda6fea3e05a3417d43
 
 pkgname = mapbox-gl-qml
