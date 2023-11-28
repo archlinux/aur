@@ -1,6 +1,6 @@
 pkgbase = opengate-git
 	pkgdesc = Open GATE - numerical simulations in medical imaging and radiotherapy
-	pkgver = v9.3.83.ga1f0a36a
+	pkgver = v9.3.59.ge73015dd
 	pkgrel = 1
 	url = https://github.com/OpenGATE/Gate
 	arch = x86_64
@@ -9,13 +9,14 @@ pkgbase = opengate-git
 	makedepends = gcc
 	depends = root
 	depends = geant4
+	depends = cern-vdt
 	provides = opengate
 	conflicts = opengate
 	options = !emptydirs
 	options = staticlibs
 	options = libtool
 	options = !strip
-	source = opengate-git::git://github.com/OpenGATE/Gate/Gate.git
+	source = git+https://github.com/OpenGATE/Gate.git#commit=e73015dd67beae9921e931687e0bf9f4e192746b
 	md5sums = SKIP
 
 pkgname = opengate-git
