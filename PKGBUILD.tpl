@@ -3,7 +3,7 @@
 pkgname=kubebuilder
 pkgdesc="SDK for building Kubernetes APIs"
 pkgver=$KUBEBUILDER_VERSION
-pkgrel=2
+pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/kubernetes-sigs/kubebuilder"
 license=('apache')
