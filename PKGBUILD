@@ -3,9 +3,9 @@
 _pkgname=hex2dec
 pkgname="${_pkgname}"
 pkgver=20231128.01
-pkgrel=1
-pkgdesc="Prints information about system batteries and power supplies to the terminal, optionally also from devices connected via KDE Connect."
-url="https://gitlab.com/dreieckli/linux-terminal-battery-status"
+pkgrel=2
+pkgdesc="Converts hexadecimal numbers to decimal numbers using only bash."
+url="https://aur.archlinux.org/packages/hex2dec"
 license=(
   'GPL3'
 )

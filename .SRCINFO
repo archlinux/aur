@@ -1,8 +1,8 @@
 pkgbase = hex2dec
-	pkgdesc = Prints information about system batteries and power supplies to the terminal, optionally also from devices connected via KDE Connect.
+	pkgdesc = Converts hexadecimal numbers to decimal numbers using only bash.
 	pkgver = 20231128.01
-	pkgrel = 1
-	url = https://gitlab.com/dreieckli/linux-terminal-battery-status
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/hex2dec
 	arch = any
 	license = GPL3
 	depends = bash
