@@ -7,7 +7,7 @@
 pkgname=grafana-bin
 _pkgname=grafana
 pkgver=10.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version'
 url='https://grafana.com/'
 conflicts=('grafana')
@@ -50,7 +50,7 @@ package() {
   install -Dm644 grafana.sysusers "$pkgdir/usr/lib/sysusers.d/grafana.conf"
   install -Dm644 grafana.service "$pkgdir/usr/lib/systemd/system/grafana.service"
 
-  cd ${_pkgname}-${pkgver}
+  cd ${_pkgname}-v${pkgver}
   install -Dm755 bin/grafana-server "$pkgdir/usr/bin/grafana-server"
   install -Dm755 bin/grafana-cli "$pkgdir/usr/bin/grafana-cli"
   install -Dm755 bin/grafana "$pkgdir/usr/bin/grafana"

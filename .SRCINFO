@@ -1,7 +1,7 @@
 pkgbase = grafana-bin
 	pkgdesc = Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version
 	pkgver = 10.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://grafana.com/
 	install = grafana.install
 	arch = x86_64
