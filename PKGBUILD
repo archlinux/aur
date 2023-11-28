@@ -4,46 +4,75 @@
 
 pkgname=plasma-essential-meta
 pkgver=5.27
-pkgrel=3
-pkgdesc='Meta-PKG to install essential KDE Plasma packages'
+pkgrel=3.5
+pkgdesc='Meta-PKG to install essential (and optional) KDE Plasma packages'
 arch=(any)
 license=(None)
 url='https://kde.org/plasma-desktop/'
-conflicts=(plasma-meta)
-depends=(bluedevil
-         drkonqi
+conflicts=(
+  plasma-meta
+  dunst         # will take over Plasma notifications
+  mako      # will take over Plasma notifications
+  qt5ct         # conflicts with plasma-integration, breaks Qt app themes
+  xdg-desktop-portal-gnome  # conflicts with xdg-desktop-portal-kde
+  xf86-input-synaptics      # provides subpar experience with touchpads
+)
+
+package() {
+  depends=(
          kde-gtk-config
          kdeplasma-addons
-         khotkeys
-         kinfocenter
          kscreen
          ksshaskpass
-         kwrited
-         oxygen
-         oxygen-sounds
          plasma-browser-integration
          plasma-desktop
-         plasma-disks
          plasma-firewall
-         plasma-nm
-         plasma-workspace-wallpapers
-         plasma-pa
          plasma-systemmonitor
-         plasma-thunderbolt
-         plasma-vault
-         plasma-welcome
-         kwayland-integration
          kwallet-pam
          kgamma5
          sddm-kcm
          breeze-gtk
          powerdevil
-         discover
          xdg-desktop-portal-kde
-)
-optdepends=('breeze-grub: Breeze theme for GRUB'
+  )
+  optdepends=(
+            'bluedevil: Bluetooth management & desktop integration'
+            'breeze-grub: Breeze theme for GRUB'
             'breeze-plymouth: Breeze theme for Plymouth'
+            'discover: Manage installed applications and plugins (package manager)'
+            'dolphin-plugins: Dolphin file manager with all extra plugins'
+            'drkonqi: KDE crash reporting tool - only useful if debug symbol packages are installed'
+            'emoji-font: (Color) emoji support'
+            'ffmpegthumbs: Thumbnails for videos'
             'flatpak-kcm: Manage Flatpak applications from systemsettings'
-            'plymouth-kcm: Configure Plymouth from systemsettings'
+            'iio-sensor-proxy: Auto screen rotation on Wayland'
+            'kcm-wacomtablet: Manage Wacom devices from systemsettings'
+            'kde-inotify-survey: Warn when inotify limits are too low; offers help in raising it)'
+            'kdeconnect: Smartphone desktop integration and communication'
+            'kdegraphics-thumbnailers: Thumbnails for PDF, Mobipocket and camera RAW image files'
+            'kdenetwork-filesharing: Samba LAN file sharing setup'
+            'khotkeys: Deprecated hotkeys management (only needed if user has legacy bindings defined in this)'
+            'kinfocenter: System information application'
+            'kio-admin: Manage files as administrator using the admin:// KIO protocol'
+            'kio-fuse: Mount remote filesystems and access them in KDE and non-KDE apps'
+            "kwrited: Local System Message Service daemon for multiuser installations (listens for 'wall' and 'write' messages)"
+            'maliit-keyboard: Virtual keyboard for Wayland'
+            'oxygen-sounds: Default KDE sound theme'
+            'oxygen: KDE Oxygen style (legacy)'
+            'plasma-disks: Monitors S.M.A.R.T. capable drives for imminent failure'
+            'plasma-nm: NetworkManager connection configuration & desktop integration'
+            'plasma-pa: PulseAudio volume management applet'
             'plasma-sdk: Development tools'
-)
+            'plasma-thunderbolt: Manage Thunderbolt-connected devices from systemsettings'
+            'plasma-vault: Create and manage encrypted vaults (folders)'
+            'plasma-wayland-session: Run Plasma on Wayland'
+            'plasma-welcome: First use introducton and setup helper'
+            'plasma-workspace-wallpapers: Default wallpapers'
+            'plymouth-kcm: Configure Plymouth from systemsettings'
+            'print-manager: Manage printers from systemsettings'
+            'switcheroo-control: Hybrid/multi-GPU detection'
+            'xdg-desktop-portal-gtk: Flatpak app font settings integration'
+            'xsettingsd: GTK/X11 HiDPI scaling; Flatpak GTK integration; GTK theme change without restart'
+            'xwaylandvideobridge: Let XWayland-based screensharing apps record and share Wayland-based windows'
+  )
+}
