@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqminer
-_pkgver=9.1
+_pkgver=9.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Efficiently Read Sequence Data (VCF Format, BCF Format, METAL Format and BGEN Format) into R"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,16 +24,9 @@ optdepends=(
   r-skat
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "$_pkgname-fix-buffer-overflows.patch::https://github.com/zhanxw/seqminer/pull/29.patch")
-md5sums=('c1a395cd5a427013fc7b784d35ec37ac'
-         'e156bd312594f28f4f9b90d050e06d05')
-sha256sums=('79e2e74cdc20cf00d7c78354c5de5511140c6265af0f32cb4dac11dfb5cab76d'
-            '6f4d3fd8acf0d370ca3100ff85f1ae8eb409cfc15a88585e4b5d8c92e1e69527')
-
-prepare() {
-  patch -Np1 -d "$_pkgname" < "$_pkgname-fix-buffer-overflows.patch"
-}
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('8f96695f78ea46975e0a857959598ee4')
+sha256sums=('5a6a71b5c59e8c63c61cb4fd15d86bb12253f8edf3fee07129b12edffc78b11d')
 
 build() {
   mkdir -p build
