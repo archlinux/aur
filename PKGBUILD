@@ -2,7 +2,7 @@
 _appname=jan
 pkgname="${_appname}-electron-bin"
 _pkgname=Jan
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Run AI on your own PC"
 arch=("x86_64")
@@ -34,7 +34,7 @@ depends=(
     'libdrm'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-linux-amd64-${pkgver}.deb")
-sha256sums=('6da494a0bcdc4fc6dfec86c9e21bb073a6408bd98ef58ef0c8355b50024c9d41')
+sha256sums=('28003996dd8e3d9c6d64b66d63fe7831c724b3b621753404e6c20612358cfca6')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_appname}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
