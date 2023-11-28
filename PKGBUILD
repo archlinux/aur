@@ -1,14 +1,15 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=plasma-meta
+pkgname=plasma-essential-meta
 pkgver=5.27
-_dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=3
-pkgdesc='Meta package to install KDE Plasma'
+pkgdesc='Meta-PKG to install essential KDE Plasma packages'
 arch=(any)
 license=(None)
 url='https://kde.org/plasma-desktop/'
+conflicts=(plasma-meta)
 depends=(bluedevil
          drkonqi
          kde-gtk-config
@@ -44,4 +45,5 @@ optdepends=('breeze-grub: Breeze theme for GRUB'
             'breeze-plymouth: Breeze theme for Plymouth'
             'flatpak-kcm: Manage Flatpak applications from systemsettings'
             'plymouth-kcm: Configure Plymouth from systemsettings'
-            'plasma-sdk: Development tools')
+            'plasma-sdk: Development tools'
+)

@@ -1,5 +1,5 @@
-pkgbase = plasma-meta
-	pkgdesc = Meta package to install KDE Plasma
+pkgbase = plasma-essential-meta
+	pkgdesc = Meta-PKG to install essential KDE Plasma packages
 	pkgver = 5.27
 	pkgrel = 3
 	url = https://kde.org/plasma-desktop/
@@ -40,5 +40,6 @@ pkgbase = plasma-meta
 	optdepends = flatpak-kcm: Manage Flatpak applications from systemsettings
 	optdepends = plymouth-kcm: Configure Plymouth from systemsettings
 	optdepends = plasma-sdk: Development tools
+	conflicts = plasma-meta
 
-pkgname = plasma-meta
+pkgname = plasma-essential-meta
