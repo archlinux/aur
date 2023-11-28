@@ -1,0 +1,18 @@
+pkgbase = r-kde1d
+	pkgdesc = Univariate Kernel Density Estimation
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=kde1d
+	arch = x86_64
+	license = MIT
+	checkdepends = r-testthat
+	makedepends = r-bh
+	makedepends = r-rcppeigen
+	depends = r-randtoolbox
+	depends = r-rcpp
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/kde1d_1.0.5.tar.gz
+	md5sums = 72ac5e9cd260b9f2792ec2ae9186dfe8
+	sha256sums = b5fab76a394a7819deee10afdff39ac64fccdb844735adfe51c92043016f2468
+
+pkgname = r-kde1d
