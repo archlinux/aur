@@ -7,7 +7,7 @@
 pkgname=grafana-bin
 _pkgname=grafana
 pkgver=10.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version'
 url='https://grafana.com/'
 conflicts=('grafana')
@@ -37,7 +37,7 @@ sha256sums_aarch64=('cc553b60ce2b92c214488bfd9eb7135bb936c1e769ba4488241842ce13b
 #sha256sums_armv7h=('7a5fb0e045117f9ebf7e7549085e1a554f4a15b32724c088afa05f4d16e02c56')
 
 prepare() {
-  cd ${_pkgname}-${pkgver}
+  cd ${_pkgname}-v${pkgver}
   # set arch linux paths
   sed -ri 's,^(\s*data\s*=).*,\1 /var/lib/grafana,' conf/defaults.ini
   sed -ri 's,^(\s*plugins\s*=).*,\1 /var/lib/grafana/plugins,' conf/defaults.ini
