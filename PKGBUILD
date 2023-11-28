@@ -2,7 +2,7 @@
 
 _pkgname=librewolf-extension-darkreader
 pkgname=$_pkgname-bin
-pkgver=4.9.68
+pkgver=4.9.70
 pkgrel=1
 pkgdesc='Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing (binary release)'
 url=https://addons.mozilla.org/addon/darkreader
@@ -13,10 +13,10 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 groups=('librewolf-addons')
 noextract=("darkreader-$pkgver.xpi")
-_number=4194520
+_number=4198549
 source=("https://addons.mozilla.org/firefox/downloads/file/$_number/darkreader-$pkgver.xpi"
         "https://github.com/darkreader/darkreader/raw/main/LICENSE")
-sha256sums=('009b35e2b5e3ad787cc5f5cd75cf995119baaddfd45a00bd045c2098a99cff85'
+sha256sums=('3ccbe247031dd4fcc3d9bd840872ed38e9843729709f92803c234041070588a7'
             'SKIP')
 
 package() {
