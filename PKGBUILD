@@ -3,9 +3,8 @@
 # -*- sh -*-
 
 pkgname=dasel
-pkgver=2.4.1
-pkgrel=4
-#pkgdesc='Query and update data structures from the command line'
+pkgver=2.5.0
+pkgrel=1
 pkgdesc='Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single tool'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/TomWright/dasel'
@@ -50,13 +49,29 @@ package() {
   for _doc in CHANGELOG CODE_OF_CONDUCT README; do
     install -Dm0644 "$_doc.md" "$pkgdir/usr/share/doc/$pkgname/$_doc.md"
   done
+
+  "$pkgdir/usr/bin/dasel" man
+
+  install -dm0755     "$pkgdir/usr/share/man/man1"
+  install -m 0644 *.1 "$pkgdir/usr/share/man/man1/"
 }
 
 sha256sums=(
-  'eb44263c792ff3b31e5a5086d01b471d07a4282af6716932f12f76bb8cd4eebd'
+  '0e4ec875912a3ede0b84b381b14b64293c218fb9cf1472dd085bcccd1ab097a1'
 )
 b2sums=(
-  '9652bcade198766524b937dbc147f14cc5d5cf801c80c71ec7ae2cefd903b9a242cf8227d91c54de36ef98cf887e2e5b1a4870712f165887f9b705df76f1b41d'
+  'd3e48b200e6d595bef6fb6c66da8bc7ba9bbfd99fef28cecd2b4270537dd9c9827a6ce960abfcad1c2229abf6ad965a91da4fe58b9ce0874a2c18064db569bdc'
 )
+
+# 🪷 Beyond the Known — 365 Days of Exploration
+#
+# 📆 28th November
+#
+# Go into the darkest cave for yourself.
+#
+# You may find, in the deepest recesses, there is far more light
+# than you ever thought possible.
+#
+# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
