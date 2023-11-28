@@ -16,17 +16,15 @@ arch=("x86_64" "aarch64")
 license=('BSD')
 
 depends=(
-  "gcc${_gcc_version:?}-libs"
-
-  'glfw'
+  'qt5-base'
 )
 makedepends=(
   "gcc${_gcc_version:?}"
 
   'cmake'
   'git'
+  'glfw'
   'ninja'
-  'qt5-base'
 )
 
 _pkgsrc="${_pkgname:?}"
@@ -64,7 +62,7 @@ prepare() {
 build() {
   export CC="gcc-${_gcc_version:?}"
   export CXX="g++-${_gcc_version:?}"
-  export LDFLAGS="-Wl,--copy-dt-needed-entries"
+  export LDFLAGS+="-Wl,--copy-dt-needed-entries"
 
   local _cmake_options=(
     -B build
@@ -86,4 +84,7 @@ build() {
 
 package() {
   DESTDIR="${pkgdir:?}" cmake --install build
+
+  install -Dm644 "${_pkgsrc:?}/LICENSE.mbgl-core.md" "${pkgdir:?}/usr/share/licenses/$pkgname/LICENSE.mbgl-core"
+  install -Dm644 "${_pkgsrc:?}/LICENSE.md" "${pkgdir:?}/usr/share/licenses/$pkgname/LICENSE"
 }
