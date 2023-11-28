@@ -1,6 +1,6 @@
 pkgbase = system76-driver
 	pkgdesc = Universal driver for System76 computers
-	pkgver = 20.04.82
+	pkgver = 20.04.83
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-driver
 	install = system76-driver.install
@@ -16,10 +16,10 @@ pkgbase = system76-driver
 	depends = dmidecode
 	depends = ethtool
 	depends = gtk3
+	depends = libnotify
 	depends = lm_sensors
 	depends = pciutils
 	depends = polkit
-	depends = python
 	depends = python-cffi
 	depends = python-dbus
 	depends = python-distro
@@ -33,7 +33,6 @@ pkgbase = system76-driver
 	depends = wireless_tools
 	optdepends = firmware-manager: Manage System76 firmware updates via standalone application
 	optdepends = grub: Required to apply kernel parameters
-	optdepends = pm-utils: For power management features
 	optdepends = pulseaudio: To apply microphone fix
 	optdepends = system76-dkms: Control hotkeys and fan on certain System76 laptops
 	optdepends = system76-acpi-dkms: Provides the system76_acpi in-tree driver (only for (<5.16)
@@ -42,7 +41,7 @@ pkgbase = system76-driver
 	optdepends = system76-power: System76 Power Management
 	optdepends = xorg-xhost: To enable GUI applications on Wayland
 	optdepends = xorg-xbacklight: To use the backlight service
-	source = git+https://github.com/pop-os/system76-driver.git#commit=dfbce5baac1900ab82138a3b55947b3816d6f181
+	source = git+https://github.com/pop-os/system76-driver.git#commit=be90e3f4b4ebbc557962edd429edfdd78d21101d
 	source = cli.patch
 	source = wayland.patch
 	source = actions.patch

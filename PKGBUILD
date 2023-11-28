@@ -2,22 +2,44 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.82
+pkgver=20.04.83
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
 license=('GPL')
-depends=('at' 'dmidecode' 'ethtool' 'gtk3' 'lm_sensors' 'pciutils' 'polkit'
-         'python' 'python-cffi' 'python-dbus' 'python-distro' 'python-evdev'
-         'python-gobject' 'python-pynacl' 'python-systemd' 'python-xlib'
-         'system76-firmware-daemon' 'usbutils' 'wireless_tools')
-makedepends=('git' 'python-build' 'python-installer' 'python-pyflakes'
-             'python-setuptools' 'python-wheel')
+depends=(
+  'at'
+  'dmidecode'
+  'ethtool'
+  'gtk3'
+  'libnotify'
+  'lm_sensors'
+  'pciutils'
+  'polkit'
+  'python-cffi'
+  'python-dbus'
+  'python-distro'
+  'python-evdev'
+  'python-gobject'
+  'python-pynacl'
+  'python-systemd'
+  'python-xlib'
+  'system76-firmware-daemon'
+  'usbutils'
+  'wireless_tools'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-pyflakes'
+  'python-setuptools'
+  'python-wheel'
+)
 optdepends=(
   'firmware-manager: Manage System76 firmware updates via standalone application'
   'grub: Required to apply kernel parameters'
-  'pm-utils: For power management features'
   'pulseaudio: To apply microphone fix'
   'system76-dkms: Control hotkeys and fan on certain System76 laptops'
   'system76-acpi-dkms: Provides the system76_acpi in-tree driver (only for (<5.16)'
@@ -25,9 +47,10 @@ optdepends=(
   'system76-oled: Control brightness on OLED displays'
   'system76-power: System76 Power Management'
   'xorg-xhost: To enable GUI applications on Wayland'
-  'xorg-xbacklight: To use the backlight service')
+  'xorg-xbacklight: To use the backlight service'
+)
 install="$pkgname.install"
-_commit=dfbce5baac1900ab82138a3b55947b3816d6f181  # tags/20.04.82^0
+_commit=be90e3f4b4ebbc557962edd429edfdd78d21101d  # tags/20.04.83^0
 source=(
   "git+https://github.com/pop-os/system76-driver.git#commit=${_commit}"
   'cli.patch'
@@ -75,7 +98,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Install daemons and executables
-  install -Dm755 system76-daemon system76-user-daemon -t "$pkgdir/usr/lib/$pkgname/"
+  install -Dm755 system76-{daemon,user-daemon} -t "$pkgdir/usr/lib/$pkgname/"
   install -Dm755 "$pkgname-pkexec" -t "$pkgdir/usr/bin/"
 
   # Install systemd unit files
@@ -90,7 +113,7 @@ package() {
 #   "$pkgdir/usr/lib/systemd/system-sleep/"
 
   # Install scripts and configuration
-  install -m755 system76-nm-restart system76-thunderbolt-reload "$pkgdir/usr/lib/$pkgname/"
+  install -m755 system76-{nm-restart,thunderbolt-reload} "$pkgdir/usr/lib/$pkgname/"
   install -Dm644 "com.system76.pkexec.$pkgname.policy" -t \
     "$pkgdir/usr/share/polkit-1/actions/"
 
