@@ -1,6 +1,6 @@
 pkgbase = random-rs
 	pkgdesc = Generate random numbers from CLI
-	pkgver = 0.2.0
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/one-d-wide/random-rs
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = random-rs
 	depends = gcc-libs
 	provides = random
 	conflicts = random
-	source = random-rs.tar.gz::https://github.com/one-d-wide/random-rs/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	source = random-rs.tar.gz::https://github.com/one-d-wide/random-rs/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = d316553be350547bd114bdcde1b9fcd7e28f2a1fb92ba00e414fcfe487a3a271
 
 pkgname = random-rs

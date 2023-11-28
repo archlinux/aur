@@ -1,6 +1,6 @@
 # Maintainer: onedwide <one-d-wide@protonmail.com>
 pkgname=random-rs
-pkgver=0.2.0
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Generate random numbers from CLI'
 url='https://github.com/one-d-wide/random-rs'
@@ -11,7 +11,7 @@ conflicts=('random')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('d316553be350547bd114bdcde1b9fcd7e28f2a1fb92ba00e414fcfe487a3a271')
 
 prepare() {
     cd "$pkgname-$pkgver"
