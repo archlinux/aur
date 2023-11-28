@@ -7,10 +7,10 @@
 # Contributor: 
 # 
 pkgname='dmarc_report'
-pkgdesc='Generate nice reports from one or more DMARC report files'
+pkgdesc='"Generate human readable DMARC and TLS reports from standard email reports.'
 _gitname='dmarc_report'
 
-pkgver=4.0.0
+pkgver=4.2.0
 pkgrel=1
 url="https://github.com/gene-git/dmarc_report"
 
@@ -20,7 +20,7 @@ license=(MIT)
 depends=('python>3.9' 'python-netaddr' 'python-tomli')
 
 # To build docs uncommont sphinx/texlive
-makedepends=('git' 'python-installer' 'python-build' 'python-wheel' 'python-poetry' 'rsync'
+makedepends=('git' 'python-installer' 'python-build' 'python-wheel' 'python-hatch' 'rsync'
             #'python-sphinx' 'texlive-latexextra'
             )
 _mkpkg_depends=('python>minor')
