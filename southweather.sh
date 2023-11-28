@@ -1,5 +1,5 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron23
+_ELECTRON=/usr/bin/electron27
 APPDIR=/usr/lib/southweather
 export PATH="${APPDIR}:${PATH}"
 #export LD_LIBRARY_PATH="${APPDIR}/usr/lib:${LD_LIBRARY_PATH}"
