@@ -2,10 +2,10 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=Rserve
-_pkgver=1.8-11
+_pkgver=1.8-13
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=1
 pkgdesc="Binary R server"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,9 +21,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-install.patch")
-md5sums=('53182272a555f31bf37132d7b5d724f3'
+md5sums=('1ff84f0cc4c026ccec13686bd9f17846'
          '14db30e2b5f891214adf035312aeab2a')
-sha256sums=('9dfb1d68493f8cee5d2e12a1bfa604404834e11809f4c908d65b9100a9af1b85'
+sha256sums=('7e5d312fca8029d746f60e7d9e701129561942f97dfc33b036b123f159d69a4c'
             '4dcfb5a31d71ce301c3556c434bed551753db077a95e3bd51918c2d40c34259f')
 
 prepare() {
