@@ -11,8 +11,10 @@ pkgbase = newpad-bin
 	provides = newpad=1.3.0
 	conflicts = newpad
 	source = newpad-1.3.0.zip::https://github.com/OblivionOcean/NewPad/releases/download/1.3.0/linux.zip
+	source = LICENSE-1.3.0::https://raw.githubusercontent.com/OblivionOcean/NewPad/1.3.0/License
 	source = newpad.sh
 	sha256sums = cf2934d09001055e05fbf6bcdfdfd355ef6c5ca96f8419da0a2b18f1368f152a
+	sha256sums = 5950cbd8232f1a8804591dd285cf0c27a9b5078c2d2d51030972b334664889d4
 	sha256sums = 88c08a089e6c6d073fec6010efc67916ec06e3f380f42c5326d4ab129605dd41
 
 pkgname = newpad-bin
