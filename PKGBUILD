@@ -1,6 +1,6 @@
 # Maintainer: Sosthène Guédon <dev@peertube-viewer.com>
 pkgname=peertube-viewer-rs
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="Peertube command line viewer inspired by youtube-viewer"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   'gcc-libs'
 )
 source=("https://gitlab.com/peertube-viewer/peertube-viewer-rs/-/archive/v$pkgver/peertube-viewer-rs-v$pkgver.tar.gz")
-sha256sums=('a72ecdf09abd74c993498b0c8f1e25863bbc00f44b7b57ac1ae8a301472760f7')
+sha256sums=('9a0ec51066fdf4f810928b9e173207d34d51ba422aa452fb490e07f57e96b97e')
 
 prepare() {
     cd $pkgname-v$pkgver
@@ -36,5 +36,5 @@ package() {
     install -Dm755 peertube-viewer-rs.1 $pkgdir/usr/share/man/man1/peertube-viewer-rs.1
     gzip $pkgdir/usr/share/man/man1/peertube-viewer-rs.1
 
-    install -Dm 755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+    install -Dm 755 COPYING.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-AGPL3"
 }

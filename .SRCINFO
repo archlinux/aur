@@ -1,13 +1,13 @@
 pkgbase = peertube-viewer-rs
 	pkgdesc = Peertube command line viewer inspired by youtube-viewer
-	pkgver = 1.8.4
+	pkgver = 1.8.5
 	pkgrel = 1
 	url = https://peertube-viewer.com
 	arch = any
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = https://gitlab.com/peertube-viewer/peertube-viewer-rs/-/archive/v1.8.4/peertube-viewer-rs-v1.8.4.tar.gz
-	sha256sums = a72ecdf09abd74c993498b0c8f1e25863bbc00f44b7b57ac1ae8a301472760f7
+	source = https://gitlab.com/peertube-viewer/peertube-viewer-rs/-/archive/v1.8.5/peertube-viewer-rs-v1.8.5.tar.gz
+	sha256sums = 9a0ec51066fdf4f810928b9e173207d34d51ba422aa452fb490e07f57e96b97e
 
 pkgname = peertube-viewer-rs
