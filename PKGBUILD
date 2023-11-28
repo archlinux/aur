@@ -1,6 +1,6 @@
 # Maintainer: Otto Naderer <otto.naderer@openmailbox.org>
 pkgname=irrdynamics
-pkgver=11.41d9752
+pkgver=14.44650ee
 pkgrel=1
 pkgdesc="A light-weight Bullet Physics wrapper for the Irrlicht graphics engine"
 arch=(i686 x86_64 armv7h armv6h)

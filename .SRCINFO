@@ -1,8 +1,8 @@
 pkgbase = irrdynamics
 	pkgdesc = A light-weight Bullet Physics wrapper for the Irrlicht graphics engine
-	pkgver = 11.41d9752
+	pkgver = 14.44650ee
 	pkgrel = 1
-	url = https://socialg.it/ottona/irrdynamics
+	url = https://git.socialnerds.org/otto/irrdynamics
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -15,4 +15,3 @@ pkgbase = irrdynamics
 	md5sums = SKIP
 
 pkgname = irrdynamics
-
