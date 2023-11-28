@@ -1,0 +1,24 @@
+pkgbase = r-plasmut
+	pkgdesc = Stratifying mutations observed in cell-free DNA and white blood cells as germline, hematopoietic, or somatic
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/plasmut
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = r-dplyr
+	depends = r-tibble
+	optdepends = r-biocstyle
+	optdepends = r-biocviews
+	optdepends = r-ggrepel
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-qpdf
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tidyverse
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/plasmut_1.0.0.tar.gz
+	md5sums = 8681d905157c0cbb8b46e48cbe4ecde9
+	sha256sums = 306cec1a35232cf05ed7c3d5b2e0aabbd4393347003c1dd4502d5f95e3f447ac
+
+pkgname = r-plasmut
