@@ -6,7 +6,7 @@ pkgname=('xapp-thumbnailers-common'
          'xapp-vorbiscomment-thumbnailer'
          'xapp-appimage-thumbnailer')
 pkgbase=xapp-thumbnailers
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Thumbnailers for GTK Desktop Environments"
 arch=('any')
@@ -14,7 +14,7 @@ url="https://github.com/linuxmint/xapp-thumbnailers"
 license=('GPL3')
 makedepends=('meson')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('20f3df8680cd372487d94b901b89f2df941fc323abd40ff92b1e00ad8ef7ace3')
+sha256sums=('c3b0ba1da4a7279be64f452ae507516b06cc1644bba7b14d18049dfe0f50ea09')
 
 build() {
   arch-meson "$pkgbase-$pkgver" build
