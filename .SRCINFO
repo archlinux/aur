@@ -1,0 +1,16 @@
+pkgbase = kmozillahelper-bin
+	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE
+	pkgver = 5.0.6
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = kio5
+	depends = ki18n5
+	depends = knotifications5
+	depends = kwindowsystem5
+	provides = kmozillahelper
+	conflicts = kmozillahelper
+	source = https://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/x86_64/kmozillahelper-5.0.6-16.72.x86_64.rpm
+	sha256sums = 13324d5ba8755f033d54daf81343b9ba9a0a904079fd04834707c61e7b049f33
+
+pkgname = kmozillahelper-bin
