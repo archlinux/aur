@@ -7,15 +7,14 @@
 
 pkgname=musescore3-git
 pkgver=3.7.0.r19945.ba87541
-pkgrel=1
+pkgrel=2
 pkgdesc='Create, play and print beautiful sheet music (Jojo Schmitz fork)'
 arch=(x86_64)
 url=https://musescore.org/
 license=(GPL)
 groups=(pro-audio)
-provides=(
-  musescore3
-)
+conflicts=(musescore3)
+provides=(musescore3)
 depends=(
   alsa-lib
   freetype2
