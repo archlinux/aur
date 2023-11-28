@@ -1,13 +1,13 @@
 # Maintainer: Wing Hei Chan <whmunkchan@outlook.com>
 _pkgname=tree-sitter-typst
 pkgname="$_pkgname-git"
-pkgver=v0.8.0.2.r11.g791cac4
+pkgver=v0.9.0.1.r13.g1651d6e
 pkgrel=1
 pkgdesc="A TreeSitter grammar for the Typst language."
 arch=('x86_64')
 url="https://github.com/uben0/tree-sitter-typst"
 license=('MIT')
-makedepends=('git' 'npm' 'tree-sitter-cli')
+makedepends=('git' 'npm' 'tree-sitter' 'tree-sitter-cli')
 provides=("$_pkgname")
 source=("$_pkgname::git+$url")
 b2sums=('SKIP')
