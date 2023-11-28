@@ -1,13 +1,14 @@
 pkgbase = cinnamon-settings-daemon-git
 	pkgdesc = The Cinnamon Settings daemon
-	pkgver = 4.4.0.r9.g206ce2d
+	pkgver = 6.0.0.r0.gebff319
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon-settings-daemon
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = autoconf-archive
+	makedepends = meson
+	makedepends = samurai
 	makedepends = intltool
 	makedepends = python
 	makedepends = xf86-input-wacom
@@ -26,11 +27,10 @@ pkgbase = cinnamon-settings-daemon-git
 	depends = pulseaudio-alsa
 	depends = upower
 	optdepends = cinnamon-translations: i18n
-	provides = cinnamon-settings-daemon=4.4.0.r9.g206ce2d
+	provides = cinnamon-settings-daemon=6.0.0.r0.gebff319
 	conflicts = cinnamon-settings-daemon
 	options = !emptydirs
 	source = git+https://github.com/linuxmint/cinnamon-settings-daemon.git
 	sha256sums = SKIP
 
 pkgname = cinnamon-settings-daemon-git
-

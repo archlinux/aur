@@ -3,7 +3,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=cinnamon-settings-daemon-git
-pkgver=4.4.0.r9.g206ce2d
+pkgver=6.0.0.r0.gebff319
 pkgrel=1
 pkgdesc="The Cinnamon Settings daemon"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('cinnamon-desktop>=4.4.1.r7.gf2c6cb7' 'colord' 'dbus-glib' 'libcanberra
          'libgnomekbd' 'libgudev' 'libnotify' 'librsvg' 'libwacom' 'nss' 'polkit'
          'pulseaudio-alsa' 'upower')
 optdepends=('cinnamon-translations: i18n')
-makedepends=('git' 'autoconf-archive' 'intltool' 'python' 'xf86-input-wacom')
+makedepends=('git' 'meson' 'samurai' 'intltool' 'python' 'xf86-input-wacom')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 options=('!emptydirs')
@@ -27,28 +27,22 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    autoreconf -fi
+  cd "${srcdir}"/${pkgname%-git}
+  [[ -d build ]] || mkdir build
 }
 
 build() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    ./configure --prefix=/usr \
+    cd "${srcdir}"/${pkgname%-git}/build
+    meson --prefix=/usr \
                 --sysconfdir=/etc \
                 --localstatedir=/var \
                 --libexecdir="/usr/lib/${pkgname%-git}" \
-                --enable-polkit
-
-    #https://bugzilla.gnome.org/show_bug.cgi?id=656231
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-    make
+                ..
+ 
+    samu
 }
 
 package() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}"/${pkgname%-git}/build
+    DESTDIR="${pkgdir}" samu install
 }
