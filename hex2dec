@@ -1,0 +1,33 @@
+#!/bin/bash
+
+VERSION=20231128.01
+
+# hex2dec -- Converts hexadecimal numbers to decimal numbers using only bash.
+# Copyright (C) 2023 -- dreieck (https://aur.archlinux.org/account/dreieck)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+if [ "$1" == "-V" ] || [ "$1" == "--version" ]; then
+  printf "%s\n" "${VERSION}"
+  exit 1
+fi
+
+for _hex in "$@"; do
+  if [ "$(head -c2 <<<"${_hex,,}")" != "0x" ]; then
+    _hex="0x${_hex}"
+  fi
+  printf '%02d' "${_hex}"
+done
+
+printf '\n'
