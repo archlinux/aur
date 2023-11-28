@@ -1,7 +1,7 @@
 pkgbase = simplex-chat-bin
-	pkgdesc = A 100% private-by-design chat platform for CLI (pre-compiled)
+	pkgdesc = A 100% private-by-design chat platform for the command-line (pre-compiled)
 	pkgver = 5.4.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://simplex.chat/
 	arch = x86_64
