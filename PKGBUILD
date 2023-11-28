@@ -4,7 +4,7 @@
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
 pkgname=libosmocore
-pkgver=1.9.0
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Osmocom core libraries"
 arch=('armv7h' 'i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=()
 depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools' 'libmnl' 'gnutls' 'systemd-libs' 'liburing')
 makedepends=('python')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('7c57d6c4a821381705ffe2576b43b36b667b506527f2820850506d287b7b11e0')
+sha256sums=('2c469e2984bbf730c7efd7c557f833de0fe189dc152004a9a6405b8db917019c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
