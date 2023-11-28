@@ -1,6 +1,6 @@
 pkgbase = pdf4qt
 	pkgdesc = Open source PDF editor
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://jakubmelka.github.io/
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = pdf4qt
 	provides = pdf4qt
 	conflicts = pdf4qt
 	conflicts = pdf4qt-git
-	source = pdf4qt.tar.gz::https://github.com/JakubMelka/PDF4QT/archive/refs/tags/v1.3.5.tar.gz
+	source = pdf4qt.tar.gz::https://github.com/JakubMelka/PDF4QT/archive/refs/tags/v1.3.6.tar.gz
 	source = CMakePatch.patch
 	source = FindLCMS2.cmake
 	b2sums = 48d0ec95ac2f47eccccb0bee5900b689cf2556d792b32e8c8b198c54030969e4be7b6e14c86fc94e25eaff79578874bd9d4b32e926f6802107f556dda9bc968f
