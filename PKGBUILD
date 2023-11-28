@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qtl
-_pkgver=1.62
+_pkgver=1.66
 pkgname=r-${_pkgname,,}
-pkgver=1.62
+pkgver=1.66
 pkgrel=1
 pkgdesc='Tools for Analyzing QTL Experiments'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('932f26d33a7471501b44950e3abba875507a1b09e396f2e8d59040c5a9ba1f4c')
+sha256sums=('d46a7d49f2d0875c0c1cba77c993f995e7cac4db5796dfb1c62d9fa4eb60d681')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
