@@ -1,10 +1,10 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="4a87bc9fac83a334dd2d6c4f63e9a5172b1d5fc7"
+_commit="7f3c13649959747ec57db172da355038c3521e1e"
 pkgname=readpe
 pkgver=0.83
-pkgrel=1
+pkgrel=2
 pkgdesc="PE file analysis toolkit"
 arch=("x86_64")
 url="https://github.com/mentebinaria/readpe"
@@ -15,10 +15,8 @@ makedepends=("git")
 source=(
   "readpe::git+https://github.com/mentebinaria/readpe.git#commit=$_commit"
   "fix-install-prefix.diff"
-  "fix-version-string.diff"
 )
 sha256sums=(
-  "SKIP"
   "SKIP"
   "SKIP"
 )
@@ -26,7 +24,6 @@ sha256sums=(
 prepare() {
   cd readpe
   git apply < "$srcdir/fix-install-prefix.diff"
-  git apply < "$srcdir/fix-version-string.diff"
 }
 
 build() {
