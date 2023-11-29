@@ -1,6 +1,6 @@
 pkgbase = linkding-cli
 	pkgdesc = A CLI to interact with a linkding instance
-	pkgver = 2023.10.0
+	pkgver = 2023.11.0
 	pkgrel = 1
 	url = https://github.com/bachya/linkding-cli
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = linkding-cli
 	depends = python-ruamel-yaml
 	depends = python
 	depends = python-aiolinkding
-	source = https://files.pythonhosted.org/packages/source/l/linkding_cli/linkding_cli-2023.10.0.tar.gz
-	sha512sums = 0f5385939fdf97d66abf77a7f08c8befe4c80450d04bb6c3faa48bba9fa0713bb8f6d441b1afa83dff2911e0250b92747a80818d48d407344aedcdcb5852b3d5
+	source = linkding-cli-2023.11.0.tar.gz::https://github.com/bachya/linkding-cli/archive/refs/tags/2023.11.0.tar.gz
+	sha512sums = 104d09f2b710bb17e5983293eac1f96a33e494b360555713d08f26ec259dd98ff8530c775dfd6576a54b1962981ff03365ca9d970fb123fc1146de995be8fb24
 
 pkgname = linkding-cli
