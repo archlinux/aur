@@ -1,7 +1,7 @@
 # Maintaner: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=aichat
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Using ChatGPT/GPT-3.5/GPT-4 in the terminal"
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 conflicts=('aichat-bin' 'aichat-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d55ac87b587a25acd0203a2c310250d66347b6733e33f7c4f7546b17d1a3ebe9')
+sha256sums=('3f6eede4300048312bd16c1cda2299d179040e1a3b2a1c37fc908db4b40098a7')
 
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = aichat
 	pkgdesc = Using ChatGPT/GPT-3.5/GPT-4 in the terminal
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/sigoden/aichat
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = aichat
 	depends = gcc-libs
 	conflicts = aichat-bin
 	conflicts = aichat-git
-	source = aichat-0.10.0.tar.gz::https://github.com/sigoden/aichat/archive/v0.10.0.tar.gz
-	sha256sums = d55ac87b587a25acd0203a2c310250d66347b6733e33f7c4f7546b17d1a3ebe9
+	source = aichat-0.11.0.tar.gz::https://github.com/sigoden/aichat/archive/v0.11.0.tar.gz
+	sha256sums = 3f6eede4300048312bd16c1cda2299d179040e1a3b2a1c37fc908db4b40098a7
 
 pkgname = aichat
