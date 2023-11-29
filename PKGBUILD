@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=numara-bin
 _appname=Numara
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Simple notepad calculator built on Electron, powered by Math.js"
 arch=('x86_64')
@@ -16,10 +16,10 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghyrl}/releases/download/v${pkgver}/${_appname}-${pkgver}-amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/bornova/numara-calculator/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/bornova/numara-calculator/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b01a8873517e7d56fcd4ae723b722366b2044c21e238672308d68e36ae7819ac'
+sha256sums=('56172a984b42fad1477d35e56c889419730cc76593850c2cdb7403fb086f0ec7'
             'b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5'
             '4178808864f62c8770f68a130622a2987c9ef1a0e99e5d076c91c3425e85395f')
 build() {
@@ -34,5 +34,5 @@ package() {
             -t "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
