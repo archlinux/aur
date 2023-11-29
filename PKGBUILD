@@ -2,7 +2,7 @@
 # Contributors: prettyvanilla, rabyte, Marcin Skory
 
 pkgname=alephone-marathon2
-pkgver=20230529
+pkgver=20231125
 pkgrel=1
 pkgdesc="Marathon 2 scenario data files for Aleph One"
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/releas
         "$pkgname.sh"
         "LICENSE" # TODO: clarify where this file comes from
         "$pkgname.desktop")
-sha256sums=('f33b499b1b0d786eda025540a0ce1173a840ed53657748cf5becac567e0fae55'
+sha256sums=('ba0b31e7d923dddf69eb09ea223dda9698e13e86a24b4a76c8109da307ed1833'
             '21a58e60e6e3fd6f45a38c7ced637fc0a4a1fb40c897d25b53762e17b956a69b'
             '0dde70e490e4cb3e262ed7cc4f7ef6bdc49db557a14fc8674de38b2a9a426504'
             'ca9ce9efdc95f0b3bcf05ebbca0dd27348dcb073dc9866802737ad248efaf948')
