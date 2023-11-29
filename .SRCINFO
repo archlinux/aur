@@ -1,0 +1,13 @@
+pkgbase = firefox-blocktube
+	pkgdesc = Filter and block unwanted content from YouTube
+	pkgver = 0.3.38
+	pkgrel = 1
+	url = https://github.com/amitbl/blocktube
+	arch = any
+	groups = firefox-addons
+	license = GPL3
+	depends = firefox
+	source = https://github.com/amitbl/blocktube/releases/download/v0.3.38/blocktube_firefox_selfhosted.xpi
+	sha256sums = b08b40a8d7511d03e76b3c43035187a2663f230e389543b460a0805a000b1aec
+
+pkgname = firefox-blocktube
