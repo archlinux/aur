@@ -1,4 +1,4 @@
-# Maintainer: Lonny Wong <lonnywong@qq.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tssh-bin
 pkgver=0.1.14
 pkgrel=1
