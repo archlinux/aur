@@ -4,7 +4,7 @@
 pkgname=otpclient
 _pkgname=OTPClient
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GTK+ v3 TOTP/HOTP client"
 url="https://github.com/paolostivanin/OTPClient"
 license=('GPL3')
