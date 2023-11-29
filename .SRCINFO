@@ -1,10 +1,10 @@
 pkgbase = waveterm-bin
 	pkgdesc = an open-source, cross-platform terminal for seamless workflows
 	pkgver = 0.5
-	pkgrel = 10
+	pkgrel = 11
 	url = https://www.waveterm.dev
 	arch = x86_64
-	license = GPL
+	license = Apache
 	makedepends = unzip
 	depends = pacman
 	source = https://github.com/wavetermdev/waveterm/releases/download/v0.5.0/waveterm-linux-x64-v0.5.0.zip
