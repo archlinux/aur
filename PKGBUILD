@@ -1,8 +1,9 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=flutter-engine
-pkgver=3.13.9
+pkgver=1.0.0
 pkgrel=1
+epoch=1
 pkgdesc='Engine for flutter applications.'
 url='https://github.com/flutter/engine'
 arch=('x86_64')
@@ -15,135 +16,25 @@ depends=(
 	'clang'
 	'python'
 	'unzip'
-	'gtk3')
-makedepends=(
+	'gtk3'
+	'lld'
+	'yq'
 	'gn'
 	'llvm'
-	'lld'
 	'python-httplib2'
-	'python-six'
-	'git'
-	'cmake'
-	'ninja'
-	'clang'
-	'unzip'
-)
+	'python-six')
 source=(
-	"flutter-engine::git+https://github.com/flutter/engine.git#tag=${pkgver}"
-	"git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
 	'flutter-engine-prepare.sh'
-	'flutter-engine-build.sh')
-	# 'git+https://github.com/emscripten-core/emsdk.git#tag=3.1.44'
-sha256sums=('SKIP'
-            'SKIP'
-            '6da498122a8990edc91ff1b20fcedbf197459d6d9d092fdea176f35a10ab1239'
-            '8374ed051a9f9c003a93a7bd69f6f90673cf5d5678015b05880c48843cfae88d')
-
-_srcdir="${pkgname}"
-
-_ln() { rm -rf "$2" && ln -sf "$1" "$2"; }
-
-_setup_env() {
-	export \
-		PATH+=":${srcdir}/depot_tools" \
-		DEPOT_TOOLS_UPDATE=0 \
-		VPYTHON_BYPASS='manually managed python not supported by chrome operations'
-}
-
-prepare() {
-	cat >.gclient <<EOF
-solutions = [
-	{
-		"name": "src/flutter",
-		"url": "file://${srcdir}/${_srcdir}@${pkgver}",
-		"managed": False,
-		"custom_deps": {},
-		"custom_vars": {}
-	}
-]
-EOF
-	
-	_setup_env
-	
-	#--nohooks \
-	gclient.py sync -D -R \
-		--with_branch_heads \
-		--with_tags \
-		--output-json='gclient-sync.json' \
-		--shallow
-	
-	cd 'src'
-	
-	sed -i 's|prefix = rebased_clang_dir|prefix= ""|g' 'build/toolchain/linux/BUILD.gn' # use system clang
-	sed -i 's|}/|}|g' 'build/toolchain/linux/BUILD.gn' # use system clang
-	sed -i 's|rebase|#|g' 'build/toolchain/linux/BUILD.gn'
-	
-	sed -i 's|$wayland_dir|//third_party/angle/third_party/wayland|' \
-		'third_party/angle/BUILD.gn' \
-		'third_party/angle/src/common/vulkan/BUILD.gn' \
-		'third_party/angle/src/third_party/volk/BUILD.gn'
-	
-	sed -i 's|import("//build/config/chromecast_build.gni")||' 'third_party/angle/src/tests/BUILD.gn'
-	sed -i '/-Wno-deprecated-literal-operator/d' 'build/config/compiler/BUILD.gn'
-	sed -i '/G_DEFINE_AUTOPTR_CLEANUP_FUNC(PangoLayout, g_object_unref)/d' 'flutter/shell/platform/linux/fl_accessible_text_field.cc'
-	
-	cat > 'third_party/dart/build/dart/prebuilt_dart_sdk.gni' <<-EOF
-		import("../executable_suffix.gni")
-		_dart_root = rebase_path("../..")
-		#_prebuilt_dart_exe = ""
-		#_prebuilt_dart_exe_trial = ""
-		prebuilt_dart_exe_works = true
-	EOF
-	
-	#_ln "${srcdir}/emsdk" 'buildtools/emsdk'
-}
-
-build() {
-	cd 'src'
-	
-	_setup_env
-	
-	gn gen --no-prebuilt-dart-sdk -qv 'out/host_arch_release' --args="$(cat <<-EOF
-		target_os = "linux"
-		target_cpu = "x64"
-		dart_use_crashpad = false
-		dart_use_fallback_root_certificates = true
-		dart_use_compressed_pointers = true
-		dart_vm_code_coverage = false
-		dart_debug = false
-		dart_runtime_mode = "release"
-		is_debug = false
-		exclude_kernel_service = false
-		is_clang = true
-		skia_use_piex = false
-		target_sysroot = "/"
-		verify_sdk_hash = false
-		enable_unittests = false
-		flutter_runtime_mode = "release"
-	EOF
-	)"
-	
-	sed -i 's|ldflags}|ldflags} -fuse-ld=lld|g' 'out/host_arch_release/toolchain.ninja' # use system linker
-	ninja -v -C 'out/host_arch_release'
-	
-	#export PATH+=":${srcdir}/src/flutter/lib/web_ui/dev"
-	#felt build
-}
+	'flutter-engine-build.sh'
+	'flutter-engine-base.incl')
+sha256sums=('8e186396c492eb414f574f807f88da96700e6270aa6ad86590b7fac17c5c4696'
+            '0c3f02c89162eec5d0c8ee6840dd82132f13a3f6375c7d64ef50518a7f3495e8'
+            '7459e07cbba59611d4c52a1a7237339fbec5afe919fc818274e545464ab24d3a')
 
 package() {
-	install -dm755 "${pkgdir}/opt/flutter-engine/out"
-	rm -rf 'src/out/host_arch_release/'{gen,obj,lib.unstripped,exe.unstripped}
-	cp -rf 'src/out/host_arch_release' "${pkgdir}/opt/flutter-engine/out"
-	ln -s 'host_arch_release' "${pkgdir}/opt/flutter-engine/out/arch_release"
-	ln -s 'host_arch_release' "${pkgdir}/opt/flutter-engine/out/host_release"
-	
-	#install -Dm755 'src/third_party/dart/sdk/bin/'{dart2js,dart2wasm} -t "${pkgdir}/opt/flutter-engine/out/host_arch_release/dart-sdk/bin"
-	#cp -rf 'src/out/wasm_release' "${pkgdir}/opt/flutter-engine/out"
-	#chmod 755 "${pkgdir}/opt/flutter-engine/out/wasm_release"
-	#ln -s '../host_arch_release/dart-sdk' "${pkgdir}/opt/flutter-engine/out/wasm_release/dart-sdk"
-	
-	echo "${pkgver}" > "${pkgdir}/opt/flutter-engine/version"
+	install -dm755 "${pkgdir}/opt/flutter-engine"
 	
 	install -Dm755 'flutter-engine-prepare.sh' "${pkgdir}/opt/flutter-engine/pkgbuild-prepare.sh"
 	install -Dm755 'flutter-engine-build.sh' "${pkgdir}/opt/flutter-engine/pkgbuild-build.sh"
+	install -Dm644 'flutter-engine-base.incl' "${pkgdir}/opt/flutter-engine/base.incl"
 }
