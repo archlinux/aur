@@ -1,7 +1,7 @@
 pkgbase = r-robustbase
 	pkgdesc = Basic Robust Statistics
-	pkgver = 0.99.0
-	pkgrel = 2
+	pkgver = 0.99.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=robustbase
 	arch = x86_64
 	license = GPL
@@ -22,8 +22,8 @@ pkgbase = r-robustbase
 	optdepends = r-sfsmisc
 	optdepends = r-skewt
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/robustbase_0.99-0.tar.gz
-	md5sums = 03172533b8059f9da2ae781aa236c032
-	sha256sums = 437d422eec29c4345ea65efa6b2c7c21944059a79643d74f4187e06db6e35077
+	source = https://cran.r-project.org/src/contrib/robustbase_0.99-1.tar.gz
+	md5sums = b6c0746bcd5c8368d08e86b808a96334
+	sha256sums = ae1a1bece804172e30c1aa6ee7dafb638b53123bed1e906b4863c2310cef7858
 
 pkgname = r-robustbase
