@@ -16,6 +16,8 @@ pkgbase = python-tree-sitter-lsp
 	optdepends = python-markdown-it-py
 	optdepends = python-pygments
 	optdepends = python-platformdirs
+	optdepends = python-yaml
+	optdepends = python-tomli-w
 	source = https://files.pythonhosted.org/packages/py3/t/tree_sitter_lsp/tree_sitter_lsp-0.0.4-py3-none-any.whl
 	sha256sums = dd00a7c08df1e86bd899f9bc56753d2041bbebf17b2fbead43a98296754ea904
 
