@@ -5,7 +5,7 @@ pkgver=
 pkgrel=1
 pkgdesc="PingMe is a CLI tool which provides the ability to send messages or alerts to multiple messaging platforms & email."
 url='https://pingme.lmno.pk'
-arch=("i686" "amd64" "aarch64")
+arch=("i686" "x86_64" "aarch64")
 license=("MIT")
 makedepends=('go>=1.16')
 source=(
