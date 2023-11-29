@@ -5,7 +5,7 @@
 _pkgbase='plasma-meta'
 pkgname=plasma-essential-meta
 pkgver=5.27
-pkgrel=3.7
+pkgrel=3.8
 pkgdesc='Meta-PKG to install essential (and optional) KDE Plasma packages'
 arch=(any)
 license=(None)
@@ -31,7 +31,7 @@ package() {
          kdeplasma-addons
          kscreen
          ksshaskpass
-         plasma-browser-integration
+         plasma-browser-integration-extension
          plasma-desktop
          plasma-firewall
          plasma-systemmonitor
@@ -61,8 +61,8 @@ package() {
             'khotkeys: Deprecated hotkeys management (only needed if user has legacy bindings defined in this)'
             'kinfocenter: System information application'
             'kio-admin: Manage files as administrator using the admin:// KIO protocol'
-            'kio-gdrive: Virtual filesystem access to Google Drive'
             'kio-fuse: Mount remote filesystems and access them in KDE and non-KDE apps'
+            'kio-gdrive: Virtual filesystem access to Google Drive'
             "kwrited: Local System Message Service daemon for multiuser installations (listens for 'wall' and 'write' messages)"
             'libappindicator-gtk3: (Instead of the GTK2 variant) for crisp status notifier systray icons'
             'maliit-keyboard: Virtual keyboard for Wayland'
