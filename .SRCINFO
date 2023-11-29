@@ -1,6 +1,6 @@
 pkgbase = buttercup-desktop-bin
 	pkgdesc = Cross-Platform Passwords & Secrets Vault
-	pkgver = 2.22.0
+	pkgver = 2.23.0
 	pkgrel = 1
 	url = https://buttercup.pw/
 	arch = aarch64
@@ -16,15 +16,15 @@ pkgbase = buttercup-desktop-bin
 	depends = libdbusmenu-glib
 	depends = gtk2
 	depends = dbus-glib
-	provides = buttercup-desktop=2.22.0
+	provides = buttercup-desktop=2.23.0
 	conflicts = buttercup-desktop
 	source = buttercup-desktop.sh
-	sha256sums = 4faee38e8f06e72f7a742a2bd13bf3f374275b1b85fe0381dfb609a0bbc40bf2
-	source_aarch64 = buttercup-desktop-2.22.0-aarch64.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.22.0/Buttercup-linux-arm64.AppImage
-	sha256sums_aarch64 = 14dc1efb7c2d66d3f577cdf1d9b568130997c587a2c9841d056061f03cc18e3b
-	source_armv7h = buttercup-desktop-2.22.0-armv7h.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.22.0/Buttercup-linux-armv7l.AppImage
-	sha256sums_armv7h = c59020a3ec0ba23dcb61de5cc58cf3cb8976dbec29ec6b53c573b566cc312c0b
-	source_x86_64 = buttercup-desktop-2.22.0-x86_64.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.22.0/Buttercup-linux-x86_64.AppImage
-	sha256sums_x86_64 = fb642e3d08d2c1329c357c9aaead04e95eebeb7b39e22cce794bdeb611062160
+	sha256sums = 55e302cfbe2211d2a679d4366bce082bee998b3f033af98fdfee79f9470613c8
+	source_aarch64 = buttercup-desktop-2.23.0-aarch64.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.23.0/Buttercup-linux-arm64.AppImage
+	sha256sums_aarch64 = 99470a78ecadf5a35234ed56e8509b85e011c843982cd2ab3fc592f338750fe1
+	source_armv7h = buttercup-desktop-2.23.0-armv7h.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.23.0/Buttercup-linux-armv7l.AppImage
+	sha256sums_armv7h = 567dc1c5fa58adb6a507f39ba631370d1bdfba6d91e324c0fa84fe2d9e4eceee
+	source_x86_64 = buttercup-desktop-2.23.0-x86_64.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.23.0/Buttercup-linux-x86_64.AppImage
+	sha256sums_x86_64 = 035e0303929a812453e4ac5e5e1ecf5ab3abb41a47f6d9504f41b4ba9d4ceca8
 
 pkgname = buttercup-desktop-bin

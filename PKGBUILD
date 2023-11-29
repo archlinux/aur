@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=buttercup
 pkgname="${_pkgname}-desktop-bin"
-pkgver=2.22.0
+pkgver=2.23.0
+_electronversion=22
 pkgrel=1
 pkgdesc="Cross-Platform Passwords & Secrets Vault"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -11,7 +12,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron22'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'libx11'
     'gdk-pixbuf2'
@@ -27,15 +28,16 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_githuburl}/relea
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-armv7l.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
-sha256sums=('4faee38e8f06e72f7a742a2bd13bf3f374275b1b85fe0381dfb609a0bbc40bf2')
-sha256sums_aarch64=('14dc1efb7c2d66d3f577cdf1d9b568130997c587a2c9841d056061f03cc18e3b')
-sha256sums_armv7h=('c59020a3ec0ba23dcb61de5cc58cf3cb8976dbec29ec6b53c573b566cc312c0b')
-sha256sums_x86_64=('fb642e3d08d2c1329c357c9aaead04e95eebeb7b39e22cce794bdeb611062160')
+sha256sums=('55e302cfbe2211d2a679d4366bce082bee998b3f033af98fdfee79f9470613c8')
+sha256sums_aarch64=('99470a78ecadf5a35234ed56e8509b85e011c843982cd2ab3fc592f338750fe1')
+sha256sums_armv7h=('567dc1c5fa58adb6a507f39ba631370d1bdfba6d91e324c0fa84fe2d9e4eceee')
+sha256sums_x86_64=('035e0303929a812453e4ac5e5e1ecf5ab3abb41a47f6d9504f41b4ba9d4ceca8')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -i "s|@electronversion@|${_electronversion}|" "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
