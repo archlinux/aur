@@ -1,0 +1,26 @@
+pkgbase = r-biocfhir
+	pkgdesc = Illustration of FHIR ingestion and transformation using R
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BiocFHIR
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = r-biocbaseutils
+	depends = r-dplyr
+	depends = r-dt
+	depends = r-graph
+	depends = r-jsonlite
+	depends = r-shiny
+	depends = r-tidyr
+	depends = r-visnetwork
+	optdepends = r-biocstyle
+	optdepends = r-igraph
+	optdepends = r-knitr
+	optdepends = r-rjsoncons
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocFHIR_1.4.0.tar.gz
+	md5sums = 788951417cde10ad9434dd443db47f80
+	sha256sums = 7c181c170fc085c884ec4b1bc4a53cd402e18c2a99691a2ce5feb7799827d7eb
+
+pkgname = r-biocfhir
