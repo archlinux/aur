@@ -1,7 +1,7 @@
 pkgbase = hunspell-vi-git
 	pkgdesc = Vietnamese dictionaries for Hunspell
 	pkgver = 2.2.0.r35.g507d07e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/1ec5/hunspell-vi.git
 	arch = x86_64
 	license = GPL3
