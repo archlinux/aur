@@ -3,14 +3,14 @@
 # Contributor: Uffe Jakobsen <my first name [at] my first name [dot] org>
  
 pkgname=cura-resources-materials
-pkgver=5.5.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc="Missing materials resources for Cura"
 url="https://ultimaker.com/en/products/cura-software"
 license=("AGPL")
 arch=("any")
 source=(fdm_materials-$pkgver.tar.gz::https://github.com/Ultimaker/fdm_materials/archive/${pkgver}.tar.gz)
-sha512sums=('510e592c8da16b2e084fef05f1d8eea22c487011dff2b884c9a78d19acf87b591eb227a4f0474f36c639bc02c1528079ef28c9b91fd3f0c99a277ee7fd76d556')
+sha512sums=('f29538bcabc11dec2e562e6b7fe4472e79a7f597430ed7b072d9b55706e9ae219af918df1e5165e9a6bdfdbd3821dc2fd7ccefb62b7846418307102fb5b9d273')
 
 package()
 {
