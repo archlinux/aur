@@ -13,7 +13,7 @@ pkgbase = tailor-hwcaps
 	depends = tuxedo-io
 	depends = tuxedo-keyboard
 	optdepends = tailord: Daemon for controlling the listed HW capabilities
-	provides = tailor_hwcaps
+	provides = tailor-hwcaps
 	source = tailor-hwcaps-0.2.1.tar.gz::https://github.com/AaronErhardt/tuxedo-rs//archive/refs/tags/tailor_hwcaps-v0.2.1.tar.gz
 	sha256sums = 7672f3c597b49113e6f9a2495b065109c9f74d7dd47beab866ef0c0605e7a311
 
