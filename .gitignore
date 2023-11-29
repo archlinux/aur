@@ -1,9 +1,1 @@
-
-gitignore
-Hyprdots
-hyprdots-ctl-0.5-1-x86_64.pkg.tar.zst
-pkg/hyprdots-ctl/.BUILDINFO
-pkg/hyprdots-ctl/.MTREE
-pkg/hyprdots-ctl/.PKGINFO
-pkg/hyprdots-ctl/usr/bin/Hyprdots
-src/Hyprdots
+*
