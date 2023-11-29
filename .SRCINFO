@@ -2,6 +2,7 @@ pkgbase = kmozillahelper-bin
 	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE
 	pkgver = 5.0.6
 	pkgrel = 1
+	url = https://github.com/openSUSE/kmozillahelper
 	arch = x86_64
 	license = MIT
 	depends = kio5
