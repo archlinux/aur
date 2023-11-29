@@ -24,15 +24,14 @@ fi
 
 pkgname=obs-face-tracker
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/face-tracker.1294/"
 license=("GPL2")
-depends=("obs-studio>=28" "glibc" "gcc-libs" "qt6-base")
+depends=("obs-studio>=28" "obs-face-tracker-dlib-models-git" "glibc" "gcc-libs" "qt6-base")
 makedepends=("cmake" "git")
-optdepends=("obs-face-tracker-dlib-models-git: Trained CNN model")
 options=('debug')
 source=(
   "$pkgname::git+https://github.com/norihiro/obs-face-tracker.git#tag=$pkgver"
