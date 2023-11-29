@@ -7,6 +7,7 @@ pkgver=120.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patches"
 arch=(x86_64)
+url="https://en.opensuse.org/Firefox"
 license=(
   GPL
   LGPL
