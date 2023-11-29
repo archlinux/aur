@@ -4,7 +4,7 @@
 
 pkgname=bc-gh
 pkgver=6.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of dc and POSIX bc with GNU extensions"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/gavinhoward/bc"
@@ -27,10 +27,11 @@ sha256sums=(
 )
 validpgpkeys=('FF360647C7A7147F27DAAEC1B132F881C306590A')
 
+_ltoflags='-flto=auto'
+: "${LTOFLAGS:-$_ltoflags}"
+
 build() {
   cd "bc-$pkgver"
-
-  test -n "$LTOFLAGS" || LTOFLAGS='-flto=auto'
 
   env CFLAGS="$CFLAGS -O3" \
     PREFIX=/usr ./configure.sh -p GNU -e -G -sbc.banner -sdc.tty_mode
