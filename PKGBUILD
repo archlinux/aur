@@ -1,9 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cloudpan189-go-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud 189 Command Line Client (CLI), implemented based on GO.天翼云盘命令行客户端(CLI),基于GO语言实现"
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=(
+    'aarch64'
+    'armv7h'
+    'i686'
+    'x86_64'
+)
 url="https://github.com/tickstep/cloudpan189-go"
 license=('Apache')
 provides=("${pkgname%-bin}=${pkgver}")
