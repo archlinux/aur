@@ -1,6 +1,6 @@
 pkgbase = winbox-xdg
 	pkgdesc = Mikrotik RouterOS GUI Configurator (wine). xdg base directory specification compliant version
-	pkgver = 3.38
+	pkgver = 3.39
 	pkgrel = 1
 	url = http://www.mikrotik.com
 	install = winbox-xdg.install
@@ -10,7 +10,7 @@ pkgbase = winbox-xdg
 	depends = ttf-tahoma
 	optdepends = ttf-ms-fonts: for better fonts
 	conflicts = winbox
-	source = winbox-3.38.exe::https://download.mikrotik.com/winbox/3.38/winbox64.exe
+	source = winbox-3.39.exe::https://download.mikrotik.com/winbox/3.39/winbox64.exe
 	source = winbox.desktop
 	source = winbox.png
 	source = winbox
