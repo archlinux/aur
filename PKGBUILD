@@ -2,7 +2,7 @@
 
 pkgname=('clang-github-bin')
 #pkgver=15.0.7
-_pkgver=17.0.5
+_pkgver=17.0.6
 _pkg_suffix=
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
@@ -17,7 +17,7 @@ url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 filename=clang+llvm-${_pkgver_suffix}-x86_64-linux-gnu-ubuntu-22.04
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_suffix}/${filename}.tar.xz")
-sha512sums=('c60541e471cef79f593b5c4535ac0faec0299d75d585f468af4a1c183bdeeecc69f0e0e1214e0c5cc77b255816b51e0027de7a0bd56428dc78d601318b99166a')
+sha512sums=('675328267d98d64fee680d2cdb0bfb0a7d870e7ae8bf6983202ed400996cc1d691b116ec9055eba20218271bb6beeb49f14562b0eb0b75816319daa11e59920e')
 install=clang.install
 
 prefix_path="/opt/clang"
