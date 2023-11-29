@@ -20,6 +20,10 @@ pkgver() {
 
 package() {
     cd "${srcdir}/hunspell-vi/dictionaries"
-    install -D -m644 "vi-DauMoi.dic" "${pkgdir}/usr/share/hunspell/vi_VN.dic"
-    install -D -m644 "vi-DauMoi.aff" "${pkgdir}/usr/share/hunspell/vi_VN.aff"
+
+    install -D -m644 "vi-DauCu.dic" "${pkgdir}/usr/share/hunspell/vi_VN-old.dic"
+    install -D -m644 "vi-DauCu.aff" "${pkgdir}/usr/share/hunspell/vi_VN-old.aff"
+
+    install -D -m644 "vi-DauMoi.dic" "${pkgdir}/usr/share/hunspell/vi_VN-new.dic"
+    install -D -m644 "vi-DauMoi.aff" "${pkgdir}/usr/share/hunspell/vi_VN-new.aff"
 }
