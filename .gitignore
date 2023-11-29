@@ -1,0 +1,8 @@
+coreboot/
+pkg/
+src/
+
+*.tar.bz2
+*.tar.gz
+*.tar.xz
+*.tar.zst
