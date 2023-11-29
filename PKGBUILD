@@ -81,7 +81,7 @@ build() {
   unset _JAVA_OPTIONS
   export JAVA_HOME='/usr/lib/jvm/java-11-openjdk'
   export JDK_HOME='/usr/lib/jvm/java-11-openjdk'
-  gradle7 zips
+  gradle zips
 }
 
 package_java11-openjfx() {
