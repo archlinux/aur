@@ -1,7 +1,7 @@
 # Maintainer: TurboPunk <turbopunk@telenet.be>
 # Contributor: José San Juan <josesj@gmail.com>
 pkgname=snapmaker-luban
-pkgver=4.8.2
+pkgver=4.10.1
 pkgrel=1
 pkgdesc="Snapmaker Luban is an easy-to-use 3-in-1 software tailor-made for Snapmaker machines."
 url="https://github.com/Snapmaker/Luban"
@@ -43,10 +43,8 @@ build() {
   export PATH=$PATH:node_modules/.bin
   cd ${srcdir}/Luban
   nvm use 16
-  npm install --cache "${srcdir}/npm-cache" -g npm@latest
   npm install --cache "${srcdir}/npm-cache"
   npm run build
-  #npm run electron-builder
   npm run build:linux-x64
 }
 
