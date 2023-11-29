@@ -1,16 +1,16 @@
 # Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
-# Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=perl-array-diff
 pkgver=0.09
-pkgrel=1
+pkgrel=2
 _author="N/NE/NEILB"
 _perlmod="Array-Diff"
 pkgdesc="Array::Diff - Find the differences between two arrays"
 arch=('any')
-url="https://metacpan.org/release/array-diff/"
+url='https://metacpan.org/pod/Array::Diff'
 license=('GPL' 'PerlArtistic')
-depends=(perl)
+depends=(perl-algorithm-diff
+perl-class-accessor-fast)
 checkdepends=()
 makedepends=()
 provides=()
