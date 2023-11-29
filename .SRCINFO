@@ -1,0 +1,36 @@
+pkgbase = xterminal-bin
+	pkgdesc = 不仅是强大的SSH工具，更提供本地控制台，以及更多即将推出的开发相关功能，让您专注于创造卓越的代码
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://www.terminal.icu/
+	arch = x86_64
+	license = custom
+	depends = libcups
+	depends = alsa-lib
+	depends = libxdamage
+	depends = libxfixes
+	depends = at-spi2-core
+	depends = pango
+	depends = python
+	depends = nss
+	depends = libxkbcommon
+	depends = libx11
+	depends = libxrandr
+	depends = cairo
+	depends = gtk3
+	depends = java-runtime
+	depends = libxext
+	depends = libdrm
+	depends = libxcb
+	depends = libxcomposite
+	depends = mesa
+	depends = nspr
+	depends = expat
+	provides = xterminal=1.4.1
+	conflicts = xterminal
+	source = xterminal-1.4.1.deb::https://cdn-cn.xterminal.cn/xterminal/XTerminal-1.4.1-linux-amd64.deb
+	source = LICENSE.html
+	sha256sums = 13d8b2dbb5c50b704d97a174cc5fbbbb260d2a5ca0a035f1a6bd56cad8036e11
+	sha256sums = 8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af
+
+pkgname = xterminal-bin
