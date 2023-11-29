@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.36.0.640.g9074436862
+pkgver=0.37.0.51.gc7d8e155d2
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -53,7 +53,6 @@ depends=(
   'sndio' 'libsndio.so'
   'uchardet'
   'v4l-utils'
-  'spirv-cross'
   'davs2'
   'ffnvcodec-headers'
   'wayland-protocols'
@@ -219,9 +218,7 @@ prepare() {
     '-Dgl-x11=enabled'
     '-Djpeg=enabled'
     '-Dsdl2-video=enabled'
-    '-Dshaderc=enabled'
     '-Dsixel=enabled'
-    '-Dspirv-cross=enabled'
     '-Dplain-gl=enabled'
     '-Dvdpau=enabled'
     '-Dvdpau-gl-x11=enabled'
