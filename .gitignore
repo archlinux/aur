@@ -1,0 +1,4 @@
+*.pkg.*
+src/
+pkg/
+kubectl-argo-rollouts
