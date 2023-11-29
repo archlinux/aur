@@ -2,8 +2,8 @@
 
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
-pkgver=0.17.1
-pkgrel=3
+pkgver=0.17.2
+pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('x86_64')
 url="https://gitlab.com/coolercontrol/coolercontrol"
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'python' 'liquidctl' 'pyside6' 'qt6-svg' 'python-a
          'python-matplotlib' 'python-numpy' 'python-setproctitle' 'python-jeepney' 'python-requests'
          'python-fastapi' 'uvicorn' 'python-orjson' 'python-dataclass-wizard' 'gcc-libs' 'glibc'
          'python-colorlog' 'python-dateutil' 'python-pillow' 'python-pydantic' 'python-urllib3')
-makedepends=('python-build' 'python-wheel' 'python-installer' 'python-poetry' 'cargo')
+makedepends=('python-build' 'python-wheel' 'python-installer' 'python-poetry' 'cargo' 'npm' 'nvm')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('nvidia-utils: NVIDIA GPU support')
 provides=("$pkgname")
@@ -20,13 +20,36 @@ conflicts=("$pkgname" coolero)
 # lto is handled by cargo and can conflict with makepkg settings
 options=(!lto)
 source=("https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('579a36d3b6e424e8a06f7f1497231c8688e1a18241fc145afb661df7aa428af0')
+sha256sums=('61b6af7b014fc16641490ab7572d7885dea8e0f2cf01de426c745b1a226adaab')
+
+_ensure_local_nvm() {
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+
+  export NVM_DIR="${srcdir}/$pkgname-$pkgver/coolercontrol-ui/.nvm"
+  # The init script returns 3 if version specified
+  # in ./.nvrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
+prepare() {
+  _ensure_local_nvm
+  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-ui"
+  nvm install 18.18.2
+}
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver/coolercontrol-gui"
   python -m build --wheel --no-isolation
   cd "${srcdir}/$pkgname-$pkgver/coolercontrol-liqctld"
   python -m build --wheel --no-isolation
+  # This is the new UI in preview. The above Python coolercontrol-gui package will be removed with the next release
+  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-ui"
+  _ensure_local_nvm
+  npm install
+  npm run build
+  cp -r dist/* "${srcdir}/$pkgname-$pkgver/coolercontrold/resources/app/"
   cd "${srcdir}/$pkgname-$pkgver/coolercontrold"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
