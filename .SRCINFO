@@ -1,6 +1,6 @@
 pkgbase = hyprdots-ctl
 	pkgdesc = CLI for Hyprdots Configurations
-	pkgver = 0.5
+	pkgver = 0.5003
 	pkgrel = 1
 	url = https://github.com/kRHYME7/KhingDom
 	arch = x86_64
