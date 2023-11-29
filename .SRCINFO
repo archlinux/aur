@@ -1,5 +1,5 @@
 pkgbase = mingw-w64-python310-bin
-	pkgdesc = Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)
+	pkgdesc = The Python programming language (native MSVC version) (mingw-w64)
 	pkgver = 3.10.11
 	pkgrel = 1
 	url = http://www.python.org/
