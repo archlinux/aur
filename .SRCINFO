@@ -1,13 +1,13 @@
 pkgbase = r-ncdf4
 	pkgdesc = Interface to Unidata netCDF (Version 4 or Earlier) Format Data Files
-	pkgver = 1.21
+	pkgver = 1.22
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ncdf4
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = netcdf
-	source = https://cran.r-project.org/src/contrib/ncdf4_1.21.tar.gz
-	sha256sums = 2f5ae7def382c595c66b6ed0ea0529f8337108eb73de39939f9762f3fb21b30d
+	source = https://cran.r-project.org/src/contrib/ncdf4_1.22.tar.gz
+	sha256sums = b9a9a2004f4c008d665afbe617f4e4b45e57dc70e303c8ec341aa5a51fbb1210
 
 pkgname = r-ncdf4

@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ncdf4
-_pkgver=1.21
+_pkgver=1.22
 pkgname=r-${_pkgname,,}
-pkgver=1.21
+pkgver=1.22
 pkgrel=1
 pkgdesc='Interface to Unidata netCDF (Version 4 or Earlier) Format Data Files'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   netcdf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2f5ae7def382c595c66b6ed0ea0529f8337108eb73de39939f9762f3fb21b30d')
+sha256sums=('b9a9a2004f4c008d665afbe617f4e4b45e57dc70e303c8ec341aa5a51fbb1210')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
