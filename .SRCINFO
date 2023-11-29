@@ -1,6 +1,6 @@
 pkgbase = spacemesh-bin
 	pkgdesc = Spacemesh App (Smesher + Wallet)
-	pkgver = 1.2.8
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = https://spacemesh.io/
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = spacemesh-bin
 	depends = electron25
 	depends = hicolor-icon-theme
 	depends = ocl-icd
-	provides = spacemesh=1.2.8
+	provides = spacemesh=1.2.9
 	conflicts = spacemesh
 	source = spacemesh.sh
 	sha256sums = c73bbcc54adb1003fe11400766b85b050e56c58ebb56c82a85ed2b4aec33cfa7
-	source_aarch64 = spacemesh-1.2.8-aarch64.deb::https://storage.googleapis.com/smapp/v1.2.8/spacemesh_app_1.2.8_arm64.deb
-	sha256sums_aarch64 = 28eb3ded7770a5a99d9a74db0c584d7765f4b2a81693db74fd7bb7ee5e213314
-	source_x86_64 = spacemesh-1.2.8-x86_64.deb::https://storage.googleapis.com/smapp/v1.2.8/spacemesh_app_1.2.8_amd64.deb
-	sha256sums_x86_64 = 0c26529d1460f856f854f7b4528b4c70f3b4465e7fbf2455d672caa9d79e0389
+	source_aarch64 = spacemesh-1.2.9-aarch64.deb::https://storage.googleapis.com/smapp/v1.2.9/spacemesh_app_1.2.9_arm64.deb
+	sha256sums_aarch64 = 16dbae06b6485fb51de96453edc6e32050f07c03eff569c09e6856d10460fe5f
+	source_x86_64 = spacemesh-1.2.9-x86_64.deb::https://storage.googleapis.com/smapp/v1.2.9/spacemesh_app_1.2.9_amd64.deb
+	sha256sums_x86_64 = 9acf9db438e17e040642ed8e73d3b843e322aac18430ee7529eb90c1d92ec205
 
 pkgname = spacemesh-bin
