@@ -1,6 +1,6 @@
 pkgbase = decibels
 	pkgdesc = Play audio files
-	pkgver = 0.1.4
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/vixalien/decibels
 	arch = any
@@ -11,8 +11,12 @@ pkgbase = decibels
 	makedepends = meson
 	makedepends = typescript
 	depends = gjs
+	depends = gst-plugins-bad-libs
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gtk4
 	depends = libadwaita
-	source = git+https://github.com/vixalien/decibels.git#commit=0b130b2bbc919d5f266b131f917c4bdd34b069e0
+	source = git+https://github.com/vixalien/decibels#tag=0.1.7
 	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git
 	sha256sums = SKIP
 	sha256sums = SKIP
