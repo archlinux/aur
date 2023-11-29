@@ -1,10 +1,10 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="qualcoder-bin"
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="Qualitative data analysis for text, images, audio and video written in python3 and Qt6"
-url="https://github.com/ccbogel/QualCoder"
+url="https://qualcoder.wordpress.com/"
 license=("MIT")
 arch=("x86_64")
 provides=("qualcoder")
@@ -13,10 +13,10 @@ depends=("python>=3.7" "vlc")
 optdepends=("ffmpeg: speech to text and waveform image")
 source=("qualcoder.png"
         "qualcoder.desktop"
-        "QualCoder-$pkgver::$url/releases/download/$pkgver/QualCoder-$pkgver-Ubuntu-22.04")
-sha256sums=('f587124e59e9bc49741627a260862b5f26b9a899bad826008d4946ddb252539a'
-            'e09cdab17e0f6b868c621bc9b580ce9de02371b188800ca9a794a1ed34412bc7'
-            '16f0ae61b679f23db3432b73e56784e3c1c4d6c8e1087ed50131d166e2060384')
+        "QualCoder-$pkgver::https://github.com/ccbogel/QualCoder/releases/download/$pkgver/QualCoder-$pkgver-Ubuntu22")
+b2sums=('8d60ab1d9c9ebebbd54a480ab5ffb3af8a795b97722c1bf3fb9e6d34ae11f749d9ed49f351e0f11f7c0f249ec0b80cbf48782cab629443b17a2443fef9dfd89a'
+        'eff60218c9f7aa0675210df3d46c5f31cf345475a66a3c0ca46742442d301367a0448f3e54cdfb688fe32f3399c7830f9bb4753195d7f89e3df062f7dd2d0d6f'
+        'e2eacb0fe5c7221279f71c15e1d3b4fabc0a3d4f3ac90877c44c1182d5422dbf78dbf5d5b718f614e13f1756c75603c1d34d58a320b9b515d68df61c725162e9')
 
 package(){
  install -D -m 755 "QualCoder-$pkgver" "$pkgdir/usr/bin/qualcoder"
