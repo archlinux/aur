@@ -1,41 +1,54 @@
-# Maintainer: QiE2035 <qie2035@qq.com>
+# Maintainer:
+# Contributor: QiE2035 <qie2035@qq.com>
 
+# options
+: ${_pkgtype:=non-opt}
+
+# basic info
 _pkgname=logseq-desktop
-pkgname=$_pkgname-non-opt
-pkgver=0.8.4
+pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgver=0.10.0
 pkgrel=1
-pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. Use the system electron without opt."
-arch=("x86_64")
+pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL3')
-depends=('electron19')
-provides=(
-    "logseq-desktop"
-)
-conflicts=(
-    "logseq-desktop-git"
-    "logseq-desktop-bin"
-    "logseq-desktop"
-)
+arch=("x86_64")
+
+depends=('electron')
+makedepends=('asar')
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="Logseq-linux-x64"
 source=(
-    "https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
-    "${_pkgname}.desktop"
-    "logseq"
+    "$url/releases/download/$pkgver/$_pkgsrc-$pkgver.zip"
 )
 sha256sums=(
-    'c21b1bf3e8d13704bde52d1ba010268eed410ae81357e13565dc7ddd016820d6'
-    '6e834466132551c721ba2ffe92fc0f81056b3151fe6b5f0f469ece937f9b7e84'
-    '7d74cb642b050d987c5d534717fe3b49de5d31c0b0d7aed9747bfb81441f4059'
+    'ca7ac5022e3317444562e027566b5afb0641db9421ce199ca8964b07f2512b37'
 )
 
+prepare() {
+    cat <<'EOF' > "$_pkgname.sh"
+#!/bin/sh
+exec electron /usr/lib/logseq-desktop/app.asar
+EOF
+
+    gendesk -q -f -n --categories "Office" --pkgname="${_pkgname}" --pkgdesc="$pkgdesc" --name="Logseq" --exec="${_pkgname}"
+}
+
 package() {
-    cd "$srcdir/Logseq-linux-x64"
     # desktop file
-    install -Dm644 $srcdir/$_pkgname.desktop $pkgdir/usr/share/applications/logseq.desktop
+    install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/logseq-desktop.desktop"
+
     # icons
-    install -Dm644 "$srcdir/Logseq-linux-x64/resources/app/icons/logseq.png" "$pkgdir/usr/share/pixmaps/logseq.png"
-    install -d ${pkgdir}/usr/lib/${_pkgname}
-    cp -r $srcdir/Logseq-linux-x64/resources/app/* ${pkgdir}/usr/lib/${_pkgname}/
-    install -d ${pkgdir}/usr/bin
-    install -Dm755 "$srcdir/logseq" "${pkgdir}/usr/bin/logseq"
+    install -Dm644 "$_pkgsrc/resources/app/icons/logseq.png" \
+        -t "$pkgdir/usr/share/pixmaps/"
+
+    # asar
+    install -dm755 "$pkgdir/usr/lib/$_pkgname"
+    asar pack "$_pkgsrc/resources/app" "$pkgdir/usr/lib/$_pkgname/app.asar"
+
+    # script
+    install -Dm755 "logseq-desktop.sh" "$pkgdir/usr/bin/logseq"
 }
