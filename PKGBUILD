@@ -1,6 +1,6 @@
 # Maintainer: haagch <christoph.haag@collabora.com>
 pkgname=perfetto
-pkgver=37
+pkgver=39.0
 pkgrel=1
 pkgdesc="System profiling, app tracing and trace analysis"
 arch=(x86_64)
@@ -11,8 +11,8 @@ makedepends=('git' 'python' 'clang')
 provides=('perfetto')
 conflicts=('perfetto')
 options=()
-source=("https://android.googlesource.com/platform/external/perfetto/+archive/refs/heads/releases/v37.x.tar.gz")
-md5sums=('59a79ef6a9018ada655ec2b6c1640ce7')
+source=("https://android.googlesource.com/platform/external/perfetto/+archive/refs/heads/releases/v$pkgver.tar.gz")
+b2sums=('56a39ad83aa8df00914ef4d5cd9e0ce7a1c1df611d4237396336d97d28bb93b61d5e040cb57d6a32e255e651d70aa047efc352936232a36b97ac76fa6b1bf967')
 
 build() {
 	tools/install-build-deps
