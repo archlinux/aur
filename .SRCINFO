@@ -1,0 +1,37 @@
+pkgbase = hihat-git
+	pkgdesc = A minimalist offline music library player for desktop, built on Electron, React, and Material UI.
+	pkgver = latest.r2.gcef2ba1
+	pkgrel = 1
+	url = https://github.com/johnnyshankman/hihat
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = git
+	makedepends = nodejs>=14
+	makedepends = npm>=7
+	depends = hicolor-icon-theme
+	depends = libcups
+	depends = libxcomposite
+	depends = libdrm
+	depends = mesa
+	depends = libxkbcommon
+	depends = alsa-lib
+	depends = nspr
+	depends = expat
+	depends = libxrandr
+	depends = cairo
+	depends = gtk3
+	depends = libx11
+	depends = libxcb
+	depends = nss
+	depends = pango
+	depends = libxfixes
+	depends = libxext
+	depends = libxdamage
+	depends = at-spi2-core
+	provides = hihat
+	conflicts = hihat
+	source = hihat::git+https://github.com/johnnyshankman/hihat.git
+	sha256sums = SKIP
+
+pkgname = hihat-git
