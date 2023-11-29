@@ -1,6 +1,6 @@
 pkgbase = vulkan-nouveau-git
 	pkgdesc = Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (Git version)
-	pkgver = 23.3.branchpoint.r1649.g827bbe4
+	pkgver = 23.3.branchpoint.r1716.gec43c20
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mesa/mesa
 	install = vulkan-nouveau-git.install
@@ -33,13 +33,11 @@ pkgbase = vulkan-nouveau-git
 	source = nvk-memmodel.patch
 	source = nvk-memory-budget.patch
 	source = nvk-pipeline-cache.patch
-	source = nvk-vulkan11.patch
 	source = LICENSE
 	sha512sums = SKIP
 	sha512sums = e7d3152d918a7c8d438bd58f1efffb199842034dee876a60ea9aea5fa9d6de558bdb1c708572ad7cd2b5436bafbd2e945ce18a1ade560dfeba6b1359549a0e74
 	sha512sums = 770d195f571aabc0e9dddf254576c29bbfff34ff0af0edfb6ede9864d25ef12247f2f5afd770d5ca70e8a9ac900623b92892211d73bd8bd4075d95c012367742
 	sha512sums = f5e63974d7cb17e2a96396a8003fb799e39c36d09baa9389fd60cdcba0ce682f40b51c85172e416b53959e4bf14631fcd8ea0f262fbf8f8e83dfd990e2116f18
-	sha512sums = 4996e4e78b8bb25ae8d066022d65f6400efc0565932d5062ae896269b7b74c1a8d2cc74d2c38fe3ba83e0b7c14357730a160d775f7d6e9254d349efc165b4a4e
 	sha512sums = f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7
 
 pkgname = vulkan-nouveau-git
