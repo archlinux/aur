@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Crocotile 3D
+Comment=Tile-based
+Exec=crocotile3d
+Icon=crocotile3d
+Terminal=false
+StartupNotify=false
+Categories=Application;
