@@ -3,9 +3,9 @@
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
-_pkgver=1.0.0-beta.4.12.34
+_pkgver=1.0.0-beta.4.13.31
 pkgver="${_pkgver/-/.}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Highly automated and intuitive digital audio workstation'
 arch=(x86_64 i686)
 url="https://www.zrythm.org"
@@ -45,6 +45,8 @@ depends=(
 	sratom
 	vamp-plugin-sdk
 	xxhash
+	pcre
+	zix
 )
 makedepends=(git meson cmake ruby-sass help2man sassc)
 optdepends=('realtime-privileges: allow memory locking')
@@ -52,7 +54,7 @@ options=('debug')
 source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc}
         "git+https://github.com/drobilla/zix.git"
         0001-gcc13-fixes.patch)
-sha256sums=('f1c6193b884d42478c05bb200ffcee122eec317efbdecf1ffcc2174d0b502b9b'
+sha256sums=('bf503d4091d7d4ad06d1980cb9cff1fd3de18d1a268cc81578468cf0b2c30965'
             'SKIP'
             'SKIP'
             'bb93eea519020e491f85c38ab3901ac530bbf747c4e7acc3aaea39f402091653')
@@ -88,4 +90,6 @@ package() {
 		CHANGELOG.md README.md THANKS TRANSLATORS \
 		-t "$pkgdir/usr/share/doc/$pkgname/"
 	meson install -C build --destdir="$pkgdir"
+
+	rm -rf "$pkgdir"{/usr/include/zix-0/,/usr/lib/pkgconfig/zix-0.pc}
 }
