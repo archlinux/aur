@@ -3,7 +3,7 @@
 # Old Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
  
 pkgname=python-cairo-git
-pkgver=1.24.0.r1.gcdb800f
+pkgver=1.25.0.r21.ge44fe88
 pkgrel=1
 pkgdesc="Python bindings for the cairo graphics library. Git version."
 url="http://www.cairographics.org/"
