@@ -2,9 +2,9 @@
 # Contributor: Elijah Gregg <lovetocode999@ctrl-c.club>
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
-pkgver=1.0.0.beta.4.13.31.r0.g5cf78f5a3
+pkgver=4.13.31.r9.g472e168fc
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
@@ -28,8 +28,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v1.0.0.beta.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
