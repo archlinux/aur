@@ -1,8 +1,8 @@
 pkgbase = linux-clang
 	pkgdesc = Linux
-	pkgver = 6.5.6.arch1
+	pkgver = 6.6.3.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.5.6-arch1
+	url = https://github.com/archlinux/linux/commits/v6.6.3-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -19,12 +19,11 @@ pkgbase = linux-clang
 	makedepends = llvm
 	makedepends = lld
 	options = !strip
-	source = https://github.com/archlinux/linux/archive/refs/tags/v6.5.6-arch1.tar.gz
+	source = https://github.com/archlinux/linux/archive/refs/tags/v6.6.3-arch1.tar.gz
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
-	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	b2sums = SKIP
 	b2sums = SKIP
 
