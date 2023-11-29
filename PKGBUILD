@@ -100,7 +100,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=6.5
-pkgver=${_major}.12
+pkgver=${_major}.13
 _branch=6.x
 xanmod=1
 _revision=
@@ -141,9 +141,9 @@ for _patch in ${_patches[@]}; do
 done
 sha256sums=('7a574bbc20802ea76b52ca7faf07267f72045e861b18915c5272a98c27abf884' # kernel
             'SKIP'                                                             # kernel signature
-            '1796ca1cf26f065c53f9af68baa2dc4dbcd71e8fb7817c0ed9fa61df62801879' # xanmod patch
+            '9056062aee2045b5cd68c1a043d96dc8dd4793aa87ac394a103f369fbf64d7fd' # xanmod patch
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
-            '665ce96f0a22b982b0b5b2df6cd6f640e3fa561c518e40092e6bdd51bd7306b8' # 0001-bore.patch
+            'd3a185427f26dd3356b80290f4648717e548c54614035bd3259c360c17a7d0ca' # 0001-bore.patch
             'baf8d2d1b0701326ee6ba0ffeabec2b5d716b6e136b836f60069cf6937527165' # 0002-constgran-vanilla-max.patch
             '21e98d300d48f7d087bfae7bf5fba9fb320e2d6cec20856a29dfeb34a6ff7c3b' # 0003-glitched-cfs.patch
             '7a308df306e585ca230f724ec5f397e5273f662ebc6ae93a4b5f6d6780a41c3c' # 0004-glitched-cfs-additions.patch
