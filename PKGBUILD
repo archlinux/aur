@@ -2,7 +2,7 @@
 
 pkgname="gex-git"
 _pkgname="gex"
-pkgver=0.4.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Install Gecko Browser extensions through the command line."
 arch=("any")

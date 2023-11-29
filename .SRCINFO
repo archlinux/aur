@@ -1,6 +1,6 @@
 pkgbase = gex-git
 	pkgdesc = Install Gecko Browser extensions through the command line.
-	pkgver = 0.4.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/bojanmilevski/gex.git
 	arch = any
