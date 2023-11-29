@@ -12,7 +12,7 @@ pkgbase = tailor-gui
 	depends = tailord
 	depends = gtk4
 	depends = libadwaita
-	provides = tailor_gui
+	provides = tailor-gui
 	source = tailor-gui-0.2.3::git+https://github.com/AaronErhardt/tuxedo-rs/#commit=74b863e
 	sha256sums = SKIP
 

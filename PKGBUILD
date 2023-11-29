@@ -8,7 +8,7 @@ url="https://github.com/AaronErhardt/tuxedo-rs/"
 license=('GPL2')
 groups=('tuxedo-rs')
 provides=(
-  'tailor_gui'
+  'tailor-gui'
 )
 depends=(
   'tailord'
