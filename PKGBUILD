@@ -1,13 +1,13 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=hexdino-git
 _name=hexdino
-pkgver=r155.6397896
+pkgver=r223.d136ee2
 pkgrel=1
 pkgdesc="A hex editor with vim like keybindings written in Rust."
 arch=('x86_64' 'i686')
 url="https://github.com/Luz/hexdino"
 license=('MIT')
-depends=()
+depends=('glibc' 'gcc-libs')
 makedepends=('git' 'rust' 'cargo')
 provides=('hexdino')
 conflicts=('hexdino')
@@ -24,6 +24,7 @@ package() {
   cd "$srcdir/$_name"
   mkdir -p "$pkgdir/usr/bin"
   install -o root -g root -m 755 target/release/hexdino "$pkgdir/usr/bin"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = hexdino-git
 	pkgdesc = A hex editor with vim like keybindings written in Rust.
-	pkgver = r155.6397896
+	pkgver = r223.d136ee2
 	pkgrel = 1
 	url = https://github.com/Luz/hexdino
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = hexdino-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
 	provides = hexdino
 	conflicts = hexdino
 	options = !emptydirs
