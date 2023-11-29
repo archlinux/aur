@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies @ gmail dot com>
 pkgname=b-em-git
 _pkgname=b-em
-pkgver=r1842.464bb82
+pkgver=r1856.b5134db
 pkgrel=1
 pkgdesc="BBC Micro emulator - git version"
 arch=('x86_64')
