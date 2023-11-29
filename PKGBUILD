@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=snippet-notes
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="效能笔记，一款快速记录及搜索功能增强的本地笔记记录软件.A local note-taking software with quick recording and enhanced search capabilities."
 arch=('x86_64')
 url="https://github.com/xunxun10/snippet-notes"
@@ -10,13 +10,13 @@ conflicts=("${pkgname}")
 depends=(
     'electron22'
     'python'
-    'make'
 )
 makedepends=(
     'gendesk'
     'nodejs>=18'
     'npm>=9'
-    'imagemagick'
+    'git'
+    'make'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}"
@@ -30,13 +30,12 @@ build() {
     npm install  --cache "${srcdir}/npm-cache"
     sed "s|--win|--linux AppImage|g" -i package.json
     npm run dist
-    convert "${srcdir}/${pkgname}-${pkgver}/res/img/${pkgname//notes/note}.ico" "${srcdir}/${pkgname}.png"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
     cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/res/img/${pkgname//es/e}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

@@ -1,19 +1,19 @@
 pkgbase = snippet-notes
 	pkgdesc = 效能笔记，一款快速记录及搜索功能增强的本地笔记记录软件.A local note-taking software with quick recording and enhanced search capabilities.
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://github.com/xunxun10/snippet-notes
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	makedepends = nodejs>=18
 	makedepends = npm>=9
-	makedepends = imagemagick
+	makedepends = git
+	makedepends = make
 	depends = electron22
 	depends = python
-	depends = make
 	conflicts = snippet-notes
-	source = snippet-notes-0.3.2::git+https://github.com/xunxun10/snippet-notes.git#tag=0.3.2
+	source = snippet-notes-0.3.3::git+https://github.com/xunxun10/snippet-notes.git#tag=0.3.3
 	source = snippet-notes.sh
 	sha256sums = SKIP
 	sha256sums = 4a3f3c28c8ee36f5b374e74cea9b25d7dabd87aa8bb965c553fe050522fad633
