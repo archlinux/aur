@@ -7,15 +7,15 @@
 # Contributor: dieghen89 <dieghen89 at gmail dot com>
 
 pkgname=musique
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
 url='https://flavio.tordini.org/musique'
 _giturl='https://github.com/flaviotordini'
 license=('GPL3')
-depends=('qt5-declarative' 'taglib' 'mpv')
-makedepends=('git' 'qt5-tools')
+depends=('qt6-declarative' 'taglib' 'mpv')
+makedepends=('git' 'qt6-tools')
 optdepends=('finetune')
 source=("git+${_giturl}/musique.git#tag=${pkgver}"
         "git+${_giturl}/http.git"
@@ -45,7 +45,8 @@ prepare() {
 }
 
 build() {
-  qmake-qt5 $pkgname PREFIX=/usr
+  PATH="$PATH:/usr/lib/qt6/bin"
+  qmake6 $pkgname PREFIX=/usr
   make
 }
 
