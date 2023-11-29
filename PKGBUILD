@@ -3,7 +3,7 @@ pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.0~alpha8
 pkgver_=3.0.0-alpha8
-pkgrel=1
+pkgrel=2
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
@@ -18,6 +18,9 @@ sha256sums=('f62c38123213d1c1fe2eb8910b0ffbdc1cac56273c2520f3b64a553363190b9d')
 
 
 build() {
+  cmake -S ${pkgbase}-${pkgver_} -B build-test -DDAMASK_SOLVER=test -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Performance
+  cmake --build build-test --parallel
+
   cmake -S ${pkgbase}-${pkgver_} -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Performance
   cmake --build build-grid --parallel
 
@@ -26,6 +29,16 @@ build() {
 
   cd ${pkgbase}-${pkgver_}/python
   python -m build --wheel --no-isolation
+}
+
+check() {
+  mpirun -np 2 build-test/src/DAMASK_test
+
+  example_dir=${pkgbase}-${pkgver_}/examples/grid
+  mpirun -np 2 build-grid/src/DAMASK_grid -l ${example_dir}/tensionX.yaml -m ${example_dir}/material.yaml -g ${example_dir}/20grains16x16x16.vti
+
+  PYTHONPATH=${pkgbase}-${pkgver_}/python:${PYTHONPATH}
+  python -c "import damask;print(damask.__version__)"
 }
 
 package_damask-grid() {
