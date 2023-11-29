@@ -2,11 +2,11 @@
 
 _gcc_targets="i386 x64 arm aarch64 riscv ppc64 nds32le"
 _is_clang_enabled=1
-_commit='4ce01dc859b08a7e495a3c7e40b0df9079e591f1'
+_commit='2ff24090376ae8eaf963696de0e20e3bc8bbe54f'
 
 pkgbase='coreboot-toolchain'
 pkgname=()
-pkgver=4.21
+pkgver=4.22
 pkgrel=1
 pkgdesc='Used to build coreboot'
 url='https://www.coreboot.org'
@@ -16,11 +16,11 @@ depends=() # TODO
 makedepends=('gcc-ada' 'git' 'python') # TODO
 options=('buildflags')
 sources_gcc=(
-  'https://ftpmirror.gnu.org/gmp/gmp-6.2.1.tar.xz'
-  'https://ftpmirror.gnu.org/mpfr/mpfr-4.2.0.tar.xz'
+  'https://ftpmirror.gnu.org/gmp/gmp-6.3.0.tar.xz'
+  'https://ftpmirror.gnu.org/mpfr/mpfr-4.2.1.tar.xz'
   'https://ftpmirror.gnu.org/mpc/mpc-1.3.1.tar.gz'
   'https://ftpmirror.gnu.org/gcc/gcc-11.4.0/gcc-11.4.0.tar.xz'
-  'https://ftpmirror.gnu.org/binutils/binutils-2.40.tar.xz'
+  'https://ftpmirror.gnu.org/binutils/binutils-2.41.tar.xz'
 )
 sources_clang=(
   'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/llvm-16.0.6.src.tar.xz'
@@ -36,11 +36,11 @@ source=(
   'https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/nasm-2.16.01.tar.bz2'
 )
 hashes_gcc=(
-  'fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2'
-  '06a378df13501248c1b2db5aa977a2c8126ae849a9d9b7be2546fb4a9c26d993'
+  'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
+  '277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2'
   'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
   '3f2db222b007e8a4a23cd5ba56726ef08e8b1f1eb2055ee72c1402cea73a8dd9'
-  '0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1'
+  'ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450'
 )
 hashes_clang=(
   'e91db44d1b3bb1c33fcea9a7d1f2423b883eaa9163d3d56ca2aa6d2f0711bc29'
