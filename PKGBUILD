@@ -22,8 +22,4 @@ package() {
     cd "${srcdir}/hunspell-vi/dictionaries"
     install -D -m644 "vi-DauMoi.dic" "${pkgdir}/usr/share/hunspell/vi_VN.dic"
     install -D -m644 "vi-DauMoi.aff" "${pkgdir}/usr/share/hunspell/vi_VN.aff"
-
-    install -d -m755 "${pkgdir}/usr/share/myspell/dicts"
-    ln -sv "/usr/share/hunspell/vi_VN.dic" "${pkgdir}/usr/share/myspell/dicts/vi_VN.dic"
-    ln -sv "/usr/share/hunspell/vi_VN.aff" "${pkgdir}/usr/share/myspell/dicts/vi_VN.aff"
 }
