@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.37.6.r0.gd8ce6ed8
+pkgver=1.37.16.r0.g76ce47d9
+_electronversion=26
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
 arch=('any')
@@ -8,7 +9,7 @@ url="https://electerm.html5beta.com/"
 _ghurl="https://github.com/electerm/electerm"
 license=('MIT')
 depends=(
-    'electron26'
+    "electron${_electronversion}"
     'lib32-glibc'
     'lib32-gcc-libs'
     'python'
@@ -17,7 +18,7 @@ depends=(
 makedepends=(
     'npm'
     'git'
-    'nvm'
+    'nodejs'
     'gendesk'
     'python-setuptools'
 )
@@ -26,26 +27,23 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '897293c8ec9302f5b69d333f2467a597c6010cee782f0df6c27489cf13345ae7')
+            '77191a31f26538ee07706723db533a5d829878e1aa2e838c63dc03a2bf6c3c12')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-_ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 18
-    nvm use 18
-}
 build() {
-    _ensure_local_nvm
     gendesk -q -f -n --categories "System;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
+    sed "s|@electronversion@|${_electronversion}|" -i "${srcdir}/${pkgname%-git}.sh"
     cd "${srcdir}/${pkgname%-git}"
+    sed "s|pre-test|prepare-test|g" -i package.json
     sed -e "60s|snap|tar.gz|g" -e '57,59d' -i electron-builder.json
     sed '16,19d' -i build/bin/build-linux-deb-tar.js
     rm -rf build/bin/build-linux-rpm-snap.js
-    sed "s|pre-test|prepare-test|g" -i package.json
-    npm i --cache "${srcdir}/npm-cache"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    npm install
     npm run prepare-build
     npm run release
 }
