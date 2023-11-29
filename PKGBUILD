@@ -1,7 +1,7 @@
 # Maintainer: Your name <bros at brocode dot sh>
 
 pkgname=podlet
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Generate podman quadlet (systemd-like) files from a podman command "
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom: MPL-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ceee228b0f967882db20e5209d1070b5d0ed8e8c6e3a59e7299e9e3b17d0d353')
+sha256sums=('a4af2ff54e5b3f05a4124891fff768469193abc21f64095156dd0e03c3377e79')
 
 build() {
   cd "$pkgname-$pkgver"

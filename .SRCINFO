@@ -1,13 +1,13 @@
 pkgbase = podlet
 	pkgdesc = Generate podman quadlet (systemd-like) files from a podman command
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/k9withabone/podlet
 	arch = x86_64
 	license = custom: MPL-2.0
 	makedepends = cargo
 	depends = gcc-libs
-	source = podlet-0.2.0.tar.gz::https://github.com/k9withabone/podlet/archive/v0.2.0.tar.gz
-	sha256sums = ceee228b0f967882db20e5209d1070b5d0ed8e8c6e3a59e7299e9e3b17d0d353
+	source = podlet-0.2.1.tar.gz::https://github.com/k9withabone/podlet/archive/v0.2.1.tar.gz
+	sha256sums = a4af2ff54e5b3f05a4124891fff768469193abc21f64095156dd0e03c3377e79
 
 pkgname = podlet
