@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.0.0_devel.179925.0e481bf4632.d41d8cd
+pkgver=24.0.0_devel.181206.ec43c20182b.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -149,7 +149,7 @@ build () {
        -D valgrind=disabled \
        -D tools=[] \
        -D zstd=enabled \
-       -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
+       -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av1enc,vp9dec \
        -D buildtype=plain \
        --wrap-mode=nofallback \
        -D prefix=/usr \
