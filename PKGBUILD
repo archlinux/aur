@@ -4,26 +4,44 @@
 
 pkgname=platformio-git
 _pkgname=platformio-core
-pkgver=v6.1.10.r12.g00409fc0
+pkgver=v6.1.11.r20.gb238c55e
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="http://platformio.org/"
 license=('GPL')
 provides=('platformio')
-depends=('python-setuptools'
-         'python-bottle'
-         'python-click'
-         'python-colorama'
-         'python-pyserial'
-         'python-requests'
-         'python-semantic-version'
-         'python-tabulate'
-         'python-pyelftools'
-         'python-marshmallow')
+depends=(
+  'python'
+  'python-bottle'
+  'python-click'
+  'python-colorama'
+  'python-pyserial'
+  'python-requests'
+  'python-semantic-version'
+  'python-tabulate'
+  'python-pyelftools'
+  'python-marshmallow'
+  'python-zeroconf'
+  'python-aiofiles'
+  'python-ajsonrpc'
+  'python-starlette'
+  'python-wsproto'
+  'uvicorn'
+)
 optdepends=('energia: For MSP430 based projects'
-            'arduino: For Arduino based projects')
-makedepends=('git')
+            'arduino: For Arduino based projects'
+	'platformio-core-udev: Udev rules for PlatformIO supported boards/devices'
+	'python-click-completion: for shell completions'
+	'python-shellingham: for shell completions'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 source=('git+https://github.com/platformio/platformio-core.git')
 md5sums=('SKIP')
 
