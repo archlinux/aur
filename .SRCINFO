@@ -1,6 +1,6 @@
 pkgbase = wander-bin
 	pkgdesc = An efficient terminal application/TUI for interacting with your HashiCorp Nomad cluster.
-	pkgver = 0.12.6
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/robinovitch61/wander
 	license = MIT
@@ -8,13 +8,13 @@ pkgbase = wander-bin
 	conflicts = wander
 	provides = wander
 	arch = aarch64
-	source_aarch64 = https://github.com/robinovitch61/wander/releases/download/v0.12.6/wander_0.12.6_Linux_arm64.tar.gz
-	sha256sums_aarch64 = e3a86d8551c5e30d3bce609c1db450d4b85729a5e781a44b409968d75be179d1
+	source_aarch64 = https://github.com/robinovitch61/wander/releases/download/v0.13.0/wander_0.13.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 2b26ba3f417af81d372ff31ce4d7c4198b6b7dbc45aea3a4c407f8a6559b15af
 	arch = i686
-	source_i686 = https://github.com/robinovitch61/wander/releases/download/v0.12.6/wander_0.12.6_Linux_i386.tar.gz
-	sha256sums_i686 = 770e54f29abb57a75e541cf03fd5f71b837eac3e3a491c9f2362b90dbcefa914
+	source_i686 = https://github.com/robinovitch61/wander/releases/download/v0.13.0/wander_0.13.0_Linux_i386.tar.gz
+	sha256sums_i686 = 83464b01d541c2984d3f1bc7f3c1efcd28dcf9dacd355aa8675385867ff68b13
 	arch = x86_64
-	source_x86_64 = https://github.com/robinovitch61/wander/releases/download/v0.12.6/wander_0.12.6_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 6b34dcfa818f24eeea1fdd7fcac1dbb2b0b983a998aa4a6c56cce1d3057954f5
+	source_x86_64 = https://github.com/robinovitch61/wander/releases/download/v0.13.0/wander_0.13.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = bd112362c3fc4815ead27fe2af6e5e8b6dc0e052875d5cab7f0dac32c51e292e
 	
 pkgname = wander-bin
