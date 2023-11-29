@@ -1,6 +1,6 @@
 pkgbase = mybsmart
 	pkgdesc = Una piattaforma proprietaria di servizi e contenuti digitali per la scuola
-	pkgver = 7.5.21
+	pkgver = 7.5.30
 	pkgrel = 1
 	url = https://bsmart.it
 	arch = i686
@@ -18,9 +18,9 @@ pkgbase = mybsmart
 	depends = libsecret
 	source = LICENSE
 	sha256sums = 2ca3e6e7951873c7d82829299181838bb7cacb5c2ad372d7ce752d6d10543b39
-	source_i686 = https://s3-eu-west-1.amazonaws.com/res.bsmart.it/mybsmart_desktop/releases/production_v2/linux/MybSmart-7.5.21-ia32.deb
-	sha256sums_i686 = db4505f049bec348f17828274c03f6686555ce1cc48d51ae0e45fa8680306500
-	source_x86_64 = https://s3-eu-west-1.amazonaws.com/res.bsmart.it/mybsmart_desktop/releases/production_v2/linux/MybSmart-7.5.21-x64.deb
-	sha256sums_x86_64 = bde712d06f2fb9fcf7626d64036418bb4dafdcf0887cda18dff45958980255b9
+	source_i686 = https://s3-eu-west-1.amazonaws.com/res.bsmart.it/mybsmart_desktop/releases/production_v2/linux/MybSmart-7.5.30-ia32.deb
+	sha256sums_i686 = 49ca437ac1cd10de3ae8c1afa6f7d75304516e520d96bf40096f91b49538ff0a
+	source_x86_64 = https://s3-eu-west-1.amazonaws.com/res.bsmart.it/mybsmart_desktop/releases/production_v2/linux/MybSmart-7.5.30-x64.deb
+	sha256sums_x86_64 = e029540bafcebe517b3be0d3e3baa0a37f93473d2f5ff7f30ab54654ebb10707
 
 pkgname = mybsmart
