@@ -1,0 +1,15 @@
+pkgbase = plasma-browser-integration-extension-meta
+	pkgdesc = Meta-PKG to install web browser extension(s) for KDE Plasma desktop integration
+	pkgver = 1
+	pkgrel = 1
+	url = https://community.kde.org/Plasma/Browser_Integration
+	arch = any
+	license = None
+
+pkgname = plasma-browser-integration-extension-meta
+	depends = plasma-browser-integration
+	optdepends = chromium-extension-plasma-integration: Google Chrome / Chromium / Vivaldi extension
+	optdepends = firedragon-extension-plasma-integration: Firedragon addon
+	optdepends = firefox-extension-plasma-integration-bin: Firefox addon
+	optdepends = librewolf-extension-plasma-integration: Librewolf addon
+	provides = plasma-browser-integration-extension
