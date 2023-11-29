@@ -1,8 +1,8 @@
 pkgbase = hyprdots-ctl
 	pkgdesc = CLI for Hyprdots Configurations
-	pkgver = 0.5006
+	pkgver = 0.5007
 	pkgrel = 1
-	url = https://github.com/kRHYME7/KhingDom
+	url = https://github.com/prasanthrangan/hyprdots
 	arch = x86_64
 	license = unknown
 	depends = hyprland-git
