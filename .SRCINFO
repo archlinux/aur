@@ -1,6 +1,6 @@
 pkgbase = xivlauncher-rb
 	pkgdesc = Custom launcher for Final Fantasy XIV Online with RB Patches!
-	pkgver = 1.0.6.6
+	pkgver = 1.0.6.7
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/rankynbass/XIVLauncher.Core/tree/RB-patched
@@ -46,7 +46,7 @@ pkgbase = xivlauncher-rb
 	depends = jxrlib
 	optdepends = steam
 	options = !strip
-	source = XIVLauncher.Core::git+https://github.com/rankynbass/XIVLauncher.Core.git#tag=b31ddec3cd4bf2973927d57697b4346bfc9f9748
+	source = XIVLauncher.Core::git+https://github.com/rankynbass/XIVLauncher.Core.git#tag=d8423a2397d05826695a8a682d4b38ab49070436
 	source = XIVLauncher.desktop
 	sha512sums = SKIP
 	sha512sums = 1d500eaa424fd484d96441252f6efa4239fedc37dc4a465c5a2d59478c82cb2d03913ad2fe2fb8bf140430cbe75b5b82dcad0a8b062790253401e8729a58f4df
