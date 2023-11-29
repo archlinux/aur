@@ -1,13 +1,13 @@
 pkgbase = ruby-rspec-puppet
 	pkgdesc = RSpec tests for your Puppet manifests
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/puppetlabs/rspec-puppet
 	arch = any
 	license = MIT
 	depends = ruby-rspec
-	noextract = rspec-puppet-4.0.0.gem
-	source = https://rubygems.org/downloads/rspec-puppet-4.0.0.gem
-	sha256sums = 8bfb475b728cf952c91b76f55aab789aeee365f29159a5d010edbd5199eb9794
+	noextract = rspec-puppet-4.0.1.gem
+	source = https://rubygems.org/downloads/rspec-puppet-4.0.1.gem
+	sha256sums = 0d909a8fad70c3bdb3318645926bf77c56cfc32f3f9c01d0d626586345ccb456
 
 pkgname = ruby-rspec-puppet
