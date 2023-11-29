@@ -30,7 +30,7 @@ _sudachidict_date=20230927
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5291.102
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -53,7 +53,7 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
 for dict in "${_dict[@]}"; do
-  source+=( "https://github.com/phoepsilonix/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2" )
+  source+=( "https://github.com/phoepsilonix/mozcdic-ut-${dict}/releases/download/latest/mozcdic-ut-${dict}.txt.tar.bz2")
   source+=( "LICENSE-${dict}::https://github.com/phoepsilonix/mozcdic-ut-${dict}/raw/main/LICENSE" )
 done
 sha512sums=('SKIP'
@@ -64,8 +64,7 @@ sha512sums=('SKIP'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
             '4dc9fc2d95e23729381bfe12fe6544ec3ea5729114e6d0539af93f5cd1e5a0a4d3196bfcf07c67aec0b19a25b92bf3c65c5e3805415bf81b5d13f537fa4f2c0d'
-            '2b190999698fe64d1e00b1cfa250f8615bfe7e839baf05cd42055c9aefb8d380ada7a57224ff454d96ac75e8bd1d5031ecd34befd70846339793aed0a69f1780'
-            '8e32c97b62257d953bbc1e7cd15821df8a7c13eb97f0b9cdf569d9f474a58f9870c159bdd8fece581d0e9c57c399436604b493eb78b35f0edeff9dcc90c5be69'
+            '3b1354b8e6b25ea8024bb91098828855b558c0ee9086800b2d44ef6dac023949432418c47d943d59c6ce315c0d292ef784423cd6046dfb906d4afc4c14d11dd3'
             'ef2dd0a27b09ca3a68aa7a3ad45b3720d57efd0505e631fa643e7aea98455c1114760f9aa5e91701bb5c118ae3074719709eeed55010b305d861464ad1b51c3a')
 
 pkgver() {
