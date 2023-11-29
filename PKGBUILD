@@ -6,7 +6,7 @@
 # with this PKGBUILD.
 
 pkgname=vmware-vmrc
-pkgver=12.0.4
+pkgver=12.0.5
 pkgrel=1
 pkgdesc='VMware Remote Console'
 arch=('x86_64')
@@ -16,12 +16,12 @@ depends=()
 optdepends=('vmware-keymaps')
 
 source=(
-    "VMware-Remote-Console-$pkgver-21740317.x86_64.bundle"
+    "VMware-Remote-Console-$pkgver-22744838.x86_64.bundle"
     'bootstrap'
     'config'
 )
 
-sha256sums=('e96f032b33bd02cd1fe94f66e6d86011efdeaa5b0c26fae3bc22e5f718bb3c01'
+sha256sums=('022e6a4a2766e80c6fb15224c71d19b180d31780e9aab665cdd48e58b3e1531d'
             '22282e8643d8a20e63773435161e5a5d01c6acce53aa81f27a4d20f111acd228'
             'c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4')
 
