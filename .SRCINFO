@@ -1,0 +1,18 @@
+pkgbase = stylelint-lsp
+	pkgdesc = Stylelint Language Server
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/bmatcuk/stylelint-lsp
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = pnpm
+	depends = nodejs
+	depends = stylelint
+	depends = typescript
+	source = git+https://github.com/bmatcuk/stylelint-lsp.git#tag=v2.0.0?signed
+	validpgpkeys = BAAFE045FFA3EF32E994C33F744A40ED60D7626F
+	b2sums = SKIP
+
+pkgname = stylelint-lsp
