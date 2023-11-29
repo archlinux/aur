@@ -72,7 +72,7 @@ validate_postgres_password() {
     done
 }
  
-# Comprobar si el usuario es root.
+# Usuario no es root?
 if [ "$EUID" -ne 0 ]; then
     declare -r data=/var/lib/postgres/data \
         pg_hba=/var/lib/postgres/data/pg_hba.conf \
@@ -135,7 +135,6 @@ local\tall\t\t$USER\t\t\t\t\tscram-sha-256/" $pg_hba
     # Activar entorno virtual pgadmin4.
     source /opt/venvs/pgadmin4/bin/activate
     open_server &
-    #[ $? -eq 0 ] && xdg-open http://127.0.0.1:5050
     pgadmin4
 else
     translate_str "Error: You can't perform this operation as a superuser."\
