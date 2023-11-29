@@ -7,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.13.5.plus2
+pkgver=3.13.9.plus1
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -43,14 +43,14 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=485490294855313ac85fc4cb46371b2b6922c527
+_tag=5ed7a9fcc1178b1c0e6a70a05d674dadc155f235
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
         "git+https://github.com/ValveSoftware/openvr.git"
         "git+https://github.com/Joshua-Ashton/vkroots.git"
-        "git+https://github.com/nothings/stb.git"
+        "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
         "git+https://github.com/Joshua-Ashton/reshade.git"
         "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
         )
@@ -79,9 +79,13 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # make stb.wrap use our local clone
-  sed -i "s|https://github.com/nothings/stb.git|$srcdir/stb|" "subprojects/stb.wrap"
+  rm -rf subprojects/stb
+  git clone "$srcdir/stb" subprojects/stb
+  cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
 
-  meson subprojects download
+  # make displayinfo use our local clone, subproject points to old commit, so overwrite it manually
+  rm -rf subprojects/libdisplay-info
+  git clone "$srcdir/libdisplay-info" subprojects/libdisplay-info
 }
 
 pkgver() {
