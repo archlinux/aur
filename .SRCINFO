@@ -1,6 +1,6 @@
 pkgbase = bc-gh
 	pkgdesc = Implementation of dc and POSIX bc with GNU extensions
-	pkgver = 6.7.2
+	pkgver = 6.7.3
 	pkgrel = 1
 	url = https://github.com/gavinhoward/bc
 	arch = aarch64
@@ -15,12 +15,12 @@ pkgbase = bc-gh
 	provides = bc
 	conflicts = bc
 	options = lto
-	source = bc-gh-6.7.2.tar.xz::https://github.com/gavinhoward/bc/releases/download/6.7.2/bc-6.7.2.tar.xz
-	source = bc-gh-6.7.2.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/6.7.2/bc-6.7.2.tar.xz.sig
+	source = bc-gh-6.7.3.tar.xz::https://github.com/gavinhoward/bc/releases/download/6.7.3/bc-6.7.3.tar.xz
+	source = bc-gh-6.7.3.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/6.7.3/bc-6.7.3.tar.xz.sig
 	validpgpkeys = FF360647C7A7147F27DAAEC1B132F881C306590A
-	sha256sums = 0888d4739caa855c40eab655ae562e900fe7f45a7308ee2feeb95416ec13c7f1
-	sha256sums = babd19357ee69f4bc3ced9a65eba6c71e7e937ecd831dda89e4a4e7f029ca1c2
-	sha512sums = 8614277acd6b0b923a37fd84a22d868b33a44fcfdcc05e5e7a1637b7fd3c03e80bb9f578db9799c1c6d74a30c5c26bf53bd8f2328d7cb7f16f9e105ca98ff8a3
-	sha512sums = dd8330aea5b6637f76d0fb632de4299bd333fed1e3b2dd6770ae96c383b2e4065a9ca6af24df9439ee27627e1e381c540f5245fb3e569d97ab4f5dd7491c0c26
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = bc-gh
