@@ -1,13 +1,13 @@
 pkgbase = roon-tui
 	pkgdesc = A Roon Remote for the terminal
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/TheAppgineer/roon-tui
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	source = git+https://github.com/TheAppgineer/roon-tui.git#tag=0.1.0
+	source = git+https://github.com/TheAppgineer/roon-tui.git#tag=0.2.0
 	sha256sums = SKIP
 
 pkgname = roon-tui
