@@ -1,0 +1,18 @@
+pkgbase = perl-datetimex-iso8601-interval
+	pkgdesc = Provides a means of parsing and manipulating ISO-8601 intervals and durations. (via MetaCPAN distribution)
+	pkgver = 0.004
+	pkgrel = 1
+	url = https://metacpan.org/release/DateTimeX-ISO8601-Interval
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-datetime
+	depends = perl-datetime-format-iso8601
+	depends = perl-params-validate
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/B/BP/BPHILLIPS/DateTimeX-ISO8601-Interval-0.004.tar.gz
+	sha256sums = 5776b7e38bdc6d695ccfa2796ed212a0a1963b3c858894eb9e378a061adb9a73
+
+pkgname = perl-datetimex-iso8601-interval
