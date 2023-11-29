@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Moroz <lukaszmoroz@gmail.com>
 
 pkgname=gnome-shell-extension-alt-tab-scroll-workaround
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc="Temporary fix for a bug that buffers the scroll between different windows (e.g., Chrome and VS Code)"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/lucasresck/gnome-shell-extension-alt-tab-scroll-workarou
 license=('GPL3')
 depends=('gnome-shell')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lucasresck/gnome-shell-extension-alt-tab-scroll-workaround/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('fc41c68a05e764432f6ff1a70aedf965607d81b9fe48f29c1fe231f016daf184365579279f42b88e91b069da5eede438d4bfb4d68e8a3e3ff9ea7f98a034f415')
+sha512sums=('15928fbffa18ebc3a1b80a07400aa94d11da6e4f4ee1ab4d53b47144743d80bc03ca42afba267b66a7841484b37e68f94e2f76e0bdf363cb42afd41516030822')
 
 package() {
     cd "$pkgname-$pkgver"
