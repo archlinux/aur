@@ -1,27 +1,32 @@
 pkgbase = hyprland-plugins-git
 	pkgdesc = Official plugins for hyprland
-	pkgver = r43.16dc292
+	pkgver = r92.b225987
 	pkgrel = 1
 	url = https://github.com/hyprwm/hyprland-plugins
 	arch = x86_64
 	arch = aarch64
 	license = BSD
-	makedepends = hyprland
+	makedepends = hyprland-git
 	makedepends = git
 	source = hyprland-plugins-git::git+https://github.com/hyprwm/hyprland-plugins.git
 	sha256sums = SKIP
 
-pkgname = borders-plus-plus-git
+pkgname = hyprland-plugin-borders-plus-plus-git
 	pkgdesc = Hyprland plugin that allows you to add one or two additional borders to your windows
-	provides = borders-plus-plus
-	conflicts = borders-plus-plus
+	provides = hyprland-plugin-borders-plus-plus
 
-pkgname = csgo-vulkan-fix-git
+pkgname = hyprland-plugin-csgo-vulkan-fix-git
 	pkgdesc = Hyprland plugin that allows you to pick any resolution in CS:GO when using Vulkan
-	provides = csgo-vulkan-fix
-	conflicts = csgo-vulkan-fix
+	provides = hyprland-plugin-csgo-vulkan-fix
 
-pkgname = hyprbars-git
+pkgname = hyprland-plugin-hyprbars-git
 	pkgdesc = Hyprland plugin that adds simple title bars to windows
-	provides = hyprbars
-	conflicts = hyprbars
+	provides = hyprland-plugin-hyprbars
+
+pkgname = hyprland-plugin-hyprtrails-git
+	pkgdesc = Hyprland plugin that adds trails behind windows
+	provides = hyprland-plugin-hyprtrails
+
+pkgname = hyprland-plugin-hyprwinwrap-git
+	pkgdesc = Hyprland plugin that acts like Xwinwrap.
+	provides = hyprland-plugin-hyprwinwrap
