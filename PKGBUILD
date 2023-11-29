@@ -5,7 +5,7 @@
 _pkgbase='plasma-meta'
 pkgname=plasma-essential-meta
 pkgver=5.27
-pkgrel=3.10
+pkgrel=3.11
 pkgdesc='Meta-PKG to install essential (and optional) KDE Plasma packages'
 arch=(any)
 license=(None)
@@ -70,7 +70,7 @@ package() {
             'oxygen-sounds: Default KDE sound theme'
             'oxygen: KDE Oxygen style (legacy)'
             'phonon-qt5-mpv: Alternative Phonon backend (official recommended backend is phonon-qt5-vlc)'
-            'phonon-qt5-vlc: Recommended Phonon backend; the GStreamer variant is very old and unmaintained, discontinued'
+            'phonon-qt5-vlc: Recommended Phonon backend (instead of Phonon-GStreamer, which is very old and discontinued)'
             'plasma-disks: Monitors S.M.A.R.T. capable drives for imminent failure'
             'plasma-nm: NetworkManager connection configuration & desktop integration'
             'plasma-pa: PulseAudio volume management applet'
