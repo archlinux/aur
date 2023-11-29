@@ -4,7 +4,7 @@ pkgbase=python-asdf_wcs_schemas
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="World Coordinate System (WCS) ASDF schemas "
 arch=('any')
@@ -18,10 +18,9 @@ makedepends=('python-setuptools-scm'
 #            'python-sphinx-asdf'
 #            'python-mistune>=3')
 checkdepends=('python-pytest'
-              'python-asdf_coordinates_schemas'
-              'python-asdf')
+              'python-asdf_coordinates_schemas')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('066ba654b2d7972f8ec78095f1a54cf2')
+md5sums=('fed2b1265d96ce36ff082cb573220667')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
