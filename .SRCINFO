@@ -1,7 +1,7 @@
 pkgbase = libvirt-xen
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
 	pkgver = 9.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://libvirt.org/
 	arch = x86_64
 	license = LGPL
@@ -27,6 +27,7 @@ pkgbase = libvirt-xen
 	depends = libxml2
 	depends = numactl
 	depends = polkit
+	depends = libnbd
 	depends = xen
 	optdepends = libvirt-storage-gluster: Gluster storage backend
 	optdepends = libvirt-storage-iscsi-direct: iSCSI-direct storage backend
