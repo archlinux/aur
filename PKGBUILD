@@ -71,7 +71,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.6.2
+pkgver=6.6.3
 _upstream=arch1
 pkgrel=1
 arch=(x86_64)
@@ -108,10 +108,10 @@ validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
-sha256sums=('73d4f6ad8dd6ac2a41ed52c2928898b7c3f2519ed5dbdb11920209a36999b77e'
+sha256sums=('28edfc3d4f90cd738f2a20f5a2d68510268176d6111f6278d8f495edfd9495a7'
             'SKIP'
-            'd2060f5045a30832d70a7747c780f1358a9f4cfc1811c8ccaeaab9c027b59ee4'
-            '2268d290ccfc805ca1f934eed73610065a7b12080769d5371693901854e69fa4'
+            'f77aab33af83c635e0445c6e424922cdc054efe2430c8c831f8bead23e08ba88'
+            '4e58f0bab792e42b818037bee7696fa9bd0e65ec2df8db079e97782fc2da6c70'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
             'cc82cd1635a0613f6b5abd4a0095a4b64285d015a9d0738a16baf791f23eab57')
 
