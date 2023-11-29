@@ -1,6 +1,6 @@
 pkgbase = node-hp-scan-to
 	pkgdesc = Little command line program that allow to send scan from device to computer. For this purpose, the original HP Windows application's interaction with the device has been reverse engineered.
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 0
 	url = https://github.com/manuc66/node-hp-scan-to
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = node-hp-scan-to
 	makedepends = jq
 	makedepends = moreutils
 	depends = nodejs
-	noextract = node-hp-scan-to-1.4.0.tgz
+	noextract = node-hp-scan-to-1.4.1.tgz
 	backup = etc/node-hp-scan-to/default.json
-	source = node-hp-scan-to-1.4.0.tgz::https://registry.npmjs.org/node-hp-scan-to/-/node-hp-scan-to-1.4.0.tgz
-	sha512sums = b22f2af6d8ced9c45bd8407aeee35b61e33e589a0b59bb58e7b4b9b26ae5cd31313b354ea9e1c9baf20db3f517441656cd45b957a42d871d9a92acfc702c7189
+	source = node-hp-scan-to-1.4.1.tgz::https://registry.npmjs.org/node-hp-scan-to/-/node-hp-scan-to-1.4.1.tgz
+	sha512sums = d15f305a0159cd273892d4d670ce821f6d64becd998e43df82f712b1c37b184489fa85eb4da3eb73381c9d8389e5f6d24cb4630004ba9b9a8c17d99b9c841ec9
 
 pkgname = node-hp-scan-to

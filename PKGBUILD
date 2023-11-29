@@ -1,5 +1,5 @@
 pkgname=node-hp-scan-to
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=0
 pkgdesc="Little command line program that allow to send scan from device to computer. For this purpose, the original HP Windows application's interaction with the device has been reverse engineered."
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=('npm' 'jq' 'moreutils')
 backup=('etc/node-hp-scan-to/default.json')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=(${pkgname}-${pkgver}.tgz)
-sha512sums=('b22f2af6d8ced9c45bd8407aeee35b61e33e589a0b59bb58e7b4b9b26ae5cd31313b354ea9e1c9baf20db3f517441656cd45b957a42d871d9a92acfc702c7189')
+sha512sums=('d15f305a0159cd273892d4d670ce821f6d64becd998e43df82f712b1c37b184489fa85eb4da3eb73381c9d8389e5f6d24cb4630004ba9b9a8c17d99b9c841ec9')
 
 build() {
     cat > "$srcdir/$pkgname.service" <<EOF
