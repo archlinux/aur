@@ -1,6 +1,6 @@
 pkgbase = phpunit-bin
 	pkgdesc = PHPUnit is a programmer-oriented testing framework for PHP.
-	pkgver = 10.0.19
+	pkgver = 10.4.2
 	pkgrel = 1
 	url = https://phpunit.de
 	install = phpunit.install
@@ -9,11 +9,11 @@ pkgbase = phpunit-bin
 	depends = php>=8.1.0
 	provides = phpunit
 	conflicts = phpunit
-	source = https://phar.phpunit.de/phpunit-10.0.19.phar
-	source = https://phar.phpunit.de/phpunit-10.0.19.phar.asc
-	source = LICENSE-10.0.19::https://raw.githubusercontent.com/sebastianbergmann/phpunit/10.0.19/LICENSE
+	source = https://phar.phpunit.de/phpunit-10.4.2.phar
+	source = https://phar.phpunit.de/phpunit-10.4.2.phar.asc
+	source = LICENSE-10.4.2::https://raw.githubusercontent.com/sebastianbergmann/phpunit/10.4.2/LICENSE
 	validpgpkeys = D8406D0D82947747293778314AA394086372C20A
-	sha256sums = 18bee0d28a393916348c2ad18af546dbb416fb2775a8fde0c82b7e45dd62f9ab
+	sha256sums = cba152b9ef2aa67890d1b03a237b868f5257f540c36a94f521901642a42baa3c
 	sha256sums = SKIP
 	sha256sums = 3f62dc64839f2fbf8aebfee011cdc34b66aaf403f2b43f5cf5803e242048688d
 
