@@ -1,0 +1,22 @@
+diff --git a/Fluida/fluida_ui.c b/Fluida/fluida_ui.c
+index d24a8a0..441e283 100644
+--- a/Fluida/fluida_ui.c
++++ b/Fluida/fluida_ui.c
+@@ -491,7 +491,7 @@ void plugin_port_event(LV2UI_Handle handle, uint32_t port_index,
+                 LV2_ATOM_OBJECT_FOREACH(obj, ob) {
+                     if (ob->key == uris->atom_String) {
+                         ps->instruments = (char **)realloc(ps->instruments, (i+1) * sizeof(char *));
+-                        if (asprintf(&ps->instruments[i],(char*)LV2_ATOM_BODY(&ob->value))) {
++                        if (asprintf(&ps->instruments[i], "%s", (char*)LV2_ATOM_BODY(&ob->value))) {
+                             i++;
+                         }
+                     }
+@@ -504,7 +504,7 @@ void plugin_port_event(LV2UI_Handle handle, uint32_t port_index,
+                 LV2_ATOM_OBJECT_FOREACH(obj, ob) {
+                     if (ob->key == uris->atom_String) {
+                         ps->instruments = (char **)realloc(ps->instruments, (i+1) * sizeof(char *));
+-                        if (asprintf(&ps->instruments[i],(char*)LV2_ATOM_BODY(&ob->value))) {
++                        if (asprintf(&ps->instruments[i], "%s", (char*)LV2_ATOM_BODY(&ob->value))) {
+                             i++;
+                         }
+                     }

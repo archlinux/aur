@@ -1,3 +1,4 @@
+libxputty-fix-asprintf.patch
 pkg/
 src/
 *.tar.*
