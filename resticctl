@@ -1,0 +1,102 @@
+#! /bin/bash
+#
+# resticctl
+# Copyright (C) 2023 Óscar García Amor <ogarcia@connectical.com>
+#
+# Distributed under terms of the GNU GPLv3 license.
+#
+
+version="1.0"
+help="""Usage: resticctl {COMMAND}
+                 [--help|--version]
+
+Commands:
+  backup  Perform backup
+  mount   Mount backup in a temp dir
+  *       Pass command directly to restic with the config loaded"""
+
+default_config_location="/etc/resticctl"
+restic="${RESTIC_COMMAND:-/usr/bin/restic}"
+
+# Locate config dir and config file
+locate_config() {
+  if [ "${RESTICCTL_CONFIGURATION:-null}" == "null" ]; then
+    local _xdg_config_dir="${XDG_CONFIG_HOME:-~/.config}/resticctl"
+    if [ -r "${_xdg_config_dir}/resticctl.conf" ]; then
+      config_dir="${_xdg_config_dir}"
+    else
+      config_dir="${default_config_location}"
+    fi
+    config_file="${config_dir}/resticctl.conf"
+  else
+    config_dir="${RESTICCTL_CONFIGURATION%/*}"
+    # If ${RESTICCTL_CONFIGURATION} is a simple file ${config_dir} contains
+    # same, set to .
+    [ "${config_dir}" == "${RESTICCTL_CONFIGURATION}" ] && config_dir="."
+    config_file="${RESTICCTL_CONFIGURATION}"
+  fi
+  # If cannot read config file then exit
+  [ ! -r ${config_file} ] && \
+    echo "Cannot read config file ${config_file}" && \
+    exit 1
+}
+
+# Import config
+import_config() {
+  set -a
+  . ${config_file}
+  set +a
+}
+
+# Backup
+backup() {
+  locate_config
+  import_config
+
+  # If ${FORGET_FLAGS} is defined call to forget command
+  [ "${FORGET_FLAGS:-null}" != "null" ] && \
+    ${restic} -q forget ${FORGET_FLAGS[@]}
+
+  # If excludes.lst file exists use it
+  [ -r "${config_dir}/excludes.lst" ] && \
+    local _extra_exclude="--exclude-file=${config_dir}/excludes.lst"
+
+  ${restic} -q backup ${BACKUP_LOCATIONS[@]} \
+    --tag=${RESTIC_TAG:-manual} \
+    ${_extra_exclude} --exclude-caches
+}
+
+# Mount
+mount() {
+  locate_config
+  import_config
+  local _mountdir=$(mktemp -d --tmpdir restic.XXX)
+  echo "Backup will be mounted in ${_mountdir}"
+  ${restic} mount ${_mountdir}
+  rmdir ${_mountdir}
+}
+
+# To pass remaining command directly to restic but loading config
+restic_cmd() {
+  locate_config
+  import_config
+  ${restic} ${@}
+}
+
+case ${1:-null} in
+  backup)
+    backup
+    ;;
+  mount)
+    mount
+    ;;
+  null|--help)
+    echo "${help}"
+    ;;
+  --version)
+    echo "resticctl version ${version}"
+    ;;
+  *)
+    restic_cmd ${@}
+    ;;
+esac

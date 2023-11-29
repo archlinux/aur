@@ -1,0 +1,11 @@
+# Excludes sample list, see the doc in the following link for further info
+# https://restic.readthedocs.io/en/stable/040_backup.html#excluding-files
+/var/cache
+/var/lib/containers/*
+!/var/lib/containers/storage
+/var/lib/containers/storage/*
+!/var/lib/containers/storage/volumes/
+/var/lock
+/var/log
+/var/run
+/var/tmp

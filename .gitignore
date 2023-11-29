@@ -1,0 +1,8 @@
+*
+!excludes.lst
+!.gitignore
+!PKGBUILD
+!README.md
+!resticctl
+!resticctl.conf
+!.SRCINFO
