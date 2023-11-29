@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
 pkgver=3.5.0.r0.g8e153e2
-pkgrel=3
+pkgrel=4
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -55,16 +55,16 @@ package() {
 	rm -rf libQt*
 
 	# Install License
-	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/vpkedit-git/LICENSE"
+	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	# Create mime for VPKEDIT to open up vpks
 	mkdir -p "$pkgdir/usr/share/mime/packages"
 	cat > "$pkgdir/usr/share/mime/packages/vpkedit.xml" <<-EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-    <mime-type type="application/x-vpkedit">
+    <mime-type type="application/x-vpkedit-vpk">
         <comment>Valve Pack File</comment>
-		<icon name="x-vpkedit"/>
+		<icon name="x-vpkedit-vpk"/>
         <glob-deleteall/>
         <glob pattern="*.VPK"/>
         <glob pattern="*.vpk"/>
@@ -76,10 +76,10 @@ EOF
 	sed -i 's"Exec=/opt/vpkedit/vpkedit"Exec=/opt/vpkedit/vpkedit %f"g' vpkedit.desktop
 
 	cat >> "vpkedit.desktop" <<-EOF
-	MimeType=application/x-vpkedit
+	MimeType=application/x-vpkedit-vpk
 	EOF
 
 	# Give VPKs an icon
 	mkdir -p "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/"
-	cp "$pkgdir/usr/share/pixmaps/vpkedit.png" "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/x-vpkedit.png"
+	cp "$pkgdir/usr/share/pixmaps/vpkedit.png" "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/x-vpkedit-vpk.png"
 }
