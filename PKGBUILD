@@ -2,12 +2,11 @@
 
 pkgname=obs-face-tracker-dlib-models-git
 pkgver=r63.89dd713
-pkgrel=1
+pkgrel=2
 pkgdesc="Trained model files for dlib example packaged for obs-face-tracker"
 arch=("any")
 url="https://github.com/davisking/dlib-models/"
 license=("MIT")
-depends=("obs-face-tracker>=0.7.1")
 makedepends=("git" "bzip2")
 source=("git+https://github.com/davisking/dlib-models.git")
 sha256sums=("SKIP")
