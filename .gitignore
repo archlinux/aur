@@ -3,3 +3,4 @@
 !.SRCINFO
 !.gitignore
 !linglong-git.install
+!add_sanitize.patch

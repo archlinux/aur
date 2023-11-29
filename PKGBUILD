@@ -34,8 +34,8 @@ makedepends=(
 provides=('linglong')
 conflicts=('linglong')
 install=$pkgname.install
-source=("linglong::git+https://github.com/linuxdeepin/linglong.git#branch=release/1.3")
-md5sums=('SKIP')
+source=("linglong::git+https://github.com/linuxdeepin/linglong.git#branch=release/1.3" "add_sanitize.patch")
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd linglong
@@ -45,6 +45,7 @@ pkgver() {
 prepare() {
 	cd linglong
 	mkdir -vp build
+	patch --forward --strip=1 --input="${srcdir}/add_sanitize.patch"
 }
 
 build() {
