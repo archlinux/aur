@@ -2,20 +2,27 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
+_pkgbase='plasma-meta'
 pkgname=plasma-essential-meta
 pkgver=5.27
-pkgrel=3.6
+pkgrel=3.7
 pkgdesc='Meta-PKG to install essential (and optional) KDE Plasma packages'
 arch=(any)
 license=(None)
 url='https://community.kde.org/Distributions/Packaging_Recommendations'
+provides=("${_pkgbase}=${pkgver}")
 conflicts=(
-  plasma-meta
-  dunst                     # will take over Plasma notifications
-  mako                      # will take over Plasma notifications
-  qt5ct                     # conflicts with plasma-integration, breaks Qt app themes
-  xdg-desktop-portal-gnome  # conflicts with xdg-desktop-portal-kde
-  xf86-input-synaptics      # provides subpar experience with touchpads
+  "${_pkgbase}"
+  'dunst'                     # will take over Plasma notifications
+  'ibus<1.5.29-1'             # Actually 'ibus-daemon' 1.5.28 and earlier is the problematic component, not ibus-data.
+                              # It ignores keyboard layout configuration from System Settings and displays an out-of-sync extra layout indicator.
+                              # On X11, uninstalling IBus breaks keyboard input in apps until session restart. 
+                              # On Wayland, IBus 1.5.28 and earlier displays a notification about incompatibility with Plasma Wayland.
+                              # These issues are resolved with IBus 1.5.29 and it is fine to use it with Plasma.
+  'mako'                      # will take over Plasma notifications
+  'qt5ct'                     # conflicts with plasma-integration, breaks Qt app themes
+  'xdg-desktop-portal-gnome'  # conflicts with xdg-desktop-portal-kde
+  'xf86-input-synaptics'      # provides subpar experience with touchpads
 )
 
 package() {
@@ -57,10 +64,12 @@ package() {
             'kio-gdrive: Virtual filesystem access to Google Drive'
             'kio-fuse: Mount remote filesystems and access them in KDE and non-KDE apps'
             "kwrited: Local System Message Service daemon for multiuser installations (listens for 'wall' and 'write' messages)"
+            'libappindicator-gtk3: (Instead of the GTK2 variant) for crisp status notifier systray icons'
             'maliit-keyboard: Virtual keyboard for Wayland'
             'orca: Screen reader for visually impaired users'
             'oxygen-sounds: Default KDE sound theme'
             'oxygen: KDE Oxygen style (legacy)'
+            'phonon-vlc: Recommended Phonon backend, as the GStreamer variant is very old and unmaintained'
             'plasma-disks: Monitors S.M.A.R.T. capable drives for imminent failure'
             'plasma-nm: NetworkManager connection configuration & desktop integration'
             'plasma-pa: PulseAudio volume management applet'
