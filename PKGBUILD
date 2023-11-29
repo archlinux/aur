@@ -1,9 +1,9 @@
 # Maintainer: Christian Heusel <christian@heusel.eu>
 
 pkgname=pawxel
-pkgver=0.1.3
-_tag=299d4500a4796254742d248eff4d4e864261293a
-pkgrel=2
+pkgver=0.1.4
+_tag=521526e9d29f4b830ab3d20de531168ff406a828
+pkgrel=1
 pkgdesc='Lightweight screenshot tool for designers & developers'
 arch=('x86_64')
 url='https://pawxel.rocks/'
@@ -26,6 +26,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
+
+pkgver() {
+    cd "${pkgname}"
+    git describe --tags | sed 's/^[vV]//;s/-/+/g'
+}
 
 prepare() {
     cd "$pkgname"
