@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=html-query
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="jq, but for HTML"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/$pkgname-v$pkgver.tar.gz")
-sha512sums=('006fd4e0aafad83e997f70c46bb9630b2158ce0868652c6c2a983809ee661f7a3b476739a8fa8f8c9605ccde888ae8d51e467d86deebe7853859d8962ca67b85')
+sha512sums=('d008c8e99ffffc7db7e4dcf01c0baf721576461d3d59976f6810772455b791805839351e2319641ce3580936448064e6affccb853e139c1d1162e2b0a6f92e4d')
 
 prepare() {
   mv "$pkgname-$pkgname-v$pkgver" "$pkgname-$pkgver"
