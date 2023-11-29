@@ -10,6 +10,11 @@ source=("https://raw.githubusercontent.com/kRHYME7/KhingDom/Addition-Hyprdots-CL
 md5sums=('a231c7dc2ac62c1436a2f4ceb840e4ff')
 noextract=()
 
+pkgver() {
+  cd "$srcdir/Hyprdots"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
     # The $pkgdir variable points to the package directory where files will be installed
     # Install the script to /usr/bin so it's available system-wide
