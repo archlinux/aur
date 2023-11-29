@@ -1,5 +1,5 @@
 pkgbase = kmozillahelper-bin
-	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE
+	pkgdesc = KDE mozilla integration
 	pkgver = 5.0.6
 	pkgrel = 1
 	url = https://github.com/openSUSE/kmozillahelper
