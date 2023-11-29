@@ -1,6 +1,6 @@
 pkgbase = sdrangel-bin
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 7.17.0
+	pkgver = 7.17.1
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = sdrangel-bin
 	optdepends = libsdrplay: SDRplay support
 	provides = sdrangel
 	conflicts = sdrangel-git
-	source = https://github.com/f4exb/sdrangel/releases/download/v7.17.0/sdrangel-2329-master.tar.gz
-	sha256sums = 2de9f7e8976cc119e9ed65c566ebe8962211dc1756e4b2a80e2509a07ab49a67
+	source = https://github.com/f4exb/sdrangel/releases/download/v7.17.1/sdrangel-2391-master.tar.gz
+	sha256sums = aa07df83da11e7154d1e25f3ce52c9dfb2bcb65f5ee18e01cc90386e0773f397
 
 pkgname = sdrangel-bin
