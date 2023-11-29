@@ -3,9 +3,9 @@
 
 pkgname="paperless-ngx"
 pkgver=1.17.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
-url="https://github.com/paperless-ngx/paperless-ngx"
+url="https://docs.paperless-ngx.com/"
 license=("GPL3")
 arch=("any")
 provides=("paperless" "$pkgname")
@@ -65,7 +65,7 @@ depends=("file"
          "python-incremental"
          "python-inotify-simple"
          "python-inotifyrecursive"
-         "python-ipware"
+         "python-ipware<2.0.0"
          "python-joblib"
          "python-langdetect"
          "python-lxml"
@@ -105,7 +105,6 @@ depends=("file"
          "python-watchgod"
          "python-wcwidth"
          "python-websockets"
-         "python-wheel"
          "python-whitenoise"
          "python-whoosh"
          "python-yaml"
@@ -116,7 +115,7 @@ optdepends=("jbig2enc: smaller PDF size"
             "postgresql: postgres database"
             "mariadb: mariadb database"
             "python-mysqlclient: connect to mariadb")
-source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
+source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
         "paperless.hook"
         "paperless.sysusers"
         "paperless.tmpfiles"
@@ -125,15 +124,15 @@ source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
         "paperless-scheduler.service"
         "paperless-task-queue.service"
         "paperless-webserver.service")
-sha256sums=('c05c4c2c59ee09fe130adc9ab9f86ff866c780c14bba3024c26a5078f307dc0b'
-            '4e2ca67d7eedf14ba839af852907e1d76aa0a5ee5f4f740a3aee786c24035ace'
-            'a002bd55b8e5b1ef89a10b907483c56df99d52d03951d464472d8c375e9835d6'
-            '3971deb5721eb4e01c2cc0348546cc22a861a1e84458061fce4fbd2cf01b2a1e'
-            'b64182b491708a907d2a65a2f52d51f4cf897cd8b5e874483a9ed22bbfe3b2e7'
-            '95d4e665f66f63432c22d9f139769f84575cb427362865931253d9651779ec22'
-            'fd25de09705de3b70bfe459b1f917061a2e2d342fdfa3b51982a3e5dfffee3f7'
-            'fe099876da92b6c13b45efd38c9fd55c326c57321a0bf69a0fd8f61f4f0ca298'
-            '47e47fcadf029d85fa6304191afa6362b7675216cb82ed1bad8cce42c0378e7e')
+b2sums=('34e67810dc9264cfcfec5a62557f5c102aedb82d8f31b27302e01675b84cb39cb22925339263cd8908e828d91b3469895732962e50c2b6bc62d266222b3072c4'
+        '66073b686ac143f5b6a2c581705ca77a90b48e5ad03208c61976e0421e54c08bb5ce8168a42cd1f11d9f34e270a27ee91102c5fbf5477fdb5a596ad7b38e5750'
+        '586ad775e26aef216716c33d8951e00044a7f6866167d27dceab39d51b4fd46527693dfe4e085dc20d2e9193679122ad2b9ac8a1c03a98df747af15ecca24ca2'
+        '4a59f0a0c6a4abad23cba01e216909f45a7064e93911b8ba3e3b394f52379e41898b8c9e1246ba034bc8d2fe6dc83f5cad926e265a17da7c7093d997cfe8b4f3'
+        'd4eff17cf6b4642211d61545d3722cb626e35b591fc1f11dfc0d4bd3b303ac145777953d405b1bbdf6473512590d50169cf58db8251de2701cee4d7b151ef6be'
+        '22789413306028dae8ffbc791599a2f008412417930d093e198157b7d7955be7f386cea550172b5772738106308682d310d7278495087ffd94c257407328aa1a'
+        '6c09b9149a3f81494efc8bc851585f5dd183f8a719797e3996710d90bc77e1219bae22c263a79db498dfda6a17f4539784d850dae8b8d5e25b9ef1e7c8ca211f'
+        'a769a96485e8f9846ef0089531bda7488a23138fc6b4e7ddaf9cf29cd47281d6c02574a91b40645e3cc35be7f2095c3bbec678250158accc1b644ecf4bad26cd'
+        'e464a1bb7bdfaa5b3afcefdf84cd8699ef2bbc06d7f4e38915bd04e2d5f6049574d88ca74589832630cf2326279bc7374271a106a4b1fb8b10f2a8f5182f8d8b')
 backup=("etc/paperless.conf")
 options=("!strip")
 install="paperless.install"
