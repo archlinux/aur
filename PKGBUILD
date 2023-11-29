@@ -3,15 +3,17 @@
 _pkgname=godot-mono
 pkgname=godot-mono-enhanced
 pkgver=4.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine built properly"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://godotengine.org/"
 license=('MIT')
 depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd libsquish
    libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
-   mbedtls2 miniupnpc pcre2 dotnet-sdk hicolor-icon-theme)
+   mbedtls2 miniupnpc pcre2 dotnet-sdk-bin hicolor-icon-theme)
 makedepends=(alsa-lib gcc pulseaudio scons yasm xorg-server-xvfb nuget python git rsync gzip python)
+optdepends=('pipewire-alsa: for audio support'
+            'pipewire-pulse: for audio support')
 provides=('godot-mono' 'godot-mono-bin')
 conflicts=('godot-mono' 'godot-mono-bin')
 source=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/godot-${pkgver}-stable.tar.xz")
@@ -115,7 +117,7 @@ package() {
     then
 	:
     else
-    sed -i 's/Exec=godot/Exec=godot-mono/g' "${srcdir}/godot-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.desktop"
+    sed -i 's/Exec=godot/Exec=godot-mono %f/g' "${srcdir}/godot-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.desktop"
     sed -i 's/Icon=godot/Icon=godot-mono/g' "${srcdir}/godot-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.desktop"
     sed -i 's/Name=Godot Engine/Name=Godot Engine Mono/g' "${srcdir}/godot-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.desktop"
     fi
@@ -124,4 +126,21 @@ package() {
 	"${srcdir}/godot-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.desktop"\
 	"${pkgdir}/usr/share/applications/org.godotengine.Godot-mono-enhanced.desktop"
 
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes"
+    install -Dm644 \
+        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/project.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-project.svg"
+    install -Dm644 \
+        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/resource.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-resource.svg"
+    install -Dm644 \
+        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/scene.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-scene.svg"
+    install -Dm644 \
+        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/shader.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-shader.svg"
+    install -Dm644 \
+        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/gdscript.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-gdscript.svg"
+    
 }
