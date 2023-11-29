@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url='http://www.vaibhavpandey.com/apkstudio/'
 license=('GPL2')
 depends=('qt5-base'
-         'adb'
+         'android-tools'
          'jadx'
          'uber-apk-signer-bin'
          'android-apktool')
