@@ -6,9 +6,9 @@
 # Contributor: Aleksej Komarov <stylemistake@gmail.com>
 
 pkgname='warfork-bin'
-pkgver=2021.08.03
-pkgrel=2
-_relver=7085995
+pkgver=2.13
+pkgrel=1
+_relver=2.13
 pkgdesc='Free online multiplayer competitive FPS based on the Qfusion engine (official binary)'
 url='https://www.warfork.com/'
 license=('GPL2')
@@ -28,7 +28,7 @@ sha512sums=('f78af226cad17ff9eaeebeafd754bb35f10549abede755f4fa9d6616118003877f0
             '073959aebd70807b893d474c7005341356f974acc573eae49eb2d23273068318ee855ccaeb0a037caf9a7a4ce545927b939f3b31d996384f56a90b54ff2cd5c0'
             '9fd472b186477259270aecef8456b72db51a3f7f161280b23633f25a5169f3d3ada7583aff50e7510df08f9b38514d77420adef5f761365e1b9aa29737f1c1c4'
             '10952bc4e123c0d75d492761b505a3b1ddf6c8e27143bf25bbb0e28dede5b44238849a96542345f9e068aaf442b0df4859f23b6e18049e7dfc94535e7aaefc65'
-            'bd1be516d21977959481e570ef919e3f8051f53e04ff46c6ac7e98616a4181b0f435f40a13868d583b99cf11d4e850e4226f986e52fe1f7d2ed1e409b7c92f60')
+            '477c9b8e8b6f3d12131c9c3b156ed04fd335e66c576f151f1c7798c47a99dcc58b2f8b322f296440ace1e716f0e0c4fd60e0be93d3e8da164d37e1b2ad64c1ab')
 
 prepare() {
   gendesk -n -f --pkgname 'warfork' --pkgdesc "${pkgdesc}" --name 'Warfork' --categories 'Game;ActionGame;Shooter'
