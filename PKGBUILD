@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.3.0_devel.178344.af2a96bb37b
+pkgver=24.0.0_devel.181208.112093f9e2d
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -87,7 +87,7 @@ build () {
         -D tools=[] \
         -D zstd=enabled \
         -D microsoft-clc=disabled \
-        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc
+        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av1enc,vp9dec
 
     meson configure  --no-pager _build
     
