@@ -1,19 +1,19 @@
 pkgbase = python-drizzlepac-doc
 	pkgdesc = Documentation for DrizzlePac
-	pkgver = 3.6.1
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = http://www.stsci.edu/scientific-community/software/drizzlepac.html
 	arch = any
 	license = BSD
-	makedepends = python-drizzlepac=3.6.1
+	makedepends = python-drizzlepac=3.6.2
 	makedepends = graphviz
 	makedepends = python-numpydoc
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx-automodapi
 	makedepends = texlive-latexextra
-	source = https://github.com/spacetelescope/drizzlepac/archive/3.6.1.tar.gz
+	source = https://github.com/spacetelescope/drizzlepac/archive/3.6.2.tar.gz
 	source = fix_catalog_generation_title_level.patch
-	md5sums = e27eba834f47872791acfa64cd8b3945
+	md5sums = 35e99ac2acfbb55984302521ca6eef0d
 	md5sums = eb046975b52452d799021218eb414cfb
 
 pkgname = python-drizzlepac-doc
