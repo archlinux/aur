@@ -9,7 +9,7 @@ url="https://github.com/Kimiblock/mcctl/"
 license=('GPL3')
 groups=()
 depends=('bash' 'wget' 'java-environment' 'screen')
-makedepends=()
+makedepends=("git")
 checkdepends=()
 optdepends=(
 		'git: Version control'

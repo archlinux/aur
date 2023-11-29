@@ -5,6 +5,7 @@ pkgbase = mcctl-git
 	url = https://github.com/Kimiblock/mcctl/
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = bash
 	depends = wget
 	depends = java-environment
