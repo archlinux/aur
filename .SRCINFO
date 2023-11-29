@@ -5,7 +5,6 @@ pkgbase = ttf-font-logos
 	url = https://github.com/lukas-w/font-logos
 	arch = any
 	license = Unlicense
-	makedepends = wkhtmltopdf
 	makedepends = yarn
 	makedepends = jq
 	makedepends = fontforge

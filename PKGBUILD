@@ -9,13 +9,15 @@ arch=(any)
 replaces=('ttf-font-linux')
 url="https://github.com/lukas-w/font-logos"
 license=('Unlicense')
-makedepends=('wkhtmltopdf' 'yarn' 'jq' 'fontforge')
+makedepends=('yarn' 'jq' 'fontforge')
 depends=('fontconfig')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('8904c3bcf8edcbeebe688edb3e1e6e627e700c5f983e6dcc11ae7bfbbf5e364e')
 
 build() {
   cd font-logos-$pkgver/
+  sed -i '/^$(dest)\/readme-header.png/d' Makefile
+  sed -i '/^.*wkhtmltoimage/d' Makefile
   yarn install
   make
 }
