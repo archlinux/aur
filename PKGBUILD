@@ -4,7 +4,7 @@
 
 pkgbase=rio
 pkgname=('rio' 'rio-terminfo')
-pkgver=0.0.27
+pkgver=0.0.28
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=('cargo' 'cmake' 'desktop-file-utils')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('077fa0a422cd4bf800adb27553c70f38ebf4d6d776cb4a7cf48b662e361c16d459de6c2fd3c18609c7202adea2f09b9e4392edeab305f9389ec461db4c1b8e41')
+sha512sums=('6dd1992ab761d6c5b7ad78c483fe0096a4d1c93b241480c14cf10799cc831029023989f676be835d744f7a170733f3503f37f90ed92e3790dfb8fa334c07e68b')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
@@ -46,7 +46,7 @@ package_rio() {
   install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgbase}/" "README.md"
   install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgbase}/" "LICENSE"
   desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "misc/${pkgbase}.desktop"
-  install -Dm0644 "docs/static/assets/${pkgbase}-logo-512-512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgbase}.png"
+  install -Dm0644 "docs/static/assets/${pkgbase}-logo.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgbase}.svg"
 }
 
 package_rio-terminfo() {
