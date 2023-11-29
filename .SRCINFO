@@ -1,0 +1,13 @@
+pkgbase = wg-info
+	pkgdesc = A better wireguard status script
+	pkgver = 60ceb5c
+	pkgrel = 1
+	url = https://github.com/asdil12/wg-info
+	arch = any
+	license = AGPL
+	depends = python
+	provides = wg-info
+	source = git+https://github.com/asdil12/wg-info.git
+	sha256sums = SKIP
+
+pkgname = wg-info
