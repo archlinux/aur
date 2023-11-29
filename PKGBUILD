@@ -1,5 +1,5 @@
 pkgname=hyprdots-ctl
-pkgver=0.5004
+pkgver=0.5005
 pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations"
 arch=('x86_64')
