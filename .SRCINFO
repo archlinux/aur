@@ -1,6 +1,6 @@
 pkgbase = rime-sbxlm
 	pkgdesc = 声笔系列码配置
-	pkgver = 20231111
+	pkgver = 20231129
 	pkgrel = 1
 	install = rime-sbxlm.install
 	arch = any
