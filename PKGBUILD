@@ -1,7 +1,7 @@
 # Maintainer: wuxxin <wuxxin@gmail.com>
 
 _ENABLE_CUDA=0
-_ENABLE_ROCM=0
+_ENABLE_ROCM=1
 _GO_TAGS=""
 # _GO_TAGS="tts stablediffusion"
 _OPTIONAL_BACKENDS=""
@@ -13,14 +13,12 @@ if test "$(echo "$_GO_TAGS" | grep -o "stablediffusion")" = "stablediffusion"; t
 fi
 _GRPC_BACKENDS="backend-assets/grpc/bert-embeddings backend-assets/grpc/llama-cpp backend-assets/grpc/whisper $_OPTIONAL_BACKENDS"
 # backend-assets/grpc/rwkv
-if test -n "$GPU_TARGETS"; then _AMDGPU_TARGETS="$GPU_TARGETS"; fi
-_AMDGPU_TARGETS="${AMDGPU_TARGETS:-gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102}"
 _pkgname="localai"
 
 pkgbase="${_pkgname}-git"
 pkgname=("${pkgbase}")
 pkgver=v1.40.0.60.gfd1b7b3
-pkgrel=3
+pkgrel=4
 pkgdesc="The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -53,6 +51,7 @@ if [[ $_ENABLE_CUDA = 1 ]]; then
     'cuda'
     'cudnn'
     'nccl'
+    'magma-cuda'
   )
 fi
 
@@ -62,6 +61,7 @@ if [[ $_ENABLE_ROCM = 1 ]]; then
     'rocm-hip-sdk'
     'miopen-hip'
     'rccl'
+    'magma-hip'
   )
 fi
 
@@ -81,20 +81,18 @@ prepare() {
   # update whisper and add gpu support
   patch -Np1 -i "${srcdir}/whisper-1.5.1.patch"
 
-  # move backend_data to /usr/share
-  sed -ri "s#/tmp/localai/backend_data#/usr/share/${_pkgname}#g" main.go
-
-  # remove sources for not build backends: go-llama go-llama-ggml go-ggml-transformers gpt4all
+  # remove sources for inactive backends: go-llama go-llama-ggml go-ggml-transformers gpt4all
   _SOURCES="go-piper go-rwkv whisper.cpp go-bert go-stable-diffusion"
   _SOURCES_PATHS="$(echo "$_SOURCES" | tr " " "\n" | sed -r "s#(.+)#sources/\1#" | tr "\n" " ")"
   sed -ri "s#get-sources: .*#get-sources: backend/cpp/llama/llama.cpp $_SOURCES_PATHS#g" Makefile
   sed -ri 's#.+\-replace github.com/nomic-ai/gpt4all/gpt4all.+##g' Makefile
   sed -ri 's#.+\-replace github.com/go-skynet/go-ggml-transformers.cpp.+##g' Makefile
 
+  # fetch sources for active backends
   mkdir -p "sources"
   make $_SOURCES_PATHS
 
-  # clone for different build types
+  # copy for different build types
   cd "${srcdir}"
   for n in "${_pkgname}-cpu" "${_pkgname}-cuda" "${_pkgname}-rocm"; do
     if test -d "$n"; then rm -rf "$n"; fi
@@ -113,12 +111,23 @@ build() {
 
   if [[ $_ENABLE_ROCM = 1 ]]; then
     cd "${srcdir}/${_pkgname}-rocm"
-    AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
+    export ROCM_HOME="${ROCM_HOME:-/opt/rocm}"
+    export PATH="$ROC_HOME/bin:$PATH"
+    if test -n "$GPU_TARGETS"; then
+      _AMDGPU_TARGETS="$GPU_TARGETS"
+    else
+      _AMDGPU_TARGETS="${AMDGPU_TARGETS:-gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102}"
+    fi
+    MAGMA_HOME="$ROCM_HOME" AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
       make BUILD_TYPE="hipblas" GRPC_BACKENDS="$_GRPC_BACKENDS" GO_TAGS="$_GO_TAGS" build
   fi
+
   if [[ $_ENABLE_CUDA = 1 ]]; then
     cd "${srcdir}/${_pkgname}-cuda"
-    make BUILD_TYPE="cublas" GRPC_BACKENDS="$_GRPC_BACKENDS" GO_TAGS="$_GO_TAGS" build
+    export CUDA_HOME="${CUDA_HOME:-/opt/cuda}"
+    export PATH="$CUDA_HOME/bin:$PATH"
+    MAGMA_HOME="$CUDA_HOME/targets/x86_64-linux" \
+      make BUILD_TYPE="cublas" GRPC_BACKENDS="$_GRPC_BACKENDS" GO_TAGS="$_GO_TAGS" build
   fi
 }
 
@@ -126,7 +135,6 @@ package_localai-git() {
   cd "${srcdir}/${_pkgname}-cpu"
 
   install -Dm755 "local-ai" "${pkgdir}/usr/bin/local-ai"
-  # install -D backend-assets/espeak-ng-data -t "${pkgdir}/usr/share/${_pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
@@ -137,7 +145,6 @@ package_localai-git-rocm() {
   depends+=('rocm-hip-runtime')
 
   install -Dm755 "local-ai" "${pkgdir}/usr/bin/local-ai"
-  # install -D backend-assets/espeak-ng-data -t "${pkgdir}/usr/share/${_pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
@@ -148,6 +155,5 @@ package_localai-git-cuda() {
   depends+=('cuda')
 
   install -Dm755 "local-ai" "${pkgdir}/usr/bin/local-ai"
-  # install -D backend-assets/espeak-ng-data -t "${pkgdir}/usr/share/${_pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
