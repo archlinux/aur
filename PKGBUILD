@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xilinota-bin
 _pkgname=Xilinota
-pkgver=2.13.5_1
+pkgver=2.13.5_2
 pkgrel=1
 pkgdesc="A free and open source (FOSS) note-taking and to-do project delivering applications,capable of handling large number of notes organised in notebooks, and syncing notes across the platforms in various ways."
 arch=("x86_64")
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver//_/-}/${_pkgname}-2.13.4.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9bbe4ad1f9f0b8647dff565b50c96cd71dde7c5131c3e98dd8780fb96a970344'
+sha256sums=('9802b192161d6e4de9365cc964006d1fe36954224e445e7a7b60d2e8ac9a3418'
             'dd54ae23385bbc4ad04e1504775079ecc342df1852b6b457e4910ac49307feee')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
