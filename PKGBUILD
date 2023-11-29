@@ -1,6 +1,6 @@
 pkgname=tuxclocker-git
 _pkgname=tuxclocker
-pkgver=1.3.1.591.00fa886
+pkgver=1.3.1.r591.00fa886
 pkgrel=1
 pkgdesc="A hardware controlling and monitoring program for GPUs and CPUs"
 arch=('x86_64')
