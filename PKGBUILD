@@ -4,8 +4,8 @@
 # Contributor: Luna Jernberg <droidbittin@gmail.com>
 
 pkgname=hypnotix
-pkgver=3.7
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="An IPTV streaming application with support for live TV, movies and series."
 arch=('any')
 url="https://github.com/linuxmint/hypnotix"
@@ -14,7 +14,7 @@ depends=('circle-flags' 'dconf' 'hicolor-icon-theme' 'mpv' 'python-cairo' 'pytho
          'python-cinemagoer' 'python-requests' 'python-setproctitle' 'python-unidecode'
          'xapp' 'yt-dlp')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e0223b91da1b215e0739c51df68896879738f8b4b7186866b98e3d5f3adb88bc')
+sha256sums=('99f8739ae90099977c2b92165d0babbf2c13ee3c413ed4380eb098fa96fe60e8')
 
 prepare() {
   cd "$pkgname-$pkgver"
