@@ -2,7 +2,7 @@
 pkgname=scripthaus-git
 pkgver=0.5.0.r5.gd8897c7
 pkgrel=1
-pkgdesc="ScriptHaus lets you run bash, Python, and JS snippets from your Markdown files directly from the command-line. It can turn any Markdown file (including your README.md or BUILD.md) into a command-line tool, complete with command-line help and documentation."
+pkgdesc="ScriptHaus lets you run bash, Python, and JS snippets from your Markdown files directly from the command-line."
 arch=('any')
 url="https://www.scripthaus.dev/"
 _ghurl="https://github.com/scripthaus-dev/scripthaus"
