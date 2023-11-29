@@ -2,7 +2,7 @@
 
 pkgbase=frotz-git
 pkgname=(frotz-dumb-git frotz-ncurses-git frotz-sdl-git)
-pkgver=2.54.r100.gb00f145
+pkgver=2.54.r109.g4f78491
 pkgrel=1
 pkgdesc='Z-machine interpreter for interactive fiction games'
 makedepends=('git' 'libao' 'libmodplug' 'libsamplerate' 'libsndfile' 'libvorbis' 'ncurses'

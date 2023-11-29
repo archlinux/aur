@@ -1,6 +1,6 @@
 pkgbase = frotz-git
 	pkgdesc = Z-machine interpreter for interactive fiction games
-	pkgver = 2.54.r100.gb00f145
+	pkgver = 2.54.r109.g4f78491
 	pkgrel = 1
 	url = https://gitlab.com/DavidGriffith/frotz
 	arch = x86_64
