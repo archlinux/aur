@@ -11,7 +11,7 @@ pkgbase = tailor-cli
 	depends = glibc
 	depends = gcc-libs
 	depends = tailord
-	provides = tailor_cli
+	provides = tailor-cli
 	source = tailor-cli-0.3.0.tar.gz::https://github.com/AaronErhardt/tuxedo-rs/archive/refs/tags/tailor-v0.3.0.tar.gz
 	sha256sums = 3529ccdccbca908212eb410f8a84fd6692bc54fd4407a327cfbbe14d696b569d
 
