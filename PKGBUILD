@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/bachya/aiolinkding"
 license=('MIT')
 depends=('python-aiohttp' 'python-packaging' 'python')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("$_name-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=(2d80653883cfd3359b428c3acd62137b3d04bae947d6beeb5bc406a11388c3510552695c37956eb0dc0b3e7629f47f4c7d0449fa6aa18a8d7271ca85bbd9289b)
 
 makedepends=(python-build python-installer python-poetry-core)

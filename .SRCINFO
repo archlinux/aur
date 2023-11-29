@@ -11,7 +11,7 @@ pkgbase = python-aiolinkding
 	depends = python-aiohttp
 	depends = python-packaging
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/aiolinkding/aiolinkding-2023.10.0.tar.gz
+	source = aiolinkding-2023.10.0.tar.gz::https://github.com/bachya/aiolinkding/archive/refs/tags/2023.10.0.tar.gz
 	sha512sums = 2d80653883cfd3359b428c3acd62137b3d04bae947d6beeb5bc406a11388c3510552695c37956eb0dc0b3e7629f47f4c7d0449fa6aa18a8d7271ca85bbd9289b
 
 pkgname = python-aiolinkding
