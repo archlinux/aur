@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.6.2.arch1
+pkgver=6.6.3.arch1
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -40,7 +40,7 @@ source=(
 
   0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch
   
-  0001-Revert-PCI-Add-a-REBAR-size-quirk-for-Sapphire-RX-56.patch
+  #0001-Revert-PCI-Add-a-REBAR-size-quirk-for-Sapphire-RX-56.patch
   0001-linux6.6.y-bore3.3.0.patch
   
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
@@ -72,9 +72,9 @@ validpgpkeys=(
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('73d4f6ad8dd6ac2a41ed52c2928898b7c3f2519ed5dbdb11920209a36999b77e'
+sha256sums=('28edfc3d4f90cd738f2a20f5a2d68510268176d6111f6278d8f495edfd9495a7'
             'SKIP'
-            '2268d290ccfc805ca1f934eed73610065a7b12080769d5371693901854e69fa4'
+            '4e58f0bab792e42b818037bee7696fa9bd0e65ec2df8db079e97782fc2da6c70'
             'SKIP'
             'bdfd2629b1fe907b9270fc540adaa51ff526cbd361b23aba38c4c5fce7f5397b'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
