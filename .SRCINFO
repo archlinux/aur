@@ -1,0 +1,26 @@
+pkgbase = xmonk.lv2-git
+	pkgdesc = A simple sound generator LV2 plugin to have some fun with (git version)
+	pkgver = 0.4.r56.3f69d90
+	pkgrel = 1
+	url = https://github.com/brummer10/Xmonk.lv2
+	arch = x86_64
+	groups = pro-audio
+	groups = lv2-plugins
+	license = 0BSD
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = cairo
+	depends = libx11
+	provides = xmonk.lv2
+	provides = xmonk-lv2-git
+	conflicts = xmonk.lv2
+	conflicts = xmonk-lv2-git
+	source = Xmonk.lv2::git+https://github.com/brummer10/Xmonk.lv2.git
+	source = libxputty::git+https://github.com/brummer10/libxputty.git
+	source = libxputty-fix-asprintf.patch::https://github.com/brummer10/libxputty/commit/7eb70bf3f7bce0af9e1919d6c875cdb8efca734e.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 15fe7e3e2ec8efe62dc9bb4c0830eaf3ed0373cd39ebd755f2d9193710ebbf76
+
+pkgname = xmonk.lv2-git

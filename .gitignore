@@ -1,0 +1,7 @@
+libxputty/
+libxputty-fix-*.patch
+pkg/
+src/
+Xmonk.lv2/
+xmonk-lv2-git-*.pkg.tar.*
+xmonk-lv2-git-*.src.tar.gz
