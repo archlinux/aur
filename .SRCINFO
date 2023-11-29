@@ -1,6 +1,6 @@
 pkgbase = pacseek-bin
 	pkgdesc = A terminal user interface for searching and installing Arch Linux packages (binary version)
-	pkgver = 1.7.11
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/moson-mo/pacseek
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pacseek-bin
 	optdepends = fakeroot: display upgrades support
 	provides = pacseek
 	conflicts = pacseek
-	source = https://github.com/moson-mo/pacseek/releases/download/v1.7.11/pacseek-linux-x64-v1.7.11.tar.gz
-	sha256sums = c1d7dc9a25547246f9c85aff61351f7ce13c078982f60c4bd1f5e020fc448e47
+	source = https://github.com/moson-mo/pacseek/releases/download/v1.8.0/pacseek-linux-x64-v1.8.0.tar.gz
+	sha256sums = d34b30e021323b542f7a39f300d8c114376459f89893344ae179831a2dcb3569
 
 pkgname = pacseek-bin
