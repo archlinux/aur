@@ -5,7 +5,7 @@
 _pkgbase='plasma-meta'
 pkgname=plasma-essential-meta
 pkgver=5.27
-pkgrel=3.8
+pkgrel=3.9
 pkgdesc='Meta-PKG to install essential (and optional) KDE Plasma packages'
 arch=(any)
 license=(None)
@@ -69,7 +69,7 @@ package() {
             'orca: Screen reader for visually impaired users'
             'oxygen-sounds: Default KDE sound theme'
             'oxygen: KDE Oxygen style (legacy)'
-            'phonon-vlc: Recommended Phonon backend, as the GStreamer variant is very old and unmaintained'
+            'phonon-qt5-vlc: Recommended Phonon backend, as the GStreamer variant is very old and unmaintained'
             'plasma-disks: Monitors S.M.A.R.T. capable drives for imminent failure'
             'plasma-nm: NetworkManager connection configuration & desktop integration'
             'plasma-pa: PulseAudio volume management applet'
