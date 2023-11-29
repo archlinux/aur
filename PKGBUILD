@@ -187,6 +187,7 @@ build() {
 		-D gst-plugins-bad:zbar=disabled
 		-D gst-plugins-bad:mplex=disabled
 		-D gst-plugins-bad:webrtc=disabled
+		-D gst-plugins-bad:webrtcdsp=disabled
 		# -- end -- -D gst-plugins-bad:=disabled
 		-D gst-plugins-bad:opencv=disabled # due to no lib32-opencv
 		-D gst-plugins-bad:msdk=disabled # due to no msdk (32-bit) support
