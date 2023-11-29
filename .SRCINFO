@@ -1,0 +1,27 @@
+pkgbase = r-ccimpute
+	pkgdesc = ccImpute: an accurate and scalable consensus clustering based approach to impute dropout events in the single-cell RNA-seq data (https://doi.org/10.1186/s12859-022-04814-8)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ccImpute
+	arch = x86_64
+	license = GPL3
+	checkdepends = r-testthat
+	makedepends = r-rcppeigen
+	depends = r-biocparallel
+	depends = r-matrixstats
+	depends = r-rcpp
+	depends = r-simlr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-mclust
+	optdepends = r-rmarkdown
+	optdepends = r-scater
+	optdepends = r-scrnaseq
+	optdepends = r-sessioninfo
+	optdepends = r-singlecellexperiment
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ccImpute_1.4.0.tar.gz
+	md5sums = f402177e3fc7bbbcac504c956889dfa9
+	sha256sums = 12728b12c2f470112c7a3108a6f999d798d67e07f892c75f08571c6462f2476c
+
+pkgname = r-ccimpute
