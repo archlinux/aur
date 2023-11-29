@@ -1,12 +1,12 @@
 pkgbase = mockoon-bin
 	pkgdesc = Mockoon is the easiest and quickest way to run mock APIs locally.
-	pkgver = 5.1.0
+	pkgver = 6.0.0
 	pkgrel = 2
 	url = https://mockoon.com/
 	arch = x86_64
 	groups = base-devel
 	license = MIT
-	source = https://github.com/mockoon/mockoon/releases/download/v5.1.0/mockoon-5.1.0.deb
-	md5sums = bb3506340f4c8fbea7c1f9fc73036fb1
+	source = https://github.com/mockoon/mockoon/releases/download/v6.0.0/mockoon-6.0.0.deb
+	md5sums = 460c7f3298295d69155a3ce083c4f166
 
 pkgname = mockoon-bin
