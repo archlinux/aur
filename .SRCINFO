@@ -1,7 +1,7 @@
 pkgbase = obs-face-tracker-dlib-models-git
 	pkgdesc = Trained model files for dlib example packaged for obs-face-tracker
 	pkgver = r63.89dd713
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/davisking/dlib-models/
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=obs-face-tracker-dlib-models-git
 pkgver=r63.89dd713
-pkgrel=2
+pkgrel=3
 pkgdesc="Trained model files for dlib example packaged for obs-face-tracker"
 arch=("any")
 url="https://github.com/davisking/dlib-models/"
@@ -25,8 +25,10 @@ prepare() {
 package() {
   cd dlib-models
   
-  mkdir -p "$pkgdir/usr/share/obs/obs-plugins/obs-face-tracker/dlib_face_landmark_model"
-  install -Dm644 *.dat -t "$pkgdir/usr/share/obs/obs-plugins/obs-face-tracker/dlib_face_landmark_model"
+  mkdir -p "$pkgdir/usr/share/obs/obs-plugins/obs-face-tracker/"{dlib_cnn_model,dlib_face_landmark_model}
+  
+  install -Dm644 mmod_human_face_detector.dat -t "$pkgdir/usr/share/obs/obs-plugins/obs-face-tracker/dlib_cnn_model"
+  install -Dm644 {shape_predictor_5_face_landmarks,shape_predictor_68_face_landmarks}.dat -t "$pkgdir/usr/share/obs/obs-plugins/obs-face-tracker/dlib_face_landmark_model"
   
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
