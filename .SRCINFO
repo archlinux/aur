@@ -1,6 +1,6 @@
 pkgbase = obs-face-tracker
 	pkgdesc = This plugin provide video filters for face detection and face tracking for mainly a speaking person
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	epoch = 1
 	url = https://obsproject.com/forum/resources/face-tracker.1294/
@@ -15,8 +15,9 @@ pkgbase = obs-face-tracker
 	depends = qt6-base
 	depends = blas-openblas
 	depends = openblas
+	optdepends = obs-face-tracker-dlib-models-git: Trained CNN model
 	options = debug
-	source = obs-face-tracker::git+https://github.com/norihiro/obs-face-tracker.git#tag=0.7.0
+	source = obs-face-tracker::git+https://github.com/norihiro/obs-face-tracker.git#tag=0.7.1
 	source = libvisca-ip::git+https://github.com/norihiro/libvisca-ip.git
 	source = dlib::git+https://github.com/norihiro/dlib.git
 	sha256sums = SKIP

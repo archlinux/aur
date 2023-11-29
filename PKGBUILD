@@ -23,7 +23,7 @@ if [[ -z "$OBS_FT_USE_AS_BLAS" ]]; then
 fi
 
 pkgname=obs-face-tracker
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 epoch=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
@@ -32,6 +32,7 @@ url="https://obsproject.com/forum/resources/face-tracker.1294/"
 license=("GPL2")
 depends=("obs-studio>=28" "glibc" "gcc-libs" "qt6-base")
 makedepends=("cmake" "git")
+optdepends=("obs-face-tracker-dlib-models-git: Trained CNN model")
 options=('debug')
 source=(
   "$pkgname::git+https://github.com/norihiro/obs-face-tracker.git#tag=$pkgver"
@@ -71,9 +72,13 @@ build() {
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
   -DQT_VERSION=6 \
-  -DDLIB_USE_CUDA=$OBS_FT_ENABLE_CUDA
+  -DDLIB_USE_CUDA=$OBS_FT_ENABLE_CUDA \
+  -DENABLE_DATAGEN=ON
 
   make -C build
+  
+  mkdir -p data/dlib_hog_model
+  ./build/face-detector-dlib-hog-datagen > data/dlib_hog_model/frontal_face_detector.dat
 }
 
 package() {
