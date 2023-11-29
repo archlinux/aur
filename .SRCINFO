@@ -1,6 +1,6 @@
 pkgbase = osgxr
 	pkgdesc = Library to integrate OpenXR into OpenSceneGraph applications
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/amalon/osgXR
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = osgxr
 	depends = openthreads
 	depends = openxr
 	provides = libosgXR
-	source = osgXR::git+https://github.com/amalon/osgXR.git?signed#tag=0.5.0
+	source = osgXR::git+https://github.com/amalon/osgXR.git?signed#tag=0.5.2
 	validpgpkeys = 9691CFAED3A4DC8623C4D33A774CE9C0981DCA52
 	sha512sums = SKIP
 

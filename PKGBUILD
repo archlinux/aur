@@ -2,7 +2,7 @@
 
 pkgname=osgxr
 _gitname=osgXR
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Library to integrate OpenXR into OpenSceneGraph applications"
 arch=('x86_64')
