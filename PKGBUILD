@@ -4,8 +4,8 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=119.0.6045.159
-pkgrel=4
+pkgver=119.0.6045.199
+pkgrel=1
 _manual_clone=0
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         disable-logging.patch
         fix-numeric_limits.patch
         fix-undeclared-isnan.patch)
-sha256sums=('d0d842712805ac81582dc0fecd4396fbf4380713df2fb50ceeb853dd38d1538f'
+sha256sums=('b1ae62beb7907d99802b74821d5198bd54a7456df1116d317da653bde8ce6388'
             '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
             SKIP
