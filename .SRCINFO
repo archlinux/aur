@@ -1,6 +1,6 @@
 pkgbase = r-gam
 	pkgdesc = Generalized Additive Models
-	pkgver = 1.22.2
+	pkgver = 1.22.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gam
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-gam
 	depends = r-foreach
 	optdepends = r-interp
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/gam_1.22-2.tar.gz
-	sha256sums = fe737f45229448b98b4fe2c0a3193d4cd2de43a1415f1fa25e4ec4c5a0ca02fa
+	source = https://cran.r-project.org/src/contrib/gam_1.22-3.tar.gz
+	sha256sums = 66cd688e3b86b9a4ee8ec565ebc8a19aa45e0a282e6de40ef2b78d6846787194
 
 pkgname = r-gam
