@@ -1,13 +1,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
 pkgver=3.5.0.r0.g8e153e2
-pkgrel=2
+pkgrel=3
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'qt6-base' 'hicolor-icon-theme')
 makedepends=('cmake' 'git' 'gcc')
+optdepends=('qt6-wayland: Wayland support')
 conflicts=('vpkedit' 'vpkedit-bin')
 replaces=('vpkedit')
 source=("$pkgname::git+$url.git"
