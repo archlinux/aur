@@ -3,7 +3,7 @@ pkgbase=python-astropy-healpix
 _pyname=astropy_healpix
 _pname=${pkgbase#python-}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="BSD-licensed HEALPix for Astropy"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "https://lambda.gsfc.nasa.gov/data/map/dr3/skymaps/5yr//wmap_band_imap_r9_5yr_K_v3.fits"
         'fix_deprecation_warning.patch'
         'use_local_doc_fits.patch')
-md5sums=('85081b219729aa87fe45c7ddf06ea2f0'
+md5sums=('b17d22ebea6b62e10ba5f821dcb8060d'
          'f183da2392e37b9b424e9866d7bca559'
          '71e532a1fed7a57d4ccf0d3e41035dd8'
          '6fc85696c0103b265309db0fa3339b33')
@@ -38,7 +38,6 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
 #   sed -i -e "/oldest-supported-numpy/d" -e "/\"extension-helper/s/,/\]/" pyproject.toml
-    sed -i "/\"numpy/s/==/>=/" pyproject.toml
     cp ${srcdir}/wmap_band_imap_r9_5yr_K_v3.fits docs
     patch -Np1 -i "${srcdir}/use_local_doc_fits.patch"
 }
