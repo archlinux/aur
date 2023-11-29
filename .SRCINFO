@@ -1,0 +1,25 @@
+pkgbase = r-rspectral
+	pkgdesc = Spectral Modularity Clustering
+	pkgver = 1.0.0.10
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rSpectral
+	arch = x86_64
+	license = GPL2
+	checkdepends = r-igraphdata
+	checkdepends = r-testthat
+	makedepends = r-rcpparmadillo
+	depends = blas
+	depends = lapack
+	depends = r-graph
+	depends = r-igraph
+	depends = r-rcpp
+	depends = r-rdpack
+	optdepends = r-igraphdata
+	optdepends = r-rcolorbrewer
+	optdepends = r-rgraphviz
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/rSpectral_1.0.0.10.tar.gz
+	md5sums = 53afeed2a8faf838905764c2e67b968a
+	sha256sums = ddc03a1a1c11088f66ad55613ae389c252c60e819570c998a8cf2832a9f4cf89
+
+pkgname = r-rspectral
