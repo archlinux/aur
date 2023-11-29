@@ -2,25 +2,25 @@
 
 pkgname=duckypad-git
 _pkgname=duckyPad
-pkgver=r902.62e2b6cb
+pkgver=r997.5ce12a12
 pkgrel=1
 pkgdesc="duckyPad configurator (git)"
 arch=('any')
-url="https://github.com/jose1711/duckyPad"
+url="https://github.com/dekuNukem/duckyPad"
 license=('MIT')
 provides=('duckypad')
 install=duckypad.install
 conflicts=('duckypad')
 depends=('python-hidapi' 'python-appdirs' 'python-pyautogui' 'tk' 'duckypad-udev')
 makedepends=('git' 'imagemagick' 'gendesk')
-source=("$pkgname"::"git+https://github.com/jose1711/${_pkgname}#branch=pythonhid" "duckypad_config.sh" "duckypad.rules")
+source=("$pkgname"::"git+https://github.com/dekuNukem/${_pkgname}" "duckypad_config.sh" "duckypad.rules")
 sha256sums=('SKIP'
             '922d72e28044cf0f524d8e56ecaf9b205a5f29df5ada41071f8a3b1425406bc3'
             '4ef8c49f2842f7a5ede9a6644be2a710bfcb43f074119c0c2abc29926169b06d')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  convert pc_software/duckyscript1/icon.ico duckyPad.png
+  convert pc_software/_icon.ico duckyPad.png
   gendesk -f -n --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "duckypad_config" --categories "Utility;Accessibility"
 }
           
@@ -31,9 +31,9 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  for i in autogui ds_syntax_check duckypad_config check_update duck_objs hid_op
+  for i in pc_software/*.py
   do
-    install -Dm755 pc_software/duckyscript1/$i.py "${pkgdir}/usr/share/duckypad/$i.py"
+    install -Dm755 $i "${pkgdir}/usr/share/duckypad/$(basename $i)"
   done
   install -Dm755 "${srcdir}/duckypad_config.sh" "${pkgdir}/usr/bin/duckypad_config"
 

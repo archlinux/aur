@@ -1,8 +1,8 @@
 pkgbase = duckypad-git
 	pkgdesc = duckyPad configurator (git)
-	pkgver = r902.62e2b6cb
+	pkgver = r997.5ce12a12
 	pkgrel = 1
-	url = https://github.com/jose1711/duckyPad
+	url = https://github.com/dekuNukem/duckyPad
 	install = duckypad.install
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = duckypad-git
 	depends = duckypad-udev
 	provides = duckypad
 	conflicts = duckypad
-	source = duckypad-git::git+https://github.com/jose1711/duckyPad#branch=pythonhid
+	source = duckypad-git::git+https://github.com/dekuNukem/duckyPad
 	source = duckypad_config.sh
 	source = duckypad.rules
 	sha256sums = SKIP
