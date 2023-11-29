@@ -1,6 +1,6 @@
 pkgbase = debops
 	pkgdesc = Your Debian-based data center in a box
-	pkgver = 3.0.5
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://debops.org/
 	arch = any
@@ -24,10 +24,10 @@ pkgbase = debops
 	optdepends = python-ldap: required by Ansible "ldap_*" modules
 	optdepends = python-passlib: required by Ansible "password" lookup plugin
 	conflicts = depops-git
-	source = debops-3.0.5.tar.gz::https://github.com/debops/debops/archive/v3.0.5.tar.gz
-	source = https://github.com/debops/debops/releases/download/v3.0.5/debops-3.0.5.tar.gz.asc
+	source = debops-3.1.0.tar.gz::https://github.com/debops/debops/archive/v3.1.0.tar.gz
+	source = https://github.com/debops/debops/releases/download/v3.1.0/debops-3.1.0.tar.gz.asc
 	validpgpkeys = 27067A91D620EE91D50309D92DCCF53E9BC74BEC
-	sha512sums = cf2ab9328ac31ff86f1b192bffd791f9f22037efb34e90da7f1df8c13ee97c4b4216ecdf91d0a02ef2ddeba91cf7226fbae525e080ae53b1adca18b63ec30fee
+	sha512sums = d4a7871a9fafed9e4d134b43c2b6df4d54c996c8d46217d69965526edb350537529dd56658a1012f2744e809a0f17a6592e6d9d5e6d1668583d21d791bbc8a52
 	sha512sums = SKIP
 
 pkgname = debops
