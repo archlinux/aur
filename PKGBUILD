@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatstat.random
-_pkgver=3.2-1
+_pkgver=3.2-2
 pkgname=r-${_pkgname,,}
-pkgver=3.2.1
-pkgrel=3
+pkgver=3.2.2
+pkgrel=1
 pkgdesc="Random Generation Functionality for the 'spatstat' Family"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-spatstat.model
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('925421aeb7befa88a1f28d2bfa113630099b5edb75e04b04d3b0ed9bb1af31dc')
+sha256sums=('48c6ee4c51ac50e4bf939118f9e5f94470529c0ee608b628ce4de79bfe813a07')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
