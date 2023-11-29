@@ -19,9 +19,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare () {
   cd "$srcdir"/oneTBB-${pkgver}
   sed -i "/TBB_LIB_LINK_FLAG/d" cmake/compilers/GNU.cmake
-
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=90458
-  sed -i '/-fstack-clash-protection/d' cmake/compilers/GNU.cmake
 }
 
 build() {
