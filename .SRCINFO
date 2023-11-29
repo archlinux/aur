@@ -1,0 +1,15 @@
+pkgbase = r-clustercons
+	pkgdesc = Consensus Clustering using Multiple Algorithms and Parameters
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=clusterCons
+	arch = any
+	license = GPL3
+	depends = r-apcluster
+	depends = r-rcolorbrewer
+	optdepends = r-latticeextra
+	source = https://cran.r-project.org/src/contrib/clusterCons_1.2.tar.gz
+	md5sums = fc9dc671ef0e4e5574a319bd1bca10c4
+	sha256sums = d840cef46da3037ac7b61d604b0989d681cfe392248abeaa88de957531333ecc
+
+pkgname = r-clustercons
