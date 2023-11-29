@@ -1,8 +1,8 @@
 # Maintainer: Alexis Belmonte <alexbelm48@gmail.com>
 pkgname="notify-git"
-pkgrel=2
+pkgrel=3
 pkgdesc="ntfy.sh client application to receive everyday's notifications"
-pkgver=0.1.3_bbca7a4
+pkgver=0.1.4_b7462ec
 arch=('x86_64')
 url="https://github.com/ranfdev/Notify"
 license=('GPL3')
