@@ -25,8 +25,10 @@ pkgbase = firefox-beta-bin
 	source = https://archive.mozilla.org/pub/firefox/candidates/121.0b5-candidates/build1/linux-x86_64/en-US/firefox-121.0b5.tar.bz2
 	source = firefox-beta.sh
 	source = firefox-beta-bin.desktop
+	source = policies.json
 	sha256sums = afecb7f9572e7fbbee4107b044038ff0ce7b2f4c974a9c260ebd77f99e9f8060
 	sha256sums = 4bec62032e49c28ff27750abddbdbdbb1a4b5cba719c39498968fe53adee790b
 	sha256sums = 210f13ea47c4b96387f26ee7fc4dfc5c192cfb169aef2a13303fbd1ee58b3761
+	sha256sums = 2d7e8d947c392142dba0c80a7e5ecfdf14f7783e24885ab417d4224574b8c4f8
 
 pkgname = firefox-beta-bin
