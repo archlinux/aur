@@ -3,7 +3,7 @@
 # an on Hurrican PKGBUILD by Stefan Schmidt <thrimbor gmail com>
 
 pkgname=hurrican-git
-pkgver=1.0.9.3.r363.g67da195
+pkgver=1.0.9.3.r371.g8babd61
 pkgrel=1
 pkgdesc="Freeware jump and shoot game based on the Turrican game series (development version)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('custom: MIT')
 depends=('sdl2_image' 'sdl2_mixer' 'libepoxy')
 makedepends=('git' 'mesa' 'cmake')
 conflicts=('hurrican')
-source=(hurrican::"git+https://github.com/thrimbor/hurrican.git"
+source=(hurrican::"git+https://github.com/HurricanGame/Hurrican.git"
         hurrican.desktop
         hurrican.png)
 sha256sums=('SKIP'

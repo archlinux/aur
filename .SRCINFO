@@ -1,6 +1,6 @@
 pkgbase = hurrican-git
 	pkgdesc = Freeware jump and shoot game based on the Turrican game series (development version)
-	pkgver = 1.0.9.3.r363.g67da195
+	pkgver = 1.0.9.3.r371.g8babd61
 	pkgrel = 1
 	url = http://hurrican.sourceforge.net
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = hurrican-git
 	depends = sdl2_mixer
 	depends = libepoxy
 	conflicts = hurrican
-	source = hurrican::git+https://github.com/thrimbor/hurrican.git
+	source = hurrican::git+https://github.com/HurricanGame/Hurrican.git
 	source = hurrican.desktop
 	source = hurrican.png
 	sha256sums = SKIP
