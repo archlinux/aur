@@ -19,7 +19,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 makedepends=('perl-file-slurp' 'perl-lwp-protocol-https' 'perl-switch')
 provides=("firefox=$pkgver")
 conflicts=("firefox-beta-bin")
-source=('firefox-beta-bin.desktop' 'ff-downloader.pl' 'firefox-beta.sh')
+source=('firefox-beta-bin.desktop' 'ff-downloader.pl' 'firefox-beta.sh' 'policies.json')
 
 build() {
   perl ff-downloader.pl -v $pkgver
@@ -30,6 +30,7 @@ package() {
   mkdir -p "${pkgdir}"/usr/{lib,bin,share/applications}
 
   cp -r firefox "${pkgdir}/usr/lib/${_pkgname}"
+  install -m644 "${srcdir}/policies.json" -D -t "${pkgdir}/usr/lib/${_pkgname}/policies/"
   install -m755 "${srcdir}/firefox-beta.sh" "${pkgdir}/usr/bin/firefox-beta"
 
   # Use system-provided dictionaries and hyphenation
@@ -48,4 +49,5 @@ package() {
 }
 md5sums=('4c0ca11a8034b53c0c5b7b9830442cd7'
          'b4d5afd97c8ac229f6027d7853c73c0c'
-         '68c9e357994d714b25f91be9db2a8594')
+         '68c9e357994d714b25f91be9db2a8594'
+         '52dd66218eaa583c70790fde3bf74045')

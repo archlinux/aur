@@ -26,8 +26,10 @@ pkgbase = firefox-beta-bin-all-localizations
 	source = firefox-beta-bin.desktop
 	source = ff-downloader.pl
 	source = firefox-beta.sh
+	source = policies.json
 	md5sums = 4c0ca11a8034b53c0c5b7b9830442cd7
 	md5sums = b4d5afd97c8ac229f6027d7853c73c0c
 	md5sums = 68c9e357994d714b25f91be9db2a8594
+	md5sums = 52dd66218eaa583c70790fde3bf74045
 
 pkgname = firefox-beta-bin-all-localizations
