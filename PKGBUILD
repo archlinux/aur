@@ -1,7 +1,7 @@
 # Maintainer: André Kugland <kugland@gmail.com>
 
 pkgname=pingme
-pkgver=
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="PingMe is a CLI tool which provides the ability to send messages or alerts to multiple messaging platforms & email."
 url='https://pingme.lmno.pk'
@@ -12,7 +12,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/kha7iq/${pkgname}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+  5a199ddee57685593efb7ada85b4ff6534098dbab9c67eb1023c1d9416f50de3
 )
 
 build() {

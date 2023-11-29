@@ -1,6 +1,6 @@
 pkgbase = pingme
 	pkgdesc = PingMe is a CLI tool which provides the ability to send messages or alerts to multiple messaging platforms & email
-	pkgver = 
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://pingme.lmno.pk
 	arch = i686
