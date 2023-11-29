@@ -1,7 +1,7 @@
 pkgbase = r-grbase
 	pkgdesc = A Package for Graphical Modelling in R
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=gRbase
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-grbase
 	optdepends = r-knitr
 	optdepends = r-microbenchmark
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/gRbase_2.0.0.tar.gz
-	sha256sums = 9b90c4615f103369a8a4500f53800e4fde9948770ce465ce7a950433d46fd942
+	source = https://cran.r-project.org/src/contrib/gRbase_2.0.1.tar.gz
+	sha256sums = 1ee49352854954b469bd23eeb1b044b54fe622c4f214d8291f57bc1444c781a9
 
 pkgname = r-grbase
