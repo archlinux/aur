@@ -2,7 +2,7 @@
 # https://github.com/dnaka91/pkgbuilds
 
 pkgname=obs-advanced-masks
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Advanced Masking Plugin for OBS"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('gcc-libs' 'glibc' 'obs-studio')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}a.tar.gz")
-b2sums=('97a838bab72306310a245c6c2d341fe81229d0c3c41e607f54e6514ef015a447e40be51e5f96f8da7a437945e6085af599e50e9f51e590e55aaee4c3ede76d5e')
+b2sums=('d78427904c1a7a06ccf248410f59c961b3955b3569b2a8d16fbb3538b5db111033d21931c7dc2b629b69fe362621db7f56d32088c8fc501fb26469811bcb30b4')
 
 build() {
   cmake -B build -S "$pkgbase-${pkgver}a" \
