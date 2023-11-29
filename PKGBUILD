@@ -1,7 +1,7 @@
 # Maintainer: wuxxin <wuxxin@gmail.com>
 
 _ENABLE_CUDA=0
-_ENABLE_ROCM=1
+_ENABLE_ROCM=0
 _GO_TAGS=""
 # _GO_TAGS="tts stablediffusion"
 _OPTIONAL_BACKENDS=""
@@ -18,7 +18,7 @@ _pkgname="localai"
 pkgbase="${_pkgname}-git"
 pkgname=("${pkgbase}")
 pkgver=v1.40.0.60.gfd1b7b3
-pkgrel=4
+pkgrel=5
 pkgdesc="The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
