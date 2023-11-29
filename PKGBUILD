@@ -1,28 +1,24 @@
 # Maintainer: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgname=matrix-appservice-telegram
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/mautrix/telegram"
-depends=('python' 'python-telethon-session-sqlalchemy<0.3' 'python-telethon-tulir-git>=v1.30.0a2' 'python-ruamel-yaml' 'python-commonmark' 'python-mautrix>=0.20.2' 'python-mautrix<0.21' 'python-aiohttp' 'python-magic' 'python-yarl' 'python-mako')
-makedepends=('python' 'python-pip' 'python-setuptools')
+depends=('python-ruamel-yaml' 'python-magic' 'python-commonmark' 'python-aiohttp' 'python-yarl' 'python-mautrix>=0.20.3' 'python-mautrix<0.21' 'python-telethon-tulir-git>=v1.33.0a1' 'python-asyncpg' 'python-mako')
+makedepends=('python-pip' 'python-setuptools')
 optdepends=('python-cryptg: Uses native code for Telegram crypto stuff instead of pure Python'
-#            'python-cchardet: For faster encoding detection'
             'python-aiodns: For asyncronous DNS requests'
-            'python-pillow: WebP <-> PNG conversion for stickers'
+            'brotli: speedups'
+            'python-pillow: Login with QR code'
             'python-qrcode: Login with QR code'
-            'python-moviepy: High quality thumbnails for Telegram->Matrix gifs and videos'
-            'python-numpy: High quality thumbnails for Telegram->Matrix gifs and videos'
-            'python-psycopg2: PostgreSQL support'
-            'python-asyncpg: End-to-bridge encryption support'
-            'python-olm: End-to-bridge encryption support'
-            'python-unpaddedbase64: End-to-bridge encryption support'
-            'python-pycryptodome: End-to-bridge encryption support'
-            'lottieconverter-git: convert WebP to GIF or WEBM'
+            'python-phonenumbers: formatted numbers'
             'python-prometheus_client: metrics upload'
-            'brotli'
-            'python-phonenumbers'
+            'python-olm: End-to-bridge encryption support'
+            'python-pycryptodome: End-to-bridge encryption support'
+            'python-unpaddedbase64: End-to-bridge encryption support'
+            'python-aiosqlite: SQLite support'
+            'python-python-socks: Proxy support (asyncio)'
             )
 install=mautrix-telegram.install
 license=('AGPLv3')
@@ -33,7 +29,7 @@ source=("${pkgname}-${pkgver/_rc/-rc}.tar.gz"::"https://github.com/mautrix/teleg
         'mautrix-telegram.service'
         'mautrix-telegram.sysusers'
         'mautrix-telegram.tmpfiles')
-sha256sums=('8071beb09970d7a337e1a1f7700ecd3f4ef774ba51f2e7199f0216883f023786'
+sha256sums=('93060a58be005f441402e569d9ba3ad84bdc51e551a2e2d40b5e7e2b01f2413e'
             '38f0f7e3b8e94cba2eef643e473e3d63025310e47a5d2e5122a8930a0cbf5346'
             'e069958db276309d00864ee3dded5700b78806c82663346aa2ef6878e2c0566b'
             'edbde9814355756b624fdc58326a5830f82156802166a9f6001b67cf21d5f6f8')
