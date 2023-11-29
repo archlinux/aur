@@ -170,7 +170,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.6
-_minor=2
+_minor=3
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -180,7 +180,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux kernel with RT patches by CachyOS with other patches and improvements'
-pkgrel=3
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -202,7 +202,7 @@ if [ "$_cpusched" = "sched-ext" ]; then
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=545.29.02
+_nv_ver=545.29.06
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
@@ -218,7 +218,7 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=043c6ee3b6bfb55f8d36e1f048ff13128c279fb8")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=d38565b5ac3ecbf9dde7e8f7d71f4620a9cea9f9")
 fi
 
 # NVIDIA pre-build module support
@@ -679,9 +679,6 @@ build() {
         local CONFIGURE_FLAGS=()
         [ "$_use_llvm_lto" != "none" ] && CONFIGURE_FLAGS+=("KERNEL_LLVM=1")
 
-        export KCPPFLAGS+=' -Wno-error=uninitialized'
-        export KCFLAGS+=' -Wno-error=uninitialized'
-
         ./autogen.sh
         sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
         ./configure ${CONFIGURE_FLAGS[*]} --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
@@ -847,7 +844,6 @@ _package-schedulers() {
    install -Dm755 scx_central "$pkgdir"/usr/bin/scx_central
    install -Dm755 scx_flatcg "$pkgdir"/usr/bin/scx_flatcg
    install -Dm755 scx_layered "$pkgdir"/usr/bin/scx_layered
-   install -Dm755 scx_nest "$pkgdir"/usr/bin/scx_nest
    install -Dm755 scx_pair "$pkgdir"/usr/bin/scx_pair
    install -Dm755 scx_qmap "$pkgdir"/usr/bin/scx_qmap
    install -Dm755 scx_rusty "$pkgdir"/usr/bin/scx_rusty
@@ -866,9 +862,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('88fc55107834d4308d33547211a031674ffaa8e48e23d6612ba39430292b18073d49271bd3ce8c7be01d8c5668482cb1715071abfd9b1f75b06468a09f8f4eec'
+b2sums=('cd0d70316592fface23a6eddb9d0f8b0c67593f5466388043ebd68613be4eabc3e7c712ce758fa63dd11603101d9d91e22b3552b436bbd1c76f8e19208d7bf22'
         '5ddb5dcdb79354268e69d01523f06d5071538ba53171adcef0dd455b286df7785611d64f13b3aae06ac298cc60d990ebfa7b11d75dec9ab4a256b431de549483'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        '1337c4884d270cd77ec0873c0e5fdeffc2ea174f88feb235ef661dbbcbf8f40bc298cc61aa2c44e9bf7d95b85958d20ae84a4b3613ea1a351e0741213affe41d'
-        '661077d3d9d03ed7c7bc54c4ca241ae7775844582973ca03a64c0458a56cb558ecd15944259d6c9be3b74f994b2b0504c0bc14ffe1c960bffaad90361ee9cd28'
+        'e56bb1bbedd7db10d9b7dcc02bd1e121c6338533ddd16bd9c7aeae660d62004b6e0b02aee824325e974e94cdbaeefdad436eb284ebb3cdd825606631ae49134d'
+        '22bd0ab3bf6718a81038f18c67ea216ee5144d263ac60d355db5be3dd8f62560202bcf733d115c962c4b4bd33fa23f6acafb8b965f8a34b9bf9ef2ac98ae68ab'
         'e395035f1b0b944beca434c1e24264342088365de267cbb83b111f02a029fc78145aec73c14e458bd3ad648c8bb2c2ef30c2ff091b1dad2f9b754ecbeb45e41b')
