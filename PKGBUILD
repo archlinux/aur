@@ -13,7 +13,7 @@
 
 pkgname=discord-electron
 _pkgname=discord
-pkgver=0.0.35
+pkgver=0.0.36
 pkgrel=1
 _electronver=24
 _electronname="electron${_electronver}"
@@ -35,7 +35,7 @@ optdepends=(
 )
 source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 	'discord-launcher.sh')
-sha512sums=('a0f1db24e38a2d48ea8521a7e8e638a401bdfc407b64e21c7a0dde241eb10e4988fcdc916ed13d45012ae4ce25b3c53d36bf97b011cf569cb81e9f1b7c2d6eeb'
+sha512sums=('e72ed0e559ebc8ad24c3aa41011af408aa5d3d1c4561cca3f16345aa3a5e18326017564ff2f4a3c1bf1e84f00333e206557cebad2f483c6a1c71bf48df23546b'
             '723250b70c7f5367701675c6581e9eac2143263910c4ffc35957a6ab858492c5febe89ea0d46fce19ac1416c23d9ca3953e48b9db5aa174b4a401fb6efa5daf5')
 
 _krisp_b2sum='e36c3308b34e96f4c33425bb1d7ac0d8130fa5450c9db2ee3fbdbfa10887ab15f3ec06f9fdbd446553f9224052af0705a0eebfc92b55776a33a9cfdf0c3c53e4'
