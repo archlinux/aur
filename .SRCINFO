@@ -1,20 +1,18 @@
 pkgbase = 20kly
 	pkgdesc = 20'000 Light Years Into Space game
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jwhitham.org/20kly/
 	arch = any
 	license = GPL
-	checkdepends = python-pytest
-	checkdepends = python-coverage
-	checkdepends = mypy
-	depends = python-pygame
+	checkdepends = python-pytest>=6.2
+	checkdepends = python-pytest-cov>=2.11
+	depends = python>=3.6
+	depends = python-pygame>=2.0
 	depends = glpk
-	provides = 20kly
 	source = 20kly.tar.gz::https://github.com/20kly/20kly/archive/refs/tags/v1.5.0.tar.gz
 	source = 0001-fix-lightyears-path.patch
 	md5sums = 1e698cd23bf6e016c59b984660a2d47b
 	md5sums = SKIP
 
 pkgname = 20kly
-
