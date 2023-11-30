@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-networkauth
 	pkgdesc = Network authentication module (mingw-w64)
-	pkgver = 6.6.0
+	pkgver = 6.6.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-qt6-networkauth
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.6/6.6.0/submodules/qtnetworkauth-everywhere-src-6.6.0.tar.xz
-	sha256sums = 20d5c0746c00eb3333f17c9869296d0acd0eed93518ea2734b98405cc6cc8830
+	source = https://download.qt.io/official_releases/qt/6.6/6.6.1/submodules/qtnetworkauth-everywhere-src-6.6.1.tar.xz
+	sha256sums = 693e11945b22735fc9b1662cad53c60098882d301c4f4a3e13c01bcc41c00d49
 
 pkgname = mingw-w64-qt6-networkauth
