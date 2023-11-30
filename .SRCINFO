@@ -1,12 +1,12 @@
 pkgbase = office-code-pro
 	pkgdesc = Customized version of Source Code Pro font
-	pkgver = 1.004
-	pkgrel = 3
-	url = https://github.com/nathco/Office-Code-Pro
+	pkgver = 1.004+1
+	pkgrel = 1
+	url = https://github.com/phooky/Office-Code-Pro
 	arch = any
 	license = custom: SIL Open Font License 1.1
-	source = Office-Code-Pro-1.004.tar.gz::https://github.com/nathco/Office-Code-Pro/archive/1.004.tar.gz
-	sha256sums = 9bca923d17f6c47a586d8e4567d46ccfa58fb8b8e2247b5ee2a19da1597c58f6
+	makedepends = git
+	source = Office-Code-Pro::git+https://github.com/phooky/Office-Code-Pro#commit=d8fe9b1655a449d5fa4952d8388a626bfd87d652
+	sha256sums = SKIP
 
 pkgname = office-code-pro
-
