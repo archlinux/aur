@@ -10,10 +10,10 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.7.3')
+provides=('gdal=3.8.0')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.7.3
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
@@ -21,15 +21,15 @@ url="https://gdal.org/"
 license=('custom')
 depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
          'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c' 'arrow' 'pcre2'
-# needed for ecw support:
-'libecwj2' )
+         # needed for ecw support:
+         'libecwj2')
 
 makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
              libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
              openssl pcre2 libpng podofo-0.9 poppler postgresql-libs qhull
-             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd)
+             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec)
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl: perl binding support'
@@ -38,12 +38,18 @@ optdepends=('postgresql: postgresql database support'
 )
 options=('!emptydirs')
 changelog=$pkgbase.changelog
-source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('743ce2d8027fb228630a2951af2de8ac7fb5fa0b32124d58fb545ac61fdf5240f17ae85cfdcab51ea5e1b4e2311b55af4c7bbdfe82c6ed5ea180a5c8b254ccfd')
+source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
+        https://github.com/OSGeo/gdal/commit/cbed9fc9.patch
+        https://github.com/OSGeo/gdal/commit/ec33f6d6.patch)
+b2sums=('646aa91283e7228a054221d120bddb456c8b898f9155edd289f2b2e0bf8706fa3045a98d26e4cf5ba5dba6d8c1c7f0a7f4aaaded9457481a65910c2d313c8f9d'
+        'e75eb8edb5507450ded3bca618a03a283ba49791df416b0a7732f859d93124704e8508fcd11271bbbeef299d05d3ad2df9e03bd805580445407cb6b8c003a98e'
+        '5c0abcfcfbb0ca2a96156abb4c7daaf4860fa30d553228172eb8def8b2f95e93bae9217974fba9621dcf9921e906a5ada9b710b1c0b29e7e580191a0a56a76e2')
+
 
 prepare() {
-# Fix build with podofo-0.9
-  sed -e 's|podofo.h|podofo/podofo.h|' -i $_pkgbase-$pkgver/frmts/pdf/pdfsdk_headers.h
+# Fix build with libxml2 2.12
+  patch -d $_pkgbase-$pkgver -p1 < cbed9fc9.patch
+  patch -d $_pkgbase-$pkgver -p1 < ec33f6d6.patch
 }
 
 build() {
@@ -91,14 +97,13 @@ build() {
     -DGDAL_USE_QHULL=ON \
     -DGDAL_USE_SPATIALITE=ON \
     -DGDAL_USE_SQLITE3=ON \
+    -DGDAL_USE_TIFF_INTERNAL=ON \
+    -DGDAL_USE_GEOTIFF_INTERNAL=ON \
     -DGDAL_USE_TIFF=ON \
     -DGDAL_USE_WEBP=ON \
     -DGDAL_USE_XERCESC=ON \
     -DGDAL_USE_ZLIB=ON \
-    -DGDAL_USE_ZSTD=ON \
-    -DGDAL_USE_ZSTD=ON \
-    -DPODOFO_INCLUDE_DIR=/usr/include/podofo-0.9 \
-    -DPODOFO_LIBRARY=/usr/lib/podofo-0.9/libpodofo.so \
+    -DGDAL_USE_ZSTD=ON
     $opt_libs
   make -C build
 }
