@@ -1,0 +1,15 @@
+pkgbase = nxcore-git
+	pkgdesc = Base libraries for NX
+	pkgver = 0.99
+	pkgrel = 1
+	url = https://git.weitnahbei.de/nullmark/little_blue_man
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = nxcore
+	conflicts = nxcore
+	source = nxcore::git+http://git.weitnahbei.de/nullmark/nxcore
+	sha256sums = SKIP
+
+pkgname = nxcore-git
