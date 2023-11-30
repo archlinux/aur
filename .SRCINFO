@@ -1,0 +1,14 @@
+pkgbase = sonycardscanner
+	pkgdesc = Утилита для работы с камерами Sony
+	pkgver = 0.0.1.7
+	pkgrel = 1
+	url = https://git.alexavr.ru/ZAvrikDinozavrik/SonyCardScanner
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = libraw
+	depends = opencv
+	source = sonycardscanner-0.0.1.7-linux.tar.gz::https://git.alexavr.ru/ZAvrikDinozavrik/SonyCardScanner/archive/v0.0.1.7.tar.gz
+	b2sums = SKIP
+
+pkgname = sonycardscanner
