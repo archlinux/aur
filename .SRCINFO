@@ -1,6 +1,6 @@
 pkgbase = cosmic-edit-git
 	pkgdesc = COSMIC Text Editor
-	pkgver = r46.26c669b
+	pkgver = r218.54362ec
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-edit
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = cosmic-edit-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = just
+	depends = cosmic-icons
 	depends = gtk3
 	depends = libxkbcommon
 	depends = wayland
