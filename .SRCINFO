@@ -1,18 +1,18 @@
 pkgbase = lean4-bin
 	pkgdesc = An interactive theorem prover
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://leanprover.github.io/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	optdepends = bash
-	provides = lean4=4.2.0
+	provides = lean4=4.3.0
 	conflicts = lean4
 	options = staticlibs
-	source_x86_64 = https://github.com/leanprover/lean4/releases/download/v4.2.0/lean-4.2.0-linux.tar.zst
-	sha256sums_x86_64 = 6a80e23855505ce489bb1abb2a3e81c761cd0d8dd541e8e55c93a8f19fd8fa19
-	source_aarch64 = https://github.com/leanprover/lean4/releases/download/v4.2.0/lean-4.2.0-linux_aarch64.tar.zst
-	sha256sums_aarch64 = 675ffabd4a37e34e17b2b2590fb125425f70609e42c1a4f4bad3b30b96c61dfc
+	source_x86_64 = https://github.com/leanprover/lean4/releases/download/v4.3.0/lean-4.3.0-linux.tar.zst
+	sha256sums_x86_64 = 9b9f4d27e1a2b91cfb216bcacde5001b8fde01bf90a907264b2a4d48b3967612
+	source_aarch64 = https://github.com/leanprover/lean4/releases/download/v4.3.0/lean-4.3.0-linux_aarch64.tar.zst
+	sha256sums_aarch64 = 6525ec76e2e70c7f1e119824ceb4f7ba127aaef5cff7d862abd15fbe96bd69d9
 
 pkgname = lean4-bin
