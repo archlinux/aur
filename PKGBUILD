@@ -1,30 +1,36 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockoon
-pkgver=5.1.0
+pkgver=6.0.0
+_electronversion=26
 pkgrel=1
 pkgdesc="The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source."
 arch=('any')
 url="https://mockoon.com/"
-_githuburl="https://github.com/mockoon/mockoon"
+_ghurl="https://github.com/mockoon/mockoon"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'bash'
-    'electron26'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
     'asar'
     'npm'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip"
-    "${pkgname}.sh")
-sha256sums=('caa03ca74927123d701cc8666812fe3a299a3b02be3cea2cfff255eff8433a44'
-            '07130e9010487eeb413ff80c635d47a135fe3b8b2ac81d36e337535a4a0f142d')
+    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}.sh"
+)
+sha256sums=('SKIP'
+            'baf2753aa0e915f0ddf7f6b4654c1d02af6356a084c3e1db3f8ef37b80eee78e')
 build() {
     gendesk -q -f -n --categories "Development" --name "${pkgname}" --exec "${pkgname}"
+    sed -i "s|@electronversion@|${_electronversion}|" "$srcdir/${pkgname%-bin}.sh"
+    export npm_config_build_from_source=true
+    export npm_config_cache="$srcdir/npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     cd "${srcdir}/${pkgname}-${pkgver}"
     npm run bootstrap
     npm run build:libs
