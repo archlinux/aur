@@ -1,6 +1,6 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=sgsearch
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="SGSearch is a frontend to the find and grep commands allowing respectively to search for file names or file content. It is meant to be a companion to file managers like Thunar (extension is provided) and works over GVFS."
 url="https://sgsearch.tuxfamily.org/"
@@ -15,7 +15,7 @@ backup=()
 install=
 source=("https://download.tuxfamily.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('2edc55530080a782013cdb0eb8c006a35205b2ad59f979df7ace7c54d3c07f6b')
+sha256sums=('c8dd909fc589adf97dee9ed1118e8f113eff2bd24964de21479a775eca234b12')
 
 build() {
   cd ${pkgname}-${pkgver}
