@@ -8,15 +8,15 @@
 
 pkgname=cinnamon-disable-nm
 _origpkgname=cinnamon
-pkgver=5.8.4
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="Linux desktop which provides advanced innovative features and a traditional user experience (without NetworkManager version)"
 arch=(x86_64)
 url="https://github.com/linuxmint/cinnamon"
 license=(GPL2)
 depends=(accountsservice caribou cinnamon-control-center cinnamon-menus cinnamon-screensaver
          cinnamon-session cinnamon-settings-daemon cjs gnome-backgrounds gsound
-         gstreamer libgnomekbd libkeybinder3 librsvg muffin
+         gstreamer libcroco libgnomekbd libkeybinder3 librsvg muffin
          nemo polkit-gnome python-cairo python-dbus
          python-gobject python-pam python-pexpect python-pillow python-pyinotify
          python-pytz python-tinycss2 python-xapp python-requests timezonemap xapps xdg-desktop-portal-xapp)
@@ -36,16 +36,13 @@ conflicts=('cinnamon')
 provides=('cinnamon')
 source=(${url}/archive/${pkgver}/${_origpkgname}-${pkgver}.tar.gz
         set_wheel.diff
-        default-theme.patch
-        https://github.com/linuxmint/cinnamon/commit/fce9aad1.patch)
-sha512sums=('2eaa253cdd01f00cca05ed123db59fde27f84cc24d7b8a3ec751a5f8252642870cbece941d1101f31fe0db43c15d9779bbdcacbf7037757569a4d17205cb10ad'
+        default-theme.patch)
+sha512sums=('1c319a8e2623f0f3cb412b667645db796cd22b85873d6cff7ad75f4c41138c157539d4cc78565c1e17f45b7d9970c0e0992729a53259fb09236e1dfcfd9ca396'
             'fd7e117054996ed1c3dfd0f968c2bf98ca4fcee9a100221f8839a232147745ec0140e1f68eeffba58a3c44f66f26e05d433648a7a28858ec669524f7266ba04c'
-            'ee7dedd59ea370cf81d75def49060f9a29b22e7b025ca7d5db87a0102d50f138c79aa562b0d36a748c4b1c59a37f600ba1f60ff6caf303cf5b6fc4d110d051b4'
-            'e20a3aed4f400367b47e2f47ec15ae2486f4bcb270ebe7c63583d62a757b4cf2fb863169e9fa8d343b954d61f98f5b31bac59a0ffa2a53ebb86bc57716327054')
-b2sums=('4c3f452480b9e3ce7713221f1b76c475204b8dc1bb34d42a8faf492b0ca86416bb2fbd3849a7f048fef672ecf4613f06c645ec548159b6c3662b7602142e75e6'
+            'ee7dedd59ea370cf81d75def49060f9a29b22e7b025ca7d5db87a0102d50f138c79aa562b0d36a748c4b1c59a37f600ba1f60ff6caf303cf5b6fc4d110d051b4')
+b2sums=('d1f107f6c8ef4fac208b319d823af6aa90b9840a45bd07ca8a8ccad749206d37e94befd9e93a861d19778dca5b190b72bb1df273947f68b560b40207265700a7'
         '3becf1f40068fc629109e6e7d464c3c484296afacc9ab6328b2ccbb3c9735bcbfa9550f9f73b430ede178ae668e37c660ce322b5b4d1873526de3d3d41185160'
-        '86c3a29acd132ca321f08fd81dd5a45707accdc035b2aeec95bf358b29072ff1eedb77b2566cf48d7253d1d791599f0f44938c4600761d711cb18b59019f1c62'
-        'dfdd64a2ded18ab3dd7becdeadae1e31423e545036fe432509e72acae8ea35e976222ec2b36ea73c17b99a0687ac1b738d9d20873cf6d9e3018839837f9fa46f')
+        '86c3a29acd132ca321f08fd81dd5a45707accdc035b2aeec95bf358b29072ff1eedb77b2566cf48d7253d1d791599f0f44938c4600761d711cb18b59019f1c62')
 
 prepare() {
   cd ${_origpkgname}-${pkgver}
@@ -67,9 +64,6 @@ prepare() {
   # Cinnamon has no upstream backgrounds, use GNOME backgrounds instead
   sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-properties|' \
       files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
-
-  # Fix displaying backgroups in settings
-  patch -p1 < ../fce9aad1.patch
 }
 
 build() {
