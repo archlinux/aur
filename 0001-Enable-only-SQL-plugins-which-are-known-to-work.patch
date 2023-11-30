@@ -28,5 +28,5 @@ index 10df7f777..3a2b677c5 100644
      set_target_properties(assistant PROPERTIES
          MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info_mac.plist"
 -- 
-2.42.0
+2.43.0
 
