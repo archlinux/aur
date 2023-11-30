@@ -10,11 +10,11 @@ pkgdesc="A bridge from WSL2 ssh client to Windows ssh-agent.exe service (Pre-com
 arch=('x86_64' 'aarch64')
 url="https://github.com/mame/wsl2-ssh-agent"
 license=('MIT')
-source_x86_64=("${pkgname}-${pkgver}::https://github.com/mame/wsl2-ssh-agent/releases/download/v${pkgver}/wsl2-ssh-agent")
-source_aarch64=("${pkgname}-${pkgver}::https://github.com/mame/wsl2-ssh-agent/releases/download/v${pkgver}/wsl2-ssh-agent-arm64")
+source_x86_64=("${pkgname}-${pkgver}_x86_64::https://github.com/mame/wsl2-ssh-agent/releases/download/v${pkgver}/wsl2-ssh-agent")
+source_aarch64=("${pkgname}-${pkgver}_aarch64::https://github.com/mame/wsl2-ssh-agent/releases/download/v${pkgver}/wsl2-ssh-agent-arm64")
 sha256sums_x86_64=('e03c0ff55aa30887f578b2f594b6b0c4e2aed6eb73f728c194fccb01e8eb6457')
 sha256sums_aarch64=('144859d24e26373f5d987e566dd6e374966bd779cee90aa75692ba8bd643b3cd')
 
 package() {
-  install -Dm 755 ${pkgname}-${pkgver} "$pkgdir"/usr/bin/wsl2-ssh-agent
+  install -Dm 755 ${pkgname}-${pkgver}_${CARCH} "$pkgdir"/usr/bin/wsl2-ssh-agent
 }
