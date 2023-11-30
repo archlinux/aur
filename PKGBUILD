@@ -2,7 +2,7 @@
 
 pkgname=lightdm-slick-greeter-mint-theme
 _pkgname=slick-greeter
-pkgver=1.8.2
+pkgver=2.0.0
 pkgrel=2
 pkgdesc="A slick-looking LightDM greeter. With additional options enabled"
 arch=('x86_64')
@@ -10,7 +10,6 @@ url="https://github.com/linuxmint/${_pkgname}"
 license=('GPL3')
 depends=(
     'cairo'
-    'cinnamon-styles-artwork'
     'freetype2'
     'gtk3'
     'libcanberra'
@@ -23,16 +22,20 @@ depends=(
     'xorg-server'
 )
 optdepends=(
-    'numlockx: enable numerical keypad on supported keyboard'
     'mint-l-theme: enable additional Mint themes'
+    'numlockx: enable numerical keypad on supported keyboard'
 )
 makedepends=(
     'gnome-common'
     'intltool'
     'vala'
 )
-provides=(lightdm-slick-greeter)
-conflicts=(lightdm-slick-greeter)
+provides=(
+    'lightdm-slick-greeter'
+)
+conflicts=(
+    'lightdm-slick-greeter'
+)
 backup=("etc/lightdm/${_pkgname}.conf")
 install="${_pkgname}.install"
 source=(
@@ -40,7 +43,7 @@ source=(
     "${_pkgname}.conf"
 )
 sha256sums=(
-    'a0b788e8960ca440a17df49b510a4fafabcac064f15b682c4c858cf5a4e8d876'
+    'a023cddbe5e57cd68b42545603231185f09032e566ef9e8afcc4c11b31bc6521'
     'f1a4ea92f61d90ba2d8915da582891e09baca42cf623863bfef26022544c34df'
 )
 
