@@ -1,30 +1,58 @@
 # This unit is fairly hardened, change if needed
 
 [Unit]
-Description=Simple, fast and reliable chat server powered by matrix
-After=syslog.target network.target nss-lookup.target
+Description=Conduit Matrix Homeserver
+After=network.target nss-lookup.target
 
 [Service]
-Type=simple
+Type=notify
+DynamicUser=yes
 ExecStart=/usr/bin/conduit-matrix
 ExecReload=/bin/kill -HUP ${MAINPID}
-KillSignal=SIGINT
-TimeoutSec=60
+TimeoutSec=10
 Restart=on-failure
-LimitNOFILE=32768
 
-# Hardening
-User=conduit
-PrivateTmp=yes
-PrivateDevices=yes
-ProtectHome=yes
-ProtectSystem=full
-ReadOnlyDirectories=/
-ReadWriteDirectories=-/var/lib/matrix-conduit
-ReadWriteDirectories=-/var/log/matrix-conduit
-Environment="CONDUIT_CONFIG=/etc/conduit-matrix/conduit.toml" 'RUST_LOG=info' 'RUST_BACKTRACE=1'
+Environment="CONDUIT_CONFIG=/etc/conduit-matrix/conduit.toml"
+
+WorkingDirectory=/var/lib/conduit-matrix
+
+StartLimitInterval=1m
+StartLimitBurst=5
+
+AmbientCapabilities=
+CapabilityBoundingSet=
+LockPersonality=yes
+ProcSubset=pid
+ProtectProc=invisible
+MemoryDenyWriteExecute=yes
 NoNewPrivileges=yes
-CapabilityBoundingSet=CAP_SETUID CAP_SETGID CAP_NET_BIND_SERVICE CAP_DAC_READ_SEARCH
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+PrivateDevices=yes
+PrivateMounts=yes
+PrivateTmp=yes
+PrivateUsers=yes
+RemoveIPC=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+StateDirectory=conduit-matrix
+RuntimeDirectory=conduit-matrix
+
+User=_conduit-matrix
+Group=_conduit-matrix
+ReadWriteDirectories=-/var/lib/conduit-matrix
+ReadWriteDirectories=-/var/log/conduit-matrix
 
 [Install]
 WantedBy=multi-user.target
