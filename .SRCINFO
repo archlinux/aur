@@ -1,18 +1,34 @@
 pkgbase = cutlass
 	pkgdesc = CUDA Templates for Linear Algebra Subroutines
 	pkgver = 3.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NVIDIA/cutlass
 	arch = x86_64
 	groups = nvidia
-	license = Apache
+	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = git
-	makedepends = setuptools
+	makedepends = ninja
+	makedepends = python-setuptools
+	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = cuda
 	depends = cudnn
 	source = cutlass-3.2.2.tar.gz::https://github.com/NVIDIA/cutlass/archive/refs/tags/v3.2.2.tar.gz
+	source = cutlass.diff
 	sha256sums = aaa9719eb806b168695b34893faf4854bb6bc9e09f63f2d36772aaf35a8516e5
+	sha256sums = SKIP
 
 pkgname = cutlass
+
+pkgname = python-cutlass
+	pkgdesc = Python interface to cutlass library
+	url = https://github.com/NVIDIA/cutlass
+	arch = any
+	groups = nvidia
+	license = BSD-3-Clause
+	depends = python-pydot
+	depends = python-scikit-build
+	depends = python-treelib
+	optdepends = 

@@ -1,0 +1,54 @@
+--- a/include/cutlass/platform/platform.h	2023-11-30 10:31:08.542533755 +0000
++++ b/include/cutlass/platform/platform.h	2023-11-30 10:32:41.234997502 +0000
+@@ -127,6 +127,7 @@
+ #include <algorithm>   // Minimum/maximum operations
+ #include <cstddef>     // nullptr_t
+ #include <functional>  // Arithmetic operations
++#include <limits>      // float_round_style, float_denorm_style	
+ #include <utility>     // For methods on std::pair
+ #if (!defined(_MSC_VER) && (__cplusplus >= 201103L)) || (defined(_MSC_VER) && (_MS_VER >= 1500))
+ #include <type_traits>  // For integral constants, conditional metaprogramming, and type traits
+--- a/python/setup.py	2023-11-30 11:12:06.956609312 +0000
++++ a/python/setup.py	2023-11-30 11:27:05.200923183 +0000
+@@ -35,19 +35,6 @@
+ import os
+ import setuptools
+ from setuptools import setup
+-from setuptools.command.build_ext import build_ext
+-
+-import setup_pycute
+-import setup_library
+-
+-
+-# Install cutlass_library package
+-setup_library.perform_setup()
+-
+-
+-# Install the PyCuTe package
+-setup_pycute.perform_setup()
+-
+ 
+ setup(
+     name='cutlass',
+@@ -56,11 +43,18 @@
+     package_dir={'': '.'},
+     packages=[
+         'cutlass',
+-        'cutlass.emit',
+-        'cutlass.op',
++        'cutlass.profiler',
+         'cutlass.utils',
++        'cutlass.op',
++        'cutlass.epilogue',
++        'cutlass.emit',
+         'cutlass.backend',
+-        'cutlass.backend.utils'
++        'cutlass.backend.evt',
++        'cutlass.backend.evt.passes',
++        'cutlass.backend.evt.ir',
++        'cutlass.backend.evt.frontend',
++        'cutlass.backend.evt.backend',
++        'cutlass.backend.utils',
+         ],
+     setup_requires=['pybind11'],
+     install_requires=[
