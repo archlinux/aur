@@ -1,5 +1,5 @@
 [Unit]
-Description=Clash-Meta Daemon, Another Clash Kernel.
+Description=ClashRS Daemon, Another Clash Kernel.
 After=network.target NetworkManager.service systemd-networkd.service iwd.service
 
 [Service]
@@ -8,7 +8,7 @@ User=%i
 CapabilityBoundingSet=cap_net_admin
 AmbientCapabilities=cap_net_admin
 Restart=on-abort
-ExecStart=/usr/bin/clash-meta
+ExecStart=/usr/bin/clash-rs
 
 [Install]
 WantedBy=multi-user.target

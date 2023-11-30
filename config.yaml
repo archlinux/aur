@@ -65,7 +65,7 @@ dns:
 tun:
   enable: true
   stack: system # or gvisor
-  device: Meta
+  device: ClashRS
   dns-hijack:
     - any:53
   auto-route: true # auto set global route

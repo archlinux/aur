@@ -1,0 +1,11 @@
+post_install(){
+    post_upgrade
+}
+post_upgrade(){
+    cat << EOF
+    This is the core of ClashRS by Watfaq forked from Clash by Dreamacro.
+    You can find the manual at https://watfaq.gitbook.io/clashrs-user-manual
+    Home directory clash-rs.service at /etc/clash-rs
+EOF
+
+}
