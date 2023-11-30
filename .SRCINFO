@@ -1,0 +1,20 @@
+pkgbase = delfin-git
+	pkgdesc = Stream movies and TV shows from Jellyfin
+	pkgver = v0.1.0.r0.g4ca4574
+	pkgrel = 1
+	url = https://delfin.avery.cafe/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = meson
+	makedepends = mold
+	depends = gtk4
+	depends = libadwaita
+	depends = mpv
+	provides = delfin
+	source = delfin-git::git+https://codeberg.org/avery42/delfin.git
+	sha256sums = SKIP
+
+pkgname = delfin-git
