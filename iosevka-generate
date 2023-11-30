@@ -55,28 +55,28 @@ def generate_font_plan(
     print(f"Building font with family name: {family_name}")
 
     with open(iosevka_dir / "private-build-plans.toml", "w") as fp:
-        conf = "\n".join(
-            [
-                f"[buildPlans.{font_name}]",
-                f'family = "{font_name}"',
-                *font_styles["options"],
-                "",
-                f"[buildPlans.{font_name}.variants.design]",
-                *font_styles["common"],
-                "",
-                f"[buildPlans.{font_name}.variants.upright]",
-                *font_styles["upright"],
-                "",
-                f"[buildPlans.{font_name}.variants.italic]",
-                *font_styles["italic"],
-                "",
-                f"[buildPlans.{font_name}.variants.oblique]",
-                *font_styles["oblique"],
-                "",
-                f"  [buildPlans.{font_name}.ligations]",
-                f'  inherits = "{" ".join(font_styles["ligations"])}"',
-            ]
-        )
+        sep = """
+            """
+        conf = f"""
+            [buildPlans.{font_name}]
+            family = "{font_name}"
+            {sep.join(font_styles["options"])}
+
+            [buildPlans.{font_name}.variants.design]
+            {sep.join(font_styles["common"])}
+
+            [buildPlans.{font_name}.variants.upright]
+            {sep.join(font_styles["upright"])}
+
+            [buildPlans.{font_name}.variants.italic]
+            {sep.join(font_styles["italic"])}
+
+            [buildPlans.{font_name}.variants.oblique]
+            {sep.join(font_styles["oblique"])}
+
+            [buildPlans.{font_name}.ligations]
+            inherits = "{" ".join(font_styles["ligations"])}"
+        """
 
         print(f"Building iosevka conf:\n{conf}", file=sys.stderr)
         fp.write(dedent(conf))
