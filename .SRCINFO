@@ -1,0 +1,13 @@
+pkgbase = python-textual-dev
+	pkgdesc = Development tools for working with Textual
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Textualize/textual-dev
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/textual-dev/textual_dev-1.2.1.tar.gz
+	sha256sums = 0bda11adfc541e0cc9e49bdf37a8b852281dc2387bb6ff3d01f40c7a3f841684
+
+pkgname = python-textual-dev
