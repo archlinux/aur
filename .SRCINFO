@@ -1,0 +1,18 @@
+pkgbase = python-map2
+	pkgdesc = Input remapping utility
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/shiro/map2
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = python-pip
+	depends = python-wheel
+	depends = python
+	source_x86_64 = https://github.com/shiro/map2/releases/download/2.0.5/map2-2.0.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	depends_x86_64 = libxkbcommon
+	sha256sums_x86_64 = 367169100c8653bfaa838cc3cc6531a9ac7ecc03bb9d64e31827c4ce405cd066
+	source_i686 = https://github.com/shiro/map2/releases/download/2.0.5/map2-2.0.5-cp311-cp311-manylinux_2_17_i686.manylinux2014_i686.whl
+	sha256sums_i686 = e504d45459ec6ba013795ad6ba8c6782c3c68d6554e1a95e2525e68a611fd973
+
+pkgname = python-map2
