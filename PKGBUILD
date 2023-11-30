@@ -6,7 +6,7 @@
 pkgname=wsl2-ssh-agent-bin
 pkgver=0.9.2
 pkgrel=1
-pkgdesc="A bridge from WSL2 ssh client to Windows ssh-agent.exe service"
+pkgdesc="A bridge from WSL2 ssh client to Windows ssh-agent.exe service (Pre-compiled)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mame/wsl2-ssh-agent"
 license=('MIT')
