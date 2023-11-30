@@ -73,7 +73,7 @@ _subarch=
 pkgbase=linux-ck
 pkgver=6.6.3
 _upstream=arch1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -93,8 +93,8 @@ options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # acknowledgment to xanmod for initially keeping the hrtimer patches up to date
-_ckhrtimer=linux-6.6.y
-_commit=c83f27ce602a96d481678dca05fe6fd267b2ea44
+_ckhrtimer=linux-6.6.3+
+_commit=0253362c705f4fb947d8abf927dfa23403e98eb4
 
 _gcc_more_v=20221217
 source=(
@@ -113,7 +113,7 @@ sha256sums=('28edfc3d4f90cd738f2a20f5a2d68510268176d6111f6278d8f495edfd9495a7'
             'f77aab33af83c635e0445c6e424922cdc054efe2430c8c831f8bead23e08ba88'
             '4e58f0bab792e42b818037bee7696fa9bd0e65ec2df8db079e97782fc2da6c70'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
-            'cc82cd1635a0613f6b5abd4a0095a4b64285d015a9d0738a16baf791f23eab57')
+            '89320b47288f40100e03039585733fe98fd1b60902616f95987b66cbb97502df')
 
 prepare() {
   cd linux-${pkgver}
