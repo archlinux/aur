@@ -6,6 +6,7 @@ pkgbase = logseq-desktop-non-opt
 	arch = x86_64
 	license = AGPL3
 	makedepends = asar
+	makedepends = gendesk
 	depends = electron
 	provides = logseq-desktop
 	conflicts = logseq-desktop
