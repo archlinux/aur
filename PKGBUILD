@@ -6,7 +6,7 @@ _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
 pkgver='1.3.13'
-pkgrel='1'
+pkgrel='2'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -24,9 +24,13 @@ _service=("skywire.service" "skywire-autoconfig.service")
 _source=("skywire-bin::git+https://aur.archlinux.org/skywire-bin")
 source=("skywire-${_tag_ver}.tar.gz::${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "${_source[@]}"
+"https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
+"all_servers.json"::"https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers"
 )
 sha256sums=('e05e46b2315e4dea3b843425004e0e501f999b727265f434a60cd3874e2216e9'
-            'SKIP')
+            'SKIP'
+            '73f3d759c8fa3ff7237d78662bf37f0e886f19879f8c541bfed5e750a1810fc3'
+            '891562be2c32a3f8603d812b0569c6035f384196709335debf5b40dbf3726389')
 _binary=("skywire-cli" "skywire-visor")
 _appbinary=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
 
@@ -79,6 +83,14 @@ sha256sum $(ls)
 cd "$_GOAPPS" || exit
 sha256sum $(ls)
 
+#the dmsghttp-config.json must match the current dmsg servers on the production deployment
+#https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers
+#fix the dmsghttp-config.json
+if command -v jq &> /dev/null ; then
+_msg2 'updating dmsghttp-config.json'
+cat dmsghttp-config.json | jq --argjson updated_servers "$(cat all_servers.json | grep -Ev "availableSessions|version|sequence|timestamp|signature" | tr -d '\n' | sed 's/,\s*}/}/g' | jq '.')"   '.prod.dmsg_servers = $updated_servers' | tee dmsghttp-config.json
+fi
+[[ -f "${srcdir}/all_servers.json" ]] && rm "${srcdir}/all_servers.json"
 }
 
 package() {
@@ -127,6 +139,8 @@ _msg2 'Symlink skywire-visor to skywire'
 ln -rTsf "${_pkgdir}/${_bin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
 _msg2 'installing dmsghttp-config.json'
 install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire-${_pkgver}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
+#make sure the dmsghttp-config will get redownloaded on subsequent builds
+[[ -f "${srcdir}/dmsghttp-config.json" ]] && rm "${srcdir}/dmsghttp-config.json"
 _msg2 'Installing systemd services'
 for _i in "${_service[@]}" ; do
   _msg3 ${_i}
