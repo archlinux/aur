@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-serialbus
 	pkgdesc = Qt module for general purpose serial bus access (android)
-	pkgver = 6.6.0
+	pkgver = 6.6.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = android-aarch64-qt6-serialbus
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.6/6.6.0/submodules/qtserialbus-everywhere-src-6.6.0.tar.xz
-	sha256sums = 18ccf07152ea995c6c1ef3ce9120b6baea7017a09626ec1c5bf4faa6dd29b94c
+	source = https://download.qt.io/official_releases/qt/6.6/6.6.1/submodules/qtserialbus-everywhere-src-6.6.1.tar.xz
+	sha256sums = 5c145e630b30a1c204e787c46833bb68d9bcece31343b588a6788711f49ef7ac
 
 pkgname = android-aarch64-qt6-serialbus
