@@ -2,7 +2,7 @@
 
 _pkgname=warehouse
 pkgname=warehouse-git
-pkgver=1.3.0.r2.g5855666
+pkgver=1.3.0.r88.ge8fb7ef
 pkgrel=1
 pkgdesc='A versatile toolbox for managing flatpak user data, viewing flatpak app info, and batch managing installed flatpaks.'
 url="https://github.com/flattool/warehouse"
@@ -12,6 +12,11 @@ depends=('flatpak-xdg-utils' 'gtk4' 'python-gobject' 'libadwaita' 'gtk-update-ic
 makedepends=('git' 'meson' 'cmake')
 source=("${_pkgname}::git+${url}")
 sha1sums=('SKIP')
+
+prepare() {
+    cd $srcdir/${_pkgname}
+    sed -i 's/os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")/os_string = GLib.get_os_info("NAME")/g' src/main.py
+}
 
 pkgver() {
     cd $srcdir/${_pkgname}
