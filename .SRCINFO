@@ -1,5 +1,5 @@
 pkgbase = obs-multi-rtmp
-	pkgdesc = Multiple RTMP outputs plugin
+	pkgdesc = Multiple RTMP outputs plugin for OBS Studio.
 	pkgver = 0.5.0.4
 	pkgrel = 1
 	url = https://github.com/sorayuki/obs-multi-rtmp
