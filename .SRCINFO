@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-samantha
+	pkgdesc = Quotes from samantha (and OS1) from the movie Her for the Unix fortune tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/wasertech/fortune-samantha
+	arch = any
+	groups = fortune-mods
+	license = GPLv3
+	depends = fortune-mod
+	source = git+https://github.com/wasertech/fortune-samantha.git
+	md5sums = SKIP
+
+pkgname = fortune-mod-samantha
