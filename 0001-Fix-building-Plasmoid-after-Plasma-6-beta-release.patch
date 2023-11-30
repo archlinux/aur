@@ -1,0 +1,42 @@
+From ddbd6f309b3a353c9c40c71cd0877f6db6b680c6 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 30 Nov 2023 19:55:32 +0100
+Subject: [PATCH] Fix building Plasmoid after Plasma 6 beta release
+
+---
+ plasmoid/CMakeLists.txt     | 2 +-
+ plasmoid/lib/CMakeLists.txt | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/plasmoid/CMakeLists.txt b/plasmoid/CMakeLists.txt
+index e1eeaa4..18196ed 100644
+--- a/plasmoid/CMakeLists.txt
++++ b/plasmoid/CMakeLists.txt
+@@ -12,7 +12,7 @@ set(META_QT5_VERSION 5.8)
+ set(META_SRCDIR_REFS "${CMAKE_CURRENT_SOURCE_DIR}\n${CMAKE_CURRENT_SOURCE_DIR}/../syncthingconnector")
+ 
+ # find Plasma and its dependencies (which are not pulled-in automatically as of Plasma 6)
+-find_package(${KF_PACKAGE_PREFIX}Plasma REQUIRED)
++find_package(Plasma REQUIRED)
+ if (KF_MAJOR_VERSION GREATER_EQUAL 6)
+     find_package(${QT_PACKAGE_PREFIX}Qml REQUIRED)
+     find_package(${KF_PACKAGE_PREFIX}Config REQUIRED)
+diff --git a/plasmoid/lib/CMakeLists.txt b/plasmoid/lib/CMakeLists.txt
+index 1c6654a..a757cc4 100644
+--- a/plasmoid/lib/CMakeLists.txt
++++ b/plasmoid/lib/CMakeLists.txt
+@@ -40,8 +40,10 @@ list(APPEND ADDITIONAL_QT_MODULES Network Qml)
+ if (KF_MAJOR_VERSION GREATER_EQUAL 6)
+     set(Config_MODULE_TARGETS ${KF_PACKAGE_PREFIX}::ConfigCore)
+     list(APPEND ADDITIONAL_KF_MODULES Config)
++    use_package(TARGET_NAME Plasma::Plasma PACKAGE_NAME Plasma PACKAGE_ARGS REQUIRED)
++else ()
++    list(APPEND ADDITIONAL_KF_MODULES Plasma)
+ endif ()
+-list(APPEND ADDITIONAL_KF_MODULES Plasma)
+ 
+ include(BasicConfig)
+ include(QtGuiConfig)
+-- 
+2.43.0
+

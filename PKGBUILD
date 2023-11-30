@@ -27,7 +27,7 @@ _cfg=qt6
 pkgname=syncthingtray-$_cfg
 _name=${pkgname%-$_cfg}
 pkgver=1.4.9
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing (using Qt 6)'
 license=('GPL')
@@ -41,14 +41,16 @@ depends=('libqtutilities-qt6.so' 'libqtforkawesome-qt6.so' 'libc++utilities.so' 
 [[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 6 desktop')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'qt6-declarative' 'clang' 'boost')
-checkdepends=('cppunit' 'syncthing' 'iproute2' 'appstream')
+checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
-[[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
+[[ $_enable_plasmoid ]] && makedepends+=('libplasma' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
-        0001-Fix-install-path-of-KIO-plugin.patch)
+        0001-Fix-install-path-of-KIO-plugin.patch
+        0001-Mention-PLASMA_ENABLE_QML_DEBUG-in-the-Plasmoid-test.patch
+        0001-Fix-building-Plasmoid-after-Plasma-6-beta-release.patch)
 sha256sums=('f9003bbe185d355f9cac18862077fa2cc4e809f7f416d9b1dd5ef6474c926742'
-            SKIP)
+            SKIP SKIP SKIP)
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
@@ -57,6 +59,8 @@ ephemeral_port() {
 prepare() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   patch -p1 -i ../0001-Fix-install-path-of-KIO-plugin.patch
+  patch -p1 -i ../0001-Mention-PLASMA_ENABLE_QML_DEBUG-in-the-Plasmoid-test.patch
+  patch -p1 -i ../0001-Fix-building-Plasmoid-after-Plasma-6-beta-release.patch
 }
 
 build() {
