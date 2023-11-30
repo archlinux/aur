@@ -1,6 +1,6 @@
 pkgbase = errands
 	pkgdesc = Todo application for those who prefer simplicity
-	pkgver = 45.0.5
+	pkgver = 45.0.6
 	pkgrel = 1
 	url = https://github.com/mrvladus/Errands
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = errands
 	depends = python-caldav
 	depends = python-gobject
 	depends = libadwaita
-	source = git+https://github.com/mrvladus/Errands.git#tag=45.0.5
+	source = git+https://github.com/mrvladus/Errands.git#tag=45.0.6
 	sha256sums = SKIP
 
 pkgname = errands
