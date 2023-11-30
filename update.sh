@@ -97,8 +97,10 @@ build() {
     rm -rf pkg src
     makepkg -s
 
-    if ! [ -f "$(pkg_filename)" ]; then
-        echo "build failed"
+    local PKG="$(pkg_filename)"
+
+    if ! [ -f "$PKG" ]; then
+        echo "error: build failed: $PKG"
         exit 1
     fi
 
@@ -114,7 +116,7 @@ commit() {
 
     local VER="$(pkg_ver)-$(pkg_rel)"
     
-    if git log | grep -m 1 -e "^[[:space:]]*${VER}\$" >/dev/null; then
+    if git log | grep -m 1 -E "^[[:space:]]+${VER}\$" >/dev/null; then
         echo "error: a commit for $VER already exists"
         exit 1
     fi
