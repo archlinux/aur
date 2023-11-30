@@ -1,5 +1,5 @@
 pkgbase = obs-ndi-bin
-	pkgdesc = Network A/V in OBS Studio with NewTek's NDI technology
+	pkgdesc = NewTek NDI integration for OBS Studio.
 	pkgver = 4.13.0
 	pkgrel = 1
 	url = https://github.com/obs-ndi/obs-ndi

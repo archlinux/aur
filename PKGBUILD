@@ -3,7 +3,7 @@
 pkgname=obs-ndi-bin
 pkgver=4.13.0
 pkgrel=1
-pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
+pkgdesc='NewTek NDI integration for OBS Studio.'
 arch=('x86_64')
 license=('GPL2')
 url='https://github.com/obs-ndi/obs-ndi'
