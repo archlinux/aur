@@ -1,7 +1,7 @@
 pkgbase = c++utilities
 	pkgdesc = Common C++ classes and routines such as argument parser, IO and conversion utilities
 	pkgver = 5.24.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Martchus/cpp-utilities
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,9 @@ pkgbase = c++utilities
 	source = c++utilities-5.24.2.tar.gz::https://github.com/Martchus/cpp-utilities/archive/v5.24.2.tar.gz
 	source = 0001-Enable-tidy-tests-only-by-default-via-ENABLE_DEVEL_D.patch
 	source = 0002-Enable-AppStream-tests-only-by-default-via-ENABLE_DE.patch
+	source = 0001-Fix-enabling-AppStream-tests.patch
 	sha256sums = 46e79313900a8cbb7a3c0211fcc0cd07c2c8a6c2bcaeb11aec7fc706dc5914b1
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
