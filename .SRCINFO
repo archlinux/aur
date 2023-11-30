@@ -1,6 +1,6 @@
 pkgbase = pcraster
 	pkgdesc = Environmental modelling software
-	pkgver = 4.3.3
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://pcraster.geo.uu.nl
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = pcraster
 	depends = xerces-c
 	depends = gdal
 	depends = ncurses
-	source = https://github.com/pcraster/pcraster/archive/refs/tags/pcraster-4.3.3.tar.gz
-	sha512sums = d8a1d428827ccf75ec7f7bfa8e2a20289f65b59f6f50f672202c7ad6bf237f7fa0c4d0036b4e8db702aaf4c219e6e2eb283e37699a7489158834f4742be8180f
+	source = https://github.com/pcraster/pcraster/archive/refs/tags/pcraster-4.4.1.tar.gz
+	sha512sums = 3e4bd50476166320c0add15b2e972242fe07fc5750fa7ed550b46bd12751258deede30eb2b6c0d139aba9ae3468971f846416eafbea74866113ef23b084105fd
 
 pkgname = pcraster
