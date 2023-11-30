@@ -1,10 +1,10 @@
 pkgbase = apidash-bin
 	pkgdesc = Beautiful open-source cross-platform API Client
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apidash.dev
 	arch = x86_64
-	license = APACHE
+	license = Apache-2.0
 	options = !emptydirs
 	options = !strip
 	source = https://github.com/foss42/apidash/releases/download/v0.3.0/apidash-linux-amd64.deb

@@ -2,11 +2,11 @@
 
 pkgname=apidash-bin
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Beautiful open-source cross-platform API Client"
 arch=('x86_64')
 url="https://apidash.dev"
-license=('APACHE')
+license=('Apache-2.0')
 depends=()
 options=('!emptydirs' '!strip')
 source=("https://github.com/foss42/apidash/releases/download/v${pkgver}/apidash-linux-amd64.deb"
