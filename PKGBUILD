@@ -1,16 +1,16 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
-
-pkgname=catbin
-pkgver=r59.af7e4fe
+pkgname=catbin-git
+pkgver=r64.e4334fa
 arch=("x86_64")
 pkgrel=1
-pkgdesc="A pastebin server meant for the terminal"
+pkgdesc="A pastebin server meant for the terminal. A clone of termbin.com (fiche)."
 license=("MIT")
 depends=("leveldb" "libmicrohttpd")
 makedepends=("make")
-url="https://github.com/LevitatingBusinessMan/$pkgname"
-source=("git+https://github.com/LevitatingBusinessMan/$pkgname.git")
+url="https://github.com/LevitatingBusinessMan/catbin"
+source=("$pkgname::git+https://github.com/LevitatingBusinessMan/catbin.git")
 sha256sums=("SKIP")
+provides=("catbin")
 
 pkgver() {
 	cd "$pkgname"
