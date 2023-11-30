@@ -2,16 +2,30 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
 _desktop_id=org.x.Warpinator
-pkgver=1.6.4.r20.g10eb1e5a
+pkgver=1.8.0.r0.gc3da064c
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('any')
 url="https://github.com/linuxmint/warpinator"
 license=('GPL3')
-depends=('gtk3' 'libnm' 'python-cairo' 'python-cryptography' 'python-gobject'
-         'python-grpcio' 'python-netifaces' 'python-packaging' 'python-protobuf'
-         'python-pynacl' 'python-setproctitle' 'python-setuptools' 'python-zeroconf'
-         'python-xapp' 'xapps')
+depends=(
+  'gtk3'
+  'libnm'
+  'python-cairo'
+  'python-cryptography'
+  'python-gobject'
+  'python-grpcio'
+  'python-landlock'
+  'python-netifaces'
+  'python-packaging'
+  'python-protobuf'
+  'python-pynacl'
+  'python-setproctitle'
+  'python-setuptools'
+  'python-zeroconf'
+  'python-xapp'
+  'xapps'
+)
 makedepends=('cython' 'git' 'meson' 'polkit')
 checkdepends=('appstream-glib')
 optdepends=('ufw: Configure firewall rules')
@@ -36,7 +50,8 @@ prepare() {
 build() {
   arch-meson  "${pkgname%-git}" build \
     -Dbundle-zeroconf=false \
-    -Dbundle-grpc=false
+    -Dbundle-grpc=false \
+    -Dbundle-landlock=false
   meson compile -C build
 }
 

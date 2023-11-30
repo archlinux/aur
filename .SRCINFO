@@ -1,6 +1,6 @@
 pkgbase = warpinator-git
 	pkgdesc = Share files across the LAN
-	pkgver = 1.6.4.r20.g10eb1e5a
+	pkgver = 1.8.0.r0.gc3da064c
 	pkgrel = 1
 	url = https://github.com/linuxmint/warpinator
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = warpinator-git
 	depends = python-cryptography
 	depends = python-gobject
 	depends = python-grpcio
+	depends = python-landlock
 	depends = python-netifaces
 	depends = python-packaging
 	depends = python-protobuf
