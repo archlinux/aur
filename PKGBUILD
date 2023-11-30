@@ -1,9 +1,7 @@
 # Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/toropisco>
 
-CLANG=0
-
 pkgname=groff-git
-pkgver=1.23.0.rc1.2913.g27568d6e3
+pkgver=1.23.0.598
 pkgrel=1
 pkgdesc="GNU Troff. Official git trunk."
 arch=('x86_64')
@@ -19,21 +17,21 @@ depends=(
   'perl-file-homedir'
 )
 makedepends=('git')
+#
+# A provides here is a mere empty gesture. It doesn't work unless the core package includes the same.
+#
+provides=('groff') 
+#
+# Absolutely necessary. Those who advocate for replaces only, have not used
+# pacman in anger apparently.
+#
 conflicts=('groff')
-provides=('groff')
+replaces=('groff')
 source=(
   "$pkgname::git://git.savannah.gnu.org/groff.git" 
   "gnulib-git::git://git.sv.gnu.org/gnulib.git"
   'site.tmac'
 )
-
-if [[ CLANG == 1 ]]; then
-  makedepends+=(
-  'clang'
-  'llvm'
-  'lld'
- ) 
-fi
 
 b2sums=('SKIP'
         'SKIP'
@@ -41,7 +39,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "%s" "$(git describe | sed 's/\-/\./g')"
+  printf "%s" "$(git describe | awk -F- '{ print $1"."$2 }')"
 }
 
 prepare() {
@@ -53,61 +51,66 @@ prepare() {
 }
 
 build() {
-  if [[ $CLANG == 1 ]]; then 
-    export CC="clang"
-    export CXX="clang++"
-    export LD="ldd"
-    export AR="llvm-ar"
-    export AS="llvm-as"
-    export NM="llvm-nm"
-    export STRIP="llvm-stipr"
-  fi
-
   mkdir -p "$srcdir/$pkgname"/build
-
   cd "$srcdir/$pkgname"/build
-
   local _configopts=(
     --prefix=/usr
+    --enable-groff-allocator
     --disable-rpath
     --with-x
     --with-appresdir=/usr/share/X11/app-defaults
     --with-doc=yes
     --with-uchardet=yes
   )
-
   ../configure "${_configopts[@]}"
-
   make
 }
 
 check() {
   cd "$srcdir/$pkgname"/build
-
   make check
 }
 
 package() {
   cd "$srcdir/$pkgname"/build
-
-  if [[ ${LANG/en_US} ]] || [[ ${LANG/es_CO} ]]; then
+  #
+  # Please report if your country uses ANSI paper sizes instead of ISO,
+  # be it officially or de facto---as is the case in Colombia, Mexico 
+  # Chile or Canada---.
+  #
+  if
+    [[ ${LANG/en_US} ]]  || \
+    [[ ${LANG/en_CA} ]]  || \
+    [[ ${LANG/en_PH} ]]  || \
+    [[ ${LANG/es_CO} ]]  || \
+    [[ ${LANG/es_CL} ]]  || \
+    [[ ${LANG/es_CR} ]]  || \
+    [[ ${LANG/es_DO} ]]  || \
+    [[ ${LANG/es_GT} ]]  || \
+    [[ ${LANG/es_MX} ]]  || \
+    [[ ${LANG/es_PA} ]]  || \
+    [[ ${LANG/es_US} ]]  || \
+    [[ ${LANG/fil_PH} ]] || \
+    [[ ${LANG/fr_CA} ]]  || \
+    [[ ${LANG/ik_CA} ]]  || \
+    [[ ${LANG/iu_CA} ]]  || \
+    [[ ${LANG/shs_CA} ]] || \
+    [[ ${LANG/tl_PH} ]] \
+    then
     make DESTDIR="$pkgdir/" PAPER=letter install
   else
     make DESTDIR="$pkgdir/" PAPER=A4 install
   fi
-  
+  #
   ## Copypaste from core package's PKGBUILD...
-  
+  #
   # add compatibility symlinks
+  #
   ln -s eqn $pkgdir/usr/bin/geqn
   ln -s tbl $pkgdir/usr/bin/gtbl
   ln -s soelim $pkgdir/usr/bin/zsoelim
-
-  # FS33760 - TERMCAP variables not followed
-  # TODO: everyone is doing this - find out why upstream does not...
   #
-  # Having being privy to the whole thing since 2003, I wonder why people
-  # still stick to this. Blech! Vorbote.
+  # FS33760 - TERMCAP variables not followed
   #
   cat $srcdir/site.tmac >> \
     $pkgdir/usr/share/groff/site-tmac/man.local

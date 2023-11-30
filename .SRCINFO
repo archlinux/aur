@@ -1,6 +1,6 @@
 pkgbase = groff-git
 	pkgdesc = GNU Troff. Official git trunk.
-	pkgver = 1.23.0.rc1.2913.g27568d6e3
+	pkgver = 1.23.0.598
 	pkgrel = 1
 	url = http://www.gnu.org/software/groff/
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = groff-git
 	depends = perl-file-homedir
 	provides = groff
 	conflicts = groff
+	replaces = groff
 	source = groff-git::git://git.savannah.gnu.org/groff.git
 	source = gnulib-git::git://git.sv.gnu.org/gnulib.git
 	source = site.tmac
