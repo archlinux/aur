@@ -7,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.13.11.plus1
+pkgver=3.13.11.plus2
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -16,77 +16,72 @@ license=(BSD)
 conflicts=(gamescope)
 provides=(gamescope)
 depends=(
+  gcc-libs
+  glibc
   glm
+  libcap.so
+  libdisplay-info.so
   libdrm
-  libinput
-  libliftoff
+  libliftoff.so
+  libpipewire-0.3.so
+  libvulkan.so
+  libwlroots.so
+  libx11
+  libxcb
   libxcomposite
-  libxkbcommon
+  libxdamage
+  libxext
+  libxfixes
+  libxkbcommon.so
   libxmu
+  libxrender
   libxres
   libxtst
-  pipewire
-  pixman
+  libxxf86vm
+  openvr
   sdl2
-  seatd
-  xcb-util-errors
-  xcb-util-renderutil
-  xcb-util-wm
-  xorg-xwayland
+  vulkan-icd-loader
+  wayland
+  xorg-server-xwayland
 )
+
 makedepends=(
   benchmark
   git
+  glslang
   meson
   ninja
-  cmake
-  glslang
   vulkan-headers
   wayland-protocols
 )
-_tag=83cd583a922b00d958b9d507aad85b8600992f43
+
+_tag=dda6de19e68e6e2eb772e2f5b1422954e7373d59
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
-        "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
-        "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
-        "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
-        "git+https://github.com/ValveSoftware/openvr.git"
-        "git+https://github.com/Joshua-Ashton/vkroots.git"
         "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
-        "git+https://github.com/Joshua-Ashton/reshade.git"
         "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
+        "git+https://github.com/Joshua-Ashton/reshade.git"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         )
 
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-)
+        'SKIP')
 
 prepare() {
   cd "$srcdir/$_pkgname"
-
-  git submodule init
-  git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
-  git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
-  git config submodule.subprojects/libdisplay-info.url "$srcdir/libdisplay-info"
-  git config submodule.subprojects/openvr.url "$srcdir/openvr"
-  git config submodule.subprojects/vkroots.url "$srcdir/vkroots"
+  meson subprojects download
+  git submodule init src/reshade
   git config submodule.src/reshade.url "$srcdir/reshade"
+  git submodule init thirdparty/SPIRV-Headers
+  git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
   git -c protocol.file.allow=always submodule update
 
   # make stb.wrap use our local clone
   rm -rf subprojects/stb
   git clone "$srcdir/stb" subprojects/stb
   cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
-
-  # make displayinfo use our local clone, subproject points to old commit, so overwrite it manually
-  rm -rf subprojects/libdisplay-info
-  git clone "$srcdir/libdisplay-info" subprojects/libdisplay-info
 }
 
 pkgver() {
