@@ -4,7 +4,7 @@
 
 pkgname=libvips-git
 _pkgname=libvips
-pkgver=8.15.0.rc2.r0.g19eba8914
+pkgver=8.15.0.r18.gcb55d9c2d
 pkgrel=1
 pkgdesc="A fast image processing library with low memory needs"
 arch=('i686' 'x86_64')
