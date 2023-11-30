@@ -2,8 +2,8 @@
 # Maintainer: amo <https://aur.archlinux.org/account/amo>
 
 pkgname="paperless-ngx"
-pkgver=1.17.4
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://docs.paperless-ngx.com/"
 license=("GPL3")
@@ -40,21 +40,24 @@ depends=("file"
          "python-click"
          "python-concurrent-log-handler"
          "python-constantly"
-         "python-cryptography"
          "python-daphne"
          "python-dateparser"
          "python-django"
+         "python-django-auditlog"
          "python-django-celery-results"
          "python-django-compression-middleware"
          "python-django-cors-headers"
          "python-django-extensions"
          "python-django-filter"
          "python-django-guardian"
+         "python-django-multiselectfield"
          "python-django-picklefield"
          "python-django-rest-framework"
          "python-django-rest-framework-guardian"
+         "python-drf-writable-nested"
          "python-filelock"
          "python-fuzzywuzzy"
+         "python-gotenberg-client"
          "python-h11"
          "python-hiredis"
          "python-httptools"
@@ -65,7 +68,7 @@ depends=("file"
          "python-incremental"
          "python-inotify-simple"
          "python-inotifyrecursive"
-         "python-ipware<2.0.0"
+         "python-ipware"
          "python-joblib"
          "python-langdetect"
          "python-lxml"
@@ -114,7 +117,8 @@ depends=("file"
 optdepends=("jbig2enc: smaller PDF size"
             "postgresql: postgres database"
             "mariadb: mariadb database"
-            "python-mysqlclient: connect to mariadb")
+            "python-mysqlclient: connect to mariadb"
+            "python-flower: celery monitoring")
 source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
         "paperless.hook"
         "paperless.sysusers"
@@ -124,7 +128,7 @@ source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgnam
         "paperless-scheduler.service"
         "paperless-task-queue.service"
         "paperless-webserver.service")
-b2sums=('34e67810dc9264cfcfec5a62557f5c102aedb82d8f31b27302e01675b84cb39cb22925339263cd8908e828d91b3469895732962e50c2b6bc62d266222b3072c4'
+b2sums=('74bc0233df12d51ca9e3c052c8b6cdbde2c4d51d673a359c2669d2dfb7800717d553a1a89ae86509075192a7e29cec95f256d07e697f9dc30732dcc7f2c50b76'
         '66073b686ac143f5b6a2c581705ca77a90b48e5ad03208c61976e0421e54c08bb5ce8168a42cd1f11d9f34e270a27ee91102c5fbf5477fdb5a596ad7b38e5750'
         '586ad775e26aef216716c33d8951e00044a7f6866167d27dceab39d51b4fd46527693dfe4e085dc20d2e9193679122ad2b9ac8a1c03a98df747af15ecca24ca2'
         '4a59f0a0c6a4abad23cba01e216909f45a7064e93911b8ba3e3b394f52379e41898b8c9e1246ba034bc8d2fe6dc83f5cad926e265a17da7c7093d997cfe8b4f3'
