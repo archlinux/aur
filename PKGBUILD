@@ -15,6 +15,8 @@
 if [[ x"${_avx_build::1}" == "xt" ]] ; then
   if [ x"${_pkgtype: -4}" == "x-git" ] ; then
     _pkgtype="${_pkgtype%-*}-avx-${_pkgtype##*-}"
+  elif [ x"${_pkgtype::1}" == "xg" ] ; then
+    _pkgtype="avx-$_pkgtype"
   else
     _pkgtype+="-avx"
   fi
