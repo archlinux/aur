@@ -1,6 +1,7 @@
 #!/bin/bash
 APPDIR="/usr/lib/electerm"
 export PATH="${APPDIR}:${PATH}"
+export ELECTRON_IS_DEV=0
 _ASAR="${APPDIR}/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     cd "$APPDIR"
