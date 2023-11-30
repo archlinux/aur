@@ -22,7 +22,7 @@ pkgbase = firefox-beta-bin
 	optdepends = upower: Battery API
 	provides = firefox=121.0b5
 	conflicts = firefox-beta
-	source = https://archive.mozilla.org/pub/firefox/candidates/121.0b5-candidates/build1/linux-x86_64/en-US/firefox-121.0b5.tar.bz2
+	source = https://archive.mozilla.org/pub/firefox/releases/121.0b5/linux-x86_64/en-US/firefox-121.0b5.tar.bz2
 	source = firefox-beta.sh
 	source = firefox-beta-bin.desktop
 	source = policies.json
