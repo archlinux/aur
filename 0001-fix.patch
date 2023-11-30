@@ -2,13 +2,11 @@ diff --git a/lightyears b/lightyears
 index eda908f..8b79d04 100755
 --- a/lightyears
 +++ b/lightyears
-@@ -1,8 +1,7 @@
--#!/usr/bin/python
-+#!/usr/bin/env python2
+@@ -1,7 +1,7 @@
+ #!/usr/bin/python
  
  # Set the location of the LightYears files here:
--LIGHTYEARS_DIR = "."
--# LIGHTYEARS_DIR = "/usr/share/games/lightyears" # (for Debian)
+-LIGHTYEARS_DIR = "/usr/share/games/lightyears" # (for Debian)
 +LIGHTYEARS_DIR = "/usr/share/20kly"
  
  # Save games and configuration files are stored in the user's

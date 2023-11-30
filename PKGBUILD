@@ -1,37 +1,47 @@
 # Maintainer: Henry-Joseph Audéoud <h.audeoud+aur@gmail.com>
 
 pkgname=20kly-git
-pkgver=baba06d
+_pkgname="${pkgname%-git}"
+pkgver=1.5.0.r2.g29d0f92
 pkgrel=1
+epoch=1
 pkgdesc="20'000 Light Years Into Space game"
 arch=('any')
 url="http://www.jwhitham.org/20kly/"
 license=('GPL')
-depends=('python2-pygame' 'glpk')
+depends=('python>=3.6' 'python-pygame>=1.9.6' 'glpk')
+checkdepends=('python-pytest>=6.2.2' 'python-pytest-cov>=2.11.1')
 conflicts=('20kly')
 provides=('20kly')
 source=("git+https://github.com/20kly/20kly.git"
         '0001-fix.patch')
 md5sums=('SKIP'
-         '963cd97ab3b7f962069612e642a3dee5')
-_gitname=20kly
+         'aeb391dc0e4b9fe991ac44df7ccc8a35')
 
 pkgver() {
-  cd $_gitname
-  echo $(git describe --always | sed 's/-/./g')
+    cd "${_pkgname}"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$_gitname"
-  patch -p1 -i $srcdir/0001-fix.patch
+    cd "${_pkgname}"
+    patch -p1 -i $srcdir/0001-fix.patch
 }
 
 package() {
-  cd "$_gitname"
+    cd "${_pkgname}"
 
-  mkdir -p ${pkgdir}/usr/share/20kly
-  cp -r audio data code manual lightyears ${pkgdir}/usr/share/20kly
+    mkdir -p "${pkgdir}/usr/share/lightyears"
+    cp -r data lib20k "${pkgdir}/usr/share/lightyears"
+    #ln -s lib20k "${pkgdir}/usr/share/lightyears/code"
 
-  mkdir -p ${pkgdir}/usr/bin
-  ln -s /usr/share/20kly/lightyears ${pkgdir}/usr/bin/20kly
+    install -D lightyears -t "${pkgdir}/usr/bin/"
+    ln -s lightyears "${pkgdir}/usr/bin/20kly"
+
+    install -Dm644 manual.pdf -t "${pkgdir}/usr/share/doc/lightyears/"
+}
+
+check() {
+    cd "${_pkgname}"
+    python tests/run_all_tests.py --no-mypy
 }
