@@ -5,7 +5,7 @@
 pkgbase=linux-g14
 pkgver=6.6.3.arch1
 pkgrel=1
-pkgdesc='Linux'
+pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'
 arch=(x86_64)
@@ -82,7 +82,6 @@ sha256sums=('28edfc3d4f90cd738f2a20f5a2d68510268176d6111f6278d8f495edfd9495a7'
             'f6e870e44d04d256b62951d3879b9caa81e4504a2f0690c3089c1369ae91c3f5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '172dbc88d0a3cda78387f3c907fa4953c71cb1cb162f0b34f78b8b78924bc3d4'
-            '7b16fce20b03babc9e149030f43e283534835bbd8835ba0a794fd0205fea1708'
             'd26ea408530a224283c678028afeb32212612b08c22c35d5d2236eb9e6406908'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'

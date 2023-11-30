@@ -1,5 +1,5 @@
 pkgbase = linux-g14
-	pkgdesc = Linux
+	pkgdesc = Linux-g14
 	pkgver = 6.6.3.arch1
 	pkgrel = 1
 	url = https://gitlab.com/dragonn/linux-g14.git
@@ -56,7 +56,6 @@ pkgbase = linux-g14
 	sha256sums = f6e870e44d04d256b62951d3879b9caa81e4504a2f0690c3089c1369ae91c3f5
 	sha256sums = 0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d
 	sha256sums = 172dbc88d0a3cda78387f3c907fa4953c71cb1cb162f0b34f78b8b78924bc3d4
-	sha256sums = 7b16fce20b03babc9e149030f43e283534835bbd8835ba0a794fd0205fea1708
 	sha256sums = d26ea408530a224283c678028afeb32212612b08c22c35d5d2236eb9e6406908
 	sha256sums = a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0
 	sha256sums = 315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c
@@ -76,7 +75,7 @@ pkgbase = linux-g14
 	sha256sums = 444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85
 
 pkgname = linux-g14
-	pkgdesc = The Linux kernel and modules
+	pkgdesc = The Linux-g14 kernel and modules
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -89,6 +88,6 @@ pkgname = linux-g14
 	replaces = wireguard-arch
 
 pkgname = linux-g14-headers
-	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	pkgdesc = Headers and scripts for building modules for the Linux-g14 kernel
 	depends = pahole
 	provides = linux-rog-headers
