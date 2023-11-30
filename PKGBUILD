@@ -4,7 +4,7 @@
 
 _pkgname=frida
 pkgname=python-$_pkgname
-pkgver=16.1.7
+pkgver=16.1.8
 pkgrel=1
 pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 version from PyPi"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -22,12 +22,12 @@ source_i686=("frida-core-devkit-${pkgver}-linux.tar.xz::https://github.com/frida
 source_x86_64=("frida-core-devkit-${pkgver}-linux.tar.xz::https://github.com/frida/frida/releases/download/${pkgver}/frida-core-devkit-${pkgver}-linux-x86_64.tar.xz")
 source_armv7h=("frida-core-devkit-${pkgver}-linux.tar.xz::https://github.com/frida/frida/releases/download/${pkgver}/frida-core-devkit-${pkgver}-linux-armhf.tar.xz")
 source_aarch64=("frida-core-devkit-${pkgver}-linux.tar.xz::https://github.com/frida/frida/releases/download/${pkgver}/frida-core-devkit-${pkgver}-linux-arm64.tar.xz")
-sha256sums=('3782722701a7d5b8a9b71a387737e81ffefd01484f4abfe5f5b2fd090e57db6d'
+sha256sums=('dc4118f48c5e1b2241eee7d53ab836d42636c511fbf2f8f8b2dcab133421d09d'
             '5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
-sha256sums_i686=('c6048c581ff4f524e8d43ecd523d3b37858c2d20a05ed0c638006799e5b5b330')
-sha256sums_x86_64=('e834f9529d9ec8bda6df6d21e8c92698a917f15f5ea30521db1e837e0d52edbe')
-sha256sums_armv7h=('fc42f24b305a0862602ff22f105fd0a4b7734a77aee9b38f8f60122c45ce7183')
-sha256sums_aarch64=('74d85cf37dfaf5cb4fd63b5a92a4b53bc9f0f2c94ded085cbf51ca660566e9e7')
+sha256sums_i686=('9eec8050dba1354d51daa9e5096df549993c54d992ef4dc6873f64ecb9334255')
+sha256sums_x86_64=('50e1668a753ae3f8999580ceacaaaf68c93f0ad79db5ec4c39bbde1ad0c5efaf')
+sha256sums_armv7h=('a30c288e14346132355cdd8d05f99c6e06952c4592a459d35f033d20f2bceaae')
+sha256sums_aarch64=('30967dc63809563d865fd6ca1a52da67d3ea3491536e64befa60dc73c874ed5f')
 noextract=("frida-core-devkit-${pkgver}-linux.tar.xz")
 conflicts=("python2-${_pkgname}")
 
