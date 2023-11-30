@@ -3,7 +3,7 @@
 #Contributor Jens Staal <staal1978@gmail.com>
 
 pkgname=ugene-bin
-pkgver=49.0
+pkgver=49.1
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite (binary release)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('cufflinks' 'bowtie' 'clustalw' 'phyml' 'blast+' 'clustal-omega' 'vc
 provides=('ugene')
 conflicts=('ugene-git' 'ugene' 'ugene-cuda')
 source=("https://github.com/ugeneunipro/ugene/releases/download/${pkgver}/ugene-${pkgver}-linux-x86-64.tar.gz" "ugene.desktop" "ugene.svg")
-sha256sums=('899feb7f1ed3e3e2ab3cedc4bcdca3a3cf15440aef4c95da6f0a9bae5c23245e'
+sha256sums=('e80cb2b282e023a7dfcc31b0f77964f555d736d00d106ec9a3defbaf55b1d8e3'
             '58aeee982faa07913c016323cdded0a4022695c4e313954fdc09c36742013896'
             '5a159437635965cae796c968c7297fd098e7f86dcecbe6a97e62950e782641fc')
 

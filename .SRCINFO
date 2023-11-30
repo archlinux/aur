@@ -1,6 +1,6 @@
 pkgbase = ugene-bin
 	pkgdesc = A free cross-platform genome analysis suite (binary release)
-	pkgver = 49.0
+	pkgver = 49.1
 	pkgrel = 1
 	url = http://ugene.net
 	arch = x86_64
@@ -41,10 +41,10 @@ pkgbase = ugene-bin
 	conflicts = ugene-git
 	conflicts = ugene
 	conflicts = ugene-cuda
-	source = https://github.com/ugeneunipro/ugene/releases/download/49.0/ugene-49.0-linux-x86-64.tar.gz
+	source = https://github.com/ugeneunipro/ugene/releases/download/49.1/ugene-49.1-linux-x86-64.tar.gz
 	source = ugene.desktop
 	source = ugene.svg
-	sha256sums = 899feb7f1ed3e3e2ab3cedc4bcdca3a3cf15440aef4c95da6f0a9bae5c23245e
+	sha256sums = e80cb2b282e023a7dfcc31b0f77964f555d736d00d106ec9a3defbaf55b1d8e3
 	sha256sums = 58aeee982faa07913c016323cdded0a4022695c4e313954fdc09c36742013896
 	sha256sums = 5a159437635965cae796c968c7297fd098e7f86dcecbe6a97e62950e782641fc
 
