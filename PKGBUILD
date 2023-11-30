@@ -1,4 +1,5 @@
-# Maintainer: Alexis Janon <kardyne -at- gmail -dot- com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Alexis Janon <kardyne -at- gmail -dot- com>
 _pkgname=fluentui-system-icons
 pkgname="ttf-${_pkgname}"
 pkgver=1.1.223
