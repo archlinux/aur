@@ -2,12 +2,12 @@
 
 pkgname=freeciv21
 pkgver=3.0_stable
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeciv for the 21st Century"
 arch=('x86_64')
 url="https://github.com/longturn/freeciv21"
 license=('GPL3')
-depends=( 'lua' 'qt5-base' 'qt5-svg' 'sdl2_mixer' 'karchive' 'libertinus-font')
+depends=( 'lua' 'qt5-base' 'qt5-svg' 'sdl2_mixer' 'karchive5' 'libertinus-font')
 makedepends=('cmake' 'ninja' 'python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.0/Freeciv21-v3.0.tar.gz")
 sha256sums=('6cd76243b738e07480865d6e60eeb8d544e13ef7bd99497868fe56f8406244af')
