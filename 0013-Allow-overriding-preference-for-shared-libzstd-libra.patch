@@ -1,0 +1,38 @@
+From ef3dd72e5f18ff2bbefb941f860e44b9bbe6d64d Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Tue, 7 Nov 2023 23:58:54 +0100
+Subject: [PATCH 13/13] Allow overriding preference for shared libzstd library
+
+As of 3f45905953d57e0174059d7d9d6bc75c3c1c406c Qt prefers the shared zstd
+library. This breaks static builds. With this change the static library is
+preferred again when CMAKE_FIND_LIBRARY_SUFFIXES_OVERRIDE is set (which is
+done by the CMake toolchain file used by Arch Linux mingw-w64 packaging).
+
+Change-Id: I38b8a15929e6b7044d827c095f13a27e0adf11da
+---
+ cmake/FindWrapZSTD.cmake | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/FindWrapZSTD.cmake b/cmake/FindWrapZSTD.cmake
+index fb424236b8..12a3178518 100644
+--- a/cmake/FindWrapZSTD.cmake
++++ b/cmake/FindWrapZSTD.cmake
+@@ -28,10 +28,12 @@ include(FindPackageHandleStandardArgs)
+ if(TARGET zstd::libzstd_static OR TARGET zstd::libzstd_shared)
+     find_package_handle_standard_args(WrapZSTD
+                                       REQUIRED_VARS zstd_VERSION VERSION_VAR zstd_VERSION)
+-    if(TARGET zstd::libzstd_shared)
+-        set(zstdtargetsuffix "_shared")
+-    else()
++
++    if ((CMAKE_FIND_LIBRARY_SUFFIXES_OVERRIDE AND TARGET zstd::libzstd_static)
++        OR (NOT TARGET zstd::libzstd_shared))
+         set(zstdtargetsuffix "_static")
++    else()
++        set(zstdtargetsuffix "_shared")
+     endif()
+     if(NOT TARGET WrapZSTD::WrapZSTD)
+         add_library(WrapZSTD::WrapZSTD INTERFACE IMPORTED)
+-- 
+2.43.0
+

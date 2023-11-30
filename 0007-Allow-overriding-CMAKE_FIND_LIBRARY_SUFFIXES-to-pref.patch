@@ -1,7 +1,7 @@
 From c4643677a73f0277e472a867039fd0b09656d71a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:34:09 +0100
-Subject: [PATCH 07/12] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
+Subject: [PATCH 07/13] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
  static libraries
 
 Change-Id: I4c617e0706044d31da1bd56ae51615dc8ed37099
@@ -25,5 +25,5 @@ index e8e981542c..bd3dca6970 100644
  #
  # Macros and functions for building Qt modules
 -- 
-2.42.0
+2.43.0
 
