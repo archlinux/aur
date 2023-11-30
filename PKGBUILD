@@ -14,7 +14,7 @@ license=('Apache-2.0')
 # E.g: pacman -Qip lx-music-desktop.v1.2.0.x64.pacman
 # Then copy the `Depends On(依赖于)` field.
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
-source=("https://ghproxy.com/https://github.com/lyswhut/lx-music-desktop/releases/download/v${pkgver}/lx-music-desktop_${pkgver}_x64.pacman")
+source=("https://mirror.ghproxy.com/https://github.com/lyswhut/lx-music-desktop/releases/download/v${pkgver}/lx-music-desktop_${pkgver}_x64.pacman")
 md5sums=('87470be7a4bb7e58384fabf098a74192')
 # copy .INSTALL script from lx-music-desktop.v${pkgver}.x64.pacman
 # E.g: tar xf lx-music-desktop.v1.2.0.x64.pacman .INSTALL && mv -fv .INSTALL lx-music-desktop.install

@@ -5,7 +5,7 @@ SELF_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SELF_DIR}/PKGBUILD"
 echo "Current version: ${pkgver}"
 echo -n "Checking latest version... "
-LATEST_VER="$(curl -si https://ghproxy.com/https://github.com/lyswhut/lx-music-desktop/releases/latest | sed -nr 's@^location:.*/v(.*)\r@\1@p')"
+LATEST_VER="$(curl -si https://mirror.ghproxy.com/https://github.com/lyswhut/lx-music-desktop/releases/latest | sed -nr 's@^location:.*/v(.*)\r@\1@p')"
 echo "${LATEST_VER}"
 
 if [ "${LATEST_VER}" = ${pkgver} ]; then
@@ -13,7 +13,7 @@ if [ "${LATEST_VER}" = ${pkgver} ]; then
     exit
 else
     FILE_NAME="lx-music-desktop_${LATEST_VER}_x64.pacman"
-    LATEST_DOWNLOAD_URL="https://ghproxy.com/https://github.com/lyswhut/lx-music-desktop/releases/download/v${LATEST_VER}/${FILE_NAME}"
+    LATEST_DOWNLOAD_URL="https://mirror.ghproxy.com/https://github.com/lyswhut/lx-music-desktop/releases/download/v${LATEST_VER}/${FILE_NAME}"
     echo -n "Calculating lx-music-desktop ${LATEST_VER} md5sum... "
     curl -ksSLo "/tmp/${FILE_NAME}" -C- "${LATEST_DOWNLOAD_URL}"
     MD5="$(md5sum "/tmp/${FILE_NAME}" | cut -d' ' -f1)"
