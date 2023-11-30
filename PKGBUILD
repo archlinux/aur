@@ -4,7 +4,7 @@
 
 pkgname=languagetool-snapshot
 _pkgname="${pkgname%-snapshot}"
-_date=20231117
+_date=20231129
 _revision=6.4
 pkgver=$_revision.$_date
 pkgrel=1
@@ -21,7 +21,7 @@ conflicts=("${pkgname%-snapshot}")
 source=(https://www.languagetool.org/download/snapshots/LanguageTool-"$_date"-snapshot.zip
         https://gitlab.archlinux.org/archlinux/packaging/packages/languagetool/-/raw/2079fd41/languagetool.service
         https://gitlab.archlinux.org/archlinux/packaging/packages/languagetool/-/raw/2079fd41/languagetool.sh)
-sha256sums=('54ab30231d8ac747aafb5f68476508e52a9b734392258f814876561b794d19c6'
+sha256sums=('e8727f832e3060ea854d62dc4cb45c80422b88dbd3062bc459230cd3fe34cffb'
             '628e59208af02dd41c678135ef6dd8b328905701301d8257316b388d36d6c52b'
             'e395fe51eb107365bb6e5456a2e1a144a60296e52554b8407f241e195e434359')
 
