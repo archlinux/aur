@@ -1,7 +1,7 @@
 # Maintainer: Dirk Rauber <dirk@nine.ch>
 
 pkgname=nctl
-pkgver=1.1.0
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="A CLI tool to interact with Nine API resources."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 url="https://www.nine.ch/"
 
 source=("https://github.com/ninech/nctl/releases/download/v${pkgver}/nctl_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('b61f42e4614b93018d01cb0f5e198f08fd4da1c80a20f6f82cf2cf0a6a996849')
+sha256sums=('9443550cfb4423b0b0cece040e088f5b024f8460c7ef46880ec84704f5125b84')
 
 package() {
   install -Dm 0755 "${srcdir}"/nctl "${pkgdir}"/usr/bin/nctl
