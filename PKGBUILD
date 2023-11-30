@@ -17,9 +17,11 @@ _url="https://web.archive.org/web/%dif_/https://eidas.minv.sk/downloadservice/ei
 source=(
     eidklient
 )
+# shellcheck disable=SC2059
 source_i686=(
     "$(printf "${_url}" 20231130000133 i386)"
 )
+# shellcheck disable=SC2059
 source_x86_64=(
     "$(printf "${_url}" 20231129171710 x86_64)"
 )
