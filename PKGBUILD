@@ -4,7 +4,7 @@ pkgname="tenacity-bin"
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 
 arch=(i686 x86_64)
 
@@ -23,6 +23,9 @@ md5sums=("f18dd15d2f357c362c0edf7e7d7b52a2")
 options=(!strip)
 
 prepare() {
+    # make the AppImage executable
+    chmod +x "./tenacity-linux-v${pkgver}.AppImage"
+
     # extract the `share` directory from the AppImage
     "./tenacity-linux-v${pkgver}.AppImage" --appimage-extract share
 
