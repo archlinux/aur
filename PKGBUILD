@@ -2,7 +2,7 @@
 
 pkgname="vivify"
 pkgver="0.1.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim"
 arch=("x86_64")
 url="https://github.com/jannis-baum/vivify"
@@ -22,5 +22,4 @@ package() {
 	cd "${pkgname}-${pkgver}"
         install -Dm755 ./bin/linux/viv           "${pkgdir}/usr/bin/viv"
         install -Dm755 ./bin/linux/vivify-server "${pkgdir}/usr/bin/vivify-server"
-        install -Dm644 ./README.md               "${pkgdir}/usr/share/doc/${pkgname}"
 }
