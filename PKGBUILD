@@ -1,34 +1,31 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epiR
 _pkgver=2.0.66
 pkgname=r-${_pkgname,,}
-pkgver=2.0.66
-pkgrel=1
-pkgdesc='Tools for the Analysis of Epidemiological Data'
-arch=('any')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Tools for the Analysis of Epidemiological Data"
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL)
 depends=(
-  r
   r-biasedurn
+  r-flextable
   r-lubridate
+  r-officer
   r-pander
   r-sf
   r-zoo
-  r-flextable
-  r-officer
 )
 optdepends=(
   r-dplyr
-  r-foreign
   r-ggplot2
   r-knitr
   r-mapproj
-  r-mass
   r-plyr
   r-rcolorbrewer
-  r-rgeos
   r-rmarkdown
   r-scales
   r-sp
@@ -37,14 +34,15 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('fd714326c255ae2368e20a91e27ea13f')
 sha256sums=('e01300ab22a05bad0a83af50b8ef2e040b283897b10613fe85e4416a2147ec23')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
