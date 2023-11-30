@@ -1,0 +1,21 @@
+pkgbase = r-ctsv
+	pkgdesc = Identification of cell-type-specific spatially variable genes accounting for excess zeros
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CTSV
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-biocparallel
+	depends = r-knitr
+	depends = r-pscl
+	depends = r-qvalue
+	depends = r-spatialexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CTSV_1.4.0.tar.gz
+	md5sums = 4a3f8c7b5398449ea01b312ed7da1f43
+	sha256sums = c9ab303473fa093de52c3a25dc2e46413399cef5284aa2c177299c03e61fcc02
+
+pkgname = r-ctsv
