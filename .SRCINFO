@@ -1,6 +1,6 @@
 pkgbase = r-rjags
 	pkgdesc = Bayesian Graphical Models using MCMC
-	pkgver = 4.14
+	pkgver = 4.15
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rjags
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-rjags
 	depends = r-coda
 	depends = jags
 	optdepends = r-tcltk
-	source = https://cran.r-project.org/src/contrib/rjags_4-14.tar.gz
-	sha256sums = 313b5df702598ce3bbc5f8b027b654c8489420ca5a4e0a794954ea9f4837e2cb
+	source = https://cran.r-project.org/src/contrib/rjags_4-15.tar.gz
+	sha256sums = 35cd4c1faaaa8523b87ac053b881dccf29798f073f438459589e786b95ef18a1
 
 pkgname = r-rjags
