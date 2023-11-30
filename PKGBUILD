@@ -2,16 +2,16 @@
 
 pkgname=deltachat-cursed
 _module=deltachat_cursed
-pkgver=0.7.2
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Delta Chat client for the command line"
 url="https://github.com/adbenitez/deltachat-cursed"
 depends=(python-notify-py python-urwid_readline python-deltachat python-emoji)
 makedepends=(python-setuptools)
 license=('GPL')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/f1/46/5e1e4613b0fa6ccbca065825eb450a664a0c9e9409578bf08f1ae58db633/deltachat_cursed-${pkgver}.tar.gz")
-sha256sums=('661cb8097314b86c74aafc7ae4e7e9bcdbb0b1ad3d757fc2bb27aad4c877cf1f')
+source=("https://files.pythonhosted.org/packages/df/7e/85dcd4b7f84ede4d9ff2983234bd89e6fa095b9517fc1a43a5bec97a7040/deltachat_cursed-${pkgver}.tar.gz")
+sha256sums=('cd6915d3acfeeabe00bb9d0e8878aee19e48060d4fd090323ae6920171981440')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
