@@ -1,6 +1,6 @@
 pkgbase = kaniko
 	pkgdesc = Build Container Images In Kubernetes
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/GoogleContainerTools/kaniko
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kaniko
 	depends = glibc
 	optdepends = bash: run_in_docker.sh script
 	options = !lto
-	source = https://github.com/GoogleContainerTools/kaniko/archive/refs/tags/v1.18.0.tar.gz
-	sha256sums = a33579fd4e4aeea91595b1efe7c2758c77c031b1f4b06b34d5eaca50b483c3e9
+	source = https://github.com/GoogleContainerTools/kaniko/archive/refs/tags/v1.19.0.tar.gz
+	sha256sums = 8f987dc39a4b0ea3a532c5943abfa5d2888a05c82f7e7a73b75119cb456fb566
 
 pkgname = kaniko
