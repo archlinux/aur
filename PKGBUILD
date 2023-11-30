@@ -3,26 +3,28 @@
 # flashback_data_files.7z if from http://gtamp.com/PSP/reminiscencepsp.php
 
 pkgname=reminiscence
-pkgver=0.4.8
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A rewrite of the flashback engine"
 arch=('i686' 'x86_64')
 url="http://cyxdown.free.fr/reminiscence/"
 license=('GPL')
-depends=('sdl2' 'libmodplug' 'zlib' 'bash' 'libtremor-git')
+depends=('sdl2' 'libmodplug' 'zlib' 'bash')
 makedepends=('p7zip')
 source=(http://cyxdown.free.fr/reminiscence/REminiscence-${pkgver}.tar.bz2
         http://gtamp.com/PSP/flashback_data_files.7z
+        https://github.com/nothings/stb/raw/master/stb_vorbis.c
         reminiscence.sh)
-md5sums=('4297fb6e94297f70e5bdf4e5596abb48'
+md5sums=('ca480fdaf4cee5fb61d1b20ace1fa0f6'
          'f994412ad4246c587896dab7d2eb9627'
+         '36713ac98e445271e29547cc2d90b01f'
          '4ed0350e4b81e9ba305f90e157c75371')
 noextract=('flashback_data_files.7z')
 
 build() {
-  cd "$srcdir/REminiscence-$pkgver"
+    cd "$srcdir/REminiscence-$pkgver"
+    cp "$srcdir/stb_vorbis.c" .
 
-#make CXX=g++ CXXFLAGS="-Wall -MMD \$(SDL_CFLAGS) -DUSE_MODPLUG -DUSE_ZLIB -O"
     make
 }
 
