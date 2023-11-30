@@ -1,41 +1,63 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 
-_pkgname="logseq-desktop"
-pkgname="$_pkgname-bin"
-pkgver=0.9.20
+# options
+: ${_pkgtype:=bin}
+
+# basic info
+_pkgname=logseq-desktop
+pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
-arch=("x86_64")
 url="https://github.com/logseq/logseq"
 license=('AGPL3')
-provides=("logseq-desktop")
-conflicts=("logseq-desktop")
+arch=("x86_64")
+
+depends=('electron')
+makedepends=(
+  'asar'
+  'gendesk'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
 install="$_pkgname.install"
 
 _pkgsrc="Logseq-linux-x64"
 source=(
-    "$url/releases/download/$pkgver/$_pkgsrc-$pkgver.zip"
-    "$_pkgname.desktop"
-    "$_pkgname.sh"
+  "$url/releases/download/$pkgver/$_pkgsrc-$pkgver.zip"
 )
 sha256sums=(
-    'fb9002a317063fd8473c3d08b8ffd0546bc30fbef257747cfafe2bf17e88c3d4'
-    '12eb07a20c29f9573bbb91e585602a150d5f851cdb15ae43e6319d075b7ecbba'
-    '79749ee5011f229810343fb4a4eeb60de986d541617ead4242ccf0057b263a55'
+  'ca7ac5022e3317444562e027566b5afb0641db9421ce199ca8964b07f2512b37'
 )
 
+prepare() {
+  cat <<'EOF' > "$_pkgname.sh"
+#!/usr/bin/env sh
+set -e
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+if [ -r "${XDG_CONFIG_HOME}/logseq-flags.conf" ]; then
+  LOGSEQ_USER_FLAGS="$(cat "$XDG_CONFIG_HOME/logseq-flags.conf")"
+fi
+exec electron /usr/lib/logseq-desktop/app.asar $LOGSEQ_USER_FLAGS "$@"
+EOF
+
+  gendesk -q -f -n --pkgname="$_pkgname" --pkgdesc="$pkgdesc" --name="Logseq" --exec="logseq %u" --icon="logseq" --terminal=false --categories="Office" --mimetypes="x-scheme-handler/logseq" --startupnotify=true --custom="StartupWMClass=Logseq"
+}
+
 package() {
-    # desktop file, make minitype works as expected.
-    install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/logseq-desktop.desktop"
+  # desktop file
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/logseq-desktop.desktop"
 
-    # icons
-    install -Dm644 \
-        "$srcdir/$_pkgsrc/resources/app/icons/logseq.png" \
-        -t "$pkgdir/usr/share/pixmaps/"
+  # icons
+  install -Dm644 "$_pkgsrc/resources/app/icons/logseq.png" \
+    -t "$pkgdir/usr/share/pixmaps/"
 
-    install -dm755 "$pkgdir/opt/$pkgname"
-    cp -r "$srcdir/$_pkgsrc"/* "$pkgdir/opt/$pkgname/"
+  # asar
+  install -dm755 "$pkgdir/usr/lib/$_pkgname"
+  asar pack "$_pkgsrc/resources/app" "$pkgdir/usr/lib/$_pkgname/app.asar"
 
-    # User flag aware launcher
-    install -Dm755 "$srcdir/logseq-desktop.sh" "$pkgdir/usr/bin/logseq"
+  # script
+  install -Dm755 "logseq-desktop.sh" "$pkgdir/usr/bin/logseq"
 }
