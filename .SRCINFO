@@ -1,13 +1,13 @@
 pkgbase = to-html
 	pkgdesc = Render a terminal with ANSI colors as HTML
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/Aloso/to-html
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = util-linux
-	source = to-html-0.1.4.tar.gz::https://github.com/Aloso/to-html/archive/v0.1.4.tar.gz
-	sha512sums = 2d4a18cce32f22318dff7b7fdf82ea2267a1cd1c23b9d8c59213df3e188a71fa263db43c6b2bf1c78eed6164ac86cda80db4648e37858cfc2916cbc0b7868294
+	source = to-html-0.1.5.tar.gz::https://github.com/Aloso/to-html/archive/v0.1.5.tar.gz
+	sha512sums = 44904aca5c2e09acda1b237ce6e20f033d909f76da6127737a01a3b802302278d2a84ce2946e8bd3f4d59dc2bb6287524b468d7a9d40406f192036fd813c3d4a
 
 pkgname = to-html
