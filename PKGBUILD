@@ -1,24 +1,26 @@
 # Maintainer: wuxxin <wuxxin@gmail.com>
 
-_ENABLE_CUDA=0
+# to only build for cpu, set ENABLE_CUDA and ROCM to 0
+_ENABLE_CUDA=1
 _ENABLE_ROCM=0
+_SKIP_CPU=0
 _GO_TAGS=""
 # _GO_TAGS="tts stablediffusion"
 _OPTIONAL_BACKENDS=""
-if test "$(echo "$_GO_TAGS" | grep -o "tts")" = "tts"; then
+if test -n "$(echo "$_GO_TAGS" | grep -o "tts")"; then
   _OPTIONAL_BACKENDS="backend-assets/grpc/piper $_OPTIONAL_BACKENDS"
 fi
-if test "$(echo "$_GO_TAGS" | grep -o "stablediffusion")" = "stablediffusion"; then
+if test -n "$(echo "$_GO_TAGS" | grep -o "stablediffusion")"; then
   _OPTIONAL_BACKENDS="backend-assets/grpc/stablediffusion $_OPTIONAL_BACKENDS"
 fi
+# list of backends to be build
 _GRPC_BACKENDS="backend-assets/grpc/bert-embeddings backend-assets/grpc/llama-cpp backend-assets/grpc/whisper $_OPTIONAL_BACKENDS"
-# backend-assets/grpc/rwkv
 _pkgname="localai"
 
 pkgbase="${_pkgname}-git"
 pkgname=("${pkgbase}")
-pkgver=v1.40.0.60.gfd1b7b3
-pkgrel=5
+pkgver=v1.40.0.63.g9f708ff
+pkgrel=1
 pkgdesc="The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -28,9 +30,11 @@ provides=('localai')
 conflicts=('localai')
 
 depends=(
-  'ffmpeg'
+  'grpc'
   'opencv'
   'blas-openblas'
+  'sdl2'
+  'ffmpeg'
 )
 makedepends=(
   'go'
@@ -41,7 +45,7 @@ makedepends=(
 if test "$(echo "$_GO_TAGS" | grep -o "tts")" = "tts"; then
   depends+=(
     'onnxruntime'
-    'libucd-git'
+    'piper-phonemize'
   )
 fi
 
@@ -81,16 +85,22 @@ prepare() {
   # update whisper and add gpu support
   patch -Np1 -i "${srcdir}/whisper-1.5.1.patch"
 
-  # remove sources for inactive backends: go-llama go-llama-ggml go-ggml-transformers gpt4all
-  _SOURCES="go-piper go-rwkv whisper.cpp go-bert go-stable-diffusion"
-  _SOURCES_PATHS="$(echo "$_SOURCES" | tr " " "\n" | sed -r "s#(.+)#sources/\1#" | tr "\n" " ")"
-  sed -ri "s#get-sources: .*#get-sources: backend/cpp/llama/llama.cpp $_SOURCES_PATHS#g" Makefile
-  sed -ri 's#.+\-replace github.com/nomic-ai/gpt4all/gpt4all.+##g' Makefile
-  sed -ri 's#.+\-replace github.com/go-skynet/go-ggml-transformers.cpp.+##g' Makefile
-
+  # list of backend sources to be recursive git checked out before build()
+  _EXTERNAL_SOURCES="backend/cpp/llama/llama.cpp sources/go-piper sources/whisper.cpp sources/go-bert"
   # fetch sources for active backends
   mkdir -p "sources"
-  make $_SOURCES_PATHS
+  make $_EXTERNAL_SOURCES
+
+  # modify get-sources, remove go mod edits for inactive backend sources
+  sed -ri "s#get-sources: .*#get-sources: $_EXTERNAL_PATHS#g" Makefile
+  sed -ri 's#.+\-replace github.com/nomic-ai/gpt4all/gpt4all.+##g' Makefile
+  sed -ri 's#.+\-replace github.com/donomii/go-rwkv.cpp.+##g' Makefile
+  sed -ri 's#.+\-replace github.com/go-skynet/go-ggml-transformers.cpp.+##g' Makefile
+  sed -ri 's#.+\-replace github.com/mudler/go-stable-diffusion.+##g' Makefile
+
+  # # patch stablediffusion
+  # sed -ri "s/^(#include <ncnn\/)(benchmark|net)(\.h>)/\1src\/\2\3/g" \
+  #   sources/go-stable-diffusion/stablediffusion.hpp
 
   # copy for different build types
   cd "${srcdir}"
@@ -105,9 +115,26 @@ pkgver() {
   echo "$(git describe --always --tags | tr "-" ".")"
 }
 
+_build() {
+  if test -n "$(echo "$_GO_TAGS" | grep -o "stablediffusion")"; then
+    make BUILD_TYPE="$1" GRPC_BACKENDS="backend-assets/grpc/stablediffusion" GO_TAGS="$_GO_TAGS" build
+  fi
+  make BUILD_TYPE="$1" GRPC_BACKENDS="$_GRPC_BACKENDS" GO_TAGS="$_GO_TAGS" build
+}
+
 build() {
-  cd "${srcdir}/${_pkgname}-cpu"
-  make BUILD_TYPE="openblas" GRPC_BACKENDS="$_GRPC_BACKENDS" GO_TAGS="$_GO_TAGS" build
+  if test "$_SKIP_CPU" != "1"; then
+    cd "${srcdir}/${_pkgname}-cpu"
+    _build openblas
+  fi
+
+  if [[ $_ENABLE_CUDA = 1 ]]; then
+    cd "${srcdir}/${_pkgname}-cuda"
+    export CUDA_HOME="${CUDA_HOME:-/opt/cuda}"
+    export PATH="$CUDA_HOME/bin:$PATH"
+    MAGMA_HOME="$CUDA_HOME/targets/x86_64-linux" CUDA_LIBPATH="$CUDA_HOME/lib64/" \
+      _build cublas
+  fi
 
   if [[ $_ENABLE_ROCM = 1 ]]; then
     cd "${srcdir}/${_pkgname}-rocm"
@@ -119,41 +146,33 @@ build() {
       _AMDGPU_TARGETS="${AMDGPU_TARGETS:-gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102}"
     fi
     MAGMA_HOME="$ROCM_HOME" AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
-      make BUILD_TYPE="hipblas" GRPC_BACKENDS="$_GRPC_BACKENDS" GO_TAGS="$_GO_TAGS" build
+      _build hipblas
   fi
+}
 
-  if [[ $_ENABLE_CUDA = 1 ]]; then
-    cd "${srcdir}/${_pkgname}-cuda"
-    export CUDA_HOME="${CUDA_HOME:-/opt/cuda}"
-    export PATH="$CUDA_HOME/bin:$PATH"
-    MAGMA_HOME="$CUDA_HOME/targets/x86_64-linux" \
-      make BUILD_TYPE="cublas" GRPC_BACKENDS="$_GRPC_BACKENDS" GO_TAGS="$_GO_TAGS" build
-  fi
+_package_install() {
+  install -Dm755 "local-ai" "${pkgdir}/usr/bin/local-ai"
+  # sources/go-piper/piper/build/pi/lib/* /usr/lib/
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
 package_localai-git() {
-  cd "${srcdir}/${_pkgname}-cpu"
-
-  install -Dm755 "local-ai" "${pkgdir}/usr/bin/local-ai"
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
-}
-
-package_localai-git-rocm() {
-  cd "${srcdir}/${_pkgname}-rocm"
-
-  pkgdesc+=' (with ROCM support)'
-  depends+=('rocm-hip-runtime')
-
-  install -Dm755 "local-ai" "${pkgdir}/usr/bin/local-ai"
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  if test "$_SKIP_CPU" != "1"; then
+    cd "${srcdir}/${_pkgname}-cpu"
+    _package_install
+  fi
 }
 
 package_localai-git-cuda() {
   cd "${srcdir}/${_pkgname}-cuda"
-
   pkgdesc+=' (with CUDA support)'
   depends+=('cuda')
+  _package_install
+}
 
-  install -Dm755 "local-ai" "${pkgdir}/usr/bin/local-ai"
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
+package_localai-git-rocm() {
+  cd "${srcdir}/${_pkgname}-rocm"
+  pkgdesc+=' (with ROCM support)'
+  depends+=('rocm-hip-runtime')
+  _package_install
 }
