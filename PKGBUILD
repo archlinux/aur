@@ -2,8 +2,8 @@
 # Maintainer: OmegaRogue
 # Contributor: OmegaRogue
 pkgname=axis-cc-bin
-pkgver=0.8.5beta
-pkgrel=1
+pkgver=0.8.5_beta
+pkgrel=2
 pkgdesc="Software interface for AXIS"
 arch=('x86_64')
 url="https://axisxr.gg/"
@@ -15,7 +15,7 @@ optdepends=('alsa-lib'
             'libgnome-keyring'
             'pulseaudio')
 options=('!strip' '!emptydirs')
-source_x86_64=("https://downloads.axisxr.gg/download/flavor/default/0.8.5-beta/linux_64/axis-cc-0.8.5-beta-amd64.deb")
+source_x86_64=("https://downloads.axisxr.gg/download/flavor/default/${pkgver//_/-}/linux_64/${pkgname%-bin}-${pkgver//_/-}-amd64.deb")
 sha512sums_x86_64=('ac8bcd94a5c1654635c29ce771918cb365fbaaa090c207b31336e205cfad44e05fc730a01161bb91a61ab24b0d82b42a266f70d660a2d9b91f40977e9ddbbd98')
 
 package(){
