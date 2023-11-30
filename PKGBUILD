@@ -23,6 +23,8 @@ makedepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
+install="$_pkgname.install"
+
 _pkgsrc="Logseq-linux-x64"
 source=(
   "$url/releases/download/$pkgver/$_pkgsrc-$pkgver.zip"
@@ -38,6 +40,9 @@ set -e
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 if [ -r "${XDG_CONFIG_HOME}/logseq-flags.conf" ]; then
   LOGSEQ_USER_FLAGS="$(cat "$XDG_CONFIG_HOME/logseq-flags.conf")"
+fi
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  LOGSEQ_USER_FLAGS="${LOGSEQ_USER_FLAGS:-} --enable-features=UseOzonePlatform --ozone-platform=wayland"
 fi
 exec electron /usr/lib/logseq-desktop/app.asar $LOGSEQ_USER_FLAGS "$@"
 EOF
