@@ -2,11 +2,11 @@
 
 _name=taurus
 pkgname="python-${_name}"
-pkgver=5.1.7
+pkgver=5.1.8
 pkgrel=1
 pkgdesc="A framework for scientific/industrial CLIs and GUIs"
 arch=('any')
-url='http://taurus-scada.org/'
+url="https://gitlab.com/taurus-org/${_name}"
 license=('LGPL3')
 depends=(python-pyqt5 python-lxml python-click python-pint python-ply)
 makedepends=(python-setuptools)
@@ -17,21 +17,15 @@ optdepends=('python-pytango: for integration with TANGO control system'
             'python-pymca5: for extra pymca5 widgets'
             'python-guiqwt: for extra guiqwt widgets'
             'spyder: for a qt based editor within taurus')
-source=("$_name-$pkgver.tar.gz::https://gitlab.com/taurus-org/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz" "int.patch")
-sha256sums=('75599b0d70834ebf743a21fd5694961f7e3c8cf01844d335da0ca0a7793c9f50'
-            '72c9f2374827d12a482f099237a45d315515ceb90ec6c8dd2aad7f54f8031261')
-
-prepare(){
-  cd "${_name}-${pkgver}"
-  patch -N -p1 --input="${srcdir}/int.patch"
-}
+source=("$_name-$pkgver.tar.gz::https://gitlab.com/taurus-org/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
+sha256sums=('2fd9bf481fa0b77bee7fc9789150752441a75b98016dd77fffb211eba20aebc1')
 
 build() {
   cd "${_name}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }

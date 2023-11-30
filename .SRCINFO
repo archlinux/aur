@@ -1,8 +1,8 @@
 pkgbase = python-taurus
 	pkgdesc = A framework for scientific/industrial CLIs and GUIs
-	pkgver = 5.1.7
+	pkgver = 5.1.8
 	pkgrel = 1
-	url = http://taurus-scada.org/
+	url = https://gitlab.com/taurus-org/taurus
 	arch = any
 	license = LGPL3
 	makedepends = python-setuptools
@@ -18,9 +18,7 @@ pkgbase = python-taurus
 	optdepends = python-pymca5: for extra pymca5 widgets
 	optdepends = python-guiqwt: for extra guiqwt widgets
 	optdepends = spyder: for a qt based editor within taurus
-	source = taurus-5.1.7.tar.gz::https://gitlab.com/taurus-org/taurus/-/archive/5.1.7/taurus-5.1.7.tar.gz
-	source = int.patch
-	sha256sums = 75599b0d70834ebf743a21fd5694961f7e3c8cf01844d335da0ca0a7793c9f50
-	sha256sums = 72c9f2374827d12a482f099237a45d315515ceb90ec6c8dd2aad7f54f8031261
+	source = taurus-5.1.8.tar.gz::https://gitlab.com/taurus-org/taurus/-/archive/5.1.8/taurus-5.1.8.tar.gz
+	sha256sums = 2fd9bf481fa0b77bee7fc9789150752441a75b98016dd77fffb211eba20aebc1
 
 pkgname = python-taurus

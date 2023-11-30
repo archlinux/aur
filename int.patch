@@ -1,9 +1,0 @@
---- a/lib/taurus/core/tango/util/tango_taurus.py
-+++ b/lib/taurus/core/tango/util/tango_taurus.py
-@@ -77,6 +77,5 @@
-     PyTango.CmdArgType.DevULong64: DataType.Integer,
-     PyTango.CmdArgType.DevVarLong64Array: DataType.Integer,
-     PyTango.CmdArgType.DevVarULong64Array: DataType.Integer,
--    PyTango.CmdArgType.DevInt: DataType.Integer,
-     PyTango.CmdArgType.DevEncoded: DataType.DevEncoded,
- }
