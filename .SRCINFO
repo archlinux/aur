@@ -1,15 +1,15 @@
 pkgbase = webstorm-eap
 	pkgdesc = JavaScript IDE and HTML editor. Early Access Program.
-	pkgver = 233.11799.95
+	pkgver = 233.11799.192
 	pkgrel = 1
 	url = http://www.jetbrains.com/webstorm
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://download.jetbrains.com/webstorm/WebStorm-233.11799.95.tar.gz
+	source = https://download.jetbrains.com/webstorm/WebStorm-233.11799.192.tar.gz
 	source = jetbrains-webstorm-eap.desktop
 	source = WebStorm_license.txt
-	sha256sums = dfe495759c4fe04461e4c05405d2d786efda47268716d494e58856381cdcf300
+	sha256sums = 2e6180d1f68a36711041c8bc3605c12eb9b59bc14f94fa185b8d6181e2b09f4d
 	sha256sums = e8d1be7f980b7d371ef5aa65f2375397d970e887659bf3b280601cced8498e32
 	sha256sums = 8464fc766dbb4f6a0de4acd84007fc2916b50ca48ce7d22654144f549c8c6f4c
 
