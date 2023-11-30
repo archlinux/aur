@@ -2,7 +2,7 @@
 
 _pkgname=radontea
 pkgname=python-${_pkgname}
-pkgver=0.4.9
+pkgver=0.4.14
 pkgrel=1
 pkgdesc="Algorithms to compute the inverse Radon transform (e.g. SART, backprojection, Fourier interpolation)."
 arch=('any')
@@ -14,17 +14,21 @@ depends=(
 	'python-pip'
 	'python-numpy'
 	'python-scipy'
-	)
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('bb08e109987ecd95b2c0699b536042314bb495d508fe794aba31146ca067015a')
+)
+makedepends=(
+	'python-build'
+	'python-installer'
+)
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('4526e032cd52d72057dfa0530702e0325d78799e42d55b44b5d7dfefab90de5e')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py build
+	python3 -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python3 -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
