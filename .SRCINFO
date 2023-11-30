@@ -1,6 +1,6 @@
 pkgbase = openshift-pipelines-bin
 	pkgdesc = Pipeline tools for OpenShift (tkn, tkn-pac, opc), binary release
-	pkgver = 1.12.1
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://docs.openshift.com/container-platform/latest/cli_reference/tkn_cli/installing-tkn.html
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = openshift-pipelines-bin
 	conflicts = opc
 	conflicts = opc-bin
 	options = !strip
-	source = tkn-v1.12.1-linux-amd64.tar.gz::https://mirror.openshift.com/pub/openshift-v4/clients/pipelines/1.12.1/tkn-linux-amd64.tar.gz
-	sha256sums = e534fc5695ac7790a95634628caaffeba11462e68646575ee2a058b4141b68ec
+	source = tkn-v1.13.0-linux-amd64.tar.gz::https://mirror.openshift.com/pub/openshift-v4/clients/pipelines/1.13.0/tkn-linux-amd64.tar.gz
+	sha256sums = 324ec5ddcc97c3fd56ef6ff7ec706724d9c2f9bec518c9d28f6b9034728a79be
 
 pkgname = openshift-pipelines-bin
