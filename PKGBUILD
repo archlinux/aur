@@ -6,8 +6,8 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore3-git
-pkgver=3.7.0.r19945.ba87541
-pkgrel=2
+pkgver=3.7.0.r19948.1fd1b75
+pkgrel=1
 pkgdesc='Create, play and print beautiful sheet music (Jojo Schmitz fork)'
 arch=(x86_64)
 url=https://musescore.org/

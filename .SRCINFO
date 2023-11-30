@@ -1,7 +1,7 @@
 pkgbase = musescore3-git
 	pkgdesc = Create, play and print beautiful sheet music (Jojo Schmitz fork)
-	pkgver = 3.7.0.r19945.ba87541
-	pkgrel = 2
+	pkgver = 3.7.0.r19948.1fd1b75
+	pkgrel = 1
 	url = https://musescore.org/
 	arch = x86_64
 	groups = pro-audio
