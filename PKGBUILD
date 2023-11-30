@@ -1,14 +1,14 @@
 # Maintainer: jdigi78 <jdigiovanni78 at gmail dot com>
 
 pkgname=crocotile3d
-pkgver=2.2.6
+pkgver=2.2.6c
 pkgrel=2
 pkgdesc='Tile-based 3D modeling application'
 arch=('x86_64')
 license=('Unknown')
 options=(!strip)
 source=("https://jdigi.net/AUR/Crocotile3D/Crocotile3D_v${pkgver}_linux64.tar.gz" "crocotile3d.desktop" "icon.png")
-sha256sums=('d3c7fedb7b803902e85b06cf2b91851e9e6170a6eb6f4a3265c4d59355c613fc'
+sha256sums=('6bf3e623c640c7894f2d9c691c7bf1b826d523574d3fefc90527e2c2654ad812'
             SKIP
             SKIP)
 
