@@ -1,0 +1,17 @@
+pkgbase = r-analogue
+	pkgdesc = Analogue and Weighted Averaging Methods for Palaeoecology
+	pkgver = 0.17.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=analogue
+	arch = x86_64
+	license = GPL2
+	checkdepends = r-testthat
+	depends = r-brglm
+	depends = r-princurve
+	depends = r-vegan
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/analogue_0.17-6.tar.gz
+	md5sums = f4fcf06d896fa95e76d79da19c19e6ff
+	sha256sums = 71070f4e669b161a8bec355bf678cc94bb78ba87ee0625cbd8cd53b7ac45b030
+
+pkgname = r-analogue
