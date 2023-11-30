@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 pre_install() {
 	if systemctl is-active --quiet duo-device-health; then
 	    systemctl stop duo-device-health
@@ -95,10 +97,10 @@ pre_remove() {
 }
 
 post_remove() {
-	if [[ $1 == "remove" ]]; then
-	    rm -rf /etc/opt/duo/duo-desktop/https
-	    rmdir --ignore-fail-on-non-empty /etc/opt/duo/duo-desktop /etc/opt/duo
-	    rm -f /usr/share/ca-certificates/duo-desktop.crt
-	    update-ca-certificates --fresh >/dev/null
-	fi
+	install_dir="/opt/duo/duo-desktop"
+	keys_dir="/etc/opt/duo/duo-desktop/https"
+	cert_path="${keys_dir}/duo-desktop.crt"
+
+	trust anchor --remove "${cert_path}"
+	rm -rf /etc/opt/duo
 }

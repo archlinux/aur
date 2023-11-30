@@ -12,7 +12,7 @@ replaces=('duo-device-health')
 options=(!strip)
 source=("https://desktop.pkg.duosecurity.com/${pkgname}-latest.${arch}.rpm")
 sha512sums=('0f9f9650be490d812b96d43f616f4a47ca9d0bef1d322dfc9cb86b3de6b7f63faab6d70d72f250ee4e7ca3330e038b39007bf62fcfae0304ec632972bd750c5d')
-install=install
+install=duo.install
 
 package() {
 	cp -dpr --no-preserve=ownership opt usr "${pkgdir}"
