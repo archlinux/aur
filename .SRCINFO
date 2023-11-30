@@ -1,6 +1,6 @@
 pkgbase = mintstick
-	pkgdesc = A GUI to write .img or .iso files to a USB Key. It can also format them
-	pkgver = 1.5.6
+	pkgdesc = A graphical tool that allows you to format USB sticks and create bootable USB sticks.
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mintstick
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = mintstick
 	depends = util-linux
 	depends = xapp
 	conflicts = mintstick-git
-	source = mintstick-1.5.6.tar.xz::http://packages.linuxmint.com/pool/main/m/mintstick/mintstick_1.5.6.tar.xz
-	sha256sums = 8b23210847231b088e9f243cdd9f0ab6c5bc0d40fae9ffbb4e7a96ae251d4455
+	source = mintstick-1.5.7.tar.xz::http://packages.linuxmint.com/pool/main/m/mintstick/mintstick_1.5.7.tar.xz
+	sha256sums = 843a9a636d44f2f3a66f677b4e36387920df358114b4ceb659a59df1fd539c0c
 
 pkgname = mintstick
