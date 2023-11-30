@@ -2,35 +2,74 @@
 pkgname=orca-writer
 _pkgname=Orca
 pkgver=0.7.0_pre_alpha
-pkgrel=3
+_electronversion=18
+pkgrel=4
 pkgdesc="React Electron App for Writing and Publishing Novels"
 arch=('any')
 url="https://orcawriter.app/"
-_githuburl="https://github.com/zachhannum/orca"
+_ghurl="https://github.com/zachhannum/orca"
 license=('AGPL3')
 conflicts=("${pkgname}")
-depends=('libxfixes' 'libdrm' 'pango' 'glib2' 'libxcomposite' 'libxdamage' 'gcc-libs' 'libxkbcommon' 'at-spi2-core' 'nspr' 'gdk-pixbuf2' \
-    'libxrandr' 'cairo' 'nss' 'libcups' 'libxcb' 'expat' 'hicolor-icon-theme' 'gtk3' 'mesa' 'libxext' 'alsa-lib' 'dbus' 'libx11' 'glibc')
-makedepends=('npm' 'yarn' 'nodejs>=17.0.23' 'gendesk')
-source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('e0f2857dc98cbe9d83d7633d950a281bdfd0cbe2ce18971a73593c1112778668')
-prepare() {
-    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
+depends=(
+    'libxfixes'
+    'libdrm'
+    'pango'
+    'libxcomposite'
+    'libxdamage'
+    'libxkbcommon'
+    'at-spi2-core'
+    'nspr'
+    'gdk-pixbuf2'
+    'libxrandr'
+    'cairo'
+    'nss'
+    'libcups'
+    'libxcb'
+    'expat'
+    'hicolor-icon-theme'
+    'gtk3'
+    'mesa'
+    'libxext'
+    'alsa-lib'
+    'libx11'
+)
+makedepends=(
+    'npm'
+    'yarn'
+    'nvm'
+    'gendesk'
+    'node-gyp'
+    'make'
+    'gcc'
+)
+source=(
+    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver//_/-}"
+)
+sha256sums=('SKIP')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install 18
+    nvm use 18
 }
 build() {
-    cd "${srcdir}/orca-${pkgver//_/-}"
-    rm -rf package-lock.json
+    _ensure_local_nvm
+    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
+    export npm_config_build_from_source=true
+    export npm_config_cache="$srcdir/npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     yarn
     yarn package
-    cd "${srcdir}/${pkgname%-writer}-${pkgver//_/-}/release/build/linux-unpacked/resources"
-    rm -rf app.asar.unpacked assets
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{usr/bin,opt/"${pkgname}"}
-    cp -r "${srcdir}/${pkgname%-writer}-${pkgver//_/-}/release/build/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/release/build/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
     ln -sf "/opt/${pkgname%-bin}/${pkgname%-writer}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     for _icons in 256x256 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname%-writer}-${pkgver//_/-}/assets/icons/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
