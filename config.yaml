@@ -1,0 +1,7 @@
+http:
+    bind: "0.0.0.0:80"
+
+hosts:
+    "example.org": !files
+        root: "/srv/http"
+        index: true
