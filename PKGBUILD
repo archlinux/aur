@@ -1,17 +1,19 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='TUI Mastodon client'
 pkgname=nanotodon
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 url=https://github.com/taka-tuos/nanotodon
 license=(custom:MIT)
 arch=(x86_64)
 depends=(ncurses json-c curl)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('9cfd8c5c31bf10da53d04a89942a3500f255908369d86cb4bd2f390c211b798934f224456d2c6933dd03e1a62d16d387b26357e2b2a0e4719c0f7388d6c5c5ca')
+sha512sums=('b2e09d889e84ad8b98d7d0bd4821b0495e9667b2337777c81d9a28a150e1d30b073c149f7888e74391972617617542a1bdbc17db57fff2a9e671550a730daeb6')
 
 build () {
-	make -C "$pkgname-$pkgver" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"
+	make -C "$pkgname-$pkgver" \
+		LDFLAGS="$LDFLAGS" \
+		CFLAGS="$CFLAGS -Wno-error=format-security"
 }
 
 package () {
