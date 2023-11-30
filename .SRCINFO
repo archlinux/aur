@@ -1,19 +1,27 @@
 pkgbase = peersky-browser
 	pkgdesc = A minimal p2p web browser.
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.0_prerelease
+	pkgrel = 4
 	url = https://peersky.p2plabs.xyz/
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = gendesk
+	makedepends = nodejs
+	makedepends = git
 	makedepends = asar
-	depends = bash
 	depends = electron20
+	depends = java-runtime
+	depends = lib32-glibc
+	depends = gconf
+	depends = libxss
+	depends = alsa-lib
+	depends = gtk2
+	depends = lib32-gcc-libs
 	conflicts = peersky-browser
-	source = peersky-browser-1.0.0.tar.gz::https://github.com/p2plabsxyz/peersky-browser/archive/refs/tags/1.0.0-prerelease.tar.gz
+	source = peersky-browser-1.0.0_prerelease::git+https://github.com/p2plabsxyz/peersky-browser.git#tag=1.0.0-prerelease
 	source = peersky-browser.sh
-	sha256sums = 19365d7daf195ca82ced4c542ff62d26a337bc9df6152be4abc4e0cd35763954
-	sha256sums = 3771f7bae9ec328b774e18bbb6a43507d32571596ca08d1d2c644325ed181e5a
+	sha256sums = SKIP
+	sha256sums = 7eb20123886333292b926aeee32dcc5cb861f4107f3adef9decc103bf52ad8e8
 
 pkgname = peersky-browser
