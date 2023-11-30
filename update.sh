@@ -78,7 +78,10 @@ up_to_date() {
     local GH_SHA="$(gh_sha)"
     local INFO="aur=$AUR_SHA git=$GH_SHA"
 
-    if [ "$AUR_SHA" = "$GH_SHA" ]; then
+    if [ "$FORCE" = "1" ]; then
+        echo "build forced: $INFO"
+        return 1
+    elif [ "$AUR_SHA" = "$GH_SHA" ]; then
         echo "aur is up to date: $INFO" 
         return 0
     else
