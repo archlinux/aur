@@ -1,5 +1,5 @@
 pkgbase = wsl2-ssh-agent-bin
-	pkgdesc = A bridge from WSL2 ssh client to Windows ssh-agent.exe service
+	pkgdesc = A bridge from WSL2 ssh client to Windows ssh-agent.exe service (Pre-compiled)
 	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/mame/wsl2-ssh-agent
