@@ -1,0 +1,25 @@
+pkgbase = r-ggtreedendro
+	pkgdesc = Drawing 'dendrogram' using 'ggtree'
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ggtreeDendro
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = r-ggplot2
+	depends = r-ggtree
+	depends = r-tidytree
+	optdepends = r-aplot
+	optdepends = r-knitr
+	optdepends = r-mdendro
+	optdepends = r-prettydoc
+	optdepends = r-pvclust
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-treeio
+	optdepends = r-yulab.utils
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggtreeDendro_1.4.0.tar.gz
+	md5sums = e5839d466e08665eb2475a99fb74e833
+	sha256sums = ace77cc34d998168e516ef377b563d49d9d8895135fdc6cdb9359544f6b2df3e
+
+pkgname = r-ggtreedendro
