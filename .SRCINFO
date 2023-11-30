@@ -1,7 +1,7 @@
 pkgbase = python-map2
-	pkgdesc = Input remapping utility
+	pkgdesc = Linux input remapping library
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shiro/map2
 	arch = x86_64
 	arch = i686

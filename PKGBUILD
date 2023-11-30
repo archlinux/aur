@@ -2,8 +2,8 @@
 
 pkgname=python-map2
 pkgver=2.0.5
-pkgrel=1
-pkgdesc="Input remapping utility"
+pkgrel=2
+pkgdesc="Linux input remapping library"
 url="https://github.com/shiro/map2"
 arch=('x86_64' 'i686')
 license=('MIT')
