@@ -1,13 +1,13 @@
 # Maintainer: Dana Sorensen <dana.r.sorensen@gmail.com>
 
 pkgname=iio-oscilloscope-git
-pkgver=v0.16.r35.584eccca3f72
+pkgver=v0.16.r38.1925e45786a6
 pkgrel=1
 pkgdesc="A GTK+ based oscilloscope application for interfacing with various IIO devices"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/analogdevicesinc/iio-oscilloscope"
 license=('GPL2')
-depends=('gtk2' 'gtkdatabox' 'libmatio' 'fftw' 'libxml2' 'bison' 'flex' 'avahi' 'curl' 'jansson' 'libaio' 'ncurses' 'libad9361-iio')
+depends=('gtk2' 'gtkdatabox' 'libmatio' 'fftw' 'libxml2' 'bison' 'flex' 'avahi' 'curl' 'jansson' 'libaio' 'libiio' 'ncurses' 'libad9361')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
