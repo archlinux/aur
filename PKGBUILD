@@ -2,25 +2,25 @@
 
 _name=pyhdbpp
 _git_name=libhdbpp-python
-pkgname=python-$_name
-pkgver=1.1.5
+pkgname=python-${_name}
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="hdb++ python3 API"
 arch=('any')
-url='https://gitlab.com/tango-controls/hdbpp/libhdbpp-python'
+url="https://gitlab.com/tango-controls/hdbpp/${_git_name}"
 license=('LGPL3')
 depends=(python-future python-pytango python-pyqtgraph python-pymysql python-yaml)
 optdepends=('python-psycopg2: for timescaledb')
 makedepends=(python-setuptools)
-source=("$_git_name-$pkgver.tar.gz::https://gitlab.com/tango-controls/hdbpp/${_git_name}/-/archive/${pkgver}/${_git_name}-${pkgver}.tar.gz")
-sha256sums=('4efccaa18ee9de224aba08ccc978375c22fddde328b10f01bcbb360bd8714e61')
+source=("${_git_name}-${pkgver}.tar.gz::https://gitlab.com/tango-controls/hdbpp/${_git_name}/-/archive/${pkgver}/${_git_name}-${pkgver}.tar.gz")
+sha256sums=('a88e595846661d9f4c0c35057b02d0b7d45fa089c82f38a4f1bcb97d0397b2d5')
 
 build() {
-  cd "$_git_name-$pkgver"
-  python setup.py build
+  cd "${_git_name}-${pkgver}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_git_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "${_git_name}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }

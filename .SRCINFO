@@ -1,6 +1,6 @@
 pkgbase = python-pyhdbpp
 	pkgdesc = hdb++ python3 API
-	pkgver = 1.1.5
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://gitlab.com/tango-controls/hdbpp/libhdbpp-python
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pyhdbpp
 	depends = python-pymysql
 	depends = python-yaml
 	optdepends = python-psycopg2: for timescaledb
-	source = libhdbpp-python-1.1.5.tar.gz::https://gitlab.com/tango-controls/hdbpp/libhdbpp-python/-/archive/1.1.5/libhdbpp-python-1.1.5.tar.gz
-	sha256sums = 4efccaa18ee9de224aba08ccc978375c22fddde328b10f01bcbb360bd8714e61
+	source = libhdbpp-python-1.2.0.tar.gz::https://gitlab.com/tango-controls/hdbpp/libhdbpp-python/-/archive/1.2.0/libhdbpp-python-1.2.0.tar.gz
+	sha256sums = a88e595846661d9f4c0c35057b02d0b7d45fa089c82f38a4f1bcb97d0397b2d5
 
 pkgname = python-pyhdbpp
