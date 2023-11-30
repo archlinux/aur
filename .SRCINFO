@@ -1,7 +1,7 @@
 pkgbase = smbbrowse
 	pkgdesc = Samba share browser and mounter written in Python. Supports SMBv2 and SMBv3
-	pkgver = 1.0
-	pkgrel = 3
+	pkgver = 1.1
+	pkgrel = 0
 	url = https://github.com/cyberjunkie1970/smbbrowse
 	arch = any
 	license = MIT
