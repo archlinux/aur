@@ -1,12 +1,12 @@
 pkgbase = opentofu
 	pkgdesc = The open source infrastructure as code tool.
-	pkgver = 1.6.0_alpha3
+	pkgver = 1.6.0_beta1
 	pkgrel = 1
 	url = https://opentofu.org
-	arch = any
+	arch = x86_64
 	license = MPL2
-	makedepends = go>=1.20.7
-	source = opentofu.tar.gz::https://github.com/opentofu/opentofu/archive/refs/tags/v1.6.0-alpha3.tar.gz
-	sha256sums = 726674ecede236fac2af0307c3afe74f1d2c5ae644f2195ca4e2ab2045364a77
+	makedepends = go>=1.21.3
+	source = https://github.com/opentofu/opentofu/archive/refs/tags/v1.6.0-beta1.tar.gz
+	sha256sums = 8befccf2743042ec3d36a10414ce6a287bd678534513b9860d4eae0942955d74
 
 pkgname = opentofu
