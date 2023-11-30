@@ -18,6 +18,8 @@ sha256sums=('SKIP')
 
 build() {
   cd $_pkgname
+  git submodule init
+  git submodule update
   make
 }
 
