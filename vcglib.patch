@@ -1,0 +1,96 @@
+diff --git a/wrap/io_trimesh/import_ply.h b/wrap/io_trimesh/import_ply.h
+index 2da70ab4..96126627 100644
+--- a/wrap/io_trimesh/import_ply.h
++++ b/wrap/io_trimesh/import_ply.h
+@@ -1031,6 +1031,7 @@ public:
+ 		// Parsing texture names
+ 		m.textures.clear();
+ 		m.normalmaps.clear();
++		const size_t linesize=1024;
+ 
+ 		for(size_t co=0;co<pf.comments.size();++co)
+ 		{
+@@ -1048,8 +1049,8 @@ public:
+ 				for(int i=0;i<n;i++)
+ 					if( bufstr[i]!=' ' && bufstr[i]!='\t' && bufstr[i]>32 && bufstr[i]<125 )	bufclean.push_back(bufstr[i]);
+ 
+-				char buf2[255];
+-				ply::interpret_texture_name( bufclean.c_str(),filename,buf2 );
++				char buf2[linesize];
++				ply::interpret_texture_name( bufclean.c_str(),filename,buf2,linesize );
+ 				m.textures.push_back( std::string(buf2) );
+ 			}
+ 			/*if( !strncmp(c,NFILE,strlen(NFILE)) )
+diff --git a/wrap/ply/plylib.cpp b/wrap/ply/plylib.cpp
+index 78bb2ccd..772c62f0 100644
+--- a/wrap/ply/plylib.cpp
++++ b/wrap/ply/plylib.cpp
+@@ -3652,8 +3652,9 @@ int PlyFile::Read( void * mem )
+ 
+ 	return 0;
+ }
+-
+-void interpret_texture_name(const char*a, const char*fn, char*output){
++// this function is used to interpret the texture name in the ply header substituting "<this>" with the filename
++// of the ply file itself. This is used to allow to rename the ply file without having to change the texture name inside the ply file
++void interpret_texture_name(const char*a, const char*fn, char*output, size_t linesize){
+ 	int ia=0,io=0;
+ 	output[0]=0;
+ 	while (a[ia]!=0){
+@@ -3685,7 +3686,8 @@ void interpret_texture_name(const char*a, const char*fn, char*output){
+ 
+ 					// 3) append
+ 					output[io]=0;
+-					sprintf(output,"%s%s",output,fn2);
++					// replace sprintf(output,"%s%s",output,fn2);
++					snprintf(output, linesize, "%s%s",output,fn2);
+ 					io=strlen(output);
+ 					ia+=6; //skip the "<this>"
+ 					continue;
+diff --git a/wrap/ply/plylib.h b/wrap/ply/plylib.h
+index a068ac4c..20c58ac4 100644
+--- a/wrap/ply/plylib.h
++++ b/wrap/ply/plylib.h
+@@ -350,7 +350,7 @@ protected:
+ 	PlyElement * FindElement( const char * name );
+ };
+ 
+-void interpret_texture_name(const char*a, const char*fn, char*output);
++void interpret_texture_name(const char*a, const char*fn, char*output, size_t linesize);
+ 
+   } // end namespace ply
+ } // end namespace vcg
+diff --git a/wrap/ply/plystuff.h b/wrap/ply/plystuff.h
+index e799d29a..6e13e117 100644
+--- a/wrap/ply/plystuff.h
++++ b/wrap/ply/plystuff.h
+@@ -27,29 +27,6 @@ of Greg Turk and on the work of Claudio Rocchini
+ 
+ ****************************************************************************/
+ 
+-/****************************************************************************
+-  History
+-
+-$Log: not supported by cvs2svn $
+-Revision 1.6  2007/06/25 15:24:00  cignoni
+-removed a possibly useless static kw
+-
+-Revision 1.5  2006/04/11 09:48:04  zifnab1974
+-changes needed for compilation on linux 64b with gcc 3.4.5
+-
+-Revision 1.4  2005/12/02 00:00:53  cignoni
+-Moved and corrected interpret_texture_name from plystuff.h to plylib.cpp
+-
+-Revision 1.3  2005/03/18 00:14:40  cignoni
+-removed small gcc compiling issues
+-
+-Revision 1.2  2005/03/15 11:46:52  cignoni
+-Cleaning of the automatic bbox caching support for ply files. First working version.
+-
+-
+-*/
+-
+-//****************** Gestione cache *****************
+ 
+ #ifndef __VCG_PLYLIB_STUFF
+ #define __VCG_PLYLIB_STUFF 

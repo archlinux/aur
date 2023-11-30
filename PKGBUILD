@@ -20,8 +20,8 @@ _fragment="#${FRAGMENT:-branch=main}"
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2022.02.r224.g4c321e19d
-pkgrel=2
+pkgver=2022.02.r226.gca1f5ab1d
+pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="https://www.meshlab.net"
@@ -36,11 +36,16 @@ makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'lib3ds' 'openctm-
 optdepends=('lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
             'muparser: for filer_func plugins'
             'openctm-tools: for compressed triangle mesh file format')
-source=("$_name::git+https://github.com/cnr-isti-vclab/meshlab.git${_fragment}")
-sha256sums=('SKIP')
+source=(
+    "$_name::git+https://github.com/cnr-isti-vclab/meshlab.git${_fragment}"
+    "vcglib.patch"
+)
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   prepare_submodule
+  cd $srcdir/meshlab/src/vcglib
+  patch -Np1 -i $srcdir/vcglib.patch 
 }
 
 pkgver() {
@@ -55,7 +60,6 @@ build() {
                   '-DCMAKE_CXX_COMPILER=g++-12'
                 )
   cmake "${_cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab"
-# shellcheck disable=SC2086 # allow MAKEFLAGS to split when passing multiple flags.
   ninja ${MAKEFLAGS:--j1} -C "${srcdir}/build"
 }
 
