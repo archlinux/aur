@@ -1,6 +1,6 @@
 # Maintainer: shulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=4.4.2.r1.g92903ef
+pkgver=4.4.2.r1.g627c9ba
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
