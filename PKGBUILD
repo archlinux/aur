@@ -2,7 +2,7 @@
 
 _name=guiqwt
 pkgname="python-${_name}"
-pkgver=4.4.4
+pkgver=4.4.5
 pkgrel=1
 pkgdesc="Efficient 2D plotting Python library based on PythonQwt"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=(python-setuptools python-sphinx cython)
 source=("$_name-$pkgver.tar.gz::https://github.com/PlotPyStack/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1d16fb2ea714a247fd89d631fc37b7b7283091f1f163aadfa671f76ecd81c89e')
+sha256sums=('128c115e0f1ced462a321675a3a3ae79cb57f83154a967f96e4227057cce5f6b')
 
 build() {
   cd "${_name}-${pkgver}"
