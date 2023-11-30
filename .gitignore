@@ -1,6 +1,4 @@
-*.tar.xz
-*.tar.lz
-*.tar.gz
+*.tar.*
 /pkg
 /src
 /yay
