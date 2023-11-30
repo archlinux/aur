@@ -2,23 +2,23 @@
 
 _name="Astor"
 pkgname=${_name,,}
-pkgver=7.5.3
+pkgver=7.5.5
 _jarfile="${_name}-${pkgver}-jar-with-dependencies.jar"
-pkgrel=3
+pkgrel=1
 pkgdesc="A graphical Tango control system administration tool"
 arch=('any')
 url="https://gitlab.com/tango-controls/${_name}"
 license=('GPL3')
 depends=('java-runtime=8' jdk8-openjdk sh)
-makedepends=(maven)
+makedepends=(maven jdk8-openjdk)
 source=(
   https://gitlab.com/tango-controls/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz
   launcher pom.patch
 )
 sha256sums=(
-  'd575c5be3212a458ff06ce5a9bb8fefc1ef09d13531992a5f4f3827c4f89aff4'
+  'cef55954f7657d6a6f28a191a5956205c99e3e25067a0b1f89abacdd2d71720a'
   '25cc409561647519ad0bb2ffc00abb9cd923626f978f49c03b1f72b1fcd47d0b'
-  '15c1bbbf1c1544eb18af057ce4b00c65691476ac52a8b8638e0afcc0579976cd'
+  'c4edd3d51c0d2163fbb33a224c78384f794e20b4e4e6e429cf708e6a724805f2'
 )
 
 prepare() {
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd ${_name}-${pkgver}
-  mvn package
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk mvn package
 }
 
 package() {

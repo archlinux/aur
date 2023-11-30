@@ -18,11 +18,11 @@
          <dependency>
              <groupId>org.tango-controls.gui</groupId>
              <artifactId>ATKPanel</artifactId>
--            <version>[5.10, )</version>
+-            <version>[5.11, )</version>
 +            <version>[5.10, 5.11]</version>
-             <exclusions>
-                 <exclusion>
-                     <groupId>org.tango-controls.atk</groupId>
+             
+         </dependency>
+     </dependencies>
 @@ -118,7 +118,15 @@
  
      <build>
