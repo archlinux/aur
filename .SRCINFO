@@ -1,0 +1,20 @@
+pkgbase = r-gosorensen
+	pkgdesc = Statistical inference based on the Sorensen-Dice dissimilarity and the Gene Ontology (GO)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/goSorensen
+	arch = any
+	license = GPL3
+	depends = r-clusterprofiler
+	depends = r-go.db
+	depends = r-goprofiles
+	depends = r-org.hs.eg.db
+	depends = r-stringr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/goSorensen_1.4.0.tar.gz
+	md5sums = 8fa5cc982341291dd857ab340abe4c73
+	sha256sums = bd11519691515013723337c1533467731ffe7b727cc5221bc19f65707cd6d1e0
+
+pkgname = r-gosorensen
