@@ -17,8 +17,8 @@ source_x86_64=("tableplus_${pkgver}_${pkgrel}_amd64.deb::https://deb.tableplus.c
 source_aarch64=("tableplus_${pkgver}_${pkgrel}_arm64.deb::https://deb.tableplus.com/debian/22-arm/pool/main/t/tableplus/tableplus_${pkgver}_arm64.deb")
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
               '83620b08e325418947f0007ecca7b981a988bfdac3f466db165f9262d1c0e5f4')
-              sha256sums_x86_64=('b8ccfb7424dd48f750b4c278aaf8850fa49379511b9cd01f9913a05b6c616d0a')
-              sha256sums_aarch64=('27b28bf9ad18db23b91acadc29e3a28c29798304b69f9e27248cb7b6d2c50080')
+              sha256sums_x86_64=('88017e0452d5b3e362b9a0deafedb5ddf00f862663361e84fe8e8ba0de2af2d2')
+              sha256sums_aarch64=('18c2c008e05fc17700574706661be36d9d8ba2e381404926cca84520470fec5c')
 
 prepare() {
     tar -xf "${srcdir}/data.tar.zst"
