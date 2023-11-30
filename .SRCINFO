@@ -1,0 +1,23 @@
+pkgbase = gnix
+	pkgdesc = a simple stupid http reverse proxy
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/metamuffin/gnix
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = AGPL3
+	makedepends = rustup
+	backup = etc/gnix.yaml
+	source = https://codeberg.org/metamuffin/gnix/archive/v1.0.0.tar.gz
+	source = gnix.service
+	source = config.yaml
+	source = sysusers.conf
+	sha256sums = bb58331b29ff2f6c806ed0b666aaa184e7b6a9d656671a2c5e0adcb283265a91
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gnix
