@@ -4,9 +4,9 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-svg-static
-_qtver=6.6.0
+_qtver=6.6.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -16,22 +16,10 @@ makedepends=('mingw-w64-cmake-static' 'qt6-base' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtsvg-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-nullptr-dereference-with-invalid-SVG.patch')
-sha256sums=('33da25fef51102f564624a7ea3e57cb4a0a31b7b44783d1af5749ac36d3c72de'
-            '83f59c72773071df6adca9c0f6f457a460bd63a4d2b85f1e0df9cabf6b1c55e9')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('248deb56d26a463cf3162f530358ccf90cfb654bbf518bb35ddf81b205e09228')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-
-prepare () {
-  cd $_pkgfqn
-
-  # apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    msg2 "Applying patch $patch"
-    patch -p1 -i "$patch"
-  done
-}
 
 build() {
   for _arch in ${_architectures}; do
