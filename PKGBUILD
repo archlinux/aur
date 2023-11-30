@@ -8,12 +8,12 @@
 
 pkgname=subtitlecomposer
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Video subtitle editor'
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/multimedia/${_name}"
 license=('GPL')
-depends=('kcoreaddons5' 'ktextwidgets5' 'kio5' 'sonnet5' 'kcodecs5' 'kross' 'kxmlgui5' 'ki18n5' 'ffmpeg' 'openal')
+depends=('qt5-declarative' 'kcoreaddons5' 'ktextwidgets5' 'kio5' 'sonnet5' 'kcodecs5' 'kxmlgui5' 'ki18n5' 'ffmpeg' 'openal')
 makedepends=('extra-cmake-modules' 'jack' 'blas' 'xorg-server-xvfb')
 
 # Comment/uncomment the following dependency to disable/enable
