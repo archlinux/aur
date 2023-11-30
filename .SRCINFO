@@ -1,7 +1,7 @@
 pkgbase = python-pytango
 	pkgdesc = A python binding for the Tango control system
-	pkgver = 9.4.2
-	pkgrel = 2
+	pkgver = 9.5.0
+	pkgrel = 1
 	url = https://pytango.readthedocs.io/en/stable/
 	arch = x86_64
 	arch = armv7h
@@ -11,6 +11,8 @@ pkgbase = python-pytango
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
+	makedepends = python-numpy
+	makedepends = python-scikit-build-core
 	depends = tango-cpp>=9.4.0
 	depends = boost
 	depends = python-numpy
@@ -18,9 +20,9 @@ pkgbase = python-pytango
 	depends = python-gevent
 	depends = python-pytest
 	depends = python-psutil
-	source = pytango-v9.4.2.tar.gz::https://gitlab.com/tango-controls/pytango/-/archive/v9.4.2/pytango-v9.4.2.tar.gz
-	source = int.patch
-	sha256sums = 736d5acde077d9c3cceedd2c633d43272209f260865b7ea41748e0fed9344fdc
-	sha256sums = 38a33927dfcdfaaf69f3f0a7eae69acc6853f29d02be6035ad23ff203c38de93
+	source = pytango-v9.5.0.tar.gz::https://gitlab.com/tango-controls/pytango/-/archive/v9.5.0/pytango-v9.5.0.tar.gz
+	source = pyproject.patch
+	sha256sums = 07e0ddc0530a0cd78124787107f69474b28bd88ff5077e609c05959b7354f3b0
+	sha256sums = 0d878261df397ae698759a06d9494c06f94ee48cbe799282f6721013d2c78e7f
 
 pkgname = python-pytango

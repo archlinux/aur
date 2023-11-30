@@ -1,0 +1,7 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -0,3 +0,3 @@
+ [build-system]
+-requires = ["scikit-build-core>=0.6.0", "oldest-supported-numpy"]
++requires = ["scikit-build-core>=0.6.0", "numpy"]
+ build-backend = "scikit_build_core.build"
