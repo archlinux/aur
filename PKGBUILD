@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-webchannel
-_qtver=6.6.0
+_qtver=6.6.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtwebchannel-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('fddcb38e6d5843f9c7570654f1a12aaf0086e5a01f7bf3cf170064fcc5a3f51c')
+sha256sums=('f16087cd573ada98b3c90f10a18bb660dc8a65a6404e4d8e24a712799f91e543')
 
 build() {
   source android-env ${_android_arch}
