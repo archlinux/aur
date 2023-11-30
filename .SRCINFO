@@ -1,7 +1,7 @@
 pkgbase = gopeed-bin
 	pkgdesc = High speed downloader that supports all platforms.
-	pkgver = 1.4.4
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://gopeed.com/
 	arch = x86_64
 	license = GPL3
@@ -14,11 +14,11 @@ pkgbase = gopeed-bin
 	depends = libepoxy
 	depends = libayatana-appindicator
 	depends = libdbusmenu-glib
-	depends = libayatana-indicator
-	depends = ayatana-ido
-	provides = gopeed-1.4.4
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	provides = gopeed-1.5.0
 	conflicts = gopeed
-	source = gopeed-1.4.4.deb::https://github.com/GopeedLab/gopeed/releases/download/v1.4.4/Gopeed-v1.4.4-linux-amd64.deb
-	sha256sums = 25db38d3dbc2f10dcf2c6e79e62caed4db9876001febe13ae5cd6caf071055fa
+	source = gopeed-1.5.0.deb::https://github.com/GopeedLab/gopeed/releases/download/v1.5.0/Gopeed-v1.5.0-linux-amd64.deb
+	sha256sums = cb081e39a8b7f21375a8faab74aa5315b08c6bb8f4b19aec1b8dde268c5f7d3d
 
 pkgname = gopeed-bin
