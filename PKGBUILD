@@ -1,7 +1,7 @@
 # Maintainer: Mole Shang <135e2@135e2.dev>
 pkgname=implay
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Desktop media player built on top of mpv and imgui"
 arch=('x86_64')
 url="https://github.com/tsl0922/ImPlay"
@@ -18,13 +18,13 @@ makedepends=(
   'freetype2'
 )
 optdepends=()
-_tag=20b5c9b220d9e2a63b3d6b1fcdc83444859cb119 # git rev-parse "${pkgver}"
+_tag=0f58225b297e38ebaf516b3b16232698d8c3bcf0 # git rev-parse "${pkgver}"
 source=("implay::git+https://github.com/tsl0922/ImPlay.git#tag=${_tag}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --match='[0-9]*.[0-9]*.[0-9]*' --exclude='*[^0-9.]*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

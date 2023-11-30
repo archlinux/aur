@@ -1,7 +1,7 @@
 pkgbase = implay
 	pkgdesc = Desktop media player built on top of mpv and imgui
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/tsl0922/ImPlay
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = implay
 	depends = mpv
 	depends = glfw
 	depends = xdg-desktop-portal
-	source = implay::git+https://github.com/tsl0922/ImPlay.git#tag=5568222c25e6389b6c8948031c5893e5743b70c5
+	source = implay::git+https://github.com/tsl0922/ImPlay.git#tag=0f58225b297e38ebaf516b3b16232698d8c3bcf0
 	sha256sums = SKIP
 
 pkgname = implay
