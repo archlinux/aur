@@ -14,7 +14,7 @@ diff -r -c pgmodeler-1.0.6-orig/libs/libparsers/src/xmlparser.cpp pgmodeler-1.0.
   {
   	QByteArray buffer;
   	QString msg, file;
-! 	const xmlError *xml_error=nullptr;
+! 	xmlError const *xml_error=nullptr;
   	int parser_opt;
   
   	if(!xml_buffer.isEmpty())
