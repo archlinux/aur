@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.3.13'
-pkgrel='3'
+pkgrel='4'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -37,8 +37,8 @@ sha256sums=('9257dc9cf98b382049b500f646c0005950077cedb83abbb62984983e4dda0874'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
             'fee14fb95e02a6c74626e9c89def7c1137192c5c23470a05c750cd97f3d3f0dd'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
-            '773727976450acf5b981584923a93878befc2d49cfc77583ae58957a4a7425ba'
-            '146a614e4aec886536cd01c398ec7cb8b14bd6ccab80c0ef9380712be235924b')
+            'SKIP'
+            'SKIP')
 sha256sums_x86_64=('6308d9680242c8ea6a89f677388907b34d2c5806752688b1a1c947e4851f318f')
 sha256sums_aarch64=('ff8734ea5121beff521acf2bd1340457887085a2504aaf8449f44c3d89910bb0')
 sha256sums_armv8=('ff8734ea5121beff521acf2bd1340457887085a2504aaf8449f44c3d89910bb0')
