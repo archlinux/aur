@@ -6,7 +6,7 @@
 
 pkgname=pass-parcellite
 pkgver=1.7.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely (Parcellite support)'
 arch=('any')
 url="https://www.passwordstore.org/"
@@ -17,20 +17,25 @@ depends=('bash'
 checkdepends=('git')
 makedepends=('git')
 optdepends=('dmenu: for passmenu'
-		    'git: for Git support'
-			'parcellite: compatible clipboard'
-			'qrencode: for QR code support'
-			'vim-plugin-runtime: for redact_pass.vim'
-			'xclip: for clipboard support on X11'
-			'xdotool: for typing support'
-			'wl-clipboard: for clipboard support on Wayland')
+            'gcr: for pinentry-gnome3 support'
+            'git: for Git support'
+            'gtk2: for pinentry-gtk-2 support'
+            'kwayland5: for pinentry-qt support'
+            'parcellite: compatible clipboard'
+            'pinentry: for passphrase entry dialogs'
+            'qrencode: for QR code support'
+            'qt5-x11extras: for pinentry-qt support'
+            'vim-plugin-runtime: for redact_pass.vim'
+            'wl-clipboard: for clipboard support on Wayland'
+            'xclip: for clipboard support on X11'
+            'xdotool: for typing support')
 replaces=('passmenu')
 provides=('passmenu'
-		  'pass')
-conflicts=('passmenu' 
-		   'pass')
+          'pass')
+conflicts=('passmenu'
+           'pass')
 source=("git+https://git.zx2c4.com/password-store?signed#tag=${pkgver}"
-		'pass-parcellite.patch')
+        'pass-parcellite.patch')
 sha512sums=('SKIP'
             '3aa8b727899c3830564f8f45aa6b2d171145cc422a5210b1f4887661fb49720c242aabcf4a4eaf8987118b36d0a1d82387b990f2d882bef9c8ca1c69d299ad53')
 validpgpkeys=('AB9942E6D4A4CFC3412620A749FC7012A5DE03AE') # Jason A. Donenfeld
