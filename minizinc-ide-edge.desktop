@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=MiniZinc IDE Edge
+Comment=Simple IDE for writing and running MiniZinc models
+Icon=/opt/minizinc-ide-edge/resources/icon.png
+#Exec= env LD_LIBRARY_PATH=/opt/minizinc-ide-edge/lib:$LD_LIBRARY_PATH
+#Exec=MiniZincIDE
+Exec=sh -c "LD_LIBRARY_PATH=/opt/minizinc-ide-edge/lib:$LDLIBRARY_PATH MiniZincIDE Edge"
+Terminal=false
+Categories=Development;IDE;

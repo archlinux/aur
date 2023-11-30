@@ -1,0 +1,24 @@
+bins="findMUS fzn-chuffed fzn-gecode minizinc minizinc-globalizer  MiniZincIDE"
+binsPath="/opt/minizinc-ide-ide/bin"
+
+post_install() {
+    # Create links to bins
+    for b in $bins
+    do
+        ln -s $binsPath/$b /usr/bin/$b
+    done
+    
+    # Create links to scripts
+    ln -s $binsPath/run-fzn-gecode-gist /usr/bin/fzn-gecode-gist
+}
+
+pre_remove() {
+    # Remove links to bins
+    for b in $bins
+    do
+        rm /usr/bin/$b
+    done
+    
+    # Remove links to scripts
+    rm /usr/bin/fzn-gecode-gist
+} 
