@@ -2,7 +2,7 @@
 
 pkgname=sk-steam-patch-git
 _pkgname=steam-patch
-pkgver=0.10.8
+pkgver=0.10.11
 pkgrel=1
 pkgdesc="Some Steam patches, fixing broken Steam features on Asus Rog Ally"
 arch=('x86_64')
