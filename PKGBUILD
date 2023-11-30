@@ -1,8 +1,8 @@
 # Maintainer: wabi <aschrafl@jetnet.ch>
 # Maintainer: pikl <me@pikl.uk>
 pkgname=immich
-pkgrel=2
-pkgver=1.88.2
+pkgrel=0
+pkgver=1.89.0
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
@@ -39,6 +39,26 @@ depends=('redis' 'postgresql' 'nodejs' 'nginx'
     'poppler-glib'
     'imagemagick'
     'libraw'
+    # TODO describe new
+    'perl-net-ssleay'
+    'perl-io-socket-ssl'
+    'perl-capture-tiny'
+    'perl-file-which'
+    'perl-file-chdir'
+    'perl-pkgconfig' # maybe -libpkgconf
+    'perl-ffi-checklib'
+    'perl-test-warnings'
+    'perl-test-fatal'
+    'perl-test-needs'
+    'perl-test2-suite'
+    'perl-sort-versions'
+    'perl-path-tiny' # also perl-file-path-tiny
+    'perl-try-tiny'
+    'perl-term-table'
+    'perl-uri' # good enough for libany-uri-escape-perl
+    #libmojolicious-perl???
+    'perl-mojolicious'
+    'perl-file-slurper'
 )
 optdepends=(
     'libva-mesa-driver: GPU acceleration'
@@ -53,7 +73,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'nginx.immich.conf'
         'media.util.ts.patch'
 )
-sha256sums=('7790120ae5278a7ce0e121122f2954f91a23e2972a34957fc88fc6cb430b3b89'
+sha256sums=('2de97200e6a319b81ef89f2d41566110ca7115ab34e97655a51075756519fc5a'
             '42792b6b7c5461385395907af9bf724e02c6622603a741e86c73b1204a5ad973'
             '08df269485ebea360dc1156409d148c959ba28040017cd02be2606c5d28be5b0'
             'd20455349cdb9409adb42cdbde48c30a176d2a5337ad148c6d2227ecc523c88a'
@@ -129,7 +149,7 @@ package() {
     install -Dm644 server/package.json "${pkgdir}/usr/lib/immich/app/server/package.json"
     install -Dm644 server/package-lock.json "${pkgdir}/usr/lib/immich/app/server/package-lock.json"
     install -Dm644 LICENSE "${pkgdir}/usr/lib/immich/app/LICENSE"
-    cp -r server/assets "${pkgdir}/usr/lib/immich/app/server/assets"
+    cp -r server/resources "${pkgdir}/usr/lib/immich/app/server/resources"
     cp -r web/build "${pkgdir}/usr/lib/immich/app/server/www"
 
     # install machine-learning
