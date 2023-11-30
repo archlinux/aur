@@ -1,26 +1,28 @@
 pkgbase = conduit
-	pkgdesc = Simple, fast and reliable chat server powered by matrix
+	pkgdesc = Simple, fast and reliable chat server powered by Matrix
 	pkgver = 0.6.0
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://conduit.rs/
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = Apache
 	makedepends = cargo
 	makedepends = clang
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	backup = etc/matrix-conduit/conduit.toml
+	backup = etc/conduit-matrix/conduit.toml
 	source = git+https://gitlab.com/famedly/conduit.git#commit=0c2cfda3ae923d9e922d5edf379e4d8976a52d4e
 	source = conduit.service
 	source = conduit.sysusers
 	source = conduit.tmpfiles
 	source = conduit.toml
 	b2sums = SKIP
-	b2sums = 2164d78b7112e35b3410b1831a14ce32b44c170ef1596e75fcfbe4dad16c13cd5d427d242ae6ab7d1c44f540864064e88094df1c48d8f3c70547eba4fd1b230f
-	b2sums = c03409ad8020072f60e12676091462f1987d504c6b30e63576fde49d99f9bd941354f288bf6cda743a8af634aa1323dd4681b55fd7928bc41bbee384cec574b9
-	b2sums = 907e983de7833f9f11693a063c0754cf8731ad6501f9088ae50c42cd88370213757506c4b5d10808f7abbfcec99056b6b9824189714da3338352cd67311949fe
-	b2sums = 8f0151083329a001264a3ceb01aea750e8d620a8993d4633c7aecdc8459e87f0c7ca06e53e2653beda267dcf387945fcb913a64ecc83464d9c9b577eabd1f67e
+	b2sums = 8c9370cf89a78edde10a8413a01ed26cedb7eac0cc4daba0373733db9391a60d080f0a85ca885c69a8c29091cb6deab687b8b3c964269a49e40ee786f5292268
+	b2sums = 4d6acac3e3d43b63fb62c5c6cfc0c83609ee8787c0777b62355815d0c125c67b0063a3d3deff2eba92b502c3b2cf330a76671a45bcc6206faeffb87c38ce5e85
+	b2sums = d23699d33e02103f3854ef0dc02a64cc8bc4b6921bd443e4155574ca029e10b8a3f64e82904422a2df3b16ba84edfe15b5380c99b1e4c473189bb69bf63cecef
+	b2sums = 46b530541d0614c7855d4148882826d3ab8755c6a3fa71fd50c1516f09999a1f46adbeaf59f04f81bcb1e9640f946835c7226cabe8997b6821e9468c3fce3c43
 
 pkgname = conduit
