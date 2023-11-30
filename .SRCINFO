@@ -1,7 +1,7 @@
 pkgbase = flashpoint-bin
 	pkgdesc = Launcher for BlueMaxima's Flashpoint - Infinity Edition.
 	pkgver = 12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flashpointarchive.org
 	arch = x86_64
 	license = custom:freeware
@@ -19,7 +19,8 @@ pkgbase = flashpoint-bin
 	optdepends = libxt
 	noextract = flashpoint-12.1.7z
 	source = flashpoint-12.1.7z::https://download.unstable.life/upload/fp121_linux_111123.7z
-	source = flashpoint.svg::https://flashpointarchive.org/images/logo.svg
+	source = flashpoint.png::https://flashpointarchive.org/w/resources/assets/path18-mw.png
 	sha256sums = bc388687e17e9b548c4eb5823364720f6b0da21bb49fc69177ba79d870bcb64f
+	sha256sums = cd1d182eb10cb346ec30fe730d3b42fe8ed66bd537c7ac835ccdab312f4e6260
 
 pkgname = flashpoint-bin
