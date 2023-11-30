@@ -2,8 +2,8 @@
 
 pkgname=apidash-bin
 pkgver=0.3.0
-pkgrel=1
-pkgdesc="The popular web browser by Google (Stable Channel)"
+pkgrel=2
+pkgdesc="Beautiful open-source cross-platform API Client"
 arch=('x86_64')
 url="https://apidash.dev"
 license=('APACHE')
