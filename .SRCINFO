@@ -1,6 +1,6 @@
 pkgbase = poketex-git
 	pkgdesc = Simple Pokedex based on TUI (git)
-	pkgver = 1.6.0.r0.ge00c753
+	pkgver = 1.7.0.r0.g5b0687e
 	pkgrel = 1
 	url = https://github.com/ckaznable/poketex
 	arch = x86_64
