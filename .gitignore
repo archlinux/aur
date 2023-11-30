@@ -2,3 +2,5 @@ MuseScore
 pkg
 src
 musescore3-git-*.pkg.tar.*
+aur_data.json*
+gh_data.json*
