@@ -1,6 +1,6 @@
 pkgbase = contour-git
 	pkgdesc = Modern C++ Terminal Emulator
-	pkgver = 0.3.12.r3703.7963c6d7
+	pkgver = 0.4.0.r4186.6df0a2f9
 	pkgrel = 1
 	url = https://github.com/contour-terminal/contour
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = contour-git
 	makedepends = ninja
 	makedepends = libxml2
 	makedepends = python
-	makedepends = catch2
 	makedepends = range-v3
 	makedepends = fmt
 	makedepends = microsoft-gsl
@@ -30,6 +29,8 @@ pkgbase = contour-git
 	conflicts = contour
 	options = !strip
 	source = contour-git::git+https://github.com/contour-terminal/contour.git
+	source = embed-catch2.patch
 	sha512sums = SKIP
+	sha512sums = 653e6381240f4682157e9ddcd64f0577e31ab6d14e41368b74b4eb7caac1769040247b549f2b2d2d5e0c3b3f3badc99f6228d1f53b8d549cb2fb35c23a1c51e9
 
 pkgname = contour-git

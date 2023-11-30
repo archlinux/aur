@@ -1,0 +1,12 @@
+diff --git a/scripts/install-deps.sh b/scripts/install-deps.sh
+index 5ad2b6b..91f578e 100755
+--- a/scripts/install-deps.sh
++++ b/scripts/install-deps.sh
+@@ -366,6 +366,7 @@ install_deps_arch()
+ {
+     fetch_and_unpack_libunicode
+     fetch_and_unpack_fmtlib
++    fetch_and_unpack_Catch2
+     [ x$PREPARE_ONLY_EMBEDS = xON ] && return
+ 
+     packages="
