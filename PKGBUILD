@@ -4,28 +4,87 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=digikam
-_pkgver=8.1.0
+_pkgver=8.2.0
 pkgver=${_pkgver//-/} # for beta versions
-pkgrel=4
+pkgrel=1
 pkgdesc='An advanced digital photo management application'
 arch=(x86_64)
 license=(GPL)
 url='https://www.digikam.org/'
-depends=(lensfun opencv akonadi-contacts5 knotifyconfig5 libksane kfilemetadata5 marble-common threadweaver5 kcalendarcore5
-         qt5-networkauth qt5-xmlpatterns imagemagick jasper glu perl-image-exiftool)
-makedepends=(extra-cmake-modules doxygen eigen boost kdoctools5)
-optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
-            'rawtherapee: RAW import' 'darktable: RAW import'
-            'perl: for digitaglinktree')
+depends=(akonadi-contacts5
+         exiv2
+         expat
+         ffmpeg
+         gcc-libs
+         glib2
+         glibc
+         imagemagick
+         jasper
+         kcalendarcore5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcontacts5
+         kcoreaddons5
+         kfilemetadata5
+         ki18n5
+         kiconthemes5
+         kio5
+         knotifications5
+         knotifyconfig5
+         kservice5
+         kwidgetsaddons5
+         kxmlgui5
+         lcms2
+         lensfun
+         libass
+         libglvnd
+         libgphoto2
+         libheif
+         libjpeg-turbo
+         libksane
+         libpng
+         libpulse
+         libtiff
+         libx11
+         libxext
+         libxml2
+         libxslt
+         libxv
+         marble-common
+         opencv
+         perl
+         perl-image-exiftool
+         portaudio
+         qt5-base
+         qt5-networkauth
+         qt5-webengine
+         qt5-x11extras
+         qt5-xmlpatterns
+         sh
+         solid5
+         sonnet5
+         threadweaver5
+         x265
+         zlib)
+makedepends=(boost
+             doxygen
+             eigen
+             extra-cmake-modules
+             kdoctools5)
+optdepends=('darktable: RAW import'
+            'hugin: panorama tool'
+            'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
+            'rawtherapee: RAW import')
 source=(https://download.kde.org/stable/$pkgname/${_pkgver%-*}/digiKam-$_pkgver.tar.xz{,.sig}
-        https://invent.kde.org/graphics/digikam/-/commit/f5ea91a7.patch)
-sha256sums=('0503c034e445ff424f18a6715c0a7a79be4a5e0c82b3ebc461a21cec3745a5b3'
+        akonadi-contacts.patch)
+sha256sums=('2f7fcb559b123ed9ecae5a5aef6f4560eee5f49206d9d1746dec9ab6c8fb38bf'
             'SKIP'
-            'b0fec727f28ac7021adc94a6284286d34cdf0f8a1e463eb83ec50df0a3d9b761')
+            '06d91ac72cf67ed0b125da8d8b1d3ab9e4edd848e322e5984069e1c26f02e01e')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
 prepare() {
-  patch -d $pkgname-$_pkgver -p1 < f5ea91a7.patch # Fix build with exiv2 0.28.1
+  patch -d $pkgname-$_pkgver -p1 < akonadi-contacts.patch
 }
 
 build() {
