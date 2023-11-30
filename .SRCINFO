@@ -1,0 +1,12 @@
+pkgbase = python-django-multiselectfield
+	pkgdesc = A Multiple Choice model field
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/goinnn/django-multiselectfield
+	arch = any
+	license = LGPL-3
+	makedepends = python-setuptools
+	source = python-django-multiselectfield-0.1.12.src.tar.gz::https://files.pythonhosted.org/packages/source/d/django-multiselectfield/django-multiselectfield-0.1.12.tar.gz
+	sha256sums = d0a4c71568fb2332c71478ffac9f8708e01314a35cf923dfd7a191343452f9f9
+
+pkgname = python-django-multiselectfield
