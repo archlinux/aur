@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-nasa-apod
 	pkgdesc = Change your wallpaper daily to the NASA astronomy picture of the day
-	pkgver = 36
+	pkgver = 37
 	pkgrel = 1
 	url = https://github.com/Elinvention/gnome-shell-extension-nasa-apod
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = gnome-shell-extension-nasa-apod
 	makedepends = glib2
 	makedepends = intltool
 	depends = gnome-shell
-	source = gnome-shell-extension-nasa-apod-36.tar.gz::https://github.com/Elinvention/gnome-shell-extension-nasa-apod/archive/36.tar.gz
-	sha1sums = f789629bfb43e43c93e1eb8f9aa6534dd182e1ec
-	sha512sums = 3107dbf79d1b0e21a3de9d009919acf134a9c5aaf2ef50804782ef4ea1872cac0a208df8fe9a5903054259d565f2791119f6ad3982fd092940e31bd8b8e65a3b
+	source = gnome-shell-extension-nasa-apod-37.tar.gz::https://github.com/Elinvention/gnome-shell-extension-nasa-apod/archive/37.tar.gz
+	sha512sums = 4f0db85657af0c2289228931a9e1643f6e53a82952ec48ee7d084730f851de15135b92ce8f0f004aed7370d31a4749afc5f0994a4f1fd80430cf8ef29219a519
 
 pkgname = gnome-shell-extension-nasa-apod
