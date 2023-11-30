@@ -1,5 +1,5 @@
-bins="findMUS fzn-chuffed fzn-gecode minizinc minizinc-globalizer  MiniZincIDE"
-binsPath="/opt/minizinc-ide-ide/bin"
+bins="findMUS fzn-chuffed fzn-gecode minizinc minizinc-globalizer MiniZincIDE"
+binsPath="/opt/minizinc-ide-edge/bin"
 
 post_install() {
     # Create links to bins
