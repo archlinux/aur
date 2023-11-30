@@ -20,5 +20,5 @@ index e2a58790c4..8e0ed81f89 100644
 +    set_property(TARGET dbus-1 PROPERTY IMPORTED_IMPLIB ${DBus1_LIBRARY})
 +endif()
 -- 
-2.42.1
+2.43.0
 

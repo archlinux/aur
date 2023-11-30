@@ -70,5 +70,5 @@ index a6a16b494f..a5da57824c 100644
  set_package_properties(GLIB2 PROPERTIES
    URL "https://wiki.gnome.org/Projects/GLib"
 -- 
-2.42.1
+2.43.0
 

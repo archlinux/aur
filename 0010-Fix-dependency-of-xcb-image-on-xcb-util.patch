@@ -44,5 +44,5 @@ index dc60289401..3dd06d4cd0 100644
  set(XCB_XFIXES_component_deps XCB RENDER SHAPE)
  set(XCB_XVMC_component_deps XCB XV)
 -- 
-2.42.1
+2.43.0
 

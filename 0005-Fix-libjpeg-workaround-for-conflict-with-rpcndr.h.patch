@@ -25,5 +25,5 @@ index 0d72ba01d0..a706fb4cea 100644
  #ifdef const
  #  undef const          // remove crazy C hackery in jconfig.h
 -- 
-2.42.1
+2.43.0
 

@@ -110,5 +110,5 @@ index 349bb4b419..d666082998 100644
              get_target_property(target_type ${target} TYPE)
              if(target_type STREQUAL "STATIC_LIBRARY")
 -- 
-2.42.1
+2.43.0
 
