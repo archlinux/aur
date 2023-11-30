@@ -1,12 +1,12 @@
 pkgname=hyprdots-ctl
-pkgver=0.5016
+pkgver=0.5017
 pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations"
 arch=('x86_64')
 url="https://github.com/prasanthrangan/hyprdots" # replace with your repository URL
 license=('unknown') # replace with your script's license
 depends=('hyprland-git' 'hyprland')
-source=("https://raw.githubusercontent.com/kRHYME7/KhingDom/Addition-Hyprdots-CLI-WIP%5D/Scripts/Hyprdots")
+source=("https://raw.githubusercontent.com/kRHYME7/KhingDom/59f3ad8f3a04794454dd49e4748477f86440fa2d/Scripts/Hyprdots")
 md5sums=('a231c7dc2ac62c1436a2f4ceb840e4ff')
 noextract=()
 
