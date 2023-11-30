@@ -1,7 +1,7 @@
 # Maintainer: Jose Riha <jose1711 [at] gmail (dot) com>
 
 pkgname=gpx-animator
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Generate a top-down view map video from one or more GPX files"
 arch=('any')
@@ -23,5 +23,5 @@ package() {
   install -Dm755 gpx-animator.sh "${pkgdir}/usr/bin/gpx-animator"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
-md5sums=('91741869de706e183670496b8cdad62c'
+md5sums=('9ff7ef0fc5c83e3ecbbed572291edb92'
          'a9c1115c51482f9ea07f95c2e70359da')
