@@ -1,4 +1,4 @@
-pkgbase = nxsystaemon-git
+pkgbase = nxsysdaemon-git
 	pkgdesc = System daemon for NX
 	pkgver = 0.99
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = nxsystaemon-git
 	source = nxsysdaemon::git+http://git.weitnahbei.de/nullmark/nxsysdaemon
 	sha256sums = SKIP
 
-pkgname = nxsystaemon-git
+pkgname = nxsysdaemon-git

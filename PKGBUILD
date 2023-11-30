@@ -1,6 +1,6 @@
 # Maintainer: Stefan Mark <mark at unserver dot de>
 
-pkgname=nxsystaemon-git
+pkgname=nxsysdaemon-git
 _pkgname=nxsysdaemon
 pkgver=0.99
 pkgrel=1
