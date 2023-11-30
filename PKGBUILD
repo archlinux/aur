@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dqrng
-_pkgver=0.3.1
+_pkgver=0.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ef9d3b1352d68335b5b462e3661cdc53')
-sha256sums=('e230862ad9cdef0a3d5dfe6715e23073fe89534aed2cc256804915d0a35db96e')
+md5sums=('6f3ee0d3b89f90deb993032e8185e487')
+sha256sums=('cd02ca210aa40db5a3dfff317ab721c0eea3a94d6effdaf1068a527710393e9c')
 
 build() {
   mkdir -p build
