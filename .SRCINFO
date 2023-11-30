@@ -1,6 +1,6 @@
 pkgbase = r-fstcore
 	pkgdesc = R Bindings to the 'Fstlib' Library
-	pkgver = 0.9.14
+	pkgver = 0.9.16
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fstcore
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-fstcore
 	depends = r-rcpp
 	optdepends = r-lintr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/fstcore_0.9.14.tar.gz
-	sha256sums = d08efa06003bd65bf5131e17980904c1334afbd7474b09a841effa6810251356
+	source = https://cran.r-project.org/src/contrib/fstcore_0.9.16.tar.gz
+	sha256sums = c92ea97b88d1f0a9156d56256a9e553f2b7f8b9b994874f6af0e37276b8f2b39
 
 pkgname = r-fstcore
