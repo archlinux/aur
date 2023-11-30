@@ -1,12 +1,13 @@
 pkgbase = artemisrgb-git
 	pkgdesc = A universal RGB control software
-	pkgver = 1.2023.0710.0
-	pkgrel = 2
+	pkgver = 1.2023.1130.0
+	pkgrel = 1
 	url = https://artemis-rgb.com/
 	arch = x86_64
 	license = custom:PolyForm Noncommercial License 1.0.0
 	makedepends = dotnet-sdk
 	makedepends = git
+	makedepends = zip
 	depends = dotnet-runtime
 	depends = hicolor-icon-theme
 	depends = glibc

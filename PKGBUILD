@@ -1,7 +1,7 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=artemisrgb-git
-pkgver=1.2023.0710.0
-pkgrel=2
+pkgver=1.2023.1130.0
+pkgrel=1
 url="https://artemis-rgb.com/"
 pkgdesc="A universal RGB control software"
 arch=("x86_64")
@@ -9,7 +9,7 @@ provides=("artemisrgb")
 conflicts=("artemisrgb")
 license=("custom:PolyForm Noncommercial License 1.0.0")
 depends=("dotnet-runtime" "hicolor-icon-theme" "glibc" "bash" "zlib" "fontconfig" "gcc-libs")
-makedepends=("dotnet-sdk" "git")
+makedepends=("dotnet-sdk" "git" "zip")
 options=("staticlibs")
 source=("git+https://github.com/Artemis-RGB/Artemis"
 		"git+https://github.com/Artemis-RGB/Artemis.Plugins"
@@ -41,10 +41,17 @@ prepare() {
 build() {
   dotnet publish --configuration Release --runtime linux-x64 -p:Version="$pkgver" --output build --self-contained ${_nowarn} "$srcdir/Artemis/src/Artemis.UI.Linux/Artemis.UI.Linux.csproj"
   mkdir -p "$srcdir/build/Plugins"
-  for file in $(find "$srcdir/Artemis.Plugins/src/" -type f -name *.csproj)
-  do
-	dotnet publish --configuration Release --runtime linux-x64 --output "$srcdir/build-plugins/$(basename -s .csproj "$file")" --no-self-contained ${_nowarn} "$file"
-	zip "$srcdir/build/Plugins/$(basename -s .csproj "$file").zip" "$srcdir/build-plugins/$(basename -s .csproj "$file")"
+  for PluginProjFile in $(find "$srcdir/Artemis.Plugins/src" -type f -name "*.csproj"); do
+	# Build each of the found project files.
+    Name=$(basename -s .csproj "$PluginProjFile")
+    echo "Building Plugin $Name"
+    dotnet publish --configuration Release --runtime linux-x64 --output "$srcdir/build-plugins/$Name" --no-self-contained "$PluginProjFile";
+    # Zip the output and place it inside of the staging directory for app deployment
+    pushd "$srcdir/build-plugins/$Name"
+	# echo $(pwd)
+        zip -r "$Name.zip" .
+    popd
+    mv "$srcdir/build-plugins/$Name/$Name.zip" "$srcdir/build/Plugins/$Name.zip"
   done
 }
 
