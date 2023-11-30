@@ -12,15 +12,15 @@ pkgver=394
 sha256sums=('b4f52caca5e88e3129518db2853c0974410996b999f1a831c12266f8bee34141')
 url='https://axidraw.com/doc/py_api'
 
-id="AxiDraw_API_$pkgver"
-source=("$id.zip::https://cdn.evilmadscientist.com/dl/ad/public/${id%_$pkgver}.zip")
+_id="AxiDraw_API_$pkgver"
+source=("$id.zip::https://cdn.evilmadscientist.com/dl/ad/public/${_id%_$pkgver}.zip")
 
 build() {
-  cd "$id"
+  cd "$_id"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$id"
+  cd "$_id"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
