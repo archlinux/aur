@@ -1,14 +1,14 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=cutlass
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='CUDA Templates for Linear Algebra Subroutines'
 arch=('x86_64')
 url='https://github.com/NVIDIA/cutlass'
 license=('Apache')
-groups=()
+groups=('nvidia')
 depends=('cuda' 'cudnn')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'setuptools' 'python-installer')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NVIDIA/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('aaa9719eb806b168695b34893faf4854bb6bc9e09f63f2d36772aaf35a8516e5')
@@ -25,7 +25,7 @@ build() {
         -DCUTLASS_ENABLE_EXAMPLES=OFF \
         -DCUTLASS_INSTALL_TESTS=OFF \
         -DCUTLASS_UNITY_BUILD_ENABLED=ON
-    cmake --build $pkgname-$pkgver/build -j 48
+    cmake --build $pkgname-$pkgver/build
 }
 
 package() {
