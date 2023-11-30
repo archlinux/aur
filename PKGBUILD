@@ -14,30 +14,30 @@ source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$pkgname"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cd "$pkgname" || exit
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 
-  cd "$pkgname"
-  cargo build --release --frozen --all-features
+	cd "$pkgname" || exit
+	cargo build --release --frozen --all-features
 }
 
 check() {
-  export RUSTUP_TOOLCHAIN=stable
+	export RUSTUP_TOOLCHAIN=stable
 
-  cd "$pkgname"
-  cargo test --frozen --all-features
+	cd "$pkgname" || exit
+	cargo test --frozen --all-features --release
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm755 battery-notify.service -t "$pkgdir/usr/lib/systemd/user/"
-  install -D target/release/battery-notify -t "$pkgdir/usr/bin/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	cd "$pkgname" || exit
+	install -Dm755 battery-notify.service -t "$pkgdir/usr/lib/systemd/user/"
+	install -D target/release/battery-notify -t "$pkgdir/usr/bin/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
