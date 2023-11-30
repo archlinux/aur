@@ -1,7 +1,7 @@
 pkgbase = firedragon-unsigned-extensions
 	pkgdesc = FireDragon modified to allow installation of unsigned extensions
-	pkgver = 120.0
-	pkgrel = 2
+	pkgver = 120.0.1
+	pkgrel = 1
 	url = https://gitlab.com/dr460nf1r3/settings/
 	install = firedragon.install
 	arch = x86_64
@@ -70,15 +70,15 @@ pkgbase = firedragon-unsigned-extensions
 	options = !debug
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/120.0/source/firefox-120.0.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/120.0/source/firefox-120.0.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/120.0.1/source/firefox-120.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/120.0.1/source/firefox-120.0.1.source.tar.xz.asc
 	source = firedragon.desktop
-	source = git+https://codeberg.org/stefanwimmer128/firedragon-unsigned-extensions.git#tag=120.0-1
+	source = common::git+https://codeberg.org/stefanwimmer128/firedragon-unsigned-extensions-common.git#tag=120.0-1
 	source = git+https://gitlab.com/dr460nf1r3/settings.git
 	source = librewolf-source::git+https://codeberg.org/librewolf/source.git#tag=120.0-2
 	source = librewolf-settings::git+https://codeberg.org/librewolf/settings.git
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = e710058701074eda53ca9f5fd52c57254858a027984f735bdcd58d6906f6b574
+	sha256sums = 76e7bb2a144880158444d8e9014f4d080d219bd150c3db405b27e4c7e3959ae2
 	sha256sums = SKIP
 	sha256sums = 53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560
 	sha256sums = SKIP
