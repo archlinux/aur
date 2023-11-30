@@ -13,9 +13,9 @@ pkgbase = eidklient-native
 	options = !strip
 	source = eidklient
 	sha256sums = SKIP
-	source_i686 = https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_i386.tar.gz
+	source_i686 = https://web.archive.org/web/20231130000133if_/https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_i386.tar.gz
 	sha256sums_i686 = bccec263730fe6851db836915379bf32241df40f3a544e8b9b0362e0308bdec1
-	source_x86_64 = https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_x86_64.tar.gz
+	source_x86_64 = https://web.archive.org/web/20231129171710if_/https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_x86_64.tar.gz
 	sha256sums_x86_64 = ab07ca3ee4c9dc8cdb83feb349d2e60aa45fd00b9f1e5828d6820593af2759cb
 
 pkgname = eidklient-native

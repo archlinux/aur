@@ -13,12 +13,16 @@ _upstream_arch=
 [[ "$CARCH" == "x86_64" ]] && _upstream_arch="x86_64"
 [[ "$CARCH" == "i686" ]] && _upstream_arch="i386"
 _appimage="eID_klient-${_upstream_arch}.AppImage"
-_url="https://eidas.minv.sk/downloadservice/eidklient/linux"
+_url="https://web.archive.org/web/%dif_/https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_%s.tar.gz"
 source=(
     eidklient
 )
-source_i686=("${_url}/eID_klient_i386.tar.gz")
-source_x86_64=("${_url}/eID_klient_x86_64.tar.gz")
+source_i686=(
+    "$(printf "${_url}" 20231130000133 i386)"
+)
+source_x86_64=(
+    "$(printf "${_url}" 20231129171710 x86_64)"
+)
 sha256sums=(
     SKIP
 )
