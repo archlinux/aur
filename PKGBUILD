@@ -1,7 +1,7 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=rofi-games
-pkgver=v1.6.0.r0.g2385d09
+pkgver=v1.6.1.r0.g9d008ea
 pkgrel=1
 pkgdesc='A rofi plugin which adds a mode to list available games for launch along with their box art'
 arch=('x86_64')
@@ -22,6 +22,13 @@ prepare()
     cd "$pkgname"
 
     cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
+build()
+{
+    cd "$pkgname"
+
+    make DESTDIR="$pkgdir/" build
 }
 
 package()
