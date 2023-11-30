@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-labwc-session
 pkgname=$_pkgname-git
-pkgver=r19.4a94dbc
+pkgver=r36.44da485
 pkgrel=1
 pkgdesc="LXQt Wayland session configuration using the labwc compositor (git version)"
 url="https://github.com/stefonarch/lxqt-labwc-session"
@@ -17,9 +17,8 @@ makedepends=(
   git
 )
 depends=(
-  labwc-git
+  labwc
   liblxqt
-  lxqt-build-tools
   waybar
 )
 optdepends=(

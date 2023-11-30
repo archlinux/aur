@@ -1,15 +1,14 @@
 pkgbase = lxqt-labwc-session-git
 	pkgdesc = LXQt Wayland session configuration using the labwc compositor (git version)
-	pkgver = r19.4a94dbc
+	pkgver = r36.44da485
 	pkgrel = 1
 	url = https://github.com/stefonarch/lxqt-labwc-session
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
-	depends = labwc-git
+	depends = labwc
 	depends = liblxqt
-	depends = lxqt-build-tools
 	depends = waybar
 	optdepends = sddm: The recommended LXQt display manager
 	optdepends = swaybg: Wallpaper tool for Wayland compositors
