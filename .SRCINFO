@@ -1,0 +1,13 @@
+pkgbase = r-bsgenome.scerevisiae.ucsc.saccer3
+	pkgdesc = Saccharomyces cerevisiae (Yeast) full genome (UCSC version sacCer3)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BSgenome.Scerevisiae.UCSC.sacCer3
+	arch = any
+	license = Artistic2.0
+	depends = r-bsgenome
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/BSgenome.Scerevisiae.UCSC.sacCer3_1.4.0.tar.gz
+	md5sums = 7f2d8bba69c3dcebf426d9b19a6bed30
+	sha256sums = b543b39508958a21fa4bf1b73f934332c737c6a6190edcb71d8178d7491acdde
+
+pkgname = r-bsgenome.scerevisiae.ucsc.saccer3
