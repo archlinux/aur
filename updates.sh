@@ -32,6 +32,7 @@ echo "updating checksums for PKGBUILD(s)"
 updpkgsums
 ls *PKGBUILD | parallel updpkgsums {}
 echo "creating .SRCINFO"
+echo "makepkg --printsrcinfo > .SRCINFO"
 makepkg --printsrcinfo > .SRCINFO
 #sha256sum skywire-scripts.tar.gz
 echo "old pkgrel=$_prel"
