@@ -1,0 +1,104 @@
+pre_install() {
+	if systemctl is-active --quiet duo-device-health; then
+	    systemctl stop duo-device-health
+	fi
+
+	if systemctl is-active --quiet duo-desktop; then
+	    systemctl stop duo-desktop
+	fi
+}
+
+post_install() {
+	install_dir="/opt/duo/duo-desktop"
+	config_path="${install_dir}/localhost.cfg"
+
+	keys_dir="/etc/opt/duo/duo-desktop/https"
+	key_path="${keys_dir}/duo-desktop.key"
+	cert_path="${keys_dir}/duo-desktop.crt"
+	pfx_path="${keys_dir}/duo-desktop.pfx"
+
+	localdata_path_old="/root/.config/duo/devicehealth"
+	localdata_path="/etc/opt/duo/duo-desktop/localdata"
+
+	is_valid_cert_present () {
+	    if [[ -f $1 ]]; then
+	        cert=$(<$1)
+
+	        # renew within 6 months
+	        six_months_seconds=15552000
+
+	        if ! echo "${cert}" | openssl x509 -checkend "${six_months_seconds}" >/dev/null; then
+	            false; return
+	        else
+	            true; return
+	        fi
+	    else
+	        false
+	    fi
+	}
+
+	directory_exists () {
+	    [[ -d $1 ]]
+	}
+
+	migrate_localdata_config_if_needed () {
+	    if directory_exists "${localdata_path_old}" && ! directory_exists "${localdata_path}"; then
+	        echo "Migrating localdata configs to new location..."
+	        mv "${localdata_path_old}" "${localdata_path}"
+	    fi
+	}
+
+	# check if we should install a new cert
+	if ! is_valid_cert_present "${cert_path}" ; then
+	    echo "No valid localhost certificate found. Generating..."
+	    mkdir -p "${keys_dir}"
+	    chmod 700 "${keys_dir}"
+	    openssl req \
+	        -newkey rsa:2048 -keyout "${key_path}" \
+	        -x509 \
+	        -days 1095 \
+	        -nodes \
+	        -config "${config_path}" \
+	        -out "${cert_path}" 2>/dev/null
+	    openssl pkcs12 -inkey "${key_path}" -in "${cert_path}" -export -out "${pfx_path}" -passout pass:
+	    rm -f "${key_path}"
+
+	    chmod 600 "${pfx_path}"
+	    chmod 644 "${cert_path}"
+
+	    # install into system
+			trust anchor --store "${cert_path}"
+	fi
+
+	migrate_localdata_config_if_needed
+
+	# install systemd service
+	systemctl daemon-reload
+	systemctl enable duo-desktop
+	systemctl start duo-desktop
+
+  echo Ensure your device has been registered with Duo.
+	echo You probably need to supply the output of 'dmidecode --string system-uuid'
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	systemctl stop duo-desktop
+	systemctl disable duo-desktop
+}
+
+post_remove() {
+	if [[ $1 == "remove" ]]; then
+	    rm -rf /etc/opt/duo/duo-desktop/https
+	    rmdir --ignore-fail-on-non-empty /etc/opt/duo/duo-desktop /etc/opt/duo
+	    rm -f /usr/share/ca-certificates/duo-desktop.crt
+	    update-ca-certificates --fresh >/dev/null
+	fi
+}
