@@ -7,13 +7,13 @@ license=('MIT')
 makedepends=(python)
 pkgdesc='AxiDraw Python API unofficial installer'
 pkgname=python-axidraw-api
-pkgrel=1
+pkgrel=2
 pkgver=394
 sha256sums=('b4f52caca5e88e3129518db2853c0974410996b999f1a831c12266f8bee34141')
 url='https://axidraw.com/doc/py_api'
 
 _id="AxiDraw_API_$pkgver"
-source=("$id.zip::https://cdn.evilmadscientist.com/dl/ad/public/${_id%_$pkgver}.zip")
+source=("$_id.zip::https://cdn.evilmadscientist.com/dl/ad/public/${_id%_$pkgver}.zip")
 
 build() {
   cd "$_id"
