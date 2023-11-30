@@ -1,8 +1,8 @@
 diff --git a/hydrus/client/gui/ClientGUI.py b/hydrus/client/gui/ClientGUI.py
-index 2d2db51a..6096f3ec 100644
+index 62a61e1f..34b2506a 100644
 --- a/hydrus/client/gui/ClientGUI.py
 +++ b/hydrus/client/gui/ClientGUI.py
-@@ -6153,7 +6153,7 @@ class FrameGUI( CAC.ApplicationCommandProcessorMixin, ClientGUITopLevelWindows.M
+@@ -6213,7 +6213,7 @@ class FrameGUI( CAC.ApplicationCommandProcessorMixin, ClientGUITopLevelWindows.M
                                  python_executable = python_executable.replace( 'pythonw', 'python' )
                                  
                              
@@ -12,7 +12,7 @@ index 2d2db51a..6096f3ec 100644
                              cmd = [ python_executable, server_script_path, db_param ]
                              
 diff --git a/hydrus/core/HydrusConstants.py b/hydrus/core/HydrusConstants.py
-index 35765379..bbe24f67 100644
+index d59bf1aa..8cbf8fee 100644
 --- a/hydrus/core/HydrusConstants.py
 +++ b/hydrus/core/HydrusConstants.py
 @@ -11,34 +11,9 @@ import yaml
@@ -53,7 +53,7 @@ index 35765379..bbe24f67 100644
  
  muh_platform = sys.platform.lower()
  
-@@ -66,32 +41,16 @@ elif RUNNING_FROM_FROZEN_BUILD:
+@@ -69,34 +44,18 @@ elif RUNNING_FROM_FROZEN_BUILD:
  elif RUNNING_FROM_MACOS_APP:
      NICE_RUNNING_AS_STRING = 'from App'
  
@@ -76,8 +76,7 @@ index 35765379..bbe24f67 100644
 -    
 -    desired_userpath_db_dir = os.path.join( '~', 'Hydrus' )
 -    
-+USERPATH_DB_DIR = DEFAULT_DB_DIR
- 
+-
 -USERPATH_DB_DIR = os.path.expanduser( desired_userpath_db_dir )
 -
 -if USERPATH_DB_DIR == desired_userpath_db_dir:
@@ -86,7 +85,10 @@ index 35765379..bbe24f67 100644
 -    
 -    USERPATH_DB_DIR = None
 -    
--
++USERPATH_DB_DIR = DEFAULT_DB_DIR
+ 
+ WE_SWITCHED_TO_USERPATH = False
+ 
 -LICENSE_PATH = os.path.join( BASE_DIR, 'license.txt' )
 +LICENSE_PATH = "/usr/share/licenses/hydrus/license.txt"
  
