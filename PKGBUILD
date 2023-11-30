@@ -1,7 +1,7 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 # Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
-pkgver=3.0.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,10 @@ depends=(
 makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'python-sphinx')
 source=(
     "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
-    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=2a070da0651677411a245f1714895235b1caf584"
+    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=50b79198f83659e77b810fe0eedaa79b140744db"
     "proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git"
     "pxar::git://git.proxmox.com/git/pxar.git"
+    "pathpatterns::git://git.proxmox.com/git/pathpatterns.git"
     "0001-re-route-dependencies-not-available-on-crates.io-to-.patch"
     "0002-docs-drop-all-but-client-man-pages.patch"
     "elf-strip-unused-dependencies.sh"
@@ -26,6 +27,7 @@ source=(
 # either a git repo or tracked by this git repo, so not much gained by encoding
 # checksums here in this git repo
 sha512sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'

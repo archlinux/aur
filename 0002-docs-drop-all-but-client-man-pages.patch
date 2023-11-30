@@ -43,7 +43,7 @@ diff --git a/docs/conf.py b/docs/conf.py
 index 8944926e..deeb63bf 100644
 --- a/docs/conf.py
 +++ b/docs/conf.py
-@@ -93,26 +93,7 @@ rst_epilog += f"\n..  |pbs-copyright| replace:: Copyright (C) {copyright}"
+@@ -93,27 +93,7 @@ rst_epilog += f"\n..  |pbs-copyright| replace:: Copyright (C) {copyright}"
  man_pages = [
      # CLI
      ('proxmox-backup-client/man1', 'proxmox-backup-client', 'Command line tool for Backup and Restore', [author], 1),
@@ -56,6 +56,7 @@ index 8944926e..deeb63bf 100644
      ('pxar/man1', 'pxar', 'Proxmox File Archive CLI Tool', [author], 1),
 -    ('pmt/man1', 'pmt', 'Control Linux Tape Devices', [author], 1),
 -    ('pmtx/man1', 'pmtx', 'Control SCSI media changer devices (tape autoloaders)', [author], 1),
+-    ('pbs2to3/man1', 'pbs2to3', 'Proxmox Backup Server upgrade checker script for 2.4+ to current 3.x major upgrades', [author], 1),
 -    # configs
 -    ('config/acl/man5', 'acl.cfg', 'Access Control Configuration', [author], 5),
 -    ('config/datastore/man5', 'datastore.cfg', 'Datastore Configuration', [author], 5),
