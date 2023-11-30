@@ -3,22 +3,69 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=okular
-pkgver=23.08.3
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Document Viewer'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-graphics)
-depends=(djvulibre libspectre libkexiv2 poppler-qt5 kpty5 kactivities5 threadweaver5 kparts5 purpose5 discount phonon-qt5)
-makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools5 khtml chmlib)
-optdepends=('ebook-tools: mobi and epub support'
-            'kdegraphics-mobipocket: mobi support' 'libzip: CHM support'
-            'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
-            'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)'
-            'kde-cli-tools: to configure web shortcuts' 'plasma-workspace: to configure web shortcuts')
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('4254557578d6e95c5708bc5ae0b0bc2b9b4961d56c38f3a8fdafafc9ddbd119b'
+depends=(discount
+         djvulibre
+         freetype2
+         gcc-libs
+         glibc
+         kactivities5
+         karchive5
+         kbookmarks5
+         kcodecs5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kcrash5
+         ki18n5
+         kio5
+         kitemviews5
+         kjobwidgets5
+         kparts5
+         kpty5
+         ktextwidgets5
+         kwallet5
+         kwidgetsaddons5
+         kwindowsystem5
+         kxmlgui5
+         libjpeg-turbo
+         libkexiv2-qt5
+         libspectre
+         libtiff
+         phonon-qt5
+         poppler-qt5
+         purpose5
+         qt5-base
+         qt5-declarative
+         qt5-speech
+         qt5-svg
+         qt5-x11extras
+         threadweaver5
+         zlib)
+makedepends=(chmlib
+             ebook-tools
+             extra-cmake-modules
+             kdegraphics-mobipocket5
+             kdoctools5
+             khtml)
+optdepends=('calligra: ODT and ODP support'
+            'chmlib: CHM support'
+            'ebook-tools: mobi and epub support'
+            'kdegraphics-mobipocket5: mobi support'
+            'khtml: CHM support'
+            'libzip: CHM support'
+            'unarchiver: Comic Book Archive support (alternative)'
+            'unrar: Comic Book Archive support')
+groups=(kde-applications
+        kde-graphics)
+source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('0227f453b7b686d07bd92118f04672cfcfac88f2d1831c66b96b83c32900a3ce'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
