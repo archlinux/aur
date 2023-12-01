@@ -5,7 +5,7 @@
 
 pkgname=mit-scheme
 pkgver=12.1
-pkgrel=7
+pkgrel=8
 pkgdesc="MIT/GNU Scheme"
 url="https://www.gnu.org/software/mit-scheme/"
 arch=(x86_64)
@@ -36,17 +36,19 @@ sha256sums=(
   'SKIP'
   '8351ada9f5f71472b8992d6b1ad2c8120b26e4a9b5503ba266c80931152e9a66'
 )
+noextract=("$pkgname-$pkgver-x86-64.tar.gz")
 validpgpkeys=('8F664EF430167B808170D35AC9E40BAAFD0CB132') # Chris Hanson <cph@chris-hanson.org>
 
 _archive="$pkgname-$pkgver"
 
 prepare() {
-  (
-    cd "$_archive"
-    patch --forward --strip=1 --input="$srcdir/disable-long-running-tests.patch"
-  )
+  tar -xf "$_archive-x86-64.tar.gz"
 
-  cp -r "$_archive" "$_archive-test"
+  mkdir -p "$_archive-test"
+  tar -C "$_archive-test" --strip-components 1 -xf "$_archive-x86-64.tar.gz"
+
+  patch --forward --strip=1 --input="$srcdir/disable-long-running-tests.patch" \
+    --directory="$_archive-test/"
 }
 
 build() {
@@ -76,19 +78,22 @@ check() {
   cd "$_archive-test"
 
   # Run tests with a temporary installation
+  local tmp_install_prefix=$PWD/tmp_install/usr
+  mkdir -p "$tmp_install_prefix"
+
   (
     cd src
     ./configure \
-      --prefix="$PWD/../tmp_install/usr/" \
+      --prefix="$tmp_install_prefix" \
       --with-x \
       --enable-x11 \
       --enable-native-code
     make -j1
-    make install
+    make DESTDIR=/ install
   )
 
   # Tests confirmed to fail when using fish as shell, use bash explicitly
-  SHELL=/bin/bash tmp_install/usr/bin/mit-scheme --eval '(load "tests/check.scm")'
+  SHELL=/bin/bash "$tmp_install_prefix/bin/mit-scheme" --eval '(load "tests/check.scm")'
 }
 
 package() {

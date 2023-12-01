@@ -1,7 +1,7 @@
 pkgbase = mit-scheme
 	pkgdesc = MIT/GNU Scheme
 	pkgver = 12.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.gnu.org/software/mit-scheme/
 	arch = x86_64
 	license = GPL
@@ -14,6 +14,7 @@ pkgbase = mit-scheme
 	depends = libx11
 	depends = ncurses
 	optdepends = openssl: support for openssl
+	noextract = mit-scheme-12.1-x86-64.tar.gz
 	source = https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/12.1/mit-scheme-12.1-x86-64.tar.gz
 	source = https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/12.1/mit-scheme-12.1-x86-64.tar.gz.sig
 	source = disable-long-running-tests.patch
