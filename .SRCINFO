@@ -1,14 +1,17 @@
 pkgbase = relevation
 	pkgdesc = Command-line search for Revelation Password Manager files
 	pkgver = 1.3.1
-	pkgrel = 3
-	url = http://p.outlyer.net/relevation/
+	pkgrel = 4
+	url = http://p.outlyer.net/relevation
 	arch = any
-	license = custom
-	makedepends = python2-setuptools
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-pycryptodome
 	depends = python-lxml
 	source = http://p.outlyer.net/relevation/files/relevation-1.3.1.tar.gz
-	md5sums = 40488551b95ce1fcfc6062e51efd8545
+	sha256sums = 73deca0610704daa8a55db00534fab3205caa6b905afca1b1bb795b88b909a6c
 
 pkgname = relevation
