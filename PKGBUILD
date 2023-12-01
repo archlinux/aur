@@ -1,0 +1,68 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kio5-extras
+pkgver=24.01.80
+pkgrel=1
+pkgdesc='Additional components to increase the functionality of KIO'
+arch=(x86_64)
+url='https://www.kde.org/'
+license=(LGPL)
+depends=(gcc-libs
+         glibc
+         karchive5
+         kconfig5
+         kcoreaddons5
+         kdbusaddons5
+         kdnssd5
+         kdsoap-qt5
+         ki18n5
+         kio5
+         libimobiledevice
+         libkexiv2-qt5
+         libmtp
+         libplist
+         libssh
+         libtirpc
+         libxcursor
+         phonon-qt5
+         kactivities5
+         qt5-base
+         qt5-svg
+         smbclient
+         solid5
+         syntax-highlighting5)
+makedepends=(extra-cmake-modules
+             gperf
+             kdoctools5
+             libappimage
+             openexr
+             kactivities-stats5
+             taglib)
+optdepends=('icoutils: Windows executable thumbnails'
+            'kimageformats5: thumbnails for additional image formats'
+            'libappimage: AppImage thumbnails'
+            'openexr: EXR format thumbnails'
+            'perl: info kioslave'
+            'kactivities-stats5: recently used kioslave'
+            'qt5-imageformats: thumbnails for additional image formats'
+            'taglib: audio file thumbnails')
+source=(https://download.kde.org/unstable/release-service/$pkgver/src/kio-extras-kf5-$pkgver.tar.xz{,.sig})
+sha256sums=('72915f25e38014b7031afba203bdc02d0515b0f2b075a854b4316ae99f2f83cd'
+            'SKIP')
+validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S kio-extras-kf5-$pkgver \
+    -DLIBAPPIMAGE_LIBRARIES=libappimage.so \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
