@@ -1,6 +1,6 @@
 pkgbase = emonoda
 	pkgdesc = A set of tools to organize and manage your torrents
-	pkgver = 2.1.36
+	pkgver = 2.1.37
 	pkgrel = 1
 	url = https://github.com/mdevaev/emonoda
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = emonoda
 	depends = python-dateutil
 	optdepends = python-transmissionrpc: Transmission support
 	optdepends = python-dbus: KTorrent support
-	source = emonoda-2.1.36::git+https://github.com/mdevaev/emonoda#tag=v2.1.36
+	source = emonoda-2.1.37::git+https://github.com/mdevaev/emonoda#tag=v2.1.37
 	md5sums = SKIP
 
 pkgname = emonoda
