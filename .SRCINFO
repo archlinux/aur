@@ -1,6 +1,6 @@
 pkgbase = watt-toolkit-git
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
-	pkgver = 3.0.0.rc2.r0.g9eb5def6f
+	pkgver = 3.0.0.rc3.r1.g4e2cfc23a
 	pkgrel = 1
 	url = https://steampp.net/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = watt-toolkit-git
 	makedepends = git
 	makedepends = dotnet-install
 	depends = libcap
-	depends = aspnet-runtime-7.0
+	depends = aspnet-runtime-8.0
 	depends = nss
 	depends = fontconfig
 	depends = expat
@@ -70,7 +70,7 @@ pkgbase = watt-toolkit-git
 
 pkgname = watt-toolkit-git
 	depends = libcap
-	depends = aspnet-runtime-7.0
+	depends = aspnet-runtime-8.0
 	depends = nss
 	depends = fontconfig
 	depends = expat

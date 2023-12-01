@@ -1,14 +1,17 @@
 #Maintainer: rmbgame<rmb@rmbgame.net>
 #Maintainer: AigioL<https://github.com/AigioL>
+
+_dotnet_version=8.0
+
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc2.r0.g9eb5def6f
+pkgver=3.0.0.rc3.r1.g4e2cfc23a
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
 license=('GPL3')
 depends=(
-    'libcap' 'aspnet-runtime-7.0' 'nss'
+    'libcap' "aspnet-runtime-${_dotnet_version}" 'nss'
     # extra/skia-sharp
     'fontconfig' 'expat' 'libfreetype.so' 'libheif' 'libjpeg-turbo' 'libpng' 'libwebp' 'zlib'
 )
@@ -62,7 +65,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
-_dotnet_version=7.0
+
 
 prepare(){
     target_dirs=(
@@ -135,34 +138,34 @@ build(){
 #         -c Release --nologo -v q /property:WarningLevel=1
     msg2 "Building main program..."
     dotnet publish src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-out" --framework "net7.0"
+        -c Release --output "${srcdir}/SteamTools/linux-out" --framework "net${_dotnet_version}"
     msg2 "Building accelerator plugin..."
     dotnet publish src/BD.WTTS.Client.Plugins.Accelerator/BD.WTTS.Client.Plugins.Accelerator.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Accelerator" --framework "net7.0"
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Accelerator" --framework "net${_dotnet_version}"
     dotnet publish src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy.csproj \
-        -c Release -p:PublishSingleFile=true --self-contained --framework "net7.0" \
+        -c Release -p:PublishSingleFile=true --self-contained --framework "net${_dotnet_version}" \
         --output "${srcdir}/SteamTools/linux-plugins-out/Accelerator.ReverseProxy"
     msg2 "Building authenticator plugin..."
     dotnet publish src/BD.WTTS.Client.Plugins.Authenticator/BD.WTTS.Client.Plugins.Authenticator.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Authenticator" --framework "net7.0"
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Authenticator" --framework "net${_dotnet_version}"
     msg2 "Building gameaccount plugin..."
     dotnet publish src/BD.WTTS.Client.Plugins.GameAccount/BD.WTTS.Client.Plugins.GameAccount.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameAccount" --framework "net7.0"
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameAccount" --framework "net${_dotnet_version}"
     msg2 "Building gamelist plugin..."
     dotnet publish src/BD.WTTS.Client.Plugins.GameList/BD.WTTS.Client.Plugins.GameList.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameList" --framework "net7.0"
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameList" --framework "net${_dotnet_version}"
     msg2 "Building gametools plugin..."
     dotnet publish src/BD.WTTS.Client.Plugins.GameTools/BD.WTTS.Client.Plugins.GameTools.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameTools" --framework "net7.0"
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameTools" --framework "net${_dotnet_version}"
     msg2 "Building steamidlecard plugin..."
     dotnet publish src/BD.WTTS.Client.Plugins.SteamIdleCard/BD.WTTS.Client.Plugins.SteamIdleCard.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/SteamIdleCard" --framework "net7.0"
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/SteamIdleCard" --framework "net${_dotnet_version}"
 #     msg2 "Building archisteamfarmplus plugin..."
 #     dotnet publish src/BD.WTTS.Client.Plugins.ArchiSteamFarmPlus/BD.WTTS.Client.Plugins.ArchiSteamFarmPlus.csproj \
-#         -c Release --output "${srcdir}/SteamTools/linux-plugins-out/ArchiSteamFarmPlus" --framework "net7.0"
+#         -c Release --output "${srcdir}/SteamTools/linux-plugins-out/ArchiSteamFarmPlus" --framework "net${_dotnet_version}"
 #     msg2 "Building update plugin..."
 #     dotnet publish src/BD.WTTS.Client.Plugins.Update/BD.WTTS.Client.Plugins.Update.csproj \
-#         -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Update" --framework "net7.0"
+#         -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Update" --framework "net${_dotnet_version}"
 }
 check(){
     cd "${srcdir}/SteamTools"
