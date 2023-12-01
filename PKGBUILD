@@ -4,7 +4,7 @@
 
 pkgname=webkit2gtk-4.1-imgpaste
 pkgver=2.42.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Web content engine for GTK (with patches for pasting images from clipboard)"
 url="https://webkitgtk.org"
 arch=(x86_64)
@@ -81,13 +81,15 @@ source=(
   PasteBoardGtk.patch
   GTK-MiniBrowser-should-hide-the-toolbar-when-using-full-screen.patch
   GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch
+  https://github.com/WebKit/WebKit/commit/1bad176b2496579d760852c80cff3ad9fb7c3a4b.patch
 )
 sha256sums=('5720aa3e8627f1b9f63252187d4df0f8233ae71d697b1796ebfbe5ca750bd118'
             'SKIP'
             '71b8a59c78d549fed0cd895207f49c7b3be40b236e96f4d7b9907a26521499bf'
             '20ebac2caf15fa546e6da00cb0fa90d5d37fcf7bfa883014d7d15eb4963d12d2'
             'a921d6be1303e9f23474971f381886fd291ec5bb1a7ff1e85acede8cfb88bef2'
-            '655f3b2c96355ac83c4fa1fc6048e3256bbfdbfb9727e1e18c5af12613536206')
+            '655f3b2c96355ac83c4fa1fc6048e3256bbfdbfb9727e1e18c5af12613536206'
+            '3c88884f09f6dede63654ed2fd4a5bd9eed0516a3d1b5cc137baff4c14e5b5a6')
 validpgpkeys=(
   'D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'  # Carlos Garcia Campos <cgarcia@igalia.com>
   '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B'  # Adrián Pérez de Castro <aperez@igalia.com>
@@ -105,6 +107,7 @@ prepare() {
   # https://bugs.archlinux.org/task/79783
   # https://github.com/WebKit/WebKit/pull/18614
   patch -Np1 -i ../GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch
+  patch -Np1 -i ../1bad176b2496579d760852c80cff3ad9fb7c3a4b.patch
 }
 
 build() {
