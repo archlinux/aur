@@ -8,7 +8,6 @@ pkgbase = clash-verge-rev-bin
 	depends = webkit2gtk
 	depends = gtk3
 	depends = libayatana-appindicator
-	depends = clash-meta
 	conflicts = clash-verge-rev
 	conflicts = clash-verge-rev-git
 	conflicts = clash-verge
@@ -16,6 +15,7 @@ pkgbase = clash-verge-rev-bin
 	conflicts = clash-nyanpasu
 	conflicts = clash-nyanpasu-bin
 	conflicts = clash-nyanpasu-git
+	conflicts = clash-meta
 	source = clash-verge-rev-null-x86_64.deb::https://github.com/wonfen/clash-verge-rev/releases/download/vnull/clash-verge_null_amd64.deb
 	sha512sums = b5de29d121e14dbebe859b6095a69b734675dbab7acf9623eac0d5d43517a22ac0cc1fcb4e743ca71a5e110df63c8631b068e1992012acc2f315b33647d576ad
 
