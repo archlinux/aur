@@ -1,11 +1,12 @@
 pkgbase = python-django-auditlog
 	pkgdesc = A Django app that keeps a log of changes made to an object.
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jazzband/django-auditlog
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-pip
 	source = python-django-auditlog-2.3.0.src.tar.gz::https://files.pythonhosted.org/packages/source/d/django-auditlog/django-auditlog-2.3.0.tar.gz
 	sha256sums = b9d3acebb64f3f2785157efe3f2f802e0929aafc579d85bbfb9827db4adab532
 
