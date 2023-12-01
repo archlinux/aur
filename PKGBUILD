@@ -1,7 +1,7 @@
 pkgname=tribler
 _pkgname=tribler
 pkgver=7.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="P2P/Bittorrent/YouTube client"
 arch=("x86_64")
 url="http://tribler.org"
@@ -36,7 +36,6 @@ python-bitarray
 libtorrent
 python-file-read-backwards
 brotli
-python-humanreadable
 python-pillow
 python-pyqt5
 python-pyqt5-sip
