@@ -2,12 +2,13 @@
 
 pkgname=perl-rose-object
 pkgver=0.860
-pkgrel='3'
+pkgrel='4'
 pkgdesc="A simple object base class"
 arch=(any)
 license=('PerlArtistic')
 url="http://search.cpan.org/dist/Rose-Object/"
 options=('!emptydirs')
+depends=('perl')
 source=(http://search.cpan.org/CPAN/authors/id/J/JS/JSIRACUSA/Rose-Object-${pkgver}.tar.gz)
 md5sums=('34d662a480065ea4fb6ff47fbe2e6ca3')
 sha512sums=('3bb5496d899bb596dd4a7e48455412dc481c88d0f286b6d4dc5ed22f40c13a70ea93add8f3fcce0373fef3921a0b2ebbbcdf6abed050f09fac01bdb5cc7bab8d')
