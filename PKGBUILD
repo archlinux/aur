@@ -41,6 +41,7 @@ _ensure_local_nvm() {
 build() {
     _ensure_local_nvm
     gendesk -f -n -q --categories "Development" --name "${_pkgname}" --exec "${pkgname%-git}"
+    sed "s|@electronversion@|${_electronversion}|" -i "${srcdir}/${pkgname%-git}.sh"
     cd "${srcdir}/${pkgname%-git}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/npm_cache"
