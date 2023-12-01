@@ -1,7 +1,7 @@
 pkgbase = fuzzylite
 	pkgdesc = C++ fuzzy logic control library
 	pkgver = 6.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/fuzzylite/fuzzylite
 	changelog = CHANGELOG
 	arch = x86_64
