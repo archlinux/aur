@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname="thorium-reader"
 pkgname="${_pkgname}-git"
-pkgver=2.3.0.r35.g4b5ede9a
+pkgver=2.3.0.r36.gb8b37dbe
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 arch=('any')
@@ -41,8 +41,23 @@ _ensure_local_nvm() {
     nvm use 18
 }
 build() {
+    local _gendesk_options=(
+        -q -f -n
+        --pkgname="$_pkgname"
+        --pkgdesc="$pkgdesc"
+        --name="Thorium Reader"
+        --exec="$_pkgname %u"
+        --icon="$_pkgname"
+        --terminal=false
+        --categories="Office"
+        --mimetypes="application/epub+zip"
+        --startupnotify=true
+        --custom="StartupWMClass=ThoriumReader"
+    )
+    gendesk "${_gendesk_options[@]}"
+
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --pkgname="${_pkgname}" --name="Thorium Reader" --exec="${_pkgname}"
+
     cd "${srcdir}/${_pkgsrc}"
     npm ci --cache "${srcdir}/npm-cache"
     npm run package:pack-only
