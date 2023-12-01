@@ -1,12 +1,12 @@
 pkgbase = sizeof-go-bin
 	pkgdesc = Simple and fast calculate size of directories
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 2.0
+	pkgrel = 1
 	url = https://codeberg.org/balaraz/sizeof
 	arch = x86_64
 	license = GPL3
 	provides = sizeof
-	source = https://codeberg.org/balaraz/sizeof/releases/download/v1.0/sizeof-v1.0-linux-amd64
-	sha256sums = 4d337f49f2909c5bcd4484c482bba72fac26753a3b24c7161609e56ff403ec0c
+	source = https://codeberg.org/balaraz/sizeof/releases/download/v2.0/sizeof-v2.0-linux-amd64
+	sha256sums = 2b8a7c32c74be3972db59f193b2ca7b0541146f2c29b2f4c6e186438bce8654c
 
 pkgname = sizeof-go-bin

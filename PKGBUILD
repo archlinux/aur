@@ -1,8 +1,8 @@
 # Maintainer: balaraz <balaraz@tuta.io>
 
 pkgname=sizeof-go-bin
-pkgver=1.0
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sizeof"
@@ -12,7 +12,7 @@ makedepends=()
 provides=(sizeof)
 conflicts=()
 source=("https://codeberg.org/balaraz/sizeof/releases/download/v${pkgver}/sizeof-v${pkgver}-linux-amd64")
-sha256sums=("4d337f49f2909c5bcd4484c482bba72fac26753a3b24c7161609e56ff403ec0c")
+sha256sums=("2b8a7c32c74be3972db59f193b2ca7b0541146f2c29b2f4c6e186438bce8654c")
 
 package() {
 		cd $srcdir
