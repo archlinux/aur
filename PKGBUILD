@@ -21,4 +21,4 @@ package() {
 	cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
 }
-md5sums=('450a657ccb52c59d030fbaf98cede1ce')
+md5sums=('a0587dc482ed4fb57fe9fae94463c93d')

@@ -11,6 +11,6 @@ pkgbase = xmppc
 	depends = libstrophe
 	depends = gpgme
 	source = xmppc-0.1.2.tar.gz::https://codeberg.org/Anoxinon_e.V./xmppc/archive/0.1.2.tar.gz
-	md5sums = 450a657ccb52c59d030fbaf98cede1ce
+	md5sums = a0587dc482ed4fb57fe9fae94463c93d
 
 pkgname = xmppc
