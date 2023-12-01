@@ -1,7 +1,7 @@
 # Maintainer: Tommaso Dordoni <t dot dordoni dot aur at outlook dot it>
 
 pkgname=greenlight-beta-appimage
-pkgver=2.0.0_beta14
+pkgver=2.0.0_beta15
 pkgrel=1
 pkgdesc="An open-source client for xCloud and xHome streaming made in Javascript and Typescript"
 arch=('any')
