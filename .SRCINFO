@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ce-eap
 	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (community version)
-	pkgver = 2023.3.233.11799.67
+	pkgver = 2023.3.233.11799.196
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/nextversion
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = intellij-idea-ce-eap
 	depends = libxtst
 	depends = libdbusmenu-glib
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIC-233.11799.67.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIC-233.11799.196.tar.gz
 	source = intellij-idea-ce-eap.desktop
-	sha256sums = 6b5c232738a094cce4991b6ef0055ae02b3a2151ade3e9316f22fe4bf7e1fd5b
+	sha256sums = a871f337065b7e0c703a8e834c76354761d82624a840164a5bca1e897d97a345
 	sha256sums = 977f062d7db3a4c7bd50c24d2426e3226f7350c575f7cea6f5f50ea637bd1348
 
 pkgname = intellij-idea-ce-eap
