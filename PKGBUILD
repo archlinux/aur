@@ -27,7 +27,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'b421d410e0ee7dca7ae348fbc607e9537a42945e46519c64143368149fdfa737')
+            'aee747e38dba0960336c5b9839d04fd707097443b91e0cf202ee3a72e0b43bde')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'

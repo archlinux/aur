@@ -17,6 +17,6 @@ pkgbase = requestly-git
 	source = requestly::git+https://github.com/requestly/requestly-desktop-app.git
 	source = requestly.sh
 	sha256sums = SKIP
-	sha256sums = b421d410e0ee7dca7ae348fbc607e9537a42945e46519c64143368149fdfa737
+	sha256sums = aee747e38dba0960336c5b9839d04fd707097443b91e0cf202ee3a72e0b43bde
 
 pkgname = requestly-git
