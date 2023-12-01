@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-git
 _pkgname=Requestly
-pkgver=1.5.13.r0.g018b337
+pkgver=1.5.14.r0.g6504526
+_electronversion=23
 pkgrel=1
 pkgdesc="Debug your network request across all platforms and browsers using a single app"
 arch=('x86_64')
@@ -12,7 +13,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=(
     'hicolor-icon-theme'
-    'electron23'
+    "electron${_electronversion}"
 )
 makedepends=(
     'npm'
@@ -26,7 +27,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '76f847268aa15fdd183d4ba21bc5ac36e397b98eb153ff20ab7591807fed3364')
+            'b421d410e0ee7dca7ae348fbc607e9537a42945e46519c64143368149fdfa737')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -41,6 +42,8 @@ build() {
     _ensure_local_nvm
     gendesk -f -n -q --categories "Development" --name "${_pkgname}" --exec "${pkgname%-git}"
     cd "${srcdir}/${pkgname%-git}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/npm_cache"
     npm install --cache "${srcdir}/npm-cache"
     npm run package
     asar e "${srcdir}/${pkgname%-git}/release/build/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"

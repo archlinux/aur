@@ -1,6 +1,6 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron23
 APPDIR=/usr/lib/requestly
+export ELECTRON_IS_DEV=0
 export PATH="${APPDIR}:${PATH}"
 #export LD_LIBRARY_PATH="${APPDIR}/lib:${LD_LIBRARY_PATH}"
 _ASAR="${APPDIR}/app.asar"

@@ -1,6 +1,6 @@
 pkgbase = requestly-git
 	pkgdesc = Debug your network request across all platforms and browsers using a single app
-	pkgver = 1.5.13.r0.g018b337
+	pkgver = 1.5.14.r0.g6504526
 	pkgrel = 1
 	url = https://requestly.io/
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = requestly-git
 	source = requestly::git+https://github.com/requestly/requestly-desktop-app.git
 	source = requestly.sh
 	sha256sums = SKIP
-	sha256sums = 76f847268aa15fdd183d4ba21bc5ac36e397b98eb153ff20ab7591807fed3364
+	sha256sums = b421d410e0ee7dca7ae348fbc607e9537a42945e46519c64143368149fdfa737
 
 pkgname = requestly-git
