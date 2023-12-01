@@ -1,0 +1,22 @@
+do_setcap() {
+  setcap cap_net_raw+ep $(realpath $(which phantomsocks))
+}
+
+un_setcap() {
+  setcap cap_net_raw-ep $(realpath $(which phantomsocks))
+}
+
+post_install() {
+  do_setcap
+  echo 'start with command phantomsocks-init to automate get interface'
+  echo 'and use config at "~/.config/phantomsocks/config.json"'
+  echo 'the built-in systemd unit are also launch using it'
+}
+
+post_upgrade() {
+  do_setcap
+}
+
+pre_remove() {
+  un_setcap
+}

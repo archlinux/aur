@@ -1,68 +1,59 @@
 # Maintainer: detiam <dehe_tian@outlook.com>
-# Contributor: detian <dehe_detian@outlook.com>
-pkgname=phantomsocks-git
+
 _pkgname=phantomsocks
-pkgver=r282.3c556b0
+pkgname=phantomsocks-git
+pkgver=r301.b1b13c5
 pkgrel=1
-epoch=
 pkgdesc="A cross-platform proxy client/server for Linux/Windows/macOS"
 arch=(i686 x86_64)
-url="https://github.com/detiam/$_pkgname"
-#_commit=a521259ffc1cfd8753845997c09644b976af2d6c
+url="https://github.com/macronut/$_pkgname"
 license=('LGPL-3.0')
-groups=()
-depends=('systemd')
-makedepends=('go' 'git' 'libpcap')
-checkdepends=()
-optdepends=(
-	'v2raya: for use with v2raya'
-	#'libpcap: you can build pcap version if you want, see PKGBUILD build()'
-)
+
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
-backup=()
-options=()
-install=
-changelog=
-source=(
-	"git+$url"
-	"$_pkgname.sysusers"
-	"$_pkgname.service"
-	"$_pkgname@.service"
+makedepends=('go' 'git')
+depends=('systemd' 'jq')
+optdepends=(
+    'libpcap: you can build pcap version if you want, see PKGBUILD build()'
 )
-noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
-validpgpkeys=()
+
+install=$_pkgname.install
+source=(
+    "git+${url}.git"
+    "$_pkgname-init.sh"
+    "$_pkgname.service")
+sha256sums=('SKIP'
+            '22d5545c6bb8430cd8efd1452e0647ee0d3feab0c8e775167ec291e4fba24927'
+            '4602cf1421b16780aea3eef1d69ed44197efa6cbfe5e64193a127852ba71750c')
 
 pkgver() {
-  cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+    cd "$_pkgname"
+    ( set -o pipefail
+        git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() {
-	cd "$_pkgname"
-	# Choose between them
-	#go build -tags rawsocket
-	go build -tags pcap
+    cd "$_pkgname"
+    # Choose between them
+    go build -tags rawsocket
+    #go build -tags pcap
 }
 
 package() {
-	cd "$_pkgname"
+    install -dm755 "$pkgdir/usr/bin"
+    install -dm755 "$pkgdir/usr/lib/systemd/user"
+    install -dm755 "$pkgdir/usr/share/phantomsocks"
 
-	install -Dm644 "../$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-	install -Dm644 "../$_pkgname@.service" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
+    install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/user/"
+    install "$_pkgname-init.sh" "$pkgdir/usr/bin/$_pkgname-init"
 
-	install -dm755 "$pkgdir/etc/phantomsocks"
-	install -dm755 "$pkgdir/usr/lib/systemd/system"
-	install -Dm600 "config.json" "$pkgdir/etc/phantomsocks/config.json"
-	install -Dm600 "default.conf" "$pkgdir/etc/phantomsocks/default.conf"
+    cd "$_pkgname"
 
-	install -Dm644 "$srcdir/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/phantomsocks.conf"
+    install -Dm644 "config.json" "$pkgdir/usr/share/phantomsocks"
+    install -Dm644 "default.conf" "$pkgdir/usr/share/phantomsocks"
 
-	install -dm755 "$pkgdir/usr/bin"
-	install "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }

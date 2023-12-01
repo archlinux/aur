@@ -4,13 +4,9 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-Type=simple
-Group=phantomsocks
-WorkingDirectory=/etc/phantomsocks
-ExecStart=/usr/bin/phantomsocks
-Restart=on-abnormal
-RestartSec=5
+ExecStart=/usr/bin/phantomsocks-init
+Restart=no
+#RestartSec=5
 
 [Install]
-WantedBy=multi-user.target
-Alias=
+WantedBy=default.target
