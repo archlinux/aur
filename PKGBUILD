@@ -4,11 +4,12 @@ pkgver=v0.1
 pkgrel=1
 _gitname=potato-c
 pkgdesc="A featureful, modular and lightweight pomodoro timer."
+keywords=""
 
 provides=(potctl potd potui)
 makedepends=(git make)
 arch=('x86_64')
-license=('GPL')
+license=('GPL3')
 optdepends=('libnotify: sending notifications on event support')
 
 source=(
