@@ -1,15 +1,15 @@
 # Maintainer: hinto.janai <hinto.janai@protonmail.com>
 pkgname=festival-gui-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Festival music player GUI"
 arch=('x86_64')
 url="https://github.com/hinto-janai/festival"
 license=('MIT')
 source=("${url}/releases/download/gui-v${pkgver}/Festival-v${pkgver}-linux-x64.tar.gz")
-sha256sums=('69728d0146c8d9c02a9241c062d37d2354d9d2606fe323ee722f11d9d968a0a0')
+sha256sums=('e49b698b9480ac4a6fc561627e3b7b6c37318792151e868de7333fbbba1fe8b3')
 validpgpkeys=('31C5145AAFA5A8DF1C1DB2A6D47CE05FA175A499')
-depends=('dbus' 'glibc' 'gtk3' 'gcc-libs' 'libpulse')
+depends=('libpulse' 'gtk3')
 
 package() {
 	cd "$srcdir"
