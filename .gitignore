@@ -2,3 +2,4 @@ snapgene_*_linux.rpm
 snapgene-*.pkg.tar
 PKGBUILD
 .vscode
+snapgene-*.pkg.tar.zst

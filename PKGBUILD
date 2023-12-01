@@ -3,7 +3,7 @@
 # Contributor: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
 # Contributor: Lorenzo Gaifas <brisvag at gmail dot com>
 pkgname=snapgene
-pkgver=7.0.3
+pkgver=7.1.0
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
 pkgrel=1
@@ -12,20 +12,15 @@ arch=('x86_64')
 url='http://www.snapgene.com/products/snapgene/'
 license=('custom')
 # A valid licence is required to use the full version of snapgene
-source=("https://cdn.snapgene.com/downloads/SnapGene/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/"$pkgname"_"$pkgver"_linux.rpm")
-sha512sums=('a8d3bf97ef93a97b92e40cfa1b00e0ff4814536f6cda51147ceab009dc794b7fbf1b9f65667ced8d111774d8381e49620a659aea082de893422e6881bf6d19e7')
+source=("https://cdn.snapgene.com/downloads/SnapGene/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/"$pkgname"_"$pkgver"_linux.rpm" "snapgene")
+sha512sums=('f167fec6eca0c34a253439a53ef07d40d6a0d31d97a76fd715588b44d1bddc15cdba5b8b86e5e8e44d47e07b14bd57fd3e1f532c59a76ea63a15d227141209aa' '705179cb29445b9d88953ffbc5c07050697bf3e68de49fe7eeefc1effd47c5db45ddec5b72510d3b577bcbc6d0df84e1b944f986d3c3b6e0e42065ae87fdc3f1')
 
 package() {
     cd "$pkgdir"
     cp -r "$srcdir/opt" "$pkgdir"
     cp -r "$srcdir/usr" "$pkgdir"
     mkdir "$pkgdir/usr/bin"
-    cat <<'EOF' >"$pkgdir/usr/bin/snapgene"
-#!/bin/sh
-# Snapgene is not localized and genbank exports are invalid in other
-# locales, so we just set LANG=C.
-LANG=C /opt/gslbiotech/snapgene/snapgene.sh
-EOF
+    cp "$srcdir/snapgene" "$pkgdir/usr/bin/"
 
     sed -i 's`${INSTALLED_DIR}/snapgene "$@"`QT_QPA_PLATFORM="xcb" ${INSTALLED_DIR}/snapgene "$@"`' "$pkgdir/opt/gslbiotech/snapgene/snapgene.sh"
     
