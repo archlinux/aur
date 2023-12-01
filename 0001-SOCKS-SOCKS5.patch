@@ -1,0 +1,45 @@
+From f64c43f0ca0a24db85f7a871c358b00f2d6f29af Mon Sep 17 00:00:00 2001
+From: detiam <dehe_tian@outlook.com>
+Date: Sat, 26 Aug 2023 00:34:14 +0800
+Subject: [PATCH] SOCKS -> SOCKS5
+
+---
+ main.go               | 4 ++--
+ phantomtcp/phantom.go | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/main.go b/main.go
+index c5e894a..d45b220 100644
+--- a/main.go
++++ b/main.go
+@@ -228,12 +228,12 @@ func StartService() {
+ 		case "http":
+ 			fmt.Println("HTTP:", service.Address)
+ 			go ListenAndServe(service.Address, service.PrivateKey, ptcp.HTTPProxy)
+-			default_proxy = "HTTPS " + service.Address
++			default_proxy = "HTTP " + service.Address
+ 		case "socks":
+ 			fmt.Println("Socks:", service.Address)
+ 			go ListenAndServe(service.Address, service.PrivateKey, ptcp.SocksProxy)
+ 			go ptcp.SocksUDPProxy(service.Address)
+-			default_proxy = "SOCKS " + service.Address
++			default_proxy = "SOCKS5 " + service.Address
+ 		case "redirect":
+ 			fmt.Println("Redirect:", service.Address)
+ 			go ListenAndServe(service.Address, service.PrivateKey, ptcp.RedirectProxy)
+diff --git a/phantomtcp/phantom.go b/phantomtcp/phantom.go
+index 916c7f3..b2ef1ba 100755
+--- a/phantomtcp/phantom.go
++++ b/phantomtcp/phantom.go
+@@ -733,7 +733,7 @@ func GetPAC(address string, profile string) string {
+ 	for host := range DefaultProfile.DomainMap {
+ 		rule += fmt.Sprintf("\"%s\":1,\n", host)
+ 	}
+-	Context := `var proxy = 'SOCKS %s';
++	Context := `var proxy = '%s';
+ var rules = {
+ %s}
+ function FindProxyForURL(url, host) {
+-- 
+2.43.0
+

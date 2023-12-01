@@ -113,7 +113,7 @@ def validatePface(dev; hint):
 ' "$CONFIGDIR/$CONFIGFILE") && echo "$modifiedConf" > "$CONFIGDIR/$CONFIGFILE"
 
 # workaround for rawsocks
-if (strings /bin/phantomsocks | grep -e '-tags=rawsocket' > /dev/null 2>&1); then
+if (strings /usr/bin/phantomsocks | grep -e '-tags=rawsocket' > /dev/null 2>&1); then
     sleep 2
 fi
 

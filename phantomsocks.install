@@ -8,6 +8,9 @@ un_setcap() {
 
 post_install() {
   do_setcap
+  echo 'start with command phantomsocks-init to automate get interface'
+  echo 'and use config at "~/.config/phantomsocks/config.json"'
+  echo 'the built-in systemd unit are also launch using it'
 }
 
 post_upgrade() {

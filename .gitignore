@@ -2,6 +2,7 @@
 !.gitignore
 !.SRCINFO
 !*.sh
+!*.patch
 !*.install
 !*.service
 !*.sysusers
