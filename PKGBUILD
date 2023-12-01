@@ -8,7 +8,7 @@
 _pkgname=knowte
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform note taking application"
 url="https://github.com/digimezzo/knowte"
 license=('GPL3')
@@ -26,13 +26,6 @@ _main_package() {
   else
     _main_git
   fi
-
-  source+=(
-    "$_pkgname.sh"
-  )
-  sha256sums+=(
-    '4fc173bf2c4c7f210e4a3fa1983ed6e502aa3bd2845b1947a472952189272b6f'
-  )
 }
 
 # stable package
@@ -72,7 +65,43 @@ _main_git() {
 
 # common functions
 prepare() {
-  gendesk -q -f -n --categories "Utility" --pkgname="${_pkgname}" --pkgdesc="$pkgdesc" --name="Knowte" --exec="${_pkgname}"
+  cat <<'EOF' > "$_pkgname.sh"
+#!/usr/bin/env sh
+set -e
+
+APPDIR="/usr/lib/knowte"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+_ELECTRON=/usr/bin/electron
+_ASAR="${APPDIR}/app.asar"
+_FLAGS_FILE="$XDG_CONFIG_HOME/logseq-flags.conf"
+
+if [ -r "$_FLAGS_FILE" ]; then
+  _USER_FLAGS="$(cat "$_FLAGS_FILE")"
+fi
+
+if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
+    exec ${_ELECTRON} ${_ASAR} $_USER_FLAGS "$@"
+else
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox $_USER_FLAGS "$@"
+fi
+EOF
+
+  local _gendesk_options=(
+    -q -f -n
+    --pkgname="$_pkgname"
+    --pkgdesc="$pkgdesc"
+    --name="Knowte"
+    --exec="$_pkgname %u"
+    --icon="$_pkgname"
+    --terminal=false
+    --categories="Utility"
+    #--mimetypes=""
+    --startupnotify=true
+    --custom="StartupWMClass=Knowte"
+  )
+
+  gendesk "${_gendesk_options[@]}"
 }
 
 _ensure_local_nvm() {
