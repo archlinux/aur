@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=8.0.2.r9.gc3ae82937
+pkgver=8.0.3.r26.g19cede44c
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
@@ -125,8 +125,6 @@ package_soh-otr-exporter-git() {
   DESTDIR="${pkgdir}" cmake --install build --component extractor
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s ${SHIP_PREFIX}/assets/extractor/ZAPD.out "${pkgdir}/usr/bin/ZAPD"
-
   install -dm755 "${pkgdir}/usr/share/licenses/soh-otr-exporter"
   install -Dm644 "OTRExporter/LICENSE" "${pkgdir}/usr/share/licenses/soh-otr-exporter/LICENSE"
 }

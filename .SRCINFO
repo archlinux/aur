@@ -1,5 +1,5 @@
 pkgbase = soh-git
-	pkgver = 8.0.2.r9.gc3ae82937
+	pkgver = 8.0.3.r26.g19cede44c
 	pkgrel = 1
 	url = https://shipofharkinian.com/
 	arch = x86_64
