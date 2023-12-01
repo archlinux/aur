@@ -1,13 +1,13 @@
 # Maintainer: criptixo <therealcriptixo@gmail.com>
 pkgname=waveterm-bin
-pkgver=0.5
-pkgrel=15
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='An open-source, cross-platform terminal for seamless workflows (binary)'
 arch=('x86_64')
 url="https://www.waveterm.dev"
 license=('Apache')
-depends=('gendesk')
-makedepends=('unzip')
+depends=()
+makedepends=('unzip' 'gendesk')
 source=("https://github.com/wavetermdev/waveterm/releases/download/v0.5.0/waveterm-linux-x64-v0.5.0.zip")
 sha256sums=('ddb454bbcc18175eb01784fce9246aa48870c3099460627609b4cf8b47aad0ae')
 
