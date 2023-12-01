@@ -1,5 +1,5 @@
 pkgname=openturns
-pkgver=1.21.1
+pkgver=1.21.2
 pkgrel=1
 pkgdesc="Uncertainty treatment library"
 license=('LGPL')
@@ -8,15 +8,10 @@ url="http://www.openturns.org/"
 depends=('libxml2' 'onetbb' 'hmat-oss' 'python-matplotlib' 'python-psutil' 'python-dill' 'nlopt' 'cminpack' 'ceres-solver' 'coin-or-bonmin' 'dlib' 'hdf5' 'primesieve' 'pagmo')
 makedepends=('cmake' 'swig' 'boost' 'spectra')
 source=("https://github.com/openturns/openturns/archive/v$pkgver.tar.gz")
-sha256sums=('b090fa2903f6160e64eb7b260e0da5e9946639dd1d7c398d3079053098c1d9fe')
-
-prepare () {
-  sed -i "33i#include \<libxml/parser.h\>"  openturns-$pkgver/lib/src/Base/Common/XMLToolbox.cxx
-}
+sha256sums=('62c681493785974b9ad726de3c7996761bb327b667debf5a02f922240594a41f')
 
 build() {
   cd openturns-$pkgver
-  sed -i "/use_postordering/d" lib/src/Base/Optim/Ceres.cxx
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DOPENTURNS_SYSCONFIG_PATH=/etc \
