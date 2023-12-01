@@ -1,13 +1,13 @@
 pkgbase = hyprdots-ctl
 	pkgdesc = CLI for Hyprdots Configurations
-	pkgver = 0.5020
+	pkgver = 0.501
 	pkgrel = 1
 	url = https://github.com/prasanthrangan/hyprdots
 	arch = x86_64
 	license = unknown
 	depends = hyprland-git
 	depends = hyprland
-	source = https://raw.githubusercontent.com/kRHYME7/KhingDom/59f3ad8f3a04794454dd49e4748477f86440fa2d/Scripts/Hyprdots
+	source = https://raw.githubusercontent.com/kRHYME7/KhingDom/Khingdom/Scripts/Hyprdots
 	md5sums = SKIP
 
 pkgname = hyprdots-ctl
