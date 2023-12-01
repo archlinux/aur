@@ -2,12 +2,13 @@
 # Contributor: Pylogmon <pylogmon@outlook.com>
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
-pkgver=2.7.0.r0.g81d8ccb
+pkgver=2.7.1.r1.gb994752
+_pkgver=2.7.1
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件 | A cross-platform software for text translation."
 arch=('x86_64')
 url="https://pot.pylogmon.com/"
-_githuburl="https://github.com/pot-app/pot-desktop"
+_ghurl="https://github.com/pot-app/pot-desktop"
 license=('GPL3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -35,22 +36,28 @@ makedepends=(
     'gendesk'
     'rust>=1.69.0'
 )
-source=("${pkgname//-g/.g}::git+${_githuburl}.git")
-sha256sums=('SKIP')
+source=(
+    "${pkgname%-git}::git+${_ghurl}.git"
+    "${pkgname%-git}.sh"
+)
+sha256sums=('SKIP'
+            'b8626b120c72299ae10a4269dac05f75ab08f3a671f4e7a96814c255e2dc7e83')
 pkgver() {
-    cd "${srcdir}/${pkgname//-g/.g}"
+    cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 build() {
     gendesk -q -f -n --pkgname "${_pkgname}-translation-git" --categories "Office;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
-    cd "${srcdir}/${pkgname//-g/.g}"
+    cd "${srcdir}/${pkgname%-git}"
+    pnpm config set cache-dir "${srcdir}/.pnpm"
+    pnpm config set link-workspace-packages true
     sed "s|icon.ico|icon.png|g" -i src-tauri/tauri.linux.conf.json
     pnpm install --force
     pnpm tauri build -b deb
-    _pkgver=`cat package.json | grep version | awk '{print $2}' | tr -d '"' | tr -d ","`
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname//-g/.g}/src-tauri/target/release/bundle/deb/${_pkgname}_${_pkgver}_amd64/data/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname%-git}/src-tauri/target/release/bundle/deb/${_pkgname}_${_pkgver}_amd64/data/usr/bin/${_pkgname}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname//-g/.g}/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname%-git}/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
 }
