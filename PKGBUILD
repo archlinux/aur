@@ -2,7 +2,7 @@
 
 pkgname=python-validio-cli
 _name=validio_cli
-pkgver=0.10.1
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="CLI to interact with the Validio platform"
 url="https://pypi.org/project/validio-cli/"
@@ -20,7 +20,7 @@ makedepends=(
 license=('Apache-2.0')
 arch=(any)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('74cdc2f3f9eacd1d21548dd11e6a205adbe06f087364fe34c0da2d0b8d51bea3')
+sha256sums=('2b95eddeac11a2f77f8b45abf37a10a1f765441a9d471cde8944d67b2a8419cb')
 
 build() {
     cd "$_name-$pkgver"
