@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tjmc-launcher-bin
 _pkgname=TJMC-Launcher
-pkgver=0.1.2102
+pkgver=0.1.2103
 _electronversion=23
 pkgrel=1
 pkgdesc="A simple to use, extremely fast, and well supported app, that allows you to install pure and modded versions of Java Minecraft."
@@ -26,8 +26,8 @@ source=(
 )
 sha256sums=('1a25e3b0f4bf16543e5f802cf6d9d189bcae27617ca8be936ad866a8955d9ce6'
             '9f000b99bb76d849688063320e2933f2b7c1fe6fc884844edc35ba58c578adb3')
-sha256sums_aarch64=('5470251ed524cc3e54f70002642df1b856d02c153f0b5923b1f668c242db0cba')
-sha256sums_x86_64=('30605139a12f0f10b43aea926e21be201d02f816d4926aeee62221fe38cbe783')
+sha256sums_aarch64=('7a4145147aa3979959aa2305fb320a439faf68530663881e4843bed1913cf7ad')
+sha256sums_x86_64=('01b179167acc2d9c760a3004852db55966586b67b2ca41b43b7481feeb1c4edc')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
