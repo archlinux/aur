@@ -1,15 +1,15 @@
 pkgbase = zfs-linux-zen
-	pkgver = 2.2.1_6.6.2.zen1.1
+	pkgver = 2.2.2_6.6.3.zen1.1
 	pkgrel = 1
 	url = https://openzfs.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-zen-headers=6.6.2.zen1-1
+	makedepends = linux-zen-headers=6.6.3.zen1-1
 	depends = kmod
-	depends = zfs-utils=2.2.1
-	depends = linux-zen=6.6.2.zen1-1
-	source = https://github.com/openzfs/zfs/releases/download/zfs-2.2.1/zfs-2.2.1.tar.gz
-	sha256sums = 4ff2de43d39710283ae8ff1744aa96e6cdc83c8efe86a715294d4f6bc34a8e8e
+	depends = zfs-utils=2.2.2
+	depends = linux-zen=6.6.3.zen1-1
+	source = https://github.com/openzfs/zfs/releases/download/zfs-2.2.2/zfs-2.2.2.tar.gz
+	sha256sums = 76bc0547d9ba31d4b0142e417aaaf9f969072c3cb3c1a5b10c8738f39ed12fc9
 
 pkgname = zfs-linux-zen
 	pkgdesc = Kernel modules for the Zettabyte File System.
