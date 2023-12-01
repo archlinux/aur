@@ -1,7 +1,7 @@
 # Maintainer: Nima Askarian <nimaas1400@gmail.com>
 pkgname=potato-c
 pkgver=v0.1
-pkgrel=1
+pkgrel=2
 _gitname=potato-c
 pkgdesc="A featureful, modular and lightweight pomodoro timer."
 keywords=""

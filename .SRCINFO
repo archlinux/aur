@@ -1,7 +1,7 @@
 pkgbase = potato-c
 	pkgdesc = A featureful, modular and lightweight pomodoro timer.
 	pkgver = v0.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL3
 	makedepends = git
