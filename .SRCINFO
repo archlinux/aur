@@ -1,7 +1,7 @@
 pkgbase = xet
 	pkgdesc = CLI tools for working with XetHub
 	pkgver = 0.12.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xethub.com
 	arch = x86_64
 	license = BSD
@@ -12,8 +12,8 @@ pkgbase = xet
 	depends = libz.so
 	depends = zlib
 	options = !lto
-	source = https://github.com/xetdata/xet-core/archive/4ba4d135d03ea5d1c58b06993617c87032b1d9fe/xet-core-4ba4d135d03ea5d1c58b06993617c87032b1d9fe.tar.gz
-	sha256sums = a72dd6f5913295b81003117941d13a58903c10e02324051df3ef06f1d30ab81e
+	source = https://github.com/xetdata/xet-core/archive/v0.12.5/xet-core-0.12.5.tar.gz
+	sha256sums = 4f6acdb252e1bccf8a1dd00d0b045ad613f76caa64190cf8793d13e67b53be16
 
 pkgname = git-xet
 

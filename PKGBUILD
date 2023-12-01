@@ -1,19 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-# Upstream doesn't tag their source repository on releases, changes the version
-# number in sources before actual releases, doesn't update their lock file in
-# sync with anything, and doesn't organize their sources anything like what
-# they publish as binaries. This package is a best-effort at reproducing
-# something equivolent to their releases, but may not be the exact version of
-# sources their built from at release time.
-#
-# https://github.com/xetdata/xet-core/issues/132
-
 pkgbase=xet
 pkgname=(git-xet xetcmd xetmnt)
 pkgver=0.12.5
-_sha=4ba4d135d03ea5d1c58b06993617c87032b1d9fe
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tools for working with XetHub'
 arch=(x86_64)
 url=https://xethub.com
@@ -24,10 +14,10 @@ depends=(gcc-libs
          zlib)
 makedepends=(cargo
              openssl)
-_archive="xet-core-$_sha"
+_archive="xet-core-$pkgver"
 options=(!lto)
-source=("https://github.com/xetdata/xet-core/archive/$_sha/$_archive.tar.gz")
-sha256sums=('a72dd6f5913295b81003117941d13a58903c10e02324051df3ef06f1d30ab81e')
+source=("https://github.com/xetdata/xet-core/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('4f6acdb252e1bccf8a1dd00d0b045ad613f76caa64190cf8793d13e67b53be16')
 
 prepare() {
 	cd "$_archive/rust"
