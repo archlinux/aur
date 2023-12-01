@@ -1,6 +1,6 @@
 pkgbase = qgroundcontrol-appimage
 	pkgdesc = Ground control for unmanned vehicles.
-	pkgver = 4.2.6
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/mavlink/qgroundcontrol
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = qgroundcontrol-appimage
 	depends = xz
 	depends = zlib
 	depends = icu
-	noextract = qgroundcontrol-appimage-4.2.6.AppImage
+	noextract = qgroundcontrol-appimage-4.3.0.AppImage
 	options = !strip
-	source = qgroundcontrol-appimage-4.2.6.AppImage::https://github.com/mavlink/qgroundcontrol/releases/download/v4.2.6/QGroundControl.AppImage
-	sha256sums = c4a734c5a592dbcb9d4ec91899957379c7ffd01a76bd826627109007af0fb921
+	source = qgroundcontrol-appimage-4.3.0.AppImage::https://github.com/mavlink/qgroundcontrol/releases/download/v4.3.0/QGroundControl.AppImage
+	sha256sums = 99fbe8e1af1f2ae5fccbc325afa45ed309226a50db4252ec540ca37f56787815
 
 pkgname = qgroundcontrol-appimage
