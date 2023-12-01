@@ -1,16 +1,21 @@
 # Maintainer: Josef Vybíhal <josef.vybihal@gmail.com>
-# Previous Maintainer: TingPing tingping@tingping.se
+# Contributor: TingPing tingping@tingping.se
 
+#  shellcheck disable=SC2034
 pkgname=transmission-remote-gtk-git
-pkgver=1.4.2.r67.g821007c
+pkgver=1.6.0.r2.g67e8f88
 pkgrel=1
 pkgdesc='A remote interface to the Transmission BitTorrent client'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/transmission-remote-gtk/transmission-remote-gtk'
 license=('GPL')
 options=('!libtool')
-depends=('gtk3' 'curl' 'libproxy' 'geoip')
-makedepends=('git' 'appstream-glib' 'meson' 'desktop-file-utils' 'perl')
+depends=('gtk3' 'libproxy' 'libsoup3' 'json-glib' 'gettext')
+makedepends=('git' 'appstream-glib' 'meson' 'desktop-file-utils' 'perl' 'pod2man')
+optdepends=(
+  'geoip: country of origin of peers'
+  'libayatana-indicator: Application tray support'
+)
 provides=('transmission-remote-gtk')
 conflicts=('transmission-remote-gtk')
 source=('git+https://github.com/transmission-remote-gtk/transmission-remote-gtk.git')
@@ -19,7 +24,6 @@ _gitname='transmission-remote-gtk'
 
 pkgver() {
   cd "$_gitname"
-
   git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
