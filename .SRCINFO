@@ -1,6 +1,6 @@
 pkgbase = linux-status
 	pkgdesc = Simple Linux server monitoring
-	pkgver = 2.4.3
+	pkgver = 2.4.4
 	pkgrel = 1
 	url = https://github.com/egor-tensin/linux-status
 	install = linux-status.install
@@ -9,7 +9,7 @@ pkgbase = linux-status
 	depends = procps-ng
 	depends = python
 	depends = systemd
-	source = linux-status-2.4.3.tar.gz::https://github.com/egor-tensin/linux-status/archive/v2.4.3.tar.gz
+	source = linux-status-2.4.4.tar.gz::https://github.com/egor-tensin/linux-status/archive/v2.4.4.tar.gz
 	md5sums = SKIP
 
 pkgname = linux-status
