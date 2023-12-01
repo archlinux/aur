@@ -1,7 +1,7 @@
 # Maintainer: Okxa <dev at okxa dot fi>
 pkgname=qddcswitch
 pkgver=1.1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple Qt frontend for switching display inputs with ddcutil."
 arch=('x86_64')
 url="https://codeberg.org/Okxa/qddcswitch"
@@ -31,4 +31,4 @@ package() {
 	install -dm755 bin/locale "$pkgdir/usr/share/$pkgname/locale"
 	install -Dm644 bin/locale/* "$pkgdir/usr/share/$pkgname/locale/"
 }
-md5sums=('f3f3cfc0aac836efcfd2106a1c6f939b')
+md5sums=('a97671dd47e3ed05c1ce27b019c1660d')
