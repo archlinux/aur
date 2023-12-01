@@ -1,7 +1,7 @@
 pkgbase = thorium-reader
 	pkgdesc = Cross-platform desktop reading app based on the Readium Desktop toolkit
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/edrlab/thorium-reader
 	arch = any
 	license = MIT

@@ -7,7 +7,7 @@
 _pkgname="thorium-reader"
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 url="https://github.com/edrlab/thorium-reader"
 license=('MIT')
@@ -109,7 +109,43 @@ _ensure_local_nvm() {
 prepare() {
   _prepare
 
-  gendesk -q -f -n --categories "Utility" --pkgname="$_pkgname" --pkgdesc="$pkgdesc" --name="Thorium Reader" --exec="$_pkgname"
+  cat <<'EOF' > "$_pkgname.sh"
+#!/usr/bin/env sh
+set -e
+
+APPDIR="/usr/lib/thorium-reader"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+_ELECTRON=/usr/bin/electron
+_ASAR="${APPDIR}/app.asar"
+_FLAGS_FILE="$XDG_CONFIG_HOME/logseq-flags.conf"
+
+if [ -r "$_FLAGS_FILE" ]; then
+  _USER_FLAGS="$(cat "$_FLAGS_FILE")"
+fi
+
+if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
+    exec ${_ELECTRON} ${_ASAR} $_USER_FLAGS "$@"
+else
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox $_USER_FLAGS "$@"
+fi
+EOF
+
+  local _gendesk_options=(
+    -q -f -n
+    --pkgname="$_pkgname"
+    --pkgdesc="$pkgdesc"
+    --name="Thorium Reader"
+    --exec="$_pkgname %u"
+    --icon="$_pkgname"
+    --terminal=false
+    --categories="Office"
+    --mimetypes="application/epub+zip"
+    --startupnotify=true
+    --custom="StartupWMClass=ThoriumReader"
+  )
+
+  gendesk "${_gendesk_options[@]}"
 }
 
 build() {
