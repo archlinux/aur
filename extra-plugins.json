@@ -3,6 +3,7 @@
   "dbaeumer.vscode-eslint": "=2.1.20",
   "eclipse-theia.builtin-extension-pack": "",
   "ms-vscode.js-debug": "=1.78.0",
+  "ms-vscode.js-debug-companion": "=1.1.2",
   "ms-vscode.references-view": "",
   "vscode.bat": "=",
   "vscode.builtin-notebook-renderers": "=",

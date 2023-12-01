@@ -3,7 +3,7 @@
 # Contributor: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.43.1
+pkgver=1.44.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -28,7 +28,7 @@ source=(
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
             '201f033b3e445dca08066f5d636b961d45d2ffadd589908f3cc76bf2c2bd601a'
-            '536dd4b5c0d6b0f50a3ffe7e1c9fce1c40be8ad29cb375603d7b39f82cbe443a'
+            'd66832ce77dee7d4cd4c3f7f367936ef9e2c24f47835dde7117f73b1f3c14b25'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
             'd9712e3b79a98d7b1d5fd64d709daa806be6944c3f0cebf22879cd0e3c08ce06'
