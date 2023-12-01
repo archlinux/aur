@@ -10,7 +10,7 @@ arch=(x86_64)
 depends=()
 makedepends=(go)
 provides=(sizeof)
-conflicts=(sizeof sizeof-pypy)
+conflicts=()
 source=("https://codeberg.org/balaraz/sizeof/archive/v${pkgver}.tar.gz")
 sha256sums=("f5437bc982790f43203623b1342a18d771e16642ad20f5770cdefead74fda8ab")
 

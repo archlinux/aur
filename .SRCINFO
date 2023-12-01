@@ -7,8 +7,6 @@ pkgbase = sizeof-go
 	license = GPL3
 	makedepends = go
 	provides = sizeof
-	conflicts = sizeof
-	conflicts = sizeof-pypy
 	source = https://codeberg.org/balaraz/sizeof/archive/v2.0.tar.gz
 	sha256sums = f5437bc982790f43203623b1342a18d771e16642ad20f5770cdefead74fda8ab
 
