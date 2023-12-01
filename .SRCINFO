@@ -1,7 +1,7 @@
 pkgbase = immich
 	pkgdesc = Self-hosted photos and videos backup tool
 	pkgver = 1.89.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/immich-app/immich
 	install = immich.install
 	arch = x86_64
