@@ -1,6 +1,6 @@
 pkgbase = chronojump-git
 	pkgdesc = Measurement, management and statistics of sport short-time tests
-	pkgver = 2.2.0.12.gc1ee1df43
+	pkgver = 2.3.0.1009.g1fdf0e54f
 	pkgrel = 1
 	url = https://chronojump.org/
 	install = chronojump-git.install
@@ -10,7 +10,7 @@ pkgbase = chronojump-git
 	makedepends = intltool
 	makedepends = git
 	depends = python
-	depends = gtk-sharp-2-git
+	depends = gtk-sharp-3
 	provides = chronojump
 	conflicts = chronojump
 	options = !libtool

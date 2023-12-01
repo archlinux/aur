@@ -2,13 +2,13 @@
 
 _name=chronojump
 pkgname=$_name-git
-pkgver=2.2.0.12.gc1ee1df43
+pkgver=2.3.0.1009.g1fdf0e54f
 pkgrel=1
 pkgdesc="Measurement, management and statistics of sport short-time tests"
 arch=(x86_64)
 url="https://chronojump.org/"
 license=(GPL2)
-depends=(python gtk-sharp-2-git)
+depends=(python gtk-sharp-3)
 makedepends=(mono intltool git)
 provides=($_name)
 conflicts=($_name)
