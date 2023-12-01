@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=yuzu
-pkgver=1626
+pkgver=1637
 pkgrel=1
 pkgdesc='Nintendo Switch emulator'
 arch=(x86_64)
@@ -49,7 +49,7 @@ makedepends=(
   vulkan-headers
 )
 options=(!debug)
-_tag=197fc9df662087b9f900209159c18f81ccda0a41
+_tag=07d7846c63c001ed04c8434f41b0d48ae5be021e
 source=(
   git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${_tag}
   git+https://github.com/arsenm/sanitizers-cmake.git
@@ -59,6 +59,7 @@ source=(
   git+https://github.com/MerryMage/dynarmic.git
   git+https://github.com/bylaws/libadrenotools.git
   yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
+  git+https://github.com/brofield/simpleini.git
   yuzu-sirit::git+https://github.com/yuzu-emu/sirit.git
   git+https://github.com/eggert/tz.git
   git+https://github.com/lat9nq/tzdb_to_nx.git
@@ -66,6 +67,7 @@ source=(
   git+https://github.com/herumi/xbyak.git
 )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -87,6 +89,7 @@ prepare() {
   git config submodule.dynarmic.url "${srcdir}"/dynarmic
   git config submodule.libadrenotools.url "${srcdir}"/libadrenotools
   git config submodule.mbedtls.url "${srcdir}"/yuzu-mbedtls
+  git config submodule.simpleini.url "${srcdir}"/simpleini
   git config submodule.sirit.url "${srcdir}"/yuzu-sirit
   git config submodule.tzdb_to_nx.url "${srcdir}"/tzdb_to_nx
   git config submodule.VulkanMemoryAllocator.url "${srcdir}"/VulkanMemoryAllocator
