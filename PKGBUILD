@@ -1,4 +1,4 @@
-# Maintainer: Dirk Rauber <dirk@nine.ch>
+# Maintainer: Raphael Nestler (rnestler) <raphael.nestler@gmail.com>
 
 pkgname=nctl
 pkgver=1.2.5
