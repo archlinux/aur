@@ -1,6 +1,6 @@
 pkgbase = cocogitto-git
 	pkgdesc = Set of CLI tools for the conventional commit and semver specifications (git)
-	pkgver = 4.1.0.r2.gcd847de
+	pkgver = 6.0.1.r0.gf818bf2
 	pkgrel = 1
 	url = https://github.com/cocogitto/cocogitto
 	arch = x86_64
