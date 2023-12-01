@@ -1,16 +1,18 @@
 pkgbase = python-osmpythontools
 	pkgdesc = A library to access OpenStreetMap related services
-	pkgver = 0.3.5
-	pkgrel = 1
+	pkgver = 0.3.6
+	pkgrel = 2
 	url = https://github.com/mocnik-science/osm-python-tools
 	arch = any
 	license = unknown
 	makedepends = python-setuptools
 	depends = python
 	depends = python-geojson
-	source = https://files.pythonhosted.org/packages/source/O/OSMPythonTools/OSMPythonTools-0.3.5.tar.gz
+	depends = python-ujson
+	source = https://files.pythonhosted.org/packages/source/O/OSMPythonTools/OSMPythonTools-0.3.6.tar.gz
 	sha256sums = 13ff721f760fdad5dd78b4d1461d286b78bba96ee151a7301ee8c11a0c258be9
 
 pkgname = python-osmpythontools
 	depends = python
 	depends = python-geojson
+	depends = python-ujson

@@ -3,11 +3,11 @@
 pkgbase='python-osmpythontools'
 pkgname=('python-osmpythontools')
 _module='OSMPythonTools'
-pkgver='0.3.5'
-pkgrel=1
+pkgver='0.3.6'
+pkgrel=2
 pkgdesc="A library to access OpenStreetMap related services"
 url="https://github.com/mocnik-science/osm-python-tools"
-depends=('python' 'python-geojson')
+depends=('python' 'python-geojson' 'python-ujson')
 makedepends=('python-setuptools')
 license=('unknown')
 arch=('any')
