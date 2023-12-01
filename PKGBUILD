@@ -8,7 +8,7 @@
 
 pkgname=flexget
 _name=Flexget
-pkgver=3.10.1
+pkgver=3.10.2
 pkgrel=1
 pkgdesc="Multipurpose automation tool for downloading media content from different sources"
 arch=(any)
@@ -40,7 +40,6 @@ depends=(
   python-packaging
   python-paramiko
   python-pillow
-  python-plexapi
   python-psutil
   python-pynzb
   python-pyparsing
@@ -50,7 +49,6 @@ depends=(
   python-requests
   python-rich
   python-rpyc
-  python-setuptools
   python-sqlalchemy
   python-werkzeug
   python-yaml
@@ -64,6 +62,7 @@ optdepends=(
 makedepends=(
   python-build
   python-installer
+  python-setuptools
   python-wheel
 )
 checkdepends=(
@@ -80,7 +79,7 @@ source=(
   "flexget@.service"
 )
 sha256sums=(
-  '25cb579041e99cd882adf3729ae69900e84feeb302cf77c8f5eb144d7606287f'
+  '77b5327b201ddcfd96da5ba9325d8fb0c21a2d87737bdb0c01ae6a20f4bffa23'
   '117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa'
   'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
 )
