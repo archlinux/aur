@@ -2,12 +2,13 @@
 
 pkgname=perl-ipc-signal
 pkgver="1.00"
-pkgrel='3'
+pkgrel='4'
 pkgdesc="utility functions dealing with signals"
 arch=('any')
 url="http://search.cpan.org/dist/IPC-Signal"
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
+depends=('perl')
 source=("http://search.cpan.org/CPAN/authors/id/R/RO/ROSCH/IPC-Signal-${pkgver}.tar.gz")
 sha512sums=('31ee15a55539546532cb8deb9bd379e0014b526fcd79ac20dc53591391b0fb50b182f6f653837bc230debb1779418316b7ac8e389224ad41a0aa3a380c76f229')
 
