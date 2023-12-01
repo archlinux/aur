@@ -1,36 +1,35 @@
 pkgbase = kwinft-git
 	pkgdesc = drop-in replacement for KWin with additional libwayland wrapping Qt/C++ library Wrapland
-	pkgver = 5.23.0.beta.0.r532.g6185c5b33
+	pkgver = 5.27.0.beta.0.r764.gd913702e3
 	pkgrel = 1
 	url = https://gitlab.com/kwinft/kwinft
 	install = kwinft.install
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	makedepends = extra-cmake-modules
-	makedepends = qt5-tools
+	makedepends = extra-cmake-modules>=5.240.0
+	makedepends = qt6-tools
 	makedepends = kdoctools
+	depends = python
 	depends = xcb-util-cursor
 	depends = plasma-framework
 	depends = kcmutils
 	depends = kio
 	depends = breeze
 	depends = kinit
-	depends = qt5-sensors
-	depends = qt5-script
+	depends = qt6-sensors
 	depends = wrapland
 	depends = disman
-	depends = kdisplay
+	depends = kscreen
 	depends = kscreenlocker
 	depends = pipewire
-	depends = libqaccessibilityclient
-	depends = qt5-sensors
-	depends = xorg-server-xwayland
-	depends = qt5-quickcontrols
-	depends = wlroots-git
-	optdepends = qt5-virtualkeyboard: virtual keyboard support for kwin-wayland
-	provides = kwin=5.23.0.beta.0.r532.g6185c5b33
-	provides = kwinft=5.23.0.beta.0.r532.g6185c5b33
+	depends = libqaccessibilityclient-qt6
+	depends = xorg-xwayland
+	depends = kdeclarative
+	depends = wlroots
+	optdepends = qt6-virtualkeyboard: virtual keyboard support for kwin-wayland
+	provides = kwin=5.27.0.beta.0.r764.gd913702e3
+	provides = kwinft=5.27.0.beta.0.r764.gd913702e3
 	conflicts = kwin
 	conflicts = kwinft
 	source = kwin::git+https://gitlab.com/kwinft/kwinft.git
