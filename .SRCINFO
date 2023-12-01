@@ -1,6 +1,6 @@
 pkgbase = pyprland
 	pkgdesc = Easy scratchpads, smart monitor placement and more Hyprland tweaks
-	pkgver = 1.6.6
+	pkgver = 1.6.7
 	pkgrel = 1
 	url = https://github.com/fdev31/pyprland
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pyprland
 	depends = python
 	provides = pyprland
 	conflicts = pyprland
-	source = git+https://github.com/fdev31/pyprland.git#tag=1.6.6
+	source = git+https://github.com/fdev31/pyprland.git#tag=1.6.7
 	md5sums = SKIP
 
 pkgname = pyprland
