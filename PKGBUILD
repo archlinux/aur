@@ -2,33 +2,32 @@
 # Contributor: Achmad Fathoni<fathoni.id(at)gmail.com>
 
 pkgname=python-nspektr
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.5.0
+_commit=82b973da8e4fb9e8095347ea86ef17adbd7d9159
+pkgrel=1
 pkgdesc="A distribution package dependency inspector"
 arch=('any')
 url="https://github.com/jaraco/nspektr"
 license=('MIT')
 depends=('python-jaraco.context' 'python-jaraco.functools' 'python-more-itertools'
          'python-packaging')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 checkdepends=('python-pytest-enabler' 'python-pytest-mypy')
-source=("https://github.com/jaraco/nspektr/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b29969de2a4975d154c43fd09ae7aa439b7b64732d1ab1964658d8ce9f8359ee')
-
-export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+source=("git+https://github.com/jaraco/nspektr.git#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
-  cd nspektr-$pkgver
+  cd nspektr
   python -m build -wn
 }
 
 check() {
-  cd nspektr-$pkgver
+  cd nspektr
   python -m pytest
 }
 
 package() {
-  cd nspektr-$pkgver
+  cd nspektr
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
