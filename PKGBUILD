@@ -3,7 +3,7 @@
 pkgname=butt-appimage
 _pkgname=butt
 pkgver=0.1.40
-pkgrel=3
+pkgrel=4
 pkgdesc="Easy to use, multi OS streaming tool (AppImage release)."
 arch=('x86_64')
 url='https://danielnoethen.de/butt/'
@@ -24,8 +24,8 @@ conflicts=("${_pkgname}")
 prepare() {
   cd "${srcdir}"
   chmod +x "${_appimage_filename}"
-  ./${_appimage_filename} --appimage-extract usr/share/applications/${_pkgname}.desktop
-  ./${_appimage_filename} --appimage-extract usr/share/icons
+  ./${_appimage_filename} --appimage-extract usr/share/applications/${_pkgname}.desktop > /dev/null 2>&1
+  ./${_appimage_filename} --appimage-extract usr/share/icons > /dev/null 2>&1
 }
 
 package() {
