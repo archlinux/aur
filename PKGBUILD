@@ -2,12 +2,13 @@
 
 pkgname=perl-set-crontab
 pkgver='1.03'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Expand crontab(5)-style integer lists"
 arch=("any")
 license=('GPL' 'PerlArtistic')
 url="https://metacpan.org/pod/Set::Crontab"
 options=(!emptydirs)
+depends=('perl')
 source=("https://cpan.metacpan.org/authors/id/A/AM/AMS/Set-Crontab-${pkgver}.tar.gz")
 sha512sums=('9b4929691aac2f740ecf94cfdd166315c355a93be149ef76bbea06a8d820a9da2b7cf26dc6d66baea7f4b359c2012229376f06da55f3fe0653b6d0cc8c77ef91')
 
