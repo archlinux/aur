@@ -1,7 +1,7 @@
 # Maintainer: Peltoche <pierre.peltier@protonmail.com>
 pkgname=duckcloud
 pkgver=23.11.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A cloud for your family"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -19,7 +19,7 @@ source=(https://github.com/theduckcompany/duckcloud/archive/refs/tags/${pkgver}.
       ${pkgname}.tmpfiles
       LICENSE)
 
-sha256sums=('ff794f426c9b6026c83b817a56985d5ed3f70c67db1bbb9e90668cccaad4c2f4'
+sha256sums=('d0d4357c20ca156ca99b31471f3b9238d47b193a6b7725d356d2db0f1a696084'
             '33a7e3d8a674265eda550cde98d0a7fb63ad77fbdc3c4377e0e17edc2eff689e'
             'ca526231ca260be83df4dfb5cc3d7400e82a35e3f164b9799c63be9d4b1bcead'
             '8ee8d3bf748a986fdd040e56c208742045df91837de3e250d5148e0b3fd65692'
