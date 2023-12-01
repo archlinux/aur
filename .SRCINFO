@@ -1,13 +1,14 @@
 pkgbase = perl-file-extattr
 	pkgdesc = Perl extension for accessing extended attributes of files
 	pkgver = 1.09
-	pkgrel = 6
+	pkgrel = 7
 	url = http://search.cpan.org/dist/File-ExtAttr
 	arch = i686
 	arch = x86_64
 	arch = arm
 	license = GPL
 	license = PerlArtistic
+	depends = perl
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/R/RI/RICHDAWE/File-ExtAttr-1.09.tar.gz
 	source = 0001-Port-Linux-to-sys-xattr.h.patch
@@ -17,4 +18,3 @@ pkgbase = perl-file-extattr
 	sha512sums = 2ba18bf66f11d85acc0002b94a48e5f3943ac994d43825f49fd16b41d5728285786913df1bca0fb648e08545ae8a34b301c61c93c7661ecd0722587343247ede
 
 pkgname = perl-file-extattr
-

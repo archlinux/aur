@@ -2,12 +2,13 @@
 
 pkgname=perl-file-extattr
 pkgver='1.09'
-pkgrel='6'
+pkgrel='7'
 pkgdesc="Perl extension for accessing extended attributes of files"
 arch=("i686" "x86_64" "arm")
 url="http://search.cpan.org/dist/File-ExtAttr"
 license=('GPL' 'PerlArtistic')
 options=('!emptydirs')
+depends=('perl')
 source=("https://cpan.metacpan.org/authors/id/R/RI/RICHDAWE/File-ExtAttr-${pkgver}.tar.gz"
         "0001-Port-Linux-to-sys-xattr.h.patch"
         "0002-Remove-dependency-on-attr-library-on-Linux.patch")
