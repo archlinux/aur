@@ -2,12 +2,14 @@
 
 pkgname='perl-devel-repl'
 pkgver='1.003029'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="a modern perl interactive shell"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=(
+  'perl'
+
   # main runtime requirements
   'perl-file-homedir'
   'perl-module-runtime'
