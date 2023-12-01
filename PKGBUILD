@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="lampswitch"
-pkgver="23.9.1"
+pkgver="23.12.1"
 pkgrel=1
 pkgdesc="Indicator and control applet for web services"
 arch=("any")
@@ -12,7 +12,7 @@ depends=("gobject-introspection" "gtk3" "python-gobject" "libayatana-appindicato
 makedepends=("python-setuptools" "python-polib")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("b6e6037262b3428cba1238401015ac7e")
+md5sums=("b4f13c6b496d37324089dc3ad760698e")
 
 build()
 {
