@@ -120,8 +120,6 @@ package_soh-otr-exporter() {
   DESTDIR="${pkgdir}" cmake --install build --component extractor
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s ${SHIP_PREFIX}/assets/extractor/ZAPD.out "${pkgdir}/usr/bin/ZAPD"
-
   install -dm755 "${pkgdir}/usr/share/licenses/soh-otr-exporter"
   install -Dm644 "OTRExporter/LICENSE" "${pkgdir}/usr/share/licenses/soh-otr-exporter/LICENSE"
 }
