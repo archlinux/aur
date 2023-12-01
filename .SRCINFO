@@ -1,0 +1,15 @@
+pkgbase = r-changepoint.np
+	pkgdesc = Methods for Nonparametric Changepoint Detection
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=changepoint.np
+	arch = x86_64
+	license = GPL
+	depends = r-changepoint
+	depends = r-rdpack
+	depends = r-zoo
+	source = https://cran.r-project.org/src/contrib/changepoint.np_1.0.5.tar.gz
+	md5sums = f5d7e5bc1fb1add7ba96e38051d2a333
+	sha256sums = c9eeb0be6ec58fc9a44fc5a88a29df4e21430644bcf7d2c28961ae5ac10fd2cf
+
+pkgname = r-changepoint.np
