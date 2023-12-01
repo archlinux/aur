@@ -1,7 +1,7 @@
 # Maintainer: Emily Maré (emileet) <emileet@plsnobully.me>
 
 pkgname=obs-ndi
-pkgver=4.11.1
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
@@ -13,12 +13,12 @@ depends=('avahi' 'libndi' 'obs-studio' 'sndio')
 makedepends=('cmake')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('785b81066c4665237c480238a1459aa28fdd71ba23b73640f922c0bfd73d3d0f')
+sha256sums=('45331b1517a428e920e0d35d7a673ba4210ba9d045ae9e38318a6b3be2eff7f9')
 
 build() {
     cd ${pkgname}-${pkgver}
 
-    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_FRONTEND_API=ON -DENABLE_QT=ON
     cmake --build build
 }
 
