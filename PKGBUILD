@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-bin
 _pkgname=Requestly
-pkgver=1.5.13
+pkgver=1.5.14
+_electronversion=23
 pkgrel=1
 pkgdesc="Debug your network request across all platforms and browsers using a single app"
 arch=('x86_64')
@@ -18,7 +19,7 @@ depends=(
     'libdbusmenu-glib'
     'gtk2'
     'dbus-glib'
-    'electron22'
+    "electron${_electronversion}"
     'python'
     'nspr'
     'java-runtime'
@@ -32,10 +33,11 @@ source=(
     "index.html::https://raw.githubusercontent.com/requestly/requestly-desktop-app/v${pkgver}/src/loadingScreen/index.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0d23990550632183bc046de8ec052c1fb8762af48f969f4b8fd7773b0bc185f4'
+sha256sums=('4b55c575c733c0bed10c5929da5fe3f741552a4af11cfda92dc7983a9bfe86de'
             '458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d'
-            '69462f4a08fc5443b8c7db17c081015ea7610a6e74015933ffb1e8639d8b1f88')
+            'e530530d435b684ecf011f383d578f34d9835d9ef24380be04abe4661b2aa753')
 build() {
+    sed -i "s|@electronversion@|${_electronversion}|" "$srcdir/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
