@@ -1,6 +1,6 @@
 # Maintainer: Linus Karlsson <linus.karlsson@debricked.com>
 pkgname=debricked
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A CLI tool to interact with Debricked"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('git' 'glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('04e51adcdda22f43b00df484056070d1f87bfce90e6188f6697d894c0175b30c449022eb300ff51fad0460ff811e17395bed44f2f801ea3dc60f976f19b59cf9')
+b2sums=('1e4ac601897d911bdfdf27f374e5703332c7c726062c6f708b2447338c69a42929ce95a968d1afad044556d8f63bdc80ef376b238af0ad2f79f863a9f114580d')
 
 prepare() {
 	cd "cli-$pkgver"
@@ -28,6 +28,7 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
+	(cd cmd/debricked && go generate -v -x)
 	go build -o debricked ./cmd/debricked
 }
 
