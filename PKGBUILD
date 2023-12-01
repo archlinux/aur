@@ -7,6 +7,7 @@ pkgver=2.7.0
 _pkgver="${pkgver//_/-}"
 _pkgdate=202311231454
 pkgrel=1
+epoch=1
 pkgdesc="G-code generator for 3D printers (binary AppImage; includes all releases)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"

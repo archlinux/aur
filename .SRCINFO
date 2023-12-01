@@ -2,6 +2,7 @@ pkgbase = prusa-slicer-rel-bin
 	pkgdesc = G-code generator for 3D printers (binary AppImage; includes all releases)
 	pkgver = 2.7.0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/prusa3d/PrusaSlicer
 	arch = x86_64
 	license = AGPL3
