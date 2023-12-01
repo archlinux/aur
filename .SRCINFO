@@ -1,11 +1,12 @@
 pkgbase = perl-eval-linenumbers
 	pkgdesc = Add line numbers to hereis blocks that contain perl source code
 	pkgver = 0.35
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Eval-LineNumbers
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	depends = perl
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Eval-LineNumbers-0.35.tar.gz
 	md5sums = 3aa767153567825f57bee4a0f3070d00
