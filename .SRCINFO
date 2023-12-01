@@ -1,12 +1,12 @@
 pkgbase = waveterm-bin
-	pkgdesc = An open-source, cross-platform terminal for seamless workflows (binary)
-	pkgver = 0.50
-	pkgrel = 1
+	pkgdesc = An open-source, cross-platform terminal for seamless workflows (binary w/o Electron.js)
+	pkgver = 0.5.0
+	pkgrel = 2
 	url = https://www.waveterm.dev
 	arch = x86_64
 	license = Apache
 	makedepends = unzip
-	depends = gendesk
+	makedepends = gendesk
 	source = https://github.com/wavetermdev/waveterm/releases/download/v0.5.0/waveterm-linux-x64-v0.5.0.zip
 	sha256sums = ddb454bbcc18175eb01784fce9246aa48870c3099460627609b4cf8b47aad0ae
 

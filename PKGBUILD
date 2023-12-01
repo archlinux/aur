@@ -1,8 +1,8 @@
 # Maintainer: criptixo <therealcriptixo@gmail.com>
 pkgname=waveterm-bin
 pkgver=0.5.0
-pkgrel=1
-pkgdesc='An open-source, cross-platform terminal for seamless workflows (binary)'
+pkgrel=2
+pkgdesc='An open-source, cross-platform terminal for seamless workflows (binary w/o Electron.js)'
 arch=('x86_64')
 url="https://www.waveterm.dev"
 license=('Apache')
