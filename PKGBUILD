@@ -9,7 +9,6 @@ arch=('x86_64')
 url="https://lceda.cn/page/download"
 license=('custom')
 depends=('gtk3' 'nss' 'libxss')
-makedepends=('unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://image.lceda.cn/files/${_pkgname}-linux-x64-${pkgver}.zip"

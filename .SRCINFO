@@ -5,7 +5,6 @@ pkgbase = lceda-bin
 	url = https://lceda.cn/page/download
 	arch = x86_64
 	license = custom
-	makedepends = unzip
 	depends = gtk3
 	depends = nss
 	depends = libxss
