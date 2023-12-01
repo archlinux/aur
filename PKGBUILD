@@ -1,12 +1,13 @@
-# Maintainer: j.r <j.r@jugendhacker.de>
+# Maintainer: Daniel McLarty <info@savagedevs.com>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Antonio Vázquez Blanco <antoniovazquezblanco@gmail.com>
 # Contributor: Haruue Icymoon <haruue@caoyue.com.cn>
 # Contributor: Oskar Sveinsen
 # Contributor: PolyWolf <p0lyw0lf@protonmail.com>
+# Contributor: j.r <j.r@jugendhacker.de>
 
 pkgname=firebird-nspire
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc='Third-party multi-platform emulator of the ARM-based TI-Nspire™ calculators'
 arch=('i686' 'x86_64')

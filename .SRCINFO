@@ -1,6 +1,6 @@
 pkgbase = firebird-nspire
 	pkgdesc = Third-party multi-platform emulator of the ARM-based TI-Nspire™ calculators
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/nspire-emus/firebird
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = firebird-nspire
 	makedepends = qt5-declarative>=5.6
 	makedepends = git
 	depends = qt5-quickcontrols
-	source = firebird-nspire::git+https://github.com/nspire-emus/firebird.git#tag=v1.5
+	source = firebird-nspire::git+https://github.com/nspire-emus/firebird.git#tag=v1.6
 	sha256sums = SKIP
 
 pkgname = firebird-nspire
-
