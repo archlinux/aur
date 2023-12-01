@@ -3,7 +3,7 @@
 pkgname=warpinator-git
 _desktop_id=org.x.Warpinator
 pkgver=1.8.0.r0.gc3da064c
-pkgrel=1
+pkgrel=2
 pkgdesc="Share files across the LAN"
 arch=('any')
 url="https://github.com/linuxmint/warpinator"
@@ -20,6 +20,7 @@ depends=(
   'python-packaging'
   'python-protobuf'
   'python-pynacl'
+  'python-qrcode'
   'python-setproctitle'
   'python-setuptools'
   'python-zeroconf'
