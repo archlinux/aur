@@ -1,6 +1,6 @@
 pkgbase = wasm-server-runner
 	pkgdesc = cargo run for the browser.
-	pkgver = 0.5.1
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/jakobhellermann/wasm-server-runner
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wasm-server-runner
 	arch = aarch64
 	license = MIT
 	depends = cargo
-	source = wasm-server-runner-0.5.1.tar.gz::https://static.crates.io/crates/wasm-server-runner/wasm-server-runner-0.5.1.crate
-	b2sums = 0631be2e279780dc62df88ed5f904467105d916199bd34b7ba8a2537ea926e5f292a910acf274652aa7a637ed20caa807c2cfa244e958c080a30ab7d40d82695
+	source = wasm-server-runner-0.6.1.tar.gz::https://static.crates.io/crates/wasm-server-runner/wasm-server-runner-0.6.1.crate
+	b2sums = 378583c91663d479459200723641cb5f5d0059b382240fb36cb2ee3424e1768deb9766a058cebc173338104eca69462ad915f6efd7d90a4b7aa7373c70713ee8
 
 pkgname = wasm-server-runner
