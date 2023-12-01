@@ -1,11 +1,12 @@
 pkgbase = perl-authen-oath
 	pkgdesc = OATH One Time Passwords
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/pod/Authen::OATH
 	arch = any
 	license = GPL
 	makedepends = perl-test-needs
+	depends = perl
 	depends = perl-digest-hmac
 	depends = perl-moo>=2.002004
 	depends = perl-type-tiny

@@ -2,12 +2,13 @@
 
 pkgname="perl-authen-oath"
 pkgver="2.0.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="OATH One Time Passwords"
 url="https://metacpan.org/pod/Authen::OATH"
 license=("GPL")
 arch=('any')
 depends=(
+  "perl"
   "perl-digest-hmac"
   "perl-moo>=2.002004"
   "perl-type-tiny"
