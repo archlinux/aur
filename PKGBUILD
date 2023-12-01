@@ -2,7 +2,7 @@
 
 _pkgname=linux-terminal-battery-status
 pkgname="${_pkgname}-git"
-pkgver=20231129.02.r42.52b62d5
+pkgver=20231201.02.r44.7e677e3
 pkgrel=1
 pkgdesc="Prints information about system batteries and power supplies to the terminal, optionally also from devices connected via KDE Connect."
 url="https://gitlab.com/dreieckli/linux-terminal-battery-status"
