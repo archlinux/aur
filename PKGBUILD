@@ -1,7 +1,7 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-git
 _pkgname=paru
-pkgver=2.0.0.r0.g858e3c5
+pkgver=2.0.1.r1.g584fb75
 pkgrel=1
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
@@ -18,7 +18,7 @@ sha256sums=(SKIP)
 
 prepare() {
   cd "$_pkgname"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
 }
 
 build () {
