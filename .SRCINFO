@@ -1,6 +1,6 @@
 pkgbase = clojurescript-git
 	pkgdesc = Clojure to JS compiler, git version
-	pkgver = 1.11.4.r34.g7be4ae09
+	pkgver = 1.11.121.r7.g0c5ecd7b
 	pkgrel = 1
 	url = https://github.com/clojure/clojurescript
 	install = clojurescript-git.install

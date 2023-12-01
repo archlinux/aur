@@ -6,7 +6,7 @@
 
 pkgname=clojurescript-git
 _realname=${pkgname/%-git/}
-pkgver=1.11.4.r34.g7be4ae09
+pkgver=1.11.121.r7.g0c5ecd7b
 pkgrel=1
 pkgdesc="Clojure to JS compiler, git version"
 arch=('any')
@@ -37,6 +37,7 @@ package() {
   mkdir -p "$pkgdir"/etc/profile.d
   mkdir -p "$pkgdir"/usr/share/licenses/$_realname
   mkdir -p "$pkgdir"/opt/$_realname/{bin,lib,script}
+  mkdir -p "$pkgdir"/usr/bin
   
   cp -r "$srcdir"/$_realname/{src,script} "$pkgdir"/opt/$_realname/
   # Insta1l libraries
@@ -46,4 +47,7 @@ package() {
   # Install others
   install -Dm644 $_realname.sh "$pkgdir"/etc/profile.d
   install -Dm644 "$srcdir"/$_realname/epl-v10.html "$pkgdir"/usr/share/licenses/$_realname/
+
+  # Synbolic link to cljsc launch script
+  ln -s /opt/clojurescript/bin/cljsc "${pkgdir}"/usr/bin/cljsc
 }
