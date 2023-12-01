@@ -10,8 +10,8 @@ pkgbase = zedle
 	makedepends = unzip
 	depends = qt4
 	depends = icu
-	depends = libldap24
+	depends = libldap-2.5
 	source = https://client.primx.eu/Legal/Terms
-	sha256sums = c4c7a856f63bf1849faa931919f70ec7649599a55c113b01819258b01dbd09ce
+	sha256sums = df3874f72435a8b9b36d043c298db36f46e45f8248e5ed61682761c0f067ada8
 
 pkgname = zedle

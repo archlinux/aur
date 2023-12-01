@@ -5,10 +5,10 @@ pkgdesc="A graphical interface to create, read and modify encrypted Zed! contain
 arch=('x86_64')
 url="https://www.primx.eu"
 license=('custom')
-depends=('qt4' 'icu' 'libldap24')
+depends=('qt4' 'icu' 'libldap-2.5')
 makedepends=('binutils' 'curl' 'unzip')
 source=('https://client.primx.eu/Legal/Terms')
-sha256sums=('c4c7a856f63bf1849faa931919f70ec7649599a55c113b01819258b01dbd09ce')
+sha256sums=('df3874f72435a8b9b36d043c298db36f46e45f8248e5ed61682761c0f067ada8')
 
 prepare() {
     # No deeplink available, need to submit the form on the website
