@@ -1,22 +1,22 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=bsod
-pkgver=0.1
-pkgrel=6
+pkgver=0.2
+pkgrel=1
 pkgdesc="Bsod displays the famous windows xp blue screen of death on the console"
 arch=('i686' 'x86_64' 'armv7h')
-url="http://www.vanheusden.com/bsod/"
-license=('GPL')
+url="https://github.com/folkertvanheusden/bsod"
+license=('public_domain')
 depends=('ncurses')
-source=("http://web.archive.org/web/20150802072403/http://vanheusden.com/bsod/${pkgname}-${pkgver}.tgz")
-md5sums=('a95770f60bd77eda523f1aa0bfe3d01d')
+source=(https://github.com/folkertvanheusden/bsod/archive/refs/tags/v${pkgver}.tar.gz)
+md5sums=('a58bd957bd98e0f74340d4ab7cee0f48')
 
 build() {
-cd $srcdir/$pkgname-$pkgver
-make
+  cd $srcdir/$pkgname
+  make
 }
 
 package() {
-cd $srcdir/$pkgname-$pkgver
-install -D -m755 ./bsod $pkgdir/usr/bin/bsod
+  cd $srcdir/$pkgname
+  install -D -m755 ./bsod $pkgdir/usr/bin/bsod
 }
