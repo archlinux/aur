@@ -1,6 +1,6 @@
 pkgbase = etherealengine-control-center-bin
 	pkgdesc = One stop solution for all your Metaverse needs. A desktop app for managing Ethereal Engine cluster.
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://etherealengine.org/
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = etherealengine-control-center-bin
 	depends = libx11
 	depends = libxext
 	depends = dbus-glib
-	provides = etherealengine-control-center=0.4.4
+	provides = etherealengine-control-center=0.4.5
 	conflicts = etherealengine-control-center
-	source = etherealengine-control-center-0.4.4.AppImage::https://github.com/EtherealEngine/etherealengine-control-center/releases/download/v0.4.4/Ethereal-Engine-Control-Center-0.4.4.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/EtherealEngine/etherealengine-control-center/v0.4.4/LICENSE
+	source = etherealengine-control-center-0.4.5.AppImage::https://github.com/EtherealEngine/etherealengine-control-center/releases/download/v0.4.5/Ethereal-Engine-Control-Center-0.4.5.AppImage
+	source = LICENSE-0.4.5::https://raw.githubusercontent.com/EtherealEngine/etherealengine-control-center/v0.4.5/LICENSE
 	source = etherealengine-control-center.sh
-	sha256sums = a519d41f5d73fee5a6f0777a5b04ad43ec8d633f3f7ddc0c62c154d599a78e9e
+	sha256sums = 51f698a91adc244696c2fc8a9273b0c3f51a6972ca0579ab2a9791f7021eb50b
 	sha256sums = d346da664afe040f323eb3aecc74d5bb2a8b6d61a7ff53ccfaf1611add61a41d
-	sha256sums = 40a6f1732cd8c02b210facb54d956da1c4f6ed290f1bc2ca2bb11ad60f470c1d
+	sha256sums = 2904989727083cfac129949129eb5a0eb6b48a7fc12c26648645735e2f59eba2
 
 pkgname = etherealengine-control-center-bin
