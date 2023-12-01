@@ -1,8 +1,8 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 
 pkgname=mysqltuner
-pkgver=2.3.2
-_tag='9da06cbd2a811f6afd5a02af0254b4ad4085d27a'
+pkgver=2.5.0
+_tag='3fd633b507d48e7505c28aab8dc48d73f028f8da'
 pkgrel=1
 pkgdesc='MySQLTuner - review configuration quickly and make adjustments to increase performance and stability'
 arch=('any')
