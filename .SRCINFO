@@ -1,0 +1,21 @@
+pkgbase = r-magrene
+	pkgdesc = Motif Analysis In Gene Regulatory Networks
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/magrene
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-biocparallel
+	optdepends = r-biocstyle
+	optdepends = r-covr
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-sessioninfo
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/magrene_1.4.0.tar.gz
+	md5sums = 7d02392d3081830451c4fae90ed50177
+	sha256sums = ee31dbd6c43aad68d5996c9f90923c85bee592a31157e601d0365cb6db2d7878
+
+pkgname = r-magrene
