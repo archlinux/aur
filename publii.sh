@@ -1,8 +1,13 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron26
-_ASAR="/opt/publii/resources/app.asar"
+APPDIR="/usr/lib/publii"
+export PATH="${APPDIR}:${PATH}"
+export ELECTRON_IS_DEV=0
+#export LD_LIBRARY_PATH="${APPDIR}/swiftshader:${LD_LIBRARY_PATH}"
+_ASAR="${APPDIR}/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec ${_ELECTRON} ${_ASAR} "$@"
+    cd $APPDIR
+    exec electron@electronversion@ ${_ASAR} "$@"
 else
-    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
+    cd $APPDIR
+    exec electron@electronversion@ ${_ASAR} --no-sandbox "$@"
 fi
