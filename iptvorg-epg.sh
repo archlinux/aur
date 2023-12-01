@@ -43,14 +43,16 @@ fi
 }
 
 updateSites() {
-	if [ -d "$EPG_CFGDIR/sites" ]; then
-		echo ":: Starting update of '$WGPP_CFGDIR/sites' to latest version."
-		cd "$EPG_CFGDIR"
-		svn checkout $EPG_UPD_SITES
-	else
-		echo "Missing 'sites' directory, exiting."
-		exit 1
-	fi
+EPG_CFGDIR=$(realpath ${custom_dir} 2>/dev/null)
+if [[ -d "$EPG_CFGDIR/sites" ]] && [[ ! -z "$EPG_CFGDIR" ]]; then
+	echo ":: Starting update of '$EPG_CFGDIR/sites' to latest version."
+	cd "$EPG_CFGDIR"
+	svn checkout $EPG_UPD_SITES
+	exit
+else
+	echo "Missing 'sites' directory, exiting."
+	exit 1
+fi
 }
 
 updateEpg() {
@@ -136,10 +138,13 @@ Options:
   -u, --update                  Update iptvorg-epg home directory sites to latest version
   -ps, --printsites             Show site name and status of all available sites
   -h, --help                    Show help\n'
+
+exit
 }
 
 printSite() {
 curl -s $EPG_SITESTAT
+exit
 }
 
 # While loop
@@ -187,7 +192,6 @@ do
 			;;
 		-u|--update)
 			checkReq
-			checkDir
 			updateSites
 			;;
 		-h|--help)
