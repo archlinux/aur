@@ -1,0 +1,15 @@
+pkgbase = r-netactivitydata
+	pkgdesc = Data required for getting the gene set scores with NetActivity package
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/NetActivityData
+	arch = any
+	license = MIT
+	depends = r
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/NetActivityData_1.4.0.tar.gz
+	md5sums = a3805046d14d13afc30a0f082952f200
+	sha256sums = d4ce5ff252b9773d73edf218ab271ddeea9574d2af7957661fad5099bc8071c0
+
+pkgname = r-netactivitydata
