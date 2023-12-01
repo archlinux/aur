@@ -2,7 +2,7 @@
 # Contributor: pinks <aur at papepati dot page>
 
 pkgname=biome
-pkgver=1.3.3
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Formatter, linter, and more for Javascript, Typescript, JSON, and CSS'
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(cargo)
 replaces=(rome)
 _archive="$pkgname-cli-v$pkgver"
 source=("https://github.com/biomejs/biome/archive/cli/v$pkgver/$_archive.tar.gz")
-sha256sums=('bed6b68b0f256efbbf072c26d451e33923e4ceadb02032fe51683f98177038c0')
+sha256sums=('781f0ee672c0c9bf465739b4cc56a924d92ec774f7c78561d136d5f385b09362')
 
 prepare() {
 	cd "$_archive/crates/${pkgname}_cli"
@@ -37,5 +37,5 @@ check() {
 package() {
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-*
 }
