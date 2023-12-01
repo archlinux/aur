@@ -1,6 +1,6 @@
 pkgbase = palemoon-bin
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 32.5.0
+	pkgver = 32.5.1
 	pkgrel = 1
 	epoch = 1
 	url = http://linux.palemoon.org/
@@ -16,16 +16,16 @@ pkgbase = palemoon-bin
 	depends = mime-types
 	depends = nss
 	optdepends = ffmpeg: record, convert, and stream audio and video
-	provides = palemoon=32.5.0
+	provides = palemoon=32.5.1
 	conflicts = palemoon
 	options = !strip
 	source = palemoon.desktop
-	source = https://rm-eu.palemoon.org/release/palemoon-32.5.0.linux-x86_64-gtk2.tar.xz
-	source = https://rm-eu.palemoon.org/release/palemoon-32.5.0.linux-x86_64-gtk2.tar.xz.sig
+	source = https://rm-eu.palemoon.org/release/palemoon-32.5.1.linux-x86_64-gtk2.tar.xz
+	source = https://rm-eu.palemoon.org/release/palemoon-32.5.1.linux-x86_64-gtk2.tar.xz.sig
 	validpgpkeys = 439F46F42C6AE3D23CF52E70865E6C87C65285EC
 	validpgpkeys = 3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC
 	sha256sums = 6fa2786e1828684a6783d340690f75382d1dcd02ce8533dad4f3f4f8b076dad7
-	sha256sums = 4f1f2d1219f47eb77a52a0ed8b6fbf48ec85cf1368800b72e9cf6fdf1957a23d
+	sha256sums = d54dc8acdbe4af5e0fc8074085805e1577f3bd880efb15fbd75054bbe1598b25
 	sha256sums = SKIP
 
 pkgname = palemoon-bin
