@@ -1,0 +1,14 @@
+pkgbase = postgresql_anonymizer
+	pkgdesc = Anonymization & Data Masking for PostgreSQL
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://labs.dalibo.com/postgresql_anonymizer
+	arch = any
+	license = custom:PostgreSQL
+	makedepends = llvm15
+	depends = postgresql-libs
+	depends = python
+	source = https://gitlab.com/dalibo/postgresql_anonymizer/-/archive/1.1.0/postgresql_anonymizer-1.1.0.tar.gz
+	sha1sums = 1067f7a1a590c781e8601567105873565c579a96
+
+pkgname = postgresql_anonymizer
