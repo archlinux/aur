@@ -2,7 +2,7 @@
 
 pkgname=owncast-bin
 _pkg=owncast
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Take control over your live stream video by running it yourself. Streaming + chat out of the box."
 url="https://github.com/owncast/owncast"
@@ -17,7 +17,7 @@ source=("$url/releases/download/v$pkgver/$_pkg-$pkgver-linux-64bit.zip"
         "owncast.service"
         "sysusers.conf"
         "tmpfiles.conf")
-sha512sums=('47eec61677b13c3fae2c55e281ab048c3e1e6dfbc7c67493706e4ded38a0b1823f6077c7e885c93d7dfe27b65b344950df56ecd5d7ca8b4e601e539357ccb61e'
+sha512sums=('9360b9db49d88bd377a4c9630db783d6b5c5ba467ba369adf3ad8a2d11fcf6d3d81dd082930d64dfa8b46c402f901294281560efac85553675264d144671d2dd'
             'a441ac7cd374231ec2db7013046774e23132c80b438c2e929c6bf7fb7b7fe441052a29f16733ca47326135e51a1c2e7979f62e0912803363e97a7b1c0fecdb0d'
             'd0b33a529584f0d9a8c86039318aa3cc961eead6ce84c1066c97c0b263efec99f60d5a6f8662833db59a242a3ec4b8b1c3f6155ddd9cfdb16e599b355a8fa44b'
             'e243a7d6bd1d8f369d2f7044348acdb3f8547eff6794fe6ff9e3433489993a9895359e572f18f3780d3d28d443842c11c7cafa2afbb8ae4ef2e5b48869bf93c6'
