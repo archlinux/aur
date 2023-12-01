@@ -1,6 +1,6 @@
 pkgbase = python-reacton
 	pkgdesc = React for ipywidgets
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/widgetti/reacton
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-reacton
 	depends = python>=3.8
 	depends = python-ipywidgets
 	depends = python-typing_extensions>=4.1.1
-	noextract = reacton-1.8.1-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/r/reacton/reacton-1.8.1-py2.py3-none-any.whl
-	sha256sums = c9500e99b819cbededbaf9a17dad51dfa201b709cbba88f1deaec6b0d52a0174
+	noextract = reacton-1.8.2-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/r/reacton/reacton-1.8.2-py2.py3-none-any.whl
+	sha256sums = 37ff8b7622511fa62ecb4595475eb3787b983476fcdbd34322ca28384139af06
 
 pkgname = python-reacton
