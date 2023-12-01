@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-manager
-pkgver=4.6.0
+pkgver=4.7.0
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -18,7 +18,7 @@ validpgpkeys=('9E646BB0630C8FD18ACD15541B93E6A766CD229D')
 
 source=("https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm")
 
-sha256sums=('335b8970652a03d393866f2105e82c2713673e1f7542dccf25a83a4e3e2233ac')
+sha256sums=('07ec30b23825a74210345b74bf8b971b82aa6e2e40aa61d495a215eea5762d5c')
 
 install=$pkgname.install
 
