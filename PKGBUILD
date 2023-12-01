@@ -2,7 +2,7 @@
 
 pkgname=pot-translation
 reponame=pot-desktop
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'riscv64')
@@ -15,12 +15,12 @@ makedepends=('fnm' 'rust' 'dbus')
 
 source=("${reponame}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
-sha512sums=('636c8c105754e542d5074a5731429ed421e592e8cd7f2048080a21d070ddfbe80c6db1a95cdb6b31dc7a1b128ccf489d20f360ab28a97a81352cd07be46ca797')
+sha512sums=('65ac61ded4f3914b63e18ac1db27ba53f78e9d220308e8022a691cc13c18ad2e135836e0f7262ce5d1979fccefce06ebf256806d16ae2c5a1630a32ae33308af')
 
 prepare(){
     cd $srcdir/${reponame}-${pkgver}
     sed -i "s/\"version\".*/\"version\": \"$pkgver\"/g" src-tauri/tauri.conf.json
-    fnm env && fnm install && fnm use
+    eval "$(fnm env)" && fnm install && fnm use
     npm install pnpm -g
 }
 
