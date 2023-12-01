@@ -2,7 +2,7 @@
 # Contributor: Terin Stock <terinjokes@gmail.com>
 
 pkgname=gojq
-pkgver=0.12.13
+pkgver=0.12.14
 pkgrel=1
 pkgdesc='Pure go implementation of jq'
 url="https://github.com/itchyny/$pkgname"
@@ -13,7 +13,7 @@ makedepends=(go
 depends=(glibc)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('2af7bc4b106fc26658f9f312f2e2d53036e75291cda8132d61d1867e2457b8e3')
+sha256sums=('973cb65ee9f4353c8b103812c10afd122b00ab8711db53842ffd44e211bca494')
 
 prepare(){
 	cd "$_archive"
