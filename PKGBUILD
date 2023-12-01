@@ -3,6 +3,7 @@
 pkgname=zwave-js-ui
 pkgver=9.3.1
 pkgrel=1
+epoch=1
 pkgdesc="Full featured Z-Wave Control Panel UI and MQTT gateway"
 arch=('any')
 url="https://github.com/zwave-js/zwave-js-ui"
