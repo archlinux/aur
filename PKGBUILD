@@ -2,8 +2,8 @@
 
 _pkgname=linux-terminal-battery-status
 pkgname="${_pkgname}-git"
-pkgver=20231201.02.r44.7e677e3
-pkgrel=1
+pkgver=20231201.02.r44.g7e677e3
+pkgrel=2
 pkgdesc="Prints information about system batteries and power supplies to the terminal, optionally also from devices connected via KDE Connect."
 url="https://gitlab.com/dreieckli/linux-terminal-battery-status"
 license=(
@@ -39,6 +39,12 @@ sha256sums=(
   'SKIP'
 )
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  git log > git.log
+}
+
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
@@ -51,8 +57,8 @@ pkgver() {
     error "Version could not be determined."
     return 1
   else
-    # printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
-    printf '%s' "${_ver}.r${_rev}.${_hash}"
+    # printf '%s' "${_ver}.r${_rev}.${_date}.g${_hash}"
+    printf '%s' "${_ver}.r${_rev}.g${_hash}"
   fi
 }
 
@@ -64,6 +70,7 @@ package() {
   install -Dvm644 'logo.png' "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
   install -Dvm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dvm644 git.log "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
   install -Dvm644 COPYING.md "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.md"
   install -Dvm644 COPYING.logo.txt "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.logo.txt"
   install -Dvm644 logo_source.md "${pkgdir}/usr/share/licenses/${pkgname}/logo_source.md"
