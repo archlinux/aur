@@ -1,6 +1,6 @@
 pkgbase = implay-bin
 	pkgdesc = Desktop media player built on top of mpv and imgui
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://tsl0922.github.io/ImPlay
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = implay-bin
 	depends = freetype2
 	depends = mpv
 	depends = glfw-x11
-	provides = implay=1.5.0
+	provides = implay=1.5.1
 	conflicts = implay
-	source = implay-1.5.0.deb::https://github.com/tsl0922/ImPlay/releases/download/1.5.0/ImPlay-1.5.0-Linux.deb
-	sha256sums = d7369c2555abf103a26fd36f02b37031a9cd0b4483f1a88e1b9ae7476546178c
+	source = implay-1.5.1.deb::https://github.com/tsl0922/ImPlay/releases/download/1.5.1/ImPlay-1.5.1-Linux.deb
+	sha256sums = ecd8137b7b4dcda7b59280728829131325bfb38762cce87db5c3bd43847f226a
 
 pkgname = implay-bin
