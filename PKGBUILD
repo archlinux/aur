@@ -182,7 +182,7 @@ package() {
     install -Dm644 cities500.txt "${pkgdir}/var/lib/immich/revgeo/cities500.txt"
     install -Dm644 admin1CodesASCII.txt "${pkgdir}/var/lib/immich/revgeo/admin1CodesASCII.txt"
     install -Dm644 admin2Codes.txt "${pkgdir}/var/lib/immich/revgeo/admin2Codes.txt"
-    date --iso-8601=seconds | tr -d "\n" > "${pkgdir}/usr/src/resources/geodata-date.txt"
+    date --iso-8601=seconds | tr -d "\n" > "${pkgdir}/var/lib/immich/revgeo/geodata-date.txt"
 
     # install systemd service files
     install -Dm644 immich-server.service "${pkgdir}/usr/lib/systemd/system/immich-server.service"
