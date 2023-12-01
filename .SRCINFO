@@ -1,6 +1,6 @@
 pkgbase = python-glyphsets
 	pkgdesc = an API with data about glyph sets for many different scripts and languages
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/googlefonts/glyphsets
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-glyphsets
 	depends = python-fonttools
 	depends = python-fs
 	depends = python-glyphslib
-	source = https://files.pythonhosted.org/packages/source/g/glyphsets/glyphsets-0.6.5.tar.gz
-	sha256sums = 669e152c9f61ea5933eca38cecb58a023ed45f52b388ba1bcde4fd0e8b2fe545
+	source = https://files.pythonhosted.org/packages/source/g/glyphsets/glyphsets-0.6.6.tar.gz
+	sha256sums = d520a7eb2f81bbf38a4a0645e5f9b55a35dedade2a3dd552c446ad706d33503e
 
 pkgname = python-glyphsets
