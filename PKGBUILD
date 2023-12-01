@@ -2,30 +2,45 @@
 pkgname=ytdl-desktop
 _pkgname="Youtube Downloader Desktop"
 pkgver=1.0.0
-pkgrel=2
+_electronversion=25
+pkgrel=3
 pkgdesc="Youtube Downloader Desktop"
 arch=('x86_64')
 url="https://github.com/kayy0812/ytdl-desktop"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('bash' 'electron25')
-makedepends=('gendesk' 'npm' 'yarn')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname}.sh")
-sha256sums=('bd6363d91bd364b0eb3366b23d60fab6684e2374183a0a7b8703b24c81d29903'
-            '0c0298e4866b59559d51a9a16ed523264464e3d5c60ea3dd2121a81e3f8a8b13')
-prepare() {
-    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
-}
+depends=(
+    "electron${_electronversion}"
+)
+makedepends=(
+    'gendesk'
+    'npm'
+    'yarn'
+    'nodejs'
+    'git'
+)
+source=(
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}.sh"
+)
+sha256sums=('SKIP'
+            'd20ac014ef92dcda76146fa30a2bdd1803f17a350018c59ffec6ad7867947e61')
 build() {
+    sed -i "s|@electronversion@|${_electronversion}|" "$srcdir/${pkgname%-bin}.sh"
+    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     sed '23,26d' -i forge.config.js
-    yarn
+    yarn config set cache-folder "${srcdir}/yarn_cache"
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    yarn install
     yarn package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/out/${pkgname}-linux-x64/resources/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/out/${pkgname}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/out/${pkgname}-linux-x64//LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
