@@ -1,0 +1,15 @@
+pkgbase = vim-helm-git
+	pkgdesc = Helm syntax for vim
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/towolf/vim-helm
+	arch = any
+	groups = vim-plugins
+	license = custom
+	makedepends = git
+	depends = vim
+	source = vim-helm-git::git+https://github.com/towolf/vim-helm#branch=master?signed
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	sha512sums = SKIP
+
+pkgname = vim-helm-git
