@@ -1,7 +1,7 @@
 pkgbase = iptvorg-epg
 	pkgdesc = Utilities for downloading the EPG (Electronic Program Guide) for thousands of TV channels from hundreds of sources
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iptv-org/epg
 	arch = any
 	license = Unlicense
@@ -12,11 +12,12 @@ pkgbase = iptvorg-epg
 	depends = libxml2
 	depends = nodejs
 	depends = npm
+	depends = subversion
 	source = git+https://github.com/iptv-org/epg.git#commit=a9d065e3d347dbaa5f82308a8a8434ca2851dfc9
 	source = iptvorg-epg.sh
 	source = my.channels.xml
 	sha256sums = SKIP
-	sha256sums = de02cf228d104e633bcc06d2125f9969fee0708d1d99aa80210dd4c95679af24
+	sha256sums = ff775ca6a885db9ad6796fb1856d7b3d5a4916a2edcfda2e8a2845a61e605698
 	sha256sums = 26e87976d170c78e458ac44e65d305374aef67d2ab44a17bce151e86a2b783e5
 
 pkgname = iptvorg-epg

@@ -1,7 +1,7 @@
 #!/bin/bash
 # script: iptvorg-epg (https://github.com/iptv-org/epg)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 30/11/2023
+# rev.date: 01/12/2023
 
 # Variables
 EPG_USR=$(whoami)
@@ -9,13 +9,14 @@ EPG_EXE=$(basename $0)
 EPG_USR_HOME=$(getent passwd "$EPG_USR" | cut -d: -f6)
 EPG_SOURCE='/usr/share/iptvorg-epg'
 EPG_SITESTAT='https://raw.githubusercontent.com/iptv-org/epg/master/SITES.md'
+EPG_UPD_SITES='https://github.com/iptv-org/epg/trunk/sites'
 EPG_OUTPUT='guide.xml'
 EPG_CMD="npm run grab -- "
 
 # Functions
 checkReq() {
 # Check all requirements
-local packages=(python libxml2 nodejs npm)
+local packages=(python libxml2 nodejs npm subversion)
 for p in ${packages[@]}; do
 	if ! pacman -Qs ${p} > /dev/null; then
 		echo "'${p}' package is not installed. Exiting."
@@ -27,7 +28,7 @@ done
 checkDir() {
 # Check if home directory variable is defined
 EPG_CFGDIR=$(realpath ${custom_dir} 2>/dev/null)
-if [ -z $EPG_CFGDIR ]; then
+if [ -z "$EPG_CFGDIR" ]; then
 	printf "\nHome directory of epg application not defined, use [-d, --dir] <path> option.\nExample usage: $EPG_EXE -d <path> -s <site> --days <days> -o <output.xml>\nUse [-h|--help] to display usage, [-ps] to display available epg sites.\n"
 	exit 1
 fi
@@ -37,8 +38,19 @@ if [ ! -d "$EPG_CFGDIR" ]; then
 	echo ":: '$EPG_CFGDIR' is missing, creating new directory."
 
 	# Normal copy from /usr/share/iptvorg-epg
-	cp -r $EPG_SOURCE $EPG_CFGDIR
+	cp -r "$EPG_SOURCE" "$EPG_CFGDIR"
 fi
+}
+
+updateSites() {
+	if [ -d "$EPG_CFGDIR/sites" ]; then
+		echo ":: Starting update of '$WGPP_CFGDIR/sites' to latest version."
+		cd "$EPG_CFGDIR"
+		svn checkout $EPG_UPD_SITES
+	else
+		echo "Missing 'sites' directory, exiting."
+		exit 1
+	fi
 }
 
 updateEpg() {
@@ -83,7 +95,7 @@ if [[ ! ".$(echo "$EPG_OUTPUT"| awk -F. '{print $NF}')" == ".xml" ]]; then
 fi
 
 # Collect epg data in xml-format
-cd $EPG_CFGDIR
+cd "$EPG_CFGDIR"
 sudo -u $EPG_USR $EPG_CMD $mysite $mychannel $mydays -o tmp_all.xml 2>/dev/null
 
 # Exit if no output file is created
@@ -103,7 +115,7 @@ if [ $gzip_on = 1 ]; then
 fi
 
 # Cleanup directory
-rm -f $EPG_CFGDIR/tmp_all.xml 2>/dev/null
+rm -f "$EPG_CFGDIR/tmp_all.xml" 2>/dev/null
 
 echo ":: Created epg-xml file '$EPG_CFGDIR/$EPG_OUTPUT'."
 }
@@ -121,6 +133,7 @@ Options:
   --days <days>                 Override the number of days for which the program will be loaded
                                 (defaults to the value from the site config)
   --gzip                        Create a compressed version of the guide as well (default: false)
+  -u, --update                  Update iptvorg-epg home directory sites to latest version
   -ps, --printsites             Show site name and status of all available sites
   -h, --help                    Show help\n'
 }
@@ -171,6 +184,11 @@ do
 			;;
 		--gzip)
 			gzip_on=1
+			;;
+		-u|--update)
+			checkReq
+			checkDir
+			updateSites
 			;;
 		-h|--help)
 			helpMsg
