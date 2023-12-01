@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=whatsie-git
-pkgver=v4.9.0.r272.5cdba51
+pkgver=4.14.2.r0.gc478a7d
 pkgrel=1
 pkgdesc="Fast Light weight WhatsApp Client based on Qt's WebEngine, With lots of settings and packed goodies"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
 
-  printf "%s.r%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
