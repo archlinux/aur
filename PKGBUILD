@@ -53,12 +53,10 @@ source=(
   git+https://github.com/ValveSoftware/gamescope.git#tag=${_tag}
   git+https://github.com/Joshua-Ashton/reshade.git
   git+https://github.com/KhronosGroup/SPIRV-Headers.git
-  wlroots0.17.patch
 )
 b2sums=('SKIP'
         'SKIP'
-        'SKIP'
-        '3d078ad85bf9b3c11af78ac44e00d3ed1fd780e303700ab979afea60bdc13783498c12f201f9d9a9f341ce184a836babd408a6826a161763f3260876a746f0e1')
+        'SKIP')
 
 prepare() {
   cd gamescope
@@ -68,8 +66,6 @@ prepare() {
   git submodule init thirdparty/SPIRV-Headers
   git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
   git -c protocol.file.allow=always submodule update
-  # wlroots 0.17
-  patch -Np1 < ../wlroots0.17.patch
 }
 
 pkgver() {

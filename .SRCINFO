@@ -42,10 +42,8 @@ pkgbase = gamescope
 	source = git+https://github.com/ValveSoftware/gamescope.git#tag=ce089200e49526456d0855c7e5c518ebf66ccf9b
 	source = git+https://github.com/Joshua-Ashton/reshade.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
-	source = wlroots0.17.patch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 3d078ad85bf9b3c11af78ac44e00d3ed1fd780e303700ab979afea60bdc13783498c12f201f9d9a9f341ce184a836babd408a6826a161763f3260876a746f0e1
 
 pkgname = gamescope
