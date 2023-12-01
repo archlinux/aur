@@ -2,12 +2,13 @@
 
 pkgname=perl-rose-db
 pkgver="0.785"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A DBI wrapper and abstraction layer"
 arch=(any)
 license=('PerlArtistic')
 url="http://search.cpan.org/dist/Rose-DB/"
 depends=(
+  'perl'
   'perl-bit-vector>=6.4'
   'perl-clone-pp'
   'perl-datetime'

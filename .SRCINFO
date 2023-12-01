@@ -1,10 +1,11 @@
 pkgbase = perl-rose-db
 	pkgdesc = A DBI wrapper and abstraction layer
 	pkgver = 0.785
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Rose-DB/
 	arch = any
 	license = PerlArtistic
+	depends = perl
 	depends = perl-bit-vector>=6.4
 	depends = perl-clone-pp
 	depends = perl-datetime
