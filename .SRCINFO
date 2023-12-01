@@ -1,7 +1,7 @@
 pkgbase = perl-dbix-class
 	pkgdesc = Extensible and flexible object <-> relational mapper.
 	pkgver = 0.082843
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/DBIx-Class
 	arch = any
 	license = PerlArtistic
@@ -11,6 +11,7 @@ pkgbase = perl-dbix-class
 	makedepends = perl-test-deep>=0.101
 	makedepends = perl-test-exception>=0.31
 	makedepends = perl-test-warn>=0.21
+	depends = perl
 	depends = perl-class-accessor-grouped>=0.10012
 	depends = perl-class-c3-componentised>=1.0009
 	depends = perl-class-inspector>=1.24

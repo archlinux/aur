@@ -2,13 +2,14 @@
 
 pkgname='perl-dbix-class'
 pkgver='0.082843'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Extensible and flexible object <-> relational mapper."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 
 depends=(
+  'perl'
   'perl-class-accessor-grouped>=0.10012'
   'perl-class-c3-componentised>=1.0009'
   'perl-class-inspector>=1.24'
