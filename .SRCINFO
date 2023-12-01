@@ -1,13 +1,13 @@
 pkgbase = autobrr-bin
 	pkgdesc = A modern download automation tool for torrents
-	pkgver = 1.33.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://github.com/autobrr/autobrr
 	arch = x86_64
 	license = none
-	source = https://github.com/autobrr/autobrr/releases/download/v1.33.0/autobrr_1.33.0_linux_x86_64.tar.gz
+	source = https://github.com/autobrr/autobrr/releases/download/v1.34.0/autobrr_1.34.0_linux_x86_64.tar.gz
 	source = autobrr@.service
-	sha256sums = b953fcdc5a21a00a4225f943baec17f5ef5df213cbcd1847bf1206d2ceb4b2af
+	sha256sums = 1e727bcaa595be2e72c54b78a60e3ef24c786241baf94249556ed5cf0d72d49f
 	sha256sums = d7cd9d0ea06f7197428df93f2a8a4b1c48fd8791da07a780e2386a0614e3d586
 
 pkgname = autobrr-bin
