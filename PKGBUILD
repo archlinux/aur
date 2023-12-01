@@ -1,7 +1,7 @@
 # Maintainer: wabi <aschrafl@jetnet.ch>
 # Maintainer: pikl <me@pikl.uk>
 pkgname=immich
-pkgrel=2
+pkgrel=3
 pkgver=1.89.0
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -177,6 +177,7 @@ package() {
     
     # install reverse-geocoding data
     # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
+    install -dm750 "${pkgdir}/var/lib/immich"
     install -dm750 "${pkgdir}/var/lib/immich/revgeo"
     install -Dm640 cities500.txt "${pkgdir}/var/lib/immich/revgeo/cities500.txt"
     install -Dm640 admin1CodesASCII.txt "${pkgdir}/var/lib/immich/revgeo/admin1CodesASCII.txt"
