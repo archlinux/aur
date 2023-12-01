@@ -20,6 +20,7 @@ ExecStart=/var/lib/hass/.venv/bin/hass \
   --log-file /var/log/hass/home-assistant.log \
   --log-rotate-days 1
 RestartForceExitStatus=100
+TimeoutSec=15min
 
 AmbientCapabilities=
 CapabilityBoundingSet=

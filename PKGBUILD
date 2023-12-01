@@ -7,7 +7,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2023.11.2
+pkgver=2023.11.3
 pkgrel=1
 epoch=1
 arch=(any)
@@ -33,18 +33,18 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-_tag=a3319262aca7d08d926fef07dc4527b97a66d617
+_tag=ef89d1cd3de01414c9effe604e02431397e02cf2
 source=(
   "$pkgname::git+https://github.com/home-assistant/core.git#tag=${_tag}"
   home-assistant.service
 )
 b2sums=('SKIP'
-        '3249da47392c3100f556b7037bc3a9abdd168960a67eedb8ff68c49729c502ed8cdead16a78c5d2a1d2184dfa51e4ddc89bc09302e189a22a7482bc7b0c05352')
+        'd7a6cd85b89c74997cd7794e5205504033c37684d798bd12e40786f33fce846980d10373261444077cc527ef382246b8235573e1bb6ade8bb8e6d9e34f9961ad')
 
 prepare() {
   cd home-assistant
   # allow any setuptools and wheel to be used
-  sed 's/~=62.3//; s/~=0.37.1//' -i pyproject.toml
+  sed 's/==68.0.0//; s/~=0.40.0//' -i pyproject.toml
 }
 
 pkgver() {
