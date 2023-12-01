@@ -1,12 +1,11 @@
 post_install() {
-  grep -qe '^/usr/bin/es$' /etc/shells || echo '/usr/bin/es' >> /etc/shells
+	grep -qe '^/usr/bin/es$' /etc/shells || echo '/usr/bin/es' >> /etc/shells
 }
 
 post_upgrade() {
-  post_install
+	post_install
 }
 
 pre_remove() {
-  sed -ri '\|^/usr/bin/es$|d' /etc/shells
+	sed -ri '\|^/usr/bin/es$|d' /etc/shells
 }
-
