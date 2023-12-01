@@ -1,19 +1,18 @@
 pkgbase = masscode-bin
 	pkgdesc = A free and open source code snippets manager for developers
 	pkgver = 3.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://masscode.io/
 	arch = x86_64
 	license = AGPL3
 	makedepends = gendesk
 	makedepends = squashfs-tools
-	depends = bash
 	depends = electron16
 	provides = masscode=3.10.0
 	conflicts = masscode
 	source = masscode-3.10.0.snap::https://github.com/massCodeIO/massCode/releases/download/v3.10.0/masscode_3.10.0_amd64.snap
 	source = masscode.sh
 	sha256sums = d4e9aebeabac38aba5180a89083c25ea2e53028ce39a44d57a058d8d76232d6d
-	sha256sums = d87bbdc2b2585aa2a572ed38898c94ae127e7ff6beab0aee26cd0624eea55bd6
+	sha256sums = c5e1e4400e87a6705b17363a7fc766be3abb898a374b643ded1724557ec221ca
 
 pkgname = masscode-bin
