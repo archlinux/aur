@@ -5,7 +5,7 @@
          /// MD5 representation of the game executable.
          /// </summary>
 -        public string VersionHash { get; private set; }
-+        public string VersionHash { get; } = "278fd0ae4c95c8ba2595bc36626e107b";
++        public string VersionHash { get; } = "1d2e21c0741ac7dff903439b7149d02b";
  
          public bool IsDeployedBuild => AssemblyVersion.Major > 0;
  
