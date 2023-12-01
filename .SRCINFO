@@ -1,7 +1,7 @@
 pkgbase = wsjtx-improved-widescreen
 	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB (Widescreen Layout Version)
 	pkgver = 2.7.1
-	pkgrel = 15
+	pkgrel = 16
 	url = https://sourceforge.net/projects/wsjt-x-improved/
 	install = wsjtx-improved.install
 	arch = i686
@@ -26,8 +26,8 @@ pkgbase = wsjtx-improved-widescreen
 	provides = wsjtx
 	conflicts = wsjtx
 	options = !lto
-	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v2.7.1/Source%20code/wsjtx-2.7.1-devel_improved_widescreen_PLUS_231201.tgz
-	md5sums = 11f1acbacc35441125007f9b7102ba81
-	sha1sums = 682cc5acedb6ab34a4f57b694d491b73b7f10368
+	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v2.7.1/Source%20code/wsjtx-2.7.1-devel_improved_widescreen_PLUS_231202.tgz
+	md5sums = 05fe0c9b822526ecace3dc64d37c2a83
+	sha1sums = 78a873cac472183ee69f00dcbc6e3e8aabcc3c21
 
 pkgname = wsjtx-improved-widescreen
