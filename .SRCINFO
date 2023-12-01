@@ -1,0 +1,16 @@
+pkgbase = potato-c
+	pkgdesc = A featureful, modular and lightweight pomodoro timer.
+	pkgver = v0.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	optdepends = libnotify: sending notifications on event support
+	provides = potctl
+	provides = potd
+	provides = potui
+	source = potato-c.tar.gz::https://github.com/nimaaskarian/potato-c/archive/refs/tags/v0.1.zip
+	md5sums = 449f78f70c4acaf05b94839bd96c8a58
+
+pkgname = potato-c
