@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-indexer
-pkgver=4.6.0
+pkgver=4.7.0
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -18,7 +18,7 @@ validpgpkeys=('9E646BB0630C8FD18ACD15541B93E6A766CD229D')
 
 source=("https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm")
 
-sha256sums=('5cb9496f98595c64d351d4b99073c9a7aa48ebe0496eda4853732d2fe66abbf5')
+sha256sums=('d0a88130b6f0fddac8eaf2d0fddb5f72a2e357158a7b8fd226840aeba55946b6')
 
 install=$pkgname.install
 
