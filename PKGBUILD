@@ -1,7 +1,7 @@
 # Maintainer: Twann <tw4nn at disroot.org>
 
 pkgname=tblock
-pkgver=2.7.2
+pkgver=2.7.3
 pkgrel=1
 provides=("$pkgname")
 pkgdesc="An anti-capitalist ad-blocker that uses the hosts file"
@@ -34,7 +34,7 @@ source=(
         "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
-	"d12b9bb8fe1d2dfec3b55d4309ea86478800a75317639b713bfe0ec256bfba3cca6d6740bb5405114acc0d6834ee6e8a8c6fd6049125bc7052d18209c9b02227"
+	"cafe799a58eaf94674827eddd6cdadea7942c054ed2d26fb2ea9417a3e90c38c85b1253e60ae65a04aa2c273f6c85d27c55257dc1322a7d958baffe194c29103"
 )
 backup=("etc/tblock.conf")
 
