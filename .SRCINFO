@@ -1,5 +1,5 @@
 pkgbase = obs-vkcapture
-	pkgver = 1.4.5
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://github.com/nowrep/obs-vkcapture
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = obs-vkcapture
 	depends = libgl
 	depends = libegl
 	depends = obs-studio>=27
-	source = https://github.com/nowrep/obs-vkcapture/archive/v1.4.5/obs-vkcapture-1.4.5.tar.gz
-	sha512sums = 37e72d9dc01fc63dde666d90f17ef04e309771cbcf5e6fbd3e4115f9e88a788ca03bca0970182d9a1014d916b0a51fe799f70f2dc4579831bf3327764d33764c
+	source = https://github.com/nowrep/obs-vkcapture/archive/v1.4.6/obs-vkcapture-1.4.6.tar.gz
+	sha512sums = 153da9248671f1d343dfae47a50bbf08d3e3812b7b62c5f892fb56a72970138bf39b3f09888ee86a86cce1213f632f5cdf27767957163372e3be666a1cf22b3c
 
 pkgname = obs-vkcapture
 	pkgdesc = OBS Linux Vulkan/OpenGL game capture
