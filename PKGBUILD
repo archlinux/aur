@@ -3,7 +3,7 @@
 _pkgname=wox
 pkgname=${_pkgname}-bin
 pkgver=2.0.0_alpha.1
-pkgrel=51
+pkgrel=52
 pkgdesc="A cross-platform launcher that simply works"
 arch=(x86_64)
 url='https://github.com/Wox-launcher/Wox'
@@ -13,11 +13,11 @@ provides=(${_pkgname})
 conflicts=(${_pkgname}-git ${_pkgname})
 options=(!strip)
 source=(
-    "${_pkgname}-${pkgver}-${pkgrel}::https://github.com/Wox-launcher/Wox/releases/download/v${pkgver//_/-}/wox-linux-amd64-20231201-7f56f3"
+    "${_pkgname}-${pkgver}-${pkgrel}::https://github.com/Wox-launcher/Wox/releases/download/v${pkgver//_/-}/wox-linux-amd64-20231201-9b128c"
     "LICENSE::https://raw.githubusercontent.com/Wox-launcher/Wox/v2/LICENSE"
 )
 sha256sums=(
-    "1a7a05cf4a14279e7e749ca5942336b9e69e14ac83f0ddebba244f982a18b8ce"
+    "d3ddf5a657b141784e711ebbaf8f6322a9d142b9fca1ae49378d60c9ecd11d6d"
     "2fbd1d33505f08f37255a80ce0449326ca70eaf145daed016f310d2c4cc8d0b7"
 )
 
