@@ -1,6 +1,6 @@
 pkgbase = r-rhdf5
 	pkgdesc = R Interface to HDF5
-	pkgver = 2.46.0
+	pkgver = 2.46.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rhdf5
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = r-rhdf5
 	options = !lto
 	options = !buildflags
 	options = staticlibs
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5_2.46.0.tar.gz
-	sha256sums = acfae02c8b94c876e9afa914e8ec5b47c2cccd6fd188cf10e46d5af1b22d4eb3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5_2.46.1.tar.gz
+	sha256sums = b68f4960bf8498e83984467b07ed8fa10b3ef68fb5abbc776d6b7dee9307de79
 
 pkgname = r-rhdf5

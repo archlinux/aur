@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rhdf5
-_pkgver=2.46.0
+_pkgver=2.46.1
 pkgname=r-${_pkgname,,}
-pkgver=2.46.0
+pkgver=2.46.1
 pkgrel=1
 pkgdesc='R Interface to HDF5'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('acfae02c8b94c876e9afa914e8ec5b47c2cccd6fd188cf10e46d5af1b22d4eb3')
+sha256sums=('b68f4960bf8498e83984467b07ed8fa10b3ef68fb5abbc776d6b7dee9307de79')
 options=(!lto !buildflags staticlibs)
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
