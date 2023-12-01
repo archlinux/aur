@@ -2,7 +2,7 @@
 
 _pyname=gwcs
 pkgname=python-${_pyname}-doc
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Documentation for Python GWCS module"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://gwcs.readthedocs.io"
 license=('BSD')
 makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx-astropy' 'python-sphinx-asdf' 'graphviz' 'python-mistune3')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('b55db0e0f7627aa4ea82c6f7668b697f')
+md5sums=('295a9ca0e3e9774d8d1abfd7f4e6a410')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
