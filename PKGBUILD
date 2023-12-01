@@ -1,6 +1,6 @@
-_tag=be87e3336f7f897db5e089d673d2a288ff783af9
+_tag=2963dc4c0b77b20f422fbb67c7fae5138059f601
 pkgname=compfy
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A Linux Compositor for X11. Based on Picom. Providing Animations and More"
 arch=(i686 x86_64)
@@ -9,8 +9,6 @@ license=('MIT' 'MPL2')
 depends=('libconfig' 'libev' 'libxdg-basedir' 'pcre2' 'pixman' 'xcb-util-image' 'xcb-util-renderutil' 'libglvnd' 'libx11' 'libxcb' 'libdbus')
 makedepends=('git' 'meson' 'ninja' 'gcc' 'uthash')
 optdepends=('dbus:          To control Compfy via D-Bus')
-provides=('compton' 'compton-git' 'picom' 'picom-git')
-conflicts=('compton' 'compton-git' 'picom' 'picom-git')
 source=("git+$url.git#tag=${_tag}")
 md5sums=('SKIP')
 pkgver() {
