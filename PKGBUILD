@@ -8,8 +8,8 @@ pkgdesc="An advanced minecraft launcher written in java"
 arch=("x86_64")
 url="https://git.frohnmeyer-wds.de/JfMods/Inceptum"
 license=("GPL3")
-depends=("java-runtime>=19" 'bash')
-makedepends=('git' 'java-environment>=19' 'gradle')
+depends=("java-runtime>=21" 'bash')
+makedepends=('git' 'java-environment>=21' 'gradle')
 source=(git+"${url}".git
         "$_name.desktop"
         "$_name.sh"

@@ -6,9 +6,9 @@ pkgbase = inceptum-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = java-environment>=19
+	makedepends = java-environment>=21
 	makedepends = gradle
-	depends = java-runtime>=19
+	depends = java-runtime>=21
 	depends = bash
 	backup = etc/conf.d/inceptum
 	source = git+https://git.frohnmeyer-wds.de/JfMods/Inceptum.git
