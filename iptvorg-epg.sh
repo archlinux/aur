@@ -34,7 +34,7 @@ fi
 
 # Create HOMEDIR directory if it doesn't exist
 if [ ! -d "$EPG_CFGDIR" ]; then
-	echo ":: '$EPG_CFGDIR/$EPG_CFGDIR' is missing, creating new directory."
+	echo ":: '$EPG_CFGDIR' is missing, creating new directory."
 
 	# Normal copy from /usr/share/iptvorg-epg
 	cp -r $EPG_SOURCE $EPG_CFGDIR

@@ -2,7 +2,7 @@
 
 pkgname=iptvorg-epg
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities for downloading the EPG (Electronic Program Guide) for thousands of TV channels from hundreds of sources'
 arch=(any)
 url=https://github.com/iptv-org/epg
@@ -25,7 +25,7 @@ source=(
 	my.channels.xml
 )
 sha256sums=('SKIP'
-            '1174719bb3f96266b0e0dbca43b987053505f8e9bb6ec6d281a3a52a6b36e3fa'
+            'f09d4446c141328b7ec09bd63383462fdac38bc19e10ca61edc9f8518ad4c3bb'
             '26e87976d170c78e458ac44e65d305374aef67d2ab44a17bce151e86a2b783e5')
 
 build() {
