@@ -1,20 +1,18 @@
 pkgbase = tome-bin
 	pkgdesc = Git integrated cross-platform markdown editor
 	pkgver = 0.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tome.evinowen.net/
 	arch = x86_64
 	license = MIT
-	makedepends = asar
-	depends = bash
 	depends = electron18
 	provides = tome=0.7.6
 	conflicts = tome
 	source = tome-0.7.6.deb::https://github.com/evinowen/tome/releases/download/0.7.6/Tome.Setup.0.7.6.deb
-	source = LICENSE.txt::https://raw.githubusercontent.com/evinowen/tome/0.7.6/LICENSE.txt
+	source = LICENSE.txt-0.7.6::https://raw.githubusercontent.com/evinowen/tome/0.7.6/LICENSE.txt
 	source = tome.sh
 	sha256sums = d5a368995788813d2a971e1560a009da2b98311256b82151ebe8573600ba03bb
 	sha256sums = 3103a7058613516746435f89ff07509d42d9a07a485ad7b7fbc2781b06be4722
-	sha256sums = fe74133d1de8b40ac8e0351b7f9a59ad8c22a50c806ac77b09d7797ec3847029
+	sha256sums = a8a1d7c7dcb44627d7befdea39a4365e56c0f2b19c5fa0aec78d31100d903d21
 
 pkgname = tome-bin
