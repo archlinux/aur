@@ -1,7 +1,7 @@
 pkgbase = butt-appimage
 	pkgdesc = Easy to use, multi OS streaming tool (AppImage release).
 	pkgver = 0.1.40
-	pkgrel = 3
+	pkgrel = 4
 	url = https://danielnoethen.de/butt/
 	arch = x86_64
 	license = GPL-2.0-or-later
