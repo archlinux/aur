@@ -1,7 +1,7 @@
 pkgbase = libdeltachat
 	pkgdesc = Deltachat-core written in Rust
 	pkgver = 1.131.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deltachat/deltachat-core-rust/
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = libdeltachat
 	makedepends = rust
 	makedepends = cmake
 	depends = sqlcipher
+	options = !lto
 	source = libdeltachat-1.131.8::https://github.com/deltachat/deltachat-core-rust/archive/refs/tags/v1.131.8.tar.gz
 	sha256sums = 9349d71545fd76b45a131dfa35125604942330f1c95fdc2ceda94590ec2fb9b0
 
