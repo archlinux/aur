@@ -1,14 +1,14 @@
 pkgbase = python-pythonfmu
 	pkgdesc = packaging of Python3.x code as co-simulation FMUs
-	pkgver = 0.6.2
-	pkgrel = 2
+	pkgver = 0.6.3
+	pkgrel = 1
 	url = https://github.com/NTNU-IHB/PythonFMU
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = cmake
 	depends = python
-	source = https://github.com/NTNU-IHB/PythonFMU/archive/refs/tags/v0.6.2.tar.gz
-	md5sums = 1193be306ea231dd0786d72037d0669b
+	source = https://github.com/NTNU-IHB/PythonFMU/archive/refs/tags/v0.6.3.tar.gz
+	md5sums = 7242e25fa05488dbb44177754d1767f0
 
 pkgname = python-pythonfmu
