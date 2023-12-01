@@ -1,7 +1,7 @@
 #!/bin/bash
 # script: iptvorg-epg (https://github.com/iptv-org/epg)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 01/12/2023
+# rev.date: 02/12/2023
 
 # Variables
 EPG_USR=$(whoami)
@@ -38,7 +38,9 @@ if [ ! -d "$EPG_CFGDIR" ]; then
 	echo ":: '$EPG_CFGDIR' is missing, creating new directory."
 
 	# Normal copy from /usr/share/iptvorg-epg
-	cp -r "$EPG_SOURCE" "$EPG_CFGDIR"
+	mkdir -p "$EPG_CFGDIR"
+	cp "$EPG_SOURCE/my.channels.xml" "$EPG_CFGDIR"
+	bsdtar --strip-components=1 -xzf "$EPG_SOURCE/epg.tgz" -C "$EPG_CFGDIR"
 fi
 }
 

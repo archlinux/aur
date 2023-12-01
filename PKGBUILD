@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=iptvorg-epg
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Utilities for downloading the EPG (Electronic Program Guide) for thousands of TV channels from hundreds of sources'
 arch=(any)
@@ -19,25 +19,27 @@ makedepends=(
 	nodejs
 	npm
 )
-_commit=48d8f1aca2f56a6b03ce737550978843f5f00117
+_commit=78d582b5e23c34f0d6d461416833b9b681983e38
 source=(
 	git+https://github.com/iptv-org/epg.git#commit=${_commit}
 	iptvorg-epg.sh
 	my.channels.xml
 )
 sha256sums=('SKIP'
-            '907a7ba7ce1fadd362fd47b4fd4466da565bdb38e124a9412e83eeb9ce48227a'
+            '44f5824af71a9f000d10b5360ade4d9e3dab3386956326ee7f60b5e35c51809f'
             '26e87976d170c78e458ac44e65d305374aef67d2ab44a17bce151e86a2b783e5')
 
 build() {
 	cd epg
 	npm i --cache ../npm-cache
+	cd ..
+	bsdtar -a -cf epg.tgz epg
 }
 
 package() {
 	# Install npm application
-	install -d "$pkgdir"/usr/share "$pkgdir"/usr/bin
-	cp -a --no-preserve=ownership epg "$pkgdir"/usr/share/$pkgname
+	install -d "$pkgdir"/usr/share/$pkgname "$pkgdir"/usr/bin
+	install -Dm644 epg.tgz "$pkgdir"/usr/share/$pkgname
 	# Install executable and license
 	install -Dm755 iptvorg-epg.sh "$pkgdir"/usr/bin/iptvorg-epg
 	install -Dm644 epg/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
