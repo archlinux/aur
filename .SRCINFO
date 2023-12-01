@@ -1,6 +1,6 @@
 pkgbase = kew-git
 	pkgdesc = A command-line music player
-	pkgver = v1.8.1.r1.g02206a4
+	pkgver = v1.9.r0.ge89f029
 	pkgrel = 1
 	url = https://github.com/ravachol/kew
 	arch = x86_64
