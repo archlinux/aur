@@ -1,7 +1,7 @@
 pkgbase = r-bayesfactor
 	pkgdesc = Computation of Bayes Factors for Common Designs
-	pkgver = 0.9.12.4.5
-	pkgrel = 3
+	pkgver = 0.9.12.4.6
+	pkgrel = 1
 	url = https://cran.r-project.org/package=BayesFactor
 	arch = x86_64
 	license = GPL
@@ -24,7 +24,7 @@ pkgbase = r-bayesfactor
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/BayesFactor_0.9.12-4.5.tar.gz
-	sha256sums = b0a61f78cedb0bdb87903848f7196c952c75fb39610dc5a5d697abcf3ea66c81
+	source = https://cran.r-project.org/src/contrib/BayesFactor_0.9.12-4.6.tar.gz
+	sha256sums = fd5f6e092a37d5edd1801b023628b114abf1d3510c49177844b1a35aaa1175db
 
 pkgname = r-bayesfactor
