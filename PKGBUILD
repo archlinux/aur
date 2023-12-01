@@ -1,6 +1,6 @@
 pkgname=zedle
 pkgver=2023.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical interface to create, read and modify encrypted Zed! containers."
 arch=('x86_64')
 url="https://www.primx.eu"
