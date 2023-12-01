@@ -1,7 +1,7 @@
 pkgbase = 7-zip-full
 	pkgdesc = File archiver with a high compression ratio (full package to replace p7zip)
 	pkgver = 23.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://7-zip.org/
 	arch = x86_64
 	arch = i686
