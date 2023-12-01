@@ -3,7 +3,7 @@
 
 pkgname=metacubexd-bin
 _pkgname=metacubexd
-pkgver=1.129.0
+pkgver=1.130.0
 pkgrel=1
 pkgdesc='Clash.Meta Dashboard, The Official One, XD (Precompiled version)'
 arch=('any')
