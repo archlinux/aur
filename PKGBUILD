@@ -1,4 +1,5 @@
-# MAINTAINER username227 gfrank227[at]gmail.com
+# MAINTAINER username227 gfrank227[at]gmail[dot]com
+# MAINTAINER qu1ck anlutsenko[at]gmail[dot]com
 pkgname=trgui-ng
 pkgver='1.0.0'
 pkgrel=1
