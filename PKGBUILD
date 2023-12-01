@@ -36,17 +36,40 @@ prepare() {
   cat <<'EOF' > "$_pkgname.sh"
 #!/usr/bin/env sh
 set -e
+
+APPDIR="/usr/lib/logseq-desktop"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-if [ -r "${XDG_CONFIG_HOME}/logseq-flags.conf" ]; then
-  LOGSEQ_USER_FLAGS="$(cat "$XDG_CONFIG_HOME/logseq-flags.conf")"
+
+_ELECTRON=/usr/bin/electron
+_ASAR="${APPDIR}/app.asar"
+_FLAGS_FILE="$XDG_CONFIG_HOME/logseq-flags.conf"
+
+if [ -r "$_FLAGS_FILE" ]; then
+  _USER_FLAGS="$(cat "$_FLAGS_FILE")"
 fi
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-  LOGSEQ_USER_FLAGS="${LOGSEQ_USER_FLAGS:-} --enable-features=UseOzonePlatform --ozone-platform=wayland"
+
+if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
+    exec ${_ELECTRON} ${_ASAR} $_USER_FLAGS "$@"
+else
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox $_USER_FLAGS "$@"
 fi
-exec electron /usr/lib/logseq-desktop/app.asar $LOGSEQ_USER_FLAGS "$@"
 EOF
 
-  gendesk -q -f -n --pkgname="$_pkgname" --pkgdesc="$pkgdesc" --name="Logseq" --exec="logseq %u" --icon="logseq" --terminal=false --categories="Office" --mimetypes="x-scheme-handler/logseq" --startupnotify=true --custom="StartupWMClass=Logseq"
+  local _gendesk_options=(
+    -q -f -n
+    --pkgname="$_pkgname"
+    --pkgdesc="$pkgdesc"
+    --name="Logseq"
+    --exec="logseq %u"
+    --icon="logseq"
+    --terminal=false
+    --categories="Office"
+    --mimetypes="x-scheme-handler/logseq"
+    --startupnotify=true
+    --custom="StartupWMClass=Logseq"
+  )
+
+  gendesk "${_gendesk_options[@]}"
 }
 
 package() {
