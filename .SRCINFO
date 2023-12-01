@@ -1,7 +1,7 @@
 pkgbase = minizinc-ide-edge
 	pkgdesc = Simple IDE for writing and running MiniZinc models
-	pkgver = build1090227274
-	pkgrel = 2
+	pkgver = build1091618825
+	pkgrel = 1
 	url = http://www.minizinc.org/ide/
 	install = minizinc-ide-edge.install
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = minizinc-ide-edge
 	options = !strip
 	source = minizinc-ide-edge.desktop
 	source = https://raw.githubusercontent.com/MiniZinc/MiniZincIDE/master/resources/icon.png
-	source = https://github.com/MiniZinc/MiniZincIDE/releases/download/edge/MiniZincIDE-build1090227274-bundle-linux-x86_64.tgz
+	source = https://github.com/MiniZinc/MiniZincIDE/releases/download/edge/MiniZincIDE-build1091618825-bundle-linux-x86_64.tgz
 	sha256sums = 484be8e67fe0612d1cc7c2cc02434ddf78f73074425d080a928572e59e1f5554
 	sha256sums = eaa69a6d1b8a3e307d1b400b74273995abb914fbe1246c65fc9b3955b2094023
-	sha256sums = c0dd633f0e25c1e2fac6b2cfea52b8c435affa5c9d516a1cdb1db3f96e7f315d
+	sha256sums = 2736dc331626c644c68f045b35af35b054b30550078e2db37f79dfdda742429f
 
 pkgname = minizinc-ide-edge
