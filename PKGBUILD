@@ -1,7 +1,7 @@
 # Maintainer: wabi <aschrafl@jetnet.ch>
 # Maintainer: pikl <me@pikl.uk>
 pkgname=immich
-pkgrel=1
+pkgrel=2
 pkgver=1.89.0
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -39,25 +39,24 @@ depends=('redis' 'postgresql' 'nodejs' 'nginx'
     'poppler-glib'
     'imagemagick'
     'libraw'
-    # TODO describe new
+    # new perl deps introduced at v1.89.0
     'perl-net-ssleay'
     'perl-io-socket-ssl'
     'perl-capture-tiny'
     'perl-file-which'
     'perl-file-chdir'
-    'perl-pkgconfig' # maybe -libpkgconf
+    'perl-pkgconfig' # other potential - libpkgconf
     'perl-ffi-checklib'
     'perl-test-warnings'
     'perl-test-fatal'
     'perl-test-needs'
     'perl-test2-suite'
     'perl-sort-versions'
-    'perl-path-tiny' # also perl-file-path-tiny
+    'perl-path-tiny' # other potential - perl-file-path-tiny
     'perl-try-tiny'
     'perl-term-table'
-    'perl-uri' # good enough for libany-uri-escape-perl
-    #libmojolicious-perl???
-    'perl-mojolicious'
+    'perl-uri' # good enough for libany-uri-escape-perl?
+    'perl-mojolicious' # aur
     'perl-file-slurper'
 )
 optdepends=(
@@ -178,10 +177,10 @@ package() {
     
     # install reverse-geocoding data
     # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
-    install -dm755 "${pkgdir}/var/lib/immich/revgeo"
-    install -Dm644 cities500.txt "${pkgdir}/var/lib/immich/revgeo/cities500.txt"
-    install -Dm644 admin1CodesASCII.txt "${pkgdir}/var/lib/immich/revgeo/admin1CodesASCII.txt"
-    install -Dm644 admin2Codes.txt "${pkgdir}/var/lib/immich/revgeo/admin2Codes.txt"
+    install -dm750 "${pkgdir}/var/lib/immich/revgeo"
+    install -Dm640 cities500.txt "${pkgdir}/var/lib/immich/revgeo/cities500.txt"
+    install -Dm640 admin1CodesASCII.txt "${pkgdir}/var/lib/immich/revgeo/admin1CodesASCII.txt"
+    install -Dm640 admin2Codes.txt "${pkgdir}/var/lib/immich/revgeo/admin2Codes.txt"
     date --iso-8601=seconds | tr -d "\n" > "${pkgdir}/var/lib/immich/revgeo/geodata-date.txt"
 
     # install systemd service files
