@@ -1,8 +1,9 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Ali Mousavi <ali.mousavi@gmail.com>
 
 _gemname=xmlrpc
 pkgname=ruby-$_gemname
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP.'
 arch=(any)
@@ -12,7 +13,7 @@ depends=(ruby-webrick)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('7e7e4720c12460ba95dadb0d488fa6a98defd849')
+sha1sums=('e839dbb155f7a96e78feb9527d23000c038fee50')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
