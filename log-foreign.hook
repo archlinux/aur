@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=*
+
+[Action]
+Description=Log Foreign Packages
+When=PostTransaction
+Exec=/bin/bash -c 'pkgs="$(pacman -Qm)"; if [[ ! -z "$pkgs" ]]; then echo -e "The following packages are foreign and not found in any package database:\n$pkgs\nYou may want to remove or replace these."; fi'
