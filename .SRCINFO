@@ -1,6 +1,6 @@
 pkgbase = masscode-git
 	pkgdesc = A free and open source code snippets manager for developers
-	pkgver = v3.10.0.r1.g2e3500b
+	pkgver = v3.10.0.r2.gae9eb6b
 	pkgrel = 1
 	url = https://masscode.io/
 	arch = any
@@ -8,13 +8,12 @@ pkgbase = masscode-git
 	makedepends = npm
 	makedepends = pnpm>=8.0.0
 	makedepends = git
-	makedepends = nodejs>=16.15.0
+	makedepends = nvm
 	makedepends = gendesk
-	depends = bash
 	depends = electron16
-	source = masscode.git::git+https://github.com/massCodeIO/massCode.git
+	source = masscode::git+https://github.com/massCodeIO/massCode.git
 	source = masscode.sh
 	sha256sums = SKIP
-	sha256sums = d87bbdc2b2585aa2a572ed38898c94ae127e7ff6beab0aee26cd0624eea55bd6
+	sha256sums = 779f956756ea4f3f91df0fac3d9338d82fc8a74d54f9dea63abe305b8355420c
 
 pkgname = masscode-git
