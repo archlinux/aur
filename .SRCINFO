@@ -1,14 +1,16 @@
 pkgbase = bookman-cockpit
 	pkgdesc = Bookman Cockpit
 	pkgver = 1.13.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bookman.de/
 	arch = any
 	license = custom
-	makedepends = jdk17-openjdk
+	makedepends = jdk-openjdk>=21
+	makedepends = jdk-openjdk<22
 	makedepends = unzip
-	depends = java-environment=17
-	depends = java17-openjfx
+	depends = java-environment=21
+	depends = java-openjfx>=21
+	depends = java-openjfx<22
 	options = !strip
 	source = installer-1.13.3.exe::https://bit.ly/3eMJh3j
 	source = https://maven.ej-technologies.com/repository/com/install4j/install4j-runtime/9.0.7/install4j-runtime-9.0.7.jar
@@ -23,6 +25,6 @@ pkgbase = bookman-cockpit
 	sha256sums = f2a742dabb4f1ac32867c3ba152355695220e4bd4a7ba032de98e3c5d2ed3309
 	sha256sums = ef6cf40ff0a46853f2d5308c884e17328a6a36009f5697d5914bfbb720cac261
 	sha256sums = 32db57235ad25fadb8b2a4a02f7618c7a51df33b50df780613f06cb33fb977e3
-	sha256sums = 2d785d3b556ecd4659d8664ed6399ce252cf370f2bbbd9f25dc01b93283a7881
+	sha256sums = 688bf68cbde688cbaf925667fb6b5fe6237e02715e83b4e42d10ce85554e8bf6
 
 pkgname = bookman-cockpit

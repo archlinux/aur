@@ -1,14 +1,14 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 pkgname=bookman-cockpit
 pkgver=1.13.3
-pkgrel=1
+pkgrel=2
 options=(!strip)
 pkgdesc="Bookman Cockpit"
 arch=(any)
 url="https://www.bookman.de/"
 license=('custom')
-depends=('java-environment=17' 'java17-openjfx')
-makedepends=('jdk17-openjdk' 'unzip')
+depends=('java-environment=21' 'java-openjfx>=21' 'java-openjfx<22')
+makedepends=('jdk-openjdk>=21' 'jdk-openjdk<22' 'unzip')
 # the bit.ly link looks suspicious, but that's what they use on their website.
 # Also the download is not versioned, so this will eventuelly break due to integrity checks failing.
 source=("installer-${pkgver}.exe::https://bit.ly/3eMJh3j"
@@ -24,10 +24,10 @@ sha256sums=('61395f34e203083e5674c1169e86fb3c224c5998e2088ef80bdb541081eab4e9'
             'f2a742dabb4f1ac32867c3ba152355695220e4bd4a7ba032de98e3c5d2ed3309'
             'ef6cf40ff0a46853f2d5308c884e17328a6a36009f5697d5914bfbb720cac261'
             '32db57235ad25fadb8b2a4a02f7618c7a51df33b50df780613f06cb33fb977e3'
-            '2d785d3b556ecd4659d8664ed6399ce252cf370f2bbbd9f25dc01b93283a7881')
+            'af96d708f33472671d8accd0729d93c53379ed8360d057208a19f7233bd6be7d')
 
 build() {
-    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 
     "$JAVA_HOME/bin/javac" -d "$srcdir/classes" "OperatingSystemUtil.java"
     unzip -p "bin/bookman-${pkgver}.jar" 'icons/bookman.png' > bookman.png
