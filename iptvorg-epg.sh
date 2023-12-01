@@ -129,7 +129,7 @@ printSite() {
 curl -s $EPG_SITESTAT
 }
 
-# Case loop
+# While loop
 channels_on=0
 site_on=0
 output_on=0
@@ -147,21 +147,25 @@ do
 			;;
 		-c|--channels)
 			shift
+			if [[ -z $1 ]] || [[ $1 == -* ]]; then break; fi
 			EPG_CCH="$1"
 			channels_on=1
 			;;
 		-s|--site)
 			shift
+			if [[ -z $1 ]] || [[ $1 == -* ]]; then break; fi
 			EPG_SITE="$1"
 			site_on=1
 			;;
 		-o|--output)
 			shift
+			if [[ -z $1 ]] || [[ $1 == -* ]]; then break; fi
 			EPG_OUTPUT="$1"
 			output_on=1
 			;;
 		--days)
 			shift
+			if [[ -z $1 ]] || [[ $1 == -* ]]; then break; fi
 			EPG_DAYS="$1"
 			days_on=1
 			;;
