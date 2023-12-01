@@ -1,6 +1,6 @@
 pkgname=btop-gpu-git
 pkgver=1.2.13.r822.0bb8599
-pkgrel=1
+pkgrel=2
 pkgdesc="A monitor of resources, forked for GPU support - merged into btop!"
 arch=(any)
 url="https://github.com/romner-set/btop-gpu"
