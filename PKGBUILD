@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=spatialLIBD
-_pkgver=1.13.4
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -51,6 +51,7 @@ optdepends=(
   r-biocmanager
   r-biocstyle
   r-covr
+  r-dropletutils
   r-here
   r-knitr
   r-lobstr
@@ -59,8 +60,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ce04856a64e262857cf708de58570400')
-sha256sums=('ae75b39b2c4fed429cc332118c13be77337353deb8b3adf370e775cb98572c07')
+md5sums=('cd8c85a03e555f2dfdeb1627f7087002')
+sha256sums=('0b173d7108c50c8542d49c6398fb37567e368567303c8a5354dd80568ab40b7f')
 
 build() {
   mkdir -p build
