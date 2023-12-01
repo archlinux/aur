@@ -1,7 +1,7 @@
 pkgbase = btop-gpu-git
 	pkgdesc = A monitor of resources, forked for GPU support - merged into btop!
 	pkgver = 1.2.13.r822.0bb8599
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/romner-set/btop-gpu
 	arch = any
 	license = Apache-2.0
@@ -9,7 +9,6 @@ pkgbase = btop-gpu-git
 	makedepends = make
 	makedepends = git
 	makedepends = rocm-smi-lib
-	makedepends = nvidia-utils
 	provides = btop
 	conflicts = btop
 	options = !strip
