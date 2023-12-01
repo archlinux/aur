@@ -1,7 +1,7 @@
 pkgbase = sizeof-go
 	pkgdesc = Simple and fast calculate size of directories
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/balaraz/sizeof
 	arch = x86_64
 	license = GPL3

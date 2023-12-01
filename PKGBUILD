@@ -2,7 +2,7 @@
 
 pkgname=sizeof-go
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sizeof"
