@@ -45,7 +45,7 @@ build() {
 
         for target in "${targets[@]}"; do
             cd "${srcdir}/CPP/7zip/Bundles/${target}"
-            mkdir '_o'
+            mkdir -p '_o'
             make -f 'makefile.gcc'
         done
     )
