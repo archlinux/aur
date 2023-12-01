@@ -1,0 +1,11 @@
+PKGNAME='Microsoft SQL Server Command-line Tools'
+post_install() {
+	echo
+	echo "To get started with ${PKGNAME}, please refer to the following links:"
+    echo
+    echo "1.Connecting to Local Database"
+	echo "==> https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-red-hat?view=sql-server-ver16&tabs=rhel8#connect-locally"
+    echo "2. Documentation"
+    echo "==> https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-utility"
+	echo    
+}
