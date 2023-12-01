@@ -8,7 +8,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='5.0.r20349.gf79c88f30b'
+pkgver='5.0.r20507.g5f7e9d3bf1'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -16,12 +16,12 @@ arch=('x86_64' 'aarch64')
 url="https://$_mainpkgname.org"
 license=('GPL2')
 depends=(
-	'alsa-lib' 'bluez-libs' 'bzip2' 'cubeb' 'enet' 'fmt' 'hidapi' 'libevdev' 'libgl'
-	'libpulse' 'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng'
-	'pugixml' 'sfml' 'speexdsp' 'xz' 'zlib-ng' 'zstd'
-	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
-	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so' 'libudev.so'
-	'libusb-1.0.so'
+	'alsa-lib' 'bluez-libs' 'bzip2' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpulse'
+	'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml' 'sfml'
+	'speexdsp' 'xz' 'zstd' 'cubeb' 'zlib-ng'
+	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
+	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so'
+	'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
 )
 makedepends=('cmake' 'git' 'miniupnpc' 'ninja' 'python' 'qt6-base' 'qt6-svg')
 optdepends=('pulseaudio: PulseAudio backend')
@@ -112,7 +112,7 @@ package_dolphin-emu-git() {
 
 package_dolphin-emu-nogui-git() {
 	pkgdesc="$pkgdesc - no GUI$_pkgdescappend"
-	depends=("$pkgbase")
+	depends=("$_mainpkgname")
 	optdepends=()
 	provides=("$_noguipkgname" "$_mainpkgname-cli")
 	conflicts=("$_noguipkgname" "$_mainpkgname-cli")
@@ -125,8 +125,6 @@ package_dolphin-emu-nogui-git() {
 
 package_dolphin-emu-tool-git() {
 	pkgdesc="$pkgdesc - CLI-based utility for functions such as managing disc images$_pkgdescappend"
-	depends=("$pkgbase")
-	optdepends=()
 	provides=("$_toolpkgname")
 	conflicts=("$_toolpkgname")
 
