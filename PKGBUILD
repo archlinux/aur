@@ -2,7 +2,7 @@
 
 pkgname=obs-ndi-git
 _pkgname=obs-ndi
-pkgver=4.11.0.r15.g2ee6809
+pkgver=4.13.0.r1.ga19841a
 pkgrel=1
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
     cd ${_pkgname}
 
-    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_FRONTEND_API=ON -DENABLE_QT=ON
     cmake --build build
 }
 
