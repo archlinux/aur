@@ -1,0 +1,15 @@
+pkgbase = r-octad.db
+	pkgdesc = Open Cancer TherApeutic Discovery (OCTAD) database
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/octad.db
+	arch = any
+	license = Artistic2.0
+	depends = r-experimenthub
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/octad.db_1.4.0.tar.gz
+	md5sums = ef8723031fea32015ee26dbf30d2c8ba
+	sha256sums = c98a46efe801cd8b14f97e7a1b07c2a178afdbc502259d68185285c39881b10d
+
+pkgname = r-octad.db
