@@ -1,6 +1,6 @@
 pkgbase = clash-verge-rev-bin
 	pkgdesc = Clash Meta GUI based on tauri.
-	pkgver = 1.4.1
+	pkgver = null
 	pkgrel = 0
 	url = https://github.com/wonfen/clash-verge-rev
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = clash-verge-rev-bin
 	conflicts = clash-nyanpasu
 	conflicts = clash-nyanpasu-bin
 	conflicts = clash-nyanpasu-git
-	source = clash-verge-rev-1.4.1-x86_64.deb::https://github.com/wonfen/clash-verge-rev/releases/download/v1.4.1/clash-verge_1.4.1_amd64.deb
-	sha512sums = a350831e71e6d80cf6ff2835bc472af8aceaf7304ff13212a9e1a04832cf1d55bde98fb532f693b89e0b0a53e3dbeb9591fd4b1e5b95d56aa0393a3ad1a45618
+	source = clash-verge-rev-null-x86_64.deb::https://github.com/wonfen/clash-verge-rev/releases/download/vnull/clash-verge_null_amd64.deb
+	sha512sums = b5de29d121e14dbebe859b6095a69b734675dbab7acf9623eac0d5d43517a22ac0cc1fcb4e743ca71a5e110df63c8631b068e1992012acc2f315b33647d576ad
 
 pkgname = clash-verge-rev-bin
