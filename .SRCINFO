@@ -1,0 +1,26 @@
+pkgbase = trgui-ng
+	pkgdesc = Transmission torrent daemon remote GUI. Remote control GUI for Transmission torrent daemon
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/openscopeproject/TrguiNG
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = rust>=1.69.0
+	makedepends = nodejs>=16.0.0
+	depends = alsa-lib
+	depends = cairo
+	depends = desktop-file-utils
+	depends = fontconfig
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = libsoup
+	depends = openssl
+	depends = webkit2gtk
+	noextract = TrguiNG
+	source = git+https://github.com/openscopeproject/TrguiNG
+	sha256sums = SKIP
+
+pkgname = trgui-ng
