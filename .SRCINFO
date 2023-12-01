@@ -1,6 +1,6 @@
 pkgbase = gr-framework
 	pkgdesc = A universal framework for cross-platform visualization applications.
-	pkgver = 0.72.10
+	pkgver = 0.72.11
 	pkgrel = 1
 	url = https://gr-framework.org
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = gr-framework
 	depends = qt5-base
 	depends = zlib
 	optdepends = ffmpeg: video support
-	source = https://github.com/sciapp/gr/archive/v0.72.10.tar.gz
-	sha256sums = 32c829660d4634f4097fb0a2729719071e201115900a193f608413850314f3ba
+	source = https://github.com/sciapp/gr/archive/v0.72.11.tar.gz
+	sha256sums = beb0f29480ab066905102295caf857a35d61fb269c5313a9f33efd71454f8a76
 
 pkgname = gr-framework
