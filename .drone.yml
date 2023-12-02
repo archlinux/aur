@@ -1,0 +1,97 @@
+---
+kind: pipeline
+type: kubernetes
+name: linter
+
+clone:
+  disable: true
+
+steps:
+- name: clone
+  image: git.cryptic.systems/volker.raschek/git:1.3.1
+
+- name: markdown lint
+  commands:
+  - markdownlint *.md
+  image: git.cryptic.systems/volker.raschek/markdownlint:0.37.0
+  resources:
+    limits:
+      cpu: 150
+      memory: 150M
+
+- name: email-notification
+  environment:
+    SMTP_FROM_ADDRESS:
+      from_secret: smtp_from_address
+    SMTP_FROM_NAME:
+      from_secret: smtp_from_name
+    SMTP_HOST:
+      from_secret: smtp_host
+    SMTP_USERNAME:
+      from_secret: smtp_username
+    SMTP_PASSWORD:
+      from_secret: smtp_password
+  image: git.cryptic.systems/volker.raschek/drone-email:0.1.5
+  resources:
+    limits:
+      cpu: 150
+      memory: 150M
+  when:
+    status:
+    - changed
+    - failure
+
+trigger:
+  event:
+    exclude:
+    - tag
+
+# ---
+# kind: pipeline
+# type: kubernetes
+# name: sync-to-aur.archlinux.org
+
+# clone:
+#   disable: true
+
+# steps:
+# - name: clone
+#   image: git.cryptic.systems/volker.raschek/git:1.3.1
+
+# - name: git-push
+#   image: docker.io/appleboy/drone-git-push:1.0.6
+#   settings:
+#     branch: master
+#     remote: ssh://aur@aur.archlinux.org/postfix-policyd-spf-perl.git
+#     force: false
+#     commit: false
+#     ssh_key:
+#       from_secret: aur_ssh_key
+
+# - name: email-notification
+#   environment:
+#     SMTP_FROM_ADDRESS:
+#       from_secret: smtp_from_address
+#     SMTP_FROM_NAME:
+#       from_secret: smtp_from_name
+#     SMTP_HOST:
+#       from_secret: smtp_host
+#     SMTP_USERNAME:
+#       from_secret: smtp_username
+#     SMTP_PASSWORD:
+#       from_secret: smtp_password
+#   image: git.cryptic.systems/volker.raschek/drone-email:0.1.5
+#   resources:
+#     limits:
+#       cpu: 150
+#       memory: 150M
+#   when:
+#     status:
+#     - changed
+#     - failure
+
+# trigger:
+#   event:
+#   - tag
+#   repo:
+#   - volker.raschek/postfix-policyd-spf-perl-pkg

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "assignees": [ "volker.raschek" ],
+  "automergeStrategy": "merge-commit",
+  "automergeType": "pr",
+  "labels": [ "renovate" ],
+  "packageRules": [
+    {
+      "addLabels": [ "renovate/droneci", "renovate/automerge" ],
+      "automerge": true,
+      "matchManagers": "droneci",
+      "matchUpdateTypes": [ "minor", "patch"]
+    }
+  ],
+  "rebaseLabel": "renovate/rebase",
+  "rebaseWhen": "behind-base-branch"
+}
