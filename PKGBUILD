@@ -6,7 +6,7 @@ pkgrel=7
 # epoch=2
 pkgdesc="Chess database browser: chess, chess960, etc engines; import Chessbase, PGN, Scid; CQL"
 arch=('x86_64' 'i686')
-url="https://scidb.sourceforge.net/"
+url="https://sourceforge.net/projects/scidb"
 license=('GPL2')
 depends=('tk'
          'shared-mime-info'
@@ -102,7 +102,6 @@ build() {
     SWITCHSTRING="${SWITCHSTRING} ${SWITCH}"
   done
   export CFLAGS="-fcommon" CXXFLAGS="-fcommon" ; ./configure ${SWITCHSTRING}
-  make clean
   make
 }
 
