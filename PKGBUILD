@@ -2,7 +2,7 @@
 
 pkgname=mint-backgrounds-helena
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="The backgrounds included in Linux Mint 8 Helena"
 license=('Various')
 arch=('any')
