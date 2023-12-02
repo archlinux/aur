@@ -4,7 +4,7 @@
 
 pkgname=fahrplan
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A SBB/CFF/FFS (Swiss railway) commandline based timetable client"
 url="https://github.com/dbrgn/fahrplan"
 depends=(
@@ -20,13 +20,10 @@ license=('GPLv3')
 arch=('any')
 source=(
   "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
-  "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz.asc"
 )
 sha256sums=(
   'da0835ae6ee1aefe64f92b82f8a9df7f313e41ec5e429985961a7a9294e24b6c'
-  'SKIP'
 )
-validpgpkeys=('EA456E8BAF0109429583EED83578F667F2F3A5FA')
 
 if [ -n "$VIRTUAL_ENV" ]; then
   echo "Warning: You're building within a virtualenv. Use"
