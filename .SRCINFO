@@ -1,0 +1,12 @@
+pkgbase = canokey-console-legacy
+	pkgdesc = Local version of https://console.legacy.canokeys.org
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = custom
+	optdepends = python-twisted: run web server, must manually install twisted otherwise.
+	optdepends = ungoogled-chromium: Browser with WebUSB support.
+	source = src.tar.gz
+	sha512sums = afe3fccb9bcf1ea027c11a380e6edfde62efe1c1509353ca6a1c96f248996e809c2ac5ca625352275d2613a50c728744ddf97ce2e564a5ec96c9b34a63e923ed
+
+pkgname = canokey-console-legacy
