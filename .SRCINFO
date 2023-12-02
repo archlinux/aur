@@ -1,0 +1,14 @@
+pkgbase = r-genieclust
+	pkgdesc = Fast and Robust Hierarchical Clustering with Noise Points Detection
+	pkgver = 1.1.5.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=genieclust
+	arch = x86_64
+	license = AGPL3
+	depends = r-rcpp
+	optdepends = r-mlpack
+	source = https://cran.r-project.org/src/contrib/genieclust_1.1.5-2.tar.gz
+	md5sums = 125f1f9bee8664c716c5c50816969c29
+	sha256sums = 1354cffb0bbdeb0de9e08f2cb69a232b491fba1fed89e3ee0d0430eb371f1959
+
+pkgname = r-genieclust
