@@ -6,7 +6,7 @@
 # Distributed under terms of the GNU GPLv3 license.
 #
 
-version="1.0"
+version="1.1"
 help="""Usage: resticctl {COMMAND}
                  [--help|--version]
 
@@ -21,7 +21,7 @@ restic="${RESTIC_COMMAND:-/usr/bin/restic}"
 # Locate config dir and config file
 locate_config() {
   if [ "${RESTICCTL_CONFIGURATION:-null}" == "null" ]; then
-    local _xdg_config_dir="${XDG_CONFIG_HOME:-~/.config}/resticctl"
+    local _xdg_config_dir="${XDG_CONFIG_HOME:-${HOME}/.config}/resticctl"
     if [ -r "${_xdg_config_dir}/resticctl.conf" ]; then
       config_dir="${_xdg_config_dir}"
     else
