@@ -9,6 +9,7 @@ pkgbase = strongswan
 	makedepends = systemd
 	makedepends = python
 	makedepends = ruby
+	makedepends = ruby-rdoc
 	makedepends = mariadb
 	makedepends = python-setuptools
 	depends = curl

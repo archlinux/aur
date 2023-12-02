@@ -16,7 +16,7 @@ pkgdesc='Open source IPsec implementation'
 url='https://www.strongswan.org'
 license=('GPL-2.0-only')
 arch=('x86_64')
-makedepends=('libnm' 'systemd' 'python' 'ruby' 'mariadb' 'python-setuptools')
+makedepends=('libnm' 'systemd' 'python' 'ruby' 'ruby-rdoc' 'mariadb' 'python-setuptools')
 depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'systemd-libs' 'pam')
 optdepends=('libnm: for networkmanager support'
   'mariadb: MySQL support'
@@ -105,6 +105,7 @@ build() {
     --enable-agent \
     --enable-bypass-lan \
     --enable-ruby-gems \
+    --enable-ruby-gems-install \
     --enable-python-eggs \
     --enable-ml \
     --enable-stroke
@@ -112,6 +113,11 @@ build() {
 }
 
 package() {
+  local _gemdir="$(gem env gemdir)"
+
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
+
+  # remove unrepreducible files
+  rm -r "${pkgdir}"/${_gemdir}/cache/
 }
