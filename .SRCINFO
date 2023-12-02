@@ -1,13 +1,13 @@
 pkgbase = google-keep-nativefier
 	pkgdesc = Google Keep in shared Electron runtime
-	pkgver = 2022.08.12
+	pkgver = 2023.12.01
 	pkgrel = 1
 	url = https://keep.google.com
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	makedepends = nodejs-nativefier
-	depends = electron19
+	depends = electron22
 	source = google-keep-nativefier.png
 	source = google-keep-nativefier.profile
 	sha256sums = 30bf408abb4d6639864c05a6c829fba7624bbec254eeab52a72ce0d8b91fbb1f
