@@ -2,7 +2,7 @@
 # Source: https://www.virtualhere.com/client_service
 
 pkgname=virtualhere-client
-pkgver=1.0.2
+pkgver=5.5.6
 pkgrel=1
 pkgdesc="VirtualHere USB Client for Linux Desktop"
 arch=("i686" "x86_64")
@@ -13,8 +13,13 @@ provides=("virtualhereclient")
 conflicts=("virtualhereclient")
 source=("https://www.virtualhere.com/sites/default/files/usbclient/scripts/virtualhereclient.service"
        "https://www.virtualhere.com/sites/default/files/usbclient/vhclientx86_64")
-md5sums=('37d1c9ac1b1d9f4ecb99ea6f5b6af5dc'
-	'5d707c6f91f4cd72344ca9f7c69b1ed8')
+md5sums=('SKIP'
+	'SKIP')
+
+pkgver() {
+    chmod +x "${srcdir}/vhclientx86_64"
+    "${srcdir}/vhclientx86_64" --help 2>&1 | head -n 1| sed 's/.[^0-9]*\([0-9]\+[\.0-9]*\),.*/\1/'
+}
 
 package() {
     install -Dm755 vhclientx86_64              "${pkgdir}/usr/bin/vhclientx86_64"
