@@ -3,23 +3,56 @@
 
 pkgname=tradingview
 pkgver=2.7.1
-pkgrel=1
-pkgdesc='Experience extra power, extra speed and extra flexibility, all with the same UX you know and love'
+pkgrel=2
+pkgdesc='TradingView is a charting platform for traders and investors'
 arch=('x86_64')
 url='https://www.tradingview.com/desktop/'
-license=('custom')
-makedepends=('squashfs-tools')
-source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_48.snap"
-        "$pkgname.desktop")
-b2sums=('979958b07225cb2cd0b132d98b7e8727cca2b6fca8fd5608b16f9c9daddbe39c21b9ea94ceac47447c79e97cb6ca15fab63bfe0fadbc8d221ba75cd71dc428f8'
-        '86d4c70928b6c2a4e3e95402be276e2de94216289d9e82c534d92b8a4db15252721c20be7a8828b8f4ba871d50903ba88137e9f5c374c46ff529584b8a7a8a89')
+license=('custom:proprietary')
+depends=('alsa-lib'
+         'at-spi2-core'
+         'cairo'
+         'dbus'
+         'expat'
+         'gcc-libs'
+         'glib2'
+         'glibc'
+         'gtk3'
+         'hicolor-icon-theme'
+         'libcups'
+         'libdrm'
+         'libsecret'
+         'libx11'
+         'libxcb'
+         'libxcomposite'
+         'libxdamage'
+         'libxext'
+         'libxfixes'
+         'libxkbcommon'
+         'libxrandr'
+         'mesa'
+         'nspr'
+         'nss'
+         'pango')
+makedepends=('links'
+             'squashfs-tools')
+source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_48.snap")
+b2sums=('979958b07225cb2cd0b132d98b7e8727cca2b6fca8fd5608b16f9c9daddbe39c21b9ea94ceac47447c79e97cb6ca15fab63bfe0fadbc8d221ba75cd71dc428f8')
 
 prepare() {
-    mkdir -p "$pkgname-$pkgver"
-    unsquashfs -q -n -f -d "$pkgname-$pkgver/" "$pkgname-$pkgver.snap"
+    ## EULA
+    links -width 80 -dump https://www.tradingview.com/policies/ | \
+        sed -n '/Terms of Use, Policies and Disclaimers/,/TradingView may update these Rules at any time./p' > "$srcdir/EULA.txt"
 
-    mv "$pkgname-$pkgver/meta/gui/icon.png" "$srcdir"
-    rm -r "$pkgname-$pkgver/"{data-dir/,gnome-platform/,lib/,meta/,scripts/,usr/}
+    ## Extract
+    unsquashfs -q -f -d "$pkgname-$pkgver/" "$pkgname-$pkgver.snap"
+
+    mv "$pkgname-$pkgver/meta/gui/icon.png" "$srcdir/"
+    mv "$pkgname-$pkgver/meta/gui/$pkgname.desktop" "$srcdir/"
+    sed -n -e 's@${SNAP}/meta/gui/icon.png@'"$pkgname"'@g' \
+        -e 's@^Categories=Finance;$@Categories=Office;Finance;@g' \
+        "$srcdir/$pkgname.desktop"
+
+    rm -r "$pkgname-$pkgver/"{data-dir/,gnome-platform/,lib/,meta/,scripts/,usr/,*.sh}
 }
 
 package() {
@@ -30,5 +63,6 @@ package() {
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+    install -Dm644 "$srcdir/EULA.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
