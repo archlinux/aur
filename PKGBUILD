@@ -8,10 +8,10 @@ pkgname=${_pkgname}-bin
 
 _ghrepo=andydecleyre/archbuilder_${_pkgname}
 
-pkgver=4.11.8  # match telegram-desktop-userfonts:pkgver
-_pkgrel=2      # match telegram-desktop-userfonts:pkgrel
+pkgver=4.12.1  # match telegram-desktop-userfonts:pkgver
+_pkgrel=1      # match telegram-desktop-userfonts:pkgrel
 
-pkgrel=2
+pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
@@ -32,7 +32,7 @@ optdepends=('webkit2gtk: embedded browser features'
 source=("https://github.com/${_ghrepo}/releases/download/${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-${arch}.pkg.tar.zst")
 
 # sha512sums match latest successful build at releases URL
-sha512sums=('a4bde86d8e9c97536d0c6aba3d87ecc32f50a1bcd2ed4dfef19bce4130b5062074480adcf2e80b04b26799a06bcd1982b8c020ad357a62002220e31a64462f86')
+sha512sums=('3dec10da824f2f45e4e251dfb106d31ed9516f05695a25f2221f65e080605e8513cf52d93cf57c1714ff2e89571b0537dfabb081ef3aabf8e16269799353486d')
 
 package() {
   cp -a usr $pkgdir/
