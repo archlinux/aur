@@ -108,7 +108,7 @@ for dir in "${proton_dxvkpath[@]}"; do
   fi
 done
 
-if [[ -s ${dxvkpath[1]} ]]; then
+if [[ -n ${dxvkpath[*]} ]]; then
   printf '%s\n' "${dxvkpath[@]}"
   echo 'Do you wish to change the above dxvk?'
   PS3="Enter a number: "
