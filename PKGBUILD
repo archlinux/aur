@@ -2,9 +2,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=lamW
-_pkgver=2.2.2
+_pkgver=2.2.3
 pkgname=r-${_pkgname,,}
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='Lambert-W Function'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('591837467e663c570b8754882aa73bee6395257df3ff5713d7344d5b35440fb4')
+sha256sums=('a1e232186673d2fc298fc45278a6ff169db428fe8a63551c9297124a05ee034b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

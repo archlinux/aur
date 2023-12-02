@@ -1,6 +1,6 @@
 pkgbase = r-lamw
 	pkgdesc = Lambert-W Function
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=lamW
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-lamw
 	optdepends = r-covr
 	optdepends = r-methods
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/lamW_2.2.2.tar.gz
-	sha256sums = 591837467e663c570b8754882aa73bee6395257df3ff5713d7344d5b35440fb4
+	source = https://cran.r-project.org/src/contrib/lamW_2.2.3.tar.gz
+	sha256sums = a1e232186673d2fc298fc45278a6ff169db428fe8a63551c9297124a05ee034b
 
 pkgname = r-lamw
