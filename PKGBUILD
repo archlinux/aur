@@ -39,6 +39,8 @@ sha256sums=('8d4fa3c01a1dc97f04e2e51d2a9e661e60bfddb674a8902336ba00e09d74c123'
             '4ff40320e04bf8c3e05cbc662f8ea549a6b8494d1fda64b1de190c88587bfafd'
             '41b75d19ed7c4671225f08589e317295b7abee934b876859c8777916272f3052'
             '078d94d712c3bb86a77d13bf2021299f4db2332c9d5346dba1ceb0cce1ba8492')
+source_aarch64=(extrapatch-sconstruct.patch)
+sha256sums_aarch64=('6dd9f20e153ff2a3e185d9411e9d9ec54ba8ed29a0a1489828ccb047205cceac')
 
 _scons_args=(
   CC="${CC:-gcc}"
