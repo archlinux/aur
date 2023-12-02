@@ -1,7 +1,7 @@
 pkgbase = python-magic-git
-	pkgdesc = File type identification library; unofficial wrapper for file/libmagic (git)
+	pkgdesc = File type identification library; compatible with official file/libmagic Python wrapper (git)
 	pkgver = 0.4.27.r22.g54d86fd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-magic
 	arch = any
 	license = MIT

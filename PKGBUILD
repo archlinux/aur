@@ -6,9 +6,9 @@
 _pkgbase=python-magic
 pkgname="${_pkgbase}-git"
 pkgver=0.4.27.r22.g54d86fd
-pkgrel=1
+pkgrel=2
 _stablepkg_epoch=1
-pkgdesc="File type identification library; unofficial wrapper for file/libmagic (git)"
+pkgdesc="File type identification library; compatible with official file/libmagic Python wrapper (git)"
 arch=('any')
 url='https://pypi.org/project/python-magic'
 _repourl='https://github.com/ahupp/python-magic'
