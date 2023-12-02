@@ -3,7 +3,7 @@
 
 pkgname='tuc-bin'
 _pkgname=${pkgname%%-bin}
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A more powerful alternative to cut, when cut doesn’t cut it (pre-compiled)'
 arch=('x86_64')
@@ -11,12 +11,12 @@ url='https://github.com/riquito/tuc'
 _rawurl='https://github.com/riquito/tuc/raw/master'
 license=('GPL3')
 source=(
-  "tuc-$pkgver::$url/releases/download/v$pkgver/tuc-ubuntu-amd64"
+  "tuc-$pkgver::$url/releases/download/v$pkgver/tuc-linux-amd64"
   "$_rawurl/CHANGELOG.md"
   "$_rawurl/README.md"
   "$_rawurl/doc/tuc.1"
 )
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
@@ -33,16 +33,24 @@ package() {
 }
 
 sha256sums=(
-  '1502c3bf5c142e70879548b257868e7dcdbd865e1af4f26558109a34fad08320'
-  'SKIP' 'SKIP' 'SKIP'
-)
-sha512sums=(
-  '7830a9e8b2f5c745aac74629ff031555dce0ff326c4f49f993f80ec31c116324566b6494996fbd6209b2e35060e53d97b91f527e135cc5d0a1121520d243c2e9'
+  'ef59a13728205c9008bace27f782882a39293e4ba1b2ddd67a66d9456487bd7c'
   'SKIP' 'SKIP' 'SKIP'
 )
 b2sums=(
-  '99538b3ba755195b3c3d25ce6223099178e9f9135ff1d5e7417a3cdf3d1c9ea7ab70c4988726059911bf5de92439888f6aa6cf5ad28e2a691d73418c996bbf63'
+  '4f6af9ff5ae202822d6942e70ea37607654655b2af3531c93016219259143651c27c97cf81b24d2579ae87f79aa6a6d9c0d1e76f970e3f596f686ff3c07de7b5'
   'SKIP' 'SKIP' 'SKIP'
 )
+
+# 🪷 Beyond the Known — 365 Days of Exploration
+#
+# 📆 2nd December
+#
+# You will never be free someday. It will never happen.
+#
+# You can only be free now, in every possible moment.
+#
+# Now does not include someday.
+#
+# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
