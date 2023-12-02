@@ -2,7 +2,7 @@
 
 pkgname='spacedrive-git'
 pkgver=r2297.8ad468b
-pkgrel=3
+pkgrel=4
 pkgdesc='Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.'
 arch=('x86_64')
 url='https://spacedrive.com/'
@@ -21,10 +21,7 @@ pkgver() {
 prepare() {
 	cd "${pkgname%-git}"
 
-	export CARGO_TARGET_DIR=target
-
 	pnpm install
-	pnpm prep
 }
 
 build() {
@@ -32,6 +29,7 @@ build() {
 
 	export CARGO_TARGET_DIR=target
 
+	pnpm prep
 	pnpm tauri build --bundles app
 }
 
