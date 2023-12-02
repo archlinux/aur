@@ -1,18 +1,16 @@
 pkgbase = griels-quest
 	pkgdesc = SDL port of a MSX1/MSX2 puzzle game (aka 'Griels Quest for the Sangraal')
 	pkgver = 1.00
-	pkgrel = 2
-	url = https://code.google.com/p/griel-sangraal-linux/
+	pkgrel = 3
+	url = https://github.com/nevat/griels-quest
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = setconf
 	depends = sdl_mixer
 	depends = sdl_image
 	depends = sdl_ttf
 	depends = sdl_gfx
-	source = https://griel-sangraal-linux.googlecode.com/files/griels-quest-1.00.tar.gz
-	sha256sums = 26cff78c0a293373dad86c4a7737400c821fd0aa2df0ab1344135a88af5698f8
+	source = griels-quest-1.00.tar.gz::https://github.com/nevat/griels-quest/archive/refs/tags/v1.00.tar.gz
+	sha256sums = 6df0c25fd2edf03b663aefebabc965307095dd0a9c371c288c39f10458740afb
 
 pkgname = griels-quest
-

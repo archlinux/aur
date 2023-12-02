@@ -2,26 +2,22 @@
 
 pkgname=griels-quest
 pkgver=1.00
-pkgrel=2
+pkgrel=3
 pkgdesc="SDL port of a MSX1/MSX2 puzzle game (aka 'Griels Quest for the Sangraal')"
 arch=('i686' 'x86_64')
-url="https://code.google.com/p/griel-sangraal-linux/"
+url="https://github.com/nevat/griels-quest"
 license=('GPL3')
 depends=('sdl_mixer' 'sdl_image' 'sdl_ttf' 'sdl_gfx')
-makedepends=('setconf')
-source=("https://griel-sangraal-linux.googlecode.com/files/$pkgname-$pkgver.tar.gz")
-sha256sums=('26cff78c0a293373dad86c4a7737400c821fd0aa2df0ab1344135a88af5698f8')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/nevat/griels-quest/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('6df0c25fd2edf03b663aefebabc965307095dd0a9c371c288c39f10458740afb')
 
 prepare() {
-  cd $pkgname-$pkgver
   # fix name in .desktop file
-  setconf griels.desktop Exec $pkgname
-  setconf griels.desktop Icon $pkgname
+  sed -e "s/Exec=.*/Exec=$pkgname/;s/Icon=.*/Icon=$pkgname/" -i $pkgname-$pkgver/griels.desktop
 }
 
 build() {
-  cd $pkgname-$pkgver
-  make
+  make -C $pkgname-$pkgver
 }
 
 package() {
