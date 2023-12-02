@@ -1,0 +1,16 @@
+pkgbase = ruby-differ
+	pkgdesc = A simple gem for generating string diffs
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://github.com/pvande/differ
+	arch = any
+	license = custom
+	depends = ruby
+	noextract = differ-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/differ-0.1.2.gem
+	source = http://raw.githubusercontent.com/pvande/differ/v0.1.2/README.rdoc
+	sha256sums = 5ece6db723679a2a9861d252852ad614f1e921e32e0984b37aab70ecc3595e45
+	sha256sums = 22d453aaa7451eca4fb77e7f9eba4489c647ddb7aa1996d12ad344a0dcf5fdf3
+
+pkgname = ruby-differ
