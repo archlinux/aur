@@ -1,0 +1,14 @@
+pkgbase = simpread-sync-appimage
+	pkgdesc = SimpRead sync server
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://simpread.pro
+	arch = x86_64
+	depends = fuse2
+	provides = simpread-sync-appimage
+	conflicts = simpread-sync-appimage
+	options = !strip
+	source = https://github.com/a15355447898a/simpread-sync/releases/download/1.2.0/simpread-sync-1.2.0.AppImage
+	sha512sums = 53b1c426419f35bb1a99c9995f84240d875afc008fde6c1c58ef30916a90c7a977b7e265259c0bd4f372e88623b5586ebfc25a398ffecf47465b2cacd1a047e3
+
+pkgname = simpread-sync-appimage
