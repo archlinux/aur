@@ -1,8 +1,8 @@
-#Maintainer: Kimiblock <pn3535@icloud.com>
+#Maintainer: Kimiblock
 
 pkgname=librewolf-extension-sponsorblock-bin
 url="https://github.com/ajayyy/SponsorBlock"
-pkgver=5.4.24
+pkgver=5.4.29
 pkgrel=1
 makedepends=("jq" "curl")
 pkgdesc="Skip YouTube video sponsors."
