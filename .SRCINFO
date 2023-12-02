@@ -1,0 +1,27 @@
+pkgbase = r-omada
+	pkgdesc = Machine learning tools for automated transcriptome clustering analysis
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/omada
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-clvalid
+	depends = r-dicer
+	depends = r-dplyr
+	depends = r-fpc
+	depends = r-genieclust
+	depends = r-ggplot2
+	depends = r-glmnet
+	depends = r-kernlab
+	depends = r-pdfcluster
+	depends = r-rcpp
+	depends = r-reshape
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/omada_1.4.0.tar.gz
+	md5sums = d214fdb20c51cbce86bf1d34c59cb84b
+	sha256sums = dd15848708994f18842116b7ffaa47d0be82f7419f3775081183938aa6ce665a
+
+pkgname = r-omada
