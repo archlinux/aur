@@ -28,10 +28,7 @@ function launch(){
 	--ro-bind /sys/dev/char /sys/dev/char \
 	--ro-bind /sys/devices /sys/devices \
 	--ro-bind /run/dbus /run/dbus \
-	--dir "$XDG_RUNTIME_DIR" \
-	--ro-bind "$XDG_RUNTIME_DIR/wayland-0" "$XDG_RUNTIME_DIR/wayland-0" \
-	--ro-bind "$XDG_RUNTIME_DIR/pipewire-0" "$XDG_RUNTIME_DIR/pipewire-0" \
-	--ro-bind "$XDG_RUNTIME_DIR/pulse" "$XDG_RUNTIME_DIR/pulse" \
+	--bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
 	--bind /tmp /tmp \
 	--bind "$HOME" "$HOME" \
 	--bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
@@ -40,7 +37,7 @@ function launch(){
 
 function x11Launch(){
     note '使用 XWayland / X11...'
-    launch --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks "$@"
+    launch --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks "$@" "${flagsIn}"
 }
 
 function probeKwinVersion(){
@@ -64,7 +61,7 @@ function waylandLaunch(){
     else
         waylandFlag="--ozone-platform=wayland"
     fi
-    launch ${waylandFlag} --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-wayland-ime --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder "$@"
+    launch ${waylandFlag} --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-wayland-ime --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder "$@" "${flagsIn}"
 }
 
 function note() {
@@ -78,5 +75,7 @@ function note() {
         printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
     fi
 }
+
+flagsIn="$@"
 
 main
