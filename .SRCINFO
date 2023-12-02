@@ -7,13 +7,11 @@ pkgbase = chdig-git
 	license = MIT
 	makedepends = git
 	makedepends = rust
-	makedepends = pyinstaller
+	makedepends = pyoxidizer
 	depends = bash
 	provides = chdig
 	conflicts = chdig
 	source = chdig-git::git+https://github.com/azat/chdig
-	source = git+https://github.com/4rtzel/tfg
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = chdig-git
