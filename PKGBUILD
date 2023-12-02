@@ -4,10 +4,10 @@
 pkgname=miniplayer-git
 _pkgname=miniplayer
 pkgver=1.8.1.r7.g19f6759
-pkgrel=2
+pkgrel=3
 pkgdesc='A curses based mpd client with basic functionality and album art written for the Kitty terminal.'
 url='https://github.com/guardkenzie/miniplayer'
-depends=('python>=3.7' 'python-mpd2' 'python-pixcat-git' 'ueberzug' 'python-colorthief')
+depends=('python>=3.7' 'python-mpd2' 'python-pixcat-an-prata' 'ueberzug' 'python-colorthief')
 makedepends=('git' 'python-setuptools')
 provides=('miniplayer')
 conflicts=('miniplayer')
