@@ -3,7 +3,7 @@
 # Contributor: axiom <hello@axiom.co>
 
 pkgname='axiom-bin'
-pkgver=0.11.5
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Powerful log analytics from the comfort of your command-line'
 url='https://axiom.co'
@@ -12,20 +12,20 @@ license=('MIT')
 provides=('axiom-bin')
 conflicts=('axiom-bin' 'axiom-git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.11.5/axiom_0.11.5_linux_arm64.tar.gz")
-sha256sums_aarch64=('664a3955a5f3f0a6aab1ef9c07784b5a1732a05d94047c09420fb0a9f2f7758b')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.12.0/axiom_0.12.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('d02b781d641c75bfb295ffb3176719d92e5d2f585dc16a3f9a6430d219827415')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.11.5/axiom_0.11.5_linux_armv6.tar.gz")
-sha256sums_armv6h=('f5c692ae2b560e4b4e30b2b2440e7d409f34ba8b8e62a2ab11295497bdb03a79')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.12.0/axiom_0.12.0_linux_armv6.tar.gz")
+sha256sums_armv6h=('316e2a3f0a1ef75c633427c90e094ee94c9a06cf4732108fe36229e338ecc181')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.11.5/axiom_0.11.5_linux_armv7.tar.gz")
-sha256sums_armv7h=('8f57da3edf67614167e6a4c77980dbbbc5b19b0ac5c802f4b2666c9de5ae1892')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.12.0/axiom_0.12.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('650aee45b12f5449802111e6e8c24081137df7a8354c6ef755d276a82c19566d')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.11.5/axiom_0.11.5_linux_386.tar.gz")
-sha256sums_i686=('586bb39c29c532f1ef8fbbf5d051b1120da4395f510518ab5d82831bc4e61c21')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.12.0/axiom_0.12.0_linux_386.tar.gz")
+sha256sums_i686=('24c69227c901556adb5ab40528b12178817b096b6e896ebbb60f9a9520294ba2')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.11.5/axiom_0.11.5_linux_amd64.tar.gz")
-sha256sums_x86_64=('f9dc47deb43a4e2e82b357413e82e5bf79af13494bda518c72e6b2f715c00b7a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.12.0/axiom_0.12.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('713a93a6cb4a10d1b9519e0f5b5593aebb2c65f3f14820c665b187114c119840')
 
 package() {
   install -Dm755 "./axiom" "${pkgdir}/usr/bin/axiom"
