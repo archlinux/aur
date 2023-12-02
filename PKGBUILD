@@ -1,32 +1,32 @@
 # Maintainer: Simon Brulhart <simon@brulhart.me>
 
 pkgname=python-taxi
-pkgver=6.2.0
+pkgver=6.3.1
 pkgrel=1
 pkgdesc="Timesheeting tool that focuses on simplicity"
 arch=('any')
 license=('custom')
 url="https://github.com/sephii/taxi"
-depends=('python-appdirs' 'python-click' 'python-six')
-makedepends=('python' 'python-setuptools')
+depends=('python-appdirs' 'python-click')
+makedepends=('python' 'python-flit' 'python-installer')
 optdepends=("python-taxi-zebra: Zebra backend for Taxi")
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/sephii/taxi/archive/$pkgver.tar.gz"
   taxi-complete.bash
   taxi-complete.zsh
 )
-sha512sums=('a1599e4830a5575b5316ffdf277dd7311b066e67865c0af35bdc72dccc16cc05335759ef98591872160a0adbb1a3f8cab854af6e7a7cc41e61ab2748080fa4ea'
+sha512sums=('fb1ab86d06b3272f9cdec3f22298b0b5353e6efd489f6941da88b5f28c8584f6b91c9280d2ab6fdda0a063fb5e1f444b33f0947830ebd8fbcb879ca143316254'
             '646ac547f52fb9a1c8498a9d1d431a3c19b41faacd86b7344ffb8c2334e6b01b765945882e5180c7f658b8c3f6a7887a690171b624326b5b3fa3ecda59344ccc'
             'd02c0e3489dba8841eff335571088b739911d4c541623971cfef9b1628ea6960ad748e1e6c4cc1dfdd20dc88fc289f8078dbb51fa0402eed4868c45e87f4106a')
 
 build() {
   cd "$srcdir/taxi-$pkgver"
-  python setup.py build
+  flit build --no-use-vcs
 }
 
 package() {
   cd "$srcdir/taxi-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   cd "$srcdir"
