@@ -1,0 +1,6 @@
+post_install() {
+        echo "Bashit entry point is saved to /etc/profile.d/bashit.sh"
+        echo "You need to relogin your session to see the updates"
+        echo "For immediate changes, run bash --login"
+}
+
