@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
@@ -100,7 +100,7 @@ pkgbase = vlc-luajit
 	depends = gnutls
 	depends = libplacebo
 	depends = libupnp>=1.14
-	depends = libplacebo>=4.208
+	depends = libplacebo>=5
 	optdepends = avahi: service discovery using bonjour protocol
 	optdepends = gst-plugins-base-libs: for libgst plugins
 	optdepends = dav1d: dav1d AV1 decoder
