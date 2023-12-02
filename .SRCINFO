@@ -1,7 +1,7 @@
 pkgbase = python-indexed-bzip2
 	pkgdesc = A parallelized bzip2 decoder with seek capability
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mxmlnkn/indexed_bzip2
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-indexed-bzip2
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	provides = indexed_bzip2
 	options = !emptydirs
