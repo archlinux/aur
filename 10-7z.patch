@@ -1,0 +1,63 @@
+--- a/gif2apng.cpp
++++ b/gif2apng.cpp
+@@ -31,10 +31,20 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include "zlib.h"
+-#include "7z.h"
++
++#ifdef ENABLE_7Z
++  #include "7z.h"
++#endif
++
++#ifdef ENABLE_LOCAL_ZOPFLI
+ extern "C" {
+ #include "zopfli.h"
+ }
++#else
++extern "C" {
++#include "zopfli/zopfli.h"
++}
++#endif
+ 
+ #if defined(_MSC_VER) && _MSC_VER >= 1300
+ #define swap16(data) _byteswap_ushort(data)
+@@ -289,8 +299,10 @@ void deflate_rect_fin(int deflate_method
+   if (deflate_method == 1)
+   {
+     unsigned size = zbuf_size;
++#ifdef ENABELE_7Z
+     compress_rfc1950_7z(rows, op[n].h*(rowbytes + 1), zbuf, size, iter<100 ? iter : 100, 255);
+     *zsize = size;
++#endif
+   }
+   else
+   {
+@@ -450,7 +462,7 @@ int main(int argc, char** argv)
+   int              trns_size = 0;
+   int              ssize = 0;
+   int              keep_palette = 0;
+-  int              deflate_method = 1;
++  int              deflate_method = 0;
+   int              iter = 15;
+ 
+   unsigned char  * buffer;
+@@ -473,7 +485,7 @@ int main(int argc, char** argv)
+   {
+     printf("\n\nUsage: gif2apng [options] anim.gif [anim.png]\n\n"
+            "-z0  : zlib compression\n"
+-           "-z1  : 7zip compression (default)\n"
++           //"-z1  : 7zip/lzma compression (default)\n"
+            "-z2  : zopfli compression\n"
+            "-i## : number of iterations, default -i%d\n"
+            "-kp  : keep the palette\n", iter);
+@@ -520,7 +532,8 @@ int main(int argc, char** argv)
+   if (deflate_method == 0)
+     printf(" using ZLIB\n\n");
+   else if (deflate_method == 1)
+-    printf(" using 7ZIP with %d iterations\n\n", iter);
++    deflate_method = 0; // 7zip not supported
++    // printf(" using 7ZIP with %d iterations\n\n", iter);
+   else if (deflate_method == 2)
+     printf(" using ZOPFLI with %d iterations\n\n", iter);
+ 
