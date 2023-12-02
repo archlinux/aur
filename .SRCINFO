@@ -1,0 +1,17 @@
+pkgbase = r-rankaggreg
+	pkgdesc = Weighted Rank Aggregation
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RankAggreg
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	depends = r-gtools
+	optdepends = r-clvalid
+	optdepends = r-kohonen
+	optdepends = r-mclust
+	optdepends = r-xtable
+	source = https://cran.r-project.org/src/contrib/RankAggreg_0.6.6.tar.gz
+	md5sums = 2b54df8fd2b0097ec6aa80d607fd53a8
+	sha256sums = bde95b55e052ad3777a9720ca970a438f5f3ba37798a12c77dd89cb39db4e0bc
+
+pkgname = r-rankaggreg
