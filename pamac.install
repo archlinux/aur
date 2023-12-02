@@ -1,39 +1,50 @@
+#!/hint/bash
+
+_add_flathub() {
+	if [ -f /usr/bin/flatpak ]; then
+		flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	fi
+}
+
 post_install() {
-   # enable flatpak repo
-  if [ -f /usr/bin/flatpak ]; then
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  fi   
- # enable classic snap support
-  if [ -f /usr/bin/snap ]; then
- #   ln -s /var/lib/snapd/snap /snap
-    systemctl enable snapd.socket
-  fi
-  # enable systemd timers
-  ln -sf /usr/lib/systemd/system/pamac-cleancache.timer /etc/systemd/system/multi-user.target.wants
-  #ln -sf /usr/lib/systemd/system/pamac-mirrorlist.timer /etc/systemd/system/multi-user.target.wants
-  # polkit agent
-  printf '==> An authentication agent is required\n'
-  printf '    Cinnamon, Deepin, GNOME, GNOME Flashback, KDE, LXDE, LXQt, MATE and Xfce\n'
-  printf '    have an authentication agent already.\n'
-  printf '    See https://wiki.archlinux.org/index.php/Polkit#Authentication_agents\n'
-  printf '    for other desktop environments.\n'
+	# remove file (#28, #29)
+	[[ -e /var/tmp/pamac/dbs/sync/refresh_timestamp ]] && rm -f /var/tmp/pamac/dbs/sync/refresh_timestamp
+
+	# enable flatpak repo
+	_add_flathub
+	
+	# enable classic snap support
+	if [ -f /usr/bin/snap ]; then
+		#ln -s /var/lib/snapd/snap /snap
+		systemctl enable snapd.socket
+	fi
+	
+	# enable systemd timers
+	mkdir -p /etc/systemd/system/timers.target.wants
+	ln -sf /usr/lib/systemd/system/pamac-cleancache.timer /etc/systemd/system/multi-user.target.wants
+	#ln -sf /usr/lib/systemd/system/pamac-mirrorlist.timer /etc/systemd/system/multi-user.target.wants
+	
+	# polkit agent
+	echo '==> An authentication agent is required'
+	echo '    Cinnamon, Deepin, GNOME, GNOME Flashback, KDE, LXDE, LXQt, MATE and Xfce'
+	echo '    have an authentication agent already.'
+	echo '    See https://wiki.archlinux.org/index.php/Polkit#Authentication_agents'
+	echo '    for other desktop environments.'
 }
 
 post_upgrade() {
-   # enable flatpak repo
-  if [ -f /usr/bin/flatpak ]; then
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  fi  
- # enable classic snap support
-  if [ -f /usr/bin/snap ]; then
- #   ln -s /var/lib/snapd/snap /snap
-    systemctl is-active snapd.socket >/dev/null || systemctl enable snapd.socket
-  fi
-
+	# enable flatpak repo
+	_add_flathub
+	
+	# enable classic snap support
+	if [ -f /usr/bin/snap ]; then
+		#ln -s /var/lib/snapd/snap /snap
+		systemctl is-active snapd.socket >/dev/null || systemctl enable snapd.socket
+	fi
 }
 
 post_remove() {
-  # disable systemd timers
-  rm -f /etc/systemd/system/multi-user.target.wants/pamac-cleancache.timer
-  #rm -f /etc/systemd/system/multi-user.target.wants/pamac-mirrorlist.timer
+	# disable systemd timers
+	rm -f /etc/systemd/system/multi-user.target.wants/pamac-cleancache.timer
+	#rm -f /etc/systemd/system/multi-user.target.wants/pamac-mirrorlist.timer
 }
