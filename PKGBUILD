@@ -3,13 +3,17 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Chris Kitching <chriskitching@linux.com>
 
+declare -Iir LIB32GST_DISABLE_AV LIB32GST_DISABLE_BAD
+
 pkgbase=lib32-gst-bad-ugly
-pkgname=(
-	lib32-gst-libav
-	lib32-gst-plugins-ugly
+pkgname=(lib32-gst-plugins-ugly)
+
+((LIB32GST_DISABLE_AV)) || pkgname+=(lib32-gst-libav)
+((LIB32GST_DISABLE_BAD)) || pkgname+=(
 	lib32-gst-plugins-bad-libs
 	lib32-gst-plugins-bad
 )
+
 pkgver=1.22.7
 pkgrel=2
 pkgdesc="Multimedia graph framework (32-bit)"
@@ -63,6 +67,10 @@ makedepends=(
 	# _common
 	"${_common_depends[@]}"
 
+	# gst-plugins-ugly
+	"${_ugly_depends[@]}"
+)
+((LIB32GST_DISABLE_BAD)) || makedepends+=(
 	# gst-plugins-bad-libs
 	"${_bad_libs_depends[@]}"
 
@@ -72,13 +80,13 @@ makedepends=(
 	lib32-shaderc lib32-bluez-libs
 	lib32-ladspa lib32-lv2
 	lib32-json-glib
+)
 
-	# gst-plugins-ugly
-	"${_ugly_depends[@]}"
-
+((LIB32GST_DISABLE_AV)) || makedepends+=(
 	# gst-libav
 	"${_libav_depends[@]}"
 )
+
 checkdepends=(xorg-server-xvfb)
 options=(!debug)
 source=(
@@ -118,6 +126,7 @@ _fix_pkgconf() {
 }
 
 build() {
+	local -a meson_switches=(enabled disabled)
 	export CC='gcc -m32'
 	export CXX='g++ -m32'
 	export PKG_CONFIG='i686-pc-linux-gnu-pkg-config'
@@ -136,7 +145,6 @@ build() {
 		-D gpl=enabled
 		-D gst-examples=disabled
 		-D introspection=disabled
-		-D libav=disabled
 		-D libnice=disabled
 		-D omx=disabled
 		-D orc-source=system
@@ -157,9 +165,9 @@ build() {
 		-D gstreamer=disabled # already in repo
 
 		# package scoped
-		-D libav=enabled
+		-D "libav=${meson_switches[LIB32GST_DISABLE_AV]}"
 		-D ugly=enabled
-		-D bad=enabled
+		-D "bad=${meson_switches[LIB32GST_DISABLE_BAD]}"
 		# subprojects
 		-D gst-plugins-bad:directfb=disabled
 		-D gst-plugins-bad:directshow=disabled

@@ -13,6 +13,12 @@ pkgbase = lib32-gst-bad-ugly
 	makedepends = lib32-gst-plugins-good
 	makedepends = wayland-protocols
 	makedepends = lib32-gst-plugins-base-libs>=1.22.7
+	makedepends = lib32-a52dec
+	makedepends = lib32-libcdio
+	makedepends = lib32-libdvdread
+	makedepends = lib32-libmpeg2
+	makedepends = lib32-opencore-amr
+	makedepends = lib32-x264
 	makedepends = lib32-libdrm
 	makedepends = lib32-libgudev
 	makedepends = lib32-libusb
@@ -71,12 +77,6 @@ pkgbase = lib32-gst-bad-ugly
 	makedepends = lib32-ladspa
 	makedepends = lib32-lv2
 	makedepends = lib32-json-glib
-	makedepends = lib32-a52dec
-	makedepends = lib32-libcdio
-	makedepends = lib32-libdvdread
-	makedepends = lib32-libmpeg2
-	makedepends = lib32-opencore-amr
-	makedepends = lib32-x264
 	makedepends = lib32-ffmpeg
 	options = !debug
 	source = git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git?signed#tag=1.22.7
@@ -86,13 +86,6 @@ pkgbase = lib32-gst-bad-ugly
 	sha256sums = SKIP
 	sha256sums = 0cfce6cad2d9fc55fe36e4ca48ec8aa33106cc1f778ddf0ae47362d230e5539b
 	sha256sums = 951edc965cce062b3a08048297c9d66ff264eed5d8e884170706e4854c9f92df
-
-pkgname = lib32-gst-libav
-	pkgdesc = Multimedia graph framework (32-bit) - libav plugin
-	depends = lib32-gst-plugins-base-libs>=1.22.7
-	depends = lib32-ffmpeg
-	provides = lib32-gst-ffmpeg=1.22.7
-	replaces = lib32-gst-libav-latest
 
 pkgname = lib32-gst-plugins-ugly
 	pkgdesc = Multimedia graph framework (32-bit) - ugly plugins
@@ -104,6 +97,13 @@ pkgname = lib32-gst-plugins-ugly
 	depends = lib32-opencore-amr
 	depends = lib32-x264
 	replaces = lib32-gst-plugins-ugly-latest
+
+pkgname = lib32-gst-libav
+	pkgdesc = Multimedia graph framework (32-bit) - libav plugin
+	depends = lib32-gst-plugins-base-libs>=1.22.7
+	depends = lib32-ffmpeg
+	provides = lib32-gst-ffmpeg=1.22.7
+	replaces = lib32-gst-libav-latest
 
 pkgname = lib32-gst-plugins-bad-libs
 	pkgdesc = Multimedia graph framework (32-bit) - bad
