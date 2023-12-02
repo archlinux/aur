@@ -3,14 +3,14 @@
 _pkgname=godot-mono
 pkgname=godot-mono-enhanced
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine built properly"
 arch=('x86_64')
 url="https://godotengine.org/"
 license=('MIT')
 depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd libsquish
    libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
-   mbedtls2 miniupnpc pcre2 dotnet-sdk-bin hicolor-icon-theme)
+   mbedtls2 miniupnpc pcre2 dotnet-sdk hicolor-icon-theme)
 makedepends=(alsa-lib gcc pulseaudio scons yasm xorg-server-xvfb nuget python git rsync gzip python)
 optdepends=('pipewire-alsa: for audio support'
             'pipewire-pulse: for audio support')
