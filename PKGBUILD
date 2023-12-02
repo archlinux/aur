@@ -13,11 +13,9 @@ license=('MIT')
 
 source=(
     "$pkgname::git+$url"
-    "git+https://github.com/4rtzel/tfg"
 )
 
 sha256sums=(
-    'SKIP'
     'SKIP'
 )
 
@@ -26,13 +24,6 @@ CFLAGS=
 CXXFLAGS=
 LDFLAGS=
 LTOFLAGS=
-
-prepare() {
-    cd "$srcdir/$pkgname"
-    git submodule init
-    git config submodule.contrib/tfg.url "$srcdir/tfg"
-    git -c protocol.file.allow=always submodule update
-}
 
 pkgver() {
     cd "$srcdir/$pkgname"
