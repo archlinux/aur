@@ -28,4 +28,6 @@ build() {
 package() {
     cd "$srcdir/${pkgname}-${pkgver}/python/indexed_bzip2"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+    install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
 }
