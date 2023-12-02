@@ -1,7 +1,7 @@
 # Maintainer: Hendrik Wolff <hendrik.wolff@agdsn.me>
 
 pkgname=agdsn-zsh-config
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="AG DSN Zsh Config"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git')
 conflicts=('grml-zsh-config')
 provides=('grml-zsh-config' 'grmlzshrc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/agdsn/agdsn-zsh-config/archive/v${pkgver}.tar.gz")
-sha256sums=('82396d4aade6c459427f138f3c87914dd2b576a039b1a96a199c88236826c080')
+sha256sums=('1f6df0ba6b29c0251acb319ea0115a347a2da005be4e00ea9617b5662fa2810c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
