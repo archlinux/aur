@@ -1,7 +1,5 @@
-*
-!.drone.yml
-!.gitignore
-!.editorconfig
-!.SRCINFO
-!PKGBUILD
-!README.md
+pkg
+src
+*tar.gz
+*tar.zst
+*tar.zst.sig

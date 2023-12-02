@@ -7,7 +7,7 @@ pkgdesc="The backgrounds of Linux Mint"
 license=('Various')
 arch=('any')
 depends=(
-  'mint-backgrounds-helena'
+  'mint-backgrounds'
   'mint-backgrounds-isadora'
   'mint-backgrounds-julia'
   'mint-backgrounds-katya'
