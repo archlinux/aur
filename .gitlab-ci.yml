@@ -10,7 +10,8 @@ build:
   stage: build
   script:
     - npm install
-    - sed -i $(for arg in $(./get_latest); do
+    - |
+      sed -i $(for arg in $(./get_latest); do
         key=${arg%%=*}
         value=${arg#*=}
 
