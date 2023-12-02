@@ -2,7 +2,7 @@
 
 pkgname=python-indexed-bzip2
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A parallelized bzip2 decoder with seek capability"
 arch=('x86_64')
 url="https://github.com/mxmlnkn/indexed_bzip2"
