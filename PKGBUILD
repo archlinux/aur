@@ -2,7 +2,7 @@
 
 pkgname=stack-clean-old-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.4.8.r0.gc1d6ed0
+pkgver=0.5.r0.g1af052f
 pkgrel=1
 pkgdesc='Manage Haskell stack snapshot builds and ghc versions (static build)'
 arch=('i686' 'x86_64')
