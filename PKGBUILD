@@ -4,22 +4,20 @@
 pkgname=metacubexd-bin
 _pkgname=metacubexd
 pkgver=1.133.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Clash.Meta Dashboard, The Official One, XD (Precompiled version)'
 arch=('any')
-_repo="MetaCubeX/${_pkgname}"
-url="https://github.com/${_repo}"
+url="https://github.com/MetaCubeX/metacubexd"
 license=('MIT')
-makedepends=('git')
 optdepends=('clash: A rule-based tunnel in Go'
             'sing-box: The universal proxy platform'
             'clash-meta: Another Clash Kernel by MetaCubeX')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("${_pkgname}::git+${url}.git#branch=gh-pages")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/compressed-dist.tgz")
+sha256sums=('11bcd29549d58c82037262fc60a667271b72a35b0185d36c3be8fdbcaebc4b42')
 
 package() {
-    cd "$_pkgname"
-    find . -type f -not -path '*/\.git/*' -exec install -Dm 644 {} "${pkgdir}/usr/share/${_pkgname}"/{} \;
+    cd "${srcdir}"
+    find . -type f -exec install -Dm 644 {} "${pkgdir}/usr/share/${_pkgname}/"{} \;
 }
