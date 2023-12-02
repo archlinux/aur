@@ -11,7 +11,7 @@
 
 pkgname=labymod-appimage
 _pkgname=labymodlauncher
-pkgver=1.0.33
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='A minecraft Launcher & modpack that optimizes the game and adds a bunch of useful features ! (1.8->1.20.1)'
 url=https://www.labymod.net
