@@ -1,14 +1,17 @@
 pkgbase = python-pylibsrtp
 	pkgdesc = Python bindings for libsrtp
-	pkgver = 0.8.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/aiortc/pylibsrtp
 	arch = x86_64
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = libsrtp
 	depends = python-cffi
-	source = pylibsrtp-0.8.0.tar.gz::https://github.com/aiortc/pylibsrtp/archive/refs/tags/0.8.0.tar.gz
-	sha512sums = faaeeaec3d4934a3fb9a771ed9ef6a758f2145a50d38129f62403f0ec95f02350c0111f990b39b0a518af864a153614cbeb9d921d764b16fcae3d9f78dd0d4f4
+	source = pylibsrtp-0.9.1.tar.gz::https://github.com/aiortc/pylibsrtp/archive/refs/tags/0.9.1.tar.gz
+	sha512sums = 1e21b6276e8e208c4696dd5f87be9e27870f6a048856cfe3cb7bc6b8e76bb1875c64ce8d7033c216261951890869d82dd916bb41a5a549bf78b874023808a5ae
 
 pkgname = python-pylibsrtp
