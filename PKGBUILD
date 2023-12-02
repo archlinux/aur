@@ -13,7 +13,7 @@ provides=('gdal')
 conflicts=('gdal')
 pkgname=(gdal-hdf4 python-gdal-hdf4)
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for raster and vector geospatial data formats"
 arch=(x86_64)
 url="https://gdal.org/"
@@ -23,8 +23,10 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
              libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
-             openssl pcre2 libpng podofo-0.9 poppler postgresql-libs qhull
-             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd hdf4)
+             openssl pcre2 libpng podofo poppler postgresql-libs qhull
+             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd hdf4
+             libaec libkml-git
+             ) 
 
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
@@ -53,13 +55,11 @@ prepare() {
   patch -d $_pkgbase-$pkgver -p1 < ec33f6d6.patch
 
 # Fix build with podofo-0.9
-  sed -e 's|podofo.h|podofo/podofo.h|' -i $_pkgbase-$pkgver/frmts/pdf/pdfsdk_headers.h
+  # sed -e 's|podofo.h|podofo/podofo.h|' -i $_pkgbase-$pkgver/frmts/pdf/pdfsdk_headers.h
 }
 
 build() {
-  opt_libs=""
-  [[ "$(ldconfig -p | grep libkml.so)" ]] && { echo "Found libkml.so"; opt_libs+=" -DGDAL_USE_LIBKML=ON"; }
-
+  export PATH="$(pwd)/build/apps:$PATH"
   cmake -B build -S $_pkgbase-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_IPO=ON \
@@ -108,38 +108,40 @@ build() {
     -DGDAL_USE_XERCESC=ON \
     -DGDAL_USE_ZLIB=ON \
     -DGDAL_USE_ZSTD=ON \
-    -DPODOFO_INCLUDE_DIR=/usr/include/podofo-0.9 \
-    -DPODOFO_LIBRARY=/usr/lib/podofo-0.9/libpodofo.so \
-    $opt_libs
-  make -C build
+    -DGDAL_USE_LIBKML=ON \
+    -DGDAL_USE_FileGDB=ON \
+    -DFileGDB_INCLUDE_DIR=/usr/include/filegdb-api/ \
+    -DFileGDB_LIBRARY=/usr/lib/libFileGDBAPI.so && \
+  make -C build -j $(nproc)
 }
 
 package_gdal-hdf4 () {
+  provides+=('gdal-hdf4')
+  conflicts=('gdal')
   depends=(proj blosc crypto++ curl libdeflate expat libfreexl geos libgeotiff
            giflib libjpeg-turbo json-c xz libxml2 lz4 unixodbc ocl-icd openssl
            pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd
-           hdf4
-           arrow cfitsio hdf5 libheif mariadb-libs netcdf openexr openjpeg2
-           podofo poppler postgresql-libs libwebp)
-  # optdepends=('arrow: Arrow/Parquet support'
-  #            'cfitsio: FITS support'
-  #            'hdf5: HDF5 support'
-  #            'libheif: HEIF support'
-  #            'mariadb-libs: MySQL support'
-  #            'netcdf: netCDF support'
-  #            'openexr: EXR support'
-  #            'openjpeg2: JP2 support'
-  #            'podofo: PDF support'
-  #            'poppler: PDF support'
-  #            'postgresql-libs: PostgreSQL support'
-  #            'libwebp: WebP support')
+           hdf4 
+           libaec libkml-git filegdb-api)
+  optdepends=('arrow: Arrow/Parquet support'
+             'cfitsio: FITS support'
+             'hdf5: HDF5 support'
+             'libheif: HEIF support'
+             'mariadb-libs: MySQL support'
+             'netcdf: netCDF support'
+             'openexr: EXR support'
+             'openjpeg2: JP2 support'
+             'podofo: PDF support'
+             'poppler: PDF support'
+             'postgresql-libs: PostgreSQL support'
+             'libwebp: WebP support')
 
   make -C build DESTDIR="${pkgdir}" install
   install -Dm644 ${_pkgbase}-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/$_pkgbase/
   # Move python stuff
   mkdir -p {bin,lib}
-  #mv "${pkgdir}"/usr/bin/*py bin
-  #mv "${pkgdir}"/usr/lib/python* lib
+  mv "${pkgdir}"/usr/bin/*py bin
+  mv "${pkgdir}"/usr/lib/python* lib
 }
 
 package_python-gdal-hdf4 () {
@@ -149,8 +151,8 @@ package_python-gdal-hdf4 () {
   conflicts=("python-gdal")
   
   install -d "${pkgdir}"/usr/{bin,lib}
-  # mv bin/* "${pkgdir}"/usr/bin
-  # mv lib/* "${pkgdir}"/usr/lib
+  mv bin/* "${pkgdir}"/usr/bin
+  mv lib/* "${pkgdir}"/usr/lib
   install -dm755 "${pkgdir}"/usr/share/licenses
   ln -s $pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
   # byte-compile python modules since the CMake build does not do it.
