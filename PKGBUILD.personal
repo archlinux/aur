@@ -6,10 +6,10 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom-opt
-_srctag=GE-Proton8-24
-_commit=ba2339d9df86be01b6378371b469fe3fb242fc25
+_srctag=GE-Proton8-25
+_commit=2074d2af43bb7571a69609b2321c4d810df2621b
 pkgver=${_srctag//-/.}
-pkgrel=3
+pkgrel=1
 epoch=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -21,7 +21,6 @@ source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.gi
         wine-isolate_home.patch
         30-win32-aliases.conf
         wine-binfmt.conf)
-#Optional patches
 source+=(
 )
 sha512sums=('SKIP'
@@ -141,13 +140,13 @@ build() {
   # MingW Wine builds fail with relro
   export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
-  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
-  export CROSSLDFLAGS="$LDFLAGS -Wl,--file-alignment,4096"
-
   # From Proton
   OPTIMIZE_FLAGS="-O2 -march=haswell -mtune=haswell -mfpmath=sse -pipe -fno-semantic-interposition"
   SANITY_FLAGS="-fwrapv -fno-strict-aliasing"
   COMMON_FLAGS="$OPTIMIZE_FLAGS $SANITY_FLAGS -s -mno-avx2"
+
+  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
+  export CROSSLDFLAGS="$LDFLAGS -Wl,--file-alignment,4096"
 
   msg2 "Building Wine-64..."
 
