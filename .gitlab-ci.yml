@@ -6,8 +6,8 @@ workflow:
     - changes:
       - ${CI_CONFIG_PATH}
 
-build:
-  stage: build
+get_latest:
+  stage: .pre
   script:
     - npm install
     - |
@@ -26,13 +26,46 @@ build:
     key: node_modules-cache
     paths:
       - node_modules/
-  allow_failure: true
 
-deploy:
-  stage: deploy
+update:
+  stage: build
   image: archlinux:base-devel
   script:
-    - updpkgsums
-    - makepkg --printsrcinfo > .SRCINFO
+    - '[ -f "$mirrorlist" ] && cat "$mirrorlist" > /etc/pacman.d/mirrorlist'
+    - pacman -Sy pacman-contrib --quiet --needed --noconfirm --noprogressbar
+    - useradd deploy
+    - sudo -u deploy updpkgsums
+    - sudo -u deploy makepkg --printsrcinfo > .SRCINFO
+  artifacts:
+    paths:
+      - "PKGBUILD"
+      - ".SRCINFO"
   needs:
-    - build
+    - get_latest
+
+deploy-git:
+  stage: deploy
+  image: bitnami/git
+  script:
+    - eval $(ssh-agent -s)
+
+    - chmod 400 "$SSH_PRIVATE_KEY"
+    - ssh-add "$SSH_PRIVATE_KEY"
+
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+
+    - ssh-keyscan -p ${CI_SERVER_SHELL_SSH_PORT} ${CI_SERVER_SHELL_SSH_HOST} >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+
+    - PKGVER=`grep -E "^pkgver=.*" PKGBUILD | sed -e "s|^pkgver=||"`
+
+    - git config --remove-section user
+    - git config --add user.name "${GITLAB_USER_NAME}"
+    - git config --add user.email "${GITLAB_USER_EMAIL}"
+    - git remote set-url origin ssh://git@${CI_SERVER_SHELL_SSH_HOST}:${CI_SERVER_SHELL_SSH_PORT}/${CI_PROJECT_PATH}.git
+
+    - git commit -a -s -m "Auto update ver ${PKGVER}"
+    - git push origin HEAD:${CI_COMMIT_BRANCH}
+  needs:
+    - update
