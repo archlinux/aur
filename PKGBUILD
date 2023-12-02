@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music-git
-pkgver=2.2.0.r6.g13c570e
+pkgver=3.0.1.r10.g14965a93
 pkgrel=1
 _electronversion=27
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
@@ -29,16 +29,18 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export PNPM_HOME="$srcdir/pnpm-home"
-  pnpm install --frozen-lockfile
+  pnpm install
   pnpm clean
   pnpm build
-  ./node_modules/.bin/electron-builder --linux dir \
+  pnpm electron-builder --linux dir \
     ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer}
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -Dm644 pack/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/${pkgname%-git}/"
+  cp -r pack/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/${pkgname%-git}"
+
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
   install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 license -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"

@@ -1,6 +1,6 @@
 pkgbase = youtube-music-git
 	pkgdesc = YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)
-	pkgver = 2.2.0.r6.g13c570e
+	pkgver = 3.0.1.r10.g14965a93
 	pkgrel = 1
 	url = https://th-ch.github.io/youtube-music
 	install = youtube-music.install
