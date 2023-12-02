@@ -10,8 +10,9 @@ build:
   stage: build
   script:
     - npm install
+    - chmod a+x ${CI_BUILDS_DIR-:.}/get_latest
     - |
-      sed -i $(for arg in $(./get_latest); do
+      sed -i $(for arg in $(${CI_BUILDS_DIR-:.}/get_latest); do
         key=${arg%%=*}
         value=${arg#*=}
 
