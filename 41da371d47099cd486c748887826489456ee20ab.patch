@@ -1,0 +1,356 @@
+From 41da371d47099cd486c748887826489456ee20ab Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?B=C5=82a=C5=BCej=20Szczygie=C5=82?= <mumei6102@gmail.com>
+Date: Sun, 3 Dec 2023 00:08:35 +0100
+Subject: [PATCH] Use new FFT API for FFmpeg >= 6.1
+
+Use new API when compiling with FFmpeg >= 6.1, because FFmpeg 6.1 has
+a bug in old API wrapper which leads to QMPlay2 crash.
+---
+ src/modules/AudioFilters/Equalizer.cpp     |  32 ++-----
+ src/modules/AudioFilters/Equalizer.hpp     |  10 +-
+ src/modules/Visualizations/FFTSpectrum.cpp |  27 ++----
+ src/modules/Visualizations/FFTSpectrum.hpp |   8 +-
+ src/qmplay2/CMakeLists.txt                 |   1 +
+ src/qmplay2/FFT.hpp                        | 104 +++++++++++++++++++++
+ 6 files changed, 130 insertions(+), 52 deletions(-)
+ create mode 100644 src/qmplay2/FFT.hpp
+
+diff --git a/src/modules/AudioFilters/Equalizer.cpp b/src/modules/AudioFilters/Equalizer.cpp
+index 7b51b090e..21cf8eec3 100644
+--- a/src/modules/AudioFilters/Equalizer.cpp
++++ b/src/modules/AudioFilters/Equalizer.cpp
+@@ -18,20 +18,8 @@
+ 
+ #include <Equalizer.hpp>
+ 
+-extern "C"
+-{
+-    #include <libavutil/mem.h>
+-    #include <libavcodec/avfft.h>
+-}
+-
+ #include <cmath>
+ 
+-static inline void fft_calc(FFTContext *fft_ctx, FFTComplex *cplx)
+-{
+-    av_fft_permute(fft_ctx, cplx);
+-    av_fft_calc(fft_ctx, cplx);
+-}
+-
+ static inline float cosI(const float y1, const float y2, float p)
+ {
+     p = (1.0f - cos(p * static_cast<float>(M_PI))) / 2.0f;
+@@ -178,7 +166,7 @@ double Equalizer::filter(QByteArray &data, bool flush)
+                 else
+                     m_input[c].clear();
+ 
+-                fft_calc(m_fftIn, m_complex);
++                m_fftIn.calc(m_complex);
+                 for (int i = 0; i < fftSizeDiv2; ++i)
+                 {
+                     const float coeff = m_f[i] * m_preamp;
+@@ -187,7 +175,7 @@ double Equalizer::filter(QByteArray &data, bool flush)
+                     m_complex[fftSize - 1 - i].re *= coeff;
+                     m_complex[fftSize - 1 - i].im *= coeff;
+                 }
+-                fft_calc(m_fftOut, m_complex);
++                m_fftOut.calc(m_complex);
+ 
+                 if (m_lastSamples[c].empty())
+                 {
+@@ -212,14 +200,12 @@ double Equalizer::filter(QByteArray &data, bool flush)
+ void Equalizer::alloc(bool b)
+ {
+     QMutexLocker locker(&m_mutex);
+-    if (!b && (m_fftIn || m_fftOut))
++    if (!b && (m_fftIn.isValid() || m_fftOut.isValid()))
+     {
+         m_canFilter = false;
+         m_fftNBits = m_fftSize = 0;
+-        av_fft_end(m_fftIn);
+-        av_fft_end(m_fftOut);
+-        m_fftIn = nullptr;
+-        m_fftOut = nullptr;
++        m_fftIn.finish();
++        m_fftOut.finish();
+         av_free(m_complex);
+         m_complex = nullptr;
+         m_input.clear();
+@@ -233,13 +219,13 @@ void Equalizer::alloc(bool b)
+     }
+     else if (b)
+     {
+-        if (!m_fftIn || !m_fftOut)
++        if (!m_fftIn.isValid() || !m_fftOut.isValid())
+         {
+             m_fftNBits  = sets().getInt("Equalizer/nbits");
+             m_fftSize   = 1 << m_fftNBits;
+-            m_fftIn  = av_fft_init(m_fftNBits, false);
+-            m_fftOut = av_fft_init(m_fftNBits, true);
+-            m_complex = (FFTComplex *)av_malloc(m_fftSize * sizeof(FFTComplex));
++            m_fftIn.init(m_fftNBits, false);
++            m_fftOut.init(m_fftNBits, true);
++            m_complex = FFT::allocComplex(m_fftSize);
+             m_input.resize(m_chn);
+             m_lastSamples.resize(m_chn);
+             m_windF.resize(m_fftSize);
+diff --git a/src/modules/AudioFilters/Equalizer.hpp b/src/modules/AudioFilters/Equalizer.hpp
+index 963cf6513..48777933c 100644
+--- a/src/modules/AudioFilters/Equalizer.hpp
++++ b/src/modules/AudioFilters/Equalizer.hpp
+@@ -19,12 +19,10 @@
+ #pragma once
+ 
+ #include <AudioFilter.hpp>
++#include <FFT.hpp>
+ 
+ #include <vector>
+ 
+-struct FFTContext;
+-struct FFTComplex;
+-
+ class Equalizer final : public AudioFilter
+ {
+ public:
+@@ -63,9 +61,9 @@ class Equalizer final : public AudioFilter
+ #else
+     mutable QMutex m_mutex;
+ #endif
+-    FFTContext *m_fftIn = nullptr;
+-    FFTContext *m_fftOut = nullptr;
+-    FFTComplex *m_complex = nullptr;
++    FFT m_fftIn;
++    FFT m_fftOut;
++    FFT::Complex *m_complex = nullptr;
+     std::vector<std::vector<float>> m_input, m_lastSamples;
+     std::vector<float> m_windF, m_f;
+     float m_preamp = 0.0f;
+diff --git a/src/modules/Visualizations/FFTSpectrum.cpp b/src/modules/Visualizations/FFTSpectrum.cpp
+index 0fdbb8958..de401e169 100644
+--- a/src/modules/Visualizations/FFTSpectrum.cpp
++++ b/src/modules/Visualizations/FFTSpectrum.cpp
+@@ -23,15 +23,9 @@
+ #include <QPainterPath>
+ #include <qevent.h>
+ 
+-extern "C"
+-{
+-    #include <libavutil/mem.h>
+-    #include <libavcodec/avfft.h>
+-}
+-
+ #include <cmath>
+ 
+-static inline void fltmix(FFTComplex *dest, const float *winFunc, const float *src, const int size, const uchar chn)
++static inline void fltmix(FFT::Complex *dest, const float *winFunc, const float *src, const int size, const uchar chn)
+ {
+     for (int i = 0, j = 0; i < size; i += chn)
+     {
+@@ -144,7 +138,7 @@ void FFTSpectrumW::stop()
+ /**/
+ 
+ FFTSpectrum::FFTSpectrum(Module &module) :
+-    w(*this), fft_ctx(nullptr), tmpData(nullptr), tmpDataSize(0), tmpDataPos(0), m_linearScale(false)
++    w(*this), tmpDataSize(0), tmpDataPos(0), m_linearScale(false)
+ {
+     SetModule(module);
+ }
+@@ -156,17 +150,15 @@ void FFTSpectrum::soundBuffer(const bool enable)
+     if (arrSize != tmpDataSize)
+     {
+         tmpDataPos = 0;
+-        av_free(tmpData);
+-        tmpData = nullptr;
++        FFT::freeComplex(m_complex);
+         m_winFunc.clear();
+         w.spectrumData.clear();
+         w.lastData.clear();
+-        av_fft_end(fft_ctx);
+-        fft_ctx = nullptr;
++        m_fft.finish();
+         if ((tmpDataSize = arrSize))
+         {
+-            fft_ctx = av_fft_init(w.fftSize, false);
+-            tmpData = (FFTComplex *)av_malloc(tmpDataSize * sizeof(FFTComplex));
++            m_fft.init(w.fftSize, false);
++            m_complex = FFT::allocComplex(tmpDataSize);
+             m_winFunc.resize(tmpDataSize);
+             for (int i = 0; i < tmpDataSize; ++i)
+                 m_winFunc[i] = 0.5f - 0.5f * cos(2.0f * static_cast<float>(M_PI) * i / (tmpDataSize - 1));
+@@ -240,18 +232,17 @@ void FFTSpectrum::sendSoundData(const QByteArray &data)
+         const int size = qMin((data.size() - newDataPos) / (int)sizeof(float), (tmpDataSize - tmpDataPos) * w.chn);
+         if (!size)
+             break;
+-        fltmix(tmpData + tmpDataPos, m_winFunc.data() + tmpDataPos, (const float *)(data.constData() + newDataPos), size, w.chn);
++        fltmix(m_complex + tmpDataPos, m_winFunc.data() + tmpDataPos, (const float *)(data.constData() + newDataPos), size, w.chn);
+         newDataPos += size * sizeof(float);
+         tmpDataPos += size / w.chn;
+         if (tmpDataPos == tmpDataSize)
+         {
+-            av_fft_permute(fft_ctx, tmpData);
+-            av_fft_calc(fft_ctx, tmpData);
++            m_fft.calc(m_complex);
+             tmpDataPos /= 2;
+             float *spectrumData = w.spectrumData.data();
+             for (int i = 0; i < tmpDataPos; ++i)
+             {
+-                spectrumData[i] = sqrt(tmpData[i].re * tmpData[i].re + tmpData[i].im * tmpData[i].im) / tmpDataPos;
++                spectrumData[i] = sqrt(m_complex[i].re * m_complex[i].re + m_complex[i].im * m_complex[i].im) / tmpDataPos;
+                 if (m_linearScale)
+                     spectrumData[i] *= 2.0f;
+                 else
+diff --git a/src/modules/Visualizations/FFTSpectrum.hpp b/src/modules/Visualizations/FFTSpectrum.hpp
+index bd69e6bb5..9cd3e4768 100644
+--- a/src/modules/Visualizations/FFTSpectrum.hpp
++++ b/src/modules/Visualizations/FFTSpectrum.hpp
+@@ -20,6 +20,7 @@
+ 
+ #include <QMPlay2Extensions.hpp>
+ #include <VisWidget.hpp>
++#include <FFT.hpp>
+ 
+ #include <QCoreApplication>
+ #include <QLinearGradient>
+@@ -52,9 +53,6 @@ class FFTSpectrumW final : public VisWidget
+ 
+ /**/
+ 
+-struct FFTContext;
+-struct FFTComplex;
+-
+ class FFTSpectrum final : public QMPlay2Extensions
+ {
+ public:
+@@ -76,8 +74,8 @@ class FFTSpectrum final : public QMPlay2Extensions
+ 
+     FFTSpectrumW w;
+ 
+-    FFTContext *fft_ctx;
+-    FFTComplex *tmpData;
++    FFT m_fft;
++    FFT::Complex *m_complex = nullptr;
+     std::vector<float> m_winFunc;
+     int tmpDataSize, tmpDataPos;
+     bool m_linearScale;
+diff --git a/src/qmplay2/CMakeLists.txt b/src/qmplay2/CMakeLists.txt
+index babb2d03a..1793f50fa 100644
+--- a/src/qmplay2/CMakeLists.txt
++++ b/src/qmplay2/CMakeLists.txt
+@@ -50,6 +50,7 @@ set(QMPLAY2_HDR
+     VideoOutputCommon.hpp
+     HWDecContext.hpp
+     GPUInstance.hpp
++    FFT.hpp
+ )
+ 
+ set(QMPLAY2_SRC
+diff --git a/src/qmplay2/FFT.hpp b/src/qmplay2/FFT.hpp
+new file mode 100644
+index 000000000..b175fbd87
+--- /dev/null
++++ b/src/qmplay2/FFT.hpp
+@@ -0,0 +1,104 @@
++#pragma once
++
++extern "C"
++{
++    #include <libavutil/version.h>
++    #include <libavutil/mem.h>
++    #if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(58, 29, 100)
++    #   include <libavutil/tx.h>
++    #else
++    #   include <libavcodec/avfft.h>
++    #endif
++}
++
++class FFT
++{
++public:
++    struct Complex
++    {
++        float re, im;
++    };
++
++    static inline Complex *allocComplex(int n);
++    static inline void freeComplex(Complex *&complex);
++
++public:
++    inline FFT() = default;
++    inline ~FFT();
++
++    inline bool isValid() const;
++
++    inline void init(int nbits, int inverse);
++    inline void calc(Complex *complex);
++    inline void finish();
++
++private:
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(58, 29, 100)
++    AVTXContext *m_ctx = nullptr;
++    av_tx_fn m_fn = nullptr;
++#else
++    FFTContext *m_ctx = nullptr;
++#endif
++};
++
++/* Inline implementation */
++
++FFT::Complex *FFT::allocComplex(int n)
++{
++    return reinterpret_cast<Complex *>(av_malloc(n * sizeof(Complex)));
++}
++void FFT::freeComplex(Complex *&complex)
++{
++    av_freep(&complex);
++}
++
++FFT::~FFT()
++{
++    finish();
++}
++
++bool FFT::isValid() const
++{
++    return static_cast<bool>(m_ctx);
++}
++
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(58, 29, 100)
++void FFT::init(int nbits, int inverse)
++{
++    finish();
++
++    const float scale = 1.0f;
++    av_tx_init(&m_ctx, &m_fn, AV_TX_FLOAT_FFT, inverse, 1 << nbits, &scale, AV_TX_INPLACE);
++}
++void FFT::calc(Complex *complex)
++{
++    if (m_ctx && m_fn)
++    {
++        m_fn(m_ctx, complex, complex, sizeof(Complex));
++    }
++}
++void FFT::finish()
++{
++    av_tx_uninit(&m_ctx);
++}
++#else
++void FFT::init(int nbits, int inverse)
++{
++    finish();
++
++    m_ctx = av_fft_init(nbits, inverse);
++}
++void FFT::calc(Complex *complex)
++{
++    if (m_ctx)
++    {
++        av_fft_permute(m_ctx, reinterpret_cast<FFTComplex *>(complex));
++        av_fft_calc(m_ctx, reinterpret_cast<FFTComplex *>(complex));
++    }
++}
++void FFT::finish()
++{
++    av_fft_end(m_ctx);
++    m_ctx = nullptr;
++}
++#endif
