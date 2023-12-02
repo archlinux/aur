@@ -1,10 +1,10 @@
 {
-	"nameShort": "Code",
-	"nameLong": "Visual Studio Code",
+	"nameShort": "VSCodium",
+	"nameLong": "VSCodium",
 	"applicationName": "code",
 	"serverApplicationName": "code-server",
 	"urlProtocol": "vscode",
-	"dataFolderName": ".vscode",
+	"dataFolderName": ".vscode-oss",
 	"serverDataFolderName": ".vscode-server",
 	"webUrl": "https://vscode.dev",
 	"webEndpointUrl": "https://main.vscode-cdn.net",
