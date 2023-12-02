@@ -3,7 +3,7 @@
 
 pkgname=noto-fonts-lite
 epoch=1
-pkgver=23.11.1
+pkgver=23.12.1
 pkgrel=1
 pkgdesc='Google Noto TTF fonts (lite version)'
 arch=(any)
