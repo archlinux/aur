@@ -1,6 +1,6 @@
 pkgbase = inlyne-bin
 	pkgdesc = A GPU powered yet browserless tool to help you quickly view markdown files in the blink of an eye
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/trimental/inlyne
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = inlyne-bin
 	depends = openssl
 	provides = inlyne
 	conflicts = inlyne
-	source = https://github.com/trimental/inlyne/releases/download/v0.3.2/inlyne-v0.3.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 44c4c008c7877f75726a3708c2e995c39299699f705648f66658cfcbadd2f121
+	source = https://github.com/trimental/inlyne/releases/download/v0.3.3/inlyne-v0.3.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 9ea754547a483abb1a1ab2980ee0a2919608ff909b8083782c48a75766c59c0e
 
 pkgname = inlyne-bin
