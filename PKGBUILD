@@ -6,7 +6,6 @@
 
 # options
 : ${_debugfast:=false}
-: ${_system_zlib:=false}
 
 : ${_avx_build:=false}
 : ${_pkgtype:=debugfast-git}
@@ -25,7 +24,7 @@ fi
 # basic info
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=5.0.r20495.g89963c287c
+pkgver=5.0.r20511.gc54e8d733f
 pkgrel=1
 pkgdesc='A Gamecube / Wii / Triforce emulator'
 arch=(x86_64)
@@ -36,47 +35,51 @@ license=(GPL2)
 # main package
 _main_package() {
   depends=(
-    # extra/dolphin-emu
     alsa-lib
     bluez-libs
-    enet
+    curl
+    ffmpeg
     gcc-libs
     glibc
-    hidapi
-    libavcodec.so
-    libavformat.so
-    libavutil.so
-    libcurl.so
     libevdev
     libgl
-    libminiupnpc.so
     libpulse
-    libsfml-network.so
-    libsfml-system.so
-    libswscale.so
     libudev.so
-    libusb-1.0.so
     libx11
     libxi
     libxrandr
-    lzo
-    minizip-ng
-    pugixml
     qt6-base
     qt6-svg
-    sfml
 
-    ## dolphin-emu-git
-    #libmgba
+    ## optional
+    bzip2
     cubeb
+    curl
     fmt
+    hidapi
+    libiconv
+    liblzma.so
     libspng
+    libusb
+    lz4
+    lzo
     mbedtls2
+    miniupnpc
+    minizip-ng
+    pugixml
+    sdl2
+    sfml
+    zstd
+
+    ## broken
+    #enet
+    #libmgba
+    #xxhash
+    #zlib-ng
   )
   makedepends+=(
     cmake
     git
-    ninja
     python
   )
   optdepends=(
@@ -96,13 +99,6 @@ _main_package() {
 
 # submodules
 _source_dolphin_emu() {
-  if [ x"${_system_zlib::1}" == "xt" ] ; then
-    depends+=(zlib-ng)
-  else
-    source+=('zlib-ng'::'git+https://github.com/zlib-ng/zlib-ng.git')
-    sha256sums+=('SKIP')
-  fi
-
   source+=(
     #'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
     #'curl'::'git+https://github.com/curl/curl.git'
@@ -122,6 +118,7 @@ _source_dolphin_emu() {
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
     'mgba-emu.mgba'::'git+https://github.com/mgba-emu/mgba.git'
     'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
+    'zlib-ng'::'git+https://github.com/zlib-ng/zlib-ng.git'
   )
   sha256sums+=(
     #'SKIP'
@@ -137,6 +134,7 @@ _source_dolphin_emu() {
     #'SKIP'
     #'SKIP'
 
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -165,14 +163,8 @@ _source_dolphin_emu() {
       ['gpuopen-librariesandsdks.vulkanmemoryallocator']='Externals/VulkanMemoryAllocator'
       ['mgba-emu.mgba']='Externals/mGBA/mgba'
       ['retroachievements.rcheevos']='Externals/rcheevos/rcheevos'
+      ['zlib-ng']='Externals/zlib-ng/zlib-ng'
     )
-
-    if [ x"${_system_zlib::1}" != "xt" ] ; then
-      _submodules+=(
-        ['zlib-ng']='Externals/zlib-ng/zlib-ng'
-      )
-    fi
-
     _submodule_update
   )
 }
@@ -223,10 +215,6 @@ prepare() {
 }
 
 build() {
-  if [ x"${_system_zlib::1}" == "xt" ] ; then
-    export LDFLAGS="-Wl,--copy-dt-needed-entries"
-  fi
-
   if [[ x"${_avx_build::1}" == "xt" ]] ; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
     export CXXFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
@@ -235,14 +223,18 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgname"
-    -G Ninja
+
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DDISTRIBUTOR='aur.chaotic.cx'
     -DENABLE_AUTOUPDATE=OFF
     # -DENABLE_ANALYTICS=OFF # ON is opt-in
     # -DUSE_SYSTEM_LIBS=ON # AUTO
+
+    -DUSE_SYSTEM_ENET=OFF
     -DUSE_SYSTEM_LIBMGBA=OFF
+    -DUSE_SYSTEM_XXHASH=OFF
+    -DUSE_SYSTEM_ZLIB=OFF
 
     -DENABLE_LTO=OFF # segfault when on
     -DENABLE_TESTS=OFF
