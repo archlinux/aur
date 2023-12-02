@@ -2,7 +2,7 @@
 
 _pkgname=qalculate-qt
 pkgname=${_pkgname}5
-pkgver=4.8.1
+pkgver=4.9.0
 pkgrel=1
 pkgdesc='Qt5 frontend for libqalculate'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -13,7 +13,7 @@ makedepends=('qt5-tools')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://github.com/Qalculate/qalculate-qt/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('34977c8d02d47831c21a9a25ef967d8c5eefe630ec10f86347a7c598891300d5')
+sha256sums=('d3d2a054ed73c005fe2e64dc1882a0fe2f9aef817d59f30898efe4a80edf1330')
 
 build() {
   cd "${_pkgname}-${pkgver}"
