@@ -184,17 +184,12 @@ build() {
         --build-name="${pkgname}"
 
     if [[ x"${_system_cflags::1}" != "xt" ]] ; then
-      unset CFLAGS
-      unset CXXFLAGS
-      unset RUSTFLAGS
-      unset LDFLAGS
+      unset CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
     fi
-
     : ${CFLAGS:="-O2 -march=haswell -mtune=haswell -pipe -fno-semantic-interposition"}
     : ${CXXFLAGS:="-O2 -march=haswell -mtune=haswell -pipe -fno-semantic-interposition"}
     : ${RUSTFLAGS:="-C opt-level=2 -C target-cpu=haswell"}
     : ${LDFLAGS:="-Wl,-O1,--sort-common,--as-needed"}
-
     export CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
 
     # If using -march=native and the CPU supports AVX, launching a d3d9

@@ -184,17 +184,12 @@ build() {
         --build-name="${pkgname}"
 
     if [[ x"${_system_cflags::1}" != "xt" ]] ; then
-      unset CFLAGS
-      unset CXXFLAGS
-      unset RUSTFLAGS
-      unset LDFLAGS
+      unset CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
     fi
-
     : ${CFLAGS:="-O2 -march=nocona -mtune=core-avx2 -pipe"}
     : ${CXXFLAGS:="-O2 -march=nocona -mtune=core-avx2 -pipe"}
     : ${RUSTFLAGS:="-C opt-level=2 -C target-cpu=nocona"}
     : ${LDFLAGS:="-Wl,-O1,--sort-common,--as-needed"}
-
     export CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
@@ -271,12 +266,12 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '4e3e8a40729e4c9e3e9e651cebe4f1aed8f9a4d22e991e6cd24608687f0eedd4'
-            '20d42ea43f84fa8b47df035a0aa2a3fbbecdec0521b708cb0d676012f4cdc9f4'
-            'c35d793a64ce15bcb2985b5d0a5bc91556f8a99a9c6baa1fe0f676ad38fb5314'
-            'debb88a8088a00d3fc5e462bdeff602c00c8855fa57706a76f509475ee7e04a3'
-            'cf328c65711dc40709708ba9ff87512d6fae3658e18066340f040aa4a5f2df8f'
-            '92eb8c7f85707322b4c6e27af76787ffaae4db4d3f320f5bf00b59182713e4ab'
-            '1c9c619884fa85c5eec9afcfc42e1245409bebbdf83eeaddfdeebf407bcb6cf6')
+            'cc1a8b63c8b20920554f38eb5794db16908bdda62771e379ec75d9ed8acd6687'
+            '6845f4948411117189be50e55b0dbabab1deaad896ae4bf1104f52a371e45c40'
+            '541fc98de694231a8f2d99f336f35dbce10e837d6f142422628f7b3c826260cb'
+            'aa807d888522aafc254d812b2bcf9f193c25b83bac971a7d4134e554d819f2d0'
+            'e15287c3a986f525cbb88f5a20e68e33bebf10e47a8368739b1b23671a00e568'
+            '41c1eaa7cdf4633e72ebfa8ccc7be7edb4191c74bc8fd4d9d1ddc06f53e2aa31')
 # Optional patches
 sha256sums+=(
 )
