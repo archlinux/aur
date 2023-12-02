@@ -2,7 +2,7 @@
 
 pkgname=deepl-electron
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron wrapper for DeepL Translator"
 arch=(any)
 url="https://github.com/litongjava/electron-deepl-translator"
