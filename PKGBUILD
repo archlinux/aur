@@ -3,32 +3,37 @@
 
 _name=VSTPlugins-UhhyouPlugins
 pkgname=uhhyou-plugins
-pkgver=0.58.0
-pkgrel=2
+pkgver=0.59.0
+pkgrel=1
 pkgdesc='A collection of synthesizer and effect VST3 plugins'
 arch=(aarch64 x86_64)
 url='https://ryukau.github.io/VSTPlugins/'
 license=(GPL3)
 groups=(pro-audio vst3-plugins)
-depends=(xcb-util-cursor)
-makedepends=(cairo cmake freetype2 gtkmm3 libx11 libxkbcommon-x11 pango vst3sdk xcb-util xcb-util-keysyms)
+depends=(cairo gcc-libs glibc libxcb xcb-util  xcb-util-cursor)
+makedepends=(cmake fontconfig gtkmm3 libx11 libxkbcommon-x11 pango vst3sdk
+             xcb-util-keysyms)
 optdepends=('vst3-host: for running VST3 plugins')
 _pocketfft_ref=53e9dd4
 _vcl_ref=4c90584
+_docs_ref=24efb7d
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/ryukau/VSTPlugins/archive/refs/tags/UhhyouPlugins$pkgver.tar.gz"
   "pocketfft-$_pocketfft_ref.tar.gz::https://gitlab.mpcdf.mpg.de/mtr/pocketfft/-/archive/$_pocketfft_ref/pocketfft-$_pocketfft_ref.tar.gz"
   "vcl-$_vcl_ref.tar.gz::https://github.com/vectorclass/version2/archive/$_vcl_ref.tar.gz"
+  "docs-$_docs_ref.tar.gz::https://github.com/ryukau/UhhyouManuals/archive/$_docs_ref.tar.gz"
 )
-sha256sums=('7d73da5bacffc87060edc57012253287a4fca2c1c283466869acd6e5e944624c'
+sha256sums=('65233744dc49c531bec535558cb8f97df7af10fd3af32cbbcbc0bc7974129ebe'
             '0f2b09e14b1497c9a1283c5b64a6682fd43daa6ba7ca17eb3dbcc9b0ec46204f'
-            'd2a36ccedf4585b33fdba6cb38000aaa022c5b5306efeff2ad58cca52999c827')
+            'd2a36ccedf4585b33fdba6cb38000aaa022c5b5306efeff2ad58cca52999c827'
+            '6f0a57ab2b63cb0fdcdbe26a14b0cd072d82655faa7c8e93504df5c8ca78e0b6')
 
 prepare() {
   cd $_name$pkgver
   # link submodules
   rm -r lib/pocketfft && ln -s "$srcdir"/pocketfft-$_pocketfft_ref lib/pocketfft
   rm -r lib/vcl && ln -s "$srcdir"/version2-$_vcl_ref* lib/vcl
+  rm -r docs && ln -s "$srcdir"/UhhyouManuals-$_docs_ref* docs
   # copy and patch vst3sdk
   rm -rf lib/vst3sdk
   if [[ -d /usr/src/vst3sdk ]]; then
@@ -58,8 +63,8 @@ check() {
 }
 
 package() {
-  depends+=(libxkbcommon.so libxkbcommon-x11.so libpangocairo-1.0.so libpangoft2-1.0.so
-    libpango-1.0.so libgobject-2.0.so ttf-croscore)
+  depends+=(libfontconfig.so libgobject-2.0.so libpango-1.0.so libpangocairo-1.0.so
+    libpangoft2-1.0.so libxkbcommon.so libxkbcommon-x11.so ttf-croscore)
   cd  $pkgname-build/VST3/Release
   for plugin in *.vst3; do
     # install executable
