@@ -1,0 +1,16 @@
+pkgbase = python-tree-sitter-zathurarc
+	pkgdesc = zathurarc grammar for tree-sitter
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/tree-sitter-zathurarc
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/cp311/t/tree_sitter_zathurarc/tree_sitter_zathurarc-0.0.1-cp311-cp311-manylinux_2_17_x86_64.manylinux_2_5_x86_64.manylinux1_x86_64.manylinux2014_x86_64.whl
+	sha256sums = c0b66e1876b0916f3f536d833dce5d57d698d19193947b8519283a9ed3a69b64
+
+pkgname = python-tree-sitter-zathurarc
