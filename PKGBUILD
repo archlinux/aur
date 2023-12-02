@@ -2,7 +2,7 @@
 
 _name=bluez-qt
 pkgname=${_name}5
-pkgver=5.112.0
+pkgver=5.113.0
 pkgrel=1
 pkgdesc='Qt wrapper for Bluez 5 DBus API'
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('eb2979251fd039eb585a2e51d38e8e34fdb108a481818202d50426f9e9dc7f0e'
+sha256sums=('a7b3f985f60f465925a105075e1050b5666d2042bfd36998444914f6139dd6f8'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
