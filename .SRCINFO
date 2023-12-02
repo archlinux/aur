@@ -1,7 +1,7 @@
 pkgbase = deepl-electron-bin
 	pkgdesc = Electron wrapper for DeepL Translator (binaries)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oifj34f34f/deepl-electron-bin
 	arch = any
 	license = MIT

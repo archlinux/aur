@@ -2,7 +2,7 @@
 
 pkgname=deepl-electron-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron wrapper for DeepL Translator (binaries)"
 arch=(any)
 url="https://github.com/oifj34f34f/deepl-electron-bin"
