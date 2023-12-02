@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=exdex
-_pkgver=1.2.2
+_pkgver=1.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('92fdad358c2f14176ab01af5348e1e23')
-sha256sums=('d62633a9fd3d81617e139fc017a8ad2591231f315ddfa2a489806e68454ebcac')
+md5sums=('a30891a6c53ec03fa527562dedba2b2f')
+sha256sums=('e6668c37c5c3762f550373f4e24a0fdd3af74b7d38562c0930c0abfe4499abee')
 
 build() {
   mkdir -p build
