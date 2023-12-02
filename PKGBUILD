@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.37.0.r9.ge22a2f0483
+pkgver=0.37.0.r56.g67aa568437
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -85,6 +85,7 @@ depends=(
          'ocl-icd'
          'openal'
          'opencore-amr'
+         'openh264'
          'openjpeg2'
          'openmp'
          'opus'
@@ -178,9 +179,7 @@ _makeoptdepends=('cuda: mpv ffmpeg nvcc and libnpp support'
                  'libsixel: Allow mpv to implement sixel as a output device'
                  'nvidia-utils: for hardware accelerated video decoding with CUDA'
                  'onevpl: mpv ffmpeg intel graphic support'
-                 'openh264: Additional libopenh264 support for ffmpeg'
                  'shine: Additional libshine support for ffmpeg'
-                 'spirv-cross: Additional spirv support for mpv'
                  'tensorflow: mpv ffmpeg DNN module backend'
                  'vo-amrwbenc: Additional libvo-amrwbenc support for ffmpeg'
                  'xavs: Additional libxavs support for ffmpeg'
@@ -196,12 +195,6 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   fi
   if [ -f /usr/lib/libklvanc.so ]; then
     depends+=('libklvanc')
-  fi
-  if [ -f /usr/lib/libopenh264.so ]; then
-    depends+=('openh264')
-  fi
-  if [ -f /usr/lib/libspirv-cross-c-shared.so ]; then
-    depends+=('spirv-cross')
   fi
   if [ -f /usr/lib/libshine.so ]; then
     depends+=('shine')
@@ -312,6 +305,7 @@ prepare() {
     '--enable-libmysofa'
     '--enable-libopencore-amrnb'
     '--enable-libopencore-amrwb'
+    '--enable-libopenh264'
     '--enable-libopenjpeg'
     '--enable-libopenmpt'
     '--enable-libopus'
@@ -445,7 +439,7 @@ prepare() {
     '-Djpeg=enabled'
     '-Drpi=disabled'
     '-Dsdl2-video=enabled'
-    '-Dshaderc=enabled'
+    '-Dshaderc=disabled'
     '-Dplain-gl=enabled'
     '-Dvdpau=enabled'
     '-Dvaapi=enabled'
@@ -488,6 +482,10 @@ prepare() {
     '-Dd3d11=disabled'
   )
 
+  if [ ! -f /usr/lib/libHLSL.so ]; then
+    sed -i 's|-lHLSL||g' ffmpeg/configure;
+    sed -i 's|-lOGLCompiler||g' ffmpeg/configure;
+  fi
 
   if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
     if [ -f /usr/lib/libdavs2.so ]; then
@@ -495,12 +493,6 @@ prepare() {
     fi
     if [ -f /usr/lib/libklvanc.so ]; then
       _ffmpeg_options+=('--enable-libklvanc')
-    fi
-    if [ -f /usr/lib/libopenh264.so ]; then
-      _ffmpeg_options+=('--enable-libopenh264')
-    fi
-    if [ -f /usr/lib/libspirv-cross-c-shared.so ]; then
-      _mpv_options+=('-Dspirv-cross=enabled')
     fi
     if [ -f /usr/lib/libshine.so ]; then
       _ffmpeg_options+=('--enable-libshine')
@@ -514,7 +506,7 @@ prepare() {
       _ffmpeg_options+=('--enable-libmfx')
     fi
     if [ -f /usr/lib/libtensorflow.so ]; then
-      #_ffmpeg_options+=('--enable-libtensorflow')
+      _ffmpeg_options+=('--enable-libtensorflow')
       _ffmpeg_options+=('--extra-cflags=-I/usr/include/tensorflow')
     fi
     if [ -f /usr/lib/libvo-amrwbenc.so ]; then
