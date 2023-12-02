@@ -2,14 +2,14 @@
 pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
 pkgver=r1128.0b8f9ed
-pkgrel=1
+pkgrel=2
 pkgdesc="A Clash GUI based on tauri."
 arch=('x86_64' 'aarch64')
 url="https://github.com/keiko233/clash-nyanpasu"
 license=('GPL3')
 depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' 'clash-meta')
-makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'quickjs')
-optdepends=('clash')
+makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'quickjs' 'git')
+optdepends=('clash' 'clash-rs')
 source=("git+https://github.com/keiko233/clash-nyanpasu.git#branch=dev"
 	"${_pkgname}.desktop"
 )
@@ -30,6 +30,7 @@ function prepare(){
 	install -d src-tauri/sidecar
 	ln -sf /usr/bin/clash-meta src-tauri/sidecar/clash-${CARCH}-unknown-linux-gnu
 	ln -sf /usr/bin/clash-meta src-tauri/sidecar/clash-meta-${CARCH}-unknown-linux-gnu
+	ln -sf /usr/bin/clash-meta src-tauri/sidecar/clash-rs-${CARCH}-unknown-linux-gnu
 
 	install -d src-tauri/resources
 	ln -sf /etc/clash/Country.mmdb src-tauri/resources/Country.mmdb
