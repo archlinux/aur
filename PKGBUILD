@@ -7,7 +7,7 @@
 
 pkgname=opencv2
 pkgver=2.4.13.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source Computer Vision Library (version 2.x)'
 arch=('x86_64')
 license=('BSD')
@@ -29,31 +29,33 @@ build() {
     export CXXFLAGS+=' -std=c++14 -ffat-lto-objects'
     cmake -S "opencv-${pkgver}" -B build \
         -G 'Unix Makefiles' \
-        -DCMAKE_BUILD_TYPE='None' \
-        -DCMAKE_INSTALL_PREFIX='/opt/opencv2' \
-        -DCMAKE_SKIP_INSTALL_RPATH='YES' \
-        -DBUILD_JASPER='ON' \
-        -DBUILD_opencv_java='OFF' \
-        -DBUILD_opencv_python='OFF' \
-        -DBUILD_EXAMPLES='OFF' \
-        -DBUILD_PERF_TESTS='OFF' \
-        -DBUILD_TESTS='OFF' \
-        -DBUILD_WITH_DEBUG_INFO='OFF' \
-        -DINSTALL_C_EXAMPLES='OFF' \
-        -DINSTALL_PYTHON_EXAMPLES='OFF' \
-        -DWITH_CUDA='OFF' \
-        -DWITH_FFMPEG:BOOL='OFF' \
-        -DWITH_GSTREAMER='ON' \
-        -DWITH_OPENCL='ON' \
-        -DWITH_OPENGL='ON' \
-        -DWITH_TBB='OFF' \
-        -DWITH_XINE='OFF' \
-        -DENABLE_SSE3='OFF' \
-        -DENABLE_SSSE4='OFF' \
-        -DENABLE_SSE41='OFF' \
-        -DENABLE_SSE42='OFF' \
-        -DENABLE_AVX='OFF' \
-        -DENABLE_AVX2='OFF' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:STRING='/opt/opencv2' \
+        -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
+        -DBUILD_JASPER:BOOL='ON' \
+        -DBUILD_opencv_java:BOOL='OFF' \
+        -DBUILD_opencv_python:BOOL='OFF' \
+        -DBUILD_EXAMPLES:BOOL='OFF' \
+        -DBUILD_PERF_TESTS:BOOL='OFF' \
+        -DBUILD_TESTS:BOOL='OFF' \
+        -DBUILD_WITH_DEBUG_INFO:BOOL='OFF' \
+        -DINSTALL_C_EXAMPLES:BOOL='OFF' \
+        -DINSTALL_PYTHON_EXAMPLES:BOOL='OFF' \
+        -DWITH_CUDA:BOOL='OFF' \
+        -DWITH_FFMPEG:BOOL:BOOL='OFF' \
+        -DWITH_GSTREAMER:BOOL='ON' \
+        -DWITH_LIBV4L:BOOL='OFF' \
+        -DWITH_OPENCL:BOOL='ON' \
+        -DWITH_OPENGL:BOOL='ON' \
+        -DWITH_TBB:BOOL='OFF' \
+        -DWITH_V4L:BOOL='OFF' \
+        -DWITH_XINE:BOOL='OFF' \
+        -DENABLE_SSE3:BOOL='OFF' \
+        -DENABLE_SSSE4:BOOL='OFF' \
+        -DENABLE_SSE41:BOOL='OFF' \
+        -DENABLE_SSE42:BOOL='OFF' \
+        -DENABLE_AVX:BOOL='OFF' \
+        -DENABLE_AVX2:BOOL='OFF' \
         -Wno-dev
     cmake --build build
 }
