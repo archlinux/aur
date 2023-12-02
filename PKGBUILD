@@ -1,5 +1,6 @@
 # Maintainer: parcimonic <aur-at_parcimonic-dot_me>
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: ohno1052 <agarkovartem1@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
@@ -7,12 +8,13 @@ pkgbase=mutter-auto-rotation
 pkgname=mutter-auto-rotation
 provides=(libmutter-13.so mutter)
 conflicts=(mutter)
-pkgver=45.1
+pkgver=45.2
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME, with touch-mode auto-rotation (reverts MR 1710)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
+_tag=$pkgver
 depends=(
   colord
   dconf
@@ -45,11 +47,13 @@ makedepends=(
   wayland-protocols
   xorg-server
   xorg-server-xvfb
+  llvm
+  clang
+  lld
 )
-_commit=c71a119de06d8937930e4d1adf06ff0c2b259653  # tags/45.1^0
 
 source=(
-  "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/GNOME/mutter.git#tag=$_tag"
   "0001-Revert-backends-native-Disable-touch-mode-with-point.patch"
 )
 
@@ -70,12 +74,14 @@ prepare() {
 }
 
 build() {
+  export CC=clang CXX=clang++ LD=ld.lld
   local meson_options=(
     -D docs=true
     -D egl_device=true
     -D installed_tests=false
     -D libdisplay_info=true
     -D wayland_eglstream=true
+    --buildtype=release
   )
 
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
