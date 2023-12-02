@@ -2,11 +2,12 @@
 
 pkgname='spacedrive'
 pkgver=0.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.'
 arch=('x86_64')
 url='https://spacedrive.com/'
 license=('AGPL3')
+conflicts=('spacedrive-git')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/spacedriveapp/spacedrive/archive/refs/tags/${pkgver}.tar.gz")
 depends=('ffmpeg' 'libheif' 'gtk3' 'webkit2gtk' 'pango' 'gdk-pixbuf2' 'cairo' 'libsoup' 'glib2')
 makedepends=('cargo-nightly' 'pnpm' 'clang' 'git')
