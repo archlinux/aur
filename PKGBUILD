@@ -4,10 +4,10 @@
 # Contributor: haha662 <haha662 at outlook dot com>
 
 _pkgname=bookdown
-_pkgver=0.36
+_pkgver=0.37
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Authoring Books and Technical Documents with R Markdown"
 arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -46,8 +46,8 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3e17239b024f73606d38e363d8b640ed')
-sha256sums=('9e489684ec9e78f89439f5da60273fee061b2607f9f53bc512df32f274919730')
+md5sums=('f4bb797613b2e89435e211f2d55b0912')
+sha256sums=('b3c11156d873ea892b548344d02e01bbfa3505002ab948010bdcf28215f548a2')
 
 build() {
   mkdir -p build
