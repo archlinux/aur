@@ -1,6 +1,6 @@
 pkgbase = spicetify-marketplace-bin
 	pkgdesc = Spicetify app that integrates a marketplace for extensions, themes and snippets
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/spicetify/spicetify-marketplace
 	install = spicetify-marketplace-bin.install
@@ -9,10 +9,10 @@ pkgbase = spicetify-marketplace-bin
 	makedepends = git
 	depends = spicetify-cli
 	depends = spotify
-	source = https://github.com/spicetify/spicetify-marketplace/releases/download/v0.9.2/spicetify-marketplace.zip
+	source = https://github.com/spicetify/spicetify-marketplace/releases/download/v0.9.3/spicetify-marketplace.zip
 	source = https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/color.ini
 	source = https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/LICENSE
-	sha256sums = a947ee7bf7bdac47d2fae7c2f19f1a71f1caea890462b84b517c5a29ff2d8d46
+	sha256sums = 3a3f5bac7a7f9c7c7e5b88b056962f575f574412160f4cec8b1c781e3e36e7d6
 	sha256sums = 802c83f4f822eb254f60ef34ea8c53ea9d97889b9e886ac532e42953b9548fb2
 	sha256sums = 49ecb1c6db038200e2f9e8549d99d1966dcfa5b4bc3d0aea3e89b2f3a305a6da
 
