@@ -7,8 +7,11 @@ pkgdesc="Arena Tracker is a deck tracker that gives you a lot of extra info whil
 arch=('x86_64')
 url="https://github.com/supertriodo/Arena-Tracker"
 license=('GPL')
-depends=('qt5-base' 'qt5-websockets' 'python-pyautogui' 'libzip' 'opencv2')
+depends=('qt5-base' 'qt5-websockets' 'libzip' 'opencv2')
 makedepends=('imagemagick' 'git')
+optdepends=(
+    'python-pyautogui: for the automatic deck builder'
+)
 source=("git+https://github.com/supertriodo/Arena-Tracker.git#tag=v$pkgver"
         'ArenaTracker.desktop')
 md5sums=('SKIP'

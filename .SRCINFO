@@ -9,9 +9,9 @@ pkgbase = arenatracker
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-websockets
-	depends = python-pyautogui
 	depends = libzip
 	depends = opencv2
+	optdepends = python-pyautogui: for the automatic deck builder
 	source = git+https://github.com/supertriodo/Arena-Tracker.git#tag=v23.11
 	source = ArenaTracker.desktop
 	md5sums = SKIP
