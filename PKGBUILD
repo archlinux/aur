@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=iptvorg-epg
-pkgver=1.3
+pkgver=r6716.99ce17c3
 pkgrel=1
 pkgdesc='Utilities for downloading the EPG (Electronic Program Guide) for thousands of TV channels from hundreds of sources'
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(
 	nodejs
 	npm
 )
-_commit=78d582b5e23c34f0d6d461416833b9b681983e38
+_commit=99ce17c3383566792844e37c28c394f2ae07f6b1
 source=(
 	git+https://github.com/iptv-org/epg.git#commit=${_commit}
 	iptvorg-epg.sh
@@ -28,6 +28,11 @@ source=(
 sha256sums=('SKIP'
             '44f5824af71a9f000d10b5360ade4d9e3dab3386956326ee7f60b5e35c51809f'
             '26e87976d170c78e458ac44e65d305374aef67d2ab44a17bce151e86a2b783e5')
+
+pkgver() {
+	cd epg
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd epg
