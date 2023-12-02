@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/opt/deepl-electron/electron-deepl-translator --ozone-platform-hint=auto --no-sandbox --disable-sandbox --disable-gpu-sandbox --no-gpu-sandbox
+Name=DeepL Electron
+Icon=deepl-electron
