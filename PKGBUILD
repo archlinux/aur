@@ -1,18 +1,14 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Zaedus <thezaedus@proton.me>
+# Maintainer: knedl1k <knedl1k At tuta Dot io>
+# Contributor: Zaedus <thezaedus@proton.me>
 _pkgname="youtube-tui"
 pkgname="${_pkgname}-full-bin"
-pkgver=0.6.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="An aesthetically pleasing TUI frontend to browsing YouTube written in Rust. (Binary)"
 arch=('x86_64')
 url="https://github.com/Siriusmart/youtube-tui"
 license=('GPL3')
-depends=('libsixel' 'libxcb')
+depends=('libsixel' 'libxcb' 'openssl')
 optdepends=(
   'mpv: default video player'
   'konsole: default terminal emulator'
@@ -22,7 +18,7 @@ makedepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}::https://github.com/Siriusmart/youtube-tui/releases/download/v${pkgver}/${_pkgname}-full_arch-x86_64")
-sha512sums=('3b5bf0d7e45aa682c70346c3fedf29f285507ba4543cc634671316cd487ee43e151187d083df66ab08c5ee79378b617a1f9d39761ef938d4befdf29c4af7bca7')
+sha512sums=('ffc00c17bebc0fbc7f32dfc102363c721ad1a3a415ac065468ba70ba181e72ab016a8381678cfb474e6a07b0d7ef8b62bdc57ec78af240aa014f05da9972fe30')
 
 package() {
   cd "${srcdir}"
