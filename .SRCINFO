@@ -1,17 +1,22 @@
 pkgbase = python-magic-git
-	pkgdesc = Python 3 packages for alternative (github) implementation of python-magic
-	pkgver = 0.4.6
-	pkgrel = 5
-	url = https://github.com/ahupp/python-magic
+	pkgdesc = File type identification library; unofficial wrapper for file/libmagic (git)
+	pkgver = 0.4.27.r22.g54d86fd
+	pkgrel = 1
+	url = https://pypi.org/project/python-magic
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = git
-	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = file
 	depends = python
+	provides = python-magic=1:0.4.27
 	conflicts = python-magic
-	source = python-magic-git::git+https://github.com/ahupp/python-magic
-	md5sums = SKIP
+	conflicts = python-file-magic
+	source = python-magic::git+https://github.com/ahupp/python-magic.git
+	b2sums = SKIP
 
 pkgname = python-magic-git
-

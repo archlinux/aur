@@ -1,33 +1,64 @@
-# Maintainer: Richard Neumann aka. rne <r dot neumann at homeinfo fullstop de>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: David Runge <dvzrv@archlinux.org>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
+# Contributor: Richard Neumann aka. rne <r dot neumann at homeinfo fullstop de>
 
-pkgname='python-magic-git'
-pkgver='0.4.6'
-pkgrel=5
-pkgdesc="Python 3 packages for alternative (github) implementation of python-magic"
+_pkgbase=python-magic
+pkgname="${_pkgbase}-git"
+pkgver=0.4.27.r22.g54d86fd
+pkgrel=1
+_stablepkg_epoch=1
+pkgdesc="File type identification library; unofficial wrapper for file/libmagic (git)"
 arch=('any')
-url='https://github.com/ahupp/python-magic'
+url='https://pypi.org/project/python-magic'
+_repourl='https://github.com/ahupp/python-magic'
 license=('MIT')
-depends=('python')
-makedepends=('git' 'python' 'python-setuptools')
-conflicts=('python-magic')
-source=("${pkgname}::git+https://github.com/ahupp/python-magic")
-md5sums=('SKIP')
-pkgdir='pkg'
-srcdir='src'
+depends=(
+  'file'
+  'python'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=('python-pytest')
+provides=("${_pkgbase}=${_stablepkg_epoch}:${pkgver%.r*}")
+conflicts=(
+  "${_pkgbase}"
+  'python-file-magic' # official libmagic bindings - https://pypi.org/project/file-magic
+)
+source=("${_pkgbase}::git+${_repourl}.git")
+b2sums=('SKIP')
 
+pkgver() {
+    cd "${_pkgbase}"
 
-package() {
-    local LICENSE_DIR="${pkgdir}/usr/share/licenses/${pkgname}"
+    # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
+    local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
 
-    # Set up directories
-    install -d -m 755 ${LICENSE_DIR}
-
-    cd "${srcdir}/${pkgname}"
-
-    # Install python packages to $pkgdir
-    python setup.py install --root ${pkgdir}
-
-    # Install license file
-    install -m 644 LICENSE ${LICENSE_DIR}
+    # Format git-based version for pkgver
+    # Expected format: e.g. 1.5.0rc2.r521.g99982a1c
+    echo "${_gitversion}" | sed \
+        -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
+        -e 's|\([0-9]\+-g\)|r\1|' \
+        -e 's|-|.|g'
 }
 
+build() {
+  cd "${_pkgbase}"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${_pkgbase}"
+  LC_ALL=en_US.UTF-8 pytest -vv "${pytest_options[@]}"
+}
+
+package() {
+  cd "${_pkgbase}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
