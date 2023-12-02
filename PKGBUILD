@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/mxmlnkn/indexed_bzip2"
 license=('MIT')
 depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 options=(!emptydirs)
 _tag=84290abde51e5786feaf6869baf44657ce450f5f
 source=("${pkgname}-${pkgver}::git+${url}.git#tag=$_tag")
