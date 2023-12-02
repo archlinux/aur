@@ -1,6 +1,6 @@
 pkgbase = ocaml-js_of_ocaml
 	pkgdesc = Compiler from OCaml to Javascript
-	pkgver = 5.4.0
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://github.com/ocsigen/js_of_ocaml
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ocaml-js_of_ocaml
 	depends = ocaml-yojson
 	depends = ocaml-findlib>=1.5.1
 	options = !strip
-	source = ocaml-js_of_ocaml-5.4.0.tar.gz::https://github.com/ocsigen/js_of_ocaml/archive/5.4.0.tar.gz
-	sha512sums = acd0ec976a7cb52c0d6e16c4894bbf2dec67964ac234c2148acf89d5c324235ae2175f1e4110d2fd5e7d03ea81aa557d5fc445ff47868667dc96300242768c8c
+	source = ocaml-js_of_ocaml-5.5.0.tar.gz::https://github.com/ocsigen/js_of_ocaml/archive/5.5.0.tar.gz
+	sha512sums = 8c4dffd137e46deb8640149e9c155a843079578a120b06aa478bd1b638657a200adcb167c2c8e0fba09bc5fadcba391f8cedc154929dfc1327922c9782b6f33c
 
 pkgname = ocaml-js_of_ocaml
