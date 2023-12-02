@@ -1,0 +1,30 @@
+image: node:alpine
+
+workflow:
+  name: 'Pipeline for branch: $CI_COMMIT_BRANCH'
+  rules:
+    - changes:
+      - ${CI_CONFIG_PATH}
+
+build:
+  stage: build
+  script:
+    - npm install
+    - sed -i $(for arg in $(./get_latest); do
+        key=${arg%%=*}
+        value=${arg#*=}
+
+        echo "-e s|$key=.*|$key=$value|g"
+      done) PKGBUILD
+  artifacts:
+    paths:
+      - PKGBUILD
+  cache:
+    key: node_modules-cache
+    paths:
+      - node_modules/
+
+# deploy:
+#   stage: deploy
+#   script:
+#     - echo "Do your deploy here"
