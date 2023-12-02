@@ -2,7 +2,7 @@
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-numpy-stl
-pkgver=3.0.1
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Library to make working with STL files (and 3D objects in general) fast and easy"
 url="https://github.com/WoLpH/numpy-stl/"
@@ -14,7 +14,7 @@ source=(
   "numpy-stl-v${pkgver}.tar.gz::https://github.com/WoLpH/numpy-stl/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '806b312d5b3c129f4eb54aeffd13801390152a976bf960987169a671c9d01c73'
+  '6e2765e34da0c5873402d04a3ae73f2f1a3a2a3b97eaae7c41e8eb4e083e9834'
 )
 arch=('x86_64')
 
