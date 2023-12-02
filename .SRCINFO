@@ -1,12 +1,16 @@
 pkgbase = tradingview
-	pkgdesc = TradingView is a charting platform for traders and investors
+	pkgdesc = A charting platform for traders and investors
 	pkgver = 2.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tradingview.com/desktop/
 	arch = x86_64
 	license = custom:proprietary
 	makedepends = links
 	makedepends = squashfs-tools
+	source = tradingview-2.7.1.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_48.snap
+	b2sums = 979958b07225cb2cd0b132d98b7e8727cca2b6fca8fd5608b16f9c9daddbe39c21b9ea94ceac47447c79e97cb6ca15fab63bfe0fadbc8d221ba75cd71dc428f8
+
+pkgname = tradingview
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = cairo
@@ -32,7 +36,3 @@ pkgbase = tradingview
 	depends = nspr
 	depends = nss
 	depends = pango
-	source = tradingview-2.7.1.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_48.snap
-	b2sums = 979958b07225cb2cd0b132d98b7e8727cca2b6fca8fd5608b16f9c9daddbe39c21b9ea94ceac47447c79e97cb6ca15fab63bfe0fadbc8d221ba75cd71dc428f8
-
-pkgname = tradingview

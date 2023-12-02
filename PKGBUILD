@@ -3,36 +3,11 @@
 
 pkgname=tradingview
 pkgver=2.7.1
-pkgrel=2
-pkgdesc='TradingView is a charting platform for traders and investors'
+pkgrel=3
+pkgdesc='A charting platform for traders and investors'
 arch=('x86_64')
 url='https://www.tradingview.com/desktop/'
 license=('custom:proprietary')
-depends=('alsa-lib'
-         'at-spi2-core'
-         'cairo'
-         'dbus'
-         'expat'
-         'gcc-libs'
-         'glib2'
-         'glibc'
-         'gtk3'
-         'hicolor-icon-theme'
-         'libcups'
-         'libdrm'
-         'libsecret'
-         'libx11'
-         'libxcb'
-         'libxcomposite'
-         'libxdamage'
-         'libxext'
-         'libxfixes'
-         'libxkbcommon'
-         'libxrandr'
-         'mesa'
-         'nspr'
-         'nss'
-         'pango')
 makedepends=('links'
              'squashfs-tools')
 source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_48.snap")
@@ -46,7 +21,7 @@ prepare() {
     ## Extract
     unsquashfs -q -f -d "$pkgname-$pkgver/" "$pkgname-$pkgver.snap"
 
-    mv "$pkgname-$pkgver/meta/gui/icon.png" "$srcdir/"
+    mv "$pkgname-$pkgver/meta/gui/icon.png" "$srcdir/$pkgname.png"
     mv "$pkgname-$pkgver/meta/gui/$pkgname.desktop" "$srcdir/"
     sed -n -e 's@${SNAP}/meta/gui/icon.png@'"$pkgname"'@g' \
         -e 's@^Categories=Finance;$@Categories=Office;Finance;@g' \
@@ -56,13 +31,39 @@ prepare() {
 }
 
 package() {
-    install -d "$pkgdir/opt/$pkgname"
-    cp -r "$srcdir/$pkgname-$pkgver/"* "$pkgdir/opt/$pkgname"
+    depends=('alsa-lib'
+             'at-spi2-core'
+             'cairo'
+             'dbus'
+             'expat'
+             'gcc-libs'
+             'glib2'
+             'glibc'
+             'gtk3'
+             'hicolor-icon-theme'
+             'libcups'
+             'libdrm'
+             'libsecret'
+             'libx11'
+             'libxcb'
+             'libxcomposite'
+             'libxdamage'
+             'libxext'
+             'libxfixes'
+             'libxkbcommon'
+             'libxrandr'
+             'mesa'
+             'nspr'
+             'nss'
+             'pango')
 
-    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/opt/$pkgname/"
+    cp -r "$srcdir/$pkgname-$pkgver/"* "$pkgdir/opt/$pkgname/"
+
+    install -d "$pkgdir/usr/bin/"
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-    install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    install -Dm644 "$srcdir/$pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
     install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
     install -Dm644 "$srcdir/EULA.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
