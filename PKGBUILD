@@ -1,9 +1,10 @@
+# Creator: Dimitris Panokostas
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 
 pkgname=amiberry
-pkgver=873103af0df5044044501d5807f119bcce582da8
-pkgrel=2
-epoch=20231118
+pkgver=bce5e0ad9e775b24366ff42a3ebbaf1a28ac21ec
+pkgrel=3
+epoch=20231201
 pkgdesc="Amiga Emulator for ARM Boards (amd64 build)"
 arch=('x86_64')
 url="https://github.com/BlitterStudio/amiberry"
@@ -32,4 +33,6 @@ package() {
   echo "./${pkgname} \"\$@\"" >> "${pkgdir}/usr/bin/${pkgname}"
   
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+
+  echo -e "\e[1;33mAmiberry has no .desktop entry, please run from \"amiberry\" on your terminal\e[0m"
 }
