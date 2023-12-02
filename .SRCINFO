@@ -1,0 +1,14 @@
+pkgbase = ruby-unicode-scripts
+	pkgdesc = [Unicode 15.1.0] Retrieve the Unicode script(s) a string belongs to. Can also return the Script_Extension property which is defined as characters which are 'commonly used with more than one script, but with a limited number of scripts'.
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/janlelis/unicode-scripts
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = unicode-scripts-1.9.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/unicode-scripts-1.9.0.gem
+	sha256sums = b9c9fbaf405b67f9fa3bbadcc66bbb539f5148c9b11126c23038655bb4665d54
+
+pkgname = ruby-unicode-scripts
