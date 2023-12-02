@@ -2,21 +2,21 @@
 
 pkgname='spacedrive'
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.'
 arch=('x86_64')
 url='https://spacedrive.com/'
 license=('AGPL3')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/spacedriveapp/spacedrive/archive/refs/tags/${pkgver}.tar.gz")
 depends=('ffmpeg' 'libheif' 'gtk3' 'webkit2gtk' 'pango' 'gdk-pixbuf2' 'cairo' 'libsoup' 'glib2')
-makedepends=('cargo' 'pnpm' 'clang' 'git')
+makedepends=('cargo-nightly' 'pnpm' 'clang' 'git')
 sha256sums=('21ae09726139d445174f1b92dd47ec626291a64b7846ed14cc1f44aa658c2d88')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
 
 	export CARGO_TARGET_DIR=target
-	export RUSTUP_TOOLCHAIN=stable
+	export RUSTUP_TOOLCHAIN=1.73
 
 	pnpm install
 	pnpm prep
@@ -26,7 +26,7 @@ build() {
 	cd "${pkgname}-${pkgver}"
 
 	export CARGO_TARGET_DIR=target
-	export RUSTUP_TOOLCHAIN=stable
+	export RUSTUP_TOOLCHAIN=1.73
 
 	pnpm tauri build --bundles app
 }
