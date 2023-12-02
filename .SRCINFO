@@ -1,6 +1,6 @@
 pkgbase = virtualhere-client
 	pkgdesc = VirtualHere USB Client for Linux Desktop
-	pkgver = 1.0.2
+	pkgver = 5.5.6
 	pkgrel = 1
 	url = https://www.virtualhere.com/usb_server_software
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = virtualhere-client
 	conflicts = virtualhereclient
 	source = https://www.virtualhere.com/sites/default/files/usbclient/scripts/virtualhereclient.service
 	source = https://www.virtualhere.com/sites/default/files/usbclient/vhclientx86_64
-	md5sums = 37d1c9ac1b1d9f4ecb99ea6f5b6af5dc
-	md5sums = 5d707c6f91f4cd72344ca9f7c69b1ed8
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = virtualhere-client
