@@ -7,7 +7,7 @@
 
 pkgname=opencv2
 pkgver=2.4.13.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Open Source Computer Vision Library (version 2.x)'
 arch=('x86_64')
 license=('BSD')
@@ -30,7 +30,7 @@ build() {
     cmake -S "opencv-${pkgver}" -B build \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_INSTALL_PREFIX:STRING='/opt/opencv2' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/opt/opencv2' \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
         -DBUILD_JASPER:BOOL='ON' \
         -DBUILD_opencv_java:BOOL='OFF' \
@@ -48,7 +48,7 @@ build() {
         -DWITH_OPENCL:BOOL='ON' \
         -DWITH_OPENGL:BOOL='ON' \
         -DWITH_TBB:BOOL='OFF' \
-        -DWITH_V4L:BOOL='OFF' \
+        -DWITH_V4L:BOOL='ON' \
         -DWITH_XINE:BOOL='OFF' \
         -DENABLE_SSE3:BOOL='OFF' \
         -DENABLE_SSSE4:BOOL='OFF' \

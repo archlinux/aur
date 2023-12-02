@@ -1,7 +1,7 @@
 pkgbase = opencv2
 	pkgdesc = Open Source Computer Vision Library (version 2.x)
 	pkgver = 2.4.13.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opencv.org/
 	arch = x86_64
 	license = BSD
