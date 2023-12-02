@@ -1,0 +1,12 @@
+pkgbase = brother-mfcj2330dw-lpr-bin
+	pkgdesc = LPR driver for Brother MFC-J2330DW printer
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = https://support.brother.com/g/b/producttop.aspx?c=th&lang=en&prod=mfcj2330dw_eu_as_cn
+	arch = i686
+	arch = x86_64
+	license = EULA
+	source = https://download.brother.com/welcome/dlf103011/mfcj2330dwlpr-1.0.1-0.i386.deb
+	sha256sums = 078b64c56701f542824ee14f9a661b75e91336d099a42197abb541b765c6d11e
+
+pkgname = brother-mfcj2330dw-lpr-bin
