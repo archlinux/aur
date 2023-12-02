@@ -2,12 +2,12 @@
 
 pkgname='nemo-media-columns'
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Media properties columns in Nemo"
 arch=('any')
 license=('GPL2')
 url="https://github.com/linuxmint/nemo-extensions"
-depends=('nemo-python>=3.9.0' 'python-mutagen' 'exiv2' 'python-pymediainfo'
+depends=('nemo-python>=3.9.0' 'python-mutagen' 'libgexiv2' 'python-pymediainfo'
          'python-pillow' 'python-pypdf2' 'python-stopit')
 options=('!emptydirs')
 makedepends=('python-distutils-extra')
