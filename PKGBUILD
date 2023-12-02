@@ -1,5 +1,5 @@
 _cranname=XML
-_cranver=3.99-0.14
+_cranver=3.99-0.16
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -9,7 +9,7 @@ depends=("libxml2" "r")
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('ad0cff9a90183f905d9ac874e9e411ab')
+md5sums=('afa1fd1496595b5aa4f6cb758bad0122')
 
 build() {
   cd "${srcdir}"
