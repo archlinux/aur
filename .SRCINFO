@@ -1,7 +1,7 @@
 pkgbase = mint-backgrounds-isadora
 	pkgdesc = The backgrounds included in Linux Mint 9 Isadora
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-isadora
 	arch = any
 	license = Various
@@ -9,4 +9,3 @@ pkgbase = mint-backgrounds-isadora
 	sha256sums = 5b2f1dafa77cdc40d012eea3a0f51f02f2de80aa604246cc73386c53a9aa3168
 
 pkgname = mint-backgrounds-isadora
-
