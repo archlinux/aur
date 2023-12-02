@@ -2,7 +2,7 @@
 
 _pkgname='xorgxrdp'
 pkgname="$_pkgname-nvidia"
-pkgver=0.2.18.r52.g7a9cd48
+pkgver=0.2.18.r55.g3a4d465
 pkgrel=1
 pkgdesc='Xorg drivers for xrdp, with NVIDIA GPU support.'
 arch=('i686' 'x86_64')
