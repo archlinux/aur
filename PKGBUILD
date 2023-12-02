@@ -1,7 +1,5 @@
-# based on vscodium-features
-# Original Maintainer: Carson Rueter <roachh at proton mail dot com>
-# Contributor : HelloImWar <helloimwar at proton dot me>
-# Maintainer: silverhikari <kerrickethan@gmail.com>
+# Maintainer: Behnam Lal <dev at behnamlal dot xyz>
+# Contributor: Carson Rueter <roachh at proton mail dot com>
 
 pkgname=vscodium-features
 pkgver=1.82.1
