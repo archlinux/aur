@@ -1,10 +1,10 @@
 pkgname="sk-boot-to-windows"
-pkgver="1.0.1"
+pkgver="1.0.2"
 pkgrel=1
 pkgdesc="Creates a .desktop application to boot into Windows"
 arch=(any)
 license=('MIT')
-depends=('efibootmgr' 'systemd')
+depends=('efibootmgr')
 source=(
     'sk-boot-to-windows.sh' 
     'sk-boot-to-windows.desktop'

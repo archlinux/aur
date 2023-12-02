@@ -1,11 +1,10 @@
 pkgbase = sk-boot-to-windows
 	pkgdesc = Creates a .desktop application to boot into Windows
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	arch = any
 	license = MIT
 	depends = efibootmgr
-	depends = systemd
 	source = sk-boot-to-windows.sh
 	source = sk-boot-to-windows.desktop
 	source = sk-boot-to-windows.svg
