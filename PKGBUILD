@@ -29,8 +29,7 @@
 ## basic info
 _pkgname="retroshare"
 pkgname="$_pkgname"
-pkgver=0.6.7.1
-_pkgtag=v0.6.7.1
+pkgver=0.6.7.2
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 #url="http://retroshare.cc/"
@@ -94,6 +93,8 @@ _main_package() {
 
 ## stable package
 _main_stable() {
+  _pkgtag="v$pkgver"
+
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git#tag=$_pkgtag")
   sha256sums=('SKIP')
