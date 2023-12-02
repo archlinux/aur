@@ -1,4 +1,4 @@
-# Maintainer: pooweeh <phuwitput@gmail.com>
+# Maintainer: Phuwit Puthipairoj <26784267+phuwit@users.noreply.github.com>
 
 pkgname=mark2-git
 pkgver=r826.24db946
