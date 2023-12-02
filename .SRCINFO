@@ -8,6 +8,7 @@ pkgbase = chdig-git
 	makedepends = git
 	makedepends = rust
 	makedepends = pyoxidizer
+	makedepends = python
 	depends = bash
 	provides = chdig
 	conflicts = chdig
