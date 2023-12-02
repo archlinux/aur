@@ -1,7 +1,7 @@
 pkgbase = blockbench
 	pkgdesc = A low-poly 3D model editor
-	pkgver = 4.8.3
-	pkgrel = 3
+	pkgver = 4.9.0
+	pkgrel = 1
 	url = https://blockbench.net/
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = blockbench
 	depends = giblib
 	provides = blockbench
 	conflicts = blockbench
-	source = blockbench::git+https://github.com/JannisX11/blockbench#tag=v4.8.3
+	source = blockbench::git+https://github.com/JannisX11/blockbench#tag=v4.9.0
 	source = blockbench.desktop
 	sha256sums = SKIP
 	sha256sums = 74731a9f68dbef112c93dafee1a1a8665b9de0816f94643169419ad838dbf66c
