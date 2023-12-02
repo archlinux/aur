@@ -1,13 +1,13 @@
 pkgbase = gngeo-git
 	pkgdesc = A portable command-line NeoGeo Emulator (development version)
 	pkgver = 0.8.r21.ged06739
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pepone42/gngeo
 	install = gngeo-git.install
 	arch = i686
 	arch = x86_64
 	license = custom GPL
-	makedepends = mercurial
+	makedepends = git
 	makedepends = glu
 	depends = zlib
 	depends = sdl
@@ -24,4 +24,3 @@ pkgbase = gngeo-git
 	makedepends_i686 = nasm
 
 pkgname = gngeo-git
-
