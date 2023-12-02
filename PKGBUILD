@@ -5,6 +5,7 @@ pkgver=1.1.0
 pkgrel=1
 pkgdesc='Automates downgrading packages to a specific date'
 arch=('any')
+url="https://github.com/Joseph-DiGiovanni/pacdate"
 license=('GPL3')
 depends=('pacman')
 source=("https://github.com/Joseph-DiGiovanni/pacdate/archive/refs/tags/v${pkgver}.tar.gz")

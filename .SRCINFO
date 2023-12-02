@@ -2,6 +2,7 @@ pkgbase = pacdate
 	pkgdesc = Automates downgrading packages to a specific date
 	pkgver = 1.1.0
 	pkgrel = 1
+	url = https://github.com/Joseph-DiGiovanni/pacdate
 	arch = any
 	license = GPL3
 	depends = pacman
