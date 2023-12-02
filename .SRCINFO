@@ -1,13 +1,13 @@
 pkgbase = eact
 	pkgdesc = A toolkit for building your electron applications with Electron-packager and electron-build for non DRM and DRM applications and then zip them up ready for you to be distrobuted.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitlab.com/libelectron/eact
 	arch = any
 	license = GPL
 	depends = git
 	depends = npm
-	source = https://gitlab.com/libelectron/eact/-/archive/1.0.1-1/application-1.0.1-1.tar.bz2
+	source = https://gitlab.com/libelectron/eact/-/archive/1.0.2-1/application-1.0.2-1.tar.bz2
 	sha256sums = SKIP
 
 pkgname = eact
