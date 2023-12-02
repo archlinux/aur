@@ -1,18 +1,18 @@
 pkgbase = lossless-adapter-manager
 	pkgdesc = Management application for the Input Integrety Lossless Adapter Gamecube adapter.
-	pkgver = 2023.11.24
-	pkgrel = 2
+	pkgver = 2023.11.30
+	pkgrel = 1
 	url = https://www.input-integrity.com/
 	arch = x86_64
 	license = freeware-proprietary
 	provides = lossless-adapter-manager
 	conflicts = LosslessAdapterManager2
 	options = !strip
-	source = https://mirror.sanin.dev/aur/lossless-adapter-manager/lossless-adapter-manager_2023.11.24.tar.gz
+	source = https://mirror.sanin.dev/aur/lossless-adapter-manager/lossless-adapter-manager_2023.11.30.tar.gz
 	source = lossless-adapter-manager.desktop
-	sha1sums = 01b6b2ed6a5acde65789a5ada5f558b5e70c4471
+	sha1sums = 01ec65bcd5e06eb715fb71928dd68e1c946012a4
 	sha1sums = 87ede3e2da870c0986f8d2fcbfdbdafa07ace299
-	sha256sums = ebbbaf1803dfe19adcaec0c33e89b7e6008eea5348857978c6f8a6541a002772
+	sha256sums = a5c8af56f2907ff63fcda0980111275448ab241db0d142e1831e25eb750b259d
 	sha256sums = 3e212146833bbe5924f22046839d50d0e67b166c50580481ec2a980cbb4e5d78
 
 pkgname = lossless-adapter-manager
