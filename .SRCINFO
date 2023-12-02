@@ -1,8 +1,8 @@
 pkgbase = samurai-select
 	pkgdesc = A screen selection tool for wayland compositors using the layer shell
-	pkgver = 23.11.0
-	pkgrel = 2
-	url = https://github.com/PucklaJ/samurai-select
+	pkgver = 23.12.0
+	pkgrel = 1
+	url = https://github.com/Samudevv/samurai-select
 	arch = x86_64
 	arch = aarch64
 	license = ZLIB
@@ -13,7 +13,7 @@ pkgbase = samurai-select
 	depends = wayland
 	depends = cairo
 	optdepends = grim: Required to take screenshots with the -s|--screenshot flag
-	source = samurai-select-23.11.0::https://github.com/PucklaJ/samurai-select/archive/refs/tags/23.11.0.tar.gz
-	sha256sums = bf9230bfd846e86b545a482bf0aa382f44163867d9cff0ddaddf15a6d431d8dd
+	source = samurai-select-23.12.0::https://github.com/Samudevv/samurai-select/archive/refs/tags/23.12.0.tar.gz
+	sha256sums = 2f99017f3dc0aad68e9746c4d1ba42aba8d75eec9f893c550d6317acbf4946a6
 
 pkgname = samurai-select

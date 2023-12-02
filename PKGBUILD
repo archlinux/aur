@@ -1,11 +1,11 @@
 # Maintainer: Jonas Pucher <jonaas.pucher000000@gmail.com>
 
 pkgname=samurai-select
-pkgver=23.11.0
-pkgrel=2
+pkgver=23.12.0
+pkgrel=1
 pkgdesc="A screen selection tool for wayland compositors using the layer shell"
 arch=("x86_64" "aarch64")
-url="https://github.com/PucklaJ/${pkgname}"
+url="https://github.com/Samudevv/${pkgname}"
 license=("ZLIB")
 depends=("wayland" "cairo")
 makedepends=("go" "gcc" "scdoc" "gzip")
@@ -13,20 +13,20 @@ optdepends=(
   "grim: Required to take screenshots with the -s|--screenshot flag"
 )
 source=(
-  "${pkgname}-${pkgver}::https://github.com/PucklaJ/samurai-select/archive/refs/tags/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}::https://github.com/Samudevv/samurai-select/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=(
-  "bf9230bfd846e86b545a482bf0aa382f44163867d9cff0ddaddf15a6d431d8dd"
+  "2f99017f3dc0aad68e9746c4d1ba42aba8d75eec9f893c550d6317acbf4946a6"
 )
 
 prepare() {
   rm -rf "${srcdir}/gopath"
-  mkdir -p "${srcdir}/gopath/src/github.com/PucklaJ"
-  ln -rTsf "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/gopath/src/github.com/PucklaJ/${pkgname}"
+  mkdir -p "${srcdir}/gopath/src/github.com/Samudevv"
+  ln -rTsf "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/gopath/src/github.com/Samudevv/${pkgname}"
 }
 
 build() {
-  cd "${srcdir}/gopath/src/github.com/PucklaJ/${pkgname}"
+  cd "${srcdir}/gopath/src/github.com/Samudevv/${pkgname}"
   export GOPATH="${srcdir}/gopath"
   export PATH="${PATH}:${GOPATH}/bin"
   export CGO_CPPFLAGS="${CPPFLAGS}"
