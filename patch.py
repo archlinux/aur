@@ -7,7 +7,7 @@ import os
 pkt_name = sys.argv[1]
 operation = sys.argv[2]
 
-product_path = "/opt/vscodium-bin/product.json"
+product_path = "/usr/share/vscodium/resources/app/product.json"
 patch_path = "/usr/share/%s/patch.json" % pkt_name
 cache_path = "/usr/share/%s/cache.json" % pkt_name
 
