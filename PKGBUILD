@@ -4,17 +4,17 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
-pkgver=7.3.9
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework (latest release)"
 arch=(x86_64)
 url="https://github.com/PowerShell/PowerShell"
 license=(MIT)
 depends=(
-  dotnet-runtime
+  'dotnet-runtime>=8.0.0'
+  'dotnet-runtime<9.0.0'
   gcc-libs
   glibc
-  libpam.so
 )
 makedepends=(
   dotnet-sdk
@@ -25,6 +25,8 @@ checkdepends=(
   inetutils
 )
 
+_dotnet_version=8.0
+
 source=(
   "$pkgname-$pkgver::$url/archive/refs/tags/v$pkgver.tar.gz"
   "Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
@@ -32,10 +34,10 @@ source=(
   "skip-distro-check.patch"
 )
 sha256sums=(
-  'bb90154d55b61736f91af1a6f73b6c56611cf03b2fc2fa3ec51d6a17b0eab13f'
+  'fad73c44e26051f69bbe691defb7a8d285b0d181efd19b61f8afe8c2f773c4a2'
   '0c81200e5211a2f63bc8d9941432cbf98b5988249f0ceeb1f118a14adddbaa8e'
   '50c7265492cd5cd87d81df29fa737d06dacd97586b0fafb3a0f3af8451b8c052'
-  'ef171dc5443b1903cb175d4975c62afcc9f6fcd2fafacd8c326ef23f16e4ffad'
+  '1f25aa517b73d5d17c547757be8c6fb39e3d2f0fd128805ac42c4192348716ac'
 )
 install=powershell.install
 options=(staticlibs)
@@ -45,12 +47,13 @@ _archive="PowerShell-$pkgver"
 prepare() {
   cd "$_archive"
 
-  rm global.json
-  printf '{"sdk": { "version": "%s" } }' "$(dotnet --version)" > global.json
+  printf '{"sdk": {"version": "%s"}}' "$_dotnet_version" > global.json
 
   patch --forward --strip=1 --input="$srcdir/version-from-environment-variable.patch"
   patch --forward --strip=1 --input="$srcdir/skip-distro-check.patch"
 }
+
+_publish_path="src/powershell-unix/bin/Release/net$_dotnet_version/linux-x64/publish"
 
 build() {
   cd "$_archive"
@@ -77,9 +80,10 @@ build() {
   }
 
   ## Start-ResGen()
-  pushd src/ResGen
-  dotnet run
-  popd
+  (
+    cd src/ResGen
+    dotnet run
+  )
 
   ## Start-TypeGen()
   cp \
@@ -87,21 +91,23 @@ build() {
     "src/Microsoft.PowerShell.SDK/obj/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
 
   local inc_file="$PWD/src/TypeCatalogGen/powershell_linux-x64.inc"
-  pushd src/Microsoft.PowerShell.SDK
-  dotnet msbuild \
-    ./Microsoft.PowerShell.SDK.csproj \
-    /t:_GetDependencies "/property:DesignTimeBuild=true;_DependencyFile=$inc_file" \
-    /nologo
-  popd
+  (
+    cd src/Microsoft.PowerShell.SDK
+    dotnet msbuild \
+      ./Microsoft.PowerShell.SDK.csproj \
+      /t:_GetDependencies "/property:DesignTimeBuild=true;_DependencyFile=$inc_file" \
+      /nologo
+  )
 
-  pushd src/TypeCatalogGen
-  dotnet run ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs powershell_linux-x64.inc
-  popd
+  (
+    cd src/TypeCatalogGen
+    dotnet run ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs powershell_linux-x64.inc
+  )
 
-  ## Publish Powershell
+  ## Publish PowerShell
   dotnet publish \
     --configuration Release \
-    --framework net7.0 \
+    --framework net$_dotnet_version \
     --no-self-contained \
     --runtime linux-x64 \
     /property:ErrorOnDuplicatePublishOutputFiles=false \
@@ -112,22 +118,22 @@ build() {
     src/powershell-unix/
 
   ## Publish reference assemblies
-  local publish_path=src/powershell-unix/bin/Release/net7.0/linux-x64/publish
-  mkdir -p "$publish_path/ref"
+  mkdir -p "$_publish_path/ref"
   grep 'Microsoft.NETCore.App' "$inc_file" | sed 's/;//' | while read -r assembly; do
-    cp "$assembly" "$publish_path/ref"
+    cp "$assembly" "$_publish_path/ref"
   done
 
   ## Restore-PSModuleToBuild()
-  cp -ar "$NUGET_PACKAGES/microsoft.powershell.archive/1.2.5/." "$publish_path/Modules/Microsoft.PowerShell.Archive"
-  cp -ar "$NUGET_PACKAGES/packagemanagement/1.4.8.1/." "$publish_path/Modules/PackageManagement"
-  cp -ar "$NUGET_PACKAGES/powershellget/2.2.5/." "$publish_path/Modules/PowerShellGet"
-  cp -ar "$NUGET_PACKAGES/psreadline/2.2.6/." "$publish_path/Modules/PSReadLine"
-  cp -ar "$NUGET_PACKAGES/threadjob/2.0.3/." "$publish_path/Modules/ThreadJob"
+  cp -ar "$NUGET_PACKAGES/microsoft.powershell.archive/1.2.5/." "$_publish_path/Modules/Microsoft.PowerShell.Archive"
+  cp -ar "$NUGET_PACKAGES/microsoft.powershell.psresourceget/1.0.1/." "$_publish_path/Modules/Microsoft.PowerShell.PSResourceGet"
+  cp -ar "$NUGET_PACKAGES/packagemanagement/1.4.8.1/." "$_publish_path/Modules/PackageManagement"
+  cp -ar "$NUGET_PACKAGES/powershellget/2.2.5/." "$_publish_path/Modules/PowerShellGet"
+  cp -ar "$NUGET_PACKAGES/psreadline/2.3.4/." "$_publish_path/Modules/PSReadLine"
+  cp -ar "$NUGET_PACKAGES/threadjob/2.0.3/." "$_publish_path/Modules/ThreadJob"
 
   ## Restore-PSPester()
-  "$publish_path/pwsh" -command "
-    Save-Module -Name Pester -Path $publish_path/Modules -Repository PSGallery -MaximumVersion 4.99
+  "$_publish_path/pwsh" -command "
+    Save-Module -Name Pester -Path $_publish_path/Modules -Repository PSGallery -MaximumVersion 4.99
   "
 }
 
@@ -137,26 +143,11 @@ check() {
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
 
-  local publish_path=src/powershell-unix/bin/Release/net7.0/linux-x64/publish
-
-  # One failing test, don't know why
-  rm test/powershell/Host/Startup.Tests.ps1
-
-  # Many failing tests, don't know why
-  rm test/powershell/Modules/Microsoft.PowerShell.Management/PSDrive.Tests.ps1
-
-  # Failing tests related to JSON & datetime, don't know why
-  rm test/powershell/Modules/Microsoft.PowerShell.Utility/Json.Tests.ps1
+  # One failing test related to JSON & datetime, don't know why
   rm test/powershell/Modules/Microsoft.PowerShell.Utility/ConvertTo-Json.Tests.ps1
-
-  # One failing test, only for --no-self-contained, don't know why
-  rm test/powershell/engine/Module/IsolatedModule.Tests.ps1
 
   # Two failing tests, don't know why
   rm test/powershell/engine/Help/HelpSystem.Tests.ps1
-
-  # One test failing, don't know why
-  rm test/powershell/engine/Help/UpdatableHelpSystem.Tests.ps1
 
   # Opens browser, skipping
   rm test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
@@ -171,24 +162,23 @@ check() {
   rm test/powershell/engine/Basic/Assembly.LoadNative.Tests.ps1
 
   # shellcheck disable=2016
-  "$publish_path/pwsh" -command "
+  "$_publish_path/pwsh" -command "
     \$ErrorActionPreference = \"Stop\"
     Import-Module ./build.psm1 -ArgumentList \$true
-    Start-PSPester -BinDir $publish_path -ThrowOnFailure
+    Start-PSPester -BinDir $_publish_path -ThrowOnFailure
   "
 }
 
 package() {
   cd "$_archive"
 
-  local publish_path=src/powershell-unix/bin/Release/net7.0/linux-x64/publish
   local pkgnum=${pkgver:0:1}
 
-  mkdir -p "$pkgdir/opt/microsoft/$pkgname/$pkgnum"
-  cp -ar "$publish_path/." "$pkgdir/opt/microsoft/$pkgname/$pkgnum/"
+  install -dm755 "$pkgdir/usr/lib/$pkgname-$pkgnum/"
+  cp --archive --no-preserve=ownership "$_publish_path/." "$pkgdir/usr/lib/$pkgname-$pkgnum/"
 
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/microsoft/$pkgname/$pkgnum/pwsh" "$pkgdir/usr/bin/pwsh"
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s "/usr/lib/$pkgname-$pkgnum/pwsh" "$pkgdir/usr/bin/pwsh"
 
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }

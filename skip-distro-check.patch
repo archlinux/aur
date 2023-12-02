@@ -1,11 +1,11 @@
 diff --git a/build.psm1 b/build.psm1
-index f528ee821..1e21cf805 100644
+index 55110cd9c..207f32880 100644
 --- a/build.psm1
 +++ b/build.psm1
-@@ -158,6 +158,32 @@ function Get-EnvironmentInformation
-     }
+@@ -161,6 +161,32 @@ function Get-EnvironmentInformation
  
      if ($environment.IsLinux) {
+         $environment += @{ 'OSArchitecture' = [System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture }
 +        if ($SkipLinuxDistroCheck) {
 +            Write-Warning "Skipping distro check entirely."
 +

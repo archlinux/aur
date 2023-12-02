@@ -1,6 +1,6 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework (latest release)
-	pkgver = 7.3.9
+	pkgver = 7.4.0
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShell
 	install = powershell.install
@@ -10,18 +10,18 @@ pkgbase = powershell
 	checkdepends = iputils
 	checkdepends = inetutils
 	makedepends = dotnet-sdk
-	depends = dotnet-runtime
+	depends = dotnet-runtime>=8.0.0
+	depends = dotnet-runtime<9.0.0
 	depends = gcc-libs
 	depends = glibc
-	depends = libpam.so
 	options = staticlibs
-	source = powershell-7.3.9::https://github.com/PowerShell/PowerShell/archive/refs/tags/v7.3.9.tar.gz
+	source = powershell-7.4.0::https://github.com/PowerShell/PowerShell/archive/refs/tags/v7.4.0.tar.gz
 	source = Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
 	source = version-from-environment-variable.patch
 	source = skip-distro-check.patch
-	sha256sums = bb90154d55b61736f91af1a6f73b6c56611cf03b2fc2fa3ec51d6a17b0eab13f
+	sha256sums = fad73c44e26051f69bbe691defb7a8d285b0d181efd19b61f8afe8c2f773c4a2
 	sha256sums = 0c81200e5211a2f63bc8d9941432cbf98b5988249f0ceeb1f118a14adddbaa8e
 	sha256sums = 50c7265492cd5cd87d81df29fa737d06dacd97586b0fafb3a0f3af8451b8c052
-	sha256sums = ef171dc5443b1903cb175d4975c62afcc9f6fcd2fafacd8c326ef23f16e4ffad
+	sha256sums = 1f25aa517b73d5d17c547757be8c6fb39e3d2f0fd128805ac42c4192348716ac
 
 pkgname = powershell
