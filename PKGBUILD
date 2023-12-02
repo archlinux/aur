@@ -1,6 +1,6 @@
 # Maintainer: Azat Khuzhin <a3at.mail@gmail.com>
 pkgname=chdig-git
-pkgver=v0.3.0.r46.gfd9bdff
+pkgver=v0.4.0.r31.g0bf05ba
 pkgrel=1
 pkgdesc="Dig into ClickHouse with TUI interface"
 arch=('x86_64')
