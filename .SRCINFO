@@ -1,0 +1,17 @@
+pkgbase = distrobuilder-menu
+	pkgdesc = A python console frontend to Distrobuilder for building standard or customised LXD / LXC images
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/itoffshore/distrobuilder-menu
+	arch = x86_64
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = go-yq
+	depends = python-urllib3
+	depends = python-yaml
+	source = distrobuilder-menu-0.2.7.tar.gz::https://github.com/itoffshore/distrobuilder-menu/archive/0.2.7.tar.gz
+	md5sums = 32b1516a5ca067c53344b1e0e9e74e6a
+
+pkgname = distrobuilder-menu
