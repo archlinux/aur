@@ -1,0 +1,19 @@
+pkgbase = joycond-autopair-git
+	pkgdesc = Userspace daemon to combine joy-cons from the hid-nintendo kernel driver. Modified to autopair Pro Controllers.
+	pkgver = 0.1.0.autopair.r3.gea55b5a
+	pkgrel = 1
+	url = https://github.com/DanielOgorchock/joycond
+	install = joycond-autopair-git.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = libevdev
+	optdepends = hid-nintendo-dkms: provides driver for pre-5.16 kernels
+	provides = joycond-git
+	conflicts = joycond-git
+	source = git+https://github.com/SeongGino/joycond.git
+	md5sums = SKIP
+
+pkgname = joycond-autopair-git

@@ -1,0 +1,7 @@
+post_install() {
+	cat <<- EOF
+		:: Enable/start with 
+		:: systemctl enable --now joycond.service
+	EOF
+}
+
