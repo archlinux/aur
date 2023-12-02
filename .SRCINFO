@@ -1,14 +1,14 @@
 pkgbase = r-this.path
 	pkgdesc = Get Executing Script's Path
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=this.path
 	arch = x86_64
 	license = MIT
 	depends = r
 	optdepends = r-microbenchmark
-	source = https://cran.r-project.org/src/contrib/this.path_2.2.0.tar.gz
-	md5sums = bd4ba60db6d180122cce75ac381b27bb
-	sha256sums = 166e881d0612802406aa239e83187ca55badc124d95af0a3fa89dc38efb7b5b6
+	source = https://cran.r-project.org/src/contrib/this.path_2.3.0.tar.gz
+	md5sums = 90fbb21dd4ea2b8ce81b8642469a1578
+	sha256sums = 877799659294cb81eb6616057ae5ee91627366fc66a91c9fc64f09c8f9684b51
 
 pkgname = r-this.path
