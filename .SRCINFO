@@ -1,6 +1,6 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package
-	pkgver = 0.5.22
+	pkgver = 0.5.23
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = any
@@ -53,7 +53,7 @@ pkgbase = nwg-shell
 	optdepends = mousepad: suggested text editor
 	optdepends = thunar: suggested file manager
 	optdepends = nano: in case you hate vi
-	source = nwg-shell-0.5.22.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.5.22/nwg-shell-v0.5.22.tar.gz
-	md5sums = 1e80744a5437a3227448f825a030c0ad
+	source = nwg-shell-0.5.23.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.5.23/nwg-shell-v0.5.23.tar.gz
+	md5sums = 470b7057d4f0f04c5a7d5060a20be97b
 
 pkgname = nwg-shell
