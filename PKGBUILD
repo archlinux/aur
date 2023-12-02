@@ -5,11 +5,11 @@ _pkgname=puma
 _pkgver=3.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Propagating Uncertainty in Microarray Analysis(including Affymetrix tranditional 3' arrays and exon arrays and Human Transcriptome Array 2.0)"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=(LGPL)
+license=('LGPL-2.0-or-later')
 depends=(
   r-affy
   r-affyio

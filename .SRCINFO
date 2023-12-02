@@ -1,10 +1,10 @@
 pkgbase = r-puma
 	pkgdesc = Propagating Uncertainty in Microarray Analysis(including Affymetrix tranditional 3' arrays and exon arrays and Human Transcriptome Array 2.0)
 	pkgver = 3.44.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/puma
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.0-or-later
 	depends = r-affy
 	depends = r-affyio
 	depends = r-biobase
