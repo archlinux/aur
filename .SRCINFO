@@ -1,7 +1,7 @@
 pkgbase = noto-fonts-ar
 	pkgdesc = Google Noto TTF fonts for Arabic Scripts
 	pkgver = 23.12.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.google.com/get/noto/
 	arch = any
@@ -22,6 +22,6 @@ pkgbase = noto-fonts-ar
 	sha256sums = cabdc065d2d3d30562cf1d3e753dc7062bc420beb14942e0c28a211020e2b8d1
 	sha256sums = c270782ee478c685f95509e724125729e1284c82ebfbe414cc67926f29449e1d
 	sha256sums = f2095b08bed08b23a6fe26112fcd679a2bee3f002eef077eb05d215ed1051bd8
-	sha256sums = e9eac74b4b261bea372d464e8a04ab225aa2faba0ba1f9e85ab63bf1222e8b8b
+	sha256sums = d9543a6e1c0edd091c010ee84591ee556e57c2a1ad536a669c3f91c8ee53fd98
 
 pkgname = noto-fonts-ar
