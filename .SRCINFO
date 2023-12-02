@@ -1,10 +1,10 @@
 pkgbase = r-hgu95av2cdf
 	pkgdesc = hgu95av2cdf
 	pkgver = 2.18.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://bioconductor.org/packages/hgu95av2cdf
 	arch = any
-	license = LGPL
+	license = LGPL-2.0-or-later
 	depends = r-annotationdbi
 	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/hgu95av2cdf_2.18.0.tar.gz
 	md5sums = 026bae2f76433593f75ca6c79bc9a9d0

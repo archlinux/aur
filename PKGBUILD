@@ -5,11 +5,11 @@ _pkgname=hgu95av2cdf
 _pkgver=2.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=5
 pkgdesc="hgu95av2cdf"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=(LGPL)
+license=('LGPL-2.0-or-later')
 depends=(
   r-annotationdbi
 )
