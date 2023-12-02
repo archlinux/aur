@@ -1,0 +1,13 @@
+pkgbase = r-polca
+	pkgdesc = Polytomous Variable Latent Class Analysis
+	pkgver = 1.6.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=poLCA
+	arch = x86_64
+	license = GPL
+	depends = r-scatterplot3d
+	source = https://cran.r-project.org/src/contrib/poLCA_1.6.0.1.tar.gz
+	md5sums = 1880d580c0b060ac7708458440462726
+	sha256sums = ed8c60a42bff0402c9ba2f9ce1422dd171e711c1a64498c4d96010ddb29f6b16
+
+pkgname = r-polca
