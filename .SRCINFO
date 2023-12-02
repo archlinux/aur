@@ -1,0 +1,15 @@
+pkgbase = ruby-unicode-name
+	pkgdesc = [Unicode 15.1.0] Returns the name, aliases, or label of a Unicode code point
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://github.com/janlelis/unicode-name
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-unicode-types>=1.9
+	noextract = unicode-name-1.12.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/unicode-name-1.12.0.gem
+	sha256sums = e6d5b6fc2809d1cfdca263194fc6a8be16ede4ea515be0399d2736e0c510e704
+
+pkgname = ruby-unicode-name
