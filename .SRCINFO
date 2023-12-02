@@ -1,0 +1,11 @@
+pkgbase = ttf-profont-windows-bold
+	pkgdesc = Profont Windows Bold Variant as a Truetype Font
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://tobiasjung.name/profont/
+	arch = any
+	license = MIT
+	source = https://tobiasjung.name/downloadfile.php?file=ProFont-Windows-Bold.zip
+	sha256sums = 2f72a110693168de1e8a5f45e892c7513611d11000a45f57f67180fcf707d0df
+
+pkgname = ttf-profont-windows-bold
