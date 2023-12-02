@@ -9,7 +9,7 @@ url='https://spacedrive.com/'
 license=('AGPL3')
 source=('spacedrive::git+https://github.com/spacedriveapp/spacedrive.git')
 depends=('ffmpeg' 'libheif' 'gtk3' 'webkit2gtk' 'pango' 'gdk-pixbuf2' 'cairo' 'libsoup' 'glib2')
-makedepends=('cargo' 'pnpm' 'git' 'clang')
+makedepends=('cargo-nightly' 'pnpm' 'git' 'clang')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,7 +22,6 @@ prepare() {
 	cd "${pkgname%-git}"
 
 	export CARGO_TARGET_DIR=target
-	export RUSTUP_TOOLCHAIN=stable
 
 	pnpm install
 	pnpm prep
@@ -32,7 +31,6 @@ build() {
 	cd "${pkgname%-git}"
 
 	export CARGO_TARGET_DIR=target
-	export RUSTUP_TOOLCHAIN=stable
 
 	pnpm tauri build --bundles app
 }
