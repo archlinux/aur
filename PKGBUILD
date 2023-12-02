@@ -11,9 +11,9 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia')
 makedepends=('qt5-tools')
 provides=('ultracopier')
-commit=a2fbe816108d89761678fec9974e6977eeda9e92
+commit=baab992b50b36682ef2294e41bfc4c6c5ad53f85
 source=("$pkgname-$pkgver.zip"::"https://github.com/alphaonex86/Ultracopier/archive/$commit.zip")
-sha256sums=('dc9100156886d371a81e62ba91542b0e36ad9a62b41e05c67e8fd555ff340e7f')
+sha256sums=('3e36941497ae9ed6508147262aecc673b86b9179d4988940626201446b189871')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$commit"
