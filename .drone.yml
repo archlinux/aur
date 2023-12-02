@@ -62,7 +62,7 @@ steps:
   image: docker.io/appleboy/drone-git-push:1.0.6
   settings:
     branch: master
-    remote: ssh://aur@aur.archlinux.org/mint-backgrounds-helena.git
+    remote: ssh://aur@aur.archlinux.org/mint-backgrounds-julia.git
     force: false
     commit: false
     ssh_key:
@@ -94,4 +94,4 @@ trigger:
   event:
   - tag
   repo:
-  - volker.raschek/mint-backgrounds-helena-pkg
+  - volker.raschek/mint-backgrounds-julia-pkg

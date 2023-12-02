@@ -1,7 +1,7 @@
 pkgbase = mint-backgrounds-julia
 	pkgdesc = The backgrounds included in Linux Mint 10 Julia
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-julia
 	arch = any
 	license = Various
@@ -9,4 +9,3 @@ pkgbase = mint-backgrounds-julia
 	sha256sums = 3afad858e57bfcc595201125da4c78b3649d5d69f5b2dc4bdcab64a5b7dac62b
 
 pkgname = mint-backgrounds-julia
-
