@@ -1,7 +1,7 @@
 # Maintainer: Filip Parag <filip@parag.rs>
 
 pkgname=wmrc
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Simple modular window manager extensions'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/filiparag/wmrc'
 license=('MIT')
 depends=('coreutils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('6253152ac2b0e10ccfb89498e8e3f2c1f445705621b083b85656f16a151be4cd')
+sha256sums=('edd37873dfc03c003ca021c8b4b57ebd58277a111b4cde99d26347215e33c70d')
 
 package() {
   cd "${pkgname}-${pkgver}" || return 1
