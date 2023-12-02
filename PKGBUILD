@@ -1,7 +1,7 @@
 # Maintainer: Pierce Thompson <insprill@gmail.com>
 
 pkgname=bs-manager-git
-pkgver=v1.3.0.alpha.5.r0.gefd69e4
+pkgver=v1.4.0.r43.g7ff0fe5
 pkgrel=2
 pkgdesc="An all-in-one tool for managing Beat Saber versions, maps, mods, and more"
 arch=("x86_64")
@@ -52,7 +52,7 @@ package() {
     cp -r "$build_dir/". "$pkgdir/opt/${pkgname%-git}/"
 
     install -Dm644 "$srcdir/bs-manager.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
-    install -Dm644 "resources/readme/icon.svg" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.svg"
+    install -Dm644 "resources/readme/SVG/icon.svg" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.svg"
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
     install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
