@@ -1,7 +1,7 @@
 # Maintainer: honjow <honjow@gmail.com>
 
 pkgname=frzr-sk
-pkgver=0.14.11.dev
+pkgver=0.14.12.dev
 pkgrel=1
 pkgdesc="A deployment and update system for read-only btrfs subvolume based operating systems"
 arch=('any')
