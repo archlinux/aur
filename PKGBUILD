@@ -2,7 +2,7 @@
 
 pkgname=samurai-select
 pkgver=23.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A screen selection tool for wayland compositors using the layer shell"
 arch=("x86_64" "aarch64")
 url="https://github.com/Samudevv/${pkgname}"
@@ -34,6 +34,9 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GO_FLAGS="-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw -x -v"
+
+  # Fix version string
+  sed -i 's/11/12/g' version.go
 
   go build
   go clean -a -cache --modcache
