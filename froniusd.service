@@ -1,0 +1,17 @@
+[Unit]
+Description=Fronius SunSpec energy meter
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/froniusd -c /etc/froniusd.conf
+User=solarmeter
+Group=solarmeter
+NoNewPrivileges=yes
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
