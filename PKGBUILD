@@ -2,7 +2,7 @@
 
 pkgname=bs-manager-git
 pkgver=v1.4.0.r43.g7ff0fe5
-pkgrel=2
+pkgrel=3
 pkgdesc="An all-in-one tool for managing Beat Saber versions, maps, mods, and more"
 arch=("x86_64")
 url="https://github.com/Zagrios/bs-manager"
