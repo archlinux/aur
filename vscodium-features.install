@@ -12,4 +12,5 @@ post_upgrade() {
 
 pre_remove() {
   /usr/share/vscodium-features/patch.py vscodium-features restore
-}   
+  /usr/bin/rm -f /usr/share/vscodium-features/cache.json
+}
