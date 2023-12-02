@@ -5,7 +5,7 @@
 
 _pkgname=openSeaChest
 pkgname=openseachest
-pkgver=23.03.1
+pkgver=23.12
 pkgrel=1
 pkgdesc="Seagate utilities useful for performing various operations on SATA, SAS, NVMe, and USB storage devices."
 arch=('x86_64' 'aarch64')
@@ -15,11 +15,11 @@ depends=()
 makedepends=('meson' 'ninja')
 optdepends=()
 source=("$pkgname-$pkgver.tar.xz::${url}/releases/download/v${pkgver}/SourceCode_With_Submodules.tar.xz")
-b2sums=('63a03a56068fd02bb37e9f3dfadfb70611aa245cdd85f47a492625685ff7ef34416e998b4a046898570ff29ccd46fb3a1e408ac04b76988b4b9834d33f57cb10')
+b2sums=('e083c80782c15cbe34d8b3892aa6de876a6eb4825fc9d214e86f2ca469764b63602f7b8e058e8b89def893ee297541e0feebea216eba4473061aedd8f68a0609')
 
 build() {
 	cd "${_pkgname}-v${pkgver}"
-	meson --buildtype=release --prefix=/usr builddir
+	meson setup --buildtype=release --prefix=/usr builddir
 	ninja -C builddir
 }
 
