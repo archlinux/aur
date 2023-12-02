@@ -4,19 +4,18 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2154.gec56067
+pkgver=4.3.r2165.gdd884b8
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
 arch=(aarch64 arm armv6h armv7h i686 x86_64)
 url=https://tvheadend.org/
 license=(GPL3)
-# NOTE: ffmpeg 6 is not supported (https://github.com/tvheadend/tvheadend/pull/1522)
-depends=(avahi ffmpeg4.4 libdvbcsa libfdk-aac libhdhomerun libogg libtheora libvorbis libvpx
+depends=(avahi ffmpeg libdvbcsa libfdk-aac libhdhomerun libogg libtheora libvorbis libvpx
          openssl opus pcre2 pngquant uriparser x264 x265)
 makedepends=(git python)
 optdepends=('xmltv: alternative source of programme listings')
-# NOTE: !lto : avoid build error. See https://tvheadend.org/issues/6026
+# NOTE: !lto : to avoid build errors in case lto is enabled (in makepkg.conf). See https://tvheadend.org/issues/6026
 options=(!lto !strip emptydirs)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -35,8 +34,6 @@ pkgver() {
 
 build() {
   cd $pkgname
-
-  export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
 
   ./configure \
     --datadir=/var/lib \
