@@ -2,7 +2,7 @@
 
 pkgname=python-pixcat-an-prata
 _pkgname=pixcat
-pkgver=0.1.4r25.69e35c0
+pkgver=0.1.5r25.69e35c0
 pkgrel=1
 pkgdesc="CLI and Python API to display images on a kitty terminal with optional resizing. an-prata fork for eliminating cumulative tmpfs usage."
 arch=(any)
@@ -19,7 +19,7 @@ pkgver() {
 	cd "${srcdir}/${_pkgname}"
 
 	# Get the version number.
-	printf "0.1.4r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "0.1.5r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
