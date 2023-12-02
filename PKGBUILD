@@ -20,7 +20,7 @@ _pkgname="localai"
 pkgbase="${_pkgname}-git"
 pkgname=("${pkgbase}")
 pkgver=v2.0.0_beta.1.g42a80d1
-pkgrel=1
+pkgrel=2
 pkgdesc="The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -97,7 +97,7 @@ prepare() {
   make $_EXTERNAL_SOURCES
 
   # modify get-sources, remove go mod edits for inactive backend sources
-  sed -ri "s#get-sources: .*#get-sources: $_EXTERNAL_PATHS#g" Makefile
+  sed -ri "s#get-sources: .*#get-sources: $_EXTERNAL_SOURCES#g" Makefile
   sed -ri 's#.+\-replace github.com/nomic-ai/gpt4all/gpt4all.+##g' Makefile
   sed -ri 's#.+\-replace github.com/donomii/go-rwkv.cpp.+##g' Makefile
   sed -ri 's#.+\-replace github.com/go-skynet/go-ggml-transformers.cpp.+##g' Makefile
