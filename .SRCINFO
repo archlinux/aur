@@ -1,6 +1,6 @@
 pkgbase = shaderc-git
 	pkgdesc = A collection of tools, libraries and tests for shader compilation. (GIT version)
-	pkgver = 2022.3.2.gdc9d28a
+	pkgver = 2023.7.6.gaaa44b5
 	pkgrel = 1
 	url = https://github.com/google/shaderc
 	arch = x86_64
@@ -11,16 +11,16 @@ pkgbase = shaderc-git
 	makedepends = python
 	makedepends = asciidoctor
 	makedepends = spirv-headers
+	depends = gcc-libs
+	depends = glibc
 	depends = glslang
 	depends = spirv-tools
 	provides = shaderc
-	provides = shaderc=2022.3.2.gdc9d28a
+	provides = shaderc=2023.7.6.gaaa44b5
 	provides = libshaderc_shared.so
 	conflicts = shaderc
 	options = debug
-	source = git+https://github.com/google/shaderc.git#branch=main
-	source = fix-glslang-link-order.patch
+	source = git+https://github.com/google/shaderc.git
 	sha256sums = SKIP
-	sha256sums = b4b05ccea7c2905cf018efef15a86d8807011db1a8cabe57314f6aaade33a644
 
 pkgname = shaderc-git

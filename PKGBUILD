@@ -1,37 +1,34 @@
 #Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=('shaderc-git')
-pkgver=2022.3.2.gdc9d28a
+pkgver=2023.7.6.gaaa44b5
 pkgrel=1
 pkgdesc="A collection of tools, libraries and tests for shader compilation. (GIT version)"
 url='https://github.com/google/shaderc'
 license=('Apache')
 arch=('x86_64')
-depends=('glslang'
-         'spirv-tools'
-         )
-provides=('shaderc'
-          'libshaderc_shared.so'
-          )
-makedepends=('git'
-             'ninja'
-             'cmake'
-             'python'
-             'asciidoctor'
-             'spirv-headers'
-             )
-provides=('shaderc'
-          "shaderc=${pkgver}"
-          'libshaderc_shared.so'
-          )
+depends=(
+  'gcc-libs' # libgcc_s.so libstdc++.so
+  'glibc' # libc.so libm.so
+  'glslang' # libSPIRV.so libglslang.so
+  'spirv-tools'
+)
+makedepends=(
+  'git'
+  'ninja'
+  'cmake'
+  'python'
+  'asciidoctor'
+  'spirv-headers'
+)
+provides=(
+  'shaderc'
+  "shaderc=${pkgver}"
+  'libshaderc_shared.so'
+)
 conflicts=('shaderc')
-source=('git+https://github.com/google/shaderc.git#branch=main'
-        'fix-glslang-link-order.patch'
-        )
-
-sha256sums=('SKIP'
-            'b4b05ccea7c2905cf018efef15a86d8807011db1a8cabe57314f6aaade33a644'
-            )
+source=('git+https://github.com/google/shaderc.git')
+sha256sums=('SKIP')
 options=('debug')
 
 pkgver() {
@@ -40,11 +37,7 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
   cd shaderc
-  patch -p1 -i "${srcdir}/fix-glslang-link-order.patch"
-
   # de-vendor libs and disable git versioning
   sed '/add_subdirectory(third_party)/d' -i CMakeLists.txt
   sed '/build-version/d' -i glslc/CMakeLists.txt
@@ -59,8 +52,7 @@ EOF
 build() {
   CPPFLAGS="${CPPFLAGS//2/0}"
 
-  cd "${srcdir}/build"
-  cmake ../shaderc \
+  cmake -S shaderc -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
@@ -69,7 +61,7 @@ build() {
     -Dglslang_SOURCE_DIR=/usr/include/glslang \
     -GNinja
 
-  LC_ALL=C ninja
+  cmake --build build
 
   cd "${srcdir}/shaderc/glslc"
   asciidoctor -b manpage README.asciidoc -o glslc.1
@@ -77,7 +69,7 @@ build() {
 
 package() {
 
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 -t "${pkgdir}/usr/share/man/man1/" "$srcdir/shaderc/glslc/glslc.1"
 }
