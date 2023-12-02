@@ -1,5 +1,5 @@
-*
-!PKGBUILD
-!.gitignore
-!.editorconfig
-!.SRCINFO
+pkg
+src
+*tar.gz
+*tar.zst
+*tar.zst.sig
