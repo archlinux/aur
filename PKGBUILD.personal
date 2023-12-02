@@ -6,10 +6,10 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton8-24
-_commit=ba2339d9df86be01b6378371b469fe3fb242fc25
+_srctag=GE-Proton8-25
+_commit=2074d2af43bb7571a69609b2321c4d810df2621b
 pkgver=${_srctag//-/.}
-pkgrel=3
+pkgrel=1
 epoch=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -22,7 +22,6 @@ source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.gi
         30-win32-aliases.conf
         wine-binfmt.conf)
 source+=(
-        83-nv_low_latency_wine.patch
 )
 sha512sums=('SKIP'
             '30437d8ee92c5741fa50a7fe346ccfc48ba809dad0d740903a05a67781d23ea38a5094038a070a253e3fdd8046783b46a5420df6361bdd30cb229d3d88107569'
@@ -30,7 +29,6 @@ sha512sums=('SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
 sha512sums+=(
-            'SKIP'
 )
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
@@ -114,7 +112,6 @@ prepare() {
     git remote set-url origin https://github.com/gloriouseggroll/wine-ge-custom.git
     git submodule update --init --filter=tree:0 --recursive proton-wine
     pushd proton-wine
-      patch -p1 -i "$srcdir"/83-nv_low_latency_wine.patch
       patch -p1 -i "$srcdir"/wine-wmclass.patch
       patch -p1 -i "$srcdir"/wine-isolate_home.patch
       git config user.email "makepkg@aur.not"
@@ -141,13 +138,13 @@ build() {
   # MingW Wine builds fail with relro
   export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
-  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
-  export CROSSLDFLAGS="$LDFLAGS -Wl,--file-alignment,4096"
-
   # From Proton
   OPTIMIZE_FLAGS="-O2 -march=haswell -mtune=haswell -mfpmath=sse -pipe -fno-semantic-interposition"
   SANITY_FLAGS="-fwrapv -fno-strict-aliasing"
   COMMON_FLAGS="$OPTIMIZE_FLAGS $SANITY_FLAGS -s -mno-avx2"
+
+  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
+  export CROSSLDFLAGS="$LDFLAGS -Wl,--file-alignment,4096"
 
   msg2 "Building Wine-64..."
 
