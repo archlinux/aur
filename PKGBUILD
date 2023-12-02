@@ -16,7 +16,7 @@ pkgdesc='Open source IPsec implementation'
 url='https://www.strongswan.org'
 license=('GPL-2.0-only')
 arch=('x86_64')
-makedepends=('libnm' 'systemd' 'python' 'ruby' 'ruby-rdoc' 'mariadb' 'python-setuptools')
+makedepends=('libnm' 'systemd' 'ruby' 'ruby-rdoc' 'mariadb' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'systemd-libs' 'pam')
 optdepends=('libnm: for networkmanager support'
   'mariadb: MySQL support'
@@ -39,6 +39,7 @@ sha512sums=('86aa89242fd5a5569c3e8b73ea9a2b613be1d1674a4384f05ec7e74669cec2ed0b8
 
 prepare() {
   cd ${pkgname}-${pkgver}
+  sed -i 's/$(PYTHON) -m build/$(PYTHON) -m build --wheel --no-isolation/' src/libcharon/plugins/vici/python/Makefile.am
   autoreconf -fiv
 }
 
@@ -106,7 +107,7 @@ build() {
     --enable-bypass-lan \
     --enable-ruby-gems \
     --enable-ruby-gems-install \
-    --enable-python-eggs \
+    --enable-python-wheels \
     --enable-ml \
     --enable-stroke
   make
@@ -117,6 +118,8 @@ package() {
 
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
+
+  python -m installer --destdir="$pkgdir" src/libcharon/plugins/vici/python/dist/*.whl
 
   # remove unrepreducible files
   rm -r "${pkgdir}"/${_gemdir}/cache/
