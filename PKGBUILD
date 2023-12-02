@@ -1,6 +1,6 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='pyload-ng'
-pkgver=0.5.0b3.dev74
+pkgver=0.5.0b3.dev75
 pkgrel=1
 pkgdesc="The free and open-source Download Manager written in pure Python"
 url="https://pyload.net/"
@@ -15,7 +15,7 @@ optdepends=('caffeine: For AntiStandby plugin'
             'python-pillow: for some CAPTCHA stuff'
             'python-beaker: for some accounts') # <-- honestly I have no idea for which accounts but I saw there were some imports that needed beaker modules in code.
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-sha256sums=('55904c9e4a4932f3f923ce336f31a223c3014224db9e923a69c8327a1e099115')
+sha256sums=('d653c82a46444a89c36950a769cd2252efe00aa5d50c184d66b9394b4782e85d')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
