@@ -2,7 +2,7 @@
 # Contributor: classabbyamp <dev@kb6.ee>
 
 pkgname=gridtracker
-pkgver=1.23.1019
+pkgver=1.23.1112
 pkgrel=1
 pkgdesc="Companion program for WSJT-X for mapping contacts"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('nwjs-bin>=0.54.0')
 replaces=('gridtracker-bin')
 source=("https://gitlab.com/gridtracker.org/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('7f79df735b16cd6b549be9f435828c2878361e652f4a9f993ad7e70bdb37ed60')
+sha256sums=('ae5c17a7c887fc0d5262234599de8113848a888fa545f712652296dc27ea14f8')
 
 package() {
     cd "$srcdir/$pkgname-v$pkgver/"
