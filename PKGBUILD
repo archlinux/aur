@@ -19,8 +19,8 @@ source=("${pkgname}.hook"
         'patch.py'
         'patch.json')
 md5sums=('c6fcb99a315f5957bc1472597360d8b2'
-         'c081d5e736a56b0d8f93cab92183f418'
-         'SKIP')
+         '8407481e2fc01c483957ca2bdd6dda9b'
+         '5cdf96d72d223e73827626bc3bb3e176')
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
