@@ -1,6 +1,6 @@
 pkgbase = localai-git
 	pkgdesc = The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first.
-	pkgver = v1.40.0.63.g9f708ff
+	pkgver = v2.0.0_beta.1.g42a80d1
 	pkgrel = 1
 	url = https://github.com/mudler/LocalAI
 	arch = x86_64

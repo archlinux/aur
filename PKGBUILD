@@ -1,6 +1,6 @@
 # Maintainer: wuxxin <wuxxin@gmail.com>
 
-# to only build for cpu, set ENABLE_CUDA and ROCM to 0
+# to only build for cpu, set ENABLE_CUDA and ENABLE_ROCM to 0
 _ENABLE_CUDA=1
 _ENABLE_ROCM=0
 _SKIP_CPU=0
@@ -19,7 +19,7 @@ _pkgname="localai"
 
 pkgbase="${_pkgname}-git"
 pkgname=("${pkgbase}")
-pkgver=v1.40.0.63.g9f708ff
+pkgver=v2.0.0_beta.1.g42a80d1
 pkgrel=1
 pkgdesc="The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
@@ -79,6 +79,11 @@ sha256sums=(
   'SKIP'
 )
 
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  echo "$(git describe --always --tags | tr "-" ".")"
+}
+
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
@@ -108,11 +113,6 @@ prepare() {
     if test -d "$n"; then rm -rf "$n"; fi
     cp -r "${_pkgname}" "$n"
   done
-}
-
-pkgver() {
-  cd "${srcdir}/../${_pkgname}"
-  echo "$(git describe --always --tags | tr "-" ".")"
 }
 
 _build() {
