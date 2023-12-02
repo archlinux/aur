@@ -1,6 +1,6 @@
 pkgbase = arenatracker-git
 	pkgdesc = Arena Tracker is a deck tracker that gives you a lot of extra info while playing Hearthstone
-	pkgver = 23.08.01
+	pkgver = 23.11
 	pkgrel = 1
 	url = https://github.com/supertriodo/Arena-Tracker
 	arch = x86_64
