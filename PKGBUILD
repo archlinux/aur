@@ -1,7 +1,7 @@
 # Maintainer: Stelios Tsampas <loathingkernel @at gmail .dot com>
 
 pkgname=arenatracker
-pkgver=23.08.01
+pkgver=23.11
 pkgrel=1
 pkgdesc="Arena Tracker is a deck tracker that gives you a lot of extra info while playing Hearthstone"
 arch=('x86_64')
