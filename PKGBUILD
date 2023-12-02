@@ -1,5 +1,10 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
+# By default use the same optimizations used by Valve and ignore makepkg,
+# to avoid build failures due to options incompatible with MingW cross-compilation.
+# If you set this switch to 'true', you are on your own.
+: ${_system_cflags:=false}
+
 pkgname=proton-ge-custom
 _srctag=GE-Proton8-25
 _commit=f73e9b592ba6200bcd40d2ffed23cbc426908ed5
@@ -183,18 +188,18 @@ build() {
         --proton-sdk-image="" \
         --build-name="${pkgname}"
 
-    # By default export FLAGS used by proton and ignore makepkg
-    # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
-    # If you want the "best" possible optimizations for your system you can use
-    # `-march=native` and remove the `-mtune=core-avx2` option.
-    export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
-    export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
-    export RUSTFLAGS="-C opt-level=2 -C target-cpu=nocona"
-    export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
+    if [[ x"${_system_cflags::1}" != "xt" ]] ; then
+      unset CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
+    fi
+    : ${CFLAGS:="-O2 -march=nocona -mtune=core-avx2 -pipe"}
+    : ${CXXFLAGS:="-O2 -march=nocona -mtune=core-avx2 -pipe"}
+    : ${RUSTFLAGS:="-C opt-level=2 -C target-cpu=nocona"}
+    : ${LDFLAGS:="-Wl,-O1,--sort-common,--as-needed"}
+    export CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
-    # combination of AVX instructions and tree vectorization (implied by O3),
+    # combination of AVX instructions and tree vectorization (implied by O2),
     # all tested archictures from sandybridge to haswell are affected.
     # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
     # crashing with AVX regardless, but 64bit applications worked just fine.
@@ -202,7 +207,7 @@ build() {
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
     # AVX is "hard" disabled for 32bit in any case.
-    # AVX2 for 64bit is disabled below.
+    # AVX2 for both 32bit and 64bit is disabled below.
     export CFLAGS+=" -mno-avx2"
     export CXXFLAGS+=" -mno-avx2"
 
