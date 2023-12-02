@@ -10,23 +10,29 @@ build:
   stage: build
   script:
     - npm install
-    - chmod a+x ./get_latest
     - |
-      sed -i $(for arg in $(./get_latest); do
+      sed -i.old $(for arg in `node get_latest`; do
         key=${arg%%=*}
         value=${arg#*=}
 
         echo "-e s|$key=.*|$key=$value|g"
       done) PKGBUILD
+    - diff PKGBUILD.old PKGBUILD && exit 1 || exit_code=$?
+    - if [ $exit_code -ne 1 ]; exit $exit_code; fi
   artifacts:
     paths:
-      - PKGBUILD
+      - "PKGBUILD"
   cache:
     key: node_modules-cache
     paths:
       - node_modules/
+  allow_failure: true
 
-# deploy:
-#   stage: deploy
-#   script:
-#     - echo "Do your deploy here"
+deploy:
+  stage: deploy
+  image: archlinux:base-devel
+  script:
+    - updpkgsums
+    - makepkg --printsrcinfo > .SRCINFO
+  needs:
+    - build
