@@ -1,0 +1,14 @@
+pkgbase = tic-80-bin
+	pkgdesc = Fantasy computer for making, playing and sharing tiny games.
+	pkgver = 1.1.2837
+	pkgrel = 1
+	url = https://tic80.com/
+	arch = x86_64
+	license = MIT
+	depends = libglvnd
+	provides = tic-80
+	conflicts = tic-80
+	source = tic-80-bin-1.1.2837.deb::https://github.com/nesbox/TIC-80/releases/download/v1.1.2837/tic80-v1.1-linux.deb
+	sha512sums = 2aae8d18b968c81953b1ab1b34b3aa20d16770cca6a70ac00f273d9f8f8f799698b00bece212152e1b8660785016d51e010cae389d617547b30abd498817eec2
+
+pkgname = tic-80-bin
