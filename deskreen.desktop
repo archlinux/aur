@@ -1,11 +1,11 @@
 [Desktop Entry]
-Version=1.0
 Type=Application
+StartupWMClass=Deskreen
 Name=Deskreen
-Comment=Deskreen turns any device into a secondary screen for your computer
+Comment=Turn any device into a secondary screen for your computer
 Categories=Development;Utility;
 Keywords=display;screen;share;
-Exec=deskreen
+Exec=deskreen %U
 Icon=deskreen
 Terminal=false
 StartupNotify=true
