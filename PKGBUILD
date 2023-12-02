@@ -1,11 +1,12 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 _pkgname=typstfmt
 pkgname=$_pkgname-git
-pkgver=r146.13a804b
-pkgrel=2
+pkgver=r307.0c873d3
+pkgrel=1
 pkgdesc="formatter for the Typst language"
-arch=(x86 x86_64 arm aarch64)
+arch=(i686 x86_64 arm aarch64)
 url=https://github.com/astrale-sharp/$_pkgname
+makedepends=(git)
 license=(GPL3)
 source=("git+$url")
 sha256sums=('SKIP')
@@ -18,12 +19,12 @@ pkgver() {
 build() {
 	cd "$_pkgname" || return 1
 
-	cargo build
+	cargo build --release
 }
 
 package() {
 	cd "$_pkgname" || return 1
 
-	install -D "target/debug/$_pkgname" -t "$pkgdir/usr/bin"
+	install -D "target/release/$_pkgname" -t "$pkgdir/usr/bin"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 }

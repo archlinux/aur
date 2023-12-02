@@ -1,13 +1,14 @@
 pkgbase = typstfmt-git
 	pkgdesc = formatter for the Typst language
-	pkgver = r146.13a804b
-	pkgrel = 2
+	pkgver = r307.0c873d3
+	pkgrel = 1
 	url = https://github.com/astrale-sharp/typstfmt
-	arch = x86
+	arch = i686
 	arch = x86_64
 	arch = arm
 	arch = aarch64
 	license = GPL3
+	makedepends = git
 	source = git+https://github.com/astrale-sharp/typstfmt
 	sha256sums = SKIP
 
