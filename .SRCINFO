@@ -1,0 +1,21 @@
+pkgbase = r-mixedclust
+	pkgdesc = Co-Clustering of Mixed Type Data
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mixedClust
+	arch = x86_64
+	license = GPL
+	makedepends = r-rcpparmadillo
+	makedepends = r-rcppprogress
+	depends = blas
+	depends = lapack
+	depends = r-fda
+	depends = r-rcpp
+	optdepends = r-knitr
+	optdepends = r-ordinalclust
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/mixedClust_1.0.2.tar.gz
+	md5sums = 096a0f3bf316996db2fefca0f55d9fa6
+	sha256sums = 1538f352f4662c9a4a0f23dd657547992a9011e03d00173bd80c9546b5d41e82
+
+pkgname = r-mixedclust
