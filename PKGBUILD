@@ -8,7 +8,7 @@
 # basic info
 _pkgname="yuzu"
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=r25899.093eb075a
+pkgver=r26003.e9a43bae6
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch'
 url="https://github.com/yuzu-emu/yuzu"
@@ -26,7 +26,6 @@ _main_package() {
 
     #'cubeb'
     #'enet'
-    #'libinih'
     #'mbedtls'
   )
   makedepends=(
@@ -76,7 +75,7 @@ _main_package() {
 _source_yuzu() {
   source+=(
     'arun11299.cpp-jwt'::'git+https://github.com/arun11299/cpp-jwt.git'
-    'benhoyt.inih'::'git+https://github.com/benhoyt/inih.git'
+    'brofield.simpleini'::'git+https://github.com/brofield/simpleini.git'
     'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
     'ffmpeg'::'git+https://github.com/FFmpeg/FFmpeg.git'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
@@ -87,6 +86,7 @@ _source_yuzu() {
     'libusb'::'git+https://github.com/libusb/libusb.git'
     'lsalzman.enet'::'git+https://github.com/lsalzman/enet.git'
     'merryhime.dynarmic'::'git+https://github.com/merryhime/dynarmic.git'
+    'merryhime.oaknut'::'git+https://github.com/merryhime/oaknut.git'
     'microsoft.vcpkg'::'git+https://github.com/microsoft/vcpkg.git'
     'mozilla.cubeb'::'git+https://github.com/mozilla/cubeb.git'
     'xiph.opus'::'git+https://github.com/xiph/opus.git'
@@ -117,13 +117,14 @@ _source_yuzu() {
     'SKIP'
     'SKIP'
     'SKIP'
+    'SKIP'
   )
 
   _prepare_yuzu() (
     cd "${srcdir:?}/$_pkgsrc"
     local -A _submodules=(
       ['arun11299.cpp-jwt']='externals/cpp-jwt'
-      ['benhoyt.inih']='externals/inih/inih'
+      ['brofield.simpleini']='externals/simpleini'
       ['bylaws.libadrenotools']='externals/libadrenotools'
       ['ffmpeg']='externals/ffmpeg/ffmpeg'
       ['gpuopen-librariesandsdks.vulkanmemoryallocator']='externals/VulkanMemoryAllocator'
@@ -134,6 +135,7 @@ _source_yuzu() {
       ['libusb']='externals/libusb/libusb'
       ['lsalzman.enet']='externals/enet'
       ['merryhime.dynarmic']='externals/dynarmic'
+      ['merryhime.oaknut']='externals/oaknut'
       ['microsoft.vcpkg']='externals/vcpkg'
       ['mozilla.cubeb']='externals/cubeb'
       ['xiph.opus']='externals/opus'
