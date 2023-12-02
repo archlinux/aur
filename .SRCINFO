@@ -1,0 +1,14 @@
+pkgbase = ruby-unicode-blocks
+	pkgdesc = [Unicode 15.1.0] Answers the question: Which Unicode block does a code point belong to?
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/janlelis/unicode-blocks
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = unicode-blocks-1.9.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/unicode-blocks-1.9.0.gem
+	sha256sums = 4107c3126c178384cd4b955c874141995d173bdb1c2c1eadffa824cd3f43c97d
+
+pkgname = ruby-unicode-blocks
