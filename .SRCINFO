@@ -1,6 +1,6 @@
 pkgbase = matomo-git
 	pkgdesc = A powerful web analytics platform.
-	pkgver = 4.15.1
+	pkgver = 4.16.0
 	pkgrel = 1
 	url = https://github.com/matomo-org/matomo
 	install = matomo.install
@@ -38,7 +38,7 @@ pkgbase = matomo-git
 	optdepends = nginx: HTTP server
 	provides = matomo
 	conflicts = matomo
-	source = matomo::git+https://github.com/matomo-org/matomo.git#tag=c3b1fc34c1a3e66f9405307b1fcb1cf02cd58dc0
+	source = matomo::git+https://github.com/matomo-org/matomo.git#tag=541997dfc1687870e88b6c6dbdbaa2c1beab4a78
 	source = git+https://github.com/matomo-org/matomo-icons.git
 	source = git+https://github.com/matomo-org/matomo-log-analytics.git
 	source = git+https://github.com/matomo-org/plugin-AnonymousPiwikUsageMeasurement.git
