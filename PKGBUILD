@@ -2,8 +2,9 @@
 # Contributor: Carson Rueter <roachh at proton mail dot com>
 
 pkgname=vscodium-features
-pkgver=1.82.1
-pkgrel=4
+# this version is equvalent of vscodium-bin-features 1.82.0-4
+pkgver=1.82.2
+pkgrel=1
 pkgdesc='Unblock some features in VSCodium'
 arch=('any')
 url='https://github.com/microsoft/vscode'
