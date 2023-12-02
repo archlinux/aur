@@ -1,0 +1,6 @@
+post_install() {
+	cat <<- EOF
+		:: Enable/start with 
+		:: systemctl --user enable --now shortix.service
+	EOF
+}

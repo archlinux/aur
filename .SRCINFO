@@ -1,0 +1,14 @@
+pkgbase = shortix-desktop
+	pkgdesc = Script that creates human-readable symlinks for Steam Proton game prefixes, adapted for traditional desktops.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/Jannomag/shortix
+	install = shortix-desktop.install
+	arch = any
+	license = GPL3
+	depends = sed
+	optdepends = steam: create and run proton prefixes
+	source = https://github.com/SeongGino/shortix/archive/refs/tags/v0.6.1.zip
+	sha256sums = 0c0ac91a066ac20afa19863b57a42c7528b19e078bfb850b2b73ff320eb7d8cf
+
+pkgname = shortix-desktop
