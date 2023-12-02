@@ -1,11 +1,11 @@
 pkgbase = pacdate
 	pkgdesc = Automates downgrading packages to a specific date
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	arch = any
-	license = none
+	license = GPL3
 	depends = pacman
-	source = https://github.com/Joseph-DiGiovanni/pacdate/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 0c401b6bb6cc09f2334edfa554ded1449f8ef32691f6f642f75aa2754fc9e775
+	source = https://github.com/Joseph-DiGiovanni/pacdate/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = b6e353a53b5104e669c87fa8ccc6324d5abfbf8819c2453d3d00152a515c257d
 
 pkgname = pacdate

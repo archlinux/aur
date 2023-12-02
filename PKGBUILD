@@ -1,15 +1,15 @@
 # Maintainer: jdigi78 <jdigiovanni78@gmail.com>
 
 pkgname=pacdate
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Automates downgrading packages to a specific date'
 arch=('any')
 license=('GPL3')
 depends=('pacman')
-source=("https://github.com/Joseph-DiGiovanni/pacdate/archive/refs/tags/v1.0.0.tar.gz")
+source=("https://github.com/Joseph-DiGiovanni/pacdate/archive/refs/tags/v${pkgver}.tar.gz")
         
-sha256sums=('0c401b6bb6cc09f2334edfa554ded1449f8ef32691f6f642f75aa2754fc9e775')
+sha256sums=('b6e353a53b5104e669c87fa8ccc6324d5abfbf8819c2453d3d00152a515c257d')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/pacdate.sh" "${pkgdir}/usr/bin/pacdate"
