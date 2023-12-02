@@ -1,5 +1,5 @@
 _cranname=R2HTML
-_cranver=2.3.2
+_cranver=2.3.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -7,8 +7,9 @@ pkgdesc="An ODBC database interface"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
+depends=("r")
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('75a80e0f4710e3c26b10062aaac675ff')
+md5sums=('0c5bf024dcf198df199aea7135f325dd')
 
 build() {
   cd "${srcdir}"
