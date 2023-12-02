@@ -1,6 +1,6 @@
 pkgbase = debugpy-run
 	pkgdesc = Finds and runs debugpy for VS Code "remote attach" command line debugging
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/bulletmark/debugpy-run
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = debugpy-run
 	makedepends = python-setuptools-scm
 	depends = python>=3.6
 	depends = python-packaging
-	source = debugpy-run-1.7.tar.gz::https://github.com/bulletmark/debugpy-run/archive/1.7.tar.gz
-	sha1sums = 5d63508bf16409a865ed3a434414fae0144323e6
+	source = debugpy-run-1.8.tar.gz::https://github.com/bulletmark/debugpy-run/archive/1.8.tar.gz
+	sha1sums = a8783eec154c7259e2a9c674ab0cb97c240008d7
 
 pkgname = debugpy-run
