@@ -2,7 +2,7 @@
 
 pkgname=ultracopier
 _pkgname="$(echo "$pkgname" | sed 's/.*/\u&/')"
-pkgver=2.2.6.4
+pkgver=2.2.6.9
 pkgrel=1
 pkgdesc="Ultracopier is free and open source software licensed under GPL3 that acts as a replacement for files copy dialogs. Main features include: play/pause, speed limitation, on-error resume, error/collision management"
 url="https://ultracopier.first-world.info/"
