@@ -10,15 +10,14 @@ build:
   stage: build
   script:
     - npm install
-    - ls
-    # - chmod a+x ${CI_PROJECT_DIR-:.}/get_latest
-    # - |
-    #   sed -i $(for arg in $(${CI_PROJECT_DIR-:.}/get_latest); do
-    #     key=${arg%%=*}
-    #     value=${arg#*=}
+    - chmod a+x ./get_latest
+    - |
+      sed -i $(for arg in $(./get_latest); do
+        key=${arg%%=*}
+        value=${arg#*=}
 
-    #     echo "-e s|$key=.*|$key=$value|g"
-    #   done) PKGBUILD
+        echo "-e s|$key=.*|$key=$value|g"
+      done) PKGBUILD
   artifacts:
     paths:
       - PKGBUILD
