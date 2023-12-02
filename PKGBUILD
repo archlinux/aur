@@ -2,9 +2,9 @@
 # Contributor: Chilledheart <hukeyue@hotmail.com>
 
 pkgname=yass-proxy-cli
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=1
-_pkgver=1.4.9
+_pkgver=1.4.10
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy commandline"
 arch=(x86_64)
@@ -16,7 +16,7 @@ checkdepends=(curl)
 provides=(yass-proxy-cli)
 conflicts=(yass-proxy-cli-git)
 source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.gz")
-sha256sums=('1e97deed842cc5ba43b73d23590076084f5aeb2d93878b07cecee8902907bc50')
+sha256sums=('6cdabe6e60decb937857b3bb20bb016e4e31cd11e02e0e300d4fffdd71428924')
 
 prepare() {
   SRC_DIR="${srcdir}/yass-${_pkgver}"
@@ -38,7 +38,7 @@ build(){
     -DUSE_SYSTEM_ZLIB=on -DUSE_SYSTEM_CARES=on -DUSE_SYSTEM_NGHTTP2=on \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DGUI=off -DSERVER=off \
-    -DUSE_LIBCXX=on -DENABLE_LTO=on
+    -DUSE_LIBCXX=on -DENABLE_LTO=on -DUSE_TCMALLOC=on
   ninja yass_cli yass_test
   llvm-objcopy --strip-debug yass_cli
   cd ..
