@@ -1,7 +1,7 @@
 #!/bin/bash
 # script: iptvorg-epg (https://github.com/iptv-org/epg)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 02/12/2023
+# rev.date: 03/12/2023
 
 # Variables
 EPG_USR=$(whoami)
@@ -12,6 +12,7 @@ EPG_SITESTAT='https://raw.githubusercontent.com/iptv-org/epg/master/SITES.md'
 EPG_UPD_SITES='https://github.com/iptv-org/epg/trunk/sites'
 EPG_OUTPUT='guide.xml'
 EPG_CMD="npm run grab -- "
+EPG_VER="2023.12.1"
 
 # Functions
 checkReq() {
@@ -40,7 +41,7 @@ if [ ! -d "$EPG_CFGDIR" ]; then
 	# Normal copy from /usr/share/iptvorg-epg
 	mkdir -p "$EPG_CFGDIR"
 	cp "$EPG_SOURCE/my.channels.xml" "$EPG_CFGDIR"
-	bsdtar --strip-components=1 -xzf "$EPG_SOURCE/epg.tgz" -C "$EPG_CFGDIR"
+	bsdtar --strip-components=1 -xzf "$EPG_SOURCE/epg-$EPG_VER.tgz" -C "$EPG_CFGDIR"
 fi
 }
 
