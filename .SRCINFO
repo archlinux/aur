@@ -1,0 +1,15 @@
+pkgbase = mindustry_logic_bang_lang-bin
+	pkgdesc = Mindustry logic extension language, for zero additional overhead!
+	pkgver = 0.13.3
+	pkgrel = 1
+	url = https://github.com/A4-Tacks/mindustry_logic_bang_lang
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = coreutils
+	source = https://github.com/A4-Tacks/mindustry_logic_bang_lang/archive/refs/tags/v0.13.3.tar.gz
+	source = https://github.com/A4-Tacks/mindustry_logic_bang_lang/releases/download/v0.13.3/mindustry_logic_bang_lang_v0.13.3_aarch64-unknown-linux-musl.tar.xz
+	sha256sums = 6cd1a8480b1791915e8bc005901754a6c73870e66f2a34c5d40b845aa4516527
+	sha256sums = d51071b78b44a67114fdc8bad6ba9b5f3bdac7332513b7eca802cd7c3871debc
+
+pkgname = mindustry_logic_bang_lang-bin
