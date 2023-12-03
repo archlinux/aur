@@ -2,7 +2,7 @@
 # Contributor: Echo J. <aidas957 at gmail dot com>
 
 pkgname=aurc
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=2
 pkgdesc="Fast Easy way to Install and Update Aur and Non-Aur Arch Linux Packages!"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
