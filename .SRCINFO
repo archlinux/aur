@@ -1,6 +1,6 @@
 pkgbase = python-scikit-build-core
 	pkgdesc = Next generation Python CMake adaptor and Python API for plugins
-	pkgver = 0.5.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://scikit-build-core.readthedocs.io/
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = python-scikit-build-core
 	checkdepends = python-pytest
 	checkdepends = python-pytest-subprocess
 	checkdepends = python-setuptools-scm
+	checkdepends = python-virtualenv
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
@@ -26,7 +27,7 @@ pkgbase = python-scikit-build-core
 	depends = python-pathspec
 	depends = python-pyproject-metadata
 	depends = python-rich
-	source = https://files.pythonhosted.org/packages/source/s/scikit_build_core/scikit_build_core-0.5.0.tar.gz
-	sha256sums = a42a95029b34b5cf892855342d9b9445c774cb797fcb24c8fc4c2fb42b18dfca
+	source = https://files.pythonhosted.org/packages/source/s/scikit_build_core/scikit_build_core-0.7.0.tar.gz
+	sha256sums = 85f7f2469c568c6ce35ab2fa52fe2d26a04e0de507d3a24c1abb728375657fd3
 
 pkgname = python-scikit-build-core
