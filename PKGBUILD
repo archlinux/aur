@@ -1,9 +1,10 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
-# Contributor: Jörg Horchler <joerg@horchler.xyz>
+# Maintainer: ripping1903 <ripping1903 at proton dot me>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Jörg Horchler <joerg at horchler dot xyz>
 
 pkgname=go-task-bin
 _pkgname=go-task
-pkgver=3.31.0
+pkgver=3.32.0
 pkgrel=1
 pkgdesc="Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)"
 arch=(x86_64 i686 armv7h aarch64)
@@ -17,10 +18,10 @@ source_i686=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/task_li
 source_armv7h=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/task_linux_arm.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/task_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('fc707db87c08579066e312b6fd3de4301f7c1c3e48198a86368d063efce2bbab')
-sha256sums_i686=('8ad44921a59221f418ad77f6d1d5d5a0abef025c5c9f49ff990dde1e9dd1926d')
-sha256sums_armv7h=('95970c57461b85ec974bd575b66145b2446676a89e1631a7118d07bcdabb4deb')
-sha256sums_aarch64=('aeb5607c93871550677e83056154ca7e2affeccc8f3fd122d52cde80701c2834')
+sha256sums_x86_64=('e9dbb7acbd5c1676b3c49a85a0244208de827cc6ca368e10c2f48c4184b57ccf')
+sha256sums_i686=('21507ea2a9773a2011711071897c62b783d936193f7fef9918a1c8ac83d600f6')
+sha256sums_armv7h=('78295e1a2ff6c358a5ba8dc8f3b27588ba0404bde2c960672aa8cf566a5e3a01')
+sha256sums_aarch64=('be4db4fa6c7b3cb986fb5517435d64f6ea954c0495e7b51a9914bd82c4bc27e6')
 
 noextract=("$pkgname-$pkgver.tar.gz")
 
