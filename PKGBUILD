@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('fmt' 'zlib' 'lzo' 'zstd')
 makedepends=('cmake' 'pkgconf')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('15924a22e9d80e4ca28bf5524708dd8f69d840df1e781a659ce953fee7d90730')
+sha512sums=('ad10850280f591cbdc169bb8e0b1768f7c4051b3110283c941ab76beb0d2b728d30ac64caecdbe6f90068b2486170ddced0704d741d1469944c58ecf0b168e0a')
 
 build() {
 	cmake -B build -S "$pkgname-$pkgver" \
