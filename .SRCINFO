@@ -1,6 +1,6 @@
 pkgbase = python-crowdin-api-client
 	pkgdesc = Lightweight interface to the Crowdin API
-	pkgver = 1.12.1
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://support.crowdin.com/api/v2/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-crowdin-api-client
 	makedepends = python-wheel
 	depends = python-deprecated
 	depends = python-requests
-	source = crowdin-api-client-python-1.12.1.tar.gz::https://github.com/crowdin/crowdin-api-client-python/archive/refs/tags/1.12.1.tar.gz
-	sha256sums = 1e574ac8e21169a4be74aa05d347d9de3fb58666850e1fca9bbbb3ef36717220
+	source = crowdin-api-client-python-1.13.0.tar.gz::https://github.com/crowdin/crowdin-api-client-python/archive/refs/tags/1.13.0.tar.gz
+	sha256sums = 3e9c832cb6694d53f38661d72008843d1c9d7647d99679549ec77b24fe36455d
 
 pkgname = python-crowdin-api-client
