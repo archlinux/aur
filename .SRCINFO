@@ -1,6 +1,6 @@
 pkgbase = iptvorg-epg
 	pkgdesc = Utilities for downloading the EPG (Electronic Program Guide) for thousands of TV channels from hundreds of sources
-	pkgver = r6880.35709ae6
+	pkgver = r6898.10b0ba20
 	pkgrel = 1
 	url = https://github.com/iptv-org/epg
 	arch = any
