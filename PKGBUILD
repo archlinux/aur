@@ -2,7 +2,7 @@
 
 pkgname=bash-it
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A community Bash framework.'
 arch=('any')
 url='https://bash-it.readthedocs.io/en/latest/'
@@ -13,16 +13,18 @@ source=(
 sha256sums=(
 	'43ab0aa178685730771199bf8d67fd89131a3be4e49d3f16c4fdf1ac68644c79'
 )
-depends=('bash')
-install="$pkgname.install"
+depends=(
+	'bash'
+)
+install="${pkgname}.install"
 
 prepare() {
-	sed -i "s|{{BASH_IT}}|/opt/$pkgname|g" "$srcdir/$pkgname-$pkgver/template/bash_profile.template.bash"
+	sed -i "s|{{BASH_IT}}|/opt/${pkgname}|g" "${srcdir}/${pkgname}-${pkgver}/template/bash_profile.template.bash"
 }
 
 package() {
       	mkdir -p "$pkgdir/opt"	
-	cp -rf "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
-	install -Dm644 "$srcdir/$pkgname-$pkgver/template/bash_profile.template.bash" "$pkgdir/etc/profile.d/bashit.sh"
+	cp -rf "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/template/bash_profile.template.bash" "${pkgdir}/etc/profile.d/bashit.sh"
 
 }
