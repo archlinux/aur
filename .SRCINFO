@@ -20,6 +20,7 @@ pkgbase = ayatana-indicator-display
 	depends = gcc-libs
 	depends = glibc
 	depends = dconf
+	depends = accountsservice
 	conflicts = redshift
 	source = ayatana-indicator-display-23.10.4.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-display/archive/23.10.4.tar.gz
 	md5sums = 36d12531681f7aece894ef486d536863
