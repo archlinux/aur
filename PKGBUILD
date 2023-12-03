@@ -2,7 +2,7 @@
 
 pkgname='zellij-selector'
 pkgver='2.4.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Select zellij session'
 arch=('any')
 url='https://codeberg.org/stefanwimmer128/zellij-selector'
@@ -30,5 +30,5 @@ check() {
 package() {
     cd "$pkgname"
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" PREFIX=/usr install
 }

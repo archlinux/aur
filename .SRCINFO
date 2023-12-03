@@ -1,7 +1,7 @@
 pkgbase = zellij-selector
 	pkgdesc = Select zellij session
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/stefanwimmer128/zellij-selector
 	arch = any
 	license = MPL2
