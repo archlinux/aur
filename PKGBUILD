@@ -4,13 +4,24 @@ _pkgname=elan-simple
 _name_caps="Simple-ELAN"
 _name_low="simple-elan"
 pkgver="1.4"
-pkgrel=2
+pkgrel=3
 pkgdesc="A video and audio annotation tool (simplified version)"
-arch=(any)
+arch=('x86_64')
 url="https://archive.mpi.nl/tla/elan"
 provides=('elan-simple')
 conflicts=('elan-simple')
-
+depends=(
+  'java-runtime'
+  'alsa-lib'
+  'libxtst'
+  'libxext'
+  'libxi'
+  'libxrender'
+  'zlib'
+  'libx11'
+  'freetype2'
+  'glibc'
+)
 license=('GPL3' 'apache')
 source=("https://www.mpi.nl/tools/elan/simple/${_name_caps}_${pkgver//\./\-}_linux.tar.gz"
         "${_pkgname}.desktop")
