@@ -3,12 +3,18 @@ pkgname=elan-bin
 _pkgname=elan
 _pkgname_caps=ELAN
 pkgver="6.6"
-pkgrel=1
+pkgrel=2
 pkgdesc="A video and audio annotation tool"
-arch=(any)
+arch=('x86_64')
 url="https://tla.mpi.nl/tools/tla-tools/elan/"
 provides=('elan')
 conflicts=('elan')
+depends=(
+  'java-runtime'
+  'zlib'
+  'gcc-libs'
+  'glibc'
+)
 license=('GPL3' 'apache')
 source=("https://www.mpi.nl/tools/${_pkgname}/${_pkgname_caps}_${pkgver//\./\-}_linux.tar.gz"
         "elan_${pkgver}.desktop")

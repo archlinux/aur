@@ -1,11 +1,15 @@
 pkgbase = elan-bin
 	pkgdesc = A video and audio annotation tool
 	pkgver = 6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tla.mpi.nl/tools/tla-tools/elan/
-	arch = any
+	arch = x86_64
 	license = GPL3
 	license = apache
+	depends = java-runtime
+	depends = zlib
+	depends = gcc-libs
+	depends = glibc
 	provides = elan
 	conflicts = elan
 	source = https://www.mpi.nl/tools/elan/ELAN_6-6_linux.tar.gz
