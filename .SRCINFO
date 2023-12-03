@@ -1,6 +1,6 @@
 pkgbase = python-mujoco
 	pkgdesc = Mujoco's Python bindings
-	pkgver = 2.3.6
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/deepmind/mujoco
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = python-mujoco
 	depends = python-numpy
 	depends = python-opengl
 	depends = mujoco
-	source = https://github.com/deepmind/mujoco/archive/refs/tags/2.3.6.tar.gz
+	source = https://github.com/deepmind/mujoco/archive/refs/tags/3.0.1.tar.gz
 	source = mujoco.patch
-	sha256sums = 3ede20f8be574baa65ee6164f90c91b787adbe2b877cc4cc8bd1c6678f747354
+	sha256sums = 54fb3b5d2aaa068a5853b1384df0ff3d4eab45cc2fc958e82229979451299a45
 	sha256sums = 3d6b5be9b65081e6bc18209f320c608b5e94b659c34483a4f49fb5bad56addd4
 
 pkgname = python-mujoco
