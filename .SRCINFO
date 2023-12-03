@@ -1,6 +1,6 @@
 pkgbase = kvantum-qt6-git
 	pkgdesc = Qt6 component of the Kvantum theme engine
-	pkgver = 1.0.7.r0.ga5ec3206
+	pkgver = 1.0.10.r37.g85026b95
 	pkgrel = 1
 	url = https://github.com/tsujan/Kvantum
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = kvantum-qt6-git
 	makedepends = cmake
 	makedepends = qt6-tools
 	makedepends = git
-	depends = kvantum-qt5-git>=1.0.3.r0
+	depends = kvantum-qt5-git>=1.0.10.r37
 	depends = qt6-svg
 	depends = qt5-x11extras
 	depends = hicolor-icon-theme
-	depends = kwindowsystem
+	depends = kwindowsystem5
 	source = git+https://github.com/tsujan/Kvantum.git
 	md5sums = SKIP
 
