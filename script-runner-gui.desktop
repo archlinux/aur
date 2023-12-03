@@ -3,7 +3,7 @@ Version=1.0
 Type=Application
 Name=Script Runner GUI
 Exec=script-runner-gui
-Icon=application-default-icon
+Icon=icon.png
 Terminal=false
 Categories=Utility;
 
