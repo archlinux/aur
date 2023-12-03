@@ -1,23 +1,18 @@
 pkgbase = logseq-desktop
-	pkgdesc = A privacy-first, open-source platform for knowledge sharing and management.
-	pkgver = 0.9.20
+	pkgdesc = Privacy-first, open-source platform for knowledge sharing and management
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://logseq.com
 	install = logseq-desktop.install
 	arch = x86_64
 	license = AGPL3
-	makedepends = git
-	makedepends = yarn
-	makedepends = npm
 	makedepends = clojure
-	makedepends = nodejs>=16
-	source = logseq-desktop-0.9.20.zip::https://github.com/logseq/logseq/archive/refs/tags/0.9.20.zip
-	source = build.patch
-	source = logseq-desktop.desktop
-	source = logseq-desktop.sh
-	sha256sums = 9bdc34628cec13c6e017ef9d256ad8283af3654b3e8c270551329b75f08a91e9
-	sha256sums = b26c6ed39e2635e08a0df83d92883e670b75b02ed1c2c279044909c04edf8fc2
-	sha256sums = d7ec65e2e92c967a1be865f90a7c242402dbf6ee8c45c863bdbad73aab0af2f4
-	sha256sums = a6412899c57cc0369cb11af547b561b00de84cc4aa4d656f4fa5ea3385cfef2e
+	makedepends = gendesk
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = yarn
+	source = logseq-desktop-0.10.0.zip::https://github.com/logseq/logseq/archive/refs/tags/0.10.0.zip
+	sha256sums = 3b06e8910037a9bc6538fe631f8cbbccb1085e26c0defbbc628280350620d6ad
 
 pkgname = logseq-desktop
