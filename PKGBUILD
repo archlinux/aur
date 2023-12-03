@@ -7,7 +7,7 @@
 
 pkgname=musescore3-git
 pkgver=3.7.0.r19952.4d9efea
-pkgrel=1
+pkgrel=2
 pkgdesc='Create, play and print beautiful sheet music (Jojo Schmitz fork)'
 arch=(x86_64)
 url=https://musescore.org/
@@ -69,7 +69,7 @@ build() {
     -DBUILD_WEBENGINE=OFF \
     -DDOWNLOAD_SOUNDFONT=OFF \
     -DMUSESCORE_BUILD_CONFIG=release \
-    -DMUSESCORE_REVISION=$(git rev-parse --short=7 HEAD) \
+    -DMUSESCORE_REVISION=${_commit:0:7} \
     -DPACKAGE_FILE_ASSOCIATION=ON \
     -DUSE_SYSTEM_FREETYPE=ON \
     -Wno-dev \

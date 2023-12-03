@@ -112,7 +112,7 @@ build() {
 
 commit() {
     if [ "$COMMIT" != "1" ]; then
-        echo "Note: \$COMMIT is not set to 1"
+        echo "note: COMMIT is not set to 1"
         echo "      PKGBUILD and .SRCINFO changes were not committed"
         return 0
     fi
