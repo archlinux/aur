@@ -7,7 +7,7 @@ url="http://yourapplicationhomepage.com"
 license=('GPL')
 depends=('python' 'python-pyqt5' 'vim')
 source=("https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.py" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.desktop" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/scripts.json")
-sha256sums=('f06c83b930350e0a399c7c1df064f210855d127f06ee3d68bdc57b52780e4fa3'
+sha256sums=('SKIP'
             'SKIP'
             'SKIP') # Replace with actual sha256sums or use 'SKIP'
 
