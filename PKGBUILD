@@ -3,13 +3,13 @@
 
 pkgname=audex-git
 _gitname=audex
-pkgver=r350.654f484
+pkgver=r357.80df6d7
 pkgrel=1
 pkgdesc='Audex is an audio grabber tool for CD-ROM drives built with KDE Frameworks'
 arch=('x86_64')
 url='https://invent.kde.org/multimedia/audex'
 license=('GPL')
-depends=('libkcddb' 'kcmutils5' 'hicolor-icon-theme')
+depends=('libkcddb5' 'kcmutils5' 'hicolor-icon-theme' 'qt5-script')
 optdepends=('libvorbis' 'flac' 'lame' 'faac' 'python-eyed3')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 conflicts=('audex')
