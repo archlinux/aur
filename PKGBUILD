@@ -7,15 +7,13 @@
 _pkgname=logseq-desktop
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL3')
 arch=("x86_64")
 
-depends=('electron')
 makedepends=(
-  'asar'
   'gendesk'
 )
 
@@ -37,21 +35,18 @@ prepare() {
 #!/usr/bin/env sh
 set -e
 
-APPDIR="/usr/lib/logseq-desktop"
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+APPDIR="/opt/logseq-desktop"
+_ELECTRON="${APPDIR}/Logseq"
 
-_ELECTRON=/usr/bin/electron
-_ASAR="${APPDIR}/app.asar"
-_FLAGS_FILE="$XDG_CONFIG_HOME/logseq-flags.conf"
-
+_FLAGS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/logseq-flags.conf"
 if [ -r "$_FLAGS_FILE" ]; then
   _USER_FLAGS="$(cat "$_FLAGS_FILE")"
 fi
 
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec ${_ELECTRON} ${_ASAR} $_USER_FLAGS "$@"
+    exec ${_ELECTRON} $_USER_FLAGS "$@"
 else
-    exec ${_ELECTRON} ${_ASAR} --no-sandbox $_USER_FLAGS "$@"
+    exec ${_ELECTRON} --no-sandbox $_USER_FLAGS "$@"
 fi
 EOF
 
@@ -72,17 +67,18 @@ EOF
   gendesk "${_gendesk_options[@]}"
 }
 
+
 package() {
+  # copy files
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  cp -r "$srcdir/$_pkgsrc"/* "$pkgdir/opt/$_pkgname/"
+
   # desktop file
   install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/logseq-desktop.desktop"
 
   # icons
   install -Dm644 "$_pkgsrc/resources/app/icons/logseq.png" \
     -t "$pkgdir/usr/share/pixmaps/"
-
-  # asar
-  install -dm755 "$pkgdir/usr/lib/$_pkgname"
-  asar pack "$_pkgsrc/resources/app" "$pkgdir/usr/lib/$_pkgname/app.asar"
 
   # script
   install -Dm755 "logseq-desktop.sh" "$pkgdir/usr/bin/logseq"

@@ -1,14 +1,12 @@
 pkgbase = logseq-desktop-bin
 	pkgdesc = Privacy-first, open-source platform for knowledge sharing and management
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/logseq/logseq
 	install = logseq-desktop.install
 	arch = x86_64
 	license = AGPL3
-	makedepends = asar
 	makedepends = gendesk
-	depends = electron
 	provides = logseq-desktop
 	conflicts = logseq-desktop
 	source = https://github.com/logseq/logseq/releases/download/0.10.0/Logseq-linux-x64-0.10.0.zip
