@@ -5,7 +5,7 @@
 
 pkgname=qt-dab
 pkgver=6.3
-pkgrel=1
+pkgrel=2
 _prefix=qt-dab-  # name of tarball and contents change from release to release
 _tagname=qt-dab- # tag names may differ from the application version
 _pkgver=6.30
@@ -48,7 +48,7 @@ build() {
 		-DLIMESDR=ON \
 		-DHACKRF=ON \
 		-DPLUTO=ON \
-		-DRTLSDR_GENERIC=ON \
+		-DRTLSDR_LINUX=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		../${_prefix}${_tagname}${_pkgver}/${_fullname_s}
 
