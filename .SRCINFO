@@ -1,7 +1,7 @@
 pkgbase = kernel-riot-api-git
 	pkgdesc = A plug & play Riot API proxy server
 	pkgver = 127.f769403
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/meraki-analytics/kernel
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = kernel-riot-api-git
 	source = launch.sh
 	source = config.sh
 	source = kernel::git+https://github.com/meraki-analytics/kernel
-	sha256sums = 937cab63fe8acf7e7adb1ee83939165ee86ff81eea7b96a925608d55cb1a8b10
+	sha256sums = 017d3a4dacd51c670688f301bda02389cda106c3e4e757a6ff3767cf8fbd6dfd
 	sha256sums = 15d44fa8f03f1b7f0b5739ef5f3c7a87158d9fcdd9e690650ddd89e0c4cb79a9
 	sha256sums = SKIP
 
