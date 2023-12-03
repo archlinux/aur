@@ -1,6 +1,6 @@
 pkgbase = r-vplotr
 	pkgdesc = Set of tools to make V-plots and compute footprint profiles
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/VplotR
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-vplotr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-txdb.scerevisiae.ucsc.saccer3.sgdgene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/VplotR_1.12.0.tar.gz
-	sha256sums = b3b6a041ddc14e0d68be0a984402ab43a5d43f90d5e359d24622713f670b1d60
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VplotR_1.12.1.tar.gz
+	sha256sums = fb40bd7ceedf8e733a3a8105a6d69dff1ed19190c9688d590f49edc7676ccc74
 
 pkgname = r-vplotr
