@@ -9,7 +9,19 @@ pkgdesc='Serverless encrypted instant messenger with filesharing, chatgroups, e-
 arch=('x86_64')
 url='https://retroshare.cc/'
 license=('AGPL' 'GPL' 'LGPL')
-depends=('bzip2' 'libupnp' 'libxss' 'openssl-1.1' 'qt5-multimedia' 'qt5-x11extras' 'sqlcipher')
+depends=('bzip2'
+         'gcc-libs'
+         'glibc'
+         'hicolor-icon-theme'
+         'libupnp'
+         'libx11'
+         'libxss'
+         'openssl'
+         'qt5-base'
+         'qt5-multimedia'
+         'qt5-x11extras'
+         'sqlcipher'
+         'zlib')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
