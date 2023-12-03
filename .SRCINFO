@@ -1,7 +1,7 @@
 pkgbase = termius-deb
-	pkgdesc = SSH, SFTP, MOSH, telnet and serial in one beautiful app (.deb binary release)
+	pkgdesc = SSH, SFTP, MOSH, telnet and serial in one beautiful app (deb release)
 	pkgver = 8.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://termius.com
 	arch = x86_64
 	license = custom:proprietary

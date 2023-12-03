@@ -2,14 +2,14 @@
 
 pkgname=termius-deb
 pkgver=8.7.2
-pkgrel=1
-pkgdesc='SSH, SFTP, MOSH, telnet and serial in one beautiful app (.deb binary release)'
+pkgrel=2
+pkgdesc='SSH, SFTP, MOSH, telnet and serial in one beautiful app (deb release)'
 arch=('x86_64')
 url='https://termius.com'
 license=('custom:proprietary')
 makedepends=('links')
-provides=(${pkgname//-deb})
-conflicts=(${pkgname//-deb} ${pkgname//-deb/'-beta'})
+provides=("${pkgname//-deb}")
+conflicts=("${pkgname//-deb}" "${pkgname//-deb/'-beta'}")
 source=("${pkgname//-deb}-$pkgver.deb::https://web.archive.org/web/20231202224832/https://autoupdate.${pkgname//-deb}.com/linux/${pkgname//-deb}.deb"
         "${pkgname//-deb}.desktop")
 b2sums=('50190e87de8f7875a2895b5a46525ba9b1100e69c199d4e529ed5cdf6fffa1a4e4e4fff1ef14daef6612da7a063148b46e69bc2d0474c69139d7d60ad32b9d0c'
@@ -66,5 +66,5 @@ package() {
 
     install -Dm644 "$srcdir/${pkgname//-deb}.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
     install -Dm644 "$srcdir/${pkgname//-deb}.desktop" -t "$pkgdir/usr/share/applications/"
-    install -Dm644 "$srcdir/EULA.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 "$srcdir/EULA.txt" -t "$pkgdir/usr/share/licenses/${pkgname//-deb}/"
 }
