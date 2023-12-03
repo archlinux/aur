@@ -7,7 +7,7 @@
 
 pkgname=dolphin-meld
 _pkgname=dolphin
-pkgver=23.08.2
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='KDE File Manager, using Meld rather than Kompare'
 arch=(x86_64)
@@ -15,7 +15,7 @@ url='https://apps.kde.org/dolphin/'
 license=(LGPL)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname=$pkgver")
-depends=(baloo-widgets knewstuff5 kio-extras kcmutils5 kparts5 kactivities5 kuserfeedback)
+depends=(baloo-widgets knewstuff5 kio-extras kcmutils5 kparts5 kactivities5 kuserfeedback5)
 makedepends=(extra-cmake-modules kdoctools5)
 optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video thumbnails' 'kdegraphics-thumbnailers: PDF and PS thumbnails'
             'konsole: terminal panel' 'purpose5: share context menu'
@@ -23,7 +23,7 @@ optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video 
 groups=(kde-applications kde-system)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         dolphin-meld.patch)
-sha256sums=('0bca082410c4a1ab0ac60f76b0fbefa31c749dabe8a57cb53a33806cf53f6b2f'
+sha256sums=('d54e877d893ddf3d59752da723c881471bc06aee2e4143ff7e034fdffd7bba9e'
             'SKIP'
             'a69abda1bd78cbaf3eb92ed645637fce1ea04a3528c90e22ab2abbdd809a0b15')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
