@@ -6,21 +6,21 @@ pkgver=15.fac8d70
 pkgrel=3
 pkgdesc='Present PolicyKit information in a human-readable form.'
 arch=('any')
-url="https://github.com/scarygliders/${pkgname//-git}"
+url="https://github.com/scarygliders/${pkgname%-git}"
 license=('ISC')
 depends=('python-pyqt5' 'python-lxml')
 conflicts=('polkit-explorer')
 provides=('polkit-explorer')
-source=("git+https://github.com/scarygliders/${pkgname//-git}.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname//-git}"
+	cd "${srcdir}/${pkgname%-git}"
 	printf '%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "${srcdir}/${pkgname//-git}"
+	cd "${srcdir}/${pkgname%-git}"
 
 	install -d -m755 "${pkgdir}"/{usr/bin,opt/$pkgname}
 	install -m644 Ui_*.py "${pkgdir}/opt/${pkgname}/"
