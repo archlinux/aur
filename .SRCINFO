@@ -1,6 +1,6 @@
 pkgbase = python-fake-useragent
 	pkgdesc = Up to date simple useragent faker with real world database
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/hellysmile/fake-useragent
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-fake-useragent
 	makedepends = python-wheel
 	depends = python
 	depends = python-importlib-metadata
-	source = https://github.com/fake-useragent/fake-useragent/archive/refs/tags/1.3.0.tar.gz
-	sha512sums = 4baf2b6741754caabc51480d523d211947cf11f7ddc818f9e758b8bb4a22d3db3339c85ba15a783508f6f027ad1c21d6ad74a691084fb35bc5b8c0ca8faaac5b
+	source = https://github.com/fake-useragent/fake-useragent/archive/refs/tags/1.4.0.tar.gz
+	sha512sums = 2e9bfe327b8f0c283bfc877a43cf707e3002de067851ef125ddfe879035662d61c029de0ce4d28abedf294ec9aa36fc6a0c380c45f258fcc7945bd29863b4c4c
 
 pkgname = python-fake-useragent
