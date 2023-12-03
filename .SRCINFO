@@ -1,6 +1,6 @@
 pkgbase = aseprite-bin
 	pkgdesc = Create animated sprites and pixel art
-	pkgver = 1.3.1.1
+	pkgver = 1.3.2.1
 	pkgrel = 1
 	url = https://www.aseprite.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = aseprite-bin
 	depends = libxcursor
 	provides = aseprite
 	conflicts = aseprite
-	source = local://Aseprite_1.3.1-1_amd64.deb
-	sha256sums = 8ae8062ef6b02f9af1c61aade842f14d9534ae663fa0e57f03c204a311947949
+	source = local://Aseprite_1.3.2-1_amd64.deb
+	sha256sums = dfb00ae9942e3b5953c3fdf1b8bca4f16427ace8a77c8dc6b2ec9a78300500c4
 
 pkgname = aseprite-bin
