@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <tpkessler at archlinux dot org>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocm-bandwidth-test
-pkgver=5.6.0
+pkgver=5.7.1
 pkgrel=1
 pkgdesc="Bandwidth test for ROCm"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('hsa-rocr')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz"
 	"$pkgname-hsa-include.patch")
-sha256sums=('ae2f7263a21a3a650068f43e3112b2b765eea80a5af2297572f850c77f83c85e'
+sha256sums=('7426ef1e317b8293e4d6389673cfa8c63efb3f7d061e2f50a6f0b1b706e2a2a7'
             '8c3be607d36fb5aa01f770c244c5d4088dffddf879a21a9e0ac80d6dbcd2dbdf')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
