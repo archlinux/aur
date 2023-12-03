@@ -2,7 +2,7 @@
 
 _name=guizero
 pkgname=python-$_name
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Python module to allow learners to easily create GUIs'
 url='https://github.com/lawsie/guizero'
@@ -11,8 +11,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 license=(BSD)
 arch=(any)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5764e38a3b2a089712ec1e75340bf8335ea7721e37df8d9021cdd0afb8b57a27')
-
+sha256sums=('421f8e6871d795064c1608f8277ae3d252e129f656ddc558b30f577bdc6267d1')
 
 build() {
   cd $_name-$pkgver
