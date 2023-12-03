@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biomartr
-_pkgver=1.0.6
+_pkgver=1.0.7
 pkgname=r-${_pkgname,,}
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Genomic Data Retrieval'
 arch=('x86_64')
@@ -39,7 +39,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('35fe0d6090a71c68df989932cb98cffd321f0f73e880966e47856bcd84468d1b')
+sha256sums=('9d1d5c51b61ee67ce7ca18afdb0a136ef5709d92d077d80163f9d52ee6c28645')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
