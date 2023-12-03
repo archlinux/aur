@@ -3,14 +3,17 @@
 # shellcheck disable=SC2034,SC2164
 _pkgname=mpv-danmaku
 pkgname=$_pkgname-git
-pkgver=0.1.0.r3.7d81c04
-pkgrel=3
+pkgver=0.1.0.r7.5721aa1
+pkgrel=1
 pkgdesc='MPV plugin that loads bilibili comments automaticaly'
 url='https://github.com/skbeh/mpv-danmaku'
 arch=('x86_64')
 license=('GPL3')
-depends=('mpv' 'danmu2ass')
-makedepends=('cargo' 'clang' 'git')
+depends=(
+    'mpv'
+    'danmu2ass-git' # 'danmu2ass' is dead
+)
+makedepends=('cargo' 'clang' 'llvm' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
