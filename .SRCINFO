@@ -1,0 +1,13 @@
+pkgbase = boost-quickbook
+	pkgdesc = Boost.org quickbook module
+	pkgver = 1.83.0
+	pkgrel = 1
+	url = https://github.com/boostorg/quickbook
+	arch = x86_64
+	license = custom
+	makedepends = icu
+	depends = gcc-libs
+	source = https://boostorg.jfrog.io/artifactory/main/release/1.83.0/source/boost_1_83_0.tar.bz2
+	sha256sums = 6478edfe2f3305127cffe8caf73ea0176c53769f4bf1585be237eb30798c3b8e
+
+pkgname = boost-quickbook
