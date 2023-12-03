@@ -1,3 +1,4 @@
 #!/bin/sh
 
-exec wine /opt/FireAlpaca/FireAlpaca.exe
+export WINEDLLOVERRIDES="mscoree,mshtml="
+exec wine "/usr/lib/firealpaca/FireAlpaca.exe" "$@"
