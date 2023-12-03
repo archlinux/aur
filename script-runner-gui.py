@@ -2,8 +2,7 @@ import sys
 import subprocess
 import json
 import os
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QHBoxLayout, QVBoxLayout, QWidget,
-                             QAction, QFileDialog, QInputDialog, QMenu, QStyle)
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QHBoxLayout, QVBoxLayout, QWidget, QAction, QFileDialog, QInputDialog, QMenu, QStyle
 from PyQt5.QtCore import Qt, QMimeData
 
 class ScriptRunnerGUI(QMainWindow):
