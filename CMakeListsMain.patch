@@ -1,0 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d656713..b6a1ee3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,10 +55,10 @@ find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Svg Xml PrintSupport TextT
+ qt_standard_project_setup()
+ 
+ find_package(OpenSSL REQUIRED)
+-find_package(lcms REQUIRED)
++find_package(LCMS2 REQUIRED)
+ find_package(ZLIB REQUIRED)
+-find_package(freetype CONFIG REQUIRED)
+-find_package(OpenJPEG CONFIG REQUIRED)
++find_package(Freetype REQUIRED)
++find_package(OpenJPEG REQUIRED)
+ find_package(JPEG REQUIRED)
+ find_package(PNG REQUIRED)
+ 

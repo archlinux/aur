@@ -1,29 +1,11 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index d656713..b6a1ee3 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -47,10 +47,10 @@ find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Svg Xml PrintSupport TextT
- qt_standard_project_setup()
- 
- find_package(OpenSSL REQUIRED)
--find_package(lcms REQUIRED)
-+find_package(LCMS2 REQUIRED)
- find_package(ZLIB REQUIRED)
--find_package(freetype CONFIG REQUIRED)
--find_package(OpenJPEG CONFIG REQUIRED)
-+find_package(Freetype REQUIRED)
-+find_package(OpenJPEG REQUIRED)
- find_package(JPEG REQUIRED)
- find_package(PNG REQUIRED)
- 
 diff --git a/Pdf4QtLib/CMakeLists.txt b/Pdf4QtLib/CMakeLists.txt
-index 399deb8..dc49b0d 100644
+index 01b6f0b..cc6616f 100644
 --- a/Pdf4QtLib/CMakeLists.txt
 +++ b/Pdf4QtLib/CMakeLists.txt
-@@ -111,10 +111,10 @@ GENERATE_EXPORT_HEADER(Pdf4QtLib
-                        EXPORT_FILE_NAME "${CMAKE_BINARY_DIR}/${INSTALL_INCLUDEDIR}/pdf4qtlib_export.h")
+@@ -119,10 +119,10 @@ if(PDF4QT_ENABLE_OPENGL)
+ endif()
  
- target_link_libraries(Pdf4QtLib PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Xml Qt6::Svg Qt6::OpenGLWidgets)
+ target_link_libraries(Pdf4QtLib PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Xml Qt6::Svg)
 -target_link_libraries(Pdf4QtLib PRIVATE lcms2::lcms2)
 +target_link_libraries(Pdf4QtLib PRIVATE LCMS2::LCMS2)
  target_link_libraries(Pdf4QtLib PRIVATE OpenSSL::SSL OpenSSL::Crypto)
@@ -33,7 +15,7 @@ index 399deb8..dc49b0d 100644
  target_link_libraries(Pdf4QtLib PRIVATE openjp2)
  target_link_libraries(Pdf4QtLib PRIVATE JPEG::JPEG)
  
-@@ -128,6 +128,7 @@ endif()
+@@ -136,6 +136,7 @@ endif()
  
  target_include_directories(Pdf4QtLib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/sources)
  target_include_directories(Pdf4QtLib PUBLIC ${CMAKE_BINARY_DIR}/${INSTALL_INCLUDEDIR})
