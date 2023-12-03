@@ -3,7 +3,7 @@
 
 pkgname=quickhash-gui-bin
 _pkgname=quickhash
-_pkgver=3-3-1
+_pkgver=3-3-4
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="QuickHash is an open-source Linux GUI that enables hashing of files, text, entire folder trees of files, and physical disks"
