@@ -1,7 +1,7 @@
 pkgbase = bitcomet
 	pkgdesc = A free BitTorrent download client! Powerful, super-fast and easy-to-use
-	pkgver = 2.4.2
-	pkgrel = 2
+	pkgver = 2.5.1
+	pkgrel = 1
 	url = https://www.bitcomet.com
 	arch = x86_64
 	license = custom
@@ -14,10 +14,10 @@ pkgbase = bitcomet
 	depends = webkit2gtk
 	depends = libjpeg6-turbo
 	options = !strip
-	source = BitComet-x86_64.AppImage::https://download.bitcomet.com/linux/BitComet-2.4.2-x86_64.AppImage
+	source = BitComet-2.5.1-x86_64.AppImage::https://download.bitcomet.com/linux/BitComet-2.5.1-x86_64.AppImage
 	source = libtiff.rpm::https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libtiff-4.5.0-3.fc40.x86_64.rpm
 	source = LICENSE.html::https://www.bitcomet.com/en/license
-	sha256sums = 85b22b6bbcfabd56795ac9e480606c81646ae1eec82f035b75b79e7d1dc5e5fe
+	sha256sums = e36b8a4e1cefd3381ed2bd40fc3ab1237238c20f84cce1564b5535fce0f454a3
 	sha256sums = 2d29d4666fa6ac1949a6af6ef4c8f83e4e33fce30f289bc8e7fd9f47acabcc95
 	sha256sums = SKIP
 
