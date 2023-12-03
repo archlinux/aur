@@ -53,7 +53,7 @@ prepare() {
 build() {
 	cmake -B build -S "$pkgname" \
 		-DCMAKE_BUILD_TYPE='None' \
-		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DCMAKE_INSTALL_PREFIX='/' \
 		-Wno-dev \
 		-DCMAKE_MODULE_PATH="$srcdir" \
 		-DPDF4QT_INSTALL_DEPENDENCIES=0
@@ -62,4 +62,11 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+	#install -D -m755 ./pdf4qt-git/usr/usr/bin/* -t /usr/bin/
+	#install -D -m755 ./pdf4qt-git/usr/usr/lib/* -t /usr/lib/
+	#install -D -m755 ./pdf4qt-git/usr/usr/lib/pdf4qt/* -t /usr/lib/pdf4qt/
+	#install -D -m755 ./pdf4qt-git/usr/usr/share/applications/* -t /usr/share/applications/
+	#install -D -m755 ./pdf4qt-git/usr/usr/share/icons/hicolor/128x128/apps/* -t /usr/share/icons/hicolor/128x128/apps/
+	#install -D -m755 ./pdf4qt-git/usr/usr/share/icons/hicolor/scalable/apps/* -t /usr/share/icons/hicolor/scalable/apps/
+	#install -D -m755 ./pdf4qt-git/usr/usr/share/metainfo/* -t /usr/share/metainfo/
 }
