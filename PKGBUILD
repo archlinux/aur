@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 
 pkgname=python-polars
-pkgver=0.19.18
+pkgver=0.19.19
 pkgrel=1
 pkgdesc="Blazingly fast DataFrames library using Apache Arrow Columnar Format as memory model"
 arch=("x86_64")
@@ -16,7 +16,7 @@ makedepends=('maturin' 'rust-nightly' 'cmake' 'python-installer')
 _name=${pkgname#python-}
 _tag="py-$pkgver"
 source=("https://github.com/pola-rs/polars/archive/refs/tags/$_tag.tar.gz")
-b2sums=("9bfa46a62ded3c170adda742a7d747032d3ee9685b8b6b539029439c8011fd1641c24356578977466fefa54deafdf7e61e0872a767632276a5cde2ce15a9289b")
+b2sums=("777f16b4cab4ee2099e86069cc41ef435c2d88f9aabee0dcedd0de7f14d84b7bdac4607bbe0355121f5592d1116eb7f69ce7582618dce0029084df1bd7c6689c")
 
 build() {
     rm wheels -rf
