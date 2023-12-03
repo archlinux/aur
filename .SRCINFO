@@ -1,12 +1,16 @@
 pkgbase = ropgadget-git
 	pkgdesc = Search gadgets in binaries to facilitate ROP exploitation for several file formats and architectures
-	pkgver = 5.4.348.282d851
+	pkgver = 7.4.542.0fd62cc
 	pkgrel = 1
 	url = http://www.shell-storm.org/project/ROPgadget
 	arch = any
-	license = GPL2
+	license = BSD
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
 	depends = python-capstone
 	provides = ropgadget
 	conflicts = ropgadget
@@ -14,4 +18,3 @@ pkgbase = ropgadget-git
 	sha512sums = SKIP
 
 pkgname = ropgadget-git
-
