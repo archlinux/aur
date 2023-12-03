@@ -1,6 +1,6 @@
 pkgbase = ast-grep
 	pkgdesc = A fast and polyglot tool for code structural search, lint, rewriting at large scale
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://ast-grep.github.io/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ast-grep
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = ast-grep-0.14.1.tar.gz::https://github.com/ast-grep/ast-grep/archive/0.14.1.tar.gz
-	sha256sums = 8b845f770007be57f4d10f5d9a7dec4b28c6912824e4fbb2665f2214832dbe7d
-	b2sums = 1111d5ac7d88f42ed07d573001e814176ad51f31bbe492ae88545d4ce6a1d2ef71a1333fd22317a9285bf1e4064dbb1ec329694a1b0c25d2fe5ec243aae2fcf1
+	source = ast-grep-0.14.2.tar.gz::https://github.com/ast-grep/ast-grep/archive/0.14.2.tar.gz
+	sha256sums = c219ac5cbd6802f87a76b098164430af9fccb71714426363b1359d631440fc08
+	b2sums = 0702dd1bdd1e5ed901bbfbf030aaa64aa01c40ad4945770df7ca4accafc639869877b974a351a3fb39d78cee982fe717321d98cbd7a8bed9218b6d2b2dbe5e7d
 
 pkgname = ast-grep
