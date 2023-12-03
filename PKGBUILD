@@ -2,7 +2,7 @@
 # Contributor: Linus Sjögren <thelinx@unreliablepollution.net>
 # Contributor: Andrzej Giniewicz < gginiu@gmail.com >
 pkgname=love-git
-pkgver=20200816.9f62bafe
+pkgver=20231203.6eb8d546
 pkgrel=1
 pkgdesc="An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic gaming experiences."
 arch=(i686 x86_64 armv6h armv7h)
@@ -18,7 +18,7 @@ makedepends=('git')
 options=(!strip)
 sha256sums=('SKIP')
 
-pgkver() {
+pkgver() {
 	cd $srcdir/love
 	git log -1 --format='%cd.%h' --date=short | tr -d -
 }
