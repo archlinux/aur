@@ -1,13 +1,14 @@
 pkgbase = make-lvm-snapshot
 	pkgdesc = Make a consistent LVM snapshot of the root volume
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Marcool04/make-lvm-snapshot/
 	install = make-lvm-snapshot.install
 	arch = any
 	license = GPL
 	depends = lvm2
 	depends = bc
+	depends = bash
 	source = https://gitlab.com/Marcool04/make-lvm-snapshot//-/archive/0.1.6/make-lvm-snapshot-0.1.6.tar.gz
 	source = make-lvm-snapshot.install
 	sha256sums = 88cdb0818adb023dacf82cb19a0f94f15a74474f18e83090adc3d3ff8a94c7b1
