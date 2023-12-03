@@ -1,10 +1,18 @@
 pkgbase = deskreen-bin
 	pkgdesc = Turn any device into a secondary screen for your computer (binary release)
 	pkgver = 2.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://deskreen.com
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0-only
+	provides = deskreen
+	conflicts = deskreen
+	source = deskreen-2.0.4.deb::https://github.com/pavlobu/deskreen/releases/download/v2.0.4/deskreen_2.0.4_amd64.deb
+	source = deskreen.desktop
+	b2sums = cdc2e257681628bb8f0320672b626a920b84346aa70af6389592fe84ca625b7ada7e3dd41889989bcf0993928694a302c42a852ae006729b262f72b3b238ec91
+	b2sums = 076a41b6d494ecdeb3a563b65dfe9d54250cec521e6e54fc9fe084829af1799f3f4e8287dd9bc80e41ddc74d8f7642ebda91158ccf1056bad87d40e8630cb8d6
+
+pkgname = deskreen-bin
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = cairo
@@ -30,10 +38,3 @@ pkgbase = deskreen-bin
 	depends = nspr
 	depends = nss
 	depends = pango
-	conflicts = deskreen
-	source = deskreen-2.0.4.deb::https://github.com/pavlobu/deskreen/releases/download/v2.0.4/deskreen_2.0.4_amd64.deb
-	source = deskreen.desktop
-	b2sums = cdc2e257681628bb8f0320672b626a920b84346aa70af6389592fe84ca625b7ada7e3dd41889989bcf0993928694a302c42a852ae006729b262f72b3b238ec91
-	b2sums = 076a41b6d494ecdeb3a563b65dfe9d54250cec521e6e54fc9fe084829af1799f3f4e8287dd9bc80e41ddc74d8f7642ebda91158ccf1056bad87d40e8630cb8d6
-
-pkgname = deskreen-bin
