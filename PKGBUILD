@@ -6,7 +6,7 @@ arch=('any')
 url="http://yourapplicationhomepage.com"
 license=('GPL')
 depends=('python' 'python-pyqt5' 'vim')
-source=("/path/to/your/script-gui2.py" "/path/to/your/script-runner-gui.desktop" "scripts.json")
+source=("https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.py" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.desktop" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/scripts.json")
 sha256sums=('SKIP') # Replace with actual sha256sums or use 'SKIP'
 
 package() {
