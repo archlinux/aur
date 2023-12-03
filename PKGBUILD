@@ -2,7 +2,7 @@
 
 pkgname=umpv
 _srcname=mpv
-pkgver=0.34.1
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="mpv script that emulates \"unique application\" functionality on Linux"
 arch=('any')
@@ -11,8 +11,8 @@ license=('GPL')
 depends=('mpv' 'python')
 optdepends=('youtube-dl')
 conflicts=('mpv-tools')
-source=("$_srcname-$pkgver.tar.gz::https://github.com/mpv-player/$_srcname/archive/v$pkgver.tar.gz")
-sha256sums=('32ded8c13b6398310fa27767378193dc1db6d78b006b70dbcbd3123a1445e746')
+source=("$_srcname-$pkgver.tar.gz::https://github.com/mpv-player/$_srcname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('1d2d4adbaf048a2fa6ee134575032c4b2dad9a7efafd5b3e69b88db935afaddf')
 
 package() {
   cd "$_srcname-$pkgver/TOOLS"
