@@ -3,7 +3,7 @@ pkgname=betterbird-it-bin
 _pkgname=betterbird
 pkgver=115.5.1
 _build=bb19
-pkgrel=1
+pkgrel=2
 pkgdesc="ITALIAN // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -28,6 +28,13 @@ package() {
     install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     ln -s /opt/$_pkgname/betterbird "$pkgdir"/usr/bin/$_pkgname
 
+    echo     "
+
+	  >>>>>    Per favore, non dimenticare di esprimere un voto per questo pacchetto. GRAZIE
+	  >>>>>    https://aur.archlinux.org/packages/betterbird-it-bin
+
+	  "
+
     #icons
     for i in 16 22 24 32 48 64 128 256; do
         install -d "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/
@@ -36,5 +43,5 @@ package() {
     done
 }
 sha256sums=('46fe2a4edcabb1d6233f35c2fd78cf7a25f02934182947ed048ae52a2fb98925'
-            '816a97383c4eba202d9993736d14d3f728064d1bea7301adc93ed1248a096ca8')
+            'b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b')
 
