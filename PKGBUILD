@@ -1,13 +1,13 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=jinx
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A meta-build-system for building OS distributions"
 arch=("any")
 url="https://github.com/mintsuki/jinx"
 license=("BSD")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mintsuki/jinx/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('d9b852f13564dd01907e1b60b168b8d3a76d58ed440de525d724a0e195fbbf4e869a46be0393b9fac32001a319269f4e095d1be30ca8462d1deeee1a49409400')
+b2sums=('6a7ecaebec1fa3d25837307d613c7c66eb69cd0d999ea4a66017df20e3f7df5f127ecbbe47f5f3b92378dec755b1b3287e2d2a099ed6b3f4c548a1660e4f159c')
 depends=('bash' 'findutils' 'libarchive' 'git' 'curl')
 
 package() {
