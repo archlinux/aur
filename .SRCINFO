@@ -1,7 +1,7 @@
 pkgbase = gtg
 	pkgdesc = Personal GTD like organizer for the GNOME desktop environment
 	pkgver = 0.6
-	pkgrel = 6
+	pkgrel = 7
 	url = https://wiki.gnome.org/Apps/GTG
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = gtg
 	makedepends = ninja
 	makedepends = itstool
 	depends = gtksourceview4
-	depends = hicolor-icon-theme
+	depends = gnome-icon-theme
 	depends = python-cairo
 	depends = python-dbus
 	depends = python-gobject

@@ -1,12 +1,12 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=gtg
 pkgver=0.6
-pkgrel=6
+pkgrel=7
 pkgdesc='Personal GTD like organizer for the GNOME desktop environment'
 url=https://wiki.gnome.org/Apps/GTG
 arch=(any)
 license=(GPL)
-depends=(gtksourceview4 hicolor-icon-theme python-cairo python-dbus
+depends=(gtksourceview4 gnome-icon-theme python-cairo python-dbus
          python-gobject 'python-liblarch>=3.2' python-lxml)
 checkdepends=(python-mock python-nose python-pytest python-caldav)
 makedepends=(meson ninja itstool)
