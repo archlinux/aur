@@ -1,7 +1,7 @@
 pkgbase = tradingview
 	pkgdesc = A charting platform for traders and investors
 	pkgver = 2.7.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.tradingview.com/desktop/
 	arch = x86_64
 	license = custom:proprietary

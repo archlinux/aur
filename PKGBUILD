@@ -3,7 +3,7 @@
 
 pkgname=tradingview
 pkgver=2.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A charting platform for traders and investors'
 arch=('x86_64')
 url='https://www.tradingview.com/desktop/'
@@ -59,7 +59,7 @@ package() {
     cp -r "$srcdir/$pkgname-$pkgver/"* "$pkgdir/opt/$pkgname/"
 
     install -d "$pkgdir/usr/bin/"
-    ln -s "$pkgdir/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm644 "$srcdir/$pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
     install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
