@@ -3,7 +3,7 @@
 pkgname=kernel-riot-api-git
 _pkgname=kernel
 pkgdesc='A plug & play Riot API proxy server'
-pkgrel=1
+pkgrel=2
 pkgver=127.f769403
 arch=('any')
 conflicts=()
@@ -33,8 +33,8 @@ build() {
 
 package() {
 	cd $_pkgname
-	install -D -m555 "$srcdir/$_pkgname/target/kernel-thorntail.jar" "$pkgdir/usr/lib/kernel-riot-api/kernel-thorntail.jar"
-	install -D -m760 "$srcdir/$_pkgname/target/kernel-config.json" "$pkgdir/etc/kernel-riot-api/kernel-config.json"
+	install -D -m444 "$srcdir/$_pkgname/target/kernel-thorntail.jar" "$pkgdir/usr/lib/kernel-riot-api/kernel-thorntail.jar"
+	install -D -m664 "$srcdir/$_pkgname/target/kernel-config.json" "$pkgdir/etc/kernel-riot-api/kernel-config.json"
 	install -D -m555 "$srcdir/launch.sh" "$pkgdir/usr/bin/kernel-riot-api"
-	install -D -m760 "$srcdir/config.sh" "$pkgdir/etc/kernel-riot-api/config.sh"
+	install -D -m664 "$srcdir/config.sh" "$pkgdir/etc/kernel-riot-api/config.sh"
 }

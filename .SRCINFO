@@ -1,7 +1,7 @@
 pkgbase = kernel-riot-api-git
 	pkgdesc = A plug & play Riot API proxy server
 	pkgver = 127.f769403
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meraki-analytics/kernel
 	arch = any
 	license = MIT
