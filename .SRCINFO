@@ -1,6 +1,6 @@
 pkgbase = candy
 	pkgdesc = A easy-to-deploy and peer-to-peer virtual private network
-	pkgver = 2.6
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/lanthora/candy
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = candy
 	depends = libconfig
 	depends = uriparser
 	backup = etc/candy.conf
-	source = https://github.com/lanthora/candy/archive/refs/tags/v2.6.tar.gz
-	sha256sums = 5f796ec3b6ba4fc8c1211e0457ca01eca3e4f6cead25fca0bf192c33dec7f0ee
+	source = https://github.com/lanthora/candy/archive/refs/tags/v3.0.tar.gz
+	sha256sums = 52ff47211b0b3f406ad3d54e618dd721e154bd978abf1940fc289b228e6c98bb
 
 pkgname = candy
