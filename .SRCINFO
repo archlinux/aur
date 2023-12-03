@@ -24,6 +24,6 @@ pkgbase = aurc
 	optdepends = sudo: privilege elevation
 	optdepends = doas: privilege elevation
 	source = aurc-1.2.3.tar.gz::https://github.com/statulr/aurc/archive/1.2.3.tar.gz
-	sha256sums = 9033ed6936372bbe917c161299818ac9abb55cb6e4af224070caaa36778c5cc9
+	sha256sums = 565c091a962032a7affef32cc779260fb4ec0ae4ef800666b09e8e5840010c35
 
 pkgname = aurc
