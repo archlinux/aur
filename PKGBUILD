@@ -1,47 +1,41 @@
-# Maintainer: jzbor <zborof at posteo dot de>
+# Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
+# Contributor: jzbor <zborof at posteo dot de>
+
 pkgname=python-accelerate
-_name=${pkgname#python-}
-pkgver=0.18.0
+_pkgname=${pkgname#python-}
+pkgver=0.25.0
 pkgrel=1
-pkgdesc="Train and use PyTorch models with multi-GPU, TPU, mixed-precision"
-arch=(any)
-url="https://github.com/huggingface/$_name"
-license=('MIT')
-groups=()
-depends=(python)
-makedepends=(python-build python-installer python-wheel python-setuptools)
-# checkdepends=(
-#   "python-pytest"
-#   "python-datasets"
-#   "python-evaluate"
-#   "python-transformers"
-#   "python-scipy"
-#   "python-scikit-learn"
-#   "python-deepspeed"
-#   "python-tqdm"
-# )
+pkgdesc='A simple way to train and use PyTorch models with multi-GPU, TPU, mixed-precision'
+arch=('any')
+url='https://github.com/huggingface/accelerate'
+license=('Apache')
+groups=('hugginface')
+depends=(
+    'python-huggingface-hub'
+    'python-numpy'
+    'python-psutil'
+    'python-pytorch'
+    'python-safetensors'
+    'python-yaml'
+)
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-noextract=()
-sha512sums=('828769be89aa7c474c6b622bb2a1d77d5723226081e1dbab811970930112d64fbd623b000319c6c29d36cc937cb38a2b4cd639945502815570bd01a448f0f98c')
-validpgpkeys=()
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/huggingface/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('419da88ea6548de7f7b2616669d7979dcc9f12fb3b4bdc845fa67df2e3c404a7')
 
 build() {
-    cd "$_name-$pkgver"
-    python -m build --wheel --no-isolation
+    cd $_pkgname-$pkgver
+    python -m build -n -w
+}
+
+check() {
+    cd $_pkgname-$pkgver
+    python -c 'import accelerate'
 }
 
 package() {
-    cd "$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer \
+        --compile-bytecode 1 \
+        --destdir $pkgdir \
+        $_pkgname-$pkgver/dist/$_pkgname-$pkgver-py3-*-*.whl
 }
-
-# check() {
-#     cd "$_name-$pkgver"
-#     pytest tests
-# }
