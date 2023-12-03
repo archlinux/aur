@@ -1,7 +1,7 @@
 pkgbase = iotas
 	pkgdesc = Simple note taking
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/cheywood/iotas
 	arch = any
 	license = GPL3
@@ -17,6 +17,9 @@ pkgbase = iotas
 	depends = python-linkify-it-py
 	depends = python-mdit_py_plugins
 	depends = python-gtkspellcheck
+	depends = hspell
+	depends = nuspell
+	depends = libvoikko
 	source = https://gitlab.gnome.org/cheywood/iotas/-/archive/0.2.6/iotas-0.2.6.tar.gz
 	b2sums = 2b0b9e32b9083e3feba32d7c1312592d3b4535e24247bfe19adf34d6fcd0acb5fb55ae58715cacde45eb92ba748b63d011ad270c0b6c3632b9153cd99b75b92b
 

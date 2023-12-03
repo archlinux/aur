@@ -3,7 +3,7 @@
 
 pkgname=iotas
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple note taking"
 arch=('any')
 url="https://gitlab.gnome.org/cheywood/iotas"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=(
 	'libadwaita' 'sqlite' 'org.freedesktop.secrets' 'gtksourceview5'
 	'python-requests' 'python-markdown-it-py' 'python-linkify-it-py' 'python-mdit_py_plugins'
-	'python-gtkspellcheck')
+	'python-gtkspellcheck' 'hspell' 'nuspell' 'libvoikko')
 makedepends=('meson' 'gobject-introspection')
 checkdepends=('appstream-glib')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
