@@ -1,7 +1,7 @@
 # Maintainer: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=testlib
-pkgver=r125.5eb7c9c
+pkgver=r421.d0a0161
 pkgrel=1
 pkgdesc="A library used to write the auxiliary programs (validators, generators, and so on) for programming contest problems."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=(
 )
 
 source=(
-  'git://github.com/MikeMirzayanov/testlib.git'
+  'git+https://github.com/MikeMirzayanov/testlib.git'
 )
 sha256sums=(
   'SKIP'

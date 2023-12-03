@@ -1,13 +1,12 @@
 pkgbase = testlib
 	pkgdesc = A library used to write the auxiliary programs (validators, generators, and so on) for programming contest problems.
-	pkgver = r125.5eb7c9c
+	pkgver = r421.d0a0161
 	pkgrel = 1
 	url = http://codeforces.com/testlib
 	arch = any
 	license = MIT
 	makedepends = git
-	source = git://github.com/MikeMirzayanov/testlib.git
+	source = git+https://github.com/MikeMirzayanov/testlib.git
 	sha256sums = SKIP
 
 pkgname = testlib
-
