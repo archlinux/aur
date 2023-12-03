@@ -1,7 +1,7 @@
 pkgbase = texlab-bin
 	pkgdesc = A cross-platform implementation of the Language Server Protocol for LaTeX
-	pkgver = 5.11.0
-	pkgrel = 2
+	pkgver = 5.12.0
+	pkgrel = 1
 	url = https://github.com/latex-lsp/texlab
 	arch = x86_64
 	license = GPL-3.0
@@ -9,9 +9,9 @@ pkgbase = texlab-bin
 	provides = texlab
 	conflicts = texlab
 	conflicts = texlab-git
-	source = https://github.com/latex-lsp/texlab/releases/download/v5.11.0/texlab-x86_64-linux.tar.gz
+	source = https://github.com/latex-lsp/texlab/releases/download/v5.12.0/texlab-x86_64-linux.tar.gz
 	source = local://LICENSE
-	sha256sums = 0ea19e237fc2b01d26fc377043062759286a10536a76ff29db7165298d807009
+	sha256sums = 79d1c70eaa8b215ffa1591d9b11e17322bee438368ad0ff5a62d3a6a73dd07a6
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = texlab-bin
