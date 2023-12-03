@@ -16,24 +16,25 @@ depends=(usd
 makedepends=(cmake)
 options=(!lto)
 
-source=("git+$url#tag=v0.11.0-usdv22.08"
+source=("git+$url.git"
         "hdospray.patch"
        )
 sha512sums=('SKIP'
             '2454ba6f961013b7c80ac6d444a005a6792c1d02f1a76810c53cdf5efaf0367f3d364567776a5660f0024c64e9436895793aaabd9e61221b92917f38aff6a28a')
 
-prepare() {
-    cd "${srcdir}"
-
-    patch --directory=hdospray --forward --strip=1 --input="${srcdir}/hdospray.patch"
-}
+# prepare() {
+#     cd "${srcdir}"
+# 
+#     patch --directory=hdospray --forward --strip=1 --input="${srcdir}/hdospray.patch"
+# }
 
 build() {
-    export CC=clang && export CXX=clang++
+#     export CC=clang && export CXX=clang++
 
     _CMAKE_FLAGS+=(
         -DCMAKE_INSTALL_PREFIX=/
         -DHDOSPRAY_ENABLE_DENOISER=ON
+#         -Dospray_DIR=/home/adro/Applications/AUR/usd-hdospray/src/ospray-3.0.0.x86_64.linux/lib/cmake/ospray-3.0.0
     )
 
     cmake -S hdospray -B build -G Ninja "${_CMAKE_FLAGS[@]}"
