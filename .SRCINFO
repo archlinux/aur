@@ -1,13 +1,13 @@
 pkgbase = nextcloud-app-quota-warning
 	pkgdesc = Send notifications to users when they have reached 85, 90 and 95% of their quota.
-	pkgver = 1.17.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/nextcloud/quota_warning
 	arch = any
 	license = AGPL
 	makedepends = yq
 	makedepends = rsync
-	source = quota_warning-1.17.0.tar.gz::https://github.com/nextcloud/quota_warning/archive/v1.17.0.tar.gz
-	sha512sums = 4b05948cf66bf003b21858815e481dab3b69d3d3ae9ccd7ee3b56ecf4761d50ecf849d8b6e154ddf925495c64d7d84b19b298a19ecf624761a4adff2c562a35c
+	source = quota_warning-1.18.0.tar.gz::https://github.com/nextcloud/quota_warning/archive/v1.18.0.tar.gz
+	sha512sums = 171c4096891eab1a39cc41051d538540a3123bf89d53cbd82c09838a447073a33619672f117fbca117a256b9c72bc2295ca24329c6de1b8c3db23d3fc6a0879c
 
 pkgname = nextcloud-app-quota-warning
