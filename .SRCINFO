@@ -1,9 +1,10 @@
 pkgbase = clash-verge-rev-bin
-	pkgdesc = Clash Meta GUI based on tauri.
+	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
 	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = webkit2gtk
 	depends = gtk3
@@ -16,7 +17,9 @@ pkgbase = clash-verge-rev-bin
 	conflicts = clash-nyanpasu-bin
 	conflicts = clash-nyanpasu-git
 	conflicts = clash-meta
-	source = clash-verge-rev-1.4.2-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.4.2/clash-verge_1.4.2_amd64.deb
-	sha512sums = 03ef4b75bf71b515e21375f4c6e031a98b2f841b5cb1af9c0e8d7d3be39e6d16a40d387b5130e33ab370adbd71b303f32f53331c2509fecea7e249ca8f9ef67e
+	source_x86_64 = clash-verge-rev-1.4.2-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.4.2/clash-verge_1.4.2_amd64.deb
+	sha512sums_x86_64 = 03ef4b75bf71b515e21375f4c6e031a98b2f841b5cb1af9c0e8d7d3be39e6d16a40d387b5130e33ab370adbd71b303f32f53331c2509fecea7e249ca8f9ef67e
+	source_aarch64 = clash-verge-rev-1.4.2-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.4.2/clash-verge_1.4.2_arm64.deb
+	sha512sums_aarch64 = 03ef4b75bf71b515e21375f4c6e031a98b2f841b5cb1af9c0e8d7d3be39e6d16a40d387b5130e33ab370adbd71b303f32f53331c2509fecea7e249ca8f9ef67e
 
 pkgname = clash-verge-rev-bin
