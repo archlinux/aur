@@ -1,108 +1,77 @@
-# Maintainer: Sam <dev at samarthj dot com>
-# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Sam <dev at samarthj dot com>
 # Contributor: Mehmet Ozgur Bayhan <mozgurbayhan at gmail.com>
 # Contributor: Thomas Quillan <tjquillan at gmail.com>
 # Contributor: iboyperson <tjquillan at gmail dot com>
 # Contributor: Alessandro Pazzaglia <jackdroido at gmail dot com>
-
-# shellcheck disable=2034,2148,2154,2155
-
 pkgname=pyinstaller
-_pkgbase="${pkgname%-git}"
-_pkgname="${_pkgbase#python-}"
-pkgver=5.13.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
-arch=('any')
-url="http://www.pyinstaller.org"
-license=('GPL2' 'Apache' 'custom:PyInstaller')
+arch=('x86_64')
+url="https://www.pyinstaller.org"
+license=('custom')
 depends=(
-  "python-altgraph"
-  "pyinstaller-hooks-contrib>=2021.4"
-  "python>=3.7"
-  "python<3.12"
-  "python-setuptools>=42.0.0"
-  "binutils"
-  "mpdecimal"
+  'binutils'
+  'mpdecimal'
+  'pyinstaller-hooks-contrib'
+  'python-altgraph'
+  'python-setuptools'
 )
 makedepends=(
-  "zlib"
-  "cmocka"
-  "python-installer"
-  "python-build"
-  "python-wheel"
-  "python-setuptools"
+  'cmocka'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'zlib'
 )
 checkdepends=(
-  # Testing framework.
-  "python-pytest"
+
+  # Testing framework
+  'python-pytest'
   # Work-around for a bug in execnet 1.4.1
-  "python-execnet>=1.5.0"
+  'python-execnet'
   # Better subprocess alternative with implemented timeout.
-  "python-psutil"
+  'python-psutil'
   # These are required by some of basic tests
-  "python-lxml"
-  "python-tinyaes>=1.0.0"
+  'python-lxml'
+  'python-tinyaes'
   # Plugin to abort hanging tests.
-  "python-pytest-timeout>=2.0.0"
+  'python-pytest-timeout'
   # Ability to retry a failed test
-  "python-flaky"
-  # Plugin to abort hanging tests.
-  "python-pytest-timeout"
+  'python-flaky'
   # allows specifying order without duplicates
-  "python-pytest-drop-dup-tests"
+  'python-pytest-drop-dup-tests'
   # reruns failed flaky tests
-  "python-pytest-rerunfailures"
+  'python-pytest-rerunfailures'
   # parallel processing for tests
-  "python-pytest-xdist"
+  'python-pytest-xdist'
 )
-optdepends=(
-  "python-tinyaes>=1.0.0: bytecode encryption support"
-  "python-importlib-metadata: support for python 3.8 and lower"
-  "python-importlib_resources: support for python 3.8 and lower"
-)
-source=(
-  "https://github.com/$_pkgname/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
-  "$_pkgname-5.7.0-bootloader-cmocka-fix.patch"
-)
-sha512sums=('f638b90b4b82ea6e227cf4e05d7ff16ea331c0e5317bcec90d696a553d03b13b978f194aae6476fe841fd7b3cfc0da6f478eb96d764101dc0c04d0bf778cbdfb'
-            'ebee936836b68e6214cea72f65ec7e862fe8bac253913f57e7b36268a4c823219668b8f5d7295992b7cf0adb62954405ced2a588be7f1101995f7b0395c92f0c')
-b2sums=('de23c5301f4beda5bced1cee751cb5ab5e908d16afdc2ea31b65a275a90953dfaeb91c0a9591c38a2e5beedcde96423c57668d41501a390c6ddabebbbc5d54a0'
-        '863322c8ae832b6e609135c31496481d7c337a38316dbafd442c010a4dac94b2f21407c1367c5374b6170035ec1ffba97c522ee64679adfa93247b31bf87b998')
+optdepends=('python-tinyaes: bytecode encryption support')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('740836bc8ea2b2cfff47968b57158729fdeea691a3aa823ca6b94ebaa70d6ae6')
 
 prepare() {
-  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  if [[ $python_version -lt 39 ]]; then
-    depends+=("python-importlib-metadata")
-    checkdepends+=("python-importlib_resources")
-  fi
 
-  # Broken bootloader build due to cmocka
-  # TODO: Remove after merged in next release
-  # https://github.com/pyinstaller/pyinstaller/pull/7383
-  if [[ $pkgver == "5.7.0" ]]; then
-    patch -Np1 -d "$_pkgname-$pkgver" -i ../"$_pkgname-5.7.0-bootloader-cmocka-fix.patch"
-  fi
-}
-
-build() {
-  cd "$_pkgname-$pkgver" || exit 1
   # Forcing bootloader build for the current platform
   # and removing the unnecessary pre-builts
   rm -rvf PyInstaller/bootloader/Darwin*
   rm -rvf PyInstaller/bootloader/Windows*
   rm -rvf PyInstaller/bootloader/Linux*
+}
+
+build() {
+  cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_pkgname-$pkgver" || exit 1
+  cd "$pkgname-$pkgver"
 
   # The tests use an installed version of PyInstaller dist + bootloader
   # to run properly, and dogfood on that module for a lot of basic tests.
   # Temporarily extracting the built wheel to build to test it out.
-  python -m installer --destdir="$srcdir/$_pkgname/build" dist/*.whl
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir="$srcdir/$pkgname/build" dist/*.whl
 
   # Disabling several tests that are not relevant to the release of this pkg
   # test_macos_bundle_signing - macos only
@@ -115,30 +84,32 @@ check() {
   # test_django - needs additional libraries (will vary by libs installed by user)
   # test_interactive - needs ui-interface (will always fail on headless system)
 
-  PYTHONPATH="$srcdir/$_pkgname/build/$site_packages" \
-    QT_QPA_PLATFORM="offscreen" \
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  PYTHONPATH="$srcdir/$pkgname/build/${site_packages}" \
+    QT_QPA_PLATFORM='offscreen' \
     pytest \
-    -m "not darwin and not win32" \
-    --ignore "tests/functional/test_macos_bundle_signing.py" \
-    --ignore "tests/functional/test_apple_events.py" \
-    --ignore "tests/functional/test_pywin32.py" \
-    --ignore-glob "tests/functional/test_hooks/**" \
-    --ignore "tests/functional/test_libraries.py" \
-    --ignore "tests/functional/test_django.py" \
-    --ignore "tests/functional/test_qt.py" \
-    --ignore "tests/functional/test_interactive.py" \
+    -m 'not darwin and not win32' \
+    --ignore 'tests/functional/test_macos_bundle_signing.py' \
+    --ignore 'tests/functional/test_apple_events.py' \
+    --ignore 'tests/functional/test_pywin32.py' \
+    --ignore-glob 'tests/functional/test_hooks/**' \
+    --ignore 'tests/functional/test_libraries.py' \
+    --ignore 'tests/functional/test_django.py' \
+    --ignore 'tests/functional/test_qt.py' \
+    --ignore 'tests/functional/test_interactive.py' \
     --maxfail=3 \
     -n=auto --maxprocesses="${PYTEST_XDIST_AUTO_NUM_WORKERS:-2}" \
-    --dist=load \
+    --dist='load' \
     --force-flaky --no-flaky-report --reruns=3 --reruns-delay=10
 
   # cleanup temporary wheel extraction
-  rm -rf "$srcdir/$_pkgname/build/usr"
+  rm -rf "$srcdir/$pkgname/build/usr"
 }
 
 package() {
-  cd "$_pkgname-$pkgver" || exit 1
+  cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -vDm 644 "COPYING.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -vDm 644 "README.rst" -t "$pkgdir/usr/share/doc/$pkgname/"
+
+  install -Dm644 COPYING.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }

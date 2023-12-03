@@ -1,44 +1,32 @@
 pkgbase = pyinstaller
 	pkgdesc = Bundles a Python application and all its dependencies into a single package
-	pkgver = 5.13.0
+	pkgver = 6.2.0
 	pkgrel = 1
-	url = http://www.pyinstaller.org
-	arch = any
-	license = GPL2
-	license = Apache
-	license = custom:PyInstaller
+	url = https://www.pyinstaller.org
+	arch = x86_64
+	license = custom
 	checkdepends = python-pytest
-	checkdepends = python-execnet>=1.5.0
+	checkdepends = python-execnet
 	checkdepends = python-psutil
 	checkdepends = python-lxml
-	checkdepends = python-tinyaes>=1.0.0
-	checkdepends = python-pytest-timeout>=2.0.0
-	checkdepends = python-flaky
+	checkdepends = python-tinyaes
 	checkdepends = python-pytest-timeout
+	checkdepends = python-flaky
 	checkdepends = python-pytest-drop-dup-tests
 	checkdepends = python-pytest-rerunfailures
 	checkdepends = python-pytest-xdist
-	makedepends = zlib
 	makedepends = cmocka
-	makedepends = python-installer
 	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
-	depends = python-altgraph
-	depends = pyinstaller-hooks-contrib>=2021.4
-	depends = python>=3.7
-	depends = python<3.12
-	depends = python-setuptools>=42.0.0
+	makedepends = zlib
 	depends = binutils
 	depends = mpdecimal
-	optdepends = python-tinyaes>=1.0.0: bytecode encryption support
-	optdepends = python-importlib-metadata: support for python 3.8 and lower
-	optdepends = python-importlib_resources: support for python 3.8 and lower
-	source = https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v5.13.0.tar.gz
-	source = pyinstaller-5.7.0-bootloader-cmocka-fix.patch
-	sha512sums = f638b90b4b82ea6e227cf4e05d7ff16ea331c0e5317bcec90d696a553d03b13b978f194aae6476fe841fd7b3cfc0da6f478eb96d764101dc0c04d0bf778cbdfb
-	sha512sums = ebee936836b68e6214cea72f65ec7e862fe8bac253913f57e7b36268a4c823219668b8f5d7295992b7cf0adb62954405ced2a588be7f1101995f7b0395c92f0c
-	b2sums = de23c5301f4beda5bced1cee751cb5ab5e908d16afdc2ea31b65a275a90953dfaeb91c0a9591c38a2e5beedcde96423c57668d41501a390c6ddabebbbc5d54a0
-	b2sums = 863322c8ae832b6e609135c31496481d7c337a38316dbafd442c010a4dac94b2f21407c1367c5374b6170035ec1ffba97c522ee64679adfa93247b31bf87b998
+	depends = pyinstaller-hooks-contrib
+	depends = python-altgraph
+	depends = python-setuptools
+	optdepends = python-tinyaes: bytecode encryption support
+	source = pyinstaller-6.2.0.tar.gz::https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v6.2.0.tar.gz
+	sha256sums = 740836bc8ea2b2cfff47968b57158729fdeea691a3aa823ca6b94ebaa70d6ae6
 
 pkgname = pyinstaller
