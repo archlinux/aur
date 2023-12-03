@@ -7,11 +7,13 @@ pkgbase = fackup
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = dar
 	depends = rsync
 	depends = python-yaml
-	source = https://files.pythonhosted.org/packages/71/d2/b105d949644b02d1cc22c343c3a505f3ef65d2ae30adca51cb39f861931a/fackup-0.2.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/f/fackup/fackup-0.2.0.tar.gz
 	md5sums = ddc7c31b45b201e5d44205003ebb2d30
 
 pkgname = fackup
