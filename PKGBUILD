@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=iptvorg-epg
-pkgver=r6808.bc8e1380
+pkgver=r6880.35709ae6
 pkgrel=1
 pkgdesc='Utilities for downloading the EPG (Electronic Program Guide) for thousands of TV channels from hundreds of sources'
 arch=(any)
