@@ -1,10 +1,11 @@
 pkgbase = bash-it
 	pkgdesc = A community Bash framework.
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bash-it.readthedocs.io/en/latest/
 	install = bash-it.install
 	arch = any
+	license = MIT
 	depends = bash
 	source = https://github.com/Bash-it/bash-it/archive/refs/tags/v3.0.3.tar.gz
 	sha256sums = 43ab0aa178685730771199bf8d67fd89131a3be4e49d3f16c4fdf1ac68644c79
