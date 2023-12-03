@@ -7,7 +7,7 @@ pkgdesc="Wiki2book is a CLI tool to convert one or multiple Wikipedia articles i
 arch=("any")
 url="https://github.com/hauke96/wiki2book"
 license=("GPL-3.0")
-depends=()
+depends=("pandoc" "imagemagick")
 makedepends=("go>=1.20")
 backup=()
 conflicts=()
