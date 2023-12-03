@@ -1,7 +1,7 @@
 # Maintainer: Vitrum <wqdxosty1yhj@bk.ru>
 
 pkgname=keyman
-pkgver=16.0.143
+pkgver=16.0.144
 pkgrel=1
 pkgdesc="IBus engine supporting over 1,000 keyboard layouts (former KMFL)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ optdepends=(
 replaces=('kmflcomp' 'libkmfl' 'ibus-kmfl')
 conflicts=('kmflcomp' 'libkmfl' 'ibus-kmfl')
 source=("$pkgname-$pkgver.tar.gz::https://downloads.keyman.com/linux/stable/$pkgver/keyman-$pkgver.tar.gz")
-sha256sums=('7a4db211c8f258b1ae8022754bf67c3393f89aff4dab6a81e5de1e691779fc5e')
+sha256sums=('55aa0eb4db5a38a0c1ba590781d8839e5f454710437a3a172dc328a1a393df9c')
 
 build() {
     echo -e "\n\n### build 'keyman' ######\n\n"
