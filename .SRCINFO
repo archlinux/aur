@@ -1,13 +1,13 @@
 pkgbase = rtx-bin
 	pkgdesc = Polyglot runtime manager
-	pkgver = 2023.12.6
+	pkgver = 2023.12.7
 	pkgrel = 1
 	url = https://github.com/jdx/rtx
 	arch = x86_64
 	license = MIT
 	provides = rtx
 	conflicts = rtx
-	source = rtx-2023.12.6.tar.gz::https://github.com/jdx/rtx/releases/download/v2023.12.6/rtx-v2023.12.6-linux-x64.tar.gz
-	sha512sums = 442ba058264b04e7e2dcfc53a5b5e34edca0ded30b0574fcc7e31f17410ec00d07a5ba038c0648bbdb25e4124b3c9631825f0d79231781be18fed9451b8f9e85
+	source = rtx-2023.12.7.tar.gz::https://github.com/jdx/rtx/releases/download/v2023.12.7/rtx-v2023.12.7-linux-x64.tar.gz
+	sha512sums = 706979aa592fe93e96bdafb4d88f5ba40703ab35d029b61203f1875f6e935edcb171a02d7025b3bfe32222295bbfb18b6ce443827b5c716f7832f33b7466d5f2
 
 pkgname = rtx-bin
