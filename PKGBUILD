@@ -1,15 +1,16 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=imgdataopt-git
 _pkgname=imgdataopt
-pkgver=r71.413269e
+pkgver=r73.5906ee3
 pkgrel=1
 pkgdesc="converts PNG and PNM images with lossless size optimizations"
 arch=(x86_64)
 url="https://github.com/pts/imgdataopt"
 license=('GPL')
-depends=()
-makedeps=(
+depends=('glibc')
+makedepends=(
   'make'
+  'git'
 )
 source=("git+$url")
 sha256sums=('SKIP')
