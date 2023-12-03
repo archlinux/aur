@@ -1,16 +1,17 @@
 pkgbase = jetbrains-project-opener
 	pkgdesc = List all your JetBrains Projects and open the selected one
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/rainu/jb-project-opener
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
+	makedepends = go>=1.17
 	depends = jq
 	depends = rofi
 	depends = jetbrains-toolbox
-	source = git+https://github.com/rainu/jb-project-opener.git#tag=v1.0.1
+	source = git+https://github.com/rainu/jb-project-opener.git#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = jetbrains-project-opener
