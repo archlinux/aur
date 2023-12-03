@@ -3,6 +3,5 @@ pkg
 STM32CubeF7-*.zip
 STM32CubeF7-*.tar.gz
 stm32cubef7-*.pkg.tar*
-SLA0044
 *.log
 .psci_modules

@@ -3,7 +3,7 @@
 # Contributor: Karsten Pufahl <contact@karstenpufahl.de>
 
 pkgname=stm32cubef7
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="Embedded software for STM32 F7 series"
 arch=('any')
@@ -27,17 +27,17 @@ optdepends=(
 )
 options=('!strip')
 source=(
-  "STM32CubeF7-$pkgver.tar.gz::https://github.com/STMicroelectronics/STM32CubeF7/archive/refs/tags/v$pkgver.zip"
-  'SLA0044::http://www.st.com/SLA0044'
+  "STM32CubeF7-$pkgver.tar.gz::https://github.com/STMicroelectronics/STM32CubeF7/archive/refs/tags/v$pkgver.tar.gz"
+  'SLA0044.txt'
 )
-sha512sums=(
-  '772652fc57e958df285ca347438a6539109fbf303629e61d0f0ac261382c3f8988721f3c945465c7d183d94ae86112b8f527bd27bb0ab42775871f3c213cecdf'
-  '47277df443f6276534869aaa643397920bf8bfc79222524fed5faf79201af31f36cf1d6f14dd9f47a9800c34bea539d43e74097b1130e8b5d31a32aa72a74745'
+sha256sums=(
+  '0065ba7d23d5840c6654b24bfa50496bf7391861f6f7816020505edcc79727b1'
+  '55ba65f78747449aef987ef7f4bfe27bf6927c0acdcca5eb5acc77c16d2dcc2e'
 )
 
 package() {
   install -d "$pkgdir"/opt/"$pkgname"
   mv STM32CubeF7-$pkgver/* "$pkgdir"/opt/"$pkgname"/
-  install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" SLA0044
+  install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" SLA0044.txt
   mv "$pkgdir/opt/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/COMPONENT_LICENSES.md"
 }
