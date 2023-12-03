@@ -2,7 +2,7 @@
 
 pkgname=blender-dream-textures-git
 pkgver=153.978e7b9
-pkgrel=1
+pkgrel=2
 pkgdesc="Stable Diffusion built-in to Blender"
 arch=('any')
 url="https://github.com/carson-katri/dream-textures"
@@ -13,7 +13,6 @@ provides=('blender-dream-textures')
 conflicts=('blender-dream-textures')
 source=("$pkgname::git+https://github.com/carson-katri/dream-textures.git")
 sha256sums=('SKIP')
-_blenderver=4.0
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -21,6 +20,7 @@ pkgver() {
 }
 
 package() {
+  _blenderver=$(blender --version | sed -E -n -e 's/.*([0-9]+\.[0-9]+)\.[0-9]+.*/\1/p')
   _addondir="$pkgdir/usr/share/blender/$_blenderver/scripts/addons/dream_textures"
   find $srcdir/$pkgname/ -mindepth 1 -type d -printf '%P\n' | while read dir;
     do install -dm755 $_addondir/$dir

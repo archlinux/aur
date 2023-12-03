@@ -1,7 +1,7 @@
 pkgbase = blender-dream-textures-git
 	pkgdesc = Stable Diffusion built-in to Blender
 	pkgver = 153.978e7b9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/carson-katri/dream-textures
 	arch = any
 	license = GPL3
