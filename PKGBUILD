@@ -1,7 +1,7 @@
 # Maintainer: zocker_160 <zocker1600 at posteo dot net>
 
 pkgname=keyboard-center
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
@@ -42,20 +42,20 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  mkdir -p "$pkgdir/usr/lib/$pkgname"
+  mkdir -p "$pkgdir/opt/$pkgname"
 
-  cp -r src/assets "$pkgdir/usr/lib/$pkgname"
-  cp -r src/config "$pkgdir/usr/lib/$pkgname"
-  cp -r src/devices "$pkgdir/usr/lib/$pkgname"
-  cp -r src/gui "$pkgdir/usr/lib/$pkgname"
-  cp -r src/lib "$pkgdir/usr/lib/$pkgname"
+  cp -r src/assets "$pkgdir/opt/$pkgname"
+  cp -r src/config "$pkgdir/opt/$pkgname"
+  cp -r src/devices "$pkgdir/opt/$pkgname"
+  cp -r src/gui "$pkgdir/opt/$pkgname"
+  cp -r src/lib "$pkgdir/opt/$pkgname"
 
   install -D -m755 linux_packaging/assets/keyboard-center.sh "$pkgdir/usr/bin/$pkgname"
 
-  install -D -m644 src/main.py -t "$pkgdir/usr/lib/$pkgname"
-  install -D -m644 src/mainUi.py -t "$pkgdir/usr/lib/$pkgname"
-  install -D -m644 src/service.py -t "$pkgdir/usr/lib/$pkgname"
-  install -D -m644 src/constants.py -t "$pkgdir/usr/lib/$pkgname"
+  install -D -m644 src/main.py -t "$pkgdir/opt/$pkgname"
+  install -D -m644 src/mainUi.py -t "$pkgdir/opt/$pkgname"
+  install -D -m644 src/service.py -t "$pkgdir/opt/$pkgname"
+  install -D -m644 src/constants.py -t "$pkgdir/opt/$pkgname"
 
   install -D -m644 linux_packaging/60-keyboard-center.rules -t "$pkgdir/usr/lib/udev/rules.d"
   install -D -m644 linux_packaging/uinput-keyboard-center.conf "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"

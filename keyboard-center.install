@@ -1,9 +1,9 @@
 post_install() {
-    python3 -m compileall /usr/lib/keyboard-center
-    
+    python3 -m compileall /opt/keyboard-center
+
     # force load uinput kernel module
     modprobe uinput
-    
+
     # force reload udev rules
     udevadm control --reload-rules
     udevadm trigger
@@ -14,8 +14,8 @@ post_upgrade() {
 }
 
 pre_remove() {
-    find /usr/lib/keyboard-center -type f -iname \*.pyc -delete
-    find /usr/lib/keyboard-center -type d -iname __pycache__ -delete
+    find /opt/keyboard-center -type f -iname \*.pyc -delete
+    find /opt/keyboard-center -type d -iname __pycache__ -delete
 }
 
 post_remove() {
