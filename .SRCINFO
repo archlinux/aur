@@ -1,0 +1,18 @@
+pkgbase = script-runner-gui
+	pkgdesc = A GUI application for running and managing shell scripts
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://yourapplicationhomepage.com
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-pyqt5
+	depends = vim
+	source = https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.py
+	source = https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.desktop
+	source = https://github.com/LORDINFINITY12/script-runner-gui/blob/main/scripts.json
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = script-runner-gui

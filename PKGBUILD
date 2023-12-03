@@ -1,5 +1,5 @@
  pkgname=script-runner-gui
-pkgver=1.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A GUI application for running and managing shell scripts"
 arch=('any')
