@@ -3,7 +3,7 @@
 
 pkgname=an-anime-game-launcher-bin
 pkgver=3.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/an-anime-game-launcher"
 conflicts=("an-anime-game-launcher-git")
@@ -17,7 +17,6 @@ depends=(
     "xdelta3"
     "p7zip"
     "git"
-    "iputils"
     "gtk4"
     "glibc"
 )
