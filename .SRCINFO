@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-mpv
 	pkgdesc = Video player based on MPlayer/mplayer2 (mingw-w64)
-	pkgver = 0.36.0
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://mpv.io/
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-mpv
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = mpv-0.36.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.36.0.tar.gz
-	sha256sums = 29abc44f8ebee013bb2f9fe14d80b30db19b534c679056e4851ceadf5a5e8bf6
+	source = mpv-0.37.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.37.0.tar.gz
+	sha256sums = 1d2d4adbaf048a2fa6ee134575032c4b2dad9a7efafd5b3e69b88db935afaddf
 
 pkgname = mingw-w64-mpv
