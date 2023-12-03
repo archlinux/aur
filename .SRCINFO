@@ -1,14 +1,15 @@
 pkgbase = iroh
 	pkgdesc = IPFS reimagined
-	pkgver = 0.5.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/n0-computer/iroh
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	license = Apache
 	makedepends = cargo
 	depends = gcc-libs
-	source = iroh-0.5.1.tar.gz::https://static.crates.io/crates/iroh/iroh-0.5.1.crate
-	b2sums = b5b3dc62ef6ab6317bd892dc89a2a901766b36464f83a6afaf221606f915c1974bbb74f34a6344d181c8867bde6e31c878ffdaae5cb37c842171794d87ddb3cf
+	source = iroh-0.11.0.tar.gz::https://static.crates.io/crates/iroh/iroh-0.11.0.crate
+	b2sums = 5d6facead060ad42692aedea5e2a4bd8d7d2c7a5450b031c7cde043fb5abba882faba902ea6cec2b3f5997113720570b557edd848a4b79ff509f0db0d59bb79f
 
 pkgname = iroh
