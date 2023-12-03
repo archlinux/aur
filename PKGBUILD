@@ -1,35 +1,33 @@
-# Maintainer: Michaël Lhomme <papylhomme at gmail dot com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Michaël Lhomme <papylhomme at gmail dot com>
 
 pkgname=diskmonitor
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE tools to monitor SMART devices and MDRaid health status"
-arch=('i686' 'x86_64')
 url="https://github.com/papylhomme/diskmonitor"
+arch=('i686' 'x86_64')
 license=('GPL2')
-provides=('diskmonitor')
-conflicts=('diskmonitor')
-depends=('udisks2' 'qt5-base' 'ki18n' 'kiconthemes' 'knotifications' 'kxmlgui' 'plasma-framework' )
+provides=("$pkgname")
+conflicts=("$pkgname")
+depends=('ki18n5' 'kiconthemes5' 'knotifications5' 'kxmlgui5' 'plasma-framework5' 'qt5-base' 'udisks2')
 makedepends=('cmake' 'extra-cmake-modules' 'git')
-options=()
-source=( "$pkgname::git+https://github.com/papylhomme/diskmonitor.git#tag=${pkgver}" )
-md5sums=( 'SKIP')
-
+source=("git+https://github.com/papylhomme/diskmonitor.git#tag=$pkgver")
+md5sums=('SKIP')
 
 build () {
-    cd "${srcdir}/${pkgname}"
-    [ -e build ] || mkdir build
-    cd build
-    cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-
-    make
+  cd $pkgname
+  [ -e build ] || mkdir build
+  cd build
+  cmake .. \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DLIB_INSTALL_DIR=lib \
+  -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}/build"
-    make DESTDIR="${pkgdir}" install
+  cd $pkgname/build
+  make DESTDIR="$pkgdir" install
 }
