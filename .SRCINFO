@@ -1,6 +1,6 @@
 pkgbase = mintstick-git
 	pkgdesc = Format or write images to USB sticks (Linux Mint tool)
-	pkgver = r245.b7f43d2
+	pkgver = r270.1e49c7f
 	pkgrel = 1
 	url = https://github.com/linuxmint/mintstick
 	arch = any
