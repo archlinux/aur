@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'pkgconf')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"

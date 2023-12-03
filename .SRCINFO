@@ -15,6 +15,6 @@ pkgbase = ntfs2btrfs-git
 	provides = ntfs2btrfs
 	conflicts = ntfs2btrfs
 	source = git+https://github.com/maharmstone/ntfs2btrfs.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = ntfs2btrfs-git
