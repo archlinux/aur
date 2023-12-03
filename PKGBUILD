@@ -1,12 +1,12 @@
 # Maintainer: ZhangHua <zhanghuadedn at gmail dot com> 
 
 pkgname=("ariang-native-git" "ariang-native-electron-git")
-pkgver=1.2.4.r29.g6bde400
-pkgrel=2
+pkgver=1.3.6.r5.g84987fe
+pkgrel=1
 pkgdesc="A better aria2 desktop frontend than AriaNg."
 license=("MIT")
 depends=("shared-mime-info")
-makedepends=("npm" "git" "imagemagick")
+makedepends=("npm" "git" "imagemagick" "openssh" "jq")
 arch=("x86_64" "aarch64" "i686")
 url="https://github.com/mayswind/AriaNg-Native"
 provides=("ariang-native")
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
             '2b6381f00d83250adc398c4db273ac47104c459c55b3191be908b108d8ae277d'
             '5fec0d94896e467512ea2e5a13c9dcbfb59d3ab825754a0b4bbf70968759dca8'
             '30624966f2b4f9499c99ab69f855b4e6bf516e5fd4388c5c82a845fff95e0f98')
-_electron=electron
+_electron=electron22
 
 pkgver(){
     cd "${srcdir}/AriaNg-Native"
@@ -29,6 +29,9 @@ pkgver(){
 build(){
     cd "${srcdir}/AriaNg-Native"
     npm install
+    main_depends=$(jq .mainDependencies[] package.json | sed ':a;N;s/\n/ /g;ta;' | sed 's/"//g') && \
+        npm install --save=false ${main_depends[*]}
+    npm run generate-build-json
     npm run copy-main-dependencies
     npm run copy-app-dependencies
     ./node_modules/.bin/electron-builder --linux --dir
