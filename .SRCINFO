@@ -1,0 +1,20 @@
+pkgbase = tomato-radio-automation-git
+	pkgdesc = Dead simple radio ads (latest git version).
+	pkgver = 0.4.0.r46.g2a5bf62f
+	pkgrel = 1
+	url = https://dtcooper.github.io/tomato/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	provides = tomato-radio-automation
+	conflicts = tomato-radio-automation
+	source = tomato-radio-automation::git+https://github.com/dtcooper/tomato.git
+	sha256sums = SKIP
+
+pkgname = tomato-radio-automation-git
