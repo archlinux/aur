@@ -1,6 +1,6 @@
 pkgbase = gickup
 	pkgdesc = Backup tool for your cloud git repositories
-	pkgver = 0.10.22
+	pkgver = 0.10.23
 	pkgrel = 1
 	url = https://github.com/cooperspencer/gickup
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = gickup
 	license = APACHE
 	makedepends = go
 	depends = glibc
-	source = https://github.com/cooperspencer/gickup/archive/v0.10.22/gickup-v0.10.22.tar.gz
-	sha256sums = 19cba38c8b586741413695ca9df178c253b12777034b09baec6406cb975b803e
+	source = https://github.com/cooperspencer/gickup/archive/v0.10.23/gickup-v0.10.23.tar.gz
+	sha256sums = 819c43ea8d9b796d81f80ad76644fcf2127494435a4917bb4021448b81fc1bfc
 
 pkgname = gickup
