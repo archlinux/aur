@@ -3,15 +3,17 @@
 
 pkgname=tradingview
 pkgver=2.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A charting platform for traders and investors'
 arch=('x86_64')
 url='https://www.tradingview.com/desktop/'
 license=('custom:proprietary')
 makedepends=('links'
              'squashfs-tools')
-source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_48.snap")
-b2sums=('979958b07225cb2cd0b132d98b7e8727cca2b6fca8fd5608b16f9c9daddbe39c21b9ea94ceac47447c79e97cb6ca15fab63bfe0fadbc8d221ba75cd71dc428f8')
+source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_48.snap"
+        "$pkgname.desktop")
+b2sums=('979958b07225cb2cd0b132d98b7e8727cca2b6fca8fd5608b16f9c9daddbe39c21b9ea94ceac47447c79e97cb6ca15fab63bfe0fadbc8d221ba75cd71dc428f8'
+        '08a4fe6afaccd06dae85a3ee4b812c8807c544416926c90b48b0c4fdd7137bc585d4ccd5ade3f4eb950d4f69fb8813c3c9521de1918601bd8f5af3b5b75a0efe')
 
 prepare() {
     ## EULA
@@ -22,10 +24,6 @@ prepare() {
     unsquashfs -q -f -d "$pkgname-$pkgver/" "$pkgname-$pkgver.snap"
 
     mv "$pkgname-$pkgver/meta/gui/icon.png" "$srcdir/$pkgname.png"
-    mv "$pkgname-$pkgver/meta/gui/$pkgname.desktop" "$srcdir/"
-    sed -n -e 's@${SNAP}/meta/gui/icon.png@'"$pkgname"'@g' \
-        -e 's@^Categories=Finance;$@Categories=Office;Finance;@g' \
-        "$srcdir/$pkgname.desktop"
 
     rm -r "$pkgname-$pkgver/"{data-dir/,gnome-platform/,lib/,meta/,scripts/,usr/,*.sh}
 }
@@ -61,7 +59,7 @@ package() {
     cp -r "$srcdir/$pkgname-$pkgver/"* "$pkgdir/opt/$pkgname/"
 
     install -d "$pkgdir/usr/bin/"
-    ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -s "$pkgdir/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm644 "$srcdir/$pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
     install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
