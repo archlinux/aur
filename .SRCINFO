@@ -4,6 +4,7 @@ pkgbase = telepathy-qt
 	pkgrel = 3
 	url = https://github.com/TelepathyQt/telepathy-qt
 	arch = x86_64
+	arch = aarch64
 	license = LGPL
 	makedepends = cmake
 	makedepends = doxygen
