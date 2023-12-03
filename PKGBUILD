@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc='A community Bash framework.'
 arch=('any')
 url='https://bash-it.readthedocs.io/en/latest/'
-licence='MIT'
+license=('MIT')
 source=(
 	"https://github.com/Bash-it/bash-it/archive/refs/tags/v${pkgver}.tar.gz"
 )
