@@ -1,7 +1,7 @@
 pkgbase = perl-finance-quote
 	pkgdesc = Get stock and mutual fund quotes from various exchanges
 	pkgver = 1.58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Finance-Quote
 	arch = any
 	license = PerlArtistic
@@ -26,6 +26,7 @@ pkgbase = perl-finance-quote
 	depends = perl-http-message>=0
 	depends = perl-io-string>=0
 	depends = perl-json>=0
+	depends = perl-json-parse
 	depends = perl-lwp-protocol-https>=0
 	depends = perl-mozilla-ca>=0
 	depends = perl-readonly>=0
