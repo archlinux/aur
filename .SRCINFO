@@ -1,0 +1,16 @@
+pkgbase = opensaucer-git
+	pkgdesc = Mutiny on the mothership
+	pkgver = r118.3e0306b
+	pkgrel = 1
+	url = https://gitlab.com/luckeyproductions/games/opensaucer
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = qt5-base
+	depends = dry
+	provides = opensaucer
+	conflicts = opensaucer
+	source = opensaucer-git::git+https://gitlab.com/luckeyproductions/games/opensaucer.git
+	sha512sums = SKIP
+
+pkgname = opensaucer-git
