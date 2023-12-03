@@ -9,7 +9,7 @@ pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popu
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
 license=('GPL3')
-depends=('java-openjfx' 'java-runtime' 'gtk2')
+depends=('java-runtime' 'gtk2')
 provides=('hmcl')
 conflicts=('hmcl')
 source=("hmcl.desktop"
@@ -18,7 +18,7 @@ source=("hmcl.desktop"
         "LICENSE::https://raw.githubusercontent.com/huanghongxun/HMCL/javafx/LICENSE"
         "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/huanghongxun/HMCL/releases/download/release-${pkgver}/HMCL-${pkgver}.jar")
 sha256sums=('a367a2d222dc86b3e3a60af0727192aa461922735825bf2ccab72a1d95c60325'
-            'd7b373e705bfa287fa720a64820fa34c9df29ce87e73c1814c70e643434fe550'
+            'SKIP'
             '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '6d7645dfca5df08f1c45eb8336b6730e3d61a750ab93e3f6e893628a45028388')
