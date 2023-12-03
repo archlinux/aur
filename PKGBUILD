@@ -23,8 +23,11 @@ makedepends=(
   python
   qt5-tools
 )
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
 source=(
-  "https://telepathy.freedesktop.org/releases/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
+  "https://telepathy.freedesktop.org/releases/$_pkgname/$_pkgsrc.$_pkgext"{,.asc}
 )
 sha256sums=(
   'bf8e2a09060addb80475a4938105b9b41d9e6837999b7a00e5351783857e18ad'
@@ -35,7 +38,7 @@ validpgpkeys=('AA33B0D27868E36C151780F0FE0B6D736B1195ED') # Alexandr Akulich
 build() {
   local _cmake_options=(
     -B build
-    -S "$pkgname-$pkgver"
+    -S "$_pkgsrc"
 
     -DCMAKE_INSTALL_PREFIX=/usr
     -DENABLE_EXAMPLES=OFF
