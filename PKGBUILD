@@ -4,12 +4,12 @@
 pkgname=firealpaca
 pkgver=2.11.14
 _pkgver="${pkgver//./_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy digital painting software"
 arch=('x86_64')
 url="https://firealpaca.com/"
 license=('custom')
-depends=('wine')
+depends=('wine' 'hicolor-icon-theme')
 makedepends=('gendesk' 'icoutils')
 source=("${pkgname}-${pkgver}.zip"::"https://firealpaca.com/download/win64_zip"
         "${pkgname}"
