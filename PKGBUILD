@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander
 pkgver=7.6.0
-pkgrel=2
+pkgrel=4
 pkgdesc="Simple CLI-based Matrix client"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
@@ -9,12 +9,13 @@ license=('GPL')
 makedepends=(
   python-build
   python-installer
-  python-setuptools
   python-wheel)
 depends=(
+  "bash"
   # adapted from requirements.txt:
   "python>3.7"
   "python-aiohttp"
+  "python-async-timeout" # used to be a dep of aiohttp and now no longer is...
   "python-aiofiles>=0.6.0"
   # "python-argparse" part of python since 3.2
   # "python-asyncio" part of python since 3.3
@@ -23,6 +24,7 @@ depends=(
   "python-markdown"
   "python-matrix-nio>=0.14.1"
   "python-pillow"
+  "python-setuptools"  # Flagged by namcap
   "python-magic"
   "python-pyxdg"
   # "python-uuid" part of standard python
