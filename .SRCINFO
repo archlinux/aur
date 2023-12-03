@@ -1,16 +1,15 @@
 pkgbase = permof-git
 	pkgdesc = Visualize Linux file permissions
-	pkgver = 1.0.b5cff53
+	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/karabaja4/permof
+	url = https://github.com/karabaja4/arch/blob/master/scripts/permof.sh
 	arch = any
 	license = GPL3
-	makedepends = git
 	depends = coreutils
 	depends = findutils
 	depends = bash
 	depends = bc
-	source = git+https://github.com/karabaja4/permof.git
-	md5sums = SKIP
+	source = https://raw.githubusercontent.com/karabaja4/arch/master/scripts/permof.sh
+	md5sums = 41fad969854a632c5a6baa09e1118ecb
 
 pkgname = permof-git
