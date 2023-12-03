@@ -1,6 +1,6 @@
 pkgbase = frzr-sk
 	pkgdesc = A deployment and update system for read-only btrfs subvolume based operating systems
-	pkgver = 0.14.15.dev
+	pkgver = 0.14.16.dev
 	pkgrel = 1
 	url = https://github.com/honjow/frzr
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = frzr-sk
 	conflicts = frzr
 	backup = etc/github_cdn.conf
 	backup = etc/frzr-sk.conf
-	source = frzr-sk-0.14.15.dev.tar.gz::https://github.com/honjow/frzr/archive/0.14.15.dev.tar.gz
+	source = frzr-sk-0.14.16.dev.tar.gz::https://github.com/honjow/frzr/archive/0.14.16.dev.tar.gz
 	md5sums = SKIP
 
 pkgname = frzr-sk
