@@ -2,7 +2,7 @@
 
 pkgname=tomato-radio-automation-git
 _pkgname=tomato-radio-automation
-pkgver=0.4.0.r46.g2a5bf62f
+pkgver=0.4.0.r49.g104a1bee
 pkgrel=1
 pkgdesc='Tomato Radio Automation. Dead simple radio ads. Latest git (preview) version.'
 arch=('x86_64' 'aarch64')
