@@ -11,6 +11,7 @@ pkgbase = python-mujoco
 	makedepends = eigen
 	makedepends = cmake
 	makedepends = git
+	makedepends = lodepng
 	depends = python
 	depends = absl-py
 	depends = python-glfw
