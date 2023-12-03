@@ -2,8 +2,8 @@
 
 pkgname=filetovox
 pkgver=1.16
-pkgrel=2
-pkgdesc="Tool for convert files into Magicavoxel file"
+pkgrel=3
+pkgdesc="Tool for convert files into MagicaVoxel file"
 url="https://github.com/Zarbuz/FileToVox"
 license=('MIT')
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -15,6 +15,7 @@ options=(!strip)
 
 build() {
     cd "$srcdir/FileToVox-$pkgver"
+    rm nuget.config
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
     ## Select runtime
     runtime="linux-x64"
@@ -26,7 +27,7 @@ build() {
     ## Build as single file
     dotnet publish SchematicToVoxCore \
         -p:PublishSingleFile=true \
-        -p:PublishTrimmed=true \
+        --self-contained \
         -r $runtime \
         -c Release \
         -o bin

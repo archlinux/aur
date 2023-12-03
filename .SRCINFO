@@ -1,7 +1,7 @@
 pkgbase = filetovox
-	pkgdesc = Tool for convert files into Magicavoxel file
+	pkgdesc = Tool for convert files into MagicaVoxel file
 	pkgver = 1.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Zarbuz/FileToVox
 	arch = x86_64
 	arch = armv7h
