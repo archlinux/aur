@@ -3,7 +3,7 @@ pkgname=betterbird-ja-bin
 _pkgname=betterbird
 pkgver=115.5.1
 _build=bb19
-pkgrel=1
+pkgrel=2
 pkgdesc="JAPANESE // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -28,6 +28,14 @@ package() {
     install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     ln -s /opt/$_pkgname/betterbird "$pkgdir"/usr/bin/$_pkgname
 
+    echo     "
+
+	  >>>>>    このパッケージに忘れずに投票してください。 ありがとう
+	  >>>>>    Kono pakkēji ni wasurezu ni tōhyō shite kudasai. Arigatō
+	  >>>>>    https://aur.archlinux.org/packages/betterbird-ja-bin
+
+	  "
+
     #icons
     for i in 16 22 24 32 48 64 128 256; do
         install -d "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/
@@ -36,5 +44,5 @@ package() {
     done
 }
 sha256sums=('0c76e63bbb772e3e54bfe9cd77fcbbfb882afbfdd7f7629a5e7f02f2d0420fad'
-            '816a97383c4eba202d9993736d14d3f728064d1bea7301adc93ed1248a096ca8')
+            'b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b')
 
