@@ -2,7 +2,7 @@
 
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
-_pkgver=17.0.5
+_pkgver=17.0.6
 _pkg_suffix=
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
@@ -23,7 +23,7 @@ checkdepends=("python-psutil")
 # stable
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
-sha512sums=('793b63aa875b6d02e3a2803815cc9361b76c9ab1506967e18630fc3d6811bf51c73f53c51d148a5fc72e87e35dc2b88cb18b48419939c436451fe65c5a326022')
+sha512sums=('6d85bf749e0d77553cc215cbfa61cec4ac4f4f652847f56f946b6a892a99a5ea40b6ab8b39a9708a035001f007986941ccf17e4635260a8b0c1fa59e78d41e30')
 install=clang.install
 static_build=false
 build_with_gcc=false
