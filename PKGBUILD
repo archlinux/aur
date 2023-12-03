@@ -13,7 +13,7 @@
 
 _extractedName="google-cloud-sdk"
 pkgname="google-cloud-cli"
-pkgver=453.0.0
+pkgver=455.0.0
 pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/cli/"
@@ -23,16 +23,17 @@ depends=('python')
 optdepends=(
   "python-crcmod: [gsutil] verify the integrity of GCS object contents"
 )
-options=('!strip' 'staticlibs')
+options=('!strip' 'staticlibs' !zipman)
 source=(
   "$pkgname-$pkgver.orig.tar.gz::https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
   "google-cloud-cli.sh"
   "0003-add-compdef-to-zsh-completion.patch"
 )
+# https://console.cloud.google.com/storage/browser/cloud-sdk-release/for_packagers/linux
 # Conflict the old package name to force migration
 conflicts=('google-cloud-sdk')
 provides=('google-cloud-sdk')
-sha256sums=('f09fc5147cc984ed49ff961367e1b6248ef53db640073312b536a0942a409ace'
+sha256sums=('ac0a22498d5946f1cbd3403960c7a104bb041edcf4ec80e48ca38eb64ad50f0e'
             'e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a'
             '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93')
 
