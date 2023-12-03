@@ -1,8 +1,8 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=imibrowser
-pkgver=14.0.4725
-pkgrel=2
+pkgver=14.5.4738
+pkgrel=1
 pkgdesc="iReasoning MIB browser tool for SNMP API."
 url="https://www.ireasoning.com/mibbrowser.shtml"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('jre-openjdk')
 makedepends=('imagemagick')
 source=("$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
 	"iMIBrowser.desktop")
-sha256sums=('129852e3403ede5a4d47a3febe477e5f533ec45452cc381bad3e1744de37cf72'
+sha256sums=('f7d710cd2707a221f1242bee4941364826f2ab7e74d217ade2fd06d469f7b6e9'
             '5d2ca5f1199f429a09f700476753bfdabd111acbf4fdaf7ea43ae8ed3879aa29')
 
 prepare() {
@@ -27,26 +27,26 @@ EOF
 
 package() {
     # Install /usr/bin executable file
-	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$srcdir"/$pkgname.sh "$pkgdir"/usr/bin/$pkgname
 
 	# Install application files
-	install -d ${pkgdir}/opt/$pkgname/{config,docs,images,lib,mibs}
-	install -Dm755 "$srcdir/ireasoning/mibbrowser/browser.sh" "$pkgdir/opt/$pkgname/browser.sh"
-	install -Dm644 "$srcdir/ireasoning/mibbrowser/audio/alarm.wav" "$pkgdir/opt/$pkgname/audio/alarm.wav"
-	install -Dm644 "$srcdir/ireasoning/mibbrowser/scripts/sample.txt" "$pkgdir/opt/$pkgname/scripts/sample.txt"
+	install -d "$pkgdir"/opt/$pkgname/{config,docs,images,lib,mibs}
+	install -Dm755 "$srcdir"/ireasoning/mibbrowser/*.sh "$pkgdir"/opt/$pkgname
+	install -Dm644 "$srcdir"/ireasoning/mibbrowser/audio/alarm.wav "$pkgdir"/opt/$pkgname/audio/alarm.wav
+	install -Dm644 "$srcdir"/ireasoning/mibbrowser/scripts/sample.txt "$pkgdir"/opt/$pkgname/scripts/sample.txt
 
-	cd "$srcdir/ireasoning/mibbrowser"
-	cp -dr --no-preserve='ownership' config docs images lib mibs "$pkgdir/opt/$pkgname"
+	cd "$srcdir"/ireasoning/mibbrowser
+	cp -dr --no-preserve='ownership' config docs images lib mibs "$pkgdir"/opt/$pkgname
 
 	# Install license files
-	install -Dm644 "$srcdir/ireasoning/mibbrowser/license.txt" \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "$srcdir/ireasoning/mibbrowser/THIRDPARTYLICENSEREADME.txt" \
-		"$pkgdir/usr/share/licenses/$pkgname/THIRDPARTY_LICENSE"
+	install -Dm644 "$srcdir"/ireasoning/mibbrowser/license.txt \
+		"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 "$srcdir"/ireasoning/mibbrowser/THIRDPARTYLICENSEREADME.txt \
+		"$pkgdir"/usr/share/licenses/$pkgname/THIRDPARTY_LICENSE
 
 	# Install icons
 	for d in 16 24 32 48 128 256; do
-		mkdir -p "$pkgdir/usr/share/icons/hicolor/${d}x${d}/apps"
+		mkdir -p "$pkgdir"/usr/share/icons/hicolor/${d}x${d}/apps
 	done
 
 	for i in 16 24 32 48 128 256; do
@@ -57,13 +57,13 @@ package() {
 		elif 	[ $i = '128' ];	then layer=1;
 		elif 	[ $i = '256' ];	then layer=0; fi
 
-	convert "$srcdir/ireasoning/mibbrowser/images/browser.ico[${layer}]" -define icon:auto-resize=${icons} \
-		"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+	convert "$srcdir"/ireasoning/mibbrowser/images/browser.ico[${layer}] -define icon:auto-resize=${icons} \
+		"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png
 	done
 
 	# Install /usr/share/pixmaps png file
-	install -Dm644 "$srcdir/ireasoning/mibbrowser/images/browser.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 "$srcdir"/ireasoning/mibbrowser/images/browser.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
 
 	# Install desktop file
-	install -Dm644 "$srcdir/iMIBrowser.desktop" "$pkgdir/usr/share/applications/iMIBrowser.desktop"
+	install -Dm644 "$srcdir"/iMIBrowser.desktop "$pkgdir"/usr/share/applications/iMIBrowser.desktop
 }
