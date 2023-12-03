@@ -1,6 +1,6 @@
 pkgbase = hacki
 	pkgdesc = A Hacker News reader.
-	pkgver = 2.4.2
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/Livinglist/Hacki
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = hacki
 	depends = gstreamer
 	depends = gst-plugins-base-libs
 	depends = libsecret
-	source = git+https://github.com/Livinglist/Hacki.git#tag=v2.4.2
+	source = git+https://github.com/Livinglist/Hacki.git#tag=v2.5.0
 	source = flutter::git+https://github.com/flutter/flutter.git
 	source = flutter-engine::git+https://github.com/flutter/engine.git
 	sha256sums = SKIP

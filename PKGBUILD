@@ -3,7 +3,7 @@
 _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 _srcdir="${_pkgreponame}"
-_engine_version=3.13.9
+_engine_version=3.16.2
 
 prepare() {
 	cd "${_srcdir}"
