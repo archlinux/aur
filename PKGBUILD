@@ -4,11 +4,11 @@
 # https://github.com/michaellass/AUR
 
 pkgname=qt-dab
-pkgver=6.2.5
-pkgrel=3
+pkgver=6.3
+pkgrel=1
 _prefix=qt-dab-  # name of tarball and contents change from release to release
 _tagname=qt-dab- # tag names may differ from the application version
-_pkgver=6.25
+_pkgver=6.30
 _major=${pkgver::1}
 _fullname=${pkgname}-${_major}
 _fullname_s=${pkgname}-s${_major}
@@ -25,15 +25,14 @@ optdepends=('airspy: Support for Airspy'
             'rtl-sdr: Support for RTL-SDR'
             'libsdrplay: Support for SDRplay')
 source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${_tagname}${_pkgver}.tar.gz"
-        0001-Fix-location-of-librtlsdr.so-on-Arch-Linux.patch)
-sha256sums=('631740f711f3736eb94ace7588d6187f4d3a33547656e00df05a2487dadab9b9'
-            '49862b828def591a9cf2dff43667ee5efcb2174df7f9d0fb4a636b90d11f4b3d')
+        https://github.com/JvanKatwijk/qt-dab/commit/f260ae6ecba97a9e83bbbb7f1471286d5a8cf3ca.patch)
+sha256sums=('bea7ecfa7f58e6bb41bc8eaa2159f6ee84ee1a6feba9ef598c33bf37b3cfe903'
+            '53ddb4dfb36830720529d8846d420c96f543b29ffa858454129dd5fa6e5b72b5')
 
 prepare() {
 	cd "${_prefix}${_tagname}${_pkgver}"
 
-	# Fix location of librtlsdr.so
-	patch -p1 < "${srcdir}/0001-Fix-location-of-librtlsdr.so-on-Arch-Linux.patch"
+	patch -p1 < "${srcdir}/f260ae6ecba97a9e83bbbb7f1471286d5a8cf3ca.patch"
 
 	# The program is officially called Qt-DAB.
 	sed -i 's/Qt_DAB/Qt-DAB/g' ${_fullname_s}/${_fullname}.desktop
