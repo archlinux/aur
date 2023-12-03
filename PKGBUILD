@@ -15,7 +15,7 @@ license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 onl
 depends=('libpciaccess' 'yajl' 'fuse3' 'gnutls' 'parted' 'libssh' 'libxml2'
 'numactl' 'polkit' 'libnbd')
 makedepends=('meson' 'libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'glusterfs'
-             'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-base')
+             'bash-completion' 'dnsmasq' 'iproute2' 'qemu-base')
 optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
             'gettext: required for libvirt-guests.service'
