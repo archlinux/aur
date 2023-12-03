@@ -1,3 +1,5 @@
+# Maintainer: Gurkirat Singh <tbhaxor@proton.me>
+
 pkgname=bash-it
 pkgver=3.0.3
 pkgrel=1
