@@ -1,7 +1,7 @@
 pkgbase = ultraleap-hand-tracking-service
 	pkgdesc = Ultraleap Hand Tracking service and SDK for development.
-	pkgver = 5.15.0.0_6eec32f3
-	pkgrel = 2
+	pkgver = 5.17.1.0_a9f25232
+	pkgrel = 1
 	url = https://gitlab.com/northstar-archlinux/ultraleap-hand-tracking-service.git
 	install = ultraleap-hand-tracking-service.install
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = ultraleap-hand-tracking-service
 	depends = glibc
 	depends = psmisc>=23.3-1
 	provides = ultraleap-hand-tracking-service
-	source = https://repo.ultraleap.com/apt/pool/main/u/ultraleap-hand-tracking-service/ultraleap-hand-tracking-service_5.15.0.0-6eec32f3-1.0_amd64.deb
+	source = https://repo.ultraleap.com/apt/pool/main/u/ultraleap-hand-tracking-service/ultraleap-hand-tracking-service_5.17.1.0-a9f25232-1.0_amd64.deb
 	source = analytics_config.json
 	source = ultraleap-hand-tracking-service.conf
 	source = leap.conf
 	source = leap-tmpfiles.conf
-	md5sums = d6820848627fa0651943fe4618293b97
+	md5sums = 9161434c093d6a4a3cbaf759929bec3c
 	md5sums = 4366790d2e555633b24c14cc49584e97
 	md5sums = c85e250132a9b3bc32e1c9db449fdbec
 	md5sums = 9045bc8cc05aa0cbeb66621075a88162
