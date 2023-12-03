@@ -2,7 +2,7 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libdcp
-pkgver=1.8.85
+pkgver=1.8.89
 pkgrel=1
 pkgdesc="A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files"
 arch=('i686' 'x86_64')
