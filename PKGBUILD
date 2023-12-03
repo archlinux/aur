@@ -1,7 +1,7 @@
 # Maintainer: Christoph Brill <aur at christophbrill.de>
 
 pkgname=blender-dream-textures-git
-pkgver=145.cca6960
+pkgver=153.978e7b9
 pkgrel=1
 pkgdesc="Stable Diffusion built-in to Blender"
 arch=('any')
@@ -13,7 +13,7 @@ provides=('blender-dream-textures')
 conflicts=('blender-dream-textures')
 source=("$pkgname::git+https://github.com/carson-katri/dream-textures.git")
 sha256sums=('SKIP')
-_blenderver=3.6
+_blenderver=4.0
 
 pkgver() {
   cd "$srcdir/$pkgname"
