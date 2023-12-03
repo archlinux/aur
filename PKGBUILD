@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034 disable=SC2148 disable=SC2154 disable=SC2001
 _pkgname=code-insiders
 pkgname="$_pkgname-bin"
-pkgver=1.82.0_1693567468
+pkgver=1.85.0_1701458561
 pkgrel=1
 pkgdesc="Code editing. Redefined."
 arch=('x86_64')
@@ -17,7 +17,7 @@ _download_url="https://code.visualstudio.com/sha/download?build=insider&os=linux
 
 pkgver_check() {
   IFS='/' read -ra URL <<<"$(curl -ILs -w "%{url_effective}" -o /dev/null "$_download_url")"
-  echo "${URL[5]}" | sed -e 's/code-insiders_\(.*\)_amd64.deb/\1/' -e 's/-/_/'
+  echo "${URL[7]}" | sed -e 's/code-insiders_\(.*\)_amd64.deb/\1/' -e 's/-/_/'
 }
 _pkgver=$(pkgver_check)
 pkgver() {

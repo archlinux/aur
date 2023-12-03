@@ -1,6 +1,6 @@
 pkgbase = code-insiders-bin
 	pkgdesc = Code editing. Redefined.
-	pkgver = 1.82.0_1693567468
+	pkgver = 1.85.0_1701458561
 	pkgrel = 1
 	url = https://code.visualstudio.com/insiders/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = code-insiders-bin
 	optdepends = glib2: Needed for move to trash functionality
 	optdepends = libdbusmenu-glib: Needed for KDE global menu
 	conflicts = visual-studio-code-insiders-bin
-	source = code-insiders_1.82.0_1693567468.deb::https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64
+	source = code-insiders_1.85.0_1701458561.deb::https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64
 	sha256sums = SKIP
 
 pkgname = code-insiders-bin
