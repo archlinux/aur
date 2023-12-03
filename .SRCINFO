@@ -1,6 +1,6 @@
 pkgbase = mutter-x11-scaling
 	pkgdesc = Window manager and compositor for GNOME with X11 fractional scaling patch
-	pkgver = 45.1
+	pkgver = 45.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -39,10 +39,10 @@ pkgbase = mutter-x11-scaling
 	depends = pipewire
 	depends = startup-notification
 	depends = xorg-xwayland
-	provides = mutter=45.1
+	provides = mutter=45.2
 	provides = libmutter-13.so
 	conflicts = mutter
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=c71a119de06d8937930e4d1adf06ff0c2b259653
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=08de409d40a92f8bf74ee8005b382aa194d76a45
 	source = https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/mutter-45/mutter-45.0-x11-Add-support-for-fractional-scaling-using-Randr.patch
 	b2sums = SKIP
 	b2sums = c25a4c909aa9a07d3c0a131a8419d510583ecdd883950c82ff487b0f578a13b2cb093c54b966cb48509c77ffdcc93cbadcd67318173454fb8cb424f01fd0bcb5
