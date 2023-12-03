@@ -1,6 +1,6 @@
 pkgbase = jupyterlab-execute-time
 	pkgdesc = JupyterLab extension to show execution time for each cell
-	pkgver = 3.0.1
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/deshaw/jupyterlab-execute-time
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = jupyterlab-execute-time
 	makedepends = python-wheel
 	makedepends = npm
 	depends = jupyterlab
-	source = https://files.pythonhosted.org/packages/source/j/jupyterlab_execute_time/jupyterlab_execute_time-3.0.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab_execute_time/jupyterlab_execute_time-3.1.0.tar.gz
 	source = install.json
-	sha256sums = 7f46214a1a370d5abb9c33701fd06fde0ac61664c4c6d3c5fd2a36ea5f220ba6
+	sha256sums = 0451669517f103eaaa3cc5d40858414ec9f6816a86051d4bdc0c4fffd1ef3ac0
 	sha256sums = fcaf662d9c5fcc529b4add01452bf3f1809c418c75d9b7e55f7fd822d407f9a3
 
 pkgname = jupyterlab-execute-time
