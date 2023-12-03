@@ -1,13 +1,13 @@
 pkgbase = r-r2html
-	pkgdesc = An ODBC database interface
+	pkgdesc = HTML Exportation for R Objects
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 9
 	url = https://cran.r-project.org/package=R2HTML
 	arch = any
-	license = GPL2
-	license = GPL3
+	license = GPL
 	depends = r
 	source = https://cran.r-project.org/src/contrib/R2HTML_2.3.3.tar.gz
 	md5sums = 0c5bf024dcf198df199aea7135f325dd
+	sha256sums = 4a7e181a1c444f83ccac7eb8b19962de08dd649ae5b9868813d008196e4e0f8b
 
 pkgname = r-r2html
