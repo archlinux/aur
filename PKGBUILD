@@ -2,7 +2,7 @@
 
 _pkgname=hexon
 pkgname=${_pkgname}-git
-pkgver=r503.9969fcc
+pkgver=r553.e9e4f66
 pkgrel=1
 pkgdesc='heXon is a free and open source twin-stick-shooter created using the Dry game engine.'
 arch=('x86_64')
