@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=graphenex
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Automated System Hardening Framework"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('python-flask-socketio' 'python-coloredlogs'
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('12c5fc76ecf9c0a48a409cd9a4c4dc602bf17c91f0b6a22e86574af79d631b5232838a7bf045603e01352e2825636a61272bb7a806ccc5b4a14a8bdb92d45925')
+sha512sums=('a554e80e555948f6d97a4f03c87b6ea5b9999004d9625ad0a2110fec48cc9f5fbfed85e7004c5b17c4f88357ea0c6540d4b5ddb3756d7155cc7e8d8d68b1339d')
 
 build() {
     cd "$pkgname-$pkgver"
