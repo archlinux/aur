@@ -5,7 +5,7 @@ pkgver=0.0.18
 pkgrel=1
 pkgdesc="Reply plugin for powerlevel10k style prompt"
 arch=(any)
-url=https://github.com/Freed-Wu/Reply-Plugin-Prompt
+url=https://github.com/wakatime/Reply-Plugin-Prompt
 license=(GPL3)
 depends=(perl-reply)
 optdepends=('perl-file-xdg>=1.00: support configure file')

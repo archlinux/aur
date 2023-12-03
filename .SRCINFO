@@ -2,12 +2,12 @@ pkgbase = perl-reply-plugin-prompt
 	pkgdesc = Reply plugin for powerlevel10k style prompt
 	pkgver = 0.0.18
 	pkgrel = 1
-	url = https://github.com/Freed-Wu/Reply-Plugin-Prompt
+	url = https://github.com/wakatime/Reply-Plugin-Prompt
 	arch = any
 	license = GPL3
 	depends = perl-reply
 	optdepends = perl-file-xdg>=1.00: support configure file
-	source = https://github.com/Freed-Wu/Reply-Plugin-Prompt/releases/download/0.0.18/Reply-Plugin-Prompt-0.0.18.0.tar.gz
+	source = https://github.com/wakatime/Reply-Plugin-Prompt/releases/download/0.0.18/Reply-Plugin-Prompt-0.0.18.0.tar.gz
 	sha256sums = 313c98fca482c0ec0fb715ebc6114df0f579d8ec2ad101e8f8acd8ca4fa22fda
 
 pkgname = perl-reply-plugin-prompt
