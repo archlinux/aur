@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=lfp
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 pkgdesc='A wrapper for the lf file manager with in-terminal media previews, on-exit directory changing and much more'
 license=('MIT')
@@ -18,10 +18,10 @@ source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  '835ad2c0f4e50cc6160c0c1ccb46d54067380e259751db7dd1cc249eaf814ee532f261bfee263f77c7e5f48d6df8e37c1edacf5ef2186a5fcbc1ecef264c9503'
+  'ed247079683b0a8967d3341803ed97f15267a4d8f2f1a4f1edd75a01f1e2cf4ed9a83217e49af06903f3dd159d39d9d7c4719bc39685418b7c61fce4b14d9dbd'
 )
 md5sums=(
-  '0ebf2d0e1c065cd984d6b540498aecda'
+  '3fce44b5c31fb24b7f2b8fc0747b88e6'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -33,6 +33,7 @@ package() {
   cd "$srcdir/${pkgname}/lfpreviewer"
 
   pip install . --root="$pkgdir" --prefix=/usr --no-deps
+  pip install ./lfpreviewer-1.0.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl 2>/dev/null || true
 
   cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" >/dev/null 2>&1 ||
   cd "$srcdir/${pkgname}"
