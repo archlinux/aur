@@ -24,6 +24,6 @@ pkgbase = aurc
 	depends = json-c
 	optdepends = sudo: privilege elevation
 	source = aurc-1.2.2.tar.gz::https://github.com/statulr/aurc/archive/1.2.2.tar.gz
-	sha256sums = 0169cecc748f1711854214fe1a420a90ab55c9ed15edc7f56d47a48483a9f02c
+	sha256sums = 9033ed6936372bbe917c161299818ac9abb55cb6e4af224070caaa36778c5cc9
 
 pkgname = aurc
