@@ -1,0 +1,23 @@
+pkgbase = r-oncoscanr
+	pkgdesc = Secondary analyses of CNV data (HRD and more)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/oncoscanR
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-magrittr
+	depends = r-readr
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-jsonlite
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/oncoscanR_1.4.0.tar.gz
+	md5sums = 48aee6850c94c299417e75cf74418b01
+	sha256sums = c82a686c987f01ad76ae6bbbb46d9a6ff9d85ac180429b1bad8cb74673a99fa7
+
+pkgname = r-oncoscanr
