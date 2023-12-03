@@ -2,7 +2,7 @@
 
 pkgname=clash-verge-rev-bin
 _pkgname=clash-verge-rev
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Clash Meta GUI based on tauri."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
 conflicts=("$_pkgname" "$_pkgname-git" "clash-verge" "clash-verge-bin" "clash-nyanpasu" "clash-nyanpasu-bin" "clash-nyanpasu-git" "clash-meta")
 source=("${_pkgname}-${pkgver}-${arch}.deb::${url}/releases/download/v${pkgver}/clash-verge_${pkgver}_amd64.deb")
 
-sha512sums=('a350831e71e6d80cf6ff2835bc472af8aceaf7304ff13212a9e1a04832cf1d55bde98fb532f693b89e0b0a53e3dbeb9591fd4b1e5b95d56aa0393a3ad1a45618')
+sha512sums=('03ef4b75bf71b515e21375f4c6e031a98b2f841b5cb1af9c0e8d7d3be39e6d16a40d387b5130e33ab370adbd71b303f32f53331c2509fecea7e249ca8f9ef67e')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
