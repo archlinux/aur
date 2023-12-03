@@ -1,16 +1,15 @@
 pkgbase = spicetify-theme-nord-git
 	pkgdesc = Nord Themed Spotify
-	pkgver = r516.g04da011
-	pkgrel = 1
+	pkgver = r518.g2dbfc7d
+	pkgrel = 2
 	url = https://tetrax-10.github.io/Nord-Spotify/
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = npm
-	makedepends = nodejs-lts-gallium
 	depends = spicetify-cli
 	provides = spicetify-theme-nord
-	conflicts = spicetify--theme-nord
+	conflicts = spicetify-theme-nord
 	source = git+https://github.com/Tetrax-10/Nord-Spotify
 	sha256sums = SKIP
 
