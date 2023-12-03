@@ -1,32 +1,18 @@
 pkgbase = sentry-native
 	pkgdesc = Sentry SDK for C, C++ and native applications
 	pkgver = 0.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/getsentry/sentry-native
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-msgpack
 	makedepends = cmake
+	makedepends = git
 	depends = curl
 	depends = gcc-libs
 	depends = glibc
-	noextract = lss-9719c1e1e676814c456b55f5f070eabad6709d31.tar.gz
-	noextract = zlib-13dc246a58e4b72104d35f9b1809af95221ebda7.tar.gz
-	noextract = mini_chromium-6a817b86d4bd0e0672df4a094c4490ecef761a59.tar.gz
-	source = sentry-native-0.6.7.tar.gz::https://github.com/getsentry/sentry-native/archive/refs/tags/0.6.7.tar.gz
-	source = breakpad-eb28e7ed9c1c1e1a717fa34ce0178bf471a6311f.tar.gz::https://github.com/getsentry/breakpad/archive/eb28e7ed9c1c1e1a717fa34ce0178bf471a6311f.tar.gz
-	source = crashpad-3182e3be21a8a753f9f269f0a590370d49c8f3cf.tar.gz::https://github.com/getsentry/crashpad/archive/3182e3be21a8a753f9f269f0a590370d49c8f3cf.tar.gz
-	source = libunwindstack-ndk-f064cc8da606f38450ff5d345ae716ff9dab3d7c.tar.gz::https://github.com/getsentry/libunwindstack-ndk/archive/f064cc8da606f38450ff5d345ae716ff9dab3d7c.tar.gz
-	source = lss-9719c1e1e676814c456b55f5f070eabad6709d31.tar.gz::https://chromium.googlesource.com/linux-syscall-support/+archive/9719c1e1e676814c456b55f5f070eabad6709d31.tar.gz
-	source = zlib-13dc246a58e4b72104d35f9b1809af95221ebda7.tar.gz::https://chromium.googlesource.com/chromium/src/third_party/zlib/+archive/13dc246a58e4b72104d35f9b1809af95221ebda7.tar.gz
-	source = mini_chromium-6a817b86d4bd0e0672df4a094c4490ecef761a59.tar.gz::https://chromium.googlesource.com/chromium/mini_chromium/+archive/6a817b86d4bd0e0672df4a094c4490ecef761a59.tar.gz
-	sha256sums = f60c77fe1a14274886a04d788381bfdc2f80164751af0675c693eb337d86eaa1
-	sha256sums = fbf8ee18caf3a2ae0a286c0397e2d4f76d2872da1b4374a4fe56e2d8eb5fc18b
-	sha256sums = 9ac75ef2acbb09f652b5ed1994dfeaf422b834b3960cf372d688c2f42f49df4b
-	sha256sums = 7de693def0abff7aee03bc289fb3f7d489b689e972abbe20bd50ac1aa86e81ef
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://github.com/getsentry/sentry-native.git#tag=a3d58622a807b9dda174cb9fc18fa0f98c89d043
 	sha256sums = SKIP
 
 pkgname = sentry-native
