@@ -1,6 +1,6 @@
 pkgbase = gameoftrees
 	pkgdesc = A version control system which prioritizes ease of use and simplicity over flexibility
-	pkgver = 0.93
+	pkgver = 0.94
 	pkgrel = 1
 	url = https://gameoftrees.org
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gameoftrees
 	conflicts = got
 	conflicts = got-git
 	conflicts = got-bin
-	source = gameoftrees::git+https://repo.or.cz/got-portable.git#tag=0.93
+	source = gameoftrees::git+https://repo.or.cz/got-portable.git#tag=0.94
 	b2sums = SKIP
 
 pkgname = gameoftrees
