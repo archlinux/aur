@@ -1,40 +1,38 @@
-# Maintainer: Michaël Lhomme <papylhomme at gmail dot com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Michaël Lhomme <papylhomme at gmail dot com>
 
 pkgname=diskmonitor-git
-pkgver=0.3.4.r0.gd463d8a
-pkgrel=1
-pkgdesc="KDE tools to monitor SMART devices and MDRaid health status"
-arch=('i686' 'x86_64')
+pkgver=0.3.4.r3.gfae01d9
+pkgrel=2
+pkgdesc="KDE tools to monitor SMART devices and MDRaid health status (latest commit)"
 url="https://github.com/papylhomme/diskmonitor"
+arch=('i686' 'x86_64')
 license=('GPL2')
-provides=('diskmonitor')
-conflicts=('diskmonitor')
-depends=('udisks2' 'qt5-base' 'ki18n' 'kiconthemes' 'knotifications' 'kxmlgui' 'plasma-framework' )
+provides=("diskmonitor")
+conflicts=("diskmonitor")
+depends=('ki18n5' 'kiconthemes5' 'knotifications5' 'kxmlgui5' 'plasma-framework5' 'qt5-base' 'udisks2')
 makedepends=('cmake' 'extra-cmake-modules' 'git')
-options=()
-source=( "$pkgname::git+https://github.com/papylhomme/diskmonitor.git" )
-md5sums=( 'SKIP')
-
+source=("git+https://github.com/papylhomme/diskmonitor.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd diskmonitor
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'1
 }
 
 build () {
-    cd "${srcdir}/${pkgname}"
-    [ -e build ] || mkdir build
-    cd build
-    cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Debug \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-
-    make
+  cd diskmonitor
+  [ -e build ] || mkdir build
+  cd build
+  cmake .. \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DLIB_INSTALL_DIR=lib \
+  -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}/build"
-    make DESTDIR="${pkgdir}" install
+  cd diskmonitor/build
+  make DESTDIR="$pkgdir" install
 }
