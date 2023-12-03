@@ -1,0 +1,12 @@
+pkgbase = ld_preload_open
+	pkgdesc = This library can trick a process into opening absolute paths from a different location, similar to bind mounts, but without root access
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/fritzw/ld-preload-open
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	source = git+https://github.com/fritzw/ld-preload-open
+	sha256sums = SKIP
+
+pkgname = ld_preload_open
