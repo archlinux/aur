@@ -2,11 +2,11 @@
 # Contributor: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A Matrix-Signal puppeting bridge"
 arch=('any')
 url="https://github.com/mautrix/signal"
-license=('AGPLv3')
+license=('AGPL')
 depends=(
   'python-aiohttp'
   'python-asyncpg'
@@ -27,7 +27,7 @@ optdepends=(
   'python-prometheus_client: metrics upload'
   'python-pycryptodome'
   'python-qrcode: qr code login'
-  'python-signalstickers-client'
+  'python-signalstickers-client: stickers'
   'python-unpaddedbase64: end-to-bridge encryption support'
 )
 backup=(

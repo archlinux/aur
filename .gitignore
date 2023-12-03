@@ -1,4 +1,10 @@
-pkg/
-src/
-*.gz
-*.zst
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!mautrix-signal.install
+!mautrix-signal.service
+!mautrix-signal.sysusers
+!mautrix-signal.tmpfiles
