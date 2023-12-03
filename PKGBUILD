@@ -1,11 +1,11 @@
 # Maintainer: Statulr <re@citra.lol>
 
-pkgname=aurc
-pkgenv=aurc
-pkgver=1.2.2
+pkgname="aurc"
+pkgenv="aurc"
+pkgver="1.2.2"
 pkgrel=1
 pkgdesc="Fast Easy way to Install and Update Aur and Non-Aur Arch Linux Packages!"
-PACKAGER=statulr
+PACKAGER=statulr
 
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/statulr/aurc"
