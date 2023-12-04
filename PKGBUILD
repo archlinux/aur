@@ -1,7 +1,7 @@
 # Maintainer: Benedykt 'b3niup' Przybyło <b3niup@gmail.com>
 
 pkgname=fackup
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="File backup tool using rsync and dar."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('dar' 'rsync' 'python-yaml')
 makedepends=(python-build python-installer python-wheel)
 install="${pkgname}.install"
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('ddc7c31b45b201e5d44205003ebb2d30')
+md5sums=('759a851770ae84134cc230794e25944b')
 
 build() {
     cd "$pkgname-$pkgver"
