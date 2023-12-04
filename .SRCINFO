@@ -1,0 +1,14 @@
+pkgbase = python-get-video-properties
+	pkgdesc = Get video properties
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mvasilkov/python-get-video-properties
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	depends = ffmpeg
+	depends = python
+	source = https://files.pythonhosted.org/packages/py3/g/get-video-properties/get_video_properties-0.1.1-py3-none-any.whl
+	sha256sums = 04d4f478a5211917e2a7e87ddfcb1c17734cddf8374494c3993bf825b7ad4192
+
+pkgname = python-get-video-properties
