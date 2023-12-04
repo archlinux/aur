@@ -2,7 +2,7 @@
 # Maintainer: Martin Morlot <martinmorlot at gmail dot com>
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Maintainer: Bruno Pagani <archange@archlinux.org>
-# Contributor: # Contributor: Luigi Ranghetti <ggranga@gmail.com>
+# Contributor: Luigi Ranghetti <ggranga@gmail.com>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
 
@@ -13,26 +13,24 @@ provides=('gdal')
 conflicts=('gdal')
 pkgname=(gdal-hdf4 python-gdal-hdf4)
 pkgver=3.8.1
-pkgrel=1
-pkgdesc="A translator library for raster and vector geospatial data formats"
+pkgrel=2
+pkgdesc="Translator library for raster and vector geospatial data formats"
 arch=(x86_64)
 url="https://gdal.org/"
 license=(custom)
-_commit="d2c98838e03c0a9f857926621bc9874f3bb254a5"
+
 makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
              libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
              openssl pcre2 libpng podofo poppler postgresql-libs qhull
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd hdf4
-             libaec libkml-git
+             libaec libkml-git filegdb-api
              ) 
 
-optdepends=('postgresql: postgresql database support'
-            'mariadb: mariadb database support'
+optdepends=('postgresql: when present while building, postgresql database support'
+            'mariadb: when present while building, mariadb database support'
             'perl: perl binding support'
-            'unixodbc: when present while building, will add odbc support'
-            'libkml: when present while building, adds kml support'
 )
 options=('!emptydirs')
 changelog=$pkgbase.changelog
@@ -103,20 +101,10 @@ package_gdal-hdf4 () {
   depends=(proj blosc crypto++ curl libdeflate expat libfreexl geos libgeotiff
            giflib libjpeg-turbo json-c xz libxml2 lz4 unixodbc ocl-icd openssl
            pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd
+           arrow cfitsio hdf5 libheif mariadb-libs netcdf openexr openjpeg2 podofo
+           poppler postgresql-libs libwebp
            hdf4 
            libaec libkml-git filegdb-api)
-  optdepends=('arrow: Arrow/Parquet support'
-             'cfitsio: FITS support'
-             'hdf5: HDF5 support'
-             'libheif: HEIF support'
-             'mariadb-libs: MySQL support'
-             'netcdf: netCDF support'
-             'openexr: EXR support'
-             'openjpeg2: JP2 support'
-             'podofo: PDF support'
-             'poppler: PDF support'
-             'postgresql-libs: PostgreSQL support'
-             'libwebp: WebP support')
 
   make -C build DESTDIR="${pkgdir}" install
   install -Dm644 ${_pkgbase}-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/$_pkgbase/

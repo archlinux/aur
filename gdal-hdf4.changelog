@@ -1,3 +1,8 @@
+2023-12-04 Guillermo Duran <gds506@gmail.com>
+	* gdal 3.8.1
+	* added support for FileGDB and KML
+	* updated PKGBUILD to latest podofo version
+
 2023-10-08 Guillermo Duran <gds506@gmail.com>
 	* gdal 3.7.2-4
 
