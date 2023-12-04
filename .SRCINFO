@@ -1,12 +1,12 @@
 pkgbase = python-estool-git
 	pkgdesc = Implementation of various Evolution Strategies, such as GA, PEPG, CMA-ES and OpenAI's ES using common interface
-	pkgver = r13.2a95325
-	pkgrel = 3
+	pkgver = r76.b095452
+	pkgrel = 1
 	url = https://github.com/hardmaru/estool
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-gym-git
+	depends = python-gym
 	depends = python-pybullet
 	depends = python-pycma
 	depends = python-mpi4py
@@ -16,4 +16,3 @@ pkgbase = python-estool-git
 	sha256sums = SKIP
 
 pkgname = python-estool-git
-
