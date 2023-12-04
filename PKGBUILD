@@ -1,5 +1,6 @@
-# Maintainer: Ben "crispyrice" Mitchell (bjosephmitchell@gmail.com)
+# Contributor: Ben "crispyrice" Mitchell (bjosephmitchell@gmail.com)
 # Maintainer: aliu (aaronliu0130 at gmail dot com)
+# Contributor: Chris Morgan (me @ chrismorgan . info )
 pkgname=muse-hub-bin
 pkgver=1.0.1.451
 pkgrel=4
@@ -11,7 +12,7 @@ depends=()
 license=(custom:muse-hub)
 options=('!strip' 'emptydirs')
 install=${pkgname}.install
-source=('https://muse-cdn.com/Muse_Hub.deb' 'muse-hub.service' 'LICENSE')
+source=("$pkgname-$pkgver.deb::https://muse-cdn.com/Muse_Hub.deb" 'muse-hub.service' 'LICENSE')
 sha256sums=(
   '0896fd96d72cb18102c2436794caffadd67382d5377b84468a514601847cc3e9'
   'd9ebfcb44599bd9f5ca7d8473639f611df8a07fcf233813e6b0aa3f2bccbb961'
