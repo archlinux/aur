@@ -7,7 +7,6 @@ pkgbase = maduchat-frontend-bin
 	arch = armv7h
 	arch = x86_64
 	license = AGPL3
-	makedepends = asar
 	makedepends = gendesk
 	depends = electron26
 	provides = maduchat-frontend=1.2.0

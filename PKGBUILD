@@ -18,7 +18,6 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'asar'
     'gendesk'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.zip")
