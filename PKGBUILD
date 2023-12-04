@@ -11,6 +11,7 @@ pkgname=(
   pipewire-common-audio-git
   pipewire-common-alsa-git
   pipewire-common-ffado-git
+  pipewire-common-jack-client-git
   pipewire-common-jack-git
   pipewire-common-pulse-git
   pipewire-common-roc-git
@@ -22,7 +23,7 @@ pkgname=(
 pkgver=1.0.0.r24.gf5546d27
 _so_ver=0.3
 _short_pkgver=${pkgver%%.r*}
-pkgrel=2
+pkgrel=3
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64)
@@ -37,6 +38,7 @@ makedepends=(
   glib2
   graphviz
   gst-plugins-base
+  jack # jack2 or pipewire-jack
   libcamera
   libcanberra
   libfdk-aac
@@ -98,7 +100,6 @@ build() {
     -D session-managers=[]
     -D udevrulesdir=/usr/lib/udev/rules.d
     -D selinux=disabled
-    -D jack=disabled
     -D vulkan=disabled
     -D ffmpeg=disabled
   )
@@ -145,7 +146,8 @@ package_pipewire-common-git() {
     'pipewire-common-audio-git: Audio support'
     'pipewire-common-docs-git: Documentation'
     'pipewire-common-ffado-git: FireWire support'
-    'pipewire-common-jack-git: JACK support'
+    'pipewire-common-jack-client-git: PipeWire as JACK client'
+    'pipewire-common-jack-git: JACK replacement'
     'pipewire-common-pulse-git: PulseAudio replacement'
     'pipewire-common-roc-git: ROC streaming'
     'pipewire-session-manager: Session manager'
@@ -197,11 +199,17 @@ package_pipewire-common-git() {
     _pick audio usr/lib/systemd/user/filter-chain.service
     _pick audio usr/share/alsa
     _pick audio usr/share/man/man1/pw-{cat,mididump}.1
+    _pick audio usr/share/man/man7/libpipewire-module-{avb,echo-cancel,fallback-sink,filter-chain*,loopback,netjack2*,pipe-tunnel,protocol-simple,rtp-{sap,sink,source},vban*}.7
     _pick audio usr/share/pipewire/filter-chain*
     _pick audio usr/share/pipewire/pipewire-{aes67,avb}.conf
     _pick audio usr/share/spa-0.2/bluez5
 
     _pick ffado usr/lib/pipewire-$_so_ver/libpipewire-module-ffado*.so
+    _pick ffado usr/share/man/man7/libpipewire-module-ffado-driver.7
+
+    _pick jack-client usr/lib/pipewire-$_so_ver/libpipewire-module-jack{-tunnel,dbus-detect}.so
+    _pick jack-client usr/lib/spa-0.2/jack
+    _pick jack-client usr/share/man/man7/libpipewire-module-jack{-tunnel,dbus-detect}.7
 
     _pick jack usr/bin/pw-jack
     _pick jack usr/include/jack
@@ -215,6 +223,9 @@ package_pipewire-common-git() {
     _pick pulse usr/lib/pipewire-$_so_ver/libpipewire-module-pulse-tunnel.so
     _pick pulse usr/lib/systemd/user/pipewire-pulse.*
     _pick pulse usr/share/man/man1/pipewire-pulse.1
+    _pick pulse usr/share/man/man5/pipewire-pulse.conf.5
+    _pick pulse usr/share/man/man7/pipewire-pulse*.7
+    _pick pulse usr/share/man/man7/libpipewire-module-{protocol-pulse,pulse-tunnel}.7
     _pick pulse usr/share/pipewire/pipewire-pulse.conf
 
     _pick roc usr/lib/pipewire-$_so_ver/libpipewire-module-roc*.so
@@ -223,10 +234,12 @@ package_pipewire-common-git() {
 
     _pick zeroconf usr/lib/pipewire-$_so_ver/libpipewire-module-{raop,zeroconf}-*.so
     _pick zeroconf usr/lib/pipewire-$_so_ver/libpipewire-module-rtp-session.so
+    _pick zeroconf usr/share/man/man7/libpipewire-module-{raop-*,rtp-session,zeroconf*}.7
 
     _pick v4l2 usr/bin/pw-v4l2 usr/lib/pipewire-$_so_ver/v4l2
 
     _pick x11-bell usr/lib/pipewire-$_so_ver/libpipewire-module-x11-bell.so
+    _pick x11-bell usr/share/man/man7/libpipewire-module-x11-bell.7
 
     # directories for overrides
     mkdir -p etc/pipewire/{client-rt,client,minimal,pipewire}.conf.d
@@ -333,6 +346,24 @@ package_pipewire-common-ffado-git() {
   conflicts=(pipewire-ffado)
 
   mv ffado/* "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
+}
+
+package_pipewire-common-jack-client-git() {
+  pkgdesc+=" - PipeWire as JACK client"
+  depends=(
+    glibc
+    libdbus-1.so
+    libjack.so
+    libpipewire-$_so_ver.so
+    pipewire-common-git
+    pipewire-common-audio-git
+  )
+  provides=(pipewire-jack-client)
+  conflicts=(pipewire-jack-client)
+
+  mv jack-client/* "${pkgdir}"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
 }

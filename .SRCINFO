@@ -1,7 +1,7 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Low-latency audio/video router and processor
 	pkgver = 1.0.0.r24.gf5546d27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pipewire.org
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = pipewire-common-git
 	makedepends = glib2
 	makedepends = graphviz
 	makedepends = gst-plugins-base
+	makedepends = jack
 	makedepends = libcamera
 	makedepends = libcanberra
 	makedepends = libfdk-aac
@@ -51,7 +52,7 @@ pkgname = pipewire-common-git
 	license = LGPL-2.1-or-later
 	depends = gcc-libs
 	depends = glibc
-	depends = libpipewire-common-git=1.0.0.r24.gf5546d27-2
+	depends = libpipewire-common-git=1.0.0.r24.gf5546d27-3
 	depends = libcamera-base.so
 	depends = libcamera.so
 	depends = libdbus-1.so
@@ -66,7 +67,8 @@ pkgname = pipewire-common-git
 	optdepends = pipewire-common-audio-git: Audio support
 	optdepends = pipewire-common-docs-git: Documentation
 	optdepends = pipewire-common-ffado-git: FireWire support
-	optdepends = pipewire-common-jack-git: JACK support
+	optdepends = pipewire-common-jack-client-git: PipeWire as JACK client
+	optdepends = pipewire-common-jack-git: JACK replacement
 	optdepends = pipewire-common-pulse-git: PulseAudio replacement
 	optdepends = pipewire-common-roc-git: ROC streaming
 	optdepends = pipewire-session-manager: Session manager
@@ -139,6 +141,17 @@ pkgname = pipewire-common-ffado-git
 	depends = pipewire-common-audio-git
 	provides = pipewire-ffado
 	conflicts = pipewire-ffado
+
+pkgname = pipewire-common-jack-client-git
+	pkgdesc = Low-latency audio/video router and processor - PipeWire as JACK client
+	depends = glibc
+	depends = libdbus-1.so
+	depends = libjack.so
+	depends = libpipewire-0.3.so
+	depends = pipewire-common-git
+	depends = pipewire-common-audio-git
+	provides = pipewire-jack-client
+	conflicts = pipewire-jack-client
 
 pkgname = pipewire-common-jack-git
 	pkgdesc = Low-latency audio/video router and processor - JACK replacement
