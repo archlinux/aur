@@ -1,9 +1,9 @@
 # Maintainer: Dominik Adrian Grzywak <starterx4 at gmail dot com>
-_job=1373302
+_job=1413589
 _name=xwaylandvideobridge
 pkgname=${_name}-bin
 pkgver=j${_job}
-pkgrel=2
+pkgrel=1
 pkgdesc="A tool to make it easy to stream wayland windows and screens to Xwayland applicatons that don't have native pipewire support."
 arch=(x86_64)
 url="https://invent.kde.org/system/${_name}"
@@ -15,7 +15,7 @@ makedepends=('git' 'ostree')
 optdepends=('freetype2' 'fontconfig' 'pkgconf')
 source=("$_name-$pkgver.flatpak::${url}/-/jobs/${_job}/artifacts/raw/${_name}.flatpak"
 		xwaylandvideobridge.sh)
-sha512sums=('0e1439a0802c2fd14280bca8f851d0f27ce8214a20ceeb3f0faaba28cb3cd8b7c8292c3c9bd5fd39ea21d0a8bbb87b0d8bf73dbf4b9ddd0bf57f1659ed7666ff'
+sha512sums=('2e87c2cba409a0213a7a60ae573e57e2486413e691d85ec568c3470327e1ce070481acb4883858912c1976ee4509d557cce32f1166291657f523c796aa60501d'
             '71a5a0abff0ae6d6c8b4ff94ce1f343864b33a8e403d9f7c8d1fd7b07c0981468917f1589af7acf1e6296aa20697eda0a99fc8f2afea86cff06849a166e94d53')
 
 prepare(){
