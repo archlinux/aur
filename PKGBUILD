@@ -6,8 +6,8 @@
 # 2) Check that sqlpp11 doesn't have a date.h that will overwrite /usr/include/sqlpp11/date.h
 
 pkgname=sqlpp11
-pkgver=0.63
-pkgrel=2
+pkgver=0.64
+pkgrel=1
 pkgdesc='A type safe embedded domain specific language for SQL queries and results in C++'
 arch=('any')
 url='https://github.com/rbock/sqlpp11'
@@ -27,7 +27,7 @@ replaces=('sqlpp11-connector-sqlite3')
 provides=("sqlpp11-connector-sqlite3=${pkgver}")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rbock/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8e8229501679435e5052c2184d6772e4d6f61e6a9e2ec7231c5fb9a3d3b88d7e')
+sha256sums=('72e6d37c716cc45b38c3cf4541604f16224aaa3b511d1f1d0be0c49176c3be86')
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" \
     -DBUILD_MARIADB_CONNECTOR=ON \
