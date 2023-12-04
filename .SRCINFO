@@ -1,6 +1,6 @@
 pkgbase = tuxclocker
 	pkgdesc = Qt overclocking tool for GNU/Linux
-	pkgver = 1.3.2
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/Lurkki14/tuxclocker
 	arch = x86_64
@@ -11,21 +11,19 @@ pkgbase = tuxclocker
 	makedepends = qt5-tools
 	depends = boost-libs
 	depends = hicolor-icon-theme
-	depends = libdrm
 	depends = qt5-base
 	depends = qt5-charts
-	optdepends = libxnvctrl: XNVCtrl support
-	optdepends = nvidia-utils: nvidia-ml support
-	optdepends = python-hwdata: PCI subsystem support
-	source = git+https://github.com/Lurkki14/tuxclocker.git#commit=2b2e80e6bd32e9fe796157282a5886adcbc08b10
+	optdepends = libdrm: AMD support
+	optdepends = libxnvctrl: NVIDIA support
+	optdepends = nvidia-utils: NVIDIA support
+	optdepends = python-hwdata: Prettier AMD GPU names
+	source = git+https://github.com/Lurkki14/tuxclocker.git#commit=89139f0ab1137d261233bb92e563c5d80eed8ae7
 	source = git+https://github.com/mpark/patterns.git
 	source = git+https://github.com/Dobiasd/FunctionalPlus.git
-	source = tuxclocker.desktop
 	source = tuxclocker.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = dd5628bea92e16f4d8cbee851deceb1e3488cbabfcf34716946923710eb03d24
 	sha256sums = 9e0f528d7f24e501fa9586101231c7f85cf5fbb1709ff354b2abe8d422977d9f
 
 pkgname = tuxclocker

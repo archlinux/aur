@@ -5,5 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!tuxclocker.desktop
 !tuxclocker.patch

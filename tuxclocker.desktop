@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Tuxclocker
-Comment=GPU overclocking utility
-Exec=tuxclocker-qt
-Icon=tuxclocker
-Terminal=false
-Categories=Utility;
-Keywords=overclock;amdgpu;nvidia;
