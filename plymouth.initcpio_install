@@ -6,7 +6,7 @@ build() {
   local PLYMOUTH_THEME_DIR="/usr/share/plymouth/themes/$PLYMOUTH_THEME_NAME"
   local PLYMOUTH_MODULE_NAME=$(sed -n "s/^ *ModuleName *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
   local PLYMOUTH_IMAGE_DIR=$(sed -n "s/^ *ImageDir *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
-  local PLYMOUTH_FONT_NAME=$(sed -n "s/^ *Font *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_FONT_NAME=$(grep "\bFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/Font *= *//' | head -1)
   local PLYMOUTH_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_FONT_NAME")
 
   # exit if no module exists on the system for the theme
@@ -36,6 +36,26 @@ build() {
     '/usr/share/plymouth/plymouthd.defaults' \
     '/etc/plymouth/plymouthd.conf' \
     "$PLYMOUTH_FONT_PATH"
+
+  # more font stuff
+  local PLYMOUTH_TITLE_FONT_NAME=$(grep "\bTitleFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/TitleFont *= *//' | head -1)
+  if [ ! -z "$PLYMOUTH_TITLE_FONT_NAME" ]; then
+    local PLYMOUTH_TITLE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_TITLE_FONT_NAME")
+    map add_file "$PLYMOUTH_TITLE_FONT_PATH"
+  fi
+  local PLYMOUTH_MONOSPACE_FONT_NAME=$(grep "\bMonospaceFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/MonospaceFont *= *//' | head -1)
+  if [ ! -z "$PLYMOUTH_MONOSPACE_FONT_NAME" ]; then
+    local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_FONT_NAME")
+    map add_file "$PLYMOUTH_MONOSPACE_FONT_PATH"
+  fi
+  local DEFAULT_FONT=$(fc-match -f %{file})
+  local DEFAULT_MONOSPACE_FONT=$(fc-match -f %{file} monospace)
+  map add_file \
+    "$DEFAULT_FONT" \
+    "$DEFAULT_MONOSPACE_FONT"
+  map add_symlink \
+    "$DEFAULT_FONT" '/usr/share/fonts/Plymouth.ttf' \
+    "$DEFAULT_MONOSPACE_FONT" '/usr/share/fonts/Plymouth-monospace.ttf'
 
   # copy configured theme
   if [ -d "$PLYMOUTH_THEME_DIR" ]; then

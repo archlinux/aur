@@ -1,6 +1,6 @@
 pkgbase = plymouth-git
 	pkgdesc = Graphical boot splash screen (git version)
-	pkgver = 22.02.122.r180.gb1d5aa9d
+	pkgver = 22.02.122.r232.g2c4578a1
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/Plymouth/
 	install = plymouth.install
@@ -33,7 +33,7 @@ pkgbase = plymouth-git
 	source = plymouthd.conf.patch
 	sha256sums = SKIP
 	sha256sums = de852646e615e06d4125eb2e646d0528d1e349bd9e9877c08c5d32c43d288b6f
-	sha256sums = b480575752c3db04c90bc4d604da154eac2577c621a8812f38c6ffe1fd63ed50
+	sha256sums = 4b185b2e64ee289390a084f5eb3e2f2b9ebdaa005f1662fb26c7c45ac0117b56
 	sha256sums = cfd0c754437d582bbc8d2cbb545a777b00b5c77a6302522577e9d88b169e2f59
 
 pkgname = plymouth-git
