@@ -1,14 +1,17 @@
 pkgbase = ripme-bin
 	pkgdesc = Downloads albums in bulk
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://github.com/ripmeapp2/ripme
 	arch = any
 	license = MIT
 	depends = java-runtime>=20
+	depends = bash
 	provides = ripme
 	conflicts = ripme
-	source = https://github.com/ripmeapp2/ripme/releases/download/2.1.6/ripme-2.1.6-1-68189f27.jar
-	sha256sums = adffec078cc6e1da42699f874176744622a00a1dace000f2ef0c7dad28957faa
+	source = https://github.com/ripmeapp2/ripme/releases/download/2.1.7/ripme-2.1.7-29-b080faae.jar
+	source = https://raw.githubusercontent.com/ripmeapp2/ripme/2.1.7/LICENSE.txt
+	sha256sums = afb0b57cf726abab89943f69345fdffd7dae0ae813ca9ec07f40ac1f65d2413e
+	sha256sums = f17abb5fb22a7dd6408518207f0f8e301322153585d9ad08941a0d498d7c4f9a
 
 pkgname = ripme-bin
