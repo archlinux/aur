@@ -5,7 +5,7 @@
 pkgname=asciidoctor-pdf
 _name=$pkgname
 pkgver=2.3.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Translate asciidoctor directly to pdf"
 arch=(any)
 url="https://github.com/asciidoctor/asciidoctor-pdf"
@@ -13,6 +13,8 @@ license=(MIT)
 depends=(
   asciidoctor
   ruby
+  ruby-concurrent
+  ruby-matrix
   ruby-prawn
   ruby-prawn-icon
   ruby-prawn-svg
@@ -22,6 +24,7 @@ depends=(
 )
 makedepends=(rubygems)
 checkdepends=(
+  gsfonts
   poppler
   ruby-chunky_png
   ruby-coderay
@@ -107,6 +110,6 @@ package() {
 
   cp --archive --verbose tmp_install/* "$pkgdir"
 
-  install --verbose -D --mode=0644 LICENSE --target-directory "$pkgdir/usr/share/licenses/$pkgname"
-  install --verbose -D --mode=0644 ./*.adoc --target-directory "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.adoc
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
