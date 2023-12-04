@@ -5,7 +5,7 @@
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
@@ -36,14 +36,14 @@ source=(https://github.com/mastodon/mastodon/archive/v$pkgver.tar.gz
         mastodon.target
         mastodon.sysusers.d
         mastodon.tmpfiles.d)
-sha512sums=('54e3e14abbe9ce6b4ec72586b00d0e7845b8e7b0f18ee608ab452a4b56df257657ffcd1f3a0b8de715dbaad3edacbf31a4e20cef5f5d82b6902837ee9a6ab900'
+sha512sums=('f9450bc7dea6ce6bdd929f56cb3f43a891871ae9dbc8e70ac8579cd1cf076dd8b79bb19116059a2ff61054b7d0f2c78b1f246ca699040af8c9c5e79776f634ed'
             'c9820c2a83d08bd5d842a78e924682db97ebd5c7291b682603ad30dafcdcc5816c13e717ad39554f042b9d9ed71ab902ce3f604952264a900a72612ee8060acb'
             '4ee4210bde391e6dc782cb7c14f2cb968c95ad541aa0efcf843a811f8cc5f0d1067ee3c8346bb412aa9fd1dd5a8bd05a4524df7dc4a106957009853dd237074a'
             '27c4eb01d462c525b59e5808a3b2501b63a34425752128388fbde82f7eb5944b20d2f8d8b1be8ed8adb165cab4cfb8e13f90215f20989ca671a0422ffa37001f')
 
 build() {
   cd mastodon-$pkgver
-  mkdir -p .git # Fix husky error
+  sed -i '/husky install/d' package.json # Stop husky from hijacking git hooks
   bundle config deployment 'true'
   bundle config without 'development test'
   bundle install -j$(getconf _NPROCESSORS_ONLN)
