@@ -2,6 +2,7 @@
 # Contributor: ny-a <nyaarch64 at gmail dot com>
 # Contributor: Jean Lucas <jean at 4ray dot co>
 
+_pkgname=tiny
 pkgname=tiny-irc-client
 pkgver=0.10.0
 pkgrel=2
@@ -10,10 +11,12 @@ arch=(x86_64)
 url=https://github.com/osa1/tiny
 license=(MIT)
 
-depends=(libdbus openssl)
+provides=($pkgname)
+conflicts=($pkgname)
+depends=(dbus)
 makedepends=(cargo)
-source=(https://github.com/osa1/tiny/archive/v${pkgver}.tar.gz)
-md5sums=(cf95b03493548e629cadb3b8ae74a764)
+source=($_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
+sha256sums=(7f4751b5e34057ba65e86f3819f2ae8288307a5a8e83e5fbb2733759c8100cb7)
 
 build() {
     cd "$srcdir"/tiny-$pkgver
