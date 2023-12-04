@@ -1,6 +1,6 @@
 # Maintainer: Rainu <jetbrains-project-opener@raysha.de>
 pkgname=jetbrains-project-opener
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="List all your JetBrains Projects and open the selected one"
 arch=('x86_64' 'i686')
