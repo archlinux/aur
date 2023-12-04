@@ -8,10 +8,10 @@ pkgdesc="KDE tools to monitor SMART devices and MDRaid health status (latest com
 url="https://github.com/papylhomme/diskmonitor"
 arch=('i686' 'x86_64')
 license=('GPL2')
-provides=("diskmonitor")
-conflicts=("diskmonitor")
 depends=('ki18n5' 'kiconthemes5' 'knotifications5' 'kxmlgui5' 'plasma-framework5' 'qt5-base' 'udisks2')
 makedepends=('cmake' 'extra-cmake-modules' 'git')
+provides=("diskmonitor")
+conflicts=("diskmonitor")
 source=("git+https://github.com/papylhomme/diskmonitor.git")
 md5sums=('SKIP')
 
