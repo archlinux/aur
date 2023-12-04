@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=layouts
 pkgbase=dfl-layouts
 pkgname=('dfl-layouts' 'dfl-layouts-qt6')
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Special layouts, ex, Dynamic Layout, Circular Layout etc"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('67b3e65de1bc02fbdf5a2a22ac242407')
+md5sums=('fb4c74bcebf62b8da909d6bfd3c6f195')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
