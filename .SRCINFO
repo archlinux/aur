@@ -2,7 +2,7 @@ pkgbase = hustmirror-cli
 	pkgdesc = The command line tool (hustmirror-cli) is a small tool that can help you quickly change sources to HUST mirror sources.
 	pkgver = 0.2.0.rc
 	pkgrel = 1
-	url = https://gitee.com/dzm91_hust/hustmirror-cli.git
+	url = https://gitee.com/hustmirror/hustmirror-cli.git
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = hustmirror-cli
 	depends = python3
 	provides = hustmirror-cli
 	conflicts = hustmirror-cli
-	source = git+https://gitee.com/dzm91_hust/hustmirror-cli.git
+	source = git+https://gitee.com/hustmirror/hustmirror-cli.git
 	md5sums = SKIP
 
 pkgname = hustmirror-cli
