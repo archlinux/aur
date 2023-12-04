@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=helioslauncher-bin
 _appname=Helios-Launcher
-pkgver=2.0.6
+pkgver=2.1.0
+_electronversion=27
 pkgrel=1
 pkgdesc="Custom launcher for modded minecraft written in Electron and Node.js"
 arch=('x86_64')
@@ -27,10 +28,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dscalzi/HeliosLauncher/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0b5baf9e01f7aa63ccdf174538f3561eabccfc04d59bba27cbd5d930e017a05e'
+sha256sums=('880cef61293019004495f868810d89695b408c20f939f2129c8922453637db37'
             '4ffd6e4c132ebc4ecde76d809f9f88e151ee0eb2175e7ea0f0b0b51a9d48539e'
-            'aeb93699f3e3320b3579494b12322973c136dc4165eb27a875afd9fe9f853b3c')
+            '7076a00849ffd2342db853b81296da7c913d58da382fc94e5ea5fb181b225c2b')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
