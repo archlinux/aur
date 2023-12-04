@@ -1,7 +1,7 @@
 pkgbase = sof
 	pkgdesc = Simple and fast calculate size of directories
 	pkgver = 2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/balaraz/sof
 	arch = x86_64
 	license = GPL3
