@@ -1,6 +1,6 @@
 pkgbase = dfl-volume
 	pkgdesc = Volume control to allow users to choose devices and control the volume
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/volume
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = dfl-volume
 	makedepends = qt5-base
 	makedepends = qt6-base
 	depends = libpulse
-	source = https://gitlab.com/desktop-frameworks/volume/-/archive/v0.1.1/volume-v0.1.1.tar.gz
-	md5sums = 8f9472a918d44fc6f37654bcefecafc2
+	source = https://gitlab.com/desktop-frameworks/volume/-/archive/v0.2.0/volume-v0.2.0.tar.gz
+	md5sums = 4a1c90159f407dbd1fcf2865937db653
 
 pkgname = dfl-volume
 	depends = libpulse

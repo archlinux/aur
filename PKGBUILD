@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=volume
 pkgbase=dfl-volume
 pkgname=('dfl-volume' 'dfl-volume-qt6')
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Volume control to allow users to choose devices and control the volume"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('libpulse')
 makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('8f9472a918d44fc6f37654bcefecafc2')
+md5sums=('4a1c90159f407dbd1fcf2865937db653')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
