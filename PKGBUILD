@@ -4,7 +4,7 @@
 
 pkgname=gnome-bluetooth
 pkgver=3.34.5+r16+g61cfff1c
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Bluetooth Subsystem (legacy)"
 url="https://wiki.gnome.org/Projects/GnomeBluetooth"
 arch=(x86_64)
@@ -17,7 +17,6 @@ depends=(
   gtk3
   libcanberra
   libnotify
-  pulseaudio-bluetooth
   systemd
 )
 makedepends=(
