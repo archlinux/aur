@@ -2,7 +2,7 @@
 
 pkgname=mintstick
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical tool that allows you to format USB sticks and create bootable USB sticks."
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
@@ -39,7 +39,8 @@ sha256sums=('843a9a636d44f2f3a66f677b4e36387920df358114b4ceb659a59df1fd539c0c')
 
 package() {
   cd "$pkgname"
-  install -Dm644 lib/* -t "$pkgdir/usr/lib/$pkgname/"
+  #install -Dm644 lib/* -t "$pkgdir/usr/lib/$pkgname/"
+  install -Dm755 lib/* -t "$pkgdir/usr/lib/$pkgname/"
   install -Dm644 "share/$pkgname"/* -t "$pkgdir/usr/share/$pkgname/"
   install -Dm644 share/applications/* -t "$pkgdir/usr/share/applications/"
   install -Dm644 share/polkit/* -t "$pkgdir/usr/share/polkit-1/actions/"
