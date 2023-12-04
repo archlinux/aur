@@ -2,7 +2,7 @@
 
 pkgname=bash-it
 pkgver=3.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A community Bash framework.'
 arch=('any')
 url='https://bash-it.readthedocs.io/en/latest/'
@@ -17,6 +17,7 @@ depends=(
 	'bash'
 )
 install="${pkgname}.install"
+conflicts=('bash-it-git')
 
 prepare() {
 	sed -i "s|{{BASH_IT}}|/opt/${pkgname}|g" "${srcdir}/${pkgname}-${pkgver}/template/bash_profile.template.bash"
