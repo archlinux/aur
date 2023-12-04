@@ -1,6 +1,6 @@
 pkgbase = dfl-config-parser
-	pkgdesc = A Collection of Config Parsers for DFL. Currently it contains a config parser for KDE Color Schemes
-	pkgver = 0.1.1
+	pkgdesc = A Collection of Config Parsers for DFL
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/config-parser
 	arch = x86_64
@@ -12,13 +12,34 @@ pkgbase = dfl-config-parser
 	makedepends = qt6-base
 	makedepends = dfl-color-utils
 	makedepends = dfl-color-utils-qt6
-	source = https://gitlab.com/desktop-frameworks/config-parser/-/archive/v0.1.1/config-parser-v0.1.1.tar.gz
-	md5sums = 9f1571003b172d6f908ca0bcd2acac84
+	makedepends = wayfire>=0.8.0
+	makedepends = glm
+	makedepends = wlroots
+	source = https://gitlab.com/desktop-frameworks/config-parser/-/archive/v0.2.0/config-parser-v0.2.0.tar.gz
+	md5sums = 1eda121f76171f7ad798b4038938bb9b
 
-pkgname = dfl-config-parser
+pkgname = dfl-colorschemeparser
 	depends = qt5-base
 	depends = dfl-color-utils
 
-pkgname = dfl-config-parser-qt6
+pkgname = dfl-colorschemeparser-qt6
 	depends = qt6-base
 	depends = dfl-color-utils-qt6
+
+pkgname = dfl-hjsonparser
+	depends = qt5-base
+
+pkgname = dfl-hjsonparser-qt6
+	depends = qt6-base
+
+pkgname = dfl-wayfireparser
+	depends = qt5-base
+	depends = wayfire>=0.8.0
+	depends = glm
+	depends = wlroots
+
+pkgname = dfl-wayfireparser-qt6
+	depends = qt6-base
+	depends = wayfire>=0.8.0
+	depends = glm
+	depends = wlroots
