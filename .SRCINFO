@@ -1,7 +1,7 @@
 pkgbase = sqlpp11
 	pkgdesc = A type safe embedded domain specific language for SQL queries and results in C++
-	pkgver = 0.63
-	pkgrel = 2
+	pkgver = 0.64
+	pkgrel = 1
 	url = https://github.com/rbock/sqlpp11
 	arch = any
 	license = BSD
@@ -18,10 +18,10 @@ pkgbase = sqlpp11
 	optdepends = sqlite: SQLite Connector support
 	optdepends = boost: ppgen.h support
 	optdepends = python-pyparsing: ddl2cpp support
-	provides = sqlpp11-connector-sqlite3=0.63
+	provides = sqlpp11-connector-sqlite3=0.64
 	conflicts = sqlpp11-connector-sqlite3
 	replaces = sqlpp11-connector-sqlite3
-	source = sqlpp11-0.63.tar.gz::https://github.com/rbock/sqlpp11/archive/0.63.tar.gz
-	sha256sums = 8e8229501679435e5052c2184d6772e4d6f61e6a9e2ec7231c5fb9a3d3b88d7e
+	source = sqlpp11-0.64.tar.gz::https://github.com/rbock/sqlpp11/archive/0.64.tar.gz
+	sha256sums = 72e6d37c716cc45b38c3cf4541604f16224aaa3b511d1f1d0be0c49176c3be86
 
 pkgname = sqlpp11
