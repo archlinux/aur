@@ -1,7 +1,7 @@
 pkgbase = bash-it
 	pkgdesc = A community Bash framework.
 	pkgver = 3.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bash-it.readthedocs.io/en/latest/
 	install = bash-it.install
 	arch = any

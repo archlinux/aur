@@ -1,20 +1,19 @@
 post_install() {
         cat <<EOF >> /etc/bash.bashrc
 
-source /opt/bash-it/template/bash_profile.template.bash
+source /etc/profile.d/bashit.sh
 EOF
-
 }
 
 post_upgrade() {
         if ! grep bashit.sh /etc/bash.bashrc &> /dev/null; then
         cat <<EOF >> /etc/bash.bashrc
 
-source /opt/bash-it/template/bash_profile.template.bash
+source /etc/profile.d/bashit.sh
 EOF
         fi
 }
 
 post_remove() {
-        sed -i '/bash-it/d' /etc/bash.bashrc
+        sed -i '/bashit/d' /etc/bash.bashrc
 }
