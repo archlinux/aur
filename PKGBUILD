@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=login1
 pkgbase=dfl-login1
 pkgname=('dfl-login1' 'dfl-login1-qt6')
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Implementation of systemd/elogind for DFL"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('6cee2cb446425b477b2142278d0fde0db9bd6b1eb72ac5ec4f69cda817c3a174')
+sha256sums=('e17446bf059a849a1efbd997276ec1177ae150836b8ea207bfdc25579532c5a5')
 
 build() {
   cd "${_pkgname}-v${pkgver}"

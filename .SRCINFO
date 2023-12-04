@@ -1,6 +1,6 @@
 pkgbase = dfl-login1
 	pkgdesc = Implementation of systemd/elogind for DFL
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/login1
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = dfl-login1
 	makedepends = ninja
 	makedepends = qt5-base
 	makedepends = qt6-base
-	source = https://gitlab.com/desktop-frameworks/login1/-/archive/v0.1.1/login1-v0.1.1.tar.gz
-	sha256sums = 6cee2cb446425b477b2142278d0fde0db9bd6b1eb72ac5ec4f69cda817c3a174
+	source = https://gitlab.com/desktop-frameworks/login1/-/archive/v0.2.0/login1-v0.2.0.tar.gz
+	sha256sums = e17446bf059a849a1efbd997276ec1177ae150836b8ea207bfdc25579532c5a5
 
 pkgname = dfl-login1
 	depends = qt5-base
