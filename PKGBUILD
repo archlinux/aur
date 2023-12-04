@@ -3,8 +3,8 @@
 
 _pkgname=texlab
 pkgname=$_pkgname-git
-pkgver=5.11.0.r16.867dbc91
-pkgrel=4
+pkgver=5.12.0.r0.b4c5d27
+pkgrel=1
 pkgdesc='An implementation of the Language Server Protocol for LaTeX'
 arch=(any)
 url=https://github.com/latex-lsp/texlab
@@ -18,7 +18,8 @@ sha256sums=(SKIP)
 
 pkgver() {
     cd "$srcdir"/$_pkgname
-    git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//'
+    git describe --tags --long --abbrev=7 |\
+        sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
