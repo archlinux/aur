@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=minuimus
 pkgver="4.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="file optimiser: makes files smaller without compromising content"
 arch=(x86_64)
 url="https://birds-are-nice.me/software/minuimus.html"
@@ -9,6 +9,7 @@ license=('GPL')
 depends=(
   'advancecomp' # AUR
   'brotli'
+  'glibc'
   'gif2apng' # AUR
   'gif2png'
   'gifsicle'
@@ -19,11 +20,13 @@ depends=(
   'mupdf-tools'
   'optipng'
   'p7zip'
+  'perl'
   'poppler'
   'qpdf'
   'unrar'
   'libwebp'
   'zip'
+  'zlib'
 )
 optdeps=(
   'jbigkit'
@@ -32,10 +35,10 @@ optdeps=(
   'pngout'         # AUR
   'pdfsizeopt-git' # AUR
 )
-source=("${pkgname}_${pkgver}.zip::https://birds-are-nice.me/software/minuimus.zip"
+source=("${pkgname}_${pkgver}.zip::${url//.html/.zip}"
         "minuimus_leanify_keep_icc.patch")
 sha256sums=('9c1e2f1fd4a56d231e582f9fd6ba5f53dfc1165728638530e960bd1e562c1855'
-            '463cbe3a0f3aa53e3dfccd515a53d101905b9d5beb98ec80b140cadd90e88ce0')
+            '8e4428e32dd1910726174573dd2fd7e25c328af0e5b4cc756b5dd8d4bc6445cf')
 
 prepare() {
   cd "$srcdir"
