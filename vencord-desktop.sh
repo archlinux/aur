@@ -1,10 +1,10 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron27
-APPDIR="/usr/lib/vencord-desktop"
-export PATH="${APPDIR}:${APPDIR}/usr/sbin:${PATH}"
-export LD_LIBRARY_PATH="${APPDIR}/usr/lib":"${APPDIR}/swiftshader":"${LD_LIBRARY_PATH}"
-_ASAR="${APPDIR}/app.asar"
-_FLAGS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/vencord-desktop-flags.conf"
+set -e
+_APPDIR="/usr/lib/@appname@"
+export PATH="${_APPDIR}:${PATH}"
+export ELECTRON_IS_DEV=0
+export LD_LIBRARY_PATH="${_APPDIR}/swiftshader:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
+_FLAGS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/@appname@-flags.conf"
 declare -a flags
 if [[ -f "${_FLAGS_FILE}" ]]; then
     mapfile -t < "${_FLAGS_FILE}"
@@ -14,8 +14,11 @@ for line in "${MAPFILE[@]}"; do
         flags+=("${line}")
     fi
 done
+_ASAR="${_APPDIR}/@appasar@"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec ${_ELECTRON} ${_ASAR} "$@" "${flags[@]}"
+    cd "${_APPDIR}"
+    exec electron@electronversion@ "${_ASAR}" "$@"
 else
-    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@" "${flags[@]}"
+    cd "${_APPDIR}"
+    exec electron@electronversion@ "${_ASAR}" --no-sandbox "$@"
 fi
