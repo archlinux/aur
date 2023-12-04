@@ -3,7 +3,7 @@
 
 pkgname=rompr
 pkgver=2.08
-pkgrel=2
+pkgrel=3
 pkgdesc="A php web frontend to MPD and Mopidy"
 arch=('any')
 url='https://github.com/fatg3erman/RompR/'
@@ -34,4 +34,6 @@ package() {
    ln -s "/var/lib/${pkgname}/albumart" "${pkgdir}/usr/share/webapps/${pkgname}/albumart"
    install -d "${pkgdir}/var/lib/${pkgname}/prefs"
    ln -s "/var/lib/${pkgname}/prefs"    "${pkgdir}/usr/share/webapps/${pkgname}/prefs"
+   install -d "${pkgdir}/usr/share/licenses"
+   ln -s "/usr/share/webapps/${pkgname}/LICENCE.txt" "${pkgdir}/usr/share/licenses/$pkgname"
 }
