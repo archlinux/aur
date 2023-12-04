@@ -6,7 +6,7 @@
 pkgname=chdig-git
 pkgver=0.4.0.r31.g0bf05ba
 pkgrel=1
-pkgdesc="Dig into ClickHouse with TUI interface"
+pkgdesc="Dig into ClickHouse with TUI interface (compile from upstream)"
 arch=('x86_64')
 depends=('bash')
 makedepends=('git' 'rust' 'pyoxidizer' 'python')
