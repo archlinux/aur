@@ -53,9 +53,8 @@ build() {
   map add_file \
     "$DEFAULT_FONT" \
     "$DEFAULT_MONOSPACE_FONT"
-  map add_symlink \
-    "$DEFAULT_FONT" '/usr/share/fonts/Plymouth.ttf' \
-    "$DEFAULT_MONOSPACE_FONT" '/usr/share/fonts/Plymouth-monospace.ttf'
+  add_symlink '/usr/share/fonts/Plymouth.ttf' "$DEFAULT_FONT"
+  add_symlink '/usr/share/fonts/Plymouth-monospace.ttf' "$DEFAULT_MONOSPACE_FONT"
 
   # copy configured theme
   if [ -d "$PLYMOUTH_THEME_DIR" ]; then
