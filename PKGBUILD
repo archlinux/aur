@@ -1,5 +1,5 @@
 # Maintainer: Matthew Barichello <matthewjbarichello@gmail.com>
-pkgname=arch-efistub
+pkgname=arch-efistub-git
 _gitsha="60c25f658c277ebd06f8d33f6b85361acb4b5c8a"
 pkgver=4.0
 pkgrel=1
