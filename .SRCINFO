@@ -1,0 +1,25 @@
+pkgbase = cpu-x-bin
+	pkgdesc = A Free software that gathers information on CPU, motherboard and more, prebuilt, with ARM64 support
+	pkgver = 5.0.2
+	pkgrel = 1.1
+	url = https://thetumultuousunicornofdarkness.github.io/CPU-X
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = gtkmm3
+	depends = ncurses
+	depends = libcpuid>=0.6.0
+	depends = pciutils
+	depends = glfw
+	depends = vulkan-icd-loader
+	depends = procps-ng>=4.0.0
+	optdepends = opengl-driver: packaged openGL driver
+	optdepends = vulkan-driver: packaged Vulkan driver
+	provides = cpu-x
+	conflicts = cpu-x
+	source_x86_64 = http://download.opensuse.org/tumbleweed/repo/oss/x86_64/cpu-x-5.0.2-1.1.x86_64.rpm
+	sha256sums_x86_64 = 9db309203b4177b63a6a41ede0cd7478e4fded3d57380565aa0ee3317ae34acf
+	source_aarch64 = http://download.opensuse.org/ports/aarch64/tumbleweed/repo/oss/aarch64/cpu-x-5.0.2-1.1.aarch64.rpm
+	sha256sums_aarch64 = fe2e2a23cd7ab2563c87d1d09f708e31e0bc9ae3b55f21909ad763f7b72a8a26
+
+pkgname = cpu-x-bin
