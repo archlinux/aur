@@ -2,8 +2,8 @@
 
 pkgname=java-openjfx-bin
 _majorver=21.0.1
-pkgver=21.0.1
-pkgrel=1
+pkgver=21
+pkgrel=2
 pkgdesc="Java OpenJFX ${_majorver} client application platform (Gluon build)."
 arch=('x86_64')
 url='https://openjfx.io/'

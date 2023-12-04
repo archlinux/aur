@@ -1,7 +1,7 @@
 pkgbase = java-openjfx-bin
 	pkgdesc = Java OpenJFX 21.0.1 client application platform (Gluon build).
-	pkgver = 21.0.1
-	pkgrel = 1
+	pkgver = 21
+	pkgrel = 2
 	url = https://openjfx.io/
 	arch = x86_64
 	license = GPL2
@@ -11,8 +11,8 @@ pkgbase = java-openjfx-bin
 	depends = libxtst
 	depends = qt5-base
 	depends = webkit2gtk
-	provides = java-openjfx=21.0.1
-	conflicts = java21.0.1-openjfx
+	provides = java-openjfx=21
+	conflicts = java21-openjfx
 	options = !strip
 	source = https://download2.gluonhq.com/openjfx/21.0.1/openjfx-21.0.1_linux-x64_bin-sdk.zip
 	source = https://download2.gluonhq.com/openjfx/21.0.1/openjfx-21.0.1_linux-x64_bin-jmods.zip
