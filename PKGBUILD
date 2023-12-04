@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=tcl-prompt
 pkgname=$_pkgname-git
-pkgver=r17.bc29b67
+pkgver=r21.f11e245
 pkgrel=1
 pkgdesc="A powerlevel10k-like prompt of tcl."
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(tcl tclreadline tcllib lsb-release procps-ng)
 optdepends=(expect vitis vivado 'git: get project name')
 makedepends=(git)
-source=("git+$url#tag=bc29b670176c98a1d632cc520ded27eeb685cce4")
+source=("git+$url#tag=f11e245093d86967d5dbc10e110f8b0fbbcc4b8f")
 sha256sums=(SKIP)
 
 pkgver() {
