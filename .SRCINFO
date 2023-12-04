@@ -1,7 +1,7 @@
 pkgbase = libbass_fx
 	pkgdesc = BASS audio library - Effects Add-On
 	pkgver = 2.4.12.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.un4seen.com/
 	arch = i686
 	arch = x86_64
