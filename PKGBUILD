@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli-git
-pkgver=1.4.274.r2.gd9c08cbc9
+pkgver=1.4.516.r8.g7d95eb886
 pkgrel=1
 
 _pkgbasename=quarto-cli
@@ -19,37 +19,14 @@ options=(!strip)
 
 source=("git+https://github.com/quarto-dev/quarto-cli.git"
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
-        "https://github.com/c4spar/deno-cliffy/archive/refs/tags/v0.25.7.tar.gz"
-        "https://github.com/denoland/deno_std/archive/refs/tags/0.170.0.tar.gz"
-        "001_vendor_patch_1.diff"
-        "001_vendor_patch_2.diff"
-        "002_multi_def_patch_1.diff"
-        "002_multi_def_patch_2.diff"
        )
 
 sha256sums=('SKIP'
-            '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c'
-            '519709be1dfcf4743930b7f21a513d8fbf3663380020eac8ba629081395f6cc0'
-            '369bc68b848532bedcb786a8fce5e52000624b9262f05ceeeb16bc851b6cf752'
-            '937a39f116c4310c4989cf71b9e174b6dc7bfdd84c6632e5dd0b47508cffef86'
-            '144101b799267869395ba2fe85ab8549be277b18af9545c106675f620e73a85b'
-            '6c1adcf6a21ab6a2949eee9770fe19ef453758dc2e1d3f7a071f07c66d5c92b2'
-            '1ee399808579aa05f38b9c27dfd23e9102f38fffb437233d360b0c076118312f')
+            '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c')
 
 pkgver() {
   cd ${_pkgbasename}
   git describe --tags | sed 's/^v//' | sed 's/\([^-v]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgbasename}"
-  msg "Patching cookiejar..."
-  patch -p1 < ../001_vendor_patch_1.diff
-  patch -p1 < ../001_vendor_patch_2.diff
-  msg "Patching multi definitions..."
-  patch -p1 < ../002_multi_def_patch_1.diff
-  patch -p1 < ../002_multi_def_patch_2.diff
-
 }
 
 build() {
@@ -64,6 +41,9 @@ build() {
   fi
   # keep deno cache directory out of default $home/.cache/deno
   export DENO_DIR="${srcdir}/${_pkgbasename}/package/cache"
+  # Rust optimizations
+  export CARGO_HOME="${srcdir}/${_pkgbasename}/.cargo"
+  export RUSTFLAGS="-C strip=symbols"
 
   mkdir -p package/dist/bin/tools/${arch}/dart-sass
   mkdir -p package/dist/bin/tools/${arch}/deno_dom
@@ -90,6 +70,8 @@ package() {
   mkdir -p package/pkg-working/bin/tools/${arch}/dart-sass
   mkdir -p package/pkg-working/bin/tools/${arch}/deno_dom
   cp "${srcdir}/deno-dom-${_denodomver}/target/release/libplugin.so" "${srcdir}/${_pkgbasename}/package/pkg-working/bin/tools/${arch}/deno_dom"
+  # keep legacy pandoc location, see https://github.com/quarto-dev/quarto/issues/237
+  ln -sfT /usr/bin/pandoc package/pkg-working/bin/tools/pandoc
   ln -sfT /usr/bin/pandoc package/pkg-working/bin/tools/${arch}/pandoc
   ln -sfT /usr/bin/deno package/pkg-working/bin/tools/${arch}/deno
   ln -sfT /usr/bin/sass package/pkg-working/bin/tools/${arch}/dart-sass/sass

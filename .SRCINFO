@@ -1,6 +1,6 @@
 pkgbase = quarto-cli-git
 	pkgdesc = Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org). This package tracks main git branch of Quarto.
-	pkgver = 1.4.274.r2.gd9c08cbc9
+	pkgver = 1.4.516.r8.g7d95eb886
 	pkgrel = 1
 	url = https://quarto.org/
 	arch = x86_64
@@ -23,19 +23,7 @@ pkgbase = quarto-cli-git
 	options = !strip
 	source = git+https://github.com/quarto-dev/quarto-cli.git
 	source = https://github.com/b-fuze/deno-dom/archive/refs/tags/v0.1.35-alpha-artifacts.tar.gz
-	source = https://github.com/c4spar/deno-cliffy/archive/refs/tags/v0.25.7.tar.gz
-	source = https://github.com/denoland/deno_std/archive/refs/tags/0.170.0.tar.gz
-	source = 001_vendor_patch_1.diff
-	source = 001_vendor_patch_2.diff
-	source = 002_multi_def_patch_1.diff
-	source = 002_multi_def_patch_2.diff
 	sha256sums = SKIP
 	sha256sums = 14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c
-	sha256sums = 519709be1dfcf4743930b7f21a513d8fbf3663380020eac8ba629081395f6cc0
-	sha256sums = 369bc68b848532bedcb786a8fce5e52000624b9262f05ceeeb16bc851b6cf752
-	sha256sums = 937a39f116c4310c4989cf71b9e174b6dc7bfdd84c6632e5dd0b47508cffef86
-	sha256sums = 144101b799267869395ba2fe85ab8549be277b18af9545c106675f620e73a85b
-	sha256sums = 6c1adcf6a21ab6a2949eee9770fe19ef453758dc2e1d3f7a071f07c66d5c92b2
-	sha256sums = 1ee399808579aa05f38b9c27dfd23e9102f38fffb437233d360b0c076118312f
 
 pkgname = quarto-cli-git
