@@ -1,13 +1,13 @@
 pkgbase = neil
 	pkgdesc = A CLI to add common aliases and features to deps.edn-based projects for the Clojure language.
-	pkgver = 0.2.62
+	pkgver = 0.2.63
 	pkgrel = 1
 	url = https://github.com/babashka/neil
 	arch = x86_64
 	license = MIT
 	depends = babashka
 	provides = neil
-	source = https://github.com/babashka/neil/archive/refs/tags/v0.2.62.zip
-	sha256sums = faeaebab1b59490dde471cca96e93c594329d777c922710a8d4b5a21fbe8c4df
+	source = https://github.com/babashka/neil/archive/refs/tags/v0.2.63.zip
+	sha256sums = 534f7e7d82de7bb6ace3dcb783c6a8ef9cc6975d02ad9b84ebb8a66d21290974
 
 pkgname = neil
