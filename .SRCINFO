@@ -1,7 +1,7 @@
 pkgbase = emilua
 	pkgdesc = Lua execution engine
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/emilua/emilua
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = emilua
 	makedepends = re2c
 	makedepends = gawk
 	makedepends = gperf
-	makedepends = xxd
 	makedepends = asciidoctor
 	depends = luajit
 	depends = boost-libs
