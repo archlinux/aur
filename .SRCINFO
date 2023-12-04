@@ -1,6 +1,6 @@
 pkgbase = dfl-inotify
 	pkgdesc = A Qt wrapper around inotify
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/inotify
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = dfl-inotify
 	makedepends = ninja
 	makedepends = qt5-base
 	makedepends = qt6-base
-	source = https://gitlab.com/desktop-frameworks/inotify/-/archive/v0.1.1/inotify-v0.1.1.tar.gz
-	md5sums = a4e9d5f82202e44fd8facc7f7a977494
+	source = https://gitlab.com/desktop-frameworks/inotify/-/archive/v0.2.0/inotify-v0.2.0.tar.gz
+	md5sums = a394294177a28e5cd368d407d6b49cad
 
 pkgname = dfl-inotify
 	depends = qt5-base

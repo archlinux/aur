@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=inotify
 pkgbase=dfl-inotify
 pkgname=('dfl-inotify' 'dfl-inotify-qt6')
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Qt wrapper around inotify"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('a4e9d5f82202e44fd8facc7f7a977494')
+md5sums=('a394294177a28e5cd368d407d6b49cad')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
