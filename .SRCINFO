@@ -1,7 +1,7 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
 	pkgver = 1.0.0.r24.gf5546d27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pipewire.org
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = pipewire-full-git
 	makedepends = glib2
 	makedepends = graphviz
 	makedepends = gst-plugins-base
+	makedepends = jack
 	makedepends = libcamera
 	makedepends = libcanberra
 	makedepends = libfdk-aac
@@ -47,9 +48,7 @@ pkgbase = pipewire-full-git
 	makedepends = ffmpeg
 	makedepends = modemmanager
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
-	source = jack-link-pipewire-jack.patch
 	b2sums = SKIP
-	b2sums = f82000d699619ab92794c1db49284ea5877b73d7cb934ecce697b267e9109c9d72fd3b4d4eb3e19aa9948e34dbfd97ba62f63ce8cba98e0b8a12da8d17012ea8
 
 pkgname = pipewire-full-git
 	install = pipewire.install
@@ -57,7 +56,7 @@ pkgname = pipewire-full-git
 	license = LGPL-2.1-or-later
 	depends = gcc-libs
 	depends = glibc
-	depends = libpipewire-full-git=1.0.0.r24.gf5546d27-2
+	depends = libpipewire-full-git=1.0.0.r24.gf5546d27-3
 	depends = libcamera-base.so
 	depends = libcamera.so
 	depends = libdbus-1.so

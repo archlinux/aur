@@ -25,7 +25,7 @@ pkgname=(
 pkgver=1.0.0.r24.gf5546d27
 _so_ver=0.3
 _short_pkgver=${pkgver%%.r*}
-pkgrel=2
+pkgrel=3
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64)
@@ -40,6 +40,7 @@ makedepends=(
   glib2
   graphviz
   gst-plugins-base
+  jack # jack2 or pipewire-jack
   libcamera
   libcanberra
   libfdk-aac
@@ -76,11 +77,9 @@ checkdepends=(
 )
 source=(
   "git+https://gitlab.freedesktop.org/pipewire/pipewire.git"
-  jack-link-pipewire-jack.patch
 )
 b2sums=(
   'SKIP'
-  f82000d699619ab92794c1db49284ea5877b73d7cb934ecce697b267e9109c9d72fd3b4d4eb3e19aa9948e34dbfd97ba62f63ce8cba98e0b8a12da8d17012ea8
 )
 
 pkgver() {
@@ -90,11 +89,6 @@ pkgver() {
 
 prepare() {
   cd pipewire
-
-  # use internal jack headers and library in build stage,
-  # libspa-jack.so would still link to /usr/lib/libjack.so,
-  # which provided by both pipewire-jack and jack2,
-  patch -Np1 < ../jack-link-pipewire-jack.patch
 }
 
 build() {
@@ -111,7 +105,6 @@ build() {
     -D session-managers=[]
     -D udevrulesdir=/usr/lib/udev/rules.d
     -D selinux=disabled
-    -D jack-link-pipewire-jack=enabled
     -D vulkan=enabled
     -D pw-cat-ffmpeg=enabled
     -D ffmpeg=enabled
