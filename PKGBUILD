@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone-bin
 _pkgname=Bluestone
-pkgver=0.12.0
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
 arch=(
@@ -35,8 +35,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
-sha256sums_aarch64=('05e3336e49b0d020ba33ddef692ad5746e32b21c1a51c5235157d33e68ce756d')
-sha256sums_x86_64=('575f03648dc5138e4b070f43c3e3ca7a9647c6a19c1cf480487c61cd45746b50')
+sha256sums_aarch64=('0cd78ab9d0090a30d79e724c00d4760653573a05076a36d555a26d9506f50e7e')
+sha256sums_x86_64=('d73503ab5d1552b3a22fc06ff1c9e6052fdb38730bafa63960e1b93f7a85391b')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin} --no-sandbox|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Markdown|Utility|g" \
