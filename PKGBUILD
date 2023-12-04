@@ -18,19 +18,27 @@ makedepends=(cargo)
 source=($_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 sha256sums=(7f4751b5e34057ba65e86f3819f2ae8288307a5a8e83e5fbb2733759c8100cb7)
 
+prepare() {
+    cd "$srcdir"/$_pkgname-$pkgver
+    cargo update
+    cargo fetch --locked --target $CARCH-unknown-linux-gnu
+}
+
 build() {
-    cd "$srcdir"/tiny-$pkgver
-    cargo install --path crates/tiny --no-default-features --features=tls-native,desktop-notifications
+    cd "$srcdir"/$_pkgname-$pkgver
+    cargo build --frozen --release --features desktop-notifications
 }
 
 check() {
-    cd "$srcdir"/tiny-$pkgver
-    cargo test --no-default-features --features=tls-native,desktop-notifications --release
+    cd "$srcdir"/$_pkgname-$pkgver
+    cargo test --frozen --workspace --features desktop-notifications
 }
 
 package() {
-    cd "$srcdir"/tiny-$pkgver
-    install -D target/release/tiny -t "$pkgdir"/usr/bin
-    install -Dm644 README.md -t "$pkgdir"/usr/share/doc/tiny
-    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/tiny
+    cd "$srcdir"/$_pkgname-$pkgver
+    install -Dm755 -t "$pkgdir"/usr/bin target/release/$_pkgname
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$_pkgname \
+        ARCHITECTURE.md CHANGELOG.md README.md
+    install -Dm644 -t "$pkgdir"/usr/share/$_pkgname crates/$_pkgname/config.yml
 }
