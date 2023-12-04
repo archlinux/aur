@@ -2,7 +2,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=typst-lsp
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Language server for Typst'
 arch=(i686 x86_64)
@@ -15,11 +15,13 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('e1e1386caaa5118baa889f5069f9fb89d2fffddf4ce46f46e10aaea2dfaf217d')
+sha256sums=('45654fccf76ffb32e8e3f6e1deb4cddc9b92269e3db72760667e5f728e849556')
+
+_features='remote-packages,native-tls,fontconfig'
 
 prepare() {
 	cd "$_archive"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -27,13 +29,13 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=' -ffat-lto-objects'
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release --no-default-features --features "$_features"
 }
 
 check() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test  --frozen --all-features
+	cargo test --frozen  --no-default-features --features "$_features"
 }
 
 package() {
