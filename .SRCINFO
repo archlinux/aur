@@ -1,6 +1,6 @@
 pkgbase = linux-lqx
 	pkgdesc = Linux Liquorix
-	pkgver = 6.6.3.lqx1
+	pkgver = 6.6.4.lqx1
 	pkgrel = 1
 	url = https://liquorix.net/
 	arch = x86_64
