@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=music-you-bin
-pkgver=3.0.0_alpha.2
+pkgver=3.0.0_alpha.3
 pkgrel=1
 pkgdesc="一个美观简约的Material Design 3 (Material You) 风格网易云音乐播放器pc客户端"
 arch=('x86_64')
@@ -31,7 +31,9 @@ depends=(
     'libxkbcommon'
     'libxrandr'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb")
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
+)
 sha256sums=('5212df30434c23bd3a2c09190436cfdab356f5c4c467c9649a194b4e90c5beb8')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
