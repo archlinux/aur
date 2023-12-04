@@ -8,7 +8,7 @@ arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/ayatana-indicator-a11y"
 license=("GPL3")
 makedepends=("cmake" "cmake-extras" "systemd" "intltool")
-depends=("accountsservice" "glibc" "glib2" "onboard" "orca" "espeak-ng")
+depends=("accountsservice" "glibc" "glib2" "onboard" "orca" "espeak-ng" "dconf")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("9c5eb51ecd13adfb167dfb667b453945")
 
