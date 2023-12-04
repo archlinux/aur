@@ -1,0 +1,12 @@
+pkgbase = brother-hl-l3220cdw
+	pkgdesc = CUPS driver for Brother HL-L3220CDW
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = https://download.brother.com/welcome/dlf105742/hll3220cdwpdrv-3.5.1-1.i386.rpm
+	sha256sums = 3cabeb4f8e29d54a2e684220e0f3c2ad28ec599cba9f7b4e8270d9abbfe25fed
+
+pkgname = brother-hl-l3220cdw
