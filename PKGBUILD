@@ -3,15 +3,15 @@
 
 pkgname=typst-lsp
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Language server for Typst'
 arch=(i686 x86_64)
 url="https://github.com/nvarner/$pkgname"
 license=(Apache MIT)
 depends=(gcc-libs
          glibc
-         libcurl.so
-         libcrypto.so)
+         curl libcurl.so
+         openssl libcrypto.so)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
