@@ -14,12 +14,14 @@ depends=(
   'python-poppler-qt5' # AUR
   'python-pypdf2' # AUR
   'python-pyqt5'
+  'python-pikepdf'
 )
 makedepends=(
   'git'
   'python-build'
   'python-installer'
   'python-wheel'
+  'python-setuptools'
 )
 provides=("${_name}")
 conflicts=("${_name}")
