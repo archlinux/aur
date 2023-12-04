@@ -2,7 +2,7 @@
 
 _pkgname=audius-client
 pkgname=$_pkgname-bin
-pkgver=1.5.51
+pkgver=1.5.53
 pkgrel=1
 pkgdesc="The Decentralized Audius.co Client (binary release, system Electron)"
 url="https://github.com/AudiusProject/audius-protocol/tree/main/packages/web"
@@ -13,7 +13,7 @@ makedepends=('fuse2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://download.audius.co/Audius-$pkgver.AppImage")
-sha256sums=('f98c805a066ca0667036058853af3621ceea1c231701e5d740bde65c6d955ee9')
+sha256sums=('37c838a2dde96ac06806967e9b56189a99349377a7f5cff0dd2a1859a3e656a4')
 
 prepare() {
 # Create an exec file

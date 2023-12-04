@@ -1,6 +1,6 @@
 pkgbase = audius-client-bin
 	pkgdesc = The Decentralized Audius.co Client (binary release, system Electron)
-	pkgver = 1.5.51
+	pkgver = 1.5.53
 	pkgrel = 1
 	url = https://github.com/AudiusProject/audius-protocol/tree/main/packages/web
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = audius-client-bin
 	depends = electron
 	provides = audius-client
 	conflicts = audius-client
-	source = https://download.audius.co/Audius-1.5.51.AppImage
-	sha256sums = f98c805a066ca0667036058853af3621ceea1c231701e5d740bde65c6d955ee9
+	source = https://download.audius.co/Audius-1.5.53.AppImage
+	sha256sums = 37c838a2dde96ac06806967e9b56189a99349377a7f5cff0dd2a1859a3e656a4
 
 pkgname = audius-client-bin
