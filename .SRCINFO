@@ -1,6 +1,6 @@
 pkgbase = dfl-wayqt
 	pkgdesc = A Qt-based wrapper for various wayland protocols
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/wayqt
 	arch = x86_64
@@ -11,16 +11,13 @@ pkgbase = dfl-wayqt
 	makedepends = qt5-base
 	makedepends = qt6-base
 	depends = wayland-protocols
-	depends = wlroots
-	source = https://gitlab.com/desktop-frameworks/wayqt/-/archive/v0.1.1/wayqt-v0.1.1.tar.gz
-	md5sums = 90c443756e8c94b983e1f4056fea1a80
+	source = https://gitlab.com/desktop-frameworks/wayqt/-/archive/v0.2.0/wayqt-v0.2.0.tar.gz
+	md5sums = b7f15524bd1b017a50b672e821ca8716
 
 pkgname = dfl-wayqt
 	depends = wayland-protocols
-	depends = wlroots
 	depends = qt5-base
 
 pkgname = dfl-wayqt-qt6
 	depends = wayland-protocols
-	depends = wlroots
 	depends = qt6-base

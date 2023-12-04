@@ -1,18 +1,18 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=wayqt
 pkgbase=dfl-wayqt
 pkgname=('dfl-wayqt' 'dfl-wayqt-qt6')
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Qt-based wrapper for various wayland protocols"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
-depends=('wayland-protocols' 'wlroots')
+depends=('wayland-protocols')
 makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('90c443756e8c94b983e1f4056fea1a80')
+md5sums=('b7f15524bd1b017a50b672e821ca8716')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
