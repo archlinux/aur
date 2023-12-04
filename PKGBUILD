@@ -1,49 +1,40 @@
-# Maintainer: John Regan <john@jrjrtech.com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: John Regan <john@jrjrtech.com>
+
 _pkgname=emoji-keyboard
-_pkgver="3.1.1"
-pkgname="${_pkgname}-appimage"
-pkgdesc="Virtual keyboard-like emoji palette for Linux - AppImage version"
-pkgver="${_pkgver//-}"
+pkgname=$_pkgname-appimage
+pkgver=4.0.0
 pkgrel=1
-arch=('x86_64')
+pkgdesc="Virtual keyboard-like emoji palette (AppImage release)"
 url="https://github.com/OzymandiasTheGreat/emoji-keyboard"
-license=('GPL')
-options=(!strip)
-_appimage="${_pkgname}-${_pkgver}.AppImage"
-source=("https://github.com/OzymandiasTheGreat/emoji-keyboard/archive/${pkgver}.tar.gz")
-source_x86_64=("${_appimage}::https://github.com/OzymandiasTheGreat/emoji-keyboard/releases/download/${pkgver}/${_appimage}")
-noextract=("${_appimage}")
-sha256sums=('SKIP') # github auto-generated archives are unreliable :-/
-sha256sums_x86_64=('4ee945e2f67aad661246c8d6b91251f05e232e56a82ef0decb71261847c4b0aa')
-makedepends=('appimage')
-conflicts=('emoji-keyboard')
-provides=('emoji-keyboard')
+arch=('x86_64')
+license=('MIT')
+depends=('fuse2')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+options=('!strip')
+_appimage="${_pkgname}_${pkgver}_amd64.AppImage"
+source=("$url/releases/download/$pkgver/$_appimage"
+        "$url/raw/v$pkgver/LICENSE")
+sha256sums=('860563b900c3df7f1bfc3fa3cf0d269a66cd5d098f22c7e14f62e2bc04e99c02'
+            'SKIP')
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
-    mv squashfs-root "${_pkgname}-${_pkgver}.AppDir"
-}
-
-build() {
-    sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${_pkgname} --no-sandbox|" \
-      "${_pkgname}-${_pkgver}.AppDir"/emoji-keyboard.desktop
-    chmod -R a-x+rX "${_pkgname}-${_pkgver}.AppDir"/usr
-
-    appimagetool -n "${_pkgname}-${_pkgver}.AppDir" "${_pkgname}"
+  # Extract the AppImage
+  chmod +x "$_appimage"
+  ./"$_appimage" --appimage-extract
+  # Create an exec file with an environment variable that disables AppImageLauncher integration
+  echo env APPIMAGELAUNCHER_DISABLE=true /opt/$_pkgname/$_pkgname > $_pkgname
 }
 
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/"${_pkgname}-${_pkgver}.AppDir"/emoji-keyboard.desktop" \
-      "${pkgdir}/usr/share/applications/emoji-keyboard.desktop"
-
-    for res in 16 24 32 48 64 128 256 ; do
-        xres=${res}x${res}
-        install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/src/assets/icons/icon-${xres}.png" \
-          "${pkgdir}/usr/share/icons/hicolor/${xres}/apps/emoji-keyboard.png"
-    done
-
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/src/assets/icons/icon.svg" \
-      "${pkgdir}/usr/share/icons/hicolor/scalable/apps/emoji-keyboard.svg"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+  cd squashfs-root/usr/share
+  install -Dm644 applications/$_pkgname.desktop -t "$pkgdir/usr/share/applications"
+  for i in 32x32 128x128 256x256@2; do
+    install -Dm644 icons/hicolor/$i/apps/$_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
+  done
+  cd "$srcdir"
+  install -Dm755 $_appimage "$pkgdir/opt/$_pkgname/$_pkgname"
+  install -Dm755 $_pkgname -t "$pkgdir/usr/bin"
 }
