@@ -1,4 +1,4 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 ## Build order:
 ## dfl-ipc -> dfl-applications
@@ -6,7 +6,7 @@
 _pkgname=applications
 pkgbase=dfl-applications
 pkgname=('dfl-applications' 'dfl-applications-qt6')
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A class that extends QApplications"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base' 'dfl-ipc' 'dfl-ipc-qt6')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('d4a7031fc14cd691a931f6418bad35d1')
+md5sums=('f987f17f5cea3696e1d91171974295de')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
