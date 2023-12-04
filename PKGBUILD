@@ -1,7 +1,7 @@
 # Maintainer: Matthew Barichello <matthewjbarichello@gmail.com>
 pkgname=arch-efistub
-_gitsha="8c3d4346154353cafd50a43145a27eb077e1a277"
-pkgver=3.0
+_gitsha="60c25f658c277ebd06f8d33f6b85361acb4b5c8a"
+pkgver=4.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/Matthewacon/arch-efistub"
