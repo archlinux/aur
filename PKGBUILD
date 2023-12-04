@@ -2,7 +2,7 @@
 pkgname=vencord-desktop
 _pkgname=Vesktop
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=2
 
 arch=("x86_64" "aarch64")
@@ -21,7 +21,7 @@ conflicts=("vencord")
 
 source=($url/archive/refs/tags/v$pkgver.tar.gz vencord-desktop.desktop vencord-desktop.sh)
 
-sha256sums=(50b527efe2cd4c329acc3d5209bd82fd7765504fb0241cad327b0d9bc5e2d084
+sha256sums=(98776a826017803826b8f24483ac460ce9d725d75882ea1b79a303c3d25da620
             'SKIP'
             b1c9ce99ba545b0baaba0eb63e5bb7a2f88cf335f66d775f32fa139ce6b479ab)
 
