@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=storage
 pkgbase=dfl-storage
 pkgname=('dfl-storage' 'dfl-storage-qt6')
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A class that extends QApplications"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('22854800507afa8461ca4d742b069e74')
+md5sums=('473155dffbf14c8c31c76011ce52d009')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
