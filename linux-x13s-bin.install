@@ -1,0 +1,8 @@
+rm -f /boot/initramfs-linux.img
+post_install(){
+	depmod 6.2.0-1005-laptop
+	dracut -H boot/initramfs-linux.img 6.2.0-1005-laptop
+}
+post_upgrade(){
+	post_install
+}

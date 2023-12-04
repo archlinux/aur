@@ -1,0 +1,43 @@
+pkgbase = linux-x13s-bin
+	pkgver = 6.2.0
+	pkgrel = 1005.6
+	url = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s
+	arch = aarch64
+	license = GPL2
+	noextract = linux-image-unsigned-6.2.0-1005-laptop_6.2.0-1005.6_arm64.deb
+	noextract = linux-modules-6.2.0-1005-laptop_6.2.0-1005.6_arm64.deb
+	noextract = linux-headers-6.2.0-1005-laptop_6.2.0-1005.6_arm64.deb
+	noextract = linux-laptop-headers-6.2.0-1005_6.2.0-1005.6_all.deb
+	noextract = linux-buildinfo-6.2.0-1005-laptop_6.2.0-1005.6_arm64.deb
+	noextract = linux-laptop-tools-6.2.0-1005_6.2.0-1005.6_arm64.deb
+	noextract = linux-laptop-tools-common_6.2.0-1005.6_all.deb
+	noextract = linux-tools-6.2.0-1005-laptop_6.2.0-1005.6_arm64.deb
+	source = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s/+files/linux-image-unsigned-6.2.0-1005-laptop_6.2.0-1005.6_arm64.deb
+	source = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s/+files/linux-modules-6.2.0-1005-laptop_6.2.0-1005.6_arm64.deb
+	source = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s/+files/linux-headers-6.2.0-1005-laptop_6.2.0-1005.6_arm64.deb
+	source = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s/+files/linux-laptop-headers-6.2.0-1005_6.2.0-1005.6_all.deb
+	source = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s/+files/linux-buildinfo-6.2.0-1005-laptop_6.2.0-1005.6_arm64.deb
+	source = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s/+files/linux-laptop-tools-6.2.0-1005_6.2.0-1005.6_arm64.deb
+	source = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s/+files/linux-laptop-tools-common_6.2.0-1005.6_all.deb
+	source = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s/+files/linux-tools-6.2.0-1005-laptop_6.2.0-1005.6_arm64.deb
+	sha256sums = c6c516b2f88423d98d85bfb7fa479a8cc1a5c73e24b3b2762344094688c651af
+	sha256sums = d1b9ab718038b53cd287be123b559ef9f7ff1ff9eb0e74dcbdf078ab772a19a4
+	sha256sums = aac576760d7a62d47caff285c409557fbf28fea0ad736ffa428970aacb9d1ef3
+	sha256sums = de85d076a0eb6a6bb63e7a50619073c15af6aeae464a089b57dd72c5581dca9b
+	sha256sums = 8dc72a78d16108de0d5bf6c02847544a718ce1e4a1962343bb170d804ba28dd9
+	sha256sums = 5fd2d0c8f971cb1c1b653881db632c192fcdff0260524f22a70a0b55eba36fdb
+	sha256sums = f38ea6e76406ab34d2b4af8da089d867601eb34fafce62142b9e01779c0f08e4
+	sha256sums = b2d735def9699e9a9f5389d2a4f32b4d5dd9a78d60308e81ebbfc04a22a3f8bf
+
+pkgname = linux-x13s-bin
+	pkgdesc = Prebuilt Linux kernel and modules for Lenovo ThinkPad X13s from Ubuntu Concept (unsigned)
+	install = linux-x13s-bin.install
+	depends = dracut
+	optdepends = linux-firmware-x13s: firmware images needed for Lenovo ThinkPad X13s
+	provides = linux
+	provides = linux-x13s
+
+pkgname = linux-x13s-headers-bin
+	pkgdesc = Headers and scripts for building modules for custom prebuilt Linux kernel and modules for Lenovo ThinkPad X13s from Ubuntu Concept
+	provides = linux-headers
+	provides = linux-headers-x13s=6.2.0
