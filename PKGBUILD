@@ -1,7 +1,7 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=cherrytree-git
-pkgver=1.0.2.r1.gba0a2274
+pkgver=1.0.2.r39.gb88cf6eb
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
@@ -17,8 +17,7 @@ makedepends=('cmake'
 			 'git'
 			 'python'
              'spdlog')
-checkdepends=('gmock'
-              'gtest')
+checkdepends=('gtest')
 provides=("${pkgname%%-git}")
 conflicts=("${pkgname%%-git}")
 source=("git+https://github.com/giuspen/${pkgname%%-git}.git")
