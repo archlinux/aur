@@ -1,14 +1,14 @@
 pkgbase = nodejs-cspell
 	pkgdesc = A Spelling Checker for Code!
-	pkgver = 6.31.1
+	pkgver = 8.1.0
 	pkgrel = 1
 	url = https://streetsidesoftware.github.io/cspell/
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = cspell-6.31.1.tgz
-	source = https://registry.npmjs.org/cspell/-/cspell-6.31.1.tgz
-	sha1sums = 78a1b3d32c8f6f232fb1a00b2df8a8e8d72cf6fe
+	noextract = cspell-8.1.0.tgz
+	source = https://registry.npmjs.org/cspell/-/cspell-8.1.0.tgz
+	sha1sums = 73c9e7e3c1bcac80915bc14aadb0d5ac60b5bc2c
 
 pkgname = nodejs-cspell
