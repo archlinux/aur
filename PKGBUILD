@@ -2,7 +2,7 @@
 # Contributor: Jonathan Kirszling <jonathan dot kirszling at runbox dot com>
 # Contributor: Nick Econopouly <wry at mm dot st>
 
-_pkgname=tiny-irc-client
+_pkgname=tiny
 pkgname=$_pkgname-git
 pkgver=0.11.0.r21.65f367e
 pkgrel=1
@@ -11,14 +11,13 @@ arch=(x86_64)
 url=https://github.com/osa1/tiny
 license=(MIT)
 
-depends=(dbus)
-makedepends=(git cargo)
 provides=($_pkgname)
 conflicts=($_pkgname)
+replaces=(tiny-irc-client-git)
+depends=(dbus)
+makedepends=(git cargo)
 source=(git+$url)
 sha512sums=(SKIP)
-
-_pkgname=${_pkgname%-irc-client}
 
 pkgver() {
     cd "$srcdir"/$_pkgname

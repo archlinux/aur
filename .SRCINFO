@@ -1,4 +1,4 @@
-pkgbase = tiny-irc-client-git
+pkgbase = tiny-git
 	pkgdesc = A terminal IRC client written in Rust
 	pkgver = 0.11.0.r21.65f367e
 	pkgrel = 1
@@ -8,9 +8,10 @@ pkgbase = tiny-irc-client-git
 	makedepends = git
 	makedepends = cargo
 	depends = dbus
-	provides = tiny-irc-client
-	conflicts = tiny-irc-client
+	provides = tiny
+	conflicts = tiny
+	replaces = tiny-irc-client-git
 	source = git+https://github.com/osa1/tiny
 	sha512sums = SKIP
 
-pkgname = tiny-irc-client-git
+pkgname = tiny-git
