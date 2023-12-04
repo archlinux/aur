@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+ESP_DIR="$(bootctl --print-esp-path)"
+
+while read -r line; do
+	if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
+		read -r pkgbase < "/${line}"
+ 		kver="${line#'usr/lib/modules/'}"
+                kver="${kver%'/pkgbase'}"
+		rm -f "${ESP_DIR}/EFI/${pkgbase}/${pkgbase}-${kver}.efi"
+	fi
+done

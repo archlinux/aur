@@ -1,0 +1,14 @@
+pkgbase = arch-dracut-hook
+	pkgdesc = Install/remove hooks for dracut
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://dracut.wiki.kernel.org/index.php/Main_Page
+	arch = any
+	license = MIT
+	depends = dracut
+	source = dracut-install
+	source = dracut-remove
+	source = 90-dracut-install.hook
+	source = 60-dracut-remove.hook
+
+pkgname = arch-dracut-hook
