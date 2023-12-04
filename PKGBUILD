@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lettura-bin
 _pkgname=lettura
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Another free and open-source feed reader"
 arch=('x86_64')
@@ -21,9 +21,9 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/zhanglun/lettura/v${pkgver//_/-}/docs/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/zhanglun/lettura/v${pkgver//_/-}/docs/LICENSE"
 )
-sha256sums=('7478c37abf62311b23fa7c62b0d1f007dc58f84e56c7070196732a1a08728b10'
+sha256sums=('d4b645aaa3c9e851e33e104ddb6411d469a032c2ad64edeb20a9eb6c4e110dd9'
             'cb0e47679b2552a19d61430fbc452636d7e227b799ed7093d5c13e01798d091b')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
@@ -35,5 +35,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
