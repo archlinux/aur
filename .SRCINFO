@@ -1,6 +1,6 @@
 pkgbase = arch-efistub-git
 	pkgdesc = Builds a unified EFISTUB kernel, bootable from a single file
-	pkgver = 5.0
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://github.com/Matthewacon/arch-efistub
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = arch-efistub-git
 	depends = pacman
 	depends = systemd
 	depends = systemd-ukify
-	source = git+https://github.com/Matthewacon/arch-efistub#commit=7f98c42f84be221d7d9ddbc150d93ccb40fc188a
+	source = git+https://github.com/Matthewacon/arch-efistub#commit=8a4951da5b202a2cc73fe24fdc0b884be7c59947
 	md5sums = SKIP
 
 pkgname = arch-efistub-git
