@@ -2,7 +2,7 @@
 
 pkgname=bash-it
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A community Bash framework.'
 arch=('any')
 url='https://bash-it.readthedocs.io/en/latest/'
@@ -23,8 +23,7 @@ prepare() {
 }
 
 package() {
-      	mkdir -p "$pkgdir/opt"	
+    mkdir -p "$pkgdir/opt"	
 	cp -rf "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/template/bash_profile.template.bash" "${pkgdir}/etc/profile.d/bashit.sh"
-
 }

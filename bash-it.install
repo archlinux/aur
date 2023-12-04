@@ -1,6 +1,20 @@
 post_install() {
-        echo "Bashit entry point is saved to /etc/profile.d/bashit.sh"
-        echo "You need to relogin your session to see the updates"
-        echo "For immediate changes, run bash --login"
+        cat <<EOF >> /etc/bash.bashrc
+
+source /opt/bash-it/template/bash_profile.template.bash
+EOF
+
 }
 
+post_upgrade() {
+        if ! grep bashit.sh /etc/bash.bashrc &> /dev/null; then
+        cat <<EOF >> /etc/bash.bashrc
+
+source /opt/bash-it/template/bash_profile.template.bash
+EOF
+        fi
+}
+
+post_remove() {
+        sed -i '/bash-it/d' /etc/bash.bashrc
+}
