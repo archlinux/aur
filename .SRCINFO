@@ -1,14 +1,13 @@
 pkgbase = cdu
 	pkgdesc = du like command but display a pretty histogram with optional colors
-	pkgver = 0.37
+	pkgver = 0.38
 	pkgrel = 1
 	url = http://arsunik.free.fr/prog/cdu.html
 	install = cdu.install
 	arch = any
 	license = GPL
 	depends = perl
-	source = http://arsunik.free.fr/pkg/cdu-0.37.tar.gz
-	md5sums = 625e8e62c00552e3fe054ac0af8392c0
+	source = http://arsunik.free.fr/pkg/cdu-0.38.tar.gz
+	md5sums = 68a6986cc4c049a990d217ae5bcde55a
 
 pkgname = cdu
-

@@ -1,7 +1,7 @@
 # Maintainer: masutu <masutu dot arch at gmail dot com>
 # Contributor: Igor Hlina <srigi (at) srigi (dot) sk>
 pkgname=cdu
-pkgver=0.37
+pkgver=0.38
 pkgrel=1
 pkgdesc="du like command but display a pretty histogram with optional colors"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://arsunik.free.fr/prog/cdu.html"
 license=('GPL')
 depends=('perl')
 source=(http://arsunik.free.fr/pkg/$pkgname-$pkgver.tar.gz)
-md5sums=('625e8e62c00552e3fe054ac0af8392c0')
+md5sums=('68a6986cc4c049a990d217ae5bcde55a')
 install=${pkgname}.install
 
 build() {
