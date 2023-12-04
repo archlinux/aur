@@ -1,6 +1,6 @@
 pkgbase = perl-reply-plugin-prompt
 	pkgdesc = Reply plugin for powerlevel10k style prompt
-	pkgver = 0.0.19
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://github.com/wakatime/Reply-Plugin-Prompt
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = perl-reply-plugin-prompt
 	depends = perl-reply
 	optdepends = perl-file-xdg>=1.00: support configure file
 	optdepends = git: get project name
-	source = https://github.com/wakatime/Reply-Plugin-Prompt/releases/download/0.0.19/Reply-Plugin-Prompt-0.0.19.0.tar.gz
-	sha256sums = b3f2b854c402671fac70ef1fcc21bee2aafd5e59aa34e995eeea2559ad4ced9a
+	source = https://github.com/wakatime/Reply-Plugin-Prompt/releases/download/0.0.20/Reply-Plugin-Prompt-0.0.20.0.tar.gz
+	sha256sums = 8f814278aee25edacf72025e8f0af81033bd4c2a00b15c4a6ad2379b1e09aa44
 
 pkgname = perl-reply-plugin-prompt
