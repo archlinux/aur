@@ -1,6 +1,6 @@
 pkgbase = lightdm-settings
 	pkgdesc = A configuration tool for the LightDM display manager
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/linuxmint/lightdm-settings
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = lightdm-settings
 	depends = python-setproctitle
 	depends = python-xapp
 	optdepends = lightdm-guest: Enable guest session options
-	source = lightdm-settings-2.0.0.tar.gz::https://github.com/linuxmint/lightdm-settings/archive/2.0.0.tar.gz
-	sha256sums = 4c66eff996f6b16629dcc03f80ebd9b10dfbe18d830ba20f673fca39854c1fae
+	source = lightdm-settings-2.0.1.tar.gz::https://github.com/linuxmint/lightdm-settings/archive/2.0.1.tar.gz
+	sha256sums = a44b62c18e64b7b9bbcc98e623c13b0ac94898974645e47d7afd272e98e0ae17
 
 pkgname = lightdm-settings
