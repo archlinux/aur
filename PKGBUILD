@@ -1,17 +1,17 @@
 # Maintainer: Aaron Bishop <erroneous@gmail.com>
 
 pkgname=perl-crypt-openssl-aes
-pkgver=0.10
+pkgver=0.19
 pkgrel=1
 pkgdesc="Perl/CPAN Module Crypt::OpenSSL::AES"
 arch=('x86_64' 'i686')
 url="https://metacpan.org/pod/Crypt::OpenSSL::AES"
 license=("GPL" "PerlArtistic")
-depends=("curl" "openssl" "perl-crypt-openssl-guess")
-#checkdepends=("perl-crypt-cbc" "perl-crypt-pbkdf2" "perl-crypt-mode-cbc" "perl-crypt-mode-ecb" "perl-crypt-mode-cfb" "perl-crypt-mode-ctr" "perl-crypt-mode-ofb")
+depends=("openssl" "perl-crypt-openssl-guess")
+checkdepends=("perl-file-which")
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Crypt-OpenSSL-AES-${pkgver}.tar.gz")
-sha256sums=('0ea6fa907aa5d5fb568089803433fde60c0ed6a5a39d4bfee131620f7c957ddd')
+sha256sums=('35a8af2ebdc26280a4f5916c1a97c3431e7cbef3e7451e1e917f7cce4d8c9c59')
 
 build() {
   cd Crypt-OpenSSL-AES-${pkgver}
@@ -28,6 +28,8 @@ package() {
 
   find "$pkgdir" -name '.packlist' -delete
   find "$pkgdir" -name '*.pod' -delete
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  install LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 check() {
