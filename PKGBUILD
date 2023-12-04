@@ -15,7 +15,7 @@ b2sums=('6e40cc22fd991edc3472525ecdaf511af4c4ddb375ba9771f6d26bf987900f726705e3a
 prepare() {
   cd "${srcdir}"
   chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-  # "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+  "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract
 }
 
 package() {
