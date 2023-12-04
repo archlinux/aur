@@ -1,33 +1,30 @@
 pkgbase = bluebubbles-bin
 	pkgdesc = A cross-platform app ecosystem, bringing iMessage to Android, PC (Windows, Linux, & even macOS), and Web!
-	pkgver = 1.12.4
-	pkgrel = 3
+	pkgver = 1.12.6
+	pkgrel = 1
 	url = https://bluebubbles.app/
 	arch = aarch64
 	arch = x86_64
 	license = Apache
 	makedepends = gendesk
-	depends = glib2
 	depends = libepoxy
 	depends = webkit2gtk-4.1
-	depends = gcc-libs
 	depends = at-spi2-core
 	depends = gdk-pixbuf2
 	depends = cairo
 	depends = mpv
 	depends = harfbuzz
-	depends = glibc
 	depends = pango
 	depends = libdbusmenu-glib
 	depends = libnotify
 	depends = libappindicator-gtk3
 	depends = gtk3
 	depends = libsoup3
-	provides = bluebubbles=1.12.4
+	provides = bluebubbles=1.12.6
 	conflicts = bluebubbles
-	source_aarch64 = bluebubbles-1.12.4-aarch64.tar::https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v1.12.4%2B58/bluebubbles-linux-aarch64.tar
-	sha256sums_aarch64 = 63fc7c8d87eee6086c4bda557aa0e97893c643aecf95ea41ce5a86ea30a09379
-	source_x86_64 = bluebubbles-1.12.4-x86_64.tar::https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v1.12.4%2B58/bluebubbles-linux-x86_64.tar
-	sha256sums_x86_64 = 616ab5cfd458cb3ba1a8fea163443e686173a6312d806e42a08e920adcfce97b
+	source_aarch64 = bluebubbles-1.12.6-aarch64.tar::https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v1.12.6%2B60/bluebubbles-linux-aarch64.tar
+	sha256sums_aarch64 = 374710f68ee71e131346aee9d29282fe1fd21d6f4d0c545463133ea3bce55047
+	source_x86_64 = bluebubbles-1.12.6-x86_64.tar::https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v1.12.6%2B60/bluebubbles-linux-x86_64.tar
+	sha256sums_x86_64 = 916ea47eaab1c02d7324150f0bb46479655c23b8fcf070faee38cbb75e97ad61
 
 pkgname = bluebubbles-bin
