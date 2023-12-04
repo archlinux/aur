@@ -1,6 +1,6 @@
 pkgbase = arch-efistub-git
 	pkgdesc = Builds a unified EFISTUB kernel, bootable from a single file
-	pkgver = 4.0
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://github.com/Matthewacon/arch-efistub
 	arch = x86_64
