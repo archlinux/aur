@@ -1,6 +1,6 @@
 pkgbase = gopeed-bin
 	pkgdesc = High speed downloader that supports all platforms.
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://gopeed.com/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = gopeed-bin
 	depends = libdbusmenu-glib
 	depends = fontconfig
 	depends = hicolor-icon-theme
-	provides = gopeed-1.5.0
+	provides = gopeed-1.5.1
 	conflicts = gopeed
-	source = gopeed-1.5.0.deb::https://github.com/GopeedLab/gopeed/releases/download/v1.5.0/Gopeed-v1.5.0-linux-amd64.deb
-	sha256sums = cb081e39a8b7f21375a8faab74aa5315b08c6bb8f4b19aec1b8dde268c5f7d3d
+	source = gopeed-1.5.1.deb::https://github.com/GopeedLab/gopeed/releases/download/v1.5.1/Gopeed-v1.5.1-linux-amd64.deb
+	sha256sums = e3f7382a218a3414a98655fcf6e614e92b8aee0e8e8822381a8afcdb982092bc
 
 pkgname = gopeed-bin
