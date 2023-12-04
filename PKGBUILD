@@ -1,8 +1,8 @@
-# Maintainer: Rohit Lodha <rohitlodha at gmail dot com>
+# Maintainer: Rohit Lodha <rohitlodha+aur@gmail.com>
 
 pkgname=arch-dracut-hook
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Install/remove hooks for dracut"
 url=https://dracut.wiki.kernel.org/index.php/Main_Page
 arch=('any')
