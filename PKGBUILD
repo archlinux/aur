@@ -1,16 +1,15 @@
-# Maintainer: Gleb Sinyavskiy <zhulik.gleb@gmail.com>
+# Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=neolink-git
 _pkgname=neolink
-pkgver=0.3.0.cf54129
+pkgver=0.6.3.rc.1.r1.g4a94a2d
 pkgrel=1
 pkgdesc="An RTSP bridge to Reolink IP cameras."
 arch=('x86_64')
-url="https://github.com/thirtythreeforty/$_pkgname"
+url="https://github.com/QuantumEntangledAndy/${_pkgname}"
 license=('AGPL3')
-depends=('gst-rtsp-server')
+depends=('gst-rtsp-server' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good')
 makedepends=('git' 'rust')
-source=("git+https://github.com/thirtythreeforty/$_pkgname.git"
-				"$_pkgname.toml"
+source=("git+https://github.com/QuantumEntangledAndy/$_pkgname.git"
 				"$_pkgname.sysusers"
 				"$_pkgname.service")
 sha256sums=("SKIP"
@@ -18,7 +17,12 @@ sha256sums=("SKIP"
 						"27d0ecc90731e703228efd1c922421cab01c6495943b6f07a97a8c20518c8a17"
 						"2316a242dede941daf121261652a67ae69bc1922415b6c2238f558cd584dda4a")
 
-backup=("etc/$_pkgname.toml")
+backup=("etc/${_pkgname}.toml")
+
+pkgver() {
+	cd "$srcdir/${_pkgname}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "$_pkgname"
@@ -26,8 +30,8 @@ build() {
 }
 
 package() {
-	install -Dm755 "$_pkgname/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 "$_pkgname.toml" "$pkgdir/etc/$_pkgname.toml"
-	install -Dm 644 "$_pkgname.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-	install -Dm 644 "$_pkgname.service" -t "${pkgdir}/usr/lib/systemd/system"
+	install -Dm755 "${_pkgname}/target/release/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
+	install -Dm644 "${_pkgname}/sample_config.toml" "$pkgdir/etc/${_pkgname}.toml"
+	install -Dm 644 "${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+	install -Dm 644 "${_pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
 }
