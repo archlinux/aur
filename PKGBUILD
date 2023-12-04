@@ -14,8 +14,8 @@ conflicts=("$_pkgname" "$_pkgname-git" "clash-verge" "clash-verge-bin" "clash-ny
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/clash-verge_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/clash-verge_${pkgver}_arm64.deb")
 
-sha512sums_x86_64=('a5ac23c4914c24422c7901574024bc0958e0852c732da88d20a6c0b7e4c3f31ab0456dbd57cd95ba76df8582636551bf22ff621364af4a6f60a784b2b07998d0')
-sha512sums_aarch64=('9826c40dbed776b48f1b84f5a529b4ffe22cf227629286a5cb93a145539f9f666498627808850f19d1c4e3dcd43c36333caf1a99a361df56d296f4ed5ac1586e')
+sha512sums_x86_64=('c34957debc33943abbef9bf21a8450cc9c28ddb8d2e8e0596b333356e0704d15c7d0b47058766be5c35a2c0b6b07f2cde266c8280dd58649a05c5057e9c60697')
+sha512sums_aarch64=('1eff2977c4abc55164c00790399cd923bbd282a8c59c4f91d7f827c1527066be45be9e720b2f887b3534d0d1c38bf199f84a2372763326bcc64bf221c5b523e9')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
