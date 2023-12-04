@@ -19,7 +19,7 @@ arch=(x86_64)
 url='https://qgis.org/'
 license=(GPL)
 depends=(ocl-icd proj geos gdal expat spatialindex qwt libzip sqlite3 protobuf
-         zlib exiv2 postgresql-libs libspatialite zstd pdal
+         zlib exiv2 postgresql-libs libspatialite zstd
          qt5-base qt5-svg qt5-serialport qt5-location qt5-3d qt5-declarative
          qscintilla-qt5 qtkeychain-qt5 qca-qt5 gsl python-pyqt5 python-qscintilla-qt5
          hdf5 netcdf libxml2) # laz-perf
@@ -57,7 +57,7 @@ build() {
     -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
-    -DWITH_PDAL=TRUE \
+    -DWITH_PDAL=FALSE \
     -DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE \
     -DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE \
     -DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
