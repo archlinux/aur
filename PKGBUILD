@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone
 _pkgname=Bluestone
-pkgver=0.12.0
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
 arch=('x86_64')
@@ -50,6 +50,9 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    pnpm config set store-dir "${srcdir}/.pnpm_store"
+    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
+    pnpm config set link-workspace-packages true
     sed "s|--arm64 ||g" -i package.json
     sed '/deb/d' -i electron-builder.yml
     pnpm install --no-frozen-lockfile
