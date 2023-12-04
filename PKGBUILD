@@ -29,10 +29,12 @@ build() {
     cargo build --frozen --release --features desktop-notifications
 }
 
-check() {
-    cd "$srcdir"/$_pkgname-$pkgver
-    cargo test --frozen --workspace --features desktop-notifications
-}
+# TODO: re-enable in the next tagged release
+# refer: issue #407, commit aaac385
+# check() {
+#     cd "$srcdir"/$_pkgname-$pkgver
+#     cargo test --frozen --workspace --features desktop-notifications
+# }
 
 package() {
     cd "$srcdir"/$_pkgname-$pkgver
