@@ -13,10 +13,6 @@ conflicts=('tcping' 'tcping-go-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pouriyajamshidi/tcping/releases/download/v$pkgver/$_pkgname.tar.gz")
 sha256sums=('4fe818728f9ca8a8b4c9e5db66d415270f45672884a07cccd765db2b74c45130')
 
-build() {
-	tar xvf $pkgname-$pkgver.tar.gz
-}
-
 package() {
 	install -D tcping $pkgdir/usr/bin/tcping
 }
