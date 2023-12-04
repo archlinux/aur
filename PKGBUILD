@@ -4,7 +4,7 @@
 
 # Maintainer: Azat Khuzhin <a3at.mail@gmail.com>
 pkgname=chdig-git
-pkgver=v0.4.0.r31.g0bf05ba
+pkgver=0.4.0.r31.g0bf05ba
 pkgrel=1
 pkgdesc="Dig into ClickHouse with TUI interface"
 arch=('x86_64')
@@ -29,7 +29,7 @@ LTOFLAGS=
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
