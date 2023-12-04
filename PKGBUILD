@@ -25,7 +25,7 @@ package() {
   cp ${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage ${pkgdir}${install_path}/${pkgname%-appimage}-${pkgver}.AppImage
   
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}${install_path}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/usr/bin/lrcget"
+  cp "${pkgdir}${install_path}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/usr/bin/lrcget"
 
   for _icons in 32x32 128x128 256x256@2;do
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/lrcget.png" -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
