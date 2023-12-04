@@ -1,21 +1,28 @@
 pkgbase = papirus-icon-theme-git
-	pkgdesc = A free and open source SVG icon theme based on Paper Icon Set
-	pkgver = 20221101.r5.gcce26033ea
+	pkgdesc = Pixel perfect icon theme for Linux
+	pkgver = 20231201.r7.ga510018dad
 	pkgrel = 1
 	epoch = 1
-	url = https://git.io/papirus-icon-theme
-	install = alt-icons.install
+	url = https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = gtk-update-icon-cache
-	optdepends = hardcode-fixer-git: To deal with hardcoded application icons
-	optdepends = hardcode-tray-git: To fix hardcoded tray icons
-	optdepends = sif-git: To fix icons of running Steam games
-	provides = papirus-icon-theme
-	conflicts = papirus-icon-theme
 	options = !strip
 	source = git+https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = papirus-icon-theme-git
+	install = alt-icons.install
+	optdepends = hardcode-fixer-git: To deal with hardcoded application icons
+	optdepends = hardcode-tray-git: To fix hardcoded tray icons
+	optdepends = sif-git: To fix icons of running Steam games
+	provides = papirus-icon-theme
+	conflicts = papirus-icon-theme
+
+pkgname = epapirus-icon-theme-git
+	pkgdesc = Pixel perfect icon theme for Linux (for elementary OS and Pantheon Desktop only)
+	depends = gtk-update-icon-cache
+	depends = papirus-icon-theme-git
+	provides = epapirus-icon-theme
+	conflicts = epapirus-icon-theme
