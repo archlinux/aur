@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyplayer-bin
-pkgver=3.2.10
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="跨平台桌面端视频资源播放器,免费高颜值"
 arch=("aarch" "x86_64")
 url="https://github.com/Hiram-Wong/ZyPlayer"
@@ -32,13 +32,14 @@ depends=(
     'at-spi2-core'
     'cairo'
     'hicolor-icon-theme'
+    'java-runtime'
 )
 source_aarch=("${pkgname%-bin}-${pkgver}-aarch.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-amd64.deb")
-source=("LICENSE::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/v${pkgver}/LICENSE")
+source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/v${pkgver}/LICENSE")
 sha256sums=('84378c42abc60e52c641be1d9d3b5b74e587adbfce6a1be75276524120055edd')
-sha256sums_aarch=('7bcd1af5548ff9c09fcc74d019dfa5eeb061a742a61f9af67e8f0fd7557c9f16')
-sha256sums_x86_64=('a51727860584ffbf1f31f41926a23207919f19847b6f9694a1d1f79ee40bec93')
+sha256sums_aarch=('f1b9396fcc2d841505b2153526ec8833d0420bb31ce4519fbaa8738cde61494c')
+sha256sums_x86_64=('0da1c29fd86a3074a2b48aed4d3a718f2d12248a8ce4c3f760fb5d058bd08be2')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g;s|Utility|AudioVideo|g" \
@@ -53,5 +54,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
