@@ -1,4 +1,4 @@
-# Maintainer: Marcello Massaro <spam@mmassa.ro>
+# Maintainer: Kloudignite
 pkgname=kcm-uefi
 pkgver=0.1
 pkgrel=1
@@ -7,11 +7,11 @@ pkgdesc="A Plasma settings control panel to manage the UEFI boot order."
 arch=('x86_64')
 url="https://invent.kde.org./mmassaro/kcm-uefi"
 license=('GPL')
-depends=('kauth' 'kconfig' 'kdeclarative' 'kcmutils' 'efibootmgr')
+depends=('kauth5' 'kconfig5' 'kdeclarative5' 'kcmutils5' 'efibootmgr')
 makedepends=('cmake' 'extra-cmake-modules')
 provides=(kcm_uefi)
 source=("https://invent.kde.org/mmassaro/kcm-uefi/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=('9fbd93d62654f1bb69e8e1f7e0d88ba8')
 
 build() {
 	cd "$pkgname-v$pkgver"
