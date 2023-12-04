@@ -1,5 +1,5 @@
 # Maintainer: Simon <simon at gamersi dot at>
-pkgname=lrcget-git
+pkgname=lrcget-bin
 pkgver=0.2.1
 pkgrel=1
 options=(!strip)
