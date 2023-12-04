@@ -11,7 +11,7 @@ license=(GPL3)
 makedepends=(luarocks)
 optdepends=('git: get project name')
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-0.all.rock")
-sha256sums=('aa1dcbc48daa671e7cf59464f787a528af78050f445cf6812500378382421d64')
+sha256sums=('86b9f9853eef70bbc7c5d9be8bfc296eb0c4246669bfcb53135333e186824c56')
 _lua_version=5.4
 
 _package() {

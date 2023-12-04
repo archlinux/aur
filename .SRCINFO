@@ -8,7 +8,7 @@ pkgbase = lua-prompt-style
 	makedepends = luarocks
 	optdepends = git: get project name
 	source = https://github.com/wakatime/prompt-style.lua/releases/download/0.0.1/prompt-style-0.0.1-0.all.rock
-	sha256sums = aa1dcbc48daa671e7cf59464f787a528af78050f445cf6812500378382421d64
+	sha256sums = 86b9f9853eef70bbc7c5d9be8bfc296eb0c4246669bfcb53135333e186824c56
 
 pkgname = lua-prompt-style
 	depends = lua-ansicolors
