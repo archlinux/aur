@@ -1,6 +1,6 @@
 pkgbase = tcl-prompt-git
 	pkgdesc = A powerlevel10k-like prompt of tcl.
-	pkgver = r16.d5d8b66
+	pkgver = r17.bc29b67
 	pkgrel = 1
 	url = https://github.com/wakatime/tcl-prompt
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = tcl-prompt-git
 	optdepends = expect
 	optdepends = vitis
 	optdepends = vivado
-	source = git+https://github.com/wakatime/tcl-prompt#tag=d5d8b66f69837b1444b14a60018fd1c93af5a7be
+	source = git+https://github.com/wakatime/tcl-prompt#tag=bc29b670176c98a1d632cc520ded27eeb685cce4
 	sha256sums = SKIP
 
 pkgname = tcl-prompt-git
