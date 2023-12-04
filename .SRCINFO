@@ -1,6 +1,6 @@
 pkgbase = python-seagoat
 	pkgdesc = A semantic-code search engine
-	pkgver = 0.40.6
+	pkgver = 0.40.7
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/python-seagoat
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-seagoat
 	depends = python-pygments
 	depends = python-typing_extensions
 	depends = python-gitpython
-	source = https://files.pythonhosted.org/packages/source/s/seagoat/seagoat-0.40.6.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/seagoat/seagoat-0.40.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-seagoat
