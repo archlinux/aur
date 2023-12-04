@@ -11,7 +11,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=f2eb43cb51094d4159f11b48f772712c62f0a23a
+_mozc_commit=19993210cd96027022dd1a6c8ea6e6cd16f4395d
+_branch=fix-version
 # Ut Dictionary
 _utdicdate=20230115
 _dict=(
@@ -31,10 +32,10 @@ pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5291.102
 pkgrel=3
 arch=('x86_64')
-url="https://github.com/fcitx/mozc"
+url="https://github.com/phoepsilonix/mozc"
 license=('custom')
 makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'clang' 'ibus' 'ruby' 'ruby-parallel')
-source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
+source=("git+$url.git#commit=${_mozc_commit}"
         git+https://github.com/phoepsilonix/mozcdict-ext.git
         #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
         #"https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
@@ -99,9 +100,9 @@ prepare() {
   patch -p1 -i ${srcdir}/0001-Zombie-Process-Prevention.patch
 
   # mozc date and version
-  _date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
-  sed -i -e "/2.25.4150.102.1/d"  -e "s/2.26.4220.106.1/${pkgver}.${pkgrel}/" -e "s/2021-01-16/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
-
+  #_date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
+  #sed -i -e "/2.25.4150.102.1/d"  -e "s/2.26.4220.106.1/${pkgver}.${pkgrel}/" -e "s/2021-01-16/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
+  cd src && ../scripts/version_info_update_fcitx5
 }
 
 build() {
