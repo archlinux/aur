@@ -1,0 +1,17 @@
+pkgbase = vimv
+	pkgdesc = A command line utility for batch-renaming files.
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/dmulholl/vimv
+	arch = x86_64
+	license = BSD
+	license = custom
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = vimv
+	conflicts = vimv
+	source = vimv-3.1.0.tar.gz::https://static.crates.io/crates/vimv/vimv-3.1.0.crate
+	sha512sums = 2e0e064de59b03f8b57a3ea4279577b30b0816104953f74c9bf12942aeb46bd37b793b919c64b0ba8e02553e233d958eb7050bda876f3dac8a621ea666cbc61f
+
+pkgname = vimv
