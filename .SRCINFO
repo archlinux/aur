@@ -1,6 +1,6 @@
 pkgbase = ryujinx-ava-bin
 	pkgdesc = Experimental Nintendo Switch Emulator written in C# (master build channel release, test ava build)
-	pkgver = 1.1.1094
+	pkgver = 1.1.1095
 	pkgrel = 1
 	url = https://github.com/Ryujinx/release-channel-master
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ryujinx-ava-bin
 	conflicts = ryujinx-ava
 	conflicts = Ryujinx-ava
 	options = !strip
-	source = https://github.com/Ryujinx/release-channel-master/releases/download/1.1.1094/test-ava-ryujinx-1.1.1094-linux_x64.tar.gz
+	source = https://github.com/Ryujinx/release-channel-master/releases/download/1.1.1095/test-ava-ryujinx-1.1.1095-linux_x64.tar.gz
 	source = https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/Ryujinx.desktop
 	source = https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/misc/Logo.svg
 	b2sums = SKIP
