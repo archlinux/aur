@@ -11,6 +11,7 @@ pkgname=(
   pipewire-full-audio-git
   pipewire-full-alsa-git
   pipewire-full-ffado-git
+  pipewire-full-jack-client-git
   pipewire-full-jack-git
   pipewire-full-pulse-git
   pipewire-full-roc-git
@@ -18,14 +19,13 @@ pkgname=(
   pipewire-full-zeroconf-git
   pipewire-full-v4l2-git
   pipewire-full-x11-bell-git
-  pipewire-full-jack-client-git
   pipewire-full-vulkan-git
   pipewire-full-ffmpeg-git
 )
-pkgver=1.0.0.r2.g9daca346
+pkgver=1.0.0.r24.gf5546d27
 _so_ver=0.3
 _short_pkgver=${pkgver%%.r*}
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64)
@@ -160,7 +160,8 @@ package_pipewire-full-git() {
     'pipewire-full-audio-git: Audio support'
     'pipewire-full-docs-git: Documentation'
     'pipewire-full-ffado-git: FireWire support'
-    'pipewire-full-jack-git: JACK support'
+    'pipewire-full-jack-client-git: PipeWire as JACK client'
+    'pipewire-full-jack-git: JACK replacement'
     'pipewire-full-pulse-git: PulseAudio replacement'
     'pipewire-full-roc-git: ROC streaming'
     'pipewire-session-manager: Session manager'
@@ -212,11 +213,17 @@ package_pipewire-full-git() {
     _pick audio usr/lib/systemd/user/filter-chain.service
     _pick audio usr/share/alsa
     _pick audio usr/share/man/man1/pw-{cat,mididump}.1
+    _pick audio usr/share/man/man7/libpipewire-module-{avb,echo-cancel,fallback-sink,filter-chain*,loopback,netjack2*,pipe-tunnel,protocol-simple,rtp-{sap,sink,source},vban*}.7
     _pick audio usr/share/pipewire/filter-chain*
     _pick audio usr/share/pipewire/pipewire-{aes67,avb}.conf
     _pick audio usr/share/spa-0.2/bluez5
 
     _pick ffado usr/lib/pipewire-$_so_ver/libpipewire-module-ffado*.so
+    _pick ffado usr/share/man/man7/libpipewire-module-ffado-driver.7
+
+    _pick jack-client usr/lib/pipewire-$_so_ver/libpipewire-module-jack{-tunnel,dbus-detect}.so
+    _pick jack-client usr/lib/spa-0.2/jack
+    _pick jack-client usr/share/man/man7/libpipewire-module-jack{-tunnel,dbus-detect}.7
 
     _pick jack usr/bin/pw-jack
     _pick jack usr/include/jack
@@ -230,6 +237,9 @@ package_pipewire-full-git() {
     _pick pulse usr/lib/pipewire-$_so_ver/libpipewire-module-pulse-tunnel.so
     _pick pulse usr/lib/systemd/user/pipewire-pulse.*
     _pick pulse usr/share/man/man1/pipewire-pulse.1
+    _pick pulse usr/share/man/man5/pipewire-pulse.conf.5
+    _pick pulse usr/share/man/man7/pipewire-pulse*.7
+    _pick pulse usr/share/man/man7/libpipewire-module-{protocol-pulse,pulse-tunnel}.7
     _pick pulse usr/share/pipewire/pipewire-pulse.conf
 
     _pick roc usr/lib/pipewire-$_so_ver/libpipewire-module-roc*.so
@@ -238,12 +248,12 @@ package_pipewire-full-git() {
 
     _pick zeroconf usr/lib/pipewire-$_so_ver/libpipewire-module-{raop,zeroconf}-*.so
     _pick zeroconf usr/lib/pipewire-$_so_ver/libpipewire-module-rtp-session.so
+    _pick zeroconf usr/share/man/man7/libpipewire-module-{raop-*,rtp-session,zeroconf*}.7
 
     _pick v4l2 usr/bin/pw-v4l2 usr/lib/pipewire-$_so_ver/v4l2
 
     _pick x11-bell usr/lib/pipewire-$_so_ver/libpipewire-module-x11-bell.so
-
-    _pick jack-client usr/lib/spa-0.2/jack
+    _pick x11-bell usr/share/man/man7/libpipewire-module-x11-bell.7
 
     _pick vulkan usr/lib/spa-0.2/vulkan
 
@@ -359,6 +369,24 @@ package_pipewire-full-ffado-git() {
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
 }
 
+package_pipewire-full-jack-client-git() {
+  pkgdesc+=" - PipeWire as JACK client"
+  depends=(
+    glibc
+    libdbus-1.so
+    libjack.so
+    libpipewire-$_so_ver.so
+    pipewire-full-git
+    pipewire-full-audio-git
+  )
+  provides=(pipewire-jack-client)
+  conflicts=(pipewire-jack-client)
+
+  mv jack-client/* "${pkgdir}"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
+}
+
 package_pipewire-full-jack-git() {
   pkgdesc+=" - JACK replacement"
   license+=(LGPL-2.1-or-later GPL-2.0-only)  # libjackserver
@@ -400,8 +428,17 @@ package_pipewire-full-pulse-git() {
     pipewire-session-manager
     systemd-libs
   )
-  provides=(pulseaudio pulseaudio-bluetooth pipewire-pulse)
-  conflicts=(pulseaudio pulseaudio-bluetooth pipewire-pulse)
+  provides=(
+    pulse-native-provider
+    pulseaudio
+    pulseaudio-bluetooth
+    pipewire-pulse
+  )
+  conflicts=(
+    pulseaudio
+    pulseaudio-bluetooth
+    pipewire-pulse
+  )
   install=pipewire-pulse.install
 
   mv pulse/* "$pkgdir"
@@ -504,17 +541,6 @@ package_pipewire-full-x11-bell-git() {
   conflicts=(pipewire-x11-bell)
 
   mv x11-bell/* "$pkgdir"
-
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
-}
-
-package_pipewire-full-jack-client-git() {
-  pkgdesc="JACK client SPA plugin"
-  depends=(libjack.so libpipewire-$_so_ver.so)
-  provides=(pipewire-jack-client)
-  conflicts=(pipewire-jack-client)
-
-  mv jack-client/* "${pkgdir}"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
 }

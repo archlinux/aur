@@ -1,7 +1,7 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 1.0.0.r2.g9daca346
-	pkgrel = 1
+	pkgver = 1.0.0.r24.gf5546d27
+	pkgrel = 2
 	url = https://pipewire.org
 	arch = x86_64
 	license = MIT
@@ -57,7 +57,7 @@ pkgname = pipewire-full-git
 	license = LGPL-2.1-or-later
 	depends = gcc-libs
 	depends = glibc
-	depends = libpipewire-full-git=1.0.0.r2.g9daca346-1
+	depends = libpipewire-full-git=1.0.0.r24.gf5546d27-2
 	depends = libcamera-base.so
 	depends = libcamera.so
 	depends = libdbus-1.so
@@ -72,7 +72,8 @@ pkgname = pipewire-full-git
 	optdepends = pipewire-full-audio-git: Audio support
 	optdepends = pipewire-full-docs-git: Documentation
 	optdepends = pipewire-full-ffado-git: FireWire support
-	optdepends = pipewire-full-jack-git: JACK support
+	optdepends = pipewire-full-jack-client-git: PipeWire as JACK client
+	optdepends = pipewire-full-jack-git: JACK replacement
 	optdepends = pipewire-full-pulse-git: PulseAudio replacement
 	optdepends = pipewire-full-roc-git: ROC streaming
 	optdepends = pipewire-session-manager: Session manager
@@ -149,6 +150,17 @@ pkgname = pipewire-full-ffado-git
 	provides = pipewire-ffado
 	conflicts = pipewire-ffado
 
+pkgname = pipewire-full-jack-client-git
+	pkgdesc = Low-latency audio/video router and processor - PipeWire as JACK client
+	depends = glibc
+	depends = libdbus-1.so
+	depends = libjack.so
+	depends = libpipewire-0.3.so
+	depends = pipewire-full-git
+	depends = pipewire-full-audio-git
+	provides = pipewire-jack-client
+	conflicts = pipewire-jack-client
+
 pkgname = pipewire-full-jack-git
 	pkgdesc = Low-latency audio/video router and processor - JACK replacement
 	license = MIT
@@ -185,6 +197,7 @@ pkgname = pipewire-full-pulse-git
 	depends = pipewire-full-audio-git
 	depends = pipewire-session-manager
 	depends = systemd-libs
+	provides = pulse-native-provider
 	provides = pulseaudio
 	provides = pulseaudio-bluetooth
 	provides = pipewire-pulse
@@ -250,13 +263,6 @@ pkgname = pipewire-full-x11-bell-git
 	depends = pipewire-full-audio-git
 	provides = pipewire-x11-bell
 	conflicts = pipewire-x11-bell
-
-pkgname = pipewire-full-jack-client-git
-	pkgdesc = JACK client SPA plugin
-	depends = libjack.so
-	depends = libpipewire-0.3.so
-	provides = pipewire-jack-client
-	conflicts = pipewire-jack-client
 
 pkgname = pipewire-full-vulkan-git
 	pkgdesc = Vulkan SPA plugin
