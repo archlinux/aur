@@ -1,0 +1,18 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Target = linux*
+Target = *-ucode
+Target = dkms
+Target = *-dkms
+Target = mkinitcpio
+Target = mkinitcpio-firmware
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/initcpio/*
+
+[Action]
+Description = Rebuild EFI stub kernel 
+When = PostTransaction
+Exec = /bin/bash /usr/bin/efistub

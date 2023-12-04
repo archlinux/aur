@@ -1,0 +1,119 @@
+#!/bin/bash
+
+# help message
+HELP_MESSAGE="Build a bootable unified EFI kernel image
+
+Usage: efistub [CONFIG_FILE_PATH] 
+ CONFIG_FILE_PATH (optional) Path to custom config, defaults to /etc/efistub.conf
+
+Config file variables:
+ EFISTUB_LINUX       Path to kernel, defaults to /boot/vmlinuz-linux
+ EFISTUB_INITRDS     An array of paths for initrd images to be included
+ EFISTUB_CMDLINE     Kernel command line string
+ EFISTUB_OS_RELEASE  OS release string to embed into the EFI image, defaults to the contents of /etc/os-release
+ EFISTUB_UNAME       UNAME string to embed into the EFI image, defaults to the result of 'uname -a'
+ EFISTUB_STUB        EFI stub base, defaults to /usr/lib/systemd/boot/efi/linuxx64.efi.stub 
+ EFISTUB_DEST        Where to write the complete EFI image
+"
+
+CONFIG_FILE="/etc/efistub.conf"
+UKIFY_BIN=/usr/lib/systemd/ukify
+
+# ensure required commands are present
+declare -a CMDS=("$UKIFY_BIN")
+for cmd in "${CMDS[@]}"; do
+ if ! command -v $cmd &> /dev/null; then
+  printf '%s is requried to run this script!\n' "$cmd"
+  exit -1
+ fi
+done
+unset CMDS
+
+# utility to check whether the last command failed
+check_failed() {
+ local exit_code=$?
+
+ if [[ $exit_code -eq 0 ]]; then
+  return 0
+ fi
+
+ # $1 fmt string, $2 args (optional)
+ local msg="$(printf "$1" "$2"; printf TERMINATOR)"
+ msg="${msg%TERMINATOR}"
+
+ printf "$msg" >&2
+ exit $exit_code
+}
+
+# print help and exit
+help_and_exit() {
+ # $1 fmt string, $2 args (optional)
+ local msg="$(printf "$1" "$2"; printf TERMINATOR)"
+ msg="${msg%TERMINATOR}"
+
+ # $3 exit code (optional)
+ local exit_code=${3:--1}
+
+ printf "$HELP_MESSAGE"
+ printf "$msg" >&2
+ exit $exit_code
+}
+
+# only print help and exit if the last command failed
+help_and_exit_if_failed() {
+ local exit_code=$?
+ if [[ $? -ne 0 ]]; then
+  help_and_exit "$@" $exit_code
+ fi
+}
+
+# source kernel config file (defaults below)
+EFISTUB_LINUX="/boot/vmlinuz-linux"
+EFISTUB_INITRDS=
+EFISTUB_CMDLINE=
+EFISTUB_OS_RELEASE="@/etc/os-release"
+EFISTUB_UNAME="$(uname -r)"
+EFISTUB_STUB="/usr/lib/systemd/boot/efi/linuxx64.efi.stub"
+EFISTUB_DEST=
+
+# use user-specified config, if specified 
+if [[ ! -z "${1+x}" ]]; then
+ CONFIG_FILE="$1"
+fi
+
+# ensure the provided config exists
+if [[ ! -f "$CONFIG_FILE" ]]; then
+ help_and_exit "\nERROR: Config file '%s' does not exist!\n" "$CONFIG_FILE"
+fi
+source "$CONFIG_FILE"
+help_and_exit_if_failed "\nERROR: Failed to source configuration from '%s'!\n" "$CONFIG_FILE"
+
+# validate loaded config
+declare -a CONFIG_VARS=('EFISTUB_LINUX' 'EFISTUB_INITRDS' 'EFISTUB_CMDLINE' 'EFISTUB_OS_RELEASE' 'EFISTUB_UNAME' 'EFISTUB_STUB' 'EFISTUB_DEST')
+for var in "${CONFIG_VARS[@]}"; do
+ if [[ -z "${!var}" ]]; then
+  help_and_exit "\nERROR: Missing '%s' configuration value!\n" "$var"
+ fi
+done
+
+# assemble ukify command
+UKIFY_COMMAND="$UKIFY_BIN \
+--linux="$EFISTUB_LINUX" \
+--cmdline="$EFISTUB_CMDLINE" \
+--os-release="$EFISTUB_OS_RELEASE" \
+--uname="$EFISTUB_UNAME" \
+--efi-arch=x64 \
+--output="$EFISTUB_DEST""
+
+# add all initrds
+for initrd in "${EFISTUB_INITRDS[@]}"; do
+ UKIFY_COMMAND="${UKIFY_COMMAND} --initrd="$initrd""
+done
+
+# add actual build command
+UKIFY_COMMAND="$UKIFY_COMMAND build"
+
+printf 'Running: %s\n' "$UKIFY_COMMAND"
+$UKIFY_COMMAND
+check_failed "ERROR: Failed to build unified EFI image!\n"
+printf 'Done!\n'
