@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=notification
 pkgbase=dfl-notification
 pkgname=('dfl-notification' 'dfl-notification-qt6')
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Implementation of the XDG Desktop Notification Spec"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('27992953af2047d8d6c6dd4a4b7bd970')
+md5sums=('a52d1d80ae6eb1eac86ad33b6c14d761')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
