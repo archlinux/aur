@@ -1,19 +1,19 @@
 pkgbase = numara-bin
 	pkgdesc = Simple notepad calculator built on Electron, powered by Math.js
-	pkgver = 4.3.1
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://numara.io/
 	arch = x86_64
 	license = MIT
 	depends = electron27
 	depends = hicolor-icon-theme
-	provides = numara=4.3.1
+	provides = numara=4.3.2
 	conflicts = numara
-	source = numara-4.3.1.deb::https://github.com/bornova/numara-calculator/releases/download/v4.3.1/Numara-4.3.1-amd64.deb
-	source = LICENSE-4.3.1::https://raw.githubusercontent.com/bornova/numara-calculator/v4.3.1/LICENSE
+	source = numara-4.3.2.deb::https://github.com/bornova/numara-calculator/releases/download/v4.3.2/Numara-4.3.2-amd64.deb
+	source = LICENSE-4.3.2::https://raw.githubusercontent.com/bornova/numara-calculator/v4.3.2/LICENSE
 	source = numara.sh
-	sha256sums = 56172a984b42fad1477d35e56c889419730cc76593850c2cdb7403fb086f0ec7
+	sha256sums = 8bd60c9e3ab48d6be32dd21f2ae7dddb36521bfb018199442cce6cae50468355
 	sha256sums = b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5
-	sha256sums = 4178808864f62c8770f68a130622a2987c9ef1a0e99e5d076c91c3425e85395f
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = numara-bin

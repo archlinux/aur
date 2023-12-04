@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=numara-bin
 _appname=Numara
-pkgver=4.3.1
+pkgver=4.3.2
+_electronversion=27
 pkgrel=1
 pkgdesc="Simple notepad calculator built on Electron, powered by Math.js"
 arch=('x86_64')
@@ -11,7 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron27'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
@@ -19,10 +20,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/bornova/numara-calculator/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('56172a984b42fad1477d35e56c889419730cc76593850c2cdb7403fb086f0ec7'
+sha256sums=('8bd60c9e3ab48d6be32dd21f2ae7dddb36521bfb018199442cce6cae50468355'
             'b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5'
-            '4178808864f62c8770f68a130622a2987c9ef1a0e99e5d076c91c3425e85395f')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_appname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
