@@ -1,7 +1,7 @@
 pkgbase = sigmavpn
 	pkgdesc = Light-weight, secure and modular VPN solution
 	pkgver = 0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/neilalexander/sigmavpn/
 	arch = x86_64
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = sigmavpn
 	sha512sums = e08ca11165ba4635f6fc713fa7109bade00fcddd85b6d3e0924f8455f84e51c65bd7d25aff09935919949accc2e554c0158837d1afd6ae52090df753a997f727
 
 pkgname = sigmavpn
-

@@ -1,6 +1,6 @@
 pkgname='sigmavpn'
 pkgver='0.2'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Light-weight, secure and modular VPN solution'
 url='https://github.com/neilalexander/sigmavpn/'
 license=('BSD')
@@ -32,9 +32,9 @@ prepare () {
 
 build () {
 	cd "${pkgname}-${pkgver}"
-	eval "$(sed -e '/^CFLAGS=/p' -e d /etc/makepkg.conf)"
-	eval "$(sed -e '/^LDFLAGS=/p' -e d /etc/makepkg.conf)"
-	make USE_SODIUM=1 EXTRA_CFLAGS="${CFLAGS}" EXTRA_LDFLAGS="${LDFLAGS}"
+	make USE_SODIUM=1 \
+		EXTRA_CFLAGS="${CFLAGS} -fcommon" \
+		EXTRA_LDFLAGS="${LDFLAGS} -fcommon"
 }
 
 package () {
