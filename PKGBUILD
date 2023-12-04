@@ -2,7 +2,7 @@
 
 _pkgname='obs-multi-rtmp'
 pkgname="${_pkgname}-git"
-pkgver=r360.511deff
+pkgver=r362.4fd6d92
 pkgrel=1
 pkgdesc='Multiple RTMP outputs plugin for OBS Studio. Git version.'
 arch=('x86_64')
@@ -16,12 +16,12 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}" || exit
+    cd "${srcdir}/${_pkgname}"
     printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}" || exit
+    cd "${srcdir}/${_pkgname}"
 
     # .github/scripts/.build.zsh
 
@@ -36,5 +36,12 @@ build() {
 }
 
 package() {
-    cp -aT "${srcdir}/${_pkgname}/release/RelWithDebInfo" "${pkgdir}/usr"
+    cd "${pkgdir}"
+
+    mkdir -p usr/lib/obs-plugins
+    mkdir -p usr/share/obs/obs-plugins/obs-multi-rtmp
+
+    prefix="${srcdir}/${_pkgname}/release/RelWithDebInfo/dist/obs-multi-rtmp"
+    cp -a "${prefix}/bin/64bit/"* usr/lib/obs-plugins
+    cp -a "${prefix}/data/"* usr/share/obs/obs-plugins/obs-multi-rtmp
 }
