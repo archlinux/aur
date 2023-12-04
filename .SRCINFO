@@ -1,0 +1,29 @@
+pkgbase = r-storr
+	pkgdesc = Simple Key Value Stores
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=storr
+	arch = x86_64
+	license = MIT
+	checkdepends = postgresql
+	checkdepends = r-dbi
+	checkdepends = r-mockr
+	checkdepends = r-rpostgres
+	checkdepends = r-rsqlite
+	checkdepends = r-testthat
+	depends = r-digest
+	depends = r-r6
+	optdepends = r-dbi
+	optdepends = r-knitr
+	optdepends = r-mockr
+	optdepends = r-progress
+	optdepends = r-rbenchmark
+	optdepends = r-rmarkdown
+	optdepends = r-rpostgres
+	optdepends = r-rsqlite
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/storr_1.2.5.tar.gz
+	md5sums = 0bec8b9e53ad575bd9a20b68a798f853
+	sha256sums = 4224c3991d9c043a45ce530d0698d7f2cdca231b26fe31b45e0db865026e5f63
+
+pkgname = r-storr
