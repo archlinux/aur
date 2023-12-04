@@ -1,7 +1,7 @@
 pkgbase = pascom-client
 	pkgdesc = Pascom Client
 	pkgver = 106.R3601
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pascom.net/
 	arch = x86_64
 	license = custom: commercial

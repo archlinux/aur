@@ -2,7 +2,7 @@
 
 pkgname=pascom-client
 pkgver=106.R3601
-pkgrel=1
+pkgrel=2
 pkgdesc="Pascom Client"
 arch=('x86_64')
 url="https://www.pascom.net/"
@@ -30,8 +30,8 @@ package() {
     install -d "${pkgdir}/usr/share/applications"
     install -d "${pkgdir}/usr/share/icons"
 
-    install -m644 "${srcdir}/pascom_Client/client.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+    install -m644 "${srcdir}/${_pkg}/client.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
     install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    cp -r "${srcdir}/pascom_Client" "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/${_pkg}/"* "${pkgdir}/opt/${pkgname}" -R
 }
