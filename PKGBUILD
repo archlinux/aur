@@ -12,7 +12,7 @@ source=("${url}/releases/download/${pkgver}-flatpak/${pkgname}-${pkgver}-x86_64-
 sha256sums=('725c8d4b92946801e4b7e61e712cc40536f13a48719400d5802f3a34dbbae5c7')
 
 package() {
-    cd "${pkgdir}" || exit 1
+    cd "${pkgdir}"
 
     mkdir -p usr/lib/obs-plugins
     mkdir -p usr/share/obs/obs-plugins/obs-multi-rtmp
