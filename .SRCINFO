@@ -1,0 +1,16 @@
+pkgbase = linux-firmware-x13s-bin
+	pkgdesc = Prebuilt Linux kernel and modules for Lenovo ThinkPad X13s from Ubuntu Concept (unsigned)
+	pkgver = 20230323.gitbcdcfbcf
+	pkgrel = 202311171005
+	url = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s
+	arch = any
+	license = GPL2
+	license = GPL3
+	license = custom
+	provides = linux-firmware
+	provides = linux-firmware-x13s
+	noextract = linux-firmware_20230323.gitbcdcfbcf-0ubuntu1.9+x13s+202311171005~ubuntu23.04.1_all.deb
+	source = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s/+files/linux-firmware_20230323.gitbcdcfbcf-0ubuntu1.9+x13s+202311171005~ubuntu23.04.1_all.deb
+	sha256sums = ee66d3c2b5b3cb289eeb015361183b082120f50e44faba5f5ee4fcd9892f2333
+
+pkgname = linux-firmware-x13s-bin
