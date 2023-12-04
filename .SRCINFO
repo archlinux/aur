@@ -1,6 +1,6 @@
 pkgbase = maduchat-frontend-bin
 	pkgdesc = A chat application which has a global chat, friend system, settings and lots of other features
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Madu-de/MaduChat
 	arch = aarch64
@@ -9,17 +9,16 @@ pkgbase = maduchat-frontend-bin
 	license = AGPL3
 	makedepends = asar
 	makedepends = gendesk
-	depends = bash
 	depends = electron26
-	provides = maduchat-frontend=1.1.1
+	provides = maduchat-frontend=1.2.0
 	conflicts = maduchat-frontend
 	source = maduchat-frontend.sh
-	sha256sums = 9261e9c68a6171ca9ebaf6346a2a204b2d354b9185ec6a041559d982197ed6d7
-	source_aarch64 = maduchat-frontend-1.1.1-aarch64.zip::https://github.com/Madu-de/MaduChat/releases/download/v1.1.1/maduchat-frontend-1.1.1-linux-arm64.zip
-	sha256sums_aarch64 = e22d03986ec56af91bac0c7f4a06bbd1b9d4534ad8ca3bfa557a087c8fd176a1
-	source_armv7h = maduchat-frontend-1.1.1-armv7h.zip::https://github.com/Madu-de/MaduChat/releases/download/v1.1.1/maduchat-frontend-1.1.1-linux-armv7l.zip
-	sha256sums_armv7h = 9be7f671aea0af47b0a860f5d058e82537e7c79bea58c58244f189c0647e5421
-	source_x86_64 = maduchat-frontend-1.1.1-x86_64.zip::https://github.com/Madu-de/MaduChat/releases/download/v1.1.1/maduchat-frontend-1.1.1-linux-x64.zip
-	sha256sums_x86_64 = df2e71886ce0303baba6f6ddec3dfea99671db32aef6a90a40438b9788e48156
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	source_aarch64 = maduchat-frontend-1.2.0-aarch64.zip::https://github.com/Madu-de/MaduChat/releases/download/v1.2.0/maduchat-frontend-1.2.0-linux-arm64.zip
+	sha256sums_aarch64 = 38e9b33d63c5e99746a57c962ce24c1520ef56c549a2add6daa49530dd5e294f
+	source_armv7h = maduchat-frontend-1.2.0-armv7h.zip::https://github.com/Madu-de/MaduChat/releases/download/v1.2.0/maduchat-frontend-1.2.0-linux-armv7l.zip
+	sha256sums_armv7h = 149582d54149a771f1de784cd99be69fbaa4c8e065d20371c3b1aee87ae7b5c3
+	source_x86_64 = maduchat-frontend-1.2.0-x86_64.zip::https://github.com/Madu-de/MaduChat/releases/download/v1.2.0/maduchat-frontend-1.2.0-linux-x64.zip
+	sha256sums_x86_64 = 9875c3f571a154256c291533f2e64b08aca6abb56ed621a56a6b2d265cc9883a
 
 pkgname = maduchat-frontend-bin
