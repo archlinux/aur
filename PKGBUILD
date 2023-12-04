@@ -2,12 +2,12 @@
 
 pkgname=ebook2cwgui
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Converts plain text files to Morse Code formatted as MP3 or OGG - GUI"
 arch=('i686' 'x86_64')
 url="http://fkurz.net/ham/ebook2cw.html"
 license=('GPL')
-depends=('ebook2cw' 'wxgtk2.8' 'hamradio-menus')
+depends=('ebook2cw' 'wxgtk2.8-light' 'hamradio-menus')
 source=(http://fkurz.net/ham/ebook2cw/${pkgname}-${pkgver}.tar.gz
 	diff.Makefile
 	$pkgname.png
