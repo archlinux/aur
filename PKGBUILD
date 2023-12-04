@@ -1,7 +1,7 @@
 # Maintainer: shiro <shiro@usagi.io>
 
 pkgname=python-map2
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="Linux input remapping library"
 url="https://github.com/shiro/map2"
@@ -13,8 +13,8 @@ source_i686=('lib32-libxkbcommon')
 makedepends=()
 source_x86_64=("https://github.com/shiro/map2/releases/download/$pkgver/map2-$pkgver-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
 source_i686=("https://github.com/shiro/map2/releases/download/$pkgver/map2-$pkgver-cp311-cp311-manylinux_2_17_i686.manylinux2014_i686.whl")
-sha256sums_x86_64=('7d4c55a60c7b050aad25f3601dee97d4dcd605d4a77c112f916e7328fe5d3c64')
-sha256sums_i686=('66f09dec1ca2079261147d24104291ccf955769ba5aa649ebd1f1051087bb140')
+sha256sums_x86_64=('31ea0f89701deeda245869d433179477b39d04e98e93b18bd8c74c81eaa042ad')
+sha256sums_i686=('8e7f7066afa5b13fe811407cecdef2bb3d2cb1d8b977a9e8edf9da47afd8d0e5')
 
 
 package() {
