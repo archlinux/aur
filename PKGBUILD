@@ -99,8 +99,8 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
-_major=6.5
-pkgver=${_major}.13
+_major=6.6
+pkgver=${_major}.4
 _branch=6.x
 xanmod=1
 _revision=
@@ -123,10 +123,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "patch-${pkgver}-xanmod${xanmod}${_revision}.xz::https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-xanmod${xanmod}${_revision}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
         "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0001-bore.patch"
-        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0002-constgran-vanilla-max.patch"
-        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0003-glitched-cfs.patch"
-        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0004-glitched-cfs-additions.patch"
-        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0005-o3-optimization.patch"
+        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0002-o3-optimization.patch"
 )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -139,15 +136,12 @@ _patches=()
 for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
-sha256sums=('7a574bbc20802ea76b52ca7faf07267f72045e861b18915c5272a98c27abf884' # kernel
+sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0' # kernel
             'SKIP'                                                             # kernel signature
-            '9056062aee2045b5cd68c1a043d96dc8dd4793aa87ac394a103f369fbf64d7fd' # xanmod patch
+            'ce833776671df7b8f366f79b3e7f1fbffc967d7e8ad5c055c4e2e7f81c9d4f75' # xanmod patch
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
-            'd3a185427f26dd3356b80290f4648717e548c54614035bd3259c360c17a7d0ca' # 0001-bore.patch
-            'baf8d2d1b0701326ee6ba0ffeabec2b5d716b6e136b836f60069cf6937527165' # 0002-constgran-vanilla-max.patch
-            '21e98d300d48f7d087bfae7bf5fba9fb320e2d6cec20856a29dfeb34a6ff7c3b' # 0003-glitched-cfs.patch
-            '7a308df306e585ca230f724ec5f397e5273f662ebc6ae93a4b5f6d6780a41c3c' # 0004-glitched-cfs-additions.patch
-            'b3c1601f1d43acab973b44813cbb1fcedfc3de9caf71e61615fa92b4cd76d041' # 0005-o3-optimization.patch
+            'a2821a535c652b61a7b102bac93c7928579f6f53d035afd34d40ced89dbc1297' # 0001-bore.patch
+            '30dc69c13d6bb0492ff61e9fdbd3b198eb0bb5b33845726c8008822e9162d667' # 0002-o3-optimization.patch
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -197,7 +191,7 @@ prepare() {
   elif [ "$_tickrate_HZ" = "500" ]; then
     scripts/config --disable HZ_250
     scripts/config --enable HZ_500
-  elif [ "$_tickrate_HZ" = "300" ]; then
+  elif [ "$_tickrate_HZ" = "250" ]; then
     scripts/config --disable HZ_250
     scripts/config --enable HZ_300
   elif [ "$_tickrate_HZ" = "100" ]; then
@@ -407,8 +401,8 @@ _package() {
   echo "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
-  # remove build and source links
-  rm "$_modulesdir"/{source,build}
+  # remove build link
+  rm "$_modulesdir"/build
 }
 
 _package-headers() {
