@@ -1,6 +1,6 @@
 pkgbase = mariadb-connector-odbc
 	pkgdesc = A standardized, LGPL licensed ODBC database driver for MariaDB
-	pkgver = 3.1.19
+	pkgver = 3.1.20
 	pkgrel = 1
 	url = https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/
 	install = mariadb-connector-odbc.install
@@ -14,7 +14,7 @@ pkgbase = mariadb-connector-odbc
 	depends = zlib
 	depends = mariadb-libs
 	conflicts = mariadb-connector-odbc-bin
-	source = https://downloads.mariadb.com/Connectors/odbc/connector-odbc-3.1.19/mariadb-connector-odbc-3.1.19-src.tar.gz
-	sha256sums = 26420dac7d6d630fc34fb2fe77fdc9fc2a7e8e896d274d3c052db9ecd06bd48f
+	source = https://downloads.mariadb.com/Connectors/odbc/connector-odbc-3.1.20/mariadb-connector-odbc-3.1.20-src.tar.gz
+	sha256sums = 41f7db83c907017be67f9941649e7ce1d3597c6d68f6241cb9b7709bbe2a490b
 
 pkgname = mariadb-connector-odbc
