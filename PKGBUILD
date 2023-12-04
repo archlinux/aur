@@ -1,7 +1,9 @@
-# Maintainer: Konstantin Gizdov <arch at kge dot pw>
-# Co-Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Contributor: Konstantin Gizdov <arch at kge dot pw>
+# Contributor: Achilleas Pipinellis <axilleas at archlinux dot gr>
+
 pkgname=vale
-pkgver=2.26.0
+pkgver=2.29.7
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose"
 arch=('i686' 'x86_64')
@@ -9,7 +11,7 @@ url="https://github.com/errata-ai/vale"
 license=('MIT')
 makedepends=('go' 'go-bindata' 'rsync')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a54e5cce0b29e395a22a2476e42c52b2f2a9105caa9520ddf7b7cbf58fb3087b')
+sha256sums=('278d8d49cf42740c38c10254012bbaad01fcf1c628aa69c51c02788d1495885f')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,7 +34,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/bin/vale" "${pkgdir}/usr/bin/vale"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/vale/README.md"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/vale/LICENSE"
+    install -Dm755 bin/vale "${pkgdir}/usr/bin/vale"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/vale/README.md"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/vale/LICENSE"
 }
