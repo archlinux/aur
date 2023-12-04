@@ -1,5 +1,5 @@
 pkgbase = tcl-prompt-git
-	pkgdesc = A powerlevel10k-like prompt of tcl.
+	pkgdesc = Tcl plugin for powerlevel10k style prompt and WakaTime time tracking
 	pkgver = r21.f11e245
 	pkgrel = 1
 	url = https://github.com/wakatime/tcl-prompt
