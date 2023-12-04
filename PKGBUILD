@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=killport-jkfran
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Easily kill processes running on a specified port'
 arch=(aarch64 x86_64 i686 armv7h)
@@ -12,13 +12,13 @@ makedepends=(cargo)
 provides=(killport)
 conflicts=(killport)
 source=("killport-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f1efcce989196417dd71e12fcf72550d135d7dbf5cffb4a96278f603f0695b36')
+sha256sums=('d1a500b1700775a5e24754e2b1f29cde0ad5ad72776b6abe1973173a1a9507b8')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
 
   cd "killport-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
