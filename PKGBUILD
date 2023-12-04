@@ -4,8 +4,8 @@
 
 _pkgname=tiny-irc-client
 pkgname=$_pkgname-git
-pkgver=0.11.0.r18.e125c77
-pkgrel=3
+pkgver=0.11.0.r21.65f367e
+pkgrel=1
 pkgdesc='A terminal IRC client written in Rust'
 arch=(x86_64)
 url=https://github.com/osa1/tiny
@@ -22,7 +22,8 @@ _pkgname=${_pkgname%-irc-client}
 
 pkgver() {
     cd "$srcdir"/$_pkgname
-    git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//'
+    git describe --tags --long --abbrev=7 |\
+        sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
