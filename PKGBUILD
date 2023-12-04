@@ -2,7 +2,7 @@
 
 pkgname=bash-it
 pkgver=3.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc='A community Bash framework.'
 arch=('any')
 url='https://bash-it.readthedocs.io/en/latest/'

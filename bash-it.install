@@ -3,6 +3,13 @@ post_install() {
 
 source /etc/profile.d/bashit.sh
 EOF
+        echo "Successfully installed! You may need to remove the PROMPT configuration from the following files"
+        readarray -t homes < <(grep 'bash$' /etc/passwd | awk -F: '{print $6}')
+        for home in "${homes[@]}"; do
+                [[ -f "$home/.bashrc" ]] && echo -e "\t - $home/.bashrc"
+                [[ -f "$home/.bash_profile" ]] && echo -e "\t - $home/.bash_profile"
+                [[ -f "$home/.profile" ]] && echo -e "\t - $home/.profile"
+        done
 }
 
 post_upgrade() {
@@ -12,8 +19,22 @@ post_upgrade() {
 source /etc/profile.d/bashit.sh
 EOF
         fi
+        echo "Successfully upgraded! You may need to remove the PROMPT configuration from the following files"
+        readarray -t homes < <(grep 'bash$' /etc/passwd | awk -F: '{print $6}')
+        for home in "${homes[@]}"; do
+                [[ -f "$home/.bashrc" ]] && echo -e "\t - $home/.bashrc"
+                [[ -f "$home/.bash_profile" ]] && echo -e "\t - $home/.bash_profile"
+                [[ -f "$home/.profile" ]] && echo -e "\t - $home/.profile"
+        done
 }
 
 post_remove() {
         sed -i '/bashit/d' /etc/bash.bashrc
+        echo "Successfully uninstall! You may need to restore the PROMPT configuration to the following files"
+        readarray -t homes < <(grep 'bash$' /etc/passwd | awk -F: '{print $6}')
+        for home in "${homes[@]}"; do
+                [[ -f "$home/.bashrc" ]] && echo -e "\t - $home/.bashrc"
+                [[ -f "$home/.bash_profile" ]] && echo -e "\t - $home/.bash_profile"
+                [[ -f "$home/.profile" ]] && echo -e "\t - $home/.profile"
+        done
 }
