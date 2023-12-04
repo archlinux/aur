@@ -1,6 +1,6 @@
 pkgbase = ansel-git
 	pkgdesc = Ansel is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs.
-	pkgver = 0.0.0.r440.g57ed58dd5
+	pkgver = 0.0.0.r524.gd825e81a1
 	pkgrel = 1
 	url = https://ansel.photos/
 	arch = i686
@@ -34,6 +34,7 @@ pkgbase = ansel-git
 	depends = libavif
 	depends = jasper
 	depends = libjxl
+	depends = libraw
 	optdepends = dcraw: base curve script
 	optdepends = perl-image-exiftool: base curve script
 	optdepends = imagemagick: base curve and noise profile scripts
