@@ -1,6 +1,6 @@
 pkgbase = sing-box-beta-bin
 	pkgdesc = The universal proxy platform (beta binary version).
-	pkgver = 1.8.0.alpha.8
+	pkgver = 1.8.0.alpha.11
 	pkgrel = 1
 	url = https://github.com/SagerNet/sing-box
 	arch = x86_64
@@ -23,11 +23,11 @@ pkgbase = sing-box-beta-bin
 	sha512sums = 0541f144ee33bb4cb182231794065babae530260b95bff26cbeb5491ab856d40e247895d130629f9dbef58dcd6652f0c69d3e28f57f3bae916d36294565399b0
 	sha512sums = 5afe85ede1e8af0f9caa2db7cd03dec3c7aa0a135feefe26f77748742b22402b90f3d8d8172e535b3c1353b136620e6f20d66d2d782ea8687a66b6c4e6c82650
 	sha512sums = 2a6ba5b9abfc0374c2cc79f0624ae5f4bef0f2fdc77624659ef91eff7ad899e86df2d5956a370eb27e4eb3e68c00165a32cba8ecad08f7d4845eca23ba7cd31f
-	source_x86_64 = sing-box-1.8.0-alpha.8-x86_64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.8.0-alpha.8/sing-box-1.8.0-alpha.8-linux-amd64.tar.gz
-	sha512sums_x86_64 = 3835320cf7b627801bc8c2f2cf1df26238376c67d92c867001d97eba2f92af1bc0da44dcaab63dadb459cfd7f9feef7abac3119fd619f012db8aeb2d0cf78aea
-	source_armv7h = sing-box-1.8.0-alpha.8-armv7h.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.8.0-alpha.8/sing-box-1.8.0-alpha.8-linux-armv7.tar.gz
-	sha512sums_armv7h = 44edbe81e85b1dc1a1b3c14285acd93bf650f38187acbe5f11763a5f367fe867e76a83e53e258e06c6147d3882a97c2bc3929784de5291f83be1c19856c0ff1f
-	source_aarch64 = sing-box-1.8.0-alpha.8-aarch64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.8.0-alpha.8/sing-box-1.8.0-alpha.8-linux-arm64.tar.gz
-	sha512sums_aarch64 = c6f15979bc5faf250526d9f325bacb42f529d2f3c1931fecdd69f2cb1dad74666aeb99a2faf16a1ce802271dc6aa6b1c2b0c13649f6486275edc2577381d92ed
+	source_x86_64 = sing-box-1.8.0-alpha.11-x86_64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.8.0-alpha.11/sing-box-1.8.0-alpha.11-linux-amd64.tar.gz
+	sha512sums_x86_64 = fec1fc66bb72d0df783b87fd8d523c0d4ca64be2d5aaeb17811ecd338c9b7f08a3d737ad56afe7798e506d5f72bc787ebb9a94879ba91ce4b5d352f1a513a7aa
+	source_armv7h = sing-box-1.8.0-alpha.11-armv7h.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.8.0-alpha.11/sing-box-1.8.0-alpha.11-linux-armv7.tar.gz
+	sha512sums_armv7h = 3cc9a4dea3be26b1559fb82566e2fda80bb9e124a90b2d6da6974facbf1d28be41a68ec83df345c7acb29ff66ce2d0f89154d3276ad6d9486b4d4f8aae2ed2bb
+	source_aarch64 = sing-box-1.8.0-alpha.11-aarch64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.8.0-alpha.11/sing-box-1.8.0-alpha.11-linux-arm64.tar.gz
+	sha512sums_aarch64 = cf56790c3b365483ce716efa7877369783aa68de922f25159087641b553ac00a422dc02fe0b5967e02b6579f2d886981784ed9b54422a8687434d7c937133c00
 
 pkgname = sing-box-beta-bin
