@@ -7,9 +7,9 @@
 _pkgname=xdg-utils
 pkgname=$_pkgname-mimeo
 # https://gitlab.freedesktop.org/xdg/xdg-utils/commits/master
-_commit=301a1a4772f1f934a22e106ff032c62ef705462b # master # 2023-08-14
-pkgver=1.1.3+45+g301a1a4
-pkgrel=2
+_commit=21fb316bea83e3374eafc7fbf1e25a0ccdda92cb # master # 2023-11-15
+pkgver=1.2.0+beta1+17+g21fb316
+pkgrel=1
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/xdg-utils/"
@@ -28,7 +28,7 @@ conflicts=($_pkgname)
 source=(#https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz #{,.asc}
         mimeo-detection.patch
         "git+https://gitlab.freedesktop.org/xdg/xdg-utils.git#commit=$_commit")
-sha256sums=('3571910504a3a7a256de5df16954824fc4062697b800c85d7c3005081d601c0a'
+sha256sums=('5f412ee7aecfbdc49bf5a3602e7da23c1ab626755ed074025733ff785348b66c'
             'SKIP')
 #validpgpkeys=('8B75CA7811367175D05F3B03C43570F80CC295E6') # "Per Olofsson <pelle@pqz.se>"
 

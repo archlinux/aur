@@ -1,14 +1,14 @@
-commit 2809ff9e147a3485e835ddbdcb5fe71f5cb26e8f
+commit ce774c0f1b7e328a67ad2d6de987a686e24e89a2
 Author: Narrat <autumn-wind@web.de>
 Date:   Thu Nov 9 21:34:14 2023 +0100
 
     Add support for mimeo
 
 diff --git a/scripts/xdg-email.in b/scripts/xdg-email.in
-index 6135b24..66ba94d 100644
+index b23231a..761aad1 100644
 --- a/scripts/xdg-email.in
 +++ b/scripts/xdg-email.in
-@@ -235,6 +235,18 @@ open_flatpak()
+@@ -260,6 +260,18 @@ open_flatpak()
      fi
  }
  
@@ -27,7 +27,7 @@ index 6135b24..66ba94d 100644
  open_generic()
  {
      local client
-@@ -460,6 +472,10 @@ case "$DE" in
+@@ -481,6 +493,10 @@ case "$DE" in
      open_flatpak "${mailto}"
      ;;
  
@@ -35,14 +35,14 @@ index 6135b24..66ba94d 100644
 +    open_mimeo "${mailto}"
 +    ;;
 +
-     generic|lxqt|enlightenment)
+     generic|enlightenment)
      open_generic "${mailto}"
      ;;
 diff --git a/scripts/xdg-mime.in b/scripts/xdg-mime.in
-index 97e7368..44721aa 100644
+index 215f850..aacd819 100644
 --- a/scripts/xdg-mime.in
 +++ b/scripts/xdg-mime.in
-@@ -99,6 +99,16 @@ info_gnome()
+@@ -123,6 +123,16 @@ info_lxqt()
      fi
  }
  
@@ -59,8 +59,8 @@ index 97e7368..44721aa 100644
  info_generic()
  {
      if mimetype --version >/dev/null 2>&1; then
-@@ -609,6 +619,10 @@ if [ "$action" = "info" ]; then
-         info_gnome "$filename"
+@@ -684,6 +694,10 @@ if [ "$action" = "info" ]; then
+         info_lxqt "$filename"
          ;;
  
 +        mimeo)
@@ -71,10 +71,10 @@ index 97e7368..44721aa 100644
          info_generic "$filename"
          ;;
 diff --git a/scripts/xdg-open.in b/scripts/xdg-open.in
-index 1f925da..9f302ab 100755
+index 1373ca1..f05bb4a 100755
 --- a/scripts/xdg-open.in
 +++ b/scripts/xdg-open.in
-@@ -297,6 +297,17 @@ open_flatpak()
+@@ -305,6 +305,17 @@ open_flatpak()
      fi
  }
  
@@ -92,7 +92,7 @@ index 1f925da..9f302ab 100755
  #-----------------------------------------
  # Recursively search .desktop file
  
-@@ -619,6 +630,10 @@ case "$DE" in
+@@ -660,6 +671,10 @@ case "$DE" in
      open_wsl "$url"
      ;;
  
@@ -104,7 +104,7 @@ index 1f925da..9f302ab 100755
      open_generic "$url"
      ;;
 diff --git a/scripts/xdg-screensaver.in b/scripts/xdg-screensaver.in
-index eb1b698..1dd6f07 100644
+index a88eeff..acc38dc 100644
 --- a/scripts/xdg-screensaver.in
 +++ b/scripts/xdg-screensaver.in
 @@ -123,7 +123,7 @@ perform_action()
@@ -117,10 +117,10 @@ index eb1b698..1dd6f07 100644
        ;;
    esac
 diff --git a/scripts/xdg-settings.in b/scripts/xdg-settings.in
-index 40f739e..a79afa2 100755
+index 59e97cb..a19961a 100755
 --- a/scripts/xdg-settings.in
 +++ b/scripts/xdg-settings.in
-@@ -487,6 +487,44 @@ set_browser_xfce()
+@@ -531,6 +531,44 @@ set_browser_xfce()
  }
  
  # }}} xfce
@@ -165,7 +165,7 @@ index 40f739e..a79afa2 100755
  # {{{ generic
  
  get_browser_generic()
-@@ -730,6 +768,49 @@ set_url_scheme_handler_xfce()
+@@ -816,6 +854,49 @@ set_url_scheme_handler_xfce()
  }
  
  # }}} xfce
@@ -215,7 +215,7 @@ index 40f739e..a79afa2 100755
  # {{{ generic
  
  get_url_scheme_handler_generic()
-@@ -884,6 +965,10 @@ case "$DE" in
+@@ -974,6 +1055,10 @@ case "$DE" in
      dispatch_specific xfce "$@"
      ;;
  
@@ -223,14 +223,14 @@ index 40f739e..a79afa2 100755
 +    dispatch_specific mimeo "$@"
 +    ;;
 +
-     generic|lxqt|enlightenment)
+     generic|enlightenment)
      dispatch_specific generic "$@"
      ;;
 diff --git a/scripts/xdg-utils-common.in b/scripts/xdg-utils-common.in
-index 14259c6..13781ea 100644
+index 5135c86..19a718b 100644
 --- a/scripts/xdg-utils-common.in
 +++ b/scripts/xdg-utils-common.in
-@@ -303,6 +303,9 @@ detectDE()
+@@ -308,6 +308,9 @@ detectDE()
           XFCE)
             DE=xfce
             ;;
@@ -240,10 +240,10 @@ index 14259c6..13781ea 100644
           X-Generic)
             DE=generic
             ;;
-@@ -319,6 +322,7 @@ detectDE()
+@@ -325,6 +328,7 @@ detectDE()
        elif xprop -root 2> /dev/null | grep -i '^xfce_desktop_window' >/dev/null 2>&1; then DE=xfce
-       elif echo $DESKTOP | grep -q '^Enlightenment'; then DE=enlightenment;
-       elif [ x"$LXQT_SESSION_CONFIG" != x"" ]; then DE=lxqt;
+       elif echo "$DESKTOP" | grep -q '^Enlightenment'; then DE=enlightenment;
+       elif [ -n "$LXQT_SESSION_CONFIG" ]; then DE=lxqt;
 +      elif command -v mimeo >/dev/null; then DE=mimeo;
        fi
      fi
