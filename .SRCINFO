@@ -1,0 +1,14 @@
+pkgbase = pascom-client
+	pkgdesc = Pascom Client
+	pkgver = 106.R3601
+	pkgrel = 1
+	url = https://www.pascom.net/
+	arch = x86_64
+	license = custom: commercial
+	optdepends = xcb-util-cursor: Needed for mouse cursor support under X11
+	source = pascom_Client-106.R3601-linux.tar.bz2::https://my.pascom.net/update/client/cloud/linux
+	source = pascom-client.desktop
+	sha256sums = c7acfa3851a2877326900f5101217880f183ac8b088151d09c583e8942794579
+	sha256sums = c59ab91a5cb239d50bc35f21bc884c1dfb3a4e1b6ce3c2478bc229f56c83dc15
+
+pkgname = pascom-client

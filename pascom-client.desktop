@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pascom Client
+Comment=Pascom Client for Linux
+Exec=/opt/pascom-client/AppRun
+Icon=pascom-client
+Type=Application
+Categories=Network;InstantMessaging;Chat;Telephony;VoIP;
+StartupWMClass=pascom
+Terminal=false
