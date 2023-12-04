@@ -13,7 +13,7 @@
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
 pkgver=3.28.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 arch=(x86_64)
 url='https://qgis.org/'
@@ -23,7 +23,7 @@ depends=(ocl-icd proj geos gdal expat spatialindex qwt libzip sqlite3 protobuf
          qt5-base qt5-svg qt5-serialport qt5-location qt5-3d qt5-declarative
          qscintilla-qt5 qtkeychain-qt5 qca-qt5 gsl python-pyqt5 python-qscintilla-qt5
          hdf5 netcdf libxml2) # laz-perf
-makedepends=(cmake ninja opencl-clhpp fcgi qt5-tools sip pyqt-builder)
+makedepends=(cmake ninja opencl-clhpp fcgi qt5-tools)
 optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin')
 provides=("$_pkgname=$pkgver")
@@ -58,6 +58,7 @@ build() {
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
     -DWITH_PDAL=FALSE \
+    -DWITH_BINDINGS=FALSE \
     -DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE \
     -DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE \
     -DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
