@@ -10,11 +10,9 @@ conflicts=("chdig")
 provides=("chdig")
 url="https://github.com/azat/chdig"
 license=('MIT')
-
 source=(
     "$pkgname::git+$url"
 )
-
 sha256sums=(
     'SKIP'
 )
