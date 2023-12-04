@@ -1,6 +1,6 @@
 pkgbase = whitesur-gtk-theme
 	pkgdesc = A macOS BigSur-like theme for your GTK apps
-	pkgver = 2023.06.30
+	pkgver = 2023.10.13
 	pkgrel = 1
 	url = https://github.com/vinceliuice/WhiteSur-gtk-theme
 	install = whitesur-gtk-theme.install
@@ -13,7 +13,7 @@ pkgbase = whitesur-gtk-theme
 	optdepends = whitesur-icon-theme: matching icon theme
 	optdepends = whitesur-cursor-theme: matching cursor theme
 	conflicts = whitesur-gtk-theme-git
-	source = whitesur-gtk-theme-2023-06-30.tar.gz::https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/2023-06-30.tar.gz
-	sha256sums = a73800e3c0db1f2c441bc890fa70c32505dd1b80c2c21b2c6f3e7d1ac2078c1e
+	source = whitesur-gtk-theme-2023-10-13.tar.gz::https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/2023-10-13.tar.gz
+	sha256sums = 1e100d836e72ef0d9d6ca122afca292439131933b04c992541af68767c9354f3
 
 pkgname = whitesur-gtk-theme
