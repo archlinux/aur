@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rmpfr
-_pkgver=0.9-3
+_pkgver=0.9-4
 pkgname=r-${_pkgname,,}
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='R MPFR - Multiple Precision Floating-Point Reliable'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-sfsmisc
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('828dbdc98e28a9f7beb0d9bec251a7387b54908753314d75c1400754560cf641')
+sha256sums=('cec798f46e6331ef90bf04ee0338cb60d5f566e3f15c4995a2ffc6b504a1a8bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
