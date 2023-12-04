@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qrocrown-bin
 _pkgname=QroCrown
-pkgver=1.2.8
-pkgrel=2
+pkgver=1.2.9
+_electronversion=20
+pkgrel=1
 pkgdesc="An enhanced launcher for keeping your games. By QRodEX for QRodEXers."
 arch=('x86_64')
 url="https://github.com/Qrodex/QroCrown"
@@ -10,7 +11,7 @@ license=('GPL3')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'electron20'
+    "electron${_electronversion}"
     'wine'
     'winetricks'
 )
@@ -18,9 +19,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2b4f720e42c8c6ad25f7c5b429ac04d105dc9124bedf4ba221e7783db7e19225'
-            'f43107ecbc79d9b089d002b87fae1fa59a56f5831276ea5b81bcf91b12526a50')
+sha256sums=('da0014753835e68b36bc41bb84fa87cfd54d7cf68ad31565e071350d87098009'
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
