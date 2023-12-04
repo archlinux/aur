@@ -2,9 +2,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=rjsoncons
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="'C++' Header-Only 'jsoncons' Library for 'JSON' Queries"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f942064480e98fc62cc6f292ce14af84999037f09fc740daf39693907872cff8')
+sha256sums=('f90203527691b5f280e0e17f82ae62f5305a520057b124867d8d900a316fd50a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

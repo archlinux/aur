@@ -1,6 +1,6 @@
 pkgbase = r-rjsoncons
 	pkgdesc = 'C++' Header-Only 'jsoncons' Library for 'JSON' Queries
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rjsoncons
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-rjsoncons
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/rjsoncons_1.0.0.tar.gz
-	sha256sums = f942064480e98fc62cc6f292ce14af84999037f09fc740daf39693907872cff8
+	source = https://cran.r-project.org/src/contrib/rjsoncons_1.0.1.tar.gz
+	sha256sums = f90203527691b5f280e0e17f82ae62f5305a520057b124867d8d900a316fd50a
 
 pkgname = r-rjsoncons
