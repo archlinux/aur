@@ -1,6 +1,6 @@
 pkgbase = python-galois-git
 	pkgdesc = A performant NumPy extension for Galois fields and their applications
-	pkgver = 0.3.4.r0.ga2fa1ac9
+	pkgver = 0.3.7.r0.g529ba26
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mhostetter/galois

@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-galois-git
 _name=galois
-pkgver=0.3.4.r0.ga2fa1ac9
+pkgver=0.3.7.r0.g529ba26
 pkgrel=1
 epoch=1
 pkgdesc="A performant NumPy extension for Galois fields and their applications"
@@ -27,25 +27,24 @@ source=("git+https://github.com/mhostetter/galois.git")
 b2sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_name}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${_name}"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${_name}"
+    cd "${_name}"
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "${srcdir}/${_name}"
-    python -m installer --destdir="$srcdir/test" dist/*.whl
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    export PYTHONPATH="$srcdir"/test/usr/lib/python${python_version}/site-packages
-    python -m pytest tests/
+    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    cd "${_name}"
+    python -m installer --destdir=test_dir dist/*.whl
+    PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" pytest -v
 }
 
 package() {
-    cd "${srcdir}/${_name}"
+    cd "${_name}"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
