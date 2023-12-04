@@ -1,0 +1,15 @@
+pkgbase = live-chart
+	pkgdesc = A real-time charting library for Vala and GTK4 based on Cairo
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/lcallarec/live-chart
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	depends = gtk3
+	depends = gtk4
+	depends = libgee
+	source = live-chart-1.9.1.tar.gz::https://github.com/lcallarec/live-chart/archive/1.9.1.tar.gz
+	sha256sums = 7b5f1d0807b5f6e8b09e2c1dd468af22379578b55b38afd530c0ff006bc33e53
+
+pkgname = live-chart
