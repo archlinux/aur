@@ -1,6 +1,6 @@
 pkgbase = bash-prompt-git
 	pkgdesc = Bash plugin for powerlevel10k style prompt and WakaTime time tracking
-	pkgver = r10.8a35d4e
+	pkgver = r12.d472bce
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/bash-prompt
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = bash-prompt-git
 	depends = lsb-release
 	depends = procps-ng
 	depends = ncurses
-	source = git+https://github.com/Freed-Wu/bash-prompt#tag=8a35d4e4fa22b97aa55b2399cb54d09e9faaf3fc
+	source = git+https://github.com/Freed-Wu/bash-prompt#tag=d472bce2ca0593a45c99c7362b4d587a016b5d51
 	sha256sums = SKIP
 
 pkgname = bash-prompt-git

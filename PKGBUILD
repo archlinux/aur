@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=bash-prompt
 pkgname=$_pkgname-git
-pkgver=r10.8a35d4e
+pkgver=r12.d472bce
 pkgrel=1
 pkgdesc="Bash plugin for powerlevel10k style prompt and WakaTime time tracking"
 arch=(any)
@@ -10,7 +10,7 @@ url=https://github.com/Freed-Wu/$_pkgname
 license=(GPL3)
 depends=(zsh-theme-powerlevel10k lsb-release procps-ng ncurses)
 makedepends=(git)
-source=("git+$url#tag=8a35d4e4fa22b97aa55b2399cb54d09e9faaf3fc")
+source=("git+$url#tag=d472bce2ca0593a45c99c7362b4d587a016b5d51")
 sha256sums=(SKIP)
 
 pkgver() {
