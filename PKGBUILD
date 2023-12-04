@@ -3,7 +3,7 @@
 
 pkgname='fastgron-git'
 _pkgname='fastgron'
-pkgver=0.6.4.r1.gf89e790
+pkgver=0.7.0.r0.g5013f0b
 pkgrel=1
 pkgdesc='High-performance JSON to GRON (greppable, flattened JSON) converter (development version)'
 arch=('x86_64' 'aarch64')
@@ -45,8 +45,19 @@ check() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
 
-  install -Dm0644 "$_pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 "$_pkgname/LICENSE"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0644 "$_pkgname/GRON.md"   "$pkgdir/usr/share/doc/$pkgname/GRON.md"
+  install -vDm0644 "$_pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 "$_pkgname/LICENSE"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# 🪷 Beyond the Known — 365 Days of Exploration
+#
+# 📆 4th December
+#
+# Don't Mistake the Finger Pointing at the Moon for the Moon.
+#
+# Forget the moon; there is no finger!
+#
+# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
