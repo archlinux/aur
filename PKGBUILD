@@ -19,10 +19,10 @@ pkgname=(
   pipewire-common-v4l2-git
   pipewire-common-x11-bell-git
 )
-pkgver=1.0.0.r2.g9daca346
+pkgver=1.0.0.r24.gf5546d27
 _so_ver=0.3
 _short_pkgver=${pkgver%%.r*}
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64)
@@ -378,8 +378,17 @@ package_pipewire-common-pulse-git() {
     pipewire-session-manager
     systemd-libs
   )
-  provides=(pulseaudio pulseaudio-bluetooth pipewire-pulse)
-  conflicts=(pulseaudio pulseaudio-bluetooth pipewire-pulse)
+  provides=(
+    pulse-native-provider
+    pulseaudio
+    pulseaudio-bluetooth
+    pipewire-pulse
+  )
+  conflicts=(
+    pulseaudio
+    pulseaudio-bluetooth
+    pipewire-pulse
+  )
   install=pipewire-pulse.install
 
   mv pulse/* "$pkgdir"

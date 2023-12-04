@@ -1,7 +1,7 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 1.0.0.r2.g9daca346
-	pkgrel = 1
+	pkgver = 1.0.0.r24.gf5546d27
+	pkgrel = 2
 	url = https://pipewire.org
 	arch = x86_64
 	license = MIT
@@ -51,7 +51,7 @@ pkgname = pipewire-common-git
 	license = LGPL-2.1-or-later
 	depends = gcc-libs
 	depends = glibc
-	depends = libpipewire-common-git=1.0.0.r2.g9daca346-1
+	depends = libpipewire-common-git=1.0.0.r24.gf5546d27-2
 	depends = libcamera-base.so
 	depends = libcamera.so
 	depends = libdbus-1.so
@@ -176,6 +176,7 @@ pkgname = pipewire-common-pulse-git
 	depends = pipewire-common-audio-git
 	depends = pipewire-session-manager
 	depends = systemd-libs
+	provides = pulse-native-provider
 	provides = pulseaudio
 	provides = pulseaudio-bluetooth
 	provides = pipewire-pulse
