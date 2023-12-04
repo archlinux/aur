@@ -1,0 +1,14 @@
+diff --git a/regioneReloaded/tests/testthat/_snaps/crosswisePermTest.md b/regioneReloaded/tests/testthat/_snaps/crosswisePermTest.md
+index d72b6d0..3d84b6c 100644
+--- a/regioneReloaded/tests/testthat/_snaps/crosswisePermTest.md
++++ b/regioneReloaded/tests/testthat/_snaps/crosswisePermTest.md
+@@ -97,7 +97,8 @@
+       crosswisePermTest(Alist = AlienRSList_narrow_small, Blist = AlienRSList_narrow_small,
+         sampling = FALSE, genome = AlienGenome, ranFUN = "resampleRegions", evFUN = "numOverlaps",
+         ntimes = 10, mc.cores = 2)
+-    Warning <simpleWarning>
++    Condition
++      Warning in `crosswisePermTest()`:
+       resampleRegions function need that 'universe' is not NULL, universe was created using all the regions present in Alist
+     Output
+       [1] "Performing permutation tests for regA (1 of 3)"
