@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-fly-pie
 _pkgname=Fly-Pie
 pkgver=24
-pkgrel=1
+pkgrel=2
 pkgdesc="Fly-Pie is an innovative marking menu written as a GNOME Shell extension"
 arch=('any')
 url="https://github.com/Schneegans/Fly-Pie"
@@ -25,4 +25,5 @@ package() {
   
   install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
   bsdtar -xvf $_uuid.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  glib-compile-schemas "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas"
 }
