@@ -6,7 +6,7 @@
 
 pkgname=pass-git
 pkgver=1.7.4.r12.28cec11
-pkgrel=1
+pkgrel=2
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
 arch=(any)
 url=https://passwordstore.org
@@ -32,7 +32,7 @@ sha256sums=(SKIP)
 
 pkgver() {
     cd "$srcdir"/password-store
-    git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+    git describe --long --abbrev=7 | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 check() {

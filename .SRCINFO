@@ -1,7 +1,7 @@
 pkgbase = pass-git
 	pkgdesc = Stores, retrieves, generates, and synchronizes passwords securely
 	pkgver = 1.7.4.r12.28cec11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://passwordstore.org
 	arch = any
 	license = GPL2
