@@ -27,6 +27,8 @@ _mplabx_installer="MPLABX-v${pkgver}-linux-installer"
 
 _mplabcomm_dir="/opt/microchip/mplabcomm"
 
+# Override DLAGENTS as microchip doesn't allow direct download if the Referer header is not provided
+DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -e "https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide" -o %o %u')
 
 source=("https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/${_mplabx_installer}.tar"
         "LICENSE"
