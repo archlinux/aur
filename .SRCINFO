@@ -1,6 +1,6 @@
 pkgbase = basiliskii-git
 	pkgdesc = Open Source 68k Macintosh Emulator
-	pkgver = r3387.3d49e979
+	pkgver = r3388.021bb501
 	pkgrel = 1
 	url = https://basilisk.cebix.net
 	arch = i686
