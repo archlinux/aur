@@ -1,6 +1,6 @@
 pkgbase = gitify-bin
 	pkgdesc = GitHub notifications on your menu bar
-	pkgver = 4.4.0
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://www.gitify.io/
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = gitify-bin
 	depends = libutil-linux
 	depends = libappindicator-gtk3
 	depends = libsecret
-	noextract = gitify-bin-4.4.0.deb
+	noextract = gitify-bin-4.5.1.deb
 	options = !strip
-	source = gitify-bin-4.4.0.deb::https://github.com/manosim/gitify/releases/download/v4.4.0/gitify_4.4.0_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/manosim/gitify/v4.4.0/LICENSE
-	sha256sums = fed2825cc791b94d737cfa8ae14cadf5981428c14847dd9459ed10a892e64058
+	source = gitify-bin-4.5.1.deb::https://github.com/manosim/gitify/releases/download/v4.5.1/gitify_4.5.1_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/manosim/gitify/v4.5.1/LICENSE
+	sha256sums = 0b64a6bb7dade21aed4faf169c4bb8feff594ac100e7d432de6faf5d00b8f78a
 	sha256sums = SKIP
 
 pkgname = gitify-bin
