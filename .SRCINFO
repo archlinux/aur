@@ -18,6 +18,6 @@ pkgbase = siyuan-git
 	source = siyuan::git+https://github.com/siyuan-note/siyuan.git
 	source = siyuan.sh
 	sha256sums = SKIP
-	sha256sums = eb673414fef4621fdd24a454b94be674860bdcc262a5a6aa9ada0719e81dc5f7
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = siyuan-git

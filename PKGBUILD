@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
 pkgver=2.11.0.r0.ga75abfb81
+_electronversion=27
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
 arch=('any')
@@ -15,7 +16,7 @@ provides=(
     "${pkgname%-git}"
 )
 depends=(
-    'electron27'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -30,7 +31,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'eb673414fef4621fdd24a454b94be674860bdcc262a5a6aa9ada0719e81dc5f7')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -42,15 +43,24 @@ _ensure_local_nvm() {
     nvm use 18
 }
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name="${pkgname%-git}" --exec="${pkgname%-git}"
     sed "2i Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname%-git}/app"
+    pnpm config set store-dir "${srcdir}/.pnpm_store"
+    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
+    pnpm config set link-workspace-packages true
     sed '/- target: "tar.gz"/d' -i electron-builder-linux.yml
     pnpm install --no-frozen-lockfile
     pnpm run build
     cd "${srcdir}/${pkgname%-git}/kernel"
     export CGO_ENABLED=1
+    export GOCACHE="${srcdir}/go-build"
+    export GOMODCACHE="${srcdir}/go/pkg/mod"
     #For Chinese Only
     #export GOPROXY=https://goproxy.cn,direct
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
