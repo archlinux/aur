@@ -2,7 +2,7 @@
 # Maintainer: Ferdinand Bachmann <theferdi265@gmail.com>
 
 pkgname=sv2v
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="SystemVerilog to Verilog conversion"
 url="https://github.com/zachjs/sv2v"
@@ -11,7 +11,7 @@ arch=('x86_64')
 depends=('ghc-libs' 'haskell-cmdargs' 'haskell-githash' 'haskell-hashable' 'haskell-vector')
 makedepends=('ghc' 'alex' 'happy')
 source=("https://github.com/zachjs/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b3d4b8d7b2ffe5fb81cc6eabf9b66d5b6068799f16fb0abc8c37fa7472483c59')
+sha256sums=('06a5304b8b5c3cdfd9b43231d91d50f93b83c3dbf1c410e96b9e55705b8ca431')
 
 build() {
   cd $pkgname-$pkgver

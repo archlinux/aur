@@ -1,6 +1,6 @@
 pkgbase = sv2v
 	pkgdesc = SystemVerilog to Verilog conversion
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/zachjs/sv2v
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = sv2v
 	depends = haskell-githash
 	depends = haskell-hashable
 	depends = haskell-vector
-	source = https://github.com/zachjs/sv2v/archive/refs/tags/v0.0.10.tar.gz
-	sha256sums = b3d4b8d7b2ffe5fb81cc6eabf9b66d5b6068799f16fb0abc8c37fa7472483c59
+	source = https://github.com/zachjs/sv2v/archive/refs/tags/v0.0.11.tar.gz
+	sha256sums = 06a5304b8b5c3cdfd9b43231d91d50f93b83c3dbf1c410e96b9e55705b8ca431
 
 pkgname = sv2v
