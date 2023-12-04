@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.16.1
+pkgver=1.16.3
+_electronversion=27
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
 arch=(
@@ -11,7 +12,7 @@ url="https://github.com/viarotel-org/escrcpy"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'electron27'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'scrcpy'
 )
@@ -26,10 +27,19 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '941cb7196d03283a6e65a2271f0c8381a9ec8176f38ce9dc9916f3f89b29a720')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     sed -e '81,84d' -e 's|"deb"|"AppImage"|g' -i electron-builder.json
     npm install
     npm run build:linux
