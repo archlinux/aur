@@ -1,12 +1,13 @@
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Maintainer: Alex Stelmachonak <mail@ava1ar.me>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Dale Blount <dale@archlinux.org>
 # Contributor: Manolis Tzanidakis
 # Contributor: Leonid Isaev
 
 pkgname=autofs
-pkgver=5.1.8
-pkgrel=2
+pkgver=5.1.9
+pkgrel=1
 pkgdesc='A kernel-based automounter for Linux'
 arch=('x86_64')
 url='https://www.kernel.org/pub/linux/daemons/autofs/'
@@ -23,7 +24,7 @@ backup=('etc/autofs/auto.master'
         'etc/autofs/autofs_ldap_auth.conf'
         'etc/default/autofs')
 source=("https://www.kernel.org/pub/linux/daemons/${pkgname}/v5/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('b33d1059855664b20eeda26f3e28ff518fb0c3d58f565570af2ae569dc73c0fd')
+sha256sums=('87e6af6a03794b9462ea519781e50e7d23b5f7c92cd59e1142c85d2493b3c24b')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
