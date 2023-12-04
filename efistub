@@ -72,7 +72,7 @@ EFISTUB_LINUX="/boot/vmlinuz-linux"
 EFISTUB_INITRDS=
 EFISTUB_CMDLINE=
 EFISTUB_OS_RELEASE="@/etc/os-release"
-EFISTUB_UNAME="$(uname -r)"
+EFISTUB_UNAME="$(uname -a)"
 EFISTUB_STUB="/usr/lib/systemd/boot/efi/linuxx64.efi.stub"
 EFISTUB_DEST=
 
@@ -96,24 +96,18 @@ for var in "${CONFIG_VARS[@]}"; do
  fi
 done
 
-# assemble ukify command
-UKIFY_COMMAND="$UKIFY_BIN \
+# add all initrds
+for initrd in "${EFISTUB_INITRDS[@]}"; do
+ INITRDS="${INITRDS} --initrd="$initrd""
+done
+
+# build unified efi image
+$UKIFY_BIN build \
 --linux="$EFISTUB_LINUX" \
 --cmdline="$EFISTUB_CMDLINE" \
 --os-release="$EFISTUB_OS_RELEASE" \
 --uname="$EFISTUB_UNAME" \
 --efi-arch=x64 \
---output="$EFISTUB_DEST""
-
-# add all initrds
-for initrd in "${EFISTUB_INITRDS[@]}"; do
- UKIFY_COMMAND="${UKIFY_COMMAND} --initrd="$initrd""
-done
-
-# add actual build command
-UKIFY_COMMAND="$UKIFY_COMMAND build"
-
-printf 'Running: %s\n' "$UKIFY_COMMAND"
-$UKIFY_COMMAND
+--output="$EFISTUB_DEST" \
+$INITRDS
 check_failed "ERROR: Failed to build unified EFI image!\n"
-printf 'Done!\n'

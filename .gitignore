@@ -1,2 +1,7 @@
 *.conf
 *.efi
+src/
+pkg/
+arch-efistub/
+*.pkg*
+*.zst
