@@ -2,8 +2,8 @@
 
 pkgname=lightdm-slick-greeter-mint-theme
 _pkgname=slick-greeter
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A slick-looking LightDM greeter. With additional options enabled"
 arch=('x86_64')
 url="https://github.com/linuxmint/${_pkgname}"
@@ -43,7 +43,7 @@ source=(
     "${_pkgname}.conf"
 )
 sha256sums=(
-    'a023cddbe5e57cd68b42545603231185f09032e566ef9e8afcc4c11b31bc6521'
+    '24ddfb1a01e3f49ad96618b946d15cc7ab7629f6238a93c9e8d4a1b362be2882'
     'f1a4ea92f61d90ba2d8915da582891e09baca42cf623863bfef26022544c34df'
 )
 
