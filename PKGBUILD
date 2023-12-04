@@ -3,7 +3,7 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (Git version)"
-pkgver=23.3.branchpoint.r1716.gec43c20
+pkgver=23.3.branchpoint.r1864.g3816e5d
 pkgrel=1
 arch=('x86_64')
 depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
@@ -22,7 +22,7 @@ source=("git+${url}.git"
 sha512sums=('SKIP'
             'e7d3152d918a7c8d438bd58f1efffb199842034dee876a60ea9aea5fa9d6de558bdb1c708572ad7cd2b5436bafbd2e945ce18a1ade560dfeba6b1359549a0e74'
             '770d195f571aabc0e9dddf254576c29bbfff34ff0af0edfb6ede9864d25ef12247f2f5afd770d5ca70e8a9ac900623b92892211d73bd8bd4075d95c012367742'
-            'f5e63974d7cb17e2a96396a8003fb799e39c36d09baa9389fd60cdcba0ce682f40b51c85172e416b53959e4bf14631fcd8ea0f262fbf8f8e83dfd990e2116f18'
+            'e4e8bbce730e8f2aac0fc407fa750bb0eeca78348fbc25904b59bd810c639e64a8c3c7f26566a6c9e749af38df96177b1bf82018780a763ce7d4db6183cb562a'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 install="${pkgname}.install"
 
