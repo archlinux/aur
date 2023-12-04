@@ -2,7 +2,7 @@
 
 pkgname=reboot-guard
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Block systemd-initiated poweroff/reboot/halt until configurable condition checks pass"
 arch=('any')
 url="https://github.com/ryran/reboot-guard"
@@ -24,6 +24,6 @@ package() {
 	cd "$pkgname-$pkgver"
 	mkdir -p "${pkgdir}/usr/bin/"
 	install -D -m 755 rguard "${pkgdir}/usr/bin/"
-	mkdir -p "$pkgdir/etc/systemd/system/"
-	install -D -m 644 rguard.service "$pkgdir/etc/systemd/system/"
+	mkdir -p "$pkgdir/usr/lib/systemd/system/"
+	install -D -m 644 rguard.service "$pkgdir/usr/lib/systemd/system/"
 }
