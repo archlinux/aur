@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.6.2
+_kernver=6.6.3
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.6.2-arch1-1
+_KERNNAME=6.6.3-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('08cd48065f6b89c359f8551016eb2a4239af0b6d2eea181b60c26296daeaf3cb'
-            'a9562ef8d62d9de020c032306317c54064da4b66c3201bb0983d49382744041b'
-            'e6494881196e8bde83734fe682d73be6e8c5c73b9dd283720736dcf7408ad25d')
+sha256sums=('63020eb80385fae5d130f97c66ca5d1ca35af37b51510a145627f4674e153016'
+            'b076eff67eae1cb7a6df364ccdc212e0eb58a423e5e67dc2ae6998fdd5117239'
+            '86cb75289ee87050e1480e1f0e08de80beb13506b58bef651e583617ee0504c0')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.6.2.arch1-1-bin() {
+package_linux6.6.3.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux6.6.2.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.6.2.arch1-1-headers-bin() {
+package_linux6.6.3.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux6.6.2.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.6.2.arch1-1-docs-bin() {
+package_linux6.6.3.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
