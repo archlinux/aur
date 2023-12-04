@@ -1,6 +1,6 @@
 pkgbase = quint
 	pkgdesc = Quint is an executable specification language with design and tooling focused on usability. It is based on the Temporal Logic of Actions
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/informalsystems/quint
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = quint
 	depends = nodejs
 	provides = quint
 	conflicts = quint
-	source = https://registry.npmjs.org/@informalsystems/quint/-/quint-0.16.0.tgz
-	source = https://github.com/informalsystems/quint/raw/v0.16.0/LICENSE
-	sha256sums = 6ef7e43f3c124359a63934381e340bc47b36b866b1fc7a02fab25cebb35bb692
+	source = https://registry.npmjs.org/@informalsystems/quint/-/quint-0.17.0.tgz
+	source = https://github.com/informalsystems/quint/raw/v0.17.0/LICENSE
+	sha256sums = 1a2385c8f497dcc6773edd742055972512856250beaacfb91ae6078ebd98c603
 	sha256sums = 0f8c4f9a99d4861ee62ade9a9526d09570844bdeab3e6bca500383d5ae7d9495
 
 pkgname = quint
