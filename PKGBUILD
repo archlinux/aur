@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=color-utils
 pkgbase=dfl-color-utils
 pkgname=('dfl-color-utils' 'dfl-color-utils-qt6')
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple pure Qt/C++ implementation of the cylindrical color space model characterized by Hue-Chroma-Luma"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('cb436f7f0d479c9cf8f7eacd694b6071')
+md5sums=('396043c3d591445db6d6f515cd05a0ce')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
