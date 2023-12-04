@@ -1,7 +1,7 @@
 pkgbase = wireshark-oqs
 	pkgdesc = Network traffic and protocol analyzer/sniffer with support for PQK algorithms
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wireshark.org/
 	arch = x86_64
 	license = GPL2

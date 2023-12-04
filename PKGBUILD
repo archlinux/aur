@@ -10,7 +10,7 @@ pkgbase=wireshark-oqs
 _pkgbase=wireshark
 pkgname=('wireshark-oqs-cli' 'wireshark-oqs-qt')
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Network traffic and protocol analyzer/sniffer with support for PQK algorithms'
 url='https://www.wireshark.org/'
 arch=('x86_64')
@@ -68,6 +68,7 @@ package_wireshark-oqs-cli() {
 
   cd ${_pkgbase}-${pkgver}
   DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" cmake --install build --component Development
 
   # wireshark uid group is 150
   install -Dm 644 "${srcdir}"/wireshark.sysusers "${pkgdir}"/usr/lib/sysusers.d/wireshark.conf
