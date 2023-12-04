@@ -8,8 +8,8 @@ pkgdesc="Nix language server, based on nix libraries"
 arch=(i686 x86_64 arm aarch64)
 url=https://github.com/nix-community/$pkgname
 license=(LGPL3)
-depends=(boost-libs libbacktrace)
-makedepends=(meson boost libbacktrace nix)
+depends=(libbacktrace nix boost-libs llvm)
+makedepends=(meson pkg-config bison flex libbacktrace nix gtest boost llvm)
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=(SKIP)
 
