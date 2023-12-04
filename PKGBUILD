@@ -5,7 +5,7 @@
 # Contributor : Jameson Pugh <imntreal@gmail.com>
 
 pkgname=domoticz
-pkgver=2023.1
+pkgver=2023.2
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -27,7 +27,7 @@ makedepends=('git'
 install='domoticz.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/domoticz/domoticz/archive/${pkgver}.tar.gz"
         'domoticz.service')
-sha256sums=('3144372d0847cb4d22a8c4b1362cd31885b37671adc682c3a8e9435762cde338'
+sha256sums=('32bcf49df8c80c470352e63004a82d9601b90ccf406096099656250a4515ac28'
             '908e2848731eef27928f87936f94ff3df280901559fcf5f4754b1a8139e4a38a')
 
 prepare() {
