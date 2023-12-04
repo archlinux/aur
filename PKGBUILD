@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=code-stats-bash
 pkgname="$_pkgname-git"
-pkgver=r41.3c097db
+pkgver=r42.96a6ead
 pkgrel=1
 pkgdesc="code::stats plugin for bash"
 arch=(any)
@@ -10,7 +10,7 @@ url=https://github.com/Freed-Wu/code-stats-bash
 license=(MIT)
 depends=(bash curl)
 makedepends=(git)
-source=("git+$url#tag=3c097db0fb6ec89cef8a61752e5e614c45c4478e")
+source=("git+$url#tag=96a6eadf17ac51261359d7fc58358687a9cf9abe")
 sha256sums=(SKIP)
 
 pkgver() {
