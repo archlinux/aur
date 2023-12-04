@@ -1,5 +1,5 @@
 pkgbase = perl-reply-plugin-prompt
-	pkgdesc = Reply plugin for powerlevel10k style prompt
+	pkgdesc = Perl Reply plugin for powerlevel10k style prompt and WakaTime time tracking
 	pkgver = 0.0.21
 	pkgrel = 1
 	url = https://github.com/wakatime/Reply-Plugin-Prompt
