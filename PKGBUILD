@@ -2,20 +2,21 @@
 
 pkgname=obs-multi-rtmp
 pkgver=0.5.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Multiple RTMP outputs plugin for OBS Studio.'
 arch=('x86_64')
 url='https://github.com/sorayuki/obs-multi-rtmp'
 license=('GPL')
 depends=('obs-studio')
-source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-x86_64-linux-gnu.deb")
-sha256sums=('40a29f6e83d132b16ecb6b85c826af7b497e625a4c3bddc670ab885109931c87')
+source=("${url}/releases/download/${pkgver}-flatpak/${pkgname}-${pkgver}-x86_64-linux-gnu.tar.xz")
+sha256sums=('725c8d4b92946801e4b7e61e712cc40536f13a48719400d5802f3a34dbbae5c7')
 
 package() {
-    cd "${srcdir}" || exit
-    tar -xf data.tar.gz -C "${pkgdir}"
-
     cd "${pkgdir}" || exit
-    mv usr/lib/x86_64-linux-gnu/obs-plugins usr/lib
-    rm -r usr/lib/x86_64-linux-gnu
+
+    mkdir -p usr/lib/obs-plugins
+    mkdir -p usr/share/obs/obs-plugins/obs-multi-rtmp
+
+    cp -R "${srcdir}/obs-multi-rtmp/bin/64bit/"* usr/lib/obs-plugins
+    cp -R "${srcdir}/obs-multi-rtmp/data/"* usr/share/obs/obs-plugins/obs-multi-rtmp
 }
