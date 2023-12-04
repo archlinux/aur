@@ -1,3 +1,7 @@
+# shellcheck disable=SC2034,SC2154
+# - SC2034 - appears unused.
+# - SC2154 - pkgdir is referenced but not assigned.
+
 # Maintainer: Azat Khuzhin <a3at.mail@gmail.com>
 pkgname=chdig-git
 pkgver=v0.4.0.r31.g0bf05ba
