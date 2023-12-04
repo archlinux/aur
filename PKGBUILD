@@ -23,7 +23,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '4af015cab61ba72cda4118a9a842cd941a850a7d197e6a1da2a8e77eafcc4455')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
