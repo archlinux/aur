@@ -1,0 +1,16 @@
+pkgbase = kasumi-unicode
+	pkgdesc = Dictionary management tool for anthy-unicode
+	pkgver = 2.6
+	pkgrel = 1
+	url = https://github.com/fujiwarat/kasumi-unicode
+	arch = x86_64
+	license = LGPL
+	license = GPL
+	makedepends = gcc12
+	depends = anthy-unicode
+	depends = gtk3
+	conflicts = kasumi
+	source = https://github.com/fujiwarat/kasumi-unicode/releases/download/2.6/kasumi-unicode-2.6.tar.gz
+	sha512sums = fa97e3ca6199b2736135741ef7f627c999c5da86d2cb5b3698b1f29508867fb7511e1e54465387ca47755f97275c0535c1f5decf8fbe5446a4de527637464269
+
+pkgname = kasumi-unicode
