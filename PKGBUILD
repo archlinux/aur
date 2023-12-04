@@ -8,14 +8,26 @@
 pkgname=modsecurity2
 pkgver=2.9.7
 _localpkgname_ver=${pkgname%2}-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, v2 branch'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/SpiderLabs/ModSecurity/tree/v2/master'
 license=('APACHE')
 depends=(
-  'apache' 'apr-util' 'pcre'
-  'libxml2' 'lua' 'curl' 'yajl'
+  'apache'
+  'apr-util'
+  'pcre'
+  'libxml2'
+  'lua'
+  'curl'
+  'yajl'
+  'db'
+  'perl'
+  'apr'
+  'libldap'
+  'expat'
+  'glibc'
+  'gdbm'
 )
 provides=("${pkgname}=${pkgver}" "modsecurity")
 conflicts=("modsecurity")

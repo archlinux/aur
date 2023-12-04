@@ -1,9 +1,9 @@
 pkgbase = modsecurity2
 	pkgdesc = A cross platform web application firewall engine for Apache, IIS and Nginx, v2 branch
 	pkgver = 2.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpiderLabs/ModSecurity/tree/v2/master
-	arch = any
+	arch = x86_64
 	license = APACHE
 	depends = apache
 	depends = apr-util
@@ -12,6 +12,13 @@ pkgbase = modsecurity2
 	depends = lua
 	depends = curl
 	depends = yajl
+	depends = db
+	depends = perl
+	depends = apr
+	depends = libldap
+	depends = expat
+	depends = glibc
+	depends = gdbm
 	provides = modsecurity2=2.9.7
 	provides = modsecurity
 	conflicts = modsecurity
