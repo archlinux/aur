@@ -1,0 +1,23 @@
+upgrade_wlroots_message() {
+	cat <<END
+
+Please make sure your wlroots-git is up-to-date before compiling sway-git.
+
+END
+}
+
+pre_install() {
+	upgrade_wlroots_message
+}
+
+pre_upgrade() {
+	upgrade_wlroots_message
+}
+
+post_install() {
+	post_upgrade
+}
+
+post_upgrade() {
+	setcap cap_sys_nice+eip usr/bin/sway
+}

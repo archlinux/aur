@@ -1,5 +1,4 @@
-sway/
-sway-asan/
+sway-asan-git/
 
 src/
 pkg/

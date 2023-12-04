@@ -1,7 +1,0 @@
-post_install() {
-	post_upgrade
-}
-
-post_upgrade() {
-	setcap cap_sys_nice+eip usr/bin/sway
-}
