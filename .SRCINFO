@@ -1,6 +1,6 @@
 pkgbase = gamescope-plus
 	pkgdesc = SteamOS session compositing window manager with added patches
-	pkgver = 3.13.15.plus1
+	pkgver = 3.13.16.plus1
 	pkgrel = 1
 	url = https://github.com/ChimeraOS/gamescope
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = gamescope-plus
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/ChimeraOS/gamescope.git#commit=1529058d11c61aa331b9093efb42fef1b1256499
+	source = git+https://github.com/ChimeraOS/gamescope.git#commit=a29a3cbdef940da4366e9ae3cd9394ede1bd6e25
 	source = git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
 	source = git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1
 	source = git+https://github.com/Joshua-Ashton/reshade.git
