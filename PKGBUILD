@@ -10,7 +10,7 @@ url=https://github.com/wakatime/$_pkgname.lua
 license=(GPL3)
 makedepends=(luarocks)
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-0.all.rock")
-sha256sums=('15c398bfe7983e1bbb998a9ad11a83c8cf85b9fa1b1f965a5715a0f8cca6ea9e')
+sha256sums=('5a35dbac2c7552274f4440fecb2729fd9d840f3e825fac9db277c76239bf08fa')
 _lua_version=5.4
 
 _package() {
