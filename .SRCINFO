@@ -1,7 +1,7 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
-	pkgver = 6.0.3
-	pkgrel = 2
+	pkgver = 6.0.4
+	pkgrel = 1
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
@@ -19,10 +19,13 @@ pkgbase = mathics
 	depends = python-recordclass
 	depends = python-pillow
 	depends = python-scikit-image
-	optdepends = python-psutil: SystemMemory and MemoryAvailable
+	optdepends = python-ipywidgets: For Manipulate
 	optdepends = python-lxml: for HTML parsing used in builtin/fileformats/html
+	optdepends = python-psutil: SystemMemory and MemoryAvailable
+	optdepends = python-pyocr: Used for TextRecognize
+	optdepends = python-unidecode: Used in Transliterate
 	optdepends = python-wordcloud: Used in builtin/image.py by WordCloud
-	source = mathics-6.0.3.tar.gz::https://github.com/Mathics3/mathics-core/releases/download/6.0.3/Mathics3-6.0.3.tar.gz
-	sha256sums = 331341e948e0cbcdae4042affa6c34f2d44d6fbd9f73fcb344f6578fc372d474
+	source = mathics-6.0.4.tar.gz::https://github.com/Mathics3/mathics-core/releases/download/6.0.4/Mathics3-6.0.4.tar.gz
+	sha256sums = b2d4e41008fb92c6ca00cfb345bbeca14b2ac1b447ae592254f48aba56e91d70
 
 pkgname = mathics

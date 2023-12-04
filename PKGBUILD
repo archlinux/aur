@@ -7,8 +7,8 @@
 
 pkgname=mathics
 _pkgname=Mathics3
-pkgver=6.0.3
-pkgrel=2
+pkgver=6.0.4
+pkgrel=1
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
@@ -18,11 +18,14 @@ depends=('mathics-scanner' 'python-sympy' 'python-mpmath' 'python-numpy'
          'python-requests' 'cython' 'python-recordclass' 'python-pillow'
          'python-scikit-image')
 makedepends=('python-setuptools')
-optdepends=( 'python-psutil: SystemMemory and MemoryAvailable'
+optdepends=( 'python-ipywidgets: For Manipulate'
              'python-lxml: for HTML parsing used in builtin/fileformats/html'
+             'python-psutil: SystemMemory and MemoryAvailable'
+             'python-pyocr: Used for TextRecognize'
+             'python-unidecode: Used in Transliterate'
              'python-wordcloud: Used in builtin/image.py by WordCloud')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgname/$pkgname-core/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('331341e948e0cbcdae4042affa6c34f2d44d6fbd9f73fcb344f6578fc372d474')
+sha256sums=('b2d4e41008fb92c6ca00cfb345bbeca14b2ac1b447ae592254f48aba56e91d70')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
