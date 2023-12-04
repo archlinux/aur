@@ -1,25 +1,28 @@
-_cranname=RODBC
-_cranver=1.3-19
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+
+_pkgname=RODBC
+_pkgver=1.3-23
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="An ODBC database interface"
-arch=(any)
-depends=("unixodbc")
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL2 GPL3)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('69e73da5b701eb710d25ceb592af9f4b')
+pkgdesc="ODBC Database Access"
+arch=(x86_64)
+url="https://cran.r-project.org/package=${_pkgname}"
+license=(GPL)
+depends=(
+  r
+  unixodbc
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('338d3950ff4d032f32b821d86fb1f882')
+sha256sums=('15cdd15ac0afb3294420c7593b04a5e4e31df175418b22a8ec075bf5855e0f3b')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  cd "${srcdir}"
-
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
