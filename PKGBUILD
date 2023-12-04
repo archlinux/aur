@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=utils
 pkgbase=dfl-utils
 pkgname=('dfl-utils' 'dfl-utils-qt6')
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Some utilities for DFL"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('0a19caf4daa79bb6fe4177f116e9122d')
+md5sums=('72851a9dc222e63621a87b1551b77367')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
