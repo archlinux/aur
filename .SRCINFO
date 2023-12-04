@@ -1,0 +1,16 @@
+pkgbase = edddy-git
+	pkgdesc = Thee block-based map editor
+	pkgver = r194.5d17641
+	pkgrel = 1
+	url = https://gitlab.com/luckeyproductions/tools/edddy
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = qt5-base
+	depends = dry
+	provides = edddy
+	conflicts = edddy
+	source = edddy-git::git+https://gitlab.com/luckeyproductions/tools/edddy.git
+	sha512sums = SKIP
+
+pkgname = edddy-git
