@@ -1,4 +1,4 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 ## Build order:
 ## dfl-ipc ->
@@ -6,7 +6,7 @@
 _pkgname=ipc
 pkgbase=dfl-ipc
 pkgname=('dfl-ipc' 'dfl-ipc-qt6')
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A very simple set of IPC classes for inter-process communication"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('208e48dc8cf986bfdf503e0fc7b2c6a3')
+md5sums=('f846e1dbb3bf1ab1a80aac876c7ec396')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
