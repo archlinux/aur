@@ -1,0 +1,14 @@
+pkgbase = pascom-onsite-client
+	pkgdesc = Pascom Onsite Client
+	pkgver = 93.R2749
+	pkgrel = 1
+	url = https://www.pascom.net/
+	arch = x86_64
+	license = custom: commercial
+	optdepends = xcb-util-cursor: Needed for mouse cursor support under X11
+	source = pascom_Client-93.R2749.tar.bz2::https://my.pascom.net/update/client/stable/linux
+	source = pascom-onsite-client.desktop
+	sha256sums = 8980dccf9b780a1eae19b7ac6e3aaa472aa1edc86ce91bf2ab7be1d52d50c232
+	sha256sums = 61dd295f1ada26fb6289766bd750b09dce1c397ad5693328ce88154fab44091c
+
+pkgname = pascom-onsite-client

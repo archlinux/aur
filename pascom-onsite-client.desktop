@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pascom Onsite Client
+Comment=Pascom Onsite Client for Linux
+Exec=/opt/pascom-onsite-client/AppRun
+Icon=pascom-onsite-client
+Type=Application
+Categories=Network;InstantMessaging;Chat;Telephony;VoIP;
+StartupWMClass=pascom
+Terminal=false
