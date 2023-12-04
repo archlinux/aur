@@ -1,0 +1,14 @@
+pkgbase = brother-hll2445dw-lpr-bin
+	pkgdesc = LPR driver for Brother HL-L2445DW printer
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=hll2445dw_eu_as
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = cups
+	depends = perl
+	source = https://download.brother.com/welcome/dlf105961/hll2445dwpdrv-4.1.0-1.i386.deb
+	b2sums = 39d863d6b2714ac30c459e9063db70be33c9ac91437594b656d4202e34020f4f0d9d0d92c40df360285494c41971f9f43d14fabbaf7b32c51e9bc1f251d17bb7
+
+pkgname = brother-hll2445dw-lpr-bin
