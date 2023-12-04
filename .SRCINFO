@@ -1,12 +1,12 @@
-pkgbase = sizeof-go-bin
+pkgbase = sof-bin
 	pkgdesc = Simple and fast calculate size of directories
 	pkgver = 2.0
-	pkgrel = 2
-	url = https://codeberg.org/balaraz/sizeof
+	pkgrel = 1
+	url = https://codeberg.org/balaraz/sof
 	arch = x86_64
 	license = GPL3
-	provides = sizeof
-	source = https://codeberg.org/balaraz/sizeof/releases/download/v2.0/sizeof-v2.0-linux-amd64
+	provides = sof
+	source = https://codeberg.org/balaraz/sof/releases/download/v2.0/sizeof-v2.0-linux-amd64
 	sha256sums = 2b8a7c32c74be3972db59f193b2ca7b0541146f2c29b2f4c6e186438bce8654c
 
-pkgname = sizeof-go-bin
+pkgname = sof-bin
