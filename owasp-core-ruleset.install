@@ -1,0 +1,7 @@
+## arg 1:  the new package version
+post_install() {
+  echo "The owasp-core-ruleset package has been installed to /etc/httpd/conf/owasp-modsecurity-crs"
+  echo "Chowning to http user and group"
+  chown -R http:http /etc/httpd/conf/owasp-modsecurity-crs
+}
+
