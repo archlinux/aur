@@ -1,0 +1,21 @@
+pkgbase = r-redisparam
+	pkgdesc = Provide a 'redis' back-end for BiocParallel
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RedisParam
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = r-biocparallel
+	depends = r-futile.logger
+	depends = r-redux
+	depends = r-withr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RedisParam_1.4.0.tar.gz
+	md5sums = cf24018f96bc9de6286d2806dfd7bfaa
+	sha256sums = 5ec7a73f0109edf45a41a8922246a6ff183f0fce305156101b56725ab4132041
+
+pkgname = r-redisparam
