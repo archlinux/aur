@@ -2,7 +2,7 @@
 
 pkgname=sof
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sof"
@@ -17,6 +17,7 @@ sha256sums=("f5437bc982790f43203623b1342a18d771e16642ad20f5770cdefead74fda8ab")
 package() {
 		go build \
 				--ldflags="-s -w" \
+				-buildmode=pie \
 				-o ${pkgdir}/usr/bin/${pkgname} \
 				sizeof/sizeof.go
 }
