@@ -1,7 +1,7 @@
 pkgbase = freecad-weekly-appimage
 	pkgdesc = A general purpose 3D CAD modeler
 	pkgver = 0.22_35274
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freecadweb.org/
 	arch = x86_64
 	license = LGPL
@@ -10,7 +10,7 @@ pkgbase = freecad-weekly-appimage
 	conflicts = freecad
 	noextract = freecad-0.22_35274.AppImage
 	options = !strip
-	source = freecad-0.22_35274.AppImage::https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-35274-2023-12-03-conda-Linux-x86_64-py310.AppImage
+	source = freecad-0.22_35274.AppImage::https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-35274-2023-12-04-conda-Linux-x86_64-py310.AppImage
 	source = freecad.sh
 	source = org.freecad.FreeCAD.desktop.patch
 	sha256sums = SKIP
