@@ -2,7 +2,7 @@
 
 _upname=FoundryTools-CLI
 pkgname=ftcli
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='Foundry Tools command line font editor'
 arch=(any)
@@ -26,7 +26,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_upname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('84c64653044dd8abcdc4a693f35316ee76f7d07bcca1eb6886620aac899afe9a')
+sha256sums=('87f4b8080828505f98aaf6f4f2826429733d0c4a30fda870aaf5d22c5761abd7')
 
 build() {
 	cd "$_archive"
