@@ -3,8 +3,7 @@
 # - SC2154 - pkgdir is referenced but not assigned.
 
 # Maintainer: Azat Khuzhin <a3at.mail@gmail.com>
-pkgbase=chdig-bin
-pkgname=chdig
+pkgname=chdig-bin
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="Dig into ClickHouse with TUI interface"
