@@ -21,10 +21,9 @@ sha512sums=('d90c6903355ee1309cb0d92a8a024522ff049091a117ea21efb585b5de35776191c
             '33011be2cb52a228f00184ce55268255f74c0d389172cec24508231864ed73c804346ce689021effe0afcf4d4a149e79cfaa2ca3a4622aad84e2d79492d49301')
 
 prepare() {
-  cd lua-$pkgver
-  patch -p1 -i ../liblua.so.patch
+  patch -d lua-$pkgver -p1 -i ../liblua.so.patch
 
-  sed "s/%VER%/$_majorver/g;s/%REL%/$pkgver/g" ../lua.pc > lua.pc
+  sed "s/%VER%/$_majorver/g;s/%REL%/$pkgver/g" lua.pc > lua-$pkgver/lua.pc
 }
 
 build() {
@@ -38,9 +37,8 @@ build() {
 
 package() {
   cd lua-$pkgver
-
   make \
-    TO_LIB="liblua.a liblua.so liblua.so.$_majorver liblua.so.$pkgver" \
+    TO_LIB="liblua.so liblua.so.$_majorver liblua.so.$pkgver" \
     INSTALL_DATA='cp -d' \
     INSTALL_TOP="$pkgdir"/usr \
     install
