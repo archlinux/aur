@@ -6,7 +6,7 @@
 _pkgname=easytag
 pkgname=easytag-opensuse-ogg-patch
 pkgver=2.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple application for viewing and editing tags in audio files, using OpenSUSE patch'
 arch=('x86_64')
 license=('GPL')
@@ -15,7 +15,7 @@ makedepends=('intltool' 'itstool' 'python')
 depends=('id3lib' 'libid3tag' 'gtk3' 'libvorbis' 'flac' 'speex' 'wavpack' 'taglib'
          'desktop-file-utils' 'opusfile')
 conflicts=(easytag)
-provides=(easytag)
+provides=("easytag=${pkgver}")
 source=(
     https://download.gnome.org/sources/${_pkgname}/${pkgver:0:3}/${_pkgname}-${pkgver}.tar.xz
     0001-easytag-revert-open-handle-ogg.rpatch
