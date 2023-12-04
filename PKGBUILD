@@ -4,17 +4,17 @@
 _pkgname=texlab
 pkgname=$_pkgname-git
 pkgver=5.11.0.r16.867dbc91
-pkgrel=3
+pkgrel=4
 pkgdesc='An implementation of the Language Server Protocol for LaTeX'
 arch=(any)
 url=https://github.com/latex-lsp/texlab
 license=(MIT)
 
 provides=($_pkgname)
-conflicts=($_pkgname $_pkgname-bin)
+conflicts=($_pkgname)
 makedepends=(git cargo)
 source=(git+$url)
-md5sums=(SKIP)
+sha256sums=(SKIP)
 
 pkgver() {
     cd "$srcdir"/$_pkgname
