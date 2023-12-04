@@ -8,7 +8,7 @@
 pkgname=mathics
 _pkgname=Mathics3
 pkgver=6.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
@@ -17,7 +17,7 @@ depends=('mathics-scanner' 'python-sympy' 'python-mpmath' 'python-numpy'
          'python-palettable' 'python-pint' 'python-dateutil' 'python-llvmlite'
          'python-requests' 'cython' 'python-recordclass' 'python-pillow'
          'python-scikit-image')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=( 'python-ipywidgets: For Manipulate'
              'python-lxml: for HTML parsing used in builtin/fileformats/html'
              'python-psutil: SystemMemory and MemoryAvailable'
@@ -30,10 +30,10 @@ sha256sums=('b2d4e41008fb92c6ca00cfb345bbeca14b2ac1b447ae592254f48aba56e91d70')
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   sed -i 's/numpy<1.25/numpy>1.25/g' setup.py
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
