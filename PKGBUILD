@@ -9,11 +9,9 @@ conflicts=("chdig")
 provides=("chdig")
 url="https://github.com/azat/chdig"
 license=('MIT')
-
 source=(
     "https://github.com/azat/chdig/releases/download/$pkgver/chdig-latest-x86_64.pkg.tar.zst"
 )
-
 sha256sums=(
     'SKIP'
 )
