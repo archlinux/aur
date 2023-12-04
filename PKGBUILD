@@ -8,7 +8,7 @@ arch=(any)
 url=https://github.com/wakatime/Reply-Plugin-Prompt
 license=(GPL3)
 depends=(perl-reply)
-optdepends=('perl-file-xdg>=1.00: support configure file')
+optdepends=('perl-file-xdg>=1.00: support configure file' 'git: get project name')
 # https://github.com/rwstauner/Git-DescribeVersion/issues/1
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.0.tar.gz")
 sha256sums=('b3f2b854c402671fac70ef1fcc21bee2aafd5e59aa34e995eeea2559ad4ced9a')

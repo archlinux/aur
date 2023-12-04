@@ -7,6 +7,7 @@ pkgbase = perl-reply-plugin-prompt
 	license = GPL3
 	depends = perl-reply
 	optdepends = perl-file-xdg>=1.00: support configure file
+	optdepends = git: get project name
 	source = https://github.com/wakatime/Reply-Plugin-Prompt/releases/download/0.0.19/Reply-Plugin-Prompt-0.0.19.0.tar.gz
 	sha256sums = b3f2b854c402671fac70ef1fcc21bee2aafd5e59aa34e995eeea2559ad4ced9a
 
