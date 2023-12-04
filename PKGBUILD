@@ -1,25 +1,33 @@
 # Maintainer: Tuure Piitulainen <tuure.piitulainen@gmail.com>
 
 pkgname="vivify"
-pkgver="0.1.1"
-pkgrel=3
+pkgver="0.1.2"
+pkgrel=1
 pkgdesc="Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim"
 arch=("x86_64")
 url="https://github.com/jannis-baum/vivify"
-license=("unknown")
-depends=("jq" "gcc-libs" "bash")
+license=("GPL3")
+depends=("jq" "gcc-libs" "sh")
 makedepends=("yarn")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jannis-baum/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=("5d04c08c3172927cb219feb34d6d8b35")
+md5sums=("7fceb73f7a1decbbd63169b337ec31be")
+
+# Stripping 'unneeded symbols' causes vivify-server executable to break
+# (exits with error `Pkg: Error reading from file`)
+options=(!strip)
 
 build() {
 	cd "${pkgname}-${pkgver}"
         yarn install
-        ./build.sh
+
+        node_modules/.bin/tsc --project . \
+            && node_modules/.bin/pkg . \
+            || exit 1
 }
 
 package() {
-	cd "${pkgname}-${pkgver}/bin/linux"
-        install -Dm755 ./viv           "${pkgdir}/usr/bin/viv"
-        install -Dm755 ./vivify-server "${pkgdir}/usr/bin/vivify-server"
+	cd "${pkgname}-${pkgver}"
+        install -Dm755 ./viv                     "${pkgdir}/usr/bin/viv"
+        install -Dm755 ./bin/vivify-server-linux "${pkgdir}/usr/bin/vivify-server"
+        install -Dm644 ./LICENSE                 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
