@@ -6,7 +6,7 @@
 # Contributor: Alessandro Pazzaglia <jackdroido at gmail dot com>
 pkgname=pyinstaller
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('x86_64')
 url="https://www.pyinstaller.org"
@@ -52,12 +52,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pyinstaller/pyinstaller/arc
 sha256sums=('740836bc8ea2b2cfff47968b57158729fdeea691a3aa823ca6b94ebaa70d6ae6')
 
 prepare() {
+  cd "$pkgname-$pkgver"
 
-  # Forcing bootloader build for the current platform
-  # and removing the unnecessary pre-builts
-  rm -rvf PyInstaller/bootloader/Darwin*
-  rm -rvf PyInstaller/bootloader/Windows*
-  rm -rvf PyInstaller/bootloader/Linux*
+  # Force bootloader build for the current platform
+  # and remove the unnecessary binaries
+  rm -rvf PyInstaller/bootloader/{Darwin,Linux,Windows}*
 }
 
 build() {
