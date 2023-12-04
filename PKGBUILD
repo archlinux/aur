@@ -3,7 +3,7 @@
 
 pkgname=serial-monitor-git
 pkgver=r35.7797564
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform command line serial terminal program (git)"
 arch=('x86_64')
 url="https://github.com/dhylands/serial-monitor"
