@@ -108,6 +108,7 @@ $UKIFY_BIN build \
 --os-release="$EFISTUB_OS_RELEASE" \
 --uname="$EFISTUB_UNAME" \
 --efi-arch=x64 \
+--stub="$EFISTUB_STUB" \
 --output="$EFISTUB_DEST" \
 $INITRDS
 check_failed "ERROR: Failed to build unified EFI image!\n"
