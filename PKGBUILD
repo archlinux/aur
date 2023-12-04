@@ -6,7 +6,7 @@
 pkgname=chdig-bin
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="Dig into ClickHouse with TUI interface"
+pkgdesc="Dig into ClickHouse with TUI interface (binaries for latest stable version)"
 arch=('x86_64')
 conflicts=("chdig")
 provides=("chdig")
