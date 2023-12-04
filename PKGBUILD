@@ -1,32 +1,32 @@
-# Maintainer: William Gathoye <william + aur at gathoye dot be>
-
+# Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: William Gathoye <william + aur at gathoye dot be>
 pkgname=plasma5-applets-netspeed
-pkgver=1.9
+pkgver=2.0
 pkgrel=1
-pkgdesc='Plasma 5 widget that displays the currently used network bandwidth'
-arch=('i686' 'x86_64')
-
-url='https://github.com/dfaust/plasma-applet-netspeed-widget'
+pkgdesc="Plasma 5 widget that displays the currently used network bandwidth"
+arch=('any')
+url="https://github.com/dfaust/plasma-applet-netspeed-widget"
 license=('GPL2')
-
-depends=('kdeplasma-addons')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'plasma-framework')
-
-source=(
-    "https://github.com/dfaust/plasma-applet-netspeed-widget/archive/v${pkgver}.tar.gz"
+depends=(
+    'awk'
+    'plasma-workspace'
 )
-sha512sums=(
-    '1685439832e2839ed31b012c9c0e232f43bb26927a5aabe1877002645a6761e61b7a960a52e6ed4c4c9789343a803e03b7a58601619daf63348ef6c42fdcc042'
+makedepends=(
+    'cmake'
+    'extra-cmake-modules'
 )
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dfaust/plasma-applet-netspeed-widget/archive/v${pkgver}.tar.gz")
+b2sums=('7b89060c2eeba04e35c5ed6c99add01cb91616f801cc6c2ac1ed2efea459c552ddd50a0c54efee7da8fe132c22b5860b17965748118aeebf00a4797dbd990a34')
 
 build() {
-    cd "plasma-applet-netspeed-widget-${pkgver}"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr 
-    make
+    cmake -B build -S "plasma-applet-netspeed-widget-${pkgver}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-    cd "plasma-applet-netspeed-widget-${pkgver}"
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir" cmake --install build
 }
 
