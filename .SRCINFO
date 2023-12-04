@@ -49,7 +49,7 @@ pkgbase = ungoogled-chromium-bin
 	provides = chromedriver=119.0.6045.199
 	conflicts = chromium
 	conflicts = chromedriver
-	source = https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/119.0.6045.199-1/ungoogled-chromium-119.0.6045.199-1-x86_64.pkg.tar.zst
+	source = https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/119.0.6045.199-2/ungoogled-chromium-119.0.6045.199-1-x86_64.pkg.tar.zst
 	sha256sums = 4d97678a071652a5ce7952d05e666e7e79aa7952b691e640140fbaf0101831bb
 
 pkgname = ungoogled-chromium-bin
