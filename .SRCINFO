@@ -14,6 +14,7 @@ pkgbase = tcl-prompt-git
 	optdepends = expect
 	optdepends = vitis
 	optdepends = vivado
+	optdepends = git
 	source = git+https://github.com/wakatime/tcl-prompt#tag=bc29b670176c98a1d632cc520ded27eeb685cce4
 	sha256sums = SKIP
 

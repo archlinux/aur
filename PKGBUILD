@@ -9,7 +9,7 @@ arch=(any)
 url=https://github.com/wakatime/$_pkgname
 license=(GPL3)
 depends=(tcl tclreadline tcllib lsb-release procps-ng)
-optdepends=(expect vitis vivado)
+optdepends=(expect vitis vivado git)
 makedepends=(git)
 source=("git+$url#tag=bc29b670176c98a1d632cc520ded27eeb685cce4")
 sha256sums=(SKIP)
