@@ -7,7 +7,9 @@ User=changedetectionio
 Environment="PYTHONPATH=/usr/lib/changedetection.io"
 ExecStart=/usr/bin/changedetection.io -d /var/lib/changedetection.io
 Restart=on-abort
-#TimeoutSec=20
+# TERM seems to have no affect, SIGINT does some cleanup and doesn't serving but doesn't stop
+KillSignal=SIGINT
+TimeoutStopSec=2
 
 [Install]
 WantedBy=multi-user.target
