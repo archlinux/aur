@@ -9,7 +9,7 @@ pkgbase = arch-efistub-git
 	depends = pacman
 	depends = systemd
 	depends = systemd-ukify
-	source = git+https://github.com/Matthewacon/arch-efistub#commit=60c25f658c277ebd06f8d33f6b85361acb4b5c8a
+	source = git+https://github.com/Matthewacon/arch-efistub#commit=7f98c42f84be221d7d9ddbc150d93ccb40fc188a
 	md5sums = SKIP
 
 pkgname = arch-efistub-git
