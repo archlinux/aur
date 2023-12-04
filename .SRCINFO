@@ -1,6 +1,6 @@
 pkgbase = wlroots-asan-git
 	pkgdesc = Modular Wayland compositor library (git version, with address sanitizer)
-	pkgver = 0.16.0.r5511.e59f4d4f
+	pkgver = 0.18.0.r6762.d3a339a0
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = wlroots-asan-git
 	makedepends = xorgproto
 	depends = glslang
 	depends = libinput
+	depends = libliftoff
 	depends = libxcb
 	depends = libxkbcommon
 	depends = opengl-driver
@@ -22,11 +23,11 @@ pkgbase = wlroots-asan-git
 	depends = xcb-util-wm
 	depends = seatd
 	depends = vulkan-icd-loader
-	depends = vulkan-validation-layers
 	depends = xorg-xwayland
+	depends = libdisplay-info
 	provides = libwlroots.so
-	provides = wlroots=0.16.0
-	provides = wlroots-git=0.16.0.r5511.e59f4d4f
+	provides = wlroots=0.18.0
+	provides = wlroots-git=0.18.0.r6762.d3a339a0
 	conflicts = wlroots
 	options = debug
 	source = wlroots::git+https://gitlab.freedesktop.org/wlroots/wlroots.git
