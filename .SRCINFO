@@ -1,6 +1,6 @@
 pkgbase = fex-emu
 	pkgdesc = Fast usermode x86 and x86-64 emulator for Arm64
-	pkgver = 2311
+	pkgver = 2312
 	pkgrel = 1
 	url = https://fex-emu.com
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = fex-emu
 	depends = squashfs-tools
 	depends = squashfuse
 	depends = erofs-utils
-	source = git+https://github.com/FEX-Emu/FEX#tag=FEX-2311
+	source = git+https://github.com/FEX-Emu/FEX#tag=FEX-2312
 	source = git+https://github.com/catchorg/Catch2
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers
 	source = git+https://github.com/Sonicadvance1/cpp-optparse

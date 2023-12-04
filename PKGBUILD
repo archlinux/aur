@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 
 pkgname=fex-emu
-pkgver=2311
+pkgver=2312
 pkgrel=1
 pkgdesc='Fast usermode x86 and x86-64 emulator for Arm64'
 url=https://fex-emu.com
