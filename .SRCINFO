@@ -1,20 +1,20 @@
 pkgbase = loopy-desktop
 	pkgdesc = A tool for thinking in systems
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jchu634/loopy-desktop
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = yarn
 	makedepends = npm
-	depends = bash
+	makedepends = nodejs
+	makedepends = git
 	depends = electron21
-	depends = hicolor-icon-theme
 	conflicts = loopy-desktop
-	source = loopy-desktop-1.2.1.tar.gz::https://github.com/jchu634/loopy-desktop/archive/refs/tags/v1.2.1.tar.gz
+	source = loopy-desktop-1.2.1::git+https://github.com/jchu634/loopy-desktop.git#tag=v1.2.1
 	source = loopy-desktop.sh
-	sha256sums = 964320fde15be102235feac8e2e1bab115e8fcfe8245645d5411dac114446f27
-	sha256sums = 2d6f5f8f18426ce969673d3ab6422da092044974294d9e347284a11adf2be6db
+	sha256sums = SKIP
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = loopy-desktop
