@@ -1,18 +1,19 @@
 pkgbase = elements-latex
 	pkgdesc = A cross-platform, powerful electron-based LaTeX editor
 	pkgver = 0.0.3_stable
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Red-Rapious/Elements-LaTeX
 	arch = any
-	license = CC-BY-NC-SA-4.0
+	license = custom:CC-BY-NC-SA-4.0
 	makedepends = gendesk
 	makedepends = npm
-	depends = bash
+	makedepends = nodejs
+	makedepends = git
 	depends = electron18
 	conflicts = elements-latex
-	source = elements-latex-0.0.3_stable.tar.gz::https://github.com/Red-Rapious/Elements-LaTeX/archive/refs/tags/v0.0.3-stable.tar.gz
+	source = elements-latex-0.0.3_stable::git+https://github.com/Red-Rapious/Elements-LaTeX.git#tag=v0.0.3-stable
 	source = elements-latex.sh
-	sha256sums = 447fa0de8dba9cca3f116ba6aa7ac35600dba5ab57cf3e8c18eebbba971a9151
-	sha256sums = 4afc2774225d164de54bad329e42588ef2766538f84910a3961af07562f068f2
+	sha256sums = SKIP
+	sha256sums = 4af015cab61ba72cda4118a9a842cd941a850a7d197e6a1da2a8e77eafcc4455
 
 pkgname = elements-latex
