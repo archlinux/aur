@@ -1,8 +1,8 @@
 # Maintainer: Ivan Gabaldon <aur[at]inetol.net>
 
 pkgname=termius-deb
-pkgver=8.7.2
-pkgrel=2
+pkgver=8.8.2
+pkgrel=1
 pkgdesc='SSH, SFTP, MOSH, telnet and serial in one beautiful app (deb release)'
 arch=('x86_64')
 url='https://termius.com'
@@ -10,9 +10,9 @@ license=('custom:proprietary')
 makedepends=('links')
 provides=("${pkgname//-deb}")
 conflicts=("${pkgname//-deb}" "${pkgname//-deb/'-beta'}")
-source=("${pkgname//-deb}-$pkgver.deb::https://web.archive.org/web/20231202224832/https://autoupdate.${pkgname//-deb}.com/linux/${pkgname//-deb}.deb"
+source=("${pkgname//-deb}-$pkgver.deb::https://web.archive.org/web/20231205103527if_/https://deb.${pkgname//-deb}.com/pool/main/t/${pkgname//-deb/'-app'}/${pkgname//-deb/'-app'}_${pkgver}_amd64.deb"
         "${pkgname//-deb}.desktop")
-b2sums=('50190e87de8f7875a2895b5a46525ba9b1100e69c199d4e529ed5cdf6fffa1a4e4e4fff1ef14daef6612da7a063148b46e69bc2d0474c69139d7d60ad32b9d0c'
+b2sums=('5507a333d69b2ee653d0c125000149732161edc70014fbf23453dcffdf769122196fa8127e57b9177277096b195d606665661fae0a4e5450df351714410255de'
         '788a7e6ff5957c98115e44725d1af7fb3f66b2168225464551390c15bbc7b259bf443545c919a7037cc36bad3a033916b33f538f73c012dcf27fc5c4c2b2a285')
 
 prepare() {
@@ -24,8 +24,8 @@ prepare() {
     mkdir -p "${pkgname//-deb}-$pkgver/"
     bsdtar -xpf 'data.tar.xz' -C "${pkgname//-deb}-$pkgver/"
 
-    mv "${pkgname//-deb}-$pkgver/opt/Termius/${pkgname//-deb}-app" "${pkgname//-deb}-$pkgver/opt/Termius/${pkgname//-deb}"
-    mv "${pkgname//-deb}-$pkgver/usr/share/icons/hicolor/256x256/apps/${pkgname//-deb}-app.png" "$srcdir/${pkgname//-deb}.png"
+    mv "${pkgname//-deb}-$pkgver/opt/Termius/${pkgname//-deb/'-app'}" "${pkgname//-deb}-$pkgver/opt/Termius/${pkgname//-deb}"
+    mv "${pkgname//-deb}-$pkgver/usr/share/icons/hicolor/256x256/apps/${pkgname//-deb/'-app'}.png" "$srcdir/${pkgname//-deb}.png"
 }
 
 package() {
