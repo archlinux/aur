@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=gitlint
-pkgver=0.17.0
-pkgrel=8
+pkgver=0.19.1
+pkgrel=1
 pkgdesc="Git commit message linter"
 arch=(any)
 url="https://github.com/jorisroovers/gitlint"
@@ -13,56 +13,49 @@ depends=(
   python-arrow
   python-click
   python-sh
+  sh
 )
 makedepends=(
   python-build
+  python-hatch-vcs
+  python-hatchling
   python-installer
-  python-setuptools
   python-wheel
 )
 checkdepends=(
   git
   python-pytest
 )
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-  "0001-Unset-EDITOR-env-var-in-test_run_hook_edit.patch"
-)
-sha256sums=(
-  '1c1e895aea22b1ded131a9dc81dd1f37fb064a9f3af7421debd1606ca646196a'
-  'ec117041e4ba8a3a46d27e169982129dd08e455501de676d873fce91b1d934cd'
-)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('60de0fe764bd8fc86eb38990fb6704c5c4649a1fee574407b87b3c1471e12bd0')
 
 _archive="$pkgname-$pkgver"
-
-prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --input="$srcdir/0001-Unset-EDITOR-env-var-in-test_run_hook_edit.patch"
-}
 
 build() {
   cd $_archive
   cd gitlint-core
 
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 
-  # Completions
-  python -m installer --destdir=tmp_install dist/*.whl
+  rm -rf tmp_install
   local site_packages
   site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir=tmp_install dist/*.whl
   export PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH"
+
+  # Completions
   local gitlint_cmd="$PWD/tmp_install/usr/bin/gitlint"
   _GITLINT_COMPLETE=bash_source $gitlint_cmd > gitlint.bash
   _GITLINT_COMPLETE=fish_source $gitlint_cmd > gitlint.fish
   _GITLINT_COMPLETE=zsh_source $gitlint_cmd > gitlint.zsh
-  rm -r tmp_install
 }
 
 check() {
   cd "$_archive"
   cd gitlint-core
 
+  export PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH"
   python -m pytest
 }
 
@@ -76,5 +69,5 @@ package() {
   install -Dm644 gitlint.fish "$pkgdir/usr/share/fish/vendor_completions.d/gitlint.fish"
   install -Dm644 gitlint.zsh "$pkgdir/usr/share/zsh/site-functions/_gitlint"
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
