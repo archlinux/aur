@@ -1,6 +1,6 @@
 pkgbase = librewolf-extension-darkreader
 	pkgdesc = Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing
-	pkgver = 4.9.70
+	pkgver = 4.9.71
 	pkgrel = 1
 	url = https://github.com/darkreader/darkreader
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = librewolf-extension-darkreader
 	makedepends = npm
 	makedepends = strip-nondeterminism
 	depends = librewolf
-	source = git+https://github.com/darkreader/darkreader.git#tag=v4.9.70
+	source = git+https://github.com/darkreader/darkreader.git#tag=v4.9.71
 	sha256sums = SKIP
 
 pkgname = librewolf-extension-darkreader
