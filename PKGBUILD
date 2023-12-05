@@ -1,13 +1,13 @@
 pkgname=tuxclocker-git
 _pkgname=tuxclocker
 pkgver=1.4.0.r603.a742cc1
-pkgrel=2
+pkgrel=3
 pkgdesc="A hardware controlling and monitoring program for GPUs and CPUs"
 arch=('x86_64')
 url="https://github.com/Lurkki14/tuxclocker"
 install="${pkgname}.install"
 license=('GPL3')
-
+provides=('tuxclocker-qt' 'tuxclockerd')
 depends=('boost-libs' 'libdrm' 'qt5-base' 'qt5-charts')
 makedepends=('boost' 'git' 'meson' 'qt5-tools')
 optdepends=(
