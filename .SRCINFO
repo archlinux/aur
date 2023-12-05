@@ -1,0 +1,16 @@
+pkgbase = r-elsa
+	pkgdesc = Entropy-Based Local Indicator of Spatial Association
+	pkgver = 1.1.28
+	pkgrel = 1
+	url = https://cran.r-project.org/package=elsa
+	arch = x86_64
+	license = GPL3
+	depends = r-raster
+	depends = r-sp
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/elsa_1.1-28.tar.gz
+	md5sums = f32f570cc050f0fa1eb04a8b223db77a
+	sha256sums = 7839a0d2f93c4ba9bd07d71f4ae9111ab5ef09ff46c0682436b56ce889125207
+
+pkgname = r-elsa
