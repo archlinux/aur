@@ -1,0 +1,28 @@
+pkgbase = r-dgeobj
+	pkgdesc = Differential Gene Expression (DGE) Analysis Results Data Object
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=DGEobj
+	arch = any
+	license = GPL3
+	checkdepends = r-biomart
+	checkdepends = r-edger
+	checkdepends = r-genomicranges
+	checkdepends = r-testthat
+	depends = r-assertthat
+	depends = r-magrittr
+	depends = r-stringr
+	optdepends = r-biomart
+	optdepends = r-conflicted
+	optdepends = r-dplyr
+	optdepends = r-edger
+	optdepends = r-genomicranges
+	optdepends = r-glue
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/DGEobj_1.1.2.tar.gz
+	md5sums = 8d84369964ade6ee4707681568feb390
+	sha256sums = c3deabb98e90085373a4a438f40e7b481e7cc37e9ebd9ade356ee43599a1cd02
+
+pkgname = r-dgeobj
