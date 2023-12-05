@@ -1,6 +1,6 @@
 pkgbase = tgpt
 	pkgdesc = ChatGPT in terminal without needing API keys
-	pkgver = 2.1.1
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/aandrew-me/tgpt
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tgpt
 	depends = glibc
 	conflicts = tgpt-bin
 	conflicts = tgpt-git
-	source = tgpt-2.1.1.tar.gz::https://github.com/aandrew-me/tgpt/archive/v2.1.1.tar.gz
+	source = tgpt-2.2.1.tar.gz::https://github.com/aandrew-me/tgpt/archive/v2.2.1.tar.gz
 	md5sums = SKIP
 
 pkgname = tgpt
