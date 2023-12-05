@@ -1,7 +1,7 @@
 pkgbase = cpprestsdk
 	pkgdesc = A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications
-	pkgver = 2.10.18
-	pkgrel = 3
+	pkgver = 2.10.19
+	pkgrel = 1
 	url = https://github.com/Microsoft/cpprestsdk/
 	arch = i686
 	arch = x86_64
@@ -13,10 +13,11 @@ pkgbase = cpprestsdk
 	depends = zlib
 	depends = gcc-libs
 	depends = boost
+	depends = glibc
 	conflicts = casablanca
 	conflicts = casablanca-git
 	conflicts = cpprestsdk-git
-	source = cpprestsdk-2.10.18.tar.gz::https://github.com/Microsoft/cpprestsdk/archive/v2.10.18.tar.gz
-	sha512sums = 5f0699e7ba509e16d6a3000e6ac448f6dbc134b8e03de9ab174ba749ad7efa76cbfccb623b226d82f5dba35ef6292f0cdf121b5315d524a5a28454038d420fab
+	source = cpprestsdk-2.10.19.tar.gz::https://github.com/Microsoft/cpprestsdk/archive/v2.10.19.tar.gz
+	sha512sums = 2d8fa213f492236e2fd912349bf81951c1e618dd8eab4f665f909d75b5aeeda18b8f70dce3a4db50d67bdb3e372888132481701163de6c27716dfd750bff9781
 
 pkgname = cpprestsdk
