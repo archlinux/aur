@@ -19,7 +19,6 @@ build() {
 }
 
 package() {
-    depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/inquirerpy-${pkgver}-py3-none-any.whl
 }
