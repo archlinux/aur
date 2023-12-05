@@ -9,12 +9,12 @@ _scangearmpver=2.10
 
 pkgname='canon-pixma-mx920-complete'
 pkgver="$_cnijfilterver.$_scangearmpver"
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete driver set (printing and scanning) for Canon Pixma MX920 series'
 url='http://www.canon.co.uk/Support/Consumer_Products/product_ranges/printers/pixma/index.aspx'
 license=(custom)
 arch=(x86_64)
-depends=(libcups popt libpng12 libusb-compat libtiff)
+depends=(ghostscript gtk2 libcups libpng12 libtiff libusb-compat popt)
 
 case $CARCH in
     i686) _CARCH='i386' ;;
