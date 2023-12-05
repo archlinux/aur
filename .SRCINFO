@@ -1,0 +1,18 @@
+pkgbase = blazesym
+	pkgdesc = Blazing fast address symbolization
+	pkgver = 0.2.0_alpha.8
+	pkgrel = 1
+	url = https://github.com/libbpf/blazesym
+	arch = x86_64
+	groups = linux-tools
+	license = BSD
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libelf
+	depends = zlib
+	depends = rust
+	source = https://github.com/libbpf/blazesym/archive/refs/tags/v0.2.0-alpha.8.tar.gz
+	sha256sums = 22ffbfbeaf5579175d6da882c1dec41024213b0c84571935510c2e39b3ea53a2
+
+pkgname = blazesym
