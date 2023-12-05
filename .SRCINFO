@@ -1,7 +1,7 @@
 pkgbase = vitis
 	pkgdesc = FPGA/CPLD design suite for Xilinx devices
 	pkgver = 2023.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xilinx.com/products/design-tools/vitis.html
 	arch = x86_64
 	license = custom

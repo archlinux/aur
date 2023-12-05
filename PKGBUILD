@@ -29,7 +29,7 @@ pkgname=vitis
 _srcname=FPGAs_AdaptiveSoCs_Unified
 pkgver=2023.2
 _more_ver=1013_2256
-pkgrel=1
+pkgrel=2
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vitis.html"
 arch=('x86_64')
@@ -119,11 +119,26 @@ package() {
     # Now remove the remaining traces of $pkgdir
     sed -i -e "s|$pkgdir||g" "$_relocator".* \
         "${_relocator%/*}"/environment-setup-*
-    find "$pkgdir/opt/Xilinx/" -name '*settings64*' -type f \
+    find "$pkgdir/opt/Xilinx" -name '*settings64*' -type f \
         -exec sed -i -e "s|$pkgdir||g" '{}' \+
     find "$pkgdir/opt/Xilinx/Vitis/${pkgver}"/tps/lnx64/lopper-*/env \
         -maxdepth 2 -type f \
         -exec sed -i -e "s|$pkgdir||g" '{}' \+
+
+    # Fix symlinks into pkgdir
+    find "$pkgdir/opt/Xilinx" -type l | \
+    while read link; do
+        target=$(readlink "$link")
+        case $target in ("$pkgdir/"*) ln -srf "$target" "$link";; esac
+    done
+
+    # There are some lib subdirs named after distros: Rhel SuSE Ubuntu Default.
+    # We end up using Default; symlink that to Ubuntu if it does not exist.
+    find "$pkgdir/opt/Xilinx" -name Ubuntu -type d | \
+    while read udir; do
+        ddir=${udir%/*}/Default
+        test -d "$ddir" || ln -s Ubuntu "$ddir"
+    done
 
     # clean up artefacts
     rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
