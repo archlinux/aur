@@ -2,14 +2,14 @@
 
 pkgname=networkmanager-dispatcher-timesyncd
 pkgver=0.r5.gbdeed3f
-pkgrel=1
+pkgrel=2
 pkgdesc='Networkmanager Dispatcher script for systemd-timesyncd'
 arch=('any')
 depends=('systemd' 'networkmanager')
 makedepends=('git')
 url="https://github.com/eworm-de/networkmanager-dispatcher-timesyncd"
 license=('GPL')
-source=('git://github.com/eworm-de/networkmanager-dispatcher-timesyncd.git')
+source=('git+https://github.com/eworm-de/networkmanager-dispatcher-timesyncd.git')
 sha256sums=('SKIP')
 
 pkgver() {
