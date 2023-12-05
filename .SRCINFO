@@ -1,0 +1,18 @@
+pkgbase = r-mmand
+	pkgdesc = Mathematical Morphology in Any Number of Dimensions
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mmand
+	arch = x86_64
+	license = GPL2
+	checkdepends = r-loder
+	checkdepends = r-tinytest
+	depends = r-rcpp
+	optdepends = r-covr
+	optdepends = r-loder
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/mmand_1.6.3.tar.gz
+	md5sums = 9716940ae9f4a9e9ad3a8c4e889728a7
+	sha256sums = fc375da6b879fd1991880fd358ceeb762e61b3a1b02af9cff3a366d0811e74a1
+
+pkgname = r-mmand
