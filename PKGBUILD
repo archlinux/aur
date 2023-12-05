@@ -2,7 +2,7 @@
 # Contributor: Jeff Parent <jecxjo@sdf.lonestar.org>
 pkgname=cutecw
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Learn CW using the Koch Method"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=('d79ce2a9e0ab2e2c958ea33b5f43a2e000be4d0afd7282847e200062fa44129e')
 
 build() {
   cd "$pkgname-$pkgver"
-  qmake-qt4
+  qmake6
   make
 }
 
