@@ -1,13 +1,13 @@
 pkgbase = signal-hound-spike
-	pkgdesc = Spectrum analyzer software for Signal Hound BB60, SM200, and SM435
-	pkgver = 3.8.11
+	pkgdesc = Spectrum analyzer software for Signal Hound BB60, SM200, SM435, and SP145
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://signalhound.com/spike/
 	arch = x86_64
 	license = custom
 	depends = libusb
 	depends = signal-hound-udev
-	source = https://signalhound.com/sigdownloads/Spike/Spike(Ubuntu22.04x64)_3_8_11.zip
-	sha1sums = 290e5fd81d013aa35a9696aa0f809112a8f57645
+	source = https://signalhound.com/sigdownloads/Spike/Spike(Ubuntu22.04x64)_3_9_0.zip
+	sha1sums = f7f9455764c1347d2d339bfe3e8b54ff2036367f
 
 pkgname = signal-hound-spike
