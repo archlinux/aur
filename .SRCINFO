@@ -1,0 +1,18 @@
+pkgbase = networkmanager-openconnect-simple
+	pkgdesc = Simple and flexible NetworkManager support for OpenConnect in Python.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/daskol/networkmanager-openconnect
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = dbus-python
+	depends = networkmanager-openconnect
+	depends = python-gobject
+	source = networkmanager-openconnect-simple-0.0.0.tar.gz::https://github.com/daskol/networkmanager-openconnect/networkmanager-openconnect/archive/refs/tags/v0.0.0.tar.gz
+	sha256sums = 71d83fa0e1735aa6f38138a2715153e085bfe76aa68398c7ab461750bef4c6a1
+
+pkgname = networkmanager-openconnect-simple
