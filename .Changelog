@@ -1,0 +1,17 @@
+# discimagecreator-bin .Changelog
+
+## 2023-12-04, discimagecreator-bin 20231201
+
+* Initialize .Changelog
+* Bump to 20231201
+* Fix: Escaped the ampersand in 'Firmware&Tool.md' correctly.
+
+# FAQ
+
+## Why consume the release binary rather than compile from source?
+
+I can't be bothered at the moment.
+
+## This version is known to be broken!!  RAAAHHHGH
+
+ohh shit no way for real

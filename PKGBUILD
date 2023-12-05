@@ -7,12 +7,11 @@ arch=('x86_64')
 pkgdesc="DiscImageCreator, official release with supplemental binaries and text files for full functionality."
 provides=('discimagecreator')
 conflicts=('discimagecreator')
-pkgver=20230909
+pkgver=20231201
 pkgrel=1
 license=('Apache')
-# Developer attaches links to the compiled builds in release notes so this entire URL must be replaced with every new build.
-source=("https://github.com/saramibreak/DiscImageCreator/files/12565308/DiscImageCreator_20230909.tar.gz")
-sha256sums=('aadec0ceef5247c81ea5636354661efc3fbd83ee3780acc8668b0d177739515f')
+source=("https://github.com/saramibreak/DiscImageCreator/files/13527856/DiscImageCreator_20231201.tar.gz")
+sha256sums=('1102c4455a6392073f8afd3281f0da5a64a804ac44ea3eeb30a5488f2860cde6')
 
 package() {
 
@@ -40,7 +39,7 @@ package() {
 
 	# install documentation
 	install -Dm 644 ${srcdir}/${_pkgname}/Doc/ChangeLog.txt ${pkgdir}/usr/local/share/doc/${_pkgname}/ChangeLog.txt
-	install -Dm 644 "${srcdir}/${_pkgname}/Doc/Firmware&Tool.md" "${pkgdir}/usr/local/share/doc/${_pkgname}/Firmware&Tool.md"
+	install -Dm 644 ${srcdir}/${_pkgname}/Doc/Firmware\&Tool.md ${pkgdir}/usr/local/share/doc/${_pkgname}/Firmware\&Tool.md
 	install -Dm 644 ${srcdir}/${_pkgname}/Doc/KnownIssue.txt ${pkgdir}/usr/local/share/doc/${_pkgname}/KnownIssue.txt
 	install -Dm 644 ${srcdir}/${_pkgname}/Doc/Reference.md ${pkgdir}/usr/local/share/doc/${_pkgname}/Reference.md
 	install -Dm 644 ${srcdir}/${_pkgname}/Doc/TestedDrive.txt ${pkgdir}/usr/local/share/doc/${_pkgname}/TestedDrive.txt
