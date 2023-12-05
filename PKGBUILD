@@ -7,7 +7,7 @@
 #   # If anyone has an idea how to make it in a more clean way & that the question is only asked once, while still downloading the source via the 'source' array, please leave a comment!
 #   local _legalcopy
 #   msg2 "Please make sure you have obtained a legal copy of the game before continuing!"
-#   read -e -p "Enter 'i have a legal copy of riven' to continue, anything else to abort: " _legalcopy
+#   read -e -p "Enter 'i have a legal copy of riven' (without quotes) to continue, anything else to abort: " _legalcopy
 #   if [ "${_legalcopy}x" != "i have a legal copy of riven"x ]; then
 #     error "No legal copy, aborting."
 #     return 22
@@ -24,13 +24,14 @@ pkgname=(
 )
 pkgdesc="'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion."
 groups=(
+  'myst'
   'riven'
 )
 arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=14
+pkgrel=15
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'imagemagick' # To convert .ico to .png.
