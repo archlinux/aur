@@ -1,11 +1,15 @@
 pkgname=btop-gpu-git
 pkgver=1.3.0.r836.0d35746
-pkgrel=1
+pkgrel=2
 pkgdesc="A monitor of resources compiled with gpu support flags!"
 arch=(any)
 url="https://github.com/aristocratos/btop"
 license=('Apache-2.0')
-makedepends=('gcc-libs' 'make' 'git' 'rocm-smi-lib')
+makedepends=('gcc-libs' 'make' 'git')
+optdepends=(
+	'rocm-smi-lib: AMD GPU Support'
+	'nvidia-utils: Nvidia GPU Support'
+	)
 source=("${pkgname}::git+https://github.com/aristocratos/btop.git")
 sha512sums=('SKIP')
 provides=('btop')
