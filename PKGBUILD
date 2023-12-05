@@ -2,11 +2,11 @@
 pkgname=python-sbi
 _name=${pkgname#python-}
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="sbi: simulation-based inference"
 arch=(any)
 url="https://github.com/sbi-dev/sbi"
-license=(MIT)
+license=(APGL3)
 groups=()
 depends=(python-matplotlib python-arviz python-joblib python-numpy python-pillow python-pyknos python-pyro-ppl python-scikit-learn python-scipy tensorboard python-pytorch python-tqdm)
 makedepends=(python-build python-installer)

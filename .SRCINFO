@@ -1,10 +1,10 @@
 pkgbase = python-sbi
 	pkgdesc = sbi: simulation-based inference
 	pkgver = 0.22.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sbi-dev/sbi
 	arch = any
-	license = MIT
+	license = APGL3
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python-matplotlib
