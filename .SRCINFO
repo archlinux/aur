@@ -1,6 +1,6 @@
 pkgbase = desq-utils-sni
 	pkgdesc = System tray for DesQ
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://gitlab.com/DesQ/DesQUtils/SNI
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = desq-utils-sni
 	depends = dfl-layouts
 	depends = dfl-xdg
 	depends = dfl-wayqt
-	source = https://gitlab.com/DesQ/DesQUtils/SNI/-/archive/v0.0.7/SNI-v0.0.7.tar.gz
-	md5sums = a1366126c589939f53563edb5069e5ca
+	source = https://gitlab.com/DesQ/DesQUtils/SNI/-/archive/v0.0.8/SNI-v0.0.8.tar.gz
+	md5sums = 39d534a4cd964388dfef831f6a1f6776
 
 pkgname = desq-utils-sni
