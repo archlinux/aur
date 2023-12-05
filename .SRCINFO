@@ -1,11 +1,12 @@
 pkgbase = sof
 	pkgdesc = Simple and fast calculate size of directories
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/balaraz/sof
 	arch = x86_64
 	license = GPL3
 	makedepends = go
+	makedepends = gzip
 	provides = sof
 	source = sof-3.0.tar.gz::https://codeberg.org/balaraz/sof/archive/v3.0.tar.gz
 	sha256sums = 76d70fb84b29955e3593c1bdaeb88caa1afe62c233c9c87010ffef8b63d330c9

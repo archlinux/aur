@@ -2,13 +2,13 @@
 
 pkgname=sof
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sof"
 arch=(x86_64)
 depends=()
-makedepends=(go)
+makedepends=(go gzip)
 provides=(sof)
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
@@ -21,4 +21,6 @@ package() {
 				-trimpath \
 				-o ${pkgdir}/usr/bin/${pkgname} \
 				$pkgname/main.go
+		gzip $pkgname/man/$pkgname.1
+		install -Dm644 $pkgname/man/$pkgname.1.gz -t $pkgdir/usr/share/man/man1/
 }
