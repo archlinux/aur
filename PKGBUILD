@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=axu
-pkgver=1.5.3
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="A cli tool to check your Arch Linux explicitly installed packages updates"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('pacman-contrib' 'yay' 'gawk')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tfkhdyt/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=("8107a86eddd807a70102c2e46122fa15")
+md5sums=("a1b6d97e3b8ddd2b7530a630890b79f9")
 
 prepare() {
   cd $pkgname-$pkgver 

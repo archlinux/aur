@@ -1,6 +1,6 @@
 pkgbase = axu
 	pkgdesc = A cli tool to check your Arch Linux explicitly installed packages updates
-	pkgver = 1.5.3
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://github.com/tfkhdyt/axu
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = axu
 	depends = pacman-contrib
 	depends = yay
 	depends = gawk
-	source = axu-1.5.3.tar.gz::https://github.com/tfkhdyt/axu/archive/refs/tags/v1.5.3.tar.gz
-	md5sums = 8107a86eddd807a70102c2e46122fa15
+	source = axu-1.5.5.tar.gz::https://github.com/tfkhdyt/axu/archive/refs/tags/v1.5.5.tar.gz
+	md5sums = a1b6d97e3b8ddd2b7530a630890b79f9
 
 pkgname = axu
