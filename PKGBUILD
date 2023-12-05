@@ -2,9 +2,9 @@
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 
 pkgname=ded
-pkgver=20131205
-_td_pkgver=20131205
-pkgrel=2
+pkgver=20230122
+_td_pkgver=20230122
+pkgrel=1
 pkgdesc="directory editor, file manager similar to Emacs dired"
 arch=('i686' 'x86_64')
 url="https://invisible-island.net/ded/ded.html"
@@ -12,8 +12,10 @@ license=('custom:BSD')
 depends=('ncurses')
 source=(https://invisible-island.net/archives/ded/$pkgname-$pkgver.tgz
         https://invisible-island.net/archives/ded/td_lib-$_td_pkgver.tgz)
-sha256sums=('44f336f7457de65d6d5c645a0334e283453c3649582b2e38baa807b05ab49ff9'
-            '1215084ec099f961a8a4de01959c6e894cd5003847c5a10290e1e782f2a0721b')
+sha256sums=(
+            79e05d4befc07a030b22552e75fb78f856e5d8758f9d8172ea697859ef19b1d8
+            1a2184958e774f8b3a09b08072974b29906e591278d7c4dc400c482ddc802f13
+           )
 
 build() {
   cd "$srcdir/td_lib-$_td_pkgver"
@@ -21,6 +23,8 @@ build() {
   make -j1
 
   cd "$srcdir/$pkgname-$pkgver"
+  # side-by-side build seems broken. This worked for me:
+  sed -i 's/if test "$cf_cv_tdlib_devel/if ! test "$cf_cv_tdlib_devel/' configure
   ./configure --prefix=/usr --mandir=/usr/share/man
   make -j1
 }

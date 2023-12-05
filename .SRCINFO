@@ -1,24 +1,15 @@
 pkgbase = ded
 	pkgdesc = directory editor, file manager similar to Emacs dired
-	pkgver = 20131205
-	pkgrel = 2
-	url = http://invisible-island.net/ded/ded.html
+	pkgver = 20230122
+	pkgrel = 1
+	url = https://invisible-island.net/ded/ded.html
 	arch = i686
 	arch = x86_64
 	license = custom:BSD
 	depends = ncurses
-	source = ftp://invisible-island.net/ded/ded-20131205.tgz
-	source = ftp://invisible-island.net/ded/ded-20131205.tgz.asc
-	source = ftp://invisible-island.net/ded/td_lib-20131205.tgz
-	source = ftp://invisible-island.net/ded/td_lib-20131205.tgz.asc
-	md5sums = 6a6c70cd356be36251d977efe2e97245
-	md5sums = SKIP
-	md5sums = f16c323c1e072b21ac829f2ae5a93cf0
-	md5sums = SKIP
-	sha256sums = 44f336f7457de65d6d5c645a0334e283453c3649582b2e38baa807b05ab49ff9
-	sha256sums = SKIP
-	sha256sums = 1215084ec099f961a8a4de01959c6e894cd5003847c5a10290e1e782f2a0721b
-	sha256sums = SKIP
+	source = https://invisible-island.net/archives/ded/ded-20230122.tgz
+	source = https://invisible-island.net/archives/ded/td_lib-20230122.tgz
+	sha256sums = 79e05d4befc07a030b22552e75fb78f856e5d8758f9d8172ea697859ef19b1d8
+	sha256sums = 1a2184958e774f8b3a09b08072974b29906e591278d7c4dc400c482ddc802f13
 
 pkgname = ded
-
