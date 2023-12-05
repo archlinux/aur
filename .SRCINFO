@@ -1,7 +1,7 @@
 pkgbase = zen-adblocker-bin
 	pkgdesc = An open-source system-wide ad-blocker and privacy guard
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anfragment/zen
 	arch = x86_64
 	license = MIT
