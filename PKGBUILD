@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='The coolest bot ever written'
 url='https://gitea.elara.ws/owobot/owobot'
 arch=('aarch64' 'armv6h' 'i686' 'x86_64')
-license=('GPLv3')
+license=('AGPLv3')
 provides=('owobot')
 conflicts=('owobot')
 
