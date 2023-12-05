@@ -1,0 +1,14 @@
+pkgbase = aoc-cli
+	pkgdesc = Advent of Code command-line tool
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/scarvalhojr/aoc-cli
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = aoc-cli
+	conflicts = aoc-cli
+	source = https://github.com/scarvalhojr/aoc-cli/archive/refs/tags/0.12.0.tar.gz
+	sha256sums = 5bd2eef8a310564c122be34ea9116967fe887ea549146adf38f4fbb0cddc0539
+
+pkgname = aoc-cli
