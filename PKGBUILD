@@ -1,10 +1,10 @@
 # Maintainer: Nima Askarian <nimaas1400@gmail.com>
 pkgname=potato-c
-pkgver=v0.3
+pkgver=0.3.1
 pkgrel=1
 _gitname=potato-c
 pkgdesc="A featureful, modular and fast pomodoro timer with server-client structure, written in C."
-url="https://github.com/nimaaskarian/potato-c"
+url="https://github.com/nimaaskarian/${_gitname}"
 
 provides=(potctl potd potui)
 makedepends=(git ncurses)
@@ -13,7 +13,7 @@ license=('GPL3')
 optdepends=('libnotify: sending notifications on event')
 
 source=(
-  "${pkgname}.tar.gz::https://github.com/nimaaskarian/potato-c/archive/refs/tags/${pkgver}.zip"
+  "${pkgname}.tar.gz::https://github.com/nimaaskarian/${_gitname}/archive/refs/tags/${pkgver}.zip"
 )
 
 md5sums=('6ccc41f79173aca329b3a40c79fc7ae6')
