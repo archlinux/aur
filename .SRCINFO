@@ -1,12 +1,12 @@
 pkgbase = yacd-meta
 	pkgdesc = Yet Another Clash Dashboard
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MetaCubeX/Yacd-meta
 	arch = any
 	license = unknown
 	makedepends = yarn
-	depends = clash-meta
+	optdepends = clash-meta
 	conflicts = yacd-meta-git
 	source = yacd-meta-0.3.7.tar.gz::https://github.com/MetaCubeX/Yacd-meta/archive/v0.3.7.tar.gz
 	sha256sums = 098ed76836c41778ecb9707bf9a5c77f77eaa1d6c63300d5edeac34339cb5f87
