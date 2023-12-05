@@ -1,6 +1,6 @@
 pkgbase = siyuan-git
 	pkgdesc = A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.
-	pkgver = 2.11.0.r0.ga75abfb81
+	pkgver = 2.11.1.r0.g20881abfe
 	pkgrel = 1
 	url = https://b3log.org/siyuan
 	arch = any
