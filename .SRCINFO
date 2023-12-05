@@ -1,0 +1,16 @@
+pkgbase = r-loder
+	pkgdesc = Dependency-Free Access to PNG Image Files
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=loder
+	arch = x86_64
+	license = BSD
+	checkdepends = r-testthat
+	depends = r
+	optdepends = r-covr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/loder_0.2.1.tar.gz
+	md5sums = 07ee60b41a730f551f95da3865d23760
+	sha256sums = 7e1b977a8e62b29717866a61c98245860fa32ae5ab3d8362096d8e296acc83a6
+
+pkgname = r-loder
