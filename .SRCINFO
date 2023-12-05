@@ -1,6 +1,6 @@
 pkgbase = koboldcpp-hipblas
 	pkgdesc = HIPBLAS build of koboldcpp
-	pkgver = 1.48.1
+	pkgver = 1.51.1
 	pkgrel = 1
 	url = https://github.com/YellowRoseCx/koboldcpp-rocm
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = koboldcpp-hipblas
 	depends = clblast
 	depends = hipblas
 	optdepends = customtkinter
-	source = koboldcpp-hipblas-1.48.1.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/1.48.1.yr2-ROCm.tar.gz
-	md5sums = f029e7405ba489863eeb8088b228de89
+	source = koboldcpp-hipblas-1.51.1.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v1.51.1.yr1-ROCm.tar.gz
+	md5sums = c7ff9e2724ad5444317a959d17a9ab0d
 
 pkgname = koboldcpp-hipblas
