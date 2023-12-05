@@ -1,0 +1,20 @@
+pkgbase = python-nflows
+	pkgdesc = conditional density estimation
+	pkgver = 0.14
+	pkgrel = 1
+	url = https://github.com/bayesiains/nflows
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = tensorboard
+	depends = python-pytorch
+	depends = python-tqdm
+	provides = lsbi
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/n/nflows/nflows-0.14.tar.gz
+	sha256sums = ee09ea841858e79ed9f3e104b6654aea676f3403a2f228ef76151e108968caf3
+
+pkgname = python-nflows
