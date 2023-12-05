@@ -1,6 +1,6 @@
 pkgver=20230323.gitbcdcfbcf
 pkgname=linux-firmware-x13s-bin
-pkgdesc='Prebuilt Linux kernel and modules for Lenovo ThinkPad X13s from Ubuntu Concept (unsigned)'
+pkgdesc='Prebuilt firmware files for Linux on Lenovo ThinkPad X13s from Ubuntu Concept'
 pkgrel=202311171005
 arch=(any)
 url='https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s'

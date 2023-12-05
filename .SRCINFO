@@ -1,5 +1,5 @@
 pkgbase = linux-firmware-x13s-bin
-	pkgdesc = Prebuilt Linux kernel and modules for Lenovo ThinkPad X13s from Ubuntu Concept (unsigned)
+	pkgdesc = Prebuilt firmware files for Linux on Lenovo ThinkPad X13s from Ubuntu Concept
 	pkgver = 20230323.gitbcdcfbcf
 	pkgrel = 202311171005
 	url = https://launchpad.net/~ubuntu-concept/+archive/ubuntu/x13s
