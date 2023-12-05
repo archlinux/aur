@@ -24,7 +24,7 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-1}
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
@@ -39,12 +39,12 @@ depends=('libqtutilities.so' 'libqtforkawesome.so' 'libc++utilities.so' 'libboos
 [[ $_enable_kio_plugin ]] && optdepends+=('kio5: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 5 desktop')
 makedepends=('cmake' 'ninja' 'qt5-tools' 'boost')
-checkdepends=('cppunit' 'syncthing' 'iproute2' 'appstream')
+checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio5')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework5' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('f9003bbe185d355f9cac18862077fa2cc4e809f7f416d9b1dd5ef6474c926742')
+sha256sums=('b22445eda35deb8889749ee576bb657906c59d158f8fd1fbf79bbb027ac84533')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
