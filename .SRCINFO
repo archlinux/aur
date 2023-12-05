@@ -1,6 +1,6 @@
 pkgbase = koboldcpp-cuda
 	pkgdesc = Full-featured CUDA build of koboldcpp
-	pkgver = 1.50
+	pkgver = 1.51.1
 	pkgrel = 1
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = koboldcpp-cuda
 	depends = clblast
 	depends = cuda
 	optdepends = customtkinter
-	source = koboldcpp-cuda-1.50.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.50.tar.gz
-	md5sums = 79dc68fe35b4ce1e8fd9a966931abb40
+	source = koboldcpp-cuda-1.51.1.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.51.1.tar.gz
+	md5sums = 3b4b638986fc0b311172d3696381a1e0
 
 pkgname = koboldcpp-cuda
