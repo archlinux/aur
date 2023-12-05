@@ -1,6 +1,6 @@
 pkgbase = atani
 	pkgdesc = The all-in-one crypto platform you’ve been dreaming about. Exchanges, wallets and taxes under one roof
-	pkgver = 14.29.0
+	pkgver = 14.39.0
 	pkgrel = 1
 	url = https://atani.com/
 	install = atani.install
@@ -12,7 +12,7 @@ pkgbase = atani
 	provides = atani
 	conflicts = atani-snap
 	replaces = atani-snap
-	source = https://api.snapcraft.io/api/v1/snaps/download/fRYdkXBDVAKnSXTJG5xa4PwBR4RqGDkV_181.snap
+	source = https://api.snapcraft.io/api/v1/snaps/download/fRYdkXBDVAKnSXTJG5xa4PwBR4RqGDkV_193.snap
 	md5sums = SKIP
 
 pkgname = atani
