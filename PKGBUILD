@@ -2,7 +2,7 @@
 # Contributor: Jeff Parent <jecxjo@sdf.lonestar.org>
 pkgname=cutecw
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Learn CW using the Koch Method"
 arch=('i686' 'x86_64')
