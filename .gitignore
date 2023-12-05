@@ -1,0 +1,4 @@
+pkg/
+src/
+skytable-*-*-linux-gnu.deb
+skytable-bin-*-*-*.pkg.tar.zst
