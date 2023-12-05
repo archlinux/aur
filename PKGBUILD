@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=vpkedit-bin
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A tool to work with VPK files (binary release)"
 url="https://github.com/craftablescience/VPKEdit"
@@ -11,7 +11,7 @@ provides=("vpkedit")
 conflicts=("vpkedit")
 source=("vpkedit-$pkgver.zip::$url/releases/download/v$pkgver/VPKEdit-Linux-Standalone-gcc-Release.zip"
         "$url/raw/main/src/gui/res/icon.png")
-sha256sums=('77b62471002a68b5e2fc5c4afcc90d0c64ff7492fdbe0833a331f2cf2396415f'
+sha256sums=('cdb4ae4ff50e81adbf7540a9dd374ba90b0a52d43f5ea227ca3009477a28e5c1'
             'SKIP')
 
 prepare() {
