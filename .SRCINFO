@@ -1,6 +1,6 @@
 pkgbase = potato-c
 	pkgdesc = A featureful, modular and fast pomodoro timer with server-client structure, written in C.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/nimaaskarian/potato-c
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = potato-c
 	provides = potctl
 	provides = potd
 	provides = potui
-	source = potato-c.tar.gz::https://github.com/nimaaskarian/potato-c/archive/refs/tags/0.3.1.zip
-	md5sums = e08c18b26a400c6e809465ca513463b4
+	source = potato-c.tar.gz::https://github.com/nimaaskarian/potato-c/archive/refs/tags/0.3.2.zip
+	md5sums = 642ab5e368a173b46f73b58337048894
 
 pkgname = potato-c
