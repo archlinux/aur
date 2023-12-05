@@ -1,0 +1,27 @@
+pkgbase = r-scddboost
+	pkgdesc = A compositional model to assess expression changes from single-cell rna-seq data
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/scDDboost
+	arch = x86_64
+	license = GPL
+	checkdepends = r-testthat
+	makedepends = r-bh
+	depends = r-biocparallel
+	depends = r-ebseq
+	depends = r-ggplot2
+	depends = r-mclust
+	depends = r-oscope
+	depends = r-rcpp
+	depends = r-rcppeigen
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scDDboost_1.4.0.tar.gz
+	md5sums = ac0cac5975ebe4025ea07ad00e132847
+	sha256sums = e92ba350e3f9b73a22f634c8e81dd52b8666f905092bfbb0f264dc2863b76f87
+
+pkgname = r-scddboost
