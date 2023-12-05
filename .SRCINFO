@@ -1,12 +1,14 @@
 pkgbase = lieer-git
 	pkgdesc = Fast fetch and two-way tag synchronization between notmuch and GMail
-	pkgver = v1.5.20230910.85f5151
+	pkgver = v1.6.20231203.e41c966
 	pkgrel = 1
 	url = https://github.com/gauteh/lieer
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-tqdm
 	depends = python-google-api-python-client

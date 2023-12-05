@@ -1,7 +1,7 @@
 # Maintainer: Georgiy Tugai <georgiy.tugai@gmail.com>
 # Maintainer: ssfdust <ssfdust@gmail.com>
 pkgname=lieer-git
-pkgver=v1.5.20230910.85f5151
+pkgver=v1.6.20231203.e41c966
 pkgrel=1
 pkgdesc="Fast fetch and two-way tag synchronization between notmuch and GMail"
 arch=(any)
