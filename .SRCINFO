@@ -1,13 +1,17 @@
 pkgbase = skytable-bin
 	pkgdesc = Skytable is a modern NoSQL database powered by BlueQL
 	pkgver = 0.8.0_beta_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://skytable.io
 	arch = x86_64
 	license = AGPL-3.0-only
 	provides = skytable
 	noextract = skytable-v0.8.0-beta-x86_64-linux-gnu.deb
 	source = https://github.com/skytable/skytable/releases/download/v0.8.0-beta/skytable-v0.8.0-beta-x86_64-linux-gnu.deb
+	source = skytable.tmpfiles
+	source = skytable.sysusers
 	sha256sums = d8ebce8e9f19d950d21abaceb0e9a27ef0b0730d9e54996921fdcf7108c10531
+	sha256sums = 1707e36c4613020bdbf2a0a33afd130d30b4e0b615831ba06eaadbe865e86156
+	sha256sums = d04ba945687bd3c0dd8ccfec8dbb06808e89169b11225aedf6df85373058330d
 
 pkgname = skytable-bin
