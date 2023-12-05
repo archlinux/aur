@@ -4,7 +4,7 @@
 pkgname=plasma-meta
 pkgver=5.27
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=3
+pkgrel=4
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 license=(None)
@@ -33,7 +33,7 @@ depends=(bluedevil
          plasma-welcome
          kwayland-integration
          kwallet-pam
-         kgamma5
+         kgamma
          sddm-kcm
          breeze-gtk
          powerdevil
