@@ -1,0 +1,28 @@
+pkgbase = r-openair
+	pkgdesc = Tools for the Analysis of Air Pollution Data
+	pkgver = 2.18.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=openair
+	arch = x86_64
+	license = GPL
+	depends = r-cli
+	depends = r-dplyr
+	depends = r-hexbin
+	depends = r-latticeextra
+	depends = r-lubridate
+	depends = r-mapproj
+	depends = r-purrr
+	depends = r-rcpp
+	depends = r-readr
+	depends = r-rlang
+	depends = r-tibble
+	depends = r-tidyr
+	optdepends = r-mapdata
+	optdepends = r-maps
+	optdepends = r-quantreg
+	optdepends = r-spelling
+	source = https://cran.r-project.org/src/contrib/openair_2.18-0.tar.gz
+	md5sums = 301c3df8314138c6193499cff523c396
+	sha256sums = e06febbe421a6493dff0a3c05b894bb1fffdfb1c4fed576288974f5dae597cc3
+
+pkgname = r-openair
