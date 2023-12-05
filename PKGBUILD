@@ -13,7 +13,7 @@ makedepends=('git' 'go>=2:1.17.0-1' 'nodejs>=17' 'yarn')
 provides=('v2raya')
 conflicts=('v2raya')
 backup=("etc/default/v2raya")
-source=("$pkgname::git+$url#branch=feat_v5")
+source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
 

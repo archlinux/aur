@@ -18,7 +18,7 @@ pkgbase = v2raya-git
 	provides = v2raya
 	conflicts = v2raya
 	backup = etc/default/v2raya
-	source = v2raya-git::git+https://github.com/v2rayA/v2rayA#branch=feat_v5
+	source = v2raya-git::git+https://github.com/v2rayA/v2rayA
 	sha512sums = SKIP
 
 pkgname = v2raya-git
