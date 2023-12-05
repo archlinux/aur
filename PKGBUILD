@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=gdb-prompt
 pkgname=$_pkgname-git
-pkgver=r1.db4e896
+pkgver=r8.b837d39
 pkgrel=1
 pkgdesc="A powerlevel10k-like prompt style of gdb."
 arch=(any)
@@ -10,7 +10,7 @@ url=https://github.com/Freed-Wu/$_pkgname
 license=(GPL3)
 depends=(gdb)
 makedepends=(git)
-source=("git+$url#tag=db4e8965a1a9624a142d84e6c81e13a0057433a8")
+source=("git+$url#tag=b837d39b40c5f9cf4bacff547d2c9e35ddfcc80e")
 sha256sums=(SKIP)
 
 pkgver() {
