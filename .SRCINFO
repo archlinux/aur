@@ -1,6 +1,6 @@
 pkgbase = crystal-launcher
 	pkgdesc = A custom Minecraft launcher with its own package system
-	pkgver = 20231114
+	pkgver = 20231205
 	pkgrel = 1
 	url = https://crystal-launcher.net/
 	install = crystal-launcher.install
