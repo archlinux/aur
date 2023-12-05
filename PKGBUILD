@@ -2,13 +2,12 @@
 
 pkgname=zbar-desktop
 pkgver=0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Scan QR-Code from context menu'
 arch=('any')
-url='http://www.eworm.de/'
+url='https://www.eworm.de/'
 depends=('zenity' 'zbar')
 license=('GPL')
-install=zbar-desktop.install
 source=('zbarscan'
 	'zbarscan.desktop'
 	'zbarscan.png')
