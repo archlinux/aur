@@ -166,7 +166,7 @@ build() {
 
   # mozc fcitx5 version
   git fetch origin master:remotes/origin/master
-  source bazel-bin/base/mozc_version.txt && export pkgver="$(printf "%s.%s.%s.%s" "${MAJOR}" "${MINOR}" "${BUILD_OSS}" "${REVISION}")" && sed -e "/2.26.4220.106.1/d" -e "/2.25.4150.102.1/d"  -e "s/release version=\".*\"/release version=\"$pkgver.1\" date=\"$(git log -1 --pretty=format:'%as' -b origin/master)\"/" -i ${SCRIPTS_DIR}/../src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
+  source bazel-bin/base/mozc_version.txt && export pkgver="$(printf "%s.%s.%s.%s" "${MAJOR}" "${MINOR}" "${BUILD_OSS}" "${REVISION}")" && sed -e "/2.26.4220.106.1/d" -e "/2.25.4150.102.1/d"  -e "s/release version=\".*\"/release version=\"$pkgver.1\" date=\"$(git log -1 --pretty=format:'%as' -b origin/master)\"/" -i unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
 
   # Extract license part of mozc
   head -n 29 server/mozc_server.cc > LICENSE
