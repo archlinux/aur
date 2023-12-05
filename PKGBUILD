@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=extra-cmake-modules-git
-pkgver=5.240.0.r3626.319d0260
+pkgver=5.246.0.r3657.11dd72b0
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake. (GIT version)'
 arch=('any')
@@ -23,7 +23,7 @@ checkdepends=(
   'qt6-declarative'
 )
 conflicts=('extra-cmake-modules')
-provides=('extra-cmake-modules')
+provides=("extra-cmake-modules=${pkgver%%.r*}")
 optdepends=(
  'python-pyxdg: to generate fastlane metadata for Android apps'
  'python-requests: to generate fastlane metadata for Android apps'
