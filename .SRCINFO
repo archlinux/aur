@@ -1,6 +1,6 @@
 pkgbase = python-deepspeed
 	pkgdesc = DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective.
-	pkgver = 0.10.0
+	pkgver = 0.12.4
 	pkgrel = 1
 	url = https://github.com/microsoft/DeepSpeed
 	arch = x86_64
@@ -9,15 +9,16 @@ pkgbase = python-deepspeed
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-hjson
-	depends = python-ninja
+	depends = ninja
 	depends = python-numpy
 	depends = python-packaging
 	depends = python-psutil
 	depends = python-py-cpuinfo
 	depends = python-pydantic
+	depends = python-pynvml
 	depends = python-pytorch
 	depends = python-tqdm
-	source = https://github.com/microsoft/DeepSpeed/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = a03840cf9735b97c5207516adaeaba6ae53c5db481551ef8e93c7e4b253a726b
+	source = https://github.com/microsoft/DeepSpeed/archive/refs/tags/v0.12.4.tar.gz
+	sha256sums = 736dbfd0ce637749899218286f13d9a932dfbbf692bdbb3ee10d988c0b945327
 
 pkgname = python-deepspeed

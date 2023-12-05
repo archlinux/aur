@@ -1,15 +1,16 @@
 pkgname=python-deepspeed
-pkgver=0.10.0
+pkgver=0.12.4
 pkgrel=1
 pkgdesc="DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective. "
 depends=(
   'python-hjson'
-  'python-ninja'
+  'ninja'
   'python-numpy'
   'python-packaging'
   'python-psutil'
   'python-py-cpuinfo'
   'python-pydantic'
+  'python-pynvml'
   'python-pytorch'
   'python-tqdm'
 )
@@ -18,11 +19,11 @@ arch=('x86_64')
 url="https://github.com/microsoft/DeepSpeed"
 license=('Apache-2.0')
 source=("https://github.com/microsoft/DeepSpeed/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a03840cf9735b97c5207516adaeaba6ae53c5db481551ef8e93c7e4b253a726b')
+sha256sums=('736dbfd0ce637749899218286f13d9a932dfbbf692bdbb3ee10d988c0b945327')
 
 build() {
   cd "${srcdir}/DeepSpeed-$pkgver"
-  DS_BUILD_OPS=1 DS_BUILD_SPARSE_ATTN=0 python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation
 }
 
 package() {
