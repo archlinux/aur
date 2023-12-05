@@ -1,6 +1,6 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgname=actual-server
-pkgver=23.11.0
+pkgver=23.12.0
 pkgrel=1
 pkgdesc="Actual Budget Server"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
     'tmpfiles'
 )
 noextract=()
-sha256sums=('bd60fd8cd5d9e70ece16550c8ef0f4ab92af1d1b6eb14be070551b7372043776'
+sha256sums=('da85dd0143c70690a66c5412fbd52b84b0f6479dc9a8f7b8dbb90728bc4e3d2d'
             '6d70d436bff95b6ca7ae270219a4288c81ccf119ad57158528fdda19585b2067'
             '4dfa4502df8d72212ccfb96cfc2509c9a1461f542adb38304af54097b30ca0d5'
             'cba6a5df66a42ced857822e1099be00f2e37ec800f29cbbfca7210020140291b')
