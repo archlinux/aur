@@ -1,0 +1,21 @@
+pkgbase = python-pyknos
+	pkgdesc = conditional density estimation
+	pkgver = 0.15.2
+	pkgrel = 1
+	url = https://github.com/mackelab/pyknos
+	arch = any
+	license = AGPL3
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = tensorboard
+	depends = python-pytorch
+	depends = python-tqdm
+	depends = python-nflows
+	provides = lsbi
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/p/pyknos/pyknos-0.15.2.tar.gz
+	sha256sums = ee09ea841858e79ed9f3e104b6654aea676f3403a2f228ef76151e108968caf3
+
+pkgname = python-pyknos
