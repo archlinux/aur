@@ -1,6 +1,6 @@
 pkgbase = desq-session
 	pkgdesc = Session Manager for DesQ
-	pkgver = 0.0.7.1
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://gitlab.com/DesQ
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = desq-session
 	depends = dfl-xdg
 	depends = dfl-applications
 	depends = dfl-login1
-	source = https://gitlab.com/DesQ/Session/-/archive/v0.0.7.1/Session-v0.0.7.1.tar.gz
-	md5sums = f8673d7f636658626a86a81cd9011035
+	source = https://gitlab.com/DesQ/Session/-/archive/v0.0.8/Session-v0.0.8.tar.gz
+	md5sums = f9681db5d92bfac8cde442f9506a22b1
 
 pkgname = desq-session
