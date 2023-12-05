@@ -1,6 +1,6 @@
 pkgbase = cryptomator
 	pkgdesc = Multiplatform transparent client-side encryption of your files in the cloud.
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://cryptomator.org/
 	arch = any
@@ -17,10 +17,10 @@ pkgbase = cryptomator
 	noextract = jdk.tar.gz
 	noextract = openjfx.zip
 	options = !strip
-	source = cryptomator-1.11.0.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/1.11.0.tar.gz
-	source = cryptomator-1.11.0.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/1.11.0/cryptomator-1.11.0.tar.gz.asc
+	source = cryptomator-1.11.1.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/1.11.1.tar.gz
+	source = cryptomator-1.11.1.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/1.11.1/cryptomator-1.11.1.tar.gz.asc
 	validpgpkeys = 58117AFA1F85B3EEC154677D615D449FE6E6A235
-	sha256sums = 68e88f3fe4103de6ebafd1ef0d6ba16df539d78897476eb176c085fd5f5c3314
+	sha256sums = 0d79076fab8f7b2f5cd602f06ef5713f7a7433ff5952c679a118fcd16bb5e0ef
 	sha256sums = SKIP
 
 pkgname = cryptomator
