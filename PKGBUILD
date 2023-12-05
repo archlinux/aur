@@ -1,8 +1,8 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=Disks
 pkgname=desq-utils-disks
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Disks Auto Mounter for DesQ"
 arch=('x86_64' 'aarch64')
@@ -11,11 +11,11 @@ license=('GPL3')
 depends=('qt5-base' 'libdesqui' 'dfl-settings' 'dfl-utils' 'dfl-applications' 'dfl-xdg' 'dfl-storage')
 makedepends=('meson' 'ninja')
 source=("https://gitlab.com/DesQ/DesQUtils/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('eb39740d3e290226cddadecd9fc92403')
+md5sums=('304df6c59bd2d2b6ab32ce5b0dbcc59a')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
-  meson .build --prefix=/usr --buildtype=release
+  meson setup .build --prefix=/usr --buildtype=release
   ninja -C .build
 }
 
