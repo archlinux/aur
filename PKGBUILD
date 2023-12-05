@@ -17,7 +17,7 @@ provides=(virtualbox-ext-oracle)
 conflicts=(virtualbox-ext-oracle)
 install=virtualbox-ext-oracle.install
 optdepends=('rdesktop: client to connect vm via RDP')
-depends=("virtualbox>=$pkgver" 'virtualbox<7')
+depends=("virtualbox>=6.1" 'virtualbox<7')
 
 prepare()
 {
