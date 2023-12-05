@@ -1,14 +1,13 @@
 pkgbase = cutecw
 	pkgdesc = Learn CW using the Koch Method
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = qt4
+	depends = qt6
 	depends = pulseaudio
-	source = http://www.hamtools.org/cutecw/releases/cutecw-1.0.tar.gz
-	sha256sums = d0267dafe80047fb82ff387fc9cc4451f3f9a1b0f952eee66f0a82fa092c1146
+	source = http://www.hamtools.org/cutecw/releases/cutecw-2.0.tar.gz
+	sha256sums = d79ce2a9e0ab2e2c958ea33b5f43a2e000be4d0afd7282847e200062fa44129e
 
 pkgname = cutecw
-
