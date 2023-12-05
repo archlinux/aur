@@ -1,0 +1,24 @@
+pkgbase = r-simpleseg
+	pkgdesc = A package to perform simple cell segmentation
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/simpleSeg
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-biocparallel
+	depends = r-cytomapper
+	depends = r-ebimage
+	depends = r-s4vectors
+	depends = r-spatstat.geom
+	depends = r-summarizedexperiment
+	depends = r-terra
+	optdepends = r-biocstyle
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/simpleSeg_1.4.0.tar.gz
+	md5sums = d0e40e9be3d3e9c8a16d0390040f3da8
+	sha256sums = c8b54c59cb148b68c10ad0c5f22feddc2491383a16a8269afc67ec524b7d0baf
+
+pkgname = r-simpleseg
