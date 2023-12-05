@@ -22,6 +22,12 @@ source=(
     'actual-server.service'
     'sysusers'
     'tmpfiles'
+    # Hack to work around .migrate file creation in project root
+    # (/usr/share/webapps/actual-server) which is setup to be
+    # read-only for actual user. This patch forces the file
+    # creation in the /var/lib/actual directory.
+    # See following issue upstream:
+    # https://github.com/actualbudget/actual/issues/2011#issuecomment-1837295607
     'migrations.js.patch'
 )
 noextract=()
