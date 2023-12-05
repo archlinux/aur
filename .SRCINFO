@@ -1,12 +1,12 @@
 pkgbase = yacd
 	pkgdesc = Yet Another Clash Dashboard
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haishanh/yacd
 	arch = any
-	license = unknown
+	license = MIT
 	makedepends = yarn
-	depends = clash
+	optdepends = clash
 	conflicts = yacd-git
 	source = yacd-0.3.8.tar.gz::https://github.com/haishanh/yacd/archive/v0.3.8.tar.gz
 	sha256sums = 290e23a1a2f68ab2c8a20b33e414b8abef2d6730cc3221ed62d3b173d3ce2a56
