@@ -1,28 +1,8 @@
 pkgbase = teeworlds-mkrace
-	pkgdesc = A 2D multiplayer arcade - mkrace client modification
-	pkgver = git
+	pkgdesc = metapackage - migrate to ddnet
+	pkgver = 1
 	pkgrel = 1
-	url = http://disarmer.ru/mkrace/
-	arch = i686
-	arch = x86_64
-	license = custom
-	makedepends = git
-	makedepends = python2
-	makedepends = binutils
-	makedepends = gcc
-	makedepends = make
-	makedepends = fakeroot
-	depends = mesa
-	depends = sdl
-	depends = freetype2
-	depends = glu
-	provides = teeworlds-mkrace
-	conflicts = teeworlds-mkrace
-	replaces = teewars
-	source = teeworlds-mkrace::git://github.com/ftk/XXLDDRace.git
-	source = mkrace.desktop
-	md5sums = SKIP
-	md5sums = 21491a50c4161f7a65ef9998334a6852
+	arch = any
 
 pkgname = teeworlds-mkrace
-
+	depends = ddnet
