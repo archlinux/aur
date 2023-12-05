@@ -1,6 +1,6 @@
-# Maintainer: Gaspard d'Hautefeuille <gaspard@dhautefeuille.eu>
+# Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname=hash-slinger-git
-pkgver=3.1
+pkgver=3.3+r1+g0bb0dba
 pkgrel=1
 pkgdesc="Tools to generate special DNS records (SSHFP, TLSA, OPENPGPKEY, IPSECKEY)"
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=('openssh: for sshfp'
             'strongswan: for ipseckey (if not using libreswan or openswan)')
 conflicts=('hash-slinger')
 source=(git+https://github.com/letoams/hash-slinger)
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd hash-slinger

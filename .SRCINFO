@@ -1,6 +1,6 @@
 pkgbase = hash-slinger-git
 	pkgdesc = Tools to generate special DNS records (SSHFP, TLSA, OPENPGPKEY, IPSECKEY)
-	pkgver = 3.1
+	pkgver = 3.3+r1+g0bb0dba
 	pkgrel = 1
 	url = https://github.com/letoams/hash-slinger
 	arch = any
@@ -17,6 +17,6 @@ pkgbase = hash-slinger-git
 	optdepends = strongswan: for ipseckey (if not using libreswan or openswan)
 	conflicts = hash-slinger
 	source = git+https://github.com/letoams/hash-slinger
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = hash-slinger-git
