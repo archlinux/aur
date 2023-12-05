@@ -1,5 +1,10 @@
 # redumper-bin .Changelog
 
+## 2023-12-04, redumper-bin build_278-1
+
+* Bump to build_278 release; new build released while I was updating the  
+PKGBUILD.
+
 ## 2023-12-04, redumper-bin build_273-1
 
 * Bump to build_273 release.
