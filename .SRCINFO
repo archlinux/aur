@@ -1,7 +1,7 @@
 pkgbase = python-flet
 	pkgdesc = Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flet.dev/
 	arch = any
 	license = Apache
