@@ -21,7 +21,7 @@ b2sums=('e565ffa0f709c2ff53146f49b03ca6ee3a08e608ed7333ea5f67d27cbf17a612322d315
 options=(!strip)
 
 prepare() {
-    chmod a+x ./MayaUSD_${pkgver}_Maya2024.2_Linux.run
+    chmod +x ./MayaUSD_${pkgver}_Maya2024.2_Linux.run
     ./MayaUSD_${pkgver}_Maya2024.2_Linux.run --target extracted --phase2 --noexec
     echo 'Extracting rpm...'
     bsdtar -xf extracted/*.rpm
