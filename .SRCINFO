@@ -1,0 +1,15 @@
+pkgbase = freecalypso-usbser-tools
+	pkgdesc = FreeCalypso USB-serial tools
+	pkgver = r1
+	pkgrel = 1
+	url = https://www.freecalypso.org/hg/freecalypso-usbser-tools
+	arch = x86_64
+	arch = i686
+	groups = freecalypso
+	license = custom
+	depends = libusb-compat
+	conflicts = freecalypso-usbser-tools-hg
+	source = https://www.freecalypso.org/pub/GSM/FreeCalypso/fc-usbser-tools-r1.tar.bz2
+	sha256sums = 9df1ab84340c42f4485db10743d228997e631c8f4225d793cca511efa8d87346
+
+pkgname = freecalypso-usbser-tools
