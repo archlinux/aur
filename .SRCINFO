@@ -1,23 +1,23 @@
-pkgbase = modsecurity
-	pkgdesc = A cross platform web application firewall engine for Apache, IIS and Nginx
-	pkgver = 3.0.10
+pkgbase = modsecurity-git
+	pkgdesc = A cross platform web application firewall engine for Apache, IIS and Nginx, git HEAD
+	pkgver = v3.0.10.r25.g5b094c0
 	pkgrel = 1
 	url = https://github.com/SpiderLabs/ModSecurity
 	arch = i686
 	arch = x86_64
 	license = APACHE
-	depends = apache
-	depends = apr-util
-	depends = pcre
-	depends = libxml2
-	depends = lua
-	depends = curl
+	makedepends = git
 	depends = yajl
-	provides = modsecurity=3.0.10
-	source = https://github.com/SpiderLabs/ModSecurity/releases/download/v3.0.10/modsecurity-v3.0.10.tar.gz
-	source = https://github.com/SpiderLabs/ModSecurity/releases/download/v3.0.10/modsecurity-v3.0.10.tar.gz.asc
-	validpgpkeys = F126692E9BA86B3958E73ED2F2FC4E45883BCBA4
-	sha256sums = d5d459f7c2e57a69a405f3222d8e285de419a594b0ea8829058709962227ead0
+	depends = curl
+	depends = lmdb
+	depends = libxml2
+	depends = pcre2
+	depends = geoip
+	depends = libmaxminddb
+	depends = ssdeep
+	depends = luajit
+	provides = modsecurity=v3.0.10.r25.g5b094c0
+	source = modsecurity::git+https://github.com/SpiderLabs/ModSecurity
 	sha256sums = SKIP
 
-pkgname = modsecurity
+pkgname = modsecurity-git

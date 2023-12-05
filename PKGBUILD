@@ -2,57 +2,60 @@
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Stephan Conrad <stephan@conrad.pics>
 
-pkgname=modsecurity
-pkgver=3.0.10
+pkgname=modsecurity-git
+_name=modsecurity
+pkgver=v3.0.10.r25.g5b094c0
 pkgrel=1
-pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx'
+pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, git HEAD'
 arch=('i686' 'x86_64')
 url='https://github.com/SpiderLabs/ModSecurity'
 license=('APACHE')
-
 depends=(
-	'apache' 'apr-util' 'pcre'
-	'libxml2' 'lua' 'curl' 'yajl'
+	'yajl'
+	'curl'
+	'lmdb'
+	'libxml2'
+	'pcre2'
+	'geoip'
+	'libmaxminddb'
+	'ssdeep'
+	'luajit'
 )
-provides=("${pkgname}=${pkgver}")
+makedepends=('git')
+provides=("${_name}=${pkgver}")
+source=("${_name}::git+$url")
+sha256sums=('SKIP')
 
-source=(
-	"https://github.com/SpiderLabs/ModSecurity/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"{,.asc}
-)
-validpgpkeys=(
-	'F126692E9BA86B3958E73ED2F2FC4E45883BCBA4' # Martin Vierula (GitHub key)
-)
-sha256sums=('d5d459f7c2e57a69a405f3222d8e285de419a594b0ea8829058709962227ead0'
-            'SKIP')
+pkgver() {
+	cd "${srcdir}/${_name}"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-	# Create build directory
-	mkdir -p "${srcdir}"/build
-
-	cd "${srcdir}"/build
-	cp -a "${srcdir}"/${pkgname}-v${pkgver}/* ./
-
-	./build.sh
+	cd "${srcdir}/${_name}"
+	git submodule init
+	git submodule update
+	sed -e 's/luajit-2.0/luajit-2.1/g' \
+			-e 's/LUA_POSSIBLE_LIB_NAMES="/LUA_POSSIBLE_LIB_NAMES="luajit /g' \
+			-i build/lua.m4
 }
 
 build() {
-	# Build package
-	cd "${srcdir}"/build
-
+	cd "${srcdir}/${_name}"
+	./build.sh
 	./configure \
 		--prefix=/usr \
-		--enable-standalone-module \
-		--enable-htaccess-config
-
-	# Remove RPATH
-	# https://tracker.debian.org/media/packages/m/modsecurity-apache/rules-2.9.1-2
-	sed -ri 's|(hardcode_into_libs)=.*|\1=no|' libtool
-
+		--with-lmdb \
+		--with-libxml \
+		--with-lua \
+		--with-pcre2 \
+		--with-ssdeep \
+		--disable-examples
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
 }
 
 package() {
-	# Install package
-	cd "${srcdir}"/build
-	make DESTDIR="${pkgdir}" install
+	cd "${srcdir}/${_name}"
+	make DESTDIR="$pkgdir" install
 }
