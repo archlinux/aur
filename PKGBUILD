@@ -2,14 +2,14 @@
 
 pkgbase=rime-flypy
 pkgname=('rime-flypy' 'fcitx5-flypy')
-pkgver=10.9.4.p2
+pkgver=10.9.4.p3
 pkgrel=1
 arch=('x86_64')
 url="http://flypy.com/"
 license=('unknown')
 makedepends=('libime' 'librime' 'python' 'rime-prelude')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v$pkgver.tar.gz")
-sha256sums=('60b4fdaa17fca93fac2de241e9b68937064ef4042db076934ab95b3f63527493')
+sha256sums=('b974f197cfcb26844db63f3aaf6691a7a6b208c29e3650317379636991a20e51')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -27,7 +27,6 @@ build() {
 
 package_rime-flypy() {
     pkgdesc="小鹤音形 rime 挂接文件"
-    depends=('rime-lua-hook')
     optdepends=('ibus-rime: input support'
                 'fcitx-rime: input support'
                 'fcitx5-rime: input support')
