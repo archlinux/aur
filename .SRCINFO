@@ -1,12 +1,15 @@
 pkgbase = sof-bin
 	pkgdesc = Simple and fast calculate size of directories
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/balaraz/sof
 	arch = x86_64
 	license = GPL3
 	provides = sof
+	noextract = sof.1.gz
 	source = https://codeberg.org/balaraz/sof/releases/download/v3.0/sof-v3.0-linux-amd64
+	source = https://codeberg.org/balaraz/sof/releases/download/v3.0/sof.1.gz
 	sha256sums = 605f7662fefd37fa7b0e9014cda4601f8f73a95fae130c0fd44cb45f5d0945a9
+	sha256sums = a4810b0c521ff3364f2e48afc68da130da29f9bf7852f9c695bea52f6fe499c3
 
 pkgname = sof-bin
