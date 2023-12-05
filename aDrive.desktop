@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=阿里云盘
+Exec=aDrive
+Type=Application
+StartupNotify=true
+Icon=aDrive
