@@ -1,7 +1,7 @@
 pkgbase = servefile
 	pkgdesc = Serve or receive files from shell via a small HTTP server
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sebageek/servefile
 	arch = any
 	license = GPL3
