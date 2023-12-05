@@ -1,15 +1,14 @@
 pkgbase = mkinitcpio-passwd
 	pkgdesc = Set password for main system inside initrd
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eworm-de/mkinitcpio-passwd
 	install = mkinitcpio-passwd.install
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git://github.com/eworm-de/mkinitcpio-passwd.git#tag=0.2.0?signed
+	source = git+https://github.com/eworm-de/mkinitcpio-passwd.git#tag=0.2.0?signed
 	validpgpkeys = BD84DE71F493DF6814B0167254EDC91609BC9183
 	sha256sums = SKIP
 
 pkgname = mkinitcpio-passwd
-
