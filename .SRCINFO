@@ -1,7 +1,7 @@
 pkgbase = virtualbox6-ext-oracle
 	pkgdesc = Oracle VM VirtualBox Extension Pack 6.1.48 (stable)
 	pkgver = 6.1.x
-	pkgrel = 3
+	pkgrel = 5
 	url = https://www.virtualbox.org/
 	install = virtualbox-ext-oracle.install
 	arch = x86_64

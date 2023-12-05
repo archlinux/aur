@@ -7,7 +7,7 @@ _source=http://download.virtualbox.org/virtualbox/$_pkgver/$_arcname
 
 pkgname=virtualbox6-ext-oracle
 pkgver=$_pkgver
-pkgrel=3
+pkgrel=5
 pkgdesc="Oracle VM VirtualBox Extension Pack $pkgver (stable)"
 arch=(x86_64)
 url=https://www.virtualbox.org/
@@ -17,7 +17,7 @@ provides=(virtualbox-ext-oracle)
 conflicts=(virtualbox-ext-oracle)
 install=virtualbox-ext-oracle.install
 optdepends=('rdesktop: client to connect vm via RDP')
-depends=("virtualbox>=6.1" 'virtualbox<7')
+depends=('virtualbox>=6.1' 'virtualbox<7')
 
 prepare()
 {
