@@ -1,0 +1,54 @@
+From f613468dd3189077fa4f09a8071c6554b41a47a6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C4=90o=C3=A0n=20Tr=E1=BA=A7n=20C=C3=B4ng=20Danh?=
+ <congdanhqx@gmail.com>
+Date: Mon, 4 Dec 2023 18:51:57 +0700
+Subject: [PATCH] exiv2: Fix use-after-free and double-free with exiv2 0.28.x
+
+In exiv2 0.28.x, DataBuf is only a wrapper for std::vector.
+Exiv2::DataBuf::data() returns a shallow copy of its underlying
+data.  On Exiv2::DataBuf::reset(), all of its data is invalidated,
+includes the data returned by Exiv2::DataBuf::data(). Thus, all usages
+of said data is use-after-free, attempt to use its later is double-free.
+
+Make a copy ourselves instead.  This method works for the old exiv2, too.
+Since Exiv2::PreviewImage::size() is available from forever, and both
+Exiv2::PreviewImage::copy() and Exiv2::PreviewImage::pData() are
+introduced in a same change (commit 9578e8123 in 2008).
+
+Fixes: #1201
+Fixes: https://github.com/void-linux/void-packages/issues/47547
+---
+ src/exiv2.cc | 20 +++++++-------------
+ 1 file changed, 7 insertions(+), 13 deletions(-)
+
+diff --git a/src/exiv2.cc b/src/exiv2.cc
+index a8ff73dad..07230703f 100644
+--- a/src/exiv2.cc
++++ b/src/exiv2.cc
+@@ -1219,19 +1219,13 @@ guchar *exif_get_preview(ExifData *exif, guint *data_len, gint requested_width,
+ 
+ 			Exiv2::PreviewImage image = pm.getPreviewImage(*pos);
+ 
+-			Exiv2::DataBuf buf = image.copy();
+-
+-#if EXIV2_TEST_VERSION(0,28,0)
+-                       *data_len = buf.size();
+-                       auto b = buf.data();
+-                       buf.reset();
+-                       return b;
+-#else
+-			std::pair<Exiv2::byte*, long> p = buf.release();
+-
+-			*data_len = p.second;
+-			return p.first;
+-#endif
++			// Let's not touch data_len until we finish copy.
++			// Just in case we run into OOM.
++			size_t img_sz = image.size();
++			Exiv2::byte* b = new Exiv2::byte[img_sz];
++			std::copy_n(image.pData(), img_sz, b);
++			*data_len = img_sz;
++			return b;
+ 			}
+ 		return nullptr;
+ 	}
