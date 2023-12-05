@@ -1,4 +1,6 @@
-# Maintainer: Christian Neukirchen <chneukirchen@gmail.com>
+# Maintainer: TwoFinger
+# Contributor: Christian Neukirchen <chneukirchen@gmail.com>
+
 pkgname=ded
 pkgver=20131205
 _td_pkgver=20131205
