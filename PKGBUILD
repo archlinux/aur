@@ -23,11 +23,12 @@ pkgname=(
   "riven-makingof"
 )
 pkgdesc="'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion."
+group=('riven')
 arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=12
+pkgrel=13
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'imagemagick' # To convert .ico to .png.
