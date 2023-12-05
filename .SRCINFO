@@ -1,7 +1,7 @@
 pkgbase = tuxclocker-git
 	pkgdesc = A hardware controlling and monitoring program for GPUs and CPUs
 	pkgver = 1.4.0.r603.a742cc1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lurkki14/tuxclocker
 	install = tuxclocker-git.install
 	arch = x86_64
@@ -14,8 +14,11 @@ pkgbase = tuxclocker-git
 	depends = libdrm
 	depends = qt5-base
 	depends = qt5-charts
-	optdepends = libxnvctrl: XNVCtrl
-	optdepends = nvidia-utils: nvidia-ml
+	optdepends = libxnvctrl: NVIDIA support
+	optdepends = nvidia-utils: NVIDIA support
+	optdepends = libx: AMD & NVIDIA support on X11
+	optdepends = libdrm: AMD support
+	optdepends = python-hwdata: Prettier AMD GPU names
 	conflicts = tuxclocker
 	source = git+https://github.com/Lurkki14/tuxclocker.git#branch=master
 	source = tuxclocker.desktop
