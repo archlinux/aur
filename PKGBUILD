@@ -1,8 +1,8 @@
 # Maintainer: balaraz <balaraz@tuta.io>
 
 pkgname=sof
-pkgver=2.0
-pkgrel=6
+pkgver=3.0
+pkgrel=1
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sof"
@@ -12,7 +12,7 @@ makedepends=(go)
 provides=(sof)
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=("f5437bc982790f43203623b1342a18d771e16642ad20f5770cdefead74fda8ab")
+sha256sums=("76d70fb84b29955e3593c1bdaeb88caa1afe62c233c9c87010ffef8b63d330c9")
 
 package() {
 		go build \
@@ -20,5 +20,5 @@ package() {
 				-buildmode=pie \
 				-trimpath \
 				-o ${pkgdir}/usr/bin/${pkgname} \
-				sizeof/sizeof.go
+				$pkgname/main.go
 }
