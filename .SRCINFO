@@ -1,16 +1,19 @@
 pkgbase = fasttext-langid-models
 	pkgdesc = Pre-trained models for language identification for fasttext
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fasttext.cc/docs/en/language-identification.html
 	arch = any
 	license = CCPL:by-sa
+	optdepends = fasttext
 	noextract = lid.176.bin
 	noextract = lid.176.ftz
+	noextract = LICENSE
 	source = https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin
 	source = https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz
+	source = LICENSE::https://creativecommons.org/licenses/by-sa/3.0/legalcode.txt
 	sha256sums = 7e69ec5451bc261cc7844e49e4792a85d7f09c06789ec800fc4a44aec362764e
 	sha256sums = 8f3472cfe8738a7b6099e8e999c3cbfae0dcd15696aac7d7738a8039db603e83
+	sha256sums = 3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f
 
 pkgname = fasttext-langid-models
-

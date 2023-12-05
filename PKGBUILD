@@ -5,7 +5,7 @@ pkgdesc="Pre-trained models for language identification for fasttext"
 url="https://fasttext.cc/docs/en/language-identification.html"
 
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 license=("CCPL:by-sa")
@@ -13,17 +13,25 @@ license=("CCPL:by-sa")
 source=(
     "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin"
     "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz"
+    "LICENSE::https://creativecommons.org/licenses/by-sa/3.0/legalcode.txt"
 )
 sha256sums=(
     "7e69ec5451bc261cc7844e49e4792a85d7f09c06789ec800fc4a44aec362764e"
     "8f3472cfe8738a7b6099e8e999c3cbfae0dcd15696aac7d7738a8039db603e83"
+    "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
 )
 noextract=(
     "lid.176.bin"
     "lid.176.ftz"
-    )
+    "LICENSE"
+)
+
+optdepends=(
+    "fasttext"
+)
 
 package() {
     install -Dm0644 "${srcdir}/lid.176.bin" "${pkgdir}/usr/share/fasttext/lid.176.bin"
     install -Dm0644 "${srcdir}/lid.176.ftz" "${pkgdir}/usr/share/fasttext/lid.176.ftz"
+    install -Dm0644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/${pkgname}/LICENSE"
 }
