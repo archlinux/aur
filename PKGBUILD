@@ -1,5 +1,6 @@
 # Maintainer: Xiaoxu Guo <ftiasch0@gmail.com>
 # Maintainer: László Várady <laszlo.varady93@gmail.com>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
