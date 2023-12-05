@@ -4,8 +4,8 @@
 
 pkgname=asciidoctor-pdf
 _name=$pkgname
-pkgver=2.3.9
-pkgrel=4
+pkgver=2.3.10
+pkgrel=1
 pkgdesc="Translate asciidoctor directly to pdf"
 arch=(any)
 url="https://github.com/asciidoctor/asciidoctor-pdf"
@@ -37,7 +37,7 @@ optdepends=(
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3ea05b7c9b1d3e898fd68bccccc3eb2aa5a50d46b19b3d6a08266550119cdfbb')
+sha256sums=('984372dbea851efb74beb7647e166ea12ac5bb9f70ec99bd82f156a585d52329')
 
 _archive="$_name-$pkgver"
 
@@ -46,10 +46,6 @@ prepare() {
 
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
-
-  # These tests fail for some users, reported upstream:
-  # https://github.com/asciidoctor/asciidoctor-pdf/issues/2444
-  rm spec/video_spec.rb spec/audio_spec.rb
 }
 
 build() {

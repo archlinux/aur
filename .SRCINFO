@@ -1,7 +1,7 @@
 pkgbase = asciidoctor-pdf
 	pkgdesc = Translate asciidoctor directly to pdf
-	pkgver = 2.3.9
-	pkgrel = 4
+	pkgver = 2.3.10
+	pkgrel = 1
 	url = https://github.com/asciidoctor/asciidoctor-pdf
 	arch = any
 	license = MIT
@@ -24,7 +24,7 @@ pkgbase = asciidoctor-pdf
 	depends = ruby-treetop
 	optdepends = ruby-coderay: for syntax highlighting
 	options = !emptydirs
-	source = asciidoctor-pdf-2.3.9.tar.gz::https://github.com/asciidoctor/asciidoctor-pdf/archive/refs/tags/v2.3.9.tar.gz
-	sha256sums = 3ea05b7c9b1d3e898fd68bccccc3eb2aa5a50d46b19b3d6a08266550119cdfbb
+	source = asciidoctor-pdf-2.3.10.tar.gz::https://github.com/asciidoctor/asciidoctor-pdf/archive/refs/tags/v2.3.10.tar.gz
+	sha256sums = 984372dbea851efb74beb7647e166ea12ac5bb9f70ec99bd82f156a585d52329
 
 pkgname = asciidoctor-pdf
