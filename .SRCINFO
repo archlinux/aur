@@ -1,0 +1,19 @@
+pkgbase = r-logitnorm
+	pkgdesc = Functions for the Logitnormal Distribution
+	pkgver = 0.8.38
+	pkgrel = 1
+	url = https://cran.r-project.org/package=logitnorm
+	arch = any
+	license = GPL2
+	checkdepends = r-runit
+	depends = r
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-reshape2
+	optdepends = r-runit
+	source = https://cran.r-project.org/src/contrib/logitnorm_0.8.38.tar.gz
+	md5sums = 4a1f49249dcd7a212287a1ac6b4e1921
+	sha256sums = 38f55427955625d17ea5e92267d2549f3f2a21f3c3ee228d81c181dc80d05b07
+
+pkgname = r-logitnorm
