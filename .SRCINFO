@@ -1,6 +1,6 @@
 pkgbase = libdesqui
 	pkgdesc = DesQ UI Library. This library contains all the common UI widget which are to be used across the DesQ Project.
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://gitlab.com/DesQ/libdesqui
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = libdesqui
 	depends = qt5-base
 	depends = libdesq
 	depends = dfl-layouts
-	source = https://gitlab.com/DesQ/libdesqui/-/archive/v0.0.7/libdesqui-v0.0.7.tar.gz
-	md5sums = 3144fee2ff70a6654d645471ab368036
+	source = https://gitlab.com/DesQ/libdesqui/-/archive/v0.0.8/libdesqui-v0.0.8.tar.gz
+	md5sums = ef1db757d90c03a6e5afc904dfaec21a
 
 pkgname = libdesqui
