@@ -3,7 +3,7 @@
 
 pkgname=arronax
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A GTK based GUI program to create and modify starters (*.desktop files) for applications, files, and URIs."
 arch=('any')
 license=('GPL3')
@@ -14,10 +14,12 @@ optdepends=('nemo-python: for Nemo extension'
             'python-caja: for Caja extension'
 #            'python-nautilus: for Nautilus extension'
             'thunarx-python: for Thunar plugin')
-source=("https://www.florian-diesch.de/software/arronax/dist/$pkgname-$pkgver.tar.gz"
+source=("https://www.florian-diesch.de/software/arronax/dist/$pkgname-$pkgver.tar.gz"{,.gpg}
         'python311.patch')
 sha256sums=('cb50187a3d92093665f8108430e2f2f5615f7577ceb849e00c1b98ecae0e9fe4'
+            'ef87c55f996495f87dbd2e926e0e5b8dffc63de9afe9a7d14ea9a8dd73832d34'
             'b62f06af537253f0fcaedcbcc8fbdf5c866a0bda4c5cd517ea4b263d93d52d0c')
+validpgpkeys=('C2FF86E4B400D21D087A35B665F2466BB57F5641')  # Florian Diesch <diesch@spamfence.net>
 
 prepare() {
   cd "$pkgname-$pkgver"
