@@ -1,15 +1,15 @@
 pkgbase = redumper-bin
 	pkgdesc = Low level CD dumper utility
-	pkgver = build_247
+	pkgver = build_273
 	pkgrel = 1
 	url = https://github.com/superg/redumper
 	arch = x86_64
 	license = GPL3
 	provides = redumper
-	source = https://github.com/superg/redumper/releases/download/build_247/redumper-2023.11.01_build247-Linux.zip
+	source = https://github.com/superg/redumper/releases/download/build_273/redumper-2023.12.01_build273-Linux.zip
 	source = https://raw.githubusercontent.com/superg/redumper/main/README.md
 	source = https://raw.githubusercontent.com/superg/redumper/main/LICENSE
-	sha256sums = 3363c21b019002d1848f338ba99b0cd424362e381fbc1ec0258cd1d59d9ab333
+	sha256sums = 35ce9c517697ede7c4c6459fdc8b9066adbc55535807f7d57e548a32397a1eba
 	sha256sums = SKIP
 	sha256sums = SKIP
 
