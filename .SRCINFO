@@ -1,6 +1,6 @@
 pkgbase = dfl-power
 	pkgdesc = A class to handle various display effects that can be performed using wlr-gamma-control protocol
-	pkgver = 0.1.1
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/power
 	arch = x86_64
@@ -14,11 +14,9 @@ pkgbase = dfl-power
 	makedepends = dfl-wayqt-qt6
 	makedepends = dfl-gamma-effects
 	makedepends = dfl-gamma-effects-qt6
-	makedepends = dfl-login1
-	makedepends = dfl-login1-qt6
 	depends = upower
-	source = https://gitlab.com/desktop-frameworks/power/-/archive/v0.1.1/power-v0.1.1.tar.gz
-	md5sums = 67c73637c4b40f9a78730c157b352b2c
+	source = https://gitlab.com/desktop-frameworks/power/-/archive/v0.2.1/power-v0.2.1.tar.gz
+	md5sums = da6ce6ee811148eb26ed4d02377e78ca
 
 pkgname = dfl-power
 	depends = upower
@@ -26,7 +24,6 @@ pkgname = dfl-power
 	depends = dfl-color-utils
 	depends = dfl-wayqt
 	depends = dfl-gamma-effects
-	depends = dfl-login1
 
 pkgname = dfl-power-qt6
 	depends = upower
@@ -34,4 +31,3 @@ pkgname = dfl-power-qt6
 	depends = dfl-color-utils-qt6
 	depends = dfl-wayqt-qt6
 	depends = dfl-gamma-effects-qt6
-	depends = dfl-login1-qt6
