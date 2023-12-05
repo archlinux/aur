@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=planify
 _app_id=io.github.alainm23.planify
-pkgver=4.1.1
+pkgver=4.2
 pkgrel=1
 pkgdesc="Task manager with Todoist support"
 arch=('x86_64')
-url="https://useplanner.com"
+url="https://github.com/alainm23/planify"
 license=('GPL3')
 depends=('evolution-data-server' 'granite7' 'gtksourceview5' 'libadwaita'
          'libportal-gtk4' 'webkitgtk-6.0')
@@ -13,7 +13,7 @@ makedepends=('git' 'gobject-introspection' 'meson' 'vala')
 checkdepends=('appstream')
 conflicts=('elementary-planner')
 replaces=('elementary-planner')
-_commit=adf3629bcacfc9978f6dde5b87eff0278533ab3e  # 4.1.1
+_commit=931e0a74ce04feb4baa5dd97c0cfbf1331011d2c  # 4.2
 source=("git+https://github.com/alainm23/planify.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -21,6 +21,13 @@ sha256sums=('SKIP')
 #  cd "$pkgname"
 #  git describe --tags | sed 's/-/+/g'
 #}
+
+prepare() {
+  cd "$pkgname"
+
+  # Bump version in WhatsNew dialog
+  sed -i "s/Version 4.1.1/Version $pkgver/g" src/Dialogs/WhatsNew.vala
+}
 
 build() {
   arch-meson "$pkgname" build
