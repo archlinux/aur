@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=3.5.0.r0.g8e153e2
-pkgrel=4
+pkgver=3.6.0.r1.gf735c5a
+pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -14,8 +14,10 @@ replaces=('vpkedit')
 source=("$pkgname::git+$url.git"
 		"vtflib::git+https://github.com/StrataSource/VTFLib.git"
 		"saap::git+https://github.com/Trico-Everfire/SteamAppPathProvider.git"
-		"speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git")
+		"speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git"
+		"studiomodelpp::git+https://github.com/craftablescience/studiomodelpp.git")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -29,7 +31,7 @@ pkgver(){
 prepare() {
 	cd "$srcdir/$pkgname"
 	git submodule init
-	for submodule in {vtflib,saap,speedykeyv};
+	for submodule in {vtflib,saap,speedykeyv,studiomodelpp};
 	do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"
 	done
@@ -63,11 +65,13 @@ package() {
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
     <mime-type type="application/x-vpkedit-vpk">
-        <comment>Valve Pack File</comment>
-		<icon name="x-vpkedit-vpk"/>
-        <glob-deleteall/>
-        <glob pattern="*.VPK"/>
-        <glob pattern="*.vpk"/>
+    <comment>VPK Archive</comment>
+	<icon name="x-vpkedit-vpk"/>
+	<acronym>VPK</acronym>
+	<expanded-acronym>Valve Pack File</expanded-acronym>
+    <glob-deleteall/>
+    <glob pattern="*.VPK"/>
+    <glob pattern="*.vpk"/>
     </mime-type>
 </mime-info>
 EOF
