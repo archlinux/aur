@@ -1,7 +1,7 @@
 pkgbase = hearse
 	pkgdesc = Nethack online bones file exchanger
 	pkgver = 1.5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://hearse.krollmark.com/
 	install = hearse.install
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = hearse
 	license = GPL
 	depends = perl-libwww
 	options = !emptydirs
-	source = http://www.argon.org/~roderick/hearse/dist/hearse-1.5.tar.gz
+	source = https://web.archive.org/web/20220524055801/http://www.argon.org/~roderick/hearse/dist/hearse-1.5.tar.gz
 	source = hearse.patch
 	md5sums = 4c022342d3f75af3b70a3e07e8e82ee0
 	md5sums = 7227c09106d43ff2c29f538b93ca2fde
 
 pkgname = hearse
-

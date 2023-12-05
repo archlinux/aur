@@ -1,4 +1,4 @@
-# Maintainer: Marc Straube <m.straube@skunk-coding.de>
+# Maintainer: Marc Straube <email@marcstraube.de>
 # Contributor: Kobokai <martinsteer AT maxi DOT net DOT au>
 # Contributor: Daenyth <Daenyth+Arch AT gmail DOT com>
 # Contributor: Callan Barrett <wizzomafizzo@gmail.com>
@@ -11,7 +11,8 @@ arch=('i686' 'x86_64')
 url="http://hearse.krollmark.com/"
 license=('GPL')
 depends=('perl-libwww')
-source=("http://www.argon.org/~roderick/hearse/dist/$pkgname-$pkgver.tar.gz" "$pkgname.patch")
+source=("https://web.archive.org/web/20220524055801/http://www.argon.org/~roderick/hearse/dist/$pkgname-$pkgver.tar.gz"
+        "$pkgname.patch")
 options=(!emptydirs)
 install=hearse.install
 md5sums=('4c022342d3f75af3b70a3e07e8e82ee0'
