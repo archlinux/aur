@@ -7,7 +7,7 @@ _source=http://download.virtualbox.org/virtualbox/$_pkgver/$_arcname
 
 pkgname=virtualbox6-ext-oracle
 pkgver=$_pkgver
-pkgrel=2
+pkgrel=3
 pkgdesc="Oracle VM VirtualBox Extension Pack $pkgver (stable)"
 arch=(x86_64)
 url=https://www.virtualbox.org/
