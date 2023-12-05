@@ -1,6 +1,6 @@
 pkgbase = flowee-pay
 	pkgdesc = Flowee Payment solution
-	pkgver = 2023.11.0
+	pkgver = 2023.11.1
 	pkgrel = 1
 	url = http://flowee.org/
 	install = flowee-pay.install
@@ -9,7 +9,7 @@ pkgbase = flowee-pay
 	license = GPL3
 	makedepends = boost
 	makedepends = cmake
-	makedepends = flowee>=2023.11.0
+	makedepends = flowee>=2023.11.1
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-declarative
@@ -17,9 +17,9 @@ pkgbase = flowee-pay
 	depends = qt6-shadertools
 	depends = qt6-scxml
 	provides = flowee-pay
-	source = https://codeberg.org/Flowee/pay/archive/2023.11.0.tar.gz
+	source = https://codeberg.org/Flowee/pay/archive/2023.11.1.tar.gz
 	source = https://flowee.org/products/pay/blockheaders-810000
-	sha256sums = bfc9db18a422d08fd2e39e0949f0ec865bdaccd5913e711aceeacf6592b145ca
+	sha256sums = d99599b31d95b624139ab241ce2026b7ff3d5491d3ccbb2f1af630dbd3df66df
 	sha256sums = 73b42d844639266afa8b9c8e31239e64c0890541b219dc6194c5d3d9a4b8354b
 
 pkgname = flowee-pay
