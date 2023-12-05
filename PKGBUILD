@@ -1,8 +1,8 @@
 # Contributor: Whyme Lyu <callme5long@gmail.com>
 
 pkgname=dnsproxy
-pkgver=0.59.1
-pkgrel=2
+pkgver=0.60.0
+pkgrel=1
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support"
 arch=('x86_64')
 url="https://github.com/AdguardTeam/dnsproxy"
@@ -12,7 +12,7 @@ source=("dnsproxy.service"
         "https://github.com/AdguardTeam/dnsproxy/archive/v${pkgver}.tar.gz")
 makedepends=("go")
 sha256sums=('002deb38e7d69beb8848c57a7ba0d00437c542589baccc6dab074767ffa64b75'
-            '151616e2562b9bc8de85725293b264e7769d84fe1cd462e74be6fdc8505b0cbb')
+            '4985b65cc4055f2defda5910005a998077726f5118ce55830b05d42dd73affd6')
 
 _conf=etc/dnsproxy/dnsproxy.yaml
 backup=($_conf)
