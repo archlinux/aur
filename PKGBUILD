@@ -31,11 +31,12 @@ arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=15
+pkgrel=16
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
+  'ffmpeg'      # To convert the Making Of-movie to smaller filesize.
   'imagemagick' # To convert .ico to .png.
-  'optipng'    # To size-optimise PNG files.
+  'optipng'     # To size-optimise PNG files.
   # 'littleutils' # For 'lowercase'.
 )
 options+=('emptydirs')
@@ -66,18 +67,27 @@ prepare() {
     error "No legal copy, aborting."
     return 22
   fi
+
+  mkdir -p build
 }
 
 build() {
   cd "${srcdir}"
 
-  mac2unix -n 'Read EULA First' 'Riven_license.txt'
-  mac2unix -n 'Read Instructions First' 'Riven_Instructions.txt'
-  dos2unix -n 'English/movie.txt' 'movie.txt'
+  mac2unix -n 'Read EULA First' 'build/Riven_license.txt'
+  mac2unix -n 'Read Instructions First' 'build/Riven_Instructions.txt'
+  dos2unix -n 'English/movie.txt' 'build/movie.txt'
 
-  printf '%s\n' "Converting 'English/Icon.ICO' to 'riven.png'"
-  convert 'English/Icon.ICO' 'riven.png'
-  optipng -o7 'riven.png'
+  printf '%s\n' "Converting 'English/Icon.ICO' to 'riven.png' ..."
+  convert 'English/Icon.ICO' 'build/riven.png'
+  optipng -o9 'build/riven.png'
+
+  printf '%s\n' "Converting 'The Making of Riven/Makingof.mov' to AV1 + OPUS codec ..."
+  ffmpeg \
+    -i "The Making of Riven/Makingof.mov" \
+    -c:v libsvtav1 -crf 26 -preset 3 -g 300 \
+    -c:a libopus -b:a 98304 -vbr on -compression_level 10 -frame_duration 60 -application audio \
+    -y "build/Makingof.mkv"
 }
 
 package_riven() {
@@ -89,12 +99,16 @@ package_riven() {
     'riven-data'
     'scummvm'
   )
+  optdepends=(
+    "riven-makingof: Movie 'The Making of Riven'."
+    "riven-soundtrack: Soundtrack of Riven."
+  )
 
   cd "${srcdir}"
 
   install -D -v -m755 "${srcdir}/riven.sh" "${pkgdir}/usr/bin/riven"
   install -D -v -m644 "${srcdir}/riven.desktop" "${pkgdir}/usr/share/applications/riven.desktop"
-  install -D -v -m644 "${srcdir}/riven.png" "${pkgdir}/usr/share/pixmaps/riven.png"
+  install -D -v -m644 "${srcdir}/build/riven.png" "${pkgdir}/usr/share/pixmaps/riven.png"
 
   install -d -v -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
   cd "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -107,7 +121,6 @@ package_riven-data() {
   license=('custom: proprietary')
   optdepends=(
     'riven: To actually play the game.'
-    "riven-makingof: Movie 'The Making of Riven'."
   )
 
   cd "${srcdir}"
@@ -127,11 +140,11 @@ package_riven-data() {
   #install -v -D -m755 "English/Riven"     "${pkgdir}/usr/lib/riven/Riven"
   #install -v -D -m755 "English/Riven.exe" "${pkgdir}/usr/lib/riven/Riven.exe"
 
-  install -v -D -m644 "${srcdir}/Riven_Instructions.txt" "${pkgdir}/usr/share/doc/${_pkgbase}/Riven_Instructions.txt"
+  install -v -D -m644 "${srcdir}/build/Riven_Instructions.txt" "${pkgdir}/usr/share/doc/${_pkgbase}/Riven_Instructions.txt"
   install -v -D -m644 "${srcdir}/English/Manual.pdf" "${pkgdir}/usr/share/doc/${_pkgbase}/Manual.pdf"
 
   install -v -D -m644 "${srcdir}/license-note.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license-note.txt"
-  install -v -D -m644 "${srcdir}/Riven_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/Riven_license.txt"
+  install -v -D -m644 "${srcdir}/build/Riven_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/Riven_license.txt"
 
   ln -sv "/usr/share/licenses/${pkgname}/Riven_license.txt" "${pkgdir}/usr/share/doc/${_pkgbase}/Riven_license.txt"
 }
@@ -142,13 +155,14 @@ package_riven-makingof() {
   license=('custom: proprietary')
   optdepends=(
     'riven: To play the game.'
-    'riven-data: The game files.'
+    "riven-soundtrack: Soundtrack of Riven."
   )
 
   cd "${srcdir}"
 
-  install -v -D -m644 "${srcdir}/The Making of Riven/Makingof.mov" "${pkgdir}/usr/share/doc/${_pkgbase}/The_Making_of_Riven/Makingof.mov"
-  install -v -D -m644 "${srcdir}/movie.txt" "${pkgdir}/usr/share/doc/${_pkgbase}/The_Making_of_Riven/movie.txt"
+  # install -v -D -m644 "${srcdir}/The Making of Riven/Makingof.mov" "${pkgdir}/usr/share/doc/${_pkgbase}/The_Making_of_Riven/Makingof.mov"
+  install -v -D -m644 "${srcdir}/build/Makingof.mkv" "${pkgdir}/usr/share/doc/${_pkgbase}/The_Making_of_Riven/Makingof.mkv"
+  install -v -D -m644 "${srcdir}/build/movie.txt" "${pkgdir}/usr/share/doc/${_pkgbase}/The_Making_of_Riven/movie.txt"
 
-  install -v -D -m644 "${srcdir}/movie.txt" "${pkgdir}/usr/share/licenses/${pkgname}/The_Making_of_Riven.license.txt"
+  install -v -D -m644 "${srcdir}/build/movie.txt" "${pkgdir}/usr/share/licenses/${pkgname}/The_Making_of_Riven.license.txt"
 }
