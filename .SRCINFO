@@ -1,0 +1,12 @@
+pkgbase = mc-skin-modarcon16-whiteonblack
+	pkgdesc = A white on black 16 colour Midnight Commander skin based on 'modarcon16'.
+	pkgver = 20231205.01
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/mc-skin-modarcon16-whiteonblack
+	arch = any
+	license = FDL1.3
+	depends = mc
+	source = modarcon16-whiteonblack.ini
+	sha256sums = 84296a3884d204e6d020b61d8cad3cdbcc900d2fdae6b79a3b77567ab4e9a071
+
+pkgname = mc-skin-modarcon16-whiteonblack
