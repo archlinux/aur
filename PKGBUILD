@@ -1,7 +1,7 @@
 # Maintainer: Erik Sonnleitner <es at delta-xi dot net>
 
 pkgname=morgen-bin
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc='Morgen is a modern, intuitive and smart calendar application and successor to MineTime'
 arch=('x86_64')
