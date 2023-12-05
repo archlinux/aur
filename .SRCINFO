@@ -1,0 +1,14 @@
+pkgbase = sqlean-git
+	pkgdesc = The ultimate set of SQLite extensions
+	pkgver = 0.21.8.r4.g47d3efb
+	pkgrel = 1
+	url = https://github.com/nalgeon/sqlean
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = sqlean
+	conflicts = sqlean
+	source = sqlean-git::git+https://github.com/nalgeon/sqlean
+	md5sums = SKIP
+
+pkgname = sqlean-git

@@ -1,0 +1,5 @@
+pkg/
+src/
+*.pkg.tar.zst
+sqlean-git
+/update_SRCINFO.sh
