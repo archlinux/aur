@@ -1,6 +1,6 @@
 # Maintainer: Vardan Tarayan <tarayanvardan@gmail.com>
 pkgname='solarbg'
-pkgrel=5
+pkgrel=1
 pkgver=1.3.1
 pkgdesc="Sun altitude based wallpapers "
 arch=('x86_64')
