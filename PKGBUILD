@@ -16,7 +16,7 @@ source=(
   "${pkgname}.tar.gz::https://github.com/nimaaskarian/${_gitname}/archive/refs/tags/${pkgver}.zip"
 )
 
-md5sums=('6ccc41f79173aca329b3a40c79fc7ae6')
+md5sums=('e08c18b26a400c6e809465ca513463b4')
 build () {
   cd "${pkgname}-${pkgver/v/}" || exit
   make
