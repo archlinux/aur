@@ -11,8 +11,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=19993210cd96027022dd1a6c8ea6e6cd16f4395d
-_branch=fix-version
+_mozc_commit=87c5a45b9a68bf999567ae8f4363857db9cb8d20
+_branch=fcitx
 # Ut Dictionary
 _utdicdate=20230115
 _dict=(
@@ -30,9 +30,9 @@ _sudachidict_date=20230927
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5291.102
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
-url="https://github.com/phoepsilonix/mozc"
+url="https://github.com/fcitx/mozc"
 license=('custom')
 makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'clang' 'ibus' 'ruby' 'ruby-parallel')
 source=("git+$url.git#commit=${_mozc_commit}"
@@ -102,7 +102,6 @@ prepare() {
   # mozc date and version
   #_date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
   #sed -i -e "/2.25.4150.102.1/d"  -e "s/2.26.4220.106.1/${pkgver}.${pkgrel}/" -e "s/2021-01-16/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
-  cd src && ../scripts/version_info_update_fcitx5
 }
 
 build() {
@@ -164,6 +163,10 @@ build() {
   # ibus emacs_helper mozc_server fcitx5
   bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" --copt -fPIC
   bazel shutdown
+
+  # mozc fcitx5 version
+  git fetch origin master:remotes/origin/master
+  source bazel-bin/base/mozc_version.txt && export pkgver="$(printf "%s.%s.%s.%s" "${MAJOR}" "${MINOR}" "${BUILD_OSS}" "${REVISION}")" && sed -e "/2.26.4220.106.1/d" -e "/2.25.4150.102.1/d"  -e "s/release version=\".*\"/release version=\"$pkgver.1\" date=\"$(git log -1 --pretty=format:'%as' -b origin/master)\"/" -i ${SCRIPTS_DIR}/../src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
 
   # Extract license part of mozc
   head -n 29 server/mozc_server.cc > LICENSE
