@@ -2,18 +2,8 @@ pkgname=python-deepspeed
 pkgver=0.12.4
 pkgrel=1
 pkgdesc="DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective. "
-depends=(
-  'python-hjson'
-  'ninja'
-  'python-numpy'
-  'python-packaging'
-  'python-psutil'
-  'python-py-cpuinfo'
-  'python-pydantic'
-  'python-pynvml'
-  'python-pytorch'
-  'python-tqdm'
-)
+depends=(python python-hjson ninja python-numpy python-packaging python-psutil python-py-cpuinfo python-pydantic python-pynvml python-pytorch python-tqdm)
+depends+=(python-cupy python-huggingface-hub tensorboard python-transformers python-mpi4py python-tabulate python-fairscale python-safetensors)
 makedepends=(python-build python-installer python-wheel)
 arch=('x86_64')
 url="https://github.com/microsoft/DeepSpeed"
