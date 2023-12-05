@@ -2,14 +2,14 @@
 
 pkgname=sof
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sof"
 arch=(x86_64)
 depends=()
 makedepends=(go gzip)
-provides=(sof)
+provides=(sof sof.1.gz)
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=("76d70fb84b29955e3593c1bdaeb88caa1afe62c233c9c87010ffef8b63d330c9")
