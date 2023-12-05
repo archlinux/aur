@@ -1,6 +1,6 @@
 pkgbase = aegisub-ttools-meson-git
 	pkgdesc = A general-purpose subtitle editor with ASS/SSA support (TypesettingTools fork)
-	pkgver = 3.2.2.r672.5bde34ff3
+	pkgver = 3.2.2.r713.c88f918be
 	pkgrel = 1
 	url = http://www.aegisub.org
 	arch = x86_64
@@ -29,15 +29,15 @@ pkgbase = aegisub-ttools-meson-git
 	provides = aegisub
 	conflicts = aegisub
 	conflicts = aegisub-git
-	noextract = gtest-1.8.1.zip
-	noextract = gtest-1.8.1-1-wrap.zip
+	noextract = gtest-1.14.0.tar.gz
+	noextract = gtest_1.14.0-1_patch.zip
 	source = aegisub-ttools::git+https://github.com/TypesettingTools/Aegisub.git
 	source = luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1
-	source = gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip
-	source = gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip
+	source = gtest-1.14.0.tar.gz::https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz
+	source = gtest_1.14.0-1_patch.zip::https://wrapdb.mesonbuild.com/v2/gtest_1.14.0-1/get_patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7
-	sha256sums = f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805
+	sha256sums = 8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7
+	sha256sums = 2e693c7d3f9370a7aa6dac802bada0874d3198ad4cfdf75647b818f691182b50
 
 pkgname = aegisub-ttools-meson-git

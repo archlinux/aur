@@ -2,7 +2,7 @@
 
 pkgname=aegisub-ttools-meson-git
 _srcname=aegisub-ttools
-pkgver=3.2.2.r672.5bde34ff3
+pkgver=3.2.2.r713.c88f918be
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support (TypesettingTools fork)'
 arch=('x86_64')
@@ -23,18 +23,18 @@ conflicts=('aegisub' 'aegisub-git')
 source=(
   "$_srcname::git+https://github.com/TypesettingTools/Aegisub.git"
   "luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
-  "gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip"
-  "gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip"
+  "gtest-1.14.0.tar.gz::https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz"
+  "gtest_1.14.0-1_patch.zip::https://wrapdb.mesonbuild.com/v2/gtest_1.14.0-1/get_patch"
 )
 noextract=(
-  "gtest-1.8.1.zip"
-  "gtest-1.8.1-1-wrap.zip"
+  "gtest-1.14.0.tar.gz"
+  "gtest_1.14.0-1_patch.zip"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
-  '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
-  'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805'
+  '8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7'
+  '2e693c7d3f9370a7aa6dac802bada0874d3198ad4cfdf75647b818f691182b50'
 )
 
 pkgver() {
@@ -52,13 +52,17 @@ prepare() {
   #   patch -u -p1 < "$patch"
   # done
 
+  # Cleanup previous builds
+  rm -vf subprojects/luajit subprojects/packagecache/gtest-1.14.0.tar.gz subprojects/packagecache/gtest_1.14.0-1_patch.zip
+
   # Initialize subproject wraps for luajit
-  ln -s ../../luajit subprojects/luajit
+  ln -vs ../../luajit subprojects/luajit
   meson subprojects packagefiles --apply luajit
+
   # and gtest
-  mkdir subprojects/packagecache
-  ln -s ../../../gtest-1.8.1.zip subprojects/packagecache/gtest-1.8.1.zip
-  ln -s ../../../gtest-1.8.1-1-wrap.zip subprojects/packagecache/gtest-1.8.1-1-wrap.zip
+  mkdir -vp subprojects/packagecache
+  ln -vs ../../../gtest-1.14.0.tar.gz subprojects/packagecache/gtest-1.14.0.tar.gz
+  ln -vs ../../../gtest_1.14.0-1_patch.zip subprojects/packagecache/gtest_1.14.0-1_patch.zip
 
   arch-meson builddir \
     -Dportaudio=disabled \
