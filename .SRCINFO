@@ -1,5 +1,5 @@
 pkgbase = rcedit-bin
-	pkgdesc = Command line tool to edit resources of exe files.
+	pkgdesc = Command line tool to edit resources of windows exe files
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/electron/rcedit/
