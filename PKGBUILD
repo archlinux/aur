@@ -1,15 +1,17 @@
-# Maintainer: ml <>
+# Maintainer: tarball <bootctl@gmail.com>
+# Contributor: ml <>
+
 pkgname=svu
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Semantic Version Util'
-arch=('x86_64')
+arch=(i686 x86_64 armv7h armv6h aarch64 riscv64)
 url='https://github.com/caarlos0/svu'
 license=('MIT')
 depends=('git')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('3bb79e66096e6a6ec0a83b7dec47afd29b1a966b7597f3999db9a123970562d1')
+sha256sums=('3d698d21e59e6348e08316dda91968847ac12070f9ada9cf4dc9a400db859158')
 _go_flags=(-ldflags "-linkmode=external -X main.version=v$pkgver")
 
 build() {
