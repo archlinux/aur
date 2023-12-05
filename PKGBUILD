@@ -1,9 +1,9 @@
-# Maintainer: Malacology <guoyizhang at malacology dot com>
-# Contributor: Malacology <guoyizhang at malacology dot com>
+# Maintainer: Malacology <guoyizhang at malacology dot net>
+# Contributor: Malacology <guoyizhang at malacology dot net>
 
 pkgname=raxmlgui
 pkgver=2.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A new user-friendly program integrating RAxML-NG and ModelTest-NG for cutting-edge phylogenetic analysis. https://doi.org/10.1111/2041-210X.13512"
 arch=('x86_64')
 url="https://antonellilab.github.io/raxmlGUI"
