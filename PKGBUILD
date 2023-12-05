@@ -5,13 +5,13 @@ pkgdesc="Library for fast text representation and classification"
 url="https://github.com/facebookresearch/fastText"
 
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 
 arch=('x86_64')
 license=('BSD')
 
 depends=(
-    "gcc-libs"
+    "gcc12-libs"
 )
 optdepends=(
     "fasttext-langid-models"
