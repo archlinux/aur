@@ -1,6 +1,6 @@
 pkgbase = btcpayserver-vault
 	pkgdesc = Allows web applications to access your hardware wallet.
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://docs.btcpayserver.org/HardwareWalletIntegration/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = btcpayserver-vault
 	depends = zlib
 	source = btcpayserver-vault.desktop
 	source = btcpayserver-vault.svg
-	source = https://github.com/btcpayserver/BTCPayServer.Vault/releases/download/Vault%2Fv2.0.5/BTCPayServerVault-Linux-2.0.5.tar.gz
+	source = https://github.com/btcpayserver/BTCPayServer.Vault/releases/download/Vault%2Fv2.0.6/BTCPayServerVault-Linux-2.0.6.tar.gz
 	sha256sums = 26879cab72a93ce1d0d677d51a30c71c83d084e21568e65c56322c9fbfaf3c68
 	sha256sums = 161bff315fc56546fa12d620eefed3b036ba30a4cf050c2bb2e35e83c8d976e4
-	sha256sums = deeb77466facca608cebdbff54c28a75222d188e205f31f54ac378ba2d18872f
+	sha256sums = 568786509ef4c886922a2564fc4af95874a70bb3dd833c3b91205de09d203b70
 
 pkgname = btcpayserver-vault
