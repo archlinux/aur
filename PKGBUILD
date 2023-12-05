@@ -4,7 +4,7 @@
 
 _name=gaphor
 pkgname=python-${_name}
-pkgver=2.19.3
+pkgver=2.22.1
 pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
@@ -41,7 +41,7 @@ checkdepends=(
 )
 provides=("${_name}")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2124cd8d861d0c6c98d37724e4bb8d533f3b6bbaa8cb5158265552f76889224e')
+sha256sums=('935e8cb8aade6256d1840fdb4a136504e30ae7a60ca8a47b5e677b376cf3d1b7')
 
 build() {
 	cd "${_name}-${pkgver}"
@@ -65,5 +65,5 @@ package() {
 	cd "${_name}-${pkgver}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 "$srcdir/${_name}.desktop" -t "$pkgdir"/usr/share/applications
-	install -Dm644 "$srcdir/${_name}-${pkgver}/logos/org.gaphor.Gaphor.svg" "$pkgdir"/usr/share/pixmaps/org.gaphor.Gaphor.svg
+	install -Dm644 "$srcdir/${_name}-${pkgver}/data/logos/org.gaphor.Gaphor.svg" "$pkgdir"/usr/share/pixmaps/org.gaphor.Gaphor.svg
 }
