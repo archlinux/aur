@@ -1,6 +1,6 @@
 pkgbase = rustdesk-server-bin
 	pkgdesc = RustDesk Server Program
-	pkgver = 1.1.8_2
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/rustdesk/rustdesk-server
 	install = rustdesk-server.install
@@ -17,9 +17,9 @@ pkgbase = rustdesk-server-bin
 	sha256sums = bf6bdb07ae69d6cfde433781f23376036cb9ad2f1bc1fc7ee44bd56de38ad11d
 	sha256sums = 09d880c1c7987e9e7262c9f2fb56120d14b708238f3c7f14c800e6234b798440
 	sha256sums = bdea355562f43f6045e2b52f6dbb4d84ffffa1efec464446b2b2e10e336d6ddb
-	source_x86_64 = rustdesk-server-1.1.8_2-amd64.zip::https://github.com/rustdesk/rustdesk-server/releases/download/1.1.8-2/rustdesk-server-linux-amd64.zip
-	sha256sums_x86_64 = 3cf2790c3e9ef70c0eb9ffae02cbe3a2efad71621efda376450e7be3209f2b1c
-	source_aarch64 = rustdesk-server-1.1.8_2-arm64.zip::https://github.com/rustdesk/rustdesk-server/releases/download/1.1.8-2/rustdesk-server-linux-arm64v8.zip
-	sha256sums_aarch64 = cdab02fb8731f05ab34340b91ba8cc8333ea8e4445bda1d53ee2d4a6dbb98c7c
+	source_x86_64 = rustdesk-server-1.1.9-amd64.zip::https://github.com/rustdesk/rustdesk-server/releases/download/1.1.9/rustdesk-server-linux-amd64.zip
+	sha256sums_x86_64 = c6db9a6bb81cb0ec5503e7bab6ac51a4c1135dcd6b1493ff0630dfce4fce29d1
+	source_aarch64 = rustdesk-server-1.1.9-arm64.zip::https://github.com/rustdesk/rustdesk-server/releases/download/1.1.9/rustdesk-server-linux-arm64v8.zip
+	sha256sums_aarch64 = 30095ba2c1f9f7b783b442f7792630faa16e1645512270486db6fd9cce4e1368
 
 pkgname = rustdesk-server-bin
