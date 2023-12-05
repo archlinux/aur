@@ -1,0 +1,6 @@
+*.rpm
+*.run
+*.zst
+src/
+pkg/
+
