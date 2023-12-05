@@ -1,7 +1,7 @@
 pkgbase = psiphon-tunnel-core-git
 	pkgdesc = Psiphon Tunnelling Proxy
-	pkgver = 2.0.29.r3855.b2279f7b
-	pkgrel = 2
+	pkgver = 2.0.29.r3904.0cb1c84c
+	pkgrel = 1
 	epoch = 3
 	url = https://github.com/Psiphon-Labs/psiphon-tunnel-core
 	install = psiphon.install
@@ -18,13 +18,11 @@ pkgbase = psiphon-tunnel-core-git
 	source = client.config
 	source = psiphon-client.service
 	source = psiphon-server.service
-	source = quic_disabled.go.patch
-	source = https://storage.googleapis.com/golang/go1.19.8.linux-amd64.tar.gz
+	source = https://storage.googleapis.com/golang/go1.20.10.linux-amd64.tar.gz
 	sha256sums = SKIP
 	sha256sums = c2c414831ad29bdeecd00313c473fbaa448f4750e70df1c10e863870bde179aa
 	sha256sums = 6711a12112a594ba70bbae51c66ee23302e08c54c4e059c92b67adba9451c037
 	sha256sums = 373c1eb939118055f799237df3e665680b8dc4b4a281505cce32e957a9554c56
-	sha256sums = 4257724404190434e6e45de83fb0ca1270d1f3e2d66ae18028bafb054b03319d
-	sha256sums = e1a0bf0ab18c8218805a1003fd702a41e2e807710b770e787e5979d1cf947aba
+	sha256sums = 80d34f1fd74e382d86c2d6102e0e60d4318461a7c2f457ec1efc4042752d4248
 
 pkgname = psiphon-tunnel-core-git
