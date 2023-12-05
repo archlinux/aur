@@ -1,6 +1,6 @@
 pkgbase = autocorrect-bin
 	pkgdesc = A linter and formatter for help you improve copywriting, to correct spaces, punctuations between CJK (Chinese, Japanese, Korean).
-	pkgver = 2.8.5
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/huacnlee/autocorrect
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = autocorrect-bin
 	provides = autocorrect
 	source = https://raw.githubusercontent.com/huacnlee/autocorrect/044425faada4055ebf2629c544c3bc7231330826/LICENSE
 	sha256sums = 7015e54d13cf39b8d6ceb60209849c019ed8effc564abb5a77685c75ae76b5be
-	source_x86_64 = autocorrect-bin-x86_64::https://github.com/huacnlee/autocorrect/releases/download/v2.8.5/autocorrect-linux-amd64.tar.gz
-	sha256sums_x86_64 = 3feffc994232c1ce02969463e896eb1cd75750920bb02e0331b2c2a8563045f9
-	source_aarch64 = autocorrect-bin-aarch64::https://github.com/huacnlee/autocorrect/releases/download/v2.8.5/autocorrect-linux-arm64.tar.gz
-	sha256sums_aarch64 = 4f2365eb46fb12364356ab8719557f5bc7d78a54af490d6e511f9c4ba522dfd5
+	source_x86_64 = autocorrect-bin-x86_64::https://github.com/huacnlee/autocorrect/releases/download/v2.9.0/autocorrect-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8af1e60873eaec96631e5376fc7333d624f568f5e3defe3387238442a1737e86
+	source_aarch64 = autocorrect-bin-aarch64::https://github.com/huacnlee/autocorrect/releases/download/v2.9.0/autocorrect-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0a1ed774b15af7ba8f855dfda19f68829f05e7b5253c4e155741965496b8c45a
 
 pkgname = autocorrect-bin
