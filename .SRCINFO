@@ -5,7 +5,6 @@ pkgbase = ksysguard-plasma6-git
 	url = https://userbase.kde.org/KSysGuard
 	install = ksysguard-plasma6.install
 	arch = x86_64
-	groups = plasma-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules
