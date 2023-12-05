@@ -10,7 +10,7 @@ pkgdesc='Artist-friendly look-development system with graph shading objects and 
 arch=('x86_64')
 url='https://help.autodesk.com/view/MAYAUL/2024/ENU/?guid=LookDevX_LookdevX_html'
 license=('custom')
-depends=('maya>=2024' 'maya<2025.0')
+depends=('maya>=2024' 'maya<2025.0' 'maya-usd')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please unbundle the rpm from the Maya download')
 source=("manual://LookdevX.rpm")
