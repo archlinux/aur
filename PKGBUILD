@@ -1,7 +1,7 @@
 # Maintainer: Facundo Olasagarre <facundo.vasco@gmail.com>
 
 pkgname=atani
-pkgver=14.29.0
+pkgver=14.39.0
 pkgrel=1
 pkgdesc="The all-in-one crypto platform you’ve been dreaming about. Exchanges, wallets and taxes under one roof"
 arch=('x86_64')
@@ -13,11 +13,11 @@ provides=('atani')
 conflicts=('atani-snap')
 replaces=('atani-snap')
 _snapid="fRYdkXBDVAKnSXTJG5xa4PwBR4RqGDkV"
-_snaprev="181"
+_snaprev="193"
 install=$pkgname.install
 source=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap")
 md5sums=('SKIP')
-#sha384sums=('8d0112c2917b99e8cf406b3b9d117981a32f21f73ab46e596110177ab2fbd79d8002401cac5845dd4574e2c3cc67c129')
+#sha384sums=('2f69cc4963e935a89d54a62dfe452f5bcc9c027d6480dc4e4b561bccd04f0104a745389b552712c64f82068b6a766ee4')
 
 prepare() {
 	echo "Extracting snap"
