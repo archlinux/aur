@@ -1,6 +1,6 @@
 pkgbase = xpipe
 	pkgdesc = Your entire server infrastructure at your fingertips
-	pkgver = 1.7.8
+	pkgver = 1.7.9
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe
@@ -10,9 +10,9 @@ pkgbase = xpipe
 	license = unknown
 	source = xpipe.desktop
 	sha512sums = SKIP
-	source_x86_64 = xpipe-1.7.8-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/1.7.8/xpipe-portable-linux-x86_64.tar.gz
+	source_x86_64 = xpipe-1.7.9-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/1.7.9/xpipe-portable-linux-x86_64.tar.gz
 	sha512sums_x86_64 = SKIP
-	source_aarch64 = xpipe-1.7.8-arm64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/1.7.8/xpipe-portable-linux-arm64.tar.gz
+	source_aarch64 = xpipe-1.7.9-arm64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/1.7.9/xpipe-portable-linux-arm64.tar.gz
 	sha512sums_aarch64 = SKIP
 
 pkgname = xpipe
