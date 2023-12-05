@@ -2,7 +2,7 @@
 
 pkgname=nbdkit
 pkgver=1.36.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
 url="https://gitlab.com/nbdkit/nbdkit/"
@@ -22,7 +22,10 @@ optdepends=(
   'curl'
   'libguestfs'
   'libssh'
-  'libtorrent-rasterbar' 'boost'
+
+  'libtorrent-rasterbar: for libtorrent support'
+  'boost: for libtorrent support'
+
   'libselinux'
 )
 checkdepends=('qemu')
