@@ -1,6 +1,6 @@
 pkgbase = r-genomicscores
 	pkgdesc = Infrastructure to work with genomewide position-specific scores
-	pkgver = 2.14.1
+	pkgver = 2.14.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GenomicScores
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-genomicscores
 	optdepends = r-snplocs.hsapiens.dbsnp144.grch37
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicScores_2.14.1.tar.gz
-	sha256sums = b801c2eb37f17eb99791237615934b211e66b91a4e5a80c8007ba7a543ac97de
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicScores_2.14.2.tar.gz
+	sha256sums = d3987921a8a1811127aa3429ffdf123ade92558014a28132fd6a9f2e163558f2
 
 pkgname = r-genomicscores
