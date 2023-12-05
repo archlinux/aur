@@ -6,7 +6,7 @@ pkgbase=tif22pnm-git
 _pkgname=tif22pnm
 pkgname=('tif22pnm-git' 'png22pnm-git')
 pkgver=r36.22217c1
-pkgrel=1
+pkgrel=2
 pkgdesc="TIFF to PNM and PNG to PNM converters"
 arch=('x86_64')
 depends=(
@@ -49,7 +49,10 @@ build() {
 
 package_png22pnm-git() {
   cd "$srcdir/$_pkgname"
-  depends=('libpng')
+  depends=(
+    'libpng'
+    'glibc'
+  )
   provides=('png22pnm')
   conflicts=('png22pnm')
   install -Dm755 png22pnm "$pkgdir"/usr/bin/png22pnm
@@ -57,7 +60,10 @@ package_png22pnm-git() {
 
 package_tif22pnm-git() {
   cd "$srcdir/$_pkgname"
-  depends=('libtiff')
+  depends=(
+    'libtiff'
+    'glibc'
+  )
   provides=('tif22pnm')
   conflicts=('tif22pnm')
   install -Dm644 README "$pkgdir"/usr/share/tif22pnm/README

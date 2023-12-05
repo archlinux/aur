@@ -1,7 +1,7 @@
 pkgbase = tif22pnm-git
 	pkgdesc = TIFF to PNM and PNG to PNM converters
 	pkgver = r36.22217c1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pts/tif22pnm
 	arch = x86_64
 	license = GPL
@@ -13,10 +13,12 @@ pkgbase = tif22pnm-git
 
 pkgname = tif22pnm-git
 	depends = libtiff
+	depends = glibc
 	provides = tif22pnm
 	conflicts = tif22pnm
 
 pkgname = png22pnm-git
 	depends = libpng
+	depends = glibc
 	provides = png22pnm
 	conflicts = png22pnm
