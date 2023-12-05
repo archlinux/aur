@@ -1,0 +1,14 @@
+pkgbase = r-ggvenn
+	pkgdesc = Draw Venn Diagram by 'ggplot2'
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ggvenn
+	arch = any
+	license = MIT
+	depends = r-dplyr
+	depends = r-ggplot2
+	source = https://cran.r-project.org/src/contrib/ggvenn_0.1.10.tar.gz
+	md5sums = eb81af74065bc4f88778e8f88b7bbd8e
+	sha256sums = cde116f117266cca27d8cd20205512e602c23514db6d97caaa950b9b21fa873e
+
+pkgname = r-ggvenn
