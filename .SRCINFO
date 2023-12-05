@@ -11,7 +11,6 @@ pkgbase = tageditor
 	license = GPL
 	checkdepends = cppunit
 	checkdepends = jq
-	checkdepends = appstream
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = qt5-tools

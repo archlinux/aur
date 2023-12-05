@@ -27,7 +27,7 @@ depends=('libqtutilities.so' 'libtagparser.so' 'libc++utilities.so' 'desktop-fil
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative')
 makedepends=('cmake' 'ninja' 'qt5-tools')
 [[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson')
-checkdepends=('cppunit' 'jq' 'appstream')
+checkdepends=('cppunit' 'jq')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('ebafac24ab7c3833a018b5848b32d9fa2cfa01cafeff1b1ec1a6e30eb7415b1b')
