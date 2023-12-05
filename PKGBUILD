@@ -2,24 +2,24 @@
 
 pkgname=pstack
 pkgver=2.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Print stack traces from running processes, or core files.'
 arch=(x86_64)
 url='https://github.com/peadar/pstack'
 license=(BSD)
 makedepends=(cmake python xz zlib)
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('b50c78c67605776e70ab27c52701152f31bbd6bc2c8a2e91a1efccb3ae9689c759c5941f34daed29c787218731f26d02e4e32b7b6540416cce2e85b3c44db27a')
+b2sums=('dc7a9f91305741ec0a73baf4f3e30fcd3498613d621710e4f7475746b49b68687db6259eb4331e6111c7494b87e6e9d68cfa75d4dd47d1f224a2f1efa2590bde')
 
 build() {
     cd $pkgname-$pkgver
     cmake -B build \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DVERSION_TAG=$pkgver \
-		-DPYTHON2=OFF \
-		-DPYTHON3=OFF \
-		-Wno-dev
+		  -DCMAKE_BUILD_TYPE=Release \
+	  	-DCMAKE_INSTALL_PREFIX=/usr \
+		  -DVERSION_TAG=$pkgver \
+		  -DPYTHON2=OFF \
+		  -DPYTHON3=OFF \
+		  -Wno-dev
     cmake --build build
 }
 
