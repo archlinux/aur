@@ -10,18 +10,10 @@ arch=('i686' 'x86_64')
 url="https://invisible-island.net/ded/ded.html"
 license=('custom:BSD')
 depends=('ncurses')
-source=(ftp://invisible-island.net/ded/ded-$pkgver.tgz
-        ftp://invisible-island.net/ded/ded-$pkgver.tgz.asc
-        ftp://invisible-island.net/ded/td_lib-$_td_pkgver.tgz
-        ftp://invisible-island.net/ded/td_lib-$_td_pkgver.tgz.asc)
-md5sums=('6a6c70cd356be36251d977efe2e97245'
-         'SKIP'
-         'f16c323c1e072b21ac829f2ae5a93cf0'
-         'SKIP')
+source=(https://invisible-island.net/archives/ded/$pkgname-$pkgver.tgz
+        https://invisible-island.net/archives/ded/td_lib-$_td_pkgver.tgz)
 sha256sums=('44f336f7457de65d6d5c645a0334e283453c3649582b2e38baa807b05ab49ff9'
-            'SKIP'
-            '1215084ec099f961a8a4de01959c6e894cd5003847c5a10290e1e782f2a0721b'
-            'SKIP')
+            '1215084ec099f961a8a4de01959c6e894cd5003847c5a10290e1e782f2a0721b')
 
 build() {
   cd "$srcdir/td_lib-$_td_pkgver"
