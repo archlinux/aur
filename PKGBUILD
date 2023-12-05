@@ -80,7 +80,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.7.0.rc2.1.bcachefs.git.00102.gc80a1d564930.dirty
+pkgver=6.7.0.rc4.1.bcachefs.git.00088.g7b9c2240f97d.dirty
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -105,10 +105,9 @@ makedepends=(
     texlive-latexextra
 )
 options=('!strip')
+
 _srcname="linux-bcachefs"
-
 _src_url="https://github.com/koverstreet/bcachefs.git"
-
 _srcname_kernel_patch="kernel_compiler_patch"
 _src_url_kernel_patch="https://github.com/graysky2/${_srcname_kernel_patch}.git"
 _kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
@@ -135,6 +134,7 @@ validpgpkeys=(
     647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
     A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
+
 sha256sums=('SKIP'
             'SKIP'
             '6e0bf273a2334f21e622f4a1dc6c1bf94bfce4e3031ab4c3ec2228028dd8f502')
