@@ -1,7 +1,7 @@
 # Maintainer: Vardan Tarayan <tarayanvardan@gmail.com>
-pkgname='solarbg-git'
-pkgrel=4
-pkgver="v1.2.0.r0.gb4bd1bf"
+pkgname='solarbg'
+pkgrel=5
+pkgver=1.3.1
 pkgdesc="Sun altitude based wallpapers "
 arch=('x86_64')
 url="https://github.com/VardanHeroic/solarbg"
@@ -11,29 +11,13 @@ makedepends=('git' 'npm')
 optdepends=(
 	'feh: x11 tiling wm support',
 	'swaybg: wlroots based wayland compositors support')
-source=('solarbg-git::git+https://github.com/VardanHeroic/solarbg.git')
+source=('https://registry.npmjs.org/solarbg/-/solarbg-1.3.1.tgz')
+replaces=('solarbg-git')
 md5sums=('SKIP')
+noextract=("${_pkgname}-${pkgver}.tgz")
 
-
-pkgver() {
-	cd "$pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
-	cd "$pkgname"
-	npm install --production
-}
 
 package() {
-	cd "$pkgname"
-	appdir=/usr/lib/${pkgname} 
-	bindir=/usr/bin/
-
-	install -d "${pkgdir}"${appdir}
-	cp -r * "${pkgdir}"${appdir}
-
-	install -d "${pkgdir}"${bindir}
-	cp scripts/solarbg "${pkgdir}"${bindir} 
+    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 
 }
