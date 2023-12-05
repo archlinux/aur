@@ -3,8 +3,8 @@
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=2.3.2
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Your connected workspace for wiki, docs & projects'
 arch=(x86_64)
 url=https://www.notion.so/desktop
@@ -24,23 +24,24 @@ install=.install
 
 source=(
 	"https://desktop-release.notion-static.com/Notion%20Setup%20${pkgver}.exe"
-	https://github.com/WiseLibs/better-sqlite3/releases/download/v9.0.0/better-sqlite3-v9.0.0-electron-v116-linux-x64.tar.gz
+	https://github.com/WiseLibs/better-sqlite3/releases/download/v9.2.2/better-sqlite3-v9.2.2-electron-v116-linux-x64.tar.gz
 	notion-app
 	notion.desktop
 )
-sha256sums=('5e486d296bbba753061c9226415f632d53d20a9796e8a4dafe6a1ec79d38c362'
-            '38848d85c41116b419b13818ab934d6ec5c5c563f9623f1cf8a958809ea92c7d'
+sha256sums=('abb99d02c43d81288fcf47c7db18d5014b90f52b19ee1b46fc42817e2b317970'
+            '973f1cd3b1803ce6a3be74c87edae1cdb3fba603efba9a4f68673a8288b6c5c7'
             'd95b5cd37b59dcabe63520b0e2a27a2de3cb950fcc56b30ae3076e99ed6d4747'
-            '6dc21c32bb47613c5af3a963bd1d1211a5ed3538c9dea4d83b07b239e96cf20c')
+            '19a5f973f1e9291081aa05512e07c61447e8c30e1a43dd22d0cc1090837d1e19')
 
 prepare() {
 	asar e "$srcdir/resources/app.asar" "$srcdir/unpacked"
 	icotool -x -w 256 "$srcdir/unpacked/icon.ico" -o "$srcdir/notion.png"
+	icotool -x -w 256 "$srcdir/resources/trayIcon.ico" -o "$srcdir/trayIcon.png"
 
 	sed -i -e 's/"win32"===process.platform/(true)/g
 		    s/_.Store.getState().app.preferences?.isAutoUpdaterDisabled/(true)/g
-		    s!extra-resources!/usr/share/icons/hicolor/256x256/apps!g
-		    s/trayIcon.ico/notion.png/g' "$srcdir/unpacked/.webpack/main/index.js"
+		    s!extra-resources!/usr/share/notion-app!g
+		    s/trayIcon.ico/trayIcon.png/g' "$srcdir/unpacked/.webpack/main/index.js"
 }
 
 package() {
@@ -54,7 +55,6 @@ package() {
 	install -Dm755 notion-app -t "$usr/bin"
 	install -Dm644 "$srcdir/notion.desktop" -t "$share/applications"
 	install -Dm644 "$srcdir/notion.png" -t "$share/icons/hicolor/256x256/apps"
-	find $pkgdir -name "*test*" -path "*/node_modules/*" -print -delete
-	rm $pkgdir/usr/lib/notion-app/node_modules/node-addon-api/tools/{eslint-format.js,conversion.js,clang-format.js}
-	find $pkgdir -type d -empty -delete
+	install -Dm644 "$srcdir/trayIcon.png" -t "$share/notion-app"
+	find "$pkgdir" -type d -empty -delete
 }
