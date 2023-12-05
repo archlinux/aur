@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Zen
+Comment=An open-source system-wide ad-blocker and privacy guard
+Exec=zen-adblocker
+Icon=zen-adblocker
