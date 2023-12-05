@@ -4,11 +4,11 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.5154.r0.gbfd1a4c34
+pkgver=1.7.5261.r0.gf6154032c
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
-url=https://www.pcsx2.net
+url=https://github.com/PCSX2/pcsx2
 license=(
     GPL2
     GPL3
@@ -58,7 +58,7 @@ options=(!lto)
 source=(
     git+https://github.com/PCSX2/pcsx2.git
     git+https://github.com/PCSX2/pcsx2_patches.git
-    xz-pcsx2::git+https://github.com/PCSX2/xz.git
+    xz-pcsx2::git+https://github.com/tukaani-project/xz.git
     git+https://github.com/google/googletest.git
     git+https://github.com/fmtlib/fmt.git
     git+https://github.com/biojppm/rapidyaml.git

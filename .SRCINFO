@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 1.7.5154.r0.gbfd1a4c34
+	pkgver = 1.7.5261.r0.gf6154032c
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = pcsx2-git.install
@@ -44,7 +44,7 @@ pkgbase = pcsx2-git
 	options = !lto
 	source = git+https://github.com/PCSX2/pcsx2.git
 	source = git+https://github.com/PCSX2/pcsx2_patches.git
-	source = xz-pcsx2::git+https://github.com/PCSX2/xz.git
+	source = xz-pcsx2::git+https://github.com/tukaani-project/xz.git
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/fmtlib/fmt.git
 	source = git+https://github.com/biojppm/rapidyaml.git
