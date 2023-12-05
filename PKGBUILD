@@ -1,7 +1,7 @@
 # Maintainer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 pkgname=koboldcpp-cpu
-pkgver=1.50
+pkgver=1.51.1
 pkgrel=1
 pkgdesc="CPU build of koboldcpp"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('python' 'cblas' 'openblas')
 optdepends=('customtkinter')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('79dc68fe35b4ce1e8fd9a966931abb40')
+md5sums=('3b4b638986fc0b311172d3696381a1e0')
 
 build() {
   cd "$srcdir/koboldcpp-$pkgver"
