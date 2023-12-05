@@ -1,6 +1,6 @@
 pkgname=btop-gpu-git
 pkgver=1.3.0.r836.0d35746
-pkgrel=2
+pkgrel=3
 pkgdesc="A monitor of resources compiled with gpu support flags!"
 arch=(any)
 url="https://github.com/aristocratos/btop"
@@ -24,6 +24,11 @@ pkgver() {
 }
 
 prepare() {
+	if ! pacman -Qq 'rocm-smi-lib' &>/dev/null && ! pacman -Qq 'nvidia-utils' &>/dev/null; then
+		echo "ERROR: Either 'rocm-smi-lib' (for AMD) or 'nvidia-utils' (for Nvidia) must be installed."
+		false
+  	fi
+
 	cd "${srcdir}/${pkgname}"
 
 	git submodule update --init --recursive
