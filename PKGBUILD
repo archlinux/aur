@@ -10,17 +10,17 @@ url="https://github.com/sebageek/servefile"
 license=('GPL3')
 depends=('python')
 optdepends=('python-pyopenssl: HTTPS support')
-makedepends=('git')
-# checkdepends=('python-pytest' 'python-pyopenssl')
+makedepends=('git' 'python-setuptools')
+checkdepends=('python-pytest' 'python-pyopenssl')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/sebageek/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('8ded2b42095bc1412a048103fcd7754edba6fe1bfd34f52b58cdf62f518da3bd')
 
-# check() {
-#     cd "$srcdir/$pkgname-$pkgver"
-#     pytest
-# }
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    pytest
+}
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
