@@ -1,6 +1,6 @@
 pkgbase = fscan
 	pkgdesc = An intranet comprehensive scanning tool
-	pkgver = 1.8.3
+	pkgver = 1.8.3.build3
 	pkgrel = 1
 	url = https://github.com/shadow1ng/fscan
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = fscan
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = fscan-1.8.3.tar.gz::https://github.com/shadow1ng/fscan/archive/1.8.3.tar.gz
-	sha256sums = e3800b54c14aa7fd0ad963982ed9aa47bc17fbbfd0317afb442b082cccb03686
+	source = fscan-1.8.3.build3.tar.gz::https://github.com/shadow1ng/fscan/archive/1.8.3-build3.tar.gz
+	sha256sums = ae9dced28b9d06897e285d68c5ac9627a41578532896f355682d086b09e20457
 
 pkgname = fscan
