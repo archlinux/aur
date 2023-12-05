@@ -1,0 +1,18 @@
+pkgbase = r-sfarrow
+	pkgdesc = Read/Write Simple Feature Objects ('sf') with 'Apache' 'Arrow'
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=sfarrow
+	arch = any
+	license = MIT
+	depends = r-arrow
+	depends = r-dplyr
+	depends = r-jsonlite
+	depends = r-sf
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/sfarrow_0.4.1.tar.gz
+	md5sums = a2e14236864928f98ae8c27590b7c3be
+	sha256sums = 0f5db73f8c3058b0aad6343d2376186028cc443a7df1c515b3a1171e14f454c3
+
+pkgname = r-sfarrow
