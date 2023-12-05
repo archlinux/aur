@@ -1,7 +1,7 @@
 # Maintainer: Onni Kukkonen <onni.kukkonen77@gmail.com>
 
 pkgname=ksysguard-plasma6-git
-pkgver=5.22.80_r3594.gdad37f0d
+pkgver=5.23.00_r3598.g8a8e85b2
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=($CARCH)
@@ -9,8 +9,8 @@ url='https://userbase.kde.org/KSysGuard'
 license=(LGPL)
 depends=(libksysguard kinit kxmlgui)
 makedepends=(git extra-cmake-modules kdoctools networkmanager-qt)
-conflicts=(${pkgname%-git})
-provides=(${pkgname%-git})
+conflicts=(ksysguard)
+provides=(ksysguard)
 optdepends=('nvidia-utils: NVIDIA GPU usage' 'networkmanager-qt: improved network statistics')
 groups=()
 install=${pkgname%-git}.install

@@ -1,6 +1,6 @@
 pkgbase = ksysguard-plasma6-git
 	pkgdesc = Track and control the processes running in your system
-	pkgver = 5.22.80_r3594.gdad37f0d
+	pkgver = 5.23.00_r3598.g8a8e85b2
 	pkgrel = 1
 	url = https://userbase.kde.org/KSysGuard
 	install = ksysguard-plasma6.install
@@ -15,8 +15,8 @@ pkgbase = ksysguard-plasma6-git
 	depends = kxmlgui
 	optdepends = nvidia-utils: NVIDIA GPU usage
 	optdepends = networkmanager-qt: improved network statistics
-	provides = ksysguard-plasma6
-	conflicts = ksysguard-plasma6
+	provides = ksysguard
+	conflicts = ksysguard
 	source = git+https://github.com/Rosentti/ksysguard-plasma6.git
 	sha256sums = SKIP
 
