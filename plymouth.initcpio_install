@@ -41,19 +41,20 @@ build() {
   local PLYMOUTH_TITLE_FONT_NAME=$(grep "\bTitleFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/TitleFont *= *//' | head -1)
   if [ ! -z "$PLYMOUTH_TITLE_FONT_NAME" ]; then
     local PLYMOUTH_TITLE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_TITLE_FONT_NAME")
-    map add_file "$PLYMOUTH_TITLE_FONT_PATH"
+    add_file "$PLYMOUTH_TITLE_FONT_PATH"
   fi
   local PLYMOUTH_MONOSPACE_FONT_NAME=$(grep "\bMonospaceFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/MonospaceFont *= *//' | head -1)
   if [ ! -z "$PLYMOUTH_MONOSPACE_FONT_NAME" ]; then
     local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_FONT_NAME")
-    map add_file "$PLYMOUTH_MONOSPACE_FONT_PATH"
+    add_file "$PLYMOUTH_MONOSPACE_FONT_PATH"
   fi
+  
+  # according to upstream, plymouth expects these files and symlinks to be there, so...
   local DEFAULT_FONT=$(fc-match -f %{file})
-  local DEFAULT_MONOSPACE_FONT=$(fc-match -f %{file} monospace)
-  map add_file \
-    "$DEFAULT_FONT" \
-    "$DEFAULT_MONOSPACE_FONT"
+  add_file "$DEFAULT_FONT"
   add_symlink '/usr/share/fonts/Plymouth.ttf' "$DEFAULT_FONT"
+  local DEFAULT_MONOSPACE_FONT=$(fc-match -f %{file} monospace)
+  add_file "$DEFAULT_MONOSPACE_FONT"
   add_symlink '/usr/share/fonts/Plymouth-monospace.ttf' "$DEFAULT_MONOSPACE_FONT"
 
   # copy configured theme
