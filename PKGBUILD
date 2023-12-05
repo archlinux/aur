@@ -1,5 +1,6 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Maintainer:  Giovanni Santini <giovannisantini93@yahoo.it>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Guillaume Alaux <guillaume@archlinux.org>
 # Contributor: William Gathoye <william + archlinux at gathoye dot be>
@@ -15,7 +16,7 @@ pkgname=(
   java17-openjfx-doc
   java17-openjfx-src
 )
-pkgver=17.0.7.u2
+pkgver=17.0.10.u0
 pkgrel=1
 pkgdesc="Java OpenJFX 17 client application platform (open-source implementation of JavaFX)"
 arch=(x86_64)
@@ -54,7 +55,7 @@ source=(
   java-openjfx-no-xlocale.patch
   java-openjfx-gstreamer-lite-gcc10-compat.patch
 )
-b2sums=('72dedc864eb5dba89228271b09b0713844c4457135978fd4988e09f17f1b571e4900948459b3d02839815e364147b110f88201a0edf1a104357892b62e4de15c'
+b2sums=('e6bdbc9651bb6eafd237d28c0c9c455592b49f94664d460f4b9d5429737c42aa529f31d1d00558270be099efdc76eca887e9ea2db54bd575525fe4839e731b1d'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         'a56a5cfebb44cdbe3ada9c6da88fda6427a5bd1bf9fcc491df289c4f5c0e96ac3614c619aaf9428340f11e9dabf0a85fc7db4f49754c2700587cc66fc15372fd'
         '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e'
@@ -78,7 +79,14 @@ build() {
   # build against ffmpeg4.4
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
-  gradle zips
+  # Run Gradle stuff inside srcdir so that it can be easily cleaned
+  export GRADLE_USER_HOME="$srcdir/gradle"
+
+  # Use Gradle wrapper rather than the repositories one for compatibility
+  # If needed, export NUMBER_OF_PROCESSORS to limit the jobs used for building Webkit
+  chmod +x gradlew
+
+  ./gradlew --no-daemon zips
 }
 
 package_java17-openjfx() {
