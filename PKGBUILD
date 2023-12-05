@@ -26,8 +26,8 @@ _reponame=syncthingtray
 _cfg=qt6
 pkgname=syncthingtray-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=1.4.9
-pkgrel=3
+pkgver=1.4.10
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing (using Qt 6)'
 license=('GPL')
@@ -45,22 +45,11 @@ checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 [[ $_enable_plasmoid ]] && makedepends+=('libplasma' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
-source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
-        0001-Fix-install-path-of-KIO-plugin.patch
-        0001-Mention-PLASMA_ENABLE_QML_DEBUG-in-the-Plasmoid-test.patch
-        0001-Fix-building-Plasmoid-after-Plasma-6-beta-release.patch)
-sha256sums=('f9003bbe185d355f9cac18862077fa2cc4e809f7f416d9b1dd5ef6474c926742'
-            SKIP SKIP SKIP)
+source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+sha256sums=('b22445eda35deb8889749ee576bb657906c59d158f8fd1fbf79bbb027ac84533')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
-}
-
-prepare() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  patch -p1 -i ../0001-Fix-install-path-of-KIO-plugin.patch
-  patch -p1 -i ../0001-Mention-PLASMA_ENABLE_QML_DEBUG-in-the-Plasmoid-test.patch
-  patch -p1 -i ../0001-Fix-building-Plasmoid-after-Plasma-6-beta-release.patch
 }
 
 build() {
