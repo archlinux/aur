@@ -1,29 +1,20 @@
 # Maintainer:Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kgamma
-pkgver=5.90.0
+pkgver=5.27.10
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Adjust your monitor gamma settings'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(gcc-libs
-         glibc
-         kcmutils
-         kconfig
-         kcoreaddons
-         ki18n
-         libx11
-         libxxf86vm
-         qt6-base)
-makedepends=(extra-cmake-modules
-             kdoctools)
-conflicts=(kgamma5)
-replaces=(kgamma5)
+depends=(systemsettings)
+makedepends=(extra-cmake-modules kdoctools5)
+conflicts=(kgamma)
+replaces=(kgamma)
 groups=(plasma)
-source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('38a5e559392d6f5357f32415416bfcc03b9e54e1c6054b948fc92f7f5647a939'
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('dd81bb62a35ce4fce4482ed498e4072a50f9ec1190ba2a9246139ba1e24ef570'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
@@ -31,7 +22,7 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 build() {
-  cmake -B build  -S $pkgname-$pkgver \
+  cmake -B build -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
