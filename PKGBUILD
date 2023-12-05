@@ -1,7 +1,7 @@
 pkgname=tuxclocker-git
 _pkgname=tuxclocker
 pkgver=1.4.0.r603.a742cc1
-pkgrel=3
+pkgrel=4
 pkgdesc="A hardware controlling and monitoring program for GPUs and CPUs"
 arch=('x86_64')
 url="https://github.com/Lurkki14/tuxclocker"
@@ -13,7 +13,7 @@ makedepends=('boost' 'git' 'meson' 'qt5-tools')
 optdepends=(
             'libxnvctrl: NVIDIA support'
             'nvidia-utils: NVIDIA support'
-            'libx: AMD & NVIDIA support on X11'
+            'libx11: AMD & NVIDIA support on X11'
             'libdrm: AMD support'
             'python-hwdata: Prettier AMD GPU names'
         )
