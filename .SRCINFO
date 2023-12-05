@@ -1,0 +1,17 @@
+pkgbase = r-canvasxpress.data
+	pkgdesc = Datasets for the 'canvasXpress' Package
+	pkgver = 1.34.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=canvasXpress.data
+	arch = any
+	license = GPL3
+	depends = r
+	optdepends = r-dplyr
+	optdepends = r-tibble
+	optdepends = r-tidyr
+	optdepends = r-usethis
+	source = https://cran.r-project.org/src/contrib/canvasXpress.data_1.34.2.tar.gz
+	md5sums = 0df166053851e54ba49dca573d21080a
+	sha256sums = 7af8d537f7f2f39b80001169953ebbbfd39c1db3b5aa26c728a997ebc3a2cd81
+
+pkgname = r-canvasxpress.data
