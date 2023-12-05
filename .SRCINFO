@@ -1,7 +1,7 @@
 pkgbase = perl-html-simpleparse
 	pkgdesc = Perl/CPAN Module HTML::SimpleParse - a bare-bones HTML parser.
 	pkgver = 0.12
-	pkgrel = 3
+	pkgrel = 4
 	url = http://search.cpan.org/dist/HTML-SimpleParse/
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = perl-html-simpleparse
 	sha256sums = c103a19cf99801489ce23e4da86a5f9df79f032f1f1c71b8130d0d3ff96e6304
 
 pkgname = perl-html-simpleparse
-

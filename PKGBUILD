@@ -4,7 +4,7 @@
 pkgname=perl-html-simpleparse
 _realname=HTML-SimpleParse
 pkgver=0.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Perl/CPAN Module HTML::SimpleParse - a bare-bones HTML parser."
 arch=(i686 x86_64)
 url="http://search.cpan.org/dist/${_realname}/"
