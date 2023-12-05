@@ -3,7 +3,7 @@
 # Contributor: Dustin Blackman
 
 pkgname='oatmeal-bin'
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!'
 url='https://github.com/dustinblackman/oatmeal'
@@ -12,11 +12,11 @@ license=('MIT')
 provides=('oatmeal')
 conflicts=('oatmeal')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/dustinblackman/oatmeal/releases/download/v0.6.1/oatmeal_0.6.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('d59a6e8daf8b93da8457800a5b12a2dd38f1f0e02fc04a1ee137d6d2cb11c03c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/dustinblackman/oatmeal/releases/download/v0.7.0/oatmeal_0.7.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('d116f93ad861a3a94a9113982fb47c5c4f004e25113f8a600715cc430f242df0')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dustinblackman/oatmeal/releases/download/v0.6.1/oatmeal_0.6.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('9f5596cd356b19ca4e91f2a04fafc0312237ca4ad7d149ae0a9e35a86f6ac573')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dustinblackman/oatmeal/releases/download/v0.7.0/oatmeal_0.7.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('91fc26d2b9a21d6ea44d26c4ffd07bba73abe098aea1029cf80236f5ffad3e93')
 
 package() {
   # bin
