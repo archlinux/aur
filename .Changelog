@@ -1,5 +1,9 @@
 # burnoutsharp-bin .Changelog
 
+## 2023-12-04, burnoutsharp-bin 3.0.2-1
+
+* Bump to 3.0.2
+
 ## 2023-10-26, burnoutsharp-bin 2.9.0-3
 
 * Remove dependency on `casclib` and `stormlib`; they're actaully unnecessary
