@@ -1,7 +1,7 @@
 # Maintainer: Kloudignite
 pkgname=kcm-uefi
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Plasma settings control panel to manage the UEFI boot order."
 arch=('x86_64')
@@ -17,7 +17,7 @@ build() {
 	cd "$pkgname-v$pkgver"
 	mkdir build && cd build
 	cmake .. -DCMAKE_BUILD_TYPE=Release
-	make -j$(nproc)
+	make
 }
 
 package() {
