@@ -3,7 +3,7 @@
 
 pkgname=arronax
 pkgver=0.8.1
-pkgrel=4
+pkgrel=3
 pkgdesc="A GTK based GUI program to create and modify starters (*.desktop files) for applications, files, and URIs."
 arch=('any')
 license=('GPL3')

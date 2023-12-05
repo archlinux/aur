@@ -1,7 +1,7 @@
 pkgbase = arronax
 	pkgdesc = A GTK based GUI program to create and modify starters (*.desktop files) for applications, files, and URIs.
 	pkgver = 0.8.1
-	pkgrel = 4
+	pkgrel = 3
 	url = https://www.florian-diesch.de/software/arronax
 	arch = any
 	license = GPL3
