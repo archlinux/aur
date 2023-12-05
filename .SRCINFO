@@ -1,0 +1,27 @@
+pkgbase = r-scbubbletree
+	pkgdesc = Quantitative visual exploration of scRNA-seq data
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/scBubbletree
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-ape
+	depends = r-future
+	depends = r-future.apply
+	depends = r-ggplot2
+	depends = r-ggtree
+	depends = r-patchwork
+	depends = r-proxy
+	depends = r-reshape2
+	depends = r-scales
+	depends = r-seurat
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-singlecellexperiment
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scBubbletree_1.4.0.tar.gz
+	md5sums = d64f38622d8aec6ebb23e81231710134
+	sha256sums = 52ec5264b10e4b8df9e56a31f654adc102e99c66455fb9bbce4c3ab51ae79533
+
+pkgname = r-scbubbletree
