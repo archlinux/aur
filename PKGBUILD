@@ -40,48 +40,49 @@ _install="linux-x13s-bin.install"
 cat <<EOF | sed s/%KVER%/${_pkgver2}-${_codename}/ > "${_pwd}/${_install}"
 rm -f /boot/initramfs-linux.img
 post_install(){
-	depmod %KVER%
-	dracut -H boot/initramfs-linux.img %KVER%
+    depmod %KVER%
+    dracut -H boot/initramfs-linux.img %KVER%
 }
 post_upgrade(){
-	post_install
+    post_install
 }
 EOF
 
 package_linux-x13s-bin() {
-	pkgdesc='Prebuilt Linux kernel and modules for Lenovo ThinkPad X13s from Ubuntu Concept (unsigned)'
-	depends=(dracut)
-	optdepends=('linux-firmware-x13s: firmware images needed for Lenovo ThinkPad X13s')
-	provides=(
+    pkgdesc='Prebuilt Linux kernel and modules for Lenovo ThinkPad X13s from Ubuntu Concept (unsigned)'
+    depends=(dracut)
+    optdepends=('linux-firmware-x13s: firmware images needed for Lenovo ThinkPad X13s')
+    provides=(
         linux
         linux-x13s
     )
-	install="${_install}"
+    install="${_install}"
     chmod 755 "${_pwd}/${install}"
-	bsdtar xfO ${source[0]##*/} data.tar* | bsdtar xf - boot/vmlinuz* usr/lib usr/share/doc/linux-image*/changelog.*
-	bsdtar xfO ${source[1]##*/} data.tar* | bsdtar xf - lib usr/lib
+    bsdtar xfO ${source[0]##*/} data.tar* | bsdtar xf - boot/vmlinuz* usr/lib usr/share/doc/linux-image*/changelog.*
+    bsdtar xfO ${source[1]##*/} data.tar* | bsdtar xf - lib usr/lib
     mv boot/{vmlinuz*,Image}
     mv boot "$pkgdir"
-	msg2 'Compressing kernel modules...'
-	find lib/modules/*/kernel -type f -exec xz {} \;
+    msg2 'Compressing kernel modules...'
+    find lib/modules/*/kernel -type f -exec xz {} \;
     mkdir -p usr/lib
+    mv lib/* usr/lib/
     rm -r lib
-	mv usr/share/doc/linux-{image-*,x13s-bin}
-	mv usr "$pkgdir"
+    mv usr/share/doc/linux-{image-*,x13s-bin}
+    mv usr "$pkgdir"
 }
 
 package_linux-x13s-headers-bin() {
-	pkgdesc='Headers and scripts for building modules for custom prebuilt Linux kernel and modules for Lenovo ThinkPad X13s from Ubuntu Concept'
-	provides=(
+    pkgdesc='Headers and scripts for building modules for custom prebuilt Linux kernel and modules for Lenovo ThinkPad X13s from Ubuntu Concept'
+    provides=(
         linux-headers
         "linux-headers-x13s=$pkgver"
     )
     for _i in 2 3 4 5 6 7; do
-		bsdtar xfO ${source[_i]##*/} data.tar* | bsdtar xf -
-	done
+        bsdtar xfO ${source[_i]##*/} data.tar* | bsdtar xf -
+    done
     mkdir -p usr/lib
-	mv lib/* usr/lib/
+    mv lib/* usr/lib/
     rm -rf lib src/usr/share/doc/linux-{buildinfo,${_codename}-headers,${_codename}-tools,tools}*
-	mv usr/share/doc/linux-{headers-*,x13s-headers-bin}
-	mv usr "$pkgdir"
+    mv usr/share/doc/linux-{headers-*,x13s-headers-bin}
+    mv usr "$pkgdir"
 }
