@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=2.7.6
+pkgver=2.8.0
+_electronversion=28
 pkgrel=1
 pkgdesc="A GUI wrapper for png2icons, generates Apple ICNS and Microsoft ICO files from PNG files."
 arch=('x86_64')
@@ -8,23 +9,30 @@ url="https://github.com/sprout2000/elephicon"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'electron27'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
     'npm>=9'
     'nodejs>=18.18.7'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('7394524fbfbc571486b18cdc8938b5cf0dc64c8c1e1ebeb68415c549c24ca4f4'
-            'f1778c05339e7117bf6d9e7668885896f23f2e98f9c47b8b15c2ad2d3084ae20')
+sha256sums=('SKIP'
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories "Graphics;Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
     npm install
     npm run build
     npm run package
