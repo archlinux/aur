@@ -1,11 +1,11 @@
 pkgname=tuxclocker-git
 _pkgname=tuxclocker
-pkgver=1.4.0.r599.89139f0
+pkgver=1.4.0.r603.a742cc1
 pkgrel=1
 pkgdesc="A hardware controlling and monitoring program for GPUs and CPUs"
 arch=('x86_64')
 url="https://github.com/Lurkki14/tuxclocker"
-
+install="${pkgname}.install"
 license=('GPL3')
 
 depends=('boost-libs' 'libdrm' 'qt5-base' 'qt5-charts')
@@ -67,12 +67,4 @@ package() {
     install -Dm644 "tuxclockerd.service" "$pkgdir/usr/lib/systemd/system/tuxclockerd.service"
 
     install -Dm655 "tuxclocker.env" "$pkgdir/etc/"
-
-    echo
-    echo
-    echo -----------------------------------------------------------------------------------------------
-    echo 'Please do not forget to enable and start systemd services "systemctl enable --now tuxclockerd-dbus tuxclockerd"'
-    echo -----------------------------------------------------------------------------------------------
-    echo
-    echo
 }

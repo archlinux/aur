@@ -1,0 +1,19 @@
+post_install() {
+    echo
+    echo
+    echo ----------------------------------------------------------------------------------------------------------------
+    echo 'Please do not forget to enable and start systemd services "systemctl enable --now tuxclockerd-dbus tuxclockerd"'
+    echo ----------------------------------------------------------------------------------------------------------------
+    echo
+    echo
+}
+
+post_upgrade() {
+    echo
+    echo
+    echo ----------------------------------------------------------------------------------------------------------------
+    echo 'Please do not forget to enable and start systemd services "systemctl enable --now tuxclockerd-dbus tuxclockerd"'
+    echo ----------------------------------------------------------------------------------------------------------------
+    echo
+    echo
+}
