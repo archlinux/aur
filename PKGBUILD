@@ -3,8 +3,8 @@
 # -*- mode: sh -*-
 
 pkgname=bc-gh
-pkgver=6.7.3
-pkgrel=2
+pkgver=6.7.4
+pkgrel=1
 pkgdesc="Implementation of dc and POSIX bc with GNU extensions"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/gavinhoward/bc"
@@ -18,17 +18,17 @@ source=(
   "$pkgname-$pkgver.tar.xz.sig::$url/releases/download/$pkgver/bc-$pkgver.tar.xz.sig"
 )
 sha512sums=(
-  'SKIP'
-  'SKIP'
+  '634d1e25884c9bced477a5c3e7a15923447a8a8e41808502e53039bf153c70f8475150b06b9d723d9c98605b3483e715bef11b1ebd4c18242f3daa9f0d133c45'
+  '9af6b3b8890486cdc97e511a16e1fc1b78060fc66f8c4a1df59d0e1f5b95974ecaabffc52d13829f74a24bdaf0cacc84e08cb442d06e96492ce604747b7927cb'
 )
 sha256sums=(
-  'SKIP'
-  'SKIP'
+  'ce3bd42779c4534be80a2b9c8995b76acce62654879a4afd27001ed0e6bf602b'
+  '0441941e895214051f38e139eeecef779856f2795e6388fd818672b2a7dd4002'
 )
 validpgpkeys=('FF360647C7A7147F27DAAEC1B132F881C306590A')
 
 _ltoflags='-flto=auto'
-: "${LTOFLAGS:-$_ltoflags}"
+: "${LTOFLAGS:=$_ltoflags}"
 
 build() {
   cd "bc-$pkgver"
@@ -49,10 +49,13 @@ package() {
 
   DESTDIR="$pkgdir" make install
 
-  install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  # If we have a tty, tell the user what we are doing
+  test -t 1 && _verbose='v' || _verbose=''
+
+  install "-${_verbose}Dm0644" LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
   for _doc in {NEWS,NOTICE,README}.md; do
-    install -Dm0644 "$_doc" "$pkgdir/usr/share/doc/$pkgname/$_doc"
+    install "-${_verbose}Dm0644" "$_doc" "$pkgdir/usr/share/doc/$pkgname/$_doc"
   done
 }
 
