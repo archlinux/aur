@@ -3,7 +3,7 @@
 pkgname=networkmanager-openconnect-simple
 _pkgname=${pkgname%-simple}
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple and flexible NetworkManager support for OpenConnect in Python.'
 arch=('any')
 url="https://github.com/daskol/networkmanager-openconnect"
@@ -12,8 +12,8 @@ groups=()
 depends=('dbus-python' 'networkmanager-openconnect' 'python-gobject')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
-source=("$pkgname-$pkgver.tar.gz::$url/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('71d83fa0e1735aa6f38138a2715153e085bfe76aa68398c7ab461750bef4c6a1')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('05bf84df13684e8b3d7e2d07d9291be21dc5f7693bbe1b4fa648aba5e008e694')
 
 build() {
     python -m build -nw $srcdir/$_pkgname-$pkgver
