@@ -1,15 +1,15 @@
 pkgbase = chamber
 	pkgdesc = A tool for managing secrets using AWS SSM Parameter Store
-	pkgver = 2.13.4
+	pkgver = 2.13.5
 	pkgrel = 1
 	url = https://github.com/segmentio/chamber/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = chamber-2.13.4.tar.gz::https://github.com/segmentio/chamber/archive/refs/tags/v2.13.4.tar.gz
-	source = chamber-2.13.4-LICENSE::https://raw.githubusercontent.com/segmentio/chamber/v2.13.4/LICENSE
-	sha256sums = 0ff3bd73f959caad29638545da59146c0fca740c22c7d4e064c09d695e873412
+	source = chamber-2.13.5.tar.gz::https://github.com/segmentio/chamber/archive/refs/tags/v2.13.5.tar.gz
+	source = chamber-2.13.5-LICENSE::https://raw.githubusercontent.com/segmentio/chamber/v2.13.5/LICENSE
+	sha256sums = f940d6fc70911bec5e192678866c25d5121356cb5f10d99b0046f9ec9d3e10cc
 	sha256sums = feaff489d3c077f7b48cf76a5f038604338a092be379c1297c64c26c6b81714b
 
 pkgname = chamber
