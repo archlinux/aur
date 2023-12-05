@@ -1,5 +1,5 @@
 # Maintainer: ldev <ldev dot eu dot org>
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 
 pkgname=git-credential-pass
@@ -9,7 +9,7 @@ url="https://github.com/Xgames123/$pkgname"
 arch=('any')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('e18a238ccc7b1718be383d6a5acffaef259085fb6fbfab2ec96516b500243840')
+sha256sums=('03d8385a8f0070a774bedb6bd7a43bc59acefc1345fee6da06adf5ef551894a9')
 conflicts=("git-credential-pass-git")
 makedepends=(
 cargo
