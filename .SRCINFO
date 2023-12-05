@@ -1,24 +1,8 @@
 pkgbase = teeworlds-hclient
-	pkgdesc = A customized client by CytraL for this 2D shooting game
-	pkgver = 4.0
+	pkgdesc = metapackage - migrate to teeworlds
+	pkgver = 5
 	pkgrel = 1
-	url = https://hclient.wordpress.com/
-	arch = i686
-	arch = x86_64
-	license = custom
-	makedepends = python
-	makedepends = bam
-	makedepends = mesa
-	makedepends = gendesk
-	makedepends = imagemagick
-	depends = alsa-lib
-	depends = glu
-	depends = sdl
-	depends = freetype2
-	provides = teeworlds
-	conflicts = teeworlds
-	source = HClient-4.0.zip::https://github.com/CytraL/HClient/archive/v4.0.tar.gz
-	md5sums = ebb1bb0a1a269d637457df0473f10848
+	arch = any
 
 pkgname = teeworlds-hclient
-
+	depends = teeworlds
