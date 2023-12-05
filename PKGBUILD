@@ -2,7 +2,7 @@
 # Contributor: Jeff Parent <jecxjo@sdf.lonestar.org>
 pkgname=cutecw
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Learn CW using the Koch Method"
 arch=('i686' 'x86_64')
@@ -14,14 +14,16 @@ noextract=()
 validpgpkeys=()
 sha256sums=('d79ce2a9e0ab2e2c958ea33b5f43a2e000be4d0afd7282847e200062fa44129e')
 
+_pkgdir="$srcdir/CuteCW-$pkgver"
+
 build() {
-  cd "CuteCW-$pkgver"
+  cd "$_pkgdir"
   qmake6
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgdir"
   install -d -m 755 "$pkgdir/usr/bin"
   install -m 755 cutecw "$pkgdir/usr/bin/cutecw"
 }
