@@ -1,6 +1,6 @@
 pkgbase = plasma-remotecontrollers
 	pkgdesc = Translate various input device events into keyboard and pointer events
-	pkgver = 5.27.9
+	pkgver = 5.27.10
 	pkgrel = 1
 	url = https://plasma-bigscreen.org/
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = plasma-remotecontrollers
 	makedepends = libcec
 	depends = plasma-workspace
 	optdepends = libcec: TV remotes support
-	source = https://download.kde.org/stable/plasma/5.27.9/plasma-remotecontrollers-5.27.9.tar.xz
-	source = https://download.kde.org/stable/plasma/5.27.9/plasma-remotecontrollers-5.27.9.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/5.27.10/plasma-remotecontrollers-5.27.10.tar.xz
+	source = https://download.kde.org/stable/plasma/5.27.10/plasma-remotecontrollers-5.27.10.tar.xz.sig
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = be88e8812c4c79acb7c63c7f18e018515bc04da6f5bca00c97f3df9f7d19f383
+	sha256sums = 510426dfb47cb86e0491cdeaead3af6f5d8700408973188ca981c24572f1f473
 	sha256sums = SKIP
 
 pkgname = plasma-remotecontrollers
