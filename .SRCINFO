@@ -1,30 +1,25 @@
 pkgbase = konsole-git
-	pkgdesc = KDE's terminal emulator
-	pkgver = 19.12.3.r783.g110d705f
+	pkgdesc = KDE terminal emulator
+	pkgver = 23.08.4.r8.gaed2dd76d
 	pkgrel = 1
-	url = https://kde.org/applications/system/konsole
+	url = https://invent.kde.org/utilities/konsole
 	arch = x86_64
-	groups = kde-applications
-	groups = kde-utilities
 	license = GPL
 	license = LGPL
 	license = FDL
-	makedepends = extra-cmake-modules
-	makedepends = kdoctools
+	makedepends = extra-cmake-modules>=5.240.0
 	makedepends = git
-	depends = knotifyconfig
-	depends = kpty
-	depends = kparts
-	depends = kinit
+	makedepends = kdoctools
 	depends = knewstuff
+	depends = knotifyconfig
+	depends = kparts
+	depends = kpty
+	depends = ktextwidgets
+	depends = qt6-multimedia
 	optdepends = keditbookmarks: to manage bookmarks
-	provides = konsole
+	provides = konsole=23.08.4
 	conflicts = konsole
-	source = git+https://invent.kde.org/utilities/konsole.git
-	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
-	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
-	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
+	source = konsole::git+https://invent.kde.org/utilities/konsole.git
 	sha256sums = SKIP
 
 pkgname = konsole-git
-
