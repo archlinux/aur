@@ -1,6 +1,6 @@
 pkgbase = parallel-launcher
 	pkgdesc = Modern N64 Emulator
-	pkgver = 6.22.0
+	pkgver = 6.22.3
 	pkgrel = 0
 	url = https://parallel-launcher.ca
 	install = parallel-launcher.install
@@ -24,7 +24,7 @@ pkgbase = parallel-launcher
 	depends = coreutils
 	optdepends = noto-fonts: intended font
 	optdepends = udisks2: mounting emulated SD cards
-	source = https://gitlab.com/parallel-launcher/parallel-launcher/uploads/a34b93f84719e9588fd484079ece7b27/parallel-launcher-6.22.0.tar.gz
-	sha256sums = e014ee88f63f4671a06c0a1c965d58986603f7a8e891e799d36b923e890db221
+	source = https://gitlab.com/parallel-launcher/parallel-launcher/uploads/079828ef74472a529659676ace3d4acd/parallel-launcher-6.22.3.tar.gz
+	sha256sums = 46ee20d06a69a14f297fe498153db4e63924c28150386057a3f447808c0987c7
 
 pkgname = parallel-launcher
