@@ -4,7 +4,7 @@
 _mayaver=2024
 
 pkgname=maya-usd-bin
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='Autodesk Maya Universal Scene Discription Plugin'
 arch=('x86_64')
@@ -15,12 +15,16 @@ provides=('maya-usd')
 conflicts=('maya-usd')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=("manual://MayaUSD$_mayaver-202310160731-bbc8cc8-$pkgver-1.x86_64.rpm")
-b2sums=('5944f9032c41a93be446c893b9b558c4b02fc0fac6e8684fcf724362ce782bbe5b26683295f10a97dac35ee8285e67ac1316468a7b06e6326976df57738d51ba')
+source=("https://github.com/Autodesk/maya-usd/releases/download/v${pkgver}/MayaUSD_${pkgver}_Maya2024.2_Linux.run")
+b2sums=('e565ffa0f709c2ff53146f49b03ca6ee3a08e608ed7333ea5f67d27cbf17a612322d31563c3018b7390d8bfbb1a89dfc733d16701f0e7571244dc37444036089')
 
 options=(!strip)
 
 prepare() {
+    chmod a+x ./MayaUSD_${pkgver}_Maya2024.2_Linux.run
+    ./MayaUSD_${pkgver}_Maya2024.2_Linux.run --target extracted --phase2 --noexec
+    echo 'Extracting rpm...'
+    bsdtar -xf extracted/*.rpm
     sed -i "s|<PLUGIN_DIR>|/usr/autodesk/maya$_mayaver/plug-ins/mayausd|g" usr/autodesk/modules/maya/$_mayaver/mayausd.mod
     sed -i 's/\$MAYA_PYTHON_VERSION/3/g' usr/autodesk/modules/maya/$_mayaver/mayausd.mod
 }
@@ -28,5 +32,5 @@ prepare() {
 package() {
     mkdir -p $pkgdir/usr/autodesk/maya$_mayaver/{modules,plug-ins/mayausd}
     mv usr/autodesk/modules/maya/$_mayaver/mayausd.mod $pkgdir/usr/autodesk/maya$_mayaver/modules/
-    mv usr/autodesk/mayausd/maya$_mayaver/${pkgver}_202310160731-bbc8cc8/mayausd/* $pkgdir/usr/autodesk/maya$_mayaver/plug-ins/mayausd/
+    mv usr/autodesk/mayausd/maya$_mayaver/${pkgver}_202311130904-e634cda/mayausd/* $pkgdir/usr/autodesk/maya$_mayaver/plug-ins/mayausd/
 }
