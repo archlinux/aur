@@ -1,0 +1,19 @@
+pkgbase = r-alphahull
+	pkgdesc = Generalization of the Convex Hull of a Sample of Points in the Plane
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=alphahull
+	arch = any
+	license = GPL
+	depends = r-ggplot2
+	depends = r-interp
+	depends = r-r.utils
+	depends = r-sgeostat
+	depends = r-spatstat.geom
+	depends = r-spatstat.random
+	depends = r-splancs
+	source = https://cran.r-project.org/src/contrib/alphahull_2.5.tar.gz
+	md5sums = 1ea4cc665f6cde31c63cc9e50a6c801f
+	sha256sums = 82104b049b945b62b5b62f1520ff789a77638ab7e91650e50d6eb191373a8012
+
+pkgname = r-alphahull
