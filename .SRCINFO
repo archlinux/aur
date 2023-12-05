@@ -1,0 +1,19 @@
+pkgbase = python-sbi
+	pkgdesc = sbi: simulation-based inference
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/sbi-dev/sbi
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-pandas
+	provides = lsbi
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/s/sbi/sbi-0.22.0.tar.gz
+	sha256sums = e632994c0bcfbc63c110d6eb04c6e1bdf6ae4ca42211d67ab4946d9b394dc360
+
+pkgname = python-sbi
