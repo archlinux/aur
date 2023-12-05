@@ -1,15 +1,15 @@
 pkgbase = minetest-repixture
 	pkgdesc = Simplistic sandbox survival game that plays in mostly lush biomes in a mostly peaceful world and only simple technologies.
-	pkgver = 3.5.0
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://content.minetest.net/packages/Wuzzy/repixture/
 	arch = any
 	license = LGPLv2.1
 	makedepends = unzip
 	depends = minetest-common
-	noextract = repixture-3.5.0.zip
+	noextract = repixture-3.11.0.zip
 	options = !strip
-	source = repixture-3.5.0.zip::https://content.minetest.net/packages/Wuzzy/repixture/releases/13332/download/
-	sha256sums = 0f5f60823a31b4ee42c1561dd8541e22740dc632994728438a3437e559c3c4ea
+	source = repixture-3.11.0.zip::https://content.minetest.net/packages/Wuzzy/repixture/releases/22052/download/
+	sha256sums = b59d43e70ab24d096ec4780c03db0dcb39af29989755c24743e31a8cee6fbf5b
 
 pkgname = minetest-repixture
