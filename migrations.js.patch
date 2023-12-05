@@ -1,0 +1,11 @@
+--- src/migrations.js	2023-12-05 18:38:22.459435749 +0000
++++ src/migrations.js-patched	2023-12-05 18:40:03.719441185 +0000
+@@ -9,7 +9,7 @@
+   return new Promise((resolve) =>
+     migrate.load(
+       {
+-        stateStore: `.migrate${config.mode === 'test' ? '-test' : ''}`,
++        stateStore: `/var/lib/actual/.migrate${config.mode === 'test' ? '-test' : ''}`,
+       },
+       (err, set) => {
+         if (err) {

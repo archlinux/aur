@@ -22,12 +22,20 @@ source=(
     'actual-server.service'
     'sysusers'
     'tmpfiles'
+    'migrations.js.patch'
 )
 noextract=()
 sha256sums=('da85dd0143c70690a66c5412fbd52b84b0f6479dc9a8f7b8dbb90728bc4e3d2d'
             '6d70d436bff95b6ca7ae270219a4288c81ccf119ad57158528fdda19585b2067'
             '4dfa4502df8d72212ccfb96cfc2509c9a1461f542adb38304af54097b30ca0d5'
-            'cba6a5df66a42ced857822e1099be00f2e37ec800f29cbbfca7210020140291b')
+            'cba6a5df66a42ced857822e1099be00f2e37ec800f29cbbfca7210020140291b'
+            '2931be9c68a6028b3a3658cd05b092443dcd20d64f44d1d36f9704f2a1ca310e')
+
+prepare() {
+
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch -p0 -i "${srcdir}/migrations.js.patch"
+}
 
 build() {
 
