@@ -6,7 +6,7 @@
 # Contributor: even <kessiapinheiro @ gmail . com>
 
 pkgname=greenfoot
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="Educational software designed to make learning programming easy and fun."
 arch=('any')
@@ -18,11 +18,10 @@ source=("https://www.${pkgname}.org/download/files/Greenfoot-linux-${pkgver//.}.
         "${pkgname}.desktop"
         "${pkgname}.xml")
 #noextract=("Greenfoot-linux-${pkgver//.}.deb")
-sha256sums=('bad19201b3fbe0ed6dd621283740b089955cf07c5d0b1868ccf3ccc100ad9041'
+sha256sums=('c299a05adc768d30e3b7eee9e8772353fbb2d4f4669c01e9275ace61bfa157e5'
             '81caabbb2930d95414e5da3a8427b44dc5e338d192236c0c86be3ea344016189'
             'b980d0084fbafbb3ea335bb3840d858898c692822f1c671969a91982e86c1b4f'
             'f1ea33e8289dfe31b9a0c4d88482a5ca5f75d663ba82ca986519f290e44789e4')
-
 prepare(){
   cd "${srcdir}"
   echo "Extracting archive ..."
