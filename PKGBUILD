@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leafview-bin
 _pkgname=LeafView
-pkgver=2.7.10
+pkgver=2.8.0
+_electronversion=28
 pkgrel=1
 pkgdesc="A minimalist image viewer based on Leaflet.js and Electron."
 arch=("x86_64")
@@ -10,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron27'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
@@ -18,11 +19,14 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/sprout2000/leafview/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5dcdc3c69060097f5512bacd5f3a43ae141fc91a3ca4840c2db37c1230360a0f'
+sha256sums=('ef211546ccc2f7b417f59703439cfa7491c0326dc73593b680ec7d888d7da2be'
             'b68f9bc26df0993fe2680014cb2f0c968a910071d496be05fe040ebeaac84961'
-            'bbe689b1e71b8633845f692e864065bcbda67cf7b5f1355fc98ffef5f6d9d571')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
-    sed -i "s|@electronversion@|${_electronversion}|" "$srcdir/${pkgname%-bin}.sh"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
