@@ -1,0 +1,25 @@
+pkgbase = r-vsclust
+	pkgdesc = Feature-based variance-sensitive quantitative clustering
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/vsclust
+	arch = x86_64
+	license = GPL2
+	checkdepends = r-testthat
+	makedepends = r-rcpp
+	depends = r-limma
+	depends = r-matrixstats
+	depends = r-multiassayexperiment
+	depends = r-qvalue
+	depends = r-shiny
+	optdepends = r-biocstyle
+	optdepends = r-clusterprofiler
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-yaml
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/vsclust_1.4.0.tar.gz
+	md5sums = 0c492a6d65d0b230211a0f95706b51a4
+	sha256sums = 3438992407e27098a9304721bbb07d30fb85d3c238bdda0d96a5cca9d0e9748d
+
+pkgname = r-vsclust
