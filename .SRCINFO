@@ -1,7 +1,7 @@
 pkgbase = renderdoc-bin
 	pkgdesc = OpenGL and Vulkan debugging tool - binary version
 	pkgver = 1.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baldurk/renderdoc
 	arch = x86_64
 	license = MIT
@@ -18,8 +18,10 @@ pkgbase = renderdoc-bin
 	conflicts = renderdoc
 	source = https://renderdoc.org/stable/1.30/renderdoc_1.30.tar.gz
 	source = https://renderdoc.org/stable/1.30/renderdoc_1.30.tar.gz.sig
+	source = amdspv.sh
 	validpgpkeys = 1B039DB9A4718A2D699DE031AC612C3120C34695
 	sha256sums = 765a70c768ac635557868240ad22b5653dd993b2d2862f2b6b196b98eb13d836
 	sha256sums = SKIP
+	sha256sums = 87bf87a4e93f83c6abeda90ee0bb9c76a844dd5a0ebae84f12d6fb59d988fa61
 
 pkgname = renderdoc-bin
