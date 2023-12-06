@@ -1,7 +1,7 @@
 pkgbase = easyeda-pro-electron
 	pkgdesc = EasyEDA Professional Edition. Run with system electron.
 	pkgver = 2.0.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pro.easyeda.com/
 	install = easyeda-pro-electron.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = easyeda-pro-electron
 	source = LICENSE
 	source = easyeda-pro-electron.install
 	source = easyeda-pro.sh
-	sha256sums = 37f229a8fa5de9f1e1af1ad2046295a4837bfe3b0e1272cbb9d9f6c5747d2f10
+	sha256sums = fdf0f0fe693cb085c92f20e9cf931b9d4b0bafbb895678a6993a41e23a43fab1
 	sha256sums = cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76
 	sha256sums = 89289056ed4b5d051280e3a69dfb550b6914f470f201be1ca3b165ddd4f3e435
 	source_x86_64 = easyeda-pro-x86_64-2.0.35.zip::https://image.easyeda.com/files/easyeda-pro-linux-x64-2.0.35.zip
