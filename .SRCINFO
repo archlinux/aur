@@ -1,0 +1,27 @@
+pkgbase = r-stjoincount
+	pkgdesc = stJoincount - Join count statistic for quantifying spatial correlation between clusters
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/stJoincount
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-magrittr
+	depends = r-pheatmap
+	depends = r-raster
+	depends = r-seurat
+	depends = r-sp
+	depends = r-spatialexperiment
+	depends = r-spdep
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/stJoincount_1.4.0.tar.gz
+	md5sums = 85dd3f81a773ede72a70185cb4132d2b
+	sha256sums = 9f29095aaf05ac1d2f4bd293ef0e415a947ed4d6f88190c589ca2ea43aaec747
+
+pkgname = r-stjoincount
