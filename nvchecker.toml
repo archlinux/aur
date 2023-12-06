@@ -1,4 +1,0 @@
-[shm]
-source = "github"
-github = "lyokha/g3kb-switch"
-use_max_tag = true
