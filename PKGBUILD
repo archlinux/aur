@@ -2,7 +2,7 @@
 # Contributor: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=gamja
-_pkgver=1.0.0-beta.8
+_pkgver=1.0.0-beta.9
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc='Simple IRC web client'
@@ -16,7 +16,7 @@ conflicts=('gamja')
 source=("${pkgname}-${pkgver}::https://git.sr.ht/~emersion/gamja/archive/v${_pkgver}.tar.gz"
         "config.example.json"
 )
-sha256sums=('4e4aad554d5cf785d1cd626d27877cb68d6e8a65221da52a9e92c109f4d25845'
+sha256sums=('566a120ab8d20f27fca0b4a34a52191a4980e841d4cae6093ae1d439132ccd19'
             '2ea3471ae8a508d59862acac86d388472468a34380da993d1edac6f2a4ba73cf')
 backup=("etc/webapps/${pkgname}/config.json")
 
