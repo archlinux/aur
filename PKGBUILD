@@ -7,14 +7,14 @@
 
 pkgbase=odamex-git
 pkgname=odamex-git
-pkgver=10.2.0.r78.g8845a5108
+pkgver=10.4.0.r39.g0880dd097
 pkgrel=1
 pkgdesc='A free client/server multiplayer engine for the classic FPS Doom.'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://odamex.net/'
 license=('GPL')
 depends=('sdl2_mixer' 'sdl2' 'portmidi' 'miniupnpc' 'curl' 'zlib' 'libpng')
-makedepends=('git' 'cmake' 'deutex' 'ninja')
+makedepends=('git' 'cmake' 'deutex')
 optdepends=('timidity++: Required for the SDL2 MIDI music backend'
             'doomseeker: Online Doom multiplayer server launcher')
 source=(
@@ -58,21 +58,20 @@ _configure() {
 	export CXXFLAGS="-DSDL20 $CXXFLAGS"
 
 	cmake -DCMAKE_BUILD_TYPE=None  \
-		-D BUILD_LAUNCHER=FALSE  \
+		-D BUILD_LAUNCHER=True  \
 		-DCMAKE_INSTALL_PREFIX=/usr  \
-		-GNinja  \
 		.
 }
 
 build() {
 	_configure
-	ninja $NINJAFLAGS
+	make
 }
 
 package() {
 	cd "odamex-git"
 
-	DESTDIR="$pkgdir/" ninja install
+	make DESTDIR="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
