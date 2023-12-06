@@ -1,5 +1,5 @@
 # Maintainer: ldev <ldev dot eu dot org>
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 
 pkgname=git-credential-github
@@ -10,7 +10,7 @@ arch=('any')
 
 binname=git-credential-github
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3b7408047c6c63ae913742bafd9a972290b82e2c59ee8b29ed9d8396b8305cd6')
+sha256sums=('9536717baacc1def9723b059e3e635dd7d425f5f6e427dc29ba1a89cb92e5250')
 conflicts=("git-credential-github-git")
 replaces=("gh-login")
 makedepends=(
