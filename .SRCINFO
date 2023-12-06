@@ -1,6 +1,6 @@
 pkgbase = ligo-bin
 	pkgdesc = High Level Smart Contract Language for Tezos (binary)
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://gitlab.com/ligolang/ligo
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ligo-bin
 	provides = ligo
 	conflicts = ligo
 	conflicts = ligo-next
-	source = https://gitlab.com/ligolang/ligo/-/jobs/5419828800/artifacts/raw/ligo.deb
+	source = https://gitlab.com/ligolang/ligo/-/jobs/5696744559/artifacts/raw/ligo.deb
 	md5sums = SKIP
 
 pkgname = ligo-bin
