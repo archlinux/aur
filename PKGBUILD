@@ -1,8 +1,8 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 pkgname=kawaii-player
 _pkgname=kawaii_player
-pkgver=5.0.0
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 _pkgrel=1
 pkgdesc="Multimedia player, media library manager and portable media server with PC-to-PC casting feature"
 arch=(any)
@@ -15,11 +15,11 @@ optdepends=('python-pympv: modern opengl-render API for libmpv'
             'libtorrent-rasterbar: torrent streaming'
             'youtube-dl: YouTube streaming'
             'xorg-server-xvfb: run in headless mode' 'vlc')
-makedepends=('git')
+makedepends=('git' 'cython0' 'python')
 conflicts=('kawaii-player-git')
 install=$pkgname.install
-source=("https://github.com/kanishka-linux/${pkgname}/releases/download/v${pkgver}-${_pkgrel}/${pkgname}-${pkgver}-${_pkgrel}.tar.bz2")
-sha256sums=('b055f9224a9a88d3b92bb631e4dc886817c97bb9751c8eb7ead65d05856ecee0')
+source=("https://github.com/kanishka-linux/${pkgname}/archive/refs/tags/v${pkgver}-${_pkgrel}.tar.gz")
+sha256sums=('5c205dcb517b0ba53c4aaf19d15373938473343d233c956e752e2d82ca77dbb7')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}-${_pkgrel}

@@ -1,12 +1,14 @@
 pkgbase = kawaii-player
 	pkgdesc = Multimedia player, media library manager and portable media server with PC-to-PC casting feature
-	pkgver = 5.0.0
-	pkgrel = 2
+	pkgver = 6.0.0
+	pkgrel = 1
 	url = https://github.com/kanishka-linux/kawaii-player
 	install = kawaii-player.install
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = cython0
+	makedepends = python
 	depends = libnotify
 	depends = mpv
 	depends = sqlite
@@ -34,7 +36,7 @@ pkgbase = kawaii-player
 	optdepends = xorg-server-xvfb: run in headless mode
 	optdepends = vlc
 	conflicts = kawaii-player-git
-	source = https://github.com/kanishka-linux/kawaii-player/releases/download/v5.0.0-1/kawaii-player-5.0.0-1.tar.bz2
-	sha256sums = b055f9224a9a88d3b92bb631e4dc886817c97bb9751c8eb7ead65d05856ecee0
+	source = https://github.com/kanishka-linux/kawaii-player/archive/refs/tags/v6.0.0-1.tar.gz
+	sha256sums = 5c205dcb517b0ba53c4aaf19d15373938473343d233c956e752e2d82ca77dbb7
 
 pkgname = kawaii-player
