@@ -8,7 +8,6 @@ pkgbase = dune-fem-dg
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scikit-build
-	makedepends = python-ninja
 	depends = dune-fem>=2.9.0.2
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
