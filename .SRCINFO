@@ -1,0 +1,24 @@
+pkgbase = rtaudio6
+	pkgdesc = A set of C++ classes that provide a common API for realtime audio input/output across Linux (native ALSA, JACK, PulseAudio and OSS), Macintosh OS X (CoreAudio and JACK), and Windows (DirectSound, ASIO, and WASAPI) operating systems.
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/thestk/rtaudio
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = patch
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = libpulse
+	provides = rtaudio
+	provides = librtaudio.so
+	conflicts = rtaudio
+	source = https://github.com/thestk/rtaudio/archive/refs/tags/6.0.0.tar.gz
+	md5sums = a3bacf1e5eff95e1697ce8b4f2797f8e
+
+pkgname = rtaudio6
