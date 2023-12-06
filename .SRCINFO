@@ -1,12 +1,12 @@
 pkgbase = alberta
 	pkgdesc = Adaptive multi-Level finite element toolbox
-	pkgver = 3.0.3
-	pkgrel = 3
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://www.alberta-fem.de
 	arch = x86_64
 	license = GPL2
 	makedepends = gcc-fortran
-	source = https://gitlab.com/alberta-fem/alberta3/-/archive/releases/alberta3-releases.tar.gz
-	sha512sums = 0d502a7123db09d7c54fd8bb59de236a4e76a17d5922adf8b3b6b0e90963a563e4cb6dfda9434bc64fde011fe7f07e9375909fb267b69cb741b457cf645b5d81
+	source = https://gitlab.com/alberta-fem/alberta3/-/archive/v3.1.0/alberta3-v3.1.0.tar.gz
+	sha512sums = 1f206d4123db6792e0dbd8394cb01aa963678fceb28d2f0efbba99c887fc2043b1706529d05386e156abf7d19fe0c26f8c2be642e4ea0ab63eef5d2f68e3cfd0
 
 pkgname = alberta
