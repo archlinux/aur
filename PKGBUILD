@@ -24,7 +24,7 @@ source=(
 )
 noextract=($_npmname-$pkgver.tgz)
 sha256sums=('299ba51f37b087d8f872f82b5d98731fbf02482fb81f36c6e21115c7a4dd7c86'
-            '1eed0bf5af3c04735f917932645b9008c917a2cf01ded954b1ef7fc9d892ce4b')
+            '26c4e7456198b4a7a8e1ce5877c91ae487afcd5275b08dbd600d4576268616ec')
 
 package() {
     cd "$srcdir"
