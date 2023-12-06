@@ -1,6 +1,6 @@
 pkgbase = ocaml-oseq
 	pkgdesc = Purely functional iterators compatible with standard seq for OCaml
-	pkgver = 0.5
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/c-cube/oseq
 	arch = x86_64
@@ -9,11 +9,10 @@ pkgbase = ocaml-oseq
 	checkdepends = ocaml-containers
 	checkdepends = ocaml-gen
 	checkdepends = ocaml-qcheck
-	checkdepends = ocaml-qtest
 	makedepends = dune>=1.0.0
 	depends = ocaml>=4.08.0
 	options = !strip
-	source = ocaml-oseq-0.5::git+https://github.com/c-cube/oseq#commit=14ca0062ca89ebe795f2001b16083fad9c27170b?signed
+	source = ocaml-oseq-0.5.1::git+https://github.com/c-cube/oseq#commit=b44a72b18210d69a894672c955828db1a4feab9c?signed
 	validpgpkeys = 1370978BC81E9735DFE727E1EBFFF6F283F3A2B4
 	sha512sums = SKIP
 

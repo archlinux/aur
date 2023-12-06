@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='oseq'
 pkgname="ocaml-$_projectname"
-pkgver='0.5'
-_commit='14ca0062ca89ebe795f2001b16083fad9c27170b'
+pkgver='0.5.1'
+_commit='b44a72b18210d69a894672c955828db1a4feab9c'
 pkgrel='1'
 pkgdesc='Purely functional iterators compatible with standard seq for OCaml'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url="https://github.com/c-cube/$_projectname"
 license=('BSD')
 depends=('ocaml>=4.08.0')
 makedepends=('dune>=1.0.0')
-checkdepends=('ocaml-containers' 'ocaml-gen' 'ocaml-qcheck' 'ocaml-qtest')
+checkdepends=('ocaml-containers' 'ocaml-gen' 'ocaml-qcheck')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
 sha512sums=('SKIP')
