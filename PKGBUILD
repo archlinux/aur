@@ -1,25 +1,23 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=intel-lms
-pkgver=2322.0.0.0
+pkgver=2348.0.0.0
 pkgrel=1
 pkgdesc="Allows applications to access the Intel AMT firmware via the Intel MEI"
 arch=('x86_64')
 url="https://github.com/intel/lms"
 license=('Apache-2.0')
-depends=('glib2' 'curl' 'xerces-c' 'libnl' 'libxml2' 'ace')
+depends=('glib2' 'curl' 'xerces-c' 'libnl' 'libxml2' 'ace' 'intel-metee')
 makedepends=('cmake')
 source=("lms-${pkgver}.tar.gz::https://github.com/intel/lms/archive/refs/tags/v${pkgver}.tar.gz"
-        "https://github.com/intel/lms/commit/f34024b2a5bb5047e5c69caa2b428f5316f6178a.patch"
-        "https://github.com/intel/lms/commit/3527c534c0c5ea3577b78c192811f01a6cf9a707.patch")
-sha256sums=('7000fe2692c9dec28c8c4b59d99ef569c1ffd51d3776b20c5967fb1d18b0750d'
-            'c55bffa3736ffd339993a8900d644576c20a8b6769bae6a44d94fd04366bd58e'
-            'c75da1815d0d80da726f3167aa96f7776d6dca827ff691af3809e349ef57cf45')
+        "std_c++14.patch")
+sha256sums=('e7557d9633966279baf2878cbbd02d36852838873da305e43c07e09efbe2b7dd'
+            '4250fe64c90adbabde51eccdb60b9a4018b7f934a46a4e7b0aac97c6f383b88f')
 
 prepare() {
 	cd "lms-$pkgver"
-	patch -p1 < "$srcdir"/f34024b2a5bb5047e5c69caa2b428f5316f6178a.patch
-	patch -p1 < "$srcdir"/3527c534c0c5ea3577b78c192811f01a6cf9a707.patch
+
+	patch -p1 < "$srcdir"/std_c++14.patch
 }
 
 build() {

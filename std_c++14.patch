@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a8fe218..919a638 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,7 +21,7 @@ if (UNIX)
+   endif (NETWORK_NM AND NETWORK_CN)
+ endif (UNIX)
+ 
+-set (CMAKE_CXX_STANDARD 11)
++set (CMAKE_CXX_STANDARD 14)
+ 
+ include (version.cmake)
+ include (GNUInstallDirs)
