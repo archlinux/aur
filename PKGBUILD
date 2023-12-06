@@ -5,7 +5,7 @@
 _pkgbase='plasma-meta'
 pkgname=plasma-essential-meta
 pkgver=5.27
-pkgrel=3.11
+pkgrel=4
 pkgdesc='Meta-PKG to install essential (and optional) KDE Plasma packages'
 arch=(any)
 license=(None)
@@ -36,7 +36,6 @@ package() {
          plasma-firewall
          plasma-systemmonitor
          kwallet-pam
-         kgamma5
          sddm-kcm
          breeze-gtk
          powerdevil
@@ -58,6 +57,7 @@ package() {
             'kdeconnect: Smartphone desktop integration and communication'
             'kdegraphics-thumbnailers: Thumbnails for PDF, Mobipocket and camera RAW image files'
             'kdenetwork-filesharing: Samba LAN file sharing setup'
+            'kgamma: Adjust your screen gamma curve from systemsettings'
             'khotkeys: Deprecated hotkeys management (only needed if user has legacy bindings defined in this)'
             'kinfocenter: System information application'
             'kio-admin: Manage files as administrator using the admin:// KIO protocol'
