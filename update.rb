@@ -44,7 +44,7 @@ HTTParty.get(download_url, stream_body: true) do |frag|
 	print "[#{('#' * (percentage / 2)).ljust 50, ' '}] #{percentage.round.to_s.rjust 2, '0'}% (#{(length/10**6).round 1}Mb)\r"
 end
 
-puts "The current hash is #{digest.hexdigest.blue}" + " " *20
+puts "The new hash is #{digest.hexdigest.green}" + " " *20
 
 PKGBUILD_FILE = File.open "PKGBUILD", "w"
 
