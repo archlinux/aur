@@ -1,19 +1,19 @@
 pkgbase = duolingo-desktop-bin
 	pkgdesc = Desktop client for the Duolingo language learning application
-	pkgver = 3.6.0
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/hmlendea/dl-desktop
 	arch = x86_64
 	license = GPL3
-	depends = electron24
-	provides = duolingo-desktop=3.6.0
+	depends = electron25
+	provides = duolingo-desktop=4.0.0
 	conflicts = dl-desktop
 	conflicts = duolingo-desktop
-	source = duolingo-desktop-3.6.0.zip::https://github.com/hmlendea/dl-desktop/releases/download/v3.6.0/dl-desktop_3.6.0_linux.zip
-	source = duolingo-desktop.png::https://raw.githubusercontent.com/hmlendea/dl-desktop/v3.6.0/icon.png
+	source = duolingo-desktop-4.0.0.zip::https://github.com/hmlendea/dl-desktop/releases/download/v4.0.0/dl-desktop_4.0.0_linux.zip
+	source = duolingo-desktop.png::https://raw.githubusercontent.com/hmlendea/dl-desktop/v4.0.0/icon.png
 	source = duolingo-desktop.sh
-	sha256sums = f65f94afb246a9addf27480233c946b32e4482e406c3c53bf0e4a091606eef2e
+	sha256sums = eb24471528136eb1157cbdd6afe0fa4d1c2cf2ba9b5d61bafd053c3ef49d6120
 	sha256sums = 67642cd03a241ff097a83800f39e442c533e8b7a92a9235c0375ef866a708f0e
-	sha256sums = 6c821b8acb3e498429f63b95281d71bc8c829fee15b082e634af80f66acef4d0
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = duolingo-desktop-bin
