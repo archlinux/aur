@@ -1,7 +1,7 @@
 pkgbase = desq-shell
 	pkgdesc = The Desktop Shell for Desq
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/DesQ/Shell
 	arch = x86_64
 	arch = aarch64
@@ -36,6 +36,7 @@ pkgbase = desq-shell
 	depends = wayfire-plugins-dbusqt
 	depends = wayfire-plugins-focus-request
 	depends = wayfire-plugins-desq-shell
+	depends = wayfire-plugins-toplevel-manager
 	source = https://gitlab.com/DesQ/Shell/-/archive/v0.0.8/Shell-v0.0.8.tar.gz
 	md5sums = 063db58d9f9f062f4f72f562b4852ca8
 
