@@ -1,6 +1,6 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
-	pkgver = 9.1.0.4
+	pkgver = 9.2.0.5
 	pkgrel = 1
 	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = tensorrt
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	noextract = protobuf-cpp-3.20.1.tar.gz
-	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/secure/9.1.0/tars/tensorrt-9.1.0.4.linux.x86_64-gnu.cuda-12.2.tar.gz
-	source = git+https://github.com/NVIDIA/TensorRT.git#tag=v9.1.0
+	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/9.2.0/tensorrt-9.2.0.5.linux.x86_64-gnu.cuda-12.2.tar.gz
+	source = git+https://github.com/NVIDIA/TensorRT.git#commit=7cb87c8983309c91ab66d5cd082bb5bb40026649
 	source = protobuf-protocolbuffers::git+https://github.com/protocolbuffers/protobuf.git
 	source = cub-nvlabs::git+https://github.com/NVlabs/cub.git
 	source = git+https://github.com/onnx/onnx-tensorrt.git
@@ -29,7 +29,7 @@ pkgbase = tensorrt
 	source = 010-tensorrt-use-local-protobuf-sources.patch
 	source = 020-tensorrt-fix-python.patch
 	source = TensorRT-SLA.txt
-	sha256sums = e70337ee283c027ae2a080960f5fbafe4120e02224f5fdf8c160fc57cdc99617
+	sha256sums = 3dd505a9e0d0adf9257080b543f51d91df736dbd1f75417b9dde1a7b7a5d87f2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

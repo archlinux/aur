@@ -2,12 +2,12 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt')
-pkgver=9.1.0.4
+pkgver=9.2.0.5
+_commit=7cb87c8983309c91ab66d5cd082bb5bb40026649
 _cudaver=12.2
-_cudnnver=8.9.2.26
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
-_python_build=post12.dev4
+_python_build=post12.dev5
 _onnx_graphsurgeon_ver=0.4.0
 _polygraphy_ver=0.49.0
 _tensorflow_quantization_ver=0.2.0
@@ -18,8 +18,8 @@ url='https://developer.nvidia.com/tensorrt/'
 license=('custom: NVIDIA TensorRT SLA' 'Apache')
 makedepends=('git' 'cmake' 'cuda' 'cudnn' 'python' 'python-build' 'python-installer' 'python-onnx'
              'python-setuptools' 'python-wheel')
-source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/secure/${pkgver%.*}/tars/tensorrt-${pkgver}.linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
-        "git+https://github.com/NVIDIA/TensorRT.git#tag=v${pkgver%.*}"
+source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/${pkgver%.*}/tensorrt-${pkgver}.linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
+        "git+https://github.com/NVIDIA/TensorRT.git#commit=${_commit}"
         'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf.git'
         'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
         'git+https://github.com/onnx/onnx-tensorrt.git'
@@ -31,7 +31,7 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '020-tensorrt-fix-python.patch'
         'TensorRT-SLA.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('e70337ee283c027ae2a080960f5fbafe4120e02224f5fdf8c160fc57cdc99617'
+sha256sums=('3dd505a9e0d0adf9257080b543f51d91df736dbd1f75417b9dde1a7b7a5d87f2'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -85,8 +85,6 @@ build() {
         -DCUDNN_ROOT_DIR='/usr' \
         -DGPU_ARCHS='50 52 53 60 61 62 70 72 75 80 86 87 89 90' \
         -DPROTOBUF_VERSION="$_protobuf_ver" \
-        -DCUDA_VERSION="$_cudaver" \
-        -DCUDNN_VERSION="$_cudnnver" \
         -Wno-dev
     cmake --build build
     
