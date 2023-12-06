@@ -1,6 +1,6 @@
 pkgbase = python-dvc-objects
 	pkgdesc = DVC objects
-	pkgver = 1.4.5
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://github.com/iterative/dvc-objects
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = python-dvc-objects
 	optdepends = python-bcrypt: ssh support
 	optdepends = python-sshfs: ssh support
 	optdepends = python-webdav4: webdav support
-	source = https://files.pythonhosted.org/packages/source/d/dvc-objects/dvc-objects-1.4.5.tar.gz
-	sha256sums = b61948d81f7588f31fda6142cbda2d931ea59a396a0f7fedf6a72e39d2399e96
+	source = https://files.pythonhosted.org/packages/source/d/dvc-objects/dvc-objects-1.4.6.tar.gz
+	sha256sums = 7f8c360e1be5c08e774656ce60dfcf053b8c3eece205423f916cc0222ef0fb96
 
 pkgname = python-dvc-objects
