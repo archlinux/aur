@@ -4,24 +4,17 @@
 
 _name=jarowinkler
 pkgname=python-$_name
-pkgver=1.2.3
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='A library for fast approximate string matching using Jaro and Jaro-Winkler similarity'
 arch=(x86_64)
 url='https://github.com/maxbachmann/JaroWinkler'
 license=(MIT)
-depends=(python)
-#makedepends=(jarowinkler-cpp python-rapidfuzz-capi python-scikit-build)
-makedepends=(python-build python-installer python-setuptools python-scikit-build python-rapidfuzz-capi ninja)
+depends=(python python-rapidfuzz)
+makedepends=(python-pip python-build python-installer python-setuptools python-scikit-build ninja)
 checkdepends=(python-hypothesis python-pytest)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "scikit-build.patch")
-sha256sums=('af28ea284cfbd1b21b29ff94b759f20e94e4f7c06f424b0b4702e701c2a21668'
-            'd74321eed1e4b41ad8dcd81e2412ac5b84602fce147a212ddad32a9ebab3288e')
-
-prepare() {
-  patch --directory="${_name}-${pkgver}" --forward --strip=1 --input="${srcdir}/scikit-build.patch"
-}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('7640c79f8d2d5e9eed6691cb49e3018a23b2319daad9a2178df253368b5432b7')
 
 build() {
   cd $_name-$pkgver
