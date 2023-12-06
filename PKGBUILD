@@ -31,6 +31,19 @@ build() {
     make doc/commands.txt
 }
 
+
+
+
+check() {
+    cd "$pkgname"-"$pkgver"
+
+    make utest
+    # takes far too long:
+#    make test
+}
+
+
+
 package() {
     cd "$pkgname"-"$pkgver"
     make PREFIX="$pkgdir"/usr install
