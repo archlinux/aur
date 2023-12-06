@@ -4,7 +4,7 @@
 # Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=librewolf-extension-darkreader
-pkgver=4.9.71
+pkgver=4.9.73
 pkgrel=1
 pkgdesc='Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing'
 url=https://github.com/darkreader/darkreader
