@@ -1,18 +1,18 @@
 pkgbase = ttf-twemoji
-	pkgdesc = Twitter Color Emoji for everyone.
-	pkgver = 14.0.2
-	pkgrel = 2
-	url = https://github.com/twitter/twemoji
+	pkgdesc = Truetype builds of Twemoji; Twitter Color Emoji for everyone.
+	pkgver = 15.0.2
+	pkgrel = 1
+	url = https://git.sr.ht/~whynothugo/twemoji.ttf
 	install = ttf-twemoji.install
 	arch = any
 	license = CCPL
-	license = MIT
 	license = Apache
-	depends = fontconfig
 	provides = emoji-font
-	source = https://kojipkgs.fedoraproject.org/packages/twitter-twemoji-fonts/14.0.2/2.fc37/noarch/twitter-twemoji-fonts-14.0.2-2.fc37.noarch.rpm
+	source = https://artefacts.whynothugo.nl/twemoji.ttf/2023-12-05_16-23/Twemoji-15.0.2.ttf
 	source = 75-twemoji.conf
-	sha256sums = 18aec96731ecffd8125624933cfbf757f2c57dd1b38f8179d153b91d2aacd151
+	source = https://raw.githubusercontent.com/jdecked/twemoji/v15.0.2/LICENSE-GRAPHICS
+	source = LICENSE-BUILD::https://git.sr.ht/~whynothugo/twemoji.ttf/blob/2d23f3f22a191769b5bcc2757cacdf66fff85dca/LICENCE
+	sha256sums = 0a348feb7bceb00b584867bdfdef4dc7dcd1cddc60eba1d433a9c474600a0da0
 	sha256sums = a77a7775557efc1c17781c0fc35a0f7ec5ccd58f233573f8875032fb8575680e
 
 pkgname = ttf-twemoji
