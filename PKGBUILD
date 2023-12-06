@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wx-read
 pkgver=0.2.2
-_electronversion=19
+_electronversion=22
 pkgrel=3
 pkgdesc="A simple Electron application for Weixin Read.一个极简版微信读书桌面客户端"
 arch=('x86_64')
