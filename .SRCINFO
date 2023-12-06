@@ -1,27 +1,24 @@
 pkgbase = termite-git
 	pkgdesc = A simple VTE-based terminal
-	pkgver = 12.r20.g37309fd
+	pkgver = 16.6.r0.g86381ed
 	pkgrel = 1
-	url = https://github.com/thestinger/termite/
-	arch = i686
+	url = https://github.com/aperezdc/termite
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	makedepends = vte3-ng
-	makedepends = ncurses
-	source = git://github.com/thestinger/termite
-	source = git+https://github.com/thestinger/util
-	md5sums = SKIP
-	md5sums = SKIP
-
-pkgname = termite-git
-	pkgdesc = A simple VTE-based terminal
-	depends = vte3-ng
-	depends = termite-terminfo-git
+	makedepends = gperf
+	makedepends = meson
+	makedepends = ninja
+	depends = gnutls
+	depends = gtk3
+	depends = pcre2
+	depends = vte-common
+	provides = termite=16.6
 	conflicts = termite
 	backup = etc/xdg/termite/config
+	source = termite::git+https://github.com/aperezdc/termite.git
+	source = aperezdc.vte::git+https://github.com/aperezdc/vte.git#commit=22624df361d33446f8c78fea72eb4e112b68e599
+	sha256sums = SKIP
+	sha256sums = SKIP
 
-pkgname = termite-terminfo-git
-	pkgdesc = Terminfo for Termite, a simple VTE-based terminal
-	conflicts = termite-terminfo
-
+pkgname = termite-git
