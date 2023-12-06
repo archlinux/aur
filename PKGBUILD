@@ -57,7 +57,7 @@ _configure() {
 	export CFLAGS="-DSDL20 $CFLAGS"
 	export CXXFLAGS="-DSDL20 $CXXFLAGS"
 
-	cmake -DCMAKE_BUILD_TYPE=Release  \
+	cmake -DCMAKE_BUILD_TYPE=None  \
 		-D BUILD_LAUNCHER=FALSE  \
 		-DCMAKE_INSTALL_PREFIX=/usr  \
 		-GNinja  \
