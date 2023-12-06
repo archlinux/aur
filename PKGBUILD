@@ -1,7 +1,7 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
 
 pkgname=openai-cli
-pkgver=0.3.6
+pkgver=0.3.7
 arch=("x86_64")
 pkgrel=1
 pkgdesc="CLI for the GPT model written in Rust"
@@ -9,7 +9,7 @@ license=("MIT")
 makedepends=("cargo")
 url="https://github.com/LevitatingBusinessMan/$pkgname"
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('e51d6c284793902ad3e529a7f9d83b1ada846ac071dacd286fb52c99e699094b')
+sha256sums=('bfa52f5006b7e76597c65e638526f045b316c3c3e7d9376f5abc09dabafc4ec5')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
