@@ -1,0 +1,8 @@
+diff --git a/src/Makevars.in b/src/Makevars.in
+index 5ab1138..e2da87f 100644
+--- a/src/Makevars.in
++++ b/src/Makevars.in
+@@ -1,2 +1,2 @@
+ PKG_CXXFLAGS = $(OMPBAM_PKG_CXXFLAGS) -DSPLICEWIZ
+-PKG_LIBS = $(OMPBAM_PKG_LIBS) -DSPLICEWIZ
++PKG_LIBS = -lz $(OMPBAM_PKG_LIBS) -DSPLICEWIZ
