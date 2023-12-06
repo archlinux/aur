@@ -1,0 +1,36 @@
+# Changes in version v0.12.0:
+
+## Breaking changes
+
+- The remote_branches() revset no longer includes branches exported to the Git
+repository (so called Git-tracking branches.)
+
+- jj branch set no longer creates a new branch. Use jj branch create instead.
+
+- jj init --git in an existing Git repository now errors and exits rather than
+creating a second Git store.
+
+## New features
+
+- jj workspace add can now take multiple --revision arguments, which will create
+a new workspace with its working-copy commit on top of all the parents, as if
+you had run jj new r1 r2 r3 ....
+
+- You can now set git.abandon-unreachable-commits = false to disable the usual
+behavior where commits that became unreachable in the Git repo are abandoned
+(#2504).
+
+- jj new gained a --no-edit option to prevent editing the newly created commit.
+For example, jj new a b --no-edit -m Merge creates a merge commit without
+affecting the working copy.
+
+- jj rebase now takes the flag --skip-empty, which doesn't copy over commits
+that would become empty after a rebase.
+
+- There is a new jj util gc command for cleaning up the repository storage. For
+now, it simply runs git gc on the backing Git repo (when using the Git backend).
+
+## Fixed bugs
+
+- Fixed another file conflict resolution issue where jj status would disagree
+with the actual file content. #2654

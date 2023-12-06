@@ -1,6 +1,6 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 pkgname=jujutsu-bin
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A Git-compatible DVCS that is both simple and powerful'
 url='https://github.com/martinvonz/jj'
@@ -9,7 +9,8 @@ arch=('x86_64')
 provides=('jujutsu')
 conflicts=('jujutsu')
 license=('Apache')
-b2sums=('60042f292ec4ffad062894084f756aca7b99abbc1343ddef67b0d2fbb6163f30aad5a7043d25bef5a0b45e152d034230db07e401404d322bcc1d0ece629b720e')
+changelog=CHANGELOG
+b2sums=('3b41cd34d06fc24c0e9a84ffda4b4912b3ff733035a34884387acde105faf9a5536097bf0cf278e3f7ed4d238c5adad1abfae6ce601700fdbfadf67b581489b8')
 
 package() {
   cd "$srcdir"
