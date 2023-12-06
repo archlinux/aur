@@ -4,7 +4,7 @@
 
 #  shellcheck disable=SC2034
 pkgname=gamadv-xtd3
-pkgver=6.66.03
+pkgver=6.66.05
 pkgrel=1
 pkgdesc="Free, open source command line tool for Google Workspace (formerly G Suite) Administrators to manage domain and user settings quickly and easily."
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
     "gam.sh"
 )
 
-sha256sums=('17c024e91c5e17238a6ad5a22e98a834c56a8e9f01e3d18c6eedfc92dff3ec65'
+sha256sums=('905b9197f5dc17bfbc4aa925fc092872047e901698498d3577ff9f977b7a529f'
             '05ff2239d6ac90d2ca7caa690470b797e41e802bf1fb98d6338803546b2ae68d')
 
 prepare() {
