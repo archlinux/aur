@@ -4,13 +4,46 @@
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
 pkgver='1.2.41'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL3')
 depends=('csdr' 'python-csdr' 'rtl-sdr' 'js8py' 'owrx_connector' 'netcat' 'python-setuptools')
-optdepends=('sox' 'mbelib' 'digiham' 'dsd' 'codec2' 'direwolf')
+optdepends=(
+    # decoding
+    'digiham: use digital voice modes'
+    'codec2: demodulate FreeDV digital transmissions'
+    'm17-cxx-demod: demodulate M17 digital voice signals'
+    'wsjtx: decode FT8, FST4, FST4, Q65 digital modes'
+    'msk144decoder: decode the MSK144 digimode'
+    'direwolf: decode Packet Radio and optionally report data back to APRS-IS'
+    'js8call: decode JS8'
+    'dream: decode DRM broadcasts'
+    'dump1090: decode Mode-S and ADS-B traffic'
+    'rtl_433: decode various signals in the ISM bands'
+    'dumphfdl: decoding HFDL airplane communications'
+    'dumpvdl2-git: decoding VDL Mode 2 airplane communications'
+    'acarsdec: decode ACARS traffic'
+    'multimon-ng: decode FLEX, POCSAG, and several other digital modes'
+    'mbelib: Voice codecs for P25, ProVoice, Half Rate'
+    'dsd: Digital Speech Decoder'
+    # tools
+    'imagemagick: automatically convert received images to the PNG format'
+    'sox: sound processing tools'
+    # device support
+    'soapyremote: allows the usage of remote SDR devices using the SoapySDRServer'
+    'soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod'
+    'soapysdrplay: interfacing with SDRPlay devices'
+    'soapyhackrf: interfacing with HackRF devices'
+    'soapyairspy: interfacing with Airspy devices (Airspy R2, Airspy Mini)'
+    'soapyairspyhf: interfacing with Airspy HF devices (Airspy HF+, Airspy HF discovery)'
+    'limesuite: interfacing with LimeSDR device series'
+    'soapyplutosdr: interfacing with PlutoSDR devices'
+    'soapyuhd: interfacing with UHD / USRP devices'
+    'soapyfcdpp: interfacing with the Funcube Dongle Pro+'
+    'soapybladerf: interfacing with Blade RF devices'
+)
 source=("$pkgname-$pkgver".tar.gz::"https://github.com/luarvique/openwebrx/archive/$pkgver.tar.gz"
         'openwebrx-plus.sysusers' 'openwebrx-plus.tmpfiles')
 sha256sums=('4e634e7bef4036ebaa734098fae94c99a2594f0e1e48eecedeb89848557988ac'
