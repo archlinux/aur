@@ -1,26 +1,56 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-s3-file-manager
 pkgver=0.2.0
-pkgrel=2
+_electronversion=20
+pkgrel=3
 pkgdesc="A GUI AWS S3 file manager. It supports keyword search, download, upload and preview video."
 arch=('any')
 url="https://github.com/kelp404/electron-s3-file-manager"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('bash' 'make' 'python' 'alsa-lib' 'libdrm' 'pango' 'nss' 'gtk3' 'libxfixes' 'libxdamage' 'gcc-libs' 'glib2' 'cairo' 'nspr' \
-    'libxcomposite' 'libcups' 'dbus' 'libx11' 'glibc' 'at-spi2-core' 'libxrandr' 'libxkbcommon' 'expat' 'mesa' 'libxext' 'libxcb' 'wayland')
-makedepends=('gendesk' 'npm' 'nodejs>=18')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('482233095b915bcca18e7b1729a3f9145e76c378d2099110585e3c7cccec156d')
-prepare() {
-    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
-}
+depends=(
+    'make'
+    'python'
+    'alsa-lib'
+    'libdrm'
+    'pango'
+    'nss'
+    'gtk3'
+    'libxfixes'
+    'libxdamage'
+    'cairo'
+    'nspr'
+    'libxcomposite'
+    'libcups'
+    'libx11'
+    'at-spi2-core'
+    'libxrandr'
+    'libxkbcommon'
+    'expat'
+    'mesa'
+    'libxext'
+    'libxcb'
+    'wayland'
+)
+makedepends=(
+    'gendesk'
+    'npm'
+    'nodejs'
+    'git'
+)
+source=(
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+)
+sha256sums=('SKIP')
 build() {
+    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
     sed -e '/dmg/d' -e "s|win|linux|g" -e "s|portable|AppImage|g" -i tools.js
     npm install
     npm run build
-}
+}                                                                                                                                                                                 
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
     cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
