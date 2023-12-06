@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron19 /usr/lib/cro-chain-desktop/app.asar "$@"
+exec @ELECTRON@ /usr/lib/chain-desktop-wallet/app.asar "$@"
