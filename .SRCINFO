@@ -1,6 +1,6 @@
 pkgbase = python-fireflyalgorithm
 	pkgdesc = Implementation of Firefly Algorithm in Python
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/FireflyAlgorithm
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-fireflyalgorithm
 	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python-numpy
-	source = FireflyAlgorithm-0.4.1.tar.gz::https://github.com/firefly-cpp/FireflyAlgorithm/archive/0.4.1.tar.gz
-	sha512sums = 07727edddd6a60f79862a48b2f1b781e9b78bfa6610847055865cd09a42ff0ee1ef04b0d6801cc0de1063c01bcd646c8d7ccbbc256e9c71b3a2123e161f1330e
+	source = FireflyAlgorithm-0.4.2.tar.gz::https://github.com/firefly-cpp/FireflyAlgorithm/archive/0.4.2.tar.gz
+	sha512sums = a6a536d77f7779707c4d6428d66623bb85145eeb3f5784ecf90be1f1a16ad1b5dfc36b925f9cd9f34acc85309ff3455137026225a30a1514d9ea2159ccbfb21a
 
 pkgname = python-fireflyalgorithm
