@@ -3,7 +3,7 @@
 pkgbase=python-spectral-cube
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.6.3
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Library for reading and analyzing astrophysical spectral data cubes"
 arch=('any')
@@ -27,10 +27,11 @@ makedepends=('python-setuptools-scm'
 #              'python-pvextractor'
 #              'python-regions'
 #              'python-yt'
-#              'python-glue-qt')
+#              'python-glue-qt'
+#              'qt5-svg')
 # dask radio_beam 'python-casa-formats-io' already in makedepends; matplotlib <- aplpy, glue(also scipy), pvextractor...
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e8afe3ec03aefb22cc03e5ff091851e0')
+md5sums=('9088a0db1f7fddf3a79d799abc14bae2')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"

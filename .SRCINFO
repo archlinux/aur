@@ -1,6 +1,6 @@
 pkgbase = python-spectral-cube
 	pkgdesc = Library for reading and analyzing astrophysical spectral data cubes
-	pkgver = 0.6.3
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = http://spectral-cube.readthedocs.io
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-spectral-cube
 	makedepends = python-dask
 	makedepends = python-radio_beam
 	makedepends = python-casa-formats-io
-	source = https://files.pythonhosted.org/packages/source/s/spectral-cube/spectral-cube-0.6.3.tar.gz
-	md5sums = e8afe3ec03aefb22cc03e5ff091851e0
+	source = https://files.pythonhosted.org/packages/source/s/spectral-cube/spectral-cube-0.6.5.tar.gz
+	md5sums = 9088a0db1f7fddf3a79d799abc14bae2
 
 pkgname = python-spectral-cube
 	depends = python-numpy>=1.8
