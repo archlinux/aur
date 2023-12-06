@@ -5,9 +5,9 @@
 
 pkgname=minio-client
 pkgver=2023.12.02
-_timever=T02-03-28Z
+_timever=T11-24-10Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
 arch=('x86_64')
 url='https://minio.io/downloads/#minio-client'
