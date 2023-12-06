@@ -1,13 +1,13 @@
 [Desktop Entry]
 Type=Application
-Name=Mullvad Browser
+Name=Mullvad Browser Alpha
 Comment=Mullvad Browser is +1 for privacy and −1 for mass surveillance
 Categories=Network;WebBrowser;Security;
 Exec=mullvad-browser %u
 Icon=mullvad-browser
 Terminal=false
 StartupNotify=true
-StartupWMClass=Mullvad Browser
+StartupWMClass=Mullvad Browser Alpha
 Actions=new-window;new-private-window;
 MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
 
