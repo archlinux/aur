@@ -32,7 +32,7 @@ post_install() {
   echo  "sudo systemctl enable --now wgui.{service,path}"
   echo
   noteb "Optional: Also you could create /etc/wireguard-ui/environment.conf file."
-  echo  "More info: https://github.com/ngoduykhanh/wireguard-ui#environment-variables" 
+  echo  "More info: https://github.com/ngoduykhanh/wireguard-ui#environment-variables"
   echo
 }
 

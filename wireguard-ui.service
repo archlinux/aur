@@ -1,6 +1,6 @@
 [Unit]
 Description=A web user interface to manage your WireGuard setup
-Documentation=https://github.com/ngoduykhanh/wireguard-ui
+Documentation=https://github.com/wireguard-ui/wireguard-ui
 ConditionPathExists=/var/lib/wireguard-ui
 After=network.target
 
