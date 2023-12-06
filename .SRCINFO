@@ -1,0 +1,30 @@
+pkgbase = glextrusion
+	pkgdesc = Library for extruding shapes in 3D space
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = http://www.linas.org/gle/
+	arch = x86_64
+	license = Custom
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	depends = libgl
+	depends = glu
+	depends = libx11
+	depends = libxext
+	depends = libxmu
+	depends = libxt
+	source = gle-3.1.2.tar.gz::https://github.com/linas/glextrusion/archive/refs/tags/gle-3.1.2.tar.gz
+	b2sums = 5236e002318f47a353ab12a9ec74d49d86e052f27780757122a986c7fb5752e93ded5d8d0d98242a12242dcb0ed678e9846a8c464d18b1bd5d1cac362748c109
+
+pkgname = glextrusion
+	license = Custom
+	license = GPL
+
+pkgname = glextrusion-doc
+	pkgdesc = Library for extruding shapes in 3D space (documentation)
+	license = Artistic
+	depends = 
