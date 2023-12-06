@@ -1,7 +1,7 @@
 pkgbase = python-scrape-schema-recipe
 	pkgdesc = Scrapes food recipes from HTML into Python dictionaries
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://github.com/micahcochran/scrape-schema-recipe
 	arch = any
 	license = Apache
@@ -12,7 +12,7 @@ pkgbase = python-scrape-schema-recipe
 	depends = python-isodate
 	depends = python-requests
 	depends = python-types-requests
-	source = python-scrape-schema-recipe-0.2.0.tar.gz::https://github.com/micahcochran/scrape-schema-recipe/archive/v0.2.0.tar.gz
-	sha256sums = ecc253c82a9346c66e77005680a3f746a2feca7292bbcab0c4357b2757a0d1bf
+	source = python-scrape-schema-recipe-0.2.2.tar.gz::https://github.com/micahcochran/scrape-schema-recipe/archive/v0.2.2.tar.gz
+	sha256sums = aa4004fedb52019d9d627944b03966412b3dda8a96df06c0715aa0889af07216
 
 pkgname = python-scrape-schema-recipe
