@@ -1,0 +1,17 @@
+pkgbase = yjson-git
+	pkgdesc = YJson
+	pkgver = r73.a38e605
+	pkgrel = 1
+	url = https://github.com/yjmthu/YJson
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt6-tools
+	provides = yjson
+	conflicts = yjson
+	source = yjson-git::git+https://github.com/yjmthu/YJson.git
+	sha256sums = SKIP
+
+pkgname = yjson-git
