@@ -9,7 +9,6 @@ pkgbase = dune-mmesh
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scikit-build
-	makedepends = python-ninja
 	depends = dune-grid>=2.9.0
 	depends = cgal
 	optdepends = vc: C++ Vectorization library
