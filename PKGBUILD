@@ -1,7 +1,7 @@
 # Maintainer: Remi Gacogne <rgacogne(at)archlinux(dot)org>
 _pkgbase=lkrg
 pkgname=lkrg-dkms-git
-pkgver=r484.dfb60a6
+pkgver=r539.3760e0e
 pkgrel=1
 pkgdesc='Linux Kernel Runtime Guard (DKMS)'
 arch=('any')
@@ -15,6 +15,7 @@ makedepends=('git')
 depends=('dkms')
 provides=('lkrg-dkms')
 conflicts=('lkrg-dkms')
+backup=('etc/sysctl.d/01-lkrg.conf')
 
 pkgver() {
   cd "$pkgname"
@@ -37,4 +38,10 @@ package() {
 
   # Copy OUR dkms.conf
   install -Dm644 "${pkgname}/dkms.conf" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+
+  # Install the default configuration file
+  install -Dm644 "${srcdir}/${pkgname}/scripts/bootup/lkrg.conf" "${pkgdir}/etc/sysctl.d/01-lkrg.conf"
+
+  # Install the systemd service file
+  install -Dm 644 "${srcdir}/${pkgname}/scripts/bootup/systemd/lkrg.service" "${pkgdir}/etc/systemd/system/lkrg.service"
 }

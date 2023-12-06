@@ -1,6 +1,6 @@
 pkgbase = lkrg-dkms-git
 	pkgdesc = Linux Kernel Runtime Guard (DKMS)
-	pkgver = r484.dfb60a6
+	pkgver = r539.3760e0e
 	pkgrel = 1
 	url = https://www.openwall.com/lkrg/
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = lkrg-dkms-git
 	depends = dkms
 	provides = lkrg-dkms
 	conflicts = lkrg-dkms
+	backup = etc/sysctl.d/01-lkrg.conf
 	source = lkrg-dkms-git::git+https://github.com/openwall/lkrg/
 	source = dkms.conf
 	sha512sums = SKIP
