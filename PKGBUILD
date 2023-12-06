@@ -2,7 +2,7 @@
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2023.4
+pkgver=2023.6
 pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
@@ -14,13 +14,13 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 options=('!lto')
 install="${pkgname%-*}.install"
-_tag=a64b10fdd4c9fefa6d25fd2a94c0ea6cbc7eebc0  # tags/2023.4^0
-_commit=29a4c7205e78c651fcd1b8c3a55181c0d86a50d3
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
+_tag=c2f7f75dee35c050540b90c6ebc9084969b1a93b  # tags/2023.6^0
+_commit=d5772339cee9c1a0d7671968746f02499b78e245
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}"  # signed by Oskar Nyberg (raksooo), public key not uploaded yet
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed")
 sha256sums=('SKIP'
             'SKIP')
-validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87' # Linus Färnstrand (code signing key) <linus@mullvad.net>
+validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
               '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
               )
@@ -31,7 +31,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/mullvadvpn-app"
+  cd mullvadvpn-app
   git submodule init
   git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
   git -c protocol.file.allow=always submodule update
@@ -48,9 +48,10 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/mullvadvpn-app"
+  cd mullvadvpn-app
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   local RUSTC_VERSION=$(rustc --version)
   local PRODUCT_VERSION=$(cargo run -q --bin mullvad-version)
 
@@ -71,8 +72,16 @@ build() {
   go clean -modcache
 
   echo "Building Rust code in release mode using ${RUSTC_VERSION}..."
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+
+  cargo_crates_to_build=(
+    -p mullvad-daemon --bin mullvad-daemon
+    -p mullvad-cli --bin mullvad
+    -p mullvad-setup --bin mullvad-setup
+    -p mullvad-problem-report --bin mullvad-problem-report
+    -p talpid-openvpn-plugin --lib
+    -p mullvad-exclude --bin mullvad-exclude
+  )
+  cargo build --frozen --release "${cargo_crates_to_build[@]}"
 
   echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
   mkdir -p build/shell-completions
@@ -87,7 +96,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/mullvadvpn-app"
+  cd mullvadvpn-app
 
   # Install binaries
   install -Dm755 target/release/mullvad{-problem-report,-setup} -t \
