@@ -1,6 +1,6 @@
 pkgbase = r-report
 	pkgdesc = Automated Reporting of Results and Statistical Models
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/easystats/report
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-report
 	optdepends = r-rstanarm
 	optdepends = r-survival
 	optdepends = r-testthat
-	source = report_0.5.7.tar.gz::https://github.com/easystats/report/archive/refs/tags/v0.5.7.tar.gz
-	sha256sums = 5e793c23d6d37b4732aa7c37ea4ff56e1be883ce3bd48b1ea3a45c110239efd3
+	source = report_0.5.8.tar.gz::https://github.com/easystats/report/archive/refs/tags/v0.5.8.tar.gz
+	sha256sums = 35f87545df8483be9a17f2dc5c018b49a72f58848eaacf7d5110525bb5076c26
 
 pkgname = r-report
