@@ -1,0 +1,21 @@
+pkgbase = hise
+	pkgdesc = Open source toolkit for building virtual instruments and audio effects
+	pkgver = 3.6.2
+	pkgrel = 1
+	url = https://hise.dev
+	arch = i686
+	arch = x86_64
+	license = GPLv3+
+	makedepends = juce
+	depends = faust
+	depends = jack
+	source = https://github.com/christophhart/HISE/archive/refs/tags/3.6.2.tar.gz
+	source = 0001-Faust-fix-missing-header.patch
+	source = 0002-HISE-Standalone.jucer-enable-Faust-for-LinuxMakefile.patch
+	source = 0003-Settings-set-default-HISE-Path-to-install-location.patch
+	sha256sums = 8588af4d43178184920a9578b5eaf5887e6e98617c2b5385f98ed43f81fa9689
+	sha256sums = 52077d6630d10fc34ae28c287db357d88d1299ebcd8eb838eb4a865f857c6736
+	sha256sums = 8ffb216fd65c4bd04e5775e219f4b548e0f0ccb8ee5887ef08e49c787129404a
+	sha256sums = 20918a218034f2c37ba1bfef5b5d1eed1fb7a0aa1022c9ce49ad8443a201f83c
+
+pkgname = hise

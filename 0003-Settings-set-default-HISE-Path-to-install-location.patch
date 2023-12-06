@@ -1,0 +1,24 @@
+From 8e50a23ce84ba6a270d7c90d1228dad512c43f30 Mon Sep 17 00:00:00 2001
+From: Roman Sommer <roman@resonant-bytes.de>
+Date: Wed, 6 Dec 2023 20:17:07 +0100
+Subject: [PATCH 3/3] Settings: set default HISE Path to install location
+
+---
+ hi_core/hi_core/HiseSettings.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hi_core/hi_core/HiseSettings.cpp b/hi_core/hi_core/HiseSettings.cpp
+index 9e2d8eb5c..4fd2d2fe4 100644
+--- a/hi_core/hi_core/HiseSettings.cpp
++++ b/hi_core/hi_core/HiseSettings.cpp
+@@ -1132,6 +1132,7 @@ var HiseSettings::Data::getDefaultSetting(const Identifier& id) const
+ 	else if (id == Scripting::EnableMousePositioning) return "Yes";
+ 	else if (id == Scripting::CompileTimeout)		return 5.0;
+ 	else if (id == Scripting::SaveConnectedFilesOnCompile) return "No";
++	else if (id == Compiler::HisePath)              return "/usr/share/hise/src";
+ #if HISE_USE_VS2022
+ 	else if (id == Compiler::VisualStudioVersion)	return "Visual Studio 2022";
+ #else
+-- 
+2.43.0
+

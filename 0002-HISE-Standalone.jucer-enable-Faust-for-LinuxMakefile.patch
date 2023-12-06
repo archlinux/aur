@@ -1,0 +1,29 @@
+From 085a5ee2e619014709a6eac498c4b9ae29183765 Mon Sep 17 00:00:00 2001
+From: Roman Sommer <roman@resonant-bytes.de>
+Date: Wed, 6 Dec 2023 17:28:36 +0100
+Subject: [PATCH 2/2] HISE Standalone.jucer: enable Faust for LinuxMakefile
+
+---
+ projects/standalone/HISE Standalone.jucer | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/projects/standalone/HISE Standalone.jucer b/projects/standalone/HISE Standalone.jucer
+index b3af7a9bd..cccaf7a4c 100644
+--- a/projects/standalone/HISE Standalone.jucer	
++++ b/projects/standalone/HISE Standalone.jucer	
+@@ -256,9 +256,10 @@
+         <MODULEPATH id="hi_faust_types" path="../../"/>
+       </MODULEPATHS>
+     </VS2022>
+-    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraDefs="USE_IPP=0&#10;HI_ENABLE_EXPANSION_EDITING=1&#10;HISE_ENABLE_EXPANSIONS=1&#10;HISE_SCRIPT_SERVER_TIMEOUT=20000&#10;"
++    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraDefs="USE_IPP=0&#10;HI_ENABLE_EXPANSION_EDITING=1&#10;HISE_ENABLE_EXPANSIONS=1&#10;HISE_SCRIPT_SERVER_TIMEOUT=20000&#10;HISE_INCLUDE_FAUST=1&#10;HISE_FAUST_USE_LLVM_JIT=1&#10;HISE_INCLUDE_FAUST_JIT=1"
+                 smallIcon="bfBEgJ" bigIcon="bfBEgJ" linuxExtraPkgConfig="x11 xinerama xext"
+-                extraLinkerFlags="-no-pie&#10;" extraCompilerFlags="-fpermissive">
++                extraLinkerFlags="-no-pie&#10;" extraCompilerFlags="-fpermissive"
++                externalLibraries="faust">
+       <CONFIGURATIONS>
+         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="HISE Standalone"/>
+         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="HISE Standalone"
+-- 
+2.43.0
+

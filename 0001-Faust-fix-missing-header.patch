@@ -1,0 +1,24 @@
+From 5d9fd01b5c2fa07616e15d92fe291e723f3e0346 Mon Sep 17 00:00:00 2001
+From: Roman Sommer <roman@resonant-bytes.de>
+Date: Wed, 6 Dec 2023 17:28:14 +0100
+Subject: [PATCH 1/2] Faust: fix missing header
+
+---
+ hi_faust_types/faust_wrap/dsp/dsp.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hi_faust_types/faust_wrap/dsp/dsp.h b/hi_faust_types/faust_wrap/dsp/dsp.h
+index b1273f9f2..c0f8f4c68 100644
+--- a/hi_faust_types/faust_wrap/dsp/dsp.h
++++ b/hi_faust_types/faust_wrap/dsp/dsp.h
+@@ -27,6 +27,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include <faust/export.h>
+ 
+-- 
+2.43.0
+
