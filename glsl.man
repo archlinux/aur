@@ -1,0 +1,148 @@
+.nh
+.TH Usage Instructions (GLSL / MPV) (v4.x)
+.SH Installing and Setting Up Anime4K for Linux-based Distributions (and other Unix-like OS)
+.RS
+.IP "  1." 5
+Install \fBmpv\fR from repositories of your distribution, some of the
+common ones are mentioned here
+.SS Fedora Silverblue
+.RS
+.IP "  1." 5
+Install the RPM-Fusion "free" repository, if not already
+installed, paste in the command below\fBsudo rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm\fR
+.IP "  2." 5
+Reboot and install \fBmpv\fR
+.IP "  3." 5
+Reboot and continue to step 2
+
+.RE
+
+.SS Fedora
+.EX
+sudo dnf install mpv
+
+.EE
+
+.SS Ubuntu and Derivatives
+.EX
+sudo apt install mpv
+
+.EE
+
+.SS Arch and Derivatives
+.EX
+sudo pacman -S mpv
+
+.EE
+
+.SS Gentoo (Add USE Flags as mentioned here
+\[la]https://wiki.gentoo.org/wiki/Mpv#USE_flags\[ra])
+.EX
+sudo emerge --ask media-video/mpv` 
+
+.EE
+
+
+.RE
+
+.RS
+.IP \(bu 2
+Note: make sure to install a version of 
+\[la]https://mpv.io/\[ra]
+that was released after June 2021, older versions might not
+work
+\[la]https://github.com/bloc97/Anime4K/issues/134\[ra]\&.
+
+.RE
+
+.RS
+.IP "  1." 5
+Clone the repo using
+\fBgit clone https://github.com/bloc97/Anime4K.git\fR, or download the
+template files and extract them.
+.RS
+.IP \(bu 2
+\fBOptimized shaders for lower-end GPU:\fP
+.br
+\fI(Eg. GTX 980, GTX 1060, RX 570)\fP
+.RS
+.IP \(bu 2
+Download the template files
+here
+\[la]https://github.com/Tama47/Anime4K/releases/download/v4.0.1/GLSL_Mac_Linux_Low\-end.zip\[ra]\&.
+.IP \(bu 2
+
+Or click here to install manually.
+
+Copy & Paste the code from input.conf and mpv.conf in your input.conf and mpv.conf file.
+Then download and extract the shaders from releases and put them in the shaders folder.
+
+.RE
+
+ 
+.IP \(bu 2
+\fBOptimized shaders for higher-end GPU:\fP
+.br
+\fI(Eg. GTX 1080, RTX 2070, RTX 3060, RX 590, Vega 56, 5700XT,
+6600XT)\fP
+.RS
+.IP \(bu 2
+Download the template files
+here
+\[la]https://github.com/Tama47/Anime4K/releases/download/v4.0.1/GLSL_Mac_Linux_High\-end.zip\[ra]\&.
+.IP \(bu 2
+
+Or click here to install manually.
+
+Copy & Paste the code from input.conf and mpv.conf in your input.conf and mpv.conf file.
+Then download and extract the shaders from releases and put them in the shaders folder.
+
+.RE
+
+ 
+
+.RE
+
+.IP "  2." 5
+Navigate to \fB~/.config/mpv\fR and move the \fBinput.conf\fR, \fBmpv.conf\fR
+and the \fBshaders\fR folder into the \fBmpv\fR directory.
+\fBmv path/to/stuff ~/.config/mpv\fR
+
+.RE
+
+.ti 0
+\l'\n(.lu'
+
+.SH Quick Usage Instructions
+.RS
+.IP "  1." 5
+Anime4K has 3 major modes: A, B, and C. Each mode is optimized for a
+different class of anime degradations.
+.RS
+.IP \(bu 2
+Mode A is automatically enabled, if you use our template (this can
+be change in \fBmpv.conf\fR).
+
+.RE
+
+.IP "  2." 5
+To enable each mode manually:
+.RS
+.IP \(bu 2
+Press \fBCTRL+1\fP to enable Mode A (Optimized for 1080p Anime).
+.IP \(bu 2
+Press \fBCTRL+2\fP to enable Mode B (Optimized for 720p Anime).
+.IP \(bu 2
+Press \fBCTRL+3\fP to enable Mode C (Optimized for 480p Anime).
+.IP \(bu 2
+Press \fBCTRL+0\fP to clear all shaders (Disable Anime4K).
+
+.RE
+
+.IP "  3." 5
+For more explanations and customization options, see the Advanced
+Usage
+Instructions
+\[la]GLSL_Instructions_Advanced.md#advanced\-usage\-instructions\-glsl\-\-mpv\-v4x\[ra]\&.
+
+.RE

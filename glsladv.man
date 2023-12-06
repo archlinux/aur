@@ -1,0 +1,263 @@
+.nh
+.TH Advanced Usage Instructions (GLSL / MPV) (v4.x)
+.SH Modes
+.PP
+Now, Anime4K has 3 major modes, as the small CNN networks cannot learn effectively every type of distribution shift and degradation seen in the wild. Human judgement will serve (for now) as the stopgap solution. Usually the correct mode is the one that looks best.
+
+.PP
+The easiest way is to first visually inspect each mode in the A-B-C order. Mode A has the most visible artifacts of the three modes if used incorrectly. B and C can be harder to distinguish for lower resolution anime.
+
+.PP
+If you want increased perceptual quality, use the corresponding secondary mode.
+
+.TS
+allbox;
+l l 
+l l .
+\fBPrimary Mode\fP	\fBCorresponding Secondary Mode\fP
+A	A+A
+B	B+B
+C	C+A
+.TE
+
+.PP
+Here's what each mode is optimized for and what it does:
+
+.TS
+allbox;
+l l l l 
+l l l l .
+\fBModes\fP	\fBOptimized for?\fP	\fBPositive effects\fP	\fBNegative effects (If used incorrectly)\fP
+A	T{
+Most 1080p anime.
+Some older 720p anime.
+Most old SD anime.
+(High amounts of blur)
+(A lot of resampling artifacts)
+(Smearing due to compression)
+T}	T{
+High perceptual quality.
+Reduces compression artifacts.
+Reconstructs most degraded lines.
+Reduces large amounts of blur.
+Reduces noise.
+T}	T{
+Can amplify ringing if already present.
+Can amplify banding if already present.
+Strong denoising might blur textures.
+T}
+B	T{
+Some 1080p anime.
+Most 720p anime.
+1080p->720p downscaled anime.
+(Low amounts of blur)
+(Some resampling artifacts)
+(Ringing due to downsampling)
+T}	T{
+Reduces compression artifacts.
+Reconstructs some degraded lines.
+Reduces some blur.
+Reduces noise.
+Reduces ringing.
+Reduces aliasing.
+T}	T{
+Some artifacts might not be removed.
+Some lines might still be blurry.
+Strong denoising might blur textures.
+T}
+C	T{
+1080p->480p downscaled anime.
+Very rarely, 1080p animated movies.
+Images with no degradation.
+Wallpapers Pixiv art.
+T}	T{
+Highest PSNR.
+Reduces noise.
+T}	T{
+Low perceptual quality.
+Can amplify ringing if already present.
+Can amplify resampling artifacts.
+T}	T{
+A+A*	Same as A
+T{	T{
+Highest perceptual quality.
+Reconstructs almost all degraded lines.
+Same positive effects from mode A.
+T}	T{
+Can cause severe ringing.
+Can cause banding.
+Can cause aliasing.
+Same negative effects from mode A.
+Slower than mode A.
+T}
+B+B*	T{
+Same as B
+T}	T{
+High perceptual quality.
+Same positive effects from mode B.
+T}	T{
+Same negative effects from mode B.
+Slower than mode B.
+T}
+C+A*	T{
+Same as C
+T}	T{
+Slightly higher perceptual quality.
+Same positive effects from mode C.
+T}	T{
+Same negative effects from mode C.
+Slower than mode C.
+T}
+.TE
+
+.PP
+*These modes should only be used on upscaling ratios of x2 or higher. If you have a 1080p screen, using mode A on 1080p anime will improve image quality, but mode A+A will most likely oversharpen and degrade the image.
+
+.SH Advanced Customization
+.PP
+Not satisfied from simply using the default options? Curious about unsupported/weird modes such as B+A, A+B or B+A+A ? This quick guide will get you started on customizing your own restoration pipeline.
+
+.PP
+First, the basics.
+
+.RS
+.IP \(bu 2
+All the shaders can be used standalone or in combination with any other shaders.
+.IP \(bu 2
+You can only use each shader file once. Using the same file two or more times causes buggy behaviour and loss of performance. Either use a different variant or copy and rename the duplicate shaders.
+.IP \(bu 2
+The shaders process the image in the same order as the filename order given in \fBinput.conf\fR\&. One exception is \fBClamp_Highlights\fR, explained in the table below.
+.IP \(bu 2
+You are free to choose the CNN variant (S, M, L, VL, UL) for better speed or quality. Each step in size for CNN shaders doubles the processing time. For example, if the M version takes 5ms to run, the L version should take approximately 10ms to run, 20ms for VL and so on.
+.IP \(bu 2
+Non-CNN shaders are significantly faster but might be of lower quality.
+
+.RE
+
+.PP
+Quick explanation of each shader type:
+
+.TS
+allbox;
+l l 
+l l .
+\fBShader Type (in order of importance)\fP	\fBEffect\fP
+Restore	T{
+The shader that makes Anime4K different from other upscalers. Restores image, best used before upscaling. Removes compression artifacts, blur, ringing, etc. \fBRestore\fR is more optimized for upsampling artifacts and blur, while \fBRestore_Soft\fR is more optimized for downsampling artifacts and aliasing.
+T}
+Upscale	T{
+Upscales an image by a factor of x2, assumes image contains no degradation.
+T}
+Upscale_Denoise	T{
+Upscales an image by a factor of x2 and denoises it with no GPU performance penality.
+T}
+Clamp_Highlights	T{
+Computes and saves image statistics at the location it is placed in the shader stage, then clamps the image highlights at the end after all the shaders to prevent overshoot and reduce ringing.
+T}
+Darken	T{
+Darkens lines in image. As what constitutes a line is ambiguous, might darken other stuff. Use according to personal taste.
+T}
+Thin	T{
+Makes lines thinner in image. As what constitutes a line is ambiguous, might thin other stuff. Use according to personal taste.
+T}
+Denoise	T{
+Applies a denoising filter to the image.
+T}
+Deblur	T{
+Applies a deblur filter to the image. Sharpens details without overshoot or ringing.
+T}
+AutoDownscalePre_x4	T{
+Downscales an image after a first upscaling step, so that the second x2 upscaling step exactly matches screen size. This improves performance without noticeably impacting quality as you will not be working with images larger than the screen size. Should be placed between two Upscale shaders. Without this shader, the default behaviour is to downscale to the screen size after running all shaders.
+T}
+AutoDownscalePre_x2	T{
+Downscales an image after a first upscaling step to match screen size. This improves performance without noticeably impacting quality as you will not be working with images larger than the screen size. Should be placed after the first Upscale shader. Without this shader, the default behaviour is to downscale to the screen size after running all shaders.
+T}
+.TE
+
+.ti 0
+\l'\n(.lu'
+
+.PP
+Overview of default modes:
+
+.TS
+allbox;
+l l 
+l l .
+\fBMode\fP	\fBShaders\fP
+A	\fBRestore -> Upscale -> Upscale\fR
+B	\fBRestore_Soft -> Upscale -> Upscale\fR
+C	\fBUpscale_Denoise -> Upscale\fR
+A+A	\fBRestore -> Upscale -> Restore -> Upscale\fR
+B+B	\fBRestore_Soft -> Upscale -> Restore_Soft -> Upscale\fR
+C+A	\fBUpscale_Denoise -> Restore -> Upscale\fR
+.TE
+
+.PP
+\fINote: Clamp_Highlights and AutoDownscalePre were removed from table for clarity.\fP
+
+.ti 0
+\l'\n(.lu'
+
+.PP
+How the modes are defined:
+
+.RS
+.IP \(bu 2
+Mode A is defined initially as: \fBRestore -> Upscale\fR
+.IP \(bu 2
+Mode B is defined initially as: \fBRestore_Soft -> Upscale\fR
+.IP \(bu 2
+Mode C is defined initially as: \fBUpscale\fR
+.IP \(bu 2
+If the mode does not start with a \fBRestore\fR shader, it must start with a \fBUpscale_Denoise\fR or \fBDenoise\fR shader, as almost every video compression algorithm is lossy.
+.IP \(bu 2
+All modes have to add upscale shaders until the entire shader pipeline upscales at least 4x. A reasonable assumption is the smallest reasonable video size being 480p and the largest screen being 4K, upscaling at 4x is close to the 4.5x of 480p->4K.
+____
+With the definitions above, we can see for example, what C+A+B is.
+
+.RE
+
+.RS
+.IP "  1." 5
+Initial definition: \fBC (Upscale) -> A (Restore -> Upscale) -> B (Restore_Soft -> Upscale)\fR
+.IP "  2." 5
+All modes have to start with restore/denoise: \fBC (Upscale_Denoise) -> A (Restore -> Upscale) -> B (Restore_Soft -> Upscale)\fR
+.IP "  3." 5
+Upscale ratio of 4x is already met.
+.IP "  4." 5
+C+A+B is: \fBUpscale_Denoise -> Restore -> Upscale -> Restore_Soft -> Upscale\fR
+.IP "  5." 5
+Shader variants (S/M/L/VL/UL) can be chosen at will.
+
+.RE
+
+.SH Best Practices
+.PP
+It is recommended to always include \fBClamp_Highlights\fR at the beginning to prevent ringing in some anime, but removing it will slightly improve speed.
+
+.PP
+Adding a \fBRestore\fR shader after an upscaling step improves perceptual quality, but makes processing slower and might introduce artifacts.
+
+.PP
+Shaders applied after a x2 upscaling step will take four times the processing time. For example, if a shader takes 10ms to run when placed before a upscaler, it will need 40ms if placed after the upscaler. This can be counteracted by using a smaller CNN variant two steps below. (eg. S instead of L)
+
+.PP
+Artifacts introduced by lower quality shaders (eg. M or S variants) usually are not noticeable when working at very high resolutions. This advantage can be used to reduce GPU fan noise/heat and power use if you do not mind slightly lower image quality.
+
+.PP
+The target for 24fps video is usually ~41ms. Frame drops will appear if the GPU cannot keep up. If that happens, use lower quality/faster shader variants.
+Use the mpv profiler (press Shift+I and then 2 on the keyboard's top row) to verify whether your GPU can keep up.
+
+.TS
+allbox;
+l l 
+l l .
+\fBVideo Framerate\fP	\fBMaximum time (ms)\fP
+24	41
+30	33
+60	16
+.TE
+
+.ti 0
+\l'\n(.lu'
