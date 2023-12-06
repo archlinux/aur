@@ -1,6 +1,6 @@
 pkgbase = gashell
 	pkgdesc = A bash script that generates and securely manages/stores Google Authenticator codes.
-	pkgver = 0.921
+	pkgver = 0.922
 	pkgrel = 1
 	url = https://github.com/DDoctorzeus/GAShell
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gashell
 	depends = zbar
 	depends = curl
 	provides = gashell
-	source = https://github.com/DDoctorzeus/GAShell/archive/0.921.tar.gz
-	sha256sums = 5e7b77e2576b82e56e73d8741ac7173e1e78b44fa9b414bb76ff2016ea4c0193
+	source = https://github.com/DDoctorzeus/GAShell/archive/0.922.tar.gz
+	sha256sums = 365c3be5e839153cf9be870e04e36b67f8a482136de208b4b05b545cbfa33cac
 
 pkgname = gashell
