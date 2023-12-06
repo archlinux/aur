@@ -1,0 +1,18 @@
+pkgbase = python-digiham-git
+	pkgdesc = Python bindings for the digiham library.
+	pkgver = 0.6.2.r7.g92bd79d
+	pkgrel = 1
+	url = https://github.com/jketterl/pydigiham
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = digiham
+	depends = python
+	depends = gcc-libs
+	provides = python-digiham
+	conflicts = python-digiham
+	source = python-digiham-git::git+https://github.com/jketterl/pydigiham.git#branch=develop
+	md5sums = SKIP
+
+pkgname = python-digiham-git
