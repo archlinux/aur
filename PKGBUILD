@@ -15,12 +15,12 @@ replaces=()
 depends=(vim)
 makedepends=(git)
 optdepends=()
-source=("${pkgname%-git}::git+${url}.git")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 options=('!strip')
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}/"
+    cd "${srcdir}/${pkgname}/"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -28,7 +28,7 @@ package() {
     _installpath="${pkgdir}/usr/share/vim/vimfiles"
     install -dm755 ${_installpath}
 
-    cd "${srcdir}"/${pkgname%-git}
+    cd "${srcdir}"/${pkgname}
     cp -r  doc plugin "${_installpath}"
 
 #     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
