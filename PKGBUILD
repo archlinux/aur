@@ -58,7 +58,7 @@ options=(!lto)
 source=(
     git+https://github.com/PCSX2/pcsx2.git
     git+https://github.com/PCSX2/pcsx2_patches.git
-    xz-pcsx2::git+https://github.com/tukaani-project/xz.git
+    git+https://github.com/tukaani-project/xz.git
     git+https://github.com/google/googletest.git
     git+https://github.com/fmtlib/fmt.git
     git+https://github.com/biojppm/rapidyaml.git
@@ -79,7 +79,7 @@ prepare() {
     cd pcsx2
     local submodule
     _pcsx2_submodules=(
-        xz-pcsx2::3rdparty/xz/xz
+        xz::3rdparty/xz/xz
         googletest::3rdparty/gtest
         fmt::3rdparty/fmt/fmt
         libwebp::3rdparty/libwebp/libwebp
