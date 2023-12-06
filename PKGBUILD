@@ -2,27 +2,23 @@
 
 pkgname=senpai-irc-git
 _pkgname=senpai-irc
-pkgver=r220.6be7183
+pkgver=0.3.0.r1.gea86a2e
 pkgrel=1
-pkgdesc='TUI IRC Client Created by ~taiite'
-url=https://ellidri.org/senpai/
+pkgdesc='A modern terminal IRC client'
+url=https://git.sr.ht/~delthas/senpai/
 arch=(x86_64 aarch64)
 license=('ISC')
 provides=("senpai-irc")
-conflicts=("senpai-irc")
+conflicts=("senpai")
 makedepends=('git' 'go' 'scdoc')
 source=(
-  "${_pkgname}::git+https://git.sr.ht/~taiite/senpai"
+	"${_pkgname}::git+https://git.sr.ht/~delthas/senpai"
 )
 sha512sums=('SKIP')
 
 pkgver () {
-	cd "${_pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	cd "$_pkgname"
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare () {
@@ -46,7 +42,7 @@ package () {
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/man/man1"
 	mkdir -p "${pkgdir}/usr/share/man/man5"
-	cp "${srcdir}/${_pkgname}/senpai" "${pkgdir}/usr/bin/senpai-irc"
+	cp "${srcdir}/${_pkgname}/senpai" "${pkgdir}/usr/bin/senpai"
 	cp "${srcdir}/${_pkgname}/doc/senpai.1" "${pkgdir}/usr/share/man/man1/"
 	cp "${srcdir}/${_pkgname}/doc/senpai.5" "${pkgdir}/usr/share/man/man5/"
 }
