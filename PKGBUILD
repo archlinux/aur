@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://${pkgname}.org"
 license=(GPL3)
 depends=("dune-grid>=${_dunever}" "dune-istl>=${_dunever}" "dune-localfunctions>=${_dunever}")
-makedepends=(doxygen graphviz python-scikit-build python-ninja)
+makedepends=(doxygen graphviz python-scikit-build)
 optdepends=('dune-alugrid: for grid manager ALUGrid support'
   'dune-foamgrid: for grid manager FoamGrids support'
   'dune-functions: for functions spaces support'
