@@ -1,15 +1,16 @@
 pkgbase = dg100ctl
 	pkgdesc = Program to configure the GlobalSat DG-100 GPS data logger
 	pkgver = 0.1
-	pkgrel = 2
-	url = http://xpg.dk/projects/dg100ctl
+	pkgrel = 3
+	url = http://launchpad.net/dg100ctl
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	depends = qt4
+	depends = qt6-base
 	source = http://launchpad.net/dg100ctl/trunk/0.1/+download/dg100ctl-0.1.tar.bz2
+	source = qt6.patch
 	md5sums = 07008d7366148c2e1811ca20f8ccd9c4
+	md5sums = 81195bd97ed5d549636e2a463c414487
 
 pkgname = dg100ctl
-

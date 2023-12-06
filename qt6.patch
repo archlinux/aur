@@ -1,0 +1,66 @@
+diff --unified --recursive package.ori/dg100ctl-0.1/qt-dg100ctl/CMakeLists.txt package.new/dg100ctl-0.1/qt-dg100ctl/CMakeLists.txt
+--- package.ori/dg100ctl-0.1/qt-dg100ctl/CMakeLists.txt	2009-01-14 21:34:57.000000000 +0100
++++ package.new/dg100ctl-0.1/qt-dg100ctl/CMakeLists.txt	2023-12-06 11:57:15.812853462 +0100
+@@ -1,6 +1,8 @@
+-FIND_PACKAGE(Qt4)
+-INCLUDE(${QT_USE_FILE})
+-INCLUDE(UseQt4)
++set(CMAKE_AUTOUIC ON)
++set(CMAKE_AUTOMOC ON)
++FIND_PACKAGE(Qt6 COMPONENTS Widgets)
++#INCLUDE(${QT_USE_FILE})
++#INCLUDE(UseQt4)
+ 
+ include_directories(
+   ${DG100CTL_SOURCE_DIR}/shared
+@@ -14,13 +16,13 @@
+ 
+ add_definitions(${QT_DEFINITIONS})
+ 
+-qt4_wrap_ui(qt-dg100ctl-ui 
+-  ConfigurationDialog.ui
+-  DG100Dialog.ui)
+-
+-qt4_wrap_cpp(qt-dg100ctl-moc 
+-  ConfigurationDialog.hpp
+-  DG100Dialog.hpp)
++#qt4_wrap_ui(qt-dg100ctl-ui 
++#  ConfigurationDialog.ui
++#  DG100Dialog.ui)
++
++#qt4_wrap_cpp(qt-dg100ctl-moc 
++#  ConfigurationDialog.hpp
++#  DG100Dialog.hpp)
+ 
+ #qt4_add_translation( qt-dg100ctl-qm
+ #  qt-dg100ctl_dk.ts )
+@@ -39,7 +41,7 @@
+ #add_custom_target( qt-dg100ctl-translations DEPENDS ${qt-dg100ctl-qm} )
+ #add_dependencies( qt-dg100ctl qt-dg100ctl-translations )
+ 
+-target_link_libraries(qt-dg100ctl dg100-comm ${QT_LIBRARIES})
++target_link_libraries(qt-dg100ctl dg100-comm Qt${qt_version}::Widgets)
+ install(TARGETS qt-dg100ctl
+   RUNTIME DESTINATION bin)
+ install(FILES qt-dg100ctl.desktop 
+diff --unified --recursive package.ori/dg100ctl-0.1/qt-dg100ctl/DG100Dialog.cpp package.new/dg100ctl-0.1/qt-dg100ctl/DG100Dialog.cpp
+--- package.ori/dg100ctl-0.1/qt-dg100ctl/DG100Dialog.cpp	2009-01-14 21:34:57.000000000 +0100
++++ package.new/dg100ctl-0.1/qt-dg100ctl/DG100Dialog.cpp	2023-12-06 11:57:46.549215836 +0100
+@@ -45,7 +45,7 @@
+ void
+ DG100Dialog::getSettings()
+ {
+-  QByteArray dev = this->deviceName.toAscii();
++  QByteArray dev = this->deviceName.toLatin1();
+   const char *deviceName = dev.constData();
+ 
+   statusLabel->setText( tr("Retrieving settings from device") );
+@@ -102,7 +102,7 @@
+ void
+ DG100Dialog::setSettings()
+ {
+-  QByteArray dev = this->deviceName.toAscii();
++  QByteArray dev = this->deviceName.toLatin1();
+   const char *deviceName = dev.constData();
+ 
+   statusLabel->setText( tr("Saving settings to device") );
