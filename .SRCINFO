@@ -1,14 +1,15 @@
 pkgbase = hex-music-player
 	pkgdesc = Music client for Plex Media Server
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/meisandrew/hex-music-player
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = yarn
 	makedepends = npm
-	makedepends = nodejs>=16
+	makedepends = nvm
+	makedepends = git
 	depends = libxrandr
 	depends = nss
 	depends = libxdamage
@@ -18,8 +19,6 @@ pkgbase = hex-music-player
 	depends = mesa
 	depends = pango
 	depends = libcups
-	depends = glib2
-	depends = gcc-libs
 	depends = libxkbcommon
 	depends = libxcb
 	depends = gtk3
@@ -27,14 +26,12 @@ pkgbase = hex-music-player
 	depends = cairo
 	depends = libxext
 	depends = nspr
-	depends = dbus
 	depends = libxfixes
 	depends = libxcomposite
 	depends = libx11
-	depends = glibc
 	depends = hicolor-icon-theme
 	conflicts = hex-music-player
-	source = hex-music-player-1.0.0.zip::https://github.com/meisandrew/hex-music-player/archive/refs/tags/v1.0.0.zip
-	sha256sums = 2b59f50a7e67b1363950410571c8a411e50381da94cd64508872fa4d4690baa3
+	source = hex-music-player-1.0.0::git+https://github.com/meisandrew/hex-music-player.git#tag=v1.0.0
+	sha256sums = SKIP
 
 pkgname = hex-music-player

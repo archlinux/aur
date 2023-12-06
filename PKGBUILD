@@ -1,23 +1,62 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hex-music-player
 pkgver=1.0.0
-pkgrel=3
+_electronversion=24
+pkgrel=4
 pkgdesc="Music client for Plex Media Server"
 arch=('any')
 url="https://github.com/meisandrew/hex-music-player"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('libxrandr' 'nss' 'libxdamage' 'alsa-lib' 'expat' 'at-spi2-core' 'mesa' 'pango' 'libcups' 'glib2' 'gcc-libs' 'libxkbcommon' \
-    'libxcb' 'gtk3' 'libdrm' 'cairo' 'libxext' 'nspr' 'dbus' 'libxfixes' 'libxcomposite' 'libx11' 'glibc' 'hicolor-icon-theme')
-makedepends=('gendesk' 'yarn' 'npm' 'nodejs>=16')
-source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('2b59f50a7e67b1363950410571c8a411e50381da94cd64508872fa4d4690baa3')
-prepare() {
-    gendesk -f -n -q --categories "AudioVideo" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
+depends=(
+    'libxrandr'
+    'nss'
+    'libxdamage'
+    'alsa-lib'
+    'expat'
+    'at-spi2-core'
+    'mesa'
+    'pango'
+    'libcups'
+    'libxkbcommon'
+    'libxcb'
+    'gtk3'
+    'libdrm'
+    'cairo'
+    'libxext'
+    'nspr'
+    'libxfixes'
+    'libxcomposite'
+    'libx11'
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'gendesk'
+    'yarn'
+    'npm'
+    'nvm'
+    'git'
+)
+source=(
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install 16
+    nvm use 16
 }
 build() {
+    _ensure_local_nvm
+    gendesk -f -n -q --categories "AudioVideo" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    yarn
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    rm -rf .yarnrc.yml
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn build
     cp "${srcdir}/${pkgname}-${pkgver}/release/\${version}/.icon-set/icon_1024.png" \
         "${srcdir}/${pkgname}-${pkgver}/release/\${version}/.icon-set/icon_1024x1024.png"
