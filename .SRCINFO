@@ -1,0 +1,21 @@
+pkgbase = quran-companion-git
+	pkgdesc = Cross-platform desktop offline Quran reader and player
+	pkgver = 1.1.11
+	pkgrel = 1
+	url = https://github.com/0xzer0x/quran-companion
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-tools
+	depends = qt6-imageformats
+	depends = qt6-translations
+	provides = quran-companion
+	conflicts = quran-companion
+	source = git+https://github.com/0xzer0x/quran-companion.git
+	md5sums = SKIP
+
+pkgname = quran-companion-git
