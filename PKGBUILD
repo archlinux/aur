@@ -1,15 +1,15 @@
 # Maintainer: Chimmie Firefly <gameplayer2019pl@tutamail.com>
 
-_ver=6.4.16
-_rel=5
+_ver=5.10
+_rel=1
 _arch=arch${_rel}
 _artix=artix${_rel}
 
-pkgbase=artixlinux-kernel-stoneyridge
+pkgbase=cros-artix-stoneyridge
 pkgver=${_ver}.${_artix}
 pkgrel=1
-pkgdesc='Linux kernel for Stoneyridge Chromebooks'
-url='https://github.com/GamePlayer-8/artixlinux-kernel-stoneyridge'
+pkgdesc='ChromeOS Artix kernel for Stoneyridge Chromebooks'
+url='https://codeberg.org/chimmie-aur/cros-5.10'
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -35,7 +35,8 @@ options=('!strip')
 _srcname=linux-${_ver}
 _srctag=v${_ver}-${_arch}
 source=(
-  https://cdn.kernel.org/pub/linux/kernel/v${_ver%%.*}.x/${_srcname}.tar.xz
+   https://chromium.googlesource.com/chromiumos/third_party/kernel/+archive/refs/heads/release-R119-15633.B-chromeos-5.10.tar.gz
+#  https://cdn.kernel.org/pub/linux/kernel/v${_ver%%.*}.x/${_srcname}.tar.xz
 #  $url/releases/download/$_srctag/linux-$_srctag.patch.zst
   config
 )
@@ -53,15 +54,20 @@ b2sums=('SKIP'
         'SKIP')
 
 export KBUILD_BUILD_HOST=artixlinux
-export KBUILD_BUILD_USER=stoneyridge
+export KBUILD_BUILD_USER=cros
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd $_srcname
+  cd ..
+  mv src "linux-$_ver"
+  mkdir src
+  mv "linux-$_ver" src/
+  cp config src/
+  cd src/$_srcname
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "-linux-stoneyridge" > localversion.20-pkgname
+  echo "-cros-stoneyridge" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
@@ -137,7 +143,7 @@ _package() {
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
-  echo "linux-stoneyridge" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  echo "linux-cros-stoneyridge" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
   ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \

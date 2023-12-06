@@ -2264,6 +2264,7 @@ CONFIG_FW_LOADER=y
 CONFIG_FW_LOADER_DEBUG=y
 CONFIG_FW_LOADER_PAGED_BUF=y
 CONFIG_FW_LOADER_SYSFS=y
+#CONFIG_EXTRA_FIRMWARE=""
 CONFIG_EXTRA_FIRMWARE="amdgpu/stoney_ce.bin amdgpu/stoney_me.bin amdgpu/stoney_mec.bin amdgpu/stoney_pfp.bin amdgpu/stoney_rlc.bin amdgpu/stoney_sdma.bin amdgpu/stoney_uvd.bin amdgpu/stoney_vce.bin"
 CONFIG_EXTRA_FIRMWARE_DIR="../stoney"
 # CONFIG_FW_LOADER_USER_HELPER is not set
