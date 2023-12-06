@@ -4,16 +4,16 @@ _pkgname=dockbarx
 pkgname=${_pkgname}-git
 epoch=2
 _pkgver=1.0beta
-pkgver=1.0beta2+0+g38af1e8
+pkgver=1.0beta3+17+g31209c2
 pkgrel=1
-pkgdesc="TaskBar with groupping and group manipulation"
-arch=('i688' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/M7S/dockbarx"
+pkgdesc="TaskBar with grouping and group manipulation"
+arch=('any')
+url="https://github.com/xuzhen/dockbarx"
 license=('GPL3')
 depends=('libkeybinder3' 'python-cairo' 'dbus-python' 'python-gobject' 'python-pillow'
-         'python-xlib' 'python-xdg')
-makedepends=('python-setuptools' 'python-polib' 'git')
-optdepends=('mate-panel: mate applet'
+         'python-xlib' 'python-pyxdg')
+makedepends=('python-setuptools' 'python-installer' 'python-build' 'python-wheel' 'python-polib' 'git')
+optdepends=('dockbarx-mate-applet: mate applet'
             'zeitgeist: recently used file list'
             'xfce4-dockbarx-plugin>=0.6: xfce4-panel plugin'
             'python-pyudev: dockx battery applet'
@@ -21,19 +21,23 @@ optdepends=('mate-panel: mate applet'
             'python-lxml: import settings script')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-_branch='pygi-python3'
-source=("${_pkgname}::git+https://github.com/xuzhen/dockbarx.git#branch=${_branch}")
-sha256sums=('SKIP')
 install="${_pkgname}.install"
+_branch='pygi-python3'
+source=("${_pkgname}::git+${url}.git#branch=${_branch}")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
   git describe --long --tags | sed 's:-beta:beta:;s:-:+:g'
 }
 
+build() {
+  cd "${_pkgname}"
+  python -m build --wheel --no-isolation
+}
 package() {
-  cd "${srcdir}/${_pkgname}"
-  python setup.py install --root "${pkgdir}" --optimize=1
-
-  install -Dm644 "${srcdir}/${_pkgname}"/icons/hicolor/128x128/apps/dockbarx.png "${pkgdir}"/usr/share/pixmaps/dockbarx.png
+  cd "${_pkgname}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  
+  install -Dm644 "${srcdir}/${_pkgname}"/data/icons/hicolor/128x128/apps/dockbarx.png "${pkgdir}"/usr/share/pixmaps/dockbarx.png
 }

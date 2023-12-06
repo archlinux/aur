@@ -1,4 +1,7 @@
 post_upgrade() {
+  echo "The MATE panel applet has moved to a separate repository"
+  echo "so is now packaged separately. Please install mate-dockbarx-applet-git."
+  echo
   echo "In version 1.0beta configuration is moved from gconf"
   echo "to gsettings. To migrate your settings you will need to "
   echo "have the optional dependencies 'gconf' and 'python-lxml' installed."
