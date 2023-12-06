@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spacetime
-_pkgver=1.3-0
+_pkgver=1.3-1
 pkgname=r-${_pkgname,,}
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='Classes and Methods for Spatio-Temporal Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -36,7 +36,7 @@ optdepends=(
   r-sftime
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2e9902a5c6f355f0b8e23237cf3b1553f22d7d79493bdbdb99e49104b9ef541b')
+sha256sums=('1942a51949e82d19a652fc09e61d738f8eca6ed992783cc1d0164313d71521cf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
