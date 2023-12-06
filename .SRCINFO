@@ -1,6 +1,6 @@
 pkgbase = r-sna
 	pkgdesc = Tools for Social Network Analysis
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sna
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-sna
 	optdepends = r-numderiv
 	optdepends = r-rgl
 	optdepends = r-sparsem
-	source = https://cran.r-project.org/src/contrib/sna_2.7-1.tar.gz
-	sha256sums = 60daf217c15b6fa335804600dc1e6eb73594b6e794faa4f82a2275c4d8570ae3
+	source = https://cran.r-project.org/src/contrib/sna_2.7-2.tar.gz
+	sha256sums = 7b214626967feb9389e743e50b919dd4b00e7436b2355fd068c873c45ac7a7cd
 
 pkgname = r-sna
