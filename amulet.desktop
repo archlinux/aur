@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Terminal=false
-Exec=/opt/amulet/venv/bin/python -m amulet_map_editor 
+Exec=/usr/bin/python -m amulet_map_editor 
 Name=Amulet Map Editor
 Comment=A Minecraft world editor
-Icon=/opt/amulet/icon.png
+Icon=amulet
