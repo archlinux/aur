@@ -3,7 +3,7 @@
 _base=govarnam
 pkgname=${_base}-bin
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Transliteration and reverse transliteration for Indian languages - Go port of libvarnam"
 arch=('x86_64')
 url="https://www.varnamproject.com"
@@ -26,8 +26,8 @@ package() {
 
 	install -Dm 755 varnamcli "${pkgdir}/usr/bin/varnamcli"
 
-	install -Dm 644 libgovarnam.so "${pkgdir}/usr/lib/libgovarnam.so.1.9.0"
-	ln -s "${pkgdir}/usr/lib/libgovarnam.so.1.9.0" "${pkgdir}/usr/lib/libgovarnam.so"
+	install -Dm 644 libgovarnam.so "${pkgdir}/usr/lib/libgovarnam.so.${pkgver}"
+	ln -s /usr/lib/libgovarnam.so.${pkgver} "${pkgdir}/usr/lib/libgovarnam.so"
 
 	install -Dm 644 govarnam.pc "${pkgdir}/usr/lib/pkgconfig/govarnam.pc"
 

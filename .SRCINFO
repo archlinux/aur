@@ -1,7 +1,7 @@
 pkgbase = govarnam-bin
 	pkgdesc = Transliteration and reverse transliteration for Indian languages - Go port of libvarnam
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.varnamproject.com
 	arch = x86_64
 	license = AGPL3
