@@ -1,10 +1,10 @@
 pkgbase = google-cloud-cli
 	pkgdesc = A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
-	pkgver = 455.0.0
+	pkgver = 456.0.0
 	pkgrel = 1
 	url = https://cloud.google.com/cli/
-	arch = any
-	license = Apache
+	arch = x86_64
+	license = Apache-2.0
 	depends = python
 	optdepends = python-crcmod: [gsutil] verify the integrity of GCS object contents
 	provides = google-cloud-sdk
@@ -12,10 +12,10 @@ pkgbase = google-cloud-cli
 	options = !strip
 	options = staticlibs
 	options = !zipman
-	source = google-cloud-cli-455.0.0.orig.tar.gz::https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-cli_455.0.0.orig.tar.gz
+	source = google-cloud-cli-456.0.0.orig.tar.gz::https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-cli_456.0.0.orig_amd64.tar.gz
 	source = google-cloud-cli.sh
 	source = 0003-add-compdef-to-zsh-completion.patch
-	sha256sums = ac0a22498d5946f1cbd3403960c7a104bb041edcf4ec80e48ca38eb64ad50f0e
+	sha256sums = 61466060444d8f80addc4750dd1c4bfd2a11305216b5ff8b4217e5ca863561aa
 	sha256sums = e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a
 	sha256sums = 4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93
 

@@ -1,4 +1,5 @@
-# Maintainer: Polarian <polarian@polarian.dev>
+# Mainstainer: Josef Vybíhal <josef.vybihal@gmail.com>
+# Contributor: Polarian <polarian@polarian.dev>
 # Contributor: Benjamin Denhartog <ben@sudoforge.com>
 # Contributor: Mansour Behabadi <mansour@oxplot.com>
 # Contributor: Troy Engel <troyengel+arch@gmail.com>
@@ -6,34 +7,36 @@
 # Contributor: Sebastien Bariteau <numkem@numkem.org>
 # Contributor: Justin Dray <justin@dray.be>
 
-# For ISSUES, REQUESTS, and QUESTIONS:
-# New: https://git.polarian.dev/AUR/google-cloud-cli
-# Old: https://onedev.polarian.dev/polarrepo/google-cloud-cli
-# Old: https://github.com/sudoforge/pkgbuilds
-
+#  shellcheck disable=SC2034
+# Cloud Storage Bucket: https://console.cloud.google.com/storage/browser/cloud-sdk-release/for_packagers/linux
+# deb pool: 
+#  - https://packages.cloud.google.com/apt/dists/cloud-sdk/main/binary-amd64/Packages
+#  - https://packages.cloud.google.com/apt/pool/google-cloud-cli_455.0.0-0_all_568366af2c266f73f44b302536eb2b7e143d67d783aaf0f89452dbd8ca805410.deb
 _extractedName="google-cloud-sdk"
 pkgname="google-cloud-cli"
-pkgver=455.0.0
+pkgver=456.0.0
 pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/cli/"
-license=("Apache")
-arch=('any')
+license=('Apache-2.0')
+arch=('x86_64')
 depends=('python')
 optdepends=(
   "python-crcmod: [gsutil] verify the integrity of GCS object contents"
 )
 options=('!strip' 'staticlibs' !zipman)
+# TODO:
+#  - aarch64 as separate source
+#  - packages for components
 source=(
-  "$pkgname-$pkgver.orig.tar.gz::https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
+  "$pkgname-$pkgver.orig.tar.gz::https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig_amd64.tar.gz"
   "google-cloud-cli.sh"
   "0003-add-compdef-to-zsh-completion.patch"
 )
-# https://console.cloud.google.com/storage/browser/cloud-sdk-release/for_packagers/linux
 # Conflict the old package name to force migration
 conflicts=('google-cloud-sdk')
 provides=('google-cloud-sdk')
-sha256sums=('ac0a22498d5946f1cbd3403960c7a104bb041edcf4ec80e48ca38eb64ad50f0e'
+sha256sums=('61466060444d8f80addc4750dd1c4bfd2a11305216b5ff8b4217e5ca863561aa'
             'e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a'
             '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93')
 
