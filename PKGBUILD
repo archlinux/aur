@@ -4,7 +4,7 @@
 
 pkgname="odoo"
 pkgver=17.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Web-based Open Source Business Apps"
 url="https://www.odoo.com/"
 arch=("any")
@@ -68,7 +68,7 @@ source=("https://nightly.odoo.com/$pkgver/nightly/src/${pkgname}_$pkgver.latest.
         "odoo.service"
         "odoo.sysusers"
         "odoo.tmpfiles")
-b2sums=('bdee637223012c1b0a1f5ff948893945a00393447db9a2d20c9ac24230f55d5cdac376d5b852912b8eca00e3177c404fa1335edfc159a920d79a8f1df6e73994'
+b2sums=('SKIP'
         'f9b3f553e72864565b8323460fbda64745e07838c30ad6cfe57c28100f3b53805d23162262b37984227a18b48283f1e4d4c090b71034331ddcd8588480bd7d06'
         '1ef682d87ba12dd8a185ba36701b737f8feb0c1e6eb4b23302a0dc5930ef63c990af65bc45a36313f879a29a23cbdb602e7fc34ba9cee2e46d9a3d8407d5751a'
         'a14636791b4f0ae76da8a69e95a6926287f5cfa215499be9a6880b6b63fa2081ecdd32ea0dc10fe4d7fe2d14968ac4ed08701c972bc2170e9f4dc36efa406c02'
