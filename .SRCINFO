@@ -1,6 +1,6 @@
 pkgbase = r-biomvrcns
 	pkgdesc = Copy Number study and Segmentation for multivariate biological data
-	pkgver = 1.42.1
+	pkgver = 1.42.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biomvRCNS
 	arch = x86_64

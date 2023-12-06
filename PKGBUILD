@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biomvRCNS
-_pkgver=1.42.1
+_pkgver=1.42.2
 pkgname=r-${_pkgname,,}
-pkgver=1.42.1
+pkgver=1.42.2
 pkgrel=1
 pkgdesc='Copy Number study and Segmentation for multivariate biological data'
 arch=('x86_64')
