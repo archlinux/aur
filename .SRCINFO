@@ -1,0 +1,18 @@
+pkgbase = r-automap
+	pkgdesc = Automatic Interpolation Package
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = https://cran.r-project.org/package=automap
+	arch = any
+	license = GPL
+	depends = r-ggplot2
+	depends = r-gstat
+	depends = r-reshape
+	depends = r-sf
+	depends = r-sp
+	depends = r-stars
+	source = https://cran.r-project.org/src/contrib/automap_1.1-9.tar.gz
+	md5sums = e73467a1c2fa43bd4f4f536ec51ad71b
+	sha256sums = f3070aed385352d2595ceddd74cb03cd71965f2e60b675832d16ec2ead6f3a43
+
+pkgname = r-automap
