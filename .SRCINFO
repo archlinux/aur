@@ -1,6 +1,6 @@
 pkgbase = r-sass
 	pkgdesc = Syntactically Awesome Style Sheets ('Sass')
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sass
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = r-sass
 	optdepends = r-shiny
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/sass_0.4.7.tar.gz
+	source = https://cran.r-project.org/src/contrib/sass_0.4.8.tar.gz
 	source = system-libsass.patch
-	md5sums = c7ed9afd18a0e56ca42c7a21f49fb62c
+	md5sums = 1b541e8a0ce9ec67ade93869740db4b8
 	md5sums = 6a430d63f1fdeced20c3117763d2cb7c
-	sha256sums = 717a08b63615a4fd9e494f775c33f0f965db83677cf1cc37849afc3da1c5e9ee
+	sha256sums = 42ba2930cd22ad9f5e0022b9ac53bdbc4c9250f00e0646e6502f635a6db3c40c
 	sha256sums = 5149aa34e5ab5ce03370495705e4162bbf1a3e7c7389be3ebe318c46d394eb10
 
 pkgname = r-sass
