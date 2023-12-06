@@ -5,7 +5,7 @@
 # Maintainer: cvnb
 pkgname=gerbil-scheme
 _pkgname=gerbil
-pkgver=0.18
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Opinionated dialect of Scheme designed for systems programming, on the Gambit runtime."
 arch=(x86_64 i686)
