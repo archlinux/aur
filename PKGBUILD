@@ -1,16 +1,9 @@
-###
-# @Author: timochan
-# @Date: 2023-11-16 19:16:49
-# @LastEditors: timochan
-# @LastEditTime: 2023-11-17 08:33:35
-# @FilePath: /clash-nyanpasu-appimage/PKGBUILD
-###
 _pkgname=clash-nyanpasu
 _Pkgname=clash-nyanpasu
 _disname=clash-nyanpasu
 major_version=1
 minor_version=4
-patch_version=0
+patch_version=1
 
 pkgname="${_pkgname}"-appimage
 pkgver="${major_version}.${minor_version}.${patch_version}"
@@ -24,7 +17,7 @@ depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'clash-meta')
 conflicts=('clash-nyanpasu-git' 'clash-nyanpasu-bin')
 provides=('clash-nyanpasu')
 source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-amd64.AppImage::https://github.com/keiko233/clash-nyanpasu/releases/download/v${major_version}.${minor_version}.${patch_version}/${_Pkgname}_${major_version}.${minor_version}.${patch_version}_amd64.AppImage")
-sha256sums_x86_64=('5386610db36683dae504902895618c73797f47b6f3b5955584928bc964153bb5')
+sha256sums_x86_64=('65297af3f79603e3b2d3a75e39b439d2aa629cc0cfaba8ecea97abacb3066e67')
 
 _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}-amd64.AppImage"
 noextract=("${_appimage}")
