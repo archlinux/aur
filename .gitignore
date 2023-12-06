@@ -1,0 +1,5 @@
+dr_libs/
+pkg/
+src/
+ysfx-git-*.pkg.tar.*
+ysfx/
