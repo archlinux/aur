@@ -1,0 +1,12 @@
+diff --git a/include/m17cxx/Util.h b/include/m17cxx/Util.h
+index 7aca344..fb3cedf 100644
+--- a/include/m17cxx/Util.h
++++ b/include/m17cxx/Util.h
+@@ -3,6 +3,7 @@
+ #pragma once
+
+ #include <algorithm>
++#include <cstdint>
+ #include <cstdlib>
+ #include <cassert>
+ #include <array>
