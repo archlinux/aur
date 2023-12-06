@@ -1,7 +1,7 @@
-pkgbase = modsecurity-git
+pkgbase = libmodsecurity-git
 	pkgdesc = A cross platform web application firewall engine for Apache, IIS and Nginx, git HEAD
 	pkgver = v3.0.10.r25.g5b094c0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpiderLabs/ModSecurity
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,9 @@ pkgbase = modsecurity-git
 	depends = libmaxminddb
 	depends = ssdeep
 	depends = luajit
-	provides = modsecurity=v3.0.10.r25.g5b094c0
+	provides = libmodsecurity
+	conflicts = libmodsecurity
 	source = modsecurity::git+https://github.com/SpiderLabs/ModSecurity
 	sha256sums = SKIP
 
-pkgname = modsecurity-git
+pkgname = libmodsecurity-git

@@ -1,11 +1,15 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Stephan Conrad <stephan@conrad.pics>
 
-pkgname=modsecurity-git
+# Also based of libmodsecurity Extra PKGBUILD maintained by
+#   Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+
+pkgname=libmodsecurity-git
 _name=modsecurity
 pkgver=v3.0.10.r25.g5b094c0
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, git HEAD'
 arch=('i686' 'x86_64')
 url='https://github.com/SpiderLabs/ModSecurity'
@@ -22,7 +26,8 @@ depends=(
 	'luajit'
 )
 makedepends=('git')
-provides=("${_name}=${pkgver}")
+provides=("libmodsecurity")
+conflicts=("libmodsecurity")
 source=("${_name}::git+$url")
 sha256sums=('SKIP')
 
