@@ -1,12 +1,11 @@
 pkgbase = python-textual
 	pkgdesc = Modern Text User Interface framework
-	pkgver = 0.41.0
-	pkgrel = 2
+	pkgver = 0.44.1
+	pkgrel = 1
 	url = https://github.com/Textualize/textual
 	arch = any
 	license = MIT
 	checkdepends = python-pytest-asyncio
-	checkdepends = python-pytest-aiohttp
 	checkdepends = python-time-machine
 	checkdepends = python-tree-sitter-languages
 	makedepends = python-build
@@ -18,7 +17,7 @@ pkgbase = python-textual
 	optdepends = python-tree-sitter: for syntax highlighting support
 	optdepends = python-tree-sitter-languages: for custom languages support
 	optdepends = python-textual-dev: tools for developers
-	source = textual-0.41.0.tar.gz::https://github.com/Textualize/textual/archive/v0.41.0.tar.gz
-	sha512sums = 754e394b77cb0bb0246f288d2ef5efd9de63189f35076a8e6061e209c3efc30fa3bb24f4b5f4c0e34c3c91b325449cefe13db5cca144ea690d80c7bff8cea617
+	source = textual-0.44.1.tar.gz::https://github.com/Textualize/textual/archive/v0.44.1.tar.gz
+	sha512sums = cb5d25cd7e1986c080301c812aec0e711e9c4d7332a8b4cb991f780243d49d591f4daa71b049c960810392a3c3c803b150293e6ad7ee09f0b82685c65a37f8d3
 
 pkgname = python-textual
