@@ -1,6 +1,6 @@
 # Maintainer: Whyme Lyu <callme5long@gmail.com>
 pkgname=dnsproxy-bin
-pkgver=0.59.1
+pkgver=0.60.0
 pkgrel=1
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support"
 arch=('x86_64')
@@ -25,6 +25,6 @@ package() {
   install -Dm644 dnsproxy.service "$pkgdir"/usr/lib/systemd/system/dnsproxy.service
 }
 
-sha256sums=('01dd0ae3cf4907cdabc20e2c27154295212d0c4d06b3cc980a0a1c8b22b546a6'
+sha256sums=('05e1191ebed8c742e76d9f6d28b4430d2c34af02849b3f1ca72aea26375a1ac1'
             '72937969cc68182672e945fb26a6e350772a421463a4593c113d2f89af0b922c'
             '565eea9808589ecafa81f2229ac1f85b39028e26d488a9a7c0b51afc43d7f42b')
