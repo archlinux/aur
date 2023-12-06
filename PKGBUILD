@@ -1,5 +1,5 @@
 pkgname=goldwarden
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='A feature-packed Bitwarden compatible desktop integration'
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/quexten/$pkgname"
 license=('MIT')
 makedepends=('go' 'libfido2' 'gcc' 'wayland' 'libx11' 'libxkbcommon' 'libxkbcommon-x11' 'libxcursor' 'base-devel' 'vulkan-headers' 'egl-wayland')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2c86952a7d304edeeda90099aab5b8275121ac4b1d1155a094c1460e45be97bb')
+sha256sums=('57555dab4afd4fc60785e8ad34f41932988b4cd2ce130daaa719625a0e455481')
 
 prepare(){
   cd "$pkgname-$pkgver"
