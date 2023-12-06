@@ -15,7 +15,7 @@ pkgbase = vnt-git
 	conflicts = vnt
 	options = !strip
 	options = !lto
-	source = vnt::git+https://github.com/lbl8603/vnt.git
+	source = vnt-git::git+https://github.com/lbl8603/vnt.git
 	sha256sums = SKIP
 
 pkgname = vnt-git

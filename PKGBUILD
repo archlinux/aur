@@ -19,23 +19,23 @@ optdepends=('iptables: Linux kernel packet control tool (using legacy interface)
 backup=()
 options=('!strip' '!lto')
 install=
-source=("${pkgname%-git}::git+${url}.git")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}/"
+    cd "${srcdir}/${pkgname}/"
 
     git describe --exclude=nightly --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}/${pkgbase%-git}/"
+    cd "${srcdir}/${pkgbase}/"
 
     git submodule update --init --recursive
 }
 
 build() {
-    cd "${srcdir}/${pkgname%-git}/"
+    cd "${srcdir}/${pkgname}/"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
@@ -43,14 +43,14 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${pkgname%-git}/"
+    cd "${srcdir}/${pkgname}/"
 
     export RUSTUP_TOOLCHAIN=stable
     cargo test -p vnt-cli --all-features
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git}/"
+    cd "${srcdir}/${pkgname}/"
 
     export RUSTUP_TOOLCHAIN=stable
     cargo install --no-track --all-features --path ./vnt-cli --root "$pkgdir/usr/" --bins
