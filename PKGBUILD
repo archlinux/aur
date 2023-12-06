@@ -12,7 +12,7 @@ url="https://dune-project.org/modules/${pkgname}"
 license=('custom:GPL2 with runtime exception')
 depends=(cmake git lapack python-setuptools
   python-portalocker python-numpy python-mpi4py python-jinja)
-makedepends=(python-scikit-build python-ninja doxygen graphviz python-sphinx texlive-latexextra biber)
+makedepends=(python-scikit-build doxygen graphviz python-sphinx texlive-latexextra biber)
 optdepends=('vc: C++ Vectorization library'
   'texlive-latexextra: Type setting system'
   'doxygen: Generate the class documentation from C++ sources'

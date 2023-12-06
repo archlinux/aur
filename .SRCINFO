@@ -6,7 +6,6 @@ pkgbase = dune-common
 	arch = x86_64
 	license = custom:GPL2 with runtime exception
 	makedepends = python-scikit-build
-	makedepends = python-ninja
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-sphinx
