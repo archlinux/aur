@@ -1,0 +1,12 @@
+diff --unified --recursive --text varia-2023.11.22/src/varia.in varia-2023.11.22.patched/src/varia.in
+--- varia-2023.11.22/src/varia.in
++++ varia-2023.11.22.patched/src/varia.in
+@@ -2,5 +2,5 @@
+ download_dir=$(xdg-user-dir DOWNLOAD)
+ pythonexec='@PYTHON@'
+ pkgdatadir='@pkgdatadir@'
+-$pkgdatadir/../../aria2/aria2c -d $download_dir --enable-rpc --rpc-listen-all --rpc-secret=ARIA2CFORVARIA --rpc-listen-port=6801 &
+-$pythonexec $pkgdatadir/../../bin/varia-py.py
+\ No newline at end of file
++aria2c -d $download_dir --enable-rpc --rpc-listen-all --rpc-secret=ARIA2CFORVARIA --rpc-listen-port=6801 &
++$pythonexec $pkgdatadir/../../bin/varia-py.py
