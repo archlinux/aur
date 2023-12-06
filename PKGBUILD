@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
 license=('GPL')
 depends=("dune-grid>=${pkgver}")
-makedepends=(doxygen graphviz python-scikit-build python-ninja)
+makedepends=(doxygen graphviz python-scikit-build)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
 source=(https://dune-project.org/download/${_tar}{,.asc})
