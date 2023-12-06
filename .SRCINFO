@@ -1,0 +1,21 @@
+pkgbase = sequoia-wot
+	pkgdesc = An implementation of OpenPGP's web of trust
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://gitlab.com/sequoia-pgp/sequoia-wot
+	arch = x86_64
+	groups = sequoia
+	license = LGPL-2.0-or-later
+	makedepends = cargo
+	makedepends = clang
+	depends = gcc-libs
+	depends = glibc
+	depends = gmp
+	depends = nettle
+	depends = openssl
+	depends = sqlite
+	source = https://gitlab.com/sequoia-pgp/sequoia-wot/-/archive/v0.9.0/sequoia-wot-v0.9.0.tar.gz
+	sha512sums = 0d4524800e545ad28c4481a0bfd85581e3c0185be5b64ba5bc1e76ef1075a2c7009880da61075f217deb4727b144d06e911866d76d34aa9b75b0c42f931d06e0
+	b2sums = d158d39c824c0fb1626b1c5c1378f0df64e6cddebd85ca6b508f11141c179fa07a85a0622fa9a0fadda1b4bc340d06eaf9ed39fbd24ac4bbd7be8921f797d234
+
+pkgname = sequoia-wot
