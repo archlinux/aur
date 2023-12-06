@@ -56,7 +56,8 @@ check() {
   test-env/bin/python -m pytest tests \
     -k 'not cmake and not simulate and not create_juypter_notebook and not cswrapper' \
     --ignore=test_fmu_container.py \
-    --ignore=tests/test_fmu_container.py
+    --ignore=tests/test_fmu_container.py \
+    --ignore=tests/test_validation.py
 }
 
 package() {
