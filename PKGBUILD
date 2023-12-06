@@ -19,8 +19,8 @@ _pkgname="localai"
 
 pkgbase="${_pkgname}-git"
 pkgname=("${pkgbase}")
-pkgver=v2.0.0_beta.1.g42a80d1
-pkgrel=2
+pkgver=v2.0.0.6.g997119c
+pkgrel=1
 pkgdesc="The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -71,24 +71,19 @@ fi
 
 source=(
   "${_pkgname}"::"git+https://github.com/mudler/LocalAI"
-  "whisper-1.5.1.patch"
 )
 
 sha256sums=(
-  'SKIP'
   'SKIP'
 )
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  echo "$(git describe --always --tags | tr "-" ".")"
+  (git describe --always --tags | tr "-" ".")
 }
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-
-  # update whisper and add gpu support
-  patch -Np1 -i "${srcdir}/whisper-1.5.1.patch"
 
   # list of backend sources to be recursive git checked out before build()
   _EXTERNAL_SOURCES="backend/cpp/llama/llama.cpp sources/go-piper sources/whisper.cpp sources/go-bert"
@@ -153,6 +148,10 @@ build() {
 _package_install() {
   install -Dm755 "local-ai" "${pkgdir}/usr/bin/local-ai"
   # sources/go-piper/piper/build/pi/lib/* /usr/lib/
+
+  # add 1-2 7b high performing models yaml configs based on mistral as gpt-3.5
+  # prefer chatml, add example working preload-models.yaml,
+
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
