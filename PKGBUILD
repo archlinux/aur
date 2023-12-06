@@ -1,9 +1,9 @@
 # Maintainer: Andre Schneider <andre.schneider@outlook.at>
 
 pkgname=tapps2
-pkgver=1.19.1
+pkgver=1.20
 _pkgname=tapps2-$pkgver
-pkgrel=4
+pkgrel=1
 pkgdesc="A vector-based drawing program which was developed for planning and programming of
 the UVR1611 and UVR16x2 controllers, the RSM610 control module, CAN-I/O45 and CAN-EZ2."
 arch=("x86_64" "i386")
