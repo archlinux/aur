@@ -10,10 +10,10 @@ Change-Id: Ib883c9087377c9f1a0dfacc45a27e3e67ccf042e
 ---
 
 diff --git a/AUTHORS b/AUTHORS
-index f275151..a43a528 100644
+index dec500d..5dcd06c 100644
 --- a/AUTHORS
 +++ b/AUTHORS
-@@ -942,6 +942,7 @@ Mohit Bhalla <bhallam@amazon.com>
+@@ -952,6 +952,7 @@ Mohit Bhalla <bhallam@amazon.com>
  Moiseanu Rares-Marian <moiseanurares@gmail.com>
  Momoka Yamamoto <momoka.my6@gmail.com>
  Momoko Hattori <momohatt10@gmail.com>
@@ -22,7 +22,7 @@ index f275151..a43a528 100644
  Mrunal Kapade <mrunal.kapade@intel.com>
  Munira Tursunova <moonira@google.com>
 diff --git a/third_party/wayland-protocols/BUILD.gn b/third_party/wayland-protocols/BUILD.gn
-index c84ec11..dffa0aa 100644
+index b0c0082..6be47a8 100644
 --- a/third_party/wayland-protocols/BUILD.gn
 +++ b/third_party/wayland-protocols/BUILD.gn
 @@ -141,7 +141,10 @@ wayland_protocol("text_input_extension_protocol") {
@@ -38,7 +38,7 @@ index c84ec11..dffa0aa 100644
  
  wayland_protocol("touchpad_haptics_protocol") {
 diff --git a/ui/ozone/platform/wayland/BUILD.gn b/ui/ozone/platform/wayland/BUILD.gn
-index 31314f3..c22888c 100644
+index 1ec252c..467d0d0 100644
 --- a/ui/ozone/platform/wayland/BUILD.gn
 +++ b/ui/ozone/platform/wayland/BUILD.gn
 @@ -221,6 +221,8 @@ source_set("wayland") {
@@ -85,10 +85,10 @@ index c84c084..0817e78 100644
  DECLARE_WAYLAND_OBJECT_TRAITS(zxdg_exporter_v1)
  DECLARE_WAYLAND_OBJECT_TRAITS(zxdg_exported_v1)
 diff --git a/ui/ozone/platform/wayland/host/wayland_connection.cc b/ui/ozone/platform/wayland/host/wayland_connection.cc
-index ad3bbd6..995b1e2 100644
+index a7c0943..94ef3da 100644
 --- a/ui/ozone/platform/wayland/host/wayland_connection.cc
 +++ b/ui/ozone/platform/wayland/host/wayland_connection.cc
-@@ -647,6 +647,14 @@ void WaylandConnection::HandleGlobal(wl_registry* registry,
+@@ -642,6 +642,14 @@ void WaylandConnection::HandleGlobal(wl_registry* registry,
               strcmp(interface, "zcr_text_input_extension_v1") == 0) {
      text_input_extension_v1_ = wl::Bind<zcr_text_input_extension_v1>(
          registry, name, std::min(version, kMaxTextInputExtensionVersion));
@@ -104,7 +104,7 @@ index ad3bbd6..995b1e2 100644
               strcmp(interface, "zxdg_decoration_manager_v1") == 0) {
      xdg_decoration_manager_ = wl::Bind<zxdg_decoration_manager_v1>(
 diff --git a/ui/ozone/platform/wayland/host/wayland_connection.h b/ui/ozone/platform/wayland/host/wayland_connection.h
-index 6659bc5..f9739ea 100644
+index c78d900..da2537e 100644
 --- a/ui/ozone/platform/wayland/host/wayland_connection.h
 +++ b/ui/ozone/platform/wayland/host/wayland_connection.h
 @@ -149,6 +149,9 @@ class WaylandConnection {

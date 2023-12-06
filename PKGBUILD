@@ -6,8 +6,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-wayland-vaapi
-pkgver=119.0.6045.159
-pkgrel=1
+pkgver=120.0.6099.62
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
 pkgdesc="Chromium, patched to enable VA-API video decoding on the Ozone Wayland backend"
@@ -32,12 +32,14 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
-        REVERT-disable-autoupgrading-debug-info.patch
+        libxml2-2.12.patch
+        drop-flags-unsupported-by-clang16.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('d0d842712805ac81582dc0fecd4396fbf4380713df2fb50ceeb853dd38d1538f'
+sha256sums=('ba8448637de36e39532a214c1d4fd05480bc51bde6ac4c160e5f7d3a08e36218'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
-            '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+            'ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2'
+            '1808df5ba4d1e2f9efa07ac6b510bec866fa6d60e44505d82aea3f6072105a71'
+            '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 if (( _manual_clone )); then
@@ -52,24 +54,24 @@ source=(${source[@]}
         0001-adjust-buffer-format-order.patch
         0001-vaapi-flag-ozone-wayland.patch)
 sha256sums=(${sha256sums[@]}
-            d9974ddb50777be428fd0fa1e01ffe4b587065ba6adefea33678e1b3e25d1285
-            a2da75d0c20529f2d635050e0662941c0820264ea9371eb900b9d90b5968fa6a
-            2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3
-            8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f
-            9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec)
+            '6873aafaa390aca8d6937261ae574f399e7a786419e247d30b9eb4a2054a63db'
+            'a2da75d0c20529f2d635050e0662941c0820264ea9371eb900b9d90b5968fa6a'
+            '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
+            '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
+            '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
   #[brotli]=brotli
   [dav1d]=dav1d
-  [ffmpeg]=ffmpeg
+  #[ffmpeg]=ffmpeg    # YouTube playback stopped working in Chromium 120
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
-  [jsoncpp]=jsoncpp
+  #[jsoncpp]=jsoncpp  # needs libstdc++
   #[libaom]=aom
   #[libavif]=libavif  # needs https://github.com/AOMediaCodec/libavif/commit/5410b23f76
   [libdrm]=
@@ -80,9 +82,9 @@ declare -gA _system_libs=(
   [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
-  [re2]=re2
-  [snappy]=snappy
-  [woff2]=woff2
+  #[re2]=re2          # needs libstdc++
+  #[snappy]=snappy    # needs libstdc++
+  #[woff2]=woff2      # needs libstdc++
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
@@ -121,17 +123,17 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
+  patch -Np1 -i ../libxml2-2.12.patch
 
-  # Revert addition of compiler flag that needs newer clang
-  patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
+  # Drop compiler flags that need newer clang
+  patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-114-vk_mem_alloc-include.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-119-FragmentDataIterator-std.patch
+  #patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
+  #patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
   patch -Np1 -i ../chromium-patches-*/chromium-119-at-spi-variable-consumption.patch
   patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
+  #patch -Np1 -i ../chromium-patches-*/chromium-120-std-nullptr_t.patch
 
   # Implement text_input_manager_v3
   # https://chromium-review.googlesource.com/c/chromium/src/+/3750452
@@ -192,7 +194,7 @@ build() {
     'proprietary_codecs=true'
     'rtc_use_pipewire=true'
     'link_pulseaudio=true'
-    'use_custom_libcxx=false'
+    'use_custom_libcxx=true' # https://github.com/llvm/llvm-project/issues/61705
     'use_sysroot=false'
     'use_system_libffi=true'
     'enable_hangout_services_extension=true'
