@@ -1,0 +1,19 @@
+pkgbase = owrx_connector-luarvique
+	pkgdesc = Connectors used by OpenWebRX to interface with SDR hardware.
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/luarvique/owrx_connector
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = csdr
+	depends = libsamplerate
+	optdepends = rtl-sdr: RTLSDR dongles support.
+	optdepends = soapysdr: Allows interfacing with SDRs of many vendors.
+	provides = owrx_connector
+	conflicts = owrx_connector
+	source = owrx_connector-luarvique::git+https://github.com/luarvique/owrx_connector#commit=8bc8c17f235326ba25dbb9f1015dc649e91faa75
+	md5sums = SKIP
+
+pkgname = owrx_connector-luarvique
