@@ -1,0 +1,18 @@
+pkgbase = gerbil-scheme-bin
+	pkgdesc = Gerbil is an opinionated dialect of Scheme designed for Systems Programming, with a state of the art macro and module system on top of the Gambit runtime.
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = https://cons.io
+	arch = x86_64
+	license = LGPLv2.1
+	license = Apache 2.0
+	makedepends = git
+	depends = openssl
+	depends = zlib
+	depends = sqlite
+	provides = gerbil-scheme
+	conflicts = gerbil-scheme
+	source_x86_64 = https://github.com/mighty-gerbils/gerbil/releases/download/v0.18.1/gerbil-v0.18.1-linux-x86-64.tar.gz
+	sha256sums_x86_64 = 96c72dbf73d8de3e8ebdecf08b78a87d0570ea1e8ac8d638a8dc1be70a731227
+
+pkgname = gerbil-scheme-bin
