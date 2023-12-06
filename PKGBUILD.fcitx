@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=87c5a45b9a68bf999567ae8f4363857db9cb8d20
+_mozc_commit=8d8ea39c6e515c6734041ae6d8b65a2d5b617a1f
 _branch=fcitx
 # Ut Dictionary
 _utdicdate=20230115
