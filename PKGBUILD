@@ -11,7 +11,7 @@ arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
 license=('custom:GPL2 with runtime exception')
 depends=("dune-common>=${pkgver}" arpack)
-makedepends=(texlive-latexextra biber doxygen graphviz python-scikit-build python-ninja)
+makedepends=(texlive-latexextra biber doxygen graphviz python-scikit-build)
 optdepends=('vc: C++ Vectorization library'
   'doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'

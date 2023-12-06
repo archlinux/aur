@@ -10,7 +10,6 @@ pkgbase = dune-istl
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scikit-build
-	makedepends = python-ninja
 	depends = dune-common>=2.9.0
 	depends = arpack
 	optdepends = vc: C++ Vectorization library
