@@ -1,3 +1,14 @@
+## Changes in 1.7.10
+
+- Fix application freezing under heavy load, usually with the git storage
+- Fix git storage asking multiple times for login information when needed
+- Fix git storage push failing when login information was required
+- Fix rpm installation upgrade removing desktop file
+- Make exit timeout always run to quit after max 30 seconds
+- Improve readme description for causes of an empty git storage
+- Add chmod file browser action
+- Many other small miscellaneous fixes and improvements
+
 ## Changes in 1.7.9
 
 ### Git storage rework
@@ -31,5 +42,3 @@ It is recommended to start with a remote git repository from scratch though to p
 - Fix some license related errors
 - Fix Windows os detection on remote servers if cmd was not available
 - Many other small miscellaneous fixes and improvements
-
-Please make sure to report any issue you can find. This helps the development a lot.
