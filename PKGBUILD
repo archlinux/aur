@@ -3,7 +3,7 @@
 pkgbase=xguipro
 pkgname=(xguipro-gtk3)
 pkgver=0.8.4
-pkgrel=1
+pkgrel=3
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=(x86_64
     aarch64
@@ -20,7 +20,7 @@ conflicts=(${pkgbase})
 replaces=()
 depends=(
 # xguipro-gtk3
-#         webkit2gtk
+    webkit2gtk
 # # xguipro-gtk4
 #         webkit2gtk-4.1
     curl
@@ -47,8 +47,8 @@ makedepends=(
     llvm
 
 # # xguipro-gtk3
-#             gtk3
-#             libsoup
+    gtk3
+    libsoup
 # # xguipro-gtk4
 #             gtk4
 #             libsoup3
