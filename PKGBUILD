@@ -2,8 +2,8 @@
 
 pkgbase=fonts-cjk
 pkgname=($pkgbase{,-jp-seto,-sc-{zcool,pangmenzhengdao,huxiaobo,yrdzst,opposans,baotuxiaobaiti,shoushuti,youshe,zhenyangb},-tc-qingsongshouxieti})
-pkgver=1.0.2
-pkgrel=2
+pkgver=r17.6c32da2
+pkgrel=1
 arch=(any)
 url='https://gitee.com/atzlinux/fonts-zh-cn-business-free-atzlinux'
 license=(custom)
@@ -15,6 +15,12 @@ makedepends=('git')
 source=("${pkgbase}"'::git+https://gitee.com/atzlinux/fonts-zh-cn-business-free-atzlinux.git')
 
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgbase}/"
+#     git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 package_fonts-cjk() {
     export LC_CTYPE="zh_CN.UTF-8"

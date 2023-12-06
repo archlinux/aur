@@ -1,6 +1,6 @@
 pkgbase = fonts-cjk
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = r17.6c32da2
+	pkgrel = 1
 	url = https://gitee.com/atzlinux/fonts-zh-cn-business-free-atzlinux
 	arch = any
 	license = custom
@@ -43,4 +43,3 @@ pkgname = fonts-cjk-sc-zhenyangb
 
 pkgname = fonts-cjk-tc-qingsongshouxieti
 	pkgdesc = 清松手写体的版权归开发者游清松所有，但开放给所有人免费使用（包含商业使用）。
-
