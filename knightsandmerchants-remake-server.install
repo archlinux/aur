@@ -1,4 +1,5 @@
 post_install() {
+    getent group games &>/dev/null || groupadd -r games >/dev/null
 	echo ""
 	echo "==> You will find logs and configs in /usr/share/knightsandmerchants-remake-server/"
 	echo "==> There's also a html log file, just point your browser to the server directory."

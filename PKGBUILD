@@ -2,7 +2,7 @@
 
 pkgname='knightsandmerchants-remake-server'
 pkgver='r6720'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Dedicated server for the Knights And Merchants Remake (strategy game)'
 url='http://www.kamremake.com'
 arch=('x86_64' 'i686')
