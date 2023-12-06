@@ -1,6 +1,6 @@
 pkgbase = leapp-bin
 	pkgdesc = Leapp is a Desktop DevTool that handles the management and security of your cloud credentials for you, converted from .deb package
-	pkgver = 0.22.1
+	pkgver = 0.22.2
 	pkgrel = 1
 	url = https://www.leapp.cloud/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = leapp-bin
 	depends = at-spi2-core
 	depends = aws-session-manager-plugin
 	provides = leapp
-	source = Leapp_0.22.1_amd64.deb::https://asset.noovolari.com/0.22.1/Leapp_0.22.1_amd64.deb
-	sha512sums = 74df6038393220708514681acdcbe77ac9213789ca4d88277f6c56ce40fb47dff125e789d8b898115cfbcc8d161f43e43a0878375fb39e94b8d6fbfe27e7023b
+	source = Leapp_0.22.2_amd64.deb::https://asset.noovolari.com/0.22.2/Leapp_0.22.2_amd64.deb
+	sha512sums = dd67cbe57fdc0e918cc807f7db2bb4f7e1eeedaaf41147964e5ea25f0956fa01e97cb2c55103e45000fb7f37c0ed6c3a10a2f7386bd3cd6a31749d305aaeb071
 
 pkgname = leapp-bin
