@@ -1,6 +1,6 @@
 pkgbase = libadwaita-testing
 	pkgdesc = Building blocks for modern adaptive GNOME applications
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://gnome.pages.gitlab.gnome.org/libadwaita/
 	arch = x86_64
@@ -15,15 +15,14 @@ pkgbase = libadwaita-testing
 	makedepends = libgtk-4.so
 	depends = gtk4
 	depends = appstream
-	options = debug
-	source = git+https://gitlab.gnome.org/GNOME/libadwaita.git#commit=b7e835df75cba85eced19ccde3b7d9727c104e24
+	source = git+https://gitlab.gnome.org/GNOME/libadwaita.git#commit=fd5892e94ddd9baf44dcfb2faaa97211a2532d6d
 	b2sums = SKIP
 
 pkgname = libadwaita-testing
 	depends = gtk4
 	depends = appstream
 	depends = libgtk-4.so
-	provides = libadwaita=1:1.4.1
+	provides = libadwaita=1:1.4.2
 	provides = libadwaita-1.so
 	conflicts = libadwaita
 
