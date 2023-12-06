@@ -1,0 +1,16 @@
+pkgbase = dockbarx-mate-applet
+	pkgdesc = DockBarX MATE applet
+	pkgver = 1.0+1+g393d469
+	pkgrel = 1
+	url = https://github.com/xuzhen/dockbarx-mate-applet
+	arch = any
+	license = GPL3
+	depends = dockbarx>=1.0beta3+9+g6c3abc0
+	depends = mate-panel
+	provides = dockbarx-mate-applet=1.0+1+g393d469
+	conflicts = dockbarx-mate-applet
+	conflicts = dockbarx<1.0beta3+9+g6c3abc0
+	source = dockbarx-mate-applet::git+https://github.com/xuzhen/dockbarx-mate-applet.git#commit=393d469bcc7deff7f09e596cc3284b399f546369
+	sha256sums = SKIP
+
+pkgname = dockbarx-mate-applet
