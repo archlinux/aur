@@ -12,36 +12,43 @@ note() {
 }
 
 post_install() {
-    sysctl -q --system
-    systemctl --quiet daemon-reload
-    echo
-    noteb "Please start and enable service:"
-    echo "sudo systemctl enable --now wireguard-ui"
-    echo
-    note "Then open in browser http://<ip_server>:5000"
-    noteb "The default username and password are 'admin'. Please change it to secure your setup!"
-    echo
-    noteb "REQUIRED: Also specify in server settings PostUp and PostDown scripts:"
-    echo "PostUp:   '/opt/wireguard-ui/wgiptables up'"
-    echo "PostDown: '/opt/wireguard-ui/wgiptables down'"
-    echo
-    noteb "Then save server settings and finally start wg server:"
-    echo "sudo systemctl enable --now wg-reload.{service,path}"
-    echo
+  sysctl -q --system
+  systemctl --quiet daemon-reload
+  useradd -r -U -s /usr/bin/nologin -m -d /var/lib/wireguard-ui wireguard-ui
+  [ ! -f "/etc/wireguard/wg0.conf" ] && { mkdir -p /etc/wireguard/; touch /etc/wireguard/wg0.conf; }
+  setfacl -m wireguard-ui:rw /etc/wireguard/wg0.conf
+  echo
+  noteb "Please start and enable service:"
+  echo  "sudo systemctl enable --now wireguard-ui"
+  echo
+  note  "Then open in browser http://<ip_server>:5000"
+  noteb "The default username and password are 'admin'. Please change it to secure your setup!"
+  echo
+  noteb "REQUIRED: Also specify in server settings PostUp and PostDown scripts:"
+  echo  "PostUp:   '/usr/bin/wgiptables up'"
+  echo  "PostDown: '/usr/bin/wgiptables down'"
+  echo
+  noteb "Then save server settings and finally start wg server:"
+  echo  "sudo systemctl enable --now wgui.{service,path}"
+  echo
+  noteb "Optional: Also you could create /etc/wireguard-ui/environment.conf file."
+  echo  "More info: https://github.com/ngoduykhanh/wireguard-ui#environment-variables"
+  echo
 }
 
 post_upgrade() {
-	post_install
+  sysctl -q --system
+  systemctl --quiet daemon-reload
 }
 
 pre_remove() {
-    systemctl --quiet --no-reload disable --now wireguard-ui.service
-    systemctl --quiet --no-reload disable --now wg-reload.path
-    systemctl --quiet --no-reload disable --now wg-reload.service
+  systemctl --quiet --no-reload disable --now wireguard-ui.service
+  systemctl --quiet --no-reload disable --now wgui.path
+  systemctl --quiet --no-reload disable --now wgui.service
 }
 
 post_remove() {
-    note "Old settings are located in /opt/wireguard-ui/db, skip removing."
-	systemctl --quiet daemon-reload
-    sysctl -q --system
+  note "Old settings are located in /var/lib/wireguard-ui/db, skip removing."
+  systemctl --quiet daemon-reload
+  sysctl -q --system
 }

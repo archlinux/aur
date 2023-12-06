@@ -1,12 +1,23 @@
 [Unit]
-Description=Wireguard web interface
+Description=A web user interface to manage your WireGuard setup
 Documentation=https://github.com/ngoduykhanh/wireguard-ui
-Wants=network-online.target
-After=network-online.target nss-lookup.target
+ConditionPathExists=/var/lib/wireguard-ui
+After=network.target
 
 [Service]
-WorkingDirectory=/opt/wireguard-ui
-ExecStart=/opt/wireguard-ui/wireguard-ui
+Type=simple
+User=wireguard-ui
+Group=wireguard-ui
+
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH CAP_NET_ADMIN CAP_NET_RAW
+AmbientCapabilities=CAP_DAC_READ_SEARCH CAP_NET_ADMIN CAP_NET_RAW
+
+WorkingDirectory=/var/lib/wireguard-ui
+EnvironmentFile=-/etc/wireguard-ui/environment.conf
+ExecStart=/usr/bin/wireguard-ui
+
+Restart=on-failure
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
