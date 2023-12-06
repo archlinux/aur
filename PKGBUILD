@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=waveterm
 _pkgname=Wave
-pkgver=0.5.0
+pkgver=0.5.1
 _electronversion=27
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
@@ -24,18 +24,26 @@ makedepends=(
     'git'
     'go>=1.18'
     'scripthaus'
+    'make'
+    'gcc'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'e85053336764cf8115d7ddcfc7a5260db9d7feed643ad7a5b3cdb7c5a41efb4a')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --categories "Utility" --exec "${pkgname}"
-    sed -i "s|@electronversion@|${_electronversion}|" "${srcdir}/${pkgname}.sh"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    yarn
+    export CGO_ENABLED=1
+    export GOCACHE="${srcdir}/go-build"
+    export GOMODCACHE="${srcdir}/go/pkg/mod"
+    yarn --cache-folder "${srcdir}/.yarn_cache"
     scripthaus run electron-rebuild
     scripthaus run build-backend
     scripthaus run build-package
