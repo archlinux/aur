@@ -1,0 +1,13 @@
+[Unit]
+Description=zone-mta - Modern outbound MTA cross platform and extendable server application
+Documentation=https://github.com/zone-eu/zone-mta
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/lib/node_modules/zone-mta/
+ExecStart=/usr/bin/node app.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
