@@ -1,12 +1,12 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index 7bb1dfd..b1bf31b 100644
+index 66cb712..df9a0d6 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -24,14 +24,14 @@ authors = [
      {name = "Lyz", email = "lyz@riseup.net"},
  ]
  license = {text = "GPL-3.0-only"}
--requires-python = ">=3.7"
+-requires-python = ">=3.8"
 +requires-python = ">=3.10"
  dependencies = [
      "click>=8.1.3",
@@ -14,12 +14,21 @@ index 7bb1dfd..b1bf31b 100644
      "pyprojroot>=0.2.0",
      "sh>=1.14.2",
      "maison>=1.4.0",
--    "xdg>=5.1.1",
+-    "xdg>=6.0.0",
 +    "xdg-base-dirs>=6.0.0",
  ]
  name = "autoimport"
  description = "Autoimport missing python libraries."
-@@ -379,6 +379,6 @@ module = [
+@@ -44,8 +44,6 @@ classifiers=[
+     "Operating System :: POSIX",
+     "Programming Language :: Python",
+     "Programming Language :: Python :: 3",
+-    "Programming Language :: Python :: 3.8",
+-    "Programming Language :: Python :: 3.9",
+     "Programming Language :: Python :: 3.10",
+     "Programming Language :: Python :: 3.11",
+     "Topic :: Utilities",
+@@ -381,6 +379,6 @@ module = [
      "pyprojroot",
      "sh",
      "virtualenv",
@@ -28,30 +37,17 @@ index 7bb1dfd..b1bf31b 100644
  ]
  ignore_missing_imports = true
 diff --git a/src/autoimport/entrypoints/cli.py b/src/autoimport/entrypoints/cli.py
-index 17663fa..061df27 100644
+index 0c2ca98..9a67ddd 100644
 --- a/src/autoimport/entrypoints/cli.py
 +++ b/src/autoimport/entrypoints/cli.py
-@@ -6,7 +6,7 @@ from pathlib import Path
- from typing import Any, List, Optional, Sequence, Tuple, Union
+@@ -6,9 +6,7 @@ from typing import IO, Any, List, Optional, Sequence, Tuple, Union
  
  import click
+ 
+-# Migrate away from xdg to xdg-base-dirs once only Python >= 3.10 is supported
+-# https://github.com/lyz-code/autoimport/issues/239
 -import xdg
 +import xdg_base_dirs as xdg
  from maison.config import ProjectConfig
  
  from autoimport import services, version
-diff --git a/src/autoimport/model.py b/src/autoimport/model.py
-index 2e79264..573a983 100644
---- a/src/autoimport/model.py
-+++ b/src/autoimport/model.py
-@@ -358,8 +358,8 @@ class SourceCode:  # noqa: R090
-         # Find the package name
-         try:
-             project_package = os.path.basename(here()).replace("-", "_")
--        except RecursionError:  # pragma: no cover
--            # I don't know how to make a test that raises this error :(
-+        except RuntimeError:  # pragma: no cover
-+            # I don't know how to make a test that raises it :(
-             # To manually reproduce, follow the steps of
-             # https://github.com/lyz-code/autoimport/issues/131
-             return None
