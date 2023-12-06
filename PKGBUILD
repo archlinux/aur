@@ -3,13 +3,13 @@
 
 _pkgname=lxqt-qt6plugin
 pkgname=$_pkgname-git
-pkgver=1.2.0.2.g39513e5
+pkgver=1.3.0.3.g8e8a2b3
 pkgrel=1
 pkgdesc="LXQt platform integration for Qt"
 arch=("i686" "x86_64")
 url="https://lxqt.org"
 license=("GPL2")
-depends=("libdbusmenu-qt6" "libqt6xdg-git" "libfm-qt6-git")
+depends=("libdbusmenu-lxqt-git" "libqt6xdg-git" "libfm-qt6-git")
 makedepends=("git" "cmake" "qt6-tools" "lxqt-build-tools-qt6-git")
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
