@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alspotron-bin
 _pkgname=Alspotron
-pkgver=0.16.4
+pkgver=0.18.0
+_electronversion=28
 pkgrel=1
 pkgdesc="Shows the egg lyrics of the track, playing on Spotify / YouTube Music"
 arch=('x86_64')
@@ -33,8 +34,10 @@ depends=(
     'libx11'
     'mesa'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('8bba356b0d504f6e9bfb3935d262d3aa76c47fe4ce8dde56a7ce040143f9a157')
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+)
+sha256sums=('22777dbcc44f4e365b19ef5c8d88498d941d582bcfdd21454604a1cc6f69e06c')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
