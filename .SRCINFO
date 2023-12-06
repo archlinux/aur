@@ -1,6 +1,6 @@
 pkgbase = s3backer-nbd-git
 	pkgdesc = FUSE-based single file backing store via Amazon S3 (with NBD support)
-	pkgver = 2.0.2.r4.gc657cee
+	pkgver = 2.1.1.r5.gb3db142
 	pkgrel = 1
 	url = https://github.com/archiecobbs/s3backer
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = s3backer-nbd-git
 	provides = s3backer
 	conflicts = s3backer
 	source = s3backer-nbd-git::git+https://github.com/archiecobbs/s3backer
+	source = s3backer-nbd.tmpfiles
 	sha512sums = SKIP
+	sha512sums = 6b40732b4ff869af195b260fd14ced0af07787d0400ada41fde39249a280a1074079f2517c160d936fb13f2676fa138a27fbc15eff21d517b3a866d4a6f85406
 
 pkgname = s3backer-nbd-git
