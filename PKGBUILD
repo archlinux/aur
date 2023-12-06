@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lisk-desktop-bin
-pkgver=3.0.0_rc.5
+pkgver=3.0.0
+_electronversion=27
 pkgrel=1
 pkgdesc="Lisk graphical user interface for desktop"
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron25'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'libx11'
     'gdk-pixbuf2'
@@ -23,12 +24,16 @@ makedepends=(
     'squashfuse'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-desktop-bin}-linux-${CARCH}-${pkgver//_/-}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-desktop-bin}-linux-${CARCH}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('70a5076d84531d7c7b4f15071e57c10dfec9d34ded52147f9753b5236b769ece'
-            'ed2d2a181a7199c99e132ee5ca64a53776d31de753f1ed9a715a514106333299')
+sha256sums=('f7b6db2374de380c9ec2fbb6f3986bf1efe77525ab8ebdf7caf0992aa5760826'
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
