@@ -1,6 +1,6 @@
 pkgbase = r-qs
 	pkgdesc = Quick Serialization of R Objects
-	pkgver = 0.25.6
+	pkgver = 0.25.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=qs
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-qs
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/qs_0.25.6.tar.gz
-	sha256sums = ac1e0041fbdd75c454d61305b5c14300b1e3f51a9b824ede2dcacf8312a62aee
+	source = https://cran.r-project.org/src/contrib/qs_0.25.7.tar.gz
+	sha256sums = e7332be3a6469236b9556aee83f47f0b626378c88d248d80830a4c7193571228
 
 pkgname = r-qs
