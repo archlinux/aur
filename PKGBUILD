@@ -9,7 +9,7 @@ arch=(any)
 url='https://github.com/nschloe/stressberry'
 license=(GPL3)
 depends=(python-matplotlib python-yaml python-matplotx stress)
-makedepends=(python-pytest python-setuptools python-build python-install python-wheel)
+makedepends=(python-pytest python-setuptools python-build python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nschloe/$pkgname/archive/v$pkgver.tar.gz"
 0001-convert-to-matplotx-from-dufte.patch::https://github.com/nschloe/stressberry/commit/55501513eaa2497c955daaa2179ca5c2e48eaa6b.patch)
 b2sums=('3ebdcc0f0a951b9a0c8a5a35d96cda2edc535b58f08abeb3eefb281a7bb6c582e66e9eb601acce6c79ad92320c0b97ef481d2e76ffa97ae7e7033a5a7e9c38a3'
