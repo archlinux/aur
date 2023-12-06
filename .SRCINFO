@@ -1,6 +1,6 @@
 pkgbase = python-varname
 	pkgdesc = A Python library to retrieve variable names from functions or classes
-	pkgver = 0.12.0
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/pwwang/python-varname
 	arch = any
@@ -12,10 +12,12 @@ pkgbase = python-varname
 	makedepends = python-poetry
 	makedepends = python-virtualenv
 	makedepends = python-cachecontrol
-	makedepends = python-poetry-plugin-export-git
-	makedepends = python-jsonschema4.17
+	makedepends = python-poetry-plugin-export
+	makedepends = python-jsonschema
 	depends = python
-	source = https://github.com/pwwang/python-varname/archive/refs/tags/0.12.0.tar.gz
-	sha512sums = f48b4372b133a0780fa47c6d1dbb69c2ae396f3c059a82f086e6fb07b90d1ab53a8896dcf63c93c6326b4949000a71ff331de4defd37a0fbdf2f8476e4da2282
+	source = https://files.pythonhosted.org/packages/py3/v/varname/varname-0.12.2-py3-none-any.whl
+	source = https://raw.githubusercontent.com/pwwang/python-varname/master/LICENSE
+	sha512sums = 885e6d97fe8e4492d6d34c8e4305264f9d3c8f99fdd11e58434e699b4b6e3058a77d7ba68623a6d34c799dc4a1bd92ae4756c27643a4285464c787ab98b77874
+	sha512sums = 2828675fdc0587a146cdefb17d5c6fb9f3bd657a57c920bf0bc49a6c4dcc1e7a462b2c918d3b724510e85966eb02f66b2a96bcb4f368613fec18992c429f2c84
 
 pkgname = python-varname
