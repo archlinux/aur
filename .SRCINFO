@@ -8,7 +8,6 @@ pkgbase = dune-fem
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scikit-build
-	makedepends = python-ninja
 	depends = dune-alugrid>=2.9.0
 	depends = dune-istl>=2.9.0
 	depends = dune-localfunctions>=2.9.0

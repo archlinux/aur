@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
 license=('GPL2')
 depends=("dune-alugrid>=${pkgver::5}" "dune-istl>=${pkgver::5}" "dune-localfunctions>=${pkgver::5}" python-matplotlib python-scipy python-fenics-ufl)
-makedepends=(doxygen graphviz python-scikit-build python-ninja)
+makedepends=(doxygen graphviz python-scikit-build)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
   'eigen: Lightweight C++ template library for vector and matrix math'
