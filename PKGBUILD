@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -95,13 +95,16 @@ depends=(
   libdrm
   freetype2
   libgl
+  harfbuzz
   libiec61883
   "libjxl>=$_libjxl"
   libmodplug
   libopenmpt
+  libplacebo
   libpulse
   libraw1394
   librsvg
+  rubberband
   libsoxr
   libssh
   libtheora
@@ -123,6 +126,7 @@ depends=(
   opus
   rav1e
   sdl2
+  snappy
   speex
   v4l-utils
   vulkan-icd-loader
@@ -139,6 +143,7 @@ makedepends=(
   avisynthplus
   clang
   "ffnvcodec-headers>=$_ffnvcodecver"
+  frei0r-plugins
   ladspa
   mesa
   nasm
@@ -147,8 +152,11 @@ makedepends=(
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
+  'frei0r-plugins: Frei0r video effects support'
+  'intel-media-sdk: Intel QuickSync support (legacy)'
   'ladspa: LADSPA filters'
   'nvidia-utils: Nvidia NVDEC/NVENC support'
+  'onevpl-intel-gpu: Intel QuickSync support'
 )
 provides=(
   "ffmpeg=$pkgver"
@@ -191,6 +199,7 @@ _args=(
   --enable-amf
   --enable-avisynth
   --enable-libfontconfig
+  --enable-fontconfig
   --enable-gmp
   --enable-gnutls
   --enable-gpl
@@ -204,6 +213,7 @@ _args=(
   --enable-libfreetype
   --enable-libfribidi
   --enable-libgsm
+  --enable-libharfbuzz
   --enable-libiec61883
   --enable-libjack
   --enable-libjxl
@@ -214,9 +224,12 @@ _args=(
   --enable-libopenjpeg
   --enable-libopenmpt
   --enable-libopus
+  --enable-libplacebo
   --enable-libpulse
   --enable-librav1e
   --enable-librsvg
+  --enable-librubberband
+  --enable-libsnappy
   --enable-libsoxr
   --enable-libspeex
   --enable-libsrt
@@ -347,28 +360,26 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
   # uavs3d >= 1.1.41 is required by ffmpeg so switch to uavs3d-git
   # lensfun >= 0.3.95 seems to needed with ffmpeg so switch to lensfun-git
   depends+=(
-    sndio 'chromaprint-fftw' frei0r-plugins libgcrypt
+    sndio 'chromaprint-fftw' libgcrypt
     aribb24 libcaca 'celt' libcdio-paranoia codec2
     'davs2' libdc1394 flite1 libgme libilbc 'libklvanc'
-    kvazaar 'lensfun-git' 'openh264' librabbitmq-c rubberband
-    rtmpdump 'shine' smbclient snappy tesseract
+    kvazaar 'lensfun-git' 'openh264' librabbitmq-c
+    rtmpdump 'shine' smbclient tesseract
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
     zvbi lv2 lilv libmysofa openal
-    vapoursynth libomxil-bellagio 'rockchip-mpp' libplacebo #'pocketsphinx'
-    lcms2 cairo glib2 harfbuzz libraw1394 openvino libaribcaption
-    opencv2 
+    vapoursynth libomxil-bellagio 'rockchip-mpp' #'pocketsphinx'
+    lcms2 libraw1394 openvino libaribcaption opencv2
   )
   _args+=(
-    --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-frei0r --enable-gcrypt
+    --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-gcrypt
     --enable-libaribb24 --enable-libcaca --enable-libcelt --enable-libcdio --enable-libcodec2
     --enable-libdavs2 --enable-libdc1394 --enable-libflite --enable-libgme --enable-libilbc --enable-libklvanc
-    --enable-libkvazaar --enable-liblensfun --enable-libopenh264 --enable-librabbitmq --enable-librubberband
-    --enable-librtmp --enable-libshine --enable-libsmbclient --enable-libsnappy --enable-libtesseract
+    --enable-libkvazaar --enable-liblensfun --enable-libopenh264 --enable-librabbitmq
+    --enable-librtmp --enable-libshine --enable-libsmbclient --enable-libtesseract
     --enable-libtwolame --enable-libuavs3d --enable-libvo-amrwbenc --enable-libxavs --enable-libxavs2 --enable-libzmq
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal
-    --enable-vapoursynth --enable-omx --enable-rkmpp --enable-libplacebo #--enable-pocketsphinx
-    --enable-lcms2 --enable-libharfbuzz --enable-libopenvino --enable-libaribcaption
-    --enable-libopencv
+    --enable-vapoursynth --enable-omx --enable-rkmpp #--enable-pocketsphinx
+    --enable-lcms2 --enable-libopenvino --enable-libaribcaption --enable-libopencv
   )
   provides+=(ffmpeg-full)
 else
@@ -389,9 +400,6 @@ if [[ $_nonfree_enabled == 'ON' ]]; then
   _args+=(--enable-nonfree)
 fi
 
-# Avoid failing because of texinfo 7.1
-_args+=(--disable-htmlpages)
-
 prepare() {
   cd ffmpeg
 
@@ -404,6 +412,12 @@ prepare() {
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
+  
+  # Fix VDPAU vo
+  git cherry-pick -n e9c93009fc34ca9dfcf0c6f2ed90ef1df298abf7
+  # Fix bug in av_fft_end
+  git cherry-pick -n a562cfee2e214252f8b3f516527272ae32ef9532
+  git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
 
   ### OBS changes
 
@@ -449,3 +463,4 @@ package() {
     install -D -m644 license_if_nonfree_enabled.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
 }
+

@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-obs
 	pkgdesc = Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD
 	pkgver = 6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = ffmpeg-obs
 	makedepends = avisynthplus
 	makedepends = clang
 	makedepends = ffnvcodec-headers>=12.0.16.0
+	makedepends = frei0r-plugins
 	makedepends = ladspa
 	makedepends = mesa
 	makedepends = nasm
@@ -38,13 +39,16 @@ pkgbase = ffmpeg-obs
 	depends = libdrm
 	depends = freetype2
 	depends = libgl
+	depends = harfbuzz
 	depends = libiec61883
 	depends = libjxl>=0.7.0
 	depends = libmodplug
 	depends = libopenmpt
+	depends = libplacebo
 	depends = libpulse
 	depends = libraw1394
 	depends = librsvg
+	depends = rubberband
 	depends = libsoxr
 	depends = libssh
 	depends = libtheora
@@ -66,6 +70,7 @@ pkgbase = ffmpeg-obs
 	depends = opus
 	depends = rav1e
 	depends = sdl2
+	depends = snappy
 	depends = speex
 	depends = v4l-utils
 	depends = vulkan-icd-loader
@@ -79,8 +84,11 @@ pkgbase = ffmpeg-obs
 	depends = svt-av1>=1.7
 	depends = vmaf>=2
 	optdepends = avisynthplus: AviSynthPlus support
+	optdepends = frei0r-plugins: Frei0r video effects support
+	optdepends = intel-media-sdk: Intel QuickSync support (legacy)
 	optdepends = ladspa: LADSPA filters
 	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
+	optdepends = onevpl-intel-gpu: Intel QuickSync support
 	provides = ffmpeg=6.1
 	provides = libavcodec.so
 	provides = libavdevice.so
