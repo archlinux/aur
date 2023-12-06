@@ -9,7 +9,7 @@ pkgname=(
   libxml2
   libxml2-docs
 )
-pkgver=2.12.1
+pkgver=2.12.2
 pkgrel=1
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
@@ -26,7 +26,7 @@ makedepends=(
   git
   python
 )
-_commit=f4ac9926a463ecb628f73049e4fd7ecced8fb7cf  # tags/v2.12.1^0
+_commit=4d8fa5b292fc902268217fa0f7031e77e5437b5a  # tags/v2.12.2^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
   0001-HACK-Don-t-run-fuzzing-tests.patch
