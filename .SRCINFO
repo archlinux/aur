@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
 	pkgver = 2.29.5291.102
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = custom
@@ -27,6 +27,7 @@ pkgbase = mozc-with-jp-dict
 	source = LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL
 	source = LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING
 	source = 0001-Zombie-Process-Prevention.patch
+	source = dicts.txt
 	source = https://github.com/phoepsilonix/mozcdic-ut-neologd/releases/download/latest/mozcdic-ut-neologd.txt.tar.bz2
 	source = LICENSE-neologd::https://github.com/phoepsilonix/mozcdic-ut-neologd/raw/main/LICENSE
 	sha512sums = SKIP

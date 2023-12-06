@@ -30,7 +30,7 @@ _sudachidict_date=20230927
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5291.102
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -48,6 +48,7 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
         "LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING"
         "0001-Zombie-Process-Prevention.patch"
+        "dicts.txt"
         )
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
@@ -128,6 +129,8 @@ build() {
   ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
   cd ..
 
+  # added dicts.txt
+  cat ${srcdir}/dicts.txt >> all-dict.txt
   #cd neologd || exit
   #msg '3. Run the ruby scripts as in original neologd.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   #xz -k -d -c ${srcdir}/mecab-ipadit-neologd/upstream/seed/mecab-*.xz > user-dict-seed.csv
