@@ -7,7 +7,7 @@ pkgbase=wayland-chromium
 _pkgbase=wayland
 pkgname=(wayland-chromium wayland-docs-chromium)
 pkgver=1.21.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A computer display server protocol (chromium version)'
 arch=('x86_64')
 url='https://wayland.freedesktop.org/'
@@ -18,19 +18,22 @@ validpgpkeys=('C7223EBE4EF66513B892598911A30156E0E67611'  # Bryce Harrington
               'C0066D7DB8E9AC6844D728715E54498E697F11D7'  # Derek Foreman
               '34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48') # emersion <contact@emersion.fr>
 source=("https://gitlab.freedesktop.org/wayland/wayland/-/releases/$pkgver/downloads/wayland-$pkgver.tar.xz"{,.sig})
+sha256sums=('6dc64d7fc16837a693a51cfdb2e568db538bfdc9f457d4656285bb9594ef11ac'
+            'SKIP')
 source=(${source[@]}
         0001-Apply-WIP-CL-from-upstream-wayland.patch
         0002-Set-the-default-max-buffer-size-to-unbounded.patch
         0003-Log-the-object-and-methods-when-marshalling-or-sendi.patch
         0004-wayland-Fix-buffer-resize-crash.patch
-        0005-Only-sort-types-if-they-have-size-0.patch)
-sha256sums=('6dc64d7fc16837a693a51cfdb2e568db538bfdc9f457d4656285bb9594ef11ac'
-            'SKIP'
-            'd0ce5dda47491d650c73da33c38e1e93c9fdb66d07bee97a401458c8085b0594'
-            '149fb1e829d3de415ee05d716e5baf662ab04f4d99a2f57ddfb69adf16a996ac'
-            'a9151f9737823b17c214082c5944764d417aec4302ead044689d9df2da0280cb'
-            '099559b83be22911028b12b6021d1bf024bfaca2c2c1816d83d483479c943c35'
-            'e1d44d14f2cd87f2dbc6d0c9cdc9dfa552b26ff1a271b191d941b2d4b67fb819')
+        0005-Only-sort-types-if-they-have-size-0.patch
+        0006-connection-avoid-calling-memcpy-on-NULL-0.patch)
+sha256sums=(${sha256sums[@]}
+            '8e2b814e187f397d630581c10f4da6c1de412a473491b01bba1b06948c84f02d'
+            '65a26422be2cd3b4ff3f3a97f35c975bee513330cba7833add465cdab29e9422'
+            'a4a5b6f84ea243aec1389d16fa34cb1ab50bf71a03927ab5ee6b20271a0f1b95'
+            'b6d0fdc6d081becbc08e8dd8141e9f65a3459d0662e4f5571b757ef4d2382906'
+            '249ecb34ad1385440887af54a29709f68e6198257cc798773b35b4860bd6a4be'
+            'bd8516b6049cdda08cef939296735ff35ce9b00be043fcf8059d8d3fa51a0cee')
 
 prepare() {
   cd $_pkgbase-$pkgver
@@ -39,6 +42,7 @@ prepare() {
   patch -Np1 -i ../0003-Log-the-object-and-methods-when-marshalling-or-sendi.patch
   patch -Np1 -i ../0004-wayland-Fix-buffer-resize-crash.patch
   patch -Np1 -i ../0005-Only-sort-types-if-they-have-size-0.patch
+  patch -Np1 -i ../0006-connection-avoid-calling-memcpy-on-NULL-0.patch
 }
 
 build() {

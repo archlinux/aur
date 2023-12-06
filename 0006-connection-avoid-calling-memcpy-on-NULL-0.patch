@@ -1,0 +1,52 @@
+From af7f44122127b86a8c74cb7432909180f4899eaa Mon Sep 17 00:00:00 2001
+From: David Benjamin <davidben@google.com>
+Date: Wed, 8 Nov 2023 11:51:40 -0500
+Subject: connection: avoid calling memcpy on NULL, 0
+
+This imports
+https://gitlab.freedesktop.org/wayland/wayland/-/merge_requests/354 from
+upstream.
+
+Bug: 1394755
+Change-Id: If8f495b6aa70871920de9f66a1f1600dce917a10
+---
+ src/connection.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/connection.c b/src/connection.c
+index 276d147..75883c7 100644
+--- a/src/connection.c
++++ b/src/connection.c
+@@ -87,6 +87,9 @@ ring_buffer_put(struct wl_ring_buffer *b, const void *data, size_t count)
+ {
+ 	size_t head, size;
+ 
++	if (count == 0)
++		return 0;
++
+ 	head = ring_buffer_mask(b, b->head);
+ 	if (head + count <= ring_buffer_space(b)) {
+ 		memcpy(b->data + head, data, count);
+@@ -154,6 +157,9 @@ ring_buffer_copy(struct wl_ring_buffer *b, void *data, size_t count)
+ {
+ 	size_t tail, size;
+ 
++	if (count == 0)
++		return;
++
+ 	tail = ring_buffer_mask(b, b->tail);
+ 	if (tail + count <= ring_buffer_space(b)) {
+ 		memcpy(data, b->data + tail, count);
+@@ -1333,7 +1339,8 @@ serialize_closure(struct wl_closure *closure, uint32_t *buffer,
+ 			if (p + div_roundup(size, sizeof *p) > end)
+ 				goto overflow;
+ 
+-			memcpy(p, closure->args[i].a->data, size);
++			if (size != 0)
++				memcpy(p, closure->args[i].a->data, size);
+ 			p += div_roundup(size, sizeof *p);
+ 			break;
+ 		default:
+-- 
+2.43.0
+

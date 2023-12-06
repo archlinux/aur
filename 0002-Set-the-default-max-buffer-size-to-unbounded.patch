@@ -40,5 +40,5 @@ index a3a5032..1aafa2e 100644
  struct wl_object {
  	const struct wl_interface *interface;
 -- 
-2.42.0
+2.43.0
 

@@ -28,5 +28,5 @@ index 6a95603..0b7903b 100644
  	wl_array_for_each(p, &types) {
  		if (prev && strcmp(*p, prev) == 0)
 -- 
-2.42.0
+2.43.0
 
