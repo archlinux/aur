@@ -1,6 +1,6 @@
 # Maintainer: mickaelca <contact@mickael-caudrelier.fr>
 pkgname=kubescape-bin
-pkgver=2.9.1
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA"
 provides=('kubescape')
@@ -11,7 +11,7 @@ source=(
 $pkgname-$pkgver::https://github.com/armosec/kubescape/releases/download/v${pkgver}/kubescape-ubuntu-latest
 )
 sha256sums=(
-05238afc67b1954b88a90eb5b90eadb7c898e07a2c965d26b47453867cd495a2
+8cbccd2e74f1fea65863d26ba449070929b24b36c821b70cb8f037ed53be34a8
 )
 
 build() {

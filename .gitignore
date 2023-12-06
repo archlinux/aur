@@ -1,0 +1,4 @@
+kubescape-bin-*
+*.tar.zst
+pkg
+src
