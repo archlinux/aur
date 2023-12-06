@@ -4,9 +4,9 @@
 
 pkgbase=intellij-idea-ultimate-edition
 pkgname=(intellij-idea-ultimate-edition intellij-idea-ultimate-edition-jre)
-pkgver=2023.2.5
-pkgrel=2
-_buildver=232.10227.8
+pkgver=2023.3
+pkgrel=1
+_buildver=233.11799.241
 jbr_ver=17.0.8.1
 jbr_build=aarch64-b1059
 jbr_minor=3
@@ -19,14 +19,16 @@ source=("https://download.jetbrains.com/idea/ideaIU-$pkgver.tar.gz"
         "jetbrains-idea.desktop")
 source_aarch64=("https://cache-redirector.jetbrains.com/intellij-jbr/jbr-$jbr_ver-linux-$jbr_build.$jbr_minor.tar.gz"
                 "https://github.com/JetBrains/intellij-community/raw/master/bin/linux/aarch64/fsnotifier")
-sha256sums=('1fcffaa924f60d2d74a2494ee3a69e904ae0e91b491ad373639fab61f2568624'
+sha256sums=('bbd3d84dc2df0b4c85850c6de1ef703892828b7cbb3fd2bdc251d32430c91f3b'
             '83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b')
 sha256sums_aarch64=('edb2526aacb789f5442c47893dab324000aece64ef49771f228079c9395aadbf'
                     'eb3c61973d34f051dcd3a9ae628a6ee37cd2b24a1394673bb28421a6f39dae29')
 
 prepare() {
   # Extract the JRE from the main pacakge
-  rm -rf "$srcdir"/jbr
+  if [ -d "$srcdir"/jbr ]; then
+    rm -rf "$srcdir"/jbr
+  fi
 
   # https://youtrack.jetbrains.com/articles/IDEA-A-48/JetBrains-IDEs-on-AArch64#linux
   if [ "${CARCH}" == "aarch64" ]; then
@@ -35,10 +37,8 @@ prepare() {
     chmod +x "$srcdir"/idea-IU-$_buildver/bin/fsnotifier
     rm -rf "$srcdir"/idea-IU-$_buildver/jbr
   else
-    mv idea-IU-$_buildver/jbr "$srcdir"/jbr
+    mv "$srcdir"/idea-IU-$_buildver/jbr "$srcdir"/jbr
   fi
-
-
 }
 
 package_intellij-idea-ultimate-edition() {
