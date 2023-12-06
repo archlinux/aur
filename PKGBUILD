@@ -44,7 +44,7 @@ source=(
 )
 sha256sums=('SKIP'
             '07cde55d43e5f456f90867c5592a04e33e79e15db21faf2160a22357737bd029'
-            '8e1130cea819c02a4aeba47383767c172735959a71ea150f1f63716df2f388d1')
+            '28bd860a45b8795b0374c3660065a02e04adf20e3a3556bbd1d192f0cd554a7c')
 provides=(
     'codium'
     'vscodium'

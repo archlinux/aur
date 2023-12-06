@@ -2,7 +2,7 @@
 Name=VSCodium - URL Handler
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
-Exec=/opt/vscodium-git/bin/codium --open-url %U
+Exec=/usr/share/vscodium-git/bin/codium --open-url %U
 Icon=vscodium-git
 Type=Application
 NoDisplay=true
