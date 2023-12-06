@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=119.0.6045.199
+pkgver=120.0.6099.62
 pkgrel=1
 _manual_clone=0
 pkgdesc="The networking stack of Chromium put into a library"
@@ -16,14 +16,14 @@ makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
-        REVERT-disable-autoupgrading-debug-info.patch
+        drop-flags-unsupported-by-clang16.patch
         abseil-remove-unused-targets.patch
         disable-logging.patch
         fix-numeric_limits.patch
         fix-undeclared-isnan.patch)
-sha256sums=('b1ae62beb7907d99802b74821d5198bd54a7456df1116d317da653bde8ce6388'
-            '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
-            '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+sha256sums=('ba8448637de36e39532a214c1d4fd05480bc51bde6ac4c160e5f7d3a08e36218'
+            'ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2'
+            '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
             SKIP
             SKIP
             SKIP
@@ -94,9 +94,11 @@ _unwanted_bundled_libs=(
   base/third_party/double_conversion
   third_party/ffmpeg
   third_party/flac
+  third_party/flatbuffers
   third_party/fontconfig
   build/config/freetype
   third_party/harfbuzz-ng
+  third_party/highway
   third_party/icu
   third_party/jsoncpp
   third_party/libaom
@@ -105,6 +107,8 @@ _unwanted_bundled_libs=(
   third_party/libevent
   third_party/libjpeg_turbo
   third_party/libpng
+  third_party/libsecret
+  third_party/libusb
   third_party/libvpx
   third_party/libwebp
   third_party/libxml
@@ -119,6 +123,7 @@ _unwanted_bundled_libs=(
   third_party/swiftshader/third_party/SPIRV-Tools
   third_party/vulkan-deps/spirv-headers/src
   third_party/vulkan-deps/spirv-tools/src
+  third_party/vulkan_memory_allocator
   third_party/woff2
   third_party/zlib
   third_party/zstd
@@ -141,11 +146,12 @@ prepare() {
 
   # Upstream fixes
 
-  # Revert addition of compiler flag that needs newer clang
-  patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
+  # Drop compiler flags that need newer clang
+  patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../chromium-patches-*/chromium-119-at-spi-variable-consumption.patch
+  patch -Np1 -i ../chromium-patches-*/chromium-120-std-nullptr_t.patch
 
   # Fixes the build crashing with the following error:
   # ../../components/cronet/native/engine.cc:155:8: error: use of undeclared identifier 'isnan'
@@ -161,6 +167,7 @@ prepare() {
   patch -p0 -i ../fix-numeric_limits.patch
 
   # Make building with system zstd possible
+  rm -f build/linux/unbundle/zstd.gn
   patch -Np1 -i ../chromium-patches-*/chromium-117-system-zstd.patch
 
   # Remove bundled libraries for which we will use the system copies; this
@@ -171,7 +178,6 @@ prepare() {
     find "$_lib" -type f \
       \! -path "$_lib/chromium/*" \
       \! -path "$_lib/google/*" \
-      \! -path "third_party/brotli/include/brotli/shared_dictionary.h" \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
