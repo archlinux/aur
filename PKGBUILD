@@ -1,35 +1,59 @@
-pkgdesc='A simple VTE-based terminal'
-pkgname='termite-aperezdc-git'
+# Maintainer:
+
 _pkgname="termite"
-pkgver=r898.g9ba8d0b
+pkgname="$_pkgname-aperezdc-git"
+pkgver=16.6.r0.g86381ed
 pkgrel=1
-url=https://github.com/aperezdc/termite
+pkgdesc='A simple VTE-based terminal'
+url="https://github.com/aperezdc/termite"
 license=(LGPL)
-depends=(gtk3 pcre2 gnutls vte-common)
-makedepends=(git gperf 'meson>=0.58' ninja)
-provides=('termite')
-conflicts=('termite')
 arch=(x86_64)
-source=("termite::git+https://github.com/aperezdc/termite.git")
-sha256sums=('SKIP')
-validpgpkeys=()
 
+depends=(
+  'gnutls'
+  'gtk3'
+  'pcre2'
+  'vte-common'
+)
+makedepends=(
+  'git'
+  'gperf'
+  'meson'
+  'ninja'
+)
 
-pkgver() {
-  cd "${srcdir}/${pkgname%-aperezdc-git}"
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_vte_hash=22624df361d33446f8c78fea72eb4e112b68e599
+
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+$url.git"
+  "aperezdc.vte"::"git+https://github.com/aperezdc/vte.git#commit=$_vte_hash"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
+
+backup=(etc/xdg/termite/config)
+
+prepare() {
+  ln -s "$srcdir/aperezdc.vte" "$_pkgsrc/subprojects/vte"
 }
 
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
 build () {
-	cd "${srcdir}"
-    meson setup build termite
-    meson compile -C build
+  arch-meson build "$_pkgsrc"
+  meson compile -C build
 }
 
 package () {
-    cd "${srcdir}"
-    mkdir -p termite-build-dir
-    meson install -C build --skip-subprojects vte --destdir="termite-build-dir"
-    sudo install -Dm755  "build/termite-build-dir/usr/local/bin/termite" "$pkgdir/usr/bin/termite"
+  meson install -C build --skip-subprojects vte --destdir "${pkgdir}"
 }
