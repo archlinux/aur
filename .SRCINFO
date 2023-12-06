@@ -1,7 +1,7 @@
 pkgbase = msk144decoder-git
 	pkgdesc = MSK144, JT65, Q65 Console Stream Decoders
 	pkgver = r33.b4cfcfc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexander-sholohov/msk144decoder
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = msk144decoder-git
 	depends = fftw
 	depends = curl
 	depends = gcc-libs
+	provides = msk144decoder
 	source = msk144decoder-git::git+https://github.com/alexander-sholohov/msk144decoder.git
 	sha256sums = SKIP
 
