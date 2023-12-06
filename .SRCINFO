@@ -1,13 +1,16 @@
 pkgbase = emilua-glib
-	pkgdesc = Lua execution engine
-	pkgver = 0.3.0
+	pkgdesc = GLib event loop integration for Emilua
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://gitlab.com/emilua/emilua
+	url = https://gitlab.com/emilua/glib
 	arch = i686
 	arch = x86_64
 	license = boost
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
 	depends = emilua
-	source = emilua-glib::git+https://gitlab.com/emilua/glib.git#tag=v0.3.0
+	source = emilua-glib::git+https://gitlab.com/emilua/glib.git#tag=v0.4.0
 	md5sums = SKIP
 
 pkgname = emilua-glib
