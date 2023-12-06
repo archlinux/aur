@@ -1,0 +1,13 @@
+pkgbase = plymouth-batarong-theme
+	pkgdesc = Plymouth theme for BatarongOS
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/batarongOS/plymouth-batarong-theme
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/batarongOS/plymouth-batarong-theme.git
+	md5sums = SKIP
+
+pkgname = plymouth-batarong-theme
