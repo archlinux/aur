@@ -1,15 +1,13 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index d03e634f7..8eac0e974 100644
+index a868d3bb4e3f..db7e0fa6ddbc 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1497,9 +1497,7 @@ std::optional<HoverInfo> getHover(ParsedAST &AST, Position Pos,
-       if (const auto *DeclToUse = pickDeclToUse(Decls)) {
+@@ -1364,7 +1364,7 @@ std::optional<HoverInfo> getHover(ParsedAST &AST, Position Pos,
          HoverCountMetric.record(1, "decl");
          HI = getHoverContents(DeclToUse, PP, Index, TB);
--        // Layout info only shown when hovering on the field/class itself.
+         // Layout info only shown when hovering on the field/class itself.
 -        if (DeclToUse == N->ASTNode.get<Decl>())
--          addLayoutInfo(*DeclToUse, *HI);
-+        addLayoutInfo(*DeclToUse, *HI);
++        if (DeclToUse == N->ASTNode.get<Decl>() || llvm::dyn_cast<RecordDecl>(DeclToUse) == nullptr)
+           addLayoutInfo(*DeclToUse, *HI);
          // Look for a close enclosing expression to show the value of.
          if (!HI->Value)
-           HI->Value = printExprValue(N, AST.getASTContext()).PrintedValue;
