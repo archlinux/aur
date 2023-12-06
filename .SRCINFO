@@ -1,6 +1,6 @@
 pkgbase = gnome-pass-search-provider-git
 	pkgdesc = Gnome Search provider for pass (zx2c4/passwordstore.org), gopass and compatibles and rbw (Bitwarden/Vaultwarden) that sends passwords to clipboard (or GPaste)
-	pkgver = a6f2fa3add3c36003513032c7c9267fae5b4ed94
+	pkgver = a6f2fa3
 	pkgrel = 1
 	url = https://github.com/jle64/gnome-pass-search-provider
 	arch = any
