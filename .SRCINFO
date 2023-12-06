@@ -1,6 +1,6 @@
 pkgbase = r-xgboost
 	pkgdesc = Extreme Gradient Boosting
-	pkgver = 1.7.5.1
+	pkgver = 1.7.6.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=xgboost
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-xgboost
 	optdepends = r-testthat
 	optdepends = r-titanic
 	optdepends = r-vcd
-	source = https://cran.r-project.org/src/contrib/xgboost_1.7.5.1.tar.gz
-	sha256sums = 4ec0833f206f84e5983e9f373ea64903bec488f751fba6f75a6f4702b1c965bc
+	source = https://cran.r-project.org/src/contrib/xgboost_1.7.6.1.tar.gz
+	sha256sums = f23dd6b6ca7a58ef3236d8bdc7b4928591507cf41133fc8053d32ab91b3d3d60
 
 pkgname = r-xgboost
