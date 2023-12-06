@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
-pkgver=2.6.0
+pkgver=2.6.1
 _nvmdver="${pkgver}"
+_electronversion=27
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
 arch=('x86_64')
@@ -37,18 +38,19 @@ makedepends=(
     'nodejs>=14'
     'yarn'
     'git'
-    'asar'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "nvmd-${_nvmdver}.zip::https://github.com/1111mp/nvmd-command/releases/download/v${_nvmdver}/Linux-x64.zip"
 )
 sha256sums=('SKIP'
-            'ba75aa9d91ba42bc0b651e1e2787cd8aceabf2ea311a385a0d2e241d0f10b759')
+            '0dd618a4fd5226e13af99d992617efccb9609627d9fb1aa7568d7f74c4495c21')
 build() {
     gendesk -f -n -q --categories "Development;Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    yarn install
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn package
 }
 package() {
