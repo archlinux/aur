@@ -2,3 +2,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!build-shared-library.patch

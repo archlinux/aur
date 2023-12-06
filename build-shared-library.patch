@@ -1,0 +1,24 @@
+diff --unified --recursive --text edencommon-2023.12.04.00.orig/eden/common/os/CMakeLists.txt edencommon-2023.12.04.00/eden/common/os/CMakeLists.txt
+--- edencommon-2023.12.04.00.orig/eden/common/os/CMakeLists.txt	2023-12-06 18:21:06.932752826 +0100
++++ edencommon-2023.12.04.00/eden/common/os/CMakeLists.txt	2023-12-06 18:22:00.469570741 +0100
+@@ -6,7 +6,7 @@
+ file(GLOB os_headers CONFIGURE_DEPENDS *.h)
+ file(GLOB os_sources CONFIGURE_DEPENDS *.cpp)
+ 
+-add_library(edencommon_os
++add_library(edencommon_os SHARED
+   ${os_headers}
+   ${os_sources}
+ )
+diff --unified --recursive --text edencommon-2023.12.04.00.orig/eden/common/utils/CMakeLists.txt edencommon-2023.12.04.00/eden/common/utils/CMakeLists.txt
+--- edencommon-2023.12.04.00.orig/eden/common/utils/CMakeLists.txt	2023-12-06 18:21:06.932752826 +0100
++++ edencommon-2023.12.04.00/eden/common/utils/CMakeLists.txt	2023-12-06 18:21:51.269544578 +0100
+@@ -13,7 +13,7 @@
+ file(GLOB utils_headers CONFIGURE_DEPENDS *.h)
+ file(GLOB utils_sources CONFIGURE_DEPENDS *.cpp)
+ 
+-add_library(edencommon_utils ${utils_headers} ${utils_sources})
++add_library(edencommon_utils SHARED ${utils_headers} ${utils_sources})
+ 
+ target_link_libraries(edencommon_utils
+     Folly::folly
