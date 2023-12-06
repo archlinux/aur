@@ -44,7 +44,7 @@ source=(
     "https://github.com/VSCodium/vscodium/releases/download/${pkgver}/VSCodium-${pkgver}-src.tar.gz"
 )
 sha256sums=('63eccd0977b9dc783a11ff401940f48bbabd0d098b9563b7ef26402495dc9b88'
-            'fd3dc7cbea2b3eb74dc205f8faa28e913108d11aba41fcffe19a4e5222be33fd'
+            '34da81ee4fd8b663237bfc946b4c95b8368b9c45e3b1404c3c3f86fbc3565e1c'
             'a9d0a302834a529fb2fc6213f6d2c9cc7069ada7bb29688622447b0ee670f9c2')
 provides=(
     'codium'
