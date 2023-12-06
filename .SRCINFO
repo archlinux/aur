@@ -9,7 +9,6 @@ pkgbase = dune-localfunctions
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scikit-build
-	makedepends = python-ninja
 	depends = dune-geometry>=2.9.0
 	optdepends = texlive-basic: Type setting system
 	optdepends = doxygen: Generate the class documentation from C++ sources
