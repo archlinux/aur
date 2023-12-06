@@ -1,15 +1,16 @@
 pkgbase = pip2pkgbuild
 	pkgdesc = Generate PKGBUILD file for a Python module from PyPI
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/wenLiangcan/pip2pkgbuild
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/a0/ad/ca17f7b6704986da1df26770349b55369a789effa781d96f8992c4a83bd3/pip2pkgbuild-0.3.5.tar.gz
-	sha256sums = 14f5e457dcf1bef0764374c753a535fbed8c0c5c950edb2874c1b438e6fc3773
+	source = https://files.pythonhosted.org/packages/57/c0/fab326e6479f0d19be95fa12171dd7ec21d9d45fd886981cb71efec2e242/pip2pkgbuild-0.3.6.tar.gz
+	sha256sums = fd9880aaf0aba7cd6d6bb9e867f40de19511d6d45a5cb315ddf4804f91a16b2b
 
 pkgname = pip2pkgbuild
 	depends = python
