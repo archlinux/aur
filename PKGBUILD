@@ -4,15 +4,16 @@
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
 pkgver='1.2.41'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL3')
-depends=('csdr' 'python-csdr' 'rtl-sdr' 'js8py' 'owrx_connector' 'netcat' 'python-setuptools')
+depends=('csdr-luarvique' 'python-csdr-luarvique' 'rtl-sdr' 'js8py' 'owrx_connector-luarvique' 'netcat' 'python-setuptools')
 optdepends=(
     # decoding
-    'digiham: use digital voice modes'
+    'python-digiham: use digital voice modes'
+    'codecserver: decode audio data from digital voice modes using the AMBE codec'
     'codec2: demodulate FreeDV digital transmissions'
     'm17-cxx-demod: demodulate M17 digital voice signals'
     'wsjtx: decode FT8, FST4, FST4, Q65 digital modes'
@@ -41,7 +42,7 @@ optdepends=(
     'limesuite: interfacing with LimeSDR device series'
     'soapyplutosdr: interfacing with PlutoSDR devices'
     'soapyuhd: interfacing with UHD / USRP devices'
-    'soapyfcdpp: interfacing with the Funcube Dongle Pro+'
+    'soapyfcdpp-git: interfacing with the Funcube Dongle Pro+'
     'soapybladerf: interfacing with Blade RF devices'
 )
 source=("$pkgname-$pkgver".tar.gz::"https://github.com/luarvique/openwebrx/archive/$pkgver.tar.gz"
