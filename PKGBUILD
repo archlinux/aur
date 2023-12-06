@@ -26,6 +26,8 @@ optdepends=(
 )
 options=('!strip' 'staticlibs' !zipman)
 # TODO:
+#  - cleanup of package content
+#  - maybe use .deb as source? (already compressed manpages)
 #  - aarch64 as separate source
 #  - packages for components
 source=(
