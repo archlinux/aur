@@ -18,8 +18,8 @@
 pkgbase="zfs-linux-zen"
 pkgname=("zfs-linux-zen" "zfs-linux-zen-headers")
 _zfsver="2.2.2"
-_kernelver="6.6.3.zen1-1"
-_kernelver_full="6.6.3.zen1-1"
+_kernelver="6.6.4.zen1-1"
+_kernelver_full="6.6.4.zen1-1"
 _extramodules="${_kernelver_full/.zen/-zen}-zen"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
