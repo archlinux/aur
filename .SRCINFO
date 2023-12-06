@@ -1,11 +1,12 @@
 pkgbase = forgejo-runner
 	pkgdesc = Continous integration for Forgejo
 	pkgver = 3.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://code.forgejo.org/forgejo/runner
 	arch = x86_64
 	arch = aarch64
 	license = Expat
+	makedepends = git
 	makedepends = go
 	depends = docker
 	optdepends = docker

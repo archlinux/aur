@@ -2,14 +2,14 @@
 # Package based on aur/forgejo-runner-bin and aur/act-runner.
 pkgname="forgejo-runner"
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Continous integration for Forgejo"
 arch=('x86_64' 'aarch64')
 url="https://code.forgejo.org/forgejo/runner"
 license=('Expat')
 depends=('docker')
 provides=('forgejo-runner')
-makedepends=('go')
+makedepends=('git' 'go')
 optdepends=('docker')
 backup=('etc/forgejo-runner/forgejo-runner.yaml')
 source=(
