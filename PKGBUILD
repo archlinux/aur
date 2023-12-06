@@ -4,7 +4,7 @@
 # the RCU website and place the fedora38 variant next
 # to the PKGBUILD file.
 pkgname=rcu-bin
-pkgver=d2023.001j
+pkgver=d2023.001k
 pkgrel=1
 pkgdesc="reMarkable Connection Utility (RCU)."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 
 )
 sha256sums=(
-    '10bb1be8828228a3fa7bee17a58c617f7903d3274a45db958ed8064bdaca5b29'
+    '71f1346a70727d8f293ff2a16870da5b4864c109d1093ef479264bf585f61ea9'
     'b2c876686d260b2b55553e00d0870e55d1f4fd23b60ba88e6767770e4aae1c5c'
 )
 options=("!strip")
