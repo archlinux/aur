@@ -1,14 +1,16 @@
 pkgbase = yoctools
 	pkgdesc = (Yun on Chip) 以极简开发为理念，以 CPU 架构、芯片平台、操作系统、云服务和开发套件为基础，助力开发者从芯片到云的全链路高效设计，是面向 IoT 领域的全栈技术平台
-	pkgver = 1.0.60
+	pkgver = 2.0.65
 	pkgrel = 1
-	url = https://occ.t-head.cn/doc/docs/Chapter1-YoCE6A682E8BFB0/
+	url = https://pypi.org/project/yoctools/
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	options = !strip
-	source = yoctools-1.0.60.tar.gz::https://yoctools.oss-cn-beijing.aliyuncs.com/yoctools-1.0.60.tar.gz
-	sha256sums = 1c2257165837ea45938686a5e40eb01b4d24d939ad6b5319b74f4b2cc730d3bd
+	source = yoctools-2.0.65.tar.gz::https://files.pythonhosted.org/packages/source/y/yoctools/yoctools-2.0.65.tar.gz
+	sha256sums = 64ca0ed610e71c37f4115467461b39ff4885f2edb863d6d7d2b9ee03c4873f96
 
-pkgname = yoctools
+pkgname = python-yoctools
