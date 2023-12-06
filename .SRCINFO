@@ -1,7 +1,7 @@
 pkgbase = stressberry
 	pkgdesc = Stress tests and temperature plots for the Raspberry Pi
 	pkgver = 0.3.3
-	pkgrel = 5
+	pkgrel = 7
 	url = https://github.com/nschloe/stressberry
 	arch = any
 	license = GPL3
