@@ -1,7 +1,7 @@
 pkgbase = kddockwidgets
 	pkgdesc = KDAB's Dock Widget Framework for Qt
-	pkgver = 1.7.0
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/KDAB/KDDockWidgets
 	arch = x86_64
 	license = GPL2
@@ -12,7 +12,7 @@ pkgbase = kddockwidgets
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = qt5-x11extras
-	source = kddockwidgets::git+https://github.com/KDAB/KDDockWidgets.git#tag=v1.7.0
+	source = kddockwidgets::git+https://github.com/KDAB/KDDockWidgets.git#tag=v2.0.0
 	sha256sums = SKIP
 
 pkgname = kddockwidgets
