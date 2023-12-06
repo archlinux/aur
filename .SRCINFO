@@ -1,7 +1,7 @@
 pkgbase = lkrg-dkms-git
 	pkgdesc = Linux Kernel Runtime Guard (DKMS)
 	pkgver = r539.3760e0e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openwall.com/lkrg/
 	arch = any
 	license = GPL2

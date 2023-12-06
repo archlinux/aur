@@ -2,7 +2,7 @@
 _pkgbase=lkrg
 pkgname=lkrg-dkms-git
 pkgver=r539.3760e0e
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Kernel Runtime Guard (DKMS)'
 arch=('any')
 url='https://www.openwall.com/lkrg/'
@@ -43,5 +43,5 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}/scripts/bootup/lkrg.conf" "${pkgdir}/etc/sysctl.d/01-lkrg.conf"
 
   # Install the systemd service file
-  install -Dm 644 "${srcdir}/${pkgname}/scripts/bootup/systemd/lkrg.service" "${pkgdir}/etc/systemd/system/lkrg.service"
+  install -Dm 644 "${srcdir}/${pkgname}/scripts/bootup/systemd/lkrg.service" "${pkgdir}/usr/lib/systemd/system/lkrg.service"
 }
