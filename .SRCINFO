@@ -1,6 +1,6 @@
 pkgbase = r-rstpm2
 	pkgdesc = Smooth Survival Models, Including Generalized Survival Models
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rstpm2
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = r-rstpm2
 	depends = r-bbmle
 	depends = r-desolve
 	depends = r-fastghquad
+	depends = r-mvtnorm
 	depends = r-rcpp
 	optdepends = r-eha
 	optdepends = r-flexsurv
@@ -24,8 +25,8 @@ pkgbase = r-rstpm2
 	optdepends = r-survpen
 	optdepends = r-testthat
 	optdepends = r-timereg
-	source = https://cran.r-project.org/src/contrib/rstpm2_1.6.2.tar.gz
-	md5sums = f08087c40bf11c67cf70510b96b0e63e
-	sha256sums = 064ec8c56ecbff44cae7a5acf307838d4558a3c0ab5b2c4d50da8a1a9d0bade3
+	source = https://cran.r-project.org/src/contrib/rstpm2_1.6.3.tar.gz
+	md5sums = 2fb292e291b311986d90f7783f4e1ea2
+	sha256sums = 5e6079a876a43473768ee54e4b34081ea3b5e1f466f9f76e8cfc2bb461b2031f
 
 pkgname = r-rstpm2
