@@ -1,0 +1,4 @@
+pre_install() {
+    echo "By using this package you agree to the Terms of Service of SKlauncher."
+    echo "You can find them in the /usr/share/licenses/sklauncher-bin/LICENSE file, or on the SKlauncher website (https://skmedix.pl/terms)."
+}

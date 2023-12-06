@@ -4,12 +4,12 @@ pkgname="sklauncher-bin"
 pkgdesc="Secure and modern Minecraft Launcher"
 
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 
 arch=(i686 x86_64)
 
 url="https://skmedix.pl"
-license=("Apache-2.0")
+license=("Apache-2.0", "custom:SKlauncher")
 
 depends=("java-runtime>=17")
 makedepends=(unzip gendesk)
@@ -17,8 +17,10 @@ makedepends=(unzip gendesk)
 provides=(sklauncher)
 conflicts=(sklauncher sklauncher-git)
 
-source=("https://skmedix.pl/binaries/_/SKlauncher-${pkgver}.jar" "sklauncher")
-md5sums=("dd5db753fa1ceb2e5a08621eb8a17a53" "3fbda136409cd254ce125839e59ae1c1")
+install="sklauncher.install"
+
+source=("https://skmedix.pl/binaries/_/SKlauncher-${pkgver}.jar" "sklauncher" "LICENSE")
+md5sums=("dd5db753fa1ceb2e5a08621eb8a17a53" "3fbda136409cd254ce125839e59ae1c1" "edd0f7efa3df3a5cadaa2ecebf9eb57d")
 
 noextract=("SKlauncher-${pkgver}.jar")
 
@@ -45,4 +47,7 @@ package() {
 	# copy the extracted icon and the generated .desktop file
 	install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/SKlauncher.png"
 	install -Dm644 SKlauncher.desktop "${pkgdir}/usr/share/applications/SKlauncher.desktop"
+
+	# copy the terms of service into a separate file
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
