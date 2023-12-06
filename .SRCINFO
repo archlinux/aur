@@ -1,6 +1,6 @@
 pkgbase = jdk7-j9-bin
 	pkgdesc = IBM® SDK, Java Technology Edition, Version 7
-	pkgver = 7.0.11.10
+	pkgver = 7.0.11.15
 	pkgrel = 1
 	url = https://www.ibm.com/support/pages/java-sdk-downloads-version-70
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = jdk7-j9-bin
 	provides = java-environment=7
 	provides = java-runtime=7
 	provides = java-runtime-headless=7
-	source = install-7.0-11.10.bin::https://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/7.0.11.10/linux/x86_64/ibm-java-sdk-7.0-11.10-x86_64-archive.bin
-	sha256sums = 453e808937d97ea8060e2e45940de7e75d1d489a9216f36afabfe3b4d0b00c46
+	source = install-7.0-11.15.bin::https://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/7.0.11.15/linux/x86_64/ibm-java-sdk-7.0-11.15-x86_64-archive.bin
+	sha256sums = 4ef1564695ca0a4d70c1e46768e1681f3115ed41d97b39de63cbc5dfbdbcd6e6
 
 pkgname = jdk7-j9-bin
