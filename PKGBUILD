@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Lestrelin <jonathan.lestrelin@gmail.com>
 pkgname=gnome-pass-search-provider-git
 _pkgname=gnome-pass-search-provider
-pkgver=r97.a6f2fa3
+pkgver=a6f2fa3add3c36003513032c7c9267fae5b4ed94
 pkgrel=1
 pkgdesc="Gnome Search provider for pass (zx2c4/passwordstore.org), gopass and compatibles and rbw (Bitwarden/Vaultwarden) that sends passwords to clipboard (or GPaste)"
 arch=('any')
