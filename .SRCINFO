@@ -1,11 +1,12 @@
 pkgbase = lkrg-dkms
 	pkgdesc = Linux Kernel Runtime Guard (DKMS)
 	pkgver = 0.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lkrg.org/
 	arch = any
 	license = GPL2
 	depends = dkms
+	backup = etc/sysctl.d/01-lkrg.conf
 	source = https://lkrg.org//download/lkrg-0.9.7.tar.gz
 	source = https://lkrg.org//download/lkrg-0.9.7.tar.gz.sign
 	source = dkms.conf

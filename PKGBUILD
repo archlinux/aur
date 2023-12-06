@@ -2,7 +2,7 @@
 _pkgbase=lkrg
 pkgname=lkrg-dkms
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Kernel Runtime Guard (DKMS)'
 arch=('any')
 url='https://lkrg.org/'
@@ -15,6 +15,7 @@ sha512sums=('bf1af6d1a4d6811a6e7a17473260c93632e2c0a0b92a2a2ea4a8c2a75a1aaa0811b
             '8101dd415ed08edd455989a9b10a3c925b171d3375a6d6872f55805d9aeb355a4ac216cce11afc1b84eeb49de0771932005d74130ffd6f5cdea9fa53fb4f9506')
 validpgpkeys=('297AD21CF86C948081520C1805C027FD4BDC136E')
 depends=('dkms')
+backup=('etc/sysctl.d/01-lkrg.conf')
 
 prepare() {
   # Set version
@@ -32,4 +33,10 @@ package() {
 
   # Copy OUR dkms.conf
   install -Dm644 "${_pkgbase}-${pkgver}/dkms.conf" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+
+  # Install the default configuration file
+  install -Dm644 "${_pkgbase}-${pkgver}/scripts/bootup/lkrg.conf" "${pkgdir}/etc/sysctl.d/01-lkrg.conf"
+
+  # Install the systemd service file
+  install -Dm 644 "${_pkgbase}-${pkgver}/scripts/bootup/systemd/lkrg.service" "${pkgdir}/etc/systemd/system/lkrg.service"
 }
