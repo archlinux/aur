@@ -17,23 +17,23 @@ source=("https://github.com/giantpinkrobots/varia/archive/refs/tags/v$pkgver.tar
         "aria2.patch")
 
 prepare() {
-    # aria2c cannot be found without this patch
-    patch --directory="$pkgname-$pkgver" --forward --strip=1 -i "${srcdir}/aria2.patch"
+  # aria2c cannot be found without this patch
+  patch --directory="$pkgname-$pkgver" --forward --strip=1 -i "${srcdir}/aria2.patch"
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver/"
-	meson setup builddir
-	cd builddir
-	meson compile
+  cd "$srcdir/$pkgname-$pkgver/"
+  meson setup builddir
+  cd builddir
+  meson compile
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver/builddir"
-	meson configure -Dprefix="/usr"
-	meson install --destdir "$pkgdir"
-	chmod -R 755 "$pkgdir"
-	
-	# Install license
-	install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/$pkgname-$pkgver/builddir"
+  meson configure -Dprefix="/usr"
+  meson install --destdir "$pkgdir"
+  chmod -R 755 "$pkgdir"
+  
+  # Install license
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
