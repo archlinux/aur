@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/usr/lib/node_modules/wildduck/
-ExecStart=/usr/bin/node server/server.js
+ExecStart=/usr/bin/node server.js
 Restart=on-failure
 
 [Install]
