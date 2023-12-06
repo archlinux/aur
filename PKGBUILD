@@ -1,20 +1,21 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=('cutlass' 'python-cutlass')
-pkgver=3.2.2
-pkgrel=3
+pkgver=3.3.0
+pkgrel=1
 pkgdesc='CUDA Templates for Linear Algebra Subroutines'
 arch=('x86_64')
 url='https://github.com/NVIDIA/cutlass'
 license=('BSD-3-Clause')
-groups=('nvidia')
+groups=()
 depends=('cuda' 'cudnn')
-makedepends=('cmake' 'git' 'ninja' 'python-setuptools' 'python-build'
-             'python-installer' 'python-wheel')
+makedepends=('cmake' 'git' 'ninja' 'pybind11' 'python-build'
+             'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NVIDIA/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         'cutlass.diff')
-sha256sums=('aaa9719eb806b168695b34893faf4854bb6bc9e09f63f2d36772aaf35a8516e5' 'SKIP')
+sha256sums=('99876de94a04d0b9cdee81d4f29659bde1426b416926aef4d9a3a3a7869511a3'
+            'SKIP')
 
 prepare() {
     cd cutlass-$pkgver
@@ -22,10 +23,9 @@ prepare() {
 }
 
 build() {
-    # export CUTLASS_NVCC_ARCHS=70,75,80,86,89,90,90a
     export PATH="/opt/cuda/bin:$PATH"
     cmake -S $pkgname-$pkgver -B $pkgname-$pkgver/build -G Ninja \
-        -DCUTLASS_NVCC_ARCHS=86 \
+        -DCUTLASS_NVCC_ARCHS=70,75,80,86,89,90,90a \
         -DCUTLASS_ENABLE_GTEST_UNIT_TESTS=OFF \
         -DCUTLASS_ENABLE_TESTS=OFF \
         -DCUTLASS_ENABLE_CUBLAS=ON \
