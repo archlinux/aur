@@ -7,75 +7,70 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(custom CCPL GPL3)
 arch=(x86_64 aarch64)
-install=.install
 _plugin_name=Fundamental
-_plugin_ver=2.5.1
+_plugin_ver=2.6.0
 _plugin_pkg=$pkgname-${_plugin_name,,}
 depends=(glfw-x11 jansson)
-makedepends=(curl gendesk glew jq libarchive openssl rtaudio rtmidi simde speexdsp zstd)
+makedepends=(alsa-lib cmake curl gendesk git glew jack jq libarchive libpulse openssl rtmidi simde
+  speexdsp zstd)
 provides=("$_plugin_pkg=$_plugin_ver")
 conflicts=($_plugin_pkg)
 groups=(pro-audio)
-# use submodule_commits.sh to update this
-_submodules=(filesystem fuzzysearchdatabase nanosvg nanovg osdialog oui-blendish pffft tinyexpr)
-_commits=(7e37433 23122d1 25241c5 0bebdb3 fd0becc 2fc6405 74d7261 4e8cc00)
+_tag=8c6f41b778b4bf8860b89b36d5503fd37924077f
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/VCVRack/$_name/archive/v$pkgver.tar.gz"
-  'https://github.com/VCVRack/Rack/commit/ac73ef4.patch'
-  'https://github.com/VCVRack/Fundamental/commit/917628e.patch'
-  "filesystem-${_commits[0]}.tar.gz::https://github.com/gulrak/filesystem/archive/${_commits[0]}.tar.gz"
-  "fuzzysearchdatabase-${_commits[1]}.tar.gz::https://bitbucket.org/j_norberg/fuzzysearchdatabase/get/${_commits[1]}.tar.gz"
-  "nanosvg-${_commits[2]}.tar.gz::https://github.com/memononen/nanosvg/archive/${_commits[2]}.tar.gz"
-  "nanovg-${_commits[3]}.tar.gz::https://github.com/VCVRack/nanovg/archive/${_commits[3]}.tar.gz"
-  "osdialog-${_commits[4]}.tar.gz::https://github.com/AndrewBelt/osdialog/archive/${_commits[4]}.tar.gz"
-  "oui-blendish-${_commits[5]}.tar.gz::https://github.com/VCVRack/oui-blendish/archive/${_commits[5]}.tar.gz"
-  "pffft-${_commits[6]}.tar.gz::https://bitbucket.org/jpommier/pffft/get/${_commits[6]}.tar.gz"
-  "tinyexpr-${_commits[7]}.tar.gz::https://github.com/codeplea/tinyexpr/archive/${_commits[7]}.tar.gz"
+  "$_name::git+https://github.com/VCVRack/$_name#tag=$_tag"
+  'filesystem.git::git+https://github.com/gulrak/filesystem'
+  'fuzzysearchdatabase.git::git+https://bitbucket.org/j_norberg/fuzzysearchdatabase'
+  'nanosvg.git::git+https://github.com/memononen/nanosvg'
+  'nanovg.git::git+https://github.com/VCVRack/nanovg'
+  'osdialog.git::git+https://github.com/AndrewBelt/osdialog'
+  'oui-blendish.git::git+https://github.com/VCVRack/oui-blendish'
+  'pffft.git::git+https://bitbucket.org/jpommier/pffft'
+  'rtaudio.git::git+https://github.com/VCVRack/rtaudio'
+  'tinyexpr.git::git+https://github.com/codeplea/tinyexpr'
   "$_plugin_pkg-$_plugin_ver.tar.gz::https://github.com/VCVRack/$_plugin_name/archive/v$_plugin_ver.tar.gz"
   'plugins.patch'
   'vcvrack.sh'
   'profile.sh'
   'trademark.eml'
 )
-sha256sums=('f452c38870405739f730b3d7f178a714da1205ceacb641cb4d5b26b726ead1fa'
-            'ad431dfed9655e5af202403ef9e61d4b68d0861b2fe5de5a724242cac0a3eef5'
-            'a35353a21895bf2f500d878b216c7c5b52d0fd515e088375f643c4bfd87a195f'
-            '15e1dacd2a52d7cf67afcc548cc92b218f88a2726488e50887922e86c1493f68'
-            'debe938a3c102dee015f40765fe43053a4acfed32fe3ef03cb35537136e9db3c'
-            'd957259360bf108858388bb01686a8cb0fc31d90db2d996ddf65575b37bb20d4'
-            '043d67b2fd81d52b80c5db366292a8d1910a70abdf0b3cc7750bd8705cf5fb96'
-            'd1e9a2cd9c073ac680c56ada84027f495bb70ef2c9a5efb14077209e1bba06c1'
-            'f5c5a814b3302ac865ab648ec69f586b67cc0e9d2e51f77bcd4f495e75af6930'
-            'ca077ad436bcb5ffe579ee886b8e61c87e2ebd81fc762be02a9ca07235e219ff'
-            '2d63d882e6b36f808e0ec739ad796fc44aa1595146e1914a4a80ce5670a2d2c0'
-            'd27d801e8f29b7d0f48a064b80a98f1d356c39dcd53b4b042753af9dff992c8d'
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '1e3662c1f5cf57e484e7f605028fbe032e1eab541b73e10453d36df400e68ae0'
             'daaf645f3b321449f72ae1c05d1fb285fee4c570f629d4cd9322a885fd059858'
             '21ac35c6ad4e5a29c32939b17baaf7ac1936077eda2214e28675eefcf2021db8'
             'e1da6ccf04bae3a2101151fec7ddd32e48ff92b0a1146b559fd3221c778d521f'
             '1159629aa90abb7c972c0f630d55d018b88a6b3bc3ff0bb9466cc06982f38641')
-# extract the submodules ourselves so we have control over the unpacked top-level directory name
-noextract=($(for _i in ${!_submodules[@]}; do
-  echo "${_submodules[$_i]}-${_commits[$_i]}.tar.gz"
-done))
+
+pkgver() {
+  cd $_name
+  git describe --tags | tr -d v
+}
 
 prepare() {
-  cd $_name-$pkgver
-  echo noextract ${noextract[@]}
-  # extract submodules
-  for _i in ${!_submodules[@]}; do
-    bsdtar -xf ../${_submodules[$_i]}-${_commits[$_i]}.tar.gz -C dep/${_submodules[$_i]} --strip-components 1
+  cd $_name
+  # setup submodules
+  for _module in filesystem fuzzysearchdatabase nanosvg nanovg osdialog oui-blendish pffft rtaudio tinyexpr; do
+    git submodule init dep/$_module
+    git config submodule.dep/$_module.url "$srcdir/$_module.git"
   done
+  git -c protocol.file.allow=always submodule update
 
   # add target to only build included dependencies
-  echo 'includes: $(nanovg) $(nanosvg) $(osdialog) $(oui-blendish) $(fuzzysearchdatabase) $(ghcfilesystem) $(pffft) $(tinyexpr)' >> dep/Makefile
-
-  # revert recent changes to rtaudio.cpp that require an unreleased version of rtaudio
-  patch -Rp1 -r - -i ../ac73ef4.patch || true
+  echo 'includes: $(nanovg) $(nanosvg) $(osdialog) $(oui-blendish) $(fuzzysearchdatabase) $(ghcfilesystem) $(pffft) $(rtaudio) $(tinyexpr)' >> dep/Makefile
 
   # support building plugins and loading system-wide plugins
   patch -p1 -i ../plugins.patch
@@ -87,31 +82,31 @@ prepare() {
     --pkgdesc "$pkgdesc" \
     --genericname "Virtual modular synthesizer" \
     --categories "AudioVideo;Audio"
-
-  cd ../$_plugin_name-$_plugin_ver
-  # fix build error about a class that was moved to the SDK
-  patch -p1 -i ../917628e.patch || true
 }
 
 build() {
-  cd $_name-$pkgver
-  _ldflags="-shared -ldl \
+  cd $_name
+  _ldflags="-Wl,--whole-archive \
+    dep/lib/librtaudio.a \
+    -Wl,--no-whole-archive \
+    -shared -ldl \
     $(pkg-config --libs glew \
     glfw3 jansson libcurl openssl \
     libarchive libzstd speexdsp \
-    samplerate rtmidi rtaudio)"
+    samplerate rtmidi \
+    alsa jack libpulse libpulse-simple)"
   VERSION=$pkgver make -C dep includes
   VERSION=$pkgver make LDFLAGS+="$_ldflags" STANDALONE_LDFLAGS="$LDFLAGS"
   cd ../$_plugin_name-$_plugin_ver
-  VERSION=$_plugin_ver RACK_DIR=../$_name-$pkgver \
+  VERSION=$_plugin_ver RACK_DIR=../$_name \
     LDFLAGS+=" $(pkg-config --libs samplerate)" make dist
 }
 
 package() {
   # Rack does not start with glfw-wayland
-  depends+=(libcurl.so libGLEW.so libarchive.so libcrypto.so librtaudio.so librtmidi.so
+  depends+=(libcurl.so libGLEW.so libarchive.so libcrypto.so librtmidi.so
     libsamplerate.so libspeexdsp.so zenity)
-  cd $_name-$pkgver
+  cd $_name
   install -vDm755 Rack -t "$pkgdir"/usr/lib/$pkgname
   install -vDm755 libRack.so -t "$pkgdir"/usr/lib
   install -vDm755 "$srcdir"/vcvrack.sh "$pkgdir"/usr/bin/Rack

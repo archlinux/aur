@@ -1,5 +1,0 @@
-post_upgrade() {
-  echo "Since vcvrack 2.2.2-1, plugins in the user's home directory are"
-  echo "preferred over system-wide plugins. If you have a plugin"
-  echo "installed in both places, the version may change due to this upgrade."
-}
