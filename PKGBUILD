@@ -4,12 +4,12 @@ pkgname="sklauncher-bin"
 pkgdesc="Secure and modern Minecraft Launcher"
 
 pkgver=3.2.2
-pkgrel=2
+pkgrel=3
 
 arch=(i686 x86_64)
 
 url="https://skmedix.pl"
-license=("Apache-2.0", "custom:SKlauncher")
+license=("Apache-2.0" "custom:SKlauncher")
 
 depends=("java-runtime>=17")
 makedepends=(unzip gendesk)

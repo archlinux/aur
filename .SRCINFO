@@ -1,12 +1,12 @@
 pkgbase = sklauncher-bin
 	pkgdesc = Secure and modern Minecraft Launcher
 	pkgver = 3.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://skmedix.pl
 	install = sklauncher.install
 	arch = i686
 	arch = x86_64
-	license = Apache-2.0,
+	license = Apache-2.0
 	license = custom:SKlauncher
 	makedepends = unzip
 	makedepends = gendesk
