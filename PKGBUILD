@@ -1,7 +1,7 @@
 # Maintainer: icepie <icepie.dev [at] gmail dot com>
 pkgname=tiny-rdm-bin
 _pkgname=tiny-rdm
-pkgver=1.0.9
+pkgver=1.1.1
 pkgrel=2
 pkgdesc="A modern redis desktop manager. A better redis GUI client."
 arch=("x86_64")
@@ -31,11 +31,6 @@ package() {
     
     # 替换 /usr/local/bin/ 为 /usr/bin/
     sed -i 's/\/usr\/local\/bin\//\/usr\/bin\//g' ${srcdir}/usr/share/applications/${_pkgname}.desktop
-
-
-    
     install -Dm644 ${srcdir}/usr/share/applications/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
-
     install -Dm644 ${srcdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png
-    
 }
