@@ -1,0 +1,24 @@
+pkgbase = r-suitor
+	pkgdesc = Selecting the number of mutational signatures through cross-validation
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SUITOR
+	arch = x86_64
+	license = GPL2
+	checkdepends = r-biocgenerics
+	checkdepends = r-runit
+	depends = r-biocparallel
+	depends = r-ggplot2
+	optdepends = r-biocgenerics
+	optdepends = r-biocmanager
+	optdepends = r-biocstyle
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-mutationalpatterns
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SUITOR_1.4.0.tar.gz
+	md5sums = 5f4a5ea607ef7551025cf8b425d20bc7
+	sha256sums = dcf836310ea9e773861574bf10dd01f88dc648c9679d59c6d1dcf13f9d46102b
+
+pkgname = r-suitor
