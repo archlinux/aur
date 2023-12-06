@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.2.rc0.r0.gebef87aa8d
+pkgver=10.3.beta0.r0.g272582be9e0
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -133,11 +133,9 @@ conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
         latte-count.patch
-        sagemath-flint-3.patch
         sagemath-tdlib-0.9.patch)
 sha256sums=('SKIP'
             '5cd2f88965d7ebab9dfab6f5c2040d363a4a5ae41230219cc7070b907381da5a'
-            '6bbdc779968d53fc515dc0646a2d19b76c180874db5590bf0af6aa3dac2f2490'
             '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2')
 _pkgs=(standard
        bliss
@@ -159,8 +157,6 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # update to tdlib 0.9 (Fedora)
   patch -p1 -i ../sagemath-tdlib-0.9.patch
-# fix build with flint 3 https://github.com/sagemath/sage/pull/35848
-  patch -p1 -i ../sagemath-flint-3.patch
 
   ./bootstrap
 }
