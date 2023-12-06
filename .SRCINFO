@@ -9,6 +9,7 @@ pkgbase = mihomo
 	makedepends = go
 	depends = glibc
 	depends = clash-geoip
+	provides = clash-meta
 	conflicts = clash-meta
 	backup = etc/mihomo/config.yaml
 	source = mihomo-1.17.0.tar.gz::https://github.com/MetaCubeX/mihomo/archive/refs/tags/v1.17.0.tar.gz

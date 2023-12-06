@@ -9,7 +9,8 @@ url="https://github.com/MetaCubeX/mihomo"
 license=("GPL3")
 depends=('glibc' 'clash-geoip')
 makedepends=('go')
-conflicts=(clash-meta)
+conflicts=('clash-meta')
+provides=('clash-meta')
 backup=('etc/mihomo/config.yaml')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
@@ -50,6 +51,4 @@ package() {
     ln -sf /etc/clash/Country.mmdb ${pkgdir}/etc/${pkgname}/Country.mmdb
     # Compability with applications executing /usr/bin/clash-meta
     ln -sf /usr/bin/mihomo ${pkgdir}/usr/bin/clash-meta
-    #geosite.dat from community repo does not work
-    # ln -sf /usr/share/v2ray/geosite.dat ${pkgdir}/etc/${pkgname}/GeoSite.dat
 }
