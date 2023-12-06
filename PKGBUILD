@@ -1,14 +1,14 @@
 # Maintainer: Dan Shick <dan.shick@gmail.com>
 
-pkgname=senpai-irc-git
-_pkgname=senpai-irc
+pkgname=senpai-git
+_pkgname=senpai
 pkgver=0.3.0.r1.gea86a2e
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern terminal IRC client'
 url=https://git.sr.ht/~delthas/senpai/
 arch=(x86_64 aarch64)
 license=('ISC')
-provides=("senpai-irc")
+replaces=("senpai-irc-git")
 conflicts=("senpai")
 makedepends=('git' 'go' 'scdoc')
 source=(

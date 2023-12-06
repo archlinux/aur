@@ -1,7 +1,7 @@
-pkgbase = senpai-irc-git
+pkgbase = senpai-git
 	pkgdesc = A modern terminal IRC client
-	pkgver = v0.3.0.r1.gea86a2e
-	pkgrel = 1
+	pkgver = 0.3.0.r1.gea86a2e
+	pkgrel = 2
 	url = https://git.sr.ht/~delthas/senpai/
 	arch = x86_64
 	arch = aarch64
@@ -9,9 +9,9 @@ pkgbase = senpai-irc-git
 	makedepends = git
 	makedepends = go
 	makedepends = scdoc
-	provides = senpai-irc
 	conflicts = senpai
-	source = senpai-irc::git+https://git.sr.ht/~delthas/senpai
+	replaces = senpai-irc-git
+	source = senpai::git+https://git.sr.ht/~delthas/senpai
 	sha512sums = SKIP
 
-pkgname = senpai-irc-git
+pkgname = senpai-git
