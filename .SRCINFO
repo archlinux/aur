@@ -1,0 +1,21 @@
+pkgbase = desq-integration
+	pkgdesc = Volume control for DesQ
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://gitlab.com/DesQ/Integration
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	depends = libdesqui
+	depends = dfl-settings
+	depends = dfl-utils
+	depends = dfl-applications
+	depends = dfl-xdg
+	depends = dfl-colorschemeparser
+	source = https://gitlab.com/DesQ/Integration/-/archive/v0.0.8/Integration-v0.0.8.tar.gz
+	md5sums = a75ec89d358c5eb2c1a03830cecd2fb7
+
+pkgname = desq-integration
