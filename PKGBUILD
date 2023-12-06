@@ -1,7 +1,7 @@
 pkgname=tuxclocker-git
 _pkgname=tuxclocker
-pkgver=1.4.0.r603.a742cc1
-pkgrel=4
+pkgver=1.4.0.r607.645fe98
+pkgrel=1
 pkgdesc="A hardware controlling and monitoring program for GPUs and CPUs"
 arch=('x86_64')
 url="https://github.com/Lurkki14/tuxclocker"
@@ -30,7 +30,7 @@ source=(
 sha256sums=(
             
             'SKIP'
-            'bedbd8bedbbb1235790d882d5e51eb2af21f27b64b62eafa0e38222f54b560a0'
+            '821f9df72c046ecee4f5fe73898f2ccd953c765653ee7b7a5a9c1962550e31ef'
             'b39fb7ee38605d9626740f930bd0b58f15901655fba15ce0f5c8a5f4005637e8'
             '4928c76f4cee4f4bc435031f12620f99aa76b72fa459e809e30d58979e326a1e'
             'a5f194cce493e305da8592b630223d04a25e57c8c4e5a44ed47030f893270dde'

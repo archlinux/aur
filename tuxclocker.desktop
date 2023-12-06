@@ -6,4 +6,5 @@ Comment=GPU and CPU monitoring and tweaking tool
 Exec=env DBUS_SYSTEM_BUS_ADDRESS='unix:path=/tmp/tuxclocker-dbus-socket' /usr/bin/tuxclocker-qt
 Icon=tuxclocker
 Terminal=false
-Categories=System;Utility;
+Categories=System;Utility;Qt;
+GenericName=Overclocking Tool
