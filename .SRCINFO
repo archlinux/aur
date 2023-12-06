@@ -1,6 +1,6 @@
 pkgbase = musescore3-git
 	pkgdesc = Create, play and print beautiful sheet music (Jojo Schmitz fork)
-	pkgver = 3.7.0.r19954.a6cba54
+	pkgver = 3.7.0.r19959.f4d348f
 	pkgrel = 1
 	url = https://musescore.org/
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = musescore3-git
 	optdepends = lame: MP3 export
 	provides = musescore3
 	conflicts = musescore3
-	source = git+https://github.com/Jojo-Schmitz/MuseScore.git#commit=a6cba54123b3ffe8ad6b5756ff4bcc49e547223e
+	source = git+https://github.com/Jojo-Schmitz/MuseScore.git#commit=f4d348f2f6ebdba80031208465b6617395548aad
 	sha256sums = SKIP
 
 pkgname = musescore3-git
