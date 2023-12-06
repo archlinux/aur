@@ -1,16 +1,20 @@
 pkgbase = nodejs-wildduck
 	pkgdesc = Opinionated email server
-	pkgver = 1.36.2
+	pkgver = 1.41.0
 	pkgrel = 1
 	url = https://github.com/nodemailer/wildduck
 	arch = any
 	license = custom:EUPL
 	makedepends = npm
 	depends = nodejs
+	depends = redis
+	depends = mongodb-bin
 	provides = wildduck
 	conflicts = wildduck
-	noextract = wildduck-1.36.2.tgz
-	source = https://registry.npmjs.org/wildduck/-/wildduck-1.36.2.tgz
-	sha256sums = f1d532f018b1819541a6311f4f35c37a894ee02ab95a59ff05a0cabfa504f772
+	noextract = wildduck-1.41.0.tgz
+	source = https://registry.npmjs.org/wildduck/-/wildduck-1.41.0.tgz
+	source = wildduck-server.service
+	sha256sums = 299ba51f37b087d8f872f82b5d98731fbf02482fb81f36c6e21115c7a4dd7c86
+	sha256sums = 1eed0bf5af3c04735f917932645b9008c917a2cf01ded954b1ef7fc9d892ce4b
 
 pkgname = nodejs-wildduck

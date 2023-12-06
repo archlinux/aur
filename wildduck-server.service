@@ -1,0 +1,13 @@
+[Unit]
+Description=nodejs-wildduck - Opinionated email server
+Documentation=https://wildduck.email
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/lib/node_modules/wildduck/
+ExecStart=/usr/bin/node server/server.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
