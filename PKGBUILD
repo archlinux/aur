@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://github.com/OPM/${pkgbase}"
 license=(GPL3)
 makedepends=("dune-common>=${_dunever}" boost fmt cjson suitesparse texlive-basic doxygen graphviz
-  pybind11 python-scikit-build python-ninja python-setuptools-scm python-pytest-runner)
+  pybind11 python-scikit-build python-setuptools-scm python-pytest-runner)
 source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
 sha512sums=('e5ab73ff3654ce3931d7bd006954d8f38ce4eb98189fa481967c2847009236973e3599915e259ce47cf62c0fa6443f6dfeb6d081c6a31b6380437c3fe47fb744')
 

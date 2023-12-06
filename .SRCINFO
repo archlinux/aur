@@ -15,7 +15,6 @@ pkgbase = opm-common
 	makedepends = graphviz
 	makedepends = pybind11
 	makedepends = python-scikit-build
-	makedepends = python-ninja
 	makedepends = python-setuptools-scm
 	makedepends = python-pytest-runner
 	source = opm-common-release-2023.10-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2023.10/final.tar.gz
