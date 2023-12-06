@@ -1,13 +1,14 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
 	pkgver = 6.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = mathics-scanner
 	depends = python-sympy
 	depends = python-mpmath

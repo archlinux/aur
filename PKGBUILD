@@ -8,7 +8,7 @@
 pkgname=mathics
 _pkgname=Mathics3
 pkgver=6.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
@@ -17,7 +17,7 @@ depends=('mathics-scanner' 'python-sympy' 'python-mpmath' 'python-numpy'
          'python-palettable' 'python-pint' 'python-dateutil' 'python-llvmlite'
          'python-requests' 'cython' 'python-recordclass' 'python-pillow'
          'python-scikit-image')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=( 'python-ipywidgets: For Manipulate'
              'python-lxml: for HTML parsing used in builtin/fileformats/html'
              'python-psutil: SystemMemory and MemoryAvailable'
