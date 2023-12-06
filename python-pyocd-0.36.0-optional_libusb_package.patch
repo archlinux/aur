@@ -1,22 +1,37 @@
-diff --git c/pyocd/probe/picoprobe.py w/pyocd/probe/picoprobe.py
-index 481e984f..14d1214d 100644
---- c/pyocd/probe/picoprobe.py
-+++ w/pyocd/probe/picoprobe.py
-@@ -18,8 +18,12 @@
- from array import array
+From 8b329d7bfd42c6619a1e274bac805f61c64aee63 Mon Sep 17 00:00:00 2001
+From: David Runge <dave@sleepmap.de>
+Date: Fri, 11 Feb 2022 12:04:52 +0100
+Subject: [PATCH] Make the use of libusb-package optional
+
+Attempt to import libusb-package's `find()` function, else fall back to
+using pyusb's `find()` function.
+This allows to use pyusb by just removing the project's requirement on
+libusb-package, as python-pyusb and libusb packaging go hand-in-hand on
+Linux distributions.
+---
+ pyocd/probe/picoprobe.py                              |  7 +++++--
+ pyocd/probe/pydapaccess/interface/pyusb_backend.py    | 10 +++++++---
+ pyocd/probe/pydapaccess/interface/pyusb_v2_backend.py | 10 +++++++---
+ pyocd/probe/stlink/usb.py                             |  7 +++++--
+ 4 files changed, 24 insertions(+), 10 deletions(-)
+
+diff --git a/pyocd/probe/picoprobe.py b/pyocd/probe/picoprobe.py
+index c8df7a35..ec4605b4 100644
+--- a/pyocd/probe/picoprobe.py
++++ b/pyocd/probe/picoprobe.py
+@@ -19,7 +19,10 @@ from array import array
  
  from time import sleep
+ from usb import core, util
+-import libusb_package
 +try:
 +    from libusb_package import find as usb_find
 +except ImportError:
 +    from usb.core import find as usb_find
-+
- from usb import core, util
--import libusb_package
  
  import platform
  import errno
-@@ -108,7 +112,7 @@ class PicoLink(object):
+@@ -108,7 +111,7 @@ class PicoLink(object):
          """@brief Find and return all Picoprobes """
          try:
              # Use a custom matcher to make sure the probe is a Picoprobe and accessible.
@@ -25,41 +40,40 @@ index 481e984f..14d1214d 100644
          except core.NoBackendError:
              show_no_libusb_warning()
              return []
-diff --git c/pyocd/probe/pydapaccess/interface/pyusb_backend.py w/pyocd/probe/pydapaccess/interface/pyusb_backend.py
-index cf240043..229fc7c5 100644
---- c/pyocd/probe/pydapaccess/interface/pyusb_backend.py
-+++ w/pyocd/probe/pydapaccess/interface/pyusb_backend.py
-@@ -37,7 +37,6 @@ TRACE = LOG.getChild("trace")
+diff --git a/pyocd/probe/pydapaccess/interface/pyusb_backend.py b/pyocd/probe/pydapaccess/interface/pyusb_backend.py
+index 90486940..567b50a5 100644
+--- a/pyocd/probe/pydapaccess/interface/pyusb_backend.py
++++ b/pyocd/probe/pydapaccess/interface/pyusb_backend.py
+@@ -41,14 +41,18 @@ TRACE = LOG.getChild("trace")
  TRACE.setLevel(logging.CRITICAL)
  
  try:
 -    import libusb_package
      import usb.core
      import usb.util
++    try:
++        from libusb_package import find as usb_find
++    except ImportError:
++        from usb.core import find as usb_find
  except ImportError:
-@@ -45,6 +44,12 @@ except ImportError:
+     IS_AVAILABLE = False
  else:
      IS_AVAILABLE = True
  
-+try:
-+    from libusb_package import find as usb_find
-+except ImportError:
-+    from usb.core import find as usb_find
-+
 +
  class PyUSB(Interface):
      """@brief CMSIS-DAP USB interface class using pyusb for the backend."""
  
-@@ -70,7 +75,7 @@ class PyUSB(Interface):
+@@ -81,7 +85,7 @@ class PyUSB(Interface):
          assert self.closed is True
  
          # Get device handle
 -        dev = libusb_package.find(custom_match=FindDap(self.serial_number))
 +        dev = usb_find(custom_match=FindDap(self.serial_number))
          if dev is None:
-             raise DAPAccessIntf.DeviceError("Device %s not found" % self.serial_number)
+             raise DAPAccessIntf.DeviceError(f"Probe {self.serial_number} not found")
  
-@@ -161,7 +166,7 @@ class PyUSB(Interface):
+@@ -180,7 +184,7 @@ class PyUSB(Interface):
          """
          # find all cmsis-dap devices
          try:
@@ -68,41 +82,40 @@ index cf240043..229fc7c5 100644
          except usb.core.NoBackendError:
              if not PyUSB.did_show_no_libusb_warning:
                  LOG.warning("CMSIS-DAPv1 probes may not be detected because no libusb library was found.")
-diff --git c/pyocd/probe/pydapaccess/interface/pyusb_v2_backend.py w/pyocd/probe/pydapaccess/interface/pyusb_v2_backend.py
-index a9b0a1a0..e2007908 100644
---- c/pyocd/probe/pydapaccess/interface/pyusb_v2_backend.py
-+++ w/pyocd/probe/pydapaccess/interface/pyusb_v2_backend.py
-@@ -38,7 +38,6 @@ TRACE = LOG.getChild("trace")
+diff --git a/pyocd/probe/pydapaccess/interface/pyusb_v2_backend.py b/pyocd/probe/pydapaccess/interface/pyusb_v2_backend.py
+index 145497f2..7e443ecd 100644
+--- a/pyocd/probe/pydapaccess/interface/pyusb_v2_backend.py
++++ b/pyocd/probe/pydapaccess/interface/pyusb_v2_backend.py
+@@ -40,14 +40,18 @@ TRACE = LOG.getChild("trace")
  TRACE.setLevel(logging.CRITICAL)
  
  try:
 -    import libusb_package
      import usb.core
      import usb.util
++    try:
++        from libusb_package import find as usb_find
++    except ImportError:
++        from usb.core import find as usb_find
  except ImportError:
-@@ -46,6 +45,12 @@ except ImportError:
+     IS_AVAILABLE = False
  else:
      IS_AVAILABLE = True
  
-+try:
-+    from libusb_package import find as usb_find
-+except ImportError:
-+    from usb.core import find as usb_find
-+
 +
  class PyUSBv2(Interface):
      """@brief CMSIS-DAPv2 interface using pyUSB."""
  
-@@ -84,7 +89,7 @@ class PyUSBv2(Interface):
+@@ -95,7 +99,7 @@ class PyUSBv2(Interface):
          assert self.closed is True
  
          # Get device handle
 -        dev = libusb_package.find(custom_match=HasCmsisDapv2Interface(self.serial_number))
 +        dev = usb_find(custom_match=HasCmsisDapv2Interface(self.serial_number))
          if dev is None:
-             raise DAPAccessIntf.DeviceError("Device %s not found" %
-                                             self.serial_number)
-@@ -187,7 +192,7 @@ class PyUSBv2(Interface):
+             raise DAPAccessIntf.DeviceError(f"Probe {self.serial_number} not found")
+ 
+@@ -204,7 +208,7 @@ class PyUSBv2(Interface):
          """@brief Returns all the connected devices with a CMSIS-DAPv2 interface."""
          # find all cmsis-dap devices
          try:
@@ -111,10 +124,10 @@ index a9b0a1a0..e2007908 100644
          except usb.core.NoBackendError:
              common.show_no_libusb_warning()
              return []
-diff --git c/pyocd/probe/stlink/usb.py w/pyocd/probe/stlink/usb.py
-index c9a400af..883c014c 100644
---- c/pyocd/probe/stlink/usb.py
-+++ w/pyocd/probe/stlink/usb.py
+diff --git a/pyocd/probe/stlink/usb.py b/pyocd/probe/stlink/usb.py
+index ae7fe4db..c3b6e040 100644
+--- a/pyocd/probe/stlink/usb.py
++++ b/pyocd/probe/stlink/usb.py
 @@ -15,7 +15,10 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -136,3 +149,6 @@ index c9a400af..883c014c 100644
          except usb.core.NoBackendError:
              common.show_no_libusb_warning()
              return []
+-- 
+2.43.0
+

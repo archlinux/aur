@@ -1,8 +1,8 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
-_name=pyocd
+_name=pyOCD
 pkgname=python-pyocd
-pkgver=0.35.1
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
@@ -39,18 +39,21 @@ checkdepends=(
   python-pytest
   python-typing-extensions
 )
-optdepends=('python-setuptools: for plugin support')
+optdepends=(
+  'python-setuptools: for plugin support'
+  'stlink: for stlink device detection via udev'
+)
 provides=(pyocd)
 conflicts=(pyocd)
 replaces=(pyocd)
 source=(
-  https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
-  $pkgname-0.33.1-optional_libusb_package.patch
+  $pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
+  $pkgname-0.36.0-optional_libusb_package.patch
 )
-sha512sums=('ee2e7e7f97003553023d46d1e2078173329c4cef82a230f37aedcbd1ca53e22220d699d2a042e6297f0c9173c40d185a4a735fa2ba07b9ebab619f185c1f01a3'
-            'cbcf65ead4f72025c28e9d42e7947db9671c8de62a797dc27d1198dbdb164afe51b5cafb83224e5c0797b5ae6ea8a9f91080aae81f00934309645a47d0154eaf')
-b2sums=('1226ceb0d3d62cc63a90e649c2956e05be7a4b1baf1602c5295aaa4be70d53909b037ba930df92ae863681e950a6b245568c93bd6e9197eefff9e6d93b5334ba'
-        'dfed46c4e852cf28029573acd49aef06e51a3280851111ebc40bd7110c1900f480e77ade970c9b4d5574e9966cab996014b503991fdb8879aa9113f9d8091edb')
+sha512sums=('26efd6ceeb0ddaea9ac52170082b9fd87926790f90c0d7ccb1deb9e9ec549b84202801704b65641e6a2ac7fe0215a540e45eb0e1a0b9a38ac373720c5884bd36'
+            'c4aadf654260a3d0a21eb937b211c6790de7eb255fa4ec60133b48d34179692706c6c5500019c95d3664076cf39e1451f40e7d468d8231f749a2b24f11aa8c5b')
+b2sums=('14dac4f5ae3b5fe218557af08a9e284882436a0ebfe16487b59cd0df7a051e0dc1fb515b940ecb66ed0be5cb0c03e02a87834883597e7d8d4fa99e76da60c137'
+        '9871afe976a9ccad60dd71ae8cc28f47178a0848aad9e61d315df92d554a69c0e3e140bdc7390da462e2f138ba8d8584e855bab9c197c8431ff1c77b6ea8156b')
 
 prepare() {
   cd $_name-$pkgver
@@ -58,13 +61,13 @@ prepare() {
   # we remove the dependency for libusb-package, because it would vendor libusb
   # https://github.com/pyocd/pyOCD/issues/1331
   sed '/libusb-package/d' -i setup.cfg
-  # do not use version upper boundaries or dependencies for other OSes: https://bugs.archlinux.org/task/76848
-  sed -e 's/,<.*//g;/hidapi/d' -i setup.cfg
-  patch -Np1 -i ../$pkgname-0.33.1-optional_libusb_package.patch
+  patch -Np1 -i ../$pkgname-0.36.0-optional_libusb_package.patch
+
+  # remove udev rules for stlink devices (the stlink package provides them):
+  rm -v udev/*stlink*.rules
 
   # tag devices with uaccess to automatically make them available to active user sessions
-  sed -e 's|MODE:="666"|MODE:="0660", TAG+="uaccess"|g' -i udev/*{cmsis,pico}*.rules
-  sed -e 's|MODE:="0666"|MODE:="0660", TAG+="uaccess"|g' -i udev/*stlink*.rules
+  sed -e 's|MODE:="666"|MODE:="0660", TAG+="uaccess"|g' -i udev/*.rules
 }
 
 build() {
