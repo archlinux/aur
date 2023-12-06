@@ -3,7 +3,7 @@
 pkgname=termius-deb
 _pkgname=Termius
 pkgver=8.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop SSH Client (deb release)'
 arch=('x86_64')
 url='https://termius.com'
@@ -38,9 +38,6 @@ pkgver() {
     bsdtar -xpf 'control.tar.gz' -C "${pkgname//-deb}-control/"
 
     grep 'Version:' "${pkgname//-deb}-control/control" | awk '{print $2}'
-
-    rm -rf "${pkgname//-deb}-$pkgver/"
-    mv -T "${pkgname//-deb}-rolling/" "${pkgname//-deb}-$pkgver/"
 }
 
 package() {
@@ -77,7 +74,8 @@ package() {
                 'xdg-utils: Open files')
 
     install -d "$pkgdir/opt/${pkgname//-deb}/"
-    cp -a "${pkgname//-deb}-$pkgver/opt/$_pkgname/." "$pkgdir/opt/${pkgname//-deb}/"
+    cp -a "${pkgname//-deb}-rolling/opt/$_pkgname/." "$pkgdir/opt/${pkgname//-deb}/"
+
     chmod 755 "$pkgdir/opt/${pkgname//-deb}/${pkgname//-deb}"
     chmod u+s "$pkgdir/opt/${pkgname//-deb}/chrome-sandbox" || true
 
