@@ -2,7 +2,7 @@
 pkgname=stretchly-bin
 _pkgname=Stretchly
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 _rlsver=v1.15.1
 pkgdesc="The break time reminder app"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,11 @@ url="https://github.com/hovancik/stretchly/"
 license=('BSD')
 provides=('stretchly')
 conflicts=('stretchly')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify')
+optdepends=(
+  'libappindicator-gtk2: sys tray support (GTK+ 2)'
+  'libappindicator-gtk3: sys tray support (GTK+ 3)'
+)
 install=${_pkgname}.install
 
 source=("LICENSE::https://raw.githubusercontent.com/hovancik/stretchly/$_rlsver/LICENSE")
