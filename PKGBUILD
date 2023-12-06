@@ -1,5 +1,5 @@
 pkgname=jdk8-j9-bin
-pkgver=8.0.7.10
+pkgver=8.0.8.15
 _pkgver=$(sed -e 's/\./-/2' <<<${pkgver})
 pkgrel=1
 pkgdesc="IBM® SDK, Java Technology Edition, Version 8"
@@ -14,7 +14,7 @@ provides=(
 )
 makedepends=('coreutils' 'bash')
 source=("install_${pkgver}.bin::https://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/${pkgver}/linux/x86_64/ibm-java-sdk-${_pkgver}-x86_64-archive.bin")
-sha256sums=('29261a59ea6675033eb5b7a741dbb52692777f4823ec72f7111519be6eaa7f98')
+sha256sums=('7ccef7b1efc09c73b9afc68ba3f8012a554cf2eff0d60655ffb7dafe3c3f562a')
 
 package() {
 	cd "$srcdir"
