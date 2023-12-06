@@ -11,7 +11,7 @@ arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
 license=('custom:GPL2 with runtime exception')
 depends=("dune-geometry>=${pkgver}" "dune-uggrid>=${pkgver}" alberta)
-makedepends=(doxygen graphviz python-scikit-build python-ninja)
+makedepends=(doxygen graphviz python-scikit-build)
 optdepends=('imagemagick: image viewing/manipulation program'
   'doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
