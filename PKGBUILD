@@ -55,6 +55,7 @@ pkgver() {
 _package() {
     _config_dir="/usr/share/${_pkgbase}"
     _log_dir="/var/log/asus-numberpad-driver"
+    mkdir -p "${pkgdir}${_log_dir}"
     cd "${srcdir}/${_pkgbase}"
     install -Dm755 numberpad.py "${pkgdir}/${_config_dir}/numberpad.py"
     install -Dm644 "asus_numberpad_driver.service" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.service"
