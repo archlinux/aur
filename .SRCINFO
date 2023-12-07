@@ -1,6 +1,6 @@
 pkgbase = ibus-bamboo-git
 	pkgdesc = A Vietnamese IME for IBus
-	pkgver = 0.8.2+RC18+0+gb45fe39
+	pkgver = 0.8.3+RC6+0+ga436ca2
 	pkgrel = 1
 	url = https://github.com/BambooEngine/ibus-bamboo
 	arch = any
