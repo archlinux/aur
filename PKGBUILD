@@ -3,16 +3,15 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgname=digikam
-_pkgver=8.2.0
-pkgver=${_pkgver//-/} # for beta versions
+_pkgname=digikam
+pkgname=${_pkgname}-slim-git
+pkgver=8.2.0.r171.83865d7df8
 pkgrel=1
-pkgdesc='An advanced digital photo management application'
+pkgdesc='Digikam Qt6 build without mysql/akonadi/kcalendar/ksane/marble/panorama'
 arch=(x86_64)
 license=(GPL)
 url='https://www.digikam.org/'
-depends=(akonadi-contacts5
-         exiv2
+depends=(exiv2
          expat
          ffmpeg
          gcc-libs
@@ -20,21 +19,19 @@ depends=(akonadi-contacts5
          glibc
          imagemagick
          jasper
-         kcalendarcore5
-         kcompletion5
-         kconfig5
-         kconfigwidgets5
-         kcontacts5
-         kcoreaddons5
-         kfilemetadata5
-         ki18n5
-         kiconthemes5
-         kio5
-         knotifications5
-         knotifyconfig5
-         kservice5
-         kwidgetsaddons5
-         kxmlgui5
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kfilemetadata
+         ki18n
+         kiconthemes
+         kio
+         knotifications
+         knotifyconfig
+         kservice
+         kwidgetsaddons
+         kxmlgui
          lcms2
          lensfun
          libass
@@ -42,7 +39,6 @@ depends=(akonadi-contacts5
          libgphoto2
          libheif
          libjpeg-turbo
-         libksane
          libpng
          libpulse
          libtiff
@@ -51,51 +47,50 @@ depends=(akonadi-contacts5
          libxml2
          libxslt
          libxv
-         marble-common
          opencv
          perl
          perl-image-exiftool
          portaudio
-         qt5-base
-         qt5-networkauth
-         qt5-webengine
-         qt5-x11extras
-         qt5-xmlpatterns
+         qt6-base
+         qt6-networkauth
+         qt6-webengine
+         qt6-scxml
          sh
-         solid5
-         sonnet5
-         threadweaver5
+         solid
+         sonnet
          x265
          zlib)
-makedepends=(boost
+conflicts=(digikam digikam-git)
+makedepends=(git
+             boost
              doxygen
              eigen
              extra-cmake-modules
-             kdoctools5)
+             kdoctools)
 optdepends=('darktable: RAW import'
-            'hugin: panorama tool'
-            'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
+            'qt6-imageformats: support for additional image formats (WEBP, TIFF)'
             'rawtherapee: RAW import')
-source=(https://download.kde.org/stable/$pkgname/${_pkgver%-*}/digiKam-$_pkgver.tar.xz{,.sig}
-        akonadi-contacts.patch)
-sha256sums=('2f7fcb559b123ed9ecae5a5aef6f4560eee5f49206d9d1746dec9ab6c8fb38bf'
-            'SKIP'
-            '06d91ac72cf67ed0b125da8d8b1d3ab9e4edd848e322e5984069e1c26f02e01e')
+source=(git+https://invent.kde.org/graphics/$_pkgname.git)
+sha256sums=('SKIP')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
-prepare() {
-  patch -d $pkgname-$_pkgver -p1 < akonadi-contacts.patch
+pkgver() {
+	git -C $_pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S $pkgname-$_pkgver \
+  cmake -B build -S $_pkgname \
     -DBUILD_TESTING=OFF \
-    -DENABLE_KFILEMETADATASUPPORT=ON \
-    -DENABLE_MEDIAPLAYER=ON \
-    -DENABLE_AKONADICONTACTSUPPORT=ON \
-    -DENABLE_MYSQLSUPPORT=ON \
+    -DBUILD_WITH_QT6=1 \
+    -DENABLE_AKONADICONTACTSUPPORT=OFF \
+    -DENABLE_MYSQLSUPPORT=OFF \
+    -DHAVE_KCALENDAR=0 \
+    -DHAVE_KSANE=0 \
+    -DHAVE_MARBLE=0 \
+    -DHAVE_PANORAMA=0 \
     -DENABLE_APPSTYLES=ON \
     -DENABLE_QWEBENGINE=ON \
+    -DENABLE_MEDIAPLAYER=ON \
     -DSSE4_1_FOUND=OFF
   cmake --build build
 }
