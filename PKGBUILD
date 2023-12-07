@@ -7,7 +7,7 @@ pkgdesc="A featureful, modular and fast pomodoro timer with server-client struct
 url="https://github.com/nimaaskarian/${_gitname}"
 
 provides=(potctl potd potui)
-makedepends=(git ncurses)
+makedepends=(ncurses)
 arch=('x86_64')
 license=('GPL3')
 optdepends=('libnotify: sending notifications on event')
@@ -16,7 +16,7 @@ source=(
   "${pkgname}.tar.gz::https://github.com/nimaaskarian/${_gitname}/archive/refs/tags/${pkgver}.zip"
 )
 
-md5sums=('c1acd68aeb737c70e437532d02575dfd')
+md5sums=('23eff9ab4373203355b78c55abb2d3c0')
 build () {
   cd "${pkgname}-${pkgver/v/}" || exit
   make

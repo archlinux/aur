@@ -5,13 +5,12 @@ pkgbase = potato-c
 	url = https://github.com/nimaaskarian/potato-c
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = ncurses
 	optdepends = libnotify: sending notifications on event
 	provides = potctl
 	provides = potd
 	provides = potui
 	source = potato-c.tar.gz::https://github.com/nimaaskarian/potato-c/archive/refs/tags/0.4.1.zip
-	md5sums = c1acd68aeb737c70e437532d02575dfd
+	md5sums = 23eff9ab4373203355b78c55abb2d3c0
 
 pkgname = potato-c
