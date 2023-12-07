@@ -1,0 +1,3 @@
+d /opt/jdownloader/cfg 0775 jdownloader jdownloader -
+d /opt/jdownloader/logs 0775 jdownloader jdownloader -
+d /opt/jdownloader/tmp 0775 jdownloader jdownloader -

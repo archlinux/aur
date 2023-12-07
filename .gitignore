@@ -1,0 +1,10 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!jd-containers.desktop
+!jdownloader
+!jdownloader.desktop
+!jdownloader.sysusers
+!jdownloader.tmpfiles
+!jdownloader.xml

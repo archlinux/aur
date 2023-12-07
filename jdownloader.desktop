@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=JDownloader
+Icon=jdownloader
+TryExec=/usr/bin/jdownloader
+Exec=/usr/bin/jdownloader
+Terminal=false
+Categories=Network
+StartupWMClass=jd-Main
