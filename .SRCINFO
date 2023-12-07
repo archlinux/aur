@@ -1,13 +1,13 @@
 pkgbase = hcclient-bin
 	pkgdesc = A terminal client for hack.chat
-	pkgver = 1.17.2
+	pkgver = 1.17.3
 	pkgrel = 1
 	url = https://github.com/AnnikaV9/hcclient
 	arch = x86_64
 	license = Unlicense
 	provides = hcclient
 	conflicts = hcclient
-	source = hcclient-1.17.2-arch.tar.gz::https://github.com/AnnikaV9/hcclient/releases/download/v1.17.2/hcclient-1.17.2-arch.tar.gz
-	sha256sums = 9e47734684ae6c1626bf2b7208b996c45221d9bcb6230207c5f03f85e5426876
+	source = hcclient-1.17.3-arch.tar.gz::https://github.com/AnnikaV9/hcclient/releases/download/v1.17.3/hcclient-1.17.3-arch.tar.gz
+	sha256sums = f343d1f878b61f49473d68e0fed91f35aee230cccd4ba9f483f2715796622cef
 
 pkgname = hcclient-bin
