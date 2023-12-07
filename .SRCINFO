@@ -1,6 +1,6 @@
 pkgbase = avml-git
 	pkgdesc = A portable volatile memory acquisition tool for Linux
-	pkgver = v0.3.0.r2.g9e474c2
+	pkgver = 0.13.0.r29.gb6c9739
 	pkgrel = 1
 	url = https://github.com/microsoft/avml
 	arch = x86_64

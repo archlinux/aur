@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=avml-git
-pkgver=v0.3.0.r2.g9e474c2
+pkgver=0.13.0.r29.gb6c9739
 pkgrel=1
 pkgdesc='A portable volatile memory acquisition tool for Linux'
 arch=('x86_64')
@@ -14,14 +14,14 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/avml"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
 	cd avml
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features --target $CARCH-unknown-linux-musl
+	cargo build --release --all-features --target $CARCH-unknown-linux-musl
 }
 
 package() {
