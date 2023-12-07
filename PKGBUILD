@@ -4,7 +4,7 @@
 pkgname=azure-kubelogin
 _name=kubelogin
 pkgver=0.0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="A Kubernetes credential (exec) plugin implementing azure authentication"
 arch=(x86_64)
 url="https://github.com/Azure/kubelogin"
@@ -13,7 +13,7 @@ makedepends=(go)
 depends=(glibc)
 conflicts=(kubelogin)
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Azure/$_name/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('794da3ea64c26eb4cd709b807fff6629fe14cf3e7c384bddf2b890caa0018d26')
 
 _archive="$_name-$pkgver"
@@ -21,10 +21,10 @@ _archive="$_name-$pkgver"
 build() {
   cd "$_archive"
 
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   _go_version=$(go version | cut -d " " -f 3)
@@ -35,6 +35,11 @@ build() {
     -X 'main.platform=linux/amd64' \
   "
   go build -ldflags "$_ld_flags" .
+
+  # Completions
+  ./kubelogin completion bash > kubelogin.bash
+  ./kubelogin completion fish > kubelogin.fish
+  ./kubelogin completion zsh > kubelogin.zsh
 }
 
 check() {
@@ -47,5 +52,10 @@ package() {
   cd "$_archive"
 
   install -Dm755 kubelogin "$pkgdir/usr/bin/kubelogin"
+
+  install -Dm644 kubelogin.bash "$pkgdir/usr/share/bash-completion/completions/kubelogin"
+  install -Dm644 kubelogin.fish "$pkgdir/usr/share/fish/vendor_completions.d/kubelogin.fish"
+  install -Dm644 kubelogin.zsh "$pkgdir/usr/share/zsh/site-functions/_kubelogin"
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
