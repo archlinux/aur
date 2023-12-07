@@ -1,15 +1,16 @@
-# Maintainer: Davide Depau <davide@depau.eu>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: Davide Depau <davide@depau.eu>
 _pkgname=libglibutil
 pkgname=${_pkgname}-git
-pkgver=1.0.35.r0.g80575f4
+pkgver=1.0.75.r0.g4e11001
 pkgrel=1
 pkgdesc="Library of glib utilities"
 arch=('i686' 'x86_64')
 depends=('glib2')
 makedepends=('git' 'make')
-url="https://git.sailfishos.org/mer-core/libglibutil"
+url="https://github.com/sailfishos/libglibutil"
 license=('BSD')
-source=(${_pkgname}::git+https://git.merproject.org/mer-core/libglibutil.git)
+source=(${_pkgname}::git+${url}.git)
 sha256sums=('SKIP')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
