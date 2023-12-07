@@ -9,6 +9,7 @@ depends=('samurai')
 conflicts=('ninja')
 
 package() {
-  mkdir -p $pkgdir/usr/usr/bin
-  ln -s usr/bin/samu $pkgdir/usr/bin/ninja
+  mkdir -p $pkgdir/usr/bin
+  cd $pkgdir/usr/bin
+  ln -s samu ninja
 }
