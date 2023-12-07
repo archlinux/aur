@@ -1,0 +1,22 @@
+pkgbase = soapysdrplay3-luarvique-git
+	pkgdesc = Soapy SDR module for SDRPlay APIv3
+	pkgver = r139.fcac835
+	pkgrel = 1
+	url = http://www.sdrplay.com
+	install = soapysdrplay3-luarvique-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = soapysdr
+	depends = libsdrplay
+	depends = gcc-libs
+	provides = soapysdrplay3
+	provides = soapysdrplay
+	conflicts = soapysdrplay3
+	conflicts = soapysdrplay3-git
+	source = soapysdrplay3-luarvique-git::git+https://github.com/luarvique/SoapySDRPlay3.git
+	md5sums = SKIP
+
+pkgname = soapysdrplay3-luarvique-git
