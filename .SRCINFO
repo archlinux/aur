@@ -1,0 +1,12 @@
+pkgbase = pgxman
+	pkgdesc = PostgreSQL Extension Manager
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://pgxman.com/
+	arch = x86_64
+	license = FSL-1.0-Apache-2.0
+	makedepends = go
+	source = https://github.com/pgxman/pgxman/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 71f0986df8922df67fe20122776d6d46e7877233e3c52df3761f86d364c77a66
+
+pkgname = pgxman
