@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=ibm-tpm2-tss-git
-pkgver=v1.6.0.r0.gc4e131e
+pkgver=2.1.1.r0.g8842df8
 pkgrel=1
 pkgdesc='International Business Machines Trusted Platform Module 2.0 Software Stack'
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd tss
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
