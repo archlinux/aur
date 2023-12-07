@@ -1,13 +1,11 @@
 pkgbase = sudo-is-doas
-	pkgdesc = Replaces sudo and softlinks doas to sudo
-	pkgver = 1.0
-	pkgrel = 1
-	url = https://github.com/dnorhoj/sudo-is-doas
-	arch = x86_64
-	license = GPL3
+	pkgdesc = Replace sudo with doas, but it is not more functional than doas-sudo-shim.
+	pkgver = 1
+	pkgrel = 2
+	arch = any
+	license = Unlicense
 	depends = opendoas
 	provides = sudo
 	conflicts = sudo
-	replaces = sudo
 
 pkgname = sudo-is-doas
