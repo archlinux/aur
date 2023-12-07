@@ -1,0 +1,19 @@
+pkgbase = r-prolocdata
+	pkgdesc = Data accompanying the pRoloc package
+	pkgver = 1.40.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pRolocdata
+	arch = any
+	license = GPL2
+	checkdepends = r-summarizedexperiment
+	checkdepends = r-testthat
+	depends = r-biobase
+	depends = r-msnbase
+	optdepends = r-proloc
+	optdepends = r-summarizedexperiment
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/pRolocdata_1.40.0.tar.gz
+	md5sums = 8aafd04221b21588077788ec79272e1a
+	sha256sums = f1c405105a5ea16a4343112d710842065722c6a773db904d6bbea789ced15e7e
+
+pkgname = r-prolocdata
