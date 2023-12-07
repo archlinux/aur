@@ -1,0 +1,13 @@
+pkgbase = r-lbfgs
+	pkgdesc = Limited-memory BFGS Optimization
+	pkgver = 1.2.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=lbfgs
+	arch = x86_64
+	license = GPL
+	depends = r-rcpp
+	source = https://cran.r-project.org/src/contrib/lbfgs_1.2.1.2.tar.gz
+	md5sums = 312c98ccb82f84b5a8e3ee662a866b36
+	sha256sums = 7b09d886c377c8b5eb812085cd2aacb2c5ce7e38b77f9460023623dbc24edd11
+
+pkgname = r-lbfgs
