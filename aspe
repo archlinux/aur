@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+_aspe() {
+  local \
+    _pkgs=() \
+    _arch='https://gitlab.archlinux.org'
+  _pkgs=("$@")
+  for _pkg in "${_pkgs[@]}"; do
+    git \
+      clone \
+      "${_arch}/archlinux/packaging/packages/${_pkg}"
+  done
+}
+
+_pkgs=("$@")
+
+_aspe \
+  "${_pkgs[@]}"
