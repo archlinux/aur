@@ -13,6 +13,7 @@ pkgbase = hyprland-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = pkgconf
+	makedepends = tomlplusplus
 	makedepends = xorgproto
 	depends = cairo
 	depends = gcc-libs

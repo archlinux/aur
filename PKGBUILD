@@ -52,6 +52,7 @@ makedepends=(
   meson
   ninja
   pkgconf
+  tomlplusplus
   xorgproto
 )
 provides=("hyprland=${pkgver%%.r*}")
