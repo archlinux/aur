@@ -5,22 +5,16 @@
 pkgname=brickd
 pkgver=2.4.4
 _pkgver=${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="a brick daemon for tinkerforge brick(let)s"
 url="http://www.tinkerforge.com/"
 license=("GPL2")
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('libusb')
-source=(https://download.tinkerforge.com/apt/debian/pool/main/t/tinkerforge-${pkgname}/tinkerforge-${pkgname}_${_pkgver}.tar.xz brickd.install fix_strcasestr.patch)
+source=(https://download.tinkerforge.com/apt/debian/pool/main/t/tinkerforge-${pkgname}/tinkerforge-${pkgname}_${_pkgver}.tar.xz brickd.install)
 sha256sums=('97f78d24921870717a6bb7c62e363f9d2afe82d7742a982536aa13e068092222'
-            'c70f47a66e5c538e255bfd93111fe1a4ea15894db9c377ed133f8a0351403589'
-            'bcb9a742a15b29925a279c5d66c3f784681569a0081871e60a1b44e9f9b3e9ce')
+            'c70f47a66e5c538e255bfd93111fe1a4ea15894db9c377ed133f8a0351403589')
 install='brickd.install'
-
-prepare() {
-  patch --directory="$srcdir/tinkerforge-$pkgname-$_pkgver" --forward --strip=1 --input="${srcdir}/fix_strcasestr.patch"
-}
-
 build() {
   cd $srcdir/tinkerforge-$pkgname-$_pkgver/brickd
   make
