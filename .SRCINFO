@@ -1,0 +1,16 @@
+pkgbase = faac-drm
+	pkgdesc = Freeware Advanced Audio Coder with drm enabled
+	pkgver = 1.30
+	pkgrel = 1
+	url = https://www.audiocoding.com/
+	arch = x86_64
+	license = GPL2
+	license = custom
+	depends = glibc
+	depends = faac
+	provides = libfaac_drm.so
+	source = https://github.com/knik0/faac/archive/1_30/faac-1_30.tar.gz
+	sha512sums = 8582cd580dba2a347d15dc4fab42020d7120d0552c54ab74cfaf59ba1b270abb94c67e39d42459a14cbc6e98f3fd00cbda589e1b4f0c7278e41bdef6ae7b6554
+	b2sums = ee3cf1ad44c14ec289036c9a6f087df3a1cf81c9b0f60b6a2121f5badba3f3cab983001437bb6051ab2306c0e5e14ee8e3c9439116bd82c370f808d912ce2c13
+
+pkgname = faac-drm
