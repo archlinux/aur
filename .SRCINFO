@@ -1,7 +1,7 @@
 pkgbase = r-rtsne
 	pkgdesc = T-Distributed Stochastic Neighbor Embedding using a Barnes-Hut Implementation
-	pkgver = 0.16
-	pkgrel = 5
+	pkgver = 0.17
+	pkgrel = 1
 	url = https://cran.r-project.org/package=Rtsne
 	arch = x86_64
 	license = custom
@@ -9,7 +9,7 @@ pkgbase = r-rtsne
 	depends = r-rcpp
 	optdepends = r-irlba
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/Rtsne_0.16.tar.gz
-	sha256sums = 52a05adc826c28212e97d11c54eba3fec45d14eb52039c0f47f62a8e338ffbd5
+	source = https://cran.r-project.org/src/contrib/Rtsne_0.17.tar.gz
+	sha256sums = 3aae6814d6c6d406785145f07374135652f2b26a58690dfd4bfbc8365dc5590b
 
 pkgname = r-rtsne
