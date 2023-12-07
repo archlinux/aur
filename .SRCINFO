@@ -1,20 +1,17 @@
 pkgbase = mark-flowy-bin
 	pkgdesc = Modern markdown editor application, Build fast and efficient workflows.
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://markflowy.vercel.app/
 	arch = x86_64
 	license = AGPL3
 	depends = cairo
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	depends = gcc-libs
 	depends = hicolor-icon-theme
 	depends = gdk-pixbuf2
 	depends = libsoup3
 	depends = pango
-	depends = glibc
-	depends = glib2
 	depends = libxcb
 	provides = mark-flowy=0.6.2
 	conflicts = mark-flowy
