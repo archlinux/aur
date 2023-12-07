@@ -1,4 +1,4 @@
-# Maintainer: Pouyan Heyratpour <pouyan@janstun.com>
+# Maintainer: Pouyan Heyratpour <me@pouyan.dev>
 
 pkgname=polywatch-git
 pkgver=1.1.0
