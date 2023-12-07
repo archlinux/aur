@@ -3,7 +3,7 @@
 
 pkgname=appflowy-bin
 _pkgname=appflowy
-pkgver=0.3.9
+pkgver=0.3.9.1
 pkgrel=1
 pkgdesc="AppFlowy is an open-source alternative to Notion. You are in charge of your data and customizations."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "$pkgname-$pkgver-$pkgrel.tar.gz::${_src}/releases/download/${pkgver}/AppFlowy-$pkgver-linux-$arch.tar.gz")
 b2sums=('6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237'
         '7d56e1feeb7d65ed662d92dcf2fd5e7af2d6cb6823237bce85ffe8c0f07a3b65b043cd01888375f09b9cd2081dd9639d28639f1eff4c447a4728981d9433dd8f'
-        '55f421168b195d68251ca6eb642a79f583860ae665bf7606d9d55c7a3dde22733ba08971df4eb06a0cd374fd6f4cf8bdd895024905744b089b3cece1ced7286f')
+        'fe5ee9c0fc101468e035550ed896c76beca16e36354c29bdc552967837195564ab9c760d60ec4a4e8c975964d00d3f7318652559d52dfa10f8f060199b3286e4')
 
 package(){
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
