@@ -1,6 +1,6 @@
 pkgbase = ninja-is-samurai
 	pkgdesc = Replace ninja build with samurai.
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	arch = any
 	license = Unlicense

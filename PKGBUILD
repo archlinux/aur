@@ -1,6 +1,6 @@
 # Maintainer: akku <akku (at) f5.si>
 pkgname=ninja-is-samurai
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Replace ninja build with samurai."
 arch=('any')
@@ -9,6 +9,6 @@ depends=('samurai')
 conflicts=('ninja')
 
 package() {
-  mkdir -p $pkgdirusr/bin
-  ln -s usr/bin/samu $pkgdirusr/bin/ninja
+  mkdir -p $pkgdir/usr/usr/bin
+  ln -s usr/bin/samu $pkgdir/usr/bin/ninja
 }
