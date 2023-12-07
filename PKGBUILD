@@ -1,7 +1,7 @@
 # Mantenedor: Mauricio de Lima <emauricio@uaiso.org>
 pkgname=uarchiso
 pkgver=73
-pkgrel=4
+pkgrel=5
 pkgdesc="Archiso for UaiSO"
 arch=('any')
 url="https://gitlab.com/uaiso/labs/uarchiso"
@@ -27,11 +27,8 @@ package() {
 
     # Copy files
     if [ -d "${InternalDir}/" ]; then
-        mkdir -p "${pkgdir}/home/$USER/uArchiso"
+        mkdir -p "${pkgdir}/home/$USER/uArchiso/"
+        chmod -R 0777 "${pkgdir}/home/$USER/uArchiso/"
         cp -r "${InternalDir}/"* "${pkgdir}/home/$USER/uArchiso"
-
-        # Set permissions to 0777
-        chmod -R 755 "${pkgdir}/home/$USER/uArchiso"
-
     fi
 }
