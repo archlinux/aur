@@ -1,6 +1,6 @@
 pkgbase = anyk
 	pkgdesc = Form fill program of the Hungarian tax office (Általános Nyomtatványkitöltő (ÁNYK))
-	pkgver = 3.27.0
+	pkgver = 3.28.0
 	pkgrel = 1
 	url = https://www.nav.gov.hu/nav/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/abevjava_install.html
 	arch = any
@@ -9,13 +9,13 @@ pkgbase = anyk
 	depends = jre8-openjdk
 	optdepends = ttf-ms-fonts: for better font rendering
 	provides = abevjava
-	source = AbevJava-3.27.0.0.1-1::https://nav.gov.hu/pfile/rpmFile?path=/nyomtatvanyok/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/AbevJava
+	source = AbevJava-3.28.0.0.1-1::https://nav.gov.hu/pfile/rpmFile?path=/nyomtatvanyok/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/AbevJava
 	source = abevjava
 	source = abevjavapath.cfg
 	source = anyk.desktop
 	source = setenv
 	source = anyk.sysusers
-	md5sums = 3b9fdb74912806426efeeab3bfdbd33c
+	md5sums = e2945573ab2b1e745a0f4d6a6d1fac3c
 	md5sums = 14e676f715c1008dda83ffd7c3a127ec
 	md5sums = 5dae655a84d5dd76401011f5629d8f0f
 	md5sums = 86e4d78220da7d2d7a9015067d48ab9f
