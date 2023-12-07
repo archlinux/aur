@@ -1,7 +1,7 @@
 # Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=carburetor
-pkgver=4.1.4
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='Graphical settings app for tractor in GTK'
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://framagit.org/tractor/carburetor/-/archive/$pkgver/carburetor-$pkgver.tar.gz")
-sha256sums=('2f8e4a6446d589f7b24b85c07612f364f82e15f17439303202c58b7ef45f75a9')
+sha256sums=('30701ecec9947a38db3db8e163c7b321b63219f46b608eecf61a735914714ede')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -36,13 +36,16 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Install man page
-  install -Dm0644 -t "$pkgdir/usr/share/man/man1" src/carburetor/desktop/carburetor.1
+  install -Dm0644 -t "$pkgdir/usr/share/man/man1" \
+    data/carburetor.1
 
   # Install desktop integration files
   install -Dm0644 -t "$pkgdir/usr/share/applications" \
-    src/carburetor/desktop/io.frama.tractor.carburetor.desktop
+    data/io.frama.tractor.carburetor.desktop
   install -Dm0644 -t "$pkgdir/usr/share/metainfo" \
-    src/carburetor/desktop/io.frama.tractor.carburetor.metainfo.xml
-  install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps" \
-    src/carburetor/desktop/io.frama.tractor.carburetor.svg
+    data/metainfo/io.frama.tractor.carburetor.metainfo.xml
+
+  # Install icons
+  mkdir -p "$pkgdir/usr/share/icons/hicolor"
+  cp -dpr --no-preserve=ownership data/icons/* "$pkgdir/usr/share/icons/hicolor/"
 }
