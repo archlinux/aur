@@ -2,7 +2,8 @@
 pkgname=toughcookies-bin
 _pkgname=Tough-Cookies
 pkgver=0.45.0
-pkgrel=7
+_electronversion=10
+pkgrel=8
 pkgdesc="A modern flash cards study and management app that runs cross-platform on Windows, Mac, and Linux."
 arch=("x86_64")
 url="https://www.toughcookies.net/"
@@ -10,8 +11,7 @@ license=('custom:freeware')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron10'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'libx11'
     'gdk-pixbuf2'
@@ -30,8 +30,12 @@ source=(
 )
 sha256sums=('767dcd1fafa142e9178c7fe55f77a6d7f3f995d167bf4a2e0df978af377b59cf'
             'eae0e67aeeb7c2d5b136f3b5d4aa1fcc1354d2b72a95fd6f8b609ccba5d2d822'
-            'a6970e7be3d16cf16b7d717c036d29a1611a97437d70b2420c2ad035b8cc30e2')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
