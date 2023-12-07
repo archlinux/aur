@@ -2,7 +2,7 @@
 
 # to only build for cpu, set ENABLE_CUDA and ENABLE_ROCM to 0
 _ENABLE_CUDA=1
-_ENABLE_ROCM=0
+_ENABLE_ROCM=1
 _SKIP_CPU=0
 _GO_TAGS=""
 # _GO_TAGS="tts stablediffusion"
@@ -14,7 +14,9 @@ if test -n "$(echo "$_GO_TAGS" | grep -o "stablediffusion")"; then
   _OPTIONAL_BACKENDS="backend-assets/grpc/stablediffusion $_OPTIONAL_BACKENDS"
 fi
 # list of backends to be build
-_GRPC_BACKENDS="backend-assets/grpc/bert-embeddings backend-assets/grpc/llama-cpp backend-assets/grpc/whisper $_OPTIONAL_BACKENDS"
+_GRPC_BACKENDS="backend-assets/grpc/llama-cpp $_OPTIONAL_BACKENDS"
+# backend-assets/grpc/bert-embeddings backend-assets/grpc/whisper
+# XXX bert-embeddings breaks build of llama-cpp if first
 _pkgname="localai"
 
 pkgbase="${_pkgname}-git"
@@ -30,20 +32,20 @@ provides=('localai')
 conflicts=('localai')
 
 depends=(
+)
+makedepends=(
+  'go'
+  'git'
+  'cmake'
   'grpc'
   'opencv'
   'blas-openblas'
   'sdl2'
   'ffmpeg'
 )
-makedepends=(
-  'go'
-  'git'
-  'cmake'
-)
 
 if test "$(echo "$_GO_TAGS" | grep -o "tts")" = "tts"; then
-  depends+=(
+  makedepends+=(
     'onnxruntime'
     'piper-phonemize'
   )
@@ -140,6 +142,8 @@ build() {
     else
       _AMDGPU_TARGETS="${AMDGPU_TARGETS:-gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102}"
     fi
+    # XXX workaround build error on ROCM by removing cf-procetion from CXX_FLAGS
+    sed -i '1s/^/string(REPLACE "-fcf-protection" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")\n/' backend/cpp/llama/llama.cpp/CMakeLists.txt
     MAGMA_HOME="$ROCM_HOME" AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
       _build hipblas
   fi
