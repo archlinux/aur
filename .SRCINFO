@@ -1,0 +1,15 @@
+pkgbase = python-ultranest
+	pkgdesc = Fit and compare complex models reliably and rapidly with advanced sampling techniques.
+	pkgver = 3.6.4
+	pkgrel = 1
+	url = https://github.com/JohannesBuchner/ultranest
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	provides = lsbi
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/u/ultranest/ultranest-3.6.4.tar.gz
+	sha256sums = 23a1a442fe65137e427fc5b0ccaf625a67f0bb1d7cbeb5ec79621890d4000db2
+
+pkgname = python-ultranest
