@@ -1,6 +1,6 @@
 pkgbase = hx-git
 	pkgdesc = Hex editor for the terminal using plain C99 + POSIX libs
-	pkgver = v1.0.14.r0.c124b40
+	pkgver = 1.0.14.r0.c124b40
 	pkgrel = 1
 	url = https://github.com/krpors/hx
 	arch = x86_64
