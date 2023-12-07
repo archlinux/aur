@@ -7,7 +7,7 @@ patch_version=1
 
 pkgname="${_pkgname}"-appimage
 pkgver="${major_version}.${minor_version}.${patch_version}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A Clash GUI based on tauri. Only for Clash Meta."
 arch=('x86_64')
 url="https://github.com/keiko233/clash-nyanpasu"
@@ -16,6 +16,7 @@ options=(!strip)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'clash-meta')
 conflicts=('clash-nyanpasu-git' 'clash-nyanpasu-bin')
 provides=('clash-nyanpasu')
+optdepends=('clash-rs: custom protocol network proxy, coding with rust')
 source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-amd64.AppImage::https://github.com/keiko233/clash-nyanpasu/releases/download/v${major_version}.${minor_version}.${patch_version}/${_Pkgname}_${major_version}.${minor_version}.${patch_version}_amd64.AppImage")
 sha256sums_x86_64=('65297af3f79603e3b2d3a75e39b439d2aa629cc0cfaba8ecea97abacb3066e67')
 

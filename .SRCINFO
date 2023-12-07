@@ -1,7 +1,7 @@
 pkgbase = clash-nyanpasu-appimage
 	pkgdesc = A Clash GUI based on tauri. Only for Clash Meta.
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keiko233/clash-nyanpasu
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = clash-nyanpasu-appimage
 	depends = hicolor-icon-theme
 	depends = fuse2
 	depends = clash-meta
+	optdepends = clash-rs: custom protocol network proxy, coding with rust
 	provides = clash-nyanpasu
 	conflicts = clash-nyanpasu-git
 	conflicts = clash-nyanpasu-bin
