@@ -15,8 +15,29 @@ arch=('any')
 url="https://hyper.is/"
 _ghurl="https://github.com/vercel/hyper"
 license=('MIT')
-depends=('bash' 'python' 'alsa-lib' 'libxfixes' 'cairo' 'libxcb' 'glibc' 'nspr' 'at-spi2-core' 'pango' 'nss' 'libx11' 'libcups' 'expat' \
-    'libxcomposite' 'gtk3' 'libxkbcommon' 'gcc-libs' 'libxext' 'mesa' 'libxdamage' 'libxrandr' 'libdrm' 'glib2' 'dbus' 'hicolor-icon-theme')
+depends=(
+    'python'
+    'alsa-lib'
+    'libxfixes'
+    'cairo'
+    'libxcb'
+    'nspr'
+    'at-spi2-core'
+    'pango'
+    'nss'
+    'libx11'
+    'libcups'
+    'expat'
+    'libxcomposite'
+    'gtk3'
+    'libxkbcommon'
+    'libxext'
+    'mesa'
+    'libxdamage'
+    'libxrandr'
+    'libdrm'
+    'hicolor-icon-theme'
+)
 makedepends=(
     'git'
     'npm>=9.8.1'
@@ -30,10 +51,8 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
     "${pkgname%-git}::git+${_ghurl}.git"
-    "${pkgname%-git}.sh"
 )
-sha256sums=('SKIP'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     printf "%s" "$(git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g')"
@@ -45,10 +64,6 @@ _ensure_local_nvm() {
     nvm use 18
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@appasar@|app|g" \
-        -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories "System;Utility" --name "${_pkgname}" --exec "${pkgname%-git} --no-sandbox %U"
     cd "${srcdir}/${pkgname%-git}"
