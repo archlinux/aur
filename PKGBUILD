@@ -1,5 +1,5 @@
-# Maintainer: L B <leobaldin dot 2000 at gmail dot com>
-
+# Maintainer: ValHue <vhuelamo at gmail dot com>
+#
 pkgname=java17-openjfx-bin
 _majorver=17.0.9
 pkgver=17
@@ -38,3 +38,5 @@ package() {
     install -d "${pkgdir}/usr/share/doc/java${pkgver}-openjfx"
     cp -a "javafx-${_majorver}-javadoc/"* "${pkgdir}/usr/share/doc/java${pkgver}-openjfx/"
 }
+
+# vim:set ts=4 sw=2 et syn=sh ft=sh:
