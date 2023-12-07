@@ -1,9 +1,10 @@
 pkgbase = gnome-encfs-manager-bin
 	pkgdesc = An easy to use manager and mounter for encfs stashes
 	pkgver = 1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://moritzmolch.com/apps/gencfsm.html
 	arch = x86_64
+	license = GPL-2.0-or-later
 	makedepends = binutils
 	makedepends = tar
 	depends = encfs
@@ -12,8 +13,8 @@ pkgbase = gnome-encfs-manager-bin
 	depends = libsm
 	depends = libgnome-keyring
 	depends = libappindicator-gtk3
-	conflicts = gnome-encfs-manager-bzr
-	replaces = gnome-encfs-manager
+	provides = gnome-encfs-manager
+	conflicts = gnome-encfs-manager
 	source = https://download.opensuse.org/repositories/home:/moritzmolch:/gencfsm/Debian_10/amd64/gnome-encfs-manager_1.9_amd64.deb
 	sha256sums = 2d7d1bcbed13175a869e64de0873ee8218663b470d21c21a1fc4f83d0f84af5d
 
