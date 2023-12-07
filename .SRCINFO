@@ -1,0 +1,16 @@
+pkgbase = python-lsqfit
+	pkgdesc = conditional density estimation
+	pkgver = 13.0.4
+	pkgrel = 1
+	url = https://github.com/gplepage/lsqfit
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-numpy
+	provides = lsbi
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/l/lsqfit/lsqfit-13.0.4.tar.gz
+	sha256sums = b9f834867eb637c4ece88031cc06e0cc5c424b6bb7986b6fce89f545d32359ad
+
+pkgname = python-lsqfit
