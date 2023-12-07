@@ -1,8 +1,14 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron24
-_APPDIR="/opt/paradise-pi/resources/app"
+set -e
+_APPDIR="/usr/lib/@appname@"
+export PATH="${_APPDIR}:${PATH}"
+export ELECTRON_IS_DEV=0
+export LD_LIBRARY_PATH="${_APPDIR}/swiftshader:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
+_ASAR="${_APPDIR}/@appasar@"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec "${_ELECTRON}" "${_APPDIR}" "$@"
+    cd "${_APPDIR}"
+    exec electron@electronversion@ "${_ASAR}" "$@"
 else
-    exec "${_ELECTRON}" "${_APPDIR}" --no-sandbox "$@"
+    cd "${_APPDIR}"
+    exec electron@electronversion@ "${_ASAR}" --no-sandbox "$@"
 fi
