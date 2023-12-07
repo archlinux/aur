@@ -1,6 +1,6 @@
 pkgbase = hyper-git
 	pkgdesc = A terminal built on web technologies
-	pkgver = 4.0.0.canary.5.r155.g3da89a87
+	pkgver = 4.0.0.canary.5.r250.ga1da6e79
 	pkgrel = 1
 	url = https://hyper.is/
 	arch = any
@@ -8,9 +8,10 @@ pkgbase = hyper-git
 	makedepends = git
 	makedepends = npm>=9.8.1
 	makedepends = yarn
-	makedepends = nodejs>=18.18.0
+	makedepends = nvm
 	makedepends = python>=3.8
 	makedepends = libarchive
+	makedepends = libicns
 	depends = bash
 	depends = python
 	depends = alsa-lib
@@ -39,7 +40,9 @@ pkgbase = hyper-git
 	depends = hicolor-icon-theme
 	provides = hyper
 	conflicts = hyper
-	source = hyper.git::git+https://github.com/vercel/hyper.git
+	source = hyper::git+https://github.com/vercel/hyper.git
+	source = hyper.sh
 	sha256sums = SKIP
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = hyper-git
