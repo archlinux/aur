@@ -1,6 +1,6 @@
 pkgbase = slade-git
 	pkgdesc = SLADE3 Doom editor (git version)
-	pkgver = 3.2.3+5+g23d86d96
+	pkgver = 3.2.4+42+ga3fd9c3a
 	pkgrel = 1
 	url = http://slade.mancubus.net/
 	arch = i686
