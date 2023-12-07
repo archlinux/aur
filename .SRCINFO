@@ -1,6 +1,6 @@
 pkgbase = glsl_analyzer-bin
 	pkgdesc = A language server for the GLSL shading language
-	pkgver = 1.4.2
+	pkgver = 1.4.4
 	pkgrel = 2
 	url = https://github.com/nolanderc/glsl_analyzer
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = glsl_analyzer-bin
 	license = GPL3
 	provides = glsl_analyzer
 	conflicts = glsl_analyzer
-	source_x86_64 = glsl_analyzer-1.4.2-x86_64.zip::https://github.com/nolanderc/glsl_analyzer/releases/download/v1.4.2/x86_64-linux-musl.zip
-	sha256sums_x86_64 = a00f63612dad711b4d75c0f210e9596fdc114a302909ffbade956c5a3d10674c
-	source_aarch64 = glsl_analyzer-1.4.2-aarch64.zip::https://github.com/nolanderc/glsl_analyzer/releases/download/v1.4.2/aarch64-linux-musl.zip
-	sha256sums_aarch64 = f4b4b43fbdd09175f617c0d8315cb1172d01670a5fced341cc82384bf7e4151c
+	source_x86_64 = glsl_analyzer-1.4.4-x86_64.zip::https://github.com/nolanderc/glsl_analyzer/releases/download/v1.4.4/x86_64-linux-musl.zip
+	sha256sums_x86_64 = fa56ac907be7a4edc8ccf43554fd26d5f6bcff976bd3fb5ab54ae1e366945060
+	source_aarch64 = glsl_analyzer-1.4.4-aarch64.zip::https://github.com/nolanderc/glsl_analyzer/releases/download/v1.4.4/aarch64-linux-musl.zip
+	sha256sums_aarch64 = 030e4fad49a4d04bfad1442a59719b583cd4dce9fac53c034e4f6619e9f11b02
 
 pkgname = glsl_analyzer-bin
