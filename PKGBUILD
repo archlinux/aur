@@ -2,9 +2,9 @@
 
 _name=selenium
 pkgname=selenium-manager
-pkgver=0.4.14
-_pkgver=4.14.0
-pkgrel=3
+pkgver=0.4.16
+_pkgver=4.16.0
+pkgrel=1
 pkgdesc='Automated driver and browser maanagement for Selenium'
 arch=(x86_64)
 url="https://www.selenium.dev"
@@ -13,8 +13,8 @@ depends=(gcc-libs glibc bzip2)
 makedepends=(cargo python)
 checkdepends=()
 source=("https://github.com/SeleniumHQ/${_name}/archive/refs/tags/${_name}-${_pkgver}.tar.gz")
-sha256sums=('d995a7120362c540a176180642da05165d5c5fc97409effd3a51ec0f0bfe3153')
-options=()
+sha256sums=('8aae1c45d6d8a20dc876503913a9c39766c3c506dcd6d9e4b5bd519be2c20f3f')
+options=('!lto')
 
 prepare() {
   cd "${_name}-${_name}-${_pkgver}/rust"
