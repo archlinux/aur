@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.37.36.r0.g8a7db1c4
+pkgver=1.37.38.r0.g6df868a9
 _electronversion=26
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
@@ -47,7 +47,6 @@ build() {
     gendesk -q -f -n --categories "System;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
     cd "${srcdir}/${pkgname%-git}"
     export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
@@ -56,7 +55,7 @@ build() {
     sed -e "60s|snap|tar.gz|g" -e '57,59d' -i electron-builder.json
     sed '16,19d' -i build/bin/build-linux-deb-tar.js
     rm -rf build/bin/build-linux-rpm-snap.js
-    npm i
+    npm install
     npm run prepare-build
     npm run release -l
 }
