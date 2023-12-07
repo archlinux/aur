@@ -1,0 +1,15 @@
+pkgbase = inav-blackbox-explorer-bin
+	pkgdesc = Interactive log viewer for flight logs recorded with blackbox
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/iNavFlight/blackbox-log-viewer
+	arch = x86_64
+	license = GPL3
+	provides = inav-blackbox-explorer
+	conflicts = inav-blackbox-explorer
+	source = https://github.com/iNavFlight/blackbox-log-viewer/releases/download/7.0.0/INAV-BlackboxExplorer_linux64_7.0.0.tar.gz
+	source = inav-blackbox-explorer.diff
+	sha256sums = 1b5d1dc9e9d26ac869f5c78433d164e94a508b22dd865071e67cdc9f4d1dcd8d
+	sha256sums = SKIP
+
+pkgname = inav-blackbox-explorer-bin
