@@ -1,0 +1,10 @@
+pkgbase = chess-tui
+	pkgdesc = A chess TUI implementation in rust 🦀
+	pkgver = 1.0.1
+	pkgrel = 1
+	arch = any
+	makedepends = cargo
+	source = chess-tui-1.0.1.tar.gz::https://static.crates.io/crates/chess-tui/chess-tui-1.0.1.crate
+	sha256sums = 1895b89877744393e4e22de3ecb69d368c827ec4e2a9cdb33e64766e1e1f9328
+
+pkgname = chess-tui
