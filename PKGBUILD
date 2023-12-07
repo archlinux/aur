@@ -1,12 +1,12 @@
 pkgname=gforth-git
-pkgver=20181103
+pkgver=20231204
 pkgrel=1
 pkgdesc="Gforth is the Forth implementation of the GNU project."
 arch=(i686 x86_64)
 url="https://www.gnu.org/software/gforth"
 license=('GPLv3')
 depends=()
-makedepends=("make" "git" "gforth" "texinfo")
+makedepends=("make" "git" "gforth" "texinfo" "automake" "autoconf")
 provides=("gforth")
 conflicts=("gforth")
 source=('git+https://git.savannah.gnu.org/git/gforth.git')
