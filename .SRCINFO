@@ -1,6 +1,6 @@
 pkgbase = pact
 	pkgdesc = Interpreter for the Pact Smart Contract Language.
-	pkgver = 4.9.0
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = https://kadena.io/build/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pact
 	depends = gmp
 	depends = z3
 	depends = ncurses5-compat-libs
-	source = https://github.com/kadena-io/pact/releases/download/v4.9.0/pact-4.9.0-linux-22.04.zip
-	md5sums = 472c4b7d183ea4ec56c6e83b8a49fc15
+	source = https://github.com/kadena-io/pact/releases/download/v4.10.0/pact-4.10.0-linux-22.04.zip
+	md5sums = be4ea601983ead2b6a8832c4a09ea2f7
 
 pkgname = pact
