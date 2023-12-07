@@ -1,6 +1,6 @@
 pkgbase = ima-inspect-git
 	pkgdesc = Tool to get a human-readable representation of Integrity Measurement Architecture file attributes
-	pkgver = v0.14.r0.g05db29b
+	pkgver = 0.15.r0.g2e248ce
 	pkgrel = 1
 	url = https://github.com/mgerstner/ima-inspect
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=ima-inspect-git
-pkgver=v0.14.r0.g05db29b
+pkgver=0.15.r0.g2e248ce
 pkgrel=1
 pkgdesc='Tool to get a human-readable representation of Integrity Measurement Architecture file attributes'
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/ima-inspect"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
