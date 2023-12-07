@@ -1,5 +1,16 @@
 #!/usr/bin/env zsh
 
+set -e
+
+function err() {
+  info "${@}"
+  return 1
+}
+
+function info() {
+  echo "${@}" > /dev/stderr
+}
+
 function _hr_getYaml() {
   local yaml="$1"
   local index="$2"
@@ -26,11 +37,19 @@ function _hr_getReleaseName() {
 }
 
 function _parse_hr_subcommand() {
-  local subCommand="${1?}"
+  local clusterConnected="${1?}"
+  local subCommand="${2?}"
+  local validCommand="$clusterConnected"
   local commands=()
   case "$subCommand" in
     template)
-      commands+=("template" "--dry-run=server")
+      commands+=("template")
+      if [[ "$clusterConnected" == true ]]; then
+        commands+=("--dry-run=server")
+      else
+        info "Not connected to cluster, template might not be the exact result"
+      fi
+      validCommand=true
       ;;
     diff)
       commands+=("diff" "upgrade" "--show-secrets" "--color" "--output=dyff")
@@ -45,15 +64,18 @@ function _parse_hr_subcommand() {
       commands+=("uninstall")
       ;;
     *)
-      echo "command '$subCommand' is not implemented" > /dev/stderr
-      return 1
+      err "command '$subCommand' is not implemented"
       ;;
   esac
+  if [[ "$validCommand" == false ]]; then
+    err "command '$subCommand' is not valid when not connected to a cluster"
+  fi
   echo "${commands[@]}"
 }
 
 function _hr_git() {
-  local subCommand="$1"
+  local clusterConnected="$1?"
+  local subCommand="$2?"
   local commands=()
   local clonePath="$(mktemp -d)"
   trap 'rm -rf "$clonePath"' EXIT
@@ -64,8 +86,7 @@ function _hr_git() {
   local releaseName="$6"
   local values="$7"
 
-  commands=($(_parse_hr_subcommand "$subCommand"))
-  [[ $? != 0 ]] && return 1
+  commands=($(_parse_hr_subcommand "$clusterConnected" "$subCommand"))
 
   (
     git clone -q "$gitUrl" "$clonePath"
@@ -81,6 +102,7 @@ function helmrelease() {
   local subCommand="${1?You need to set the command}"
   shift
   local commands=()
+  local clusterConnected=false
   local namespace
   local releaseName
   local helmReleaseYaml
@@ -91,7 +113,10 @@ function helmrelease() {
   local yaml
   local remoteKubeconfig
   local REMOTE_KUBECONFIG
-  commands=($(_parse_hr_subcommand "$subCommand"))
+  if kubectl version &> /dev/null; then
+    clusterConnected=true
+  fi
+  commands=($(_parse_hr_subcommand "$clusterConnected" "$subCommand"))
 
   while [[ "$#" != 0 ]]; do
     case "$1" in
@@ -117,8 +142,7 @@ function helmrelease() {
         elif [[ "$1" =~ ^https://* ]] || [[ "$1" =~ ^oci://* ]]; then
           sourceParameter="$1"
         else
-          echo "parameter '$1' is not supported" > /dev/stderr
-          return 1
+          err "parameter '$1' is not supported"
         fi
         shift
         ;;
@@ -131,11 +155,9 @@ function helmrelease() {
 
   numberOfHelmReleases=$(<<< "$yaml" | yq -ers '[.[] | select(.kind == "HelmRelease")] | length')
   if [[ "$numberOfHelmReleases" -lt 1 ]]; then
-    echo "There are no HelmReleases in the input" > /dev/stderr
-    return 1
+    err "There are no HelmReleases in the input"
   elif [[ "$numberOfHelmReleases" != 1 ]] && [[ "$subCommand" == "install" ]]; then
-    echo "You can only install 1 HelmReleases at the same time" > /dev/stderr
-    return 1
+    err "You can only install 1 HelmReleases at the same time"
   elif [[ "$numberOfHelmReleases" -gt 1 ]]; then
     <<<"$yaml" | yq -erys '.[] | select(.kind != "HelmRelease") | select(.)' \
       | if [[ "$subCommand" = "template" ]]; then
@@ -152,10 +174,9 @@ function helmrelease() {
   fi
 
   helmReleaseYaml=$(_hr_getYaml "$yaml" "$index" HelmRelease)
-  [[ "$?" -ne 0 ]] && return 1
   namespace=$(_hr_getNamespace "$helmReleaseYaml")
   remoteKubeconfig="$(<<< "$helmReleaseYaml" | yq -r '.spec.kubeConfig.secretRef.name')"
-  if [[ "$remoteKubeconfig" != null ]]; then
+  if [[ "$remoteKubeconfig" != null ]] && ( [[ "$subCommand" != template ]] || [[ "$clusterConnected" == true ]] ); then
     REMOTE_KUBECONFIG="$(mktemp)"
     trap "rm -f \"$REMOTE_KUBECONFIG\"" EXIT
     kubectl --namespace=$(<<<"$helmReleaseYaml" | yq -r '.metadata.namespace') get secret $remoteKubeconfig -o jsonpath='{.data.value}' | base64 -d > "$REMOTE_KUBECONFIG"
@@ -177,7 +198,7 @@ function helmrelease() {
           gitPath="$(<<< "$helmReleaseYaml" | yq -er '.spec.chart.path // "."')"
           gitUrl="$(<<< "$helmReleaseYaml" | yq -er .spec.chart.git)"
           gitRef="$(<<< "$helmReleaseYaml" | yq -er '.spec.chart.ref // "master"')"
-          KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" _hr_git "$subCommand" "$gitUrl" "$gitRef" "$gitPath" "$namespace" "$releaseName" "$values" "$@"
+          KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" _hr_git "$clusterConnected" "$subCommand" "$gitUrl" "$gitRef" "$gitPath" "$namespace" "$releaseName" "$values" "$@"
         else
           KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace --repo $(<<< "$helmReleaseYaml" | yq -er .spec.chart.repository) $releaseName $(<<< "$helmReleaseYaml" | yq -er .spec.chart.name) --version $(<<< "$helmReleaseYaml" | yq -er .spec.chart.version) --values <(<<< "$values") "$@"
         fi
@@ -192,20 +213,23 @@ function helmrelease() {
         sourceName=$(<<< "$helmReleaseYaml" | yq -er .spec.chart.spec.sourceRef.name)
         sourceKind=$(<<< "$helmReleaseYaml" | yq -er .spec.chart.spec.sourceRef.kind)
         if [[ -z "$sourceParameter" ]]; then
-          local sourceYaml
-          sourceYaml=$(_hr_getYaml "$yaml" "" "$sourceKind")
-          sourceResource=$(<<< "$sourceYaml" | yq -erys "[.[] | select( (.metadata.namespace == \"$sourceNamespace\") and (.metadata.name == \"$sourceName\") )][0]")
-          if [[ "$?" != 0 ]]; then
-            sourceResource=$(kubectl --namespace=$sourceNamespace get $sourceKind $sourceName -o yaml)
-            if [[ "$?" != 0 ]]; then
+          local sourcesYaml
+          if ! (sourcesYaml=$(_hr_getYaml "$yaml" "" "$sourceKind") && sourceResource=$(<<< "$sourcesYaml" | yq -erys "[.[] | select( (.metadata.namespace == \"$sourceNamespace\") and (.metadata.name == \"$sourceName\") )][0]")); then
+            if [[ "$clusterConnected" == true ]]; then
+              if ! sourceResource=$(kubectl --namespace=$sourceNamespace get $sourceKind $sourceName -o yaml); then
+                info "Source resource '$sourceNamespace/$sourceKind/$sourceName' not found in cluster nor in input"
+              fi
+            else
+              info "Cannot get source resource '$sourceNamespace/$sourceKind/$sourceName' from cluster when not connected"
+            fi
+            if [[ -z "$sourceResource" ]]; then
               helmRepositoryUrl="oci://ghcr.io/teutonet/teutonet-helm-charts"
-              echo "Source resource '$sourceNamespace/$sourceKind/$sourceName' not found in cluster nor in input" > /dev/stderr
               vared -p "Please specify Helm Repository URL: " helmRepositoryUrl > /dev/null
               sourceKind=HelmRepository
               sourceResource=$'spec:\n  url: '"$helmRepositoryUrl"
             fi
           fi
-        elif ! [[ -z "$sourceParameter" ]]; then
+        else
           sourceResource=$'spec:\n  url: '"$sourceParameter"
         fi
         chartName="$(<<< "$helmReleaseYaml" | yq -er .spec.chart.spec.chart)"
@@ -215,7 +239,7 @@ function helmrelease() {
             local gitRef
             gitUrl="$(<<< "$sourceResource" | yq -er .spec.url)"
             gitRef="$(<<< "$sourceResource" | yq -er '.spec.ref | if .branch then .branch elif .tag then .tag elif .semver then .semver elif .commit then .commit else "master" end')"
-            KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" _hr_git "$subCommand" "$gitUrl" "$gitRef" "$chartName" "$namespace" "$releaseName" "$values" "$@"
+            KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" _hr_git "$clusterConnected" "$subCommand" "$gitUrl" "$gitRef" "$chartName" "$namespace" "$releaseName" "$values" "$@"
             ;;
           HelmRepository)
             local chartVersion
@@ -230,15 +254,13 @@ function helmrelease() {
                 commands+=( "$helmRepositoryUrl/$chartName" )
                 ;;
               *)
-                echo "'$helmRepositoryUrl' is not supported" > /dev/stderr
-                return 1
+                err "'$helmRepositoryUrl' is not supported"
                 ;;
             esac
             KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace --version "$chartVersion" --values <(<<< "$values") "$@"
             ;;
           *)
-            echo "'$sourceKind' is not implemented" > /dev/stderr
-            return 1
+            err "'$sourceKind' is not implemented"
             ;;
         esac
       fi
