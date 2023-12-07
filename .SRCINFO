@@ -1,19 +1,15 @@
 pkgbase = satty-bin
 	pkgdesc = A screenshot annotation tool inspired by Swappy and Flameshot
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/gabm/satty
 	arch = x86_64
 	license = MPL-2.0
+	depends = gtk4
+	depends = libadwaita
 	provides = satty
 	conflicts = satty
-	source = https://github.com/gabm/satty/releases/download/v0.8.1/satty-v0.8.1-x86_64.tar.gz
-	sha256sums = 1902268b51d6f6533483afadd0d321b9e56d7abf42bc9c7d045f6f43df6d6d40
+	source = satty-bin-0.8.2.tar.gz::https://github.com/gabm/satty/releases/download/v0.8.2/satty-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 45201b6bdc3acd02f6a63e001d7619c26dd902850bc41349e6cab21163333d3b
 
 pkgname = satty-bin
-	depends = pango
-	depends = glib2
-	depends = cairo
-	depends = libadwaita
-	depends = gtk4
-	depends = gdk-pixbuf2
