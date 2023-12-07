@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=ladder
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 pkgdesc='Bypass paywalls and remove CORS headers from any URL'
 url='https://github.com/everywall/ladder'
