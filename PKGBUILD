@@ -2,7 +2,7 @@
 
 pkgname=nbdkit
 pkgver=1.36.2
-pkgrel=2
+pkgrel=3
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
 url="https://gitlab.com/nbdkit/nbdkit/"
@@ -44,7 +44,12 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   autoreconf -i
 
-  ./configure --prefix=/usr --sbindir=/usr/bin
+  # libtorrent requires boost as a build dependency
+  if ! pacman -Qi boost >/dev/null 2>&1; then
+    LIBTORRENT_ARGS=--disable-torrent
+  fi
+
+  ./configure --prefix=/usr --sbindir=/usr/bin $LIBTORRENT_ARGS
   make
 }
 

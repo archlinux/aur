@@ -1,7 +1,7 @@
 pkgbase = nbdkit
 	pkgdesc = NBD server toolkit
 	pkgver = 1.36.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/nbdkit/nbdkit/
 	arch = x86_64
 	license = custom: BSD
