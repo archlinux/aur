@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jan-bin
 _pkgname=Jan
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Run AI on your own PC"
 arch=("x86_64")
@@ -35,7 +35,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64-${pkgver}.deb"
 )
-sha256sums=('5ff771b93f6d0ae6bd4728b9a2cd272f7baf999f4ffcac8008e65a192ab3a095')
+sha256sums=('fa0074f910f979ea7aa35b690f914ead072116131fb687000262ab6a38c016a0')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
