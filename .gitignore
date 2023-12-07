@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!Makefile
+!remove-version-check.patch
+!fix-lifecyclemgr-nil-error.patch
