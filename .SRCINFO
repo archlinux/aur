@@ -1,7 +1,7 @@
 pkgbase = clash-nyanpasu-bin
 	pkgdesc = A Clash GUI based on tauri. Only for Clash Meta.
 	pkgver = 1.4.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/keiko233/clash-nyanpasu
 	arch = x86_64
 	license = GPL3

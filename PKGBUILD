@@ -1,7 +1,7 @@
 pkgname=clash-nyanpasu-bin
 _pkgname=clash-nyanpasu
 pkgver=1.4.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A Clash GUI based on tauri. Only for Clash Meta."
 arch=('x86_64')
 url="https://github.com/keiko233/clash-nyanpasu"
@@ -16,4 +16,5 @@ package() {
     tar xpf data.tar.gz -C ${pkgdir}
     rm ${pkgdir}/usr/bin/clash
     rm ${pkgdir}/usr/bin/clash-meta
+    rm ${pkgdir}/usr/bin/clash-rs
 }
