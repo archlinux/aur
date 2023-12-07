@@ -1,5 +1,5 @@
 pkgbase = clash-nyanpasu-bin
-	pkgdesc = A Clash GUI based on tauri. Only for Clash Meta.
+	pkgdesc = A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​
 	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/keiko233/clash-nyanpasu
@@ -9,6 +9,7 @@ pkgbase = clash-nyanpasu-bin
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = clash-meta
+	optdepends = clash-rs: custom protocol network proxy, coding with rust
 	provides = clash-nyanpasu
 	conflicts = clash-nyanpasu-git
 	conflicts = clash-nyanpasu-appimage
