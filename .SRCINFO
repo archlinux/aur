@@ -1,5 +1,5 @@
 pkgbase = clash-nyanpasu-appimage
-	pkgdesc = A Clash GUI based on tauri. Only for Clash Meta.
+	pkgdesc = A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​
 	pkgver = 1.4.1
 	pkgrel = 2
 	url = https://github.com/keiko233/clash-nyanpasu
