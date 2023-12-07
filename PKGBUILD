@@ -36,7 +36,7 @@ package() {
   sudo cmake --install .
   sudo install -D dist/xdg/io.github._0xzer0x.qurancompanion.desktop /usr/share/applications/
   sudo install -D dist/xdg/logo64.png /usr/share/icons/hicolor/64x64/apps/io.github._0xzer0x.qurancompanion.png
-  sudo install -D dist/xdg/logo128.png /usr/share/icons/hicolor/128x128/app/io.github._0xzer0x.qurancompanion.png
-  sudo install -D dist/xdg/logo256.png /usr/share/icons/hicolor/256x256/app/io.github._0xzer0x.qurancompanion.png
+  sudo install -D dist/xdg/logo128.png /usr/share/icons/hicolor/128x128/apps/io.github._0xzer0x.qurancompanion.png
+  sudo install -D dist/xdg/logo256.png /usr/share/icons/hicolor/256x256/apps/io.github._0xzer0x.qurancompanion.png
 }
 
