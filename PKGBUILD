@@ -2,20 +2,24 @@
 pkgname=giada-appimage
 _pkgname=Giada
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians."
 arch=('x86_64')
 url="https://www.giadamusic.com"
-_githuburl="https://github.com/monocasual/giada"
+_ghurl="https://github.com/monocasual/giada"
 license=('GPL3')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('hicolor-icon-theme' 'zlib' 'glibc')
+depends=(
+    'hicolor-icon-theme'
+)
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/data/${_pkgname}-${pkgver}-${CARCH}.AppImage")
+source=(
+    "${pkgname%-appimage}-${pkgver}.AppImage::${url}/data/${_pkgname}-${pkgver}-${CARCH}.AppImage"
+)
 sha256sums=('a846511f3f391d5fc35edeb12fec1c6e8be580c51fc3d8c93fdab4af6457f221')
-prepare() {
+build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|Exec=${pkgname%-appimage}|Exec=${pkgname%-appimage} --no-sandbox %U|g" \
