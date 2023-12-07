@@ -14,15 +14,13 @@ if test -n "$(echo "$_GO_TAGS" | grep -o "stablediffusion")"; then
   _OPTIONAL_BACKENDS="backend-assets/grpc/stablediffusion $_OPTIONAL_BACKENDS"
 fi
 # list of backends to be build
-_GRPC_BACKENDS="backend-assets/grpc/llama-cpp $_OPTIONAL_BACKENDS"
-# backend-assets/grpc/bert-embeddings backend-assets/grpc/whisper
-# XXX bert-embeddings breaks build of llama-cpp if first
+_GRPC_BACKENDS="backend-assets/grpc/llama-cpp backend-assets/grpc/whisper backend-assets/grpc/bert-embeddings $_OPTIONAL_BACKENDS"
 _pkgname="localai"
 
 pkgbase="${_pkgname}-git"
 pkgname=("${pkgbase}")
 pkgver=v2.0.0.6.g997119c
-pkgrel=1
+pkgrel=2
 pkgdesc="The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
