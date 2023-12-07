@@ -1,0 +1,14 @@
+pkgbase = python-pytransform3d
+	pkgdesc = 3D transformations for Python
+	pkgver = 3.5.0
+	pkgrel = 0
+	url = https://pypi.org/project/pytransform3d/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-pyqt5: Transformation Editor
+	source = pytransform3d-3.5.0.tar.gz::https://github.com/dfki-ric/pytransform3d/archive/refs/tags/3.5.0.tar.gz
+	b2sums = 3124636f988e877fef5a9689ad0e9a21280529a38da6d7a01e28ce9049aacca122185352e0981bdb2987c6e18058cd87b38492a77e50985d9265d456c826834c
+
+pkgname = python-pytransform3d
