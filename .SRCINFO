@@ -1,6 +1,6 @@
 pkgbase = docker-lvm-plugin-git
 	pkgdesc = Docker volume driver for LVM volumes
-	pkgver = v1.0.r14.d45273f
+	pkgver = 1.0.r14.d45273f
 	pkgrel = 1
 	url = https://github.com/containers/docker-lvm-plugin
 	arch = x86_64

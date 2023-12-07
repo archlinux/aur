@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=docker-lvm-plugin-git
-pkgver=v1.0.r14.d45273f
+pkgver=1.0.r14.d45273f
 pkgrel=1
 pkgdesc='Docker volume driver for LVM volumes'
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/docker-lvm-plugin"
-	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
 }
 
 build() {
