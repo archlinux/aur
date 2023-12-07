@@ -1,17 +1,16 @@
 pkgname=hyprdots-ctl
-pkgver=0.5011
+pkgver=0.01
 pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations"
 arch=('x86_64')
-url="https://github.com/prasanthrangan/hyprdots" 
+url="https://github.com/kRHYME7/Hyprdots-ctl"
 license=('unknown') # replace with your script's license
-depends=('hyprland-git' 'hyprland')
-source=("https://raw.githubusercontent.com/kRHYME7/KhingDom/Khingdom/Scripts/Hyprdots")
+depends=('hyprland-git' 'hyprland' )
+makedepends=('git' 'make')
+source=("git+https://github.com/kRHYME7/Hyprdots-ctl.git")
 md5sums=('SKIP')
-noextract=()
 
 package() {
-    # The $pkgdir variable points to the package directory where files will be installed
-    # Install the script to /usr/bin so it's available system-wide
-    install -Dm755 "$srcdir/Hyprdots" "$pkgdir/usr/bin/Hyprdots"
+    cd "${srcdir}/Hyprdots-ctl"
+    make DESTDIR="$pkgdir" all
 }
