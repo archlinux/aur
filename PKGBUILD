@@ -2,19 +2,43 @@
 pkgname=interactive-data-editor-bin
 _pkgname="Interactive Data Editor"
 pkgver=2.13.1
-pkgrel=2
+_electronversion=17
+pkgrel=3
 pkgdesc="A Software to interactively edit data in a graphical manner"
 arch=('x86_64')
 url="https://koushikphy.github.io/Interactive_Data_Editor/"
-_githuburl="https://github.com/Koushikphy/Interactive_Data_Editor"
+_ghurl="https://github.com/Koushikphy/Interactive_Data_Editor"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('gtk3' 'gcc-libs' 'expat' 'libxcb' 'nspr' 'libxext' 'gdk-pixbuf2' 'libxfixes' 'pango' 'dbus' 'libxrandr' 'nss' 'at-spi2-core' \
-    'libxcomposite' 'glib2' 'libxkbcommon' 'mesa' 'cairo' 'libxdamage' 'libdrm' 'hicolor-icon-theme' 'libx11' 'alsa-lib' 'libcups' 'glibc')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/Koushikphy/Interactive_Data_Editor/v${pkgver}/LICENSE")
-sha256sums=('001d2bfd866e318a40056eaa4b95ae52ebc937c784f4c0979f3b275d12aa029e'
+depends=(
+    'gtk3'
+    'expat'
+    'libxcb'
+    'nspr'
+    'libxext'
+    'gdk-pixbuf2'
+    'libxfixes'
+    'pango'
+    'libxrandr'
+    'nss'
+    'at-spi2-core'
+    'libxcomposite'
+    'libxkbcommon'
+    'mesa'
+    'cairo'
+    'libxdamage'
+    'libdrm'
+    'hicolor-icon-theme'
+    'libx11'
+    'alsa-lib'
+    'libcups'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Koushikphy/Interactive_Data_Editor/v${pkgver}/LICENSE"
+)
+sha256sums=('c4c3370119b55ffe3339be9d25009c47105ef9bb0c2a93764d8263a55f6f9fe9'
             'd728fec9e20c7c6b1528b62e2525c7f98d2f99061e5b8e3bbd33d27f27271265')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
@@ -29,5 +53,5 @@ package() {
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
