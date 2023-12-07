@@ -1,7 +1,7 @@
 pkgbase = stlink-tool-git
 	pkgdesc = Tool for flashing chinese ST-Link dongles
 	pkgver = r30.a4c1b6b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/blackmagic-debug/stlink-tool
 	arch = i686
 	arch = x86_64
