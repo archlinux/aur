@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=htscodecs
-pkgver=1.5.2
+pkgver=1.6.0
 _pkgver=${pkgver//./-}
 pkgrel=1
 pkgdesc="Custom compression for sequencing formats, e.g. CRAM"
@@ -9,7 +9,7 @@ url=https://github.com/samtools/htscodecs
 license=('BSD')
 depends=('bzip2' 'zlib')
 source=($pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/htscodecs-$pkgver.tar.gz)
-sha256sums=('546484b1adde8b9ea6cd93d9beebecb1a0d481e79a2ada3647fb7e2ebccc3387')
+sha256sums=('4b4abb6dfa192f179386c1d49256892a134297ecb4dd25ad4c346e9dde1108c0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
