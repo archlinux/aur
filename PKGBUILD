@@ -1,7 +1,7 @@
 # Maintainer: satcom886 <rostik.medved@gmail.com>
 
 pkgname=rffmpeg-git
-pkgver=r49.a748067
+pkgver=r231.a242218
 pkgrel=1
 pkgdesc="Remote SSH FFmpeg wrapper tool"
 arch=('any')
@@ -24,5 +24,5 @@ package() {
     mkdir -m 755 -p "$pkgdir/etc/rffmpeg"
     install -m 644 "$srcdir/rffmpeg/rffmpeg.yml.sample" "$pkgdir/etc/rffmpeg/"
     mkdir -m 755 -p "$pkgdir/usr/bin"
-    install -m 755 "$srcdir/rffmpeg/rffmpeg.py" "$pkgdir/usr/bin/rffmpeg"
+    install -m 755 "$srcdir/rffmpeg/rffmpeg" "$pkgdir/usr/bin/rffmpeg"
 }

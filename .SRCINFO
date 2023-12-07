@@ -1,6 +1,6 @@
 pkgbase = rffmpeg-git
 	pkgdesc = Remote SSH FFmpeg wrapper tool
-	pkgver = r49.a748067
+	pkgver = r231.a242218
 	pkgrel = 1
 	url = https://github.com/joshuaboniface/rffmpeg
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = rffmpeg-git
 	md5sums = SKIP
 
 pkgname = rffmpeg-git
-
