@@ -1,0 +1,13 @@
+pkgbase = wakeup-triggers-openrc
+	pkgdesc = OpenRC init script to run 'wakeup-triggers.sh' at boot.
+	pkgver = 20231207.01
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/wakeup-triggers-openrc
+	arch = any
+	license = GPL3
+	depends = wakeup-triggers
+	optdepends = openrc: To make use of this init script.
+	source = wakeup-triggers.openrc
+	sha256sums = f73d8c67f985e9257194651693b5162e812c38f6c3330db1b81e1993e54d34ae
+
+pkgname = wakeup-triggers-openrc

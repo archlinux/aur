@@ -1,0 +1,15 @@
+#!/usr/bin/openrc-run
+
+description="Deactivate wakeup triggers except those specified in '/etc/wakeup-triggers.conf'."
+
+depend() {
+  after bootmisc # We want to have /tmp set up before, and have a /tmp cleanup run before, since it saves data in /tmp/wakeup-triggers.
+}
+
+start() {
+  /usr/bin/wakeup-triggers.sh start
+}
+
+stop() {
+  /usr/bin/wakeup-triggers.sh stop
+}
