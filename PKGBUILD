@@ -1,7 +1,7 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 # Maintainer: Matt Armand <marmand68 at gmail dot com>
 pkgname=rofi-rbw
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 license=("MIT")
 pkgdesc="Rofi frontend for Bitwarden"
@@ -12,7 +12,7 @@ optdepends=("xdotool: for autofill on X11"
 			"wtype: for autofill on Wayland")
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('c54ee58f87762e31c0b3f6184244463861e211e8c971c8f4ff25d296fc1484ac')
+sha256sums=('74ea9bebac4e759be48b661bc9cf734bff8eee9cedea38396064bfd22d12a627')
 
 build() {
 	cd ${pkgname//-/_}-$pkgver
