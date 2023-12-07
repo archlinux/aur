@@ -1,6 +1,6 @@
 # Maintainer: Nima Askarian <nimaas1400@gmail.com>
 pkgname=potato-c
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 _gitname=potato-c
 pkgdesc="A featureful, modular and fast pomodoro timer with server-client structure, written in C."
@@ -16,7 +16,7 @@ source=(
   "${pkgname}.tar.gz::https://github.com/nimaaskarian/${_gitname}/archive/refs/tags/${pkgver}.zip"
 )
 
-md5sums=('23eff9ab4373203355b78c55abb2d3c0')
+md5sums=('3ca55c484e569d519ecee1358bed413e')
 build () {
   cd "${pkgname}-${pkgver/v/}" || exit
   make
