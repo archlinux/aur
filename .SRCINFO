@@ -1,6 +1,6 @@
 pkgbase = kubescape
 	pkgdesc = An open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters.
-	pkgver = 2.9.0
+	pkgver = 3.0.1
 	pkgrel = 0
 	epoch = 0
 	url = https://github.com/kubescape/kubescape
@@ -18,10 +18,10 @@ pkgbase = kubescape
 	makedepends = make
 	provides = kubescape
 	conflicts = kubescape-bin
-	source = https://github.com/kubescape/kubescape/archive/v2.9.0/kubescape-2.9.0.tar.gz
+	source = https://github.com/kubescape/kubescape/archive/v3.0.1/kubescape-3.0.1.tar.gz
 	source = https://github.com/libgit2/git2go/archive/v33.0.9/git2go-33.0.9.tar.gz
 	source = https://github.com/libgit2/libgit2/archive/v1.3.0/libgit2-1.3.0.tar.gz
-	sha512sums = 844c4c03ed721b80d791f011ff118dcf4d918d97f24b9b84e95dcd32e18f539831de6e519165c986eb2587e61ba47210384b07e2e21a4a11bea1ec47b28909ec
+	sha512sums = 234e38f6b6438638ffbe59e772f2091dc07412300f42a95014ea07877ffb84fb3debbc24791fa99f36921eba27b429402a7b00accea1aa08b824827d9603b103
 	sha512sums = 07d13cfd11396d2c36bc69ef4177e4962596bf92da3604f035a85940f98ae0d3614718b88fc0631c4c7007841a51deebd7da8c570c1c637d9fb5905995837519
 	sha512sums = 842a648a67ff23ba9e6bf14b706ba9081164866e14000ebf3858442b7046925f05e1dbf00a7d740dc4bf32280e260730e23a9492e817094aa90736ae335ee76e
 
