@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=n-m3u8dl-re-git
-pkgver=0.2.0.beta.r11.g836a908
-pkgrel=1
+pkgver=0.2.0.beta.r24.g8fdb6bc
+pkgrel=2
 epoch=
 pkgdesc="Cross-Platform, beautiful and powerful stream downloader for DASH/HLS."
 arch=("x86_64" "aarch64")
@@ -31,10 +31,10 @@ pkgver(){
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "${srcdir}/${pkgname%-git}"
-    sed -i 's|net8.0|net7.0|g' src/N_m3u8DL-RE/N_m3u8DL-RE.csproj
-}
+# prepare() {
+#     cd "${srcdir}/${pkgname%-git}"
+#     sed -i 's|net8.0|net7.0|g' src/N_m3u8DL-RE/N_m3u8DL-RE.csproj
+# }
 
 build() {
 # DOTNET_CLI_TELEMETRY_OPTOUT=1
