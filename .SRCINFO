@@ -1,11 +1,12 @@
 pkgbase = r-dmrcate
 	pkgdesc = Methylation array and sequencing spatial analysis methods
-	pkgver = 2.14.1
+	pkgver = 2.16.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DMRcate
 	arch = any
 	license = custom
 	depends = r
+	depends = r-biomart
 	depends = r-bsseq
 	depends = r-dss
 	depends = r-edger
@@ -28,7 +29,7 @@ pkgbase = r-dmrcate
 	optdepends = r-knitr
 	optdepends = r-runit
 	optdepends = r-tissuetreg
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DMRcate_2.14.1.tar.gz
-	sha256sums = 543aca992c03131e8de8669012cfff18ffe85e4cce12560bef86b293440646ed
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DMRcate_2.16.1.tar.gz
+	sha256sums = 7c5033b7455c81cb24b7a96002664e11d6cd3c908e4ae9c3a162a32765bdbda5
 
 pkgname = r-dmrcate
