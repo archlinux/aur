@@ -1,6 +1,6 @@
 pkgbase = openxcom-extended
 	pkgdesc = An extended version of the open-source reimplementation of X-COM (OXCE)
-	pkgver = 7.9.18
+	pkgver = 7.9.21
 	pkgrel = 1
 	epoch = 1
 	url = https://openxcom.org/forum/index.php/topic,5251.0.html
@@ -30,7 +30,7 @@ pkgbase = openxcom-extended
 	provides = openxcom
 	provides = openxcom-git
 	conflicts = openxcom
-	source = openxcom-extended::git+https://github.com/MeridianOXC/OpenXcom.git#commit=97f95f766ff94bd9a0a448bd0675d45e6c6f17f1
+	source = openxcom-extended::git+https://github.com/MeridianOXC/OpenXcom.git#commit=13478609cee1d907a3f24fd0522dd5fbb5dd3057
 	md5sums = SKIP
 	sha1sums = SKIP
 
