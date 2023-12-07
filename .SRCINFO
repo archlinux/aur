@@ -1,0 +1,21 @@
+pkgbase = kylin-virtual-keyboard-git
+	pkgdesc = 麒麟虚拟键盘输入法UI工程，该工程适配fcitx5最新的虚拟键盘支持机制。
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = https://gitee.com/openkylin/kylin-virtual-keyboard
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = fcitx5
+	depends = fcitx5-qt
+	depends = gsettings-qt
+	depends = kwindowsystem5
+	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
+	depends = qt5-svg
+	provides = kylin-virtual-keyboard
+	conflicts = kylin-virtual-keyboard-bin
+	source = git+https://gitee.com/openkylin/kylin-virtual-keyboard.git
+	sha512sums = SKIP
+
+pkgname = kylin-virtual-keyboard-git
