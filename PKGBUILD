@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=lemur
-_pkgver=1.0.4
+_pkgver=1.0.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('76ef0d01a8f6f23e0f125274af96522d')
-sha256sums=('2101d7bd7274d40f2402b50a5b69bc2296c6eec73c93e2061b40fb8bae4acb9b')
+md5sums=('d6ad01367e439d6e55960148c94f3a37')
+sha256sums=('404872c1445449b5bc268054627e456a1d074f3c05f3cacf78da2572ead1e980')
 
 build() {
   mkdir -p build
