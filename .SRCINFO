@@ -1,12 +1,12 @@
 pkgbase = golfscript
 	pkgdesc = A simple stack based code golf language
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://golfscript.com/golfscript
 	arch = any
 	license = MIT
 	depends = ruby
 	source = https://raw.githubusercontent.com/darrenks/golfscript/main/golfscript.rb
-	sha256sums = SKIP
+	sha256sums = 84f932a624b19afe6ef2a3ebe09a9b832f765a87460a79cde22323615c468f38
 
 pkgname = golfscript
