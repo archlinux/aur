@@ -1,6 +1,6 @@
 pkgbase = r-lokern
 	pkgdesc = Kernel Regression Smoothing with Local or Global Plug-in Bandwidth
-	pkgver = 1.1.10
+	pkgver = 1.1.10.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=lokern
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-lokern
 	makedepends = gcc-fortran
 	depends = r
 	depends = r-sfsmisc
-	source = https://cran.r-project.org/src/contrib/lokern_1.1-10.tar.gz
-	sha256sums = 00bc823c6c377c4d7d23218254b7e45c2f606a9e74e21d985aeb6382ffddf992
+	source = https://cran.r-project.org/src/contrib/lokern_1.1-10.1.tar.gz
+	sha256sums = 8d3cfb4ba873c9affe3f63f3b6d2a72a8f5b67aa05771799ead7458bd38a8950
 
 pkgname = r-lokern
