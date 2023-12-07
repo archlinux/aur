@@ -1,0 +1,4 @@
+# stlink-tool udev rules
+# udev rules: trigger cheap (China) STLink v2 clones to leave bootloader upon insertion and start flashed BlackMagic firmware/app
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3748", ACTION=="add", RUN+="/usr/bin/stlink-tool"
+# EOF

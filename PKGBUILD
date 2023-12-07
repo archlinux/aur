@@ -2,7 +2,7 @@
 pkgname=stlink-tool-git
 _pkgname=stlink-tool
 pkgver=r21.8cbdffe
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for flashing chinese ST-Link dongles"
 arch=('i686' 'x86_64')
 url="https://github.com/UweBonnes/stlink-tool"
@@ -36,7 +36,11 @@ package()
 {
   cd "${srcdir}/${_pkgname}/"
 
-  install -D -m755 stlink-tool ${pkgdir}/usr/bin/stlink-tool
+  install -D -m755 stlink-tool "${pkgdir}/usr/bin/stlink-tool"
+
+  # udev rules: trigger cheap (China) STLink v2 clones to leave bootloader upon insertion and start flashed BlackMagic firmware/app
+  install -D -m644 "${startdir}/stlink-tool.rules" "${pkgdir}/usr/share/${_pkgname}/udev/rules/stlink-tool.rules"
+  ln -s stlink-tool.rules "${pkgdir}/usr/share/${_pkgname}/udev/rules/98-stlink-tool.rules"
 }
 
 #

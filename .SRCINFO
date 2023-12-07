@@ -1,7 +1,7 @@
 pkgbase = stlink-tool-git
 	pkgdesc = Tool for flashing chinese ST-Link dongles
 	pkgver = r21.8cbdffe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UweBonnes/stlink-tool
 	arch = i686
 	arch = x86_64
