@@ -1,0 +1,29 @@
+From fa204bc46c01f34457185c97c6e05269a7e8346c Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+aur@kokakiwi.net>
+Date: Thu, 7 Dec 2023 16:09:26 +0100
+Subject: [PATCH] fix: Detect correct utf8cpp header location
+
+---
+ src/dwarfs/util.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/dwarfs/util.cpp b/src/dwarfs/util.cpp
+index c05e5a5..a2ed6c9 100644
+--- a/src/dwarfs/util.cpp
++++ b/src/dwarfs/util.cpp
+@@ -23,7 +23,11 @@
+ #include <array>
+ #include <charconv>
+ 
+-#include <utf8cpp/utf8.h>
++#if __has_include(<utf8cpp/utf8.h>)
++#  include <utf8cpp/utf8.h>
++#else
++#  include <utf8.h>
++#endif
+ 
+ #include <folly/String.h>
+ 
+-- 
+2.43.0
+

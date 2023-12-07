@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=dwarfs
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
@@ -17,12 +17,17 @@ makedepends=(
   'boost' 'libevent' 'libdwarf'
   'utf8cpp'
 )
-source=("$pkgname-$pkgver.tar.xz::https://github.com/mhx/dwarfs/releases/download/v$pkgver/dwarfs-$pkgver.tar.xz")
-sha256sums=('2fbddf0c7fee00b175a70f9de2167a0ddbfa32cff6a2d9b29f585fe960174fd9')
-b2sums=('85cb90ea7d20c3c067c126dc7f7a65145041f6ef2853f96a89ca425a8a1dab9d49a0a21daa9590037aa0a9fcfc4f11fbb91d4417213318a699472532400017bb')
+source=("$pkgname-$pkgver.tar.xz::https://github.com/mhx/dwarfs/releases/download/v$pkgver/dwarfs-$pkgver.tar.xz"
+        0001-fix-Detect-correct-utf8cpp-header-location.patch)
+sha256sums=('5c0a7cfcf637edb03541c8b0fb97d2f6e8a4bec15806d859aee6cfa05f616737'
+            '613c6270a61c26e6621e52a57cef97211b59596c3086d358c9b10c298186835b')
+b2sums=('63aff67cfe16c46d4dcdda641692dec2e421b695c64105c0ea8b92a38eb7abb0bf928482c17cf458e1a17c2d60943e5ae479aa561926592ca039f0f7ea71ddd7'
+        'd00fbf792f546ea082f174dc2a9b08e47207a46d96c599fef99f90311d2bd97957ddad8d85eefe183b658de4da6cc367ada7807086298aa0c75d0adb4ea68083')
 
 prepare() {
   cd "$pkgname-$pkgver"
+
+  patch -Np1 -i "$srcdir/0001-fix-Detect-correct-utf8cpp-header-location.patch"
 }
 
 build() {
