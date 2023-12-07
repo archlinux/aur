@@ -1,6 +1,6 @@
 #!/bin/bash
 cd "$(dirname "${0}")"
-hash git mksrcinfo wget
+hash git wget
 
 ##  PKGBUILD updater for bitwig-studio
 ## --------------------------------------------------------
@@ -41,7 +41,7 @@ try_increment() {
 
     ## Build the package
     makepkg -f || exit
-    mksrcinfo || exit
+    makepkg --printsrcinfo > .SRCINFO || exit
 
     ## Publish the update
     git add -A
