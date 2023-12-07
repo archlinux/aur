@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.37.20.r0.ga52f16d2
+pkgver=1.37.36.r0.g8a7db1c4
 _electronversion=26
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '369df05b548d4a2320a9d06a96d53899b3ce0e3b5d209ee6bba9e1b31c3239b5')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -39,23 +39,24 @@ _ensure_local_nvm() {
     nvm use 18
 }
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories "System;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
-    sed "s|@electronversion@|${_electronversion}|" -i "${srcdir}/${pkgname%-git}.sh"
+    cd "${srcdir}/${pkgname%-git}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
     export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-    cd "${srcdir}/${pkgname%-git}"
     sed "s|pre-test|prepare-test|g" -i package.json
     sed -e "60s|snap|tar.gz|g" -e '57,59d' -i electron-builder.json
     sed '16,19d' -i build/bin/build-linux-deb-tar.js
     rm -rf build/bin/build-linux-rpm-snap.js
-    export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/npm_cache"
-    npm install
+    npm i
     npm run prepare-build
     npm run release -l
 }
