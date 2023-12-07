@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=ima-evm-utils-git
-pkgver=v1.4.r0.g318a3e6
+pkgver=1.5.r32.g420932e
 pkgrel=1
 pkgdesc='Produce and verify digital signatures which are used by Linux kernel integrity subsystem'
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd ima-evm-utils
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {

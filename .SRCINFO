@@ -1,6 +1,6 @@
 pkgbase = ima-evm-utils-git
 	pkgdesc = Produce and verify digital signatures which are used by Linux kernel integrity subsystem
-	pkgver = v1.4.r0.g318a3e6
+	pkgver = 1.5.r32.g420932e
 	pkgrel = 1
 	url = https://github.com/mimizohar/ima-evm-utils
 	arch = x86_64
