@@ -1,6 +1,6 @@
 pkgbase = gforth-git
 	pkgdesc = Gforth is the Forth implementation of the GNU project.
-	pkgver = 20180206
+	pkgver = 20231204
 	pkgrel = 1
 	url = https://www.gnu.org/software/gforth
 	arch = i686
