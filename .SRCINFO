@@ -15,10 +15,10 @@ pkgbase = veloren-bin
 	noextract = voxygen-wrapper.sh
 	noextract = server-cli-wrapper.sh
 	options = !strip
-	source = veloren-bin-0.15.0::https://gitlab.com/veloren/veloren/-/jobs/2761241182/artifacts/download
+	source = veloren-bin-0.15.0::https://gitlab.com/veloren/veloren/-/jobs/artifacts/v0.15.0/download?job=linux-x86_64
 	source = voxygen-wrapper.sh
 	source = server-cli-wrapper.sh
-	sha512sums = 291aaa36355cc54b3ba0e8f748d8686fda9ddfb6e3582611a3bdd60d1d472d7a6ad77dd14fc88c571dd2e56f286af3cdb8fa8a955655be4952c3e27b74dc9a35
+	sha512sums = 1dd2741f471c4d29118d22ac33bd4ffc303917d1225acbf2b47909e835f2b3981a4fb73954933ee32ce8f2fdb2f1a525bcd1ae37219760a4a66591bc03a02715
 	sha512sums = e35c852bfa8d80a78a4df50c09246e69431efe9ebc208bd3c2a864e7674ee1078ab0d2eb2b2ffc1b67847ab7125a38dd260d8964054f55cdf0305248ece9a11c
 	sha512sums = a1ec4d3590af0f07be59c22de3de9402e7ed20eff7fb2b086773f04e8019a607a843a9ba0cf59df48431a5d9a3eb1d0c79272dced9a812c11ae7ed52e41bb0d2
 
