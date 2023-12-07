@@ -8,9 +8,9 @@ url="https://github.com/Arnau478/hevi"
 license=('GPL3')
 provides=('hevi')
 source_x86_64=("hevi-x86_64-${pkgver}"::"https://github.com/Arnau478/hevi/releases/download/v${pkgver}/hevi-x86_64-linux")
-source_aarch64=("hevi-x86_64-${pkgver}"::"https://github.com/Arnau478/hevi/releases/download/v${pkgver}/hevi-aarch64-linux")
+source_aarch64=("hevi-aarch64-${pkgver}"::"https://github.com/Arnau478/hevi/releases/download/v${pkgver}/hevi-aarch64-linux")
 sha256sums_x86_64=('faf22dc4cd43885e1fc49a4db8f8a725062934dc65b6115b4396486735a2b961')
-sha256sums_aarch64=('faf22dc4cd43885e1fc49a4db8f8a725062934dc65b6115b4396486735a2b961')
+sha256sums_aarch64=('c06688f1f3433791faa307a180106ad253b1c127607076533c27b9ff277efb87')
 
 package() {
     cd $srcdir
