@@ -2,7 +2,7 @@
 pkgname=xbyyunpan-bin
 _zhsname="小白羊云盘"
 _pkgname="XBYDriver"
-pkgver=3.12.2
+pkgver=3.12.3
 pkgrel=1
 pkgdesc="小白羊网盘 - Powered by 阿里云盘Open"
 arch=(
@@ -48,15 +48,15 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/gaozhangmin/aliyunpan/v${pkgver}/LICENSE"
 )
 sha256sums=('37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009')
-sha256sums_aarch64=('9cb2976b4d803f609ca660eb3ae85ae66e1e2a3464885211f84c1d04093fac25')
-sha256sums_armv7h=('787a2263ed343293565d96fc7bd6181e600ac509d5e38329c2f2135c2f990ce6')
-sha256sums_x86_64=('016cb8ae02993f614061a5195cdbc31fc1255464d19f4c12927d76959523f1e3')
+sha256sums_aarch64=('14188cdbc55495f317ffbfd0f0d6442a6182ecabe797581e961cf1c32432e7ea')
+sha256sums_armv7h=('440e49197550b27756d3773b4416cbc32741b8cd6fd2ee27ff6caec127d29275')
+sha256sums_x86_64=('44b9d1462ff62b500243d86dceb01767c2d239b907baafda8bbe1abef13ebb63')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_zhsname}/${pkgname%-bin}\" %U|${pkgname%-bin} --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/${pkgname%-bin},usr/bin}
+    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
     cp -r "${srcdir}/opt/${_zhsname}/"* "${pkgdir}/opt/${pkgname%-bin}"
     ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
