@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=120.0.6099.62
+pkgver=120.0.6099.71
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -34,7 +34,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         libxml2-2.12.patch
         drop-flags-unsupported-by-clang16.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('ba8448637de36e39532a214c1d4fd05480bc51bde6ac4c160e5f7d3a08e36218'
+sha256sums=('604755e5838ef0fd1bff4d6c5023cdda2d42ce982dda2c4be44cce487d3dd8d8'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2'
             '1808df5ba4d1e2f9efa07ac6b510bec866fa6d60e44505d82aea3f6072105a71'
