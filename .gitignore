@@ -1,5 +1,4 @@
-*.t*
-pkg/
-src/
-__pycache__
-update_check.py
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
