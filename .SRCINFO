@@ -1,6 +1,6 @@
 pkgbase = jetbrains-fleet
 	pkgdesc = Next-generation IDE by JetBrains
-	pkgver = 1.27.192
+	pkgver = 1.28.106
 	pkgrel = 1
 	url = https://www.jetbrains.com/fleet/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = jetbrains-fleet
 	source = LICENSE
 	sha256sums = af62a597c595edc5b4a8ea3f80ab0a18ea953bfc2d4feaf30e41c6e0dd23d426
 	sha256sums = db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3
-	source_x86_64 = jetbrains-fleet-1.27.192-x86_64.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_x64/Fleet-1.27.192.tar.gz
-	sha256sums_x86_64 = a4cb9b6626e94fa6e465a416d1801b6dcebd21fbbcf7c85bb6bd7d7a27e016a2
-	source_aarch64 = jetbrains-fleet-1.27.192-aarch64.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_aarch64/Fleet-1.27.192-aarch64.tar.gz
-	sha256sums_aarch64 = c19ef79dfd88687d3878c3a12a9a3a0ab473b59137726a880d1f6a3433bd2f67
+	source_x86_64 = jetbrains-fleet-1.28.106-x86_64.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_x64/Fleet-1.28.106.tar.gz
+	sha256sums_x86_64 = b1afa74147733fee98653959800f3af8ba42cf929a0c639c0ad666a51f3c39aa
+	source_aarch64 = jetbrains-fleet-1.28.106-aarch64.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_aarch64/Fleet-1.28.106-aarch64.tar.gz
+	sha256sums_aarch64 = 8736ddb3d8a0b5d1fe9b53606c1c7a4e40996f472184cf916f73ca2c1685482b
 
 pkgname = jetbrains-fleet
