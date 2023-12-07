@@ -9,7 +9,7 @@ pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL3')
-depends=('csdr-luarvique' 'python-csdr-luarvique' 'rtl-sdr' 'js8py' 'owrx_connector-luarvique' 'netcat' 'python-setuptools')
+depends=('csdr-luarvique' 'python-csdr-luarvique' 'rtl-sdr' 'js8py' 'owrx_connector-luarvique' 'python-setuptools')
 optdepends=(
     # decoding
     'python-digiham: use digital voice modes'
@@ -28,7 +28,6 @@ optdepends=(
     'acarsdec: decode ACARS traffic'
     'multimon-ng: decode FLEX, POCSAG, and several other digital modes'
     'mbelib: Voice codecs for P25, ProVoice, Half Rate'
-    'dsd: Digital Speech Decoder'
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
