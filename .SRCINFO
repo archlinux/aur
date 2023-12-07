@@ -1,0 +1,22 @@
+pkgbase = osaka-simulator
+	pkgdesc = A fanmade interactive Osaka simulator from hirahira.net for PC
+	pkgver = Aug_2003
+	pkgrel = 1
+	url = https://azumanga.fandom.com/wiki/Ayumu_Kasuga%27s_Mail_Order_Life
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	makedepends = gendesk
+	makedepends = icoutils
+	depends = wine
+	depends = winetricks
+	provides = osaka-simulator
+	source = local://Osaka Simulator FINAL (standalone).zip
+	source = osaka-simulator
+	source = tsu_han.cfg
+	md5sums = 69c5e729bd4acc28320afbcc863b454a
+	md5sums = 8af04a78b75b73656908f722d6cbce19
+	md5sums = 7b644ee8fdf4d1b8213115bef3a1b90c
+
+pkgname = osaka-simulator
