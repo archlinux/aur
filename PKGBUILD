@@ -1,7 +1,7 @@
 # Maintainer: Ben Westover <me@benthetechguy.net>
 
 pkgname=python-cargo2rpm
-pkgver=0.1.12
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Translation layer between cargo and RPM"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'rust')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-mypy')
 source=("https://pagure.io/fedora-rust/cargo2rpm/archive/$pkgver/cargo2rpm-$pkgver.tar.gz")
-sha256sums=('1b07775dd8e180539d3242148e9b8e63c8efbfd6a9cac67a38402be9d6a240d3')
+sha256sums=('d0b5357856cf87af40ccff970b95c2f37dd12a04bab70e3385d4ffa627a27795')
 
 build() {
 	cd cargo2rpm-$pkgver
