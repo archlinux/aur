@@ -2,23 +2,37 @@
 pkgname=electron-deno-ide
 _pkgname=electron-deno-IDE
 pkgver=0.1.1_beta
-pkgrel=2
+_electronversion=25
+pkgrel=3
 pkgdesc="Deno IDE supported all of programming language"
 arch=('x86_64')
 url="https://github.com/MooudMohammady/electron-deno-IDE"
 license=('GPL3')
 conflicts=("${pkgname}")
-depends=('bash' 'electron25')
-makedepends=('gendesk' 'npm')
-source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver//_/-}.zip"
-    "${pkgname%-bin}.sh")
-sha256sums=('90b16d69f1b3dd2b5b2610ccd3976a391c6c1d1c1e5991e132177739caedbdcd'
-            'fe810b4a8d4b2e6187eeb1529ccb89430bec85ee7e1791662c2361161aaf6b43')
-prepare() {
-    gendesk -f -n -q --categories "Development" --name "${_pkgname}" --exec "${pkgname}"
-}
+depends=(
+    "electron${_electronversion}"
+)
+makedepends=(
+    'gendesk'
+    'npm'
+    'nodejs'
+    'git'
+)
+source=(
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver//_/-}"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('SKIP'
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
+    gendesk -f -n -q --categories "Development" --name "${_pkgname}" --exec "${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
     sed '/"electron-rebuild":/d' -i package.json
     sed 's|win|linux|g;s|"nsis",|"AppImage",|g' -i electron-builder.json5
     npm install
@@ -26,7 +40,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/release/0.0.1/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release/0.0.1/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
