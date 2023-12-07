@@ -1,0 +1,11 @@
+pkgbase = words-sv
+	pkgdesc = A wordlist of swedish words for /usr/share/dict
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/almgru/svenska-ord.txt
+	arch = any
+	license = Unlicense
+	source = https://github.com/almgru/svenska-ord.txt/archive/refs/heads/master.tar.gz
+	sha256sums = 098aa909f310192d91ded9edf1d65844ed984650721e9b3acb4758ccb382b4b2
+
+pkgname = words-sv
