@@ -4,7 +4,7 @@
 
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 arch=("x86_64")
@@ -27,7 +27,7 @@ source=(
     "$_pkgname-${pkgver}.zip::https://github.com/logseq/logseq/archive/refs/tags/${pkgver}.zip"
 )
 sha256sums=(
-    '3b06e8910037a9bc6538fe631f8cbbccb1085e26c0defbbc628280350620d6ad'
+    'f9a36bf7d23b1eb91a8b06dad0613da84eaa210bdb8ee68ffa887210b2726f2e'
 )
 
 prepare() {
@@ -101,11 +101,8 @@ package() {
     install -dm755 "${pkgdir}/opt/$_pkgname"
     cp -a -r -u --verbose ./* "${pkgdir}/opt/$_pkgname"
 
-    # create a soft link to the executable
-    install -dm755 "${pkgdir}/usr/bin"
-
     # User flag aware launcher
-    install -m755 "${srcdir}/$_pkgname.sh" "${pkgdir}/usr/bin/logseq"
+    install -Dm755 "${srcdir}/$_pkgname.sh" "${pkgdir}/usr/bin/logseq"
 
     # create license folder and make soft links to actual license
     install -dm755 "${pkgdir}/usr/share/licenses/$pkgname/"
