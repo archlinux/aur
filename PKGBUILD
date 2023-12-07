@@ -6,8 +6,8 @@
 
 pkgname=czkawka-gui-bin
 pkgver=6.1.0
-pkgrel=1
-pkgdesc="Multi functional app to find duplicates, empty folders, similar images etc (GUI)"
+pkgrel=2
+pkgdesc='Find and manage duplicate files, empty folders, similar images, and other "lint" (GUI, with HEIF support)'
 arch=('x86_64')
 url='https://github.com/qarmin/czkawka'
 license=('MIT')
@@ -16,7 +16,7 @@ conflicts=('czkawka-gui')
 depends=('gtk4')
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/download/${pkgver}/linux_czkawka_gui_heif"
-        "LICENSE::https://github.com/qarmin/czkawka/raw/master/LICENSE"
+        "LICENSE::https://github.com/qarmin/czkawka/raw/master/czkawka_gui/LICENSE"
         "czkawka-gui.png")
 
 sha256sums=('e311dd7efd3db8a699b3a27eadae84897b0778540e2c893afb76ce3faee65164'
