@@ -1,6 +1,6 @@
 pkgbase = python-varname-git
 	pkgdesc = A Python library to retrieve variable names from functions or classes -- git version
-	pkgver = 0.12.0.r0.g35fcbc7
+	pkgver = 0.12.2.r0.gbe560cc
 	pkgrel = 1
 	url = https://github.com/pwwang/python-varname
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-varname-git
 	makedepends = python-virtualenv
 	makedepends = python-cachecontrol
 	makedepends = python-poetry-plugin-export-git
-	makedepends = python-jsonschema4.17
+	makedepends = python-jsonschema
 	depends = python
 	source = git+https://github.com/pwwang/python-varname.git
 	sha512sums = SKIP
