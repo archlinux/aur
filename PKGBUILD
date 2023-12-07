@@ -2,7 +2,7 @@
 set -u
 _pkgname='uncrustify'
 pkgname="${_pkgname}-git"
-pkgver=0.74.0.r289.ga54114d52
+pkgver=0.78.1.r26.g391047527
 pkgrel=1
 pkgdesc='A source code beautifier'
 arch=('i686' 'x86_64')

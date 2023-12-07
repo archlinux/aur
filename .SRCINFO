@@ -1,6 +1,6 @@
 pkgbase = uncrustify-git
 	pkgdesc = A source code beautifier
-	pkgver = 0.74.0.r289.ga54114d52
+	pkgver = 0.78.1.r26.g391047527
 	pkgrel = 1
 	url = http://uncrustify.sourceforge.net/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = uncrustify-git
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
-	provides = uncrustify=0.74.0
+	provides = uncrustify=0.78.1
 	conflicts = uncrustify
 	source = uncrustify-git-u::git+https://github.com/uncrustify/uncrustify.git
 	sha256sums = SKIP
