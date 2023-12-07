@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=dra-bin
-pkgver=0.4.8
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A command line tool to download assets from GitHub releases"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('zlib' 'xz')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/${pkgname%-bin}-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha512sums_x86_64=('8d3e74922148a175f8b0ad6f212c51bd50aff7e4d2c12c7dcdc6bc47d5cc2c73039307e54645da49a979c6fff0b31ac6375e530745372c20b2a2b2eb6eebe8fc')
+sha512sums_x86_64=('f8418b6112ee41fe3c4b7646d84e5b2d2ef00431e103e65d4854885992dbd202a3d008882dd94f8b717bb6e1883ab5dd9ef68c090ee53edc8dc66d76a766c168')
 
 package() {
   cd "${pkgname%-bin}-$pkgver-x86_64-unknown-linux-gnu"
