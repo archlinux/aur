@@ -6,14 +6,9 @@ pkgbase = mindmaster_cn
 	arch = x86_64
 	license = Commercial
 	makedepends = libarchive
-	provides = mindmaster
-	conflicts = mindmaster
-	conflicts = mindmaster-cn
-	conflicts = mindmaster_en
-	replaces = mindmaster-cn
-	noextract = mindmaster_cn-10.8.0-x86_64.deb
+	noextract = mindmaster-10.8.0-x86_64.deb
 	options = !strip
-	source_x86_64 = mindmaster_cn-10.8.0-x86_64.deb::https://cc-download.edrawsoft.cn/mindmaster_cn_full5420.deb
+	source_x86_64 = mindmaster-10.8.0-x86_64.deb::https://cc-download.edrawsoft.cn/mindmaster_full5420.deb
 	sha256sums_x86_64 = 3f1d325124826ab7e54a04b45354b0d4685245e653e6829936f187d55fccf659
 
-pkgname = mindmaster_cn
+pkgname = mindmaster

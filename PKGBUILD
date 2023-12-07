@@ -2,18 +2,18 @@
 # Maintainer: taotieren <admin@taotieren.com>
 # mindmaster 中文版
 
-pkgname=mindmaster_cn
+pkgbase=mindmaster_cn
+pkgname=mindmaster
 _pkgname=MindMaster-10
-_softname=mindmaster
 pkgver=10.8.0
 pkgrel=0
 arch=('x86_64')
 options=(!strip)
 depends=()
 makedepends=(libarchive)
-provides=(mindmaster)
-conflicts=("mindmaster" "mindmaster-cn" "mindmaster_en")
-replaces=('mindmaster-cn')
+provides=()
+conflicts=()
+replaces=()
 pkgdesc="多功能，高颜值，易使用的专业思维导图软件"
 license=('Commercial')
 url="https://www.edrawsoft.cn/mindmaster/"
@@ -31,5 +31,5 @@ package() {
     bsdtar -xf "${srcdir}/data.tar.xz" --numeric-owner -C "${pkgdir}"
 
     install -dm0755 "${pkgdir}/usr/bin/"
-    ln -sf "/opt/${_pkgname}/${_softname}.sh" "${pkgdir}/usr/bin/${_softname}"
+    ln -sf "/opt/${_pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
