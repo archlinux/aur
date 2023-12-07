@@ -2,7 +2,8 @@
 
 pkgname=pandoc-sidenote
 pkgrel=1
-pkgver=0.20.0.0
+pkgv=0.23.0
+pkgver=${pkgv}.0
 pkgdesc="Pandoc filter for sidenotes"
 url="https://hackage.haskell.org/package/${pkgname}"
 license=("MIT")
@@ -10,20 +11,21 @@ arch=('x86_64')
 provides=("pandoc-sidenote")
 depends=('gmp' 'zlib')
 makedepends=('stack')
-source=("${pkgname}-master.zip::https://github.com/jez/${pkgname}/archive/master.zip")
-sha512sums=('f8fa19cb7beb5bcd5cc3098bac5e45e5b32fe6f60a5cf85cb01a089ccee0adc9d9350a6971f300e1c51b4d443873106733e3dc4b5412018a3a36bc0026ac31a7')
+https://github.com/jez/pandoc-sidenote/archive/refs/tags/0.23.0.tar.gz
+source=("${pkgname}-${pkgv}.zip::https://github.com/jez/${pkgname}/archive/refs/tags/${pkgv}.tar.gz")
+sha512sums=('0b69f11c3b7470243f5ed4ece0e9576492a413aa5c3838ea9fbc6d2875628f2358537d64d5fdd80a6fee266d0420ea67b696e32e30a0855d8a1438db528b2538')
 
 pkgver() {
-    cd "${srcdir}"/${pkgname}-master
+    cd "${srcdir}/${pkgname}-${pkgv}"
     echo $(grep version package.yaml | awk '{print $2}')
 }
 
 build() {
-    cd "${srcdir}"/${pkgname}-master
+    cd "${srcdir}"/${pkgname}-${pkgv}
     stack build
 }
 
 package() {
-    cd "${srcdir}"/${pkgname}-master
+    cd "${srcdir}"/${pkgname}-${pkgv}
     install -Dm755 .stack-work/install/*/*/*/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
 }
