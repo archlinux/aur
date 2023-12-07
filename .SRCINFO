@@ -1,13 +1,14 @@
 pkgbase = riven-soundtrack
 	pkgdesc = Official Soundtrack of the game 'Riven: The Sequel to Myst'.
 	pkgver = 19980224
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://www.robynmiller.net/music
 	arch = any
 	groups = myst
 	groups = riven
 	makedepends = ffmpeg
+	makedepends = ghostscript
 	makedepends = imagemagick
 	makedepends = ocrmypdf
 	makedepends = tesseract-data-eng

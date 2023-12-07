@@ -31,12 +31,13 @@ url='http://www.robynmiller.net/music'
 # url='https://archive.org/details/Nova_RivenOST_USA'
 epoch="0"
 pkgver='19980224' # Release date according to https://www.discogs.com/release/1097332-Robyn-Miller-Riven-The-Soundtrack
-pkgrel=1
+pkgrel=2
 makedepends=(
-  'ffmpeg'              # To convert the raw CD .bin files to opus
-  'imagemagick'         # To build the CD booklet PDF (resize images and convert to PDF)
-  'ocrmypdf'            # To build the CD booklet PDF (add OCR data)
-  'tesseract-data-eng'  # To build the CD booklet PDF (add OCR data)
+  'ffmpeg'              # To convert the raw CD .bin files to opus.
+  'ghostscript'         # To build the CD booklet PDF (build multi-page PDF).
+  'imagemagick'         # To build the CD booklet PDF (resize images and convert to PDF).
+  'ocrmypdf'            # To build the CD booklet PDF (add OCR data).
+  'tesseract-data-eng'  # To build the CD booklet PDF (add OCR data).
 )
 options+=('emptydirs')
 
@@ -109,6 +110,7 @@ build() {
     _rawfile="Riven - The Soundtrack (USA) (Track ${_trackno}).bin"
     _title="`sed -n "${_trackno}"p 'tracks.txt'`"
     _outfile="`printf '%s' "${_trackno}_-_${_title}" | tr -d \' | tr ' ' '_'`.opus.webm"
+    printf '%s\n' "  Track number ${_trackno}: '${_title}' ..."
     ffmpeg \
       -f s16le -ar 44.1k -ac 2 -i "${_rawfile}" \
       -vn \
@@ -122,10 +124,20 @@ build() {
   # convert riven-soundtrack_-_01.jpg -resize 128x128 -quality 65 "${_outdir}/cover.small.jpg"
 
   printf '%s\n' "Generating CD booklet PDF ..."
-  convert \
-    riven-soundtrack_-_04.jpg riven-soundtrack_-_02.jpg riven-soundtrack_-_06*.jpg \
-    -resize 8192x2048 -compress jpeg -quality 90 \
-    "${_outdir}/Robyn_Miller_-_Riven_-_The_Soundtrack.CD-Booklet.pdf"
+  ## Separating re-encoding and combination in order to conserve system memory. Doing all in a single `convert` run leads to out of memory kill on a 8 GiB RAM machine.
+  for _jpg in riven-soundtrack_-_04.jpg riven-soundtrack_-_02.jpg riven-soundtrack_-_06*.jpg; do
+    printf '%s\n'   "  Converting '$(basename "${_jpg}" '.jpg')' from JPEG to PDF ..."
+    convert \
+      "${_jpg}" \
+      -resize 8192x2048 -compress jpeg -quality 90 \
+      "$(basename "${_jpg}" '.jpg').pdf"
+  done
+  printf '%s\n'   "  Combining to multipage PDF ..."
+  gs \
+    -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite \
+    -sOutputFile="${_outdir}/Robyn_Miller_-_Riven_-_The_Soundtrack.CD-Booklet.pdf" \
+    riven-soundtrack_-_04.pdf riven-soundtrack_-_02.pdf riven-soundtrack_-_06*.pdf
+  printf '%s\n'   "  Adding OCR information ..."
   ocrmypdf \
     -l eng --output-type pdfa-3 -O 1 \
     --title "Riven - The Soundtrack" --author "Robyn Miller" --subject "CD booklet" --keywords "Video Game Music" \
