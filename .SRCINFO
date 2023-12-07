@@ -1,6 +1,6 @@
 pkgbase = pandoc-sidenote
 	pkgdesc = Pandoc filter for sidenotes
-	pkgver = 0.20.0.0
+	pkgver = 0.23.0.0
 	pkgrel = 1
 	url = https://hackage.haskell.org/package/pandoc-sidenote
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = pandoc-sidenote
 	depends = gmp
 	depends = zlib
 	provides = pandoc-sidenote
-	source = pandoc-sidenote-master.zip::https://github.com/jez/pandoc-sidenote/archive/master.zip
-	sha512sums = f8fa19cb7beb5bcd5cc3098bac5e45e5b32fe6f60a5cf85cb01a089ccee0adc9d9350a6971f300e1c51b4d443873106733e3dc4b5412018a3a36bc0026ac31a7
+	source = pandoc-sidenote-0.23.0.zip::https://github.com/jez/pandoc-sidenote/archive/refs/tags/0.23.0.tar.gz
+  sha512sums = 0b69f11c3b7470243f5ed4ece0e9576492a413aa5c3838ea9fbc6d2875628f2358537d64d5fdd80a6fee266d0420ea67b696e32e30a0855d8a1438db528b2538
 
 pkgname = pandoc-sidenote
 
