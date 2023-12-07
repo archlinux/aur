@@ -5,6 +5,7 @@ pkgbase = aspe
 	url = https://aur.archlinux.org/packages/aspe
 	arch = any
 	license = AGPL3
+	checkdepends = shellcheck
 	source = aspe
 	source = Makefile
 	source = LICENSE

@@ -10,6 +10,8 @@ license=(
   AGPL3)
 depends=()
 makedepends=()
+checkdepends=(
+  shellcheck)
 source=(
   aspe
   Makefile
