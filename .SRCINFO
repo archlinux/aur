@@ -1,18 +1,17 @@
 pkgbase = blinker-bin
 	pkgdesc = Inspired by the 20 20 20 rule, this is a little reminder to look 20 feet away from your screen every 20 minutes. Keep your eyes healthy, reduce eye strain, prevent headaches and increase productivity.
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrkpatchaa/blinker
 	arch = x86_64
 	license = custom:CC0-1.0
-	makedepends = asar
-	depends = bash
 	depends = electron27
+	depends = nodejs
 	provides = blinker=2.1.0
 	conflicts = blinker
 	source = blinker-2.1.0.deb::https://github.com/mrkpatchaa/blinker/releases/download/v2.1.0/blinker_2.1.0_amd64.deb
 	source = blinker.sh
 	sha256sums = a5d4587f962041b2bd7fa375213e83fcfa6a143a1b7030c2dc2b365654fbdff9
-	sha256sums = fc5e389c6ca420e1234de2ef63fc980cdb50e5e2710350081b1ebebcce4028eb
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = blinker-bin
