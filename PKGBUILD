@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe <kimiblock at icloud dot com>
 pkgname=qcm-git
-pkgver=r90.cee4b00
+pkgver=r97.3499c08
 pkgrel=1
 pkgdesc="Qt client for netease cloud music "
 arch=('x86_64')
@@ -35,7 +35,8 @@ depends=(
     'graphite'
     'lz4'
     'libgpg-error'
-    'ffmpeg')
+    'ffmpeg'
+    'glibmm')
 makedepends=(
     'git'
     'cmake'
