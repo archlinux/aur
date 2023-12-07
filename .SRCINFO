@@ -1,15 +1,15 @@
 pkgbase = stlink-tool-git
 	pkgdesc = Tool for flashing chinese ST-Link dongles
-	pkgver = r21.8cbdffe
-	pkgrel = 2
-	url = https://github.com/UweBonnes/stlink-tool
+	pkgver = r30.a4c1b6b
+	pkgrel = 3
+	url = https://github.com/blackmagic-debug/stlink-tool
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = libusb
 	provides = stlink-tool
-	source = git+https://github.com/UweBonnes/stlink-tool.git
+	source = git+https://github.com/blackmagic-debug/stlink-tool.git
 	sha256sums = SKIP
 
 pkgname = stlink-tool-git
