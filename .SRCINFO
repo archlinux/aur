@@ -1,14 +1,16 @@
 pkgbase = r-unix
 	pkgdesc = POSIX System Utilities
-	pkgver = 1.5.4
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=unix
-	arch = i686
 	arch = x86_64
 	license = MIT
+	checkdepends = r-testthat
+	depends = apparmor
 	depends = r
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/unix_1.5.4.tar.gz
-	sha256sums = 149283653a9194008e4bfc53e41c9e6a9bf60af0e9f84c2426fc4b4a0b2c4872
+	source = https://cran.r-project.org/src/contrib/unix_1.5.6.tar.gz
+	md5sums = ea966ea9fb4f59ef99cb6cfa09432fa7
+	sha256sums = 576172d667598245413374121bdcefe6445773aedbb6ce3baf0be2ad5a9a19b9
 
 pkgname = r-unix
