@@ -2,7 +2,7 @@
 _appname=supersonic
 pkgname="${_appname}-desktop-bin"
 _pkgname=Supersonic
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers."
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
     'gendesk'
 )
 source=("${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.xz")
-sha256sums=('893f2d01a6db88029b8befe33de380836d1d942afc4560d2c4f4aa30e4c5404e')
+sha256sums=('d1492a4531367ad1aeeb550f47a06b9909273edaaf1aa47c2eb50a3fed2596a5')
 build() {
     gendesk -f -n -q --pkgname="${_appname}-desktop-bin" --categories "AudioVideo" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
