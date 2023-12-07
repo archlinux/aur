@@ -6,8 +6,8 @@
 # basic info
 _pkgname=logseq-desktop
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL3')
@@ -26,9 +26,7 @@ _pkgsrc="Logseq-linux-x64"
 source=(
   "$url/releases/download/$pkgver/$_pkgsrc-$pkgver.zip"
 )
-sha256sums=(
-  'ca7ac5022e3317444562e027566b5afb0641db9421ce199ca8964b07f2512b37'
-)
+sha256sums=('b67a2dff464610f2a64952eda858eaa7a4351edb6cd4076f63804d7f5b6b7423')
 
 prepare() {
   cat <<'EOF' > "$_pkgname.sh"
