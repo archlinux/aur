@@ -1,6 +1,6 @@
 pkgbase = mojo-git
 	pkgdesc = Mojo Programming Language
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://developer.modular.com/download
 	install = mojo-git.install

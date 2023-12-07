@@ -1,8 +1,8 @@
 #Maintainer: Sharktheone <sharktheone@proton.me>
 
 pkgname=mojo-git
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Mojo Programming Language"
 url="https://developer.modular.com/download"
 license=("custom:modular")
