@@ -1,6 +1,6 @@
 pkgbase = cargo-mommy
 	pkgdesc = Mommy's here to support you when running cargo~
-	pkgver = 0.2.1
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Gankra/cargo-mommy
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = cargo-mommy
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
-	source = cargo-mommy-0.2.1.tar.gz::https://static.crates.io/crates/cargo-mommy/cargo-mommy-0.2.1.crate
-	sha256sums = b175ce89494e77eedb294b8e7b1c7d70ac7bb2f41dcc17f8af0bf7b8720f5f77
+	source = cargo-mommy-0.3.1.tar.gz::https://static.crates.io/crates/cargo-mommy/cargo-mommy-0.3.1.crate
+	sha256sums = 9ed71fe85dd1edc1f19217c87a58bbc035dc4c69b037cfec52d8ed8406561f78
 
 pkgname = cargo-mommy

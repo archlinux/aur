@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=cargo-mommy
-pkgver=0.2.1
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Mommy's here to support you when running cargo~"
 url='https://github.com/Gankra/cargo-mommy'
@@ -10,7 +10,7 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('b175ce89494e77eedb294b8e7b1c7d70ac7bb2f41dcc17f8af0bf7b8720f5f77')
+sha256sums=('9ed71fe85dd1edc1f19217c87a58bbc035dc4c69b037cfec52d8ed8406561f78')
 
 case $CARCH in
   x86_64|i686|aarch64)
