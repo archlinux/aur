@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-disable-extension-updates
 	pkgdesc = Extension for GNOME shell to disable the automatic update check
-	pkgver = 2
+	pkgver = 45.1
 	pkgrel = 1
 	url = https://github.com/swsnr/gnome-shell-extension-disable-extension-updates
 	arch = any
 	license = MPL2
 	makedepends = npm
 	depends = gnome-shell
-	source = gnome-shell-extension-disable-extension-updates-2.tar.gz::https://github.com/swsnr/gnome-shell-extension-disable-extension-updates/archive/ego-2.tar.gz
-	sha256sums = a53bb62c201c8869ca447599adc1e56bb0afe93148171e2816ee54d5708ab2d3
+	source = gnome-shell-extension-disable-extension-updates-45.1.tar.gz::https://github.com/swsnr/gnome-shell-extension-disable-extension-updates/archive/v45.1.tar.gz
+	sha256sums = 8d52762afefe4ef1151f14f6a732866b1846165f917504e666ad956f265d02c7
 
 pkgname = gnome-shell-extension-disable-extension-updates
