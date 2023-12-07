@@ -1,10 +1,12 @@
 pkgbase = zen-adblocker-bin
 	pkgdesc = An open-source system-wide ad-blocker and privacy guard
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anfragment/zen
 	arch = x86_64
 	license = MIT
+	depends = networkmanager
+	depends = glib2
 	provides = zen-adblocker
 	conflicts = zen-adblocker
 	source = Zen_linux_amd64_0.2.0.tar.gz::https://github.com/anfragment/zen/releases/download/v0.2.0/Zen_linux_amd64.tar.gz

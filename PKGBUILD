@@ -1,11 +1,12 @@
 appname="zen-adblocker"
 pkgname="${appname}"-bin
 pkgver="0.2.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source system-wide ad-blocker and privacy guard"
 arch=('x86_64')
 url="https://github.com/anfragment/zen"
 license=('MIT')
+depends=('networkmanager' 'glib2')
 conflicts=('zen-adblocker')
 provides=('zen-adblocker')
 source=("Zen_linux_amd64_${pkgver}.tar.gz::https://github.com/anfragment/zen/releases/download/v${pkgver}/Zen_linux_amd64.tar.gz"
