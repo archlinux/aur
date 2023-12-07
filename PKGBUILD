@@ -1,8 +1,9 @@
-# maintainer: thom wiggers
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: thom wiggers
 # Submitter: portaloffreedom
 
 pkgname=python-vlc
-pkgver=3.0.18122
+pkgver=3.0.20123
 pkgrel=1
 pkgdesc="VLC bindings for python"
 url="http://wiki.videolan.org/PythonBinding"
@@ -18,4 +19,4 @@ package() {
 }
 
 
-sha256sums=('1039bde287853b4b7b61ba22d83761832434f78506da762dfb060291bf32897d')
+sha256sums=('244fbb9e392a0326841fca926d6d12a2a36c546982191f493f148fa19e66b1d4')
