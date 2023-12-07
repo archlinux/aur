@@ -1,6 +1,6 @@
 pkgbase = mydumper
 	pkgdesc = A high performance MySQL backup tool.
-	pkgver = 0.14.3
+	pkgver = 0.15.2_6
 	pkgrel = 1
 	url = https://github.com/maxbube/mydumper
 	arch = i686
@@ -11,7 +11,8 @@ pkgbase = mydumper
 	depends = libmariadbclient
 	depends = pcre
 	depends = pcre2
-	source = https://github.com/maxbube/mydumper/archive/v0.14.3-1/mydumper-0.14.3-1.tar.gz
-	sha256sums = aafb9c0914b720e175988a41d9c340271348e50e3a00556035a9c4afcf80c982
+	depends = openssl
+	source = https://github.com/maxbube/mydumper/archive/v0.15.2-6/mydumper-0.15.2-6.tar.gz
+	sha256sums = 66af880dfa3218d4f0cd65be903ec2cf3bb02193efd5d54600e408dd7835371a
 
 pkgname = mydumper
