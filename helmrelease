@@ -30,7 +30,7 @@ function _parse_hr_subcommand() {
   local commands=()
   case "$subCommand" in
     template)
-      commands+=("template")
+      commands+=("template" "--dry-run=server")
       ;;
     diff)
       commands+=("diff" "upgrade" "--show-secrets" "--color" "--output=dyff")
@@ -198,7 +198,7 @@ function helmrelease() {
           if [[ "$?" != 0 ]]; then
             sourceResource=$(kubectl --namespace=$sourceNamespace get $sourceKind $sourceName -o yaml)
             if [[ "$?" != 0 ]]; then
-              helmRepositoryUrl="https://teutonet.github.io/teutonet-helm-charts"
+              helmRepositoryUrl="oci://ghcr.io/teutonet/teutonet-helm-charts"
               echo "Source resource '$sourceNamespace/$sourceKind/$sourceName' not found in cluster nor in input" > /dev/stderr
               vared -p "Please specify Helm Repository URL: " helmRepositoryUrl > /dev/null
               sourceKind=HelmRepository
