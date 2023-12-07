@@ -3,7 +3,7 @@
 
 pkgname='python-django-oauth-toolkit'
 _pkgbase="django-oauth-toolkit"
-pkgver=1.5.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='OAuth2 Provider for Django'
 arch=(any)
@@ -18,7 +18,7 @@ depends=(
 )
 options=(!emptydirs)
 source=("https://github.com/jazzband/${_pkgbase}/archive/${pkgver}.zip")
-sha256sums=('82347e1486a1d665638bc3c662e6810b6239152d9c4a3aafa31b16a3305fcde4')
+sha256sums=('cd1771548a55da0916752aff21ec087969339bf31b8c38403223819b7ddc25ca')
 
 
 package() {
