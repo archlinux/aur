@@ -5,10 +5,14 @@
 # Contributor: Konrad Tegtmeier <konrad.tegtmeier+aur@gmail.com>
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
+## Useful URLs:
+# https://www.cockroachlabs.com/docs/releases/
+# https://www.cockroachlabs.com/docs/stable/install-cockroachdb-linux.html
+
 _pkgname=cockroachdb
 pkgname="$_pkgname-bin"
 pkgver=23.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud-native, distributed SQL database"
 url='https://www.cockroachlabs.com'
 license=('Apache' 'BSL' 'CCL')
@@ -17,12 +21,12 @@ arch=('x86_64')
 conflicts=("$_pkgname=${pkgver}")
 provides=("$_pkgname")
 
-# https://www.cockroachlabs.com/docs/releases/
+backup=("etc/default/cockroach")
 
 _pkgsrc="cockroach-v$pkgver.linux-amd64"
 source=(
   "$_pkgname-$pkgver.tar.gz"::"https://binaries.cockroachdb.com/$_pkgsrc.tgz"
-  'LICENSE'::'https://raw.githubusercontent.com/cockroachdb/cockroach/v${pkgver}/LICENSE'
+  'LICENSE'::"https://raw.githubusercontent.com/cockroachdb/cockroach/v${pkgver}/LICENSE"
   'cockroach.service'
   'cockroach.default'
   'cockroach.sysusers'
@@ -57,7 +61,7 @@ package() {
   # binary
   install -Dm755 "$_pkgsrc/cockroach" "$pkgdir/usr/share/cockroach/cockroach"
 
-  # GEOS libraries # https://www.cockroachlabs.com/docs/stable/install-cockroachdb-linux.html
+  # GEOS libraries
   install -Dm644 "$_pkgsrc/lib/libgeos.so" "$pkgdir/usr/share/cockroach/lib/libgeos.so"
   install -Dm644 "$_pkgsrc/lib/libgeos_c.so" "$pkgdir/usr/share/cockroach/lib/libgeos_c.so"
 

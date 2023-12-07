@@ -1,7 +1,7 @@
 pkgbase = cockroachdb-bin
 	pkgdesc = Cloud-native, distributed SQL database
 	pkgver = 23.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cockroachlabs.com
 	arch = x86_64
 	license = Apache
@@ -9,8 +9,9 @@ pkgbase = cockroachdb-bin
 	license = CCL
 	provides = cockroachdb
 	conflicts = cockroachdb=23.1.12
+	backup = etc/default/cockroach
 	source = cockroachdb-23.1.12.tar.gz::https://binaries.cockroachdb.com/cockroach-v23.1.12.linux-amd64.tgz
-	source = LICENSE::https://raw.githubusercontent.com/cockroachdb/cockroach/v${pkgver}/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/cockroachdb/cockroach/v23.1.12/LICENSE
 	source = cockroach.service
 	source = cockroach.default
 	source = cockroach.sysusers
