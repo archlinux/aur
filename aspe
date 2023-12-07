@@ -14,5 +14,9 @@ _aspe() {
 
 _pkgs=("$@")
 
+[[ ${#} < 1]] &&\
+  echo \
+    'Usage: aspe [pkgs]
+
 _aspe \
   "${_pkgs[@]}"

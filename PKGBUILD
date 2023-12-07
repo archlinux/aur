@@ -2,7 +2,7 @@
 
 pkgname=aspe
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux build source file clone tool"
 arch=(any)
 url="https://aur.archlinux.org/packages/${pkgname}"
@@ -17,7 +17,7 @@ source=(
   Makefile
   LICENSE)
 md5sums=(
-  8f13fd612f312bc9ae4ce706555a2232c3204a0dcedfad431a558ea19055f9bd
+  64c1f7a1d95f5b55ea8657fcda94992778f3e87f2a7ffb711cfe7670305db0a2
   f4b3a84d382cf5e2854aceed47ceac8dd8f8cea8f6b5628fb96a1843aeccd3f3
   8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903)
 

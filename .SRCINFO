@@ -1,7 +1,7 @@
 pkgbase = aspe
 	pkgdesc = Arch Linux build source file clone tool
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/aspe
 	arch = any
 	license = AGPL3
@@ -9,7 +9,7 @@ pkgbase = aspe
 	source = aspe
 	source = Makefile
 	source = LICENSE
-	md5sums = 8f13fd612f312bc9ae4ce706555a2232c3204a0dcedfad431a558ea19055f9bd
+	md5sums = 64c1f7a1d95f5b55ea8657fcda94992778f3e87f2a7ffb711cfe7670305db0a2
 	md5sums = f4b3a84d382cf5e2854aceed47ceac8dd8f8cea8f6b5628fb96a1843aeccd3f3
 	md5sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
 
