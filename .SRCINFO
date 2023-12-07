@@ -1,17 +1,16 @@
 pkgbase = chengla-linux-unofficial-bin
 	pkgdesc = 橙啦平台的非官方 Linux 客户端
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pokon548/chengla-for-linux
 	arch = x86_64
 	license = GPL3
-	depends = bash
 	depends = electron27
 	provides = chengla-linux-unofficial=1.0.8
 	conflicts = chengla-linux-unofficial
 	source = chengla-linux-unofficial-1.0.8.deb::https://github.com/pokon548/chengla-for-linux/releases/download/v1.0.8/chengla-linux-unofficial_1.0.8_amd64.deb
 	source = chengla-linux-unofficial.sh
 	sha256sums = a52a2119aeb19c468e29315bb01546e4c306c7aca8a580de1f1924c12f10bdd5
-	sha256sums = 55155410fc74dc8f09ce8ef16184a53e4eec6380ee7e36e5d52666f97a750f5c
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = chengla-linux-unofficial-bin
