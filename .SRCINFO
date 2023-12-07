@@ -1,0 +1,16 @@
+pkgbase = ds-inhibit
+	pkgdesc = DualShock 4/DualSense mouse inhibitor
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitlab.com/evlaV/ds-inhibit
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = openssh
+	depends = udev
+	depends = python
+	depends = python-pyinotify
+	source = ds-inhibit::git+https://gitlab.com/evlaV/ds-inhibit#tag=v0.1.1
+	sha256sums = SKIP
+
+pkgname = ds-inhibit
