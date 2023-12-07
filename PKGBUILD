@@ -2,12 +2,12 @@
 # Modified based on hyprland-nvidia-nosystemd-git
 
 pkgname=hyprland-nosystemd-git
-pkgver=0.29.0.r0.g0a78f603
+pkgver=0.33.1.r3.g62a8d0be
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o systemd)"
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
-license=('BSD')
+license=(BSD)
 depends=(
     cairo
     gcc-libs
@@ -68,7 +68,8 @@ pkgver() {
 prepare() {
     cd "$srcdir/$pkgname"
     git submodule update --init
-    make fixwlr
+    sed -E -i -e 's/(soversion = 13)([^032]|$$)/soversion = 13032/g' ./subprojects/wlroots/meson.build
+    rm -rf ./subprojects/wlroots/build
     sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
 }
 
@@ -84,6 +85,7 @@ build() {
     cd "$srcdir/$pkgname/subprojects/udis86"
     cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
     cmake --build build --config Release --target all
+
     # Build hyprland
     cd "$srcdir/$pkgname"
     make protocols
@@ -96,7 +98,7 @@ build() {
 package() {
     # Install hyprland headers
     cd "$srcdir/$pkgname"
-    find src -name '*.hpp' -exec install -Dm644 {} "$pkgdir/usr/include/hyprland/{}" \;
+    find src -name '*.h*' -exec install -Dm644 {} "$pkgdir/usr/include/hyprland/{}" \;
 
     # Fix $srcdir reference
     sed -i -e "/ICONDIR/ s,$srcdir/tmpwlr,/usr," "$srcdir/$pkgname/subprojects/wlroots/build/include/config.h"
@@ -119,5 +121,5 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/licenses/hyprland" LICENSE
     install -Dm644 -t "$pkgdir/usr/share/pkgconfig" build/hyprland.pc
     install -Dm644 -t "$pkgdir/usr/share/wayland-sessions" example/hyprland.desktop
-    install -Dm755 -t "$pkgdir/usr/lib" "$srcdir/tmpwlr/lib/libwlroots.so.12032"
+    install -Dm755 -t "$pkgdir/usr/lib" "$srcdir/tmpwlr/lib/libwlroots.so.13032"
 }
