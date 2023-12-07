@@ -8,7 +8,7 @@ url="https://github.com/SuicideCatt/ArgsP"
 
 arch=(any)
 depends=(gcc)
-makedepends=(git cmake)
+makedepends=(git cmake make)
 
 source=("git+https://github.com/SuicideCatt/ArgsP.git")
 sha256sums=('SKIP')
@@ -22,7 +22,7 @@ prepare()
 build()
 {
 	cd ArgsP/build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles"
 }
 
 package()
