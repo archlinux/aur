@@ -1,6 +1,6 @@
 pkgbase = hypnotix-wayland
 	pkgdesc = An IPTV streaming application. (With Wayland support).
-	pkgver = 4.1
+	pkgver = 4.2
 	pkgrel = 1
 	url = https://github.com/linuxmint/hypnotix
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = hypnotix-wayland
 	depends = xapp
 	conflicts = hypnotix
 	conflicts = hypnotix-git
-	source = hypnotix-4.1.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/4.1.tar.gz
-	sha256sums = de4622459bbd04ae5bf6f96c00473c002eac47c92f89a9b47c5890ece9eb3bb3
+	source = hypnotix-4.2.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/4.2.tar.gz
+	sha256sums = edb9b72aca609ab861703cbb880fb778bc882264119337aaf4444e7de8648d3c
 
 pkgname = hypnotix-wayland
