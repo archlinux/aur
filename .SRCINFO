@@ -1,0 +1,25 @@
+pkgbase = r-biodbncbi
+	pkgdesc = biodbNcbi, a library for connecting to NCBI Databases.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/biodbNcbi
+	arch = any
+	license = AGPL3
+	checkdepends = r-testthat
+	depends = r-biodb
+	depends = r-chk
+	depends = r-r6
+	depends = r-xml
+	optdepends = r-biocstyle
+	optdepends = r-covr
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-lgr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodbNcbi_1.6.0.tar.gz
+	md5sums = 5d2c3e8eade431a86e13d54be468832e
+	sha256sums = 859de0395db8acf97e2495cf269d7fece95054005ba3a3dcc69f1b19d0bc6ce2
+
+pkgname = r-biodbncbi
