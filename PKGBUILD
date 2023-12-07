@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-shell-extension-picture-of-the-day
-pkgver=45.8
+pkgver=45.9
 pkgrel=1
 pkgdesc='Use a picture of the day from various sources as GNOME desktop background'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MPL2')
 makedepends=('npm')
 depends=('gnome-shell')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7ad5cc0d5950fccbfe8d012a3518184526e785925458a7e91ce3ee1f86adeb7e')
+sha256sums=('b93f484967f3bcadc5d0b032ddcc12766bcf989372622caa8c19484aa8374ad7')
 
 build() {
     cd "${pkgname}-${pkgver}" || exit 1
