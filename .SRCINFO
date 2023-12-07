@@ -1,6 +1,6 @@
 pkgbase = scap-security-guide-git
 	pkgdesc = Collection of Security Content Automation Protocol policy documents
-	pkgver = v0.1.48.r6507.g6898690f34
+	pkgver = 0.1.61.r10285.g1a50ebd191
 	pkgrel = 1
 	url = https://www.open-scap.org/security-policies/scap-security-guide/
 	arch = any

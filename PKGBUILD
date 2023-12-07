@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=scap-security-guide-git
-pkgver=v0.1.48.r6507.g6898690f34
+pkgver=0.1.61.r10285.g1a50ebd191
 pkgrel=1
 pkgdesc='Collection of Security Content Automation Protocol policy documents'
 arch=('any')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd content
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
