@@ -1,6 +1,6 @@
 pkgbase = scap-security-guide
 	pkgdesc = Collection of Security Content Automation Protocol policy documents
-	pkgver = 0.1.57
+	pkgver = 0.1.70
 	pkgrel = 1
 	url = https://www.open-scap.org/security-policies/scap-security-guide/
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = scap-security-guide
 	makedepends = python-yaml
 	makedepends = shellcheck
 	makedepends = yamllint
-	source = https://github.com/ComplianceAsCode/content/releases/download/v0.1.57/scap-security-guide-0.1.57.tar.bz2
-	sha256sums = 663f897ee89419463e3e06c2ae93a96c6e22b9a54d3a54ca8f174d9b159afeaa
+	source = https://github.com/ComplianceAsCode/content/releases/download/v0.1.70/scap-security-guide-0.1.70.tar.bz2
+	sha256sums = ebc18bb92c101b5cb842a1521afaa39a23742185f66a07f354a0ff7faa547edb
 
 pkgname = scap-security-guide
