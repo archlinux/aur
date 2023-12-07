@@ -1,20 +1,20 @@
 pkgbase = craze
 	pkgdesc = Access all the developer tools you need, free and open source, on any platform!
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/craze-app/craze
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = yarn
-	makedepends = nodejs>=14.18.0
-	depends = bash
+	makedepends = nvm
+	makedepends = git
 	depends = electron22
 	conflicts = craze
-	source = craze-0.1.4.zip::https://github.com/craze-app/craze/archive/refs/tags/v0.1.4.zip
+	source = craze-0.1.4::git+https://github.com/craze-app/craze.git#tag=v0.1.4
 	source = craze.sh
-	sha256sums = 608a40ad03421e042242ab008c2988ead7a35a9bf54dddb89d8519deb89719c3
-	sha256sums = 92182264140122aadd6678a2ba858897e6e37c24728872f09e7dc1ecbf6c9cbe
+	sha256sums = SKIP
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = craze
