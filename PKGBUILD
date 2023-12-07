@@ -6,7 +6,7 @@
 # Maintainer: Elie Donadio <elidoset@gmail.com>
 pkgname=yoga-git
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The yoga flexbox layout engine's C++ library"
 arch=(x86_64)
 url="https://github.com/facebook/yoga"
@@ -41,6 +41,7 @@ build() {
 }
 
 check() {
+    cd "${srcdir}/yoga-${pkgver}" 
     ctest --test-dir build --output-on-failure
 }
 
