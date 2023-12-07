@@ -1,18 +1,23 @@
 pkgbase = lyricistant-bin
 	pkgdesc = A helpful writing assistant for lyricists!
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wardellbagby/lyricistant
 	arch = aarch64
 	arch = x86_64
 	license = GPL3
-	depends = bash
 	depends = electron27
 	depends = hicolor-icon-theme
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
 	provides = lyricistant=3.3.1
 	conflicts = lyricistant
 	source = lyricistant.sh
-	sha256sums = 202aa9024136008c53fdf2b8ee3ca8d3be98cd2eb083ee70886b4cef8d9c3fb0
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 	source_aarch64 = lyricistant-3.3.1-aarch64.AppImage::https://github.com/wardellbagby/lyricistant/releases/download/v3.3.1%2Belectron.ios/lyricistant-linux_arm64.AppImage
 	sha256sums_aarch64 = 7c4defe5dd8f241ad09e2a62ef53d0e463ae050f0f22eeccc67d1316fc81dd54
 	source_x86_64 = lyricistant-3.3.1-x86_64.AppImage::https://github.com/wardellbagby/lyricistant/releases/download/v3.3.1%2Belectron.ios/lyricistant-linux_x86_64.AppImage
