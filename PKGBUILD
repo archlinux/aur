@@ -3,7 +3,7 @@
 pkgbase=ch343ser-git
 pkgname=ch343ser-dkms-git
 pkgver=r21.ad5828d
-pkgrel=1
+pkgrel=2
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms)."
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
@@ -43,12 +43,12 @@ endif
 clean:
 	\$(MAKE) -C \$(KERNELDIR) M=\$(PWD) clean
 EOF
-    install -dm755 "${pkgdir}/usr/src/${pkgbase}/"
+    install -dm755 "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/"
     for i in "${srcdir}/${pkgbase}/driver/"{Makefile,*.c,*.h}; do
-        install -D -m644 "${i}" "${pkgdir}/usr/src/${pkgbase}/"
+        install -D -m644 "${i}" "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/"
     done
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase}/dkms.conf" <<EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/dkms.conf" <<EOF
 PACKAGE_NAME="ch343ser"
 PACKAGE_VERSION="${pkgver}"
 MAKE[0]="make"
