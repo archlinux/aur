@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-forge-git
 _uuid=forge@jmmaranan.com
-pkgver=75.r0.g11a6f36
+pkgver=77.r44.g06777a7
 pkgrel=1
 pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
 url="https://github.com/forge-ext/forge"
 license=('GPL3')
 depends=('gnome-shell')
-makedepends=('git')
+makedepends=('git' 'less')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/forge-ext/forge.git')
@@ -21,6 +21,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/forge"
+
+  # Causing build failure
+  git revert -n cbe78c739fa7efc11e70d8c26f5738d61b8047f3
 }
 
 build() {
