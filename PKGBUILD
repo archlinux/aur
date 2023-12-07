@@ -14,11 +14,12 @@ sha256sums=('1f9c28f9f144ce285dcaa8badf62349e9e9d03a0aac228066d91857a40946676')
 install=lact.install
 
 build() {
-    cd LACT-${pkgver}
+    cd "LACT-${pkgver}"
     make
 }
 
 package() {
-    cd LACT-${pkgver}
-    DESTDIR=${pkgdir}/usr make install
+    cd "LACT-${pkgver}"
+    DESTDIR="${pkgdir}/usr" make install
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
