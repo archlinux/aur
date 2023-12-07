@@ -17,7 +17,7 @@ sha256sums=('97f78d24921870717a6bb7c62e363f9d2afe82d7742a982536aa13e068092222'
 install='brickd.install'
 build() {
   cd $srcdir/tinkerforge-$pkgname-$_pkgver/brickd
-  make
+  make -j$(nproc)
 }
 
 package() {
