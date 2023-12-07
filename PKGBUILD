@@ -1,7 +1,7 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.7.14
+pkgver=0.7.15
 pkgrel=1
 pkgdesc="Create bootable disk images of Arch Linux, install to an external USB disk or thumb drive"
 arch=('any')
@@ -14,13 +14,13 @@ optdepends=('devtools: for building ZFS packages'
             'f2fs-tools: for F2FS file system option'
             'openssl: for codesigning support when building netboot artifacts'
             'pacman-contrib: for building ZFS packages'
-            'qemu-base: virtual machine for aui-run')
+            'qemu-desktop: virtual machine for aui-run testings')
 conflicts=('archuseriso')
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('70f634929395cf01a44c9819b84e95966fb14390070d66bef6a0ea4cb4947f81'
+sha256sums=('04bcafe14e35e7c8b5b43a066c59d28cbd50f9e2d720b3071bee80a158369e2a'
             'SKIP')
-b2sums=('6956650b8b4992eedb9e6335b03f3716e97aa54fc423c03b47ab5a07e9485852c9773fb72bbf6bcc3e2fe8dc1b3112a358804d5ce24a4151c0573fa7b4c0cf5d'
+b2sums=('d27f9d3d0fc09ac811084378c1c0481c98ebb40664bd514edec539c0b32e8d2760a9b12a07958b9b0a038ff016aaf9f892f9c65c88b770638b0e6208af60507b'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
