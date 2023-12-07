@@ -1,18 +1,16 @@
 pkgbase = glew-1.13.0
-	pkgdesc = The OpenGL Extension Wrangler Library
+	pkgdesc = A cross-platform C/C++ extension loading library
 	pkgver = 1.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://glew.sourceforge.net
-	arch = i686
 	arch = x86_64
 	license = BSD
 	license = MIT
 	license = GPL
-	depends = libxmu
-	depends = libxi
-	depends = glu
-	source = http://freefr.dl.sourceforge.net/project/glew/glew/1.13.0/glew-1.13.0.tgz
-	sha1sums = d5b1c499f429aa91c466193b4e8ea94a84019e37
+	depends = libgl
+	provides = glew1.13=1.13.0
+	conflicts = glew1.13
+	source = glew-1.13.0.tar.gz::https://downloads.sourceforge.net/glew/glew-1.13.0.tgz
+	sha256sums = aa25dc48ed84b0b64b8d41cdd42c8f40f149c37fa2ffa39cd97f42c78d128bc7
 
 pkgname = glew-1.13.0
-
