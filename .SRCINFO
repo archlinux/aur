@@ -1,18 +1,22 @@
 pkgbase = python-sqlalchemy-git
 	pkgdesc = Python SQL toolkit and Object Relational Mapper
-	pkgver = 2.0.0b1.rc14901.a289e0522
+	pkgver = 2.0.23.r56.g005a87c1b
 	pkgrel = 1
-	url = http://www.sqlalchemy.org
-	arch = i686
+	url = https://www.sqlalchemy.org
 	arch = x86_64
 	license = custom:MIT
+	makedepends = cython
 	makedepends = git
-	makedepends = python
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	provides = python-sqlalchemy=2.0.0b1.rc14901.a289e0522
+	depends = python-greenlet
+	optdepends = python-psycopg2: connect to PostgreSQL database
+	provides = python-sqlalchemy
 	conflicts = python-sqlalchemy
 	source = git+https://github.com/sqlalchemy/sqlalchemy.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-sqlalchemy-git

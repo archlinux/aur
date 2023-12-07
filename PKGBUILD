@@ -1,33 +1,40 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: a821 <a821 mail de>
+# Contributor: Felix Yan <felixonmars archlinux org>
+# Contributor: Stefan Husmann <stefan-husmann t-online de>
 
 pkgname=python-sqlalchemy-git
-pkgver=2.0.0b1.rc14901.a289e0522
+pkgver=2.0.23.r56.g005a87c1b
 pkgrel=1
 pkgdesc="Python SQL toolkit and Object Relational Mapper"
-arch=('i686' 'x86_64')
-url="http://www.sqlalchemy.org"
+arch=('x86_64')
+url="https://www.sqlalchemy.org"
 license=('custom:MIT')
-provides=("python-sqlalchemy=$pkgver")
+provides=("python-sqlalchemy")
 conflicts=('python-sqlalchemy')
-depends=('python')
-makedepends=('git' 'python' 'python-setuptools')
+depends=('python' 'python-greenlet')
+makedepends=(
+  'cython' 'git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel'
+)
+optdepends=(
+  'python-psycopg2: connect to PostgreSQL database'
+)
 source=("git+https://github.com/sqlalchemy/sqlalchemy.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd sqlalchemy
-  printf %s.rc%s.%s "$(awk '/:version:/ {print $2}' doc/build/changelog/changelog_*|sort|tail -1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/rel_//;s/_/./g;s/-/.r/;s/-/./g;'
 }
 
 build() {
   cd sqlalchemy
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd sqlalchemy
-  python setup.py install --root="$pkgdir"
-  install -D -m644 LICENSE \
-	  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
+# vim:set ts=2 sw=2 ft=sh et:
