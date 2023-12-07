@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=8d8ea39c6e515c6734041ae6d8b65a2d5b617a1f
+_mozc_commit=598a7f9c95973f661a537ac895c06c433879319f
 _branch=fcitx
 # Ut Dictionary
 _utdicdate=20230115
@@ -30,7 +30,7 @@ _sudachidict_date=20230927
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5291.102
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -49,6 +49,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING"
         "0001-Zombie-Process-Prevention.patch"
         "dicts.txt"
+        "revert.patch::https://github.com/fcitx/mozc/commit/c48b5691843182fd7f1207981be2ba21f9989a76.patch"
+        "revert2.patch::https://github.com/fcitx/mozc/commit/4b0836af583b78e88f12f66da65754f064524a1b.patch"
         )
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
@@ -66,6 +68,8 @@ sha512sums=('SKIP'
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
             '4dc9fc2d95e23729381bfe12fe6544ec3ea5729114e6d0539af93f5cd1e5a0a4d3196bfcf07c67aec0b19a25b92bf3c65c5e3805415bf81b5d13f537fa4f2c0d'
             'a4dbdd4a31f5985846b40291ddeed067453a3d89ac6de370cd049eef41f9340bcae4239fae98ea1e801a643bb371b0f5a6bcfbd985b2d1162efc1aed0540dbe6'
+            '9a7fbec1974c8d2666951a9c423e9844292c2b82d5eeb5d8997399713caa182c0b9678885e3f17f72f63a2c4136a0263d0deb136c002e8d7d041c1d29c2163e4'
+            '5f61c30c875a29464a0066737564ac8dfca207ab355b1431e33ef811dbc4fbc188ac285cda1273f413fa432a5e44cf4026a7fef46bc67355f3a0213b2c2d684e'
             '3b1354b8e6b25ea8024bb91098828855b558c0ee9086800b2d44ef6dac023949432418c47d943d59c6ce315c0d292ef784423cd6046dfb906d4afc4c14d11dd3'
             'ef2dd0a27b09ca3a68aa7a3ad45b3720d57efd0505e631fa643e7aea98455c1114760f9aa5e91701bb5c118ae3074719709eeed55010b305d861464ad1b51c3a')
 
@@ -100,6 +104,10 @@ prepare() {
   # zombie process prevention for mozc_tool
   cd "$srcdir/mozc" || exit
   patch -p1 -i ${srcdir}/0001-Zombie-Process-Prevention.patch
+
+  # https://github.com/google/mozc/issues/849
+  patch -R -p1 -i ${srcdir}/revert.patch
+  patch -R -p1 -i ${srcdir}/revert2.patch
 
   # mozc date and version
   #_date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
