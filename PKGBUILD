@@ -20,7 +20,7 @@ optdepends=(
     'msk144decoder: decode the MSK144 digimode'
     'direwolf: decode Packet Radio and optionally report data back to APRS-IS'
     'js8call: decode JS8'
-    'dream: decode DRM broadcasts'
+    'dream-nox: decode DRM broadcasts'
     'dump1090: decode Mode-S and ADS-B traffic'
     'rtl_433: decode various signals in the ISM bands'
     'dumphfdl: decoding HFDL airplane communications'
