@@ -2,31 +2,44 @@
 pkgname=pomotro
 _pkgname=Pomotro
 pkgver=1.1
-pkgrel=2
+_electronversion=25
+pkgrel=3
 pkgdesc="A Desktop Pomodoro Clock"
 arch=('x86_64')
 url="https://github.com/Ranork/Pomotro"
 license=('GPL3')
 conflicts=("${pkgname}")
-depends=('bash' 'electron25')
-makedepends=('gendesk' 'nodejs' 'npm' 'yarn')
-source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
-    "${pkgname}.sh")
-sha256sums=('3cb020ca6153c904dd152478b26a62220dc8ed57cba5f242e0246685d0b24fca'
-            '0396669328b9559c7918b4341f34526b5d54bf5cb90b50a585f1f7a92cf6b430')
-prepare() {
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
-}
+depends=(
+    "electron${_electronversion}"
+)
+makedepends=(
+    'gendesk'
+    'nodejs'
+    'npm'
+    'yarn'
+    'git'
+)
+source=(
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}.sh"
+)
+sha256sums=('SKIP'
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed "s|win32 --arch=x64|linux AppImage|g" -i package.json
-    yarn
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn build
-    asar p "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}-linux-x64/resources/app" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/${_pkgname}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
