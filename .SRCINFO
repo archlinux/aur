@@ -12,7 +12,7 @@ pkgbase = toit
 	makedepends = vim
 	depends = gcc-libs
 	depends = esptool
-	source = git+https://github.com/toitlang/toit.git#commit=7bcbc484fe83a48f6f04e5e899d862f03ed4805c
+	source = git+https://github.com/toitlang/toit.git#commit=d8898685a9c0e4205353b1ede082a2160c2c3c80
 	md5sums = SKIP
 
 pkgname = toit

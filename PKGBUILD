@@ -2,7 +2,7 @@
 pkgname=toit
 _tag="v2.0.0-alpha.124"
 _repo="https://github.com/toitlang/toit.git"
-_commit=7bcbc484fe83a48f6f04e5e899d862f03ed4805c
+_commit=d8898685a9c0e4205353b1ede082a2160c2c3c80
 _tag_no_dash="${_tag//-/}"
 pkgver="${_tag_no_dash#v}"
 pkgrel=1
