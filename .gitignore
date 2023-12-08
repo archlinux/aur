@@ -1,0 +1,8 @@
+/.vscode/
+/src
+/pkg
+*.log
+*.pkg.*
+*.tar.*
+*.zip
+truberbrook_*.sh

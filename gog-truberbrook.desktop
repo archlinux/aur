@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Trüberbrook
+Comment=Mystery sci-fi adventure game with handmade scenery
+Exec=truberbrook
+Icon=gog-truberbrook
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8

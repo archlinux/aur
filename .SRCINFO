@@ -1,0 +1,24 @@
+pkgbase = gog-truberbrook
+	pkgdesc = Mystery sci-fi adventure game with handmade scenery. GOG version.
+	pkgver = 1.6.31066
+	pkgrel = 1
+	url = https://www.gog.com/en/game/truberbrook
+	arch = x86_64
+	license = custom
+	makedepends = lgogdownloader
+	depends = bash
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = pango
+	options = !strip
+	source = truberbrook_latest.sh::gogdownloader://truberbrook/en3installer0
+	source = gog-truberbrook.desktop
+	source = truberbrook.bash
+	sha512sums = SKIP
+	sha512sums = e70350da12597c1d95e865122cdb94c3211a4a1837ba332a2f237f28b607664ad24a0ce32405c7266efed33c9bfa966e86be3c8909f2e6dbce3b0fa5d53cc403
+	sha512sums = 27f3d7a851f9871b2a826740a5d7dbefd5e62bc7add2a3f2d0894f830e4c8cecd73ba26a27a0809d6569ebce94ce26a69938cbce250fdfe8b61c17df2054e197
+
+pkgname = gog-truberbrook
