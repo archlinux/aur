@@ -4,11 +4,11 @@ pkgname=papermc
 # curl -X GET "https://papermc.io/api/v2/projects/paper" -H  "accept: application/json"
 _pkgver=1.20.2
 # curl -X GET "https://papermc.io/api/v2/projects/paper/versions/${_pkgver}" -H  "accept: application/json"
-_build=201
+_build=318
 _license_commit=b4e3b3d
 pkgver="${_pkgver}+b${_build}"
 pkgrel=1
-_mng_ver=1.0.2
+_mng_ver=1.0.3
 pkgdesc="Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance"
 arch=('any')
 url="https://papermc.io/"
@@ -23,9 +23,9 @@ source=("papermc.${pkgver}.jar"::"https://papermc.io/api/v2/projects/paper/versi
 	"LICENSE_${pkgver}.md"::"https://raw.githubusercontent.com/PaperMC/Paper/${_license_commit}/LICENSE.md"
 	"minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz")
 noextract=("papermc.${pkgver}.jar")
-sha512sums=('51ec6e9e222c2e2eb3bf3f3296325b8fcc269114803cfe9a59d385d900fd154c747b0c6c6983a2fa1b980ff5b0bb6b829a4aaa4494cd767b83acba597f43e8b7'
+sha512sums=('93cc58ab048f2b2c6da1e0d71d98901fb39eb13f776f49baf87edfdb6d4d0d027df4cfdc6d03360843d50ef83b368962266e034b9bbd15baa18d4f0953960169'
             'd6e02d05f0cc3d3da6e131927292e77949ee00cfe3cdfbf50d8cfe21420260bdcdfd1f24451ddbc3b26344d8db02286b4bc172ec26baaef2615929aa80a3f2fb'
-            '11d708d511b63e5541bcc1dbcaf29abbf7cb9583b1d313028770a39b26b41d48dcba023f7e1d6fe30f3c093d20e10a43363011edd432e5785a4580e5c5f852a6')
+            '1cc15371d8fad39ef8812059463dd92b91628ff3887bd0eb462d919cd3b2a948c4c3535f701bf4912de3e9c84b2333738f4dd63202f235b1726e79ed178fe156')
 
 _game="papermc"
 _server_root="/srv/papermc"
@@ -60,7 +60,7 @@ package() {
 	ln -s "${_server_root}/logs" "${pkgdir}/var/log/${_game}"
 
 	# Give the group write permissions and set user or group ID on execution
-	chmod g+ws "${pkgdir}${_server_root}"
+	chmod g+s "${pkgdir}${_server_root}"
 
 	install -D ./LICENSE_${pkgver}.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
