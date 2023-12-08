@@ -1,0 +1,15 @@
+pkgbase = ffapp
+	pkgdesc = ffapp is a simple tool for creating and managing Firefox web apps
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/neilsimp1/ffapp
+	arch = any
+	license = GPL-3-or-later
+	depends = python
+	depends = python-requests
+	source = https://gitlab.com/neilsimp1/ffapp/-/archive/0.1.0/ffapp-0.1.0.tar.gz
+	source = ffapp.sh
+	sha256sums = 0af64d822e888c9332b3e943a791e99c48ba8fc944e83c11702dc0ab87fe361e
+	sha256sums = f6836e872ee684ab42f3fd1ef5affc68923d4716eba0dc6bfdbc0854ae1c9dff
+
+pkgname = ffapp
