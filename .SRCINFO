@@ -1,6 +1,6 @@
 pkgbase = ocis
 	pkgdesc = A file sync & share platform designed to scale
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://github.com/owncloud/ocis
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ocis
 	makedepends = pnpm
 	depends = glibc
 	backup = etc/ocis.env
-	source = ocis::git+https://github.com/owncloud/ocis#tag=v4.0.3
+	source = ocis::git+https://github.com/owncloud/ocis#tag=v4.0.4
 	source = go.mk.patch
 	source = ocis.env
 	source = ocis.service
