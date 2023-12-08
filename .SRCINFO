@@ -1,25 +1,22 @@
 pkgbase = gnome-encfs-manager-bzr
-	pkgdesc = An easy to use manager and mounter for Encfs stashes.
-	pkgver = 1.8.14+r550
+	pkgdesc = An easy to use manager and mounter for Encfs stashes
+	pkgver = 1.9.r562.c1721
 	pkgrel = 1
 	url = https://launchpad.net/gencfsm
-	install = gnome-encfs-manager-bzr.install
-	arch = any
-	license = GPL v2
-	makedepends = bzr
-	makedepends = vala
+	arch = x86_64
+	license = GPL2
+	makedepends = breezy
 	makedepends = intltool
+	makedepends = vala
 	depends = encfs
-	depends = vala
-	depends = intltool
-	depends = libgee06
 	depends = gtk3
+	depends = libgee
+	depends = libice
+	depends = libsecret
 	depends = libsm
-	depends = libgnome-keyring
 	provides = gnome-encfs-manager
 	conflicts = gnome-encfs-manager
-	source = gnome-encfs-manager-bzr::bzr+https://code.launchpad.net/~gencfsm/gencfsm/trunk
-	md5sums = SKIP
+	source = gnome-encfs-manager::bzr+https://code.launchpad.net/~gencfsm/gencfsm/trunk
+	sha256sums = SKIP
 
 pkgname = gnome-encfs-manager-bzr
-
