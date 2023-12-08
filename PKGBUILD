@@ -4,7 +4,7 @@ pkgbase=postgresql15
 pkgver=15.5
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=2
+pkgrel=3
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -24,10 +24,10 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
 sha256sums=('8f53aa95d78eb8e82536ea46b68187793b42bba3b4f65aa342f540b23c9b10a6'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
-            'cfb3bee0f7fc98c8c81aa3a73398bc0446822af86479b5a8ee0c67faae46ec1c'
+            'fe19a0f68a9f10435fe09efbe7407de8cbe9bf16686d63524778e90dad67f863'
             '8426f2ad548fb00452b340a631ab070899c0d44e7a88c8c3eec087c75ce32e6e'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
-            '3e13800ae807ee3c40b7e947770c58d5bf04d6427afd2bb8d2e7ecf839802b07'
+            'fddc68565151077b4f514345087c38ca069d049b8a17dbf7eef2826f49ccbc7b'
             '1ea08f0f7819c9ef965ef7851a2262ae6f4837242d7fde2b6a8098b969d1133e')
 
 prepare() {
@@ -181,10 +181,10 @@ package_postgresql15() {
 
   #install -Dm 644 postgresql.pam "${pkgdir}/etc/pam.d/${pkgname}"
 
-  sed -e "s/\$pkgver/$pkgver/" -e "s/\$pkgbase/$pkgbase/" postgresql.service >postgresql.service.tmp
+  sed -e "s/\$pkgver/$pkgver/" -e "s/\$pkgbase/$pkgbase/" -e "s/\$_majorver/$_majorver/" postgresql.service >postgresql.service.tmp
   install -Dm 644 postgresql.service.tmp  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm 644 postgresql.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  sed -e "s/\$pkgver/$pkgver/" postgresql.tmpfiles >postgresql.tmpfiles.tmp
+  sed -e "s/\$_majorver/$_majorver/" postgresql.tmpfiles >postgresql.tmpfiles.tmp
   install -Dm 644 postgresql.tmpfiles.tmp "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
   # clean up unneeded installed items
