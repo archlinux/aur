@@ -90,14 +90,12 @@ options=('!emptydirs')
 _pkgsrc="webkitgtk-$pkgver"
 source=(
   "$url/releases/$_pkgsrc.tar.xz"{,.asc}
-  "GTK-MiniBrowser-should-hide-the-toolbar-when-using-full-screen.patch"
   "GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch"
 )
 sha256sums=(
   '0540d158312e950d031add607b9d54f806f23396a11525f9db9c9f6cb041008a'
   'SKIP'
-  'a921d6be1303e9f23474971f381886fd291ec5bb1a7ff1e85acede8cfb88bef2'
-  '655f3b2c96355ac83c4fa1fc6048e3256bbfdbfb9727e1e18c5af12613536206'
+  'e315919f2901e6eea70f6d29bccd22be7d76b5109f3f2487385b405911878f8f'
 )
 
 validpgpkeys=(
@@ -111,13 +109,9 @@ provides=(webkitgtk-6.0)
 prepare() {
   cd "$_pkgsrc"
 
-  # Requested by eworm
-  # https://github.com/WebKit/WebKit/pull/17909
-  patch -Np1 -i ../GTK-MiniBrowser-should-hide-the-toolbar-when-using-full-screen.patch
-
   # https://bugs.archlinux.org/task/79783
   # https://github.com/WebKit/WebKit/pull/18614
-  patch -Np1 -i ../GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch
+  patch -Np1 -F100 -i ../GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch
 }
 
 build() {

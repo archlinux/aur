@@ -1,4 +1,4 @@
-From 745633e606ca70bf926545149beed35aab6450b7 Mon Sep 17 00:00:00 2001
+From 9aac8f619941e984bc754719647140c443baf516 Mon Sep 17 00:00:00 2001
 From: Carlos Garcia Campos <cgarcia@igalia.com>
 Date: Wed, 4 Oct 2023 10:19:28 +0200
 Subject: [PATCH] [GTK] Disable DMABuf renderer for NVIDIA proprietary drivers
@@ -17,10 +17,10 @@ disable the DMA-BUF renderer until we figure out how to make it work.
  1 file changed, 28 insertions(+)
 
 diff --git a/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp b/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp
-index 9c0f5efdfb0e3..a03842e15db0e 100644
+index c5f4a50a..887d0dbd 100644
 --- a/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp
 +++ b/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp
-@@ -38,11 +38,13 @@
+@@ -38,10 +38,12 @@
  #include <WebCore/GLContext.h>
  #include <WebCore/IntRect.h>
  #include <WebCore/PlatformDisplay.h>
@@ -29,12 +29,11 @@ index 9c0f5efdfb0e3..a03842e15db0e 100644
  #include <wtf/glib/GUniquePtr.h>
  
  #if USE(GBM)
- #include <WebCore/DMABufFormat.h>
 +#include <WebCore/PlatformDisplayGBM.h>
+ #include <drm_fourcc.h>
  #include <gbm.h>
- static constexpr uint64_t s_dmabufInvalidModifier = uint64_t(WebCore::DMABufFormat::Modifier::Invalid);
- #else
-@@ -55,6 +57,29 @@ static constexpr uint64_t s_dmabufInvalidModifier = ((1ULL << 56) - 1);
+ 
+@@ -56,6 +58,29 @@ static constexpr uint64_t s_dmabufInvalidModifier = ((1ULL << 56) - 1);
  
  namespace WebKit {
  
@@ -64,7 +63,7 @@ index 9c0f5efdfb0e3..a03842e15db0e 100644
  OptionSet<DMABufRendererBufferMode> AcceleratedBackingStoreDMABuf::rendererBufferMode()
  {
      static OptionSet<DMABufRendererBufferMode> mode;
-@@ -70,6 +95,9 @@ OptionSet<DMABufRendererBufferMode> AcceleratedBackingStoreDMABuf::rendererBuffe
+@@ -71,6 +96,9 @@ OptionSet<DMABufRendererBufferMode> AcceleratedBackingStoreDMABuf::rendererBuffe
              return;
          }
  
@@ -73,4 +72,7 @@ index 9c0f5efdfb0e3..a03842e15db0e 100644
 +
          mode.add(DMABufRendererBufferMode::SharedMemory);
  
-         const auto& eglExtensions = WebCore::PlatformDisplay::sharedDisplay().eglExtensions();
+         const char* forceSHM = getenv("WEBKIT_DMABUF_RENDERER_FORCE_SHM");
+-- 
+2.43.0
+

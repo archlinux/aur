@@ -74,14 +74,12 @@ pkgbase = webkit2gtk-unstable
 	options = !emptydirs
 	source = https://webkitgtk.org//releases/webkitgtk-2.43.2.tar.xz
 	source = https://webkitgtk.org//releases/webkitgtk-2.43.2.tar.xz.asc
-	source = GTK-MiniBrowser-should-hide-the-toolbar-when-using-full-screen.patch
 	source = GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch
 	validpgpkeys = D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3
 	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
 	sha256sums = 0540d158312e950d031add607b9d54f806f23396a11525f9db9c9f6cb041008a
 	sha256sums = SKIP
-	sha256sums = a921d6be1303e9f23474971f381886fd291ec5bb1a7ff1e85acede8cfb88bef2
-	sha256sums = 655f3b2c96355ac83c4fa1fc6048e3256bbfdbfb9727e1e18c5af12613536206
+	sha256sums = e315919f2901e6eea70f6d29bccd22be7d76b5109f3f2487385b405911878f8f
 
 pkgname = webkit2gtk-unstable
 	depends = at-spi2-core
