@@ -1,8 +1,8 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=fantascene-dynamic-wallpaper
-pkgver=1.6.1
-pkgrel=0
+pkgver=1.6.4
+pkgrel=1
 pkgdesc="dynamic wallpaper. A very nice animated wallpaper on X11 systems.Support Movie and Web animated wallpaper."
 arch=('any')
 url="https://github.com/dependon/fantascene-dynamic-wallpaper"
@@ -16,7 +16,7 @@ makedepends=(pkgconfig
     qt5-tools
     make)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz" )
-sha256sums=('96c9e33f763d0be3d8b523462dbd8bb3f291a23b1ae8d977c02a49c1d7cd8810')
+sha256sums=('43a646094f1e919ec4f49490916c99ba422e297a7b75166b5946385730a7ccd3')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
