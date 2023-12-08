@@ -3,7 +3,7 @@ pkgbase=python-radio_beam
 _pname=${pkgbase#python-}
 _pyname=${_pname/_/-}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Operations for radio astronomy beams with astropy"
 arch=('any')
@@ -21,7 +21,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-scipy'
               'python-six') # astropy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('b4cb389fee3d87a974b86b8197c4825a')
+md5sums=('673cf7295798add8fa95cd86cd3364ee')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"

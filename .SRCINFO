@@ -1,6 +1,6 @@
 pkgbase = python-radio_beam
 	pkgdesc = Operations for radio astronomy beams with astropy
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://radio-beam.readthedocs.io
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = python-radio_beam
 	makedepends = python-installer
 	makedepends = python-sphinx-astropy
 	makedepends = python-astropy
-	source = https://files.pythonhosted.org/packages/source/r/radio-beam/radio-beam-0.3.6.tar.gz
-	md5sums = b4cb389fee3d87a974b86b8197c4825a
+	source = https://files.pythonhosted.org/packages/source/r/radio-beam/radio-beam-0.3.7.tar.gz
+	md5sums = 673cf7295798add8fa95cd86cd3364ee
 
 pkgname = python-radio_beam
 	depends = python-astropy
