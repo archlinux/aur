@@ -1,13 +1,12 @@
 pkgbase = fronde
 	pkgdesc = An opinionated static website generator for Emacs Org mode
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://etienne.depar.is/fronde
 	arch = any
 	license = custom:WTFPL
 	checkdepends = ruby-rspec
 	checkdepends = ruby-simplecov
-	makedepends = ruby-yard
 	depends = emacs
 	depends = ruby
 	depends = ruby-liquid

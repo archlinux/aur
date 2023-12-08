@@ -3,13 +3,12 @@
 pkgname=fronde
 pkgver=0.4.0
 _tagname=0.4 # stupid me 🤦
-pkgrel=1
+pkgrel=2
 pkgdesc="An opinionated static website generator for Emacs Org mode"
 url="https://etienne.depar.is/fronde"
 arch=("any")
 license=("custom:WTFPL")
 checkdepends=("ruby-rspec" "ruby-simplecov")
-makedepends=("ruby-yard")
 depends=("emacs" "ruby" "ruby-liquid" "ruby-nokogiri" "ruby-r18n-core"
          "ruby-rainbow" "ruby-rake" "ruby-webrick")
 options=("!emptydirs")
