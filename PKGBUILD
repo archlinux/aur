@@ -2,10 +2,12 @@
 
 pkgname=xrock
 pkgver=1.0.4
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="The low level tools for rockchip SOC with maskrom and loader mode support."
-arch=('any')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/xboot/xrock"
 license=('MIT')
 groups=()
