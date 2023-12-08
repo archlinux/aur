@@ -3,9 +3,11 @@
 pkgname=bin2hex-git
 _pkgname=bin2hex
 pkgver=r5.aa6b51a
-pkgrel=3
+pkgrel=5
 pkgdesc="Convert raw binary files to Intel \"IHEX\" type files (used for loading large chunks of data into an Arduino board)"
-arch=('any')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/krupski/bin2hex"
 license=('GPLv3')
 provides=(${pkgname})
