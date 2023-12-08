@@ -3,15 +3,16 @@
 # Contributor: Rich Li <rich@dranek.com>
 
 pkgname=python-cartopy
-pkgver=0.21.1
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="A cartographic Python library with Matplotlib support for visualisation"
 url="https://scitools.org.uk/cartopy/"
 depends=(
-    'geos' 'python-certifi' 'python-matplotlib' 'python-numpy' 'python-pillow'
-    'python-pyproj' 'python-pyshp' 'python-scipy' 'python-shapely' 'python-six'
+    'python-matplotlib' 'python-numpy' 'python-pillow'
+    'python-pyproj' 'python-pyshp' 'python-scipy' 'python-shapely'
 )
 optdepends=(
+    'python-beautifulsoup4: for use with SRTM data'
     'python-fiona: faster shapefile reading'
     'python-gdal: for use with SRTM data'
     'python-pyepsg: interface to https://epsg.io'
@@ -31,7 +32,7 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-    '89d5649712c8582231c6e11825a04c85f6f0cee94dbb89e4db23eabca1cc250a'
+    'b300f90120931d43f11ef87c064ea1dacec1b59a4940aa76ebf82cf09548bb49'
 )
 
 prepare() {
