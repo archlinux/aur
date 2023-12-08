@@ -1,8 +1,8 @@
 # Maintainer: sant0s <diego.delossantos@mailbox.org>
 pkgname=livecaptions
 _pkgname=LiveCaptions
-pkgver=v0.4.1.r0.gdf0540a
-pkgrel=1
+pkgver=0.4.1
+pkgrel=2
 pkgdesc="Linux Desktop application that provides live captioning"
 arch=('x86_64')
 url="https://github.com/abb128/LiveCaptions"
@@ -25,7 +25,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --abbrev=0 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
