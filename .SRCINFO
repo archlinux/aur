@@ -1,0 +1,14 @@
+pkgbase = stylelint-config-recommended
+	pkgdesc = Recommended shareable config for stylelint
+	pkgver = 14.0.0
+	pkgrel = 1
+	url = https://github.com/stylelint/stylelint-config-recommended
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = stylelint
+	source = git+https://github.com/stylelint/stylelint-config-recommended.git#tag=14.0.0
+	b2sums = SKIP
+
+pkgname = stylelint-config-recommended
