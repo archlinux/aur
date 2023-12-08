@@ -7,7 +7,7 @@
 _gitname="webkit2gtk"
 _pkgname="$_gitname-unstable"
 pkgname="$_pkgname"
-pkgver=2.42.2
+pkgver=2.43.2
 pkgrel=1
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org/"
@@ -87,13 +87,14 @@ optdepends=(
 
 options=('!emptydirs')
 
+_pkgsrc="webkitgtk-$pkgver"
 source=(
-  $url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
-  GTK-MiniBrowser-should-hide-the-toolbar-when-using-full-screen.patch
-  GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch
+  "$url/releases/$_pkgsrc.tar.xz"{,.asc}
+  "GTK-MiniBrowser-should-hide-the-toolbar-when-using-full-screen.patch"
+  "GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch"
 )
 sha256sums=(
-  '5720aa3e8627f1b9f63252187d4df0f8233ae71d697b1796ebfbe5ca750bd118'
+  '0540d158312e950d031add607b9d54f806f23396a11525f9db9c9f6cb041008a'
   'SKIP'
   'a921d6be1303e9f23474971f381886fd291ec5bb1a7ff1e85acede8cfb88bef2'
   '655f3b2c96355ac83c4fa1fc6048e3256bbfdbfb9727e1e18c5af12613536206'
@@ -108,7 +109,7 @@ conflicts=(webkitgtk-6.0)
 provides=(webkitgtk-6.0)
 
 prepare() {
-  cd webkitgtk-$pkgver
+  cd "$_pkgsrc"
 
   # Requested by eworm
   # https://github.com/WebKit/WebKit/pull/17909
@@ -121,6 +122,9 @@ prepare() {
 
 build() {
   local cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
     -DPORT=GTK
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -151,12 +155,12 @@ build() {
   CFLAGS+=' -g1'
   CXXFLAGS+=' -g1'
 
-  cmake -S webkitgtk-$pkgver -B build -G Ninja "${cmake_options[@]}"
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
 
 check() {
-  cd webkitgtk-$pkgver
+  cd "$_pkgsrc"
   : cmake --build build --target tests
 }
 
@@ -172,7 +176,7 @@ package() {
 
   DESTDIR="$pkgdir" cmake --install build
 
-  cd webkitgtk-$pkgver
+  cd "$_pkgsrc"
   find Source -name 'COPYING*' -or -name 'LICENSE*' -print0 | sort -z |
     while IFS= read -d $'\0' -r _f; do
       echo "### $_f ###"
