@@ -35,7 +35,7 @@ CapabilityBoundingSet=
 NoNewPrivileges=yes
 
 WorkingDirectory=/usr/lib/immich/app/server
-ReadWritePaths=/tmp /var/tmp /var/lib/immich/upload /var/lib/immich/.reverse-geocoding-dump
+ReadWritePaths=/tmp /var/tmp /var/lib/immich/upload
 
 [Install]
 WantedBy=multi-user.target
