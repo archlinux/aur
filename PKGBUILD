@@ -1,5 +1,5 @@
 pkgname=hyprdots-ctl
-pkgver=v0.1.0.7.g0dd4cb1
+pkgver=v0.1.0.7
 pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations"
 arch=('x86_64')
@@ -13,4 +13,4 @@ md5sums=('SKIP')
 package() {
     cd "${srcdir}/Hyprdots-ctl"
     make DESTDIR="$pkgdir" all
-}
+}    pkgver=$(echo "$latest_tag")
