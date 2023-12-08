@@ -1,6 +1,6 @@
 pkgbase = mutt-slang
 	pkgdesc = Small but very powerful text-based mail client - slang version
-	pkgver = 2.2.11
+	pkgver = 2.2.12
 	pkgrel = 1
 	url = http://www.mutt.org/
 	install = mutt.install
@@ -29,12 +29,12 @@ pkgbase = mutt-slang
 	provides = mutt
 	conflicts = mutt
 	backup = etc/mutt/Muttrc
-	source = https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.11.tar.gz
-	source = https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.11.tar.gz.asc
+	source = https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.12.tar.gz
+	source = https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.12.tar.gz.asc
 	validpgpkeys = 8975A9B33AA37910385C5308ADEF768480316BDA
-	sha512sums = 5372816b281b4805e19a134c08028bae0420c7417ef6e6b5c9ba6e49a79bf0bae7f97ffcc98486d558df0648750106a702c96cd01e0769983826e98a213a172a
+	sha512sums = 75e9926af9abc869929d7729cda67adc3710d15560b6a1853b1d95ca926a9e72d975bafa09ebd9a4919905498602a8b55cf72a576fad170c68902862e9474006
 	sha512sums = SKIP
-	b2sums = 3231986b17fab13aa70fec26fd43cbb8f692e0eeec78c1430156f05c1a9ee7f8d505708aafe30e61ea5a996d6b6fcad569695c6565bc98ca264fd0272ac88b84
+	b2sums = f17811a37804221fbb351083a25fa8b67511b7a11220e82ab6ce971fc9a0627ec9bcd8df6095e525dacda347aac51b9671cc8e6f8a3fdd8920b44fbcbc61189e
 	b2sums = SKIP
 
 pkgname = mutt-slang
