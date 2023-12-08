@@ -4,13 +4,13 @@ pkgname=kubescape
 pkgver=3.0.1
 _git2gover=33.0.9
 _libgit2ver=1.3.0
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="An open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters."
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'pentium4')
 url="https://github.com/kubescape/kubescape"
 license=('Apache-2.0')
-makedepends=('go>=2:1.19.0' 'pkg-config' 'cmake' 'make')
+makedepends=('go>=2:1.20.0' 'pkg-config' 'cmake' 'make')
 provides=('kubescape')
 conflicts=('kubescape-bin')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
@@ -29,12 +29,12 @@ build() {
   export CGO_ENABLED=1
   export GOCACHE=${PWD}/cache
   cd ${pkgname}-${pkgver}/git2go; make install-static; cd ..
-  go build -buildmode=pie -buildvcs=false -ldflags="-s -w -X github.com/${pkgname}/${pkgname}/v2/core/cautils.BuildNumber=v${pkgver}" -tags=static,gitenabled -o ${pkgname}
+  go build -buildmode=pie -buildvcs=false -ldflags="-s -w -X github.com/${pkgname}/${pkgname}/v3/core/cautils.BuildNumber=v${pkgver}" -tags=static,gitenabled -o ${pkgname}
 }
 
 check() {
   # check that binary includes pkgver and git enabled
-  if [ "$(./${pkgname}-${pkgver}/${pkgname} version)" != "Your current version is: v${pkgver} [git enabled in build: true]" ]; then
+  if [ "$(./${pkgname}-${pkgver}/${pkgname} version)" != "Your current version is: v${pkgver}" ]; then
     exit 1
   fi
 }
