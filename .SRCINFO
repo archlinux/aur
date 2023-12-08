@@ -1,0 +1,15 @@
+pkgbase = medad-git
+	pkgdesc = Content publisher
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pattack.github.io/medad/
+	arch = any
+	license = GPL3
+	makedepends = go
+	makedepends = goreleaser
+	provides = medad
+	conflicts = medad
+	source = medad-git-1.0.0.tar.gz::https://github.com/pattack/medad/archive/v1.0.0.tar.gz
+	md5sums = aa403b3920f0b59992e21e7925fbaaad
+
+pkgname = medad-git
