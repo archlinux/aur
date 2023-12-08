@@ -1,12 +1,12 @@
 pkgbase = guacamole-auth-json-bin
 	pkgdesc = The json authentication extension for Guacamole Client
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://guacamole.apache.org/
 	arch = any
 	license = GPL3
 	depends = guacamole-client
-	source = https://archive.apache.org/dist/guacamole/1.5.3/binary/guacamole-auth-json-1.5.3.tar.gz
-	md5sums = a6311f3aaf33b1b5ba23c92c0928fd31
+	source = https://archive.apache.org/dist/guacamole/1.5.4/binary/guacamole-auth-json-1.5.4.tar.gz
+	md5sums = 0af315aac40f6ca9dfe906c748090426
 
 pkgname = guacamole-auth-json-bin
