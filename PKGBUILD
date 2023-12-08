@@ -2,15 +2,25 @@
 pkgname=sub-trans-bin
 _pkgname="Panfu Desktop"
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI tool swap subtitle between tchinese and schinese"
 arch=("x86_64")
 url="https://github.com/dreamfliper/subTrans"
-license=('unknown')
+license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('cairo' 'dbus' 'pango' 'glibc' 'gcc-libs' 'gtk3' 'openssl' 'glib2' 'webkit2gtk' 'gdk-pixbuf2' 'hicolor-icon-theme')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+depends=(
+    'cairo'
+    'pango'
+    'gtk3'
+    'openssl'
+    'webkit2gtk'
+    'gdk-pixbuf2'
+    'hicolor-icon-theme'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+)
 sha256sums=('14cb85606b6a01cf7a4bae02dc646fc0947bc9aada5debbfac5e07977d320a56')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
