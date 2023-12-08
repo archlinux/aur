@@ -14,13 +14,13 @@ conflicts=('na')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.2/na_linux_arm64.tar.gz")
-sha256sums_aarch64=('63675d9af74179a457db6ffc499acb60e96a89765d60629b17010ba328d7b94a')
+sha256sums_aarch64=('3a360462af6f95c083374b6443b6898c7ef636e07ab1f7f18e9daff3ce447262')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.2/na_linux_i386.tar.gz")
-sha256sums_i686=('19be46d576b5b29e6544e36c49ef45b21576914bb05c2e5043f7bbd55ae0fbca')
+sha256sums_i686=('462e8b89e8c8679a60e1dfbbec89d79b6de01dcca38de70d202f66e699883d8c')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.2/na_linux_x86_64.tar.gz")
-sha256sums_x86_64=('b4ef80783215da28d9e347ab5b5b5dd775e4069a96d1f523da8c5519254cb727')
+sha256sums_x86_64=('3dbb6d979ad5eecee36da674a3a8ba3e978c9cbc643162afd069807234cff537')
 
 package() {
   cd ${srcdir}
@@ -35,7 +35,7 @@ package() {
 
   ./na completion bash > ./completions/na.bash
   ./na completion zsh > ./completions/na.zsh
-  ./na completion fish > ./compleions/na.fish
+  ./na completion fish > ./completions/na.fish
 
   install -Dm644 ./completions/na.bash ${bash_comp}/na
   install -Dm644 ./completions/na.zsh ${zsh_comp}/_na
