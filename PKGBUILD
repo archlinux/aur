@@ -2,12 +2,12 @@
 
 _pkgbase=luau
 pkgname=luau
-pkgver=0.601
+pkgver=0.605
 pkgrel=1
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
 arch=('any')
-url='https://github.com/Roblox/luau'
+url='https://github.com/luau-lang/luau'
 license=('MIT')
 
 makedepends=('unzip' 'cmake')
@@ -19,7 +19,7 @@ source=(
     'Luau.pc'
 )
 
-sha512sums=('ba7690384615cb7ea06eb9333f40a72d19bdf3ec2f17e8de157016caa35991e187acf47be894dd5a710cbf80ca13794789e5614dfb1627e6cfec42fac7f24e3e'
+sha512sums=('63fb2ac445a2953b2b9369f621995ce6e8ac1ed67233237cf20613f910b2b4d948811fed9d93cfe430036d19e49c33e94c9a36ae645974c1c2b5801463676c71'
             'b17989fc739e2c101e0d515ded8815b4de3f54b2a67e1893cd1e9aa88cc541b3f667514cdf8a04db60aa9db050971cdbd8b386cd1458f567e784de983f63e88a')
 
 prepare() {
