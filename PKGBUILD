@@ -32,6 +32,7 @@ depends=(
   hyphen
   icu
   libavif
+  libbacktrace
   libdrm
   libegl
   libepoxy
