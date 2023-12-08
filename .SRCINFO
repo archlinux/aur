@@ -1,6 +1,6 @@
 pkgbase = libplacebo-git
 	pkgdesc = Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)
-	pkgver = 6.292.0.335.gd548232d
+	pkgver = 6.338.0.62.g52314e0e
 	pkgrel = 1
 	url = https://code.videolan.org/videolan/libplacebo
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = libplacebo-git
 	depends = libvulkan.so
 	depends = xxhash
 	depends = libxxhash.so
-	provides = libplacebo=6.292.0
+	provides = libplacebo=6.338.0.62.g52314e0e
 	provides = libplacebo.so
 	conflicts = libplacebo
 	options = debug
