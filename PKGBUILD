@@ -8,7 +8,7 @@
 pkgname=mozillavpn
 pkgver=2.19.0
 _debian_series=mantic1
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
 arch=('x86_64')
 url="https://mozilla.org/products/vpn"
@@ -52,7 +52,7 @@ install=mozillavpn.install
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 source=("https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz" "mozillavpn.install")
 sha256sums=('36754d1f0e2f3ff5b08cecf691b7e158981356dc53b55152d93925f1b4d87e03'
-            'bba558c169389be05ba37d0565ca94ad43b1fdb94e137327af0e0e5229e66227')
+            'b6bafbb5902df2e5fea48db5967e3fca1547079366796ac08cae1d3e70164686')
 
 build() {
     cd "${pkgname}-${pkgver}"

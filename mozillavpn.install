@@ -1,10 +1,10 @@
 post_install() {
-    echo 'enable & start the Mozillavpn daemon with:'
-    echo 'systemctl enable mozillavpn.service'
-    echo 'systemctl start mozillavpn.service'
+    echo '>>> enable & start the Mozillavpn daemon with:'
+    echo '>>> systemctl enable mozillavpn.service'
+    echo '>>> systemctl start mozillavpn.service'
 }
 
 post_upgrade() {
-    echo 'Mozillavpn daemon must be restart after updating with:'
-    echo 'systemctl restart mozillavpn.service'
+    echo '>>> Mozillavpn daemon must be restart after updating with:'
+    echo '>>> systemctl restart mozillavpn.service'
 }
