@@ -1,7 +1,7 @@
 # Maintainer: wabi <aschrafl@jetnet.ch>
 # Maintainer: pikl <me@pikl.uk>
 pkgname=immich
-pkgrel=1
+pkgrel=2
 pkgver=1.90.2
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -177,12 +177,11 @@ package() {
     
     # install reverse-geocoding data
     # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
-    install -dm750 "${pkgdir}/var/lib/immich"
-    install -dm750 "${pkgdir}/var/lib/immich/revgeo"
-    install -Dm640 cities500.txt "${pkgdir}/var/lib/immich/revgeo/cities500.txt"
-    install -Dm640 admin1CodesASCII.txt "${pkgdir}/var/lib/immich/revgeo/admin1CodesASCII.txt"
-    install -Dm640 admin2Codes.txt "${pkgdir}/var/lib/immich/revgeo/admin2Codes.txt"
-    date --iso-8601=seconds | tr -d "\n" > "${pkgdir}/var/lib/immich/revgeo/geodata-date.txt"
+    install -dm750 "${pkgdir}/var/lib/immich-revgeo"
+    install -Dm640 cities500.txt "${pkgdir}/var/lib/immich-revgeo/cities500.txt"
+    install -Dm640 admin1CodesASCII.txt "${pkgdir}/var/lib/immich-revgeo/admin1CodesASCII.txt"
+    install -Dm640 admin2Codes.txt "${pkgdir}/var/lib/immich-revgeo/admin2Codes.txt"
+    date --iso-8601=seconds | tr -d "\n" > "${pkgdir}/var/lib/immich-revgeo/geodata-date.txt"
 
     # install systemd service files
     install -Dm644 immich-server.service "${pkgdir}/usr/lib/systemd/system/immich-server.service"

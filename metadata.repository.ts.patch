@@ -5,7 +5,7 @@
    async init(): Promise<void> {
      this.logger.log('Initializing metadata repository');
 -    const geodataDate = await readFile('/usr/src/resources/geodata-date.txt', 'utf8');
-+    const geodataDate = await readFile('/var/lib/immich/revgeo/geodata-date.txt', 'utf8');
++    const geodataDate = await readFile('/var/lib/immich-revgeo/geodata-date.txt', 'utf8');
  
      await this.geodataPlacesRepository.query('SELECT pg_advisory_lock($1)', [DatabaseLock.GeodataImport]);
  
@@ -14,7 +14,7 @@
            modificationDate: lineSplit[18],
          }),
 -      `/usr/src/resources/${CITIES_FILE}`,
-+      `/var/lib/immich/revgeo/${CITIES_FILE}`,
++      `/var/lib/immich-revgeo/${CITIES_FILE}`,
        GeodataPlacesEntity,
      );
    }
@@ -23,7 +23,7 @@
            name: lineSplit[1],
          }),
 -      '/usr/src/resources/admin1CodesASCII.txt',
-+      '/var/lib/immich/revgeo/admin1CodesASCII.txt',
++      '/var/lib/immich-revgeo/admin1CodesASCII.txt',
        GeodataAdmin1Entity,
      );
    }
@@ -32,7 +32,7 @@
            name: lineSplit[1],
          }),
 -      '/usr/src/resources/admin2Codes.txt',
-+      '/var/lib/immich/revgeo/admin2Codes.txt',
++      '/var/lib/immich-revgeo/admin2Codes.txt',
        GeodataAdmin2Entity,
      );
    }
