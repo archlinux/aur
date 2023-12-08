@@ -13,12 +13,12 @@ Environment=PATH=/opt/$pkgbase/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr
 Environment=LD_LIBRARY_PATH=/opt/$pkgbase/lib
 
 SyslogIdentifier=postgres
-PIDFile=/var/lib/postgres/data$pgver/postmaster.pid
+PIDFile=/var/lib/postgres/data$_majorver/postmaster.pid
 RuntimeDirectory=postgresql
 RuntimeDirectoryMode=755
 
-ExecStartPre=/opt/$pkgbase/bin/postgresql-check-db-dir ${PGROOT}/data$pgver
-ExecStart=/opt/$pkgbase/bin/postgres -D ${PGROOT}/data$pgver
+ExecStartPre=/opt/$pkgbase/bin/postgresql-check-db-dir ${PGROOT}/data$_majorver
+ExecStart=/opt/$pkgbase/bin/postgres -D ${PGROOT}/data$_majorver
 ExecStartPost=/usr/bin/echo "Before using, source /opt/$pkgbase/bin/pgenv.sh to set PostgreSQL environment"
 ExecReload=/bin/kill -HUP ${MAINPID}
 KillMode=mixed

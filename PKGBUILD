@@ -2,10 +2,9 @@
 
 pkgbase=postgresql16
 pkgver=16.1
-pgver=${pkgver%%.*}
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=4
+pkgrel=5
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -24,10 +23,10 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
 sha256sums=('ce3c4d85d19b0121fe0d3f8ef1fa601f71989e86f8a66f7dc3ad546dd5564fec'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
-            '0f6584c343fe0e1cebc616414bef4d5bdc4c460f95a8c70bdf18b519935ed27d'
+            'fe19a0f68a9f10435fe09efbe7407de8cbe9bf16686d63524778e90dad67f863'
             '7d2e8243a2c024a57489276bbf8945eb8a1b8762448732d432c56911577f8756'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
-            '3e13800ae807ee3c40b7e947770c58d5bf04d6427afd2bb8d2e7ecf839802b07'
+            'fddc68565151077b4f514345087c38ca069d049b8a17dbf7eef2826f49ccbc7b'
             'c8b2797bbbcf7cfd7fe23863101df7d895a38aa77aab5eae9ab4f43b9c22aeee')
 
 prepare() {
@@ -68,7 +67,7 @@ build() {
 
   # build
   # see bug 17943, which requires llvm15/clang15 instead of current version 16: https://www.postgresql.org/message-id/17943-56bb8c6bd4409b9f%40postgresql.org
-  #LLVM_CONFIG=llvm-config-15 CLANG=/usr/lib/llvm15/bin/clang \
+  LLVM_CONFIG=llvm-config-15 CLANG=/usr/lib/llvm15/bin/clang \
   ./configure "${options[@]}"
   make world
 }
@@ -184,10 +183,10 @@ package_postgresql16() {
 
   #install -Dm 644 postgresql.pam "${pkgdir}/etc/pam.d/${pkgname}"
 
-  sed -e "s/\$pkgver/$pkgver/" -e "s/\$pgver/$pgver/" -e "s/\$pkgbase/$pkgbase/" postgresql.service >postgresql.service.tmp
+  sed -e "s/\$pkgver/$pkgver/" -e "s/\$pkgbase/$pkgbase/" -e "s/\$_majorver/$_majorver/" postgresql.service >postgresql.service.tmp
   install -Dm 644 postgresql.service.tmp  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm 644 postgresql.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  sed -e "s/\$pkgver/$pkgver/" postgresql.tmpfiles >postgresql.tmpfiles.tmp
+  sed -e "s/\$_majorver/$_majorver/" postgresql.tmpfiles >postgresql.tmpfiles.tmp
   install -Dm 644 postgresql.tmpfiles.tmp "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
   # clean up unneeded installed items

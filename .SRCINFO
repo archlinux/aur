@@ -1,7 +1,7 @@
 pkgbase = postgresql16
 	pkgdesc = Sophisticated object-relational DBMS
 	pkgver = 16.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.postgresql.org/
 	arch = x86_64
 	license = custom:PostgreSQL
@@ -31,10 +31,10 @@ pkgbase = postgresql16
 	sha256sums = ce3c4d85d19b0121fe0d3f8ef1fa601f71989e86f8a66f7dc3ad546dd5564fec
 	sha256sums = 02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a
 	sha256sums = af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb
-	sha256sums = 0f6584c343fe0e1cebc616414bef4d5bdc4c460f95a8c70bdf18b519935ed27d
+	sha256sums = fe19a0f68a9f10435fe09efbe7407de8cbe9bf16686d63524778e90dad67f863
 	sha256sums = 7d2e8243a2c024a57489276bbf8945eb8a1b8762448732d432c56911577f8756
 	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
-	sha256sums = 3e13800ae807ee3c40b7e947770c58d5bf04d6427afd2bb8d2e7ecf839802b07
+	sha256sums = fddc68565151077b4f514345087c38ca069d049b8a17dbf7eef2826f49ccbc7b
 	sha256sums = c8b2797bbbcf7cfd7fe23863101df7d895a38aa77aab5eae9ab4f43b9c22aeee
 
 pkgname = postgresql16-libs
