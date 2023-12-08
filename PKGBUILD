@@ -1,7 +1,7 @@
 # Original maintainer: zxp19821005 <zxp19821005 at 163 dot com>, adopted by mmvanheusden.
 pkgname=steamdepotdownloadergui-appimage
 _appname=SteamDepotDownloaderGUI
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Easily download older versions of games from Steam using DepotDownloader"
 arch=('aarch64' 'x86_64')
@@ -14,8 +14,8 @@ options=('!strip')
 _install_path="/opt/appimages"
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_appname}-linux-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_appname}-linux-${pkgver}-x64.AppImage")
-sha256sums_aarch64=('b56d2336305f5650c78e7ac6d836bdd9d8240400b333a1f855481dde02b28ca4')
-sha256sums_x86_64=('90133f36d902ffb90df6997d4a839000588625cc394a15cb0f34428b3e207646')
+sha256sums_aarch64=('8489b739ee47353af7a2ec81bfac681f411048f5022eb6cf2de9a641e602c44c')
+sha256sums_x86_64=('b82b4cf06a729ab31ecff354457f3bb355403869e1daa7650b8c3eb293086001')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
