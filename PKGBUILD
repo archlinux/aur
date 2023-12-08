@@ -2,10 +2,12 @@
 
 pkgname=xrock-git
 pkgver=1.0.4.r5.gbb62b28
-pkgrel=1
+pkgrel=5
 epoch=
 pkgdesc="The low level tools for rockchip SOC with maskrom and loader mode support."
-arch=('x86_64')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/xboot/xrock"
 license=('MIT')
 depends=('libusb')
