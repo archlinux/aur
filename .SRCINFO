@@ -1,6 +1,6 @@
 pkgbase = stress-ng
 	pkgdesc = Software to stress test a computer system in various selectable ways
-	pkgver = 0.17.01
+	pkgver = 0.17.02
 	pkgrel = 1
 	url = https://github.com/ColinIanKing/stress-ng
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = stress-ng
 	depends = mpfr
 	depends = xxhash
 	optdepends = intel-ipsec-mb: support for IPsec tests
-	source = stress-ng-0.17.01.tar.gz::https://github.com/ColinIanKing/stress-ng/archive/refs/tags/V0.17.01.tar.gz
-	b2sums = 37fbee68094dc4d840a804bd9256bc51341c4daa199b99cd008cb0675edadb2ac2e69efb6dedb7b089af115d5299d373df8b9977361eaa547132f9192954bfb6
+	source = stress-ng-0.17.02.tar.gz::https://github.com/ColinIanKing/stress-ng/archive/refs/tags/V0.17.02.tar.gz
+	b2sums = cf2ea567645d453bfd78733770fc9d8970dae251adddf3dc9b9e96f5d0d802d313b149578249620ff7d80ba3be0a77538c040565ded592b321605ec95cd27b5f
 
 pkgname = stress-ng

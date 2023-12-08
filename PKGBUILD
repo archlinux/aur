@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 # Contributor: Thomas Wucher <arch (at) thomaswucher (dot) de>
 pkgname=stress-ng
-pkgver=0.17.01
+pkgver=0.17.02
 pkgrel=1
 pkgdesc="Software to stress test a computer system in various selectable ways"
 arch=('x86_64')
@@ -31,7 +31,7 @@ makedepends=(
     'libmd'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ColinIanKing/${pkgname}/archive/refs/tags/V${pkgver}.tar.gz")
-b2sums=('37fbee68094dc4d840a804bd9256bc51341c4daa199b99cd008cb0675edadb2ac2e69efb6dedb7b089af115d5299d373df8b9977361eaa547132f9192954bfb6')
+b2sums=('cf2ea567645d453bfd78733770fc9d8970dae251adddf3dc9b9e96f5d0d802d313b149578249620ff7d80ba3be0a77538c040565ded592b321605ec95cd27b5f')
 
 build() {
     cd "${pkgname}-${pkgver}"
