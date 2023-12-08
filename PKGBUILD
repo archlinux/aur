@@ -2,7 +2,7 @@
 
 pkgname=gog-dandara-trials-of-fear-edition
 pkgver=1.3.7.37619
-pkgrel=1
+pkgrel=2
 pkgdesc='Gravity-defying 2D metroidvania platformer. GOG version.'
 _shortname="${pkgname#gog-}"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
 sha512sums=(
   'SKIP'
   'ee107b9737c0e08a6eab2c3edd828ad34c2526ac9a16bc6c9ad5e4f2df66a281af102f105825f6194069282fd523a68f9d98b8caac40a50ebc5d11bf7d3344e0'
-  '4b8eac70f29a4881447ac2b8a2743fc7ac5f7057fc4638b712c89fd81a4983ef3bf1eb30a222c1279ce53b0ef3946ae9eb4ffe7ddc4a6a9f4ef74618c8093a01'
+  'cfb5d7f0462c08e5e6f0424e5d724c44da09900921441f25fcf69462e34e790596adaf1a075a2d4414a65ec7b822c1ad872426ec7a414ff93c8198ad84ae6445'
 )
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
@@ -40,8 +40,11 @@ pkgver() {
 }
 
 prepare() {
-  # Remove unneeded 32-bit executable
-  # Fixes false alarm in rebuild-detector
+  # Remove unneeded 32-bit binaries
+  # Fixes false alarms in rebuild-detector
+  rm -fv "${srcdir}/data/noarch/game/Dandara.x86"
+  rm -rfv "${srcdir}/data/noarch/game/Dandara_Data/Mono/x86"
+  rm -rfv "${srcdir}/data/noarch/game/Dandara_Data/Plugins/x86"
   rm -rfv "${srcdir}/data/noarch/support/yad/32"
 }
 
@@ -59,7 +62,7 @@ package() {
   echo >&2 'Packaging game data'
   mkdir -p "${pkgdir}/opt/${_shortname}"
   cp -R --preserve=mode \
-    "${srcdir}"/{data,meta,scripts} \
+    "${srcdir}"/data/noarch/* \
     "${pkgdir}/opt/${_shortname}"
 
   echo >&2 'Packaging launcher'
