@@ -1,7 +1,7 @@
 pkgbase = medad-git
-	pkgdesc = Content publisher
+	pkgdesc = Content publisher - Converts Markdown documents to HTML files and uploads them to the server
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pattack.github.io/medad/
 	arch = any
 	license = GPL3
