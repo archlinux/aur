@@ -1,0 +1,9 @@
+pkgbase = medad
+	pkgdesc = Content publisher
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pattack.github.io/medad/
+	arch = any
+	license = GPL3
+
+pkgname = medad
