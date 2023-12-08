@@ -2,15 +2,25 @@
 pkgname=statusify-bin
 _pkgname=Statusify
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Discord rich presence configurator desktop app"
 arch=('x86_64')
 url="https://github.com/Orphoros/Statusify"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('gdk-pixbuf2' 'cairo' 'webkit2gtk' 'glib2' 'gcc-libs' 'glibc' 'libsoup' 'openssl' 'hicolor-icon-theme' 'gtk3')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}.linux-${CARCH}.deb")
+depends=(
+    'gdk-pixbuf2'
+    'cairo'
+    'webkit2gtk'
+    'libsoup'
+    'openssl'
+    'hicolor-icon-theme'
+    'gtk3'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}.linux-${CARCH}.deb"
+)
 sha256sums=('5d87781e9b1bc1fe447f1924a02c7db850e43b4a91a81aa19368a8804d18b120')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
