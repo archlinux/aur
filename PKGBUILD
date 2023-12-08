@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1633.r0.g50f6d91
+pkgver=1645.r0.gf6f9752
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -204,6 +204,7 @@ build() {
 package() {
     cd "$srcdir"
     DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 "$srcdir/$_pkgname/dist/72-yuzu-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-yuzu-input.rules"
     
     cd "$pkgdir/usr/share/applications"
     sed -i '12s/Exec=yuzu/Exec=env QT_QPA_PLATFORM=xcb yuzu/' org.yuzu_emu.yuzu.desktop
