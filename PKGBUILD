@@ -1,7 +1,7 @@
 # Maintainer: AnnikaV9 <carrot.moncher@gmail.com>
 
 pkgname=hcclient
-pkgver=1.17.3
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A terminal client for hack.chat"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("Unlicense")
 provides=("hcclient")
 makedepends=("python" "binutils")
 source=("v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f2319c0e7baa85ad23857e1d1403b005e590d0beeeadc9b381966b8a009f8144')
+sha256sums=('b3d51a762db25261e0c9e1763ef969fddb4d4ce203143939a05af73e5f403814')
 
 build() {
   cd "${srcdir}/hcclient-${pkgver}"
