@@ -10,7 +10,7 @@ pkgbase = firefox-extension-return-youtube-dislike-bin
 	provides = firefox-extension-return-youtube-dislike
 	conflicts = firefox-extension-return-youtube-dislike
 	noextract = return_youtube_dislikes-3.0.0.13.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/4180538/return_youtube_dislikes-3.0.0.13.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/4203985/return_youtube_dislikes-3.0.0.13.xpi
 	sha256sums = 599b8761489e90633f258ef1b85fafca8ccca2d84a9c2c5fab31c64dd694191d
 
 pkgname = firefox-extension-return-youtube-dislike-bin
