@@ -1,7 +1,7 @@
 pkgbase = minedigger-bin
 	pkgdesc = Simple match-3 game prototype for Linux, Windows and Android
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://play.google.com/store/apps/details?id=com.neodesys.minedigger
 	arch = x86_64
 	license = GPL3
@@ -12,8 +12,6 @@ pkgbase = minedigger-bin
 	depends = libvorbis
 	depends = libjpeg-turbo
 	depends = libpng
-	depends = glibc
-	depends = gcc-libs
 	provides = minedigger=1.0
 	conflicts = minedigger
 	source = minedigger-1.0.tgz::https://github.com/neodesys/MineDigger/releases/download/v1.0/MineDigger_linux64.tgz
