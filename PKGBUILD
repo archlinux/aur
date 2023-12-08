@@ -1,20 +1,21 @@
 # Maintainer: jdigi78 <jdigiovanni78 at gmail dot com>
-pkgname=varia
-pkgdesc='Download manager based on aria2'
-url='https://github.com/giantpinkrobots/varia'
-license=('MPL2')
-arch=('any')
-depends=('aria2' 'aria2p')
-makedepends=('meson')
 
-# Update following lines for each new release
-pkgver=2023.11.22
+pkgname=varia
+pkgver=2023.12.7
 pkgrel=1
-sha256sums=('09d3cf834e6b58c513b19e6898aa457938d7def65e7216b9668eba3a91051af3'
-            'SKIP')
 
 source=("https://github.com/giantpinkrobots/varia/archive/refs/tags/v$pkgver.tar.gz"
         "aria2.patch")
+        
+sha256sums=('ebc877ab7c53cdb1d647d94c005c2c1d13f5105101a9d79eb06efcd7bf8c01fd'
+            'c3fe196ebb295a8874792e4d259ec6154eb9993bbea3ca4f115f5d9424e0e26c')
+
+pkgdesc='Download manager based on aria2'
+arch=('any')
+url='https://github.com/giantpinkrobots/varia'
+license=('MPL2')
+depends=('aria2' 'aria2p')
+makedepends=('meson')
 
 prepare() {
   # aria2c cannot be found without this patch
