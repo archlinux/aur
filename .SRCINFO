@@ -1,12 +1,12 @@
 pkgbase = catcat-dm-react
 	pkgdesc = catcat弹幕姬.哔哩哔哩直播弹幕姬： 查看直播间弹幕。
 	pkgver = 1.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kokolokksk/catcat-dm-react
 	arch = x86_64
 	license = MIT
-	makedepends = npm>=7
-	makedepends = nodejs>=18
+	makedepends = npm
+	makedepends = nvm
 	makedepends = gendesk
 	makedepends = yarn
 	makedepends = git

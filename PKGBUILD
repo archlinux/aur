@@ -3,7 +3,7 @@ pkgname=catcat-dm-react
 _pkgname="CatCatDM React"
 pkgver=1.9.6
 _electronversion=23
-pkgrel=1
+pkgrel=2
 pkgdesc="catcat弹幕姬.哔哩哔哩直播弹幕姬： 查看直播间弹幕。"
 arch=('x86_64')
 url="https://github.com/kokolokksk/catcat-dm-react"
@@ -32,8 +32,8 @@ depends=(
     'libxfixes'
 )
 makedepends=(
-    'npm>=7'
-    'nodejs>=18'
+    'npm'
+    'nvm'
     'gendesk'
     'yarn'
     'git'
@@ -44,7 +44,14 @@ source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
 )
 sha256sums=('SKIP')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install 18
+    nvm use 18
+}
 build() {
+    _ensure_local_nvm
     gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
