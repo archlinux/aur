@@ -137,10 +137,10 @@ _build_flutter_engine() {
 		enable_unittests = false
 		flutter_runtime_mode = "release"
 	EOF
-	)"
+	)" || { >&2 echo '`gn gen` command failed.'; return 1; }
 	
 	sed -i 's|ldflags}|ldflags} -fuse-ld=lld|g' "$outdir/toolchain.ninja" # use system linker
-	ninja -v -C "$outdir"
+	ninja -v -C "$outdir" || { >&2 echo 'Flutter engine build failed.'; return 1; }
 	
 	#export PATH+=":${srcdir}/src/flutter/lib/web_ui/dev"
 	#felt build
@@ -159,17 +159,19 @@ _install_flutter_engine() {
 }
 
 if [[ -n "$_cached_flutter_dir" ]]; then
-	if [[ ! -d "$_cached_flutter_dir" ]]; then
-		_prepare_flutter_engine
-		_build_flutter_engine
-		_install_flutter_engine
+	if [[ ! -L "$_cached_flutter_dir/out/arch_release" ]]; then
+		_prepare_flutter_engine && \
+		_build_flutter_engine && \
+		_install_flutter_engine || \
+			{ return 1; }
 	fi
 	
 	_ln "$_cached_flutter_dir/out" "${srcdir}/flutter-engine/out"
 else
-	_prepare_flutter_engine
-	_build_flutter_engine
-	_install_flutter_engine
+	_prepare_flutter_engine && \
+	_build_flutter_engine && \
+	_install_flutter_engine || \
+		{ return 1; }
 	_ln "${srcdir}/flutter-out" "${srcdir}/flutter-engine/out"
 fi
 
