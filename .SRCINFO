@@ -1,6 +1,6 @@
 pkgbase = elasticsearch-bin
 	pkgdesc = Log analyzer. search, store and analyze logs
-	pkgver = 8.11.1
+	pkgver = 8.11.2
 	pkgrel = 0
 	url = https://elastic.co
 	install = elasticsearch.install
@@ -12,7 +12,7 @@ pkgbase = elasticsearch-bin
 	sha256sums = e42a11bfcacad2d600dad28f88d94553a03e598eba69c58f677a61b2e7ea4e7b
 	sha256sums = b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c
 	sha256sums = fc9683349457f56bcd044cd8e711bc8efd43d32f9547d5b21a66650c6dfbed73
-	source_x86_64 = https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.11.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = dd8572e4f50ffbe4079cce315b17c25e3cebaa02fd7eb134d2aa222703459780
+	source_x86_64 = https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.11.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 73de564af1463be3079a7ccccd4bee3d76fba16ff02bfa7de1111250968dc4c7
 
 pkgname = elasticsearch-bin
