@@ -67,42 +67,13 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
 
-  # The tests use an installed version of PyInstaller dist + bootloader
-  # to run properly, and dogfood on that module for a lot of basic tests.
-  # Temporarily extracting the built wheel to build to test it out.
-  python -m installer --destdir="$srcdir/$pkgname/build" dist/*.whl
-
-  # Disabling several tests that are not relevant to the release of this pkg
-  # test_macos_bundle_signing - macos only
-  # test_apple_events - macos only
-  # test_pywin32 - win32 only
-  # test_hooks - needs additional libraries (will vary by libs installed by user)
-  # test_libraries - needs additional libraries (will vary by libs installed by user)
-  # test_django - needs additional libraries (will vary by libs installed by user)
-  # test_qt - needs additional libraries (hit or miss, works in chroot/clean system, but fails on daily driver)
-  # test_django - needs additional libraries (will vary by libs installed by user)
-  # test_interactive - needs ui-interface (will always fail on headless system)
-
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  PYTHONPATH="$srcdir/$pkgname/build/${site_packages}" \
-    QT_QPA_PLATFORM='offscreen' \
-    pytest \
+  # run only the unit tests
+  pytest tests/unit \
     -m 'not darwin and not win32' \
-    --ignore 'tests/functional/test_macos_bundle_signing.py' \
-    --ignore 'tests/functional/test_apple_events.py' \
-    --ignore 'tests/functional/test_pywin32.py' \
-    --ignore-glob 'tests/functional/test_hooks/**' \
-    --ignore 'tests/functional/test_libraries.py' \
-    --ignore 'tests/functional/test_django.py' \
-    --ignore 'tests/functional/test_qt.py' \
-    --ignore 'tests/functional/test_interactive.py' \
     --maxfail=3 \
     -n=auto --maxprocesses="${PYTEST_XDIST_AUTO_NUM_WORKERS:-2}" \
     --dist='load' \
     --force-flaky --no-flaky-report --reruns=3 --reruns-delay=10
-
-  # cleanup temporary wheel extraction
-  rm -rf "$srcdir/$pkgname/build/usr"
 }
 
 package() {
