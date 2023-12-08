@@ -211,7 +211,7 @@ _package() {
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
-                'scx: Example Scheduler and tools for sched-ext')
+                'scx-sched: Schedulers for sched-ext')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
 
   cd $_srcname
