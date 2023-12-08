@@ -3,7 +3,7 @@ pkgbase=python-lsp-mypy
 pkgname=(python-pylsp-mypy)
 _name=${pkgname#python-}
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Static type checking for python-lsp-server with mypy"
 arch=(any)
 url="https://github.com/python-lsp/pylsp-mypy"
@@ -22,7 +22,17 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  PYTHONPATH="$PWD" pytest
+  if ! PYTHONPATH="$PWD" pytest
+  then
+    if [[ $PWD != /build/* ]]
+    then
+      echo
+      echo "=> Looks like this isn't a clean chroot, ignoring failing unit tests."
+      echo "   See https://github.com/python-lsp/pylsp-mypy/issues/59"
+    else
+      return 1
+    fi
+  fi
 }
 
 package_python-pylsp-mypy() {
