@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=SDMetrics
 pkgname=python-${_base,,}
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Metrics for Synthetic Data Generation Projects"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-scikit-learn python-copulas python-tqdm python-plotly)
 makedepends=(python-build python-installer python-pytest-runner python-wheel)
 checkdepends=(python-pytest python-pomegranate)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('054127b92135d8ddb90080a94c403558e155ef4f09e2b4ae93d103acb5181298ea565addc1f584eb9a43dd28bd041fec54b1a53f79835555ce40e789e1383094')
+sha512sums=('de8d40ab4986a35236670538ffd92d81d663d1a91c317a39cb8268b7b0a00d5a74abe6bd56fd84d22dc54879d199312c9dd08f75d760e96a52888378ef97660d')
 
 build() {
   cd ${_base}-${pkgver}
@@ -23,7 +23,7 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest \
-    -k 'not rank[MLPRegressor] and not good[SVCParentChildDetection] and not rank[LSTMClassifierEfficacy] and not rank[BinaryDecisionTreeClassifier] and not _num[NumericalSVR] and not rank_object[BinaryDecisionTreeClassifier] and not fit'
+    -k 'not rank[MLPRegressor] and not good[SVCParentChildDetection] and not num[NumericalMLP] and not rank[LSTMClassifierEfficacy] and not fit'
 }
 
 package() {
