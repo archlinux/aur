@@ -1,12 +1,12 @@
 pkgbase = bdash-bin
 	pkgdesc = Simple SQL Client for lightweight data analysis.
-	pkgver = 1.16.2
-	pkgrel = 5
+	pkgver = 1.16.3
+	pkgrel = 1
 	url = https://github.com/bdash-app/bdash
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
-	depends = electron12
+	depends = electron14
 	depends = hicolor-icon-theme
 	depends = libx11
 	depends = gdk-pixbuf2
@@ -14,13 +14,13 @@ pkgbase = bdash-bin
 	depends = libdbusmenu-glib
 	depends = gtk2
 	depends = dbus-glib
-	provides = bdash=1.16.2
+	provides = bdash=1.16.3
 	conflicts = bdash
-	source = bdash-1.16.2.AppImage::https://github.com/bdash-app/bdash/releases/download/v1.16.2/Bdash-1.16.2.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/bdash-app/bdash/v1.16.2/LICENSE
+	source = bdash-1.16.3.AppImage::https://github.com/bdash-app/bdash/releases/download/v1.16.3/Bdash-1.16.3.AppImage
+	source = LICENSE-1.16.3::https://raw.githubusercontent.com/bdash-app/bdash/v1.16.3/LICENSE
 	source = bdash.sh
-	sha256sums = 386255544582fd8416e7be3e074ce5f58cbac0f76b252aa5b2cb4d133843d814
+	sha256sums = 0af51b09eac9657d7b80e07ceabeece495edbaa0d5425de387672e489dbd8a40
 	sha256sums = 44e997a14d296ed01f24a68d2071280936534e98f4613fa8b875c9922e6b22d8
-	sha256sums = 76016d4448eaf2ac2ac053d9546e76f6d11730577e5511292a72adc83aab57a6
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = bdash-bin
