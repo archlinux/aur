@@ -19,7 +19,7 @@ sha256sums=('fdda8313b7e811816a780334be6c5e9ffa68319fa7d8e75ceb630e4ae1d8af90'
 
 build() {
   cd "PixelFlasher-$pkgver"
-  pyinstaller --log-level=DEBUG --noconfirm build-on-linux.spec
+  pyinstaller --noconfirm build-on-linux.spec
 }
 
 package() {
