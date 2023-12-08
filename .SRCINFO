@@ -1,0 +1,25 @@
+pkgbase = r-cnvmetrics
+	pkgdesc = Copy Number Variant Metrics
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CNVMetrics
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = r-biocparallel
+	depends = r-genomicranges
+	depends = r-gridextra
+	depends = r-iranges
+	depends = r-magrittr
+	depends = r-pheatmap
+	depends = r-rbeta2009
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVMetrics_1.6.0.tar.gz
+	md5sums = ebb4f847744aaddcc125d870b1a67154
+	sha256sums = 95db84f879b5726ae2389ee54bafc8966fa9aeb9bf3c65cd4ffbdb665823c49a
+
+pkgname = r-cnvmetrics
