@@ -1,5 +1,5 @@
 pkgname=uni
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Query the Unicode database from the commandline, with good support for emojis'
 arch=('x86_64')
@@ -8,7 +8,8 @@ url="https://$repo"
 license=('MIT')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('806fbba66efaa45cd5691efcd8457ba8fe88d3b2f6fd0b027f1e6ef62253d6fb')
+sha256sums=('dc9b5081279b03b8ffcf1120d3a12635acade73d43abf6a511e3453aa0180e1f')
+
 
 #prepare() {
 #  go mod vendor # to not download anything in build()
