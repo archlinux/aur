@@ -1,6 +1,6 @@
 pkgbase = spigot
 	pkgdesc = High performance Minecraft server implementation
-	pkgver = 1.20.2+b162
+	pkgver = 1.20.4+b163
 	pkgrel = 1
 	url = https://www.spigotmc.org/
 	install = spigot.install
@@ -17,16 +17,16 @@ pkgbase = spigot
 	depends = sed
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
-	provides = minecraft-server=1.20.2
-	provides = bukkit=1.20.2
-	provides = craftbukkit=1.20.2
+	provides = minecraft-server=1.20.4
+	provides = bukkit=1.20.4
+	provides = craftbukkit=1.20.4
 	conflicts = bukkit
 	conflicts = craftbukkit
 	conflicts = spigot-patcher
 	backup = etc/conf.d/spigot
-	source = BuildTools-1.20.2+b162.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/162/artifact/target/BuildTools.jar
-	source = minecraft-server-1.0.2.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.2.tar.gz
-	sha512sums = a4f711b8ff5faa9eefc2b3deacbb6ea3901e0650347f7ffa2ab90f93a15ff62c3cbfdcc2bb9b968b2d6468aee5b94a76616dc79e2d2f9dfb70aa93aa20826a48
-	sha512sums = 11d708d511b63e5541bcc1dbcaf29abbf7cb9583b1d313028770a39b26b41d48dcba023f7e1d6fe30f3c093d20e10a43363011edd432e5785a4580e5c5f852a6
+	source = BuildTools-1.20.4+b163.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/163/artifact/target/BuildTools.jar
+	source = minecraft-server-1.0.3.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.3.tar.gz
+	sha512sums = e9d89d47183cbf7d3109564c68f53f7a902c962b8cd694665823cbf7d7f51d6cb58aa7d52f8ccc5df3b26d4705aa724b72a668352cc5a8c936ad9aa490fd5774
+	sha512sums = 1cc15371d8fad39ef8812059463dd92b91628ff3887bd0eb462d919cd3b2a948c4c3535f701bf4912de3e9c84b2333738f4dd63202f235b1726e79ed178fe156
 
 pkgname = spigot
