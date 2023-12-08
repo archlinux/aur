@@ -19,6 +19,7 @@ pkgbase = postgresql15
 	makedepends = clang
 	makedepends = libxslt
 	optdepends = perl: perl support requires recompile with --with-perl
+	provides = postgresql
 	source = https://ftp.postgresql.org/pub/source/v15.5/postgresql-15.5.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
