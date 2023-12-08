@@ -2,7 +2,7 @@
 # Contributor: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 
 pkgname=boatswain
-pkgver=0.3.0.r0.ge176cfd
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Control Elgato Stream Deck devices'
 arch=(x86_64)
@@ -21,13 +21,13 @@ makedepends=(
   meson
   gobject-introspection
 )
-_commit=e176cfd490790b3a0e1bd27a2602b3f4241b6a3b # tags/0.3.0
+_commit=e176cfd4 # tags/0.3.0
 source=("git+${url}.git#commit=$_commit")
 sha1sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags
 }
 
 build() {
