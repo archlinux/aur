@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
 _pkgname="Swarm Desktop"
-pkgver=0.31.0
+pkgver=0.36.0
 _electronversion=18
 pkgrel=2
 pkgdesc="Electron Desktop app that helps you easily spin up and manage Swarm node"
