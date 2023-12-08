@@ -2,16 +2,33 @@
 pkgname=librefancontrol-bin
 _pkgname=LibreFanControl
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A way to control fans based on temperature"
 arch=("x86_64")
 url="https://github.com/wiiznokes/LibreFanControl"
 license=('AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('glibc' 'freetype2' 'libxi' 'gcc-libs' 'libx11' 'libxrender' 'alsa-lib' 'zlib' 'libxtst' 'bash' 'libglvnd' 'fontconfig' 'java-runtime' 'libxext' 'i2c-tools' 'aspnet-runtime')
-makedepends=('gendesk')
-source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}.tar.gz")
+depends=(
+    'freetype2'
+    'libxi'
+    'libx11'
+    'libxrender'
+    'alsa-lib'
+    'libxtst'
+    'libglvnd'
+    'fontconfig'
+    'java-runtime'
+    'libxext'
+    'i2c-tools'
+    'aspnet-runtime'
+)
+makedepends=(
+    'gendesk'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}.tar.gz"
+)
 sha256sums=('23704f323b17d0f8d791667edc6fa4cf3807681fd44250deb5a2b1f768b98fc7')
 build() {
     gendesk -q -f -n --categories "System;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
