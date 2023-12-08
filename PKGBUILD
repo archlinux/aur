@@ -6,13 +6,13 @@
 _remotename=kdeconnect-kde
 _pkgname=kdeconnect
 pkgname=$_pkgname-git
-pkgver=24.01.75.r1.g5db4263
+pkgver=24.01.80.r13.g984d5a9
 pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 arch=(x86_64)
 url='https://community.kde.org/KDEConnect'
 license=(GPL2)
-depends=(kcmutils5 libfakekey qca-qt5 kpeoplevcard pulseaudio-qt qqc2-desktop-style5 kirigami-addons5 modemmanager-qt5)
+depends=(kcmutils5 libfakekey qca-qt5 kpeoplevcard pulseaudio-qt qqc2-desktop-style5 kirigami-addons5 modemmanager-qt5 qt5-connectivity)
 makedepends=(git extra-cmake-modules kdoctools5 wayland-protocols)
 optdepends=('sshfs: remote filesystem browser' 'python-nautilus: Nautilus integration' 'qt5-tools: for some runcommand plugin actions')
 conflicts=($_pkgname)
