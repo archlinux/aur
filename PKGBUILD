@@ -82,17 +82,17 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/admin2Codes.txt')
 sha256sums=('0b9347e3a9019a6ca95c68d6d05e68657f24e7de81d1d690e6a61e81c5c3798d'
             '42792b6b7c5461385395907af9bf724e02c6622603a741e86c73b1204a5ad973'
-            '08df269485ebea360dc1156409d148c959ba28040017cd02be2606c5d28be5b0'
+            'ed91a977c236e4ceccea210305e4bb77464b75539063b411bd1ab90115766f4c'
             'd20455349cdb9409adb42cdbde48c30a176d2a5337ad148c6d2227ecc523c88a'
             '01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e'
             '2f976d11207fd23a1479a6500aa8c4ff60919be2c7d8f1ee6b732f4083202301'
             '89819defe1108056f1bf876a6e0c1d6ecc10382a931fb832fccc132eaeaece1b'
             'cc405c774e34cd161f00ccd882e66c2d2ce28405964bf62472ebc3f59d642060'
             'd38cdaa031f741998f2d31504381bce4db1a8771c774a2c2bac547d7d2b3c70b'
-            'ca9283d3ca18c96582b4d345f94888e232894065bb27a8af97b6194b3c1480bd'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            '70b9d3859031b289ff6a6c5065357dc92255308eb5b532b5a4ae1ab72cf59fbc'
+            '861a0bc43d7bc51c194a672fd2b8a06ce9327f1d6c55a8f821771ded8b7c081b'
+            '2b6c314c1f5ff90a5626fc3959dcc97e768f78b7a01e9db49dd1d2fe6eb6ae00'
+            'fe94632ca33416a0422687fd5874a74491a0df37bce419d2a410512f33b5f4af')
 
 backup=("etc/immich.conf")
 options=("!strip")
