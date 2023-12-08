@@ -1,6 +1,6 @@
 pkgbase = chromium-unstable-bin
 	pkgdesc = The Chromium web browser built with the open source Clang compiler, LLD linker and Widevine (Unstable Channel)
-	pkgver = 121.0.6122.0
+	pkgver = 121.0.6159.0
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = chromium-unstable.install
@@ -24,9 +24,9 @@ pkgbase = chromium-unstable-bin
 	conflicts = chromium-unstable-avx2-bin
 	options = !emptydirs
 	options = !strip
-	source = https://github.com/RobRich999/Chromium_Clang/releases/download/v121.0.6122.0-r1223324-linux64-deb-avx/chromium-browser-unstable_121.0.6122.0-1_amd64.deb
+	source = https://github.com/RobRich999/Chromium_Clang/releases/download/v121.0.6159.0-r1231436-linux64-deb-avx/chromium-browser-unstable_121.0.6159.0-1_amd64.deb
 	source = chromium-unstable.sh
-	sha1sums = d959e7c9c87a6f16bdd1e3cdb2addcd5cf1986a7
+	sha1sums = 1b64c25749b113f6ea1f924ae3294f12058912ec
 	sha1sums = 110f8db7e3809d0be8b6aadd36b805016b657c40
 
 pkgname = chromium-unstable-bin
