@@ -1,0 +1,21 @@
+pkgbase = teleport-connect
+	pkgdesc = Teleport Connect
+	pkgver = 14.2.2
+	pkgrel = 1
+	url = https://goteleport.com
+	arch = x86_64
+	license = Apache
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux
+	depends = libsecret
+	optdepends = libappindicator-gtk3
+	source = teleport-connect-14.2.2.deb::https://cdn.teleport.dev/teleport-connect_14.2.2_amd64.deb
+	sha256sums = 5fc2aa1eed45d1eced787af06c7b7d64e8a058c696882baa4c9950dc37fb2ede
+
+pkgname = teleport-connect
