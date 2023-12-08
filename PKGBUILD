@@ -2,9 +2,9 @@
 # Contributor: Chilledheart <hukeyue@hotmail.com>
 
 pkgname=yass-proxy-cli
-pkgver=1.4.11
+pkgver=1.5.3
 pkgrel=1
-_pkgver=1.4.11
+_pkgver=1.5.3
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy commandline"
 arch=(x86_64)
@@ -16,7 +16,7 @@ checkdepends=(curl)
 provides=(yass-proxy-cli)
 conflicts=(yass-proxy-cli-git)
 source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.gz")
-sha256sums=('fc55336bd46ebc15b6d73dbd949916e9b4c1d6ae6c068ef956fe4ec7d3746b4b')
+sha256sums=('512a2de63b5f998219c09c36fb82700d85bc3839fe52f62b10dfe63c11dcfa13')
 
 prepare() {
   SRC_DIR="${srcdir}/yass-${_pkgver}"
