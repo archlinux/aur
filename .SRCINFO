@@ -1,0 +1,19 @@
+pkgbase = ruby-r18n-core
+	pkgdesc = I18n tool to translate your Ruby application
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://github.com/r18n/r18n-core
+	arch = any
+	license = LGPL3
+	checkdepends = ruby-activesupport
+	checkdepends = ruby-kramdown
+	checkdepends = ruby-pry-byebug
+	checkdepends = ruby-redcloth
+	checkdepends = ruby-rspec
+	checkdepends = ruby-simplecov
+	depends = ruby
+	options = !emptydirs
+	source = ruby-r18n-core-5.0.1.tar.gz::https://github.com/r18n/r18n-core/archive/5.0.1.tar.gz
+	sha512sums = fa7bf82c3c6e89fe1e43122ff0c115a45faf517ecb5d23eb4341f647041157af4a6f1d6d171e21ea7baa18ffc95d8d60b496139581e46a37914aa85d236640c2
+
+pkgname = ruby-r18n-core
