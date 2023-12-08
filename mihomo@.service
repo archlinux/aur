@@ -1,13 +1,14 @@
 [Unit]
-Description=Clash-Meta Daemon, Another Clash Kernel.
+Description=Mihomo Kernel by MetaCubeX.
 After=network.target NetworkManager.service systemd-networkd.service iwd.service
 
 [Service]
 Type=exec
+User=%i
 CapabilityBoundingSet=cap_net_admin
 AmbientCapabilities=cap_net_admin
 Restart=on-abort
-ExecStart=/usr/bin/clash-meta -d /etc/clash-meta
+ExecStart=/usr/bin/mihomo
 
 [Install]
 WantedBy=multi-user.target

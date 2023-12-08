@@ -1,0 +1,12 @@
+post_install(){
+    post_upgrade
+}
+post_upgrade(){
+    cat << EOF
+    This is Mihomo Kernel by MetaCubeX, formerly known as Clash.Meta.
+    You can find the manual at https://wiki.metacubex.one/
+    Home directory mihomo.service at /etc/mihomo
+    User home directory ~/.config/mihomo by default
+EOF
+
+}
