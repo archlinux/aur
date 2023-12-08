@@ -1,19 +1,19 @@
 pkgbase = snsdeck
 	pkgdesc = SNS Viewer like TweetDeck
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/meganii/snsdeck
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	makedepends = npm>=9.6.7
-	makedepends = nodejs>=18.17.1
-	depends = bash
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
 	depends = electron26
 	conflicts = snsdeck
-	source = snsdeck-0.0.3.zip::https://github.com/meganii/snsdeck/archive/refs/tags/v0.0.3.zip
+	source = snsdeck-0.0.3::git+https://github.com/meganii/snsdeck.git#tag=v0.0.3
 	source = snsdeck.sh
-	sha256sums = b780dee61d93ddd2e1d7a0ca061586323f82891b55e25db6b85de6cd8614447b
-	sha256sums = 70dd74465183fb0f84466db93b8678362caf0aced37b3ba2c6abfd385ee145de
+	sha256sums = SKIP
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = snsdeck
