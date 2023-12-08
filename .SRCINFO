@@ -1,11 +1,11 @@
 pkgbase = plasma5-applets-panon
 	pkgdesc = A Different Audio Spectrum Analyzer for KDE Plasma
 	pkgver = 0.4.6
-	pkgrel = 3
-	url = http://github.com/rbn42/panon
+	pkgrel = 4
+	url = https://github.com/rbn42/panon
 	arch = any
-	license = GPL3
-	license = DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE Version 2
+	license = GPL-3.0-or-later
+	license = WTFPL
 	makedepends = kpackage5
 	makedepends = cmake
 	depends = plasma-workspace

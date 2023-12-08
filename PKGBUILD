@@ -6,11 +6,11 @@
 _basename=panon
 pkgname=plasma5-applets-$_basename
 pkgver=0.4.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A Different Audio Spectrum Analyzer for KDE Plasma"
 arch=('any')
-url="http://github.com/rbn42/panon"
-license=('GPL3' 'DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE Version 2')
+url="https://github.com/rbn42/panon"
+license=('GPL-3.0-or-later' 'WTFPL')
 depends=(
 	'plasma-workspace'
 	'python-docopt'
