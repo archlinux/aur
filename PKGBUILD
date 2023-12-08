@@ -2,7 +2,7 @@
 # Contributor: Integral <luckys68@126.com>
 
 pkgname=linuxqq
-pkgver=3.2.3_19189
+pkgver=3.2.3_19480
 pkgrel=1
 epoch=2
 pkgdesc='New Linux QQ based on Electron'
@@ -12,14 +12,14 @@ license=('custom')
 conflicts=('linuxqq-nt-bwrap')
 depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core' 'libvips' 'openjpeg2')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
-source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/06d558c3/${pkgname}_${pkgver//_/-}_amd64.deb")
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/06d558c3/${pkgname}_${pkgver//_/-}_arm64.deb")
-source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/06d558c3/${pkgname}_${pkgver//_/-}_loong64.deb")
+source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/683f4917/${pkgname}_${pkgver//_/-}_amd64.deb")
+source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/683f4917/${pkgname}_${pkgver//_/-}_arm64.deb")
+source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/683f4917/${pkgname}_${pkgver//_/-}_loong64.deb")
 source=("linuxqq.sh")
 sha512sums=('8c92a5dcc2651a4ffb73425abbd8a567c4f043ec5b0614505273511260560a25ce8db30c6848977378921d860dc0a73eca083299706a585461587a48949e175c')
-sha512sums_x86_64=('5cc9477034510739623eb2288d1e35e4fcb4396c22e70d6adada879f4053d0684fc8a84e33f24a49ffb414ca3658ccb1cd2992e1814411aa60f14de4d0c18559')
-sha512sums_aarch64=('8d8e8b70ecb9e1092fd6734b752e632f6a20ecde1060f3b89abf5c3ab819598f79ad4092c5e76299b80e35c6625848dbc67f2bdddd8612114ff7f343f83ea1ea')
-sha512sums_loong64=('ae7b11374efd02ba290cc19b00b07a98200da6034dc2e34188e63c2132d76dfa986f601825a713263194691f2b44600194dd7ebd80cf3e4fcf7095868217af61')
+sha512sums_x86_64=('69aff4db3f66e2456eddf19f970eca4e9a78092c36668a29cd5f09c45b828f3c1bbe368ea5d172bea65a1c9e62388144ec6b2c4854304f40693f35fb8f471c39')
+sha512sums_aarch64=('1d152d04f426abe1de2d17a09188f8732e0fd3184d03d327b492c8789e09754e56037faa3da39190fb65020949dc46d0ec88cf238688d8076ed542cf3d79517c')
+sha512sums_loong64=('345bc9b15e0e1b23886b0a2db3a278ebc6d202567fd5cc09967681c0a1500c592291a17227f92124cbfdeadf3fa9a7861f381f3cc3dcfc29afc6c1330bb37a4f')
 
 package() {
 	echo "  -> Extracting the data.tar.xz..."
