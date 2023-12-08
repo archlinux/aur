@@ -1,5 +1,5 @@
 pkgbase = nspr-hg
-	pkgdesc = Netscape Portable Runtime (latest Mercurial version)
+	pkgdesc = Netscape Portable Runtime
 	pkgver = 4.35.r4.g3e25d69ba6b2
 	pkgrel = 1
 	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR
