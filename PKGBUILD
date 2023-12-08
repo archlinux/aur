@@ -2,8 +2,8 @@
 
 pkgbase=xbydriver-appimage
 pkgname=(xbydriver-{bin,appimage})
-pkgver=3.12.2
-pkgrel=2
+pkgver=3.12.3
+pkgrel=1
 pkgdesc="阿里云盘小白羊版 v3 修复版"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gaozhangmin/aliyunpan"
@@ -13,7 +13,7 @@ conflicts=(${pkgname})
 replaces=(aliyunpan-liupan1890
     aliyunpan-odomu)
 depends=()
-makedepends=()
+makedepends=(libarchive)
 backup=()
 options=(!strip)
 install=
@@ -21,10 +21,10 @@ source_x86_64=("${pkgbase}-${pkgver}-x86_64.AppImage::${url}/releases/download/v
     "${pkgbase%-appimage}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-amd64.deb")
 source_aarch64=("${pkgbase}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-arm64.AppImage"
     "${pkgbase%-appimage}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-arm64.deb")
-sha256sums_x86_64=('9935558bcd6f459a1ea53bffcd6e0f9ec5c2192f5b11e2a68af72f1debd0a0ad'
-                   '016cb8ae02993f614061a5195cdbc31fc1255464d19f4c12927d76959523f1e3')
-sha256sums_aarch64=('0644495264ec27862f0c01dd538ed97f1afb82d94678ead927298781d9cab7ce'
-                    '9cb2976b4d803f609ca660eb3ae85ae66e1e2a3464885211f84c1d04093fac25')
+sha256sums_x86_64=('5bfd10ef9adb80c8af52a797164fdc7f1ea85da959e3fb0c13400b9feae1932d'
+                   '44b9d1462ff62b500243d86dceb01767c2d239b907baafda8bbe1abef13ebb63')
+sha256sums_aarch64=('165ae3e22b9cf13f3f97359f77810f03a742b5138b62c74a67b18e84a0ef9e29'
+                    '14188cdbc55495f317ffbfd0f0d6442a6182ecabe797581e961cf1c32432e7ea')
 noextract=(
     ${pkgbase%-appimage}-${pkgver}-x86_64.deb
     ${pkgbase%-appimage}-${pkgver}-aarch64.deb)
