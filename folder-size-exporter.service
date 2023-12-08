@@ -1,0 +1,11 @@
+[Unit]
+Description=Folder size exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/folder-size-exporter
+
+[Install]
+WantedBy=multi-user.target

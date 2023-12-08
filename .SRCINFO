@@ -1,0 +1,15 @@
+pkgbase = prometheus-folder-size-exporter
+	pkgdesc = Folders size exporter written in Rust. This tool exports the defined folders size in an exposed prometheus metrics format.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/denix666/folder-size-exporter
+	arch = x86_64
+	license = MIT
+	source = https://github.com/denix666/folder-size-exporter/releases/download/v0.1.1/folder-size-exporter_linux_x86_64.tar.gz
+	source = config.json
+	source = folder-size-exporter.service
+	sha256sums = 12a088eb140cf3388f72af130c25dc0c9812ccbbe3d4b50c7220a87ad9c76ee5
+	sha256sums = 5691144e8c5d85a30c967275449ae1017a678c63504293eda43fa734a2a76cfe
+	sha256sums = bdc1128bf2183812ea778c84dd20d0c29fcfc72b3fbb579550fe9c8384cc5a7a
+
+pkgname = prometheus-folder-size-exporter
