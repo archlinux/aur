@@ -1,17 +1,27 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=image-ascii-art-tauri-bin
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Image ASCII convertissor made in React converted to desktop app using Tauri"
 arch=('x86_64')
 url="https://im-rises.github.io/image-ascii-art-website/"
-_githuburl="https://github.com/Im-Rises/image-ascii-art-tauri"
+_ghurl="https://github.com/Im-Rises/image-ascii-art-tauri"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('hicolor-icon-theme' 'pango' 'glib2' 'libsoup' 'gdk-pixbuf2' 'gcc-libs' 'webkit2gtk' 'cairo' 'gtk3' 'glibc')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/app-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/Im-Rises/image-ascii-art-tauri/app-v${pkgver}/LICENSE")
+depends=(
+    'hicolor-icon-theme'
+    'pango'
+    'libsoup'
+    'gdk-pixbuf2'
+    'webkit2gtk'
+    'cairo'
+    'gtk3'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/app-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Im-Rises/image-ascii-art-tauri/app-v${pkgver}/LICENSE"
+)
 sha256sums=('489279d8b9207a97a95ab03ce57ecb84e52333b74fce05dbfb5b89128aa4e6b4'
             '4676dff30e55d6b19e92e9bddb71c3cf479ca2c97db69f4080b2687a68e80835')
 build() {
@@ -25,5 +35,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
