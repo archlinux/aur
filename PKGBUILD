@@ -14,7 +14,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=(
     "${_appimage}::https://github.com/NJUPT-SAST-Cpp/SAST-Evento-Desktop/releases/download/${pkgver}/sast-evento_appimage_x86_64.AppImage"
-    "https://raw.githubusercontent.com/NJUPT-SAST-Cpp/SAST-Evento-Desktop/${pkgver}/LICENSE"
+    "LICENSE::https://raw.githubusercontent.com/NJUPT-SAST-Cpp/SAST-Evento-Desktop/${pkgver}/LICENSE"
 )
 noextract=(${_appimage})
 sha256sums_x86_64=('a48e9686a383c4cd04405ae71608494a6dca36cf23108fdb3f12a8c3603c94fa'
