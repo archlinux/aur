@@ -1,18 +1,21 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=go-aliddns-git
-pkgver=r21.dd78d1d
-pkgrel=1
+pkgver=r25.1109de0
+pkgrel=2
 pkgdesc="用 golang 实现 aliddns，同时对 certbot 进行 txt 信息更新提交"
-arch=('any')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/N-O-S-T/go-aliddns"
 license=('unknow')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
-depends=(go)
+depends=()
 optdepends=()
-makedepends=(git)
+makedepends=(git
+    go)
 backup=(etc/go-aliddns/config.yaml)
 options=('!strip')
 #install=${pkgname}.install
