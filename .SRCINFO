@@ -1,13 +1,15 @@
 pkgbase = r-bindr
 	pkgdesc = Parametrized Active Bindings
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=bindr
 	arch = any
 	license = MIT
+	checkdepends = r-testthat
 	depends = r
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/bindr_0.1.1.tar.gz
+	md5sums = cfa02c563196a79bf8bb4db2e66585fd
 	sha256sums = 7c785ca77ceb3ab9282148bcecf64d1857d35f5b800531d49483622fe67505d0
 
 pkgname = r-bindr
