@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-opencolorio
 	pkgdesc = A color management framework for visual effects and animation (mingw-w64)
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = https://opencolorio.org/
 	arch = any
 	license = BSD-3-Clause
@@ -20,9 +20,9 @@ pkgbase = mingw-w64-opencolorio
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = opencolorio-2.3.0.tar.gz::https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v2.3.0.tar.gz
+	source = opencolorio-2.3.1.tar.gz::https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v2.3.1.tar.gz
 	source = ocio-system-monitor-mingw.patch
-	sha256sums = 32b7be676c110d849a77886d8a409159f0367309b2b2f5dae5aa0c38f42b445a
+	sha256sums = 7196e979a0449ce28afd46a78383476f3b8fc1cc1d3a417192be439ede83437b
 	sha256sums = 73697fbd06b3f51cfd0a2df3579fc8579725b2a927edefa736fdb1fb2a361337
 
 pkgname = mingw-w64-opencolorio
