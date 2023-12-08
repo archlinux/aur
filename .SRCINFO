@@ -1,6 +1,6 @@
 pkgbase = python-fastavro
 	pkgdesc = Fast read/write of AVRO files
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/fastavro/fastavro
 	arch = x86_64
@@ -11,11 +11,12 @@ pkgbase = python-fastavro
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = glibc
+	depends = python
 	depends = python-cramjam
 	depends = python-lz4
 	depends = python-snappy
 	depends = python-zstandard
-	source = https://files.pythonhosted.org/packages/source/f/fastavro/fastavro-1.9.0.tar.gz
-	sha256sums = 71aad82b17442dc41223f8351b9f28a60dd877a8e5a7525eaf6342f45f6d23e1
+	source = https://files.pythonhosted.org/packages/source/f/fastavro/fastavro-1.9.1.tar.gz
+	sha256sums = f37011d66de8ba81b26760db0478009a14c08ebfd34269b3390abfd4616b308f
 
 pkgname = python-fastavro
