@@ -1,0 +1,23 @@
+pkgbase = r-crisprbase
+	pkgdesc = Base functions and classes for CRISPR gRNA design
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/crisprBase
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	depends = r-stringr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/crisprBase_1.6.0.tar.gz
+	md5sums = 20cc1254ee7d33a966bb795f09f8be44
+	sha256sums = 8037cf0286dce17086fe7ea488ae085850a363d12a084622fa76c98da9ced9c8
+
+pkgname = r-crisprbase
