@@ -4,8 +4,8 @@
 
 _pkgname='input-overlay'
 pkgname=obs-plugin-${_pkgname}
-pkgver=5.0.3
-pkgrel=2
+pkgver=5.0.4
+pkgrel=1
 groups=('obs-plugins')
 pkgdesc='obs-studio plugin to show keyboard, gamepad and mouse input on stream.'
 arch=("x86_64")
@@ -15,25 +15,20 @@ depends=('obs-studio' 'libxtst' 'libxkbfile')
 makedepends=('git' 'cmake')
 source=(
 	"git+https://github.com/univrsal/${_pkgname}.git#tag=v${pkgver}"
-	"$pkgname-libgamepad::git+https://github.com/univrsal/libgamepad.git"
-	"$pkgname-libuiohook::git+https://github.com/kwhat/libuiohook.git"
-	"https://github.com/univrsal/${_pkgname}/commit/886d0740a366d826e638a988b9b26a9070d1176e.patch")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'e4127eef7a832ab898041ca0b44e8ca363f6026f080d65902af2dd9c82328e29')
+	# Does not work as it is using a commit not part of any branches.
+	#"$pkgname-libuiohook::git+https://github.com/kwhat/libuiohook.git"
+	)
+sha256sums=('SKIP')
 
 _srcdir="${_pkgname}"
 
 prepare() {
 	cd "${_srcdir}"
 	git submodule init
-	git config 'submodule.deps/libgamepad.url' "$srcdir/$pkgname-libgamepad"
-	git config 'submodule.deps/libuiohook.url' "$srcdir/$pkgname-libuiohook"
+	#git config 'submodule.deps/libuiohook.url' "$srcdir/$pkgname-libuiohook"
 	git -c 'protocol.file.allow=always' submodule update
 	
 	sed -i '/set(CMAKE_CXX_FLAGS "-march=native")/d' 'CMakeLists.txt'
-	patch -p1 -i '../886d0740a366d826e638a988b9b26a9070d1176e.patch'
 }
 
 build() {
