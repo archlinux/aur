@@ -1,6 +1,6 @@
 pkgbase = librewolf-extension-return-youtube-dislike-bin
 	pkgdesc = Returns ability to see dislike statistics on youtube (binary release)
-	pkgver = 3.0.0.12
+	pkgver = 3.0.0.13
 	pkgrel = 1
 	url = https://addons.mozilla.org/addon/return-youtube-dislikes
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = librewolf-extension-return-youtube-dislike-bin
 	depends = librewolf
 	provides = librewolf-extension-return-youtube-dislike
 	conflicts = librewolf-extension-return-youtube-dislike
-	noextract = return_youtube_dislikes-3.0.0.12.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/4182960/return_youtube_dislikes-3.0.0.12.xpi
-	sha256sums = 90a3e492f38f6990109af2496f4e08cd28ca5dcb88f386a01c03b680ff4032f1
+	noextract = return_youtube_dislikes-3.0.0.13.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/4203985/return_youtube_dislikes-3.0.0.13.xpi
+	sha256sums = 599b8761489e90633f258ef1b85fafca8ccca2d84a9c2c5fab31c64dd694191d
 
 pkgname = librewolf-extension-return-youtube-dislike-bin
