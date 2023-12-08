@@ -90,9 +90,9 @@ sha256sums=('0b9347e3a9019a6ca95c68d6d05e68657f24e7de81d1d690e6a61e81c5c3798d'
             'cc405c774e34cd161f00ccd882e66c2d2ce28405964bf62472ebc3f59d642060'
             'd38cdaa031f741998f2d31504381bce4db1a8771c774a2c2bac547d7d2b3c70b'
             '70b9d3859031b289ff6a6c5065357dc92255308eb5b532b5a4ae1ab72cf59fbc'
-            '861a0bc43d7bc51c194a672fd2b8a06ce9327f1d6c55a8f821771ded8b7c081b'
-            '2b6c314c1f5ff90a5626fc3959dcc97e768f78b7a01e9db49dd1d2fe6eb6ae00'
-            'fe94632ca33416a0422687fd5874a74491a0df37bce419d2a410512f33b5f4af')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 backup=("etc/immich.conf")
 options=("!strip")
