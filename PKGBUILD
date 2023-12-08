@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=codechecker
-pkgver=6.22.2
+pkgver=6.23.0
 pkgrel=1
 pkgdesc="Analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy"
 arch=(x86_64)
@@ -24,14 +24,10 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "fix-ldflags.patch"
-  # Had to compress the patch due to its size. Submitted issue to fix the issue
-  # to upstream:https://github.com/Ericsson/codechecker/issues/3967 
-  "update-node-dependencies-vue-cli.patch.gz"
 )
 sha256sums=(
-  '38cad940520f092fe57165841111efa945a0c5bf8047581adead52047bf716cd'
+  '5802aad679fcd2b85d30a57c1fbe6a6364d6b584ff2883568a80dd02cefd11b4'
   'e59cb4d96642ccea7c3536e020b3961c1717bc65983424ced48b0ae1b1a3871a'
-  '13e38f3cd2ec4301bfd1206b1c5107feb388f8f87ed39596eb91077a95aae7fa'
 )
 
 _archive="$pkgname-$pkgver"
@@ -39,11 +35,7 @@ _archive="$pkgname-$pkgver"
 prepare() {
   cd "$_archive"
 
-  patch --forward --strip=1 --input="${srcdir}/fix-ldflags.patch"
-
-  cp "${srcdir}/update-node-dependencies-vue-cli.patch.gz" .
-  gunzip update-node-dependencies-vue-cli.patch.gz
-  patch --forward --strip=1 --input=update-node-dependencies-vue-cli.patch
+  patch --forward --strip=1 --input="$srcdir/fix-ldflags.patch"
 }
 
 build() {
