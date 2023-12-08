@@ -5,8 +5,8 @@
 
 pkgname="discord-chat-exporter-cli"
 _apkgname="DiscordChatExporter"
-pkgver=2.42.3
-pkgrel=2
+pkgver=2.42.6
+pkgrel=1
 
 pkgdesc="Exports Discord chat logs to a file"
 url="https://github.com/Tyrrrz/$_apkgname"
@@ -18,14 +18,14 @@ source=(
   "$pkgname"
 )
 b2sums=(
-  36d031776bece2c9d72cd7d64c955158464faca3fac2b5dd422bbcec7c6f34b6da4cf3cf8fa8ce7cfbbf1880c7df68204e42f5eed52479860eff016ae3107e16
+  60f55db525fda28745322e4923e811e1423a1731a7eb71a1eaab79b47f0ba7f9940914c7fbe543e37e830c5926df0b470deb3718315cc9defbdd814945a1db32
   7540fb95f81c1041c87778c590a9438ffb64bf417c3d4d3f1363da5a25898c98f9dcd1209b9237bd595374a33326b7f23043bd6156cc7e14f0bff230ee0f6de6
 )
 
 options=('!strip')
 
-depends=('dotnet-runtime-7.0')
-makedepends=('dotnet-sdk-7.0')
+depends=('dotnet-runtime-8.0')
+makedepends=('dotnet-sdk-8.0')
 
 build() {
   cd "$_apkgname-$pkgver"
@@ -34,6 +34,6 @@ build() {
 
 package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  cd "$_apkgname-$pkgver/$_apkgname.Cli/bin/Release/net7.0/publish"
+  cd "$_apkgname-$pkgver/$_apkgname.Cli/bin/Release/net8.0/publish"
   find . -type f -exec install -Dm644 "{}" "$pkgdir/usr/lib/$pkgname/{}" \;
 }
