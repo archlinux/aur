@@ -1,14 +1,14 @@
 pkgbase = fend
 	pkgdesc = Arbitrary-precision unit-aware calculator
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/printfn/fend
 	arch = x86_64
 	license = MIT
-	makedepends = rust
+	makedepends = cargo
 	makedepends = pandoc
 	depends = gcc-libs
-	source = fend-1.3.2.tar.gz::https://github.com/printfn/fend/archive/refs/tags/v1.3.2.tar.gz
-	sha256sums = 9e49aaaa711dcbdad0fa68fd9c9b3e25a8ab4db57e941d6ec2060d8ae331e05d
+	source = fend-1.3.3.tar.gz::https://github.com/printfn/fend/archive/refs/tags/v1.3.3.tar.gz
+	sha256sums = 90364fab29b51e1c359ff72f8ccfc3e8a3c96bbc8b38d0646c28c489a8071084
 
 pkgname = fend
