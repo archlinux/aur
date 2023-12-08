@@ -3,3 +3,4 @@ d /var/lib/immich/.config 0750 immich immich
 d /var/lib/immich/upload 0750 immich immich
 L /usr/lib/immich/app/server/upload - - - - /var/lib/immich/upload
 Z /var/lib/immich ~0750 immich immich
+Z /var/lib/immich-revgeo ~0750 immich immich
