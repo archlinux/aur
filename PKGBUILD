@@ -1,7 +1,7 @@
 # Maintainer: AnnikaV9 <carrot.moncher@gmail.com>
 
 pkgname=hcclient-bin
-pkgver=1.17.3
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A terminal client for hack.chat"
 arch=("x86_64")
@@ -11,7 +11,7 @@ provides=("hcclient")
 conflicts=("hcclient")
 depends=()
 source=("hcclient-${pkgver}-arch.tar.gz::${url}/releases/download/v$pkgver/hcclient-${pkgver}-arch.tar.gz")
-sha256sums=('f343d1f878b61f49473d68e0fed91f35aee230cccd4ba9f483f2715796622cef')
+sha256sums=('f3f11719322ebf02e50ad87830a7e7a8ac1473aa6eb6b88d2f5d45cb7f708266')
 
 package() {
   install -Dm755 "${srcdir}/hcclient-${pkgver}" "${pkgdir}/usr/bin/hcclient"
