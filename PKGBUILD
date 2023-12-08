@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=598a7f9c95973f661a537ac895c06c433879319f
+_mozc_commit=6175674c6578f450028587fbcd4174350227a8f9
 _branch=fcitx
 # Ut Dictionary
 _utdicdate=20230115
@@ -30,7 +30,7 @@ _sudachidict_date=20230927
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5291.102
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -49,8 +49,6 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING"
         "0001-Zombie-Process-Prevention.patch"
         "dicts.txt"
-        "revert.patch::https://github.com/fcitx/mozc/commit/c48b5691843182fd7f1207981be2ba21f9989a76.patch"
-        "revert2.patch::https://github.com/fcitx/mozc/commit/4b0836af583b78e88f12f66da65754f064524a1b.patch"
         )
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
@@ -68,8 +66,6 @@ sha512sums=('SKIP'
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
             '4dc9fc2d95e23729381bfe12fe6544ec3ea5729114e6d0539af93f5cd1e5a0a4d3196bfcf07c67aec0b19a25b92bf3c65c5e3805415bf81b5d13f537fa4f2c0d'
             'a4dbdd4a31f5985846b40291ddeed067453a3d89ac6de370cd049eef41f9340bcae4239fae98ea1e801a643bb371b0f5a6bcfbd985b2d1162efc1aed0540dbe6'
-            '9a7fbec1974c8d2666951a9c423e9844292c2b82d5eeb5d8997399713caa182c0b9678885e3f17f72f63a2c4136a0263d0deb136c002e8d7d041c1d29c2163e4'
-            '5f61c30c875a29464a0066737564ac8dfca207ab355b1431e33ef811dbc4fbc188ac285cda1273f413fa432a5e44cf4026a7fef46bc67355f3a0213b2c2d684e'
             '3b1354b8e6b25ea8024bb91098828855b558c0ee9086800b2d44ef6dac023949432418c47d943d59c6ce315c0d292ef784423cd6046dfb906d4afc4c14d11dd3'
             'ef2dd0a27b09ca3a68aa7a3ad45b3720d57efd0505e631fa643e7aea98455c1114760f9aa5e91701bb5c118ae3074719709eeed55010b305d861464ad1b51c3a')
 
@@ -105,10 +101,6 @@ prepare() {
   cd "$srcdir/mozc" || exit
   patch -p1 -i ${srcdir}/0001-Zombie-Process-Prevention.patch
 
-  # https://github.com/google/mozc/issues/849
-  patch -R -p1 -i ${srcdir}/revert.patch
-  patch -R -p1 -i ${srcdir}/revert2.patch
-
   # mozc date and version
   #_date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
   #sed -i -e "/2.25.4150.102.1/d"  -e "s/2.26.4220.106.1/${pkgver}.${pkgrel}/" -e "s/2021-01-16/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
@@ -135,7 +127,7 @@ build() {
   # すだちを優先
   msg '2. Run the ruby scripts as in original sudachi.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   cd sudachi || exit
-  ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
+#  ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
   cd ..
 
   # added dicts.txt
@@ -148,14 +140,14 @@ build() {
 
   # ut-dictionarys
   msg '3. Run the ruby scripts as in original utdict.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-  ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
+#  ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
 
   msg '4. Run the ruby scripts as uniqword.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-  ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt  2> duplicated.txt
+#  ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt  2> duplicated.txt
   #cat ut-dict.txt >> finish-dict.txt
 
   msg '5. Finally add UT dictionary to mozc source'
-  cat finish-dict.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
+  #cat finish-dict.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
   sync
 
   # Fix compatibility with google-glog 0.3.3 (symbol conflict)
@@ -173,7 +165,9 @@ build() {
 #  python build_mozc.py build ${TARGETS} -c ${_bldtype}
 
   # ibus emacs_helper mozc_server fcitx5
-  bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" --copt -fPIC
+  BAZEL_COPTS=$(echo $CFLAGS | xargs -n1 echo "--copt")
+  BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
+  bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
   bazel shutdown
 
   # mozc fcitx5 version
