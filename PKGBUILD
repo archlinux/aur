@@ -3,13 +3,13 @@
 _name=adminapi
 _srcname=serveradmin
 pkgname="python-${_name}-git"
-pkgver=2.0.0.r2282.c1a8e00
+pkgver=4.11.0.r2853.f060aa7c
 pkgrel=1
 pkgdesc='Adminapi is a python module which can be used to talk to the open source serveradmin project by Innogames'
 arch=('any')
 url="https://github.com/InnoGames/${_srcname}"
-makedepends=('python-setuptools' 'python2-setuptools')
-depends=('python' 'python-ipaddress' 'python-netaddr')
+makedepends=('python-setuptools')
+depends=('python' 'python-netaddr' 'python-paramiko')
 provides=('python-adminapi')
 conflicts=('python-adminapi')
 license=('MIT')
@@ -31,7 +31,7 @@ pkgver() {
   )
 }
 
-package_python-adminapi-git() {
+package() {
   cd "${srcdir}/${_name}"
   patch < ../adminapi-only.patch
   python setup.py install --root="${pkgdir}" --optimize=1
