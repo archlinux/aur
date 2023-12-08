@@ -1,0 +1,8 @@
+post_install() {
+  # Enable socket by default
+  systemctl --global enable gcr-ssh-agent.socket
+}
+
+pre_remove() {
+  systemctl --global disable gcr-ssh-agent.socket
+}
