@@ -1,21 +1,18 @@
 pkgbase = habit-tracker-bin
 	pkgdesc = Cross platform habit tracker
 	pkgver = 0.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/accountability-tracker/habit_tracker
 	arch = x86_64
-	license = unknown
+	license = custom
 	makedepends = gendesk
-	depends = glibc
 	depends = pango
-	depends = glib2
 	depends = libepoxy
 	depends = gdk-pixbuf2
 	depends = gtk3
 	depends = at-spi2-core
 	depends = cairo
 	depends = harfbuzz
-	depends = gcc-libs
 	provides = habit-tracker=0.0.5
 	conflicts = habit-tracker
 	source = habit-tracker-0.0.5.zip::https://github.com/accountability-tracker/habit_tracker/releases/download/v0.0.5/HabitTracker-v0.0.5-linux.zip
