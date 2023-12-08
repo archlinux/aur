@@ -1,7 +1,7 @@
 pkgbase = deadboltplusplus
 	pkgdesc = An open source encryption app that is simple to use.
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/maxturmult/deadboltplusplus
 	arch = any
 	license = MIT
@@ -9,14 +9,13 @@ pkgbase = deadboltplusplus
 	makedepends = nodejs
 	makedepends = gendesk
 	makedepends = git
-	depends = bash
 	depends = electron19
 	conflicts = deadboltplusplus
 	conflicts = deadbolt
 	conflicts = deadbolt++
-	source = deadboltplusplus-1.1.0.tar.gz::https://github.com/maxturmult/deadboltplusplus/archive/refs/tags/v1.1.0.tar.gz
+	source = deadboltplusplus-1.1.0::git+https://github.com/maxturmult/deadboltplusplus.git#tag=v1.1.0
 	source = deadboltplusplus.sh
-	sha256sums = 059dd6f1ef74b0bc175f60db1ac6ca615391a49289043a918696107ab4153eba
-	sha256sums = 970844900631a1eb32dcb5cb1b4f623dff37fa3df94fb3c4073038c7baf9f927
+	sha256sums = SKIP
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = deadboltplusplus
