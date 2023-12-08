@@ -1,6 +1,6 @@
 pkgbase = r-curl
 	pkgdesc = A Modern and Flexible Web Client for R
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=curl
 	arch = x86_64
@@ -10,13 +10,14 @@ pkgbase = r-curl
 	optdepends = r-httpuv
 	optdepends = r-jsonlite
 	optdepends = r-knitr
+	optdepends = r-later
 	optdepends = r-magrittr
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-webutils
-	source = https://cran.r-project.org/src/contrib/curl_5.1.0.tar.gz
-	md5sums = 8f4d84ce6ffa8d08611c66ae0d6238bc
-	sha256sums = 57218da84b85bd01ce7daa4bca3e271eda1bf688e0cdb211c397ccb272ecba97
+	source = https://cran.r-project.org/src/contrib/curl_5.2.0.tar.gz
+	md5sums = f016784d6247ffe293187ac9eaa81ebe
+	sha256sums = bfdba4115f9fc6bc92e5287cee38ae33317c5996372c0aa0a9bc4d375b6bf489
 
 pkgname = r-curl
