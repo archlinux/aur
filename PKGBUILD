@@ -2,7 +2,7 @@
 pkgname="filius"
 pkgver="2.5.1"
 _pkgver="${pkgver}"
-pkgrel=0
+pkgrel=1
 pkgdesc="Network simulation program"
 arch=('any')
 url="http://www.lernsoftware-filius.de"
@@ -22,7 +22,10 @@ package() {
   # mv lib $pkgdir/usr/lib/filius
   cp -r Changelog.md  config  Einfuehrung_Filius.pdf  filius.jar  filius.sh  GPLv2.txt  GPLv3.txt  hilfe  img  Introduction_Filius.pdf  lib  tmpl $pkgdir/usr/share/filius/
   chmod +x $pkgdir/usr/share/filius/filius.sh
-  ln -s /usr/share/filius/filius.sh $pkgdir/usr/bin/filius
+  echo '#!/bin/sh' > $pkgdir/usr/bin/filius
+  echo '[ -n "${WAYLAND_DISPLAY}" ] && export _JAVA_AWT_WM_NONREPARENTING=1' >> $pkgdir/usr/bin/filius
+  echo '/usr/share/filius/filius.sh $*' >> $pkgdir/usr/bin/filius
+  chmod +x $pkgdir/usr/bin/filius
 
   base64 -d > $pkgdir/usr/share/pixmaps/filius32.png <<EOF
 iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9
