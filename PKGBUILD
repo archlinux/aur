@@ -1,13 +1,14 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-midi-mg
-pkgver=2.3.1
+pkgver=2.3.0
 pkgrel=1
+epoch=1
 pkgdesc="Allows MIDI devices to interact with OBS Studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-midi-mg.1570/"
 license=("GPL2")
-depends=("obs-studio>=28" "jack")
+depends=("obs-studio>=28" "glibc" "jack")
 makedepends=("cmake" "git")
 options=('debug')
 source=(
@@ -27,19 +28,16 @@ prepare() {
 }
 
 build() {
-  cd $pkgname
-
-  cmake -B build \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  cmake -B build -S $pkgname \
+  -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
   -DQT_VERSION=6
 
-  make -C build
+  cmake --build build
 }
 
 package() {
-  cd $pkgname
-  make -C build DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
