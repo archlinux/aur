@@ -1,0 +1,17 @@
+pkgbase = go-aliddns-git
+	pkgdesc = 用 golang 实现 aliddns，同时对 certbot 进行 txt 信息更新提交
+	pkgver = r21.dd78d1d
+	pkgrel = 1
+	url = https://github.com/N-O-S-T/go-aliddns
+	arch = any
+	license = unknow
+	makedepends = git
+	depends = go
+	provides = go-aliddns
+	conflicts = go-aliddns
+	options = !strip
+	backup = etc/go-aliddns/config.yaml
+	source = go-aliddns-git::git+https://github.com/N-O-S-T/go-aliddns.git
+	sha256sums = SKIP
+
+pkgname = go-aliddns-git
