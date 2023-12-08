@@ -1,9 +1,11 @@
 pkgbase = wchisp
 	pkgdesc = WCH ISP Tool in Rust
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/ch32-rs/wchisp
-	arch = any
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
 	license = GPL-2.0
 	makedepends = git
 	makedepends = rust

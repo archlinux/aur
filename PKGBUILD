@@ -2,9 +2,11 @@
 
 pkgname=wchisp
 pkgver=0.2.2
-pkgrel=1
+pkgrel=4
 pkgdesc="WCH ISP Tool in Rust"
-arch=('any')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/ch32-rs/wchisp"
 license=('GPL-2.0')
 provides=(${pkgname})
