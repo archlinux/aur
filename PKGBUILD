@@ -16,7 +16,7 @@ source=(
   aspe
   Makefile
   LICENSE)
-md5sums=(
+sha256sums=(
   64c1f7a1d95f5b55ea8657fcda94992778f3e87f2a7ffb711cfe7670305db0a2
   f4b3a84d382cf5e2854aceed47ceac8dd8f8cea8f6b5628fb96a1843aeccd3f3
   8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903)
