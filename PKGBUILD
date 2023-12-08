@@ -2,7 +2,7 @@
 # Previous maintainer: Derson5
 pkgname=jdownloader2
 pkgver=latest
-pkgrel=18
+pkgrel=19
 pkgdesc='Download manager, written in Java, for one-click hosting sites like Rapidshare and MEGA. Uses its own updater.'
 arch=('any')
 conflicts=()
