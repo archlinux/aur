@@ -6,7 +6,7 @@
 _pkgbase=python-magic
 pkgname="${_pkgbase}-git"
 pkgver=0.4.27.r22.g54d86fd
-pkgrel=2
+pkgrel=3
 _stablepkg_epoch=1
 pkgdesc="File type identification library; compatible with official file/libmagic Python wrapper (git)"
 arch=('any')
@@ -41,10 +41,12 @@ pkgver() {
 
     # Format git-based version for pkgver
     # Expected format: e.g. 1.5.0rc2.r521.g99982a1c
+    # Or in case of 'post': 1.5.0.post1.r521.g99982a1c
     echo "${_gitversion}" | sed \
-        -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
-        -e 's|\([0-9]\+-g\)|r\1|' \
-        -e 's|-|.|g'
+        -e 's;^\([0-9][0-9.]*\)[-_.]\([a-zA-Z]\+\);\1\2;' \
+        -e 's;\([0-9]\+-g\);r\1;' \
+        -e 's;-;.;g' \
+        -e 's;\(post.*\);\.\1;'
 }
 
 build() {
