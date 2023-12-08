@@ -1,6 +1,6 @@
 pkgbase = compiano-git
 	pkgdesc = a midi controllable software musical instrument
-	pkgver = r156.2b9895f
+	pkgver = r219.2097154
 	pkgrel = 1
 	url = https://gitlab.gnome.org/hub/compiano.git
 	arch = x86_64
@@ -13,9 +13,12 @@ pkgbase = compiano-git
 	depends = libadwaita
 	depends = alsa-lib
 	depends = libgit2
+	depends = libpanel
 	provides = compiano
 	conflicts = compiano
 	source = git+https://gitlab.gnome.org/hub/compiano.git
+	source = git+https://gitlab.gnome.org/hub/libpanel-rs.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = compiano-git
