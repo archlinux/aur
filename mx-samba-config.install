@@ -1,0 +1,65 @@
+# Colored makepkg-like functions
+msg_blue() {
+  printf "${BLUE}==>${BOLD} $1${ALL_OFF}\n"
+}
+
+note1() {
+  printf "${BLUE}==>${YELLOW} NOTE:${BOLD} $1${ALL_OFF}\n"
+}
+
+note2() {
+  printf "${BLUE}==>      ${BOLD} $1${ALL_OFF}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="${ALL_OFF}$(tput bold)"
+BLACK="${BOLD}$(tput setaf 0)"
+RED="${BOLD}$(tput setaf 1)"
+GREEN="${BOLD}$(tput setaf 2)"
+YELLOW="${BOLD}$(tput setaf 3)"
+BLUE="${BOLD}$(tput setaf 4)"
+MAGENTA="${BOLD}$(tput setaf 5)"
+CYAN="${BOLD}$(tput setaf 6)"
+WHITE="${BOLD}$(tput setaf 7)"
+
+post_install() {
+  systemctl is-active smb >/dev/null || systemctl enable smb
+  systemctl is-active nmb >/dev/null || systemctl enable nmb
+  systemctl is-active avahi-daemon >/dev/null || systemctl enable avahi-daemon
+
+  chgrp -R sambashare var/lib/samba/usershares
+
+  echo
+  note1 "The group 'sambashare' has been created,"
+  note2 "and is the group owner of the folder:"
+  note2 "    /var/lib/samba/usershares"
+  note2
+  note1 "To add users to 'sambashare':"
+  note2 "    usermod -a -G sambashare [username]"
+  echo
+}
+
+post_remove() {
+  ! systemctl is-enabled smb >/dev/null || systemctl disable smb
+  ! systemctl is-enabled nmb >/dev/null || systemctl disable nmb
+
+  if [ -e var/lib/samba/usershares ] ; then
+    chgrp -R root var/lib/samba/usershares
+  fi
+
+  echo
+  note1 "The group 'sambashare' was created on install."
+  note2 "Do not forget to check file ownership"
+  note2 "before removing the group with the command:"
+  note2 "    groupdel sambashare"
+  note2
+  note1 "The following folder was created on install."
+  note2 "    /var/lib/samba/usershares"
+  note2 "Do not forget to check content ownership"
+  note2 "before removing the folder."
+  echo
+}
+
+post_upgrade() {
+  post_install
+}
