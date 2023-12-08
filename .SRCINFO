@@ -1,7 +1,7 @@
 pkgbase = linux-sched-ext-git
 	pkgdesc = Linux Kernel based on the sched_ext branch
 	pkgver = 6.6.0.r1216273.gbac7dab4f8f5
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -25,11 +25,9 @@ pkgbase = linux-sched-ext-git
 	source = git+https://github.com/sched-ext/sched_ext.git#branch=sched_ext
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/6.5/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = config
-	source = https://mirror.cachyos.org/bpf-sched/scx_nest
 	b2sums = SKIP
-	b2sums = 0ec7df7055b9f13574b7a2ff4d36f4046dd2e9f9d6462ccc35e12ab3ca36fad90d0e9bd7ec2a8676bdbaf9b1d851caa0dfb2e5f9aff086c536fabb46221544f5
+	b2sums = 8937fc4001143088b4c8dbd775b7d6d04163c8cdb43b3b3cbefdce1ab522f6912811c6c720d84087254c4ef6388dfa72efba304d6189d57cffd657eaa3f5c822
 	b2sums = 2244efe07fa60e8259d4167b0d3725ea06eea584e70877c7bb4df2c21772bdcf6bd18c8b4380c7259e226243f1b6486e7ba36309399756172b6b071d07443d16
-	b2sums = be00a0464f3ddbe107d291a785930ff3cb82218482871c4fdb6673bcca59b08a0d68a5675e99bd9d588828a2389d72a8a6b40f15c865851f31209df422fd8521
 
 pkgname = linux-sched-ext-git
 	pkgdesc = The Linux Kernel based on the sched_ext branch kernel and modules
@@ -39,6 +37,7 @@ pkgname = linux-sched-ext-git
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	optdepends = scx: Example Scheduler and tools for sched-ext
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	provides = KSMBD-MODULE
@@ -47,9 +46,3 @@ pkgname = linux-sched-ext-git-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Kernel based on the sched_ext branch kernel
 	depends = linux-sched-ext-git
 	depends = pahole
-
-pkgname = linux-sched-ext-git-scheduler
-	pkgdesc = Schedulers for Linux Kernel based on the sched_ext branch kernel
-	depends = libbpf
-	depends = bpf
-	depends = clang

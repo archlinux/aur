@@ -51,7 +51,7 @@ _disable_debug=
 pkgbase=linux-sched-ext-git
 pkgver=6.6.0.r1216273.gbac7dab4f8f5
 _srcname=sched_ext
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux Kernel based on the sched_ext branch'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -66,7 +66,6 @@ source=("git+https://github.com/sched-ext/sched_ext.git#branch=sched_ext"
         "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config'
-        "https://mirror.cachyos.org/bpf-sched/scx_nest"
         )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -204,13 +203,6 @@ build() {
   cd $_srcname
 
   make all
-
-  # Build the sched_ext schedulers
-  cd $srcdir/sched_ext/tools/sched_ext
-  unset CFLAGS
-  unset CXXFLAGS
-  make CC=clang LLVM=1 -j
-
 }
 
 _package() {
@@ -218,7 +210,8 @@ _package() {
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
-                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
+                'scx: Example Scheduler and tools for sched-ext')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
 
   cd $_srcname
@@ -324,28 +317,7 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-scheduler() {
-   pkgdesc="Schedulers for $pkgdesc kernel"
-   depends=('libbpf' 'bpf' 'clang')
-
-
-   cd $srcdir/sched_ext/tools/sched_ext/build/bin
-   
-   install -Dm755 scx_central "$pkgdir"/usr/bin/scx_central
-   install -Dm755 scx_flatcg "$pkgdir"/usr/bin/scx_flatcg
-   install -Dm755 scx_pair "$pkgdir"/usr/bin/scx_pair
-   install -Dm755 scx_qmap "$pkgdir"/usr/bin/scx_qmap
-   install -Dm755 scx_rusty "$pkgdir"/usr/bin/scx_rusty
-   install -Dm755 scx_simple "$pkgdir"/usr/bin/scx_simple
-   install -Dm755 scx_userland "$pkgdir"/usr/bin/scx_userland
-   ## Also install scx_nest since it is not upstreamed now
-   cd $srcdir
-   install -Dm755 scx_nest "$pkgdir"/usr/bin/scx_nest
-   
-
-}
-
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-scheduler")
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
@@ -354,6 +326,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('SKIP'
-        '0ec7df7055b9f13574b7a2ff4d36f4046dd2e9f9d6462ccc35e12ab3ca36fad90d0e9bd7ec2a8676bdbaf9b1d851caa0dfb2e5f9aff086c536fabb46221544f5'
-        '2244efe07fa60e8259d4167b0d3725ea06eea584e70877c7bb4df2c21772bdcf6bd18c8b4380c7259e226243f1b6486e7ba36309399756172b6b071d07443d16'
-        'be00a0464f3ddbe107d291a785930ff3cb82218482871c4fdb6673bcca59b08a0d68a5675e99bd9d588828a2389d72a8a6b40f15c865851f31209df422fd8521')
+        '8937fc4001143088b4c8dbd775b7d6d04163c8cdb43b3b3cbefdce1ab522f6912811c6c720d84087254c4ef6388dfa72efba304d6189d57cffd657eaa3f5c822'
+        '2244efe07fa60e8259d4167b0d3725ea06eea584e70877c7bb4df2c21772bdcf6bd18c8b4380c7259e226243f1b6486e7ba36309399756172b6b071d07443d16')
