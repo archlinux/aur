@@ -1,6 +1,6 @@
 pkgbase = cuberite-bin
 	pkgdesc = A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client.
-	pkgver = 1.12.2b378
+	pkgver = 1.12.2b385
 	pkgrel = 1
 	url = https://cuberite.org/
 	install = cuberite.install
@@ -20,17 +20,17 @@ pkgbase = cuberite-bin
 	provides = spigot=1.12.2
 	provides = cuberite=1.12.2
 	conflicts = cuberite
-	noextract = Cuberite.b387_i686.tar.gz
-	noextract = Cuberite.b378_x86_64.tar.gz
-	noextract = Cuberite.b384_armv7h.tar.gz
+	noextract = Cuberite.b394_i686.tar.gz
+	noextract = Cuberite.b385_x86_64.tar.gz
+	noextract = Cuberite.b391_armv7h.tar.gz
 	backup = etc/conf.d/cuberite
-	source = minecraft-server-1.0.2.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.2.tar.gz
-	sha512sums = 11d708d511b63e5541bcc1dbcaf29abbf7cb9583b1d313028770a39b26b41d48dcba023f7e1d6fe30f3c093d20e10a43363011edd432e5785a4580e5c5f852a6
-	source_i686 = Cuberite.b387_i686.tar.gz::https://builds.cuberite.org/view/all/job/linux-i386/387/artifact/Cuberite.tar.gz
-	sha512sums_i686 = f0796d1efee85d8782f90db15afd3cf9fd092baeed4836a6fccd8a988a91b16f942742348eeffa7aa8ee1b6a3eea6ad17aae2af6c1d75d190a24a50e63d55e21
-	source_x86_64 = Cuberite.b378_x86_64.tar.gz::https://builds.cuberite.org/view/all/job/linux-x86_64/378/artifact/Cuberite.tar.gz
-	sha512sums_x86_64 = 4acfc49a8f87a91c76295a04f2ddc099e41df9bf587c21e35bb416e6c4a6f4e1ad1b2fc3ec6337f3a5e1df329f6bd7a2372b8c1ff2e06df32387c71af0adf2f5
-	source_armv7h = Cuberite.b384_armv7h.tar.gz::https://builds.cuberite.org/view/all/job/linux-armhf/384/artifact/Cuberite.tar.gz
-	sha512sums_armv7h = ef55b1774af8dcaec605dee5f345859ec634ea3532e5f37a9e4636e6f4b77435f8f690bece0e10ae6624cd08aeb5d3e1320ec5442b852e186e96cffaf9fd88c4
+	source = minecraft-server-1.0.3.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.3.tar.gz
+	sha512sums = 1cc15371d8fad39ef8812059463dd92b91628ff3887bd0eb462d919cd3b2a948c4c3535f701bf4912de3e9c84b2333738f4dd63202f235b1726e79ed178fe156
+	source_i686 = Cuberite.b394_i686.tar.gz::https://builds.cuberite.org/view/all/job/linux-i386/394/artifact/Cuberite.tar.gz
+	sha512sums_i686 = c39411905c3c7187c096a6d3eeb0fddc884da0c99f7bb65097ff1aa79efa5e3abde8c47572ecb829103db225d01ab715d751ea3b97e0c004e5cf32f0be99ceb5
+	source_x86_64 = Cuberite.b385_x86_64.tar.gz::https://builds.cuberite.org/view/all/job/linux-x86_64/385/artifact/Cuberite.tar.gz
+	sha512sums_x86_64 = 5495874b70a3bee5302116573dd0637996001a1625b38091c98b76cd1b45d51bd8257a59222a74a9a14bd07a2af6e06b10f53bbfefff0255ea6afe70d546bdf7
+	source_armv7h = Cuberite.b391_armv7h.tar.gz::https://builds.cuberite.org/view/all/job/linux-armhf/391/artifact/Cuberite.tar.gz
+	sha512sums_armv7h = 9f2262d78aff05394cab31bfb242e17de0dfa2d72c827fcf9c33c223d8c131861b474b512d2189783d868697eddb16a4cd20bdbfa68612c5f87576daeb596d0a
 
 pkgname = cuberite-bin
