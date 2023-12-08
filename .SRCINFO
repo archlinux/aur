@@ -1,9 +1,11 @@
 pkgbase = vnt-git
 	pkgdesc = A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具
 	pkgver = 1.2.7.r0.g26d68ac
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/lbl8603/vnt
-	arch = any
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = rust

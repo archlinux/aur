@@ -2,9 +2,11 @@
 
 pkgname=vnt-git
 pkgver=1.2.7.r0.g26d68ac
-pkgrel=1
+pkgrel=5
 pkgdesc="A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具"
-arch=('any')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/lbl8603/vnt"
 license=(Apache-2.0)
 provides=(${pkgname%-git})
