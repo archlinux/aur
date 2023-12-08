@@ -1,23 +1,28 @@
 pkgbase = redpanda-cpp-bin
 	pkgdesc = A light-weight C/C++ IDE based on Qt
-	pkgver = 2.24
-	pkgrel = 2
+	pkgver = 2.25
+	pkgrel = 1
 	url = https://sourceforge.net/projects/redpanda-cpp
+	arch = aarch64
+	arch = armv7h
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
 	depends = qt5-svg
-	depends = gcc-libs
-	depends = glibc
+	depends = hicolor-icon-theme
 	optdepends = gcc
 	optdepends = gdb
 	optdepends = git
 	optdepends = make
 	optdepends = qterminal
 	optdepends = raylib
-	provides = redpanda-cpp=2.24
+	provides = redpanda-cpp=2.25
 	conflicts = redpanda-cpp
-	source = redpanda-cpp-2.24.deb::https://github.com/royqh1979/RedPanda-CPP/releases/download/2.24/redpanda-cpp_2.24-1_amd64.ubuntu20.04.deb
-	sha256sums = aec532a3983f22284a2c422cb6fc7e85e45d27b12ba13d8d58357b92b53de646
+	source_aarch64 = redpanda-cpp-2.25-aarch64.zst::https://versaweb.dl.sourceforge.net/project/redpanda-cpp/2.25/linux/redpanda-cpp-2.25-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = 08f57e9d5eec862ce28c24c4574aa22707dfb3b6fbd70340aba41f2fac1d0b46
+	source_armv7h = redpanda-cpp-2.25-armv7h.zst::https://versaweb.dl.sourceforge.net/project/redpanda-cpp/2.25/linux/redpanda-cpp-2.25-1-armv7h.pkg.tar.zst
+	sha256sums_armv7h = 539dbbef1e6d0ed197614a42ac3642207bca637a7a3afd9fe14c1921daf765f0
+	source_x86_64 = redpanda-cpp-2.25-x86_64.zst::https://versaweb.dl.sourceforge.net/project/redpanda-cpp/2.25/linux/redpanda-cpp-2.25-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = df909ebde08f6156d40fb194c4651a33a4133517a23d5b04a39b49687cf904d3
 
 pkgname = redpanda-cpp-bin
