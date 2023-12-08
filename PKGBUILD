@@ -127,7 +127,7 @@ build() {
   # すだちを優先
   msg '2. Run the ruby scripts as in original sudachi.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   cd sudachi || exit
-#  ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
+  ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
   cd ..
 
   # added dicts.txt
@@ -140,14 +140,14 @@ build() {
 
   # ut-dictionarys
   msg '3. Run the ruby scripts as in original utdict.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-#  ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
+  ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
 
   msg '4. Run the ruby scripts as uniqword.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-#  ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt  2> duplicated.txt
+  ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt  2> duplicated.txt
   #cat ut-dict.txt >> finish-dict.txt
 
   msg '5. Finally add UT dictionary to mozc source'
-  #cat finish-dict.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
+  cat finish-dict.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
   sync
 
   # Fix compatibility with google-glog 0.3.3 (symbol conflict)
