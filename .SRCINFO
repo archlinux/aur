@@ -1,12 +1,13 @@
 pkgbase = ur
 	pkgdesc = (A)ur helper.
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.humaninstrumentalityproject.org
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck
 	makedepends = git
+	depends = binutils
 	source = ur::git+https://gitlab.archlinux.org/tallero/ur#commit=232180c2d04a2c5855061a2664a7cb4cdc77b295
 	sha256sums = SKIP
 

@@ -6,12 +6,17 @@ pkgname="${pkgbase}"
 pkgdesc="(A)ur helper."
 url="https://www.humaninstrumentalityproject.org"
 pkgver=0.1
-pkgrel=2
-license=('AGPL3')
+pkgrel=3
+license=(
+  'AGPL3')
 _ns="tallero"
 _url="https://gitlab.archlinux.org/${_ns}/${pkgname}"
-makedepends=('git')
-checkdepends=('shellcheck')
+depends=(
+  'binutils')
+makedepends=(
+  'git')
+checkdepends=(
+  'shellcheck')
 arch=(
   any
 )
@@ -25,17 +30,24 @@ sha256sums=(
 )
 
 check() {
-  cd "${pkgname}"
-  make -k check
+  cd \
+    "${pkgname}"
+  make \
+    -k check
 }
 
 package() {
-  local _opts=()
+  local \
+    _pkgdir="${pkgdir}" \
+    _opts=()
+  [ ! -n "${TERMUX_VERSION}" ] && \
+    _pkgdir="${terdir}"
   _opts=(
-    DESTDIR="${pkgdir}"
+    DESTDIR="${_pkgdir}"
     PREFIX='/usr'
   )
   cd "${pkgname}"
-  make "${_opts[@]}" \
-       install
+  make \
+    "${_opts[@]}" \
+    install
 }
