@@ -1,7 +1,7 @@
 pkgbase = localai-git
-	pkgdesc = The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first.
-	pkgver = v2.0.0.6.g997119c
-	pkgrel = 2
+	pkgdesc = Self-hosted OpenAI API alternative - Open Source, community-driven and local-first.
+	pkgver = v2.0.0.14.gb181503
+	pkgrel = 1
 	url = https://github.com/mudler/LocalAI
 	arch = x86_64
 	license = MIT
@@ -29,9 +29,9 @@ pkgbase = localai-git
 pkgname = localai-git
 
 pkgname = localai-git-cuda
-	pkgdesc = The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first. (with CUDA support)
+	pkgdesc = Self-hosted OpenAI API alternative - Open Source, community-driven and local-first. (with CUDA support)
 	depends = cuda
 
 pkgname = localai-git-rocm
-	pkgdesc = The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first. (with ROCM support)
+	pkgdesc = Self-hosted OpenAI API alternative - Open Source, community-driven and local-first. (with ROCM support)
 	depends = rocm-hip-runtime

@@ -1,9 +1,9 @@
 # Maintainer: wuxxin <wuxxin@gmail.com>
 
 # to only build for cpu, set ENABLE_CUDA and ENABLE_ROCM to 0
-_ENABLE_CUDA=1
-_ENABLE_ROCM=1
-_SKIP_CPU=0
+_ENABLE_CUDA=${_ENABLE_CUDA:-1}
+_ENABLE_ROCM=${_ENABLE_ROCM:-1}
+_SKIP_CPU=${_SKIP_CPU:-0}
 _GO_TAGS=""
 # _GO_TAGS="tts stablediffusion"
 _OPTIONAL_BACKENDS=""
@@ -19,9 +19,9 @@ _pkgname="localai"
 
 pkgbase="${_pkgname}-git"
 pkgname=("${pkgbase}")
-pkgver=v2.0.0.6.g997119c
-pkgrel=2
-pkgdesc="The free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first."
+pkgver=v2.0.0.14.gb181503
+pkgrel=1
+pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
 arch=('x86_64')
@@ -45,8 +45,8 @@ makedepends=(
 if test "$(echo "$_GO_TAGS" | grep -o "tts")" = "tts"; then
   makedepends+=(
     'onnxruntime'
-    'piper-phonemize'
   )
+  # 'piper-phonemize' is build from piper
 fi
 
 if [[ $_ENABLE_CUDA = 1 ]]; then
@@ -140,7 +140,7 @@ build() {
     else
       _AMDGPU_TARGETS="${AMDGPU_TARGETS:-gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102}"
     fi
-    # XXX workaround build error on ROCM by removing cf-procetion from CXX_FLAGS
+    # XXX workaround build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
     sed -i '1s/^/string(REPLACE "-fcf-protection" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")\n/' backend/cpp/llama/llama.cpp/CMakeLists.txt
     MAGMA_HOME="$ROCM_HOME" AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
       _build hipblas
@@ -149,11 +149,6 @@ build() {
 
 _package_install() {
   install -Dm755 "local-ai" "${pkgdir}/usr/bin/local-ai"
-  # sources/go-piper/piper/build/pi/lib/* /usr/lib/
-
-  # add 1-2 7b high performing models yaml configs based on mistral as gpt-3.5
-  # prefer chatml, add example working preload-models.yaml,
-
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
