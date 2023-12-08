@@ -2,7 +2,7 @@
 pkgname=mkfont
 pkgver=1.2.2
 _electronversion=24
-pkgrel=3
+pkgrel=4
 pkgdesc="A free (libre) tool to create & export fonts from existing assets. Component-based workflow, with advanced features to nit-pick & tweak metrics in a non-destructive way!"
 arch=('x86_64')
 url="https://nebukam.github.io/mkfont/"
@@ -18,24 +18,26 @@ makedepends=(
     'npm'
     'nodejs'
     'git'
+    'make'
+    'gcc'
+    'node-gyp'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '6686cb51a19aba9cfe171f55a1451ddc2fcf2687d106eb60348f0f1c89db048a')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
-    sed "s|@electronversion@|${_electronversion}|" -i "${srcdir}/${pkgname}.sh"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
     #Just build linux packages
     sed "36s|true|false|;70s|false|true|" -i nkmjs.config.json
-    yarn config set cache-folder "${srcdir}/yarn_cache"
-    yarn install
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run nkmjs build
 }
 package() {
