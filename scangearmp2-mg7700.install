@@ -1,26 +1,49 @@
+# Colored makepkg-like functions
+msg_blue() {
+  printf "${BLUE}==>${BOLD} $1${ALL_OFF}\n"
+}
+
+note1() {
+  printf "${BLUE}==>${YELLOW} NOTE:${BOLD} $1${ALL_OFF}\n"
+}
+
+note2() {
+  printf "${BLUE}==>    ${BOLD} $1${ALL_OFF}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="${ALL_OFF}$(tput bold)"
+BLACK="${BOLD}$(tput setaf 0)"
+RED="${BOLD}$(tput setaf 1)"
+GREEN="${BOLD}$(tput setaf 2)"
+YELLOW="${BOLD}$(tput setaf 3)"
+BLUE="${BOLD}$(tput setaf 4)"
+MAGENTA="${BOLD}$(tput setaf 5)"
+CYAN="${BOLD}$(tput setaf 6)"
+WHITE="${BOLD}$(tput setaf 7)"
+
+
 post_install() {
-if [ -x /usr/bin/udevadm ]; then
-    /usr/bin/udevadm control --reload-rules 2> /dev/null
-    /usr/bin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
-fi
-cat << EOF
-Make sure to add yourself to the scanner group:
+  post_upgrade
 
-sudo gpasswd -a <Yourusername> scanner
-
-so scangearmp2 can write to the /usr/lib/bjlib/canon_mfp2_net.ini file.
-Otherwise it will just complain that it can't find your printer.
-EOF
+  note1 "Make sure to add yourself to the scanner group:"
+  note2
+  note2 "    sudo gpasswd -a <Yourusername> scanner"
+  note2
+  note2 "so scangearmp2 can write to the /usr/lib/bjlib/canon_mfp2_net.ini file."
+  note2 "Otherwise it will just complain that it can't find your printer."
 }
 
 post_upgrade() {
-if [ -x /usr/bin/udevadm ]; then
+  chgrp scanner "usr/lib/bjlib/canon_mfp2_net.ini"
+
+  if [ -x /usr/bin/udevadm ]; then
     /usr/bin/udevadm control --reload-rules 2> /dev/null
     /usr/bin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
-fi
+  fi
 }
 
 post_remove() {
-# remove sgmp_setting files
-rm -f /var/tmp/canon_sgmp2_setting*.*
+  # remove sgmp_setting files
+  rm -f /var/tmp/canon_sgmp2_setting*.*
 }
