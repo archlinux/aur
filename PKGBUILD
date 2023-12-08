@@ -2,7 +2,7 @@
 pkgname=warcraftlogsuploader
 pkgdesc='Warcraft Logs Uploader'
 _electron=electron
-pkgver=7.0.121
+pkgver=8.2.2
 pkgrel=1
 arch=('any')
 url='https://github.com/RPGLogs/Uploaders-warcraftlogs'
@@ -10,9 +10,8 @@ license=('custom')
 makedepends=('asar')
 depends=($_electron sh)
 source=("$url/releases/download/v$pkgver/warcraftlogs-v$pkgver.AppImage" "warcraftlogsuploader.desktop")
-sha512sums=('bad74806f38c25df5b5e0b624169a397ff163199fa12835059c362af81cb3ad2470b81f624c41a621217c6adc5e273138d07a4505da98f456691423d15a51661'
+sha512sums=('1bbdd9270688c57d20993f8a224381ebf7a1105029033dcd50d2fa41fb55fbdb63cd3818134cf7608197948015a913efbabb542dc166f643fb82ce532f3012b9'
             '2362bd563e08e20a75d7c8942574d43fe08ae04d68ddc4f20b64d6e6fc315c6b106b78cb3fb07e2361930584353e3a23b69322939c94edef075af8a74ba26086')
-
 
 prepare() {
   :
