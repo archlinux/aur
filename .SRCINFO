@@ -16,6 +16,8 @@ pkgbase = scx-git
 	depends = bpf
 	depends = libelf
 	depends = zlib
+	provides = scx=0.1.0.r9.g5751f1c
+	conflicts = scx
 	options = !lto
 	source = scx::git+https://github.com/sched-ext/scx
 	sha256sums = SKIP

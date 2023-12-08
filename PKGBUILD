@@ -14,6 +14,8 @@ source=("scx::git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 options=(!lto)
 _reponame="scx"
+provides=("scx=$pkgver")
+conflicts=("scx")
 
 pkgver() {
     cd "$_reponame"
