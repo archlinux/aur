@@ -2,17 +2,38 @@
 pkgname=fxradio
 _pkgname=FXRadio
 pkgver=0.18.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Internet radio directory for desktop written in tornadofx"
 arch=('any')
 url="http://hudacek.online/fxradio"
-_githuburl="https://github.com/Joseph5610/fxradio"
+_ghurl="https://github.com/Joseph5610/fxradio"
 license=('AGPL3')
 conflicts=("${pkgname}")
-depends=('vlc' 'java-runtime' 'libxtst' 'gtk3' 'gtk2' 'giflib' 'pango' 'zlib' 'gcc-libs' 'glibc' 'bash' 'freetype2' 'libx11' 'libxext' 'lcms2' \
-    'cairo' 'libxi' 'libjpeg-turbo' 'gdk-pixbuf2' 'libpng' 'alsa-lib' 'libxrender' 'glib2' 'libglvnd' 'ffmpeg4.4' 'harfbuzz')
+depends=(
+    'vlc'
+    'java-runtime'
+    'libxtst'
+    'gtk3'
+    'gtk2'
+    'giflib'
+    'pango'
+    'freetype2'
+    'libx11'
+    'libxext'
+    'lcms2'
+    'cairo'
+    'libxi'
+    'libjpeg-turbo'
+    'gdk-pixbuf2'
+    'libpng'
+    'alsa-lib'
+    'libxrender'
+    'libglvnd'
+    'ffmpeg4.4'
+    'harfbuzz'
+)
 makedepends=('jdk-openjdk>=20')
-source=("${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip")
+source=("${pkgname}-${pkgver}.zip::${_ghurl}/archive/refs/tags/v${pkgver}.zip")
 sha256sums=('fe0633aec74661c21c4a12dd1b5943b91f8d337700ed78f74fc7b16e21999606')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
