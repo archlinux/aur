@@ -1,0 +1,161 @@
+Index: gtk3/gtk/gtkplacessidebar.c
+===================================================================
+--- gtk3.orig/gtk/gtkplacessidebar.c
++++ gtk3/gtk/gtkplacessidebar.c
+@@ -457,12 +457,34 @@ list_box_header_func (GtkListBoxRow *row
+   else
+     {
+       before_section_type = SECTION_INVALID;
+-      gtk_widget_set_margin_top (GTK_WIDGET (row), 4);
+     }
+ 
+-  if (before && before_section_type != row_section_type)
++  if (before_section_type != row_section_type)
+     {
+-      separator = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
++      switch (row_section_type)
++        {
++        case SECTION_COMPUTER:
++        case SECTION_BOOKMARKS:
++          if (before_section_type == SECTION_COMPUTER)
++            {
++              return;
++            }
++          separator = gtk_label_new(NULL);
++          gtk_label_set_markup(GTK_LABEL(separator), "<b>Places</b>");
++          break;
++        case SECTION_MOUNTS:
++          separator = gtk_label_new(NULL);
++          gtk_label_set_markup(GTK_LABEL(separator), "<b>Devices</b>");
++          break;
++        case SECTION_OTHER_LOCATIONS:
++          separator = gtk_label_new(NULL);
++          gtk_label_set_markup(GTK_LABEL(separator), "<b>Network</b>");
++          break;
++        default:
++          separator = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
++        }
++      gtk_widget_set_halign(separator, GTK_ALIGN_START);
++      gtk_widget_set_margin_left (separator, 14);
+       gtk_widget_set_margin_top (separator, 4);
+       gtk_widget_set_margin_bottom (separator, 4);
+       gtk_list_box_row_set_header (row, separator);
+@@ -531,6 +553,7 @@ add_place (GtkPlacesSidebar            *
+   g_signal_connect (event_box, "button-release-event",
+                     G_CALLBACK (on_button_release_event), row);
+ 
++  gtk_widget_set_margin_left(GTK_WIDGET (row), 10);
+   gtk_container_add (GTK_CONTAINER (sidebar->list_box), GTK_WIDGET (row));
+   gtk_widget_show_all (row);
+ 
+@@ -1100,7 +1123,7 @@ update_places (GtkPlacesSidebar *sidebar
+              SECTION_COMPUTER,
+              _("Home"), start_icon, NULL, home_uri,
+              NULL, NULL, NULL, NULL, 0,
+-             _("Open your personal folder"));
++             _("Open the home folder"));
+   g_object_unref (start_icon);
+   g_free (home_uri);
+ 
+@@ -1375,7 +1398,7 @@ update_places (GtkPlacesSidebar *sidebar
+                  SECTION_MOUNTS,
+                  sidebar->hostname, start_icon, NULL, mount_uri,
+                  NULL, NULL, NULL, NULL, 0,
+-                 _("Open the contents of the file system"));
++                 _("Browse the file system"));
+       g_object_unref (start_icon);
+     }
+ 
+@@ -1547,8 +1570,8 @@ update_places (GtkPlacesSidebar *sidebar
+ 
+       add_place (sidebar, PLACES_BUILT_IN,
+                  SECTION_OTHER_LOCATIONS,
+-                 _("Networks"), start_icon, NULL, "network:///",
+-                 NULL, NULL, NULL, NULL, 0, _("Show other locations"));
++                 _("Browse Network"), start_icon, NULL, "network:///",
++                 NULL, NULL, NULL, NULL, 0, _("Browse local network connections"));
+ 
+       g_object_unref (start_icon);
+     }
+@@ -3976,7 +3999,15 @@ list_box_sort_func (GtkListBoxRow *row1,
+                place_type_1 == PLACES_XDG_DIR) ||
+               section_type_1 == SECTION_MOUNTS)
+             {
+-              retval = g_utf8_collate (label_1, label_2);
++              /* Local non-removable in first mounts position */
++              if ((section_type_1 == SECTION_MOUNTS) &&
++                  (place_type_1 == PLACES_BUILT_IN))
++                retval = -1;
++              else if ((section_type_1 == SECTION_MOUNTS) &&
++                       (place_type_2 == PLACES_BUILT_IN))
++                retval = 1;
++              else
++                retval = g_utf8_collate (label_1, label_2);
+             }
+           else if ((place_type_1 == PLACES_BOOKMARK || place_type_2 == PLACES_DROP_FEEDBACK) &&
+                    (place_type_1 == PLACES_DROP_FEEDBACK || place_type_2 == PLACES_BOOKMARK))
+Index: gtk3/gtk/gtkplacessidebarprivate.h
+===================================================================
+--- gtk3.orig/gtk/gtkplacessidebarprivate.h
++++ gtk3/gtk/gtkplacessidebarprivate.h
+@@ -30,9 +30,9 @@ G_BEGIN_DECLS
+ typedef enum {
+   SECTION_INVALID,
+   SECTION_COMPUTER,
++  SECTION_BOOKMARKS,
+   SECTION_MOUNTS,
+   SECTION_CLOUD,
+-  SECTION_BOOKMARKS,
+   SECTION_OTHER_LOCATIONS,
+   N_SECTIONS
+ } GtkPlacesSidebarSectionType;
+Index: gtk3/gtk/ui/gtkfilechooserwidget.ui
+===================================================================
+--- gtk3.orig/gtk/ui/gtkfilechooserwidget.ui
++++ gtk3/gtk/ui/gtkfilechooserwidget.ui
+@@ -15,9 +15,10 @@
+               <object class="GtkPlacesSidebar" id="places_sidebar">
+                 <property name="visible">1</property>
+                 <property name="hscrollbar-policy">never</property>
+-                <property name="local-only">1</property>
+                 <property name="show-other-locations">0</property>
+                 <property name="show-trash">0</property>
++                <property name="show-recent">0</property>
++                <property name="show-desktop">0</property>
+                 <child internal-child="accessible">
+                   <object class="AtkObject">
+                     <property name="AtkObject::accessible-name" translatable="yes">Places</property>
+Index: gtk3/gtk/gtksidebarrow.c
+===================================================================
+--- gtk3.orig/gtk/gtksidebarrow.c
++++ gtk3/gtk/gtksidebarrow.c
+@@ -230,7 +230,7 @@ gtk_sidebar_row_set_property (GObject
+             self->start_icon = G_ICON (g_object_ref (object));
+             gtk_image_set_from_gicon (GTK_IMAGE (self->start_icon_widget),
+                                       self->start_icon,
+-                                      GTK_ICON_SIZE_MENU);
++                                      GTK_ICON_SIZE_LARGE_TOOLBAR);
+           }
+         else
+           {
+@@ -415,7 +415,7 @@ gtk_sidebar_row_set_start_icon (GtkSideb
+       g_set_object (&self->start_icon, icon);
+       if (self->start_icon != NULL)
+         gtk_image_set_from_gicon (GTK_IMAGE (self->start_icon_widget), self->start_icon,
+-                                  GTK_ICON_SIZE_MENU);
++                                  GTK_ICON_SIZE_LARGE_TOOLBAR);
+       else
+         gtk_image_clear (GTK_IMAGE (self->start_icon_widget));
+ 
+Index: gtk3/gtk/gtkfilechooserwidget.c
+===================================================================
+--- gtk3.orig/gtk/gtkfilechooserwidget.c
++++ gtk3/gtk/gtkfilechooserwidget.c
+@@ -3345,7 +3345,6 @@ update_appearance (GtkFileChooserWidget
+            priv->action == GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER)
+     {
+       save_widgets_destroy (impl);
+-      gtk_places_sidebar_set_show_recent (GTK_PLACES_SIDEBAR (priv->places_sidebar), recent_files_setting_is_enabled (impl));
+       location_mode_set (impl, priv->location_mode);
+     }
+ 

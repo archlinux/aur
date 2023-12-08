@@ -3,7 +3,7 @@
 # This file is based on the gtk3-classic PKGBUILD:
 # https://aur.archlinux.org/packages/gtk3-classic
 # and uses xfce patches from:
-# https://github.com/simplejack-src/gtk3-classic-xfce
+# https://github.com/simplejack-src/gtk3-classic-xfce (repository no longer available)
 
 __arch_pkg_commit="108c7090a77081cd124c819e014ced95b4648d55"
 _gtkver=3.24.38
@@ -16,11 +16,11 @@ _gtk3_classic=gtk3-classic
 pkgbase=gtk3-classic-xfce
 pkgname=($pkgbase)
 pkgver=${_gtkver}
-pkgrel=4
+pkgrel=5
 pkgdesc="Patched GTK+3 that provides a more classic experience, with patches for xfce"
-url="https://github.com/simplejack-src/gtk3-classic-xfce"
+url="https://github.com/lah7/gtk3-classic"
 conflicts=(gtk3 gtk3-typeahead gtk3-print-backends gtk3-nocsd gtk3-nocsd-git gtk3-nocsd-legacy-git gtk3-classic)
-provides=(gtk3-classic=${pkgver} gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-print-backends
+provides=(gtk3-classic=$_gtkver gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-print-backends
           libgtk-3.so libgdk-3.so libgailutil-3.so)
 arch=(x86_64)
 license=(LGPL)
@@ -86,25 +86,23 @@ makedepends=(
 	wayland-protocols
 )
 install=gtk3.install
-source=(
-	git+$_gtk3_classic_url.git#commit=$_gtk3_classic_commit
+source=(git+$_gtk3_classic_url.git#commit=$_gtk3_classic_commit
  	"https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-$_gtkver.tar.xz"
-
 	"gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/$__arch_pkg_commit/gtk-query-immodules-3.0.hook"
 	settings.ini
-        "$pkgbase-$_gtkver.tar.gz::https://github.com/simplejack-src/gtk3-classic-xfce/archive/refs/tags/$_gtkver.tar.gz"
+        appearance__file-chooser-xfce.patch
 )
 sha256sums=('SKIP'
             'ce11decf018b25bdd8505544a4f87242854ec88be054d9ade5f3a20444dd8ee7'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
-            '75e3beae2f38405faad570c9483920ea34726a16264311319c460966fd53031a')
+            'c443bfa1f70ac5ce2102c83b38b193e78f614b606cb0dae807ecd25d591f1e99')
 
 prepare()
 {
 	cd gtk+-$_gtkver
-        cp ../"$pkgbase"-$_gtkver/*.patch ../"$_gtk3_classic"
-        cat ../"$pkgbase"-$_gtkver/series >> ../"$_gtk3_classic"/series
+        cp ../"appearance__file-chooser-xfce.patch" ../"$_gtk3_classic"
+        echo "appearance__file-chooser-xfce.patch" >> ../"$_gtk3_classic"/series
 	QUILT_PATCHES=../"$_gtk3_classic" quilt push -av
 
 	rm -f "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css
