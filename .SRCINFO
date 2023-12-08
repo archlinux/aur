@@ -6,7 +6,7 @@ pkgbase = neotextureedit
 	arch = any
 	license = GPL
 	depends = java-runtime
-	source = http://iweb.dl.sourceforge.net/project/neotextureedit/0.6/0.6.4/NeoTextureEdit_0.6.4.tar.gz
+	source = https://downloads.sourceforge.net/project/neotextureedit/0.6/0.6.4/NeoTextureEdit_0.6.4.tar.gz
 	source = neotextureedit.desktop
 	source = neotextureedit
 	source = neotextureedit.png
@@ -16,4 +16,3 @@ pkgbase = neotextureedit
 	md5sums = 7503e1364f05a7c8cc6ee63b8a3c0826
 
 pkgname = neotextureedit
-
