@@ -1,0 +1,10 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl enable mozillavpn.service
+    systemctl start mozillavpn.service
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl restart mozillavpn.service
+}
