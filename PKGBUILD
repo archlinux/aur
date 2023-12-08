@@ -26,17 +26,17 @@ build() {
   git checkout v$pkgver
   cmake -S ./ \
       -G Ninja \
-      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
       -DCMAKE_BUILD_TYPE=Release 
   ninja
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  sudo cmake --install .
-  sudo install -D dist/xdg/io.github._0xzer0x.qurancompanion.desktop ${pkgdir}/usr/share/applications/
-  sudo install -Dm644 dist/xdg/logo64.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/io.github._0xzer0x.qurancompanion.png
-  sudo install -Dm644 dist/xdg/logo128.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github._0xzer0x.qurancompanion.png
-  sudo install -Dm644 dist/xdg/logo256.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/io.github._0xzer0x.qurancompanion.png
+  cmake --install .
+  install -D dist/xdg/io.github._0xzer0x.qurancompanion.desktop ${pkgdir}/usr/share/applications/
+  install -Dm644 dist/xdg/logo64.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/io.github._0xzer0x.qurancompanion.png
+  install -Dm644 dist/xdg/logo128.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github._0xzer0x.qurancompanion.png
+  install -Dm644 dist/xdg/logo256.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/io.github._0xzer0x.qurancompanion.png
 }
 
