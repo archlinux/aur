@@ -2,8 +2,8 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=seamonkey
-pkgver=2.53.17.1
-pkgrel=2
+pkgver=2.53.18
+pkgrel=1
 pkgdesc="SeaMonkey internet suite"
 arch=(x86_64)
 url="https://www.seamonkey-project.org"
@@ -46,6 +46,7 @@ depends=(
 )
 makedepends=(
   autoconf2.13
+  cargo
   cbindgen
   clang
   imake
@@ -53,7 +54,6 @@ makedepends=(
   mesa
   nasm
   python
-  rustup
   unzip
   yasm
   zip
@@ -69,7 +69,7 @@ source=(
   "mozconfig"
 )
 sha256sums=(
-  'df89e53df981d79e70ea8dd33774aa2cd6de2bdc7979b1edc63fb08f0aa3b996'
+  'cef8349e2c9343871f46e08be75dbc8b02206d40df1e332c82f592b600911911'
   '9d7b5df44fe6c73187acf9211ba3f59841912e0d06cfed12ec791b0193a838ec'
 )
 install="$pkgname.install"
@@ -89,14 +89,10 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 _archive="$pkgname-$pkgver"
 
-_rust_toolchain_version=1.72.0
-
 prepare() {
   cd "$_archive"
 
   cp "$srcdir/mozconfig" .mozconfig
-
-  rustup toolchain install "$_rust_toolchain_version"
 
   echo -n "$_google_api_key" > google-api-key
   echo -n "$_mozilla_api_key" > mozilla-api-key
@@ -110,8 +106,6 @@ prepare() {
 
 build() {
   cd "$_archive"
-
-  export RUSTUP_TOOLCHAIN="$_rust_toolchain_version"
 
   # Don't use mold - fails.
   LDFLAGS=$(printf '%s' "$LDFLAGS" | sed 's/-fuse-ld=[^[:space:]]*//')
