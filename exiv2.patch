@@ -1,0 +1,11 @@
+--- CMakeLists.txt	2023-10-06 16:16:36.000000000 -0500
++++ CMakeLists.txt	2023-12-07 22:40:03.718044121 -0600
+@@ -326,7 +326,7 @@
+         message(FATAL_ERROR "** Unable to locate Exiv2... is it installed?")
+     else()
+         include_directories(${EXIV2_INCLUDE_DIR})
+-        target_link_libraries(${PROJECT_NAME} "exiv2lib")
++        target_link_libraries(${PROJECT_NAME} "exiv2")
+         add_definitions(-DEXIV2)
+         message("** Using Exiv2 ${exiv2_VERSION}")
+         if(EXIV2_ENABLE_BMFF)
