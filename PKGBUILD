@@ -2,7 +2,7 @@
 pkgname=jameica
 pkgver=2.10.4
 _pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="free runtime environment for java applications"
 #arch=('i686' 'x86_64' 'aarch64')
 arch=('x86_64' 'aarch64')
@@ -15,10 +15,10 @@ makedepends=('unzip')
 #   "htTps://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux-${pkgver}.zip.asc")
 source_x86_64=("https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip"
     "https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip.asc"
-    "swt.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.27-202303020300/swt-4.27-gtk-linux-x86_64.zip")
+    "swt-4.30-x86_64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.30-202312010110/swt-4.30-gtk-linux-x86_64.zip")
 source_aarch64=("https://willuhn.de/products/jameica/releases/current/jameica/jameica-linuxarm64-${pkgver}.zip"
     "https://willuhn.de/products/jameica/releases/current/jameica/jameica-linuxarm64-${pkgver}.zip.asc"
-    "swt.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.27-202303020300/swt-4.27-gtk-linux-aarch64.zip")
+    "swt-4.30-aarch64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.30-202312010110/swt-4.30-gtk-linux-aarch64.zip")
 validpgpkeys=("7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70") # Olaf Willuhn <info@willuhn.de>
 source=("jameica-start-script.patch" "jameicaserver-start-script.patch"
         "jameica.desktop")
@@ -27,10 +27,10 @@ sha1sums=('a7b8b39822ac22d830aae03f292fda623977e526'
           '79eb66782c0e37f1538ca29ce87580aa3bb4e444')
 sha1sums_x86_64=('bfaee83799f551a4c5403d59821d02d03e46a809'
                  'SKIP'
-                 '81c08a9f376c26a5c3cfa6544c07597944508f69')
+                 '700f31b53866b33aa2d3b9f7739d96aeca0ed07a')
 sha1sums_aarch64=('a0e2a097766d28cb732b74c1203ba1e892cbd8f1'
                   'SKIP'
-                  '81c08a9f376c26a5c3cfa6544c07597944508f69')
+                  'd182195695828f968c1b1c179b258374735b35f9')
 #sha1sums_i686=('7afbc5bb10e43479e100536559d174fb4259b1c7'
 #               'SKIP')
 
