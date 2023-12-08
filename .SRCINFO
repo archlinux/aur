@@ -1,7 +1,7 @@
 pkgbase = chieapp-bin
 	pkgdesc = An extensible desktop app for large language models like ChatGPT and Bing Chat.
 	pkgver = 0.2.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://chie.app/
 	arch = x86_64
 	license = GPL3
@@ -10,15 +10,12 @@ pkgbase = chieapp-bin
 	depends = gtk3
 	depends = webkit2gtk
 	depends = at-spi2-core
-	depends = glib2
 	depends = libsoup
 	depends = pango
-	depends = glibc
 	depends = harfbuzz
 	depends = libx11
 	depends = freetype2
 	depends = fontconfig
-	depends = gcc-libs
 	depends = cairo
 	provides = chieapp=0.2.11
 	conflicts = chieapp

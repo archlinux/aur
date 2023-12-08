@@ -2,18 +2,34 @@
 pkgname=chieapp-bin
 _pkgname=Chie
 pkgver=0.2.11
-pkgrel=2
+pkgrel=3
 pkgdesc="An extensible desktop app for large language models like ChatGPT and Bing Chat."
 arch=('x86_64')
 url="https://chie.app/"
-_githuburl="https://github.com/chieapp/chie"
+_ghurl="https://github.com/chieapp/chie"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
-depends=('gdk-pixbuf2' 'gtk3' 'webkit2gtk' 'at-spi2-core' 'glib2' 'libsoup' 'pango' 'glibc' 'harfbuzz' 'libx11' 'freetype2' 'fontconfig' 'gcc-libs' 'cairo')
-makedepends=('gendesk')
-source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-x64.zip")
+depends=(
+    'gdk-pixbuf2'
+    'gtk3'
+    'webkit2gtk'
+    'at-spi2-core'
+    'libsoup'
+    'pango'
+    'harfbuzz'
+    'libx11'
+    'freetype2'
+    'fontconfig'
+    'cairo'
+)
+makedepends=(
+    'gendesk'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-x64.zip"
+)
 sha256sums=('4b4271be8438312e3aedc5ca5c9c2f82e406a194df8dfa8c6d4ecfbaca0fe88d')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
