@@ -1,0 +1,10 @@
+--- a/python/pyproject.toml	2023-12-08 04:28:22.369807658 +0300
++++ b/python/pyproject.toml	2023-12-08 04:28:30.266511032 +0300
+@@ -1,6 +1,6 @@
+ 
+ [build-system]
+-requires = ["setuptools>=40.8.0", "wheel", "cmake>=3.18"]
++requires = ["setuptools>=40.8.0", "wheel"]
+ 
+ [tool.autopep8]
+ aggressive = 1

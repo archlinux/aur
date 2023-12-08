@@ -1,6 +1,6 @@
 pkgbase = python-triton
 	pkgdesc = Triton compiler
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/openai/triton
 	arch = x86_64
@@ -10,8 +10,11 @@ pkgbase = python-triton
 	makedepends = ninja
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = triton-2.0.0.tar.gz::https://github.com/openai/triton/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 19b6de0d0bcce86e973258d112169cd321b677146808bcc5fed7f69046775cfd
+	source = triton-2.1.0.tar.gz::https://github.com/openai/triton/archive/refs/tags/v2.1.0.tar.gz
+	source = triton.diff
+	sha256sums = 4338ca0e80a059aec2671f02bfc9320119b051f378449cf5f56a1273597a3d99
+	sha256sums = SKIP
 
 pkgname = python-triton
