@@ -2,9 +2,11 @@
 
 pkgname=crm
 pkgver=0.2.1
-pkgrel=0
+pkgrel=2
 pkgdesc="crm (Cargo registry manager)"
-arch=('any')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/wtklbm/crm"
 license=('MIT' 'Apache-2.0')
 provides=(${pkgname})
