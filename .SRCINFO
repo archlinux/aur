@@ -1,1 +1,21 @@
+pkgbase = myetherwallet
+	pkgdesc = Client-side interface for interacting with the Ethereum blockchain
+	pkgver = 6.7.3
+	pkgrel = 2
+	url = https://github.com/MyEtherWallet/MyEtherWallet
+	arch = any
+	license = MIT
+	depends = xdg-utils
+	source = https://github.com/MyEtherWallet/MyEtherWallet/releases/download/v6.7.3/MyEtherWallet-v6.7.3.zip
+	source = https://github.com/MyEtherWallet/MyEtherWallet/releases/download/v6.7.3/MyEtherWallet-v6.7.3.zip.sig
+	source = myetherwallet.desktop
+	source = myetherwallet
+	source = myetherwallet.license
+	validpgpkeys = 2FCA4A1E3AF4278F7AD3B7637F059C0F7B9A12F0
+	sha256sums = 4627d06dce696f5325eefe460959eae381ec8be31b7b2ae38d3c3cb1f3f97f31
+	sha256sums = SKIP
+	sha256sums = b49e3bb0cded23c40820281a110d2baed5d1f7aa036635108323d0133e0e30e9
+	sha256sums = 814f489e4e6e0ce172513febf58d6821e7b77cd2e644152aec4888228fe41da5
+	sha256sums = 42039cf560b0b2b35463f33656d9639c8f9b98e9a4f57723dbab0a90a4ad8ad6
 
+pkgname = myetherwallet
