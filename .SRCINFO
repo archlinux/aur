@@ -1,15 +1,15 @@
 pkgbase = beam-wallet-appimage
 	pkgdesc = Beam Desktop Wallet
-	pkgver = 7.4.13780.5641
-	pkgrel = 2
+	pkgver = 7.5.13817.5736
+	pkgrel = 1
 	url = https://beam.mw/
 	arch = x86_64
 	license = Apache
 	makedepends = squashfuse
-	provides = beam-wallet=7.4.13780.5641
+	provides = beam-wallet=7.5.13817.5736
 	conflicts = beam-wallet
 	options = !strip
-	source = beam-wallet-7.4.13780.5641.zip::https://github.com/BeamMW/beam-ui/releases/download/beam-7.4.13780.5641/Beam-Wallet-7.4.13780.5641.zip
-	sha256sums = e3a2c793412b561fe4d0603dd355e22399e7b0bccb5216d4a0de57736c59e05f
+	source = beam-wallet-7.5.13817.5736.zip::https://github.com/BeamMW/beam-ui/releases/download/beam-7.5/Linux-Beam-Wallet-7.5.13817.5736.zip
+	sha256sums = da0e7c04a998028db92a8c60372da4f4f0a9d35ae016af1d1108333aa22984ab
 
 pkgname = beam-wallet-appimage

@@ -1,8 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beam-wallet-appimage
 _appname="Beam-Wallet"
-pkgver=7.4.13780.5641
-pkgrel=2
+_pkgver=7.5
+_subver=13817.5736
+pkgver="${_pkgver}.${_subver}"
+pkgrel=1
 pkgdesc="Beam Desktop Wallet"
 arch=('x86_64')
 url="https://beam.mw/"
@@ -17,9 +19,9 @@ makedepends=(
 options=('!strip')
 _install_path="/opt/appimages"
 source=(
-    "${pkgname%-appimage}-${pkgver}.zip::${_ghurl}/releases/download/beam-${pkgver}/${_appname}-${pkgver}.zip"
+    "${pkgname%-appimage}-${pkgver}.zip::${_ghurl}/releases/download/beam-${_pkgver}/Linux-${_appname}-${pkgver}.zip"
 )
-sha256sums=('e3a2c793412b561fe4d0603dd355e22399e7b0bccb5216d4a0de57736c59e05f')
+sha256sums=('da0e7c04a998028db92a8c60372da4f4f0a9d35ae016af1d1108333aa22984ab')
 build() {
     chmod a+x "${srcdir}/${_appname}-${pkgver}.AppImage"
     "${srcdir}/${_appname}-${pkgver}.AppImage" --appimage-extract > /dev/null
