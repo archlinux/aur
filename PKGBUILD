@@ -2,7 +2,7 @@
 
 _pkgname=zellij-selector
 pkgname=$_pkgname-bin
-_pkgver=2.4.1-2
+_pkgver=2.5.0-1
 pkgver=${_pkgver//-/.r}
 pkgrel=1
 pkgdesc="Select zellij session"
@@ -17,7 +17,7 @@ optdepends=('fish: Option to option fish shell'
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("https://codeberg.org/stefanwimmer128/zellij-selector-pkgbuild/releases/download/$_pkgver/$_pkgname-$_pkgver-$_arch.pkg.tar.zst")
-sha256sums=('f8ef5e2b541c654f8b730659811cb3400f42db6109becaac2ca6236f5f6426d5')
+sha256sums=('2dde8d45221ffbbf9d37237684fbf922e36656f886d129cec0293577e1f57669')
 
 build() {
   rm "$_pkgname-$_pkgver-$_arch.pkg.tar.zst"
