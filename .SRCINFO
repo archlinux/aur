@@ -1,6 +1,6 @@
 pkgbase = moonbit-bin
 	pkgdesc = Intelligent developer platform for Cloud and Edge using WASM
-	pkgver = 0.1.0.20231120
+	pkgver = 0.1.0.20231204
 	pkgrel = 1
 	url = https://www.moonbitlang.com/
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = moonbit-bin
 	source = https://cli.moonbitlang.com/ubuntu_x86/moonfmt
 	source = https://cli.moonbitlang.com/ubuntu_x86/moonrun
 	source = https://cli.moonbitlang.com/ubuntu_x86/mooninfo
-	sha256sums = 61a7cfb06f69edda870d17d368ed0adf50d1166c33f415eaee586c5eadab256d
-	sha256sums = 4ecf96beeaff41a9e8be290d118281e454ae997cb7ebb5eeda58d4a20750c62e
-	sha256sums = 1d22f753eb948e0d71f15261326ef8ef5f2d4a5acd8e6f17989bd9cd4b5fac23
-	sha256sums = 11c56639a22fc2b2825dcb1d65b51eca44d9173935af4f54af69f1e2d9f1684e
-	sha256sums = 05b981d5d3b3df7d4a8542557fcda65659519885aeb7d86ff2f7a5a83ef54b77
+	sha256sums = 9b6cd3830b457cc44deaf6f050603bf073e988b173a2f01cb9fddead1bbe83a0
+	sha256sums = 071816387f1febf7edb2724783c857f83779af4f901068d70ef002666fb18209
+	sha256sums = 44deb6621f177da1580248c020ac00282502bfc0728bd4016d23f8eeed957ee8
+	sha256sums = 6005aa72c4a520da457674e9052259b8e08d5f788a1636f0f7c99bd7c0891b64
+	sha256sums = 9166e22cc83749bb9b34eedd43d839e738f4df81c718cc2cbb00b2e3d722e0fc
 
 pkgname = moonbit-bin
