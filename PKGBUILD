@@ -1,7 +1,7 @@
 # Maintainer: martiuk <me at martinke dot mp>
 
 pkgname=xorg-xwayland-explicit-sync-git
-pkgver=23.1.2.r161.g411a61f57
+pkgver=23.1.2.r175.g073b90ea5
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -24,11 +24,11 @@ makedepends=('meson' 'git'
 source=(
   "xserver::git+https://gitlab.freedesktop.org/xorg/xserver.git"
   "https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/967.patch"
+  "0000_syncobj.patch"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+b2sums=('SKIP'
+        'SKIP'
+        'bec09ac6197fc4311a1cf3260af427b1f8dcb30dafac6813414bc1988f3ac494c22520ed779baa1e9f0068e3dfcc6515e6259003dbe3bdd61d79230523e3ae87')
 provides=('xorg-xwayland' 'xorg-server-xwayland' 'xorg-server-xwayland-git')
 conflicts=('xorg-xwayland' 'xorg-server-xwayland' 'xorg-server-xwayland-git')
 
@@ -44,6 +44,7 @@ pkgver() {
 prepare() {
   cd xserver
   patch -Np1 -i "${srcdir}/967.patch"
+  patch -Np1 -i "${srcdir}/0000_syncobj.patch"
 }
 
 build() {
@@ -85,4 +86,3 @@ package() {
   # license
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
 }
-

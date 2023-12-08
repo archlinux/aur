@@ -1,0 +1,44 @@
+diff --git a/hw/xwayland/xwayland-glamor-gbm.c b/hw/xwayland/xwayland-glamor-gbm.c
+index 70547295f..f9d9048fa 100644
+--- a/hw/xwayland/xwayland-glamor-gbm.c
++++ b/hw/xwayland/xwayland-glamor-gbm.c
+@@ -600,7 +600,7 @@ xwl_screen_destroy_explicit_sync(struct xwl_screen *xwl_screen)
+     }
+ 
+     if (xwl_screen->explicit_sync) {
+-        wp_linux_drm_syncobj_v1_destroy(xwl_screen->explicit_sync);
++        wp_linux_drm_syncobj_surface_v1_destroy(xwl_screen->explicit_sync);
+         xwl_screen->explicit_sync = NULL;
+     }
+ 
+@@ -938,7 +938,7 @@ xwl_glamor_gbm_dri3_syncobj_passthrough(WindowPtr window,
+ 
+     if (!xwl_window->surface_sync)
+         xwl_window->surface_sync =
+-            wp_linux_drm_syncobj_v1_get_surface(xwl_screen->explicit_sync,
++            wp_linux_drm_syncobj_manager_v1_get_surface(xwl_screen->explicit_sync,
+                                                 xwl_window->surface);
+ 
+     wp_linux_drm_syncobj_surface_v1_set_acquire_point(xwl_window->surface_sync,
+@@ -1071,7 +1071,7 @@ xwl_dri3_create_syncobj(struct xwl_screen *xwl_screen, uint32_t handle)
+             goto fail;
+ 
+         syncobj->timeline =
+-            wp_linux_drm_syncobj_v1_import_timeline(xwl_screen->explicit_sync,
++            wp_linux_drm_syncobj_manager_v1_import_timeline(xwl_screen->explicit_sync,
+                                                     syncobj_fd);
+         close(syncobj_fd);
+         if (!syncobj->timeline)
+@@ -1329,10 +1329,10 @@ xwl_glamor_gbm_init_wl_registry(struct xwl_screen *xwl_screen,
+     } else if (strcmp(name, zwp_linux_dmabuf_v1_interface.name) == 0) {
+         xwl_screen_set_dmabuf_interface(xwl_screen, id, version);
+         return TRUE;
+-    } else if (strcmp(name, wp_linux_drm_syncobj_v1_interface.name) == 0) {
++    } else if (strcmp(name, wp_linux_drm_syncobj_surface_v1_interface.name) == 0) {
+         xwl_screen->explicit_sync =
+             wl_registry_bind(xwl_screen->registry, id,
+-                             &wp_linux_drm_syncobj_v1_interface,
++                             &wp_linux_drm_syncobj_surface_v1_interface,
+                              version);
+     }
+ 
