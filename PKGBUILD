@@ -1,7 +1,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgname=actual-server
 pkgver=23.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Actual Budget Server"
 arch=('any')
 url="https://github.com/actualbudget/actual-server"
@@ -54,7 +54,7 @@ package() {
 
     install -d -m 0755 "${pkgdir}/usr/share/webapps/actual-server"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    cp -r * "${pkgdir}/usr/share/webapps/actual-server"
+    cp -r {.,}* "${pkgdir}/usr/share/webapps/actual-server"
 
     install -d -m 0750 "${pkgdir}/var/lib/actual"
 
