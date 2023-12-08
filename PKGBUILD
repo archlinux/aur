@@ -1,3 +1,5 @@
+# Maintainer: Truocolo <truocolo@aol.com>
+# Maintainer: Pellegrino Prevete pellegrinoprevete@gmail.com>
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -7,7 +9,7 @@
 pkgname='python2-beautifulsoup4'
 _distname="${pkgname#python2-}"
 pkgver=4.9.3
-pkgrel=6
+pkgrel=7
 pkgdesc='Web HTML/XML parser addons for screen-scraping (legacy Python 2 version)'
 arch=('any')
 url="https://pypi.org/project/${_distname}/${pkgver}/"
@@ -16,7 +18,6 @@ depends=('python2-soupsieve')
 optdepends=(
     'python2-chardet: to autodetect character encodings'
     'python2-html5lib: alternative HTML parser'
-    'python2-lxml: alternative HTML parser'
 )
 makedepends=(
     'python2-setuptools'
