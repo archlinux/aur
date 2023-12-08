@@ -1,13 +1,16 @@
 # Maintainer:
 
+# options
+: ${CARGO_HOME:=${SRCDEST:-${startdir:?}}/cargo-home}
+
 : ${_pkgtype:=git}
 
 # basic info
 _pkgname="mozillavpn"
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=2.18.0.r128.gfb01c3a9c
+pkgver=2.19.0.r44.g54da75553
 pkgrel=1
-pkgdesc="Fast, secure and easy to use VPN. Built by the makers of Firefox."
+pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
 license=('MPL2')
 arch=('x86_64')
@@ -69,8 +72,17 @@ _main_stable() {
   source+=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
   sha256sums+=('SKIP')
 
+  _prepare() {
+    cd "$_pkgsrc"
+    local _tag=$(git tag | grep -Ev '^.*[A-Za-z]{2}.*$' | sort -V | tail -1)
+    _pkgver="${_tag#v}"
+
+    if [[ "$_tag" != "v${pkgver%%.r*}" ]] ; then
+      git checkout -f "$_tag"
+    fi
+  }
+
   pkgver() {
-    local _pkgver="${pkgver%%.r*}"
     echo "${_pkgver:?}"
   }
 }
@@ -84,6 +96,10 @@ _main_git() {
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git")
   sha256sums+=('SKIP')
+
+  _prepare() {
+    :
+  }
 
   pkgver() {
     cd "$_pkgsrc"
@@ -172,6 +188,8 @@ _source_getsentry_sentry_native() {
 
 # common functions
 prepare() {
+  _prepare
+
   _submodule_update() {
     for key in ${!_submodules[@]} ; do
       git submodule init "${_submodules[${key}]}"

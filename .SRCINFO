@@ -1,6 +1,6 @@
 pkgbase = mozillavpn-git
-	pkgdesc = Fast, secure and easy to use VPN. Built by the makers of Firefox.
-	pkgver = 2.18.0.r128.gfb01c3a9c
+	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox
+	pkgver = 2.19.0.r44.g54da75553
 	pkgrel = 1
 	url = https://github.com/mozilla-mobile/mozilla-vpn-client
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = mozillavpn-git
 	depends = wireguard-tools
 	optdepends = openresolv: for resolv.conf management
 	optdepends = qt6-wayland: for Wayland support
-	provides = mozillavpn=2.18.0
+	provides = mozillavpn=2.19.0
 	conflicts = mozillavpn
 	options = !lto
 	source = mozillavpn::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git
