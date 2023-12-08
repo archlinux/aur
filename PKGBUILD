@@ -5,7 +5,7 @@
 # Contributor : Cassfalg <ch(dot)assfalg(at)gmx(dot)de>
 
 pkgname=teamdrive
-pkgver=5.0.7.3414
+pkgver=5.0.8.3464
 pkgrel=1
 pkgdesc="Keeps data synchronised between various computers automatically."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source_x86_64=("https://download.teamdrive.net/${pkgver}/TMDR/linux-x86_64/Insta
 
 
 sha256sums=('b81c4e2573b8478ce69a0ba66f5a493ecd73dbb8a94fe92fa33b1f5f14b8fb2c')
-sha256sums_x86_64=('7575afa3f503c5646a33be6694b8e09e90e96e296412296a4ceead5fed2d779d')
+sha256sums_x86_64=('1ab1ad75fde9c8cb43f032ac6b724eb3b37e7d06fa4a0e96f8f168ad8e8fdec6')
 
 options=(!strip)
 
