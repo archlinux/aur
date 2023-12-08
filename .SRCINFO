@@ -1,7 +1,7 @@
 pkgbase = whatsapp-electron-bin
 	pkgdesc = WhatsApp Client built on Electron with multi-account support!
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dagmoller/whatsapp-electron
 	arch = x86_64
 	license = custom
