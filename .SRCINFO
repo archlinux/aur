@@ -1,17 +1,15 @@
 pkgbase = jdownloader2
-	pkgdesc = Download manager, written in Java, for one-click hosting sites like Rapidshare and Megaupload. Uses its own updater.
+	pkgdesc = Download manager, written in Java, for one-click hosting sites like Rapidshare and MEGA. Uses its own updater.
 	pkgver = latest
-	pkgrel = 17
+	pkgrel = 18
 	url = https://jdownloader.org/
 	install = jdownloader.install
 	arch = any
 	license = GPL
 	depends = java-runtime
-	depends = wget
 	depends = libarchive
+	depends = hicolor-icon-theme
 	optdepends = phantomjs: needed for some remote capture solving
-	conflicts = jdownloader
-	replaces = jdownloader
 	source = JDownloader
 	source = JDownloaderHeadless
 	source = JDownloaderHeadlessCtl
@@ -36,7 +34,7 @@ pkgbase = jdownloader2
 	sha256sums = cab5904f226028fdc9384f407ceca34b4305885176fad29b08a2e8b83653a345
 	sha256sums = d555c78d8110e536aee67de765ee5134d872fbb48354050f7b2f14ff5499120a
 	sha256sums = dca392fad29c70eff609ec25abaefd33343c8a6c98088e0719c6746759ed0aa5
-	sha256sums = 70f4a5cd95532c70ae20a357e655d01ac23fe92bb71feac45973e2b53d024cff
+	sha256sums = ddea1dc41023cfdae4db91a23a86ebf8a6be294ee8ba59307f68f97c839d5f31
 	sha256sums = 1c9949bfeaf3595783eec9501e600cb8c4443e04f72d57c095560fb66dcd53d1
 	sha256sums = c4301592694b3273ed44814debcc03bf1e4fc85882954f5c03e55508c53c4491
 	sha256sums = 44a499df472328f9034f9972aad02df0fc27a45ef1bb3e9314576d2fa9fdfcbe
@@ -56,4 +54,3 @@ pkgbase = jdownloader2
 	sha256sums = 8d170fd301b37302a4f64cec759bdb5c879cb30c8b8e94120f3f985df1d31b7f
 
 pkgname = jdownloader2
-
