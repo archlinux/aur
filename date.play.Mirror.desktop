@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Playdate Mirror
+Exec=/usr/bin/PlaydateMirror %u
+Icon=date.play.Mirror
+Terminal=false
+Type=Application
+StartupWMClass=Mirror
+Categories=Development;Game
+StartupNotify=true

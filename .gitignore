@@ -1,0 +1,5 @@
+pkg/
+src/
+Mirror*.zip
+Mirror*.tar.gz
+*.pkg.*
