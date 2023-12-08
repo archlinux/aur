@@ -1,0 +1,15 @@
+pkgbase = quran-companion
+	pkgdesc = Cross-platform desktop offline Quran reader and player (binary release)
+	pkgver = 1.1.11
+	pkgrel = 1
+	url = https://github.com/0xzer0x/quran-companion
+	arch = x86_64
+	license = LGPL3
+	depends = fuse2
+	provides = quran-companion
+	conflicts = quran-companion-git
+	options = !strip
+	source = https://github.com/0xzer0x/quran-companion/releases/download/v1.1.11/Quran_Companion-1.1.11-x86_64.AppImage
+	md5sums = 63ad0a1a4c9328f85e53ce776973e4e6
+
+pkgname = quran-companion
