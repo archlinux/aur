@@ -1,3 +1,5 @@
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer: Truocolo <truocolo@aol.com>
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Konstantin Gizdov <arch@kge.pw>
 # Contributor: Dan McGee <dan@archlinux.org>
@@ -18,10 +20,14 @@ depends=(
   'python2-setuptools'
 )
 _tarname="${_name}-${pkgver}"
-source=("https://pypi.python.org/packages/source/${_name::1}/${_name}/${_tarname}.tar.gz"{,.asc})
-b2sums=('4bb479b2786f813f9e9a5fd401e30023a473a053ae013d7887be15af415422c09fb399af6058ae99ed65c5fa4da84eb274eb805e895ca74db159d952905f5be4'
-        'SKIP')
-validpgpkeys=('58B277C0D208F7AC460C07C84548B3A8C0D70C12') # John Szakmeister <john@szakmeister.net>
+source=(
+  "https://pypi.io/packages/source/${_name::1}/${_name}/${_tarname}.tar.gz"{,.asc})
+b2sums=(
+  '4bb479b2786f813f9e9a5fd401e30023a473a053ae013d7887be15af415422c09fb399af6058ae99ed65c5fa4da84eb274eb805e895ca74db159d952905f5be4'
+  'SKIP')
+validpgpkeys=(
+  # John Szakmeister <john@szakmeister.net>
+  '58B277C0D208F7AC460C07C84548B3A8C0D70C12')
 
 build() {
   cd "${_tarname}"
