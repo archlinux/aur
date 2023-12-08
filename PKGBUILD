@@ -12,7 +12,7 @@ depends=(
 )
 arch=("x86_64")
 source=("https://raw.githubusercontent.com/Sharktheone/arch-mojo/main/install.py")
-sha256sums=("dbf10c14d2de0e447af97e674b340989dabe11622b3e7021ea899aba78e8e807")
+sha256sums=("aee8c68cc4799df8271e0db9e464ebd2917a07fd3c063838965373002c5b72f3")
 
 install=mojo-git.install
 
