@@ -1,10 +1,12 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=opengnb-git
-pkgver=1.3.0.c.27.g414b1fc
-pkgrel=1
+pkgver=1.3.0.c.29.g448942f
+pkgrel=3
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
-arch=('x86_64')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/gnbdev/opengnb"
 license=('GPLv3')
 provides=(${pkgname%-git})
