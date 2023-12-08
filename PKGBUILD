@@ -1,10 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xfel-git
-pkgver=1.3.0.r0.gb733b3a
-pkgrel=1
+pkgver=1.3.2.r19.g6f92b44
+pkgrel=5
 pkgdesc="Tiny FEL tools for allwinner SOC, support RISC-V D1 chip."
-arch=('x86_64')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/xboot/xfel"
 license=('MIT')
 provides=(${pkgname%-git})
