@@ -1,7 +1,7 @@
 # Maintainer: danieltetraquark
 pkgname=scanservjs
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SANE scanner nodejs web ui"
 arch=('any')
 url="https://github.com/sbs20/scanservjs"
@@ -26,8 +26,8 @@ build() {
 
     npm clean-install .
     npm run build
-    npm clean-install --omit=dev --only=prod --loglevel=error --prefix dist
-    find dist/node_modules -name "*.map" -type f -delete
+    npm clean-install --omit=dev --only=prod --loglevel=error
+#    find dist/node_modules -name "*.map" -type f -delete
 
 #   npm run build:version && npm run build --workspaces && node build.js --assemble
 
@@ -37,8 +37,8 @@ build() {
 
 #    npm run package
 
-#    cd dist
-#    npm install --production
+    cd dist
+    npm install --production
 
 }
 

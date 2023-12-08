@@ -1,7 +1,7 @@
 pkgbase = scanservjs
 	pkgdesc = SANE scanner nodejs web ui
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sbs20/scanservjs
 	install = scanservjs.install
 	arch = any
