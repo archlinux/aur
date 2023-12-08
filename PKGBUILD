@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqinr
-_pkgver=4.2-30
+_pkgver=4.2-36
 pkgname=r-${_pkgname,,}
-pkgver=4.2.30
+pkgver=4.2.36
 pkgrel=1
 pkgdesc='Biological Sequences Retrieval and Analysis'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
   r-segmented
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('faf8fe533867eeef57fddfa6592e19d5984954d0670c6c7dbeab6411d55fee4b')
+sha256sums=('931a62a091a7aaaa5efadb1fe85f29e861e2506b75710ba3a6be9b58cb14b225')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
