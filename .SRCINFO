@@ -1,6 +1,6 @@
 pkgbase = guacamole-client
 	pkgdesc = Java and Maven components of Guacamole
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://guacamole.apache.org/
 	install = guacamole-client.install
@@ -15,9 +15,9 @@ pkgbase = guacamole-client
 	replaces = guacamole
 	backup = etc/guacamole/guacamole.properties
 	backup = etc/guacamole/user-mapping.xml
-	source = http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.5.3/source/guacamole-client-1.5.3.tar.gz
+	source = http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.5.4/source/guacamole-client-1.5.4.tar.gz
 	source = guacamole.properties
-	md5sums = 9877b4e97017b1c888f4f2c6ae19b496
+	md5sums = 47866d36b72ddd96731429795b2eb98b
 	md5sums = 1f3ec0a32cc3c6b4f7aeb8a3b2e7531b
 
 pkgname = guacamole-client
