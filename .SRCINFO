@@ -1,7 +1,7 @@
 pkgbase = python-pyephem
 	pkgdesc = PyEphem provides scientific-grade astronomical computations
-	pkgver = 4.1.3
-	pkgrel = 2
+	pkgver = 4.1.5
+	pkgrel = 1
 	url = http://rhodesmill.org/pyephem/
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = python-pyephem
 	makedepends = python
 	makedepends = python-setuptools
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/e/ephem/ephem-4.1.3.tar.gz
-	md5sums = c2249ec600238e0af3d12a70871563f4
+	source = https://files.pythonhosted.org/packages/source/e/ephem/ephem-4.1.5.tar.gz
+	md5sums = 943b29d8c47f884d90bea35c8a5b632d
 
 pkgname = python-pyephem
 	depends = python
