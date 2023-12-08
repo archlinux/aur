@@ -1,5 +1,5 @@
 # Maintainer: Nina l1f <nina@l1f.de>
-pkgname=pre-commit-git
+pkgname=python-pre-commit-git
 pkgver=3.3.3
 pkgrel=1
 pkgdesc="A framework for managing and maintaining multi-language pre-commit hooks."
@@ -11,7 +11,7 @@ depends=('python-cfgv' 'python-identify' 'python-nodeenv' 'python-yaml' 'python-
 makedepends=('python-setuptools' 'git')
 checkdepends=('python-pytest' 'python-pytest-env' 'python-re-assert' 'dotnet-sdk' 'git'
               'go' 'nodejs' 'npm' 'rubygems' 'rust' 'r' 'dart' 'luarocks')
-provides=('pre-commit')
+provides=('python-pre-commit')
 conflicts=('python-pre-commit')
 source=("${pkgname}::git+https://github.com/pre-commit/pre-commit.git")
 md5sums=(SKIP)
