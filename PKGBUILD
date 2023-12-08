@@ -2,10 +2,12 @@
 
 pkgname=fantascene-dynamic-wallpaper-git
 srcname=fantascene-dynamic-wallpaper-git
-pkgver=1.6.1.r0.g55703b1
-pkgrel=1
+pkgver=1.6.4.r0.ge109d8e
+pkgrel=2
 pkgdesc=" dynamic wallpaper. A very nice animated wallpaper on X11 systems.Support Movie and Web animated wallpaper."
-arch=('any')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/dependon/fantascene-dynamic-wallpaper"
 license=('GPLv3')
 provides=(${pkgname})
