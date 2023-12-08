@@ -1,6 +1,6 @@
 pkgbase = r-pcapp
 	pkgdesc = Robust PCA by Projection Pursuit
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pcaPP
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-pcapp
 	depends = r
 	depends = r-mvtnorm
 	optdepends = r-robustbase
-	source = https://cran.r-project.org/src/contrib/pcaPP_2.0-3.tar.gz
-	sha256sums = 1aac554f039753bf9d026090e47d66b82bf3f1f75479ed0adefa3f7bbb55d603
+	source = https://cran.r-project.org/src/contrib/pcaPP_2.0-4.tar.gz
+	sha256sums = d6c5670611d92ffa11904746a62191e6bcf294fb96afee10cb25ebbbd8458133
 
 pkgname = r-pcapp

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pcaPP
-_pkgver=2.0-3
+_pkgver=2.0-4
 pkgname=r-${_pkgname,,}
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='Robust PCA by Projection Pursuit'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   r-robustbase
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1aac554f039753bf9d026090e47d66b82bf3f1f75479ed0adefa3f7bbb55d603')
+sha256sums=('d6c5670611d92ffa11904746a62191e6bcf294fb96afee10cb25ebbbd8458133')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
