@@ -1,6 +1,6 @@
 pkgbase = digitalwatchdog-client
 	pkgdesc = DW Spectrum Client
-	pkgver = 5.0.0.36871
+	pkgver = 5.1.1.37512
 	pkgrel = 1
 	url = https://digital-watchdog.com/
 	install = digitalwatchdog-client.install
@@ -43,7 +43,7 @@ pkgbase = digitalwatchdog-client
 	replaces = digitalwatchdog-client-1.2<4.2.0
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://updates.networkoptix.com/digitalwatchdog/36871/linux/dwspectrum-client-5.0.0.36871-linux_x64.deb
-	sha512sums_x86_64 = 0525b0b969a0aa850cbd00f54a16822016845b5e06781dd78fa763b9f736c71a0e155d88661d4501e448739ace99f81f57350a1421f88d8940c068d34ba0b5d7
+	source_x86_64 = https://updates.digital-watchdog.com/digitalwatchdog/37512/linux/dwspectrum-client-5.1.1.37512-linux_x64.deb
+	sha512sums_x86_64 = 45f3479ca1e711873820b454060c218d60d83e6d55a2391058f8b434e4fa23e08798579251b78061025df9230d76cde2da8a32cee4892fa558786bd7e72ed8e3
 
 pkgname = digitalwatchdog-client
