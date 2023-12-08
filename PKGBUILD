@@ -1,26 +1,26 @@
+# Maintainer: Roc <roc dot gui at outlook dot com>
 # Maintainer: Francois Menning <f.menning@pm.me>
 
-_gitname=chromeos-kde
+_gitname=ChromeOS-kde
 pkgname=chromeos-kde-theme-git
-pkgver=r28.55d0e85
+pkgver=r76.383b4a5
 pkgrel=1
 pkgdesc="ChromeOS theme for the KDE Plasma desktop."
 arch=('any')
-url="https://github.com/vinceliuice/ChromeOS-kde"
+url="https://github.com/vinceliuice/${_gitname}"
 license=('GPL3')
 depends=('plasma-desktop')
-optdepends=('kvantum-qt5' 'chromeos-gtk-theme-git' 'tela-icon-theme-git' 'sddm')
+optdepends=('kvantum: for included kvantum theme' 'chromeos-gtk-theme-git: matching gtk theme' 'tela-icon-theme-git: matching icon theme' 'sddm: for included sddm theme')
 makedepends=('git')
 source=(
-  "${_gitname}::git+https://github.com/vinceliuice/ChromeOS-kde.git"
+  "${_gitname}::git+${url}.git"
   'fix-theme-installer-path.patch'
 )
-sha256sums=('SKIP'
-            '3c5ec095be345bc5e560c0f594e1afdef9b2ffef9e3de90c52673382ec85f729')
+sha256sums=('SKIP' '3c5ec095be345bc5e560c0f594e1afdef9b2ffef9e3de90c52673382ec85f729')
 
 pkgver() {
   cd ${_gitname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare () {
