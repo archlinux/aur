@@ -5,12 +5,12 @@ _pluginname=OBSInfoWriter
 pkgname=obs-infowriter
 pkgver=2.3
 _deps_commit=cf621ae938e69cc63e37d4d32a7cbdc32486787b
-pkgrel=1
+pkgrel=2
 pkgdesc="This plugin writes a timestamp to a textfile that you can use to mark specific events for later editing of your videos or streams"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/infowriter.345/"
 license=("MPL2")
-depends=("obs-studio>=28")
+depends=("obs-studio>=28" "gcc-libs" "glibc")
 source=(
   "$_pluginname-$pkgver.tar.gz::https://github.com/partouf/$_pluginname/archive/v$pkgver.tar.gz"
   "$_depsname-$_deps_commit.tar.gz::https://github.com/partouf/$_depsname/archive/$_deps_commit.tar.gz"
@@ -26,6 +26,8 @@ prepare() {
   cd "$_pluginname-$pkgver"
 
   sed -i 's|-I"../include" -I"../obs-studio/libobs" -I"../obs-studio/UI"|-I"/usr/include/obs"|g' Makefile.linux
+
+  sed -i 's|<cmath>|<cmath>\n#include <cstdint>|g' OutputFormat/OutputFormat.{Default,EDL}.cpp
 }
 
 build() {
