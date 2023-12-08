@@ -1,29 +1,22 @@
-From 2193618cfdb7eca237b340799a5cf089e36e8ea2 Mon Sep 17 00:00:00 2001
+From de74d1f6360810c0a5fd11d8022fbffe56fc97c5 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Wed, 3 May 2023 14:21:27 +0800
-Subject: [PATCH] text_input: Implement input-method popups
+Subject: [PATCH 1/2] text_input: Implement input-method popups
 
+origin one is the pr by tadeokondrak in pr 5890
+
+Co-authored-by: tadeokondrak <me@tadeo.ca>
 ---
- .gitignore                      |   1 +
  include/sway/input/text_input.h |  24 +++
  include/sway/output.h           |   4 +
  sway/desktop/output.c           |  29 +++
- sway/desktop/render.c           |  16 +-
+ sway/desktop/render.c           |  15 +-
  sway/input/cursor.c             |  26 +++
  sway/input/text_input.c         | 350 +++++++++++++++++++++++++++++++-
  sway/tree/container.c           |   3 +
  sway/tree/view.c                |   3 +
- 9 files changed, 448 insertions(+), 8 deletions(-)
+ 8 files changed, 446 insertions(+), 8 deletions(-)
 
-diff --git a/.gitignore b/.gitignore
-index 167960e2ec..fb88b495eb 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -12,3 +12,4 @@ config-debug
- wayland-*-protocol.*
- /subprojects/wlroots
- subprojects
-+.cache
 diff --git a/include/sway/input/text_input.h b/include/sway/input/text_input.h
 index 214e61d12c..a01ddf5515 100644
 --- a/include/sway/input/text_input.h
@@ -92,10 +85,10 @@ index 62d866bc2b..439126a4f7 100644
  	struct wl_list *drag_icons, sway_surface_iterator_func_t iterator,
  	void *user_data);
 diff --git a/sway/desktop/output.c b/sway/desktop/output.c
-index f2bc4a6788..7eb157fb45 100644
+index d9328701c9..2a9d3de0c7 100644
 --- a/sway/desktop/output.c
 +++ b/sway/desktop/output.c
-@@ -23,6 +23,7 @@
+@@ -24,6 +24,7 @@
  #include "sway/input/input-manager.h"
  #include "sway/input/seat.h"
  #include "sway/ipc-server.h"
@@ -103,7 +96,7 @@ index f2bc4a6788..7eb157fb45 100644
  #include "sway/layers.h"
  #include "sway/output.h"
  #include "sway/server.h"
-@@ -258,6 +259,31 @@ void output_unmanaged_for_each_surface(struct sway_output *output,
+@@ -259,6 +260,31 @@ void output_unmanaged_for_each_surface(struct sway_output *output,
  }
  #endif
  
@@ -135,7 +128,7 @@ index f2bc4a6788..7eb157fb45 100644
  void output_drag_icons_for_each_surface(struct sway_output *output,
  		struct wl_list *drag_icons, sway_surface_iterator_func_t iterator,
  		void *user_data) {
-@@ -368,6 +394,9 @@ static void output_for_each_surface(struct sway_output *output,
+@@ -369,6 +395,9 @@ static void output_for_each_surface(struct sway_output *output,
  	output_layer_for_each_surface(output,
  		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY],
  		iterator, user_data);
@@ -146,10 +139,10 @@ index f2bc4a6788..7eb157fb45 100644
  		iterator, user_data);
  }
 diff --git a/sway/desktop/render.c b/sway/desktop/render.c
-index c4c0004e77..fab0772b65 100644
+index 9cfdea842f..76afdcbbe2 100644
 --- a/sway/desktop/render.c
 +++ b/sway/desktop/render.c
-@@ -183,6 +183,15 @@ static void render_unmanaged(struct render_context *ctx, struct wl_list *unmanag
+@@ -184,6 +184,15 @@ static void render_unmanaged(struct render_context *ctx, struct wl_list *unmanag
  }
  #endif
  
@@ -165,18 +158,17 @@ index c4c0004e77..fab0772b65 100644
  static void render_drag_icons(struct render_context *ctx, struct wl_list *drag_icons) {
  	struct render_data data = {
  		.alpha = 1.0f,
-@@ -1057,6 +1066,10 @@ void output_render(struct render_context *ctx) {
+@@ -1058,6 +1067,9 @@ void output_render(struct render_context *ctx) {
  		goto renderer_end;
  	}
  
 +	struct sway_seat *seat = input_manager_current_seat();
 +	struct sway_container *focus = seat_get_focused_container(seat);
-+	// here use seat
 +
  	if (output_has_opaque_overlay_layer_surface(output)) {
  		goto render_overlay;
  	}
-@@ -1119,8 +1132,6 @@ void output_render(struct render_context *ctx) {
+@@ -1120,8 +1132,6 @@ void output_render(struct render_context *ctx) {
  
  	render_seatops(ctx);
  
@@ -185,7 +177,7 @@ index c4c0004e77..fab0772b65 100644
  	if (focus && focus->view) {
  		render_view_popups(ctx, focus->view, focus->alpha);
  	}
-@@ -1130,6 +1141,7 @@ void output_render(struct render_context *ctx) {
+@@ -1131,6 +1141,7 @@ void output_render(struct render_context *ctx) {
  		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY]);
  	render_layer_popups(ctx,
  		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY]);
@@ -194,7 +186,7 @@ index c4c0004e77..fab0772b65 100644
  
  renderer_end:
 diff --git a/sway/input/cursor.c b/sway/input/cursor.c
-index 36aab93e23..4fed0a4bb0 100644
+index 36aab93e23..4b6a983545 100644
 --- a/sway/input/cursor.c
 +++ b/sway/input/cursor.c
 @@ -37,6 +37,28 @@ static uint32_t get_current_time_msec(void) {
@@ -209,7 +201,7 @@ index 36aab93e23..4fed0a4bb0 100644
 +		if (!sway_input_popup_get_position(popup, &lx, &ly)) {
 +			continue;
 +		}
-+		if (!popup->popup_surface->surface->mapped || !popup->visible) {
++		if (!popup->visible) {
 +			continue;
 +		}
 +		double _sx = ox - lx;
@@ -673,10 +665,10 @@ index 8c344a6d4c..f45f11d24c 100644
  		wlr_xdg_surface_try_from_wlr_surface(surface);
  	return xdg_surface->role == WLR_XDG_SURFACE_ROLE_POPUP && xdg_surface->popup != NULL;
 diff --git a/sway/tree/view.c b/sway/tree/view.c
-index a9035de7ec..ef777ae08f 100644
+index 00dc47215f..73cc432fb0 100644
 --- a/sway/tree/view.c
 +++ b/sway/tree/view.c
-@@ -1208,6 +1208,9 @@ struct sway_view *view_from_wlr_surface(struct wlr_surface *wlr_surface) {
+@@ -1210,6 +1210,9 @@ struct sway_view *view_from_wlr_surface(struct wlr_surface *wlr_surface) {
  	if (wlr_layer_surface_v1_try_from_wlr_surface(wlr_surface) != NULL) {
  		return NULL;
  	}
@@ -686,3 +678,91 @@ index a9035de7ec..ef777ae08f 100644
  
  	const char *role = wlr_surface->role ? wlr_surface->role->name : NULL;
  	sway_log(SWAY_DEBUG, "Surface of unknown type (role %s): %p",
+
+From 2aa72e8dfd3b3d051fdec6b2d05c5635adcfb57b Mon Sep 17 00:00:00 2001
+From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
+Date: Fri, 8 Dec 2023 16:07:58 +0800
+Subject: [PATCH 2/2] chore: fractal scale handle
+
+---
+ include/sway/input/text_input.h |  1 +
+ sway/desktop/output.c           | 23 +++++++++++++++++++++++
+ sway/input/text_input.c         |  4 ++++
+ 3 files changed, 28 insertions(+)
+
+diff --git a/include/sway/input/text_input.h b/include/sway/input/text_input.h
+index a01ddf5515..f583af7a94 100644
+--- a/include/sway/input/text_input.h
++++ b/include/sway/input/text_input.h
+@@ -4,6 +4,7 @@
+ #include <wlr/types/wlr_text_input_v3.h>
+ #include <wlr/types/wlr_input_method_v2.h>
+ #include <wlr/types/wlr_compositor.h>
++#include <wlr/types/wlr_fractional_scale_v1.h>
+ 
+ /**
+  * The relay structure manages the relationship between text-input and
+diff --git a/sway/desktop/output.c b/sway/desktop/output.c
+index 2a9d3de0c7..0d18eb3a25 100644
+--- a/sway/desktop/output.c
++++ b/sway/desktop/output.c
+@@ -15,6 +15,7 @@
+ #include <wlr/types/wlr_output.h>
+ #include <wlr/types/wlr_presentation_time.h>
+ #include <wlr/types/wlr_compositor.h>
++#include <wlr/types/wlr_fractional_scale_v1.h>
+ #include <wlr/util/region.h>
+ #include <wlr/util/transform.h>
+ #include "config.h"
+@@ -962,6 +963,27 @@ static void update_output_scale_iterator(struct sway_output *output,
+ 	surface_update_outputs(surface);
+ }
+ 
++static void update_im_scale(struct sway_output *output) {
++	struct sway_seat* im_seat = input_manager_current_seat();
++	if (im_seat == NULL) {
++		return;
++	}
++	struct sway_input_method_relay* relay = &im_seat->im_relay;
++	struct sway_input_popup *popup;
++	wl_list_for_each(popup, &relay->input_popups, link) {
++		struct wl_list current_outputs = popup->popup_surface->surface->current_outputs;
++		struct wlr_surface_output *current_output;
++		wl_list_for_each(current_output, &current_outputs, link) {
++			if (current_output->output == output->wlr_output) {
++				double scale = current_output->output->scale;
++				wlr_fractional_scale_v1_notify_scale(popup->popup_surface->surface, scale);
++				wlr_surface_set_preferred_buffer_scale(popup->popup_surface->surface, ceil(scale));
++				break;
++			}
++		}
++	}
++}
++
+ static void handle_commit(struct wl_listener *listener, void *data) {
+ 	struct sway_output *output = wl_container_of(listener, output, commit);
+ 	struct wlr_output_event_commit *event = data;
+@@ -973,6 +995,7 @@ static void handle_commit(struct wl_listener *listener, void *data) {
+ 	if (event->state->committed & WLR_OUTPUT_STATE_SCALE) {
+ 		output_for_each_container(output, update_textures, NULL);
+ 		output_for_each_surface(output, update_output_scale_iterator, NULL);
++		update_im_scale(output);
+ 	}
+ 
+ 	if (event->state->committed & (
+diff --git a/sway/input/text_input.c b/sway/input/text_input.c
+index 05c867d6ff..fec11e7762 100644
+--- a/sway/input/text_input.c
++++ b/sway/input/text_input.c
+@@ -169,7 +169,11 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ static void surface_send_enter_iterator(struct wlr_surface *surface,
+ 		int x, int y, void *data) {
+ 	struct wlr_output *wlr_output = data;
++	float scale = wlr_output->scale;
+ 	wlr_surface_send_enter(surface, wlr_output);
++
++	wlr_fractional_scale_v1_notify_scale(surface, scale);
++	wlr_surface_set_preferred_buffer_scale(surface, ceil(scale));
+ }
+ 
+ static void surface_send_leave_iterator(struct wlr_surface *surface,
