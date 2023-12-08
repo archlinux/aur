@@ -1,9 +1,11 @@
 pkgbase = crm-git
 	pkgdesc = crm (Cargo registry manager)
-	pkgver = 0.2.1.r0.g9aea8c5
-	pkgrel = 1
+	pkgver = 0.2.1.r2.gb5c7c24
+	pkgrel = 2
 	url = https://github.com/wtklbm/crm
-	arch = any
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
 	license = MIT
 	license = Apache-2.0
 	makedepends = git

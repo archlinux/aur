@@ -1,10 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=crm-git
-pkgver=0.2.1.r0.g9aea8c5
-pkgrel=1
+pkgver=0.2.1.r2.gb5c7c24
+pkgrel=2
 pkgdesc="crm (Cargo registry manager)"
-arch=('any')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/wtklbm/crm"
 license=('MIT' 'Apache-2.0')
 provides=(${pkgname%-git})
