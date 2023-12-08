@@ -1,0 +1,23 @@
+pkgbase = scx-git
+	pkgdesc = sched_ext schedulers and tools
+	pkgver = 0.1.0.r9.g5751f1c
+	pkgrel = 1
+	url = https://github.com/sched-ext/scx
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = python
+	makedepends = meson
+	makedepends = clang
+	makedepends = llvm-libs
+	makedepends = cargo
+	makedepends = rust
+	depends = libbpf
+	depends = bpf
+	depends = libelf
+	depends = zlib
+	options = !lto
+	source = scx::git+https://github.com/sched-ext/scx
+	sha256sums = SKIP
+
+pkgname = scx-git
