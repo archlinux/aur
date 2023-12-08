@@ -1,8 +1,8 @@
 # Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 pkgname='zellij-selector'
-pkgver='2.4.1'
-pkgrel='2'
+pkgver='2.5.0'
+pkgrel='1'
 pkgdesc='Select zellij session'
 arch=('any')
 url='https://codeberg.org/stefanwimmer128/zellij-selector'
