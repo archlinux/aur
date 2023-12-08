@@ -1,11 +1,13 @@
+# SPDX-License-Identifier: AGPL-3.0
 # Maintainer: Pellegrino Prevete <pellegrinoprevete at gmail.com>
 # Contributor: mehalter <micah at mehalter.com>
 # Contributor: xsmile <>
+# Contributor: Pieter Frenssen <pieter@frenssen.be>
 
 pkgname="myetherwallet"
 _pkg="MyEtherWallet"
 pkgver=6.7.3
-pkgrel=1
+pkgrel=2
 _pkgdesc=(
   'Client-side interface for interacting'
   'with the Ethereum blockchain')
@@ -38,18 +40,35 @@ prepare() {
 
 package() {
   # Lib directory
-  install -d "${pkgdir}/opt/${pkgname}"
-  cp -a css fonts img js workbox-* *.css *.html *.js *.png \
-       "${pkgdir}/opt/${pkgname}"
+  install \
+    -d "${pkgdir}/opt/${pkgname}"
+  cp \
+    -a \
+    css \
+    fonts \
+    img \
+    js \
+    workbox-* \
+    *.css \
+    *.html \
+    *.js \
+    *.png \
+    "${pkgdir}/opt/${pkgname}"
   # Executable
-  install -Dm755 "${srcdir}/${pkgname}" \
-          -t "$pkgdir"/usr/bin
+  install \
+    -Dm755 "${srcdir}/${pkgname}" \
+    -t "$pkgdir"/usr/bin
   # License
-  install -Dm644 "${srcdir}/LICENSE" \
-          -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install \
+    -Dm644 "${srcdir}/${pkgname}.license" \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}"
   # Menu entry and icon
-  install -Dm644 "${srcdir}/${pkgname}.desktop" \
-          -t "$pkgdir"/usr/share/applications
-  install -Dm644 favicon.png \
-          "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install \
+    -Dm644 "${srcdir}/${pkgname}.desktop" \
+    -t "$pkgdir"/usr/share/applications
+  install \
+    -Dm644 favicon.png \
+    "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
+
+# vim:set sw=2 sts=-1 et:
