@@ -20,6 +20,7 @@ pkgbase = python-rasterio
 	optdepends = ipython: for ipython support
 	optdepends = python-boto3: for s3 support
 	optdepends = python-matplotlib: for plotting support
+	optdepends = python-swiftclient: for OpenStack support
 	source = rasterio-1.3.9.tar.gz::https://github.com/rasterio/rasterio/archive/1.3.9.tar.gz
 	sha512sums = 4e360446acdd8b243fa8acae38f9351c48fcb8ca99068fd547c92654a786dc3bd81f7e96147786686d95b786a366b3fdd4554f45ab23208a3a874c208f2a4e8f
 

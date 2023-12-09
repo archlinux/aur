@@ -32,7 +32,8 @@ makedepends=(python-build python-installer cython python-wheel)
 # )
 optdepends=('ipython: for ipython support'
   'python-boto3: for s3 support'
-  'python-matplotlib: for plotting support')
+  'python-matplotlib: for plotting support'
+  'python-swiftclient: for OpenStack support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('4e360446acdd8b243fa8acae38f9351c48fcb8ca99068fd547c92654a786dc3bd81f7e96147786686d95b786a366b3fdd4554f45ab23208a3a874c208f2a4e8f')
 
