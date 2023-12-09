@@ -1,0 +1,16 @@
+pkgbase = cargo-docs-rs
+	pkgdesc = Immitate the documentation build that docs.rs would do
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/dtolnay/cargo-docs-rs
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	depends = gcc-libs
+	source = cargo-docs-rs-0.1.5.tar.gz::https://github.com/dtolnay/cargo-docs-rs/archive/0.1.5.tar.gz
+	source = Cargo.lock
+	sha512sums = b8d65441f193e557d224fcbb6293031f1a95ca9300402bc8821897a58c9c1b1cd2e09e6c8598a4424b3c99948f674c4b22929e74fa8eb875c5c67d59f62aa8f1
+	sha512sums = ed23f3c8c311ea6f97eb975affd1a47972449d9b0b656b1b0c8e80fb95c25d02ffecdf6720eae625b5435a531f15890c6aadcb51ab0ccf8372835d08c36d02e9
+
+pkgname = cargo-docs-rs
