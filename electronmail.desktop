@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ElectronMail
+Exec=electronmail
+Terminal=false
+Type=Application
+Icon=electronmail
+StartupWMClass=electronmail
+Comment=Unofficial ProtonMail Desktop App
+Categories=Office;
