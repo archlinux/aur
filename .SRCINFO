@@ -1,0 +1,17 @@
+pkgbase = r-cytomem
+	pkgdesc = Marker Enrichment Modeling (MEM)
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/cytoMEM
+	arch = any
+	license = GPL3
+	depends = r-flowcore
+	depends = r-gplots
+	depends = r-matrixstats
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cytoMEM_1.6.0.tar.gz
+	md5sums = 4a407b89f327c4c88301e81f982598f9
+	sha256sums = bebc3ea4a8e378788446553b2a7d2e1572c1420d59b44596beb48a9ca5e4083b
+
+pkgname = r-cytomem
