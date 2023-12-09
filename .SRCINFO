@@ -1,6 +1,6 @@
 pkgbase = vpkedit-git
 	pkgdesc = A library and tool to create, read, and write Valve VPK archives
-	pkgver = 3.6.0.r1.gf735c5a
+	pkgver = 3.6.0.r7.gecb4e74
 	pkgrel = 1
 	url = https://github.com/craftablescience/VPKEdit
 	arch = x86_64
@@ -21,6 +21,8 @@ pkgbase = vpkedit-git
 	source = saap::git+https://github.com/Trico-Everfire/SteamAppPathProvider.git
 	source = speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git
 	source = studiomodelpp::git+https://github.com/craftablescience/studiomodelpp.git
+	source = bufferstream::git+https://github.com/craftablescience/BufferStream.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

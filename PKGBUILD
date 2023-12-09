@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=3.6.0.r1.gf735c5a
+pkgver=3.6.0.r7.gecb4e74
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
 arch=('x86_64')
@@ -15,8 +15,10 @@ source=("$pkgname::git+$url.git"
 		"vtflib::git+https://github.com/StrataSource/VTFLib.git"
 		"saap::git+https://github.com/Trico-Everfire/SteamAppPathProvider.git"
 		"speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git"
-		"studiomodelpp::git+https://github.com/craftablescience/studiomodelpp.git")
+		"studiomodelpp::git+https://github.com/craftablescience/studiomodelpp.git"
+		"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -35,6 +37,11 @@ prepare() {
 	do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"
 	done
+	git -c protocol.file.allow=always submodule update
+
+	cd "$srcdir/$pkgname/src/gui/thirdparty/studiomodelpp/"
+	git submodule init
+	git config submodule.src/thirdparty/bufferstream.url "$srcdir/bufferstream"
 	git -c protocol.file.allow=always submodule update
 }
 
