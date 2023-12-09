@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='js_of_ocaml'
 pkgname="ocaml-$_projectname"
-pkgver='5.5.0'
+pkgver='5.5.2'
 pkgrel='1'
 pkgdesc='Compiler from OCaml to Javascript'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('ocaml>=4.08.0' 'ocaml-cmdliner>=1.1.0' 'ocaml-graphics' 'ocaml-lwt>=2.
 makedepends=('dune>=3.7.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('8c4dffd137e46deb8640149e9c155a843079578a120b06aa478bd1b638657a200adcb167c2c8e0fba09bc5fadcba391f8cedc154929dfc1327922c9782b6f33c')
+sha512sums=('669b23d7ff5795fe1cde9e2c3a1f73d8d9712785adbbeb5fd379df463124c04efa3bf1106bf9c0eae071eb89750d3ac26a97c60879ce6440d6994bfeb8d7b856')
 
 _sourcedirectory="$_projectname-$pkgver"
 
