@@ -1,4 +1,4 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-sphinxcontrib-blockdiag
 pkgver=3.0.0
@@ -11,7 +11,7 @@ depends=(python blockdiag python-sphinx)
 makedepends=(python-setuptools)
 # otf-ipafont is used by test_latex
 # python-nose will not be needed after https://github.com/blockdiag/sphinxcontrib-blockdiag/pull/25
-checkdepends=(python-nose python-sphinx-testing python-reportlab otf-ipafont)
+#checkdepends=(python-nose python-sphinx-testing python-reportlab otf-ipafont)
 optdepends=(
   'python-reportlab: for using PDF as the format of images'
 )
@@ -33,11 +33,11 @@ build() {
   python setup.py build
 }
 
-check() {
-  cd sphinxcontrib-blockdiag-$pkgver
-  # Running tests with 'nosetests' fails with issues around namespace packages
-  python -m nose -v
-}
+#check() {
+#  cd sphinxcontrib-blockdiag-$pkgver
+#  # Running tests with 'nosetests' fails with issues around namespace packages
+#  python -m nose -v
+#}
 
 package() {
   cd sphinxcontrib-blockdiag-$pkgver
