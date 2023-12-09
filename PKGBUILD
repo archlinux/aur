@@ -3,13 +3,14 @@
 
 pkgname=pushgateway
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus push acceptor for ephemeral and batch jobs."
 arch=('x86_64')
 url="https://github.com/prometheus/pushgateway"
 license=('Apache')
 depends=('glibc')
 makedepends=('go' 'git')
+options=('!lto')
 source=("https://github.com/prometheus/pushgateway/archive/v${pkgver}.tar.gz"
 	"pushgateway.service")
 
