@@ -7,8 +7,8 @@ _pkgver=1.20.2
 _build=318
 _license_commit=b4e3b3d
 pkgver="${_pkgver}+b${_build}"
-pkgrel=1
-_mng_ver=1.0.3
+pkgrel=2
+_mng_ver=1.0.4
 pkgdesc="Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance"
 arch=('any')
 url="https://papermc.io/"
@@ -25,7 +25,7 @@ source=("papermc.${pkgver}.jar"::"https://papermc.io/api/v2/projects/paper/versi
 noextract=("papermc.${pkgver}.jar")
 sha512sums=('93cc58ab048f2b2c6da1e0d71d98901fb39eb13f776f49baf87edfdb6d4d0d027df4cfdc6d03360843d50ef83b368962266e034b9bbd15baa18d4f0953960169'
             'd6e02d05f0cc3d3da6e131927292e77949ee00cfe3cdfbf50d8cfe21420260bdcdfd1f24451ddbc3b26344d8db02286b4bc172ec26baaef2615929aa80a3f2fb'
-            '1cc15371d8fad39ef8812059463dd92b91628ff3887bd0eb462d919cd3b2a948c4c3535f701bf4912de3e9c84b2333738f4dd63202f235b1726e79ed178fe156')
+            'dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556')
 
 _game="papermc"
 _server_root="/srv/papermc"
