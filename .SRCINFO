@@ -19,6 +19,7 @@ pkgbase = mozc-with-jp-dict
 	makedepends = ibus
 	makedepends = ruby
 	makedepends = ruby-parallel
+	options = !lto
 	source = git+https://github.com/fcitx/mozc.git#commit=6175674c6578f450028587fbcd4174350227a8f9
 	source = git+https://github.com/phoepsilonix/mozcdict-ext.git
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20230927/small_lex.zip

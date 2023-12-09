@@ -35,6 +35,7 @@ arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
 makedepends=('qt6-base' 'fcitx' 'fcitx-qt6' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'clang' 'ruby' 'ruby-parallel')
+options=(!lto)
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         git+https://github.com/phoepsilonix/mozcdict-ext.git
         #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
