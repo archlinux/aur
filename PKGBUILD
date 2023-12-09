@@ -3,7 +3,7 @@
 pkgname=python-qrcodegen
 _name=${pkgname#python-}
 pkgver=1.8.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="High quality QR Code generator library for Python"
 arch=('any')
@@ -13,7 +13,8 @@ groups=()
 depends=(python)
 makedepends=(python-build
             python-installer
-            python-wheel)
+            python-wheel
+            python-setuptools)
 options=('!strip')
 source=("${_name}-${pkgver}.zip::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.zip")
 noextract=()

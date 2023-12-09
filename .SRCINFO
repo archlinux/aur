@@ -1,13 +1,14 @@
 pkgbase = python-qrcodegen
 	pkgdesc = High quality QR Code generator library for Python
 	pkgver = 1.8.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://pypi.org/project/qrcodegen
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	options = !strip
 	source = qrcodegen-1.8.0.zip::https://files.pythonhosted.org/packages/source/q/qrcodegen/qrcodegen-1.8.0.zip
