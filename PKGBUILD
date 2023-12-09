@@ -1,20 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jamesdsp-pulse
 _app_id=me.timschneeberger.jdsp4linux.pulse
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
 license=('GPL3')
-depends=('glibmm' 'gst-plugins-good' 'hicolor-icon-theme' 'libarchive' 'libpulse'
-         'qt5-svg')
+depends=('glibmm' 'hicolor-icon-theme' 'libarchive' 'libpipewire' 'qt6-svg')
 makedepends=('git')
 provides=('jamesdsp')
 conflicts=('jamesdsp' 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 replaces=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 options=('!strip')
-_commit=e8c5f0af4c3b60cb70d5f92628d4de46a4ca2128  # tags/2.6.1^0
+_commit=30a30aa5ce90f97ea2c93bc372c0a67c8e3c54c8  # tags/2.7.0^0
 source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#commit=$_commit"
         'git+https://github.com/ThePBone/GraphicEQWidget.git'
         'git+https://github.com/ThePBone/FlatTabWidget.git'
@@ -47,7 +46,7 @@ build() {
   cd "$srcdir/JDSP4Linux"
 
   pushd build
-  qmake-qt5 .. "CONFIG += USE_PULSEAUDIO"
+  qmake6 ..
   make
   strip --strip-unneeded src/jamesdsp
   popd
