@@ -1,6 +1,6 @@
 pkgbase = ocaml-containers
 	pkgdesc = A lightweight, modular standard library extension, string library, and interfaces to various libraries for OCaml
-	pkgver = 3.12
+	pkgver = 3.13
 	pkgrel = 1
 	url = https://github.com/c-cube/ocaml-containers
 	arch = x86_64
@@ -14,11 +14,10 @@ pkgbase = ocaml-containers
 	checkdepends = ocaml-uutf
 	checkdepends = ocaml-yojson
 	depends = ocaml>=4.08.0
-	depends = dune>=2.0.0
+	depends = dune>=2.9.0
 	depends = ocaml-either
-	depends = ocaml-seq
 	options = !strip
-	source = ocaml-containers-3.12::git+https://github.com/c-cube/ocaml-containers#commit=81acaaa2cb6d5a458984c01c6bf881f2e8d612e9?signed
+	source = ocaml-containers-3.13::git+https://github.com/c-cube/ocaml-containers#commit=7c1ca1d82f3894bbfb634cbd421f696e854cafbc?signed
 	validpgpkeys = 1370978BC81E9735DFE727E1EBFFF6F283F3A2B4
 	sha512sums = SKIP
 

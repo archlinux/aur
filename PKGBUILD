@@ -1,13 +1,13 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='ocaml-containers'
-pkgver='3.12'
-_commit='81acaaa2cb6d5a458984c01c6bf881f2e8d612e9'
+pkgver='3.13'
+_commit='7c1ca1d82f3894bbfb634cbd421f696e854cafbc'
 pkgrel='1'
 pkgdesc='A lightweight, modular standard library extension, string library, and interfaces to various libraries for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/c-cube/$pkgname"
 license=('BSD')
-depends=('ocaml>=4.08.0' 'dune>=2.0.0' 'ocaml-either' 'ocaml-seq')
+depends=('ocaml>=4.08.0' 'dune>=2.9.0' 'ocaml-either')
 checkdepends=('ocaml-csexp' 'ocaml-gen' 'ocaml-iter' 'ocaml-mdx' 'ocaml-qcheck>=0.18.0' 'ocaml-uutf' 'ocaml-yojson')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
