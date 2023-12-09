@@ -1,15 +1,19 @@
 pkgbase = pcm
 	pkgdesc = Processor Counter Monitor
-	pkgver = 202307
+	pkgver = 202311
 	pkgrel = 1
 	url = https://github.com/intel/pcm
 	arch = x86_64
 	license = custom:BSD-3-Clause
 	makedepends = cmake
+	makedepends = git
 	makedepends = ninja
+	depends = bash
 	depends = gcc-libs
-	depends = simdjson
-	source = pcm-202307.tar.gz::https://github.com/intel/pcm/archive/202307.tar.gz
-	sha512sums = 16c07b17bdf015a0ce29a9bfb755ea18570c1d2907aa33313b9ac44ac4e45889464d47d832770c8ad2ed04f982f020c8a056eda7be929dcc32ca5a083aa36dce
+	depends = glibc
+	source = pcm::git+https://github.com/intel/pcm#tag=202311
+	source = simdjson::git+https://github.com/simdjson/simdjson.git
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = pcm
