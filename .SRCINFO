@@ -1,7 +1,7 @@
 pkgbase = cargo-docs-rs
-	pkgdesc = Immitate the documentation build that docs.rs would do
+	pkgdesc = Imitate the documentation build that docs.rs would do
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dtolnay/cargo-docs-rs
 	arch = x86_64
 	license = MIT

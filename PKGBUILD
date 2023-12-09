@@ -3,8 +3,8 @@
 
 pkgname=cargo-docs-rs
 pkgver=0.1.5
-pkgrel=1
-pkgdesc="Immitate the documentation build that docs.rs would do"
+pkgrel=2
+pkgdesc="Imitate the documentation build that docs.rs would do"
 arch=('x86_64')
 url="https://github.com/dtolnay/cargo-docs-rs"
 license=('MIT' 'Apache')
