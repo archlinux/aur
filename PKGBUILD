@@ -1,8 +1,8 @@
 # Maintainer:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=jellyfish
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="A tool for fast, memory-efficient counting of k-mers in DNA"
 
 # Note: according to the README, "Support for 32-bits platform has not been
@@ -17,7 +17,7 @@ source=("https://github.com/gmarcais/Jellyfish/releases/download/v${pkgver}/jell
 
 build() {
     cd "${pkgname}-${pkgver}"
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --enable-python-binding=sys
     make
 }
 
@@ -26,4 +26,4 @@ package() {
     make DESTDIR=${pkgdir} install
 }
 
-sha256sums=('e195b7cf7ba42a90e5e112c0ed27894cd7ac864476dc5fb45ab169f5b930ea5a')
+sha256sums=('ee032b57257948ca0f0610883099267572c91a635eecbd88ae5d8974c2430fcd')
