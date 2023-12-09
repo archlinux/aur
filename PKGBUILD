@@ -1,7 +1,7 @@
 # Maintainer: zaeyee <zaeyee@163.com>
 pkgname="phizclip-studio"
-pkgver="1.1.2-1"
-pkgrel=1
+pkgver="1.1.2"
+pkgrel=2
 pkgdesc="PhizClip-Studio"
 arch=("x86_64")
 url="https://phiz.chat/"
