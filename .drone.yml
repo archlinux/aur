@@ -13,7 +13,7 @@ steps:
 - name: markdown lint
   commands:
   - markdownlint *.md
-  image: git.cryptic.systems/volker.raschek/markdownlint:0.37.0
+  image: git.cryptic.systems/volker.raschek/markdownlint:0.38.0
   resources:
     limits:
       cpu: 150
