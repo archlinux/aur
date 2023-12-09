@@ -1,6 +1,6 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 pkgname=neper
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc='Polycrystal generation and meshing'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nlopt'
 makedepends=('cmake')
 source=(https://github.com/rquey/neper/archive/v${pkgver}.tar.gz)
 
-sha256sums=('3239962a4bb420a8baefa4d28e584c1278dc678b2ef28754700633647bda1ce0')
+sha256sums=('56189f274bd3cae0369ec807b7e3e7ed2672da236e900ae3a49eb7c3a21199cc')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}"/src  -DCMAKE_INSTALL_PREFIX=/usr
