@@ -1,17 +1,18 @@
 pkgbase = openglad-git
 	pkgdesc = SDL port of the hack-n-slash DOS game Gladiator
-	pkgver = r927.d74d6b1
+	pkgver = r935.e39b7ef
 	pkgrel = 1
-	url = http://www.openglad.org
+	url = https://github.com/openglad/openglad
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = premake4
+	makedepends = premake
 	depends = sdl2
 	depends = sdl2_mixer
 	depends = libpng
 	source = openglad-git::git+https://github.com/openglad/openglad.git
-	sha256sums = SKIP
+	source = get_asset_path.patch
+	sha512sums = SKIP
+	sha512sums = f7622ccd389ad9ad4c57967ac7d9e3fc758e3291ee1d38ea3cebc4d857a6e7b71fbab28a97488b8e2a7da7047f50b1fb949e0536046ad155cf62c52ea948b320
 
 pkgname = openglad-git
-
