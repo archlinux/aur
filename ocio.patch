@@ -1,0 +1,49 @@
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/ocio.cmake OpenRV/cmake/dependencies/ocio.cmake
+--- OpenRV.clean/cmake/dependencies/ocio.cmake	2023-12-08 12:48:32.604745129 -0800
++++ OpenRV/cmake/dependencies/ocio.cmake	2023-12-09 04:24:19.021176014 -0800
+@@ -10,7 +10,7 @@
+ INCLUDE(ProcessorCount) # require CMake 3.15+
+ PROCESSORCOUNT(_cpu_count)
+ 
+-RV_CREATE_STANDARD_DEPS_VARIABLES("RV_DEPS_OCIO" "2.2.1" "make" "")
++RV_CREATE_STANDARD_DEPS_VARIABLES("RV_DEPS_OCIO" "2.3.1" "make" "")
+ RV_SHOW_STANDARD_DEPS_VARIABLES()
+ 
+ # The folder OCIO is building its own dependencies
+@@ -31,13 +31,18 @@
+ ENDIF()
+ 
+ SET(_download_hash
+-    "372d6982cf01818a21a12f9628701a91"
++    "35f448262c260e142c8cdc9bcc81017c"
+ )
+ 
+ SET(_download_url
+     "https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/refs/tags/v${_version}.tar.gz"
+ )
+ 
++SET(_patch_command
++    cd ${PROJECT_SOURCE_DIR} &&
++    patch --forward --strip=1 --input=../ocio_install_yaml-cpp.patch
++)
++
+ # Another project that isn't adding a debug postfix
+ RV_MAKE_STANDARD_LIB_NAME("OpenColorIO" "${_version}" "SHARED" "")
+ 
+@@ -87,7 +92,7 @@
+   )
+ ELSE()
+   SET(_pyocio_lib_dir
+-      "${_lib_dir}/python${RV_DEPS_PYTHON_VERSION_SHORT}/site-packages"
++      "${_lib_dir}/python${RV_DEPS_PYTHON_VERSION_SHORT}/site-packages/PyOpenColorIO"
+   )
+   SET(_pyocio_libname
+       PyOpenColorIO.so
+@@ -187,6 +192,7 @@
+     BINARY_DIR ${_build_dir}
+     INSTALL_DIR ${_install_dir}
+     DEPENDS ${_depends_oiio} Boost::headers RV_DEPS_PYTHON3 Imath::Imath ZLIB::ZLIB
++    PATCH_COMMAND ${_patch_command}
+     CONFIGURE_COMMAND ${CMAKE_COMMAND} ${_configure_options}
+     BUILD_COMMAND ${_make_command} -j${_cpu_count}
+     INSTALL_COMMAND ${_make_command} install

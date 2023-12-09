@@ -1,0 +1,54 @@
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/oiio.cmake OpenRV/cmake/dependencies/oiio.cmake
+--- OpenRV.clean/cmake/dependencies/oiio.cmake	2023-12-08 12:48:32.604745129 -0800
++++ OpenRV/cmake/dependencies/oiio.cmake	2023-12-08 18:02:11.434107580 -0800
+@@ -15,17 +15,20 @@
+ INCLUDE(ProcessorCount) # require CMake 3.15+
+ PROCESSORCOUNT(_cpu_count)
+ 
+-RV_CREATE_STANDARD_DEPS_VARIABLES("RV_DEPS_OIIO" "2.4.6.0" "make" "")
++RV_CREATE_STANDARD_DEPS_VARIABLES("RV_DEPS_OIIO" "2.4.11.1" "make" "")
+ RV_SHOW_STANDARD_DEPS_VARIABLES()
+ 
+ SET(_download_url
+     "https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/refs/tags/v${_version}.tar.gz"
+ )
+ SET(_download_hash
+-    "628c588112ce8e08f31ec3417eb6828d"
++    "d118168f2fce857d885b7b0f63ffc739"
++)
++SET(_patch_command
++    sed -i.bak d ${RV_DEPS_BASE_DIR}/${_target}/src/src/openvdb.imageio/CMakeLists.txt
+ )
+ 
+-RV_MAKE_STANDARD_LIB_NAME("OpenImageIO_Util" "2.4.6" "SHARED" "${RV_DEBUG_POSTFIX}")
++RV_MAKE_STANDARD_LIB_NAME("OpenImageIO_Util" "2.4.11" "SHARED" "${RV_DEBUG_POSTFIX}")
+ SET(_byprojects_copy
+     ${_byproducts}
+ )
+@@ -38,7 +41,7 @@
+ SET(_oiio_utils_implibpath
+     ${_implibpath}
+ )
+-RV_MAKE_STANDARD_LIB_NAME("OpenImageIO" "2.4.6" "SHARED" "${RV_DEBUG_POSTFIX}")
++RV_MAKE_STANDARD_LIB_NAME("OpenImageIO" "2.4.11" "SHARED" "${RV_DEBUG_POSTFIX}")
+ LIST(APPEND _byproducts ${_byprojects_copy})
+ 
+ # The '_configure_options' list gets reset and initialized in 'RV_CREATE_STANDARD_DEPS_VARIABLES'
+@@ -48,6 +51,9 @@
+ LIST(APPEND _configure_options "-DUSE_OCIO=0")
+ LIST(APPEND _configure_options "-DUSE_FREETYPE=0")
+ LIST(APPEND _configure_options "-DUSE_GIF=OFF")
++LIST(APPEND _configure_options "-DUSE_OPENCV=OFF")
++LIST(APPEND _configure_options "-DUSE_DCMTK=OFF")
++LIST(APPEND _configure_options "-DUSE_NUKE=OFF")
+ 
+ LIST(APPEND _configure_options "-DBoost_ROOT=${RV_DEPS_BOOST_ROOT_DIR}")
+ LIST(APPEND _configure_options "-DOpenEXR_ROOT=${RV_DEPS_OPENEXR_ROOT_DIR}")
+@@ -184,6 +190,7 @@
+             ffmpeg::avcodec
+             ffmpeg::swresample
+             ZLIB::ZLIB
++    PATCH_COMMAND ${_patch_command}
+     CONFIGURE_COMMAND ${CMAKE_COMMAND} ${_configure_options}
+     BUILD_COMMAND ${_make_command} -j${_cpu_count}
+     INSTALL_COMMAND ${_make_command} install

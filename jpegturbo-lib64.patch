@@ -1,0 +1,23 @@
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/jpegturbo.cmake OpenRV/cmake/dependencies/jpegturbo.cmake
+--- OpenRV.clean/cmake/dependencies/jpegturbo.cmake	2023-12-08 12:48:32.604745129 -0800
++++ OpenRV/cmake/dependencies/jpegturbo.cmake	2023-12-08 13:23:47.096853847 -0800
+@@ -17,6 +17,11 @@
+     "357dc26a802c34387512a42697846d16"
+ )
+ 
++SET(_patch_command
++    sed -i s/lib64/lib/g ${RV_DEPS_BASE_DIR}/${_target}/src/CMakeLists.txt &&
++    sed -i s/lib64/lib/g ${RV_DEPS_BASE_DIR}/${_target}/src/cmakescripts/GNUInstallDirs.cmake
++)
++
+ # CMake is not generating debug postfix for JpegTurbo
+ RV_MAKE_STANDARD_LIB_NAME("jpeg" "62.3.0" "SHARED" "")
+ SET(_winlibjpegname
+@@ -96,6 +101,7 @@
+   SOURCE_DIR ${_source_dir}
+   BINARY_DIR ${_build_dir}
+   INSTALL_DIR ${_install_dir}
++  PATCH_COMMAND ${_patch_command}
+   CONFIGURE_COMMAND ${CMAKE_COMMAND} ${_configure_options}
+   BUILD_COMMAND ${_make_command} -j${_cpu_count} 
+   INSTALL_COMMAND ${_make_command} install

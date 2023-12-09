@@ -1,0 +1,18 @@
+--- OpenRV.clean/_build/RV_DEPS_OCIO/src/share/cmake/modules/FindExtPackages.cmake.clean	2023-12-09 04:18:56.466431567 -0800
++++ OpenRV/_build/RV_DEPS_OCIO/src/share/cmake/modules/FindExtPackages.cmake	2023-12-09 04:20:19.755183451 -0800
+@@ -61,10 +61,11 @@
+ 
+ # yaml-cpp
+ # https://github.com/jbeder/yaml-cpp
+-ocio_handle_dependency(  yaml-cpp REQUIRED ALLOW_INSTALL
+-                         MIN_VERSION 0.6.3
+-                         RECOMMENDED_VERSION 0.7.0
+-                         RECOMMENDED_VERSION_REASON "Latest version tested with OCIO")
++#ocio_handle_dependency(  yaml-cpp REQUIRED ALLOW_INSTALL
++#                         MIN_VERSION 0.6.3
++#                         RECOMMENDED_VERSION 0.7.0
++#                         RECOMMENDED_VERSION_REASON "Latest version tested with OCIO")
++ocio_install_dependency(yaml-cpp VERSION 0.7.0)
+ 
+ # pystring
+ # https://github.com/imageworks/pystring
