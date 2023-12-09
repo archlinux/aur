@@ -1,6 +1,6 @@
 pkgbase = perl-math-bigint
 	pkgdesc = Math::BigInt - Arbitrary size integer/float math package
-	pkgver = 2.002000
+	pkgver = 2.002001
 	pkgrel = 1
 	url = https://metacpan.org/release/Math-BigInt
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = perl-math-bigint
 	provides = perl-math-bigint-calc
 	provides = perl-math-bigint-lib
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/P/PJ/PJACKLAM/Math-BigInt-2.002000.tar.gz
-	b2sums = 0c088a4a152f4522ab85c9e0bf6490fa79b1582c12994bb93462af52afdeb6ff5874930c07971c37bcfe737eb635eec8542c9132a37549c1c5799b3aec93a8e9
+	source = https://cpan.metacpan.org/authors/id/P/PJ/PJACKLAM/Math-BigInt-2.002001.tar.gz
+	b2sums = 30d143ae2332f7f1cb7f474f20c7cdeba39397ef65825ca4fcc540f93e821d870a09b5d31c85b5fd6cb00bab6f8a65d28f4cdb490b8631b1ac615ac196f7e3d8
 
 pkgname = perl-math-bigint
