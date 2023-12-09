@@ -1,6 +1,6 @@
 pkgbase = python-xxhash-git
 	pkgdesc = Python binding for xxHash
-	pkgver = v3.3.0.r0.g19417ce
+	pkgver = v3.4.1.r0.g02791fe
 	pkgrel = 1
 	url = https://github.com/ifduyue/python-xxhash-git
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-xxhash-git
 	depends = xxhash
 	provides = python-xxhash
 	conflicts = python-xxhash
-	source = python-xxhash-git::git+https://github.com/ifduyue/python-xxhash.git#tag=v3.3.0
+	source = python-xxhash-git::git+https://github.com/ifduyue/python-xxhash.git#tag=v3.4.1
 	sha512sums = SKIP
 
 pkgname = python-xxhash-git
