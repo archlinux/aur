@@ -21,6 +21,8 @@ source=("sonix-flasher.sh"
         "sonix-flasher.desktop"
         "0001-fix-Wayland-taskbar-icon.patch"
         "sonix-flasher::git+https://github.com/SonixQMK/sonix-flasher")
+provides=("sonix-flasher")
+conflicts=("sonix-flasher")
 sha256sums=('68d7641d8a903b9044ceb5bd38f71080f3e3b5c88312f3cd16a2fe4fb9c45077'
             'c31cb3ae4cf5e8cdd211733bc4adb6d1add4330704f2fa0b654eb1844dc78487'
             '92ece2e245e5077145d3e620b10b6cfce203eb89f02ed379a8f5363e0f5c92a1'
