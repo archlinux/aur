@@ -1,32 +1,51 @@
-# $Id$
-# Maintainer: Gryffyn
-# Orginal Arch Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
-# Contributor: SleepyDog
+# Maintainer:
+# Contributor: Gryffyn
 
+_pkgname="glew"
 pkgname=glew1.13
 pkgver=1.13.0
-pkgrel=1
-pkgdesc="The OpenGL Extension Wrangler Library"
-arch=('i686' 'x86_64')
-url="http://glew.sourceforge.net"
+pkgrel=2
+pkgdesc='A cross-platform C/C++ extension loading library'
+url='http://glew.sourceforge.net'
 license=('BSD' 'MIT' 'GPL')
-depends=('libxmu' 'libxi' 'mesa' 'glew')
-source=(http://downloads.sourceforge.net/glew/glew-1.13.0.tgz)
-md5sums=('7cbada3166d2aadfc4169c4283701066')
+arch=('x86_64')
+
+depends=(
+  libgl
+
+  ## implicit
+  #glibc
+  #libx11
+)
+
+provides=('glew-1.13.0=1.13.0')
+conflicts=('glew-1.13.0')
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"https://downloads.sourceforge.net/$_pkgname/$_pkgsrc.tgz")
+sha256sums=('aa25dc48ed84b0b64b8d41cdd42c8f40f149c37fa2ffa39cd97f42c78d128bc7')
+
+prepare() {
+  cd "$_pkgsrc"
+  sed -i 's|lib64|lib|' config/Makefile.linux
+}
 
 build() {
-  cd "${srcdir}/glew-${pkgver}"
-  sed -i 's|lib64|lib|' config/Makefile.linux
+  cd "$_pkgsrc"
   make
 }
 
 package() {
-  cd "${srcdir}/glew-${pkgver}"
+  cd "$_pkgsrc"
   make GLEW_DEST="${pkgdir}/usr" install.all
-  rm -R -f ${pkgdir}/usr/{bin,include,share}
-  rm -R -f ${pkgdir}/usr/lib/pkgconfig
-  rm -f ${pkgdir}/usr/lib/{libGLEW.so,libGLEWmx.so}
 
-  rm "${pkgdir}"/usr/lib/{libGLEW,libGLEWmx}.a
-  chmod 0755 "${pkgdir}"/usr/lib/libGLEW*.so.${pkgver}
+  # unneeded files
+  rm -rf "$pkgdir/usr"/{bin,include,share}
+  rm -rf "$pkgdir/usr/lib/pkgconfig"
+  rm -f "$pkgdir/usr/lib"/*.a
+  rm -f "$pkgdir/usr/lib"/*.so
+
+  # license
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
