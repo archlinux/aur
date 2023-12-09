@@ -1,7 +1,7 @@
 pkgbase = cuberite
 	pkgdesc = A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client.
 	pkgver = 1.12.2c2_eda440e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cuberite.org/
 	install = cuberite.install
 	arch = i686
@@ -44,7 +44,7 @@ pkgbase = cuberite
 	source = git+https://github.com/cuberite/libdeflate
 	source = git+https://github.com/cuberite/polarssl
 	source = git+https://github.com/cuberite/luaproxy
-	source = minecraft-server-1.0.3.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.3.tar.gz
+	source = minecraft-server-1.0.4.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.4.tar.gz
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -64,6 +64,6 @@ pkgbase = cuberite
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 1cc15371d8fad39ef8812059463dd92b91628ff3887bd0eb462d919cd3b2a948c4c3535f701bf4912de3e9c84b2333738f4dd63202f235b1726e79ed178fe156
+	sha512sums = dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556
 
 pkgname = cuberite
