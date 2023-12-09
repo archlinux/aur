@@ -1,0 +1,27 @@
+pkgbase = r-crisprscore
+	pkgdesc = On-Target and Off-Target Scoring Algorithms for CRISPR gRNAs
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/crisprScore
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-basilisk
+	depends = r-basilisk.utils
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-crisprscoredata
+	depends = r-iranges
+	depends = r-randomforest
+	depends = r-reticulate
+	depends = r-stringr
+	depends = r-xvector
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/crisprScore_1.6.0.tar.gz
+	md5sums = c83f7928b03ce0308175835556dfcb54
+	sha256sums = dea74cc8cc0cbe2ac8d0280230b114e426356694b5845764a1adc8e49f6c3828
+
+pkgname = r-crisprscore
