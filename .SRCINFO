@@ -1,7 +1,7 @@
 pkgbase = pamac-nosnap
 	pkgdesc = A Gtk3 frontend, Package Manager based on libalpm with AUR and Appstream support
 	pkgver = 11.7.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = pamac-nosnap
 	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	optdepends = plymouth: offline upgrades
-	provides = pamac=11.7.0-0
+	provides = pamac=11.7.0-1
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-all
