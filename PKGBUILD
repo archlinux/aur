@@ -13,7 +13,7 @@ sha256sums=('efe99873e88ddb908d0357c7f80ed33b99ff2ac572e227a0d9aaa9632e92a2fb')
 
 build() {
   cd "wisp-v$pkgver"
-  autoreconf -i
+  autoreconf -vi
   ./configure --datarootdir=/usr/share
   make
 }
