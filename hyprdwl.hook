@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = usr/share/vim/vimfiles/doc/
+
+[Action]
+Description = Recompiling Library hyprdwl
+Exec = pacman -S hyperdwl
+When = PostTransaction
