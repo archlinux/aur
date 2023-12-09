@@ -8,7 +8,7 @@ url="https://phiz.chat/"
 license=('custom')
 depends=()
 source=(
-	"${pkgname}-v${pkgver}.AppImage"::"http://i.ouzero.com:800/share/ykK9F9ru"
+	"${pkgname}-v${pkgver}.AppImage"::"http://i.ouzero.com:800/api/public/dl/bih14JOM"
 	"${pkgname}.desktop"
 	"${pkgname}.png")
 sha256sums=('0a52427cff18306b8917b0061e4c3f804b94b91e5d5f63f9174500b454dfda91'
