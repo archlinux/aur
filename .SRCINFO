@@ -1,0 +1,18 @@
+pkgbase = r-crisprscoredata
+	pkgdesc = Pre-trained models for the crisprScore package
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/crisprScoreData
+	arch = any
+	license = MIT
+	depends = r-annotationhub
+	depends = r-experimenthub
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/crisprScoreData_1.6.0.tar.gz
+	md5sums = 1f4d86404f045ec36cf7d1b1c64373fe
+	sha256sums = d1c2eaf4fb4361738ea092da8b7e144ab9f327379aa2ec7c42e3a38aaed33c67
+
+pkgname = r-crisprscoredata
