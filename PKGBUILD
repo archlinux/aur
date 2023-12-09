@@ -1,7 +1,7 @@
 # Contributor: AsukaMinato
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=gojq-bin
-pkgver=0.12.13
+pkgver=0.12.14
 pkgrel=1
 pkgdesc="Pure Go implementation of jq"
 arch=(x86_64 aarch64)
@@ -11,8 +11,8 @@ provides=(gojq)
 conflicts=(gojq)
 source_x86_64=($url/releases/download/v$pkgver/gojq_v${pkgver}_linux_amd64.tar.gz)
 source_aarch64=($url/releases/download/v$pkgver/gojq_v${pkgver}_linux_arm64.tar.gz)
-sha256sums_x86_64=('3e3b3309a980050ba9a9887ba48fb77f577f5c19364e5a68acfd2b8bbd0bb534')
-sha256sums_aarch64=('b5bc78c45170b50f5b6479c38c3f2624f0f15c6663de0ccedf798676a536aa9c')
+sha256sums_x86_64=('bba46db596b5bcb3b21a0ea4aa8b10c1813f76be1f4525fe04f9f4a9141cdc1b')
+sha256sums_aarch64=('cba5b496f087e8e963984340d2cf5753b28b46b0ce6eba9eb2e407591562b973')
 
 package() {
 	for f in *;
