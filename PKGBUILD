@@ -5,7 +5,7 @@
 _pkgname=tiny
 pkgname=tiny-irc-client
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal IRC client written in Rust'
 arch=(x86_64)
 url=https://github.com/osa1/tiny
@@ -17,6 +17,7 @@ depends=(dbus)
 makedepends=(cargo)
 source=($_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 sha256sums=(4bd412760a35ff41220ab918702d003c710379537db9621477f63ee201a68440)
+options=(!lto)
 
 prepare() {
     cd "$srcdir"/$_pkgname-$pkgver
