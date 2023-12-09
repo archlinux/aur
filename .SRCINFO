@@ -1,4 +1,4 @@
-pkgbase = hyprdots-ctl
+pkgbase = hyprdots
 	pkgdesc = CLI for Hyprdots Configurations
 	pkgver = v0.1.0.30
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = hyprdots-ctl
 	source = git+https://github.com/kRHYME7/Hyprdots-ctl.git
 	md5sums = SKIP
 
-pkgname = hyprdots-ctl
+pkgname = hyprdots

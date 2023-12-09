@@ -1,4 +1,4 @@
-pkgname=hyprdots-ctl
+pkgname=hyprdots
 pkgver=v0.1.0.30
 pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations"
