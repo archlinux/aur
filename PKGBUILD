@@ -3,13 +3,13 @@
 _pkgname=sast-evento
 
 pkgname="${_pkgname}"-appimage
-pkgver="1.0.1208"
+pkgver="1.0.1209"
 pkgrel=1
 pkgdesc="An event management system developed and used by NJUPT SAST"
 arch=('x86_64')
 url="https://github.com/NJUPT-SAST-Cpp/SAST-Evento-Desktop"
 license=('MIT')
-depends=('zlib' 'fuse2')
+depends=('fuse2')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=(
@@ -17,7 +17,7 @@ source_x86_64=(
     "LICENSE::https://raw.githubusercontent.com/NJUPT-SAST-Cpp/SAST-Evento-Desktop/${pkgver}/LICENSE"
 )
 noextract=(${_appimage})
-sha256sums_x86_64=('a48e9686a383c4cd04405ae71608494a6dca36cf23108fdb3f12a8c3603c94fa'
+sha256sums_x86_64=('2614f0e3894afaee44cf3c4366be29ba1dc963d3f168dad65305c8fdf2e0958e'
     'dd961254a4f3599af88f965689f9e75674a300267df4e2110028c56724338a12')
 
 prepare() {
