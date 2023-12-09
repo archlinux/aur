@@ -1,9 +1,10 @@
-# Maintainer: Shivansh <shivansh-007 + aur at outlook <.> com>
-# Maintainer: SuperMazingCoder  <supermazingcoder + aur at gmail <.> com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Shivansh <shivansh-007 + aur at outlook <.> com>
+# Contributor: SuperMazingCoder  <supermazingcoder + aur at gmail <.> com>
 # Contributor: Kenee Patel <patelkenee2804 + aur at gmail <.> com>
 
 pkgname=piston-cli
-pkgver=1.3.0 
+pkgver=1.5.0 
 pkgrel=1
 pkgdesc="A universal shell supporting 36+ languages, in terminal code editor with syntax highlight, code compiler (36+ languages). It can run code from pastebin links and files too. "
 arch=('any')
@@ -14,7 +15,6 @@ depends=(
  'python-requests'
  'python-prompt_toolkit'
  'python-rich'
- 'python-argparse'
 )
 makedepends=(
  'git' 
