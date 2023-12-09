@@ -1,6 +1,6 @@
 pkgbase = ospray-studio
 	pkgdesc = A visualization application that leverages Intel OSPRay as its core rendering engine
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://www.ospray.org/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ospray-studio
 	depends = openexr
 	depends = python
 	provides = ospray-studio=0.12.1
-	source = https://github.com/ospray/ospray_studio/archive/v0.12.1.tar.gz
-	sha256sums = 0cc33e0a6b3eef02712a32930619b596ef3f3db80471307a24e00427231548b1
+	source = https://github.com/ospray/ospray_studio/archive/v0.13.0.tar.gz
+	sha256sums = 699c9f93b0ef325d16233c871da3d52758f26a8091d2bce1d4b8f2eaf9b6afe4
 
 pkgname = ospray-studio
