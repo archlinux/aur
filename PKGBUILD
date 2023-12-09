@@ -5,10 +5,10 @@
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Stephan Conrad <stephan@conrad.pics>
 
-pkgname=modsecurity2
+pkgname=libmodsecurity2
+_name=modsecurity
 pkgver=2.9.7
-_localpkgname_ver=${pkgname%2}-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, v2 branch'
 arch=('x86_64')
 url='https://github.com/SpiderLabs/ModSecurity/tree/v2/master'
@@ -29,26 +29,22 @@ depends=(
   'glibc'
   'gdbm'
 )
-provides=("${pkgname}=${pkgver}" "modsecurity")
-conflicts=("modsecurity")
-source=("https://github.com/SpiderLabs/ModSecurity/releases/download/v${pkgver}/${_localpkgname_ver}.tar.gz")
+provides=('libmodsecurity' 'modsecurity')
+conflicts=("libmodsecurity")
+source=("https://github.com/SpiderLabs/ModSecurity/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
 sha256sums=('2a28fcfccfef21581486f98d8d5fe0397499749b8380f60ec7bb1c08478e1839')
 
 prepare() {
-  mkdir -p "${srcdir}/build"
-  cd "${srcdir}/build"
-  cp -a "${srcdir}/${_localpkgname_ver}"/* ./
+  cd "${srcdir}/${_name}-${pkgver}"
   ./autogen.sh
 }
 
 build() {
-  # Build package
-  cd "${srcdir}/build"
+  cd "${srcdir}/${_name}-${pkgver}"
   ./configure \
     --prefix=/usr \
     --enable-standalone-module \
     --enable-htaccess-config
-  # Remove RPATH
   # https://tracker.debian.org/media/packages/m/modsecurity-apache/rules-2.9.1-2
   echo "Fixing libtool for hardcoded_into_libs"
   sed -ri 's|(hardcode_into_libs)=.*|\1=no|' libtool
@@ -62,8 +58,7 @@ build() {
 }
 
 package() {
-  # Install package
-  cd "${srcdir}/build"
+  cd "${srcdir}/${_name}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   mkdir -p "${pkgdir}/usr/lib/httpd/modules"
   cp "${pkgdir}/usr/lib/mod_security2.so" "${pkgdir}/usr/lib/httpd/modules/mod_security2.so"

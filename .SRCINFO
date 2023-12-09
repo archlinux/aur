@@ -1,7 +1,7 @@
-pkgbase = modsecurity2
+pkgbase = libmodsecurity2
 	pkgdesc = A cross platform web application firewall engine for Apache, IIS and Nginx, v2 branch
 	pkgver = 2.9.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SpiderLabs/ModSecurity/tree/v2/master
 	arch = x86_64
 	license = APACHE
@@ -19,10 +19,10 @@ pkgbase = modsecurity2
 	depends = expat
 	depends = glibc
 	depends = gdbm
-	provides = modsecurity2=2.9.7
+	provides = libmodsecurity
 	provides = modsecurity
-	conflicts = modsecurity
+	conflicts = libmodsecurity
 	source = https://github.com/SpiderLabs/ModSecurity/releases/download/v2.9.7/modsecurity-2.9.7.tar.gz
 	sha256sums = 2a28fcfccfef21581486f98d8d5fe0397499749b8380f60ec7bb1c08478e1839
 
-pkgname = modsecurity2
+pkgname = libmodsecurity2
