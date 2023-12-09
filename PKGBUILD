@@ -1,10 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bookget-git
-pkgver=1.2.4.1.gafc28fa
-pkgrel=2
+pkgver=1.2.5.15.g6d48135
+pkgrel=1
 pkgdesc="bookget 数字图书馆下载工具，目前支持约50+个数字图书馆。"
-arch=('any')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/deweizhu/bookget"
 license=('GPL-3.0')
 provides=(${pkgname%-git})
@@ -31,11 +33,6 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-    sed -i 's|root+string(os.PathSeparator)+"config.ini"|"/etc/bookget/config.ini"|g' config/conf.go
-    sed -i 's|fPath, _ := os.Executable()|//fPath, _ := os.Executable()|g' config/conf.go
-    sed -i 's|root := filepath.Dir(fPath)|//root := filepath.Dir(fPath)|g' config/conf.go
-    sed -i 's|"path/filepath"|//"path/filepath"|g' config/conf.go
 
     mkdir -pv build/
     go build -o build
