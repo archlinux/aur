@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RcppInt64
-_pkgver=0.0.3
+_pkgver=0.0.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('722715d7e9579f59b2d7ca4459f220b7')
-sha256sums=('69bd4001de658e4edf8c1a297b7e9be5541778cd7e4b46c80b8929259fb62e37')
+md5sums=('19defdecd82e6d2b8a2aab49b24c8196')
+sha256sums=('2c38cb2a4090a5c3ddd949893f357bd08068c2dc2272ecff1574b7f2b424cdbd')
 
 build() {
   mkdir -p build
