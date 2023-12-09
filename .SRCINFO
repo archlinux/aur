@@ -1,7 +1,7 @@
 pkgbase = vpkedit-git
 	pkgdesc = A library and tool to create, read, and write Valve VPK archives
 	pkgver = 3.6.0.r7.gecb4e74
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/craftablescience/VPKEdit
 	arch = x86_64
 	license = MIT
