@@ -4,7 +4,7 @@
 pkgname=python-accelerate
 _pkgname=${pkgname#python-}
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple way to train and use PyTorch models with multi-GPU, TPU, mixed-precision'
 arch=('any')
 url='https://github.com/huggingface/accelerate'
@@ -29,7 +29,7 @@ build() {
 }
 
 check() {
-    cd $_pkgname-$pkgver
+    cd $_pkgname-$pkgver/src
     python -c 'import accelerate'
 }
 

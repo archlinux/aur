@@ -1,7 +1,7 @@
 pkgbase = python-accelerate
 	pkgdesc = A simple way to train and use PyTorch models with multi-GPU, TPU, mixed-precision
 	pkgver = 0.25.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/huggingface/accelerate
 	arch = any
 	groups = hugginface
