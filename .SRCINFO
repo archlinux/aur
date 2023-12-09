@@ -1,6 +1,6 @@
 pkgbase = emilua-glib
 	pkgdesc = GLib event loop integration for Emilua
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://gitlab.com/emilua/glib
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = emilua-glib
 	makedepends = meson
 	makedepends = boost
 	depends = emilua
-	source = emilua-glib::git+https://gitlab.com/emilua/glib.git#tag=v0.4.0
+	source = emilua-glib::git+https://gitlab.com/emilua/glib.git#tag=v0.5.0
 	md5sums = SKIP
 
 pkgname = emilua-glib
