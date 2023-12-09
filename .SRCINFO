@@ -1,0 +1,25 @@
+pkgbase = r-isotree
+	pkgdesc = Isolation-Based Outlier Detection
+	pkgver = 0.5.24.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=isotree
+	arch = x86_64
+	license = BSD
+	makedepends = robin-map
+	depends = r-rcpp
+	optdepends = r-jsonlite
+	optdepends = r-kableextra
+	optdepends = r-kernlab
+	optdepends = r-knitr
+	optdepends = r-mlbench
+	optdepends = r-mlmetrics
+	optdepends = r-outliertree
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/isotree_0.5.24-3.tar.gz
+	source = system-robin-map.patch
+	md5sums = 187c07e96a3e58931b39747e3aa18112
+	md5sums = eb4f3a13cc4014676e7b49b44982d662
+	sha256sums = d46dac42a4fca9d87c5dd46ffa84f4297c11f1831dc2ff6562bfb0897c9a9609
+	sha256sums = 21873d5c2e0fb0ea13156b91de036c7c02b1284a0e262f95b81988161c1915a5
+
+pkgname = r-isotree
