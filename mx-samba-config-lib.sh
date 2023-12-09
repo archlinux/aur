@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#root level functions requiring password for mx-samba-config
+# Root level functions requiring password for mx-samba-config
 
 enablesamba() {
   systemctl unmask smb
@@ -8,7 +8,6 @@ enablesamba() {
   systemctl enable smb
   systemctl enable nmb
 }
-
 
 disablesamba() {
   systemctl disable smb
