@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua-dumb-dbus
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Dumb D-Bus bindings for Emilua"
 arch=('i686' 'x86_64')
