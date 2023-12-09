@@ -5,7 +5,7 @@ pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
 pkgver=5.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-22_04-x86-64'
@@ -55,11 +55,14 @@ EOF
 package() {
   cd "$srcdir" || exit 1
 
-  install -Dm0755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm0644  message_views.sql "$pkgdir/usr/share/doc/$_pkgname/message_views.sql"
-  install  -m0644 {PRIVACY,README,CLI,SIMPLEX,SQL}.md "$pkgdir/usr/share/doc/$_pkgname/"
-  install -Dm0644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm0644 "$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+  # Let's be more verbose if standard output is a TTY:
+  test -t 1 && _verbose='v' || _verbose=''
+
+  install "-${_verbose}Dm0755" "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
+  install "-${_verbose}Dm0644"  message_views.sql "$pkgdir/usr/share/doc/$_pkgname/message_views.sql"
+  install  "-${_verbose}m0644" {PRIVACY,README,CLI,SIMPLEX,SQL}.md "$pkgdir/usr/share/doc/$_pkgname/"
+  install "-${_verbose}Dm0644" "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install "-${_verbose}Dm0644" "$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 }
 
 sha256sums=(
@@ -69,9 +72,11 @@ sha256sums=(
 
 # 🪷 Beyond the Known — 365 Days of Exploration
 #
-# 📆 25th November
+# 📆 9th December
 #
-# …you'll never have a question of how to see…
+# Just look. See what is there within you; it is within us all.
+#
+# It is already right there, as plain as the nose on your face.
 #
 # 🔗 https://magnetic-ink.dk/users/btk
 
