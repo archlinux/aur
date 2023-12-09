@@ -1,17 +1,17 @@
-# Maintainer: CUI Hao <cuihao.leo@gmail.com>
+# Contributor: CUI Hao <cuihao.leo@gmail.com>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 
 pkgname=nyancat-git
-pkgver=1.4.4.r4.g0a7bfc1
+pkgver=1.5.2.r5.g5ffb6c5
 pkgrel=1
-pkgdesc="Terminal-based Pop Tart Cat animation"
+pkgdesc="Nyancat rendered in your terminal"
 arch=(i686 x86_64)
-url=http://nyancat.dakko.us/
-license=(NCSA)
-depends=(glibc)
-makedepends=(git)
+url=https://nyancat.dakko.us/
+license=('custom:NCSA')
+depends=('glibc')
+makedepends=('git')
 provides=(${pkgname%-*})
-source=($pkgname::git://github.com/klange/${pkgname%-*}.git)
+source=("$pkgname::git+https://github.com/klange/nyancat.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -22,6 +22,7 @@ pkgver() {
 build() {
     cd "$srcdir/$pkgname"
     make
+    head -49 src/nyancat.c | cut -c 4- > LICENSE
 }
 
 package() {
@@ -29,4 +30,5 @@ package() {
     install -Dm755 src/${pkgname%-*} "$pkgdir/usr/bin/${pkgname%-*}"
     install -Dm644 ${pkgname%-*}.1 "$pkgdir/usr/share/man/man1/${pkgname%-*}.1"
     install -Dm644 systemd/*.{service,socket} -t "$pkgdir/usr/lib/systemd/system/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
