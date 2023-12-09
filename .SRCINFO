@@ -1,7 +1,7 @@
 pkgbase = cdesktopenv-git
 	pkgdesc = Common Desktop Environment
-	pkgver = 2.5.1.27.gb57754681
-	pkgrel = 1
+	pkgver = 2.5.2.1.g76812a911
+	pkgrel = 2
 	url = http://sourceforge.net/projects/cdesktopenv/
 	install = cdesktopenv.install
 	arch = i686
@@ -26,6 +26,7 @@ pkgbase = cdesktopenv-git
 	depends = xorg-xrdb
 	depends = libxpm
 	depends = libxaw
+	depends = opensp
 	optdepends = xorg-fonts-100dpi: additional fonts
 	optdepends = cups: for printing support
 	optdepends = xinetd: for rpc services

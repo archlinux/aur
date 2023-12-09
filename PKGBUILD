@@ -6,15 +6,15 @@
 
 _gitname=cdesktopenv
 pkgname="$_gitname"-git
-pkgver=2.5.1.27.gb57754681
-pkgrel=1
+pkgver=2.5.2.1.g76812a911
+pkgrel=2
 pkgdesc="Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
 arch=('i686' 'x86_64') # Some parts of CDE are not stable on x86_64 yet.
 license=('LGPL2')
 options=(!strip !zipman)
 install="cdesktopenv.install"
-depends=(openmotif xbitmaps rpcbind mksh ncurses libxss xbitmaps libxinerama libutempter rpcsvc-proto xorg-sessreg xorg-mkfontdir xorg-bdftopcf xorg-xrdb libxpm libxaw)
+depends=(openmotif xbitmaps rpcbind mksh ncurses libxss xbitmaps libxinerama libutempter rpcsvc-proto xorg-sessreg xorg-mkfontdir xorg-bdftopcf xorg-xrdb libxpm libxaw opensp)
 makedepends=(tcl ncompress bison)
 optdepends=('xorg-fonts-100dpi: additional fonts'
 			'cups: for printing support'
