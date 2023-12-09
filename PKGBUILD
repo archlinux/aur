@@ -12,6 +12,8 @@ depends=('glibc'
          'hidapi'
          'libudev.so=1')
 source=("git+https://github.com/SonixQMK/SonixFlasherC")
+provides=("sonix-flasher-c" "sonixflasher")
+conflicts=("sonix-flasher-c" "sonixflasher")
 sha256sums=('SKIP')
 
 pkgver() {

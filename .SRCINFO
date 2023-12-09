@@ -5,10 +5,14 @@ pkgbase = sonix-flasher-c-git
 	url = https://github.com/SonixQMK/SonixFlasherC
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-only
+	license = GPL-3.0
 	depends = glibc
 	depends = hidapi
-	depends = libudev.s0=1
+	depends = libudev.so=1
+	provides = sonix-flasher-c
+	provides = sonixflasher
+	conflicts = sonix-flasher-c
+	conflicts = sonixflasher
 	source = git+https://github.com/SonixQMK/SonixFlasherC
 	sha256sums = SKIP
 
