@@ -14,15 +14,15 @@ provides=('xava')
 sha256sums=('SKIP')
 
 build() {
-  mkdir -p $pkgname/build
-  cd $pkgname/build
+  mkdir -p "${pkgname}-${pkgver}"/build
+  cd       "${pkgname}-${pkgver}"/build
   cmake -DXAVA_LINK_TO_INSTALL_DIR=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir"/usr ..
   make
 }
 
 package() {
   # Install binaries
-  cd $pkgname/build
+  cd "${pkgname}-${pkgver}"/build
     make install
   cd ../..
 }
