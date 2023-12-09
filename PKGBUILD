@@ -5,7 +5,7 @@
 
 _pyname=xxhash
 pkgname="python-${_pyname}-git"
-pkgver=v3.4.1.r2.g78fab13
+pkgver=v3.3.0.r0.g19417ce
 pkgrel=1
 pkgdesc='Python binding for xxHash'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('git' 'python-setuptools-scm' 'python-build' 'python-installer' 'py
 license=('BSD')
 conflicts=('python-xxhash')
 provides=('python-xxhash')
-source=("${pkgname}::git+https://github.com/ifduyue/python-xxhash.git")
+source=("${pkgname}::git+https://github.com/ifduyue/python-xxhash.git#tag=v3.3.0")
 sha512sums=('SKIP')
 
 pkgver() {
