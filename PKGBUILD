@@ -1,7 +1,6 @@
 # Maintainer: Timo Kettenbach
 pkgname=borrg
-pkgver=0.1.0_pre_20221214
-_commit=ced027dfafb22ca3104d02d96e9d0b1251223d40
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A borg wrapper written in rust"
 url="https://github.com/SebastianSpeitel/borrg"
@@ -11,21 +10,21 @@ depends=('borgbackup')
 makedepends=('rust>=1.65')
 provides=("borrg")
 conflicts=("borrg-bin")
-source=("https://github.com/SebastianSpeitel/borrg/archive/${_commit}.tar.gz")
-sha256sums=('f8d1e8a0afbbcd2efdb7c0d3fb7c7634ca91f11c68a425e2d80faee5bab252d0')
+source=("https://github.com/SebastianSpeitel/borrg/archive/refs/tags/v.${pkgver}.tar.gz")
+sha256sums=('ba823f9a9bd9010198d01aa2d83f18861e1517a99286dff068114ea0a231ffba')
 
 prepare() {
-	cd "$pkgname-$_commit"
-	cargo fetch --offline --target "$CARCH-unknown-linux-gnu"
+	cd "$pkgname-v.${pkgver}"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "$pkgname-$_commit"
+	cd "$pkgname-v.${pkgver}"
 	cargo build --release --frozen --all-targets
 }
 
 package() {
-	cd "$pkgname-$_commit"
+	cd "$pkgname-v.${pkgver}"
     install -Dm755 target/release/borrg -t "$pkgdir/usr/bin"
     install -Dm644 readme.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
