@@ -1,7 +1,7 @@
 # Maintainer: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.84.2
+pkgver=1.85.0
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
@@ -49,13 +49,15 @@ source=(
 	"${pkgname}::git+${url}.git#tag=${pkgver}"
 	"build-with-chroot.sh"
 	"translucent.patch"
+	"product.json"
 	"code-oss.sh"
 )
 
 sha512sums=(
 	"SKIP"
 	"9de3f195e711814e1e457e8ccb6383c6000bc83ee707f2bc138fe66c3cf6c35a6e9c755594afb5fbf8c4f05c3c87f7f3b8714e7947b62094ead6f5f1b81f5b24"
-	"a176c28af4fdbcaad12437ce49f99c2e2ca87619172eeeacc4c477a4d067878da6b6a945714a3c2b86d7d3d254794f23b0bcbd7bc5acbe105bd6aefeff47aa5f"
+	"d60f2f67a39600238a5660b756c0f9ccf5aa922a7ef5ff4368c12c3bd55d4ecdf018fa98f3769428093bd8909ae0bbe185d9d87067076c5ce12518ddd517fdb9"
+	"e472437e878161a84e8f09b6c0d16a024109e047a7bb2f5918267a85a083865432a5f81faa11a81614e75d0f22a3b3873387a01a3d49615b7c01159f7f47e6d8"
 	"6234842d41d9cb6cdd27766e35804644c59a39b43a92f2243b18525dc69d954d1e9dcd4297538de3dfd26051c7035d1ebb04f849a69208afa8214e42160c18dd"
 )
 
@@ -84,7 +86,11 @@ prepare() {
 	# Apply patch to source
 	patch -p1 < "../translucent.patch"
 
+	# Replace product json
+	cp --update=all "../product.json" "."
+
 	# Set the commit and build date
+	local _commit="$(git rev-parse HEAD)"
 	local _datestamp="$(date -u -Is | sed 's/\+00:00/Z/')"
 	sed -e "s|@COMMIT@|${_commit}|" -e "s|@DATE@|${_datestamp}|" -i "product.json"
 
@@ -114,7 +120,7 @@ build() {
 
 	cd "${srcdir}/${pkgname}"
 
-	yarn install --arch="${_vscode_arch}"
+	yarn install --arch="${_vscode_arch}" --check-files
 
 	gulp --max_old_space_size=8192 --openssl-legacy-provider vscode-linux-"${_vscode_arch}"-min
 
