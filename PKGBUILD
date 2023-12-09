@@ -2,7 +2,7 @@
 
 pkgname=kibot
 pkgver=1.6.3
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="KiCad automation utility"
 arch=('any')
@@ -19,13 +19,14 @@ depends=(
     rar
     kicad
     kicost
+    kidiff
     pandoc
     pcbdraw
     python
     python-kiauto
     python-kibom
     python-colorama
-    python-kidiff
+#     python-kidiff
     python-lark-parser
     python-lxml
     python-kikit
