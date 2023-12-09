@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PhizClip-Studio
+Exec=/opt/PhizClip-Studio/PhizClip-Studio.AppImage %U
+Comment=PhizClip-Studio
+Comment[zh_CN]=PhizClip-Studio
+Terminal=false
+Icon=PhizClip-Studio
+Type=Application
+StartupNotify=true
+StartupWMClass=PhizClip-Studio
+Categories=Network;Development;Utility;
