@@ -1,0 +1,16 @@
+pkgbase = tagtools
+	pkgdesc = A tool to list and edit audio files tags
+	pkgver = v1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/btuin2/tagtools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = nlohmann-json
+	optdepends = bash-completion
+	source = https://gitlab.com/btuin2/tagtools/-/archive/v1.0.1/tagtools-v1.0.1.tar.gz
+	sha256sums = 125f2172af6f0ca82af47216bce0234c7636a1b525ec639827f42138fd5706e8
+
+pkgname = tagtools
