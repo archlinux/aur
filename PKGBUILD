@@ -2,7 +2,7 @@
 
 pkgname=jdownloader2-svn
 pkgver=r48570
-pkgrel=1
+pkgrel=2
 pkgdesc="Download manager for one-click hosting sites like Rapidshare and Megaupload"
 arch=(x86_64)
 url="https://jdownloader.org/"
@@ -17,6 +17,8 @@ makedepends=(
   subversion
 )
 optdepends=('phantomjs: needed for some remote capture solving')
+provides=(jdownloader2)
+conflicts=(jdownloader2)
 source=(
   "AppWorkUtils::svn://svn.appwork.org/utils"
   "JDBrowser::svn://svn.jdownloader.org/jdownloader/browser"
