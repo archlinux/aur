@@ -8,7 +8,7 @@ pkgver=2023.09.0
 _pkgver=${pkgver%.*}-${pkgver##*.}
 pkgrel=1
 pkgdesc="Simplifies package management and deployment of Anaconda"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://${pkgname}.com"
 license=('custom')
 provides=('conda')
@@ -26,11 +26,13 @@ optdepends=('libxau: for Anaconda Navigator support'
   'alsa-lib: for Anaconda Navigator support'
   'libglvnd: for Anaconda Navigator support'
   'xdg-utils: for ')
-source=(https://repo.${pkgname}.com/archive/Anaconda3-${_pkgver}-Linux-x86_64.sh
-  ${pkgname}-navigator.desktop)
+source=(${pkgname}-navigator.desktop)
+source_x86_64=(https://repo.${pkgname}.com/archive/Anaconda3-${_pkgver}-Linux-x86_64.sh)
+source_aarch64=(https://repo.${pkgname}.com/archive/Anaconda3-${_pkgver}-Linux-aarch64.sh)
 options=(!strip libtool staticlibs)
-sha512sums=('425480883c1e5a78fb48c7411f3f2b476b1e5c469a1377691e36f3509cb7dc4b07ab76c582e3ef66047e863f4e6598bad6f62264821128329b528bec9fb34fd5'
-            '5822dd55b1668b166134ec6dc414b3ad13f34c4271e9dba8d2d4adb34440c8b664ce5b6f2b6bb9752f5ec115d8671015fca035f2f94c92d5ce8aba2a1782a9d5')
+sha512sums=('5822dd55b1668b166134ec6dc414b3ad13f34c4271e9dba8d2d4adb34440c8b664ce5b6f2b6bb9752f5ec115d8671015fca035f2f94c92d5ce8aba2a1782a9d5')
+sha512sums_x86_64=('425480883c1e5a78fb48c7411f3f2b476b1e5c469a1377691e36f3509cb7dc4b07ab76c582e3ef66047e863f4e6598bad6f62264821128329b528bec9fb34fd5')
+sha512sums_aarch64=('7e3ce3fb799b160c23126c1db949ecb45f113402cf31510c6eaaab98c98035aee0a0af264b650619e5eb81374e822ee881c1e70cce837eb33851498d521cc3e5')
 install="${pkgname}.install"
 
 package() {
