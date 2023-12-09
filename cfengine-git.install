@@ -1,0 +1,41 @@
+PREFIX=/var/cfengine
+
+post_install() {
+
+# generate a host key
+ if [ ! -f $PREFIX/ppkeys/localhost.priv ]; then
+  $PREFIX/bin/cf-key > /dev/null
+ fi
+
+# copy the stock policy for the new installations and create promies_validated
+ if ! [ -f $PREFIX/masterfiles/promises.cf ]; then
+  /bin/cp -R /usr/share/doc/cfengine/CoreBase/masterfiles/* $PREFIX/masterfiles/
+  $PREFIX/bin/cf-promises -T $PREFIX/masterfiles
+ fi
+
+# copy modules/packages (part of stock policy)
+ if ! [ -f $PREFIX/modules/packages ]; then
+   mkdir -p $PREFIX/modules/packages
+ fi
+ if cd /usr/share/doc/cfengine/CoreBase/modules/packages; then
+  for module in *; do
+    if ! [ -f $PREFIX/modules/packages/$module ]; then
+      cp $module $PREFIX/modules/packages
+    fi
+  done
+ fi
+ #if ! [ -f /var/cfengine/bin/cf-promises ]; then
+ # cd /var/cfengine/bin
+ # ln -s /usr/bin/cf-* .
+ #fi
+
+ echo -e "\nBootstrap cfengine with cf-agent --bootstrap <IP address of policy server>\n"
+ echo -e "\nRun systemctl enable cfengine3 to enable CFEngine 3\n"
+}
+
+post_remove() {
+
+ if [ -d /var/cfengine/bin ]; then
+   rm /var/cfengine/bin/*
+ fi
+}
