@@ -8,11 +8,11 @@ pkgbase = textext
 	makedepends = git
 	depends = inkscape
 	depends = texlive-latexextra
-	depends = typst
 	depends = pdf2svg
 	depends = python-lxml
 	depends = python-gobject
 	depends = python-cssselect
+	optdepends = typst: for typst compiler support
 	source = git+https://github.com/textext/textext.git?signed#tag=1.10.1
 	validpgpkeys = 32746E27876C1E5418BBBF7F7A9964831E98EED5
 	sha512sums = SKIP
