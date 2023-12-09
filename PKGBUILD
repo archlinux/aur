@@ -3,13 +3,13 @@
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Stephan Conrad <stephan@conrad.pics>
 
-# Also based of libmodsecurity Extra PKGBUILD maintained by
+# Also based on libmodsecurity Extra PKGBUILD by
 #   Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=libmodsecurity-git
 _name=modsecurity
-pkgver=v3.0.10.r25.g5b094c0
-pkgrel=2
+pkgver=v3.0.11.r2.g3e7227b
+pkgrel=1
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, git HEAD'
 arch=('i686' 'x86_64')
 url='https://github.com/SpiderLabs/ModSecurity'
@@ -24,12 +24,16 @@ depends=(
 	'libmaxminddb'
 	'ssdeep'
 	'luajit'
+	'glibc'
+	'gcc-libs'
 )
 makedepends=('git')
 provides=("libmodsecurity")
 conflicts=("libmodsecurity")
-source=("${_name}::git+$url")
-sha256sums=('SKIP')
+source=("${_name}::git+$url"
+        libxml-includes.patch)
+sha256sums=('SKIP'
+            '7ee0adbe5b164ca512c49e51e30ffd41e29244156a695e619dcf1d0387e69aef')
 
 pkgver() {
 	cd "${srcdir}/${_name}"
@@ -43,7 +47,9 @@ prepare() {
 	sed -e 's/luajit-2.0/luajit-2.1/g' \
 			-e 's/LUA_POSSIBLE_LIB_NAMES="/LUA_POSSIBLE_LIB_NAMES="luajit /g' \
 			-i build/lua.m4
+	patch -p1 -i ../libxml-includes.patch
 }
+
 
 build() {
 	cd "${srcdir}/${_name}"

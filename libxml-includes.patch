@@ -1,0 +1,24 @@
+diff --git a/src/modsecurity.cc b/src/modsecurity.cc
+index 854ec31..dfe5502 100644
+--- a/src/modsecurity.cc
++++ b/src/modsecurity.cc
+@@ -24,6 +24,7 @@
+ #ifdef WITH_LIBXML2
+ #include <libxml/xmlschemas.h>
+ #include <libxml/xpath.h>
++#include <libxml/parser.h>
+ #endif
+ #ifdef MSC_WITH_CURL
+ #include <curl/curl.h>
+diff --git a/src/request_body_processor/xml.h b/src/request_body_processor/xml.h
+index 1d29f62..e19f4a5 100644
+--- a/src/request_body_processor/xml.h
++++ b/src/request_body_processor/xml.h
+@@ -16,6 +16,7 @@
+ #ifdef WITH_LIBXML2
+ #include <libxml/xmlschemas.h>
+ #include <libxml/xpath.h>
++#include <libxml/parser.h>
+ #endif
+ 
+ #include <string>
