@@ -2,7 +2,7 @@
 
 pkgname=modbus-rtu-client-shm
 pkgrel=1
-pkgver=0.2.3
+pkgver=0.2.5
 pkgdesc="modbus rtu client that stores its data (registers) in shared memory"
 url="https://github.com/NikolasK-source/modbus_rtu_client_shm"
 license=('MIT')
