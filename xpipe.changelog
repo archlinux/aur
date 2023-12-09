@@ -1,3 +1,25 @@
+## Changes in 1.7.11
+
+- Add support for the gpg-agent for SSH connections, e.g. for smart cards
+- Add ESC and CTRL/CMD+W shortcuts to close dialog windows
+- Add support for JetBrains editors
+- Add support for docker versions <20
+- Improve information display for docker containers
+- Properly update state of child connections on refresh
+- Fix SSH identity file chooser not opening up the correct system when using jump servers
+- Properly disable remote git storage during a session if a remote operation failed before
+
+## Changes in 1.7.10
+
+- Fix application freezing under heavy load, usually with the git storage
+- Fix git storage asking multiple times for login information when needed
+- Fix git storage push failing when login information was required
+- Fix rpm installation upgrade removing desktop file
+- Make exit timeout always run to quit after max 30 seconds
+- Improve readme description for causes of an empty git storage
+- Add chmod file browser action
+- Many other small miscellaneous fixes and improvements
+
 ## Changes in 1.7.9
 
 ### Git storage rework
@@ -16,7 +38,7 @@ It is recommended to start with a remote git repository from scratch though to p
 ### Other changes
 
 - Fix new daemon instances getting stuck when trying to communicate with an already running daemon that does not respond
-- Fix daemon not properly exiting when stuck on shutdown and receiving more SIGTERM events
+- Fix daemon not properly exiting when stuck on shutdown
 - Fix elevated commands getting stuck if no sudo password was available
 - Fix some commands getting stuck under rare conditions on Linux and macOS
 - Fix some windows being shown outside of screen bounds when display scaling values were set very high
@@ -30,3 +52,4 @@ It is recommended to start with a remote git repository from scratch though to p
 - Fix file browser execute action not launching scripts
 - Fix some license related errors
 - Fix Windows os detection on remote servers if cmd was not available
+- Many other small miscellaneous fixes and improvements
