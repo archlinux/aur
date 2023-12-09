@@ -1,0 +1,5 @@
+*.zst
+sonix-flasher/
+pkg/
+src/
+SonixFlasherC

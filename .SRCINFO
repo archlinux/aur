@@ -1,0 +1,15 @@
+pkgbase = sonix-flasher-c-git
+	pkgdesc = A CLI-based Flasher for Sonix 24x/26x MCUs.
+	pkgver = 1.1.0.r9.g548174b
+	pkgrel = 1
+	url = https://github.com/SonixQMK/SonixFlasherC
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = hidapi
+	depends = libudev.s0=1
+	source = git+https://github.com/SonixQMK/SonixFlasherC
+	sha256sums = SKIP
+
+pkgname = sonix-flasher-c-git
