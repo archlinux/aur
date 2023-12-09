@@ -1,7 +1,7 @@
 # Maintainer: zaeyee <zaeyee@163.com>
 pkgname="phizclip-studio"
 pkgver="1.1.2"
-pkgrel=3
+pkgrel=4
 pkgdesc="PhizClip-Studio"
 arch=("x86_64")
 url="https://phiz.chat/"
@@ -17,9 +17,9 @@ sha256sums=('0a52427cff18306b8917b0061e4c3f804b94b91e5d5f63f9174500b454dfda91'
 options=(!strip)
 
 package() {
-	install -Dm755 "${srcdir}/${pkgname}-v${pkgver}-${pkgrel}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+	install -Dm755 "${srcdir}/${pkgname}-v${pkgver}-${pkgrel}.AppImage" "${pkgdir}/opt/PhizClip-Studio/PhizClip-Studio.AppImage"
 	install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+	install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/PhizClip-Studio.png"
 	# install -Dm644 "${srcdir}/${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
 	mkdir -p "${pkgdir}/usr/bin"
