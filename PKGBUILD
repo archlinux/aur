@@ -1,16 +1,16 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 
 _pyname=graphqlmap
 pkgname=graphqlmap-git
-pkgver=r44.87b5626
-pkgrel=3
+pkgver=r63.59305d7
+pkgrel=1
 pkgdesc="scripting engine to interact with a GraphQL endpoint for pentesting purposes"
 arch=('any')
 url="https://github.com/swisskyrepo/GraphQLmap"
 license=('MIT')
 depends=(
   'python'
-  'python-argparse'
   'python-requests'
   'python-rl'
 )
@@ -22,9 +22,9 @@ provides=("$_pyname")
 conflicts=(graphqlmap)
 options=(!emptydirs)
 source=(
-	https://github.com/swisskyrepo/$_pyname.git
+	git+https://github.com/swisskyrepo/$_pyname.git
 )
-sha512sums=('28a6def2655bc71b0914231d779d2efa140a6fd9c5b1c2de1361cd4669cff251bd6052ac1d3bf988f9f554f44c8e71176b3099327e922cee5794ac82de3cb317')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pyname"
