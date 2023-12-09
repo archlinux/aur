@@ -8,7 +8,7 @@ url="https://github.com/FEniCS/${pkgname}"
 license=(LGPL3)
 makedepends=(cmake)
 depends=(boost hdf5-openmpi petsc pugixml python-fenics-ffcx scotch)
-checkdepends=(catch2v3)
+checkdepends=(catch2)
 optdepends=('adios2: for use ADIOS2 writer'
   'kahip: for compute graph partition in parallel'
   'parmetis: for parallel graph partitioning'
