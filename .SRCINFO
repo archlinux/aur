@@ -1,6 +1,6 @@
 pkgbase = klaus-bin
 	pkgdesc = Arch manager that allows you to download, install, delete packages...
-	pkgver = 8.8
+	pkgver = 8.9
 	pkgrel = 1
 	url = https://github.com/dmaliog/kLausqt/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = klaus-bin
 	depends = tar
 	depends = papirus-icon-theme
 	optdepends = ocs-url
-	source = klaus-bin-8.8.zip::https://github.com/dmaliog/kLausqt//releases/download/8.8/klaus-8.8-2023-12-08-linux64.zip
-	sha256sums = 033cabd1a436c3baa3e6d4559d671a3688ff19efff160e99460a11bf38c5b564
+	source = klaus-bin-8.9.zip::https://github.com/dmaliog/kLausqt//releases/download/8.9/klaus-8.9-2023-12-09-linux64.zip
+	sha256sums = de3132c77a97519d99cdb3f9ca1cf22c358b51cef1e302a434e07fe9237f44f3
 
 pkgname = klaus-bin
