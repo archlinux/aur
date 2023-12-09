@@ -2,7 +2,7 @@
 
 pkgname=jdownloader2-svn
 pkgver=r48570
-pkgrel=2
+pkgrel=3
 pkgdesc="Download manager for one-click hosting sites like Rapidshare and Megaupload"
 arch=(x86_64)
 url="https://jdownloader.org/"
@@ -26,6 +26,7 @@ source=(
   "MyJDownloaderClient::svn://svn.jdownloader.org/jdownloader/MyJDownloaderClient"
   "jd-containers.desktop"
   "jdownloader"
+  "jdownloader-headless"
   "jdownloader.desktop"
   "jdownloader.sysusers"
   "jdownloader.tmpfiles"
@@ -38,6 +39,7 @@ sha256sums=(
   'SKIP'
   'bd8e68c6d9cff95a6d99a58991a14219e9bbcfa28a841c917e46f5594690e427'
   '87c1e675507e0476bbf30cb624dd9e628f2452b3899c237e39cd8bb64edde733'
+  '5d7b893c98c0a194d17b7b3ae9975c3c97cf0622735f8dc479053a6e91f7f2fc'
   '4caf551a092a7c8467b334bb6f6f7c6750aa00b410ec4c857e7d0296405e4fdc'
   '901a874cb14389096ea54505dc9af48e99db310d937fce681417d2e00dd1d24f'
   'e8a07754c7e6c4036f9039d4f6b49513372a65f1d7d1c16cb517a24bef941ea7'
@@ -78,7 +80,14 @@ package() {
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" standalone/dist/license.txt
   cp --archive --no-preserve=ownership standalone/dist/licenses/* "$pkgdir/usr/share/licenses/$pkgname"
+
+  # Remove license files from /opt
+  rm -r "$pkgdir/opt/jdownloader/licenses"
+  rm "$pkgdir/opt/jdownloader/license.txt" "$pkgdir/opt/jdownloader/license_german.txt"
+
+  # Remove bundled ffmpeg
   rm -r "$pkgdir/opt/jdownloader/tools"
 
   install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/jdownloader"
+  install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/jdownloader-headless"
 }

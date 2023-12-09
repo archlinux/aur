@@ -4,6 +4,7 @@
 !.SRCINFO
 !jd-containers.desktop
 !jdownloader
+!jdownloader-headless
 !jdownloader.desktop
 !jdownloader.sysusers
 !jdownloader.tmpfiles
