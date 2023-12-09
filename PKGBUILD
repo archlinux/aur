@@ -1,7 +1,7 @@
 # Maintainer: Lawstorant <forest10pl@gmail.com>
 
 pkgname=gnome-control-center-vrr
-pkgver=45.1
+pkgver=45.2
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with VRR toggle)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
@@ -84,7 +84,7 @@ optdepends=(
 conflicts=(gnome-control-center)
 provides=(gnome-control-center)
 groups=(gnome)
-_commit=a95ab55060e30ee10fa3037b0fce0e241ba90fbd  # tags/45.1^0
+_commit=cc5da95fecaeb5486435c54917edf9633addc02d  # tags/45.2^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
