@@ -3,7 +3,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=wasm-micro-runtime
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Standalone WebAssembly (WASM) runtime with small footprint"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("wasm-micro-runtime")
 conflicts=("wasm-micro-runtime-git")
 changelog="RELEASE_NOTES.md"
 source=("$url/archive/WAMR-$pkgver.tar.gz")
-sha512sums=("f2dc39c4a17ca2cb983086f1a63220c52d0b7cca23b7e4e5910b72cba8d827e877c98653504f9fc5bc05b6a23ec86ada39b18a998478779c127d2c1886927165")
+sha512sums=("b212208fbbf5613f169447e6d3a079edec7321c892c44e9c51734b41c1c9bd45a83afd38b16e01c0850252a5072b566cff45ab4cecd3eed19705bef3a616385f")
 
 prepare() {
 	sed -i 's/${LLVM_AVAILABLE_LIBS}/LLVM/g' "$pkgname-WAMR-$pkgver/product-mini/platforms/linux/CMakeLists.txt"
