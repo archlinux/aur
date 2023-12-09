@@ -4,8 +4,8 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-nosnap
-pkgver=11.6.0
-pkgrel=3
+pkgver=11.7.0
+pkgrel=0
 _srcdir="$_pkgname-$pkgver"
 pkgdesc="A Gtk3 frontend, Package Manager based on libalpm with AUR and Appstream support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,6 @@ url="https://gitlab.manjaro.org/applications/$_pkgname"
 license=('GPL3')
 depends=(
     'desktop-file-utils'
-    'git'
     'gnutls'
     'gtk4'
     'libadwaita'
@@ -48,20 +47,13 @@ conflicts=(
     'pamac-flatpak-gnome'
 )
 options=(!emptydirs)
-source=(
-    "$url/-/archive/$pkgver/pamac-$pkgver.tar.gz"
-    "$url/-/commit/b6d4815b051d4048f00fa05a57959a5681a031b5.patch"
-)
-sha256sums=(
-    'e50d4b0f4e2acaf76c50ef2d88e0913f966de5d34adfdf33d07d244ab03dda73'
-    'ab0c4e94002b5ceb4987298a070c54d12b35f56e7e54fd2d93567e4e5e797795'
-)
+source=("$url/-/archive/$pkgver/pamac-$pkgver.tar.gz")
+sha256sums=('85d6575696f35c7a6268e8d259bb6c0d04c4075ff37e0d6800a7dfd7d12c5340')
 
 _srcdir="$_pkgname-$pkgver"
 
 prepare() {
 	cd "$_srcdir"
-	patch -Np1 -i "${srcdir}/b6d4815b051d4048f00fa05a57959a5681a031b5.patch"
 	# adjust version string
 	sed -i -e "s|\"$pkgver\"|\"$pkgver-$pkgrel\"|g" 'src/version.vala'
 }
