@@ -1,9 +1,9 @@
-# Maintainer: lobo torres <wolf at fastmail dot co dot uk>
+# Maintainer: Lobo Torres <lobo@praderi.es>
 
 # -*- mode: sh -*-
 
 pkgname='betula'
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Self-hosted personal link collection manager'
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -17,8 +17,9 @@ options=('lto')
 prepare() {
   cd "$pkgname-v$pkgver"
 
+  export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
-  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
 
@@ -29,8 +30,9 @@ prepare() {
 build() {
   cd "$pkgname-v$pkgver"
 
+  export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
-  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
 
@@ -51,7 +53,6 @@ package() {
   install -Dm0644 "README.md"         "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
-sha256sums=('95488f9a165c6bc273148b531be061b56de541d88ab5a7d6cfd4d6555fd9bf0d')
-b2sums=('fac4250e2ccaddbeae95da61de0aeb760cf8fe37082ae28d9fc3e4006e3a55b85fcb29c1726520ff79f181e798701bcb5536def284291185381e034f553848c2')
+sha256sums=('62746f36de696099536eabb2879203606d7ec7b80b1a985d4d5319f332158fb6')
 
 # eof
