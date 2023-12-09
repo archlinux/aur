@@ -5,6 +5,7 @@ pkgbase = ps2-libpng
 	url = https://github.com/glennrp/libpng
 	arch = x86_64
 	license = custom
+	makedepends = git
 	makedepends = ps2-sdk
 	makedepends = cmake
 	source = ps2-libpng::git+https://github.com/glennrp/libpng#commit=a40189cf881e9f0db80511c382292a5604c3c3d1

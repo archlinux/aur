@@ -12,18 +12,22 @@ pkgname="${_platform}-${_pkg}"
 pkgver="v1.6.37"
 _ports_ver="v1.3.0"
 pkgrel=1
-_pkgdesc=("A collection of routines used to create PNG format graphics files "
-          "(Sony Playstation® 2 videogame system port).")
+_pkgdesc=(
+  "A collection of routines used to create PNG format graphics files "
+  "(Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
-arch=('x86_64')
+arch=(
+  'x86_64')
 license=('custom')
 _ns="glennrp"
 _github="https://github.com/${_ns}"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_pkg}"
 _ports_url="https://github.com/${_platform}dev/${_platform}${_base}-ports"
-makedepends=("${_platform}-sdk"
-             "cmake")
+makedepends=(
+  "git"
+  "${_platform}-sdk"
+  "cmake")
 optdepends=()
 _commit="a40189cf881e9f0db80511c382292a5604c3c3d1"
 _ports_commit="e3f9bfd51e3266b3c68de19b76f6d378f6ec643b"
