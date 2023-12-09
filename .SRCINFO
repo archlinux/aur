@@ -1,6 +1,6 @@
 pkgbase = opensearch-dashboards-gantt-chart-plugin
 	pkgdesc = OpenSearch Dashboards Gantt Chart Plugin
-	pkgver = 2.11.0.0
+	pkgver = 2.11.1.0
 	pkgrel = 1
 	url = https://opensearch.org/docs/latest/dashboards/gantt/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = opensearch-dashboards-gantt-chart-plugin
 	makedepends = npm
 	makedepends = python
 	makedepends = git
-	depends = opensearch-dashboards=2.11.0
+	depends = opensearch-dashboards=2.11.1
 	options = !strip
 	options = emptydirs
-	source = git+https://github.com/opensearch-project/dashboards-visualizations.git#tag=2.11.0.0
-	source = git+https://github.com/opensearch-project/OpenSearch-Dashboards.git#tag=2.11.0
+	source = git+https://github.com/opensearch-project/dashboards-visualizations.git#tag=2.11.1.0
+	source = git+https://github.com/opensearch-project/OpenSearch-Dashboards.git#tag=2.11.1
 	sha256sums = SKIP
 	sha256sums = SKIP
 
