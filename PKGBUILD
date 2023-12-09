@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -57,9 +57,9 @@ package() {
 	cat > "$pkgdir/usr/share/mime/packages/vpkedit.xml" <<-EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-    <mime-type type="application/x-vpkedit-vpk">
+    <mime-type type="application/x-vpk">
     <comment>VPK Archive</comment>
-	<icon name="x-vpkedit-vpk"/>
+	<icon name="x-vpk"/>
 	<acronym>VPK</acronym>
 	<expanded-acronym>Valve Pack File</expanded-acronym>
     <glob-deleteall/>
@@ -73,10 +73,10 @@ EOF
 	sed -i 's"Exec=/opt/vpkedit/vpkedit"Exec=/opt/vpkedit/vpkedit %f"g' vpkedit.desktop
 
 	cat >> "vpkedit.desktop" <<-EOF
-	MimeType=application/x-vpkedit-vpk
+	MimeType=application/x-vpk
 	EOF
 
 	# Give VPKs an icon
 	mkdir -p "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/"
-	cp "$pkgdir/usr/share/pixmaps/vpkedit.png" "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/x-vpkedit-vpk.png"
+	cp "$pkgdir/usr/share/pixmaps/vpkedit.png" "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/x-vpk.png"
 }
