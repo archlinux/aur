@@ -1,7 +1,7 @@
 # Maintainer: Brijesh8291 <brijeshsundi@gmail.com>
 
 pkgname=spotx-git
-pkgver=r39.1643199
+pkgver=r40.54119f1
 pkgrel=1
 pkgdesc="SpotX Bash Script | Block all audio, banner & video ads | Block logging"
 arch=('any')
