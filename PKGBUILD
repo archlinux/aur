@@ -15,7 +15,7 @@
 #
 
 pkgname=mcuxpresso-ide
-pkgver=11.8.0_1165
+pkgver=11.8.1_1197
 pkgrel=1
 epoch=
 pkgdesc="An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP."
@@ -26,7 +26,7 @@ depends=('ncurses' 'glibc' 'lib32-glibc' 'jlink-software-and-documentation' 'dfu
 
 source=("file://mcuxpressoide-${pkgver}.${arch}.deb.bin")
 noextract=("mcuxpressoide-${pkgver}.${arch}.deb.bin")
-sha256sums=('8f503998841b4428534b509574845b62f36860fff9e1de8d53905ffe4525fd18')
+sha256sums=('b0d245e934c06aee5cfc727d16132b9292621e8ffc6c917d109700e3ff336849')
 options=('!strip')
 
 prepare() {
