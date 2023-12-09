@@ -12,6 +12,7 @@ makedepends=(python-setuptools)
 # otf-ipafont is used by test_latex
 # python-nose will not be needed after https://github.com/blockdiag/sphinxcontrib-blockdiag/pull/25
 #checkdepends=(python-nose python-sphinx-testing python-reportlab otf-ipafont)
+# TODO: check https://github.com/blockdiag/sphinxcontrib-blockdiag/pull/25/files
 optdepends=(
   'python-reportlab: for using PDF as the format of images'
 )
