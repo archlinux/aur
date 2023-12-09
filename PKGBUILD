@@ -2,7 +2,7 @@
 
 pkgname=openmv-ide-bin
 _pkgname=${pkgname%-bin}
-pkgver=4.0.12
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="QtCreator based OpenMV IDE."
 arch=('x86_64')
@@ -18,16 +18,17 @@ source=("${_pkgname}.desktop"
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.run::https://github.com/openmv/openmv-ide/releases/download/development/${_pkgname}-linux-x86_64-${pkgver}.run")
 sha256sums=('7de4addf4e0144495fdad9d515ad8a19fc3e077a08cff57ef1a961f15bea3e81'
             '11b3fe3f7de494aa7e45050327c3a5300596e5f03717fd3f469f6b8b8e1e7f55')
-sha256sums_x86_64=('6f34a2af7a5720d5974381cf481a1b413db046f0f210231362d607620b0c2d66')
+sha256sums_x86_64=('ae3b24e6a11f9dc5b7e8502714515b99e7eb70600d7cc9909471ee8a7bef856f')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/opt/${_pkgname}/{} \;
 }
 
-prepare() {
-  chmod u+x ${_pkgname}-${pkgver}-$CARCH.run
+build() {
+  cd "${srcdir}"
 
-  ./${_pkgname}-${pkgver}-$CARCH.run --al -c --am in --root=$srcdir/$_pkgname
+  chmod u+x ${_pkgname}-${pkgver}-$CARCH.run
+  ./${_pkgname}-${pkgver}-$CARCH.run --al -c --am in --cp=${srcdir} --root=${srcdir}/$_pkgname
 }
 
 package() {
