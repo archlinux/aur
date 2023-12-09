@@ -1,0 +1,15 @@
+pkgbase = loko-git
+	pkgdesc = An optimizing R6RS Scheme compiler
+	pkgver = 0.12.1.r0.8be825b
+	pkgrel = 1
+	url = https://scheme.fail
+	arch = x86_64
+	license = EUPL-1.2-or-later
+	makedepends = chez-scheme
+	makedepends = akku
+	conflicts = loko
+	options = !strip
+	source = git+https://scheme.fail/git/loko.git/
+	sha256sums = SKIP
+
+pkgname = loko-git
