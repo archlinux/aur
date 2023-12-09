@@ -3,7 +3,7 @@
 pkgname=ds-inhibit
 _srctag=0.1.1
 pkgver=${_srctag}
-pkgrel=1
+pkgrel=2
 pkgdesc="DualShock 4/DualSense mouse inhibitor"
 url="https://gitlab.com/evlaV/ds-inhibit"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('git' 'openssh')
 
 package() {
 	cd "$pkgname"
-	make install DESTDIR="$pkgdir"
+	make install DESTDIR="$pkgdir" prefix="/usr"
 	install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
