@@ -1,8 +1,9 @@
-# Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 
 pkgname=buildroot-meta
 pkgver=2022.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="dependency requirements for buildroot"
 arch=('any')
 url="https://buildroot.org/downloads/manual/manual.html#requirement"
@@ -59,7 +60,6 @@ optdepends=(
   # Documentation generation tools
   'asciidoc>=8.6.3'
   'w3m'
-  'python-argparse'
   'dblatex: pdf manual'
 
   # Graph generation tools

@@ -1,7 +1,7 @@
 pkgbase = buildroot-meta
 	pkgdesc = dependency requirements for buildroot
 	pkgver = 2022.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://buildroot.org/downloads/manual/manual.html#requirement
 	arch = any
 	license = GPL
@@ -40,7 +40,6 @@ pkgbase = buildroot-meta
 	optdepends = subversion
 	optdepends = asciidoc>=8.6.3
 	optdepends = w3m
-	optdepends = python-argparse
 	optdepends = dblatex: pdf manual
 	optdepends = graphviz: graph-depends & <pkg>-graph-depends
 	optdepends = python-matplotlib: graph-build
