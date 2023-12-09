@@ -2,9 +2,9 @@
 
 _pkgname="mx-samba-config"
 pkgname="$_pkgname-git"
-pkgver=23.7.r5.ga48fb0b
+pkgver=23.12.01.r0.gc82f611
 pkgrel=1
-pkgdesc="Samba configuration tool designed to work with the 'usershare' system"
+pkgdesc="Samba configuration tool designed to work with the usershare system"
 url="https://github.com/MX-Linux/mx-samba-config"
 license=('LGPL3')
 arch=('x86_64')
@@ -25,32 +25,20 @@ _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+$url.git"
   "$_pkgname.sysusers.conf"
-  "mx-samba-config-lib.sh"
 )
 sha256sums=(
   'SKIP'
   '65f5888ecfd8bf4c7f5a65213ddd710b93c632c1f05f258e1c691e9f7acff83e'
-  '5280cc7d9cc8d7183954244784f142da43b741d3a275e5d3f2dfb742ad2482eb'
 )
 
 pkgver() {
   cd "$_pkgsrc"
 
-  local _regex='^\s*Version: ([0-9\.]+)\s*$'
-  local _file
-  for i in debs/mx-samba-config_*.dsc ; do
-    if [ -e "$i" ] ; then
-      _file="$i"
-    fi
-  done
-
-  if [ -z "$_file" ] ; then
-    _regex='^\s*const QString VERSION \{"([0-9\.]+)"\};$'
-    _file='version.h'
-  fi
+  local _regex='^mx-samba-config \(([0-9\.]+)\).*$'
+  local _file='debian/changelog'
 
   local _line=$(grep -Esm1 "$_regex" "$_file")
-  local _line_num=$(grep -En "$_regex" "$_file" | cut -d':' -f1)
+  local _line_num=$(grep -Ensm1 "$_regex" "$_file" | cut -d':' -f1)
 
   local _version=$(sed -E "s@$_regex@\1@" <<< "$_line")
 
@@ -65,6 +53,11 @@ pkgver() {
 prepare() {
   # fix helper script
   sed -E 's&\bsmbd\b&smb&;s&\bnmbd\b&nmb&' -i "$_pkgsrc/scripts/"*
+
+  # update version.h
+  head -n1 "$_pkgsrc/debian/changelog" \
+    | sed -e "s/.*(\([^(]*\)).*/const QString VERSION {\"\1\"};/" \
+    > "$_pkgsrc/version.h"
 }
 
 build() {
@@ -92,8 +85,7 @@ package() {
   install -Dm755 "build/$_pkgname" -t "$pkgdir/usr/bin"
 
   # helper scripts
-  install -Dm755 "$_pkgsrc/scripts/mx-samba-config-list-users" -t "$pkgdir/usr/lib/$_pkgname/"
-  install -Dm755 "mx-samba-config-lib.sh" "$pkgdir/usr/lib/$_pkgname/mx-samba-config-lib"
+  install -Dm755 "$_pkgsrc/scripts"/* -t "$pkgdir/usr/lib/$_pkgname/"
 
   # desktop file
   install -Dm644 "$_pkgsrc/$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
