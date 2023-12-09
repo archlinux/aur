@@ -3,7 +3,7 @@
 
 _pkgname="opencomic"
 pkgname="$_pkgname-bin"
-pkgver=0.2.1
+pkgver=1.0.0
 pkgrel=4
 
 pkgdesc="Comic and Manga reader, written with Node.js and using Electron."
@@ -41,12 +41,11 @@ depends=("alsa-lib"
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 # replaces=("$_pkgname")
-options=(strip emptydirs zipman)
 changelog="changelog.md"
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ollm/OpenComic/releases/download/v${pkgver}/opencomic-${pkgver}.${CARCH}.rpm"
 	"https://raw.githubusercontent.com/ollm/OpenComic/master/LICENSE")
-b2sums=('d2d7effcd0e63fae25c95905d0e1d8a571b25d1ca073af7bebfc3efda25a90423d7a4307cb205be0c5bac91aa92aba65cda2b4cc9406a177ef2c868b4d70c310'
+b2sums=('1e9c625c0d9665532a40d2445df676e7ee02a7276994671885426df0b6b8804cc3c77773f202c5eba249e75ab8d32e9cd6463aee523c3df2be0abf26be90a371'
 	'399283bc59e70998486f2ae7b0af9f2f241206dd660e50808be3cef500adef2a9e8d449304f506d93bd2281e6b0729b16145173591deeb105ef545b769453e10')
 
 build() {
