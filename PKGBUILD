@@ -19,7 +19,7 @@ python-tenacity
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/da/52/25500eda77ec9fb48d29be98fd2d47bdb3c73129b343b8c20fa710f5cc46/langchain_core-0.0.12.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
 sha256sums=('9c6cca4ed25a10950071be80dc62921b30caafae73ac1bd4b93d9f070967a7b2')
 
 build() {
