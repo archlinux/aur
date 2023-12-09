@@ -1,73 +1,36 @@
 # Maintainer: wabi <aschrafl@jetnet.ch>
 # Maintainer: pikl <me@pikl.uk>
-pkgname=immich
-pkgrel=4
+pkgbase=immich
+pkgname=('immich-server' 'immich-cli')
+pkgrel=6
 pkgver=1.90.2
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
 arch=(x86_64)
-makedepends=('npm' 'jq' 'python-poetry')
-# dependencies generated from base-images repository
-# https://github.com/immich-app/base-images/blob/main/server/Dockerfile
+# ts-node required for CLI
+makedepends=('npm' 'jq' 'python-poetry' 'ts-node')
+# combination of server/CLI deps, see split package functions
+# for individual deps and commentary
 depends=('redis' 'postgresql' 'nodejs' 'nginx'
-    'typesense'
-    'zlib'
-    'glib2'
-    'expat'
-    'librsvg'
-    'libexif'
-    'libwebp'
-    'orc'
-    'libjpeg-turbo'
-    'libgsf'
-    'libpng'
-    'libjxl'
-    'libheif'
-    'lcms2'
-    'mimalloc'
-    'openjpeg2'
-    'openexr'
-    'liblqr'
-    'libtool'
-    'ffmpeg'
-    # need to ensure this matches sharp depend version
-    # because otherwise a local copy will be built
-    # breaking heif conversion
-    'libvips>=8.14.3'
-    'openslide'
-    'poppler-glib'
-    'imagemagick'
-    'libraw'
-    # new perl deps introduced at v1.89.0
-    'perl-net-ssleay'
-    'perl-io-socket-ssl'
-    'perl-capture-tiny'
-    'perl-file-which'
-    'perl-file-chdir'
-    'perl-pkgconfig' # other potential - libpkgconf
-    'perl-ffi-checklib'
-    'perl-test-warnings'
-    'perl-test-fatal'
-    'perl-test-needs'
-    'perl-test2-suite'
-    'perl-sort-versions'
-    'perl-path-tiny' # other potential - perl-file-path-tiny
-    'perl-try-tiny'
-    'perl-term-table'
-    'perl-uri' # good enough for libany-uri-escape-perl?
-    'perl-mojolicious' # aur
-    'perl-file-slurper'
+    'typesense' 'zlib' 'glib2' 'expat' 'librsvg' 'libexif'
+    'libwebp' 'orc' 'libjpeg-turbo' 'libgsf' 'libpng'
+    'libjxl' 'libheif' 'lcms2' 'mimalloc' 'openjpeg2'
+    'openexr' 'liblqr' 'libtool' 'ffmpeg'
+    'libvips>=8.14.3' 'openslide' 'poppler-glib' 'imagemagick'
+    'libraw' 'perl-net-ssleay' 'perl-io-socket-ssl' 'perl-capture-tiny'
+    'perl-file-which' 'perl-file-chdir' 'perl-pkgconfig'
+    'perl-ffi-checklib' 'perl-test-warnings' 'perl-test-fatal'
+    'perl-test-needs' 'perl-test2-suite' 'perl-sort-versions'
+    'perl-path-tiny' 'perl-try-tiny' 'perl-term-table'
+    'perl-uri' 'perl-mojolicious' 'perl-file-slurper'
 )
-optdepends=(
-    'libva-mesa-driver: GPU acceleration'
-)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
-	"${pkgname}-server.service"
-	"${pkgname}-microservices.service"
-	"${pkgname}-machine-learning.service"
-	"${pkgname}.sysusers"
-	"${pkgname}.tmpfiles"
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
+	"${pkgbase}-server.service"
+	"${pkgbase}-microservices.service"
+	"${pkgbase}-machine-learning.service"
+	"${pkgbase}.sysusers"
+	"${pkgbase}.tmpfiles"
 	'immich.conf'
 	'nginx.immich.conf'
         'media.util.ts.patch'
@@ -93,15 +56,11 @@ sha256sums=('0b9347e3a9019a6ca95c68d6d05e68657f24e7de81d1d690e6a61e81c5c3798d'
             'SKIP'
             'SKIP'
             'SKIP')
-
-backup=("etc/immich.conf")
-options=("!strip")
-install=${pkgname}.install
 _installdir=/opt/immich-machine-learning
 _venvdir="${_installdir}/venv"
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgbase}-${pkgver}"
     # required to prefer /dev/dri/renderD128 over /dev/dri/card0 for ffmpeg accel (VAAPI)
     patch -p0 -i "${srcdir}/media.util.ts.patch"
     # replace hardcoded resource directory for a more sensible one
@@ -112,7 +71,7 @@ build() {
  
     # build web frontend
     # from: web/Dockerfile RUN npm commands
-    cd "${srcdir}/${pkgname}-${pkgver}/web"
+    cd "${srcdir}/${pkgbase}-${pkgver}/web"
     npm ci
     npm run build
     npm prune --omit=dev
@@ -120,7 +79,7 @@ build() {
     # build server
     # from: server/Dockerfile RUN npm commands
     #   * npm link / and cache clean not required
-    cd "${srcdir}/${pkgname}-${pkgver}/server"
+    cd "${srcdir}/${pkgbase}-${pkgver}/server"
     npm ci
     npm run build
     npm prune --omit=dev --omit=optional
@@ -128,7 +87,7 @@ build() {
     # build machine learning (python)
     # from: ENV and RUN commands in machine-learning/Dockerfile
     #   * later ENV commands picked up in systemd service files
-    cd "${srcdir}/${pkgname}-${pkgver}/machine-learning"
+    cd "${srcdir}/${pkgbase}-${pkgver}/machine-learning"
     sed -i 's|cache_folder: str = ".*"|cache_folder: str = "/var/lib/immich/.cache"|' app/config.py
     # pip install of poetry not required because poetry is a makedep
     export PYTHONDONTWRITEBYTECODE=1
@@ -145,11 +104,77 @@ build() {
     find "${srcdir}/venv" -type d -name "__pycache__" -delete
     # relocate without breaking
     sed -i "s|${srcdir}/venv|${_venvdir}|g" "${srcdir}/venv/bin/"* "${srcdir}/venv/pyvenv.cfg"
+
+    # build CLI
+    cd "${srcdir}/${pkgbase}-${pkgver}/cli"
+    npm ci
+    npm run build
 }
 
-package() {
+package_immich-server() {
 
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    replaces=('immich')
+    conflicts=('immich')
+
+    # dependencies generated from base-images repository
+    # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
+    depends=('redis' 'postgresql' 'nodejs' 'nginx'
+        'typesense'
+        'zlib'
+        'glib2'
+        'expat'
+        'librsvg'
+        'libexif'
+        'libwebp'
+        'orc'
+        'libjpeg-turbo'
+        'libgsf'
+        'libpng'
+        'libjxl'
+        'libheif'
+        'lcms2'
+        'mimalloc'
+        'openjpeg2'
+        'openexr'
+        'liblqr'
+        'libtool'
+        'ffmpeg'
+        # need to ensure this matches sharp depend version
+        # because otherwise a local copy will be built
+        # breaking heif conversion
+        'libvips>=8.14.3'
+        'openslide'
+        'poppler-glib'
+        'imagemagick'
+        'libraw'
+        # new perl deps introduced at v1.89.0
+        'perl-net-ssleay'
+        'perl-io-socket-ssl'
+        'perl-capture-tiny'
+        'perl-file-which'
+        'perl-file-chdir'
+        'perl-pkgconfig' # other potential - libpkgconf
+        'perl-ffi-checklib'
+        'perl-test-warnings'
+        'perl-test-fatal'
+        'perl-test-needs'
+        'perl-test2-suite'
+        'perl-sort-versions'
+        'perl-path-tiny' # other potential - perl-file-path-tiny
+        'perl-try-tiny'
+        'perl-term-table'
+        'perl-uri' # good enough for libany-uri-escape-perl?
+        'perl-mojolicious' # aur
+        'perl-file-slurper'
+    )
+    backup=("etc/immich.conf")
+    options=("!strip")
+    install=${pkgname}.install
+    optdepends=(
+        'libva-mesa-driver: GPU acceleration'
+    )
+
+    cd "${srcdir}/${pkgbase}-${pkgver}"
     
     # install server
     # from: server/Dockerfile COPY commands after build
@@ -193,4 +218,19 @@ package() {
     install -Dm644 immich.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/immich.conf"
     install -Dm644 immich.conf "${pkgdir}/etc/immich.conf"
     install -Dm644 nginx.immich.conf "${pkgdir}/etc/nginx/sites-available/immich.conf"
+}
+
+package_immich-cli() {
+    depends=('nodejs')
+
+    cd "${srcdir}/${pkgbase}-${pkgver}/cli"
+    install -dm755 "${pkgdir}/usr/lib/immich/cli"
+    cp -r node_modules "${pkgdir}/usr/lib/immich/cli/node_modules"
+    cp -r dist "${pkgdir}/usr/lib/immich/cli/dist"
+    cp -r LICENSE "${pkgdir}/usr/lib/immich/cli/LICENSE"
+
+    # setup symlink to allow immich command to be run from shell
+    chmod +x "${pkgdir}/usr/lib/immich/cli/dist/src/index.js"
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s ../lib/immich/cli/dist/src/index.js "${pkgdir}/usr/bin/immich"
 }
