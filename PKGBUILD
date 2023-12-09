@@ -1,14 +1,25 @@
 pkgname=python-langchain
-pkgver=0.0.345
+pkgver=0.0.348
 pkgrel=1
 pkgdesc='⚡ Building applications with LLMs through composability ⚡ '
 arch=(x86_64)
 url='https://github.com/langchain-ai/langchain'
 license=('MIT')
 source=("https://github.com/langchain-ai/langchain/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('8d8ffe2af2530043fc6af1393056893e2530436a83295437ada6716a8b0217ffc3a70b4f82eccd72c69eaf6d424d30d0260efe8ad97ae814ecb4258f850d314b')
-depends=(python python-aiohttp python-anyio python-dataclasses-json python-jsonpatch python-langchain-core python-langsmith python-numpy python-pydantic python-yaml python-requests python-sqlalchemy python-tenacity)
-depends+=(python-chardet yt-dlp python-networkx python-pillow python-tqdm python-pytorch ipython faiss-cuda python-joblib python-pymysql python-google-auth-oauthlib python-websocket-client python-pydub python-pdfminer python-transformers python-google-auth python-grpcio python-nest-asyncio python-regex python-tokenizers python-pypdfium2 python-tiktoken python-huggingface-hub python-beautifulsoup4 python-openai python-lxml python-tensorflow python-magic python-jsonschema python-scikit-learn python-protobuf python-pymongo python-lark-parser python-pdfplumber python-nltk python-rapidfuzz python-pypdf2 python-unstructured)
+sha512sums=('d2e7afef63f93e5721ee1301067da95df3a239dd50dda10c6af4893e3183a0f72a7ffdf5fe896a85a0dab4874a7069f868996ea24b4445f7f615ccffa3170ef6')
+depends=(python
+python-aiohttp
+python-dataclasses-json
+python-jsonpatch
+python-langchain-core
+python-langsmith
+python-numpy
+python-pydantic
+python-yaml
+python-requests
+python-sqlalchemy
+python-tenacity
+)
 makedepends=('python-build' 'python-installer' 'python-wheel')
 
 build() {
