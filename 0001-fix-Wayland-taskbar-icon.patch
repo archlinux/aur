@@ -1,0 +1,11 @@
+diff --color --unified --recursive --text sonix-flasher/src/main/python/main.py sonix-flasher-new/src/main/python/main.py
+--- sonix-flasher/src/main/python/main.py	2023-12-09 17:55:03.967882512 +0800
++++ sonix-flasher-new/src/main/python/main.py	2023-12-09 17:58:48.186767757 +0800
+@@ -617,6 +617,7 @@
+         cli_mode = False
+ 
+     appctxt = ApplicationContext()
++    appctxt.app.setDesktopFileName("sonix-flasher")
+     window = MainWindow()
+     window.resize(600, 500)
+     if get_platform() == "Linux":

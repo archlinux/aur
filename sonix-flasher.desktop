@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=sonix-flasher
+Comment=Sonix Keyboard Flasher
+Icon=sonix-flasher
+Exec=sonix-flasher %u
+Categories=Development;Electronics;Utility
+Terminal=false

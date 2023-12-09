@@ -1,0 +1,26 @@
+pkgbase = sonix-flasher-git
+	pkgdesc = Sonix Keyboard Flasher
+	pkgver = v0.2.5.r5.g6d76040
+	pkgrel = 1
+	url = https://github.com/SonixQMK/sonix-flasher
+	arch = any
+	license = unknown
+	depends = python-altgraph
+	depends = python-fbs
+	depends = python-future
+	depends = python-hidapi
+	depends = python-macholib
+	depends = python-pefile
+	depends = python-pyqt5
+	depends = python-pyqt5-sip
+	depends = hicolor-icon-theme
+	source = sonix-flasher.sh
+	source = sonix-flasher.desktop
+	source = 0001-fix-Wayland-taskbar-icon.patch
+	source = sonix-flasher::git+https://github.com/SonixQMK/sonix-flasher
+	sha256sums = 68d7641d8a903b9044ceb5bd38f71080f3e3b5c88312f3cd16a2fe4fb9c45077
+	sha256sums = c31cb3ae4cf5e8cdd211733bc4adb6d1add4330704f2fa0b654eb1844dc78487
+	sha256sums = 92ece2e245e5077145d3e620b10b6cfce203eb89f02ed379a8f5363e0f5c92a1
+	sha256sums = SKIP
+
+pkgname = sonix-flasher-git

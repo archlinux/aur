@@ -1,0 +1,4 @@
+*.zst
+sonix-flasher/
+pkg/
+src/
