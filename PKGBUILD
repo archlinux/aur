@@ -1,11 +1,12 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Matthew Sexton <mssxtn@gmail.com
+#contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 #Contributor: leo <leotemplin@yahoo.de>
 pkgname=hello
 pkgver=2.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Prints Hello World and more"
 arch=(i686 x86_64)
-url='https://gnu.org'
+url='https://www.gnu.org/software/hello/'
 license=('GPL')
 
 source=(https://ftp.gnu.org/gnu/hello/$pkgname-$pkgver.tar.gz)
