@@ -1,16 +1,17 @@
-# Maintainer: CareF <CareF.lm@gmail.com>
-# Maintainer: Xavier Peng <png.inside@gmail.com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: CareF <CareF.lm@gmail.com>
+# Contributor: Xavier Peng <png.inside@gmail.com>
 
 pkgname=one-click-bing-wallpaper-git
 _name=BingWallpaper
-pkgver=r114.a8c2c27
-pkgrel=2
+pkgver=r137.e1e4133
+pkgrel=1
 pkgdesc="A Qt-based program for setting newest Bing Wallpaper, just click the tray icon"
 arch=('i686' 'x86_64')
 url="https://github.com/ypingcn/BingWallpaper"
 makedepends=('qt5-base')
 optdepends=('feh: common WM support' 'xfconf: xfce support' 'glib2: deepin and cinnamon support')
-depends=('python-requests' 'python-argparse' 'dtkwidget' 'libnotify')
+depends=('python-requests' 'dtkwidget' 'libnotify')
 license=('GPL3')
 source=(git+https://github.com/ypingcn/BingWallpaper.git)
 md5sums=('SKIP')
