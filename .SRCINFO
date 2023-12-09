@@ -1,0 +1,22 @@
+pkgbase = bash-scripts-git
+	pkgdesc = A collection of bash scripts from https://github.com/jothi-prasath/bash-scripts
+	pkgver = r27.3597e45
+	pkgrel = 1
+	url = https://github.com/jothi-prasath/bash-scripts.git
+	arch = any
+	license = MIT
+	depends = git
+	depends = xclip
+	depends = imagemagick
+	depends = p7zip
+	depends = tar
+	depends = zip
+	depends = xz
+	depends = gzip
+	depends = ffmpeg
+	depends = cpupower
+	depends = wireless_tools
+	source = bash-scripts-git::git+https://github.com/jothi-prasath/bash-scripts.git
+	md5sums = SKIP
+
+pkgname = bash-scripts-git
