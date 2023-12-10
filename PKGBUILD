@@ -2,12 +2,13 @@
 pkgname=jamesdsp-pulse
 _app_id=me.timschneeberger.jdsp4linux.pulse
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
 license=('GPL3')
-depends=('glibmm' 'hicolor-icon-theme' 'libarchive' 'libpipewire' 'qt6-svg')
+depends=('glibmm' 'gst-plugins-good' 'hicolor-icon-theme' 'libarchive' 'libpulse'
+         'qt6-svg')
 makedepends=('git')
 provides=('jamesdsp')
 conflicts=('jamesdsp' 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
