@@ -80,25 +80,19 @@ prepare() {
 }
 
 build() {
-  cd $pkgname
-
-  mkdir -p build; cd build
-
-  cmake \
+  cmake -B build -S $pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_BROWSER=ON \
     -DCEF_ROOT_DIR="/opt/cef-obs" \
     -DENABLE_LIBFDK=ON \
-    ..
+    -Wno-dev
 
-  make
+  cmake --build build
 }
 
 package() {
-  cd $pkgname/build
-
-  make install DESTDIR="$pkgdir"
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # vim: ts=2:sw=2:expandtab
