@@ -3,5 +3,6 @@ src/
 
 *.tar.xz
 *.appimage
+releases.json
 
 LICENSE-*

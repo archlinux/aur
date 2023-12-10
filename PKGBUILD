@@ -2,7 +2,7 @@ _pkgname=slimevr
 pkgname=$_pkgname-bin
 pkgver=0.11.0.rc.2
 _tag=v0.11.0-rc.2
-pkgrel=2
+pkgrel=3
 pkgdesc="VR Full Body Tracking System"
 arch=('x86_64')
 url="https://github.com/SlimeVR/SlimeVR-Server"
@@ -18,7 +18,7 @@ replaces=()
 backup=()
 options=(!strip)
 install=
-changelog=
+changelog=CHANGELOG
 _appimage=SlimeVR-amd64.appimage
 source=("$url/releases/download/$_tag/$_appimage"
 		"$url/raw/$_tag/LICENSE-MIT"
