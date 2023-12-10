@@ -1,6 +1,6 @@
 # Maintainer: patri9ck <patri9ck@gmail.com>
 pkgname=a2ln
-pkgver=1.1.13
+pkgver=1.1.14
 pkgrel=2
 pkgdesc="Android 2 Linux Notifications Server"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 depends=('python' 'python-pyzmq' 'python-gobject' 'python-pillow' 'python-qrcode')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('edc7d8ca8f9c40f0ff9cb0aa09dd5a79b83f8e71d95df8a8e0456704ced97a92')
+sha256sums=('09f9a2dbfb75ea742f259e5212243b5ddef76a09b5fb0a7fb21b6b0c96eeb21b')
 
 build() {
 	cd "$srcdir/a2ln-server-$pkgver/"
