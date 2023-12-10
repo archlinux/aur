@@ -10,9 +10,10 @@ pkgbase = ospray-studio
 	depends = ospray
 	depends = openimagedenoise
 	depends = openimageio
-	depends = openexr
 	depends = python
-	provides = ospray-studio=0.12.1
+	depends = intel-oneapi-tbb
+	depends = draco
+	provides = ospray-studio=0.13.0
 	source = https://github.com/ospray/ospray_studio/archive/v0.13.0.tar.gz
 	sha256sums = 699c9f93b0ef325d16233c871da3d52758f26a8091d2bce1d4b8f2eaf9b6afe4
 
