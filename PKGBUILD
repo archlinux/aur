@@ -7,6 +7,7 @@ pkgrel=2
 _pkgdesc=(
   "Scan a directory for media files"
   "using Android media library.")
+pkgdesc="${_pkgdesc[*]}"
 arch=(
   any)
 url="https://aur.archlinux.org/packages/${pkgname}"
@@ -14,6 +15,8 @@ license=(
   AGPL3)
 depends=()
 makedepends=()
+optdepends=(
+  'termux-api: to run in termux')
 checkdepends=(
   shellcheck)
 source=(

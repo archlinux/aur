@@ -1,10 +1,12 @@
 pkgbase = mediascan
+	pkgdesc = Scan a directory for media files using Android media library.
 	pkgver = 1
 	pkgrel = 2
 	url = https://aur.archlinux.org/packages/mediascan
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck
+	optdepends = termux-api: to run in termux
 	source = mediascan
 	source = Makefile
 	source = LICENSE
