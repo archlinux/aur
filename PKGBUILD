@@ -10,7 +10,6 @@ pkgdesc='A terminal IRC client written in Rust'
 arch=(x86_64)
 url=https://github.com/osa1/tiny
 license=(MIT)
-options=(!lto)
 
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -19,6 +18,7 @@ depends=(dbus)
 makedepends=(git cargo)
 source=(git+$url)
 sha512sums=(SKIP)
+options=(!lto)
 
 pkgver() {
     cd "$srcdir"/$_pkgname
