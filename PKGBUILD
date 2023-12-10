@@ -1,7 +1,8 @@
+# Maintainer: MrHacker <david.munozm@proton.me>
 # Maintainer: fossdd <fossdd@tutanota.com>
 pkgname=gitea-tea-git
 _pkgname=tea
-pkgver=v0.6.0.r19.ge96cfdb
+pkgver=v0.9.2.649b0b1272
 pkgrel=1
 pkgdesc="Painless self-hosted Git service.."
 arch=(any)

@@ -1,6 +1,6 @@
 pkgbase = gitea-tea-git
 	pkgdesc = Painless self-hosted Git service..
-	pkgver = v0.6.0.r19.ge96cfdb
+	pkgver = v0.9.2.649b0b1272
 	pkgrel = 1
 	url = https://gitea.io
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = gitea-tea-git
 	sha256sums = SKIP
 
 pkgname = gitea-tea-git
-
