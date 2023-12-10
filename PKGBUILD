@@ -1,7 +1,7 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 pkgname=ciderpress
-pkgver=4.1.1d1
-_pkgver=4.1.1-d1
+pkgver=4.1.1
+_pkgver=4.1.1
 pkgrel=1
 epoch=
 pkgdesc="Apple II file and disk image utility"
@@ -10,7 +10,7 @@ url="https://a2ciderpress.com/"
 license=('GPL')
 depends=(zlib)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fadden/ciderpress/archive/refs/tags/v$_pkgver.tar.gz")
-md5sums=('2449d265b89c7dd8df0c2ca6e15f3dc5')
+md5sums=('61753840c89be68b23f52c0b7ce87531')
 
 build() {
 	cd "$srcdir"/$pkgname-$_pkgver
