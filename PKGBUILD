@@ -2,7 +2,7 @@
 
 pkgname=gcli
 pkgver=2.1.0
-pkgdesc="A CLI for Github, Gitlab and Gitea"
+pkgdesc="A CLI for Github, Gitlab and Gitea written in C"
 pkgrel=1
 arch=('any')
 license=('BSD')
