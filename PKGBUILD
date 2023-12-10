@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jamesdsp-pulse-git
 _app_id=me.timschneeberger.jdsp4linux.pulse
-pkgver=2.6.1.r67.g31bf9d3
+pkgver=2.7.0.r0.g30a30aa
 pkgrel=1
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
@@ -32,12 +32,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/JDSP4Linux"
-
+  git submodule init
   for submodule in GraphicEQWidget FlatTabWidget LiquidEqualizerWidget LiveprogIDE; do
-    git submodule init
     git config submodule.src/subprojects/"$submodule".url "$srcdir/$submodule"
-    git -c protocol.file.allow=always submodule update
   done
+  git -c protocol.file.allow=always submodule update
 
   mkdir -p build
 }
