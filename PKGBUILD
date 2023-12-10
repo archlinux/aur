@@ -2,14 +2,14 @@
 
 _pkgname=jack_mixer
 pkgname="$_pkgname-git"
-pkgver=18.r0.g34006ca
+pkgver=18.r3.g1b0bdd4
 pkgrel=1
 pkgdesc='A multi-channel audio mixer desktop application for JACK (git version)'
 arch=(x86_64)
 url='https://github.com/jack-mixer'
 license=(GPL2)
 groups=(pro-audio)
-depends=(glibc hicolor-icon-theme pango python-cairo python-gobject python-appdirs)
+depends=(glibc gtk3 hicolor-icon-theme pango python-cairo python-gobject python-appdirs)
 makedepends=(cython git glib2 jack meson ninja python-docutils)
 optdepends=('new-session-manager: NSM session management support')
 provides=($_pkgname)
@@ -27,13 +27,13 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd $_pkgname
-}
-
 build() {
   cd $_pkgname
-  meson setup builddir --prefix=/usr --buildtype=release
+  if [[ -d builddir ]]; then
+    arch-meson --reconfigure builddir --prefix=/usr --buildtype=release
+  else
+    arch-meson builddir --prefix=/usr --buildtype=release
+  fi
   meson compile -C builddir
 }
 

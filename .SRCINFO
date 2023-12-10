@@ -1,6 +1,6 @@
 pkgbase = jack_mixer-git
 	pkgdesc = A multi-channel audio mixer desktop application for JACK (git version)
-	pkgver = 18.r0.g34006ca
+	pkgver = 18.r3.g1b0bdd4
 	pkgrel = 1
 	url = https://github.com/jack-mixer
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = jack_mixer-git
 	makedepends = ninja
 	makedepends = python-docutils
 	depends = glibc
+	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = pango
 	depends = python-cairo
@@ -27,6 +28,7 @@ pkgbase = jack_mixer-git
 
 pkgname = jack_mixer-git
 	depends = glibc
+	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = pango
 	depends = python-cairo
