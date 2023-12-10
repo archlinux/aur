@@ -5,7 +5,7 @@
 
 pkgname=('pamac-aur-git')
 _pkgname=pamac
-pkgver=11.6.0.r2.g5ac9b28
+pkgver=11.7.0.r0.g6f68f42
 _pkgver=11.6.0
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
