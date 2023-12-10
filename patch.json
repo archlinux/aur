@@ -292,8 +292,7 @@
 	"settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
-			"testObserver",
-			"testMessageContextValue"
+			"testObserver"
 		],
 		"VisualStudioExptTeam.vscodeintellicode-completions": [
 			"inlineCompletionsAdditions"
@@ -318,6 +317,9 @@
 			"workspaceTrust",
 			"tunnels"
 		],
+		"vscjava.vscode-java-test": [
+			"testCoverage"
+		],
 		"ms-toolsai.vscode-ai-remote": [
 			"resolvers"
 		],
@@ -325,14 +327,15 @@
 			"contribEditorContentMenu",
 			"quickPickSortByLabel",
 			"portsAttributes",
+			"registerIssueDataProvider",
 			"testObserver",
 			"quickPickItemTooltip",
 			"terminalDataWriteEvent",
+			"terminalExecuteCommandEvent",
 			"saveEditor"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
-			"notebookMessaging",
-			"languageConfigurationAutoClosingPairs"
+			"notebookMessaging"
 		],
 		"GitHub.codespaces": [
 			"contribEditSessions",
@@ -398,6 +401,7 @@
 		"ms-vscode-remote.remote-containers": [
 			"contribEditSessions",
 			"resolvers",
+			"portsAttributes",
 			"tunnels",
 			"workspaceTrust",
 			"terminalDimensions",
@@ -412,6 +416,9 @@
 		],
 		"ms-vscode.lsif-browser": [
 			"documentFiltersExclusive"
+		],
+		"ms-vscode.vscode-speech": [
+			"speech"
 		],
 		"GitHub.vscode-pull-request-github": [
 			"contribCommentThreadAdditionalMenu",
@@ -443,18 +450,22 @@
 			"handleIssueUri",
 			"interactive",
 			"interactiveUserActions",
-			"terminalContextMenu",
 			"terminalDataWriteEvent",
+			"terminalExecuteCommandEvent",
 			"terminalSelection",
 			"terminalQuickFixProvider",
 			"chatProvider",
-			"chatSlashCommands",
 			"chatVariables",
-			"chatAgents",
+			"chatAgents2",
+			"chatAgents2Additions",
+			"defaultChatAgent",
 			"readonlyMessage",
 			"mappedEditsProvider",
 			"aiRelatedInformation",
-			"codeActionAI"
+			"codeActionAI",
+			"findTextInFiles",
+			"textSearchProvider",
+			"contribSourceControlInputBoxMenu"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -531,12 +542,15 @@
 		"microsoft-IsvExpTools.powerplatform-vscode-preview": [
 			"fileSearchProvider",
 			"textSearchProvider"
+		],
+		"apidev.azure-api-center": [
+			"chatAgents2",
+			"chatRequestAccess"
 		]
 	},
 	"tasConfig": {
 		"endpoint": "https://default.exp-tas.com/vscode/ab",
 		"telemetryEventName": "query-expfeature",
-		"featuresTelemetryPropertyName": "VSCode.ABExp.Features",
 		"assignmentContextTelemetryPropertyName": "abexp.assignmentcontext"
 	},
 	"extensionKind": {
@@ -789,6 +803,13 @@
 				"scopes": [
 					"user:email",
 					"read:org"
+				]
+			},
+			"microsoft": {
+				"scopes": [
+					"46da2f7e-b5ef-422a-88d4-2a7f9de6a0b2/.default",
+					"profile",
+					"openid"
 				]
 			}
 		}
