@@ -1,13 +1,15 @@
 # SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Pellegrino Prevete <pellegrinoprevete at gmail.com>
+# Maintainer: Truocolo <truocolo at gmail.com>
 # Contributor: mehalter <micah at mehalter.com>
 # Contributor: xsmile <>
 # Contributor: Pieter Frenssen <pieter@frenssen.be>
 
 pkgname="myetherwallet"
 _pkg="MyEtherWallet"
-pkgver=6.7.3
-pkgrel=2
+pkgver=6.7.11
+pkgrel=1
 _pkgdesc=(
   'Client-side interface for interacting'
   'with the Ethereum blockchain')
@@ -23,7 +25,7 @@ source=(
   "${pkgname}"
   "${pkgname}.license")
 sha256sums=(
-  '4627d06dce696f5325eefe460959eae381ec8be31b7b2ae38d3c3cb1f3f97f31'
+  '700bda5819a953eba948a7695cdb4538ebbf1829b1e52044cd5de4ca64624101'
   'SKIP'
   'b49e3bb0cded23c40820281a110d2baed5d1f7aa036635108323d0133e0e30e9'
   '814f489e4e6e0ce172513febf58d6821e7b77cd2e644152aec4888228fe41da5'
@@ -33,9 +35,15 @@ validpgpkeys=(
 
 prepare() {
   # Remove JS source maps
-  find . -name "*.map" -delete
+  find \
+    . \
+    -name "*.map" \
+    -delete
   # Remove development versions of JS files
-  find . -name "*.dev.js" -delete
+  find \
+    . \
+    -name "*.dev.js" \
+    -delete
 }
 
 package() {
