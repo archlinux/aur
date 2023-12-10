@@ -1,7 +1,4 @@
 pkgname=identity
-<<<<<<< HEAD
-pkgver=0.5.0
-=======
 pkgver=0.6.0
 >>>>>>> 4b062e9 (update to 0.6.0)
 pkgrel=1
