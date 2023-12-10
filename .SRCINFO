@@ -1,0 +1,15 @@
+pkgbase = mediascan
+	pkgver = 1
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/mediascan
+	arch = any
+	license = AGPL3
+	checkdepends = shellcheck
+	source = mediascan
+	source = Makefile
+	source = LICENSE
+	sha256sums = 1f404a86aa9bafc5570557e631d5a629bd9cdbac89540a55221874041f25b6a9
+	sha256sums = 77eb4eb49bc286f772ce32721713e86836afa66547931a6e104414d100957f6e
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+
+pkgname = mediascan
