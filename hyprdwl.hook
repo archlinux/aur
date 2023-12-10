@@ -2,9 +2,9 @@
 Operation = Install
 Operation = Upgrade
 Type = Package
-Target = usr/share/vim/vimfiles/doc/
+Target = hyprland
 
 [Action]
 Description = Recompiling Library hyprdwl
-Exec = pacman -S hyperdwl
+Exec = pacman -S hyprdwl-git
 When = PostTransaction
