@@ -1,0 +1,18 @@
+pkgbase = redsea-git
+	pkgdesc = RDS decoder for the command line
+	pkgver = v0.20.r24.gc6e6b47
+	pkgrel = 1
+	url = https://github.com/windytan/redsea
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = libsndfile
+	depends = liquid-dsp
+	provides = redsea
+	conflicts = redsea
+	source = redsea-git::git+https://github.com/windytan/redsea.git
+	sha256sums = SKIP
+
+pkgname = redsea-git
