@@ -292,8 +292,7 @@
 	"settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
-			"testObserver",
-			"testMessageContextValue"
+			"testObserver"
 		],
 		"VisualStudioExptTeam.vscodeintellicode-completions": [
 			"inlineCompletionsAdditions"
@@ -325,14 +324,15 @@
 			"contribEditorContentMenu",
 			"quickPickSortByLabel",
 			"portsAttributes",
+			"registerIssueDataProvider",
 			"testObserver",
 			"quickPickItemTooltip",
 			"terminalDataWriteEvent",
+			"terminalExecuteCommandEvent",
 			"saveEditor"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
-			"notebookMessaging",
-			"languageConfigurationAutoClosingPairs"
+			"notebookMessaging"
 		],
 		"GitHub.codespaces": [
 			"contribEditSessions",
@@ -398,6 +398,7 @@
 		"ms-vscode-remote.remote-containers": [
 			"contribEditSessions",
 			"resolvers",
+			"portsAttributes",
 			"tunnels",
 			"workspaceTrust",
 			"terminalDimensions",
@@ -412,6 +413,9 @@
 		],
 		"ms-vscode.lsif-browser": [
 			"documentFiltersExclusive"
+		],
+		"ms-vscode.vscode-speech": [
+			"speech"
 		],
 		"GitHub.vscode-pull-request-github": [
 			"contribCommentThreadAdditionalMenu",
@@ -437,17 +441,23 @@
 			"handleIssueUri",
 			"interactive",
 			"interactiveUserActions",
-			"terminalContextMenu",
 			"terminalDataWriteEvent",
+			"terminalExecuteCommandEvent",
 			"terminalSelection",
 			"terminalQuickFixProvider",
-			"chatSlashCommands",
 			"chatVariables",
-			"chatAgents",
+			"chatAgents2",
+			"chatAgents2Additions",
+			"defaultChatAgent",
 			"readonlyMessage",
 			"chatProvider",
 			"mappedEditsProvider",
-			"aiRelatedInformation"
+			"aiRelatedInformation",
+			"codeActionAI",
+			"findTextInFiles",
+			"textSearchProvider",
+			"scmInputBoxValueProvider",
+			"contribSourceControlInputBoxMenu"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -782,6 +792,13 @@
 				"scopes": [
 					"user:email",
 					"read:org"
+				]
+			},
+			"microsoft": {
+				"scopes": [
+					"46da2f7e-b5ef-422a-88d4-2a7f9de6a0b2/.default",
+					"profile",
+					"openid"
 				]
 			}
 		}
