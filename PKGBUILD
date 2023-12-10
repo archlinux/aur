@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=30.0.0
+_pkgver=30.0.1
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=7
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
