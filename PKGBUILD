@@ -7,8 +7,7 @@ pkgrel=1
 pkgdesc="zathura's language server"
 arch=(any)
 url=https://github.com/Freed-Wu/zathura-language-server
-depends=(python-pygls python-platformdirs)
-optdepends=(python-pypandoc python-markdown-it-py zathura)
+depends=(python-pygls python-platformdirs 'python-tree-sitter-lsp>=0.0.9' 'python-tree-sitter-zathurarc>=0.0.3' python-webcolors)
 makedepends=(python-installer)
 license=(GPL3)
 _py=py3
