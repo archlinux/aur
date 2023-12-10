@@ -1,7 +1,7 @@
 # Maintainer: Dmali <dmali@vk.com>
 
 pkgname=klaus-bin
-pkgver=9.2
+pkgver=9.3
 _releasedate=2023-12-11
 pkgrel=1
 pkgdesc="Arch manager that allows you to download, install, delete packages..."
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=(
-	'f28073073ba490191450c398ada16bcf7b182a76abfd4407389427c49fbe92ec'
+	'8bb479b139233c71782f436987f72a832e5e8195bbb88b5b7f1fd0c81b07d834'
 )
 
 package() {
