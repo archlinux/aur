@@ -11,10 +11,10 @@
 : ${_pkgtype:=debugfast-git}
 
 
-if [[ x"${_avx_build::1}" == "xt" ]] ; then
-  if [ x"${_pkgtype: -4}" == "x-git" ] ; then
+if [[ "${_avx_build::1}" == "t" ]] ; then
+  if [ "${_pkgtype: -4}" == "-git" ] ; then
     _pkgtype="${_pkgtype%-*}-avx-${_pkgtype##*-}"
-  elif [ x"${_pkgtype::1}" == "xg" ] ; then
+  elif [ "${_pkgtype::1}" == "g" ] ; then
     _pkgtype="avx-$_pkgtype"
   else
     _pkgtype+="-avx"
@@ -24,7 +24,7 @@ fi
 # basic info
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=5.0.r20511.gc54e8d733f
+pkgver=5.0.r20613.g003872d7dd
 pkgrel=1
 pkgdesc='A Gamecube / Wii / Triforce emulator'
 arch=(x86_64)
@@ -88,7 +88,7 @@ _main_package() {
 
   options=(!emptydirs !lto)
 
-  if [ x"$pkgname" == x"$_pkgname" ] ; then
+  if [ "${pkgname: -4}" != "-git" ] ; then
     _main_stable
   else
     _main_git
@@ -116,6 +116,7 @@ _source_dolphin_emu() {
     'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'
     'epezent.implot'::'git+https://github.com/epezent/implot.git'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
+    'lsalzman.enet'::'git+https://github.com/lsalzman/enet.git'
     'mgba-emu.mgba'::'git+https://github.com/mgba-emu/mgba.git'
     'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
     'zlib-ng'::'git+https://github.com/zlib-ng/zlib-ng.git'
@@ -134,6 +135,7 @@ _source_dolphin_emu() {
     #'SKIP'
     #'SKIP'
 
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -161,6 +163,7 @@ _source_dolphin_emu() {
       ['cyan4973.xxhash']='Externals/xxhash/xxHash'
       ['epezent.implot']='Externals/implot/implot'
       ['gpuopen-librariesandsdks.vulkanmemoryallocator']='Externals/VulkanMemoryAllocator'
+      ['lsalzman.enet']='Externals/enet/enet'
       ['mgba-emu.mgba']='Externals/mGBA/mgba'
       ['retroachievements.rcheevos']='Externals/rcheevos/rcheevos'
       ['zlib-ng']='Externals/zlib-ng/zlib-ng'
@@ -215,7 +218,7 @@ prepare() {
 }
 
 build() {
-  if [[ x"${_avx_build::1}" == "xt" ]] ; then
+  if [[ "${_avx_build::1}" == "t" ]] ; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
     export CXXFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
   fi
@@ -241,7 +244,7 @@ build() {
     -Wno-dev
   )
 
-  if [ x"${_debugfast::1}" == "xt" ] ; then
+  if [ "${_debugfast::1}" == "t" ] ; then
     _cmake_options+=(-DFASTLOG=ON)
   fi
 
