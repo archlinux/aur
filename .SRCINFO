@@ -1,7 +1,7 @@
 pkgbase = a2ln
 	pkgdesc = Android 2 Linux Notifications Server
 	pkgver = 1.1.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/patri9ck/a2ln-server
 	arch = any
 	license = GPL3
