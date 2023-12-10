@@ -2,7 +2,7 @@
 # Maintainer: fossdd <fossdd@tutanota.com>
 pkgname=gitea-tea-git
 _pkgname=tea
-pkgver=v0.9.2.649b0b1272
+pkgver=vv0.9.0.65.g649b0b1
 pkgrel=1
 pkgdesc="Painless self-hosted Git service.."
 arch=(any)
