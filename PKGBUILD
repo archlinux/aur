@@ -11,7 +11,7 @@
 
 _pkgname='forgejo'
 pkgname=forgejo-git
-pkgver=v1.21.2_dev_d26aea842e
+pkgver=v1.20.0.dev.2391.gd26aea842
 pkgrel=0
 pkgdesc='Self-hosted, lightweight software forge. A "soft" fork of Gitea.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
