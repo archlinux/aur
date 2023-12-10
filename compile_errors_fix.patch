@@ -1,0 +1,26 @@
+diff --git a/src/game/protinst.cc b/src/game/protinst.cc
+index cdc6afc..09a2c48 100644
+--- a/src/game/protinst.cc
++++ b/src/game/protinst.cc
+@@ -959,7 +959,7 @@ static int protinst_default_use_item(Object* a1, Object* a2, Object* item)
+ 
+     messageListItem.num = 582;
+     if (message_search(&proto_main_msg_file, &messageListItem)) {
+-        snprintf(formattedText, sizeof(formattedText), messageListItem.text);
++        strncpy(formattedText, messageListItem.text, sizeof(formattedText));
+         display_print(formattedText);
+     }
+     return -1;
+diff --git a/src/int/audio.cc b/src/int/audio.cc
+index f98eb2c..55d81a3 100644
+--- a/src/int/audio.cc
++++ b/src/int/audio.cc
+@@ -60,7 +60,7 @@ static int decodeRead(void* stream, void* buffer, unsigned int size)
+ int audioOpen(const char* fname, int flags)
+ {
+     char path[80];
+-    snprintf(path, sizeof(path), fname);
++    strncpy(path, fname, sizeof(path));
+ 
+     int compression;
+     if (queryCompressedFunc(path)) {

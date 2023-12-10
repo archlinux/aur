@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Categories=Game;RolePlaying;
+Encoding=UTF-8
+Name=Fallout 1 Community Edition
+Comment=
+Exec=/var/games/fallout1-ce/fallout-ce
+Path=/var/games/fallout1-ce
+Icon=fallout1-ce.png
+Terminal=False
