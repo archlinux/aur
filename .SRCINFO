@@ -1,22 +1,23 @@
 pkgbase = ocaml-utop
 	pkgdesc = Universal toplevel for OCaml
-	pkgver = 2.12.1
-	pkgrel = 2
+	pkgver = 2.13.1
+	pkgrel = 1
 	url = https://github.com/ocaml-community/utop
 	arch = x86_64
 	arch = aarch64
 	license = BSD
-	makedepends = cppo>=1.1.2
-	makedepends = dune>=1.0.0
-	depends = ocaml>=4.08.0
+	checkdepends = ocaml-alcotest
+	depends = ocaml>=4.11.0
+	depends = dune>=3.9.0
+	depends = cppo>=1.1.2
 	depends = ocaml-findlib>=1.7.2
 	depends = ocaml-lambda-term>=3.1.0
-	depends = ocaml-logs
+	depends = ocaml-logs_lwt
 	depends = ocaml-lwt
 	depends = ocaml-react>=1.0.0
 	depends = ocaml-zed>=3.2.0
 	options = !strip
-	source = ocaml-utop-2.12.1-2.tar.gz::https://github.com/ocaml-community/utop/archive/2.12.1.tar.gz
-	sha512sums = cc52bdb2a58141e6f7b678c93f69b0aa5ca4c628cb6841e02e6a783191a917bd838c06682d55f4f455a01a7004e43b5193d8574968b8400050b0f7b5a102ca3a
+	source = ocaml-utop-2.13.1.tar.gz::https://github.com/ocaml-community/utop/archive/2.13.1.tar.gz
+	sha512sums = a84a6a96767a3ffa3eaf45495f132536fcc4c81028cfb4f68e823266d0d6e2945d114ca6e8a0760eab93e830500004101499e13669edf1f59a7af06f44b33fd2
 
 pkgname = ocaml-utop

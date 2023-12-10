@@ -4,18 +4,17 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='utop'
 pkgname="ocaml-$_projectname"
-pkgver='2.12.1'
-pkgrel='2'
+pkgver='2.13.1'
+pkgrel='1'
 pkgdesc='Universal toplevel for OCaml'
-# If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-cmdliner, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
-depends=('ocaml>=4.08.0' 'ocaml-findlib>=1.7.2' 'ocaml-lambda-term>=3.1.0' 'ocaml-logs' 'ocaml-lwt' 'ocaml-react>=1.0.0' 'ocaml-zed>=3.2.0')
-makedepends=('cppo>=1.1.2' 'dune>=1.0.0')
+depends=('ocaml>=4.11.0' 'dune>=3.9.0' 'cppo>=1.1.2' 'ocaml-findlib>=1.7.2' 'ocaml-lambda-term>=3.1.0' 'ocaml-logs_lwt' 'ocaml-lwt' 'ocaml-react>=1.0.0' 'ocaml-zed>=3.2.0')
+checkdepends=('ocaml-alcotest')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('cc52bdb2a58141e6f7b678c93f69b0aa5ca4c628cb6841e02e6a783191a917bd838c06682d55f4f455a01a7004e43b5193d8574968b8400050b0f7b5a102ca3a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=('a84a6a96767a3ffa3eaf45495f132536fcc4c81028cfb4f68e823266d0d6e2945d114ca6e8a0760eab93e830500004101499e13669edf1f59a7af06f44b33fd2')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -29,9 +28,18 @@ build() {
 	dune build --release --verbose
 }
 
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	dune runtest --release --verbose
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
+
+	for _folder in "$pkgdir/usr/share/doc/"*; do
+		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
+	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
