@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.11.8
+pkgver=4.12.2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -55,7 +55,6 @@ source=(
     "submodule_fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git"
     "submodule_hime::git+https://github.com/hime-ime/hime.git"
     "submodule_hunspell::git+https://github.com/hunspell/hunspell"
-    "submodule_jemalloc::git+https://github.com/jemalloc/jemalloc"
     "submodule_kcoreaddons::git+https://github.com/KDE/kcoreaddons.git"
     "submodule_kimageformats::git+https://github.com/KDE/kimageformats.git"
     "submodule_lib_base::git+https://github.com/desktop-app/lib_base.git"
@@ -119,7 +118,6 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
@@ -133,7 +131,6 @@ prepare() {
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/fcitx5-qt.url "$srcdir/submodule_fcitx5-qt"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/hime.url "$srcdir/submodule_hime"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/hunspell.url "$srcdir/submodule_hunspell"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/jemalloc.url "$srcdir/submodule_jemalloc"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/kcoreaddons.url "$srcdir/submodule_kcoreaddons"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/kimageformats.url "$srcdir/submodule_kimageformats"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/libprisma.url "$srcdir/submodule_libprisma"
@@ -162,14 +159,6 @@ prepare() {
     git -C "$srcdir/tdesktop" config src.cmake.url "$srcdir/submodule_cmake_helpers"
     git -C "$srcdir/tdesktop" submodule update
 
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule init
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" config src.cmake.url "$srcdir/submodule_cmake_helpers"
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule update
-
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule init
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" config src.doc/gh-pages.url "$srcdir/submodule_range-v3"
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule update
-
     git -C "$srcdir/tdesktop/cmake" submodule init
     git -C "$srcdir/tdesktop/cmake" config src.external/Implib.so.url "$srcdir/submodule_Implib.so"
     git -C "$srcdir/tdesktop/cmake" config src.external/glib/cppgir.url "$srcdir/submodule_cppgir"
@@ -178,6 +167,14 @@ prepare() {
     git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" submodule init
     git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" config src.expected-lite.url "$srcdir/submodule_expected-lite"
     git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" submodule update
+
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule init
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" config src.doc/gh-pages.url "$srcdir/submodule_range-v3"
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule update
+
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule init
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" config src.cmake.url "$srcdir/submodule_cmake_helpers"
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule update
 
     # Normal preparation here
     cd "$srcdir/tdesktop"

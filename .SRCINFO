@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 4.11.8
+	pkgver = 4.12.2
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -51,7 +51,7 @@ pkgbase = telegram-desktop-dev
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v4.11.8
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v4.12.2
 	source = submodule_GSL::git+https://github.com/desktop-app/GSL.git
 	source = submodule_Implib.so::git+https://github.com/yugr/Implib.so.git
 	source = submodule_QR-Code-generator::git+https://github.com/nayuki/QR-Code-generator
@@ -64,7 +64,6 @@ pkgbase = telegram-desktop-dev
 	source = submodule_fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git
 	source = submodule_hime::git+https://github.com/hime-ime/hime.git
 	source = submodule_hunspell::git+https://github.com/hunspell/hunspell
-	source = submodule_jemalloc::git+https://github.com/jemalloc/jemalloc
 	source = submodule_kcoreaddons::git+https://github.com/KDE/kcoreaddons.git
 	source = submodule_kimageformats::git+https://github.com/KDE/kimageformats.git
 	source = submodule_lib_base::git+https://github.com/desktop-app/lib_base.git
@@ -90,7 +89,6 @@ pkgbase = telegram-desktop-dev
 	source = submodule_wayland::git+https://github.com/gitlab-freedesktop-mirrors/wayland.git
 	source = submodule_wayland-protocols::git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git
 	source = submodule_xxHash::git+https://github.com/Cyan4973/xxHash.git
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
