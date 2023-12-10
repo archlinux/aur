@@ -1,0 +1,11 @@
+pkgbase = assfonts-bin
+	pkgdesc = Subset fonts and embed them into an ASS subtitle.
+	pkgver = v0.6.1
+	pkgrel = 1
+	url = https://github.com/wyzdwdz/assfonts
+	arch = x86_64
+	license = GPL-3.0
+	source = https://github.com/wyzdwdz/assfonts/releases/download/v0.6.1/assfonts-v0.6.1-x86_64-Linux.tar.gz
+	sha256sums = 5f58ac1239023ec0a0394d9f16ed9f4ca3c671c79c7702a72b78ec3e15ad1d76
+
+pkgname = assfonts-bin
