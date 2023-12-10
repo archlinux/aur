@@ -2,7 +2,7 @@
 
 pkgname=libpamac-git
 _pkgname=libpamac
-pkgver=11.6.2.r6.ge74fe0e
+pkgver=11.6.3.r0.gdff0d86
 pkgrel=1
 pkgdesc="Library for Pamac package manager based on libalpm - git version"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
