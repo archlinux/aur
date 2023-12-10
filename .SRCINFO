@@ -1,12 +1,18 @@
 pkgbase = fallout1-ce-game
 	pkgdesc = Fallout for modern operating systems
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexbatalov/fallout1-ce
 	arch = x86_64
 	license = custom:SUL
 	depends = sdl2
 	source = fallout1-ce-1.0.0.tar.gz::https://github.com/alexbatalov/fallout1-ce/archive/refs/tags/v1.0.0.tar.gz
+	source = compile_errors_fix.patch
+	source = fallout1-ce.png
+	source = fallout1-ce.desktop
 	sha256sums = 6005e36d160e2686ca42df613dadd3311b025b3dea062458e99e214cc2cc5ee1
+	sha256sums = b5b8ca0245875280d3257e610db9589bf8564ecb134dd1d7ee1727dd635f8ac4
+	sha256sums = 821b17c6bf8d1dfce01b902257238ae64fa541fe37fcb21b2beff14430278ae2
+	sha256sums = 6b3abc73a937f8165af5ca8606358a4bfbd203f2205d4405bb839baa044df13d
 
 pkgname = fallout1-ce-game
