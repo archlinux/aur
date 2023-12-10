@@ -31,12 +31,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/JDSP4Linux"
-
+  git submodule init
   for submodule in GraphicEQWidget FlatTabWidget LiquidEqualizerWidget LiveprogIDE; do
-    git submodule init
     git config submodule.src/subprojects/"$submodule".url "$srcdir/$submodule"
-    git -c protocol.file.allow=always submodule update
   done
+  git -c protocol.file.allow=always submodule update
 
   mkdir -p build
 }
