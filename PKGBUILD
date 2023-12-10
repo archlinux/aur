@@ -2,8 +2,8 @@
 # -*- sh -*-
 
 pkgname='fuc-bin'
-pkgver=1.1.9
-pkgrel=2
+pkgver=1.1.10
+pkgrel=1
 pkgdesc='Fast Unix Commands: Modern, performance focused unix commands (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/SUPERCILEX/fuc'
@@ -29,22 +29,35 @@ noextract=(
 depends=('gcc-libs' 'glibc')
 
 package() {
+  # Be more verbose if standard output is a TTY
+  test -t 1 && _verbose='v' || _verbose=''
+
   for _exe in cpz rmz; do
-    install -Dm0755 "$_exe-$CARCH-$pkgver" "$pkgdir/usr/bin/$_exe"
+    install "-${_verbose}Dm0755" "$_exe-$CARCH-$pkgver" "$pkgdir/usr/bin/$_exe"
   done
 
-  install -Dm0644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install "-${_verbose}Dm0644" "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 sha256sums_aarch64=(
-  'c0959b9bfc4f1bdf597cf36c3699877c388ae68bf620f99ed91d68fb7e2844a1'
-  '768f21f68d1d62f7452e7f95d3a6f01afe1791f4d80b8348ae00e86267281acd'
+  '91b6b9c85b3a27643a2b30c9c657af8a8b6a7019708ee9ab89f4fa7bb8579dea'
+  '99af30f06bb10d3670dfa2c037ef9bc75e860f58ba1047a3d0dc1aca125e674b'
   'SKIP'
 )
+
 sha256sums_x86_64=(
-  '8b9695b3287f86e664b704bfe907c48736cc886d4c093fc78a7be0f66b085219'
-  '7143dc245b2835f16434fc1951616849fc700ee3c1079b20fcd01e9440c1357c'
+  'c9bb761c689e8a8b53ddc1f38f5d42a9db382674b176e715f760ccbcf77fb156'
+  '1698e266414f3924de89bfe270be83af1fcc1c7b9343434553f2458eeb0ceadd'
   'SKIP'
 )
+
+# 🪷 Beyond the Known — 365 Days of Exploration
+#
+# 📆 10th December
+#
+# If one is All One, there is only connection; not I am
+# connected.
+#
+# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
