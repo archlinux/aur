@@ -1,0 +1,26 @@
+pkgbase = r-ggmanh
+	pkgdesc = Visualization Tool for GWAS Result
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ggmanh
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-gdsfmt
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-rcolorbrewer
+	depends = r-rlang
+	depends = r-scales
+	depends = r-seqarray
+	optdepends = r-biocstyle
+	optdepends = r-genomicranges
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggmanh_1.6.0.tar.gz
+	md5sums = dbbd8130e9ef70cb69c7e305af0c37d7
+	sha256sums = 10842e9355ca1984a5204eeb6d2972bb922fb9462964a1b720647c73738958c8
+
+pkgname = r-ggmanh
