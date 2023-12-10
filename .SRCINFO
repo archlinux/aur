@@ -1,6 +1,6 @@
 pkgbase = crossover
 	pkgdesc = Run Windows Programs on Linux
-	pkgver = 23.7.0
+	pkgver = 23.7.1
 	pkgrel = 1
 	url = http://www.codeweavers.com
 	install = crossover.install
@@ -17,8 +17,8 @@ pkgbase = crossover
 	replaces = crossover-games
 	replaces = crossover-pro
 	replaces = crossover-standard
-	source = https://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover_23.7.0-1.deb
-	sha256sums = 92f1ac1cd0a215b88b2892a8c7f3bbb991cabae5f21b9e69b74a96f784ba7aa2
+	source = https://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover_23.7.1-1.deb
+	sha256sums = 69311a918f4888f777a0b9ae57e7fc79ccaaae3fbd63cff4c8d242742d87eb81
 	depends_i686 = glibc>=2.11
 	depends_i686 = libice
 	depends_i686 = libsm
