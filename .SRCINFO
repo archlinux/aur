@@ -1,0 +1,17 @@
+pkgbase = tarpyt-git
+	pkgdesc = A Python ssh/http/smtp/etc. tarpit
+	pkgver = v0.0.1.2617ea0
+	pkgrel = 1
+	url = https://github.com/LaserEyess/TarPyt
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = libsystemd
+	depends = python
+	provides = tarpyt
+	conflicts = tarpyt
+	source = git+https://github.com/LaserEyess/TarPyt.git
+	sha512sums = SKIP
+
+pkgname = tarpyt-git
