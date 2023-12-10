@@ -1,13 +1,14 @@
 pkgbase = varia
 	pkgdesc = Download manager based on aria2
 	pkgver = 2023.12.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/giantpinkrobots/varia
 	arch = any
 	license = MPL2
 	makedepends = meson
 	depends = aria2
 	depends = aria2p
+	depends = python-setuptools
 	source = https://github.com/giantpinkrobots/varia/archive/refs/tags/v2023.12.7.tar.gz
 	source = aria2.patch
 	sha256sums = ebc877ab7c53cdb1d647d94c005c2c1d13f5105101a9d79eb06efcd7bf8c01fd

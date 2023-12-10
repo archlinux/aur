@@ -2,7 +2,7 @@
 
 pkgname=varia
 pkgver=2023.12.7
-pkgrel=1
+pkgrel=2
 
 source=("https://github.com/giantpinkrobots/varia/archive/refs/tags/v$pkgver.tar.gz"
         "aria2.patch")
@@ -14,7 +14,7 @@ pkgdesc='Download manager based on aria2'
 arch=('any')
 url='https://github.com/giantpinkrobots/varia'
 license=('MPL2')
-depends=('aria2' 'aria2p')
+depends=('aria2' 'aria2p' 'python-setuptools')
 makedepends=('meson')
 
 prepare() {
