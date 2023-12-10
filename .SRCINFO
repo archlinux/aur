@@ -1,15 +1,16 @@
 pkgbase = open-fprintd
 	pkgdesc = Fprintd replacement which allows you to have your own backend as a standalone service
 	pkgver = 0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/uunicorn/open-fprintd
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
 	depends = fprintd-clients
-	provides = open-fprintd
-	conflicts = open-fprintd
+	depends = gobject-introspection-runtime
+	depends = dbus-python
+	depends = python-gobject
 	source = open-fprintd-0.6.tar.gz::https://github.com/uunicorn/open-fprintd/archive/0.6.tar.gz
 	md5sums = 3254779b0199521b79b6933700355606
 
