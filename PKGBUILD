@@ -5,7 +5,7 @@
 
 pkgname=piston-cli
 pkgver=1.5.0 
-pkgrel=1
+pkgrel=2
 pkgdesc="A universal shell supporting 36+ languages, in terminal code editor with syntax highlight, code compiler (36+ languages). It can run code from pastebin links and files too. "
 arch=('any')
 url="https://github.com/Shivansh-007/piston-cli" 
@@ -19,6 +19,9 @@ depends=(
 makedepends=(
  'git' 
  'python-setuptools'
+ 'python-build'
+ 'python-poetry-core'
+ 'python-installer'
 ) 
 optdepends=() 
 provides=('piston-cli') 
@@ -28,12 +31,12 @@ sha256sums=('SKIP')
 
 build() {
  cd $(ls | grep piston-cli-)
- python setup.py build
+ python -m build --wheel --no-isolation
 }
 
 package() {
  cd $(ls | grep piston-cli-)
- python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+ python -m installer --destdir="$pkgdir" dist/*.whl
  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 
 }
 
