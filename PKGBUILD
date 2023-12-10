@@ -2,7 +2,7 @@
 
 pkgname=vivictpp
 pkgdesc='An easy to use tool for subjective comparison of the visual quality of different encodings of the same video source.'
-pkgver=0.3.1
+pkgver=1.0.0
 # Uncomment for releases with hyphens
 # _pkgver=$(echo "$pkgver" | tr '~' -)
 pkgrel=1
@@ -18,17 +18,14 @@ makedepends=('cmake'
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/vivictorg/vivictpp/archive/refs/tags/v${pkgver}.zip"
-        "meson_build.patch"
-        "VideoInputMessage.patch")
-sha256sums=('8706f0911747729b33afc5c7845cae2044b8030bc33473cb57af9f2c083d3631'
-            '51766406570144fac60b77ae9adc7ba459775c02482d1cde85db50e73bb8366c'
-            'd9cee025ae4ccc65c3fac77b68922336bef00fa0f1b0de98e3e398ef74afa0ca')
+        "meson_build.patch")
+sha256sums=('869bbcd6f413152be15ed82ac39593e9ad895346e79a8c01e2b620375f28b326'
+            '37b71962eac6cff7ec4d7ecb82e514a0c34075536edaeec89956c55201952ac0')
 
 prepare() {
     # patching
     cd "$srcdir/$pkgname-$pkgver"
     patch --strip=2 < ../../meson_build.patch
-    patch --strip=2 < ../../VideoInputMessage.patch
 }
 
 build() {
