@@ -1,7 +1,7 @@
 pkgbase = ocaml-domainslib
 	pkgdesc = Nested-parallel programming library for OCaml
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-multicore/domainslib
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,8 @@ pkgbase = ocaml-domainslib
 	depends = ocaml-domain-local-await>=0.1.0
 	options = !strip
 	source = ocaml-domainslib-0.5.1.tar.gz::https://github.com/ocaml-multicore/domainslib/archive/0.5.1.tar.gz
+	source = ocaml-domainslib-0.5.1-fix-saturn-queue.diff::https://github.com/ocaml-multicore/domainslib/pull/121.diff
 	sha512sums = 67f455b7637b558b2cd06794150006fd6acb6a2472a26acd3e27dcb191e3e87077da15bbd737e4a4c377c33fb33d0125dbc42df26ffc3675713786504732c40c
+	sha512sums = d4e71ce9d591f17b9cac3e174fc39d0bf213de7a5cac2bb637e10f8a8820c4acc6bb9063c9175857ec0ba580198e353c74a50ff27f44fdf95e9c7c7a6027f641
 
 pkgname = ocaml-domainslib
