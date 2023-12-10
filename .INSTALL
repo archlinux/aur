@@ -1,0 +1,5 @@
+post_install() {
+	echo
+	echo "    To get started, create your radicle key pair with \`rad auth\`"
+	echo
+}
