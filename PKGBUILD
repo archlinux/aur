@@ -1,4 +1,4 @@
-# Maintainer: Egor Tensin <Egor.Tensin@gmail.com>
+# Maintainer: Egor Tensin <egor@tensin.name>
 pkgname=linux-status
 pkgver=2.4.4
 pkgrel=1

@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 NAME = 'Egor Tensin'
-EMAIL = 'Egor.Tensin@gmail.com'
+EMAIL = 'egor@tensin.name'
 
 Vagrant.configure("2") do |config|
   config.vm.box = "archlinux/archlinux"
