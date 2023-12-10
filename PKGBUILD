@@ -6,6 +6,7 @@ pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
 license=("GPL")
+#IMPORTANT: if you update electron, make sure to also update deltachat-desktop.sh 
 depends=('electron25')
 makedepends=('npm' 'nodejs' 'git' 'rustup' 'python')
 source=(
