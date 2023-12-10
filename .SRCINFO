@@ -9,7 +9,6 @@ pkgbase = ocaml-lambda-term
 	license = BSD
 	makedepends = dune>=3.0.0
 	depends = ocaml>=4.08.0
-	depends = ocaml-logs
 	depends = ocaml-logs_lwt
 	depends = ocaml-lwt>=4.2.0
 	depends = ocaml-mew_vi>=0.5.0
