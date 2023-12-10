@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=119.0.6045.159
+pkgver=120.0.6099.71
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -35,15 +35,17 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
-        REVERT-disable-autoupgrading-debug-info.patch
+        drop-flags-unsupported-by-clang16.patch
+        libxml2-2.12.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('d0d842712805ac81582dc0fecd4396fbf4380713df2fb50ceeb853dd38d1538f'
+sha256sums=('604755e5838ef0fd1bff4d6c5023cdda2d42ce982dda2c4be44cce487d3dd8d8'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
-            '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+            'ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2'
+            '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
+            '1808df5ba4d1e2f9efa07ac6b510bec866fa6d60e44505d82aea3f6072105a71'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8'
@@ -58,26 +60,26 @@ provides=("chromium=${pkgver}" "chromedriver=${pkgver}")
 conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
 _uc_rel=1
-# _uc_ver="$pkgver-$_uc_rel"
-_uc_ver="119.0.6045.123-$_uc_rel"
+_uc_ver="$pkgver-$_uc_rel"
+# _uc_ver="119.0.6045.123-$_uc_rel"
 source=(${source[@]}
-        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
-        # ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip)
+        # ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
+        ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip)
 sha256sums=(${sha256sums[@]}
-            'e20df54944837fc5097369b3c52b6d6922c1a32a57f25769c5bbff8a4db8bebe')
+            '3f86e1bee22facd21b23109d5817c8dc02c563e9dbd0c65503b8fc7462bedb98')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
   #[brotli]=brotli
   [dav1d]=dav1d
-  [ffmpeg]=ffmpeg
+  #[ffmpeg]=ffmpeg    # YouTube playback stopped working in Chromium 120
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
-  [jsoncpp]=jsoncpp
+  #[jsoncpp]=jsoncpp  # needs libstdc++
   #[libaom]=aom
   #[libavif]=libavif  # needs https://github.com/AOMediaCodec/libavif/commit/5410b23f76
   [libdrm]=
@@ -88,9 +90,9 @@ declare -gA _system_libs=(
   [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
-  [re2]=re2
-  [snappy]=snappy
-  [woff2]=woff2
+  #[re2]=re2          # needs libstdc++
+  #[snappy]=snappy    # needs libstdc++
+  #[woff2]=woff2      # needs libstdc++
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
@@ -129,18 +131,17 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
+  patch -Np1 -i ../libxml2-2.12.patch
 
-
-  # Revert addition of compiler flag that needs newer clang
-  patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
+  # Drop compiler flags that need newer clang
+  patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-114-vk_mem_alloc-include.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-119-FragmentDataIterator-std.patch
+  #patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
+  #patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
   patch -Np1 -i ../chromium-patches-*/chromium-119-at-spi-variable-consumption.patch
   patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
+  #patch -Np1 -i ../chromium-patches-*/chromium-120-std-nullptr_t.patch
 
 
 
@@ -217,7 +218,7 @@ build() {
     'proprietary_codecs=true'
     'rtc_use_pipewire=true'
     'link_pulseaudio=true'
-    'use_custom_libcxx=false'
+    'use_custom_libcxx=true' # https://github.com/llvm/llvm-project/issues/61705
     'use_gnome_keyring=false'
     'use_sysroot=false'
     'use_system_libffi=true'

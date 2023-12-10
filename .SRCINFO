@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory
-	pkgver = 119.0.6045.159
+	pkgver = 120.0.6099.71
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -33,20 +33,15 @@ pkgbase = ungoogled-chromium-xdg
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	depends = fontconfig
-	depends = woff2
 	depends = libjpeg
 	depends = icu
 	depends = dav1d
 	depends = flac
-	depends = snappy
 	depends = libxml2
-	depends = ffmpeg
 	depends = libwebp
 	depends = minizip
 	depends = opus
 	depends = harfbuzz
-	depends = re2
-	depends = jsoncpp
 	depends = libxslt
 	depends = libpng
 	depends = freetype2
@@ -56,28 +51,30 @@ pkgbase = ungoogled-chromium-xdg
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet5: support for storing passwords in KWallet on Plasma
-	provides = chromium=119.0.6045.159
-	provides = chromedriver=119.0.6045.159
+	provides = chromium=120.0.6099.71
+	provides = chromedriver=120.0.6099.71
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-119.0.6045.159.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-120.0.6099.71.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
-	source = https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/119/chromium-patches-119.tar.bz2
-	source = REVERT-disable-autoupgrading-debug-info.patch
+	source = https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/120/chromium-patches-120.tar.bz2
+	source = drop-flags-unsupported-by-clang16.patch
+	source = libxml2-2.12.patch
 	source = use-oauth2-client-switches-as-default.patch
 	source = xdg-basedir.patch
 	source = no-omnibox-suggestion-autocomplete.patch
 	source = index.html
-	source = ungoogled-chromium-119.0.6045.123-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/refs/tags/119.0.6045.123-1.tar.gz
-	sha256sums = d0d842712805ac81582dc0fecd4396fbf4380713df2fb50ceeb853dd38d1538f
+	source = ungoogled-chromium-120.0.6099.71-1.zip::https://github.com/noahvogt/ungoogled-chromium/archive/refs/heads/update.zip
+	sha256sums = 604755e5838ef0fd1bff4d6c5023cdda2d42ce982dda2c4be44cce487d3dd8d8
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
-	sha256sums = 09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087
-	sha256sums = 1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69
+	sha256sums = ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2
+	sha256sums = 8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556
+	sha256sums = 1808df5ba4d1e2f9efa07ac6b510bec866fa6d60e44505d82aea3f6072105a71
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
 	sha256sums = f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078
 	sha256sums = ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8
 	sha256sums = a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665
-	sha256sums = e20df54944837fc5097369b3c52b6d6922c1a32a57f25769c5bbff8a4db8bebe
+	sha256sums = 3f86e1bee22facd21b23109d5817c8dc02c563e9dbd0c65503b8fc7462bedb98
 
 pkgname = ungoogled-chromium-xdg
