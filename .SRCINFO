@@ -1,6 +1,6 @@
 pkgbase = r-reportingtools
 	pkgdesc = Tools for making reports in various formats
-	pkgver = 2.42.2
+	pkgver = 2.42.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ReportingTools
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-reportingtools
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-shiny
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ReportingTools_2.42.2.tar.gz
-	sha256sums = 6c7aab0d5b1b21efa2e858d4a0071a4898c5699057cf9b8f349027f9c0504c3e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ReportingTools_2.42.3.tar.gz
+	sha256sums = e8c0d86a2570add93957ed38a81486a0a8f4f9fa4df9c668765636a95bae3b81
 
 pkgname = r-reportingtools
