@@ -1,6 +1,6 @@
 # Maintainer: Lauri Gustafsson <lauri at gustafla dot space>
 pkgname=wgsl-analyzer-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='A language server for the WGSL shading language'
 url='https://github.com/wgsl-analyzer/wgsl-analyzer'
@@ -11,7 +11,7 @@ license=('MIT' 'APACHE')
 depends=('gcc-libs')
 conflicts=('wgsl-analyzer')
 provides=('wgsl-analyzer')
-sha256sums=('4a4e3cbc029a5003029a3bb47410b860fc4a229df93caf3b1affb812c58373e7')
+sha256sums=('59173d7c7530f7f2870f9073517de777ed2c46473b8bc6b1b1784751914e51e6')
 
 package() {
   install -Dm755 "${srcdir}/wgsl_analyzer-${pkgver}" "${pkgdir}/usr/bin/wgsl_analyzer"
