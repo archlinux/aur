@@ -1,11 +1,10 @@
 _godot=3.5.3 # We need a newer godot version than aur/godot-headless, set to empty to use aur version
 _godot_template=$_godot # Set to empty to download them through Scripts project
 # Note: please let those variables be set to same version.
-_revolutionary_games_common_commit=4650b092a91389b660b1fcf67337fd3b20ada4cd
 
 pkgname=thrive
-pkgver=0.6.3
-pkgrel=3
+pkgver=0.6.4
+pkgrel=2
 pkgdesc="the evolution game Thrive."
 arch=("x86_64")
 url="https://revolutionarygamesstudio.com/"
@@ -14,12 +13,16 @@ depends=(
     "libxrender" "hicolor-icon-theme" "libxi" "libx11" "libglvnd" "libxinerama" "zlib" "libxrandr"
     "libxext" "glibc" "libxcursor"
 )
-makedepends=("git" "git-lfs" "dotnet-sdk-7.0" "p7zip")
+makedepends=("git" "git-lfs" "dotnet-sdk-7.0" "p7zip" "cmake" "ninja" "clang" "llvm" "lld")
 source=(
     "git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
-    "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git#commit=$_revolutionary_games_common_commit"
+    "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git"
+    "git+https://github.com/jrouwe/JoltPhysics.git"
+    "git+https://github.com/cameron314/concurrentqueue.git"
 )
 sha256sums=(
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
 )
@@ -27,7 +30,7 @@ sha256sums=(
 if [ -n "$_godot" ]
 then
     _godot_repo="https://github.com/godotengine/godot"
-    makedepends+=("libxcursor" "libxinerama" "libxrandr" "libxi" "libglvnd")
+    makedepends+=("libxinerama" "libxi" "libglvnd")
     source+=(
         "godot-$_godot.zip::$_godot_repo/releases/download/$_godot-stable/Godot_v$_godot-stable_mono_linux_headless_64.zip"
     )
@@ -78,7 +81,7 @@ prepare(){
     else
         dotnet run --project Scripts -- godot-templates
     fi
-
+    install -Dm644 podman/ci/editor_settings-3.tres "${XDG_CACHE_HOME:-$HOME/.config}/godot/editor_settings-3.tres"
 }
 
 build(){
@@ -87,7 +90,14 @@ build(){
     then
         export PATH="$srcdir/godot-$_godot:$PATH"
     fi
-    dotnet run --project Scripts -- package --compress=false Linux
+    # JoltPhysics/Jolt/Core/Memory.cpp:41:2:
+    # error: ignoring return value of function declared with 'warn_unused_result' attribute [-Werror,-Wunused-result]
+    sed -i 's/JPH_GCC_SUPPRESS_WARNING/JPH_CLANG_SUPPRESS_WARNING/' \
+        third_party/JoltPhysics/Jolt/Core/Memory.cpp
+    dotnet run --project Scripts -- native Build Install
+    mkdir -p native_libs/distributable/linux
+    ln -s ../../linux native_libs/distributable/linux/ThriveNative
+    dotnet run --project Scripts -- package Linux --compress=false
 }
 
 check(){
@@ -103,6 +113,9 @@ package(){
     cd "$srcdir/Thrive"
     mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/thrive"
     cp -a builds/Thrive_*_linux_x11 "$pkgdir/opt/thrive"
+    # This is actually very annoying to portable apps...
+    ln -s /opt/thrive/.mono/assemblies/Release/libthrive_native.so \
+        "$pkgdir/usr/lib/libthrive_native.so"
     ln -s /opt/thrive/Thrive "$pkgdir/usr/bin/Thrive"
     ln -s /opt/thrive/ThriveAssetsLICENSE.txt "$pkgdir/usr/share/licenses/thrive/ThriveAssetsLICENSE.txt"
     ln -s /opt/thrive/GodotLicense.txt "$pkgdir/usr/share/licenses/thrive/GodotLicense.txt"
