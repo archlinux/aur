@@ -3,19 +3,45 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
-pkgver=30.0.0.beta3
-pkgrel=2
+pkgver=30.0.0.rc1
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
-depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls2"
-         "qt6-svg" "curl" "jack" "gtk-update-icon-cache"
-         "speexdsp" "pciutils" "libajantv2" "librist" "onevpl"
-         "libdatachannel" "qrcodegencpp-cmake")
-makedepends=("asio" "cmake" "git" "libfdk-aac" "libxcomposite" "x264"
-             "vlc" "swig" "luajit" "nlohmann-json" "python" "cef-minimal-obs-bin" "wayland"
-             "websocketpp" "qt6-wayland" "pipewire" "xdg-desktop-portal")
+depends=("curl"
+         "ffmpeg"
+         "gtk-update-icon-cache"
+         "jack"
+         "jansson"
+         "libajantv2"
+         "libdatachannel"
+         "librist"
+         "libxinerama"
+         "libxkbcommon-x11"
+         "mbedtls2"
+         "onevpl"
+         "pciutils"
+         "qrcodegencpp-cmake"
+         "qt6-svg"
+         "speexdsp")
+makedepends=("asio"
+             "cef-minimal-obs-bin"
+             "cmake"
+             "git"
+             "libfdk-aac"
+             "libxcomposite"
+             "luajit"
+             "nlohmann-json"
+             "pipewire"
+             "python"
+             "qt6-wayland"
+             "swig"
+             "vlc"
+             "wayland"
+             "websocketpp"
+             "x264"
+             "xdg-desktop-portal")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
             "libva-intel-driver: hardware encoding"
@@ -32,11 +58,8 @@ conflicts=("obs-studio")
 source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
         "git+https://github.com/Mixer/ftl-sdk.git"
         "git+https://github.com/obsproject/obs-browser.git"
-        "git+https://github.com/obsproject/obs-websocket.git"
-        "git+https://github.com/nayuki/QR-Code-generator.git"
-        "fix_python_binary_loading.patch")
-md5sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
-         "051b90f05e26bff99236b8fb1ad377d1")
+        "git+https://github.com/obsproject/obs-websocket.git")
+md5sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
   cd $pkgname
@@ -47,14 +70,9 @@ prepare() {
   cd $pkgname
   gitconf="protocol.file.allow=always"
 
-  patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
-  git -c $gitconf submodule update
-
-  cd plugins/obs-websocket
-  git config submodule.deps/qr.url $srcdir/QR-Code-generator
   git -c $gitconf submodule update
 }
 
