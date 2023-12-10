@@ -1,5 +1,5 @@
 pkgname=mdevd
-pkgver=0.1.6.1
+pkgver=0.1.6.3
 pkgrel=1
 pkgdesc="A small daemon managing kernel hotplug events, similarly to udevd."
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('ISC')
 depends=('skalibs>=2.13.0.0')
 optdepends=('execline')
 source=("https://skarnet.org/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5c01e4e79416db6cd993ef8a9014628b8f1f0b6c643275988488512faa5404b1')
+sha256sums=('f6ecf0ef7cd48d04efc75acb2dad967d850bc8815bdb0098f1c9ef043394d430')
 
 build() {
    cd "${pkgname}-${pkgver}"
