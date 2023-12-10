@@ -5,7 +5,7 @@ _pkgbase=vcio
 _commit=324f7e52
 pkgname=${_pkgbase}-dkms-git
 pkgver=6.${_commit}
-pkgrel=1
+pkgrel=2
 pkgdesc='Character device driver for VC4 mailbox'
 url=https://github.com/raspberrypi/linux/blob/${_commit}/drivers/char/broadcom/vcio.c
 arch=(any)
@@ -14,7 +14,7 @@ depends=(dkms)
 provides=(${_pkgbase}=${pkgver}-${pkgrel})
 conflicts=(${_pkgbase})
 source=(
-    https://github.com/raspberrypi/linux/blob/${_commit}/drivers/char/broadcom/vcio.c
+    https://raw.githubusercontent.com/raspberrypi/linux/${_commit}/drivers/char/broadcom/vcio.c
     dkms.conf
     Makefile
 )

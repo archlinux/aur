@@ -1,14 +1,14 @@
 pkgbase = vcio-dkms-git
 	pkgdesc = Character device driver for VC4 mailbox
 	pkgver = 6.324f7e52
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi/linux/blob/324f7e52/drivers/char/broadcom/vcio.c
 	arch = any
 	license = GPL
 	depends = dkms
-	provides = vcio=6.324f7e52-1
+	provides = vcio=6.324f7e52-2
 	conflicts = vcio
-	source = https://github.com/raspberrypi/linux/blob/324f7e52/drivers/char/broadcom/vcio.c
+	source = https://raw.githubusercontent.com/raspberrypi/linux/324f7e52/drivers/char/broadcom/vcio.c
 	source = dkms.conf
 	source = Makefile
 	sha256sums = 06c58eb27872de4ff581cc77dec34b307d5de098fa81e0237e6309062ec46aea
