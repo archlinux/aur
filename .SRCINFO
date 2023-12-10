@@ -1,7 +1,7 @@
 pkgbase = hyprdwl-git
 	pkgdesc = Split monitor workspaces for Hyprland, so it can be just like dwm
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Duckonaut/split-monitor-workspaces
 	arch = x86_64
 	license = GPL

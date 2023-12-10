@@ -1,7 +1,7 @@
 # Maintainer: Styly <claudioresendeptbr@gmail.com>
 pkgname=hyprdwl-git
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Split monitor workspaces for Hyprland, so it can be just like dwm"
 arch=('x86_64')
 url="https://github.com/Duckonaut/split-monitor-workspaces"
