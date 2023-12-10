@@ -19,8 +19,7 @@ key_list = [
     "extensionAllowedBadgeProviders",
     "extensionAllowedBadgeProvidersRegex",
     "msftInternalDomains",
-    "linkProtectionTrustedDomains",
-    "featuredExtensions"
+    "linkProtectionTrustedDomains"
 ]
 
 product_path = sys.argv[1]

@@ -9,7 +9,7 @@
 		"controlUrl": "https://az764295.vo.msecnd.net/extensions/marketplace.json"
 	},
 	"extensionRecommendations": {
-		"ms-dotnettools.csharp": {
+		"ms-dotnettools.csdevkit": {
 			"onFileOpen": [
 				{
 					"pathGlob": "{**/*.cs,**/global.json,**/*.csproj,**/*.cshtml,**/*.sln}",
@@ -55,6 +55,17 @@
 				},
 				{
 					"pathGlob": "{**/*.ipynb}"
+				}
+			]
+		},
+		"ms-toolsai.datawrangler": {
+			"onFileOpen": [
+				{
+					"pathGlob": "{**/*.ipynb}",
+					"contentPattern": "import\\s*pandas|from\\s*pandas",
+					"whenInstalled": [
+						"ms-toolsai.jupyter"
+					]
 				}
 			]
 		},
@@ -557,7 +568,7 @@
 	"languageExtensionTips": [
 		"ms-python.python",
 		"ms-vscode.cpptools-extension-pack",
-		"ms-dotnettools.csharp",
+		"ms-dotnettools.csdevkit",
 		"ms-toolsai.jupyter",
 		"vscjava.vscode-java-pack",
 		"ecmel.vscode-html-css",
@@ -918,12 +929,5 @@
 		"https://*.github.dev",
 		"https://gh.io",
 		"https://portal.azure.com"
-	],
-	"featuredExtensions": [
-		{
-			"id": "github.copilot",
-			"title": "GitHub Copilot",
-			"description": "Supercharge your coding experience for as little as $10/month with cutting edge AI code generation."
-		}
 	]
 }
