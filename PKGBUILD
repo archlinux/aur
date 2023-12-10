@@ -1,6 +1,6 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=cue-git
-pkgver=v1.10.r0.gde1d1b2
+pkgver=v1.11.r0.ga39f16a
 pkgrel=1
 pkgdesc="A command-line music player"
 arch=('x86_64')
