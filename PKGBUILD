@@ -15,8 +15,12 @@ _commit=14182b3381808ecb310dbe83673ae86a7e4e0e2d
 source=($_url/archive/$_commit.tar.gz)
 sha256sums=(d87d678d1d5ec86eb2f025f42a4722f8873fce953318bb4421953ec700dbe3a4)
 
+prepare() {
+    mv Drafting-$_commit $_pkgname-$_commit
+}
+
 package_otf-drafting() {
-    cd "$srcdir"/Drafting-$_commit
+    cd "$srcdir"/$_pkgname-$_commit
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/otf/*.otf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
@@ -24,7 +28,7 @@ package_otf-drafting() {
 }
 
 package_ttf-drafting() {
-    cd "$srcdir"/Drafting-$_commit
+    cd "$srcdir"/$_pkgname-$_commit
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/ttf/*.ttf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
@@ -32,7 +36,7 @@ package_ttf-drafting() {
 }
 
 package_ttf-drafting-variable() {
-    cd "$srcdir"/Drafting-$_commit
+    cd "$srcdir"/$_pkgname-$_commit
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/variable/*.ttf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
