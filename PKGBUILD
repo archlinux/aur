@@ -1,8 +1,8 @@
 # Maintainer: Kimiblock Moe
 pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
-pkgver=r1128.0b8f9ed
-pkgrel=2
+pkgver=r1163.6067a06
+pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
 arch=('x86_64' 'aarch64')
 url="https://github.com/keiko233/clash-nyanpasu"
