@@ -3,7 +3,7 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
-pkgver=30.0.0.rc1
+pkgver=30.0.2.r141.ge958964
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -62,8 +62,11 @@ source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=maste
 md5sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
-  cd $pkgname
-  git describe --long --tags | cut -d- -f1-2 | sed "s/-/\./"
+  cd "$pkgname"
+  _version=$(git tag | grep -Ev '.*[a-z]{2}.*' | sort -V | tail -1)
+  _revision=$(git rev-list --count $_version..HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 prepare() {
