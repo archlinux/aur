@@ -1,16 +1,17 @@
-# Maintainer: Trevor Tilby <trevor dot tilby at gmail dot com>
+# Maintainer: griffi-gh <prasol258 gmail com>
+# Contributor: Trevor Tilby <trevor dot tilby at gmail dot com>
 # Contributor: whriedplanck
 
 pkgname=powdertoy-bin
 pkgver=97.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air
     pressure, velocity & heat!"
 arch=('x86_64')
 url="https://powdertoy.co.uk/"
 license=('GPL3')
 depends=('openssl' 'hicolor-icon-theme')
-source=("${pkgname}-${pkgver}-${pkgrel}.zip::https://powdertoy.co.uk/Download/powder-lin64.zip"
+source=("${pkgname}-${pkgver}-${pkgrel}.zip::https://powdertoy.co.uk/Download/Builds/Build-352/powder%20linux64.zip"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/icon_exe.svg"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe.png"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe_16.png"
