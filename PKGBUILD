@@ -1,7 +1,7 @@
 # Maintainer: Valeriy Huz <ghotrix@gmail.com>
 pkgname=bayeselo
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Bayesian Elo Rating Program"
 arch=('any')
 depends=('gcc-libs-multilib')
