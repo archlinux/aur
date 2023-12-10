@@ -10,13 +10,13 @@
 [[ -v CUDA_HOST_COMPILER ]] && _cuda_host_compiler=(${CUDA_HOST_COMPILER})
 
 pkgname=cycles-standalone
-pkgver=3.6.0
+pkgver=4.0.2
 pkgrel=0
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
 url="https://github.com/blender/cycles.git"
 license=(Apache)
-depends=(libglvnd openexr glew pugixml freeglut openimageio onetbb openvdb embree openimagedenoise opensubdiv openshadinglanguage alembic sdl2 google-glog libepoxy)
+depends=(pugixml opencolorio boost-libs python gflags openimageio intel-oneapi-tbb openvdb embree openimagedenoise opensubdiv openshadinglanguage alembic sdl2 google-glog libepoxy usd)
 makedepends=(cmake git boost llvm python)
 optdepends=(cuda optix)
 provides=(cycles)
