@@ -1,6 +1,6 @@
 # Maintainer: memchr <memchr@proton.me>
 pkgname=code-appicons
-pkgver=1.83.0
+pkgver=1.85.0
 pkgrel=1
 pkgdesc='Replace Code - OSS icons with VSCode icons'
 arch=('any')
