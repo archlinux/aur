@@ -1,7 +1,7 @@
 pkgbase = hiddify-next-git
 	pkgdesc = A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hiddify/hiddify-next
 	arch = x86_64
 	license = CCPL
@@ -37,8 +37,8 @@ pkgbase = hiddify-next-git
 	conflicts = hiddify-next-bin
 	options = !strip
 	source = git+https://github.com/hiddify/hiddify-next.git
-	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.9-stable.tar.xz
+	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.3-stable.tar.xz
 	sha256sums = SKIP
-	sha256sums = b6bc6f93423488c67110e0fe56523cd2260f3a4c379ed015cd1c7fab66362739
+	sha256sums = SKIP
 
 pkgname = hiddify-next-git

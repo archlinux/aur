@@ -3,7 +3,7 @@
 _pkgname=hiddify-next
 pkgname=$_pkgname-git
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
@@ -18,11 +18,11 @@ conflicts=(${_pkgname} ${_pkgname}-bin)
 options=(!strip)
 source=(
     "git+https://github.com/hiddify/hiddify-next.git"
-    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.9-stable.tar.xz"
+    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.3-stable.tar.xz"
 )
 sha256sums=(
     "SKIP"
-    "b6bc6f93423488c67110e0fe56523cd2260f3a4c379ed015cd1c7fab66362739"
+    "SKIP"
 )
 _install_path="/opt/$_pkgname"
 
@@ -59,17 +59,16 @@ build() {
     mv dist/*/*.$EXT tmp_out/hiddify-linux-x64.$EXT
     chmod a+x tmp_out/hiddify-linux-x64.$EXT
     cd tmp_out
-    ./hiddify-linux-x64.AppImage --appimage-extract > /dev/null
+    ./hiddify-linux-x64.AppImage --appimage-extract >/dev/null
     sed -i 's/Exec=/Exec=env /' "./squashfs-root/hiddify.desktop"
 }
-
 
 package() {
     install -Dm755 "${srcdir}/hiddify-next/tmp_out/hiddify-linux-x64.AppImage" "${pkgdir}/${_install_path}/hiddify.AppImage"
     install -Dm644 "${srcdir}/hiddify-next/tmp_out/squashfs-root/hiddify.desktop" "$pkgdir/usr/share/applications/hiddify.desktop"
-    for _icons in 128x128 256x256;do
+    for _icons in 128x128 256x256; do
         install -Dm644 "${srcdir}/hiddify-next/tmp_out/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/hiddify.png"
     done
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/hiddify"
+    ln -s "/opt/${_pkgname}/hiddify.AppImage" "${pkgdir}/usr/bin/hiddify"
 }
