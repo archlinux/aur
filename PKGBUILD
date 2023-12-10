@@ -1,77 +1,95 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 
+# options
+#: ${_pkgtype:=git}
+
+# basic info
 _module='python-ffmpeg'
 _pkgname="python-$_module"
-pkgname="$_pkgname"
-pkgver=2.0.4
-pkgrel=2
+pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgver=2.0.7
+pkgrel=1
 pkgdesc="Python binding for FFmpeg which provides sync and async APIs"
-arch=(any)
 url="https://github.com/jonghwanhyeon/python-ffmpeg"
 license=('MIT')
-options=(!emptydirs)
-depends=(
-  'ffmpeg'
-  'python'
-  'python-pyee'
-  'python-typing_extensions'
-)
-makedepends=(
-  'python-build'
-  'python-installer'
-  'python-pytest-runner'
-  'python-setuptools'
-  'python-wheel'
-)
+arch=(any)
 
-provides=(
-  'python-ffmpeg'
-)
-conflicts=(
-  'python-ffmpeg'
-  'python-ffmpeg-python'
-)
-
-if [ x"$_pkgname" == x"$pkgname" ] ; then
-  # normal package
-  _pkgsrc="$_module-$pkgver"
-
-  source+=(
-    "$_module-$pkgver.tar.gz"::"https://github.com/jonghwanhyeon/python-ffmpeg/archive/v$pkgver.tar.gz"
+# main package
+_main_package() {
+  depends=(
+    'ffmpeg'
+    'python'
+    'python-pyee'
+    'python-typing_extensions'
   )
-  sha256sums+=(
-    'a7977cc3d8658f94a33cd15c5710e008c9e5442df32f57e7df8cbb4ad38a97f3'
+  makedepends=(
+    'python-build'
+    'python-installer'
+    'python-pytest-runner'
+    'python-setuptools'
+    'python-wheel'
   )
-else
-  # x-git package
+
+  provides=(
+    'python-ffmpeg'
+  )
+  conflicts=(
+    'python-ffmpeg'
+    'python-ffmpeg-python'
+  )
+
+  options=(!emptydirs)
+
+  if [ "$pkgname" == "$_pkgname" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+}
+
+# stable package
+_main_stable() {
+  _pkgver="${pkgver%%.r*}"
+  _pkgsrc="$_module-${_pkgver:?}"
+  _pkgext="tar.gz"
+  source+=("$_pkgsrc.$_pkgext"::"$url/archive/v$_pkgver.$_pkgext")
+  sha256sums+=('c135685a1963480b58d40d0ea95e30ba29651ed005d75ccc8f724548e636f61f')
+
+  pkgver() {
+    echo "${_pkgver:?}"
+  }
+}
+
+# git package
+_main_git() {
   _pkgsrc="$_module"
 
   makedepends+=('git')
 
-  provides+=("$_pkgname")
+  provides+=("$_pkgname=${pkgver%%.r*}")
   conflicts+=("$_pkgname")
 
-  source=(
-    "$_module"::"git+https://github.com/jonghwanhyeon/python-ffmpeg"
-  )
-  sha256sums=(
-    'SKIP'
-  )
+  source=("$_module"::"git+$url.git")
+  sha256sums=('SKIP')
 
   pkgver() {
     cd "$srcdir/$_pkgsrc"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   }
-fi
+}
 
+# common functions
 build() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   python -m build --no-isolation --wheel
 }
 
 package() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
+# execute
+_main_package
