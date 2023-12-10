@@ -1,50 +1,47 @@
 # Maintainer: MoetaYuko <loli at yuko dot moe>
 
-pkgname=python-jupytext
-pkgver=1.15.2
+_pkgname=jupytext
+pkgname=python-$_pkgname
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Jupyter notebooks as Markdown documents, Julia, Python or R scripts"
 url="https://github.com/mwouts/jupytext"
 depends=(
     jupyter-nbformat
-    python-pyaml
-    python-toml
     python-markdown-it-py
     python-mdit_py_plugins
+    python-packaging
+    python-toml
+    python-yaml
 )
 makedepends=(
-    # jupyterlab
+    jupyterlab
     npm
-    # python-jupyter-packaging
-    # python-build
+    python-build
+    python-hatch-jupyter-builder
+    python-hatchling
     python-installer
-    # python-setuptools
-    # python-wheel
+    python-jupyter-packaging
+    python-setuptools
+    python-wheel
+)
+optdepends=(
+    jupyter-nbconvert
+    jupyterlab
+    python-sphinx-gallery
 )
 license=('MIT')
 arch=('any')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fd59e1656b9e2345eae7dc8ed137c7f4f06c12daf75465ec17ff88721df82c55')
-
-prepare() {
-    # The jlab extension has to be built with jlab3
-    # See: https://github.com/mwouts/jupytext/issues/1116
-    cd $srcdir
-    python -m venv venv
-    source venv/bin/activate
-    python -m pip install build wheel jupyter-packaging~=0.7.9 'jupyterlab>=3,<4'
-    deactivate
-}
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('050295ad840ef638d9dd4eaad08391acebb843d9988cadc856fba32dd1e33ac6')
 
 build() {
-    cd $srcdir/jupytext-$pkgver
-    source ../venv/bin/activate
-    BUILD_JUPYTERLAB_EXTENSION=1 python -m build --wheel --no-isolation
-    deactivate
+    cd $_pkgname-$pkgver
+    python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-    cd $srcdir/jupytext-$pkgver
+    cd $_pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
