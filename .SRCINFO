@@ -1,0 +1,15 @@
+pkgbase = udev-joystick-blacklist-git
+	pkgdesc = Fix for keyboards/mice/tablets being detected as joysticks in Linux
+	pkgver = r123.d7c2370
+	pkgrel = 1
+	url = https://github.com/denilsonsa/udev-joystick-blacklist
+	arch = x86_64
+	arch = aarch64
+	license = Public Domain
+	makedepends = git
+	provides = udev-joystick-blacklist
+	conflicts = udev-joystick-blacklist
+	source = udev-joystick-blacklist-git::git+https://github.com/denilsonsa/udev-joystick-blacklist.git
+	sha256sums = SKIP
+
+pkgname = udev-joystick-blacklist-git
