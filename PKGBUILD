@@ -1,43 +1,42 @@
+# Maintainer: Dummerle
 
-# Maintaner: Dummerle
 pkgname=rare
 pkgver=1.10.6
 pkgrel=1
 pkgdesc="A GUI for legendary, an open source replacement for Epic Games Launcher"
 arch=('any')
-url="https://github.com/Dummerle/Rare"
+url="https://github.com/RareDevs/Rare"
 license=('GPL3')
-groups=()
-depends=("python-pyqt5" "qt5-svg" "python-qtawesome" "python-requests" "python-typing_extensions" "legendary")
-makedepends=("git" "python-setuptools")
-checkdepends=()
-optdepends=("wine-staging: Run windows games" "python-pypresence: Use Discord RPC " "python-pywebview: easier login process in a browser")
-provides=()
-conflicts=("rare-git")
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver::git+$url#tag=$pkgver")
-noextract=()
+depends=(
+  python-pyqt5
+  qt5-svg
+  python-qtawesome
+  python-requests
+  python-typing_extensions
+  legendary
+)
+makedepends=(
+  git
+  python-{build,installer,wheel}
+  python-setuptools
+)
+optdepends=(
+  "wine: run Windows games"
+  "proton: run Windows games"
+  "python-pypresence: Discord RPC integration"
+  "python-pywebview: embedded browser for logging in"
+)
+source=("git+https://github.com/RareDevs/Rare.git#tag=$pkgver")
 sha256sums=("SKIP")
 
-prepare() {
-      cd $srcdir/$pkgname-$pkgver
-      cp $srcdir/$pkgname-$pkgver/rare/resources/images/Rare.png $srcdir/$pkgname-$pkgver/$pkgname.png
-}
-
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	python3 setup.py build
+  cd Rare
+  python -m build -wn
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
-	install -Dm644 "misc/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 "${pkgname}.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  cd Rare
+  python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm644 "misc/${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
+  install -Dm644 "rare/resources/images/Rare.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 }
-
-
