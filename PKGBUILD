@@ -1,11 +1,11 @@
 pkgname=startwine
-pkgver=383
+pkgver=384
 pkgrel=1
 pkgdesc="Software for playing Microsoft Windows games and launchers"
 arch=('x86_64')
 url="https://github.com/RusNor/StartWine-Launcher"
 license=('GPL')
-depends=('zstd' 'vte3' 'imagemagick' 'vulkan-tools' 'xdg-user-dirs' 'python-xlib' 'python-gobject' 'python-cairo' 'python-opengl' 'python-pillow' 'python-numpy' 'python-six' 'wine-staging')
+depends=('zstd' 'vte3' 'imagemagick' 'vulkan-tools' 'xdg-user-dirs' 'python-xlib' 'python-gobject' 'python-cairo' 'python-opengl' 'python-pillow' 'python-numpy' 'python-six' 'python-psutil' 'wine-staging')
 
 source=("https://github.com/RusNor/StartWine-Launcher/releases/download/StartWine_v$pkgver/StartWine_v$pkgver"
         "StartWine.desktop"
