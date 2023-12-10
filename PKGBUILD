@@ -2,7 +2,7 @@
 pkgname=('ctranslate2' 'python-ctranslate2')
 pkgbase=ctranslate2
 pkgver=3.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
 url="https://opennmt.net/CTranslate2"
@@ -98,10 +98,13 @@ build() {
 
 package_ctranslate2() {
   pkgdesc="A C++ library for efficient inference with Transformer models."
-  depends=('onednn')
+  depends=('nlohmann-json' 'onednn')
   provides=('libctranslate2.so=3')
 
   DESTDIR="$pkgdir" cmake --install build
+
+  # Avoid conflict with nlohmann-json
+  rm -r "$pkgdir/usr/include/nlohmann"
 
   install -Dm644 CTranslate2/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
