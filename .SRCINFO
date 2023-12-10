@@ -1,11 +1,10 @@
 pkgbase = fprintd-clients-git
-	pkgdesc = Fprintd without the daemon
+	pkgdesc = Fprintd without the daemon (debian/clients-only git branch)
 	pkgver = 1.90.1.r2.g54e56d6
-	pkgrel = 1
+	pkgrel = 5
 	url = https://gitlab.freedesktop.org/uunicorn/fprintd
 	arch = x86_64
 	license = GPL
-	makedepends = gtk-doc
 	makedepends = git
 	makedepends = meson
 	makedepends = pam_wrapper
@@ -13,25 +12,21 @@ pkgbase = fprintd-clients-git
 	makedepends = python-dbus
 	makedepends = python-dbusmock
 	depends = glib2
+	depends = glibc
 	depends = libfprint
 	depends = polkit
 	depends = dbus
 	depends = dbus-glib
 	depends = libsystemd
+	depends = pam
 	provides = fprintd-clients
 	conflicts = fprintd
 	conflicts = fprintd-clients
-	source = fprintd-clients::git+https://gitlab.freedesktop.org/uunicorn/fprintd.git#branch=debian/clients-only
-	source = disable-systemd-reactivated.diff
-	md5sums = SKIP
-	md5sums = b392087f0a6a824fcbceec21d2a38402
+	source = fprintd-clients-git::git+https://gitlab.freedesktop.org/uunicorn/fprintd.git#branch=debian/clients-only
+	source = 0001-disable-systemd-reactivated.diff
+	source = 0002-Remove-ignored-positional-arguments.patch
+	sha256sums = SKIP
+	sha256sums = 05e537a783302f0b01984eee00368deb2bc846bfd16b8892a21aff79c9b7a6ab
+	sha256sums = 83458c77fd9b1c3022ed7230b92432a3edde00cc811a01e49b76c04629534b82
 
 pkgname = fprintd-clients-git
-	depends = glib2
-	depends = libfprint
-	depends = polkit
-	depends = dbus
-	depends = dbus-glib
-	depends = libsystemd
-	depends = libfprint-2.so
-
