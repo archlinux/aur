@@ -1,13 +1,13 @@
 pkgbase = csharp-ls
 	pkgdesc = Roslyn-based LSP language server for C#
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/razzmatazz/csharp-language-server
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = jq
-	depends = dotnet-sdk
+	depends = dotnet-sdk-7.0
 	options = !strip
 	source = git+https://github.com/razzmatazz/csharp-language-server.git#tag=0.10.0
 	sha256sums = SKIP

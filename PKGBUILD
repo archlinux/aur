@@ -1,12 +1,12 @@
 pkgname="csharp-ls"
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Roslyn-based LSP language server for C#"
 arch=("x86_64")
 url="https://github.com/razzmatazz/csharp-language-server"
 license=("MIT")
 makedepends=("git" "jq")
-depends=("dotnet-sdk")
+depends=("dotnet-sdk-7.0")
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 options=("!strip")
@@ -18,11 +18,8 @@ build(){
     if [[ "$(jq -r ".sdk.version" global.json)" != "$dotnet_version" ]]
     then
         # Hack SDK version
-        echo "Hacking global.json for using SDK provided by system..."
-        mv global.json global-old.json
-        jq '.sdk.version="$dotnet_version"' < global-old.json > global.json
-        echo "Currently .sdk.version is $(jq -r .sdk.version global.json)"
-        rm global-old.json
+        echo "Removing global.json for using SDK provided by system..."
+        rm global.json
     fi
 
     cd src
