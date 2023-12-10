@@ -10,7 +10,8 @@ arch=("x86_64")
 
 url="https://github.com/Audio4Linux/JDSP4Linux"
 license=('GPL3')
-depends=('glibmm' 'hicolor-icon-theme' 'libarchive' 'libportal-qt5' 'libpipewire' 'qt5-svg')
+depends=('glibmm' 'hicolor-icon-theme' 'libarchive' 'libpipewire' 'qt6-svg')
+makedepends=('git')
 provides=("${_pkgname%}")
 conflicts=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp' 'jamesdsp')
 
