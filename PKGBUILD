@@ -2,7 +2,7 @@
 # Contributor: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop-bin
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Unofficial desktop version of Telegram messaging app - binary version"
 arch=(x86_64)
@@ -10,8 +10,8 @@ url="https://github.com/TDesktop-x64/tdesktop"
 license=(GPL3)
 depends=(desktop-file-utils glib2 hicolor-icon-theme libdbus libx11 libglvnd fontconfig)
 optdepends=('ttf-opensans: default Open Sans font family')
-conflicts=(telegram-desktop 64gram-desktop)
-provides=(telegram-desktop 64gram-desktop)
+conflicts=(64gram-desktop)
+provides=(64gram-desktop)
 
 source=(
 	"io.github.tdesktop_x64.TDesktop.desktop"
@@ -19,7 +19,7 @@ source=(
 	"${url}/releases/download/v${pkgver}/64Gram_${pkgver}_linux.zip"
 )
 
-sha256sums=('731dcfb4dcdfe5e4cfcf9f1adc256090576ee91bc7592c7807c2bd343b7705f9'
+sha256sums=('8d93c52e7ad8d83f27e7f0adf6bc229886e797720e559a774c551a7001f077f0'
             'ea1f36152b143cc2664daef5026656d55be2230ed42d43628e17ef7d2fff718c'
             '9e4180c78c895783b4559c5e1a7868a2c9aa30a29969fe5dbe9a4ce4cf5cde6c'
             '041b78681a35f07c3c929662fc66b6592c88588dc7297a5394ef7f923f2118e2'
@@ -39,10 +39,10 @@ package() {
 	install -dm755 "$pkgdir/usr/share/applications/"
 
 	# Program
-	install -Dm755 "$srcdir/Telegram" "$pkgdir/usr/bin/telegram-desktop"
+	install -Dm755 "$srcdir/Telegram" "$pkgdir/usr/bin/64gram-desktop"
 
 	# Desktop launcher
-	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/telegram.png"
+	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/64gram.png"
 	install -Dm644 "$srcdir/io.github.tdesktop_x64.TDesktop.desktop" "$pkgdir/usr/share/applications/io.github.tdesktop_x64.TDesktop.desktop"
 
 	# Icons
@@ -50,10 +50,10 @@ package() {
 	for icon_size in 16 32 48 64 128 256 512; do
 		icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
 		install -d "$icon_dir"
-		install -m644 "$srcdir/icon${icon_size}.png" "$icon_dir/telegram.png"
+		install -m644 "$srcdir/icon${icon_size}.png" "$icon_dir/64gram.png"
 	done
 
 	# Disable the official Telegram Desktop updater
-	mkdir -p "$pkgdir/etc/tdesktop"
-	echo "/usr/bin/telegram-desktop" > "$pkgdir/etc/tdesktop/externalupdater"
+	mkdir -p "$pkgdir/usr/share/64Gram/externalupdater.d"
+	echo "/usr/bin/64gram-desktop" >"$pkgdir/usr/share/64Gram/externalupdater.d/telegram-desktop.conf"
 }
