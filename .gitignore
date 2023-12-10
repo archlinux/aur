@@ -1,4 +1,5 @@
 *.tar
+*.tar.*
 obs-studio-git/
 ftl-sdk/
 obs-browser/
