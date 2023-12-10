@@ -1,0 +1,15 @@
+pkgbase = redsea
+	pkgdesc = RDS decoder for the command line
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://github.com/windytan/redsea
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = libsndfile
+	depends = liquid-dsp
+	source = redsea-0.20.tar.gz::https://github.com/windytan/redsea/archive/refs/tags/v0.20.tar.gz
+	sha256sums = fb0b9bf74a9bcc25c80ef3648b4bd0958862708a4a48dcf44f0a148bbd622fa4
+
+pkgname = redsea
