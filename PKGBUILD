@@ -3,7 +3,7 @@
 _name=kirigami-addons
 pkgname=${_name}5
 pkgver=0.11.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Add-ons for the Kirigami framework'
 url='https://invent.kde.org/libraries/kirigami-addons'
 arch=(x86_64)
@@ -11,6 +11,7 @@ license=(GPL LGPL)
 depends=(gcc-libs
          glibc
          kirigami2
+         kitemmodels5 # QML
          qt5-base
          qt5-declarative
          qt5-quickcontrols2)

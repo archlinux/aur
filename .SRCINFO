@@ -1,7 +1,7 @@
 pkgbase = kirigami-addons5
 	pkgdesc = Add-ons for the Kirigami framework
 	pkgver = 0.11.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://invent.kde.org/libraries/kirigami-addons
 	arch = x86_64
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = kirigami-addons5
 	depends = gcc-libs
 	depends = glibc
 	depends = kirigami2
+	depends = kitemmodels5
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-quickcontrols2
