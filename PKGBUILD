@@ -32,6 +32,7 @@ depends=(
   polkit
   seatd
   systemd-libs
+  tomlplusplus
   wayland
   wayland-protocols
   xcb-proto
@@ -52,7 +53,6 @@ makedepends=(
   meson
   ninja
   pkgconf
-  tomlplusplus
   xorgproto
 )
 provides=("hyprland=${pkgver%%.r*}")
