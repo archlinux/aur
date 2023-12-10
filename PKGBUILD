@@ -2,13 +2,15 @@
 _projectname='logs'
 pkgname="ocaml-${_projectname}_lwt"
 pkgver='0.7.0'
-pkgrel='1'
-pkgdesc='Logging infrastructure for OCaml - Logs_lwt library'
+pkgrel='2'
+pkgdesc='Logging infrastructure for OCaml - with the Logs_lwt library included'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
-depends=('ocaml>=4.03.0' 'ocaml-logs=0.7.0' 'ocaml-cmdliner' 'ocaml-fmt' 'ocaml-lwt')
+depends=('ocaml>=4.03.0' 'ocaml-cmdliner' 'ocaml-fmt' 'ocaml-lwt')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
+provides=("ocaml-$_projectname")
+conflicts=("ocaml-$_projectname")
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
 sha512sums=('071c4e0970f2ef86a78561407d6e333bb206ac11e0b14cdecfcf33e75701570986de11d7b1bc027cd3ec20d42da44b0242c4f8b343e4fbf75d58d8f01e4b3b81')
@@ -31,9 +33,12 @@ build() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	opam-installer --prefix="$srcdir/$pkgname-$pkgver-build" --libdir='lib/ocaml' --docdir='share/doc'
+	opam-installer --prefix="$pkgdir/usr" --libdir='lib/ocaml' --docdir='share/doc'
 
-	# Only use logs_lwt files
-	install -dm755 "$pkgdir/usr/lib/ocaml/$_projectname/"
-	find . "$srcdir/$pkgname-$pkgver-build/lib/ocaml/$_projectname" -mindepth 1 -maxdepth 1 -type f -name "logs_lwt.*" -exec cp -r --no-preserve=ownership --preserve=mode -t "$pkgdir/usr/lib/ocaml/$_projectname/." {} +
+	for _folder in "$pkgdir/usr/share/doc/"*; do
+		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
+	done
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/ocaml-$_projectname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
