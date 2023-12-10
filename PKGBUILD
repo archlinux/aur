@@ -10,7 +10,7 @@ pkgdesc='Terminal manipulation library for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
-depends=('ocaml>=4.08.0' 'ocaml-logs' 'ocaml-logs-lwt' 'ocaml-lwt>=4.2.0' 'ocaml-mew_vi>=0.5.0' 'ocaml-react' 'ocaml-zed>=3.2.0')
+depends=('ocaml>=4.08.0' 'ocaml-logs' 'ocaml-logs_lwt' 'ocaml-lwt>=4.2.0' 'ocaml-mew_vi>=0.5.0' 'ocaml-react' 'ocaml-zed>=3.2.0')
 makedepends=('dune>=3.0.0')
 options=('!strip')
 install="$pkgname.install"
