@@ -1,7 +1,7 @@
 # Maintainer: patri9ck <patri9ck@gmail.com>
 pkgname=a2ln
 pkgver=1.1.14
-pkgrel=2
+pkgrel=1
 pkgdesc="Android 2 Linux Notifications Server"
 arch=('any')
 url="https://github.com/patri9ck/a2ln-server"
