@@ -1,66 +1,90 @@
-# maintainer: André Kugland <kugland@gmail.com>
-# original maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
-# original contributor: Martchus <martchus@gmx.net>
+# Maintainer:
+# Contributor: André Kugland <kugland@gmail.com>
 
-# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
-# you also find the URL of (another) binary repository (i686 and x86_64).
+# options
+: ${_pocketsphinx:=false}
 
-# Official arch linux binaries: https://subtitlecomposer.kde.org/download.html
+: ${_pkgtype:=nopocketsphinx-git}
 
-_name=subtitlecomposer
-pkgname=${_name}-nopocketsphinx-git
-pkgver=0.7.1.r301.g72cd556e
-pkgrel=2
-pkgdesc="A KDE subtitle editor (git version)"
+# basic info
+_pkgname="subtitlecomposer"
+pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgver=0.8.0.r10.g8dee193a
+pkgrel=1
+pkgdesc="Video subtitle editor"
+url="https://invent.kde.org/multimedia/subtitlecomposer"
+license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
-url="https://invent.kde.org/multimedia/${_name}"
-license=('GPL')
-depends=('kcoreaddons' 'ktextwidgets' 'kio' 'sonnet' 'kcodecs' 'kxmlgui' 'ki18n' 'ffmpeg' 'openal')
-makedepends=('extra-cmake-modules' 'jack' 'blas' 'xorg-server-xvfb')
 
-# Comment/uncomment the following dependency to disable/enable
-# building the speech recognition plugin
-#makedepends+=('pocketsphinx')
-
-# For consistency, also enable/disable the corresponding optdepends
-#optdepends=('pocketsphinx: Pocketsphinx speech recognition backend')
-
-conflicts=(
-    ${_name}
-    ${_name}-git
-    ${_name}-git-nopocketsphinx
+depends=(
+  'ffmpeg'
+  'kcodecs5'
+  'kcoreaddons5'
+  'ki18n5'
+  'kio5'
+  'ktextwidgets5'
+  'kxmlgui5'
+  'openal'
+  'qt5-declarative'
+  'sonnet5'
 )
-provides=(${_name})
+makedepends=(
+  'blas'
+  'extra-cmake-modules'
+  'jack'
+  'xorg-server-xvfb'
+)
+optdepends=(
+  'ruby: scripting'
+  'python: scripting'
+)
 
-# gitlab mirrors https://invent.kde.org/multimedia/subtitlecomposer.git#branch=master + i18n
-# source=("git+https://gitlab.com/${_name}/${_name}.git#branch=master")
-source=( "$_name"::"git+https://invent.kde.org/multimedia/subtitlecomposer.git" )
+if [[ "${_pocketsphinx::1}" == "t" ]] ; then
+  makedepends+=('pocketsphinx')
+  optdepends+=('pocketsphinx: speech recognition')
+fi
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git" )
 sha256sums=('SKIP')
 
+prepare() {
+  if [[ "${_pocketsphinx::1}" != "t" ]] ; then
+    sed -Ei '/^add_subdirectory(speechplugins\/pocketsphinx)/d' "$_pkgsrc/src/CMakeLists.txt"
+  fi
+}
+
 pkgver() {
-  cd "$srcdir/$_name"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  # Don't build the speech recognition plugin
-  sed -i '/^add_subdirectory(speechplugins\/pocketsphinx)/s//#&/g' "${srcdir}/${_name}/src/CMakeLists.txt"
-
-  cmake -S "${srcdir}/${_name}" -B "${srcdir}/build" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_LIBDIR='lib'
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  cmake --build "${srcdir}/build"
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 check() {
   export DISPLAY=:99
   Xvfb :99 >& /dev/null &
   trap "kill $! || true" EXIT
-  cmake --build "${srcdir}/build" --target test
+  cmake --build build --target test
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
