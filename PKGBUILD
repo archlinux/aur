@@ -1,13 +1,11 @@
 pkgname=identity
 pkgver=0.6.0
->>>>>>> 4b062e9 (update to 0.6.0)
-pkgrel=1
+pkgrel=2
 pkgdesc='Compare multiple versions of an image or video'
 arch=(x86_64)
 url=https://gitlab.gnome.org/YaLTeR/identity
 license=(GPL3)
 depends=(
-	gstreamer
 	libadwaita
 	dav1d
 	libwebp

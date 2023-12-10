@@ -1,7 +1,7 @@
 pkgbase = identity
 	pkgdesc = Compare multiple versions of an image or video
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/YaLTeR/identity
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,6 @@ pkgbase = identity
 	makedepends = blueprint-compiler
 	makedepends = gobject-introspection
 	makedepends = python-gobject
-	depends = gstreamer
 	depends = libadwaita
 	depends = dav1d
 	depends = libwebp
