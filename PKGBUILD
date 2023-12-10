@@ -3,8 +3,8 @@
 # Contributor: whriedplanck
 
 pkgname=powdertoy-bin
-pkgver=97.0
-pkgrel=3
+pkgver=97.0.352
+pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air
     pressure, velocity & heat!"
 arch=('x86_64')
