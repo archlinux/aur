@@ -1,24 +1,21 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 
 pkgname=healthchecks
-_pkgver=2.10
-pkgver=2.10.0
+_pkgver=3.0.1
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A cron monitoring service with a web-based dashboard, API, and notification integrations."
 arch=('any')
 url="https://github.com/healthchecks/healthchecks"
 license=('BSD')
 depends=('python-aiosmtpd' 'python-cron-descriptor' 'python-cronsim' 'python-django'
-	 'python-django-compressor' 'python-fido2' 'python-pyotp' 'python-pytz' 'python-pycurl'
-	 'python-segno' 'python-statsd' 'python-whitenoise' 'uwsgi' 'uwsgi-plugin-python')
+	 'python-django-compressor' 'python-django-stubs-ext' 'python-fido2' 'python-pyotp'
+	 'python-pytz' 'python-pycurl' 'python-pydantic' 'python-segno' 'python-statsd' 'python-whitenoise'
+	 'uwsgi' 'uwsgi-plugin-python')
 optdepends=('python-psycopg2: Add support for postgreSQL.'
 	    'python-apprise: Add support for the Apprise integration.')
 backup=("var/lib/$pkgname/local_settings.py" "etc/uwsgi/$pkgname.ini")
 install="$pkgname.install"
-
-# other ways of specifying source from github:
-# source=("git+$url#tag=v$pkgver")
-# source=('project_name::git+https://project_url#branch=project_branch')
 source=("$url/archive/refs/tags/v$_pkgver.tar.gz"
 	"hc-clean-db"
 	"hc-manage"
@@ -31,7 +28,7 @@ source=("$url/archive/refs/tags/v$_pkgver.tar.gz"
         "$pkgname.tmpfiles"
 	"local_settings.py"
         "settings.patch")
-sha256sums=('b5eab3aad426aad47380b9a34287a0495c00037c50c6a7d09cadf83019f717f0'
+sha256sums=('b6a567e59d6a3e1916882fa39794c9cfceb3c1ee6135464f604adc35d64d4b82'
 	    'a7b75bdd35c6952e06e1cd3824450f7c613aff5e3fb1d9f4f57f517b57cefbde'
 	    '355ac237284642e24a3cbe7ddb285bf7dbb802e72ea7fe7c68f0476178ab94fc'
 	    '9d32c4d1404079cac9b7a4ccbc97e01d867735c2536f915220d2ac5dffc333e7'
