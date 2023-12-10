@@ -1,7 +1,7 @@
 # Maintainer: Rohit Lodha <rohitlodha+aur@gmail.com>
 
 pkgname=mudpack
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Build and maintain multiple arch repo"
 url=https://github.com/bogusfocused/mudpack
@@ -23,5 +23,5 @@ package() {
 	install -Dm644 "${srcdir}/mudpack-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/mudpack.conf"
 }
 
-sha256sums=('2302108a9de83e7903aedb0746c2c532925c0a1e6cda4047baab0b29bf2f2923'
+sha256sums=('2ab62532c1e8d62f79626ff3ca8fc11f7b1ebf403f4f0f0c3421f0fc2181118a'
             '5b1ccb2ac8ccae494088601d32bb663d6dd8cd55c926442b9c11d920462034e2')
