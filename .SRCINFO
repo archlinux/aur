@@ -1,6 +1,6 @@
 pkgbase = python-python-ffmpeg-git
 	pkgdesc = Python binding for FFmpeg which provides sync and async APIs
-	pkgver = 2.0.4.r4.g9870752
+	pkgver = 2.0.7.r0.gcad321c
 	pkgrel = 1
 	url = https://github.com/jonghwanhyeon/python-ffmpeg
 	arch = any
@@ -16,12 +16,12 @@ pkgbase = python-python-ffmpeg-git
 	depends = python-pyee
 	depends = python-typing_extensions
 	provides = python-ffmpeg
-	provides = python-python-ffmpeg
+	provides = python-python-ffmpeg=2.0.7
 	conflicts = python-ffmpeg
 	conflicts = python-ffmpeg-python
 	conflicts = python-python-ffmpeg
 	options = !emptydirs
-	source = python-ffmpeg::git+https://github.com/jonghwanhyeon/python-ffmpeg
+	source = python-ffmpeg::git+https://github.com/jonghwanhyeon/python-ffmpeg.git
 	sha256sums = SKIP
 
 pkgname = python-python-ffmpeg-git
