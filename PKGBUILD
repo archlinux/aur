@@ -5,13 +5,12 @@
 _projectname='lambda-term'
 pkgname="ocaml-$_projectname"
 pkgver='3.3.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Terminal manipulation library for OCaml'
-# If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-cmdliner, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
-depends=('ocaml>=4.08.0' 'ocaml-logs' 'ocaml-lwt>=4.2.0' 'ocaml-mew_vi>=0.5.0' 'ocaml-react' 'ocaml-zed>=3.2.0')
+depends=('ocaml>=4.08.0' 'ocaml-logs' 'ocaml-logs-lwt' 'ocaml-lwt>=4.2.0' 'ocaml-mew_vi>=0.5.0' 'ocaml-react' 'ocaml-zed>=3.2.0')
 makedepends=('dune>=3.0.0')
 options=('!strip')
 install="$pkgname.install"
