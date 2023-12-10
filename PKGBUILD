@@ -5,7 +5,7 @@
 # Contributor: Pieter Kokx <pieter $at$ kokx $dot$ .nl>
 _tag=latest
 pkgname=whatpulse
-pkgver=5.5.2
+pkgver=5.6
 pkgrel=1
 
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
@@ -37,7 +37,7 @@ source_x86_64=("${pkgname}-${pkgver}-amd64.AppImage::https://releases-dev.whatpu
 sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
             'f3d16ee6e325a3c657e7af1ebc9f6e35d09ff5c03b0a8b0450611e610c5d6d32'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
-sha256sums_x86_64=('6ca9b04c567113140441a552f91b38bfc68a74b3c7a8cb8e537e7fc1aa7611c4')
+sha256sums_x86_64=('bf11fd2918389124d50ac6429fab1bbaec432cc399a5ef310057829a72466cbd')
 
 _extract() {
 	./"${pkgname}-${pkgver}-amd64.AppImage" --appimage-extract "$1"
