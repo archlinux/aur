@@ -3,7 +3,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-bash-completion
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Add programmable bash completion to Emac's shell-mode"
 url="https://github.com/szermatt/emacs-bash-completion"
@@ -11,7 +11,7 @@ arch=('any')
 license=('GPL2')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/szermatt/emacs-bash-completion/archive/v${pkgver}.tar.gz")
-sha256sums=('c01c8e01e777fce88013ce743ce76e70c584859f8dd28701dae809b1faa7b1d3')
+sha256sums=('20849ae2267ac1dd7a88bafc29c085e1e455735ea6db75eb0f1ffc99b421a5ed')
 
 build() {
   cd $pkgname-$pkgver
