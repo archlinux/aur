@@ -18,10 +18,11 @@ url="https://lilypond.org"
 license=('FDL1.3' 'GPL3' 'custom:OFL')
 groups=('pro-audio')
 # NOTE: use guile only with 2.24.x
-depends=('gcc-libs' 'ghostscript' 'glibc' 'gsfonts' 'guile2.2')
+depends=('gcc-libs' 'ghostscript' 'glibc' 'gsfonts' 'guile2.2' 'guile')
 makedepends=('fontconfig' 'fontforge' 'freetype2' 'glib2' 'imagemagick' 'pango'
 'python' 'rsync' 't1utils' 'texinfo' 'texlive-core' 'tex-gyre-fonts'
-'texlive-langcyrillic' 'texlive-metapost' 'texlive-fontutils' 'zip')
+'texlive-langcyrillic' 'texlive-metapost' 'texlive-fontutils'
+'texlive-plaingeneric' 'zip')
 optdepends=(
   'python: for lilypond-book and other scripts'
   'tex-gyre-fonts: for extra fonts'
@@ -41,9 +42,9 @@ prepare() {
 build() {
   cd "$_pkgname-$pkgver"
   ./configure --prefix=/usr \
-              GUILE_FLAVOR=guile-2.2
-  make
-  make bytecode
+              GUILE_FLAVOR=guile-3.0
+  make -j3
+  make -j3 bytecode
 }
 
 package() {
