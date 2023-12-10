@@ -1,7 +1,7 @@
 # Maintainer: patri9ck <patri9ck@gmail.com>
 pkgname=a2ln
 pkgver=1.1.14
-pkgrel=3
+pkgrel=4
 pkgdesc="Android 2 Linux Notifications Server"
 arch=('any')
 url="https://github.com/patri9ck/a2ln-server"
@@ -15,12 +15,12 @@ build() {
 	cd "$srcdir/a2ln-server-$pkgver/"
 
 	python -m build --wheel --no-isolation
-
-	install -Dm644 "a2ln.service" "$pkgdir/usr/lib/systemd/user/a2ln.service"
 }
 
 package() {
 	cd "$srcdir/a2ln-server-$pkgver/"
 	
 	python -m installer --destdir="$pkgdir" dist/*.whl
+
+	install -Dm644 "a2ln.service" "$pkgdir/usr/lib/systemd/user/a2ln.service"
 }
