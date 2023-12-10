@@ -1,11 +1,11 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=openxcom-extended
-pkgver=7.9.21
+pkgver=7.9.22
 epoch=1
 # Repo doesn't use tags, so set which commit this version corresponds to in
 # https://github.com/MeridianOXC/OpenXcom/commits/oxce-plus/src/version.h
-_commit=13478609cee1d907a3f24fd0522dd5fbb5dd3057
+_commit=82339e8357958f52e59cd91e67c30d26c6ad2953
 pkgrel=1
 pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE)"
 arch=('i686' 'x86_64')
@@ -24,6 +24,8 @@ sha1sums=('SKIP')
 
 prepare() {
   mkdir -p ${pkgname}/build
+  # 7.9.22 build fix
+  sed -i '/#include <memory>/a#include <utility>' openxcom-extended/src/Engine/CrossPlatform.h
 }
 
 build() {
