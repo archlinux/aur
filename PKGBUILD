@@ -1,14 +1,28 @@
-# Maintainer: RealStickman <mrc+aur@frm01.net>
+# Maintainer: 
+# Contributor: RealStickman <mrc+aur@frm01.net>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 pkgname=cpu-g-git
-pkgver=0.16.3.1ubuntu1.r64.a94ef88
+pkgver=0.16.3.1ubuntu1.r83.83a9942
 pkgrel=1
 pkgdesc="Shows useful information about your computer"
 arch=('any')
 url="https://github.com/atareao/cpu-g"
 license=('GPL3')
-depends=('gtk3' 'mesa-utils' 'pciutils' 'procps-ng' 'python-dbus' 'python-cairocffi'
-         'python-gobject' 'python-matplotlib' 'python-psutil' 'wmctrl')
+depends=(
+  'gtk3'
+  'mesa-utils'
+  'pciutils'
+  'procps-ng'
+  'python-distro'
+  'python-dbus'
+  'python-cairocffi'
+  'python-gobject'
+  'python-matplotlib'
+  'python-psutil'
+  'upower'
+  'wmctrl'
+)
 makedepends=('dpkg' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
