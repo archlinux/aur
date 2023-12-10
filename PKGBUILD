@@ -19,7 +19,6 @@ depends=(
 )
 
 provides=('glew-1.13.0=1.13.0')
-conflicts=('glew-1.13.0')
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
