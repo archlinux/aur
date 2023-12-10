@@ -3,8 +3,8 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver='1.2.41'
-pkgrel='3'
+pkgver='1.2.42'
+pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
@@ -46,9 +46,9 @@ optdepends=(
 )
 source=("$pkgname-$pkgver".tar.gz::"https://github.com/luarvique/openwebrx/archive/$pkgver.tar.gz"
         'openwebrx-plus.sysusers' 'openwebrx-plus.tmpfiles')
-sha256sums=('4e634e7bef4036ebaa734098fae94c99a2594f0e1e48eecedeb89848557988ac'
+sha256sums=('273be8a4fbc941111efde712148f2b5863937336f3c1711a413fd63906845c55'
             '1a675698545a28c2645a925a8c2bd70775a0a45af44d918499e63e7e21510bfe'
-            'c5fd92043b7d380c16a12cdc627b78c4c753ff11a469c2a7692c29851ebfe7c3')
+            'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade')
 provides=('openwebrx')
 conflicts=('openwebrx')
 

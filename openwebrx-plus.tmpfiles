@@ -3,3 +3,4 @@ Z /var/lib/openwebrx - openwebrx openwebrx
 z /etc/openwebrx 0755 root root
 d /etc/openwebrx/bookmarks.d 0755
 d /etc/openwebrx/openwebrx.conf.d 0755
+d /etc/openwebrx/markers.d 0755
