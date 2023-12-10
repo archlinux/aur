@@ -1,21 +1,10 @@
 pkgbase = joplin-electron
 	pkgdesc = Joplin Desktop for Linux, using the system Electron package
-	pkgver = 2.12.19
+	pkgver = 2.13.9
 	pkgrel = 1
 	url = https://github.com/laurent22/joplin
 	arch = any
 	license = AGPL-3.0
-	makedepends = git
-	makedepends = npm
-	makedepends = yarn
-	makedepends = python
-	makedepends = rsync
-	makedepends = jq
-	makedepends = yq
-	makedepends = electron
-	makedepends = libgsf
-	makedepends = node-gyp>=8.4.1
-	makedepends = libvips
 	depends = electron25
 	depends = gtk3
 	depends = libexif
@@ -23,20 +12,17 @@ pkgbase = joplin-electron
 	depends = libjpeg-turbo
 	depends = libwebp
 	depends = libxss
-	depends = nodejs>=17.3
 	depends = nss
 	depends = orc
 	depends = rsync
 	depends = libvips
 	optdepends = libappindicator-gtk3: for tray icon
 	conflicts = joplin-desktop
-	source = joplin-2.12.19.tar.gz::https://github.com/laurent22/joplin/archive/v2.12.19.tar.gz
+	source = https://github.com/ruslin-note/joplin-electron/releases/download/v2.13.9-1/resources.tar.gz
 	source = joplin.desktop
 	source = joplin.sh
-	source = 0001-support-enable-wayland-ime.patch
-	sha256sums = 4aa2030b355d5fd1a879ed65ce4016fec416a86779730036bd285fb50a8072b8
+	sha256sums = a17c608cd4568733a409ec1107f519b8140c05301d7a4a45411588c804d75a99
 	sha256sums = 9e26cd5f41d08c3c2804cf4f34cb867090371423ccbe250a890fac006d405deb
 	sha256sums = bd8324d35faaf6815217d1cf31a0b5e4df80692b0312ad17aea20d51f95efd56
-	sha256sums = f95bda681102c99d08db8bf65fac026a0decfc3f07acb3eecb83cface6465c7c
 
 pkgname = joplin-electron
