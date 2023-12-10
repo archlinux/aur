@@ -3,7 +3,7 @@
 
 pkgname=wsdd
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Web Service Discovery (WSD) host daemon for SMB/Samba."
 arch=('any')
 url="https://github.com/christgau/wsdd"
@@ -23,7 +23,7 @@ sha256sums=('deb4e647c7dbcaace8a88100db83b9a80fa0f67b9490c04c76db2b142d4457a4'
 
 package() {
   install -D -m 755 "${srcdir}/${pkgname}-${pkgver}/src/wsdd.py" "${pkgdir}/usr/bin/wsdd"
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/man/wsdd.8" "${pkgdir}/usr/share/man/man1/wsdd.8"
+  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/man/wsdd.8" "${pkgdir}/usr/share/man/man8/wsdd.8"
   install -D -m 644 "${srcdir}/wsdd.conf" "${pkgdir}/etc/conf.d/wsdd"
   install -D -m 644 "${srcdir}/wsdd.service" "${pkgdir}/usr/lib/systemd/system/wsdd.service"
 }
