@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
 pkgver=20231210
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
 url='https://aur.archlinux.org/packages/all-repository-fonts/'
@@ -188,7 +188,8 @@ depends=(
 	'ttf-ubuntu-font-family'
 	'ttf-ubuntu-mono-nerd'
 	'ttf-ubuntu-nerd'
-	'ttf-victor-mono-nerd''xorg-fonts-type1'
+	'ttf-victor-mono-nerd'
+	'xorg-fonts-type1'
 	'wqy-bitmapfont'
 	'wqy-microhei'
 	'wqy-microhei-lite'
