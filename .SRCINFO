@@ -27,6 +27,7 @@ pkgbase = openwebrx-plus
 	optdepends = acarsdec: decode ACARS traffic
 	optdepends = multimon-ng: decode FLEX, POCSAG, and several other digital modes
 	optdepends = mbelib: Voice codecs for P25, ProVoice, Half Rate
+	optdepends = redsea: decode RDS information from FM broadcasts
 	optdepends = imagemagick: automatically convert received images to the PNG format
 	optdepends = sox: sound processing tools
 	optdepends = soapyremote: allows the usage of remote SDR devices using the SoapySDRServer

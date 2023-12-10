@@ -28,6 +28,7 @@ optdepends=(
     'acarsdec: decode ACARS traffic'
     'multimon-ng: decode FLEX, POCSAG, and several other digital modes'
     'mbelib: Voice codecs for P25, ProVoice, Half Rate'
+    'redsea: decode RDS information from FM broadcasts'
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
