@@ -1,0 +1,21 @@
+pkgbase = argos-translate-gui
+	pkgdesc = Graphical user interface for Argos Translate
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = https://www.argosopentech.com
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-installer
+	depends = argos-translate
+	depends = python-pyqt5
+	source = https://files.pythonhosted.org/packages/py3/a/argostranslategui/argostranslategui-1.6.5-py3-none-any.whl
+	source = https://raw.githubusercontent.com/argosopentech/argos-translate-gui/588e128e7665e0118f6e36b39cec265464c6e71f/LICENSE
+	source = argos-translate.desktop
+	source = argos-translate.png
+	sha256sums = 18ff453a55617ad3bafb39c263e65e821710b8e75f1d12a2c4e0d011f3544641
+	sha256sums = 7c5d4a497b63457497d7f0652e8fb063b751b4f9f3a35ac58b010aad0698d7eb
+	sha256sums = e0b55ff51c34d8b170aa7b459efc1d69931a2726d7bc8d2cf8c09c916489f3e3
+	sha256sums = 634c076d02a175109d4190aa9b816fedf4ec25b0985a4c1eeafc730dece69e65
+
+pkgname = argos-translate-gui

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Argos Translate
+Exec=argos-translate-gui
+Icon=argos-translate
+Type=Application
