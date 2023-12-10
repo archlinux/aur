@@ -1,14 +1,14 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=qt5-ukui-platformtheme-git
-pkgver=v1.0.2.r62.ga9a9e59
+pkgver=v1.0.8.r0.gd2c40c4
 pkgrel=1
 pkgdesc="qt5 platform theme for UKUI"
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/ukui/qt5-ukui-platformtheme"
 groups=('ukui')
-depends=('dconf' 'gsettings-qt' 'kwindowsystem')
+depends=('dconf' 'gsettings-qt' 'kwindowsystem5')
 makedepends=('qt5-tools' 'git')
 conflicts=('qt5-ukui-platformtheme')
 provides=('qt5-ukui-platformtheme')
