@@ -1,6 +1,6 @@
 # Maintainer: Egor Tensin <egor@tensin.name>
 pkgname=linux-status
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc='Simple Linux server monitoring'
 arch=(any)
