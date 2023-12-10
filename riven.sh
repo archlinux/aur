@@ -27,4 +27,4 @@ printf '%s\n' \
   "Enjoy Riven!" \
   ""
 
-scummvm -g supereagle --stretch-mode=fit -p "${_rivendir}" "$@" riven
+scummvm -g opengl --stretch-mode=fit -p "${_rivendir}" "$@" riven
