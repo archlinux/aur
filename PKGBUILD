@@ -1,61 +1,143 @@
-# Maintainer: Matthew Sexton <matthew@asylumtech.com>
+# Maintainer:
+# Contributor: Matthew Sexton <matthew@asylumtech.com>
 # Contributor: Lubosz Sarnecki <lubosz at gmail dot com>
 # Contributor: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
 
-pkgname=siril-git
-_pkgname=${pkgname%-git}
-pkgver=1.2.0.6313.272d5c6a8
-pkgrel=2
-pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
-arch=('i686' 'x86_64')
-license=('GPL3')
-url="https://www.siril.org/"
-depends=(
-		'gtk3'
-		'fftw'
-		'cfitsio'
-		'gsl'
-		'opencv'
-		'exiv2'
-		'libxisf'
-		'ffms2'
-		'libraw'
-		'libheif'
-		)
-checkdepends=('criterion' 'libcurl-gnutls')
-makedepends=('git' 'cmake' 'meson' 'ninja')
-optdepends=('libpng: PNG import'
-'libjpeg: JPEG import and export'
-'libtiff: TIFF import and export'
-'libcurl-gnutls: online astrometry'
-)
-source=('git+https://gitlab.com/free-astro/siril.git')
-sha1sums=('SKIP')
-provides=($_pkgname=$pkgver)
-conflicts=($_pkgname)
+## useful urls:
+# https://www.siril.org/
+# https://gitlab.com/free-astro/siril
 
-pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	printf "%s.%s.%s" "$(git describe | cut -d "-" -f1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+# basic info
+_pkgname="siril"
+pkgname="$_pkgname-git"
+pkgver=1.2.0.r515.g5bc6fc71a
+pkgrel=1
+pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
+url="https://gitlab.com/free-astro/siril"
+arch=('i686' 'x86_64')
+license=('GPL-3.0-or-later')
+
+# main package
+_main_package() {
+  depends=(
+    'cfitsio'
+    'exiv2'
+    'ffms2'
+    'fftw'
+    'gsl'
+    'gtk3'
+    'libgit2'
+    'libheif'
+    'libraw'
+    'libxisf'
+    'opencv'
+
+    ## implicit
+    #'cairo'
+    #'curl'
+    #'ffmpeg'
+    #'gcc-libs'
+    #'gdk-pixbuf2'
+    #'glib2'
+    #'glibc'
+    #'hicolor-icon-theme'
+    #'json-glib'
+    #'lcms2'
+    #'libjpeg-turbo'
+    #'libpng'
+    #'libtiff'
+    #'pango'
+  )
+  makedepends=(
+    'cmake'
+    'git'
+    'meson'
+    'ninja'
+  )
+  checkdepends=(
+    'criterion' # AUR
+  )
+
+  provides=("$_pkgname=${pkgver%%.r*}")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums=('SKIP')
+
+  _source_siril
 }
 
+# submodules
+_source_siril() {
+  source+=(
+    'flathub.shared-modules'::'git+https://github.com/flathub/shared-modules.git'
+    'carvac.librtprocess'::'git+https://github.com/CarVac/librtprocess.git'
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+  )
+
+  _prepare_siril() (
+    cd "${srcdir:?}/$_pkgsrc"
+    local -A _submodules=(
+      ['flathub.shared-modules']='build/flatpak/shared-modules'
+      ['carvac.librtprocess']='subprojects/librtprocess'
+    )
+    _submodule_update
+  )
+}
+
+# common functions
 prepare() {
-	cd "${srcdir}/${_pkgname}"
-	git submodule update --init --recursive
+  _submodule_update() {
+    local key;
+    for key in ${!_submodules[@]} ; do
+      git submodule init "${_submodules[${key}]}"
+      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    done
+  }
+
+  _prepare_siril
+}
+
+pkgver() {
+  cd "$_pkgsrc"
+  local _version=$(git tag | grep -Ev '^.*[A-Za-z]{2}.*$' | sort -V | tail -1)
+  local _revision=$(git rev-list --count --cherry-pick $_version...HEAD)
+  local _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	arch-meson _build -D criterion=true -D enable-libcurl=yes
-	meson compile -C _build
+  local _meson_options=(
+    "$_pkgsrc"
+    build
+
+    # curl/curl.h provided by core/curl via base-devel
+    -Denable-libcurl=yes
+  )
+
+  # criterion not available when using --nocheck
+  if pacman -Q criterion 2> /dev/null ; then
+    _meson_options+=(
+      -Dcriterion=true
+    )
+  fi
+
+  arch-meson "${_meson_options[@]}"
+  meson compile -C build
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}"
-  meson test -C _build --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	meson install -C _build --destdir "$pkgdir"
+  meson install -C build --destdir "$pkgdir"
 }
+
+# execute
+_main_package
