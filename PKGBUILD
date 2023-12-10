@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-seq
-pkgver=2.23
+pkgver=2.24
 pkgrel=1
 pkgdesc="Sequence manipulation functions, included in emacs 27"
 _pkgname=seq
@@ -11,7 +11,7 @@ url="http://elpa.gnu.org/packages/seq.html"
 license=('GPL3')
 depends=('emacs')
 source=("https://elpa.gnu.org/packages/${_pkgname}-$pkgver.tar")
-sha256sums=('5714abf7fc00aa74798741e7ebfe426ca777cd30e251ef5b9ae823847fb67dd1')
+sha256sums=('b466350fd8084e0aa9b67c76e69028556aaad78d3d61b854fb96e3d194f64cf0')
 
 build() {
   cd ${_pkgname}-${pkgver}
