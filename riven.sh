@@ -27,4 +27,4 @@ printf '%s\n' \
   "Enjoy Riven!" \
   ""
 
-scummvm -g opengl --stretch-mode=fit -p "${_rivendir}" "$@" riven
+scummvm --gui-theme=scummmodern --gfx-mode=opengl --renderer=opengl_shaders --scaler=hq --stretch-mode=fit --path="${_rivendir}" "$@" riven

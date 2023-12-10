@@ -1,7 +1,7 @@
 pkgbase = riven
 	pkgdesc = 'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion.
 	pkgver = 1.2_20030721_dvd
-	pkgrel = 16
+	pkgrel = 17
 	epoch = 0
 	url = https://cyan.com/games/riven/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = riven
 	source = riven.desktop
 	source = license-note.txt
 	sha256sums = 90f4e43a4fcb6cddc50497eccd235b79590beaa4bf8e432ddb87755b8fbab0fe
-	sha256sums = c5eae343d70121fdeb3cfde2dba0e08a0e6419e29684f73f6680bd2da8f0aa34
+	sha256sums = ee6a4ba3dbd61e7d0fb14476b64df0aced66a5486f4cfee3c9f09eb944e7852b
 	sha256sums = 7b4d5fb2f60281cbd4c031f99923f8122ff7dd5996ce395cba99e498309dc270
 	sha256sums = f92e92e57ae86a3d490c81d965e5d51779afef61c869ed4c9d9e0b6411c1789c
 

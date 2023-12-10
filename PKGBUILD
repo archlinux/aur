@@ -1,20 +1,5 @@
 # Maintainer: dreieck
 
-
-# _check_legal() {
-#   # We want to check for this _before_ downloading.
-#   # But this has the disadvantage that this is asked at the beginning of a makepkg run, and again when starting the package-functions, and each time `.SRCINFO` is generated, and `namcap` also fails on this `PKGBUILD`.
-#   # If anyone has an idea how to make it in a more clean way & that the question is only asked once, while still downloading the source via the 'source' array, please leave a comment!
-#   local _legalcopy
-#   msg2 "Please make sure you have obtained a legal copy of the game before continuing!"
-#   read -e -p "Enter 'i have a legal copy of riven' (without quotes) to continue, anything else to abort: " _legalcopy
-#   if [ "${_legalcopy}x" != "i have a legal copy of riven"x ]; then
-#     error "No legal copy, aborting."
-#     return 22
-#   fi
-# }
-# _check_legal || exit "$?"
-
 _pkgbase="riven"
 pkgbase="${_pkgbase}"
 pkgname=(
@@ -31,7 +16,7 @@ arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=16
+pkgrel=17
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'ffmpeg'      # To convert the Making Of-movie to smaller filesize.
@@ -50,7 +35,7 @@ source=(
 
 sha256sums=(
   '90f4e43a4fcb6cddc50497eccd235b79590beaa4bf8e432ddb87755b8fbab0fe'
-  'c5eae343d70121fdeb3cfde2dba0e08a0e6419e29684f73f6680bd2da8f0aa34'
+  'ee6a4ba3dbd61e7d0fb14476b64df0aced66a5486f4cfee3c9f09eb944e7852b'
   '7b4d5fb2f60281cbd4c031f99923f8122ff7dd5996ce395cba99e498309dc270'
   'f92e92e57ae86a3d490c81d965e5d51779afef61c869ed4c9d9e0b6411c1789c'
 )
@@ -58,14 +43,19 @@ sha256sums=(
 prepare() {
   cd "${srcdir}"
 
-  local _legalcopy
-  msg2 "Please make sure you have obtained a legal copy of the game before continuing!"
-  read -e -p "Enter 'i have a legal copy of riven' (without quotes) to continue, anything else to abort and DELETE DOWNLOADED DATA: " _legalcopy
-  if [ "${_legalcopy}x" != "i have a legal copy of riven"x ]; then
-    rm -fv "${SRCDEST}/${source[0]%%::*}"
-    rm -Rfv "${srcdir}"/*
-    error "No legal copy, aborting."
-    return 22
+  ## If 'riven-data' is not yet installed, then ask for confirmation:
+  if ! pacman -Qqi 'riven-data' > /dev/null 2>&1; then
+    ## Check if the user has a legal copy (by trusting the user).  
+    #  Ideally, we want to have it before downloading stuff, but if we put it in the general part if the `PKGBUILD` then it is executed each time the `PKGBUILD` is parsed, so also at the creation of `.SRCINFO`.
+    local _legalcopy
+    msg2 "Please make sure you have obtained a legal copy of the game before continuing!"
+    read -e -p "Enter 'i have a legal copy of riven' (without quotes) to continue, anything else to abort and DELETE DOWNLOADED DATA: " _legalcopy
+    if [ "${_legalcopy}x" != "i have a legal copy of riven"x ]; then
+      rm -fv "${SRCDEST}/${source[0]%%::*}"
+      rm -Rfv "${srcdir}"/*
+      error "No legal copy, aborting."
+      return 22
+    fi
   fi
 
   mkdir -p build
