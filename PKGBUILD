@@ -1,12 +1,12 @@
 _pkgname=slimevr
 pkgname=$_pkgname-bin
 pkgver=0.11.0.rc.2
-_version=v0.11.0-rc.2
-pkgrel=1
+_tag=v0.11.0-rc.2
+pkgrel=2
 pkgdesc="VR Full Body Tracking System"
 arch=('x86_64')
 url="https://github.com/SlimeVR/SlimeVR-Server"
-license=('MIT','APACHE')
+license=('MIT','Apache-2.0')
 groups=()
 depends=("fuse2")
 makedepends=()
@@ -20,9 +20,9 @@ options=(!strip)
 install=
 changelog=
 _appimage=SlimeVR-amd64.appimage
-source=("$url/releases/download/$_version/$_appimage"
-		"$url/raw/$_version/LICENSE-MIT"
-		"$url/raw/$_version/LICENSE-APACHE")
+source=("$url/releases/download/$_tag/$_appimage"
+		"$url/raw/$_tag/LICENSE-MIT"
+		"$url/raw/$_tag/LICENSE-APACHE")
 noextract=()
 sha512sums=('92844f99bd9633201457ab00b93679559d2383e28af9fb74d48cceff5c0a924a99fb6672f42639622d14ec6124edfe696b5b5292857b18ef8de6b1112155df20'
             '3b6306600ce9420d982a589293281db31c3c013bc9e0a829ae85e924f1318fa420bad7c73d0b1924ffdc74a92d44793de749daccd383ddcdc4c82169bf1d7e9d'
@@ -40,6 +40,7 @@ prepare() {
 package() {
   install -Dm755 "$_appimage" "$pkgdir/opt/$_pkgname/$_pkgname"
   install -Dm755 "$_pkgname" -t "$pkgdir/usr/bin"
+  install -Dm644 "LICENSE-MIT" "LICENSE-APACHE" -t "$pkgdir/opt/$_pkgname"
 
   cd squashfs-root
 

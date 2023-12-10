@@ -1,10 +1,10 @@
 pkgbase = slimevr-bin
 	pkgdesc = VR Full Body Tracking System
 	pkgver = 0.11.0.rc.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SlimeVR/SlimeVR-Server
 	arch = x86_64
-	license = MIT,APACHE
+	license = MIT,Apache-2.0
 	depends = fuse2
 	provides = slimevr-server
 	conflicts = slimevr-server
