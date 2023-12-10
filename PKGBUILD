@@ -1,6 +1,6 @@
 # Maintainer: tfuxu <tfuxu@tutanota.com>
 pkgname=halftone
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Give your images that pixel art-like style"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 checkdepends=('appstream-glib')
 makedepends=('git' 'meson' 'ninja' 'blueprint-compiler')
 #source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-_commit=bb90b82a2032fde17d897edfa58386025af6cca6 # tags/0.4.0
+_commit=e6d8d2bf43f8b88ad40ad2c5385bfc298611cd18 # tags/0.5.0
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
