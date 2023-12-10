@@ -1,0 +1,13 @@
+pkgbase = mudpack
+	pkgdesc = Build and maintain multiple arch repo
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/bogusfocused/mudpack
+	arch = x86_64
+	license = MIT
+	depends = base-devel
+	depends = pacutils
+	source = mudpack-0.9.1.tar.gz::https://github.com/bogusfocused/mudpack/archive/refs/tags/v0.9.1.tar.gz
+	source = mudpack-sysusers.conf
+
+pkgname = mudpack
