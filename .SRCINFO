@@ -1,6 +1,6 @@
 pkgbase = plask-bin
 	pkgdesc = Photonic LAser Simulation Kit: a comprehensive tool for numerical analysis of broad range of physical phenomena in photonic devices
-	pkgver = 2023.11.29
+	pkgver = 2023.12.09
 	pkgrel = 1
 	url = https://plask.app
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = plask-bin
 	provides = plask
 	conflicts = plask
 	replaces = plask
-	noextract = plask-2023.11.29.tar.zst
-	source = plask-2023.11.29.tar.zst::https://get.plask.app/packages/plask-2023.11.29-1-x86_64.pkg.tar.zst
-	sha256sums = 89e3e480fe5c7187159b5b63f7b093c2e8f62d60395a41e9c7af8908819b42fa
+	noextract = plask-2023.12.09.tar.zst
+	source = plask-2023.12.09.tar.zst::https://get.plask.app/packages/plask-2023.12.09-1-x86_64.pkg.tar.zst
+	sha256sums = aac1fcd64e8fa7c374ab89a3701099dca12ade47237303afe5ab74be2f765752
 
 pkgname = plask-bin
