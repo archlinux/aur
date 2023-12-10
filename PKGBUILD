@@ -2,10 +2,10 @@
 
 pkgname=ctpv
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Image previews for lf file manager"
 arch=('x86_64')
-url="https://github.com/dmulholl/vimv"
+url="https://github.com/NikitaIvanovV/ctpv"
 license=('MIT' 'custom')
 depends=('file' 'openssl' 'glibc' 'sh')
 makedepends=('make')
