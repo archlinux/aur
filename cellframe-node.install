@@ -52,6 +52,7 @@ post_install() {
     sed -i 's|{SERVER_PORT}|8079|' /opt/cellframe-node/etc/cellframe-node.cfg
     sed -i 's|{NOTIFY_SRV_ADDR}|127.0.0.1|' /opt/cellframe-node/etc/cellframe-node.cfg
     sed -i 's|{NOTIFY_SRV_PORT}|8080|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i "s|{DB_DRIVER}|mdbx|" /opt/cellframe-node/etc/cellframe-node.cfg  ||
     sed -i 's|{NODE_TYPE}|full|' /opt/cellframe-node/etc/network/Backbone.cfg
     
     echo "==> Creating symbolic links for executables..."
