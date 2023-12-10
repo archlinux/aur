@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0
 # Maintainer: Truocolo <truocolo@aol.com>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Fabio Castelli (muflone) <webreg@muflone.com>
 
 pkgname=mediascan
 pkgver=1
@@ -26,11 +28,7 @@ source=(
 sha256sums=(
   1f404a86aa9bafc5570557e631d5a629bd9cdbac89540a55221874041f25b6a9
   77eb4eb49bc286f772ce32721713e86836afa66547931a6e104414d100957f6e
-  8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903)
-
-build() {
-  echo 'no build'
-}
+  0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0)
 
 package() {
   local \
