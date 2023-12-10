@@ -1,6 +1,6 @@
 pkgbase = cyberdropdownloader
 	pkgdesc = Bulk downloader for multiple file hosts and forum sites
-	pkgver = 5.0.99
+	pkgver = 5.0.101
 	pkgrel = 1
 	url = https://github.com/Jules-WinnfieldX/CyberDropDownloader
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = cyberdropdownloader
 	optdepends = python-mediafire: MediaFire support
 	conflicts = cyberdrop-dl
 	conflicts = cyberdrop-dl-git
-	source = https://files.pythonhosted.org/packages/source/c/cyberdrop_dl/cyberdrop_dl-5.0.99.tar.gz
-	sha256sums = 3096cd4bfa388083dec6eb934e501055270581cefa37cc680093ded854f88771
+	source = https://files.pythonhosted.org/packages/source/c/cyberdrop_dl/cyberdrop_dl-5.0.101.tar.gz
+	sha256sums = 864ac728da7e4c78fd710a47c99a27a62d910168351436d162d2c904ad03435d
 
 pkgname = cyberdropdownloader
