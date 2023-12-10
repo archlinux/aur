@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20231101
+pkgver=20231209
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -104,6 +104,7 @@ depends=(
 	'ttf-lato'
 	'ttf-liberation'
 	'ttf-monofur'
+	'ttf-monoid'
 	'ttf-nerd-fonts-symbols'
 	'ttf-nerd-fonts-symbols-common'
 	'ttf-nerd-fonts-symbols-mono'
