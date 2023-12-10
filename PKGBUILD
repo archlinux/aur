@@ -2,7 +2,7 @@
 pkgname=sirikali-bin
 _name=SiriKali
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('i686' 'x86_64')
 url="https://mhogomchungu.github.io/sirikali/"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('qt5-base' 'libpwquality' 'hicolor-icon-theme')
 optdepends=('lxqt_wallet: use an external lxqt_wallet (must recompile)'
     'libsecret: support for Gnome libsecret password storage (must recompile)'
-    'kwallet: support for KDE wallet storage (must recompile)'
+    'kwallet5: support for KDE wallet storage (must recompile)'
     'cryfs: for CryFS backend'
     'ecryptfs-simple: for eCryptfs backend'
     'encfs: for EncFS backend'
