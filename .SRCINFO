@@ -1,6 +1,6 @@
 pkgbase = python-tree-sitter-lsp
 	pkgdesc = a library to create language servers
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/tree-sitter-lsp
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-tree-sitter-lsp
 	optdepends = python-platformdirs
 	optdepends = python-yaml
 	optdepends = python-tomli-w
-	source = https://files.pythonhosted.org/packages/py3/t/tree_sitter_lsp/tree_sitter_lsp-0.0.8-py3-none-any.whl
-	sha256sums = d121735756e23002e5b378d5db76968ccec746d388eba1f0cab135a3289396c2
+	source = https://files.pythonhosted.org/packages/py3/t/tree_sitter_lsp/tree_sitter_lsp-0.0.9-py3-none-any.whl
+	sha256sums = e1874bf2b597e9dd4b89eaeb011da05884baacb30c46619974ab7fb7a4622b8a
 
 pkgname = python-tree-sitter-lsp
