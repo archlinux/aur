@@ -3,7 +3,7 @@
 _pkgname=wolf-shaper
 _pkgdesc="A waveshaper plugin with graph editor"
 pkgname=$_pkgname-git
-pkgver=1.0.2.r22.gd34289f
+pkgver=1.0.2.r25.gd38cc33
 pkgrel=1
 pkgdesc="$_pkgdesc (git version)"
 arch=(i686 x86_64)
@@ -63,7 +63,7 @@ prepare() {
   cd $_pkgname
   git submodule update --init --recursive
 
-  gendesk -n \
+  gendesk -f -n \
     --pkgname com.github.pdesaulniers.$_pkgname \
     --name $_pkgname \
     --exec $_pkgname \
