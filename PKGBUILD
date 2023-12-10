@@ -1,19 +1,21 @@
-# Maintainer: Florian B.
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Florian B.
 
 pkgname=powerline-shell
-pkgver=0.5.4
+pkgver=0.7.0
+_commit=a9b8c9bb39dbfb7ec3c639e497b5a76fa6dcb8cc
 pkgrel=1
 pkgdesc="A pretty prompt for your shell"
 arch=('any')
 url="https://github.com/b-ryan/powerline-shell"
 license=('MIT')
-depends=('python' 'python-argparse')
+depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/b-ryan/powerline-shell/archive/v$pkgver.tar.gz")
-sha256sums=('6bfd04113d8470132e447f4cc6b5f2c4522b0aaf374652e9b9bd2a3bb4eac329')
+source=("https://github.com/b-ryan/powerline-shell/archive/$_commit.zip")
+sha256sums=('1f55c35ac14593446a82f6d5dedd3b89429dcfec99eb8c459a8dfb6ee78abf4d')
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname-$_commit
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
