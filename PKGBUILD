@@ -2,7 +2,7 @@
 # Contributor: Sylvain Durand <arch@durand.tf>
 
 pkgname=uptime-kuma
-pkgver=1.23.8
+pkgver=1.23.9
 pkgrel=1
 pkgdesc='A fancy self-hosted monitoring tool'
 
@@ -19,8 +19,8 @@ source=(
 )
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
-b2sums=('9b5c25eb8cdf4cad1addc65a37f314b2793bc03b5b9ac09f5950adf2461b5dc10d448bc9d8fa839f68cb7c26140c68a611c1d4c55b2fdf6b6f22803d13caf566'
-        '61367caa66030259958917eb7894813b27105a379bb8ab5f764ffb6cfd9116f8bd6e0e466441d51a37d3f1fdae64cb00fa797be9abbadf6087b1103762569901'
+b2sums=('e669932020025131a4c4500c98c672650aa6a09a67a4b82b4c903aa8cdc23a690a77623001e7846ea7365afa17c1bdcfa95e7517a9841775b6064f051cb315c4'
+        'ead8f28a3a38574fc9b05fd0d6e5548dc0a154bb400b044eaf5615f00a5992f6e9d1e5ba7638b9a5ef2689710b4c716922f5f5f3e1c24aa42f8327963bbcca41'
         'dbeac93f20082847cffc991224df2ac85963a03a02898b06b8444d4f33b2f4a51323bdcd2c940df41d1c8beed1e2b75fa449cff7d80dd9d5213f627bbe409f90')
 
 package() {
