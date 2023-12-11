@@ -29,6 +29,10 @@ sha256sums=('1a25e3b0f4bf16543e5f802cf6d9d189bcae27617ca8be936ad866a8955d9ce6'
 sha256sums_aarch64=('9df087cb629bf27c0e333b48046a723862c0bb79d0bfe67b6b0e6567e911cc6a')
 sha256sums_x86_64=('5392aedace5ab5dd59894dfd0d6e542b3bc610533a9d0220b5fce5d6a5dfd69b')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
