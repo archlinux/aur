@@ -18,12 +18,12 @@ source=("git+https://github.com/vlvassilev/yuma123")
 
 prepare() {
   cd "$srcdir/yuma123"
+  libtoolize
   autoreconf -i -f
 }
 
 build() {
   cd "$srcdir/yuma123"
-  libtoolize
   ./configure CFLAGS='-g -O0' CXXFLAGS='-g -O0' --prefix=/usr
   make
 }
