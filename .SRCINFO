@@ -1,7 +1,7 @@
 pkgbase = cycles-standalone
 	pkgdesc = Blender Cycles rendering engine, standalone version
 	pkgver = 4.0.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/blender/cycles.git
 	arch = x86_64
 	license = Apache
