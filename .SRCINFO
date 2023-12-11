@@ -1,7 +1,7 @@
 pkgbase = mogan-bin
 	pkgdesc = A structured wysiwyg scientific text editor
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mogan.app/
 	arch = x86_64
 	license = GPL3
