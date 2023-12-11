@@ -3,14 +3,14 @@ pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
-pkgver='1.3.13'
-pkgrel='5'
+pkgver='1.3.14'
+pkgrel='1'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
+arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' 'riscv64' )
 url="https://${_pkggopath}"
 provides=( 'skywire' )
 conflicts=( 'skywire' )
@@ -39,17 +39,19 @@ sha256sums=('9257dc9cf98b382049b500f646c0005950077cedb83abbb62984983e4dda0874'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
             'SKIP'
             'SKIP')
-sha256sums_x86_64=('6308d9680242c8ea6a89f677388907b34d2c5806752688b1a1c947e4851f318f')
-sha256sums_aarch64=('ff8734ea5121beff521acf2bd1340457887085a2504aaf8449f44c3d89910bb0')
-sha256sums_armv8=('ff8734ea5121beff521acf2bd1340457887085a2504aaf8449f44c3d89910bb0')
-sha256sums_armv7=('6696c4c5f43ac375a6d9e1c26e644d832d0dfa28ff865c1f2bb15793e96fc562')
-sha256sums_armv7l=('6696c4c5f43ac375a6d9e1c26e644d832d0dfa28ff865c1f2bb15793e96fc562')
-sha256sums_armv7h=('6696c4c5f43ac375a6d9e1c26e644d832d0dfa28ff865c1f2bb15793e96fc562')
-sha256sums_arm=('1b12fcde401350b98f20cd4e47ce3227caf166e865647a84d815b668495ad78c')
-#https://github.com/skycoin/skywire/releases/download/v1.3.11/skywire-v1.3.11-linux-amd64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.3.11-linux-arm64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.3.11-linux-armhf.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.3.11-linux-arm.tar.gz
+sha256sums_x86_64=('52d5d9edeb9b694b213e9b5b210f5dc8c3180331d724b156d69772eb7e9f8a7b')
+sha256sums_aarch64=('48d2db749ef006f1290e6684eeb58db24b1a3de70ba80a504c9ebcde68d9e2a8')
+sha256sums_armv8=('48d2db749ef006f1290e6684eeb58db24b1a3de70ba80a504c9ebcde68d9e2a8')
+sha256sums_armv7=('7d949834690d43e371f101b4187b37a7ff85b4a6a79f8294ad4eccf0751b1988')
+sha256sums_armv7l=('7d949834690d43e371f101b4187b37a7ff85b4a6a79f8294ad4eccf0751b1988')
+sha256sums_armv7h=('7d949834690d43e371f101b4187b37a7ff85b4a6a79f8294ad4eccf0751b1988')
+sha256sums_arm=('2b3bb6d28105b495877ffde0f3b3bd460d841d852a73f1ca39c4c352527b1886')
+sha256sums_riscv64=('d984bff876e83d149cf72854f3d5efeb8ce2cedf510bda69dc6c27b60b699288')
+#https://github.com/skycoin/skywire/releases/download/v1.3.14/skywire-v1.3.14-linux-amd64.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.14/skywire-v1.3.14-linux-arm64.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.14/skywire-v1.3.14-linux-armhf.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.14/skywire-v1.3.14-linux-arm.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.14/skywire-v1.3.14-linux-riscv64.tar.gz
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
@@ -59,6 +61,8 @@ source_arm=("${_release_url}-arm.tar.gz")
 source_armv7=("${_release_url}-armhf.tar.gz")
 source_armv7l=( "${source_armv7[@]}" )
 source_armv7h=( "${source_armv7[@]}" )
+source_riscv64=( "${_release_url}-riscv64.tar.gz" )
+
 _binary=("skywire-cli" "skywire-visor")
 _appbinary=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
 
