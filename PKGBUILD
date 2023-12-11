@@ -53,22 +53,15 @@ sha256sums=('273be8a4fbc941111efde712148f2b5863937336f3c1711a413fd63906845c55'
 provides=('openwebrx')
 conflicts=('openwebrx')
 
-prepare() {
+build() {
     cd "$srcdir/openwebrx-$pkgver"
-    sed -i "2 a import sys\n\nsys.path.insert(1, \"/usr/lib/openwebrx\")\n" openwebrx.py
+    python setup.py build
 }
 
 package() {
-    install -Dm 0644 ${srcdir}/$pkgname.sysusers ${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf
-    install -Dm 0644 ${srcdir}/$pkgname.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf
-
     cd "$srcdir/openwebrx-$pkgver"
-    install -Dm 0755 openwebrx.py ${pkgdir}/usr/bin/openwebrx
-    PYTHON_VER=$(python --version | grep -E -o '[0-9]+\.[0-9]+')
-    find owrx -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/python$PYTHON_VER/{}" \;
-    find csdr -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/python$PYTHON_VER/{}" \;
-    find htdocs -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/openwebrx/{}" \;
-    #install -Dm 0644 config_webrx.py ${pkgdir}/etc/openwebrx/config_webrx.py
+    python setup.py install --prefix=/usr --root="$pkgdir" --skip-build --optimize=1
+
     for config in bands.json bookmarks.json openwebrx.conf; do
         install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
     done
@@ -76,5 +69,7 @@ package() {
         install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
     done
 
+    install -Dm 0644 ${srcdir}/$pkgname.sysusers ${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf
+    install -Dm 0644 ${srcdir}/$pkgname.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf
     install -Dm 0644 systemd/openwebrx.service ${pkgdir}/usr/lib/systemd/system/openwebrx.service
 }
