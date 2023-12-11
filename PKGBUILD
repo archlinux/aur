@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov <peter.semiletov@gmail.com>
 
 pkgname=tea-qt-git
-pkgver=b4bcaaf35f76569a9aaab0b77ebe15e02d907974
+pkgver=a85ace9e9a169d2de3bd7f70f65a589ad59ad0d9
 pkgrel=1
 pkgdesc="Rich-featured text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS. Build from stable git-commit with PDF and DJVU support."
 arch=('x86_64')
