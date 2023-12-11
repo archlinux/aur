@@ -1,7 +1,7 @@
 # Maintainer: Beethoven <beethovenisadog@protonmail.com>
 pkgname=grg-git
-pkgver=v2.0.0
-pkgrel=1
+pkgver=v1.0.0
+pkgrel=2
 pkgdesc="grg - a TUI for git repos"
 url="https://codeberg.org/dogbold/grg"
 license=('MIT')
