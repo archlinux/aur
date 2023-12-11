@@ -3,7 +3,7 @@
 _pkgname=hiddify-next
 pkgname=$_pkgname-git
 pkgver=0.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
