@@ -6,13 +6,13 @@
 #      docs on what additional setup is needed.
 
 pkgname=snmptt
-pkgver=1.4.2
-pkgrel=3
+pkgver=1.5
+pkgrel=1
 pkgdesc="A Perl-based SNMP trap handler for use with the Net-SNMP / UCD-SNMP snmptrapd program"
 arch=('any')
 url="http://snmptt.sourceforge.net/"
 license=('GPL')
-depends=('perl>=5.6.1' 'net-snmp' 'perl-config-inifiles')
+depends=('bash' 'perl>=5.6.1' 'net-snmp' 'perl-config-inifiles')
 optdepends=(
   'perl-dbd-mysql: To add support for MySQL database'
   'perl-dbd-pg: To add support for PostGres database'
@@ -23,7 +23,7 @@ source=("https://sourceforge.net/projects/${pkgname}/files/snmptt/${pkgname}_${p
         'snmptt.sysusers'
         'snmptt.tmpfiles'
         'snmptt.service')
-sha256sums=('1b455a5ae252dab5d828926125073b5376e36855e38423aca8da9bce6c4920c5'
+sha256sums=('91fb6146a08c0d143e4193f1fffdb697f769f75666d72a73eeb78c013b8a227f'
             'f761511c33355bc2e4b760bcf85745f069846ec1acd3b6d5fa3756bc2accdca2'
             'cafe8ccff31e03e820db7a7c861f0f068911f88c6e270f4e264939c6e59ea029'
             'bb8ee914fbecb01c68e8cd8a0f497abefec6598164df0e4c7f1df98955e86437')
