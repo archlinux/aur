@@ -8,6 +8,7 @@ pkgbase = pkgbase
 	depends = git
 	depends = autoconf
 	depends = automake
+	depends = libtool
 	depends = make
 	depends = gcc
 	provides = yuma123
