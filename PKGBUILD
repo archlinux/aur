@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-chos-tool
-pkgver=r156.36161f4
+pkgver=r183.5755131
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
@@ -14,6 +14,7 @@ source=("git+$url")
 sha256sums=('SKIP')
 options=(!strip)
 install=sk-chos-tool.install
+backup=('etc/sk-chos-tool/github_cdn.conf')
 
 pkgver() {
     cd "$srcdir/sk-holoiso-config"
