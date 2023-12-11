@@ -1,5 +1,5 @@
 pkgbase = mubu-electron
-	pkgdesc = 幕布
+	pkgdesc = 一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe, use system electron)
 	pkgver = 3.7.3
 	pkgrel = 1
 	url = https://mubu.com/home

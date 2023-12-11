@@ -3,7 +3,7 @@
 pkgname=mubu-electron
 pkgver=3.7.3
 pkgrel=1
-pkgdesc="幕布"
+pkgdesc="一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe, use system electron)"
 arch=('x86_64' aarch64 armv7h)
 url="https://mubu.com/home"
 license=("private")
