@@ -1,18 +1,41 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=issie-bin
 pkgver=3.0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="An intuitive cross-platform hardware design application."
 arch=('x86_64')
 url="https://tomcl.github.io/issie"
-_githuburl="https://github.com/tomcl/issie"
+_ghurl="https://github.com/tomcl/issie"
 license=('GPL3')
-conflits=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
-depends=('mesa' 'libx11' 'cairo' 'gtk3' 'libcups' 'libxcb' 'libxrandr' 'libxkbcommon' 'glib2' 'pango' 'libxdamage' 'glibc' 'dbus' \
-    'libxcomposite' 'at-spi2-core' 'gcc-libs' 'alsa-lib' 'libdrm' 'libxfixes' 'expat' 'nss' 'libxext' 'nspr')
-makedepends=('gendesk')
+conflits=("${pkgname%-bin}")
+depends=(
+    'mesa'
+    'libx11'
+    'cairo'
+    'gtk3'
+    'libcups'
+    'libxcb'
+    'libxrandr'
+    'libxkbcommon'
+    'pango'
+    'libxdamage'
+    'libxcomposite'
+    'at-spi2-core'
+    'alsa-lib'
+    'libdrm'
+    'libxfixes'
+    'expat'
+    'nss'
+    'libxext'
+    'nspr'
+)
+makedepends=(
+    'gendesk'
+)
 noextract=("${pkgname%-bin}-${pkgver}.zip")
-source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip")
+source=(
+    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip"
+)
 sha256sums=('da0135a811e78132b06efdb4000313d36754441f1f9c7926f48777df069653a9')
 build() {
     mkdir -p "${srcdir}/${pkgname%-bin}"
