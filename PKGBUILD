@@ -10,7 +10,6 @@ url="https://github.com/Skycoder42/QtJsonSerializer"
 license=('BSD')
 depends=('qt5-base')
 makedepends=('git' 'qt5-tools' 'python' 'doxygen' 'graphviz')
-optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtJsonSerializer.git#tag=$pkgver"
 		"$pkgname.rule")
