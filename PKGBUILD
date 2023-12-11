@@ -4,15 +4,27 @@
 pkgname=spotiflyer-bin
 _pkgname=SpotiFlyer
 pkgver=3.6.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Kotlin Multiplatform Music Downloader, Supports Spotify / Gaana / Youtube Music / Jio Saavn / SoundCloud."
 arch=('x86_64')
 url="https://soundbound.shabinder.in/install"
-_githuburl="https://github.com/Shabinder/SpotiFlyer"
+_ghurl="https://github.com/Shabinder/SpotiFlyer"
 license=('GPL3')
 conflicts=("${pkgname%-bin}")
-depends=('alsa-lib' 'fontconfig' 'glibc' 'libx11' 'libxtst' 'libglvnd' 'libxext' 'libxi' 'libxrender' 'java-runtime' 'zlib')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb")
+depends=(
+    'alsa-lib'
+    'fontconfig'
+    'libx11'
+    'libxtst'
+    'libglvnd'
+    'libxext'
+    'libxi'
+    'libxrender'
+    'java-runtime'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
+)
 sha256sums=('9038e09d4e4d0eff02bbb10fc02728f11e73e46973e23297d0ff189dfdce0aae')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
