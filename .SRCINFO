@@ -1,4 +1,4 @@
-pkgbase = yuma123-git
+pkgbase = pkgbase
 	pkgdesc = Open-source YANG API in C and CLI (yangcli) and server (netconfd)
 	pkgver = latest
 	pkgrel = 1
