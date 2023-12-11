@@ -1,0 +1,12 @@
+[Unit]
+After=syslog.target network.target
+Description=Radicle Node
+
+[Service]
+ExecStart=/usr/bin/radicle-node --listen 0.0.0.0:8776
+KillMode=process
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target
