@@ -1,0 +1,24 @@
+pkgbase = r-mobilitytransformr
+	pkgdesc = Effective mobility scale transformation of CE-MS(/MS) data
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MobilityTransformR
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-msdata
+	checkdepends = r-testthat
+	depends = r-metabocoreutils
+	depends = r-msnbase
+	depends = r-spectra
+	depends = r-xcms
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-msdata
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MobilityTransformR_1.6.0.tar.gz
+	md5sums = 1d0f7904be49e25235092248b757df19
+	sha256sums = 3091172dc69b9eaa26befeafba4dc836c1b45ffbdb14d920703fc48fc0742289
+
+pkgname = r-mobilitytransformr
