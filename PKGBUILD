@@ -6,7 +6,7 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-git
-pkgver=5.4.5.r162.g0f53e24006
+pkgver=24.01.80.r6.g362094770a
 pkgrel=1
 pkgdesc="A C/C++ development environment for KDE. (Git version)"
 arch=('i686' 'x86_64')
@@ -16,12 +16,12 @@ depends=(
     'clang'
     'libksysguard'
     'grantlee'
-    'kcmutils'
-    'threadweaver'
-    'kitemmodels'
-    'ktexteditor'
-    'knotifyconfig'
-    'knewstuff'
+    'kcmutils5'
+    'threadweaver5'
+    'kitemmodels5'
+    'ktexteditor5'
+    'knotifyconfig5'
+    'knewstuff5'
     'libkomparediff2'
     'qt5-webengine'
 )
@@ -36,27 +36,29 @@ optdepends=(
     'qt4-doc: qt4 documentation integration'
     'qt5-doc: qt5 documentation integration'
     'qt5-tools: qthelp plugin'
-    'purpose: patch review plugin'
+    'purpose5: patch review plugin'
     'okteta: hex editor integration'
-    'krunner: for enabling the KDevelop runner'
-    'plasma-framework: for enabling the plasma addons'
+    'krunner5: for enabling the KDevelop runner'
+    'plasma-framework5: for enabling the plasma addons'
     'cppcheck: code analyzer'
     'heaptrack: heap memory profiler plugin'
+    'astyle: astyle plugin'
 )
 makedepends=(
     'extra-cmake-modules'
     'git'
     'subversion'
     'okteta'
-    'krunner'
+    'krunner5'
     'boost'
     'llvm'
     'qt5-tools'
-    'plasma-framework'
+    'plasma-framework5'
     'kdevelop-pg-qt'
-    'kdoctools'
-    'purpose'
+    'kdoctools5'
+    'purpose5'
     'clang'
+    'astyle'
 )
 conflicts=('kdevelop' 'kdevplatform')
 provides=('kdevelop' 'kdevplatform' 'kdevplatform-git')
