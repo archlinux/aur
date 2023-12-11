@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pak
-_cranver=0.7.0
+_cranver=0.7.1
 pkgname=r-${_cranname,,}
 pkgdesc="Another Approach to R Package Installation"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -19,19 +19,16 @@ optdepends=(
     "r-covr"
     "r-curl>=4.3.2"
     "r-desc>=1.4.1"
-    "r-digest"
-    "r-distro"
     "r-filelock>=1.0.2"
     "r-gitcreds"
     "r-glue>=1.6.2"
     "r-jsonlite>=1.8.0"
     "r-mockery"
     "r-pingr"
-    "r-pkgbuild>=1.4.1"
+    "r-pkgbuild>=1.4.2"
     "r-pkgcache>=2.0.4"
     "r-pkgdepends>=0.5.0.9001"
     "r-pkgsearch>=3.1.0"
-    "r-prettyunits"
     "r-processx>=3.8.1"
     "r-ps>=1.6.0"
     "r-rprojroot>=2.0.2"
@@ -56,11 +53,11 @@ optdepends=(
 
 # checkdepends=(
 #     "${optdepends[@]}"
-#     "r-testthat"
+#     "r-testthat>=3.2.0"
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("2aed95f3b4eefca416a2248a168c7455a08b84436b004c78dbbcd667aea80882d2e1f203fbcbc8734013f4ba9aa86b911df87f3656b940538e814640d825cb06")
+b2sums=("2b5daa9c7c8e97907030933ede18e37a0f879dccfeebab7825b8475639663f757571a37d918e8ba4e724c0e34b8399b51e7ba8ca708acae87eef2291f279ed38")
 
 build() {
     mkdir -p "${srcdir}/build/"
