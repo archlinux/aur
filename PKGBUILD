@@ -1,67 +1,93 @@
-# Maintainer: BrinkerVII <brinkervii@gmail.com>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: BrinkerVII <brinkervii@gmail.com>
 
-_pkgbase=luau
 pkgname=luau
-pkgver=0.605
+pkgver=0.606
 pkgrel=1
-
-pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
-arch=('any')
-url='https://github.com/luau-lang/luau'
-license=('MIT')
-
-makedepends=('unzip' 'cmake')
-conflicts=("$_pkgbase"-git "$_pkgbase"-bin)
-provides=("$_pkgbase")
-
+pkgdesc="A fast, small, safe, gradually typed embeddable scripting language derived from Lua"
+arch=(x86_64)
+url="https://github.com/luau-lang/luau"
+license=(MIT)
+depends=(
+  gcc-libs
+  glibc
+)
+makedepends=(
+  cmake
+)
 source=(
-    "luau-$pkgver.zip::https://github.com/Roblox/luau/archive/refs/tags/$pkgver.zip"
-    'Luau.pc'
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+  "Luau.pc"
+)
+sha256sums=(
+  '1b5fbe2204128a729f2ad794029e98cb708efb41078d4e8c6087e7435a46de27'
+  'f65bc28fd66aac60cc8c7a33c7e64bec7ed296a69628dce57d2dfa57ba7ebab4'
 )
 
-sha512sums=('63fb2ac445a2953b2b9369f621995ce6e8ac1ed67233237cf20613f910b2b4d948811fed9d93cfe430036d19e49c33e94c9a36ae645974c1c2b5801463676c71'
-            'b17989fc739e2c101e0d515ded8815b4de3f54b2a67e1893cd1e9aa88cc541b3f667514cdf8a04db60aa9db050971cdbd8b386cd1458f567e784de983f63e88a')
-
-prepare() {
-    unzip -o "luau-$pkgver.zip"
-}
+_archive="$pkgname-$pkgver"
 
 build() {
-    _build_dir=$srcdir/build-$pkgver
-    _luau_root=$srcdir/luau-$pkgver
+  cd "$_archive"
 
-    _cpu_threads=$(grep -c processor /proc/cpuinfo)
-    export MAKEFLAGS="-j $_cpu_threads"
-
-    mkdir -p "$_build_dir"
-    cd "$_build_dir"
-
-    cmake "$_luau_root" -DCMAKE_BUILD_TYPE=Release
-    cmake --build . --target Luau.Repl.CLI Luau.Analyze.CLI --config Release
+  cmake -S . -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev \
+    -DLUAU_BUILD_TESTS=ON \
+    -DCMAKE_CXX_FLAGS="-Wstringop-overread"
+  cmake --build build
 }
 
-_install_headers() {
-    _header_source=$1
-    for file in $(find "$_header_source" -type f -name *.h); do
-        install -Dm644 "$file" "$pkgdir/usr/include/Luau/${file#${_header_source}}"
-    done
+check() {
+  cd "$_archive"
+
+  ./build/Luau.Conformance
+  ./build/Luau.UnitTest
 }
 
 package() {
-    _build_dir=$srcdir/build-$pkgver
-    _luau_root=$srcdir/luau-$pkgver
+  cd "$_archive"
 
-    install -Dm755 "$_build_dir/luau" "$pkgdir/usr/bin/luau"
-    install -Dm755 "$_build_dir/luau-analyze" "$pkgdir/usr/bin/luau-analyze"
+  _executables=(
+    luau
+    luau-analyze
+    luau-ast
+    luau-bytecode
+    luau-compile
+    luau-reduce
+  )
+  for executable in "${_executables[@]}"; do
+    install -Dm755 -t "$pkgdir/usr/bin" "build/$executable"
+  done
 
-    for file in $(find "$_build_dir" -type f -name *.a); do
-        install -Dm644 "$file" "$pkgdir/usr/lib/Luau/${file#${_build_dir}}"
-    done
+  _libraries=(
+    libLuau.Analysis.a
+    libLuau.Ast.a
+    libLuau.CodeGen.a
+    libLuau.Compiler.a
+    libLuau.Config.a
+    libLuau.VM.a
+    libisocline.a
+  )
+  for library in "${_libraries[@]}"; do
+    install -Dm644 -t "$pkgdir/usr/lib/Luau" "build/$library"
+  done
 
-    _install_headers "$_luau_root/Analysis/include"
-    _install_headers "$_luau_root/Ast/include"
-    _install_headers "$_luau_root/Compiler/include"
-    _install_headers "$_luau_root/VM/include"
+  _headers=(
+    ./Analysis/include/Luau/*.h
+    ./Ast/include/Luau/*.h
+    ./CodeGen/include/Luau/*.h
+    ./CodeGen/include/*.h
+    ./Common/include/Luau/*.h
+    ./Compiler/include/Luau/*.h
+    ./Config/include/Luau/*.h
+    ./VM/include/*.h
+    ./extern/isocline/include/*.h
+  )
+  for header in "${_headers[@]}"; do
+    install -Dm644 -t "$pkgdir/usr/include/Luau" "$header"
+  done
 
-    install -Dm644 "$srcdir/Luau.pc" "$pkgdir/usr/lib/pkgconfig/Luau.pc"
+  install -Dm644 "$srcdir/Luau.pc" "$pkgdir/usr/lib/pkgconfig/Luau.pc"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
