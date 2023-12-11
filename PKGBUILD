@@ -2,13 +2,25 @@
 pkgname=qtvsplayer-bin
 _pkgname=QtVsPlayer
 pkgver=1.0.52_1
-pkgrel=1
+pkgrel=2
 pkgdesc="QtVsPlayer for Hikvision, QtVsPlayer can read local video files of Hikvision and display blue, green and red vector.It read real time live stream"
-arch=('aarch64' 'x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/surfzoid/QtVsPlayer"
 license=("GPL3")
-depends=('freetype2' 'zlib' 'util-linux-libs' 'glibc' 'qt5-base' 'libx11' 'libglvnd' 'gcc-libs' 'openal' 'openssl-1.1')
 conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+depends=(
+    'freetype2'
+    'util-linux-libs'
+    'qt5-base'
+    'libx11'
+    'libglvnd'
+    'openal'
+    'openssl-1.1'
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver//_/-}/${_pkgname}_${pkgver//_/-}_bullseye-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver//_/-}/${_pkgname}_${pkgver//_/-}_ubuntu-latest-amd64.deb")
 sha256sums_aarch64=('a8040dc4af3920829ce5f86880f32fa57dac836def528209f8264e21e7e4fca3')
