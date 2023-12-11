@@ -3,9 +3,10 @@ _pkgname=github-desktop
 _appname=GitHubDesktop
 pkgname="${_pkgname}-zh-bin"
 pkgver=3.3.5_linux2
-_zhpkgver="${pkgver%_linux2}"
-#_zhpkgver=3.3.5
-pkgrel=1
+#_zhpkgver="${pkgver%_linux2}"
+_zhpkgver=3.3.6
+_electronversion=26
+pkgrel=2
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
 arch=(
     'aarch64'
@@ -20,8 +21,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${pkgname%-zh}")
 depends=(
     'hicolor-icon-theme'
-    'bash'
-    'electron26'
+    "electron${_electronversion}"
     'libsecret'
     'perl'
     'curl'
@@ -35,17 +35,21 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('583b614389c03ae83b0099c76233183836fac8c136409bb957a17fd31ee1a6b6'
+sha256sums=('bf4ed02cd93b8ee9fbaeb683fdb8e59b6411c89535bd6846546d1434dd8783a3'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
-            'af2c7520372be84048540ce80ecd61f30154071f8947e4b76698de7c3e4cf520')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 sha256sums_aarch64=('72a17980515c707488fff7195bbed30fd6f701fdeccbf4d69f73ab8ca6860d93')
 sha256sums_armv7h=('50fa487561001a26d9770e5af818d167e591f55e9fe656c64bf8939db58b6c33')
 sha256sums_x86_64=('1bedd13b85e60a18ee0aa9bf23b6a0f07368d80d95927c3db09ac0881b22a2ce')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm644 "${srcdir}/GithubDesktop汉化工具/Linux/"*.js -t "${srcdir}/usr/lib/${_pkgname}/resources/app"
     sed -e "5i\Name[zh_CN]=Github桌面版" \
-        -e "6i\Comment[zh_CN]=从桌面版对Github进行简单"${pkgver}"协作" \
+        -e "6i\Comment[zh_CN]=从桌面对Github进行简单协作" \
         -e "s|${_pkgname} %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
