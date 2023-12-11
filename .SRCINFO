@@ -1,18 +1,16 @@
 pkgbase = xpeviewer-bin
 	pkgdesc = PE file viewer/editor for Windows, Linux and MacOS.
 	pkgver = 0.04
-	pkgrel = 4
+	pkgrel = 5
 	url = http://ntinfo.biz/
 	arch = x86_64
 	license = MIT
-	depends = gcc-libs
-	depends = glibc
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	provides = xpeviewer=0.04
 	conflicts = xpeviewer
 	source = xpeviewer-0.04::https://github.com/horsicq/XPEViewer/releases/download/0.04/xpeviewer_0.04_Ubuntu_22.04_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/horsicq/XPEViewer/0.04/LICENSE
+	source = LICENSE-0.04::https://raw.githubusercontent.com/horsicq/XPEViewer/0.04/LICENSE
 	sha256sums = 9244a20b48c1ffa4be7d8d2714ff47f72a40bbecbd00ee6398754ed2e505f25c
 	sha256sums = d0dfc6996d90bc96474a32b5656eec06bf988cdbcfd226f24fcb7a062208e4ee
 
