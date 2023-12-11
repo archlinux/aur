@@ -1,6 +1,6 @@
 [Trigger]
 Operation = Upgrade
-Type = File
+Type = Path
 Target = usr/share/memtest86-efi/*.efi
 
 [Action]
