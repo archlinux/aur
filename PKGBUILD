@@ -3,11 +3,11 @@
 _pkgname=hiddify-next
 pkgname=${_pkgname}-bin
 pkgver=0.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
-license=('CCPL')
+license=('CC-BY-NC-SA-4.0')
 depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
@@ -26,14 +26,14 @@ _install_path="/opt/$_pkgname"
 prepare() {
     cd "${srcdir}"
     chmod a+x "hiddify-linux-x64.AppImage"
-    ./hiddify-linux-x64.AppImage --appimage-extract > /dev/null
+    ./hiddify-linux-x64.AppImage --appimage-extract >/dev/null
     sed -i 's/Exec=/Exec=env /' "${srcdir}/squashfs-root/hiddify.desktop"
 }
 
 package() {
     install -Dm755 "${srcdir}/hiddify-linux-x64.AppImage" "${pkgdir}/${_install_path}/hiddify.AppImage"
     install -Dm644 "${srcdir}/squashfs-root/hiddify.desktop" "$pkgdir/usr/share/applications/hiddify.desktop"
-    for _icons in 128x128 256x256;do
+    for _icons in 128x128 256x256; do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/hiddify.png"
     done
     install -dm755 "${pkgdir}/usr/bin"
