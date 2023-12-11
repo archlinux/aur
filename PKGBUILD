@@ -2,12 +2,12 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=tuxedo-keyboard-ite-dkms
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Per-key keyboard backlight driver for TUXEDO ITE Keyboards devices."
 url="https://github.com/tuxedocomputers/tuxedo-keyboard-ite"
 license=("GPL")
 arch=('x86_64') 
-depends=('dkms' 'tuxedo-keyboard-dkms')
+depends=('dkms' 'tuxedo-drivers-dkms')
 conflicts=('tuxedo-keyboard-ite')
 replaces=('tuxedo-keyboard-ite')
 optdepends=('linux-headers: build modules against Arch kernel'

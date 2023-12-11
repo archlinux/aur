@@ -1,12 +1,12 @@
 pkgbase = tuxedo-keyboard-ite-dkms
 	pkgdesc = Per-key keyboard backlight driver for TUXEDO ITE Keyboards devices.
 	pkgver = 0.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tuxedocomputers/tuxedo-keyboard-ite
 	arch = x86_64
 	license = GPL
 	depends = dkms
-	depends = tuxedo-keyboard-dkms
+	depends = tuxedo-drivers-dkms
 	optdepends = linux-headers: build modules against Arch kernel
 	optdepends = linux-lts-headers: build modules against LTS kernel
 	optdepends = linux-zen-headers: build modules against ZEN kernel
