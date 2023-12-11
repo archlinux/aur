@@ -12,6 +12,7 @@ depends=('git' 'autoconf' 'automake' 'make' 'gcc')
 makedepends=()
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+pkgbase=yuma123-git
 
 source=("git+https://github.com/vlvassilev/yuma123")
 
