@@ -1,7 +1,7 @@
 pkgbase = littlefs-fuse
 	pkgdesc = A FUSE wrapper that puts the littlefs in user-space
-	pkgver = 2.4.0
-	pkgrel = 2
+	pkgver = 2.7.3
+	pkgrel = 1
 	url = https://github.com/littlefs-project/littlefs-fuse
 	arch = aarch64
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = littlefs-fuse
 	depends = fuse2
 	depends = glibc
 	options = lto
-	source = littefs-2.4.0.tar.gz::https://github.com/littlefs-project/littlefs-fuse/archive/v2.4.0.tar.gz
-	sha256sums = 219d6e44c3925cbd25118c306f2c1f048a7119173ca0e1ac1752f20099ddf06d
+	source = littefs-2.7.3.tar.gz::https://github.com/littlefs-project/littlefs-fuse/archive/v2.7.3.tar.gz
+	sha256sums = 7bf46fca2bb5b498f7a21786cc16573ec9e3915b92463492b4efa3958b690723
+	b2sums = dcdf191ce6d2c8f0a487e2ba8ddff3eb089fcacee2cfeaaa46b6e289d5196d18d7aef5c09740d82a7e5e797e17aeb604435bc5beb736e1c32be5b60f4b3cba7c
 
 pkgname = littlefs-fuse
