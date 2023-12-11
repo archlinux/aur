@@ -1,15 +1,15 @@
 pkgbase = cyberscript
 	pkgdesc = A fast, efficient, and concurrent scripting language
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://cyberscript.dev/
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = zigup
+	makedepends = zig
 	depends = glibc
 	options = !debug
-	source = cyberscript::git+https://github.com/fubark/cyber#commit=7e529c5c79d13b6c803d0528b43433c6a0ac095c
+	source = cyberscript::git+https://github.com/fubark/cyber#commit=13a7bef28a5dcc766e0694ce8d053b3dc0d9812e
 	b2sums = SKIP
 
 pkgname = cyberscript
