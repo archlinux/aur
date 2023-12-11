@@ -8,7 +8,7 @@ pkgdesc="Open-source YANG API in C and CLI (yangcli) and server (netconfd)"
 arch=('x86_64')
 url="https://github.com/vlvassilev/yuma123"
 license=('BSD')
-depends=('git' 'autoconf' 'automake' 'libtool' 'make' 'gcc')
+depends=('git' 'autoconf' 'automake' 'make' 'gcc')
 makedepends=('libtool') # Add libtool as a build dependency
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -19,7 +19,8 @@ source=("git+https://github.com/vlvassilev/yuma123")
 prepare() {
   cd "$srcdir/yuma123"
   libtoolize
-  autoreconf -i -v -f
+  autoupdate
+  autoreconf -i -f
 }
 
 build() {
