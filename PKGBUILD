@@ -6,7 +6,7 @@
 # Directly based off of the official package
 
 pkgname=vim-clipboard
-pkgver=9.0.2070
+pkgver=9.0.2143
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
