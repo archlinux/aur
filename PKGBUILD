@@ -10,7 +10,7 @@
 
 pkgname=gazebo
 pkgver=11.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="https://classic.gazebosim.org/"
@@ -43,7 +43,8 @@ build() {
   export LDFLAGS="-Wl,--copy-dt-needed-entries"
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
-           -DCMAKE_INSTALL_LIBDIR="lib"
+           -DCMAKE_INSTALL_LIBDIR="lib" \
+           -DPROTOBUF_PROTOC_EXECUTABLE="/usr/bin/protoc"
   make
 }
 
