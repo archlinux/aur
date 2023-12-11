@@ -1,8 +1,8 @@
 pkgbase = onclick
 	pkgdesc = Runs a command every time the terminal is clicked
 	pkgver = 1.0.3
-	pkgrel = 1
-	url = https://git.sr.ht/~adnano/kiln
+	pkgrel = 2
+	url = https://sr.ht/~smlavine/onclick
 	arch = x86_64
 	arch = aarch64
 	license = MPLv2

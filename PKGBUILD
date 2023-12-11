@@ -2,10 +2,10 @@
 
 pkgname=onclick
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Runs a command every time the terminal is clicked'
 arch=('x86_64' 'aarch64')
-url='https://git.sr.ht/~adnano/kiln'
+url='https://sr.ht/~smlavine/onclick'
 license=('MPLv2')
 makedepends=('hare-git')
 source=("https://git.sr.ht/~smlavine/onclick/archive/${pkgver}.tar.gz")
