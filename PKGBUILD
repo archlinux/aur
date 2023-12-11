@@ -10,7 +10,7 @@
 
 pkgname=proggyfonts
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='A set of fixed-width fonts designed for code listings.'
 url='https://github.com/bluescan/proggyfonts/'
@@ -37,7 +37,7 @@ source=("$pkgname.install"
         "OptiSmall.pcf.gz::https://github.com/bluescan/proggyfonts/raw/master/Contributed/OptiSmall.pcf.gz"
         "WebbyCaps.pcf.gz::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/WebbyCaps.pcf.gz"
         "WebbySmall.pcf.gz::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/WebbySmall.pcf.gz"
-        "ProggyVector Regular.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyVector/ProggyVector%20Regular.ttf"
+        "ProggyVector Regular.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyVector/ProggyVector-Regular.ttf"
         "ProggyCrossed Regular.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyCrossed/ProggyCrossed%20Regular.ttf"
         "ProggyDotted Regular.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyDotted/ProggyDotted%20Regular.ttf")
 noextract=('Opti.pcf.gz'
@@ -52,7 +52,7 @@ sha256sums=('d6642190eb289e690c0685a0d186e87234e268c29a8d176825b9e1df1316b5f0'
             '6977862535adfba326dc7d78daab749e97c2fabfc7c68d2f9210f209541e7b40'
             '527d2a443ce051f93f7e77b855609722b8cb220a9f104b4aa037be5c90b71324'
             '8bc6b1e74b766e16a169a5c4b372f2615f3d22423e7410cd5f97c6146b041472'
-            '685d0b160f1e8b1a31e1c0765e7307da4b10c36458a4111d71cf2e9ce56df57a'
+            '0d17680c44aafde944378517185b99934f415da6fd4aca0c0665fec1f7ce5d88'
             '35638c90ab8d355346d477305a026d829ddb63e5defe7a07ea44c4093cdef9f3'
             '1e05337a3a5a9b79a07d120c16a37e689304914344282af302400b56fee42c61'
             'fb225bb94459bae14eeff4a953f549e0312bb0d396d1794cacd9d1483db12cef'
@@ -65,7 +65,7 @@ sha256sums=('d6642190eb289e690c0685a0d186e87234e268c29a8d176825b9e1df1316b5f0'
             '88926010ab36cbc52ab66af56843b69cebb1ba475ffc2372d6e4d03559a130ee'
             'dccad12fbfca45fdccac745dc842919c29d880ca3fb260fb56b797bc76729012'
             'af782e04e31c75098ca5e97f4cfdae247d966278573b50fa575b6f8a73110e6a'
-            'ca2856c75827f19cc52cad1e58835a4b854728005d81d4a2abf6e8ac9d3755ea'
+            'dae80a9b9bb23a37f60465dd93de9365a8ddd43300adc304d96f91ce54c28dd5'
             'd5fc9bb440a454db73a1f232b0f803a8ebefdd09713243505a75ecfec6a5ff44'
             '2ab1197f7ce92ec744dfdb492c179b95fc746cb562307286f88d6be364a7011e')
 
