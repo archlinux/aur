@@ -1,0 +1,25 @@
+pkgbase = r-qsvar
+	pkgdesc = Generate Quality Surrogate Variable Analysis for Degradation Correction
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/qsvaR
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = r-ggplot2
+	depends = r-summarizedexperiment
+	depends = r-sva
+	optdepends = r-biocfilecache
+	optdepends = r-biocstyle
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-limma
+	optdepends = r-refmanager
+	optdepends = r-rmarkdown
+	optdepends = r-sessioninfo
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qsvaR_1.6.0.tar.gz
+	md5sums = e9531cc164f93967a5d5d0469d47f7c7
+	sha256sums = 4cf3c4b26e421aed9f6c536fbe48cc21ea14d887311f3a4c46a58e38b94201d8
+
+pkgname = r-qsvar
