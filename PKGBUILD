@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=edencommon
-pkgver=2023.12.04.00
+pkgver=2023.12.11.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -16,7 +16,7 @@ depends=(
 makedepends=(
   boost
   cmake
-  gmock
+  gtest
 )
 provides=(
   libedencommon_os.so
@@ -27,7 +27,7 @@ source=(
   "build-shared-library.patch"
 )
 sha256sums=(
-  '6de3a32ca6adf35c2fb0e1aff55bf3caa0785d80262e864353e667d82b16d1d9'
+  'f9eb8bb275b789a992be443103a00fc9d4d96ab45750a3f18088ca3c5c413693'
   '000dfb9e316e486cb047fe4c5547b716033a99bb78a9eef0e7e4d860d017a092'
 )
 options=(!lto)
