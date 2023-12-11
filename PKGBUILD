@@ -2,14 +2,15 @@
 # Contributor: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=kaiteki-bin
 _pkgname=Kaiteki
-pkgver=2023_49
+pkgver=2023_50
 pkgrel=1
 pkgdesc="A comfy Fediverse client for microblogging instances, made with Flutter and Dart. Currently with simple Mastodon, Pleroma, Misskey and Calckey support"
 arch=('x86_64')
 url='https://kaiteki.app'
 _ghurl=https://github.com/Kaiteki-Fedi/Kaiteki
 license=('AGPL3')
-provides=("${_pkgname}")
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'gtk3'
     'libhandy'
@@ -19,6 +20,7 @@ depends=(
     'pango'
     'gdk-pixbuf2'
     'fontconfig'
+    'harfbuzz'
 )
 makedepends=(
     'gendesk'
@@ -26,7 +28,7 @@ makedepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/weekly-${pkgver//_/-}/linux.zip"
 )
-sha256sums=('7cc112cc34ab295be81aa9b291fb46d143a537c925b8ed161c5d7175df52ec22')
+sha256sums=('09d0ea219d44fcb9b729e89e21b4cd4506933b756357131217df5a008294e27c')
 build() {
     gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin} --no-sandbox %U"
     chmod 755 "${srcdir}/linux/${pkgname%-bin}"
