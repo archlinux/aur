@@ -1,13 +1,13 @@
 # Maintainer: Steven Seifried <gitlab@canox.net>
 
 pkgname=tuxedo-control-center-bin
-pkgver=2.0.11
-pkgrel=1
+pkgver=2.1.0
+pkgrel=2
 pkgdesc="A tool to help you control performance, energy, fan and comfort settings on TUXEDO laptops. "
 arch=(x86_64)
 url="https://github.com/tuxedocomputers/tuxedo-control-center"
 license=('GPL3')
-depends=('tuxedo-keyboard-dkms' 'libxss' 'nss' 'gtk3')
+depends=('tuxedo-drivers-dkms' 'libxss' 'nss' 'gtk3')
 optdepends=('libayatana-appindicator' 'libappindicator-gtk3' 'nvidia-prime')
 conflicts=('tuxedo-control-center' 'auto-cpufreq')
 options=(!strip)
