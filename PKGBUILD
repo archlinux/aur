@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pkgcache
-_cranver=2.2.0.1
+_cranver=2.2.1
 pkgname=r-${_cranname,,}
 pkgdesc="Cache ‘CRAN’-Like Metadata and R Packages"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -17,10 +17,8 @@ depends=(
     "r-curl>=3.2"
     "r-filelock"
     "r-jsonlite"
-    "r-prettyunits"
     "r-processx>=3.3.0.9001"
     "r-r6"
-    "r-rappdirs"
 )
 optdepends=(
     "r-covr"
@@ -58,7 +56,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("868b3494a122e8887e69dcf6e606ab750c4e8ba07fcdf4058819cfc5c39eda0ab895594eb205cb56d9da6f7f857b41ffd92447638337ca0cbaee5debed8f9c1f")
+b2sums=("cec310f9b8675482560fc10671f3e8580bc613ad410ffea4dfe8092e65ac356da57cc7e88bac96c175871768c01fa7e4241cb2aec26d39750800bcc1d21ad577")
 
 build() {
     mkdir -p "${srcdir}/build/"
