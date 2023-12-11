@@ -1,0 +1,23 @@
+pkgbase = mubu-electron
+	pkgdesc = 幕布
+	pkgver = 3.7.3
+	pkgrel = 1
+	url = https://mubu.com/home
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = private
+	makedepends = asar
+	makedepends = p7zip
+	depends = electron9
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	provides = mubu
+	conflicts = mubu
+	source = https://assets.mubu.com/client/Mubu-3.7.3.exe
+	source = mubu-electron.desktop
+	sha256sums = dac7470975ed11fa529cbeed979da3741a180a1c7379ef0c0320263035085e7c
+	sha256sums = bcdb2d8c65c25c2261a852a4e1aaffb22995beb3e3e0795333ee7e4422b7eba6
+
+pkgname = mubu-electron

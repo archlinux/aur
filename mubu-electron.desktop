@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mubu
+Comment=幕布
+Exec=mubu
+Icon=mubu
+Terminal=false
+StartupNotify=false
+Categories=Application;
