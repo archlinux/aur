@@ -1,7 +1,7 @@
 pkgbase = mpdscribble
 	pkgdesc = MPD client which submits track info to {Libre,Last}.fm
-	pkgver = 0.24
-	pkgrel = 2
+	pkgver = 0.25
+	pkgrel = 1
 	url = https://www.musicpd.org/clients/mpdscribble/
 	install = mpdscribble.install
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = mpdscribble
 	makedepends = ninja
 	depends = curl
 	depends = libmpdclient
-	source = https://www.musicpd.org/download/mpdscribble/0.24/mpdscribble-0.24.tar.xz
-	source = https://www.musicpd.org/download/mpdscribble/0.24/mpdscribble-0.24.tar.xz.sig
+	source = https://www.musicpd.org/download/mpdscribble/0.25/mpdscribble-0.25.tar.xz
+	source = https://www.musicpd.org/download/mpdscribble/0.25/mpdscribble-0.25.tar.xz.sig
 	validpgpkeys = 0392335A78083894A4301C43236E8A58C6DB4512
-	sha256sums = f6b4cba748b3b87e705270b4923c8e23e94c2e00fedd50beb1468dbe2fb2a8e7
+	sha256sums = 20f89d945bf517c4d68bf77a77a359fdb13842ab1295e8d21eda79be2b5b35ce
 	sha256sums = SKIP
 
 pkgname = mpdscribble
