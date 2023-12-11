@@ -17,7 +17,7 @@ source_x86_64=(
     "LICENSE::https://raw.githubusercontent.com/NJUPT-SAST-Cpp/SAST-Evento-Desktop/${pkgver}/LICENSE"
 )
 noextract=(${_appimage})
-sha256sums_x86_64=('eb49ba9e88230338aa4940dc6c3a0593d1859ba5b2a0367c5d3e8f39a4a8a37d'
+sha256sums_x86_64=('9f0e497a2191128311010688755a796a6519781f5e6206198b715d2f5573cf85'
     'dd961254a4f3599af88f965689f9e75674a300267df4e2110028c56724338a12')
 
 prepare() {
