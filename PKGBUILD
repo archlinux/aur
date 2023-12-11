@@ -2,7 +2,7 @@
 
 pkgname=cbang
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="a library of cross-platform C++ utilities"
 arch=('x86_64')
 url="https://github.com/CauldronDevelopmentLLC/cbang"
@@ -49,7 +49,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver/tests"
-  scons
+  scons cxxstd="c++17" disable_local="libevent sqlite3 re2 libyaml zlib bzip2 expat"
   python ./testHarness
 }
 

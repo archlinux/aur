@@ -1,7 +1,7 @@
 pkgbase = cbang
 	pkgdesc = a library of cross-platform C++ utilities
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/CauldronDevelopmentLLC/cbang
 	arch = x86_64
 	license = LGPL2.1
