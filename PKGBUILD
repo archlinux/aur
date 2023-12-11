@@ -3,13 +3,13 @@ pkgname=geant4-abladata
 _varname='G4ABLADATA'
 _dataname="G4ABLA"
 _foldername="G4ABLA"
-pkgver=3.1
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc="Data files for nuclear shell effects in INCL/ABLA hadronic mode"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
-optdepends=('geant4>=10.4')
+optdepends=('geant4>=11.2')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
   "${pkgname}.install")
