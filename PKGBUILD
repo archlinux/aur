@@ -1,6 +1,6 @@
 # Maintainer: jim3692 <jim3692 at gmail.com>
 pkgname="pipewire-screenaudio-git"
-pkgver=0.3.4.r3.gd688737
+pkgver=0.3.4.r5.gc9fbe64
 pkgver() {
   cd "pipewire-screenaudio"
   git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -15,6 +15,9 @@ depends=(
   'gawk'
   'jq'
   'pipewire'
+  )
+optdepends=(
+  'pipewire-screenaudio-librewolf: Native Messaging for LibreWolf'
   )
 options=(!lto)
 conflicts=()
