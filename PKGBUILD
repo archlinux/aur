@@ -3,7 +3,7 @@ pkgname=any-sync-gui
 _appname="Lan同步"
 pkgver=1.3.0
 _electronversion=25
-pkgrel=4
+pkgrel=5
 pkgdesc="一款支持在pc与pc或移动设备之间同步文本信息或文件的应用"
 arch=('any')
 url="https://github.com/easyhutu/any-sync-gui"
@@ -41,7 +41,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '43d92406203568b43197eb0ff5bcb2cdc305bb2c972becb6c9b6c2a0dad3df55')
+            '66aa4b6d9920d3c576521c88847720f62c226fac637bd9169ccc36e086012664')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
@@ -57,16 +57,17 @@ build() {
     npm install --force
     npm run build
     cd "${srcdir}/${pkgname}-${pkgver}/electron_gui"
+    sed "s|${_appname}|${pkgname%-bin}|g" -i package.json
     sed '24,27d' -i forge.config.js
     npm install --force
     npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/electron_gui/out/${_appname}-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/electron_gui/out/${_appname}-"*/resources/{dist,public} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/electron_gui/out/${pkgname}-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/electron_gui/out/${pkgname}-"*/resources/{dist,public} "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/resources"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/electron_gui/public/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/electron_gui/out/${_appname}-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/electron_gui/out/${pkgname}-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
