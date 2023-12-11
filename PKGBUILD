@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  printf "v%s" $(git log -1 --format="%cd" --date=short | tr -d '-') 
+  printf "v%s" $(git log -1 --format="%cd" --date=short | tr -d '-')
 }
 
 build() {
@@ -33,10 +33,10 @@ build() {
 package() {
   cd $pkgname
   DESTDIR="$pkgdir" ninja -C build install
-  
+
   # install license
   install -D -m644 "LICENSES/MIT" "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE-MIT
-  
+
   # example conf
   install -D -m644 "picom.sample.conf" "$pkgdir"/etc/xdg/picom.conf.example
 }
