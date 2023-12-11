@@ -5,7 +5,7 @@
 
 pkgname=edb-debugger
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="EDB (Evan's Debugger) is a cross platform AArch32/x86/x86-64 debugger, inspired by Ollydbg."
 arch=('i686' 'x86_64')
 url='http://www.codef00.com/projects#debugger'
@@ -38,11 +38,10 @@ package() {
 #  [ "$CARCH" = "x86_64" ] && (mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib")
 
   # icons
-  install -Dm644 $srcdir/$pkgname/src/res/images/edb48-logo.png "$pkgdir/usr/share/pixmaps/edb.png"
-  install -Dm644 $srcdir/$pkgname/src/res/images/edb48-logo.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/edb.png"
+  install -Dm644 $pkgname/src/res/images/edb48-logo.png "$pkgdir/usr/share/pixmaps/edb.png"
+  install -Dm644 $pkgname/src/res/images/edb48-logo.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/edb.png"
 
   # install desktop file
-  cd ..
   install -Dm644 edb.desktop "$pkgdir/usr/share/applications/edb.desktop"
 }
 
