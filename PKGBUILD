@@ -1,6 +1,6 @@
 # Maintainer: TurtleRuss <tttturtleruss@gmail.com>
 pkgname=hustmirror-cli # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.2.0.rc
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="The command line tool (hustmirror-cli) is a small tool that can help you quickly change sources to HUST mirror sources."
 arch=("x86_64")
@@ -25,7 +25,7 @@ build() {
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
-	make test
+	make -f Makefile.arch test
 }
 
 package() {
