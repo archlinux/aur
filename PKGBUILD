@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=wasabi
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A modern and fast real-time MIDI player written in Rust."
 url="https://github.com/arduano/wasabi"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('alsa-lib' 'gcc-libs')
 makedepends=('cargo-nightly' 'cmake' 'git' 'shaderc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/arduano/wasabi/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('6b85e7bcf16e8fca8c72539ddecfee996aed2428d944500053aadd0ab2a39cd8490c2c6411836439d559631ca9963b51ab971c0bee868418254eb194ad4ea48f')
+b2sums=('0b913c1e5e4a61defadb295a33879b0ce86b5e0742fd111c3a32c5531d9457f10b20d354a62b2f3f954790b8db9fd527ec4dcc98b8c72e7aa262149bceec3264')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
