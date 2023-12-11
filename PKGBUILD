@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=talhelper
-pkgver=1.16.0
+pkgver=1.16.2
 pkgrel=1
 pkgdesc='A tool to help create Talos clusters in your GitOps repository'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
   'sops: manage secrets'
 )
 options=('!lto')
-_commit='e83c363e32ea4cbcda7778f1741903e600439228'
+_commit='05a59dd105452468fabf87478980f59c46b47326'
 source=("$pkgname::git+https://github.com/budimanjojo/talhelper#commit=$_commit")
 b2sums=('SKIP')
 
