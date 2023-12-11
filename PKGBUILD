@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=float
-_pkgver=0.3-1
+_pkgver=0.3-2
 pkgname=r-${_pkgname,,}
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='32-Bit Floats'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f5879daae290e288c2111958aa8f73b7d27165cf50b89c6780675997154feb3b')
+sha256sums=('233a0dd71f02491ce410c173fd3c3a503b3b49a6a5fe092dde61710db2732a91')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
