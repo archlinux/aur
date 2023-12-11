@@ -6,14 +6,13 @@ pkgbase = certbox-bin
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = electron27
 	provides = certbox=1.7.2
 	conflicts = certbox
-	source = LICENSE::https://raw.githubusercontent.com/tls-inspector/certbox/1.7.2/LICENSE
+	source = LICENSE-1.7.2::https://raw.githubusercontent.com/tls-inspector/certbox/1.7.2/LICENSE
 	source = certbox.sh
 	sha256sums = 86a899de0d14686c5fc2a444067323ed7162e88718b9d0b045653383b6059719
-	sha256sums = fe94ec27ec8ce81ddcf7ee270c4d6cafbcc393e49b5ba525921f3e58455729f8
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 	source_aarch64 = certbox-1.7.2-aarch64.deb::https://github.com/tls-inspector/certbox/releases/download/1.7.2/certbox_1.7.2_arm64.deb
 	sha256sums_aarch64 = 9b5eec564743883ec9fb82de9b1137764e9591771db91065f3dbab4b022a0b25
 	source_x86_64 = certbox-1.7.2-x86_64.deb::https://github.com/tls-inspector/certbox/releases/download/1.7.2/certbox_1.7.2_x64.deb
