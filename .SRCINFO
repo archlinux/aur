@@ -1,16 +1,16 @@
 pkgbase = zabbixmon-bin
 	pkgdesc = CLI application to show currents alerts on Zabbix.
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/nikaro/zabbixmon
 	license = GPLv3
 	conflicts = zabbixmon
 	provides = zabbixmon
 	arch = aarch64
-	source_aarch64 = https://github.com/nikaro/zabbixmon/releases/download/0.8.3/zabbixmon_0.8.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = a19ff30d13ba6ca738df5e81855e4d03698fd0cb20318d0553b83228ed2a1bfe
+	source_aarch64 = https://github.com/nikaro/zabbixmon/releases/download/0.8.4/zabbixmon_0.8.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 12eb8337554960d48e43387cde92c18caf87513215f5e3599aa63a94368ebb95
 	arch = x86_64
-	source_x86_64 = https://github.com/nikaro/zabbixmon/releases/download/0.8.3/zabbixmon_0.8.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4d942ea856a4837499c2ef78ef92ebc9534f22353bfb0266f7d62d87e709d33d
+	source_x86_64 = https://github.com/nikaro/zabbixmon/releases/download/0.8.4/zabbixmon_0.8.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4e0764f992f386213a4b8239fc8961c02209d33bcac328d2014a0736829d862e
 	
 pkgname = zabbixmon-bin
