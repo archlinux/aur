@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tailchat-desktop
-pkgver=1.9.5
+pkgver=1.10.0
+_electronversion=18
 pkgrel=1
 pkgdesc="Next generation noIM application in your own workspace, not only another Slack/Discord/Rocket.chat"
 arch=('any')
@@ -9,25 +10,37 @@ _ghurl="https://github.com/msgbyte/tailchat"
 license=('Apache')
 conflicts=("${pkgname}")
 depends=(
-    'electron18'
+    "electron${_electronversion}"
     'libxcb'
 )
 makedepends=(
     'gendesk'
-    'npm>=8.19.4'
-    'nodejs>=16.20.2'
+    'npm'
+    'nvm'
     'yarn'
+    'git'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'dfec8c4393216de0affcb58c679055af1d97ae9e530564a37d7bfe922fcefa2c')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install 16
+    nvm use 16
+}
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Network" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}/client/desktop"
-    yarn --cache-folder "${srcdir}/npm-cache" 
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn build
     yarn electron-builder --linux
 }
