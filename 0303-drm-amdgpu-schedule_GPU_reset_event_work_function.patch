@@ -1,0 +1,41 @@
+From 0d9213e1b807a79970aa93434b2371f55691b6c4 Mon Sep 17 00:00:00 2001
+From: Somalapuram Amaranath <Amaranath.Somalapuram@amd.com>
+Date: Thu, 10 Mar 2022 11:31:44 +0530
+Subject: [PATCH] drm/amdgpu: schedule GPU reset event work function
+
+Schedule work function with valid PID, process name,
+and vram lost status during a GPU reset/ recovery.
+
+Signed-off-by: Somalapuram Amaranath <Amaranath.Somalapuram@amd.com>
+(cherry picked from commit 293c019a84c6402b08db9579819b555b01cd613b)
+[Forward ported to 6.0]
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_device.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+index ace5a79042fc12..77243ff1f428cf 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+@@ -4970,6 +4970,20 @@ int amdgpu_do_asic_reset(struct list_head *device_list_handle,
+ 						reset_context->job->vm->task_info;
+ 				amdgpu_reset_capture_coredumpm(tmp_adev);
+ #endif
++				if (reset_context->job && reset_context->job->vm) {
++					tmp_adev->reset_event_info.pid =
++						reset_context->job->vm->task_info.pid;
++					memset(tmp_adev->reset_event_info.pname, 0, TASK_COMM_LEN);
++					strcpy(tmp_adev->reset_event_info.pname,
++						reset_context->job->vm->task_info.process_name);
++				} else {
++					tmp_adev->reset_event_info.pid = 0;
++					memset(tmp_adev->reset_event_info.pname, 0, TASK_COMM_LEN);
++				}
++
++				tmp_adev->reset_event_info.flags = vram_lost;
++				schedule_work(&tmp_adev->gpu_reset_event_work);
++
+ 				if (vram_lost) {
+ 					DRM_INFO("VRAM is lost due to GPU reset!\n");
+ 					amdgpu_inc_vram_lost(tmp_adev);

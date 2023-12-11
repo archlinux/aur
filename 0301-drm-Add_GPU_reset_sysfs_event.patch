@@ -1,0 +1,108 @@
+From 1261d730c9639a14b2ee262874247d30a873dd99 Mon Sep 17 00:00:00 2001
+From: Shashank Sharma <shashank.sharma@amd.com>
+Date: Mon, 7 Mar 2022 12:32:49 +0100
+Subject: [PATCH] drm: Add GPU reset sysfs event
+
+This patch adds a new sysfs event, which will indicate
+the userland about a GPU reset, and can also provide
+some information like:
+- process ID of the process involved with the GPU reset
+- process name of the involved process
+- the GPU status info (using flags)
+
+This patch also introduces the first flag of the flags
+bitmap, which can be appended as and when required.
+
+V2: Addressed review comments from Christian and Amar
+   - move the reset information structure to DRM layer
+   - drop _ctx from struct name
+   - make pid 32 bit(than 64)
+   - set flag when VRAM invalid (than valid)
+   - add process name as well (Amar)
+
+Cc: Alexandar Deucher <alexander.deucher@amd.com>
+Cc: Christian Koenig <christian.koenig@amd.com>
+Cc: Amaranath Somalapuram <amaranath.somalapuram@amd.com>
+Signed-off-by: Shashank Sharma <shashank.sharma@amd.com>
+(cherry picked from commit 90230bd9d9c7d979038547460c9a2cbbeff8d6b9)
+[Forward port to 6.0]
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/drm_sysfs.c | 31 +++++++++++++++++++++++++++++++
+ include/drm/drm_sysfs.h     | 10 ++++++++++
+ 2 files changed, 41 insertions(+)
+
+diff --git a/drivers/gpu/drm/drm_sysfs.c b/drivers/gpu/drm/drm_sysfs.c
+index b169b3e44a921b..5b3835b3ce428a 100644
+--- a/drivers/gpu/drm/drm_sysfs.c
++++ b/drivers/gpu/drm/drm_sysfs.c
+@@ -486,6 +486,37 @@ void drm_sysfs_connector_hotplug_event(struct drm_connector *connector)
+ }
+ EXPORT_SYMBOL(drm_sysfs_connector_hotplug_event);
+ 
++/**
++ * drm_sysfs_reset_event - generate a DRM uevent to indicate GPU reset
++ * @dev: DRM device
++ * @reset_info: The contextual information about the reset (like PID, flags)
++ *
++ * Send a uevent for the DRM device specified by @dev. This informs
++ * user that a GPU reset has occurred, so that an interested client
++ * can take any recovery or profiling measure.
++ */
++void drm_sysfs_reset_event(struct drm_device *dev, struct drm_reset_event *reset_info)
++{
++	unsigned char pid_str[13];
++	unsigned char flags_str[15];
++	unsigned char pname_str[TASK_COMM_LEN + 6];
++	unsigned char reset_str[] = "RESET=1";
++	char *envp[] = { reset_str, pid_str, pname_str, flags_str, NULL };
++
++	if (!reset_info) {
++		DRM_WARN("No reset info, not sending the event\n");
++		return;
++	}
++
++	DRM_DEBUG("generating reset event\n");
++
++	snprintf(pid_str, ARRAY_SIZE(pid_str), "PID=%u", reset_info->pid);
++	snprintf(pname_str, ARRAY_SIZE(pname_str), "NAME=%s", reset_info->pname);
++	snprintf(flags_str, ARRAY_SIZE(flags_str), "FLAGS=%u", reset_info->flags);
++	kobject_uevent_env(&dev->primary->kdev->kobj, KOBJ_CHANGE, envp);
++}
++EXPORT_SYMBOL(drm_sysfs_reset_event);
++
+ /**
+  * drm_sysfs_connector_property_event - generate a DRM uevent for connector
+  * property change
+diff --git a/include/drm/drm_sysfs.h b/include/drm/drm_sysfs.h
+index 96a5d858404b07..c3d94ec5fadcd2 100644
+--- a/include/drm/drm_sysfs.h
++++ b/include/drm/drm_sysfs.h
+@@ -1,12 +1,21 @@
+ /* SPDX-License-Identifier: GPL-2.0 */
+ #ifndef _DRM_SYSFS_H_
+ #define _DRM_SYSFS_H_
++#include <linux/sched.h>
++
++#define DRM_GPU_RESET_FLAG_VRAM_INVALID (1 << 0)
+ 
+ struct drm_device;
+ struct device;
+ struct drm_connector;
+ struct drm_property;
+ 
++struct drm_reset_event {
++	uint32_t pid;
++	uint32_t flags;
++	char pname[TASK_COMM_LEN];
++};
++
+ int drm_class_device_register(struct device *dev);
+ void drm_class_device_unregister(struct device *dev);
+ 
+@@ -14,4 +23,5 @@ void drm_sysfs_hotplug_event(struct drm_device *dev);
+ void drm_sysfs_connector_hotplug_event(struct drm_connector *connector);
+ void drm_sysfs_connector_property_event(struct drm_connector *connector,
+ 					struct drm_property *property);
++void drm_sysfs_reset_event(struct drm_device *dev, struct drm_reset_event *reset_info);
+ #endif

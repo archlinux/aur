@@ -12,7 +12,7 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.5.7
+pkgver=6.6.6
 pkgrel=1
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
@@ -24,73 +24,60 @@ options=('!strip')
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         config
+        # Upstream Patches
         # ARCH Patches
         0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
         0102-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
-        0103-ASoC-Intel-soc-acpi-fix-Dell-SKU-0B34.patch
-        0104-btrfs-wait-on-uncached-block-groups-on-every-allocat.patch
-        0105-net_wwan_t7xx_add-AP-CLDMA.patch
         # MANJARO Patches
-        0201-asus-ally-asus-hid-6.5.patch
-        0202-mt7921e_Perform_FLR_to_recovery_the_device.patch
-        # GPU reset through sysfs
-        0001-GPU-reset.patch
-        # No overrides ROG ally
-        0001-Cirrus-no-dsdt.patch
-        0001-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-miss.patch
-        # Fixup sleep cs35l41
-        0001-ALSA-cs35l41-Use-mbox-command-to-enable-speaker-outp.patch
-        0002-ALSA-cs35l41-Poll-for-Power-Up-Down-rather-than-wait.patch
-        0003-ALSA-hda-cs35l41-Check-mailbox-status-of-pause-comma.patch
-        0004-ALSA-hda-cs35l41-Ensure-we-correctly-re-sync-regmap-.patch
-        0005-ALSA-hda-cs35l41-Ensure-we-pass-up-any-errors-during.patch
-        0006-ALSA-hda-cs35l41-Move-Play-and-Pause-into-separate-f.patch
-        0007-ALSA-hda-hda_component-Add-pre-and-post-playback-hoo.patch
-        0008-ALSA-hda-cs35l41-Use-pre-and-post-playback-hooks.patch
-        0009-ALSA-hda-cs35l41-Rework-System-Suspend-to-ensure-cor.patch
-        0010-ALSA-hda-cs35l41-Add-device_link-between-HDA-and-cs3.patch
-        0011-ALSA-hda-cs35l41-Ensure-amp-is-only-unmuted-during-p.patch
         # Realtek patch
-        0998-patch_realtek.patch
-        # HID patches
-        0001-HID.patch
+        0999-patch_realtek.patch
+        # ROG ALLY Patches
+        0000-hid-asus-add-const-to-read-only-outgoing-usb-buffer.patch
+        0001-hid-asus-reset-the-backlight-brightness-level-on-resume.patch
+        v14.1-0001-HID-asus-fix-more-n-key-report-descriptors-if-.patch
+        v14.1-0002-HID-asus-make-asus_kbd_init-generic-remove-rog.patch
+        v14.1-0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch
+        v14.1-0004-HID-asus-add-ROG-Ally-xpad-settings.patch
+        v14.1-fix-defaults1.patch
+        0006-platform-x86-asus-wmi-disable-USB0-hub-on-ROG-Ally-b.patch
+        0007-mt7921e_Perform_FLR_to_recovery_the_device.patch
+        # AMD GPU reset patches
+        0301-drm-Add_GPU_reset_sysfs_event.patch
+        0302-drm-amdgpu-add_work_function_for_GPU_reset_event.patch
+        0303-drm-amdgpu-schedule_GPU_reset_event_work_function.patch
+        # No overrides ROG ally <= 323 BIOS
+        0001-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-miss.patch
+        0001-ALSA-hda-cs35l41-Improve-support-for-ASUS-ROG-Ally.patch
         # Additional ALLY patches
-        ROG-ALLY-LED-fix.patch
         ROG-ALLY-NCT6775-PLATFORM.patch
-        ROG_ALLY_OLDER_BIOS_AUDIO.patch
         0001-ROG-ALLY-bmi323-device.patch
+        # Steamdeck HID patches
+        0001-HID.patch
         # ACS override patch
         '0999-acs.gitpatch')
 
-sha256sums=('0d09ea448005c9cfe5383e4c72a872b39188b928f8c44e146b03b1b7851fbb8c'
-            '68c8f0aecfabb6f6eac76daed2985e9255ab62f98669d341d02aa66070ce17ce'
+sha256sums=('ebf70a917934b13169e1be5b95c3b6c2fea5bc14e6dc144f1efb8a0016b224c8'
+            '043ada1688a42e652bb0b339d2f9732c323c22da96bb2ca2bcf144a731c5e981'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             'e1d17690dd21e8d5482b63ca66bfe6b478d39e8e8b59eedd53adb0a55ebc308d'
-            '6a8e31d9e0b9dfb13c1fb96cea1dc17929920038c50db7d731e1af63fd0b26b9'
-            '997e873b5fa0fb94ebc7ab88474edc15f7e94340643a1305fd2eab2917f39df6'
-            '6a5d3cff6d9887b9f2e6fe8121cadf7b22cafcfabe3bd0d3e80d9174ede7204d'
-            '6541760a7b0513ce52c7b2d67810135b1bd172849f52765e74a5ec0c7584dd56'
-            'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
-            '11ff8e0119e1bd33a572e18a10dfb94f521b4e38ee5948d3c0508faf07835a78'
-            'ec6f9f062e94a62ecbec3a9e30bb6fc7ffd33e279eeb621674bfe4e4c398836a'
-            '6536e2f6bcb881d412f99d6bf940487c0a79cc432a0ef7e6e60a24e6a445a8f2'
-            '27aaf7e14c7f5e127f5b658352ca5c3650477a92462139557aefb73bcea2b418'
-            '74da118887929f06afb57eaee716ff433ee5972c9dc91166fc08e66f44edb8e8'
-            'c5ac510677e58ac6b189939ac853e64bf9ad026a614a47f4cb535ad62bf41163'
-            '88f0d69dad01ccfef899b6b08abe162fc7743d40571232dff9a7d9093890d0a8'
-            '826bfa21b613d9c198d375d902958c90bb30171aee602c1806aaf99212abbb40'
-            '0dae5e24249b712f1501ead600c8ef4a5df21484e39e06a1dbafb57929c4999f'
-            '8dddf5537e3feedbf9f9c67f3c19fa7412d9e01b4f78023262b8fa340d3f47b2'
-            '3774b4eba753eb5f3768a28a68eb1a17557c0347275c19b8133f9f74d64a80df'
-            'a5daf210a6f72dde5b477d4b6d38a162b2698cac6c5fcfd4e4fd606274f34cec'
-            'b9298bde48a9f6c5d028150d627c05c71880e2693933ef2fe070f090e80876a5'
-            '4d53a6853b63c0f01b60b408bee61fa729656f925e50fa55ae3cba309668242a'
             '3aa9f1ca47bb078f3c9a52fe61897cf4fe989068cd7e66bfa6644fd605fa40d2'
-            'ed7f4ba3b47c92b5102c9eef81f41e57216e9357d4a638199035a93f080eeb1a'
-            '68a9b80e0b8d75880fbf3d8486bfe522cb19b4042554786b23bead9320165fa5'
+            'fb2cd8a3ea9d47bd78c99b8ece1f3959c20b4de97a7959a12650f989f5c724da'
+            '7f3194f1a7c5ebc27bbfa4559cfd9a2ccffddbbd2d259c0d9c68631cb66c5855'
+            '176adde8fc3069bd28393bf0c9d788f1b0f9a186678aec4dc17b0b081c57f97b'
+            '493fa177cf602f087e981e95fad3764e305f4c486d4c2ef78255388b913be9cf'
+            '50ea381758fb8a8566f38a509fe7cf0448c77eaec5103066cafc2ecf02db1e9f'
+            '970687b811034e722befde62bcf6d51c7442a217074ed0fb71460bb1803f4c64'
+            'c00b23162fdbf50de375d8e444b6d59e2e3630cfac55ec1d06114b9dad00e542'
+            '836e88044263f7bc474ca466b3d0d98c39e265db94925c300d0b138492946a13'
+            'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
+            '1f62542a889a6c2eafd43acd0699f54720ed891eeda66a4a9261d75b92f28b7f'
+            '6bc2c1b9a485c852b45e4064e8b9b559b9b26113fdc80bf9653af44c0886fde2'
+            '559f01074cda3c161996617f1b7bc6cbbce0efc50e2cf9e843d60922ff2e8063'
+            '79970a4729572cb25fd4644d66f38ecd5b3e1610a42ea4bbe436b501f3469fa2'
+            '430a7f971d78d0873708e0ad38fba602ceafefd4da8ebbf9d9c591bc4799acb5'
             'cfcd5c177423df8b7b98b0500fe7ab0757f895ed945c33e205963f0069c7a3be'
-            '2d8246d2ff6312cd8ff832c50f4176201e43fe9d55e9b758bec9f0cad75bd0ba'
             '5574a68b1c7733769835bb856a8c32e54398dfde59f264708672b87b73b3c6ea'
+            '7c948773d758418d8a436067265d678c444827562c46b9fced2ff31ced108481'
             '458d7e024d33d4965b14b9b987f01a2884ff28761cff5da7c6a54132a95e9f36')
 
 prepare() {

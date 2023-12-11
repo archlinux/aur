@@ -1,36 +1,40 @@
+From 2b1a33a519668105eb7261c2d8964da576be6146 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Wed, 29 Nov 2023 22:18:11 +1300
+Subject: [PATCH v14.1 3/4] HID: asus: add ROG Ally N-Key ID and keycodes
+
+---
+ drivers/hid/hid-asus.c | 7 +++++++
+ drivers/hid/hid-ids.h  | 1 +
+ 2 files changed, 8 insertions(+)
+
 diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
-index d1094bb1aa42..47fb048bb5fd 100644
+index cdd998a761fe..3a1a6024d299 100644
 --- a/drivers/hid/hid-asus.c
 +++ b/drivers/hid/hid-asus.c
-@@ -897,7 +897,15 @@ static int asus_input_mapping(struct hid
+@@ -847,6 +847,10 @@ static int asus_input_mapping(struct hid_device *hdev,
  		case 0xb3: asus_map_key_clear(KEY_PROG3);	break; /* Fn+Left next aura */
  		case 0x6a: asus_map_key_clear(KEY_F13);		break; /* Screenpad toggle */
  		case 0x4b: asus_map_key_clear(KEY_F14);		break; /* Arrows/Pg-Up/Dn toggle */
--
-+		case 0xa0: asus_map_key_clear(KEY_F10);		break; /* ROG Ally back paddle + A */
-+		case 0xa1: asus_map_key_clear(KEY_F11);		break;
-+		case 0xa2: asus_map_key_clear(KEY_F12);		break; /* ROG Ally back paddle + D Pad Up */
-+		case 0xa3: asus_map_key_clear(KEY_F13);		break;
-+		case 0xa4: asus_map_key_clear(KEY_F14);		break; /* ROG Ally back paddle + Y */
 +		case 0xa5: asus_map_key_clear(KEY_F15);		break; /* ROG Ally left back */
 +		case 0xa6: asus_map_key_clear(KEY_F16);		break; /* ROG Ally QAM button */
 +		case 0xa7: asus_map_key_clear(KEY_F17);		break; /* ROG Ally ROG long-press */
 +		case 0xa8: asus_map_key_clear(KEY_F18);		break; /* ROG Ally ROG long-press-release */
  
+ 
  		default:
- 			/* ASUS lazily declares 256 usages, ignore the rest,
-@@ -1259,6 +1267,9 @@ static const struct hid_device_id asus_d
+@@ -1239,6 +1243,9 @@ static const struct hid_device_id asus_devices[] = {
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
  	    USB_DEVICE_ID_ASUSTEK_ROG_NKEY_KEYBOARD3),
  	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD },
- 	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
++	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
 +	    USB_DEVICE_ID_ASUSTEK_ROG_NKEY_ALLY),
 +	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD },
-+	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
  	    USB_DEVICE_ID_ASUSTEK_ROG_CLAYMORE_II_KEYBOARD),
  	  QUIRK_ROG_CLAYMORE_II_KEYBOARD },
- 	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
 diff --git a/drivers/hid/hid-ids.h b/drivers/hid/hid-ids.h
-index c2e9b6d1fd7d..cd6efa46a2bd 100644
+index c6e4e0d1f214..6debff9ad678 100644
 --- a/drivers/hid/hid-ids.h
 +++ b/drivers/hid/hid-ids.h
 @@ -208,6 +208,7 @@
@@ -41,3 +45,6 @@ index c2e9b6d1fd7d..cd6efa46a2bd 100644
  #define USB_DEVICE_ID_ASUSTEK_ROG_CLAYMORE_II_KEYBOARD	0x196b
  #define USB_DEVICE_ID_ASUSTEK_FX503VD_KEYBOARD	0x1869
  
+-- 
+2.41.0
+

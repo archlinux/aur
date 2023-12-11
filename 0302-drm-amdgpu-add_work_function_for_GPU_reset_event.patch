@@ -1,0 +1,97 @@
+From 6cdd4582ad64814b7685c42ed64addaa99c3726c Mon Sep 17 00:00:00 2001
+From: Shashank Sharma <shashank.sharma@amd.com>
+Date: Mon, 7 Mar 2022 15:33:00 +0100
+Subject: [PATCH] drm/amdgpu: add work function for GPU reset event
+
+This patch adds a work function, which sends a GPU reset
+uevent and some contextual infomration, like the PID and
+some status flags. This work should be scheduled during
+a GPU reset.
+
+The userspace can do some recovery and post-processing work
+based on this event and information.
+
+V2: Addressed review comments from Christian
+- Changed the name of the work to gpu_reset_event_work
+- Added a structure to accommodate some additional information
+  (like a PID and some flags)
+- Do not add new structure in amdgpu.h
+
+Cc: Alexander Deucher <alexander.deucher@amd.com>
+Cc: Christian Koenig <christian.koenig@amd.com>
+Cc: Amaranath Somalapuram <amaranath.somalapuram@amd.com>
+Signed-off-by: Shashank Sharma <shashank.sharma@amd.com>
+(cherry picked from commit f63b09e78126f7da67b69409e2cce1d3ab2d7f46)
+[Forward port to 6.0]
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu.h        |  3 +++
+ drivers/gpu/drm/amd/amdgpu/amdgpu_device.c | 13 +++++++++++++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu.h b/drivers/gpu/drm/amd/amdgpu/amdgpu.h
+index a79d53bdbe136a..cf2309ec1da9ac 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu.h
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu.h
+@@ -57,6 +57,7 @@
+ #include <drm/amdgpu_drm.h>
+ #include <drm/drm_gem.h>
+ #include <drm/drm_ioctl.h>
++#include <drm/drm_sysfs.h>
+ 
+ #include <kgd_kfd_interface.h>
+ #include "dm_pp_interface.h"
+@@ -1017,6 +1018,7 @@ struct amdgpu_device {
+ 
+ 	int asic_reset_res;
+ 	struct work_struct		xgmi_reset_work;
++	struct work_struct		gpu_reset_event_work;
+ 	struct list_head		reset_list;
+ 
+ 	long				gfx_timeout;
+@@ -1051,6 +1053,7 @@ struct amdgpu_device {
+ 	bool				barrier_has_auto_waitcnt;
+ 
+ 	struct amdgpu_reset_control     *reset_cntl;
++	struct drm_reset_event		reset_event_info;
+ 	uint32_t                        ip_versions[MAX_HWIP][HWIP_MAX_INSTANCE];
+ 
+ 	bool				ram_is_direct_mapped;
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+index 2b8356699f235d..ace5a79042fc12 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+@@ -80,6 +80,7 @@
+ #include <linux/pm_runtime.h>
+ 
+ #include <drm/drm_drv.h>
++#include <drm/drm_sysfs.h>
+ 
+ #if IS_ENABLED(CONFIG_X86)
+ #include <asm/intel-family.h>
+@@ -3332,6 +3333,17 @@ bool amdgpu_device_has_dc_support(struct amdgpu_device *adev)
+ 	return amdgpu_device_asic_has_dc_support(adev->asic_type);
+ }
+ 
++static void amdgpu_device_reset_event_func(struct work_struct *__work)
++{
++	struct amdgpu_device *adev = container_of(__work, struct amdgpu_device,
++						  gpu_reset_event_work);
++	/*
++	 * A GPU reset has happened, inform the userspace and pass the
++	 * reset related information.
++	 */
++	drm_sysfs_reset_event(&adev->ddev, &adev->reset_event_info);
++}
++
+ static void amdgpu_device_xgmi_reset_func(struct work_struct *__work)
+ {
+ 	struct amdgpu_device *adev =
+@@ -3603,6 +3615,7 @@ int amdgpu_device_init(struct amdgpu_device *adev,
+ 			  amdgpu_device_delay_enable_gfx_off);
+ 
+ 	INIT_WORK(&adev->xgmi_reset_work, amdgpu_device_xgmi_reset_func);
++	INIT_WORK(&adev->gpu_reset_event_work, amdgpu_device_reset_event_func);
+ 
+ 	adev->gfx.gfx_off_req_count = 1;
+ 	adev->gfx.gfx_off_residency = 0;
