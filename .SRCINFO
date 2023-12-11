@@ -1,6 +1,6 @@
 pkgbase = r-archive
 	pkgdesc = Multi-Format Archive and Compression Support
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=archive
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = r-archive
 	depends = r-tibble
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/archive_1.1.6.tar.gz
-	md5sums = ab6c75b3fb60317b4515d223b3acd57c
-	sha256sums = ece03367ad10e35b3c4d4a7fa9b01e5a0e68604c43461f11d6e9ef25fecc504b
+	source = https://cran.r-project.org/src/contrib/archive_1.1.7.tar.gz
+	md5sums = f3504e5b4704312ce00d704d1e186083
+	sha256sums = 11efd69302d4fbc940b740451a4284cdc348e3401ae70d2de37612130ee07d7c
 
 pkgname = r-archive
