@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=planify
 _app_id=io.github.alainm23.planify
-pkgver=4.2
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="Task manager with Todoist support"
 arch=('x86_64')
 url="https://github.com/alainm23/planify"
@@ -13,7 +13,7 @@ makedepends=('git' 'gobject-introspection' 'meson' 'vala')
 checkdepends=('appstream')
 conflicts=('elementary-planner')
 replaces=('elementary-planner')
-_commit=6279e37cbaaf42d9294e76295f887fc00d0160a0  # tags/4.2^0
+_commit=ecdfcd3609d5a034fea90e3936d10d3212943184  # tags/4.2.1^0
 source=("git+https://github.com/alainm23/planify.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -27,7 +27,7 @@ prepare() {
 }
 
 build() {
-  arch-meson "$pkgname" build
+  arch-meson "$pkgname" build -Dprofile=default
   meson compile -C build
 }
 
@@ -40,6 +40,5 @@ check() {
 package() {
   meson install -C build --destdir "$pkgdir"
 
-  ln -s "/usr/bin/${_app_id}.Devel" "$pkgdir/usr/bin/${_app_id}"
-  ln -s "/usr/bin/${_app_id}" "$pkgdir/usr/bin/planify"
+  ln -s "/usr/bin/${_app_id}" "$pkgdir/usr/bin/$pkgname"
 }
