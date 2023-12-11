@@ -1,5 +1,5 @@
 pkgbase = maya-usd-bin
-	pkgdesc = Autodesk Maya Universal Scene Discription Plugin
+	pkgdesc = Autodesk Maya Universal Scene Description Plugin
 	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://github.com/Autodesk/maya-usd
