@@ -1,4 +1,4 @@
-pkgbase = otf-besley
+pkgbase = besley-font
 	pkgdesc = A serif font by indestructible type* inspired by designs of Robert Besley
 	pkgver = 4.0
 	pkgrel = 1
@@ -8,4 +8,6 @@ pkgbase = otf-besley
 	source = https://github.com/indestructible-type/Besley/archive/99d5b97fcb863c4a667571ac8f86f745c345d3ab.tar.gz
 	sha256sums = 03d31c678510aa3446702a14a42129a225d9149c074231c8e3499ba7e3946032
 
-pkgname = otf-besley
+pkgname = ttf-besley
+
+pkgname = ttf-besley-variable
