@@ -1,18 +1,19 @@
 pkgbase = iscan-plugin-gt-s80
-	pkgdesc = iscan plugin for Epson GT-S50 and GT-S80 scanner.
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgdesc = iscan plugin for Epson GT-S50 and GT-S80 scanners
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	install = gt-s80.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = deb2targz
-	depends = iscan
-	depends = iscan-data
-	optdepends = iscan-plugin-esdip: provides auto-crop and deskew function
-	source = http://a1227.g.akamai.net/f/1227/40484/7d/download.ebz.epson.net/dsc/f/01/00/01/79/56/4ba44418d108b168a9416282fb7fab4eea801e8d//esci-interpreter-gt-s80_0.2.1-1_i386.deb
-	md5sums = 678c3ca4a1ae769fff9cbf466646cd86
+	noextract = iscan-gt-s80-bundle-2.30.4.x86.deb.tar.gz
+	noextract = iscan-gt-s80-bundle-2.30.4.x64.deb.tar.gz
+	source_i686 = https://download2.ebz.epson.net/iscan/plugin/gt-s80/deb/x86/iscan-gt-s80-bundle-2.30.4.x86.deb.tar.gz
+	sha256sums_i686 = ad619ff37b165dadce3efd89559e2bc9a7b4596c5fc223378ef66af53314ca20
+	source_x86_64 = https://download2.ebz.epson.net/iscan/plugin/gt-s80/deb/x64/iscan-gt-s80-bundle-2.30.4.x64.deb.tar.gz
+	sha256sums_x86_64 = 082b34012024b501161d93991d6b3cb4ffc8ddcb71ec485ad8683f98237d47d9
 
 pkgname = iscan-plugin-gt-s80
-
+	depends = iscan
+	depends = iscan-data
