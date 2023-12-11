@@ -1,6 +1,6 @@
 pkgbase = libliftoff-git
-	pkgdesc = Lightweight KMS plane library
-	pkgver = 0.1.0.r31.g2e1dd93
+	pkgdesc = Lightweight KMS plane library (git development version)
+	pkgver = 0.4.0.r7.g58b8494
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/emersion/libliftoff
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = libliftoff-git
 	makedepends = meson
 	makedepends = ninja
 	depends = libdrm
+	depends = glibc
 	provides = libliftoff
 	conflicts = libliftoff
 	source = libliftoff-git::git+https://gitlab.freedesktop.org/emersion/libliftoff.git
