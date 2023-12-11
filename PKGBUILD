@@ -52,8 +52,8 @@ optdepends=(
   'xorg-xset: User preference utility for X'
 )
 makedepends=('binutils' 'coreutils' 'git')
-conflicts=('airgeddon-git')
-provides=('airgeddon-git')
+conflicts=($_pkgname)
+provides=($_pkgname)
 sha256sums=('SKIP')
 arch=('any')
 

@@ -52,8 +52,8 @@ pkgbase = airgeddon-git
 	optdepends = wireshark-cli: Network traffic and protocol analyzer/sniffer CLI tools
 	optdepends = xorg-xdpyinfo: Display information utility for X
 	optdepends = xorg-xset: User preference utility for X
-	provides = airgeddon-git
-	conflicts = airgeddon-git
+	provides = airgeddon
+	conflicts = airgeddon
 	source = airgeddon::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=master
 	sha256sums = SKIP
 
