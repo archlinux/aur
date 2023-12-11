@@ -4,7 +4,7 @@ _pkgname=drafting
 pkgname=(otf-$_pkgname ttf-$_pkgname ttf-$_pkgname-variable)
 pkgbase=$_pkgname-font
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A monospace font by indestructible type* inspired by typewriters'
 arch=(any)
 url=https://indestructibletype.com/Drafting
@@ -16,6 +16,7 @@ source=($_url/archive/$_commit.tar.gz)
 sha256sums=(d87d678d1d5ec86eb2f025f42a4722f8873fce953318bb4421953ec700dbe3a4)
 
 prepare() {
+    rm -rf $_pkgname-$_commit
     mv Drafting-$_commit $_pkgname-$_commit
 }
 
