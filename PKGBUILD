@@ -8,7 +8,7 @@ shopt -s extglob
 
 pkgname=pandoc-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=3.1.3.r7.gb1a78b0dd
+pkgver=3.1.9.r75.g42091d1e1
 pkgrel=1
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 url='https://pandoc.org'
@@ -52,5 +52,6 @@ package() {
     cd "$_pkgname"
     find ./ -path '*/dist/*' -type f -name pandoc -perm /u+x \
         -execdir install -Dm755 -t "$pkgdir/usr/bin/" {} \;
-    install -Dm644 man/pandoc.1 "${pkgdir}"/usr/share/man/man1/pandoc.1
+    install -Dm644 pandoc-cli/man/pandoc.1 \
+        "${pkgdir}"/usr/share/man/man1/pandoc.1
 }
