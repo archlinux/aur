@@ -1,9 +1,8 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 # Contributor: Blazej Sewera <blazejok1 at wp dot pl>
 
-# TODO: add otf-besley once merge request is approved
 _pkgname=besley
-pkgname=(ttf-$_pkgname ttf-$_pkgname-variable)
+pkgname=(otf-$_pkgname ttf-$_pkgname ttf-$_pkgname-variable)
 pkgbase=$_pkgname-font
 pkgver=4.0
 pkgrel=1
