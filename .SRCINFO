@@ -1,12 +1,11 @@
 pkgbase = opal-appimage
 	pkgdesc = Plays relaxing music in the background
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codedead.com/
 	arch = x86_64
 	license = GPL3
-	depends = zlib
-	depends = glibc
+	makedepends = squashfuse
 	provides = opal=1.3.0
 	conflicts = opal
 	options = !strip

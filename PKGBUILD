@@ -2,18 +2,23 @@
 pkgname=opal-appimage
 _pkgname=Opal
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plays relaxing music in the background"
 arch=('x86_64')
 url="https://codedead.com/"
-_githuburl="https://github.com/CodeDead/opal"
+_ghurl="https://github.com/CodeDead/opal"
 license=('GPL3')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'glibc')
+depends=()
+makedepends=(
+    'squashfuse'
+)
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-${pkgver}.AppImage")
+source=(
+    "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-${pkgver}.AppImage"
+)
 sha256sums=('4f5fb19cf085c3f160f373100c89a4ff67dc1bff5b270db852df115b658328ef')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
