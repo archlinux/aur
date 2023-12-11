@@ -25,13 +25,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1a25e3b0f4bf16543e5f802cf6d9d189bcae27617ca8be936ad866a8955d9ce6'
-            '9f000b99bb76d849688063320e2933f2b7c1fe6fc884844edc35ba58c578adb3')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 sha256sums_aarch64=('9df087cb629bf27c0e333b48046a723862c0bb79d0bfe67b6b0e6567e911cc6a')
 sha256sums_x86_64=('5392aedace5ab5dd59894dfd0d6e542b3bc610533a9d0220b5fce5d6a5dfd69b')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    sed -i "s|@electronversion@|${_electronversion}|" "$srcdir/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
