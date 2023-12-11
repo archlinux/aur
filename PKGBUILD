@@ -23,6 +23,7 @@ prepare() {
 
 build() {
   cd "$srcdir/yuma123"
+  libtoolize
   ./configure CFLAGS='-g -O0' CXXFLAGS='-g -O0' --prefix=/usr
   make
 }
