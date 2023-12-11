@@ -9,16 +9,20 @@ pkgdesc="X Neko Project II, a PC-9801 emulator"
 arch=('x86_64')
 url='http://www.nonakap.org/np2'
 license=('BSD')
-depends=('gtk2'
-         'sdl2_mixer'
-         'libsm'
-         )
-source=("http://www.nonakap.org/np2/release/xnp2-${pkgver}.tar.bz2"
-        'patch.patch'
-        )
-sha256sums=('e0b8c93f54682a4b3373907fd9ffe78094f95f7430dffc5038eccbcc4c3f78fd'
-            '77b52b2832a9fc3ef8e71ccf85e5e04580247e80e4d973f46f71adc409df99c6'
-            )
+depends=(
+  'gtk2'
+  'sdl2_mixer'
+  'libsm'
+)
+source=(
+  "https://www.nonakap.org/np2/release/xnp2-${pkgver}.tar.bz2"
+  'patch.patch'
+  )
+sha256sums=(
+  'e0b8c93f54682a4b3373907fd9ffe78094f95f7430dffc5038eccbcc4c3f78fd'
+  '77b52b2832a9fc3ef8e71ccf85e5e04580247e80e4d973f46f71adc409df99c6'
+)
+options=('debug')
 
 prepare() {
   mkdir -p build
