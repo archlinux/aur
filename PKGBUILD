@@ -24,12 +24,13 @@ _scriptTailMd5sums[7.4]=b9878ccca286ec7faa4d230633294853
 _prams_Austria=(de_AT 29762 'CEWE Fotowelt' 7.1.4)
 _prams_Belgie=(nl_BE 28049 'CEWE Photoservice' 7.1.4)
 _prams_Belgique=(fr_BE 28049 'CEWE Photoservice' 7.1.4)
-_prams_Czechia=(cs_CZ 4860 'CEWE FOTOLAB fotosvet' 7.1.3 "CEWE fotosvět")
+_prams_Czechia=(cs_CZ 4860 'CEWE fotosvet' 7.3.3 "CEWE fotosvět")
 _prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.5)
 _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
-_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.3.3 'CEWE Fotobuch')
+_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.4.2 'CEWE Fotobuch')
 _prams_Fotowelt=(de_DE 6822 'CEWE Fotowelt' 7.4.0)
-_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.3.3)
+_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.4.2)
+_prams_Pixum=(de_DE 1291 'Pixum Fotowelt' 7.3.3)
 _prams_Italy=(it_IT 19991 'CEWE.IT Foto World' 7.1.5)
 _prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.5)
 _prams_Luxembourg=(fr_LU 32905 'CEWE Photoservice' 7.1.4)
@@ -80,8 +81,6 @@ conflicts=(cewe-fotowelt cewe-fotobuch cewe-fotoservice cewe-monlivrephoto-fnac 
 conflicts=(${conflicts[@]/$pkgname/})
 
 pkgver=${_prams[3]}
-source=($source 'updater.pl')
-md5sums=(SKIP SKIP)
 
 url="http://www.cewe.de/"
 license=("custom:eula")
@@ -89,6 +88,7 @@ depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat' 'libtiff5'
 makedepends=('unzip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=($source 'updater.pl')
+md5sums=(SKIP SKIP)
 install="$pkgname.install"
 
 _installDir=/usr/share/$pkgname
