@@ -1,7 +1,7 @@
 # Maintainer: Ulises Jeremias Cornejo Fandos <ulisescf.24@gmail.com>
 
 pkgname=dots-stable
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs"
 arch=(any)
