@@ -1,8 +1,8 @@
-# Maintainer: Nicolas Martyanoff <khaelin@gmail.com>
+# Maintainer: Nicolas Martyanoff <nicolas@n16f.net>
 
 pkgname="freebsd-pkg"
 _pkgname="pkg"
-pkgver="1.18.4"
+pkgver="1.20.0"
 pkgrel="1"
 pkgdesc="Package management tool for FreeBSD."
 url="https://github.com/freebsd/pkg"
@@ -13,7 +13,7 @@ depends=("libarchive" "libbsd" "libelf")
 makedepends=("autoconf" "automake" "libtool" "pkgconf")
 
 source=("https://github.com/freebsd/pkg/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("d5e197a8514e147b9dab5fd4a43ddc02efe40ba1b686bd8f530ef21846b3e449")
+sha256sums=("bce659b9d50f3e341afe12ac9b367d4d455ac380e5f6c319095c5b26f42538ee")
 
 build() {
     cd "$_pkgname-$pkgver"
