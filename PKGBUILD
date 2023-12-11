@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-bin
 _pkgname=Mailspring
-pkgver=1.13.1
+pkgver=1.13.2
+_electronversion=22
 pkgrel=1
 pkgdesc="A beautiful, fast and fully open source mail client for Mac, Windows and Linux."
 arch=('x86_64')
@@ -11,7 +12,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron22'
+    "electron${_electronversion}"
     'krb5'
     'hicolor-icon-theme'
     'db5.3'
@@ -21,9 +22,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e9badb3f26e933e295262770e87a6556a1432eb30cc3bfee27f2826668d90504'
-            '6958babe41c4d6e8b6dec91fcdd0c6cf2d4b7b99b71974b7339862be68d90965')
+sha256sums=('284a0a520e424583f490d4f88ebee98d4a7a80ae1c43fa90122381342ae16c53'
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s| %U||g" -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
