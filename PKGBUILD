@@ -1,7 +1,7 @@
 # Maintainer: Thomas Arnhold <thomas at arnhold dot org>
 pkgname=python-yahooquery
 _name=${pkgname#python-}
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Python wrapper for an unofficial Yahoo Finance API "
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-lxml' 'python-pandas' 'python-requests-futures' 'pytho
 optdepends=('python-selenium')
 makedepends=('python-build' 'python-flit' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3c06c267b50e71f3e9ac402491adcd76e8c1489d31e66ceb0c905af8cc0a6fe9')
+sha256sums=('c7a8816a11d6f25b1009efe1febd3589469750100cdaa98c5dade96d67dff8ce')
 
 build() {
   cd "$_name-$pkgver"
