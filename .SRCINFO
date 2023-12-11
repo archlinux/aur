@@ -1,7 +1,7 @@
 pkgbase = clash-verge-rev-bin
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
 	pkgver = 1.4.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	arch = x86_64
 	arch = i686
