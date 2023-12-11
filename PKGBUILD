@@ -12,10 +12,10 @@ provides=('kraftkit')
 conflicts=('kraftkit')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/unikraft/kraftkit/releases/download/v0.7.1/kraft_0.7.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('e24f0f86d2df6a7f3861e258664c3b1d90baac98426a427df8ca58fcb3289c0c')
+sha256sums_aarch64=('e575333d51456193e3ff9b7c87618cbf658bbd762ed24e8be88232a10748ee53')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/unikraft/kraftkit/releases/download/v0.7.1/kraft_0.7.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('46f786fb39ec2ee5516b4c9467d58a01c0bcf98053b88034e8458c13c621ed68')
+sha256sums_x86_64=('297af299ca72f706ffa05d08131defbadf4d07ed0abcd6df4bbcd54981b32893')
 
 package() {
   # bin
