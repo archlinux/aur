@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=restfox-bin
-pkgver=0.3.1
+pkgver=0.3.2
 _electronversion=27
 pkgrel=1
 pkgdesc="Offline-first web HTTP client"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/flawiddsouza/Restfox/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8bb0997a9ce2eec982be5df626c1d3098cc1141f5edabecd40f283b44001e6e8'
+sha256sums=('22c67fe9512cfd420b7e8d91afbf4c23fbacdc65a65e9a903789c23ac37867c1'
             '82601c8ed24f59528b28c23a2fb309f9743dffc860ba06ce8d253e1ed8959a16'
             '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 
@@ -28,7 +28,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}"/data.tar.zst
+    bsdtar -xf "${srcdir}"/data.tar.gz
     sed "s| %U||g;s|Utility|Utility;Development|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
