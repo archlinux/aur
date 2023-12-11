@@ -3,18 +3,26 @@
 
 _pkgname=besley
 pkgname=otf-$_pkgname
-pkgver=2.0
+pkgver=4.0
 pkgrel=1
 pkgdesc='A serif font by indestructible type* inspired by designs of Robert Besley'
 arch=('any')
 url=https://indestructibletype.com/Besley
 license=(OFL)
 
-source=(https://github.com/indestructible-type/Besley/files/5761580/Besley.zip)
-sha256sums=(330c2616e2040e555bbd05fa6f48b43f4c862c3f454f08eadef73c3a99ae729b)
+_url=https://github.com/indestructible-type/Besley
+_commit=99d5b97fcb863c4a667571ac8f86f745c345d3ab
+source=($_url/archive/$_commit.tar.gz)
+sha256sums=(03d31c678510aa3446702a14a42129a225d9149c074231c8e3499ba7e3946032)
+
+prepare() {
+    mv -f Besley-$_commit $_pkgname-$_commit
+}
 
 package() {
-    install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname TrueType/*.ttf
-    install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE.md
-    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname README.txt
+    cd "$srcdir"/$_pkgname-$_commit
+    install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/otf/*.otf
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
+        AUTHORS.txt CONTRIBUTORS.txt FONTLOG.txt README.md
 }
