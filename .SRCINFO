@@ -1,0 +1,26 @@
+pkgbase = radicle-httpd-bin
+	pkgdesc = http daemon for radicle, a peer-to-peer GitHub alternative
+	pkgver = 20231206
+	pkgrel = 1
+	url = https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5
+	install = .INSTALL
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	provides = radicle-httpd
+	conflicts = radicle-httpd
+	source_x86_64 = https://files.radicle.xyz/6ca7da276839e5217b340dbfff8cd9095d8464c5/x86_64-unknown-linux-musl/radicle-httpd
+	source_x86_64 = https://files.radicle.xyz/6ca7da276839e5217b340dbfff8cd9095d8464c5/x86_64-unknown-linux-musl/radicle-httpd.1
+	source_x86_64 = radicle-httpd.service
+	sha256sums_x86_64 = 7908fd079854797ba6f26f023c13541f57ce7716439a44158bc7359984d5f70d
+	sha256sums_x86_64 = 9eff5f4507c754502df80f8c2609f3b1617d6c9a559304930bd6133de52b034b
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://files.radicle.xyz/6ca7da276839e5217b340dbfff8cd9095d8464c5/x86_64-unknown-linux-musl/radicle-httpd
+	source_aarch64 = https://files.radicle.xyz/6ca7da276839e5217b340dbfff8cd9095d8464c5/x86_64-unknown-linux-musl/radicle-httpd.1
+	source_aarch64 = radicle-httpd.service
+	sha256sums_aarch64 = ab6f0403f00256706ca41bfa527ce0572cb1fe24d29b714971323d9691fdbbb7
+	sha256sums_aarch64 = a298e2c91e9ebab33be744bc1fc667371af4c89fb108a5962967c06f0a9c34be
+	sha256sums_aarch64 = SKIP
+
+pkgname = radicle-httpd-bin

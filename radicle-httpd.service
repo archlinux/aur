@@ -1,0 +1,12 @@
+[Unit]
+After=syslog.target network.target
+Description=Radicle http daemon
+
+[Service]
+ExecStart=/usr/bin/radicle-httpd
+KillMode=process
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target

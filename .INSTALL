@@ -1,0 +1,5 @@
+post_install() {
+	echo
+	echo "    Enable the radicle http daemon with \`systemctl --user enable --now radicle-httpd.service\`"
+	echo
+}
