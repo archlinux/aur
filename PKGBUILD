@@ -57,15 +57,6 @@ provides=('airgeddon-git')
 sha256sums=('SKIP')
 arch=('any')
 
-prepare() {
-  if [ -d "$srcdir/$pkgname" ]; then
-    rm -rf "$srcdir/$pkgname"
-  fi
-
-  mkdir -p "$srcdir/$pkgname"
-  cd "$srcdir/$pkgname"
-}
-
 pkgver() {
   cd "$_pkgname"
   ( set -o pipefail
