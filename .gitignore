@@ -6,3 +6,4 @@ pkg
 *.pkg.tar
 .psci_modules
 *tar.zst
+commands
