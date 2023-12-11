@@ -19,6 +19,10 @@ source=("git+https://github.com/vlvassilev/yuma123")
 prepare() {
   cd "$srcdir/yuma123"
   libtoolize
+  #Move ltmain.sh from ../.. to .
+  if [ -d ../.. ] && [ -n "$(find ../.. -maxdepth 1 -name '*.sh' -print -quit)" ]; then
+      mv ../../*.sh .
+  fi
   autoreconf -i -f
 }
 
