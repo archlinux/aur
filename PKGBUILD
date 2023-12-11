@@ -5,13 +5,13 @@ _pkgname=${pkgname}
 _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
-pkgver='1.3.13'
-pkgrel='3'
+pkgver='1.3.14'
+pkgrel='1'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
-arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
+arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' 'riscv64' )
 url=https://${_pkggopath}
 license=('license-free')
 makedepends=("git" "go" "musl" "kernel-headers-musl")
@@ -27,11 +27,10 @@ source=("skywire-${_tag_ver}.tar.gz::${url}/archive/refs/tags/${_tag_ver}.tar.gz
 "https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
 "all_servers.json"::"https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers"
 )
-sha256sums=('e05e46b2315e4dea3b843425004e0e501f999b727265f434a60cd3874e2216e9'
-'SKIP'
-'SKIP'
-'SKIP'
-)
+sha256sums=('57437d305229a47a3698e06b16ecf3703add2a51b670c3fb9846d73dd4b1bf4e'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 _binary=("skywire-cli" "skywire-visor")
 _appbinary=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
 
