@@ -1,26 +1,24 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pkgsearch
-_cranver=3.1.2
+_cranver=3.1.3
 pkgname=r-${_cranname,,}
 pkgdesc="Search and Query CRAN R Packages"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=("any")
 depends=(
     "r"
     "r-curl"
     "r-jsonlite"
-    "r-parsedate>=1.3.0"
-    "r-prettyunits"
 )
 optdepends=(
-    "r-mockery"
     "r-covr"
     "r-memoise"
+    "r-mockery"
     "r-pillar"
     "r-pingr>=2.0.0"
     "r-rstudioapi"
@@ -28,6 +26,7 @@ optdepends=(
     "r-shinyjs"
     "r-shinywidgets"
     "r-whoami"
+    "r-withr"
 )
 
 # The unittests for `r-pkgsearch` have multiple circular
@@ -46,11 +45,11 @@ optdepends=(
 
 # checkdepends=(
 #     "${optdepends[@]}"
-#     "r-testthat>=2.1.0"
+#     "r-testthat>=3.0..0"
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("4b42c046d0e44dc21b21157904d0c1373315e0a2ec0c799a7e64bc114b7081664a27f25b0fd4f15eff6dcf10008fedd15d66b8eefef6d9dfecd905fab87111f8")
+b2sums=("2021907562f44165304dbb762b6561e58d935f2d7c2822cec12545bf169a4379d49a76006aa65a64e2f164cadafb8120c9712813b8068b9f6c6a6de0fe9eaa6c")
 
 build() {
     mkdir -p "${srcdir}/build/"
