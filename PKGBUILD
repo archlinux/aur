@@ -3,25 +3,29 @@ pkgname=yuview-appimage
 _pkgname=YUView
 _appname="de.rwth_aachen.ient.${_pkgname}"
 pkgver=2.13
-pkgrel=5
+pkgrel=6
 pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset"
 arch=('x86_64')
 url="http://ient.github.io/YUView"
-_githuburl="https://github.com/IENT/YUView"
+_ghurl="https://github.com/IENT/YUView"
 license=('GPL3')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'hicolor-icon-theme' 'glibc')
-makedepends=('squashfuse')
+depends=(
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'squashfuse'
+)
 options=("!strip")
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}.AppImage")
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.AppImage")
 sha256sums=('91b521f1b55fb396e5b873c633d464d4fd33fb1ca95eeaedff3a7b8a06cf774f')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -e "s|${_pkgname} %F|${pkgname%-appimage} --no-sandbox %F|g" \
-        -e"s|${_appname}|${pkgname%-bin}|g" \
+        -e "s|${_appname}|${pkgname%-bin}|g" \
         -i "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
