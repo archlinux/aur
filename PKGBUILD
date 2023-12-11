@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rmpi
-_pkgver=0.7-1
+_pkgver=0.7-2
 pkgname=r-${_pkgname,,}
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Interface (Wrapper) to MPI (Message-Passing Interface)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
   nvidia-utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('17dae27dea9317aacabc2255dfcf2538fb3195472cedd521256ced9a20dd2dc1')
+sha256sums=('8591fa9f50de52535a32b36e7ed142c6ca4e03fdfdbef79a1e27a63ed5322eef')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
