@@ -1,7 +1,7 @@
 pkgbase = dedao-dl-bin
 	pkgdesc = 得到APP课程下载工具,可在终端查看文章内容,可生成PDF,音频文件,markdown文稿,可下载电子书。
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yann0917/dedao-dl
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = dedao-dl-bin
 	provides = dedao-dl=1.2.1
 	conflicts = dedao-dl
 	source = dedao-dl-1.2.1::https://github.com/yann0917/dedao-dl/releases/download/v1.2.1/dedao-linux-amd64
-	source = LICENSE::https://raw.githubusercontent.com/yann0917/dedao-dl/v1.2.1/LICENSE
+	source = LICENSE-1.2.1::https://raw.githubusercontent.com/yann0917/dedao-dl/v1.2.1/LICENSE
 	sha256sums = 7953c95532d5cff7d2d8d8758bd4fdbb433b3a0dbd6411992a0d388b1b281e41
 	sha256sums = 1ba8379d33340e518c32fe24046f7cb0530250ec193e7e3d0ea72fd558a1e926
 
