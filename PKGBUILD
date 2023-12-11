@@ -3,18 +3,32 @@
 pkgname=tvtower-bin
 _pkgname=TVTower
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C."
 arch=('x86_64')
 url="https://www.tvtower.org/"
-_githuburl="https://github.com/TVTower/TVTower"
+_ghurl="https://github.com/TVTower/TVTower"
 license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('libglvnd' 'freetype2' 'glibc' 'gcc-libs' 'libxcb' 'lib32-glu' 'lib32-libxcb' 'lib32-gcc-libs' 'lib32-libglvnd' 'lib32-glibc' 'lib32-freetype2')
-makedepends=('gendesk')
+depends=(
+	'libglvnd'
+	'freetype2'
+	'libxcb'
+	'lib32-glu'
+	'lib32-libxcb'
+	'lib32-gcc-libs'
+	'lib32-libglvnd'
+	'lib32-glibc'
+	'lib32-freetype2'
+)
+makedepends=(
+	'gendesk'
+)
 noextract=("${pkgname%-bin}-${pkgver}.zip")
-source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_20230322.zip")
+source=(
+	"${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_20230322.zip"
+)
 sha256sums=('a72345b65968d95e425d823a277b47d3fca325b750ad01c4ed8ed8e831056898')
 build() {
 	gendesk -q -f -n --categories "Game" --name "${_pkgname}" --exec "${pkgname%-bin}"
@@ -34,5 +48,5 @@ package() {
 	install -Dm644 "${srcdir}/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 	install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 	chmod 777 "${pkgdir}/opt/${pkgname%-bin}/savegames"
-	find "${pkgdir}/opt/${pkgname%-bin}" -name "log.*.txt" -perm 644 -exec chmod 666 {} \;
+	find "${pkgdir}/opt/${pkgname%-bin}/logfiles" -name "log.*.txt" -perm 644 -exec chmod 666 {} \;
 }

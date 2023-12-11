@@ -1,15 +1,13 @@
 pkgbase = tvtower-bin
 	pkgdesc = A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C.
 	pkgver = 0.8.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.tvtower.org/
 	arch = x86_64
 	license = custom
 	makedepends = gendesk
 	depends = libglvnd
 	depends = freetype2
-	depends = glibc
-	depends = gcc-libs
 	depends = libxcb
 	depends = lib32-glu
 	depends = lib32-libxcb
