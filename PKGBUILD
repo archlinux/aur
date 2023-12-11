@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=opencomic
 _pkgname=OpenComic
-pkgver=1.0.0_beta.5
+pkgver=1.0.0
+_electronversion=25
 pkgrel=1
 pkgdesc="Comic and Manga reader, written with Node.js and using Electron"
 arch=(
@@ -12,7 +13,7 @@ url="https://github.com/ollm/OpenComic"
 license=('GPL3')
 conflicts=("${pkgname}")
 depends=(    
-    'electron25'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'gconf'
     'libnotify'
@@ -25,22 +26,30 @@ depends=(
     'libvips'
 )
 makedepends=(
-    'asar'
     'gendesk'
     'npm>=8.9.0'
     'nodejs'
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver//_/-}"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '6c05c055f05066dafc59862fc8b7d2c170c492e2b550a9b325aa3fc3ed5de0a7')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    npm install --cache "${srcdir}/npm-cache"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    npm install
     if [ "${CARCH}" == "aarch64" ];then
         npm run build-appimage-arm
     elif [ "${CARCH}" == "x86_64" ];then

@@ -1,12 +1,11 @@
 pkgbase = opencomic
 	pkgdesc = Comic and Manga reader, written with Node.js and using Electron
-	pkgver = 1.0.0_beta.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/ollm/OpenComic
 	arch = aarch64
 	arch = x86_64
 	license = GPL3
-	makedepends = asar
 	makedepends = gendesk
 	makedepends = npm>=8.9.0
 	makedepends = nodejs
@@ -23,9 +22,9 @@ pkgbase = opencomic
 	depends = lib32-glibc
 	depends = libvips
 	conflicts = opencomic
-	source = opencomic-1.0.0_beta.5::git+https://github.com/ollm/OpenComic#tag=v1.0.0-beta.5
+	source = opencomic-1.0.0::git+https://github.com/ollm/OpenComic#tag=v1.0.0
 	source = opencomic.sh
 	sha256sums = SKIP
-	sha256sums = 6c05c055f05066dafc59862fc8b7d2c170c492e2b550a9b325aa3fc3ed5de0a7
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = opencomic
