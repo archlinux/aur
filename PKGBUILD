@@ -5,8 +5,8 @@
 # Contributor: iboyperson <tjquillan at gmail dot com>
 # Contributor: Alessandro Pazzaglia <jackdroido at gmail dot com>
 pkgname=pyinstaller
-pkgver=6.2.0
-pkgrel=3
+pkgver=6.3.0
+pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('x86_64')
 url="https://www.pyinstaller.org"
@@ -23,13 +23,15 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=(
+  'python-pillow'
   'python-psutil'
   'python-pytest'
   'python-pytest-xdist'
+  'xmldiff'
 )
 optdepends=('python-argcomplete: tab completion for CLI tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('740836bc8ea2b2cfff47968b57158729fdeea691a3aa823ca6b94ebaa70d6ae6')
+sha256sums=('8dd2d338074404fa32b85465258f8a2e49470b4b63e9267d8c00f77c6d23306b')
 
 prepare() {
   cd "$pkgname-$pkgver"
