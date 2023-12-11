@@ -1,16 +1,16 @@
 pkgbase = oatmeal-bin
 	pkgdesc = Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/dustinblackman/oatmeal
 	license = MIT
 	conflicts = oatmeal
 	provides = oatmeal
 	arch = aarch64
-	source_aarch64 = https://github.com/dustinblackman/oatmeal/releases/download/v0.8.1/oatmeal_0.8.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = df07bd0c80ca444a8d97165c345dc3ff339352c0bd58d4c76781d1c2d66c2752
+	source_aarch64 = https://github.com/dustinblackman/oatmeal/releases/download/v0.8.2/oatmeal_0.8.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4c7db0b3739d3b143333c119b34bd257d6cf24a6bf033be85f6bc4c0aa7e8163
 	arch = x86_64
-	source_x86_64 = https://github.com/dustinblackman/oatmeal/releases/download/v0.8.1/oatmeal_0.8.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = c19a5c91e38d2d129c80be728baf2c88500c5f2af10a23110cb9255e47155078
+	source_x86_64 = https://github.com/dustinblackman/oatmeal/releases/download/v0.8.2/oatmeal_0.8.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 86d1cbdd32fa01cf69a1918cc8bf2c7e9009b4618f02849cee53cf066b58da9d
 	
 pkgname = oatmeal-bin
