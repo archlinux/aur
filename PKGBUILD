@@ -7,7 +7,7 @@
 
 pkgname=electrum-git
 pkgver=4.4.6.r730.g8199a6b5b
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
 url="https://github.com/spesmilo/electrum"
