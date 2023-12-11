@@ -51,7 +51,7 @@ optdepends=(
   'xorg-xdpyinfo: Display information utility for X'
   'xorg-xset: User preference utility for X'
 )
-makedepends=('binutils' 'coreutils' 'git')
+makedepends=('binutils' 'git')
 conflicts=($_pkgname)
 provides=($_pkgname)
 sha256sums=('SKIP')
