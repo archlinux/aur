@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pingr
-_pkgver=2.0.2
+_pkgver=2.0.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Check if a Remote Computer is Up"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('04c4f1b8c209dd395d37b41453432e4e')
-sha256sums=('2c9c07af89d49137c5fe01aadac97ab0a982a644aa364ff1160ffceec69a9915')
+md5sums=('1fa6ce8bcbbeda3df39c59180a3ad149')
+sha256sums=('3c29c0be588c3fee267a2c0f60faa08e37682ba001db6c0249b065abc6aed863')
 
 build() {
   mkdir -p build

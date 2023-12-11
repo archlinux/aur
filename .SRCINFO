@@ -1,7 +1,7 @@
 pkgbase = r-pingr
 	pkgdesc = Check if a Remote Computer is Up
-	pkgver = 2.0.2
-	pkgrel = 3
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=pingr
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = r-pingr
 	depends = r-processx
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/pingr_2.0.2.tar.gz
-	md5sums = 04c4f1b8c209dd395d37b41453432e4e
-	sha256sums = 2c9c07af89d49137c5fe01aadac97ab0a982a644aa364ff1160ffceec69a9915
+	source = https://cran.r-project.org/src/contrib/pingr_2.0.3.tar.gz
+	md5sums = 1fa6ce8bcbbeda3df39c59180a3ad149
+	sha256sums = 3c29c0be588c3fee267a2c0f60faa08e37682ba001db6c0249b065abc6aed863
 
 pkgname = r-pingr
