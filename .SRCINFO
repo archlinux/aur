@@ -1,6 +1,6 @@
 pkgbase = genn
 	pkgdesc = GeNN: GPU-enhanced neural networks
-	pkgver = 4.7.1
+	pkgver = 4.9.0
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/genn-team/genn
@@ -19,7 +19,7 @@ pkgbase = genn
 	optdepends = spinecreator: for spineml2genn
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/genn-team/genn/archive/4.7.1.tar.gz
-	sha256sums = b7e87cf9b049c77c84d62115fd9b003ba7917e64cce6ff181cdd06d9cc421895
+	source = https://github.com/genn-team/genn/archive/4.9.0.tar.gz
+	sha256sums = 51bb5be2fe0dd6b2e4cc3bb5f540da1a5fef499bd558718e75ecbb6b4d7d163a
 
 pkgname = genn
