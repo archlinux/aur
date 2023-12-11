@@ -1,22 +1,22 @@
 # Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=ezquake
-pkgver=3.6.1
+pkgver=3.6.4
 pkgrel=1
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play."
 url="https://www.ezquake.com/"
 license=('GPL')
-depends=('curl' 'expat' 'jansson' 'libjpeg-turbo' 'libpng' 'openssl' 'sdl2' 'speex')
+depends=('curl' 'expat' 'jansson' 'libjpeg-turbo' 'libpng' 'minizip' 'openssl' 'sdl2' 'speex')
 makedepends=('unzip' 'vim')
 conflicts=('ezquake-git' 'fuhquake')
 provides=('quake' 'fuhquake')
 arch=('x86_64')
 install=ezquake.install
-source=("https://github.com/QW-Group/ezquake-source/archive/refs/tags/${pkgver}.zip"
+source=("https://github.com/QW-Group/ezquake-source/releases/download/${pkgver}/ezquake-source_with-submodules-${pkgver}.zip"
 'https://github.com/QW-Group/ezquake-source/releases/download/3.2.3/ezquake-ubuntu-3.2.3-full.tar.gz'
 'ezquake.launcher' 'ezquake.desktop' 'ezquake.ico')
 noextract=("ezquake-ubuntu-3.2.3-full.tar.gz")
-sha256sums=('6a7ee1c09d74425915a777fa74fbb3b19a1897713e27b1e00b83772ece046743'
+sha256sums=('925d26b6441dc2bdb69307b9616a6b4a4647aa1c9443134daabf20433e848848'
             'd58f26ed912166615420f0d0b208a10fd2539a84b90e85edfcb1aedc94615af5'
             'aa59da4a296a43af8ea8c5670cef5980a15407124b3e53f3cf805ceb6126e6ed'
             'e92b9cdeac5eadced50a6167eb53b1343b0772d3bf8afa310eb281b88bf7e677'
