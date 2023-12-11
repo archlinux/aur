@@ -2,7 +2,8 @@
 # Contributor: Shuyuan Liu <liu_shuyuan at qq dot com>
 pkgname=issie
 pkgver=4.1.0
-pkgrel=2
+_electronversion=24
+pkgrel=3
 pkgdesc="An intuitive cross-platform hardware design application."
 arch=('any')
 url="https://tomcl.github.io/issie"
@@ -31,19 +32,31 @@ depends=(
     'gtk3'
 )
 makedepends=(
-    'nodejs>=18'
+    'nvm'
     'npm'
     'dotnet-sdk>=7'
     'gendesk'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v$pkgver.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
 )
-sha256sums=('b747eaa4301f4f47c400f78d191c458110d5dfaf3a910429f2600c754bb9c132'
-            '81dc5466d488db9e26489a5a00af471dc4529e20509a94b5a030619a471f972f')
+sha256sums=('SKIP')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install 18
+    nvm use 18
+}
 build() {
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Development" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     dotnet tool restore
     dotnet paket install
     npm ci
