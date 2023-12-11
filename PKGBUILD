@@ -4,15 +4,20 @@ pkgname=libliftoff-git
 pkgver=0.4.0.r7.g58b8494
 pkgrel=1
 pkgdesc="Lightweight KMS plane library (git development version)"
-arch=(x86_64)
+arch=('x86_64')
 url="https://gitlab.freedesktop.org/emersion/libliftoff"
 license=("custom:MIT")
-depends=("libdrm" "glibc")
-makedepends=("git" "meson" "ninja")
-provides=("libliftoff")
-conflicts=("libliftoff")
-source=("$pkgname::git+https://gitlab.freedesktop.org/emersion/libliftoff.git")
-sha512sums=('SKIP')
+depends=("libdrm"
+"glibc"
+)
+makedepends=("git"
+"meson"
+"ninja"
+)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+https://gitlab.freedesktop.org/emersion/libliftoff.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"

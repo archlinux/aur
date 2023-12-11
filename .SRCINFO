@@ -13,6 +13,6 @@ pkgbase = libliftoff-git
 	provides = libliftoff
 	conflicts = libliftoff
 	source = libliftoff-git::git+https://gitlab.freedesktop.org/emersion/libliftoff.git
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = libliftoff-git
