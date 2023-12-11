@@ -1,6 +1,6 @@
 pkgbase = httm
 	pkgdesc = Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots.
-	pkgver = 0.31.6
+	pkgver = 0.31.7
 	pkgrel = 1
 	url = https://github.com/kimono-koans/httm
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = httm
 	conflicts = httm-git
 	options = !strip
 	options = !emptydirs
-	source = httm-0.31.6.tar.gz::https://github.com/kimono-koans/httm/archive/refs/tags/0.31.6.tar.gz
-	sha512sums = 385695d7482897384dfb6ad14a7e7f705276aa5653a22445bfcde6d6c5d261c5f17490eeecac7b8e35364a5e058b0d75a25fbf01fa9ede516f30c7aa4772e387
+	source = httm-0.31.7.tar.gz::https://github.com/kimono-koans/httm/archive/refs/tags/0.31.7.tar.gz
+	sha512sums = 7a3d69379f0c651d38d1f1fbc6c2937ed326fbc1625f8e20f886ba40cb0796c676b0ed361f53eaa70abc9cbaf85065865a46472dad0532f5c105cd1ece7a3c57
 
 pkgname = httm
