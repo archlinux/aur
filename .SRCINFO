@@ -1,6 +1,6 @@
 pkgbase = hyprdots-ctl
 	pkgdesc = CLI for Hyprdots Configurations
-	pkgver = v0.1.0.37
+	pkgver = v0.1.0.38
 	pkgrel = 1
 	url = https://github.com/kRHYME7/Hyprdots-ctl
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hyprdots-ctl
 	makedepends = curl
 	depends = hyprland-git
 	depends = hyprland
-	depends = fxf
+	depends = fzf
 	depends = tree
 	source = git+https://github.com/kRHYME7/Hyprdots-ctl.git
 	md5sums = SKIP
