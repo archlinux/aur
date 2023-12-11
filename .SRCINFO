@@ -1,6 +1,6 @@
 pkgbase = lazycat-cloud-client
 	pkgdesc = 懒猫微服
-	pkgver = 1.0.6
+	pkgver = v1.0.6
 	pkgrel = 1
 	url = https://lazycat.cloud
 	arch = x86_64
