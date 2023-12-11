@@ -1,14 +1,14 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=lightdm-gtk-greeter-git
-pkgver=2.0.8.r24.gf8c3500
+pkgver=2.0.8.r163.g428e775
 pkgrel=1
 pkgdesc='GTK+ greeter for LightDM'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/lightdm-gtk-greeter'
+url='https://github.com/Xubuntu/lightdm-gtk-greeter'
 license=('GPL3' 'LGPL3')
 depends=('gtk3' 'lightdm' 'libayatana-indicator' 'gdk-pixbuf2')
-makedepends=('git' 'exo' 'gnome-common' 'gnome-doc-utils'
+makedepends=('git' 'exo' 'xfce4-dev-tools'
              'gobject-introspection' 'intltool')
 provides=('lightdm-gtk-greeter')
 conflicts=('lightdm-gtk-greeter')
