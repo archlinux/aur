@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=this.path
-_pkgver=2.3.0
+_pkgver=2.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-microbenchmark
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('90fbb21dd4ea2b8ce81b8642469a1578')
-sha256sums=('877799659294cb81eb6616057ae5ee91627366fc66a91c9fc64f09c8f9684b51')
+md5sums=('b01db2d5d8f66b4dbc559380c4780ccd')
+sha256sums=('77eccc21a4ff4ce021fd0e5a21c9b37ca17751cc63af0e2407bfdcd75241c13d')
 
 build() {
   mkdir -p build
