@@ -1,31 +1,35 @@
-# Maintainer: TarkoGabor (@tgabor7)
-pkgname=simplelock
-pkgver=0.0.0
-pkgrel=1
-pkgdesc="A very simple screen locker for Wayland"
-arch=('x86_64')
-url="https://github.com/tgabor7/sl"
-license=('BSD')
-depends=('wayland' 'wayland-protocols' 'cargo')
-source=("sl-$pkgver-linux.tar.gz::https://github.com/tgabor7/sl/archive/tags/v$pkgver.tar.gz")
-b2sums=('SKIP')
+# Maintainer: Joar Heimonen <joarheimonen@live.no>
+# Note: This is only an install script for Yuma123, not the actual project itself.
 
-pkgver() {
-  cd cbindgen
-  git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
-}
+pkgname=yuma123-git
+pkgver=latest
+pkgrel=1
+pkgdesc="Open-source YANG API in C and CLI (yangcli) and server (netconfd)"
+arch=('x86_64')
+url="https://github.com/YumaWorks/yuma123"
+license=('BSD')
+depends=('git' 'autoconf' 'automake' 'make' 'gcc')
+makedepends=()
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+
+source=("git+https://github.com/vlvassilev/yuma123")
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cd "$srcdir/yuma123"
+  autoreconf -i -f
 }
 
 build() {
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+  cd "$srcdir/yuma123"
+  ./configure CFLAGS='-g -O0' CXXFLAGS='-g -O0' --prefix=/usr
+  make
 }
 
 package() {
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  cd "$srcdir/yuma123"
+  make DESTDIR="${pkgdir}" install
+  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 }
+
+sha256sums=('SKIP') 
