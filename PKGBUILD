@@ -1,4 +1,4 @@
-# Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
+# Maintainer: Alex Dewar <a.dewar@imperial.ac.uk>
 pkgname=genn_cpu_only
 pkgver=4.9.0
 pkgrel=1
