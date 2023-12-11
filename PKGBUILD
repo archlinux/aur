@@ -1,8 +1,8 @@
 # Maintainer: bobi
 
 pkgname=vma-git
-pkgver=7.2.0
-pkgrel=2
+pkgver=8.1.2
+pkgrel=1
 pkgdesc='Virtual Machine Archive format (VMA)'
 provides=('vma')
 
@@ -28,9 +28,11 @@ makedepends=(
     'libcacard'
     'libepoxy'
     'libproxmox-backup-qemu0-dev'
+    'meson'
     'ninja'
     'numactl'
     'opengl-driver'
+    'openssl-1.1'
     'perl-json'
     'pixman'
     'python-sphinx_rtd_theme'
@@ -49,11 +51,13 @@ depends=(
     'libiscsi'
     'libproxmox-backup-qemu0'
     'liburing'
+    'numactl'
+    'openssl-1.1' 
 )
 
 arch=('x86_64')
 sha256sums=('SKIP'
-            'fc996fa25c79d307363986217de8d4f3a05f22eabbdd3a67ce09b732bd625a75'
+            '1918693a10e6aab959d9eb6538b87154adeb900bc9f7a8d8213f3bfdb9ef6b1f'
             'SKIP')
 
 pkgver () {
