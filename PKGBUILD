@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=steamdepotdownloadergui-bin
 _pkgname=SteamDepotDownloaderGUI
-pkgver=2.3.0
+pkgver=2.3.1
+_electronversion=25
 pkgrel=1
 pkgdesc="Easily download older versions of games from Steam using DepotDownloader"
 arch=(
@@ -13,8 +14,7 @@ license=('GPL3')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'bash'
-    'electron25'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'libx11'
     'gdk-pixbuf2'
@@ -29,10 +29,14 @@ makedepends=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}-x64.AppImage")
-sha256sums=('856876cf4c6828e4722fd1f1a8390c67595fd28deec93edd1b039270c7287063')
-sha256sums_aarch64=('b56d2336305f5650c78e7ac6d836bdd9d8240400b333a1f855481dde02b28ca4')
-sha256sums_x86_64=('90133f36d902ffb90df6997d4a839000588625cc394a15cb0f34428b3e207646')
+sha256sums=('8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+sha256sums_aarch64=('8489b739ee47353af7a2ec81bfac681f411048f5022eb6cf2de9a641e602c44c')
+sha256sums_x86_64=('b82b4cf06a729ab31ecff354457f3bb355403869e1daa7650b8c3eb293086001')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
