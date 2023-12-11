@@ -6,7 +6,7 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=electrum-git
-pkgver=4.4.3.r10.g1dd129c3e
+pkgver=4.4.6.r730.g8199a6b5b
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -27,6 +27,7 @@ depends=('hicolor-icon-theme'
          'python-certifi'
          'python-bitstring'
          'python-attrs'
+         'python-jsonpatch'
          'python-cryptography'
          'python-requests'
          'python-six'
@@ -64,7 +65,9 @@ install=electrum.install
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag --list --sort=taggerdate | tail -n1 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+  printf $_tag;
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^.\{5\}//'
 }
 
 prepare() {
