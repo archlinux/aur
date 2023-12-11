@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pkgdepends
-_cranver=0.7.0
+_cranver=0.7.1
 pkgname=r-${_cranname,,}
 pkgdesc="Cache ‘CRAN’-Like Metadata and R Packages"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -15,26 +15,25 @@ depends=(
     "r-callr>=3.3.1"
     "r-cli>=3.6.0"
     "r-curl"
-    "r-desc>=1.2.0"
+    "r-desc>=1.4.3"
     "r-filelock>=1.0.2"
-    "r-glue"
     "r-jsonlite"
     "r-lpsolve"
     "r-pkgbuild>=1.0.2"
     "r-pkgcache>=2.2.0"
-    "r-prettyunits>=1.1.1"
     "r-processx>=3.4.2"
     "r-ps"
     "r-r6"
-    "r-rprojroot"
     "r-zip>=2.3.0"
 )
 optdepends=(
     "r-asciicast>=2.2.0.9000"
+    "r-codetools"
     "r-covr"
     "r-debugme"
     "r-fansi"
     "r-fs"
+    "r-glue"
     "r-htmlwidgets"
     "r-mockery"
     "r-pak"
@@ -68,7 +67,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("8c836402c60b4c985e7f782487f1c449df6e977904a2dcbc60540b58389ebd35a790ce29d6cf3aabc6542e1498ffddab4f6533761e00a772541b0dbe476fe799")
+b2sums=("ad078222e18e9c61c3b22a9cfc54794c010e2552212930232f80c9c8054e8a52064755312df26bfb5f30bad5a232899e38e707fe1881f7cd82f63b9ed4d30b2a")
 
 build() {
     mkdir -p "${srcdir}/build/"
