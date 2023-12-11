@@ -1,6 +1,6 @@
 # Maintainer: Marcel Campello <marcel@prafrentex.com.br>
 pkgname=opentofu
-pkgver=1.6.0_beta1
+pkgver=1.6.0_beta3
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="The open source infrastructure as code tool."
@@ -11,7 +11,7 @@ makedepends=(
   'go>=1.21.3'
 )
 source=("https://github.com/opentofu/opentofu/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('8befccf2743042ec3d36a10414ce6a287bd678534513b9860d4eae0942955d74')
+sha256sums=('93ab2d424a99073548104cc72ecf4f7cca2c73578da79aed9452a78b30e59bf1')
 
 build() {
   cd "$pkgname-$_pkgver"
@@ -38,8 +38,11 @@ package() {
 
   # documentation
   local docdir="$pkgdir/usr/share/doc/$pkgname/"
-  docs=( CHANGELOG.md
+  docs=( BUILDING.md
+         CHANGELOG.md
          CODE_OF_CONDUCT.md
+         CONTRIBUTING.md
+         DEBUGGING.md
          MAINTAINERS
          MIGRATION_GUIDE.md
          README.md
