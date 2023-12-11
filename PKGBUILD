@@ -4,7 +4,7 @@ _godot_template=$_godot # Set to empty to download them through Scripts project
 
 pkgname=thrive
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="the evolution game Thrive."
 arch=("x86_64")
 url="https://revolutionarygamesstudio.com/"
@@ -114,6 +114,7 @@ package(){
     mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/thrive"
     cp -a builds/Thrive_*_linux_x11 "$pkgdir/opt/thrive"
     # This is actually very annoying to portable apps...
+    mkdir -p "$pkgdir/usr/lib"
     ln -s /opt/thrive/.mono/assemblies/Release/libthrive_native.so \
         "$pkgdir/usr/lib/libthrive_native.so"
     ln -s /opt/thrive/Thrive "$pkgdir/usr/bin/Thrive"
