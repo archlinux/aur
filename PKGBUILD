@@ -2,7 +2,7 @@
 pkgname=ricochlime-bin
 _pkgname=Ricochlime
 _appname="com.adilhanney.${pkgname%-bin}"
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A game where you attack the advancing slimes with your ricocheting projectiles."
 arch=(
@@ -26,8 +26,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('bfc5ed93a5d24b0aafa88f6659cdf34d8e9512c5a8e78675fd8af4e8aa6b71c0')
-sha256sums_x86_64=('eaf13adf898743c77041ec7ad4d37415afd69e5355bb75441b73dcd3847b926e')
+sha256sums_aarch64=('eea6ad3d9a07573e75d72e278a09a34a14fe8d02244f4a1f2c3284eb30b9e323')
+sha256sums_x86_64=('92fad6e22b398ba4d3e6fe84c91d9fdebd34f34eeb9da0eb456c1fc70f466941')
 build() {
     sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/share/applications/${_appname}.desktop"
 }
