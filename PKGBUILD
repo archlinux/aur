@@ -49,7 +49,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver/tests"
-  scons
+  scons cxxstd="c++17" disable_local="libevent sqlite3 re2 libyaml zlib bzip2 expat"
   python ./testHarness
 }
 
