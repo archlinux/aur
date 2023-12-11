@@ -1,0 +1,22 @@
+diff --git a/concurrencytest.py b/concurrencytest.py
+index 058c054..758a148 100644
+--- a/concurrencytest.py
++++ b/concurrencytest.py
+@@ -69,7 +69,7 @@ def do_fork(suite):
+             pid = os.fork()
+             if pid == 0:
+                 try:
+-                    stream = os.fdopen(c2pwrite, 'wb', 1)
++                    stream = os.fdopen(c2pwrite, 'wb')
+                     os.close(c2pread)
+                     # Leave stderr and stdout open so we can see test noise
+                     # Close stdin so that the child goes away if it decides to
+@@ -93,7 +93,7 @@ def do_fork(suite):
+                 os._exit(0)
+             else:
+                 os.close(c2pwrite)
+-                stream = os.fdopen(c2pread, 'rb', 1)
++                stream = os.fdopen(c2pread, 'rb')
+                 test = ProtocolTestCase(stream)
+                 result.append(test)
+         return result
