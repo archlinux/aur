@@ -3,13 +3,13 @@
 _pkgbasename=a2wsgi
 pkgname=python-a2wsgi
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Converts WSGI apps to ASGI apps or the other way around'
 arch=(any)
 url="https://github.com/abersheeran/a2wsgi"
 license=("Apache2")
 depends=("python")
-makedepends=("python-build" "python-installer")
+makedepends=("python-build" "python-installer" "python-pdm-backend")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
