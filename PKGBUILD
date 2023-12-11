@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse
 _pkgname=Akuse
-pkgver=0.1.3
+pkgver=0.2.1
+_electronversion=25
 pkgrel=1
 pkgdesc="Simple and easy to use anime streaming desktop app without ads."
 arch=('any')
@@ -9,33 +10,43 @@ url="https://github.com/akuse-app/Akuse"
 license=('GPL3')
 conflicts=("${pkgname}")
 depends=(
-    'electron25'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
     'npm'
     'nodejs'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/${pkgver}.zip"
+    "${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}"
     "clientData.js"
     "${pkgname}.sh"
 )
-sha256sums=('925210ba0759105323c311a50ab6f52822a16a1525c36a2fc422bacda1b0076d'
-            '2b268bdffb07dac827d76861fe2efe66969bdf418e016c364fb3dd02b6cd2455'
+sha256sums=('SKIP'
+            '091d0d9b3a06579647ed4c1989d7edff13754cec34fcdbb7fbc24529bd01ed48'
             '91955296a742aed4445743bb54ec2c389917f36bca4969bb8d50bcfa8f80d7b2')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n --categories "AudioVideo" --name "${_pkgname}" --exec "${pkgname}"
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    sed -e '81,83d' -e '/"AppImage"/d' -e 's|"deb"|"AppImage"|g' -i package.json
-    cp "${srcdir}/clientData.js" "${srcdir}/${_pkgname}-${pkgver}/src/modules"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    sed -e '79,81d' -e '/"AppImage"/d' -e 's|"deb"|"AppImage"|g' -i package.json
+    install -Dm644 "${srcdir}/clientData.js" -t "${srcdir}/${pkgname}-${pkgver}/src/modules"
     npm install
     npm run dist:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/img/icon/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/img/icon/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
