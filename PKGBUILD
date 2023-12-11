@@ -3,7 +3,7 @@
 
 pkgname=luau
 pkgver=0.606
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, small, safe, gradually typed embeddable scripting language derived from Lua"
 arch=(x86_64)
 url="https://github.com/luau-lang/luau"
@@ -90,4 +90,5 @@ package() {
 
   install -Dm644 "$srcdir/Luau.pc" "$pkgdir/usr/lib/pkgconfig/Luau.pc"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
+  install -Dm644 extern/isocline/LICENSE "$pkgdir/usr/share/licenses/$pkgname/isocline-LICENSE.txt"
 }
