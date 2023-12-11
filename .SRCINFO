@@ -1,7 +1,7 @@
 pkgbase = sast-evento-appimage
 	pkgdesc = An event management system developed and used by NJUPT SAST
 	pkgver = 1.0.1211
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NJUPT-SAST-Cpp/SAST-Evento-Desktop
 	arch = x86_64
 	license = MIT

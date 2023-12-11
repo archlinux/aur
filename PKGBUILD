@@ -4,7 +4,7 @@ _pkgname=sast-evento
 
 pkgname="${_pkgname}"-appimage
 pkgver="1.0.1211"
-pkgrel=1
+pkgrel=2
 pkgdesc="An event management system developed and used by NJUPT SAST"
 arch=('x86_64')
 url="https://github.com/NJUPT-SAST-Cpp/SAST-Evento-Desktop"
