@@ -1,13 +1,11 @@
 pkgbase = otf-besley
-	pkgdesc = A contemporary antique slab serif created by indestructible type*.
+	pkgdesc = A serif font by indestructible type* inspired by designs of Robert Besley
 	pkgver = 2.0
 	pkgrel = 1
-	url = https://indestructibletype.com/Besley.html
+	url = https://indestructibletype.com/Besley
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
+	license = OFL
 	source = https://github.com/indestructible-type/Besley/files/5761580/Besley.zip
 	sha256sums = 330c2616e2040e555bbd05fa6f48b43f4c862c3f454f08eadef73c3a99ae729b
 
 pkgname = otf-besley
-
