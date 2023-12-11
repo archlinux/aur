@@ -2,10 +2,10 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v6.6.5
+gitver=v6.6.6
 patchver=20230105
 patchname=more-uarches-for-kernel-5.17+.patch
-pkgver=6.6.v.5
+pkgver=6.6.v.6
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -27,7 +27,7 @@ source=(
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '7fc7911d8d6e764ce416dc390646ba60f8a84da4ffd036a1e7f16dd0dfe179b7'
+            '89db57cbc5d34ad26c44b074c61e4e08f1a9b52d9d6b9a7c2d81d1165f9d4835'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
