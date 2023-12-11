@@ -2,7 +2,7 @@
 pkgname=jamesdsp-pulse
 _app_id=me.timschneeberger.jdsp4linux.pulse
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -46,7 +46,7 @@ build() {
   cd "$srcdir/JDSP4Linux"
 
   pushd build
-  qmake6 ..
+  qmake6 .. "CONFIG += USE_PULSEAUDIO"
   make
   strip --strip-unneeded src/jamesdsp
   popd
