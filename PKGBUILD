@@ -5,7 +5,7 @@
 
 pkgname='littlefs-fuse'
 pkgver=2.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A FUSE wrapper that puts the littlefs in user-space"
 url="https://github.com/littlefs-project/littlefs-fuse"
 arch=('aarch64' 'x86_64')
@@ -41,14 +41,5 @@ sha256sums=(
 b2sums=(
   'dcdf191ce6d2c8f0a487e2ba8ddff3eb089fcacee2cfeaaa46b6e289d5196d18d7aef5c09740d82a7e5e797e17aeb604435bc5beb736e1c32be5b60f4b3cba7c'
 )
-
-# 🪷 Beyond the Known — 365 Days of Exploration
-#
-# 📆 11th December
-#
-# Only here for an instant, fully expressing itself, and never
-# to be seen again in the same way.
-#
-# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
