@@ -16,9 +16,14 @@ pkgbase=yuma123-git
 
 source=("git+https://github.com/vlvassilev/yuma123")
 
+prepare() {
+  cd "$srcdir/yuma123"
+  libtoolize
+  autoreconf -i -v -f
+}
+
 build() {
   cd "$srcdir/yuma123"
-  autoreconf -i -f
   ./configure CFLAGS='-g -O0' CXXFLAGS='-g -O0' --prefix=/usr
   make
 }
