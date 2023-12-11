@@ -5,26 +5,32 @@
 pkgname=prepros-bin
 _pkgname=Prepros
 pkgver=7.17.0
-pkgrel=2
+_electronversion=25
+pkgrel=3
 pkgdesc="Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect."
 arch=('x86_64')
 url="https://prepros.io"
 license=('custom:proprietary')
 depends=(
-    'electron25'
+    "electron${_electronversion}"
     'lib32-gcc-libs'
     'perl'
     'lib32-glibc'
     'ruby'
     'java-runtime'
+    'libva>=2.20.0'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://downloads.prepros.io/v7/${pkgver}/${_pkgname}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('59d8f34ac6769dd991125afadfe7e490527b55f9d9b33e928241d0e2ce9a9fe5'
-            '87660ebd2e7bc9a5413f507c5bbedb25de30b97796fe3e05b0589e18a89e4224')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
     sed "s| %U||g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
