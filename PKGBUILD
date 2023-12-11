@@ -4,7 +4,11 @@ _appname=Hyperamp
 pkgver=1.0.8
 pkgrel=2
 pkgdesc="Humble music player"
-arch=('aarch64' 'armv7h' 'x86_64')
+arch=(
+    'aarch64'
+    'armv7h'
+    'x86_64'
+)
 url="https://twitter.com/hyperampapp"
 _ghurl="https://github.com/hypermodules/hyperamp"
 license=('GPL3')
