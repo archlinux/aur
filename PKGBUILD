@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-security-privacy-git
-pkgver=2.2.4.r11.gc8e422e
+pkgver=7.1.0.r10.g214c94e
 pkgrel=1
 pkgdesc='Switchboard Security & Privacy Plug'
 arch=(x86_64)
@@ -15,7 +15,6 @@ depends=(
   libgranite.so
   libswitchboard-2.0.so
   light-locker
-  pantheon-dpms-helper-git
   polkit
   ufw
   zeitgeist

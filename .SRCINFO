@@ -1,6 +1,6 @@
 pkgbase = switchboard-plug-security-privacy-git
 	pkgdesc = Switchboard Security & Privacy Plug
-	pkgver = 2.2.4.r11.gc8e422e
+	pkgver = 7.1.0.r10.g214c94e
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-security-privacy
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = switchboard-plug-security-privacy-git
 	depends = libgranite.so
 	depends = libswitchboard-2.0.so
 	depends = light-locker
-	depends = pantheon-dpms-helper-git
 	depends = polkit
 	depends = ufw
 	depends = zeitgeist
@@ -27,4 +26,3 @@ pkgbase = switchboard-plug-security-privacy-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-security-privacy-git
-
