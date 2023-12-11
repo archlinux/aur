@@ -1,4 +1,5 @@
 # Maintainer XavierCLL <xavier.corredor.llano (a) gmail.com>
+# Contributor: xiota / aur.chaotic.cx
 # Contributor: Utsav <aur (a) utsav2 [.] dev>
 # Contributor: Tavian Barnes <tavianator@tavianator.com>
 # Contributor: jhorcl
@@ -8,10 +9,10 @@
 pkgname=mozillavpn
 pkgver=2.19.0
 _debian_series=mantic1
-pkgrel=3
-pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
+pkgrel=4
+pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox"
 arch=('x86_64')
-url="https://mozilla.org/products/vpn"
+url="https://vpn.mozilla.org"
 license=('MPL2')
 options=('!lto')
 depends=(
@@ -52,11 +53,10 @@ install=mozillavpn.install
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 source=("https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz" "mozillavpn.install")
 sha256sums=('36754d1f0e2f3ff5b08cecf691b7e158981356dc53b55152d93925f1b4d87e03'
-            'b6bafbb5902df2e5fea48db5967e3fca1547079366796ac08cae1d3e70164686')
+            'fd50a85e735f755857a02100a9a567bdb9af439d442c4fe72c6e76c108d7b303')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    rm -rf build && mkdir build
     cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
     cmake --build build
 }
