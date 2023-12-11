@@ -18,7 +18,7 @@ sha256sums=(03d31c678510aa3446702a14a42129a225d9149c074231c8e3499ba7e3946032)
 
 prepare() {
     rm -rf $_pkgname-$_commit
-    mv -f Besley-$_commit $_pkgname-$_commit
+    mv Besley-$_commit $_pkgname-$_commit
 }
 
 package_otf-besley() {
