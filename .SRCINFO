@@ -1,6 +1,6 @@
 pkgbase = picom-arian8j2-git
 	pkgdesc = Arian8j2's picom fork with configurable transitions
-	pkgver = v20220425
+	pkgver = 1968_Next.406.g8f99f5a_2023.12.11
 	pkgrel = 1
 	url = https://github.com/Arian8j2/picom
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = picom-arian8j2-git
 	depends = libconfig
 	depends = libev
 	depends = libxdg-basedir
-	depends = pcre
+	depends = pcre2
 	depends = pixman
 	depends = xcb-util-image
 	depends = xcb-util-renderutil

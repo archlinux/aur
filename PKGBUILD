@@ -1,7 +1,7 @@
 # Maintainer: Arian Rezazadeh <notarian.rez@gmail.com>
 
 pkgname=picom-arian8j2-git
-pkgver=v20220425
+pkgver=1968_Next.406.g8f99f5a_2023.12.11
 pkgrel=1
 pkgdesc="Arian8j2's picom fork with configurable transitions"
 arch=('i686' 'x86_64')
@@ -18,10 +18,13 @@ conflicts=('compton' 'compton-git' 'picom' 'picom-git' 'picom-ibhagwan-git' 'pic
 source=("${pkgname}::git+https://github.com/Arian8j2/picom.git")
 md5sums=('SKIP')
 
-
+# copied form picom-git
 pkgver() {
-  cd $pkgname
-  printf "v%s" $(git log -1 --format="%cd" --date=short | tr -d '-')
+    cd $pkgname
+    _tag=$(git describe --tags | sed 's:^v::') # tag is mobile, and switches between numbers and letters, can't use it for versioning
+    _commits=$(git rev-list --count HEAD) # total commits is the most sane way of getting incremental pkgver
+    _date=$(git log -1 --date=short --pretty=format:%cd)
+    printf "%s_%s_%s\n" "${_commits}" "${_tag}" "${_date}" | sed 's/-/./g'
 }
 
 build() {
