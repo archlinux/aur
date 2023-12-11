@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=filelock
-_pkgver=1.0.2
+_pkgver=1.0.3
 pkgname=r-${_pkgname,,}
-pkgver=1.0.2
-pkgrel=5
+pkgver=1.0.3
+pkgrel=1
 pkgdesc='Portable File Locking'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ac2915950789b16c43a625a2b8dab6ba423588db4a7d0daa75b74518b82b1403')
+sha256sums=('2dcd0ec453f5ec4d96f69b0c472569d57d3c5f9956a82a48492ee02f12071137')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
