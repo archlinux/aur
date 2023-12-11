@@ -19,7 +19,6 @@ source=("git+https://github.com/vlvassilev/yuma123")
 prepare() {
   cd "$srcdir/yuma123"
   libtoolize
-  autoupdate
   autoreconf -i -f
 }
 
