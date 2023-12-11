@@ -35,7 +35,7 @@ index 055a868393b..5e948b4c239 100644
 +static uint32_t
 +nvk_bo_heap_index(struct nvk_device *dev, struct nvk_device_memory *mem)
 +{
-+   if (dev->pdev->mem_type_cnt > 1 && mem->bo->flags & NOUVEAU_WS_BO_GART)
++   if (dev->pdev->mem_type_count > 1 && mem->bo->flags & NOUVEAU_WS_BO_GART)
 +      return 1;
 +
 +   return 0;
@@ -84,7 +84,7 @@ index 6e9411c3f62..9fde4a7ee6e 100644
 +      case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT: {
 +         VkPhysicalDeviceMemoryBudgetPropertiesEXT *p = (void *)ext;
 +
-+         for (unsigned i = 0; i < pdev->mem_heap_cnt; i++) {
++         for (unsigned i = 0; i < pdev->mem_heap_count; i++) {
 +            p->heapUsage[i] = pdev->mem_usage[i];
 +
 +            /* Set heapBudget to 90% of the available memory */
@@ -95,7 +95,7 @@ index 6e9411c3f62..9fde4a7ee6e 100644
 +         /* The heapBudget and heapUsage values must be zero for array elements
 +          * greater than or equal to VkPhysicalDeviceMemoryProperties::memoryHeapCount
 +          */
-+         for (unsigned i = pdev->mem_heap_cnt; i < VK_MAX_MEMORY_HEAPS; i++) {
++         for (unsigned i = pdev->mem_heap_count; i < VK_MAX_MEMORY_HEAPS; i++) {
 +            p->heapBudget[i] = 0u;
 +            p->heapUsage[i] = 0u;
 +         }
@@ -113,8 +113,8 @@ index 738ffcfbe08..f8b43d88041 100644
     VkMemoryHeap mem_heaps[2];
     VkMemoryType mem_types[2];
 +   VkDeviceSize mem_usage[2];
-    uint8_t mem_heap_cnt;
-    uint8_t mem_type_cnt;
+    uint8_t mem_heap_count;
+    uint8_t mem_type_count;
  
 -- 
 2.42.0
