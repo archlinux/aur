@@ -9,25 +9,16 @@ arch=('x86_64')
 url="https://github.com/vlvassilev/yuma123"
 license=('BSD')
 depends=('git' 'autoconf' 'automake' 'libtool' 'make' 'gcc')
-makedepends=()
+makedepends=('libtool') # Add libtool as a build dependency
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 pkgbase=yuma123-git
 
 source=("git+https://github.com/vlvassilev/yuma123")
 
-prepare() {
-  cd "$srcdir/yuma123"
-  libtoolize
-  #Move ltmain.sh from ../.. to .
-  if [ -d ../.. ] && [ -n "$(find ../.. -maxdepth 1 -name '*.sh' -print -quit)" ]; then
-      mv ../../*.sh .
-  fi
-  autoreconf -i -f
-}
-
 build() {
   cd "$srcdir/yuma123"
+  autoreconf -i -f
   ./configure CFLAGS='-g -O0' CXXFLAGS='-g -O0' --prefix=/usr
   make
 }
@@ -37,5 +28,6 @@ package() {
   make DESTDIR="${pkgdir}" install
   mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 }
+
 
 sha256sums=('SKIP') 
