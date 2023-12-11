@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=getPass
-_pkgver=0.2-2
+_pkgver=0.2-4
 pkgname=r-${_pkgname,,}
-pkgver=0.2.2
-pkgrel=4
+pkgver=0.2.4
+pkgrel=1
 pkgdesc='Masked User Input'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-argon2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8cfdc7e8cabeae5dd325015d735b139d9828bd54ea8e7c2dcb636a00a153cd0f')
+sha256sums=('15dbebf8b46814e6e4cf9affb83439b253477900b1159d6f0c3a919fc44e1828')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
