@@ -86,7 +86,7 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.1
-_minor=66
+_minor=67
 _srcname=linux-${_major}
 _clr=${_major}.65-1325
 _gcc_more_v='20230105'
@@ -412,7 +412,7 @@ done
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            '94e666dce482c43d582d3fe608e8af159f6d5df34b6e9dfa1e12fe15fa0d7a36'
+            'e7119eff6e3561de26bcfe2aa379713a006d1aaa15bfbd18b3b94263699565ad'
             'SKIP'
             '802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23')
 
