@@ -4,7 +4,7 @@
 # Thanks to Fabio Lolix for the patch.
 
 pkgname=applewin-git
-pkgver=1.30.7.0.r333.g8965b8af
+pkgver=1.30.14.1.r1362.g3cda77c6
 pkgrel=1
 pkgdesc="AppleWin Linux port by Audetto - GIT version"
 arch=('x86_64')
@@ -19,10 +19,12 @@ source=("${pkgname%-git}::git+https://github.com/audetto/AppleWin.git"
         "git+https://github.com/Dax89/QHexView.git"
         "git+https://github.com/ocornut/imgui.git"
         "git+https://github.com/ocornut/imgui_club.git"
+        "git+https://github.com/AirGuanZ/imgui-filebrowser.git"
         applewin-sdl2.desktop
         applewin-qt.desktop
         apple-logo.svg)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -42,6 +44,7 @@ prepare() {
   git submodule set-url source/frontends/qt/QHexView "${srcdir}/QHexView"
   git submodule set-url source/frontends/sdl/imgui/imgui "${srcdir}/imgui"
   git submodule set-url source/frontends/sdl/imgui/imgui_club "${srcdir}/imgui_club"
+  git submodule set-url source/frontends/sdl/imgui/imgui-filebrowser "${srcdir}/imgui-filebrowser"
   git -c protocol.file.allow=always submodule update
 
   mkdir build
