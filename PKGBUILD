@@ -5,7 +5,7 @@ _pkgname=jost
 pkgname=(otf-$_pkgname ttf-$_pkgname ttf-$_pkgname-variable)
 pkgbase=$_pkgname-font
 pkgver=3.7
-pkgrel=2
+pkgrel=3
 pkgdesc='A sans-serif font by indestructible type* inspired by 1920s German sans-serifs'
 arch=(any)
 url=https://indestructibletype.com/Jost
@@ -17,6 +17,7 @@ source=($_url/archive/$_commit.tar.gz)
 sha256sums=(a3e712c3d04d4bac1d3b9d6f0ae02b16b4a7a081f369350063741d68a7075de7)
 
 prepare() {
+    rm -rf $_pkgname-$_commit
     mv Jost-$_commit $_pkgname-$_commit
 }
 
