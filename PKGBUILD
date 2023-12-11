@@ -4,7 +4,7 @@
 _pkgname=pdfcpu
 pkgname=pdfcpu-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A PDF processor written in Go."
 arch=(x86_64 aarch64 i686)
 url="https://pdfcpu.io/"
@@ -24,4 +24,5 @@ package() {
 
     install -Dm755 "${_pkgname}" -t "$pkgdir/usr/bin/"
     install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
