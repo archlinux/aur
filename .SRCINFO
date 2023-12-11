@@ -1,0 +1,13 @@
+pkgbase = onclick
+	pkgdesc = Runs a command every time the terminal is clicked
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://git.sr.ht/~adnano/kiln
+	arch = x86_64
+	arch = aarch64
+	license = MPLv2
+	makedepends = hare-git
+	source = https://git.sr.ht/~smlavine/onclick/archive/1.0.3.tar.gz
+	sha256sums = df34d9d6fcaa530ed3207b79fac6cc769381e4061741ae0a7f66067cef9c56a0
+
+pkgname = onclick
