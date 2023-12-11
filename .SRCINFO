@@ -1,6 +1,6 @@
 pkgbase = antares-sql-bin
 	pkgdesc = A modern, fast and productivity driven SQL client with a focus in UX.
-	pkgver = 0.7.19
+	pkgver = 0.7.20
 	pkgrel = 1
 	url = https://antares-sql.app/
 	arch = aarch64
@@ -8,21 +8,19 @@ pkgbase = antares-sql-bin
 	arch = x86_64
 	license = MIT
 	makedepends = asar
-	depends = bash
 	depends = hicolor-icon-theme
 	depends = electron22
-	depends = python>=3
-	provides = antares-sql=0.7.19
+	provides = antares-sql=0.7.20
 	conflicts = antares-sql
-	source = LICENSE::https://raw.githubusercontent.com/antares-sql/antares/v0.7.19/LICENSE
+	source = LICENSE-0.7.20::https://raw.githubusercontent.com/antares-sql/antares/v0.7.20/LICENSE
 	source = antares-sql.sh
 	sha256sums = 7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613
-	sha256sums = 9cbc4bf4336498197cbc48f6657b81abebff88f323ad975b18121515105d657a
-	source_aarch64 = antares-sql-0.7.19-aarch64.deb::https://github.com/antares-sql/antares/releases/download/v0.7.19/Antares-0.7.19-linux_arm64.deb
-	sha256sums_aarch64 = b86f68f8b51768aa11cd3e4813d817d3e896331dccca7a429d01308e62cad284
-	source_armv7h = antares-sql-0.7.19-armv7h.deb::https://github.com/antares-sql/antares/releases/download/v0.7.19/Antares-0.7.19-linux_armv7l.deb
-	sha256sums_armv7h = 3f65521d2dfdd44420bfe0d6d9a4285c59d14e0cdf23a5959fca964f7cf1e96b
-	source_x86_64 = antares-sql-0.7.19-x86_64.deb::https://github.com/antares-sql/antares/releases/download/v0.7.19/Antares-0.7.19-linux_amd64.deb
-	sha256sums_x86_64 = 1fd828a5e00289689a47bf71c205a26fba2a4ebc9e5913668f8474870e5ed5d5
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	source_aarch64 = antares-sql-0.7.20-aarch64.deb::https://github.com/antares-sql/antares/releases/download/v0.7.20/Antares-0.7.20-linux_arm64.deb
+	sha256sums_aarch64 = 96224aabd1dd554babc81932727084ec8dd7060c2474959151f019da6d19ce7e
+	source_armv7h = antares-sql-0.7.20-armv7h.deb::https://github.com/antares-sql/antares/releases/download/v0.7.20/Antares-0.7.20-linux_armv7l.deb
+	sha256sums_armv7h = 877b3c970b7c37958f704156895672309b72b5a869fee1a974e4502497e78299
+	source_x86_64 = antares-sql-0.7.20-x86_64.deb::https://github.com/antares-sql/antares/releases/download/v0.7.20/Antares-0.7.20-linux_amd64.deb
+	sha256sums_x86_64 = b3b88582a693795723ebfd939dff78ac33d9e9c56e7993a6a024913cece4b571
 
 pkgname = antares-sql-bin

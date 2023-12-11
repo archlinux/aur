@@ -2,35 +2,38 @@
 _pkgname=antares
 pkgname="${_pkgname}-sql-bin"
 _appname=Antares
-pkgver=0.7.19
+pkgver=0.7.20
+_electronversion=22
 pkgrel=1
 pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX."
 arch=("aarch64" "armv7h" "x86_64")
 url="https://antares-sql.app/"
-_githuburl="https://github.com/antares-sql/antares"
+_ghurl="https://github.com/antares-sql/antares"
 license=("MIT")
 depends=(
-    'bash'
     'hicolor-icon-theme'
-    'electron22'
-    'python>=3'
+    "electron${_electronversion}"
 )
 makedepends=('asar')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_arm64.deb")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_armv7l.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_arm64.deb")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_armv7l.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_amd64.deb")
 source=(
-    "LICENSE::https://raw.githubusercontent.com/antares-sql/antares/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/antares-sql/antares/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613'
-            '9cbc4bf4336498197cbc48f6657b81abebff88f323ad975b18121515105d657a')
-sha256sums_aarch64=('b86f68f8b51768aa11cd3e4813d817d3e896331dccca7a429d01308e62cad284')
-sha256sums_armv7h=('3f65521d2dfdd44420bfe0d6d9a4285c59d14e0cdf23a5959fca964f7cf1e96b')
-sha256sums_x86_64=('1fd828a5e00289689a47bf71c205a26fba2a4ebc9e5913668f8474870e5ed5d5')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+sha256sums_aarch64=('96224aabd1dd554babc81932727084ec8dd7060c2474959151f019da6d19ce7e')
+sha256sums_armv7h=('877b3c970b7c37958f704156895672309b72b5a869fee1a974e4502497e78299')
+sha256sums_x86_64=('b3b88582a693795723ebfd939dff78ac33d9e9c56e7993a6a024913cece4b571')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_appname}/${_pkgname} %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
@@ -44,5 +47,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
