@@ -2,9 +2,9 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=tuxedo-keyboard-ite-dkms
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Per-key keyboard backlight driver for TUXEDO ITE Keyboards devices."
-url="https://www.tuxedocomputers.com/"
+url="https://github.com/tuxedocomputers/tuxedo-keyboard-ite"
 license=("GPL")
 arch=('x86_64') 
 depends=('dkms' 'tuxedo-keyboard-dkms')
@@ -14,11 +14,11 @@ optdepends=('linux-headers: build modules against Arch kernel'
             'linux-lts-headers: build modules against LTS kernel'
             'linux-zen-headers: build modules against ZEN kernel'
             'linux-hardened-headers: build modules against the HARDENED kernel')
-source=(http://rpm.tuxedocomputers.com/opensuse/15.4/noarch/tuxedo-keyboard-ite-${pkgver}-1.noarch.rpm)
-sha256sums=('9342dd4b145cfe2f33e17648c3a9468fb01f514206fcf52348545586ed4db0a2')
-sha512sums=('0a067e31a76d22a75a01147ab15c0bec27a28294d7779649507af680cf115598c3bac0a6c66c52c8e1c47a53b2f070207df2828ffaf20cd8fa6e99a27ddfbc2c')
+source=($pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-keyboard-ite/archive/v${pkgver}.tar.gz)
+sha256sums=('de5b05f7a80ebe7e8951190e50e67c2c0ec58bb3c032606f9fc720cbb40edaa7')
+sha512sums=('659b17104298ade2c794fd2dae184fee2185697fc58af6e6df27bfe5beef9920e61fbfeb4c5a6a75fc9d2f16227e616f7a3e9c3ac9b08dbd20cce399a1303de2')
+
 package() {
   mkdir -p "${pkgdir}/usr/src/tuxedo-keyboard-ite-${pkgver}"
-  cp -r "${srcdir}/usr/src/tuxedo-keyboard-ite-${pkgver}"/* "${pkgdir}/usr/src/tuxedo-keyboard-ite-${pkgver}"
-  install -D "${srcdir}/usr/src/tuxedo-keyboard-ite-${pkgver}/dkms.conf" "${pkgdir}/usr/src/tuxedo-keyboard-ite-${pkgver}/dkms.conf"
+  cp -r "${srcdir}/tuxedo-keyboard-ite-${pkgver}"/* "${pkgdir}/usr/src/tuxedo-keyboard-ite-${pkgver}"
 }
