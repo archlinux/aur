@@ -1,5 +1,8 @@
 #!/bin/bash
 set -e
-INSTALL_PATH=/opt/lunarcalendar
-export LD_LIBRARY_PATH="$INSTALL_PATH/bin:$INSTALL_PATH/lib:$INSTALL_PATH/lib/`uname -m`-linux-gnu:$LD_LIBRARY_PATH"
-exec $INSTALL_PATH/bin/LunarCalendarApp $*
+_APPDIR="/opt/@appname@"
+export PATH="${_APPDIR}:${_APPDIR}/bin:${PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}/bin:${_APPDIR}/lib:${_APPDIR}/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}"
+_APPNAME="${_APPDIR}/@apprunname@"
+cd "${_APPDIR}"
+exec "${_APPDIR}/bin//@apprunname@" "$@"

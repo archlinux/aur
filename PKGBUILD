@@ -2,7 +2,7 @@
 pkgname=lunarcalendar-bin
 _pkgname=LunarCalendar
 _appname="org.Rabbit.${_pkgname}"
-pkgver=0.2.8
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Chinese Lunar Date Control Written in Qt.用Qt写的中国农历日期控件"
 arch=("x86_64")
@@ -20,9 +20,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('37bcf16aa329c3d33e1f6610df4be7593b9a64b7d5ddac1a83f8a8bf12846fe2'
-            '5fcad1de68024b797415bc0ccaa70182d94fa5f6d96cfde873eff3f50600425d')
+sha256sums=('4e3eca0f1f43dfc92c493eaeb837e12cef33857300c292f065b18d1301a3a500'
+            '09d8e9cedcf8be0e29ad1d8fef3fc9953f8b6ca58f00eb58b1c8ae3905615cea')
 build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@apprunname@|${_pkgname}App-v${pkgver}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
     sed "s|/opt/${_pkgname}/bin/${_pkgname}.sh|${pkgname%-bin}|g;s|=${_pkgname}|=${pkgname%-bin}|g" \
         -i "${srcdir}/opt/${_pkgname}/share/applications/${_appname}.desktop"
