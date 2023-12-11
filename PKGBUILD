@@ -20,16 +20,16 @@ depends=(pugixml opencolorio boost-libs python gflags openimageio intel-oneapi-t
 makedepends=(cmake git boost llvm python)
 optdepends=(cuda optix)
 provides=(cycles)
-source=("git+https://github.com/blender/cycles.git#commit=e9f92cd6528a6042de8e5316b9f03ec3724561b6"
-        0001-Remove-FindClang.patch
+source=("git+https://github.com/blender/cycles.git#commit=4ad568a200defc338d43bd59c2be63c1e66993bc"
         cycles_wrap.sh)
 sha256sums=('SKIP'
-            '582067f4413f1e70d45d311138c5662b53d88b3dd53e58ad9f4daf789a0be353'
             '00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96')
 
 prepare() {
     _src_root_dir="$srcdir/cycles"
-    git -C "$_src_root_dir" apply -v "${srcdir}"/0001-Remove-FindClang.patch
+
+    # Remove FindClang.cmake, to use local equivalent
+    rm $_src_root_dir/src/cmake/Modules/FindClang.cmake
 }
 
 build() {
