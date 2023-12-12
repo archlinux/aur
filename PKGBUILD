@@ -28,7 +28,7 @@ source=("$url/releases/download/v$pkgver/resetti"
 	"$_rawurl/internal/res/default.toml"
 	"$_rawurl/internal/res/scene-setup.lua")
 noextract=()
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 validategpgkeys=()
 
 package() {

@@ -12,5 +12,7 @@ pkgbase = resetti
 	source = https://raw.githubusercontent.com/tesselslate/resetti/main/internal/res/scene-setup.lua
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = resetti
