@@ -1,19 +1,29 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quaternion-appimage
 pkgver=0.0.95.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Qt5-based IM client for Matrix"
 arch=('x86_64')
 url="https://matrix.org/docs/projects/client/quaternion.html"
-_githuburl="https://github.com/quotient-im/Quaternion"
-license=('BSD' 'GPL3' 'LGPL2.1')
+_ghurl="https://github.com/quotient-im/Quaternion"
+license=(
+    'BSD'
+    'GPL3'
+    'LGPL2.1'
+)
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'glibc' 'hicolor-icon-theme')
-makedepends=('squashfuse')
+depends=(
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'squashfuse'
+)
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
+source=(
+    "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage"
+)
 sha256sums=('43936b9bf37539051e438ef28b111261410ab5ae59d2a2fb84f130a76ef6336b')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
