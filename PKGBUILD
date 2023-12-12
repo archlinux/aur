@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xuanxuan-bin
 pkgver=7.2.1
-pkgrel=1
+_electronversion=13
+pkgrel=2
 pkgdesc="A self-hosted enterprise IM solution.一款功能齐全的企业聊天软件"
 arch=('x86_64')
 url="https://xuanim.com/index.html"
@@ -9,15 +10,20 @@ license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron13'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::https://dl.cnezsoft.com/${pkgname%-bin}/${pkgver}/${pkgname%-bin}.${pkgver}.linux.amd64.deb"
-    "${pkgname%-bin}.sh")
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::https://dl.cnezsoft.com/${pkgname%-bin}/${pkgver}/${pkgname%-bin}.${pkgver}.linux.amd64.deb"
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('3bfd97771f1f9e4b1573f1e2890cc06522f80a4bb9e1ca7a80041f6732f8a0d4'
-            'a2563fb9fb2f16387e2796882047d254f3c3f7df6ed569fa726e927db5dabad4')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }

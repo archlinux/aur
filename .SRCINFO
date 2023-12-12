@@ -1,11 +1,10 @@
 pkgbase = xuanxuan-bin
 	pkgdesc = A self-hosted enterprise IM solution.一款功能齐全的企业聊天软件
 	pkgver = 7.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xuanim.com/index.html
 	arch = x86_64
 	license = custom
-	depends = bash
 	depends = electron13
 	depends = hicolor-icon-theme
 	provides = xuanxuan=7.2.1
@@ -13,6 +12,6 @@ pkgbase = xuanxuan-bin
 	source = xuanxuan-7.2.1.deb::https://dl.cnezsoft.com/xuanxuan/7.2.1/xuanxuan.7.2.1.linux.amd64.deb
 	source = xuanxuan.sh
 	sha256sums = 3bfd97771f1f9e4b1573f1e2890cc06522f80a4bb9e1ca7a80041f6732f8a0d4
-	sha256sums = a2563fb9fb2f16387e2796882047d254f3c3f7df6ed569fa726e927db5dabad4
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = xuanxuan-bin
