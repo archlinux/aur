@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tidytree
-_pkgver=0.4.5
+_pkgver=0.4.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('640ea7d55246de3bfcc2019183093118')
-sha256sums=('d2708e5ff068102262eb3bc0577e34522263d70ed1e291ef196c931b51c89472')
+md5sums=('0b27b0d945a7fb845ca9d8d1d57a1d2b')
+sha256sums=('dba909ba767283fa76795a67e048ff1c8cd339c7e44f64c9698c70ecb3d92292')
 
 build() {
   mkdir -p build
