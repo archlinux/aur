@@ -1,17 +1,19 @@
 pkgbase = cc-cli
-	pkgdesc = CloudControl Command Line Interface
-	pkgver = 7
-	pkgrel = 4
-	url = https://git.seblu.net/mirror/cc-cli
-	arch = any
-	license = GPL2
-	makedepends = git
-	makedepends = python2-setuptools
-	depends = python2
-	depends = python2-sjrpc
-	depends = python2-xdg
-	source = git+https://git.seblu.net/mirror/cc-cli.git#tag=v7
-	md5sums = SKIP
+	pkgdesc = handy git-hook and cli for conventional commits
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/sousandrei/cc-cli
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = gcc-libs
+	depends = openssl
+	source = cc-cli-0.1.5.tar.gz::https://github.com/sousandrei/cc-cli/archive/v0.1.5.tar.gz
+	b2sums = 5203b76a6a57e54edaba9465b5a463396793238c876443044bc24c15adadd5be28b49c6277d2f6d178ea12031163746850cdd05deb593b3d6d5d7fb249a4a465
 
 pkgname = cc-cli
-
