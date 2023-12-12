@@ -4,7 +4,6 @@
 pkgname=pylon
 pkgdesc="Basler camera Software suite"
 pkgver=7.4.0.14900
-pkgver_=$(echo $pkgver | tr . _)
 pkgrel=1
 arch=(x86_64)
 license=(custom)
@@ -14,7 +13,7 @@ depends=(qt5-base)
 makedepends=(patchelf)
 
 source=(
-	"https://www2.baslerweb.com/media/downloads/software/pylon_software/${pkgname}_${pkgver_}_linux_${CARCH}_setup.tar"
+	"https://www2.baslerweb.com/media/downloads/software/pylon_software/${pkgname}-${pkgver}_linux-${CARCH}_setup.tar.gz"
 	"LICENSE"
 )
 
@@ -27,7 +26,7 @@ _dir="$pkgname_$pkgver_$CARCH"
 prepare() {
 	mkdir -p "$srcdir/$_dir"
 	cd "$srcdir/$_dir"
-	bsdtar -xf "../${pkgname}_${pkgver_}_linux_${CARCH}_setup.tar"
+	bsdtar -xf "../${pkgname}-${pkgver}_linux-${CARCH}_setup.tar.gz"
 	bsdtar -xf "${pkgname}-${pkgver}_linux-${CARCH}.tar.gz"
 	sed -i 's/, TAG+="udev-acl"\|, MODE:="0666"//g' "share/pylon/69-basler-cameras.rules"
 }
