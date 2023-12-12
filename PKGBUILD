@@ -3,22 +3,33 @@ _pkgname=frame
 pkgname="${_pkgname}-eth-bin"
 _appname=Frame
 pkgver=0.6.8
-pkgrel=1
+_electronversion=23
+pkgrel=2
 pkgdesc="System-wide Web3"
 arch=("aarch64" "x86_64")
 url="https://frame.sh/"
 _ghurl="https://github.com/floating/frame"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-dev" "${pkgname%-bin}-canary")
-depends=('bash' 'electron23')
+conflicts=(
+    "${pkgname%-bin}"
+    "${pkgname%-bin}-dev"
+    "${pkgname%-bin}-canary"
+)
+depends=(
+    "electron${_electronversion}"
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('cf35f64affa2c15af5171d01f2ae63e124cc19264eca3f300268de95f079f564')
+sha256sums=('8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 sha256sums_aarch64=('92dd36a4a68992985293aa796573877c33d8e4d1e036d2b2de167622aece374b')
 sha256sums_x86_64=('356f81057f557f5f2ff945c1c215265933930484033525fe1c63a2fa511f41e2')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed -e "s|/opt/${_appname}/${_pkgname} %U|${pkgname%-bin}|g" \
         -e "s|Icon=${_pkgname}|${pkgname%-bin}|g" \
