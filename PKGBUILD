@@ -2,8 +2,9 @@
 pkgname=rendertune-bin
 _pkgname=RenderTune
 pkgver=1.1.4
-pkgrel=1
-pkgdesc="a free electron app that uses ffmpeg to combine audio.+image file(s) into video files. Discord:"
+_electronversion=11
+pkgrel=2
+pkgdesc="A free electron app that uses ffmpeg to combine audio.+image file(s) into video files."
 arch=('x86_64')
 url="https://www.martinbarker.me/RenderTune"
 _ghurl="https://github.com/MartinBarker/RenderTune"
@@ -11,19 +12,27 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'bash'
-    'electron11'
+    "electron${_electronversion}"
+    'libx11'
+    'gdk-pixbuf2'
+    'libxext'
+    'libdbusmenu-glib'
+    'gtk2'
+    'dbus-glib'
 )
-makedepends=(
-    'asar'
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/MartinBarker/RenderTune/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
 )
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/MartinBarker/RenderTune/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.sh")
 sha256sums=('ae8b05956400735952af42beea18b2cf71a0607071e079365237731f0d3b8425'
             '11a272e7544439f19cffcd33c12ea39777fa581122babf7fe5e9b94712660af8'
-            '0338c91f8d72d9e5aa2d0c5cba1fae3148324a3cf026c9a23b6eaba9f5bf1524')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -e "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" \
@@ -39,5 +48,5 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/usr/lib"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
