@@ -2,8 +2,8 @@
 
 _pkgname=chatbot-ui
 pkgname=$_pkgname-git
-pkgver=r292.596d183
-pkgrel=3
+pkgver=r293.2e6c0ee
+pkgrel=2
 pkgdesc="An open source ChatGPT UI."
 arch=('any')
 url='https://github.com/mckaywrigley/chatbot-ui'
