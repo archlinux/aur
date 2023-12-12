@@ -1,20 +1,21 @@
 pkgbase = onote-bin
-	pkgdesc = Markdown笔记应用，基于monaco-editor，支持本地及SSH数据源
+	pkgdesc = Markdown note taking application, based on monaco editor, supports local and SSH data sources.Markdown笔记应用,基于monaco-editor,支持本地及SSH数据源
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pansinm/ONote
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
+	depends = libxcrypt-compat
+	depends = expat
 	provides = onote=0.10.0
 	conflicts = onote
 	source = onote-0.10.0.deb::https://github.com/pansinm/ONote/releases/download/v0.10.0/ONote-linux-amd64-0.10.0.deb
-	source = LICENSE::https://raw.githubusercontent.com/pansinm/ONote/v0.10.0/LICENSE
+	source = LICENSE-0.10.0::https://raw.githubusercontent.com/pansinm/ONote/v0.10.0/LICENSE
 	source = onote.sh
 	sha256sums = 0a9ffd9d0fed0147c838b1ecb8fdedef70de2c15b7874ff02a1cdcf597d6999f
 	sha256sums = ac76bfd52440815cb3e8ec5ea00f1f9b82c9b404219814f2f05c3fe44a9446c5
-	sha256sums = ef645f02c32705ca69bb4d4c2e37906999248097f96bb963bfa9ef0cdbcca0e3
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = onote-bin
