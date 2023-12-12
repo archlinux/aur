@@ -1,7 +1,7 @@
 # Maintainer: Starry Wang <starry.wang@suse.com>
 pkgname=hangar-git
-pkgver=v1.7.0.r0.gcfb8182
-pkgrel=2
+pkgver=v1.7.0.r1.gbe7360a
+pkgrel=1
 epoch=
 pkgdesc="Command line utility to mirror container images"
 arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
@@ -16,6 +16,7 @@ depends=(
 makedepends=(
     "go"
     "git"
+    "btrfs-progs"
 )
 provides=()
 source=("git+$url")
