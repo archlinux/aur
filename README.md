@@ -67,7 +67,12 @@ Even if the attacker manages to get the node keys, it won't be able to escalate 
 
 ## Prior work and big thanks
 
-* @tavianator and his early work on https://gist.github.com/tavianator/6b00355cedae0b2ceb338e43ce8e5c1a
-* @karepker for a very detailed rootfs unlocking on [Raspeberry Pi + Archlinux](https://karepker.com/raspberry-pi/)
-* @classabbyamp for a similar [mkinitcpio hook](https://github.com/classabbyamp/mkinitcpio-tailscale) for non systemd initramfs on Void Linux
-* @wolegis for [mkinitcpio-systemd-extras](https://github.com/wolegis/mkinitcpio-systemd-extras/) that served as major inspiration for my systemd hook
+* [@tavianator][gh1] and his early work on https://gist.github.com/tavianator/6b00355cedae0b2ceb338e43ce8e5c1a
+* [@karepker][gh2] for a very detailed rootfs unlocking on [Raspeberry Pi + Archlinux](https://karepker.com/raspberry-pi/)
+* [@classabbyamp][gh3] for a similar [mkinitcpio hook](https://github.com/classabbyamp/mkinitcpio-tailscale) for non systemd initramfs on Void Linux. Also for the tailscale ACLs idea!
+* [@wolegis][gh4] for [mkinitcpio-systemd-extras](https://github.com/wolegis/mkinitcpio-systemd-extras/) that served as major inspiration for my systemd hook
+
+[gh1]: https://github.com/tavianator
+[gh2]: https://github.com/karepker
+[gh3]: https://github.com/classabbyamp
+[gh4]: https://github.com/wolegis
