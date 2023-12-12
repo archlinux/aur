@@ -1,6 +1,6 @@
 # Maintainer: wuxxin <wuxxin@gmail.com>
 
-# to only build for cpu, set ENABLE_CUDA and ENABLE_ROCM to 0
+# to only build for cpu, set _ENABLE_CUDA and _ENABLE_ROCM to 0
 _ENABLE_CUDA=${_ENABLE_CUDA:-1}
 _ENABLE_ROCM=${_ENABLE_ROCM:-1}
 _SKIP_CPU=${_SKIP_CPU:-0}
@@ -20,7 +20,7 @@ _pkgname="localai"
 pkgbase="${_pkgname}-git"
 pkgname=("${pkgbase}")
 pkgver=v2.0.0.14.gb181503
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -135,11 +135,9 @@ build() {
     cd "${srcdir}/${_pkgname}-rocm"
     export ROCM_HOME="${ROCM_HOME:-/opt/rocm}"
     export PATH="$ROC_HOME/bin:$PATH"
-    if test -n "$GPU_TARGETS"; then
-      _AMDGPU_TARGETS="$GPU_TARGETS"
-    else
-      _AMDGPU_TARGETS="${AMDGPU_TARGETS:-gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102}"
-    fi
+    if test -n "$GPU_TARGETS"; then _AMDGPU_TARGETS="$GPU_TARGETS"; fi
+    if test -n "$AMDGPU_TARGETS"; then _AMDGPU_TARGETS="$AMDGPU_TARGETS"; fi
+    _AMDGPU_TARGETS="${_AMDGPU_TARGETS:-gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102}"
     # XXX workaround build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
     sed -i '1s/^/string(REPLACE "-fcf-protection" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")\n/' backend/cpp/llama/llama.cpp/CMakeLists.txt
     MAGMA_HOME="$ROCM_HOME" AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
