@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ih8rtcgui
-pkgver=0.0.4
+pkgver=0.0.5
 _electronversion=25
-pkgrel=3
+pkgrel=1
 pkgdesc="RTC Jazz (EWM) simple desktop application to manage/view workitems"
 arch=('x86_64')
 url="https://github.com/kenny59/ih8rtcgui"
-license=('custom')
+license=('ISC')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
@@ -30,7 +30,10 @@ build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/npm_cache"
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     sed "s|--win|--linux AppImage|g" -i package.json
     npm install
     npm run build
