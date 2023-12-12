@@ -1,6 +1,6 @@
 pkgbase = librewolf-extension-bitwarden-bin
 	pkgdesc = A secure and free password manager for all of your devices (binary release)
-	pkgver = 2023.9.2
+	pkgver = 2023.12.0
 	pkgrel = 1
 	url = https://addons.mozilla.org/addon/bitwarden-password-manager
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = librewolf-extension-bitwarden-bin
 	depends = librewolf
 	provides = librewolf-extension-bitwarden
 	conflicts = librewolf-extension-bitwarden
-	noextract = bitwarden_password_manager-2023.9.2.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/4180072/bitwarden_password_manager-2023.9.2.xpi
+	noextract = bitwarden_password_manager-2023.12.0.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/4205620/bitwarden_password_manager-2023.12.0.xpi
 	sha256sums = e76cc68f7f194b52f615ec9df80f82308cd55e6234afff5fb41ee7de9f7a27f2
 
 pkgname = librewolf-extension-bitwarden-bin
