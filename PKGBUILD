@@ -2,7 +2,7 @@
 _reponame=hid-logitech-hidpp
 pkgname=hidpp-logitech-g-pro-wheel-dkms-git
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="hid-logitech-hidpp with G Pro Racing Wheel PC/XBOX support"
 arch=('x86_64')
 url="https://github.com/Lawstorant/hid-logitech-hidpp"
