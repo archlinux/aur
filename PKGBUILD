@@ -1,13 +1,13 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=at32-ide-bin
-pkgver=1.0.04
-pkgrel=4
+pkgver=1.0.08
+pkgrel=1
 # epoch=1
 pkgdesc="AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
 MCU。"
 arch=('x86_64')
-url="https://www.arterytek.com/cn/product/AT32F403.jsp"
+url="https://www.arterytek.com/cn/support/index.jsp"
 license=('Commercial')
 provides=(at32-ide AT32IDE)
 conflicts=()
@@ -19,15 +19,15 @@ optdepends=('artery-isp-console-bin: Artery ISP Console 是一款基于 MCU Boot
 backup=()
 options=()
 install=${pkgname}.install
-_pkg_file_name=AT32_IDE_V${pkgver}_Linux_${arch}
-source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/TOOL/AT32_IDE_V${pkgver}_Linux_x86_64.zip")
-sha256sums=('fc8bc502e54a35cf645f470515203f5ad9165617f8648c875b855e751b2236ef')
+_pkg_file_name=AT32_IDE_V${pkgver}_Linux-${arch}
+source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/TOOL/${_pkg_file_name}.zip")
+sha256sums=('38fe8e199efc2109a449821d63d94a90ee3dc86242c62d898965d021eaff15ee')
 noextract=()
 
 package() {
     install -dm0755 "${pkgdir}/opt/artery32/${pkgname%-bin}/"
 
-    bsdtar -xf  ${srcdir}/AT32IDE_V${pkgver}_Linux_${arch/x/X}.tar.gz -C "${pkgdir}/opt/artery32/${pkgname%-bin}/"
+    bsdtar -xf  ${srcdir}/AT32IDE_V${pkgver}_Linux-${arch}.tar.gz -C "${pkgdir}/opt/artery32/${pkgname%-bin}/"
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" << EOF
 #!/bin/bash
