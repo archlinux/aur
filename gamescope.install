@@ -1,0 +1,11 @@
+do_setcap() {
+  setcap cap_sys_nice=eip $(realpath $(which gamescope))
+}
+
+post_install() {
+  do_setcap
+}
+
+post_upgrade() {
+  do_setcap
+}
