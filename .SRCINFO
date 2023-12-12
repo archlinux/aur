@@ -1,6 +1,6 @@
 pkgbase = ruffle-nightly-bin
 	pkgdesc = A Flash Player emulator written in Rust
-	pkgver = 2023.12.11
+	pkgver = 2023.12.12
 	pkgrel = 1
 	url = https://ruffle.rs/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ruffle-nightly-bin
 	depends = alsa-lib
 	provides = ruffle
 	conflicts = ruffle-git
-	source = https://github.com/ruffle-rs/ruffle/releases/download/nightly-2023-12-11/ruffle-nightly-2023_12_11-linux-x86_64.tar.gz
-	sha512sums = 1b7e9cf358a39cdca15ab652a2447a5368a8ad012f44348e1f37ba347449ebe2a8b32a12732d041d8d53df81e106c2f92984b4c616cbf070744d3b0997952e2d
+	source = https://github.com/ruffle-rs/ruffle/releases/download/nightly-2023-12-12/ruffle-nightly-2023_12_12-linux-x86_64.tar.gz
+	sha512sums = d57ff2622af8eb5c6f71e19913e971b1610411a028481bb693564fafe8b75f49c12cc079a45e17313cc883df999d03b2c0dffaabe3b4608c5baf6bff4be7152e
 
 pkgname = ruffle-nightly-bin
