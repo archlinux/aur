@@ -2,12 +2,12 @@
 
 pkgname=pinentry-rofi
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='rofi-based pinentry implementation'
 arch=('x86_64')
 url='https://github.com/plattfot/pinentry-rofi'
 license=('custom:MIT')
-depends=('guile' 'rofi')
+depends=('guile2.2' 'rofi')
 makedepends=('autoconf-archive')
 source=("https://github.com/plattfot/pinentry-rofi/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         LICENSE)
