@@ -1,7 +1,7 @@
 # Maintainer: RifsxD <33044977+rifsxd at users dot noreply dot github dot com>
 
 pkgname=kittyfetch
-pkgver=1.1.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Kittyfetch is a cute little and fast tool for fetching info about your system'
 arch=('any')
