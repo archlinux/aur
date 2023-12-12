@@ -1,13 +1,13 @@
 # Maintainer: honjow
 pkgname=sk-chos-tool
-pkgver=r183.5755131
+pkgver=r185.ac0c666
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
 url="https://github.com/honjow/sk-holoiso-config"
 license=('MIT')
 makedepends=('git')
-depends=('python-gobject' 'gtk3' 'openssl')
+depends=('python-gobject' 'gtk3' 'openssl' 'expect' 'efibootmgr')
 provides=(sk-chos-tool)
 conflicts=(sk-chos-tool)
 source=("git+$url")
@@ -25,17 +25,26 @@ package() {
     source_dir="${srcdir}/sk-holoiso-config/src/chimeraos"
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
+    # bin
     install -dm755 "${pkgdir}/usr/bin/"
     install -m755 -t "${pkgdir}/usr/bin/" "${source_dir}/bin"/*
 
+    # conf
     install -dm755 "${pkgdir}/etc/${pkgname}"
     install -m755 -t "${pkgdir}/etc/${pkgname}" "${source_dir}/etc/${pkgname}"/*.conf
+
+    # service
+    install -dm755 "${pkgdir}/usr/lib/systemd/system"
+    install -m755 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*
+
+    # user service
+    install -dm755 "${pkgdir}/usr/lib/systemd/user"
+    install -m755 -t "${pkgdir}/usr/lib/systemd/user" "${source_dir}/systemd/user"/*
 
     # 主程序
     install -dm755 "${pkgdir}/usr/share/${pkgname}/pages"
     install -m755 -t "${pkgdir}/usr/share/${pkgname}/pages" "${source_dir}/main/pages"/*
     install -m755 -t "${pkgdir}/usr/share/${pkgname}" "${source_dir}/main"/*.*
-
 
     # 主程序入口
     ln -s "/usr/share/${pkgname}/sk-chos-tool.py" "${pkgdir}/usr/bin/sk-chos-tool"
