@@ -1,7 +1,7 @@
 pkgbase = wayfire-plugins-dbusqt
 	pkgdesc = Wayfire plugin to expose a few internal features via DBus. This plugin is a temporary waypoint until protocols are developed to cater to all the needs
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/wayfireplugins/dbusqt
 	arch = x86_64
 	arch = aarch64
