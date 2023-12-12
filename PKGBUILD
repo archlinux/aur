@@ -3,7 +3,7 @@ pkgname=jlivertool
 _pkgname=JLiverTool
 pkgver=1.4.1
 _electronversion=15
-pkgrel=1
+pkgrel=2
 pkgdesc="Bilibili 弹幕机"
 arch=('any')
 url="https://github.com/Xinrea/JLiverTool"
@@ -43,8 +43,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644  "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644  "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname}/swiftshader"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname}/swiftshader"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644  "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

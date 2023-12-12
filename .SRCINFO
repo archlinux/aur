@@ -1,7 +1,7 @@
 pkgbase = jlivertool
 	pkgdesc = Bilibili 弹幕机
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xinrea/JLiverTool
 	arch = any
 	license = MIT
