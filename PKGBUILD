@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=smartdns-rs-git
-pkgver=0.6.4.r0.g8ccfb81
+pkgver=0.6.5.r22.ga352d9f
 pkgrel=1
 pkgdesc="A cross platform local DNS server (Dnsmasq like) written in rust to obtain the fastest website IP for the best Internet experience, supports DoT, DoH. 一个用 Rust 编写的跨平台本地DNS服务器，获取最快的网站IP，获得最佳上网体验，支持DoH，DoT。"
 arch=('any')
@@ -21,7 +21,7 @@ source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 # Use LTO
-# export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 
 # Use debug
 export CARGO_PROFILE_RELEASE_DEBUG=2
@@ -36,6 +36,7 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+
     cargo build --release --all-features
 }
 
@@ -55,4 +56,5 @@ package() {
     sed -i 's|sbin|bin|g' src/service/linux/systemd/files/lib/systemd/system/smartdns-rs.service
     install -Dm644 src/service/linux/systemd/files/lib/systemd/system/smartdns-rs.service \
         -t "$pkgdir/usr/lib/systemd/system/"
+    install -Dm0644 LICENSE* -t "$pkgdir/usr/share/licenses/${pkgname}/"
 }
