@@ -1,16 +1,12 @@
 pkgbase = reqnotes-bin
 	pkgdesc = Personal Notes Application, Cross platform desktop application, developed with .NET 6 and Avalonia UI
 	pkgver = 1.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ReqBaa/ReqNotes
 	arch = x86_64
 	license = GPL3
 	depends = fontconfig
-	depends = glibc
-	depends = zlib
-	depends = gcc-libs
 	conflicts = reqnotes
-	conflicts = reqnotes-appimage
 	options = !strip
 	source = reqnotes-1.8.deb::https://raw.githubusercontent.com/ReqBaa/repo/main/pool/main/r/reqnotes/reqnotes_1.8-0ubuntu1_amd64.deb
 	sha256sums = 08c7edd178beb43194eca99bf06ce9a788949b70e917458e9832272ac0db209c
