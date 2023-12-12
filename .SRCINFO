@@ -1,0 +1,19 @@
+pkgbase = ymake-git
+	pkgdesc = ymake
+	pkgver = 0.7.1.2.gd472ca6
+	pkgrel = 1
+	url = https://github.com/evilbinary/ymake
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = ymake
+	conflicts = ymake
+	source = ymake-git::git+https://github.com/evilbinary/ymake.git
+	sha256sums = SKIP
+
+pkgname = ymake-git
