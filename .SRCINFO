@@ -1,7 +1,7 @@
 pkgbase = ymake-git
-	pkgdesc = ymake is a make dsl build tools
+	pkgdesc = ymake
 	pkgver = 0.7.1.2.gd472ca6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evilbinary/ymake
 	arch = any
 	license = MIT

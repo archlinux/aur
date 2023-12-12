@@ -1,9 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
-
 pkgname=ymake-git
 pkgver=0.7.1.2.gd472ca6
-pkgrel=1
-pkgdesc="ymake is a make dsl build tools"
+pkgrel=2
+pkgdesc="ymake"
 arch=('any')
 url="https://github.com/evilbinary/ymake"
 license=('MIT')
