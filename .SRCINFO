@@ -1,0 +1,17 @@
+pkgbase = cargo-semver-bump
+	pkgdesc = A tool to semantically bump the version of a Rust crate
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/markhaehnel/cargo-semver-bump
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = cmake
+	depends = gcc-libs
+	depends = zlib
+	options = !lto
+	source = cargo-semver-bump-0.1.0.tar.gz::https://github.com/markhaehnel/cargo-semver-bump/archive/0.1.0.tar.gz
+	sha512sums = 8b9122e0e15688cbabf41957ec0f32b7de43277c17597f8509aced895d97486ceea6bd1565bde466c37f5d5a10a6cd3557a43d12cc95512230e8787bc5277c61
+
+pkgname = cargo-semver-bump
