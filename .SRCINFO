@@ -1,0 +1,19 @@
+pkgbase = at32-ide-project-generate-bin
+	pkgdesc = AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32 MCU。
+	pkgver = 1.0.00
+	pkgrel = 1
+	url = https://www.arterytek.com/cn/support/index.jsp
+	arch = x86_64
+	license = Commercial
+	makedepends = libarchive
+	makedepends = sed
+	optdepends = artery-isp-console-bin: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。
+	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
+	optdepends = at32-ide
+	optdepends = at32-work-bench
+	provides = at32-ide-project-generate
+	noextract = AT32IDE_Project_Generate_Linux-x86_64_V1.0.00.zip
+	source = AT32IDE_Project_Generate_Linux-x86_64_V1.0.00.zip::https://www.arterytek.com/download/TOOL/AT32IDE_Project_Generate_Linux-x86_64_V1.0.00.zip
+	sha256sums = 545b778f1f167360830fec0ccfb0b7b4146567bd71c2f5c820884785e2683fb2
+
+pkgname = at32-ide-project-generate
