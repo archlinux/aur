@@ -1,0 +1,20 @@
+pkgbase = slimevr-server-git
+	pkgdesc = Server for SlimeVR Full Body Tracking System
+	pkgver = v0.11.0.rc.2.r0.c3c7fc89
+	pkgrel = 1
+	url = https://github.com/SlimeVR/SlimeVR-Server
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = java-runtime-headless-openjdk=17
+	depends = java-runtime-headless-openjdk=17
+	provides = slimevr-server
+	conflicts = slimevr-server
+	source = git+https://github.com/SlimeVR/SlimeVR-Server.git
+	source = slimevr-server
+	source = slimevr-server.service
+	sha512sums = SKIP
+	sha512sums = eedfaa5a4b997b0cc4270acb063b470cbd6ee15b022a273a9f5a49c5023e985fd2d6240d33eac5eeb25f506d9db90bff863a62a3ed1a8b8006f292dcea293dd7
+	sha512sums = faf2ecb06bb3031c507a7bfd7cc52edf08b689e7ee127de77e16dfa50c2f1fb9f9d11e3b948ee0f2c90c3667c08c2c1eaa00ffdf778d8f6c03a866632c999db6
+
+pkgname = slimevr-server-git

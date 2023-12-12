@@ -1,0 +1,16 @@
+[Unit]
+Description=SlimeVR Full Body Tracking System Server
+Documentation=https://docs.slimevr.dev/
+StartLimitIntervalSec=30s
+StartLimitBurst=3
+
+[Service]
+ExecStart=/usr/bin/slimevr-server
+WorkingDirectory=/opt/slimevr-server
+TimeoutStopSec=5
+KillMode=mixed
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
