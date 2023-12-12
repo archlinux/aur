@@ -1,6 +1,6 @@
 pkgbase = eclipse-php
 	pkgdesc = Highly extensible IDE (PHP version)
-	pkgver = 4.29
+	pkgver = 4.30
 	pkgrel = 1
 	epoch = 2
 	url = https://www.eclipse.org/
@@ -9,11 +9,11 @@ pkgbase = eclipse-php
 	depends = java-runtime>=17
 	depends = webkit2gtk
 	depends = unzip
-	provides = eclipse=4.29-1
+	provides = eclipse=4.30-1
 	conflicts = eclipse
-	source = eclipse-php-2023-09-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2023-09/R/eclipse-php-2023-09-R-linux-gtk-x86_64.tar.gz&r=1
+	source = eclipse-php-2023-12-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2023-12/R/eclipse-php-2023-12-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop
-	sha512sums = 27660399412c04f9c2a80642e3e3590e13a9b54da5192db63a2b7f27a0fc25a3ae1cc7264999d0bddbdfe0977ac256b972e149dd48de1e841db8b4a3540e5b74
+	sha512sums = 2abca8766a0440fe659880b6f790894dcfc187cedb5d3462a99fc2ff607b1aecbf77214cf759d82425f23932a1401d00a803dead6f572c829d2c17f8a8070cb1
 	sha512sums = 910d235d1b170b850d91598af1949db5109671236d76f62ea51f9505a285b4b10fcdacae0bc60dc209ab57fbb44d98223fb4b584b31e220253396a933bc98a78
 
 pkgname = eclipse-php

@@ -2,9 +2,9 @@
 
 pkgname=eclipse-php
 epoch=2
-pkgver=4.29
+pkgver=4.30
 pkgrel=1
-_release=2023-09/R
+_release=2023-12/R
 pkgdesc="Highly extensible IDE (PHP version)"
 arch=(x86_64)
 url="https://www.eclipse.org/"
@@ -17,7 +17,7 @@ conflicts=(eclipse)
 _srcfilename="$pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
 source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
         "eclipse.desktop")
-sha512sums=('27660399412c04f9c2a80642e3e3590e13a9b54da5192db63a2b7f27a0fc25a3ae1cc7264999d0bddbdfe0977ac256b972e149dd48de1e841db8b4a3540e5b74'
+sha512sums=('2abca8766a0440fe659880b6f790894dcfc187cedb5d3462a99fc2ff607b1aecbf77214cf759d82425f23932a1401d00a803dead6f572c829d2c17f8a8070cb1'
             '910d235d1b170b850d91598af1949db5109671236d76f62ea51f9505a285b4b10fcdacae0bc60dc209ab57fbb44d98223fb4b584b31e220253396a933bc98a78')
 
 #backup=('usr/lib/eclipse/eclipse.ini')
