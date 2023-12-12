@@ -1,20 +1,24 @@
 pkgbase = pplink-bin
 	pkgdesc = 帮助电脑、手机、平板等设备建立点到点的安全直连
-	pkgver = 12.1.1
+	pkgver = 12.1.3
 	pkgrel = 1
 	url = https://www.ppzhilian.com
 	arch = x86_64
 	license = custom
-	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
-	provides = pplink=12.1.1
+	depends = python
+	depends = libxfixes
+	depends = expat
+	depends = libxtst
+	depends = libx11
+	provides = pplink=12.1.3
 	conflicts = pplink
-	source = pplink-12.1.1.deb::https://www.ppzhilian.com/download/linux/pplink_12.1.1_amd64.deb
+	source = pplink-12.1.3.deb::https://www.ppzhilian.com/download/linux/pplink_12.1.3_amd64.deb
 	source = LICENSE.md
 	source = pplink.sh
-	sha256sums = 134cd598c1140b0194e3695845d7d9483e5ba70152c8dd75036ad9c581b9417f
-	sha256sums = 6acc470ced558f0572421e8d554fe5f99abc45be5f390f52d170a1e5d51440bb
-	sha256sums = 63206e29b33bbfbbd0f5ab879b1ff19fdfbca951d305c66ec637f82fa941d3c1
+	sha256sums = 61f324d789cae452d4a114e8016a07ef98485234b0bbd8a4795ef8a51e675fe5
+	sha256sums = 66067af9f7a9a36d82255a37a6887b4f2cdf22cf878520c34a3b04514d95a83c
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = pplink-bin
