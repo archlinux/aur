@@ -2,7 +2,8 @@
 pkgname=enotebook-bin
 _pkgname=eNotebook
 pkgver=1.0.0
-pkgrel=1
+_electronversion=27
+pkgrel=2
 pkgdesc="Opensource desktop app to create and store notes."
 arch=('x86_64')
 url="https://enotebook-react.vercel.app/"
@@ -10,12 +11,21 @@ _ghurl="https://github.com/aestrus219/eNotebook"
 license=('custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
-depends=('bash' 'electron27')
-source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}@${pkgver}-linux.deb"
-    "${pkgname%-bin}.sh")
+depends=(
+    "electron${_electronversion}"
+    'hicolor-icon-theme'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}@${pkgver}-linux.deb"
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('6eeb0514b9690bdef6c4d5cc8ea991f76fe12fdff6d616c2945df704b7a26efa'
-            'e62ad5836f1ffe73ffc94f6432421253f6e8e2894e0db07debcb84c7178d5db6')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }

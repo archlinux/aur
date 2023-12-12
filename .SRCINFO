@@ -1,17 +1,17 @@
 pkgbase = enotebook-bin
 	pkgdesc = Opensource desktop app to create and store notes.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://enotebook-react.vercel.app/
 	arch = x86_64
 	license = custom
-	depends = bash
 	depends = electron27
+	depends = hicolor-icon-theme
 	provides = enotebook=1.0.0
 	conflicts = enotebook
 	source = enotebook-1.0.0.deb::https://github.com/aestrus219/eNotebook/releases/download/v1.0.0/eNotebook@1.0.0-linux.deb
 	source = enotebook.sh
 	sha256sums = 6eeb0514b9690bdef6c4d5cc8ea991f76fe12fdff6d616c2945df704b7a26efa
-	sha256sums = e62ad5836f1ffe73ffc94f6432421253f6e8e2894e0db07debcb84c7178d5db6
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = enotebook-bin
