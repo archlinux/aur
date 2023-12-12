@@ -22,9 +22,10 @@ optdepends=('raccoon')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(
-  "https://raccoon.onyxbits.de/${_pkgbase}/${_pkgname}-${pkgver}.jar")
+  "https://raccoon.onyxbits.de/${_pkgbase}/${_pkgname}-${pkgver}.jar"
   "${_pkgname}.sh.in"
   "${_pkgname}.desktop"
+)
 ## Do extract in order to get the icon.
 # noextract=(
 #   "${_pkgname}-${pkgver}.jar"

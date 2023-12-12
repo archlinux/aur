@@ -12,6 +12,8 @@ pkgbase = dummydroid-bin
 	provides = dummydroid=3.0
 	conflicts = dummydroid
 	source = https://raccoon.onyxbits.de/dummydroid/dummydroid-3.0.jar
+	source = dummydroid.sh.in
+	source = dummydroid.desktop
 	sha256sums = 28520aa8dad9f69a585b8469f3d0ce76a5531b5a4a85c377798619a5754466cc
 	sha256sums = 81b5bdb9e94338578977bc60eeaf68da0c65d817c581a59ccf47579e03810d1a
 	sha256sums = 0b39f6793ce5f8acb7041e12080f0a7983c2d0c71ba4ccf44755a005e353f51a
