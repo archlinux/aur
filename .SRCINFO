@@ -6,6 +6,7 @@ pkgbase = mod_tile-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	checkdepends = jq
 	makedepends = apache
 	makedepends = apr
 	makedepends = boost

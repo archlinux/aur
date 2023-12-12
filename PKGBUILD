@@ -12,6 +12,7 @@ license=('GPL2')
 optdepends=('ceph-libs: RADOS tile storage support'
             'libmemcached: Memcached tile storage support')
 makedepends=('apache' 'apr' 'boost' 'cairo' 'cmake' 'git' 'glib2' 'iniparser' 'mapnik')
+checkdepends=('jq')
 source=('git+https://github.com/openstreetmap/mod_tile.git'
         'renderd.service'
         'renderd-postgresql.service'
