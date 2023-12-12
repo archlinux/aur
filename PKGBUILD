@@ -2,7 +2,7 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='vhs-bin'
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='A tool for recording terminal GIFs'
 url='https://charm.sh/'
@@ -12,17 +12,17 @@ provides=('vhs')
 conflicts=('vhs')
 depends=('ffmpeg' 'ttyd')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.6.0/vhs_0.6.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('ae758f6c02c1866a3a3070d1d721da8774b3072ced0c88995ef80aa9ee27aae4')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.1/vhs_0.7.1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('a1d3735ed1a5fa37451fb4abf0e06d963cabd1ed26fd5aa359853e12f16671ba')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.6.0/vhs_0.6.0_Linux_arm.tar.gz")
-sha256sums_armv7h=('edb453909a3e1f42afc37645e315c95d6e8ab8b6b494f156b5ae9fcfe6e3724a')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.1/vhs_0.7.1_Linux_arm.tar.gz")
+sha256sums_armv7h=('3298df77cde217431522c8d8967d007cf5abd6a58b3d14fdc087a0374d7275ad')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.6.0/vhs_0.6.0_Linux_i386.tar.gz")
-sha256sums_i686=('74d1dc9454af8d0913eed31d80849a3d42d1cf40c5256c48b01f79b615ebabfb')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.1/vhs_0.7.1_Linux_i386.tar.gz")
+sha256sums_i686=('b1facaea7efee5e4d4de2a59d14e86eb6666ec849036df8703ca9f916bee8f1e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.6.0/vhs_0.6.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('54234c73ba27ca8305cc4573be18ab636b565b883d19521d05434b011aeb0adc')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.1/vhs_0.7.1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('748443e0b5df89475499330b8943bf650cf0627250290cd5a11d38d3859e96d4')
 
 package() {
   # bin
