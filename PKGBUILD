@@ -2,6 +2,7 @@
 _pkgname=passky
 pkgname="${_pkgname}-desktop-bin"
 pkgver=8.1.1
+_electronversion=22
 pkgrel=1
 pkgdesc="A simple, modern, lightweight, open source and secure password manager."
 arch=("x86_64")
@@ -10,8 +11,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron22'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
@@ -19,8 +19,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e83318acd9c418a9f82f5f5f2a7bb915abc68fbbd3047a44895af4222ece81e9'
-            'e22ea522452a9fc35ff3e4261f3ea6fbc1f3b8dc463888aff2c3bff9c146590e')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed -e "s|/opt/${_pkgname//p/P}/${_pkgname} %U|${pkgname%-bin}|g" \
         -e "s|Icon=${_pkgname}|${pkgname%-bin}|g" \

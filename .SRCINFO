@@ -5,7 +5,6 @@ pkgbase = passky-desktop-bin
 	url = https://github.com/Rabbit-Company/Passky-Desktop
 	arch = x86_64
 	license = GPL3
-	depends = bash
 	depends = electron22
 	depends = hicolor-icon-theme
 	provides = passky-desktop=8.1.1
@@ -13,6 +12,6 @@ pkgbase = passky-desktop-bin
 	source = passky-desktop-8.1.1.deb::https://github.com/Rabbit-Company/Passky-Desktop/releases/download/v8.1.1/passky_8.1.1_amd64.deb
 	source = passky-desktop.sh
 	sha256sums = e83318acd9c418a9f82f5f5f2a7bb915abc68fbbd3047a44895af4222ece81e9
-	sha256sums = e22ea522452a9fc35ff3e4261f3ea6fbc1f3b8dc463888aff2c3bff9c146590e
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = passky-desktop-bin
