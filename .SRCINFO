@@ -1,7 +1,7 @@
 pkgbase = cn.flamescion.bookworm-compatibility-mode
 	pkgdesc = a container app packaging and distributing solution.
-	pkgver = 12.4.2
-	pkgrel = 1
+	pkgver = 12.4.5
+	pkgrel = 3
 	url = https://gitee.com/amber-compatability-environment/bookworm-compatibility-mode
 	install = cn.flamescion.bookworm-compatibility-mode.install
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = cn.flamescion.bookworm-compatibility-mode
 	depends = gcc
 	depends = dpkg
 	depends = debootstrap
-	source = cn.flamescion.bookworm-compatibility-mode-12.4.2.tar.gz::https://gitee.com/amber-compatability-environment/bookworm-compatibility-mode/repository/archive/12.4.2.tar.gz
-	sha256sums = a3063523f8a18e26b95bf7c23150c8fb18b136a853597f35ab847f2f3a47c711
+	source = cn.flamescion.bookworm-compatibility-mode-12.4.5.tar.gz::https://gitee.com/amber-compatability-environment/bookworm-compatibility-mode/repository/archive/12.4.5.tar.gz
+	sha256sums = 932357b2d1049afe74dd656b94eb849d6740a68d92e5d125a831ae21b1db7144
 
 pkgname = cn.flamescion.bookworm-compatibility-mode

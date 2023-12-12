@@ -1,6 +1,6 @@
 # Maintainer: Anysets<anysets@qq.com>
 pkgname=cn.flamescion.bookworm-compatibility-mode
-pkgver=12.4.2
+pkgver=12.4.5
 pkgrel=1
 pkgdesc="a container app packaging and distributing solution."
 arch=('aarch64' 'x86_64')
@@ -17,8 +17,7 @@ depends=('bubblewrap'
 install=cn.flamescion.bookworm-compatibility-mode.install
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-compatability-environment/bookworm-compatibility-mode/repository/archive/${pkgver}.tar.gz")
-#source=("https://gitee.com/amber-compatability-environment/bookworm-compatibility-mode.git")
-sha256sums=('a3063523f8a18e26b95bf7c23150c8fb18b136a853597f35ab847f2f3a47c711')
+sha256sums=('932357b2d1049afe74dd656b94eb849d6740a68d92e5d125a831ae21b1db7144')
 
 package() {
 	cp -r ${srcdir}/bookworm-compatibility-mode-${pkgver}/src/opt ${pkgdir}/
@@ -28,13 +27,12 @@ package() {
 	cp -r ${srcdir}/bookworm-compatibility-mode-${pkgver}/src/opt/apps/cn.flamescion.bookworm-compatibility-mode/entries/icons ${pkgdir}/usr/share
 
 	cd "${pkgdir}/opt/apps/cn.flamescion.bookworm-compatibility-mode/files"
-	echo $CARCH
 	if [ "$CARCH" = "aarch64" ]
 	then
-		sh build-container.sh arm64
+		bash build-container.sh arm64
 	elif [ "$CARCH" = "x86_64" ]
 	then
-		sh build-container.sh amd64
+		bash build-container.sh amd64
 	else
 		echo "Unsupportable arch!"
 	fi
