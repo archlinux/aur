@@ -1,6 +1,6 @@
 pkgbase = python-drf-spectacular
 	pkgdesc = Sane and flexible OpenAPI 3 schema generation for Django REST framework
-	pkgver = 0.26.5
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/tfranzel/drf-spectacular
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-drf-spectacular
 	depends = python-uritemplate
 	depends = python-yaml
 	optdepends = python-drf-spectacular-sidecar: offline and sidecar
-	source = https://files.pythonhosted.org/packages/source/d/drf-spectacular/drf-spectacular-0.26.5.tar.gz
-	sha256sums = aee55330a774ba8a9cbdb125714d1c9ee05a8aafd3ce3be8bfd26527649aeb44
+	source = https://files.pythonhosted.org/packages/source/d/drf-spectacular/drf-spectacular-0.27.0.tar.gz
+	sha256sums = 18d7ae74b2b5d533fd31f1c591ebaa5cce1447e0976ced927401e3163040dea9
 
 pkgname = python-drf-spectacular
