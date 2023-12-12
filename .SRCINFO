@@ -15,6 +15,6 @@ pkgbase = jlivertool
 	source = jlivertool-1.4.1::git+https://github.com/Xinrea/JLiverTool.git#tag=v1.4.1
 	source = jlivertool.sh
 	sha256sums = SKIP
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = jlivertool
