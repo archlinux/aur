@@ -1,7 +1,7 @@
 # Maintainer: Charlie Ringström <c.ringstrom@gmail.com>
 pkgname='longcat'
-pkgver='0.0.4'
-pkgrel=15
+pkgver=v0.0.4
+pkgrel=1
 pkgdesc="Creates a loooonng cat in the terminal"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/mattn/longcat"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 #changelog="Initial release"
-source=("longcat::git+https://github.com/mattn/longcat.git#tag=v$pkgver")
+source=("longcat::git+https://github.com/mattn/longcat.git#tag=$pkgver")
 md5sums=('SKIP')
 
 pkgver() {
