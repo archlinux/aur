@@ -1,6 +1,6 @@
 pkgbase = python-caldav
 	pkgdesc = A CalDAV (RFC4791) client library for Python
-	pkgver = 1.3.8
+	pkgver = 1.3.9
 	pkgrel = 1
 	url = https://github.com/python-caldav/caldav
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-caldav
 	depends = python-six
 	depends = python-tzlocal
 	depends = python-vobject
-	source = caldav-1.3.8.tar.gz::https://github.com/python-caldav/caldav/archive/v1.3.8.tar.gz
-	sha256sums = f66a53751153db6d6b768c106fca323fc0adfb66b9716a1972d2a7294c99ab2c
+	source = caldav-1.3.9.tar.gz::https://github.com/python-caldav/caldav/archive/v1.3.9.tar.gz
+	sha256sums = b733fb9e038e1addf725ad3bb8ec8725d6f4f401cc7203ef01936faa618f5409
 
 pkgname = python-caldav
