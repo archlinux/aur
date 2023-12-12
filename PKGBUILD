@@ -1,4 +1,4 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=windecor
 pkgname=wayfire-plugins-windecor
@@ -15,7 +15,7 @@ md5sums=('f055d263b55eb8250fc25aa72fcbdd68')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
-  meson .build --prefix=/usr --buildtype=release
+  PKG_CONFIG_PATH=/usr/lib/wlroots0.16/pkgconfig meson setup .build --prefix=/usr --buildtype=release
   ninja -C .build
 }
 
