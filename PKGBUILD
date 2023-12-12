@@ -7,11 +7,11 @@ pkgname=(
   libspelling-docs
 )
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Spellcheck library for GTK 4"
 url="https://gitlab.gnome.org/chergert/libspelling"
 arch=(x86_64)
-license=(LGPL)
+license=(LGPL-2.1-or-later)
 depends=(
   enchant
   gtk4
