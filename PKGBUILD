@@ -13,7 +13,7 @@ pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
 pkgver=6.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -152,7 +152,7 @@ package_linux-jcore() {
   echo "${pkgver}-${pkgrel}${_kernelname} x64" > "${pkgdir}/boot/${pkgbase}-${CARCH}.kver"
 
   # remove build and source links
-  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
+  rm "${pkgdir}"/usr/lib/modules/${_kernver}/build
 
   # now we call depmod...
   depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
