@@ -3,13 +3,13 @@
 pkgname=fronde
 pkgver=0.4.0
 _tagname=0.4 # stupid me 🤦
-pkgrel=2
+pkgrel=3
 pkgdesc="An opinionated static website generator for Emacs Org mode"
 url="https://etienne.depar.is/fronde"
 arch=("any")
 license=("custom:WTFPL")
 checkdepends=("ruby-rspec" "ruby-simplecov")
-depends=("emacs" "ruby" "ruby-liquid" "ruby-nokogiri" "ruby-r18n-core"
+depends=("emacs" "ruby" "ruby-liquid" "ruby-nokogiri>=1.15" "ruby-r18n-core"
          "ruby-rainbow" "ruby-rake" "ruby-webrick")
 options=("!emptydirs")
 source=("https://git.umaneti.net/${pkgname}/snapshot/${pkgname}-${_tagname}.tar.gz")
@@ -17,13 +17,7 @@ sha512sums=('1b2cac48b3565261cc2a1211b97559f0bbc5fd929df8b619e99ae7fcb0e050f7582
 
 prepare() {
     cd ${pkgname}-${_tagname}
-    sed -i "s|'nokogiri', '~> 1.15'|'nokogiri', '>= 1.13'|g" ${pkgname}.gemspec
     sed -i "s|~>|>=|g" ${pkgname}.gemspec
-}
-
-check() {
-    cd ${pkgname}-${_tagname}
-    rspec || true # weird errors
 }
 
 build() {
@@ -35,6 +29,11 @@ require_relative './lib/fronde/config'
 Dir.glob('./lib/tasks/*.rake').each { |r| import r }
 EOF
     rake cli:zsh_complete > _fronde
+}
+
+check() {
+    cd ${pkgname}-${_tagname}
+    rspec || true # weird errors
 }
 
 package() {
