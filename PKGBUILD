@@ -1,7 +1,7 @@
 # Maintainer: Charlie Ringström <c.ringstrom@gmail.com>
 pkgname='longcat'
-pkgver=v0.0.4
-pkgrel=1
+pkgver='0.0.4'
+pkgrel=14
 pkgdesc="Creates a loooonng cat in the terminal"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/mattn/longcat"
@@ -24,7 +24,8 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o longcat
+	printf $pkgver
+	#go build -o longcat
 }
 
 package() {
