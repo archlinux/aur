@@ -1,6 +1,6 @@
 pkgbase = nano-git
 	pkgdesc = Pico editor clone with enhancements, git version
-	pkgver = 20230514
+	pkgver = 20231210
 	pkgrel = 1
 	url = http://www.nano-editor.org
 	arch = x86_64
@@ -14,8 +14,6 @@ pkgbase = nano-git
 	replaces = nano-svn
 	backup = etc/nanorc
 	source = git+https://git.savannah.gnu.org/git/nano.git
-	source = fix-git-path.patch
 	sha512sums = SKIP
-	sha512sums = 51a9ccc7b0be33f14c8fa355ed0df97a3c3a468e28815b3e7618aa19c2f0ffa13053f4b11619a98352803eac82dd0125cfc424884943f79b3653eed531fd69cc
 
 pkgname = nano-git
