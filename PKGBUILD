@@ -2,27 +2,28 @@
 _pkgname=gourou
 pkgname="${_pkgname}-bin"
 __pkgname="lib${_pkgname}"
-pkgver=0.8.2
+__commit="92a67312bd8f4d4461637c5cf7744ce24b7250c1"
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
 arch=('x86_64')
 license=('LGPL3')
-url="https://indefero.soutade.fr/p/libgourou"
+url="https://forge.soutade.fr/soutade/libgourou"
 depends=(glibc gcc-libs zlib libzip openssl)
 makedepends=(patchelf)
 conflicts=(gourou-git gourou)
 provides=("gourou=${pkgver}")
 options=(!strip)
-__man_link="https://indefero.soutade.fr/p/${__pkgname}/source/file/v${pkgver}/utils/man/"
+__man_link="https://forge.soutade.fr/soutade/${__pkgname}/raw/commit/${__commit}/utils/man/"
 source=(
-	"https://indefero.soutade.fr/p/${__pkgname}/downloads/get/${__pkgname}_utils_${pkgver}.tgz"
+	"https://forge.soutade.fr/api/packages/soutade/generic/${__pkgname}/${pkgver}/libgourou_utils_${pkgver}.tgz"
 	"$__man_link/acsmdownloader.1"
 	"$__man_link/adept_activate.1"
 	"$__man_link/adept_loan_mgt.1"
 	"$__man_link/adept_remove.1"
 )
 sha512sums=(
-        30d92d553d37c9929ec67bac86bf98377ddbfa09cb332f4e032ffd626250835ce670a4e36bffd1aca3999aa41f1d3dc3fa5782e597fcf812d9db9a560f712719
+        32c40c74c6a5247b7b126870c4e0e1eb002e6b54eed77f3024e74055a14983f75834ce23e6259186d5695fb62f10d0c673e5b95986de2b5bd77972becaffecbc
         9cfaafb8ba99bf42713c9a99fd26d5a5b5f027e2fee1eba4e86f5161e1a8256ef691fbb135bd19b7ff9118eab89fc1a365e5ffc8fe9ef6cf080eec757ddd32b9
         b3cceb1ac60bedf75628c9cac56e2d246abe9378e58f959352b7ce133fabead3900f6ac3ccfa78f1163a923334ab6f724f77a2007144cd775aa45816a3398a51
         724e4c11491ca428995e3dfebf439a2a941b28b8cf08f5fa4fad93e3860196c21fe26962201bcc00d8875a970e3d7e321ebdf1b332157bb0fc920124dd12b42c
