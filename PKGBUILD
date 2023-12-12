@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lisk-desktop-bin
-pkgver=3.0.0
+pkgver=3.0.1
 _electronversion=27
 pkgrel=1
 pkgdesc="Lisk graphical user interface for desktop"
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-desktop-bin}-linux-${CARCH}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f7b6db2374de380c9ec2fbb6f3986bf1efe77525ab8ebdf7caf0992aa5760826'
+sha256sums=('bd548311200426532284afd32cebcf56086f92da54bbadbd31e8a0d8d0dd2f9e'
             '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
