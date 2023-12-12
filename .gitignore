@@ -1,0 +1,7 @@
+src
+pkg
+
+*.tar.gz
+*.tar.zst
+*.log
+*.kate-swp
