@@ -2,7 +2,8 @@
 pkgname=knowte-bin
 _pkgname=Knowte
 pkgver=3.0.0
-pkgrel=1
+_electronversion=17
+pkgrel=2
 pkgdesc="A note taking application that allows you to quickly and easily organize and find your notes."
 arch=('x86_64')
 url="https://github.com/digimezzo/knowte"
@@ -10,15 +11,20 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron17'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
-source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.pacman"
-    "${pkgname%-bin}.sh")
+source=(
+    "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.pacman"
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('6f7ad45262020e24c66536d627442b27601109d434e0d5870de2d48519fe2750'
-            '4e0dab5e13e4673f344daec0c791702767db3c7a1545dff5355baef378112224')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
