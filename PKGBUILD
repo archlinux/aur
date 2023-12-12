@@ -1,7 +1,7 @@
 # Maintainer: GalaxySnail <me+aur@glxys.nl>
 
 pkgname=wlroots-docs
-pkgver=0.16.2
+pkgver=0.17.0
 pkgrel=1
 license=("MIT")
 pkgdesc="Modular Wayland compositor library (documentation)"
@@ -17,7 +17,7 @@ source=(
     "https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/$pkgver/downloads/wlroots-$pkgver.tar.gz"
 )
 sha256sums=(
-    "83e9a11605f23d4bf781ab1947089483d9ec3f7e9ba65398e0609593b77d44aa"
+    '9da3475a6834a6a9a8fd93de84f4ef91f9ee48ff70c305aa9522bf0db9e61128'
 )
 
 build() {
