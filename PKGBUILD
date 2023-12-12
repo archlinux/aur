@@ -18,8 +18,8 @@ source=("wch-bleuart-app-${pkgver}.zip::http://www.wch.cn/downloads/file/347.htm
         "CH9140DS1-${pkgver}.pdf::http://www.wch.cn/downloads/file/331.html"
         "CH9141DS1-${pkgver}.pdf::http://www.wch.cn/downloads/file/274.html")
 
-sha256sums=('cba8b6949bd91967b182c38086da7a329184c35b749cb4df4d38541edc2dd18b'
-            'f8c2d31a356cbd09fce6635f176c5ce24ff1f9c4ea2bfaf88fa9fae98638288b'
+sha256sums=('85cd9431265bb728d5f89bb72947b6deb62338689c8be647027b07314dbeed48'
+            '709e90d4d2b7d4a315b332f7f5f8047e838e1304ebb8e54248b8d9bafece0456'
             '7d31eb1b4fede49c7f6786c072a6a4d61329dad797b1ad72e5060ac24f33456b'
             '4013a01ef7a7928e3232b0aed9a4622ad4a9c4ac3481900c6ff895250de690ef'
             '2b2140fed808922a9f7f84891bacd9d401fcc22ebcec0185b45b3254effc92a4')
