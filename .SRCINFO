@@ -1,11 +1,10 @@
 pkgbase = laravel-kit-bin
 	pkgdesc = A simple and elegant desktop application for managing your Laravel applications.
 	pkgver = 2.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tmdh/laravel-kit
 	arch = x86_64
 	license = GPL2
-	depends = bash
 	depends = electron21
 	depends = php
 	provides = laravel-kit=2.0.8
@@ -13,6 +12,6 @@ pkgbase = laravel-kit-bin
 	source = laravel-kit-2.0.8.deb::https://github.com/tmdh/laravel-kit/releases/download/v2.0.8/laravel-kit_2.0.8_amd64.deb
 	source = laravel-kit.sh
 	sha256sums = bd3d62e1d11968c76a287e2588757279533afce17ae78c321b93e08ad9f482dd
-	sha256sums = 35ccc76d0e709639f6f6fe29c949ace5db2aa1208623eba20f731f609e4e66a7
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = laravel-kit-bin
