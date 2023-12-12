@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DOSE
-_pkgver=3.28.1
+_pkgver=3.28.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('11096edb2862c8a442f53435082e40b6')
-sha256sums=('77e86745c3ce54f36a79c35a3c5a6fa1f86090a10b66b0a5647f2d2c842db10a')
+md5sums=('db9c95935ce192a915b1246380f625d5')
+sha256sums=('ee22b726664304643116a88c40eb8b2032e2a4faa92c2b2523986ddf19a2644e')
 
 build() {
   mkdir -p build
