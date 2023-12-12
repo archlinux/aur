@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=radio
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc='Simple Radio for Linux'
 url="https://github.com/alexkdeveloper/radio"
@@ -14,7 +14,7 @@ source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  arch-meson $pkgname build
+  arch-meson radio build
   meson compile -C build
 }
 
@@ -24,5 +24,5 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  ln -s io.github.alexkdeveloper.$pkgname "$pkgdir/usr/bin/$pkgname"
+  ln -s io.github.alexkdeveloper.radio "$pkgdir/usr/bin/radio"
 }
