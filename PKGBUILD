@@ -2,37 +2,48 @@
 pkgname=gchat
 _pkgname=GChat
 pkgver=1.0.1
-pkgrel=4
+_electronversion=23
+pkgrel=5
 pkgdesc="Unofficial Google Chat app"
 arch=('x86_64')
 url="https://github.com/dcrousso/GChat"
 license=('MIT')
 depends=(
-    'bash'
-    'electron23'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 makedepends=(
     'npm'
+    'nodejs'
     'gendesk'
+    'git'
 )
 conflicts=("${pkgname}")
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('6ac16d881642d156d9e3c01367edba538cde61efef2c46d07be0e504a42199bf'
-            '3065e9082cc84406701ceb93a1c9254fa723dc58fe39672655de1b842c6b605e')
+sha256sums=('SKIP'
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname}"
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     npm install
     npm run build-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist/${_pkgname}-linux-x64/resources/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/license" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/Icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/${_pkgname}-linux-x64/resources/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/license" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/Icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
