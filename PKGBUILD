@@ -2,7 +2,8 @@
 pkgname=serina-bin
 _pkgname=Serina
 pkgver=0.4.0
-pkgrel=1
+_electronversion=24
+pkgrel=2
 pkgdesc="GUI for create translation files for i18next"
 arch=('x86_64')
 url="https://orn-fox.github.io/serina-1/"
@@ -11,8 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron24'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -22,13 +22,17 @@ source=(
     "${pkgname%-bin}".sh
 )
 sha256sums=('69d3988f02868299b31f974d1d3774431998a14a18e6469be0675211d290b524'
-            '1a3c72f38ceb4abbb3d3ed7085293b1778c14ec96d73ada24c5e4a19f4bd1a77')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm777 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/${pkgname%-bin}-${pkgver//./-}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver//./-}-linux-x64/resources/app/icons/icon-x64.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
