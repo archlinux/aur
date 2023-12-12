@@ -1,15 +1,14 @@
 pkgbase = switchhosts-git
 	pkgdesc = An app for managing hosts file,and switch hosts quickly!
-	pkgver = 4.2.0.beta.r22.gb88ec9d
-	pkgrel = 1
+	pkgver = 4.2.0.beta.r26.g0d948d9
+	pkgrel = 2
 	url = https://github.com/oldj/SwitchHosts
 	arch = any
 	license = Apache
 	makedepends = gendesk
 	makedepends = git
-	makedepends = nodejs>=18.15.11
-	makedepends = npm>=9.0.0
-	depends = bash
+	makedepends = nvm
+	makedepends = npm
 	depends = electron24
 	depends = hicolor-icon-theme
 	provides = switchhosts
@@ -17,6 +16,6 @@ pkgbase = switchhosts-git
 	source = switchhosts::git+https://github.com/oldj/SwitchHosts.git
 	source = switchhosts.sh
 	sha256sums = SKIP
-	sha256sums = ce889ad0fb018ef15b123c3c26671e2979e947fc333a68b854b1cd964a490979
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = switchhosts-git
