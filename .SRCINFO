@@ -1,0 +1,20 @@
+pkgbase = sip-6.7
+	pkgdesc = The version of the tool that makes it easy to create Python bindings for C and C++ libraries
+	pkgver = 6.7.12
+	pkgrel = 1
+	url = https://www.riverbankcomputing.com/software/sip/intro
+	arch = x86_64
+	license = custom:"sip"
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-toml
+	depends = python-packaging
+	depends = python-setuptools
+	depends = python-ply
+	provides = sip=6.7.12
+	conflicts = sip
+	source = https://pypi.python.org/packages/source/s/sip/sip-6.7.12.tar.gz
+	sha256sums = 08e66f742592eb818ac8fda4173e2ed64c9f2d40b70bee11db1c499127d98450
+
+pkgname = sip-6.7
