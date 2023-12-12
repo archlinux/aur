@@ -1,7 +1,7 @@
 # Maintainer: Horror Proton <https://github.com/horror-proton>
 
 pkgname=maa-assistant-arknights
-_pkgver=v4.28.0-beta.1
+_pkgver=v4.28.0-beta.2
 pkgver=${_pkgver//-/}
 pkgver=${pkgver#v}
 pkgrel=1
@@ -11,12 +11,16 @@ url="https://github.com/MaaAssistantArknights/MaaAssistantArknights"
 license=('AGPL')
 depends=(opencv onnxruntime cpr)
 makedepends=(asio eigen git cmake)
-_fastdeploy_ref=070424e06436524d817131d68c411066fa6069a6
+_fastdeploy_ref=d0b018ac6c3daa22c7b55b555dc927a5c734d430
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('379b9abf380ff22e893169add6e6b85c'
-         '34a2b705efbe3f27f0e29bdee4b24f03')
+md5sums=('c1354a9d17b6232a3444e0d5bc411d46'
+         '93190bbc6785e35e231af5cd4931f16a')
+
+if ((WITH_GPU)); then
+    depends+=( cuda )
+fi
 
 prepare() {
     cd "$srcdir"/MaaAssistantArknights-${_pkgver#v}
@@ -29,23 +33,30 @@ prepare() {
         -exec sed -i 's/onnxruntime\/core\/session\///g' {} \;
     cp -v "$srcdir"/FastDeploy-"$_fastdeploy_ref"/cmake/Findonnxruntime.cmake cmake
     sed -i 's/ONNXRuntime/onnxruntime/g' CMakeLists.txt
+
+    cd "$srcdir/FastDeploy-$_fastdeploy_ref"
+    sed -i 's/fastdeploy_ppocr/MaaDerpLearning/g' CMakeLists.txt # git revert -n 0ef77d332
 }
 
 build() {
     cd "$srcdir"
-    CXXFLAGS="$CXXFLAGS -fmacro-prefix-map=$srcdir=/usr/src/debug/$pkgname"
+    CXXFLAGS+=" -fmacro-prefix-map=$srcdir=/usr/src/debug/$pkgname"
 
-    cmake -B build-fastdeploy -S FastDeploy-$_fastdeploy_ref \
-        -DCMAKE_BUILD_TYPE=None \
-        -DBUILD_SHARED_LIBS=ON \
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+    local _fastdeploy_args=(
+        -DCMAKE_BUILD_TYPE=None
+        -DBUILD_SHARED_LIBS=ON
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DCMAKE_INSTALL_PREFIX="$srcdir"/installed/usr
+    )
+    if ((WITH_GPU)); then
+        _fastdeploy_args+=( -DWITH_GPU=ON -DCUDA_DIRECTORY=/opt/cuda -DCUDA_ARCH_NAME=Auto )
+    fi
+
+    cmake -B build-fastdeploy -S FastDeploy-$_fastdeploy_ref "${_fastdeploy_args[@]}"
     cmake --build build-fastdeploy
 
     mkdir -p installed/usr
     cmake --install build-fastdeploy --prefix "$srcdir"/installed/usr
-
-    cd "$srcdir"
 
     CXXFLAGS="$CXXFLAGS \
     -isystem /usr/include/onnxruntime/core/session \
