@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core
-pkgver=25.1
+pkgver=26.0
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(https://bitcoincore.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin-core-01-userdel.hook
         bitcoin-core-02-chown.hook
         bitcoin-core-02-rm-rf.hook)
-sha256sums=('bec2a598d8dfa8c2365b77f13012a733ec84b8c30386343b7ac1996e901198c9'
+sha256sums=('ab1d99276e28db62d1d9f3901e85ac358d7f1ebcb942d348a9c4e46f0fcdc0a1'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73'
             '7429a9db1da6bc2eed1ae87f61ab9faecaa3d5d6113422f99a146cc1d8e4b5fd'
@@ -107,8 +107,6 @@ package() {
 
   msg2 'Installing bash completion...'
   for _compl in bitcoin-cli bitcoin-tx bitcoind; do
-    install -Dm 644 "contrib/completions/bash/${_compl}.bash-completion" \
-      "$pkgdir/usr/share/bash-completion/completions/$_compl"
     install -Dm 644 "contrib/completions/fish/${_compl}.fish" \
       -t "$pkgdir/usr/share/fish/vendor_completions.d/"
   done
