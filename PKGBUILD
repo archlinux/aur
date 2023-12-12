@@ -8,7 +8,7 @@ pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
 pkgver=120.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(
@@ -128,7 +128,7 @@ ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=1
 export MOZ_ADDON_SIGNING=1
-export MOZ_APP_REMOTINGNAME=${_pkgname}
+export MOZ_APP_REMOTINGNAME=${pkgname}
 
 # System libraries
 ac_add_options --with-system-nspr
