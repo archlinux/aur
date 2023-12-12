@@ -1,7 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas-git
 _pkgname=Commas
-pkgver=0.29.2.r5.gaa67794
+pkgver=0.29.2.r16.ge77aa5d
+_electronversion=27
+_nodever=18
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
 arch=('x86_64')
@@ -10,38 +12,53 @@ license=('custom:ISC')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
-    'bash'
-    'electron26'
+    "electron${_electronversion}"
     'python'
 )
 makedepends=(
     'gendesk'
     'git'
-    'nodejs>=14.0.0'
-    'npm>=9.8.1'
+    'nvm'
+    'npm'
 )
 source=(
-    "${pkgname//-/.}"::"git+${url}.git"
+    "${pkgname%-git}"::"git+${url}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '655f23b13b3363e21e146209c1cc09c595e07fd15f05d01129b5a11e1ac690f2')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 pkgver() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodever}"
+    nvm use "${_nodever}"
+}
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name="${_pkgname}" --exec="${pkgname%-git}"
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "${srcdir}/${pkgname%-git}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     npm install
-    npm add ansi-styles supports-color
+    npm add ansi-styles supports-color @rollup/rollup-linux-x64-gnu
     npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/release/${_pkgname}-linux-x64/resources/app.asar" -t "${pkgdir:?}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/release/${_pkgname}-linux-x64/resources/"{app.asar.unpacked,bin} "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/resources/images/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname%-git}/release/${_pkgname}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname%-git}/release/${_pkgname}-linux-x64/resources/"{app.asar.unpacked,bin} "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}/resources/images/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
