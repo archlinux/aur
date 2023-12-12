@@ -1,6 +1,6 @@
 pkgbase = kittyfetch
 	pkgdesc = Kittyfetch is a cute little and fast tool for fetching info about your system
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/rifsxd/kittyfetch
 	arch = any
