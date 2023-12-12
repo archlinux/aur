@@ -33,7 +33,7 @@ function _package {
         done
     done
 }
-local _pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
+_pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 for _pkgname in "${_pkgname[@]}"; do
     eval "function package_${_pkgname}() { _package ${_pkgname}; }"
 done
