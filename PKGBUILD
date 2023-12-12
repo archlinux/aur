@@ -2,8 +2,8 @@
 
 pkgname="ianny-git"
 _pkgname=${pkgname%-git}
-pkgver=0.1.0alpha.1
-pkgrel=2
+pkgver=v1.0.0beta.1.r2.g9dd95c3
+pkgrel=1
 pkgdesc="Desktop utility periodically informing the user to take breaks"
 arch=("x86_64")
 url="https://github.com/zefr0x/ianny"
@@ -18,13 +18,11 @@ sha512sums=("SKIP")
 pkgver() {
     cd "${pkgname}"
 
-    git describe --tags --abbrev=0 --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "${pkgname}"
-
-    git reset --hard "$(git describe --tags --abbrev=0 --match 'v*')"
 
     arch-meson build
 }
