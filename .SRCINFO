@@ -1,6 +1,6 @@
 pkgbase = tts
 	pkgdesc = Coqui-TSS for inference
-	pkgver = 0.21.1
+	pkgver = 0.21.3
 	pkgrel = 1
 	url = https://github.com/coqui-ai/TTS
 	arch = any
@@ -45,7 +45,7 @@ pkgbase = tts
 	conflicts = python-tts
 	replaces = python-tts
 	options = !strip
-	source = https://github.com/coqui-ai/TTS/archive/refs/tags/v0.21.1.tar.gz
-	b2sums = 70df334f38e8090644aac0fd5bd547250795edcdc17ed6a1aa131787d7e0e4036a9a1d16f5202314543d1bf8c91a557445db21e8fa24b4488332cbc2aabae45d
+	source = https://github.com/coqui-ai/TTS/archive/refs/tags/v0.21.3.tar.gz
+	b2sums = a6f7d660e0738371a06d76ec8dfa87a578cf9ef2910e32aa32528e94fb5d44d456cc169eda67bbf9fee4a5f3731567a56755828fa6845f6e0bc326809de4a8c0
 
 pkgname = tts
