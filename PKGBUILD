@@ -1,16 +1,17 @@
 pkgname=python-langchain
-pkgver=0.0.348
+pkgver=0.0.349
 pkgrel=1
 pkgdesc='⚡ Building applications with LLMs through composability ⚡ '
 arch=(x86_64)
 url='https://github.com/langchain-ai/langchain'
 license=('MIT')
 source=("https://github.com/langchain-ai/langchain/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('d2e7afef63f93e5721ee1301067da95df3a239dd50dda10c6af4893e3183a0f72a7ffdf5fe896a85a0dab4874a7069f868996ea24b4445f7f615ccffa3170ef6')
+sha512sums=('461b2f890c20e077238059aced38636fe669f05b849846ac268d2fadf1f55f553a357d05dac3b8d8d2934ceb7aa24dac7f802b293ce4ef02b058436a9a78bf59')
 depends=(python
 python-aiohttp
 python-dataclasses-json
 python-jsonpatch
+python-langchain-community
 python-langchain-core
 python-langsmith
 python-numpy
