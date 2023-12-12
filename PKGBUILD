@@ -1,13 +1,13 @@
 # Maintainer: Starry Wang <starry.wang@suse.com>
 pkgname=hangar-git
 pkgver=v1.7.0.r0.gcfb8182
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Command line utility to mirror container images"
-arch=("x86_64")
+arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
 url="https://github.com/cnrancher/hangar"
 license=("Apache")
-conflicts=("hangar-bin")
+conflicts=("hangar-bin" "hangar")
 depends=(
     "gpgme"
     "device-mapper"
@@ -18,7 +18,7 @@ makedepends=(
     "git"
 )
 provides=()
-source=('git+https://github.com/cnrancher/hangar.git')
+source=("git+$url")
 sha256sums=("SKIP")
 
 pkgver() {
