@@ -2,7 +2,7 @@
 
 pkgname=(otf-geist otf-geist-mono)
 pkgbase=otf-geist-fonts
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A new font family for Vercel, created by Vercel in collaboration with Basement Studio'
 arch=(any)
@@ -11,8 +11,8 @@ license=(OFL)
 source=("https://github.com/vercel/geist-font/releases/download/$pkgver/Geist.zip"
         "https://github.com/vercel/geist-font/releases/download/$pkgver/Geist.Mono.zip"
         "https://raw.githubusercontent.com/vercel/geist-font/$pkgver/LICENSE.TXT")
-sha256sums=('ae62c1e1ded446ff173ae799e530e3e093799a8ddb9c92197bfa43fea394a507'
-            '19e81e92b8a97f784d57455b6de8fecbd945cdc8354e943e682362c087ec5b85'
+sha256sums=('8f96b6e69f416706cec3293ceaa4cbb41a981cba7a32ed7c92dff14a5a44497e'
+            'b32e99aa5b5e7828457ce8808e8551a859089aa48d745f1b99b5a43d90dee940'
             'f38cbd54a72dd027dc854a9bbac9eb5bb8b9b1d6e4b43f037435336ab62a63fc')
 
 _geist_files=(Geist-Black.otf
