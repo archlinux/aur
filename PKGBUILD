@@ -1,7 +1,5 @@
 # Maintainer: mia <mia@mia.jetzt>
 
-# https://github.com/gleam-lang/gleam/releases/download/v0.32.4/gleam-v0.32.4-x86_64-unknown-linux-musl.tar.gz
-
 pkgname='gleam-bin'
 pkgver='0.32.4'
 pkgrel='1'
