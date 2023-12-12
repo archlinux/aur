@@ -2,7 +2,7 @@
 pkgname='longcat'
 pkgver=v0.0.4
 pkgrel=1
-pkgdesc="Creates a loooonng cat in the terminal"
+pkgdesc="Creates a looooong cat in the terminal"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/mattn/longcat"
 license=('MIT')
