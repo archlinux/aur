@@ -4,10 +4,10 @@
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=2.0.r4.g233f237
+pkgver=2.1.r0.g765f8f6
 pkgrel=1
 epoch=2
-pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
+pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (development snapshot)'
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
 license=('AGPL')
@@ -48,25 +48,25 @@ noextract=("$_pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname" || exit 1
+  cd "$_pkgname"
 
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
-  cd "$_pkgname" || exit 1
+  cd "$_pkgname"
 
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_pkgname" || exit 1
+  cd "$_pkgname"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   test -f man/offpunk.1 && \
-  install -Dm0644 man/offpunk.1 "$pkgdir/usr/share/man/man1/offpunk.1"
-  install -Dm0644 README.md     "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 man/offpunk.1 "$pkgdir/usr/share/man/man1/offpunk.1"
+  install -vDm0644 README.md     "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # eof
