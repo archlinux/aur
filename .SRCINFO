@@ -1,7 +1,7 @@
 pkgbase = desq-shell
 	pkgdesc = The Desktop Shell for Desq
 	pkgver = 0.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/DesQ/Shell
 	arch = x86_64
 	arch = aarch64
@@ -29,6 +29,7 @@ pkgbase = desq-shell
 	depends = dfl-power
 	depends = dfl-login1
 	depends = dfl-inotify
+	depends = dfl-volume
 	depends = wayfire
 	depends = wayfire-plugins-extra
 	depends = wayfire-plugins-wfconfig-hjson
