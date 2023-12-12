@@ -1,7 +1,7 @@
 # Maintainer: Bryan Malyn <bim9262 at gmail dot com>
 
 pkgname=wl-gammarelay-rs
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Like wl-gammarelay, but written in rust, runs on a single thread, has three times less SLOC and uses DBus (for simplicity)"
 makedepends=('cargo')
@@ -9,9 +9,9 @@ arch=('any')
 url="https://github.com/MaxVerevkin/wl-gammarelay-rs"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f4f48afd26fc0b0e8ec4aa69e7f39f7a8d596eff6c22aaeca84e1cb202f18f80')
-sha512sums=('09344b2ef69f8514477a87f26d776280d48675845557936ab8d237b73b7b8425fc2e5a017622a198462279b8dc9efe4016a5767c39dbd8804d9a8e6f19cbc4a4')
-b2sums=('4333c037574ad3f678a1d381a2926d9e0cfc00906eee0defe615551dfc4df93b650af7c43a8faaca0a24781ec2a452d7ef4ef6a11274758c4bd70eae56144b28')
+sha256sums=('6931eccf49e466fb03d48a0df87ca53a0cfc46a900a44ac4d6e85de029aba8d0')
+sha512sums=('029adde9d14a2577bd074ef3dcfecbd01f6443d3e05d9be8dab666f3425abbb9a830f5f216f5339d60d16d96424d911b6ea641064596f76cce7e1171adb80d3b')
+b2sums=('31683320016850b0063aa612755bedbef2159af8c5ab124bc47d7235e9fd854d301256269a2b84baa6b9655657b46a6a9995ebf14f4c61fba9119ffb55aa3a40')
 
 build() {
   cd "$pkgname-$pkgver"
