@@ -1,6 +1,6 @@
 pkgbase = python-rl
 	pkgdesc = Alternative Python bindings for GNU Readline
-	pkgver = 3.0
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://github.com/stefanholek/rl
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = python-rl
 	depends = python
 	depends = readline
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/r/rl/rl-3.0.zip
-	sha256sums = 0ac8dc082385109968af9e702c0906faf452743e7400749e1c50668ceeea287a
+	source = https://pypi.python.org/packages/source/r/rl/rl-3.1.tar.gz
+	sha256sums = 508924bec14771088b24e80d9db97744235c43bbd96c95bb7557bd11b20388b2
 
 pkgname = python-rl
-
