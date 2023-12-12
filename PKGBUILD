@@ -19,6 +19,7 @@ source=("git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v${_winever}"
         "0005-LoL-client-slow-start-fix.patch"
         "0008-ntdll-nopguard-call_vectored_handlers.patch"
         "0009-kernel32-dont-create-console-when-not-cui.patch"
+        "0011-ntdll-signal_set_full_context-amd64.patch"
         )
 
 sha256sums=('SKIP'
@@ -27,6 +28,7 @@ sha256sums=('SKIP'
             '49dfbf7546c00958e2b426a61371eedf0119471e9998b354595d5c0ce6dab48b'
             '2075ddc417ddd11954f76be753c88e04db28f0b3937e60508f178630dd5763eb'
             'b19443ba1e01014ab478b03ac84797df2d481432798259371d94e4ba2e7b317c'
+            '8dfef7fdbeb4bf503f72c2b3a15033849f67197d6d9571135369b4b0183ea213'
             )
 
 depends=(
@@ -128,6 +130,10 @@ prepare() {
     # Game Optional, only necessary when starting LoL.exe wine manually (e.g. when running .rofl files)
     echo 'Apply 0009-kernel32-dont-create-console-when-not-cui.patch'
     patch -Np1 < "${srcdir}/0009-kernel32-dont-create-console-when-not-cui.patch"
+
+    # Fix NtSetContextThread syscall
+    echo 'Apply 00011-ntdll-signal_set_full_context-amd64.patch'
+    patch -Np1 < "${srcdir}/0011-ntdll-signal_set_full_context-amd64.patch"
 
     # Clean up .orig files
     echo "Clean up .orig files"
