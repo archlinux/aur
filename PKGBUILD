@@ -3,7 +3,7 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname=youdao-dict
 pkgver=6.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="YouDao Dictionary"
 arch=('x86_64')
 license=('GPL3')
@@ -13,7 +13,6 @@ depends=(
 	'sqlite'
 	'python-lxml'
 	'python-webob'
-	'glib2'
 	'python-opengl'
 	'python-gobject'
 	'hicolor-icon-theme'
@@ -26,7 +25,6 @@ depends=(
 	'python-pyqt5-webkit'
 	'gobject-introspection-runtime'
 	'python-cssselect'
-    'glibc'
 	'gstreamer0.10'
 	'python-pyxdg'
 	'qt5-webkit'
@@ -35,19 +33,25 @@ depends=(
 )
 source=(
 	"${pkgname}-${pkgver}.deb::http://codown.youdao.com/cidian/linux/${pkgname}_${pkgver}-ubuntu-amd64.deb"
+	"${pkgname}.sh"
 )
-sha256sums=('e56f248c3caf7d0bff9f4f18780d9b258612b490c1c0f332335b8d15471e0dd2')
+sha256sums=('e56f248c3caf7d0bff9f4f18780d9b258612b490c1c0f332335b8d15471e0dd2'
+            '58d0c47ec3f5262e1a9d88478e90a66c10d573f6296ba9f179fc45e77df67f25')
 build() {
+	sed -e "s|@appname@|${pkgname}|g" \
+        -e "s|@runappname@|main.py|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
     sed -i '290s|self.setX(x)|self.setX(int(x))|g;291s|self.setY(y)|self.setY(int(y))|g' "${srcdir}/usr/share/${pkgname}/app/plugins/youdao/window.py"
     sed -i '644s|self.move(x, y)|self.move(int(x), int(y))|g' "${srcdir}/usr/share/${pkgname}/dae/window.py"
     sed 's|getargspec|getfullargspec|g' -i "${srcdir}/usr/share/${pkgname}/app/plugins/${pkgname%-dict}/pyquery/pyquery.py"
     sed 's|usr/share|opt|g' -i "${srcdir}/usr/share/dbus-1/services/com.youdao.backend.service"
+	sed "s|%f||g" -i "${srcdir}/usr/share/applications/${pkgname}.desktop"
 }
 package(){
-    install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
+	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 -d "${pkgdir}/opt"
     cp -r "${srcdir}/usr/share/${pkgname}" "${pkgdir}/opt"
-    ln -sf "/opt/${pkgname}/main.py" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/etc/xdg/autostart/${pkgname}-autostart.desktop" -t "${pkgdir}/etc/xdg/autostart"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/dbus-1/services/com.youdao.backend.service" -t "${pkgdir}/usr/share/dbus-1/services"
