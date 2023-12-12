@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gg4way
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -38,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('500552b8ab9c3fc5cc58fcf56378a928')
-sha256sums=('cf44e456e5a2be78941dc2cf8b1a918fe4da0246bd285e53d1dc2636bd442af7')
+md5sums=('83797f866559f5aa7a27452bbd8b9c24')
+sha256sums=('bcd383fef474cda7a6c6372afffac875aeaaf4ee6278a9882a9691cea0430090')
 
 build() {
   mkdir -p build
