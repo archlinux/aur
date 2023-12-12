@@ -6,7 +6,7 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore3-git
-pkgver=3.7.0.r19959.f4d348f
+pkgver=3.7.0.r19960.7406c61
 pkgrel=1
 pkgdesc='Create, play and print beautiful sheet music (Jojo Schmitz fork)'
 arch=(x86_64)
@@ -41,7 +41,7 @@ makedepends=(
   texlive-core
 )
 optdepends=('lame: MP3 export')
-_commit="f4d348f2f6ebdba80031208465b6617395548aad"
+_commit="7406c61099929bfeb64172b856221cf05ced0097"
 source=(
   "git+https://github.com/Jojo-Schmitz/MuseScore.git#commit=$_commit"
 )
