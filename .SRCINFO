@@ -1,6 +1,6 @@
 pkgbase = sk-chos-tool
 	pkgdesc = A custom configs tool for sk-chimeros
-	pkgver = r185.ac0c666
+	pkgver = r186.12b426d
 	pkgrel = 1
 	url = https://github.com/honjow/sk-holoiso-config
 	install = sk-chos-tool.install
