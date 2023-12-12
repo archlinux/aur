@@ -1,0 +1,14 @@
+pkgbase = vncpwd-git
+	pkgdesc = VNC Password Decrypter
+	pkgver = 0.1.r0.g58d585c
+	pkgrel = 1
+	url = https://github.com/jeroennijhof/vncpwd
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = vncpwd
+	conflicts = vncpwd
+	source = git+https://github.com/jeroennijhof/vncpwd.git
+	sha256sums = SKIP
+
+pkgname = vncpwd-git
