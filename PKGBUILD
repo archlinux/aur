@@ -2,7 +2,9 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=wire-desktop-git
-pkgver=3.32.3079.r228.gd3c93071
+pkgver=3.32.3079.r284.g3c4b3ee0
+_electronversion=27
+_nodeversion=14
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
@@ -16,8 +18,8 @@ depends=(
 )
 makedepends=(
     'git'
-    'npm>=6.14.18'
-    'nodejs>=14.21.3'
+    'npm'
+    'nvm'
     'yarn'
     'gendesk'
 )
@@ -29,16 +31,30 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '6c6eb0824060c4e3a363206b30759056a2f92ee9947333c218264c2c0d569091')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Network" --name "${pkgname%-git}" --exec "${pkgname%-git}"
     cd "${srcdir}/${pkgname%-git}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     sed "s|, 'deb', 'rpm'||g" -i bin/build-tools/lib/build-linux.ts
-    yarn --immutable
+    yarn install --immutable #--cache-folder "${srcdir}/.yarn_cache"
     yarn build:linux:internal
 }
 package() {
