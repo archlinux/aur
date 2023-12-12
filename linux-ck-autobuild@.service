@@ -1,0 +1,9 @@
+[Unit]
+Description=A tool to automatically build linux-ck kernels on a headless machines
+Documentation=https://github.com/nebulosa2007/linux-ck-autobuild-service
+
+[Service]
+User=%I
+Type=simple
+ExecStart=/usr/bin/linux-ck-autobuild
+PrivateTmp=true
