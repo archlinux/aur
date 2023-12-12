@@ -32,7 +32,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archi
         'https://github.com/DavidoTek/ProtonUp-Qt/pull/301.patch')
 sha256sums=('1bb0e18cc6825a9f84e4447f8985fd91b099f9ed88cf6be301dd813580cc866d'
             '732fd88026a801d64ffb85c98c1bc53536100524cced87ab86a112d83de07c1f'
-            'c18891479101f47fbffbb0419a536a989cfd450925fcff606ba304a6199fb0e9')
+            'e67e5f6f6270769ce59132576eeecb1e6014d9eed568480157aead133a80b836')
 
 prepare() {
   cd "ProtonUp-Qt-$pkgver"
