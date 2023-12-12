@@ -1,6 +1,6 @@
 pkgbase = freecalypso-tools
 	pkgdesc = FreeCalypso host tools package
-	pkgver = r20
+	pkgver = r21
 	pkgrel = 1
 	url = https://www.freecalypso.org/hg/freecalypso-tools
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = freecalypso-tools
 	groups = freecalypso
 	license = custom
 	conflicts = freecalypso-tools-hg
-	source = https://www.freecalypso.org/pub/GSM/FreeCalypso/fc-host-tools-r20.tar.bz2
-	sha256sums = 50185b4b21559581f13c5e840193bc43ccfadeabcd066879006a051883b38444
+	source = https://www.freecalypso.org/pub/GSM/FreeCalypso/fc-host-tools-r21.tar.bz2
+	sha256sums = e038b3bdd30f60e7e1cf08837f29a0865463d4a80e5bec47054795fbac446862
 
 pkgname = freecalypso-tools
