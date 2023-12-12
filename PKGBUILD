@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=qt-shell
 pkgname=wayfire-plugins-qtshell
 pkgver=0.8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of qt-shell protocol for Wayfire in the form of wayfire plugin"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/wayfireplugins/${_pkgname}"
@@ -15,7 +15,7 @@ md5sums=('7222f3368874f06e54b622e503764c21')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
-  meson .build --prefix=/usr --buildtype=release
+  PKG_CONFIG_PATH=/usr/lib/wlroots0.16/pkgconfig meson setup .build --prefix=/usr --buildtype=release
   ninja -C .build
 }
 
