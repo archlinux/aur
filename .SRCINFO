@@ -9,6 +9,8 @@ pkgbase = reqnotes-bin
 	conflicts = reqnotes
 	options = !strip
 	source = reqnotes-1.8.deb::https://raw.githubusercontent.com/ReqBaa/repo/main/pool/main/r/reqnotes/reqnotes_1.8-0ubuntu1_amd64.deb
+	source = reqnotes.sh
 	sha256sums = 08c7edd178beb43194eca99bf06ce9a788949b70e917458e9832272ac0db209c
+	sha256sums = cd87dcfa438cbda7cee315933d5c260629bbe09ac6201b8bf37993c8ab1610cc
 
 pkgname = reqnotes-bin
