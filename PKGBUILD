@@ -3,7 +3,7 @@
 _pkgname=chatbot-ui
 pkgname=$_pkgname-git
 pkgver=r293.2e6c0ee
-pkgrel=2
+pkgrel=4
 pkgdesc="An open source ChatGPT UI."
 arch=('any')
 url='https://github.com/mckaywrigley/chatbot-ui'
@@ -13,11 +13,15 @@ makedepends=('git' 'npm')
 backup=("etc/webapps/${pkgname}/.env.local")
 source=("git+$url.git"
         "sysusers.conf"
-        "chatbot-ui.service")
+        "chatbot-ui.service"
+        "0001-support-GPT-4-Turbo.patch"
+        "0002-Fix-json-parsing.patch")
 options=(!emptydirs)
 sha256sums=('SKIP'
             '4de4e4d3bac91214398da078b3f2b5d72182b7e6a69c9124eb19713827942958'
-            '45dcb629ff221cd36d0f4c22cd5d886924233ada9b342bb0e59546fb35d1bea6')
+            '45dcb629ff221cd36d0f4c22cd5d886924233ada9b342bb0e59546fb35d1bea6'
+            '5824fc36a6a100151e6a27e8d1b0389a16517a4f2151e14e3f55ce5cd450ffec'
+            'bf4cccd454d1d77038d71627fb00ec49428e014bd90ed565512910b463aff952')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -26,6 +30,8 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
+  git apply "${srcdir}"/"0001-support-GPT-4-Turbo.patch" 
+  git apply "${srcdir}"/"0002-Fix-json-parsing.patch" 
 }
 
 build() {
