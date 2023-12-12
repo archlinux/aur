@@ -7,9 +7,10 @@ pkgbase = dxvk-gplasync-bin
 	license = ZLIB
 	license = custom:libpng
 	depends = vulkan-icd-loader
-	depends = wine>=4.0rc1
 	depends = lib32-vulkan-icd-loader
 	depends = bash
+	optdepends = wine
+	optdepends = proton
 	provides = dxvk
 	provides = d9vk
 	provides = dxvk=2.3

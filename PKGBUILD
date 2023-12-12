@@ -10,7 +10,8 @@ pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 (with gplasync 
 arch=('x86_64')
 url="https://gitlab.com/Ph42oN/dxvk-gplasync"
 license=('ZLIB' 'custom:libpng')
-depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader' 'bash')
+depends=('vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'bash')
+optdepends=('wine' 'proton')
 provides=('dxvk' 'd9vk' "dxvk=$pkgver")
 conflicts=('dxvk' 'd9vk')
 options=(!strip !buildflags staticlibs)
