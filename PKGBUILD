@@ -1,6 +1,6 @@
 # Maintainer: Marieke Westendorp <ma3ke.cyber@gmail.com>
 pkgname=tid
-pkgver=0.0.4
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A small system information bar"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('cargo-nightly')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 backup=("etc/tid/tid.conf")
-sha512sums=('455bc4676e15847f20a0e3c87f64e5d143050cbfeb0ee6598531f850d4276114b37c9d1c0bc1008820a4da1545260a2bf47dccccc0167dde1a94c3fd5a2a0595')
+sha512sums=('b8687f4a5f7ef3f63241f348352d0fb3a0a77338761e333bbdced19020a13a5c2de308146e5224988c57603d3e5de27cc969318779093615600175ed09f177a6')
 
 prepare() {
 	cd "$pkgname-$pkgver"

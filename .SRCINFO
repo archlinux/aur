@@ -1,13 +1,13 @@
 pkgbase = tid
 	pkgdesc = A small system information bar
-	pkgver = 0.0.4
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://git.sr.ht/~ma3ke/tid
 	arch = x86_64
 	license = MIT
 	makedepends = cargo-nightly
 	backup = etc/tid/tid.conf
-	source = tid-0.0.4.tar.gz::https://git.sr.ht/~ma3ke/tid/archive/0.0.4.tar.gz
-	sha512sums = 455bc4676e15847f20a0e3c87f64e5d143050cbfeb0ee6598531f850d4276114b37c9d1c0bc1008820a4da1545260a2bf47dccccc0167dde1a94c3fd5a2a0595
+	source = tid-0.1.0.tar.gz::https://git.sr.ht/~ma3ke/tid/archive/0.1.0.tar.gz
+	sha512sums = b8687f4a5f7ef3f63241f348352d0fb3a0a77338761e333bbdced19020a13a5c2de308146e5224988c57603d3e5de27cc969318779093615600175ed09f177a6
 
 pkgname = tid
