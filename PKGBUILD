@@ -1,7 +1,7 @@
 # Maintainer: Charlie Ringström <c.ringstrom@gmail.com>
 pkgname='longcat'
-pkgver=r117.62bfdec
-pkgrel=13
+pkgver=v0.0.4
+pkgrel=1
 pkgdesc="Creates a loooonng cat in the terminal"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/mattn/longcat"
@@ -9,21 +9,21 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 #changelog="Initial release"
-source=("longcat::git+https://github.com/mattn/longcat.git")
+source=("longcat::git+https://github.com/mattn/longcat.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$pkgname"
+	git describe --tags
 }
 
 build() {
 	cd "$pkgname"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
- 	export CGO_CXXFLAGS="${CXXFLAGS}"
- 	export CGO_LDFLAGS="${LDFLAGS}"
- 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	go build -o longcat
 }
 
