@@ -2,15 +2,19 @@
 pkgname=url-collector-bin
 _pkgname=urlcollector
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop application for collect web-links"
 arch=('x86_64')
 url="https://github.com/TechnoMag82/UrlCollector"
 license=('GPL')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('qt5-base' 'gcc-libs' 'glibc')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v.${pkgver}/${pkgname%-bin}_${pkgver}-2_amd64.deb")
+depends=(
+    'qt5-base'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v.${pkgver}/${pkgname%-bin}_${pkgver}-2_amd64.deb"
+)
 sha256sums=('5cdb7886c937558fd6c083c0b17cf9453b80b4d3e4e9f9523080092414464ce5')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
