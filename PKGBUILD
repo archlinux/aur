@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tjmc-launcher-bin
 _pkgname=TJMC-Launcher
-pkgver=0.2.2
+pkgver=0.2.3
 _electronversion=23
 pkgrel=1
 pkgdesc="A simple to use, extremely fast, and well supported app, that allows you to install pure and modded versions of Java Minecraft."
@@ -26,8 +26,8 @@ source=(
 )
 sha256sums=('1a25e3b0f4bf16543e5f802cf6d9d189bcae27617ca8be936ad866a8955d9ce6'
             '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
-sha256sums_aarch64=('9df087cb629bf27c0e333b48046a723862c0bb79d0bfe67b6b0e6567e911cc6a')
-sha256sums_x86_64=('5392aedace5ab5dd59894dfd0d6e542b3bc610533a9d0220b5fce5d6a5dfd69b')
+sha256sums_aarch64=('b19b58ad0cb1ae82bac617a3e60cb70076a284bc26d9c15ecfc70e8d59d004ab')
+sha256sums_x86_64=('efc80fef0301245e76a300a6fdbc7f9cd6d8ee8ce5cc9c6959afb6f4ea3ade8e')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
