@@ -1,0 +1,23 @@
+pkgbase = codecserver-softmbe-git
+	pkgdesc = Software MBE decoder for codecserver / digiham / openwebrx
+	pkgver = r6.66397fc
+	pkgrel = 1
+	url = https://github.com/knatterfunker/codecserver-softmbe
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = patch
+	depends = glibc
+	depends = gcc-libs
+	depends = mbelib
+	depends = protobuf
+	depends = codecserver
+	provides = codecserver-softmbe
+	conflicts = codecserver-softmbe
+	source = codecserver-softmbe-git::git+https://github.com/knatterfunker/codecserver-softmbe.git
+	source = change_cppversion.patch
+	sha256sums = SKIP
+	sha256sums = ef5fe46aa0a4882d1dcc51e1f265318298386ab76e4e2c6543ec5261c754e1be
+
+pkgname = codecserver-softmbe-git
