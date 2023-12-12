@@ -2,7 +2,7 @@
 _reponame=hid-logitech-hidpp
 pkgname=hidpp-logitech-g-pro-wheel-dkms-git
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="hid-logitech-hidpp with G Pro Racing Wheel PC/XBOX support"
 arch=('x86_64')
 url="https://github.com/Lawstorant/hid-logitech-hidpp"
@@ -15,11 +15,9 @@ makedepends=(
 )
 source=(
   git+https://github.com/Lawstorant/hid-logitech-hidpp
-  axis-hack.patch
 )
 sha256sums=(
   'SKIP'
-  'addbedca432c213cc58642dca94e55209098d44fb967d0f2fcd1ec83a433a624'
 )
 
 pkgver() {
@@ -27,11 +25,6 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
   
-prepare() {
-  cd "$srcdir/$_reponame"
-  git apply -3 ../axis-hack.patch
-}
-
 package() {
   cd "$srcdir/$_reponame"
 
