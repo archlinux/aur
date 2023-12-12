@@ -2,16 +2,16 @@
 # Contributor: Jakob Kreuze <jakob@memeware.net>
 # Contributor: Bader <Bad3r@unsigned.sh>
 
-# shellcheck disable=SC1090,SC2206
+# shellcheck disable=SC1090,SC2207
 pkgname=pince-git
-pkgver=r1360.161758a
+pkgver=r1382.a0f99b5
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL3')
 depends=('base-devel' 'python3' 'gdb')
-makedepends=('git' 'qt6-tools')
+makedepends=('git' 'qt6-tools' 'sed')
 optdepends=(
 	'qt6-wayland: wayland support'
 )
@@ -55,8 +55,13 @@ package() {
 
 	pushd "$pkgname"
 
-	# Source PKG_NAMES* vars
-	. <(sed -n '/^PKG_NAMES/p' $_installsh)
+	if [[ -e requirements.txt ]]; then
+		# Get $PKG_NAMES_PIP from requirements.txt
+		PKG_NAMES_PIP=$(sed 's/=.*//g' requirements.txt | tr '[:upper:]' '[:lower:]')
+	else
+		# Source PKG_NAMES* vars
+		. <(sed -n '/^PKG_NAMES/p' $_installsh)
+	fi
 
 	# Add new python depends
 	for pipkg in $PKG_NAMES_PIP; do
@@ -67,10 +72,12 @@ package() {
 			depends+=("python-gobject")
 		elif [ "$pipkg" == "keystone-engine" ]; then
 			depends+=("python-keystone")
+		elif [ "$pipkg" == "pyqt6-qt6" ]; then
+			depends+=("python-pyqt6")
 		else
 			depends+=("python-$pipkg")
 		fi
-	done
+	done && depends=($(printf "%s\n" "${depends[@]}" | sort -u))
 
 	# Copy files
 	install -d "$pkgdir/usr/bin"
