@@ -3,10 +3,10 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _pkgname=bindrcpp
-_pkgver=0.2.2
+_pkgver=0.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An 'Rcpp' Interface to Active Bindings"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('992af2045b0ce4079f62a2cb4b0df767')
-sha256sums=('48130709eba9d133679a0e959e49a7b14acbce4f47c1e15c4ab46bd9e48ae467')
+md5sums=('14d52a9f59269bc1a674bb1e93abdfda')
+sha256sums=('662dae785aee715855415f4e743281ccbf0832e426084dc2f0ca9c9c908ec9fa')
 
 build() {
   mkdir -p build
