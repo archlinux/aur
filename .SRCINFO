@@ -1,4 +1,4 @@
-pkgbase = sip-6.7
+pkgbase = sip-67
 	pkgdesc = The version of the tool that makes it easy to create Python bindings for C and C++ libraries
 	pkgver = 6.7.12
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = sip-6.7
 	source = https://pypi.python.org/packages/source/s/sip/sip-6.7.12.tar.gz
 	sha256sums = 08e66f742592eb818ac8fda4173e2ed64c9f2d40b70bee11db1c499127d98450
 
-pkgname = sip-6.7
+pkgname = sip-67

@@ -1,4 +1,4 @@
-pkgname=sip-6.7
+pkgname=sip-67
 _pkgname=sip
 pkgver=6.7.12
 pkgrel=1
