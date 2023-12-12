@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=kicad-pcb-diff
-pkgname=kidiff
+pkgname=kicad-pcb-diff
 pkgver=2.4.7
-pkgrel=2
+pkgrel=0
 epoch=
 pkgdesc="Tool to generate a PDF file showing the changes between two KiCad PCB/SCH files. Also a git plug-in."
 arch=('any')
