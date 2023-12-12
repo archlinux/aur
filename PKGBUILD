@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=wpimath-git
-pkgver=2024.1.1.beta.1.r29.gabb2857e03
+pkgver=2024.1.1.beta.4.r20.gd1793f077d
 pkgrel=1
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
@@ -12,10 +12,8 @@ provides=('wpimath')
 conflicts=('wpimath')
 license=('BSD' 'MIT')
 options=('!strip' 'staticlibs')
-source=('git+https://github.com/wpilibsuite/allwpilib'
-        'Don_t-treat-warnings-as-errors.patch')
-md5sums=('SKIP'
-         '06355c12d930efa26edbbe11f633831a')
+source=('git+https://github.com/wpilibsuite/allwpilib')
+md5sums=('SKIP')
 
 pkgver() {
   cd allwpilib
@@ -23,11 +21,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd allwpilib
-  patch -p1 < "$srcdir"/Don_t-treat-warnings-as-errors.patch
 }
 
 build() {
@@ -43,6 +36,7 @@ build() {
     -DWITH_TESTS=ON \
     -DWITH_GUI=OFF \
     -DWITH_SIMULATION_MODULES=OFF \
+    -DNO_WERROR=ON \
     -Wno-dev
   cmake --build build
 }

@@ -1,6 +1,6 @@
 pkgbase = wpimath-git
 	pkgdesc = WPILib's mathematics and controls library
-	pkgver = 2024.1.1.beta.1.r29.gabb2857e03
+	pkgver = 2024.1.1.beta.4.r20.gd1793f077d
 	pkgrel = 1
 	url = https://github.com/wpilibsuite/allwpilib
 	arch = x86_64
@@ -15,8 +15,6 @@ pkgbase = wpimath-git
 	options = !strip
 	options = staticlibs
 	source = git+https://github.com/wpilibsuite/allwpilib
-	source = Don_t-treat-warnings-as-errors.patch
 	md5sums = SKIP
-	md5sums = 06355c12d930efa26edbbe11f633831a
 
 pkgname = wpimath-git
