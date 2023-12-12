@@ -2,7 +2,7 @@
 # Co-Maintainer: Lukas Grossar <lukasgrossar@gmail.com>
 
 pkgname=rootlesskit-bin
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Linux-native 'fake root' for implementing rootless containers"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/rootless-containers/rootlesskit"
 license=('Apache')
 optdepends=('containerd')
 source=("rootlesskit-v${pkgver}-x86_64.tar.gz::https://github.com/rootless-containers/rootlesskit/releases/download/v${pkgver}/rootlesskit-x86_64.tar.gz")
-sha256sums=('294f77ccff9f23456ee51a6837fc901dc8a48b5c2fbc7562995a1ae01fa3a3f6')
+sha256sums=('3c83affbb405cafe2d32e2e24462af9b4dcfa19e3809030012ad0d4e3fd49e8f')
 provides=('rootlesskit')
 conflicts=('rootlesskit')
 
