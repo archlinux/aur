@@ -1,0 +1,17 @@
+pkgbase = kittyfetch
+	pkgdesc = Kittyfetch is a cute little and fast tool for fetching info about your system
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/rifsxd/kittyfetch
+	arch = any
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	depends = libx11
+	provides = kittyfetch
+	conflicts = kittyfetch
+	source = git+https://github.com/rifsxd/kittyfetch.git
+	validpgpkeys = CBBF9D68F47D02341D96BCC66B5BBC16B3AB9113
+	sha256sums = SKIP
+
+pkgname = kittyfetch
