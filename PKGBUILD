@@ -2,7 +2,7 @@
 # Maintainer: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-scm
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 _srcname=flux
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
