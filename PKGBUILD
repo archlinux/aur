@@ -3,7 +3,7 @@
 
 pkgname=pycharm-professional
 pkgver=2023.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64' 'aarch64')
 url='https://www.jetbrains.com/pycharm/'
@@ -59,6 +59,9 @@ package() {
     install -dm 755 "$pkgdir/usr/share/icons/hicolor/"{128x128,scalable}"/apps/"
     install -Dm 644 "$pkgdir/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/pycharm.png"
     install -Dm 644 "$pkgdir/opt/$pkgname/bin/pycharm.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pycharm.svg"
+
+    # issue https://youtrack.jetbrains.com/issue/IDEA-313202
+    chmod 4755 "$pkgdir/opt/pycharm-professional/jbr/lib/chrome-sandbox"
 
     # exec
     install -dm 755 "$pkgdir/usr/bin/"
