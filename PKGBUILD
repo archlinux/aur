@@ -2,27 +2,27 @@
 
 pkgbase=writerside-eap
 pkgname=(writerside-eap writerside-eap-jre)
-pkgver=232.10165
-pkgrel=3
+pkgver=232.10275
+pkgrel=1
 pkgdesc="Documentation authoring IDE from JetBrains. Early Access Program."
-arch=('x86_64')
-options=('!strip')
-url='https://www.jetbrains.com/writerside/'
-license=('Commercial')
+arch=("x86_64")
+options=("!strip")
+url="https://www.jetbrains.com/writerside/"
+license=("Commercial")
 _pkgname="writerside"
 
 source=(https://download.jetbrains.com/${_pkgname}/${_pkgname}-${pkgver}.tar.gz
         writerside-eap.desktop)
-sha256sums=('d9d7dab78da28b725cf5df7e433003624947e585c914311c90845d49452c3586'
-            '4aa5408b4aa3fb083e6c54d267c9fb8aa010bafd5a11e84fb404d0ea99890bc2')
+sha256sums=("598428513c5a6138d1c5be57f65f254d88ac4c7f79e34c2faeacebe0a40608d9"
+            "4aa5408b4aa3fb083e6c54d267c9fb8aa010bafd5a11e84fb404d0ea99890bc2")
 
 package_writerside-eap() {
-  optdepends=('writerside-eap-jre: JetBrains custom Java Runtime (Recommended)'
-              'java-runtime: JRE - Required if writerside-eap-jre is not installed')
+  optdepends=("writerside-eap-jre: JetBrains custom Java Runtime (Recommended)"
+              "java-runtime: JRE - Required if writerside-eap-jre is not installed")
 
   cd "${srcdir}"
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  cp --recursive ${srcdir}/${_pkgname}-${pkgver}/* "${pkgdir}/opt/${pkgname}"
+  cp --recursive "${srcdir}"/${_pkgname}-${pkgver}/* "${pkgdir}/opt/${pkgname}"
   rm -rf "${pkgdir}"/opt/${pkgname}/jbr
 
   mkdir -p "${pkgdir}/usr/bin"
@@ -41,7 +41,7 @@ package_writerside-eap() {
 
 package_writerside-eap-jre() {
   pkgdesc="JBR (JetBrains Runtime) for Writerside EAP"
-  url='https://github.com/JetBrains/JetBrainsRuntime'
+  url="https://github.com/JetBrains/JetBrainsRuntime"
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
   cp -a "${srcdir}/${_pkgname}-${pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"

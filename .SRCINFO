@@ -1,14 +1,14 @@
 pkgbase = writerside-eap
 	pkgdesc = Documentation authoring IDE from JetBrains. Early Access Program.
-	pkgver = 232.10165
-	pkgrel = 3
+	pkgver = 232.10275
+	pkgrel = 1
 	url = https://www.jetbrains.com/writerside/
 	arch = x86_64
 	license = Commercial
 	options = !strip
-	source = https://download.jetbrains.com/writerside/writerside-232.10165.tar.gz
+	source = https://download.jetbrains.com/writerside/writerside-232.10275.tar.gz
 	source = writerside-eap.desktop
-	sha256sums = d9d7dab78da28b725cf5df7e433003624947e585c914311c90845d49452c3586
+	sha256sums = 598428513c5a6138d1c5be57f65f254d88ac4c7f79e34c2faeacebe0a40608d9
 	sha256sums = 4aa5408b4aa3fb083e6c54d267c9fb8aa010bafd5a11e84fb404d0ea99890bc2
 
 pkgname = writerside-eap
