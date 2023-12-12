@@ -1,0 +1,19 @@
+pkgbase = codegpt-bin
+	pkgdesc = A CLI written in Go language that writes git commit messages or do a code review brief for you using ChatGPT AI (gpt-4, gpt-3.5-turbo model) and automatically installs a git prepare-commit-msg hook
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/appleboy/CodeGPT
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = codegpt
+	conflicts = codegpt-git
+	conflicts = codegpt
+	source = https://raw.githubusercontent.com/appleboy/CodeGPT/main/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = codegpt-x86_64-0.7.0::https://github.com/appleboy/CodeGPT/releases/download/v0.7.0/CodeGPT-0.7.0-linux-amd64
+	sha256sums_x86_64 = d8200d8d4170fa76aedd9157b052852f082e622d33fa79dbdc387c85d23e8028
+	source_aarch64 = codegpt-x86_64-0.7.0::https://github.com/appleboy/CodeGPT/releases/download/v0.7.0/CodeGPT-0.7.0-linux-arm64
+	sha256sums_aarch64 = SKIP
+
+pkgname = codegpt-bin
