@@ -32,7 +32,9 @@ replaces=(domruler
 depends=(glib2
     glibc
     python)
-makedepends=(bison
+makedepends=(
+    avahi
+    bison
     cmake
 #     cython
     flex

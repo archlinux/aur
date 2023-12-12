@@ -15,6 +15,7 @@ pkgbase = purc
 	checkdepends = check
 	checkdepends = gtest
 	checkdepends = valgrind
+	makedepends = avahi
 	makedepends = bison
 	makedepends = cmake
 	makedepends = flex
