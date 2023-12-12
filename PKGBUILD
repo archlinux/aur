@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Simple notepad calculator built on Electron, powered by Math.js"
 arch=('x86_64')
 url="https://numara.io/"
-_ghyrl="https://github.com/bornova/numara-calculator"
+_ghurl="https://github.com/bornova/numara-calculator"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -16,7 +16,7 @@ depends=(
     'hicolor-icon-theme'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghyrl}/releases/download/v${pkgver}/${_appname}-${pkgver}-amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/bornova/numara-calculator/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
