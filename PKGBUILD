@@ -20,8 +20,7 @@ build() {
 }
 
 check () {
-    cd "${pkgname}-${pkgver}"
-    pytest
+    pytest "${pkgname}-${pkgver}"
 }
 
 package() {
