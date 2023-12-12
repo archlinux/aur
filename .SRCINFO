@@ -11,6 +11,7 @@ pkgbase = hangar
 	license = Apache
 	makedepends = go
 	makedepends = git
+	makedepends = btrfs-progs
 	depends = gpgme
 	depends = device-mapper
 	depends = containers-common

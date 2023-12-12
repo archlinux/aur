@@ -16,6 +16,7 @@ depends=(
 makedepends=(
     "go"
     "git"
+    "btrfs-progs"
 )
 provides=()
 source=("git+$url#tag=v$pkgver")
