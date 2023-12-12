@@ -1,8 +1,8 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=whalebird
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
-pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
+pkgdesc="An Electron based Fediverse client"
 arch=('x86_64')
 url="https://whalebird.social"
 license=('GPL3')
@@ -13,7 +13,7 @@ conflicts=('whalebird-bin' 'whalebird-desktop-git')
 source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v$pkgver.tar.gz"
         whalebird.desktop
         electron-builder.yml)
-md5sums=('04629033d8ab12f5a6150a34b960f645'
+md5sums=('b3b480f9071e98b4ae191f2ce84cbf21'
          '2cf7ef689d208d2fa41ce3622dce3545'
          '68af72623ba3763c9a1ea440b72a253d')
 
