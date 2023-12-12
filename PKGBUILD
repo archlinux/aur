@@ -96,8 +96,7 @@ prepare() {
 }
 
 pkgver() {
-  cd gamescope
-  git describe --tags | sed 's/-//'
+  git -C "$_pkgname" describe --tags | sed 's/-//'
 }
 
 build() {
