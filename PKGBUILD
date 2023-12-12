@@ -8,7 +8,7 @@
 pkgname=rubymine
 _pkgname=RubyMine
 pkgver=2023.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools"
 arch=(i686 x86_64)
 options=(!strip)
@@ -32,7 +32,7 @@ package() {
   cp -a "${_pkgname}-${pkgver}" "${pkgdir}/usr/share/${pkgname}"
 
   # Desktop application
-  install -Dm0644 "${pkgdir}/usr/share/${pkgname}/RMlogo.svg" \
+  install -Dm0644 "${pkgdir}/usr/share/${pkgname}/bin/rubymine.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
   install -Dm0644 rubymine.desktop \
     "${pkgdir}/usr/share/applications/rubymine.desktop"
