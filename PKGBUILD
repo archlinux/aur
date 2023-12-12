@@ -58,12 +58,8 @@ install=mozillavpn.install
 _debian_series="mantic1"
 _dl_url="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn"
 _pkgsrc="$pkgname-$pkgver"
-source=(
-    "$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
-    "mozillavpn.install"
-)
-sha256sums=('36754d1f0e2f3ff5b08cecf691b7e158981356dc53b55152d93925f1b4d87e03'
-            'fd50a85e735f755857a02100a9a567bdb9af439d442c4fe72c6e76c108d7b303')
+source=("$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz")
+sha256sums=('36754d1f0e2f3ff5b08cecf691b7e158981356dc53b55152d93925f1b4d87e03')
 
 build() {
     local _cmake_options=(
