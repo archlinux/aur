@@ -13,7 +13,9 @@ depends=('csdr-luarvique' 'python-csdr-luarvique' 'rtl-sdr' 'js8py' 'owrx_connec
 optdepends=(
     # decoding
     'python-digiham: use digital voice modes'
-    'codecserver: decode audio data from digital voice modes using the AMBE codec'
+    'codecserver: decode audio data from digital voice modes using the AMBE codec, leagally trustworthy'
+    'codecserver-softmbe: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
+    'codecserver-mbelib-module: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
     'codec2: demodulate FreeDV digital transmissions'
     'm17-cxx-demod: demodulate M17 digital voice signals'
     'wsjtx: decode FT8, FST4, FST4, Q65 digital modes'
