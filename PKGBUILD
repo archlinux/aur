@@ -3,16 +3,29 @@
 # Contributor: Brendan Szymanski <hello@bscubed.dev>
 
 # options
+: ${_avx_build:=false}
+
 : ${_pkgtype:=git}
+
+
+if [[ "${_avx_build::1}" == "t" ]] ; then
+  if [ "${_pkgtype: -4}" == "-git" ] ; then
+    _pkgtype="${_pkgtype%-*}-avx-${_pkgtype##*-}"
+  elif [ "${_pkgtype::1}" == "g" ] ; then
+    _pkgtype="avx-$_pkgtype"
+  else
+    _pkgtype+="-avx"
+  fi
+fi
 
 # basic info
 _pkgname="yuzu"
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=r26003.e9a43bae6
+pkgver=r26071.d590cfb9d
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch'
 url="https://github.com/yuzu-emu/yuzu"
-license=('GPL2')
+license=('GPL-3.0-only')
 arch=('i686' 'x86_64')
 
 # main package
@@ -251,6 +264,11 @@ prepare() {
 }
 
 build() {
+  if [[ "${_avx_build::1}" == "t" ]] ; then
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
+    export CXXFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
+  fi
+
   local _cmake_options=(
     -S "$_pkgsrc"
     -B build
@@ -291,6 +309,8 @@ build() {
 
 package() {
   DESTDIR="${pkgdir:?}" cmake --install build
+
+  install -Dm644 "$_pkgsrc/dist/72-yuzu-input.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 }
 
 # execut
