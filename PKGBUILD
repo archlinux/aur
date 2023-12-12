@@ -3,7 +3,7 @@
 
 pkgname=qt5-webkit-git
 pkgver=5.212.0.alpha4.r13.gac8ebc6c3
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://github.com/qtwebkit/qtwebkit'
 license=(GPL3 LGPL3 FDL custom)
@@ -36,10 +36,11 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S qt5-webkit \
+  cmake -B build -S qt5-webkit -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
     -DPORT=Qt \
+    -DENABLE_XSLT=OFF \
     -DENABLE_TOOLS=OFF
   cmake --build build
 }
