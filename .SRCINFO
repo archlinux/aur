@@ -5,6 +5,7 @@ pkgbase = ianny-git
 	url = https://github.com/zefr0x/ianny
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = cargo
 	makedepends = meson
 	depends = libdbus-1.so

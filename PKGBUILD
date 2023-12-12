@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://github.com/zefr0x/ianny"
 license=("GPL3")
 depends=("libdbus-1.so")
-makedepends=("cargo" "meson")
+makedepends=("git" "cargo" "meson")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${pkgname}::git+${url}#branch=main")
