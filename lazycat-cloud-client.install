@@ -1,0 +1,6 @@
+post_install() {
+  setcap "cap_net_admin+ep" "/opt/lzc-client-desktop/core/lzc-core"
+}
+post_upgrade() {
+  setcap "cap_net_admin+ep" "/opt/lzc-client-desktop/core/lzc-core"
+}

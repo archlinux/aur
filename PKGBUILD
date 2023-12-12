@@ -11,6 +11,7 @@ arch=('x86_64')
 license=('custom')
 depends=('zenity' 'zstd')
 source=("https://dl.lazycat.cloud/client/desktop/${_channel}/lzc-client-desktop_${_pkgver}.tar.zst")
+install='lazycat-cloud-client.install'
 noextract=("lzc-client-desktop_${_pkgver}.tar.zst")
 sha256sums=('3bd634dcff3153ed40351ede78137b3485ce2211311496d2d2e23955f825a121')
 
