@@ -2,7 +2,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=scx-scheds-git
-pkgver=0.1.1.r6.g330e104
+pkgver=0.1.1.r27.gfbb0164
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=(x86_64)
@@ -23,14 +23,13 @@ pkgver() {
 }
 
 build() {
-	cd $_reponame
-	meson setup build -Dbuildtype=release --prefix=/usr
-	cd build
-	meson compile -v
+    cd "$_reponame"
+    arch-meson . build
+    meson compile -C build
 }
 
 
 package() {
-	cd $_reponame/build
-	DESTDIR="$pkgdir" meson install
+    cd "$_reponame"
+    meson install -C build --destdir "${pkgdir}"
 }
