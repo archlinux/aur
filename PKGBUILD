@@ -5,13 +5,13 @@
 
 # Maintainer: Sathya Pramodh <sathyapramodh17@gmail.com>
 pkgname=resetti
-_rawurl="https://raw.githubusercontent.com/woofdoggo/resetti/main"
-pkgver="0.4.0"
+_rawurl="https://raw.githubusercontent.com/tesselslate/resetti/main"
+pkgver="0.5.3"
 pkgrel=1
 pkgdesc="resetti is a Linux-compatible reset macro for Minecraft speedruns. It supports
 a variety of different resetting styles, categories, and Minecraft versions."
 arch=('x86_64' 'i686')
-url="https://www.github.com/woofdoggo/resetti"
+url="https://www.github.com/tesselslate/resetti"
 license=('GPL3')
 groups=()
 depends=()
@@ -24,17 +24,20 @@ replaces=()
 backup=()
 options=()
 source=("$url/releases/download/v$pkgver/resetti"
-	"$_rawurl/internal/res/default.toml")
+	"$url/releases/download/v$pkgver/bench"
+	"$_rawurl/internal/res/default.toml"
+	"$_rawurl/internal/res/scene-setup.lua")
 noextract=()
 md5sums=('SKIP' 'SKIP')
 validategpgkeys=()
 
 package() {
-	# TODO: Add bench script and scene-setup.lua export after it is upstreamed.
 	install -Dm0755 resetti "${pkgdir}/usr/bin/${pkgname}"
-	if ! [ -d ~/.config/resetti ]
+	if ! [ -d ~/.local/share/resetti ]
 	then
-		mkdir -p ~/.config/resetti
+		mkdir -p ~/.local/share/resetti
 	fi
-	install -Dm0664 default.toml ~/.config/resetti
+	install -Dm0755 bench ~/.local/share/resetti
+	install -Dm0664 default.toml ~/.local/share/resetti
+	install -Dm0644 scene-setup.lua ~/.local/share/resetti
 }

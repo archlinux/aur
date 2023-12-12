@@ -1,13 +1,15 @@
 pkgbase = resetti
 	pkgdesc = resetti is a Linux-compatible reset macro for Minecraft speedruns. It supports a variety of different resetting styles, categories, and Minecraft versions.
-	pkgver = 0.4.0
+	pkgver = 0.5.3
 	pkgrel = 1
-	url = https://www.github.com/woofdoggo/resetti
+	url = https://www.github.com/tesselslate/resetti
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	source = https://www.github.com/woofdoggo/resetti/releases/download/v0.4.0/resetti
-	source = https://raw.githubusercontent.com/woofdoggo/resetti/main/internal/res/default.toml
+	source = https://www.github.com/tesselslate/resetti/releases/download/v0.5.3/resetti
+	source = https://www.github.com/tesselslate/resetti/releases/download/v0.5.3/bench
+	source = https://raw.githubusercontent.com/tesselslate/resetti/main/internal/res/default.toml
+	source = https://raw.githubusercontent.com/tesselslate/resetti/main/internal/res/scene-setup.lua
 	md5sums = SKIP
 	md5sums = SKIP
 
