@@ -10,12 +10,12 @@ url='https://www.jetbrains.com/pycharm/'
 conflicts=('pycharm' 'pycharm-community-edition' 'pycharm-community-jre' 'pycharm-community-eap' 'pycharm-eap' 'pycharm-community-jre-aarch64')
 provides=('pycharm')
 license=('custom')
-backup=("opt/$pkgname/bin/pycharm64.vmoptions"
-        "opt/$pkgname/bin/idea.properties")
+backup=("opt/${pkgname}/bin/pycharm64.vmoptions"
+        "opt/${pkgname}/bin/idea.properties")
 depends=('giflib' 'glibc' 'sh' 'libxtst' 'libxslt' 'libxss' 'nss' 'python' 'libdbusmenu-glib' 'python-setuptools' 'cython')
 options=('!strip')
-source_x86_64=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz")
-source_aarch64=("https://download.jetbrains.com/python/$pkgname-$pkgver-aarch64.tar.gz")
+source_x86_64=("https://download.jetbrains.com/python/${pkgname}-${pkgver}.tar.gz")
+source_aarch64=("https://download.jetbrains.com/python/${pkgname}-${pkgver}-aarch64.tar.gz")
 source=("pycharm-professional.desktop"
         "ltedit.desktop")
 sha256sums=('a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
@@ -34,7 +34,7 @@ optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'python-tox: Python environments for testing tool'
             'jupyter-server: For Jupyter notebooks and apps')
             
-if [[ $CARCH == "x86_64" ]]; then
+if [[ "${CARCH}" == "x86_64" ]]; then
     install=pycharm-professional_x86_64.install
 elif [ "${CARCH}" == "aarch64" ]; then
     install=pycharm-professional_aarch64.install
@@ -47,24 +47,24 @@ prepare() {
 
 package() {
     # licenses
-    install -dm 755 "$pkgdir/usr/share/licenses/$pkgname/"
-    install -m 644 "pycharm-$pkgver/license/"* "$pkgdir/usr/share/licenses/$pkgname/"
+    install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -m 644 "pycharm-${pkgver}/license/"* "${pkgdir}/usr/share/licenses/${pkgname}/"
     
     # base
-    install -dm 755 "$pkgdir/opt/$pkgname"
-    mv "pycharm-$pkgver/"* "$pkgdir/opt/$pkgname/"
-    install -dm 755 "$pkgdir/usr/share/applications"
-    install -Dm 644 "$pkgname.desktop" "$pkgdir/usr/share/applications/"
-    install -Dm 644 ltedit.desktop "$pkgdir/usr/share/applications/"
-    install -dm 755 "$pkgdir/usr/share/icons/hicolor/"{128x128,scalable}"/apps/"
-    install -Dm 644 "$pkgdir/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/pycharm.png"
-    install -Dm 644 "$pkgdir/opt/$pkgname/bin/pycharm.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pycharm.svg"
+    install -dm 755 "${pkgdir}/opt/${pkgname}"
+    mv "pycharm-${pkgver}/"* "${pkgdir}/opt/${pkgname}/"
+    install -dm 755 "${pkgdir}/usr/share/applications"
+    install -Dm 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm 644 ltedit.desktop "${pkgdir}/usr/share/applications/"
+    install -dm 755 "${pkgdir}/usr/share/icons/hicolor/"{128x128,scalable}"/apps/"
+    install -Dm 644 "${pkgdir}/opt/${pkgname}/bin/pycharm.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/pycharm.png"
+    install -Dm 644 "${pkgdir}/opt/${pkgname}/bin/pycharm.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pycharm.svg"
 
     # issue https://youtrack.jetbrains.com/issue/IDEA-313202
-    chmod 4755 "$pkgdir/opt/pycharm-professional/jbr/lib/chrome-sandbox"
+    chmod 4755 "${pkgdir}/opt/pycharm-professional/jbr/lib/chrome-sandbox"
 
     # exec
-    install -dm 755 "$pkgdir/usr/bin/"
-    ln -s "/opt/$pkgname/bin/pycharm.sh" "$pkgdir/usr/bin/pycharm"
-    ln -s "/opt/$pkgname/bin/ltedit.sh" "$pkgdir/usr/bin/ltedit"
+    install -dm 755 "${pkgdir}/usr/bin/"
+    ln -s "/opt/${pkgname}/bin/pycharm.sh" "${pkgdir}/usr/bin/pycharm"
+    ln -s "/opt/${pkgname}/bin/ltedit.sh" "${pkgdir}/usr/bin/ltedit"
 }
