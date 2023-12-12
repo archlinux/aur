@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 _pkgname=desq-shell
 pkgname=wayfire-plugins-desq-shell
 pkgver=0.8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides interfaces to set backgrounds, panels, and drop-downs in DesQ. It also contains the implementation for Wayfire in the form of wayfire plugin"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/wayfireplugins/${_pkgname}"
@@ -15,7 +15,7 @@ md5sums=('d0c289ffd16895282e94c6f1d901750d')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
-  meson .build --prefix=/usr --buildtype=release
+  PKG_CONFIG_PATH=/usr/lib/wlroots0.16/pkgconfig meson setup .build --prefix=/usr --buildtype=release
   ninja -C .build
 }
 
