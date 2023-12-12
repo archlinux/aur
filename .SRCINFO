@@ -1,7 +1,7 @@
 pkgbase = qt5-webkit-movableink-git
 	pkgdesc = Classes for a WebKit2 based implementation and a new QML API
 	pkgver = r269464.3cfcdcf38a52
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/qtwebkit/qtwebkit
 	arch = x86_64
 	license = GPL3
@@ -46,7 +46,7 @@ pkgbase = qt5-webkit-movableink-git
 	provides = qt5-webkit
 	conflicts = qt5-webkit
 	options = !lto
-	source = qt5-webkit-movableink::git+https://github.com/movableink/webkit.git
+	source = movableink-webkit::git+https://github.com/movableink/webkit.git
 	sha256sums = SKIP
 
 pkgname = qt5-webkit-movableink-git

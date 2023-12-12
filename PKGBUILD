@@ -2,7 +2,7 @@
 
 pkgname=qt5-webkit-movableink-git
 pkgver=r269464.3cfcdcf38a52
-pkgrel=1
+pkgrel=3
 pkgdesc='Classes for a WebKit2 based implementation and a new QML API'
 arch=(x86_64)
 url='https://github.com/qtwebkit/qtwebkit'
@@ -26,20 +26,21 @@ optdepends=('gst-plugins-good: Webm codec support')
 provides=(qt5-webkit) #qt5-webkit-movableink
 conflicts=(qt5-webkit) #qt5-webkit-movableink
 options=(!lto)
-source=("qt5-webkit-movableink::git+https://github.com/movableink/webkit.git")
+source=("movableink-webkit::git+https://github.com/movableink/webkit.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/qt5-webkit-movableink"
+  cd "$srcdir/movableink-webkit"
   #git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -B build -S qt5-webkit-movableink -Wno-dev \
+  cmake -B build -S movableink-webkit -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DPORT=Qt \
+    -DENABLE_XSLT=OFF \
     -DENABLE_TOOLS=OFF
 
   cmake --build build
