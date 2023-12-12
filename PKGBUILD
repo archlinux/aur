@@ -2,7 +2,7 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.17.r0.g5bb09c538
+pkgver=0.9.18.r2.g9759a6772
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
@@ -31,7 +31,9 @@ replaces=(domruler
     purc-fetcher)
 depends=(glib2
     glibc)
-makedepends=(bison
+makedepends=(
+    avahi
+    bison
     cmake
 #     cython
     flex
@@ -55,7 +57,7 @@ makedepends=(bison
     libpsl
     libxml2
     libxslt
-    libsoup
+    libsoup3
     icu
 #     mariadb
     openssl
