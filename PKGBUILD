@@ -3,13 +3,14 @@
 _pkgname=chatbot-ui
 pkgname=$_pkgname-git
 pkgver=r292.596d183
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source ChatGPT UI."
 arch=('any')
 url='https://github.com/mckaywrigley/chatbot-ui'
 license=('MIT')
 depends=('nodejs')
 makedepends=('git' 'npm')
+backup=("etc/webapps/${pkgname}/.env.local")
 source=("git+$url.git"
         "sysusers.conf"
         "chatbot-ui.service")

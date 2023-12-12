@@ -1,7 +1,7 @@
 pkgbase = chatbot-ui-git
 	pkgdesc = An open source ChatGPT UI.
 	pkgver = r292.596d183
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mckaywrigley/chatbot-ui
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = chatbot-ui-git
 	makedepends = npm
 	depends = nodejs
 	options = !emptydirs
+	backup = etc/webapps/chatbot-ui-git/.env.local
 	source = git+https://github.com/mckaywrigley/chatbot-ui.git
 	source = sysusers.conf
 	source = chatbot-ui.service
