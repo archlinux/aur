@@ -1,0 +1,16 @@
+pkgbase = python-intel-jtag-uart
+	pkgdesc = Package to interact with JTAG UART modules in Intel FPGA designs
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/tomverbeure/intel_jtag_uart
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-intel-jtag-uart-0.0.3.tar.gz::https://pypi.org/packages/source/i/intel_jtag_uart/intel_jtag_uart-0.0.3.tar.gz
+	md5sums = 005e564d6f971f0ece4db59141990feb
+
+pkgname = python-intel-jtag-uart
