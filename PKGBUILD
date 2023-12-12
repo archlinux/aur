@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.55.r0.gdb53f3b9
+pkgver=2.0.61.r6.gdee76447
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=(
 	'discord-rpc'
 	'gcc-libs'
 	'glibc'
+	'glslang'
 	'hicolor-icon-theme'
 	'libx11'
 	'pugixml'
@@ -26,12 +27,12 @@ makedepends=(
 	'git'
 	'glib2'
 	'glm'
-	'glslang'
 	'glu'
 	'gtk3'
 	'hidapi'
 	'libgl'
 	'libpng'
+	'libsm' # https://gitlab.archlinux.org/archlinux/packaging/packages/wxwidgets/-/issues/1
 	'libusb'
 	'libzip'
 	'nasm'
@@ -68,7 +69,11 @@ prepare() {
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/discord-rpc/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
+	# https://gitlab.archlinux.org/archlinux/packaging/packages/glm/-/issues/1
 	sed -i 's/glm::glm/glm/' src/{Common,input}/CMakeLists.txt
+	# https://gitlab.archlinux.org/archlinux/packaging/packages/glslang/-/issues/1
+	sed -i '/find_package/s/glslang/Vulkan COMPONENTS &/' CMakeLists.txt
+	sed -i 's/glslang::SPIRV/Vulkan::glslang-spirv/' src/Cafe/CMakeLists.txt
 }
 
 build() {
