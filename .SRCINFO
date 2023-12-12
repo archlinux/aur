@@ -1,0 +1,37 @@
+pkgbase = r-tidyseurat
+	pkgdesc = Brings Seurat to the Tidyverse
+	pkgver = 0.7.9
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tidyseurat
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-cli
+	depends = r-dplyr
+	depends = r-ellipsis
+	depends = r-fansi
+	depends = r-ggplot2
+	depends = r-lifecycle
+	depends = r-magrittr
+	depends = r-pillar
+	depends = r-plotly
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-seurat
+	depends = r-seuratobject
+	depends = r-stringr
+	depends = r-tibble
+	depends = r-tidyr
+	depends = r-tidyselect
+	depends = r-ttservice
+	depends = r-vctrs
+	optdepends = r-ggally
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-singler
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/tidyseurat_0.7.9.tar.gz
+	md5sums = e112239c72797c4e3a81852c6f3bb555
+	sha256sums = ba3600f067cd5c57ec95ac6ee43912230cc5558097196073f035765ad288df7b
+
+pkgname = r-tidyseurat
