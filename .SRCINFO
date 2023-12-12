@@ -1,0 +1,14 @@
+pkgbase = mkinitcpio-tailscale
+	pkgdesc = Collection of mkinitcpio install hooks to integrate Tailscale into initramfs
+	pkgver = 0.1
+	pkgrel = 6
+	url = https://github.com/dangra/mkinitcpio-tailscale
+	arch = any
+	license = GPL-2.0-or-later
+	depends = mkinitcpio
+	source = sd-tailscale
+	source = setup-initcpio-tailscale
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mkinitcpio-tailscale

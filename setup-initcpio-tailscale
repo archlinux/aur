@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+set -e
+
+CMD0="${0##*/}"
+TS_HOSTNAME="${HOSTNAME}-initrd"
+TS_AUTHKEY=""
+TS_STATEDIR=/etc/initcpio/tailscale
+PID=""
+
+usage() {
+    cat <<EOF
+usage: ${CMD0} [options]
+
+  Options:
+    -H  Hostname to use when registering the node (default: '${TS_HOSTNAME}')
+    -k  Node authorization key; if it begins with "file:", then it's a
+        path to a file containing the authkey. (default: '${TS_AUTHKEY}')
+EOF
+}
+
+info()  { printf >&2 "${CMD0} INFO : %s\n" "$1"; }
+error() { printf >&2 "${CMD0} ERROR: %s\n" "$1"; }
+die()   { error "$@"; exit 1; }
+
+cleanup() {
+  if [[ -n "${SETUPDIR}" ]]; then
+    rm -rf "${SETUPDIR}"
+  fi
+  if [[ -n "$PID" ]]; then
+    kill "$PID"
+  fi
+  exit 0
+}
+trap "cleanup" EXIT
+
+while getopts H:k:d:t:h flag; do
+    case "$flag" in
+        H) TS_HOSTNAME="$OPTARG" ;;
+        k) TS_AUTHKEY="$OPTARG" ;;
+        ?) usage; exit 0 ;;
+    esac
+done
+shift $(( OPTIND - 1 ))
+
+SETUPDIR="$(mktemp -d)"
+socket="${SETUPDIR}/tailscaled.sock"
+state="${SETUPDIR}/tailscaled.state"
+
+tailscaled \
+  -state="$state" \
+  -socket="$socket" \
+  -no-logs-no-support \
+  -tun=userspace-networking \
+  >"${SETUPDIR}/setup-tailscaled.log" 2>&1 &
+PID="$!"
+
+if ! tailscale -socket="$socket" up --qr --authkey="$TS_AUTHKEY" --hostname="$TS_HOSTNAME"; then
+  cp -f "${SETUPDIR}/setup-tailscaled.log" /tmp/
+  die "Failed to configure tailscale. Check daemon logs at /tmp/setup-tailscaled.log"
+fi
+
+
+[[ "$(id -u)" != 0 ]] && xsu=sudo || xsu=""
+$xsu install -o root -g root -m600 -d "${TS_STATEDIR}"
+$xsu install -o root -g root -m644 -t "${TS_STATEDIR}" "${SETUPDIR}/tailscaled.state"
+$xsu tee "${TS_STATEDIR}/default.env" >/dev/null <<EOF
+# Set the port to listen on for incoming VPN packets.
+# Remote nodes will automatically be informed about the new port number,
+# but you might want to configure this in order to set external firewall
+# settings.
+PORT="41641"
+
+# Extra flags you might want to pass to tailscaled.
+FLAGS=""
+EOF
+
+info "tailscale successfully configured.
+
+Next steps:
+  * Disable key expiry for '${TS_HOSTNAME}' at https://login.tailscale.com/admin/machines
+  * Review ${TS_STATEDIR}/default.env (as root)
+  * Add 'systemd' and 'sd-tailscale' hooks to /etc/mkinitcpio.conf
+  * Run 'mkinitcpio -P' to rebuild initramfs
+  * Check the README at https://github.com/dangra/mkinitcpio-tailscale for security considerations
+
+enjoy!
+"
