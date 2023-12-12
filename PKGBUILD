@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="resetti is a Linux-compatible reset macro for Minecraft speedruns. It supports
 a variety of different resetting styles, categories, and Minecraft versions."
 arch=('x86_64' 'i686')
-url="https://www.github.com/woofdoggo/resetti"
+url="https://www.github.com/tesselslate/resetti"
 license=('GPL3')
 groups=()
 depends=()
