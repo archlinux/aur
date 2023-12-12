@@ -1,12 +1,18 @@
+# Contributor: (dreieck https://aur.archlinux.org/account/dreieck)
+# Contributor: fordprefect (https://aur.archlinux.org/account/fordprefect)
+
 pkgname=raccoon-bin
+groups=('raccoon')
 pkgver=4.24.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Alternative Google Play (with GUI) client to download Android APK files to your computer, binary version"
 url="http://raccoon.onyxbits.de"
 license=('Apache')
 depends=('java-environment')
-provides=('raccoon')
+optdepends=("dummydroid")
+provides=("raccoon=${pkgver}")
+conflicts=('raccoon')
 source=('raccoon.desktop'
         'https://github.com/onyxbits/Raccoon/raw/master/artwork/icon.svg'
         "https://raccoon.onyxbits.de/apk-downloader/raccoon-${pkgver}.jar")
