@@ -1,7 +1,7 @@
 pkgbase = linux-ck-autobuild-service
 	pkgdesc = A tool to automatically build linux-ck kernels on a headless machines
 	pkgver = 0.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nebulosa2007/linux-ck-autobuild-service
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = linux-ck-autobuild-service
 	depends = git
 	optdepends = fzf: for selecting subarches
 	conflicts = linux-ck-autobuild
-	source = linux-ck-autobuild-0.7.2.tar.gz::https://github.com/nebulosa2007/linux-ck-autobuild-service/archive/refs/tags/v0.7.2.tar.gz
+	source = linux-ck-autobuild-service-0.7.2.tar.gz::https://github.com/nebulosa2007/linux-ck-autobuild-service/archive/refs/tags/v0.7.2.tar.gz
 	source = linux-ck-autobuild@.service
 	source = linux-ck-autobuild@.timer
 	sha256sums = 46a0f7d368a8330b08b0d46ef57a84a1c9787151811a2cf60b0419dfa6f116a0

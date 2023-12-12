@@ -2,14 +2,14 @@
 
 pkgname=linux-ck-autobuild-service
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to automatically build linux-ck kernels on a headless machines"
 arch=(any)
 url="https://github.com/nebulosa2007/${pkgname}"
 license=(GPL3)
 depends=(bash base-devel git)
 optdepends=('fzf: for selecting subarches')
-source=(${pkgname%-service}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         ${pkgname%-service}@.service
         ${pkgname%-service}@.timer)
 sha256sums=('46a0f7d368a8330b08b0d46ef57a84a1c9787151811a2cf60b0419dfa6f116a0'
