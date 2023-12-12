@@ -1,14 +1,14 @@
 pkgbase = kapp
-	pkgdesc = A simple deployment tool focused on the concept of a Kubernetes application
+	pkgdesc = kapp is a simple deployment tool focused on the concept of "Kubernetes application" — a set of resources with the same label
 	pkgver = 0.59.1
 	pkgrel = 1
-	url = https://carvel.dev/kapp/
-	arch = x86_64
-	license = Apache
+	url = https://carvel.dev/kapp
+	arch = any
+	license = apache-2.0
+	makedepends = bash
 	makedepends = go
 	provides = kapp
-	conflicts = kapp
-	source = kapp-0.59.1.tar.gz::https://github.com/carvel-dev/kapp/archive/v0.59.1.tar.gz
+	source = kapp-0.59.1::https://github.com/carvel-dev/kapp/archive/v0.59.1.tar.gz
 	sha256sums = 43a235d11b08b7cde61cb5d9a85fd3b96247983ce935204b9e9f95e883cc2795
 
 pkgname = kapp
