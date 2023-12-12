@@ -1,8 +1,9 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=python-pypdfium2
-pkgver=4.24.0
+pkgver=4.25.0
 pkgrel=1
-pkgdesc="An ABI-level Python 3 binding to PDFium"
+# Notice should always be explicitly included in the description, according to pypdfium2's README.
+pkgdesc="An ABI-level Python 3 binding to PDFium (unofficial AUR package)"
 arch=(any)
 url="https://github.com/pypdfium2-team/pypdfium2"
 license=('Apache' 'BSD')
@@ -13,11 +14,11 @@ optdepends=('python-pillow: support PIL image objects for raster graphics'
 	'python-numpy: support numpy arrays for raster graphics')
 changelog=$pkgname.changelog.md
 _name=${pkgname#python-}
-_ctypesgencommit="54a44a426157e79a7c0b8308ec44872470ce9caf"
+_ctypesgencommit="b8a6a852b2952bcf8eab14fa0fc729ff99741d04"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 	# This is a pypdfium2-specific fork of the actual ctypesgen, hence we need to download it here.
 	"ctypesgen::git+https://github.com/pypdfium2-team/ctypesgen#commit=$_ctypesgencommit")
-sha256sums=("62706c06bc5be39aa7a2531af802420429b6c4c47498eebd2521af7e988d0848"
+sha256sums=("1691bfa3e65bc84fd8b1d26a6d68af90f9662771a647dd6c4e031d81c4a72037"
 	"SKIP") # No checksums for git sources.
 
 build() {
