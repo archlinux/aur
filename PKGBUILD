@@ -2,8 +2,8 @@
 #              M0Rf30
 # Mantainer: XenGi
 pkgname=unrealtournament
-pkgver=469c
-pkgrel=4
+pkgver=469d
+pkgrel=1
 pkgdesc="The classic Unreal Tournament from 1999 (Retail CD or DVD required)"
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament.com/"
@@ -17,8 +17,8 @@ source_x86_64=("https://github.com/OldUnreal/UnrealTournamentPatches/releases/do
 noextract=("OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2" "OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2")
 sha256sums=('fea5efdcac67564f2b5b8ef215115990739243a53a5f86e67f9414081d5b28dc'
             '8fc6bc71f20b8395d75fad8b30d18fc6c9d39fee1f9633be090ad8fd779e8827')
-sha256sums_i686=('30978800c100e8c5a20fbc66a04b9e12f843424b3a811b04e6fb8e1b6b5d6543')
-sha256sums_x86_64=('4c99bde06d26b724f14471d374d4d6105dbdc98c56ec2a40af3fa541956eeed9')
+sha256sums_i686=('d49b052ae0008ff2ed62f3943c5bb41e7fb3bd8deb896d189496cb77852768a5')
+sha256sums_x86_64=('6a81b35ae6a4c0dfce2f8fb152af16129776735aeb34dfc391f7c8daf0d51a3b')
 
 prepare() {
     # Mount the UT (GOTY) cd/image or unpack the GOG distribution with the innoextract tool.
