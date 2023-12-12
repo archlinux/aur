@@ -3,6 +3,7 @@ pkgbase = lazycat-cloud-client
 	pkgver = v1.0.7
 	pkgrel = 1
 	url = https://lazycat.cloud
+	install = lazycat-cloud-client.install
 	arch = x86_64
 	license = custom
 	depends = zenity
