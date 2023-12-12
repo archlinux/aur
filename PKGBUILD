@@ -14,13 +14,13 @@ if test -n "$(echo "$_GO_TAGS" | grep -o "stablediffusion")"; then
   _OPTIONAL_BACKENDS="backend-assets/grpc/stablediffusion $_OPTIONAL_BACKENDS"
 fi
 # list of backends to be build
-_GRPC_BACKENDS="backend-assets/grpc/llama-cpp backend-assets/grpc/whisper backend-assets/grpc/bert-embeddings $_OPTIONAL_BACKENDS"
+_GRPC_BACKENDS="backend-assets/grpc/llama-cpp backend-assets/grpc/whisper $_OPTIONAL_BACKENDS backend-assets/grpc/bert-embeddings"
 _pkgname="localai"
 
 pkgbase="${_pkgname}-git"
 pkgname=("${pkgbase}")
 pkgver=v2.0.0.23.g9aa2a7c
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -108,6 +108,15 @@ prepare() {
     if test -d "$n"; then rm -rf "$n"; fi
     cp -r "${_pkgname}" "$n"
   done
+
+  cd "${srcdir}/${_pkgname}-rocm"
+  # XXX workaround build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
+  sed -i '1s/^/string(REPLACE "-fcf-protection" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")\n/' \
+    backend/cpp/llama/llama.cpp/CMakeLists.txt
+  # XXX workaround deprecated --offload-arch for multiple GPU_TARGETS
+  for i in backend/cpp/llama/llama.cpp/Makefile sources/whisper.cpp/Makefile; do
+    sed -ri 's/^(.+HIPFLAGS.+\+=).+offload-arch=.+$/\1 -DGPU_TARGETS="$(GPU_TARGETS)"/g' "$i"
+  done
 }
 
 _build() {
@@ -138,8 +147,6 @@ build() {
     if test -n "$GPU_TARGETS"; then _AMDGPU_TARGETS="$GPU_TARGETS"; fi
     if test -n "$AMDGPU_TARGETS"; then _AMDGPU_TARGETS="$AMDGPU_TARGETS"; fi
     _AMDGPU_TARGETS="${_AMDGPU_TARGETS:-gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102}"
-    # XXX workaround build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
-    sed -i '1s/^/string(REPLACE "-fcf-protection" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")\n/' backend/cpp/llama/llama.cpp/CMakeLists.txt
     MAGMA_HOME="$ROCM_HOME" AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
       _build hipblas
   fi
