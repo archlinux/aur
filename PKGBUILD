@@ -3,7 +3,7 @@
 _pkgname=tuxedo-drivers
 pkgname=tuxedo-drivers-dkms
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
 url="https://github.com/tuxedocomputers/tuxedo-drivers"
 license=("GPL3")
@@ -29,15 +29,19 @@ replaces=('tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 source=($pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v${pkgver}.tar.gz tuxedo_io.conf dkms.conf)
 sha256sums=('417a2f13c2cfe15a44de566ce6ff6b942ed6641ae16c7daa264458b2d3aefdc9'
             'd94d305bfd2767ad047bc25cc5ce986e76804e7376c3dd4d8e500ebe2c7bef3c'
-            '859c839fc340ef8d6ac35d297cfa643364751c387024c42a848891790cf176d9')
+            '41424829fbe55dbc44fb122699881d92fec44fc8d68a6de1bcbb9731b8c3cd64')
 sha512sums=('e8546e1fb12c8fc443908874f3021fc062174ba4a03e84db249612ede35d982e92823479aad33041519d5cadc2292926ac8a83c42a45534ccce5fd62964d87d6'
             '3101d1063e9c45eccb505fa21578cba33ae5c85b3d5b1c62c90806ad9d7b04410c91ded7a7115a85d1f6ecbd90ccc9e5f2ecf269dac4a557baa017a629bbcf81'
-            'f4d66db3b5b4f3275cbbba25a766a4f345db3248e97402aadca09bfbc1eb7fcf13db7eddc90a507e74ceaf0e60b003be1312862bea16d47aaca284fac4769da4')
+            'c4d97aac8fd08497f4111f57ccfe7513b2172131ea8be61f5cc9d417bfc409c18286b270584215a2bf3ec1b1059008255ade87940eb151ce925c74a7184ee1f6')
 
 package() {
   mkdir -p "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-  cp -r "${srcdir}/${_pkgname}-${pkgver}"/* "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-  install -D "${srcdir}/dkms.conf" "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}"/tuxedo_keyboard.conf "${pkgdir}/usr/lib/modprobe.d/tuxedo_keyboard.conf"
-  install -Dm644 "${srcdir}"/tuxedo_io.conf "${pkgdir}/usr/lib/modules-load.d/tuxedo_io.conf"
+  sed -i "s/#MODULE_VERSION#/${pkgver}/" dkms.conf
+  install -Dm644 dkms.conf -t "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
+  install -Dm644 "${_pkgname%}-$pkgver"/Makefile -t "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
+  install -Dm644 "${_pkgname%}-$pkgver"/tuxedo_keyboard.conf -t "$pkgdir/usr/lib/modprobe.d/"
+  install -Dm644 "$srcdir/tuxedo_io.conf" -t "$pkgdir/usr/lib/modules-load.d/"
+  #cp -avr "${_pkgname%}-$pkgver"/* "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
+  cp -avr "${_pkgname%}-$pkgver"/src/* "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
 }
+
