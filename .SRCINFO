@@ -1,20 +1,19 @@
 pkgbase = unsplash-wallpapers-bin
 	pkgdesc = A cross-platform desktop application to set wallpapers from Unsplash built with Electron, React, and Redux
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/soroushchehresa/unsplash-wallpapers
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = electron8
 	depends = hicolor-icon-theme
 	provides = unsplash-wallpapers=1.3.0
 	conflicts = unsplash-wallpapers
 	source = unsplash-wallpapers-1.3.0.deb::https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.3.0/unsplash-wallpapers_1.3.0_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/soroushchehresa/unsplash-wallpapers/v1.3.0/LICENSE
+	source = LICENSE-1.3.0::https://raw.githubusercontent.com/soroushchehresa/unsplash-wallpapers/v1.3.0/LICENSE
 	source = unsplash-wallpapers.sh
 	sha256sums = 3f6cb08f195d765c65c1858f74815afba5284a7aba9b2a96dd248e09582e148a
 	sha256sums = e7ee68282295100c6be4565152cb535d43086d2354760a8f006f1e980e0a3bb5
-	sha256sums = 9b87426a845641bcdf5f2f2e003be0ea5e170e26b58b669f08115339b69c8770
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = unsplash-wallpapers-bin
