@@ -16,7 +16,6 @@ install="$_pkgname.install"
 depends=(
   gcc-libs
   glibc
-  glm
   libcap.so
   libdisplay-info.so
   libdrm
@@ -43,13 +42,14 @@ depends=(
   xorg-server-xwayland
 )
 makedepends=(
-  benchmark
   git
   glslang
   meson
   ninja
   vulkan-headers
   wayland-protocols
+  vkroots
+  glm
 )
 provides=(
   "$_pkgname"
@@ -87,7 +87,7 @@ prepare() {
   done
 
   cd gamescope
-  meson subprojects download
+  meson subprojects download stb
   git submodule init src/reshade
   git config submodule.src/reshade.url ../reshade
   git submodule init thirdparty/SPIRV-Headers
@@ -102,6 +102,7 @@ pkgver() {
 build() {
   arch-meson gamescope build \
     -Dforce_fallback_for=stb \
+    -Dbenchmark=disabled \
     -Dpipewire=enabled
   meson compile -C build
 }
