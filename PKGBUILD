@@ -2,7 +2,7 @@
 # Maintainer: Elara Musayelyan <elara@elara.ws>
 
 pkgname='owobot-bin'
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Your server's guardian and entertainer'
 url='https://gitea.elara.ws/owobot/owobot'
@@ -10,22 +10,26 @@ arch=('aarch64' 'armv6h' 'i686' 'x86_64')
 license=('AGPLv3')
 provides=('owobot')
 conflicts=('owobot')
+backup=('etc/owobot/config.toml')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.3/owobot_0.0.3_linux_arm64.tar.gz")
-sha256sums_aarch64=('5988692e22162e959e026b0c71e5d9369f78e3773e0f2d21ff0b7ea217041585')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.4/owobot_0.0.4_linux_arm64.tar.gz")
+sha256sums_aarch64=('08e81ebd69befdee476a04c83a4813896849145770edebf0fdf4f8b4fb02ef9c')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.3/owobot_0.0.3_linux_armv6.tar.gz")
-sha256sums_armv6h=('83bf56772faabe9b4df39da3d60ac8d4dc52ec08c6c923dae6e367cdb44a3b3a')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.4/owobot_0.0.4_linux_armv6.tar.gz")
+sha256sums_armv6h=('e518ee63a3e4f2267ec47be6c4b27fb965b1703d28613dd8d70199536cae8390')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.3/owobot_0.0.3_linux_386.tar.gz")
-sha256sums_i686=('e3b38ef78de52a2b0c8f19be835161ee69ab62806f86f54fdb5d42c77e338f44')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.4/owobot_0.0.4_linux_386.tar.gz")
+sha256sums_i686=('6cdc2f18218841ab4599ac7b9193ede5dc8da2c167b09de80fd8d0cb2cc403c1')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.3/owobot_0.0.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('90876ae9c91930a779400a73e8f6d27c020530961f0214c2b9b3fe10272fe716')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.4/owobot_0.0.4_linux_amd64.tar.gz")
+sha256sums_x86_64=('f5586a18fb33ac3772cb763c5ded0a1af1a3fe7bb289f4a350de15ad36e38938')
 
 package() {
   # binaries
   install -Dm755 ./owobot "${pkgdir}/usr/bin/owobot"
+
+  # configs
+  install -Dm644 ./owobot.toml "${pkgdir}/etc/owobot/config.toml"
 
   # services
   install -Dm644 ./owobot.service "${pkgdir}/etc/systemd/system/owobot.service"
