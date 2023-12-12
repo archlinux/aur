@@ -3,7 +3,7 @@
 _pkgname=windecor
 pkgname=wayfire-plugins-windecor
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A window decoration plugin for wayfire - a more sophisticated alternative to the inbuilt decoration plugin"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/wayfireplugins/${_pkgname}"
