@@ -1,7 +1,7 @@
 # Maintainer: Marieke Westendorp <ma3ke.cyber@gmail.com>
 pkgname=tid
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small system information bar"
 arch=('x86_64')
 url="https://git.sr.ht/~ma3ke/tid"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo-nightly')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-backup=("etc/tid/tid.conf")
+backup=("etc/tid/tid.config")
 sha512sums=('b8687f4a5f7ef3f63241f348352d0fb3a0a77338761e333bbdced19020a13a5c2de308146e5224988c57603d3e5de27cc969318779093615600175ed09f177a6')
 
 prepare() {
