@@ -1,16 +1,17 @@
 pkgbase = glyphr-studio-nativefier
 	pkgdesc = Glyphr Studio is a free, web based font designer.
-	pkgver = 1.13.20
-	pkgrel = 2
+	pkgver = 1.13.21
+	pkgrel = 1
 	url = http://glyphrstudio.com/
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
 	makedepends = nodejs-nativefier
-	depends = electron26
-	source = glyphr-studio-1.13.20.tar.gz::https://github.com/glyphr-studio/Glyphr-Studio-1/archive/refs/tags/v1.13.20.tar.gz
-	source = glyphr-studio.sh
-	sha256sums = f8e4f1711969083b5031d2d678c47bc69c3d62af400c5019b474d92e4118d52a
-	sha256sums = 0edfffbfc40a55cf79c814ada39dfeeb9b3a724736e90607a5f8a3b71140a88e
+	makedepends = git
+	depends = electron25
+	source = glyphr-studio-nativefier-1.13.21::git+https://github.com/glyphr-studio/Glyphr-Studio-1.git#tag=v1.13.21
+	source = glyphr-studio-nativefier.sh
+	sha256sums = SKIP
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = glyphr-studio-nativefier
