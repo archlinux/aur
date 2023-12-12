@@ -3,7 +3,7 @@
 # Patch by: Alessandro Ghedini <ghedo@debian.org>
 
 pkgname=libcurl3-gnutls
-pkgver=7.85.0
+pkgver=8.4.0
 pkgrel=0
 pkgdesc='An URL retrieval library (linked against gnutls) with libcurl3 versioned symbols'
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('libcurl-gnutls')
 source=("https://curl.haxx.se/download/curl-${pkgver}.tar.gz"{,.asc}
         03_keep_symbols_compat.patch)
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
-sha512sums=('bbad693bcde9c55e5942499950d76011f53ad43d3270eee2c8db486bcf46f5fc92b32dd8752caf4c5976fe493d083e2d34fa299cb96fb8e76d8f5fcc2cc56a36'
+sha512sums=('375d241effccde852cfba32aa61be406f6c6e8ef2773b48d57bfa1ff99fdf414dc08bdb6b3a65930e53b28e31246a4bc396c81054ae9c560a3bf58cca0ae78b0'
             'SKIP'
             '596c227bb5ede8182831c5c92b3ac7b74b770f51fae99277e2aabb02d38b7a5d4d06003731042ab5403ca89e719827d7080c3a179e29ef08b41a1993a7788a33')
 
@@ -41,7 +41,6 @@ build() {
     --without-gssapi \
     --with-libssh2 \
     --without-libidn \
-    --without-ssl \
     --with-gnutls='/usr' \
     --with-random='/dev/urandom' \
     --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt'
