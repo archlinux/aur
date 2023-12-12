@@ -79,7 +79,7 @@ info "tailscale successfully configured.
 Next steps:
   * Disable key expiry for '${TS_HOSTNAME}' at https://login.tailscale.com/admin/machines
   * Review ${TS_STATEDIR}/default.env (as root)
-  * Add 'systemd' and 'sd-tailscale' hooks to /etc/mkinitcpio.conf
+  * Edit /etc/mkinitcpio.conf and add 'tailscale' hook for busybox init, or sd-tailscale' hook for systemd init.
   * Run 'mkinitcpio -P' to rebuild initramfs
   * Check the README at https://github.com/dangra/mkinitcpio-tailscale for security considerations
 

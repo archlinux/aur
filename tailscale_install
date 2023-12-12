@@ -1,0 +1,49 @@
+#!/usr/bin/env ash
+
+build() {
+	if ! pacman -Qi tailscale >/dev/null 2>&1; then
+		error "Package tailscale not installed"
+		return 1
+	fi
+
+	local setupdir="/etc/initcpio/tailscale"
+	for fn in tailscaled.state default.env; do
+		if ! [[ -r "${setupdir}/${fn}" && -s "${setupdir}/${fn}" ]]; then
+			error "Missing configuration file at ${setupdir}/${fn}. Have you run setup-initcpio-tailscale yet?"
+			return 1
+		fi
+	done
+	add_file ${setupdir}/default.env /etc/default/tailscaled
+	add_file ${setupdir}/tailscaled.state /var/lib/tailscale/tailscaled.state
+
+	# tailscale requirements
+	add_module tun
+	add_full_dir /usr/lib/xtables
+	add_all_modules netfilter
+	map add_binary iptables ip6tables tailscale tailscaled
+
+	add_run_script
+}
+
+help() {
+	cat <<-__EOF_HELP__
+	This hook enables tailscale service within busybox initramfs.
+
+	It copies all required files and binaries to initramfs and runs
+	tailscale daemon in the background. Remember to place it before 
+	any other hook that blocks for input like the 'encrypt' hook.
+
+	Configuration is copied into the initramfs from:
+	
+		* /etc/initcpio/tailscale/tailscaled.state to /var/lib/tailscale/tailscaled.state
+		* /etc/initcpio/tailscale/default.env to /etc/default/tailscaled
+
+	Run setup-initcpio-tailscale to initialize /etc/initcpio/tailscale/ configuration files.
+
+	This hook must come after the network is setup and before other hooks that blocks the
+	init chain. Place it before 'encrypt' if you plan to unlock a rootfs remotely.
+	
+	__EOF_HELP__
+}
+
+# vim: noexpandtab

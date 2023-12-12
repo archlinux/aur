@@ -1,0 +1,19 @@
+#!/usr/bin/env ash
+
+run_hook() (
+  echo "Starting Tailscale"
+  . /etc/default/tailscaled
+
+  # Launch tailscale agent in the background
+  /usr/sbin/tailscaled \
+    --state=/var/lib/tailscale/tailscaled.state \
+    --socket=/run/tailscale/tailscaled.sock \
+    --port="${PORT}" ${FLAGS} &
+
+  echo "$!" >/run/tailscaled.pid
+)
+
+run_cleanuphook() {
+  local pid=$(cat /run/tailscaled.pid 2>/dev/null)
+  [[ -z $pid ]] || kill "$pid"
+}
