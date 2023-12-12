@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Raccoon
+Comment=Alternative Google Play client to download Android APK files to your computer
+Categories=GNOME;Application;
+Type=Application
+StartupNotify=true
+TryExec=/usr/bin/dummydroid
+Exec=dummydroid
+Icon=/usr/share/pixmaps/dummydroid.svg

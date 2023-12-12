@@ -1,0 +1,6 @@
+#!/bin/sh
+
+exec java \
+  -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Draccoon.home="$HOME/.Raccoon" \
+  -jar /usr/share/java/%%_PKGNAME%%/%%_PKGNAME%%-%%PKGVER%%.jar "$@"
+exit "$?"
