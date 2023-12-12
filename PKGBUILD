@@ -1,14 +1,15 @@
 pkgbase=linux-bin
 pkgname=(linux{,-headers}-bin)
-pkgver=6.5.10_1
+pkgver=6.6.4_1~exp1
 pkgrel=1
 arch=(x86_64 aarch64)
 _arch=`uname -m|sed s/x86_/amd/\;s/arch/rm/`
 _web=https://packages.debian.org
-url=$_web/source/sid/linux-signed-$_arch
+_dist=`curl -Ls $_web/src:linux-signed-$_arch|grep resultlink|cut -d\> -f3|cut -d\< -f1|tail -1`
+url=$_web/source/$_dist/linux-signed-$_arch
 [ "$_curl" = '' ] && _curl=`curl -s $url`
 _pkgver=`echo "$_curl"|grep Source\ Package:|sed 's/.*(//;s/).*//'|tr + -`
-_pkgver2=`echo "$_curl"|grep [0-9]-$_arch\"|cut -d- -f3-4`
+_pkgver2=`echo "$_curl"|grep [0-9]-$_arch\"|sed "s/.*linux-image-\(.*\)-$_arch.*/\1/"`
 license=(GPL2)
 options=(!strip)
 _url=https://ftp.debian.org/debian/pool/main/l/linux
@@ -16,14 +17,13 @@ source=(
 	$_url-signed-$_arch/linux-image-$_pkgver2-${_arch}_${_pkgver}_$_arch.deb
 	$_url/linux-{headers-$_pkgver2-{${_arch}_${_pkgver}_$_arch,common_${_pkgver}_all},kbuild-${_pkgver2}_${_pkgver}_$_arch}.deb)
 noextract=(${source[@]##*/})
-sha256sums=(
-	$(for _i in $(echo ${source[@]##*/}|tr \  \\n|sed s/_.*//);do curl -s $_web/sid/$_arch/$_i/download|grep SHA256|cut -d\> -f6|cut -d\< -f1;done))
+sha256sums=($(for _i in $(echo ${source[@]##*/}|tr \  \\n|sed s/_.*//);do curl -s $_web/$_dist/$_arch/$_i/download|grep SHA256|cut -d\> -f6|cut -d\< -f1;done))
 pkgver(){
 	echo ${_pkgver/-/_}
 }
 [ $_arch = arm64 ] && {
-	[ $_pwd. = . ] && _pwd=$PWD
-	sed s/%KVER%/$_pkgver2-arm64/ $_pwd/linux.install>linux2.install
+	[ "$_pwd" = '' ] && _pwd=$PWD
+	sed s/%KVER%/$_pkgver2-arm64/ "$_pwd"/linux.install>linux2.install
 }
 package_linux-bin(){
 	pkgdesc='The Linux kernel and modules (signed)'
@@ -41,8 +41,6 @@ package_linux-bin(){
 		mv usr/lib/linux-image* boot/dtbs
 		mv boot "$pkgdir"
 	}
-	msg2 'Compressing kernel modules...'
-	find lib/modules/*/kernel -type f -exec xz {} \;
 	mv lib usr
 	mv usr/share/doc/linux-{image-$_pkgver2-$_arch,bin}
 	mv usr "$pkgdir"
