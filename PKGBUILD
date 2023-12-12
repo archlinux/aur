@@ -2,23 +2,63 @@
 pkgname=commas
 _pkgname=Commas
 pkgver=0.29.2
-pkgrel=1
+_electronversion=26
+_nodever=18
+pkgrel=2
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
 arch=("x86_64")
 url="https://github.com/CyanSalt/commas"
 license=('ISC')
 conflicts=("${pkgname}")
-depends=('bash' 'alsa-lib' 'python' 'dbus' 'gcc-libs' 'cairo' 'glibc' 'libxcb' 'libxkbcommon' 'gtk3' 'libxext' 'libx11' 'libcups' 'libxcomposite' \
-    'libxrandr' 'libdrm' 'pango' 'nss' 'expat' 'libxdamage' 'mesa' 'libxfixes' 'nspr' 'at-spi2-core' 'glib2')
-makedepends=('gendesk' 'npm>=9' 'nodejs>=18')
-source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('c2614d9d15c30d687f624d7373e0d4cf99dc7bf61c925ad761c061e867ffeae7')
+depends=(
+    'alsa-lib'
+    'python'
+    'cairo'
+    'libxcb'
+    'libxkbcommon'
+    'gtk3'
+    'libxext'
+    'libx11'
+    'libcups'
+    'libxcomposite'
+    'libxrandr'
+    'libdrm'
+    'pango'
+    'nss'
+    'expat'
+    'libxdamage'
+    'mesa'
+    'libxfixes'
+    'nspr'
+    'at-spi2-core'
+)
+makedepends=(
+    'gendesk'
+    'npm'
+    'nvm'
+    'git'
+)
+source=(
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+)
+sha256sums=('SKIP')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodever}"
+    nvm use "${_nodever}"
+}
 build() {
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    rm -rf .npmrc
-    npm ci
-    npm run build
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    npm install
+    npm run pack
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
