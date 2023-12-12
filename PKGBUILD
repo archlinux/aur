@@ -3,35 +3,60 @@
 pkgname=motrix-git
 _pkgname=Motrix
 pkgver=1.8.19.r30.g7012040
-pkgrel=2
+_electronversion=22
+_nodeversion=16
+pkgrel=1
 pkgdesc="A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc."
 arch=('any')
 url="https://motrix.app/"
-_githuburl="https://github.com/agalwood/Motrix"
+_ghurl="https://github.com/agalwood/Motrix"
 _giteeurl="https://gitee.com/mirrors/motrix"
 license=('MIT')
-depends=('libxcb' 'gcc-libs' 'dbus' 'libxdamage' 'alsa-lib' 'mesa' 'gtk3' 'libxkbcommon' 'libxext' 'libxcomposite' \
-    'nspr' 'pango' 'nss' 'libdrm' 'at-spi2-core' 'cairo' 'libcups' 'libxrandr' 'glib2' 'libx11' 'libxfixes' 'expat' 'glibc')
-makedepends=('gendesk' 'git' 'yarn' 'npm>=9.8.1' 'nodejs>=18.18.0')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname//-/.}::git+${_giteeurl}.git")
-sha256sums=('SKIP')
+depends=(
+    "electron${_electronversion}"
+)
+makedepends=(
+    'gendesk'
+    'git'
+    'yarn'
+    'npm'
+    'nvm'
+)
+source=(
+    "${pkgname%-git}::git+${_giteeurl}.git"
+    "${pkgname%-git}.sh"
+)
+sha256sums=('SKIP'
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 pkgver() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-git}"
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "${srcdir}/${pkgname%-git}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     sed '157,178d' -i electron-builder.json
-    yarn
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn lint:fix
     yarn build
     yarn pack
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     case "${CARCH}" in
         x86_64)
             _architecture="linux-unpacked"
@@ -43,9 +68,10 @@ package() {
             _architecture="linux-armv7l-unpacked"
         ;;
     esac
-    cp -r "${srcdir}/${pkgname//-/.}/release/${_architecture}/"* "${pkgdir}/opt/${pkgname%-git}"
-    ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}/release/${_architecture}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname%-git}/release/${_architecture}/resources/engine/aria2c" -t "${pkgdir}/usr/lib/${pkgname%-git}/engine"
+    install -Dm644 "${srcdir}/${pkgname%-git}/release/${_architecture}/resources/engine/aria2.conf" -t "${pkgdir}/usr/lib/${pkgname%-git}/engine"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/build/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-git}/static/512x512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
