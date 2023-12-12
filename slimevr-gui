@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+HTTP_PORT=34737
+
+cd "/opt/slimevr-gui/"
+
+python3 -m http.server -b localhost "${HTTP_PORT}" &
+xdg-open "http://localhost:${HTTP_PORT}"
