@@ -2,8 +2,8 @@
 # Project: https://sr.ht/~sircmpwn/himitsu
 
 pkgname=himitsu
-pkgver='0.4'
-pkgrel=2
+pkgver='0.5'
+pkgrel=1
 pkgdesc='Secret storage manager'
 arch=(x86_64)
 url='https://himitsustore.org/'
@@ -18,12 +18,13 @@ source=(
 	'himitsud.service'
 )
 sha256sums=(
-	'0b43407c826e50e1858da035726c65b2e873dca4c77f70143b0b3d75eca10e7c'
+	'877b0665e7e7798e916a826a96ef4a7c43f428c89b70323b9c28c9971c2b93f9'
 	'0d84a1ceb17b6be53066f9f617ee35f233ada2283c3f9b3cbea5f2c8b6c7001e'
 )
 
 build() {
 	cd "$srcdir/$_extracted"
+	unset HAREPATH
 	export LDFLAGS=${LDFLAGS#'-Wl,'}
 	export HARECACHE="$srcdir/.harecache"
 	make PREFIX=/usr
@@ -31,6 +32,7 @@ build() {
 
 check() {
 	cd "$srcdir/$_extracted"
+	unset HAREPATH
 	make PREFIX=/usr check
 }
 
