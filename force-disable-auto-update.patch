@@ -1,4 +1,4 @@
-From 9ea1d0c6451a0453c3b5d04f726266e291bf3a95 Mon Sep 17 00:00:00 2001
+From abb6a341bd3af0611f6f2c695011ce141b43a75d Mon Sep 17 00:00:00 2001
 From: Ernesto Castellotti <mail@ernestocastellotti.it>
 Date: Tue, 14 Nov 2023 12:52:20 +0100
 Subject: [PATCH] Force disable auto update
@@ -10,7 +10,7 @@ Subject: [PATCH] Force disable auto update
  3 files changed, 4 insertions(+), 39 deletions(-)
 
 diff --git a/src/components/left/settings/SettingsExperimental.tsx b/src/components/left/settings/SettingsExperimental.tsx
-index c4ee07962..5edbfdea1 100644
+index 3a46ffcc6..9c2702bfb 100644
 --- a/src/components/left/settings/SettingsExperimental.tsx
 +++ b/src/components/left/settings/SettingsExperimental.tsx
 @@ -120,14 +120,6 @@ const SettingsExperimental: FC<OwnProps & StateProps> = ({
@@ -29,10 +29,10 @@ index c4ee07962..5edbfdea1 100644
            // eslint-disable-next-line react/jsx-no-bind
            onClick={handleDownloadLog}
 diff --git a/src/electron/window.ts b/src/electron/window.ts
-index 2bec304c6..3fcc8e566 100644
+index e0ac186e5..e98ac970d 100644
 --- a/src/electron/window.ts
 +++ b/src/electron/window.ts
-@@ -139,16 +139,15 @@ export function createWindow(url?: string) {
+@@ -145,16 +145,15 @@ export function createWindow(url?: string) {
  }
  
  function loadWindowUrl(window: BrowserWindow, url?: string, hash?: string): void {
@@ -40,7 +40,7 @@ index 2bec304c6..3fcc8e566 100644
 +    store.set(AUTO_UPDATE_SETTING_KEY, false);
 +  }
 +
-   if (url) {
+   if (url && checkIsWebContentsUrlAllowed(url)) {
      window.loadURL(url);
    } else if (!app.isPackaged) {
      window.loadURL(`http://localhost:1234${hash}`);
@@ -54,10 +54,10 @@ index 2bec304c6..3fcc8e566 100644
      window.loadURL(`file://${__dirname}/index.html${hash}`);
    }
 diff --git a/src/global/actions/ui/misc.ts b/src/global/actions/ui/misc.ts
-index e288381c4..db6fe0a8b 100644
+index 8e995a55c..19a272fdb 100644
 --- a/src/global/actions/ui/misc.ts
 +++ b/src/global/actions/ui/misc.ts
-@@ -614,35 +614,9 @@ addActionHandler('closeMapModal', (global, actions, payload): ActionReturnType =
+@@ -623,35 +623,9 @@ addActionHandler('closeMapModal', (global, actions, payload): ActionReturnType =
  });
  
  addActionHandler('checkAppVersion', (global): ActionReturnType => {
@@ -94,5 +94,5 @@ index e288381c4..db6fe0a8b 100644
  
  addActionHandler('afterHangUp', (global): ActionReturnType => {
 -- 
-2.42.1
+2.43.0
 
