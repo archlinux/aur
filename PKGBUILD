@@ -3,8 +3,8 @@
 # Contributor: aksr <aksr at t-com dot me>
 # Maintainer: Ferdi265 <theferdi265@gmail.com>
 pkgname=libwm-git
-pkgver=1.0.r4.g208dfb8
-pkgrel=2
+pkgver=1.3.r0.g9b2e6a1
+pkgrel=1
 pkgdesc="A library for X windows manipulation."
 url="https://github.com/wmutils/libwm"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags | sed -r 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed -r 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
