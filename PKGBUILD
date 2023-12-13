@@ -31,6 +31,7 @@ check() {
 
 package() {
 	cd "$srcdir/$_gitname"
-	install -D "git-linearize" "$pkgdir/usr/bin/git-linearize"
-	install -D "shit" "$pkgdir/usr/bin/shit"
+	install -Dm644 "git-linearize" "$pkgdir/usr/bin/git-linearize"
+	install -Dm644 "shit" "$pkgdir/usr/bin/shit"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$_gitname/LICENSE"
 }
