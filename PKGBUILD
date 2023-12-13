@@ -1,14 +1,14 @@
 # Maintainer: Markus Pesch <markus.pesch@cryptic.systems>
 
 pkgname=mint-backgrounds-virginia
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="The backgrounds included in Linux Mint 21.3 virginia"
 license=('Various')
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
 source=("${url}/${pkgname}_$pkgver.tar.gz")
-sha256sums=('b8800f10b601a4b51d3dfc17a6108f0a26e2816547206c528061a57a357938a6')
+sha256sums=('7aad260184afd9512cca67071c0bba2bf8d4645824299bd1118cefc51e1fb8c8')
 
 package() {
   mkdir --parents ${pkgdir}/usr/share/backgrounds/linuxmint-virginia
