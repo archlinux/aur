@@ -9,6 +9,7 @@ pkgbase = lazycat-cloud-client
 	makedepends = tar
 	makedepends = zstd
 	depends = gtk3
+	depends = zenity
 	noextract = lzc-client-desktop_v1.0.7.tar.zst
 	source = https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v1.0.7.tar.zst
 	sha256sums = 3bd634dcff3153ed40351ede78137b3485ce2211311496d2d2e23955f825a121
