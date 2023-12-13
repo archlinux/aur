@@ -2,6 +2,9 @@
 
 # Releases and details about builds can be found at:
 # https://github.com/Stremio/stremio-service
+#
+# Check new releases:
+# curl -sf https://api.github.com/repos/Stremio/stremio-service/releases | grep -om1 '"tag_name": *"[^"]*"' | awk -F'"' '{print $4}'
 
 _debname=stremio-service
 
