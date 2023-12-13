@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 
 pkgname=python-eduvpn-client
-pkgver=4.1.3
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Linux client and Python client API for eduVPN"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python' 'gobject-introspection-runtime'
 optdepends=('networkmanager-openvpn: For using NM to manage OpenVPN tun devices')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/eduvpn/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar".{xz,xz.asc})
-sha256sums=('1b6ba1c35f0e2f4426dd90b287f12c149aec1793bf93846afbb234b66f7663d3'
+sha256sums=('5b9cf4ca4af0580359996fa542dea6f819983c8d1cbadb1a9b1f15d89ae97870'
             'SKIP')
 validpgpkeys=('227FF3F8F829D9A9314D9EBA02BB8048BBFF222C')
 
