@@ -2,11 +2,11 @@
 pkgname=airgorah-bin
 _appname="com.martin-olivier.${pkgname%-bin}"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A WiFi auditing software that can perform deauth attacks and passwords cracking"
 arch=("x86_64")
 url="https://crates.io/crates/airgorah"
-_githuburl="https://github.com/martin-olivier/airgorah"
+_ghurl="https://github.com/martin-olivier/airgorah"
 license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -17,11 +17,9 @@ depends=(
     'gtk4'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_${CARCH}.pkg.tar.zst"
-    "LICENSE::https://raw.githubusercontent.com/martin-olivier/airgorah/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_${CARCH}.pkg.tar.zst"
 )
-sha256sums=('81a24006f04e51432503c020586bbec2139f775d8e16094a23b9b69d08041a4b'
-            'f15292d482b98b47c9ceb28e1f540c4522c10b19c52ebd416d10e540999570d0')
+sha256sums=('81a24006f04e51432503c020586bbec2139f775d8e16094a23b9b69d08041a4b')
 build() {
     sed "s|/usr/share/pixmaps/${pkgname%-bin}.png|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
