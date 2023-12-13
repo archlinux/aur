@@ -1,9 +1,12 @@
 # Maintainer: Ivan Gabaldon <aur[at]inetol.net>
 
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#! This package is NOT validated by checksums, careful... !!
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 pkgname=termius-deb
 _pkgname=Termius
-pkgver=8.8.2
-pkgrel=3
+pkgver=8.8.3
+pkgrel=1
 pkgdesc='Desktop SSH Client (deb release)'
 arch=('x86_64')
 url='https://termius.com'
@@ -12,7 +15,7 @@ makedepends=('links')
 provides=("${pkgname//-deb}")
 conflicts=("${pkgname//-deb}" "${pkgname//-deb/'-beta'}")
 source=("${pkgname//-deb}-rolling.deb::https://autoupdate.termius.com/linux/$_pkgname.deb")
-b2sums=('5507a333d69b2ee653d0c125000149732161edc70014fbf23453dcffdf769122196fa8127e57b9177277096b195d606665661fae0a4e5450df351714410255de')
+b2sums=('SKIP')
 
 prepare() {
     mkdir -p "${pkgname//-deb}-rolling/"
