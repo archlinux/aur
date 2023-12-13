@@ -1,16 +1,15 @@
 pkgbase = raj-browser-bin
 	pkgdesc = A UI and privacy focussed browser for the web from the web.
 	pkgver = 2.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Rajaniraiyn/raj-browser
 	arch = x86_64
 	license = custom
-	depends = bash
 	depends = electron22
 	conflicts = raj-browser
 	source = raj-browser-2.0.5.deb::https://github.com/Rajaniraiyn/raj-browser/releases/download/v2.0.5/raj-browser_2.0.5_amd64.deb
 	source = raj-browser.sh
 	sha256sums = b0ff6a0abff0fe3f8510aa5f12bae954eab07cb0441ee5971685d3335fa91b79
-	sha256sums = ea63cc87484f5ca49318425a9ee2c5c9ac3920d5de6613634ad37a8c397cdf70
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = raj-browser-bin
