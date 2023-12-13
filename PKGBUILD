@@ -1,5 +1,5 @@
 pkgname=yodejs-bin
-pkgver=0.9.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Fork of Node.js using GUI message loop"
 arch=(
@@ -12,7 +12,7 @@ makedepends=(
 url='https://libyue.com/'
 license=('Custom')
 source=("https://github.com/yue/yode/releases/download/v$pkgver/yode-v$pkgver-linux-x64.zip")
-sha256sums=('b2d5b8e37cb6ee10b5f78e3358d654350b799c9600a8901f09b49f3e22b41e92')
+sha256sums=('c4e07984a04ee3b0dc5af7df70f9eb4574bf4aa44b685de1d5b5883d233515da')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
