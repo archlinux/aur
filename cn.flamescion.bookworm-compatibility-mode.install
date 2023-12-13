@@ -1,14 +1,13 @@
 post_install(){
-echo -e "#!/bin/bash\n/opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/bookworm-run \$@">/usr/bin/bookworm-run
-echo -e "#!/bin/bash\n/opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/ace-uninstall-helper \$@">/usr/bin/ace-uninstall-helper
-echo -e "#!/bin/bash\n/opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/ace-uninstall-helper-gui \$@">/usr/bin/ace-uninstall-helper-gui
-chmod a+x /usr/bin/bookworm-run
-chmod a+x /usr/bin/ace-uninstall-helper
-chmod a+x /usr/bin/ace-uninstall-helper-gui
+echo "-----------------------"
+echo "Due to issues encountered during testing, the package has been temporarily removed. If you wish to continue testing, please download the old version of PKGBUILD from here: https://gitee.com/anysets/bookworm-compatibility-mode/raw/master/arch-test/cn.flamescion.bookworm-compatibility-mode.tar.gz"
+echo "由于测试中出现问题，现暂时撤包，若想继续参与测试，请从此处下载老版PKGBUILD: https://gitee.com/anysets/bookworm-compatibility-mode/raw/master/arch-test/cn.flamescion.bookworm-compatibility-mode.tar.gz"
 }
 
 post_upgrade(){
-pkexec bash /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/bookworm-init
+echo "-----------------------"
+echo "Due to issues encountered during testing, the package has been temporarily removed. If you wish to continue testing, please download the old version of PKGBUILD from here: https://gitee.com/anysets/bookworm-compatibility-mode/raw/master/arch-test/cn.flamescion.bookworm-compatibility-mode.tar.gz"
+echo "由于测试中出现问题，现暂时撤包，若想继续参与测试，请从此处下载老版PKGBUILD: https://gitee.com/anysets/bookworm-compatibility-mode/raw/master/arch-test/cn.flamescion.bookworm-compatibility-mode.tar.gz"
 }
 
 post_remove(){
