@@ -3,7 +3,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=repman-git
 _pkgname=repman
-pkgver=0.3.0
+pkgver=0.7.0
 pkgrel=5
 pkgdesc="Manage (remote) custom repositories"
 arch=(
@@ -25,9 +25,11 @@ depends=(
 depends_x86_64=(devtools)
 depends_aarch64=(devtools-alarm)
 optdepends=(
+  "git: to manage packages from AUR"
   "gnupg: in case packages and/or repository DB's should be signed"
   "rsync: support of SSH-accessible storage locations"
   "s3cmd: support of AWS S3"
+  "google-cloud-cli: support of Google Cloud Platform"
 )
 makedepends=(
   bash
