@@ -1,25 +1,17 @@
 pkgbase = nanoboyadvance-git
 	pkgdesc = Accuracy-focused Game Boy Advance emulator.
-	pkgver = 1.7.1.r50.gf94692a4
+	pkgver = 1.7.1.r53.gd5e47e52
 	pkgrel = 1
 	url = https://github.com/nba-emu/NanoBoyAdvance
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = make
 	makedepends = git
-	makedepends = gcc
-	makedepends = imagemagick
 	depends = qt5-base
 	depends = glew
 	depends = sdl2
+	depends = fmt
 	source = git+https://github.com/nba-emu/NanoBoyAdvance.git
-	source = git+https://github.com/fmtlib/fmt.git
-	source = git+https://github.com/ToruNiina/toml11.git
-	source = git+https://github.com/selmf/unarr.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = nanoboyadvance-git
