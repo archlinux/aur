@@ -2,19 +2,20 @@
 # Based on official Arch Linux PKGBUILD
 
 pkgname=libwacom-surface
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
-pkgdesc="Patched libwacom for Microsoft Surface devices"
+pkgdesc="Library to identify Wacom tablets and their features - Patched for Microsoft Surface devices"
 arch=('x86_64')
 url="https://github.com/linux-surface/libwacom"
 license=('MIT')
-depends=('glib2' 'systemd' 'libgudev')
+depends=('glib2' 'libevdev' 'libgudev' 'glibc')
 makedepends=('libxml2' 'meson')
 checkdepends=('python-pytest' 'python-libevdev' 'python-pyudev')
-optdepends=('python-libevdev: for libwacom-show-stylus')
+optdepends=('python-libevdev: for libwacom-show-stylus'
+            'python-pyudev: for libwacom-show-stylus')
 validpgpkeys=(
-    '594ABBA066118C7A02D10A80A8AF906D9307FBAD'
-    '3C2C43D9447D5938EF4551EBE23B7E70B467F0BF'
+    '594ABBA066118C7A02D10A80A8AF906D9307FBAD'  # "Joshua Dickens <Joshua@Joshua-Dickens.com>"
+    '3C2C43D9447D5938EF4551EBE23B7E70B467F0BF'  # "Peter Hutterer (Who-T) <office@who-t.net>"
 )
 conflicts=('libwacom')
 provides=("libwacom=${pkgver}")
@@ -38,24 +39,24 @@ source=(
     "0015-data-Add-Microsoft-Surface-Book-3-15.patch"
     "0016-data-Add-Microsoft-Surface-Laptop-Studio.patch"
 )
-sha256sums=('bb04b12c8688d0ff6a108d47a38d2057d572c4d7227d78138abd5fd0ba59f215'
+sha256sums=('6f678156797becc4f1537a19aadcc48ed7a54e1ff3cbf591d1233f8a2d82e242'
             'SKIP'
-            '0e00ada152317d16355cbfed8195397f3903f3d3448d19731d839367182d4cb6'
-            'a092cc857a665204fc0284865186fddc7e746f0e4217f1c55a128265929e101f'
-            '7380090427e166e2216742479925c44045cf914e3543615692850168d952f0c8'
-            '33e4867394903376f110b674cc0a0b777313dfb4c7ff3a487e11e3735b95c604'
-            '94903d479d0667870decdd57c51bee29d16feb199dc720844144e13745d77877'
-            'f70a3faf5797b3db86c51fd2bf75a3f7fb95087231e8c998b3ce5b8a009f08da'
-            '93931117dccec37684b8890e5ae28ac6c23e65517581e0269382252c81eeab2b'
-            '57abca80d9be9e4d93d5ba83be92a576d0fef5186efcbb213c92cb5fa85e8b5f'
-            '6886bd9f9a445830972d608f3edcd8381527c6ac553fcb4511559a2274ab4904'
-            '7096f0e8d5b57c5e20e0616be98b77f6f5d300d7913d2e224f8a2b968872765d'
-            'a61577739761a0730ed137cbd4c1151275ecabece7b9c35069e8de7fcf2786bc'
-            '16e4c0124cf126735c321f5b2fd51d303f079a8892727981b2221a36a7d93c8f'
-            'fe511c7ff2b39760aaee0617cedd7277cca4c49627fc476006bfb30bdd4bb35f'
-            '5c4acfc9565d7743686792e6637e28a54f28abd9ab5a05bda072e34fab7f5af7'
-            '227c278f19be81d8cd67556855b0e4e7bc0fd3059f9697b525506be2b076cfa9'
-            '79a11214181e0e912e77e9013c7f35f7a44fc2f839d331371a227e1563985151')
+            '7db8188ca1afd8655fd79b606428e403baefdec13484d4807ace4b992bed6807'
+            '5ec7cf7f5e0a4e0278563cb05e6a446c3a26ca82cd2e2a6c129d5d8cc35828e5'
+            'f14740304f43c336bdf7e1d78991717b504331f48c577d2c512ae276981c8f1e'
+            '649bfef25ae14d9cc44818ad466f1bcfab56b890acfbdbddd5f8a546cbfecebb'
+            'd54044d69ee002d891e554149d350462618329477d0e1900528c34973bcb315e'
+            '634e552757df946f997f0f682802828f6540b5eff9eb60965714e4c9a8c3a3f5'
+            'b3d7197f92d7e02e73b2f06a0b7770164f5052d38afa36843099468dd5eafafa'
+            'bd8ae40ec5e3214fab8a92861a1e07ba92c89aebd2ecfbe59f2649a92150d1fb'
+            '9dee7840ac3231adbd5c23c57a09a289e3cc3fe4a24fcb2c56e78ab2c86f86cd'
+            '101e8ba35a6493359667a3c119e6f792bde16e77c04642127e7dd81bc2d56d41'
+            '0b38005851833200cf31a4bc99a4bac40a560db14bf32f4c4ebcfe77f635e06b'
+            'f1236857310a8362abb8fc55e67a7013b61f03d593a89acf6ceae86cefc4ec37'
+            '5da915726aba84add16f5c509dc1be343db66f70a294b411759353b0ffaef0c2'
+            '8bb8c1aab143185a05b91cacaf600e147fcee55fc1abe67af0e1d6fed0b6e99f'
+            'bd6c8a319845ec161106b85859ab42b22ded1f6515676449a00bb3cc776acb43'
+            'bc4398d29b3a49e617cb7d9acd7a045c2a8c248c2065c96fd38ecc59e1a6d86f')
 
 prepare() {
     cd "libwacom-${pkgver}"
@@ -67,17 +68,18 @@ prepare() {
 
 build() {
     rm -rf build
-    meson setup build "libwacom-${pkgver}" --prefix="/usr"
+
+    arch-meson libwacom-$pkgver build
     meson compile -C build
 }
 
 check() {
     # disabled for now...
-    # ninja test -C build
+    # meson test -C build --print-errorlogs
     true
 }
 
 package() {
-    DESTDIR="${pkgdir}" meson install -C build
-    install -D -m644 "libwacom-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    meson install -C build --destdir "$pkgdir"
+    install -D -m644 libwacom-$pkgver/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

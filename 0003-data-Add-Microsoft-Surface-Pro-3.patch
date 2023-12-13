@@ -1,4 +1,4 @@
-From ea2503e14cbec0ce0402768ac1ad831625fda2a6 Mon Sep 17 00:00:00 2001
+From b2cd1fd0ecd63b4cb78de9111333e5ebd7ce8be6 Mon Sep 17 00:00:00 2001
 From: "Antony Jordan (Tablet)" <wiccan.two@gmail.com>
 Date: Wed, 8 Jun 2022 22:03:33 +0200
 Subject: [PATCH 03/16] data: Add Microsoft Surface Pro 3
@@ -29,5 +29,5 @@ index 0000000..3238d43
 +Touch=true
 +Buttons=0
 -- 
-2.42.0
+2.43.0
 

@@ -1,4 +1,4 @@
-From e2514eca67211f37574b1ef9c227c8f90b66e565 Mon Sep 17 00:00:00 2001
+From ff253e558ddc2cafed7ba1cf2bd93e3544debb30 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/16] Add support for Intel Management Engine bus
@@ -15,10 +15,10 @@ the Microsoft Surface Books, Surface Pro 5 and 6, and Surface Laptops.
  5 files changed, 12 insertions(+)
 
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
-index 96aaa5e..cc3ecfd 100644
+index 090d5aa..5a749c9 100644
 --- a/libwacom/libwacom-database.c
 +++ b/libwacom/libwacom-database.c
-@@ -130,6 +130,8 @@ bus_from_str (const char *str)
+@@ -132,6 +132,8 @@ bus_from_str (const char *str)
  		return WBUSTYPE_I2C;
  	if (g_str_equal(str, "virt"))
  		return WBUSTYPE_VIRTUAL;
@@ -27,7 +27,7 @@ index 96aaa5e..cc3ecfd 100644
  	return WBUSTYPE_UNKNOWN;
  }
  
-@@ -150,6 +152,8 @@ bus_to_str (WacomBusType bus)
+@@ -152,6 +154,8 @@ bus_to_str (WacomBusType bus)
  		return "i2c";
  	case WBUSTYPE_VIRTUAL:
  		return "virt";
@@ -37,10 +37,10 @@ index 96aaa5e..cc3ecfd 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index d9b8a22..e3364f4 100644
+index 1ba0740..1de4dc3 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
-@@ -153,6 +153,10 @@ get_bus_vid_pid (GUdevDevice  *device,
+@@ -152,6 +152,10 @@ get_bus_vid_pid (GUdevDevice  *device,
  		*bus = WBUSTYPE_VIRTUAL;
  		retval = TRUE;
  		break;
@@ -51,7 +51,7 @@ index d9b8a22..e3364f4 100644
  	}
  
  out:
-@@ -822,6 +826,7 @@ static void print_match(int fd, const WacomMatch *match)
+@@ -831,6 +835,7 @@ static void print_match(int fd, const WacomMatch *match)
  		case WBUSTYPE_SERIAL:		bus_name = "serial";	break;
  		case WBUSTYPE_I2C:		bus_name = "i2c";	break;
  		case WBUSTYPE_VIRTUAL:		bus_name = "virt";	break;
@@ -60,7 +60,7 @@ index d9b8a22..e3364f4 100644
  		default:			g_assert_not_reached(); break;
  	}
 diff --git a/libwacom/libwacom.h b/libwacom/libwacom.h
-index b184ed7..5cd6736 100644
+index 040c51e..a937c08 100644
 --- a/libwacom/libwacom.h
 +++ b/libwacom/libwacom.h
 @@ -150,6 +150,7 @@ typedef enum {
@@ -72,7 +72,7 @@ index b184ed7..5cd6736 100644
  
  /**
 diff --git a/test/test-tablet-validity.c b/test/test-tablet-validity.c
-index da5fe07..6b45597 100644
+index 91e83de..9c8af44 100644
 --- a/test/test-tablet-validity.c
 +++ b/test/test-tablet-validity.c
 @@ -178,6 +178,7 @@ assert_vidpid(WacomBusType bus, int vid, int pid)
@@ -84,7 +84,7 @@ index da5fe07..6b45597 100644
  			g_assert_cmpint(pid, >, 0);
  			break;
 diff --git a/test/test_data_files.py b/test/test_data_files.py
-index 476aeca..cc739dd 100755
+index 8ab1fea..a3f1d9d 100755
 --- a/test/test_data_files.py
 +++ b/test/test_data_files.py
 @@ -47,6 +47,7 @@ def test_device_match(tabletfile):
@@ -96,5 +96,5 @@ index 476aeca..cc739dd 100755
          assert re.match(
              "[0-9a-f]{4}", vid
 -- 
-2.42.0
+2.43.0
 
