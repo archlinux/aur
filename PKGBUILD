@@ -2,7 +2,7 @@
 
 pkgname=ada_language_server-bin
 pkgver=24.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance syntactic and semantic engine for the Ada programming language"
 arch=('x86_64')
 url="https://github.com/AdaCore/ada_language_server"
@@ -13,7 +13,7 @@ depends=('gmp' 'glibc')
 makedepends=('patchelf')
 
 source=("https://github.com/AdaCore/ada_language_server/releases/download/$pkgver/als-$pkgver-Linux_amd64.zip")
-b2sums=('68b71abec750da5d3975337af9a41713970be16cfeb45e02ad9fbde5b416951042009f992fba85d24af9a80b920e359a93ff6604e6ffc35666445d14fb4cf5fd')
+b2sums=('8cf1d7b52ccbe86a3765ad22ccc9d5cd917dff4f94942abfb0b4957b8d930a77bb046d79c884dc7175044b6c96ecedb4470a6c7af936bc39e81c5505b82d4ca0')
 
 prepare() {
   cd "$srcdir/x64/linux"
