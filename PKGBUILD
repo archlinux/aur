@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
