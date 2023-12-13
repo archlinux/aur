@@ -1,6 +1,6 @@
 pkgbase = gmssl
 	pkgdesc = Chinese national cryptographic algorithms and protocols
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://gmssl.org/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = gmssl
 	license = Apache
 	makedepends = cmake
 	depends = glibc
-	source = gmssl-3.1.0-src.tar.gz::https://github.com/guanzhi/GmSSL/archive/refs/tags/v3.1.0.tar.gz
-	sha256sums = a3cdf5df87b07df33cb9e30c35de658fd0c06d5909d4428f4abd181d02567cde
+	source = gmssl-3.1.1-src.tar.gz::https://github.com/guanzhi/GmSSL/archive/refs/tags/v3.1.1.tar.gz
+	sha256sums = 23ed2ce74e408fc4c80289d2b499c7c5eec8373fefaf3827a53cb4c134dd5263
 
 pkgname = gmssl
