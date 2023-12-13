@@ -10,7 +10,7 @@ provides=(shimmer-firefly-wallet)
 options=('!strip')
 depends=('gnome-keyring' 'libsecret' 'gtk3' 'libxss' 'nss')
 
-source_x86_64=("https://github.com/iotaledger/firefly/releases/download/desktop-$pkgver/firefly-desktop-$pkgver.AppImage")
+source_x86_64=("https://github.com/iotaledger/firefly/releases/download/desktop-shimmer-$pkgver/firefly-shimmer-desktop-$pkgver.AppImage")
 sha256sums_x86_64=('92eceed940293758c6ed1f57fb0671cfa021f8139bc68bcce97daf79f7584669')
 
 source=("shimmer-firefly-wallet.desktop")
