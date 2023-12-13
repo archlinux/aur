@@ -1,6 +1,6 @@
 pkgbase = sk-boot-to-windows
 	pkgdesc = Creates a .desktop application to boot into Windows
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	arch = any
 	license = MIT
