@@ -1,26 +1,25 @@
 pkgbase = mootool-bin
 	pkgdesc = Handy tool set for developers. 开发者常备小工具
 	pkgver = 1.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rememberber/MooTool
 	arch = x86_64
 	license = MIT
 	depends = libxrender
 	depends = libx11
-	depends = glibc
-	depends = zlib
 	depends = java-runtime
 	depends = libxext
 	depends = libxi
 	depends = freetype2
 	depends = alsa-lib
 	depends = libxtst
-	depends = sh
 	provides = mootool=1.5.7
 	conflicts = mootool
 	source = mootool-1.5.7.deb::https://github.com/rememberber/MooTool/releases/download/v1.5.7/MooTool_1.5.7.deb
-	source = LICENSE.txt::https://raw.githubusercontent.com/rememberber/MooTool/v1.5.7/LICENSE.txt
+	source = LICENSE-1.5.7.txt::https://raw.githubusercontent.com/rememberber/MooTool/v1.5.7/LICENSE.txt
+	source = mootool.sh
 	sha256sums = d93816e63b6120de615fc1ac58db7108d25c03cebbe501f4e3c7d4d8d9a07006
 	sha256sums = 91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333
+	sha256sums = 0532bec6588d7b9d6cba26c488fc638b28d35b1c21e1ed16510c0a8f8df54450
 
 pkgname = mootool-bin
