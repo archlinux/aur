@@ -1,0 +1,26 @@
+pkgbase = vulkan-wsi-layer-git
+	pkgdesc = Vulkan® Window System Integration Layer
+	pkgver = r108.760d2f2
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/mesa/vulkan-wsi-layer
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	source = git+https://gitlab.freedesktop.org/mesa/vulkan-wsi-layer
+	sha256sums = SKIP
+
+pkgname = vulkan-wsi-layer-git
+	provides = vulkan-wsi-layer
+	conflicts = vulkan-wsi-layer
+
+pkgname = lib32-vulkan-wsi-layer-git
+	pkgdesc = Vulkan® Window System Integration Layer (library for 32-bit applications)
+	depends = vulkan-icd-loader
+	depends = vulkan-wsi-layer
+	provides = lib32-vulkan-wsi-layer
+	conflicts = lib32-vulkan-wsi-layer
