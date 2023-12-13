@@ -2,7 +2,7 @@
 
 _pkgname=violetumleditor
 pkgname=${_pkgname}-git
-pkgver=3.0.0+0+495649c5
+pkgver=3.0.0+32+2db04d50
 pkgrel=1
 pkgdesc="Java UML diagram editor (git version)"
 arch=('any')
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-	bsdtar -x -f ${srcdir}/${_pkgname}/violetproduct-deb/target/violetumleditor-2.5.3.deb -C ${srcdir}
+	bsdtar -x -f ${srcdir}/${_pkgname}/violetproduct-deb/target/violetumleditor-3.0.0.deb -C ${srcdir}
 	bsdtar -x -f data.tar.gz -C "$pkgdir"
 
 	mkdir -p "${pkgdir}"/usr/bin
