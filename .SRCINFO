@@ -1,7 +1,7 @@
 pkgbase = utask-bin
 	pkgdesc = An automation engine that models and executes business processes declared in yaml
 	pkgver = 1.29.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ovh/utask
 	arch = x86_64
 	license = BSD
