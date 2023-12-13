@@ -59,7 +59,6 @@ _main_package() {
     qt6-wayland
   )
   optdepends=(
-    'chaotic-interfere: Chaotic-AUR interference tracker'
     'qt6-wayland: Wayland support'
   )
 

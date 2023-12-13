@@ -33,7 +33,6 @@ pkgbase = pcsx2-avx-git
 	depends = soundtouch
 	depends = wayland
 	depends = xcb-util-cursor
-	optdepends = chaotic-interfere: Chaotic-AUR interference tracker
 	optdepends = qt6-wayland: Wayland support
 	provides = pcsx2
 	conflicts = pcsx2
