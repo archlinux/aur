@@ -21,6 +21,7 @@ depends=(
     'libayatana-appindicator'
     'libdbusmenu-glib'
     'fontconfig'
+    'libappindicator-gtk3'
     'hicolor-icon-theme'
 )
 source=(

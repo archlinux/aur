@@ -15,6 +15,7 @@ pkgbase = gopeed-bin
 	depends = libayatana-appindicator
 	depends = libdbusmenu-glib
 	depends = fontconfig
+	depends = libappindicator-gtk3
 	depends = hicolor-icon-theme
 	provides = gopeed-1.5.2
 	conflicts = gopeed
