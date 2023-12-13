@@ -6,7 +6,8 @@ pkgrel=1
 pkgdesc='A wrapper around restic built in rust '
 arch=('x86_64')
 url="https://github.com/alvaro17f/$pkgname"
-license=('LGPL-3.0')
+license=('LGPL3')
+depends=('gcc-libs' 'glibc')
 makedepends=('git' 'rust')
 _tag=9ba9238d40477c5fde41aac3e58a308fcd05e328 # git rev-parse v${pkgver}
 source=("$pkgname::git+$url#tag=${_tag}")

@@ -4,9 +4,11 @@ pkgbase = wrestic
 	pkgrel = 1
 	url = https://github.com/alvaro17f/wrestic
 	arch = x86_64
-	license = LGPL-3.0
+	license = LGPL3
 	makedepends = git
 	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
 	source = wrestic::git+https://github.com/alvaro17f/wrestic#tag=9ba9238d40477c5fde41aac3e58a308fcd05e328
 	sha256sums = SKIP
 
