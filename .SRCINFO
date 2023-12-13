@@ -1,7 +1,7 @@
 pkgbase = sunbible
 	pkgdesc = Bible Desktop App
 	pkgver = 2.0.001_beta
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sunbible-dev.github.io/SunBible/
 	arch = any
 	license = MIT
@@ -9,14 +9,14 @@ pkgbase = sunbible
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = gendesk
-	depends = bash
-	depends = electron
+	makedepends = git
+	depends = electron25
 	depends = hicolor-icon-theme
 	provides = sunbible
 	conflicts = sunbible
-	source = sunbible-2.0.001_beta.tar.gz::https://github.com/SunBible-dev/SunBible/archive/refs/tags/2.0.001-beta.tar.gz
+	source = sunbible-2.0.001_beta::git+https://github.com/SunBible-dev/SunBible.git#tag=2.0.001-beta
 	source = sunbible.sh
-	sha256sums = 20f6415de9e17d2dc39c7c61b75d1e4c0b672e538b351433bb616284fbcb074f
-	sha256sums = 10ceaab696a10a0043c12b0117b07cface986849a78796f2a85215609b69eb9c
+	sha256sums = SKIP
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = sunbible
