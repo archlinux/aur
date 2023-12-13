@@ -1,7 +1,7 @@
 pkgbase = clipboard-to-file-git
 	pkgdesc = Folder color switcher extension for nautilus, caja, and nemo
 	pkgver = 0.0.9+r36+a1861f8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/costales/clipboard-to-file
 	arch = any
 	license = GPL3

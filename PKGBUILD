@@ -3,7 +3,7 @@
 _pkgname=clipboard-to-file
 pkgname=${_pkgname}-git
 pkgver=0.0.9+r36+a1861f8
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder color switcher extension for nautilus, caja, and nemo"
 arch=('any')
 url="https://github.com/costales/clipboard-to-file"
@@ -29,7 +29,8 @@ prepare() {
 	for _fm in nemo caja nautilus ; do
 		cp -r "${_pkgname}" "${_pkgname}-${_fm}"
 		pushd "${_pkgname}-${_fm}"/install_scripts
-		./${_fm}.sh
+		sed -i 's:^rm -r ../install_scripts:#&:' ${_fm}.sh
+		./${_fm}.sh 2>/dev/null
 		popd
 	done
 }
