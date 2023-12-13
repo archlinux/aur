@@ -6,33 +6,9 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
-pkgver() {
-    _body="$(curl -sL "https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html")"
-    _pkgver="$(echo "${_body}" | grep -oP "(?<=linuxx64-)\d+\.\d+\.\d+\.\d+(?=\.tar\.gz\?__gda__)")"
-
-    if [[ -n "${_pkgver}" ]]; then
-      _dl_urls="$(echo "${_body}" | grep -F ".tar.gz?__gda__")"  
-    else
-      _body="$(curl -sL "https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html")"
-      _pkgver="$(echo "${_body}" | grep -oP "(?<=linuxx64-)\d+\.\d+\.\d+\.\d+(?=\.tar\.gz\?__gda__)")"
-      _dl_urls="$(echo "${_body}" | grep -F ".tar.gz?__gda__")"  
-    fi
-
-    if [[ -n "${_pkgver}" ]]; then
-        if [[ "$1" == "init" ]]; then
-            printf "%s" "${_dl_urls}"
-        else
-            printf "%s" "${_pkgver}"
-        fi
-    else
-      echo "FATAL ERROR : version nout found, report to package author"
-      exit 1
-    fi
-}
-pkgver="$(pkgver "")"
+pkgver=23.11.0.82
 pkgname=icaclient-beta
-pkgrel=2
-pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology Preview]"
+pkgrel=1
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html'
 license=('custom:Citrix')
@@ -47,19 +23,12 @@ conflicts=('bin32-citrix-client' 'citrix-client' 'icaclient')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
 _artefactid=icaclient
-_dl_urls="$(pkgver "init")"
-_source32=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx86-[^"]*)".*$|\1|p')"
-_source64=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx64-[^"]*)".*$|\1|p')"
-_sourcearmhf=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxarmhf-[^"]*)".*$|\1|p')"
 source=('citrix-configmgr.desktop'
         'citrix-conncenter.desktop'
         'citrix-wfica.desktop'
         'citrix-workspace.desktop'
         'wfica.sh'
         'wfica_assoc.sh')
-source_x86_64=("$_artefactid-x64-$pkgver.tar.gz::$_source64")
-source_i686=("$_artefactid-x86-$pkgver.tar.gz::$_source32")
-source_armv7h=("$_artefactid-armhf-$pkgver.tar.gz::$_sourcearmhf")
 sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             '446bfe50e5e1cb027415b264a090cede1468dfbdc8b55e5ce14e9289b6134119'
             '1dc6d6592fa08c44fb6a4efa0dc238e9e78352bb799ef2e1a92358b390868064'
@@ -70,6 +39,42 @@ sha256sums_x86_64=('SKIP')
 sha256sums_i686=('SKIP')
 sha256sums_armv7h=('SKIP')
 install=citrix-client.install
+
+pkgver() {
+    _body="$(curl -sL "https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html")"
+    _pkgver="$(echo "${_body}" | grep -oP "(?<=linuxx64-)\d+\.\d+\.\d+\.\d+(?=\.tar\.gz\?__gda__)")"
+
+    if [[ -n "${_pkgver}" ]]; then
+        _dl_urls="$(echo "${_body}" | grep -F ".tar.gz?__gda__")"
+        _type="Technology Preview"
+    else
+        _body="$(curl -sL "https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html")"
+        _pkgver="$(echo "${_body}" | grep -oP "(?<=linuxx64-)\d+\.\d+\.\d+\.\d+(?=\.tar\.gz\?__gda__)")"
+        _dl_urls="$(echo "${_body}" | grep -F ".tar.gz?__gda__")"
+        if [[ -n "${_pkgver}" ]]; then
+            _type="Release"
+        fi
+    fi
+
+    if [[ -n "${_pkgver}" ]]; then
+        if [[ "$1" == "init" ]]; then
+            _s32=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx86-[^"]*)".*$|\1|p')"
+            _s64=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx64-[^"]*)".*$|\1|p')"
+            _sarmhf=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxarmhf-[^"]*)".*$|\1|p')"
+            printf "%s %s %s %s %s" "${_pkgver}" "${_s32}" "${_s64}" "${_sarmhf}" "${_type}"
+        else
+            printf "%s" "${_pkgver}"
+        fi
+    else
+        echo "FATAL ERROR : version nout found, report to package author"
+        exit 1
+    fi
+}
+read -r pkgver _source32 _source64 _sourcearmhf _pkgtype <<< $(pkgver "init")
+source_x86_64=("$_artefactid-x64-$pkgver.tar.gz::$_source64")
+source_i686=("$_artefactid-x86-$pkgver.tar.gz::$_source32")
+source_armv7h=("$_artefactid-armhf-$pkgver.tar.gz::$_sourcearmhf")
+pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [$_pkgtype]"
 
 package() {
     cd "${srcdir}"
