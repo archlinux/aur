@@ -1,12 +1,11 @@
 pkgbase = quba-bin
 	pkgdesc = A viewer for electronic invoices
 	pkgver = 1.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ZUGFeRD/quba-viewer
 	arch = x86_64
 	license = Apache
 	makedepends = squashfuse
-	depends = bash
 	depends = electron20
 	depends = gdk-pixbuf2
 	depends = libxext
@@ -17,6 +16,6 @@ pkgbase = quba-bin
 	source = quba-1.3.0.AppImage::https://github.com/ZUGFeRD/quba-viewer/releases/download/v1.3.0/Quba-1.3.0.AppImage
 	source = quba.sh
 	sha256sums = 8aa8bda9dbb18f991ce112c352b5c9d5bf251d81fd1c2a73447c4dd034560f32
-	sha256sums = e124f95878a9407c997b65e91fb492c249260c2bd1e580d667923aa1872387ce
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = quba-bin
