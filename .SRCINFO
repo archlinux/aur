@@ -1,8 +1,8 @@
 pkgbase = element-git
 	pkgdesc = A modular audio plugin host (git version)
-	pkgver = 0.46.5.r489.ga46ede9a
+	pkgver = 0.46.5.r808.g1cfa4191
 	pkgrel = 1
-	url = https://github.com/kushview/Element
+	url = https://kushview.net/element/
 	arch = x86_64
 	groups = pro-audio
 	license = GPL3
@@ -21,9 +21,7 @@ pkgbase = element-git
 	provides = lv2-host
 	provides = vst3-host
 	conflicts = element
-	source = element::git+https://github.com/kushview/Element.git
-	source = JUCE::git+https://github.com/WeAreRoli/JUCE.git
-	md5sums = SKIP
+	source = element::git+https://gitlab.com/kushview/element.git
 	md5sums = SKIP
 
 pkgname = element-git
