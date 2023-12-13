@@ -1,10 +1,11 @@
 # Maintainer: Pellegrino Prevete    pellegrinoprevete at gmail dot com
-# Contributor: Johannes Dewender   arch at JonnyJD dot net
-# Contributor: Jacob Alexander    haata at kiibohd dot com
+# Maintainer: Truocolo              ttuocolo at aol dot com
+# Contributor: Johannes Dewender    arch at JonnyJD dot net
+# Contributor: Jacob Alexander      haata at kiibohd dot com
 
 _pkg="apt"
 pkgname="python-${_pkg}"
-pkgver=2.5.3
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Python binding of lib${_pkg}-pkg"
 arch=('any')
@@ -15,13 +16,21 @@ depends=('apt>=2.1')
 makedepends=('python-setuptools' 'python-distutils-extra')
 conflicts=()
 options=(!emptydirs)
-source=("${_url}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('94170f309feed8dd61825ab62743ef586993e5ddd20180fdfd2be584a2e21eafe9fff47b885213ea95d4df38cd573f5c4b3324ba057ef240a3bbfface98e598d')
+source=(
+  "${_url}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=(
+  71ea9b9f2efbb68f336a14a48e1b2f8765083c27ef5345968e1c6812cab3983239e50a70aea9c48ebef135de0da0231f70022213dcec136da9be29ee81460772
+  )
 
 package_python-apt() {
   depends+=('python')
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd \
+    "$srcdir/$pkgname-$pkgver"
+  python \
+    setup.py \
+      install \
+      --root="$pkgdir/" \
+      --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
