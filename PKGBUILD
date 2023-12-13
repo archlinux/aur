@@ -1,7 +1,7 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 _pkgname=ansel
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.r582.ge858616b1
+pkgver=0.0.0.r612.g5b98f93c0
 pkgrel=1
 pkgdesc="Ansel is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs."
 arch=("i686" "x86_64")
@@ -46,14 +46,14 @@ build() {
 
   # Don't use absolute path for install dirs, it breaks RPATH.
   #
-  # We won't need RPATH if <https://github.com/aurelienpierreeng/ansel/pull/258>
-  # gets merged.
+  # We don't need RPATH because we are installing to system library dirs and
+  # <https://github.com/aurelienpierreeng/ansel/pull/258> gets merged.
   cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_SKIP_RPATH=OFF \
+        -DCMAKE_SKIP_RPATH=ON \
         -DBINARY_PACKAGE_BUILD=ON \
         -DUSE_LIBSECRET=ON \
         -DUSE_LUA=ON \
