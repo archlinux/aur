@@ -1,11 +1,7 @@
 # Maintainer: xiota / aur.chaotic.cx
 # Contributor: Filip Graliński <filipg@amu.edu.pl>
 
-if [ -z "$SRCDEST" ] ; then
-  : ${CARGO_HOME:=$startdir/cargo}
-else
-  : ${CARGO_HOME:=$SRCDEST/cargo}
-fi
+: ${CARGO_HOME:=${SRCDEST:-${startdir:?}}/cargo}
 
 _gitname="tokenizers"
 _pkgname="python-$_gitname"
@@ -34,6 +30,8 @@ source=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
 sha256sums=('SKIP')
 
 prepare() {
+  export CARGO_HOME
+  export GIT_DIR='.'
   export RUSTUP_TOOLCHAIN=stable
 
   cd "$_pkgsrc/bindings/python"
@@ -41,6 +39,8 @@ prepare() {
 }
 
 build() {
+  export CARGO_HOME
+  export GIT_DIR='.'
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR="${CARGO_TARGET_DIR:-target}"
 

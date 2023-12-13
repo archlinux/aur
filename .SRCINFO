@@ -13,7 +13,7 @@ pkgbase = python-tokenizers
 	makedepends = python-setuptools-rust
 	makedepends = python-wheel
 	depends = python
-	source = tokenizers::git+https://github.com/huggingface/tokenizers#tag=v0.15.0
+	source = tokenizers::git+https://github.com/huggingface/tokenizers.git#tag=v0.15.0
 	sha256sums = SKIP
 
 pkgname = python-tokenizers
