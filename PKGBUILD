@@ -4,7 +4,7 @@
 
 _pkgname=datalad
 pkgname=python-$_pkgname
-pkgver=0.19.3
+pkgver=0.19.4
 pkgrel=1
 pkgdesc='Keep code, data, containers under control with git and git-annex'
 arch=(any)
@@ -44,7 +44,7 @@ optdepends=('python-requests-ftp: extra downloaders'
             'python-dateutil: support for more date formats')
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('460a1fa7e9997304ce34a1adc72eca3809e355182f5e40c66d9ca88514471aa3')
+sha256sums=('d9c3a05d1edaf99088dc9eedbd73ef8fd12e327aa62a108c466591a2d6bb622f')
 
 build() {
 	cd "$_archive"
