@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ezytdl-bin
 pkgver=2.4.2
-pkgrel=1
+_electronversion=25
+pkgrel=2
 pkgdesc="An application that leverages yt-dlp and FFmpeg to provide a simple, easy-to-use interface for downloading videos from YouTube, Twitch, SoundCloud, and various other sites. "
 arch=('x86_64')
 url="https://github.com/sylviiu/ezytdl"
@@ -9,8 +10,7 @@ license=('GPL3')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'bash'
-    'electron25'
+    "electron${_electronversion}"
     'ffmpeg'
     'libdbusmenu-glib'
     'libxext'
@@ -19,11 +19,17 @@ depends=(
 makedepends=(
     'asar'
 )
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux.AppImage"
-    "${pkgname%-bin}.sh")
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux.AppImage"
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('1b26c8c467aa8f3025b69aecab6739be495244b9551fd59ad99007a613a13efe'
-            'ca691bc3de122143291dd35596858221e5602768e3ed760a34ac600bfb2ec314')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app"
