@@ -3,10 +3,12 @@
 pkgname=wrestic
 pkgver=1.3.0
 pkgrel=1
-pkgdesc='A wrapper around restic built in rust '
+pkgdesc='A wrapper around restic built in rust'
 arch=('x86_64')
 url="https://github.com/alvaro17f/$pkgname"
 license=('LGPL3')
+provides=('wrestic')
+conflicts=('wrestic')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'rust')
 _tag=9ba9238d40477c5fde41aac3e58a308fcd05e328 # git rev-parse v${pkgver}

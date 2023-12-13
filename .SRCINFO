@@ -9,6 +9,8 @@ pkgbase = wrestic
 	makedepends = rust
 	depends = gcc-libs
 	depends = glibc
+	provides = wrestic
+	conflicts = wrestic
 	source = wrestic::git+https://github.com/alvaro17f/wrestic#tag=9ba9238d40477c5fde41aac3e58a308fcd05e328
 	sha256sums = SKIP
 
