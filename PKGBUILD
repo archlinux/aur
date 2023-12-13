@@ -1,7 +1,7 @@
 # Maintainer: tocic <tocic at protonmail dot ch>
 
 pkgname=uni-algo
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Unicode Algorithms Implementation for C/C++"
 arch=("x86_64")
@@ -9,11 +9,11 @@ url="https://github.com/uni-algo/uni-algo"
 license=("MIT" "Unlicense")
 depends=("gcc-libs")
 makedepends=("cmake" "git")
-_tag=5c5e2386ac4e85d817cc081abbc62d80fd970a0e # git rev-parse v${pkgver}
+_tag=56710d1297be7db7bbac6d577aedc87ee686334b # git rev-parse v${pkgver}
 source=("${pkgname}-${pkgver}::git+https://github.com/uni-algo/uni-algo.git#tag=${_tag}?signed")
 b2sums=("SKIP")
 validpgpkeys=(
-  "824F52712D0A5D9B2DAA0612C3E259290569D95F" # mg152 <mg152git@gmail.com>, retrieved from https://github.com/mg152.gpg
+  "5AEDD63DC46F1A7DFC48BA8652A277DA1DBC00DE" # mg152 <mg152git@gmail.com>, retrieved from https://github.com/mg152.gpg
 )
 
 pkgver() {
