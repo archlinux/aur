@@ -4,6 +4,10 @@
 _ENABLE_CUDA=${_ENABLE_CUDA:-1}
 _ENABLE_ROCM=${_ENABLE_ROCM:-1}
 _SKIP_CPU=${_SKIP_CPU:-0}
+# list of amd gfx architectures to build if GPU_TARGETS and AMDGPU_TARGETS are empty
+_AMDGPU_TARGETS="gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102"
+if test -n "$GPU_TARGETS"; then _AMDGPU_TARGETS="$GPU_TARGETS"; fi
+if test -n "$AMDGPU_TARGETS"; then _AMDGPU_TARGETS="$AMDGPU_TARGETS"; fi
 _GO_TAGS=""
 # _GO_TAGS="tts stablediffusion"
 _OPTIONAL_BACKENDS=""
@@ -20,7 +24,7 @@ _pkgname="localai"
 pkgbase="${_pkgname}-git"
 pkgname=("${pkgbase}")
 pkgver=v2.0.0.23.g9aa2a7c
-pkgrel=2
+pkgrel=3
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -113,17 +117,21 @@ prepare() {
   # XXX workaround build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
   sed -i '1s/^/string(REPLACE "-fcf-protection" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")\n/' \
     backend/cpp/llama/llama.cpp/CMakeLists.txt
-  # XXX workaround deprecated --offload-arch for multiple GPU_TARGETS
+  # XXX workaround --offload-arch for multiple GPU_TARGETS, makefile does "," splitting, data is ";"
+  #     also: --ofload-arch is deprecated, replace it with -DGPU_TARGETS
   for i in backend/cpp/llama/llama.cpp/Makefile sources/whisper.cpp/Makefile; do
     sed -ri 's/^(.+HIPFLAGS.+\+=).+offload-arch=.+$/\1 -DGPU_TARGETS="$(GPU_TARGETS)"/g' "$i"
   done
 }
 
 _build() {
+  # build new mixtral
+  _OPTIONAL_MAKE_ARGS="CPPLLAMA_VERSION=9fb13f95840c722ad419f390dc8a9c86080a3700"
+
   if test -n "$(echo "$_GO_TAGS" | grep -o "stablediffusion")"; then
     make BUILD_TYPE="$1" GRPC_BACKENDS="backend-assets/grpc/stablediffusion" GO_TAGS="$_GO_TAGS" build
   fi
-  make BUILD_TYPE="$1" GRPC_BACKENDS="$_GRPC_BACKENDS" GO_TAGS="$_GO_TAGS" build
+  make BUILD_TYPE="$1" GRPC_BACKENDS="$_GRPC_BACKENDS" GO_TAGS="$_GO_TAGS" $_OPTIONAL_MAKE_ARGS build
 }
 
 build() {
@@ -144,9 +152,6 @@ build() {
     cd "${srcdir}/${_pkgname}-rocm"
     export ROCM_HOME="${ROCM_HOME:-/opt/rocm}"
     export PATH="$ROC_HOME/bin:$PATH"
-    if test -n "$GPU_TARGETS"; then _AMDGPU_TARGETS="$GPU_TARGETS"; fi
-    if test -n "$AMDGPU_TARGETS"; then _AMDGPU_TARGETS="$AMDGPU_TARGETS"; fi
-    _AMDGPU_TARGETS="${_AMDGPU_TARGETS:-gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102}"
     MAGMA_HOME="$ROCM_HOME" AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
       _build hipblas
   fi
