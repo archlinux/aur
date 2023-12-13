@@ -1,0 +1,18 @@
+pkgbase = lazycc
+	pkgdesc = A git hook for writing conventional commits for lazy people
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/ogarcia/lazycc
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = gcc-libs
+	source = https://gitlab.com/ogarcia/lazycc/-/archive/0.1.0/lazycc-0.1.0.tar.bz2
+	b2sums = 2ed7212be18b55f0d658007533a4a5396edad0060cdef28b4826f11620811a16ac92e897a41ff923ac809912298b66d0c8eb397dc6dc0f2fef402ec50d68524c
+
+pkgname = lazycc
