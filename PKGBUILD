@@ -2,8 +2,8 @@
 
 pkgname=mini-text
 pkgdesc='A very small and basic text editor'
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/Nokse22/mini-text"
 license=('GPL3')
