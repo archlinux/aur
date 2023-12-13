@@ -1,0 +1,16 @@
+pkgbase = swift-format-git
+	pkgdesc = Formatting technology for Swift source code
+	pkgver = 509.0.0.r265.a8f5553
+	pkgrel = 1
+	url = https://github.com/apple/swift-format
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	depends = swift-language
+	provides = swift-format
+	conflicts = swift-format
+	source = swift-format-git::git+https://github.com/apple/swift-format
+	md5sums = SKIP
+
+pkgname = swift-format-git
