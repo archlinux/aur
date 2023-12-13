@@ -1,0 +1,27 @@
+pkgbase = r-updateobject
+	pkgdesc = Find/fix old serialized S4 instances
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/updateObject
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = git
+	depends = r-biocgenerics
+	depends = r-digest
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-genomicranges
+	optdepends = r-interactionset
+	optdepends = r-knitr
+	optdepends = r-multiassayexperiment
+	optdepends = r-rmarkdown
+	optdepends = r-singlecellexperiment
+	optdepends = r-summarizedexperiment
+	optdepends = r-testthat
+	optdepends = r-timirgen
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/updateObject_1.6.0.tar.gz
+	md5sums = 0d69cbbcd4bd9c5f31d905a47f6af212
+	sha256sums = aaf3864680f6405523a92ecef102842f6192028c53279d63c7e34ee922ca2b28
+
+pkgname = r-updateobject
