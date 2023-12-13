@@ -1,7 +1,7 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=pyvtlock-git
-pkgver=1.1.0.r0.g1ed5693
+pkgver=1.1.5.r1.g7aa133f
 pkgrel=1
 pkgdesc="A python-based console locking program (git version)"
 url="https://github.com/Ferdi265/pyvtlock"
@@ -15,7 +15,7 @@ install='pyvtlock.install'
 
 pkgver() {
   cd "$srcdir/pyvtlock"
-  git describe --long --tags | sed -r 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
