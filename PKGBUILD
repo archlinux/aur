@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=gdb-ctest-git
 pkgrel=1
-pkgver=r15.e45fd82
+pkgver=r32.57e3e87
 license=('MIT')
 arch=('any')
 provides=("${pkgname%-git}")
@@ -20,5 +20,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -D "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm644 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
