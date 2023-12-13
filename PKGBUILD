@@ -2,7 +2,8 @@
 pkgname=protoman-bin
 _pkgname=Protoman
 pkgver=0.4.1
-pkgrel=3
+_electronversion=9
+pkgrel=4
 pkgdesc="A Postman-like API client for protobuf-based messages."
 arch=("x86_64")
 url="https://github.com/spluxx/Protoman"
@@ -10,8 +11,7 @@ license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron9'
+    "electron${_electronversion}"
     'gdk-pixbuf2'
     'libxext'
     'gtk2'
@@ -22,13 +22,17 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "LICENSE.txt::https://raw.githubusercontent.com/spluxx/Protoman/v${pkgver}/LICENSE.txt"
+    "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/spluxx/Protoman/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('50934845993c2bcaaa3a659c907703fd9eef16dbf68f714aad512ff8b06445a3'
             'a70b7631e4233a150ba463a503958f7e76bbb44d3da40ef36b22e4cc158742d9'
-            '0ef9e22d6860cca400e93d466b213f978f4ecd197da5aaf81d5109aa00fe376b')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
@@ -40,5 +44,5 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/usr/lib"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
