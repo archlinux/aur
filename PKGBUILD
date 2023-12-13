@@ -2,28 +2,32 @@
 pkgname=projscope-music-player-bin
 _pkgname="Projscope MP3 Player"
 pkgver=0.0.3
-pkgrel=4
+_electronversion=17
+pkgrel=5
 pkgdesc="Projscope MP3 player is free desktop, cross platform tool (Winamp you are remembered)!"
 arch=("x86_64")
 url="https://projscope.com/"
-_githuburl="https://github.com/jviaches/projscope-music-player"
+_ghurl="https://github.com/jviaches/projscope-music-player"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron17'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-0.0.1.${CARCH}.rpm"
-    "LICENSE::https://raw.githubusercontent.com/jviaches/projscope-music-player/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-0.0.1.${CARCH}.rpm"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/jviaches/projscope-music-player/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('79493043f2ab40b625fe2f8e936cdc5779a5a86e15d458cde4709e92e12881e5'
             '1aa2a3326e734bc2595f638283ed58576d5358bf403f228b48d275b98abe1f3c'
-            'b54bd96093f8c842548231fce8561817514aa0a5a243bad71701ec54745177d7')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
@@ -36,5 +40,5 @@ package() {
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
