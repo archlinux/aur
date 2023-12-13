@@ -2,7 +2,7 @@
 # Contributor: Frank Siegert <frank.siegert@googlemail.com>
 
 pkgname=fastjet
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="A particle physics package for jet finding in pp and e+e- collisions."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('bash')
 makedepends=('gcc-fortran' 'python')
 source=("http://fastjet.fr/repo/$pkgname-$pkgver.tar.gz")
-sha512sums=('4af2b85037218365ed9cccc1fbe6040abbef90238bc28ca50dbc3f9613ae6e9bac351794b6080160519ede708403c012d7c9f3a9c619032a20d84627f68f38aa')
+sha512sums=('e7702699e67ba5af73f1fe931fe5f67b9f52bb2f0cfdc57dbacf408741e6271ed160503fe6142c92621287df49b441ce7562af589353b199fed09a4c4c839f3f')
 
 build() {
   cd $pkgname-$pkgver
