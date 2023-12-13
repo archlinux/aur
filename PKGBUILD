@@ -1,30 +1,40 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=perplexity-ai-app
 pkgver=1.0.0
-pkgrel=1
+_electronversion=22
+pkgrel=2
 pkgdesc="The Unofficial Perplexity AI Desktop App, powered by Electron which brings the magic of AI language processing to your desktop."
 arch=('any')
 url="https://github.com/inulute/perplexity-ai-app"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'bash'
-    'electron22'
+    "electron${_electronversion}"
 )
 makedepends=(
     'npm'
     'nodejs'
     'gendesk'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('5087ac9aafba243ee12fd7a21baf58815170b063ea070a44dfbc9640d88d6045'
-            '7963c0e517f051afffe3ec7dafd39392afb3538658053f497e506995e005b5ad')
+sha256sums=('SKIP'
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     npm install --force
     npm run package-linux
 }
