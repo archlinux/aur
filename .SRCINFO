@@ -1,23 +1,24 @@
 pkgbase = poddycast-bin
 	pkgdesc = A Podcast app made with Electron, lots of ❤️ and ☕️
 	pkgver = 0.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MrChuckomo/poddycast
 	arch = aarch64
 	arch = armv7h
+	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
-	depends = bash
 	depends = electron22
 	provides = poddycast=0.11.0
 	conflicts = poddycast
 	source = poddycast.sh
-	sha256sums = a00d29a2264aa2fa31e3ddecc52643a3924fcda917e25953c1ba73fbd55a952c
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 	source_aarch64 = poddycast-0.11.0-aarch64.zip::https://github.com/MrChuckomo/poddycast/releases/download/v0.11.0/Poddycast-linux-arm64.zip
 	sha256sums_aarch64 = 35f4d7a1a43c950a4eb4a242eda4f9442539467364d62aac3c74d837db4983ef
 	source_armv7h = poddycast-0.11.0-armv7h.zip::https://github.com/MrChuckomo/poddycast/releases/download/v0.11.0/Poddycast-linux-armv7l.zip
 	sha256sums_armv7h = a29309aa3b2e9c6507404c0d9298350fbe93ca88a6ca13b117782aeb0db3a167
+	source_i686 = poddycast-0.11.0-i686.zip::https://github.com/MrChuckomo/poddycast/releases/download/v0.11.0/Poddycast-linux-ia32.zip
 	source_x86_64 = poddycast-0.11.0-x86_64.zip::https://github.com/MrChuckomo/poddycast/releases/download/v0.11.0/Poddycast-linux-x64.zip
 	sha256sums_x86_64 = 1b5e2ff12ff8af90a021e70ed8e1f8c2439a16488476252e3b078b9cac4da8a9
 
