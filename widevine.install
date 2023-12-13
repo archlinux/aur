@@ -1,0 +1,8 @@
+#!/bin/sh
+
+post_install() {
+  echo ":: IMPORTANT: It might be needed to log out and back in for the changes"
+  echo "   to take effect."
+  echo "   Proper installation can be tested by browsing to"
+  echo "   https://bitmovin.com/demos/drm"
+}
