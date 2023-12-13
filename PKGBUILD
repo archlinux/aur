@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Bukowski <b at bkwsk dot de>
 pkgname=firebird
-_pkgver=4.0.1
-pkgver=${_pkgver}.2692
+_pkgver=4.0.4
+pkgver=${_pkgver}.3010
 pkgrel=1
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://github.com/FirebirdSQL/firebird/releases/download/v${_pkgver}/F
         'firebird-tmpfiles.conf'
         'firebird-sysusers.conf'
         'firebird.service')
-sha256sums=('1fc53347604c461dbad8ce4b126f21c1cae2761644800e0fc9f9150f9ee1a9e6'
+sha256sums=('9ae13f9a1b5e9a36acfdd27b0dcd57b29d8d161f4f0199b18c6b8a183e9d4a75'
             '4ae6765011641202b7f8220c7c8190f097c6f615a02a8445837059ec164622a5'
             'b106ca58628c9e1d1983533897f1d18d6262c1cc3e62651f361a104ff679c161'
             'dc2a65713dd1539bef122daeff1f632871ec080cf4955a0a5c32aeb7309d3c78')
