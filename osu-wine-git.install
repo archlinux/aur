@@ -1,7 +1,0 @@
-post_install(){
-    echo "Take a Look at /etc/osu-wine.conf"
-}
-
-post_upgrade(){
-    post_install
-}
