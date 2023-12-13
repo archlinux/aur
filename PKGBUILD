@@ -5,7 +5,7 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-nonvidia
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video. Almost everything non-nVidia related is enabled. Started as a clone of ffmpeg-amd-full.'
@@ -164,13 +164,12 @@ provides=(
 #  debug
 #)
 conflicts=('ffmpeg')
-_tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
+_tag=3cdfac27d3ea06f8719faed48b4ae2e75e94a463
 _svt_hevc_ver='eb24a06ba4ee4948f219a3246b88439a8090bd37'
 _svt_vp9_ver='aaa8140c8cdf6c073eaa6aaa5d003d1535fd0059'
 source=(
     git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
     "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-    "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
     "040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     "060-ffmpeg-fix-segfault-with-avisynthplus.patch"
     "LICENSE"
@@ -178,7 +177,6 @@ source=(
 sha256sums=(
     'SKIP'
     'e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a'
-    'd8b91ea5f07d0208cbe0290567083808708014a1953fda322d13cb619349c9ee'
     '2df82046908015bf26bc1303275cf52ba01fa380029a54ea6415373e389e423c'
     'b1d68f626168f2409a4b0987acf5b208e7ced2ddab49b11990a10f458d377e9a'
     '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36'
@@ -191,10 +189,24 @@ validpgpkeys=(
 
 prepare() {
     cd ffmpeg
+    
     rm -f "libavcodec/"libsvt_{hevc,vp9}.c
+
+    # FS#79281: fix assembling with binutil as >= 2.41
+    git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
+    # FS#77813: fix playing ogg files with mplayer
+    git cherry-pick -n cbcc817353a019da4332ad43deb7bbc4e695d02a
+    patch -Np1 -i ../040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
+    # use non-deprecated nvenc GUID for conftest
+    git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
+    git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
+    # Fix VDPAU vo
+    git cherry-pick -n e9c93009fc34ca9dfcf0c6f2ed90ef1df298abf7
+    # Fix bug in av_fft_end
+    git cherry-pick -n a562cfee2e214252f8b3f516527272ae32ef9532
+    git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
+
     patch -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
-    patch -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
-    patch -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch" # https://crbug.com/1251779
     patch -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
 }
 
@@ -279,7 +291,6 @@ build() {
     --enable-libssh \
     --enable-libsvtav1 \
     --enable-libsvthevc \
-    --enable-libsvtvp9 \
     --disable-libtensorflow \
     --enable-libtesseract \
     --enable-libtheora \
