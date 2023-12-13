@@ -6,7 +6,7 @@ _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
 pkgver='1.3.14'
-pkgrel='1'
+pkgrel='2'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -23,14 +23,13 @@ _icon=("skywirevpn.png" "skywire.png")
 _service=("skywire.service" "skywire-autoconfig.service")
 _source=("skywire-bin::git+https://aur.archlinux.org/skywire-bin")
 source=("skywire-${_tag_ver}.tar.gz::${url}/archive/refs/tags/${_tag_ver}.tar.gz"
-"${_source[@]}"
-"https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
-"all_servers.json"::"https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers"
-)
+"${_source[@]}")
+#"https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
+#"all_servers.json"::"https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers")
 sha256sums=('57437d305229a47a3698e06b16ecf3703add2a51b670c3fb9846d73dd4b1bf4e'
-            'SKIP'
-            'SKIP'
             'SKIP')
+#            'SKIP'
+#            'SKIP')
 _binary=("skywire-cli" "skywire-visor")
 _appbinary=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
 
@@ -86,11 +85,11 @@ sha256sum $(ls)
 #the dmsghttp-config.json must match the current dmsg servers on the production deployment
 #https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers
 #fix the dmsghttp-config.json
-if command -v jq &> /dev/null ; then
-_msg2 'updating dmsghttp-config.json'
-cat dmsghttp-config.json | jq --argjson updated_servers "$(cat all_servers.json | grep -Ev "availableSessions|version|sequence|timestamp|signature" | tr -d '\n' | sed 's/,\s*}/}/g' | jq '.')"   '.prod.dmsg_servers = $updated_servers' | tee dmsghttp-config.json
-fi
-[[ -f "${srcdir}/all_servers.json" ]] && rm "${srcdir}/all_servers.json"
+#if command -v jq &> /dev/null ; then
+#_msg2 'updating dmsghttp-config.json'
+#cat dmsghttp-config.json | jq --argjson updated_servers "$(cat all_servers.json | grep -Ev "availableSessions|version|sequence|timestamp|signature" | tr -d '\n' | sed 's/,\s*}/}/g' | jq '.')"   '.prod.dmsg_servers = $updated_servers' | tee dmsghttp-config.json
+#fi
+#[[ -f "${srcdir}/all_servers.json" ]] && rm "${srcdir}/all_servers.json"
 }
 
 package() {
@@ -140,7 +139,7 @@ ln -rTsf "${_pkgdir}/${_bin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
 _msg2 'installing dmsghttp-config.json'
 install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire-${_pkgver}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
 #make sure the dmsghttp-config will get redownloaded on subsequent builds
-[[ -f "${srcdir}/dmsghttp-config.json" ]] && rm "${srcdir}/dmsghttp-config.json"
+#[[ -f "${srcdir}/dmsghttp-config.json" ]] && rm "${srcdir}/dmsghttp-config.json"
 _msg2 'Installing systemd services'
 for _i in "${_service[@]}" ; do
   _msg3 ${_i}
