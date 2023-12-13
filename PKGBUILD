@@ -2,7 +2,8 @@
 pkgname=streambop-bin
 _pkgname=StreamBop
 pkgver=1.6.1
-pkgrel=1
+_electronversion=25
+pkgrel=2
 pkgdesc="A software that allows you to play music on your livestreams, credit currently playing music, avoid legal issues, allow audio mixing, customizability and more.."
 arch=('x86_64')
 url="https://github.com/snaildos/StreamBop"
@@ -10,16 +11,21 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron25'
+    "electron${_electronversion}"
 )
-makedepends=('squashfuse')
+makedepends=(
+    'squashfuse'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('b6c79450f75a8802f0b51744d118437dcab72bb05af3fa36414a1c29ede6387f'
-            'e77cac9cf6e549364aec784eed810d85a57a9db611181b943d26164459cfd31b')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
