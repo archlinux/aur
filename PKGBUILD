@@ -1,6 +1,6 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=imeditor
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Simple & versatile image editor."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('gtk3' 'python-gobject' 'python-pillow')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ImEditor/ImEditor/archive/$pkgver.tar.gz")
-sha256sums=('d067c356493bd36d88d4074498399bb42a1a49d819f0699c886c8a8e2e125921')
+sha256sums=('4a800966e31ff9bd9f0acae81ab1efd13a25880a99a6a5019bd2ec59895218b9')
 
 build() {
   arch-meson ImEditor-$pkgver build
