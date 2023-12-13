@@ -106,7 +106,6 @@ build() {
     --sbindir    bin \
     --buildtype  release \
     --wrap-mode  nodownload \
-    -D           b_ndebug=true \
     -D           b_lto=true \
     -D           b_pie=true \
     -D           default_library=shared \
