@@ -1,0 +1,23 @@
+pkgbase = rkflashtool-git
+	pkgdesc = Tools for flashing Rockchip devices
+	pkgver = r210.5bc3cbf
+	pkgrel = 1
+	url = https://github.com/linux-rockchip/rkflashtool
+	install = rkflashtool-git.install
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = BSD
+	makedepends = git
+	depends = libusb
+	optdepends = rkbin
+	optdepends = rkdeveloptool
+	provides = rkflashtool
+	conflicts = rkflashtool
+	options = !strip
+	source = rkflashtool-git::git+https://github.com/linux-rockchip/rkflashtool.git
+	source = 51-rockchip.rules
+	sha256sums = SKIP
+	sha256sums = 832ac47a3fe6a397822697099c1780ed223273fc43c23b933e89f05b5d68c63c
+
+pkgname = rkflashtool-git
