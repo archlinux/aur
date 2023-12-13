@@ -1,7 +1,8 @@
 #  Maintainer: Vincent Lequertier <vincent at vl8r dot eu>
 pkgname=python-tensordict
+pkgdesc="A dictionary-like class that inherits properties from PyTorch tensors"
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=('MIT')
 depends=('python' 'python-cloudpickle')
