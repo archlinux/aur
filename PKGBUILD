@@ -4,15 +4,13 @@
 # Contributor: Det <nimetonmaili g-mail>
 # Contributor: t3ddy, Lex Rivera aka x-demon, ruario
 
-
 # Releases and details about builds can be found at:
 # https://github.com/RobRich999/Chromium_Clang
 #
 # Check new releases:
-# curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -om1 '"name": *".[^"]*linux64[^"]*avx"' | grep -o '"[^"]*"$' | tr -d '"'
+# curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -om1 '"name": *"[^"]*-linux64-deb-avx"' | awk -F'"' '{print $4}'
 #
 # Based on aur/google-chrome-dev
-
 
 _pkgname=chromium-unstable
 _debname=chromium-browser-unstable
