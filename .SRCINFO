@@ -1,6 +1,6 @@
 pkgbase = wit-bindgen
 	pkgdesc = A language binding generator for WebAssembly interface types
-	pkgver = 0.14.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/wit-bindgen
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wit-bindgen
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/bytecodealliance/wit-bindgen/archive/refs/tags/wit-bindgen-cli-0.14.0.tar.gz
-	sha256sums = d49623bc07981631ea158e1f88b1cde887c153aac262d077f3726503d42c651a
+	source = https://github.com/bytecodealliance/wit-bindgen/archive/refs/tags/wit-bindgen-cli-0.16.0.tar.gz
+	sha256sums = 7b37049995ab256420892e9f933c7c987088ae6ebce5d149ea299b47d06b40ba
 
 pkgname = wit-bindgen
