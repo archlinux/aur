@@ -1,34 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=any-sync-gui
 _appname="Lan同步"
-pkgver=1.3.0
+pkgver=1.4.0
 _electronversion=25
-pkgrel=5
+pkgrel=1
 pkgdesc="一款支持在pc与pc或移动设备之间同步文本信息或文件的应用"
 arch=('any')
 url="https://github.com/easyhutu/any-sync-gui"
 license=('custom')
 conflicts=("${pkgname}")
 depends=(
-    'libxcomposite'
-    'libxkbcommon'
-    'libxfixes'
-    'libcups'
-    'mesa'
-    'alsa-lib'
-    'expat'
-    'cairo'
-    'libxrandr'
-    'pango'
-    'libxext'
-    'libxcb'
-    'at-spi2-core'
-    'libdrm'
-    'nspr'
-    'libxdamage'
-    'nss'
-    'libx11'
-    'gtk3'
+    "electron${_electronversion}"
+    'hicolor-icon-theme'
 )
 makedepends=(
     'npm'
@@ -47,7 +30,7 @@ build() {
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories "Utility" --name "${_appname}" --exec "${pkgname}" #--no-sandbox %U"
+    gendesk -f -n -q --categories "Utility" --name "${_appname}" --exec "${pkgname}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -68,6 +51,9 @@ package() {
     cp -r "${srcdir}/${pkgname}-${pkgver}/electron_gui/out/${pkgname}-"*/resources/{dist,public} "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/resources"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/electron_gui/public/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    for _icons in 16x16 32x32 128x128 256x256 512x512;do
+        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/electron_gui/public/icons.iconset/icon_${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
+    done
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/electron_gui/out/${pkgname}-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
