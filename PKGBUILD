@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=kml
-_pkgver=2.4.6
+_pkgver=2.4.6.1
 pkgname=r-${_pkgname,,}
-pkgver=2.4.6
+pkgver=2.4.6.1
 pkgrel=1
 pkgdesc='K-Means for Longitudinal Data'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-longitudinaldata
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('120d02118c372e51b28a0476e65597756145559d0b559e31fe4ea7bc5989aab6')
+sha256sums=('a99c8f0d84645ef8a4e65053078c382e5a42b45fb1e02c8472c57eb6081f9e07')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
