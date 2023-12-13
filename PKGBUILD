@@ -6,8 +6,8 @@
 # Contributor: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=gitahead
-pkgver=2.6.3
-pkgrel=5
+pkgver=2.7.0
+pkgrel=1
 pkgdesc='Understand your Git history!'
 url='https://www.gitahead.com/'
 arch=(x86_64)
@@ -15,16 +15,18 @@ license=(MIT)
 depends=(desktop-file-utils
          git
          org.freedesktop.secrets
-         qt5-base)
+         qt6-5compat
+         qt6-base)
 makedepends=(cmake
-             qt5-tools
-             qt5-translations)
+             python
+             qt6-tools
+             qt6-translations)
 source=("git+https://github.com/$pkgname/$pkgname#tag=v$pkgver"
         "$pkgname.desktop"
         "$pkgname.patch")
 sha256sums=('SKIP'
             '254b4e970a942c6ac94df177e54a6169fe7e5f5c5d0d92b6f0c0f03b7b7b2fb0'
-            '096e8f3700d7d74884e81eae3282fa1b4fad1cfa7a179ff03f1a7d89867538a0')
+            'ab04ba1f49fbddc3a6df37319c744638f49a4114b688d2d71f0067c207487ff2')
 
 prepare() {
 	cd "$pkgname"
