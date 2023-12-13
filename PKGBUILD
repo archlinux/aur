@@ -1,6 +1,6 @@
 # Maintainer: Antony Ho <ntonyworkshop@gmail.com>
 pkgname=session-desktop
-pkgver=1.11.4
+pkgver=1.11.5
 pkgrel=2
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
