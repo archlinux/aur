@@ -1,0 +1,4 @@
+*.mjs
+pkg
+src
+*.tar.zst
