@@ -1,15 +1,17 @@
 pkgbase = kiwivm-ga-systemd
-	pkgdesc = KiwiVM Guest Agent systemd unit file.
-	pkgver = 0.1.0
-	pkgrel = 2
-	url = https://github.com/unknowndev233/KiwiVM-GA-systemd
+	pkgdesc = BandawagonHost KiwiVM Guest Agent systemd unit file
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/unknowndevqwq/KiwiVM-GA-systemd
+	install = kiwivm-ga-systemd.install
 	arch = any
 	license = Apache
 	depends = systemd>=240
 	depends = kiwivm-ga
 	conflicts = kiwivm-ga-sysvinit
-	source = kiwivm-ga-systemd-0.1.0.tar.gz::https://github.com/unknowndev233/KiwiVM-GA-systemd/archive/v0.1.0.tar.gz
-	sha512sums = 7a17cd7ecdd969b04480609edfc98df26ed4d71414f6b16fc9c7fb1ed51facf7339d0d7f6be59cdaf0baf1d323383ac9ddc4a2cf336b6716382aa7dfe8dfbb0b
+	source = kiwivm-ga-systemd-0.1.1.tar.gz::https://github.com/unknowndevqwq/KiwiVM-GA-systemd/archive/0.1.1.tar.gz
+	source = kiwivm-ga-systemd.install
+	sha512sums = b7153fdf53ab4c10efc94b60176a9ae63fab58262e91339837e256622275bc1967b4d790d01d092f78559d67eef4ec90dcef7b63b31bd34feccb2956b175a01b
+	sha512sums = 37ccf3cc7e603f096ff32584f6f81a43582e60d9bbba6c0318b1c26ca22bd28eee619d1ee18750916e3089bc47ecc8fbfa8e5b458e0cd0d7523493f0da288ff0
 
 pkgname = kiwivm-ga-systemd
-

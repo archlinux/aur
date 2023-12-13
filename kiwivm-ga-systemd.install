@@ -1,0 +1,7 @@
+post_install() {
+    cat << EOF
+To enable kiwivm ga more functions, please execute:
+
+  $ sudo systemctl daemon-reload && sudo systemctl enable --now qemukvmga
+EOF
+}
