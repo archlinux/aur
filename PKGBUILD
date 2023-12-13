@@ -2,12 +2,15 @@
 pkgname=syng-bin
 _appname=syng
 pkgver=2.0.0_beta_5
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open source, cross-platform, Chinese-To-English dictionary for desktops."
 arch=("x86_64")
 url="https://getsyng.com/"
 _ghurl="https://github.com/sotch-pr35mac/syng"
-license=('GPL3' "custom:CC-CEDICT")
+license=(
+    'GPL3'
+    'CC-CEDICT'
+)
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -15,14 +18,13 @@ depends=(
     'gtk3'
     'openssl'
     'cairo'
-    'dbus'
     'gdk-pixbuf2'
     'pango'
     'webkit2gtk'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-2_0.0.5_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com.com/sotch-pr35mac/syng/v${pkgver}/LICENSE-CC-CEDICT"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com.com/sotch-pr35mac/syng/v${pkgver}/LICENSE-CC-CEDICT"
 )
 sha256sums=('18d9c3474e4c486460cc34f07b00259381875f0ac22db6a3cbe24713ba1693ab'
             '997e0e57760a71dfc656727d5bc14149bae55f907990f8c75650673924434f0c')
@@ -37,5 +39,5 @@ package() {
       install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}-2.png" \
         "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
