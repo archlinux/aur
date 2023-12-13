@@ -1,0 +1,25 @@
+pkgbase = r-single
+	pkgdesc = Accurate consensus sequence from nanopore reads of a gene library
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/single
+	arch = any
+	license = MIT
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-dplyr
+	depends = r-genomicalignments
+	depends = r-iranges
+	depends = r-reshape2
+	depends = r-rlang
+	depends = r-rsamtools
+	depends = r-stringr
+	depends = r-tidyr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/single_1.6.0.tar.gz
+	md5sums = 61242086622646ed92a4304d33bc1457
+	sha256sums = fabdd3503ab53c35e34b96b569b21bf1382cfe90cbe726b8163670476d23051b
+
+pkgname = r-single
