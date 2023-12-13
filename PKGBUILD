@@ -50,6 +50,7 @@ optdepends=(
 	"i3status: Status line"
 	"mako: Lightweight notification daemon"
 	"slurp: Select a region"
+	"swaybg: Wallpaper tool for sway"
 	"swayidle: Idle management daemon"
 	"swaylock: Screen locker"
 	"wallutils: Timed wallpapers"

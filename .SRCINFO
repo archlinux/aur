@@ -42,6 +42,7 @@ pkgbase = sway-git-wlroots-git
 	optdepends = i3status: Status line
 	optdepends = mako: Lightweight notification daemon
 	optdepends = slurp: Select a region
+	optdepends = swaybg: Wallpaper tool for sway
 	optdepends = swayidle: Idle management daemon
 	optdepends = swaylock: Screen locker
 	optdepends = wallutils: Timed wallpapers
