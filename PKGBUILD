@@ -2,20 +2,18 @@
 
 _rockname=textsubsuper.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=1.1.0
+pkgver=1.1.1
 _rockrel=1
 pkgrel=1
 pkgdesc='Real or fake superscripts and subscripts for the SILE typesetting system'
 arch=(any)
 url="https://github.com/Omikhleia/$_rockname"
 license=(MIT)
-_siledeps=(silex)
-depends=(sile
-         "${_siledeps[@]/#/sile-}")
+depends=(sile)
 makedepends=(luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('da2c71e6d83f623b245c7a7eedfa37e6190656e92742b30debc85e612acfb9b6')
+sha256sums=('0b4ed51d8a26368329a3b2b99e956fa6e50611116d14c1576af65000dd4325d5')
 
 package() {
 	cd "$_archive"
