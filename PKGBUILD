@@ -4,8 +4,8 @@
 
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
-_pkgver=3.1.9
-pkgver=3.1.9.r10.gcad7575
+_pkgver=3.1.10
+pkgver=3.1.10.r10.gb26e24b
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -41,5 +41,5 @@ package() {
 	cd "$_pkgname"
 	find ./ -path '*/dist/*' -type f -name pandoc -perm /u+x \
 		-execdir install -Dm755 -t "$pkgdir/usr/bin/" {} \;
-	install -Dm644 -t "$pkgdir/usr/share/man/man1/" man/pandoc.1
+	install -Dm644 -t "$pkgdir/usr/share/man/man1/" pandoc-cli/man/pandoc.1
 }
