@@ -1,0 +1,18 @@
+pkgbase = r-liger
+	pkgdesc = Lightweight Iterative Geneset Enrichment
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=liger
+	arch = x86_64
+	license = GPL3
+	makedepends = r-rcpparmadillo
+	depends = r-matrixstats
+	depends = r-rcpp
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/liger_2.0.1.tar.gz
+	md5sums = d7a410589d361d183968613aeed4fd2a
+	sha256sums = c1eb36962ed679b82811af9568dfae96a85dd000a2750a61171d906a3fbf3188
+
+pkgname = r-liger
