@@ -2,7 +2,8 @@
 pkgname=clamav-desktop-bin
 _pkgname="ClamAV Desktop"
 pkgver=0.3.24
-pkgrel=2
+_electronversion=17
+pkgrel=3
 pkgdesc="Cross-platform Desktop GUI for ClamAV antivirus."
 arch=('x86_64')
 url="https://github.com/ivangabriele/clamav-desktop"
@@ -10,9 +11,8 @@ license=('AGPL3')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'bash'
     'clamav'
-    'electron17'
+    "electron${_electronversion}"
 )
 makedepends=(
     'asar'
@@ -22,8 +22,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c1bc5128d3c1c678347418ef195a81197e53af05157cb57d247f9f396078d568'
-            '82630a8d28e145472d4b87900ef88f00ff08a99b73bb63704e5a5948f3811fe1')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${srcdir}/app.asar.unpacked/packages/main/dist/vendor/"*.exe
