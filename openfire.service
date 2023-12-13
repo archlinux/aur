@@ -1,0 +1,15 @@
+[Unit]
+Description=Openfire XMPP Server
+After=network.target
+
+[Service]
+Type=simple
+User=openfire
+Group=openfire
+PrivateTmp=true
+EnvironmentFile=/etc/conf.d/openfire
+ExecStart=/usr/bin/openfire $OPENFIRE_OPTS
+SuccessExitStatus=143 SIGKILL
+
+[Install]
+WantedBy=multi-user.target
