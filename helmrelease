@@ -74,8 +74,8 @@ function _parse_hr_subcommand() {
 }
 
 function _hr_git() {
-  local clusterConnected="$1?"
-  local subCommand="$2?"
+  local clusterConnected="${1?}"
+  local subCommand="${2?}"
   local commands=()
   local clonePath="$(mktemp -d)"
   trap 'rm -rf "$clonePath"' EXIT
