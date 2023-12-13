@@ -9,7 +9,7 @@ _langs=(afr amh ara asm aze aze_cyrl bel ben bod bos bre bul cat ceb ces
     tel tgk tgl tha tir ton tur uig ukr urd uzb uzb_cyrl vie yid yor)
 
 pkgname=poptranslate
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Translate the text selected by the mouse on plasma wayland"
 arch=(x86_64)
@@ -18,18 +18,19 @@ license=(GPL3)
 depends=(hicolor-icon-theme
     qt5-base
     qt5-multimedia
-    kxmlgui
-    kwindowsystem
-    kglobalaccel
-    kguiaddons
-    kwidgetsaddons
-    kwayland
+    kxmlgui5
+    kwindowsystem5
+    kglobalaccel5
+    kguiaddons5
+    kwidgetsaddons5
+    kwayland5
+    qcoro-qt5
     leptonica
     tesseract
     tesseract-data-eng
     )
 optdepends=($(for l in ${_langs[@]}; do echo tesseract-data-${l}; done))
-makedepends=(cmake git qt5-tools hunspell)
+makedepends=(cmake git qt5-tools)
 provides=(poptranslate)
 source=("git+https://github.com/glaumar/PopTranslate.git#tag=v$pkgver")
 sha256sums=('SKIP')

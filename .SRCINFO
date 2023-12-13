@@ -1,6 +1,6 @@
 pkgbase = poptranslate
 	pkgdesc = Translate the text selected by the mouse on plasma wayland
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/glaumar/PopTranslate
 	arch = x86_64
@@ -8,16 +8,16 @@ pkgbase = poptranslate
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-tools
-	makedepends = hunspell
 	depends = hicolor-icon-theme
 	depends = qt5-base
 	depends = qt5-multimedia
-	depends = kxmlgui
-	depends = kwindowsystem
-	depends = kglobalaccel
-	depends = kguiaddons
-	depends = kwidgetsaddons
-	depends = kwayland
+	depends = kxmlgui5
+	depends = kwindowsystem5
+	depends = kglobalaccel5
+	depends = kguiaddons5
+	depends = kwidgetsaddons5
+	depends = kwayland5
+	depends = qcoro-qt5
 	depends = leptonica
 	depends = tesseract
 	depends = tesseract-data-eng
@@ -147,7 +147,7 @@ pkgbase = poptranslate
 	optdepends = tesseract-data-yid
 	optdepends = tesseract-data-yor
 	provides = poptranslate
-	source = git+https://github.com/glaumar/PopTranslate.git#tag=v0.3.0
+	source = git+https://github.com/glaumar/PopTranslate.git#tag=v0.4.0
 	sha256sums = SKIP
 
 pkgname = poptranslate
