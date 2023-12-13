@@ -2,8 +2,8 @@
 # Maintainer for aarch64: Ethan Reece <aur at ethanreece dot com>
 
 pkgname=pycharm-professional
-pkgver=2023.3
-pkgrel=2
+pkgver=2023.3.1
+pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64' 'aarch64')
 url='https://www.jetbrains.com/pycharm/'
@@ -20,8 +20,8 @@ source=("pycharm-professional.desktop"
         "ltedit.desktop")
 sha256sums=('a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '41f0e64dc7ec5ab85e7b0df1dc8237b56c94ccf9e4f2fa033eaadcc7756df3d3')
-sha256sums_x86_64=('cc4752cc185fc114121d2bab13eb8066e825cb6f0c1cf8027927355e9add8e53')
-sha256sums_aarch64=('49dbcf16b894d3e673105e64c07c69ffe6f07beb7ac4caab52370eefd39a95b1')
+sha256sums_x86_64=('f3a09cd2aebd2ffbc42f927467a613e55430d3ff76d57c263d31ccee3c1de110')
+sha256sums_aarch64=('eb649602ebd2212575631db51569029e3683a9f4842b5e506c1f2b573a777749')
 # makedepends=('python-setuptools' 'cython')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
