@@ -1,17 +1,15 @@
-# Maintainer: Jaco Malan <jacomalan.12@gmail.com>
+# Maintainer: Rodrigo Pelorosso <rodrigo.pelorosso@gmail.com>
 pkgname=pktriot
-pkgver=0.9.5
+pkgver=0.15.2
 pkgrel=1
 license=('unknown')
 arch=('x86_64')
 pkgdesc="The official Packetriot command line tool."
 url="https://packetriot.com"
-source=("https://pktriot-dl-bucket.sfo2.digitaloceanspaces.com/releases/linux/pktriot-$pkgver-$pkgrel.x86_64.rpm");
-
+source=("https://download.packetriot.com/linux/RPM/packages/pktriot-$pkgver-$pkgrel.x86_64.rpm");
 package() {
-
     cd ${srcdir}
     bsdtar -xf pktriot-${pkgver}-${pkgrel}.x86_64.rpm -C ${pkgdir}
 
 }
-md5sums=('3f2f2a53d31f103e9505bbc2a6653c4c')
+md5sums=('29d909e6e9d34f7a9987dbce9fa4fec4')
