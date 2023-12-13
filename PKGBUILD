@@ -1,22 +1,23 @@
-# Maintainer: David Wu <xdavidwuph@gmail.com>
+# Maintainer: Junxuan Liao <mikeljx at 126 dot com>
+# Contributor: David Wu <xdavidwuph@gmail.com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: David Thurstenson <thurstylark@gmail.com>
 
 pkgname=vim-ale-git
 _pkgname=vim-ale
-pkgver=2.6.0.r31.gdb6b1b5e
+pkgver=3.3.0.r127.g9a23ec1f
 pkgrel=1
 pkgdesc='Asynchronous Lint Engine (git version)'
-url='https://github.com/w0rp/ale'
+url='https://github.com/dense-analysis/ale'
 arch=('any')
 license=('BSD')
-depends=('vim')
+depends=('vim-plugin-runtime')
 optdepends=('shellcheck: for sh/bash support'
             'flake8: for python support')
 makedepends=('git')
-provides=('vim-ale')
-conflicts=('vim-ale')
-source=("${_pkgname}::git+https://github.com/w0rp/ale")
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("${_pkgname}::git+$url.git")
 sha512sums=('SKIP')
 validpgpkeys=('E5132116F56ACE32A3D5D7DD0FC1ECAA8C81CD83') # _w0rp_ (Always be true to yourself) <devw0rp@gmail.com>
 

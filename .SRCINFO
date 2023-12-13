@@ -1,19 +1,18 @@
 pkgbase = vim-ale-git
 	pkgdesc = Asynchronous Lint Engine (git version)
-	pkgver = 2.6.0.r31.gdb6b1b5e
+	pkgver = 3.3.0.r127.g9a23ec1f
 	pkgrel = 1
-	url = https://github.com/w0rp/ale
+	url = https://github.com/dense-analysis/ale
 	arch = any
 	license = BSD
 	makedepends = git
-	depends = vim
+	depends = vim-plugin-runtime
 	optdepends = shellcheck: for sh/bash support
 	optdepends = flake8: for python support
 	provides = vim-ale
 	conflicts = vim-ale
-	source = vim-ale::git+https://github.com/w0rp/ale
+	source = vim-ale::git+https://github.com/dense-analysis/ale.git
 	validpgpkeys = E5132116F56ACE32A3D5D7DD0FC1ECAA8C81CD83
 	sha512sums = SKIP
 
 pkgname = vim-ale-git
-
