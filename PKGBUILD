@@ -2,7 +2,8 @@
 pkgname=iptvnator-electron-bin
 _appname=IPTVnator
 pkgver=0.15.0
-pkgrel=1
+_electronversion=25
+pkgrel=2
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more.Use system electron."
 arch=(
     'aarch64'
@@ -10,28 +11,31 @@ arch=(
     'x86_64'
 )
 url="https://iptvnator.vercel.app/"
-_githuburl="https://github.com/4gray/iptvnator"
+_ghurl="https://github.com/4gray/iptvnator"
 license=('MIT')
 provides=("${pkgname%-electron-bin}=${pkgver}")
 conflicts=("${pkgname%-electron-bin}")
 depends=(
-    'bash'
-    'electron25'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
-source_aarch64=("${pkgname%-electron-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-electron-bin}_${pkgver}_arm64.deb")
-source_armv7h=("${pkgname%-electron-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-electron-bin}_${pkgver}_armv7l.deb")
-source_x86_64=("${pkgname%-electron-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-electron-bin}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-electron-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-electron-bin}_${pkgver}_arm64.deb")
+source_armv7h=("${pkgname%-electron-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-electron-bin}_${pkgver}_armv7l.deb")
+source_x86_64=("${pkgname%-electron-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-electron-bin}_${pkgver}_amd64.deb")
 source=(
-    "LICENSE.md::https://raw.githubusercontent.com/4gray/iptvnator/v${pkgver}/LICENSE.md"
+    "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/4gray/iptvnator/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74'
-            '799d3100aa8d859af36f42a6afcf504a78a5cb93008865f6878dc4a5ef13156a')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 sha256sums_aarch64=('1b4f212b42d85ff6a32cba69b86dba3fc3d00163342e21063caefd2ae176ceae')
 sha256sums_armv7h=('bb00a55ade5d6c4060eaa8408b997e5d572782a00810ca522546128a7be17fdd')
 sha256sums_x86_64=('d440a42bb29253f6f80041c837454e2c620d9d9827e15a317329f4877992a173')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_appname}/${pkgname%-electron-bin} %U|${pkgname%-bin}|g;s|Video|AudioVideo|g;s|Icon=${pkgname%-electron-bin}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-electron-bin}.desktop"
@@ -43,5 +47,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${icons}/apps/${pkgname%-electron-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-electron-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
