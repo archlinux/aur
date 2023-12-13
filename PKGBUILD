@@ -2,11 +2,14 @@
 
 pkgbase=deepin-unioncode-git
 pkgname=deepin-unioncode-git
-pkgver=1.1.19.r19.gfaa30c15
+pkgver=1.2.3.r3.g7ac9d0c2
 pkgrel=1
 pkgdesc="IDE authored by deepin"
 arch=(x86_64
     aarch64
+    loongarch64
+    mips64
+    sw_64
     riscv64)
 url="https://github.com/linuxdeepin/deepin-unioncode"
 license=('GPL-3.0')
@@ -27,6 +30,8 @@ makedepends=(
     capstone
     clang
     dbus
+    dtkgui
+    dtkwidget
     doxygen
     hiredis
     llvm
@@ -44,6 +49,7 @@ makedepends=(
     qt5-script
     openssl
     systemd
+    syntax-highlighting5
     pkgconf
     python
     zstd
@@ -62,12 +68,10 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
 
-# see：https://wiki.archlinux.org/title/CMake_package_guidelines
-# clang llvm build
-    cmake -DCMAKE_BUILD_TYPE=None \
+# See：https://wiki.archlinux.org/title/CMake_package_guidelines
+    # cmake -DCMAKE_BUILD_TYPE=None \
+    cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INSTALL_LIBEXECDIR=lib \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
         -B build \
@@ -78,5 +82,6 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
-    install -Dm0644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm0644 "${srcdir}/${pkgname}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -m0644 "${srcdir}/${pkgname}"/LICENSES/* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
