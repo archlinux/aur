@@ -6,12 +6,13 @@
 
 pkgname=wine-staging-wow64
 _name=wine
-pkgver=8.21
+pkgver=9.0rc1
+_pkgver=9.0-rc1
 pkgrel=1
 provides=("wine=$pkgver")
 conflicts=("wine")
-source=(git+https://gitlab.winehq.org/wine/wine.git#tag=wine-$pkgver
-        git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$pkgver
+source=(git+https://gitlab.winehq.org/wine/wine.git#tag=wine-$_pkgver
+        git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$_pkgver
         30-win32-aliases.conf
         wine-binfmt.conf)
 b2sums=('SKIP'

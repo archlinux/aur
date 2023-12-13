@@ -1,6 +1,6 @@
 pkgbase = wine-staging-wow64
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 8.21
+	pkgver = 9.0rc1
 	pkgrel = 1
 	url = https://www.winehq.org
 	install = wine.install
@@ -60,12 +60,12 @@ pkgbase = wine-staging-wow64
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=8.21
+	provides = wine=9.0rc1
 	conflicts = wine
 	options = staticlibs
 	options = !lto
-	source = git+https://gitlab.winehq.org/wine/wine.git#tag=wine-8.21
-	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v8.21
+	source = git+https://gitlab.winehq.org/wine/wine.git#tag=wine-9.0-rc1
+	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v9.0-rc1
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	b2sums = SKIP
