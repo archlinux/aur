@@ -10,20 +10,20 @@
 
 _pkgbase=openocd
 pkgname=openocd-raspberrypi-git
-pkgver=r8907.610f137d2
+pkgver=v0.12.0.r24.g4d87f6d
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version, raspberrypi fork)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
-url="http://openocd.org"
+url="https://github.com/raspberrypi/openocd"
 license=('GPL')
 depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone')
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
-provides=('openocd')
+provides=('openocd=${pkgver}')
 conflicts=('openocd' 'openocd-git')
 
 source=(
-  "${pkgname}::git+https://github.com/raspberrypi/openocd.git"
+  "${pkgname}::git+https://github.com/raspberrypi/openocd.git#branch=rp2040-v0.12.0"
   "git+https://github.com/msteveb/jimtcl.git"
   "git+https://gitlab.zapb.de/libjaylink/libjaylink.git"
   "git+https://git.savannah.nongnu.org/git/git2cl.git"
@@ -81,7 +81,7 @@ _features=(
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^rp2040-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
