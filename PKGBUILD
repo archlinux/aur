@@ -5,8 +5,8 @@
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
-pkgver=41.0.2.0
-pkgrel=2
+pkgver=42.0.1.0
+pkgrel=1
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
 _libffmpegver=0.82.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
@@ -23,10 +23,8 @@ depends=(
     'libxkbcommon'
     'libxrandr'
     'alsa-lib'
-    'sh'
     'libxext'
     'libcups'
-    'dbus'
     'nspr'
     'nss'
     'libdrm'
@@ -54,9 +52,9 @@ options=(
 source=(
     "${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
-    "LICENSE.html::${url}/en/webhelp/index.htm"
+    "LICENSE-${pkgver}.html::${url}/en/webhelp/index.htm"
 )
-sha256sums=('f2affe23cb8d27a1fdb9a147f5cf5962a97cdfbfa6a2600a0ebb3ca25f27b55f'
+sha256sums=('9aee390395ac6483b1f9b782fc99174c39f99f353d102d74f891c0a1a0ed20f4'
             'f68fac7117b551d0466198a5efbe65ab6cef5969bea9403eeb57ec92237fc893'
             '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43')
 build() {
@@ -72,8 +70,8 @@ package() {
     ln -sf "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/libffmpeg.so" -t "${pkgdir}/opt/${pkgname}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    for _icons in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+    for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
         install -Dm644 "${srcdir}/opt/${pkgname}/"product_logo_${_icons/x*}.png \
             "${pkgdir}/usr/share/icons/hicolopkgdirr/${_icons}/apps/${pkgname}.png"
     done
