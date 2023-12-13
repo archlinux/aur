@@ -6,7 +6,7 @@
 
 pkgname=openfire-beta
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance XMPP (Jabber) server, beta edition."
 arch=('any')
 url='https://www.igniterealtime.org/projects/openfire/'
@@ -36,7 +36,7 @@ sha256sums=('2b4a5e6e91e97951bcb4817b23f33443d18e0cdc8a960b3f3fcfdbdf9eac59ba'
             'c63396991984a067d05e21094a664255d6aed2bf294bddd3885a7da75472b886')
 
 build() {
-  cd "$srcdir"/Openfire-$pkgver
+  cd "$srcdir"/Openfire-${pkgver}beta
   make
 }
 
@@ -52,7 +52,7 @@ package() {
   install -Dm0644 user.conf "$pkgdir"/usr/lib/sysusers.d/openfire.conf
   install -Dm0644 tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/openfire.conf
 
-  cd Openfire-$pkgver/distribution/target/distribution-base
+  cd Openfire-${pkgver}beta/distribution/target/distribution-base
 
   cp -R conf/* "$pkgdir"/etc/openfire/
 
