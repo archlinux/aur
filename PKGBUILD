@@ -2,17 +2,16 @@
 # Contributor: Avi Zimmerman <avi.zimmerman@gmail.com>
 pkgname=nzyme-bin
 pkgver=1.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A free and open next-generation WiFi defense system."
 arch=("x86_64")
 license=("custom:SSPL")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 url="https://www.nzyme.org/"
-_githuburl="https://github.com/lennartkoopmann/nzyme"
+_ghurl="https://github.com/lennartkoopmann/nzyme"
 depends=(
     'java-runtime'
-    'sh'
 )
 makedepends=(
     'gendesk'
@@ -20,8 +19,8 @@ makedepends=(
 options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://assets.nzyme.org/releases/${pkgname%-bin}-${pkgver}.deb"
-    "LICENSE::https://raw.githubusercontent.com/lennartkoopmann/nzyme/${pkgver}/COPYING"
-    "${pkgname%-bin}.png::https://raw.githubusercontent.com/nzymedefense/nzyme/${pkgver}/web-interface/public/static/${pkgname%-bin}.png"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/lennartkoopmann/nzyme/${pkgver}/COPYING"
+    "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/nzymedefense/nzyme/${pkgver}/web-interface/public/static/${pkgname%-bin}.png"
 )
 sha256sums=('fb59a0b60736a5ddb03a8c69c2a1b925b25726b32bf32b6e38b710741e5b122b'
             '34e94c5087ba6e9fb34f35ae71df5e6533c5fc7cbbf6c44186a71e82806b69e1'
@@ -39,6 +38,6 @@ package() {
     install -Dm644 "${srcdir}/usr/share/${pkgname%-bin}/lib/${pkgname%-bin}-${pkgver}.jar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.jar"
     install -Dm644 "${srcdir}/usr/lib/systemd/system/${pkgname%-bin}.service" -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
