@@ -20,7 +20,7 @@ _fragment="#${FRAGMENT:-branch=main}"
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2022.02.r226.gca1f5ab1d
+pkgver=2023.12.r0.g2dbd2f4b1
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -38,14 +38,11 @@ optdepends=('lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
             'openctm-tools: for compressed triangle mesh file format')
 source=(
     "$_name::git+https://github.com/cnr-isti-vclab/meshlab.git${_fragment}"
-    "vcglib.patch"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 prepare() {
   prepare_submodule
-  cd $srcdir/meshlab/src/vcglib
-  patch -Np1 -i $srcdir/vcglib.patch 
 }
 
 pkgver() {
