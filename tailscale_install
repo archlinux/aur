@@ -1,4 +1,4 @@
-#!/usr/bin/env ash
+#!/usr/bin/env bash
 
 build() {
 	if ! pacman -Qi tailscale >/dev/null 2>&1; then
@@ -22,27 +22,37 @@ build() {
 	add_all_modules netfilter
 	map add_binary iptables ip6tables tailscale tailscaled
 
-	add_run_script
+	if [[ $(type -t add_systemd_unit ) == function ]]; then
+		add_systemd_unit tailscaled.service
+		add_systemd_drop_in tailscaled.service override <<-EOU
+		[Unit]
+		DefaultDependencies=no
+		After=network-online.target
+		Wants=network-online.target
+		EOU
+		add_symlink /etc/systemd/system/sysinit.target.wants/tailscaled.service \
+								/usr/lib/systemd/system/tailscaled.service
+	else
+		add_runscript
+	fi
 }
 
 help() {
 	cat <<-__EOF_HELP__
-	This hook enables tailscale service within busybox initramfs.
+	This hook enables tailscale service within initramfs.
 
-	It copies all required files and binaries to initramfs and runs
-	tailscale daemon in the background. Remember to place it before 
-	any other hook that blocks for input like the 'encrypt' hook.
-
-	Configuration is copied into the initramfs from:
+	It copies all required files and binaries to initramfs and runs the Tailscale agent.
+	Configuration is copied from the host into the initramfs per:
 	
 		* /etc/initcpio/tailscale/tailscaled.state to /var/lib/tailscale/tailscaled.state
+
 		* /etc/initcpio/tailscale/default.env to /etc/default/tailscaled
 
-	Run setup-initcpio-tailscale to initialize /etc/initcpio/tailscale/ configuration files.
+	It works with both, systemd and busybox init systems; but whatever you choose remember to also add a network and ssh server hook.
 
-	This hook must come after the network is setup and before other hooks that blocks the
-	init chain. Place it before 'encrypt' if you plan to unlock a rootfs remotely.
-	
+	For systemd inits, see 'sd-network' and 'sd-tinyssh' hooks provided by mkinitcpio-systemd-extras package.
+
+	Run /usr/bin/setup-initcpio-tailscale to initialize the configuration files at /etc/initcpio/tailscale/.
 	__EOF_HELP__
 }
 

@@ -5,6 +5,7 @@ run_hook() (
   . /etc/default/tailscaled
 
   # Launch tailscale agent in the background
+  /usr/sbin/tailscaled --cleanup
   /usr/sbin/tailscaled \
     --state=/var/lib/tailscale/tailscaled.state \
     --socket=/run/tailscale/tailscaled.sock \
@@ -14,6 +15,7 @@ run_hook() (
 )
 
 run_cleanuphook() {
+  /usr/sbin/tailscaled --cleanup
   local pid=$(cat /run/tailscaled.pid 2>/dev/null)
   [[ -z $pid ]] || kill "$pid"
 }
