@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=godot-mono
 pkgname=godot-mono
-pkgver=4.2
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 arch=('x86_64')
@@ -11,13 +11,13 @@ license=('MIT')
 depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd libsquish
    libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
    mbedtls2 miniupnpc pcre2 dotnet-sdk hicolor-icon-theme)
-makedepends=(alsa-lib gcc pulseaudio scons yasm xorg-server-xvfb nuget python git rsync gzip python)
+makedepends=(alsa-lib gcc pulseaudio scons yasm nuget python git rsync gzip python)
 optdepends=('pipewire-alsa: for audio support'
             'pipewire-pulse: for audio support')
 provides=('godot')
 conflicts=('godot')
 source=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/godot-${pkgver}-stable.tar.xz")
-sha512sums=('ec10126260e939e83dbadb32a3620e79f43249e3f99a1dcfe2ea7b28eaf866040046aea198d42596bac29da02c79a5a0ec0a5c39283b4535923b518530fb64f2')
+sha512sums=('ac09046532f5cf504bd57c867ac8fcb40b30848152cd6a95ee2a2d2c7e9cce027fdfceb66fcf1146e562cbca853a484da861c45c2a5fc0a63021d309bdf04590')
 
 prepare() {
   # Update the MIME info, ref FS#77810
@@ -72,7 +72,7 @@ build() {
     module_mono_enabled=yes \
     mono_glue=no
 
-    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" bin/godot.linuxbsd.editor.x86_64.mono --generate-mono-glue modules/mono/glue
+    bin/godot.linuxbsd.editor.x86_64.mono --headless --generate-mono-glue modules/mono/glue
 
     # Build normal binaries
     modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=linuxbsd
