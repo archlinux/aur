@@ -3,9 +3,9 @@
 _pkgname=chatbot-ui
 pkgname=$_pkgname-git
 pkgver=r293.2e6c0ee
-pkgrel=4
+pkgrel=5
 pkgdesc="An open source ChatGPT UI."
-arch=('any')
+arch=('x86_64')
 url='https://github.com/mckaywrigley/chatbot-ui'
 license=('MIT')
 depends=('nodejs')
@@ -60,4 +60,7 @@ package() {
 
   # Install systemd service file.
   install -Dm0644 -t "${pkgdir}/usr/lib/systemd/system/" "${srcdir}"/chatbot-ui.service
+
+  # Install MIT license.
+  install -Dm0644 license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
