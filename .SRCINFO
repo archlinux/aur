@@ -1,0 +1,20 @@
+pkgbase = brother-hl-l3300cdw
+	pkgdesc = LPR and CUPS driver for the Brother HL-L3300CDW
+	pkgver = 3.5.1
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-hl-l3300cdw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = ghostscript
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf105774/hll3300cdwpdrv-3.5.1-1.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = bcfa5798af170a05e94a5787c500bb9c
+	md5sums = 97ad0cffd216059e9d1d3121899d8646
+	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
+
+pkgname = brother-hl-l3300cdw
