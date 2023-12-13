@@ -79,12 +79,12 @@ function _hr_git() {
   local commands=()
   local clonePath="$(mktemp -d)"
   trap 'rm -rf "$clonePath"' EXIT
-  local gitUrl="$2"
-  local gitRef="$3"
-  local gitPath="$4"
-  local namespace="$5"
-  local releaseName="$6"
-  local values="$7"
+  local gitUrl="$3"
+  local gitRef="$4"
+  local gitPath="$5"
+  local namespace="$6"
+  local releaseName="$7"
+  local values="$8"
 
   commands=($(_parse_hr_subcommand "$clusterConnected" "$subCommand"))
 
@@ -95,7 +95,7 @@ function _hr_git() {
   ) > /dev/null
 
   helm dependency update "$clonePath/$gitPath" > /dev/null
-  helm "${commands[@]}" --namespace $namespace $releaseName "$clonePath/$gitPath" --values <(<<< "$values") ${@:8}
+  helm "${commands[@]}" --namespace $namespace $releaseName "$clonePath/$gitPath" --values <(<<< "$values") ${@:9}
 }
 
 function helmrelease() {
