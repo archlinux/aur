@@ -1,4 +1,4 @@
-#!/usr/bin/env ash
+#!/usr/bin/env bash
 
 run_hook() (
   echo "Starting Tailscale"

@@ -11,12 +11,14 @@ how to add a ssh server to [remotely unlock it][4].
 [1]: https://wiki.archlinux.org/title/Mkinitcpio
 [2]: https://tailscale.com
 [3]: https://wiki.archlinux.org/title/dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio_2
-[4]: https://wiki.archlinux.org/title/Dm-crypt/Specialties#systemd_based_initramfs_(built_with_mkinitcpio)
+[4]: https://wiki.archlinux.org/title/Dm-crypt/Specialties#Remote_unlocking_of_root_(or_other)_partition
 
-Combined that with running the Tailscale service and you get an very secure VPN access from anywhere
-without having to open the ssh port to the world.
+Combine that with Tailscale and you get a secure VPN to access your locked server from anywhere,
+without having to open a firewall hole to ssh from outside your home.
 
 ## Installation
+
+Install [mkinitcpio-tailscale](https://aur.archlinux.org/packages/mkinitcpio-tailscale) package from AUR using your preferred helper, i.e.:
 
 ```
 yay -S mkinitcpio-tailscale
@@ -24,18 +26,15 @@ yay -S mkinitcpio-tailscale
 
 ## Configure
 
-Edit /etc/mkinitcpio.conf and add `sd-tailscale` to HOOKS array, i.e:
+Run `setup-initcpio-tailscale` and follow the instructions. It will register a tailscale node with a hostname derived from the host system,
+let say the host is named `homeserver`, the tailscale node will be registered as `homeserver-initrd`; that makes it easier 
+to later identify the node in Tailscale panel.
 
-> HOOKS=(base **systemd** keyboard autodetect keymap modconf sd-vconsole *sd-network* *sd-resolve* *sd-tinyssh* **sd-tailscale** block sd-encrypt filesystems fsck)
+Edit /etc/mkinitcpio.conf and add `tailscale` to HOOKS array.
 
-**NOTE**: In above HOOKS line there are three hooks provided by mkinitcpio-systemd-extras package: `sd-network`, `sd-resolve` and `sd-tinyssh`.
-          Even if you can get the early boot network configuration working without them, it is much simpler this way.
+For systemd based initramfs, the insertion order of the `tailscale` hook doesn't matter as long as it is after `systemd` hook itself.
 
-*IMPORTANT*: This hook doesn't work with mkinitcpio configurations that uses `udev` hook instead of `systemd`
-
-Once the hook is configured, run `setup-initcpio-tailscale` (as a normal user) and follow the instructions to register the node to your tailscale account.
-The script will register a tailscale node with a hostname derived from the host system, let say the host is named `homeserver`, the
-tailscale node will be registered as `homeserver-initrd`; that makes it easier to identify the node in Tailscale panel.
+For busybox based initramfs, it is recommended to place it after any network related hook and before any blocking hook like `encrypt` or `encryptssh`
 
 ## Security Considerations
 

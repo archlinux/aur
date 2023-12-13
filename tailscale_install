@@ -48,11 +48,13 @@ help() {
 
 		* /etc/initcpio/tailscale/default.env to /etc/default/tailscaled
 
-	It works with both, systemd and busybox init systems; but whatever you choose remember to also add a network and ssh server hook.
+	It works with both, systemd and busybox init systems; whatever you choose remember to also configure network and a ssh server.
 
 	For systemd inits, see 'sd-network' and 'sd-tinyssh' hooks provided by mkinitcpio-systemd-extras package.
 
-	Run /usr/bin/setup-initcpio-tailscale to initialize the configuration files at /etc/initcpio/tailscale/.
+	Run /usr/bin/setup-initcpio-tailscale if you haven't already to initialize the configuration files at /etc/initcpio/tailscale/.
+
+	For more check https://github.com/dangra/mkinitcpio-tailscale
 	__EOF_HELP__
 }
 
