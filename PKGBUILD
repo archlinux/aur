@@ -1,13 +1,14 @@
-# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: Albert Gräf <aggraef@gmail.com>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Contributor: Milk Brewster <aurentry@milkmiruku.com>
 
 _pkgname=element
 pkgname=$_pkgname-git
-pkgver=0.46.5.r489.ga46ede9a
+pkgver=0.46.5.r808.g1cfa4191
 pkgrel=1
 pkgdesc='A modular audio plugin host (git version)'
 arch=(x86_64)
-url='https://github.com/kushview/Element'
+url='https://kushview.net/element/'
 license=(GPL3)
 groups=(pro-audio)
 depends=(gcc-libs hicolor-icon-theme)
@@ -15,10 +16,8 @@ makedepends=(alsa-lib boost git ladspa lilv lv2 suil)
 optdepends=('lua: for LUA scripting')
 provides=($_pkgname ladspa-host lv2-host vst3-host)
 conflicts=($_pkgname)
-source=("$_pkgname::git+https://github.com/kushview/Element.git"
-        'JUCE::git+https://github.com/WeAreRoli/JUCE.git')
-md5sums=('SKIP'
-         'SKIP')
+source=("$_pkgname::git+https://gitlab.com/kushview/element.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -28,15 +27,8 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd $_pkgname
-  git submodule init
-  git config submodule.JUCE.url "$srcdir/"JUCE
-  git -c protocol.file.allow=always submodule update
-}
-
 build() {
-  arch-meson $_pkgname $_pkgname-build
+  meson $_pkgname $_pkgname-build --prefix /usr
   meson compile -C $_pkgname-build
 }
 
