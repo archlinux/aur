@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ppclust
-_pkgver=1.1.0
+_pkgver=1.1.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.1.0.1
+pkgrel=1
 pkgdesc='Probabilistic and Possibilistic Cluster Analysis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-vegclust
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9bf672724d6f7a65f64b7ca268aa43bad066afe2cc7d1a1546c8c677bc94af6e')
+sha256sums=('f14d55f4ea0aee9469769d02ccabdda42973e501c234708c71e8b212115030d3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
