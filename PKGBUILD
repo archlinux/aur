@@ -1,7 +1,7 @@
 # Maintainer: kyngs <aurmail at kyngs dot xyz>
 
 pkgname=mcman-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Powerful Minecraft Server Manager CLI."
 arch=('x86_64')
