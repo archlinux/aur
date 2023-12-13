@@ -1,21 +1,21 @@
 pkgbase = osu-wine-git
 	pkgdesc = osu!
-	pkgver = 1.0.r1.gc36d24f
+	pkgver = 1.0.r2.g062ad51
 	pkgrel = 1
 	url = https://github.com/Nefelim4ag/osu-wine
 	install = osu-wine-git.install
 	arch = any
 	license = GPL3
-	depends = wine
-	depends = winetricks
-	depends = bash
-	depends = lib32-gnutls
-	depends = wget
+	makedepends = git
 	optdepends = lib32-libpulse: for audio
-	optdepends = wine-staging
+	optdepends = lib32-gnutls
 	backup = etc/osu-wine.conf
-	source = osu-wine-git::git://github.com/Nefelim4ag/osu-wine.git#branch=master
-	md5sums = SKIP
+	source = osu-wine::git+https://github.com/Nefelim4ag/osu-wine.git
+	sha256sums = SKIP
 
 pkgname = osu-wine-git
-
+	depends = bash
+	depends = hicolor-icon-theme
+	depends = wget
+	depends = wine
+	depends = winetricks

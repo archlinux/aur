@@ -1,2 +1,4 @@
-*.pkg.tar.xz
-osu-wine-git
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
