@@ -2,7 +2,7 @@
 
 pkgname=mint-backgrounds
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The backgrounds of Linux Mint"
 license=('Various')
 arch=('any')
