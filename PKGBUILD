@@ -1,7 +1,7 @@
 # Maintainer: Antony Ho <ntonyworkshop@gmail.com>
 pkgname=session-desktop
 pkgver=1.11.5
-pkgrel=2
+pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
