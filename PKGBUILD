@@ -1,4 +1,5 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer:  Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer:  Truocolo <truocolo@aol.com>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 # Contributor: Davide Depau <davide@depau.eu>
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
@@ -10,30 +11,38 @@
 
 _pkgname="libadwaita"
 pkgbase="${_pkgname}-git"
-pkgname=("${pkgbase}"
-         "${_pkgname}-git-docs"
-         "${_pkgname}-git-demos")
+pkgname=(
+  "${pkgbase}"
+  "${_pkgname}-git-docs"
+  "${_pkgname}-git-demos")
 pkgver=1.3.rc+311+ge810d86b
-pkgrel=1
+pkgrel=2
 pkgdesc="Building blocks for modern adaptive GNOME applications"
+_url="https://gitlab.gnome.org/GNOME/${_pkgname}"
 url="https://gnome.pages.gitlab.gnome.org/${_pkgname}"
 arch=(
   'x86_64'
   'i686'
   'pentium4'
+  'arm'
   'aarch64'
   'armv7h')
 license=(LGPL)
-depends=("gtk4>=4.11")
+depends=(i
+  "gtk4>=4.11")
 makedepends=(
+  cmake
   git
   meson
   gi-docgen
   sassc
   gobject-introspection
   vala)
-checkdepends=(weston)
-source=("${_pkgname}::git+https://gitlab.gnome.org/GNOME/${_pkgname}")
+checkdepends=(
+  appstream
+  weston)
+source=(
+  "${_pkgname}::git+${_url}")
 sha256sums=(SKIP)
 
 pkgver() {
@@ -58,7 +67,10 @@ check() {
 
   trap "kill $_w; wait" EXIT
 
-  meson test -C build --print-errorlogs
+  meson \
+    test \
+      -C build \
+      --print-errorlogs
 }
 
 _pick() {
@@ -67,38 +79,65 @@ _pick() {
     d="$srcdir/$p/${f#$pkgdir/}"
     mkdir -p "$(dirname "$d")"
     mv "$f" "$d"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+    rmdir \
+      -p \
+      --ignore-fail-on-non-empty \
+      "$(dirname "$f")"
   done
 }
 
 package_libadwaita-git() {
-  depends+=(libgtk-4.so)
-  provides+=("${_pkgname}=${pkgver}" libadwaita-1.so)
-  conflicts=("${_pkgname}")
+  depends+=(
+    libgtk-4.so)
+  provides+=(
+    "${_pkgname}=${pkgver}" libadwaita-1.so)
+  conflicts=(
+    "${_pkgname}")
 
-  meson install -C build --destdir "${pkgdir}"
+  meson \
+    install \
+      -C build \
+      --destdir \
+        "${pkgdir}"
 
-  cd "${pkgdir}"
+  cd \
+    "${pkgdir}"
 
-  _pick docs usr/share/doc
+  _pick \
+    docs \
+    usr/share/doc
 
-  _pick demo usr/bin/adwaita-1-demo
-  _pick demo usr/share/applications/org.gnome.Adwaita1.Demo.desktop
-  _pick demo usr/share/icons/hicolor/*/apps/org.gnome.Adwaita1.Demo[-.]*
-  _pick demo usr/share/metainfo/org.gnome.Adwaita1.Demo.metainfo.xml
+  _pick \
+    demo \
+    usr/bin/adwaita-1-demo
+  _pick \
+    demo \
+    usr/share/applications/org.gnome.Adwaita1.Demo.desktop
+  _pick \
+    demo \
+    usr/share/icons/hicolor/*/apps/org.gnome.Adwaita1.Demo[-.]*
+  _pick \
+    demo \
+    usr/share/metainfo/org.gnome.Adwaita1.Demo.metainfo.xml
 }
 
 package_libadwaita-git-docs() {
   pkgdesc+=" (documentation)"
   depends=()
-  mv docs/* "${pkgdir}"
+  mv \
+    docs/* \
+    "${pkgdir}"
 }
 
 package_libadwaita-git-demos() {
   pkgdesc+=" (demo applications)"
-  provides=("${_pkgname}-demos=${pkgver}")
-  depends=("${_pkgname}-git")
-  mv demo/* "${pkgdir}"
+  provides=(
+    "${_pkgname}-demos=${pkgver}")
+  depends=(
+    "${_pkgname}-git")
+  mv \
+    demo/* \
+    "${pkgdir}"
 }
 
 # vim:set sw=2 et:
