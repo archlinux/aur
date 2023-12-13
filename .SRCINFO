@@ -1,0 +1,11 @@
+pkgbase = zhlt
+	pkgdesc = goldSrc map compiling tools (bsp, csg, rad, vis, ripend)
+	pkgver = 34
+	pkgrel = 1
+	url = https://gamebanana.com/tools/5391
+	arch = any
+	license = GPL
+	source = https://twhl.info/wiki/embed/Vluzacn's_ZHLT_v34
+	sha256sums = d5c64a9203009f235fb287ee7e767e8c30b9d817033a1bcab96531c3064e7a31
+
+pkgname = zhlt
