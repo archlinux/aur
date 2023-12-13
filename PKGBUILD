@@ -18,11 +18,11 @@ provides=('dl-distro')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$_pkgname"
+	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	cd "$srcdir/$_pkgname"
+	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
