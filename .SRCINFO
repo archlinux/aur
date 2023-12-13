@@ -1,6 +1,6 @@
 pkgbase = git-it-electron-git
 	pkgdesc = A Desktop App for Learning Git and GitHub
-	pkgver = 5.2.2.r338.g8477248
+	pkgver = 5.2.2.r352.g05aeb8f
 	pkgrel = 1
 	url = https://github.com/Git-it-App/git-it-electron
 	arch = any
@@ -9,13 +9,12 @@ pkgbase = git-it-electron-git
 	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
-	depends = bash
 	depends = electron25
 	provides = git-it-electron
 	conflicts = git-it-electron
-	source = git-it-electron.git::git+https://github.com/Git-it-App/git-it-electron.git
+	source = git-it-electron::git+https://github.com/Git-it-App/git-it-electron.git
 	source = git-it-electron.sh
 	sha256sums = SKIP
-	sha256sums = 0321bdf601741dceb78fdca449f1b2e1c90e7e3253729bf8d419b762c45ca47d
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = git-it-electron-git
