@@ -6,15 +6,15 @@ pkgbase = musicfree-desktop
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
-	makedepends = npm>=8.19.4
-	makedepends = nodejs>=16.20.2
-	depends = bash
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
 	depends = electron25
 	depends = libvips
 	conflicts = musicfree-desktop
-	source = musicfree-desktop-0.0.2.zip::https://github.com/maotoumao/MusicFreeDesktop/archive/refs/tags/v0.0.2.zip
+	source = musicfree-desktop-0.0.2::git+https://github.com/maotoumao/MusicFreeDesktop.git#tag=v0.0.2
 	source = musicfree-desktop.sh
-	sha256sums = 8c84b648edfd07673df7173d7eb0599644ac1a5b42d33960f53c135751a0012c
-	sha256sums = bd3152f0d47a8eb3951bc5c0207ead72d2998694e59ce8dd7f13797fdd83fe6f
+	sha256sums = SKIP
+	sha256sums = a198354ed58f8a867b69ef67afd19f61fed4046f46e58252f57cfd328ad677b9
 
 pkgname = musicfree-desktop
