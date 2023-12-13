@@ -1,6 +1,6 @@
 pkgbase = brave-nightly-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (nightly binary release).
-	pkgver = 1.63.36
+	pkgver = 1.63.38
 	pkgrel = 1
 	url = https://brave.com/download-nightly
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = brave-nightly-bin
 	options = !strip
 	source = brave-nightly-bin.sh
 	sha512sums = 191500db5dd9692d362745e0055f9ac570c7ca2043edcf3e2eb9dcf8039615022f3459c909ed29d89410886481723d2d439086f1938249674ea32654819190c4
-	source_x86_64 = https://github.com/brave/brave-browser/releases/download/v1.63.36/brave-browser-nightly_1.63.36_amd64.deb
-	sha512sums_x86_64 = 1453994b78c34cfecf3ee4b77002c0bc431e0d2d08590258c3c055777e220ce11fc771863acb909b8eafa12a615735cf85bbcea0553ea7c7213fe1845e90650b
-	source_aarch64 = https://github.com/brave/brave-browser/releases/download/v1.63.36/brave-browser-nightly_1.63.36_arm64.deb
+	source_x86_64 = https://github.com/brave/brave-browser/releases/download/v1.63.38/brave-browser-nightly_1.63.38_amd64.deb
+	sha512sums_x86_64 = a18d9724e3885ef44e33b18b6b1cc01938374d0d27f46a855e17b66c6b56aae762cfc41404252268244c305df8e7d55389da13fda860eeb80f657d4b1f7f59dd
+	source_aarch64 = https://github.com/brave/brave-browser/releases/download/v1.63.38/brave-browser-nightly_1.63.38_arm64.deb
 	sha512sums_aarch64 = SKIP
 
 pkgname = brave-nightly-bin
