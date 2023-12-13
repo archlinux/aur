@@ -1,9 +1,8 @@
 pkgbase = fmedia-bin
 	pkgdesc = Fast media player/recorder/converter
 	pkgver = 1.31
-	pkgrel = 3
+	pkgrel = 4
 	url = https://stsaz.github.io/fmedia
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = imagemagick
@@ -20,6 +19,8 @@ pkgbase = fmedia-bin
 	conflicts = fmedia
 	options = !strip
 	source = fmedia-bin-1.31.tar.xz::https://github.com/stsaz/fmedia/releases/download/v1.31/fmedia-1.31-linux-amd64.tar.xz
+	source = fmedia.sh
 	sha256sums = 9f2347b0316275b081e98feaaed8b17c4750c2855f85606b79b26f6e62ba8ab0
+	sha256sums = 6e07f73612198323cad08fea41f1a1a22c89a64e39ce816bd551c7f9353fb26e
 
 pkgname = fmedia-bin
