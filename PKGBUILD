@@ -1,38 +1,27 @@
-# Maintainer: Joar Heimonen <joarheimonen@live.no>
-# Note: This is only an install script for Yuma123, not the actual project itself.
-
-pkgname=yuma123-git
-pkgver=latest
+# Maintainer: Riel Joseph <bulaybulay.rielj@gmail.com>
+pkgname=golings
+pkgver=0.6.2
 pkgrel=1
-pkgdesc="Open-source YANG API in C and CLI (yangcli) and server (netconfd)"
+pkgdesc="Rustlings for Golang this time"
 arch=('x86_64')
-url="https://github.com/vlvassilev/yuma123"
-license=('BSD')
-depends=('git' 'autoconf' 'automake' 'make' 'gcc')
-makedepends=('libtool') # Add libtool as a build dependency
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-pkgbase=yuma123-git
-
-source=("git+https://github.com/vlvassilev/yuma123")
+url="https://github.com/mauricioabreu/golings"
+license=('APACHE')
+depends=('go')
+provides=("golings")
+conflicts=("golings")
+install="golings.install"
+source=("https://github.com/mauricioabreu/golings/releases/download/v${pkgver}/${pkgname}_${pkgver}_Linux_x86_64.tar.gz")
+sha256sums=('3235016060403a807961d5bda9643104fea022a6283eb09ebb4bbc36131a28c7') 
 
 prepare() {
-  cd "$srcdir/yuma123"
-  libtoolize
-  autoreconf -i -f
-}
-
-build() {
-  cd "$srcdir/yuma123"
-  ./configure CFLAGS='-g -O0' CXXFLAGS='-g -O0' --prefix=/usr
-  make
+  wget "$source" -O ${pkgname}_${pkgver}_Linux_x86_64.tar.gz
 }
 
 package() {
-  cd "$srcdir/yuma123"
-  make DESTDIR="${pkgdir}" install
-  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
+  tar -xvf ${pkgname}_${pkgver}_Linux_x86_64.tar.gz
+  install -D golings -t "$pkgdir"/usr/bin/
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
 
-sha256sums=('SKIP') 

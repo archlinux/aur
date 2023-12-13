@@ -1,0 +1,3 @@
+post_install() {
+    echo "You still need to clone the official golings repository!"
+}
