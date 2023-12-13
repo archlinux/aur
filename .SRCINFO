@@ -1,6 +1,6 @@
 pkgbase = wasm-tools
 	pkgdesc = Low level tooling for WebAssembly in Rust
-	pkgver = 1.0.51
+	pkgver = 1.0.54
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/wasm-tools
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wasm-tools
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/bytecodealliance/wasm-tools/archive/refs/tags/wasm-tools-1.0.51.tar.gz
-	sha256sums = 3d3d1b9ce8b22f64f929040304cf4e0c5ff0f164f32816f0f60f020c2004b0b3
+	source = https://github.com/bytecodealliance/wasm-tools/archive/refs/tags/wasm-tools-1.0.54.tar.gz
+	sha256sums = 3d6d53800409aac71ba6c425525fd4135b6661254af50f15da3cbb667ee12162
 
 pkgname = wasm-tools
