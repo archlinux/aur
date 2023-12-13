@@ -2,7 +2,7 @@
 pkgname=atsas
 pkgver=3.2.1
 _pkgrel_upstream=1
-pkgrel=2
+pkgrel=3
 pkgdesc="A program suite for small-angle scattering data analysis from biological macromolecules"
 arch=('x86_64')
 url="https://www.embl-hamburg.de/biosaxs/software.html"
@@ -63,4 +63,10 @@ package() {
  	mv "${pkgdir}${ATSAS_ROOT}/share/mime" "${pkgdir}/usr/share"
 	mkdir -p "${pkgdir}/etc/fish/conf.d"
 	cp "${srcdir}/atsas.fish" "${pkgdir}/etc/fish/conf.d/atsas.fish"
+	find "${pkgdir}${ATSAS_ROOT}" -type d -exec chmod 755 {} \;
+        find "${pkgdir}${ATSAS_ROOT}" -type f -exec chmod 644 {} \;
+	find "${pkgdir}${ATSAS_ROOT}/bin" -type f -exec chmod 755 {} \;
+        find "${pkgdir}${ATSAS_ROOT}/lib" -type f -exec chmod 755 {} \;
+
+	
 }

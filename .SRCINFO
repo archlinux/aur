@@ -1,7 +1,7 @@
 pkgbase = atsas
 	pkgdesc = A program suite for small-angle scattering data analysis from biological macromolecules
 	pkgver = 3.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.embl-hamburg.de/biosaxs/software.html
 	install = install
 	arch = x86_64
