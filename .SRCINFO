@@ -1,19 +1,18 @@
 pkgbase = postbird-bin
 	pkgdesc = Open source PostgreSQL GUI client for macOS, Linux and Windows
 	pkgver = 0.8.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Paxa/postbird
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = electron6
 	provides = postbird=0.8.4
 	conflicts = postbird
 	source = postbird-0.8.4.pacman::https://github.com/Paxa/postbird/releases/download/0.8.4/Postbird-0.8.4.pacman
-	source = LICENSE::https://raw.githubusercontent.com/Paxa/postbird/0.8.4/LICENSE
+	source = LICENSE-0.8.4::https://raw.githubusercontent.com/Paxa/postbird/0.8.4/LICENSE
 	source = postbird.sh
 	sha256sums = e3cc9eb893a35ddd0cc93ca10e526957c9c04896044a3b7c0f445daad45adfea
 	sha256sums = d93e84fa24bbea7e92d6cd171968d8da1f4a28047cc704f0700d17b57c7a9a9c
-	sha256sums = 2fa44145951fe012054be473af73d3488122da16b61f3c39e54d7ae444e1f58c
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = postbird-bin
