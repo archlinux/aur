@@ -16,6 +16,6 @@ optdepends=('chatterino: For opening chat'
 sha256sums=('05cc3c0728c409263ec31058207c01270dbcc378150622ceff086149337e9d80')
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+	cd "$srcdir/$pkgname"
+	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
