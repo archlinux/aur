@@ -78,7 +78,7 @@ function _hr_git() {
   local subCommand="${2?}"
   local commands=()
   local clonePath="$(mktemp -d)"
-  trap 'rm -rf "$clonePath"' EXIT
+  trap "rm -rf '$clonePath'" EXIT
   local gitUrl="$3"
   local gitRef="$4"
   local gitPath="$5"
