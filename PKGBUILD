@@ -15,7 +15,12 @@ depends=(
 	'glibc'
 	'gcc-libs'
 )
-makedepends=('git')
+makedepends=(
+	'git'
+	'yaml-cpp'
+	'gtest'
+	'cmake'
+)
 source=("linglong-box::git+https://github.com/linuxdeepin/linglong-box.git#branch=release/1.3")
 md5sums=('SKIP')
 
