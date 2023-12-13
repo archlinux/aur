@@ -1,7 +1,7 @@
 pkgbase = blender-plugin-sketchfab
 	pkgdesc = Directly import and export models from and to Sketchfab in Blender
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sketchfab/blender-plugin
 	arch = any
 	license = Apache
