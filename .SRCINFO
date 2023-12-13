@@ -1,0 +1,19 @@
+pkgbase = extremely-linear-git
+	pkgdesc = Extremely Linear Git History
+	pkgver = r62.0000061
+	pkgrel = 1
+	url = https://github.com/zegl/extremely-linear
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	checkdepends = bash-bats
+	makedepends = git
+	depends = lucky-commit
+	provides = extremely-linear
+	conflicts = extremely-linear
+	conflicts = extremely-linear-git
+	source = git+https://github.com/zegl/extremely-linear.git
+	md5sums = SKIP
+
+pkgname = extremely-linear-git
