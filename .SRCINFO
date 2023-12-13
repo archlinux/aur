@@ -1,6 +1,6 @@
 pkgbase = python-connexion
 	pkgdesc = Connexion is a modern Python web framework that makes spec-first and api-first development easy
-	pkgver = 3.0.2
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://github.com/spec-first/connexion
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-connexion
 	depends = python-requests
 	depends = python-starlette
 	depends = python-werkzeug
-	source = https://github.com/spec-first/connexion/archive/refs/tags/3.0.2.tar.gz
-	sha256sums = 17b12ef04de3d768f99b728eb18c809538075a1cb63934aa13d89b8a02acb059
+	source = https://github.com/spec-first/connexion/archive/refs/tags/3.0.5.tar.gz
+	sha256sums = aa00748e365c327f37e2aedcecf1f82b40b0c7ccd9d8c7930286cc594a42636c
 
 pkgname = python-connexion
