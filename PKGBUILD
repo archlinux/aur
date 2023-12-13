@@ -12,7 +12,7 @@ source=("tailscale_hook"
         "tailscale_install"
         "setup-initcpio-tailscale")
 sha256sums=('5c341668e502c5e54e25b24607b1eb004a78d52332c48ccdfb07003f19f6fc8d'
-            'c1103a919a98c14f3c1492088b8cac7e711f8c99631a3859afe7eca0959911ef'
+            '4719b7b8f6371bef68928cd3eb191cd3c985666fd935a05cdfe731092e8adc91'
             '480dec84c705dc437cb6fb1715031c1ea8e48c6b89cb0fd8c86a3af7169062f7')
 
 package() {
