@@ -2,11 +2,22 @@
 
 pkgbase=groestlcoin
 pkgname=('groestlcoin-daemon' 'groestlcoin-cli' 'groestlcoin-qt' 'groestlcoin-tx' 'groestlcoin-wallet' 'groestlcoin-util')
-pkgver=25.0
+pkgver=26.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.groestlcoin.org/groestlcoin-core-wallet/"
-makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq' 'db5.3' 'gmp')
+makedepends=(
+  boost
+  db5.3
+  gmp
+  libevent
+  libminiupnpc.so
+  libsqlite3.so
+  libzmq.so
+  qrencode
+  qt5-base
+  qt5-tools
+)
 license=('MIT')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/Groestlcoin/groestlcoin/releases/download/v$pkgver/groestlcoin-$pkgver.tar.gz"
         "$pkgbase-$pkgver.SHA256SUMS::https://github.com/Groestlcoin/groestlcoin/releases/download/v$pkgver/SHA256SUMS"
@@ -15,15 +26,15 @@ source=("$pkgbase-$pkgver.tar.gz::https://github.com/Groestlcoin/groestlcoin/rel
         "groestlcoin.tmpfiles"
         "groestlcoin-qt.desktop"
         "groestlcoin-qt.appdata.xml")
-sha256sums=('23d27c2135cce492d7680b1b939ee2dbae1d56df9eb161301e3712eaaa94988e'
-            '65e0ec1d0c6605fb398af8e9647b69dbe23660454c98c7094670deda0e03462b'
+sha256sums=('45ff0c7e58e3e6cd9be4db00f8ba02566249538487f5711e64d4f0187414fb46'
+            'ebf227f6714f490e6a40c96e80c8c8cae1b7b5e49c69733f4d014456f46238d9'
             'SKIP'
             '766f1732b72ee105aa4380ab9433bc6e7d957896e0f3d84eaf08202dc7c0fc85'
             '3cc8b772cd5bde500d74ec45c870168834b93b3b69197a8b1aa809d8b9a69d4f'
             '4dc7fe4ae360b2bbd2ffbebab8849417c31145adff2ecdcfbb3bb03835cd1cf7'
             '87f9a2bc6c3a91f7fd9668d84e35e69bdaed221c7d4655d39b54561845424e21')
-b2sums=('770ff8a5e26b6bbab10c79cd1e6814681ab66861a774c8d224c70d63e585d6645f881902b46d0fa98ca73c965ba3bf44bdce55f1098c032ebc7defd6c85bd10e'
-        '857b0feba1b8ad956470d7b928fd52dbe42309ffc1931d2217e185ecc64383476554f715a58382f97ab0bbda7870ef7e13ff02dedd3b902f65eeeedbae37e266'
+b2sums=('2dc43490e85e83fdb5c4582afb257b9ae863f58add69be4e21d0273c2e420017a59ff5e70fcac27556c12348567641529f9698a4661d8f1474537f596407a30a'
+        '46a75f32997540587b3b5971721b01ba9a770d502ff022468293a5b63c2ca5f2e8b5e2d92165a9453d80eab70f44870bd9eb6f1a1e3f12ea1f8f681fcf9e4213'
         'SKIP'
         'f6bfe677aea28c40794f3c37e48d908215543736c558ef9f3f7ada6cf1d9016200821903c6c676f4841092170cfa64ee8f03f697aea19ea82b78877f9167526b'
         'ebf2151e205daeb14ab5260f204040dcb2bf9969d3e6be8c166abdb74f86ef92a05174cc97f2360c8044c81e8bdfd68a74bf1f114dce8b75e421b4184165a54f'
@@ -40,13 +51,25 @@ prepare() {
 
 build() {
   cd $pkgbase-$pkgver
+  #remove _FORTIFY_SOURCE from CXXFLAGS to prevent a duplicate definition warning as configure adds _FORTIFY_SOURCE itself
+  CXXFLAGS=${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}
   ./configure --prefix=/usr --with-gui=qt5 BDB_LIBS="-ldb_cxx-5.3" BDB_CFLAGS="-I/usr/include/db5.3"
   make
 }
 
 package_groestlcoin-qt() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - Qt"
-  depends=(boost-libs libevent qt5-base miniupnpc libminiupnpc.so qrencode protobuf zeromq hicolor-icon-theme db5.3 gmp)
+  depends=(
+    db5.3
+    gmp
+    hicolor-icon-theme
+    libevent
+    libminiupnpc.so
+    libsqlite3.so
+    libzmq.so
+    qrencode
+    qt5-base
+  )
 
   cd $pkgbase-$pkgver
   install -Dm755 src/qt/groestlcoin-qt "$pkgdir"/usr/bin/groestlcoin-qt
@@ -71,12 +94,19 @@ package_groestlcoin-qt() {
 
 package_groestlcoin-daemon() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - daemon"
-  depends=(boost-libs db5.3 libevent miniupnpc libminiupnpc.so sqlite zeromq gmp)
+  depends=(
+    db5.3
+    gmp
+    libevent
+    libminiupnpc.so
+    libsqlite3.so
+    libzmq.so
+  )
   backup=('etc/groestlcoin/groestlcoin.conf')
 
   cd $pkgbase-$pkgver
   install -Dm755 src/groestlcoind "$pkgdir"/usr/bin/groestlcoind
-  install -Dm644 contrib/completions/bash/groestlcoind.bash-completion \
+  install -Dm644 contrib/completions/bash/groestlcoind.bash \
     "$pkgdir/usr/share/bash-completion/completions/groestlcoind"
   install -Dm644 contrib/completions/fish/groestlcoind.fish \
     -t "$pkgdir/usr/share/fish/vendor_completions.d/"
@@ -100,7 +130,7 @@ package_groestlcoin-cli() {
 
   cd $pkgbase-$pkgver
   install -Dm755 src/groestlcoin-cli "$pkgdir"/usr/bin/groestlcoin-cli
-  install -Dm644 contrib/completions/bash/groestlcoin-cli.bash-completion \
+  install -Dm644 contrib/completions/bash/groestlcoin-cli.bash \
     "$pkgdir/usr/share/bash-completion/completions/groestlcoin-cli"
   install -Dm644 contrib/completions/fish/groestlcoin-cli.fish \
     -t "$pkgdir/usr/share/fish/vendor_completions.d/"
@@ -112,11 +142,14 @@ package_groestlcoin-cli() {
 
 package_groestlcoin-tx() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - Transaction tool"
-  depends=(boost-libs)
+  depends=(
+    db5.3
+    libsqlite3.so
+  )
 
   cd $pkgbase-$pkgver
   install -Dm755 src/groestlcoin-tx "$pkgdir"/usr/bin/groestlcoin-tx
-  install -Dm644 contrib/completions/bash/groestlcoin-tx.bash-completion \
+  install -Dm644 contrib/completions/bash/groestlcoin-tx.bash \
     "$pkgdir/usr/share/bash-completion/completions/groestlcoin-tx"
   install -Dm644 contrib/completions/fish/groestlcoin-tx.fish \
     -t "$pkgdir/usr/share/fish/vendor_completions.d/"
@@ -128,7 +161,10 @@ package_groestlcoin-tx() {
 
 package_groestlcoin-wallet() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - Wallet tool"
-  depends=(boost-libs)
+  depends=(
+    db5.3
+    libsqlite3.so
+  )
 
   cd $pkgbase-$pkgver
   install -Dm755 src/groestlcoin-wallet "$pkgdir"/usr/bin/groestlcoin-wallet
@@ -142,7 +178,10 @@ package_groestlcoin-wallet() {
 
 package_groestlcoin-util() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - Util tool"
-  depends=(boost-libs)
+  depends=(
+    db5.3
+    libsqlite3.so
+  )
 
   cd $pkgbase-$pkgver
   install -Dm755 src/groestlcoin-util "$pkgdir"/usr/bin/groestlcoin-util
