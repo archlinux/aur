@@ -1,10 +1,10 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 
 pkgname='blender-plugin-sketchfab'
-pkgver='1.5.0'
+pkgver='1.6.0'
 # replace . with -
 _name="sketchfab-plugin-${pkgver//./-}"
-_blenderver='3.5'
+_blenderver='4.0'
 pkgrel=1
 pkgdesc="Directly import and export models from and to Sketchfab in Blender"
 arch=('any')
@@ -17,10 +17,11 @@ optdepends=()
 provides=()
 conflicts=()
 source=("https://github.com/sketchfab/blender-plugin/releases/download/${pkgver}/${_name}.zip")
-sha256sums=('2af10639ec07177e8494d492200caf254cb43c4572519ce55f705e348b50cf4b')
+sha256sums=('79c9290c608308c27507d7bd5f96f8d7c9bbf5ce8f3ce73ec1793dd6661f36f7')
 
 
 package() {
+    # todo get blenderver from blender --version
     _dest="${pkgdir}/usr/share/blender/${_blenderver}/scripts/addons"
     install -d "${_dest}"
     bsdtar --cd "${_dest}" -xf "${_name}.zip"
