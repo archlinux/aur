@@ -4,7 +4,7 @@
 pkgname=coolterm-bin
 _pkgname=CoolTerm
 pkgver=2.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple GUI serial port terminal application (no terminal emulation)"
 arch=(
 	"aarch64"
@@ -25,27 +25,35 @@ depends=(
 	'cairo'
 	'pango'
 	'libx11'
+	'libunwind'
 )
-makedepends=('gendesk')
-source=("LICENSE")
+makedepends=(
+	'gendesk'
+)
+source=(
+	"${pkgname%-bin}.sh"
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/${_pkgname}RaspberryPi64Bit.zip")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/${_pkgname}RaspberryPi.zip")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/${_pkgname}Linux32Bit.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/${_pkgname}Linux64Bit.zip")
-sha256sums=('3309abddebf57f96282762a63fe7937852fbad4e79e119fbe4c6aa227b197e94')
+sha256sums=('d3a6af518a2ce92bb90c615d53aa8c27fde266697fb6fd6c1ac1ca89febfe2ee')
 sha256sums_aarch64=('c10c0b9b8432c49a9e6ae77e68941036ea5e35a3dde6713b0fc3b74ba18c93ea')
 sha256sums_armv7h=('258ab48d00698536585a2fcc1a0b3d5fb2ebb704776bf60d82d8c46ed4311c59')
 sha256sums_i686=('fb4072c5a37744bd685e19d1fd63f649ac9824512cb1e860f24128dfc2172ab4')
 sha256sums_x86_64=('5b5c2d620d20e19f8e9aeef463ee2dcc23f7c843b6da2e36da05f045d6d668ce')
 build() {
+	sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runappname@|${_pkgname}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
 	gendesk -q -f -n --categories "System;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
-	find "${srcdir}/${_pkgname}/Scripting/Python/Examples" -name "*.py" -exec chmod 755 {} \;
+	find "${srcdir}/${_pkgname}"*/Scripting/Python/Examples -name "*.py" -exec chmod 755 {} \;
 }
 package() {
-	install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
+	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
 	cp -r "${srcdir}/${_pkgname}"*/* "${pkgdir}/opt/${pkgname%-bin}"
-	ln -sf "/opt/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 	install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/${_pkgname} Resources/Help/app_icon_256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-	install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 "${srcdir}/${_pkgname}"*/ReadMe.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
