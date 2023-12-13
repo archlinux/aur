@@ -47,6 +47,8 @@ package_vulkan-wsi-layer-git() {
 
   install -Dm644 vulkan-wsi-layer/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 build64/libVkLayer_window_system_integration.so -t "${pkgdir}/usr/lib/"
+
+  sed -i 's;./libVkLayer_window_system_integration.so;libVkLayer_window_system_integration.so;' build64/VkLayer_window_system_integration.json
   install -Dm644 build64/VkLayer_window_system_integration.json -t "${pkgdir}/usr/share/vulkan/explicit_layer.d/"
 }
 
