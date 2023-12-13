@@ -6,7 +6,6 @@ pkgbase = redis-gui-bin
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
-	depends = bash
 	depends = electron19
 	depends = gdk-pixbuf2
 	depends = libx11
@@ -16,10 +15,10 @@ pkgbase = redis-gui-bin
 	provides = redis-gui=2.3.0
 	conflicts = redis-gui
 	source = redis-gui-2.3.0.AppImage::https://github.com/ekvedaras/redis-gui/releases/download/v2.3.0/redis-gui-2.3.0.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/ekvedaras/redis-gui/v2.3.0/LICENSE
+	source = LICENSE-2.3.0::https://raw.githubusercontent.com/ekvedaras/redis-gui/v2.3.0/LICENSE
 	source = redis-gui.sh
 	sha256sums = a6867340661adc15b95b569c5bd0a82fb3dd61c9e76677d368f06367ce7d97ef
 	sha256sums = ac76bfd52440815cb3e8ec5ea00f1f9b82c9b404219814f2f05c3fe44a9446c5
-	sha256sums = 654415f35cc8fc8a3fa2e795ce2552325cfaea65930f397cd626ace770eb981f
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = redis-gui-bin
