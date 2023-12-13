@@ -4,7 +4,8 @@ pkgname="${_pkgname}-reader-bin"
 _appname=Thorium
 _fullname="${_appname}Reader"
 pkgver=2.3.0
-pkgrel=1
+_electronversion=25
+pkgrel=2
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 arch=('x86_64')
 url="https://www.edrlab.org/software/thorium-reader/"
@@ -13,19 +14,22 @@ license=('BSD')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'bash'
-    'electron25'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/EDRLab.${_fullname}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/edrlab/thorium-reader/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/edrlab/thorium-reader/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1007cd9083715d32427e4d39f8a4cac69cf428cfc4521950571dc2290a308f23'
             'e95e504f42685015445b4a0a80dfdaa86e5b2b2c0e317bca2bcbb51330ec61e5'
-            'c6376c7762d524d36e463659d1b1a15870e8a57b1d8b257a8395072f04f97456')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed -e "s|Name=${_appname}|Name=${_fullname}|g" \
         -e "s|/opt/${_appname}/${_pkgname} %U|${pkgname%-bin}|g" \
@@ -42,5 +46,5 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
