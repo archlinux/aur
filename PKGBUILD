@@ -1,6 +1,6 @@
 # maintainer: BrainDamage
 pkgname=helio-workstation
-pkgver=3.11
+pkgver=3.12
 pkgrel=1
 pkgdesc="One music sequencer for all major platforms, desktop and mobile"
 arch=('x86_64')
