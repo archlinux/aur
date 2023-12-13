@@ -7,7 +7,7 @@ _basename=zoom
 pkgname=$_basename-system-qt
 pkgver=5.16.10
 _subver=668
-pkgrel=1
+pkgrel=2
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
 license=('custom')
@@ -64,14 +64,14 @@ package() {
     #_replace cef/locales electron/locales
     #_replace cef/chrome_100_percent.pak electron/chrome_100_percent.pak
     #_replace cef/chrome_200_percent.pak electron/chrome_200_percent.pak
-    _replace cef/libffmpeg.so opera/lib_extra/libffmpeg.so
-    _replace cef/libEGL.so electron/libEGL.so
-    _replace cef/libGLESv2.so electron/libGLESv2.so
-    _replace cef/libsqlite3.so.0 libsqlite3.so.0
-    _replace cef/libvk_swiftshader.so electron/libvk_swiftshader.so
+    # _replace cef/libffmpeg.so opera/lib_extra/libffmpeg.so
+    # _replace cef/libEGL.so electron/libEGL.so
+    # _replace cef/libGLESv2.so electron/libGLESv2.so
+    # _replace cef/libsqlite3.so.0 libsqlite3.so.0
+    # _replace cef/libvk_swiftshader.so electron/libvk_swiftshader.so
     # libVkICD_mock_icd.so ?
     #_replace cef/libVkLayer_khronos_validation.so libVkLayer_khronos_validation.so smaller binary
-    _replace cef/libvulkan.so.1 electron/libvulkan.so.1
+    # _replace cef/libvulkan.so.1 electron/libvulkan.so.1
     _replace libturbojpeg.so libturbojpeg.so
     _replace libswresample.so.4 libswresample.so.4
     _replace libquazip.so libquazip1-qt5.so
