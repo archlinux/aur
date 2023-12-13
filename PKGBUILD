@@ -2,7 +2,8 @@
 pkgname=m3u8-downloader-bin
 _pkgname=M3U8-Downloader
 pkgver=2.2.8
-pkgrel=1
+_electronversion=24
+pkgrel=2
 pkgdesc="M3U8-Downloader, electron, multi-threading, resumable upload, encrypted video download cache."
 arch=("x86_64")
 url="https://github.com/12343954/M3U8-Downloader"
@@ -10,8 +11,7 @@ license=("custom")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron24'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 makedepends=(
@@ -22,8 +22,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('834231de86efb0d346ab90ea6195ea783b63b7dc719139c19ba7e30764049bd3'
-            '42bc34b12e17e46437824efd714da8bbc2f4ba9381c6ad3fe99941b920dcd782')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     cp -r "${srcdir}/opt/${_pkgname}/resources/locales" "${srcdir}/app.asar.unpacked"

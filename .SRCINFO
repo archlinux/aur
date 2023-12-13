@@ -1,12 +1,11 @@
 pkgbase = m3u8-downloader-bin
 	pkgdesc = M3U8-Downloader, electron, multi-threading, resumable upload, encrypted video download cache.
 	pkgver = 2.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/12343954/M3U8-Downloader
 	arch = x86_64
 	license = custom
 	makedepends = asar
-	depends = bash
 	depends = electron24
 	depends = hicolor-icon-theme
 	provides = m3u8-downloader=2.2.8
@@ -14,6 +13,6 @@ pkgbase = m3u8-downloader-bin
 	source = m3u8-downloader-2.2.8.deb::https://github.com/12343954/M3U8-Downloader/releases/download/2.2.8/M3U8-Downloader-linux_amd64-2.2.8.deb
 	source = m3u8-downloader.sh
 	sha256sums = 834231de86efb0d346ab90ea6195ea783b63b7dc719139c19ba7e30764049bd3
-	sha256sums = 42bc34b12e17e46437824efd714da8bbc2f4ba9381c6ad3fe99941b920dcd782
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = m3u8-downloader-bin
