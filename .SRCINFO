@@ -1,15 +1,15 @@
 pkgbase = duckstation
-	pkgver = 2023.06.08
+	pkgver = v0.1+6045
 	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
 	arch = aarch64
 	arch = i686
 	arch = pentium4
+	arch = arm
 	license = GPL3
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = git
 	makedepends = qt6-tools
 	makedepends = libdrm
 	makedepends = libpulse
@@ -20,7 +20,7 @@ pkgbase = duckstation
 	depends = sdl2
 	depends = qt6-base
 	optdepends = psx-bios: PlayStation Bioses
-	source = duckstation-latest::git+https://github.com/stenzek/duckstation#commit=2d78b3f26a18600cbeb1f7add97f345d7345deeb
-	sha256sums = SKIP
+	source = duckstation-v0.1-6045.tar.gz::https://github.com/stenzek/duckstation/archive/refs/tags/v0.1-6045.tar.gz
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 pkgname = duckstation
