@@ -1,0 +1,13 @@
+pkgbase = wrestic-bin
+	pkgdesc = A wrapper around restic build in rust
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/alvaro17f/wrestic
+	arch = x86_64
+	license = LGPL3
+	provides = wrestic
+	conflicts = wrestic
+	source = https://github.com/alvaro17f/wrestic/releases/download/v1.3.0/wrestic.tar.gz
+	sha256sums = d95bdb3e885fbf7763337f69a80bf99ee8985a7791908c6c789a683400a23d4a
+
+pkgname = wrestic-bin
