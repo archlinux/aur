@@ -1,20 +1,22 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=better-osu-skills-bin
 pkgver=1.0.6
-pkgrel=1
+_electronversion=11
+pkgrel=2
 pkgdesc="Gets results from the osu!Skills training page and PMs them on osu! using your own IRC credentials"
 arch=('x86_64')
 url="https://github.com/straightcurve/better-osuskills"
 license=('custom')
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron11'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libxext'
+    'libx11'
     'gdk-pixbuf2'
+    'libxext'
     'libdbusmenu-glib'
     'gtk2'
+    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -24,8 +26,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8fe449e2e93f061a3446aa2fd346eaeb0982b83529ed381834b059c7bb1f7d28'
-            '1a97bc17f7f5c0f9666c0e2cf85fd306447407c2e28fd01d8c0dc0f4ddafc204')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
