@@ -1,6 +1,6 @@
 pkgbase = perl-linux-fd
 	pkgdesc = Provides you Linux specific special file handles
-	pkgver = 0.011
+	pkgver = 0.015
 	pkgrel = 5
 	url = http://search.cpan.org/dist/Linux-FD
 	arch = any
@@ -10,6 +10,6 @@ pkgbase = perl-linux-fd
 	depends = perl-params-util
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Linux-FD-0.011.tar.gz
-	sha256sums = 6bb579d47644cb0ed35626ff77e909ae69063073c6ac09aa0614fef00fa37356
+	sha256sums = 7831dc264c46d9b87f76436174d76614145243633083e090aab4d9a352f043ad
 
 pkgname = perl-linux-fd

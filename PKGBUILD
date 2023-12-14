@@ -4,7 +4,7 @@
 
 pkgname=perl-linux-fd
 _perl_version=5.38
-pkgver=0.014
+pkgver=0.015
 pkgrel=5
 pkgdesc="Provides you Linux specific special file handles"
 arch=('any')
