@@ -2,7 +2,7 @@
 
 pkgname=mihomo
 pkgver=1.17.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Mihomo Kernel by MetaCubeX, formerly known as Clash.Meta"
 arch=("x86_64" 'aarch64')
 url="https://github.com/MetaCubeX/mihomo"
@@ -28,7 +28,7 @@ sha256sums=('0c6f2c073189211aaa5a6ce8019f1c3f421bc4cdc1e46217a0a76912c6a38927'
 build(){
     cd "${srcdir}"/mihomo-${pkgver}
     BUILDTIME=$(date -u)
-    GOOS=linux CGO_ENABLED=0 go build \
+    GOOS=linux go build \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
