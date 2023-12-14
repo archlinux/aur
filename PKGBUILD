@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Jose Gomez Hernandez <eduardo@edujgh.net>
-pkgname=c3c-git
+pkgname=c3c-dev-git
 _pkgname=c3c
-pkgver=r1698.a50c5f4f
+pkgver=r1700.2595ed5c
 pkgrel=1
 pkgdesc="C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible. Git version for x86_64"
 arch=(x86_64)
@@ -52,6 +52,9 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
+
+    git checkout dev
+    
     export LD_LIBRARY_PATH=`readlink -e ${srcdir}/usr/lib/x86_64-linux-gnu`:${LD_LIBRARY_PATH}
     export PATH=`readlink -e ${srcdir}/usr/bin`:${PATH}
     cmake -B build \

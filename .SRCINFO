@@ -1,6 +1,6 @@
-pkgbase = c3c-git
+pkgbase = c3c-dev-git
 	pkgdesc = C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible. Git version for x86_64
-	pkgver = r1665.e17bb5f3
+	pkgver = r1700.2595ed5c
 	pkgrel = 1
 	url = https://github.com/c3lang/c3c.git
 	arch = x86_64
@@ -20,4 +20,4 @@ pkgbase = c3c-git
 	md5sums = SKIP
 	md5sums = dc66a491cd5514c069d8151a37ae9e7e
 
-pkgname = c3c-git
+pkgname = c3c-dev-git
