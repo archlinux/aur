@@ -1,8 +1,8 @@
-# Maintainer: Billy Yang <me at venti dot love>
+# Maintainer: Billy Yang <me at billyyang dot dev>
 
 pkgname=mihomo
 pkgver=1.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Mihomo Kernel by MetaCubeX, formerly known as Clash.Meta"
 arch=("x86_64" 'aarch64')
 url="https://github.com/MetaCubeX/mihomo"
@@ -34,8 +34,8 @@ build(){
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" \
-    -X \"github.com/Dreamacro/clash/constant.Version=${pkgver}\" \
-    -X \"github.com/Dreamacro/clash/constant.BuildTime=${BUILDTIME}\" \
+    -X \"github.com/MetaCubeX/mihomo/constant.Version=${pkgver}\" \
+    -X \"github.com/MetaCubeX/mihomo/constant.BuildTime=${BUILDTIME}\" \
     " \
     -tags with_gvisor -o ${pkgname}-${pkgver}
 }
