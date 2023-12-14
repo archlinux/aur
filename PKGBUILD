@@ -14,5 +14,4 @@ sha256sums=('67c15c5ba7850ee7788c195d9a62a2e078842d8174224bfc9177bb7019938d74')
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 ./gem "$pkgdir/usr/bin/gem"
-  echo $pkgdir
 }
