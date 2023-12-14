@@ -4,7 +4,7 @@
 pkgname=modular
 pkgver=0.2.2
 pkgrel=1
-pkgdesc="Modular installation tool"
+pkgdesc="Modular installation tool - Repository: https://github.com/Sharktheone/arch-mojo"
 url="https://developer.modular.com/download"
 license=("custom:modular")
 depends=(
