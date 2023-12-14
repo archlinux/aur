@@ -8,7 +8,7 @@ pkgname=wine-staging-wow64
 _name=wine
 pkgver=9.0rc1
 _pkgver=9.0-rc1
-pkgrel=1
+pkgrel=2
 provides=("wine-staging" "wine-wow64" "wine")
 conflicts=("wine")
 source=(git+https://gitlab.winehq.org/wine/wine.git#tag=wine-$_pkgver
@@ -33,7 +33,7 @@ depends=(
   freetype2       #lib32-freetype2
   desktop-file-utils
 )
-makedepends=(autoconf bison perl flex mingw-w64-gcc
+makedepends=(autoconf bison perl flex mingw-w64-gcc git
   giflib                #lib32-giflib
   libxinerama           #lib32-libxinerama
   libxcomposite         #lib32-libxcomposite
@@ -71,7 +71,7 @@ optdepends=(
   cups
   samba           dosbox
 )
-makedepends=(${makedepends[@]} ${depends[@]})
+
 install=wine.install
 
 prepare() {
@@ -96,22 +96,22 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_name/build
+  cd ${srcdir}/$_name/build
   
-  make prefix="$pkgdir/usr" \
-    libdir="$pkgdir/usr/lib" \
-    dlldir="$pkgdir/usr/lib/wine" install
+  make prefix="${pkgdir}/usr" \
+    libdir="${pkgdir}/usr/lib" \
+    dlldir="${pkgdir}/usr/lib/wine" install
   
-  i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/i386-windows/*.dll
-  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.dll
+  i686-w64-mingw32-strip --strip-unneeded "${pkgdir}"/usr/lib/wine/i386-windows/*.dll
+  x86_64-w64-mingw32-strip --strip-unneeded "${pkgdir}"/usr/lib/wine/x86_64-windows/*.dll
 
   ln -sf /usr/bin/wine $pkgdir/usr/bin/wine64
 
   # Font aliasing settings for Win32 applications
-  install -d "$pkgdir"/usr/share/fontconfig/conf.{avail,default}
-  install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/usr/share/fontconfig/conf.avail"
-  ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
-  install -Dm 644 "$srcdir/wine-binfmt.conf" "$pkgdir/usr/lib/binfmt.d/wine.conf"
+  install -d "${pkgdir}"/usr/share/fontconfig/conf.{avail,default}
+  install -m644 "${srcdir}/30-win32-aliases.conf" "${pkgdir}/usr/share/fontconfig/conf.avail"
+  ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
+  install -Dm 644 "${srcdir}/wine-binfmt.conf" "${pkgdir}/usr/lib/binfmt.d/wine.conf"
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
