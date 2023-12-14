@@ -1,5 +1,5 @@
 
-# Dashlane CLI Git
+# Dashlane CLI Git AUR package
 
 This project provides a command-line interface (CLI) for Dashlane, built with the local Node.js version installed. It is the GitHub version of the Dashlane CLI.
 
