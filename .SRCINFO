@@ -1,6 +1,6 @@
 pkgbase = krunner5
 	pkgdesc = Framework for providing different actions given a string query
-	pkgver = 5.112.0
+	pkgver = 5.113.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = krunner5
 	depends = threadweaver5
 	conflicts = krunner<5.111
 	replaces = krunner<5.111
-	source = https://download.kde.org/stable/frameworks/5.112/krunner-5.112.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.112/krunner-5.112.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.113/krunner-5.113.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.113/krunner-5.113.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 762be1ab9c83872ac78abb2b0352b0ff25072e4430c23dbe0d828b7cd7d76e01
+	sha256sums = 90b6fa9e8489c14ef98cf862b83f8f400861eeebe1af98b83af9d1bcbd35ed7c
 	sha256sums = SKIP
 
 pkgname = krunner5
