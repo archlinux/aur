@@ -1,4 +1,7 @@
-vimix-gtk-themes/
-src/
-pkg/
-**/*.pkg.*
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO

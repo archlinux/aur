@@ -1,36 +1,32 @@
-# Maintainer: LordDemecrius83 <lorddemecrius83@proton.me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: LordDemecrius83 <lorddemecrius83@proton.me>
 # Contributor: sQVe <oskargrunning@gmail.com>
-
 pkgname=vimix-gtk-themes-git
-pkgver=r520.016b12dc
+pkgver=2023.09.09.r4.g6d990ef1
 pkgrel=1
-pkgdesc='A flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell'
-url='https://github.com/vinceliuice/vimix-gtk-themes'
+pkgdesc="A flat Material Design theme for GTK 3, GTK 2, GNOME Shell, etc."
 arch=('any')
+url="https://vinceliuice.github.io/theme-vimix.html"
 license=('GPL3')
-depends=('gtk3')
-optdepends=('gtk-engine-murrine: for gtk2 themes'
-            'gtk-engines: for gtk2 themes')
 makedepends=('git' 'sassc')
+optdepends=('gtk-engine-murrine: GTK2 theme support'
+            'gtk-engines: GTK2 theme support'
+            'kvantum-theme-vimix: Matching Kvantum theme'
+            'vimix-icon-theme: Matching icon theme'
+            'vimix-cursors: Matching cursor theme')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+options=('!strip')
 source=('git+https://github.com/vinceliuice/vimix-gtk-themes.git')
 sha256sums=('SKIP')
-provides=("vimix-gtk-themes=${pkgver}")
-options=(!strip)
-conflicts=('vimix-gtk-themes')
-_gitname=vimix-gtk-themes
 
 pkgver() {
-    cd "${_gitname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    cd "${_gitname}"
-    install -dm755 "${pkgdir}/usr/share/themes"
-
-    # Install standard sizes.
-    ./install.sh --theme all --size standard --dest "$pkgdir/usr/share/themes"
-
-    # Install compact sizes.
-    ./install.sh --theme all --size compact --dest "$pkgdir/usr/share/themes"
+  cd "$srcdir/${pkgname%-git}"
+  install -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s all -d "$pkgdir/usr/share/themes"
 }
