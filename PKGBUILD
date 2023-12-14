@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=firefly-iota-desktop-appimage
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Manage your IOTA assets directly from your computer with both software and hardware wallet support. Earn staking rewards and participate in governance votes."
 arch=('x86_64')
 url="https://firefly.iota.org/"
-_githuburl="https://github.com/iotaledger/firefly"
+_ghurl="https://github.com/iotaledger/firefly"
 license=('Apache')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}" "iota-firefly-wallet")
@@ -13,8 +13,8 @@ depends=('zlib' 'glibc')
 makedepends=('squashfuse')
 options=("!strip")
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/desktop-iota-${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
-sha256sums=('1b97701acf011f87dbcbd9438cf10fa4194df7906446867cc86cd1685dd4df72')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/desktop-iota-${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
+sha256sums=('24be7bb886883c39f49f0f4c8b3c338e0f287e640e0511eb05ea80295f112b91')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
