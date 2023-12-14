@@ -2,13 +2,13 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.94.0.r1.g4f87edc6e8
+pkgver=1.98.0.r5.ge9eba0870d
 _pkgname=matrix-synapse
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 url="https://github.com/matrix-org/synapse"
 arch=('x86_64')
-license=('Apache')
+license=('AGPL3')
 depends=(
 	'libwebp'
 	'python-jsonschema'
@@ -90,7 +90,7 @@ optdepends=('perl: sync_room_to_group.pl'
             'python-pyicu: Improve user search for international display names')
 
 source=(
-	"git+https://github.com/matrix-org/synapse.git#branch=master"
+	"git+https://github.com/element-hq/synapse.git#branch=master"
         'generic_worker.yaml.example'
         'synapse.service'
         'synapse.target'

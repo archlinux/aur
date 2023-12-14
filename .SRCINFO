@@ -1,11 +1,11 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 1.94.0.r1.g4f87edc6e8
+	pkgver = 1.98.0.r5.ge9eba0870d
 	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
 	arch = x86_64
-	license = Apache
+	license = AGPL3
 	checkdepends = python-pip
 	checkdepends = python-authlib
 	checkdepends = python-lxml
@@ -67,7 +67,7 @@ pkgbase = matrix-synapse-git
 	conflicts = matrix-synapse
 	replaces = matrix-synapse-py3-git
 	backup = etc/synapse/log_config.yaml
-	source = git+https://github.com/matrix-org/synapse.git#branch=master
+	source = git+https://github.com/element-hq/synapse.git#branch=master
 	source = generic_worker.yaml.example
 	source = synapse.service
 	source = synapse.target
