@@ -1,11 +1,10 @@
 pkgbase = ubports-installer-bin
 	pkgdesc = A simple tool to install Ubuntu Touch on UBports devices
 	pkgver = 0.10.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ubports/ubports-installer
 	arch = x86_64
 	license = GPL3
-	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
 	depends = libusb
@@ -16,6 +15,6 @@ pkgbase = ubports-installer-bin
 	source = ubports-installer-0.10.0.deb::https://github.com/ubports/ubports-installer/releases/download/0.10.0/ubports-installer_0.10.0_linux_amd64.deb
 	source = ubports-installer.sh
 	sha256sums = a530f8fbb867b07aafdabf06459b2ffec5f64202a56f13bf87ca0c225b5b1189
-	sha256sums = 908007c723f7e1ad74fea5e9d424be357ab39849aafcdced11c23014075b6579
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = ubports-installer-bin

@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ubports-installer-bin
 pkgver=0.10.0
-pkgrel=3
+_electronversion=25
+pkgrel=4
 pkgdesc="A simple tool to install Ubuntu Touch on UBports devices"
 arch=('x86_64')
 url="https://github.com/ubports/ubports-installer"
@@ -9,8 +10,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron25'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'libusb'
     'lib32-glibc'
@@ -21,8 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a530f8fbb867b07aafdabf06459b2ffec5f64202a56f13bf87ca0c225b5b1189'
-            '908007c723f7e1ad74fea5e9d424be357ab39849aafcdced11c23014075b6579')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
