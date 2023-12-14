@@ -1,0 +1,13 @@
+pkgbase = brother-dcpl660dw-lpr-bin
+	pkgdesc = LPR driver for Brother DCP-L660DW printer
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadlist.aspx?c=eu_ot&lang=en&prod=dcpl6600dw_eu&os=128
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf102597/dcpl6600dwlpr-3.5.1-1.i386.deb
+	md5sums = 0a17ac452171e58b06b6949aca31573e
+
+pkgname = brother-dcpl660dw-lpr-bin
