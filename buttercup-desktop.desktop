@@ -1,10 +1,12 @@
 [Desktop Entry]
-Version=2.23.1
-Name=Buttercup
+Version=2.24.3
+Name=Buttercup Password Manager
 Comment=Javascript Password Vault
-Exec=buttercup
+Exec=buttercup %u %U
 Icon=buttercup
 Terminal=false
 Type=Application
 Categories=Utility;
 StartupWMClass=Buttercup
+Comment=Buttercup Password Manager
+MimeType=x-scheme-handler/buttercup;x-scheme-handler/buttercup;
