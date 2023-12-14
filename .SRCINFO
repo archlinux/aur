@@ -1,0 +1,20 @@
+pkgbase = autocut-git
+	pkgdesc = Cut videos using a text editor.用文本编辑器剪视频.
+	pkgver = r84.638f6d8
+	pkgrel = 1
+	url = https://github.com/mli/autocut
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-pipx
+	depends = python
+	depends = ffmpeg
+	depends = python-importlib-metadata
+	depends = python-setuptools
+	depends = opencc
+	provides = autocut
+	conflicts = autocut
+	source = autocut::git+https://github.com/mli/autocut.git
+	sha256sums = SKIP
+
+pkgname = autocut-git
