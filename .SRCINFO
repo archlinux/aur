@@ -1,0 +1,34 @@
+pkgbase = curl-c-ares
+	pkgdesc = command line tool and library for transferring data with URLs (built with c-ares)
+	pkgver = 8.5.0
+	pkgrel = 1
+	url = https://curl.se/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = ca-certificates
+	depends = brotli
+	depends = libbrotlidec.so
+	depends = c-ares
+	depends = libcares.so
+	depends = krb5
+	depends = libgssapi_krb5.so
+	depends = libidn2
+	depends = libidn2.so
+	depends = libnghttp2
+	depends = libpsl
+	depends = libpsl.so
+	depends = libssh2
+	depends = libssh2.so
+	depends = openssl
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	provides = curl
+	provides = libcurl.so
+	conflicts = curl
+	source = git+https://github.com/curl/curl.git#tag=55b5fafb094ebe07ca8a5d4f79813c8b40670795?signed
+	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
+	sha512sums = SKIP
+
+pkgname = curl-c-ares
