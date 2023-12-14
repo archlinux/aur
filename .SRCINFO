@@ -1,4 +1,4 @@
-pkgbase = shadowtube
+pkgbase = fzd-bin
 	pkgdesc = Fuzzy-found file or URL opener in the user's default application.
 	pkgver = 1.0.0
 	pkgrel = 1
