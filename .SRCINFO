@@ -1,0 +1,20 @@
+pkgbase = cargo-information-git
+	pkgdesc = A tool to provide a detailed information about a Rust package (git)
+	pkgver = 0.2.1.r4.g58f7e52
+	pkgrel = 1
+	url = https://github.com/hi-rustin/cargo-information
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = curl
+	depends = zlib
+	depends = openssl
+	provides = cargo-information
+	conflicts = cargo-information
+	options = !lto
+	source = git+https://github.com/hi-rustin/cargo-information
+	sha512sums = SKIP
+
+pkgname = cargo-information-git
