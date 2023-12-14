@@ -1,0 +1,24 @@
+pkgbase = brother-dcpt720dw
+	pkgdesc = Brother printer driver (lpd/cups) for the DCP-T720DW multifuncional printer
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpt720dw_all
+	install = dcpt720dw.install
+	arch = i686
+	arch = x86_64
+	license = custom: Brother License
+	license = EULA
+	license = GPL
+	depends = a2ps
+	depends = cups
+	optdepends = sane: scanning support
+	optdepends = sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners
+	optdepends = brscan5: making dcpt820dw scaner available to sane
+	optdepends = brscan-skey: scankey support if connected via usb
+	source = https://download.brother.com/welcome/dlf105179/dcpt720dwpdrv-3.5.0-1.i386.deb
+	source = spool.patch
+	sha256sums = 4e85051a71f177aae72dd7e17431b386fb20149ba4100573966efd8669125771
+	sha256sums = 8e2457a74df8f0da71400d0171ffdc8c14e54f5998f6172f2827666fd2913c44
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcpt720dw
