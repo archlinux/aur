@@ -1,0 +1,34 @@
+pkgbase = python-pycapnp
+	pkgdesc = A cython wrapping of the C++ Cap'n Proto library
+	pkgver = 2.0.0b2
+	pkgrel = 1
+	url = https://github.com/capnproto/pycapnp
+	arch = x86_64
+	license = BSD-2-Clause
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = git
+	makedepends = capnproto
+	makedepends = cython0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pkgconfig
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	optdepends = python-jinja: for capnpc-cython
+	source = git+https://github.com/capnproto/pycapnp#commit=c89174e80c4017dd9c2f85d26aa19792fa856855
+	sha512sums = SKIP
+
+pkgname = python-pycapnp
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	depends = capnproto
+	depends = libkj.so
+	depends = libkj-async.so
+	depends = libcapnpc.so
+	depends = libcapnp.so
+	depends = libcapnp-rpc.so
