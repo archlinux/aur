@@ -17,7 +17,8 @@ pkgdesc='command line tool and library for transferring data with URLs'
 arch=('x86_64')
 url='https://curl.se/'
 license=('MIT')
-depends=('ca-certificates' 'brotli' 'libbrotlidec.so' 'krb5' 'libgssapi_krb5.so'
+depends=('ca-certificates' 'brotli' 'libbrotlidec.so' 'c-ares' 'libcares.so'
+         'krb5' 'libgssapi_krb5.so'
          'libidn2' 'libidn2.so' 'libnghttp2' 'libpsl' 'libpsl.so' 'libssh2' 'libssh2.so'
          'openssl' 'zlib' 'zstd' 'libzstd.so')
 makedepends=('git')
