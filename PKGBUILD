@@ -2,27 +2,32 @@
 pkgname=yana-bin
 _pkgname=Yana
 pkgver=1.0.16
-pkgrel=4
+_electronversion=10
+pkgrel=5
 pkgdesc="Powerful note-taking app with nested documents, full-text search, rich-text editor, code snippet editor and more"
 arch=("x86_64")
 url="https://yana.js.org/"
-_githuburl="https://github.com/lukasbach/yana"
+_ghurl="https://github.com/lukasbach/yana"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron10'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}_amd64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/lukasbach/yana/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}_amd64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/lukasbach/yana/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('00d2f30dad0342fa59fa228f087bf647cf2fa6fe061aa46ede22a5439d5c23b8'
             'ebb422a6231ddde433e1d601377c455aefcc96cdc27662bd3ce07d08f1110152'
-            'e0931b09040678971095897db982de9ef4829881addbb9cebfdd2634bf5072b0')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
@@ -35,5 +40,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
