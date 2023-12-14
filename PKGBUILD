@@ -7,10 +7,23 @@ pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
 url="https://guiscrcpy.srev.in"
 license=('GPL3')
-depends=('libxinerama' 'pyside2' 'python' 'python-cairosvg' 'python-click' 'python-colorama'
-         'python-coloredlogs' 'python-psutil' 'python-pynput' 'python-qtpy'
-         'scrcpy')
-makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core' 'setconf')
+depends=(
+  'libxinerama'
+  'pyside2'
+  'python-cairosvg'
+  'python-click'
+  'python-colorama'
+  'python-psutil'
+  'python-pynput''python-qtpy'
+  'scrcpy'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-poetry-core'
+  'setconf'
+)
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -18,30 +31,30 @@ source=('git+https://github.com/srevinsaju/guiscrcpy.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags --exclude continuous | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
 
   # Force launching with PySide2
   setconf "appimage/${pkgname%-git}.desktop" Exec "env QT_API=pyside2 ${pkgname%-git}"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  python -m build --wheel --no-isolation
+  cd "${pkgname%-git}"
+  GIT_DIR='.' python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   appstream-util validate-relax --nonet "appimage/${pkgname%-git}.appdata.xml" || :
   desktop-file-validate "appimage/${pkgname%-git}.desktop" || :
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 "appimage/${pkgname%-git}.appdata.xml" -t "$pkgdir/usr/share/metainfo/"
