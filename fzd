@@ -1,0 +1,4 @@
+FILE_PATH=$(fzf)
+if [ "$FILE_PATH" != "" ]; then
+	xdg-open $FILE_PATH
+fi
