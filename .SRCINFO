@@ -1,7 +1,7 @@
 pkgbase = jdownloader2-svn
 	pkgdesc = Download manager for one-click hosting sites like Rapidshare and Megaupload
-	pkgver = r48570
-	pkgrel = 3
+	pkgver = r48571
+	pkgrel = 1
 	url = https://jdownloader.org/
 	arch = x86_64
 	license = GPL

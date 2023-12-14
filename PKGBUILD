@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=jdownloader2-svn
-pkgver=r48570
-pkgrel=3
+pkgver=r48571
+pkgrel=1
 pkgdesc="Download manager for one-click hosting sites like Rapidshare and Megaupload"
 arch=(x86_64)
 url="https://jdownloader.org/"
