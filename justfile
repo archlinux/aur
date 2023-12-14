@@ -47,17 +47,23 @@ src-version:
 prepare: rebuild checksum srcinfo
 
 publish: prepare
-    echo "New version: $(just src-version)"
+    @echo "New version: $(just src-version)"
     @git add .
-    echo "Committing and tagging..."
+    @echo "Committing and tagging..."
     @git commit -m "bump: $(just src-version)"
     @git tag -a $(just src-version) -m "bunp: $(just src-version)"
-    echo "Pushing to origin..."
+    @echo "Pushing to origin..."
     @git push
     @git push --tags
-    echo "Pushing to aur..."
+    @echo "Switching to aur master branch..."
+    @git checkout master
+    @echo "Merging main into aur master..."
+    @git merge main
+    @echo "Pushing to aur..."
     @git push aur master
     @git push --tags aur master
+    @echo "Switching back to main..."
+    @git checkout main
 
 test-local: rebuild
     @./src/{{ pkgbase }}/bundle/dcli-linux --version
@@ -70,7 +76,10 @@ remote-add-aur:
 
 # One-time command to clone the aur repo - no further use
 clone-empty-aur:
-    git -c init.defaultbranch=master clone ssh://aur@aur.archlinux.org/{{ pkgbase }}.git
+    @git -c init.defaultbranch=master clone ssh://aur@aur.archlinux.org/{{ pkgbase }}.git
+
+set-remote-master-to-aur-branch:
+    @git branch master --set-upstream-to aur/master
 
 clean:
     @git clean -dX -n
