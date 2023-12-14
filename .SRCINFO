@@ -2,6 +2,7 @@ pkgbase = teaiso
 	pkgdesc = The ISO generation tool for GNU/Linux.
 	pkgver = 2.2.0
 	pkgrel = 1
+	url = https://gitlab.com/tearch-linux/applications-and-tools/teaiso
 	arch = any
 	license = GPL3
 	makedepends = git

@@ -6,6 +6,7 @@ pkgver=2.2.0
 pkgrel=1
 pkgdesc="The ISO generation tool for GNU/Linux."
 arch=("any")
+url="https://gitlab.com/tearch-linux/applications-and-tools/teaiso"
 license=("GPL3")
 depends=("xorriso" "mtools" "squashfs-tools" "python-yaml" "busybox" "unzip" "binutils" "grub")
 makedepends=("git" "make" "gcc" "wget")
