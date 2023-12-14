@@ -7,7 +7,8 @@ arch=('x86_64')
 provides=("shelf")
 url="https://github.com/ecmma/shelf"
 license=('MIT')
-depends=('cargo' 'git')
+depends=('git')
+makedepends=('cargo')
 source=("$pkgname::git+https://github.com/ecmma/shelf")
 md5sums=('SKIP')
 
