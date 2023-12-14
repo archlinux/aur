@@ -5,17 +5,23 @@
 # https://gitlab.winehq.org/wine/wine-staging
 
 # options
-: ${_pkgtype:=wow64-git}
+: ${_build_staging:=false}
+: ${_build_wow64:=true}
+: ${_build_git:=true}
+
+[[ "${_build_staging::1}" == "t" ]] && _pkgtype+="-staging"
+[[ "${_build_wow64::1}" == "t" ]] && _pkgtype+="-wow64"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
 _pkgname=wine
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgname="$_pkgname${_pkgtype:-}"
 pkgver=8.21.r412.gd748440e
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://gitlab.winehq.org/wine/wine"
+license=('LGPL-2.1-or-later')
 arch=(x86_64)
-license=(LGPL)
 
 depends=(
   desktop-file-utils
@@ -68,8 +74,13 @@ optdepends=(
 
 options=(staticlibs !lto)
 
-provides=("wine=${pkgver%%.r*}")
-conflicts=("wine")
+# provides/depends
+_pkgdep="$pkgname"
+while [[ "$_pkgdep" =~ .*-.* ]] ; do
+  _pkgdep="${_pkgdep%-*}"
+  provides+=("${_pkgdep}=${pkgver%%.r*}")
+  conflicts+=("${_pkgdep}")
+done
 
 _pkgsrc="wine"
 source=(
@@ -82,6 +93,18 @@ sha256sums=(
   'SKIP'
   'SKIP'
 )
+
+if [[ "${_build_staging::1}" == "t" ]] ; then
+  source=("git+https://gitlab.winehq.org/wine/wine-staging.git")
+  sha256sums=('SKIP')
+
+  prepare() {
+    cd "$_pkgsrc"
+
+    # apply wine-staging patchset
+    "$srcdir/wine-staging/staging/patchinstall.py" --all
+  }
+fi
 
 pkgver() {
   cd "$_pkgsrc"
@@ -96,10 +119,6 @@ pkgver() {
 }
 
 build() {
-  # Doesn't compile without modifying flags as of 4.10
-  #export CFLAGS="${CFLAGS/-fno-plt/} -ffat-lto-objects"
-  #export LDFLAGS="${LDFLAGS/,-z,now/}"
-
   local _configure_options=(
     --disable-tests
     --prefix=/usr

@@ -4,7 +4,7 @@ pkgbase = wine-wow64-git
 	pkgrel = 1
 	url = https://gitlab.winehq.org/wine/wine
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = autoconf
 	makedepends = bison
 	makedepends = flex
@@ -44,7 +44,9 @@ pkgbase = wine-wow64-git
 	optdepends = sane
 	optdepends = alsa-plugins
 	optdepends = libldap
+	provides = wine-wow64=8.21
 	provides = wine=8.21
+	conflicts = wine-wow64
 	conflicts = wine
 	options = staticlibs
 	options = !lto
