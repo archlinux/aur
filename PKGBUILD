@@ -6,7 +6,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop-git"
-pkgver=0.33.1.r5.a794eecd
+pkgver=0.33.1.r40.01e5c59d
 pkgrel=2
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
@@ -40,6 +40,7 @@ depends=(
 	xcb-util-wm
 	seatd
 	xorg-xwayland-hidpi-xprop
+	tomlplusplus
 )
 makedepends=(
 	git
@@ -49,7 +50,6 @@ makedepends=(
 	meson
 	wayland-protocols
 	xorgproto
-	tomlplusplus
 )
 source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
