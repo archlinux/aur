@@ -14,7 +14,6 @@ pkgbase = guiscrcpy
 	makedepends = setconf
 	depends = libxinerama
 	depends = pyside2
-	depends = python
 	depends = python-cairosvg
 	depends = python-click
 	depends = python-colorama
