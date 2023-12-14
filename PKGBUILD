@@ -1,28 +1,40 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pikatorrent-bin
 _pkgname=PikaTorrent
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.9.0
+_electronversion=26
+pkgrel=1
 pkgdesc="A modern, open source and electric BitTorrent app for mobile, desktop & server."
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://www.pikatorrent.com/"
 _ghurl="https://github.com/G-Ray/pikatorrent"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron26'
+    "electron${_electronversion}"
+    'curl'
 )
 makedepends=(
     'gendesk'
 )
-source=("${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.zip"
-    "${pkgname%-bin}.sh")
-sha256sums=('b0e411c9c5404790bd6282d03e24af91f0931447ac1ccd7975e4ff58ef9ff931'
-            '27aa271abe161643dee1e88c822ffc6ccb251d4efcf97719ead2e06175f65698')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64-${pkgver}.zip")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.zip")
+source=(
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+sha256sums_aarch64=('dc77842c011acbad94507521ad3df825a431e0ae07dff9c11a011ed774b478b8')
+sha256sums_x86_64=('c739f3f7a9cf68443450f16f7c370abbe2606e828f255a1e69b112a90f7f5a3e')
 build() {
-    asar pack "${srcdir}/${pkgname%-bin}-linux-x64/resources/app" "${srcdir}/app.asar"
-    gendesk -q -f -n --categories "Network;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
