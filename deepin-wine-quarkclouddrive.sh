@@ -6,16 +6,16 @@
 #               Peng Hao <penghao@linuxdeepin.com>
  
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
-BOTTLENAME=Deepin-QuarkCloudDrive
-APPVER=2.5.39spark2
+BOTTLENAME=Deepin-@bottlename@
+APPVER=@sparkver@
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
-APP_INSTALLER="quark-cloud-drive-2.5.55.exe"
-APP_INSTALLER_PATH="c:/Program Files (x86)/quark-cloud-drive/${APP_INSTALLER}"
-EXEC_PATH="c:/Program Files (x86)/quark-cloud-drive/QuarkCloudDrive.exe"
-EXEC_FILE="${WINEPREFIX}/drive_c/Program Files (x86)/quark-cloud-drive/QuarkCloudDrive.exe"
+APP_INSTALLER=@installname@-@appver@.exe
+APP_INSTALLER_PATH="c:/Program Files (x86)/@installname@/${APP_INSTALLER}"
+EXEC_PATH="c:/Program Files (x86)/@installname@/@bottlename@.exe"
+EXEC_FILE="${WINEPREFIX}/drive_c/Program Files (x86)/@installname@/@bottlename@.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
 export MIME_TYPE=""
-export DEB_PACKAGE_NAME="deepin-wine-quarkclouddrive"
+export DEB_PACKAGE_NAME=@appname@
 export APPRUN_CMD="deepin-wine6-stable"
 DISABLE_ATTACH_FILE_DIALOG="1"
 export SPECIFY_SHELL_DIR=`dirname ${START_SHELL_PATH}`
