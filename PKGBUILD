@@ -1,24 +1,26 @@
 # Maintainer: Cory Sanin <corysanin@outlook.com>
 
 _pkgname=lossless-adapter-manager
-_executablename=LosslessAdapterManager2
 pkgname=${_pkgname}
 pkgdesc="Management application for the Input Integrety Lossless Adapter Gamecube adapter."
-pkgver=2023.12.05
+pkgver=0x2010000
 pkgrel=1
 provides=("${_pkgname}")
-conflicts=("${_executablename}")
+conflicts=("LosslessAdapterManager2")
 url="https://www.input-integrity.com/"
 arch=("x86_64")
 license=("freeware-proprietary")
-_archive="${_pkgname}_${pkgver}"
-source=("https://mirror.sanin.dev/aur/lossless-adapter-manager/${_archive}.tar.gz"
+_executablename="${_pkgname}_${pkgver}"
+source=("https://mirror.sanin.dev/aur/lossless-adapter-manager/${_executablename}"
+        "${_pkgname}.sh"
         "${_pkgname}.desktop"
         "${_pkgname}.svg")
-sha1sums=('a9f93824285d1d6034ff5a62f7348000bc40973d'
+sha1sums=('5c6394cf554e0580f018d7892e431f9640176538'
+          'ce512b6a45749d59323143273189a96db48a0565'
           '87ede3e2da870c0986f8d2fcbfdbdafa07ace299'
           '3e6ea78f4fd57d35596e64e6dbd664d00e67a465')
-sha256sums=('1abfbf4fe1935a3994701bbdd9480d1b52e79a1c61296b9f120bd55e14f7c736'
+sha256sums=('bf66113d208105fa5e6d5c2e2b584e1c367e8f3ace8139212cd6aecf0a0e49e8'
+            '8f5f426441b1a65a5f9f20700035ca72c1747e59db03d4d96ed782c94c916e0c'
             '3e212146833bbe5924f22046839d50d0e67b166c50580481ec2a980cbb4e5d78'
             'f134f6a3de72b4d7dfd518832dcd56b2afe9303b76d7e271db629784e569e84f')
 options=(!strip)
@@ -31,14 +33,13 @@ prepare() {
 package() {
 	# executable and symlink
   install -Dpm755 "${_pkgname}" "${pkgdir}/opt/${_pkgname}/${_pkgname}"
-  install -Dpm755 *.so "${pkgdir}/opt/${_pkgname}/"
 	install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dpm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
   # Desktop file
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   # Icon
   install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-  cp -r --no-preserve=mode,ownership "${srcdir}/${_pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+  install -Dpm755 "${srcdir}/${_pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 }
