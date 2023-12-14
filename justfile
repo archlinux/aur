@@ -24,7 +24,7 @@ delete-build-packages:
 delete-pkgbase:
     @rm -rf {{ pkgbase }} || true
 
-delete-all: delete-build-packages delete-src delete-pkg
+delete-all: delete-build-packages delete-src delete-pkg delete-pkgbase
 
 cleanbuild: delete-all
     @makepkg -C
