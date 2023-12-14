@@ -3,63 +3,63 @@ pkgbase:="dashlane-cli-git"
 default: publish
 
 build:
-    makepkg
+    @makepkg
 
 rebuild:
-    makepkg -f
+    @makepkg -f
 
 nobuild:
-    makepkg -o
+    @makepkg -o
 
 delete-src:
-    rm -rf src || true
+    @rm -rf src || true
 
 delete-pkg:
-    rm -rf pkg || true
+    @rm -rf pkg || true
 
 delete-build-packages:
-    rm -f *.pkg.tar.zst || true
+    @rm -f *.pkg.tar.zst || true
 
 delete-all: delete-build-packages delete-src delete-pkg
 
 cleanbuild: delete-all
-    makepkg -C
+    @makepkg -C
 
 srcinfo:
-    makepkg --printsrcinfo > .SRCINFO
+    @makepkg --printsrcinfo > .SRCINFO
 
 checksum:
-    updpkgsums
+    @updpkgsums
 
 install:
-    sudo pacman -U *.pkg.tar.zst --noconfirm
+    @sudo pacman -U *.pkg.tar.zst --noconfirm
 
 uninstall:
-    sudo pacman -Rss {{ pkgbase }} --noconfirm
+    @sudo pacman -Rss {{ pkgbase }} --noconfirm
 
 src-version:
-    @cd src/{{ pkgbase }} && git describe --tags
+    @cd src/{{ pkgbase }} && git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 prepare: rebuild checksum srcinfo
 
 publish: prepare
     echo "New version: $(just src-version)"
-    git add .
+    @git add .
     echo "Committing and tagging..."
-    git commit -m "Update to $(just src-version)"
-    git tag -a $(just src-version) -m "Release $(shell make src-version)"
+    @git commit -m "Update to $(just src-version)"
+    @git tag -a $(just src-version) -m "Release $(shell make src-version)"
     echo "Pushing to origin..."
-    git push
-    git push --tags
+    @git push
+    @git push --tags
     echo "Pushing to aur..."
-    git push aur master
-    git push --tags aur master
+    @git push aur master
+    @git push --tags aur master
 
 test-local: rebuild
     ./src/{{ pkgbase }}/bundle/dcli-linux --version
 
 test: prepare install && uninstall
-    dcli --version
+    @dcli --version
 
 remote-add-aur:
     git remote add aur ssh://aur@aur.archlinux.org/{{ pkgbase }}.git
