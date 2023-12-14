@@ -23,7 +23,7 @@ depends=('ca-certificates' 'brotli' 'libbrotlidec.so' 'krb5' 'libgssapi_krb5.so'
 makedepends=('git' 'patchelf')
 provides=('libcurl.so')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
-source=("git+https://github.com/bagder/curl.git#tag=${_tag}?signed")
+source=("git+https://github.com/curl/curl.git#tag=${_tag}?signed")
 sha512sums=('SKIP')
 
 _backports=(
