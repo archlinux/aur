@@ -1,0 +1,14 @@
+# -*-Shell-script-*-
+post_install() {
+    post_upgrade
+}
+
+post_upgrade() {
+    systemctl preset-all     
+
+    # Execute Arch-Linux-specific dconf changes
+    /etc/pixie/setup-archlinux
+
+    # Re-generate dconf
+    dconf update
+}
