@@ -9,6 +9,7 @@ pkgbase = autocut-client
 	makedepends = pnpm
 	makedepends = nvm
 	makedepends = git
+	makedepends = gendesk
 	depends = electron21
 	depends = ffmpeg
 	depends = autocut

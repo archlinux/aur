@@ -19,6 +19,7 @@ makedepends=(
     'pnpm'
     'nvm'
     'git'
+    'gendesk'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
