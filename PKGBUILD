@@ -2,7 +2,7 @@
 # Contributor: Rax Garfield <admin at dvizho.ks.ua>
 
 pkgname=hunspell-uk
-pkgver=6.1.5
+pkgver=6.3.1
 pkgrel=1
 pkgdesc="Ukrainian spelling dictionary"
 arch=(any)
@@ -11,7 +11,7 @@ license=(CCPL)
 optdepends=('hunspell: the spell checking libraries and apps')
 makedepends=(gradle qt5-webengine)
 source=($pkgname-$pkgver.tar.gz::https://github.com/brown-uk/dict_uk/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(97bbb19701a906f99e5b8d36992b6de5d44e39eb886b7d6bac9cf32b8c57e3e2)
+sha256sums=('2c06384f8cc98cc3a921ed437b91a1d955f42f626d3cfebf09e1a13362aeda0e')
 
 build() {
   cd "$srcdir/dict_uk-$pkgver"
