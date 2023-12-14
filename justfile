@@ -49,6 +49,9 @@ publish: prepare
     echo "Committing and tagging..."
     @git commit -m "bump: $(just src-version)"
     @git tag -a $(just src-version) -m "bunp: $(just src-version)"
+    echo "Pushing to origin..."
+    @git push
+    @git push --tags
     echo "Pushing to aur..."
     @git push aur master
     @git push --tags aur master
