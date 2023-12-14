@@ -1,6 +1,6 @@
 pkgbase = powerkit-git
 	pkgdesc = A Lightweight Desktop Independent full featured power manager
-	pkgver = r220.70c86aa
+	pkgver = r258.70be27f
 	pkgrel = 1
 	url = https://github.com/rodlie/powerkit
 	install = powerkit-git.install
@@ -11,6 +11,7 @@ pkgbase = powerkit-git
 	makedepends = xorg-xrandr
 	makedepends = qt5-base
 	makedepends = git
+        makedepends = cmake
 	depends = xscreensaver
 	depends = upower
 	depends = qt5-base
