@@ -1,4 +1,6 @@
-default: build
+pkgbase:="dashlane-cli-git"
+
+default: publish
 
 build:
     makepkg
@@ -10,12 +12,15 @@ nobuild:
     makepkg -o
 
 delete-src:
-    rm -rf src
+    rm -rf src || true
+
+delete-pkg:
+    rm -rf pkg || true
 
 delete-build-packages:
-    rm -f *.pkg.tar.zst
+    rm -f *.pkg.tar.zst || true
 
-delete-all: delete-build-packages delete-src
+delete-all: delete-build-packages delete-src delete-pkg
 
 cleanbuild: delete-all
     makepkg -C
@@ -23,20 +28,38 @@ cleanbuild: delete-all
 srcinfo:
     makepkg --printsrcinfo > .SRCINFO
 
-geninteg:
-    makepkg --geninteg
+checksum:
+    updpkgsums
 
 install:
     sudo pacman -U *.pkg.tar.zst --noconfirm
 
 uninstall:
-    sudo pacman -Rss dashlane-cli --noconfirm
+    sudo pacman -Rss {{ pkgbase }} --noconfirm
 
 src-version:
-    @cd src/dashlane-cli && git describe --tags
+    @cd src/{{ pkgbase }} && git describe --tags
 
-test: cleanbuild
-    ./src/dashlane-cli/bundle/dcli-linux --version
+prepare: rebuild checksum srcinfo
 
-test-install: cleanbuild install && uninstall
+publish: prepare
+    echo "New version: $(just src-version)"
+    git add .
+    echo "Committing and tagging..."
+    git commit -m "Update to $(just src-version)"
+    git tag -a $(just src-version) -m "Release $(shell make src-version)"
+    echo "Pushing to origin..."
+    git push
+    git push --tags
+    echo "Pushing to aur..."
+    git push aur master
+    git push --tags aur master
+
+test-local: rebuild
+    ./src/{{ pkgbase }}/bundle/dcli-linux --version
+
+test: prepare install && uninstall
     dcli --version
+
+remote-add-aur:
+    git remote add aur ssh://aur@aur.archlinux.org/{{ pkgbase }}.git

@@ -1,4 +1,5 @@
 src
-dashlane-cli
+dashlane-cli-git
 pkg
-dashlane-cli-*-any.pkg.tar.zst
+dashlane-cli-git-*-any.pkg.tar.zst
+.SRCINFO
