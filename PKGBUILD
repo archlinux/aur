@@ -45,7 +45,7 @@ makedepends=(
   # gst-plugins-bad
   lib32-vulkan-icd-loader vulkan-headers lib32-vulkan-validation-layers lib32-libusb lib32-libdc1394
   libltc lib32-bluez-libs lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-libdca lib32-faac lib32-faad2
-  lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-libkate lib32-liblrdf lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2
+  lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-liblrdf lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2
   lib32-libmpcdec lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch
   lib32-libsrtp lib32-zvbi lib32-wildmidi
   lib32-nettle lib32-libxml2 lib32-json-glib lib32-libva lib32-libxkbcommon-x11
@@ -506,7 +506,7 @@ package_lib32-gst-plugins-bad-git() {
     "lib32-gst-plugins-bad-libs-git=$pkgver"
     lib32-aom lib32-libass lib32-libbs2b lib32-bzip2 lib32-pango lib32-lcms2 lib32-curl lib32-libxml2 lib32-libdc1394
     lib32-libde265 lib32-openssl lib32-libdca lib32-faac lib32-faad2 lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-nettle
-    lib32-libkate lib32-liblrdf lib32-lilv lib32-libmodplug lib32-libmpcdec lib32-neon lib32-openal 
+    lib32-liblrdf lib32-lilv lib32-libmodplug lib32-libmpcdec lib32-neon lib32-openal 
     lib32-opus lib32-libdvdnav lib32-libdvdread lib32-librsvg lib32-rtmpdump lib32-sbc lib32-libsndfile libltc
     lib32-soundtouch lib32-srt lib32-libsrtp lib32-zvbi lib32-vulkan-icd-loader lib32-libxcb lib32-wayland lib32-libwebp
     lib32-wildmidi lib32-x265 lib32-json-glib lib32-libavtp 
@@ -537,7 +537,6 @@ package_lib32-gst-plugins-bad-git() {
     usr/lib32/gstreamer-1.0/libgstfluidsynthmidi.so
     usr/lib32/gstreamer-1.0/libgstgme.so
     usr/lib32/gstreamer-1.0/libgsthls.so
-    usr/lib32/gstreamer-1.0/libgstkate.so
     usr/lib32/gstreamer-1.0/libgstladspa.so
     usr/lib32/gstreamer-1.0/libgstlv2.so
     usr/lib32/gstreamer-1.0/libgstmodplug.so
