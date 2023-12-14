@@ -1,12 +1,12 @@
 # Maintainer: Alexander Diana (alexander.a.diana@gmail.com)
 pkgname=vrising-server
-pkgver=0.6.5.57553
+pkgver=0.6.10.62832
 pkgrel=1
 pkgdesc="Dedicated server for the V-Rising PC game"
 arch=('x86_64')
 url='https://playvrising.com/'
 license=('custom:StunlockStudiosLicense')
-depends=("wine-staging" "wine-mono" "xorg-server-xvfb" "lib32-gnutls")
+depends=("wine" "wine-mono" "xorg-server-xvfb" "lib32-gnutls")
 
 makedepends=("steamcmd")
 

@@ -1,12 +1,12 @@
 pkgbase = vrising-server
 	pkgdesc = Dedicated server for the V-Rising PC game
-	pkgver = 0.6.5.57553
+	pkgver = 0.6.10.62832
 	pkgrel = 1
 	url = https://playvrising.com/
 	arch = x86_64
 	license = custom:StunlockStudiosLicense
 	makedepends = steamcmd
-	depends = wine-staging
+	depends = wine
 	depends = wine-mono
 	depends = xorg-server-xvfb
 	depends = lib32-gnutls
