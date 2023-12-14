@@ -1,7 +1,7 @@
 pkgbase = ohmymd-bin
 	pkgdesc = A markdown editor,support cloud sync
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ohmymd.app/
 	arch = x86_64
 	license = custom
@@ -28,8 +28,6 @@ pkgbase = ohmymd-bin
 	depends = libx11
 	depends = libcups
 	depends = make
-	depends = bash
-	depends = zlib
 	depends = python
 	depends = python-setuptools
 	provides = ohmymd=0.6.1

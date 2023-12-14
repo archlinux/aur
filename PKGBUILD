@@ -2,11 +2,12 @@
 pkgname=ohmymd-bin
 _pkgname="Oh Mymd"
 pkgver=0.6.1
-pkgrel=2
+_electronversion=13
+pkgrel=3
 pkgdesc="A markdown editor,support cloud sync"
 arch=('x86_64')
 url="https://www.ohmymd.app/"
-_githuburl="https://github.com/1oopstudio/support.ohmymd.app"
+_ghurl="https://github.com/1oopstudio/support.ohmymd.app"
 license=("custom")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -34,12 +35,12 @@ depends=(
     'libx11'
     'libcups'
     'make'
-    'bash'
-    'zlib'
     'python'
     'python-setuptools'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::https://oss.ohmymd.milchstrabe.com/patch/linux/deb/${pkgname%-bin}_${pkgver}_amd64.deb")
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::https://oss.ohmymd.milchstrabe.com/patch/linux/deb/${pkgname%-bin}_${pkgver}_amd64.deb"
+)
 sha256sums=('df6cd51ce12fdf9f262eb74d16b9441fb90141dc78a2e89757404fd544046abb')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
