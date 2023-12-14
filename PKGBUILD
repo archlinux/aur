@@ -2,7 +2,8 @@
 pkgname=hathor-wallet-bin
 _pkgname="Hathor Wallet"
 pkgver=0.27.0
-pkgrel=1
+_electronversion=13
+pkgrel=2
 pkgdesc="Hathor Official Wallet for Desktop"
 arch=('x86_64')
 url="https://hathor.network/"
@@ -11,19 +12,22 @@ license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron13'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/HathorNetwork/hathor-wallet/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/HathorNetwork/hathor-wallet/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b3f67527ec65b88acca0568a28c7927a8f35de22bbc2b450038a97126f418450'
             '8fc34ede2d7615b4ef2eee1acfa4a457ab3e7c317e4ba6a1354b3b57ad11cbd0'
-            'ce6b7e63cf9afad08b9abc50f7d46d03887afdd243ee86993354f8fdb04cedbe')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
@@ -36,5 +40,5 @@ package() {
       install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
         -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
