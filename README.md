@@ -46,6 +46,6 @@ The versions are mirrored from the [Dashlane CLI repository](https://github.com/
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 [Dashlane CLI repository](https://github.com/Dashlane/dashlane-cli.git) provides its own license.
