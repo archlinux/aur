@@ -1,7 +1,7 @@
 # Maintainer: Dane Hobrecht <76x5l22l@anonaddy.me>
 
 pkgname=fzd
-pkgver=1.0.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Fuzzy-found file or URL opener in the user's default application."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/danehobrecht/fzd"
 license=('GPL')
 depends=("fzf" "xdg-utils")
 source=("https://github.com/danehobrecht/fzd/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('')
+sha256sums=('bf9fb4880b515c8aa2748f16a2035d3c531daae4c6f132364b27056f52fc3cd9')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
