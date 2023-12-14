@@ -8,6 +8,6 @@ pkgbase = shadowtube
 	depends = xdg-utils
 	depends = fzf
 	source = https://github.com/danehobrecht/fzd/archive/refs/tags/1.0.0.tar.gz
-	sha256sums = fa95ecbbc677aa08865465fb7230e9686d100da3d3b0e7756aa18c895f116a27
+	sha256sums = 
 
 pkgname = fzd
