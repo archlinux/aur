@@ -2,8 +2,8 @@
 pkgname=dashlane-cli-git
 pkgver=v1.15.1.r0.g8368d87
 pkgrel=1
-pkgdesc="Dashlane CLI"
-arch=('any')
+pkgdesc="Dashlane CLI GitHub version build with local Node.js version installed"
+arch=('x86_64')
 url="https://github.com/Dashlane/dashlane-cli"
 license=('MIT')
 depends=('nodejs')
