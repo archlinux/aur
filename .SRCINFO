@@ -5,7 +5,6 @@ pkgbase = stampnyaa-bin
 	url = https://github.com/MarvNC/StampNyaa
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = electron25
 	depends = java-runtime
 	depends = libxtst
@@ -15,6 +14,6 @@ pkgbase = stampnyaa-bin
 	source = stampnyaa-1.6.0.deb::https://github.com/MarvNC/StampNyaa/releases/download/v1.6.0/stampnyaa_1.6.0_amd64.deb
 	source = stampnyaa.sh
 	sha256sums = ea6341d72dc717c8fa0fd9a41e0ea871e23852eae93cc3318144ba3417920d64
-	sha256sums = 8bad71d9cea6a3e51b3b9709d833fee4acdcc3907a3a9d8de519056981725c75
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = stampnyaa-bin
