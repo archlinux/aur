@@ -4,7 +4,7 @@ _pkgorg="pixie-desktop"
 _pkgname="pixie"
 pkgname="${_pkgname}-git"
 pkgver=0.0.6.r0.g97d1815
-pkgrel=4
+pkgrel=5
 arch=(
   x86_64
   aarch64
