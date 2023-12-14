@@ -1,6 +1,6 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=trino-cli-bin
-pkgver=434
+pkgver=435
 pkgrel=1
 pkgdesc='Distributed SQL Query Engine for Big Data - Client'
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('java-runtime>=8' 'sh')
 source=("https://repo1.maven.org/maven2/io/trino/trino-cli/${pkgver}/trino-cli-${pkgver}-executable.jar")
 noextract=("trino-cli-${pkgver}-executable.jar")
-sha256sums=('96eeaac7a02162d356c24232759577df66791ea221d2e1b55882598985c8e40a')
+sha256sums=('5fe1bbe4ab6542eb3d998706b40326ecc0e8eeb78dd994e556f84687312ee56e')
 
 package() {
   cd "${srcdir}"
