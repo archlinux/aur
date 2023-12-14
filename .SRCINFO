@@ -1,6 +1,6 @@
 pkgbase = phpunit
-	pkgdesc = PHPUnit is a programmer-oriented testing framework for PHP.
-	pkgver = 10.0.19
+	pkgdesc = A programmer-oriented testing framework for PHP
+	pkgver = 10.5.3
 	pkgrel = 1
 	url = https://phpunit.de
 	install = phpunit.install
@@ -11,9 +11,7 @@ pkgbase = phpunit
 	makedepends = composer
 	depends = php>=8.1.0
 	conflicts = phpunit-bin
-	source = git+https://github.com/sebastianbergmann/phpunit.git#tag=10.0.19
-	source = composer.lock
+	source = git+https://github.com/sebastianbergmann/phpunit.git#tag=10.5.3
 	sha256sums = SKIP
-	sha256sums = f30e3c7e14f92fe4031ffd766be364edac9e61584ee67dfa891d24e1c88c69ee
 
 pkgname = phpunit
