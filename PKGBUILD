@@ -9,6 +9,14 @@ license=("custom:modular")
 depends=(
     "modular"
     "python"
+    "libbsd"
+    "libmd"
+    "icu"
+    "xz"
+    "glibc"
+    "gcc-libs"
+    "ncurses"
+    "zlib"
 )
 arch=("x86_64")
 source=("https://raw.githubusercontent.com/Sharktheone/arch-mojo/main/install.py")

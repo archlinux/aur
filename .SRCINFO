@@ -8,6 +8,14 @@ pkgbase = mojo-git
 	license = custom:modular
 	depends = modular
 	depends = python
+	depends = libbsd
+	depends = libmd
+	depends = icu
+	depends = xz
+	depends = glibc
+	depends = gcc-libs
+	depends = ncurses
+	depends = zlib
 	source = https://raw.githubusercontent.com/Sharktheone/arch-mojo/main/install.py
 	sha256sums = aee8c68cc4799df8271e0db9e464ebd2917a07fd3c063838965373002c5b72f3
 
