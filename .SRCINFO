@@ -44,9 +44,11 @@ pkgbase = wine-staging-wow64-git
 	optdepends = sane
 	optdepends = alsa-plugins
 	optdepends = libldap
+	provides = wine-wow64=8.21
 	provides = wine-staging-wow64=8.21
 	provides = wine-staging=8.21
 	provides = wine=8.21
+	conflicts = wine-wow64
 	conflicts = wine-staging-wow64
 	conflicts = wine-staging
 	conflicts = wine

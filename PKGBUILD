@@ -78,12 +78,17 @@ _main_package() {
 
   # provides/depends
   _pkgdep="$pkgname"
+  if [[ "$_pkgdep" =~ .*staging-wow64.* ]] ; then
+    provides+=("wine-wow64=${pkgver%%.r*}")
+    conflicts+=("wine-wow64")
+  fi
   while [[ "$_pkgdep" =~ .*-.* ]] ; do
     _pkgdep="${_pkgdep%-*}"
     provides+=("${_pkgdep}=${pkgver%%.r*}")
     conflicts+=("${_pkgdep}")
   done
 
+  # sources
   if [[ "${_build_git::1}" != "t" ]] ; then
     _main_stable
   else
