@@ -13,10 +13,9 @@ makedepends=('git' 'yarn')
 provides=('freetube')
 conflicts=('freetube')
 source=(git+https://github.com/FreeTubeApp/FreeTube
-        package-only-necessary.diff
         freetube.desktop
         freetube.sh)
-sha256sums=(SKIP SKIP SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP)
 
 pkgver() {
   cd "$srcdir/$_pkgname"
