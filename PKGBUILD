@@ -9,7 +9,7 @@ url="https://github.com/danehobrecht/fzd"
 license=('GPL')
 depends=("fzf" "xdg-utils")
 source=("https://github.com/danehobrecht/fzd/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bf9fb4880b515c8aa2748f16a2035d3c531daae4c6f132364b27056f52fc3cd9')
+sha256sums=('568f72aa7321f117bfe718645ca1bad475894acc34c219ac0cbd583fc368a19d')
 
 package() {
 	install -Dm755 fzd "$pkgdir/usr/bin/fzd"
