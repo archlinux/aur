@@ -1,0 +1,18 @@
+pkgbase = dashlane-cli-git
+	pkgdesc = Dashlane CLI GitHub version build with local Node.js version installed
+	pkgver = v1.15.1.r0.g8368d87
+	pkgrel = 1
+	url = https://github.com/Dashlane/dashlane-cli
+	install = .INSTALL
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = asdf-vm
+	depends = nodejs
+	options = !strip
+	source = dashlane-cli-git::git+https://github.com/Dashlane/dashlane-cli.git
+	source = .tool-versions
+	b2sums = SKIP
+	b2sums = e3879ac7cd875b85d5ffd78c999e26bb47f26e56f6b69bddb6742b51308254ea70eb26013fd245cb4248dde8a9c760b5390a5599cbe1d8171af9c42ed1326138
+
+pkgname = dashlane-cli-git

@@ -1,6 +1,7 @@
 pkgbase:="dashlane-cli-git"
 
-default: publish
+default:
+    @just --choose
 
 build:
     @makepkg

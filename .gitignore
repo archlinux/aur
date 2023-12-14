@@ -7,4 +7,4 @@ pkg
 src/dashlane-cli-git
 
 # Files
-dashlane-cli-git-*-any.pkg.tar.zst
+dashlane-cli-git-*.pkg.tar.zst
