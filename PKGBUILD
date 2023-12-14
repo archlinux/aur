@@ -21,7 +21,8 @@ depends=('ca-certificates' 'brotli' 'libbrotlidec.so' 'krb5' 'libgssapi_krb5.so'
          'libidn2' 'libidn2.so' 'libnghttp2' 'libpsl' 'libpsl.so' 'libssh2' 'libssh2.so'
          'openssl' 'zlib' 'zstd' 'libzstd.so')
 makedepends=('git')
-provides=('libcurl.so')
+provides=('curl' 'libcurl.so')
+conflicts=('curl')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 source=("git+https://github.com/curl/curl.git#tag=${_tag}?signed")
 sha512sums=('SKIP')
