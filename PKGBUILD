@@ -1,9 +1,9 @@
 # Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
 # Contributor:  Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-_name='mido'
+_name=mido
 pkgname=python-$_name
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='A Python library for working with MIDI messages and ports'
 url='https://mido.readthedocs.io/'
@@ -16,7 +16,7 @@ optdepends=(
 )
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('84282e3ace34bca3f984220db2dbcb98245cfeafb854260c02e000750dca86aa')
+sha256sums=('ebbcfb17d7c629371ae46d1db27ea5a128e6a3ef117b422787f0bab99a8e3120')
 
 build() {
   cd $_name-$pkgver
