@@ -17,7 +17,7 @@ _download_url="https://code.visualstudio.com/sha/download?build=insider&os=linux
 
 pkgver_check() {
   IFS='/' read -ra URL <<<"$(curl -ILs -w "%{url_effective}" -o /dev/null "$_download_url")"
-  echo "${URL[7]}" | sed -e 's/code-insiders_\(.*\)_amd64.deb/\1/' -e 's/-/_/'
+  echo "${URL[7]}" | sed -e 's/${_pkgname}_\(.*\)_amd64.deb/\1/' -e 's/-/_/'
 }
 _pkgver=$(pkgver_check)
 pkgver() {
@@ -31,9 +31,9 @@ package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
 
   replacement="s|\(Exec=[^%]*\)\(%.*\)|\1--no-sandbox \2|"
-  sed -i "$replacement" "$pkgdir/usr/share/applications/code-insiders.desktop"
-  sed -i "$replacement" "$pkgdir/usr/share/applications/code-insiders-url-handler.desktop"
+  sed -i "$replacement" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  sed -i "$replacement" "$pkgdir/usr/share/applications/$_pkgname-url-handler.desktop"
 
   mkdir "$pkgdir/usr/bin"
-  ln -s /usr/share/code-insiders/bin/code-insiders "$pkgdir/usr/bin/code-insiders"
+  ln -s /usr/share/$_pkgname/bin/$_pkgname "$pkgdir/usr/bin/$_pkgname"
 }
