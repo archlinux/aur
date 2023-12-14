@@ -2,7 +2,7 @@
 
 pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git)
-pkgver=1.5.139.r0.gacaa5c8
+pkgver=1.5.141.r16.g3abc23c
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
@@ -14,12 +14,12 @@ depends=(bzip2
     zlib
     libusb
     libzip
+    tinyxml2
     openssl)
 makedepends=(
     cmake
     git
     ninja
-
     asciidoc
     dblatex
     findutils
