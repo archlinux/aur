@@ -73,9 +73,9 @@ fi
 
 pkgbase=linux-xanmod-rt
 _major=6.1
-pkgver=${_major}.66
+pkgver=${_major}.67
 _branch=6.x
-_rt=19
+_rt=20
 xanmod=1
 _revision=
 _sf_branch=rt
@@ -119,7 +119,7 @@ done
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            '936b03e2fbd52d32902a19646089a37677d9d21339ca11e1a4d23ab85b8876cc'
+            'c9decded79a5b4c627a0f4b77ea6ec1bad58e3ea977a2415a0eda6792675b694'
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
