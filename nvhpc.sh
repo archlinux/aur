@@ -3,7 +3,7 @@ if command -v module 2>&1 >/dev/null; then
 else
   nvhome=/opt/nvidia/hpc_sdk
   target=Linux_x86_64
-  version=23.9
+  version=23.11
 
   nvcudadir=$nvhome/$target/$version/cuda
   nvcompdir=$nvhome/$target/$version/compilers
