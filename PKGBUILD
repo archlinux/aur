@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=maa-x-bin
 pkgver=2.0.0_beta.14
-pkgrel=2
+_electronversion=25
+pkgrel=3
 pkgdesc="MAA GUI with Electron & Vue3"
 arch=(
     'aarch64'
@@ -13,46 +14,31 @@ license=("AGPL3")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'at-spi2-core'
-    'libdrm'
-    'perl'
-    'libxrandr'
-    'libcups'
-    'nss'
+    "electron${_electronversion}"
+    'android-sdk-platform-tools'
     'python'
-    'bash'
-    'libxkbcommon'
-    'pango'
-    'libxcb'
-    'mesa'
-    'glib2'
-    'gtk3'
-    'nspr'
-    'expat'
-    'libxcomposite'
-    'libxdamage'
-    'libxext'
-    'alsa-lib'
-    'dbus'
-    'libx11'
-    'cairo'
-    'libxfixes'
+    'perl'
 )
-makedepends=('gendesk')
+makedepends=(
+    'gendesk'
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-arm64-${pkgver//_/-}.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-x64-${pkgver//_/-}.zip")
-source=("${pkgname%-bin}.png::https://raw.githubusercontent.com/MaaAssistantArknights/MaaX/v${pkgver//_/-}/packages/common/resources/icon.png")
-sha256sums=('2920264f809b69ccb61be013538c2162154e6ee7fa3d27e748eec89b51315b5b')
+source=("${pkgname%-bin}.sh")
+sha256sums=('8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 sha256sums_aarch64=('d0a59e9b51e9087fe5ed4a26255bb55cf8a7c373bbfba0b22b76b2249e50f171')
 sha256sums_x86_64=('fd314076dab798f9121002d1f06fc514253c39614b4bbe3a5844cab8182d2953')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --categories "Game" --name "Maa-X" --exec "${pkgname%-bin} --no-sandbox %U"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/${pkgname%-bin}-linux"-*/* "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/bin"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/${pkgname%-bin}-linux"-*/resources/app "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-linux"-*/resources/app/dist/renderer/assets/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
