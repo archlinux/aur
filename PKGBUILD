@@ -2,31 +2,49 @@
 pkgname=wai-chat-desktop
 _pkgname="Wai Chat"
 pkgver=1.1.2
-pkgrel=3
+_electronversion=24
+_nodeversion=14
+pkgrel=4
 pkgdesc="An electron project for chatgpt wai chat bot"
 arch=('any')
 url="https://github.com/ptp-build/wai-chat-desktop"
 license=('custom')
 conflicts=("${pkgname}")
 depends=(
-    'bash'
-    'electron24'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 makedepends=(
-    'npm>=8'
+    'npm'
     'gendesk'
-    'nodejs>=14'
+    'nvm'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('7f69542f9d0fccf9e2cd26ed495580731fbc9a45658576ab8c65a9c0537c89ab'
-            'fa63c9586762a7c0cc52fd37a8da75944acd0c5a18db5ea6e29b1b4c7e5b4593')
+sha256sums=('SKIP'
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     sed '19,22d' -i forge.config.ts
     npm install
     npm run package
