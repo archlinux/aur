@@ -66,8 +66,8 @@ build() {
     --disable-ldap
     --disable-ldaps
     --disable-manual
+    --enable-ares
     --enable-ipv6
-    --enable-threaded-resolver
     --with-gssapi
     --with-libssh2
     --with-random='/dev/urandom'
