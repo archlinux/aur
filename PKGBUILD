@@ -1,3 +1,6 @@
+# Maintainer on AUR: Whyme Lyu <callme5long@gmail.com>
+#
+# Imported from Arch official repo:
 # Maintainer: Dave Reisner <dreisner@archlinux.org>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Eric Belanger <eric@archlinux.org>
