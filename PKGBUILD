@@ -24,9 +24,9 @@ package() {
     mkdir -p "$pkgdir/usr/share/"{feishin,pixmaps,applications}
     # HACK rename package correctly
     if [ $CARCH == "x86_64" ]; then
-        mv ${_filename}-x64.tar.xz ${_filename}-x86_64.tar.xz
+        mv ${_filename}-x64.tar.xz ${_filename}-$CARCH.tar.xz
     elif [ $CARCH == "aarch64" ]; then
-        mv ${_filename}-arm64.tar.xz ${_filename}-aarch64.tar.xz
+        mv ${_filename}-arm64.tar.xz ${_filename}-$CARCH.tar.xz
     fi
     # extract files to target
     tar -xf ${_filename}-$CARCH.tar.xz -C "$pkgdir/usr/share/feishin" --strip-components=1
