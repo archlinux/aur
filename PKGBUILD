@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-cash-node-qt
-pkgver=26.1.0
+pkgver=27.0.0
 pkgrel=1
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.
         bitcoin-reindex.service
         bitcoin.install
         bitcoin.desktop)
-sha256sums=('e3312f1118bdd25841e55e44ba16632803d59dd11e2fd52a80422868caf1a37c'
+sha256sums=('2db37060153d1af004be331e97903199549a638d51dbb930f82984b6866eab06'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
