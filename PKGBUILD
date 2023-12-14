@@ -1,7 +1,7 @@
 # Maintainer: Simeon Schaub <simeondavidschaub99@gmail.com>
 pkgname=juliaup
 pkgver=1.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental Julia version manager"
 arch=('x86_64' 'x86' 'aarch64')
 url="https://github.com/JuliaLang/juliaup"
@@ -17,7 +17,7 @@ md5sums=('f1d2d11bb3de079c2fe7dab3031082fd')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
-  cargo build --release --bin juliaup --bin julialauncher --features binjulialauncher
+  cargo build --release --bin juliaup --bin julialauncher --features binjulialauncher --target-dir ./target
 }
 
 package() {
