@@ -1,6 +1,6 @@
 # Maintainer: Florian Maunier <fmaunier@kuzzle.io>
 pkgname=kourou
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="The CLI that helps you manage your Kuzzle application"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs')
 makedepends=('jq' 'npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-b2sums=('ff2d802dfab2e38324749706c4749bf01f89f9ba011bc10238dc5fd8ff30c5b07085211ae77c8e8733c0a9915e8e0c7828259796a3c87fea6f31b4af5e6e5eb4')
+b2sums=('0a0c151fc8ce427fb9ea5ed3dbc82469260507d2865750291a03dae4428d473815a07bf2c2ae815e0756f627319f098ae1024a8153a0985bbea550742e8f8071')
 
 package() {
   npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
