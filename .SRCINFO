@@ -1,0 +1,21 @@
+pkgbase = icingaweb2-module-fileshipper
+	pkgdesc = Provide CSV, JSON, XML and YAML files as an Import Source for the Icinga Director
+	pkgver = 1.2.0
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/Icinga/icingaweb2-module-fileshipper
+	install = icingaweb2-module-fileshipper.install
+	arch = any
+	license = GPL
+	depends = icingaweb2-module-director>=1.1.0
+	provides = icingaweb2-module-fileshipper
+	backup = etc/icingaweb2/modules/fileshipper/imports.ini
+	backup = etc/icingaweb2/modules/fileshipper/directories.ini
+	source = https://github.com/Icinga/icingaweb2-module-fileshipper/archive/refs/tags/v1.2.0.tar.gz
+	source = imports.ini
+	source = directories.ini
+	sha256sums = 1a8d59e4dc3164d5fb647a0253d24b35e3dda1f612a323648ca93d1033dbd9a7
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = icingaweb2-module-fileshipper
