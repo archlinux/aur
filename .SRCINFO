@@ -1,7 +1,7 @@
 pkgbase = electron2-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - Binary version 2
 	pkgver = 2.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electronjs.org/
 	arch = x86_64
 	arch = aarch64
@@ -38,14 +38,15 @@ pkgbase = electron2-bin
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
 	provides = electron2=2.0.18
-	provides = electron=2.0.18
 	conflicts = electron2
-	source_x86_64 = electron2-bin-chromedriver-2.0.18-x86_64.zip::https://github.com/electron/electron/releases/download/v2.0.18/chromedriver-v2.0.18-linux-x64.zip
-	source_x86_64 = electron2-bin-2.0.18-x86_64.zip::https://github.com/electron/electron/releases/download/v2.0.18/electron-v2.0.18-linux-x64.zip
+	noextract = electron2-bin-chromedriver-2.0.18-x86_64.zip
+	noextract = electron2-bin-2.0.18-x86_64.zip
+	source_x86_64 = electron2-bin-chromedriver-2.0.18-x86_64.zip::https://github.com///releases/download/v2.0.18/chromedriver-v2.0.18-linux-x64.zip
+	source_x86_64 = electron2-bin-2.0.18-x86_64.zip::https://github.com///releases/download/v2.0.18/-v2.0.18-linux-x64.zip
 	sha256sums_x86_64 = 37140f6ec7d333dcd559c85815d547ef7a0046272f37fce0f78c308032779edc
 	sha256sums_x86_64 = f196e06b6ecfa33bffb02b3d6c4a64bd5a076014e2f21c4a67356474ee014000
-	source_aarch64 = electron2-bin-chromedriver-2.0.18-aarch64.zip::https://github.com/electron/electron/releases/download/v2.0.18/chromedriver-v2.0.18-linux-arm64.zip
-	source_aarch64 = electron2-bin-2.0.18-aarch64.zip::https://github.com/electron/electron/releases/download/v2.0.18/electron-v2.0.18-linux-arm64.zip
+	source_aarch64 = electron2-bin-chromedriver-2.0.18-aarch64.zip::https://github.com///releases/download/v2.0.18/chromedriver-v2.0.18-linux-arm64.zip
+	source_aarch64 = electron2-bin-2.0.18-aarch64.zip::https://github.com///releases/download/v2.0.18/-v2.0.18-linux-arm64.zip
 	sha256sums_aarch64 = 516981ca6f7465dba55228df9ba30b7e0566a3eec694e5a2cc2fbe58a41ff006
 	sha256sums_aarch64 = dfcfb60fc57dcec41a25cebbea37c0486a0ffd690ac3ccbb80a97161851df81f
 
