@@ -1,7 +1,7 @@
 # Maintainer: Antheas Kapenekakis <aur at antheas dot dev>
 pkgname=hhd
 pkgver=0.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Handheld Daemon. A tool for managing the quirks of handheld devices.'
 arch=('x86_64')
 url='https://github.com/antheas/hhd'

@@ -1,7 +1,7 @@
 pkgbase = hhd
 	pkgdesc = Handheld Daemon. A tool for managing the quirks of handheld devices.
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/antheas/hhd
 	arch = x86_64
 	license = APACHE
@@ -10,6 +10,7 @@ pkgbase = hhd
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
+	depends = python-setuptools
 	depends = python-evdev
 	depends = python-rich
 	depends = python-yaml
