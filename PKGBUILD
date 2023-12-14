@@ -35,13 +35,13 @@ build() {
   fi
   mkdir build
   cd build
-  qmake PREFIX=/usr CONFIG+=install_udev_rules CONFIG+=bundle_icons ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DUSE_QT5=ON ..
   make 
 }
 
 package() {
   cd "${_pkgname}/build"
-  make INSTALL_ROOT="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
   install -Dm644 "${srcdir}/${_pkgname}/LICENSE" \
    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
