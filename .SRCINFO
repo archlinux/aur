@@ -1,0 +1,18 @@
+pkgbase = svt-av1-bluesword-git
+	pkgdesc = Scalable Video Technology AV1 encoder and decoder (BlueSword fork)
+	pkgver = 0.8.6.r1446.g4aa74956
+	pkgrel = 1
+	url = https://github.com/BlueSwordM/SVT-AV1
+	arch = x86_64
+	license = BSD
+	license = custom: Alliance for Open Media Patent License 1.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = yasm
+	depends = glibc
+	provides = svt-av1
+	conflicts = svt-av1
+	source = git+https://github.com/BlueSwordM/SVT-AV1.git
+	sha256sums = SKIP
+
+pkgname = svt-av1-bluesword-git
