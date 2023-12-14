@@ -2,18 +2,18 @@
 pkgname=video-hub-app-bin
 _pkgname=Video.Hub.App
 pkgver=3.2.0
-pkgrel=3
+_electronversion=22
+pkgrel=4
 pkgdesc="The fastest way to browse and search for videos on your computer. Think of it like YouTube for videos on your computer: browse, search, and preview."
 arch=('x86_64')
 url="https://videohubapp.com/"
-_githuburl="https://github.com/whyboris/Video-Hub-App"
+_ghurl="https://github.com/whyboris/Video-Hub-App"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
     'hicolor-icon-theme'
-    'electron22'
+    "electron${_electronversion}"
     'libx11'
     'gdk-pixbuf2'
     'libxext'
@@ -25,14 +25,18 @@ makedepends=(
     'squashfuse'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}.3.Demo-${pkgver}.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/whyboris/Video-Hub-App/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.3.Demo-${pkgver}.AppImage"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/whyboris/Video-Hub-App/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('5264acfd9d4e3ca0ce7332acaeb74431c49b48e9f50f01bd9f45074ea323577b'
             '096d751c3b4fea8ec7f2c8600137020ac6d1ab74b27a6353d1a3dca4271bc9f0'
-            '7cdf1bff566baf160bcd1265d44614c1861b097db8aae0f688eb2416b26d23a4')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
@@ -48,5 +52,5 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}-3.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
