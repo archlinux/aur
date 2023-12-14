@@ -1,6 +1,6 @@
 # Maintainer: szdytom <szdytom@qq.com>
 pkgname=nyanpasu-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="BiliBili 番剧视频和弹幕元数据的解析脚本(∠・ω< )⌒☆"
 arch=('any')
@@ -22,7 +22,7 @@ sha256sums=(
 package() {
   cd "${srcdir}"
   
-  # Install the binary file
+  # Install the executable file
   install -Dm755 "nyanpasu.mjs" "${pkgdir}/usr/bin/nyanpasu.mjs"
   
   # Install the license file

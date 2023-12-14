@@ -1,13 +1,13 @@
 pkgbase = nyanpasu-bin
 	pkgdesc = BiliBili 番剧视频和弹幕元数据的解析脚本(∠・ω< )⌒☆
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/szdytom/nyanpasu
 	arch = any
 	license = GPL2
 	depends = nodejs
 	provides = nyanpasu
-	source = https://github.com/szdytom/nyanpasu/releases/download/0.1.1/nyanpasu.mjs
+	source = https://github.com/szdytom/nyanpasu/releases/download/0.1.2/nyanpasu.mjs
 	source = LICENSE
 	sha256sums = 298a55dbc08c0308b435ccd24d51cd035b7f00f222bf9778744df2a26774fc54
 	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
