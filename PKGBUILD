@@ -93,7 +93,7 @@ package() {
   make DESTDIR="${pkgdir}" install
   make DESTDIR="${pkgdir}" install -C scripts
 
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_proj}"
 
   # license
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m0644 COPYING
