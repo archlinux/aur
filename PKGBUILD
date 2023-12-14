@@ -2,7 +2,7 @@
 _pkgname=filecxx
 pkgname=filecentipede-bin
 pkgver=2.82
-pkgrel=6
+pkgrel=7
 pkgdesc="Cross-platform internet upload/download manager for HTTP(S), FTP(S), SSH, magnet-link, BitTorrent, m3u8, ed2k, and online videos. WebDAV client, FTP client, SSH client."
 arch=("x86_64")
 url="http://www.filecxx.com/"
@@ -23,9 +23,7 @@ depends=(
     'libxshmfence'
     'xcb-util-renderutil'
     'libdrm'
-    'glib2'
     'libice'
-    'dbus'
     'brotli'
     'pcre'
     'libxext'
@@ -35,13 +33,11 @@ depends=(
     'mesa'
     'xcb-util-wm'
     'qt5-base'
-    'zlib'
     'libxdmcp'
     'libxxf86vm'
     'pcre2'
     'xcb-util'
     'libxkbcommon-x11'
-    'gcc-libs'
     'libxkbcommon'
     'libmd'
     'libpng'
@@ -61,21 +57,25 @@ optdepends=(
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}.0/${_pkgname}_${pkgver}_linux_x64.zip"
-    "LICENSE.md::https://raw.githubusercontent.com/filecxx/FileCentipede/v${pkgver}.0/README.md"
+    "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/filecxx/FileCentipede/v${pkgver}.0/README.md"
+    "${pkgname%-bin}.sh"
 )
 sha256sums=('41932ebba913ed1de840ac32653d69fac67e44cf366b0fe7c58a4b50c1d9804d'
-            '3d681f308f0c2eee560aa31e2687b5285ecd78c79eef5b3aa5f0e4bf0009e6db')
+            '3d681f308f0c2eee560aa31e2687b5285ecd78c79eef5b3aa5f0e4bf0009e6db'
+            'f2717f40895a915d3c0bb22ab6e56af927da1aa61a201ed232ecfd86a27096ad')
 build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runappname@|fileu|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --categories "Utility;System" --name "FileCentipede文件蜈蚣" --exec "${pkgname%-bin}"
-    mkdir -p "${srcdir}/${pkgname%-bin}"
-    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/${pkgname%-bin}"
-    find "${srcdir}/${pkgname%-bin}" -type f -perm 600 -exec chmod 644 {} \;
+    install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/opt/${pkgname%-bin}"
+    find "${srcdir}/opt/${pkgname%-bin}" -type f -perm 600 -exec chmod 644 {} \;
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
-    cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
-    ln -sf "/opt/${pkgname%-bin}/fileu" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    cp -r "${srcdir}/opt" "${pkgdir}"
     install -Dm644 "${srcdir}/${pkgname%-bin}/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
