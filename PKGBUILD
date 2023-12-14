@@ -1,10 +1,10 @@
 pkgname=hyprdots-ctl
-pkgver=v0.1.0.46
+pkgver=v0.1.0.48
 pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations"
 arch=('x86_64')
 url="https://github.com/kRHYME7/Hyprdots-ctl"
-license=('unknown') # replace with your script's license
+license=('unknown') # Soon
 depends=( 'fzf' 'tree' )
 makedepends=('git' 'make' 'curl')
 source=("git+https://github.com/kRHYME7/Hyprdots-ctl.git")
