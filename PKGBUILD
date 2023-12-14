@@ -3,7 +3,7 @@
 pkgname=uconfig
 _pkgname=uConfig
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Datasheet pinout extractor from PDF and library Stylizer for KiCad."
 arch=('any')
 url="https://github.com/Robotips/uConfig"
@@ -12,7 +12,8 @@ provides=(${pkgname})
 conflicts=(${pkgname}  ${pkgname}-git)
 #replaces=(${pkgname})
 depends=(poppler)
-makedepends=('qt5-tools')
+makedepends=(qt5-tools
+    poppler-qt5)
 backup=()
 options=('!strip')
 # install=${pkgname}.install

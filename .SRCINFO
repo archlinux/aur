@@ -1,11 +1,12 @@
 pkgbase = uconfig
 	pkgdesc = Datasheet pinout extractor from PDF and library Stylizer for KiCad.
 	pkgver = 0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Robotips/uConfig
 	arch = any
 	license = GPL3
 	makedepends = qt5-tools
+	makedepends = poppler-qt5
 	depends = poppler
 	provides = uconfig
 	conflicts = uconfig
