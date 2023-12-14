@@ -2,7 +2,8 @@
 pkgname=shoppinglist-bin
 _pkgname=ShoppingList
 pkgver=1.0.0
-pkgrel=4
+_electronversion=17
+pkgrel=5
 pkgdesc="A user-friendly shopping list application developed using Electron and MaterializeCss."
 arch=("x86_64")
 url="https://github.com/MillerSpil/ShoppingListApplication"
@@ -10,8 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron17'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -21,8 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e109b2e649081083a3c0374f1d26bc00242892bf5fc5478158dfed29521610d1'
-            'd828933795970cb125bb9f5d8e972ad485d1415e2a89a1417176661ada4d8925')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
