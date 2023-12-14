@@ -12,7 +12,7 @@ depends=(gcc-libs glibc python)
 makedepends=(git capnproto cython0 python-build python-installer python-pkgconfig python-setuptools python-wheel)
 checkdepends=(python-pytest)
 optdepends=('python-jinja: for capnpc-cython')
-source=(git+https://github.com/capnproto/pycapnp.git#commit=$_commit)
+source=(git+$url#commit=$_commit)
 sha512sums=('SKIP')
 
 pkgver() {
