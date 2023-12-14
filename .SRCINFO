@@ -1,0 +1,14 @@
+pkgbase = mlite
+	pkgdesc = Useful classes originating from MeeGo Touch
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/sailfishos/mlite
+	arch = x86_64
+	license = LGPL
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = dconf
+	source = https://github.com/sailfishos/mlite/archive/0.4.1/mlite-0.4.1.tar.gz
+	sha512sums = 7263629e1bb0d44e3a86ecb9fb8b44d1482027638be0c060ffde470f9170d08b645e1411208377ecf9f5d7cc608599fafeb6df66c8cb235e059786c13ef51a9f
+
+pkgname = mlite
