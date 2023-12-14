@@ -39,8 +39,9 @@ build() {
 }
 
 check() {
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
   cd pycapnp
-  PYTHONPATH="build/lib.linux-$CARCH-cpython-311" pytest
+  PYTHONPATH="build/lib.linux-$CARCH-cpython-$python_version" pytest
 }
 
 package() {
