@@ -8,16 +8,16 @@
 #               Vufa <countstarlight@gmail.com>
  
 BOTTLENAME="Deepin-WeLink"
-APPVER="7.34.7.494"
+APPVER=@sparkver@
 WELINK_INSTALLER="WeLink"
-WELINK_VER="7.28.8.455"
+WELINK_VER=@appver@
 WELINK_INSTALLER_PATH="c:/Program Files/WeLink/${WELINK_INSTALLER}-${WELINK_VER}.exe"
 WINEPREFIX="$HOME/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files/${WELINK_INSTALLER}/${WELINK_INSTALLER}.exe"
 EXEC_FILE="${WINEPREFIX}/drive_c/Program Files/${WELINK_INSTALLER}/${WELINK_INSTALLER}.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
 export MIME_TYPE=""
-export DEB_PACKAGE_NAME="deepin-wine-welink"
+export DEB_PACKAGE_NAME=@appname@
 export APPRUN_CMD="deepin-wine6-stable"
 DISABLE_ATTACH_FILE_DIALOG=""
 EXPORT_ENVS=""
@@ -49,11 +49,11 @@ DeployApp() {
     rm -rf "${WINEPREFIX}"
     # run installer
     msg 0 "Launching ${WELINK_INSTALLER_PATH} ..."
-    env WINEDLLOVERRIDES="winemenubuilder.exe=d" ${START_SHELL_PATH} ${BOTTLENAME} ${APPVER} "${WELINK_INSTALLER_PATH}" "$@"
+    env WINEDLLOVERRIDES="winemenubuilder.exe=d" "${START_SHELL_PATH}" "${BOTTLENAME} ${APPVER}" "${WELINK_INSTALLER_PATH}" "$@"
 
     touch "${WINEPREFIX}"/reinstalled
     msg 0 "Creating ${WINEPREFIX}/PACKAGE_VERSION ..."
-    cat /opt/apps/${DEB_PACKAGE_NAME}/files/files.md5sum >"${WINEPREFIX}"/PACKAGE_VERSION
+    cat "/opt/apps/${DEB_PACKAGE_NAME}/files/files.md5sum" >"${WINEPREFIX}"/PACKAGE_VERSION
 }
 
 WakeApp() {
@@ -72,20 +72,20 @@ Run() {
     fi
  
     if [ -n "${EXEC_PATH}" ]; then
-        if [ ! -f "${WINEPREFIX}/reinstalled" ] || [ ! -f "$EXEC_FILE" ]; then
+        if [ ! -f "${WINEPREFIX}/reinstalled" ] || [ ! -f "${EXEC_FILE}" ]; then
             DeployApp "$@"
             exit 0
         fi
  
         if [ -z "${EXEC_PATH##*.lnk*}" ]; then
             msg 0 "Launching  ${EXEC_PATH} lnk file ..."
-            ${START_SHELL_PATH} ${BOTTLENAME} ${APPVER} "C:/windows/command/start.exe" "/Unix" "${EXEC_PATH}" "$@"
+            "${START_SHELL_PATH}" "${BOTTLENAME} ${APPVER}" "C:/windows/command/start.exe" "/Unix" "${EXEC_PATH}" "$@"
         else
             msg 0 "Launching  ${EXEC_PATH} ..."
-            ${START_SHELL_PATH} ${BOTTLENAME} ${APPVER} "${EXEC_PATH}" "$@"
+            "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@"
         fi
     else
-        ${START_SHELL_PATH} ${BOTTLENAME} ${APPVER} "uninstaller.exe" "$@"
+        "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@"
     fi
 }
  
