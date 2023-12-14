@@ -19,7 +19,7 @@ makedepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/${pkgver}/${_pkgname}-linux-x64-v${pkgver}.zip"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/ilyagru/Space-Snake/${pkgver}/app/icons/icon.png"
-    "${pkgname%-bin}-${pkgver}.sh"
+    "${pkgname%-bin}.sh"
 )
 sha256sums=('b4ed62ff9b5dc3cc815f0ac5328dc602ce29f6bb3231beab622c246c7c2554f9'
             '2cf69008e16f9f81098eaed1b59e481bafb258606cc9171047db9b6fdec6cb9f'
