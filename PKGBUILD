@@ -7,7 +7,7 @@
 pkgname=coreutils-hybrid-git
 _pkgname=coreutils
 __pkgname=uutils
-pkgver=0.0.14.r152.gd1f7f51f9
+pkgver=0.0.23.r221.g60fbf1db8
 pkgrel=1
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
@@ -26,6 +26,24 @@ sha512sums=('SKIP'
 pkgver() {
   cd "$__pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+
+  # Check incompatible file
+  if [ -e /usr/share/man/man1/groups.1.gz ] || [ -e /usr/share/man/man1/kill.1.gz ] || [ -e /usr/share/man/man1/more.1.gz ]; then
+  # Define color variables
+  yellow='\033[1;33m'
+  red='\033[1;31m'
+  NC='\033[0m' # No Color
+
+  # Echo red colored text
+  echo -e ""${yellow}"WARNING :
+  "${red}"DELETE INCOMPATIBLE FILES MANUALLY ${NC}"
+  ls "/usr/share/man/man1/"{groups,kill,more}".1.gz"
+  exit
+  fi
+
 }
 
 build() {
@@ -57,5 +75,4 @@ package() {
   # Clean conflicts, Arch ships these in other apps
   cd "$pkgdir/usr/bin/" && rm groups hostname kill more uptime
   rm -r "$pkgdir/usr/share/bash-completion/completions/"
-  rm /usr/share/man/man1/{groups,kill,more}.1.gz
 }
