@@ -4,7 +4,7 @@
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -69,6 +69,7 @@ package_prusa-slicer() {
 }
 
 package_slicer-udev() {
+  pkgdesc="udev rules for Slic3r-like software"
   depends=() # Reset dependencies
 
   install -d "${pkgdir}"/usr/lib/
