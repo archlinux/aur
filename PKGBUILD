@@ -2,7 +2,7 @@
 
 pkgname=powerkit-git
 _pkgname=powerkit
-pkgver=r220.70c86aa
+pkgver=r258.70be27f
 pkgrel=1
 pkgdesc='A Lightweight Desktop Independent full featured power manager'
 arch=('i686' 'x86_64' 'aarch64')
