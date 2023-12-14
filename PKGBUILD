@@ -2,16 +2,14 @@
 
 ## options
 : ${_autoupdate:=true}
-: ${_pkgver:=3.85.17}
-
-: ${_test:=false}
+: ${_system_electron:=true}
 
 : ${_pkgtype:=latest-bin}
 
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=3.85.17
+pkgver=3.90.11
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
@@ -29,16 +27,35 @@ _main_package() {
 
   source+=("$_filename"::"$_dl_url")
   sha256sums+=('SKIP')
-
-  if [[ x"${_test::1}" == "xt" ]] ; then
-    source+=("beeper.sh")
-    sha256sums+=('SKIP')
-  fi
 }
 
 # common functions
 pkgver() {
   printf '%s' "${_pkgver:?}"
+}
+
+prepare() {
+  cat <<'EOF' > "$_pkgname.sh"
+#!/usr/bin/env sh
+set -e
+
+APPDIR=$(dirname `readlink -f "$0"`)
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+_ELECTRON=/usr/bin/electron
+_ASAR="${APPDIR}/resources/app.asar"
+_FLAGS_FILE="$XDG_CONFIG_HOME/beeper-flags.conf"
+
+if [ -r "$_FLAGS_FILE" ]; then
+  _USER_FLAGS="$(cat "$_FLAGS_FILE")"
+fi
+
+if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
+    exec ${_ELECTRON} ${_ASAR} $_USER_FLAGS "$@"
+else
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox $_USER_FLAGS "$@"
+fi
+EOF
 }
 
 build() {
@@ -71,7 +88,7 @@ _package_beeper() {
   mv "${srcdir:?}/squashfs-root" "${pkgdir:?}/opt/beeper"
 }
 
-_package_test() {
+_package_asar() {
   # script
   install -Dm755 "${srcdir:?}/beeper.sh" -t "${pkgdir:?}/opt/beeper/"
 
@@ -101,9 +118,9 @@ package() {
   install -Dm644 "${srcdir:?}/squashfs-root/LICENSE.electron.txt" -t "${pkgdir:?}/usr/share/licenses/$pkgname"
   install -Dm644 "${srcdir:?}/squashfs-root/LICENSES.chromium.html" -t "${pkgdir:?}/usr/share/licenses/$pkgname"
 
-  if [[ x"${_test::1}" == "xt" ]] ; then
+  if [[ "${_system_electron::1}" == "t" ]] ; then
     depends+=('electron')
-    _package_test
+    _package_asar
   else
     _package_beeper
   fi
@@ -111,28 +128,29 @@ package() {
 
 # update version
 _update_version() {
-  case "${_autoupdate::1}" in
-    't'|'y'|'1')
-      _dl_url="https://download.beeper.com/linux/appImage/x64"
+  : ${_pkgver:=$pkgver}
 
-      _filename=$(
-        curl -v --no-progress-meter -r 0-1 "$_dl_url" 2>&1 >/dev/null \
-          | grep content-disposition \
-          | sed -E 's@^.*\bcontent-disposition:.*\bfilename="([^"]+)".*$@\1@'
-      )
+  if [[ "${_autoupdate::1}" != 't' ]] ; then
+    return
+  fi
 
-      _pkgver_new=$(
-        printf '%s' "$_filename" \
-          | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]+)(-.*)?.AppImage$@\1@'
-      )
+  _dl_url="https://download.beeper.com/linux/appImage/x64"
 
-      # update _pkgver
-      if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
-        _pkgver="$_pkgver_new"
-        sed -Ei "s@^(\s*: \\\$\{_pkgver):=.*\}\$@\1:=${_pkgver:?}}@" "$startdir/PKGBUILD"
-      fi
-      ;;
-  esac
+  _filename=$(
+    curl -v --no-progress-meter -r 0-1 "$_dl_url" 2>&1 >/dev/null \
+      | grep content-disposition \
+      | sed -E 's@^.*\bcontent-disposition:.*\bfilename="([^"]+)".*$@\1@'
+  )
+
+  _pkgver_new=$(
+    printf '%s' "$_filename" \
+      | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]+)(-.*)?.AppImage$@\1@'
+  )
+
+  # update _pkgver
+  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+    _pkgver="$_pkgver_new"
+  fi
 }
 
 # execute
