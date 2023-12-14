@@ -1,14 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qucs-s-git
-pkgver=2.1.0.r0.g52a25adf
+pkgver=2.1.0.r37.g0d52cd9f
 pkgrel=1
 epoch=
 pkgdesc="Qucs-S provides GUI for different circuit simulation kernels. "
 arch=('x86_64')
 url="https://github.com/ra3xdh/qucs_s"
 license=('GPL-2.0')
-local _qt=qt6
+_qt=qt6
 groups=()
 depends=($_qt-tools)
 makedepends=(cmake
@@ -48,7 +48,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+
+    cmake -D CMAKE_INSTALL_PREFIX=/usr \
           -B build \
           -G Ninja
 
