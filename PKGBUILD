@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.6.55
+pkgver=1.6.57
 pkgrel=1
 pkgdesc="Desktop app for ente Photos"
 arch=('x86_64')
@@ -34,7 +34,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.pacman"
 )
-sha256sums=('764311da3c3f67b4e885b9b7dff27b48dc582834954363b344fad9f28657fe1d')
+sha256sums=('31c977ec3bb193336e102c2627d97d587340eff302e28bb799dbd9d614f4bef9')
 build() {
     sed -e "s|/opt/${_pkgname}/${_pkgname} %U|${pkgname%-bin} --no-sandbox %U|g" \
         -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Photography|Graphics|g" \
