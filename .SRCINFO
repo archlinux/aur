@@ -1,14 +1,14 @@
 pkgbase = tenacity-bin
 	pkgdesc = An easy-to-use multi-track audio editor and recorder, forked from Audacity
 	pkgver = 1.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tenacityaudio.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = CCPL
 	depends = fuse2
-	depends = jack2
+	depends = jack
 	provides = tenacity
 	conflicts = tenacity
 	conflicts = tenacity-git
