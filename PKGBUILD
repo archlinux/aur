@@ -1,6 +1,6 @@
 # Maintainer: Dane Hobrecht <76x5l22l@anonaddy.me>
 
-pkgname=fzd
+pkgname=fzd-bin
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Fuzzy-found file or URL opener in the user's default application."

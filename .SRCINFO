@@ -10,4 +10,4 @@ pkgbase = fzd-bin
 	source = https://github.com/danehobrecht/fzd/archive/refs/tags/1.0.0.tar.gz
 	sha256sums = bf9fb4880b515c8aa2748f16a2035d3c531daae4c6f132364b27056f52fc3cd9
 
-pkgname = fzd
+pkgname = fzd-bin
