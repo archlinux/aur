@@ -7,7 +7,7 @@ pkgbase = fzd-bin
 	license = GPL
 	depends = xdg-utils
 	depends = fzf
-	source = https://github.com/danehobrecht/fzd/archive/refs/tags/1.0.0.tar.gz
+	source = https://github.com/danehobrecht/fzd/archive/refs/tags/1.0.1.tar.gz
 	sha256sums = 568f72aa7321f117bfe718645ca1bad475894acc34c219ac0cbd583fc368a19d
 
 pkgname = fzd-bin
