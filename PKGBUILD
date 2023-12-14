@@ -3,7 +3,7 @@
 
 pkgname=gcw0-toolchain
 pkgver=2021.10.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Build environment for the Open Source handheld console GCW Zero"
 arch=('i686' 'x86_64')
 url="https://opendingux.net/"
