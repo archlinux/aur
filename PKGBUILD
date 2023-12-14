@@ -1,5 +1,5 @@
 pkgname="sk-boot-to-windows"
-pkgver="1.0.3"
+pkgver="1.0.4"
 pkgrel=1
 pkgdesc="Creates a .desktop application to boot into Windows"
 arch=(any)
