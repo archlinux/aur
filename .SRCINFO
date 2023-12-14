@@ -1,18 +1,17 @@
 pkgbase = visualfamilytree-bin
 	pkgdesc = Create a family tree with extensive information and pictures about the individual family members.
 	pkgver = 1.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://visualfamilytree.jisco.me
 	arch = x86_64
 	license = custom:freeware
-	depends = bash
 	depends = electron11
 	depends = hicolor-icon-theme
 	source = visualfamilytree-1.4.0.deb::https://github.com/Jisco/VisualFamilyTree/releases/download/v1.4.0/VisualFamilyTree.1.4.0.deb
-	source = LICENSE::https://raw.githubusercontent.com/Jisco/VisualFamilyTree/v1.4.0/README.md
+	source = LICENSE-1.4.0::https://raw.githubusercontent.com/Jisco/VisualFamilyTree/v1.4.0/README.md
 	source = visualfamilytree.sh
 	sha256sums = 2182a8d0554b1c1811c12e43d093300a50fd438e305272e65da2db72d8eabc5a
 	sha256sums = 5bbd06a727b2ef99ef6738e5e7a4f060175cc823d55ea3d18fbac7a180a9ef28
-	sha256sums = cc3d9ec7e0d1a4ab982e3d4f4271d8468c20ba0d51107d4249e3fad224d8937b
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = visualfamilytree-bin
