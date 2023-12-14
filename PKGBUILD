@@ -2,11 +2,12 @@
 pkgname=batch-explorer-bin
 _pkgname=BatchExplorer
 pkgver=2.19.0_stable.936
-pkgrel=4
+_electronversion=26
+pkgrel=5
 pkgdesc="A client tool to help create, debug and monitor Azure Batch Applications"
 arch=("x86_64")
 url="https://azure.github.io/BatchExplorer/"
-_githuburl="https://github.com/Azure/BatchExplorer"
+_ghurl="https://github.com/Azure/BatchExplorer"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -21,7 +22,6 @@ depends=(
     'libdrm'
     'hicolor-icon-theme'
     'pango'
-    'dbus'
     'cairo'
     'gtk3'
     'gdk-pixbuf2'
@@ -36,7 +36,6 @@ depends=(
     'mesa'
     'libx11'
     'nss'
-    'zlib'
     'libxcomposite'
     'xz'
     'libxdamage'
@@ -44,8 +43,8 @@ depends=(
     'libsecret'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/Azure/BatchExplorer/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Azure/BatchExplorer/v${pkgver}/LICENSE"
 )
 sha256sums=('b58fe47dae1bc42b10a65146ee563e91dda0848c4d0f82bcc7843b19504b549a'
             '0b9ebab8a849f3ae8ed5bd7a35022bff9dce901efeeb53e855e91c02c8500ab0')
@@ -61,5 +60,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

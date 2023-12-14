@@ -1,7 +1,7 @@
 pkgbase = batch-explorer-bin
 	pkgdesc = A client tool to help create, debug and monitor Azure Batch Applications
 	pkgver = 2.19.0_stable.936
-	pkgrel = 4
+	pkgrel = 5
 	url = https://azure.github.io/BatchExplorer/
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,6 @@ pkgbase = batch-explorer-bin
 	depends = libdrm
 	depends = hicolor-icon-theme
 	depends = pango
-	depends = dbus
 	depends = cairo
 	depends = gtk3
 	depends = gdk-pixbuf2
@@ -30,7 +29,6 @@ pkgbase = batch-explorer-bin
 	depends = mesa
 	depends = libx11
 	depends = nss
-	depends = zlib
 	depends = libxcomposite
 	depends = xz
 	depends = libxdamage
@@ -39,7 +37,7 @@ pkgbase = batch-explorer-bin
 	provides = batch-explorer=2.19.0_stable.936
 	conflicts = batch-explorer
 	source = batch-explorer-2.19.0_stable.936.deb::https://github.com/Azure/BatchExplorer/releases/download/v2.19.0_stable.936/batch-explorer_2.19.0-stable.936_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/Azure/BatchExplorer/v2.19.0_stable.936/LICENSE
+	source = LICENSE-2.19.0_stable.936::https://raw.githubusercontent.com/Azure/BatchExplorer/v2.19.0_stable.936/LICENSE
 	sha256sums = b58fe47dae1bc42b10a65146ee563e91dda0848c4d0f82bcc7843b19504b549a
 	sha256sums = 0b9ebab8a849f3ae8ed5bd7a35022bff9dce901efeeb53e855e91c02c8500ab0
 
