@@ -1,0 +1,12 @@
+pkgbase = filerunner
+	pkgdesc = Tk-based two-panel file manager
+	pkgver = 23.03.07.16
+	pkgrel = 1
+	url = https://wiki.tcl-lang.org/page/FileRunner
+	arch = any
+	license = GPL3
+	depends = tk
+	source = https://sourceforge.net/projects/filerunner/files/release-23.03.07.16/fr-23.03.07.16.tar.gz
+	sha256sums = 79cf8196a2dd9913059937494301d30be674deb6cdf00303816f8bb828625ebf
+
+pkgname = filerunner
