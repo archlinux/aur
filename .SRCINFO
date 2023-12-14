@@ -1,6 +1,6 @@
 pkgbase = music-you-bin
 	pkgdesc = 一个美观简约的Material Design 3 (Material You) 风格网易云音乐播放器pc客户端
-	pkgver = 3.0.0_alpha.3
+	pkgver = 3.0.0_alpha.4
 	pkgrel = 1
 	url = https://v-player-git-dev-gumengyu.vercel.app/
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = music-you-bin
 	depends = at-spi2-core
 	depends = libxkbcommon
 	depends = libxrandr
-	provides = music-you=3.0.0_alpha.3
+	provides = music-you=3.0.0_alpha.4
 	conflicts = music-you
-	source = music-you-3.0.0_alpha.3.deb::https://github.com/GuMengYu/music-you/releases/download/v3.0.0-alpha.3/music-you_3.0.0-alpha.3_amd64.deb
-	sha256sums = 5212df30434c23bd3a2c09190436cfdab356f5c4c467c9649a194b4e90c5beb8
+	source = music-you-3.0.0_alpha.4.deb::https://github.com/GuMengYu/music-you/releases/download/v3.0.0-alpha.4/music-you_3.0.0-alpha.4_amd64.deb
+	sha256sums = 5891c59ea7856d4b9c83462c6d2bfa16e3c88655115d486a2f76d20b2c6f1c43
 
 pkgname = music-you-bin
