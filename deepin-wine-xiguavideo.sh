@@ -7,14 +7,14 @@
      
 #               Vufa <countstarlight@gmail.com>
      
-BOTTLENAME="Deepin-XiGuaVideo"
-APPVER="1.0.7"
+BOTTLENAME=@bottlename@
+APPVER=@appver@
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
-EXEC_PATH="c:/Program Files (x86)/xigua-video-electron/西瓜视频.exe"
-EXEC_FILE="${WINEPREFIX}/drive_c/Program Files (x86)/xigua-video-electron/西瓜视频.exe"
+EXEC_PATH="c:/Program Files (x86)/xigua-video-electron/@zhsname@.exe"
+EXEC_FILE="${WINEPREFIX}/drive_c/Program Files (x86)/xigua-video-electron/@zhsname@.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
 export MIME_TYPE=""
-export DEB_PACKAGE_NAME="deepin-wine-xiguavideo"
+export DEB_PACKAGE_NAME=@packagename@
 export APPRUN_CMD="deepin-wine6-stable"
 DISABLE_ATTACH_FILE_DIALOG=""
 EXPORT_ENVS=""
