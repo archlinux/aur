@@ -1,0 +1,7 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  /usr/bin/chown -R root:icingaweb2 /etc/icingaweb2/modules
+}

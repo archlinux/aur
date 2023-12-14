@@ -3,12 +3,13 @@
 
 pkgname=icingaweb2-module-director
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage Icinga 2 configuration from Icinga Web 2"
 license=('GPL')
 arch=('any')
 depends=('icingaweb2' 'icingaweb2-module-incubator')
 url="https://github.com/Icinga/icingaweb2-module-director"
+install="icingaweb2-module-director.install"
 source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz"
   "$pkgname.sysusers")
 sha256sums=('69ca4615b2032868f1ffd56e61264a50fd1bf3653b1de30b0465ae971630e2b0'
@@ -21,7 +22,8 @@ prepare() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  mkdir -p "$pkgdir/etc/icingaweb2/modules/director"
+  install -dm770 "$pkgdir/etc/icingaweb2/modules/director"
+  chmod 2770 "$pkgdir/etc/icingaweb2"
   mkdir -p "$pkgdir/usr/share/webapps/icingaweb2/modules/director"
 
   cp -r application contrib doc library public schema test \
