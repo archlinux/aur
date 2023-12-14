@@ -14,108 +14,173 @@
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
-_pkgname=wine
+_pkgname="wine"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=8.21.r412.gd748440e
+pkgver=8.21.r416.g19ad5bd5
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://gitlab.winehq.org/wine/wine"
 license=('LGPL-2.1-or-later')
 arch=(x86_64)
 
-depends=(
-  desktop-file-utils
+# main package
+_main_package() {
+  depends=(
+    desktop-file-utils
 
-  alsa-lib              #lib32-alsa-lib
-  fontconfig            #lib32-fontconfig
-  freetype2             #lib32-freetype2
-  gettext               #lib32-gettext
-  giflib                #lib32-giflib
-  gst-plugins-base-libs #lib32-gst-plugins-base-libs
-  libpulse              #lib32-libpulse
-  libxcomposite         #lib32-libxcomposite
-  libxcursor            #lib32-libxcursor
-  libxi                 #lib32-libxi
-  libxinerama           #lib32-libxinerama
-  libxrandr             #lib32-libxrandr
-  opencl-icd-loader     #lib32-opencl-icd-loader
-  sdl2                  #lib32-sdl2
-  v4l-utils             #lib32-v4l-utils
-)
-makedepends=(
-  autoconf
-  bison
-  flex
-  git
-  libgphoto2
-  mingw-w64-gcc
-  opencl-headers
-  perl
-  samba
-  sane
-  vulkan-headers
-
-  libcups               #lib32-libcups
-  libxxf86vm            #lib32-libxxf86vm
-  mesa                  #lib32-mesa
-  mesa-libgl            #lib32-mesa-libgl
-  vulkan-icd-loader     #lib32-vulkan-icd-loader
-)
-optdepends=(
-  cups
-  dosbox
-  libgphoto2
-  samba
-  sane
-
-  alsa-plugins          #lib32-alsa-plugins
-  libldap               #lib32-libldap
-)
-
-options=(staticlibs !lto)
-
-# provides/depends
-_pkgdep="$pkgname"
-while [[ "$_pkgdep" =~ .*-.* ]] ; do
-  _pkgdep="${_pkgdep%-*}"
-  provides+=("${_pkgdep}=${pkgver%%.r*}")
-  conflicts+=("${_pkgdep}")
-done
-
-_pkgsrc="wine"
-source=(
-  git+https://gitlab.winehq.org/wine/wine.git
-  30-win32-aliases.conf
-  wine-binfmt.conf
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
-
-if [[ "${_build_staging::1}" == "t" ]] ; then
-  source=("git+https://gitlab.winehq.org/wine/wine-staging.git")
-  sha256sums=('SKIP')
-
-  prepare() {
-    cd "$_pkgsrc"
-
-    # apply wine-staging patchset
-    "$srcdir/wine-staging/staging/patchinstall.py" --all
-  }
-fi
-
-pkgver() {
-  cd "$_pkgsrc"
-  local _version=$(
-    git tag --list 'wine-[0-9]*.[0-9]*' \
-      | sed -E 's/^[^0-9]+//;s/^.*[A-Za-z]{2}.*$//' \
-      | sort -V | tail -1
+    alsa-lib              #lib32-alsa-lib
+    fontconfig            #lib32-fontconfig
+    freetype2             #lib32-freetype2
+    gettext               #lib32-gettext
+    giflib                #lib32-giflib
+    gst-plugins-base-libs #lib32-gst-plugins-base-libs
+    libpulse              #lib32-libpulse
+    libxcomposite         #lib32-libxcomposite
+    libxcursor            #lib32-libxcursor
+    libxi                 #lib32-libxi
+    libxinerama           #lib32-libxinerama
+    libxrandr             #lib32-libxrandr
+    opencl-icd-loader     #lib32-opencl-icd-loader
+    sdl2                  #lib32-sdl2
+    v4l-utils             #lib32-v4l-utils
   )
-  local _revision=$(git rev-list --count --cherry-pick wine-$_version...HEAD)
-  local _hash=$(git rev-parse --short=8 HEAD)
-  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
+  makedepends=(
+    autoconf
+    bison
+    flex
+    git
+    libgphoto2
+    mingw-w64-gcc
+    opencl-headers
+    perl
+    samba
+    sane
+    vulkan-headers
+
+    libcups               #lib32-libcups
+    libxxf86vm            #lib32-libxxf86vm
+    mesa                  #lib32-mesa
+    mesa-libgl            #lib32-mesa-libgl
+    vulkan-icd-loader     #lib32-vulkan-icd-loader
+  )
+  optdepends=(
+    cups
+    dosbox
+    libgphoto2
+    samba
+    sane
+
+    alsa-plugins          #lib32-alsa-plugins
+    libldap               #lib32-libldap
+  )
+
+  options=(staticlibs !lto)
+
+  # provides/depends
+  _pkgdep="$pkgname"
+  while [[ "$_pkgdep" =~ .*-.* ]] ; do
+    _pkgdep="${_pkgdep%-*}"
+    provides+=("${_pkgdep}=${pkgver%%.r*}")
+    conflicts+=("${_pkgdep}")
+  done
+
+  if [[ "${_build_git::1}" != "t" ]] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+
+  if [[ "${_build_staging::1}" == "t" ]] ; then
+    source+=("git+https://gitlab.winehq.org/wine/wine-staging.git")
+    sha256sums+=('SKIP')
+
+    _prepare_staging() {
+      pushd "$_pkgsrc"
+
+      # apply wine-staging patchset
+      "$srcdir/wine-staging/staging/patchinstall.py" --all "${_staging_options[@]}"
+
+      popd
+    }
+  else
+    _prepare_staging() {
+      :
+    }
+  fi
+
+  source+=(
+    30-win32-aliases.conf
+    wine-binfmt.conf
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+  )
+}
+
+# stable package
+_main_stable() {
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git#tag=wine-${pkgver%%.r*}")
+  sha256sums+=('SKIP')
+
+  _prepare_main() {
+    pushd "$_pkgsrc"
+
+    _pkgver=$(
+      git tag --list 'wine-[0-9]*.[0-9]*' \
+        | sed -E 's/^[^0-9]+//;s/^.*[A-Za-z]{2}.*$//' \
+        | sort -V | tail -1
+    )
+
+    if [[ "${_pkgver:?}" != "${pkgver%%.r*}" ]] ; then
+      git checkout -f "wine-$_pkgver"
+      git describe --tags --long
+    fi
+
+    if [[ "${_build_staging::1}" == "t" ]] ; then
+      git -C "$srcdir/wine-staging" checkout -f "v$_pkgver"
+      git -C "$srcdir/wine-staging" describe --tags --long
+    fi
+
+    popd
+  }
+
+  pkgver() {
+    echo "${_pkgver:?}"
+  }
+}
+
+# git package
+_main_git() {
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  _prepare_main() {
+    _staging_options=(
+      -Wserver-PeekMessage
+      -Weventfd_synchronization
+    )
+  }
+
+  pkgver() {
+    cd "$_pkgsrc"
+    local _version=$(
+      git tag --list 'wine-[0-9]*.[0-9]*' \
+        | sed -E 's/^[^0-9]+//;s/^.*[A-Za-z]{2}.*$//' \
+        | sort -V | tail -1
+    )
+    local _revision=$(git rev-list --count --cherry-pick wine-$_version...HEAD)
+    local _hash=$(git rev-parse --short=8 HEAD)
+    printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
+  }
+}
+
+# common functions
+prepare() {
+  _prepare_main
+  _prepare_staging
 }
 
 build() {
@@ -153,3 +218,6 @@ package() {
   # binfmt config
   install -Dm644 "$srcdir/wine-binfmt.conf" "$pkgdir/usr/lib/binfmt.d/wine.conf"
 }
+
+# execute
+_main_package
