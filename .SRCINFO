@@ -1,7 +1,7 @@
 pkgbase = gatk
 	pkgdesc = Genome Analysis Toolkit https://doi.org/10.1101/gr.107524.110
-	pkgver = 4.4.0.0
-	pkgrel = 2
+	pkgver = 4.5.0.0
+	pkgrel = 1
 	url = https://software.broadinstitute.org/gatk
 	arch = any
 	license = BSD

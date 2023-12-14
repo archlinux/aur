@@ -1,6 +1,6 @@
 pkgname=gatk
-pkgver=4.4.0.0
-pkgrel=2
+pkgver=4.5.0.0
+pkgrel=1
 pkgdesc="Genome Analysis Toolkit https://doi.org/10.1101/gr.107524.110"
 arch=('any')
 url=https://software.broadinstitute.org/"${pkgname}"
