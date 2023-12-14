@@ -2,7 +2,8 @@
 pkgname=utilso-bin
 _pkgname=Utilso
 pkgver=4.4.0
-pkgrel=3
+_electronversion=13
+pkgrel=4
 pkgdesc="Regex Tester, JWT Verify, Image Converter, Format JSON, Decode base64, Code Beautify and more.Work completely offline"
 arch=("x86_64")
 url="https://utilso.com"
@@ -10,8 +11,7 @@ license=("custom")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron13'
+    "electron${_electronversion}"
     'libx11'
     'gdk-pixbuf2'
     'libxext'
@@ -26,8 +26,12 @@ source=(
 )
 sha256sums=('3d26f15d7210f805f56d92f2d828844a0a16b789ec7e4f3a4983e50ae7d050cc'
             'f76129e6cdc1748270f37acfdd278015789a888d2226b81531bccd58486df1e5'
-            'c8a1ebfa0cc2d078931548ef117b2cdc83746a8bc5c230f607e80ca61f0b2359')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
