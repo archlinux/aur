@@ -1,0 +1,157 @@
+# Maintainer: Dave Reisner <dreisner@archlinux.org>
+# Contributor: Angel Velasquez <angvp@archlinux.org>
+# Contributor: Eric Belanger <eric@archlinux.org>
+# Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+
+pkgbase=curl
+pkgname=(curl libcurl-compat libcurl-gnutls)
+_tag='55b5fafb094ebe07ca8a5d4f79813c8b40670795' # git rev-parse v${_tag_name}
+_tag_name='8_5_0'
+pkgver="${_tag_name//_/.}"
+pkgrel=1
+pkgdesc='command line tool and library for transferring data with URLs'
+arch=('x86_64')
+url='https://curl.se/'
+license=('MIT')
+depends=('ca-certificates' 'brotli' 'libbrotlidec.so' 'krb5' 'libgssapi_krb5.so'
+         'libidn2' 'libidn2.so' 'libnghttp2' 'libpsl' 'libpsl.so' 'libssh2' 'libssh2.so'
+         'openssl' 'zlib' 'zstd' 'libzstd.so')
+makedepends=('git' 'patchelf')
+provides=('libcurl.so')
+validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
+source=("git+https://github.com/bagder/curl.git#tag=${_tag}?signed")
+sha512sums=('SKIP')
+
+_backports=(
+)
+
+_reverts=(
+)
+
+prepare() {
+  cd "$pkgbase"
+
+  local _c
+  for _c in "${_backports[@]}"; do
+    if [[ $_c == *..* ]]; then
+      git log --oneline --reverse "${_c}"
+    else
+      git log --oneline -1 "${_c}"
+    fi
+    git cherry-pick -n -m1 "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    git log --oneline -1 "${_c}"
+    git revert -n "${_c}"
+  done
+
+  # no '-DEV' in version, release date from tagged commit...
+  sed -i \
+    -e "/\WLIBCURL_VERSION\W/c #define LIBCURL_VERSION \"${pkgver}\"" \
+    -e "/\WLIBCURL_TIMESTAMP\W/c #define LIBCURL_TIMESTAMP \"$(git log -1 --format=%cs "${_tag}")\"" \
+    include/curl/curlver.h
+
+  autoreconf -fi
+}
+
+build() {
+  local _configure_options=(
+    --prefix='/usr'
+    --mandir='/usr/share/man'
+    --disable-ldap
+    --disable-ldaps
+    --disable-manual
+    --enable-ipv6
+    --enable-threaded-resolver
+    --with-gssapi
+    --with-libssh2
+    --with-random='/dev/urandom'
+    --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt'
+  )
+
+  mkdir build-curl{,-compat,-gnutls}
+
+  # build curl
+  cd "${srcdir}"/build-curl
+
+  "${srcdir}/${pkgbase}"/configure \
+    "${_configure_options[@]}" \
+    --with-openssl \
+    --enable-versioned-symbols
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+
+  # build libcurl-compat
+  cd "${srcdir}"/build-curl-compat
+
+  "${srcdir}/${pkgbase}"/configure \
+    "${_configure_options[@]}" \
+    --with-openssl \
+    --disable-versioned-symbols
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make -C lib
+
+  # build libcurl-gnutls
+  cd "${srcdir}"/build-curl-gnutls
+
+  "${srcdir}/${pkgbase}"/configure \
+    "${_configure_options[@]}" \
+    --disable-versioned-symbols \
+    --without-openssl \
+    --with-gnutls
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make -C lib
+  patchelf --set-soname 'libcurl-gnutls.so.4' ./lib/.libs/libcurl.so
+}
+
+package_curl() {
+  cd build-curl
+
+  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install -C scripts
+
+  cd "${srcdir}/${pkgname}"
+
+  # license
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m0644 COPYING
+}
+
+package_libcurl-compat() {
+  pkgdesc='command line tool and library for transferring data with URLs (no versioned symbols)'
+  depends=('curl' 'openssl')
+  provides=('libcurl-compat.so')
+
+  cd "${srcdir}"/build-curl-compat
+
+  make -C lib DESTDIR="${pkgdir}" install
+
+  mv "${pkgdir}"/usr/lib/libcurl{,-compat}.so.4.8.0
+  rm "${pkgdir}"/usr/lib/libcurl.{a,so}*
+  for version in 3 4.0.0 4.1.0 4.2.0 4.3.0 4.4.0 4.5.0 4.6.0 4.7.0; do
+    ln -s libcurl-compat.so.4.8.0 "${pkgdir}"/usr/lib/libcurl.so.${version}
+  done
+
+  install -dm 0755 "${pkgdir}"/usr/share/licenses
+  ln -s curl "${pkgdir}"/usr/share/licenses/libcurl-compat
+}
+
+package_libcurl-gnutls() {
+  pkgdesc='command line tool and library for transferring data with URLs (no versioned symbols, linked against gnutls)'
+  depends=('curl' 'gnutls')
+  provides=('libcurl-gnutls.so')
+
+  cd "${srcdir}"/build-curl-gnutls
+
+  make -C lib DESTDIR="${pkgdir}" install
+
+  mv "${pkgdir}"/usr/lib/libcurl{,-gnutls}.so.4.8.0
+  rm "${pkgdir}"/usr/lib/libcurl.{a,so}*
+  ln -s libcurl-gnutls.so.4 "${pkgdir}"/usr/lib/libcurl-gnutls.so
+  for version in 3 4 4.0.0 4.1.0 4.2.0 4.3.0 4.4.0 4.5.0 4.6.0 4.7.0; do
+    ln -s libcurl-gnutls.so.4.8.0 "${pkgdir}"/usr/lib/libcurl-gnutls.so.${version}
+  done
+
+  install -dm 0755 "${pkgdir}"/usr/share/licenses
+  ln -s curl "${pkgdir}"/usr/share/licenses/libcurl-gnutls
+}
