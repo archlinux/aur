@@ -1,5 +1,11 @@
+# Directories
 src
 dashlane-cli-git
 pkg
+
+# Git repositories
+src/dashlane-cli-git
+
+# Files
 dashlane-cli-git-*-any.pkg.tar.zst
 .SRCINFO

@@ -60,3 +60,9 @@ test: prepare install && uninstall
 
 remote-add-aur:
     @git remote add aur ssh://aur@aur.archlinux.org/{{ pkgbase }}.git || true
+
+clean:
+    @git clean -dX -n
+
+clean-force: delete-all
+    @git clean -dX -f
