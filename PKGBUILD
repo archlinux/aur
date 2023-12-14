@@ -12,7 +12,6 @@ source=("https://github.com/danehobrecht/fzd/archive/refs/tags/${pkgver}.tar.gz"
 sha256sums=('bf9fb4880b515c8aa2748f16a2035d3c531daae4c6f132364b27056f52fc3cd9')
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm755 fzd "$pkgdir/usr/bin/fzd"
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
