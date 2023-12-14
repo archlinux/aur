@@ -1,8 +1,8 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _name="scikit-misc"
 pkgname="python-${_name}"
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Miscellaenous tools for scientific computing"
 arch=('x86_64')
 url="https://github.com/has2k1/${_name}"
@@ -30,13 +30,11 @@ checkdepends=(
   "python-pytest"
 )
 
-# NOTE: PyPi source fails, see: https://github.com/has2k1/scikit-misc/issues/27
-# For now: use git-archives
 source=(
   "${_name}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  "71cad2f9df1d21f9f64eddcae4c152c6dcf49a0183b9b53885bd12084dbdaa2a"
+  "7d5367253f2b17e330dcf0fe7afad7a6986bd6e747d45bd4727a67b7ac68cb0a"
 )
 _archive="${_name}-${pkgver}"
 
