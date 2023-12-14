@@ -2,7 +2,7 @@
 
 pkgname=mojo-git
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Mojo Programming Language"
 url="https://developer.modular.com/download"
 license=("custom:modular")
@@ -20,7 +20,7 @@ depends=(
 )
 arch=("x86_64")
 source=("https://raw.githubusercontent.com/Sharktheone/arch-mojo/main/install.py")
-sha256sums=("aee8c68cc4799df8271e0db9e464ebd2917a07fd3c063838965373002c5b72f3")
+sha256sums=("972f2622592f02738b92a55ac9770b717a10122e6b270d95b4b804681fce6f3b")
 
 install=mojo-git.install
 
