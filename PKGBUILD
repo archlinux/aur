@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=feidao-bin
 pkgver=1.0.0
-pkgrel=3
+_electronversion=13
+pkgrel=4
 pkgdesc="飞稻在线课程设计平台"
 arch=("x86_64")
 url="https://www.fei-dao.com"
 license=('custom')
 depends=(
-    'bash'
     'hicolor-icon-theme'
-    'electron13'
+    "electron${_electronversion}"
     'libx11'
     'gdk-pixbuf2'
     'libxext'
@@ -27,8 +27,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2a5f5919ebc8c7ef8ebd232758852c87dd0b165208dc46a501ce3cefdd23ded7'
-            '0223fe621c1c409019a1302683b0d12ed6e91a7ef5450a8ba64f4bd7bba53c0c')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
