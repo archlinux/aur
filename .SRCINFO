@@ -1,6 +1,6 @@
 pkgbase = firefly-shimmer-desktop-appimage
 	pkgdesc = Try out new features introduced with Shimmer, such as minting native tokens, setting transaction expiry times, and sending microtransactions.
-	pkgver = 2.1.9
+	pkgver = 2.1.10
 	pkgrel = 1
 	url = https://firefly.iota.org/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = firefly-shimmer-desktop-appimage
 	makedepends = squashfuse
 	depends = zlib
 	depends = glibc
-	provides = firefly-shimmer-desktop=2.1.9
+	provides = firefly-shimmer-desktop=2.1.10
 	conflicts = firefly-shimmer-desktop
 	conflicts = shimmer-firefly-wallet
 	options = !strip
-	source = firefly-shimmer-desktop-2.1.9.AppImage::https://github.com/iotaledger/firefly/releases/download/desktop-shimmer-2.1.9/firefly-shimmer-desktop-2.1.9.AppImage
-	sha256sums = 3595af9c52ac97e3ae9a3614d60d296d08e991ad12128da6639b61ec329319cf
+	source = firefly-shimmer-desktop-2.1.10.AppImage::https://github.com/iotaledger/firefly/releases/download/desktop-shimmer-2.1.10/firefly-shimmer-desktop-2.1.10.AppImage
+	sha256sums = 92eceed940293758c6ed1f57fb0671cfa021f8139bc68bcce97daf79f7584669
 
 pkgname = firefly-shimmer-desktop-appimage

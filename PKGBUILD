@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=firefly-shimmer-desktop-appimage
-pkgver=2.1.9
+pkgver=2.1.10
 pkgrel=1
 pkgdesc="Try out new features introduced with Shimmer, such as minting native tokens, setting transaction expiry times, and sending microtransactions."
 arch=('x86_64')
 url="https://firefly.iota.org/"
-_githuburl="https://github.com/iotaledger/firefly"
+_ghurl="https://github.com/iotaledger/firefly"
 license=('Apache')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}" "shimmer-firefly-wallet")
@@ -13,8 +13,10 @@ depends=('zlib' 'glibc')
 makedepends=('squashfuse')
 options=("!strip")
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/desktop-shimmer-${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
-sha256sums=('3595af9c52ac97e3ae9a3614d60d296d08e991ad12128da6639b61ec329319cf')
+source=(
+    "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/desktop-shimmer-${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage"
+)
+sha256sums=('92eceed940293758c6ed1f57fb0671cfa021f8139bc68bcce97daf79f7584669')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
