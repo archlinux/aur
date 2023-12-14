@@ -2,7 +2,8 @@
 pkgname=calmly-writer-bin
 _pkgname="Calmly Writer"
 pkgver=2.0.54
-pkgrel=4
+_electronversion=24
+pkgrel=5
 pkgdesc="An editor designed to focus on what you want to tell, with a simple, unobtrusive and ease-to-use user interface."
 arch=(
     'aarch64'
@@ -13,12 +14,11 @@ license=('custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'electron24'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'lib32-glibc'
     'lib32-gcc-libs'
 )
-makedepends=('asar')
 source_aarch64=("${pkgname%-bin}_${pkgver}-aarch64.deb::${url}/releases/linux/deb/arm64/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}_${pkgver}-x86_64.deb::${url}/releases/linux/deb/x64/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=(
@@ -26,10 +26,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('79f277c107ca3402d156db2ced6ea619a966216097c8d4d17692bada193b3edb'
-            'a8f5c4df1de2242cc3b18d89b2b8db8fd78ed6d505db7fd2a715e55c28001e7c')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 sha256sums_aarch64=('dd7606298580fbf26c3882cdf83286db563680c9ef757cdceba6a605d8bbf11e')
 sha256sums_x86_64=('91432bec316b83ef3a0e47815c4db9ec38903704e19c61e29f32782f327a3897')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
