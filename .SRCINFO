@@ -9,11 +9,8 @@ pkgbase = detect-it-easy-bin
 	depends = qt5-base
 	depends = gcc-libs
 	depends = glibc
-	provides = die
-	provides = diec
-	provides = diel
+	provides = detect-it-easy
 	conflicts = detect-it-easy
-	conflicts = detect-it-easy-git
 	source = https://github.com/horsicq/DIE-engine/releases/download/3.08/detect-it-easy-3.08-1-x86_64.pkg.tar.zst
 	sha256sums = 2e52e2e5b46486c641247e048795ea25d773fb3b1c51402e2850574b237a0e8c
 
