@@ -2,13 +2,13 @@
 
 pkgname=xboot-git
 pkgver=2.0.1.r2631
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible bootloader for embedded system with application engine, write once, run everywhere. (Linux Sandbox for x86_64)"
 arch=('x86_64')
 url="https://github.com/xboot/xboot"
 license=('MIT')
-provides=(${pkgname})
-conflicts=(${pkgname} ${pkgname%-git})
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=(sdl2
     alsa-lib
