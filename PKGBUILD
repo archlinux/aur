@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=selenium-ide-appimage
 _appname="@seleniumhq${pkgname%-appimage}"
-pkgver=4.0.0_alpha.62
+pkgver=4.0.0_alpha.63
 pkgrel=1
 pkgdesc="Open Source record and playback test automation for the web."
 arch=('x86_64')
@@ -19,7 +19,7 @@ _install_path="/opt/appimages"
 source=(
     "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver//_/-}-linux/Selenium.IDE-${pkgver//_/-}.AppImage"
 )
-sha256sums=('f0a4ea322666f411f085c2c89e763b91531bacfda8a7858a8bf8559944591a89')
+sha256sums=('9cbd8a5bdca7cf1cc983bfb110c1a524cc7d12c374c829984b6ef35ee84a1467')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
