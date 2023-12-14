@@ -1,7 +1,7 @@
 # Maintainer: Lionel Miller <delonorm@gmail.com>
 
 pkgname=gatk-bin
-pkgver=4.4.0.0
+pkgver=4.5.0.0
 pkgrel=1
 pkgdesc="Variant discovery in high-throughput bioinformatics sequencing data"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
   gatk.sh
   "${pkgname}-license.txt::https://raw.githubusercontent.com/broadinstitute/gatk/d6a7fcd895677424b491df8c4ee6227e34b52251/LICENSE.TXT"
 )
-sha512sums=('e26c0c453716a47d4fba4e879629f5715754994e96baab8a115783cd1fda2ae250e5d1764598dd4d926a5bce9f6d1144e5eec4ef42e75196e6bd698da5760d4c'
+sha512sums=('c98b95bec0c67113daa46911e176588180b463514ed8270961207cadf3d7329a99752d819eaff74ca95d3ef89c0592f2c92c3ac3b98cfd3e3e56dec7d3b6c634'
             'a9984153bc489bf5814adc8f8bffd92782e7dd031f2b9a0798d2dc005438445f5eefed6ce3b64b776197c49fb8579e4c968e7cdc4398c5df0145e5105cc20271'
             '9753eef4b1f3aa96b790eaeacbe92ecb9d8fee6de9b918244a519a53b5285d57d2128e62f6a86c5d931d217a72f08e806ff81e95ad8d271c1df737384c81e30e')
 
