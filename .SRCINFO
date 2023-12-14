@@ -1,6 +1,6 @@
 pkgbase = koboldcpp-cpu
 	pkgdesc = CPU build of koboldcpp
-	pkgver = 1.52
+	pkgver = 1.52.1
 	pkgrel = 1
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = koboldcpp-cpu
 	depends = cblas
 	depends = openblas
 	optdepends = customtkinter
-	source = koboldcpp-cpu-1.52.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.52.tar.gz
-	md5sums = a711ad4d1568112f708b8beac8230629
+	source = koboldcpp-cpu-1.52.1.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.52.1.tar.gz
+	md5sums = 86e44a3fb1a9114e0c624667296ce582
 
 pkgname = koboldcpp-cpu
