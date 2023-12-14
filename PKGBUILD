@@ -1,6 +1,7 @@
 # Maintainer:
 
 pkgname=python-pycapnp
+_name=pycapnp
 pkgver=1.3.0
 _commit=33c453eff788295804c094601b657ec4fdadc6f8
 pkgrel=3
@@ -29,18 +30,18 @@ source=(git+$url#commit=$_commit)
 sha512sums=('SKIP')
 
 pkgver() {
-  cd pycapnp
+  cd $_name
   git describe --tags | sed 's/^[vV]//;s/-/+/g'
 }
 
 build() {
-  cd pycapnp
+  cd $_name
   python -m build --wheel --no-isolation
 }
 
 check() {
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  cd pycapnp
+  cd $_name
   PYTHONPATH="build/lib.linux-$CARCH-cpython-$python_version" pytest
 }
 
@@ -48,7 +49,7 @@ package() {
   depends+=(
     capnproto libkj.so libkj-async.so libcapnpc.so libcapnp.so libcapnp-rpc.so
   )
-  cd pycapnp
+  cd $_name
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
