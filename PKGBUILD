@@ -2,7 +2,8 @@
 pkgname=vikunja-desktop-bin
 _pkgname="Vikunja Desktop"
 pkgver=0.21.0
-pkgrel=2
+_electronversion=25
+pkgrel=3
 pkgdesc="The open-source, self-hostable to-do app.Organize everything, on all platforms."
 arch=('x86_64')
 url="https://vikunja.io/"
@@ -11,8 +12,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron25'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
@@ -20,12 +20,16 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d5236c3d0a6283aeb18bf400ac0fb296225b40bbf0563b1db63915fd8f4411c9'
-            '65993e528c420a4dfbabc446ac4b0e4c223cf3e61ca34801676a97f96ef746c1')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g;s|Productivity|Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
