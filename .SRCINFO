@@ -1,6 +1,6 @@
 pkgbase = python-imapclient
 	pkgdesc = Easy-to-use, Pythonic and complete IMAP client library
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/mjs/imapclient
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-imapclient
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-imapclient-3.0.0.tar.gz::https://github.com/mjs/imapclient/archive/a3abfea.tar.gz
-	sha256sums = dd29b447ce7188f75a0c9a708a215c6a4c291cf4c9dfc3f6db29913aa99b1298
+	source = python-imapclient-3.0.1.tar.gz::https://github.com/mjs/imapclient/archive/9a6a0df.tar.gz
+	sha256sums = ef38b9fe03c1a1099b132e11da04868e217dde343686dfa5af5f6ccb7b85db3d
 
 pkgname = python-imapclient

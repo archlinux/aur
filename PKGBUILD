@@ -5,8 +5,8 @@
 pkgname=python-imapclient
 _pkgname=IMAPClient
 _pkg="${pkgname#python-}"
-pkgver=3.0.0
-_commit=a3abfea6d1ce68f464a8a9fcef81af3a914b1b4d
+pkgver=3.0.1
+_commit=9a6a0df2d8d44c1f3d57c222d234740f8d381395
 _com="${_commit::7}"
 pkgrel=1
 pkgdesc="Easy-to-use, Pythonic and complete IMAP client library"
@@ -16,7 +16,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_com.tar.gz")
-sha256sums=('dd29b447ce7188f75a0c9a708a215c6a4c291cf4c9dfc3f6db29913aa99b1298')
+sha256sums=('ef38b9fe03c1a1099b132e11da04868e217dde343686dfa5af5f6ccb7b85db3d')
 
 build() {
 	cd "$_pkg-$_commit"
