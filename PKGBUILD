@@ -2,20 +2,20 @@
 
 _npmname=gitmoji-cli
 pkgname=nodejs-${_npmname}
-pkgver=8.4.0
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='A gitmoji interactive client for using gitmojis on commit messages'
 arch=('any')
 url='https://gitmoji.carloscuesta.me/'
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs>=18')
 makedepends=('npm')
 optdepends=('noto-fonts-emoji: emojis'
             'ttf-symbola: emojis'
             'ttf-joypixels: emojis'
             'ttf-twemoji-color: emojis')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-sha256sums=('cf42f321756afc8a8eb2dfc93af59e5c16090fab98d5b7bd101e9a0f8434102a')
+sha256sums=('f95dd23d6facc4ce8d77543effaf7ae906146b55d516d8015f4933c357960283')
 noextract=("${source[@]##*/}")
 
 prepare() {
