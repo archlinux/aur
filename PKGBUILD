@@ -4,7 +4,7 @@
 
 pkgname=perl-linux-fd
 _perl_version=5.38
-pkgver=0.011
+pkgver=0.014
 pkgrel=5
 pkgdesc="Provides you Linux specific special file handles"
 arch=('any')
@@ -31,3 +31,4 @@ package() {
   mkdir -p "$pkgdir/usr/lib/perl5/$_perl_version/vendor_perl"
   cp -r ./lib/perl5/*/* "$pkgdir/usr/lib/perl5/$_perl_version/vendor_perl"
 }
+sha256sums=('7831dc264c46d9b87f76436174d76614145243633083e090aab4d9a352f043ad')
