@@ -2,14 +2,14 @@
 pkgname=dopamine-bin
 _pkgname=Dopamine
 pkgver=3.0.0_preview21
-pkgrel=1
+_electronversion=21
+pkgrel=2
 pkgdesc="The audio player that keeps it simple"
 arch=('x86_64')
 url="https://github.com/digimezzo/dopamine"
 license=("GPL3")
 depends=(
-    'bash'
-    'electron21'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 provides=("${pkgname%-bin}=${pkgver}")
@@ -19,8 +19,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d72bae6d88c09970e8a176a347d1fd6e8c70526bdea71f56dfc759979e767129'
-            '99985e02c47148d483491d485afa825ba5045ee1208f7ced6d41958eb386f09a')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {

@@ -1,11 +1,10 @@
 pkgbase = dopamine-bin
 	pkgdesc = The audio player that keeps it simple
 	pkgver = 3.0.0_preview21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/digimezzo/dopamine
 	arch = x86_64
 	license = GPL3
-	depends = bash
 	depends = electron21
 	depends = hicolor-icon-theme
 	provides = dopamine=3.0.0_preview21
@@ -13,6 +12,6 @@ pkgbase = dopamine-bin
 	source = dopamine-3.0.0_preview21.pacman::https://github.com/digimezzo/dopamine/releases/download/v3.0.0-preview21/Dopamine-3.0.0_preview21.pacman
 	source = dopamine.sh
 	sha256sums = d72bae6d88c09970e8a176a347d1fd6e8c70526bdea71f56dfc759979e767129
-	sha256sums = 99985e02c47148d483491d485afa825ba5045ee1208f7ced6d41958eb386f09a
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = dopamine-bin
