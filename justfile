@@ -21,6 +21,9 @@ delete-pkg:
 delete-build-packages:
     @rm -f *.pkg.tar.zst || true
 
+delete-pkgbase:
+    @rm -rf {{ pkgbase }} || true
+
 delete-all: delete-build-packages delete-src delete-pkg
 
 cleanbuild: delete-all
@@ -64,6 +67,10 @@ test: prepare install && uninstall
 
 remote-add-aur:
     @git remote add aur ssh://aur@aur.archlinux.org/{{ pkgbase }}.git || true
+
+# One-time command to clone the aur repo - no further use
+clone-empty-aur:
+    git -c init.defaultbranch=master clone ssh://aur@aur.archlinux.org/{{ pkgbase }}.git
 
 clean:
     @git clean -dX -n
