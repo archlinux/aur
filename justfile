@@ -46,7 +46,7 @@ src-version:
 
 prepare: rebuild checksum srcinfo
 
-publish:
+publish: prepare
     echo "New version: $(just src-version)"
     @git add .
     echo "Committing and tagging..."
