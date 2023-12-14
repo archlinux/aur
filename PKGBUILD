@@ -9,7 +9,7 @@ _name=wine
 pkgver=9.0rc1
 _pkgver=9.0-rc1
 pkgrel=1
-provides=("wine=$pkgver")
+provides=("wine-staging" "wine-wow64" "wine")
 conflicts=("wine")
 source=(git+https://gitlab.winehq.org/wine/wine.git#tag=wine-$_pkgver
         git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$_pkgver

@@ -60,7 +60,9 @@ pkgbase = wine-staging-wow64
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=9.0rc1
+	provides = wine-staging
+	provides = wine-wow64
+	provides = wine
 	conflicts = wine
 	options = staticlibs
 	options = !lto
