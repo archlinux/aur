@@ -1,12 +1,11 @@
 pkgbase = threema-for-desktop-bin
 	pkgdesc = Unofficial desktop client for Threema
 	pkgver = 2.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GeekCornerGH/threema-for-desktop
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
-	depends = bash
 	depends = electron21
 	depends = libx11
 	depends = gdk-pixbuf2
@@ -17,10 +16,10 @@ pkgbase = threema-for-desktop-bin
 	provides = threema-for-desktop=2.5.1
 	conflicts = threema-for-desktop
 	source = threema-for-desktop-2.5.1.AppImage::https://github.com/GeekCornerGH/threema-for-desktop/releases/download/v2.5.1/Threema-For-Desktop-linux-2.5.1.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/GeekCornerGH/threema-for-desktop/v2.5.1/LICENSE
+	source = LICENSE-2.5.1::https://raw.githubusercontent.com/GeekCornerGH/threema-for-desktop/v2.5.1/LICENSE
 	source = threema-for-desktop.sh
 	sha256sums = 8954d9b28bdc3b3c9caa115b3a15be79279366d8afb087b8a5e9577ec8bf6066
 	sha256sums = 92f52afa40f9343b922a111f5e79cfcb864e77e334b92d63b0a6c8bd9c45d94d
-	sha256sums = 45f2f7e6483a9117c1613b027aebe63a472c3920204e66fef482bc1b37a80376
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = threema-for-desktop-bin
