@@ -3,37 +3,51 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: davedatum <ask at davedatum dot com>
 
+# options
+: ${_pkgtype:=git}
+
+# basic info
 _pkgname="heimer"
-pkgname="$_pkgname-git"
-pkgver=4.2.0.r16.gb4eba26
+pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgver=4.3.0.r1.g09c9abc
 pkgrel=1
 pkgdesc="Cross-platform mind map, diagram, and note-taking tool written in Qt"
 url='https://github.com/juzzlin/heimer'
 license=('GPL3')
 arch=("x86_64")
 
-depends=(
-  'hicolor-icon-theme'
-  'qt5-svg'
- )
-makedepends=(
-  'cmake'
-  'qt5-tools'
- )
+# main package
+_main_package() {
+  depends=(
+    'hicolor-icon-theme'
+    'qt5-svg'
+  )
+  makedepends=(
+    'cmake'
+    'qt5-tools'
+  )
 
+  if [ "$pkgname" == "$_pkgname" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+}
 
-if [ x"$pkgname" == x"$_pkgname" ] ; then
-  # normal package
+# stable package
+_main_stable() {
   _pkgsrc="Heimer-${pkgver%%.r*}"
   _pkgext="tar.gz"
   source=("$pkgname-${pkgver%%.r*}.$_pkgext"::"$url/archive/${pkgver%%.r*}.tar.gz")
-  sha256sums=('cbbc68c556845cb66a0bba0f1eab0bd6a0fb0d7f8bdd7e23984a45ab55b25ff5')
+  sha256sums=('6431955e85a10cde22399247d57c937db51afd84677dab200093992f00353436')
 
   pkgver() {
     echo "${pkgver%%.r*}"
   }
-else
-  # git package
+}
+
+# git package
+_main_git() {
   makedepends+=('git')
 
   provides=("$_pkgname")
@@ -47,8 +61,9 @@ else
     cd "$_pkgsrc"
     git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
   }
-fi
+}
 
+# common functions
 build() {
   local _cmake_options=(
     -S "$_pkgsrc"
@@ -71,3 +86,6 @@ package() {
 
   install -Dvm644 "${srcdir:?}/$_pkgsrc/COPYING" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
 }
+
+# execute
+_main_package
