@@ -1,16 +1,19 @@
 pkgbase = r-icsoutlier
 	pkgdesc = Outlier Detection Using Invariant Coordinate Selection
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ICSOutlier
 	arch = any
 	license = GPL
+	checkdepends = r-testthat
 	depends = r-ics
 	depends = r-moments
 	depends = r-mvtnorm
+	optdepends = r-icsclust
 	optdepends = r-repplab
-	source = https://cran.r-project.org/src/contrib/ICSOutlier_0.3-1.tar.gz
-	md5sums = fa10a0382eca38828a17a2569d809866
-	sha256sums = a76ebcb2156e3c093329a46d5ffe8311845ede16b663893b1d9542dc33111702
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ICSOutlier_0.4-0.tar.gz
+	md5sums = 5f3a2b02876603f8cd642c593295a7bf
+	sha256sums = 6605c7c217d0211a2ae35be9f6c01a8b76e111ff51632b1d48144481d5d7cf1e
 
 pkgname = r-icsoutlier

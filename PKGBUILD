@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ICSOutlier
-_pkgver=0.3-1
+_pkgver=0.4-0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,16 +14,26 @@ depends=(
   r-moments
   r-mvtnorm
 )
+checkdepends=(
+  r-testthat
+)
 optdepends=(
+  r-icsclust
   r-repplab
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fa10a0382eca38828a17a2569d809866')
-sha256sums=('a76ebcb2156e3c093329a46d5ffe8311845ede16b663893b1d9542dc33111702')
+md5sums=('5f3a2b02876603f8cd642c593295a7bf')
+sha256sums=('6605c7c217d0211a2ae35be9f6c01a8b76e111ff51632b1d48144481d5d7cf1e')
 
 build() {
   mkdir -p build
   R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
