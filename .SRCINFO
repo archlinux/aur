@@ -18,6 +18,7 @@ pkgbase = devilutionx-bin
 	source_i386 = https://github.com/diasurgical/devilutionX/releases/download/1.5.1/devilutionx-linux-i386.tar.xz
 	sha256sums_i386 = SKIP
 	source_i686 = https://github.com/diasurgical/devilutionX/releases/download/1.5.1/devilutionx-linux-i386.tar.xz
+	sha256sums_i686 = SKIP
 	source_aarch64 = https://github.com/diasurgical/devilutionX/releases/download/1.5.1/devilutionx-linux-aarch64.tar.xz
 	sha256sums_aarch64 = SKIP
 
