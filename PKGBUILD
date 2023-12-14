@@ -22,18 +22,17 @@ makedepends=(
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
-    "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8da25341df954439d26b7921736e0539530f1d6b2bc392c826242a68007df990'
-            '6189d92e0326fb33813fb8226c68de6fe3e71fb895303cac7d063fddd006c0c4'
-            '12f34587289d05e05c95a2a47884f1674faeb96a27d9d66f954f0bb20490c2e5')
+sha256sums=('SKIP'
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
+    gendesk -q -f -n --categories "AudioVideo" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"

@@ -14,10 +14,8 @@ pkgbase = autocut-client
 	depends = autocut
 	conflicts = autocut-client
 	source = autocut-client-0.1.7::git+https://github.com/zcf0508/autocut-client.git#tag=v0.1.7
-	source = autocut-client.desktop
 	source = autocut-client.sh
-	sha256sums = 8da25341df954439d26b7921736e0539530f1d6b2bc392c826242a68007df990
-	sha256sums = 6189d92e0326fb33813fb8226c68de6fe3e71fb895303cac7d063fddd006c0c4
-	sha256sums = 12f34587289d05e05c95a2a47884f1674faeb96a27d9d66f954f0bb20490c2e5
+	sha256sums = SKIP
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = autocut-client
