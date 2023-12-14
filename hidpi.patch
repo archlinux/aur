@@ -162,7 +162,7 @@ index 67c7c151d..eb7b64110 100644
      }
  }
 diff --git a/hw/xwayland/xwayland-output.c b/hw/xwayland/xwayland-output.c
-index fe7a9232e..575de2b2e 100644
+index cf99c6e84..5745a7f6a 100644
 --- a/hw/xwayland/xwayland-output.c
 +++ b/hw/xwayland/xwayland-output.c
 @@ -189,6 +189,9 @@ update_screen_size(struct xwl_screen *xwl_screen, int width, int height)
@@ -175,7 +175,7 @@ index fe7a9232e..575de2b2e 100644
      if (xwl_screen->root_clip_mode == ROOT_CLIP_FULL)
          SetRootClip(xwl_screen->screen, ROOT_CLIP_NONE);
  
-@@ -597,14 +600,15 @@ xwl_output_set_emulated_mode(struct xwl_output *xwl_output, ClientPtr client,
+@@ -597,8 +600,8 @@ xwl_output_set_emulated_mode(struct xwl_output *xwl_output, ClientPtr client,
                                               new_emulated_height);
  }
  
@@ -185,7 +185,8 @@ index fe7a9232e..575de2b2e 100644
 +xwl_output_apply_changes(struct xwl_output *xwl_output)
  {
      struct xwl_screen *xwl_screen = xwl_output->xwl_screen;
-     struct xwl_output *it;
+     struct xwl_window *xwl_window;
+@@ -606,6 +609,7 @@ apply_output_change(struct xwl_output *xwl_output)
      int mode_width, mode_height, count;
      int width = 0, height = 0, has_this_output = 0;
      RRModePtr *randr_modes;
@@ -193,7 +194,7 @@ index fe7a9232e..575de2b2e 100644
  
      /* Clear out the "done" received flags */
      xwl_output->wl_output_done = FALSE;
-@@ -623,10 +627,10 @@ apply_output_change(struct xwl_output *xwl_output)
+@@ -624,10 +628,10 @@ apply_output_change(struct xwl_output *xwl_output)
      }
      if (xwl_output->randr_output) {
          /* Build a fresh modes array using the current refresh rate */
@@ -206,7 +207,7 @@ index fe7a9232e..575de2b2e 100644
                       xwl_output->rotation, NULL, 1, &xwl_output->randr_output);
          /* RROutputSetModes takes ownership of the passed in modes, so we only
           * have to free the pointer array.
-@@ -686,7 +690,7 @@ output_handle_done(void *data, struct wl_output *wl_output)
+@@ -697,7 +701,7 @@ output_handle_done(void *data, struct wl_output *wl_output)
       */
      if (xwl_output->xdg_output_done || !xwl_output->xdg_output ||
          zxdg_output_v1_get_version(xwl_output->xdg_output) >= 3)
@@ -215,7 +216,7 @@ index fe7a9232e..575de2b2e 100644
  }
  
  static void
-@@ -746,7 +750,7 @@ xdg_output_handle_done(void *data, struct zxdg_output_v1 *xdg_output)
+@@ -757,7 +761,7 @@ xdg_output_handle_done(void *data, struct zxdg_output_v1 *xdg_output)
      xwl_output->xdg_output_done = TRUE;
      if (xwl_output->wl_output_done &&
          zxdg_output_v1_get_version(xdg_output) < 3)
@@ -224,7 +225,7 @@ index fe7a9232e..575de2b2e 100644
  }
  
  static void
-@@ -913,6 +917,8 @@ xwl_output_remove(struct xwl_output *xwl_output)
+@@ -926,6 +930,8 @@ xwl_output_remove(struct xwl_output *xwl_output)
      if (xwl_output->randr_output) {
          RROutputDestroy(xwl_output->randr_output);
          RRTellChanged(xwl_screen->screen);
@@ -256,10 +257,10 @@ index bcdf25bec..9cfc33f26 100644
  
  #endif /* XWAYLAND_OUTPUT_H */
 diff --git a/hw/xwayland/xwayland-present.c b/hw/xwayland/xwayland-present.c
-index 5ede33e4c..7ef2185ed 100644
+index 941be06da..392979c86 100644
 --- a/hw/xwayland/xwayland-present.c
 +++ b/hw/xwayland/xwayland-present.c
-@@ -780,6 +780,8 @@ xwl_present_flip(present_vblank_ptr vblank, RegionPtr damage)
+@@ -782,6 +782,8 @@ xwl_present_flip(present_vblank_ptr vblank, RegionPtr damage)
  
      /* We can flip directly to the main surface (full screen window without clips) */
      wl_surface_attach(xwl_window->surface, buffer, 0, 0);
@@ -269,7 +270,7 @@ index 5ede33e4c..7ef2185ed 100644
      if (xorg_list_is_empty(&xwl_present_window->frame_callback_list)) {
          xorg_list_add(&xwl_present_window->frame_callback_list,
 diff --git a/hw/xwayland/xwayland-screen.c b/hw/xwayland/xwayland-screen.c
-index c00f976a8..5d0a01741 100644
+index cc14e0771..e3f1e1b6e 100644
 --- a/hw/xwayland/xwayland-screen.c
 +++ b/hw/xwayland/xwayland-screen.c
 @@ -42,6 +42,8 @@
@@ -449,7 +450,7 @@ index c00f976a8..5d0a01741 100644
  
      for (i = 1; i < argc; i++) {
          if (strcmp(argv[i], "-rootless") == 0) {
-@@ -1003,9 +1098,17 @@ xwl_screen_init(ScreenPtr pScreen, int argc, char **argv)
+@@ -1010,9 +1105,17 @@ xwl_screen_init(ScreenPtr pScreen, int argc, char **argv)
      if (xwl_screen->allow_commits_prop == BAD_RESOURCE)
          return FALSE;
  
@@ -468,10 +469,10 @@ index c00f976a8..5d0a01741 100644
  
      xwl_screen_roundtrip(xwl_screen);
 diff --git a/hw/xwayland/xwayland-screen.h b/hw/xwayland/xwayland-screen.h
-index 94033aabf..6b039a6f6 100644
+index bd66dd681..8fc87dade 100644
 --- a/hw/xwayland/xwayland-screen.h
 +++ b/hw/xwayland/xwayland-screen.h
-@@ -89,6 +89,8 @@ struct xwl_screen {
+@@ -90,6 +90,8 @@ struct xwl_screen {
      struct xorg_list damage_window_list;
      struct xorg_list window_list;
  
@@ -480,7 +481,7 @@ index 94033aabf..6b039a6f6 100644
      int wayland_fd;
      struct wl_display *display;
      struct wl_registry *registry;
-@@ -137,6 +139,7 @@ struct xwl_screen {
+@@ -138,6 +140,7 @@ struct xwl_screen {
      struct glamor_context *glamor_ctx;
  
      Atom allow_commits_prop;
@@ -488,7 +489,7 @@ index 94033aabf..6b039a6f6 100644
  
      /* The preferred GLVND vendor. If NULL, "mesa" is assumed. */
      const char *glvnd_vendor;
-@@ -170,5 +173,7 @@ void xwl_surface_damage(struct xwl_screen *xwl_screen,
+@@ -171,5 +174,7 @@ void xwl_surface_damage(struct xwl_screen *xwl_screen,
                          struct wl_surface *surface,
                          int32_t x, int32_t y, int32_t width, int32_t height);
  int xwl_screen_get_next_output_serial(struct xwl_screen * xwl_screen);
@@ -497,10 +498,10 @@ index 94033aabf..6b039a6f6 100644
  
  #endif /* XWAYLAND_SCREEN_H */
 diff --git a/hw/xwayland/xwayland-window.c b/hw/xwayland/xwayland-window.c
-index a4f02a058..b1a8ac6f0 100644
+index 4978f37c7..f8fe2902f 100644
 --- a/hw/xwayland/xwayland-window.c
 +++ b/hw/xwayland/xwayland-window.c
-@@ -845,7 +845,8 @@ xwl_create_root_surface(struct xwl_window *xwl_window)
+@@ -871,7 +871,8 @@ xwl_create_root_surface(struct xwl_window *xwl_window)
      }
  
      wl_region_add(region, 0, 0,
@@ -510,7 +511,7 @@ index a4f02a058..b1a8ac6f0 100644
      wl_surface_set_opaque_region(xwl_window->surface, region);
      wl_region_destroy(region);
  
-@@ -1385,6 +1386,7 @@ xwl_window_attach_buffer(struct xwl_window *xwl_window)
+@@ -1411,6 +1412,7 @@ xwl_window_attach_buffer(struct xwl_window *xwl_window)
  #endif
  
      wl_surface_attach(xwl_window->surface, buffer, 0, 0);

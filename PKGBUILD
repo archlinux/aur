@@ -3,7 +3,7 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-hidpi-xprop
-pkgver=23.2.2
+pkgver=23.2.3
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -17,9 +17,9 @@ makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
              'xorg-font-util' 'wayland-protocols' 'mesa-libgl'
              'systemd' 'egl-wayland')
 source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig} hidpi.patch)
-sha512sums=('f5b319fdace7d7c078544730ecd26afeb63b1a0c779fb097455147945df85af32d9e91501ebdb70209d48e8a3ead3b23be31e9d5118358ac17e699abb4b6ac07'
+sha512sums=('37198aa2f06313a0cb2add51cc78f81b26a42f2c9d55a0d3eecf958777107ea5560961c128f2d0af055f7460ba10fadb1b9050251c2c50f2251b40ab517e79cd'
             'SKIP'
-            '2f5dd500ea88795e678497bd25af3cc33aae7c79bac685819d91a34f5571633b609a8eca47f5c1a5f0baca17b7cb2204efa713621e5cd1f5d7705346d18b88b7')
+            'a345c3be8c572931d43d59dc25a6a9b76cd7b8768106210aa243f102bded48231768b67fa3d25e8174a7f8f4ec9e0f073d600c2228efd6a545ccef3c9e6e7299')
 provides=('xorg-server-xwayland' 'xorg-xwayland' 'xorg-xwayland-lily')
 conflicts=('xorg-server-xwayland' 'xorg-xwayland')
 replaces=('xorg-server-xwayland')
