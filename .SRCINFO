@@ -8,6 +8,6 @@ pkgbase = fzd-bin
 	depends = fzf
 	depends = xdg-utils
 	source = https://github.com/danehobrecht/fzd/archive/refs/tags/1.0.2.tar.gz
-	sha256sums = 568f72aa7321f117bfe718645ca1bad475894acc34c219ac0cbd583fc368a19d
+	sha256sums = 0935493d6298a25a514376d1a40423f9261bb259a1d521afd8615eaecf3e91a5
 
 pkgname = fzd-bin
