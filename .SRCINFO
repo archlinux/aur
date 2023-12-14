@@ -1,13 +1,12 @@
 pkgbase = sabaki-bin
 	pkgdesc = An elegant Go board and SGF editor for a more civilized age.
 	pkgver = 0.52.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sabaki.yichuanshen.de/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
-	depends = bash
 	depends = electron13
 	depends = hicolor-icon-theme
 	depends = libx11
@@ -18,10 +17,10 @@ pkgbase = sabaki-bin
 	provides = sabaki=0.52.2
 	conflicts = sabaki
 	conflicts = sabaki-electron
-	source = LICENSE.md::https://raw.githubusercontent.com/SabakiHQ/Sabaki/v0.52.2/LICENSE.md
+	source = LICENSE-0.52.2.md::https://raw.githubusercontent.com/SabakiHQ/Sabaki/v0.52.2/LICENSE.md
 	source = sabaki.sh
 	sha256sums = a5c065dbac7a3076b8ac3437280ac8d721cb52c6c6ff8d0e5509fa9111c81349
-	sha256sums = 1e7679cdaa0c36eca6a17267db46d2d5865a0de27db1e4b51c06fa0540d6b81c
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 	source_i686 = sabaki-0.52.2-i686.AppImage::https://github.com/SabakiHQ/Sabaki/releases/download/v0.52.2/sabaki-v0.52.2-linux-ia32.AppImage
 	sha256sums_i686 = 51344817aaf2b92578a57c0914e681abaa07834041da54252473a781387c8644
 	source_x86_64 = sabaki-0.52.2-x86_64.AppImage::https://github.com/SabakiHQ/Sabaki/releases/download/v0.52.2/sabaki-v0.52.2-linux-x64.AppImage
