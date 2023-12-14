@@ -10,7 +10,7 @@ url=https://github.com/containers/podman-desktop
 license=('Apache-2.0')
 depends=()
 makedepends=(
-    'yarn' 'git' 'python' 'npm' 'nodejs-lts-hydrogen' 'libvips' 'lcms2'
+    'yarn' 'git' 'node-gyp' 'npm' 'nodejs-lts-hydrogen' 'libvips' 'lcms2'
     'openjpeg2' 'glib2'
 )
 optdepends=(
