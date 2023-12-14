@@ -1,13 +1,13 @@
 pkgbase = fzd-bin
 	pkgdesc = Fuzzy-found file or URL opener in the user's default application.
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/danehobrecht/fzd
 	arch = any
 	license = GPL
 	depends = fzf
 	depends = xdg-utils
-	source = https://github.com/danehobrecht/fzd/archive/refs/tags/1.0.6.tar.gz
+	source = https://github.com/danehobrecht/fzd/archive/refs/tags/1.0.7.tar.gz
 	sha256sums = 81b1211418e34d56c5f7c058bbe94e20024a4902de672d535b91722f12bea414
 
 pkgname = fzd-bin
