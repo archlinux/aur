@@ -2,28 +2,32 @@
 pkgname=subtitler-bin
 _pkgname=Subtitler
 pkgver=1.5.5
-pkgrel=5
+_electronversion=8
+pkgrel=6
 pkgdesc="Quickly download subtitles"
 arch=("x86_64")
 url="https://s8sachin.github.io/subtitler/"
-_githuburl="https://github.com/s8sachin/subtitler"
+_ghurl="https://github.com/s8sachin/subtitler"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    'bash'
-    'electron8'
+    "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/s8sachin/subtitler/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/s8sachin/subtitler/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ca37a8487fcf6283b36adcb43de9ebc4a12d7bd2ab96a73a1695f3c2b4d51f81'
             '61c4ef762e75d209db99b0ddd77c9931c1d966f19d72b5dc1f46e8041f18309c'
-            '4d6586666050012a7150db48e84d46ce736b987b4b947a35c18c21fcb4b7326c')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
@@ -36,5 +40,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
