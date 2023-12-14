@@ -2,7 +2,8 @@
 pkgname=fdc3-sail-bin
 _pkgname=FDC3-Sail
 pkgver=22.12.6_1030
-pkgrel=4
+_electronversion=24
+pkgrel=5
 pkgdesc="Open implementation of the FDC3 standard using Electron and an integrated App Directory."
 arch=('x86_64')
 url="https://github.com/finos/FDC3-Sail"
@@ -10,7 +11,7 @@ license=('Apache')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'electron24'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'libx11'
     'gdk-pixbuf2'
@@ -27,8 +28,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('81243023ba6af8562e5244f6d48f2e4dd8f17ab77984dda7a55ad0863959ea97'
-            'f690d7b37c9817870fdeeb1898c6a2dcf9e081bec4e0bab9f40ea2b9636222ed')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
