@@ -14,7 +14,7 @@ sha256sums=('164e57e9438ee61e7d9e5e487b972a93617ee1a552c953f2ecdc5f9c71f938b3')
 
 build() {
   cd "$_name-$pkgver"
-  python -m build --wheel --no-isolation
+  GIT_DIR='.' python -m build --wheel --no-isolation
 }
 
 package() {
