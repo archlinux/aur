@@ -8,8 +8,21 @@ pkgdesc="A cython wrapping of the C++ Cap'n Proto library"
 url="https://github.com/capnproto/pycapnp"
 license=(BSD-2-Clause)
 arch=(x86_64)
-depends=(gcc-libs glibc python)
-makedepends=(git capnproto cython0 python-build python-installer python-pkgconfig python-setuptools python-wheel)
+depends=(
+  gcc-libs
+  glibc
+  python
+)
+makedepends=(
+  git
+  capnproto
+  cython0
+  python-build
+  python-installer
+  python-pkgconfig
+  python-setuptools
+  python-wheel
+)
 checkdepends=(python-pytest)
 optdepends=('python-jinja: for capnpc-cython')
 source=(git+$url#commit=$_commit)
