@@ -4,7 +4,7 @@ pkgbase = wine-staging-wow64-git
 	pkgrel = 1
 	url = https://gitlab.winehq.org/wine/wine
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = autoconf
 	makedepends = bison
 	makedepends = flex
@@ -44,17 +44,15 @@ pkgbase = wine-staging-wow64-git
 	optdepends = sane
 	optdepends = alsa-plugins
 	optdepends = libldap
+	provides = wine-staging-wow64=8.21
+	provides = wine-staging=8.21
 	provides = wine=8.21
+	conflicts = wine-staging-wow64
+	conflicts = wine-staging
 	conflicts = wine
 	options = staticlibs
 	options = !lto
-	source = git+https://gitlab.winehq.org/wine/wine.git
 	source = git+https://gitlab.winehq.org/wine/wine-staging.git
-	source = 30-win32-aliases.conf
-	source = wine-binfmt.conf
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = wine-staging-wow64-git
