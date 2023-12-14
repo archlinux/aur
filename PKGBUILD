@@ -3,7 +3,7 @@ pkgdesc="GNOME with tiling windows"
 _pkgorg="pixie-desktop"
 pkgname="pixie"
 pkgver=0.0.6
-pkgrel=4
+pkgrel=5
 arch=(
   x86_64
   aarch64
