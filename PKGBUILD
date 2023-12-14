@@ -3,7 +3,7 @@
 
 pkgname=luau
 pkgver=0.606
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, small, safe, gradually typed embeddable scripting language derived from Lua"
 arch=(x86_64)
 url="https://github.com/luau-lang/luau"
@@ -76,9 +76,10 @@ package() {
   _headers=(
     ./Analysis/include/Luau/*.h
     ./Ast/include/Luau/*.h
-    ./CodeGen/include/Luau/*.h
     ./CodeGen/include/*.h
+    ./CodeGen/include/Luau/*.h
     ./Common/include/Luau/*.h
+    ./Compiler/include/*.h
     ./Compiler/include/Luau/*.h
     ./Config/include/Luau/*.h
     ./VM/include/*.h
