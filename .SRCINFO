@@ -1,0 +1,16 @@
+pkgbase = pacpaper-git
+	pkgdesc = Wallpaper that applies a mask effect with text listing packages on system
+	pkgver = r4.c600133
+	pkgrel = 1
+	url = https://codeberg.org/Didek/pacpaper
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = imagemagick
+	depends = gsfonts
+	provides = pacpaper
+	conflicts = pacpaper
+	source = pacpaper-git::git+https://codeberg.org/Didek/pacpaper
+	md5sums = SKIP
+
+pkgname = pacpaper-git
