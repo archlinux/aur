@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your email>
+# Maintainer: Stephan Koglin-Fischer <stephan dot koglin-fischer at funzt dot dev>
 pkgname=dashlane-cli
 pkgver=1.15.1
 pkgrel=1
