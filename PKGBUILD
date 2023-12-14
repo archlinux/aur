@@ -57,7 +57,7 @@ package() {
   # fix fig2ps script
   sed -i 's|${prefix}|/usr|' "$pkgdir"/usr/bin/fig2ps
   # fix FS#37518
-  sed -i '/^Path=/d' "$pkgdir"/usr/share/applications/texmacs.desktop
+  #sed -i '/^Path=/d' "$pkgdir"/usr/share/applications/texmacs.desktop
 }
 
 # vim:set ts=2 sw=2 et:
