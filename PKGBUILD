@@ -1,4 +1,4 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer:
 
 pkgname=python-pycapnp
 pkgver=1.3.0
