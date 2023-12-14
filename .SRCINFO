@@ -1,6 +1,6 @@
 pkgbase = kdav5
 	pkgdesc = A DAV protocol implemention with KJobs
-	pkgver = 5.112.0
+	pkgver = 5.113.0
 	pkgrel = 1
 	epoch = 1
 	url = https://community.kde.org/Frameworks
@@ -14,10 +14,10 @@ pkgbase = kdav5
 	depends = kio5
 	conflicts = kdav<1:5.111
 	replaces = kdav<1:5.111
-	source = https://download.kde.org/stable/frameworks/5.112/kdav-5.112.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.112/kdav-5.112.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.113/kdav-5.113.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.113/kdav-5.113.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 4f8ca7f6a61fa911d924bd8d3999d20fa52075194c379964541e5cd39a56cbd4
+	sha256sums = bb851f67d0c8376b49432fa4e9cf0da5cc46f05c725b82728eaa0772587a56b6
 	sha256sums = SKIP
 
 pkgname = kdav5
