@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=structure-bin
 pkgver=0.23.1
-pkgrel=3
+_electronversion=25
+pkgrel=4
 pkgdesc="A knowledge management tool"
 arch=('x86_64')
 url="https://structure.love/"
@@ -10,8 +11,7 @@ license=('AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron25'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'libx11'
     'gdk-pixbuf2'
@@ -28,8 +28,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4eed0d77b6506dac70078eecf8426aa81634250d1950e8d118435d09787dd2f6'
-            '808dc5e453e71cb89056d69dcd7502690209c183a1974ef4444e4a9e007e67f6')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
