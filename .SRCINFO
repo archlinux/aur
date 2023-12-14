@@ -5,7 +5,6 @@ pkgbase = spearmint-test-bin
 	url = https://www.spearmintjs.com/
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = electron24
 	depends = libxcb
 	depends = nss
@@ -13,10 +12,10 @@ pkgbase = spearmint-test-bin
 	provides = spearmint-test=0.14.0
 	conflicts = spearmint-test
 	source = spearmint-0.14.0.deb::https://github.com/open-source-labs/spearmint/releases/download/v0.14.0/spearmint_0.14.0_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/open-source-labs/spearmint/v0.14.0/LICENSE
+	source = LICENSE-0.14.0::https://raw.githubusercontent.com/open-source-labs/spearmint/v0.14.0/LICENSE
 	source = spearmint-test.sh
 	sha256sums = b2c06f2d5ee8049c7d4c365ae89b1cdae725286865882b2686678bd66de9ae62
 	sha256sums = 32c14cbaf21ae0dffb9d2403e379c0eaec5691ab122b7c9c365cd50706736029
-	sha256sums = 4b4e67af9899ed859fddc70fa0ecbef687954aeca1caa406362a12ff6d2a5305
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = spearmint-test-bin
