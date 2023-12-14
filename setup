@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This file/this logic is part of the Arch Linux package since the updater is
+# specific to Arch Linux
+
+# ID of Arch Linux update extension
+arch_update="arch-update@RaphaelRochet"
+
+# Activate Arch Linux update extension
+extensions=/etc/dconf/db/local.d/00_extensions
+if [ -f "${extensions}" ]; then
+    if ! grep -q $arch_update "${extensions}"; then
+	sed -i "s/'\]/', '$arch_update'\]/" "${extensions}"
+    fi
+fi

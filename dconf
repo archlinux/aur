@@ -1,0 +1,4 @@
+[org/gnome/shell/extensions/arch-update]
+# Change update command. The default command is based on sudo, but sudo is not
+# installed by default. Thus we use su instead
+update-cmd="gnome-terminal -t \"Arch Linux Update\" -- /bin/sh -c 'su -c \"pacman -Syu; echo Done - Press enter to exit; read _\"'"
