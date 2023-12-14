@@ -1,9 +1,8 @@
 pkgbase = rollup
 	pkgdesc = Next-generation ES6 module bundler
 	pkgver = 4.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rollupjs.org/
-	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
 	makedepends = npm

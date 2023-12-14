@@ -4,29 +4,29 @@
 
 pkgname=rollup
 pkgver=4.9.0
-pkgrel=1
-pkgdesc="Next-generation ES6 module bundler"
+pkgrel=2
+
 arch=('any')
-url="https://rollupjs.org/"
-license=('MIT')
 depends=('nodejs')
+license=('MIT')
 makedepends=('npm')
-changelog=CHANGELOG.md
+noextract=("${pkgname}-${pkgver}.tgz")
 options=('!emptydirs')
-source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-noextract=("$pkgname-$pkgver.tgz")
+pkgdesc="Next-generation ES6 module bundler"
 sha256sums=('ddf1e8fec41abdba5dbfdac02157c991b4cd88f150dcad4f2d369735ee31e833')
-PURGE_TARGETS=('CHANGELOG.md')
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+url="https://rollupjs.org/"
 
 package() {
-	export NODE_ENV=production
+	export NODE_ENV='production'
 	npm install -g \
-		--cache "$srcdir/npm-cache" \
-		--prefix "$pkgdir/usr" \
-		"$pkgname-$pkgver.tgz"
-	chown -R root:root "$pkgdir/"
+		--cache "${srcdir}/npm-cache" \
+		--prefix "${pkgdir}/usr" \
+		"${pkgname}-${pkgver}.tgz"
 
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/" "$pkgdir/usr/share/doc/$pkgname/"
-	ln -sv "/usr/lib/node_modules/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	ln -sv "/usr/lib/node_modules/$pkgname/README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
+	chown -R root:root "${pkgdir}/"
+
+	install -dv "${pkgdir}/usr/share/licenses/${pkgname}/" "${pkgdir}/usr/share/doc/${pkgname}/"
+	ln -sv "/usr/lib/node_modules/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	ln -sv "/usr/lib/node_modules/${pkgname}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
