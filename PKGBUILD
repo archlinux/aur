@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "$_name-$pkgver"
-  python -m build --wheel --no-isolation
+  GIT_DIR='.' python -m build --wheel --no-isolation
 }
 
 package() {
