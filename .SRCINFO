@@ -5,12 +5,11 @@ pkgbase = seven-desktop-bin
 	url = https://www.seven.io/en/docs/apps/desktop/
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = electron25
 	conflicts = seven-desktop
 	source = seven-desktop-1.3.0.deb::https://github.com/seven-io/desktop/releases/download/v1.3.0/seven-desktop_1.3.0_amd64.deb
 	source = seven-desktop.sh
 	sha256sums = a7a9efc3ab8ff386a5c9827dbc825daf482e18f2e8528bd936925e5d6c2aa8a6
-	sha256sums = 39a1cb20edc355b2c8b9217a1c9ac3387f53f2d48eca35242692e2b97b4421f6
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = seven-desktop-bin
