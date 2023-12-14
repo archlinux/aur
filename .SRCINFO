@@ -1,13 +1,12 @@
 pkgbase = tilde-podcast-bin
 	pkgdesc = Podcast client to listen to all you favorite podcasts
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/paologiua/tilde
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
-	depends = bash
-	depends = hicolor-icon-theme
+	depends = electron10
 	depends = electron10
 	depends = libx11
 	depends = gdk-pixbuf2
@@ -18,10 +17,10 @@ pkgbase = tilde-podcast-bin
 	provides = tilde-podcast=1.0.0
 	conflicts = tilde-podcast
 	source = tilde-podcast-1.0.0.AppImage::https://github.com/paologiua/tilde/releases/download/v1.0.0/Tilde-1.0.0.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/paologiua/tilde/v1.0.0/LICENSE
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/paologiua/tilde/v1.0.0/LICENSE
 	source = tilde-podcast.sh
 	sha256sums = 36d92737e95db21231d580de2dd28b8d970f0872dec4f4f8e2e7143742f83702
 	sha256sums = f1492bf906d1183083c07f5074b51ea36dc616136bf76d9f87e9a535a5345080
-	sha256sums = 4dfc37b195e008cd31533aa53643d22758973047d05cad98c723ca6006fbb440
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = tilde-podcast-bin
