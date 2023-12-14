@@ -13,6 +13,6 @@ sha256sums=('8e977bc21ee0f072f62afccf268c3f4dfb51d8a6def69b229669b76c45a09e52')
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
-	cp "${srcdir}/fzd-${pkgver}" "${pkgdir}/usr/bin/fzd"
+	cp -r "${srcdir}/fzd-${pkgver}" "${pkgdir}/usr/bin/fzd"
 	chmod +x "${pkgdir}/usr/bin/fzd"
 }
