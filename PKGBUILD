@@ -48,7 +48,7 @@ _debiandfsgver=3
 _debianver="${_debianmainver}+dfsg-${_debiandfsgver}"
 _pkgver=latest
 pkgver=0.9.3+32.r.20230504.7042e6d
-pkgrel=3
+pkgrel=4
 pkgdesc="Software for continuation and bifurcation problems in ordinary differential equations. Version 07p, latest git checkout. Environment variables can control the build (see PKGBUILD)."
 arch=(
   'aarch64'
@@ -82,9 +82,9 @@ makedepends=(
   'git'
   'perl'
 )
-# checkdepends=(
-#   "python3"
-# ) # `make check` takes long and might fail.
+checkdepends=(
+  "python3"
+) # `make check` takes long and might fail.
 optdepends=(
   "ipython: For python interface."
   "python3: For python interface."
@@ -307,10 +307,10 @@ build() {
   msg2 "<<< Finished building '${pkgname}', version '${pkgver}'. <<<"
 }
 
-# check() {
-#   cd "${_extractdir}"
-#   make check # `make check` takes long and might fail.
-# }
+check() {
+  cd "${_extractdir}"
+  make check # `make check` takes long and might fail.
+}
 
 package() {
   _extractdir="${srcdir}/auto/07p"
