@@ -9,7 +9,7 @@ url="https://github.com/danehobrecht/fzd"
 license=('GPL')
 depends=("fzf" "xdg-utils")
 source=("https://github.com/danehobrecht/fzd/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8e977bc21ee0f072f62afccf268c3f4dfb51d8a6def69b229669b76c45a09e52')
+sha256sums=('44d6804971227ed5909757d81263987c0031dc05e6ab4ba145b518b1df883154')
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
