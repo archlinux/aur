@@ -6,7 +6,7 @@
 
 _pkgname=droidcam
 pkgname=${_pkgname}-dev
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ source=("${_pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip"
         "${_pkgname}-modules.conf" "${_pkgname}-modprobe.conf"
         ${_pkgname}.desktop)
 
-sha512sums=('d5670ca14393d1c1083ce22c0218d954d3010632877896c7ebb635f2c118139cc25ad3a426d6aba43d0284d10942acb6f75ea7739e8f888abd77f91f19b5f9c4'
+sha512sums=('4a698206d2d7c87f8a38a38bbee4e0df42273739d946a64738d65dca44e084f7887103d5131e02828f3ffcd958e8e8685a9d76b0b1663b066de27cba2dd14d3c'
             '715be186aff2eca7b383ca5bef00e34d08363fd688cea49080828e8b31db3b43d9605d4e2951ffdece9e80a94645e065189617f87337b0084946f20f61f76588'
             'ed250836033eab59eabc81a1346168d886fbe026c56a43f04d0e153b2a9593d03be6846e114cde664fe00135a24b8bf55f46ece6ecee6aca52f651f29a3bb28b'
             'df0968e8da3b733e29cdda07f0f6f278d4be71d241b21d37631ed8c45b104fea718d05c395b306be8aba2c7acc1a9d69807c4ab9404812b684426ba6d879eea4')
@@ -34,11 +34,8 @@ prepare() {
 build() {
     cd ${_pkgname}-${pkgver}
 
-    # All JPEG* parameters are needed to use shared version of libturbojpeg instead of
-    # static one.
-    #
     # Also libusbmuxd requires an override while linking.
-    make JPEG_DIR="" JPEG_INCLUDE="" JPEG_LIB="" JPEG=$(pkg-config --libs --cflags libturbojpeg) USBMUXD=-lusbmuxd-2.0
+    make  USBMUXD=-lusbmuxd-2.0
 }
 
 package() {
