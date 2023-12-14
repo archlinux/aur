@@ -1,17 +1,16 @@
 pkgbase = swifty-bin
 	pkgdesc = Free Offline-first Password Manager for MacOS, Windows and Linux.
 	pkgver = 0.6.13
-	pkgrel = 6
+	pkgrel = 7
 	url = https://getswifty.pro/
 	arch = x86_64
 	license = GPL3
-	depends = bash
 	depends = electron23
 	provides = swifty=0.6.13
 	conflicts = swifty
 	source = swifty-0.6.13_amd64.deb::https://github.com/swiftyapp/swifty/releases/download/v0.6.13/Swifty_0.6.13_amd64.deb
 	source = swifty.sh
 	sha256sums = daa037c75ebc4e6a7b0b835f0efef2d5b1fa7bf4c2c728badbeb16d5f61a3b6a
-	sha256sums = 4049c6f8152e52f2bda29e4e391a4b9dbee2aa54c51e13b2b47a0ec96cb728d8
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = swifty-bin

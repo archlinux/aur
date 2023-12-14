@@ -2,25 +2,29 @@
 pkgname=swifty-bin
 _pkgname=Swifty
 pkgver=0.6.13
-pkgrel=6
+_electronversion=23
+pkgrel=7
 pkgdesc="Free Offline-first Password Manager for MacOS, Windows and Linux."
 arch=("x86_64")
 url="https://getswifty.pro/"
-_githuburl="https://github.com/swiftyapp/swifty"
+_ghurl="https://github.com/swiftyapp/swifty"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron23'
+    "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}_amd64.deb::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}_amd64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('daa037c75ebc4e6a7b0b835f0efef2d5b1fa7bf4c2c728badbeb16d5f61a3b6a'
-            '4049c6f8152e52f2bda29e4e391a4b9dbee2aa54c51e13b2b47a0ec96cb728d8')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
