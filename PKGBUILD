@@ -1,20 +1,25 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
-pkgname='python-django-dynamic-preferences'
+_module=django-dynamic-preferences
+pkgname=python-${_module}
 pkgver=1.16.0
 pkgrel=1
 pkgdesc="Dynamic global and instance settings for your django project"
 arch=(any)
 url="https://github.com/agateblue/django-dynamic-preferences"
-license=('BSD')
-options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('4659939d03f28fcd699c8ab892cdaabeb5f2a289f268d58cfef9c8ab37f56b20')
-makedepends=('python-setuptools')
-depends=('python-wheel' 'python-django' 'python-persisting-theory')
+license=(BSD)
+depends=(python-django python-six python-persisting-theory)
+makedepends=(python-setuptools)
+source=(https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module}-$pkgver.tar.gz)
+sha256sums=('0d3d456626244d0bdaf312c81f2b3e14bd16134e8fcf53a33fd12e5d0bdd88dd')
+
+
+build() {
+  cd "${_module}-${pkgver}"
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/django-dynamic-preferences-$pkgver"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${_module}-${pkgver}"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
