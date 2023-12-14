@@ -1,6 +1,6 @@
 _reponame=libfirm
 pkgname="${_reponame}-git"
-pkgver=r18354.107ceb1
+pkgver=r18944.8bdd163f2
 pkgrel=1
 pkgdesc='A c-lib for graph-based IR, optimizations and code gen for compilers'
 url="http://pp.ipd.kit.edu/firm/Index"
