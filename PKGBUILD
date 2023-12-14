@@ -3,7 +3,8 @@ pkgname=revealed-bin
 _pkgname=Revealed
 _appname="@${pkgname%-bin}desktop"
 pkgver=2.0.0_alpha.15
-pkgrel=4
+_electronversion=23
+pkgrel=5
 pkgdesc="A platform and store for apps, games, and more!"
 arch=('x86_64')
 url="https://www.appsrevealed.com/"
@@ -11,7 +12,6 @@ _ghurl="https://github.com/BunnyStrike/revealed"
 license=('GPL3')
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
-options=("!strip")
 depends=(
     'hicolor-icon-theme'
     'libxext'
