@@ -8,13 +8,13 @@
 #               Vufa <countstarlight@gmail.com>
 
 BOTTLENAME="Deepin-CBox"
-APPVER="5.1.3.1"
+APPVER=@appver@
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files/CNTV/CBox/bin/CBox.exe"
 EXEC_FILE="${WINEPREFIX}/drive_c/Program Files/CNTV/CBox/bin/CBox.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
 export MIME_TYPE=""
-export DEB_PACKAGE_NAME="deepin-wine-cntv-cbox"
+export DEB_PACKAGE_NAME=@appname@
 export APPRUN_CMD="deepin-wine6-stable"
 DISABLE_ATTACH_FILE_DIALOG=""
 EXPORT_ENVS=""
