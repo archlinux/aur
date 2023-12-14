@@ -1,12 +1,11 @@
 pkgbase = tomatox-bin
 	pkgdesc = 基于Electron、React开发的全网在线免费VIP视频解析播放器,美剧、韩剧、日剧全资源
 	pkgver = 2.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/yanjiaxuan/TOMATOX
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
-	depends = bash
 	depends = electron4
 	depends = libx11
 	depends = gdk-pixbuf2
@@ -17,10 +16,10 @@ pkgbase = tomatox-bin
 	provides = tomatox=2.0.2
 	conflicts = tomatox
 	source = tomatox-2.0.2.AppImage::https://github.com/yanjiaxuan/TOMATOX/releases/download/v2.0.2/TOMATOX-2.0.2.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/yanjiaxuan/TOMATOX/v2.0.2/LICENSE
+	source = LICENSE-2.0.2::https://raw.githubusercontent.com/yanjiaxuan/TOMATOX/v2.0.2/LICENSE
 	source = tomatox.sh
 	sha256sums = 294ae9a684fe1d8930d852b185dc2d6a6bbc529d5cab14c774228fa881b6e303
 	sha256sums = 457f427d3d4e78f789b6951120b438fd08cbed02372b078cb2346677f5e27029
-	sha256sums = 39ded07fe594d35bcde996c039e527dff491ce32a82a47dd4beba66500354069
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = tomatox-bin
