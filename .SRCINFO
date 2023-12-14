@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-ximalaya
 	pkgdesc = 喜马拉雅，是中国领先的音频分享平台。用声音分享人类智慧，用声音服务美好生活，做一家人一辈子的精神食粮，是平台的使命和初心。
-	pkgver = 4.0.0.804
-	pkgrel = 7
+	pkgver = 4.0.2
+	pkgrel = 1
 	url = https://www.ximalaya.com
 	install = deepin-wine-ximalaya.install
 	arch = x86_64
@@ -10,20 +10,19 @@ pkgbase = deepin-wine-ximalaya
 	depends = deepin-wine6-stable
 	depends = deepin-wine-helper
 	depends = xdg-utils
-	depends = sh
 	depends = lib32-glibc
 	optdepends = wqy-microhei
 	optdepends = wqy-zenhei
 	provides = ximalaya
 	conflicts = ximalaya
 	conflicts = com.ximalaya.spark
-	source = com.ximalaya.spark_4.0.0spark9_amd64.deb::https://d.store.deepinos.org.cn/store/music/com.ximalaya.spark/com.ximalaya.spark_4.0.0spark9_amd64.deb
-	source = ximalaya-4.0.0.804.exe::https://www.ximalaya.com/down/lite/v2?client=win&channelId=99&subChannelId=100001
+	source = com.ximalaya.spark_4.0.0spark9_amd64.deb::https://mirrors.sdu.edu.cn/spark-store/store/music/com.ximalaya.spark/com.ximalaya.spark_4.0.0spark9_amd64.deb
+	source = ximalaya-4.0.2.exe::https://www.ximalaya.com/down/lite/v2?client=win&channelId=99&subChannelId=100001
 	source = LICENSE.html
 	source = deepin-wine-ximalaya.sh
 	sha256sums = 95834bc4ad16e4822331adac43b5f4feb9aeba50d103788a2cefad72cd8dc941
-	sha256sums = 180ce17541504177a96194d25a7175030023479c1bf47df788b1a82c4c3790d1
+	sha256sums = 3686a1a11a1ac0fc6c3140c63d654f1e80b1032b15a9433e6009c0d9e32c0f7e
 	sha256sums = 95b52ed4c2b0ef19d4a091da847c7dd20761699aa63a12bf933fa2064f49cd01
-	sha256sums = f90d36cc56a4d4a0469c36bbd33597871e2a609b27d187a625d63d005a2b2332
+	sha256sums = 481c7b4484e749ce8a3c4b5fe32643c25a88515ce1507c9520c5f55380bc7c7e
 
 pkgname = deepin-wine-ximalaya

@@ -6,13 +6,13 @@
 #               Peng Hao <penghao@linuxdeepin.com>
  
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
-BOTTLENAME=Deepin-ximalaya
-APPVER=4.0.0.804
+BOTTLENAME=Deepin-@appname@
+APPVER=@appver@
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
-EXEC_PATH="c:/Program Files (x86)/ximalaya/喜马拉雅.exe"
+EXEC_PATH="c:/Program Files (x86)/@appname@/喜马拉雅.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
 export MIME_TYPE=""
-export DEB_PACKAGE_NAME="deepin-wine-ximalaya"
+export DEB_PACKAGE_NAME=@packagename@
 export APPRUN_CMD="deepin-wine6-stable"
 DISABLE_ATTACH_FILE_DIALOG="1"
 export SPECIFY_SHELL_DIR=`dirname ${START_SHELL_PATH}`

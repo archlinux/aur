@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=ximalaya
 pkgname="deepin-wine-${_appname}"
-pkgver=4.0.0.804
-pkgrel=7
+pkgver=4.0.2
+pkgrel=1
 _sparkpkgname="com.${_appname}.spark"
 _sparkver=4.0.0spark9
 pkgdesc="喜马拉雅，是中国领先的音频分享平台。用声音分享人类智慧，用声音服务美好生活，做一家人一辈子的精神食粮，是平台的使命和初心。"
@@ -13,7 +13,6 @@ depends=(
     'deepin-wine6-stable'
     'deepin-wine-helper'
     'xdg-utils'
-    'sh'
     'lib32-glibc'
 )
 optdepends=(
@@ -27,16 +26,21 @@ provides=("${_appname}")
 conflicts=("${_appname}" "${_sparkpkgname}")
 install="${pkgname}.install"
 source=(
-    "${_sparkpkgname}_${_sparkver}_amd64.deb::https://d.store.deepinos.org.cn/store/music/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
+    "${_sparkpkgname}_${_sparkver}_amd64.deb::https://mirrors.sdu.edu.cn/spark-store/store/music/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
     "${_appname}-${pkgver}.exe::${url}/down/lite/v2?client=win&channelId=99&subChannelId=100001"
     "LICENSE.html"
     "${pkgname}".sh
 )
 sha256sums=('95834bc4ad16e4822331adac43b5f4feb9aeba50d103788a2cefad72cd8dc941'
-            '180ce17541504177a96194d25a7175030023479c1bf47df788b1a82c4c3790d1'
+            '3686a1a11a1ac0fc6c3140c63d654f1e80b1032b15a9433e6009c0d9e32c0f7e'
             '95b52ed4c2b0ef19d4a091da847c7dd20761699aa63a12bf933fa2064f49cd01'
-            'f90d36cc56a4d4a0469c36bbd33597871e2a609b27d187a625d63d005a2b2332')
+            '481c7b4484e749ce8a3c4b5fe32643c25a88515ce1507c9520c5f55380bc7c7e')
 build() {
+    sed -e "s|@appname@|${_appname}|g" \
+        -e "s|@appver@|${pkgver}|g" \
+        -e "s|@packagename@|${pkgname}|g" \
+        -i "${pkgname}.sh"
+    
     bsdtar -xf "${srcdir}/data.tar.xz"
     mkdir -p "${srcdir}/tmp"
 
