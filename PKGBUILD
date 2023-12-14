@@ -21,22 +21,22 @@ sha256sums=('SKIP'
             '995a513671b4d1bac4be5a2a542372155f4224fcae8e5f847ba87a8029d9dad1')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}/${pkgname%-git}-linux"
+  cd "${pkgname%-git}/${pkgname%-git}-linux"
   mv README.md readme.md
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}/${pkgname%-git}-linux"
-  python -m build --wheel --no-isolation
+  cd "${pkgname%-git}/${pkgname%-git}-linux"
+  GIT_DIR='.' python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}/${pkgname%-git}-linux"
+  cd "${pkgname%-git}/${pkgname%-git}-linux"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 ../img/brightness.svg \
