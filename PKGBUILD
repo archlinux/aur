@@ -8,7 +8,7 @@
 
 pkgver=23.11.0.82
 pkgname=icaclient-beta
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'armv7h')
 license=('custom:Citrix')
 depends=('alsa-lib' 'curl' 'gst-plugins-base-libs' 'gtk2' 'libc++' 'libc++abi' 'libidn11'
@@ -39,19 +39,18 @@ sha256sums_i686=('SKIP')
 sha256sums_armv7h=('SKIP')
 install=citrix-client.install
 
-init() {
+pkgver() {
     _url="https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html"
     _body="$(curl -sL "${_url}")"
-    _pkgver="$(echo "${_body}" | grep -oP "(?<=linuxx64-)\d+\.\d+\.\d+\.\d+(?=\.tar\.gz\?__gda__)")"
-
+    _pkgver="$(grep -oP "(?<=linuxx64-)\d+\.\d+\.\d+\.\d+(?=\.tar\.gz\?__gda__)" <<< "${_body}")" || true
     if [[ -n "${_pkgver}" ]]; then
-        _dl_urls="$(echo "${_body}" | grep -F ".tar.gz?__gda__")"
+        _dl_urls="$(grep -F ".tar.gz?__gda__" <<< "${_body}")"
         _type="Technology Preview"
     else
         _url="https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html"
         _body="$(curl -sL "${_url}")"
-        _pkgver="$(echo "${_body}" | grep -oP "(?<=linuxx64-)\d+\.\d+\.\d+\.\d+(?=\.tar\.gz\?__gda__)")"
-        _dl_urls="$(echo "${_body}" | grep -F ".tar.gz?__gda__")"
+        _pkgver="$(grep -oP "(?<=linuxx64-)\d+\.\d+\.\d+\.\d+(?=\.tar\.gz\?__gda__)" <<< "${_body}")"
+        _dl_urls="$(grep -F ".tar.gz?__gda__" <<< "${_body}")"
         if [[ -n "${_pkgver}" ]]; then
             _type="Release"
         fi
@@ -59,9 +58,9 @@ init() {
 
     if [[ -n "${_pkgver}" ]]; then
         if [[ "$1" == "init" ]]; then
-            _s32=https:"$(echo "${_dl_urls}" | sed -En 's|^.*rel="(//.*/linuxx86-[^"]*)".*$|\1|p')"
-            _s64=https:"$(echo "${_dl_urls}" | sed -En 's|^.*rel="(//.*/linuxx64-[^"]*)".*$|\1|p')"
-            _sarmhf=https:"$(echo "${_dl_urls}" | sed -En 's|^.*rel="(//.*/linuxarmhf-[^"]*)".*$|\1|p')"
+            _s32=https:"$(sed -En 's|^.*rel="(//.*/linuxx86-[^"]*)".*$|\1|p' <<< "${_dl_urls}")"
+            _s64=https:"$(sed -En 's|^.*rel="(//.*/linuxx64-[^"]*)".*$|\1|p' <<< "${_dl_urls}")"
+            _sarmhf=https:"$(sed -En 's|^.*rel="(//.*/linuxarmhf-[^"]*)".*$|\1|p' <<< "${_dl_urls}")"
             printf "%s %s %s %s %s %s" "${_pkgver}" "${_s32}" "${_s64}" "${_sarmhf}" "${_type}" "${_url}"
         else
             printf "%s" "${_pkgver}"
@@ -71,17 +70,12 @@ init() {
         exit 1
     fi
 }
-
-read -r pkgver _source32 _source64 _sourcearmhf _pkgtype _url <<< $(init init)
-source_x86_64=("$_artefactid-x64-$pkgver.tar.gz::$_source64")
-source_i686=("$_artefactid-x86-$pkgver.tar.gz::$_source32")
-source_armv7h=("$_artefactid-armhf-$pkgver.tar.gz::$_sourcearmhf")
+read -r _pkgver _source32 _source64 _sourcearmhf _pkgtype _url <<< $(pkgver init)
+source_x86_64=("$_artefactid-x64-$_pkgver.tar.gz::$_source64")
+source_i686=("$_artefactid-x86-$_pkgver.tar.gz::$_source32")
+source_armv7h=("$_artefactid-armhf-$_pkgver.tar.gz::$_sourcearmhf")
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [$_pkgtype]"
 url="$_url"
-
-pkgver() {
-    printf "%s" "${pkgver}"
-}
 
 package() {
     cd "${srcdir}"
