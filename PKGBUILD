@@ -1,26 +1,31 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=youtube-smarttv-emu-bin
 pkgver=1.0.1
-pkgrel=4
+_electronversion=21
+pkgrel=5
 pkgdesc="A cross platform app built with Electron that opens an instance of the Smart TV version of Youtube."
 arch=('x86_64')
 url="https://github.com/platevoltage/youtube-smarttv-emu"
 license=("MIT")
 depends=(
-    'electron21'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/platevoltage/youtube-smarttv-emu/v${pkgver}/LICENCE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/platevoltage/youtube-smarttv-emu/v${pkgver}/LICENCE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('83ba642af297fccc57f6017f32825b0cb523ed35f257905430b7b7cc14400aeb'
             '2c7bd4372f284a7f952702e50d98d0ef6c5fbb1d1792f9d6d54862cd5fc03860'
-            '30dc5ec7ee4db5e27f12226d6931cd9dc76f38b5bdb5d49d3650f4b726e0bbab')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
@@ -32,5 +37,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
