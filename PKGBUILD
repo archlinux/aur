@@ -2,7 +2,7 @@
 
 pkgbase=stc-isp-wine
 pkgname=(stc-isp{,-tiny}-wine)
-pkgver=6.92H
+pkgver=6.92I
 pkgrel=1
 arch=('x86_64')
 url="http://www.stcmcudata.com"
@@ -21,8 +21,8 @@ source=("${pkgname%-wine}-v${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-v$
         "stc-isp-wine.install"
         "stc-isp-tiny-wine.install"
         "icon.svg")
-sha256sums=('ccc06f649bb97bf7c7691ec41706ea96561b54d4a4ad0e6cc5c4057bdfbcbbbe'
-            '57a8b830aa7f8043c96197a0183e39ef8ae306bcf1d2d1c4600d3b9a043902f2'
+sha256sums=('bcb8a869297b00ff62f3a38fed0e31e1c51192686fd40f295d0829c76957aa21'
+            '270f475e5e3d5e7295b0d0ab326c19e3324475bf63a3478c269cb5626edf91b9'
             'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6'
             'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6'
             'c04d3cf704c9055e4b0bb010d946c5e90710677c459def826f762c8e9d717538')
