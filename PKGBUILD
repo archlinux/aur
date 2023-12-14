@@ -2,12 +2,12 @@
 
 pkgname=dnsproxy
 pkgver=0.60.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support"
 arch=('x86_64')
 url="https://github.com/AdguardTeam/dnsproxy"
 license=('Apache')
-conflicts=('dnsproxy-bin' 'dnsproxy-adguard')
+conflicts=('dnsproxy-bin' 'dnsproxy-adguard' 'dnsproxy-git')
 source=("dnsproxy.service"
         "https://github.com/AdguardTeam/dnsproxy/archive/v${pkgver}.tar.gz")
 makedepends=("go")
