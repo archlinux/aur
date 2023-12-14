@@ -1,6 +1,6 @@
 # Maintainer: relrel <relrelbachar@gmail.com>
 pkgname=ruffle-nightly-bin
-pkgver=2023.12.13
+pkgver=2023.12.14
 pkgrel=1
 pkgdesc="A Flash Player emulator written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(openssl zlib libxcb alsa-lib)
 provides=(ruffle)
 conflicts=(ruffle-git)
 source=("https://github.com/ruffle-rs/ruffle/releases/download/nightly-${pkgver//./-}/ruffle-nightly-${pkgver//./_}-linux-x86_64.tar.gz")
-sha512sums=(69d2893d899ab1a97d93426442065ef5bb67b3f3173d550130e93c1fd2e41a10e4502c1e023e96f02d2928849bd0bacd9f5f3b25fbc97c7301ac91357a7651ed)
+sha512sums=(f7c3ba876c19ca0a09af6d07d521ec5e03c935377de20da65d4a6a4c13e0ca1fe8a7b4d882a9dbf313eb264df6da6b118dea01d73bde6e566e161f4b130f5843)
 
 package() {
 	cd "$srcdir/"
