@@ -1,12 +1,15 @@
 pkgbase = xboot-git
 	pkgdesc = The extensible bootloader for embedded system with application engine, write once, run everywhere. (Linux Sandbox for x86_64)
-	pkgver = v2.0.1.r1919
+	pkgver = 2.0.1.r2631
 	pkgrel = 1
 	url = https://github.com/xboot/xboot
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = sdl2
+	depends = alsa-lib
+	depends = cpio
+	depends = libdrm
 	provides = xboot-git
 	conflicts = xboot-git
 	conflicts = xboot

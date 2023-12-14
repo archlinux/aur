@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xboot-git
-pkgver=v2.0.1.r1919
+pkgver=2.0.1.r2631
 pkgrel=1
 pkgdesc="The extensible bootloader for embedded system with application engine, write once, run everywhere. (Linux Sandbox for x86_64)"
 arch=('x86_64')
@@ -10,8 +10,11 @@ license=('MIT')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-git})
 #replaces=(${pkgname})
-depends=('sdl2')
-makedepends=('git')
+depends=(sdl2
+    alsa-lib
+    cpio
+    libdrm)
+makedepends=(git)
 backup=()
 options=('!strip')
 #install=${pkgname}.install
@@ -20,7 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/g' | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./g'
+    git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/g' | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./g'
 }
 
 build() {
