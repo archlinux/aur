@@ -2,12 +2,12 @@ _pkgname=lmstudio
 
 pkgname="${_pkgname}"-appimage
 pkgver="0.2.8.beta.v1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Discover, download, and run local LLMs"
 arch=('x86_64')
 url="https://lmstudio.ai/"
 license=('custom')
-depends=('zlib' 'hicolor-icon-theme')
+depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://s3.amazonaws.com/releases.lmstudio.ai/prerelease/LM+Studio-${pkgver/\.beta\./-beta-}.AppImage")
