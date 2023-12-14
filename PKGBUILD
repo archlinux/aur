@@ -7,8 +7,8 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgbase=curl-c-ares
-pkgname=(curl-c-ares)
+_proj=curl
+pkgname=curl-c-ares
 _tag='55b5fafb094ebe07ca8a5d4f79813c8b40670795' # git rev-parse v${_tag_name}
 _tag_name='8_5_0'
 pkgver="${_tag_name//_/.}"
@@ -24,7 +24,7 @@ makedepends=('git')
 provides=('curl' 'libcurl.so')
 conflicts=('curl')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
-source=("git+https://github.com/curl/curl.git#tag=${_tag}?signed")
+source=("git+https://github.com/curl/${_proj}.git#tag=${_tag}?signed")
 sha512sums=('SKIP')
 
 _backports=(
@@ -34,7 +34,7 @@ _reverts=(
 )
 
 prepare() {
-  cd "$pkgbase"
+  cd $_proj
 
   local _c
   for _c in "${_backports[@]}"; do
@@ -76,10 +76,9 @@ build() {
 
   mkdir build-curl
 
-  # build curl
   cd "${srcdir}"/build-curl
 
-  "${srcdir}/${pkgbase}"/configure \
+  "${srcdir}/$_proj/configure" \
     "${_configure_options[@]}" \
     --with-openssl \
     --enable-versioned-symbols
@@ -87,7 +86,7 @@ build() {
   make
 }
 
-package_curl-c-ares() {
+package() {
   cd build-curl
 
   make DESTDIR="${pkgdir}" install
