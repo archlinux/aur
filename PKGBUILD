@@ -4,7 +4,7 @@
 
 pkgname=kubeadm-bin
 pkgdesc="Kubernetes.io kubeadm binary"
-pkgver=1.28.4 # renovate: datasource=github-tags depName=kubernetes/kubernetes
+pkgver=1.29.0 # renovate: datasource=github-tags depName=kubernetes/kubernetes
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
@@ -16,7 +16,7 @@ source=(
   "10-kubeadm.conf"
 )
 b2sums=('074744d327227c32661befcff7651209438090fbd75890ad3b5a32ada1fbdf8901dbd132c7093ed353901f1ea7505c97089a5a89a104f57cb7f53a342eecc7e8'
-        'fe95b2439627cba4503c52b02987f32d79f5dc947ad0246cc39c7d2386b924ee47e2b582312e7d98c5b669b0acb3e53f4e910dd3bb24b8b8358f198e0bc9e485')
+        '88ada2f711a141433fda5fc1c849c4c7f3beab52f575b53d9493b5d09f12cd55cc5f1f411c27e35a8f37ccb6e2a0cb0eaa619df60883d17400e6242d9831e99e')
 
 # if CARCH is not set default to x86_64
 # https://stackoverflow.com/a/11362364/11164973
