@@ -2,10 +2,11 @@
 pkgname=deepin-wine-baiduwenku
 _pkgname=com.baidu.wenku.spark
 _officalname=BaiduWenku
+_bottlename="Deepin-${BaiduWenku}"
 _installname=wenku-pc
 pkgver=2.0.1
 sparkver=1.2.8spark2
-pkgrel=1
+pkgrel=2
 pkgdesc="Baidu wenku Client on Deepin Wine6.一款由百度发布的供网友在线分享文档的平台"
 arch=('x86_64')
 url="https://wenku.baidu.com"
@@ -14,7 +15,6 @@ depends=(
     'deepin-wine6-stable'
     'spark-dwine-helper'
     'xdg-utils'
-    'sh'
 )
 makedepends=(
     'p7zip'
@@ -34,8 +34,14 @@ source=(
 sha256sums=('06262e7ba445d996cc4cef8c555474ca8b6eef4ac676e2bb86b00df6103d45b4'
             '799859521b320d41513f3950bb178507ebdd84fe058ad284637d5a209b777ee0'
             'e93a1b4112398eefd1d0688d126af3403226c4827a0e4f5f5ee40a97999cf222'
-            '10263799f3e15c1dedc19007e2a7242306013fc9bdd55405b4094c6d06a10916')
+            '07249f82aac06fcb7a60b13e544b6bfef7282b74a962aa90c8f847f070b92e74')
 build() {
+    sed "s|@bottlename@|${_bottlename}|g" -i "${srcdir}/${pkgname}.install"
+    sed -e "s|@bottlename@|${_bottlename}|g" \
+        -e "s|@appver@|${pkgver}|g" \
+        -e "s|@packagename@|${pkgname}|g" \
+        -e "s|@path@|${_installname}|g" \
+        -i "${srcdir}/${pkgname}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     sed -e "s|\"/opt/apps/${_pkgname}/files/run.sh\"|${pkgname}|g" \

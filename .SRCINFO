@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-baiduwenku
 	pkgdesc = Baidu wenku Client on Deepin Wine6.一款由百度发布的供网友在线分享文档的平台
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wenku.baidu.com
 	install = deepin-wine-baiduwenku.install
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = deepin-wine-baiduwenku
 	depends = deepin-wine6-stable
 	depends = spark-dwine-helper
 	depends = xdg-utils
-	depends = sh
 	optdepends = wqy-microhei
 	optdepends = wqy-zenhei
 	provides = baiduwenku
@@ -21,6 +20,6 @@ pkgbase = deepin-wine-baiduwenku
 	sha256sums = 06262e7ba445d996cc4cef8c555474ca8b6eef4ac676e2bb86b00df6103d45b4
 	sha256sums = 799859521b320d41513f3950bb178507ebdd84fe058ad284637d5a209b777ee0
 	sha256sums = e93a1b4112398eefd1d0688d126af3403226c4827a0e4f5f5ee40a97999cf222
-	sha256sums = 10263799f3e15c1dedc19007e2a7242306013fc9bdd55405b4094c6d06a10916
+	sha256sums = 07249f82aac06fcb7a60b13e544b6bfef7282b74a962aa90c8f847f070b92e74
 
 pkgname = deepin-wine-baiduwenku

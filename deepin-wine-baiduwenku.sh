@@ -6,14 +6,14 @@
 #               Peng Hao <penghao@linuxdeepin.com>
      
 #               Vufa <countstarlight@gmail.com>
-BOTTLENAME="Deepin-BaiduWenku"
-APPVER=2.0.1
+BOTTLENAME=@bottlename@
+APPVER=@appver@
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
-EXEC_PATH="c:/Program Files (x86)/wenku-pc/百度文库.exe"
-EXEC_FILE="${WINEPREFIX}/drive_c/Program Files (x86)/wenku-pc/百度文库.exe"
+EXEC_PATH="c:/Program Files (x86)/@path@/百度文库.exe"
+EXEC_FILE="${WINEPREFIX}/drive_c/Program Files (x86)/@path@/百度文库.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
 export MIME_TYPE=""
-export DEB_PACKAGE_NAME="deepin-wine-baiduwenku"
+export DEB_PACKAGE_NAME=@packagename@
 export APPRUN_CMD="deepin-wine6-stable"
 DISABLE_ATTACH_FILE_DIALOG=""
 EXPORT_ENVS=""
