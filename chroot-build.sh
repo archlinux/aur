@@ -40,7 +40,7 @@ sed 's|#  modprobed-db|  modprobed-db|g' -i PKGBUILD
 sed 's|#  modprobed.db|  modprobed.db|g' -i PKGBUILD
 sed 's|# make LSMOD|make LSMOD|g' -i PKGBUILD
 sed 's|_microarchitecture=93|_microarchitecture=15|g' -i PKGBUILD
-sed "s||Microarchitecture='CONFIG_GENERIC_CPU3'|Microarchitecture='CONFIG_MZEN3'|g" -i PKGBUILD 
+sed "s|Microarchitecture='CONFIG_GENERIC_CPU3'|Microarchitecture='CONFIG_MZEN3'|g" -i PKGBUILD 
 updpkgsums
 
 #
