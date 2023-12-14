@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xilinota-bin
 _pkgname=Xilinota
-pkgver=2.13.5_beta3
+pkgver=2.13.5_beta4
 _electronversion=25
 pkgrel=1
 pkgdesc="A free and open source (FOSS) note-taking and to-do project delivering applications,capable of handling large number of notes organised in notebooks, and syncing notes across the platforms in various ways."
@@ -26,10 +26,10 @@ makedepends=(
     'squashfuse'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver//_/.}/${_pkgname}-2.13.5.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/.}/${_pkgname}-2.13.6.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('226fc29ad31af2e782824cce1e860da543c326bb427e44bf08008fb126687f6b'
+sha256sums=('1cccb8f2698cfef138e673e16993ff88acc93b352672c3e7ba9beb6422f8f6b6'
             '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
