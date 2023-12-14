@@ -124,6 +124,8 @@ prepare() {
         cd synapse
 	# allow any poetry-core to be used
 	sed -r 's/poetry-core>=([0-9.]+),<=([0-9.]+)/poetry-core>=\1/' -i pyproject.toml
+	# allow any setuptools_rust to be used
+	sed -r 's/setuptools_rust>=([0-9.]+),<=([0-9.]+)/setuptools_rust>=\1/' -i pyproject.toml
 }
 
 build() {
