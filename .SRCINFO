@@ -1,19 +1,18 @@
 pkgbase = rekordfix-bin
 	pkgdesc = GUI tool for missing functionality to manage a Rekordbox collection
 	pkgver = 0.15.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/rzuppur/rekordfix
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = electron25
 	provides = rekordfix=0.15.0
 	conflicts = rekordfix
 	source = rekordfix-0.15.0.deb::https://github.com/rzuppur/rekordfix/releases/download/v0.15.0/rekordfix_0.15.0_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/rzuppur/rekordfix/v0.15.0/LICENSE
+	source = LICENSE-0.15.0::https://raw.githubusercontent.com/rzuppur/rekordfix/v0.15.0/LICENSE
 	source = rekordfix.sh
 	sha256sums = 4a6ef8fe7dcfb208bbee5c2f5bcbf3711967fd01872dc0ace70d3b68650f876b
 	sha256sums = ac76bfd52440815cb3e8ec5ea00f1f9b82c9b404219814f2f05c3fe44a9446c5
-	sha256sums = 5354880d20f43a2144f4d291b13f8e3c43dffdefaaaa131ec2e66b573cfaf096
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = rekordfix-bin
