@@ -1,13 +1,13 @@
 _reponame=libfirm
 pkgname="${_reponame}-git"
 pkgver=r18944.8bdd163f2
-pkgrel=2
+pkgrel=3
 pkgdesc='A c-lib for graph-based IR, optimizations and code gen for compilers'
 url="https://pp.ipd.kit.edu/firm/"
 license=('GPL')
 arch=('any')
 makedepends=('git')
-source=("${_reponame}::git+http://pp.ipd.kit.edu/git/${_reponame}.git" 
+source=("${_reponame}::git+https://github.com/${_reponame}/${_reponame}.git" 
         libfirm.pc)
 md5sums=('SKIP' '39a7ef0417669487524b95460962f6c7')
 options=(staticlibs)
