@@ -1,9 +1,11 @@
 # Maintainer: szdytom <szdytom@qq.com>
 # Maintainer: k0kubun <takashikkbn@gmail.com>
+# This PKGBUILD is managed by <https://github.com/xremap/aur-autoupdater>
+
 pkgname=xremap-gnome-bin
 pkgdesc='Dynamic key remapper for X11 and Wayland (Gnome Wayland Version)'
 pkgver=0.8.12
-pkgrel=1
+pkgrel=2
 
 provides=('xremap')
 license=('MIT')
@@ -21,6 +23,13 @@ sha256sums_aarch64=('0a7729d716e8111b6acce04bf94127d51e9f69fe3c75901da358536c297
 
 package() {
 	cd "$srcdir/"
+	./xremap --completions zsh > zsh_completions
+	./xremap --completions fish > fish_completions
+	./xremap --completions bash > bash_completions
+	install -Dm644 zsh_completions "${pkgdir}/usr/share/zsh/site-functions/_xremap"
+	install -Dm644 fish_completions "${pkgdir}/usr/share/fish/vendor_completions.d/xremap.fish"
+	install -Dm644 bash_completions "${pkgdir}/usr/share/bash-completion/completions/xremap"
 	install -Dm755 xremap "${pkgdir}/usr/bin/xremap"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/xremap-gnome-bin/LICENSE"
 }
+
