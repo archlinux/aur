@@ -107,7 +107,7 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
+  DESTDIR="${pkgdir}" meson install -C build --skip-subprojects
   install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
 }
 
