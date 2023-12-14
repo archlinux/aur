@@ -4,11 +4,11 @@
 pkgname="python-tts"
 pkgver=0.16.1
 pkgrel=1
-pkgdesc="Deep learning for Text to Speech by Coqui."
+pkgdesc="Coqui deep learning toolkit for Text-to-Speech, battle-tested in research and production"
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
 arch=("any")
-provides=("tts")
+provides=("tts" "python-tts")
 conflicts=("python-tts")
 depends=("cython"
          "python"
@@ -52,7 +52,7 @@ optdepends=("python-umap-learn: for notebooks"
 )
 options=("!strip")
 source=("https://github.com/coqui-ai/TTS/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('83f8edc34dd5e7a4c07d75866417753d82cac6dc9acfec92015be598ff44bc78')
+b2sums=('8a7c349afa8cf81ac92c6722b88a04e9946951dea1d7349ac26e717cbef8b11bb50f255a0968c1551f37f0b7bfea7d2887b3db38c2d7ca484538a8d88f08fd0c')
 
 prepare(){
  # remove hardcoded versions
