@@ -4,10 +4,10 @@ _pkgname=xcore
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="xcore expression regulators inference"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL2)
 depends=(
   r-delayedarray
@@ -46,11 +46,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('4dd79b63bd7ff46aaa1b84dade889db2')
-sha256sums=('a76393504e53465ec243c02997f8aeb8c40dc9293738064012f1aeaf57362754')
+b2sums=('8f1f8748945f4dad1d01067d2ad2e33b42e57b5388ea4f15d3f4553ba74485666afbd2f357a1eef0e1fbba35641682655691a7a52f8dc019416366e742645334')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
