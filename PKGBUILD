@@ -2,10 +2,10 @@
 
 pkgname=wl-gammarelay-rs
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Like wl-gammarelay, but written in rust, runs on a single thread, has three times less SLOC and uses DBus (for simplicity)"
 makedepends=('cargo')
-arch=('any')
+arch=('x86_64')
 url="https://github.com/MaxVerevkin/wl-gammarelay-rs"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
