@@ -3,7 +3,7 @@ _pkgname=Diablo
 pkgver=1.0.0
 pkgrel=2
 pkgdesc="Diablo is an action role-playing video game developed by Blizzard North and released by Blizzard Entertainment Powered by the Devilution engine"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'i686' 'pentium4' 'aarch64')
 url="https://gitlab.com/devilutionx-bin/diablo"
 license=('GPL')
 depends=('devilutionx-bin' 'git' 'aria2')
@@ -20,11 +20,15 @@ package() {
     cd $_pkgname  
     cd "$srcdir/$_pkgname"
     chmod +x $pkgname
-    ln -sf "/bin/devilutionx" "$srcdir/$_pkgname"
     cp -r ./ "$pkgdir/usr/share/games/$_pkgname"
     cp -r "$pkgdir/usr/share/games/$_pkgname/$pkgname.png" "$pkgdir/usr/share/pixmaps"
     #lib symlink workaround as it looks for libsodium.so.23 which doesn't exist
-    ln -s "/usr/lib/libsodium.so" "$pkgdir/usr/lib/libsodium.so.23"
+    target="/usr/lib/libsodium.so.23"
+    link="$pkgdir/usr/lib/libsodium.so.23"
+
+    if [ ! -f "$target" ] && [ ! -L "$link" ]; then
+     ln -s "$target" "$link"
+    fi
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
