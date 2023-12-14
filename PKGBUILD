@@ -2,6 +2,7 @@
 pkgname=silence-speedup-bin
 _pkgname="Silence-SpeedUp"
 pkgver=1.2.5
+_electronversion=16
 pkgrel=4
 pkgdesc="An electron-based app,speed-up your videos speeding-up (or removing) silences, using FFmpeg."
 arch=("x86_64")
@@ -11,8 +12,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron16'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 makedepends=(
@@ -23,8 +23,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2f88c27b08084064ad8477f6744dc8592ea1d4bc5dba74437710871ece1d9653'
-            'd4b5c1f6bcb62abb47abd8e7cde213042b0e40b412ea0b24b8673b6632de11d1')
+            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories "AudioVideo;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
