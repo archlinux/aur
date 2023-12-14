@@ -1,12 +1,11 @@
 pkgbase = tesler-bin
 	pkgdesc = TesLEr - The Tesla Sentinel Viewer
 	pkgver = 0.2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/j-catania/TeslaSentinelViewer
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
-	depends = bash
 	depends = electron22
 	depends = hicolor-icon-theme
 	depends = libxext
@@ -18,10 +17,10 @@ pkgbase = tesler-bin
 	provides = tesler=0.2.3
 	conflicts = tesler
 	source = tesler-0.2.3.AppImage::https://github.com/j-catania/TeslaSentinelViewer/releases/download/v0.2.3/TesLEr-0.2.3.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/j-catania/TeslaSentinelViewer/v0.2.3/LICENSE
+	source = LICENSE-0.2.3::https://raw.githubusercontent.com/j-catania/TeslaSentinelViewer/v0.2.3/LICENSE
 	source = tesler.sh
 	sha256sums = 5447e01520ad757fdbb4130e764a863c9d282c5dd48cf2fabbd33e171a2decfd
 	sha256sums = 29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355
-	sha256sums = 890ba5ec0ef7d92b90fc71b27a4ebd8b26f83dd2e880b6803c67887dd1e2fd10
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = tesler-bin
