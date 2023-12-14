@@ -1,7 +1,7 @@
 pkgbase = yaradio-yamusic-bin
 	pkgdesc = Yandex Radio + Yandex Music desktop application - Неофициальное десктопное приложение для Яндекс Радио + Яндекс Музыка
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dedpnd/yaradio-yamusic
 	arch = x86_64
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = yaradio-yamusic-bin
 	provides = yaradio-yamusic=1.0.6
 	conflicts = yaradio-yamusic
 	source = yaradio-yamusic-1.0.6.deb::https://github.com/dedpnd/yaradio-yamusic/releases/download/v1.0.6/yaradio-yamusic_1.0.6_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/dedpnd/yaradio-yamusic/v1.0.6/LICENSE
+	source = LICENSE-1.0.6::https://raw.githubusercontent.com/dedpnd/yaradio-yamusic/v1.0.6/LICENSE
 	source = yaradio-yamusic.sh
 	sha256sums = bc11bda087e19d56ad4c120e34183dfe0edfd47d538d87eae56254ba41a81a26
 	sha256sums = cea59fab6a546b299040932620ad01ba4f590cc427ebd9d6f3ae8c271a1055ac
-	sha256sums = 73ecd8d8c3892a011acd564d9e08ce38d1fea93adacde0a32fa0bd636eec1a01
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = yaradio-yamusic-bin
