@@ -1,40 +1,44 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.0.14
-_zigver=0.12.0-dev.1604+caae40c21 #https://github.com/oven-sh/bun/blob/bun-v1.0.14/build.zig#L1
+pkgver=1.0.17
+#_zigver=0.12.0-dev.1604+caae40c21 #https://github.com/oven-sh/bun/blob/bun-v1.0.18/build.zig#L9
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a minor binary depending on your CPU."
 arch=(x86_64)
 url="https://github.com/oven-sh/bun"
 license=('GPL')
 makedepends=(
-	npm clang cmake esbuild git go icu libiconv libtool lld llvm ninja pkg-config python ruby rust unzip zig
+	clang cmake esbuild git go icu libiconv libtool lld llvm ninja pkg-config python ruby rust unzip bun
 )
 conflicts=(bun-bin)
-source=(git+$url.git#tag=bun-v$pkgver https://ziglang.org/builds/zig-linux-x86_64-$_zigver.tar.xz)
-b2sums=('SKIP'
-        '2a3052c363b1cca118b4b972c5195d67bcbeb2c21396a34cb75a4bf39d966fa384d0441e5c842558eb33a198e4b53dff9e89ecefdef74ba1801471887ee1010e')
+source=(git+$url.git#tag=bun-v$pkgver)
+        #https://ziglang.org/builds/zig-linux-x86_64-$_zigver.tar.xz)
+b2sums=('SKIP')
+
+_j=$(($(nproc)/2)) #change for your system
 
 prepare() {
-  bun i -g @oven/zig
-  rm -rf ~/.bun/install/global/node_modules/@oven/zig-linux-x64
-  ln -sf  $srcdir/zig-linux-x86_64-$_zigver ~/.bun/install/global/node_modules/@oven/zig-linux-x64
-  # bun update -g @oven/zig
-
   cd "$pkgname"
-  bun i
-
+# 
+#   export PATH="$PATH":$srcdir/zig-linux-x86_64-$_zigver
+# 
+#   mkdir -p $srcdir/bun/.cache/
+#   # ln -sf $srcdir/zig-linux-$_zigver $srcdir/bun/.cache/zig
+#   # ln -sf $srcdir/zig-linux-$_zigver.tar.xz $srcdir/bun/.cache/
   git -c submodule.src/javascript/jsc/WebKit.update=checkout submodule update --init --recursive --depth=1 --progress
 
+  bun i
   bash ./scripts/all-dependencies.sh
-  make runtime_js fallback_decoder bun_error node-fallbacks #identifier-cache clean-bindings
+  bash ./scripts/download-zig.sh
+  make runtime_js fallback_decoder bun_error node-fallbacks
 }
 
 build() {
-  # Copied from https://github.com/oven-sh/WebKit/blob/main/Dockerfile#L57
-  export CFLAGS="$CFLAGS -ffat-lto-objects"
-  export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
-  cmake \
+  # Copied from https://github.com/oven-sh/WebKit/blob/main/Dockerfile#L60
+  #export CFLAGS="$CFLAGS -ffat-lto-objects"
+  #export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
+
+  CC="clang" CXX="clang++" cmake \
       -S $srcdir/bun/src/bun.js/WebKit/ \
       -B $srcdir/bun/src/bun.js/WebKit/build \
       -DPORT="JSCOnly" \
@@ -49,7 +53,8 @@ build() {
       -DENABLE_SINGLE_THREADED_VM_ENTRY_SCOPE=ON \
       -GNinja
 
-  ninja -C $srcdir/bun/src/bun.js/WebKit/build jsc -j6 #change for your system
+
+  ninja -C $srcdir/bun/src/bun.js/WebKit/build jsc -j$_j
 
   mkdir -p $srcdir/bun/src/bun.js/WebKit/output/{lib,include/JavaScriptCore,Source/JavaScriptCore}
 
@@ -66,8 +71,8 @@ build() {
   ln -sf /lib/libicui18n.so $srcdir/bun/src/bun.js/WebKit/output/lib/libicui18n.a
   ln -sf /lib/libicuuc.so $srcdir/bun/src/bun.js/WebKit/output/lib/libicuuc.a
 
-  cmake -B $pkgname/build -S $pkgname -DCMAKE_BUILD_TYPE=Release -GNinja -DUSE_STATIC_LIBATOMIC=OFF -DWEBKIT_DIR=$srcdir/bun/src/bun.js/WebKit/output -DUSE_DEBUG_JSC=ON #-DZIG_OPTIMIZE=ON
-  ninja -C $pkgname/build
+  cmake -B $pkgname/build -S $pkgname -DCMAKE_BUILD_TYPE=Release -GNinja -DUSE_STATIC_LIBATOMIC=OFF -DWEBKIT_DIR=$srcdir/bun/src/bun.js/WebKit/output -DUSE_DEBUG_JSC=ON -DZIG_OPTIMIZE=ReleaseFast
+  ninja -C $pkgname/build -j$_j
 }
 
 package() {
