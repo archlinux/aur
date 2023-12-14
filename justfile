@@ -46,20 +46,17 @@ publish: prepare
     echo "New version: $(just src-version)"
     @git add .
     echo "Committing and tagging..."
-    @git commit -m "Update to $(just src-version)"
-    @git tag -a $(just src-version) -m "Release $(shell make src-version)"
-    echo "Pushing to origin..."
-    @git push
-    @git push --tags
+    @git commit -m "bump: $(just src-version)"
+    @git tag -a $(just src-version) -m "bunp: $(just src-version)"
     echo "Pushing to aur..."
     @git push aur master
     @git push --tags aur master
 
 test-local: rebuild
-    ./src/{{ pkgbase }}/bundle/dcli-linux --version
+    @./src/{{ pkgbase }}/bundle/dcli-linux --version
 
 test: prepare install && uninstall
     @dcli --version
 
 remote-add-aur:
-    git remote add aur ssh://aur@aur.archlinux.org/{{ pkgbase }}.git
+    @git remote add aur ssh://aur@aur.archlinux.org/{{ pkgbase }}.git || true
