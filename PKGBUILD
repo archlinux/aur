@@ -2,7 +2,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="python-tts"
-pkgver=0.16.1
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Coqui deep learning toolkit for Text-to-Speech, battle-tested in research and production"
 url="https://github.com/coqui-ai/TTS"
@@ -52,7 +52,7 @@ optdepends=("python-umap-learn: for notebooks"
 )
 options=("!strip")
 source=("https://github.com/coqui-ai/TTS/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('8a7c349afa8cf81ac92c6722b88a04e9946951dea1d7349ac26e717cbef8b11bb50f255a0968c1551f37f0b7bfea7d2887b3db38c2d7ca484538a8d88f08fd0c')
+b2sums=('4331e54b2fe1909c0b0e0ad358318f2e1006bc2709a79b66a63abb94e5360026cc1806b41ea264df14884475e7f28d707e8a800874746ab35aac6d8977210881')
 
 prepare(){
  # remove hardcoded versions
