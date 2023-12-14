@@ -3,12 +3,12 @@
 pkgname=inko-git
 pkgver=0.13.0.r0.g183e5633
 pkgrel=1
-pkgdesc="A language for building concurrent software with confidence "
+pkgdesc="A language for building concurrent software with confidence"
 url="https://inko-lang.org"
 license=(MPL2)
-arch=(x86_64)
+arch=(x86_64 aarch64)
 depends=(llvm15 git base-devel)
-makedepends=('rust>=1.68' make)
+makedepends=(cargo make)
 provides=(inko)
 conflicts=(inko)
 options=(strip !docs !libtool !staticlibs)

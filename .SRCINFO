@@ -4,8 +4,9 @@ pkgbase = inko-git
 	pkgrel = 1
 	url = https://inko-lang.org
 	arch = x86_64
+	arch = aarch64
 	license = MPL2
-	makedepends = rust>=1.68
+	makedepends = cargo
 	makedepends = make
 	depends = llvm15
 	depends = git
