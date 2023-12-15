@@ -1,16 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=deepin-wine-adrive
-_pkgname=com.adrive.deepin
+_appname=adrive
+pkgname="deepin-wine-${_appname}"
+_pkgname="com.${_appname}.deepin"
 _officalname=aDrive
-pkgver=4.9.14
+pkgver=4.9.16
 _deepinver=2.2.6deepin8
 pkgrel=1
 pkgdesc="Aliyun aDrive on Deepin Wine 6"
 arch=("x86_64")
 url="https://www.aliyundrive.com"
 license=('custom')
-conflicts=("adrive")
-provides=("adrive")
+conflicts=("${_appname}")
+provides=("${_appname}")
 depends=(
     'deepin-wine6-stable'
     'deepin-wine-helper'
@@ -19,7 +20,6 @@ depends=(
     'hicolor-icon-theme'
     'lib32-libxext'
     'lib32-libx11'
-    'sh'
 )
 makedepends=(
     'p7zip'
@@ -33,11 +33,18 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('9db53833b86b3ad941f23bdefa354170ec432c3b15980621e8011261d5617843'
-            '13b1f2fdb52e755fa1e5d41dadc72ad511833d9c00cfa7a9d309f6f5e3976183'
-            '592a72685f9f3b69015259015d9eaa9701dbca5ef8289e178f89ee4c7311c1f6'
+            'bb36e6204d6be7073ca9b13f273b55f788cd48dc9a849251a26b3239438b08d4'
+            '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
             '44ca9db05446acc42bd3c1d7dfe2d68b286b23203ab2105b9f77a9b8110205d2'
-            '32ea5493f18259f108cda213edbfa7f4802d438f8a7e6f05b976a512f7ec81e9')
+            '797f5242f1d12ce443903193b4ab7f95d013cd55d9a9610749f6b4602f4308b2')
 build() {
+    sed "s|@bottlename@|Deepin-${_officalname}|g" -i "${srcdir}/${pkgname}.install"
+    sed -e "s|@bottlename@|Deepin-${_officalname}|g" \
+        -e "s|@appver@|${pkgver}|g" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|/@pathname@|${_officalname}|g" \
+        -i "${srcdir}/${pkgname}.sh"
+
     bsdtar -xf data.tar.xz -C "${srcdir}"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp"
