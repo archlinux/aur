@@ -26,11 +26,11 @@ makedepends=('python-setuptools' )
 
 provides=('rsciio')
 
-source=(https://files.pythonhosted.org/packages/source/r/rosettasciio/v$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/r/$pkgshort/$pkgshort-$pkgver.tar.gz)
 
 package() {
   cd "$srcdir/$pkgshort-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('384f3a956f6f4ff3705ab668953dca1c')
+md5sums=('22d3f5cb2182f1e79566e612e52343f2')

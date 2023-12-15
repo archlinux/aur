@@ -18,7 +18,7 @@ pkgbase = python-rosettasciio
 	depends = python-scipy>=1.5.0
 	depends = python-sparse
 	provides = rsciio
-	source = https://files.pythonhosted.org/packages/source/r/rosettasciio/v0.3.tar.gz
-	md5sums = 384f3a956f6f4ff3705ab668953dca1c
+	source = https://files.pythonhosted.org/packages/source/r/rosettasciio/rosettasciio-0.3.tar.gz
+	md5sums = 22d3f5cb2182f1e79566e612e52343f2
 
 pkgname = python-rosettasciio
