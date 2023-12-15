@@ -13,8 +13,8 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_i686=("https://github.com/Ironclad/rivet/releases/download/app-v${pkgver}/rivet.deb")
 source_x86_64=("https://github.com/Ironclad/rivet/releases/download/app-v${pkgver}/rivet_${pkgver}_amd64.deb")
-sha512sums_i686=('8aa53fbab538f6e2e82132fddf67d1d08f2a8395d7af3608753add300e3a3b05408c6acbe553fc82f1057f8d2868e4e8cb3c5ab949df809ad41c2f3e040f9db3')
-sha512sums_x86_64=('8aa53fbab538f6e2e82132fddf67d1d08f2a8395d7af3608753add300e3a3b05408c6acbe553fc82f1057f8d2868e4e8cb3c5ab949df809ad41c2f3e040f9db3')
+sha512sums_i686=('8b448340460a2c0f712b8bab07e85d2daa6144abf188f728deb344024bd9a3d6be8bd781d3ceb9688b7e922a57a13ddc0607d1a993a681cd1dfc4869e1c86253')
+sha512sums_x86_64=('8b448340460a2c0f712b8bab07e85d2daa6144abf188f728deb344024bd9a3d6be8bd781d3ceb9688b7e922a57a13ddc0607d1a993a681cd1dfc4869e1c86253')
 
 package(){
 
