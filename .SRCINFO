@@ -1,7 +1,7 @@
 pkgbase = r-biodbhmdb
-	pkgdesc = biodbHmdb, a library for connecting to the HMDB Database
+	pkgdesc = a library for connecting to the HMDB Database
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/biodbHmdb
 	arch = x86_64
 	license = AGPL3
@@ -21,6 +21,6 @@ pkgbase = r-biodbhmdb
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodbHmdb_1.8.0.tar.gz
 	md5sums = b34c06c2ce8865b7eebedb869a1ab505
-	sha256sums = 9ed3b15f82965366f8277ef7ad0be09c30f5a643df51b8f77c23ec3f4decd5cf
+	b2sums = 5f0fa6b83049d8dbd334d94b52bbf05a87727a55e02bb075fc3440c5ec7d9e885f6e7403ea12087b0f89a877e251268aa72aee25e16c8f174f51009822cfa160
 
 pkgname = r-biodbhmdb

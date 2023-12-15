@@ -5,10 +5,10 @@ _pkgname=biodbHmdb
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="biodbHmdb, a library for connecting to the HMDB Database"
+pkgrel=3
+pkgdesc="a library for connecting to the HMDB Database"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(AGPL3)
 depends=(
   r-biodb
@@ -34,11 +34,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b34c06c2ce8865b7eebedb869a1ab505')
-sha256sums=('9ed3b15f82965366f8277ef7ad0be09c30f5a643df51b8f77c23ec3f4decd5cf')
+b2sums=('5f0fa6b83049d8dbd334d94b52bbf05a87727a55e02bb075fc3440c5ec7d9e885f6e7403ea12087b0f89a877e251268aa72aee25e16c8f174f51009822cfa160')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
