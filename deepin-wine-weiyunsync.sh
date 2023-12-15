@@ -6,14 +6,14 @@
 #               Peng Hao <penghao@linuxdeepin.com>
   
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
-BOTTLENAME=Deepin-WeiyunSync
-APPVER=3.0.0.649
+BOTTLENAME=@bottlename@
+APPVER=@appver@
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
-EXEC_PATH="c:/Program Files/Tencent/WeiyunSync/Bin/weiyunsync.exe"
+EXEC_PATH="c:/Program Files/@provider@/@pathname@/Bin/@runname@.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
 export MIME_TYPE=""
-export DEB_PACKAGE_NAME="deepin-wine-weiyunsync"
-export APPRUN_CMD="deepin-wine6-stable"
+export DEB_PACKAGE_NAME=@appname@
+export APPRUN_CMD=deepin-wine6-stable
 DISABLE_ATTACH_FILE_DIALOG="1"
 export SPECIFY_SHELL_DIR=`dirname ${START_SHELL_PATH}`
 ARCHIVE_FILE_DIR="/opt/apps/$DEB_PACKAGE_NAME/files"
