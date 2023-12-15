@@ -1,6 +1,6 @@
 pkgbase = rubymine-eap
 	pkgdesc = Ruby and Rails IDE with the full stack of essential developer tools (EAP).
-	pkgver = 233.11799.290
+	pkgver = 233.13135.14
 	pkgrel = 1
 	url = http://www.jetbrains.com/ruby/
 	install = rubymine.install
