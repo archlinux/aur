@@ -20,10 +20,10 @@ sha256sums=(
     'c7290f2a70d48f7bdd09bee985534d3511ec00d091887b07f81cf1e08f74c145'
     'SKIP')
 
-pkgver() {
-    cd $_pkgname
-    git describe --tags | sed 's/^V_\|^v//;s/_/./g;s/-/.r/;s/-/./'
-}
+#pkgver() {
+#    cd $_pkgname
+#    git describe --tags | sed 's/^V_\|^v//;s/_/./g;s/-/.r/;s/-/./'
+#}
 
 prepare() {
     libfpcbep_path=$(find . -name 'libfpcbep.so')
