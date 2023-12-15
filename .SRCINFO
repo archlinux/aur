@@ -1,6 +1,6 @@
 pkgbase = xfce-winxp-tc-git
 	pkgdesc = Windows XP Total Conversion for XFCE
-	pkgver = r274.7ac4c6f
+	pkgver = r279.eef73fe
 	pkgrel = 1
 	url = https://github.com/rozniak/xfce-winxp-tc
 	arch = x86_64
@@ -12,6 +12,9 @@ pkgbase = xfce-winxp-tc-git
 	makedepends = ruby-sass
 	makedepends = garcon
 	makedepends = lightdm
+	makedepends = libpulse
+	optdepends = lightdm: LightDM theme
+	optdepends = libpulse: Volume control in tray
 	source = xfce-winxp-tc::git+https://github.com/rozniak/xfce-winxp-tc.git
 	md5sums = SKIP
 
