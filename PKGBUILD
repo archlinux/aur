@@ -1,34 +1,42 @@
-# Maintainer: TurtleRuss <tttturtleruss@gmail.com>
-pkgname=hustmirror-cli # '-bzr', '-git', '-hg' or '-svn'
+# Maintainer:TurtleRuss <tttturtleruss@gmail.com> 
+pkgname=hustmirror-cli
 pkgver=1.0.1
 pkgrel=1
+epoch=
 pkgdesc="The command line tool (hustmirror-cli) is a small tool that can help you quickly change sources to HUST mirror sources."
-arch=("x86_64")
-url="https://gitee.com/hustmirror/hustmirror-cli.git"
+arch=('x86_64')
+url=""
 license=('GPL')
-depends=('python3')
-makedepends=('git' 'make' 'docker') # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("${pkgname%}")
-conflicts=("${pkgname%}")
-source=('git+https://gitee.com/hustmirror/hustmirror-cli.git')
-md5sums=('SKIP')
+groups=()
+depends=()
+makedepends=('make')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$pkgname-$pkgver.tar.gz"
+        "$pkgname-$pkgver.patch")
+noextract=()
+sha256sums=('4dae90345d776c880fc1fb95013503337d9991c32e0222a530ab6ae3f991df5c'
+            '89db2182d83d6169514e7d45a4bb0dc5d0d85a2882ecabe89302b33aa1a6b16e')
+validpgpkeys=()
 
 prepare() {
-    mkdir -p "$srcdir/${pkgname%-git}"
-	cd "$srcdir/${pkgname%-git}"
+	cd "$pkgname-$pkgver"
+	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$pkgname-$pkgver"
 	make
 }
 
-check() {
-	cd "$srcdir/${pkgname%-git}"
-	make -f Makefile.arch test
-}
-
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	sudo cp ./output/hustmirror-cli "/usr/bin/hustmirror-cli"
+	cd "$pkgname-$pkgver"
+	sudo make install
 }
