@@ -1,0 +1,11 @@
+pkgbase = jsonnet-bundler-ng
+	pkgdesc = Jsonnet package manager.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dadav/jsonnet-bundler-ng
+	arch = x86_64
+	license = Apache
+	source = https://github.com/dadav/jsonnet-bundler-ng/releases/download/0.1.0/jsonnet-bundler-ng_0.1.0_Linux_x86_64.tar.gz
+	sha256sums = f218c493e8ef0568aeb6f6c12f510afafe1e7e4d4818d0e22e59273368de67e4
+
+pkgname = jsonnet-bundler-ng
