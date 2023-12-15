@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+
+export JAVA_HOME="/usr/lib/jvm/$(archlinux-java get)"
+
+pkexec env "DISPLAY=$DISPLAY" "XAUTHORITY=$XAUTHORITY" "/opt/xperia-flashtool/FlashTool" "$@"

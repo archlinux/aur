@@ -9,7 +9,7 @@
 pkgname=xperia-flashtool
 _pkgname=Flashtool
 pkgver=0.9.36.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Flashtool is a S1 protocol flashing software that can be used to flash firmwares for Sony Xperia smartphones"
 arch=('any')
 url="http://www.flashtool.net/"
@@ -17,24 +17,24 @@ license=('GPL3')
 depends=('systemd' 'systemd-libs' 'bash' 'glib2' 'glibc' 'alsa-lib' 'mono' 'jre-openjdk' 'java-environment-common'
          'libx11' 'gcc-libs' 'libxrender' 'freetype2' 'libxext' 'libxtst' 'libxi' 'zlib' 'lib32-gcc-libs' 'lib32-glibc')
 makedepends=('base-devel')
-source=("https://github.com/Androxyde/Flashtool/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
-        "$pkgname.desktop" "$pkgname.png")
-# Upstream archive and launcher script
-md5sums=('SKIP' 'SKIP' 'SKIP')
+source=("${_pkgname}-${pkgver}.tar.bz2::https://github.com/Androxyde/Flashtool/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
+        "${pkgname}" "${pkgname}.desktop" "${pkgname}.png")
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!strip')
 
 build() {
-  tar -xf "${_pkgname}"-"${pkgver}".tar.bz2
+  tar -xf "${srcdir}/${_pkgname}-${pkgver}.tar.bz2"
 }
 
 package() {
   # Install program files
-  install -m 644 -d "${pkgdir}"/opt/"${pkgname}"
-  cp -a "${_pkgname}"/. "${pkgdir}"/opt/"${pkgname}"
-  chmod 755 "${pkgdir}"/opt/"${pkgname}"
-  install -m 755 -d "${pkgdir}"/usr/bin/
-  ln -s /opt/"${pkgname}"/FlashTool "${pkgdir}"/usr/bin/"${pkgname}"
-  install -Dm644 "${pkgname}".png "${pkgdir}"/usr/share/icons/xperia-flashtool.png
-  install -Dm644 "${pkgname}".desktop "${pkgdir}"/usr/share/applications/xperia-flashtool.desktop
-  install -Dm644 "${_pkgname}"/x10flasher_native/udev/libusbx-1.0.so.0.2.0 "${pkgdir}"/usr/lib/xperia-flashtool/x10flasher_native/udev/libusbx-1.0.so.0.2.0
+  install -dm644 "${pkgdir}/opt/${pkgname}"
+  cp -a "${srcdir}/${_pkgname}/." -t "${pkgdir}/opt/${pkgname}"
+  chmod 0755 "${pkgdir}/opt/${pkgname}/FlashTool"
+  install -dm755 "${pkgdir}/usr/bin/"
+  install -Dm755 "${srcdir}/${pkgname}" -t "${pkgdir}/usr/bin/"
+  install -Dm644 "${srcdir}/${pkgname}.png" -t "${pkgdir}/usr/share/icons/"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -Dm644 "${srcdir}/${_pkgname}/x10flasher_native/udev/libusbx-1.0.so.0.2.0" \
+                 "${pkgdir}/usr/lib/${pkgname}/x10flasher_native/udev/libusbx-1.0.so.0.2.0"
 }
