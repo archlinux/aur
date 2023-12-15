@@ -27,9 +27,14 @@ provides=('hyperspy-gui-traitsui')
 
 source=(https://github.com/hyperspy/hyperspy_gui_traitsui/archive/v$pkgver.tar.gz)
 
+build() {
+  cd "$srcdir/$pkginst-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "$srcdir/$pkginst-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 md5sums=('25651acb611723c9a8204c969b1e7a81')
