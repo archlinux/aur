@@ -5,10 +5,10 @@ _pkgname=biodb
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
-pkgdesc="biodb, a library and a development framework for connecting to chemical and biological databases"
+pkgrel=4
+pkgdesc="a library and a development framework for connecting to chemical and biological databases"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(AGPL3)
 depends=(
   r-biocfilecache
@@ -48,11 +48,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0716a73291fb80cc3d1f0909549cbaa8')
-sha256sums=('73a5965ebaa6831b752ccc46abe4e8a200028d8de9a8a40cd5b1710eb43080a3')
+b2sums=('b6bb4839da90b3530a4a6aa5a798374fd20747d32619d69c798aac1508490c6af0d178ddf8c314264d06444ee0582a88d6babc254b88f7bfef1cd8bb94be6d99')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
