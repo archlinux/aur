@@ -2,7 +2,7 @@
 
 pkgbase=deepin-unioncode-git
 pkgname=deepin-unioncode-git
-pkgver=1.2.3.r3.g7ac9d0c2
+pkgver=1.2.4.r0.g8e97bdea
 pkgrel=1
 pkgdesc="IDE authored by deepin"
 arch=(x86_64
@@ -69,8 +69,8 @@ build() {
     cd "${srcdir}/${pkgname}"
 
 # See：https://wiki.archlinux.org/title/CMake_package_guidelines
-    # cmake -DCMAKE_BUILD_TYPE=None \
-    cmake -DCMAKE_BUILD_TYPE=Release \
+    # cmake -DCMAKE_BUILD_TYPE=Release \
+    cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
