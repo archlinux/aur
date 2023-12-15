@@ -1,6 +1,6 @@
 # Maintainer: Riolku <me [at] kgugeler [dot] ca>
 pkgname=kambi
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Simple rotating wallpaper client for Wayland'
 arch=('x86_64')
