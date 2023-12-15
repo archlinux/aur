@@ -10,7 +10,7 @@ _use_suffix=1
 pkgver=24.8.8
 _chromiumver=112.0.5615.204
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -76,6 +76,8 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         'iwyu-add-cstdint-for-int-types-in-s2cellid.patch'
         'random-fixes-for-gcc13.patch'
         'more-fixes-for-gcc13.patch'
+        'libxml2-2.12.patch'
+        'icu-74.patch'
        )
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
@@ -104,7 +106,9 @@ sha256sums=('SKIP'
             '5dfbfd073f78c887bbffca2b644116571cc9b1196867e44e8fc0cbb40afcf1bc'
             'd97dc00f66fa5868584e4b6d5ef817911eab2dc8022a37c75a00d063f4dac483'
             '3fb0636e9560760d99e7c9606b1c9b59eef9d91ed3419cc95b43302759f249be'
-            '9d1f69f668e12fc14b4ccbcf88cb5a3acf666df06dafa8834f037bd8110ca17f')
+            '9d1f69f668e12fc14b4ccbcf88cb5a3acf666df06dafa8834f037bd8110ca17f'
+            'bfae9e773edfd0ddbc617777fdd4c0609cba2b048be7afe40f97768e4eb6117e'
+            '547e092f6a20ebd15e486b31111145bc94b8709ec230da89c591963001378845')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -231,6 +235,12 @@ EOF
   patch -Np1 -i "${srcdir}/jinja-python-3.10.patch" -d "third_party/electron_node/tools/inspector_protocol/jinja2"
   patch -Np1 -i "${srcdir}/use-system-libraries-in-node.patch"
   patch -Np1 -i "${srcdir}/default_app-icon.patch"  # Icon from .desktop file
+
+  # Fix build with libxml2 2.12
+  patch -Np1 -i ../libxml2-2.12.patch
+
+  # Fix build with ICU 74
+  patch -Np1 -i ../icu-74.patch
 
   # Allow building against system libraries in official builds
   echo "Patching Chromium for using system libraries..."
