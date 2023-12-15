@@ -1,22 +1,25 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname='shim-signed'
-pkgver='15.6+fedora+2'
+pkgver='15.7+ubuntu+1.56'
 pkgrel='1'
-pkgdesc='Initial UEFI bootloader that handles chaining to a trusted full bootloader under secure boot environments (prebuilt X64 and IA32 EFI binaries from Fedora)'
-url='https://koji.fedoraproject.org/koji/packageinfo?packageID=14502'
+pkgdesc='Initial UEFI bootloader that handles chaining to a trusted full bootloader under secure boot environments (prebuilt x64 binaries from Ubuntu)'
+url='https://packages.ubuntu.com/noble/shim-signed'
 arch=('any')
 license=('BSD')
 options=('!strip')
 install="${pkgname}.install"
-source=("https://kojipkgs.fedoraproject.org/packages/shim/${pkgver//+fedora+/\/}/x86_64/shim-"{x64,ia32}"-${pkgver//+fedora+/-}.x86_64.rpm")
-sha512sums=('971978bddee95a6a134ef05c4d88cf5df41926e631de863b74ef772307f3e106c82c8f6889c18280d47187986abd774d8671c5be4b85b1b0bb3d1858b65d02cf'
-            '045325802474f53c6e86eff1166f1a966268c9ad706fac4c08966f211dbc32fba21ed3a07c46445ec579ac1e2819a1313ff54d6169737806954962945c61bdc2')
+source=("http://archive.ubuntu.com/ubuntu/pool/main/s/shim-signed/shim-signed_${pkgver##*+ubuntu+}+${pkgver%%+ubuntu*}-0ubuntu1_amd64.deb")
+sha256sums=('b2d84b300e68ac2139afee3f9a609857ef80f12eed9218087ced4b31ecb7fd76')
+sha512sums=('43ee11ec0ed04f224fb7452b2baaca45882a719063879f423c4118b6b99e99fd3fb20fa1a7de02af7b885f4d5c5e86e9868fb41557e74c52fbf04e3988199bd6')
+
+prepare() {
+	cd "$srcdir"
+	bsdtar -xf data.tar.xz
+}
+
 package() {
-	install -D -m0644 -t "${pkgdir}/usr/share/${pkgname}/" "${srcdir}/boot/efi/EFI/fedora/shimx64.efi"
-	install -D -m0644 -t "${pkgdir}/usr/share/${pkgname}/" "${srcdir}/boot/efi/EFI/fedora/mmx64.efi"
-	install -D -m0644 -t "${pkgdir}/usr/share/${pkgname}/" "${srcdir}/boot/efi/EFI/BOOT/fbx64.efi"
-	install -D -m0644 -t "${pkgdir}/usr/share/${pkgname}/" "${srcdir}/boot/efi/EFI/fedora/shimia32.efi"
-	install -D -m0644 -t "${pkgdir}/usr/share/${pkgname}/" "${srcdir}/boot/efi/EFI/fedora/mmia32.efi"
-	install -D -m0644 -t "${pkgdir}/usr/share/${pkgname}/" "${srcdir}/boot/efi/EFI/BOOT/fbia32.efi"
+	install -Dm0644 "${srcdir}/usr/lib/shim/shimx64.efi.signed.latest" "${pkgdir}/usr/share/${pkgname}/shimx64.efi"
+	install -Dm0644 "${srcdir}/usr/lib/shim/"{mm,fb}x64.efi "${pkgdir}/usr/share/${pkgname}/"
+	install -Dm0644 "${srcdir}/usr/share/doc/shim-signed/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
