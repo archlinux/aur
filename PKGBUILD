@@ -19,7 +19,7 @@ fi
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=1.7.5288.r0.g476d15f0f
+pkgver=1.7.5299.r0.g20c3178df
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -93,12 +93,14 @@ _source_pcsx2() {
     'google.googletest'::'git+https://github.com/google/googletest.git'
     'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'
     'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
+    'lz4'::'git+https://github.com/lz4/lz4.git'
     'microsoft.wil'::'git+https://github.com/microsoft/wil.git'
     'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
     'tukaani-project.xz'::'git+https://github.com/tukaani-project/xz.git'
     'webmproject.libwebp'::'git+https://github.com/webmproject/libwebp.git'
   )
   sha256sums+=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -120,6 +122,7 @@ _source_pcsx2() {
       ['google.googletest']='3rdparty/gtest'
       ['khronosgroup.glslang']='3rdparty/glslang/glslang'
       ['khronosgroup.vulkan-headers']='3rdparty/vulkan-headers'
+      ['lz4']='3rdparty/lz4/lz4'
       ['microsoft.wil']='3rdparty/wil'
       ['retroachievements.rcheevos']='3rdparty/rcheevos/rcheevos'
       ['tukaani-project.xz']='3rdparty/xz/xz'
