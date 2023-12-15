@@ -4,7 +4,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=semodule-utils
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc="SELinux module tools"
 arch=('i686' 'x86_64' 'aarch64')
@@ -15,10 +15,10 @@ depends=('libsepol>=2.7')
 conflicts=('policycoreutils<2.7')
 validpgpkeys=(
   '63191CE94183098689CAB8DB7EF137EC935B0EAF'  # Jason Zaman <perfinion@gentoo.org>
-  'E853C1848B0185CF42864DF363A8AD4B982C4373'  # Petr Lautrbach <plautrba@redhat.com>
+  'B8682847764DF60DF52D992CBC3905F235179CF1'  # Petr Lautrbach <plautrba@redhat.com>
 )
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('c9a550a737051ebaf2c102f665c7ec2f85e7232870980aa0067998459b414283'
+sha256sums=('eedb88f2b2124e538f2d614be063c0d9ac3eacc0c51a4da44500ca1ed1ba16f4'
             'SKIP')
 
 build() {
