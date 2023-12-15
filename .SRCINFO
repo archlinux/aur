@@ -25,6 +25,7 @@ pkgbase = koi
 	depends = hicolor-icon-theme
 	optdepends = desktop-file-utils: Command line utilities for working with desktop entries
 	optdepends = xsettingsd: Apply settings to GTK applications on the fly
+	conflicts = koi-git
 	source = Koi-.tar.gz::https://github.com/baduhai/Koi/archive/refs/tags/0.2.4.tar.gz
 	sha256sums = SKIP
 
