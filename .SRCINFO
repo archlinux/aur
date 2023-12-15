@@ -1,0 +1,29 @@
+pkgbase = protobuf-21
+	pkgdesc = Protocol Buffers (legacy)
+	pkgver = 21.12
+	pkgrel = 1
+	url = https://developers.google.com/protocol-buffers/
+	arch = aarch64
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = abseil-cpp11
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	source = https://github.com/protocolbuffers/protobuf/archive/v21.12/protobuf-21.12.tar.gz
+	source = python3.11.patch::https://github.com/protocolbuffers/protobuf/commit/da973aff.patch
+	source = fix-abi.patch::https://github.com/protocolbuffers/protobuf/commit/101b6199.patch
+	sha256sums = 22fdaf641b31655d4b2297f9981fa5203b2866f8332d3c6333f6b0107bb320de
+	sha256sums = 15ac9215cbbe1648dd92a0c4fc9ac3088d815bc5d86b8b1989cdc402a5f78ec5
+	sha256sums = 96c4f97f662589d5daa0857ad47f740853cf273f817de21612383d76e4243b44
+
+pkgname = protobuf-21
+	provides = protobuf=21.12
+	provides = libprotoc.so
+	provides = libprotobuf.so
+	provides = libprotobuf-lite.so
