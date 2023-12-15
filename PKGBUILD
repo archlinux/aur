@@ -4,7 +4,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=selinux-gui
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc="SELinux GUI tools"
 groups=('selinux')
@@ -15,10 +15,10 @@ depends=('python-gobject' 'hicolor-icon-theme' 'selinux-python' 'gtk3')
 conflicts=('policycoreutils<2.7')
 validpgpkeys=(
   '63191CE94183098689CAB8DB7EF137EC935B0EAF'  # Jason Zaman <perfinion@gentoo.org>
-  'E853C1848B0185CF42864DF363A8AD4B982C4373'  # Petr Lautrbach <plautrba@redhat.com>
+  'B8682847764DF60DF52D992CBC3905F235179CF1'  # Petr Lautrbach <plautrba@redhat.com>
 )
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('b90be664a7d1b20e5bde347c36bcf62693264b9b6e9e1ee2abc14159339434c8'
+sha256sums=('7625e960586214338a5ff273a0c032b042c02bcea47a3f2aed307d46b8de9d71'
             'SKIP')
 
 build() {
