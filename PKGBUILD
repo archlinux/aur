@@ -16,7 +16,7 @@ makedepends=('glibc' 'qt5-base' 'qt5-tools' 'qt5-svg' 'cmake' 'extra-cmake-modul
 optdepends=('desktop-file-utils: Command line utilities for working with desktop entries'
             'xsettingsd: Apply settings to GTK applications on the fly')
 conflicts=('koi-git')
-source=("${_pkgname}-${version}.tar.gz::https://github.com/baduhai/Koi/archive/refs/tags/${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/baduhai/Koi/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
