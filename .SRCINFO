@@ -1,4 +1,4 @@
-pkgbase = mondrian-kde-git
+pkgbase = plasma5-themes-mondrian-git
 	pkgdesc = Plasma themes based on Piet Mondrian's paintings.
 	pkgver = r32.2450232
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = mondrian-kde-git
 	source = git+https://www.opencode.net/ju1464/Mondrian.git
 	sha256sums = SKIP
 
-pkgname = mondrian-kde-git
+pkgname = plasma5-themes-mondrian-git
 
