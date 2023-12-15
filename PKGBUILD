@@ -2,8 +2,8 @@
 
 pkgbase=bcu-git
 pkgname=bcu-git
-pkgver=1.2.1.r0.g1c79dcf
-pkgrel=1
+pkgver=1.1.75.r0.ge3f9a83
+pkgrel=2
 epoch=
 pkgdesc="bcu (Board Control Utilities)"
 arch=('x86_64' 'aarch64')
@@ -13,13 +13,14 @@ groups=()
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(bzip2
-        zlib
-        confuse
-        curl
-        libftdi
-        libusb
-        libzip
-        openssl)
+    zlib
+    confuse
+    curl
+    libftdi
+    libyaml
+    libusb
+    libzip
+    openssl)
 makedepends=('cmake' 'git' 'ninja')
 checkdepends=()
 optdepends=("mfgtools-git: uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools.")

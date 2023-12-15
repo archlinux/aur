@@ -1,7 +1,7 @@
 pkgbase = bcu-git
 	pkgdesc = bcu (Board Control Utilities)
-	pkgver = 1.2.1.r0.g1c79dcf
-	pkgrel = 1
+	pkgver = 1.1.75.r0.ge3f9a83
+	pkgrel = 2
 	url = https://github.com/nxp-imx/bcu
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = bcu-git
 	depends = confuse
 	depends = curl
 	depends = libftdi
+	depends = libyaml
 	depends = libusb
 	depends = libzip
 	depends = openssl
