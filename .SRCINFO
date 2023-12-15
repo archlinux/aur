@@ -1,0 +1,9 @@
+pkgbase = mkfh
+	pkgdesc = Make File Hierarchy
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/LabRicecat/mkfh
+	arch = any
+	license = MIT
+
+pkgname = mkfh
