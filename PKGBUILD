@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/vemonet/EmojiMart"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk')
-makedepends=('cargo' 'setconf' 'yarn')
+makedepends=('cargo' 'yarn')
 optdepends=('xdotool: automatically paste to your currently focused app (X11)'
             'ydotool: automatically paste to your currently focused app (Wayland)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -22,8 +22,8 @@ prepare() {
   yarn install
 
   # Desktop file
-  setconf resources/EmojiMart.desktop Exec "$pkgname"
-  setconf resources/EmojiMart.desktop Icon "$pkgname"
+  desktop-file-edit --set-key=Exec --set-value="$pkgname" --set-icon="$pkgname" \
+    resources/EmojiMart.desktop
 
   cd src-tauri
   cargo fetch --target "$CARCH-unknown-linux-gnu"

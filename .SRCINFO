@@ -6,7 +6,6 @@ pkgbase = emojimart
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	makedepends = setconf
 	makedepends = yarn
 	depends = gtk3
 	depends = webkit2gtk
