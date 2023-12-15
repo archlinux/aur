@@ -6,7 +6,7 @@ pkgbase = python-hyperspy-gui-ipywidgets
 	arch = any
 	license = GPLv3
 	makedepends = python-setuptools
-	depends = python-hyperspy>=2.0
+	depends = python-hyperspy>=2.0rc0
 	depends = python-ipywidgets>=7.0
 	depends = python-link-traits
 	provides = hyperspy-gui-ipywidgets

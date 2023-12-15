@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/hyperspy/hyperspy_gui_ipywidgets"
 license=('GPLv3')
 
-depends=('python-hyperspy>=2.0'
+depends=('python-hyperspy>=2.0rc0'
          'python-ipywidgets>=7.0'
          'python-link-traits'
          )
