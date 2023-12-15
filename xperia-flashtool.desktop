@@ -2,7 +2,7 @@
 Type=Application
 Version=1.0
 Name=Xperia Flashtool
-GenericName=Flashing Utility for Phones
+GenericName=Flashing Utility for Android Phones
 Comment=A S1 protocol flashing software for Sony Xperia phones
 Icon=/usr/share/icons/xperia-flashtool.png
 Exec=/usr/bin/xperia-flashtool
