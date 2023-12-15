@@ -8,7 +8,7 @@ pkgbase = ptrack
 	depends = python3
 	source = https://software.concise.cc/x86_64/ptrack-2.0.1-1-x86_64.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 373d498d176d839127689c98701bcb27
-	sha512sums = 42fbbf4ae541b2a21a4090d0af1a9f8d542323688a03760e4b3745e6f7364260f176a259b60ee98a1d5c7493a7fb89a5ba9385a11bc7b6eec2fe43d89c6ba5b5
+	md5sums = 27717a472ac6197e0a703502fed5a3ff
+	sha512sums = 676207116d32027e46f964323411a3f7a2558e149fd9bb1ecbe02fbd576701f524e1f9f8b56887db1ee09357a67c757e87fb59917767335918c73dea202b3099
 
 pkgname = ptrack
