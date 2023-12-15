@@ -8,7 +8,7 @@
 
 pkgver=25.9.4
 _chromiumver=114.0.5735.289
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
@@ -60,19 +60,23 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         jinja-python-3.10.patch
         random-fixes-for-gcc13.patch
         std-vector-non-const.patch
-        use-system-libraries-in-node.patch)
+        use-system-libraries-in-node.patch
+        libxml2-2.12.patch
+        icu-74.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
+            '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+            '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
+            'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             'b0ac3422a6ab04859b40d4d7c0fd5f703c893c9ec145c9894c468fbc0a4d457c'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
-            'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
-            'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
+            'ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0'
             '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c'
-            '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
-            '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            'ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0')
+            'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
+            'bfae9e773edfd0ddbc617777fdd4c0609cba2b048be7afe40f97768e4eb6117e'
+            '547e092f6a20ebd15e486b31111145bc94b8709ec230da89c591963001378845')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -183,6 +187,12 @@ EOF
   patch -Np1 -i "${srcdir}/jinja-python-3.10.patch" -d "third_party/electron_node/tools/inspector_protocol/jinja2"
   patch -Np1 -i "${srcdir}/use-system-libraries-in-node.patch"
   patch -Np1 -i "${srcdir}/default_app-icon.patch"  # Icon from .desktop file
+
+  # Fix build with libxml2 2.12
+  patch -Np1 -i ../libxml2-2.12.patch
+
+  # Fix build with ICU 74
+  patch -Np1 -i ../icu-74.patch
 
   # Allow building against system libraries in official builds
   echo "Patching Chromium for using system libraries..."
