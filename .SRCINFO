@@ -1,7 +1,7 @@
 pkgbase = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD
@@ -48,7 +48,7 @@ pkgbase = python-pytorch
 	depends = python-filelock
 	options = !lto
 	options = !debug
-	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.1.1
+	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.1.2
 	source = python-pytorch-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git
 	source = python-pytorch-FP16::git+https://github.com/Maratyszcza/FP16.git
 	source = python-pytorch-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
@@ -160,7 +160,7 @@ pkgname = python-pytorch
 
 pkgname = python-pytorch-opt
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with AVX2 CPU optimizations)
-	provides = python-pytorch=2.1.1
+	provides = python-pytorch=2.1.2
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-cuda
@@ -191,7 +191,7 @@ pkgname = python-pytorch-cuda
 	depends = cudnn
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.1.1
+	provides = python-pytorch=2.1.2
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-cuda
@@ -222,8 +222,8 @@ pkgname = python-pytorch-opt-cuda
 	depends = cudnn
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.1.1
-	provides = python-pytorch-cuda=2.1.1
+	provides = python-pytorch=2.1.2
+	provides = python-pytorch-cuda=2.1.2
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-rocm
@@ -254,7 +254,7 @@ pkgname = python-pytorch-rocm
 	depends = miopen
 	depends = magma-hip
 	depends = onednn
-	provides = python-pytorch=2.1.1
+	provides = python-pytorch=2.1.2
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-rocm
@@ -285,6 +285,6 @@ pkgname = python-pytorch-opt-rocm
 	depends = miopen
 	depends = magma-hip
 	depends = onednn
-	provides = python-pytorch=2.1.1
-	provides = python-pytorch-rocm=2.1.1
+	provides = python-pytorch=2.1.2
+	provides = python-pytorch-rocm=2.1.2
 	conflicts = python-pytorch
