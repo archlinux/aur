@@ -1,7 +1,7 @@
 pkgbase = r-cowplot
 	pkgdesc = Streamlined Plot Theme and Plot Annotations for 'ggplot2'
-	pkgver = 1.1.1
-	pkgrel = 7
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=cowplot
 	arch = any
 	license = GPL
@@ -27,7 +27,7 @@ pkgbase = r-cowplot
 	optdepends = r-tidyr
 	optdepends = r-vdiffr
 	optdepends = r-venndiagram
-	source = https://cran.r-project.org/src/contrib/cowplot_1.1.1.tar.gz
-	sha256sums = c7dce625b456dffc59ba100c816e16226048d12fdd29a7335dc1f6f6e12eed48
+	source = https://cran.r-project.org/src/contrib/cowplot_1.1.2.tar.gz
+	sha256sums = c6915d091476d43303587d846d96348b7ac48b6c3f1e84bf092a7dbcf278fade
 
 pkgname = r-cowplot
