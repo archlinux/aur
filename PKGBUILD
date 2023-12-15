@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=lazycc
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A git hook for writing conventional commits for lazy people'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("https://gitlab.com/ogarcia/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-b2sums=('2ed7212be18b55f0d658007533a4a5396edad0060cdef28b4826f11620811a16ac92e897a41ff923ac809912298b66d0c8eb397dc6dc0f2fef402ec50d68524c')
+b2sums=('82b748182d1cce158be90425ac1e62d14b8dd987049bedd69ba77ad85346cec58ff6ef39e30f503a08b429ebfb5e8b4bfe51e543b834f6f7452b9319b0b75f02')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
