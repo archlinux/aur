@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=AHMassBank
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="MassBank Annotation Resources for AnnotationHub"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(Artistic2.0)
 depends=(
   r-annotationhubdata
@@ -20,12 +20,12 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b9ddc7dff0cabd4b170bc750cc3c47d3')
-sha256sums=('59b7f729619d0570a882cc03794a469fdd72ef25d2519bd4ad65483e8f9fc61a')
+md5sums=('71a167eaf9e590b5ec3574dff9658df6')
+b2sums=('f89301735828663975bd9031ed3409ff421878ee51431b91c46588386d801d6c31a3524ac8d96d80e884f166962e00a2dbbf0ce948793f4cface18384873f39a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {

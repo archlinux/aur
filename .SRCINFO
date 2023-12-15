@@ -1,6 +1,6 @@
 pkgbase = r-ahmassbank
 	pkgdesc = MassBank Annotation Resources for AnnotationHub
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AHMassBank
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-ahmassbank
 	optdepends = r-compounddb
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AHMassBank_1.2.0.tar.gz
-	md5sums = b9ddc7dff0cabd4b170bc750cc3c47d3
-	sha256sums = 59b7f729619d0570a882cc03794a469fdd72ef25d2519bd4ad65483e8f9fc61a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AHMassBank_1.2.1.tar.gz
+	md5sums = 71a167eaf9e590b5ec3574dff9658df6
+	b2sums = f89301735828663975bd9031ed3409ff421878ee51431b91c46588386d801d6c31a3524ac8d96d80e884f166962e00a2dbbf0ce948793f4cface18384873f39a
 
 pkgname = r-ahmassbank
