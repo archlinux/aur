@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=firmware-manager-git
 _app_id=com.system76.FirmwareManager
-pkgver=0.1.5.r3.gf3ead34
-pkgrel=2
+pkgver=0.1.5.r7.g27633c6
+pkgrel=1
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL3')
 depends=('dbus' 'gtk3' 'libgudev' 'openssl' 'polkit')
-makedepends=('cargo' 'git' 'setconf')
+makedepends=('cargo' 'git')
 optdepends=('fwupd: Generic firmware updates'
             'system76-firmware-daemon: System76 firmware updates')
 conflicts=('libfirmware-manager')
@@ -49,6 +49,7 @@ package() {
 
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 
-  setconf "$pkgdir/usr/share/applications/${_app_id}.desktop" Exec "${pkgname%-git}"
+  desktop-file-edit --set-key=Exec --set-value="${pkgname%-git}" \
+    "$pkgdir/usr/share/applications/${_app_id}.desktop"
 }
 
