@@ -14,11 +14,11 @@ provides=(zivid-telicam-sdk)
 
 groups=(zivid-all)
 
-source=(https://downloads.zivid.com/sdk/releases/2.10.0+8ce7dae3-2/u20/zivid-telicam-driver_3.0.1.1-3_amd64.deb)
-sha256sums=(18eb7ce024f9ac0a2ca99d07e17adaad8c1837c9ca0ee7f6175637cd432bb26a)
+source=(https://downloads.zivid.com/sdk/releases/2.11.0+95829246-1/u20/zivid-telicam-driver_3.0.1.1-3_amd64.deb)
+sha256sums=(3104e26bf9bb8787cdffb8935d044e4acef7a034fb66bb75f75811bf3bfa44f4)
 
 options=(!strip)
 
 package() {
-    bsdtar -xf data.tar.*z -C "${pkgdir}"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
 }
