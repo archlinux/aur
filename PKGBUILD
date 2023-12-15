@@ -1,11 +1,11 @@
 # Maintainer: LabRicecat <labricecat@duck.com>
-pkgname='mkfh'
+pkgname='mkfh-git'
 pkgver='1.0'
 pkgrel=1
 epoch=
 pkgdesc="Make File Hierarchy"
 arch=('any')
-url="https://codeberg.org/LabRicecat/$pkgname"
+url="https://codeberg.org/LabRicecat/mkfh"
 license=('MIT')
 groups=()
 depends=()
@@ -25,15 +25,15 @@ md5sums=()
 validpgpkeys=()
 
 prepare() {
-	git clone "https://codeberg.org/LabRicecat/$pkgname.git"
+	git clone "https://codeberg.org/LabRicecat/mkfh.git"
 }
 
 build() {
-	cd "$pkgname"
+	cd "mkfh"
     make
 }
 
 package() {
-	cd "$pkgname"
+	cd "mkfh"
 	sudo make install
 }

@@ -1,4 +1,4 @@
-pkgbase = mkfh
+pkgbase = mkfh-git
 	pkgdesc = Make File Hierarchy
 	pkgver = 1.0
 	pkgrel = 1
@@ -6,4 +6,4 @@ pkgbase = mkfh
 	arch = any
 	license = MIT
 
-pkgname = mkfh
+pkgname = mkfh-git
