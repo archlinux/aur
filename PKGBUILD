@@ -11,7 +11,7 @@ makedepends=('cargo' 'scdoc')
 provides=("$pkgname")
 conflicts=('kambi-git')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('af7c4ed4dd4e1ffac5f5d44a01e8505ba4cfc67026bbb785b4791c6aedc83ddc')
+sha256sums=('b551db3cb4ef5a30969b683e96252929329d421386b7412ac4fbfb4202f29f1b')
 
 prepare() {
   cd "$srcdir/$pkgname-v$pkgver"
