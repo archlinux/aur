@@ -7,8 +7,7 @@ url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
 depends=("curl" "xmlstarlet" "python-unidecode")
-optdepends=("zenity: popups if run in GUI mode"
-            "wmctrl: required if zenity installed")
+optdepends=("zenity: popups if run in GUI mode")
 backup=("etc/$pkgname.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 install=install.sh

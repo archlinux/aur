@@ -10,7 +10,6 @@ pkgbase = arch-upgrade
 	depends = xmlstarlet
 	depends = python-unidecode
 	optdepends = zenity: popups if run in GUI mode
-	optdepends = wmctrl: required if zenity installed
 	backup = etc/arch-upgrade.conf
 	source = arch-upgrade-1.22.tar.gz::https://github.com/bulletmark/arch-upgrade/archive/1.22.tar.gz
 	md5sums = cd622667bf86028833e33e9b44163c6a
