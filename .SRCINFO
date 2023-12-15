@@ -1,0 +1,22 @@
+pkgbase = gl2ps-git
+	pkgdesc = OpenGL to PostScript printing library
+	pkgver = 1.4.0.r51.g0fea874
+	pkgrel = 1
+	url = https://www.geuz.org/gl2ps
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = freeglut
+	makedepends = glu
+	makedepends = texlive-latexrecommended
+	depends = libglvnd
+	depends = libpng
+	provides = gl2ps
+	conflicts = gl2ps
+	replaces = gl2ps-svn
+	source = git+https://gitlab.onelab.info/gl2ps/gl2ps.git
+	sha256sums = SKIP
+
+pkgname = gl2ps-git
