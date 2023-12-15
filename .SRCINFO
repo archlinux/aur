@@ -1,7 +1,7 @@
 pkgbase = r-retrofit
-	pkgdesc = RETROFIT: Reference-free deconvolution of cell mixtures in spatial transcriptomics
+	pkgdesc = Reference-free deconvolution of cell mixtures in spatial transcriptomics
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/retrofit
 	arch = x86_64
 	license = GPL3
@@ -22,6 +22,6 @@ pkgbase = r-retrofit
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/retrofit_1.2.0.tar.gz
 	md5sums = 2b804a752a293f14495e94adb39df466
-	sha256sums = ad2208835281053a2a9cdeeb9b19ab76ce27f86320a74bc65ebbfdd5c1915967
+	b2sums = 1ee8008e567c755d0f173ae646ddd3cbae27ee1cb71b76c98ba59bb34908b383e1a51b4379e37c16e6fde107af4def387bcca7c1e75939e8aa95d3b8f3619a9f
 
 pkgname = r-retrofit

@@ -4,10 +4,10 @@ _pkgname=retrofit
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="RETROFIT: Reference-free deconvolution of cell mixtures in spatial transcriptomics"
+pkgrel=3
+pkgdesc="Reference-free deconvolution of cell mixtures in spatial transcriptomics"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL3)
 depends=(
   r-rcpp
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('2b804a752a293f14495e94adb39df466')
-sha256sums=('ad2208835281053a2a9cdeeb9b19ab76ce27f86320a74bc65ebbfdd5c1915967')
+b2sums=('1ee8008e567c755d0f173ae646ddd3cbae27ee1cb71b76c98ba59bb34908b383e1a51b4379e37c16e6fde107af4def387bcca7c1e75939e8aa95d3b8f3619a9f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
