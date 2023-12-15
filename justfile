@@ -39,7 +39,7 @@ install:
     @sudo pacman -U *.pkg.tar.zst --noconfirm
 
 uninstall:
-    @sudo pacman -Rss {{ pkgbase }} --noconfirm
+    @sudo pacman -R {{ pkgbase }} --noconfirm
 
 src-version:
     @cd src/{{ pkgbase }} && git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
