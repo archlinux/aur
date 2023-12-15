@@ -1,5 +1,5 @@
 # Maintainer:  Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
-# Contributor:  DasSkelett <dasskelett@dasskelett.dev>
+# Contributor: DasSkelett <dasskelett@dasskelett.dev>
 # Contributor: Kasei Wang <kasei@kasei.im>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Sébastien Luttringer
@@ -10,7 +10,7 @@ _commit=6c8595b77e66
 pkgbase=nginx-quic-libressl
 pkgname=(nginx-quic-libressl nginx-quic-libressl-src)
 pkgver=1.25.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -90,13 +90,14 @@ build() {
 
   export CXXFLAGS="$CXXFLAGS -fPIC"
   export CFLAGS="$CFLAGS -fPIC"
+  export LDFLAGS="$LDFLAGS"
 
   if [[ $CC == "clang" ]];then
     _cc_opt="-flto"
-    _ld_opt="-flto -fuse-ld=lld"
+    _ld_opt="-flto -fuse-ld=lld $LDFLAGS"
   else
     _cc_opt=""
-    _ld_opt=""
+    _ld_opt="$LDFLAGS"
 
     # Disable some warnings that make Boringssl fail to compile due to a forced -Werror in CMakeLists.txt
     # -Wno-array-bounds: 2022-05-21 for compatiblity with GCC 12.1 (https://bugs.chromium.org/p/boringssl/issues/detail?id=492&sort=-modified)
