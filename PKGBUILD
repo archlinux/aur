@@ -1,3 +1,4 @@
+# Maintainer: nobodyinperson < nobodyinperson at posteo de >
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kbibtex-git
