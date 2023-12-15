@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+_appname=MasterMaster
 _officalname=mailmaster
 pkgname="deepin-wine-${_officalname}"
-pkgver=5.0.5.1010
+pkgver=5.0.7.1008
 _sparkname="com.163.dashi.${_officalname}.spark"
 _sparkver=4.18.1.1006
 pkgrel=1
@@ -25,18 +26,27 @@ optdepends=(
 conflicts=("${_officalname}")
 install="${pkgname}.install"
 source=(
-    "${_sparkname}-${_sparkver}.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkname}/${_sparkname}_${_sparkver}-1_all.deb"
+    "${_officalname}-${_sparkver}.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkname}/${_sparkname}_${_sparkver}-1_all.deb"
     "${_officalname}-${pkgver}.exe::https://res.126.net/dl/client/pcmail/dashi/mail5.exe"
     "LICENSE.html::https://mail.163.com/html/agreement/doc.html"
     "fake_simsun.ttc::https://images.xuthus.cc/images/fake_simsun.ttc"
+    "${pkgname}.install"
     "${pkgname}.sh"
 )
 sha256sums=('65e8ba5f2e958382e38a8cf8b04de466fe329eb563254f5bd176afc8105966ed'
-            '7939a7e5eb58eacde5a47e2d62cf6798bd3d80deb4081eea99dd83b0a0ea178a'
+            'fb749eb9ab041062a146c583a7087cbbe3a58f7c734054658090ce6b01b0bf12'
             '8ec2318da6f512f89dbee747fcbd233f552134da98c204c4ac682400341732fc'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
-            '7690b561f88882d8a2efc3c2031c2ce6aeeb07e08bbe6c15bf340a10c1f6a969')
+            '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
+            'b57f9810e3c62d7ea1f47e878a73eba19c423495daa5008ffc89494f2726681a')
 build() {
+    sed "s|@bottlename@|Deepin-${_appname}|g" -i "${srcdir}/${pkgname}.install"
+    sed -e "s|@bottlename@|Deepin-${_appname}|g" \
+        -e "s|@appver@|${pkgver}|g" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@dirname@|${_appname}|g" \
+        -e "s|@runname@|${_officalname}|g" \
+        -i "${srcdir}/${pkgname}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     mv "${srcdir}/opt/apps/${_sparkname}" "${srcdir}/opt/apps/${pkgname}"
     sed -e "s|Icon=${_sparkname}|Icon=${pkgname}|g" \
