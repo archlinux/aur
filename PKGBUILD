@@ -4,10 +4,10 @@ _pkgname=biodbExpasy
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="biodbExpasy, a library for connecting to Expasy ENZYME database."
+pkgrel=3
+pkgdesc="a library for connecting to Expasy ENZYME database."
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(AGPL3)
 depends=(
   r-biodb
@@ -30,11 +30,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b4c2596f2efc76e3ba7cba00fb3a6177')
-sha256sums=('c1d30717bb6389db733bfe0416600da97b8441acd52bc338eb9ce5387c0c0ef9')
+b2sums=('c289e80fcffd0de564c896434c0f75a8d2ed4ae1153101dee3cf89abba6a640fc2e660da307769a2f7cf9a6190858ff2019acda6b9a08d13c2e944ceb796bfe3')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
