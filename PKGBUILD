@@ -2,13 +2,13 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatialHeatmap
-_pkgver=2.8.1
+_pkgver=2.8.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="spatialHeatmap"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(Artistic2.0)
 depends=(
   r-data.table
@@ -97,12 +97,12 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fbcec5f2045c7b503bd0bd26e0ff0738')
-sha256sums=('0e9aa1f5101ca9402a4b0396d7730f2f7bf890ab5fba2fe67fa936a36fb07e89')
+md5sums=('9bc0c45c674b5271f388f3c2579dacc1')
+b2sums=('2fa9d026a2c54aecf53619e6f14586362bb763db089009bb2c4d56a5c45ecf8c61542906f8a246799bdfff6b63ddeb13e68e6a7e6512ef60a87b70b03c0612e4')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
