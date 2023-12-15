@@ -23,7 +23,6 @@ pkgbase = h2o-git
 	depends = sh
 	depends = glibc
 	depends = gcc-libs
-	depends = libressl
 	provides = h2o
 	provides = libh2o
 	conflicts = h2o

@@ -15,7 +15,7 @@ pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
-depends=('libuv' 'zlib' 'libwslay' 'libcap' 'brotli' 'bcc' 'sh' 'glibc' 'gcc-libs' 'libressl')
+depends=('libuv' 'zlib' 'libwslay' 'libcap' 'brotli' 'bcc' 'sh' 'glibc' 'gcc-libs')
 makedepends=('bison' 'cmake' 'libtool' 'make' 'pkg-config' 'ruby' 'libaegis')
 url="https://github.com/h2o/h2o"
 license=('MIT')
@@ -66,9 +66,6 @@ prepare() {
                 -DWITHOUT_LIBS=off \
                 -DWITH_H2OLOG=on \
                 -DBUILD_SHARED_LIBS=on \
-                -DOPENSSL_ROOT_DIR=/usr/lib/libressl \
-                -DOPENSSL_INCLUDE_DIR=/usr/include/libressl \
-                -DOPENSSL_LIBRARIES=/usr/lib/libressl \
                 -DCMAKE_REQUIRED_FLAGS="-c" \
                 .
 
