@@ -6,7 +6,6 @@ pkgbase = youtube-music-bin
 	install = youtube-music.install
 	arch = x86_64
 	license = MIT
-	makedepends = setconf
 	depends = gtk3
 	depends = libsecret
 	depends = nss

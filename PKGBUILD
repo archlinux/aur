@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
 license=('MIT')
 depends=('gtk3' 'libsecret' 'nss')
-makedepends=('setconf')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
@@ -22,7 +21,8 @@ sha256sums=('0546133ce4cef3a179dc19594fd8e32b7c5552cac01f2dea0ae7189afdbd5d7d'
 package(){
   bsdtar xfv data.tar.xz -C "$pkgdir"
 
-  setconf "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop" Exec "${pkgname%-bin} %U"
+  desktop-file-edit --set-key=Exec --set-value="${pkgname%-bin} %U" \
+    "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
 
   install -Dm755 "${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
 
