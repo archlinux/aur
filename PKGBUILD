@@ -1,5 +1,5 @@
 # Maintainer: dadav <33197631+dadav@users.noreply.github.com>
-pkgname=jsonnet-bundler-ng
+pkgname=jsonnet-bundler-ng-bin
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="Jsonnet package manager."
