@@ -1,0 +1,18 @@
+pkgbase = r-safetensors
+	pkgdesc = Safetensors File Format
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=safetensors
+	arch = any
+	license = MIT
+	depends = r-cli
+	depends = r-jsonlite
+	depends = r-r6
+	depends = r-rlang
+	optdepends = r-testthat
+	optdepends = r-torch
+	source = https://cran.r-project.org/src/contrib/safetensors_0.1.2.tar.gz
+	md5sums = 7fb57eff72a1e44950acb323bb51d14d
+	b2sums = 900f17f1aaea93d482b2b07914bf2ca5c0c7b5e2ec4971b0edbf67ee0d618bf7fcd8edc6a2a27a32a73091ce59e8f96df03fe52b3ffc00b9030c30b3efa405e6
+
+pkgname = r-safetensors
