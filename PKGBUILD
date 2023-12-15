@@ -38,4 +38,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('6e7e03dfe519e4d2311116d3bd8ac5e7')
+md5sums=('52be0758d33354016a8da36901cd23c1')
