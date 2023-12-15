@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.37.60.r0.g7dfb8f78
+pkgver=1.37.66.r0.gf0cb631b
 _electronversion=26
 _nodeversion=18
 pkgrel=1
@@ -53,7 +53,7 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
     sed "s|pre-test|prepare-test|g" -i package.json
-    sed -e "60s|snap|tar.gz|g" -e '57,59d' -i electron-builder.json
+    sed -e "60s|snap|tar.gz|g" -e '58,60d' -i electron-builder.json
     sed '16,19d' -i build/bin/build-linux-deb-tar.js
     rm -rf build/bin/build-linux-rpm-snap.js
     npm install
