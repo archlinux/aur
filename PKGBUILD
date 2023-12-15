@@ -20,11 +20,11 @@ depends=(
   'scrcpy'
 )
 makedepends=(
+  'desktop-file-utils'
   'git'
   'python-build'
   'python-installer'
   'python-poetry-core'
-  'setconf'
 )
 checkdepends=('appstream-glib')
 _commit=332175e50b63d1503c08afc5d839fc3f3fc50aba  # tags/v2023.1.1^0
@@ -41,7 +41,8 @@ prepare() {
   cd "$pkgname"
 
   # Force launching with PySide2
-  setconf "appimage/$pkgname.desktop" Exec "env QT_API=pyside2 $pkgname"
+  desktop-file-edit --set-key=Exec --set-value="env QT_API=pyside2 $pkgname" \
+    "appimage/$pkgname.desktop"
 }
 
 build() {
