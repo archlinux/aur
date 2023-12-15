@@ -1,6 +1,6 @@
 pkgbase = chat-gpt-next-web-bin
 	pkgdesc = A well-designed cross-platform ChatGPT UI (Web / PWA / Linux / Win / MacOS). 一键拥有你自己的跨平台 ChatGPT 应用。
-	pkgver = 2.9.12
+	pkgver = 2.9.13
 	pkgrel = 1
 	url = https://a.nextweb.fun/
 	arch = x86_64
@@ -18,12 +18,12 @@ pkgbase = chat-gpt-next-web-bin
 	depends = glibc
 	depends = pango
 	depends = cairo
-	provides = chat-gpt-next-web-bin-2.9.12
+	provides = chat-gpt-next-web-bin-2.9.13
 	conflicts = chat-gpt-next-web-bin
 	conflicts = chat-gpt-next-web-bin
-	source = chat-gpt-next-web-bin-2.9.12.deb::https://github.com/Yidadaa/ChatGPT-Next-Web/releases/download/v2.9.12/chat-gpt-next-web_2.9.12_amd64.deb
+	source = chat-gpt-next-web-bin-2.9.13.deb::https://github.com/Yidadaa/ChatGPT-Next-Web/releases/download/v2.9.13/chat-gpt-next-web_2.9.13_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/Yidadaa/ChatGPT-Next-Web/main/LICENSE
-	sha256sums = 675fe1773283ccbb0a8ba68c1256542d607e76b317e6302f29ff1e1a23ce6bec
+	sha256sums = 470f0ff1b78374ddc66c0290fbc9b2ff6e53945f0e6aa575d4c2605284822f03
 	sha256sums = c840d06dc375a0003fd2a080b0d6be6afd958a1f5f637bfb00bd0c13ddfd2987
 
 pkgname = chat-gpt-next-web-bin
