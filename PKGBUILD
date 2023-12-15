@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-google-cloud-firestore
-pkgver=2.13.1
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="Google's Firestore Python client library"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(APACHE)
 depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=(https://github.com/googleapis/python-firestore/archive/v${pkgver}.tar.gz)
-sha256sums=('94eed0dda1dfd99046ee7a2d543af8d2759a2c2ebea406607f9f0399843ee573')
+sha256sums=('9228471af3dc6fc8e8c80cf43ab19ef2bb497b848a00d0af276edc31461e564a')
 
 build() {
   cd "python-firestore-$pkgver"

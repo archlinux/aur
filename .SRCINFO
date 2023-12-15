@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-firestore
 	pkgdesc = Google's Firestore Python client library
-	pkgver = 2.13.1
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://github.com/googleapis/python-firestore
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-google-cloud-firestore
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/googleapis/python-firestore/archive/v2.13.1.tar.gz
-	sha256sums = 94eed0dda1dfd99046ee7a2d543af8d2759a2c2ebea406607f9f0399843ee573
+	source = https://github.com/googleapis/python-firestore/archive/v2.14.0.tar.gz
+	sha256sums = 9228471af3dc6fc8e8c80cf43ab19ef2bb497b848a00d0af276edc31461e564a
 
 pkgname = python-google-cloud-firestore
