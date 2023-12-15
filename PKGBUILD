@@ -2,7 +2,7 @@
 # Contributor: Markus Weimar <mail@markusweimar.de>
 _pkgname=ttf-iosevka
 pkgname=${_pkgname}-git
-pkgver=1668963274
+pkgver=1702579105
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=()
 
 prepare () {
   rm -rf Iosevka
-  git clone --depth 1 --branch main 'https://github.com/be5invis/Iosevka'
+  git clone --depth 1 --branch dev 'https://github.com/be5invis/Iosevka'
 }
 
 pkgver () {
@@ -29,12 +29,12 @@ build () {
   cd Iosevka
   npm install
   npm update
-  NO_COLOR=1 npm run build -- ttf::${_pkgname#*-}
+  NO_COLOR=1 npm run build -- ttf::Iosevka
 }
 
 package () {
   install -d "${pkgdir}/usr/share/fonts/TTF"
-  install -m644 Iosevka/dist/*/ttf/*.ttf "${pkgdir}/usr/share/fonts/TTF/"
+  install -m644 Iosevka/dist/*/TTF/*.ttf "${pkgdir}/usr/share/fonts/TTF/"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 Iosevka/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
