@@ -1,3 +1,23 @@
+2023-12-15 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.5.0.10-1:
+    ❗ ASF is now based on .NET 8 platform. While mostly transparent and compatible for end-users, new .NET major version brings a lot of improvements, enhancements, bugfixes and optimizations. It also opens new ASF version cycle, V5.5, due to potential breaking changes (@JustArchi).
+    ❗ ASF no longer uses API keys, previous functionality was rewritten to access tokens instead. This also means that ASF will no longer generate API key on each run, you can revoke existing API keys after update if you'd like to (@JustArchi, #3084).
+    💥 .NET 8 dropped support for some obsolete OSes, check out compatibility wiki section for up-to-date requirements. All currently supported OSes should work without any issues. Naturally, people running generic ASF variant will need to update their SDK/runtime to version 8.0 (@JustArchi).
+    💥 Dropped support for generic-netf platform. Check relevant issue for more details if you're affected (@JustArchi, #3060).
+    💥 Our systemd units got upgraded with latest security enhancements, this requires acceptably recent v247 version or newer, which is the case with all currently supported OSes (@JustArchi).
+    ✨ Side effect of API keys removal brings limited support for trading on limited accounts, in particular they can do everything that Steam allows, for example accepting donations. Previously they had completely restricted trading functionality (@JustArchi).
+    ✨ Enhanced std command in our STD plugin to std [Bots], the command now allows to submit data to SteamDB in one-time mode even with disabled STD config (@JustArchi).
+    ✨ Improved PublicListing announcements logic to decrease amount of traffic and workload, which should be especially visible on bots with huge inventories. This is still a bit experimental at this stage on our side, but seems to work much better (@JustArchi, #3073).
+    ✨ Enhanced 2fainit to produce maFile.NEW file that is fully compatible with SDA for import (@JustArchi).
+    ✨ Added Steam Winter Sale 2023 to SalesBlacklist (@nolddor, #3098).
+    🔧 ASF will now use CurrentCulture as announced Steam client language, which influences e.g. language in e-mails being sent (@JustArchi, #3093).
+    🔧 Fixed relative path in ASF_CRYPTKEY_FILE not working when using custom ASF_PATH (@JustArchi).
+    🔧 Fixed regression introduced while fixing #3051 that sometimes made console input non-operative (@JustArchi, #3075).
+    🔧 Fixed Bosnian language not being recognized out of the box for ASF (@JustArchi).
+    🔧 Fixed potential ASF crash when user spent too much time entering the password (@JustArchi).
+    🖥️ Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    🌐 Updated localization provided by our community (@JustArchi-ArchiBot).
+    🔁 Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2023-11-13 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.13.4-1:
     [!] ASF uses new code for redeeming keys now. While this is mostly transparent for end-users, there is a breaking change in the ASF API RedeemKey() functionality, you may need to recompile your plugins if you're making use of that function. Notable difference is that Steam sends e-mails upon key activations now (@JustArchi #3058).

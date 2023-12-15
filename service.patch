@@ -1,34 +1,17 @@
---- ArchiSteamFarm@.service.org	2022-11-16 16:46:05.036505989 +0100
-+++ ArchiSteamFarm@.service	2022-11-16 16:44:22.570447671 +0100
-@@ -3,7 +3,7 @@
- 
+--- ArchiSteamFarm@.service.org	2023-11-19 13:52:16.626353458 +0100
++++ ArchiSteamFarm@.service	2023-11-19 13:53:50.443707084 +0100
+@@ -4,5 +4,5 @@
  [Service]
  EnvironmentFile=-/etc/asf/%i
 -ExecStart=/home/%i/ArchiSteamFarm/ArchiSteamFarm --no-restart --process-required --service --system-required
 +ExecStart=/usr/bin/dotnet /usr/lib/asf/ArchiSteamFarm.dll --no-restart --process-required --service --system-required
  Restart=on-success
  RestartSec=1s
- SyslogIdentifier=asf-%i
-@@ -27,7 +27,8 @@
- ProtectKernelTunables=yes
+@@ -29,5 +29,6 @@
  ProtectProc=invisible
  ProtectSystem=strict
 -ReadWritePaths=/home/%i/ArchiSteamFarm /tmp
 +ReadWritePaths=%h /tmp
 +StateDirectory=%i
  RemoveIPC=yes
- RestrictAddressFamilies=AF_INET AF_INET6
- RestrictNamespaces=yes
-@@ -39,9 +40,9 @@
- # TODO: Requires systemd v247+ due to https://github.com/systemd/systemd/issues/16666 and https://github.com/JustArchiNET/ArchiSteamFarm/issues/2739
- # Since we don't want to enforce OS upgrade for everybody just yet, it's commented out for now
- # We'll likely enforce it when .NET switches to Debian 11+ requirement
--#SecureBits=noroot-locked
--#SystemCallFilter=@system-service
--#SystemCallFilter=~@privileged
-+SecureBits=noroot-locked
-+SystemCallFilter=@system-service
-+SystemCallFilter=~@privileged
- 
- [Unit]
- After=network.target
+ RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK AF_UNIX
