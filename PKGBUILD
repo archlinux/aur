@@ -4,7 +4,7 @@
 # Contributor: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=stavekontrolden
 pkgver=2.7.273
-pkgrel=1
+pkgrel=2
 pkgdesc="Stavekontrolden Danish dictionaries; for use with nuspell/hunspell, hyphen, libmythes, LibreOffice, and OpenOffice"
 arch=('any')
 url='https://stavekontrolden.dk/'
@@ -13,7 +13,7 @@ optdepends=(
   'hunspell: the spell checking libraries and apps'
   'hyphen: for use of hyphenation rules'
   'libmythes: for use of thesaurus dictionary')
-makedepends=('libarchive')
+makedepends=('libarchive' 'coreutils' 'findutils')
 provides=('libreoffice-extension-da_dk' 'openoffice-extension-da_dk' 'hunspell-da' 'hyphen-da' 'mythes-da')
 conflicts=("${provides[@]}")
 source=("https://stavekontrolden.dk/dictionaries/da_DK/da_DK-$pkgver.oxt")
@@ -65,4 +65,9 @@ package() {
   install -dm755 "${pkgdir}"/usr/share/licenses/$pkgname
   ln -s ../$_link_dir/README_da_DK.txt "${pkgdir}"/usr/share/licenses/$pkgname/README_da_DK.txt
   ln -s ../$_link_dir/HYPH_da_DK_README.txt "${pkgdir}"/usr/share/licenses/$pkgname/HYPH_da_DK_README.txt
+
+  # Remove world writable bits
+  chmod --recursive go-w "${pkgdir}"
+  # Remove executable bits
+  find "${pkgdir}"/ -type f -exec chmod -x {} +
 }

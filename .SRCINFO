@@ -1,13 +1,15 @@
 pkgbase = stavekontrolden
 	pkgdesc = Stavekontrolden Danish dictionaries; for use with nuspell/hunspell, hyphen, libmythes, LibreOffice, and OpenOffice
 	pkgver = 2.7.273
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stavekontrolden.dk/
 	arch = any
 	license = GPL2
 	license = LGPL2.1
 	license = MPL
 	makedepends = libarchive
+	makedepends = coreutils
+	makedepends = findutils
 	optdepends = hunspell: the spell checking libraries and apps
 	optdepends = hyphen: for use of hyphenation rules
 	optdepends = libmythes: for use of thesaurus dictionary
