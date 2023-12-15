@@ -2,7 +2,7 @@
 
 _pkgname=python-bigquery-storage
 pkgname=python-google-cloud-bigquery-storage
-pkgver=2.22.0
+pkgver=2.24.0
 pkgrel=1
 pkgdesc='BigQuery Storage API client library'
 arch=(any)
@@ -35,7 +35,7 @@ optdepends=(
 # )
 changelog=CHANGELOG.md
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=(8f092e36571772e9978d29afaf8be27fdb6d3c1b7adf4162d055539dce15e5dd)
+sha256sums=(5245f27893f4a937fe60e495f9b414b78b339728f659c81b94b755c6fb65a1d6)
 
 build() {
   cd ${_pkgname}-${pkgver}

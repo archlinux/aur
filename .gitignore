@@ -1,5 +1,8 @@
+## Ignore everything
 *
+
+## Except
 !.gitignore
-!.SRCINFO
 !PKGBUILD
+!.SRCINFO
 !/CHANGELOG.md
