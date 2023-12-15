@@ -29,6 +29,7 @@ source=(https://github.com/hyperspy/hyperspy_gui_traitsui/archive/v$pkgver.tar.g
 
 build() {
   cd "$srcdir/$pkginst-$pkgver"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 }
 
