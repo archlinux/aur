@@ -4,10 +4,10 @@ _pkgname=GRaNIE
 _pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="GRaNIE: Reconstruction cell type specific gene regulatory networks including enhancers using chromatin accessibility and RNA-seq data"
+pkgrel=3
+pkgdesc="Reconstruction cell type specific gene regulatory networks including enhancers using chromatin accessibility and RNA-seq data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(Artistic2.0)
 depends=(
   r-annotationhub
@@ -92,11 +92,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d9db703063398ccd263ce6b54def9266')
-sha256sums=('681f6cd397a1861871fedcbc84b69e5cfe86db7bb5493bd69d9eb1e2b43d37ed')
+b2sums=('79192e9cb4153a1ebf23e76daa0c9629bcdf36545108587914bf02e624cdd00033ccc7ec998bcdef229a8a9ea7bab3bc7d9806329350f6712d684429016d08cb')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
