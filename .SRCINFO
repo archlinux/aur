@@ -1,23 +1,20 @@
 pkgbase = yin-yang-git
 	pkgdesc = Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more
-	pkgver = 3.2.4.r11.g0cd2fb2
+	pkgver = 3.3.r9.gde1f3eb
 	pkgrel = 1
 	url = https://github.com/oskarsh/Yin-Yang
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = hicolor-icon-theme
-	depends = pyside6
-	depends = python-psutil
-	depends = python-systemd
-	optdepends = kvantum-qt5: Kvantum theme support
-	provides = yin-yang
+	provides = yin-yang=3.3
 	conflicts = yin-yang
-	source = yin-yang::git+https://github.com/oskarsh/Yin-Yang
+	source = yin-yang::git+https://github.com/oskarsh/Yin-Yang.git
 	sha256sums = SKIP
 
 pkgname = yin-yang-git
 	depends = hicolor-icon-theme
 	depends = pyside6
 	depends = python-psutil
+	depends = python-suntime
 	depends = python-systemd
+	depends = qt6-positioning
