@@ -1,59 +1,62 @@
 pkgbase = python-hyperspy
 	pkgdesc = Hyperspectral data analysis
-	pkgver = 1.7.6
+	pkgver = 2.0rc0
 	pkgrel = 1
 	url = http://hyperspy.org
 	arch = any
 	license = GPL3
-	checkdepends = python-pytest>=3.6
 	checkdepends = python-pytest-mpl
-	checkdepends = python-pytest-xdist
 	checkdepends = python-pytest-rerunfailures
+	checkdepends = python-pytest-xdist
+	checkdepends = python-pytest>=3.6
+	checkdepends = python-setuptools-scm
 	checkdepends = python-pytest-cov
-	checkdepends = python-matplotlib>=3.1
-	checkdepends = python-pooch
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python
-	depends = python-scipy>=1.4.0
-	depends = python-matplotlib>=3.1.3
-	depends = python-numpy>=1.19.0
-	depends = python-traits>=4.5.0
-	depends = python-natsort
-	depends = python-requests
-	depends = python-tqdm>=4.9.0
-	depends = python-sympy
-	depends = python-h5py
-	depends = python-jinja
-	depends = python-packaging
-	depends = python-dateutil>=2.5.0
-	depends = ipython>=8.1.0
+	depends = python-cloudpickle
 	depends = python-dask>2.11.0
-	depends = python-fsspec
-	depends = python-pint>=0.10
-	depends = python-numexpr
-	depends = python-pyaml
-	depends = python-prettytable
 	depends = python-importlib-metadata>=3.6
-	depends = python-toolz
-	depends = python-dill
-	depends = python-ipyparallel
+	depends = python-jinja
+	depends = python-matplotlib>=3.1.3
+	depends = python-natsort
+	depends = python-numpy>=1.19.0
+	depends = python-packaging
+	depends = python-pint>=0.10
+	depends = python-pooch
+	depends = python-prettytable>=2.3
+	depends = python-dateutil>=2.5.0
+	depends = python-pyaml
+	depends = python-requests
+	depends = python-rosettasciio
+	depends = python-scipy>=1.4.0
+	depends = python-sympy
+	depends = python-tqdm>=4.9.0
+	depends = python-traits>=4.5.0
 	depends = python-scikit-image>=0.15
-	depends = python-sparse
-	depends = python-zarr>=2.9.0
-	depends = python-tifffile>=2020.2.16
+	optdepends = python-numba: speed
+	optdepends = python-numexpr: speed
+	optdepends = ipython: ipython
+	optdepends = python-ipyparallel: ipython
 	optdepends = python-scikit-learn>=1.0.1: machine learning features
 	optdepends = python-hyperspy-gui-ipywidgets: GUI components for Jupyter
+	optdepends = python-ipympl: GUI components for Jupyter
 	optdepends = python-hyperspy-gui-traitsui: GUI components for desktop
-	optdepends = python-blosc>=1.5: mrcz file support
-	optdepends = cython: enables acceleration of certain operations (must be installed at package build time)
-	optdepends = python-imagecodecs: speed
 	optdepends = python-matplotlib-scalebar: scalebar in images
+	optdepends = python-numpydoc: build documentation
+	optdepends = python-pydata-sphinx-theme: build documentation
+	optdepends = python-setuptools-scm: build documentation
+	optdepends = python-sphinx-copybutton: build documentation
+	optdepends = python-sphinx-design: build documentation
+	optdepends = python-sphinx-favicon: build documentation
+	optdepends = python-sphinx-gallery: build documentation
 	optdepends = python-sphinx>=1.7: build documentation
-	optdepends = python-sphinx_rtd_theme: build documentation
+	optdepends = python-sphinxcontrib-mermaid: build documentation
+	optdepends = python-sphinxcontrib-towncrier: build documentation
 	provides = hyperspy
 	conflicts = hyperspy
 	replaces = hyperspy
-	source = https://github.com/hyperspy/hyperspy/archive/v1.7.6.tar.gz
-	md5sums = 2bca32efed5e4ac1f8359a9eedca8343
+	source = https://github.com/hyperspy/hyperspy/archive/v2.0rc0.tar.gz
+	md5sums = d1bf21cd1e5c225a3ec5696730aebe11
 
 pkgname = python-hyperspy

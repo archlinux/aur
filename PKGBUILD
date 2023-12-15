@@ -3,7 +3,7 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=1.7.6
+pkgver=2.0rc0
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
@@ -11,59 +11,59 @@ url="http://hyperspy.org"
 license=('GPL3')
 
 depends=('python'
-         'python-scipy>=1.4.0'
-         'python-matplotlib>=3.1.3'
-         'python-numpy>=1.19.0'
-         'python-traits>=4.5.0'
-         'python-natsort'
-         'python-requests'
-         'python-tqdm>=4.9.0'
-         'python-sympy'
-         'python-h5py'
-         'python-jinja'
- 	 'python-packaging'
-         'python-dateutil>=2.5.0'
-	 'ipython>=8.1.0'
+         'python-cloudpickle'
          'python-dask>2.11.0'
-         'python-fsspec'
+         'python-importlib-metadata>=3.6'
+         'python-jinja'
+         'python-matplotlib>=3.1.3'
+         'python-natsort'
+         'python-numpy>=1.19.0'
+         'python-packaging'
          'python-pint>=0.10'
-         'python-numexpr'
+         'python-pooch' 	 
+         'python-prettytable>=2.3'
+         'python-dateutil>=2.5.0'
          'python-pyaml'
-         'python-prettytable'
-	 'python-importlib-metadata>=3.6'
-         'python-toolz'
-         'python-dill'  # AUR
-         'python-ipyparallel'  # AUR
+         'python-requests'
+         'python-rosettasciio'
+         'python-scipy>=1.4.0'
+         'python-sympy'
+         'python-tqdm>=4.9.0'
+         'python-traits>=4.5.0'
          'python-scikit-image>=0.15'  # AUR
-         'python-sparse'  # AUR
-	 'python-zarr>=2.9.0'  # AUR
-         'python-tifffile>=2020.2.16'  # AUR (from scikit-image)
-       # 'python-imageio'  # AUR (from scikit-image)
-       # 'python-pywavelets' # AUR (from scikit-image)
-       # 'python-numba>=0.52'  # AUR (from python-sparse, but currently requires git version)
-       # 'python-llvmlite' # AUR (from python-numba, but currently requires git version)
          )
 
-optdepends=('python-scikit-learn>=1.0.1: machine learning features'
+optdepends=('python-numba: speed'  # AUR
+            'python-numexpr: speed'
+            'ipython: ipython'
+            'python-ipyparallel: ipython' # AUR, 
+            'python-scikit-learn>=1.0.1: machine learning features'
             'python-hyperspy-gui-ipywidgets: GUI components for Jupyter' # AUR
+            'python-ipympl: GUI components for Jupyter'
             'python-hyperspy-gui-traitsui: GUI components for desktop'  # AUR
-	    'python-blosc>=1.5: mrcz file support'
-            'cython: enables acceleration of certain operations (must be installed at package build time)'
-            'python-imagecodecs: speed'
             'python-matplotlib-scalebar: scalebar in images'
+            'python-numpydoc: build documentation'
+            'python-pydata-sphinx-theme: build documentation'
+            'python-setuptools-scm: build documentation'            
+            'python-sphinx-copybutton: build documentation'
+            'python-sphinx-design: build documentation'
+            'python-sphinx-favicon: build documentation'
+            'python-sphinx-gallery: build documentation'
             'python-sphinx>=1.7: build documentation'
-            'python-sphinx_rtd_theme: build documentation'
+            'python-sphinxcontrib-mermaid: build documentation'
+            'python-sphinxcontrib-towncrier: build documentation'
              )
 
-makedepends=('python-setuptools' )
+makedepends=('python-setuptools'
+             'python-setuptools-scm'
+             )
 
-checkdepends=('python-pytest>=3.6'
-              'python-pytest-mpl'
-              'python-pytest-xdist'
+checkdepends=('python-pytest-mpl'
               'python-pytest-rerunfailures'
+              'python-pytest-xdist'
+              'python-pytest>=3.6'
+              'python-setuptools-scm'
               'python-pytest-cov'
-              'python-matplotlib>=3.1'
-	      'python-pooch'
                )
 
 replaces=('hyperspy')
@@ -77,4 +77,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('2bca32efed5e4ac1f8359a9eedca8343')
+md5sums=('d1bf21cd1e5c225a3ec5696730aebe11')
