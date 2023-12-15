@@ -2,8 +2,9 @@
 # Contributor: Pylogmon <pylogmon@outlook.com>
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
-pkgver=2.7.1.r1.gb994752
-_pkgver=2.7.1
+pkgver=2.7.2.r1.gd23a3d6
+_pkgver=2.7.2
+_nodeversion=18
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件 | A cross-platform software for text translation."
 arch=('x86_64')
@@ -24,14 +25,12 @@ depends=(
     'bzip2'
     'hicolor-icon-theme'
     'tessdata'
-    'libxrandr'
     'tesseract'
-    'xdotool'
-    'libayatana-appindicator'
 )
 makedepends=(
-    'nodejs>=18.0.0'
-    'pnpm>=8.5.0'
+    'nvm'
+    'pnpm'
+    'npm'
     'git'
     'gendesk'
     'rust>=1.69.0'
@@ -46,11 +45,20 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
+    _ensure_local_nvm
     gendesk -q -f -n --pkgname "${_pkgname}-translation-git" --categories "Office;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
     cd "${srcdir}/${pkgname%-git}"
-    pnpm config set cache-dir "${srcdir}/.pnpm"
+    pnpm config set store-dir "${srcdir}/.pnpm_store"
+    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
+    export CARGO_HOME="${srcdir}/.cargo"
     sed "s|icon.ico|icon.png|g" -i src-tauri/tauri.linux.conf.json
     pnpm install --force
     pnpm tauri build -b deb
