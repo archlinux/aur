@@ -4,10 +4,10 @@ _pkgname=EpiMix
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="EpiMix: an integrative tool for the population-level analysis of DNA methylation"
+pkgrel=3
+pkgdesc="an integrative tool for the population-level analysis of DNA methylation"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL3)
 depends=(
   r-annotationdbi
@@ -65,11 +65,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d86305c56618b7f327d0068e09ad6558')
-sha256sums=('014364e942b93938904a3ff958f1540d0e52364ad7bbde9a652a97342d6130fb')
+b2sums=('e741fd7c2218a78e91b6fbe38fe347d83972214da5304e32b061af27772b848bf429e3426d48c91eb19ed17e061c0155e20f45edb4971ee96c0730c023cf3234')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
