@@ -3,7 +3,7 @@
 pkgname=python-rosettasciio
 pkgshort=rosettasciio
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Rosetta Scientific Input Output library"
 arch=('any')
 url="http://hyperspy.org/rosettasciio"
@@ -26,7 +26,7 @@ makedepends=('python-setuptools' )
 
 provides=('rsciio')
 
-source=(https://github.com/hyperspy/rosettasciio/archive/v$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/r/rosettasciio/v$pkgver.tar.gz)
 
 package() {
   cd "$srcdir/$pkgshort-$pkgver"
