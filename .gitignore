@@ -1,3 +1,4 @@
+/fix-protobuf-v20.patch
 pkg/
 src/
 *.tar.*

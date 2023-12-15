@@ -4,27 +4,41 @@
 pkgbase=ola
 pkgname=(ola ola-docs)
 pkgver=0.10.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Open Lighting Architecture for controlling entertainment lighting equipment'
 arch=(x86_64 aarch64)
 url='https://www.openlighting.org'
 license=(LGPL2.1 GPL2)
 depends=()
-makedepends=(avahi cppunit doxygen flake8 libftdi-compat liblo libmicrohttpd ncurses protobuf
+makedepends=(avahi cppunit doxygen flake8 libftdi-compat liblo libmicrohttpd ncurses protobuf-21
   python-numpy python-protobuf util-linux-libs)
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/OpenLightingProject/$pkgbase/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d2a80d907f5a0a5169583060bd32aa0fdbb2fdfe18d1194dd922595ab6d447b5')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/OpenLightingProject/$pkgbase/archive/refs/tags/$pkgver.tar.gz"
+        "fix-protobuf-v20.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1875.patch")
+sha256sums=('d2a80d907f5a0a5169583060bd32aa0fdbb2fdfe18d1194dd922595ab6d447b5'
+            '6e57bb39c94981f62da6cd6b5c2744ace8ebe4b7b9fa8ee383800c1e3b8d6742')
+
+prepare() {
+  cd $pkgbase-$pkgver
+  # https://github.com/OpenLightingProject/ola/pull/1875
+  patch -p1 -i ../fix-protobuf-v20.patch
+}
 
 build() {
+  local config_options=(
+    --prefix=/usr
+    --enable-silent-rules
+    --enable-python-libs
+    --enable-rdm-tests
+    --enable-ja-rule
+    --enable-e133
+    --with-protoc=protoc-21
+    #--enable-java-libs
+  )
   cd $pkgbase-$pkgver
   autoreconf -i
-  ./configure --prefix=/usr \
-    --enable-silent-rules \
-    --enable-python-libs \
-    --enable-rdm-tests \
-    --enable-ja-rule \
-    --enable-e133
-    # --enable-java-libs
+  export CXXFLAGS="$CXXFLAGS -I/usr/include/abseil-cpp11 -I/usr/include/protobuf-21"
+  export LDFLAGS="$LDFLAGS -L/usr/lib/protobuf-21"
+  ./configure "${config_options[@]}"
   make
   make doxygen-doc
 }
