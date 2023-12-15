@@ -1,7 +1,7 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=adaptagrams-git
 _pkgname=${pkgname%-git}
-pkgver=r1194.86b46ed
+pkgver=r1249.d00ce593
 pkgrel=1
 pkgdesc="A library for adaptive diagramming applications"
 arch=('i686' 'x86_64')
