@@ -1,6 +1,6 @@
 pkgbase = r-msstatsshiny
 	pkgdesc = MSstats GUI for Statistical Anaylsis of Proteomics Experiments
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSstatsShiny
 	arch = any
@@ -32,8 +32,8 @@ pkgbase = r-msstatsshiny
 	optdepends = r-shinytest2
 	optdepends = r-testthat
 	optdepends = r-tinytest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsShiny_1.4.1.tar.gz
-	md5sums = 4eb74ec920d96afc15079226261224f9
-	sha256sums = 54d19cba1eb7757b4c0add839d4c143704fd54989215e7680b37735b07b3da84
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsShiny_1.4.2.tar.gz
+	md5sums = 2a58cf6ab9674a13b96e66974d6b15a0
+	b2sums = 9edbfb5a0a49d437b7aa4bdce41e54f1881f8e2f9a0bf23106fff13c769c58fc69ce4c280cbe0387cb0f6f5400a347284bbcc454bdb743adf1deda4fdd7ac525
 
 pkgname = r-msstatsshiny
