@@ -87,6 +87,7 @@ pkgbase = arch-gaming-meta
 	optdepends = cups
 	optdepends = samba
 	optdepends = sane
+	optdepends = wine-staging
 	conflicts = cachyos-gaming-meta
 
 pkgname = arch-gaming-meta
