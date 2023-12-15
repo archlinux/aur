@@ -5,7 +5,7 @@
 # Contributor: AlprC <alprcyan@gmail.com>
 
 pkgname=fcitx5-pinyin-moegirl-rime
-pkgver=20231014
+pkgver=20231114
 _reponame=mw2fcitx
 pkgrel=1
 pkgdesc="Fcitx 5 Pinyin Dictionary from moegirl.org wiki for rime"
