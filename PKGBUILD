@@ -6,7 +6,7 @@ pkgrel=1
 epoch=1
 pkgdesc="A BibTeX editor for KDE (latest development version)"
 arch=('x86_64' 'aarch64')
-url='https://userbase.kde.org/KBibTeX'
+url='https://invent.kde.org/office/kbibtex'
 license=('GPL2')
 depends=(gcc-libs
          glibc
@@ -39,7 +39,7 @@ optdepends=('okular: Document preview')
 makedepends=(git
              extra-cmake-modules
              kdoctools5)
-source=("git+https://invent.kde.org/office/kbibtex.git")
+source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
