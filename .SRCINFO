@@ -1,7 +1,7 @@
 pkgbase = nora-bin
 	pkgdesc = An elegant music player built using Electron and React. Inspired by Oto Music for Android by Piyush Mamidwar.
-	pkgver = 2.4.3_stable
-	pkgrel = 2
+	pkgver = 2.5.0_stable
+	pkgrel = 1
 	url = https://github.com/Sandakan/Nora
 	arch = x86_64
 	license = MIT
@@ -10,11 +10,11 @@ pkgbase = nora-bin
 	depends = hicolor-icon-theme
 	depends = openslide
 	conflicts = nora
-	source = nora-2.4.3_stable.deb::https://github.com/Sandakan/Nora/releases/download/v2.4.3-stable/Nora-Setup-2.4.3-stable-linux-amd64.deb
-	source = LICENSE-2.4.3_stable.txt::https://raw.githubusercontent.com/Sandakan/Nora/v2.4.3-stable/LICENSE.txt
+	source = nora-2.5.0_stable.deb::https://github.com/Sandakan/Nora/releases/download/v2.5.0-stable/Nora-Setup-2.5.0-stable-linux-amd64.deb
+	source = LICENSE-2.5.0_stable.txt::https://raw.githubusercontent.com/Sandakan/Nora/v2.5.0-stable/LICENSE.txt
 	source = nora.sh
-	sha256sums = f05f3c73fff422d41f44801a97a1f022e57bffd6f383b900a169721e387df8c5
+	sha256sums = dbbe88f6d1e5f219c546c026bdbbf7d5d8ff7c360f2ec6a6610ec837ea57a25a
 	sha256sums = 7c27f3771d31e4ba1a227b2aec04ff8892512ba80dd0fb9435115a6523e2980e
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d0697bb290e34b7b76075bb84c3bf4f3710072a01023e278145610d2e52b29bd
 
 pkgname = nora-bin

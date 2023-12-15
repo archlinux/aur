@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nora-bin
 _pkgname=Nora
-pkgver=2.4.3_stable
+pkgver=2.5.0_stable
 _electronversion=27
-pkgrel=2
+pkgrel=1
 pkgdesc="An elegant music player built using Electron and React. Inspired by Oto Music for Android by Piyush Mamidwar."
 arch=('x86_64')
 url="https://github.com/Sandakan/Nora"
@@ -22,9 +22,9 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/Sandakan/Nora/v${pkgver//_/-}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f05f3c73fff422d41f44801a97a1f022e57bffd6f383b900a169721e387df8c5'
+sha256sums=('dbbe88f6d1e5f219c546c026bdbbf7d5d8ff7c360f2ec6a6610ec837ea57a25a'
             '7c27f3771d31e4ba1a227b2aec04ff8892512ba80dd0fb9435115a6523e2980e'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd0697bb290e34b7b76075bb84c3bf4f3710072a01023e278145610d2e52b29bd')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -33,7 +33,7 @@ build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     mkdir -p "${srcdir}/app.asar.unpacked/.erb/dll"
-    cp "${srcdir}/app.asar.unpacked/dist/main/"* "${srcdir}/app.asar.unpacked/.erb/dll"
+    cp "${srcdir}/app.asar.unpacked/dist/main/preload.js" "${srcdir}/app.asar.unpacked/.erb/dll"
     cp "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" "${srcdir}/opt/${_pkgname}/resources/assets/icon.png"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
