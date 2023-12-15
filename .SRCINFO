@@ -1,13 +1,14 @@
 pkgbase = r-pamr
 	pkgdesc = Pam: Prediction Analysis for Microarrays
 	pkgver = 1.56.1
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=pamr
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = gcc-fortran
 	depends = r
 	source = https://cran.r-project.org/src/contrib/pamr_1.56.1.tar.gz
-	sha256sums = d0e527f2336ee4beee91eefb2a8f0dfa96413d9b5a5841d6fc7ff821e67c9779
+	md5sums = e7afaadee109e93944e3feb793c3a90d
+	b2sums = ff826e4a4b088c5e919d346a03258d9780da740f2546151f6046eb18c7fe3bc5b2a2719001cb933e4e04a34f28f95827347d4243df97b0cb3762876087475652
 
 pkgname = r-pamr
