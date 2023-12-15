@@ -10,10 +10,10 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux util-linux-libs-selinux)
-_tag='d32d74bf433a419f2a8976530fb03669bde722cd' # git rev-parse v${_tag_name}
-_tag_name=2.39.2
+_tag='bc0e318941a0539be1205ea1ac1dbfa834b7d033' # git rev-parse v${_tag_name}
+_tag_name=2.39.3
 pkgver=${_tag_name/-/}
-pkgrel=2
+pkgrel=1
 pkgdesc='SELinux aware miscellaneous system utilities for Linux'
 url='https://github.com/util-linux/util-linux'
 arch=('x86_64' 'aarch64')
@@ -58,10 +58,6 @@ sha256sums=('SKIP'
             'a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36')
 
 _backports=(
-  # meson: install write executable with group 'tty'
-  '00f115d81146599324c454f6756db6491855f430'
-  # meson: install wall executable with group 'tty'
-  '5f3359c5c9dab9d5791d05a646b9c04c19eeb80e'
 )
 
 _reverts=(

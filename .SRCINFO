@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.39.2
-	pkgrel = 2
+	pkgver = 2.39.3
+	pkgrel = 1
 	url = https://github.com/util-linux/util-linux
 	arch = x86_64
 	arch = aarch64
@@ -26,7 +26,7 @@ pkgbase = util-linux-selinux
 	makedepends = systemd
 	makedepends = libselinux
 	options = strip
-	source = git+https://github.com/util-linux/util-linux#tag=d32d74bf433a419f2a8976530fb03669bde722cd?signed
+	source = git+https://github.com/util-linux/util-linux#tag=bc0e318941a0539be1205ea1ac1dbfa834b7d033?signed
 	source = util-linux-BSD-2-Clause.txt::https://raw.githubusercontent.com/Cyan4973/xxHash/f035303b8a86c1db9be70cbb638678ef6ef4cb2d/LICENSE
 	source = pam-login
 	source = pam-common
@@ -71,8 +71,8 @@ pkgname = util-linux-selinux
 	optdepends = words: default dictionary for look
 	provides = rfkill
 	provides = hardlink
-	provides = util-linux=2.39.2-2
-	provides = selinux-util-linux=2.39.2-2
+	provides = util-linux=2.39.3-1
+	provides = selinux-util-linux=2.39.3-1
 	conflicts = rfkill
 	conflicts = hardlink
 	conflicts = util-linux
@@ -96,7 +96,7 @@ pkgname = util-linux-libs-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = util-linux-libs=2.39.2-2
+	provides = util-linux-libs=2.39.3-1
 	provides = libutil-linux-selinux
 	conflicts = util-linux-libs
 	conflicts = libutil-linux-selinux
