@@ -1,7 +1,7 @@
 pkgbase = r-biodbnci
-	pkgdesc = biodbNci, a library for connecting to biodbNci, a library for connecting to the National Cancer Institute (USA) CACTUS Database
+	pkgdesc = a library for connecting to the National Cancer Institute (USA) CACTUS Database
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://bioconductor.org/packages/biodbNci
 	arch = x86_64
 	license = AGPL3
@@ -21,6 +21,6 @@ pkgbase = r-biodbnci
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodbNci_1.6.0.tar.gz
 	md5sums = 6dcd43d5c282054f4edfef08a2f597cd
-	sha256sums = 5de583b026cc0ecbcf1983a9e8bbb72d7385e04dd2e61781c8dce8d907774db6
+	b2sums = 04800016e1acf8ae14fa5786ac68050cd20dc5e64c5eb1addd29a312ecbe236b93ec5cd1b1c5b651f48382010eaf575ecf271a678835d6fcc7c364451019cad0
 
 pkgname = r-biodbnci

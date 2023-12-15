@@ -4,10 +4,10 @@ _pkgname=biodbNci
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="biodbNci, a library for connecting to biodbNci, a library for connecting to the National Cancer Institute (USA) CACTUS Database"
+pkgrel=4
+pkgdesc="a library for connecting to the National Cancer Institute (USA) CACTUS Database"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(AGPL3)
 depends=(
   r-biodb
@@ -33,11 +33,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('6dcd43d5c282054f4edfef08a2f597cd')
-sha256sums=('5de583b026cc0ecbcf1983a9e8bbb72d7385e04dd2e61781c8dce8d907774db6')
+b2sums=('04800016e1acf8ae14fa5786ac68050cd20dc5e64c5eb1addd29a312ecbe236b93ec5cd1b1c5b651f48382010eaf575ecf271a678835d6fcc7c364451019cad0')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
