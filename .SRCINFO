@@ -1,7 +1,7 @@
 pkgbase = python-rosettasciio
 	pkgdesc = Rosetta Scientific Input Output library
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hyperspy.org/rosettasciio
 	arch = any
 	license = GPL3

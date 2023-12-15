@@ -1,9 +1,9 @@
 # Contributor: Jonas Lähnemann <jonas at pdi-berlin dot de>
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-rosettasciio
-pkgshort=rsciio
+pkgshort=rosettasciio
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Rosetta Scientific Input Output library"
 arch=('any')
 url="http://hyperspy.org/rosettasciio"
