@@ -2,7 +2,7 @@
 
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=("$pkgname" coolero)
 # lto is handled by cargo and can conflict with makepkg settings
 options=(!lto)
 source=("https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('61b6af7b014fc16641490ab7572d7885dea8e0f2cf01de426c745b1a226adaab')
+sha256sums=('83b5a505f534cb76ae2cc3e54ff769eca0034740a1f5ac3a83f37de0677e81a5')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
