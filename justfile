@@ -56,21 +56,21 @@ tag-name:
 prepare: rebuild bump-pkgrel checksum srcinfo
 
 publish: prepare
-    @echo "New version: $(just src-version)"
+    @echo -e "\e[36mNew version: $(just src-version)\e[0m"
     @git add .
-    @echo "Committing and tagging..."
+    @echo -e "\e[36mCommitting and tagging...\e[0m"
     @git commit -m "bump: $(just src-version)"
     @git tag -af $(just tag-name) -m "bump: $(just src-version)"
-    @echo "Pushing to origin..."
+    @echo -e "\e[36mPushing to origin...\e[0m"
     @git push
     @git push --tags --force
-    @echo "Switching to aur master branch..."
+    @echo -e "\e[36mSwitching to aur master branch...\e[0m"
     @git checkout master
-    @echo "Merging main into aur master..."
+    @echo -e "\e[36mMerging main into aur master...\e[0m"
     @git merge main
-    @echo "Pushing to aur..."
+    @echo -e "\e[36mPushing to aur...\e[0m"
     @git push aur master
-    @echo "Switching back to main..."
+    @echo -e "\e[36mSwitching back to main...\e[0m"
     @git checkout main
 
 dcli-bundle-version:
