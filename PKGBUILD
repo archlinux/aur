@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=120.0.6099.71
+pkgver=120.0.6099.109
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -37,15 +37,17 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         drop-flags-unsupported-by-clang16.patch
         libxml2-2.12.patch
+        icu-74.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('604755e5838ef0fd1bff4d6c5023cdda2d42ce982dda2c4be44cce487d3dd8d8'
+sha256sums=('87c00c525ee07c2233b78dbece1496b697f686244a67fac2c71e4a30bd96849b'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2'
             '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
             '1808df5ba4d1e2f9efa07ac6b510bec866fa6d60e44505d82aea3f6072105a71'
+            'ff9ebd86b0010e1c604d47303ab209b1d76c3e888c423166779cefbc22de297f'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8'
@@ -63,10 +65,10 @@ _uc_rel=1
 _uc_ver="$pkgver-$_uc_rel"
 # _uc_ver="119.0.6045.123-$_uc_rel"
 source=(${source[@]}
-        # ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
-        ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip)
+        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
+        # ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip)
 sha256sums=(${sha256sums[@]}
-            '3f86e1bee22facd21b23109d5817c8dc02c563e9dbd0c65503b8fc7462bedb98')
+            '8a54932b0f2098dcd334e79e4f680614f57dc192037bc495d2099e28dbc507c8')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -132,6 +134,9 @@ prepare() {
 
   # Upstream fixes
   patch -Np1 -i ../libxml2-2.12.patch
+
+  # Fix build with ICU 74
+  patch -Np1 -i ../icu-74.patch
 
   # Drop compiler flags that need newer clang
   patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
