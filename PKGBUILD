@@ -1,12 +1,14 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp-pre
-pkgver=v2023.12
+pkgver=v2023.12.pre0
 pkgrel=1
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
 license=(AGPL3)
+
+_pkgver=${pkgver/.pre0/}
 
 makedepends=(makepkg-git-lfs-proto npm)
 depends=(nodejs redis postgresql)
@@ -22,7 +24,7 @@ backup=("etc/iceshrimp/configuration.yml")
 install="iceshrimp.install"
 
 source=(
-  "iceshrimp::git-lfs+https://iceshrimp.dev/iceshrimp/iceshrimp.git#tag=${pkgver/.pre/-pre}"
+  "iceshrimp::git-lfs+https://iceshrimp.dev/iceshrimp/iceshrimp.git#tag=${_pkgver/.pre/-pre}"
   "iceshrimp.service"
   "iceshrimp.sysusers"
   "iceshrimp.tmpfiles"
