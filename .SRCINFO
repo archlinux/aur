@@ -1,6 +1,6 @@
 pkgbase = plank-git
 	pkgdesc = Elegant, simple, clean dock
-	pkgver = 0.11.89.r14.g6ca78b3
+	pkgver = 0.11.89.r16.ga4a775e
 	pkgrel = 1
 	url = https://launchpad.net/plank
 	arch = x86_64
