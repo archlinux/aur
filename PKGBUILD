@@ -26,9 +26,14 @@ provides=('hyperspy-gui-ipywidgets')
 
 source=(https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v$pkgver.tar.gz)
 
+build() {
+  cd "$srcdir/$pkginst-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "$srcdir/$pkginst-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 md5sums=('7bc2df8e1861d52c500129c31d706316')
