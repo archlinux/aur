@@ -1,0 +1,13 @@
+pkgbase = brother-mfcj4320dw-lpr-bin
+	pkgdesc = LPR diver for Brother MFC-J4320DW printer
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcj4320dw_us
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = GPL2
+	source = http://www.brother.com/pub/bsc/linux/packages/mfcj4320dwlpr-3.0.1-1.i386.deb
+	md5sums = 70f4424a65957310a90ff07de3ea6c29
+
+pkgname = brother-mfcj4320dw-lpr-bin
