@@ -1,20 +1,19 @@
 pkgbase = xchat-bin
 	pkgdesc = 使用 React+Vite、MobX 和 Electron 构建的非官方WeChat微信客户端。
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xYx-c/xchat
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = electron27
 	depends = hicolor-icon-theme
 	provides = xchat=1.0.0
 	conflicts = xchat
 	source = xchat-1.0.0.deb::https://github.com/xYx-c/xchat/releases/download/1.0.0/xchat_1.0.0.deb
-	source = LICENSE::https://raw.githubusercontent.com/xYx-c/xchat/1.0.0/LICENSE
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/xYx-c/xchat/1.0.0/LICENSE
 	source = xchat.sh
 	sha256sums = 9667f8e99a0e548b84795ccba05f65ed1d8d74fc2cd84cb20f4ca44df38ee9db
 	sha256sums = 29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355
-	sha256sums = 69681864471ddd45844163219ef7f8379ad21dd491917d8b17825414e453d46a
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
 
 pkgname = xchat-bin
