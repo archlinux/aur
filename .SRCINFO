@@ -9,7 +9,6 @@ pkgbase = firmware-manager
 	license = GPL3
 	makedepends = cargo
 	makedepends = git
-	makedepends = setconf
 	depends = dbus
 	depends = gtk3
 	depends = libgudev

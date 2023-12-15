@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL3')
 depends=('dbus' 'gtk3' 'libgudev' 'openssl' 'polkit')
-makedepends=('cargo' 'git' 'setconf')
+makedepends=('cargo' 'git')
 optdepends=('fwupd: Generic firmware updates'
             'system76-firmware-daemon: System76 firmware updates')
 conflicts=('libfirmware-manager')
@@ -52,6 +52,7 @@ package() {
 
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
-  setconf "$pkgdir/usr/share/applications/${_app_id}.desktop" Exec "$pkgname"
+  desktop-file-edit --set-key=Exec --set-value="$pkgname" \
+    "$pkgdir/usr/share/applications/${_app_id}.desktop"
 }
 
