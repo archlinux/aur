@@ -65,12 +65,31 @@ publish: prepare
     @echo "Switching back to main..."
     @git checkout main
 
-test-local: rebuild
+dcli-bundle-version:
     @./src/{{ pkgbase }}/bundle/dcli-linux --version
+
+dcli-bundle-sync:
+    @./src/{{ pkgbase }}/bundle/dcli-linux sync
+
+test-local: rebuild dcli-bundle-version dcli-bundle-sync
 
 test: prepare install && uninstall
     @dcli --version
 
+
+# Maintainance commands
+
+clean:
+    @git clean -dX -n
+
+clean-force: delete-all
+    @git clean -dX -f
+
+
+#########################################################
+set-remote-master-to-aur-branch:
+    @git branch master --set-upstream-to aur/master
+# One-time command to add the aur remote - no further use
 remote-add-aur:
     @git remote add aur ssh://aur@aur.archlinux.org/{{ pkgbase }}.git || true
 
@@ -78,11 +97,3 @@ remote-add-aur:
 clone-empty-aur:
     @git -c init.defaultbranch=master clone ssh://aur@aur.archlinux.org/{{ pkgbase }}.git
 
-set-remote-master-to-aur-branch:
-    @git branch master --set-upstream-to aur/master
-
-clean:
-    @git clean -dX -n
-
-clean-force: delete-all
-    @git clean -dX -f
