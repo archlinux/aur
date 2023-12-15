@@ -1,5 +1,5 @@
 pkgname=qbittorrent-enhanced-nox-bin
-pkgver=4.5.5.10
+pkgver=4.6.2.10
 pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition)"
@@ -20,9 +20,9 @@ install=
 changelog=
 source=(
 	"$pkgname-$pkgver.zip::https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-$pkgver/qbittorrent-enhanced-nox_x86_64-linux-musl_static.zip"
-	"COPYING::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_5_x/COPYING"
-	"COPYING.GPLv2::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_5_x/COPYING.GPLv2"
-	"COPYING.GPLv3::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_5_x/COPYING.GPLv3"
+	"COPYING::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_6_x/COPYING"
+	"COPYING.GPLv2::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_6_x/COPYING.GPLv2"
+	"COPYING.GPLv3::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_6_x/COPYING.GPLv3"
 	"qbittorrent-nox.service"
 	"qbittorrent-nox@.service"
 	"qbittorrent-nox.sysusers"
@@ -30,7 +30,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-	'413f414c320f0719b6372100d956d2abc292a3f62c253415c4641b5d5f78f841'
+	'0855bf0cd8e47003b7b3dda060e21bb0c3960cc0602cffe11dd556f0b0008b2a'
 	'SKIP'
 	'SKIP'
 	'SKIP'
