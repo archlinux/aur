@@ -1,6 +1,6 @@
 pkgbase = cobib
 	pkgdesc = Console Bibliography
-	pkgver = 4.3.1
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://gitlab.com/cobib/cobib
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = cobib
 	depends = python-linkify-it-py
 	provides = cobib
 	conflicts = cobib
-	source = https://gitlab.com/cobib/cobib/-/archive/v4.3.1/cobib-v4.3.1.tar.gz
-	sha512sums = 143d28b76509b59110d5b9eb67081b9dd048a1bfff52888ff3a1671e5c86cb1e1bf35001933b1ab908325fc0b9e3615c04abe1a3ce1f4adc6ab29aa034597d57
+	source = https://gitlab.com/cobib/cobib/-/archive/v4.4.0/cobib-v4.4.0.tar.gz
+	sha512sums = 82ed81c47e52c3695b3f47c8c9e3f7062a0f9ae41c28d2cc7239a0e610fd873013ffb744eeb7a2f91c4be17b61978630109dbbda094d64dc999d36ad90a0a24e
 
 pkgname = cobib
