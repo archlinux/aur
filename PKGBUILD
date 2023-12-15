@@ -6,10 +6,10 @@ _pkgname=flowCore
 _pkgver=2.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="flowCore: Basic structures for flow cytometry data"
+pkgrel=4
+pkgdesc="Basic structures for flow cytometry data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(Artistic2.0)
 depends=(
   r-biobase
@@ -44,8 +44,8 @@ source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_
         "fix-build.patch")
 md5sums=('3b0696fd3fc45a87531ab3503be00277'
          '219c62c718ad269fd5e832397a354e83')
-sha256sums=('6d21a43022eb6de907fdc025116bccacbf2ee997c5cf7ad96d0f70fa6d605185'
-            '73e075b8ce2f0e9f3dea2e8778c6174586b71fb3c2b64c6ded4e5fb50ccd350c')
+b2sums=('5e59c1efdbb268d47a8fed0b11509925ee86b77eb7d9f016cc82c66659c63eaa23cfcdb1e73f69d5c79771d62adfc1d3c52572edd4a5e69cc7206ea2d5744fa3'
+        '6bc038d5c185faa94b6a85d6f884cdefd3e614c26c4e5240cbb217179385d26eec40b329e14ab6d4d9bae2e60d1b49faedc6fffe9e36f271d33c2db92b10d447')
 
 prepare() {
   # fix build and remove unnecessary import from tests
@@ -53,8 +53,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
