@@ -3,7 +3,7 @@
 # Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 _base=etils
 pkgname=python-${_base}
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Collection of common python utils"
 url="https://github.com/google/${_base}"
@@ -27,7 +27,7 @@ optdepends=('python-numpy: for etils.array_types, etils.ecolab, etils.enp'
   'python-tensorflow: for etils.etree.nest'
 )
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('8e3d1bd60424145fe4aa1edbedce049751f120257006cab8a202620a1c8b9987a6141eed0ee72ebe311bf924aa90528266335634a05772cf7d6f75449576a77c')
+sha512sums=('0dc03099a6a0b3201d2e3f67ad3f349b171411fb54713e2a4fcf783acdc6cb247c377a6526d344166b6961dc233a741410e61ad07200c2a5840199eeff47bf47')
 
 build() {
   cd ${_base}-${pkgver}
