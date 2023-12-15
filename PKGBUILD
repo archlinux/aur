@@ -16,13 +16,13 @@ depends=('plasma-desktop' 'plasma-integration' 'plasma-framework5' 'kcoreaddons5
 makedepends=('git' 'glibc' 'qt5-base' 'qt5-tools' 'qt5-svg' 'cmake' 'extra-cmake-modules')
 optdepends=('xsettingsd: Apply settings to GTK applications on the fly')
 conflicts=('koi')
-source=("${__pkgname}::git+https://github.com/baduhai/Koi.git")
+source=("${__pkgname}-${pkgver}::git+https://github.com/baduhai/Koi.git")
 sha256sums=('SKIP')
 options=('!strip')
 
 
 pkgver() {
-  cd "${srcdir}/${__pkgname}"
+  cd "${srcdir}/${__pkgname}-${pkgver}"
   ( set -o pipefail
     git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g' ||
 
@@ -31,21 +31,21 @@ pkgver() {
 }
 
 build() {
-    mkdir -p "${srcdir}/${__pkgname}/src/build/"
+    mkdir -p "${srcdir}/${__pkgname}-${pkgver}/src/build/"
 
-    cmake -S "${srcdir}/${__pkgname}/src/" \
-          -B "${srcdir}/${__pkgname}/src/build/" \
+    cmake -S "${srcdir}/${__pkgname}-${pkgver}/src/" \
+          -B "${srcdir}/${__pkgname}-${pkgver}/src/build/" \
           -DCMAKE_INSTALL_PREFIX=/usr/
 
-    cd "${srcdir}/${__pkgname}/src/build/"
+    cd "${srcdir}/${__pkgname}-${pkgver}/src/build/"
 
     make all
 }
 
 package() {
-    cd "${srcdir}/${__pkgname}/src/build/"
+    cd "${srcdir}/${__pkgname}-${pkgver}/src/build/"
 
     make DESTDIR="${pkgdir}" install all
 
-    install -Dm644 "${srcdir}/${__pkgname}/src/koi.desktop" -t "${pkgdir}/usr/share/applications/"
+    install -Dm644 "${srcdir}/${__pkgname}-${pkgver}/src/koi.desktop" -t "${pkgdir}/usr/share/applications/"
 }

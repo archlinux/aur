@@ -27,7 +27,7 @@ pkgbase = koi-git
 	optdepends = xsettingsd: Apply settings to GTK applications on the fly
 	conflicts = koi
 	options = !strip
-	source = Koi::git+https://github.com/baduhai/Koi.git
+	source = Koi-r163.eae87d1::git+https://github.com/baduhai/Koi.git
 	sha256sums = SKIP
 
 pkgname = koi-git
