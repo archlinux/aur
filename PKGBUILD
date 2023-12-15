@@ -2,7 +2,7 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=photoqt
-pkgver=4.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('libqpsd-git: PSB/PSD support'
             'poppler-qt6: PDF support')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('3bf5f11f8a1f9c2c00143e0e3f7298f7782ca326bd13a52ae9d1fe5207edbd3a')
+sha256sums=('9e6122a736adb1e970b4147ffdac9a8ea82685a52700c296ec904b29dceeb478')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
