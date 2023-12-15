@@ -1,7 +1,7 @@
 pkgbase = r-micsqtl
-	pkgdesc = MICSQTL (Multi-omic deconvolution, Integration and Cell-type-specific Quantitative Trait Loci)
+	pkgdesc = Multi-omic deconvolution, Integration and Cell-type-specific Quantitative Trait Loci
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MICSQTL
 	arch = any
 	license = GPL3
@@ -25,6 +25,6 @@ pkgbase = r-micsqtl
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/MICSQTL_1.0.0.tar.gz
 	md5sums = ec49e08df014da6955d2b6ab7dc77d3b
-	sha256sums = eff898a4768e67af1bc6b1cb6664cf24675f7ba1acbbb8fddc920507370ce1e0
+	b2sums = 7d7d888e1233711591ce8f57c8f230539b3542a7de78330f0e669f8ffb923f10a264c649fca1e77b9017d4f3f1927d684db4c67a19189a6b2bed64656d56bb44
 
 pkgname = r-micsqtl

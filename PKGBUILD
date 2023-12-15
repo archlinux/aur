@@ -4,10 +4,10 @@ _pkgname=MICSQTL
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="MICSQTL (Multi-omic deconvolution, Integration and Cell-type-specific Quantitative Trait Loci)"
+pkgrel=3
+pkgdesc="Multi-omic deconvolution, Integration and Cell-type-specific Quantitative Trait Loci"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL3)
 depends=(
   r-biocparallel
@@ -35,11 +35,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('ec49e08df014da6955d2b6ab7dc77d3b')
-sha256sums=('eff898a4768e67af1bc6b1cb6664cf24675f7ba1acbbb8fddc920507370ce1e0')
+b2sums=('7d7d888e1233711591ce8f57c8f230539b3542a7de78330f0e669f8ffb923f10a264c649fca1e77b9017d4f3f1927d684db4c67a19189a6b2bed64656d56bb44')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
