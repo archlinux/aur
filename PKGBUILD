@@ -4,10 +4,10 @@ _pkgname=IsoBayes
 _pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="IsoBayes: Single Isoform protein inference Method via Bayesian Analyses"
+pkgrel=3
+pkgdesc="Single Isoform protein inference Method via Bayesian Analyses"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL3)
 depends=(
   r-data.table
@@ -36,11 +36,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d9e1de9f5a1f8279117fde4cc997725d')
-sha256sums=('8b33a8b610bbb746e01055d5358e8cf780ccc2bf058af4309aa6b41f9065968c')
+b2sums=('3e4fe0d17b24c74709e2d86a9c0559e521d3a78a178e5f21348f1bb918addb5743c0601f5723b677b924f70d3751d2bad4ed096a79bc2514bb6a8d9ae67e24cb')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
