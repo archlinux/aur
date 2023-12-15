@@ -4,10 +4,10 @@ _pkgname=tximportData
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="tximportData"
+pkgrel=3
+pkgdesc="provides the output of running various transcript abundance quantifiers on a set of 6 RNA-seq samples from the GEUVADIS project"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL)
 depends=(
   r
@@ -18,11 +18,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('4494d764fc087333e5c04ee7977c85c8')
-sha256sums=('0f8218398e976c5930ecebf45663feba4af8b8f165d47f01f91f4fbade78554f')
+b2sums=('1f50c37b627e97531eb4e703fd63d334f1b3fe80e63743710ac803b3290c48e984d06f6b58fd143ce86caf9522771625639d17b5bc51b73304e7fd37ef059ff3')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
