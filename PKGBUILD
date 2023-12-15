@@ -18,5 +18,5 @@ depends=('alsa-lib' 'alsa-plugins' 'dosbox' 'fontconfig' 'gamemode' 'gamescope' 
          'lib32-libgpg-error' 'lib32-libjpeg-turbo' 'lib32-libldap' 'lib32-libpng' 'lib32-libpulse' 'lib32-libva'
          'lib32-libva-mesa-driver' 'lib32-libxcomposite' 'lib32-libxinerama' 'lib32-libxslt' 'lib32-mangohud' 'lib32-mpg123'
          'lib32-ncurses' 'lib32-ocl-icd' 'lib32-openal' 'lib32-sqlite' 'lib32-v4l-utils' 'lib32-vkd3d' 'lib32-vulkan-icd-loader')
-optdepends=('bottles' 'cups' 'samba' 'sane')
+optdepends=('bottles' 'cups' 'samba' 'sane' 'wine-staging')
 conflicts=('cachyos-gaming-meta')
