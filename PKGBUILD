@@ -8,6 +8,8 @@ arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
 license=(AGPL3)
 
+_pkgver=v2023.12
+
 makedepends=(makepkg-git-lfs-proto npm)
 depends=(nodejs redis postgresql)
 optdepends=(
@@ -22,7 +24,7 @@ backup=("etc/iceshrimp/configuration.yml")
 install="iceshrimp.install"
 
 source=(
-  "iceshrimp::git-lfs+https://iceshrimp.dev/iceshrimp/iceshrimp.git#tag=${pkgver/.pre/-pre}"
+  "iceshrimp::git-lfs+https://iceshrimp.dev/iceshrimp/iceshrimp.git#tag=${_pkgver/.pre/-pre}"
   "iceshrimp.service"
   "iceshrimp.sysusers"
   "iceshrimp.tmpfiles"
