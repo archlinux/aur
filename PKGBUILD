@@ -1,14 +1,14 @@
 # Maintainer: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
 _mainver=5
 pkgname=firebot
-pkgver="${_mainver}.59.1"
+pkgver="${_mainver}.59.2"
 pkgrel=1
 pkgdesc="A powerful all-in-one bot for Twitch streamers"
 arch=('x86_64')
 url="https://github.com/crowbartools/Firebot"
 license=('GPL3')
 source=("${url}/releases/download/v${pkgver}/firebot-v${pkgver}-linux-x64.tar.gz" "firebot.sh")
-sha256sums=('d9b90638015add94768c5fa94cc6cb3677c37e16ca0b6bc8207412c87f08780c'
+sha256sums=('f6082729c5b1b50e43f83834963f7761b0f5245fe23ecfb1373eb99ea1b8075c'
             '7694f96ec45d7b729c01bc9d50a12805a8a040b4e3f8c5fbdccbed57fe10fef6')
 
 prepare() {
