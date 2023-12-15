@@ -5,7 +5,7 @@
 pkgname='koi-git'
 _pkgname='koi'
 __pkgname='Koi'
-pkgver=r163.eae87d1
+pkgver=0.2.4.r0.geae87d1
 pkgrel=1
 pkgdesc="Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ options=('!strip')
 pkgver() {
   cd "${srcdir}/${__pkgname}-${pkgver}"
   ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g' ||
 
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
