@@ -1,9 +1,11 @@
 pkgbase = medifier-git
 	pkgdesc = An open-source alternative to the Edifier Connect app
 	pkgver = 0.2.r5.g91c3edd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wh201906/mEDIFIER
-	arch = any
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
 	license = MIT
 	makedepends = qt5-tools
 	makedepends = git

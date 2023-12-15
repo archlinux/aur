@@ -4,9 +4,11 @@
 _pkgname=mEDIFIER
 pkgname=medifier-git
 pkgver=0.2.r5.g91c3edd
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source alternative to the Edifier Connect app"
-arch=('any')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/wh201906/mEDIFIER"
 license=('MIT')
 provides=(${pkgname%-git})
