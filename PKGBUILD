@@ -4,16 +4,17 @@
 #
 pkgname=python-hyperspy-gui-ipywidgets
 pkginst=hyperspy_gui_ipywidgets
-pkgver=1.5.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="ipywidgets (jupyter) GUI elements for HyperSpy" 
 arch=('any')
 url="https://github.com/hyperspy/hyperspy_gui_ipywidgets"
 license=('GPLv3')
 
-depends=('python-hyperspy>=1.7'
+depends=('python-hyperspy>=2.0'
          'python-ipywidgets>=7.0'
-         'python-link-traits')
+         'python-link-traits'
+         )
 
 #optdepends=()
 
@@ -30,4 +31,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('c9ff58897cd0c1687c93ec7b16995d35')
+md5sums=('7bc2df8e1861d52c500129c31d706316')
