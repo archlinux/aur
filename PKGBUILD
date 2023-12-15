@@ -1,7 +1,7 @@
 # Maintainer: zefr0x < Matrix: "@zer0-x:kde.org" >
 
 pkgname="foxmarks"
-pkgver="2.0.2"
+pkgver="2.0.3"
 pkgrel=1
 pkgdesc="A CLI read-only interface for firefox's bookmarks and history"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("libsqlite3.so")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("4f2224f4789d2536c4989ec32219198a9aa13f9f40ee87da33b178dbdc5941f6947b3baa8c7aea1f0f297ae60eb30ad8c70dce90e10e5316b34eea6504c39edb")
+sha512sums=("755ac8c7677d4cceec28b07bd417cbc8207266e3f950b5a5259a9a39c1c13e664907230d543b27b2904d737cf99ce3941cedd4d202542a61ac4142d1f5301cbb")
 
 prepare() {
     cd "${pkgname}-${pkgver}"
