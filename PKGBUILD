@@ -2,7 +2,7 @@
 _pkgname=kangaroo
 pkgname="${_pkgname}-max-bin"
 pkgver=3.99.2.231201
-pkgrel=1
+pkgrel=2
 pkgdesc="A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly."
 arch=('x86_64')
 url="https://www.datatable.online"
@@ -40,8 +40,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-multiple-${pkgver}-1-${CARCH}.pkg.tar.zst"
 )
-sha256sums=('42b961b15a5568ad29916b41ef6f91cfbc1b628fc3f142928d9c3f4739d55e10'
-            '9b138afe817c542df709df8d28140b737a91c0bcdf58f0d120364dfd4334de45')
+sha256sums=('42b961b15a5568ad29916b41ef6f91cfbc1b628fc3f142928d9c3f4739d55e10')
 package() {
     cp -p -a "${srcdir}/usr" "${pkgdir}"
     mv "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgdir}/usr/share/licenses/${pkgname}"

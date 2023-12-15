@@ -1,7 +1,7 @@
 pkgbase = kangaroo-max-bin
 	pkgdesc = A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly.
 	pkgver = 3.99.2.231201
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.datatable.online
 	arch = x86_64
 	license = APACHE
@@ -33,6 +33,5 @@ pkgbase = kangaroo-max-bin
 	conflicts = kangaroo
 	source = kangaroo-max-3.99.2.231201.pkg.tar.zst::https://github.com/dbkangaroo/kangaroo/releases/download/v3.99.2.231201/kangaroo-multiple-3.99.2.231201-1-x86_64.pkg.tar.zst
 	sha256sums = 42b961b15a5568ad29916b41ef6f91cfbc1b628fc3f142928d9c3f4739d55e10
-	sha256sums = 9b138afe817c542df709df8d28140b737a91c0bcdf58f0d120364dfd4334de45
 
 pkgname = kangaroo-max-bin
