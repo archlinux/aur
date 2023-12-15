@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=perplexity-ai-app
-pkgver=1.0.0
+pkgver=1.1.0
 _electronversion=22
-pkgrel=2
+pkgrel=1
 pkgdesc="The Unofficial Perplexity AI Desktop App, powered by Electron which brings the magic of AI language processing to your desktop."
 arch=('any')
 url="https://github.com/inulute/perplexity-ai-app"
