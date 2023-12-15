@@ -1,20 +1,19 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
-
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=dunnart-git
-pkgver=r198.c91f67b
+pkgver=r237.af43b7c
 pkgrel=1
 pkgdesc="A constrained-based diagram editor"
 arch=('i686' 'x86_64')
-url="http://www.csse.monash.edu.au/~mwybrow/dunnart/"
+url="https://github.com/mjwybrow/dunnart"
 license=('GPL')
 depends=('qt5-base')
 makedepends=('git')
 provides=('adaptagrams-git')
 conflicts=('adaptagrams-git')
-source=($pkgname::git+https://github.com/mjwybrow/dunnart.git
+source=($pkgname::git+$url.git
         dunnart.sh)
-md5sums=('SKIP'
-         '00995a6a00f2798333181ef416e442a1')
+sha256sums=('SKIP'
+            '0f2ad2258f5f993b093eb0da649d28908b468afefaed46bc1997a08ec65df565')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -50,4 +49,3 @@ package() {
   install -m644 *.png "$pkgdir/usr/share/dunnart"
   install -Dm755 "$srcdir/dunnart.sh" "$pkgdir/usr/bin/dunnart"
 }
-
