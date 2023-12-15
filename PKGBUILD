@@ -1,13 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=buttercup
 pkgname="${_pkgname}-desktop-bin"
-pkgver=2.23.1
+pkgver=2.24.3
 _electronversion=22
 pkgrel=1
 pkgdesc="Cross-Platform Passwords & Secrets Vault"
-arch=('aarch64' 'armv7h' 'x86_64')
+arch=(
+    'aarch64'
+    'armv7h'
+    'x86_64'
+)
 url="https://buttercup.pw/"
-_githuburl="https://github.com/buttercup/buttercup-desktop"
+_ghurl="https://github.com/buttercup/buttercup-desktop"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -24,14 +28,14 @@ depends=(
 makedepends=(
     'squashfuse'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-arm64.AppImage")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-armv7l.AppImage")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-x86_64.AppImage")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-arm64.AppImage")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-armv7l.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
 sha256sums=('8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
-sha256sums_aarch64=('673c95421b1df2c57c8600ad1b231bfb9408aca78a6fa233e17f3f67e271727b')
-sha256sums_armv7h=('296a974f3fe3045400befbf900839a098978526a49f85465b65946fd3799af40')
-sha256sums_x86_64=('b3eec46d21412e0190fb0864756b59b1ffd31231284ee15d702f420d47a57c61')
+sha256sums_aarch64=('09873c0bbd804e7c6a793229c4245c94023858369a8873e205958c1d07bd2d4f')
+sha256sums_armv7h=('30ef142cd4d6fd21c34637f149a3231b72da3ca24833ebd743af70390e7c4d8d')
+sha256sums_x86_64=('6522acc65c4fda3354c44785d8b7ee8f6c96d0aa87a338cfa22a2ae2dd2ecdfa')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
