@@ -29,6 +29,9 @@ delete-all: delete-build-packages delete-src delete-pkg delete-pkgbase
 cleanbuild: delete-all
     @makepkg -C
 
+bump-pkgrel:
+    @sed -i "s/pkgrel=[0-9]*/pkgrel=$(git rev-list --count HEAD)/" PKGBUILD
+
 srcinfo:
     @makepkg --printsrcinfo > .SRCINFO
 
@@ -44,14 +47,14 @@ uninstall:
 src-version:
     @cd src/{{ pkgbase }} && git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
-prepare: rebuild checksum srcinfo
+prepare: rebuild bump-pkgrel checksum srcinfo
 
 publish: prepare
     @echo "New version: $(just src-version)"
     @git add .
     @echo "Committing and tagging..."
     @git commit -m "bump: $(just src-version)"
-    @git tag -a $(just src-version) -m "bunp: $(just src-version)"
+    @git tag -af $(just src-version) -m "bump: $(just src-version)"
     @echo "Pushing to origin..."
     @git push
     @git push --tags

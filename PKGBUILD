@@ -1,7 +1,7 @@
 # Maintainer: Stephan Koglin-Fischer <stephan dot koglin-fischer at funzt dot dev>
 pkgname=dashlane-cli-git
 pkgver=v1.15.1.r0.g8368d87
-pkgrel=1
+pkgrel=23
 pkgdesc="Dashlane CLI GitHub repository verion bundled with asdf-vm to ensure using the correct node version."
 arch=('x86_64')
 url="https://github.com/Dashlane/dashlane-cli"
@@ -16,10 +16,6 @@ b2sums=('SKIP'
 # option strip is important for dcli to work properly and avoid
 # 'Pkg: Error reading from file.' error in production
 options=(!strip)
-
-pkgrel() {
-  git describe --long --tags --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 pkgver() {
   cd "$srcdir/$pkgname"
