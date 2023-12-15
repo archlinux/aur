@@ -1,0 +1,20 @@
+pkgbase = mcxtrace
+	pkgdesc = X-ray tracing software package for simulating beamlines, optics, and full experiments/measurements.
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://download.mcxtrace.org/current/linux/mcxtrace-src
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	optdepends = NeXus: output binary data in NeXus format
+	optdepends = openmpi: parallelization
+	source = mcxtrace-3.2-src.tar.gz::https://download.mcxtrace.org/current/linux/mcxtrace-src/mcxtrace-3.2-src.tar.gz
+	source = mcxtrace-comps-3.2-src.tar.gz::https://download.mcxtrace.org/current/linux/mcxtrace-src/mcxtrace-comps-3.2-src.tar.gz
+	source = mcxtrace-manuals-3.2-src.tar.gz::https://download.mcxtrace.org/current/linux/mcxtrace-src/mcxtrace-manuals-3.2-src.tar.gz
+	source = mcxtrace-mcpl-3.2-src.tar.gz::https://download.mcxtrace.org/current/linux/mcxtrace-src/mcxtrace-mcpl-3.2-src.tar.gz
+	sha256sums = a4a097b5be676ce603ae5e34462983232965e88dd5d9de679cae37b41d67c317
+	sha256sums = de4350b1abbcece30e53f4057fc56e43477da9682f37aa608fd05c097596e6a5
+	sha256sums = ff2d95fde5a08f290724dcef8414cda4a86c9f3a836416fc4df724428f58474e
+	sha256sums = 29c5944917b47cddd961acd738ca8b019c1abbbb5cd30931d9ed10b8d15e54a0
+
+pkgname = mcxtrace
