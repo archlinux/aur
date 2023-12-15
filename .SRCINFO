@@ -1,7 +1,7 @@
 pkgbase = r-featseekr
-	pkgdesc = FeatSeekR an R package for unsupervised feature selection
+	pkgdesc = an R package for unsupervised feature selection
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/FeatSeekR
 	arch = any
 	license = GPL3
@@ -16,6 +16,6 @@ pkgbase = r-featseekr
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/FeatSeekR_1.2.0.tar.gz
 	md5sums = 9792a703c1ec0b4a58c759274c2cb571
-	sha256sums = 4ead7a2139aca1f50d5d583edba32826ff1e19b1f4c0efa9c583dca58349b75b
+	b2sums = 1883191f3db5e645966bfa1fda931076b8265d7f3609b2167b1f6c30e9e103f8153f54a6f7a9cca334cf49bb0c70e46a7e09ea87cd1402accd39224337863928
 
 pkgname = r-featseekr
