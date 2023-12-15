@@ -1,6 +1,6 @@
 pkgbase = pypipe
 	pkgdesc = Python command-line tool for pipeline processing
-	pkgver = 0.3.1
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/bugen/pypipe
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pypipe
 	makedepends = python-wheel
 	depends = python
 	options = !strip
-	source = pypipe-0.3.1.tar.gz::https://github.com/bugen/pypipe/archive/v0.3.1.tar.gz
-	sha512sums = 7bf7a2f60b1a65d7f055cb2cec23f77b7c9b4c11692d331f3dda710d3058f796d06f3ea42e1573fec99225ff6667b9d93c253aa21f71b4f9d6713c8c82e6353e
+	source = pypipe-0.4.1.tar.gz::https://github.com/bugen/pypipe/archive/v0.4.1.tar.gz
+	sha512sums = 6786d4d7358036706c2a9179fc33f4b5df67d15d245055eca052711b05f82e7927764281c78450a2ef2ad91b2fb6eb25dc3a611b6ad0b0a875928a1562b83e03
 
 pkgname = pypipe
