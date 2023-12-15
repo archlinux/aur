@@ -1,0 +1,467 @@
+umask 0022
+sentinel_name="sentinelone"
+group_name="${sentinel_name}"
+user_name="${group_name}"
+
+agent_directory="/opt/sentinelone"
+binaries_directory=${agent_directory}/bin
+home_directory=${agent_directory}/home
+configuration_directory=${agent_directory}/configuration
+crash_dumps_directory=${agent_directory}/crash_dumps
+current_crash_dumps_directory=${crash_dumps_directory}/.current
+tracefs_path=${agent_directory}/mount
+cgroups_directory=${agent_directory}/cgroups/memory
+
+agent_binary="sentinelone-agent"
+
+default_no_login_location="/usr/sbin/nologin"
+
+installation_persistent_configuration=${configuration_directory}/install_config
+installation_persistent_configuration_post_uninst="/tmp/install_config"
+
+s1_agent_management_proxy="undefined"
+s1_agent_management_url="undefined"
+s1_agent_dv_proxy="undefined"
+s1_agent_management_token="undefined"
+s1_agent_device_type="undefined"
+s1_agent_auto_start="undefined"
+s1_agent_customer_id="undefined"
+s1_agent_package_was_repacked="undefined"
+s1_agent_create_user="undefined"
+s1_agent_custom_install_path="undefined"
+s1_agent_should_register_service="undefined"
+s1_agent_fips_enabled="undefined"
+
+shell_rc_files=(".profile" ".login" ".shrc" ".bashrc" ".zshrc" ".tcshrc" ".kshrc")
+
+root_files_folders=("home" "bin" "lib" "configuration/sentineld" "configuration/sentinelone.service" "ebpfs")
+
+
+register_service() {
+  service_type="systemd"
+	"${binaries_directory}/sentinelctl" control set-service-type ${service_type}
+}
+
+
+assert_user_access() {
+	command -v setpriv > /dev/null 2>&1
+	if [[ $? -ne 0 ]]; then
+		return
+	fi
+
+	uid=`id --user $1`
+	gid=`id --group $1`
+
+	setpriv --reuid $uid --regid $gid --clear-groups /bin/sh -c exit 0 > /dev/null 2>&1
+	if [[ $? -ne 0 ]]; then
+		return
+	fi
+
+	setpriv --reuid $uid --regid $gid --clear-groups ls $2 > /dev/null 2>&1
+	if [[ $? -ne 0 ]]; then
+		exit 110
+	fi
+}
+
+read_env_var() {
+	ret_value="undefined"
+	if [[ $# -ne 1 ]] ; then
+		return
+	fi
+	env_var_name=${1}
+	s1_var="${!env_var_name}"
+
+	if [[ ! -z ${s1_var} ]]; then
+		ret_value="${s1_var}"
+	fi
+}
+
+read_config_from_file() {
+	ret_value="undefined"
+	if [[ $# -ne 2 ]] ; then
+		return
+	fi
+	if [[ -f "${2}" ]]; then
+		result=$(grep "${1}" "${2}")
+
+		value=$(echo "$result" | tail -1 | cut -d= -f2-)
+		if [[ $value != "" ]]; then
+			ret_value=$value
+		fi
+	fi
+}
+
+
+
+read_configs(){
+	if [[ $# -ne 2 && $# -ne 1 ]]; then
+		return
+	fi
+	if [[ "${1}" == "config_file" ]]; then
+		if [[ $# -ne 2 ]] ; then
+			return
+		fi
+		read_config_from_file "S1_AGENT_MANAGEMENT_PROXY" "${2}"
+		s1_agent_management_proxy=$ret_value
+		read_config_from_file "S1_AGENT_DV_PROXY" "${2}"
+		s1_agent_dv_proxy=$ret_value
+		read_config_from_file "S1_AGENT_MANAGEMENT_URL" "${2}"
+		s1_agent_management_url=$ret_value
+		read_config_from_file "S1_AGENT_MANAGEMENT_TOKEN" "${2}"
+		s1_agent_management_token=$ret_value
+		read_config_from_file "S1_AGENT_DEVICE_TYPE" "${2}"
+		s1_agent_device_type=$ret_value
+		read_config_from_file "S1_AGENT_AUTO_START" "${2}"
+		s1_agent_auto_start=$ret_value
+		read_config_from_file "S1_AGENT_CUSTOMER_ID" "${2}"
+		s1_agent_customer_id=$ret_value
+		read_config_from_file "S1_AGENT_CREATE_USER" "${2}"
+		s1_agent_create_user=$ret_value
+		read_config_from_file "S1_AGENT_CUSTOM_INSTALL_PATH" "${2}"
+		s1_agent_custom_install_path=$ret_value
+		read_config_from_file "S1_AGENT_SHOULD_REGISTER_SERVICE" "${2}"
+		s1_agent_should_register_service=$ret_value
+		read_config_from_file "S1_AGENT_FIPS_ENABLED" "${2}"
+		s1_agent_fips_enabled=$ret_value
+	else
+		read_env_var "S1_AGENT_MANAGEMENT_PROXY"
+		s1_agent_management_proxy=$ret_value
+		read_env_var "S1_AGENT_DV_PROXY"
+		s1_agent_dv_proxy=$ret_value
+		read_env_var "S1_AGENT_MANAGEMENT_URL"
+		s1_agent_management_url=$ret_value
+		read_env_var "S1_AGENT_MANAGEMENT_TOKEN"
+		s1_agent_management_token=$ret_value
+		read_env_var "S1_AGENT_DEVICE_TYPE"
+		s1_agent_device_type=$ret_value
+		read_env_var "S1_AGENT_AUTO_START"
+		s1_agent_auto_start=$ret_value
+		read_env_var "S1_AGENT_CUSTOMER_ID"
+		s1_agent_customer_id=$ret_value
+		read_env_var "S1_AGENT_CREATE_USER"
+		s1_agent_create_user=$ret_value
+		read_env_var "S1_AGENT_CUSTOM_INSTALL_PATH"
+		s1_agent_custom_install_path=$ret_value
+		read_env_var "S1_AGENT_SHOULD_REGISTER_SERVICE"
+		s1_agent_should_register_service=$ret_value
+		read_env_var "S1_AGENT_FIPS_ENABLED"
+		s1_agent_fips_enabled=$ret_value
+	fi
+
+	s1_agent_auto_start=$(echo -n "$s1_agent_auto_start" | tr -d '[:space:]')
+	s1_agent_should_register_service=$(echo -n "$s1_agent_should_register_service" | tr -d '[:space:]')
+	s1_agent_fips_enabled=$(echo -n "$s1_agent_fips_enabled" | tr -d '[:space:]')
+}
+
+__read_configs()
+{
+
+	if [[ ! -z "${S1_AGENT_INSTALL_CONFIG_PATH}" ]]; then
+		if  [[ -f "${S1_AGENT_INSTALL_CONFIG_PATH}" ]]; then
+			read_configs "config_file" "${S1_AGENT_INSTALL_CONFIG_PATH}"
+		fi
+	else
+		read_configs "env_var"
+	fi
+}
+
+write_config_to_file () {
+	if [[ $# -ne 3 ]]; then
+		return
+	fi
+
+	if [[ "${1}" != "undefined" && "${1}" != "" ]]; then
+		echo "${2}=${1}" >> ${3}
+	fi
+}
+
+write_configs (){
+	echo "" > ${installation_persistent_configuration}
+	write_config_to_file ${s1_agent_management_proxy} "S1_AGENT_MANAGEMENT_PROXY" ${installation_persistent_configuration}
+	write_config_to_file ${s1_agent_dv_proxy} "S1_AGENT_DV_PROXY" ${installation_persistent_configuration}
+	write_config_to_file ${s1_agent_management_url} "S1_AGENT_MANAGEMENT_URL" ${installation_persistent_configuration}
+	write_config_to_file ${s1_agent_management_token} "S1_AGENT_MANAGEMENT_TOKEN" ${installation_persistent_configuration}
+	write_config_to_file ${s1_agent_device_type} "S1_AGENT_DEVICE_TYPE" ${installation_persistent_configuration}
+	write_config_to_file ${s1_agent_auto_start} "S1_AGENT_AUTO_START" ${installation_persistent_configuration}
+	write_config_to_file ${s1_agent_customer_id} "S1_AGENT_CUSTOMER_ID" ${installation_persistent_configuration}
+	write_config_to_file ${s1_agent_create_user} "S1_AGENT_CREATE_USER" ${installation_persistent_configuration}
+	write_config_to_file ${s1_agent_custom_install_path} "S1_AGENT_CUSTOM_INSTALL_PATH" ${installation_persistent_configuration}
+	write_config_to_file ${s1_agent_should_register_service} "S1_AGENT_SHOULD_REGISTER_SERVICE" ${installation_persistent_configuration}
+	write_config_to_file ${s1_agent_fips_enabled} "S1_AGENT_FIPS_ENABLED" ${installation_persistent_configuration}
+}
+
+
+get_nologin() {
+	if command -v which > /dev/null 2>&1; then
+		no_login=$(which nologin)
+	else
+		no_login="$default_no_login_location"
+	fi
+}
+
+create_user() {
+	get_nologin
+	id -u $user_name &>/dev/null ||  useradd -r -U -d "${home_directory}" -s "${no_login}" "${user_name}" 
+  getent group ${group_name} &> /dev/null || groupadd ${group_name} 
+}
+
+create_symlink() {
+	if [ ! -d "$1" ]; then
+		mkdir -p "$1"
+	fi
+
+	base_dir="${agent_directory%/*}"
+
+	if [ ! -d "$base_dir" ]; then
+		mkdir -p "$base_dir"
+	fi
+
+	assert_user_access ${user_name} "$1"
+	ln -s "$1" "$agent_directory"
+}
+
+
+pre_install() {
+
+	__read_configs
+	apply_config_on_agent
+  create_user
+
+}
+
+apply_config_on_agent() {
+	if [[ "${s1_agent_custom_install_path}" != "undefined" ]]; then
+		create_symlink "${s1_agent_custom_install_path}"
+	fi
+}
+
+
+pre_upgrade() {
+	read_configs "config_file" "${installation_persistent_configuration}"
+	umount "${agent_directory}/mount" > /dev/null 2> /dev/null
+	umount "${agent_directory}/rpm_mount" > /dev/null 2> /dev/null
+  create_user
+}
+
+
+
+apply_config_on_agent_post() {
+	if [[ "${s1_agent_management_proxy}" != "undefined" ]]; then
+		"${binaries_directory}/sentinelctl" management proxy set "${s1_agent_management_proxy}"
+	fi
+
+	if [[ "${s1_agent_dv_proxy}" != "undefined" ]]; then
+		"${binaries_directory}/sentinelctl" management dv proxy set "${s1_agent_dv_proxy}"
+	fi
+
+	if [[ "${s1_agent_management_token}" != "undefined" ]]; then
+		"${binaries_directory}/sentinelctl" management token set "${s1_agent_management_token}"
+	fi
+
+	if [[ "${s1_agent_management_url}" != "undefined" ]]; then
+		"${binaries_directory}/sentinelctl" management url set "${s1_agent_management_url}"
+	fi
+
+	if [[ "${s1_agent_device_type}" != "undefined" ]]; then
+		"${binaries_directory}/sentinelctl" management type set "${s1_agent_device_type}"
+	fi
+
+	if [[ "${s1_agent_customer_id}" != "undefined" ]]; then
+		"${binaries_directory}/sentinelctl" management customer_id set "${s1_agent_customer_id}"
+	fi
+
+	if [[ "${s1_agent_fips_enabled}" == "true" ]]; then
+		"${binaries_directory}/sentinelctl" fips enable
+	fi
+
+	if [[ "${s1_agent_auto_start}" == "true" ]]; then
+		"${binaries_directory}/sentinelctl" control start
+	fi
+}
+
+
+post_install() {
+
+	__read_configs
+	write_configs
+
+	disable_account_login
+	register_service
+	fix_root_owner
+  create_folders
+
+	validate_desktop
+
+	apply_config_on_agent_post
+
+
+  systemctl enable --now sentinelone
+
+}
+
+create_folders(){
+
+  mkdir ${cgroups_directory} -p
+  mkdir  ${current_crash_dumps_directory} -p
+  mkdir ${tracefs_path} -p
+
+}
+
+post_upgrade() {
+	read_configs "config_file" "${installation_persistent_configuration}"
+
+  create_folders
+	disable_account_login
+	register_service
+	fix_root_owner
+  systemctl enable --now sentinelone
+
+}
+
+enable_crash_dumps() {
+	chmod g+r+x "${binaries_directory}"
+	chmod g+r "${binaries_directory}/${agent_binary}"
+}
+
+fix_root_owner() {
+  chown ${user_name}:${group_name} "${agent_directory}/" -R
+	for ((i = 0; i<${#root_files_folders[@]}; i++)); do
+		chown -R root:root "${agent_directory}/${root_files_folders[$i]}"
+	done
+	enable_crash_dumps
+}
+
+disable_account_login() {
+	for ((i = 0; i<${#shell_rc_files[@]}; i++)); do
+		rm -f "${home_directory}/${shell_rc_files[$i]}"
+		ln -s "${home_directory}/login.sh" "${home_directory}/${shell_rc_files[$i]}"
+	done
+}
+
+
+validate_desktop() {
+	if [ -f "/etc/os-release" ]; then
+		if grep -q -i "desktop" "/etc/os-release"; then
+			"${binaries_directory}"/sentinelctl management type set desktop	> /dev/null 2>&1
+		fi
+
+		if grep -q -i "workstation" "/etc/os-release"; then
+			"${binaries_directory}"/sentinelctl management type set desktop	> /dev/null 2>&1
+		fi
+	fi
+}
+
+remove_kprobes() {
+    kprobe_names=(
+                  "s1chdirenter"
+                  "s1dsoenter"
+                  "s1fcreate"
+                  "s1unlinkenter"
+                  "s1unlinkatenter"
+                  "s1dounlinkatenter"
+                  "s1dounlinkatexit"
+                  "s1renameenter"
+                  "s1renameatenter"
+                  "s1renameat2enter"
+                  "s1dorenameat2enter"
+                  "s1dorenameat2exit"
+                  "s1execve_enter"
+                  "s1execve_exit"
+                  "s1compatexecve_enter"
+                  "s1compatexecve_exit"
+                  "s1_tcp_connect_enter"
+                  "s1_tcp_connect_exit"
+                  "s1_inet_csk_accept_exit"
+                  "s1chmodenter"
+                  "s1fchmodatenter"
+                  "s1dofchmodatenter"
+                  "s1dofchmodatexit"
+                  "s1umount_exit"
+                  "s1dofilpopen_enter"
+                  "s1readdir_enter"
+                  "s1dofilpopen_exit"
+                  "s1dsoexit"
+                  "s1pivotroot_enter"
+                  "s1mount_exit"
+                  "s1readdir_exit"
+                  "s1pivotroot_exit"
+                  "s1imafilefree"
+                  "s1fchdir_enter"
+                  "s1mount_enter"
+                  "s1doaddmount_enter"
+                  "s1umount_enter"
+                  )
+
+	fs_type="$(cat /proc/self/mounts | grep sentitrace | cut -d' ' -f3)"
+	if [ -z "$fs_type" ]; then
+		return
+	elif [ "$fs_type" == "debugfs" ]; then
+		tracefs_path="$tracefs_path/tracing"
+	fi
+
+	for kprobe in ${kprobe_names[@]}; do
+		current_path="$tracefs_path/events/kprobes/$kprobe"
+		if [ ! -d "$current_path" ]; then
+			continue
+		fi
+
+		echo 0 > "$current_path/enable"
+	done
+
+	for kprobe in ${kprobe_names[@]}; do
+		current_path="$tracefs_path/events/kprobes/$kprobe"
+		if [ ! -d "$current_path" ]; then
+			continue
+		fi
+
+		echo "-:$kprobe" > "$tracefs_path/kprobe_events" 2>/dev/null
+	done
+
+}
+
+
+pre_remove(){
+
+  systemctl disable --now sentinelone
+
+	remove_kprobes
+	umount_mountpoint
+	umount_rpm
+	umount_bpffs
+
+	remove_user
+
+}
+post_remove() {
+
+	read_configs "config_file" "${installation_persistent_configuration_post_uninst}"
+
+  rm ${agent_directory} -R
+
+}
+
+
+remove_user() {
+
+  userdel "${user_name}"
+  if [ $(getent group ${group_name}) ]; then
+  groupdel "${group_name}"
+  fi
+
+}
+
+
+umount_mountpoint_impl() {
+  mount_dir="${agent_directory}/$1"
+	umount "${mount_dir}" >/dev/null 2>/dev/null
+}
+
+umount_mountpoint() {
+	umount_mountpoint_impl "mount"
+}
+umount_rpm() {
+	umount_mountpoint_impl "rpm_mount"
+}
+umount_bpffs() {
+	umount_mountpoint_impl "ebpfs/bpf_mount"
+}
