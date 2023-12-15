@@ -4,10 +4,10 @@ _pkgname=mariner
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="Mariner: Explore the Hi-Cs"
+pkgrel=2
+pkgdesc="Explore the Hi-Cs"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL3)
 depends=(
   r-abind
@@ -53,8 +53,8 @@ source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_
         "fix-test-snapshot.patch")
 md5sums=('6ed30878d03b8a17e8e7c4ee17218893'
          'd0928c3ea11234e2200f31c9b4ff4ade')
-sha256sums=('10b7c90220d80840c9e530e93888ef31a5df74fae9bef36334190def8c27f28b'
-            'd4828f9f6fd94b8f60d8a2dd6d093fd5aa1120ccf81426cf0189ccc384d6b00c')
+b2sums=('dfaa195e26df395d9948668e342bcc5bc2c593d42b102a7140cb6778fc904f171b561c7fe1d6bce1dbefbd22832b745888549f06eff42c5596455d48e2693db3'
+        'aba583ffb72fea9e7ce5820b8160418b345b87e1d93fe9533efeb5732011373bd18dfea4c16b49f869e0d698529f48f738bec528c77d67c1cf095e7656a6ca30')
 
 prepare() {
   # fix snapshot test
@@ -62,8 +62,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
