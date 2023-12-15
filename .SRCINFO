@@ -8,6 +8,7 @@ pkgbase = libre-menu-editor
 	makedepends = git
 	makedepends = make
 	depends = python
+	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
 	depends = xdg-utils
