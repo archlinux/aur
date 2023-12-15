@@ -18,7 +18,7 @@
 #   - replace setools 3.3.8 with setools3-libs and install setools then.
 
 pkgname=setools
-pkgver=4.4.3
+pkgver=4.4.4
 pkgrel=1
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
@@ -33,7 +33,7 @@ checkdepends=('checkpolicy')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
 source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('2f751599dbed0d628fb268a3302dd8c578829f302bd28e8c08e182aef7fd5cb8')
+sha256sums=('3c5fa76a674fe3f6890d900df59b9d142e4b63c9ffbde653904f90ed6e666ef9')
 
 build() {
   cd "${pkgname}"
