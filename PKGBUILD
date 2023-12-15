@@ -4,10 +4,10 @@ _pkgname=scifer
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="Scifer: Single-Cell Immunoglobulin Filtering of Sanger Sequences"
+pkgrel=3
+pkgdesc="Single-Cell Immunoglobulin Filtering of Sanger Sequences"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(MIT)
 depends=(
   r-biostrings
@@ -37,11 +37,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('82fb184bec0c09d5f7067baf81f8fee1')
-sha256sums=('cbd79f689765c6cabea9ccbd4ecab9f7e847aec07a629ec5e297d18728f037c1')
+b2sums=('f1639e305ad06eba8c97912b0b600b98f64f0e6bf0d74078f67432a53f061635ace877bb854733d5773231b19ee73a6b7521172d7291ae5a16de86e0c9d727ae')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
