@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Pappas <mitsakosgr at gmail dot com>
 # Contributor: Fabio Tardivo <x95a31x at gmail dot com>
 pkgname=minizinc-ide
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=(x86_64)
@@ -10,7 +10,10 @@ license=(MPL2)
 provides=(minizinc)
 options=(!strip)
 install=$pkgname.install
-conflicts=(libminizinc)
+conflicts=(
+	libminizinc
+	minizinc-ide-edge
+)
 source=(
     minizinc-ide.desktop
     https://raw.githubusercontent.com/MiniZinc/MiniZincIDE/master/resources/icon.png
@@ -36,4 +39,4 @@ package() {
 
 sha256sums=('9928044890140a0f0e6f17df8b5f11acfea0b4fd7a8f494309a38b37bb7d71c2'
             'eaa69a6d1b8a3e307d1b400b74273995abb914fbe1246c65fc9b3955b2094023'
-            'ab711f50f4b9379d85feace146f3cd1da4adccf679ca81cfeb7205d730ac2a62')
+            '5c342debf443668e639c35b37359161c8c26d2b422c1fb846298111e6a10c4c7')
