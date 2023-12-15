@@ -1,13 +1,13 @@
 pkgbase = sing-geosite
 	pkgdesc = sing-geosite database
-	pkgver = 20231208065009
+	pkgver = 20231212122459
 	pkgrel = 1
 	url = https://github.com/SagerNet/sing-geosite
 	arch = any
 	license = GPL3
-	source = 20231208065009.geosite.db::https://github.com/SagerNet/sing-geosite/releases/download/20231208065009/geosite.db
-	source = 20231208065009.LICENSE::https://raw.githubusercontent.com/SagerNet/sing-geosite/20231208065009/LICENSE
-	sha256sums = f73bd08b9c799915f223f1cfb7c9af2288a7475c57672cffcef2df67bcdcb80c
+	source = 20231212122459.geosite.db::https://github.com/SagerNet/sing-geosite/releases/download/20231212122459/geosite.db
+	source = 20231212122459.LICENSE::https://raw.githubusercontent.com/SagerNet/sing-geosite/20231212122459/LICENSE
+	sha256sums = 05039a05887d38c1edd7fb67b74bc8f0abb1134aba95730cd34394cff4ef7f05
 	sha256sums = 2f02b7486bcfa90d115c71a20437f3906b6fd5bef81c5dc0efd341399e89d0fd
 
 pkgname = sing-geosite
