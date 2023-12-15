@@ -5,7 +5,7 @@
 pkgname=libresprite
 pkgver=1.1+dev
 _pkgver=1.1-dev
-pkgrel=0
+pkgrel=1
 epoch=1
 pkgdesc='Animated sprite editor & pixel art tool -- Fork of the last GPLv2 commit of Aseprite'
 arch=('x86_64' 'i686')
@@ -13,20 +13,12 @@ url='https://github.com/LibreSprite/LibreSprite'
 license=('GPL')
 depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp' 'sdl2' 'sdl2_image' 'gtest' 'lua' 'zlib' 'nodejs')
 makedepends=('cmake' 'ninja' 'git' 'patch')
-source=("https://github.com/LibreSprite/LibreSprite/releases/download/v$_pkgver/SOURCE.CODE.+.submodules.tar.gz"
+source=("git+https://github.com/LibreSprite/LibreSprite.git#tag=v$_pkgver"
         "LibreSprite.desktop")
 # The source code is packaged without a root folder, we need to extract it by ourself to fix that.
-noextract=('SOURCE.CODE+.submodules.tar.gz')
-sha256sums=('3a99338c85e37d165c13c224d462f15b384e404c6f8d019d43c365a57bf3d74e'
+sha256sums=('SKIP'
         '4d61881588d2c78825a135f31e83b45e310f25b92872d806b47bdf64bc36691a')
 conflicts=("libresprite-appimage")
-
-prepare() {
-    # Here we extract the source code
-    mkdir "$srcdir/LibreSprite"
-    cd "$srcdir/LibreSprite"
-    tar -xf "$srcdir/SOURCE.CODE.+.submodules.tar.gz"
-}
 
 build() {
     cd "$srcdir/LibreSprite"
