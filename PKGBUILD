@@ -3,14 +3,14 @@
 pkgname=python-pyebsdindex
 pkgshort=PyEBSDIndex
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python based tool for Radon based EBSD orientation indexing."
 arch=('any')
 url="https://pyebsdindex.readthedocs.io"
 license=('Custom')
 
 depends=('python>=3.7'
-	 'python-h5py-openmpi>=2.10' # openmpi for pyxem/pyfai compatibility
+	 'python-h5py>=2.10'
          'python-matplotlib'
 	 'python-numpy'
 	 'python-numba'
