@@ -1,7 +1,7 @@
 # Maintainer: unknowndev <unknowndev at archlinux.info>
 
 pkgname=acme.sh-systemd
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A systemd units for renew certificates acquired via acme.sh"
 arch=('any')
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('systemd>=240' 'acme.sh')
 backup=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('616fcfadce7ca6ff6cae5765367416d14b5e02d3ab736ec438a89bc9baeddb138f54ba22f5a319cf01f3f30a74e01edc991caa962c1b5a1835e3f62452333ecb')
+sha512sums=('086d3c4c2209912f314a3391c52811811a774cdcb079038299bba8e56d2a9236bdcc46705b1335e33a5524cff1bde7744b7ccabed6c3c9b57d2e69a43504e530')
 
 package() {
     cd "${pkgname}-${pkgver}"
