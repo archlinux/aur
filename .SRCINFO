@@ -1,6 +1,6 @@
 pkgbase = asusctl
 	pkgdesc = A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 0.1
 	url = https://gitlab.com/asus-linux/asusctl
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = asusctl
 	makedepends = npm
 	makedepends = unzip
 	makedepends = yarn
-	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=6f393070807e93d99c4c5850a9f96759cee341b8
+	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=9aa332de3b8afc425dd955aca978f6a614e1305b
 	sha256sums = SKIP
 
 pkgname = asusctl
@@ -36,7 +36,7 @@ pkgname = asusctl
 
 pkgname = rog-control-center
 	pkgdesc = App to control asusctl
-	depends = asusctl=5.0.0
+	depends = asusctl=5.0.1
 	depends = fontconfig
 	depends = glib2
 	depends = gtk3
@@ -46,5 +46,6 @@ pkgname = rog-control-center
 pkgname = gnome-shell-extension-asusctl-gnome
 	pkgdesc = A gnome extension exposing some of the base features of asusd in a helpful and easy to use way
 	arch = any
-	depends = asusctl=5.0.0
+	depends = asusctl=5.0.1
+	depends = dconf
 	depends = gnome-shell
