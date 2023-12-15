@@ -2,7 +2,7 @@
 pkgname=calendar-bin
 _pkgname=Calendar
 _appname="org.Rabbit.${_pkgname}"
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="Task, calendar, Vision protection."
 arch=("x86_64")
@@ -13,7 +13,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'qt6-scxml'
     'openssl'
-    'bash'
     'qt6-base'
     'qt6-webengine'
     'qt6-multimedia'
@@ -22,8 +21,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_ubuntu_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('972b507ef7b20d161a52b257af26bb07a0631e0bfc1380c1e620b864b06b6f06'
-            'd5dbbc0e94dfcbfe0cbde88eef78417c09763e394ccee9962ca068781ae1e90f')
+sha256sums=('59771b5a5321e9b9ceb90ccdca24e7a6de36ea16144e3913487181c0ddfa95b0'
+            'dde181a8c8f5c213873cb50f2881d99391c14c8a4279ba902da9754aa4f26605')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@apprunname@|${_pkgname}App-v${pkgver}|g" \
@@ -33,8 +32,6 @@ build() {
         -e "s|Path=/opt/${_pkgname}|Path=/opt/${pkgname%-bin}|g" \
         -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/opt/${_pkgname}/share/applications/${_appname}.desktop"
-    sed "s|#Path=log|Path=${HOME}/.config/${pkgname%-bin}/log|g" -i "${srcdir}/opt/${_pkgname}/etc/${_pkgname}_logqt.conf"
-    cp "${srcdir}/opt/${_pkgname}/etc/${_pkgname}_logqt.conf" "${srcdir}/opt/${_pkgname}/etc/${_pkgname}_logqt.ini"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
