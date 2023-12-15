@@ -1,0 +1,24 @@
+pkgbase = imageconverter2-bin
+	pkgdesc = Batch image format converter app
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/tkroo/image-converter2
+	arch = x86_64
+	license = custom
+	makedepends = squashfuse
+	depends = electron25
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
+	provides = imageconverter2=1.0.8
+	conflicts = imageconverter2
+	source = imageconverter2-1.0.8.AppImage::https://github.com/tkroo/image-converter2/releases/download/1.0.8/imageconverter2-1.0.8.AppImage
+	source = imageconverter2.sh
+	sha256sums = 458db5e721b3237209ea11e1e44859ffc58796f11c5d2ffc482f7287d5b93880
+	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+
+pkgname = imageconverter2-bin
