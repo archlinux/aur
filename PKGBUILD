@@ -13,7 +13,7 @@ depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt
 # These dependencies are disabled in the cmake call below: 'freeimage' 'devil-ilut' 'poppler-qt5'
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support'
-            'popper-qt6: PDF support')
+            'poppler-qt6: PDF support')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
 sha256sums=('3bf5f11f8a1f9c2c00143e0e3f7298f7782ca326bd13a52ae9d1fe5207edbd3a')
