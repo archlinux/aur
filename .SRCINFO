@@ -19,10 +19,10 @@ pkgbase = clash-verge-rev-bin
 	conflicts = clash-nyanpasu-git
 	conflicts = clash-meta
 	source_x86_64 = clash-verge-rev-1.4.5-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.4.5/clash-verge_1.4.5_amd64.deb
-	sha512sums_x86_64 = 9be1490f5313f63ef7ee8ebdc83a24085b6f11d5c59b10dc9a50e0509642c61f3855bc3281cbbf2f4d5a0dd95058578e0c9275082eee41be2d7c4cc68b8f37ba
+	sha512sums_x86_64 = 7895a481f877c3cec3477bda5ab3e48026c785688d5e5386515867105e0d255543787b32a1987ae52945fb8a8390fa861147b0daf31e95abaaae387e38ec9a4c
 	source_i686 = clash-verge-rev-1.4.5-i686.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.4.5/clash-verge_1.4.5_i386.deb
-	sha512sums_i686 = 274262c1998335e990ed303126d70473d1035cd31285790b8230b668753ed624c89f330257bc104c53bb1217f781be27deb6c343298a9fe7729eb69b28848c4a
+	sha512sums_i686 = 2605d262fd278e5e28ce7ec87c79264a4698ad3812be7332f8735613f6fc2fbf619a510c15e2cd24fd2ba0b21a91ef9263047337981aa0f88cedbbea7279f5d2
 	source_aarch64 = clash-verge-rev-1.4.5-aarch64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.4.5/clash-verge_1.4.5_arm64.deb
-	sha512sums_aarch64 = 197e37d21bc547e09b95c5d11a77bb424133b20a0c217aff87d9256145c838c73b7379943b17ca66fb6cb2d949bc593a548351c6c134fa0aca43b9064b7089e9
+	sha512sums_aarch64 = fcfcbcb3071fc324baccdbda13ae20a9da940193830acd3e64b1cae98052dc5a68ce59ed0286e0126c7826d62b93490811fcb599d578a5de6b51456c9fd3c0d4
 
 pkgname = clash-verge-rev-bin
