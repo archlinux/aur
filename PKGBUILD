@@ -14,15 +14,16 @@ depends=(
   'python-click'
   'python-colorama'
   'python-psutil'
-  'python-pynput''python-qtpy'
+  'python-pynput'
+  'python-qtpy'
   'scrcpy'
 )
 makedepends=(
+  'desktop-file-utils'
   'git'
   'python-build'
   'python-installer'
   'python-poetry-core'
-  'setconf'
 )
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
@@ -39,7 +40,8 @@ prepare() {
   cd "${pkgname%-git}"
 
   # Force launching with PySide2
-  setconf "appimage/${pkgname%-git}.desktop" Exec "env QT_API=pyside2 ${pkgname%-git}"
+  desktop-file-edit --set-key=Exec --set-value="env QT_API=pyside2 ${pkgname%-git}" \
+    "appimage/${pkgname%-git}.desktop"
 }
 
 build() {
