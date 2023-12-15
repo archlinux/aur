@@ -1,18 +1,19 @@
 # Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
-pkgname='qbittorrent-enhanced-qt5-git'
-pkgver=4.6.0.10.r1.gd431f857a
-pkgrel=1
-pkgdesc='Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod'
+_basename='qbittorrent-enhanced'
+pkgname="${_basename}-qt5-git"
+pkgver=4.6.2.10.r1.gb132ae3ba
+pkgrel=2
+pkgdesc='Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod (git)'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url='https://github.com/c0re100/qBittorrent-Enhanced-Edition'
-license=('custom:GPL2_with_OpenSSL_exception')
+license=('custom:GPL2+-with-OpenSSL-exception')
 depends=('dbus'
          'gcc-libs'
          'glibc'
          'hicolor-icon-theme'
+         'libcrypto.so'
          'libtorrent-rasterbar'
-         'openssl'
          'qt5-base'
          'zlib')
 makedepends=('boost'
@@ -25,23 +26,12 @@ provides=('qbittorrent'
           'qbittorrent-enhanced'
           'qbittorrent-enhanced-qt5'
           'qbittorrent-qt5')
-conflicts=('qbittorrent'
-           'qbittorrent-dark-git'
-           'qbittorrent-enhanced'
-           'qbittorrent-enhanced-git'
-           'qbittorrent-enhanced-nox'
-           'qbittorrent-enhanced-nox-git'
-           'qbittorrent-enhanced-qt5'
-           'qbittorrent-enhanced-ua'
-           'qbittorrent-git'
-           'qbittorrent-nox-git'
-           'qbittorrent-qt5')
-_srcrepodir="${pkgname%-qt5-git*}"
-source=("${_srcrepodir}::git+${url}.git#branch=v4_6_x")
+conflicts=('qbittorrent')
+source=("${_basename}::git+${url}.git#branch=v4_6_x")
 b2sums=('SKIP')
 
 pkgver() {
-  cd "${_srcrepodir}"
+  cd "${_basename}"
 
 # Generate git 'release-' tag based version.
   git describe --long --tags --match='release-*' | sed 's/^release-//;s/^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)/\1\2/;s/\([0-9]\+-g\)/r\1/;s/-/./g'
@@ -51,7 +41,7 @@ prepare() {
   echo 'Reverting commit: "add TS (torrent storm) to peer blacklist"...'
   echo '(This re-enables seeding to Popcorn Time media player.)'
   (
-    cd "${_srcrepodir}"
+    cd "${_basename}"
     git revert --no-commit dbf3359f2c2cb30d107a1dc1af00e2ff7dd545a5
     echo
   )
@@ -69,7 +59,7 @@ prepare() {
   printf 'Configuring build with CMake...\n\n'
   export CXXFLAGS+=" ${CPPFLAGS}" # CMake ignores CPPFLAGS
 
-  cmake -S "${_srcrepodir}" \
+  cmake -S "${_basename}" \
     -B 'build' \
     -G 'Ninja' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -89,5 +79,5 @@ build() {
 package() {
   printf 'Installing with CMake...\n\n'
   DESTDIR="${pkgdir}" cmake --install 'build'
-  install -Dm644 "${_srcrepodir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 "${_basename}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
