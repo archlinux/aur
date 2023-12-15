@@ -4,10 +4,10 @@ _pkgname=MsQuality
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="MsQuality - Quality metric calculation from Spectra and MsExperiment objects"
+pkgrel=3
+pkgdesc="Quality metric calculation from Spectra and MsExperiment objects"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL3)
 depends=(
   r-biocparallel
@@ -42,11 +42,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('1d8e2101f472e8fc93bfa275db511982')
-sha256sums=('8b461e0582838a0cf9e0bd79a118852717621d75f0e7c7a172d46ed7bae49a93')
+b2sums=('e15fc5ee17d0ab16de7814dbfbd0c5b928f21ebd71a3b08376a6d637a2988de283a38c9be7a3ce471bd6a1ca1c7a9b2432194600e9031439551504ae0c37b040')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

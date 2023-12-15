@@ -1,7 +1,7 @@
 pkgbase = r-msquality
-	pkgdesc = MsQuality - Quality metric calculation from Spectra and MsExperiment objects
+	pkgdesc = Quality metric calculation from Spectra and MsExperiment objects
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MsQuality
 	arch = any
 	license = GPL3
@@ -32,6 +32,6 @@ pkgbase = r-msquality
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsQuality_1.2.0.tar.gz
 	md5sums = 1d8e2101f472e8fc93bfa275db511982
-	sha256sums = 8b461e0582838a0cf9e0bd79a118852717621d75f0e7c7a172d46ed7bae49a93
+	b2sums = e15fc5ee17d0ab16de7814dbfbd0c5b928f21ebd71a3b08376a6d637a2988de283a38c9be7a3ce471bd6a1ca1c7a9b2432194600e9031439551504ae0c37b040
 
 pkgname = r-msquality
