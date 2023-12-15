@@ -1,5 +1,6 @@
 z /etc/iceshrimp/configuration.yml  740 root iceshrimp      -
 z /etc/iceshrimp                    755 root iceshrimp      -
 Z /usr/share/iceshrimp              755 iceshrimp iceshrimp -
+d /var/lib/iceshrimp/cache          750 iceshrimp iceshrimp -
 d /var/lib/iceshrimp/files          750 iceshrimp iceshrimp -
-d /var/lib/iceshrimp/.cache         750 iceshrimp iceshrimp -
+Z /var/lib/iceshrimp/files          750 iceshrimp iceshrimp -
