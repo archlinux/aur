@@ -13,9 +13,10 @@ pkgbase = dualsensectl-git
 	depends = systemd-libs
 	depends = dbus
 	depends = hidapi
+	depends = gcc-libs
 	depends = glibc
+	provides = dualsensectl
 	conflicts = dualsensectl
-	options = !strip
 	source = dualsensectl-0.4.r1.g602ffe4::git+https://github.com/nowrep/dualsensectl#branch=main
 	sha512sums = SKIP
 
