@@ -9,7 +9,7 @@
 
 pkgname=asterisk-lts-20
 _pkg=${pkgname//-lts-20/}
-pkgver=20.5.0
+pkgver=20.5.1
 pkgrel=1
 pkgdesc='A complete PBX solution - Long Term Support release 20'
 arch=(x86_64 i686 aarch64 armv7h)
@@ -157,11 +157,6 @@ source=("https://downloads.asterisk.org/pub/telephony/$_pkg/releases/$_archive.t
         "$_pkg.logrotated"
         "$_pkg.tmpfiles"
         "fix-upnp.patch")
-sha256sums=('05dc5f235da44b69102bedca067bf35a612813502d1e18cd88a22d9e4c25c5e7'
-            '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
-            'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
-            '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b'
-            '55798baa02698de3d81c4b6e11097b3dee73b20e9dfa1e08091a7037830ad6d8')
 
 prepare() {
 	cd "$_archive"
@@ -222,3 +217,8 @@ package(){
 
 	chmod 0750 "$pkgdir"/{etc,run,var/{lib,log,spool}}/"${_pkg}"
 }
+sha256sums=('7d128f2a164e36fae4875058120ff026e7cd73f7701429fee4fa293f4fba4336'
+            '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
+            'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
+            '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b'
+            '55798baa02698de3d81c4b6e11097b3dee73b20e9dfa1e08091a7037830ad6d8')
