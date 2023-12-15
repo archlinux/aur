@@ -70,7 +70,6 @@ publish: prepare
     @git merge main
     @echo "Pushing to aur..."
     @git push aur master
-    @git push --tags aur master
     @echo "Switching back to main..."
     @git checkout main
 

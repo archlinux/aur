@@ -2,7 +2,7 @@
 pkgname=dashlane-cli-git
 pkgver=v1.15.1.r0.g8368d87
 pkgrel=25
-pkgdesc="Dashlane CLI GitHub repository verion bundled with asdf-vm to ensure using the correct node version."
+pkgdesc="Dashlane CLI GitHub repository version bundled with asdf-vm to ensure using the correct node version."
 arch=('x86_64')
 url="https://github.com/Dashlane/dashlane-cli"
 license=('MIT')
