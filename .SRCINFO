@@ -1,7 +1,7 @@
 pkgbase = r-gdrtestdata
-	pkgdesc = gDRtestData - R data package with testing dose reponse data
+	pkgdesc = R data package with testing dose reponse data
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/gDRtestData
 	arch = any
 	license = Artistic2.0
@@ -18,6 +18,6 @@ pkgbase = r-gdrtestdata
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/gDRtestData_1.0.0.tar.gz
 	md5sums = 8de3dea2673f0e7dc9412e36da2c4f9d
-	sha256sums = 19b06102d2720e5d2b423a98b7075fecf22b7769314ed64c6379c3c0f6f5995f
+	b2sums = 78ef0775a5acf57a420f4d08c37eb7e54a9acded2361455d309ae9d3be3aaebc65a82a09d60a3577d5b80c93989818c594acfe5be60f60d0bfe0d1d0cdaca885
 
 pkgname = r-gdrtestdata

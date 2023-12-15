@@ -4,10 +4,10 @@ _pkgname=gDRtestData
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="gDRtestData - R data package with testing dose reponse data"
+pkgrel=3
+pkgdesc="R data package with testing dose reponse data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(Artistic2.0)
 depends=(
   r-checkmate
@@ -28,11 +28,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8de3dea2673f0e7dc9412e36da2c4f9d')
-sha256sums=('19b06102d2720e5d2b423a98b7075fecf22b7769314ed64c6379c3c0f6f5995f')
+b2sums=('78ef0775a5acf57a420f4d08c37eb7e54a9acded2361455d309ae9d3be3aaebc65a82a09d60a3577d5b80c93989818c594acfe5be60f60d0bfe0d1d0cdaca885')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
