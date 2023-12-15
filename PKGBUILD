@@ -4,7 +4,7 @@
 
 _base=curses-menu
 pkgname=python-${_base}
-pkgver=0.7.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A simple console menu system using curses"
 arch=('any')
@@ -13,7 +13,7 @@ license=(MIT)
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-poetry')
 source=(${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha512sums=('d9b0ad3b481971881e144186d01e115f3a7dde569d7d0c3ccdac3a1ff4dbaf3e10e4f0d7281952cfc2945c4f970f418e13d6a56d94943b588793aedc74469aba')
+sha512sums=('cc215591369667cfdaf95c75e6c2be2de1c2bd6c4182d90c31940a9274d426418711f8a0c4877f6e7af4717e775699e0c08481385c752aa5266e1f10b66962f2')
 
 build() {
   cd "${_base}-${pkgver}"
