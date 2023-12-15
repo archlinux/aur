@@ -2,7 +2,7 @@
 pkgname=whatsapp-for-linux-bin
 _origname=com.github.eneshecan.WhatsAppForLinux
 pkgver=1.6.4
-pkgrel=3
+pkgrel=4
 pkgdesc="An unofficial WhatsApp desktop application for Linux."
 arch=('x86_64')
 url="https://github.com/eneshecan/whatsapp-for-linux"
