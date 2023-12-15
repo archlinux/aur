@@ -4,10 +4,10 @@ _pkgname=ccImpute
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="ccImpute: an accurate and scalable consensus clustering based approach to impute dropout events in the single-cell RNA-seq data (https://doi.org/10.1186/s12859-022-04814-8)"
+pkgrel=3
+pkgdesc="an accurate and scalable consensus clustering based approach to impute dropout events in the single-cell RNA-seq data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL3)
 depends=(
   r-biocparallel
@@ -34,11 +34,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('f402177e3fc7bbbcac504c956889dfa9')
-sha256sums=('12728b12c2f470112c7a3108a6f999d798d67e07f892c75f08571c6462f2476c')
+b2sums=('94189e8ec6ed3d28471f931469047b2d16b5108088b487c8ca7711cace976900e69238d5e759e0ef030e3fd9c09dcdfccca5109e0887f0971655d43c9c958b27')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
