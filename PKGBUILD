@@ -8,13 +8,13 @@ pkgdesc="Fast and highly configurable image viewer with a simple and nice interf
 arch=('x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
-depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats5' 'pugixml' 'mpv' 'resvg' 'qt6-tools')
+depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats5' 'pugixml' 'mpv' 'resvg')
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above
 # These dependencies are disabled in the cmake call below: 'freeimage' 'devil-ilut' 'poppler-qt5'
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support'
             'poppler-qt6: PDF support')
-makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
+makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
 sha256sums=('9e6122a736adb1e970b4147ffdac9a8ea82685a52700c296ec904b29dceeb478')
 
