@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=lfp
-pkgver=4.1.4
+pkgver=4.1.5
 pkgrel=1
 pkgdesc='A wrapper for the lf file manager with in-terminal media previews, on-exit directory changing and much more'
 license=('MIT')
@@ -18,10 +18,10 @@ source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'ed247079683b0a8967d3341803ed97f15267a4d8f2f1a4f1edd75a01f1e2cf4ed9a83217e49af06903f3dd159d39d9d7c4719bc39685418b7c61fce4b14d9dbd'
+  'da891835bfca1b925505cc0d26c883cd6ce447e4c2e92f91d12564f70672ccecd4609e618e16a6ec7c6eba031d83490b76de64c4a7ea233decea51476997ceb1'
 )
 md5sums=(
-  '3fce44b5c31fb24b7f2b8fc0747b88e6'
+  '115ed89c25966238e810c5a62eea4a57'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
