@@ -8,7 +8,7 @@ arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
 license=(AGPL3)
 
-_pkgver=v2023.12
+_pkgver=$(echo "$pkgver" | sed s/.0$//)
 
 makedepends=(makepkg-git-lfs-proto npm)
 depends=(nodejs redis postgresql)
