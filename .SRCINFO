@@ -1,7 +1,7 @@
 pkgbase = r-spatialheatmap
-	pkgdesc = spatialHeatmap
+	pkgdesc = Creating spatial heatmaps from R and Shiny
 	pkgver = 2.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/spatialHeatmap
 	arch = any
 	license = Artistic2.0
