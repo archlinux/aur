@@ -12,33 +12,29 @@ license=('GPL2')
 depends=('glibc')
 backup=('etc/conf.d/p910nd')
 #options=('emptydirs')
-source=(http://downloads.sf.net/$pkgname/$pkgname-$pkgver.tar.bz2 \
+source=(https://github.com/kenyapcomau/p910nd/archive/$pkgver/$pkgname-$pkgver.tar.gz \
         $pkgname.service \
         $pkgname.conf)
-md5sums=('69461a6c54dca0b13ecad5b83864b43e'
-         'e37030a69b7bf302cfb23d88e25ebbdf'
-         'ea1db6d612058532c525efedd54990f2')
-
-CONFIGDIR=/etc/conf.d
-INITSCRIPT=""
-SCRIPTDIR=""
+sha256sums=('a1bcc2dd75bad4e00a9de5098dbd970e8380f978fc09292bcfa15852af6a6964'
+            '63ff1acd6908b2c5437ec53a959e24089366dc0e27430321862dfc77e1b3f891'
+            'c62fdc7cfdea0411ebcbc2f879fb860477bf9883b8f673c7a8ca1440544fd1c4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   # TODO: this should be in its own subdir, but needs to be created at boot 
   sed -i "s|/var/lock/subsys|/run/lock|" $pkgname.c
   # modern linux FSH
-  sed -i 's|sbin|bin|' *
-  sed -i 's|var/lock|run/lock|' *
-  sed -i 's|var/run|run|' *
+  sed -i 's|sbin|bin|' Makefile $pkgname.*
+  sed -i 's|var/lock|run/lock|' Makefile $pkgname.*
+  sed -i 's|var/run|run|' Makefile $pkgname.*
   sed -i 's|$(INSTALL) $(INITSCRIPT) $(DESTDIR)$(SCRIPTDIR)/$(PROG)||' Makefile
-  make CONFIGDIR=$CONFIGDIR INITSCRIPT=$INITSCRIPT SCRIPTDIR=$SCRIPTDIR
-  sed -i 's|P910ND_OPTS=""|P910ND_OPTS="-f /dev/usb/lp0"|' $pkgname.conf
+  sed -i 's| $(CFLAGS)| $(CFLAGS) $(LDFLAGS)|' Makefile
+  make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make CONFIGDIR=$CONFIGDIR INITSCRIPT=$INITSCRIPT SCRIPTDIR=$SCRIPTDIR DESTDIR="$pkgdir" install
+  make CONFIG='aux/p910nd.conf' CONFIGDIR='/etc/conf.d' SCRIPTDIR="" DESTDIR="$pkgdir" install
   #install -dm755 "$pkgdir/run/lock/$pkgname"
   install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
   install -Dm644 "$srcdir/$pkgname.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
