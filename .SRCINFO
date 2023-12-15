@@ -1,4 +1,4 @@
-pkgbase = dualsensectl
+pkgbase = dualsensectl-git
 	pkgdesc = Tool for controlling Sony PlayStation 5 DualSense controller on Linux
 	pkgver = 0.4.r1.g602ffe4
 	pkgrel = 2

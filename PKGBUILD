@@ -1,7 +1,6 @@
 # Author:     David Rosca <nowrep@gmail.com>
 # Maintainer: Martin Stibor <martin.von.reichenberg@proton.me>
 
-pkgbase=dualsensectl
 pkgname=dualsensectl-git
 _pkgname=dualsensectl
 pkgver=0.4.r1.g602ffe4
