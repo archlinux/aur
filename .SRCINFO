@@ -1,7 +1,7 @@
 pkgbase = r-hicool
-	pkgdesc = HiCool
+	pkgdesc = Processing Hi-C raw data within R
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/HiCool
 	arch = any
 	license = MIT
@@ -29,6 +29,6 @@ pkgbase = r-hicool
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCool_1.2.0.tar.gz
 	md5sums = 04aa2ef16336d5c43fc0a02291ba7887
-	sha256sums = d2d6aaa5b81a1cd04b808b2b5544b62a92f75dd6f6e5492b1c559ecb85be9546
+	b2sums = d56c592e447c857715e4a78bb1adde4b5ff7103f5b4f8d60ea2ca6fb98c0d8010ccd24ccf56c7cf698c025eb006c0b64030a2ba7f33ab10009caf700f8f7fb43
 
 pkgname = r-hicool

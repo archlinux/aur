@@ -4,10 +4,10 @@ _pkgname=HiCool
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="HiCool"
+pkgrel=2
+pkgdesc="Processing Hi-C raw data within R"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(MIT)
 depends=(
   r-basilisk
@@ -37,11 +37,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('04aa2ef16336d5c43fc0a02291ba7887')
-sha256sums=('d2d6aaa5b81a1cd04b808b2b5544b62a92f75dd6f6e5492b1c559ecb85be9546')
+b2sums=('d56c592e447c857715e4a78bb1adde4b5ff7103f5b4f8d60ea2ca6fb98c0d8010ccd24ccf56c7cf698c025eb006c0b64030a2ba7f33ab10009caf700f8f7fb43')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
