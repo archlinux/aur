@@ -1,24 +1,15 @@
 # Maintainer: xiota / aur.chaotic.cx
 
 # options
-: ${_avx_build:=true}
+: ${_build_avx:=true}
+: ${_build_git:=true}
 
-: ${_pkgtype:=git}
-
-
-if [[ "${_avx_build::1}" == "t" ]] ; then
-  if [ "${_pkgtype: -4}" == "-git" ] ; then
-    _pkgtype="${_pkgtype%-*}-avx-${_pkgtype##*-}"
-  elif [ "${_pkgtype::1}" == "g" ] ; then
-    _pkgtype="avx-$_pkgtype"
-  else
-    _pkgtype+="-avx"
-  fi
-fi
+[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
 _pkgname="pcsx2"
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgname="$_pkgname${_pkgtype:-}"
 pkgver=1.7.5299.r0.g20c3178df
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
@@ -239,7 +230,7 @@ build() {
     -Wno-dev
   )
 
-  if [[ "${_avx_build::1}" == "t" ]] ; then
+  if [[ "${_build_avx::1}" == "t" ]] ; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
     export CXXFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
 
