@@ -4,10 +4,10 @@ _pkgname=adverSCarial
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="adverSCarial, generate and analyze the vulnerability of scRNA-seq classifiers to adversarial attacks"
+pkgrel=3
+pkgdesc="generate and analyze the vulnerability of scRNA-seq classifiers to adversarial attacks"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(MIT)
 depends=(
   r-delayedarray
@@ -29,11 +29,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('196840790cf7fd0a0cbfe6d1aeb60e07')
-sha256sums=('0a6c0c8d2d9567c14040c9be8db7f89c0704df3dd143f63bb5b71fdf6828cdfa')
+b2sums=('1af78a61eacbe48d1f96572a45c9e29d0a95604d9fe240c29a5927961e157b62f7c5a4c7efe0a1e5989dc8bf44e69701fb3d6740db7a30c6768d8746e1d3fff6')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
