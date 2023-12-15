@@ -4,10 +4,10 @@ _pkgname=RolDE
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="RolDE: Robust longitudinal Differential Expression"
+pkgrel=3
+pkgdesc="Robust longitudinal Differential Expression"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL3)
 depends=(
   r-doparallel
@@ -27,11 +27,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('12c19e976fa6e9be2e9fa9a433690355')
-sha256sums=('08b694f03c455a1a7e78612ac69b9a806cdc214145f3b434b3943375c793dc3c')
+b2sums=('3a4094ed65938fb92a3fa6c6dd5503845007147f316f78b9a5ec3f91e8d7df921ab6bcf022e3758ddd8cdc9fe38a3ac410367bbefd4c3808f59b9c825317bfe1')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
