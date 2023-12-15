@@ -1,7 +1,7 @@
 pkgbase = r-biodbncbi
-	pkgdesc = biodbNcbi, a library for connecting to NCBI Databases.
+	pkgdesc = a library for connecting to NCBI Databases.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/biodbNcbi
 	arch = any
 	license = AGPL3
@@ -20,6 +20,6 @@ pkgbase = r-biodbncbi
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodbNcbi_1.6.0.tar.gz
 	md5sums = 5d2c3e8eade431a86e13d54be468832e
-	sha256sums = 859de0395db8acf97e2495cf269d7fece95054005ba3a3dcc69f1b19d0bc6ce2
+	b2sums = 180507034121b1d2508967f24b37215d8e6031c53b786a55d9c8c23ca26fe061a7bd8d3ee6b8b679cae3a28f0e2f9ebbb0066300c26395e001bce2c4d642dfdc
 
 pkgname = r-biodbncbi

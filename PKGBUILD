@@ -4,10 +4,10 @@ _pkgname=biodbNcbi
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="biodbNcbi, a library for connecting to NCBI Databases."
+pkgrel=3
+pkgdesc="a library for connecting to NCBI Databases."
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(AGPL3)
 depends=(
   r-biodb
@@ -30,11 +30,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('5d2c3e8eade431a86e13d54be468832e')
-sha256sums=('859de0395db8acf97e2495cf269d7fece95054005ba3a3dcc69f1b19d0bc6ce2')
+b2sums=('180507034121b1d2508967f24b37215d8e6031c53b786a55d9c8c23ca26fe061a7bd8d3ee6b8b679cae3a28f0e2f9ebbb0066300c26395e001bce2c4d642dfdc')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
