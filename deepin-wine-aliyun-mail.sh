@@ -7,18 +7,18 @@
     
 #               Vufa <countstarlight@gmail.com>
     
-BOTTLENAME="Deepin-Alimail"
-APPVER="1.6.7.0deepin2"
+BOTTLENAME=@bottlename@
+APPVER=@sparkver@
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
-EXEC_PATH="c:/ProgramData/Alibaba/Alimail/Alimail.exe"
-EXEC_FILE="${WINEPREFIX}/drive_c/ProgramData/Alibaba/Alimail/Alimail.exe"
+EXEC_PATH="c:/ProgramData/@providername@/@pathname@/@pathname@.exe"
+EXEC_FILE="${WINEPREFIX}/drive_c/ProgramData/@providername@/@pathname@/@pathname@.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
-UPDATEAPP_INSTALLER="Alimail"
-UPDATEAPP_VER="1.7.1.0"
-UPDATEAPP_INSTALLER_PATH="c:/ProgramData/Alibaba/${UPDATEAPP_INSTALLER}/${UPDATEAPP_INSTALLER}-${UPDATEAPP_VER}.exe"
+UPDATEAPP_INSTALLER="@pathname@"
+UPDATEAPP_VER=@appver@
+UPDATEAPP_INSTALLER_PATH="c:/ProgramData/@providername@/${UPDATEAPP_INSTALLER}/${UPDATEAPP_INSTALLER}-${UPDATEAPP_VER}.exe"
 export MIME_TYPE=""
-export DEB_PACKAGE_NAME="deepin-wine-aliyun-mail"
-export APPRUN_CMD="deepin-wine6-stable"
+export DEB_PACKAGE_NAME=@appname@
+export APPRUN_CMD=deepin-wine6-stable
 DISABLE_ATTACH_FILE_DIALOG=""
 EXPORT_ENVS=""
 SPECIFY_SHELL_DIR=$(dirname ${START_SHELL_PATH})
