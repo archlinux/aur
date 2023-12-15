@@ -1,5 +1,5 @@
  pkgname=r-getopt
- pkgver=1.20.3
+ pkgver=1.20.4
  pkgrel=1
  pkgdesc="C-Like 'getopt' Behavior"
  arch=('any')
@@ -8,7 +8,7 @@
  depends=('r>=2.9')
  optdepends=('r-covr' 'r-testthat')
  source=("https://cran.r-project.org/src/contrib/getopt_$pkgver.tar.gz")
- md5sums=('6a071a83218e958833c2fff3ca5c06ad')
+md5sums=('78783a3b9aa4c05177b71cf992ff89c6')
 
  build(){
      R CMD INSTALL getopt_"$pkgver".tar.gz -l "$srcdir"
