@@ -9,7 +9,7 @@ pkgbase = python-hyperspy-gui-traitsui
 	depends = python-hyperspy>=2.0rc0
 	depends = python-link-traits
 	depends = python-traits>=5.0
-	depends = python-traitsui>=8.1
+	depends = python-traitsui>=6.1
 	provides = hyperspy-gui-traitsui
 	conflicts = hyperspy-gui-traitsui
 	replaces = hyperspy-gui-traitsui
