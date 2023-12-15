@@ -1,0 +1,73 @@
+--- ags/app/ags_machine.c.orig	2023-12-15 19:25:44.786666567 +0000
++++ ags/app/ags_machine.c	2023-12-15 19:26:05.766666567 +0000
+@@ -24,6 +24,10 @@
+ #include <ags/app/ags_window.h>
+ #include <ags/app/ags_effect_bridge.h>
+ 
++#include <libxml/tree.h>
++#include <libxml/parser.h>
++#include <libxml/xpath.h>
++
+ #include <ags/i18n.h>
+ 
+ void ags_machine_class_init(AgsMachineClass *machine);
+--- ags/app/ags_composite_editor.c.orig	2023-12-15 19:14:09.583333226 +0000
++++ ags/app/ags_composite_editor.c	2023-12-15 19:14:29.399999912 +0000
+@@ -73,6 +73,7 @@
+ #endif
+ 
+ #include <libxml/tree.h>
++#include <libxml/parser.h>
+ #include <libxml/xpath.h>
+ 
+ #include <ags/i18n.h>
+--- ags/app/editor/ags_preset_editor.c.orig	2023-12-15 19:45:17.649999894 +0000
++++ ags/app/editor/ags_preset_editor.c	2023-12-15 19:45:50.716666560 +0000
+@@ -27,6 +27,8 @@
+ #include <ags/app/editor/ags_preset_dialog.h>
+ 
+ #include <libxml/tree.h>
++#include <libxml/parser.h>
++#include <libxml/xpath.h>
+ 
+ #include <ags/i18n.h>
+ 
+--- ags/app/editor/ags_select_note_dialog.c.orig	2023-12-15 19:52:35.473333231 +0000
++++ ags/app/editor/ags_select_note_dialog.c	2023-12-15 19:52:58.053333230 +0000
+@@ -27,6 +27,10 @@
+ 
+ #include <ags/app/editor/ags_notation_edit.h>
+ 
++#include <libxml/tree.h>
++#include <libxml/parser.h>
++#include <libxml/xpath.h>
++
+ #include <ags/i18n.h>
+ 
+ void ags_select_note_dialog_class_init(AgsSelectNoteDialogClass *select_note_dialog);
+--- ags/app/editor/ags_select_acceleration_dialog.c.orig	2023-12-15 19:52:45.149999898 +0000
++++ ags/app/editor/ags_select_acceleration_dialog.c	2023-12-15 19:53:09.803333229 +0000
+@@ -29,6 +29,10 @@
+ 
+ #include <ags/app/editor/ags_automation_edit.h>
+ 
++#include <libxml/tree.h>
++#include <libxml/parser.h>
++#include <libxml/xpath.h>
++
+ #include <ags/i18n.h>
+ 
+ void ags_select_acceleration_dialog_class_init(AgsSelectAccelerationDialogClass *select_acceleration_dialog);
+--- ags/app/editor/ags_select_buffer_dialog.c.orig	2023-12-15 19:52:40.129999895 +0000
++++ ags/app/editor/ags_select_buffer_dialog.c	2023-12-15 19:53:03.799999896 +0000
+@@ -26,6 +26,10 @@
+ 
+ #include <ags/app/editor/ags_wave_edit.h>
+ 
++#include <libxml/tree.h>
++#include <libxml/parser.h>
++#include <libxml/xpath.h>
++
+ #include <ags/i18n.h>
+ 
+ void ags_select_buffer_dialog_class_init(AgsSelectBufferDialogClass *select_buffer_dialog);
