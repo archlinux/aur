@@ -1,0 +1,38 @@
+pkgbase = python-exspy
+	pkgdesc = Analysis of EDS and EELS data with HyperSpy
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://hyperspy.org/exspy
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-dask
+	depends = python-hyperspy>=2.0rc0
+	depends = python-matplotlib
+	depends = python-numexpr
+	depends = python-numpy
+	depends = python-pint
+	depends = python-pooch
+	depends = python-prettytable
+	depends = python-requests
+	depends = python-scipy
+	depends = python-traits
+	optdepends = python-hyperspy-gui-ipywidgets>=2.0: GUI components for Jupyter
+	optdepends = python-hyperspy-gui-traitsui>=2.0: GUI components for desktop
+	optdepends = python-matplotlib-scalebar: scalebar in images
+	optdepends = python-numpydoc: build documentation
+	optdepends = python-pydata-sphinx-theme: build documentation
+	optdepends = python-sphinx-copybutton: build documentation
+	optdepends = python-sphinx-design: build documentation
+	optdepends = python-sphinx-favicon: build documentation
+	optdepends = python-sphinx-gallery: build documentation
+	optdepends = python-sphinx>=1.7: build documentation
+	optdepends = python-sphinxcontrib-mermaid: build documentation
+	optdepends = python-towncrier
+	provides = exspy
+	source = https://github.com/hyperspy/exspy/archive/v0.1.tar.gz
+	md5sums = 78e25251ee2ef6a18eda548887fe9c7c
+
+pkgname = python-exspy
