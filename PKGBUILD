@@ -1,48 +1,46 @@
 # Based on the file created for Arch Linux by:
 # Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Jan de Groot <jgc@archlinux.org>
-# Maintainer: Andrey Vetrov <vetrov at mail dot ru>
-#
-# Removed webkit2gtk dependency:
-# https://github.com/QubesOS/qubes-issues/issues/3279
-# https://bugs.archlinux.org/task/50548
+# Contributor: Andrey Vetrov <vetrov at mail dot ru>
+# Contributor: Pellegrino Prevete <pellegrinoprevete at gmail dot com>
+# Maintainer: DexterHaxxor <fox@dexterhaxxor.dev>
 
-pkgname=zenity-git
-pkgver=3.32.0.r5.gcd63631
+# shellcheck disable=SC2034
+_pkgname="zenity"
+pkgname="${_pkgname}-git"
+pkgver=4.0.0.r6.g43468b64
 pkgrel=1
-pkgdesc="Display graphical dialog boxes from shell scripts. Webkit-free version."
-url="https://gitlab.gnome.org/GNOME/zenity"
+pkgdesc="Display graphical dialog boxes from shell scripts"
+url="https://gitlab.gnome.org/GNOME/${_pkgname}"
 arch=(x86_64)
 license=(LGPL)
-provides=("zenity=$pkgver")
-conflicts=('zenity')
-replaces=('zenity')
-depends=('libnotify')
-makedepends=(gettext gnome-common git itstool yelp-tools)
-source=("git+https://gitlab.gnome.org/GNOME/zenity.git")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+depends=(gtk4 libadwaita)
+makedepends=(meson yelp-tools help2man)
+source=("${_pkgname}::git+${url}#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-*}
+  cd "${_pkgname}" || exit
   git describe --long --tags | sed 's/^ZENITY_//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd ${pkgname%-*}
-  NOCONFIGURE=1 ./autogen.sh
+  cd "${_pkgname}" || exit
+#  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd ${pkgname%-*}
-  ./configure \
-      --prefix=/usr \
-      --sysconfdir=/etc \
-      --disable-webkitgtk \
-      --localstatedir=/var
-  make
+  arch-meson "${_pkgname}" build
+  meson compile -C build
 }
 
+check() {
+  meson test -C build --print-errorlogs
+}
+
+# shellcheck disable=SC2154
 package() {
-  cd ${pkgname%-*}
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "${pkgdir}"
 }
