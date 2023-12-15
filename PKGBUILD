@@ -6,20 +6,20 @@ pkgname='koi-git'
 _pkgname='koi'
 __pkgname='Koi'
 pkgver=0.2.4.r0.geae87d1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/baduhai/Koi"
 license=('LGPL3')
-depends=('plasma-desktop' 'plasma-integration' 'plasma-framework5' 'kcoreaddons5' 'kconfig5'
-         'kwidgetsaddons5' 'kwindowsystem5' 'kconfigwidgets5' 'kxmlgui5' 'kpackage5' 'hicolor-icon-theme')
-makedepends=('git' 'glibc' 'qt5-base' 'qt5-tools' 'qt5-svg' 'cmake' 'extra-cmake-modules')
-optdepends=('xsettingsd: Apply settings to GTK applications on the fly')
+depends=('gcc-libs' 'glibc' 'plasma-integration' 'plasma-framework5' 'kcoreaddons5' 'kconfig5'
+         'kwidgetsaddons5' 'kwindowsystem5' 'kconfigwidgets5' 'kxmlgui5' 'hicolor-icon-theme' 'qt5-base')
+makedepends=('git' 'gcc' 'qt5-base' 'qt5-tools' 'qt5-svg' 'cmake' 'extra-cmake-modules')
+optdepends=('desktop-file-utils: Command line utilities for working with desktop entries'
+            'xsettingsd: Apply settings to GTK applications on the fly')
+provides=('koi')
 conflicts=('koi')
 source=("${__pkgname}-${pkgver}::git+https://github.com/baduhai/Koi.git")
 sha256sums=('SKIP')
-options=('!strip')
-
 
 pkgver() {
   cd "${srcdir}/${__pkgname}-${pkgver}"
