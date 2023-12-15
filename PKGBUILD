@@ -1,18 +1,44 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kbibtex-git
-pkgver=0.8.90.r439.gf9497b46
+pkgver=0.8.90.r731.g7444f634
 pkgrel=1
 epoch=1
 pkgdesc="A BibTeX editor for KDE (latest development version)"
 arch=('x86_64' 'aarch64')
 url='https://userbase.kde.org/KBibTeX'
 license=('GPL2')
-depends=('poppler-qt5' 'kio' 'icu' 'qt5-networkauth' 'qt5-xmlpatterns' 'libxml2' 'libxslt')
+depends=(gcc-libs
+         glibc
+         icu
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kcrash5
+         ki18n5
+         kiconthemes5
+         kitemviews5
+         kio5
+         kjobwidgets5
+         kparts5
+         kservice5
+         ktexteditor5
+         ktextwidgets5
+         kwallet5
+         kwidgetsaddons5
+         kxmlgui5
+         poppler-qt5
+         qt5-base
+         qt5-networkauth
+         qt5-webengine
+         qt5-xmlpatterns)
 provides=('kbibtex')
 conflicts=('kbibtex')
 optdepends=('okular: Document preview')
-makedepends=('git' 'extra-cmake-modules' 'qca-qt5' 'kdoctools')
+makedepends=(git
+             extra-cmake-modules
+             kdoctools5)
 source=("git+https://invent.kde.org/office/kbibtex.git")
 md5sums=('SKIP')
 
