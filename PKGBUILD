@@ -2,7 +2,7 @@
 
 pkgname=medit-full
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Medit with the python bindings restored"
 arch=('i686' 'x86_64')
 url="http://mooedit.sourceforge.net"
@@ -10,7 +10,7 @@ options=('!emptydirs')
 license=('GPL')
 depends=('pygtk' 'libxml2' 'pcre' 'libsm' 'python2' 'gtk2' 'gcc-libs')
 optdepends=('ctags' 'vte: terminal emulator')
-makedepends=('pkg-config' 'perl-xml-parser' 'intltool' 'gcc-objc')
+makedepends=('pkg-config' 'perl-xml-parser' 'intltool' 'gcc-objc' 'python')
 conflicts=('medit')
 replaces=('medit')
 provides=('medit')
@@ -46,4 +46,5 @@ package() {
   # Since we are doing this much work to save a few MB of space, we better delete the static archive
   rm -f python2.7/site-packages/_moo.a
 }
-md5sums=('8388a8e275d0e1fa6cd19f7bb081279a')
+
+sha256sums=('f0f7b3d9e3337907a5b27aa2ff3a084250d7517b38488c50872a621b4e1f3a4d')
