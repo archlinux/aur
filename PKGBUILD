@@ -2,12 +2,12 @@
 _pgver=16  # postgresql version
 pkgname=pgvecto.rs
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Postgres extension that provides vector similarity search functions. It is written in Rust and based on pgrx."
 arch=(x86_64)
 url="https://github.com/tensorchord/pgvecto.rs"
 license=('Apache-2.0')
-depends=('cargo-nightly' 'clang' "postgresql>=${_pgver}" 'openssl' 'readline'  'libxml2' 'libxslt' 'zlib' 'ccache' 'git')
+makedepends=('cargo-nightly' 'clang' "postgresql>=${_pgver}" 'openssl' 'readline'  'libxml2' 'libxslt' 'zlib' 'ccache' 'git')
 # build fails with LTO enabled
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v${pkgver}.tar.gz")
