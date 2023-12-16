@@ -1,7 +1,7 @@
 pkgbase = python-pyexecjs
 	pkgdesc = Run JavaScript code from Python.
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/PyExecJS2
 	changelog = changelog
 	arch = any

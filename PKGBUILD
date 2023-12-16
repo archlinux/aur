@@ -5,7 +5,7 @@ pkgbase=python-pyexecjs
 _name=PyExecJS2
 pkgname=('python-pyexecjs2')
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run JavaScript code from Python."
 arch=('any')
 url="https://pypi.python.org/pypi/PyExecJS2"
@@ -14,9 +14,9 @@ provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 depends=('python-six')
 makedepends=('python-build'
-             'python-installer'
-             'python-setuptools'
-             'python-wheel')
+    'python-installer'
+    'python-setuptools'
+    'python-wheel')
 checkdepends=('python-six')
 optdepends=('v8: Google JavaScript engine'
             'nodejs: built on Chrome V8 JavaScript engine'
