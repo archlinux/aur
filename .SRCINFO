@@ -1,7 +1,7 @@
 pkgbase = chromium-unstable-bin
 	pkgdesc = The Chromium web browser for Linux built with the open source Clang compiler and LLD linker.
 	pkgver = 122.0.6184.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = chromium-unstable.install
 	arch = x86_64
@@ -39,8 +39,8 @@ pkgbase = chromium-unstable-bin
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Plasma / Xfce
-	provides = chromium-unstable
 	provides = chromium-browser-unstable
+	conflicts = chromium-browser-unstable
 	options = !emptydirs
 	options = !strip
 	source = https://github.com/RobRich999/Chromium_Clang/releases/download/v122.0.6184.0-r1237314-linux64-deb-avx/chromium-browser-unstable_122.0.6184.0-1_amd64.deb

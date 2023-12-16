@@ -18,7 +18,7 @@ _pkgver=v122.0.6184.0-r1237314-linux64-deb-avx
 
 pkgname="${_pkgname}-bin"
 pkgver=122.0.6184.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Chromium web browser for Linux built with the open source Clang compiler and LLD linker."
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -55,7 +55,8 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
             'org.freedesktop.secrets: password storage backend on GNOME / Plasma / Xfce')
-provides=("${_pkgname}" "${_debname}")
+conflicts=("${_debname}")
+provides=("${_debname}")
 options=('!emptydirs' '!strip')
 install=${_pkgname}.install
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
