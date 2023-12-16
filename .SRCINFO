@@ -1,6 +1,6 @@
 pkgbase = torguard
 	pkgdesc = TorGuard VPN Software Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide.
-	pkgver = 4.8.26
+	pkgver = 4.8.27
 	pkgrel = 1
 	url = https://www.torguard.net
 	install = torguard.install
@@ -10,7 +10,7 @@ pkgbase = torguard
 	depends = psmisc
 	depends = libxkbcommon-x11
 	optdepends = wireguard-tools: wireguard support
-	source = https://updates.torguard.biz/Software/Linux/torguard-v4.8.26-amd64-arch.tar.gz
-	sha256sums = 56c1e775106600c67cdbee9aeddd8ec69e95e8c96ae4d2e83ae184d9bc58e600
+	source = https://updates.torguard.biz/Software/Linux/torguard-v4.8.27-amd64-arch.tar.gz
+	sha256sums = a37d32c1d82c5dd708255c7a364501b9bcd6c83580724d2569a65e53726f5942
 
 pkgname = torguard
