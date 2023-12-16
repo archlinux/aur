@@ -31,7 +31,7 @@ build() {
     # export RUSTUP_TOOLCHAIN=stable
     # export CARGO_TARGET_DIR=target
     export PG16_PG_CONFIG=/usr/bin
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release --features pg16
 }
 
 check() {
