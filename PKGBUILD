@@ -1,7 +1,7 @@
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildbox-run-bubblewrap
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An implementation of a runner for BuildGrid/buildbox using Bubblewrap."
 arch=(x86_64)
 url="https://buildgrid.build"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 build() {
   mkdir -p build
   cd build
-  CXXFLAGS="-flto=auto -O2 -ffunction-sections -Wl,--gc-sections" cmake ../buildbox-run-bubblewrap \
+  CXXFLAGS="-flto=auto -flto-partition=one -fuse-linker-plugin -fno-fat-lto-objects -O2 -ffunction-sections -Wl,--gc-sections ${CXXFLAGS}" cmake ../buildbox-run-bubblewrap \
     -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
