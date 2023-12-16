@@ -3,7 +3,7 @@
 
 set -u
 pkgname='pev'
-#pkgname+='-git'
+pkgname+='-git'
 pkgver='0.83'
 pkgrel=1
 pkgdesc='command line toolkit to work with and analyze PE (Portable Executables) binaries'
