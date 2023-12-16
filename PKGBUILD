@@ -2,7 +2,7 @@
 
 pkgname=python-ass
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for parsing and manipulating Advanced SubStation Alpha subtitle files."
 url='http://github.com/chireiden/python-ass'
 arch=('any')
