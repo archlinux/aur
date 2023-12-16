@@ -1,6 +1,6 @@
 # Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
 pkgname=dioxus-cli
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="CLI tool for developing, testing, and publishing Dioxus apps"
 url="https://github.com/DioxusLabs/dioxus/"
@@ -11,7 +11,7 @@ makedepends=("cargo")
 provides=("dx")
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('55c0a9371a08370c24cc0af596d69943707fc7c356c570cbb83e2110ceb59c6fc6bdf6e50bb87f8fba367396ad55f4b2508e0e07cb4687c63675fb395bc5fe8f')
+b2sums=('b9c470ad6af0ab8158a65fe2632f307a40aadeb2f23f302688f3f6fd2b1b9de182695a31be972b9820a34b36e24a868ecb79cbfb9df7c784e335cc9e525a6585')
 
 prepare() {
     cd "$pkgname-$pkgver"
