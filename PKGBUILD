@@ -2,7 +2,7 @@ pkgdesc="ROS - velocity_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-noetic-velocity-controllers'
-pkgver='0.15.0'
+pkgver='0.21.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -38,7 +38,7 @@ depends=(
 
 _dir="ros_controllers-${pkgver}/velocity_controllers"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
-sha256sums=('8c19481a28f394d5bf4372fb05a6c638fa2995614f9b0f82b8213ca32d15a4cf')
+sha256sums=('19e710b944e972ffb7fadb2d149f97bcdc1c2c0cf38a20405c09afced1543ba4')
 
 build() {
     # Use ROS environment variables
