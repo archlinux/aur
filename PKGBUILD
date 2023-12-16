@@ -25,7 +25,7 @@ prepare() {
     cd $pkgname-$pkgver
     cargo install cargo-pgrx --git https://github.com/tensorchord/pgrx.git --rev $(cat Cargo.toml | grep "pgrx =" | awk -F'rev = "' '{print $2}' | cut -d'"' -f1)
     cargo pgrx init --pg16=/usr/bin/pg_config
-    cargo pgrx fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    # cargo pgrx fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -33,7 +33,7 @@ build() {
     # export RUSTUP_TOOLCHAIN=stable
     # export CARGO_TARGET_DIR=target
     # export PG16_PG_CONFIG=/usr/bin
-    cargo pgrx build --frozen --release --all-features
+    cargo pgrx install --release
 }
 
 check() {
