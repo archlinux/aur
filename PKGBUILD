@@ -9,6 +9,7 @@ arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/xuzhen/dockbarx-lxqt-plugin"
 license=('GPL3')
 depends=('dockbarx' 'lxqt-panel' 'qt5-x11extras')
+makedepends=('cmake' 'git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git")
