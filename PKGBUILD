@@ -3,7 +3,7 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (Git version)"
-pkgver=23.3.branchpoint.r2775.g768c737
+pkgver=23.3.branchpoint.r2822.g586c34b
 pkgrel=1
 arch=('x86_64')
 depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
@@ -15,14 +15,12 @@ provides=('vulkan-driver')
 url="https://gitlab.freedesktop.org/mesa/mesa"
 license=('custom')
 source=("git+${url}.git"
-        nvk-memmodel.patch
         nvk-memory-budget.patch
         nvk-pipeline-cache.patch
         LICENSE)
 sha512sums=('SKIP'
-            'e7d3152d918a7c8d438bd58f1efffb199842034dee876a60ea9aea5fa9d6de558bdb1c708572ad7cd2b5436bafbd2e945ce18a1ade560dfeba6b1359549a0e74'
             '6bb223fb4c4e799c71bca2b4e8f290cda94fe712a9d378e9b4a43280831b7e96f8ef9d94d6c1fa1a29c39e123ead3ef573bc54e3ae4484070fff2bd1cf316e3f'
-            '95b398a496177d545a444797b7f37154856927c1ac56890977647adb6a7169bf35cdbde55d569013a7ae66aab5765846273dea9a9d0a750c253f8a287efd740f'
+            '662149293dbc81945ec8821c9bda5aa3bc0514bb379b02b3fcc24b974f47418a434e52fa77f033fd8c0d89b85aa060e4744a8755cfa8c81f95bcc10c2c62718e'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 install="${pkgname}.install"
 
@@ -42,13 +40,14 @@ prepare() {
   ### DXVK v2.0+ FIRE FESTIVAL (that is somehow working) ###
 
   # HACK turned up to 11: Advertise Vulkan 1.3 support
-  sed -i 's/VK_MAKE_VERSION(1, 1/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_instance.c
+  sed -i 's/VK_MAKE_VERSION(1, [0-9]/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_instance.c
   sed -i 's/VK_MAKE_VERSION(1, [0-9]/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_physical_device.c
-  sed -i 's/1\.0/1\.3/' src/nouveau/vulkan/meson.build
+  sed -i 's/1\.[0-9]/1\.3/' src/nouveau/vulkan/meson.build
 
-  # Expose Vulkan memory model
-  # I highly doubt this passes CTS (and it doesn't) but it works well enough for DXVK
-  patch ${_patch_opts} ../nvk-memmodel.patch
+  # HACK: Always expose Vulkan memory model
+  # NAK does properly support it now but the compiler is still WIP for pre-Volta GPUs (so I'll enable it at the cost of CTS tests)
+  sed -i 's/KHR_vulkan_memory_model = nvk_use_nak(info)/KHR_vulkan_memory_model = true/' src/nouveau/vulkan/nvk_physical_device.c
+  sed -i 's/vulkanMemoryModel = nvk_use_nak(info)/vulkanMemoryModel = true/' src/nouveau/vulkan/nvk_physical_device.c
 
   ### Misc stuff ###
 
