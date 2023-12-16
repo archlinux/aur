@@ -1,7 +1,7 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname='nemo-media-columns'
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=2
 pkgdesc="Media properties columns in Nemo"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nemo-python>=3.9.0' 'python-mutagen' 'libgexiv2' 'python-pymediainfo'
 options=('!emptydirs')
 makedepends=('python-distutils-extra')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('e87ab3fc803c2d0f7bee4bbbbf9074382469352774caeafc88a10b969097cf82')
+sha256sums=('d7d0e78df10dc4240623a1daa7cd457cc4c31969c8a6ff1cdeca4b3ce66b5cdb')
 
 package() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
