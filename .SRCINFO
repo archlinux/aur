@@ -1,0 +1,24 @@
+pkgbase = python-adolc
+	pkgdesc = automatic differentiation library with python bindings
+	pkgver = 2.7.2
+	pkgrel = 1
+	url = https://github.com/coin-or/ADOL-C
+	arch = x86_64
+	license = EPL
+	license = GPL2
+	makedepends = git
+	makedepends = swig
+	depends = colpack
+	depends = boost-libs
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	depends = python-numpy
+	provides = adol-c
+	conflicts = adol-c
+	source = python-adolc-2.7.2.tar.gz::https://github.com/coin-or/ADOL-C/archive/releases/2.7.2.tar.gz
+	source = setup.patch
+	sha512sums = b896650077367fd7388a6c5a40e5d8bb3f19af9e3bc5b067fd1d9a769809b77ccdfb5ef11ef481ab791c0f040401aaed0053cba55d4c2a3383c0d056122280f6
+	sha512sums = 74aae033216ceaa4fc57c4975e75061aa5b4cae10f30044bb2159e29a03bb2e8366bd50101fcc71c4e2f94e97ad05ff87b573b5a361d299044c518c06c886ae7
+
+pkgname = python-adolc
