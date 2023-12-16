@@ -2,7 +2,7 @@
 # Maintainer: daskol (Daniel Bershatsky) < bepshatsky at yandex dot ru >
 
 pkgname='python-datasets'
-pkgver=2.14.7
+pkgver=2.15.0
 pkgrel=1
 pkgdesc='The largest hub of ready-to-use datasets for ML models with fast, easy-to-use and efficient data manipulation tools'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'python-numpy'
     'python-packaging'
     'python-pandas'
-    'python-pyarrow'
+    'python-pyarrow>=14.0.1'
     'python-yaml'
     'python-requests'
     'python-tqdm'
@@ -32,20 +32,20 @@ optdepends=(
     'python-pytorch: PyTorch support'
 )
 groups=('huggingface')
-source=("datasets-${pkgver}.tar.gz::https://github.com/huggingface/datasets/archive/refs/tags/${pkgver}.tar.gz"
-        'pyarrow-hotfix-0.5.tar.gz::https://github.com/pitrou/pyarrow-hotfix/archive/refs/tags/v0.5.tar.gz')
-sha256sums=('f3fb38bb48c3f8f0688089460e3ac7302fcbbad192cfe09cac714ba5c061b4c5'
-            '0a2de981b1c3dba5b76360d9b77206c928103ca6d909c4ba436fbb68a8bb3825')
+source=("datasets-${pkgver}.tar.gz::https://github.com/huggingface/datasets/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('7a1daa8d7ac23cb3784990c9a6cbf179224a750bd010cd735412230e1c5f5caf')
 
 build() {
-    python -m build -nw ${srcdir}/pyarrow-hotfix-0.5
     python -m build -nw ${srcdir}/datasets-${pkgver}
 }
 
-package() {
-    cd ${srcdir}/pyarrow-hotfix-0.5
-    python -m installer --compile-bytecode 1 --destdir $pkgdir dist/*.whl
+check() {
+    # Sanity check: import package.
+    cd ${srcdir}/datasets-${pkgver}/src
+    python -c "import datasets"
+}
 
+package() {
     cd ${srcdir}/datasets-${pkgver}
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
     python -m installer --compile-bytecode 1 --destdir $pkgdir dist/*.whl

@@ -1,6 +1,6 @@
 pkgbase = python-datasets
 	pkgdesc = The largest hub of ready-to-use datasets for ML models with fast, easy-to-use and efficient data manipulation tools
-	pkgver = 2.14.7
+	pkgver = 2.15.0
 	pkgrel = 1
 	url = https://github.com/huggingface/datasets
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = python-datasets
 	depends = python-numpy
 	depends = python-packaging
 	depends = python-pandas
-	depends = python-pyarrow
+	depends = python-pyarrow>=14.0.1
 	depends = python-yaml
 	depends = python-requests
 	depends = python-tqdm
@@ -28,9 +28,7 @@ pkgbase = python-datasets
 	optdepends = python-pillow: Vision datasets
 	optdepends = python-tensorflow: TensorFlow support
 	optdepends = python-pytorch: PyTorch support
-	source = datasets-2.14.7.tar.gz::https://github.com/huggingface/datasets/archive/refs/tags/2.14.7.tar.gz
-	source = pyarrow-hotfix-0.5.tar.gz::https://github.com/pitrou/pyarrow-hotfix/archive/refs/tags/v0.5.tar.gz
-	sha256sums = f3fb38bb48c3f8f0688089460e3ac7302fcbbad192cfe09cac714ba5c061b4c5
-	sha256sums = 0a2de981b1c3dba5b76360d9b77206c928103ca6d909c4ba436fbb68a8bb3825
+	source = datasets-2.15.0.tar.gz::https://github.com/huggingface/datasets/archive/refs/tags/2.15.0.tar.gz
+	sha256sums = 7a1daa8d7ac23cb3784990c9a6cbf179224a750bd010cd735412230e1c5f5caf
 
 pkgname = python-datasets
