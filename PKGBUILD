@@ -2,13 +2,13 @@
 
 pkgname=continuous-testing
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An rust program to test in continuous application"
 provides=("again")
 arch=('any')
 url="https://github.com/taishingi/continuous-testing"
 license=('GPL3')
-depends=('packer' 'vim' 'docker' 'rust' 'git')
+depends=('packer' 'libnotify' 'docker-rootless-extras' 'curl' 'fuse-overlayfs' 'git')
 source=("${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('2d79adb5f5828dc9fdb1c8f18af2749008b06cf92ac2e18bf42b0d74f1c4a006')
 
