@@ -24,7 +24,7 @@ sha256sums=('fca3535ddb8afed734fd5d78153f07ec09c45a044991de189f4d865f0ba402ac')
 prepare() {
     cd $pkgname-$pkgver
     cargo install cargo-pgrx --git https://github.com/tensorchord/pgrx.git --rev $(cat Cargo.toml | grep "pgrx =" | awk -F'rev = "' '{print $2}' | cut -d'"' -f1)
-    cargo pgrx init --pg16=/usr/bin/pg_conf
+    cargo pgrx init --pg16=/usr/bin/pg_config
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
