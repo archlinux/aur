@@ -4,7 +4,7 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-all
-pkgver=11.7.0
+pkgver=11.7.1
 pkgrel=1
 pkgdesc='A GUI frontend for libalpm (everything in one package - snap, flatpak, appindicator, aur, appstream)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -22,7 +22,7 @@ conflicts=('pamac' 'pamac-gtk' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac
 provides=("pamac=$pkgver-$pkgrel")
 options=(!emptydirs)
 source=("$url/-/archive/$pkgver/pamac-$pkgver.tar.gz")
-sha256sums=('85d6575696f35c7a6268e8d259bb6c0d04c4075ff37e0d6800a7dfd7d12c5340')
+sha256sums=('bdf93f7efde43a1d0fa9ef9cceea409691f1d5e42bbd4fb0f9b3e38e0cd0c22a')
 
 _srcdir="$_pkgname-$pkgver"
 

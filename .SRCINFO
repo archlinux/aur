@@ -1,6 +1,6 @@
 pkgbase = pamac-all
 	pkgdesc = A GUI frontend for libalpm (everything in one package - snap, flatpak, appindicator, aur, appstream)
-	pkgver = 11.7.0
+	pkgver = 11.7.1
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = pamac-all
 	optdepends = polkit-gnome: legacy authentication agent for Gnome
 	optdepends = mate-polkit: authentication agent for Mate
 	optdepends = plymouth: offline upgrades
-	provides = pamac=11.7.0-1
+	provides = pamac=11.7.1-1
 	conflicts = pamac
 	conflicts = pamac-gtk
 	conflicts = pamac-common
@@ -34,7 +34,7 @@ pkgbase = pamac-all
 	conflicts = pamac-flatpak
 	conflicts = pamac-flatpak-gnome
 	options = !emptydirs
-	source = https://gitlab.manjaro.org/applications/pamac/-/archive/11.7.0/pamac-11.7.0.tar.gz
-	sha256sums = 85d6575696f35c7a6268e8d259bb6c0d04c4075ff37e0d6800a7dfd7d12c5340
+	source = https://gitlab.manjaro.org/applications/pamac/-/archive/11.7.1/pamac-11.7.1.tar.gz
+	sha256sums = bdf93f7efde43a1d0fa9ef9cceea409691f1d5e42bbd4fb0f9b3e38e0cd0c22a
 
 pkgname = pamac-all
