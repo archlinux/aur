@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-moveit-resources-fanuc-moveit-config
 	pkgdesc = ROS - MoveIt Resources for testing: Fanuc M-10iA.
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://moveit.ros.org
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = ros-noetic-moveit-resources-fanuc-moveit-config
 	depends = ros-noetic-tf2-ros
 	depends = ros-noetic-xacro
 	depends = ros-noetic-moveit-resources-fanuc-description
-	source = ros-noetic-moveit-resources-fanuc-moveit-config-0.8.2.tar.gz::https://github.com/ros-planning/moveit_resources/archive/0.8.2.tar.gz
-	sha256sums = eefedc471515f63648924893de796a7533005af8aec86e158fde8b18c0dc95b3
+	source = ros-noetic-moveit-resources-fanuc-moveit-config-0.8.3.tar.gz::https://github.com/ros-planning/moveit_resources/archive/0.8.3.tar.gz
+	sha256sums = 0d99fc091bfd99b5d370d1c85a6c449fbc378d53bc8e2f213d54bb90447a8c91
 
 pkgname = ros-noetic-moveit-resources-fanuc-moveit-config
