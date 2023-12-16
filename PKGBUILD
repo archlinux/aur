@@ -13,7 +13,7 @@
 
 pkgname=ffmpeg-cuda
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
 arch=(x86_64)
@@ -113,10 +113,16 @@ provides=(
 conflicts=('ffmpeg')
 source=(
   "git+https://git.ffmpeg.org/ffmpeg.git#commit=d4ff0020b40b524a490cf62eccbd3a318f4c0e58"
+  "add-av_stream_get_first_dts-for-chromium.patch"
 )
-sha256sums=("SKIP")
+sha256sums=("SKIP" "57e26caced5a1382cb639235f9555fc50e45e7bf8333f7c9ae3d49b3241d3f77")
 
 _dir=ffmpeg
+
+prepare() {
+    cd ${srcdir}
+    patch -Np0 -i ${srcdir}/add-av_stream_get_first_dts-for-chromium.patch
+}
 
 build() {
   
