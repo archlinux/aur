@@ -1,27 +1,40 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.10.0pre0.r1705.gc1ee6b9be8
+pkgver=2.9.1.r1300.g1db56381a8
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://linuxcnc.org"
-depends=('bc'
-         'bwidget'
-         'libxaw'
-         'python-pillow'
-         'python-yapps2'
-         'tkimg'
-#          'python-gtkglext'
-         'tclx'
-         'xorg-server'
-         'boost'
-         'procps-ng'
-         'psmisc')
-makedepends=('intltool'
-            'git'
-            'python')
+depends=(bc
+    boost
+    bwidget
+    glibc
+    glu
+    gtk3
+    libgpiod
+    libxaw
+    readline
+    procps-ng
+    psmisc
+    python
+    python-gobject
+    python-pillow
+    python-yapps2
+    tkimg
+#    python-gtkglext
+    tclx
+    xorg-server
+)
+makedepends=(
+    asciidoc
+    gettext
+    git
+    # texinfo
+    intltool
+    python-sphinx
+    man-db)
 provides=('linuxcnc')
 conflicts=('linuxcnc' 'linuxcnc-bin')
 options=('!strip')
