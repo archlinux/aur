@@ -1,11 +1,11 @@
 pkgbase = falco-bin
 	pkgdesc = Cloud native runtime security. Binaries and Kernel modules. (Stable)
-	pkgver = 0.36.1
+	pkgver = 0.36.2
 	pkgrel = 1
-	url = https://falco.org/
+	url = https://github.com/falcosecurity/falco
 	arch = x86_64
 	license = Apache
-	source_x86_64 = https://download.falco.org/packages/bin/x86_64/falco-0.36.1-x86_64.tar.gz
+	source_x86_64 = https://download.falco.org/packages/bin/x86_64/falco-0.36.2-x86_64.tar.gz
 	sha256sums_x86_64 = 656da11fb07a82ded65811000469c59897b353d238ed4ee62adaef30a666fccb
 
 pkgname = falco-bin

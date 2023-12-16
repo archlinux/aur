@@ -1,25 +1,20 @@
-# Maintainer: Kris Nóva <kris@nivenly.com>
+# Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
+# https://github.com/brokenpip3/my-pkgbuilds
+# Contributor: Kris Nóva <kris@nivenly.com> R.I.P.
 
 pkgbase=falco-bin
-pkgname=(falco-bin falco-bin-dkms)
-pkgver=0.36.1
+pkgname=("falco-bin"
+         "falco-bin-dkms")
+pkgver=0.36.2
 pkgrel=1
 pkgdesc="Cloud native runtime security. Binaries and Kernel modules. (Stable)"
 arch=(x86_64)
 license=(Apache)
-url="https://falco.org/"
+url="https://github.com/falcosecurity/falco"
 license=(Apache)
-source_x86_64=("https://download.falco.org/packages/bin/${arch}/falco-${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('656da11fb07a82ded65811000469c59897b353d238ed4ee62adaef30a666fccb')
-
 # EXAMPLE URL: https://download.falco.org/packages/bin/x86_64/falco-0.29.1-x86_64.tar.gz
-# Falco 0.29.1 SHA256
-# Note: This can be found by running "makepkg -g" in this directory.
-#       The AUR documentation suggests "makepkg -g >> PKGBUILD"
-#       makepkg -g is deprecated, use updpkgsums
-# Kris Nóva PGP Key
-#validpgpkeys=('F5F9B56417B7F2CAC1DEC2E372BB115B4DDD8252')
-# package signature is missing
+source_x86_64=("https://download.falco.org/packages/bin/${arch}/falco-${pkgver}-x86_64.tar.gz")
+sha256sums_x86_64=('bffa2a50581d8391cfe20e09e70b260a7d48693757e4c52ffae9552c969e3400')
 
 _commit=6.0.1+driver
 
