@@ -1,12 +1,5 @@
 --- a/contrib/gonic.service
 +++ b/contrib/gonic.service
-@@ -1,6 +1,5 @@
- [Unit]
- Description=gonic service
--ConditionPathExists=/var/lib/gonic/
- After=network.target
- 
- [Service]
 @@ -11,7 +10,7 @@
  Restart=on-failure
  RestartSec=10
