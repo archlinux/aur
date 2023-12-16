@@ -1,8 +1,8 @@
 # Maintainer: Thomas Böhler <witcher@wiredspace.de>
 
 pkgname="rss-email"
-pkgver=v0.4.4
-pkgrel=3
+pkgver=v0.4.5
+pkgrel=0
 pkgdesc="Send new RSS/Atom posts as email"
 arch=('x86_64')
 url="https://sr.ht/~witcher/$pkgname"
@@ -11,7 +11,7 @@ conflicts=('rss-email-git')
 depends=('sqlite')
 makedepends=('cargo' 'scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~witcher/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a0e75d67b67620705c85eed3b568158ec5f40389660654b7ed9db3c490930f52')
+sha256sums=('206067a62ee0fce2feae4f04bfb9859be52bccdb5b67f47e4b21338177f4d0b8')
 
 prepare() {
 	cd "$pkgname-$pkgver"
