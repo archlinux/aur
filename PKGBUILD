@@ -1,13 +1,15 @@
-# Maintainer: Plague-doctor <plague at privacyrequired dot com >
+# Maintainer : Yvaniak <ewen @ philippot dot biz>
+# Contributor: Plague-doctor <plague at privacyrequired dot com >
+# Contributor: tongpu
 
 pkgname=moneydance
-pkgver=2023.2.5059
+pkgver=2023.2.5064
 pkgrel=1
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://www.moneydance.com/"
 license=('custom')
-depends=('java-runtime' 'jre-openjdk' 'bash')
+depends=('java-runtime' 'bash')
 source=('moneydance.sh' 'moneydance.desktop')
 source_x86_64=(${pkgname}_amd64-${pkgver}-${pkgrel}.tar.gz::https://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz)
 source_aarch64=(${pkgname}_amd64-${pkgver}-${pkgrel}.tar.gz::https://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz)
@@ -39,5 +41,5 @@ package() {
 }
 sha256sums=('eff9da311388e046e33f2c3669b0229b92bc650eb5f76589233afaa41dc39109'
             '242dc66a95c4842099e41092bd87ccaf97c314bed1f9865f5c6a72f135f7de21')
-sha256sums_x86_64=('c0a871505f48aeeed2473c3b5b38c67cd1365a70873e8b645093e105d1c42a01')
-sha256sums_aarch64=('c0a871505f48aeeed2473c3b5b38c67cd1365a70873e8b645093e105d1c42a01')
+sha256sums_x86_64=('5a3c54d05a4d563d55ea71c1e9eca069046598157b8e59478592a8c51fb454c3')
+sha256sums_aarch64=('5a3c54d05a4d563d55ea71c1e9eca069046598157b8e59478592a8c51fb454c3')
