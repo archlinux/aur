@@ -13,7 +13,7 @@ depends=(python python-attrs python-hyperlink python-incremental
          python-tubes python-twisted python-werkzeug python-zope-interface
          # Detected by namcap and not declared in setup.py
          python-constantly)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-hypothesis python-treq python-pytest)
 source=("https://github.com/twisted/klein/archive/$pkgver/klein-$pkgver.tar.gz"
         "$pkgname-pr586.patch"::"https://github.com/twisted/klein/commit/6d8f1dbacedf0aee85be307ac0e04537f2084f38.patch")
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd klein-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -37,6 +37,6 @@ check() {
 
 package() {
   cd klein-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
