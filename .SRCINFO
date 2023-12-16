@@ -1,6 +1,6 @@
 pkgbase = cie-middleware-git
 	pkgdesc = Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)
-	pkgver = 1.5.0.r0.ae789d4
+	pkgver = 1.5.1.r0.d2516e8
 	pkgrel = 1
 	url = https://developers.italia.it/it/cie
 	install = cie-middleware.install
