@@ -1,0 +1,3 @@
+g openwebrx -
+u openwebrx - "OpenWebRX+ user" /var/lib/openwebrx
+m openwebrx openwebrx
