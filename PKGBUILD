@@ -47,11 +47,16 @@ optdepends=(
     'soapyfcdpp-git: interfacing with the Funcube Dongle Pro+'
     'soapybladerf: interfacing with Blade RF devices'
 )
-source=("$pkgname-$pkgver".tar.gz::"https://github.com/luarvique/openwebrx/archive/$pkgver.tar.gz"
-        'openwebrx-plus.sysusers' 'openwebrx-plus.tmpfiles')
-sha256sums=('273be8a4fbc941111efde712148f2b5863937336f3c1711a413fd63906845c55'
-            '1a675698545a28c2645a925a8c2bd70775a0a45af44d918499e63e7e21510bfe'
-            'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade')
+source=(
+    "$pkgname-$pkgver".tar.gz::"https://github.com/luarvique/openwebrx/archive/$pkgver.tar.gz"
+    'openwebrx-plus.sysusers'
+    'openwebrx-plus.tmpfiles'
+)
+sha256sums=(
+    '273be8a4fbc941111efde712148f2b5863937336f3c1711a413fd63906845c55'
+    '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
+    'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade'
+)
 provides=('openwebrx')
 conflicts=('openwebrx')
 
