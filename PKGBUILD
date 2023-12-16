@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=handygccs-git
 _gitdir=HandyGCCS
-pkgver=23.11.r196.10bf0da
+pkgver=23.12.r206.e18faeb
 pkgrel=1
 pkgdesc="Handheld Game Console Controller Support."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-evdev')
 optdepends=()
 makedepends=('git' 'python' 'python-evdev' 'python-installer' 'python-build'
 	     'python-wheel' 'python-setuptools')
-_tag=10bf0da2bbe06b4e6c608e157f26628b6d848042
+_tag=e18faeb7c749a15126e0ab7055d2cddaf61a17ea
 source=("${_gitdir}::git+https://github.com/ShadowBlip/${_gitdir}.git#tag=${_tag}")
 sha256sums=('SKIP')
 pkgver() {
