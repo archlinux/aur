@@ -1,7 +1,7 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=networkd-broker
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="An event broker daemon for systemd-networkd"
 arch=('x86_64')
 url="https://github.com/bpetlert/networkd-broker"
@@ -11,28 +11,28 @@ makedepends=(cargo)
 options=(!lto)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('ffc8f1fbcdf4407d9f0e8d705b392329e5966361e82ef1b9cfaee77e6c589ea6')
+b2sums=('e32adb0e17a5cd1ec5e089fee1a5dc67798177b8ee2e60d6a3974037a88f5e6c6967c97be05e21496ae8de0d8b821ec9831d70eb92c6bfe8d8c48c5536fa9a93')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build  --frozen --release
+  cargo build --frozen --release
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 "target/release/networkd-broker" "$pkgdir/usr/bin/networkd-broker"
+  install -Dm755 "target/release/networkd-broker" "${pkgdir}/usr/bin/networkd-broker"
 
-  install -Dm644 "networkd-broker.service" "$pkgdir/usr/lib/systemd/system/networkd-broker.service"
+  install -Dm644 "networkd-broker.service" "${pkgdir}/usr/lib/systemd/system/networkd-broker.service"
 
-  install -dm755 "$pkgdir/etc/networkd/broker.d/"{carrier.d,degraded.d,dormant.d,no-carrier.d,off.d,routable.d}
+  install -dm755 "${pkgdir}/etc/networkd/broker.d/"{carrier.d,degraded.d,dormant.d,no-carrier.d,off.d,routable.d}
 
-  install -Dm644 "README.adoc" "$pkgdir/usr/share/doc/${pkgname}/README.adoc"
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 "README.adoc" "${pkgdir}/usr/share/doc/${pkgname}/README.adoc"
 }
