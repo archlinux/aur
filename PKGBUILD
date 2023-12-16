@@ -14,8 +14,8 @@ backup=("opt/${pkgname}/bin/pycharm64.vmoptions"
         "opt/${pkgname}/bin/idea.properties")
 depends=('giflib' 'glibc' 'sh' 'libxtst' 'libxslt' 'libxss' 'nss' 'python' 'libdbusmenu-glib' 'python-setuptools' 'cython')
 options=('!strip')
-source_x86_64=("https://download.jetbrains.com/python/${pkgname}-${pkgver}.tar.gz")
-source_aarch64=("https://download.jetbrains.com/python/${pkgname}-${pkgver}-aarch64.tar.gz")
+source_x86_64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}.tar.gz")
+source_aarch64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}-aarch64.tar.gz")
 source=("pycharm-professional.desktop"
         "ltedit.desktop")
 sha256sums=('a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
