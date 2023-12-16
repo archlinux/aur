@@ -19,6 +19,5 @@ pkgbase = encryptpad
 	validpgpkeys = 634BFC0CCC426C74389D89310F1CFF71A2813E85
 	sha1sums = SKIP
 	sha1sums = SKIP
-	sha1sums = SKIP
 
 pkgname = encryptpad
