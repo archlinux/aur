@@ -1,0 +1,17 @@
+pkgbase = dockbarx-lxqt-plugin
+	pkgdesc = DockBarX LXQT applet
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/xuzhen/dockbarx-lxqt-plugin
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	depends = dockbarx
+	depends = lxqt-panel
+	depends = qt5-x11extras
+	source = dockbarx-lxqt-plugin-0.9.tar.gz::https://github.com/xuzhen/dockbarx-lxqt-plugin/archive/refs/tags/v0.9.tar.gz
+	sha256sums = f61222d8a1a01ec2140860251cba9ff7107fcea606560324440d91b58d4e9c4d
+
+pkgname = dockbarx-lxqt-plugin
