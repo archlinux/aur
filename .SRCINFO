@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-battery-health-charging-git
 	pkgdesc = An extension to maximize the battery life of laptops by setting their charging threshold/modes.
-	pkgver = 42
+	pkgver = 42+2+gede2217
 	pkgrel = 1
 	url = https://github.com/maniacx/Battery-Health-Charging
 	install = battery-health-charging.install
