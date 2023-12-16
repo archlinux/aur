@@ -1,11 +1,13 @@
-# Maintainer: qlonik <volodin.n at gmail dot com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: qlonik <volodin.n at gmail dot com>
 
 pkgname=python-pyrabbit
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Pythonic interface to the RabbitMQ Management HTTP API"
 url="http://www.github.com/bkjones/pyrabbit"
 depends=('python' 'python-httplib2')
+makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/p/pyrabbit/pyrabbit-$pkgver.tar.gz")
