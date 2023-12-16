@@ -7,7 +7,7 @@
 # Releases and details about builds can be found at:
 # https://github.com/RobRich999/Chromium_Clang
 #
-# Check new releases:
+# Check the latest release:
 # curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -om1 '"name": *"[^"]*-linux64-deb-avx"' | awk -F'"' '{print $4}'
 #
 # Based on aur/google-chrome-dev
@@ -16,51 +16,67 @@ _pkgname=chromium-unstable
 _debname=chromium-browser-unstable
 _pkgver=v121.0.6159.0-r1231436-linux64-deb-avx
 
-pkgname=${_pkgname}-bin
+pkgname="${_pkgname}-bin"
 pkgver=121.0.6159.0
-pkgrel=1
-pkgdesc="The Chromium web browser built with the open source Clang compiler, LLD linker and Widevine (Unstable Channel)"
+pkgrel=2
+pkgdesc="The Chromium web browser for Linux built with the open source Clang compiler and LLD linker."
 arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD' 'custom:Widevine')
 depends=('alsa-lib'
+         'at-spi2-core'
+         'ca-certificates'
+         'cairo'
+         'curl'
+         'dbus'
+         'expat'
+         'glibc'
          'gtk3'
          'libcups'
-         'libxss'
-         'libxtst'
+         'libdrm'
+         'libx11'
+         'libxcb'
+         'libxcomposite'
+         'libxdamage'
+         'libxext'
+         'libxfixes'
+         'libxkbcommon'
+         'libxrandr'
+         'mesa'
+         'nspr'
          'nss'
+         'pango'
          'ttf-liberation'
+         'vulkan-icd-loader'
+         'wget'
          'xdg-utils')
-optdepends=('kdialog: for file dialogs in KDE'
-            'kwallet5: for storing passwords in KWallet'
-            'gnome-keyring: for storing passwords in GNOME keyring'
-            'pipewire: WebRTC desktop sharing under Wayland')
-conflicts=('chromium-unstable' 'chromium-unstable-avx2' 'chromium-unstable-avx2-bin')
+optdepends=('pipewire: WebRTC desktop sharing under Wayland'
+            'kdialog: support for native dialogs in Plasma'
+            'qt5-base: enable Qt5 with --enable-features=AllowQt'
+            'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
+            'org.freedesktop.secrets: password storage backend on GNOME / Plasma / Xfce')
+provides=("${_pkgname}" "${_debname}")
 options=('!emptydirs' '!strip')
 install=${_pkgname}.install
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
-        "${_pkgname}.sh")
+        "allow-user-flags.patch")
 sha1sums=('1b64c25749b113f6ea1f924ae3294f12058912ec'
-          '110f8db7e3809d0be8b6aadd36b805016b657c40')
+          'dd5c9032644b703aba5cf7c9e6766decb66989f7')
 
 package() {
+  # Extract the archive
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
 
-  # Launcher
-  install -m755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_debname}"
+  # Modify the startup script to allow user flags
+  patch -Np1 -d "${pkgdir}" -i "${srcdir}/allow-user-flags.patch"
 
-  # Icons
+  # Install icons
   for i in 16 24 32 48 64 128 256; do
     install -Dm644 "${pkgdir}/opt/chromium.org/${_pkgname}/product_logo_${i}.png" \
     "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_debname}.png"
   done
 
-  # Fix the Chromium desktop entry
-  sed -i \
-    -e "/Exec=/i\StartupWMClass=${_pkgname^}" \
-    "${pkgdir}/usr/share/applications/${_debname}.desktop"
-
-  # Remove the Debian Cron job, duplicate product logos and menu directory
+  # Remove the Cron job, duplicate product logos and menu directory
   rm -r \
     "${pkgdir}/etc/cron.daily/" \
     "${pkgdir}/opt/chromium.org/${_pkgname}/cron/" \
