@@ -2,7 +2,7 @@
 
 pkgname=python-ass
 pkgver=0.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for parsing and manipulating Advanced SubStation Alpha subtitle files."
 url='http://github.com/chireiden/python-ass'
 arch=('any')
@@ -25,7 +25,8 @@ build() {
 }
 
 check () {
-    pytest "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
+    pytest
 }
 
 package() {

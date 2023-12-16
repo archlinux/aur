@@ -1,7 +1,7 @@
 pkgbase = python-ass
 	pkgdesc = A library for parsing and manipulating Advanced SubStation Alpha subtitle files.
 	pkgver = 0.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/chireiden/python-ass
 	arch = any
 	license = MIT
