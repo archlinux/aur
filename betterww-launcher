@@ -5,8 +5,12 @@ if test -e betterww
 then
 	:
 else
-	mkdir betterww
+	cp -r /opt/betterww betterww
 fi
 
 cd betterww || exit
-python /opt/betterww/wwrando.py
+python wwrando.py
+wait
+
+cd "$HOME/.config" || exit
+rm -rf betterww
