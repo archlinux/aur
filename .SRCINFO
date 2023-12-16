@@ -1,7 +1,7 @@
 pkgbase = python-transformers
 	pkgdesc = State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow
 	pkgver = 4.36.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/huggingface/transformers
 	arch = any
 	license = Apache
@@ -20,6 +20,7 @@ pkgbase = python-transformers
 	depends = python-tokenizers<0.19
 	depends = python-tqdm
 	depends = python-yaml
+	optdepends = python-bitsandbytes: 8-bit support for PyTorch
 	optdepends = python-flax: JAX support
 	optdepends = python-onnxconverter-common: TensorFlow support
 	optdepends = python-pytorch: PyTorch support

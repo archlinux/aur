@@ -4,7 +4,7 @@
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
 pkgver=4.36.1
-pkgrel=1
+pkgrel=2
 pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
 arch=('any')
 url='https://github.com/huggingface/transformers'
@@ -25,6 +25,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=(
+  'python-bitsandbytes: 8-bit support for PyTorch'
   'python-flax: JAX support'
   'python-onnxconverter-common: TensorFlow support'
   'python-pytorch: PyTorch support'
