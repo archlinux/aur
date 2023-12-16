@@ -30,8 +30,8 @@ build() {
     cd $pkgname-$pkgver
     # export RUSTUP_TOOLCHAIN=stable
     # export CARGO_TARGET_DIR=target
-    export PG16_PG_CONFIG=/usr/bin
-    cargo build --frozen --release --features pg16
+    # export PG16_PG_CONFIG=/usr/bin
+    cargo build --frozen --release --no-default-features
 }
 
 check() {
