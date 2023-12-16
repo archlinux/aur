@@ -6,15 +6,15 @@
 
 pkgname=wine-wow64
 _name=wine
-pkgver=9.0rc1
-_pkgver=9.0-rc1
+pkgver=9.0rc2
+_pkgver=9.0-rc2
 pkgrel=1
 provides=("wine=$pkgver")
 conflicts=("wine")
 source=(https://dl.winehq.org/wine/source/9.0/$_name-$_pkgver.tar.xz
         30-win32-aliases.conf
         wine-binfmt.conf)
-b2sums=('70c57e066fb20426687ffa6dc60835cf38d21293a30fd6a5fadd56b74883f0fc689f88d9a78569c7f39a4174032d5f148cb365054d28df56bc6a19566c7ef366'
+b2sums=('2eddc96df30a8239b4b3314b7127eb3a11f953826506f12b8f5dc2acfe45f8a4fc3de7a4af4ada5c14c60783771ba865eb35189dcdb09eeb7e52438dd34fe668'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
         'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
 pkgdesc="A compatibility layer for running Windows programs"
@@ -76,8 +76,8 @@ build() {
   # Doesn't compile without remove these flags as of 4.10
   export CFLAGS="${CFLAGS/-fno-plt/} -ffat-lto-objects"
   export LDFLAGS="${LDFLAGS/,-z,now/}"
-  mkdir -p $srcdir/$_name-$pkgver/build
-  cd $srcdir/$_name-$pkgver/build
+  mkdir -p $srcdir/$_name-$_pkgver/build
+  cd $srcdir/$_name-$_pkgver/build
   ../configure \
     --without-tests \
     --prefix=/usr \
@@ -87,7 +87,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_name-$pkgver/build
+  cd $srcdir/$_name-$_pkgver/build
   
   make prefix="$pkgdir/usr" \
     libdir="$pkgdir/usr/lib" \
