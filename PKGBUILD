@@ -12,8 +12,6 @@ makedepends=('python-setuptools')
 source=('https://github.com/chireiden/python-ass/archive/refs/tags/0.5.4.tar.gz')
 sha256sums=('1a2bf40a87f1a4b7d81fac5805289bfcd11d202e00e5844211d0dda44c884618')
 
-provides=("${pkgname}")
-
 build() {
     cd "${pkgname}-${pkgver}"
     python setup.py build
