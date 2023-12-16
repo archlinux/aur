@@ -1,7 +1,7 @@
 pkgbase = buildbox-fuse
 	pkgdesc = A tool to run build commands in a sandbox with CAS as storage backend
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://buildgrid.build
 	arch = x86_64
 	license = Apache

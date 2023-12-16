@@ -1,7 +1,7 @@
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildbox-fuse
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to run build commands in a sandbox with CAS as storage backend"
 arch=(x86_64)
 url="https://buildgrid.build"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 build() {
   mkdir -p build
   cd build
-  CXXFLAGS="-flto=auto -O2 -ffunction-sections -Wl,--gc-sections" cmake ../buildbox-fuse \
+  CXXFLAGS="-flto=auto -flto-partition=one -fuse-linker-plugin -fno-fat-lto-objects -O2 -ffunction-sections -Wl,--gc-sections ${CXXFLAGS}" cmake ../buildbox-fuse \
     -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
