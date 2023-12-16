@@ -3,12 +3,12 @@
 _pkgname=pastecs
 _pkgver=1.3.21
 pkgname=r-${_pkgname,,}
-pkgver=1.3.21
-pkgrel=4
-pkgdesc='Package for Analysis of Space-Time Ecological Series'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Package for Analysis of Space-Time Ecological Series"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL2)
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-svunit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c1ef2affe88627f0b23295aa5edb758b8fd6089ef09f60f37c46445128b8d7c')
+md5sums=('678319e13833c913f57229c5157efc68')
+b2sums=('2a36b3a8b9fc1dd8ab2d0637111bba52c5babb42615f15105eebf15d5f92c724132188e4bee284dfd8d5a6e5a2855660478d5f5803132c0b37ecfb496aa0e760')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
