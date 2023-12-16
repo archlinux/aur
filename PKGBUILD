@@ -8,7 +8,7 @@ url="https://github.com/tensorchord/pgvecto.rs"
 license=('Apache-2.0')
 depends=('cargo-nightly' 'clang' 'postgresql' 'postgresql-libs' 'openssl' 'readline'  'libxml2' 'libxslt' 'zlib' 'ccache' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ba0be19c5f77c08526fe723ffe8d2fa14031d02ff4cb1685497e789f2f88b9b3')
+sha256sums=('e78105b94b20f072d1330c9e5dead1f91b3e210f9f824afe858f2b10d5a9d2a6')
 
 # prepare() {
 #     cd $pkgname-$pkgver
