@@ -1,0 +1,16 @@
+pkgbase = paruz-git
+	pkgdesc = A fzf terminal UI for paru or pacman
+	pkgver = r26.e7aaf49
+	pkgrel = 1
+	url = https://github.com/joehillen/paruz
+	arch = any
+	license = UNLICENSE
+	depends = bash
+	depends = fzf
+	optdepends = paru: for AUR support
+	provides = paruz
+	conflicts = paruz
+	source = git+https://github.com/joehillen/paruz
+	sha256sums = SKIP
+
+pkgname = paruz-git
