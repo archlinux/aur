@@ -3,30 +3,32 @@
 _pkgname=OrgMassSpecR
 _pkgver=0.5-3
 pkgname=r-${_pkgname,,}
-pkgver=0.5.3
-pkgrel=4
-pkgdesc='Organic Mass Spectrometry'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('BSD')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Organic Mass Spectrometry"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(BSD)
 depends=(
   r
 )
 optdepends=(
   r-knitr
-  r-lattice
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('88f9dd92969a0e9cb5c5bc0abd67143f8f1dbb75f01bc13cf4d8b5b0326aa9b7')
+md5sums=('37ae3ef0245548c68d6b3aef7832832f')
+b2sums=('5463c4d986a84de11c218ebd853e8e45255d0184e880d42c98c0daa4becc1077dd4f9eba0f43803ae94820e397d9f11ede72a854761244707cca037e01a6d69f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
