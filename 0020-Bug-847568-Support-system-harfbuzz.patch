@@ -21,10 +21,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  10 files changed, 39 insertions(+), 1 deletion(-)
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index f0404231eab0ba35391cad2f87ccfbf0afec4d67..53cbde197a2956052d1e0b0da1917716837c20b1 100644
+index 4b61063cf92a2adabb7b552328420aefbfc93242..f35c684e9ef6693804d8e026d8ff3fa8236f6444 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1240,6 +1240,13 @@ if CONFIG['OS_TARGET'] == 'Android':
+@@ -1238,6 +1238,13 @@ if CONFIG['OS_TARGET'] == 'Android':
          'vr/gvr/capi/include/gvr.h',
      ]
  
@@ -39,10 +39,10 @@ index f0404231eab0ba35391cad2f87ccfbf0afec4d67..53cbde197a2956052d1e0b0da1917716
      system_headers += [
          'jack/jack.h',
 diff --git a/dom/base/moz.build b/dom/base/moz.build
-index 7c24df79968ccf552ac25e98ae255699c30dc382..0c21e786dc0ad09907694af294baad7e831fe59e 100644
+index 9210804b890a26b625d4df182de31331dcc46f97..5050bf1c087b22d95ce569e5263f462dd19f129c 100644
 --- a/dom/base/moz.build
 +++ b/dom/base/moz.build
-@@ -608,6 +608,9 @@ FINAL_LIBRARY = "xul"
+@@ -604,6 +604,9 @@ FINAL_LIBRARY = "xul"
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
      CXXFLAGS += CONFIG["MOZ_GTK3_CFLAGS"]
  
@@ -143,7 +143,7 @@ index 17612ff1b396891c8942f53d3f39fbca8bdca6cb..d6d51948da54c7fbca53662050d33019
 +
  USE_LIBS += ["icu"]
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
-index 3faa0370cc1c0025f03f0011c73876c0da8a6e71..fb81f6ceebcb4c6c14d0e2e2df48531b74d174bf 100644
+index da1d8c47f83e2f23cd802615ab8fff822f6e05c8..7ee842def285a9a7fc805758e9f73494c0a59224 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
 @@ -286,6 +286,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
@@ -157,7 +157,7 @@ index 3faa0370cc1c0025f03f0011c73876c0da8a6e71..fb81f6ceebcb4c6c14d0e2e2df48531b
      OS_LIBS += CONFIG["MOZ_JPEG_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index b865c45a462f8d1a791115c7ab265dd23218e817..a811d7ba1f783681628e1c3f67d594573c4f9e39 100644
+index 28d3ffdc390b9273e6dd1adbe07d964150ab5a19..3b1ce8d63069384c9afca009fe19d2b3740241aa 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -678,6 +678,14 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):

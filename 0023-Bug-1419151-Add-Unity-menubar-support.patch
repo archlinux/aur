@@ -84,10 +84,10 @@ index fca2398bfc97aad365d3b446fab06f2a7863948e..fe057e454e9fcfa04db17d44306357a7
                                                      event.target.parentNode.openedWithKey);"
  #endif
 diff --git a/browser/base/content/browser.js b/browser/base/content/browser.js
-index 0bc3e362057b69754919b0e4a57eeb1846a7e6e5..23a7d39d852d9e57e960f9def3719c0b76e63e2f 100644
+index a8c62c15f68fd011e091fb30ba3e12de30cceb8d..e75140b99ada964eab7c69874002a2657fbac2be 100644
 --- a/browser/base/content/browser.js
 +++ b/browser/base/content/browser.js
-@@ -6326,11 +6326,18 @@ function onViewToolbarsPopupShowing(aEvent, aInsertPoint) {
+@@ -6370,11 +6370,18 @@ function onViewToolbarsPopupShowing(aEvent, aInsertPoint) {
    MozXULElement.insertFTLIfNeeded("browser/toolbarContextMenu.ftl");
    let firstMenuItem = aInsertPoint || popup.firstElementChild;
    let toolbarNodes = gNavToolbox.querySelectorAll("toolbar");
@@ -107,10 +107,10 @@ index 0bc3e362057b69754919b0e4a57eeb1846a7e6e5..23a7d39d852d9e57e960f9def3719c0b
        let menu = BookmarkingUI.buildBookmarksToolbarSubmenu(toolbar);
        popup.insertBefore(menu, firstMenuItem);
 diff --git a/browser/components/places/content/places.xhtml b/browser/components/places/content/places.xhtml
-index 0d5889651ee1f07218be19530754dacaf1311174..4412fe92b588d22d0aebc1af160a0ac7641cdeb2 100644
+index e1ac09878b1b66551cc96200d785ca8381999300..837709d0886ed42139ab5b3baf019b7b207067a0 100644
 --- a/browser/components/places/content/places.xhtml
 +++ b/browser/components/places/content/places.xhtml
-@@ -160,6 +160,7 @@
+@@ -184,6 +184,7 @@
  #else
        <menubar id="placesMenu">
          <menu class="menu-iconic" data-l10n-id="places-organize-button"
@@ -175,7 +175,7 @@ index b2059e396efec51ec515540e69adfd18a74a906f..5f00ef562b374aa5d1d5792240395c4a
  XPCOM_MANIFESTS += [
      "components.conf",
 diff --git a/modules/libpref/init/all.js b/modules/libpref/init/all.js
-index a38a760f9c5ce666ad8d51d46f7685c9ac45d7b3..33f501870f9309da3f38a61adb212caf008aeb15 100644
+index 86bfe71247a6aaa46123fb6b3aec7891e2ab31a2..4bfa4d829f3310b725a53145ae183a22846b566c 100644
 --- a/modules/libpref/init/all.js
 +++ b/modules/libpref/init/all.js
 @@ -161,6 +161,9 @@ pref("dom.text-recognition.enabled", true);
@@ -299,7 +299,7 @@ index 851de59d0c66dff8a593f494c5ea8a8fe88535b2..c6fa8c129c773f6fc377912dce921ab5
  
  if defined('NS_PRINTING'):
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
-index 90cd17a0982b980dfb313fc34aba69ceddcbe9d7..c6a765df9e5a4c95f77e9ee1b4ebbf9913a81e15 100644
+index 3e485fc428e83f0e0bd7952e40435ea1f94d081d..a6ed6f7c8cd08853f4bf1e25eb658b8fb9a4cbb1 100644
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
 @@ -100,6 +100,15 @@ UNIFIED_SOURCES += [
@@ -5263,10 +5263,10 @@ index 0000000000000000000000000000000000000000..2e0d429eddfdfc84620834eced6b9733
 +
 +#endif /* __nsNativeMenuService_h__ */
 diff --git a/widget/gtk/nsWindow.cpp b/widget/gtk/nsWindow.cpp
-index c73a4c64a58d93a827b9a793ed5cfd714a7852da..ceb048d79b69bb4e470d3f794c4f308eae5e868b 100644
+index e68ec8a346ea0244ced131d81e7317940001cea1..7d88d798cf8f39fe71722bef4be8c13db1427eab 100644
 --- a/widget/gtk/nsWindow.cpp
 +++ b/widget/gtk/nsWindow.cpp
-@@ -7561,6 +7561,10 @@ void nsWindow::HideWindowChrome(bool aShouldHide) {
+@@ -7573,6 +7573,10 @@ void nsWindow::HideWindowChrome(bool aShouldHide) {
    SetWindowDecoration(aShouldHide ? BorderStyle::None : mBorderStyle);
  }
  
@@ -5404,7 +5404,7 @@ index 0000000000000000000000000000000000000000..488c8f49c0217890d2c5a12f57fdc194
 +    Atom("shellshowingmenubar", "shellshowingmenubar"),
 +]
 diff --git a/xpcom/ds/StaticAtoms.py b/xpcom/ds/StaticAtoms.py
-index 2e4fd0133936bd57bcd1721894cf310527169658..d636a1e23507309742ee6b6b6daec8868932c723 100644
+index f0303d1bff25affba3d1a795d75c9521029f459f..72583aebe1a61e6953cebeedafecdc4a37869349 100644
 --- a/xpcom/ds/StaticAtoms.py
 +++ b/xpcom/ds/StaticAtoms.py
 @@ -13,6 +13,7 @@ from Atom import (
@@ -5415,7 +5415,7 @@ index 2e4fd0133936bd57bcd1721894cf310527169658..d636a1e23507309742ee6b6b6daec886
  
  # Static atom definitions, used to generate nsGkAtomList.h.
  #
-@@ -2548,7 +2549,7 @@ STATIC_ATOMS = [
+@@ -2552,7 +2553,7 @@ STATIC_ATOMS = [
      InheritingAnonBoxAtom("AnonBox_mozSVGForeignContent", ":-moz-svg-foreign-content"),
      InheritingAnonBoxAtom("AnonBox_mozSVGText", ":-moz-svg-text"),
      # END ATOMS
@@ -5425,10 +5425,10 @@ index 2e4fd0133936bd57bcd1721894cf310527169658..d636a1e23507309742ee6b6b6daec886
  
  
 diff --git a/xpfe/appshell/AppWindow.cpp b/xpfe/appshell/AppWindow.cpp
-index ea2b7029426300ed33acbfd33302392a6c17a4d4..231b47372caf18e1a7fa3206cff103a43006f8ce 100644
+index 6a2f0f552c1961822712bdb43100525a854d94d2..5d0a7bb34603187ef97fb59a18d00b1175df5247 100644
 --- a/xpfe/appshell/AppWindow.cpp
 +++ b/xpfe/appshell/AppWindow.cpp
-@@ -77,7 +77,7 @@
+@@ -78,7 +78,7 @@
  
  #include "mozilla/dom/DocumentL10n.h"
  

@@ -32,10 +32,10 @@ index fe765d1fa0130296b9b89129ad5bf5f55a885823..58396762e2e6950855816e4ce175b5cb
  if not CONFIG["MOZ_SYSTEM_PNG"]:
      external_dirs += ["media/libpng"]
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index dc7f580453a7f171ddfe795f450bf1cfe1bf6b7a..f0404231eab0ba35391cad2f87ccfbf0afec4d67 100644
+index 20145e89af1bbb02476d84340088bb7ceba7af8e..4b61063cf92a2adabb7b552328420aefbfc93242 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1296,6 +1296,14 @@ if CONFIG['MOZ_ENABLE_LIBPROXY']:
+@@ -1294,6 +1294,14 @@ if CONFIG['MOZ_ENABLE_LIBPROXY']:
          'proxy.h',
      ]
  
@@ -90,7 +90,7 @@ index 845d0030229cc2a81eaa1a0ca341d0175af3d976..3b5d5153fc9f49ed729eb5685e8d6779
          LOCAL_INCLUDES += ['/media/mozva']
          SOURCES += [
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 98373842410d8ff4ae5e272bca38f39a0bb20118..b865c45a462f8d1a791115c7ab265dd23218e817 100644
+index 9d5ee0ca9100d4206e8e0ef43f6ce5193acfa078..28d3ffdc390b9273e6dd1adbe07d964150ab5a19 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -747,14 +747,29 @@ def av1(value):

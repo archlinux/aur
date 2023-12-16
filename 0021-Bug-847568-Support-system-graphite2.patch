@@ -20,10 +20,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  create mode 100644 gfx/graphite2/geckoextra/moz.build
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index 53cbde197a2956052d1e0b0da1917716837c20b1..cae9c78f51c3eea97a954c9e830e88544bbcbdee 100644
+index f35c684e9ef6693804d8e026d8ff3fa8236f6444..faac04e9d6ab8af7698aea7b3b0ec92a5b364227 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1247,6 +1247,12 @@ if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
+@@ -1245,6 +1245,12 @@ if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
  	'harfbuzz/hb.h',
      ]
  
@@ -166,7 +166,7 @@ index 57a41cb1b28592b761c51d6fbdc6ec0ce4a54936..7d6b36c150eca93b035de97ade08a78e
  dnl = Child Process Name for IPC
  dnl ========================================================
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
-index fb81f6ceebcb4c6c14d0e2e2df48531b74d174bf..e43d77d815ace132469fe3c1ecca7256fce1e0f7 100644
+index 7ee842def285a9a7fc805758e9f73494c0a59224..1ac8cf64d8e079f7a1a0b57b2042d46285b2c766 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
 @@ -286,6 +286,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
@@ -180,7 +180,7 @@ index fb81f6ceebcb4c6c14d0e2e2df48531b74d174bf..e43d77d815ace132469fe3c1ecca7256
      OS_LIBS += CONFIG["MOZ_HARFBUZZ_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index a811d7ba1f783681628e1c3f67d594573c4f9e39..bbcbde85670803415bd804bc472f64fb592f490b 100644
+index 3b1ce8d63069384c9afca009fe19d2b3740241aa..74073e7e33f587ad8bf6a42f06fce156fcd33382 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -678,6 +678,19 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):

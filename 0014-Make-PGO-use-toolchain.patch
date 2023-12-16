@@ -9,7 +9,7 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  1 file changed, 9 insertions(+)
 
 diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
-index f1e5a2edd9257f82210019ae4b9e68187a9545a7..b7f9c6bb8f9c01f1c6ab9c9c7bf7ed41e8f99fc3 100644
+index 05bf666b392533ca0a4e0a1428f5f1786b5f5821..4b4502aaa2183091cff1e2995862fb34ad7fd8b4 100644
 --- a/build/unix/mozconfig.unix
 +++ b/build/unix/mozconfig.unix
 @@ -4,6 +4,15 @@ if [ -n "$FORCE_GCC" ]; then

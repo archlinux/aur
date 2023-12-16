@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Dec  8 15:55:00 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 120.0.1 (boo#1217910)
+  * Fixed a bug that was causing persistent startup slowdowns
+    (bmo#1867095)
+  * Fixed an issue that was causing 100% CPU usage on sites such as
+    Google Maps. (bmo#1866409)
+  * Fixed an issue that was causing YouTube videos to show a green
+    screen when hardware acceleration was enabled. (bmo#1865928)
+  * Fixed an issue where the status bar was still visible when
+    viewing fullscreen video. (bmo#1853896)
+  * Fixed a startup crash affecting Linux users on some aarch64
+    systems with page sizes other than 4KB. (bmo#1866025)
+
+-------------------------------------------------------------------
+Wed Nov 22 06:57:37 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 120.0
+  https://www.mozilla.org/en-US/firefox/120.0/releasenotes
+  MFSA 2023-49 (bsc#1217230)
+  * CVE-2023-6204 (bmo#1841050)
+    Out-of-bound memory access in WebGL2 blitFramebuffer
+  * CVE-2023-6205 (bmo#1854076)
+    Use-after-free in MessagePort::Entangled
+  * CVE-2023-6206 (bmo#1857430)
+    Clickjacking permission prompts using the fullscreen
+    transition
+  * CVE-2023-6207 (bmo#1861344)
+    Use-after-free in ReadableByteStreamQueueEntry::Buffer
+  * CVE-2023-6208 (bmo#1855345)
+    Using Selection API would copy contents into X11 primary
+    selection.
+  * CVE-2023-6209 (bmo#1858570)
+    Incorrect parsing of relative URLs starting with "///"
+  * CVE-2023-6210 (bmo#1801501)
+    Mixed-content resources not blocked in a javascript: pop-up
+  * CVE-2023-6211 (bmo#1850200)
+    Clickjacking to load insecure pages in HTTPS-only mode
+  * CVE-2023-6212 (bmo#1658432, bmo#1820983, bmo#1829252,
+    bmo#1856072, bmo#1856091, bmo#1859030, bmo#1860943,
+    bmo#1862782)
+    Memory safety bugs fixed in Firefox 120, Firefox ESR 115.5,
+    and Thunderbird 115.5
+  * CVE-2023-6213 (bmo#1849265, bmo#1851118, bmo#1854911)
+    Memory safety bugs fixed in Firefox 120
+- rebased patches
+
+-------------------------------------------------------------------
+Wed Nov  8 20:27:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 119.0.1
+  * Fixed a bug causing colors in the <select> HTML element to not
+    be applied to dropdown menu arrows (bmo#1861253)
+  * Fixed a bug with the <input> HTML element state not changing
+    when dynamically updating the `disabled` attribute on an
+    ancestor <fieldset> (bmo#1861027)
+  * Fixed a bug causing elements with the indeterminate CSS
+    selector in a radio group to not update (bmo#1861346)
+
+-------------------------------------------------------------------
 Thu Oct 26 10:31:03 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 119.0

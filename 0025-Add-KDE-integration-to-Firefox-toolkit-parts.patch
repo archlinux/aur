@@ -48,10 +48,10 @@ Co-authored-by: Björn Bidar <bjorn.bidar@thaodan.de>
  create mode 100644 uriloader/exthandler/unix/nsKDERegistry.h
 
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
-index 240dd198b529460eebca32da2dd14d3a91a99179..d956d013a1ce3480df823d1275e9a1eb6423016e 100644
+index 0dc2a121245350fbc57d976a04f199c53065f8b8..969bdb4f6dba260e903df85bee8d3c7c2df32a1c 100644
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -95,6 +95,7 @@
+@@ -96,6 +96,7 @@
  #ifdef MOZ_BACKGROUNDTASKS
  #  include "mozilla/BackgroundTasks.h"
  #endif
@@ -60,7 +60,7 @@ index 240dd198b529460eebca32da2dd14d3a91a99179..d956d013a1ce3480df823d1275e9a1eb
  #ifdef DEBUG
  #  include <map>
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
-index 63c4608a88d9b9a5e3163294b6d778a2354dc5f5..dbafcdda35c672e00159c9d461219bd23072c6cf 100644
+index 3e835d422cfdfb07410b01e834bee2973ae30c57..ce58aec8ef07acf971290174b9ee5c172b1fdccd 100644
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
 @@ -126,6 +126,10 @@ UNIFIED_SOURCES += [
@@ -255,7 +255,7 @@ index 185dc1e22a903cec95b212d1713dddf764b9b198..bdb4ed6f9f86583d02dd80278f858d06
    auto result = MakeRefPtr<nsUnixSystemProxySettings>();
    result->Init();
 diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
-index de05e0cc29752855138b4d189ce6a13c2121d715..c89faad7bfca4ab1d60390766b2e7befd9e3831d 100644
+index 9a76d1f580c08fafe6b3ab53669cb2ee6c289d12..80416ff1b4edeba2d90c934f2e8a5a519aaed041 100644
 --- a/toolkit/xre/moz.build
 +++ b/toolkit/xre/moz.build
 @@ -96,7 +96,9 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "uikit":
@@ -644,7 +644,7 @@ index ab77657dd5f378af0955c43ef958a8abea620134..18b4d85560699bbc3c69b82ee91dfb5c
    *aHandlerExists = false;
  #endif
 diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
-index 0fb126a7f3f7a45d53e6fb81aef74147c711cb77..8cc0006f3045e14e83fd51926ac7856eacbe7357 100644
+index cb96c690a69a87a95dc28cc4903cd84718c324af..164c06c8d186f7af445fa5bd5c08757b1c89e7fd 100644
 --- a/uriloader/exthandler/moz.build
 +++ b/uriloader/exthandler/moz.build
 @@ -86,7 +86,9 @@ else:
@@ -986,7 +986,7 @@ index 7f6eaa46f2ee0d5155b83bfb07d8040584935772..f7627e790c47e1ae007b072b4bb47b18
        LOG("Got MIMEInfo from GNOME registry without extensions; setting them "
            "to %s\n",
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
-index c6a765df9e5a4c95f77e9ee1b4ebbf9913a81e15..6e9028169ac594a24f90a4f58dc493c8332c6bf8 100644
+index a6ed6f7c8cd08853f4bf1e25eb658b8fb9a4cbb1..8362e17dee84e45c820ebf99397da914263bc1ef 100644
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
 @@ -161,6 +161,7 @@ LOCAL_INCLUDES += [
@@ -1362,7 +1362,7 @@ index 88ee06d78db60a84343fd3d23c16e163aead37c3..834d6a2d353cc1bd11916de8a28f5d05
          stTablet == eBad ||
  #endif
 diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
-index 95ee64e985ac34dd6a3191f1948afa6d05adcb73..9af8f80497b7390b7ca434b6ee3b86b2baf47489 100644
+index 4a58f46da3f610e9b2f55053939235c7350fedc5..7fb012af861f20932778c59da631f663def2db34 100644
 --- a/xpcom/components/moz.build
 +++ b/xpcom/components/moz.build
 @@ -71,6 +71,7 @@ LOCAL_INCLUDES += [
@@ -1374,7 +1374,7 @@ index 95ee64e985ac34dd6a3191f1948afa6d05adcb73..9af8f80497b7390b7ca434b6ee3b86b2
  
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
 diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
-index 08c77360de6fdbf3dc579ea49243dbdc18f37ebc..eedd5bcf86bde3ecd795bbbcbf94799f19135323 100644
+index 0b539854a7c617a6c45392de9d67a2a25ec2bff1..59f432741ff31b02888b27b158528c433293cbaa 100644
 --- a/xpcom/io/nsLocalFileUnix.cpp
 +++ b/xpcom/io/nsLocalFileUnix.cpp
 @@ -51,6 +51,7 @@
@@ -1385,7 +1385,7 @@ index 08c77360de6fdbf3dc579ea49243dbdc18f37ebc..eedd5bcf86bde3ecd795bbbcbf94799f
  #endif
  
  #ifdef MOZ_WIDGET_COCOA
-@@ -2172,10 +2173,18 @@ nsLocalFile::Reveal() {
+@@ -2188,10 +2189,18 @@ nsLocalFile::Reveal() {
    }
  
  #ifdef MOZ_WIDGET_GTK
@@ -1406,7 +1406,7 @@ index 08c77360de6fdbf3dc579ea49243dbdc18f37ebc..eedd5bcf86bde3ecd795bbbcbf94799f
    return giovfs->RevealFile(this);
  #elif defined(MOZ_WIDGET_COCOA)
    CFURLRef url;
-@@ -2197,6 +2206,13 @@ nsLocalFile::Launch() {
+@@ -2213,6 +2222,13 @@ nsLocalFile::Launch() {
    }
  
  #ifdef MOZ_WIDGET_GTK

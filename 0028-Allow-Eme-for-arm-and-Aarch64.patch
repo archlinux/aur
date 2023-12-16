@@ -12,7 +12,7 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 9fd9356c4016933f84f660c40116739f20ca15ee..521202cdbfbd372900a98a4247bd008135952bf4 100644
+index f599c82d749e5efda576a5122de7d4b88ea22831..486a6f791cb1e1c752ebc81e455c1f7cdd0c76ce 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -867,7 +867,7 @@ def eme_choices(target, wmf):

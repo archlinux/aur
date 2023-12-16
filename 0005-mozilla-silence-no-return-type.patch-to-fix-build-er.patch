@@ -28,6 +28,7 @@ Subject: [PATCH] mozilla-silence-no-return-type.patch to fix build errors on
  .../call/adaptation/video_stream_adapter.cc      |  5 +++++
  third_party/libwebrtc/call/rtp_payload_params.cc |  2 +-
  third_party/libwebrtc/call/video_send_stream.cc  |  1 +
+ third_party/libwebrtc/media/base/codec.cc        |  1 +
  .../audio_processing/agc2/clipping_predictor.cc  |  2 +-
  .../agc2/input_volume_stats_reporter.cc          |  1 +
  .../audio_processing/agc2/rnn_vad/rnn_fc.cc      |  2 ++
@@ -42,7 +43,7 @@ Subject: [PATCH] mozilla-silence-no-return-type.patch to fix build errors on
  .../codecs/vp8/default_temporal_layers.cc        |  1 +
  .../codecs/vp8/temporal_layers_checker.cc        |  1 +
  .../video_stream_encoder_resource_manager.cc     |  1 +
- 37 files changed, 66 insertions(+), 5 deletions(-)
+ 38 files changed, 67 insertions(+), 5 deletions(-)
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 index 19d083672f6b974e1df968bf4061b40002b01310..c1103223deaba0df7d97eb5ff71c0e78b3c41d03 100644
@@ -300,10 +301,10 @@ index ddd287ad0cc1e3910adeb125a989fe2b0d93ec9e..c7a62205ab89742e8994b8fc067064c0
  
      sk_sp<SkVertices> makeVertices(const SkPath& path, const SkMatrix& ctm,
 diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
-index 4da6f4a4b00a9280e9ef4e4415857f7f715cd07b..6e2c9fa7b2b92b5a5b3469b0aed9405f43937b58 100644
+index 9438ae4d419a21030091ac88864330eb6db0b91b..bf7507ef0f3d5715c8910f4e635485200420e18f 100644
 --- a/intl/icu/source/i18n/number_rounding.cpp
 +++ b/intl/icu/source/i18n/number_rounding.cpp
-@@ -283,6 +283,7 @@ FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac)
+@@ -287,6 +287,7 @@ FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac)
      settings.fMaxFrac = static_cast<digits_t>(maxFrac);
      settings.fMinSig = -1;
      settings.fMaxSig = -1;
@@ -311,7 +312,7 @@ index 4da6f4a4b00a9280e9ef4e4415857f7f715cd07b..6e2c9fa7b2b92b5a5b3469b0aed9405f
      PrecisionUnion union_;
      union_.fracSig = settings;
      return {RND_FRACTION, union_};
-@@ -294,6 +295,7 @@ Precision Precision::constructSignificant(int32_t minSig, int32_t maxSig) {
+@@ -298,6 +299,7 @@ Precision Precision::constructSignificant(int32_t minSig, int32_t maxSig) {
      settings.fMaxFrac = -1;
      settings.fMinSig = static_cast<digits_t>(minSig);
      settings.fMaxSig = static_cast<digits_t>(maxSig);
@@ -462,6 +463,18 @@ index e8532a7a2669e717e79c49a1fd45020ca07dbced..c251629073b4c555c57d79d7fa7578a2
  }
  
  }  // namespace
+diff --git a/third_party/libwebrtc/media/base/codec.cc b/third_party/libwebrtc/media/base/codec.cc
+index 7a238cfae4ae4e6e499052361376b2a13428de6c..93ec783252473adbfb5a5703d9e2ca98d4e3f457 100644
+--- a/third_party/libwebrtc/media/base/codec.cc
++++ b/third_party/libwebrtc/media/base/codec.cc
+@@ -200,6 +200,7 @@ bool Codec::Matches(const Codec& codec,
+       case Type::kVideo:
+         return IsSameCodecSpecific(name, params, codec.name, codec.params);
+     }
++    return false; // unreached
+   };
+ 
+   return matches_id && matches_type_specific();
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 index fd759c63e8519fc8655cb873c3d7fc04e209e03d..1a3369ee23bdac60d4f68c9f34be991ce2be47dd 100644
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
@@ -562,7 +575,7 @@ index 90428464e3bca2e8b0268e977d03d27176aedf86..8f9f8ac3ee6b743cb1d025d0f3b4088b
  
  }  // namespace
 diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
-index ebe6779e31be9bbeab5154171ca02fc9d90e8c2a..b78c38f97622ee7d2b24c8ebf6c3ab0c7931d7c7 100644
+index 61ed84ebb532521ce9a4af69355807b04f228859..4d06c61ce6bffcd89b767932e9c7987cea6cceab 100644
 --- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 +++ b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 @@ -44,6 +44,7 @@ ScreenCastPortal::CaptureSourceType ScreenCastPortal::ToCaptureSourceType(
