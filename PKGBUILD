@@ -6,7 +6,7 @@ pkgdesc="Postgres extension that provides vector similarity search functions. It
 arch=(x86_64)
 url="https://github.com/tensorchord/pgvecto.rs"
 license=('Apache-2.0')
-makedepends=('cargo-nightly' 'clang' 'postgresql' 'postgresql-libs' 'openssl' 'readline'  'libxml2' 'libxslt' 'zlib' 'ccache' 'git')
+depends=('cargo-nightly' 'clang' 'postgresql' 'postgresql-libs' 'openssl' 'readline'  'libxml2' 'libxslt' 'zlib' 'ccache' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ba0be19c5f77c08526fe723ffe8d2fa14031d02ff4cb1685497e789f2f88b9b3')
 
