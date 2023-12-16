@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-peft
 _pkgname=${pkgname#python-}
-pkgver=0.5.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='State-of-the-art Parameter-Efficient Fine-Tuning.'
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/huggingface/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('954b86dcf3dad64562ce7b9167485ac42c47fcc668d82ea99874001aa585f53e')
+sha256sums=('4468f4f255ca8ddd7ec6eecf93d9481dc83d89bd689e520ef90057008211efb9')
 
 build() {
     python -m build -nw $_pkgname-$pkgver
