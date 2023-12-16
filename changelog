@@ -1,3 +1,9 @@
+2023-12-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.5.0.11-1:
+    🔧 Fixed very rare ASF crash caused by access tokens race condition (@JustArchi).
+    🖥️ Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    🌐 Updated localization provided by our community (@JustArchi-ArchiBot).
+    🔁 Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2023-12-15 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.5.0.10-1:
     ❗ ASF is now based on .NET 8 platform. While mostly transparent and compatible for end-users, new .NET major version brings a lot of improvements, enhancements, bugfixes and optimizations. It also opens new ASF version cycle, V5.5, due to potential breaking changes (@JustArchi).
