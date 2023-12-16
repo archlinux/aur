@@ -2,7 +2,7 @@ pkgdesc="ROS - Controller for a steer drive mobile base."
 url='http://wiki.ros.org/ackermann_steering_controller'
 
 pkgname='ros-noetic-ackermann-steering-controller'
-pkgver='0.19.0'
+pkgver='0.21.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -38,7 +38,7 @@ depends=(
 
 _dir="ros_controllers-${pkgver}/ackermann_steering_controller"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
-sha256sums=('ce96e156344d628b655eb9d2394c19dd50b77324da12df674d220fa4afea6e68')
+sha256sums=('19e710b944e972ffb7fadb2d149f97bcdc1c2c0cf38a20405c09afced1543ba4')
 
 build() {
     # Use ROS environment variables
