@@ -3,12 +3,12 @@
 _pkgname=locfit
 _pkgver=1.5-9.8
 pkgname=r-${_pkgname,,}
-pkgver=1.5.9.8
-pkgrel=1
-pkgdesc='Local Regression, Likelihood and Density Estimation'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Local Regression, Likelihood and Density Estimation"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-interp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0d0a9bfb32e50e8f8f97de771f91b17db1db7c5be35027f2d7840a7293e11de3')
+md5sums=('fd900b88abdee96d0d9afac8ec753db1')
+b2sums=('b30ec9264fbe901e840a6d8d86ab2e4520a6c0ac131da357a4fb742c280481e7f0bd6fa9cdb8aa221fee370fcf6c5f25aebcae6195cf032f273ae311824974bc')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
