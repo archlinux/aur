@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-moveit-core
 	pkgdesc = ROS - Core libraries used by MoveIt!.
-	pkgver = 1.1.8
-	pkgrel = 2
+	pkgver = 1.1.13
+	pkgrel = 1
 	url = https://moveit.ros.org
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = ros-noetic-moveit-core
 	depends = console-bridge
 	depends = urdfdom
 	depends = urdfdom-headers
+	depends = ruckig
 	depends = ros-noetic-eigen-stl-containers
 	depends = ros-noetic-geometric-shapes
 	depends = ros-noetic-geometry-msgs
@@ -47,7 +48,7 @@ pkgbase = ros-noetic-moveit-core
 	depends = ros-noetic-pluginlib
 	depends = ros-noetic-tf2-kdl
 	depends = ros-noetic-angles
-	source = ros-noetic-moveit-core-1.1.8.tar.gz::https://github.com/ros-planning/moveit/archive/1.1.8.tar.gz
-	sha256sums = 2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969
+	source = ros-noetic-moveit-core-1.1.13.tar.gz::https://github.com/ros-planning/moveit/archive/1.1.13.tar.gz
+	sha256sums = 91735df0ec1a7bdbcdad9028352a0d78d44fad2076584319120e2e10ecb5882c
 
 pkgname = ros-noetic-moveit-core
