@@ -3,24 +3,25 @@
 _pkgname=colorRamps
 _pkgver=2.3.1
 pkgname=r-${_pkgname,,}
-pkgver=2.3.1
-pkgrel=1
-pkgdesc='Builds color tables'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=6
+pkgdesc="Builds Color Tables"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('61f1290824380ae2fe4649f296649e0a155b73ced41479686150400f8a9c568a')
+md5sums=('854cb46c9d7f15cc41890ef817b23f6b')
+b2sums=('a4bbff033c9b02c2e0389fadc431c2720f065854672111ce937bbb034c0cfd3410bb163ae8ef074b00be7cc887b61d3b01ba9864ec36d48d91633f75fd0731b0')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
