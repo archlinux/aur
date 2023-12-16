@@ -2,7 +2,7 @@
 # Maintainer: Greg White <gwhite@kupulau.com>
 
 pkgname=brave-beta-bin
-pkgver=1.62.108
+pkgver=1.62.110
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default (beta binary release).'
 arch=(x86_64 aarch64)
@@ -20,7 +20,7 @@ source=("brave-beta-bin.sh")
 source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta_${pkgver}_arm64.deb")
 sha512sums=('56be4daa8294c7c3d4b3f1ce7169ac575be0faa623d7cd977eb135e971914b90e3f596ecad72d89178de04e65cd3d49c138e8518d1dccf9fc814d0858b38767e')
-sha512sums_x86_64=('e8168dfdfb80911047cbfdc14f4c23a70d67f43ad8fa4ff505373e1051c08c972ee7c3f883f7e89ac6166a52ba6dba9c2c3c15cc48159e27e1b15100217e23e1')
+sha512sums_x86_64=('5bb2bcaf45b0a5fcaee2bb580dfd8ed86e7e5873eb09b3859fdd1d00d06ed6906fb7dd9a10fae5574be735c38ed796ce3526d6a90b3dc3b51c7575b938de9e10')
 sha512sums_aarch64=('SKIP')
 
 options=(!strip)
