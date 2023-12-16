@@ -1,0 +1,17 @@
+pkgbase = tails-adventure
+	pkgdesc = Open source remake of Tails Adventure for modern platforms
+	pkgver = d1.4.1
+	pkgrel = 1
+	url = https://github.com/mechakotik/TailsAdventure
+	arch = x86_64
+	license = GPL
+	makedepends = base-devel
+	makedepends = meson
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = tinyxml2
+	source = tails-adventure-d1.4.1::https://github.com/mechakotik/TailsAdventure/archive/demo-1.4.1.tar.gz
+	sha256sums = 136dacbb2c51b4908cf206017baa3d614a1f009d98347f45b315610e1118d336
+
+pkgname = tails-adventure
