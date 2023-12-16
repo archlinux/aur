@@ -1,6 +1,6 @@
 pkgbase = lib32-ncurses-git
 	pkgdesc = System V Release 4.0 curses emulation library (32-bit)
-	pkgver = 6.2
+	pkgver = 6.4.20231209.r0.gb5a2b7c7
 	pkgrel = 1
 	url = https://www.gnu.org/software/ncurses/
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = lib32-ncurses-git
 	sha512sums = SKIP
 
 pkgname = lib32-ncurses-git
-

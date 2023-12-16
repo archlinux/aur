@@ -1,9 +1,9 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Maintainer: Andreas Marschall <andreas.marschall [at] unitybox.d>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=lib32-ncurses-git
-pkgver=6.2
+pkgver=6.4.20231209.r0.gb5a2b7c7
 pkgrel=1
 pkgdesc="System V Release 4.0 curses emulation library (32-bit)"
 arch=('x86_64')
