@@ -4,7 +4,7 @@ _srcname=SPIRV-LLVM-Translator
 pkgname=spirv-llvm-translator-minimal-git
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version"
 epoch=1
-pkgver=r1922.1e3ec59
+pkgver=r1929.8e6f467
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -15,23 +15,14 @@ depends=(llvm-libs-minimal-git spirv-tools-git gcc-libs glibc)
 provides=(spirv-llvm-translator)
 conflicts=(spirv-llvm-translator)
 source=("git+$url.git"
-    "2258.patch"
 )
-# https://github.com/KhronosGroup/SPIRV-LLVM-Translator/issues/2261
-# see https://github.com/KhronosGroup/SPIRV-LLVM-Translator/pull/2258
-md5sums=('SKIP'
-         '8902539869f8962da4ee16e50c033743')
-sha512sums=('SKIP'
-            '1c3765c4c8c2e3cf1bcf8e15d1a6821b962175a9695744dc823d6513e527af873b0da4e5e771db98062c2662899e969985b55e5f5cd103455d214f89384ff44f')
+md5sums=('SKIP')
+sha512sums=('SKIP')
 
 
 pkgver() {
     cd $_srcname
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-    patch --directory=$_srcname --forward --strip=1 --input="${srcdir}"/2258.patch
 }
 
 build() {
@@ -50,7 +41,7 @@ build() {
         -D BUILD_SHARED_LIBS=ON \
         -Wno-dev
 
-    make -C _build -j 1
+    make -C _build
 }
 
 check() {
