@@ -1,6 +1,6 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
-_pkgname=dockbarx-lxqt-applet
+_pkgname=dockbarx-lxqt-plugin
 pkgname=${_pkgname}-git
 pkgver=0.9+1+g3838fbb
 pkgrel=1
