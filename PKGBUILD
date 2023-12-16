@@ -1,6 +1,6 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgname=pgvecto.rs
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Postgres extension that provides vector similarity search functions. It is written in Rust and based on pgrx."
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 groups=()
 depends=()
 makedepends=('cargo-nightly' 'clang' 'postgresql'
-    'postgresql-libs' 'openssl' 'pkgconf' 'gcc' 'readline' 'flex' 'bison' 'libxml2' 'libxslt' 'zlib' 'ccache' 'clang' 'git')
+    'postgresql-libs' 'openssl' 'readline'  'libxml2' 'libxslt' 'zlib' 'ccache' 'git')
 optdepends=()
 provides=()
 conflicts=()
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('fca3535ddb8afed734fd5d78153f07ec09c45a044991de189f4d865f0ba402ac')
+sha256sums=('ba0be19c5f77c08526fe723ffe8d2fa14031d02ff4cb1685497e789f2f88b9b3')
 
 prepare() {
     cd $pkgname-$pkgver
