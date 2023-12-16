@@ -1,0 +1,23 @@
+pkgbase = bugdom2
+	pkgdesc = Sequel to the original Bugdom
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/jorio/Bugdom2
+	arch = x86_64
+	license = custom:CC-BY-NC-SA-4.0
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = libglvnd
+	depends = sdl2
+	depends = glu
+	depends = hicolor-icon-theme
+	source = bugdom2::git+https://github.com/jorio/Bugdom2.git#commit=4050d6f97bf5d8b7ac9e91b1b7d4eacf3a4af87c
+	source = github.com-jorio-Pomme::git+https://github.com/jorio/Pomme
+	source = wrapper.sh
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = 8c38b79234c0726f24411c622269a123a3a68519064b69dec3f9d859aafbd9d8fd96475ef06404ccde6a5162da2aa186183c28670e00f8a5f7d144c4f0ae440d
+
+pkgname = bugdom2
