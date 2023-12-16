@@ -1,13 +1,13 @@
 # Maintainer: xaque <xaque at duck dot com>
 
-_stablever=2305.1
-_engver=2.1.0
-_builddate="20230905"
-_debname="O3DE_latest.deb"
+_stablever=2310.1
+_engver=4.0.0
+_builddate="20231214"
+_debname="o3de_latest.deb"
 _binname="o3de-nightly"
 
 pkgname=o3de-nightly-bin
-pkgver=${_stablever}_${_builddate}
+pkgver="${_stablever}_${_builddate}"
 pkgrel=1
 pkgdesc='Open 3D Engine - An open-source, real-time 3D development engine (Nightly build)'
 arch=('x86_64')
