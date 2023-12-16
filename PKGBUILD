@@ -1,6 +1,6 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=galerio
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A simple generator for static HTML flexbox galleries"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache')
 depends=()
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dbrgn/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('44e85f982072b12bbd77cba199cabef4f9b0632ce71ce6f536512ce186b6bf41')
+sha256sums=('639e3a011e70e32343b1ea8bbdcca15783f05a65c6027dbace0a6c075aad4a00')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
