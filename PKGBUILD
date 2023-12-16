@@ -1,12 +1,12 @@
 pkgname=hackernel
-pkgver=1.7.3
-pkgrel=2
+pkgver=1.7.4
+pkgrel=1
 pkgdesc="host intrusion detection and prevention system"
 url="https://github.com/lanthora/hackernel"
 license=('GPL')
 arch=('x86_64' 'armv7h' 'aarch64')
 source=("https://github.com/lanthora/hackernel/archive/refs/tags/v$pkgver.tar.gz" )
-sha256sums=('a199f215136c6b2d31d432242732efc66c93ca940c22adde90695929c3afffbd')
+sha256sums=('6ff0a8098629fb75fa253c3657f7586a529727401b98053b329c14f31a715abd')
 depends=('dkms' 'libnl')
 makedepends=('cmake' 'make' 'go' 'nlohmann-json' 'nodejs' 'npm')
 backup=('etc/hackernel/telegram.yaml' 'etc/hackernel/web.yaml')

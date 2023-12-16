@@ -1,7 +1,7 @@
 pkgbase = hackernel
 	pkgdesc = host intrusion detection and prevention system
-	pkgver = 1.7.3
-	pkgrel = 2
+	pkgver = 1.7.4
+	pkgrel = 1
 	url = https://github.com/lanthora/hackernel
 	arch = x86_64
 	arch = armv7h
@@ -17,7 +17,7 @@ pkgbase = hackernel
 	depends = libnl
 	backup = etc/hackernel/telegram.yaml
 	backup = etc/hackernel/web.yaml
-	source = https://github.com/lanthora/hackernel/archive/refs/tags/v1.7.3.tar.gz
-	sha256sums = a199f215136c6b2d31d432242732efc66c93ca940c22adde90695929c3afffbd
+	source = https://github.com/lanthora/hackernel/archive/refs/tags/v1.7.4.tar.gz
+	sha256sums = 6ff0a8098629fb75fa253c3657f7586a529727401b98053b329c14f31a715abd
 
 pkgname = hackernel
