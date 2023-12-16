@@ -3,12 +3,12 @@
 _pkgname=DNAcopy
 _pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
-pkgrel=1
-pkgdesc='DNA copy number data analysis'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="DNA Copy Number Data Analysis"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(GPL)
 depends=(
   r
 )
@@ -16,14 +16,15 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dff9a0244fe0294c690bdfe803b0d85b9f8a96cca6e9ea315282a25d8e8dd243')
+md5sums=('1b80859f79a39def302664f11b91a98f')
+b2sums=('f185dcf5e7ee98ac5031f4ec022b7b8b926eed7fb0fe527d144c742a6238761a19ba83752b4973a5efbf99fa27964ff19137355850739e32c9c0c857dd07ef34')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
