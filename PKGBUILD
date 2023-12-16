@@ -2,7 +2,7 @@ pkgdesc="ROS - panda Resources used for MoveIt! testing."
 url='https://wiki.ros.org/moveit_resources'
 
 pkgname='ros-noetic-moveit-resources-panda-description'
-pkgver='0.7.1'
+pkgver='0.8.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -26,7 +26,7 @@ depends=(
 
 _dir="moveit_resources-${pkgver}/panda_description"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_resources/archive/${pkgver}.tar.gz")
-sha256sums=('1b6364d808fbfa01bbc302fc66821ef0bd564b67be0e2ab9e394c5931ac3dc07')
+sha256sums=('0d99fc091bfd99b5d370d1c85a6c449fbc378d53bc8e2f213d54bb90447a8c91')
 
 
 build() {
