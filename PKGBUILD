@@ -1,6 +1,6 @@
-# Maintainer: KarmaTag
+# Maintainer: KarmaTag <KarmaTag at proton dot me>
 pkgname=sdrtrunk-git
-pkgver=0.6.0_beta_5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A cross-platform java application for decoding, monitoring, recording and streaming trunked mobile and related radio protocols using SDR - Latest release'
 arch=('aarch64' 'x86_64')
@@ -18,10 +18,10 @@ source_aarch64=("${url}/releases/download/v${pkgver//_/-}/sdr-trunk-linux-aarch6
                 "sdrtrunk.desktop"
                 "cat-radio-icon.png")
 
-b2sums_aarch64=('fc3086b6d85054125c777fd228374b5573130934dcfdd6333c067f67fbad163e656b0bfd3782f16d959973c65caaf74c56fce42896532a5d0b7fc80bd636e05d'
+b2sums_aarch64=('e6a8188b3a35331849cef6ad42947099918a47ad8a2b5f78cc326f5beb4e95f891ce92b5db8d6f44ea89ac8ee3c6637c0522e4a0465a6412edd450f72232203a'
                 '285dd613bb7fde41201ebd5be90238d2ec4e7cca8e3b1ef7b1afe5d1be34427136d85216aa67ee94d259bf555292336fabe20e72c94422eca22ea02850d4d9b2'
                 '6944037e19492f787ff624b40768c7a0158500bc0082721f0e14c9b3a0f1cebd68913be29498415258978c7cdecf58ee1da324d99a7a9b256f638e4614f1c7b8')
-b2sums_x86_64=('e352f40074add554e8dfb60407890cee7c8719e8da373278b24175612761e024975bccb111d91bd7f35e757dc176f136f676ed48f91e9b9bbe72b9b8bc8d8c4d'
+b2sums_x86_64=('c5094d3d46f56e188ed9a3e21a2445ff12cc8a7afa439f386d4b717b80f058e299d4e2db028a02abb8a3226cd2623bc80e12e9d46670a15609b22658de1823f1'
                '285dd613bb7fde41201ebd5be90238d2ec4e7cca8e3b1ef7b1afe5d1be34427136d85216aa67ee94d259bf555292336fabe20e72c94422eca22ea02850d4d9b2'
                '6944037e19492f787ff624b40768c7a0158500bc0082721f0e14c9b3a0f1cebd68913be29498415258978c7cdecf58ee1da324d99a7a9b256f638e4614f1c7b8')
 
