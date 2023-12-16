@@ -1,7 +1,7 @@
 pkgbase = lvgl
 	pkgdesc = Light and Versatile Graphics Library
-	pkgver = 8.3.10
-	pkgrel = 2
+	pkgver = 8.3.11
+	pkgrel = 1
 	url = https://lvgl.io/
 	arch = x86_64
 	arch = armv7h
@@ -12,7 +12,7 @@ pkgbase = lvgl
 	checkdepends = SDL2
 	makedepends = cmake>=3.12.4
 	makedepends = ninja
-	source = lvgl-8.3.10::https://github.com/lvgl/lvgl/archive/refs/tags/v8.3.10.tar.gz
-	sha256sums = f27c4a963501871390c5aa415dfcbdfd46297a4a33f86c2d2c35b34d385ee39d
+	source = lvgl-8.3.11.tar.gz::https://github.com/lvgl/lvgl/archive/refs/tags/v8.3.11.tar.gz
+	sha256sums = 83b7325a4b78cbb19a39f3ac75346c8086926d7faeab5ff2d825c20da0bbdb46
 
 pkgname = lvgl

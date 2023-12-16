@@ -1,8 +1,8 @@
 # Maintainer: Popolon <popolon @t popolon d.t org>
 
 pkgname=lvgl
-pkgver=8.3.10
-pkgrel=2
+pkgver=8.3.11
+pkgrel=1
 pkgdesc="Light and Versatile Graphics Library"
 url="https://lvgl.io/"
 license=("MIT")
@@ -10,8 +10,8 @@ arch=(x86_64 armv7h aarch64 riscv32 riscv64)
 depends=()
 makedepends=('cmake>=3.12.4' 'ninja')
 checkdepends=(SDL2)
-source=("${pkgname}-${pkgver}::https://github.com/lvgl/lvgl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f27c4a963501871390c5aa415dfcbdfd46297a4a33f86c2d2c35b34d385ee39d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lvgl/lvgl/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('83b7325a4b78cbb19a39f3ac75346c8086926d7faeab5ff2d825c20da0bbdb46')
 
 build() {
         cd ${pkgname}-${pkgver}
