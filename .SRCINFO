@@ -1,6 +1,6 @@
 pkgbase = sip-pre-release
 	pkgdesc = The pre-release version of the tool that makes it easy to create Python bindings for C and C++ libraries
-	pkgver = 6.7.12
+	pkgver = 6.8.2
 	pkgrel = 1
 	url = https://www.riverbankcomputing.com/software/sip/intro
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = sip-pre-release
 	depends = python-ply
 	provides = sip
 	conflicts = sip
-	source = https://www.riverbankcomputing.com/pypi/packages/sip/sip-6.7.12.tar.gz
+	source = https://www.riverbankcomputing.com/pypi/packages/sip/sip-6.8.2.dev2312122232.tar.gz
 	md5sums = SKIP
 
 pkgname = sip-pre-release
