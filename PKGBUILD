@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=osmium-tool
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Command line tool for working with OpenStreetMap data based on the Osmium library"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('pandoc: building documentation')
 url="https://osmcode.org/osmium-tool/"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/osmcode/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0b3be2f07d60dfb93f65d6a9f1af1fc9cf6ef68e5a460997d841c93079c3377b')
+sha256sums=('f98454d9f901be42e0b6751aef40106d734887ee35190c224b174c2f27ef1c0f')
 
 prepare() {
     cd "$pkgname-$pkgver"
