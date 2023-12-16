@@ -3,8 +3,8 @@ _godot_template=$_godot # Set to empty to download them through Scripts project
 # Note: please let those variables be set to same version.
 
 pkgname=thrive
-pkgver=0.6.4
-pkgrel=3
+pkgver=0.6.4.1
+pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64")
 url="https://revolutionarygamesstudio.com/"
@@ -13,7 +13,7 @@ depends=(
     "libxrender" "hicolor-icon-theme" "libxi" "libx11" "libglvnd" "libxinerama" "zlib" "libxrandr"
     "libxext" "glibc" "libxcursor"
 )
-makedepends=("git" "git-lfs" "dotnet-sdk-7.0" "p7zip" "cmake" "ninja" "clang" "llvm" "lld")
+makedepends=("git" "git-lfs" "dotnet-sdk-7.0" "p7zip" "cmake" "ninja" "clang" "llvm" "lld" "imagemagick")
 source=(
     "git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
     "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git"
@@ -121,6 +121,9 @@ package(){
     ln -s /opt/thrive/ThriveAssetsLICENSE.txt "$pkgdir/usr/share/licenses/thrive/ThriveAssetsLICENSE.txt"
     ln -s /opt/thrive/GodotLicense.txt "$pkgdir/usr/share/licenses/thrive/GodotLicense.txt"
     ln -s /opt/thrive/LICENSE.txt "$pkgdir/usr/share/licenses/thrive/LICENSE.txt"
-    install -Dm644 "$pkgdir/opt/thrive/Thrive.png" "$pkgdir/usr/share/icons/hicolor/1000x1000/apps/Thrive.png"
+    # The original file is 1000x1000...
+    install -d "$pkgdir/usr/share/icons/hicolor/1024x1024/apps"
+    convert -resize 1024x1024 "$pkgdir/opt/thrive/Thrive.png" \
+        "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/Thrive.png"
     install -Dm644 "$pkgdir/opt/thrive/Thrive.desktop" "$pkgdir/usr/share/applications/Thrive.desktop"
 }

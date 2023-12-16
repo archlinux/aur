@@ -1,7 +1,7 @@
 pkgbase = thrive
 	pkgdesc = the evolution game Thrive.
-	pkgver = 0.6.4
-	pkgrel = 3
+	pkgver = 0.6.4.1
+	pkgrel = 1
 	url = https://revolutionarygamesstudio.com/
 	arch = x86_64
 	license = GPL3
@@ -15,6 +15,7 @@ pkgbase = thrive
 	makedepends = clang
 	makedepends = llvm
 	makedepends = lld
+	makedepends = imagemagick
 	makedepends = libxinerama
 	makedepends = libxi
 	makedepends = libglvnd
@@ -29,7 +30,7 @@ pkgbase = thrive
 	depends = libxext
 	depends = glibc
 	depends = libxcursor
-	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v0.6.4
+	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v0.6.4.1
 	source = git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git
 	source = git+https://github.com/jrouwe/JoltPhysics.git
 	source = git+https://github.com/cameron314/concurrentqueue.git
