@@ -1,7 +1,7 @@
 pkgbase = pdfcpu-bin
 	pkgdesc = A PDF processor written in Go.
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pdfcpu.io/
 	arch = x86_64
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = pdfcpu-bin
 	license = Apache
 	provides = pdfcpu
 	conflicts = pdfcpu
-	source_x86_64 = pdfcpu-x86_64-0.6.0-2.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v0.6.0/pdfcpu_0.6.0_Linux_x86_64.tar.xz
+	source_x86_64 = pdfcpu-x86_64-0.6.0-3.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v0.6.0/pdfcpu_0.6.0_Linux_x86_64.tar.xz
 	sha256sums_x86_64 = 8c42a920469e1638eff7f61fb763ddf2b8082991004db6dd591c23407792ac05
-	source_aarch64 = pdfcpu-aarch64-0.6.0-2.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v0.6.0/pdfcpu_0.6.0_Linux_arm64.tar.xz
+	source_aarch64 = pdfcpu-aarch64-0.6.0-3.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v0.6.0/pdfcpu_0.6.0_Linux_arm64.tar.xz
 	sha256sums_aarch64 = 60f5790c1a9c33ce6f036ad456cc121ad84c8f212dc37d784e55faf541321896
-	source_i686 = pdfcpu-i686-0.6.0-2.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v0.6.0/pdfcpu_0.6.0_Linux_i386.tar.xz
+	source_i686 = pdfcpu-i686-0.6.0-3.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v0.6.0/pdfcpu_0.6.0_Linux_i386.tar.xz
 	sha256sums_i686 = 3c9ae50fce44e6f5f4ba3d6e611ec15b7fcea7466c820d25f89a88db2ab7c1eb
 
 pkgname = pdfcpu-bin

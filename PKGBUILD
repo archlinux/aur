@@ -5,7 +5,7 @@
 _pkgname=pdfcpu
 pkgname=pdfcpu-bin
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A PDF processor written in Go."
 arch=(x86_64 aarch64 i686)
 url="https://pdfcpu.io/"
