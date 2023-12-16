@@ -3,32 +3,35 @@
 _pkgname=waveslim
 _pkgver=1.8.4
 pkgname=r-${_pkgname,,}
-pkgver=1.8.4
-pkgrel=1
-pkgdesc='Basic Wavelet Routines for One-, Two-, and Three-Dimensional Signal Processing'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('BSD')
+pkgver=${_pkgver//-/.}
+pkgrel=6
+pkgdesc="Basic Wavelet Routines for One-, Two-, and Three-Dimensional Signal Processing"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(BSD)
 depends=(
   r
+)
+makedepends=(
+  gcc-fortran
 )
 optdepends=(
   r-covr
   r-fftw
 )
-makedepends=(
-  gcc-fortran
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('408eeea72a218ef3458f0934ff556733cacf1a63ddaa52491abcc1fce6ed2094')
+md5sums=('7af311a2567fd72a3080a2762aa1b929')
+b2sums=('cf58f1fce5fa5aeb88d86fcdae916500763e4210c9c0b5d92279e490a8590b7694b6d48076664cd44a6b8613a93c4b3f6d7b22bc528e09cf2f1d45987d00fed5')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
