@@ -8,7 +8,8 @@ url="https://github.com/tensorchord/pgvecto.rs"
 license=('Apache-2.0')
 groups=()
 depends=()
-makedepends=('cargo-nightly' 'clang' 'postgresql')
+makedepends=('cargo-nightly' 'clang' 'postgresql'
+    'postgresql-libs' 'openssl' 'pkgconf' 'gcc' 'readline' 'flex' 'bison' 'libxml2' 'libxslt' 'zlib' 'ccache' 'clang' 'git')
 optdepends=()
 provides=()
 conflicts=()
