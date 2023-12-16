@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname}-${pkgver}/release/vectors-pg${_pgver}"
+    cd "${pkgname}-${pkgver}/target/release/vectors-pg${_pgver}"
     install -Dm0755 usr/lib/postgresql/vectors.so "${pkgdir}/usr/lib/postgresql/vectors.so"
     install -Dm0644 "usr/share/postgresql/extension/vectors--${pkgver}.sql" "${pkgdir}/usr/share/postgresql/extension/vectors--${pkgver}.sql"
     install -Dm0644 usr/share/postgresql/extension/vectors.control "${pkgdir}/usr/share/postgresql/extension/vectors.control"
