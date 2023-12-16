@@ -2,7 +2,7 @@ pkgdesc="ROS - Parser for Semantic Robot Description Format (SRDF)."
 url='https://wiki.ros.org/srdfdom'
 
 pkgname='ros-noetic-srdfdom'
-pkgver='0.6.3'
+pkgver='0.6.4'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]}
 
 _dir="srdfdom-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/srdfdom/archive/${pkgver}.tar.gz")
-sha256sums=('7217de1f53f0723840822179a765dbd41c7409d8477a4667918269ab4432a39e')
+sha256sums=('2a57b2a4c8f3c45f7fbfd57419be3833d7f1e6e9fd75c444ef62916cc7b9930b')
 
 build() {
   # Use ROS environment variables
