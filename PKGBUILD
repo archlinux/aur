@@ -3,12 +3,12 @@
 _pkgname=rsvd
 _pkgver=1.0.5
 pkgname=r-${_pkgname,,}
-pkgver=1.0.5
-pkgrel=4
-pkgdesc='Randomized Singular Value Decomposition'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Randomized Singular Value Decomposition"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL3)
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e40686b869acd4f71fdb1e8e7a6c64cd6792fc9d52a78f9e559a7176ab84e21e')
+md5sums=('ca5ad07f42daa6750d84377e9c1d1f0a')
+b2sums=('57b5a98640987d5eb879ee51339e022ec59b786efd883753efdecfbdf7a54db41603fbbdc668ab6a989afc43397248dd6f47746d47c7f580fcfb133d262c60d5')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
