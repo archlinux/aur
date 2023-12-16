@@ -1,13 +1,11 @@
 pkgbase = pdfcpu
 	pkgdesc = A PDF processor written in Go.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hhrutter/pdfcpu
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	conflicts = pdfcpu-bin
-	conflicts = pdfcpu-git
 	source = https://github.com/hhrutter/pdfcpu/archive/v0.6.0.tar.gz
 	b2sums = f00ee93f1f8c1b1e7c398831f4cdff393d5a01b32753f6cffc5cd3cb2222c562d5a87b9cd31be96683ba4894be63edd2852ec0e1b47078cb77546f6bea1f37ba
 
