@@ -24,9 +24,6 @@ build() {
     python setup.py build
 }
 
-prepare() {
-    # Clean out old wheels etc.
-    git -C "${pkgname%-git}" clean -dfx
 }
 
 check () {
