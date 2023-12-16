@@ -3,8 +3,8 @@
 
 _pkgname=passff-host
 pkgname=$_pkgname-librewolf-git
-pkgver=1.2.3
-pkgrel=3
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="Host app for the WebExtension PassFF. Ported to LibreWolf."
 arch=(any)
 url="https://github.com/passff/passff-host"
