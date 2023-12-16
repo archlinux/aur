@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-lint
 	pkgdesc = Check for stylistic and formal issues in .rst and .py files included in the documentation.
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/sphinx-contrib/sphinx-lint
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-sphinx-lint
 	depends = python
 	depends = python-regex
 	depends = python-polib
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-lint/sphinx_lint-0.9.0.tar.gz
-	sha256sums = 10321f1469458f0e3bd16ca815173c1ff6d48c53ef0f0a75abf8a870133fb0f4
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-lint/sphinx_lint-0.9.1.tar.gz
+	sha256sums = 185cee19ff1129549c45e15a3b25404daeb47c54d15112dda589cedad82957aa
 
 pkgname = python-sphinx-lint
