@@ -1,6 +1,6 @@
 pkgbase = jumpy-git
 	pkgdesc = Tactical 2D shooter in fishy pixels style
-	pkgver = 0.8.2.r0.g2fd809cd1
+	pkgver = 0.9.0.r0.g58cf7810c
 	pkgrel = 1
 	url = https://github.com/fishfolks/jumpy
 	arch = x86_64
@@ -21,6 +21,6 @@ pkgbase = jumpy-git
 	source = git+https://github.com/fishfolks/jumpy
 	source = jumpy.sh
 	sha256sums = SKIP
-	sha256sums = c2c186e92dc268f7a09fb3ca6ce8b047e0296aa10cc54dab16dd6b6f79d6ae0e
+	sha256sums = 53545f2f80d897f4560489af887d8c7d287ae0a9a06f0cda4bd35a352b9cc000
 
 pkgname = jumpy-git

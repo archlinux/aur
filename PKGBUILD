@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=jumpy-git
-pkgver=0.8.2.r0.g2fd809cd1
+pkgver=0.9.0.r0.g58cf7810c
 pkgrel=1
 pkgdesc="Tactical 2D shooter in fishy pixels style"
 arch=('x86_64')
@@ -16,7 +16,7 @@ replaces=("fishfight-git")
 source=("git+${url}"
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            'c2c186e92dc268f7a09fb3ca6ce8b047e0296aa10cc54dab16dd6b6f79d6ae0e')
+            '53545f2f80d897f4560489af887d8c7d287ae0a9a06f0cda4bd35a352b9cc000')
 options=('!lto')
 
 pkgver() {
@@ -43,6 +43,7 @@ package() {
   cd "${pkgname%-git}"
   mkdir -p "$pkgdir/opt/${pkgname%-git}"
   cp -r "assets" "$pkgdir/opt/${pkgname%-git}/"
+  cp -r "packs" "$pkgdir/opt/${pkgname%-git}/"
   find "$pkgdir/opt/${pkgname%-git}/assets/music/" -type f -exec chmod 444 {} \;
   find "$pkgdir/opt/${pkgname%-git}/assets/player/sounds/" -type f -exec chmod 444 {} \;
 
