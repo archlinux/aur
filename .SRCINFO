@@ -1,0 +1,17 @@
+pkgbase = gpu-stress-test-git
+	pkgdesc = GPU Stress Test is a tool to stress the compute engine of NVIDIA Tesla GPU’s by running a BLAS matrix multiply using different data types
+	pkgver = r57.1d275b9
+	pkgrel = 1
+	url = https://github.com/NVIDIA/GPUStressTest
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc12
+	depends = cuda
+	provides = gpu-stress-test
+	conflicts = gpu-stress-test
+	source = git+https://github.com/NVIDIA/GPUStressTest.git
+	sha256sums = SKIP
+
+pkgname = gpu-stress-test-git
