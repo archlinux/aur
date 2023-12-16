@@ -21,9 +21,7 @@ sha256sums=('1a2bf40a87f1a4b7d81fac5805289bfcd11d202e00e5844211d0dda44c884618')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    python setup.py build
-}
-
+    python -m build --wheel --no-isolation
 }
 
 check () {
@@ -32,5 +30,5 @@ check () {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
