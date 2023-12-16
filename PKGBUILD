@@ -4,7 +4,7 @@
 set -u
 pkgname='pev'
 #pkgname+='-git'
-pkgver='0.82'
+pkgver='0.83'
 pkgrel=1
 pkgdesc='command line toolkit to work with and analyze PE (Portable Executables) binaries'
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ _srcdir="readpe-${pkgver%.r*}"
 source=(
   "${_srcdir}.tar.gz::https://github.com/mentebinaria/readpe/archive/refs/tags/v${pkgver%.r*}.tar.gz"
 )
-md5sums=('ec6d5248221509d4815290e534138227')
-sha256sums=('6ee625acedb3cbe636afe41f854b6eed5aac466d7fad52e3a48557083f8acecc')
+md5sums=('77b431a23680d1309d772e06633a068a')
+sha256sums=('edd0b523bb9567e5b246f7869cf17f883bdf4d85c320492f692149a86e8a1a32')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   makedepends+=('git')
