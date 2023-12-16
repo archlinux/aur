@@ -3,7 +3,7 @@
 
 pkgname=gurobi
 pkgver=11.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="https://www.gurobi.com/products/gurobi-optimizer"
@@ -68,7 +68,7 @@ package_gurobi() {
 	install -Dm644 -t "${pkgdir}/usr/lib/" lib/*.a
 	ln -sf ./libgurobi.so.${pkgver} "${pkgdir}/usr/lib/libgurobi.so"
 	ln -sf ./libgurobi.so.${pkgver} "${pkgdir}/usr/lib/libgurobi$(echo $pkgver | sed 's/\.//g').so"
-	ln -sf ./libgurobi_g++5.2.a "${pkgdir}/usr/lib/libgurobi_c++.a"
+	ln -sf ./libgurobi_g++8.5.a "${pkgdir}/usr/lib/libgurobi_c++.a"
 
 	install -D -m644 lib/gurobi.jar "${pkgdir}/usr/share/java/${pkgname}/gurobi.jar"
 
