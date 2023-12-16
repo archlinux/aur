@@ -5,7 +5,7 @@
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
 url="https://www.giadamusic.com/"
@@ -15,7 +15,7 @@ depends=(gcc-libs glibc hicolor-icon-theme libx11 libxcursor libxft libxinerama 
 options=(!buildflags !makeflags)
 # upstream vendors a hacked rtaudio :(
 makedepends=(alsa-lib cmake imagemagick jack libpulse libsamplerate libsndfile nlohmann-json rtmidi git)
-checkdepends=(catch2)
+checkdepends=(catch2-v2)
 provides=(vst3-host giada)
 source=(
 "$pkgname-$pkgver::git+https://github.com/monocasual/giada/#tag=$pkgver"
