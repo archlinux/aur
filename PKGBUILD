@@ -2,17 +2,17 @@
 
 _pkgname=ubgpsuite
 pkgname=${_pkgname}-git
-pkgver=r67.f214c5e
-pkgrel=2
+pkgver=r74.25707a2
+pkgrel=1
 pkgdesc="Micro BGP Suite and Utility library"
-url="https://git.doublefourteen.io/bgp/ubgpsuite"
+url="https://gitea.it/1414codeforge/ubgpsuite"
 license=("GPL3" "GPL lesser 3")
 arch=(i686 x86_64 armv7h aarch64 riscv32 riscv64)
 depends=('bzip2' 'xz')
 makedepends=('git' 'meson' 'ninja')
 provides=(upkgbuild)
 conflicts=(upkgbuild)
-source=("git+https://git.doublefourteen.io/bgp/ubgpsuite.git")
+source=("git+https://gitea.it/1414codeforge/ubgpsuite")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
 	cd ${srcdir}/${_pkgname}
-	meson build --buildtype=release --prefix=/usr
+	meson setup build --buildtype=release --prefix=/usr
 }
 
 build() {
