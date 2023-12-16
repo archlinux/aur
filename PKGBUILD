@@ -3,24 +3,25 @@
 _pkgname=CircStats
 _pkgver=0.2-6
 pkgname=r-${_pkgname,,}
-pkgver=0.2.6
-pkgrel=4
-pkgdesc='Circular Statistics, from "Topics in Circular Statistics" (2001)'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Circular Statistics, from \"Topics in Circular Statistics\" (2001)"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL2)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8efed93b75b314577341effea214e3dd6e0a515cfe1212eb051047a1f3276f1d')
+md5sums=('d298b902e4d55adbff7ac7781ff0fde9')
+b2sums=('23964ab1febbe7022c0337933233fe4c32d8baee778e2e6cae0349b91423156be949727d7f2c4956677d049af6ca873febc84d9d4c78d04e77d4e8efe18b9e23')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
