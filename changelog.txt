@@ -1,3 +1,13 @@
+* Sat Dec 16 2023 Yvaniak <ewen at philippot dot biz> - 9.6.0-1
+  PeaZip 9.6.0 introduces Profiles to separately store all configuration data (including
+  preferences, bookmarks, custom apps, password manager, etc) for different users, or for
+  different purposes, or to easily export the profile to another machine.
+  The application comes with enhanced GUI - with new optional compact sidebar, better
+  smart sorting, new tab styles - and many under the hood improvements as improved
+  extraction, and better handling of ARC files, and of archives containing errors in TOC.
+  This release also improves the ability to self-check the integrity of its binaries,
+  including also libraries (.dll, .so, etc) and sfx modules.
+
 * Fri Nov 10 2023 Yvaniak <ewen at philippot dot biz> - 9.5.0-1
   PeaZip 9.5.0 comes with many under the hood updates, as improved performances with the
   new memory management and task scheduler, better capabilities to use alias and binaries
