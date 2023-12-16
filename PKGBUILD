@@ -6,12 +6,11 @@ pkgver="0.23.0"
 _pkgver_minus="$(echo ${pkgver} | sed 's/\./-/g')"
 _zipname="${pkgname}-linux64-${_pkgver_minus}-${_build}.zip"
 _dirname="${pkgname}-${_pkgver_minus}-${_build}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://necessegame.com/server/"
 license=('proprietary')
 depends=("java-runtime=17")
-makedepends=("unzip")
 source=("https://necessegame.com/wp-content/uploads/2023/12/${_zipname}"
         "${pkgname}.service")
 sha256sums=('4d03f6104775d209cd1b58914ae90673f232ea6bb53bd81fec30b0bebc625e8d'
