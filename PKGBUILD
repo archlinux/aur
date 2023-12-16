@@ -16,7 +16,7 @@
 pkgname=dovecot-with-stemmer
 _pkgname=dovecot
 pkgver=2.3.21
-pkgrel=1
+pkgrel=2
 
 pkgdesc="An IMAP and POP3 server written with security primarily in mind"
 url="https://dovecot.org/"
@@ -31,7 +31,7 @@ optdepends=('libldap: ldap plugin'
             'clucene: alternative FTS indexer')
 
 provides=('imap-server' 'pop3-server')
-conflicts=('dovecot')
+conflicts=('dovecot' 'dovecot-stemmer')
 backup=('etc/pam.d/dovecot')
 
 # LTO seems to cause issues with at least up to 2.3.17.1
