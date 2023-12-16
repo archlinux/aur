@@ -1,7 +1,7 @@
 # Maintainer: Jorengarenar
 
 pkgname=git-fmt-diff
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Git integration with any code formatter"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
 url="https://github.com/Jorengarenar/${pkgname}"
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jorengarenar/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2febdd4243e9f8cb9f6af8ac4262f2eb72b7581c08d92f0af0dd7413bb35f849')
+sha256sums=('60c80f95fbd86bba7695a809eb5c6fb59f46cdfc46e9addcfee670f4d85b46a2')
 
 package() {
     cd "$srcdir"/"$pkgname-$pkgver"
