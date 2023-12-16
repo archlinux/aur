@@ -1,7 +1,7 @@
 pkgbase = linhabu
 	pkgdesc = German Accounting Software (and more) for Linux
-	pkgver = 23.3.3
-	pkgrel = 2
+	pkgver = 24
+	pkgrel = 1
 	url = https://www.mcrichter.de/Seiten/Deutsch/Programme/HaBu/Allgemein.html
 	install = linhabu.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = linhabu
 	source = http://mcrichter.de/Media/Programme/LinHaBu.zip
 	source = linhabu.desktop
 	source = linhabu.install
-	sha256sums = 91fdda7d494bb2ab77f23a2e999ad4dd378e9255c9cf62c2b90b8194f8a068b1
+	sha256sums = 6897282cf0a3d1b59abd927aaacf9498cd3c8902be52c72cc61c25375882b1e6
 	sha256sums = 0121f0accb53a4af4207abfeb3e57d8f4129bc6ed33e4c98b11dbff988fedd36
 	sha256sums = ca3873a5288d9087b271185cf1095a2ea8d094b51126e2d7213e6d7b01987d56
 
