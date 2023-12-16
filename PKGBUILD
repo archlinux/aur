@@ -2,7 +2,7 @@ pkgdesc="ROS - Controller to publish state of force-torque sensors."
 url='http://wiki.ros.org/force_torque_sensor_controller'
 
 pkgname='ros-noetic-force-torque-sensor-controller'
-pkgver='0.17.0'
+pkgver='0.21.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -32,7 +32,7 @@ depends=(
 
 _dir="ros_controllers-${pkgver}/force_torque_sensor_controller"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
-sha256sums=('d1b46651956d19a36eedc628c2761526ec4769390e596bd76688abc45f59ace8')
+sha256sums=('19e710b944e972ffb7fadb2d149f97bcdc1c2c0cf38a20405c09afced1543ba4')
 
 build() {
     # Use ROS environment variables
