@@ -4,7 +4,7 @@
 
 pkgname=moneydance
 pkgver=2023.2.5064
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://www.moneydance.com/"
