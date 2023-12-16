@@ -12,7 +12,7 @@ pkgbase = lunatask
 	depends = libxss
 	depends = libxtst
 	options = !strip
-	source = https://github.com/lunatask/lunatask/releases/download/v1.7.9Lunatask-1.7.9.AppImage
+	source = https://github.com/lunatask/lunatask/releases/download/v1.7.9/Lunatask-1.7.9.AppImage
 	sha512sums = 493627eb39ac1c5244ef6b600cba522d95b1677b3a4e1a15681c9c0b3d86c0c0440ac473fcd99bcfd1eafe790dd349c65619e0b64107ed285514b1b34275a205
 
 pkgname = lunatask
