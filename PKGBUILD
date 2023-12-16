@@ -3,7 +3,7 @@ pkgdesc="ROS - Messages for robots using FourWheelSteering"
 url='https://wiki.ros.org/four_wheel_steering_msgs'
 
 pkgname='ros-noetic-four-wheel-steering-msgs'
-pkgver='1.0.0'
+pkgver='1.1.1'
 arch=('any')
 pkgrel=2
 license=('BSD')
@@ -21,7 +21,7 @@ depends=(${ros_depends[@]})
 
 _dir="four_wheel_steering_msgs-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/four_wheel_steering_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('391052596ad1e4b9b57ab74ca337f59af896352b84dba719bb96366429456199')
+sha256sums=('cc1085576b1d659fa494e164bd3113f07fc56cd97f067614f9a8c02b8a8f4f2e')
 
 build() {
   # Use ROS environment variables
