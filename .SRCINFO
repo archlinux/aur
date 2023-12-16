@@ -1,6 +1,6 @@
 pkgbase = homeassistant-supervised
 	pkgdesc = Home Assistant Supervised
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://www.home-assistant.io/
 	install = .INSTALL
@@ -20,7 +20,7 @@ pkgbase = homeassistant-supervised
 	optdepends = apparmor: enhanced security
 	conflicts = docker-desktop
 	backup = etc/docker/daemon.json
-	source = git+https://github.com/home-assistant/supervised-installer.git#tag=9c6a0217601d3ee3dde163f2b61196f39449f4ae
+	source = git+https://github.com/home-assistant/supervised-installer.git#tag=06671c39bd5c81fd213330597fbf9c7dd9a36e78
 	md5sums = SKIP
 
 pkgname = homeassistant-supervised

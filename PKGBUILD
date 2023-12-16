@@ -1,6 +1,6 @@
 # Maintainer: Lucas Mindello <lucas at mindello dot com dot br>
 pkgname=homeassistant-supervised
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Home Assistant Supervised"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=('git')
 conflicts=('docker-desktop')
 install=.INSTALL
 backup=(etc/docker/daemon.json)
-_tag=9c6a0217601d3ee3dde163f2b61196f39449f4ae # git rev-parse "$pkgver"
+_tag=06671c39bd5c81fd213330597fbf9c7dd9a36e78 # git rev-parse "$pkgver"
 source=("git+https://github.com/home-assistant/supervised-installer.git#tag=${_tag}")
 md5sums=('SKIP')
 
