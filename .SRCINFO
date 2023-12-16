@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-gripper-action-controller
 	pkgdesc = ROS - The gripper_action_controller package.
-	pkgver = 0.17.0
+	pkgver = 0.21.2
 	pkgrel = 1
 	url = http://wiki.ros.org/gripper_action_controller
 	arch = i686
@@ -26,8 +26,7 @@ pkgbase = ros-noetic-gripper-action-controller
 	depends = ros-noetic-urdf
 	depends = ros-noetic-xacro
 	depends = ros-noetic-pluginlib
-	source = ros-noetic-gripper-action-controller-0.17.0.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.17.0.tar.gz
-	sha256sums = d1b46651956d19a36eedc628c2761526ec4769390e596bd76688abc45f59ace8
+	source = ros-noetic-gripper-action-controller-0.21.2.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.21.2.tar.gz
+	sha256sums = 19e710b944e972ffb7fadb2d149f97bcdc1c2c0cf38a20405c09afced1543ba4
 
 pkgname = ros-noetic-gripper-action-controller
-
