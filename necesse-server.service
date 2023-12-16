@@ -1,0 +1,12 @@
+[Unit]
+Description=Fragezeichen
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/necesse-server
+ExecStart=/usr/lib/jvm/java-17-openjdk/bin/java -jar /usr/lib/necesse-server/Server.jar -localdir -world default -nogui
+
+[Install]
+WantedBy=multi-user.target

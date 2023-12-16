@@ -1,0 +1,14 @@
+pkgbase = necesse-server
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://necessegame.com/server/
+	arch = x86_64
+	license = proprietary
+	makedepends = unzip
+	depends = java-runtime=17
+	source = https://necessegame.com/wp-content/uploads/2023/12/necesse-server-linux64-0-23-0-12963309.zip
+	source = necesse-server.service
+	sha256sums = 4d03f6104775d209cd1b58914ae90673f232ea6bb53bd81fec30b0bebc625e8d
+	sha256sums = 3d32c112c80584c55eccfdafe5510f6fe57b0ce57ce03ca30b4d3e2674f2c7ce
+
+pkgname = necesse-server
