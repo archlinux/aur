@@ -2,7 +2,7 @@ pkgdesc="ROS - Fanuc Resources used for MoveIt! testing"
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-resources-fanuc-description'
-pkgver='0.8.2'
+pkgver='0.8.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -26,7 +26,7 @@ depends=(
 
 _dir="moveit_resources-${pkgver}/fanuc_description"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_resources/archive/${pkgver}.tar.gz")
-sha256sums=('eefedc471515f63648924893de796a7533005af8aec86e158fde8b18c0dc95b3')
+sha256sums=('0d99fc091bfd99b5d370d1c85a6c449fbc378d53bc8e2f213d54bb90447a8c91')
 
 build() {
     # Use ROS environment variables
