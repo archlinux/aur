@@ -10,7 +10,7 @@ url='https://lunatask.app'
 license=('proprietary')
 
 _file=Lunatask-${pkgver}.AppImage
-source=(https://lunatask.app/download/${_file})
+source=(https://github.com/lunatask/lunatask/releases/download/v${pkgver}${_file})
 sha512sums=('493627eb39ac1c5244ef6b600cba522d95b1677b3a4e1a15681c9c0b3d86c0c0440ac473fcd99bcfd1eafe790dd349c65619e0b64107ed285514b1b34275a205')
 
 options=('!strip')
