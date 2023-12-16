@@ -3,24 +3,25 @@
 _pkgname=pixmap
 _pkgver=0.4-12
 pkgname=r-${_pkgname,,}
-pkgver=0.4.12
-pkgrel=4
-pkgdesc='Bitmap Images / Pixel Maps'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=10
+pkgdesc="Bitmap Images / Pixel Maps"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL2)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('893ba894d4348ba05e6edf9c1b4fd201191816b444a214f7a6b2c0a79b0a2aec')
+md5sums=('5deaedfa04d24456ab59dbed80445b45')
+b2sums=('dc1a00bfc633b1fc08447fe6b3988279e65b1f1f287f2787f8f69f5a4990493ab9b32a2eef84a12b40597cc25709eb6b3f76b4401767a1e9fa8ef8603b30b0c2')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
