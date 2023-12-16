@@ -1,16 +1,18 @@
-[buildPlans.iosevka-custom]
+[buildPlans.IosevkaCustom]
 family = "Iosevka Custom"
-export-glyph-names = false
+exportGlyphNames = false
+buildTextureFeature = true
+spacing = "normal"
 
-[buildPlans.iosevka-custom.ligations]
+[buildPlans.IosevkaCustom.ligations]
 inherits = "dlig"
 # disables = []
 # enables = []
 
-# [buildPlans.iosevka-custom.variants]
+# [buildPlans.IosevkaCustom.variants]
 # inherits = "ss16"
 
-[buildPlans.iosevka-custom.variants.design]
+[buildPlans.IosevkaCustom.variants.design]
 digit-form = "old-style"
 apl-form = "enable"
 capital-a = "curly-serifless"
@@ -26,53 +28,59 @@ capital-j = "serifless"
 capital-k = "curly-top-left-serifed"
 capital-l = "serifless"
 capital-m = "hanging-motion-serifed"
-capital-n = "standard"
+capital-n = "standard-serifless"
 capital-p = "closed-motion-serifed"
 capital-q = "open-swash"
-capital-r = "straight-open"
+capital-r = "straight-open-serifless"
 capital-s = "serifless"
 capital-t = "serifless"
-capital-u = "toothless-rounded"
-capital-v = "curly"
-capital-w = "straight-asymmetric"
+capital-u = "toothless-rounded-serifless"
+capital-v = "curly-serifless"
+capital-w = "straight-asymmetric-serifless"
 capital-x = "curly-serifless"
 capital-y = "curly-serifless"
 capital-z = "straight-serifless-with-crossbar"
 a = "double-storey-tailed"
-b = "toothless-corner"
+b = "toothless-corner-serifless"
 c = "serifless"
 d = "tailed-serifless"
 e = "rounded"
 f = "flat-hook-tailed"
 g = "double-storey-open"
-h = "straight"
+h = "straight-serifless"
 i = "hooky"
 j = "serifless"
 k = "curly-serifless"
 l = "flat-tailed"
-m = "short-leg"
-n = "earless-corner-tailed"
-p = "motion-serifed"
-q = "earless-corner-diagonal-tailed"
-r = "corner-hooked"
+m = "short-leg-serifless"
+n = "earless-corner-tailed-serifless"
+p = "eared-motion-serifed"
+q = "earless-corner-diagonal-tailed-serifless"
+r = "corner-hooked-serifless"
 s = "serifless"
-t = "standard"
-u = "toothless-rounded"
-v = "curly"
-w = "cursive"
+t = "bent-hook"
+u = "toothless-rounded-serifless"
+v = "curly-serifless"
+w = "cursive-serifless"
 x = "curly-serifless"
-y = "curly"
+y = "curly-serifless"
 z = "straight-serifless-with-crossbar"
-long-s = "bent-hook-tailed"
-eszet = "longs-s-lig-tailed"
-turn-v = "curly"
+long-s = "flat-hook-tailed"
+eszet = "longs-s-lig-tailed-serifless"
+lower-eth = "straight-bar"
+lower-thorn = "serifed"
 lower-alpha = "crossing"
+capital-gamma = "bottom-serifed"
+capital-delta = "curly"
 lower-delta = "rounded"
-capital-gamma = "serifless"
-lower-iota = "serifed-flat-tailed"
-lower-lambda = "curly"
-lower-mu = "tailed"
+lower-iota = "tailed-serifed"
+capital-lambda = "curly-top-serifed"
+lower-lambda = "tailed-turn"
+lower-mu = "tailed-serifless"
 lower-xi = "flat-top"
+lower-pi = "tailed"
+lower-tau = "flat-tailed"
+lower-chi = "semi-chancery-straight"
 cyrl-capital-zhe = "curly"
 cyrl-zhe = "curly"
 cyrl-capital-ze = "unilateral-serifed"
@@ -80,27 +88,32 @@ cyrl-ze = "unilateral-serifed"
 cyrl-capital-ka = "curly-serifless"
 cyrl-ka = "curly-serifless"
 cyrl-el = "straight"
+cyrl-em = "slanted-sides-hanging-serifed"
 cyrl-en = "tailed-top-left-serifed"
+cyrl-er = "earless-rounded-serifless"
+cyrl-capital-u = "cursive-flat-hook-serifless"
+cyrl-u = "cursive-flat-hook-serifless"
 cyrl-ef = "cursive"
 cyrl-che = "tailed"
-cyrl-capital-u = "curly-turn"
-cyrl-ya = "straight-tailed"
 cyrl-yeri = "round"
 cyrl-yery = "round"
-zero = "slashed-split-oval"
+cyrl-capital-ya = "straight-motion-serifed"
+cyrl-ya = "straight-tailed-motion-serifed"
+zero = "diamond-unslashed"
 one = "no-base"
 two = "curly-neck"
 three = "flat-top"
 four = "semi-open"
-five = "oblique-upper-left-bar"
+five = "oblique-arched"
 six = "open-contour"
 seven = "curly-serifless"
 eight = "crossing-asymmetric"
 nine = "straight-bar"
+diacritic-dot = "round"
+punctuation-dot = "round"
 tilde = "low"
 asterisk = "turn-hex-high"
 underscore = "high"
-pilcrow = "low"
 caret = "high"
 paren = "normal"
 brace = "curly"
@@ -108,46 +121,70 @@ number-sign = "upright-tall"
 ampersand = "flat-top"
 at = "fourfold-solid-inner-tall"
 dollar = "open-cap"
-cent = "open"
 percent = "rings-segmented-slash"
 bar = "natural-slope"
-lig-ltgteq = "flat"
 ascii-single-quote = "raised-comma"
 ascii-grave = "straight"
 question = "smooth"
-punctuation-dot = "round"
-diacritic-dot = "round"
+pilcrow = "low"
+cent = "open-cap"
+partial-derivative = "curly-bar"
+micro-sign = "toothed-serifless"
+guillemet = "curly"
+lig-ltgteq = "flat"
 lig-neq = "slightly-slanted"
+lig-equal-chain = "with-notch"
+lig-hyphen-chain = "with-notch"
+lig-double-arrow-bar = "with-notch"
+lig-single-arrow-bar = "with-notch"
 
 # Override above variants for each slope:
-# [buildPlans.iosevka-custom.variants.upright]
-# [buildPlans.iosevka-custom.variants.italic]
-# [buildPlans.iosevka-custom.variants.oblique]
+# [buildPlans.IosevkaCustom.variants.upright]
+# [buildPlans.IosevkaCustom.variants.italic]
 
-[buildPlans.iosevka-custom.weights.regular]
-shape = 500
+[buildPlans.IosevkaCustom.weights.Regular]
+shape = 600
 menu = 400
 css = 400
 
-[buildPlans.iosevka-custom.weights.bold]
+[buildPlans.IosevkaCustom.weights.Bold]
 shape = 800
 menu = 700
 css = 700
 
-[buildPlans.iosevka-term-custom]
+[buildPlans.IosevkaCustom.slopes.Upright]
+angle = 0
+shape = "upright"
+menu  = "upright"
+css   = "normal"
+
+# [buildPlans.IosevkaCustom.slopes.Oblique]
+# angle = 9.4
+# shape = "oblique"
+# menu  = "oblique"
+# css   = "oblique"
+
+[buildPlans.IosevkaCustom.slopes.Italic]
+angle = 9.4
+shape = "italic"
+menu  = "italic"
+css   = "italic"
+
+[buildPlans.IosevkaTermCustom]
 family = "Iosevka Term Custom"
-export-glyph-names = false
+exportGlyphNames = false
+buildTextureFeature = true
 spacing = "term"
 
-[buildPlans.iosevka-term-custom.ligations]
+[buildPlans.IosevkaTermCustom.ligations]
 inherits = "dlig"
 # disables = []
 # enables = []
 
-# [buildPlans.iosevka-term-custom.variants]
+# [buildPlans.IosevkaTermCustom.variants]
 # inherits = "ss16"
 
-[buildPlans.iosevka-term-custom.variants.design]
+[buildPlans.IosevkaTermCustom.variants.design]
 digit-form = "old-style"
 apl-form = "enable"
 capital-a = "curly-serifless"
@@ -163,53 +200,59 @@ capital-j = "serifless"
 capital-k = "curly-top-left-serifed"
 capital-l = "serifless"
 capital-m = "hanging-motion-serifed"
-capital-n = "standard"
+capital-n = "standard-serifless"
 capital-p = "closed-motion-serifed"
 capital-q = "open-swash"
-capital-r = "straight-open"
+capital-r = "straight-open-serifless"
 capital-s = "serifless"
 capital-t = "serifless"
-capital-u = "toothless-rounded"
-capital-v = "curly"
-capital-w = "straight-asymmetric"
+capital-u = "toothless-rounded-serifless"
+capital-v = "curly-serifless"
+capital-w = "straight-asymmetric-serifless"
 capital-x = "curly-serifless"
 capital-y = "curly-serifless"
 capital-z = "straight-serifless-with-crossbar"
 a = "double-storey-tailed"
-b = "toothless-corner"
+b = "toothless-corner-serifless"
 c = "serifless"
 d = "tailed-serifless"
 e = "rounded"
 f = "flat-hook-tailed"
 g = "double-storey-open"
-h = "straight"
+h = "straight-serifless"
 i = "hooky"
 j = "serifless"
 k = "curly-serifless"
 l = "flat-tailed"
-m = "short-leg"
-n = "earless-corner-tailed"
-p = "motion-serifed"
-q = "earless-corner-diagonal-tailed"
-r = "corner-hooked"
+m = "short-leg-serifless"
+n = "earless-corner-tailed-serifless"
+p = "eared-motion-serifed"
+q = "earless-corner-diagonal-tailed-serifless"
+r = "corner-hooked-serifless"
 s = "serifless"
-t = "standard"
-u = "toothless-rounded"
-v = "curly"
-w = "cursive"
+t = "bent-hook"
+u = "toothless-rounded-serifless"
+v = "curly-serifless"
+w = "cursive-serifless"
 x = "curly-serifless"
-y = "curly"
+y = "curly-serifless"
 z = "straight-serifless-with-crossbar"
-long-s = "bent-hook-tailed"
-eszet = "longs-s-lig-tailed"
-turn-v = "curly"
+long-s = "flat-hook-tailed"
+eszet = "longs-s-lig-tailed-serifless"
+lower-eth = "straight-bar"
+lower-thorn = "serifed"
 lower-alpha = "crossing"
+capital-gamma = "bottom-serifed"
+capital-delta = "curly"
 lower-delta = "rounded"
-capital-gamma = "serifless"
-lower-iota = "serifed-flat-tailed"
-lower-lambda = "curly"
-lower-mu = "tailed"
+lower-iota = "tailed-serifed"
+capital-lambda = "curly-top-serifed"
+lower-lambda = "tailed-turn"
+lower-mu = "tailed-serifless"
 lower-xi = "flat-top"
+lower-pi = "tailed"
+lower-tau = "flat-tailed"
+lower-chi = "semi-chancery-straight"
 cyrl-capital-zhe = "curly"
 cyrl-zhe = "curly"
 cyrl-capital-ze = "unilateral-serifed"
@@ -217,27 +260,32 @@ cyrl-ze = "unilateral-serifed"
 cyrl-capital-ka = "curly-serifless"
 cyrl-ka = "curly-serifless"
 cyrl-el = "straight"
+cyrl-em = "slanted-sides-hanging-serifed"
 cyrl-en = "tailed-top-left-serifed"
+cyrl-er = "earless-rounded-serifless"
+cyrl-capital-u = "cursive-flat-hook-serifless"
+cyrl-u = "cursive-flat-hook-serifless"
 cyrl-ef = "cursive"
 cyrl-che = "tailed"
-cyrl-capital-u = "curly-turn"
-cyrl-ya = "straight-tailed"
 cyrl-yeri = "round"
 cyrl-yery = "round"
-zero = "slashed-split-oval"
+cyrl-capital-ya = "straight-motion-serifed"
+cyrl-ya = "straight-tailed-motion-serifed"
+zero = "diamond-unslashed"
 one = "no-base"
 two = "curly-neck"
 three = "flat-top"
 four = "semi-open"
-five = "oblique-upper-left-bar"
+five = "oblique-arched"
 six = "open-contour"
 seven = "curly-serifless"
 eight = "crossing-asymmetric"
 nine = "straight-bar"
+diacritic-dot = "round"
+punctuation-dot = "round"
 tilde = "low"
 asterisk = "turn-hex-high"
 underscore = "high"
-pilcrow = "low"
 caret = "high"
 paren = "normal"
 brace = "curly"
@@ -245,46 +293,70 @@ number-sign = "upright-tall"
 ampersand = "flat-top"
 at = "fourfold-solid-inner-tall"
 dollar = "open-cap"
-cent = "open"
 percent = "rings-segmented-slash"
 bar = "natural-slope"
-lig-ltgteq = "flat"
 ascii-single-quote = "raised-comma"
 ascii-grave = "straight"
 question = "smooth"
-punctuation-dot = "round"
-diacritic-dot = "round"
+pilcrow = "low"
+cent = "open-cap"
+partial-derivative = "curly-bar"
+micro-sign = "toothed-serifless"
+guillemet = "curly"
+lig-ltgteq = "flat"
 lig-neq = "slightly-slanted"
+lig-equal-chain = "with-notch"
+lig-hyphen-chain = "with-notch"
+lig-double-arrow-bar = "with-notch"
+lig-single-arrow-bar = "with-notch"
 
 # Override above variants for each slope:
-# [buildPlans.iosevka-term-custom.variants.upright]
-# [buildPlans.iosevka-term-custom.variants.italic]
-# [buildPlans.iosevka-term-custom.variants.oblique]
+# [buildPlans.IosevkaTermCustom.variants.upright]
+# [buildPlans.IosevkaTermCustom.variants.italic]
 
-[buildPlans.iosevka-term-custom.weights.regular]
-shape = 500
+[buildPlans.IosevkaTermCustom.weights.Regular]
+shape = 600
 menu = 400
 css = 400
 
-[buildPlans.iosevka-term-custom.weights.bold]
+[buildPlans.IosevkaTermCustom.weights.Bold]
 shape = 800
 menu = 700
 css = 700
 
-[buildPlans.iosevka-fontconfig-mono-custom]
-family = "Iosevka Fontconfig Mono Custom"
-export-glyph-names = false
+[buildPlans.IosevkaTermCustom.slopes.Upright]
+angle = 0
+shape = "upright"
+menu  = "upright"
+css   = "normal"
+
+# [buildPlans.IosevkaTermCustom.slopes.Oblique]
+# angle = 9.4
+# shape = "oblique"
+# menu  = "oblique"
+# css   = "oblique"
+
+[buildPlans.IosevkaTermCustom.slopes.Italic]
+angle = 9.4
+shape = "italic"
+menu  = "italic"
+css   = "italic"
+
+[buildPlans.IosevkaFcmCustom]
+family = "Iosevka FCM Custom"
+exportGlyphNames = false
+buildTextureFeature = true
 spacing = "fontconfig-mono"
 
-[buildPlans.iosevka-fontconfig-mono-custom.ligations]
+[buildPlans.IosevkaFcmCustom.ligations]
 inherits = "dlig"
 # disables = []
 # enables = []
 
-# [buildPlans.iosevka-fontconfig-mono-custom.variants]
+# [buildPlans.IosevkaFcmCustom.variants]
 # inherits = "ss16"
 
-[buildPlans.iosevka-fontconfig-mono-custom.variants.design]
+[buildPlans.IosevkaFcmCustom.variants.design]
 digit-form = "old-style"
 apl-form = "enable"
 capital-a = "curly-serifless"
@@ -300,53 +372,59 @@ capital-j = "serifless"
 capital-k = "curly-top-left-serifed"
 capital-l = "serifless"
 capital-m = "hanging-motion-serifed"
-capital-n = "standard"
+capital-n = "standard-serifless"
 capital-p = "closed-motion-serifed"
 capital-q = "open-swash"
-capital-r = "straight-open"
+capital-r = "straight-open-serifless"
 capital-s = "serifless"
 capital-t = "serifless"
-capital-u = "toothless-rounded"
-capital-v = "curly"
-capital-w = "straight-asymmetric"
+capital-u = "toothless-rounded-serifless"
+capital-v = "curly-serifless"
+capital-w = "straight-asymmetric-serifless"
 capital-x = "curly-serifless"
 capital-y = "curly-serifless"
 capital-z = "straight-serifless-with-crossbar"
 a = "double-storey-tailed"
-b = "toothless-corner"
+b = "toothless-corner-serifless"
 c = "serifless"
 d = "tailed-serifless"
 e = "rounded"
 f = "flat-hook-tailed"
 g = "double-storey-open"
-h = "straight"
+h = "straight-serifless"
 i = "hooky"
 j = "serifless"
 k = "curly-serifless"
 l = "flat-tailed"
-m = "short-leg"
-n = "earless-corner-tailed"
-p = "motion-serifed"
-q = "earless-corner-diagonal-tailed"
-r = "corner-hooked"
+m = "short-leg-serifless"
+n = "earless-corner-tailed-serifless"
+p = "eared-motion-serifed"
+q = "earless-corner-diagonal-tailed-serifless"
+r = "corner-hooked-serifless"
 s = "serifless"
-t = "standard"
-u = "toothless-rounded"
-v = "curly"
-w = "cursive"
+t = "bent-hook"
+u = "toothless-rounded-serifless"
+v = "curly-serifless"
+w = "cursive-serifless"
 x = "curly-serifless"
-y = "curly"
+y = "curly-serifless"
 z = "straight-serifless-with-crossbar"
-long-s = "bent-hook-tailed"
-eszet = "longs-s-lig-tailed"
-turn-v = "curly"
+long-s = "flat-hook-tailed"
+eszet = "longs-s-lig-tailed-serifless"
+lower-eth = "straight-bar"
+lower-thorn = "serifed"
 lower-alpha = "crossing"
+capital-gamma = "bottom-serifed"
+capital-delta = "curly"
 lower-delta = "rounded"
-capital-gamma = "serifless"
-lower-iota = "serifed-flat-tailed"
-lower-lambda = "curly"
-lower-mu = "tailed"
+lower-iota = "tailed-serifed"
+capital-lambda = "curly-top-serifed"
+lower-lambda = "tailed-turn"
+lower-mu = "tailed-serifless"
 lower-xi = "flat-top"
+lower-pi = "tailed"
+lower-tau = "flat-tailed"
+lower-chi = "semi-chancery-straight"
 cyrl-capital-zhe = "curly"
 cyrl-zhe = "curly"
 cyrl-capital-ze = "unilateral-serifed"
@@ -354,27 +432,32 @@ cyrl-ze = "unilateral-serifed"
 cyrl-capital-ka = "curly-serifless"
 cyrl-ka = "curly-serifless"
 cyrl-el = "straight"
+cyrl-em = "slanted-sides-hanging-serifed"
 cyrl-en = "tailed-top-left-serifed"
+cyrl-er = "earless-rounded-serifless"
+cyrl-capital-u = "cursive-flat-hook-serifless"
+cyrl-u = "cursive-flat-hook-serifless"
 cyrl-ef = "cursive"
 cyrl-che = "tailed"
-cyrl-capital-u = "curly-turn"
-cyrl-ya = "straight-tailed"
 cyrl-yeri = "round"
 cyrl-yery = "round"
-zero = "slashed-split-oval"
+cyrl-capital-ya = "straight-motion-serifed"
+cyrl-ya = "straight-tailed-motion-serifed"
+zero = "diamond-unslashed"
 one = "no-base"
 two = "curly-neck"
 three = "flat-top"
 four = "semi-open"
-five = "oblique-upper-left-bar"
+five = "oblique-arched"
 six = "open-contour"
 seven = "curly-serifless"
 eight = "crossing-asymmetric"
 nine = "straight-bar"
+diacritic-dot = "round"
+punctuation-dot = "round"
 tilde = "low"
 asterisk = "turn-hex-high"
 underscore = "high"
-pilcrow = "low"
 caret = "high"
 paren = "normal"
 brace = "curly"
@@ -382,46 +465,70 @@ number-sign = "upright-tall"
 ampersand = "flat-top"
 at = "fourfold-solid-inner-tall"
 dollar = "open-cap"
-cent = "open"
 percent = "rings-segmented-slash"
 bar = "natural-slope"
-lig-ltgteq = "flat"
 ascii-single-quote = "raised-comma"
 ascii-grave = "straight"
 question = "smooth"
-punctuation-dot = "round"
-diacritic-dot = "round"
+pilcrow = "low"
+cent = "open-cap"
+partial-derivative = "curly-bar"
+micro-sign = "toothed-serifless"
+guillemet = "curly"
+lig-ltgteq = "flat"
 lig-neq = "slightly-slanted"
+lig-equal-chain = "with-notch"
+lig-hyphen-chain = "with-notch"
+lig-double-arrow-bar = "with-notch"
+lig-single-arrow-bar = "with-notch"
 
 # Override above variants for each slope:
-# [buildPlans.iosevka-fontconfig-mono-custom.variants.upright]
-# [buildPlans.iosevka-fontconfig-mono-custom.variants.italic]
-# [buildPlans.iosevka-fontconfig-mono-custom.variants.oblique]
+# [buildPlans.IosevkaFcmCustom.variants.upright]
+# [buildPlans.IosevkaFcmCustom.variants.italic]
 
-[buildPlans.iosevka-fontconfig-mono-custom.weights.regular]
-shape = 500
+[buildPlans.IosevkaFcmCustom.weights.Regular]
+shape = 600
 menu = 400
 css = 400
 
-[buildPlans.iosevka-fontconfig-mono-custom.weights.bold]
+[buildPlans.IosevkaFcmCustom.weights.Bold]
 shape = 800
 menu = 700
 css = 700
 
-[buildPlans.iosevka-fixed-custom]
+[buildPlans.IosevkaFcmCustom.slopes.Upright]
+angle = 0
+shape = "upright"
+menu  = "upright"
+css   = "normal"
+
+# [buildPlans.IosevkaFcmCustom.slopes.Oblique]
+# angle = 9.4
+# shape = "oblique"
+# menu  = "oblique"
+# css   = "oblique"
+
+[buildPlans.IosevkaFcmCustom.slopes.Italic]
+angle = 9.4
+shape = "italic"
+menu  = "italic"
+css   = "italic"
+
+[buildPlans.IosevkaFixedCustom]
 family = "Iosevka Fixed Custom"
-export-glyph-names = false
+exportGlyphNames = false
+buildTextureFeature = true
 spacing = "fixed"
 
-[buildPlans.iosevka-fixed-custom.ligations]
+[buildPlans.IosevkaFixedCustom.ligations]
 inherits = "dlig"
 # disables = []
 # enables = []
 
-# [buildPlans.iosevka-fixed-custom.variants]
+# [buildPlans.IosevkaFixedCustom.variants]
 # inherits = "ss16"
 
-[buildPlans.iosevka-fixed-custom.variants.design]
+[buildPlans.IosevkaFixedCustom.variants.design]
 digit-form = "old-style"
 apl-form = "enable"
 capital-a = "curly-serifless"
@@ -437,53 +544,59 @@ capital-j = "serifless"
 capital-k = "curly-top-left-serifed"
 capital-l = "serifless"
 capital-m = "hanging-motion-serifed"
-capital-n = "standard"
+capital-n = "standard-serifless"
 capital-p = "closed-motion-serifed"
 capital-q = "open-swash"
-capital-r = "straight-open"
+capital-r = "straight-open-serifless"
 capital-s = "serifless"
 capital-t = "serifless"
-capital-u = "toothless-rounded"
-capital-v = "curly"
-capital-w = "straight-asymmetric"
+capital-u = "toothless-rounded-serifless"
+capital-v = "curly-serifless"
+capital-w = "straight-asymmetric-serifless"
 capital-x = "curly-serifless"
 capital-y = "curly-serifless"
 capital-z = "straight-serifless-with-crossbar"
 a = "double-storey-tailed"
-b = "toothless-corner"
+b = "toothless-corner-serifless"
 c = "serifless"
 d = "tailed-serifless"
 e = "rounded"
 f = "flat-hook-tailed"
 g = "double-storey-open"
-h = "straight"
+h = "straight-serifless"
 i = "hooky"
 j = "serifless"
 k = "curly-serifless"
 l = "flat-tailed"
-m = "short-leg"
-n = "earless-corner-tailed"
-p = "motion-serifed"
-q = "earless-corner-diagonal-tailed"
-r = "corner-hooked"
+m = "short-leg-serifless"
+n = "earless-corner-tailed-serifless"
+p = "eared-motion-serifed"
+q = "earless-corner-diagonal-tailed-serifless"
+r = "corner-hooked-serifless"
 s = "serifless"
-t = "standard"
-u = "toothless-rounded"
-v = "curly"
-w = "cursive"
+t = "bent-hook"
+u = "toothless-rounded-serifless"
+v = "curly-serifless"
+w = "cursive-serifless"
 x = "curly-serifless"
-y = "curly"
+y = "curly-serifless"
 z = "straight-serifless-with-crossbar"
-long-s = "bent-hook-tailed"
-eszet = "longs-s-lig-tailed"
-turn-v = "curly"
+long-s = "flat-hook-tailed"
+eszet = "longs-s-lig-tailed-serifless"
+lower-eth = "straight-bar"
+lower-thorn = "serifed"
 lower-alpha = "crossing"
+capital-gamma = "bottom-serifed"
+capital-delta = "curly"
 lower-delta = "rounded"
-capital-gamma = "serifless"
-lower-iota = "serifed-flat-tailed"
-lower-lambda = "curly"
-lower-mu = "tailed"
+lower-iota = "tailed-serifed"
+capital-lambda = "curly-top-serifed"
+lower-lambda = "tailed-turn"
+lower-mu = "tailed-serifless"
 lower-xi = "flat-top"
+lower-pi = "tailed"
+lower-tau = "flat-tailed"
+lower-chi = "semi-chancery-straight"
 cyrl-capital-zhe = "curly"
 cyrl-zhe = "curly"
 cyrl-capital-ze = "unilateral-serifed"
@@ -491,27 +604,32 @@ cyrl-ze = "unilateral-serifed"
 cyrl-capital-ka = "curly-serifless"
 cyrl-ka = "curly-serifless"
 cyrl-el = "straight"
+cyrl-em = "slanted-sides-hanging-serifed"
 cyrl-en = "tailed-top-left-serifed"
+cyrl-er = "earless-rounded-serifless"
+cyrl-capital-u = "cursive-flat-hook-serifless"
+cyrl-u = "cursive-flat-hook-serifless"
 cyrl-ef = "cursive"
 cyrl-che = "tailed"
-cyrl-capital-u = "curly-turn"
-cyrl-ya = "straight-tailed"
 cyrl-yeri = "round"
 cyrl-yery = "round"
-zero = "slashed-split-oval"
+cyrl-capital-ya = "straight-motion-serifed"
+cyrl-ya = "straight-tailed-motion-serifed"
+zero = "diamond-unslashed"
 one = "no-base"
 two = "curly-neck"
 three = "flat-top"
 four = "semi-open"
-five = "oblique-upper-left-bar"
+five = "oblique-arched"
 six = "open-contour"
 seven = "curly-serifless"
 eight = "crossing-asymmetric"
 nine = "straight-bar"
+diacritic-dot = "round"
+punctuation-dot = "round"
 tilde = "low"
 asterisk = "turn-hex-high"
 underscore = "high"
-pilcrow = "low"
 caret = "high"
 paren = "normal"
 brace = "curly"
@@ -519,46 +637,70 @@ number-sign = "upright-tall"
 ampersand = "flat-top"
 at = "fourfold-solid-inner-tall"
 dollar = "open-cap"
-cent = "open"
 percent = "rings-segmented-slash"
 bar = "natural-slope"
-lig-ltgteq = "flat"
 ascii-single-quote = "raised-comma"
 ascii-grave = "straight"
 question = "smooth"
-punctuation-dot = "round"
-diacritic-dot = "round"
+pilcrow = "low"
+cent = "open-cap"
+partial-derivative = "curly-bar"
+micro-sign = "toothed-serifless"
+guillemet = "curly"
+lig-ltgteq = "flat"
 lig-neq = "slightly-slanted"
+lig-equal-chain = "with-notch"
+lig-hyphen-chain = "with-notch"
+lig-double-arrow-bar = "with-notch"
+lig-single-arrow-bar = "with-notch"
 
 # Override above variants for each slope:
-# [buildPlans.iosevka-fixed-custom.variants.upright]
-# [buildPlans.iosevka-fixed-custom.variants.italic]
-# [buildPlans.iosevka-fixed-custom.variants.oblique]
+# [buildPlans.IosevkaFixedCustom.variants.upright]
+# [buildPlans.IosevkaFixedCustom.variants.italic]
 
-[buildPlans.iosevka-fixed-custom.weights.regular]
-shape = 500
+[buildPlans.IosevkaFixedCustom.weights.Regular]
+shape = 600
 menu = 400
 css = 400
 
-[buildPlans.iosevka-fixed-custom.weights.bold]
+[buildPlans.IosevkaFixedCustom.weights.Bold]
 shape = 800
 menu = 700
 css = 700
 
-[buildPlans.iosevka-quasi-proportional-custom]
-family = "Iosevka Quasi Proportional Custom"
-export-glyph-names = false
+[buildPlans.IosevkaFixedCustom.slopes.Upright]
+angle = 0
+shape = "upright"
+menu  = "upright"
+css   = "normal"
+
+# [buildPlans.IosevkaFixedCustom.slopes.Oblique]
+# angle = 9.4
+# shape = "oblique"
+# menu  = "oblique"
+# css   = "oblique"
+
+[buildPlans.IosevkaFixedCustom.slopes.Italic]
+angle = 9.4
+shape = "italic"
+menu  = "italic"
+css   = "italic"
+
+[buildPlans.IosevkaQpCustom]
+family = "Iosevka QP Custom"
+exportGlyphNames = false
+buildTextureFeature = true
 spacing = "quasi-proportional"
 
-[buildPlans.iosevka-quasi-proportional-custom.ligations]
+[buildPlans.IosevkaQpCustom.ligations]
 inherits = "dlig"
 # disables = []
 # enables = []
 
-# [buildPlans.iosevka-quasi-proportional-custom.variants]
+# [buildPlans.IosevkaQpCustom.variants]
 # inherits = "ss16"
 
-[buildPlans.iosevka-quasi-proportional-custom.variants.design]
+[buildPlans.IosevkaQpCustom.variants.design]
 digit-form = "old-style"
 apl-form = "enable"
 capital-a = "curly-serifless"
@@ -574,53 +716,59 @@ capital-j = "serifless"
 capital-k = "curly-top-left-serifed"
 capital-l = "serifless"
 capital-m = "hanging-motion-serifed"
-capital-n = "standard"
+capital-n = "standard-serifless"
 capital-p = "closed-motion-serifed"
 capital-q = "open-swash"
-capital-r = "straight-open"
+capital-r = "straight-open-serifless"
 capital-s = "serifless"
 capital-t = "serifless"
-capital-u = "toothless-rounded"
-capital-v = "curly"
-capital-w = "straight-asymmetric"
+capital-u = "toothless-rounded-serifless"
+capital-v = "curly-serifless"
+capital-w = "straight-asymmetric-serifless"
 capital-x = "curly-serifless"
 capital-y = "curly-serifless"
 capital-z = "straight-serifless-with-crossbar"
 a = "double-storey-tailed"
-b = "toothless-corner"
+b = "toothless-corner-serifless"
 c = "serifless"
 d = "tailed-serifless"
 e = "rounded"
 f = "flat-hook-tailed"
 g = "double-storey-open"
-h = "straight"
+h = "straight-serifless"
 i = "hooky"
 j = "serifless"
 k = "curly-serifless"
 l = "flat-tailed"
-m = "short-leg"
-n = "earless-corner-tailed"
-p = "motion-serifed"
-q = "earless-corner-diagonal-tailed"
-r = "corner-hooked"
+m = "short-leg-serifless"
+n = "earless-corner-tailed-serifless"
+p = "eared-motion-serifed"
+q = "earless-corner-diagonal-tailed-serifless"
+r = "corner-hooked-serifless"
 s = "serifless"
-t = "standard"
-u = "toothless-rounded"
-v = "curly"
-w = "cursive"
+t = "bent-hook"
+u = "toothless-rounded-serifless"
+v = "curly-serifless"
+w = "cursive-serifless"
 x = "curly-serifless"
-y = "curly"
+y = "curly-serifless"
 z = "straight-serifless-with-crossbar"
-long-s = "bent-hook-tailed"
-eszet = "longs-s-lig-tailed"
-turn-v = "curly"
+long-s = "flat-hook-tailed"
+eszet = "longs-s-lig-tailed-serifless"
+lower-eth = "straight-bar"
+lower-thorn = "serifed"
 lower-alpha = "crossing"
+capital-gamma = "bottom-serifed"
+capital-delta = "curly"
 lower-delta = "rounded"
-capital-gamma = "serifless"
-lower-iota = "serifed-flat-tailed"
-lower-lambda = "curly"
-lower-mu = "tailed"
+lower-iota = "tailed-serifed"
+capital-lambda = "curly-top-serifed"
+lower-lambda = "tailed-turn"
+lower-mu = "tailed-serifless"
 lower-xi = "flat-top"
+lower-pi = "tailed"
+lower-tau = "flat-tailed"
+lower-chi = "semi-chancery-straight"
 cyrl-capital-zhe = "curly"
 cyrl-zhe = "curly"
 cyrl-capital-ze = "unilateral-serifed"
@@ -628,27 +776,32 @@ cyrl-ze = "unilateral-serifed"
 cyrl-capital-ka = "curly-serifless"
 cyrl-ka = "curly-serifless"
 cyrl-el = "straight"
+cyrl-em = "slanted-sides-hanging-serifed"
 cyrl-en = "tailed-top-left-serifed"
+cyrl-er = "earless-rounded-serifless"
+cyrl-capital-u = "cursive-flat-hook-serifless"
+cyrl-u = "cursive-flat-hook-serifless"
 cyrl-ef = "cursive"
 cyrl-che = "tailed"
-cyrl-capital-u = "curly-turn"
-cyrl-ya = "straight-tailed"
 cyrl-yeri = "round"
 cyrl-yery = "round"
-zero = "slashed-split-oval"
+cyrl-capital-ya = "straight-motion-serifed"
+cyrl-ya = "straight-tailed-motion-serifed"
+zero = "diamond-unslashed"
 one = "no-base"
 two = "curly-neck"
 three = "flat-top"
 four = "semi-open"
-five = "oblique-upper-left-bar"
+five = "oblique-arched"
 six = "open-contour"
 seven = "curly-serifless"
 eight = "crossing-asymmetric"
 nine = "straight-bar"
+diacritic-dot = "round"
+punctuation-dot = "round"
 tilde = "low"
 asterisk = "turn-hex-high"
 underscore = "high"
-pilcrow = "low"
 caret = "high"
 paren = "normal"
 brace = "curly"
@@ -656,46 +809,70 @@ number-sign = "upright-tall"
 ampersand = "flat-top"
 at = "fourfold-solid-inner-tall"
 dollar = "open-cap"
-cent = "open"
 percent = "rings-segmented-slash"
 bar = "natural-slope"
-lig-ltgteq = "flat"
 ascii-single-quote = "raised-comma"
 ascii-grave = "straight"
 question = "smooth"
-punctuation-dot = "round"
-diacritic-dot = "round"
+pilcrow = "low"
+cent = "open-cap"
+partial-derivative = "curly-bar"
+micro-sign = "toothed-serifless"
+guillemet = "curly"
+lig-ltgteq = "flat"
 lig-neq = "slightly-slanted"
+lig-equal-chain = "with-notch"
+lig-hyphen-chain = "with-notch"
+lig-double-arrow-bar = "with-notch"
+lig-single-arrow-bar = "with-notch"
 
 # Override above variants for each slope:
-# [buildPlans.iosevka-quasi-proportional-custom.variants.upright]
-# [buildPlans.iosevka-quasi-proportional-custom.variants.italic]
-# [buildPlans.iosevka-quasi-proportional-custom.variants.oblique]
+# [buildPlans.IosevkaQpCustom.variants.upright]
+# [buildPlans.IosevkaQpCustom.variants.italic]
 
-[buildPlans.iosevka-quasi-proportional-custom.weights.regular]
-shape = 500
+[buildPlans.IosevkaQpCustom.weights.Regular]
+shape = 600
 menu = 400
 css = 400
 
-[buildPlans.iosevka-quasi-proportional-custom.weights.bold]
+[buildPlans.IosevkaQpCustom.weights.Bold]
 shape = 800
 menu = 700
 css = 700
 
-[buildPlans.iosevka-quasi-proportional-extension-only-custom]
-family = "Iosevka Quasi Proportional Extension Only Custom"
-export-glyph-names = false
+[buildPlans.IosevkaQpCustom.slopes.Upright]
+angle = 0
+shape = "upright"
+menu  = "upright"
+css   = "normal"
+
+# [buildPlans.IosevkaQpCustom.slopes.Oblique]
+# angle = 9.4
+# shape = "oblique"
+# menu  = "oblique"
+# css   = "oblique"
+
+[buildPlans.IosevkaQpCustom.slopes.Italic]
+angle = 9.4
+shape = "italic"
+menu  = "italic"
+css   = "italic"
+
+[buildPlans.IosevkaQpeCustom]
+family = "Iosevka QPE Custom"
+exportGlyphNames = false
+buildTextureFeature = true
 spacing = "quasi-proportional-extension-only"
 
-[buildPlans.iosevka-quasi-proportional-extension-only-custom.ligations]
+[buildPlans.IosevkaQpeCustom.ligations]
 inherits = "dlig"
 # disables = []
 # enables = []
 
-# [buildPlans.iosevka-quasi-proportional-extension-only-custom.variants]
+# [buildPlans.IosevkaQpeCustom.variants]
 # inherits = "ss16"
 
-[buildPlans.iosevka-quasi-proportional-extension-only-custom.variants.design]
+[buildPlans.IosevkaQpeCustom.variants.design]
 digit-form = "old-style"
 apl-form = "enable"
 capital-a = "curly-serifless"
@@ -711,53 +888,59 @@ capital-j = "serifless"
 capital-k = "curly-top-left-serifed"
 capital-l = "serifless"
 capital-m = "hanging-motion-serifed"
-capital-n = "standard"
+capital-n = "standard-serifless"
 capital-p = "closed-motion-serifed"
 capital-q = "open-swash"
-capital-r = "straight-open"
+capital-r = "straight-open-serifless"
 capital-s = "serifless"
 capital-t = "serifless"
-capital-u = "toothless-rounded"
-capital-v = "curly"
-capital-w = "straight-asymmetric"
+capital-u = "toothless-rounded-serifless"
+capital-v = "curly-serifless"
+capital-w = "straight-asymmetric-serifless"
 capital-x = "curly-serifless"
 capital-y = "curly-serifless"
 capital-z = "straight-serifless-with-crossbar"
 a = "double-storey-tailed"
-b = "toothless-corner"
+b = "toothless-corner-serifless"
 c = "serifless"
 d = "tailed-serifless"
 e = "rounded"
 f = "flat-hook-tailed"
 g = "double-storey-open"
-h = "straight"
+h = "straight-serifless"
 i = "hooky"
 j = "serifless"
 k = "curly-serifless"
 l = "flat-tailed"
-m = "short-leg"
-n = "earless-corner-tailed"
-p = "motion-serifed"
-q = "earless-corner-diagonal-tailed"
-r = "corner-hooked"
+m = "short-leg-serifless"
+n = "earless-corner-tailed-serifless"
+p = "eared-motion-serifed"
+q = "earless-corner-diagonal-tailed-serifless"
+r = "corner-hooked-serifless"
 s = "serifless"
-t = "standard"
-u = "toothless-rounded"
-v = "curly"
-w = "cursive"
+t = "bent-hook"
+u = "toothless-rounded-serifless"
+v = "curly-serifless"
+w = "cursive-serifless"
 x = "curly-serifless"
-y = "curly"
+y = "curly-serifless"
 z = "straight-serifless-with-crossbar"
-long-s = "bent-hook-tailed"
-eszet = "longs-s-lig-tailed"
-turn-v = "curly"
+long-s = "flat-hook-tailed"
+eszet = "longs-s-lig-tailed-serifless"
+lower-eth = "straight-bar"
+lower-thorn = "serifed"
 lower-alpha = "crossing"
+capital-gamma = "bottom-serifed"
+capital-delta = "curly"
 lower-delta = "rounded"
-capital-gamma = "serifless"
-lower-iota = "serifed-flat-tailed"
-lower-lambda = "curly"
-lower-mu = "tailed"
+lower-iota = "tailed-serifed"
+capital-lambda = "curly-top-serifed"
+lower-lambda = "tailed-turn"
+lower-mu = "tailed-serifless"
 lower-xi = "flat-top"
+lower-pi = "tailed"
+lower-tau = "flat-tailed"
+lower-chi = "semi-chancery-straight"
 cyrl-capital-zhe = "curly"
 cyrl-zhe = "curly"
 cyrl-capital-ze = "unilateral-serifed"
@@ -765,27 +948,32 @@ cyrl-ze = "unilateral-serifed"
 cyrl-capital-ka = "curly-serifless"
 cyrl-ka = "curly-serifless"
 cyrl-el = "straight"
+cyrl-em = "slanted-sides-hanging-serifed"
 cyrl-en = "tailed-top-left-serifed"
+cyrl-er = "earless-rounded-serifless"
+cyrl-capital-u = "cursive-flat-hook-serifless"
+cyrl-u = "cursive-flat-hook-serifless"
 cyrl-ef = "cursive"
 cyrl-che = "tailed"
-cyrl-capital-u = "curly-turn"
-cyrl-ya = "straight-tailed"
 cyrl-yeri = "round"
 cyrl-yery = "round"
-zero = "slashed-split-oval"
+cyrl-capital-ya = "straight-motion-serifed"
+cyrl-ya = "straight-tailed-motion-serifed"
+zero = "diamond-unslashed"
 one = "no-base"
 two = "curly-neck"
 three = "flat-top"
 four = "semi-open"
-five = "oblique-upper-left-bar"
+five = "oblique-arched"
 six = "open-contour"
 seven = "curly-serifless"
 eight = "crossing-asymmetric"
 nine = "straight-bar"
+diacritic-dot = "round"
+punctuation-dot = "round"
 tilde = "low"
 asterisk = "turn-hex-high"
 underscore = "high"
-pilcrow = "low"
 caret = "high"
 paren = "normal"
 brace = "curly"
@@ -793,29 +981,52 @@ number-sign = "upright-tall"
 ampersand = "flat-top"
 at = "fourfold-solid-inner-tall"
 dollar = "open-cap"
-cent = "open"
 percent = "rings-segmented-slash"
 bar = "natural-slope"
-lig-ltgteq = "flat"
 ascii-single-quote = "raised-comma"
 ascii-grave = "straight"
 question = "smooth"
-punctuation-dot = "round"
-diacritic-dot = "round"
+pilcrow = "low"
+cent = "open-cap"
+partial-derivative = "curly-bar"
+micro-sign = "toothed-serifless"
+guillemet = "curly"
+lig-ltgteq = "flat"
 lig-neq = "slightly-slanted"
+lig-equal-chain = "with-notch"
+lig-hyphen-chain = "with-notch"
+lig-double-arrow-bar = "with-notch"
+lig-single-arrow-bar = "with-notch"
 
 # Override above variants for each slope:
-# [buildPlans.iosevka-quasi-proportional-extension-only-custom.variants.upright]
-# [buildPlans.iosevka-quasi-proportional-extension-only-custom.variants.italic]
-# [buildPlans.iosevka-quasi-proportional-extension-only-custom.variants.oblique]
+# [buildPlans.IosevkaQpeCustom.variants.upright]
+# [buildPlans.IosevkaQpeCustom.variants.italic]
 
-[buildPlans.iosevka-quasi-proportional-extension-only-custom.weights.regular]
-shape = 500
+[buildPlans.IosevkaQpeCustom.weights.Regular]
+shape = 600
 menu = 400
 css = 400
 
-[buildPlans.iosevka-quasi-proportional-extension-only-custom.weights.bold]
+[buildPlans.IosevkaQpeCustom.weights.Bold]
 shape = 800
 menu = 700
 css = 700
+
+[buildPlans.IosevkaQpeCustom.slopes.Upright]
+angle = 0
+shape = "upright"
+menu  = "upright"
+css   = "normal"
+
+# [buildPlans.IosevkaQpeCustom.slopes.Oblique]
+# angle = 9.4
+# shape = "oblique"
+# menu  = "oblique"
+# css   = "oblique"
+
+[buildPlans.IosevkaQpeCustom.slopes.Italic]
+angle = 9.4
+shape = "italic"
+menu  = "italic"
+css   = "italic"
 
