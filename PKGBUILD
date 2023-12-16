@@ -14,11 +14,11 @@
 
 _pkgname=chromium-unstable
 _debname=chromium-browser-unstable
-_pkgver=v121.0.6159.0-r1231436-linux64-deb-avx
+_pkgver=v122.0.6184.0-r1237314-linux64-deb-avx
 
 pkgname="${_pkgname}-bin"
-pkgver=121.0.6159.0
-pkgrel=2
+pkgver=122.0.6184.0
+pkgrel=1
 pkgdesc="The Chromium web browser for Linux built with the open source Clang compiler and LLD linker."
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -60,7 +60,7 @@ options=('!emptydirs' '!strip')
 install=${_pkgname}.install
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
         "allow-user-flags.patch")
-sha1sums=('1b64c25749b113f6ea1f924ae3294f12058912ec'
+sha1sums=('7fc641b081c22dd637e8edaf5954d4a3f9e84994'
           'dd5c9032644b703aba5cf7c9e6766decb66989f7')
 
 package() {
