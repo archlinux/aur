@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=R2WinBUGS
-_pkgver=2.1-21
+_pkgver=2.1-22
 pkgname=r-${_pkgname,,}
-pkgver=2.1.21
-pkgrel=4
+pkgver=2.1.22
+pkgrel=1
 pkgdesc="Running 'WinBUGS' and 'OpenBUGS' from 'R' / 'S-PLUS'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-brugs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fa86cb5140f5dfce29f9517b94d6d08c316ddcffa4aa3085945b84d34910134d')
+sha256sums=('aed74097c7c4552cf139828babf25555a67270925524bdd5856fa7cfd8d18179')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
