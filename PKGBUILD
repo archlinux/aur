@@ -1,5 +1,5 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
-# Contributor: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Jelle van der Waa <jelle@vdwaa.nl>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
@@ -7,9 +7,8 @@
 # Contributor: Andrea Fagiani <andfagiani _at_ gmail dot com>
 # Contributor: Larry Hajali <larryhaja@gmail.com>
 
-pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=6.22.0.r1.gca2b4e02ed
+pkgver=7.2.0.r2.g96211be30e
 pkgrel=1
 pkgdesc='Ebook management application'
 arch=(x86_64 i686)
@@ -42,6 +41,7 @@ _pydeps=(apsw
          pyqt6-webengine
          regex
          unrardll
+         xxhash
          zeroconf)
 depends=(hunspell
          hyphen
@@ -77,8 +77,8 @@ conflicts=("${pkgname%-git}"
            calibre-python3)
 replaces=(calibre-common-git
           calibre-python3-git)
-source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
-        "git+https://github.com/kovidgoyal/${pkgbase%-git}-translations.git?signed"
+source=("git+https://github.com/kovidgoyal/${pkgname%-git}.git?signed"
+        "git+https://github.com/kovidgoyal/${pkgname%-git}-translations.git?signed"
         user-agent-data.json)
 sha256sums=('SKIP'
             'SKIP'
@@ -86,12 +86,12 @@ sha256sums=('SKIP'
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
 pkgver() {
-	cd "${pkgbase%-git}"
+	cd "${pkgname%-git}"
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
-	cd "${pkgbase%-git}"
+	cd "${pkgname%-git}"
 	python setup.py git_version
 
 	# Link translations to build dir
@@ -109,7 +109,7 @@ prepare(){
 }
 
 build() {
-	cd "${pkgbase%-git}"
+	cd "${pkgname%-git}"
 	export LANG='en_US.UTF-8'
 	python setup.py build
 	python setup.py iso639
@@ -121,13 +121,13 @@ build() {
 }
 
 check() {
-	cd "${pkgbase%-git}"
+	cd "${pkgname%-git}"
 	export LANG='en_US.UTF-8'
 	python -m unittest discover
 }
 
 package() {
-	cd "${pkgbase%-git}"
+	cd "${pkgname%-git}"
 	export LANG='en_US.UTF-8'
 
 	# If this directory doesn't exist, zsh completion won't install.
