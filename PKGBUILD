@@ -1,7 +1,7 @@
 # Maintainer: OMGeeky <fb@omgeeky.de>
 
 pkgname="lumafly-git"
-pkgver=v3.2.0.0.r1.ga51d408
+pkgver=3.2.0.0.r7.g0687288
 pkgrel=1
 pkgdesc="A cross platform mod manager for Hollow Knight Formerly known as Scarab+"
 conflicts=('lumafly')
@@ -16,7 +16,7 @@ sha512sums=("SKIP")
 options=('!strip')
 pkgver() {
 	cd "${srcdir}/Lumafly"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build() {
 	cd "${srcdir}/Lumafly/Lumafly"
