@@ -8,6 +8,7 @@ pkgbase = dockbarx-lxqt-plugin
 	arch = aarch64
 	arch = armv7h
 	license = GPL3
+	makedepends = cmake
 	depends = dockbarx
 	depends = lxqt-panel
 	depends = qt5-x11extras
