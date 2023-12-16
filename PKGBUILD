@@ -1,4 +1,5 @@
 # Maintainer: Christian Heusel <christian@heusel.eu>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 
 _pkgname=pdfcpu
@@ -10,7 +11,7 @@ arch=(x86_64 aarch64 i686)
 url="https://pdfcpu.io/"
 license=('Apache')
 provides=(pdfcpu)
-conflicts=(pdfcpu pdfcpu-git)
+conflicts=(pdfcpu)
 
 source_x86_64=("pdfcpu-x86_64-${pkgver}-${pkgrel}.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v${pkgver}/pdfcpu_${pkgver}_Linux_x86_64.tar.xz")
 source_aarch64=("pdfcpu-aarch64-${pkgver}-${pkgrel}.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v${pkgver}/pdfcpu_${pkgver}_Linux_arm64.tar.xz")
@@ -20,7 +21,7 @@ sha256sums_aarch64=('60f5790c1a9c33ce6f036ad456cc121ad84c8f212dc37d784e55faf5413
 sha256sums_i686=('3c9ae50fce44e6f5f4ba3d6e611ec15b7fcea7466c820d25f89a88db2ab7c1eb')
 
 package() {
-    cd "${_pkgname}_${pkgver}_Linux_${CARCH}"
+    cd "${_pkgname}_${pkgver}_Linux_${CARCH/aarch/arm}"
 
     install -Dm755 "${_pkgname}" -t "$pkgdir/usr/bin/"
     install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"

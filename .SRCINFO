@@ -9,7 +9,6 @@ pkgbase = pdfcpu-bin
 	license = Apache
 	provides = pdfcpu
 	conflicts = pdfcpu
-	conflicts = pdfcpu-git
 	source_x86_64 = pdfcpu-x86_64-0.6.0-2.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v0.6.0/pdfcpu_0.6.0_Linux_x86_64.tar.xz
 	sha256sums_x86_64 = 8c42a920469e1638eff7f61fb763ddf2b8082991004db6dd591c23407792ac05
 	source_aarch64 = pdfcpu-aarch64-0.6.0-2.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v0.6.0/pdfcpu_0.6.0_Linux_arm64.tar.xz
