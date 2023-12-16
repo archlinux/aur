@@ -2,7 +2,7 @@
 
 _pkgname=vkd3d-proton
 pkgname=$_pkgname-bin
-pkgver=2.11
+pkgver=2.11.1
 pkgrel=1
 pkgdesc="Direct3D 12 to Vulkan translation library (Windows DLL binary files)"
 url="https://github.com/HansKristian-Work/vkd3d-proton"
@@ -15,7 +15,7 @@ provides=('vkd3d-proton')
 conflicts=('vkd3d-proton')
 options=(!strip)
 source=("https://github.com/HansKristian-Work/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.tar.zst")
-sha256sums=('17bf0b690e003c9dd2179356e88f89d71390f4e3a9e4d7be2c331320f7bebe9b')
+sha256sums=('3c78dd81f75cd2383eafecaed548ea24f361194cc0e5a5ac08e3119df2d19448')
 
 package() {
 	install -D "$_pkgname-$pkgver"/x86/* -t "$pkgdir/usr/share/vkd3d-proton/x86"
