@@ -14,7 +14,7 @@ options=('!makeflags')
 validpgpkeys=('634BFC0CCC426C74389D89310F1CFF71A2813E85')
 source=("https://github.com/evpo/EncryptPad/releases/download/v${pkgver}/encryptpad$(echo -n $pkgver | sed -r 's/\./_/g')_src.tar.gz"{,.asc})
 
-sha1sums=('SKIP' 'SKIP' 'SKIP')
+sha1sums=('SKIP' 'SKIP')
 
 prepare() {
   cd "$srcdir/encryptpad$(echo -n $pkgver | sed -r 's/\./_/g')_src"
