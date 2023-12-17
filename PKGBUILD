@@ -7,7 +7,7 @@
 # Contributor: Edoardo Morandi <morandidodo@gmail.com>
 
 pkgname=simgear
-pkgver=2020.3.18
+pkgver=2020.3.19
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
@@ -22,7 +22,7 @@ source=(
     "compositor-pass-missing-array-include.patch"
 )
 sha256sums=(
-    '6cc1cf2556b172407929ecf2bab2432c6fb05ee16dd19026e90369f2573636ca'
+    '3b937c5b94422478e5d79114bdcd6c78e43a0a6ffba97544a86d441c3f9e8c3a'
     '81f817ba0f54952ac5fea32ec717275cdb9804f9801def9ae1a00f019bcf968b'
 )
 
