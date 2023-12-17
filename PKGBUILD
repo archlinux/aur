@@ -1,13 +1,13 @@
 # Maintainer: Kimiblock Moe
 pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
-pkgver=r1163.6067a06
+pkgver=r1234.4b2624b
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
 arch=('x86_64' 'aarch64')
 url="https://github.com/keiko233/clash-nyanpasu"
 license=('GPL3')
-depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' 'clash-meta')
+depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' 'clash-meta' "clash-meta-is-mihomo")
 makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'quickjs' 'git')
 optdepends=('clash' 'clash-rs')
 source=("git+https://github.com/keiko233/clash-nyanpasu.git#branch=dev"
@@ -30,6 +30,9 @@ function prepare(){
 	install -d src-tauri/sidecar
 	ln -sf /usr/bin/clash-meta src-tauri/sidecar/clash-${CARCH}-unknown-linux-gnu
 	ln -sf /usr/bin/clash-meta src-tauri/sidecar/clash-meta-${CARCH}-unknown-linux-gnu
+	ln -sf /usr/bin/clash-meta src-tauri/sidecar/clash-meta-alpha-${CARCH}-unknown-linux-gnu
+	ln -sf /usr/bin/clash-meta src-tauri/sidecar/mihomo-${CARCH}-unknown-linux-gnu
+	ln -sf /usr/bin/clash-meta src-tauri/sidecar/mihomo-alpha-${CARCH}-unknown-linux-gnu
 	ln -sf /usr/bin/clash-meta src-tauri/sidecar/clash-rs-${CARCH}-unknown-linux-gnu
 
 	install -d src-tauri/resources
@@ -64,5 +67,4 @@ package(){
 	install -Dm644 src/assets/image/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-
 }
