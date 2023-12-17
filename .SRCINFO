@@ -1,6 +1,6 @@
 pkgbase = graftcp
 	pkgdesc = A flexible tool for redirecting a given program's TCP traffic to SOCKS5 or HTTP proxy.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/hmgle/graftcp
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = graftcp
 	makedepends = make
 	depends = glibc
 	backup = etc/graftcp-local/graftcp-local.conf
-	source = graftcp-0.7.0.tar.gz::https://github.com/hmgle/graftcp/archive/v0.7.0.tar.gz
+	source = graftcp-0.7.1.tar.gz::https://github.com/hmgle/graftcp/archive/v0.7.1.tar.gz
 	source = graftcp-local.service
-	sha256sums = 926f4bf1090866c622103bd400d497b76f2f465e7e7d4bdeafa83613af23fc4c
+	sha256sums = 3a1b262fa0fe74b0e1b685a99f3070592fc9d809b23f5d5d53c2bc876f140b68
 	sha256sums = 756bd3f9bf7202b599d77a09bd08fdd3c7a44ef20e055744d1dc20d16ef1920c
 
 pkgname = graftcp
