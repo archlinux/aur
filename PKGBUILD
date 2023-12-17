@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis at martinez at disroot dot org>
+# Maintainer: Ryan Delaney <ryan.patrick.delaney at proton dot me>
+# Contributor: Luis Martinez <luis at martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=jello
