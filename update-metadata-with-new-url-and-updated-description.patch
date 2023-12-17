@@ -6,7 +6,7 @@ index 793ea19..44d3278 100644
  [Desktop Entry]
 -Comment=Intel P-state and CPUFreq Manager
 -Name=P-state and CPUFreq
-+Comment=Plasmoid for monitoring and controlling CPU (and partially GPU) P-state and CPUFreq.\nMaintained fork from https://github.com/jsalatas/plasma-pstate.
++Comment=Plasmoid for CPU/GPU performance management.\nOriginal upstream source:\nhttps://github.com/jsalatas/plasma-pstate
 +Name=P-state and CPUFreq Manager
  Icon=cpu
  Type=Service

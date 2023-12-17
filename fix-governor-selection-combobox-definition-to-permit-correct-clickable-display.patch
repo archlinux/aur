@@ -1,0 +1,22 @@
+From 371eda279137f85bdd4f850e8defa4e7d4158f3d Mon Sep 17 00:00:00 2001
+From: em <115369747+Aeasala@users.noreply.github.com>
+Date: Sun, 23 Jul 2023 12:34:29 -0400
+Subject: [PATCH] Fix combobox rendering using implicitWidth, implicitHeight
+
+---
+ src/package/contents/ui/ComboBox.qml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/package/contents/ui/ComboBox.qml b/src/package/contents/ui/ComboBox.qml
+index 5c8f1b5..89f0aaa 100644
+--- a/src/package/contents/ui/ComboBox.qml
++++ b/src/package/contents/ui/ComboBox.qml
+@@ -164,6 +164,8 @@ RowLayout {
+         }
+ 
+         background: Rectangle {
++            implicitWidth: combobox.width
++            implicitHeight: combobox.height
+             color: Qt.rgba(0, 0, 0, 0)
+             border.color: theme.highlightColor
+             border.width: combobox.down || combobox.customHovered ? 1 : 0

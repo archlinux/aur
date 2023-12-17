@@ -1,0 +1,32 @@
+From b7c066b034a698c8422e027ca729d1611ef9db29 Mon Sep 17 00:00:00 2001
+From: Ismael Bonato <ismaelbonato@gmail.com>
+Date: Sat, 26 Feb 2022 12:37:20 -0300
+Subject: [PATCH] Update utils.js
+
+combobox to radio
+---
+ src/package/contents/code/utils.js | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/package/contents/code/utils.js b/src/package/contents/code/utils.js
+index 68bc613..e0ff348 100644
+--- a/src/package/contents/code/utils.js
++++ b/src/package/contents/code/utils.js
+@@ -139,7 +139,7 @@ var model =  [
+                 {'type': 'slider', 'text': 'Max freq', 'min': 'gpu_min_limit', 'max': 'gpu_max_limit', 'sensor': 'gpu_max_freq'},
+                 {'type': 'slider', 'text': 'Boost freq', 'min': 'gpu_min_limit', 'max': 'gpu_max_limit', 'sensor': 'gpu_boost_freq'},
+             ]},
+-            {'type': 'combobox', 'text': 'CPU Governor', 'sensor': 'cpu_governor', 'items' :[
++            {'type': 'radio', 'text': 'CPU Governor', 'sensor': 'cpu_governor', 'items' :[
+                 {'symbol': 'a', 'text': 'Performance', 'sensor_value': 'performance'},
+                 {'symbol': 'f', 'text': 'Powersave', 'sensor_value': 'powersave'},
+                 {'symbol': 'l', 'text': "Ondemand", 'sensor_value': 'ondemand'},
+@@ -172,7 +172,7 @@ var model =  [
+         'vendors': ['dell'],
+         'sensors': ['package_temp', 'fan_speeds'],
+         'items': [
+-            {'type': 'combobox', 'text': 'Thermal Mode', 'sensor': 'thermal_mode', 'items' :[
++            {'type': 'radio', 'text': 'Thermal Mode', 'sensor': 'thermal_mode', 'items' :[
+                  {'symbol': 'e', 'text': 'Performance', 'sensor_value': 'performance'},
+                  {'symbol': 'j', 'text': 'Balanced', 'sensor_value': 'balanced'},
+                  {'symbol': 'g', 'text': 'Cool Bottom', 'sensor_value': 'cool-bottom'},
