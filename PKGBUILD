@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('openblas' 'python' 'cblas' 'clblast')
 optdepends=('customtkinter')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('86e44a3fb1a9114e0c624667296ce582')
+md5sums=('8af792ddf052fac214995a66ca01c1dc')
 
 build() {
   cd "$srcdir/koboldcpp-$pkgver"
