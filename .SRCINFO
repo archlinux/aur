@@ -1,7 +1,7 @@
 pkgbase = dune-localfunctions
 	pkgdesc = Local Finite Elements
-	pkgver = 2.9.0
-	pkgrel = 2
+	pkgver = 2.9.1
+	pkgrel = 1
 	url = https://dune-project.org/modules/dune-localfunctions
 	arch = x86_64
 	license = custom:GPL2 with runtime exception
@@ -9,14 +9,14 @@ pkgbase = dune-localfunctions
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scikit-build
-	depends = dune-geometry>=2.9.0
+	depends = dune-geometry>=2.9.1
 	optdepends = texlive-basic: Type setting system
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
-	source = https://dune-project.org/download/2.9.0/dune-localfunctions-2.9.0.tar.gz
-	source = https://dune-project.org/download/2.9.0/dune-localfunctions-2.9.0.tar.gz.asc
-	validpgpkeys = E5B47782DE09813BCC3518E159DA94F1FC8FD313
-	sha512sums = 683973333f4bfb6f77e65798d516b98c28e639e9c20e0186ee8ef343ee270f112a1e41218772662c9f0dc2f55616aa6b93cbf053277bc4145a2bd1044b2e7fb7
+	source = https://dune-project.org/download/2.9.1/dune-localfunctions-2.9.1.tar.gz
+	source = https://dune-project.org/download/2.9.1/dune-localfunctions-2.9.1.tar.gz.asc
+	validpgpkeys = 2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF
+	sha512sums = 3f52f2c48d7d3ae6dcfba9cd3c310a774a93d8571e13590641405a20fdff7ff4a154892ce709a68b3a8da1a9c3651ca46016eded7e2e1bf7cd02aa0e57e2b28d
 	sha512sums = SKIP
 
 pkgname = dune-localfunctions
