@@ -1,0 +1,27 @@
+pkgbase = stratis-cli
+	pkgdesc = A CLI for the Stratis Project.
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://stratis-storage.github.io/
+	arch = any
+	license = Apache
+	makedepends = dbus-glib
+	makedepends = git
+	makedepends = mpfr
+	makedepends = dbus-python
+	makedepends = asciidoc
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-dbus-client-gen
+	depends = python-into-dbus
+	depends = python-justbytes
+	depends = python-dateutil
+	depends = python-packaging
+	depends = python-psutil
+	depends = python-wcwidth
+	source = stratis-cli-3.6.0.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v3.6.0.tar.gz
+	sha256sums = 685339d50f6c0d9ead0ed2eb32f70e1c69d18321c7d5354f735452962bf2987f
+
+pkgname = stratis-cli
