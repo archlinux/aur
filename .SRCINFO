@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-moveit
 	pkgdesc = ROS - Meta package that contains all essential package of MoveIt!.
-	pkgver = 1.1.8
+	pkgver = 1.1.13
 	pkgrel = 1
 	url = https://moveit.ros.org
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-noetic-moveit
 	depends = ros-noetic-moveit-planners
 	depends = ros-noetic-moveit-plugins
 	depends = ros-noetic-moveit-ros
-	source = ros-noetic-moveit-1.1.8.tar.gz::https://github.com/ros-planning/moveit/archive/1.1.8.tar.gz
-	sha256sums = 2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969
+	source = ros-noetic-moveit-1.1.13.tar.gz::https://github.com/ros-planning/moveit/archive/1.1.13.tar.gz
+	sha256sums = 91735df0ec1a7bdbcdad9028352a0d78d44fad2076584319120e2e10ecb5882c
 
 pkgname = ros-noetic-moveit
