@@ -1,6 +1,6 @@
 pkgbase = bitwarden-menu-git
 	pkgdesc = Dmenu/Rofi frontend for Bitwarden/Vaultwarden.
-	pkgver = r50.7cb8386
+	pkgver = r101.1324b78
 	pkgrel = 1
 	url = https://github.com/firecat53/bitwarden-menu
 	install = bitwarden-menu.install
@@ -11,6 +11,8 @@ pkgbase = bitwarden-menu-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	depends = python
 	depends = python-pynput
 	depends = bitwarden-cli

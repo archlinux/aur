@@ -11,7 +11,8 @@ arch=('any')
 url="https://github.com/firecat53/bitwarden-menu"
 license=('MIT')
 depends=('python' 'python-pynput' 'bitwarden-cli' 'python-xdg')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel'
+             'python-hatchling' 'python-hatch-vcs')
 optdepends=('dmenu: either dmenu or rofi is required'
             'rofi: either dmenu or rofi is required'
             'xdotool: required for typing non-U.S. Unicode characters'
@@ -21,6 +22,10 @@ conflicts=("$_pkgname")
 source=("git+https://github.com/firecat53/$_gitname.git")
 md5sums=('SKIP')
 install="$_pkgname.install"
+
+prepare() {
+  git -C "$_gitname" clean -dfx
+}
 
 pkgver() {
   cd "$_gitname"
