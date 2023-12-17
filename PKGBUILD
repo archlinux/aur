@@ -110,7 +110,7 @@ package() {
 		'ckbcomp' 'hwinfo' 'qt6-base' 'qt6-svg>=6.6.0' 'polkit-qt6>=0.175.0' 'gtk-update-icon-cache'
 		'squashfs-tools' 'libpwquality' 'efibootmgr' 'icu')
 	else
-		depends+=('kconfig5>=5.113.0' 'kcoreaddons5>=5.113.0' 'kiconthemes5>=5.113.0' 'ki18n5>=5.113.0' 'kio5>=>=5.113.0' 'solid5>=5.113.0' 'yaml-cpp' 'kpmcore>=24.01.75' 'mkinitcpio-openswap'
+		depends+=('kconfig5>=5.113.0' 'kcoreaddons5>=5.113.0' 'kiconthemes5>=5.113.0' 'ki18n5>=5.113.0' 'kio5>=5.113.0' 'solid5>=5.113.0' 'yaml-cpp' 'kpmcore>=24.01.75' 'mkinitcpio-openswap'
 		'ckbcomp' 'hwinfo' 'qt5-base>=5.15.11' 'qt5-svg>=5.15.11' 'polkit-qt5>=0.175.0' 'gtk-update-icon-cache' 'plasma-framework5>=5.58'
 		'qt5-xmlpatterns' 'squashfs-tools' 'libpwquality' 'efibootmgr' 'icu')
 	fi

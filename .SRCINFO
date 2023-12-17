@@ -50,7 +50,7 @@ pkgname = calamares
 	depends = kcoreaddons5>=5.113.0
 	depends = kiconthemes5>=5.113.0
 	depends = ki18n5>=5.113.0
-	depends = kio5>=>=5.113.0
+	depends = kio5>=5.113.0
 	depends = solid5>=5.113.0
 	depends = yaml-cpp
 	depends = kpmcore>=24.01.75
