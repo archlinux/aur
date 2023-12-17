@@ -4,7 +4,7 @@ url='https://wiki.ros.org/python_qt_binding'
 pkgname='ros-noetic-python-qt-binding'
 pkgver='0.4.4'
 arch=('any')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
@@ -24,19 +24,12 @@ ros_depends=(
 
 depends=(
     ${ros_depends[@]}
-    python-pyqt5
+    python-pyqt5-sip4
 )
 
 _dir="python_qt_binding-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/python_qt_binding/archive/${pkgver}.tar.gz"
-        "sip.patch"::"https://github.com/ros-visualization/python_qt_binding/commit/7095b4de210e2b235606f73565908f9af413db96.patch")
-sha256sums=('bcb5076226100f901e6a22656cf69ef0e8d5f1845670e6fad6fc5fdcb3a1dd07'
-            'cd9774272b38183a30275613fd593f0b2de9e18192d2f5c98b26cd4e5cf33d53')
-
-prepare() {
-    cd "$srcdir/python_qt_binding-${pkgver}"
-    patch -Np1 -i "$srcdir/sip.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/python_qt_binding/archive/${pkgver}.tar.gz")
+sha256sums=('bcb5076226100f901e6a22656cf69ef0e8d5f1845670e6fad6fc5fdcb3a1dd07')
 
 build() {
     # Use ROS environment variables.
