@@ -1,10 +1,10 @@
 pkgbase = ttf-mplus-git
 	pkgdesc = A little nifty font family for everyday usage (git version)
-	pkgver = r215.977baab
+	pkgver = r286.71d438c
 	pkgrel = 1
 	url = https://mplusfonts.github.io/
 	arch = any
-	license = custom
+	license = OFL-1.1
 	makedepends = git
 	conflicts = ttf-mplus
 	conflicts = mplus-font
