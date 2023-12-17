@@ -1,13 +1,13 @@
 pkgbase = vofa+
 	pkgdesc = A high degree of freedom embedded debugging tool with plugins support.
 	pkgver = 1.3.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.vofa.plus/
 	arch = x86_64
 	license = unknown
 	provides = vofaplus
 	options = !strip
-	source = vofa+-1.3.10.pkg.tar.zst::https://gutega.gitee.io/vofa_plus_resources/downloads/vofa+-1.3.10-1-x86_64.pkg.tar.zst
+	source = vofa+-1.3.10.pkg.tar.zst::https://je00.github.io/downloads/vofa+-1.3.10-1-x86_64.pkg.tar.zst
 	sha256sums = 83b43cd3b8b72725e11c8433e88dea4246e0f39070215705904b17ddc30149ed
 
 pkgname = vofa+

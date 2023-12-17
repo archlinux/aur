@@ -4,14 +4,14 @@
 pkgname=vofa+
 _pkgname=vofaplus
 pkgver=1.3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A high degree of freedom embedded debugging tool with plugins support."
 arch=('x86_64')
 url="https://www.vofa.plus/"
 license=('unknown')
 provides=("${_pkgname}")
 options=('!strip')
-source=("${pkgname}-${pkgver}.pkg.tar.zst::https://gutega.gitee.io/vofa_plus_resources/downloads/${pkgname}-${pkgver}-1-${CARCH}.pkg.tar.zst")
+source=("${pkgname}-${pkgver}.pkg.tar.zst::https://je00.github.io/downloads/${pkgname}-${pkgver}-1-${CARCH}.pkg.tar.zst")
 sha256sums=('83b43cd3b8b72725e11c8433e88dea4246e0f39070215705904b17ddc30149ed')
 
 package() {
