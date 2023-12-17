@@ -1,21 +1,16 @@
 pkgbase = btrfs-clone-git
 	pkgdesc = Clone an existing BTRFS file system to a new one, cloning each subvolume in order.
-	pkgver = r58.53ec587
+	pkgver = r67.1354656
 	pkgrel = 1
 	url = https://github.com/mwilck/btrfs-clone
 	arch = any
 	license = GPL2
 	makedepends = git
-	depends = python
 	provides = btrfs-clone
 	conflicts = btrfs-clone
 	source = git+https://github.com/mwilck/btrfs-clone.git
-	source = btrfs-clone-git-10.patch::https://github.com/mwilck/btrfs-clone/pull/10.patch
-	source = btrfs-clone-git-20.patch::https://github.com/mwilck/btrfs-clone/pull/20.patch
-	source = btrfs-clone-git-21.patch::https://github.com/mwilck/btrfs-clone/pull/21.patch
 	sha256sums = SKIP
-	sha256sums = ad90a81995d6027d71a96ecb9504a459161beb61b1630eaf801aa36c8a6b7d5c
-	sha256sums = 441843fc414cff858a4039b63a5787dea5cbb5fd4065fbd41cd24983c4e1844b
-	sha256sums = 078c3803c4d31d64e71bb93f803ac5ed9d99f3db14ad367c544ef8e175e84f31
 
 pkgname = btrfs-clone-git
+	depends = python
+	depends = btrfs-progs

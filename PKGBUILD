@@ -2,7 +2,7 @@
 
 _pkgname=btrfs-clone
 pkgname=${_pkgname}-git
-pkgver=r58.53ec587
+pkgver=r67.1354656
 pkgrel=1
 pkgdesc='Clone an existing BTRFS file system to a new one, cloning each subvolume in order.'
 provides=(${_pkgname})
@@ -10,17 +10,10 @@ conflicts=(${_pkgname})
 arch=('any')
 url="https://github.com/mwilck/${_pkgname}"
 license=('GPL2')
-depends=('python')
+depends=()
 makedepends=('git')
-source=(
-	"git+${url}.git"
-	"$pkgname-10.patch::${url}/pull/10.patch"
-	"$pkgname-20.patch::${url}/pull/20.patch"
-	"$pkgname-21.patch::${url}/pull/21.patch")
-sha256sums=('SKIP'
-            'ad90a81995d6027d71a96ecb9504a459161beb61b1630eaf801aa36c8a6b7d5c'
-            '441843fc414cff858a4039b63a5787dea5cbb5fd4065fbd41cd24983c4e1844b'
-            '078c3803c4d31d64e71bb93f803ac5ed9d99f3db14ad367c544ef8e175e84f31')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 _srcdir="${_pkgname}"
 
@@ -31,16 +24,9 @@ pkgver() {
 	)
 }
 
-prepare() {
-	cd "${_srcdir}"
-	
-	patch -p1 -i "../$pkgname-10.patch"
-	patch -p1 -i "../$pkgname-20.patch"
-	patch -p1 -i "../$pkgname-21.patch"
-}
-
 package() {
 	cd "${_srcdir}"
+	depends=('python' 'btrfs-progs')
 	
 	install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
 	install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
