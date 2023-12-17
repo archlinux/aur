@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-panda-moveit-config
 	pkgdesc = ROS - An automatically generated package with all the configuration and launch files for using the panda with the MoveIt! Motion Planning Framework
-	pkgver = 0.7.5
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = http://wiki.ros.org/panda_moveit_config
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = ros-noetic-panda-moveit-config
 	depends = ros-noetic-robot-state-publisher
 	depends = ros-noetic-xacro
 	depends = ros-noetic-topic-tools
-	source = ros-noetic-panda-moveit-config-0.7.5.tar.gz::https://github.com/ros-planning/panda_moveit_config/archive/0.7.5.tar.gz
-	sha256sums = c95013de637bae3d7f3f7b5adf10b664d47388439fe31dbdac653eb610164ce4
+	source = ros-noetic-panda-moveit-config-0.8.1.tar.gz::https://github.com/ros-planning/panda_moveit_config/archive/0.8.1.tar.gz
+	sha256sums = e1a87f79c80dfaf7e3bd2ae6886c17f2f2e33f66bca5711a97f09aa0db1927fe
 
 pkgname = ros-noetic-panda-moveit-config

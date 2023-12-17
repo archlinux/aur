@@ -2,7 +2,7 @@ pkgdesc="ROS - An automatically generated package with all the configuration and
 url="http://wiki.ros.org/panda_moveit_config"
 
 pkgname="ros-noetic-panda-moveit-config"
-pkgver="0.7.5"
+pkgver="0.8.1"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -37,7 +37,7 @@ depends=(
 
 _dir="panda_moveit_config-$pkgver"
 source=("${pkgname}-$pkgver.tar.gz"::"https://github.com/ros-planning/panda_moveit_config/archive/${pkgver}.tar.gz")
-sha256sums=('c95013de637bae3d7f3f7b5adf10b664d47388439fe31dbdac653eb610164ce4')
+sha256sums=('e1a87f79c80dfaf7e3bd2ae6886c17f2f2e33f66bca5711a97f09aa0db1927fe')
 
 build() {
     # Use ROS environment variables
