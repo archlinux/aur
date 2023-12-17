@@ -1,8 +1,8 @@
 pkgbase = python-peft
 	pkgdesc = State-of-the-art Parameter-Efficient Fine-Tuning.
 	pkgver = 0.7.1
-	pkgrel = 1
-	url = https://github.com/hugginface/peft
+	pkgrel = 2
+	url = https://github.com/huggingface/peft
 	arch = any
 	groups = hugginface
 	license = Apache
