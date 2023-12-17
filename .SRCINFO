@@ -1,11 +1,13 @@
 pkgbase = radioactive
 	pkgdesc = Play and record any radio stations around the globe right from your terminal.
 	pkgver = 2.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/deep5050/radio-active
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = ffmpeg
 	depends = python-colorlog
 	depends = python-pick
