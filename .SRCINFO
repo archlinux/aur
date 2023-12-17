@@ -1,0 +1,19 @@
+pkgbase = ect-git
+	pkgdesc = File compressor supporting postcompression of PNG, JPEG, GZIP and ZIP files
+	pkgver = 0.9.4.r8.g380a1df
+	pkgrel = 1
+	url = https://github.com/fhanau/Efficient-Compression-Tool
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = nasm
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	provides = ect=0.9.4.r8.g380a1df
+	conflicts = ect
+	source = git+https://github.com/fhanau/Efficient-Compression-Tool.git
+	b2sums = SKIP
+
+pkgname = ect-git
