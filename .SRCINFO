@@ -1,0 +1,12 @@
+pkgbase = mrpack-install
+	pkgdesc = Modrinth Modpack server deployment
+	pkgver = 0.16.9
+	pkgrel = 1
+	url = https://github.com/nothub/mrpack-install
+	arch = any
+	license = MIT
+	makedepends = go
+	source = mrpack-install::git+https://github.com/nothub/mrpack-install.git#tag=v0.16.9
+	md5sums = SKIP
+
+pkgname = mrpack-install
