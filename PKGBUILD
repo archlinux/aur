@@ -3,7 +3,7 @@
 # Contributor: Amr Okasha <amradel55 at gmail.com>
 
 pkgname=ccstudio
-_semver=12.4.0
+_semver=12.5.0
 _bldver=00007
 pkgver=$_semver.$_bldver
 pkgrel=1
@@ -114,7 +114,7 @@ package() {
 
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums=('a50a18187bee66010aad439df0e24254'
+md5sums=('a4f075be3f922e0da5838ae42e29fb6e'
          'cf7222e486f8f1d2a0f99d3d946e1f01'
          '7c570e9f93da6f01986285db81d497ef'
          'af8a8c199be432919b4ca66106591c25')
