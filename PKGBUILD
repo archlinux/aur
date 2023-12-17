@@ -2,8 +2,8 @@
 
 pkgname=hcclient-bin
 pkgver=1.18.1
-pkgrel=3
-pkgdesc="A terminal client for hack.chat"
+pkgrel=4
+pkgdesc="A terminal client for hack.chat, deprecated binary distribution"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
 license=("Unlicense")
