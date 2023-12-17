@@ -1,0 +1,12 @@
+pkgbase = clash-meta-is-mihomo
+	pkgdesc = Another Clash Kernel by MetaCubeX
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/clash-meta
+	arch = any
+	license = GPL3
+	depends = clash-meta
+	provides = mihomo
+	conflicts = mihomo
+
+pkgname = clash-meta-is-mihomo
