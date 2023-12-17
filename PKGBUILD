@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp
-pkgver=3.35.3
+pkgver=3.36.0
 pkgrel=1
 pkgdesc='OpenVSP allows the user to create a 3D model of an aircraft defined by
          common engineering parameters.'
@@ -25,7 +25,7 @@ makedepends=('cmake' 'unzip')
 _name=OpenVSP-OpenVSP_${pkgver}
 source=("${pkgname}-${pkgver}"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz"
         "format.patch"::"https://patch-diff.githubusercontent.com/raw/OpenVSP/OpenVSP/pull/221.patch")
-sha256sums=('e08827bd8848ba75fc7466bcec399aa785683335e81c0e24773b0bf0e68de216'
+sha256sums=('e568bba08e91bb9c6400848a3c3df206a892463f9e0385c6fda3b00ac51fd25c'
             'SKIP')
 
 prepare() {
@@ -43,17 +43,20 @@ build() {
 
   cmake ../${_name}/Libraries \
         -DCMAKE_PREFIX_PATH='/usr' \
-        -DVSP_USE_SYSTEM_CPPTEST=true \
-        -DVSP_USE_SYSTEM_LIBXML2=true \
-        -DVSP_USE_SYSTEM_EIGEN=true \
-        -DVSP_USE_SYSTEM_CODEELI=false \
-        -DVSP_USE_SYSTEM_FLTK=true \
-        -DVSP_USE_SYSTEM_GLM=true \
-        -DVSP_USE_SYSTEM_GLEW=true \
+        -DVSP_USE_SYSTEM_ADEPT2=false \
+        -DVSP_USE_SYSTEM_CLIPPER2=false \
         -DVSP_USE_SYSTEM_CMINPACK=false \
-        -DVSP_USE_SYSTEM_LIBIGES=false \
-        -DVSP_USE_SYSTEM_STEPCODE=false \
+        -DVSP_USE_SYSTEM_CODEELI=false \
+        -DVSP_USE_SYSTEM_CPPTEST=true \
+        -DVSP_USE_SYSTEM_DELABELLA=false \
+        -DVSP_USE_SYSTEM_EIGEN=true \
         -DVSP_USE_SYSTEM_EXPRPARSE=false \
+        -DVSP_USE_SYSTEM_FLTK=true \
+        -DVSP_USE_SYSTEM_GLEW=true \
+        -DVSP_USE_SYSTEM_GLM=true \
+        -DVSP_USE_SYSTEM_LIBIGES=false \
+        -DVSP_USE_SYSTEM_LIBXML2=true \
+        -DVSP_USE_SYSTEM_STEPCODE=false \
         -DVSP_USE_SYSTEM_TRIANGLE=false
 
   make
