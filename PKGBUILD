@@ -31,12 +31,6 @@ pkgver() {
         | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# prepare() {
-#     cd "$_pkgname"
-#     # TODO: find a better solution
-#     sed -i "s|let env' = dynlibEnv ++ |let env' = dynlibEnv ++ [(\"LD_LIBRARY_PATH\", \"$PWD/dist/build\")] ++ |" test/Tests/Command.hs
-# }
-
 build() {
     cd "$_pkgname"
 
