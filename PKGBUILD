@@ -1,7 +1,7 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=ocaml-yojson-git
-pkgver=20190520
+pkgver=20231123
 pkgrel=1
 pkgdesc="Low level JSON binary for OCaml"
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=('BSD')
 options=('!strip' 'staticlibs')
 provides=('ocaml-yojson')
 conflicts=('ocaml-yojson')
-depends=('ocaml-biniou' 'ocaml-easy-format')
+depends=('ocaml-biniou' 'ocaml-easy-format' 'ocaml-sexplib')
 makedepends=('dune' 'cppo')
-source=("${pkgname}::git://github.com/ocaml-community/yojson.git")
+source=("${pkgname}::git+https://github.com/ocaml-community/yojson.git")
 md5sums=('SKIP')
 
 pkgver() {
