@@ -5,10 +5,10 @@ _pkgname=Cairo
 _pkgver=1.6-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="R Graphics Device using Cairo Graphics Library for Creating High-Quality Bitmap (PNG, JPEG, TIFF), Vector (PDF, SVG, PostScript) and Display (X11 and Win32) Output"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(GPL)
 depends=(
   cairo
@@ -26,11 +26,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('335f168eee7a37b4f8e2d97b3873b8b4')
-sha256sums=('6b6f4c6f93178a1295860a9dc6dc45e60fec70f684d5c8d0b59baf5b8dd44d62')
+b2sums=('2aff71d816a41f99a5bb90a5ddd13b9134766d260480ed0cc5d958d055bb27c8e52a1ef01a75783d61608ff242ac67c352b92afa9c6ee3b379071acbfb276349')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
