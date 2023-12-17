@@ -15,7 +15,6 @@ pkgbase = purc-git
 	checkdepends = check
 	checkdepends = gtest
 	checkdepends = valgrind
-	makedepends = avahi
 	makedepends = bison
 	makedepends = cmake
 	makedepends = flex
@@ -67,7 +66,7 @@ pkgbase = purc-git
 	replaces = domruler
 	replaces = purc-fetcher
 	options = !strip
-	source = purc::git+https://github.com/HVML/PurC.git
+	source = purc-git::git+https://github.com/HVML/PurC.git
 	sha256sums = SKIP
 
 pkgname = purc-git

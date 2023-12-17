@@ -32,10 +32,9 @@ replaces=(domruler
 depends=(glib2
     glibc)
 makedepends=(
-    avahi
+#     avahi
     bison
     cmake
-#     cython
     flex
     git
     ninja
@@ -59,7 +58,7 @@ makedepends=(
     libxslt
     libsoup3
     icu
-#     mariadb
+#     libmariadbclient
     openssl
     sqlite
     systemd
@@ -73,17 +72,17 @@ optdepends=('python-numpy: Scientific tools for Python'
     'webkit2gtk-hvml: Web content engine for GTK (HVML)'
     'webkit2gtk: Web content engine for GTK'
     'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
-source=("${pkgname%-git}::git+${url}.git")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 options=('!strip')
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}/"
+    cd "${srcdir}/${pkgname}/"
     git describe --long --tags | sed 's/ver.//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname}"
 
 #     sed -i 's|0 9 14|0 9 15|g' CMakeLists.txt
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
@@ -114,5 +113,5 @@ build() {
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname%-git}/build install
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
 }
