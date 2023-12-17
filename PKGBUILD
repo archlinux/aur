@@ -20,7 +20,7 @@ build() {
 
 check() {
 	cd $srcdir/$upstream_name-$pkgver
-	make test
+	PYTHONPATH=src:$PYTHONPATH make test
 }
 
 package() {
