@@ -12,7 +12,7 @@ conflicts=('aom' 'aom-git')
 license=(BSD custom:PATENTS)
 depends=(gcc-libs vmaf libjxl-metrics-git)
 makedepends=(cmake ninja yasm git)
-source=(git+https://github.com/Clybius/aom-av1-lavish.git#branch=Endless_Merging)
+source=(git+https://github.com/Clybius/aom-av1-lavish.git#branch=opmox/mainline-merge)
 sha256sums=('SKIP')
 
 pkgver() {

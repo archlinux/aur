@@ -18,7 +18,7 @@ pkgbase = aom-av1-lavish-git
 	provides = libaom.so
 	conflicts = aom
 	conflicts = aom-git
-	source = git+https://github.com/Clybius/aom-av1-lavish.git#branch=Endless_Merging
+	source = git+https://github.com/Clybius/aom-av1-lavish.git#branch=opmox/mainline-merge
 	sha256sums = SKIP
 
 pkgname = aom-av1-lavish-git
