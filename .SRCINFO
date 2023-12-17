@@ -1,7 +1,7 @@
 pkgbase = ttf-misans
 	pkgdesc = MiSans Global is a global language font customization project led by Xiaomi and co-created with Mona font and Han Yi font.
 	pkgver = 4.003
-	pkgrel = 0
+	pkgrel = 1
 	url = https://hyperos.mi.com/font/download
 	arch = any
 	license = custom
@@ -21,6 +21,7 @@ pkgname = misans
 	depends = ttf-misans-gujarati
 	depends = ttf-misans-gurmukhi
 	depends = ttf-misans-khmer
+	depends = ttf-misans-l3
 	depends = ttf-misans-latin
 	depends = ttf-misans-myanmar
 	depends = ttf-misans-tc
@@ -33,6 +34,7 @@ pkgname = misans
 	depends = otf-misans-gujarati
 	depends = otf-misans-gurmukhi
 	depends = otf-misans-khmer
+	depends = otf-misans-l3
 	depends = otf-misans-latin
 	depends = otf-misans-myanmar
 	depends = otf-misans-tc
@@ -45,6 +47,7 @@ pkgname = misans
 	depends = woff-misans-gujarati
 	depends = woff-misans-gurmukhi
 	depends = woff-misans-khmer
+	depends = woff-misans-l3
 	depends = woff-misans-latin
 	depends = woff-misans-myanmar
 	depends = woff-misans-tc
@@ -57,6 +60,7 @@ pkgname = misans
 	depends = woff2-misans-gujarati
 	depends = woff2-misans-gurmukhi
 	depends = woff2-misans-khmer
+	depends = woff2-misans-l3
 	depends = woff2-misans-latin
 	depends = woff2-misans-myanmar
 	depends = woff2-misans-tc
@@ -79,6 +83,8 @@ pkgname = ttf-misans-gujarati
 pkgname = ttf-misans-gurmukhi
 
 pkgname = ttf-misans-khmer
+
+pkgname = ttf-misans-l3
 
 pkgname = ttf-misans-latin
 
@@ -104,6 +110,8 @@ pkgname = otf-misans-gurmukhi
 
 pkgname = otf-misans-khmer
 
+pkgname = otf-misans-l3
+
 pkgname = otf-misans-latin
 
 pkgname = otf-misans-myanmar
@@ -128,6 +136,8 @@ pkgname = woff-misans-gurmukhi
 
 pkgname = woff-misans-khmer
 
+pkgname = woff-misans-l3
+
 pkgname = woff-misans-latin
 
 pkgname = woff-misans-myanmar
@@ -151,6 +161,8 @@ pkgname = woff2-misans-gujarati
 pkgname = woff2-misans-gurmukhi
 
 pkgname = woff2-misans-khmer
+
+pkgname = woff2-misans-l3
 
 pkgname = woff2-misans-latin
 
