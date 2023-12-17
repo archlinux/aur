@@ -3,9 +3,11 @@
 pkgbase=hbdinetd-git
 pkgname=hbdinetd-git
 pkgver=r118.e7b1f42
-pkgrel=1
+pkgrel=2
 pkgdesc="The daemon managing network interfaces for HybridOS."
-arch=(any)
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/HybridOS2/HBDInetd"
 license=('GPL-3.0')
 groups=(hybridos2-git)
