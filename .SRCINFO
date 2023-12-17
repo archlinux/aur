@@ -1,7 +1,7 @@
 pkgbase = konsole-osc52
 	pkgdesc = KDE terminal emulator patched with OSC52 copy support
 	pkgver = 23.08.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/konsole/
 	arch = x86_64
 	groups = kde-applications

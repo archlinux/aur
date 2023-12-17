@@ -6,7 +6,7 @@
 _pkgname=konsole
 pkgname=$_pkgname-osc52
 pkgver=23.08.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://apps.kde.org/konsole/'
 pkgdesc='KDE terminal emulator patched with OSC52 copy support'
