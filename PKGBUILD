@@ -2,10 +2,10 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Lukas Böger <dev___AT___lboeger___DOT___de>
 pkgname=dune-geometry
-_tarver=2.9.0
+_tarver=2.9.1
 _tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
 pkgver="${_tarver}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Geometry Transformations, Reference Elements and Quadrature Rules"
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
@@ -16,20 +16,15 @@ optdepends=('texlive-latexextra: Type setting system'
   'doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
   'inkscape: converts SVG images')
-source=(https://dune-project.org/download/${_tar}{,.asc}
-  gcc13-compatibility.patch::https://gitlab.dune-project.org/core/${pkgname}/-/commit/3df3cb68b6b2c1b28d29c0353e42a63ab54768d1.patch)
-sha512sums=('5b227b3346b7eb3db3887483525a3ce550eddfa13528c30b213a7cc811dead5844bf0032133d2167bd6f341be8b13c014cc208724e67cac074432af28cd39fb1'
-  'SKIP'
-  '64e7e170064c970a17aca4bab424248cca4c706772ef004151826f763d4b1c27ecb5752a2d317bcf80adaf35d7b69a4ef993b1b0f3e6697f77f4d0ab1658ff8a')
-validpgpkeys=('E5B47782DE09813BCC3518E159DA94F1FC8FD313') # Andreas Dedner <a.s.dedner@warwick.ac.uk>
+source=(https://dune-project.org/download/${_tar}{,.asc})
+sha512sums=('b1fc097677922d590f066487ca8e2853dd0652884251eab719e4ed39c5d90ab49f2ff27d404c14fdebf3c8a39a638a36c47425020247e9b1ae00b3fd13dd93c1'
+  'SKIP')
+validpgpkeys=('2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF') # Christoph Grüninger <pgp@grueninger.de>
 
 prepare() {
   cd ${pkgname}-${pkgver}
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-  sed -i 's/^Version: '"${pkgver%%.0}"'-git/Version: '"${pkgver}"'/' dune.module
   sed -i '7 a   BUILD_ON_INSTALL' doc/refinement/CMakeLists.txt
-  # https://gitlab.dune-project.org/core/dune-geometry/-/merge_requests/217
-  patch -p1 -i ../gcc13-compatibility.patch
   python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 
