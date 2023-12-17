@@ -13,7 +13,7 @@ pkgname=(
   'onnxruntime'
   'python-onnxruntime'
 )
-pkgver=1.16.1
+pkgver=1.16.3
 pkgdesc='Cross-platform, high performance scoring engine for ML models'
 pkgrel=1
 arch=('x86_64')
@@ -119,14 +119,16 @@ prepare() {
       -i cmake/external/onnxruntime_external_deps.cmake
 
   if [[ $_ENABLE_TENSORRT = 1 ]]; then
-    # Update Tensorboard a01ceb5957d9ecd56314df115c09e3ddb60d12f7
-    sed -e 's|373eb09e4c5d2b3cc2493f0949dc4be6b6a45e81|a01ceb5957d9ecd56314df115c09e3ddb60d12f7|g' \
-        -e 's|ff427b6a135344d86b65fa2928fbd29886eefaec|113750f323d131859ac4e17070d2c9417e80d701|g' \
-        -i cmake/deps.txt
+    # Update Tensorboard 8343cad89d984c199637ead11c8d4c053191673a (2.15.1)
+#     # Update Tensorboard a01ceb5957d9ecd56314df115c09e3ddb60d12f7
+#     sed -e 's|373eb09e4c5d2b3cc2493f0949dc4be6b6a45e81|a01ceb5957d9ecd56314df115c09e3ddb60d12f7|g' \
+#         -e 's|ff427b6a135344d86b65fa2928fbd29886eefaec|113750f323d131859ac4e17070d2c9417e80d701|g' \
+#         -i cmake/deps.txt
 
-    # Update onnx_tensorrt 6ba67d3428e05f690145373ca87fb8d32f98df45
+
+    # Update onnx_tensorrt 6ba67d3428e05f690145373ca87fb8d32f98df45 (8.6 GA)
     sed -e 's|0462dc31ae78f48744b6141ae376df1f96d3f459|6ba67d3428e05f690145373ca87fb8d32f98df45|g' \
-        -e 's|67b833913605a4f3f499894ab11528a702c2b381|113750f323d131859ac4e17070d2c9417e80d701|g' \
+        -e 's|67b833913605a4f3f499894ab11528a702c2b381|67b833913605a4f3f499894ab11528a702c2b381|g' \
         -i cmake/deps.txt
   fi
 
