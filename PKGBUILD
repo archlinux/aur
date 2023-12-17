@@ -2,12 +2,13 @@
 
 pkgname=hcclient-latex
 pkgver=1.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal client for hack.chat, with LaTeX support"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
 license=("Unlicense")
 provides=("hcclient")
+conflicts=("hcclient")
 depends=("python")
 makedepends=("python-pip" "python-wheel") 
 source=("v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
