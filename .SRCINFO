@@ -1,0 +1,16 @@
+pkgbase = aws-lambda-cpp-runtime
+	pkgdesc = C++ implementation of the AWS Lambda runtime
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = https://github.com/awslabs/aws-lambda-cpp
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = cmake
+	depends = curl
+	depends = bash
+	options = !lto
+	source = https://github.com/awslabs/aws-lambda-cpp/archive/refs/tags/v0.2.10.tar.gz
+	sha256sums = fee8e465ac63efaa6252aa2a108183ef174cbc5ed3e56e4de4986846f89a76ee
+
+pkgname = aws-lambda-cpp-runtime
