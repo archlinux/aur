@@ -3,7 +3,7 @@ managers, transmissions and hardware_interfaces."
 url='http://wiki.ros.org/ros_control'
 
 pkgname='ros-noetic-ros-control'
-pkgver='0.19.1'
+pkgver='0.20.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -34,7 +34,7 @@ depends=(
 
 _dir="ros_control-${pkgver}/ros_control"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_control/archive/${pkgver}.tar.gz")
-sha256sums=('9b39e47e78c43f36c378c0557a68b4ba35f1f723314cbd541a460e6a340bc4ae')
+sha256sums=('28adcdf8e410bcee60415eebd8087f7b5c60af9833df9a75120e0250a7e459e8')
 
 build() {
     # Use ROS environment variables

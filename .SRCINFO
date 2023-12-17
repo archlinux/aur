@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-ros-control
 	pkgdesc = ROS - A set of packages that include controller interfaces, controller managers, transmissions and hardware_interfaces.
-	pkgver = 0.19.1
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = http://wiki.ros.org/ros_control
 	arch = i686
@@ -20,8 +20,7 @@ pkgbase = ros-noetic-ros-control
 	depends = ros-noetic-joint-limits-interface
 	depends = ros-noetic-realtime-tools
 	depends = ros-noetic-transmission-interface
-	source = ros-noetic-ros-control-0.19.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.19.1.tar.gz
-	sha256sums = 9b39e47e78c43f36c378c0557a68b4ba35f1f723314cbd541a460e6a340bc4ae
+	source = ros-noetic-ros-control-0.20.0.tar.gz::https://github.com/ros-controls/ros_control/archive/0.20.0.tar.gz
+	sha256sums = 28adcdf8e410bcee60415eebd8087f7b5c60af9833df9a75120e0250a7e459e8
 
 pkgname = ros-noetic-ros-control
-
