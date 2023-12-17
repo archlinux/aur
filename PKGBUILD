@@ -44,7 +44,7 @@ makedepends=(
     'extra-cmake-modules'
     'ninja')
 provides=("qcm")
-conficts=(qcm-git)
+conficts=("qcm-git")
 source=("git+https://github.com/hypengw/Qcm.git#tag=${_tag}")
 sha256sums=('SKIP')
 
@@ -54,7 +54,6 @@ function pkgver() {
 
 function build() {
     if [ -d "${srcdir}"/Qcm/build ]; then
-        _info "Deleting ${srcdir}/Qcm/build"
         rm -r "${srcdir}"/Qcm/build
     fi
     cd Qcm
