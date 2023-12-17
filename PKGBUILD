@@ -2,7 +2,7 @@
 
 pkgbase=glslviewer
 pkgname=('glslviewer' 'glslviewer-examples')
-pkgver=3.2.2
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="Console-based GLSL Sandbox for 2D/3D shaders"
 arch=('i686' 'x86_64')
@@ -10,23 +10,18 @@ url="https://github.com/patriciogonzalezvivo/glslViewer"
 license=('BSD-3-Clause')
 depends=('glu' 'glfw-x11' 'ncurses' 'ffmpeg')
 makedepends=('cmake' 'git')
-source=("$pkgbase::git+https://github.com/patriciogonzalezvivo/glslViewer#tag=$pkgver"
-        "git+https://github.com/patriciogonzalezvivo/ada"
-        "git+https://github.com/mackron/miniaudio"
-        "vera-pixel-h-build-fix.patch::https://github.com/patriciogonzalezvivo/vera/commit/33f15d158cc82a27d6958f5eb2cad992a728a6a3.diff")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         '674e62c4fbba426cf21f7e98670198a4')
+source=("$pkgbase::git+https://github.com/patriciogonzalezvivo/glslViewer#tag=$pkgver")
+md5sums=('SKIP')
 
 prepare() {
   cd "$pkgbase"
   git submodule init
-  git config submodule.deps/ada.url "$srcdir/ada"
-  git config submodule.deps/miniaudio.url "$srcdir/miniaudio"
   git submodule update
 
-  patch -p1 -d deps/vera/ < "$srcdir/vera-pixel-h-build-fix.patch"
+  # Revert vera exiv2 support to fix build error
+  # https://github.com/patriciogonzalezvivo/vera/issues/9
+  cd "deps/vera/"
+  git revert -n 3ab745a4173340110bb1e592949c78cf5c039eeb
 }
 
 build() {
