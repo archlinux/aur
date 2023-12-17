@@ -2,8 +2,8 @@
 # Contributor: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 
 pkgname=buildroot-meta
-pkgver=2022.11.1
-pkgrel=2
+pkgver=2023.11
+pkgrel=1
 pkgdesc="dependency requirements for buildroot"
 arch=('any')
 url="https://buildroot.org/downloads/manual/manual.html#requirement"
@@ -27,8 +27,9 @@ depends=(
   'rsync'
   'file'
   'bc'
-  'wget'
   'findutils'
+  # Source fetching tools
+  'wget'
 )
 
 optdepends=(
@@ -39,12 +40,12 @@ optdepends=(
 
   # Configuration interface dependencies
   # output/build/buildroot-config/
-  'ncurses: menuconfig & nconfig'
-  'qt5-base: xconfig'
-  'glib2: gconfig'
-  'gtk2: gconfig'
+  'ncurses: to use the menuconfig interface'
+  'qt5-base: to use the xconfig interface'
+  'glib2: to use the gconfig interface'
+  'gtk2: to use the gconfig interface'
   # 'glade: gconfig' # /usr/lib/libgladeui-2.so (NOT required)
-  'libglade: gconfig' # /usr/lib/libglade-2.0.so (optionally required)
+  'libglade: to use the gconfig interface' # /usr/lib/libglade-2.0.so (optionally required)
 
   # Source fetching tools
   'breezy: bazaar'
@@ -52,14 +53,16 @@ optdepends=(
   'git'
   'mercurial'
   'rsync'
-  'openssh: scp'
+  'openssh: scp and sftp'
   'subversion'
 
   # Java-related packages
+  'java-environment-common: javac and jar'
 
   # Documentation generation tools
   'asciidoc>=8.6.3'
   'w3m'
+  # python-argparse is present in python 3.2+
   'dblatex: pdf manual'
 
   # Graph generation tools
@@ -67,8 +70,3 @@ optdepends=(
   'python-matplotlib: graph-build'
 
 )
-
-# provides=("${pkgname%-meta}")
-# conflicts=("${pkgname%-meta}")
-# source=('SKIP')
-# md5sums=('SKIP')
