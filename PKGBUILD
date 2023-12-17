@@ -2,7 +2,7 @@
 
 pkgname=hcclient-bin
 pkgver=1.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A terminal client for hack.chat"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
@@ -15,9 +15,8 @@ sha256sums=('6ea3c8d6493f4ecf18a1d33035b51a34591d93b33c79859bad450684e580663c')
 
 build() {
   echo "===================="
-  echo "This package will NO LONGER be updated as binary builds of hcclient are not provided anymore."
-  echo "\`hcclient-bin\` will be frozen at 1.18.1."
-  echo "Switch to the \`hcclient\` or \`hcclient-latex\` packages to receive updates."
+  echo "This package will not be updated after 1.18.1 as binary builds of hcclient are no longer provided."
+  echo "Switch to the \`hcclient\` or \`hcclient-latex\` packages."
   echo "===================="
   read -p "Press any key to continue anyway..."
 }
