@@ -2,7 +2,7 @@
 
 pkgname=hcclient
 pkgver=1.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal client for hack.chat"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
@@ -17,7 +17,7 @@ build() {
   cd "${srcdir}/hcclient-${pkgver}"
   RELEASE_VERSION=true NO_ANSI=true bash scripts/build.sh
   python -m venv venv
-  ./venv/bin/pip install dist/hcclient-${pkgver}-py3-none-any.whl
+  ./venv/bin/pip install --disable-pip-version-check --no-color dist/hcclient-${pkgver}-py3-none-any.whl
 }
 
 package() {
