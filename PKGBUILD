@@ -23,6 +23,10 @@ source=("$_pkgname::git+https://github.com/firecat53/$_gitname.git")
 md5sums=('SKIP')
 install="$_pkgname.install"
 
+prepare() {
+  git -C "$_gitname" clean -dfx
+}
+
 pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
