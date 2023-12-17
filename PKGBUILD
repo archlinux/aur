@@ -2,8 +2,8 @@
 
 pkgname=clipboard
 _pkgname=Clipboard
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.9.0.1
+pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal."
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://getclipboard.app"
@@ -13,19 +13,8 @@ makedepends=('cmake' 'libx11' 'wayland' 'wayland-protocols')
 optdepends=('libx11: X11 support'
 	    'wayland: Wayland support'
 	    'wayland-protocols: Wayland support')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Slackadays/Clipboard/archive/${pkgver}.tar.gz"
-        "fix_string_view_error.patch")
-sha256sums=('d2f13e66e4b45d2084e2f88b992b36f07faf649fa1a1c5e0acfca303270a988c'
-            'f9a5852ac44058644816214ba4a294b728c0415054e7dd3e9079e364f2e7c2cd')
-
-prepare() {
-	cd "${_pkgname}-${pkgver}"
-
-	# Temporary patch to fix build
-	# https://github.com/Slackadays/Clipboard/issues/168
-	# https://github.com/Slackadays/Clipboard/commit/ac5982df045034f60e73d0ef81a3fe9ed3225c6b
-	patch -Np1 < "${srcdir}/fix_string_view_error.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Slackadays/Clipboard/archive/${pkgver}.tar.gz")
+sha256sums=('187eba2a2c72d32d35ff750b947f1c812e33f9af538a6fc1b781e18a5e912d45')
 
 build() {
         export CFLAGS="${CFLAGS} -DNDEBUG"
