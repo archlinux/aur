@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-joint-trajectory-controller
 	pkgdesc = ROS - Controller for executing joint-space trajectories on a group of joints.
-	pkgver = 0.20.0
+	pkgver = 0.21.2
 	pkgrel = 1
 	url = https://github.com/ros-controls/ros_controllers/wiki
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = ros-noetic-joint-trajectory-controller
 	depends = ros-noetic-rostest
 	depends = ros-noetic-std-msgs
 	depends = boost
-	source = ros-noetic-joint-trajectory-controller-0.20.0.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.20.0.tar.gz
-	sha256sums = c9a42db66d8a90604f255592fb0f2c20d315a235a0a20aaa07a1e045dcda6d27
+	source = ros-noetic-joint-trajectory-controller-0.21.2.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.21.2.tar.gz
+	sha256sums = 19e710b944e972ffb7fadb2d149f97bcdc1c2c0cf38a20405c09afced1543ba4
 
 pkgname = ros-noetic-joint-trajectory-controller

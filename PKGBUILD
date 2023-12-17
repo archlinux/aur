@@ -2,7 +2,7 @@ pkgdesc="ROS - Controller for executing joint-space trajectories on a group of j
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-noetic-joint-trajectory-controller'
-pkgver='0.20.0'
+pkgver='0.21.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -42,7 +42,7 @@ depends=(
 
 _dir="ros_controllers-${pkgver}/joint_trajectory_controller"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
-sha256sums=('c9a42db66d8a90604f255592fb0f2c20d315a235a0a20aaa07a1e045dcda6d27')
+sha256sums=('19e710b944e972ffb7fadb2d149f97bcdc1c2c0cf38a20405c09afced1543ba4')
 
 build() {
     # Use ROS environment variables
