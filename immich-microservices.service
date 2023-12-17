@@ -1,7 +1,6 @@
 [Unit]
 Description=Immich microservices
 Documentation=https://github.com/immich-app/immich
-Requires=typesense-server.service
 Requires=postgresql.service
 Requires=immich-server.service
 After=network.target

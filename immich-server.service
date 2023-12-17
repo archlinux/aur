@@ -3,7 +3,6 @@ Description=Immich server
 Documentation=https://github.com/immich-app/immich
 Requires=redis.service
 Requires=postgresql.service
-Requires=typesense-server.service
 After=network.target
 Wants=network-online.target
 After=network-online.target

@@ -2,8 +2,8 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=6
-pkgver=1.90.2
+pkgrel=1
+pkgver=1.91.2
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
@@ -13,7 +13,7 @@ makedepends=('npm' 'jq' 'python-poetry' 'ts-node')
 # combination of server/CLI deps, see split package functions
 # for individual deps and commentary
 depends=('redis' 'postgresql' 'nodejs' 'nginx'
-    'typesense' 'zlib' 'glib2' 'expat' 'librsvg' 'libexif'
+    'pgvecto.rs=0.1.11' 'zlib' 'glib2' 'expat' 'librsvg' 'libexif'
     'libwebp' 'orc' 'libjpeg-turbo' 'libgsf' 'libpng'
     'libjxl' 'libheif' 'lcms2' 'mimalloc' 'openjpeg2'
     'openexr' 'liblqr' 'libtool' 'ffmpeg'
@@ -43,16 +43,16 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/cities500.zip'
         'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
         'https://download.geonames.org/export/dump/admin2Codes.txt')
-sha256sums=('0b9347e3a9019a6ca95c68d6d05e68657f24e7de81d1d690e6a61e81c5c3798d'
-            '42792b6b7c5461385395907af9bf724e02c6622603a741e86c73b1204a5ad973'
-            'ed91a977c236e4ceccea210305e4bb77464b75539063b411bd1ab90115766f4c'
+sha256sums=('67cc8d544a2430643a7ec5147c920f13188fcbd4ac2fe61a115e3443de8c01ea'
+            '77582958979462642caeeb77cb9bc8e02ce80e5ec8f9d6aaa6c71f69ab96ea5d'
+            'dc1a3d7baf2ec4f00a4a80f88a1f28dc1092eb7a08195544cc37b6532777f5d7'
             'd20455349cdb9409adb42cdbde48c30a176d2a5337ad148c6d2227ecc523c88a'
             '01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e'
             '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
-            'aaa0608d1169854e497aa75ce3c288bb7ced3086e65ea162f9c2faf4c9436fc5'
+            'abe44046256b32a6b629fd288e48653f02a6c4728a67806fac771ab1cad759d6'
             'cc405c774e34cd161f00ccd882e66c2d2ce28405964bf62472ebc3f59d642060'
             'd38cdaa031f741998f2d31504381bce4db1a8771c774a2c2bac547d7d2b3c70b'
-            '70b9d3859031b289ff6a6c5065357dc92255308eb5b532b5a4ae1ab72cf59fbc'
+            'c709ce5853e5becec9a5557a15661a96b8075d3765eca29c64f047b31fb6d0a8'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -82,7 +82,11 @@ build() {
     cd "${srcdir}/${pkgbase}-${pkgver}/server"
     npm ci
     npm run build
+    cp -r node_modules/@img "${srcdir}/server-node_modules-@img"
+    rm -rf "${srcdir}/server-node_modules-@img/sharp-libvips"*
+    rm -rf "${srcdir}/server-node_modules-@img/sharp-linuxmusl-x64"
     npm prune --omit=dev --omit=optional
+    mv "${srcdir}/server-node_modules-@img/"* node_modules/@img
         
     # build machine learning (python)
     # from: ENV and RUN commands in machine-learning/Dockerfile
@@ -119,7 +123,7 @@ package_immich-server() {
     # dependencies generated from base-images repository
     # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
     depends=('redis' 'postgresql' 'nodejs' 'nginx'
-        'typesense'
+        'pgvecto.rs=0.1.11'  # aur
         'zlib'
         'glib2'
         'expat'
@@ -153,18 +157,18 @@ package_immich-server() {
         'perl-capture-tiny'
         'perl-file-which'
         'perl-file-chdir'
-        'perl-pkgconfig' # other potential - libpkgconf
+        'perl-pkgconfig'  # other potential - libpkgconf
         'perl-ffi-checklib'
         'perl-test-warnings'
         'perl-test-fatal'
         'perl-test-needs'
         'perl-test2-suite'
         'perl-sort-versions'
-        'perl-path-tiny' # other potential - perl-file-path-tiny
+        'perl-path-tiny'  # other potential - perl-file-path-tiny
         'perl-try-tiny'
         'perl-term-table'
-        'perl-uri' # good enough for libany-uri-escape-perl?
-        'perl-mojolicious' # aur
+        'perl-uri'  # good enough for libany-uri-escape-perl?
+        'perl-mojolicious'  # aur
         'perl-file-slurper'
     )
     backup=("etc/immich.conf")
