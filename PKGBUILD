@@ -14,6 +14,10 @@ source=("git+https://github.com/tabviewer/tabview.git")
 _gitname="tabview"
 md5sums=('SKIP')
 
+prepare() {
+  git -C "$_gitname" clean -dfx
+}
+
 pkgver() {
   cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"

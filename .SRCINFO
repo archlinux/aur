@@ -1,6 +1,6 @@
 pkgbase = tabview-git
 	pkgdesc = Curses CSV/tabular data viewer
-	pkgver = r226.77846ac
+	pkgver = r229.a5b120d
 	pkgrel = 1
 	url = https://github.com/tabviewer/tabview
 	arch = any
