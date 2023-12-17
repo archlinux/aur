@@ -1,8 +1,8 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-torch-sparse
-pkgver=0.6.17
-pkgrel=2
+pkgver=0.6.18
+pkgrel=1
 pkgdesc='PyTorch Extension Library of Optimized Autograd Sparse Matrix
 Operations'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('python' 'python-scipy')
 makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools' 'parallel-hashmap')
 source=("$pkgname-$pkgver::https://github.com/rusty1s/pytorch_sparse/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c964a70ed978bff65009250eb12fae96317c60c9a04d7d1b07f0beee8b4b9c22')
+sha256sums=('a9e194cddc17481001ac4592a058450493ce13780e8ce3eb54d4f79706e69c91')
 
 _pkgname=pytorch_sparse
 
