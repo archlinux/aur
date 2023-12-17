@@ -1,0 +1,9 @@
+[Unit]
+Description=dinit - Service monitoring / "init" system
+
+[Service]
+ExecStart=/usr/bin/dinit --user
+
+[Install]
+WantedBy=default.target
+

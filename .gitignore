@@ -1,0 +1,7 @@
+*
+*/
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!dinit.service
+!dinit-user.service
