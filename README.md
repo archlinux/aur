@@ -2,9 +2,9 @@
 
 ### 1、简介
 
-wine 版网易云音乐在 arch 系发行版的构建。
+arch 系发行版可用的 wine 网易云音乐客户端。是对星火商店对应项目的重新打包。
 
-上游是星火商店的打包项目，项目地址：https://www.spark-app.store/store/application/com_dot_163_dot_music_dot_spark
+原项目首页：https://www.spark-app.store/store/application/com_dot_163_dot_music_dot_spark
 
 
 
