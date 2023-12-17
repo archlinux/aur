@@ -1,3 +1,4 @@
+# Maintainer: AiCorein melodyecho@glowmem.com
 pkgname=com.163.music.spark
 pkgver=3.0.1.201795spark10
 pkgrel=1
