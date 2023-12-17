@@ -1,6 +1,6 @@
 pkgbase = dwarffortress-spacefox
 	pkgdesc = A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world. Packed with Spacefox's tileset and graphics pack. Does not replace other dwarffortress packages.
-	pkgver = 0.47.04
+	pkgver = 0.47.05
 	pkgrel = 1
 	url = http://www.bay12forums.com/smf/index.php?topic=129219.0
 	install = dwarffortress-sf.install
@@ -15,20 +15,20 @@ pkgbase = dwarffortress-spacefox
 	optdepends = lib32-catalyst-utils: If you have ATI graphics
 	optdepends = lib32-alsa-lib: for alsa sound
 	optdepends = lib32-libpulse: for pulse sound
-	backup = opt/df_linux-sf/data/init/colors.txt
-	backup = opt/df_linux-sf/data/init/init.txt
-	backup = opt/df_linux-sf/data/init/d_init.txt
-	backup = opt/df_linux-sf/data/init/interface.txt
-	source = df_47_04.tar.bz2::http://www.bay12games.com/dwarves/df_47_04_linux.tar.bz2
-	source = spacefox_47.04.zip::https://github.com/DFgraphics/Spacefox/archive/47.04.zip
-	source = unfuck_0.47.04.zip::https://github.com/svenstaro/dwarf_fortress_unfuck/archive/0.47.04.zip
+	backup = opt/dwarffortress-spacefox/data/init/colors.txt
+	backup = opt/dwarffortress-spacefox/data/init/init.txt
+	backup = opt/dwarffortress-spacefox/data/init/d_init.txt
+	backup = opt/dwarffortress-spacefox/data/init/interface.txt
+	source = git+https://github.com/svenstaro/dwarf_fortress_unfuck.git#tag=0.47.05
+	source = https://www.bay12games.com/dwarves/df_47_05_linux.tar.bz2
+	source = spacefox_47_05.zip::https://github.com/DFgraphics/Spacefox/archive/47.05.zip
 	source = dwarffortress-sf
 	source = dwarffortress-sf.desktop
 	source = dwarffortress-sf.png
 	source = LICENSE-sf
-	sha256sums = 1de5872bf3ac32906a0082129ec88d6879b6ac7059a3513607d628090b1328e6
-	sha256sums = 51d71a5b205e5d5d48d511dbe4a1eda666da322a9dc9392f3a78305b9ef205fa
-	sha256sums = a337437ab917a12e5fb3c8f65720e3f5f6e742900db5754bdc517ad95befdc8b
+	sha256sums = 1b80b0f76ed2268957b16f4046fa665f0a194d96932fd8d285da829e5a585c25
+	sha256sums = ac74a6dbb7d7d9621f430405080322ab50c35f6632352ff2ea923f6dc5affca3
+	sha256sums = e9608bdf9d47dbcf42567c57430a110f19ac5040fc55b87d47b927a0c3f24f5d
 	sha256sums = a2ffa10c38bbd611d3ef72a8ebc7b0dda202786293168c40b7befbbab39a394b
 	sha256sums = 21fe09beb0fce25562cca51257998fded7c36588fcbac3e5c8c4f87075cbe6fd
 	sha256sums = 83183abc70b11944720b0d86f4efd07468f786b03fa52fe429ca8e371f708e0f
@@ -55,4 +55,3 @@ pkgbase = dwarffortress-spacefox
 	depends_x86_64 = lib32-zlib
 
 pkgname = dwarffortress-spacefox
-
