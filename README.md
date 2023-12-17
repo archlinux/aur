@@ -10,7 +10,11 @@ arch 系发行版可用的 wine 网易云音乐客户端。是对星火商店对
 
 ### 2、安装
 
-clone 此项目后：
+```bash
+yay -S com.163.music.spark
+```
+
+或者 clone 此项目后：
 
 ```bash
 cd arch-wine-neteasemusic && makepkg -si
