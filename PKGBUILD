@@ -10,7 +10,7 @@ amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 pkgname=opencl-amd-dev
 pkgdesc="OpenCL SDK / HIP SDK / ROCM Compiler. This package needs at least 10GB of space."
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -18,10 +18,10 @@ license=('custom:AMD')
 makedepends=('wget')
 depends=('opencl-amd')
 provides=('amd-smi-lib' 'composablekernel-dev' 'rocm-llvm' 'rocblas' 'rocblas-dev' 'rocsolver' 'rocsolver-dev' 'half' 'hipblas' 'hipblas-dev' 'hipblaslt' 'hipblaslt-dev' 'hiprand' 'hiprand-dev' 'rocprim' 'rocprim-dev' 'hipcub' 'hipcub-dev' 'rocfft' 'rocfft-dev' 'hipfft' 'hipfft-dev'
-	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev'
+	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hipsparselt' 'hipsparselt-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev'
 	'rocm-hip-libraries' 'rocm-hip-runtime-dev' 'rocthrust' 'rocthrust-dev' 'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocwmma-dev' 'rocm-developer-tools' 'miopen' 'miopen-hip' 'miopen-hip-dev' 'rocm-ml-libraries' 'rocm-ml-sdk')
 conflicts=('amd-smi-lib' 'composablekernel-dev' 'rocm-llvm' 'rocblas' 'rocblas-dev' 'rocsolver' 'rocsolver-dev' 'hipblas' 'hipblas-dev' 'hipblaslt' 'hipblaslt-dev' 'hiprand' 'hiprand-dev' 'rocprim' 'rocprim-dev' 'hipcub' 'hipcub-dev' 'rocfft' 'rocfft-dev' 'hipfft' 'hipfft-dev'
-	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev'
+	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hipsparselt' 'hipsparselt-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev'
 	'rocm-hip-libraries' 'rocm-hip-runtime-dev' 'rocthrust' 'rocthrust-dev' 'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocwmma-dev' 'rocm-developer-tools' 'miopen' 'miopen-hip' 'miopen-hip-dev' 'rocm-ml-libraries' 'rocm-ml-sdk')
 
 source=(
@@ -43,6 +43,8 @@ source=(
 "https://repo.radeon.com/rocm/apt/6.0/pool/main/h/hipify-clang/hipify-clang_17.0.0.60000-91~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.0/pool/main/h/hipsparse/hipsparse_3.0.0.60000-91~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.0/pool/main/h/hipsparse-dev/hipsparse-dev_3.0.0.60000-91~22.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.0/pool/main/h/hipsparselt/hipsparselt_0.1.0.60000-91~22.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.0/pool/main/h/hipsparselt-dev/hipsparselt-dev_0.1.0.60000-91~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.0/pool/main/h/hiptensor/hiptensor_1.1.0.60000-91~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.0/pool/main/h/hiptensor-dev/hiptensor-dev_1.1.0.60000-91~22.04_amd64.deb"
 #"https://repo.radeon.com/rocm/apt/6.0/pool/main/h/hiptensor-samples/hiptensor-samples_1.1.0.60000-91~22.04_amd64.deb"
@@ -95,6 +97,8 @@ sha256sums=(
 "ffdc1f37b9a1c980323c8067e51dd21f9e20cc5eb954ae98f3c8e4dc705bb501"
 "a0fbab6a163286ae08030a3502a813a3e447fec44280f2bb1cd5a11fd78bdf20"
 "4ae5d1f8a4fe11fe8abcd78a131b4460b729c6673d30e6d27ce29e4e44a126d1"
+"998b0efa4df8e3bbe33c9e8f42e75a5a2d83e88e0405a73643b8425b9397a07c"
+"39efd068769362ec1a64421d0e5845a37b8bd17c4dc76ec48568de78fc269e96"
 "03a6bb05ac18b8838ce6b79bfe8f29f69f93232d57c5f03662654794884ca250"
 "e42441fac630518853182edc9771f61452673bdb721ba52ee2dafd9a05246c00"
 #"2c2bb011e24eaf7a4604a5496c024776e2db026bfc11e8f5c8748ad355655353"
@@ -162,6 +166,8 @@ package() {
 	egz "${srcdir}/hipify-clang_17.0.0.60000-91~22.04_amd64.deb"
 	exz "${srcdir}/hipsparse_3.0.0.60000-91~22.04_amd64.deb"
 	exz "${srcdir}/hipsparse-dev_3.0.0.60000-91~22.04_amd64.deb"
+	exz "${srcdir}/hipsparselt_0.1.0.60000-91~22.04_amd64.deb"
+	exz "${srcdir}/hipsparselt-dev_0.1.0.60000-91~22.04_amd64.deb"
 	exz "${srcdir}/hiptensor_1.1.0.60000-91~22.04_amd64.deb"
 	exz "${srcdir}/hiptensor-dev_1.1.0.60000-91~22.04_amd64.deb"
 	#exz "${srcdir}/hiptensor-samples_1.1.0.60000-91~22.04_amd64.deb"
