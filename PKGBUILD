@@ -11,7 +11,6 @@ url='https://github.com/kellyjonbrazil/jello'
 license=('MIT')
 depends=('python-pygments')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('d4690d8eca2e34d85b8c6755ba1e2042b12dc5cdd307a4e62c5d383da4cd95be')
 
