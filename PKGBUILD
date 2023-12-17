@@ -3,7 +3,7 @@
 
 pkgname=gazebo-git
 pkgver=r32546.d3584008b4
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments. Git version."
 arch=('i686' 'x86_64')
 url="https://classic.gazebosim.org/"
@@ -42,7 +42,8 @@ build() {
   export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
-           -DCMAKE_INSTALL_LIBDIR="lib"
+           -DCMAKE_INSTALL_LIBDIR="lib" \
+           -DPROTOBUF_PROTOC_EXECUTABLE="/usr/bin/protoc"
   make
 }
 
