@@ -1,14 +1,13 @@
 pkgbase = listenbrainz-mpd
 	pkgdesc = ListenBrainz submission client for MPD
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/elomatreb/listenbrainz-mpd
 	arch = x86_64
 	license = AGPL3
 	makedepends = openssl
 	makedepends = cargo
 	makedepends = asciidoctor
-	makedepends = gzip
 	depends = sqlite
 	depends = libssl.so=3-64
 	depends = libcrypto.so=3-64
