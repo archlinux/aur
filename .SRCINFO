@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-ros-control-boilerplate
 	pkgdesc = ROS - Simple simulation interface and template for setting up a hardware interface for ros_control
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/davetcoleman/ros_control_boilerplate
 	arch = i686
@@ -40,8 +40,7 @@ pkgbase = ros-noetic-ros-control-boilerplate
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-rosparam-shortcuts
-	source = ros-noetic-ros-control-boilerplate-0.6.0.tar.gz::https://github.com/PickNikRobotics/ros_control_boilerplate/archive/0.6.0.tar.gz
-	sha256sums = 7307174e6016061c6c73e48edb1fa91685d8c8af68cb716acfa8afddd02602d7
+	source = ros-noetic-ros-control-boilerplate-0.6.1.tar.gz::https://github.com/PickNikRobotics/ros_control_boilerplate/archive/0.6.1.tar.gz
+	sha256sums = 11bda1b6483a7e6f6655f36f604c9128ea4fd9e114f6f4e4454691c3d54cc6d0
 
 pkgname = ros-noetic-ros-control-boilerplate
-

@@ -3,7 +3,7 @@ hardware interface for ros_control"
 url='https://github.com/davetcoleman/ros_control_boilerplate'
 
 pkgname='ros-noetic-ros-control-boilerplate'
-pkgver='0.6.0'
+pkgver='0.6.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -54,7 +54,7 @@ depends=(
 
 _dir="ros_control_boilerplate-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/PickNikRobotics/ros_control_boilerplate/archive/${pkgver}.tar.gz")
-sha256sums=('7307174e6016061c6c73e48edb1fa91685d8c8af68cb716acfa8afddd02602d7')
+sha256sums=('11bda1b6483a7e6f6655f36f604c9128ea4fd9e114f6f4e4454691c3d54cc6d0')
 
 build() {
     # Use ROS environment variables
