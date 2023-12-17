@@ -1,0 +1,13 @@
+pkgbase = arduino-cmake-toolchain-git
+	pkgdesc = CMake toolchain for Arduino platforms
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/a9183756-gh/Arduino-CMake-Toolchain
+	arch = any
+	license = GPL
+	depends = cmake
+	depends = arduino
+	source = arduino-cmake-toolchain-git-1.0.0.tar.gz::https://github.com/a9183756-gh/Arduino-CMake-Toolchain/archive/master.tar.gz
+	sha256sums = d961289ed1631e328093e9941fe56e6d3806987800673fe736ed13cf21ca8f20
+
+pkgname = arduino-cmake-toolchain-git
