@@ -1,6 +1,6 @@
 pkgbase = diebahn
 	pkgdesc = Travel with all your train information in one place
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://gitlab.com/schmiddi-on-mobile/railway
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = diebahn
 	depends = libsecret
 	depends = protobuf
 	options = !lto
-	source = https://gitlab.com/schmiddi-on-mobile/railway/-/archive/2.1.0/railway-2.1.0.tar.gz
-	sha256sums = 65e4b761286a61e02054e8d0523c98a38e30b89205b2031134cfa76701197be8
+	source = https://gitlab.com/schmiddi-on-mobile/railway/-/archive/2.2.0/railway-2.2.0.tar.gz
+	sha256sums = ed28cbfc8c2fa73187f85b2ba941e63226bb2adce8255448e50ff6fcf25333f4
 
 pkgname = diebahn
