@@ -11,4 +11,3 @@ pkgbase = dinit-systemd
 	sha256sums = 891c9f78140cbaf886299d0a1b08c2d6e456ae54dc9538f6fa178363af83c3e6
 
 pkgname = dinit-systemd
-
