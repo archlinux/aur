@@ -26,7 +26,6 @@ pkgver() {
 prepare() {
     cd "$srcdir/${pkgbase%-git}"
     git submodule init
-    git config submodule.deps/ada.url "$srcdir/ada"
     git submodule update
 }
 
