@@ -1,7 +1,7 @@
 # Maintainer: crolbar <crolbar@crolbar.com>
 _pkgname="matm"
 pkgname="matm-bin"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A tool to watch anime, movies, tv shows and read manga from the comfort of the cli!"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('mpv' 'fzf' 'zathura-cb')
 provides=('matm')
 conflicts=('matm-git')
 optdepends=('vlc: an alternative video player for movies')
-source=("https://github.com/crolbar/matm/releases/download/v$pkgver/matm-$pkgver.tar.zst")
+source=("https://github.com/crolbar/matm/releases/download/v$pkgver/matm-$pkgver.tar.gz")
 md5sums=('SKIP')
 
 package() {
