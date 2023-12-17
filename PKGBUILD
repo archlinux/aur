@@ -3,7 +3,7 @@
 
 pkgname=shiny-server-git
 _pkgname=${pkgname%-git}
-pkgver=1.5.20.1002.r0.gd9e391b
+pkgver=1.5.21.1012.r0.gbe6a189
 pkgrel=1
 epoch=1
 pkgdesc="Host Shiny applications over the web"
@@ -51,7 +51,6 @@ build() {
     make
     cd ..
     ./bin/npm install
-    ./bin/node ./ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js rebuild
 }
 
 package() {
