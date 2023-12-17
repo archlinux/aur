@@ -6,4 +6,5 @@
 !/README.md
 !/calamares.desktop
 !/calamares_polkit
+!/flag.patch
 !/paru-support.patch
