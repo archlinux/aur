@@ -1,7 +1,7 @@
 pkgbase = dune-istl
 	pkgdesc = Iterative Solver Template Library
-	pkgver = 2.9.0
-	pkgrel = 2
+	pkgver = 2.9.1
+	pkgrel = 1
 	url = https://dune-project.org/modules/dune-istl
 	arch = x86_64
 	license = custom:GPL2 with runtime exception
@@ -10,7 +10,7 @@ pkgbase = dune-istl
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scikit-build
-	depends = dune-common>=2.9.0
+	depends = dune-common>=2.9.1
 	depends = arpack
 	optdepends = vc: C++ Vectorization library
 	optdepends = doxygen: Generate the class documentation from C++ sources
@@ -20,10 +20,10 @@ pkgbase = dune-istl
 	optdepends = superlu: Set of subroutines to solve a sparse linear system
 	optdepends = arpackpp: C++ interface to ARPACK
 	optdepends = suitesparse: A collection of sparse matrix libraries
-	source = https://dune-project.org/download/2.9.0/dune-istl-2.9.0.tar.gz
-	source = https://dune-project.org/download/2.9.0/dune-istl-2.9.0.tar.gz.asc
-	validpgpkeys = E5B47782DE09813BCC3518E159DA94F1FC8FD313
-	sha512sums = 1e54f17cd669dc2b91603f5c71ab4a4b24c4252b3ff673855fc1d4423f756e6dabd02cea6ee0603b51ccbdf0836b8fd5cde3621a7193020905a6693b27036f97
+	source = https://dune-project.org/download/2.9.1/dune-istl-2.9.1.tar.gz
+	source = https://dune-project.org/download/2.9.1/dune-istl-2.9.1.tar.gz.asc
+	validpgpkeys = 2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF
+	sha512sums = d2b00d3e16f5420f0999699aa09288da10cf5cf2d89fd59ca0657cb28ada1154af2622ed54484da887d322244a5537a3c7716f9375f14d480dc92f5316326616
 	sha512sums = SKIP
 
 pkgname = dune-istl
