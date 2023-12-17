@@ -1,20 +1,21 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 # Contriburor: Jonathon Fernyhough <jonathon+mx2+dev>
+# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
 pkgbase=linux-firmware
 pkgname=(linux-firmware-whence linux-firmware amd-ucode
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}
 )
-_tag=20231030
-pkgver=20231030.2b304bfe
+_tag=20231211
+pkgver=20231211.f2e52a1c
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 pkgdesc+=' (without module compression)'
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
 license=('GPL2' 'GPL3' 'custom')
 arch=('any')
-makedepends=('git')
+makedepends=('git' 'rdfind')
 options=(!strip)
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=${_tag}?signed")
 sha256sums=('SKIP')
