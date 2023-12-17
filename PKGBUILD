@@ -1,7 +1,7 @@
 # Maintainer: GuyLiner <guyliner69@proton.me>
 _pkgname='i3bar-river'
 pkgname=${_pkgname}-git
-pkgver=r67.9d3b703
+pkgver=r152.663c70c
 pkgrel=1
 pkgdesc="A port of i3bar for the river Wayland compositor"
 url="https://github.com/MaxVerevkin/i3bar-river"

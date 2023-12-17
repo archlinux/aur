@@ -1,6 +1,6 @@
 pkgbase = i3bar-river-git
 	pkgdesc = A port of i3bar for the river Wayland compositor
-	pkgver = r67.9d3b703
+	pkgver = r152.663c70c
 	pkgrel = 1
 	url = https://github.com/MaxVerevkin/i3bar-river
 	arch = x86_64
