@@ -1,6 +1,6 @@
 pkgbase = urlscan-git
 	pkgdesc = Replacement for urlview with html context and other improvements.
-	pkgver = r206.4598452
+	pkgver = r207.133f77f
 	pkgrel = 1
 	url = https://github.com/firecat53/urlscan
 	install = urlscan.install
