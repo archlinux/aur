@@ -1,6 +1,6 @@
 # Maintainer: Petr Kracik <petrkr@petrkr.net>
 pkgname=nostr-rs-relay
-pkgver=0.8.12
+pkgver=0.8.13
 pkgrel=1
 makedepends=('rust' 'cargo' 'protobuf')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://git.sr.ht/~gheartsfield/$pkgname/archive/$pkgver.tar.gz")
 backup=("etc/nostr-rs-relay/config.toml")
 
-sha256sums=('1f174a7fa341117b75eac999dc445e60d192ec54b050c371ca34cb7ad0638b80')
+sha256sums=('3fb1bffb88edfbb0faef255e919ea3cd346e32e74b7d22078a9ed9d51ed770ec')
 
 prepare() {
   cd $pkgname-$pkgver
