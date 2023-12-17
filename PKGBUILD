@@ -9,7 +9,7 @@ license=('GPL')
 pkgdesc="Recording and replaying keyboard and mouse events on an X server"
 url="http://download.sarine.nl/xmacro/Description.html"
 depends=('xorg-server' 'libxtst')
-source=("http://download.sarine.nl/xmacro/$pkgname-$pkgver.tar.gz")
+source=("http://web.archive.org/web/20150802012629if_/http://download.sarine.nl/xmacro/$pkgname-$pkgver.tar.gz")
 sha256sums=('c1c41bdbebaae38ac14537dfa5e05f124ae4ccee22fa2869bc4612ebbba432dd')
 
 build() {
