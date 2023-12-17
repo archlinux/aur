@@ -1,6 +1,6 @@
 pkgbase = dune-common
 	pkgdesc = Infrastructure and foundation classes
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 4
 	url = https://dune-project.org/modules/dune-common
 	arch = x86_64
@@ -37,14 +37,10 @@ pkgbase = dune-common
 	provides = dunepackaging.py
 	provides = duneproject
 	provides = rmgenerated.py
-	source = https://dune-project.org/download/2.9.0/dune-common-2.9.0.tar.gz
-	source = https://dune-project.org/download/2.9.0/dune-common-2.9.0.tar.gz.asc
-	source = pybind11-compatibility.patch::https://gitlab.dune-project.org/core/dune-common/-/commit/f3b4ac266d37b7255e68d203dfce4a22bda9b4f1.patch
-	source = gcc13-compatibility.patch::https://gitlab.dune-project.org/core/dune-common/-/commit/56655f6910f3bfcfa86e7573b47228c0f28794f3.patch
-	validpgpkeys = E5B47782DE09813BCC3518E159DA94F1FC8FD313
-	sha512sums = 4d1f05ee7d5c2376f0fc782b4978596501eed0e7c6d6c68b3a37949a0141cf308b42a6df1b171804a9606907f6597039f28916731c1caa0c54a36775402e6e97
+	source = https://dune-project.org/download/2.9.1/dune-common-2.9.1.tar.gz
+	source = https://dune-project.org/download/2.9.1/dune-common-2.9.1.tar.gz.asc
+	validpgpkeys = 2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF
+	sha512sums = 554d9f5dde66930d8966b99832728d17bb7670aa055c071e00260c6f90e739818672e3b9fb3f292bcb96f128f9e82679c921d8603bb993eb768f89a7b3951ac1
 	sha512sums = SKIP
-	sha512sums = af34c7f82db9a03568649090b5ba3c870202619d835341709a3e43aff8649b58bfff69057fecb40fe205bb63d3fff345c066dd965389d29af5c29c80837fd9a7
-	sha512sums = aa0e6cd1af73bee0231dc40cb46081753ed38a3712c30ce79080dbb0023a8d9bacc318b2c5e1e46fa9e8f64a82b4594d2672a00ed178e32f05f3a003e2c9c0f9
 
 pkgname = dune-common
