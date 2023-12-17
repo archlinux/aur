@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=release-plz-git
-pkgver=0.3.34.r1.gecf424fe
+pkgver=0.3.35.r0.g6cc77c12
 pkgrel=1
 pkgdesc="Release Rust packages without using the command line (git)"
 arch=('x86_64')
