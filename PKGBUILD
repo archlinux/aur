@@ -2,7 +2,7 @@
 
 pkgname=hcclient-latex
 pkgver=1.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal client for hack.chat, with LaTeX support"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
@@ -17,8 +17,11 @@ sha256sums=('41140c9bbebf4571c410af485c0c524157d4bf51c08bd6197666af9ff09cea91')
 build() {
   cd "${srcdir}/hcclient-${pkgver}"
   RELEASE_VERSION=true NO_ANSI=true bash scripts/build.sh
+  echo "==> Creating isolated environment"
   python -m venv venv
+  echo "  -> Installing dependencies"
   ./venv/bin/pip install --disable-pip-version-check --no-color dist/hcclient-${pkgver}-py3-none-any.whl[latex]
+  echo "  -> Removing unnecessary packages and files"
   ./venv/bin/pip uninstall setuptools pip -y --quiet
   rm venv/bin/{activate*,Activate*}
 }
