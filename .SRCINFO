@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-moveit-visual-tools
 	pkgdesc = Helper functions for displaying and debugging MoveIt data in Rviz via published markers.
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://wiki.ros.org/moveit_visual_tools
 	arch = i686
@@ -25,8 +25,7 @@ pkgbase = ros-noetic-moveit-visual-tools
 	depends = ros-noetic-tf2-ros
 	depends = ros-noetic-trajectory-msgs
 	depends = ros-noetic-visualization-msgs
-	source = ros-noetic-moveit-visual-tools-3.6.0.tar.gz::https://github.com/ros-planning/moveit_visual_tools/archive/3.6.0.tar.gz
-	sha256sums = 747956d416529483247dc3e2baad4a6046e1d9eef87592ef3396302ffea6acc3
+	source = ros-noetic-moveit-visual-tools-3.6.1.tar.gz::https://github.com/ros-planning/moveit_visual_tools/archive/3.6.1.tar.gz
+	sha256sums = 04d64c998a8f087575e2cf027711939a0eeb20fc57148093f5c863cfd509143d
 
 pkgname = ros-noetic-moveit-visual-tools
-

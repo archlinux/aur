@@ -2,7 +2,7 @@ pkgdesc="Helper functions for displaying and debugging MoveIt data in Rviz via p
 url='https://wiki.ros.org/moveit_visual_tools'
 
 pkgname='ros-noetic-moveit-visual-tools'
-pkgver='3.6.0'
+pkgver='3.6.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -40,7 +40,7 @@ depends=(
 _dir="moveit_visual_tools-${pkgver}"
 
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_visual_tools/archive/${pkgver}.tar.gz")
-sha256sums=('747956d416529483247dc3e2baad4a6046e1d9eef87592ef3396302ffea6acc3')
+sha256sums=('04d64c998a8f087575e2cf027711939a0eeb20fc57148093f5c863cfd509143d')
 
 build() {
     # Use ROS environment variables
