@@ -1,7 +1,7 @@
 pkgbase = calamares
 	pkgdesc = Distribution-independent installer framework
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/calamares/calamares/
 	arch = x86_64
 	license = CC-BY-4.0
@@ -38,7 +38,7 @@ pkgname = calamares
 	depends = mkinitcpio-openswap
 	depends = ckbcomp
 	depends = hwinfo
-	depends = qt6-base
+	depends = qt6-base>=6.6.0
 	depends = qt6-svg>=6.6.0
 	depends = polkit-qt6>=0.175.0
 	depends = gtk-update-icon-cache
@@ -46,6 +46,8 @@ pkgname = calamares
 	depends = libpwquality
 	depends = efibootmgr
 	depends = icu
+
+pkgname = calamares-qt5
 	depends = kconfig5>=5.113.0
 	depends = kcoreaddons5>=5.113.0
 	depends = kiconthemes5>=5.113.0

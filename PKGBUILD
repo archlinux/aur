@@ -1,8 +1,8 @@
 # Maintainer: Rustmilian <#####[at]#####[dot]org>
 
-pkgname=calamares
+pkgname=('calamares' 'calamares-qt5')
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Distribution-independent installer framework'
 arch=($CARCH)
 license=('CC-BY-4.0' 'CC0-1.0' 'GPL-3.0-or-later' 'LGPL-2.1-only' 'LGPL-3.0-or-later' 'MIT' 'BSD-2-Clause')
@@ -96,22 +96,30 @@ build() {
 	make
 }
 
-package() {
+
+package_calamares() {
+	depends=('kconfig>=5.246' 'kcoreaddons>=5.246' 'kiconthemes>=5.246' 'ki18n>=5.246' 'kio>=5.246' 'solid>=5.246' 'yaml-cpp' 'kpmcore>=24.01.75' 'mkinitcpio-openswap'
+		'ckbcomp' 'hwinfo' 'qt6-base>=6.6.0' 'qt6-svg>=6.6.0' 'polkit-qt6>=0.175.0' 'gtk-update-icon-cache'
+		'squashfs-tools' 'libpwquality' 'efibootmgr' 'icu')
+
 	cd "${srcdir}/${pkgname}-${pkgver}/build"
 	make DESTDIR="$pkgdir" install
 	install -Dm644 "${srcdir}/calamares.desktop" "$pkgdir/etc/xdg/autostart/calamares.desktop"
 	install -Dm755 "${srcdir}/calamares_polkit" "$pkgdir/usr/bin/calamares_polkit"
 	install -Dm644 "${srcdir}/49-nopasswd-calamares.rules" "$pkgdir/etc/polkit-1/rules.d/49-nopasswd-calamares.rules"
 	chmod 750 "$pkgdir"/etc/polkit-1/rules.d
+}
 
-	# Check for qmake6 to determine dependencies
-	if command -v qmake6 &> /dev/null; then
-		depends+=('kconfig>=5.246' 'kcoreaddons>=5.246' 'kiconthemes>=5.246' 'ki18n>=5.246' 'kio>=5.246' 'solid>=5.246' 'yaml-cpp' 'kpmcore>=24.01.75' 'mkinitcpio-openswap'
-		'ckbcomp' 'hwinfo' 'qt6-base' 'qt6-svg>=6.6.0' 'polkit-qt6>=0.175.0' 'gtk-update-icon-cache'
-		'squashfs-tools' 'libpwquality' 'efibootmgr' 'icu')
-	else
-		depends+=('kconfig5>=5.113.0' 'kcoreaddons5>=5.113.0' 'kiconthemes5>=5.113.0' 'ki18n5>=5.113.0' 'kio5>=5.113.0' 'solid5>=5.113.0' 'yaml-cpp' 'kpmcore>=24.01.75' 'mkinitcpio-openswap'
+package_calamares-qt5() {
+	depends=('kconfig5>=5.113.0' 'kcoreaddons5>=5.113.0' 'kiconthemes5>=5.113.0' 'ki18n5>=5.113.0' 'kio5>=5.113.0' 'solid5>=5.113.0' 'yaml-cpp' 'kpmcore>=24.01.75' 'mkinitcpio-openswap'
 		'ckbcomp' 'hwinfo' 'qt5-base>=5.15.11' 'qt5-svg>=5.15.11' 'polkit-qt5>=0.175.0' 'gtk-update-icon-cache' 'plasma-framework5>=5.58'
 		'qt5-xmlpatterns' 'squashfs-tools' 'libpwquality' 'efibootmgr' 'icu')
-	fi
+
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
+	make DESTDIR="$pkgdir" install
+	install -Dm644 "${srcdir}/calamares.desktop" "$pkgdir/etc/xdg/autostart/calamares.desktop"
+	install -Dm755 "${srcdir}/calamares_polkit" "$pkgdir/usr/bin/calamares_polkit"
+	install -Dm644 "${srcdir}/49-nopasswd-calamares.rules" "$pkgdir/etc/polkit-1/rules.d/49-nopasswd-calamares.rules"
+	chmod 750 "$pkgdir"/etc/polkit-1/rules.d
 }
+
