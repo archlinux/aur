@@ -19,24 +19,24 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz"
-        "$pkgname-$pkgver.patch")
+source=("$pkgname-stable.tar.gz::${url}/repository/archive/stable.tar.gz"
+        "$pkgname-stable.patch")
 noextract=()
-sha256sums=('4dae90345d776c880fc1fb95013503337d9991c32e0222a530ab6ae3f991df5c'
-            '89db2182d83d6169514e7d45a4bb0dc5d0d85a2882ecabe89302b33aa1a6b16e')
+sha256sums=('52e221c7f2317c4289752464e151cb85e6fa5628d32f1db1e9cd5f66dee486d3'
+            'b282b2527d8463bc891e84413d3a672e3d6c3bada277f26b7056fe814bf9c5e4')
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+	cd "$pkgname-stable"
+	patch -p1 -i "$srcdir/$pkgname-stable.patch"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-stable"
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-stable"
 	sudo make install
 }
