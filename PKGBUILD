@@ -3,17 +3,17 @@
 pkgorg='loco-3d'
 _pkgname='crocoddyl'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="optimal control library for robot control under contact sequence"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
 license=('BSD')
-depends=('pinocchio' 'eigenpy' 'example-robot-data' 'python-scipy')
+depends=('pinocchio' 'eigenpy' 'example-robot-data' 'python-scipy' 'coin-or-ipopt')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('04fcc1ceb23383d95fc9d309313390751f40745c6b64fd52a3f92a90a6e58ece'
+sha256sums=('854c65e57fdb6b410cb14ca3dc70f76ec568344144c1d690b413b497abf5ae02'
             'SKIP')
 validpgpkeys=(
     '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'  # https://github.com/nim65s.gpg

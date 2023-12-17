@@ -1,6 +1,6 @@
 pkgbase = crocoddyl
 	pkgdesc = optimal control library for robot control under contact sequence
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/loco-3d/crocoddyl
 	arch = i686
@@ -12,12 +12,13 @@ pkgbase = crocoddyl
 	depends = eigenpy
 	depends = example-robot-data
 	depends = python-scipy
+	depends = coin-or-ipopt
 	optdepends = doxygen
-	source = https://github.com/loco-3d/crocoddyl/releases/download/v2.0.1/crocoddyl-2.0.1.tar.gz
-	source = https://github.com/loco-3d/crocoddyl/releases/download/v2.0.1/crocoddyl-2.0.1.tar.gz.sig
+	source = https://github.com/loco-3d/crocoddyl/releases/download/v2.0.2/crocoddyl-2.0.2.tar.gz
+	source = https://github.com/loco-3d/crocoddyl/releases/download/v2.0.2/crocoddyl-2.0.2.tar.gz.sig
 	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
 	validpgpkeys = F182CC432A4752C7A3E4FE02001EB2069D785C81
-	sha256sums = 04fcc1ceb23383d95fc9d309313390751f40745c6b64fd52a3f92a90a6e58ece
+	sha256sums = 854c65e57fdb6b410cb14ca3dc70f76ec568344144c1d690b413b497abf5ae02
 	sha256sums = SKIP
 
 pkgname = crocoddyl
