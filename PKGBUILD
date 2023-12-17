@@ -2,7 +2,7 @@
 
 pkgname=hcclient-bin
 pkgver=1.18.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A terminal client for hack.chat, deprecated binary distribution"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
@@ -18,7 +18,7 @@ build() {
   echo "This package will not be updated after 1.18.1 as binary builds of hcclient are no longer provided."
   echo "Switch to the \`hcclient\` or \`hcclient-latex\` packages."
   echo "===================="
-  read -p "Press any key to continue anyway..."
+  read -p "Press enter to continue anyway..."
 }
 
 package() {
