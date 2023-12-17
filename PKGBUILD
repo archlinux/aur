@@ -1,160 +1,103 @@
 # Maintainer: xiota / aur.chaotic.cx
 
-# options - defaults
-if [ -z "$_pkgver" ] ; then
+# options
+if [ "$_srcinfo" == "t" ] ; then
+  : ${_autoupdate:=false}
+elif [ -z "$_pkgver" ] ; then
   : ${_autoupdate:=true}
 else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=1.7.5201}
-
+: ${_pkgtype:=-latest-bin}
 
 # basic info
 _pkgname='pcsx2'
-pkgname="$_pkgname-latest-bin"
-pkgver=1.7.5200
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=1.7.5300
 pkgrel=1
-pkgdesc='A Sony PlayStation 2 emulator'
+pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
+license=('GPL-3.0-only' 'LGPL-3.0-only')
 arch=(x86_64)
-license=(
-  'GPL3'
-  'LGPL3'
-)
 
+# main package
+_main_package() {
+  _update_version
 
-# update version
-case "${_autoupdate::1}" in
-  't'|'y'|'1')
-    _response=$(curl "https://api.github.com/repos/PCSX2/pcsx2/releases" -s)
-
-    _get() {
-      printf '%s' "$_response" \
-        | awk -F '"' '/"'"$1"'":/{print $4}' \
-        | head -1 | sed 's/^v//'
-    }
-    _pkgver_new=$(_get name)
-
-    # update _pkgver
-    if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
-      _pkgver="${_pkgver_new:?}"
-      sed -Ei 's@^(\s*: \$\{_pkgver):=.*\}$@\1:='"${_pkgver:?}"'}@' "$startdir/PKGBUILD"
-    fi
-    ;;
-  'c')
-    # chaotic-aur
-    _regex='^pcsx2-git-([0-9]+.+)\.r[0-9]+.*-([0-9]+.*)-(.+)\.pkg\.tar\.zst$'
-
-    _filelist=$(curl "https://builds.garudalinux.org/repos/chaotic-aur/pkgs.files.txt" -s)
-
-    _filename=$(printf '%s' "$_filelist" | grep -E "$_regex")
-
-    _pkgver=$(
-      printf '%s' "$_filename" \
-        | sed -E "s@$_regex@\1@"
-    )
-    ;;
-esac
-
-
-depends=()
-makedepends=()
-
-if [ x"$_pkgname" != x"$pkgname" ] ; then
   provides=("$_pkgname")
   conflicts=("$_pkgname")
-fi
 
-options=(!strip !debug)
+  options=(!strip !debug)
 
-case "${_autoupdate::1}" in
-  'c')
-    # chaotic-aur
-    _url="http://builds.garudalinux.org/repos/chaotic-aur/$CARCH"
-    _dl_url="$_url/$_filename"
+  _url="https://github.com/PCSX2/pcsx2"
+  _appimage="pcsx2-v$_pkgver-linux-appimage-x64-Qt.AppImage"
 
-    source+=("$_filename"::"$_dl_url")
-    sha256sums+=('SKIP')
+  source+=("$_url/releases/download/v$_pkgver/$_appimage")
+  sha256sums+=('SKIP')
+}
 
-    pkgver() {
-      printf '%s.%s' \
-        "${_pkgver:?}" \
-        "chaotic"
-    }
+# common functions
+pkgver() {
+  printf '%s' "${_pkgver:?}"
+}
 
-    package() {
-      depends+=(
-        alsa-lib
-        ffmpeg
-        hicolor-icon-theme
-        libaio
-        libglvnd
-        libpcap
-        libpng
-        libxrandr
-        lld
-        qt6-base
-        qt6-svg
-        sdl2
-        soundtouch
-        wayland
-        xcb-util-cursor
-      )
+build() {
+  # extract appimage
+  chmod +x "$_appimage"
+  "./$_appimage" --appimage-extract
 
-      optdepends+=(
-        'qt6-wayland: Wayland support'
-        'libpulse: Pulseaudio support'
-      )
+  (
+    # fix desktop file name
+    cd "$srcdir/squashfs-root"
+    if [ ! -e "PCSX2.desktop" ] ; then
+      for i in *.desktop ; do
+        mv "$i" PCSX2.desktop
+        break
+      done
+    fi
+  )
 
-      mv "$srcdir/opt" "$pkgdir"
-      mv "$srcdir/usr" "$pkgdir"
-    }
-    ;;
+  # update script
+  sed -Ei \
+    's@^this_dir=".*\breadlink\b.*\bdirname\b.*"$@this_dir="/opt/pcsx2"@' \
+    "$srcdir/squashfs-root/AppRun"
+}
 
-  *)
-    _url="https://github.com/PCSX2/pcsx2"
-    _appimage="pcsx2-v$_pkgver-linux-appimage-x64-Qt.AppImage"
+package() {
+  install -Dm755 "$srcdir/squashfs-root/AppRun" "$pkgdir/usr/bin/pcsx2-qt"
 
-    source+=("$_url/releases/download/v$_pkgver/$_appimage")
-    sha256sums+=('SKIP')
+  install -Dm644 "$srcdir/squashfs-root/PCSX2.desktop" -t "$pkgdir/usr/share/applications"
 
-    pkgver() {
-      printf '%s' \
-        "${_pkgver:?}"
-    }
+  install -Dm644 "$srcdir/squashfs-root/PCSX2.png" -t "$pkgdir/usr/share/pixmaps"
 
-    build() {
-      # extract appimage
-      chmod +x "$_appimage"
-      "./$_appimage" --appimage-extract
+  mkdir -p "$pkgdir/opt"
+  mv "$srcdir/squashfs-root" "$pkgdir/opt/pcsx2"
+}
 
-      (
-        # fix desktop file name
-        cd "$srcdir/squashfs-root"
-        if [ ! -e "PCSX2.desktop" ] ; then
-          for i in *.desktop ; do
-            mv "$i" PCSX2.desktop
-            break
-          done
-        fi
-      )
+# update version
+_update_version() {
+  : ${_pkgver:=$pkgver}
 
-      # update script
-      sed -Ei \
-        's@^this_dir=".*\breadlink\b.*\bdirname\b.*"$@this_dir="/opt/pcsx2"@' \
-        "$srcdir/squashfs-root/AppRun"
-    }
+  if [[ "${_autoupdate::1}" != "t" ]] ; then
+    return
+  fi
 
-    package() {
-      install -Dm755 "$srcdir/squashfs-root/AppRun" "$pkgdir/usr/bin/pcsx2-qt"
+  _repo="${url#*//*/}"
+  _response=$(curl "https://api.github.com/repos/${_repo:?}/releases" -s)
 
-      install -Dm644 "$srcdir/squashfs-root/PCSX2.desktop" -t "$pkgdir/usr/share/applications"
+  _get() {
+    printf '%s' "$_response" \
+      | awk -F '"' '/"'"$1"'":/{print $4}' \
+      | head -1 | sed 's/^v//'
+  }
+  _pkgver_new=$(_get name)
 
-      install -Dm644 "$srcdir/squashfs-root/PCSX2.png" -t "$pkgdir/usr/share/pixmaps"
+  # update _pkgver
+  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+    _pkgver="${_pkgver_new:?}"
+  fi
+}
 
-      mkdir -p "$pkgdir/opt"
-      mv "$srcdir/squashfs-root" "$pkgdir/opt/pcsx2"
-    }
-    ;;
-esac
+# execute
+_main_package
