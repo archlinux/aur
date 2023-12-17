@@ -3,7 +3,7 @@
 pkgname=squidanalyzer
 _gitrev=43ba618
 pkgver=6.7b
-pkgrel=2
+pkgrel=3
 pkgdesc="Squid proxy native log analyser and reports generator"
 arch=('any')
 url='http://squidanalyzer.darold.net/'
