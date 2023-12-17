@@ -1,5 +1,5 @@
 # Maintainer: xz-dev <xiangzhedev at gmail dot com>
-pkgname=mihomo-git
+pkgname=mihomo-cap-git
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="mihomo with Capabilities for Transparent Proxies"
