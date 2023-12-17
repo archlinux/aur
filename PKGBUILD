@@ -2,7 +2,7 @@
 # Contributor: M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=thonny
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="Python IDE for beginners"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-build' 'python-installer')
 optdepends=('python-birdseye: Debug support with Birdseye'
             'python-pgzero: Run programs made with Pygame Zero')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-b2sums=('8490c692f0030d3116ed83e5126e87c41a7287a1702d42f1e22af04a956f53188a8c81eecc04c30636f69d76195a6eee178c6b7d14bbb58f7654c6de345b4072')
+b2sums=('a1dadf4a58dc3e32e48659b1ef12d0d52be2b9f462da5e8ee2bbe8def5c6c4862613e6e0803acc4499149c64309ba38f28aaafc39687b6affb4d67b2f74bff3b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
