@@ -5,4 +5,4 @@ rethinkdb/
 node-v6.11.0.tar.gz
 v8_g++7_build_fix.patch
 fix*.patch
-v*.tar.gz
+rethinkdb-*.tar.gz
