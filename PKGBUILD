@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('f0b271fa1832658e70eccff752b71d22472793af3658e8e27eadb982976cca26d6212572be53804861bf2c72b2b20ef4743f14536d84e65ffe68dbd3ee352976')
+b2sums=('5f7ffbe7b5f3e63d8a6a5e968b1ab9dfd57c46512611c245af40f5526dde5acfba48822bc2ffeef4571ce026b7fa5d65e5505d3a19c38665e7ac2333f6f49a2b')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
