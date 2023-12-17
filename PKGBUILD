@@ -3,12 +3,12 @@
 _pkgname=impute
 _pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
-pkgrel=1
-pkgdesc='impute: Imputation for microarray data'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Imputation for microarray data"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(GPL2)
 depends=(
   r
 )
@@ -16,14 +16,15 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f412bbf66f664297379b6f71eac6e018798af860f26c90450eca369b52b7f560')
+md5sums=('8e974dcc31c3507ebcc8984b2d7943f9')
+b2sums=('8fc3aab7ae4ab318748a9dea9030c7987d73266cddd1a7d39d06de871be6589fa268dbfa1fe19f4a61da58e059ce4711ae31c413237e3d4dbc9552dbad1c4ea6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
