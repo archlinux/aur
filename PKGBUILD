@@ -4,7 +4,7 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 
-pkgver=21.1.9
+pkgver=21.1.10
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -20,23 +20,18 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
 source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.xz{,.sig}
         xvfb-run # with updates from FC master
         xvfb-run.1
-        0002-xephyr_Dont_check_for_SeatId_anymore.patch
         freedesktop-bug-865.patch)
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF'  # Peter Hutterer (Who-T) <office@who-t.net>
               '67DC86F2623FC5FD4BB5225D14706DBE1E4B4540'  # Olivier Fourdan <fourdan@xfce.org>
               'FD0004A26EADFE43A4C3F249C6F7AE200374452D') # Povilas Kanapickas <povilas@radix.lt>
-sha512sums=('9044e1b9222616fb63aea444b75f4ca6582edb7d899018f8ea30359e57edf04b1555e69397ebc4d288f7e36d6b82a54dde3895f11d414573d229e908ac17bfe8'
+sha512sums=('8135d9b7c0c71f427ba0a3b80741fee4f6ae195779399b73261a00858882f3516e367a08e2da1403734b04eacabae9aa231e5375eff23b57a3ff764e9caf8926'
             'SKIP'
             '87c79b4a928e74463f96f58d277558783eac9b8ea6ba00d6bbbb67ad84c4d65b3792d960ea2a70089ae18162e82ae572a49ad36df169c974cc99dbaa51f63eb2'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
-            '34de52147054535256f35143d321e4d5e189baae502afca2bd3291094946dbead0829b1f196ae2a4d23bd6d0e1e04b65a387dee43f12dee55d247e37aec419d7'
             'c3b541c7ac95c94f682577cacedc06e79427003a870cde844056a7662087873b59dc06933552bb867b16fc0387f8a061672df780454769f26aa3e53b13a94edf')
 
 prepare() {
   cd "xorg-server-${pkgver}"
-
-  # FS#73274
-  patch -Np1 -i ../0002-xephyr_Dont_check_for_SeatId_anymore.patch
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
