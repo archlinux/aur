@@ -26,10 +26,9 @@ md5sums=("SKIP")
 
 pkgver() {
     cd ${_gitname}
-    _tag=$(git describe --tags | sed 's:^v::') # tag is mobile, and switches between numbers and letters, can't use it for versioning
     _commits=$(git rev-list --count HEAD) # total commits is the most sane way of getting incremental pkgver
     _date=$(git log -1 --date=short --pretty=format:%cd)
-    printf "%s_%s_%s\n" "${_commits}" "${_tag}" "${_date}" | sed 's/-/./g'
+    printf "%s_%s\n" "${_commits}" "${_date}" | sed 's/-/./g'
 }
 
 build() {
