@@ -3,8 +3,8 @@
 
 pkgname=ruby-prawn-svg
 _name=${pkgname#ruby-}
-pkgver=0.32.0
-pkgrel=4
+pkgver=0.33.0
+pkgrel=1
 pkgdesc="SVG renderer for Prawn Ruby PDF library "
 arch=(any)
 url="https://github.com/mogest/prawn-svg"
@@ -12,6 +12,7 @@ license=(MIT)
 depends=(
   ruby
   ruby-css_parser
+  ruby-matrix
   ruby-prawn
   ruby-rexml
 )
@@ -23,12 +24,12 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=(
-  "$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "fix-gem-files.patch"
 )
 sha256sums=(
-  '78b4e19321c405253579c5c4d92cfac975f5530388fdd82a9cee436e9c45ddf4'
-  '8738187b6316a7b1d44d0240ffe428850f6a50eccbada64e69db63a4feb61373'
+  '1a39c42ff02ffdeadddcfde69fc5a962f032fc651cb294732b83ad87158dc762'
+  'fd1e6dee91c543bcd3f6f7be7b482fc4503f01533e5042625ae25f2210bf8521'
 )
 
 _archive="$_name-$pkgver"
@@ -104,8 +105,8 @@ check() {
 package() {
   cd "$_archive"
 
-  cp --archive --verbose tmp_install/* "$pkgdir"
+  cp --archive tmp_install/* "$pkgdir"
 
-  install --verbose -D --mode=0644 LICENSE --target-directory "$pkgdir/usr/share/licenses/$pkgname"
-  install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
