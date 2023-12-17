@@ -1,7 +1,7 @@
 # Maintainer: JeremyStarTM <jeremystartm@staropensource.de>
 
 pkgname=mediadownloader-git
-pkgver=3.4.0.r38.g5cfa8d8
+pkgver=4.1.0.r15.g3b71406
 pkgrel=1
 pkgdesc="This project is a Qt/C++ based GUI frontend to CLI multiple CLI based tools that deal with downloading online media."
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ pkgver() {
 }
 
 prepare() {
-	pwd
 	cd "media-downloader"
+	git checkout 3b71406583db0cc0d61bdc9f5dcc68244c4ab61b
 	mkdir build
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=release ..
