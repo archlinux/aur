@@ -5,7 +5,7 @@
 
 _name=linode_api4
 pkgname="python-$_name"
-pkgver=5.6.0
+pkgver=5.11
 pkgrel=1
 pkgdesc="Bindings for the Linode API v4"
 arch=('any')
