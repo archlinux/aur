@@ -2,7 +2,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Lukas Böger <dev___AT___lboeger___DOT___de>
 pkgname=dune-typetree
-_tarver=2.9.0
+_tarver=2.9.1
 _tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
 pkgver="${_tarver}"
 pkgrel=1
@@ -15,13 +15,9 @@ makedepends=(doxygen graphviz)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
 source=(https://dune-project.org/download/${_tar}{,.asc})
-sha512sums=('27836fe2c6373fcbb5deed4a2a564a751809211b5061f75a36a78e2b13d029ddf52e1a5d9dd6a837480ec6d95d9061d1ea5d116f3f7fdd7be3fb4567b4b76c9b'
+sha512sums=('e341a8b8a14f937c6f25bbc209f4802c72e94b0ad71ddfb20e1e1977f1d557ae2eea2cbf3f228b370ada14da0d79ccfa18e3227cb0d2efecbfec54b5066ae23f'
   'SKIP')
-validpgpkeys=('2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF') # Christoph Grüninger <gruenich@dune-project.org>
-
-prepare() {
-  sed -i 's/^Version: '"${pkgver%%.0}"'/Version: '"${pkgver%%.0}"'.0/' ${pkgname}-${pkgver}/dune.module
-}
+validpgpkeys=('2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF') # Christoph Grüninger <pgp@grueninger.de>
 
 build() {
   cmake \
