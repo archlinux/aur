@@ -3,17 +3,25 @@
 # Contributor: Teo Mrnjavac <teo@kde.org>
 
 pkgbase=qtkeychain
-pkgname=(qtkeychain-qt5 qtkeychain-qt6)
-pkgver=0.14.1
-pkgrel=2
+pkgname=(qtkeychain-qt5
+         qtkeychain-qt6)
+pkgver=0.14.2
+pkgrel=1
 pkgdesc='Provides support for secure credentials storage'
 arch=(x86_64)
 url='https://github.com/frankosterfeld/qtkeychain'
 license=(BSD)
-depends=(libsecret)
-makedepends=(cmake qt5-tools qt6-tools qt6-declarative clang)
+depends=(gcc-libs
+         glib2
+         glibc
+         org.freedesktop.secrets)
+makedepends=(clang
+             cmake
+             qt5-tools
+             qt6-declarative
+             qt6-tools)
 source=(https://github.com/frankosterfeld/qtkeychain/archive/$pkgver/$pkgbase-$pkgver.tar.gz)
-sha256sums=('afb2d120722141aca85f8144c4ef017bd74977ed45b80e5d9e9614015dadd60c')
+sha256sums=('cf2e972b783ba66334a79a30f6b3a1ea794a1dc574d6c3bebae5ffd2f0399571')
 
 build() {
   cmake -B build-qt5 -S $pkgbase-$pkgver \
@@ -39,6 +47,7 @@ package_qtkeychain-qt5() {
 
 package_qtkeychain-qt6() {
   depends+=(qt6-base)
+  optdepends=('kwallet: kwallet backend')
 
   DESTDIR="$pkgdir" cmake --install build-qt6
   install -Dm644 $pkgbase-$pkgver/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
