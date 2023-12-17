@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=codechecker
-pkgver=6.23.0
+pkgver=6.23.1
 pkgrel=1
 pkgdesc="Analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy"
 arch=(x86_64)
@@ -26,7 +26,7 @@ source=(
   "fix-ldflags.patch"
 )
 sha256sums=(
-  '5802aad679fcd2b85d30a57c1fbe6a6364d6b584ff2883568a80dd02cefd11b4'
+  '1936df9cf0fd3481f6aaa695e97fe3db8958c07e06c50d770565d0689ced9c4e'
   'e59cb4d96642ccea7c3536e020b3961c1717bc65983424ced48b0ae1b1a3871a'
 )
 
