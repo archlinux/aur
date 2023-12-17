@@ -1,4 +1,6 @@
 # Maintainer: AiCorein melodyecho@glowmem.com
+# URL: https://aur.archlinux.org/packages/com.163.music.spark
+# URL: https://github.com/AiCorein/arch-wine-neteasemusic
 pkgname=com.163.music.spark
 pkgver=3.0.1.201795spark10
 pkgrel=1
