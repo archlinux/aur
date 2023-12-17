@@ -4,7 +4,7 @@
 # Contributor: dcelasun <dcelasun@gmail.com>
 
 pkgname=plank-git
-pkgver=0.11.89.r16.ga4a775e
+pkgver=0.11.89.r18.gb5329fd
 pkgrel=1
 pkgdesc='Elegant, simple, clean dock'
 arch=('x86_64')
