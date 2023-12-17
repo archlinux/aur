@@ -8,7 +8,7 @@ pkgname=wine-staging-wow64
 _name=wine
 pkgver=9.0rc2
 _pkgver=9.0-rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
@@ -25,7 +25,6 @@ depends=(
 )
 makedepends=(
   alsa-lib              #lib32-alsa-lib
-  giflib                #lib32-giflib
   gst-plugins-base-libs #lib32-gst-plugins-base-libs
   libcups               #lib32-libcups
   libpulse              #lib32-libpulse
@@ -35,6 +34,7 @@ makedepends=(
   mesa                  #lib32-mesa
   mesa-libgl            #lib32-mesa-libgl
   opencl-icd-loader     #lib32-opencl-icd-loader
+  pcsclite              #lib32-pcsclite
   sdl2                  #lib32-sdl2
   v4l-utils             #lib32-v4l-utils
   vulkan-icd-loader     #lib32-vulkan-icd-loader
@@ -53,13 +53,12 @@ makedepends=(
 optdepends=(
   alsa-lib              #lib32-alsa-lib
   alsa-plugins          #lib32-alsa-plugins
-  giflib                #lib32-giflib
   gst-plugins-base-libs #lib32-gst-plugins-base-libs
-  libldap               #lib32-libldap
   libpulse              #lib32-libpulse
   libxcomposite         #lib32-libxcomposite
   libxinerama           #lib32-libxinerama
   opencl-icd-loader     #lib32-opencl-icd-loader
+  pcsclite              #lib32-pcsclite
   sdl2                  #lib32-sdl2
   v4l-utils             #lib32-v4l-utils
   cups
