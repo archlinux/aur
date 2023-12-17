@@ -3,12 +3,12 @@
 _pkgname=aplpack
 _pkgver=1.3.5
 pkgname=r-${_pkgname,,}
-pkgver=1.3.5
-pkgrel=3
+pkgver=${_pkgver//-/.}
+pkgrel=6
 pkgdesc="Another Plot Package: 'Bagplots', 'Iconplots', 'Summaryplots', Slider Functions and Others"
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
   tk
@@ -16,20 +16,18 @@ depends=(
 optdepends=(
   r-jpeg
   r-png
-  r-splines
-  r-tcltk
   r-tkrplot
-  r-utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4454bc05cf70d5f3690b211e46b89b90a817de768b986098a3500c84f8d2664f')
+md5sums=('b21426d7246139da14f3d6280b53ac72')
+b2sums=('4982b442f4bdb3dd25ec916b18561599feac94839e1c107f930afdcb5b662dd6cdb04e730429fd1d67634d17da7d851d3e09bbcd0d3a3503c63d03775b0a5c54')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
