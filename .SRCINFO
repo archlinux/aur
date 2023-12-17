@@ -1,23 +1,22 @@
 pkgbase = nss-hg
-	pkgdesc = Network Security Services (latest Mercurial version)
-	pkgver = 3.92.r2.g7dc3bdfca66c
+	pkgdesc = Network Security Services
+	pkgver = 3.96beta1.r0.g0bef0903c5cb
 	pkgrel = 1
 	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
 	arch = x86_64
-	license = GPL
-	license = MPL
+	license = MPL-2.0
 	makedepends = gyp
 	makedepends = mercurial
 	makedepends = perl
 	makedepends = python
 	depends = nspr>=4.35
-	depends = p11-kit>=0.25.0
+	depends = p11-kit>=0.25.3
+	depends = sh
 	depends = sqlite
 	depends = zlib
-	depends = sh
-	provides = nss=3.92
+	provides = nss=3.96beta1
 	conflicts = nss
-	source = hg+https://hg.mozilla.org/projects/nss
-	b2sums = SKIP
+	source = nss::hg+https://hg.mozilla.org/projects/nss
+	sha256sums = SKIP
 
 pkgname = nss-hg
