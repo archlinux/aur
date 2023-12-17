@@ -3,16 +3,16 @@
 
 pkgname=ollama-cuda
 pkgdesc='Create, run and share large language models (LLMs) with CUDA'
-pkgver=0.1.13
+pkgver=0.1.16
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/jmorganca/ollama'
 license=(MIT)
-_ollamacommit=cedae0d17a38a23269191bf69f2b2248aa830303 # tag: v0.1.13
+_ollamacommit=6ee8c80199866f1d1826ca8f8239e7e70c96fab7 # tag: v0.1.16
 # The git submodule commit hashes are here:
-# https://github.com/jmorganca/ollama/tree/v0.1.13/llm/llama.cpp
+# https://github.com/jmorganca/ollama/tree/v0.1.16/llm/llama.cpp
 _ggmlcommit=9e232f0234073358e7031c1b8d7aa45020469a3b
-_ggufcommit=9656026b53236ed7328458269c4c798dd50ac8d1
+_ggufcommit=948ff137ec37f1ec74c02905917fa0afc9b97514
 makedepends=(cmake cuda git go setconf)
 provides=(ollama)
 conflicts=(ollama)
@@ -53,12 +53,10 @@ build() {
   go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid=''
 }
 
-# "go test" is disabled temporarily because it stopped working,
-# see also: https://github.com/jmorganca/ollama/pull/709#issuecomment-1845583194
-#check() {
-#  cd $pkgname
-#  go test ./...
-#}
+check() {
+  cd ${pkgname/-cuda}
+  go test ./...
+}
 
 package() {
   install -Dm755 ${pkgname/-cuda}/${pkgname/-cuda} "$pkgdir/usr/bin/${pkgname/-cuda}"
