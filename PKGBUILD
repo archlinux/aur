@@ -11,7 +11,7 @@ pkgdesc="picom fork by FT-Labs including animations (git-version)"
 arch=(i686 x86_64)
 url="https://github.com/FT-Labs/${_gitname}"
 license=('MIT' 'MPL2')
-depends=('libgl' 'libev' 'pcre' 'libx11' 'xcb-util-renderutil' 'libxcb' 'xcb-util-image' 'libxext'
+depends=('libgl' 'libev' 'pcre2' 'libx11' 'xcb-util-renderutil' 'libxcb' 'xcb-util-image' 'libxext'
          'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme')
 makedepends=('git' 'mesa' 'meson' 'asciidoc' 'uthash' 'xorgproto')
 optdepends=('dbus:          To control picom via D-Bus'
