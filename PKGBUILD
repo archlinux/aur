@@ -2,10 +2,12 @@
 
 pkgbase=hbdbus-git
 pkgname=hbdbus-git
-pkgver=2.0.0.r8.ge669bd6
+pkgver=2.0.0.r9.g9ed58d4
 pkgrel=1
 pkgdesc="The data bus for HybridOS based on HVML PurC."
-arch=(any)
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/HybridOS2/HBDBus"
 license=('GPL-3.0')
 groups=(hybridos2-git)
