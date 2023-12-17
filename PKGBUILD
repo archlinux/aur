@@ -16,7 +16,7 @@
 # basic info
 _pkgname="wine"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=8.21.r416.g19ad5bd5
+pkgver=8.21.r438.g7a8c039a
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://gitlab.winehq.org/wine/wine"
@@ -32,7 +32,6 @@ _main_package() {
     fontconfig            #lib32-fontconfig
     freetype2             #lib32-freetype2
     gettext               #lib32-gettext
-    giflib                #lib32-giflib
     gst-plugins-base-libs #lib32-gst-plugins-base-libs
     libpulse              #lib32-libpulse
     libxcomposite         #lib32-libxcomposite
@@ -41,6 +40,7 @@ _main_package() {
     libxinerama           #lib32-libxinerama
     libxrandr             #lib32-libxrandr
     opencl-icd-loader     #lib32-opencl-icd-loader
+    pcsclite              #lib32-pcsclite
     sdl2                  #lib32-sdl2
     v4l-utils             #lib32-v4l-utils
   )
@@ -71,7 +71,6 @@ _main_package() {
     sane
 
     alsa-plugins          #lib32-alsa-plugins
-    libldap               #lib32-libldap
   )
 
   options=(staticlibs !lto)
@@ -164,8 +163,8 @@ _main_git() {
 
   _prepare_main() {
     _staging_options=(
-      -Wserver-PeekMessage
-      -Weventfd_synchronization
+      #-Wserver-PeekMessage
+      #-Weventfd_synchronization
     )
   }
 

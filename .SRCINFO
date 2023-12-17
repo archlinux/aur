@@ -1,6 +1,6 @@
 pkgbase = wine-staging-wow64-git
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 8.21.r416.g19ad5bd5
+	pkgver = 8.21.r438.g7a8c039a
 	pkgrel = 1
 	url = https://gitlab.winehq.org/wine/wine
 	arch = x86_64
@@ -26,7 +26,6 @@ pkgbase = wine-staging-wow64-git
 	depends = fontconfig
 	depends = freetype2
 	depends = gettext
-	depends = giflib
 	depends = gst-plugins-base-libs
 	depends = libpulse
 	depends = libxcomposite
@@ -35,6 +34,7 @@ pkgbase = wine-staging-wow64-git
 	depends = libxinerama
 	depends = libxrandr
 	depends = opencl-icd-loader
+	depends = pcsclite
 	depends = sdl2
 	depends = v4l-utils
 	optdepends = cups
@@ -43,7 +43,6 @@ pkgbase = wine-staging-wow64-git
 	optdepends = samba
 	optdepends = sane
 	optdepends = alsa-plugins
-	optdepends = libldap
 	provides = wine-wow64=8.21
 	provides = wine-staging-wow64=8.21
 	provides = wine-staging=8.21
