@@ -4,7 +4,7 @@ url='https://wiki.ros.org/python_qt_binding'
 pkgname='ros-noetic-python-qt-binding'
 pkgver='0.4.4'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -19,17 +19,23 @@ makedepends=(
     qt5-base
 )
 
+ros_depends=(
+)
+
 depends=(
+    ${ros_depends[@]}
     python-pyqt5
 )
 
 _dir="python_qt_binding-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/python_qt_binding/archive/${pkgver}.tar.gz"
-        "sip.patch"::"https://github.com/ros-visualization/python_qt_binding/pull/105.patch")
-sha256sums=('bcb5076226100f901e6a22656cf69ef0e8d5f1845670e6fad6fc5fdcb3a1dd07' SKIP)
+        "sip.patch"::"https://github.com/ros-visualization/python_qt_binding/commit/7095b4de210e2b235606f73565908f9af413db96.patch")
+sha256sums=('bcb5076226100f901e6a22656cf69ef0e8d5f1845670e6fad6fc5fdcb3a1dd07'
+            'cd9774272b38183a30275613fd593f0b2de9e18192d2f5c98b26cd4e5cf33d53')
 
 prepare() {
-    patch --directory="$srcdir/$_dir" --forward --strip=1 --input="$srcdir/sip.patch"
+    cd "$srcdir/python_qt_binding-${pkgver}"
+    patch -Np1 -i "$srcdir/sip.patch"
 }
 
 build() {
@@ -42,7 +48,7 @@ build() {
     cd ${srcdir}/build
 
     # Build the project.
-    cmake ${srcdir}/${_dir} -Wno-dev \
+    cmake ${srcdir}/${_dir} \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
