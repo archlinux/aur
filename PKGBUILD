@@ -3,7 +3,7 @@
 pkgbase=purc
 pkgname=purc
 pkgver=0.9.18
-pkgrel=1
+pkgrel=2
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
     aarch64
@@ -33,7 +33,8 @@ depends=(glib2
     glibc
     python)
 makedepends=(
-    avahi
+#     avahi
+#     nss-mdns
     bison
     cmake
 #     cython
@@ -45,6 +46,7 @@ makedepends=(
 #     gcc
     clang
     llvm
+    gcc-libs
     gperf
     lua-lgi
     ncurses
@@ -60,8 +62,7 @@ makedepends=(
     libxslt
     libsoup3
     icu
-#     mariadb
-    # mysql
+#     libmariadbclient
     openssl
     sqlite
     systemd
