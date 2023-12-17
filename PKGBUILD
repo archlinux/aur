@@ -5,7 +5,7 @@
 
 # Maintainer: Jeff Lance <email@jefflance.me>
 pkgname=pdfadd
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 epoch=
 pkgdesc="Charting wizard for pdflatex/asymptote"
@@ -25,7 +25,7 @@ options=()
 install=
 changelog=
 source=("https://xm1math.net/pdfadd/pdfadd-${pkgver}.tar.bz2")
-sha512sums=('e79cde92bac4702cb66a1c7ad71e07d20988b20121dd69d7e5a85bbae256dc276ad37305e9e669767f786cb5905a26e7f3e3837b779b7f84c04337cfaba9d5c3')
+sha512sums=('000c441ee4ab6fbb87826e9fb9f64173795b290c792e12395d3cddc0bf47abe75f8ad5617db95be0f49d7ac0aedc4616ba5fd18f1f88f5467912e58f143b6732')
 noextract=()
 validpgpkeys=()
 
