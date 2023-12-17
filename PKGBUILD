@@ -11,7 +11,7 @@ makedepends=('git')
 optdepends=('ranger: compatible file manager'
 						'joshuto: compatible file manager'
 						'neovim: you want a text editor of some kind for this')
-source=("git+https://gitlab.com/beethoven__/grg.git")
+source=("git+https://codeberg.org/dogbold/grg.git")
 md5sums=('SKIP')
 arch=('any')
 

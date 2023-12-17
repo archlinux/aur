@@ -12,7 +12,7 @@ pkgbase = grg-git
 	optdepends = joshuto: compatible file manager
 	optdepends = neovim: you want a text editor of some kind for this
 	provides = grg
-	source = git+https://gitlab.com/beethoven__/grg.git
+	source = git+https://codeberg.org/dogbold/grg.git
 	md5sums = SKIP
 
 pkgname = grg-git
