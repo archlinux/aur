@@ -1,6 +1,6 @@
 # Maintainer: Fijxu <fijxu <at> zzls <dot> xyz>
 pkgname=dnsproxy-git
-pkgver=0.48.3.r787.c060c2a
+pkgver=v0.60.1.r1.g638288e
 pkgrel=1
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support (git version)"
 arch=('any')
@@ -15,13 +15,13 @@ source=("dnsproxy-git::git+https://github.com/AdguardTeam/dnsproxy.git"
         "dnsproxy.yaml"
         "dnsproxy.service")
 sha256sums=("SKIP"
-        "9d8a7088bb101114397dd299c19d690f0356a6787844c2b4ca7358612dd1b594"
+        "35804d7b72453889bce6cf3bc03a499481f0c2f85fb2b02e272a1b5c061b0823"
         "565eea9808589ecafa81f2229ac1f85b39028e26d488a9a7c0b51afc43d7f42b")
 _conf=etc/dnsproxy/dnsproxy.yaml    
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf "0.48.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

@@ -2,18 +2,31 @@
 # config file
 
 ---
+
 ## Required
-# upstream:  # At least one upstream is required
-# - 1.1.1.1:53
+# A list of DNS servers that you want to use
+# An upstream to be used (can be specified multiple times). 
+# You can also specify path to a file with the list of servers
+upstream:
+  # - udp://45.90.28.88 # NextDNS DNS
+  # - udp://76.76.2.0   # ControlD DNS
 
-## Recommended
+# Fallback resolvers to use when regular ones are unavailable,
+# can be specified multiple times. You can also specify path
+# to a file with the list of servers
+fallback:
+  # - udp://127.0.0.1   # Replace this with any DNS you want to use
+
 tls-min-version: 1.2
-http3: true  # dnsproxy automatically picks the fastest HTTP(S) protocol
-refuse-any: true
-
-## Optional
-# listen-addrs:  # Defaults to 0.0.0.0 which is prone to conflict
-# - 127.0.0.56
-# cache: true  # Caching is disabled by default
-# verbose: true  # Increase verbosity for debugging
-
+http3: true
+refuse-any: false
+listen-addrs:
+  - 127.0.0.1
+listen-ports: 
+  - 53
+# Cache Enabled.
+cache: true
+cache-optimistic: false
+verbose: false
+# If specified, parallel queries to all configured upstream servers are enabled
+all-servers: true
