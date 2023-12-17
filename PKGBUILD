@@ -3,13 +3,13 @@
 # Contributor: noonov <noonov@gmail.com>
 
 pkgname=ttf-mplus-git
-pkgver=r215.977baab
+pkgver=r286.71d438c
 pkgrel=1
 pkgdesc='A little nifty font family for everyday usage (git version)'
 _repo_name='MPLUS_FONTS'
 url='https://mplusfonts.github.io/'
 arch=('any')
-license=('custom')
+license=('OFL-1.1')
 makedepends=('git')
 source=(git+https://github.com/coz-m/${_repo_name}.git)
 conflicts=('ttf-mplus' 'mplus-font')
@@ -32,5 +32,5 @@ package() {
   cd ${srcdir}/${_repo_name}
 
   install -D -m644 OFL.txt \
-          ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
+          ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
