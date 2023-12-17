@@ -1,6 +1,6 @@
 pkgbase = shiny-server
 	pkgdesc = Host Shiny applications over the web
-	pkgver = 1.5.20.1002
+	pkgver = 1.5.21.1012
 	pkgrel = 1
 	url = https://rstudio.com/shiny/server
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = shiny-server
 	optdepends = r-shiny: build interactive web apps with R
 	optdepends = r-rmarkdown: convert R markdown docs to various formats
 	backup = etc/shiny-server/shiny-server.conf
-	source = git+https://github.com/rstudio/shiny-server#commit=d9e391bdc743e0f791ba8ead234069d4816b8c39
+	source = git+https://github.com/rstudio/shiny-server#commit=be6a1899ce9ac74572bdbc7e7a3ce1f62e49635c
 	source = shiny-server.service
 	source = shiny-server.sysusers
 	source = shiny-server.tmpfiles
