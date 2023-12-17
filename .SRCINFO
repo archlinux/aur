@@ -1,19 +1,16 @@
 pkgbase = beeref
 	pkgdesc = Reference Image Viewer
 	pkgver = 0.3.1
-	pkgrel = 1
-	url = https://github.com/mini-ninja-64/beeref
+	pkgrel = 2
+	url = https://beeref.org/
 	arch = any
 	license = GPL3
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-pdm
-	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = hicolor-icon-theme
 	depends = python-exif
 	depends = python-pyqt6
 	depends = python-rectangle-packer
-	source = beeref-0.3.1.tar.gz::https://github.com/mini-ninja-64/beeref/archive/refs/tags/v0.3.1.tar.gz
-	sha512sums = da5dee97e5839198fe89178090379d0f89b58d48d317312a5a46649899649b3bb33c6c2eed84908084b70be9838593654a01ba271c10a92dc64237f1bdab8ffe
+	source = beeref-0.3.1.tar.gz::https://github.com/rbreu/beeref/archive/refs/tags/v0.3.1.tar.gz
+	b2sums = aa19c90894408f5e7da00d310ef11bd5cca51631acbb8a7295d5cad0f7c13aae5716b45470823da78d0c26e8e4192a442459e737b58685c38c6b3f310b22db33
 
 pkgname = beeref
