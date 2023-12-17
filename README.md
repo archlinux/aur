@@ -10,6 +10,22 @@ arch 系发行版可用的 wine 网易云音乐客户端。是对星火商店对
 
 ### 2、安装
 
+打开 32 位包镜像列表：
+
+```bash
+# 在 /etc/pacman.conf 中取消下面两行的注释：
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+```
+
+随后刷新一次：
+
+```bash
+sudo pacman -Sy
+```
+
+最后使用 aur 助手安装：
+
 ```bash
 yay -S com.163.music.spark
 ```
