@@ -1,5 +1,5 @@
 # Maintainer: xtex <xtexchooser @ duck . com>
-pkgname=dinit
+pkgname=dinit-systemd
 pkgver=1
 pkgrel=1
 pkgdesc='Systemd service files for dinit - Service monitoring / "init" system'
