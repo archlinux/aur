@@ -1,6 +1,6 @@
 # Maintainer: Marieke Westendorp <ma3ke.cyber@gmail.com>
 pkgname=tid
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A small system information bar"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('cargo-nightly')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 backup=("etc/tid/tid.config")
-sha512sums=('a370b0eda066ee2614f46afdd56f85e959d44ee60404b7c529d5cafbeb25390826e48f769a2cd3f3f97621ce17e28edd97c7ca3523f0e5280ce2066e03bbaa45')
+sha512sums=('57a68311f7522fb366c91952ec0b4780cea30ac3c6b044d190b6a18376500b3ae6b6658428bde0fc1d707bc110c4ef13a29724ce98221729b88e3895c3ef9fa7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -32,7 +32,7 @@ check() {
 
 	export RUSTUP_TOOLCHAIN=nightly
 	export CARGO_TARGET_DIR=target
-	cargo test --frozen --all-features
+	cargo test --frozen --release --all-features
 }
 
 package() {
