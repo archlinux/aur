@@ -1,8 +1,9 @@
 pkgbase = tkey-ssh-agent
 	pkgdesc = A ssh-agent for the Tillitis TKey
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/tillitis/tillitis-key1-apps
+	install = tkey-ssh-agent.install
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -16,8 +17,8 @@ pkgbase = tkey-ssh-agent
 	provides = tkey-ssh-agent
 	conflicts = tkey-ssh-agent2
 	source = git+https://github.com/tillitis/tillitis-key1-apps.git#commit=7e18bcb
-	source = git+https://github.com/tillitis/tkey-libs.git#commit=d589e5e
-	source = git+https://github.com/tillitis/tkey-device-signer#commit=92a091c
+	source = git+https://github.com/tillitis/tkey-libs.git#tag=v0.0.2
+	source = git+https://github.com/tillitis/tkey-device-signer.git#tag=v0.0.8
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

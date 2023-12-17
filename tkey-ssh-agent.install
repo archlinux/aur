@@ -1,0 +1,4 @@
+post_upgrade() {
+	printf '\033[1;33mThis release changes the Tkey identity (CDI) compared to v0.0.7, i.e., you will not have the same Ed25519 keypair derived.'
+}
+

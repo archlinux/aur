@@ -4,7 +4,8 @@ pkgname=tkey-ssh-agent
 _pkgname=tillitis-key1-apps
 _libname=tkey-libs
 _appname=tkey-device-signer
-pkgver=0.0.7
+pkgver=0.0.8
+_libver=0.0.2
 pkgrel=1
 pkgdesc="A ssh-agent for the Tillitis TKey"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,9 +14,10 @@ license=('GPL2')
 makedepends=('clang' 'llvm' 'lld' 'go')
 conflicts=("${pkgname}2")
 provides=("${pkgname}")
-source=("git+https://github.com/tillitis/tillitis-key1-apps.git#commit=7e18bcb"
-        "git+https://github.com/tillitis/tkey-libs.git#commit=d589e5e"
-        "git+https://github.com/tillitis/tkey-device-signer#commit=92a091c")
+install=tkey-ssh-agent.install
+source=("git+https://github.com/tillitis/${_pkgname}.git#commit=7e18bcb"
+        "git+https://github.com/tillitis/${_libname}.git#tag=v${_libver}"
+        "git+https://github.com/tillitis/${_appname}.git#tag=v${pkgver}")
 b2sums=('SKIP'
         'SKIP'
         'SKIP')
@@ -25,11 +27,12 @@ build() {
   make OBJCOPY="llvm-objcopy"
 
   cd "${srcdir}/${_appname}"
-  make OBJCOPY="llvm-objcopy"
+  make OBJCOPY="llvm-objcopy" signer/app.bin
 
   cd "${srcdir}/${_pkgname}"
   cp "${srcdir}/${_appname}/signer/app.bin" ./cmd/tkey-ssh-agent/app.bin
-  make OBJCOPY="llvm-objcopy"
+  sed -i "s/tkey-ssh-agent: check-signer-hash/tkey-ssh-agent:/" Makefile
+  make OBJCOPY="llvm-objcopy" tkey-ssh-agent
 }
 
 package() {
