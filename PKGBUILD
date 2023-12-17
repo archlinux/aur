@@ -2,7 +2,7 @@
 
 pkgname=hcclient-latex
 pkgver=1.18.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A terminal client for hack.chat, with LaTeX support"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
@@ -16,19 +16,20 @@ sha256sums=('41140c9bbebf4571c410af485c0c524157d4bf51c08bd6197666af9ff09cea91')
 
 build() {
   cd "${srcdir}/hcclient-${pkgver}"
-  RELEASE_VERSION=true NO_ANSI=true bash scripts/build.sh
-  echo "==> Creating isolated environment"
-  python -m venv venv
-  echo "  -> Installing dependencies"
-  ./venv/bin/pip install --disable-pip-version-check --no-color --quiet dist/hcclient-${pkgver}-py3-none-any.whl[latex]
-  echo "  -> Removing unnecessary packages and files"
-  ./venv/bin/pip uninstall setuptools pip -y --quiet
-  rm venv/bin/{activate*,Activate*}
+  sed -i "s/-git//g" src/hcclient/__main__.py \
+                     src/hcclient/client.py \
+                     src/hcclient/config.py \
+                     src/hcclient/formatter.py \
+                     src/hcclient/hook.py
+  python -m venv .venv
+  poetry install -v -n --no-ansi --compile -E latex
+  ./.venv/bin/pip uninstall setuptools pip -y --quiet
+  rm .venv/bin/{activate*,Activate*}
 }
 
 package() {
   install -Dm755 "${srcdir}/hcclient-${pkgver}/scripts/arch_entry.py" "${pkgdir}/usr/bin/hcclient"
   mkdir "${pkgdir}/opt"
-  cp -a "${srcdir}/hcclient-${pkgver}/venv" "${pkgdir}/opt/hcclient"
+  cp -a "${srcdir}/hcclient-${pkgver}/.venv" "${pkgdir}/opt/hcclient"
   install -Dm644 "${srcdir}/hcclient-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/hcclient/LICENSE"
 }

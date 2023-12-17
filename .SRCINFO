@@ -1,7 +1,7 @@
 pkgbase = hcclient-latex
 	pkgdesc = A terminal client for hack.chat, with LaTeX support
 	pkgver = 1.18.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/AnnikaV9/hcclient
 	arch = x86_64
 	license = Unlicense
