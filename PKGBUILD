@@ -3,24 +3,26 @@
 _pkgname=Rsubread
 _pkgver=2.16.0
 pkgname=r-${_pkgname,,}
-pkgver=2.16.0
-pkgrel=1
-pkgdesc='Mapping, quantification and variant analysis of sequencing data'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Mapping, quantification and variant analysis of sequencing data"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(GPL3)
 depends=(
   r
+  zlib
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8d6cf3be423626b190a00f718c833cdc480fb7b37ab817dbc80940d60646182e')
+md5sums=('317b014b1e15527a762636afb662dcca')
+b2sums=('e97f5adef823e223a7011e924a06f2a7d611eab27322a90af545e313eb5d2e92f36f060f27671aa4a2bf1c7ae87fc1c09f6479fc6a2a6d030e540b5a54799e8b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
