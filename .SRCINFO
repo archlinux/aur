@@ -1,0 +1,15 @@
+pkgbase = randsay
+	pkgdesc = Generates a random quote, and makes a random cowfile say it.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mario0fan-cooldude/randsay
+	arch = any
+	license = GPL
+	depends = python
+	depends = cowsay
+	depends = fortune-mod
+	noextract = randsay-1.0
+	source = randsay.py::https://raw.githubusercontent.com/mario0fan-cooldude/randsay/main/randsay.py
+	sha256sums = 295ca489c0e8fbfb35f3fe34372509ec7b43e32da1aafebb6f32fc93ed0d702b
+
+pkgname = randsay
