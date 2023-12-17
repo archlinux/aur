@@ -7,7 +7,7 @@
 pkgname=fcitx5-pinyin-moegirl-rime
 pkgver=20231114
 _reponame=mw2fcitx
-pkgrel=1
+pkgrel=2
 pkgdesc="Fcitx 5 Pinyin Dictionary from moegirl.org wiki for rime"
 arch=('any')
 url="https://github.com/outloudvi/mw2fcitx"
