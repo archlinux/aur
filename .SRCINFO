@@ -15,8 +15,6 @@ pkgbase = glslviewer-git
 	provides = glslviewer
 	conflicts = glslviewer
 	source = glslviewer::git+https://github.com/patriciogonzalezvivo/glslViewer
-	source = git+https://github.com/patriciogonzalezvivo/ada
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = glslviewer-git
