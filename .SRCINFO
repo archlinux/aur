@@ -1,12 +1,13 @@
 pkgbase = r-aneufinderdata
 	pkgdesc = WGSCS Data for Demonstration Purposes
 	pkgver = 1.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/AneuFinderData
 	arch = any
 	license = custom
 	depends = r
 	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/AneuFinderData_1.30.0.tar.gz
-	sha256sums = e0f122c274133a783936285d19600ca34a3c10b48fabbfe881970b8f2746770e
+	md5sums = 895230cd9b780dbb286a012f3c8777eb
+	b2sums = 92c3844a88387867d9b88da77f22a611dd64060965bd150cdcb0a951c90486daaa8b096b4cb6713875e200943a97a8a5221c1449929f749581f5375813af36be
 
 pkgname = r-aneufinderdata
