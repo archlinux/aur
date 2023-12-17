@@ -13,7 +13,7 @@ url="https://github.com/Suwayomi/$__PkgName"
 license=('MPL2')
 depends=('zenity' 'xdg-user-dirs')
 optdepends=('tachidesk-server')
-makedepends=('flutter' 'cmake' 'clang' 'ninja')
+makedepends=('flutter' 'cmake' 'clang' 'ninja' 'gtk3')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('e4a54fa60f83cf6ed49aff02073b19d6b55a1d57ad33ee5b54d1aee759a1b3c3')
 

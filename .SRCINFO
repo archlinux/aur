@@ -9,6 +9,7 @@ pkgbase = tachidesk-sorayomi
 	makedepends = cmake
 	makedepends = clang
 	makedepends = ninja
+	makedepends = gtk3
 	depends = zenity
 	depends = xdg-user-dirs
 	optdepends = tachidesk-server
