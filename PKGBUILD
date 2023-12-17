@@ -2,8 +2,8 @@
 # shellcheck disable=SC2148,SC2034
 
 pkgname="godot2d"
-pkgver='4.0.2.stable'
-_pkgver_full='4.0.2'
+pkgver='4.2.1.stable'
+_pkgver_full='4.2.1'
 pkgrel=2
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D game engine."
 arch=('any')
@@ -31,7 +31,7 @@ _repo="github.com/bend-n/godot-builds"
 #}
 
 package() {
-	install -Dm755 "godot-2d_v${_ver_tag}_linux.x86_64" "$pkgdir/usr/bin/godot2d"
+	install -Dm755 "godot-2d_v${_pkgver_full}_linux.x86_64" "$pkgdir/usr/bin/godot2d"
 	install -Dm644 "$srcdir/godot2d.desktop" "$pkgdir/usr/share/applications/godot2d.desktop"
 	install -Dm644 "$srcdir/icon.png" "${pkgdir}/usr/share/pixmaps/godot2d.png"
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
