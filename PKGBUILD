@@ -2,7 +2,7 @@ pkgdesc="ROS - Generates a configuration package that makes it easy to use MoveI
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-setup-assistant'
-pkgver='1.1.9'
+pkgver='1.1.13'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -30,15 +30,8 @@ depends=(${ros_depends[@]}
   ompl)
 
 _dir="moveit-${pkgver}/moveit_setup_assistant"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz" 
-        "bool.patch"::"https://github.com/ros-planning/moveit/commit/d49bea1b372eded30a5480d691ffc296b32bc013.patch")
-sha256sums=('704532a56c1e9e780707748b469f441c5d4482f5265de41f6edf313ba2df6314'
-            '807cdc8790c1a0280617e7eb05f34dd9b94b0d757db53cecab139d239d5b8254')
-
-prepare() {
-  cd "$srcdir/moveit-${pkgver}"
-  patch -Np1 < "${srcdir}/bool.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
+sha256sums=('91735df0ec1a7bdbcdad9028352a0d78d44fad2076584319120e2e10ecb5882c')
 
 build() {
   # Use ROS environment variables
