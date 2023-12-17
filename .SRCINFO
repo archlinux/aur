@@ -1,6 +1,6 @@
 pkgbase = cfrds
 	pkgdesc = Client side ColdFusion RDS protocol.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 2
 	url = https://github.com/bokic/cfrds
 	arch = x86_64
