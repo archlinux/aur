@@ -1,0 +1,27 @@
+pkgbase = dotdevelop-git
+	pkgdesc = Gtk# based IDE for .NET
+	pkgver = r65276.7dc1f75236
+	pkgrel = 1
+	url = https://github.com/dotdevelop
+	arch = any
+	license = LGPLv2 and MIT
+	makedepends = cmake
+	makedepends = clang
+	makedepends = intltool
+	makedepends = wget
+	makedepends = curl
+	makedepends = nuget
+	makedepends = mono
+	makedepends = mono-msbuild
+	makedepends = fsharp-mono-bin
+	makedepends = dotnet-sdk-6.0
+	depends = gtk-sharp-2
+	depends = gnome-sharp
+	depends = glade-sharp
+	depends = hicolor-icon-theme
+	conflicts = monodevelop
+	options = !makeflags
+	source = dotdevelop::git+https://github.com/dotdevelop/dotdevelop.git#branch=main
+	sha256sums = SKIP
+
+pkgname = dotdevelop-git
