@@ -40,6 +40,7 @@ pkgbase = qcm
 	depends = ffmpeg
 	depends = glibmm
 	provides = qcm
+	conflicts = qcm-git
 	source = git+https://github.com/hypengw/Qcm.git#tag=36854ca244bdccccaa3bfe9c6bb16b79dae4418a
 	sha256sums = SKIP
 

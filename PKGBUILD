@@ -44,7 +44,7 @@ makedepends=(
     'extra-cmake-modules'
     'ninja')
 provides=("qcm")
-conficts=("qcm-git")
+conflicts=("qcm-git")
 source=("git+https://github.com/hypengw/Qcm.git#tag=${_tag}")
 sha256sums=('SKIP')
 
