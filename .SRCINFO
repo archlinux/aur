@@ -15,9 +15,7 @@ pkgbase = qcm
 	depends = curl
 	depends = openssl
 	depends = qt6-tools
-	depends = qt6-multimedia
 	depends = qt6-declarative
-	depends = qt6-5compat
 	depends = gcc-libs
 	depends = glibc
 	depends = dbus
@@ -38,7 +36,6 @@ pkgbase = qcm
 	depends = lz4
 	depends = libgpg-error
 	depends = ffmpeg
-	depends = glibmm
 	provides = qcm
 	source = git+https://github.com/hypengw/Qcm.git#tag=36854ca244bdccccaa3bfe9c6bb16b79dae4418a
 	sha256sums = SKIP
