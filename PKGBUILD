@@ -2,13 +2,13 @@
 
 pkgname=('calamares' 'calamares-qt5')
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Distribution-independent installer framework'
 arch=($CARCH)
 license=('CC-BY-4.0' 'CC0-1.0' 'GPL-3.0-or-later' 'LGPL-2.1-only' 'LGPL-3.0-or-later' 'MIT' 'BSD-2-Clause')
 url="https://github.com/calamares/calamares/"
 depends=()
-makedepends=()
+makedepends+=('extra-cmake-modules' 'git')
 
 backup=('usr/share/calamares/modules/bootloader.conf'
         'usr/share/calamares/modules/displaymanager.conf'
@@ -28,12 +28,13 @@ sha256sums=('252f0097e3191ffc557b022f34ef23d24b939f1141efd483db0ab1ee9dc0fb76'
             'f00c90bd87d6dfd73b3ec53fa9a145ac25234676be41604807f05f05a4bf5bbb')
 
 prepare() {
-	# Check for qmake6 to determine make dependencies
-	if command -v qmake6 &> /dev/null; then
-	makedepends+=('extra-cmake-modules' 'qt6-tools' 'qt6-translations' 'git')
-	else
-	makedepends+=('extra-cmake-modules' 'qt5-tools' 'qt5-translations' 'git')
+	# Check for pkgname to determine make dependencies
+	if [[ $pkgname == 'calamares' ]]; then
+		makedepends+=('qt6-tools' 'qt6-translations')
+	elif [[ $pkgname == 'calamares-qt5' ]]; then
+		makedepends+=('qt5-tools' 'qt5-translations')
 	fi
+
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	sed -i 's/"Install configuration files" OFF/"Install configuration files" ON/' "${srcdir}/${pkgname}-${pkgver}/CMakeLists.txt"

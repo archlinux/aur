@@ -1,7 +1,7 @@
 pkgbase = calamares
 	pkgdesc = Distribution-independent installer framework
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/calamares/calamares/
 	arch = x86_64
 	license = CC-BY-4.0
@@ -11,6 +11,8 @@ pkgbase = calamares
 	license = LGPL-3.0-or-later
 	license = MIT
 	license = BSD-2-Clause
+	makedepends = extra-cmake-modules
+	makedepends = git
 	backup = usr/share/calamares/modules/bootloader.conf
 	backup = usr/share/calamares/modules/displaymanager.conf
 	backup = usr/share/calamares/modules/initcpio.conf
