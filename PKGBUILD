@@ -13,9 +13,7 @@ depends=(
     'curl'
     'openssl'
     'qt6-tools'
-    'qt6-multimedia'
     'qt6-declarative'
-    "qt6-5compat"
     'gcc-libs'
     'glibc'
     'dbus'
@@ -35,8 +33,7 @@ depends=(
     'graphite'
     'lz4'
     'libgpg-error'
-    'ffmpeg'
-    'glibmm')
+    'ffmpeg')
 makedepends=(
     'git'
     'cmake'
