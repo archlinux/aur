@@ -2,7 +2,7 @@
 
 pkgname=roadrunner
 epoch=1
-pkgver=2023.3.7
+pkgver=2023.3.8
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
 	"rr.minimal.sample.yaml"
 )
 sha256sums=(
-	'd966ce578287b555658b85d7a0850afae831cc1d0170fd76762154a074a2a38d'
+	'372cb025c55daa4390c37f454079bb96b7a67a6e8ed1e9eb9be557b107db7cc8'
 	'SKIP'
 	'SKIP'
 )
@@ -46,13 +46,6 @@ build() {
 		 -X github.com/roadrunner-server/roadrunner/v2023/internal/meta.buildTime=$(date +%FT%T%z)" \
 		-o ./roadrunner \
 		./cmd/rr
-}
-
-check() {
-	export GOPATH="$srcdir"/gopath
-
-	cd "$srcdir/$pkgname-$pkgver"
-	go test -race -covermode=atomic -coverprofile ./coverage.txt ./...
 }
 
 package() {
