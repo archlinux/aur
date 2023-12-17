@@ -2,7 +2,7 @@ pkgdesc="ROS - Enhanced tools for benchmarks in MoveIt!."
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-ros-benchmarks'
-pkgver='1.1.8'
+pkgver='1.1.13'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -24,8 +24,15 @@ ros_depends=(ros-noetic-pluginlib
 depends=(${ros_depends[@]})
 
 _dir="moveit-${pkgver}/moveit_ros/benchmarks"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz"
+        "boost_timer.patch"::"https://github.com/ros-planning/moveit/pull/3545.patch")
+sha256sums=('91735df0ec1a7bdbcdad9028352a0d78d44fad2076584319120e2e10ecb5882c'
+            'SKIP')
+
+prepare() {
+    cd "$srcdir/moveit-${pkgver}"
+    patch -Np1 -i "$srcdir/boost_timer.patch"
+}
 
 build() {
   # Use ROS environment variables
