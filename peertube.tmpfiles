@@ -11,4 +11,4 @@ d /var/lib/peertube/storage/streaming-playlists 755 peertube peertube
 d /var/lib/peertube/storage/thumbnails 755 peertube peertube
 d /var/lib/peertube/storage/tmp 755 peertube peertube
 d /var/lib/peertube/storage/torrents 755 peertube peertube
-d /var/lib/peertube/storage/videos 755 peertube peertube
+d /var/lib/peertube/storage/web-videos 755 peertube peertube
