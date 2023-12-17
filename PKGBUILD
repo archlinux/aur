@@ -7,9 +7,9 @@ pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.3.17.0.r0.g2e11975
 _pandoc_type=version
-_pandoc_ver=3.1.9
-_pandoc_commit=9fcb0a0182d4dbb6bc60c8aad78218641e68c9c9
-pkgrel=3
+_pandoc_ver=3.1.11
+_pandoc_commit=c3038dcd54152c4e18e49db31676b79ee7cc29b2
+pkgrel=5
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
 license=("GPL2")
@@ -21,7 +21,7 @@ depends=("pandoc=$_pandoc_ver")
 makedepends=('stack' 'pandoc')
 source=("$pkgname::git+$url.git" ver-bump.patch)
 sha256sums=('SKIP'
-            'd73aecbd100a0cb528ad8e2352cf1c686414ec4c3b7de50ed1d4d73cb7abec1a')
+            'e1b28f87f32b96f87f9d0657de2cebe18464348b5194cac281a0ecf5c35c45fd')
 
 pkgver() {
     cd "$pkgname"
@@ -31,6 +31,9 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     patch --forward --strip=1 --input="${srcdir}/ver-bump.patch"
+    # if pandoc updates break the golden tests, cf
+    # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
+    # for how to bump
     sedscript=''
     case "$_pandoc_type" in
     stock) return;;
