@@ -1,15 +1,25 @@
-# Maintainer: Tung Ha <tunght13488[at]gmail[dot]com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Tung Ha <tunght13488[at]gmail[dot]com>
 
 pkgname=ios-webkit-debug-proxy
-pkgver=1.8.8
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="DevTools proxy (WebKit Remote Debugging) for iOS devices (Safari Remote Web Inspector)"
 url="https://github.com/google/ios-webkit-debug-proxy"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('libimobiledevice')
-source=("https://github.com/google/ios-webkit-debug-proxy/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5b743276f7fbcd145e6212e892867304c5e49e7c75c0f4a331ec6deb6a8d5b3e')
+source=("https://github.com/google/ios-webkit-debug-proxy/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
+        "https://github.com/google/ios-webkit-debug-proxy/commit/5ba30a2a67f39d25025cadf37c0eafb2e2d2d0a8.patch"
+        "https://github.com/google/ios-webkit-debug-proxy/commit/94e4625ea648ece730d33d13224881ab06ad0fce.patch")
+sha256sums=('ba9bb2feaa976ad999e9e405d8cd8794cdf3546130a79f4785235200ead3c96c'
+            '5a499ee2cebf64fe3a75683ff8245948345b64acdc946abaa693a62bb146f7d2'
+            '5dea08f3f0fac8f5d1a0014ab404da386120f192d5ed14f9e231afe7ef1a2208')
+prepare() {
+	cd ios-webkit-debug-proxy-$pkgver
+	patch -p1 -i ../5ba30a2a67f39d25025cadf37c0eafb2e2d2d0a8.patch
+	patch -p1 -i ../94e4625ea648ece730d33d13224881ab06ad0fce.patch
+}
 
 build() {
 	cd ios-webkit-debug-proxy-$pkgver
