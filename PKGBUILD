@@ -1,6 +1,6 @@
 # Maintainer: elomatreb <ole@bertr.am>
 pkgname=listenbrainz-mpd
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="ListenBrainz submission client for MPD"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('sqlite' 'libssl.so=3-64' 'libcrypto.so=3-64')
 makedepends=('openssl' 'cargo' 'asciidoctor')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('918bdee0e99f9d615a1f72584e9a9591a95cac766132806bf9f8d23ede6eb302')
+sha256sums=('903593c671292be0fb2aaf3e490b265b5fa06815973b67a49af9b8a7808130e1')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -21,7 +21,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export RUSTFLAGS="-C target-cpu=native"
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release --features shell_completion,systemd
     asciidoctor --backend=manpage listenbrainz-mpd.adoc
 }
 
