@@ -2,7 +2,7 @@
 
 pkgname=hcclient-latex
 pkgver=1.18.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A terminal client for hack.chat, with LaTeX support"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
@@ -10,7 +10,7 @@ license=("Unlicense")
 provides=("hcclient")
 conflicts=("hcclient")
 depends=("python")
-makedepends=("python-pip" "python-wheel") 
+makedepends=("python-pip" "python-wheel" "python-poetry") 
 source=("v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('41140c9bbebf4571c410af485c0c524157d4bf51c08bd6197666af9ff09cea91')
 
