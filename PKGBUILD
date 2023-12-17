@@ -13,10 +13,8 @@ depends=('glu' 'glfw-x11' 'ncurses' 'ffmpeg')
 makedepends=('cmake' 'git')
 provides=("${pkgbase%-git}")
 conflicts=("${pkgbase%-git}")
-source=("${pkgbase%-git}::git+https://github.com/patriciogonzalezvivo/glslViewer"
-        "git+https://github.com/patriciogonzalezvivo/ada")
-md5sums=('SKIP'
-         'SKIP')
+source=("${pkgbase%-git}::git+https://github.com/patriciogonzalezvivo/glslViewer")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgbase%-git}"
