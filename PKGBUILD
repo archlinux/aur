@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=curl-http3
-pkgver=8.4.0
+pkgver=8.5.0
 pkgrel=1
 pkgdesc="An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('ca-certificates' 'brotli' 'libbrotlidec.so' 'libgssapi_krb5.so'
          'krb5' 'libidn2' 'libidn2.so' 'libnghttp2' 'libpsl' 'libpsl.so'
          'libssh2' 'libssh2.so' 'openssl' 'zlib' 'zstd' 'libzstd.so')
 makedepends=('rust' 'git' 'go' 'cmake')
-_quiche_ref=0.18.0
+_quiche_ref=0.20.0
 source=("https://curl.haxx.se/download/curl-$pkgver.tar.gz"{,.asc}
 		"git+https://github.com/cloudflare/quiche.git#tag=${_quiche_ref}"
 		"git+https://github.com/google/boringssl.git")
@@ -18,6 +18,7 @@ validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 
 prepare() {
   cd quiche
+  git revert -n a1b212761c6cc0b77b9121cdc313e507daf6deb3
   git submodule init
   git config submodule.boringssl.url "${srcdir}"/boringssl
   git -c protocol.file.allow=always submodule update quiche/deps/boringssl
@@ -60,7 +61,7 @@ package() {
   cd "curl-${pkgver}"
 
   make DESTDIR="$pkgdir" install
-  LD_LIBRARY_PATH=$PWD/../quiche/target/release make DESTDIR="$pkgdir" install -C scripts
+  LD_LIBRARY_PATH=$PWD/../quiche/target/release${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} make DESTDIR="$pkgdir" install -C scripts
 
   cd ..
   
@@ -79,7 +80,7 @@ package() {
   install -Dm644 quiche/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING-quiche"
   install -Dm644 quiche/quiche/deps/boringssl/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-boringssl"
 }
-sha512sums=('375d241effccde852cfba32aa61be406f6c6e8ef2773b48d57bfa1ff99fdf414dc08bdb6b3a65930e53b28e31246a4bc396c81054ae9c560a3bf58cca0ae78b0'
+sha512sums=('1ff70e8fd5f233b373dea2a031d46698c03ed35f384c2eacbe9368f9daed65e91d7f45ade350c3ac3dd3d662c913b17cdc8702a0c23879b0c78fbd396fd0b926'
             'SKIP'
             'SKIP'
             'SKIP')
