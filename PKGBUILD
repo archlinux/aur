@@ -2,12 +2,12 @@
 pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
 pkgver=r1234.4b2624b
-pkgrel=1
+pkgrel=2
 pkgdesc="A Clash GUI based on tauri."
 arch=('x86_64' 'aarch64')
 url="https://github.com/keiko233/clash-nyanpasu"
 license=('GPL3')
-depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' 'clash-meta' "clash-meta-is-mihomo")
+depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' "clash-meta-is-mihomo")
 makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'quickjs' 'git')
 optdepends=('clash' 'clash-rs')
 source=("git+https://github.com/keiko233/clash-nyanpasu.git#branch=dev"
