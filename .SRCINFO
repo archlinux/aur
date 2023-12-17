@@ -1,6 +1,6 @@
 pkgbase = modular
 	pkgdesc = Modular installation tool - Repository: https://github.com/Sharktheone/arch-mojo
-	pkgver = 0.2.2
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://developer.modular.com/download
 	install = modular.install
@@ -9,7 +9,7 @@ pkgbase = modular
 	depends = python
 	depends = python-pip
 	depends = libxml2
-	source = https://dl.modular.com/public/installer/deb/debian/pool/any-version/main/m/mo/modular_0.2.2/modular-v0.2.2-amd64.deb
-	sha256sums = f7cea3ba3345ca5e72f498dc971adb4f25db6412527b2e7e34056dc72890a6d8
+	source = https://dl.modular.com/public/installer/deb/debian/pool/any-version/main/m/mo/modular_0.3.1/modular-v0.3.1-amd64.deb
+	sha256sums = a456c99e5f5e62d127b60a450feed6fa217bdd58621ee3204904cd6b1c693198
 
 pkgname = modular
