@@ -1,8 +1,8 @@
-# Maintainer: Kimiblock Moe <kimiblock at icloud dot com>
+# Maintainer: Kimiblock Moe
 pkgname=qcm-git
 pkgver=r97.3499c08
-pkgrel=1
-pkgdesc="Qt client for netease cloud music "
+pkgrel=2
+pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
 license=('GPL2')
@@ -45,6 +45,7 @@ makedepends=(
 provides=("qcm")
 source=('git+https://github.com/hypengw/Qcm.git')
 sha256sums=('SKIP')
+conflicts=("qcm")
 
 function pkgver(){
     cd Qcm
