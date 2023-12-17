@@ -3,7 +3,7 @@
 
 pkgbase=glslviewer-git
 pkgname=('glslviewer-git' 'glslviewer-examples-git')
-pkgver=2.1.2.r77.g99a990a
+pkgver=3.2.4.r4.gdb3def8
 pkgrel=1
 pkgdesc="Console-based GLSL Sandbox for 2D/3D shaders"
 arch=('i686' 'x86_64')
