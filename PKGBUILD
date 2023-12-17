@@ -3,9 +3,10 @@
 # Contributor: jtts
 # Contributor: Christian METZLER <neroth@xeked.com>
 pkgname=gnome-shell-extension-openweather-git
-_pkgbase=openweather
-pkgver=121.r11.g22859b4
+_pkgbase=gnome-shell-extension-openweather
+pkgver=r1268.9117377
 pkgrel=1
+epoch=1
 pkgdesc="Gnome shell extension for displaying weather information"
 arch=(any)
 url="https://github.com/toppk/gnome-shell-extension-openweather"
@@ -19,7 +20,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgbase"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

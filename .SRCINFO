@@ -1,8 +1,9 @@
 pkgbase = gnome-shell-extension-openweather-git
 	pkgdesc = Gnome shell extension for displaying weather information
-	pkgver = 121.r11.g22859b4
+	pkgver = r1268.9117377
 	pkgrel = 1
-	url = https://gitlab.com/skrewball/openweather
+	epoch = 1
+	url = https://github.com/toppk/gnome-shell-extension-openweather
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -10,7 +11,7 @@ pkgbase = gnome-shell-extension-openweather-git
 	depends = gnome-shell
 	provides = gnome-shell-extension-weather-git
 	conflicts = gnome-shell-extension-weather-git
-	source = openweather::git+https://gitlab.com/skrewball/openweather.git
+	source = git+https://github.com/toppk/gnome-shell-extension-openweather.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-openweather-git
