@@ -1,6 +1,6 @@
 pkgbase = kde-material-you-colors
 	pkgdesc = A script to generate Material You color schemes for KDE Plasma.
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/luisbocanegra/kde-material-you-colors
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = kde-material-you-colors
 	depends = python-dbus
 	depends = python-numpy
 	depends = python-material-color-utilities
-	source = kde-material-you-colors-1.6.0.zip::https://github.com/luisbocanegra/kde-material-you-colors/releases/download/v1.6.0/kde-material-you-colors-1.6.0.zip
-	sha256sums = b054f3e2308d77455e3c524c8e2e36e19be0e5737ef36998ce76ebf90758a8ca
+	source = kde-material-you-colors-1.7.0.zip::https://github.com/luisbocanegra/kde-material-you-colors/releases/download/v1.7.0/kde-material-you-colors-1.7.0.zip
+	sha256sums = 425a6bf3e6661de1f61876c446d0405a2a519657898defcffa53150c86afc686
 
 pkgname = kde-material-you-colors
