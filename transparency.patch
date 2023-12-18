@@ -1,7 +1,7 @@
-From 0b40c21d348fbd504e3090fb621e59b4158f1d29 Mon Sep 17 00:00:00 2001
+From 6585f325ad4267af079226e9a75b6b08f193130f Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
-Subject: [PATCH 1/4] Restore transparency
+Subject: [PATCH 01/16] Restore transparency
 
 The transparency settings were removed as a side effect of
 2bff4b63ed3ceef6055e35563e9b0b33ad57349d
@@ -46,7 +46,7 @@ index 882b251a..d34e8dc2 100644
  
    <!-- Keybinding settings -->
 diff --git a/src/preferences.ui b/src/preferences.ui
-index ca58c656..f3979307 100644
+index efc0ad0a..c24f3fea 100644
 --- a/src/preferences.ui
 +++ b/src/preferences.ui
 @@ -95,6 +95,11 @@
@@ -234,13 +234,13 @@ index 36eb7ce7..a41d2de2 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.42.0
+2.43.0
 
 
-From 6898335767d786626a3536514bf85e476fcf1c38 Mon Sep 17 00:00:00 2001
+From bd816ce81bb9bd80029dfc7eea7428f561665956 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
-Subject: [PATCH 2/4] window: Make the drawing robust across all themes
+Subject: [PATCH 02/16] window: Make the drawing robust across all themes
 
 There are lots of themes out there in the wild that do not specify a
 background-color for all widgets and the default is transparent. This
@@ -296,13 +296,13 @@ index a41d2de2..11d93419 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.42.0
+2.43.0
 
 
-From 492af874a74923da46ee2da77590bd95fcb52941 Mon Sep 17 00:00:00 2001
+From 8c1492323a375909ad6cf5245c812f1a8d7509ad Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
-Subject: [PATCH 3/4] screen, window: Extra padding around transparent
+Subject: [PATCH 03/16] screen, window: Extra padding around transparent
  terminals in Wayland
 
 https://bugzilla.redhat.com/show_bug.cgi?id=1207943
@@ -431,13 +431,14 @@ index 11d93419..61857bfe 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.42.0
+2.43.0
 
 
-From c0173fc91a5f1e7e7581e62e160d836e33f58db3 Mon Sep 17 00:00:00 2001
+From 5235c2c6b60738c81935a88591a2900acf830433 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
-Subject: [PATCH 4/4] Restore translations for setting a title and transparency
+Subject: [PATCH 11/16] Restore translations for setting a title and
+ transparency
 
 ---
  po/am.po          |   8 +-
@@ -455,7 +456,7 @@ Subject: [PATCH 4/4] Restore translations for setting a title and transparency
  po/bs.po          |  10 +
  po/ca.po          |  12 +
  po/ca@valencia.po |  12 +
- po/cs.po          |  12 +
+ po/cs.po          |  12 +-
  po/cy.po          |   8 +-
  po/da.po          |  12 +
  po/de.po          |  12 +
@@ -532,7 +533,7 @@ Subject: [PATCH 4/4] Restore translations for setting a title and transparency
  po/zh_CN.po       |  15 +-
  po/zh_HK.po       |  15 +-
  po/zh_TW.po       |  15 +-
- 92 files changed, 736 insertions(+), 883 deletions(-)
+ 92 files changed, 734 insertions(+), 885 deletions(-)
 
 diff --git a/po/am.po b/po/am.po
 index 3445d96d..ee992f07 100644
@@ -771,10 +772,10 @@ index 82ef0664..27e9877f 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/bg.po b/po/bg.po
-index b2c4e9d5..83ad8e14 100644
+index 499d7fb7..6cf7cda3 100644
 --- a/po/bg.po
 +++ b/po/bg.po
-@@ -2480,3 +2480,12 @@ msgstr "_Затваряне на този прозорец"
+@@ -2481,3 +2481,12 @@ msgstr "_Затваряне на този прозорец"
  #, c-format
  msgid "Failed to parse arguments: %s\n"
  msgstr "Аргументите не могат да бъдат анализирани: %s\n"
@@ -889,10 +890,10 @@ index 49e71085..87035529 100644
 +msgid "Set Title"
 +msgstr "Postavi naslov"
 diff --git a/po/ca.po b/po/ca.po
-index ae782d8f..f2484e69 100644
+index 82859f65..6d0b484e 100644
 --- a/po/ca.po
 +++ b/po/ca.po
-@@ -2511,3 +2511,15 @@ msgstr "Tanca la _finestra"
+@@ -2512,3 +2512,15 @@ msgstr "Tanca la _finestra"
  #, c-format
  msgid "Failed to parse arguments: %s\n"
  msgstr "Ha fallat l'anàlisi dels arguments: %s\n"
@@ -929,17 +930,18 @@ index a6e8fb42..c9ed8508 100644
 +msgid "Set Title"
 +msgstr "Estableix el títol"
 diff --git a/po/cs.po b/po/cs.po
-index 723fd2c4..48e53fb9 100644
+index 8f3d7dcc..65f5da9c 100644
 --- a/po/cs.po
 +++ b/po/cs.po
-@@ -2478,3 +2478,15 @@ msgstr "Selhala analýza argumentů: %s\n"
+@@ -2484,6 +2484,14 @@ msgstr "Selhala analýza argumentů: %s\n"
  
- #~ msgid "Georgian"
- #~ msgstr "Gruzínské"
-+
+ #~ msgid "Armenian"
+ #~ msgstr "Arménské"
 +msgid "Transparent background"
 +msgstr "Průsvitné pozadí"
-+
+ 
+-#~ msgid "Georgian"
+-#~ msgstr "Gruzínské"
 +msgid "Title"
 +msgstr "Záhlaví"
 +
@@ -995,10 +997,10 @@ index f3fbaec7..352fcf1c 100644
 +msgid "Transparent background"
 +msgstr "Gennemsigtig baggrund"
 diff --git a/po/de.po b/po/de.po
-index 988a392b..6a82f915 100644
+index e8abfa53..454da162 100644
 --- a/po/de.po
 +++ b/po/de.po
-@@ -2604,3 +2604,15 @@ msgstr "Einlesen der Argumente schlug fehl: %s\n"
+@@ -2613,3 +2613,15 @@ msgstr "Einlesen der Argumente schlug fehl: %s\n"
  
  #~ msgid "_Quit"
  #~ msgstr "_Beenden"
@@ -1202,10 +1204,10 @@ index 0e83b981..0d98ea57 100644
  #~ msgid "On the left side"
  #~ msgstr "Maldekstre"
 diff --git a/po/es.po b/po/es.po
-index fefea713..1cef08bf 100644
+index d59135a1..9fa46d54 100644
 --- a/po/es.po
 +++ b/po/es.po
-@@ -2946,17 +2946,17 @@ msgstr "Falló al analizar los argumentos: %s\n"
+@@ -2945,17 +2945,17 @@ msgstr "Falló al analizar los argumentos: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "Tamaño predeterminado:"
  
@@ -1229,7 +1231,7 @@ index fefea713..1cef08bf 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "Configuración regional actual"
-@@ -3783,8 +3783,8 @@ msgstr "Falló al analizar los argumentos: %s\n"
+@@ -3782,8 +3782,8 @@ msgstr "Falló al analizar los argumentos: %s\n"
  #~ msgid "_Solid color"
  #~ msgstr "Color _sólido"
  
@@ -1252,10 +1254,10 @@ index 4b1c2a7c..77076116 100644
 +msgid "Transparent background"
 +msgstr "Läbipaistev taust"
 diff --git a/po/eu.po b/po/eu.po
-index 05484111..7f93de46 100644
+index def9dff3..71ec9df4 100644
 --- a/po/eu.po
 +++ b/po/eu.po
-@@ -2391,3 +2391,15 @@ msgstr "Huts egin du argumentuak analizatzean: %s\n"
+@@ -2400,3 +2400,15 @@ msgstr "Huts egin du argumentuak analizatzean: %s\n"
  
  #~ msgid "_Detach Tab"
  #~ msgstr "_Desuztartu fitxa"
@@ -1272,10 +1274,10 @@ index 05484111..7f93de46 100644
 +msgid "Transparent background"
 +msgstr "Atzeko plano gardena"
 diff --git a/po/fa.po b/po/fa.po
-index bf738bca..352d7365 100644
+index e3a35ae3..e4f135f8 100644
 --- a/po/fa.po
 +++ b/po/fa.po
-@@ -2818,8 +2818,11 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
+@@ -2819,8 +2819,11 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
  #~ msgid "_Font:"
  #~ msgstr "_قلم:"
  
@@ -1289,7 +1291,7 @@ index bf738bca..352d7365 100644
  
  #~ msgid "When terminal commands set their o_wn titles:"
  #~ msgstr "وقتی که فرمان‌های پایانه عنوان‌های _خودشان را تنظیم می‌کنند:"
-@@ -2833,8 +2836,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
+@@ -2834,8 +2837,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
  #~ msgid "_Unlimited"
  #~ msgstr "_نامحدود"
  
@@ -1300,7 +1302,7 @@ index bf738bca..352d7365 100644
  
  #~ msgid "Switch to Tab 3"
  #~ msgstr "تعویض به زبانه‌ی ۳"
-@@ -2875,5 +2878,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
+@@ -2876,5 +2879,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
  #~ msgid "_Input Methods"
  #~ msgstr "روش‌های _ورودی"
  
@@ -1312,10 +1314,10 @@ index bf738bca..352d7365 100644
 +msgid "Transparent background"
 +msgstr "پس‌زمینه‌ی شفاف"
 diff --git a/po/fi.po b/po/fi.po
-index 28f05dbd..ba5995c9 100644
+index 30e6d7cf..de92a033 100644
 --- a/po/fi.po
 +++ b/po/fi.po
-@@ -2782,9 +2782,21 @@ msgstr "Virhe tulkittaessa argumentteja: %s\n"
+@@ -2808,9 +2808,21 @@ msgstr "Virhe tulkittaessa argumentteja: %s\n"
  #~ msgid "_Update login records when command is launched"
  #~ msgstr "_Päivitä kirjautumistallenne kun komento käynnistetään"
  
@@ -1490,10 +1492,10 @@ index 76b459cf..485beeac 100644
  #~ msgid "No such profile \"%s\", using default profile\n"
  #~ msgstr "\"%s\" જેવી કોઈ રૂપરેખા નથી, મૂળભૂત રૂપરેખા વાપરી રહ્યા છે\n"
 diff --git a/po/he.po b/po/he.po
-index 8c1c6012..e198baff 100644
+index 0950c6be..5cbaddb9 100644
 --- a/po/he.po
 +++ b/po/he.po
-@@ -2818,17 +2818,17 @@ msgstr "Failed to parse arguments: %s\n"
+@@ -2828,17 +2828,17 @@ msgstr "Failed to parse arguments: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "גודל בררת מחדל:"
  
@@ -1517,7 +1519,7 @@ index 8c1c6012..e198baff 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "השפה הנוכחית"
-@@ -3642,8 +3642,8 @@ msgstr "Failed to parse arguments: %s\n"
+@@ -3650,8 +3650,8 @@ msgstr "Failed to parse arguments: %s\n"
  #~ msgid "_Solid color"
  #~ msgstr "צבע _אחיד"
  
@@ -1596,10 +1598,10 @@ index aa384812..4a28d9ae 100644
 +msgid "Set Title"
 +msgstr "Postavi naslov"
 diff --git a/po/hu.po b/po/hu.po
-index d09d6ece..8911e09d 100644
+index 1aac3640..ba21739b 100644
 --- a/po/hu.po
 +++ b/po/hu.po
-@@ -2483,3 +2483,15 @@ msgstr "_Ablak bezárása"
+@@ -2486,3 +2486,15 @@ msgstr "_Ablak bezárása"
  #, c-format
  msgid "Failed to parse arguments: %s\n"
  msgstr "A paraméterek feldolgozása meghiúsult: %s\n"
@@ -1642,10 +1644,10 @@ index aaf2d9b2..4d466f16 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/id.po b/po/id.po
-index 28527487..2cff39a2 100644
+index c5deea8b..7de90500 100644
 --- a/po/id.po
 +++ b/po/id.po
-@@ -2500,3 +2500,15 @@ msgstr "Gagal mengurai argumen: \"%s\"\n"
+@@ -2509,3 +2509,15 @@ msgstr "Gagal mengurai argumen: \"%s\"\n"
  
  #~ msgid "_Detach Tab"
  #~ msgstr "_Pisahkan Tab"
@@ -1702,10 +1704,10 @@ index ab72bc42..690281a6 100644
 +msgid "Set Title"
 +msgstr "タイトルを設定する"
 diff --git a/po/ka.po b/po/ka.po
-index 6d5c2b62..a2d0ef3a 100644
+index ed2d747e..abd30d4b 100644
 --- a/po/ka.po
 +++ b/po/ka.po
-@@ -177,6 +177,11 @@ msgstr "პროფილის ადამიანისთვის-სა
+@@ -179,6 +179,11 @@ msgstr "პროფილის ადამიანისთვის-სა
  msgid "Human-readable name of the profile."
  msgstr "პროფილის ადამიანისთვის-სასიამოვნო წასაკითხი სახელი."
  
@@ -1836,10 +1838,10 @@ index bc2bb7f0..d2a83a00 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/lt.po b/po/lt.po
-index 20f4a6c1..ace70da0 100644
+index 8473eef9..9a242ad2 100644
 --- a/po/lt.po
 +++ b/po/lt.po
-@@ -2795,3 +2795,15 @@ msgstr "Nepavyko apdoroti argumentų: %s\n"
+@@ -2796,3 +2796,15 @@ msgstr "Nepavyko apdoroti argumentų: %s\n"
  
  #~ msgid "Whether to use a dark theme variant"
  #~ msgstr "Ar naudoti tamsų temos variantą"
@@ -2140,10 +2142,10 @@ index 992d7bad..7c560b83 100644
  #~ msgid "text/plain dropped on terminal had wrong format (%d) or length (%d)\n"
  #~ msgstr "टर्मिनलमा छोडिएको पाठ/सादा गलत ढाँचा (%d) वा लम्बाइ (%d)को थियो\n"
 diff --git a/po/nl.po b/po/nl.po
-index 91320a33..38a58507 100644
+index d7f15cc8..7383215f 100644
 --- a/po/nl.po
 +++ b/po/nl.po
-@@ -2831,3 +2831,15 @@ msgstr "Argumenten ontleden is mislukt: %s\n"
+@@ -2840,3 +2840,15 @@ msgstr "Argumenten ontleden is mislukt: %s\n"
  
  #~ msgid "_Add or Remove…"
  #~ msgstr "_Toevoegen of verwijderen…"
@@ -2397,10 +2399,10 @@ index 627aea90..14d04172 100644
  #~ msgid "_Unlimited"
  #~ msgstr "_Neliminat"
 diff --git a/po/ru.po b/po/ru.po
-index e563cb75..d3fabaca 100644
+index 038243fb..143aa084 100644
 --- a/po/ru.po
 +++ b/po/ru.po
-@@ -2771,3 +2771,19 @@ msgstr "Не удалось разобрать аргументы: %s\n"
+@@ -2781,3 +2781,19 @@ msgstr "Не удалось разобрать аргументы: %s\n"
  
  #~ msgid "_Add or Remove…"
  #~ msgstr "_Добавить или удалить…"
@@ -2488,10 +2490,10 @@ index e6745075..20d303c8 100644
 +msgid "Set Title"
 +msgstr "Nastaviť titulok"
 diff --git a/po/sl.po b/po/sl.po
-index 796c3a09..a8344029 100644
+index eeb90d91..e49a4879 100644
 --- a/po/sl.po
 +++ b/po/sl.po
-@@ -2461,557 +2461,14 @@ msgstr "_Zapri okno"
+@@ -2462,557 +2462,14 @@ msgstr "_Zapri okno"
  msgid "Failed to parse arguments: %s\n"
  msgstr "Napaka med razčlenjevanjem argumentov: %s\n"
  
@@ -3084,10 +3086,10 @@ index 158f6cb1..a3494fb7 100644
  #: ../src/gnome-terminal.glade2.h:86
  msgid "_Update login records when command is launched"
 diff --git a/po/sr.po b/po/sr.po
-index 27180ac4..2ce5be41 100644
+index 25b5d6b9..c625b185 100644
 --- a/po/sr.po
 +++ b/po/sr.po
-@@ -2805,10 +2805,9 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
+@@ -2804,10 +2804,9 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  #~ msgid "GNOME Terminal Client"
  #~ msgstr "Клијент Гномовог терминала"
  
@@ -3101,7 +3103,7 @@ index 27180ac4..2ce5be41 100644
  
  #~ msgid "Title for terminal"
  #~ msgstr "Наслов за терминал"
-@@ -2854,11 +2853,11 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
+@@ -2853,11 +2852,11 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "Основна величина:"
  
@@ -3117,7 +3119,7 @@ index 27180ac4..2ce5be41 100644
  
  #~ msgid "Title and Command"
  #~ msgstr "Наслов и наредба"
-@@ -2866,8 +2865,8 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
+@@ -2865,8 +2864,8 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  #~ msgid "_Unlimited"
  #~ msgstr "_Неограничено"
  
@@ -3128,7 +3130,7 @@ index 27180ac4..2ce5be41 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "Текући локалитет"
-@@ -2877,3 +2876,6 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
+@@ -2876,3 +2875,6 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  
  #~ msgid "Hidden"
  #~ msgstr "Скривен"
@@ -3188,10 +3190,10 @@ index 45dbad07..852c47cc 100644
 +msgid "Transparent background"
 +msgstr "Providna pozadina"
 diff --git a/po/sv.po b/po/sv.po
-index 74890c35..5abf9fa1 100644
+index ce79cba7..03420a66 100644
 --- a/po/sv.po
 +++ b/po/sv.po
-@@ -2800,5 +2800,17 @@ msgstr "Misslyckades med att tolka argument: %s\n"
+@@ -2810,5 +2810,17 @@ msgstr "Misslyckades med att tolka argument: %s\n"
  #~ msgid "Unknown completion request for \"%s\""
  #~ msgstr "Okänd kompletteringsbegäran för \"%s\""
  
@@ -3424,10 +3426,10 @@ index 63263749..496da331 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/tr.po b/po/tr.po
-index a5024ead..95834a7e 100644
+index 371873b2..61f658db 100644
 --- a/po/tr.po
 +++ b/po/tr.po
-@@ -2465,3 +2465,15 @@ msgstr "_Pencereyi Kapat"
+@@ -2467,3 +2467,15 @@ msgstr "_Pencereyi Kapat"
  #, c-format
  msgid "Failed to parse arguments: %s\n"
  msgstr "Bağımsız değişkenler ayrıştırılamadı: %s\n"
@@ -3459,10 +3461,10 @@ index 313f76b9..be608976 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/uk.po b/po/uk.po
-index 74140f17..6dfb6d5f 100644
+index 6484716b..de2b483d 100644
 --- a/po/uk.po
 +++ b/po/uk.po
-@@ -2481,3 +2481,18 @@ msgstr "Не вдається визначити аргументи: %s\n"
+@@ -2491,3 +2491,18 @@ msgstr "Не вдається визначити аргументи: %s\n"
  
  #~ msgid "Georgian"
  #~ msgstr "Грузинське"
@@ -3705,5 +3707,4 @@ index 80cb2343..20e2a93c 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.42.0
-
+2.43.0
