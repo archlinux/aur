@@ -3,12 +3,12 @@
 
 pkgname=starfield-mod-loader-bin
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple mod manager for Starfield that supports both Steam and Game Pass versions of the game."
 arch=('x86_64')
 url="https://github.com/lVlyke/starfield-mod-loader"
 license=('GPL3')
-depends=('nodejs' '7-zip')
+depends=('nodejs' 'p7zip')
 source=("https://github.com/lVlyke/starfield-mod-loader/releases/download/v${pkgver}/starfield-mod-loader-linux-x64_${pkgver}.7z"
 				'starfield-mod-loader.sh')
 sha256sums=('0d70bba8f1534741c4c41c86c9954a6c9b241b2e52777ef73ea98b7c27408e48'
