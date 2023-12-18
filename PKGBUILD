@@ -22,6 +22,26 @@ pkgver() {
 }
 
 prepare() {
+  if ! command -v asdf &> /dev/null
+  then
+    echo "asdf could not be found"
+    echo "Configuring asdf..."
+
+    if [[ $SHELL == *"bash"* ]]; then
+      echo -e "\n. $HOME/.asdf/asdf.sh" >> ~/.bashrc
+      echo -e "\n. $HOME/.asdf/completions/asdf.bash" >> ~/.bashrc
+    elif [[ $SHELL == *"zsh"* ]]; then
+      echo -e "\n. $HOME/.asdf/asdf.sh" >> ~/.zshrc
+      echo -e "\n. $HOME/.asdf/completions/asdf.bash" >> ~/.zshrc
+    else
+      echo "Unsupported shell. Please add asdf to your shell's initialization file manually."
+      exit 1
+    fi
+
+    source $HOME/.asdf/asdf.sh
+  fi
+
+  asdf install
   asdf install
   cd "$srcdir/$pkgname"
   yarn install
