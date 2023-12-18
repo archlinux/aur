@@ -6,52 +6,68 @@
 
 pkgname=obs-studio-av1
 pkgver=30.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open source software for live streaming and recording. With AV1, Websocket, and Browser Source support."
 arch=('x86_64')
 url="https://obsproject.com"
 license=('GPL2')
 depends=(
+  'curl'
   'ffmpeg'
+  'gtk-update-icon-cache'
+  'jack'
   'jansson'
+  'libajantv2'
+  'libdatachannel'
+  'librist'
   'libxinerama'
   'libxkbcommon-x11'
   'mbedtls'
-  'rnnoise'
+  'onevpl'
   'pciutils'
   'qt6-svg'
-  'curl'
-  'jack'
-  'gtk-update-icon-cache'
-  'pipewire'
-  'libxcomposite'
+  'rnnoise'
+  'speexdsp'
 
   # Deps of Websocket plugin
   'qrcodegencpp-cmake'
 )
 makedepends=(
   'cmake'
+  'git'
   'libfdk-aac'
-  'x264'
-  'swig'
-  'python'
+  'libxcomposite'
   'luajit'
+  'pipewire'
+  'python'
+  'qt6-wayland'
   'sndio'
+  'swig'
+  'vlc'
+  'wayland'
+  'x264'
+  'xdg-desktop-portal'
 
   # Deps of Websocket plugin
   'nlohmann-json'
   'websocketpp'
+  'asio'
 
   # Deps of Browser plugin
   'cef-minimal-obs-bin'
 )
 optdepends=('libfdk-aac: FDK AAC codec support'
-            'libva-intel-driver: hardware encoding'
-            'libva-mesa-driver: hardware encoding'
+            'libva-intel-driver: ffmpeg hardware encoding'
+            'libva-mesa-driver: ffmpeg hardware encoding'
+            'libxcomposite: xcomposite capture support'
             'luajit: scripting support'
+            'onevpl-intel-gpu: quicksync hardware Encoding'
+            'pipewire: pipewire capture support'
             'python: scripting support'
             'sndio: Sndio input client'
-            'v4l2loopback-dkms: virtual camera support')
+            'v4l2loopback-dkms: virtual camera support'
+            'vlc: vlc media source support'
+            'xdg-desktop-portal: pipewire capture support')
 provides=("obs-studio=$pkgver" "obs-websocket" "obs-browser")
 conflicts=("obs-studio" "obs-websocket" "obs-browser" "obs-linuxbrowser")
 source=("obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
