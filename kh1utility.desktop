@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=KH1-Utility
+Name[en_US]=KH1-Utility
+Comment=Elecraft KH1 Control Utility
+Comment[en_US]=Elecraft KH1 Control Utility
+Exec=kh1utility
+Icon=kh1utility
+MimeType=text/plain
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Network;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
