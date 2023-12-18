@@ -1,14 +1,15 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Frederik Schwan <freswa at archlinux dot org>
-# Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
-# Contributor: Boyan Ding <stu_dby@126.com>
+# Maintainer: Aviana Cruz <gwencroft[at]proton[dot]me>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Frederik Schwan <freswa[at]archlinux[dot]org>
+# Contributor: Guillaume ALAUX <guillaume[at]archlinux[dot]org>
+# Contributor: Boyan Ding <stu_dby[at]126[dot]com>
 
 pkgname=jdk8-dragonwell-extended
 
 _majorver=8
-_minorver=15
-_updatever=16
-_jdk_updatever=372
+_minorver=16
+_updatever=17
+_jdk_updatever=382
 pkgver=${_majorver}.${_minorver}.${_updatever}
 pkgrel=1
 arch=('x86_64')
@@ -24,7 +25,7 @@ install="${pkgname}.install"
 options=(!lto)
 source=("${url}/archive/refs/tags/dragonwell-extended-${pkgver}_jdk${_majorver}u${_jdk_updatever}-ga.tar.gz"
   gcc11.patch)
-b2sums=('70a5ccd3c6bb6eb66578723158b283793cadefe2a84e03e015acefb4c75ab7efeb0aab8612abe9010fc8d80b3c5618f0620060352b51cece433a730690924ab6'
+b2sums=('a0e9968ccde391365aae323a461980aaca9467818de5b63a7ba032ac38486c3f258a99e4c2581384cb02350596d1300694b094ab91d81aeb3f827746045307ce'
   '9679e4dfb6027a87376081489c09810812d6849573afac4ea96abe3a3e00ca5b6af7d0ffb010c43b93cfa913f9e97fbb9f11e19fcc86a89b4548442671c32da1')
 
 _jdkname='openjdk8'
