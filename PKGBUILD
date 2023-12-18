@@ -3,18 +3,17 @@
 _pkgname=svUnit
 _pkgver=1.0.6
 pkgname=r-${_pkgname,,}
-pkgver=1.0.6
-pkgrel=4
+pkgver=${_pkgver//-/.}
+pkgrel=7
 pkgdesc="'SciViews' - Unit, Integration and System Testing"
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL2)
 depends=(
   r
 )
 optdepends=(
   r-covr
-  r-datasets
   r-knitr
   r-markdown
   r-runit
@@ -23,14 +22,15 @@ optdepends=(
   r-xml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('263e6c03d6c2717dfd25b96d25f8019c9c98120de280a17224e0d79adba2d522')
+md5sums=('e8f7bd4037adb70a469f3076f8015e91')
+b2sums=('d42f74f6dcee8c99ff2cb5456f61cae4d481872e1e42a837c520e204fb146849949d2cb1681d5ab0253f639ff1b8f62fc418ae3a6f86e8de2eb9e06a791ce7fa')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
