@@ -4,7 +4,7 @@
 pkgname=ariang-allinone-bin
 _pkgname=ariang-allinone
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern web frontend making aria2 easier to use. (Use precompiled all-in-one version)"
 arch=('any')
 url="https://github.com/mayswind/AriaNg"
@@ -13,14 +13,14 @@ depends=('xdg-utils')
 makedepends=('unzip')
 conflicts=("${_pkgname}")
 
-source=("${_pkgname}.zip::https://github.com/mayswind/AriaNg/releases/download/${pkgver}/AriaNg-${pkgver}-AllInOne.zip"
+source=("${_pkgname}-${pkgver}.zip::https://github.com/mayswind/AriaNg/releases/download/${pkgver}/AriaNg-${pkgver}-AllInOne.zip"
         "${_pkgname}.desktop"
         "${_pkgname}.sh"
         "favicon.png::https://raw.githubusercontent.com/mayswind/AriaNg/master/src/favicon.png"
         "tileicon.png::https://raw.githubusercontent.com/mayswind/AriaNg/master/src/tileicon.png"
         "touchicon.png::https://raw.githubusercontent.com/mayswind/AriaNg/master/src/touchicon.png")
 
-noextract=("${_pkgname}.zip")
+noextract=("${_pkgname}-${pkgver}.zip")
 
 b2sums=('5698d35c143304a35d4e2427f9859acebb09b595f2e8fc6207b9df25300c4bd7025c2043f35781a58cef740c0581f65a901de16a705e5c38f6679253d99db63f'
         '75f9cd947d78ff94a20104cc2d138d82fdb47d8ba994292b27bf88f5e9a5204e989af39a738821bd4dfb500b63e45103cf70ddddc7523e3175b53652241c4701'
@@ -30,7 +30,7 @@ b2sums=('5698d35c143304a35d4e2427f9859acebb09b595f2e8fc6207b9df25300c4bd7025c204
         'e89df0504e8252bcd96866b04ab12a9783f419089357d0cc67022884c515e29423502aa299e8bf522b88a18bbf5caadd4ea0d0014820a355da5ecca23e365c3a')
 
 prepare() {
-    unzip -o "${_pkgname}.zip"
+    unzip -o "${_pkgname}-${pkgver}.zip"
 }
 
 package() {
