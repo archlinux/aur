@@ -1,14 +1,14 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _reponame=Shipwright
-#_lus_commit=4600eedcc18f496319c99e07b8b2b4f11a0f6e64
-_lus_tag=1.4.0
+_lus_commit=b4abd7c366b1fb38b2cd80ffb91e129035bee0ea
+#_lus_tag=1.4.0
 _ZAPDTR_commit=eff29036118349e142ee8efca80fd975a2a2b6ff
 _OTRExporter_commit=04b85b95fab07a394b62dcd28a502a3040f08e0c
 
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=8.0.3
+pkgver=8.0.4
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
@@ -17,13 +17,13 @@ _depends_soh_otr_exporter=("libpng")
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost")
 source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_reponame}/archive/refs/tags/${pkgver}.tar.gz"
-        #"libultraship-${_lus_commit:0:8}.tar.gz::https://github.com/Kenix3/libultraship/archive/${_lus_commit}.tar.gz"
-        "libultraship-${_lus_tag}.tar.gz::https://github.com/Kenix3/libultraship/archive/refs/tags/${_lus_tag}.tar.gz"
-        "ZAPDTR-${_ZAPDTR_commit}.tar.gz::https://github.com/HarbourMasters/ZAPDTR/archive/${_ZAPDTR_commit}.tar.gz"
-        "OTRExporter-${_OTRExporter_commit}.tar.gz::https://github.com/HarbourMasters/OTRExporter/archive/${_OTRExporter_commit}.tar.gz"
+        "libultraship-${_lus_commit:0:8}.tar.gz::https://github.com/Kenix3/libultraship/archive/${_lus_commit}.tar.gz"
+        #"libultraship-${_lus_tag}.tar.gz::https://github.com/Kenix3/libultraship/archive/refs/tags/${_lus_tag}.tar.gz"
+        "ZAPDTR-${_ZAPDTR_commit:0:8}.tar.gz::https://github.com/HarbourMasters/ZAPDTR/archive/${_ZAPDTR_commit}.tar.gz"
+        "OTRExporter-${_OTRExporter_commit:0:8}.tar.gz::https://github.com/HarbourMasters/OTRExporter/archive/${_OTRExporter_commit}.tar.gz"
         "soh.desktop")
-sha256sums=('5503941cb38deae00939b257d1c80ff2196d8e22a5a3b5911ffc657e15959576'
-            '13f3cfa827fb42fbf68356bca2211c789d58376a053f647191873b283d9ef4bc'
+sha256sums=('b590b7caffc7435cbed49d2570a49ba3c2e42888cd116a45d98e4e42efa9825b'
+            'b04c2e1a0959c027b7f1ad7c1fddebf15e8a40df9f400b8209d98d7803c612d8'
             '6438cd1c7abad6ea9b65326892a1b220384bdce78e9d1a324c132d68c982111c'
             '5f5ff0a0eb7f5536c9076dd777d3914c4b2e064c7a22303a24c1a4a9ed7d462f'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2')
@@ -43,8 +43,8 @@ prepare() {
   cd "${srcdir}/${_reponame}-${pkgver}"
 
   rm -r libultraship ZAPDTR OTRExporter
-  #cp -r ../libultraship-${_lus_commit:0:8} libultraship
-  cp -r ../libultraship-${_lus_tag} libultraship
+  cp -r ../libultraship-${_lus_commit} libultraship
+  #cp -r ../libultraship-${_lus_tag} libultraship
   cp -r ../ZAPDTR-${_ZAPDTR_commit} ZAPDTR
   cp -r ../OTRExporter-${_OTRExporter_commit} OTRExporter
 
