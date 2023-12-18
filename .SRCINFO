@@ -49,6 +49,7 @@ pkgbase = wine-wow64-git
 	conflicts = wine
 	options = staticlibs
 	options = !lto
+	backup = usr/lib/binfmt.d/wine.conf
 	source = wine::git+https://gitlab.winehq.org/wine/wine.git
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf

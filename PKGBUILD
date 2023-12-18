@@ -75,6 +75,8 @@ _main_package() {
 
   options=(staticlibs !lto)
 
+  backup=("usr/lib/binfmt.d/wine.conf")
+
   # provides/depends
   _pkgdep="$pkgname"
   if [[ "$_pkgdep" =~ .*staging-wow64.* ]] ; then
