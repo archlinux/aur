@@ -1,7 +1,7 @@
 pkgbase = aliyun-adrive-bin
 	pkgdesc = Aliyun aDrive阿里云盘
 	pkgver = 4.9.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aliyundrive.com
 	arch = x86_64
 	license = custom

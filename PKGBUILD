@@ -2,12 +2,16 @@
 pkgname=aliyun-adrive-bin
 pkgver=4.9.16
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="Aliyun aDrive阿里云盘"
 arch=('x86_64')
 url="https://www.aliyundrive.com"
 license=('custom')
-conflicts=("${pkgname%-bin}" "deepin-wine-adrive" "adrive")
+conflicts=(
+    "${pkgname%-bin}"
+    "deepin-wine-adrive"
+    "adrive"
+)
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
@@ -37,7 +41,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/tmp/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/tmp/resources/"{app.asar.unpacked,resource} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar.unpacked/resource/common/icon@512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/tmp/\$TEMP/aDriveSetup/res/form/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
