@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -68,7 +68,7 @@ _libvpxver=1.13
 _srtver=1.5
 _svtav1ver=1.7
 _vidstabver=1.1.1
-_vmafver=2
+_vmafver=3
 _vulkanver=1.3.240
 _x264ver=0.164
 _x265ver=3.5
