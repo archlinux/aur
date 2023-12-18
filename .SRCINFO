@@ -1,0 +1,45 @@
+pkgbase = icu74
+	pkgdesc = International Components for Unicode library (legcy version ${_pkgmainver}).
+	pkgver = 74.2
+	pkgrel = 1
+	url = http://www.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:icu
+	makedepends = clang
+	makedepends = make
+	makedepends = patch
+	makedepends = python
+	depends = gcc-libs
+	depends = glibc
+	provides = libicudata.so=74
+	provides = libicui18n.so=74
+	provides = libicuio.so=74
+	provides = libicutest.so=74
+	provides = libicutu.so=74
+	provides = libicuuc.so=74
+	conflicts = icu=74
+	conflicts = icu=74.0
+	conflicts = icu=74.1
+	conflicts = icu=74.2
+	conflicts = icu=74.3
+	conflicts = icu=74.4
+	conflicts = icu=74.5
+	conflicts = icu=74.6
+	conflicts = icu=74.7
+	conflicts = icu=74.8
+	conflicts = icu=74.9
+	conflicts = libicudata.so=74
+	conflicts = libicui18n.so=74
+	conflicts = libicuio.so=74
+	conflicts = libicutest.so=74
+	conflicts = libicutu.so=74
+	conflicts = libicuuc.so=74
+	source = https://github.com/unicode-org/icu/releases/download/release-74-2/icu4c-74_2-src.tgz
+	source = https://github.com/unicode-org/icu/raw/main/LICENSE
+	md5sums = 342c8bebe704ec96df8bd6bd7040af1c
+	md5sums = SKIP
+	sha256sums = 5e4fb11d6a3e6b85afb55de8da8a71538f1d8fd64fce893986b37d60e5bb0091
+	sha256sums = SKIP
+
+pkgname = icu74
