@@ -7,8 +7,8 @@
 _pkgname=xdg-utils
 pkgname=$_pkgname-mimeo
 # https://gitlab.freedesktop.org/xdg/xdg-utils/commits/master
-_commit=21fb316bea83e3374eafc7fbf1e25a0ccdda92cb # master # 2023-11-15
-pkgver=1.2.0+beta1+17+g21fb316
+_commit=0f49cf5d7956076fccd599d82b85946e5e49d473 # master # 2023-12-04
+pkgver=1.2.0r25+g0f49cf5
 pkgrel=1
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo"
 arch=('any')
@@ -34,7 +34,9 @@ sha256sums=('5f412ee7aecfbdc49bf5a3602e7da23c1ab626755ed074025733ff785348b66c'
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  #git describe --tags | sed 's/^v//;s/-/+/g'
+  # filter tag to avoid need for epoch when the release happens
+  git describe --tags | sed 's/^v//;s/-beta1-/r/;s/-/+/g'
 }
 
 prepare() {
