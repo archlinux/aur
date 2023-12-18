@@ -2,7 +2,7 @@
 
 pkgname=python-torchmetrics
 _pkgname=torchmetrics
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Machine learning metrics for distributed, scalable PyTorch applications'
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/PyTorchLightning/metrics/releases/download/v${pkgver}/torchmetrics-${pkgver}.tar.gz"
 )
-sha512sums=('6ce642bf67d8455203c39154c75e6fc16fb4c26654fef54007f64fea16bba3dbb13df1690f2c6eb234076002cc96b980b633d31df89a67a728bc10ab88c3bf03')
+sha512sums=('017d2262d3018687efdb72578bd01ec79c1133867927e70e058ebdf5a0a34748b952ea6742f0b4762f1ddf7a5edbc9988dc4b56d92e516acdac1c74225ebeca1')
 
 build() {
   cd "${_pkgname}-${pkgver}"
