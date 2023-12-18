@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=advanced-passgen-bin
-pkgver=2.4.3
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Advanced Password Generator"
 arch=('x86_64')
 url="https://codedead.com/software/advanced-passgen"
@@ -20,7 +20,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
-sha256sums=('0f2e04442077d1ece8dd9e1a868d3e6d3317dbbd2c319d635d3d42a6bd70528f')
+sha256sums=('3c17183e9e3224f6e59d12ed07adc07ace9ac8cf2df9bed9fc1e4ddac75ee0a1')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
 }
