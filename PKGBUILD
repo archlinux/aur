@@ -2,7 +2,7 @@
 
 pkgname=hcclient
 pkgver=1.18.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A terminal client for hack.chat"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
@@ -20,15 +20,16 @@ build() {
                      src/hcclient/config.py \
                      src/hcclient/formatter.py \
                      src/hcclient/hook.py
-  python -m venv .venv
-  poetry install -v -n --no-ansi --compile
-  ./.venv/bin/pip uninstall setuptools pip -y --quiet
-  rm .venv/bin/{activate*,Activate*}
+  python -m venv iso-env
+  poetry build -f wheel --no-ansi --no-interaction --no-cache
+  ./iso-env/bin/pip install --disable-pip-version-check --no-color dist/*.whl 
+  ./iso-env/bin/pip uninstall setuptools pip -y --quiet
+  rm iso-env/bin/{activate*,Activate*}
 }
 
 package() {
   install -Dm755 "${srcdir}/hcclient-${pkgver}/scripts/arch_entry.py" "${pkgdir}/usr/bin/hcclient"
   mkdir "${pkgdir}/opt"
-  cp -a "${srcdir}/hcclient-${pkgver}/.venv" "${pkgdir}/opt/hcclient"
+  cp -a "${srcdir}/hcclient-${pkgver}/iso-env" "${pkgdir}/opt/hcclient"
   install -Dm644 "${srcdir}/hcclient-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/hcclient/LICENSE"
 }
