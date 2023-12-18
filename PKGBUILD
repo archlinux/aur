@@ -1,6 +1,6 @@
 # Maintainer: Robert Labudda <contact+aur-pter@vonshednob.cc>
 pkgname="pter"
-pkgver='3.11.3'
+pkgver='3.11.4'
 pkgrel='1'
 pkgdesc="Console UI to manage your todo.txt file(s)"
 url="https://codeberg.org/vonshednob/${pkgname}/"
@@ -14,7 +14,7 @@ makedepends=('python-setuptools'
              'python-installer'
              'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('98c2028db28f7b461a8376298b7123ed8042e23d13031c5f18a8303d3a7bb67d')
+sha256sums=('4a417ee4ed52392ce5bd743d5c6e0233ebbac06af617b6eb9fb49b1ef290450f')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -30,6 +30,10 @@ package() {
     # license
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # Fix broken man-page installation
+    mkdir -p "${pkgdir}/usr/share/man/man5"
+    mv "${pkgdir}/usr/share/man/man1/pter.config.5" "${pkgdir}/usr/share/man/man5/"
 
     # remove QT UI launcher
     rm -f "${pkgdir}/usr/bin/qpter"
