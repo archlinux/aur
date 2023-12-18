@@ -12,6 +12,7 @@ url="https://github.com/cloudsftp/reSnap"
 arch=('any')
 license=('MIT')
 depends=('openssh' 'ffmpeg' 'lz4' 'feh')
+makedepends=('git')
 source=("git+https://github.com/cloudsftp/reSnap.git")
 md5sums=('SKIP')
 
