@@ -7,7 +7,7 @@
 
 pkgname=opencv2
 pkgver=2.4.13.7
-pkgrel=4
+pkgrel=5
 pkgdesc='Open Source Computer Vision Library (version 2.x)'
 arch=('x86_64')
 license=('BSD')
@@ -62,7 +62,7 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    install -d -m755 "${pkgdir}/usr"/{bin,include,lib/{cmake,pkgconfig}}
+    install -d -m755 "${pkgdir}/usr"/{bin,include,lib/pkgconfig}
     install -D -m644 "opencv-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s ../../../opt/opencv2/lib/pkgconfig/opencv.pc "${pkgdir}/usr/lib/pkgconfig/opencv2.pc"
     ln -s ../../../opt/opencv2/lib/pkgconfig/opencv.pc "${pkgdir}/usr/lib/pkgconfig/opencv.pc"
