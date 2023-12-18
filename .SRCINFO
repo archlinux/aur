@@ -1,11 +1,10 @@
 pkgbase = java17-jetbrains
-	pkgver = 17.0.2.b315.1
+	pkgver = 17.0.9.b1087.9
 	pkgrel = 1
 	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
 	arch = x86_64
 	license = custom
 	makedepends = java-environment=17
-	makedepends = java-environment=11
 	makedepends = cpio
 	makedepends = unzip
 	makedepends = zip
@@ -30,21 +29,13 @@ pkgbase = java17-jetbrains
 	makedepends = harfbuzz
 	makedepends = gcc-libs
 	makedepends = glibc
-	makedepends = ant
+	makedepends = jcef-jetbrains
 	makedepends = git
-	makedepends = rsync
-	makedepends = cmake
-	makedepends = python
-	makedepends = at-spi2-atk
-	makedepends = libxkbcommon
-	makedepends = libxcomposite
-	makedepends = mesa
-	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#commit=609406c21b1151d27869472d8ff3af8b02546d44
-	source = git+https://github.com/JetBrains/jcef.git#commit=316db138ea00b1a814f92e3d2f853320e8ce73b5
+	options = !lto
+	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jb17.0.9-b1087.9
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 3d5ab2d5eaa994377de0554de5e59596f1fc7ab773e02d84aee83a568042b5ec
 	sha256sums = 442d17b0de7ddd4c49a392f4ccc60f3378b9cf54908081b802d98b89597b3ab8
@@ -57,17 +48,27 @@ pkgname = jre17-jetbrains
 	depends = ca-certificates-utils
 	depends = nss
 	depends = libjpeg-turbo
+	depends = libjpeg.so
 	depends = lcms2
+	depends = liblcms2.so
 	depends = libnet
 	depends = freetype2
+	depends = libfreetype.so
+	depends = harfbuzz
+	depends = libharfbuzz.so
+	depends = glibc
+	depends = gcc-libs
 	depends = giflib
+	depends = libgif.so
+	depends = libpng
+	depends = jcef-jetbrains
 	optdepends = java-rhino: for some JavaScript support
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=17
 	provides = java-runtime-jetbrains=17
-	backup = etc/java17-jetbrains/logging.propertopenjdkies
+	backup = etc/java17-jetbrains/logging.properties
 	backup = etc/java17-jetbrains/management/jmxremote.access
 	backup = etc/java17-jetbrains/management/jmxremote.password.template
 	backup = etc/java17-jetbrains/management/management.properties
@@ -85,9 +86,11 @@ pkgname = jre17-jetbrains
 pkgname = jdk17-jetbrains
 	pkgdesc = JetBrains Java 17 development kit
 	install = install_jdk-jetbrains.sh
-	depends = jre17-jetbrains=17.0.2.b315.1-1
+	depends = jre17-jetbrains=17.0.9.b1087.9-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
+	depends = glibc
+	depends = gcc-libs
 	provides = java-environment=17
 	provides = java-environment-jetbrains=17
