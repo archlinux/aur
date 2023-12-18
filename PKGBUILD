@@ -1,9 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyplayer-bin
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="跨平台桌面端视频资源播放器,免费高颜值"
-arch=("aarch" "x86_64")
+arch=(
+    "aarch"
+    "x86_64"
+)
 url="https://github.com/Hiram-Wong/ZyPlayer"
 license=("MIT")
 provides=("${pkgname%-bin}-${pkgver}")
@@ -36,10 +39,12 @@ depends=(
 )
 source_aarch=("${pkgname%-bin}-${pkgver}-aarch.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-amd64.deb")
-source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/v${pkgver}/LICENSE")
+source=(
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/v${pkgver}/LICENSE"
+)
 sha256sums=('84378c42abc60e52c641be1d9d3b5b74e587adbfce6a1be75276524120055edd')
-sha256sums_aarch=('f1b9396fcc2d841505b2153526ec8833d0420bb31ce4519fbaa8738cde61494c')
-sha256sums_x86_64=('0da1c29fd86a3074a2b48aed4d3a718f2d12248a8ce4c3f760fb5d058bd08be2')
+sha256sums_aarch=('c102042caa3fc65a121184e63a42578e27ee21512f29ca08ca82d1aec629083f')
+sha256sums_x86_64=('ca42a049f66cabb9b14d0cfc796f47f2a62918faaa78270400ea2649ebebcb17')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g;s|Utility|AudioVideo|g" \
