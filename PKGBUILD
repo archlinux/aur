@@ -13,20 +13,16 @@ md5sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/gimp-texturize-master"
-
-  ./autogen.sh
-  # ./configure --prefix=/usr
+  meson setup build
 }
 
 build() {
-  cd "$srcdir"/gimp-texturize-master
-  # fix the build with recent versions of gimp
-  # find . -type f -name "*.c" -exec sed -i '/.*gimpimage_pdb.h.*/ d' '{}' ';'
-  # find . -type f -name "*.cpp" -exec sed -i '/.*gimpimage_pdb.h.*/ d' '{}' ';'
-  make
+  cd "$srcdir"/gimp-texturize-master/build
+  meson compile
 }
 
 package() {
-  cd "$srcdir"/gimp-texturize-master
-  make DESTDIR="$pkgdir" install
+  cd "$srcdir"/gimp-texturize-master/build
+  mkdir -p "$pkgdir"/usr/lib/gimp/2.0/plug-ins/texturize
+  cp texturize "$pkgdir"/usr/lib/gimp/2.0/plug-ins/texturize
 }
