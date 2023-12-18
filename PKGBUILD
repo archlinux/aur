@@ -1,4 +1,5 @@
-# Maintainer: Chris Simons < chris at simonsmail dot net >
+# Maintainer: Ryan Delaney <ryan dot patrick dot delaney at proton dot me>
+# Contributor: Chris Simons < chris at simonsmail dot net >
 
 pkgname=("protonfixes")
 pkgver="1.0.15"
