@@ -11,11 +11,11 @@ source=("${pkgname}-${pkgver}.zip::$url/releases/download/v${pkgver}/${pkgname}-
 sha256sums=('425a6bf3e6661de1f61876c446d0405a2a519657898defcffa53150c86afc686')
 
 build() {
-  cd "${srcdir}/${pkgname}-$pkgver-beta1"
+  cd "${srcdir}/${pkgname}-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-$pkgver-beta1"
+  cd "${srcdir}/${pkgname}-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
