@@ -3,11 +3,11 @@
 pkgname='python-webio-jupyter-extension'
 _name=webio_jupyter_extension
 pkgver='0.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="A JupyterLab extension to support Julia's WebIO package."
 url="https://pypi.org/project/${_name}/"
 depends=('jupyter-server')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-jupyter-packaging')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")

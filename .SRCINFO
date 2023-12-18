@@ -1,11 +1,12 @@
 pkgbase = python-webio-jupyter-extension
 	pkgdesc = A JupyterLab extension to support Julia's WebIO package.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/webio_jupyter_extension/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = python-jupyter-packaging
 	depends = jupyter-server
 	source = https://files.pythonhosted.org/packages/source/w/webio_jupyter_extension/webio_jupyter_extension-0.1.0.tar.gz
 	sha256sums = 9b41496b86dd0b5734d99f98785ba68cf4b3cd75ae5c704b97bbacbf198ed2b7
