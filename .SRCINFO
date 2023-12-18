@@ -1,7 +1,7 @@
 pkgbase = rmview
 	pkgdesc = a fast live viewer for reMarkable 1 and 2
-	pkgver = 3.1.2
-	pkgrel = 2
+	pkgver = 3.1.3
+	pkgrel = 1
 	url = https://github.com/bordaigorl/rmview
 	arch = any
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = rmview
 	depends = python-pyopenssl
 	depends = python-sshtunnel
 	conflicts = rmview-git
-	source = rmview-3.1.2.tar.gz::https://github.com/bordaigorl/rmview/archive/v3.1.2.tar.gz
-	sha256sums = 1013a4edaa34c917a4e545fe55955a66b3995dab64e12e1561bb17cd144268a1
+	source = rmview-3.1.3.tar.gz::https://github.com/bordaigorl/rmview/archive/v3.1.3.tar.gz
+	sha256sums = 5aefbd01a896d6bfae25772395010ea320e398dfd75751c3aaa0177997c251b9
 
 pkgname = rmview
