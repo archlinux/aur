@@ -1,6 +1,6 @@
 pkgname=kde-material-you-colors
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A script to generate Material You color schemes for KDE Plasma."
 arch=('any')
 url="https://github.com/luisbocanegra/kde-material-you-colors"
