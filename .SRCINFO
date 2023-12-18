@@ -1,6 +1,6 @@
 pkgbase = dune-functions
 	pkgdesc = Abstractions for functions and discrete function space bases
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://dune-project.org/modules/dune-functions
 	arch = x86_64
@@ -12,16 +12,16 @@ pkgbase = dune-functions
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scipy
-	depends = dune-localfunctions>=2.9.0
-	depends = dune-grid>=2.9.0
-	depends = dune-istl>=2.9.0
-	depends = dune-typetree>=2.9.0
+	depends = dune-localfunctions>=2.9.1
+	depends = dune-grid>=2.9.1
+	depends = dune-istl>=2.9.1
+	depends = dune-typetree>=2.9.1
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
-	source = https://dune-project.org/download/2.9.0/dune-functions-2.9.0.tar.gz
-	source = https://dune-project.org/download/2.9.0/dune-functions-2.9.0.tar.gz.asc
+	source = https://dune-project.org/download/2.9.1/dune-functions-2.9.1.tar.gz
+	source = https://dune-project.org/download/2.9.1/dune-functions-2.9.1.tar.gz.asc
 	validpgpkeys = 2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF
-	sha512sums = cbe719915fdf25edab17f0ebc3f8a7d684a08ac9fd4501832e28dcff3527196eb45688eac6d4f1632a137311b0795f073082c19ad16c3438fb38a5ad131cc47f
+	sha512sums = 0c3d21d8d9b2bc776eb9fb9f19305a5368c929ad0553e9576fca6557296a7be5f9626261151e6d9d31011756e751efaae5fe5912397c6fe20a615d89e00166c4
 	sha512sums = SKIP
 
 pkgname = dune-functions
