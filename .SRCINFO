@@ -8,7 +8,7 @@ pkgbase = an
 	license = GPL2
 	depends = words
 	depends = icu
-	source = an-1.2.tar.bz2::http://ftp.debian.org/debian/pool/main/a/an/an_1.2.orig.tar.xz
+	source = an-1.2.tar.gz::http://ftp.debian.org/debian/pool/main/a/an/an_1.2.orig.tar.gz
 	md5sums = 1f3465bfe2cc4458f75a7a42037b475c
 
 pkgname = an

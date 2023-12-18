@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="https://alioth.debian.org/projects/anagram/"
 license=('GPL2')
 depends=('words' 'icu')
-source=("$pkgname-$pkgver.tar.bz2::http://ftp.debian.org/debian/pool/main/a/an/an_${pkgver}.orig.tar.xz")
-md5sums=('1f3465bfe2cc4458f75a7a42037b475c')
+source=("$pkgname-$pkgver.tar.gz::http://ftp.debian.org/debian/pool/main/a/an/an_${pkgver}.orig.tar.gz")
+md5sums=('5d28b8003a745f0110ed70f0cd4aa051')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
