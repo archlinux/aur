@@ -5,7 +5,7 @@
 # Contributor: Mark Lee <mark@markelee.com>
 
 pkgname=mediastreamer
-pkgver=5.2.73
+pkgver=5.2.112
 pkgrel=1
 pkgdesc='A library written in C that allows you to create and run audio and video streams'
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=(bcmatroska2 bcg729 bzrtp ffmpeg glew libsrtp libyuv ortp zxing-cpp)
 makedepends=(cmake python bcunit doxygen)
 source=(https://gitlab.linphone.org/BC/public/${pkgname}2/-/archive/$pkgver/${pkgname}2-$pkgver.tar.bz2
         ffmpeg5.patch)
-sha256sums=('1a1a03060f31280607934bddae451f0d4501c19482f04315565fc82db1679253'
+sha256sums=('0e79befebf5d1f83ad6b61958f3f83195e10b20af1bb70919514d33631476333'
             '7687516b61b33a89adf90790bc01e0a724160bcdd475706228ccbcd19891283a')
 
 prepare() {
