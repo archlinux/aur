@@ -5,8 +5,8 @@
 
 _pkgname=vifm
 pkgname=$_pkgname-git
-pkgver=0.12.r216.g85a70df1b
-pkgrel=2
+pkgver=0.13.r308.g83f9c94fd
+pkgrel=1
 pkgdesc="Ncurses based file manager with vi like keybindings"
 arch=('i686' 'x86_64')
 url="http://vifm.info/"
