@@ -3,12 +3,12 @@
 _pkgname=parody
 _pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
-pkgrel=1
-pkgdesc='Parametric And Resistant Outlier DYtection'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Parametric And Resistant Outlier DYtection"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(Artistic2.0)
 depends=(
   r
 )
@@ -19,14 +19,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5292c5217200bf13e60f8712f14c049fc494f38dfbba337ae54b24e8e15cb016')
+md5sums=('b466cc7b30f33e1854daac921ec9dc87')
+b2sums=('c201a5757fb43ff1a3a49227bb5e9eb9c78267e10cf258dcd72b088316ff84408f640c2c7b190fadce48f2a39155d0d935a119655147c2fb4b72d43bd79dae23')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
