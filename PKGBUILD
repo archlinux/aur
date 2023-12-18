@@ -4,9 +4,9 @@
 _name=PaulXStretch
 pkgname=${_name,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Extreme time stretching tool (standalone, VST3 and CLAP plugin)'
-arch=(x86_64 aarch64)
+arch=(aarch64 x86_64)
 url='https://sonosaurus.com/paulxstretch/'
 license=(GPL3)
 depends=(gcc-libs)
@@ -16,8 +16,16 @@ optdepends=('alsa-lib: for standalone ALSA support'
             'jack: for standalone JACK support'
             'vst3-host: for VST3 plugin')
 groups=(clap-plugins pro-audio vst3-plugins)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/essej/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('460b569c64dc5be57a963b863adc1b2606dc14a264701d8c983df3d3b6f7944d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/essej/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+        'fix-juce-x11.patch::https://github.com/juce-framework/JUCE/commit/4f9a9c7b.patch')
+sha256sums=('460b569c64dc5be57a963b863adc1b2606dc14a264701d8c983df3d3b6f7944d'
+            '4dd7ce8eaba1f90c514c9689b63729db8ecc482f6fba087cef9a960792ce3a3b')
+
+prepare() {
+  cd $pkgname-$pkgver/deps/juce
+  # Fix scan failing on xinit sessions, see https://github.com/essej/paulxstretch/issues/23
+  patch -Np1 -i "$srcdir"/fix-juce-x11.patch || true
+}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \

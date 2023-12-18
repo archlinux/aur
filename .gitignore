@@ -1,3 +1,4 @@
+/fix-juce-x11.patch
 pkg/
 src/
 *.tar.*
