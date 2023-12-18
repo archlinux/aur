@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hihat-git
-pkgver=latest.r2.gcef2ba1
+pkgver=latest.r6.gfdd6211
 _electronversion=26
+_nodeversion=14
 pkgrel=1
 pkgdesc="A minimalist offline music library player for desktop, built on Electron, React, and Material UI."
 arch=('any')
@@ -39,7 +40,7 @@ depends=(
 makedepends=(
     'gendesk'
     'git'
-    'nodejs>=14'
+    'nvm'
     'npm>=7'
 )
 source=(
@@ -51,22 +52,22 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-prepare() {
-    gendesk -q -f -n --categories "AudioVideo" --name "${pkgname%-git}" --exec "${pkgname%-git} --no-sandbox %U"
-    export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/npm_cache"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    sed "s|@electronversion@|${_electronversion}|g" -i "${srcdir}/${pkgname%-git}.sh"
-    cd "${srcdir}/${pkgname%-git}"
-    npm install
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
-    cd "${srcdir}/${pkgname%-git}"
-    electronDist="/usr/lib/electron${_electronversion}"
-    #electronVer="$(electron${_electronversion} --version | tail -c +2)"
+    gendesk -q -f -n --categories "AudioVideo" --name "${pkgname%-git}" --exec "${pkgname%-git} --no-sandbox %U"
+    _ensure_local_nvm
     export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/npm_cache"
+    export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    cd "${srcdir}/${pkgname%-git}"
+    npm install
     npm run package
 }
 package() {
