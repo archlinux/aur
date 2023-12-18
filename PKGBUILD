@@ -7,7 +7,7 @@ pkgver=0.97
 pkgrel=1
 pkgdesc="A small printer daemon intended for diskless workstations that passes jobs directly to the printer"
 arch=('i686' 'x86_64' 'armv5' 'armv5h' 'armv6' 'armv6h' 'armv7' 'armv7h')
-url="http://p910nd.sourceforge.net"
+url="https://github.com/kenyapcomau/p910nd/"
 license=('GPL2')
 depends=('glibc')
 backup=('etc/conf.d/p910nd')
@@ -29,6 +29,7 @@ build() {
   sed -i 's|var/run|run|' Makefile $pkgname.*
   sed -i 's|$(INSTALL) $(INITSCRIPT) $(DESTDIR)$(SCRIPTDIR)/$(PROG)||' Makefile
   sed -i 's| $(CFLAGS)| $(CFLAGS) $(LDFLAGS)|' Makefile
+  sed -i 's|P910ND_OPTS=""|P910ND_OPTS="-f /dev/usb/lp0"|' $pkgname.conf
   make
 }
 
