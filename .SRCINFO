@@ -1,8 +1,8 @@
 pkgbase = an
 	pkgdesc = Anagram Generator
 	pkgver = 1.2
-	pkgrel = 1
-	url = https://alioth.debian.org/projects/anagram/
+	pkgrel = 2
+	url = https://salsa.debian.org/pm/an
 	arch = i686
 	arch = x86_64
 	license = GPL2
