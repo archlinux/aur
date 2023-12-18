@@ -25,11 +25,6 @@ prepare() {
     cd "$srcdir/${pkgbase%-git}"
     git submodule init
     git submodule update
-
-    # Revert vera exiv2 support to fix build error
-    # https://github.com/patriciogonzalezvivo/vera/issues/9
-    cd "deps/vera/"
-    git revert -n 3ab745a4173340110bb1e592949c78cf5c039eeb
 }
 
 build() {
