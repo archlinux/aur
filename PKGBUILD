@@ -30,6 +30,10 @@ pkgver() {
 prepare() {
   cd k3s
 
+  # fix #8293
+  git fetch origin refs/pull/9064/head
+  git cherry-pick --no-edit FETCH_HEAD
+
   # moar compression
   sed -i -r 's|(zstd .*)-[0-9]+|\1 --ultra -22|' \
     scripts/package-cli \
