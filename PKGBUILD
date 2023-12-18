@@ -10,7 +10,7 @@ license=("BSD")
 makedepends=("python-setuptools")
 optdepends=('wine: win32 proton prefix support'
             'winetricks: winetricks support'
-            'cefpython3: splash dialog support'
+            'python-cef: splash dialog support'
             'zenity: splash dialog support')
 source=("https://github.com/simons-public/protonfixes/archive/$pkgver.tar.gz")
 md5sums=('249eecc55572fc072ffc6f37017bb80e')
