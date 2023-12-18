@@ -1,7 +1,7 @@
 pkgbase = python-qsnctf
 	pkgdesc = 青少年 CTF 训练平台是一个公益、免费、供给全国青少年学习、训练的 CTF 在线平台。
 	pkgver = 0.0.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/qsnctf
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-qsnctf
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	depends = python-pyexecjs2
+	depends = python-pyexecjs
 	depends = python-pybase62
 	depends = python-base58
 	depends = python-requests
