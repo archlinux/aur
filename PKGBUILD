@@ -4,7 +4,7 @@
 pkgname=processing-bin
 _pkgname=Processing
 pkgver=4.3
-pkgrel=3
+pkgrel=4
 arch=("x86_64")
 pkgdesc="Programming environment for creating images, animations and interactions."
 url="https://processing.org/"
@@ -15,7 +15,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 options=('!strip')
 depends=(
     'libxtst'
-    'sh'
     'lib32-libdrm'
     'libx11'
     'libxcursor'
@@ -28,7 +27,6 @@ depends=(
     'hicolor-icon-theme'
     'freetype2'
     'libxrender'
-    'zlib'
     'lib32-libxrandr'
     'lib32-libxrender'
     'libxxf86vm'
@@ -42,7 +40,7 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.tgz::${_ghurl}/releases/download/${pkgname%-bin}-1293-${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tgz"
-    "LICENSE.md::https://raw.githubusercontent.com/processing/processing4/${pkgname%-bin}-1293-${pkgver}/LICENSE.md"
+    "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/processing/processing4/${pkgname%-bin}-1293-${pkgver}/LICENSE.md"
 )
 sha256sums=('3f655b3076158148e7ca9ac94a380d35b925436a5829e9d653715a3146ef3e33'
             '4b7b429609d77db38b2b2ab54065324622dfe85bc6f0db331c13951b44c1cb27')
@@ -63,5 +61,5 @@ package() {
         install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/lib/icons/app-${_icons/x*}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${srcdir}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
