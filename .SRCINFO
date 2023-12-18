@@ -1,37 +1,31 @@
 pkgbase = libcutensor
 	pkgdesc = GPU-accelerated tensor linear algebra library
-	pkgver = 1.7.0.1
+	pkgver = 2.0.0.7
 	pkgrel = 1
 	url = https://developer.nvidia.com/cutensor
 	arch = x86_64
 	license = custom:NVIDIA
-	source = libcutensor-linux-x86_64-1.7.0.1.tar.xz::https://developer.download.nvidia.com/compute/cutensor/redist/libcutensor/linux-x86_64/libcutensor-linux-x86_64-1.7.0.1-archive.tar.xz
-	sha256sums = dd3557891371a19e73e7c955efe5383b0bee954aba6a30e4892b0e7acb9deb26
+	source = libcutensor-linux-x86_64-2.0.0.7.tar.xz::https://developer.download.nvidia.com/compute/cutensor/redist/libcutensor/linux-x86_64/libcutensor-linux-x86_64-2.0.0.7-archive.tar.xz
+	sha256sums = df6338aed18e5b6ae0c49521053d1606d2a41e187d7f5eccf9180af6bbc4ef68
 
 pkgname = libcutensor
 	depends = gcc-libs
 	depends = cuda
-	depends = libcutensor-common=1.7.0.1
+	depends = libcutensor-common=2.0.0.7
 	conflicts = libcutensor-cuda12
 
 pkgname = libcutensor-common
 	pkgdesc = GPU-accelerated tensor linear algebra library (Common bits)
 	arch = any
 
-pkgname = libcutensor-cuda10.2
-	pkgdesc = GPU-accelerated tensor linear algebra library (CUDA 10.2)
-	depends = gcc-libs
-	depends = cuda-10.2
-	depends = libcutensor-common=1.7.0.1
-
 pkgname = libcutensor-cuda11.0
 	pkgdesc = GPU-accelerated tensor linear algebra library (CUDA 11.0)
 	depends = gcc-libs
 	depends = cuda-11.0
-	depends = libcutensor-common=1.7.0.1
+	depends = libcutensor-common=2.0.0.7
 
 pkgname = libcutensor-cuda11.8
 	pkgdesc = GPU-accelerated tensor linear algebra library (CUDA 11.8)
 	depends = gcc-libs
 	depends = cuda-11.8
-	depends = libcutensor-common=1.7.0.1
+	depends = libcutensor-common=2.0.0.7
