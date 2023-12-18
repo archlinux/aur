@@ -1,0 +1,16 @@
+pkgbase = python-mitmproxy-wireguard
+	pkgdesc = WireGuard frontend for mitmproxy
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = https://github.com/decathorpe/mitmproxy_wireguard
+	arch = x86_64
+	license = MIT
+	makedepends = maturin
+	makedepends = python-installer
+	makedepends = cargo
+	depends = python
+	options = !lto
+	source = https://github.com/decathorpe/mitmproxy_wireguard/archive/0.1.23/python-mitmproxy-wireguard-0.1.23.tar.gz
+	sha512sums = de58db775454090efe4eb917731a0efb86fa30ca2a701f209148548900c8f09269839ecbcaa5cc31166d9dcbab0bd1924addf409e55d534ada488eb0a7f06c8b
+
+pkgname = python-mitmproxy-wireguard
