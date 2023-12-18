@@ -5,17 +5,13 @@
 pkgname=jamestown
 pkgver=1.0.2
 _pkgver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc='A neo-classical top-down shooter for up to four players set on 17th-century British Colonial Mars (game sold separately)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.finalformgames.com/jamestown/"
 license=('custom')
-if [ "$CARCH" == "x86_64" ]; then
-  # The 64-bit build is broken in 1.0.2
-  depends=('lib32-libgl' 'lib32-openal' 'lib32-sdl')
-else
-  depends=('libgl' 'openal' 'sdl')
-fi
+# The 64-bit build is broken in 1.0.2
+depends=('lib32-libgl' 'lib32-openal')
 source=("hib://JamestownLinux_${_pkgver}.zip"
         'https://github.com/ValveSoftware/source-sdk-2013/raw/master/sp/src/lib/public/linux32/libsteam_api.so'
         'jamestown.desktop'
@@ -41,7 +37,7 @@ package() {
   find Archives -type f -exec \
       install -Dm644 {} "${pkgdir}/opt/${pkgname}/{}" \;
   install -m755 -t "${pkgdir}/opt/${pkgname}" \
-      Jamestown-x86 README-linux.txt steam_appid.txt
+      Jamestown-x86 README-linux.txt steam_appid.txt x86/libSDL-1.2.so.0
   install -Dm755 "${srcdir}/libsteam_api.so" "${pkgdir}/opt/${pkgname}/"
 
   install -Dm644 Jamestown_EULA.txt \
