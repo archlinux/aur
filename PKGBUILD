@@ -2,7 +2,8 @@
 pkgname=sheikah-witnet-wallet-bin
 _pkgname=Sheikah-Witnet-wallet
 pkgver=1.11.9
-pkgrel=3
+_electronversion=11
+pkgrel=4
 pkgdesc="A Witnet compatible desktop wallet and smart contracts development environment"
 arch=('x86_64')
 url="https://witnet.io/"
@@ -11,8 +12,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron11'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'libx11'
     'gdk-pixbuf2'
@@ -29,8 +29,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ed19d1e9db837b811f6e9a65fafe48b1c444d6af96f9ece9a8f49f87494e038c'
-            'f4908a0b9e9744081ca5745fde78505ffdb9523c08198707014321a55d245ae1')
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"

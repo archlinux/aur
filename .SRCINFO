@@ -1,12 +1,11 @@
 pkgbase = sheikah-witnet-wallet-bin
 	pkgdesc = A Witnet compatible desktop wallet and smart contracts development environment
 	pkgver = 1.11.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://witnet.io/
 	arch = x86_64
 	license = GPL3
 	makedepends = squashfuse
-	depends = bash
 	depends = electron11
 	depends = hicolor-icon-theme
 	depends = libx11
@@ -20,6 +19,6 @@ pkgbase = sheikah-witnet-wallet-bin
 	source = sheikah-witnet-wallet-1.11.9.AppImage::https://github.com/witnet/sheikah/releases/download/v1.11.9/Sheikah-Witnet-wallet-1.11.9.AppImage
 	source = sheikah-witnet-wallet.sh
 	sha256sums = ed19d1e9db837b811f6e9a65fafe48b1c444d6af96f9ece9a8f49f87494e038c
-	sha256sums = f4908a0b9e9744081ca5745fde78505ffdb9523c08198707014321a55d245ae1
+	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
 
 pkgname = sheikah-witnet-wallet-bin
