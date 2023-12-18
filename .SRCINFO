@@ -1,6 +1,6 @@
 pkgbase = fw-ectool-git
 	pkgdesc = ectool for the Framework laptop.
-	pkgver = r22544.54c140399
+	pkgver = r27600.3ebe7b8
 	pkgrel = 1
 	url = https://www.howett.net/posts/2021-12-framework-ec/#software
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fw-ectool-git
 	makedepends = inetutils
 	makedepends = git
 	provides = ectool
-	source = git+https://github.com/DHowett/framework-ec
+	source = git+https://gitlab.howett.net/DHowett/ectool.git
 	sha1sums = SKIP
 
 pkgname = fw-ectool-git
