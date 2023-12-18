@@ -28,7 +28,7 @@ arch=(
   'aarch64'
   'armv7h')
 license=(LGPL)
-depends=(i
+depends=(
   "gtk4>=4.11")
 makedepends=(
   cmake
@@ -65,7 +65,7 @@ check() {
          --idle-time=0 &
   _w=$!
 
-  trap "kill $_w; wait" EXIT
+  bash trap "kill ${_w}; wait" EXIT
 
   meson \
     test \
@@ -88,7 +88,7 @@ _pick() {
 
 package_libadwaita-git() {
   depends+=(
-    libgtk-4.so)
+    "libgtk-4.so")
   provides+=(
     "${_pkgname}=${pkgver}" libadwaita-1.so)
   conflicts=(
