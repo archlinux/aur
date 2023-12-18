@@ -1,0 +1,21 @@
+diff -pNaru5 a/serial_core.c b/serial_core.c
+--- a/serial_core.c	2023-12-18 13:31:42.354486402 -0500
++++ b/serial_core.c	2023-12-18 13:31:55.024139616 -0500
+@@ -567,12 +567,17 @@ static int uart_put_char(struct tty_stru
+ static void uart_flush_chars(struct tty_struct *tty)
+ {
+ 	uart_start(tty);
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,6,0)
+ static int uart_write(struct tty_struct *tty,
+ 					const unsigned char *buf, int count)
++#else
++static ssize_t uart_write(struct tty_struct *tty,
++					const unsigned char *buf, size_t count)
++#endif
+ {
+ 	struct uart_state *state = tty->driver_data;
+ 	struct uart_port *port;
+ 	struct circ_buf *circ;
+ 	unsigned long flags;

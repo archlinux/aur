@@ -15,7 +15,7 @@ _opt_DKMS=1            # This can be toggled between installs
 set -u
 pkgname='connecttech-cti-serial'
 pkgver='1.46'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='tty UART driver for BlueStorm BlueHeat Xtreme/104-Plus Titan and Xtreme/104-Express families'
 arch=('i686' 'x86_64')
 url='http://connecttech.com/product/pci-express-bluestorm-express/'
@@ -36,6 +36,8 @@ source=(
   '0005-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
   '0006-kernel-5.18-bitwise.patch'
   '0007-kernel-6.0-set_termios-const-ktermios.patch'
+  '0008-kernel-6.3-tty_port_operations-int-to-bool.patch'
+  '0009-kernel-6.6-struct-tty_operations-size_t.patch'
 )
 _srcdir='.'
 md5sums=('6e56f2b93611e4b0f367aec3a430a8f0'
@@ -44,14 +46,18 @@ md5sums=('6e56f2b93611e4b0f367aec3a430a8f0'
          'd6cf91270e603716a90ea4120a928f9f'
          'e9181275b574a74c6a180129203b3dbf'
          '052753de7460ae2e3cebd9baf3ef8332'
-         '7fc262419c1363af052950ea1312294d')
+         '8d7e5a3bfb79a0b72b4fa733149c99a9'
+         '553d7fb803cef90ffa8de4f6f091851c'
+         'ab7e1d84e0a8ea0103fec950d4c828c1')
 sha256sums=('7c1d8ade5e605bc01f80e2ca0705d048b3c83e32e68422b836f32accb436925f'
             '3f1c0aec4f287803b0c571ce0258bf16163fed920170fb6eac2ec717f704e3e5'
             '4b5a12f5122252ccee5aec97c392f2b718284ed0d4b70ee8b506f64fb89eced7'
             '3b7b66ac199025183fe1b6e7ddb14524b88251ff6f7f739fbc3973dd4f5039d5'
             '34e3d2061b794ce52fdeed91c09561e03c424572185a65714e1fcff8878ddf9a'
             '1437ae1873d5ed5215619a96962214ca5131b3629309d21c03a8795225d66273'
-            'bdb5f5c268b3df15d1901a009b62e765e64788e4fbbe853fa069d0712b7ac44a')
+            'c7545356f49bbabc746d924c88b11e4f634e83a1cdd45a49f82637fd17171931'
+            'efc1335e6084823ae698d567d4bd4a7a1058eed03cf5a2ec880f19b3c0512826'
+            'e4ab3bdf32e0b65f9f290289720c327de1ff3d0f3a7c7fe7b92859784dbbf8a0')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -136,6 +142,14 @@ prepare() {
   #rm -f driver/*.orig; cp -pr 'driver' 'a'; ln -s 'driver' 'b'; false
   #diff -pNaru5 'a' 'b' > '0007-kernel-6.0-set_termios-const-ktermios.patch'
   patch -d 'driver' -Nup1 -i "${srcdir}/0007-kernel-6.0-set_termios-const-ktermios.patch"
+
+  #rm -f driver/*.orig; cp -pr 'driver' 'a'; ln -s 'driver' 'b'; false
+  #diff -pNaru5 'a' 'b' > '0008-kernel-6.3-tty_port_operations-int-to-bool.patch'
+  patch -d 'driver' -Nup1 -i "${srcdir}/0008-kernel-6.3-tty_port_operations-int-to-bool.patch"
+
+  #rm -f driver/*.orig; cp -pr 'driver' 'a'; ln -s 'driver' 'b'; false
+  #diff -pNaru5 'a' 'b' > '0009-kernel-6.6-struct-tty_operations-size_t.patch'
+  patch -d 'driver' -Nup1 -i "${srcdir}/0009-kernel-6.6-struct-tty_operations-size_t.patch"
 
   pushd 'driver' > /dev/null
   # Fix permissions

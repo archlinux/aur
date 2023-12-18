@@ -7,7 +7,7 @@ diff -pNaru5 a/serial_core.c b/serial_core.c
  }
  
  static void uart_set_termios(struct tty_struct *tty,
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,0,0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,1,0)
 +const
 +#endif
  						struct ktermios *old_termios)

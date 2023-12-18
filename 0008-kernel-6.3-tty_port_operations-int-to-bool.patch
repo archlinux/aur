@@ -1,0 +1,35 @@
+diff -pNaru5 a/serial_core.c b/serial_core.c
+--- a/serial_core.c	2023-12-18 13:29:22.522209521 -0500
++++ b/serial_core.c	2023-12-18 13:29:42.488180604 -0500
+@@ -1647,11 +1647,15 @@ static void uart_port_shutdown(struct tt
+ 	 * Ensure that the IRQ handler isn't running on another CPU.
+ 	 */
+ 	synchronize_irq(uport->irq);
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,3,0)
+ static int uart_carrier_raised(struct tty_port *port)
++#else
++static bool uart_carrier_raised(struct tty_port *port)
++#endif
+ {
+ 	struct uart_state *state = container_of(port, struct uart_state, port);
+ 	struct uart_port *uport = state->uart_port;
+ 	int mctrl;
+ 	spin_lock_irq(&uport->lock);
+@@ -1661,11 +1665,15 @@ static int uart_carrier_raised(struct tt
+ 	if (mctrl & TIOCM_CAR)
+ 		return 1;
+ 	return 0;
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,3,0)
+ static void uart_dtr_rts(struct tty_port *port, int onoff)
++#else
++static void uart_dtr_rts(struct tty_port *port, bool onoff)
++#endif
+ {
+ 	struct uart_state *state = container_of(port, struct uart_state, port);
+ 	struct uart_port *uport = state->uart_port;
+ 
+ 	if (onoff)
