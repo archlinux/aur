@@ -3,7 +3,7 @@
 # Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
 
 pkgname=bctoolbox
-pkgver=5.2.94
+pkgver=5.2.112
 pkgrel=1
 pkgdesc='A library written in C that allows you to create and run audio and video streams'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(GPL)
 depends=(gcc-libs libdecaf mbedtls2-dtls)
 makedepends=(cmake)
 source=(https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('d4e81d6e7aeb19e0d2bb4f7aa0645273469507cf1f3ab66ae742f39944cd2503')
+sha256sums=('458a7eef09951d97f35946b640ab25d6345ebe215413d5d76ef276b8e23a9a7e')
 
 prepare() {
     cd "$pkgname-$pkgver"
