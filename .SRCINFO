@@ -1,8 +1,8 @@
 pkgbase = subtitlecomposer
 	pkgdesc = Video subtitle editor
 	pkgver = 0.8.0
-	pkgrel = 2
-	url = https://invent.kde.org/multimedia/
+	pkgrel = 3
+	url = https://invent.kde.org/multimedia/subtitlecomposer
 	arch = i686
 	arch = x86_64
 	license = GPL

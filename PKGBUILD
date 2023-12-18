@@ -8,10 +8,10 @@
 
 pkgname=subtitlecomposer
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Video subtitle editor'
 arch=('i686' 'x86_64')
-url="https://invent.kde.org/multimedia/${_name}"
+url="https://invent.kde.org/multimedia/${pkgname}"
 license=('GPL')
 depends=('qt5-declarative' 'kcoreaddons5' 'ktextwidgets5' 'kio5' 'sonnet5' 'kcodecs5' 'kxmlgui5' 'ki18n5' 'ffmpeg' 'openal')
 makedepends=('extra-cmake-modules' 'jack' 'blas' 'xorg-server-xvfb')
