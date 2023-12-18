@@ -1,7 +1,7 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)"
 arch=(x86_64)
 url=https://github.com/YARC-Official/YARC-Launcher
@@ -35,9 +35,6 @@ sha256sums=(
 prepare() {
 	cd YARC-Launcher-$pkgver/
 
-	# Change icon name
-	mv src-tauri/icons/128x128@2x.png src-tauri/icons/256x256@2.png
-
 	# Disable bundle
 	sed -i '44s/true/false/' src-tauri/tauri.conf.json
 }
@@ -64,7 +61,7 @@ package() {
 	install -Dm644 $srcdir/$pkgname.desktop -t $pkgdir/usr/share/applications/
 
 	# icons
-	for _size in 32x32 128x128 256x256@2; do
+	for _size in 32x32 128x128 128x128@2x; do
 		_iconpath=usr/share/icons/hicolor/$_size/apps
 
 		install -Dm644 src-tauri/icons/$_size.png $pkgdir/$_iconpath/$pkgname.png

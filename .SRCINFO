@@ -1,7 +1,7 @@
 pkgbase = yarc-launcher
 	pkgdesc = The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YARC-Official/YARC-Launcher
 	arch = x86_64
 	license = custom: YARG License
