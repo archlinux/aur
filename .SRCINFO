@@ -1,6 +1,6 @@
 pkgbase = gamescope-nvidia
 	pkgdesc = SteamOS session compositing window manager (NVIDIA patch)
-	pkgver = 3.13.18
+	pkgver = 3.13.19
 	pkgrel = 1
 	url = https://github.com/sharkautarch/gamescope
 	install = gamescope.install
@@ -46,7 +46,7 @@ pkgbase = gamescope-nvidia
 	source = 0002-fix-error-due-to-removed-general-command-pool.patch
 	source = 0003-oops.patch
 	source = 0004-fix-removed-general-queue.patch
-	source = git+https://github.com/ValveSoftware/gamescope.git#tag=2b9c739d20179b294fac4adb311d3d79516a9e5c
+	source = git+https://github.com/ValveSoftware/gamescope.git#tag=3.13.19
 	source = git+https://github.com/Joshua-Ashton/reshade.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	b2sums = f0a7562a7825df16878f733669056dc5ecda36e62afc945e745b6746ee7ecf6983d4659b0061f73852165537479fac68ecd59913b2ff6fdc5ac18ff23d891d97

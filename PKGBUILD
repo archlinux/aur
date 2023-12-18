@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.13.18
+pkgver=3.13.19
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -57,13 +57,12 @@ provides=(
 conflicts=(
   "$_pkgname"
 )
-_tag=2b9c739d20179b294fac4adb311d3d79516a9e5c
 source=(
   0001-Revert-rendervulkan-Get-a-general-graphics-compute-q.patch
   0002-fix-error-due-to-removed-general-command-pool.patch
   0003-oops.patch
   0004-fix-removed-general-queue.patch
-  git+https://github.com/ValveSoftware/gamescope.git#tag=${_tag}
+  git+https://github.com/ValveSoftware/gamescope.git#tag=${pkgver}
   git+https://github.com/Joshua-Ashton/reshade.git
   git+https://github.com/KhronosGroup/SPIRV-Headers.git
 )
