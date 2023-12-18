@@ -7,7 +7,7 @@
 # Contributor: vEX <vex at niechift dot com>
 
 pkgname=pcsx2
-pkgver=1.7.5243
+pkgver=1.7.5308
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -59,12 +59,13 @@ makedepends=(
 optdepends=('qt6-wayland: Wayland support'
             'libpipewire: Pipewire support'
             'libpulse: PulseAudio support')
-_tag=234b3df332580e2590907c338646b4e5d4ee832b
+_tag=94664c24d85c719504bd71d4572265f936d3c66e
 options=(!lto)
 source=(
 	"git+https://github.com/PCSX2/pcsx2.git#tag=${_tag}"
 	git+https://github.com/PCSX2/pcsx2_patches.git
-	xz-pcsx2::git+https://github.com/PCSX2/xz.git
+	lz4-pcsx2::git+https://github.com/lz4/lz4.git
+	xz-pcsx2::git+https://github.com/tukaani-project/xz.git
 	git+https://github.com/google/googletest.git
 	git+https://github.com/fmtlib/fmt.git
 	git+https://github.com/biojppm/rapidyaml.git
@@ -92,6 +93,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
+        'SKIP'
         'SKIP')
 install=$pkgname.install
 
@@ -99,6 +101,7 @@ prepare() {
 	cd $pkgname
 	local submodule
 	_pcsx2_submodules=(
+		lz4-pcsx2::3rdparty/lz4/lz4
 		xz-pcsx2::3rdparty/xz/xz
 		googletest::3rdparty/gtest
 		fmt::3rdparty/fmt/fmt
