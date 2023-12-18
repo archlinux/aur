@@ -1,0 +1,37 @@
+diff -pNaru5 a/npreal2.c b/npreal2.c
+--- a/npreal2.c	2023-12-18 02:45:25.140042480 -0500
++++ b/npreal2.c	2023-12-18 02:47:21.607497828 -0500
+@@ -405,11 +405,15 @@ int		npreal_init(void);
+ static int 	npreal_init_tty(void);
+ static void	npreal_do_softint(struct work_struct *work);
+ static void npreal_flush_to_ldisc(struct work_struct *work);
+ static int	npreal_open(struct tty_struct *,struct file *);
+ static void	npreal_close(struct tty_struct *,struct file *);
++#if LINUX_VERSION_CODE < VERSION_CODE(6,6,0)
+ static int	npreal_write(struct tty_struct *,const unsigned char *,int);
++#else
++static ssize_t	npreal_write(struct tty_struct *,const u8 *,size_t);
++#endif
+ #if LINUX_VERSION_CODE >= VERSION_CODE(5,14,0)
+ static unsigned int	npreal_write_room(struct tty_struct *);
+ #else
+ static int	npreal_write_room(struct tty_struct *);
+ #endif
+@@ -1083,12 +1087,17 @@ npreal_close(
+ 
+ /*
+  * copy data form AP-layer to kernel-layer,
+  * and wake up net_read to read data to proc file system. (files in this folder /proc/npreal2)
+  */
++#if LINUX_VERSION_CODE < VERSION_CODE(6,6,0)
+ static int npreal_write(struct tty_struct * tty,
+ 		const unsigned char * buf, int count)
++#else
++static ssize_t npreal_write(struct tty_struct * tty,
++		const u8 * buf, size_t count)
++#endif
+ {
+ 	int c, total = 0, ret ;
+ 	struct npreal_struct *info = (struct npreal_struct *)tty->driver_data;
+ 	struct nd_struct  	*nd;
+ 	unsigned long        flags;
