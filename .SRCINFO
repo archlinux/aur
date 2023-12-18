@@ -1,7 +1,7 @@
 pkgbase = tijolo
 	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
 	pkgver = 0.8.0alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
 	license = MIT
@@ -13,12 +13,11 @@ pkgbase = tijolo
 	depends = gc
 	depends = libevent
 	depends = pcre
-	depends = gtksourceview4
+	depends = gtk4>=1:4.12.4
+	depends = libadwaita>=1:1.4.2
+	depends = gtksourceview5
 	depends = ttf-jetbrains-mono-nerd
-	depends = libgit2
-	depends = editorconfig-core-c
-	depends = ttf-font-awesome>=6.2.1
-	depends = vte3
+	depends = vte4
 	optdepends = ccls: C/C++ LSP support
 	optdepends = bash-language-server: Bash LSP support
 	optdepends = yaml-language-server: YAML LSP support

@@ -2,13 +2,13 @@
 
 pkgname=tijolo
 pkgver=0.8.0alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, keyboard-oriented IDE for the masses"
 arch=("x86_64")
 conflicts=("tijolo-git")
 url="https://github.com/hugopl/tijolo"
 license=("MIT")
-depends=("gc" "libevent" "pcre" "gtksourceview4" "ttf-jetbrains-mono-nerd" "libgit2" "editorconfig-core-c" "ttf-font-awesome>=6.2.1" "vte3")
+depends=("gc" "libevent" "pcre" "gtk4>=1:4.12.4" "libadwaita>=1:1.4.2" "gtksourceview5" "ttf-jetbrains-mono-nerd" "vte4")
 makedepends=("make" "git" "crystal>=1.6.2" "shards>=0.14.0" "libyaml")
 optdepends=('ccls: C/C++ LSP support'
             'bash-language-server: Bash LSP support'
@@ -28,4 +28,6 @@ package() {
   # cd "$srcdir/tijolo-$pkgver"
   cd "$srcdir/tijolo-0.8.0-alpha"
   make install DESTDIR="${pkgdir}"
+  rm -rf ${pkgdir}/usrshare
+  install -D -m644 data/gschema.xml ${pkgdir}/usr/share/glib-2.0/schemas/io.github.hugopl.Tijolo.gschema.xml
 }
