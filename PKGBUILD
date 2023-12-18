@@ -2,7 +2,7 @@
 
 pkgname=virtwold
 pkgver=23.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wake-on-LAN for libvirt based VMs'
 depends=('glibc')
 makedepends=('git' 'go')
@@ -14,7 +14,7 @@ url='https://github.com/ScottESanDiego/virtwold'
 build() {
   cd "${pkgname}-${pkgver}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  _LDFLAGS="-X main.goos=$(go env GOOS) -X main.goarch=$(go env GOARCH) -X main.version=${pkgver} -X main.branch=tag-${pkgver} -X main.commit=tag-${pkgver} -extldflags ${LDFLAGS}"
+  _LDFLAGS="-X main.goos=$(go env GOOS) -X main.goarch=$(go env GOARCH) -X main.version=${pkgver} -X main.branch=tag-${pkgver} -X main.commit=tag-${pkgver} -extldflags -s"
   go build -ldflags="${_LDFLAGS}"
 
 }
