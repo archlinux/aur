@@ -2,7 +2,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Lukas Böger <dev___AT___lboeger___DOT___de>
 pkgname=dune-alugrid
-_tarver=2.9.0
+_tarver=2.9.1
 _tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
 pkgver="${_tarver}"
 pkgrel=2
@@ -15,13 +15,13 @@ makedepends=(doxygen graphviz python-scikit-build)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
 source=(https://dune-project.org/download/${_tar}{,.asc})
-sha512sums=('92b6bcc65d69191e28b21b130fc84b34230265d8cae0ac6406ce8749bd0b83cd19b5a02b526583d0d9cd5051d8c26c59e599aa189c403c74650b0a3f21eaf95f' 'SKIP')
-validpgpkeys=('E5B47782DE09813BCC3518E159DA94F1FC8FD313') # Andreas Dedner <a.s.dedner@warwick.ac.uk>
+sha512sums=('7cc133e591593f86fd5a03eeae8d446185a149089d93dcc4971f31daacf3697428e32b4b6e187879dfdf69c2f4d37f75aa7de4c2b7f54f1b23a591bed4a72863'
+  'SKIP')
+validpgpkeys=('2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF') # Christoph Grüninger <pgp@grueninger.de>
 
 prepare() {
   cd ${pkgname}-${pkgver}
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-  sed -i 's/^Version: '"${pkgver%%.0}"'-git/Version: '"${pkgver%%.0}"'.0/' dune.module
   python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 
