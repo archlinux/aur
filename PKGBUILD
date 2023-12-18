@@ -2,7 +2,7 @@
 _extname=quick-settings-tweaks
 _uuid=$_extname@qwreey
 pkgname=gnome-shell-extension-$_extname-git
-pkgver=r95.11ac1da
+pkgver=r235.a9bd1ae
 pkgrel=1
 pkgdesc="A Gnome 43+ extension which allows you to customize the new Quick Settings Panel to your liking!"
 arch=('any')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_extname"
-  make build
+  ./install.sh build
 }
 
 package() {
