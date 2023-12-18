@@ -1,0 +1,14 @@
+pkgbase = nlinline
+	pkgdesc = A quick and clean API for NetLink networking configuring
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/virtualsquare/nlinline
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = pandoc
+	source = https://github.com/virtualsquare/nlinline/archive/refs/tags/0.2.2.tar.gz
+	sha256sums = 42d7d18ec31e07171e120bb71079d7ac96415f6231deb33fda9b87c57d7cd7db
+
+pkgname = nlinline
