@@ -1,6 +1,6 @@
 # Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 pkgname=podman-desktop-bin
-pkgver=1.6.0
+pkgver=1.6.3
 pkgrel=1
 epoch=
 pkgdesc="Manage Podman and other container engines from a single UI and tray"
@@ -25,7 +25,7 @@ source=(
     "podman-desktop.desktop"
     "run.sh"
 )
-sha256sums=("56ca5bdb75be93f99b05436fe62c4783bc5f6630df0658cc72e256d5e49e7e7a"
+sha256sums=("dfd64b6e4eaf18cbf1165adc21e8174bcec807a4afeff379cb61723d9e43b7f7"
             "81b78c485c38dd79b50a8008e148509a95fcc56477592315ab7354b64566315a"
             "f07b6315111ad354ed76fdd6dde37deb704fbe559fc226edb60db23efa02d151"
             "64d7035a78ab85b61129f311dacae5d23b43e79588f06db053b922c9d04e200a"
