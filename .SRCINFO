@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-jupyterbook-latex
 	pkgdesc = Latex specific features for jupyter book
-	pkgver = 0.5.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/executablebooks/sphinx-jupyterbook-latex
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-sphinx-jupyterbook-latex
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-sphinx
-	source = sphinx-jupyterbook-latex-0.5.2.tar.gz::https://github.com/executablebooks/sphinx-jupyterbook-latex/archive/v0.5.2.tar.gz
-	sha512sums = 8a356dfe8afc01acc63a080aa973c72376c3b1411b45364bc48b2c9b4921e7e66d009d71923719e69d9595152efab4a1ccd248f2241c54fc6a183c79919f5587
+	source = sphinx-jupyterbook-latex-1.0.0.tar.gz::https://github.com/executablebooks/sphinx-jupyterbook-latex/archive/v1.0.0.tar.gz
+	sha512sums = c88b6fe9c2386d931a2dfdad7bb4cd33d82894086b39ed6e578ec329b127892e8cfa0f107b1531c3aea541da0c244c55de81428e81e7e08554a30b77ac773378
 
 pkgname = python-sphinx-jupyterbook-latex
