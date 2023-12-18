@@ -5,7 +5,7 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop
-pkgver=3.3.3
+pkgver=3.3.6
 _gitname="release-$pkgver-linux2"
 pkgrel=1
 pkgdesc='GUI for managing Git and GitHub'
@@ -22,7 +22,7 @@ depends=(curl
          unzip)
 optdepends=('github-cli: CLI interface for GitHub'
             'hub: CLI interface for GitHub')
-makedepends=(nodejs-lts-gallium
+makedepends=(nodejs-lts-iron
              npm
              xorg-server-xvfb
              yarn)
