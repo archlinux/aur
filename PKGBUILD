@@ -2,8 +2,8 @@
 _pkgname="fireblocks recovery utility"
 pkgname="${_pkgname// /-}-bin"
 _appname="Fireblocks Recovery Utility"
-pkgver=0.4.0
-_fileversion=0.3.5
+pkgver=0.4.1
+_fileversion="${pkgver}"
 _electronversion=21
 pkgrel=1
 pkgdesc="Recover Fireblocks assets and keys in a disaster, verify a Recovery Kit, or generate keys to set up a new Recovery Kit."
@@ -30,8 +30,8 @@ source=(
     "${pkgname}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/Recovery.Utility.Ubuntu.${CARCH//_/-}.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a31f6e66af64cb30f4035b1d78a4326361443eb1c0076d72178dff21890d06ac'
-            'f38f1d09bb959d0ac2c1dd853aaa3a477d398e785d262efffd98da4f6b0b4e09')
+sha256sums=('b9829b24391a674403451c6c2c79cd536047325b77e303439cd0a69e00b754da'
+            'd4632fd7fa2c2e156023ebc6927069ba7a8451f6ea591ed7dd6a5bb05ba9ddc8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \

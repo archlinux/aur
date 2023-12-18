@@ -1,6 +1,6 @@
 pkgbase = fireblocks-recovery-utility-bin
 	pkgdesc = Recover Fireblocks assets and keys in a disaster, verify a Recovery Kit, or generate keys to set up a new Recovery Kit.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://www.fireblocks.com/
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = fireblocks-recovery-utility-bin
 	depends = libdbusmenu-glib
 	depends = gtk2
 	depends = dbus-glib
-	provides = fireblocks-recovery-utility=0.4.0
+	provides = fireblocks-recovery-utility=0.4.1
 	conflicts = fireblocks-recovery-utility
-	source = fireblocks-recovery-utility-bin-0.4.0.zip::https://github.com/fireblocks/recovery/releases/download/v0.4.0/Recovery.Utility.Ubuntu.x86-64.zip
+	source = fireblocks-recovery-utility-bin-0.4.1.zip::https://github.com/fireblocks/recovery/releases/download/v0.4.1/Recovery.Utility.Ubuntu.x86-64.zip
 	source = fireblocks-recovery-utility.sh
-	sha256sums = a31f6e66af64cb30f4035b1d78a4326361443eb1c0076d72178dff21890d06ac
-	sha256sums = f38f1d09bb959d0ac2c1dd853aaa3a477d398e785d262efffd98da4f6b0b4e09
+	sha256sums = b9829b24391a674403451c6c2c79cd536047325b77e303439cd0a69e00b754da
+	sha256sums = d4632fd7fa2c2e156023ebc6927069ba7a8451f6ea591ed7dd6a5bb05ba9ddc8
 
 pkgname = fireblocks-recovery-utility-bin
