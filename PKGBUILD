@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=kibot
-pkgver=1.6.3
-pkgrel=5
+pkgver=2
+pkgrel=1
 epoch=
 pkgdesc="KiCad automation utility"
 arch=('any')
@@ -18,15 +18,14 @@ depends=(
     openscad
     rar
     kicad
+    kicad-pcb-diff
     kicost
-    kidiff
     pandoc
     pcbdraw
     python
     python-kiauto
     python-kibom
     python-colorama
-#     python-kidiff
     python-lark-parser
     python-lxml
     python-kikit
@@ -55,7 +54,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('9d127beee846cf80cee7892375804ff1bc4b504922618b865447c916295301ba')
+sha256sums=('2d0881c0df5e3e61b1e461d04a0ae3c927eb0da3952733caf668b4887d84d748')
 #validpgpkeys=()
 
 package() {
