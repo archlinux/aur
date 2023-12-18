@@ -7,7 +7,7 @@
 # Contributer: auk
 pkgname=hyper-git
 _pkgname=Hyper
-pkgver=4.0.0.canary.5.r250.ga1da6e79
+pkgver=4.0.0.canary.5.r258.g7e6cbe05
 _electronversion=24
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
@@ -16,7 +16,6 @@ url="https://hyper.is/"
 _ghurl="https://github.com/vercel/hyper"
 license=('MIT')
 depends=(
-    'python'
     'alsa-lib'
     'libxfixes'
     'cairo'
@@ -40,7 +39,7 @@ depends=(
 )
 makedepends=(
     'git'
-    'npm>=9.8.1'
+    'npm'
     'yarn'
     'nvm'
     'python>=3.8'
@@ -74,6 +73,7 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
+    install -Dm755 -d "${srcdir}/${pkgname%-git}/node_modules/electron/dist"
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run dist
     cd "${srcdir}/${pkgname%-git}/dist/.icon-set"

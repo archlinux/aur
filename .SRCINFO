@@ -1,18 +1,17 @@
 pkgbase = hyper-git
 	pkgdesc = A terminal built on web technologies
-	pkgver = 4.0.0.canary.5.r250.ga1da6e79
+	pkgver = 4.0.0.canary.5.r258.g7e6cbe05
 	pkgrel = 1
 	url = https://hyper.is/
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = npm>=9.8.1
+	makedepends = npm
 	makedepends = yarn
 	makedepends = nvm
 	makedepends = python>=3.8
 	makedepends = libarchive
 	makedepends = libicns
-	depends = python
 	depends = alsa-lib
 	depends = libxfixes
 	depends = cairo
