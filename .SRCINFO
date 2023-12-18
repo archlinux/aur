@@ -1,13 +1,13 @@
 pkgbase = r-gridbase
 	pkgdesc = Integration of base and grid graphics
 	pkgver = 0.4.7
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=gridBase
 	arch = any
 	license = GPL
 	depends = r
-	optdepends = r-lattice
 	source = https://cran.r-project.org/src/contrib/gridBase_0.4-7.tar.gz
-	sha256sums = be8718d24cd10f6e323dce91b15fc40ed88bccaa26acf3192d5e38fe33e15f26
+	md5sums = 6d5064a85f5c966a92ee468ae44c5f1f
+	b2sums = 0a70553cf1bd1765e97c4161a59e7df36a861df83cfd6b756e6f558319da15911ebab865e912dbc748c1d61c4c120349e372f54ec0cee65392aa48eded704ba1
 
 pkgname = r-gridbase

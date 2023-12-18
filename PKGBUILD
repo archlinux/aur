@@ -3,27 +3,25 @@
 _pkgname=gridBase
 _pkgver=0.4-7
 pkgname=r-${_pkgname,,}
-pkgver=0.4.7
-pkgrel=4
-pkgdesc='Integration of base and grid graphics'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Integration of base and grid graphics"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
-optdepends=(
-  r-lattice
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('be8718d24cd10f6e323dce91b15fc40ed88bccaa26acf3192d5e38fe33e15f26')
+md5sums=('6d5064a85f5c966a92ee468ae44c5f1f')
+b2sums=('0a70553cf1bd1765e97c4161a59e7df36a861df83cfd6b756e6f558319da15911ebab865e912dbc748c1d61c4c120349e372f54ec0cee65392aa48eded704ba1')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
