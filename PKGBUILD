@@ -1,4 +1,5 @@
-# Maintainer: Kyle Keen <keenerd [at] gmail.com>
+# Maintainer: Ryan Delaney <ryan dot patrick dot delaney at proton dot me>
+# Contributor: Kyle Keen <keenerd [at] gmail.com>
 # Contributor: Yumi Nanako <yumileroy [at] yahoo.com>
 
 pkgname=an
