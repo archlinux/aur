@@ -1,6 +1,6 @@
 # Maintainer: Jener Rasmussen <aur@jener.me>
 pkgname=opentofu-bin
-pkgver=v1.6.0_beta4
+pkgver=v1.6.0_beta5
 pkgrel=1
 pkgdesc="OpenTofu lets you declaratively manage your cloud infrastructure. "
 arch=('x86_64'
@@ -13,14 +13,14 @@ provides=('opentofu'
     'terraform')
 conflicts=('opentofu'
     'opentofu-git')
-source_x86_64=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-beta4/tofu_1.6.0-beta4_linux_amd64.zip")
-sha256sums_x86_64=("99707716baccddcb49273ac81a8d041084403da269278db74f2512892499ae63")
-source_i686=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-beta4/tofu_1.6.0-beta4_linux_386.zip")
-sha256sums_i686=("f11cd4062c5a4a7bcf0728abf2b84c4ea89afc511813e1f0bc0ad61c01bc15ea")
-source_aarch64=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-beta4/tofu_1.6.0-beta4_linux_arm64.zip")
-sha256sums_aarch64=("d783674ff59f1822422e29fb4cc9e2a9fa4b2d0a07cbb812ca43d9045e03d154")
-source_armv7h=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-beta4/tofu_1.6.0-beta4_linux_arm.zip")
-sha256sums_armv7h=("93a0d2e2c5a820fe8942d84550364cb455c45bd81976db6f776b0a50bf0c3e17")
+source_x86_64=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-beta5/tofu_1.6.0-beta5_linux_amd64.zip")
+sha256sums_x86_64=("b449e44d7c5560a77198a0d28eac74d65a1a68eb04c47a90aa9f6d31ac184059")
+source_i686=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-beta5/tofu_1.6.0-beta5_linux_386.zip")
+sha256sums_i686=("3bf6d66a7ae7a2d8d443942b94a1874edb803d2210fee9c58c79935f5a57fe63")
+source_aarch64=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-beta5/tofu_1.6.0-beta5_linux_arm64.zip")
+sha256sums_aarch64=("dcf7700979fe167b04e1c3c772dc4f021d3a2e0ce3c5edd1dcf425800102108f")
+source_armv7h=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-beta5/tofu_1.6.0-beta5_linux_arm.zip")
+sha256sums_armv7h=("9827291ef48cd9f3c3b9a8da54386899e4c0ad448f277138826e393b7fd10d31")
 
 package() {
     install -o root -g root -m 755 -D tofu $pkgdir/usr/bin/tofu
