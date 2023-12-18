@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animestream-git
-pkgver=r43.3240787
+pkgver=r57.f63867f
 _electronversion=27
 pkgrel=1
 pkgdesc="A simple project designed for streaming and downloading your favorite anime!"
