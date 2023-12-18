@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse
 _pkgname=Akuse
-pkgver=0.2.2
+pkgver=0.3.2
 _electronversion=25
 pkgrel=1
 pkgdesc="Simple and easy to use anime streaming desktop app without ads."
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=('SKIP'
             '091d0d9b3a06579647ed4c1989d7edff13754cec34fcdbb7fbc24529bd01ed48'
-            '91955296a742aed4445743bb54ec2c389917f36bca4969bb8d50bcfa8f80d7b2')
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
@@ -40,7 +40,7 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     sed -e '79,81d' -e '/"AppImage"/d' -e 's|"deb"|"AppImage"|g' -i package.json
     install -Dm644 "${srcdir}/clientData.js" -t "${srcdir}/${pkgname}-${pkgver}/src/modules"
-    npm install
+    npm install --force
     npm run dist:linux
 }
 package() {
