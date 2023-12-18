@@ -10,6 +10,7 @@ pkgbase = python-sphinx-jupyterbook-latex
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-sphinx
+	depends = python-packaging
 	source = sphinx-jupyterbook-latex-1.0.0.tar.gz::https://github.com/executablebooks/sphinx-jupyterbook-latex/archive/v1.0.0.tar.gz
 	sha512sums = c88b6fe9c2386d931a2dfdad7bb4cd33d82894086b39ed6e578ec329b127892e8cfa0f107b1531c3aea541da0c244c55de81428e81e7e08554a30b77ac773378
 
