@@ -28,11 +28,11 @@ prepare() {
     echo "Configuring asdf..."
 
     if [[ $SHELL == *"bash"* ]]; then
-      echo -e "\n. $HOME/.asdf/asdf.sh" >> ~/.bashrc
-      echo -e "\n. $HOME/.asdf/completions/asdf.bash" >> ~/.bashrc
+      echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.bashrc
+    elif [[ $SHELL == *"fish"* ]]; then
+      echo -e "\nsource /opt/asdf-vm/asdf.fishh" >> ~/.config/fish/config.fish
     elif [[ $SHELL == *"zsh"* ]]; then
-      echo -e "\n. $HOME/.asdf/asdf.sh" >> ~/.zshrc
-      echo -e "\n. $HOME/.asdf/completions/asdf.bash" >> ~/.zshrc
+      echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.zshrc
     else
       echo "Unsupported shell. Please add asdf to your shell's initialization file manually."
       exit 1
