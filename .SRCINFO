@@ -1,0 +1,12 @@
+pkgbase = pingpong
+	pkgdesc = Show internet connection status by ping
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = bash
+	depends = coreutils
+	source = pingpong.sh
+	sha256sums = SKIP
+
+pkgname = pingpong
