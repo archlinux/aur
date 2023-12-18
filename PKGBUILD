@@ -8,8 +8,8 @@ _pkgmainver=74
 _pkgminorver=2
 pkgname="${_pkgname}${_pkgmainver}"
 pkgver="${_pkgmainver}.${_pkgminorver}"
-pkgrel=2
-pkgdesc="International Components for Unicode library (legcy version ${_pkgmainver})."
+pkgrel=3
+pkgdesc="International Components for Unicode library (legacy version ${_pkgmainver})."
 arch=(
   'i686'
   'x86_64'
