@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-bin
 _pkgname=sftpgo
-pkgver=2.5.5
+pkgver=2.5.6
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional HTTP, FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
 arch=('x86_64')
@@ -26,7 +26,7 @@ install=${pkgname}.install
 source=("https://github.com/drakkan/sftpgo/releases/download/v${pkgver}/sftpgo_v${pkgver}_linux_x86_64.tar.xz"
   "sftpgo.json"
   "sftpgo.sysusers")
-sha256sums=('34fd4b5c1e452b2197279778bc72f0244973b245f02e89323cc97084fd5a9bda'
+sha256sums=('8a1c614511343f184d75bf22b1546fdabe31b4ce30c62e08eeac1e52ed83e53c'
   'dd43c42a5b9e321d1ca500b7e8da7985be25152ef1a4de4e54342d115a398a10'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
