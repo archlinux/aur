@@ -3,14 +3,14 @@
 
 pkgbase=python-pyexecjs
 _name=PyExecJS2
-pkgname=('python-pyexecjs2')
+pkgname=('python-pyexecjs')
 pkgver=1.6.1
-pkgrel=2
+pkgrel=25
 pkgdesc="Run JavaScript code from Python."
 arch=('any')
 url="https://pypi.python.org/pypi/PyExecJS2"
 license=('MIT')
-provides=("${pkgbase}")
+provides=("${pkgbase}" "python-pyexecjs2")  
 conflicts=("${pkgbase}")
 depends=('python-six')
 makedepends=('python-build'
