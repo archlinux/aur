@@ -8,7 +8,7 @@ url="https://github.com/siyia2/mounter-elite-plus"
 license=('GPL3')
 depends=('bash' 'coreutils' 'readline' 'sudo')
 optdepends=('ccd2iso: BIN/IMG conversion support' 'mdf2iso: MDF/MDS conversion support')
-md5sums=('fe1ac22692d4d19addee9a6b6968e695')
+md5sums=('5645279ee9810c2fa69fa66ea57255c1')
 
 source=("https://github.com/siyia2/mounter-elite-plus/archive/v${pkgver}.tar.gz")
 
