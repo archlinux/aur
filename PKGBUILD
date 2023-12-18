@@ -4,10 +4,17 @@
 # https://www.winehq.org
 # https://gitlab.winehq.org/wine/wine
 
-pkgname=wine-staging-wow64
-_name=wine
+## options
+: ${_build_staging:=true}
+: ${_build_wow64:=true}
+
+[[ "${_build_staging::1}" == "t" ]] && _pkgtype+="-staging"
+[[ "${_build_wow64::1}" == "t" ]] && _pkgtype+="-wow64"
+
+## basic info
+_pkgname=wine
+pkgname="${_pkgname}${_pkgtype:-}"
 pkgver=9.0rc2
-_pkgver=9.0-rc2
 pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
@@ -41,7 +48,6 @@ makedepends=(
   autoconf
   bison
   flex
-  git
   libgphoto2
   mingw-w64-gcc
   opencl-headers
@@ -68,33 +74,42 @@ optdepends=(
   sane
 )
 
-provides=(
-  "wine-staging=$pkgver"
-  "wine-wow64=$pkgver"
-  "wine=$pkgver"
-)
+provides=("wine=$pkgver")
 conflicts=("wine")
 
 options=(staticlibs !lto)
 install=wine.install
 
-_pkgsrc="$_name"
+_pkgver="${pkgver/rc/-rc}"
+_pkgsrc="$_pkgname-$_pkgver"
 source=(
-  git+https://gitlab.winehq.org/wine/wine.git#tag=wine-$_pkgver
-  git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$_pkgver
-  30-win32-aliases.conf
-  wine-binfmt.conf
+  "https://dl.winehq.org/wine/source/${pkgver::1}.0/$_pkgsrc.tar.xz"
+  "30-win32-aliases.conf"
+  "wine-binfmt.conf"
 )
-b2sums=('SKIP'
-        'SKIP'
-        '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
-        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
+sha256sums=(
+  'd9d7cc0bb4cabc28ae80e054e8743bceaa50dcfc6ac2fd9bf419deadfa43066f'
+  '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+  '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
+)
 
-prepare() {
-  # apply wine-staging patchset
-  cd "$_pkgsrc"
-  ../wine-staging/staging/patchinstall.py --all
-}
+if [[ "${_build_staging::1}" == "t" ]] ; then
+  makedepends+=('git')
+
+  provides+=(
+    "wine-staging=$pkgver"
+    "wine-wow64=$pkgver"
+  )
+
+  source+=("git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$_pkgver")
+  sha256sums+=('SKIP')
+
+  prepare() {
+    # apply wine-staging patchset
+    cd "$_pkgsrc"
+    ../wine-staging/staging/patchinstall.py --all
+  }
+fi
 
 build() {
   cd "$_pkgsrc"
@@ -118,7 +133,7 @@ package() {
   ln -sf /usr/bin/wine "$pkgdir"/usr/bin/wine64
 
   # Font aliasing settings for Win32 applications
-  install -Dm644 "$srcdir"/30-win32-aliases.conf "$pkgdir"/usr/share/fontconfig/conf.avail
+  install -Dm644 "$srcdir"/30-win32-aliases.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
   install -d "$pkgdir"/usr/share/fontconfig/conf.default
   ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir"/usr/share/fontconfig/conf.default/30-win32-aliases.conf
 
