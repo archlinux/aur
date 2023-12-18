@@ -2,7 +2,7 @@
 
 pkgname=quickmedia-git
 pkgver=r1405.8b5ebcf
-pkgrel=1
+pkgrel=2
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
@@ -33,7 +33,7 @@ sha512sums=(
 
 prepare() {
     cd "$srcdir"
-    mkdir emoji
+    mkdir -p emoji
     bsdtar -xf twemoji-2.tar.gz -C emoji
 }
 
