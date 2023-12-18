@@ -36,6 +36,14 @@ yay -S com.163.music.spark
 cd arch-wine-neteasemusic && makepkg -si
 ```
 
+随后正常运行即可。但你更新本 aur 包后需要手动删除以下目录使其重新生成：
+
+```bash
+~/.deepinwine/Spark-CloudMusic
+```
+
+卸载时也请手动移除该目录。
+
 
 
 ### 3、注意事项
