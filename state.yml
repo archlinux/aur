@@ -1,0 +1,14 @@
+---
+config_path: /etc/camilladsp/configs/camilladsp.yml
+mute:
+  - false
+  - false
+  - false
+  - false
+  - false
+volume:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0

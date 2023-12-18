@@ -1,4 +1,6 @@
 ---
+title: ~
+description: ~
 devices:
   samplerate: 44100
   chunksize: 2048
@@ -18,42 +20,42 @@ devices:
   enable_rate_adjust: false
   target_level: 2048
   adjust_period: 10.0
-  enable_resampling: false
-  resampler_type: BalancedAsync
-  capture_samplerate: 44100
+  resampler: ~
+  capture_samplerate: ~
   stop_on_rate_change: false
   rate_measure_interval: 3.0
+  volume_ramp_time: ~
+mixers: {}
 filters:
   Bass:
+    type: Biquad
+    description: ~
     parameters:
-      freq: 85
-      gain: 0
-      q: 0.9
       type: Lowshelf
-    type: Biquad
+      freq: 85.0
+      q: 0.9
+      gain: 0.0
   Treble:
-    parameters:
-      freq: 6500
-      gain: 0
-      q: 0.7
-      type: Highshelf
     type: Biquad
-  Volume:
+    description: ~
     parameters:
-      ramp_time: 200
-    type: Volume
-mixers: {}
+      type: Highshelf
+      freq: 6500.0
+      q: 0.7
+      gain: 0.0
+processors: ~
 pipeline:
-- channel: 0
-  names:
-  - Volume
-  - Bass
-  - Treble
-  type: Filter
-- channel: 1
-  names:
-  - Volume
-  - Bass
-  - Treble
-  type: Filter
-  
+  - type: Filter
+    channel: 0
+    names:
+      - Bass
+      - Treble
+    description: ~
+    bypassed: ~
+  - type: Filter
+    channel: 1
+    names:
+      - Bass
+      - Treble
+    description: ~
+    bypassed: ~
