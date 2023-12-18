@@ -1,7 +1,7 @@
 pkgbase = roundedsbe-git
 	pkgdesc = A fork of SierraBreezeEnhanced with integrated corner rounding effect CornersShader (reworked version of what used to be called LightlyShaders) and shared configuration.
 	pkgver = 1.0.3.r30.g4f71ab0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/a-parhom/RoundedSBE
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,6 @@ pkgbase = roundedsbe-git
 	makedepends = kglobalaccel5
 	makedepends = kde-dev-utils
 	makedepends = knotifications5
-	makedepends = kinit
 	makedepends = kwin
 	makedepends = qt5-declarative
 	depends = kcoreaddons5
