@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
-pkgver=22.1.2
+pkgver=22.1.11
 pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
@@ -14,8 +14,8 @@ options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz"
         "drawio.xml")
-sha512sums=('c615ad729289aaca015ceb502e2a6f081c3897d1b77af75b35c45e6e17b39381564549b234822939102f0c24c2b75bb137527e47960f7d2bf7f938940cde5251'
-            '59550ae04763fde2126228e21105fa243d8c127efd7e953577dee03ddcdf9e6f6fe6536e45a7f989540027c863796e6e11342f4f8f6073230e9202388767ca2d'
+sha512sums=('eb54cb802bf330c4cab15cf2e63b8af0eb099f2f48510d15fed43fb7779a8bc4d2ed58617797a17489c7f1a575a3c2eed186ba6d3cebee842491e5063534aa96'
+            '91af08d1d6b569060854b8974acfa5fb484175a35b0331d8259e52b0e701de62ac8778dc5f51a929d25a2111775b6560dc692595784cf8583b7952cf5f9689ca'
             '8899108b4112f065173a077ca68d4d915780bcc993c69924098e134fa05338a20cb0391720b7b45c27071f789fbe5a6a02228dd633570e91fb4482082c480539')
 
 build() {
