@@ -11,7 +11,8 @@ url="https://flash.pm/browser/"
 license=(unknown)
 depends=(electron9 nodejs bash)
 makedepends=(imagemagick git innoextract)
-conflicts=(flashbrowser-git flashbrowser)
+conflicts=(flashbrowser)
+provides=(flashbrowser)
 source=(
 	#	"https://github.com/radubirsan/FlashBrowser/releases/download/v${pkgver}/FlashBrowser-linux-x64.zip"
 	"https://github.com/radubirsan/FlashBrowser/releases/download/v0.81/v0.81_FlashBrowser_x64.exe"
@@ -19,8 +20,8 @@ source=(
 	$pkgname.desktop
 )
 sha256sums=('ce573c0b8c54161b468056ab6c62214edea12b05c1c25e1bbb6e54ace8a703ec'
-            'SKIP'
-            'de78027fba577b69923ef2d59598f3426a7632c7192a20d6d2fbe5dfcf26655b')
+	'SKIP'
+	'de78027fba577b69923ef2d59598f3426a7632c7192a20d6d2fbe5dfcf26655b')
 
 prepare() {
 	innoextract *.exe
