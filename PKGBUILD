@@ -2,7 +2,7 @@
 
 pkgname=hcclient
 pkgver=1.18.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A terminal client for hack.chat"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
@@ -21,8 +21,9 @@ build() {
                      src/hcclient/formatter.py \
                      src/hcclient/hook.py
   python -m venv iso-env
-  poetry build -f wheel --no-ansi --no-interaction --no-cache
-  ./iso-env/bin/pip install --disable-pip-version-check --no-color dist/*.whl 
+  python -m venv .venv
+  poetry build -f wheel --no-ansi --no-interaction
+  ./iso-env/bin/pip install --disable-pip-version-check --no-color "dist/hcclient-${pkgver}-py3-none-any.whl"
   ./iso-env/bin/pip uninstall setuptools pip -y --quiet
   rm iso-env/bin/{activate*,Activate*}
 }
