@@ -12,9 +12,9 @@ arch=('any')
 
 makedepends=('git')
 
-source=('git+https://flutter.googlesource.com/gallery-assets')
+source=('https://flutter.googlesource.com/gallery-assets/+archive/refs/heads/master/lib/fonts.tar.gz')
 md5sums=('SKIP')
 
 package() {
-  install -Dm644 "${srcdir}/gallery-assets/lib/fonts/GoogleSans"*".ttf" -t "${pkgdir}/usr/share/fonts/TTF"
+  install -Dm644 "${srcdir}/GoogleSans"*".ttf" -t "${pkgdir}/usr/share/fonts/TTF"
 }

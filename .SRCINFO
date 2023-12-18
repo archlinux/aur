@@ -5,7 +5,7 @@ pkgbase = ttf-google-sans
 	url = https://flutter.googlesource.com/gallery-assets
 	arch = any
 	makedepends = git
-	source = git+https://flutter.googlesource.com/gallery-assets
+	source = https://flutter.googlesource.com/gallery-assets/+archive/refs/heads/master/lib/fonts.tar.gz
 	md5sums = SKIP
 
 pkgname = ttf-google-sans
