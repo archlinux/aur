@@ -1,6 +1,6 @@
 pkgbase = r-tidygraph
 	pkgdesc = A Tidy API for Graph Manipulation
-	pkgver = 1.2.3
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tidygraph
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = r-tidygraph
 	optdepends = r-network
 	optdepends = r-seriation
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/tidygraph_1.2.3.tar.gz
-	sha256sums = b09c06b12583ae57edd1ec01e61a0e1b7a4b82358361fb28a6046dbece475687
+	source = https://cran.r-project.org/src/contrib/tidygraph_1.3.0.tar.gz
+	sha256sums = 93b314714b7d803565503f65b3b224856f83fe01686626059cb42d52ecb51487
 
 pkgname = r-tidygraph

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tidygraph
-_pkgver=1.2.3
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A Tidy API for Graph Manipulation'
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b09c06b12583ae57edd1ec01e61a0e1b7a4b82358361fb28a6046dbece475687')
+sha256sums=('93b314714b7d803565503f65b3b224856f83fe01686626059cb42d52ecb51487')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
