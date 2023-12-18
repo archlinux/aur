@@ -15,7 +15,7 @@
 _pkgname=wine
 pkgname="${_pkgname}${_pkgtype:-}"
 pkgver=9.0rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
@@ -77,8 +77,10 @@ optdepends=(
 provides=("wine=$pkgver")
 conflicts=("wine")
 
+install="wine.install"
+backup=("usr/lib/binfmt.d/wine.conf")
+
 options=(staticlibs !lto)
-install=wine.install
 
 _pkgver="${pkgver/rc/-rc}"
 _pkgsrc="$_pkgname-$_pkgver"
