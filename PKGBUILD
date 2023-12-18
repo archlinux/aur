@@ -95,6 +95,12 @@ package() {
     "$srcdir/k3s.service.env" \
     -t "$pkgdir/etc/systemd/system"
 
+  # air-gapped images
+  install -Dm644 \
+    dist/artifacts/k3s-airgap-images-amd64.tar.zst \
+    dist/artifacts/k3s-images.txt \
+    -t "$pkgdir/var/lib/rancher/k3s/agent/images"
+
   install -Dm644 \
     LICENSE \
     -t "$pkgdir/usr/share/licenses/$pkgname"
