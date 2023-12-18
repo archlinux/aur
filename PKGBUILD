@@ -4,18 +4,17 @@
 
 pkgname=ttf-google-sans
 pkgver=1
-pkgrel=3
+pkgrel=4
 
 pkgdesc="Google's signature family of fonts"
-url='https://github.com/mnemotiv/Google-Sans-Fonts'
+url='https://flutter.googlesource.com/gallery-assets'
 arch=('any')
-license=('Apache')
 
 makedepends=('git')
 
-source=('git+https://github.com/mnemotiv/Google-Sans-Fonts')
+source=('git+https://flutter.googlesource.com/gallery-assets')
 md5sums=('SKIP')
 
 package() {
-  install -Dm644 "${srcdir}/Google-Sans-Fonts/GoogleSans-"*".ttf" -t "${pkgdir}/usr/share/fonts/TTF"
+  install -Dm644 "${srcdir}/gallery-assets/lib/fonts/GoogleSans"*".ttf" -t "${pkgdir}/usr/share/fonts/TTF"
 }

@@ -1,12 +1,11 @@
 pkgbase = ttf-google-sans
 	pkgdesc = Google's signature family of fonts
 	pkgver = 1
-	pkgrel = 3
-	url = https://github.com/mnemotiv/Google-Sans-Fonts
+	pkgrel = 4
+	url = https://flutter.googlesource.com/gallery-assets
 	arch = any
-	license = Apache
 	makedepends = git
-	source = git+https://github.com/mnemotiv/Google-Sans-Fonts
+	source = git+https://flutter.googlesource.com/gallery-assets
 	md5sums = SKIP
 
 pkgname = ttf-google-sans
