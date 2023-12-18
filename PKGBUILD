@@ -7,7 +7,7 @@ provides=(cpu-x)
 conflicts=(cpu-x)
 url='https://thetumultuousunicornofdarkness.github.io/CPU-X'
 license=('GPL3')
-depends=('gtkmm3' 'ncurses' 'libcpuid>=0.6.0' 'pciutils' 'glfw' 'vulkan-icd-loader' 'procps-ng>=4.0.0')
+depends=('gtkmm3' 'ncurses' 'libcpuid>=0.6.0' 'pciutils' 'glfw' 'vulkan-icd-loader' 'procps-ng>=4.0.0' 'libprocps')
 optdepends=('opengl-driver: packaged openGL driver'
             'vulkan-driver: packaged Vulkan driver')
 _mirror='http://download.opensuse.org'

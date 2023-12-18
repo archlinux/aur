@@ -13,6 +13,7 @@ pkgbase = cpu-x-bin
 	depends = glfw
 	depends = vulkan-icd-loader
 	depends = procps-ng>=4.0.0
+	depends = libprocps
 	optdepends = opengl-driver: packaged openGL driver
 	optdepends = vulkan-driver: packaged Vulkan driver
 	provides = cpu-x
