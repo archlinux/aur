@@ -3,7 +3,7 @@
 pkgname='python-skyfield'
 _name=${pkgname#python-}
 pkgver='1.46'
-pkgrel=1
+pkgrel=2
 pkgdesc="Elegant astronomy for Python"
 url="https://rhodesmill.org/skyfield/"
 depends=('ipython' 'python-certifi' 'python-jplephem' 'python-matplotlib' 'python-pandas' 'python-sgp4' 'python-sympy')
@@ -16,12 +16,12 @@ sha256sums=('27a54edbc46232a11019bcd88a9b74d36770aff26ff8ee631b90a81ba0be93e4')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${srcdir}/${_name}-${pkgver}"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname"
-	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
