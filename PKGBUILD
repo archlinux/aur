@@ -1,7 +1,7 @@
 # Maintainer: yhtez <yhtez@protonmail.com>
 pkgname=olympus
-pkgver=23.10.20.01
-_commit=bd2eab02f7bee22e236ce2e5090839a748c66d79
+pkgver=23.11.17.01
+_commit=d21659a51429250084f730422c75e14f00a8aa83
 pkgrel=1
 pkgdesc='Everest installer / mod manager for Celeste'
 arch=('x86_64')
