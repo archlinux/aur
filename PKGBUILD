@@ -7,7 +7,7 @@ pkgname=(
   $pkgbase-management
   $pkgbase-signal
 )
-pkgver=0.24.4
+pkgver=0.25.0
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
@@ -23,7 +23,7 @@ source=(
   'netbird-management.env'
   'netbird-management.service'
 )
-sha256sums=('7a954fcab034394819d56172e0bf4991c19ef94410afbce987b1a87f559ded80'
+sha256sums=('fdb1c67a4ad67523028064154f4dda2690e322059dca389f04abc0457da41d53'
             '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
             '3bd6d2692dc6d08cfabce1ba2514c02f4463294ebbdb63828baca5d9e4c9daa9'
             '80cd7b6a22087a83c1332c15693d8a18b780ef5ecf3fbc562af28d1a623eef3b'
@@ -78,7 +78,7 @@ package_netbird() {
   install -Dm755 build/client "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 build/client.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm644 build/client.fish "$pkgdir/usr/share/fish/completions/$pkgname.fish"
+  install -Dm644 build/client.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
   install -Dm644 build/client.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
 
@@ -96,7 +96,7 @@ package_netbird-management() {
   install -Dm755 build/management "$pkgdir/usr/bin/$pkgbase-mgmt"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 build/management.bash "$pkgdir/usr/share/bash-completion/completions/$pkgbase-mgmt"
-  install -Dm644 build/management.fish "$pkgdir/usr/share/fish/completions/$pkgbase-mgmt.fish"
+  install -Dm644 build/management.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgbase-mgmt.fish"
   install -Dm644 build/management.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgbase-mgmt"
 }
 
@@ -113,6 +113,6 @@ package_netbird-signal() {
   install -Dm755 build/signal "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 build/signal.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm644 build/signal.fish "$pkgdir/usr/share/fish/completions/$pkgname.fish"
+  install -Dm644 build/signal.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
   install -Dm644 build/signal.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
