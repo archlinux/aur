@@ -1,19 +1,18 @@
 pkgbase = cycode
 	pkgdesc = A web-based HTML Editor, Markdown Editor, and WYSIWYG Editor,a code editor with a primary focus on web development.
-	pkgver = 1.2.3
-	pkgrel = 3
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/magayagalabs/CyCode
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = git
 	depends = electron24
-	depends = hicolor-icon-theme
 	conflicts = cycode
-	source = cycode-1.2.3::git+https://github.com/magayagalabs/CyCode.git#tag=v1.2.3
+	source = cycode-1.3.0::git+https://github.com/magayagalabs/CyCode.git#tag=v1.3.0
 	source = cycode.sh
 	sha256sums = SKIP
-	sha256sums = bae1f745add94b8849348816c2838894de28897f0be6112a4331ea24d68daa32
+	sha256sums = 31791ab084b5974d71d1507fc4faf880aeee753f7c0e70bb20b15ee9b7160f33
 
 pkgname = cycode
