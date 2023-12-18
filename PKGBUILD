@@ -2,7 +2,7 @@
 pkgname=deepqt
 _module='DeepQt'
 pkgver='1.1.7'
-pkgrel=2
+pkgrel=3
 pkgdesc="Harness the power of the DeepL API with this friendly user interface. Translate plain text and epub files."
 url="https://github.com/VoxelCubes/DeepQt"
 depends=('python>=3.10.0' 'python-pipx')
@@ -19,7 +19,7 @@ package() {
 
     # Use a directory within $srcdir for PIPX_HOME
     local pipx_home="${pkgdir}/opt/pipx"
-    local pipx_bin_dir="${pkgdir}/usr/local/bin"
+    local pipx_bin_dir="${pkgdir}/usr/bin"
     mkdir -p "${pipx_home}"
     mkdir -p "${pipx_bin_dir}"
 
