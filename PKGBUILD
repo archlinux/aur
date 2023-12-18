@@ -1,19 +1,32 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
-_pipname=random2
-pkgname=python-$_pipname
-pkgver=1.0.1
-pkgrel=9
-pkgdesc="Python 3 compatible port of Python 2 random module"
+_pyname=random2
+pkgname=python-$_pyname
+pkgver=1.0.2
+pkgrel=1
+pkgdesc='Python 3 compatible port of Python 2 random module'
 arch=(any)
-url="https://pypi.org/project/random2/"
+url='https://pypi.org/project/random2/'
 license=(PSF)
 depends=(python)
-makedepends=(python-setuptools)
-source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.zip")
-sha256sums=('34ad30aac341039872401595df9ab2c9dc36d0b7c077db1cea9ade430ed1c007')
+makedepends=(python-build
+             python-installer
+             python-setuptools
+             python-wheel)
+source=(https://github.com/strichter/random2/archive/$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('e63d92cfcbbe2f1dca064504e75f9e5e0f27f84867ec7fc7070cd71ca5d53fcd')
+
+build() {
+  cd $_pyname-$pkgver
+  python -m build -wn
+}
+
+check() {
+  cd $_pyname-$pkgver
+  python -m unittest discover
+}
 
 package() {
-  cd $_pipname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd $_pyname-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

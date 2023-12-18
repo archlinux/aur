@@ -1,0 +1,16 @@
+pkgbase = python-random2
+	pkgdesc = Python 3 compatible port of Python 2 random module
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/random2/
+	arch = any
+	license = PSF
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/strichter/random2/archive/1.0.2/python-random2-1.0.2.tar.gz
+	sha256sums = e63d92cfcbbe2f1dca064504e75f9e5e0f27f84867ec7fc7070cd71ca5d53fcd
+
+pkgname = python-random2
