@@ -2,7 +2,7 @@
 _pkgname='reSnap'
 pkgname=$(echo "$_pkgname-git" | tr '[:upper:]' '[:lower:]')
 pkgdesc="reMarkable screenshots over SSH."
-pkgver=r65.ac3c385
+pkgver=r110.fa7d712
 pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
