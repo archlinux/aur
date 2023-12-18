@@ -9,6 +9,7 @@ pkgbase = an
 	depends = words
 	depends = icu
 	source = an-1.2.tar.gz::http://ftp.debian.org/debian/pool/main/a/an/an_1.2.orig.tar.gz
+	md5sums = 5d28b8003a745f0110ed70f0cd4aa051
 
 pkgname = an
 
