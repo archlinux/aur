@@ -2,8 +2,8 @@
 # Contributor : bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=meshroom-bin
-pkgver=2023.2.0
-pkgrel=3
+pkgver=2023.3.0
+pkgrel=1
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=( 'x86_64')
 url="https://github.com/alicevision/meshroom"
@@ -15,9 +15,9 @@ provides=('meshroom')
 conflicts=('meshroom')
 options=('!strip')
 
-_extractedname='Meshroom-2023.2.0-av3.1.0-centos7-cuda11.3.1'
+_extractedname='Meshroom-2023.3.0'
 _downloadapp='Meshroom.html'
-_filename='Meshroom-2023.2.0-linux.tar.gz'
+_filename='Meshroom-2023.3.0-linux.tar.gz'
 _srcurl="$(python fosshub.py ${_downloadapp} ${_filename})"
 source=(
   ${_srcurl}
@@ -28,7 +28,7 @@ source=(
   'meshroom_compute'
 )
 
-sha256sums=('47efa69780bfe83bc24932a713340e81916084b79850445e65e205fd2b632fa6'
+sha256sums=('92b81246356df3fd37ea08e1d09519392897aaa730843eb9fd4bd0582916d391'
             '5efd9924e4b0cea03ec24c797bd909fc20abcf6fb9449b2e4305d8b416372df0'
             '6b8826602092d3c7d28fd1762b23b30aa4cd1c12826440168ddf003a32b6b805'
             'a24e45c707c8e0689f2f1b7952f652e824b7c55e159f4c4a0421fabd428cdf5e'
