@@ -4,7 +4,7 @@
 
 pkgname=an
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Anagram Generator"
 arch=('i686' 'x86_64')
 url="https://alioth.debian.org/projects/anagram/"
