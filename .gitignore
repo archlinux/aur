@@ -1,4 +1,4 @@
-pkg
-src
-wine-8*
-wine-wow64*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
