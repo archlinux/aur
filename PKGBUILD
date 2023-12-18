@@ -1,11 +1,11 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Maintainer: Thibault Molleman <aur at thibaultmol d0t link>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
-# Contributor: Thibault Molleman <aur at thibaultmol d0t link>
 
 pkgname='sejda-desktop'
-pkgver='7.5.4'
+pkgver='7.6.6'
 pkgrel='1'
 license=('custom:EULA')
 pkgdesc='PDF editor'
@@ -13,8 +13,8 @@ arch=('x86_64')
 depends=('gconf')
 url='http://www.sejda.com/desktop'
 source=("https://sejda-cdn.com/downloads/sejda-desktop_${pkgver}_amd64.deb")
-md5sums=('e130d70e4bf219f8505f77a32316bdf3')
-sha512sums=('d2d4ae9184a550a16402e62a872e2378aec551fca7108141a6f07f37132374cf15afa8476b741bfff37be6b3271ffa112e09e9b20e34695d0550a13cc8df0973')
+md5sums=('62ffa2a93cc3c22b9787c6b639f85e34')
+sha512sums=('6d0d4180d4f7bc793779fdab7daca94af9cec5b92fe5cf579f94071284b1a29e5f29ac96489e41f265ea650a74d7e9a288162a1d67cfacd9a2e928fe289200d6')
 options=('!strip')
 
 prepare() {
