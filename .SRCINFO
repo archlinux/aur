@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-coin-or-coinmumps
 	pkgdesc = COIN-OR autotools harness to build MUMPS (mingw-w64)
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://github.com/coin-or-tools/ThirdParty-MUMPS/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-coin-or-coinmumps
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/coin-or-tools/ThirdParty-Mumps/archive/releases/3.0.4.tar.gz
-	sha256sums = 506feab2921ceef5a77e660b6ca5924b425807b3b0e7852b0f9835b72cf79e02
+	source = https://github.com/coin-or-tools/ThirdParty-Mumps/archive/releases/3.0.5.tar.gz
+	sha256sums = 7010384ae705939d8e8bb784e96eb117f91e572f29fab14b72a1d86765cfde01
 
 pkgname = mingw-w64-coin-or-coinmumps
