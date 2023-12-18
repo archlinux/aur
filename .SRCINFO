@@ -1,12 +1,12 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 2023.09.1.494
-	pkgrel = 2
+	pkgver = 2023.12.0.369
+	pkgrel = 1
 	url = https://www.rstudio.com/products/rstudio/
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
-	makedepends = cmake>=3.1.0
+	makedepends = cmake>=3.6.3
 	makedepends = boost
 	makedepends = desktop-file-utils
 	makedepends = jdk8-openjdk
@@ -36,15 +36,14 @@ pkgbase = rstudio-desktop
 	optdepends = subversion: for subversion support
 	optdepends = openssh-askpass: for a git ssh access
 	optdepends = quarto: for Quarto projects support
-	noextract = gin-2.1.2.zip
-	source = rstudio-2023.09.1.494.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v2023.09.1+494.tar.gz
+	source = rstudio-2023.12.0.369.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v2023.12.0+369.tar.gz
 	source = https://github.com/quarto-dev/quarto/archive/refs/heads/release/rstudio-cherry-blossom.zip
-	source = https://nodejs.org/dist/v16.14.0/node-v16.14.0-linux-x64.tar.gz
+	source = https://nodejs.org/dist/v18.18.2/node-v18.18.2-linux-x64.tar.gz
 	source = qt.conf
 	source = pandoc_version.patch
-	sha256sums = 38526a5816e980b12aeaef7debd2151f08ef2e54fed83af2622eb7cdeeb479a2
+	sha256sums = 6ee6acdd361b526fdc5fc922600cec0f04a7fe8304ae62e5a65d5fd4c55e824c
 	sha256sums = df3a040f0cf4ce1892519082dd6822a8ca433e9e4f02d9394ab2931733f7e5a6
-	sha256sums = 2c69e7b040c208b61ebf9735c63d2e5bcabfed32ef05a9b8dd5823489ea50d6b
+	sha256sums = a44c3e7f8bf91e852c928e5d8bd67ca316b35e27eec1d8acbe3b9dbe03688dab
 	sha256sums = 723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921
 	sha256sums = 286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e
 

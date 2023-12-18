@@ -2,26 +2,24 @@
 
 pkgname=rstudio-desktop
 _vermajor=2023
-_verminor=09
-_verpatch=1
-_versuffix=494
-_gitcommit=cd7011d
+_verminor=12
+_verpatch=0
+_versuffix=369
+_gitcommit=960e8fa
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}-${_versuffix}
-_gwtver=2.8.2
-_ginver=2.1.2
-_nodever=16.14.0
+_nodever=18.18.2
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=2
+pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
 depends=('r>=3.3.0' 'boost-libs' 'qt5-sensors' 'qt5-svg' 'qt5-webengine' 'qt5-xmlpatterns' 'postgresql-libs' 'sqlite3' 'soci' 'clang' 'hunspell-en_US' 'mathjax2' 'pandoc' 'yaml-cpp')
-makedepends=('git' 'cmake>=3.1.0' 'boost' 'desktop-file-utils' 'jdk8-openjdk' 'apache-ant' 'unzip' 'openssl' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
+makedepends=('git' 'cmake>=3.6.3' 'boost' 'desktop-file-utils' 'jdk8-openjdk' 'apache-ant' 'unzip' 'openssl' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access'
@@ -33,13 +31,11 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "qt.conf"
         "pandoc_version.patch")
 
-sha256sums=('38526a5816e980b12aeaef7debd2151f08ef2e54fed83af2622eb7cdeeb479a2'
+sha256sums=('6ee6acdd361b526fdc5fc922600cec0f04a7fe8304ae62e5a65d5fd4c55e824c'
             'df3a040f0cf4ce1892519082dd6822a8ca433e9e4f02d9394ab2931733f7e5a6'
-            '2c69e7b040c208b61ebf9735c63d2e5bcabfed32ef05a9b8dd5823489ea50d6b'
+            'a44c3e7f8bf91e852c928e5d8bd67ca316b35e27eec1d8acbe3b9dbe03688dab'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
             '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
-
-noextract=("gin-${_ginver}.zip")
 
 prepare() {
     cd ${srcdir}/${_srcname}
