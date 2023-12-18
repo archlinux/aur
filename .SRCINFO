@@ -1,13 +1,13 @@
 pkgbase = act-bin
 	pkgdesc = Run your GitHub Actions locally
-	pkgver = 0.2.55
+	pkgver = 0.2.56
 	pkgrel = 0
 	url = https://github.com/nektos/act
 	arch = x86_64
 	license = MIT
 	provides = act
 	conflicts = act
-	source = act-bin-0.2.55.tar.gz::https://github.com/nektos/act/releases/download/v0.2.55/act_Linux_x86_64.tar.gz
-	sha256sums = 9180c41470e089c244754371c5363f3fe0c2e25934055f359e3a09b9ea45c4ef
+	source = act-bin-0.2.56.tar.gz::https://github.com/nektos/act/releases/download/v0.2.56/act_Linux_x86_64.tar.gz
+	sha256sums = 597883fc10bc0fafb56b5aff581940afc74bf86fd408ac1c87512493aea10b06
 
 pkgname = act-bin
