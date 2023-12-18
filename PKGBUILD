@@ -3,7 +3,7 @@
 _base=sphinx-external-toc
 pkgname=python-${_base}
 pkgdesc="A sphinx extension that allows the site-map to be defined in a single YAML file"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=(any)
 url="https://github.com/executablebooks/${_base}"
@@ -12,7 +12,7 @@ depends=(python-click python-yaml python-sphinx)
 makedepends=(python-build python-flit-core python-installer)
 checkdepends=(python-pytest-regressions)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('4ec47beccb043ea87ef08e47f00df41c2536aca370cf97237b810fe7309ee2cd89a195584de6dead7acc12076fc2b5b64a7b1d9201e5cc21244c5f84009856a4')
+sha512sums=('5d0a6442538e773129ee5682e930da6366187b3bcf1f5c11327829c9b8df0a279bb7026c247f575cd9833a8c53f0e1b9bca4748ab9d53e8c2c31aab9cb8a833d')
 
 build() {
   cd ${_base}-${pkgver}
