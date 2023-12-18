@@ -6,7 +6,7 @@
 
 pkgname='goldendict'
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Feature-rich dictionary lookup program supporting multiple dictionary formats'
 arch=('i686' 'x86_64')
