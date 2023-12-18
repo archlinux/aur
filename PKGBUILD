@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone
 _pkgname=Bluestone
-pkgver=0.12.2
+pkgver=0.12.3
+_electronversion=22
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
 arch=('x86_64')
@@ -50,6 +51,10 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
