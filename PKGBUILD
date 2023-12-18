@@ -3,24 +3,25 @@
 _pkgname=setRNG
 _pkgver=2022.4-1
 pkgname=r-${_pkgname,,}
-pkgver=2022.4.1
-pkgrel=3
-pkgdesc='Set (Normal) Random Number Generator and Seed'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=8
+pkgdesc="Set (Normal) Random Number Generator and Seed"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL2)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('61c06e6bd6b43c295472c6990266fe87ca41e57db04d3460e756a35ef24e0824')
+md5sums=('777174614fec2a586a145352bb660784')
+b2sums=('628fd4c741def2375e4463c567ba203b6f58a0806e3d6852642a77d4537657eb50b0afa2fdaa38470ef8230c50bb023a00f667c06e846473b6c31318ef0d9e9b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
