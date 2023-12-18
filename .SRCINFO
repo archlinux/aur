@@ -15,6 +15,6 @@ pkgbase = animestream-git
 	source = animestream::git+https://github.com/frostnova721/AnimeStream.git
 	source = animestream.sh
 	sha256sums = SKIP
-	sha256sums = a198354ed58f8a867b69ef67afd19f61fed4046f46e58252f57cfd328ad677b9
+	sha256sums = ba4ed4aaf2c44af5118b06a3099a92ef3bdc969ed964ad508a857d37ae56fd3d
 
 pkgname = animestream-git
