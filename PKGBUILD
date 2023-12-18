@@ -2,7 +2,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=1
+pkgrel=2
 pkgver=1.91.3
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -82,11 +82,14 @@ build() {
     cd "${srcdir}/${pkgbase}-${pkgver}/server"
     npm ci
     npm run build
-    cp -r node_modules/@img "${srcdir}/server-node_modules-@img"
-    rm -rf "${srcdir}/server-node_modules-@img/sharp-libvips"*
-    rm -rf "${srcdir}/server-node_modules-@img/sharp-linuxmusl-x64"
+    tmpdir=$(mktemp -d)
+    cp -r node_modules/@img "${tmpdir}"
+    rm -rf "${tmpdir}/@img/sharp-libvips"*
+    rm -rf "${tmpdir}/@img/sharp-linuxmusl-x64"
     npm prune --omit=dev --omit=optional
-    mv "${srcdir}/server-node_modules-@img/"* node_modules/@img
+    mkdir -p node_modules/@img
+    mv "${tmpdir}/@img/"* node_modules/@img
+    rm -rf "${tmpdir}"
         
     # build machine learning (python)
     # from: ENV and RUN commands in machine-learning/Dockerfile
