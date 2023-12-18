@@ -1,0 +1,23 @@
+pkgbase = piper-zhfix
+	pkgdesc = GTK application to configure gaming mice (zhfix fork)
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/detiam/piper-zhfix
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = flake8
+	makedepends = appstream
+	depends = python
+	depends = python-gobject
+	depends = libratbag
+	depends = python-evdev
+	depends = python-lxml
+	depends = python-cairo
+	provides = piper
+	conflicts = piper
+	source = git+https://github.com/detiam/piper-zhfix#branch=zhfix
+	sha512sums = SKIP
+
+pkgname = piper-zhfix
