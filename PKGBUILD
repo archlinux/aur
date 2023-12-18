@@ -3,7 +3,7 @@ _base=trame-vtk
 _npm_base=vue-vtk-js
 pkgname=python-${_base}
 pkgdesc="VTK widgets for trame"
-pkgver=2.6.2
+pkgver=2.6.3
 _npm_pkgver=3.1.8
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ checkdepends=(python-pytest-xprocess python-pixelmatch python-seleniumbase pytho
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkgver}.tgz
   https://raw.githubusercontent.com/Kitware/vtk-js/2d8de2853a1e63c12f9682acb3531083b77c4e3d/examples/OfflineLocalView/OfflineLocalView.html)
-sha512sums=('55199019946e3a382fa0338517f1e9e67f8bed23e0c58623ff7b790a13156b854ffae23048c856bc340f8c59024b9549ae808bfda497c00a5ea06d3d41431161'
+sha512sums=('cfdac8aa8cfb900b07eff2a8cbc4acfb69e9c6eec2df505511c4afe2ae4c9bd43bb2d66c8f844a06027143bc0e855613e7df8a00f6b77753f1c0998245bbb531'
             '59f7a2ddc8b78865679033c228280bb3c2bc3e600ccb3bf194af368fc1933c146508ac9a40438164aedcace5e274e86dd82b5d873c59a04386b6b464a5b57491'
             '6f09789d876b431370dc55b04ba327092af218d1abea52dd4ec4c9de5b4340cbac2218f438bb231e0cab108f7edcc54d2e15d0c0b262067afb7a515a451414f5')
 
