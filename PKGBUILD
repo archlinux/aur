@@ -1,7 +1,7 @@
 # Maintainer: éclairevoyant
 
 pkgname=wayshot
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Screenshot tool for wlroots compositors"
 arch=(x86_64)
