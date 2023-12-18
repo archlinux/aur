@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=ladish-git
-pkgver=1.r126.g71c8e1cf
+pkgver=1.1.r43.gfc1e901b
 pkgrel=1
 pkgdesc="Session management system for JACK."
 arch=('i686' 'x86_64')
@@ -41,6 +41,6 @@ build() {
 package() {
   cd "${pkgname%-*}"
 #  meson install -C build --destdir "$pkgdir"
-  ./waf install --destdir="${pkgdir}"
+  ./waf install --destdir="$pkgdir"
   install -Dm644 afl21.txt "$pkgdir/usr/share/licenses/$pkgname/AFL-2.1.txt"
 }

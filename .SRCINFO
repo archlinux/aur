@@ -1,6 +1,6 @@
 pkgbase = ladish-git
 	pkgdesc = Session management system for JACK.
-	pkgver = 1.r126.g71c8e1cf
+	pkgver = 1.1.r43.gfc1e901b
 	pkgrel = 1
 	url = https://ladish.org
 	arch = i686
