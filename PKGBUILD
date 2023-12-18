@@ -1,6 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
-pkgver=3.64.2
+pkgver=3.65.0
+_electronversion=22
+_nodeversion=16
 pkgrel=1
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement."
 arch=('x86_64')
@@ -9,14 +11,14 @@ _ghurl="https://github.com/purocean/yn"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'electron22'
+    "electron${_electronversion}"
     'python'
     'java-runtime'
     'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
-    'npm>=9'
+    'npm'
     'yarn'
     'nvm'
     'python>=3.11.5'
@@ -27,19 +29,27 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'b9e30b4772f3d27eb7a3b2c0c0815e63cf5062b82b81d1de5575c842480d35f3')
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 16
-    nvm use 16
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     sed '/deb/d' -i electron-builder.json
-    yarn install
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn electron-rebuild
     node scripts/download-pandoc.js
     node scripts/download-plantuml.js
