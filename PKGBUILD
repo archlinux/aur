@@ -1,7 +1,7 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 _npmname=jsondiffpatch
 pkgname=nodejs-jsondiffpatch
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="diff and patch JavaScript objects (JSON)"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha512sums=('42ecf732f0301f1558357b0e0722fbc48e4407659839e16cc2a687200dea38ade2b11593c62a65044a1c9a6aeee979b10c1d8bee30cd62d600e05ca29a800513')
+sha512sums=('dd022d24e5e9d803f5bafef068191aa399c2be112ff9098901ddfc61babbc0d23be10f810669cb9f81032b3eb223dc46008428505f3ba87b7e91cd48571078cd')
 
 package() {
     npm install -g  --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
