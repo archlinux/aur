@@ -1,0 +1,18 @@
+pkgbase = wshot-git
+	pkgdesc = Screenshot GUI for wayland
+	pkgver = 1.0.2.r9.g94c5ab9
+	pkgrel = 1
+	url = https://github.com/stefonarch/wshot
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = grim
+	depends = slurp
+	depends = zenity
+	depends = jq
+	provides = wshot
+	conflicts = wshot
+	source = git+https://github.com/stefonarch/wshot
+	sha512sums = SKIP
+
+pkgname = wshot-git
