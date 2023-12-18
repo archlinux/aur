@@ -1,5 +1,5 @@
-# Maintainer: jason ryan <jasonwryan@gmail.com>
-# Contributor: Adrien Smith <adrien at panissupraomnia dot dev>
+# Maintainer: Adrien Smith <adrien at panissupraomnia dot dev>
+# Contributor: jason ryan <jasonwryan@gmail.com>
 # Contributor: megadriver <megadriver at gmx dot com>
 # Contributor: Vasil Yonkov <bustervill at gmail dot com>
 # Contributor: Guten Ye <ywzhaifei [at] gmail [dot] com>
@@ -13,8 +13,8 @@ url="https://github.com/rbenv/${pkgname%-git}"
 license=("MIT")
 depends=('bash')
 makedepends=('git')
-provides=('ruby-build')
-conflicts=('ruby-build')
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 b2sums=('SKIP')
 

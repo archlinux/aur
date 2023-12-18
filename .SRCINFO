@@ -7,7 +7,7 @@ pkgbase = ruby-build-git
 	license = MIT
 	makedepends = git
 	depends = bash
-	provides = ruby-build
+	provides = ruby-build=20231211.r0.g1b66c83
 	conflicts = ruby-build
 	source = git+https://github.com/rbenv/ruby-build.git
 	b2sums = SKIP
