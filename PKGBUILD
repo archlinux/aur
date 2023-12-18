@@ -2,7 +2,7 @@
 
 pkgname=("protonfixes")
 pkgver="1.0.15"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A module for applying fixes at runtime to unsupported games with Steam Proton without changing game installation files"
 arch=("any")
 url="https://github.com/simons-public/protonfixes"
