@@ -1,7 +1,7 @@
 # Maintainer: Stephan Koglin-Fischer <stephan dot koglin-fischer at funzt dot dev>
 pkgname=dashlane-cli-git
 pkgver=v1.15.1.r0.g8368d87
-pkgrel=31
+pkgrel=32
 pkgdesc="Dashlane CLI GitHub repository version bundled with asdf-vm to ensure using the correct node version."
 arch=('x86_64')
 url="https://github.com/Dashlane/dashlane-cli"
@@ -27,6 +27,8 @@ prepare() {
     echo "asdf could not be found"
     echo "Configuring asdf..."
 
+    # Install asdf
+    # for bash, fish, zsh - add more if needed
     if [[ $SHELL == *"bash"* ]]; then
       echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.bashrc
     elif [[ $SHELL == *"fish"* ]]; then
@@ -38,7 +40,7 @@ prepare() {
       exit 1
     fi
 
-    source $HOME/.asdf/asdf.sh
+    source /opt/asdf-vm/asdf.sh
   fi
 
   asdf install
