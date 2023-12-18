@@ -1,7 +1,7 @@
 pkgbase = java17-jetbrains
 	pkgver = 17.0.9.b1087.9
 	pkgrel = 1
-	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
+	url = https://github.com/JetBrains/JetBrainsRuntime
 	arch = x86_64
 	license = custom
 	makedepends = java-environment=17
