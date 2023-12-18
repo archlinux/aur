@@ -18,7 +18,7 @@ pkgver() {
 }
 
 pkgver=1.7.1.r19.g9bb9dd787
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
@@ -90,13 +90,15 @@ prepare() {
 -SVT-AV1.FETCH.url     = https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/SVT-AV1-v1.7.0.tar.gz
 -SVT-AV1.FETCH.url    += https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.7.0/SVT-AV1-v1.7.0.tar.gz
 -SVT-AV1.FETCH.sha256  = ce0973584f1a187aa4abf63f509ff8464397120878e322a3153f87e9c161fc4f
-+SVT-AV1.FETCH.url     = https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/SVT-AV1-v1.7.0.tar.gz
-+SVT-AV1.FETCH.url    += https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.7.0/SVT-AV1-v1.7.0.tar.gz
-+SVT-AV1.FETCH.sha256  = ce0973584f1a187aa4abf63f509ff8464397120878e322a3153f87e9c161fc4f
++SVT-AV1.FETCH.url     = https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/SVT-AV1-v1.8.0.tar.gz
++SVT-AV1.FETCH.url    += https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.8.0/SVT-AV1-v1.8.0.tar.gz
++SVT-AV1.FETCH.sha256  = 5be046efd5d5a5012e919249ee9e5791c9957f79f9d006d697882f02ad014f56
  
  SVT-AV1.build_dir             = build
  SVT-AV1.CONFIGURE.exe         = cmake
 EOF
+    rm -v HandBrake/contrib/svt-av1/A00-Revert-pkg-config-Use-Libs.private-in-pkg-config-fil.patch
+    rm -v HandBrake/contrib/svt-av1/A01-adds-neon-sse2neon-implementations-of-SVT-AV1_v15.patch
 }
 
 setup_compiler() {
