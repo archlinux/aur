@@ -81,7 +81,6 @@ package() {
 
   install -Dm755 \
     dist/artifacts/k3s \
-    dist/artifacts/hyperkube \
     -t "$pkgdir/usr/bin"
 
   install -Dm644 \
