@@ -6,6 +6,7 @@ pkgbase = cpu-x-bin
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = patchelf
 	depends = gtkmm3
 	depends = ncurses
 	depends = libcpuid>=0.6.0
@@ -18,6 +19,8 @@ pkgbase = cpu-x-bin
 	optdepends = vulkan-driver: packaged Vulkan driver
 	provides = cpu-x
 	conflicts = cpu-x
+	source = io.github.thetumultuousunicornofdarkness.cpu-x.desktop
+	sha256sums = SKIP
 	source_x86_64 = http://download.opensuse.org/distribution/leap/15.5/repo/oss/x86_64/cpu-x-4.5.2-bp155.1.5.x86_64.rpm
 	sha256sums_x86_64 = cf8fe68806f7df58bb8a18fb4f2774d82850d6e651ef4c366dc0a9887511f908
 	source_aarch64 = http://download.opensuse.org/distribution/leap/15.5/repo/oss/aarch64/cpu-x-4.5.2-bp155.1.5.aarch64.rpm
