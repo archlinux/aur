@@ -3,7 +3,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _base=CryptoParser
 pkgname=python-${_base,,}
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Cryptographic protocol parser"
 arch=(any)
@@ -12,7 +12,7 @@ license=(MPL2)
 depends=(python-cryptodatahub python-dateutil)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(https://gitlab.com/coroner/${_base}/-/archive/v${pkgver}/${_base,,}-v${pkgver}.tar.gz)
-sha512sums=('b76aa528243e8b4dd6b5dda0f67e30fab6b76cdd9cee055b4d64eeca4e2ee661a3c7fac8f468c93a2aabfc05177acc175d088522b1646036383a2069cad82ec3')
+sha512sums=('d21a197f24c0f56e38b46feb92e9098ddf6ce5aabcd4531b902b56c59a69e26aedd6d5c8d6a793db07c5475783249831c3850a9de542d7ebc821b34c0bcdd89c')
 
 build() {
   cd ${_base,,}-v${pkgver}
