@@ -2,14 +2,14 @@
 # Contributor: alphRomeo323 <alpharomeo323dev at protonmail dot com>
 # Contributor: William Brown <glowinthedarkcia at horsefucker dot org>
 pkgname=ftba
-pkgver=202310071959_918caed003
+pkgver=202312062219_b2294521bd
 pkgrel=1
 url="https://feed-the-beast.com/app"
 arch=(x86_64)
 pkgdesc="Offers many different styles of Minecraft modpacks to the community."
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb"
         "ftb-app.desktop")
-sha256sums=("d795701bc1481e9e5797cd4e4026e01cb7e6f79990244483e366eb125e983180"
+sha256sums=("c5e84451d9e82be8008b1e56f32d9df521ef4a5e896daf4a91f24593079459d4"
             "2b50da4dc2811b175e5602e91dfe18e981cba3e2e80deccb8f12b59776d8c530")
 license=("LGPL2.1")
 depends=("java-runtime=17" "alsa-lib" "nss" "gtk3")
@@ -34,7 +34,6 @@ package() {
   mv opt/FTBA usr/lib/ftb-app
   rmdir opt
   chmod +x usr/lib/ftb-app/bin/ftb-app
-  mv usr/lib/ftb-app/FTBApp usr/lib/ftb-app/ftb-app
   cp usr/lib/ftb-app/.install4j/FTBApp.png usr/share/icons/hicolor/512x512/apps/ftb-app.png
-  ln -s /usr/lib/ftb-app/ftb-app usr/bin/ftb-app
+  ln -s /usr/lib/ftb-app/FTBApp usr/bin/ftb-app
 }
