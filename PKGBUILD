@@ -2,8 +2,9 @@
 
 _base=python-crfsuite
 pkgname=${_base}-git
-pkgver=0.99.r1.g84e9a76
-pkgrel=2
+epoch=1
+pkgver=0.9.10.r0.g7cd8735
+pkgrel=1
 pkgdesc="A python binding for crfsuite"
 arch=('any')
 url="https://github.com/scrapinghub/${_base}"
