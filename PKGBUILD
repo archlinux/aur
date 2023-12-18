@@ -17,7 +17,7 @@ _build_platforms="i386-pc ${_target_arch}-efi"
 [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
 
 pkgname="grub-git"
-pkgver=2.12.rc1.r0.g7a994c87f
+pkgver=2.12.rc1.r106.g7c8ae7dcb
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
@@ -42,7 +42,7 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 backup=('etc/default/grub'
         'etc/grub.d/40_custom')
-install="${pkgname}.install"
+install="$pkgname.install"
 source=("grub::git+https://git.savannah.gnu.org/git/grub.git"
         "grub-extras::git+https://git.savannah.gnu.org/git/grub-extras.git"
         "gnulib::git+https://git.savannah.gnu.org/git/gnulib.git"
@@ -65,10 +65,10 @@ prepare() {
 
     # Patch to enable GRUB_COLOR_* variables in grub-mkconfig.
     # Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
-    patch -Np1 -i "${srcdir}/0001-00_header-add-GRUB_COLOR_-variables.patch"
+    patch -Np1 -i "$srcdir"/0001-00_header-add-GRUB_COLOR_-variables.patch
 
     # Patch grub-mkconfig to detect Arch Linux initramfs images.
-    patch -Np1 -i "${srcdir}/0002-10_linux-detect-archlinux-initramfs.patch"
+    patch -Np1 -i "$srcdir"/0002-10_linux-detect-archlinux-initramfs.patch
 
     # Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme.
     sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
@@ -111,7 +111,7 @@ build() {
         unset LDFLAGS
         unset MAKEFLAGS
 
-       ../configure PACKAGE_VERSION="${pkgver}-${pkgrel}" \
+       ../configure PACKAGE_VERSION="$pkgver-$pkgrel" \
                 --with-platform="${_arch##*-}" \
                 --target="${_arch%%-*}"  \
                 --prefix="/usr" \
@@ -140,7 +140,7 @@ package() {
     # Install /etc/default/grub (used by grub-mkconfig)
     install -D -m0644 "$srcdir"/grub.default "$pkgdir"/etc/default/grub
 
-   sed -e "s/%PKGVER%/${pkgver}-${pkgrel}/" < "${srcdir}/sbat.csv" > "${pkgdir}/usr/share/grub/sbat.csv"
+    sed -e "s/%PKGVER%/$pkgver-$pkgrel/" < "$srcdir/sbat.csv" > "$pkgdir/usr/share/grub/sbat.csv"
 
     # Tidy up
     find "$pkgdir"/usr/lib/grub \( -name '*.module' -o \
