@@ -6,7 +6,7 @@
 
 pkgname=obs-studio-av1
 pkgver=30.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open source software for live streaming and recording. With AV1, Websocket, and Browser Source support."
 arch=('x86_64')
 url="https://obsproject.com"
@@ -99,12 +99,8 @@ build() {
     -DBUILD_BROWSER=ON \
     -DCEF_ROOT_DIR="/opt/cef-obs" \
     -DENABLE_VST=ON \
-    -DENABLE_VLC=OFF \
-    -DENABLE_NEW_MPEGTS_OUTPUT=OFF \
-    -DENABLE_AJA=OFF \
     -DENABLE_JACK=ON \
     -DENABLE_LIBFDK=ON \
-    -DENABLE_WEBRTC=OFF \
     -DOBS_VERSION_OVERRIDE="$pkgver-$pkgrel" \
     -DCALM_DEPRECATION=ON \
     -Wno-dev

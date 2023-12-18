@@ -1,7 +1,7 @@
 pkgbase = obs-studio-av1
 	pkgdesc = Free, open source software for live streaming and recording. With AV1, Websocket, and Browser Source support.
 	pkgver = 30.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://obsproject.com
 	arch = x86_64
 	license = GPL2
