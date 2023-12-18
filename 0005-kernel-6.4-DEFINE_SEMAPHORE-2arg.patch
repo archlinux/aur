@@ -1,0 +1,19 @@
+diff -pNaru5 a/ax99100_sp.c b/ax99100_sp.c
+--- a/ax99100_sp.c	2023-08-07 06:18:10.000000000 -0400
++++ b/ax99100_sp.c	2023-12-18 02:09:56.226262255 -0500
+@@ -2692,11 +2692,15 @@ static void serial99100_dma_tx_tasklet (
+ }
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,37)
+ static DECLARE_MUTEX(serial99100_sem);
+ #else
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,4,0)
+ static DEFINE_SEMAPHORE(serial99100_sem);
++#else
++static DEFINE_SEMAPHORE(serial99100_sem,1);
++#endif
+ #endif
+ 
+ static struct uart_driver starex_serial_driver = {
+         .owner                  = THIS_MODULE,
+         .driver_name            = "AX99100",
