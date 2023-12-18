@@ -1,6 +1,6 @@
 pkgbase = fw-ectool-git
 	pkgdesc = ectool for the Framework laptop.
-	pkgver = r27600.3ebe7b8
+	pkgver = r2760.3ebe7b8
 	pkgrel = 1
 	url = https://www.howett.net/posts/2021-12-framework-ec/#software
 	arch = x86_64

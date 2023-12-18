@@ -1,7 +1,7 @@
 # Maintainer: Cole Deck <cole at deck dot sh>
 pkgname=fw-ectool-git
 _gitname=ectool
-pkgver=r27600.3ebe7b8
+pkgver=r2760.3ebe7b8
 pkgrel=1
 pkgdesc="ectool for the Framework laptop."
 arch=(x86_64)
@@ -15,8 +15,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/ectool"
-    # bump version by x10 to bump it over the old repo versioning
-    printf "r%s.%s" "$(( $(git rev-list --count HEAD) * 10 ))" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
