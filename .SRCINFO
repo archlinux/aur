@@ -1,13 +1,19 @@
 pkgbase = fjira-bin
-	pkgdesc = CLI Interface for Jira
-	pkgver = 0.10.0
+	pkgdesc = Fjira - the fuzziest Jira command line tool in the world
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/mk-5/fjira
-	arch = any
 	license = AGPL3
-	makedepends = go
+	conflicts = fjira
 	provides = fjira
-	source = https://github.com/mk-5/fjira/archive/refs/tags/0.10.0.tar.gz
-	sha256sums = 4367463e2248b960d426285114104a714cf2ebb2f4115e0a765fb7681d6c2626
-
+	arch = aarch64
+	source_aarch64 = https://github.com/mk-5/fjira/releases/download/1.1.6/fjira_Linux_arm64.tar.gz
+	sha256sums_aarch64 = f461b6d62edde0582f8b49e5d0516434fc1c5af9b660f8a562b90f775fc40f8c
+	arch = i686
+	source_i686 = https://github.com/mk-5/fjira/releases/download/1.1.6/fjira_Linux_i386.tar.gz
+	sha256sums_i686 = 8b2b14c5c7853e7d79dac00de2737499b26ebf14035b788839444e6b5b8d25ed
+	arch = x86_64
+	source_x86_64 = https://github.com/mk-5/fjira/releases/download/1.1.6/fjira_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2fb4d84a51d86e385f22ee2822cb591c9473671b73183201b98c894878e76147
+	
 pkgname = fjira-bin
