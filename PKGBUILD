@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gopeed-bin
 _pkgname=Gopeed
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="High speed downloader that supports all platforms."
 arch=('x86_64')
@@ -28,11 +28,11 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('aebc74a14b65f8efbe2ea2815be838a08e2338d1f5f21656a88e438819d362f9'
-            '265b344a9c97f52feffb1c9fb07fee8919e31abe8e9e15aed6ccf76e3c49440c')
+sha256sums=('3dd491ffd2bdc7e23a08ea1b15a6182a67d7e86ce366ae0ab8ec2a4ac4b54776'
+            'd1c5136325dbd9788bb4c70b616253859a5e837de695fb26e315dd3418de69da')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed -e "s|com.${pkgname%-bin}.${_pkgname}|${pkgname%-bin}|g" \
