@@ -2,7 +2,7 @@
 
 pkgname=k3s-git
 pkgver=1.28.4+k3s2+r8+g231cb6ed20
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
 url='https://k3s.io'
@@ -35,6 +35,8 @@ prepare() {
     scripts/package-cli \
     scripts/package-airgap \
 
+  sed -i -r 's|/usr/local/bin/k3s|/usr/bin/k3s|' \
+    *.service
 }
 
 build() {

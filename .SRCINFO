@@ -1,7 +1,7 @@
 pkgbase = k3s-git
 	pkgdesc = Lightweight Kubernetes
 	pkgver = 1.28.4+k3s2+r8+g231cb6ed20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://k3s.io
 	arch = x86_64
 	license = Apache
