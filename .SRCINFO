@@ -1,7 +1,7 @@
 pkgbase = reqable-bin
 	pkgdesc = A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols
-	pkgver = 1.6.2
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://reqable.com
 	arch = x86_64
 	license = custom
@@ -24,11 +24,13 @@ pkgbase = reqable-bin
 	depends = nss
 	depends = libdbusmenu-glib
 	depends = fontconfig
-	provides = reqable=1.6.2
+	provides = reqable=2.0.0
 	conflicts = reqable
-	source = reqable-1.6.2.deb::https://github.com/reqable/reqable-app/releases/download/1.6.2/reqable-app-linux-x86_64.deb
+	source = reqable-2.0.0.deb::https://github.com/reqable/reqable-app/releases/download/2.0.0/reqable-app-linux-x86_64.deb
 	source = LICENSE.html
-	sha256sums = 85f3194cff21fe7fdabdc1d76bc39faa7935303ad0aa9def18547a1e320d06fd
+	source = reqable.sh
+	sha256sums = b8447646771467d5424d6d5203beff2346f4a50786856cf55f42cc52eb18440e
 	sha256sums = 23392e1a40e734a004a13faec6db357230d1a3893a849ceaba3d25079a403630
+	sha256sums = 0266486a32f1f22b55eda0adf58a5d4fd3b6ad3a0be99df052dd9d79ae843ebc
 
 pkgname = reqable-bin
