@@ -22,7 +22,7 @@ pkgname=(
 _names=("${pkgname[@]#python-}")
 _names=("${_names[@]/opentelemetry-propagator/propagator\/opentelemetry-propagator}")
 _names=("${_names[@]/opentelemetry-exporter/exporter\/opentelemetry-exporter}")
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="OpenTelemetry Python API and SDK"
 url="https://github.com/open-telemetry/opentelemetry-python"
@@ -51,8 +51,8 @@ checkdepends=(
   python-typing_extensions
 )
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('662143ab11fc8e281d1050ffdb1a73e30f18668f243ea5f34c88be6c095bf53a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('3b5b9020dec944e6f307786d018355e7bee7d9a09c7c9ccbb080c465c854594d')
 
 _archive="$_basename-$pkgver"
 
@@ -78,6 +78,7 @@ check() {
 
   cd "$_archive"
 
+  rm -rf ./tmp_install
   python -m installer --destdir=tmp_install tests/opentelemetry-test-utils/dist/*.whl
 
   for name in "${_names[@]}"; do
@@ -96,7 +97,7 @@ _package() {
   cd "$_archive"
 
   python -m installer --destdir="$pkgdir" "$_path/dist/"*.whl
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
 }
 
 package_python-opentelemetry-api() {
