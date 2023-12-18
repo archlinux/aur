@@ -1,6 +1,6 @@
 # Maintainer: Savely Krasovsky <savely at krasovs dot ky>
 pkgname=waybar-updates
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Tiny Waybar module to check Arch Linux updates from official repositories and AUR"
 arch=('any')
@@ -9,7 +9,7 @@ license=("MIT")
 depends=('bash' 'coreutils' 'pacman-contrib' 'gettext' 'curl' 'jq' 'libnotify')
 provides=('waybar-updates')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/L11R/waybar-updates/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('623270d83a5b0e431b12707f9a23a75c3c0988d475f880b8537ca7444f4cfbbc')
+sha256sums=('3127f63a55686dc3022fe799baaa2c8f5aed5ca5968d1f1c543651dc068bf7b3')
 
 build() {
     cd "$pkgname-$pkgver"
