@@ -1,6 +1,6 @@
 pkgbase = peazip-qt5
 	pkgdesc = Free file archiver utility, open, extract RAR TAR ZIP archives
-	pkgver = 9.5.0
+	pkgver = 9.6.0
 	pkgrel = 1
 	url = https://peazip.github.io/
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = peazip-qt5
 	provides = peazip
 	conflicts = peazip
 	options = !strip
-	source = git+https://github.com/peazip/PeaZip.git#tag=9.5.0
-	source = help-9.5.0.pdf::https://github.com/peazip/PeaZip/releases/download/9.5.0/peazip_help.pdf
+	source = git+https://github.com/peazip/PeaZip.git#tag=9.6.0
+	source = help-9.6.0.pdf::https://github.com/peazip/PeaZip/releases/download/9.6.0/peazip_help.pdf
 	sha512sums = SKIP
-	sha512sums = bdd7b8eacb252133d76f54d33e7e36d6f0d134220b829e65e6b682838d882e56ea78ecc610823e45fa3b085c547d089f3323023209dd98e4e928fef4b43d89ce
+	sha512sums = 204115eab084ab6c51989f9f66c889832614c06b977ffdee1003c88720c7ef985a0267f17acd13ead68289fff1a81af1b19835a74427898ee962b59e3a441d38
 
 pkgname = peazip-qt5
