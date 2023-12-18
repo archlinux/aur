@@ -1,4 +1,5 @@
-# Maintainer: Tim Paik <timpaik@163.com>
+# Maintainer: Nep_Nep <nepnep91 at protonmail dot com>
+# Contributor: Tim Paik <timpaik@163.com>
 _extname=quick-settings-tweaks
 _uuid=$_extname@qwreey
 pkgname=gnome-shell-extension-$_extname-git
