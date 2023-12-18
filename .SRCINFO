@@ -1,0 +1,17 @@
+pkgbase = a2tools
+	pkgdesc = a2tools (copy data to/from Apple II DOS 3.3 disk images)
+	pkgver = 003
+	pkgrel = 1
+	url = ftp://ftp.apple.asimov.net/pub/apple_II/utility/
+	arch = pentium4
+	arch = i686
+	arch = i486
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	source = ftp://ftp.apple.asimov.net/pub/apple_II/utility/a2tools-v003.zip
+	sha256sums = 432c994510b73577557331ec7697c32e28a2c324abb52c1bcc08289c51bcd927
+
+pkgname = a2tools
