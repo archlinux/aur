@@ -1,13 +1,13 @@
 pkgbase = r-boom
 	pkgdesc = Bayesian Object Oriented Modeling
-	pkgver = 0.9.13
+	pkgver = 0.9.14
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Boom
 	arch = x86_64
 	license = LGPL
 	depends = r
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/Boom_0.9.13.tar.gz
-	sha256sums = ab4fa3fe7d292bfc15ec8db122398469208c14285577fa52ac3d18d553233b3e
+	source = https://cran.r-project.org/src/contrib/Boom_0.9.14.tar.gz
+	sha256sums = 212d1d64b4a04d60fdaece47aebbe7668203d09cb5477808de3f2c5b3b2c7d80
 
 pkgname = r-boom
