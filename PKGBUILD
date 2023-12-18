@@ -12,8 +12,8 @@ license=('GPL')
 optdepends=('geant4>=11.2')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
-  "${pkgname}.install")
-sha256sums=('7698b052b58bf1b9886beacdbd6af607adc1e099fc730ab6b21cf7f090c027ed'
+        "${pkgname}.install")
+sha256sums=('1e041b3252ee9cef886d624f753e693303aa32d7e5ef3bba87b34f36d92ea2b1'
             'd4fbb80f577e0d5c8b2e0b71b9be0089a78a43852b93284694f99ec58e003512')
 
 ## Remove this if you want to keep an even smaller package
