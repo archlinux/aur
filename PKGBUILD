@@ -7,7 +7,7 @@ pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
 url='https://k3s.io'
 license=(Apache)
-makedepends=(git go)
+makedepends=(git go podman)
 provides=(k3s)
 conflicts=(k3s)
 backup=(
@@ -28,11 +28,52 @@ pkgver() {
 }
 
 build() {
+  # 1. Make a `docker` -> `podman` wrapper that does not complain to stderr
+  cat >docker <<"EOF"
+#!/bin/sh
+exec podman "$@"
+EOF
+  chmod +x docker
+  export PATH="$PWD:$PATH"
+
+  # 2. Point podman to a default registry of some sort
+  # (pulled from https://github.com/containers/podman/blob/main/test/registries.conf)
+  cat >registries.conf <<"EOF"
+unqualified-search-registries = ['docker.io', 'quay.io', 'registry.fedoraproject.org']
+
+[[registry]]
+# In Nov. 2020, Docker rate-limits image pulling.  To avoid hitting these
+# limits while testing, always use the google mirror for qualified and
+# unqualified `docker.io` images.
+# Ref: https://cloud.google.com/container-registry/docs/pulling-cached-images
+prefix="docker.io"
+location="mirror.gcr.io"
+EOF
+  export CONTAINERS_REGISTRIES_CONF="$PWD/registries.conf"
+
+  # 3. Point podman to a suitably neutered containers.conf to prevent various failures.
+  cat >containers.conf <<"EOF"
+[containers]
+default_sysctls = []
+EOF
+  export CONTAINERS_CONF="$PWD/containers.conf"
+
+  # 4. Run podman-system-service to create a dockerd-compatible control socket
+  # and point every broken tool in existence towards it.
+  export DOCKER_HOST="unix:///tmp/docker.sock"
+  podman --log-level=info system service --time 0 "$DOCKER_HOST" &
+  podman_pid="$!"
+
+  # 5. Hopefully run the build inside of this Rube-Goldbergian contraption.
   cd k3s
   mkdir -p build/data
   make download
   make generate
-  make
+  make build
+  make package
+
+  kill "$podman_pid"
+  wait "$podman_pid"
 }
 
 package() {

@@ -7,6 +7,7 @@ pkgbase = k3s-git
 	license = Apache
 	makedepends = git
 	makedepends = go
+	makedepends = podman
 	provides = k3s
 	conflicts = k3s
 	backup = etc/systemd/system/k3s.service.env
