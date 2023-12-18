@@ -1,6 +1,6 @@
 pkgbase = youtube-music
 	pkgdesc = YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://th-ch.github.io/youtube-music
 	install = youtube-music.install
@@ -11,11 +11,11 @@ pkgbase = youtube-music
 	makedepends = pnpm
 	depends = electron28
 	depends = libsecret
-	source = youtube-music-3.1.0.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v3.1.0.tar.gz
+	source = youtube-music-3.1.1.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v3.1.1.tar.gz
 	source = youtube-music.sh
 	source = youtube-music.desktop
-	sha256sums = 7b2ac3c3fa3c6b3720c0da854d773a05650d819cf69503b2ac977de8823b30ee
-	sha256sums = c23d933da3985f8b4a2a02053180de5c47b62887821ecc398ea58636fae84fe6
+	sha256sums = e076b961f75e48f20dff830e257c3813fdec4364ab472eadb627f343ec76448a
+	sha256sums = 33bd3c80a548d5180f4b294eb5d6aaa5116a3f1e5d96f1ea219739f62b0ce1e5
 	sha256sums = 07af59376e13e5dae2e7e38fa09d734a5147d5c344b3aed84c2f3afe22b8af79
 
 pkgname = youtube-music

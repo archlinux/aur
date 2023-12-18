@@ -9,4 +9,4 @@ fi
 
 # Launch
 export ELECTRON_IS_DEV=0
-exec electron27 /usr/lib/youtube-music/app.asar $YOUTUBE_MUSIC_USER_FLAGS "$@"
+exec electron28 /usr/lib/youtube-music/app.asar $YOUTUBE_MUSIC_USER_FLAGS "$@"
