@@ -214,6 +214,7 @@ build() {
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_base_path="/usr"'
+    'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
     'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
@@ -231,22 +232,20 @@ build() {
     'enable_widevine=true'
     'enable_nacl=false'
     'enable_rust=false'
-    'use_vaapi=true'
-    'enable_platform_hevc=true'
-    'enable_hevc_parser_and_hw_decoder=true'
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
     _flags+=('icu_use_data_file=false')
   fi
 
+  # enable HEVC decoding
+  _flags+=(
+    'enable_platform_hevc=true'
+    'enable_hevc_parser_and_hw_decoder=true'
+  )
+
   # Append ungoogled chromium flags to _flags array
-  if [[ -d "$srcdir/${pkgname%xdg*}$_uc_ver" ]]
-  then
-    _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
-  else
-    _ungoogled_repo="$srcdir/${pkgname%xdg*}update"
-  fi
+    _ungoogled_repo="$srcdir/${pkgname%xdg*}-$_uc_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
