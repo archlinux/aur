@@ -1,13 +1,12 @@
 pkgbase = hyphen-el
 	pkgdesc = Greek hyphenation rules
-	pkgver = 1.1b
-	pkgrel = 2
-	url = http://ispell.math.upatras.gr
+	pkgver = 7.6.4
+	pkgrel = 1
+	url = https://www.documentfoundation.org/
 	arch = any
 	license = LGPL
 	optdepends = hyphen: offers hyphenation library functions
-	source = http://ispell.math.upatras.gr/files/ooffice/hyph_el.zip
-	md5sums = f4eae38b3b3c6b043089c3e7e6176a2d
+	source = https://download.documentfoundation.org/libreoffice/src/7.6.4/libreoffice-dictionaries-7.6.4.1.tar.xz
+	md5sums = d0cd4106c2563797ba1e1dfde16ca9ed
 
 pkgname = hyphen-el
-

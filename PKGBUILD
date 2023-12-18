@@ -1,20 +1,21 @@
 pkgname=hyphen-el
-pkgver=1.1b
-pkgrel=2
+pkgver=7.6.4
+_pkgver=7.6.4.1
+pkgrel=1
 pkgdesc="Greek hyphenation rules"
 arch=('any')
-url="http://ispell.math.upatras.gr"
+url="https://www.documentfoundation.org/"
 license=('LGPL')
 optdepends=('hyphen: offers hyphenation library functions')
-source=(http://ispell.math.upatras.gr/files/ooffice/hyph_el.zip)
-md5sums=('f4eae38b3b3c6b043089c3e7e6176a2d')
+source=(https://download.documentfoundation.org/libreoffice/src/${pkgver}/libreoffice-dictionaries-${_pkgver}.tar.xz)
+md5sums=('d0cd4106c2563797ba1e1dfde16ca9ed')
 
 package() {
   cd "${srcdir}"
 
   install -dm755 ${pkgdir}/usr/share/hyphen
 
-  install -m644 hyph_el.dic "${pkgdir}/usr/share/hyphen/hyph_el_EL.dic"
+  install -m644 libreoffice-${_pkgver}/dictionaries/el_GR/hyph_el_GR.dic "${pkgdir}/usr/share/hyphen/hyph_el_GR.dic"
 
   # the symlinks
   install -dm755 ${pkgdir}/usr/share/myspell/dicts
@@ -26,5 +27,5 @@ package() {
 
   # docs
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m644 README_hyph_el.txt "${pkgdir}/usr/share/doc/${pkgname}/README_hyph_el_EL.txt"
+  install -m644 libreoffice-${_pkgver}/dictionaries/el_GR/README_el_GR.txt "${pkgdir}/usr/share/doc/${pkgname}/README_el_GR.txt"
 }
