@@ -27,6 +27,16 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
+prepare() {
+  cd k3s
+
+  # moar compression
+  sed -i -r 's|(zstd .*)-[0-9]+|\1 --ultra -22|' \
+    scripts/package-cli \
+    scripts/package-airgap \
+
+}
+
 build() {
   # 1. Make a `docker` -> `podman` wrapper that does not complain to stderr
   cat >docker <<"EOF"
