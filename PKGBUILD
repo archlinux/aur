@@ -1,25 +1,34 @@
-# Maintainer: Ghassan Alduraibi <git@ghassan.dev>
-
-pkgname=python-jax-jumpy
-_name=${pkgname#python-}
-pkgver=0.2.0
-pkgrel=2
-pkgdesc="On-the-fly conversions between Jax and NumPy tensors"
-arch=('any')
-url="https://github.com/Farama-Foundation/Jumpy"
-license=('Apache')
-depends=('python-numpy')
-optdepends=('python-jax' 'python-jaxlib')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-b2sums=('b9e9737455d167d0e700f543e2fef0e7f01f18a0d8bc0d29a9ab660a5dbe390aeeb5df0cf2a2da01ca6198900b38a23a5a4a6ccc5f90f37a4a9df383123804a0')
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Ghassan Alduraibi <git@ghassan.dev>
+_base=Jumpy
+pkgname=python-jax-${_base,,}
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Common backend for Jax or Numpy"
+arch=(any)
+url="https://github.com/Farama-Foundation/${_base}"
+license=(Apache)
+depends=(python-numpy)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest python-jax)
+optdepends=('python-jax: for JAX backend')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('38d365fe15a8533650b89610cbaa589ff6b948201cab0e5d272a24f971d58fe29552d6517627434a35089d47db5f580cd07e8263039bd824111dfe45ae56cffa')
 
 build() {
-    cd "${_name//-/_}-$pkgver"
-    python -m build --wheel --no-isolation
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
+}
+
+check() {
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
-    cd "${_name//-/_}-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
