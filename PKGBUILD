@@ -1,7 +1,7 @@
 _pkgname=cyberdrop_dl
 pkgname=cyberdropdownloader
-pkgver=5.1.4
-pkgrel=1
+pkgver=5.1.8
+pkgrel=2
 pkgdesc="Bulk downloader for multiple file hosts and forum sites"
 arch=('any')
 url="https://github.com/Jules-WinnfieldX/CyberDropDownloader"
@@ -31,13 +31,9 @@ makedepends=(
     python-poetry-core
     python-wheel
 )
-optdepends=(
-    'python-asyncpraw: Reddit support'
-    'python-mediafire: MediaFire support'
-)
 conflicts=('cyberdrop-dl' 'cyberdrop-dl-git')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('bac017b9272d461ab86193c04d99cccdbcb1ab191e295a5f78cf4f11eae52d93')
+sha256sums=('14f80a5e7281133efc66fe29dffeb852812cba9dc411b3e1e93bb9da7bb825af')
 
 build(){
     cd $_pkgname-$pkgver
