@@ -6,9 +6,8 @@ After=network.target
 Type=simple
 User=yojo
 Restart=always
-EnvironmentFile=/etc/yojo/credentials
 WorkingDirectory=/var/lib/yojo
-ExecStart=/usr/bin/yojo
+ExecStart=/usr/bin/yojo -config /etc/yojo/config
 
 [Install]
 WantedBy=multi-user.target

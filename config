@@ -1,0 +1,9 @@
+srht {
+	client-id ""
+	client-secret ""
+}
+
+gitea {
+	client-id ""
+	client-secret ""
+}

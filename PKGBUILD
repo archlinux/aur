@@ -2,8 +2,8 @@
 
 pkgname=yojo-git
 _pkgname=yojo
-pkgver=r1.182373bf1f47
-pkgrel=2
+pkgver=r18.abfbe875475c
+pkgrel=1
 pkgdesc='A CI bridge from Forgejo/Gitea to SourceHut'
 arch=('x86_64')
 url='https://git.sr.ht/~emersion/yojo'
@@ -12,13 +12,13 @@ depends=('sqlite')
 makedepends=('git' 'go')
 provides=('yojo')
 conflicts=('yojo')
-backup=(etc/yojo/credentials)
+backup=(etc/yojo/config)
 source=(
 	"git+https://git.sr.ht/~emersion/yojo"
 	"yojo.service"
 	"yojo.sysusers"
 	"yojo.tmpfiles"
-	"credentials"
+	"config"
 )
 sha256sums=(
 	'SKIP'
@@ -42,7 +42,7 @@ build() {
 package() {
 	cd "$srcdir/yojo"
 	install -Dm755 yojo "$pkgdir/usr/bin/yojo"
-	install -Dm600 "$srcdir/credentials" "$pkgdir/etc/yojo/credentials"
+	install -Dm600 "$srcdir/config" "$pkgdir/etc/yojo/config"
 	install -Dm644 "$srcdir/yojo.service" "$pkgdir/usr/lib/systemd/system/yojo.service"
 	install -Dm644 "$srcdir/yojo.sysusers" "$pkgdir/usr/lib/sysusers.d/yojo.conf"
 	install -Dm644 "$srcdir/yojo.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/yojo.conf"
