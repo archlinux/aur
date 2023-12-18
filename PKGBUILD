@@ -2,7 +2,7 @@
 
 pkgname=sof
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sof"
@@ -16,5 +16,5 @@ sha256sums=("10df34ba982a735200c9fbcd338b1868d21199a6ebdd62a2df3afd3bcea923e7")
 
 package() {
 		make -C ./sof
-		DESTDIR="$pkgdir" make -C ./sof PREFIX="/usr" install install-man
+		DESTDIR="$pkgdir" make -C ./sof PREFIX="/usr" install
 }
