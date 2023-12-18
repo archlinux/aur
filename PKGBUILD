@@ -3,7 +3,7 @@
 pkgname=python-qsnctf
 _name=${pkgname#python-}
 pkgver=0.0.8.10
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="青少年 CTF 训练平台是一个公益、免费、供给全国青少年学习、训练的 CTF 在线平台。"
 arch=('any')
@@ -11,16 +11,18 @@ url="https://pypi.org/project/qsnctf"
 license=('MIT')
 groups=()
 depends=(python
-        python-pyexecjs2
-        python-pybase62
-        python-base58
-        python-requests
-        python-bs4
-        python-urllib3
-        python-rarfile)
+    python-pyexecjs2
+    python-pybase62
+    python-base58
+    python-requests
+    python-bs4
+    python-sympy
+    python-urllib3
+    python-rarfile)
 makedepends=(python-build
-            python-installer
-            python-wheel)
+    python-installer
+    python-setuptools
+    python-wheel)
 checkdepends=()
 optdepends=()
 provides=(qsnctf qsnctf-python)
