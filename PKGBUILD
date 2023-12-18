@@ -2,7 +2,7 @@
 pkgname=deepqt
 _module='DeepQt'
 pkgver='1.1.7'
-pkgrel=1
+pkgrel=2
 pkgdesc="Harness the power of the DeepL API with this friendly user interface. Translate plain text and epub files."
 url="https://github.com/VoxelCubes/DeepQt"
 depends=('python>=3.10.0' 'python-pipx')
@@ -12,20 +12,21 @@ arch=('any')
 source=("https://github.com/VoxelCubes/DeepQt/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    # The following line adds /home/user/.local/bin to the PATH
-    # If it isn't already there, you will need to log out and back in
-    # for the change to take effect.
-    # This is because we are installing the package locally, not system-wide,
-    # in an isolated environment.
-    pipx ensurepath
-}
 
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    pipx install deepqt==${pkgver}
+
+    # Use a directory within $srcdir for PIPX_HOME
+    local pipx_home="${pkgdir}/opt/pipx"
+    local pipx_bin_dir="${pkgdir}/usr/local/bin"
+    mkdir -p "${pipx_home}"
+    mkdir -p "${pipx_bin_dir}"
+
+    # Once pipx 1.3.0+ is supported in the official repos (probably January), I can let pipx use heavier dependencies from
+    # the system site-packages that are installed with pacman/from the AUR.
+
+    PIPX_HOME=${pipx_home} PIPX_BIN_DIR=${pipx_bin_dir} pipx install deepqt==${pkgver}
 
     mkdir -p "$pkgdir/usr/share/applications"
     install --mode=644 --owner=root --group=root "DeepQt.desktop" "$pkgdir/usr/share/applications/"
