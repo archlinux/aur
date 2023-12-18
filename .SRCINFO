@@ -1,6 +1,6 @@
 pkgbase = python-cryptodatahub
 	pkgdesc = Repository of cryptography-related data
-	pkgver = 0.11.2
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://gitlab.com/coroner/CryptoDataHub
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-cryptodatahub
 	depends = python-dateutil
 	depends = python-six
 	depends = python-urllib3
-	source = https://gitlab.com/coroner/CryptoDataHub/-/archive/v0.11.2/cryptodatahub-v0.11.2.tar.gz
-	sha512sums = 22a404d4e3f65eb4c7ded31f59e29f39c82be4c96e8808fc6565a11c5e266efb877140d540cd7962843a7dcad0d2b57e530a4885ea8f417d4de0063cb1515b08
+	source = https://gitlab.com/coroner/CryptoDataHub/-/archive/v0.12.1/cryptodatahub-v0.12.1.tar.gz
+	sha512sums = 384b8902f516af9e14fecc80090aafc5ec9df2bbc7585682c3aa0bbea1cff517a71830b75e0327cf8f8ebe7984417ae12358a1e4946449be5939228e73d1ced3
 
 pkgname = python-cryptodatahub
