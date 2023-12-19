@@ -1,6 +1,6 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="nerdfetch"
-pkgver=6.1.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 makedepends=('git')
 source=("nerdfetch.tar.gz::https://codeberg.org/thatonecalculator/NerdFetch/archive/v${pkgver}.tar.gz")
 noextract=()
-md5sums=('SKIP')
+sha256sums=('12ab1af886d4f12c86cab1dba32a2769527fc7149cafc76613f2500e4471544d')
 
 prepare() {
 	tar -xf "nerdfetch.tar.gz"
