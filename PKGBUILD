@@ -4,12 +4,12 @@
 _basename=libgphoto2
 pkgname=lib32-libgphoto2
 pkgver=2.5.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital camera access library (32-bit)"
 url="http://www.gphoto.org/"
 arch=(x86_64)
 license=(LGPL)
-depends=(curl lib32-libexif lib32-gd lib32-libltdl lib32-libusb lib32-libxml2 libgphoto2)
+depends=(curl lib32-libexif lib32-libltdl lib32-libusb lib32-libxml2 libgphoto2)
 makedepends=(autoconf-archive git)
 _commit=ba28af2d22fd4cb7fa76a8ff569ba498e8021db5  # tags/libgphoto2-2_5_31-release
 source=("git+https://github.com/gphoto/libgphoto2#commit=$_commit")
@@ -40,6 +40,7 @@ build() {
         --sysconfdir=/etc
         --localstatedir=/var
         --disable-rpath
+        --with-gdlib=no
     )
 
     cd $_basename
