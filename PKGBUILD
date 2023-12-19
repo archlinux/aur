@@ -52,7 +52,7 @@ install=${pkgname}.install
 source=("https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.tar.gz"
         'https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/refs/tags/1.0-zm.tar.gz'
         'https://github.com/FriendsOfCake/crud/archive/refs/tags/v3.2.0.tar.gz'
-        'https://github.com/ZoneMinder/RtspServer/archive/refs/heads/master.zip'
+        'https://github.com/ZoneMinder/RtspServer/archive/055d81fe1293429e496b19104a9ed3360755a440.zip'
         'zoneminder-nginx.conf'
         'zoneminder-httpd.conf'
         'zoneminder-php.ini'
@@ -60,7 +60,7 @@ source=("https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.ta
 sha256sums=('cd0f44c7238bcfd10579d665b271f6af81b61f5cbd8cbbc2ff5d7839232e267e'
             'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
             '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
-            'SKIP'
+            'fad0f1646f65f1518dfde3390e6c907319bc67b61f2e04f5d5ac4144ab61131d'
             'c60e855428a56cc327214aa13d02a70011bf3b63a94a0d845b1c5ea1fab28ad2'
             '1f0d2276861065caf0b6c030ba27a6edb6a2988c7a1ac0fdf4e8fcb856972715'
             '8e1131dd6bf3796f5bcc9422c96ef77388d7ab0d8e8fc17f6b8dd1e8acc2442a'
@@ -79,7 +79,7 @@ prepare () {
     # Move third-party plugins into place
     mv ../CakePHP-Enum-Behavior-1.0-zm/* web/api/app/Plugin/CakePHP-Enum-Behavior
     mv ../crud-3.2.0/* web/api/app/Plugin/Crud
-    mv ../RtspServer-master/* dep/RtspServer
+    mv ../RtspServer-055d81fe1293429e496b19104a9ed3360755a440/* dep/RtspServer
 
 }
 
