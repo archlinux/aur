@@ -1,0 +1,21 @@
+pkgbase = libvmaf-compat
+	pkgdesc = Perceptual video quality assessment algorithm based on multi-method fusion (v2 compatibility)
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/Netflix/vmaf/
+	arch = x86_64
+	license = BSD
+	makedepends = meson
+	makedepends = nasm
+	makedepends = vim
+	makedepends = doxygen
+	depends = gcc-libs
+	provides = vmaf=2.3.1
+	provides = libvmaf=2.3.1
+	conflicts = vmaf=2.3.1
+	conflicts = libvmaf=2.3.1
+	options = !lto
+	source = https://github.com/Netflix/vmaf/archive/v2.3.1/vmaf-2.3.1.tar.gz
+	sha256sums = 8d60b1ddab043ada25ff11ced821da6e0c37fd7730dd81c24f1fc12be7293ef2
+
+pkgname = libvmaf-compat
