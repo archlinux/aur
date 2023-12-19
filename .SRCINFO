@@ -1,6 +1,6 @@
 pkgbase = bkmr
 	pkgdesc = Ultrafast Bookmark Manager and Launcher
-	pkgver = 0.8.0
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/sysid/bkmr
 	arch = x86_64
@@ -11,11 +11,8 @@ pkgbase = bkmr
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssl
-	source = bkmr-0.8.0.tar.gz::https://github.com/sysid/bkmr/archive/refs/tags/v0.8.0.tar.gz
-	source = Cargo.lock
-	sha256sums = 766ef127b1e347fa60293dd66ea17f5076921e3be2c3a96e8de503dcbe71411e
-	sha256sums = 471dc9a27646fb18e485032a845883d723d9d4c224527c7866c003e381f43701
-	b2sums = 5567e835342a65971520fc513e32c4ea0c600f1933a185f7c32717715f51eedd379fc20ed93cdf613a993ec41b2510867bb2239cf2bb8841edee8516f0533e7a
-	b2sums = 9c45398d44a966d85e675894ecb51abbef797bb88f69c867377bc84caeace4f6ac3f39b3bafffdf5d2a7940646945a4cdcb2bd6613bd5cb299c19d4ad1d1842e
+	source = bkmr-0.9.2.tar.gz::https://github.com/sysid/bkmr/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = d54cdc930d323c159a8905d4725b3daa9a6eba9038b815cfb35171cb2378344b
+	b2sums = c0e0f8292d110973fd873921ae6a1f419eaad6f9247e8a397a82230bf60d9dc6869991e8d8e86276c90c5969f278300be7b3be8523d2c376105c98d504926fc1
 
 pkgname = bkmr
