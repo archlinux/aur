@@ -8,6 +8,7 @@ pkgbase = python-requirements-language-server
 	makedepends = python-installer
 	depends = python-tree-sitter-lsp
 	depends = python-tree-sitter-requirements
+	depends = python-aiohttp
 	source = https://files.pythonhosted.org/packages/py3/r/requirements_language_server/requirements_language_server-0.0.13-py3-none-any.whl
 	sha256sums = 26b38d0d90d1fecfd71313739731fb9a7fc718f24edbf92d107c7467d2450d53
 
