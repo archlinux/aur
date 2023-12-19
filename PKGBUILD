@@ -2,13 +2,13 @@
 
 _pkgname=backintime
 pkgname=($_pkgname-git $_pkgname-cli-git)
-pkgver=1.3.2.r111.g6fc658dd
+pkgver=1.4.1.r24.g2f7b6099
 pkgrel=1
-url="https://github.com/bit-team/backintime"
-license=('GPL')
-arch=('any')
-makedepends=('git' 'openssh' 'python-dbus' 'python-keyring' 'rsync' 'systemd' 'xorg-xdpyinfo')
-checkdepends=('python-pyfakefs' 'python-pyqt5')
+url=https://github.com/bit-team/backintime
+license=(GPL)
+arch=(any)
+makedepends=(git openssh python-dbus python-keyring rsync systemd xorg-xdpyinfo)
+checkdepends=(python-pyfakefs python-pylint python-pyqt5)
 source=($_pkgname::git+$url.git)
 sha256sums=('SKIP')
 
@@ -33,8 +33,8 @@ check() {
 }
 
 package_backintime-cli-git() {
-  pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. CLI version."
-  depends=('cron' 'fuse2' 'openssh' 'python-dbus' 'python-keyring' 'python-packaging' 'rsync')
+  pkgdesc='Simple backup/snapshot system inspired by Flyback and TimeVault. CLI version.'
+  depends=(cron fuse2 openssh python-dbus python-keyring python-packaging rsync)
   #'ecryptfs-utils: verify home encryption'
   optdepends=('encfs: encrypted filesystems'
               'sshfs: remote filesystems')
@@ -45,9 +45,9 @@ package_backintime-cli-git() {
 }
 
 package_backintime-git() {
-  pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. Qt5 GUI version."
-  #depends=('backintime-cli'    'libnotify' 'polkit' 'python-dbus' 'python-pyqt5' 'xorg-xdpyinfo')
-  depends=('backintime-cli-git' 'libnotify' 'polkit' 'python-dbus' 'python-pyqt5' 'xorg-xdpyinfo')
+  pkgdesc='Simple backup/snapshot system inspired by Flyback and TimeVault. Qt5 GUI version.'
+  #depends=(backintime-cli    libnotify polkit python-dbus python-pyqt5 xorg-xdpyinfo)
+  depends=(backintime-cli-git libnotify polkit python-dbus python-pyqt5 xorg-xdpyinfo)
   optdepends=('kompare: diff tool'
               'meld: diff tool'
               'python-secretstorage: store passwords')
@@ -56,4 +56,3 @@ package_backintime-git() {
 
   make -C $_pkgname/qt DESTDIR="$pkgdir" install
 }
-
