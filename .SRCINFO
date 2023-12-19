@@ -1,13 +1,13 @@
 pkgbase = mattermost-plugin-gitlab
 	pkgdesc = a GitLab plugin for Mattermost
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://mattermost.gitbook.io/plugin-gitlab
 	arch = x86_64
 	license = Apache2
 	makedepends = jq
 	options = !strip
-	source = https://github.com/mattermost/mattermost-plugin-gitlab/releases/download/v1.7.0/com.github.manland.mattermost-plugin-gitlab-1.7.0.tar.gz
-	sha256sums = b2ca35d7395e9a9261a66d9ce5acdb9b93f85643b916de802782389af7353a20
+	source = https://github.com/mattermost/mattermost-plugin-gitlab/releases/download/v1.8.0/com.github.manland.mattermost-plugin-gitlab-1.8.0.tar.gz
+	sha256sums = 01eb5a50f2d5011430c9e7e50a041c89283c0220d682aa1f9725333a7ed1dc56
 
 pkgname = mattermost-plugin-gitlab

@@ -6,7 +6,7 @@
 
 _plugin=gitlab
 pkgname=mattermost-plugin-$_plugin
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='a GitLab plugin for Mattermost'
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(jq)
 options=(!strip)
 _archive="com.github.manland.$pkgname"
 source=("$_url/releases/download/v$pkgver/$_archive-$pkgver.tar.gz")
-sha256sums=('b2ca35d7395e9a9261a66d9ce5acdb9b93f85643b916de802782389af7353a20')
+sha256sums=('01eb5a50f2d5011430c9e7e50a041c89283c0220d682aa1f9725333a7ed1dc56')
 
 # BEGIN boilerplate mattermost plugin version clamping, see also other packages in group
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
