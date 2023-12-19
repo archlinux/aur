@@ -1,6 +1,6 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=marswm
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A rusty successor to moonwm"
 arch=('x86_64')
@@ -14,9 +14,8 @@ optdepends=(
 makedepends=('cargo')
 provides=(marswm mars-relay)
 conflicts=(marswm mars-relay)
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('b0c957003f0df1c3fdb750e0f3a253ed39014c900c82ffa7be254afe6c2a60949ea81d2628bf3d40ad4f3547093b274fb20831144c2427b417262812a10d563d')
-sha512sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha512sums=('80e8ec9a4935b6204de6c2c13395f33da334e16b116f7341ce625b269eb0faef44f8158c78587fae477836043279de7a8fcaa84bd233169eebe3630eb2fcaee8')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

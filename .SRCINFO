@@ -1,6 +1,6 @@
 pkgbase = marswm
 	pkgdesc = A rusty successor to moonwm
-	pkgver = 0.5.1
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/jzbor/marswm
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = marswm
 	provides = mars-relay
 	conflicts = marswm
 	conflicts = mars-relay
-	source = -0.5.1.tar.gz::https://github.com/jzbor/marswm/archive/0.5.1.tar.gz
-	sha512sums = SKIP
+	source = marswm-0.5.3.tar.gz::https://github.com/jzbor/marswm/archive/0.5.3.tar.gz
+	sha512sums = 80e8ec9a4935b6204de6c2c13395f33da334e16b116f7341ce625b269eb0faef44f8158c78587fae477836043279de7a8fcaa84bd233169eebe3630eb2fcaee8
 
 pkgname = marswm
