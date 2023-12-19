@@ -27,24 +27,24 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/NEOLabs-software/ShAm/archi
 noextract=()
 md5sums=('59051b9d8374b79fd1875d1558c47b1b')
 validpgpkeys=()
-
+pkgsource="ShAm-3.0.0"
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgsource"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgsource"
   meson . build
 	ninja -C build
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgsource"
 	ls build/sham
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgsource"
 	DESTDIR=$pkgdir/ ninja -C build install
 }
