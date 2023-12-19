@@ -34,7 +34,7 @@ source=(
     wrapper
 )
 source_x86_64=(
-    https://www.slovensko.sk/static/kep/apps/dlauncher2_2.x/sk.ditec.dlauncher2-linux-x86_64.zip
+    https://web.archive.org/web/20231219104933if_/https://www.slovensko.sk/static/kep/apps/dlauncher2_2.x/sk.ditec.dlauncher2-linux-x86_64.zip
 )
 sha256sums=(
     SKIP

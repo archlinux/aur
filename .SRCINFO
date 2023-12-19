@@ -23,7 +23,7 @@ pkgbase = d.launcher2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = https://www.slovensko.sk/static/kep/apps/dlauncher2_2.x/sk.ditec.dlauncher2-linux-x86_64.zip
+	source_x86_64 = https://web.archive.org/web/20231219104933if_/https://www.slovensko.sk/static/kep/apps/dlauncher2_2.x/sk.ditec.dlauncher2-linux-x86_64.zip
 	sha256sums_x86_64 = 76a5b15c812e14fc20610ae1bc976a29ca28c031763a1e31e5bff7d56562704a
 
 pkgname = d.launcher2
