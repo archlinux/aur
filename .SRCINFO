@@ -1,0 +1,16 @@
+pkgbase = waypaper-engine-git
+	pkgdesc = An Electron-based graphical frontend for setting wallpapers and playlists
+	pkgver = v1.2.1.r0.g09eb623
+	pkgrel = 1
+	url = https://github.com/0bCdian/Waypaper-Engine
+	arch = x86_64
+	license = GLP
+	makedepends = npm
+	makedepends = git
+	depends = swww
+	depends = nodejs
+	provides = waypaper-engine
+	source = waypaper-engine::git+https://github.com/0bCdian/Waypaper-Engine.git
+	md5sums = SKIP
+
+pkgname = waypaper-engine
