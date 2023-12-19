@@ -2,12 +2,12 @@
 
 pkgname=mint-backgrounds
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The backgrounds of Linux Mint"
 license=('Various')
 arch=('any')
 depends=(
-  'mint-backgrounds'
+  'mint-backgrounds-helena'
   'mint-backgrounds-isadora'
   'mint-backgrounds-julia'
   'mint-backgrounds-katya'
