@@ -1,7 +1,7 @@
 pkgbase = bcrypt-sandbox-bin
 	pkgdesc = A tool for encrypting and validating text with bcrypt
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://felladrin.github.io/bcrypt-sandbox
 	arch = x86_64
 	license = MIT
@@ -11,8 +11,10 @@ pkgbase = bcrypt-sandbox-bin
 	provides = bcrypt-sandbox=1.0.0
 	conflicts = bcrypt-sandbox
 	source = bcrypt-sandbox-1.0.0.zip::https://github.com/felladrin/bcrypt-sandbox/releases/download/v1.0.0/bcrypt-sandbox-linux.zip
-	source = LICENSE::https://raw.githubusercontent.com/felladrin/bcrypt-sandbox/v1.0.0/LICENSE
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/felladrin/bcrypt-sandbox/v1.0.0/LICENSE
+	source = bcrypt-sandbox.sh
 	sha256sums = 9b1675cb7f13d3bfa2ade85fd0821c42d106d23b7e7b66e8682dc256a5a0b61d
 	sha256sums = 9fefa7c0ffe3e72fa6f422498c7a892ba6ef9360e84f3892448c2ebe9d04ba70
+	sha256sums = a7a7eb694d780ef170cd9b00fdc71ffa29b44d73ecb8b6eb6554e7836d4e00e5
 
 pkgname = bcrypt-sandbox-bin
