@@ -16,6 +16,8 @@ _opt_DKMS=1              # This can be toggled between installs
 _opt_defaultmode="0660"  # default: 0600
 _opt_defaultgroup="uucp" # default: root
 
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
+
 # ls -l /dev | grep ',' | sort -n -k 5.1 | less
 
 set -u
@@ -23,7 +25,7 @@ pkgname='digi-dgnc'
 #_pkgver='1.3-28'; _dl='40002369_G.tgz'
 _pkgver='1.3-29'; _dl='40002369_H.src.rpm'
 pkgver="${_pkgver//-/.}"
-pkgrel='7'
+pkgrel='8'
 pkgdesc='tty driver for Digi Neo and legacy ClassicBoard PCI PCIe RS-232 serial port'
 arch=('i686' 'x86_64')
 url='https://www.digi.com/'
@@ -46,6 +48,9 @@ source=(
   '0009-kernel-5.17-change-PDE_DATA.patch'
   '0010-kernel-6.1-INIT_C_CC-termios_internal.patch'
   '0011-kernel-6.0-set_termios-const-ktermios.patch'
+  '0012-kernel-6.4-class_create-1arg.patch'
+  '0013-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch'
+  '0014-kernel-6.6-struct-tty_operations-write-size_t.patch'
 )
 md5sums=('6171349852f6d02228d6e30c79b7a434'
          'a171e9ea1a4ff8340c3c58b303632edf'
@@ -53,26 +58,32 @@ md5sums=('6171349852f6d02228d6e30c79b7a434'
          '8e46a778c648ab4f0ca63a337d36df60'
          '394d24a150676d8123300d6715b81fb8'
          '44b0a7b0ab4dbe661b822fcba9423121'
-         '10ba960da22684d2da89872df1d822cc'
+         '98f1684623d45f66e42f78e5ab8fd8c2'
          '89de6a694ecf827a3358bcd8aea03a6a'
          '58d75d8f86830d09ba8754d4e03a6a9d'
          '7ceda3eaa776322b2042de8d159535ea'
          '9371ea6968666c58413a463fcf341d1f'
          '53bcd11e5e4acbd0466b3ffdda3b263b'
-         '6475487a9415d3dc7ece9dd888cec92c')
+         '6475487a9415d3dc7ece9dd888cec92c'
+         '7824cfd37ca3c7dd27e911c679f8256c'
+         'bbae50830fad8e9e2b674078c2770aee'
+         'b1584c28e0e1d6741ff4e7cca25761d8')
 sha256sums=('e121a31569e3e1f156caeed70742971ec32fef598429ef647bde98f56aa048f5'
             '625bb794d31690b45ad7469f811e7422dac938cf8e9b777aba4d97b60b3c6eae'
             '88d5a8589dca55ca98089dfa4570aa1fbde1095957d0788ad710a27b348c2f4f'
             '737df02a12fc76841325d1059d90451467637eab2df016efc20d84976eb5de7d'
             '3496e90914e1fa2f209dd85c336e7b1c0b784dbbf67cc45e0f0f55f0b1ef5a0e'
             'f215451df4a01f0875a53425b6d8452c344f19b61b59b821f8c949b1b276c022'
-            '13257318895327e7438f7f357c5dc7d67310ec0468802df083815414d4743805'
+            'f5eebe58f625b493cf8cb4c7fb8630fd4d0f9fa278ce4400b011fd702bd2db90'
             'dcedb22e0f3fb0c8197630b38217f86c5468d065ab2d67708c16c17351d6944e'
             '0693e13442749c40a338320cca72dd8aad23678ea7cae035e6bab01a40640c44'
             '718e5104ff4caf153757dd2f8c143402d2c175fd838cfc5db3f47618efd40230'
             'b5000b9bb68ae8ddc173b666ead6d60fa329aa4d5d96636af4717a131827748c'
             'c0786d12440da829f0a57ca9e7f2c3114edbd88213bb66687ac84730ee7c8ed1'
-            'ab4921079d2a4ee3316bbea3bcb3ff7844d8ced73b6b4327d3c580088bc511b1')
+            'ab4921079d2a4ee3316bbea3bcb3ff7844d8ced73b6b4327d3c580088bc511b1'
+            '021745fab94745eaea1abc503a1f7ec94dfa6132f841d5ce2bb969dcb049eda6'
+            '40ee1fb8e261008d810c7251de5612029fa9c8b83a58bdd3279dd64467cb1bed'
+            '414f1115e195616945ac8d597bfd59a9ae3b8ec392c8f06f15213efa662e6433')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -151,17 +162,32 @@ prepare() {
   # diff -pNaru5 'a' 'b' > '0008-kernel-6.1-remove-TTY_MAGIC.patch'
   patch -Nup1 -i "${srcdir}/0008-kernel-6.1-remove-TTY_MAGIC.patch"
 
+  # https://www.spinics.net/lists/linux-fsdevel/msg207433.html
   # cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
   # diff -pNaru5 'a' 'b' > '0009-kernel-5.17-change-PDE_DATA.patch'
   patch -Nup1 -i "${srcdir}/0009-kernel-5.17-change-PDE_DATA.patch"
 
+  # https://www.uwsg.indiana.edu/hypermail/linux/kernel/1809.1/00449.html
   #cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
   # diff -pNaru5 'a' 'b' > '0010-kernel-6.1-INIT_C_CC-termios_internal.patch'
   patch -Nup1 -i "${srcdir}/0010-kernel-6.1-INIT_C_CC-termios_internal.patch"
 
+  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
   # cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
   # diff -pNaru5 'a' 'b' > '0011-kernel-6.0-set_termios-const-ktermios.patch'
   patch -Nup1 -i "${srcdir}/0011-kernel-6.0-set_termios-const-ktermios.patch"
+
+  #cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0012-kernel-6.4-class_create-1arg.patch'
+  patch -Nup1 -i "${srcdir}/0012-kernel-6.4-class_create-1arg.patch"
+
+  #cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0013-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch'
+  patch -Nup1 -i "${srcdir}/0013-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch"
+
+  #cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0014-kernel-6.6-struct-tty_operations-write-size_t.patch'
+  patch -Nup1 -i "${srcdir}/0014-kernel-6.6-struct-tty_operations-write-size_t.patch"
 
   # Version check
   local _ver
@@ -203,13 +229,22 @@ prepare() {
   test ! -s 'scripts/postinstall.Arch' || echo "${}"
 
   # new folder in gcc 8
+  #cp -p 'driver/2.6.27/Makefile26'{,.Arch}
   sed -e 's/^clean:$/&\n\trm -f .cache.mk/g' \
       -e '# Use built in clean' \
       -e 's:clean:clean_local:g' \
       -e 's~^clean_local:~clean:\n\tmake -C @KERNEL_HEADERS@ SUBDIRS=$$PWD clean\n\n&~g' \
       -e '# Kernel 5.4 compatible' \
       -e 's: SUBDIRS=\([^ ]\+\) : M=\1&:g ' \
-    -i driver/*/Makefile*
+      -e 's:@MODDIR@:/usr/lib/modules/$(KERNELRELEASE):g' \
+      -e 's:@KERNEL_HEADERS@:/usr/lib/modules/$(KERNELRELEASE)/build:g' \
+      -e '# Not a good way to sub variables' \
+      -e '/^MODDIR =/ s:\$(shell echo \(.*\))$:\1:g' \
+      -e '# Anything using these must fail' \
+      -e '/MOD = \// s:^:#:g' \
+      -e '1i KERNELRELEASE?=$(shell uname -r)' \
+    -i 'driver/2.6.27/Makefile26'
+    test ! -s 'driver/2.6.27/Makefile26.Arch'
 
   # Branding in dmesg
   sed -e '/^static int dgnc_start/,/^}$/ s@^\(\s\+\)APR(("For@'"\1APR((DRVSTR\": Arch Linux https://aur.archlinux.org/packages/${pkgname}/\"));\n&@g" \
@@ -352,12 +387,6 @@ EOF
     rm "${_dkms}/driver/build/"/Makefile?*
     install -Dpm644 'dpa/dpacompat.h' -t "${_dkms}/dpa"
     install -pm644 'Makefile.inc' -t "${_dkms}/"
-    sed -e 's:/usr/lib/modules/[^/]\+/:/usr/lib/modules/$(KERNELRELEASE)/:g' \
-        -e '# Not a good way to sub variables' \
-        -e '/^MODDIR =/ s:\$(shell echo \(.*\))$:\1:g' \
-        -e '# Anything using these must fail' \
-        -e '/MOD = \// s:^:#:g' \
-       -i "${_dkms}/driver/build/Makefile"
     make -C "${_dkms}/driver/build/" clean KERNELRELEASE="$(uname -r)" MYPWD="${_dkms}/driver/build/"
   fi
   set +u

@@ -1,0 +1,19 @@
+diff -pNaru5 a/driver/2.6.27/dgnc_tty.c b/driver/2.6.27/dgnc_tty.c
+--- a/driver/2.6.27/dgnc_tty.c	2023-12-19 01:37:32.514419708 -0500
++++ b/driver/2.6.27/dgnc_tty.c	2023-12-19 01:38:44.487209394 -0500
+@@ -75,11 +75,15 @@
+ /*
+  * internal variables
+  */
+ static struct board_t	*dgnc_BoardsByMajor[256];
+ static uchar		*dgnc_TmpWriteBuf = NULL;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,4,0)
+ static DEFINE_SEMAPHORE(dgnc_TmpWriteSem);
++#else
++static DEFINE_SEMAPHORE(dgnc_TmpWriteSem,1);
++#endif
+ 
+ /*
+  * Default transparent print information.
+  */
+ static struct digi_t dgnc_digi_init = {

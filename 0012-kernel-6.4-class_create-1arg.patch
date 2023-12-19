@@ -1,0 +1,19 @@
+diff -pNaru5 a/driver/2.6.27/dgnc_driver.c b/driver/2.6.27/dgnc_driver.c
+--- a/driver/2.6.27/dgnc_driver.c	2023-12-19 01:34:02.724532936 -0500
++++ b/driver/2.6.27/dgnc_driver.c	2023-12-19 01:35:48.258543884 -0500
+@@ -308,11 +308,15 @@ static int dgnc_start(void)
+ 				rc = -ENXIO;
+ 				return(rc);
+ 			}
+ 			dgnc_Major = rc;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,4,0)
+ 			dgnc_class = class_create(THIS_MODULE, "dgnc_mgmt");
++#else
++			dgnc_class = class_create("dgnc_mgmt");
++#endif
+ 			device_create(dgnc_class, NULL, MKDEV(dgnc_Major, 0),
+ 				NULL, "dgnc_mgmt");
+ 			device_create(dgnc_class, NULL, MKDEV(dgnc_Major, 1),
+ 				NULL, "dgnc_mgmt1");
+ 			device_create(dgnc_class, NULL, MKDEV(dgnc_Major, 2),

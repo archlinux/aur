@@ -1,0 +1,37 @@
+diff -pNaru5 a/driver/2.6.27/dgnc_tty.c b/driver/2.6.27/dgnc_tty.c
+--- a/driver/2.6.27/dgnc_tty.c	2023-12-19 01:40:37.816271903 -0500
++++ b/driver/2.6.27/dgnc_tty.c	2023-12-19 01:43:19.098247079 -0500
+@@ -155,11 +155,15 @@ static int dgnc_tty_tiocmset(struct tty_
+ static int dgnc_tty_tiocmget(struct tty_struct *tty);
+ static int dgnc_tty_tiocmset(struct tty_struct *tty, unsigned int set, unsigned int clear);
+ #endif
+ static int dgnc_tty_send_break(struct tty_struct *tty, int msec);
+ static void dgnc_tty_wait_until_sent(struct tty_struct *tty, int timeout);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,6,0)
+ static int dgnc_tty_write(struct tty_struct *tty, const unsigned char *buf, int count);
++#else
++static ssize_t dgnc_tty_write(struct tty_struct *tty, const unsigned char *buf, size_t count);
++#endif
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(6,0,0)
+ static void dgnc_tty_set_termios(struct tty_struct *tty, struct ktermios *old_termios);
+ #else
+ static void dgnc_tty_set_termios(struct tty_struct *tty, const struct ktermios *old_termios);
+ #endif
+@@ -2251,12 +2255,17 @@ static int dgnc_tty_put_char(struct tty_
+  * dgnc_tty_write()
+  *
+  * Take data from the user or kernel and send it out to the FEP.
+  * In here exists all the Transparent Print magic as well.
+  */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,6,0)
+ static int dgnc_tty_write(struct tty_struct *tty,
+ 		const unsigned char *buf, int count)
++#else
++static ssize_t dgnc_tty_write(struct tty_struct *tty,
++		const unsigned char *buf, size_t count)
++#endif
+ {
+ 	struct channel_t *ch = NULL;
+ 	struct un_t *un = NULL;
+ 	int bufcount = 0, n = 0;
+ 	int orig_count = 0;

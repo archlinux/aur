@@ -7,7 +7,7 @@ diff -pNaru5 driver/2.6.27.orig/dgnc_tty.c driver/2.6.27/dgnc_tty.c
  	DPR_IOCTL(("dgnc_tty_flush_buffer finish\n"));
  }
  
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,13,0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,10,180)
 +int tty_check_change(struct tty_struct *tty);
 +#endif
  
