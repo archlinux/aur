@@ -1,0 +1,186 @@
+From 4b5c439f27836df0175157b09924251cf5ad4e87 Mon Sep 17 00:00:00 2001
+From: Joshua Ashton <joshua@froggi.es>
+Date: Tue, 19 Dec 2023 09:56:57 +0000
+Subject: [PATCH 1/2] nvk: Hook up driconf for nvk_instance
+
+We will use this in the future to enable present_id + present_wait like
+in RADV.
+
+This also enables the common WSI driconf entries for image count, etc
+overrides to work by default, fixing some games.
+
+Signed-off-by: Joshua Ashton <joshua@froggi.es>
+---
+ src/nouveau/vulkan/nvk_instance.c | 23 +++++++++++++++++++++++
+ src/nouveau/vulkan/nvk_instance.h |  4 ++++
+ src/nouveau/vulkan/nvk_wsi.c      |  2 +-
+ 3 files changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/src/nouveau/vulkan/nvk_instance.c b/src/nouveau/vulkan/nvk_instance.c
+index 21d99bc2ae38c..5340b1b683745 100644
+--- a/src/nouveau/vulkan/nvk_instance.c
++++ b/src/nouveau/vulkan/nvk_instance.c
+@@ -10,6 +10,7 @@
+ #include "vulkan/wsi/wsi_common.h"
+ 
+ #include "util/build_id.h"
++#include "util/driconf.h"
+ #include "util/mesa-sha1.h"
+ 
+ VKAPI_ATTR VkResult VKAPI_CALL
+@@ -61,6 +62,26 @@ nvk_EnumerateInstanceExtensionProperties(const char *pLayerName,
+       &instance_extensions, pPropertyCount, pProperties);
+ }
+ 
++static const driOptionDescription nvk_dri_options[] = {
++   DRI_CONF_SECTION_PERFORMANCE
++      DRI_CONF_ADAPTIVE_SYNC(true)
++      DRI_CONF_VK_X11_OVERRIDE_MIN_IMAGE_COUNT(0)
++      DRI_CONF_VK_X11_STRICT_IMAGE_COUNT(false)
++      DRI_CONF_VK_X11_ENSURE_MIN_IMAGE_COUNT(false)
++      DRI_CONF_VK_KHR_PRESENT_WAIT(false)
++      DRI_CONF_VK_XWAYLAND_WAIT_READY(true)
++   DRI_CONF_SECTION_END
++};
++
++static void
++nvk_init_dri_options(struct nvk_instance *instance)
++{
++   driParseOptionInfo(&instance->available_dri_options, nvk_dri_options, ARRAY_SIZE(nvk_dri_options));
++   driParseConfigFiles(&instance->dri_options, &instance->available_dri_options, 0, "nvk", NULL, NULL,
++                       instance->vk.app_info.app_name, instance->vk.app_info.app_version,
++                       instance->vk.app_info.engine_name, instance->vk.app_info.engine_version);
++}
++
+ VKAPI_ATTR VkResult VKAPI_CALL
+ nvk_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,
+                    const VkAllocationCallbacks *pAllocator,
+@@ -90,6 +111,8 @@ nvk_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,
+    if (result != VK_SUCCESS)
+       goto fail_alloc;
+ 
++   nvk_init_dri_options(instance);
++
+    instance->vk.physical_devices.try_create_for_drm =
+       nvk_create_drm_physical_device;
+    instance->vk.physical_devices.destroy = nvk_physical_device_destroy;
+diff --git a/src/nouveau/vulkan/nvk_instance.h b/src/nouveau/vulkan/nvk_instance.h
+index 705f3ef3f9b71..9cf8dcc1bcf3c 100644
+--- a/src/nouveau/vulkan/nvk_instance.h
++++ b/src/nouveau/vulkan/nvk_instance.h
+@@ -8,10 +8,14 @@
+ #include "nvk_private.h"
+ 
+ #include "vulkan/runtime/vk_instance.h"
++#include "util/xmlconfig.h"
+ 
+ struct nvk_instance {
+    struct vk_instance vk;
+ 
++   struct driOptionCache dri_options;
++   struct driOptionCache available_dri_options;
++
+    uint8_t driver_build_sha[20];
+ };
+ 
+diff --git a/src/nouveau/vulkan/nvk_wsi.c b/src/nouveau/vulkan/nvk_wsi.c
+index 4683926cf9625..761b5a11812cf 100644
+--- a/src/nouveau/vulkan/nvk_wsi.c
++++ b/src/nouveau/vulkan/nvk_wsi.c
+@@ -24,7 +24,7 @@ nvk_init_wsi(struct nvk_physical_device *pdev)
+    result = wsi_device_init(&pdev->wsi_device,
+                             nvk_physical_device_to_handle(pdev),
+                             nvk_wsi_proc_addr, &pdev->vk.instance->alloc,
+-                            -1, NULL, &wsi_options);
++                            -1, &nvk_physical_device_instance(pdev)->dri_options, &wsi_options);
+    if (result != VK_SUCCESS)
+       return result;
+ 
+-- 
+GitLab
+
+
+From 461d1231f21d9316675b29dbcc85a33f30e4956d Mon Sep 17 00:00:00 2001
+From: Joshua Ashton <joshua@froggi.es>
+Date: Tue, 19 Dec 2023 09:58:17 +0000
+Subject: [PATCH 2/2] nvk: Enable KHR_present_id and KHR_present_wait
+
+This is needed for DXVK and VKD3D-Proton in order to implement
+DXGI frame latency and frame latency waitable objects.
+
+Gamescope also requires this to keep in-step with the host.
+
+Using the same enablement system as RADV, etc to be safe.
+
+Signed-off-by: Joshua Ashton <joshua@froggi.es>
+---
+ src/nouveau/vulkan/nvk_physical_device.c | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/src/nouveau/vulkan/nvk_physical_device.c b/src/nouveau/vulkan/nvk_physical_device.c
+index 8e9bab843a0c2..8a1977db98f54 100644
+--- a/src/nouveau/vulkan/nvk_physical_device.c
++++ b/src/nouveau/vulkan/nvk_physical_device.c
+@@ -71,7 +71,8 @@ nvk_get_vk_version(const struct nv_device_info *info)
+ }
+ 
+ static void
+-nvk_get_device_extensions(const struct nv_device_info *info,
++nvk_get_device_extensions(const struct nvk_instance *instance,
++                          const struct nv_device_info *info,
+                           struct vk_device_extension_table *ext)
+ {
+    *ext = (struct vk_device_extension_table) {
+@@ -107,6 +108,15 @@ nvk_get_device_extensions(const struct nv_device_info *info,
+       .KHR_map_memory2 = true,
+       .KHR_multiview = true,
+       .KHR_pipeline_executable_properties = true,
++      /* Hide these behind dri configs for now since we cannot implement it reliably on
++       * all surfaces yet. There is no surface capability query for present wait/id,
++       * but the feature is useful enough to hide behind an opt-in mechanism for now.
++       * If the instance only enables surface extensions that unconditionally support present wait,
++       * we can also expose the extension that way. */
++      .KHR_present_id = driQueryOptionb(&instance->dri_options, "vk_khr_present_wait") ||
++                        wsi_common_vk_instance_supports_present_wait(&instance->vk),
++      .KHR_present_wait = driQueryOptionb(&instance->dri_options, "vk_khr_present_wait") ||
++                          wsi_common_vk_instance_supports_present_wait(&instance->vk),
+       .KHR_push_descriptor = true,
+       .KHR_relaxed_block_layout = true,
+       .KHR_sampler_mirror_clamp_to_edge = true,
+@@ -193,6 +203,7 @@ nvk_get_device_extensions(const struct nv_device_info *info,
+ 
+ static void
+ nvk_get_device_features(const struct nv_device_info *info,
++                        const struct vk_device_extension_table *supported_extensions,
+                         struct vk_features *features)
+ {
+    *features = (struct vk_features) {
+@@ -330,6 +341,12 @@ nvk_get_device_features(const struct nv_device_info *info,
+       /* VK_KHR_pipeline_executable_properties */
+       .pipelineExecutableInfo = true,
+ 
++      /* VK_KHR_present_id */
++      .presentId = supported_extensions->KHR_present_id,
++
++      /* VK_KHR_present_wait */
++      .presentWait = supported_extensions->KHR_present_wait,
++
+       /* VK_KHR_shader_clock */
+       .shaderSubgroupClock = true,
+       .shaderDeviceClock = true,
+@@ -955,10 +972,10 @@ nvk_create_drm_physical_device(struct vk_instance *_instance,
+       &dispatch_table, &wsi_physical_device_entrypoints, false);
+ 
+    struct vk_device_extension_table supported_extensions;
+-   nvk_get_device_extensions(&info, &supported_extensions);
++   nvk_get_device_extensions(instance, &info, &supported_extensions);
+ 
+    struct vk_features supported_features;
+-   nvk_get_device_features(&info, &supported_features);
++   nvk_get_device_features(&info, &supported_extensions, &supported_features);
+ 
+    struct vk_properties properties;
+    nvk_get_device_properties(instance, &info, &properties);
+-- 
+GitLab
+

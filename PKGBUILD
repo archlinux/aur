@@ -3,7 +3,7 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (Git version)"
-pkgver=23.3.branchpoint.r2826.g33e8f22
+pkgver=23.3.branchpoint.r2902.g2487e18
 pkgrel=1
 arch=('x86_64')
 depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
@@ -16,9 +16,11 @@ url="https://gitlab.freedesktop.org/mesa/mesa"
 license=('custom')
 source=("git+${url}.git"
         nvk-memory-budget.patch
+        nvk-present-wait.patch
         LICENSE)
 sha512sums=('SKIP'
             '6bb223fb4c4e799c71bca2b4e8f290cda94fe712a9d378e9b4a43280831b7e96f8ef9d94d6c1fa1a29c39e123ead3ef573bc54e3ae4484070fff2bd1cf316e3f'
+            '7a46a11c7ae795597fde80cc162eb13db287f6f549428d729b328eb4d9be35bbe3e2c8a47e5a19a808a9a47f8b17c32c5fd20f19fb4e8a18af73124ae0d76ef6'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 install="${pkgname}.install"
 
@@ -40,7 +42,7 @@ prepare() {
   # HACK turned up to 11: Advertise Vulkan 1.3 support
   sed -i 's/VK_MAKE_VERSION(1, [0-9]/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_instance.c
   sed -i 's/VK_MAKE_VERSION(1, [0-9]/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_physical_device.c
-  sed -i 's/1\.[0-9]/1\.3/' src/nouveau/vulkan/meson.build
+  sed -i 's/1\.[0-9]/1\.3/g' src/nouveau/vulkan/meson.build
 
   # HACK: Always expose Vulkan memory model
   # NAK does properly support it now but the compiler is still WIP for pre-Volta GPUs (so I'll enable it at the cost of CTS tests)
@@ -57,6 +59,10 @@ prepare() {
   # (might improve performance) (this patch is rebased for the NVK shader code rework)
   # TODO: Fix the segfault issues/MMU faults with this enabled after the recent shader changes
   #patch ${_patch_opts} ../nvk-pipeline-cache.patch
+
+  # VK_KHR_present_id/wait support (https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/26752)
+  # (this should get us closer to gamescope compatibility)
+  patch ${_patch_opts} ../nvk-present-wait.patch
 
   # Mark this NVK package with a signature (so I could track who's using it for bug report purposes)
   sed -i 's/"Mesa " PACKAGE_VERSION/"Mesa DodoNVK " PACKAGE_VERSION/' src/nouveau/vulkan/nvk_physical_device.c
