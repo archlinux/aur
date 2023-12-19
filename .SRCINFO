@@ -5,14 +5,12 @@ pkgbase = packwiz-installer
 	url = https://github.com/packwiz/packwiz-installer
 	arch = any
 	license = MIT
-	makedepends = git
-	makedepends = java-environment<=11
 	depends = java-runtime
-	source = packwiz-installer::git+https://github.com/packwiz/packwiz-installer.git#tag=1ebb28c3ccea4bdd9df38615182826f564d7966e
-	source = packwiz-installer-bootstrap::git+https://github.com/packwiz/packwiz-installer-bootstrap.git#tag=fc4cd603d04d08c09fcd83cadb9ceedf776831e7
+	source = packwiz-installer.jar::https://github.com/packwiz/packwiz-installer/releases/download/v0.5.13/packwiz-installer.jar
+	source = packwiz-installer-bootstrap.jar::https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar
 	source = packwiz-installer.sh
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 3cc3ebd57f1ec54a8ceaccc76e193201f8c957c563c9461253d112c5b087d744
+	sha256sums = a8fbb24dc604278e97f4688e82d3d91a318b98efc08d5dbfcbcbcab6443d116c
 	sha256sums = 924aff17bf4ad5fd745c5378d39ec883f685a9b0f4f754828cd99bc83c71df6d
 
 pkgname = packwiz-installer
