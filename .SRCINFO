@@ -1,7 +1,7 @@
 pkgbase = termite
 	pkgdesc = A simple VTE-based terminal
 	pkgver = 16.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aperezdc/termite
 	arch = x86_64
 	license = LGPL
