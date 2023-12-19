@@ -62,7 +62,7 @@ publish: prepare
     @git commit -m "bump: $(just src-version)"
     @git tag -af $(just tag-name) -m "bump: $(just src-version)"
     @echo -e "\e[36mPushing to origin...\e[0m"
-    @git push
+    @git push || true
     @git push --tags --force
     @echo -e "\e[36mSwitching to aur master branch...\e[0m"
     @git checkout master
