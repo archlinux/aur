@@ -1,12 +1,12 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 pkgname=bdebstrap
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="YAML config based multi-mirror Debian chroot creation tool"
 arch=('any')
 url="https://github.com/bdrung/bdebstrap"
 license=('ISC')
-depends=('mmdebstrap' 'python-ruamel-yaml' 'python')
+depends=('mmdebstrap' 'python-ruamel-yaml' 'python' 'sh')
 makedepends=('pandoc' 'python-setuptools')
 checkdepends=(
 	'python-black'
@@ -22,15 +22,9 @@ optdepends=(
 	'qemu-user-static-binfmt: foreign-architecture support'
 	'arch-test: foreign-architecture support')
 source=(
-	"https://github.com/bdrung/bdebstrap/releases/download/v0.5.0/$pkgname-$pkgver.tar.xz"
-	'extract-hook.patch')
-sha256sums=('f66cb56ea8ffa713da1a8dd7bc24ed0d11606619ea6730ccef1f6b251222b114'
-            '564d577734f288195e46f1692f55bcfeda883ecf9275ba963062feb566f7cedd')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/extract-hook.patch"
-}
+	"https://github.com/bdrung/bdebstrap/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
+)
+sha256sums=('dd85a448b533dac5d8ab418bc6060cd1b5fb5ff6ee6fd20098550ebf088a5b39')
 
 build() {
 	cd "$pkgname-$pkgver"
