@@ -2,9 +2,15 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
 # Contributor: Ingo Meyer <i.meyer@fz-juelich.de>
 
+# importlib_metadata is a false positive warning from namcap due to
+# backwards compatability import of the script entrypoint.
+
+# python-setuptools is also a false positive due to a third-level
+# backwards compatability attempt in script entrypoint.
+
 pkgname=python-simple-term-menu
-pkgver=1.6.3
-pkgrel=2
+pkgver=1.6.4
+pkgrel=1
 pkgdesc='A Python package which creates simple interactive menus on the command line.'
 arch=('any')
 url='https://github.com/IngoMeyer441/simple-term-menu'
@@ -16,8 +22,8 @@ makedepends=(
 checkdepends=()
 optdepends=()
 source=("https://pypi.python.org/packages/source/s/simple-term-menu/simple-term-menu-${pkgver}.tar.gz")
-sha512sums=('58dbbc0c01d8b16d12d546568373f88c580c365c7e175b553656a27fc58ceddd608435a2976ee9654e451f9cb76fcd590e37e3417cee3ebaf72c6ebf48d79452')
-b2sums=('b38b04a7ba34c0cc95bfd2ae990bd6472f663d819a7362f8fec9dcdb0c59d8aa21da49a78b32739b8ebbbc83c655d92a259af545f5d1d82920b533bf387d343b')
+sha512sums=('7787c557467c0e8a44fdf61cc094de1e1171c2f9fc82f0607128ca9ad14ce95037b2f4d1cd7e258480415f2704256af36421d389c5c0ca5280d01d5cc675f05a')
+b2sums=('6d4e498ee342fe4634944f0281b45ef7af7914eb8b3ceab7e7291b451e26757100c0002f9959150445eb752ca8b5e44ee00436d75ea326bafa2767894dbf7ead')
 
 pkgver() {
   echo $pkgver
