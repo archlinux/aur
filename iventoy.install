@@ -1,0 +1,49 @@
+#!/bin/sh
+
+_pkgname=iventoy
+
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    if [ ! -L "/var/lib/${_pkgname}/iso" ] && [ ! -d "/var/lib/${_pkgname}/iso" ]; then
+        mkdir -p "/var/lib/${_pkgname}/iso"
+    fi
+    ln -sf "/var/lib/${_pkgname}/config.dat" "/opt/${_pkgname}/data/config.dat"
+    if [ "$(readlink /opt/${_pkgname}/iso)" != "/var/lib/${_pkgname}/iso" ]; then
+        rm -rf /opt/${_pkgname}/iso
+    fi
+    if [ ! -d "/opt/${_pkgname}/iso" ]; then
+        ln -sf "/var/lib/${_pkgname}/iso" "/opt/${_pkgname}/iso"
+    fi
+    if [ "$LANG" = 'zh_CN.UTF-8' ]; then
+        note "请将你的镜像文件放置在 \"/var/lib/${_pkgname}/iso\" 下，或将存放镜像文件的目录手动软链接为 \"/var/lib/${_pkgname}/iso\" ..."
+        note "随后，以命令 \"sudo systemctl enable --now ${_pkgname}.service\" 来启用并启动 ${_pkgname}.service ..."
+    else
+        note "Please place your image file under \"/var/lib/${_pkgname}/iso\", or manually soft link the directory where the image file is stored to \"/var/lib/${_pkgname}/iso\" ..."
+        note "Subsequently, enable and start ${_pkgname}.service with the command \"sudo systemctl enable --now ${_pkgname}.service\" ..."
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    rm -rf /opt/$_pkgname/
+    if [ "$LANG" = 'zh_CN.UTF-8' ]; then
+        note "iventoy 的配置文件和镜像文件残留在 \"/var/lib/${_pkgname}\"，如果需要，请手动删除..."
+    else
+        note "The configuration files and image files of iventoy are left in \"/var/lib/${_pkgname}\". If necessary, please manually delete them ..."
+    fi
+}

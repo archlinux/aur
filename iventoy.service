@@ -1,0 +1,13 @@
+[Unit]
+Description = An enhanced version of the PXE server.
+Requires = network-online.target
+After    = network-online.target
+
+[Service]
+Type = forking
+WorkingDirectory = /opt/iventoy
+ExecStart = /usr/bin/iventoy -R start
+ExecStop = /usr/bin/iventoy stop
+
+[Install]
+WantedBy = multi-user.target
