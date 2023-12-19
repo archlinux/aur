@@ -1,6 +1,6 @@
 pkgbase = wikijs-rs
 	pkgdesc = CLI client for Wiki.js written in Rust.
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/gierens/wikijs-rs
 	arch = i686
