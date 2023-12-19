@@ -40,10 +40,12 @@ provides=('vkdoom')
 conflicts=('vkdoom')
 source=('vkdoom::git+https://github.com/dpjudas/VkDoom/'
         'vkdoom.desktop'
-        '0001-Fix-file-paths.patch')
+        '0001-Fix-file-paths.patch'
+        'vkdoom.svg')
 b2sums=('SKIP'
-            '66d946f4deb49d0f655c889280677cdd489d4e1d8c2bc67ec635f667b316dff611f4a6a18521e0029f25031282e1cf781d0799db487481478d5ab89ba1e9b266'
-            'fbec476e07feadccbe60fe8059f063fc810fbc3ca5fcfc57c05baa5b2bb75e46408e7462ba23ca0a993ffc0662e0e5fb77edd731300e526bd0c00e71e8897ec6')
+            '4129062d604c978682536d5d4cb00d1995a8a77b41235556614252f779882623b6babd46f3f9cb3544c62b67a4e9026c7bb68960c319f2cf32682535c43a2bed'
+            'fbec476e07feadccbe60fe8059f063fc810fbc3ca5fcfc57c05baa5b2bb75e46408e7462ba23ca0a993ffc0662e0e5fb77edd731300e526bd0c00e71e8897ec6'
+            'b9587a107c69dc98593f98454d411bcd69e9257b15d0d7d535c3afd19ce18b74a4513d67c7e973712768d60d1457dd5972d993cb84466d15525e26cf582cb105')
 
 _enforce_clang=${_enforce_clang-}
 
