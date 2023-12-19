@@ -6,11 +6,11 @@
 : ${_system_cflags:=false}
 
 pkgname=proton
-_srctag=8.0-4c
+_srctag=8.0-5
 _commit=
 pkgver=8.0.4.3  # pkgver=${_srctag//-/.}
 _geckover=2.47.3
-_monover=8.0.1
+_monover=8.1.0
 pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
@@ -257,15 +257,16 @@ package() {
         "$_monodir"/lib/x86_64/*.dll \
         $(find "$_monodir" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
+
 sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
-            '83f65c9292137a740c4b8ea730b61cee0dbbb82e4eb3607590ba2f4377827464'
-            '063ec8db6a2a8f1ac159134c4b0d45e6714c8ff589cd5c97a197197290098380'
-            '15b8be7ce231b88483556759004731effd8a75120457db5c6dfa600477d7282e'
-            '3222a96a5168038fb050675397e7df65dedfdc39b1fffb67392b0e0f24d38b48'
-            'd008e6df5960ee49fd6449d7ffd73d723c01914bdf0709c8d693ac5a985dbab8'
-            '1c94dd4d3fe58271b362536d9c7181242209d6b26bcacea481685d0156aa0daa')
+            '4e3e8a40729e4c9e3e9e651cebe4f1aed8f9a4d22e991e6cd24608687f0eedd4'
+            '8cfd8b3073f650bba678fbeada7346b68a0d24898c74c52d9ebfca07af95e78c'
+            '5b99978fc45de83346d277368ec0c2f8594a03beb613b36e67f4c7a1d1fee46f'
+            '3c1ff94df33a2b36ebdeed39c7bb6bc5e4eb126ddee7fb7863e3ae1b04aec9be'
+            'f93b87216d3556c678226099e8949cc579a87fcc91967ec11ec664933187281b'
+            '345b3dc7e9dd16d327e112d31157920382f0704d3565bbe451865524ba1a5256')
 # Optional patches
 sha256sums+=(
 )
