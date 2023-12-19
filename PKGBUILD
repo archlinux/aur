@@ -19,6 +19,8 @@ _opt_defaultmode='666' # default: 660
 
 _opt_Debug=0          # 0 for no symbols, 1 for symbols
 
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
+
 # The following two must be different and exactly two letters, and likely
 # lowercase.
 # This is experimental and changed at your own risk!
@@ -97,7 +99,7 @@ _dlver='6.10.0-1'
 pkgver="${_dlver//-/.}"
 #_dlver='6.8.0-2' # only use this with a version change patch set
 _srcdir="${pkgname}-${_dlver%%-*}"
-pkgrel='4'
+pkgrel='5'
 pkgdesc='tty driver for Perle IOLan+ DS TS SDS STS SCS JetStream LanStream LinkStream and 3rd party serial console terminal device servers'
 _pkgdescshort='Perle TruePort driver for Ethernet serial servers'
 arch=('i686' 'x86_64')
@@ -128,25 +130,28 @@ source=(
   '0004-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
   '0005-kernel-6.1-kernel_termios_to_user_termios_1-copy_to_user.patch'
   '0006-kernel-6.0-set_termios-const-ktermios.patch'
+  '0007-kernel-6.6-struct-tty_operations-write-size_t.patch'
 )
 md5sums=('5a529676de30706133255ba4e8dae5b0'
          '56444e2f404aa2e6a2c9e8e2bd919fcf'
          'fb798f306553cb253b30ff5af5ba2f40'
-         'a103f2791c03733b1fd75493864fb464'
+         '91a070a4d13c13108dd980ce39ba36b9'
          '5206e863cf6340c05325d86935d4b40c'
          'f464a0217b85a76657bcb7aa022f9a95'
          '835219e7c692cc699ec23f4e183f70bf'
          '2cc11aa436180b3daabad46d1b6bf3fb'
-         'f9cb0fd97631bfbe1adae4c65cf23155')
+         '291a8307fa6a6e651ee0a98eb1cba50c'
+         'a06df58cd27782179eb2b75f965df62a')
 sha256sums=('c21340a7523593da3e229b79cfbcf9e656772b2039e972dbca3947d138d55ffa'
             '28863731fd99e447dc456312ef33e40f93623b56da0d345e45f40e238ca49639'
             '5f806246751d3a91c59bd97273221d1066006bafc7ed598c3d93f9b7bdae65a1'
-            '88181bc7a0a5fa5a1320cbed20e02e1329b03b4c9800fc691990754b9a9aac18'
+            '8c84111b927912ee002ba7e0f398ff02e067bffa02e6bedcf1cd08138362040c'
             'ee64f971753fb4fd8a488e32e8fe3de9c468a00a1d1b995329bcfe87c93cedf7'
             '04025f2dc6fe868e890853e355d1d31fff6d3c463ad89db1cedda5f3843078a3'
             '31ffbbe3de9605aa5c974e92b24c22876c8091eac3c1ada8bb83c76ad829cc8c'
             '1ed2794858d1268e53d73f3d4a34a4d2bf84a24ffbfa8babca7ce10e97e60d6c'
-            '106c1f10c0d132759c10d5fa7b3aa9594aa142b6cd718c0428805a112a8351dd')
+            'ad25f2d413ddd05c5561afea3e8d5b9e5b7859e5855bdb1da63c7a6f26f69599'
+            'c4e7b750ac573ec035c2da643d73736feae741fabd86e460efe51d8086cd3138')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -200,6 +205,10 @@ prepare() {
   # diff -pNaru5 'a' 'b' > '0006-kernel-6.0-set_termios-const-ktermios.patch'
   patch -Nup1 -i "${srcdir}/0006-kernel-6.0-set_termios-const-ktermios.patch"
 
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0007-kernel-6.6-struct-tty_operations-write-size_t.patch'
+  patch -Nup1 -i "${srcdir}/0007-kernel-6.6-struct-tty_operations-write-size_t.patch"
+
   # insert parameters and make install script non interactive.
   set +u; msg2 'Checking SSL with rpm_build'; set -u
   sed -e 's:^\(DONE\)=.*$:'"\1='done';SSL='${_opt_SSL}':g" \
@@ -224,6 +233,14 @@ prepare() {
       -e 's:^bindir=:#&:g' \
       -e '# Fix /lib' \
       -e 's:/lib/modules:/usr&:g' \
+      -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
+      -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
+      -e 's:`uname -r`:$(KERNELRELEASE):g' \
+      -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
+      -e '# Fix by changing the detection var.' \
+      -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
+      -e 's:^ifeq ($(KERNELRELEASE):ifeq ($(SUBDIRS):g' \
+      -e '1i KERNELRELEASE?=$(shell uname -r)' \
     -i 'ptyx/Makefile'
 
   # Remove CRLF line endings from some files
@@ -350,14 +367,6 @@ EOF
     install -Dpm644 ptyx/* -t "${_dkms}/ptyx/"
     rm "${_dkms}/ptyx/modules.order"
     install -pm644 'tp_ver.h' 'tp.h' -t "${_dkms}/"
-    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-        -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
-        -e 's:`uname -r`:$(KERNELRELEASE):g' \
-        -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
-        -e '# Fix by changing the detection var.' \
-        -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
-        -e 's:^ifeq ($(KERNELRELEASE):ifeq ($(SUBDIRS):g' \
-       -i "${_dkms}/ptyx/Makefile"
     make -s -C "${_dkms}/ptyx/" KERNELRELEASE="$(uname -r)" clean
   fi
   set +u

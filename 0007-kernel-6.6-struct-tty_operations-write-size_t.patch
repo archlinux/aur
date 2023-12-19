@@ -1,0 +1,42 @@
+diff -pNaru5 a/ptyx/ptym.c b/ptyx/ptym.c
+--- a/ptyx/ptym.c	2023-12-18 23:38:08.679181001 -0500
++++ b/ptyx/ptym.c	2023-12-18 23:38:14.429154266 -0500
+@@ -229,12 +229,17 @@ static int ptyx_master_write(struct tty_
+ 
+ 	return c;
+ }
+ #else // greater than or equal to  2.6.10
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,6,0)
+ static int ptyx_master_write(struct tty_struct * tty, 
+ 			const unsigned char *buf, int count)
++#else
++static ssize_t ptyx_master_write(struct tty_struct * tty, 
++			const unsigned char *buf, size_t count)
++#endif
+ {
+ 	struct ptyx_struct *ptyx_info;
+ 	struct tty_struct *s_tty;
+ 	unsigned long flags;
+ 	int c = 0;
+diff -pNaru5 a/ptyx/ptys.c b/ptyx/ptys.c
+--- a/ptyx/ptys.c	2023-12-18 23:38:08.679181001 -0500
++++ b/ptyx/ptys.c	2023-12-18 23:38:23.225780119 -0500
+@@ -292,12 +292,17 @@ static int ptyx_slave_write(struct tty_s
+ 	ptyx_info->icount.tx += c;
+ 
+ 	return c;
+ }
+ #else // greater than or equal to  2.6.10
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,6,0)
+ static int ptyx_slave_write(struct tty_struct * tty,
+ 	 				const unsigned char *buf, int count)
++#else
++static ssize_t ptyx_slave_write(struct tty_struct * tty,
++	 				const unsigned char *buf, size_t count)
++#endif
+ {
+ 	struct ptyx_struct *ptyx_info;
+ 	struct tty_struct *m_tty;
+ 	unsigned long flags;
+ 	int c = 0;

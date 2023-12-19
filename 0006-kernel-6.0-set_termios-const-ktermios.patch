@@ -7,7 +7,7 @@ diff -pNaru5 a/ptyx/ptym.c b/ptyx/ptym.c
  }
  
  
-+#if (LINUX_VERSION_CODE < KERNEL_VERSION(6,0,0))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0))
  static void ptyx_master_set_termios(struct tty_struct *tty, STRUCT_TERMIOS *old_termios)
 +#else
 +static void ptyx_master_set_termios(struct tty_struct *tty, const STRUCT_TERMIOS *old_termios)
@@ -26,7 +26,7 @@ diff -pNaru5 a/ptyx/ptys.c b/ptyx/ptys.c
  }
  
  
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(6,0,0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
  static void ptyx_slave_set_termios(struct tty_struct *tty, STRUCT_TERMIOS *old_termios)
 +#else
 +static void ptyx_slave_set_termios(struct tty_struct *tty, const STRUCT_TERMIOS *old_termios)
