@@ -1,7 +1,7 @@
 pkgbase = owa-desktop-bin
 	pkgdesc = A simple Outlook Web (Office 365) Desktop application, built using Electron.js
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mikepruett3/owa-desktop
 	arch = x86_64
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = owa-desktop-bin
 	provides = owa-desktop=1.0.1
 	conflicts = owa-desktop
 	source = owa-desktop-1.0.1.deb::https://github.com/mikepruett3/owa-desktop/releases/download/v1.0.1/owa-desktop_1.0.1_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/mikepruett3/owa-desktop/v1.0.1/LICENSE
+	source = LICENSE-1.0.1::https://raw.githubusercontent.com/mikepruett3/owa-desktop/v1.0.1/LICENSE
 	source = owa-desktop.sh
 	sha256sums = caa33aa8dab46de479837d3218598c30789a676dd5857ddd20ea22966a1adf32
 	sha256sums = 82f04c17c97a90cb676f7eec2bdeca09cfff8a6779b310226d8e750a70abad79
-	sha256sums = 0126a8f807d59d77b30afbcd0a946affdf2cfd14a6670723b00144966e94e825
+	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
 
 pkgname = owa-desktop-bin
