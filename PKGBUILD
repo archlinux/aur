@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=ptrack
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A simple CLI utility for asthetically tracking progress when copying, moving or downloading files."
 arch=(x86_64)
@@ -12,10 +12,10 @@ source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  '676207116d32027e46f964323411a3f7a2558e149fd9bb1ecbe02fbd576701f524e1f9f8b56887db1ee09357a67c757e87fb59917767335918c73dea202b3099'
+  '7d7912c262923ede3e0ab86b51023e6532268f145ae0e14bc6cad00c300d0e5689d42e4bd0fa167d885a30fcc93afe91885328714df7ff73ff084f98b0e88263'
 )
 md5sums=(
-  '27717a472ac6197e0a703502fed5a3ff'
+  '81298d82eae7d653a332fe3f36c45bb9'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
