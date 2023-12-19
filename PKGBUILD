@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=2.11.2.r5.g554b1f776
+pkgver=2.11.3.r0.gfd0e44fbf
 _electronversion=27
 _nodeversion=18
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'ba4ed4aaf2c44af5118b06a3099a92ef3bdc969ed964ad508a857d37ae56fd3d')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
