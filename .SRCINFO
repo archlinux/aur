@@ -1,6 +1,6 @@
 pkgbase = python-aiolinkding
 	pkgdesc = async library to the linkding REST API
-	pkgver = 2023.11.0
+	pkgver = 2023.12.0
 	pkgrel = 1
 	url = https://github.com/bachya/aiolinkding
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-aiolinkding
 	depends = python-aiohttp
 	depends = python-packaging
 	depends = python
-	source = aiolinkding-2023.11.0.tar.gz::https://github.com/bachya/aiolinkding/archive/refs/tags/2023.11.0.tar.gz
-	sha512sums = 0d613f2bfe03a55fbd9de59801558e15a93cf022364ff7ef6c2b04cb1c846fde662ff1505976543d5b8549a52192f49310fa7ec2b070a358eb329a8e095b1a6f
+	source = aiolinkding-2023.12.0.tar.gz::https://github.com/bachya/aiolinkding/archive/refs/tags/2023.12.0.tar.gz
+	sha512sums = 0b4e157ea00b86a5e28f3a0df675091e5d9c45c6e97e058f08bc50490954eaa2dd2622cda2c75f7fdd70f0ac357b6be8caca823ec954203bc89f6e62697599c7
 
 pkgname = python-aiolinkding
