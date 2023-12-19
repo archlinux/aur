@@ -1,3 +1,17 @@
+Mullvad Browser 13.0.7 - December 19 2023
+ * All Platforms
+   * Updated Firefox to 115.6.0esr
+   * Updated NoScript to 11.4.29
+   * Bug 257: Rebase Mullvad Browser Stable to 115.6.0esr [mullvad-browser]
+   * Bug 42042: view-source:http://ip-address does not work because of HTTPS Only [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 40884: Script to automate uploading sha256s and signatures to location signing/download-unsigned-sha256sums-gpg-signatures-from-people-tpo expects them to be [tor-browser-build]
+     * Bug 41026: Do not use ~ when uploading the signed hashes [tor-browser-build]
+     * Bug 41039: Update tools/signing/upload-update_responses-to-staticiforme to keep download-*json files from previous release when new release does not include them [tor-browser-build]
+   * macOS
+     * Bug 40990: Remove old macos signing scripts [tor-browser-build]
+
 Mullvad Browser 13.0.6 - December 04 2023
  * All Platforms
    * Bug 42288: Allow language spoofing in status messages [tor-browser]
