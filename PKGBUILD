@@ -5,7 +5,7 @@ _vlcver=3.0.20
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=3
+pkgrel=4
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -16,7 +16,6 @@ _dav1dver=1.3.0
 _flacver=1.4.0
 _libdc1394ver=2.2.7
 _libmicrodnsver=0.2
-_libplacebover=5
 _libupnpver=1.14
 _libvpxver=1.13
 _livemedia=2023.01.19
@@ -32,7 +31,7 @@ depends=(
   'libarchive' 'qt5-base' "ffmpeg>=6"
   'qt5-x11extras' 'qt5-svg' 'freetype2' 'fribidi' 'harfbuzz'
   'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
-  "libupnp>=$_libupnpver" "libplacebo>=$_libplacebover"
+  "libupnp>=$_libupnpver"
 )
 makedepends=(
   'gst-plugins-base-libs' "live-media>=$_livemedia" 'libnotify' 'libbluray'
@@ -124,11 +123,9 @@ conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
 provides=("${_name}=${pkgver}")
 options=('!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
-        'update-vlc-plugin-cache.hook'
-        'libplacebo-5.patch')
+        'update-vlc-plugin-cache.hook')
 sha512sums=('02e58fb52dd75bf483ac4b298aecf86463b13d4782173d164adba6e4552d9262ff5e2ee1cbe1bce2c8a809801b79f328c6a8c475d34ae62aefaea02ae5ade406'
-            'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
-            'a06b04a8b059dbbef77d27435bd5bec3c26f937390bd112b0843385587e866e617c3dd0e66f99eed5fa4a91bc5f0fd9b5623f65b2f2435a54456dde2aa96209b')
+            'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3')
 
 prepare() {
   cd ${_name}-${_vlcver}
@@ -264,7 +261,7 @@ build() {
     --enable-kwallet \
     --disable-update-check \
     --enable-notify \
-    --enable-libplacebo \
+    --disable-libplacebo \
     --enable-vlc \
     --enable-aribsub \
     --enable-aribcam \
