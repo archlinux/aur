@@ -7,6 +7,7 @@ pkgbase = qman-git
 	license = BSD-2-CLAUSE
 	makedepends = git
 	makedepends = meson
+	makedepends = pandoc
 	depends = ncurses
 	depends = libinih
 	source = qman-git::git+https://github.com/plp13/qman.git

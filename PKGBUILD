@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/plp13/qman"
 license=('BSD-2-CLAUSE')
 depends=('ncurses' 'libinih')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'pandoc')
 source=("$pkgname"::"git+https://github.com/plp13/qman.git")
 sha256sums=('SKIP')
 
