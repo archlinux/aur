@@ -59,8 +59,8 @@ publish: prepare
     @echo -e "\e[36mNew version: $(just src-version)\e[0m"
     @git add .
     @echo -e "\e[36mCommitting and tagging...\e[0m"
-    @git commit -m "bump: $(just src-version)"
-    @git tag -af $(just tag-name) -m "bump: $(just src-version)"
+    @git tag -af $(just tag-name) -m "bump: $(just src-version).$(just commit-count)"
+    @git commit -m "bump: $(just src-version).$(just commit-count)"
     @echo -e "\e[36mPushing to origin...\e[0m"
     @git push || true
     @git push --tags --force

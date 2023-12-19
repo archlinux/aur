@@ -1,7 +1,7 @@
 # Maintainer: Stephan Koglin-Fischer <stephan dot koglin-fischer at funzt dot dev>
 pkgname=dashlane-cli-git
 pkgver=v1.15.1.r0.g8368d87
-pkgrel=36
+pkgrel=37
 pkgdesc="Dashlane CLI GitHub repository version bundled with asdf-vm to ensure using the correct node version."
 arch=('x86_64')
 url="https://github.com/Dashlane/dashlane-cli"
@@ -21,7 +21,7 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
+check-for-asdf() {
   if ! command -v asdf &> /dev/null
   then
     echo "asdf could not be found"
@@ -43,6 +43,10 @@ prepare() {
       exit 1
     fi
   fi
+}
+
+prepare() {
+  check-for-asdf
 
   # Install all plugins stated in .tool-versions
   awk '{print $1}' .tool-versions | xargs -n 1 asdf plugin-add
@@ -53,6 +57,8 @@ prepare() {
 }
 
 build() {
+  check-for-asdf
+  
   cd "$srcdir/$pkgname"
   yarn run build
   # Build linux binary
@@ -60,6 +66,8 @@ build() {
 }
 
 package() {
+  check-for-asdf
+
   cd "$srcdir/$pkgname"
 
   # Install the tool-versions file
