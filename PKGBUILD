@@ -45,7 +45,7 @@ package_lckfb-taishanpi-meta() {
         # repo
         repo
         git
-        ssh
+        openssh
         openssl
 
         # build source
