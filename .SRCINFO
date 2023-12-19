@@ -1,7 +1,7 @@
 pkgbase = rclone-mount-service
 	pkgdesc = Rclone systemd user service
-	pkgver = 07032022
-	pkgrel = 2
+	pkgver = 20231219
+	pkgrel = 1
 	arch = any
 	depends = systemd
 	depends = rclone

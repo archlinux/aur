@@ -1,8 +1,8 @@
 # Maintainer: Victor Bonnelle <victor.bonnelle@proton.me>
 
 pkgname="rclone-mount-service"
-pkgver=07032022
-pkgrel=2
+pkgver=20231219
+pkgrel=1
 pkgdesc="Rclone systemd user service"
 arch=('any')
 depends=('systemd' 'rclone')
