@@ -1,21 +1,23 @@
 pkgbase = python2-lxml
 	pkgdesc = Python2 binding for the libxml2 and libxslt libraries
-	pkgver = 4.9.3
-	pkgrel = 3
+	pkgver = 4.9.4
+	pkgrel = 1
 	url = https://lxml.de/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = BSD
 	license = custom
+	checkdepends = python2-cssselect
 	makedepends = python2-setuptools
 	makedepends = cython2
 	depends = python2
 	depends = libxslt
+	depends = libxml2
 	optdepends = python2-beautifulsoup4: malformed HTML parsing support
 	optdepends = python2-cssselect: CSS parsing support
 	optdepends = python2-html5lib: HTML5 parsing support
-	source = https://github.com/lxml/lxml/archive/lxml-4.9.3.tar.gz
-	sha512sums = 903bd4935c7708b459aee9befcf3f6e3e3aaa9adc122591ea923b6e3d8fd288f07cab3f5f0edb08e3bf9db80414324f0a1a8e5a5089f9cda82f6c50f5df59423
+	source = https://github.com/lxml/lxml/archive/lxml-4.9.4.tar.gz
+	sha512sums = 528ef4ae057a7ee54d3193a042a6db500ada883d1d506829b6824d91ec979feb69ec79239420112eae0e08a437b2e5da8efc35feb5d04d119bfae2679e918d29
 
 pkgname = python2-lxml
