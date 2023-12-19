@@ -1,5 +1,6 @@
 # Maintainer: Maddie Mewmews <maddie at mewmews gay>
 # Contributor: Sam Guymer <sam at guymer dot me>
+# Contributor: Michael Lass <bevan@bi-co.net> # 'provides' field
 
 _java_ver=21
 _jdkname="zing-${_java_ver}"
@@ -16,14 +17,16 @@ depends=(
   'java-runtime-common>=3'
   'ca-certificates-utils'
 )
-provides=(
-  "java-environment=$_java_ver"
-  "java-environment-openjdk=$_java_ver"
-  "java-runtime-headless=$_java_ver"
-  "java-runtime-headless-openjdk=$_java_ver"
-  "java-runtime=$_java_ver"
-  "java-runtime-openjdk=$_java_ver"
-)
+provides=("java-runtime-headless=${_java_ver}"
+          "java-runtime-headless-openjdk=${_java_ver}"
+          "jre${_java_ver}-openjdk-headless=${pkgver}"
+          "java-runtime=${_java_ver}"
+          "java-runtime-openjdk=${_java_ver}"
+          "jre${_java_ver}-openjdk=${pkgver}"
+          "java-environment=${_java_ver}"
+          "java-environment-openjdk=${_java_ver}"
+          "jdk${_java_ver}-openjdk=${pkgver}"
+          "jdk-openjdk=${pkgver}")
 install="$pkgname.install"
 source_aarch64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_build}-3-jdk${pkgver}-linux_aarch64.tar.gz")
 source_x86_64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_build}-3-jdk${pkgver}-linux_x64.tar.gz")

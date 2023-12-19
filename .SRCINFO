@@ -10,12 +10,16 @@ pkgbase = zing-21-bin
 	depends = java-environment-common>=3
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
-	provides = java-environment=21
-	provides = java-environment-openjdk=21
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
+	provides = jre21-openjdk-headless=21.0.1
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
+	provides = jre21-openjdk=21.0.1
+	provides = java-environment=21
+	provides = java-environment-openjdk=21
+	provides = jdk21-openjdk=21.0.1
+	provides = jdk-openjdk=21.0.1
 	source = zing-21-bin.install
 	b2sums = 2149bcde33dbdab799db449c67ec09cd73274f58dc356ebdd1a0ea89389bcb2be0f50ba52a07da2154c0da9aa39858fc215a3d222ddbf6fed31231d45cb0f77a
 	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM23.10.0.0/zing23.10.0.0-3-jdk21.0.1-linux_x64.tar.gz
