@@ -1,7 +1,7 @@
 pkgbase = vdhcoapp-bin
 	pkgdesc = Companion application for Video DownloadHelper browser add-on, precompiled binary version
 	pkgver = 2.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aclap-dev/vdhcoapp
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,7 @@ pkgbase = vdhcoapp-bin
 	sha256sums = 6679e124d54224ac7b8403459c0d4a4dbb6709281cfd38c5c2c5200a3e43d726
 	sha256sums = a2b56e6ae3f7f8933e20762baa90e69f63f0802b2e6d213b51e0bc68843e5d27
 	sha256sums = 3287859986d67e15e269965676bf9c75d1e853ea0ec97695811072fb8f10a7a8
-	sha256sums = a74a57aac6b2e76ded9524599d3047486f9f2d8f820c5114ad41209c8117ab35
-	sha256sums = fddf971ed2d6d976cd6ce34f9f04c9c2d18c03112eccda44ccf887cda0344b7c
+	sha256sums = a08c02d934709cdea4392fce155bec0b33147e386ed154bed959c5b78788ea83
+	sha256sums = f7406ae5ba7fb6602426ef97540f86e057a7fd6d01a917e5af3638f1d64b2ce9
 
 pkgname = vdhcoapp-bin
