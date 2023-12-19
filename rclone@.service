@@ -1,16 +1,16 @@
 # Credits: kabili207 - https://gist.github.com/kabili207/2cd2d637e5c7617411a666d8d7e97101
 
 [Unit]
-Description=rclone: Remote FUSE filesystem for cloud storage config %i
+Description=rclone: Remote FUSE filesystem for cloud storage config %I
 Documentation=man:rclone(1)
 After=network-online.target
-Wants=network-online.target 
-AssertPathIsDirectory=%h/mnt/%i
+Wants=network-online.target
+AssertPathIsDirectory="%h/mnt/%I"
 
 [Service]
 Type=notify
-ExecStart=/usr/bin/rclone mount %i: %h/mnt/%i
-ExecStop=/bin/fusermount -u %h/mnt/%i
+ExecStart=/usr/bin/rclone mount "%I:" "%h/mnt/%I"
+ExecStop=/bin/fusermount -u "%h/mnt/%I"
 
 [Install]
 WantedBy=default.target
