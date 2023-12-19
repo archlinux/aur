@@ -5,8 +5,8 @@ _pkgname=${pkgname}
 _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
-pkgver='1.3.14'
-pkgrel='2'
+pkgver='1.3.15'
+pkgrel='1'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -26,7 +26,7 @@ source=("skywire-${_tag_ver}.tar.gz::${url}/archive/refs/tags/${_tag_ver}.tar.gz
 "${_source[@]}")
 #"https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
 #"all_servers.json"::"https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers")
-sha256sums=('57437d305229a47a3698e06b16ecf3703add2a51b670c3fb9846d73dd4b1bf4e'
+sha256sums=('f2f6a1c2470222fe52d2f4375b106122641fe5216458ef93b47a736f6689cd2d'
             'SKIP')
 #            'SKIP'
 #            'SKIP')
