@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=common
-_pkgver=1.1.0
+_pkgver=1.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Solutions for Common Problems in Base R"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=('CC0-1.0')
 depends=(
   r
@@ -24,12 +24,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('92231535ce9cf7327dd33aff8449d463')
-sha256sums=('183e5f937823ff6b8ef1b22679177c3e25ffbb256784879ece0cefdba78e9978')
+md5sums=('52f9c30df4600179db90e3910eacc9ad')
+b2sums=('2f178a3025b05da9502b0c1ef196594e794ad61f9b1d794b2d10ebb8281f821eab1876857c37ee46fe9a7faff68bce8be394e45025387d9367276faeb86956e4')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
