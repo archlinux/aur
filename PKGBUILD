@@ -28,7 +28,7 @@ sha256sums=('b48310a8859e768e4aca56810bc5dc7bdd67b9e39f6464f5a7cef4c631d07e53'
 build() {
   cmake -B build-kernel -S "$pkgname-$pkgver-src" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_MCSTAS=1
   cmake --build build-kernel
-  for part in comps manuals mcpl; do
+  for part in comps manuals; do
         cmake -B build-$part -S "$pkgname-$part-$pkgver-src" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_MCSTAS=1
         cmake --build build-$part
   done
@@ -37,7 +37,7 @@ check() {
   $srcdir/build-kernel/mcstas --version
 }
 package() {
-  for part in kernel comps manuals mcpl; do 
+  for part in kernel comps manuals; do 
         DESTDIR="$pkgdir/" cmake --install build-$part
   done 
 }
