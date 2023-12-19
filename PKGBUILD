@@ -2,6 +2,7 @@
 pkgname=anubias-bin
 _pkgname=Anubias
 pkgver=1.0.0_beta1
+_electronversion=13
 pkgrel=5
 pkgdesc="Develope mobile apps so easy and native with GUI"
 arch=('x86_64')
@@ -11,7 +12,7 @@ license=('GPL3')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'electron13'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'java-runtime'
     'libx11'
@@ -26,10 +27,15 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/dl/${_pkgname}-${pkgver//_/-}.AppImage"
-    "${pkgname%-bin}.sh")
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('ce38818ef998e4b8b04f2b55afbc8d4aa7510b1a720f795579a7a856a3894307'
-            '77cd9df9f0975abe2b03b0033b06ce07438ceec99976685cce922bf1a0c1d5ec')
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"

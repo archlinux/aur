@@ -20,6 +20,6 @@ pkgbase = anubias-bin
 	source = anubias-1.0.0_beta1.AppImage::https://anubias.app/dl/Anubias-1.0.0-beta1.AppImage
 	source = anubias.sh
 	sha256sums = ce38818ef998e4b8b04f2b55afbc8d4aa7510b1a720f795579a7a856a3894307
-	sha256sums = 77cd9df9f0975abe2b03b0033b06ce07438ceec99976685cce922bf1a0c1d5ec
+	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
 
 pkgname = anubias-bin
