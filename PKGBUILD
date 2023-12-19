@@ -3,6 +3,8 @@
 _opt_DKMS=1            # This can be toggled between installs
 _opt_defaultmode='660' # default: 620
 
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
+
 # Todo: Test secure mode
 
 # Todo: python tools should be updated to python3
@@ -25,7 +27,7 @@ _opt_defaultmode='660' # default: 620
 set -u
 pkgname='nslink'
 pkgver='8.00'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
@@ -58,6 +60,8 @@ source=(
   '0009-python3-nslink.patch'
   '0010-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
   '0011-kernel-6.0-set_termios-const-ktermios.patch'
+  '0012-kernel-6.6-struct-tty_operations-write-size_t.patch'
+  '0013-kernel-6.3-tty_port_operations-int-to-bool.patch'
 )
 md5sums=('b59906d80268e69a24c211b398ffd10c'
          'e3ffb36acfdd321c919e44d477f0774a'
@@ -71,7 +75,9 @@ md5sums=('b59906d80268e69a24c211b398ffd10c'
          '8c329cf0f9c90cfd07ba86a4027eec48'
          'e21d8211b2f209ace648340cb5583805'
          '2774e3aa64717a7613e96fd86f649ea1'
-         '98788ff1378604e9fda43eb6ef9e9e3d')
+         '98788ff1378604e9fda43eb6ef9e9e3d'
+         'feb1ccc7522a6ac2b33326c7f648edb2'
+         '1ff77ae8edbcd654c680999eadd4911b')
 sha256sums=('092859a3c198f8e3f5083a752eab0af74ef71dce59ed503d120792be13cc5fa3'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
@@ -84,7 +90,9 @@ sha256sums=('092859a3c198f8e3f5083a752eab0af74ef71dce59ed503d120792be13cc5fa3'
             '1353bc403b56ef0b00f4b87826991812ee24bcc9a0b2612c0027317a7aa86736'
             'a84e1a9884580917afe55816b4ec9b44ec0f4977144e7f4325647ff58642ecd6'
             '2b909997f0662ae9a49463be4c1ef2af718882924071e0d74b9c04d9d1198691'
-            '7f181d1542b542989b319caf85621725389d7681cf2d5c3bb57dc774d14f1b76')
+            '7f181d1542b542989b319caf85621725389d7681cf2d5c3bb57dc774d14f1b76'
+            '5a62d3658d716c8140de65c2ac2e2560ca33f0f2a58212e29df74eadb821b6ce'
+            '4c605df9b08ea2be3b3c94a2dab8554902ff15576a7075c597453306c275e3e2')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -156,6 +164,14 @@ prepare() {
   # diff -pNaru5 'a' 'b' > '0011-kernel-6.0-set_termios-const-ktermios.patch'
   patch -Nup1 -i "${srcdir}/0011-kernel-6.0-set_termios-const-ktermios.patch"
 
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0012-kernel-6.6-struct-tty_operations-write-size_t.patch'
+  patch -Nup1 -i "${srcdir}/0012-kernel-6.6-struct-tty_operations-write-size_t.patch"
+
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0013-kernel-6.3-tty_port_operations-int-to-bool.patch'
+  patch -Nup1 -i "${srcdir}/0013-kernel-6.3-tty_port_operations-int-to-bool.patch"
+
   # Make package compatible
   #cp -p 'install.sh' 'install.sh.Arch' # testmode for diff comparison
   sed -e '# Fix some paths' \
@@ -204,10 +220,19 @@ prepare() {
   sed -e 's:^[^#]:#&:g' -i 'nslink.conf'
 
   # Fix makefile
+  #cp -p 'Makefile'{,.Arch}
   sed -e 's:=/lib/modules:=/usr/lib/modules:g' \
       -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
       -e 's:SUBDIRS=:M=:g' \
+      -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
+      -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
+      -e 's:`uname -r`:$(KERNELRELEASE):g' \
+      -e '#s:$(KVER):$(KERNELRELEASE):g' \
+      -e '# Shift make executable to separate target' \
+      -e 's@^\tmake nslinkd@\nnslink:\n&@g' \
+      -e '1i KERNELRELEASE?=$(shell uname -r)' \
     -i 'Makefile'
+  test ! -s 'Makefile.Arch'
 
   # Correct group and chmod for serial
   sed -e '/getgrnam/ s:"tty":"uucp":g' \
@@ -243,7 +268,7 @@ build() {
   set -u
   cd "${_srcdir}"
   set +u
-  if ! make -s -j1 QUIET=0; then
+  if ! make -j1 QUIET=0 all nslink; then
     warning 'a no such file or directory error means you need to reboot to load the updated kernel'
     false
   fi
@@ -320,13 +345,6 @@ EOF
     ) "${_dkms}/dkms.conf"
     install -Dpm644 'nslink.h' 'nslink_int.h' 'version.h' 'nslink.c' 'Makefile' -t "${_dkms}"
     #make -C "${_dkms}" clean
-    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-        -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
-        -e 's:`uname -r`:$(KERNELRELEASE):g' \
-        -e 's:$(KVER):$(KERNELRELEASE):g' \
-        -e '# Get rid of make lines so make all makes the module' \
-        -e 's:^\s\+make\s:#&:g' \
-       -i "${_dkms}/Makefile"
   fi
 
   # Install firmware updaters

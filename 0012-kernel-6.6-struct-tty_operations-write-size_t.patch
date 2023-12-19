@@ -1,0 +1,19 @@
+diff -pNaru5 a/nslink.c b/nslink.c
+--- a/nslink.c	2023-12-18 23:12:28.169040957 -0500
++++ b/nslink.c	2023-12-18 23:12:57.762981307 -0500
+@@ -3745,11 +3745,15 @@ static void nrp_flush_chars(struct tty_s
+  *  Our open source friends changed the tty layer in kernel version 2.6.10, removing
+  *  the from_user parameter, presumable the memcpy() functions now can deal with
+  *  copies to/from user space.  There is therefore 2 versions of the following function.
+  */
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,6,0)
+ static int nrp_write(struct tty_struct *tty, const unsigned char *buf,  int count)
++#else
++static ssize_t nrp_write(struct tty_struct *tty, const unsigned char *buf,  size_t count)
++#endif
+ {
+         struct nr_port *info = (struct nr_port *) tty->driver_data;
+         int c, retval = 0;
+         unsigned long flags;
+ 

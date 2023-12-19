@@ -1,0 +1,35 @@
+diff -pNaru5 a/nslink.c b/nslink.c
+--- a/nslink.c	2023-12-18 23:19:31.601965492 -0500
++++ b/nslink.c	2023-12-18 23:19:42.605279547 -0500
+@@ -2812,11 +2812,15 @@ static void configure_nr_port(struct nr_
+                 if (info->si->use_tcp == 0)
+                         si_timer((callback_param_type)&info->si->timer);
+         }
+ }
+ 
++#if LINUX_VERSION_CODE < VERSION_CODE(6,3,0)
+ static int nrp_port_carrier_raised(struct tty_port *port)
++#else
++static bool nrp_port_carrier_raised(struct tty_port *port)
++#endif
+ {
+         struct nr_port *info = container_of(port, struct nr_port, port);
+         unsigned msr = info->si->port_state[info->portnum].modemStatusRegister;
+         return (msr & MSR_CD_ON) ? 1 : 0;
+ }
+@@ -2828,11 +2832,15 @@ static void send_commands(struct nr_port
+                 si_timer((callback_param_type)&info->si->timer);
+         else
+                 tcp_send_remote_cmds(info->si);
+ }
+ 
++#if LINUX_VERSION_CODE < VERSION_CODE(6,3,0)
+ static void nrp_port_dtr_rts(struct tty_port *port, int on)
++#else
++static void nrp_port_dtr_rts(struct tty_port *port, bool on)
++#endif
+ {
+         struct nr_port *info = container_of(port, struct nr_port, port);
+ 
+         if ((info->si->rsmode[info->portnum] == SI_RSMODE_485) ||
+             (info->si->rsmode[info->portnum] == SI_RSMODE_485FDS))
