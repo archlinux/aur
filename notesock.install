@@ -1,0 +1,12 @@
+post_install() {
+	echo "v v v v v v v v v v
+
+To setup notesock and make it accessible from the internet, you need to configure a reverse proxy.
+For nginx, you can refer to /usr/share/doc/notesock/nginx-example.conf.
+
+Finally enable/start the service:
+
+# systemctl enable --now notesock.service
+
+^ ^ ^ ^ ^ ^ ^ ^ ^ ^"
+}

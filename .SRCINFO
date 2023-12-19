@@ -1,0 +1,22 @@
+pkgbase = notesock
+	pkgdesc = Yet another terminal pastebin server
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Sir-Photch/notesock
+	install = notesock.install
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = cargo
+	optdepends = nginx: reverse proxy
+	backup = etc/notesock/notesock.env
+	source = notesock-0.1.1.tar.gz::https://github.com/Sir-Photch/notesock/archive/v0.1.1.tar.gz
+	source = notesock.install
+	source = sysusers-notesock.conf
+	source = tmpfiles-notesock.conf
+	sha256sums = 441e0831b974a0a1cff3db8b8fd17630615443798ce5669118a5472f41403df2
+	sha256sums = d0a96a5ed09ff4f4495c51b95e5da6a7755f105b8b3f7ff9ec6f5038d1425f03
+	sha256sums = e7be2fb5db531367a9c45363ed46bfee783a3be24e99ce3631c6627825e47c89
+	sha256sums = 509f304e8f912f31ed010a46fb3c542b37fa1327a176e066f3c9cab9d16439a0
+
+pkgname = notesock
