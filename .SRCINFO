@@ -1,7 +1,7 @@
 pkgbase = python-exspy
 	pkgdesc = Analysis of EDS and EELS data with HyperSpy
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hyperspy.org/exspy
 	arch = any
 	license = GPL3
@@ -25,7 +25,7 @@ pkgbase = python-exspy
 	optdepends = python-numpydoc: build documentation
 	optdepends = python-pydata-sphinx-theme: build documentation
 	optdepends = python-sphinx-copybutton: build documentation
-	optdepends = python-sphinx-design: build documentation
+	optdepends = python-sphinx_design: build documentation
 	optdepends = python-sphinx-favicon: build documentation
 	optdepends = python-sphinx-gallery: build documentation
 	optdepends = python-sphinx>=1.7: build documentation
