@@ -1,7 +1,7 @@
 pkgbase = amphitheatre-desktop-bin
 	pkgdesc = Open source GUI application that enables you to interact with Amphitheatre
 	pkgver = 23_03_30
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/amphitheatre-app/desktop
 	arch = x86_64
 	license = Apache
