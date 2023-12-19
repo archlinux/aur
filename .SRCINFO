@@ -1,0 +1,12 @@
+pkgbase = brother-dcpj1140dw
+	pkgdesc = Driver for the Brother DCP-J1140DW
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=dcpj1140dw_eu_as
+	install = brother-dcpj1140dw.install
+	arch = x86_64
+	license = custom:brother
+	depends = cups
+	source = https://download.brother.com/welcome/dlf105352/dcpj1140dwpdrv-3.5.0-1.i386.rpm
+	sha256sums = 860d0e1a7203cb692c70dc47e8dbecdbb5541a6ae0dc115baf2943ffe44f7a14
+pkgname = brother-dcpj1140dw

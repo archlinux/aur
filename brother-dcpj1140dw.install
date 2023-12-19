@@ -1,0 +1,28 @@
+post_install() {
+	mkdir -p $pkgdir/var/spool/lpd
+
+	# lpr
+	/opt/brother/Printers/dcpj1200w/inf/setupPrintcapij dcpj1140dw -i
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpj1200w/cupswrapper/cupswrapperdcpj1140dw
+	
+	systemctl restart cups.service
+}
+
+post_upgrade() {
+	/bin/true
+}
+
+pre_remove() {
+	# lpr
+	/opt/brother/Printers/dcpj1200w/inf/setupPrintcapij dcpj1140dw -e
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpj1200w/cupswrapper/cupswrapperdcpj1140dw -e
+}
+
+op=$1
+shift
+
+$op "$@"
