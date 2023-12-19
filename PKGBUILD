@@ -2,7 +2,8 @@
 pkgname=transmissionic-bin
 _pkgname=Transmissionic
 pkgver=1.8.0
-pkgrel=1
+_electronversion=23
+pkgrel=2
 pkgdesc="Remote for Transmission Daemon"
 arch=('x86_64')
 url="https://github.com/6c65726f79/Transmissionic"
@@ -10,7 +11,7 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'electron23'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'libx11'
     'gdk-pixbuf2'
@@ -24,13 +25,17 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${CARCH}-v${pkgver}.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/6c65726f79/Transmissionic/main/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/6c65726f79/Transmissionic/main/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('cbda3a7a49bfdc54a84763bdda7c159b83607b660fa1e66d06d2cda1a9578532'
             '61a59d5ee8c459b5171700485c769d9efb67bf00cb2be4b6fe5561dcdef10191'
-            '767a0e72611350457b6238751142429fe6839383b8761e10cfd1387ddbc47682')
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${_install_path}/${pkgname%-bin}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
@@ -44,5 +49,5 @@ package() {
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
