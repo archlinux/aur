@@ -8,6 +8,7 @@ pkgrel=1
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
 url=https://github.com/Freed-Wu/translate-shell
+depends=(python-aiohttp)
 makedepends=(python-installer)
 optdepends=(
 	'python-repl-python-wakatime: wakatime support'

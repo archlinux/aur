@@ -6,6 +6,7 @@ pkgbase = python-translate-shell
 	arch = any
 	license = GPL3
 	makedepends = python-installer
+	depends = python-aiohttp
 	optdepends = python-repl-python-wakatime: wakatime support
 	optdepends = python-colorama: color support
 	optdepends = python-rich: better logger
