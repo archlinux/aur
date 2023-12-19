@@ -5,12 +5,36 @@
 
 pkgname=zenkit
 pkgver=20231211
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for collaboration and project management'
 arch=('x86_64')
 url='https://zenkit.com'
 license=('unknown')
-depends=('gtk3' 'nss')
+depends=(
+    'alsa-lib'
+    'at-spi2-core'
+    'cairo'
+    'dbus'
+    'expat'
+    'gcc-libs'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'libcups'
+    'libdrm'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxkbcommon'
+    'libxrandr'
+    'mesa'
+    'nspr'
+    'nss'
+    'pango'
+)
 optdepends=('xdg-utils: for opening links, e.g. for logging in via 3rd party accounts')
 source=('https://static.zenkit.com/downloads/desktop-apps/base/zenkit-base-linux.tar.gz'
         'https://zenkit.com/wp-content/uploads/2020/03/zenkit_base-2-1.png'
