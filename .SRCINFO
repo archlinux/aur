@@ -1,7 +1,7 @@
 pkgbase = gplates
 	pkgdesc = GPlates is a plate tectonics program. Manipulate reconstructions of geological and paleogeographic features through geological time. Interactively visualize vector, raster and volume data.
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gplates.org
 	arch = any
 	license = GPLv2

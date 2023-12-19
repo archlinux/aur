@@ -8,7 +8,7 @@ license=(GPLv2)
 
 arch=(any)
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 
 # Some of these dependencies are not listed in the documentation, but are used anyways. These might be optional.
 depends=(libgl glu glew python python-numpy boost qt5-base qt5-svg qt5-xmlpatterns gdal cgal proj qwt zlib graphviz gmp mpfr arrow)
@@ -32,9 +32,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}_${pkgver}_src"
 
-  # Without -DGPLATES_INSTALL_STANDALONE=1, the architecture will be assumed to be i386
-  # Let's hope they fix this for the next update
-  cmake -DCMAKE_INSTALL_PREFIX="/usr/" -DCMAKE_BUILD_TYPE=Release -DGPLATES_INSTALL_STANDALONE=1 .
+  cmake -DCMAKE_INSTALL_PREFIX="/usr/" -DCMAKE_BUILD_TYPE=Release .
   make
 }
 
