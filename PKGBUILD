@@ -73,13 +73,9 @@ makedepends=(
 source=(
   'mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
   'LICENSE'
-  'llvm32.native'
-  gamescope.patch
 )
 b2sums=('SKIP'
         'cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87' # LICENSE
-        'f84a2ec7aa5cd0e3efcfee69897e3da5c6c7031a07b7c93b43f1a709cc0ae0fd312c56c659e7cb7f2e276cbe49be6e586f117320404d2978b09ae0969d919eaf' # llvm32.native
-        '6219a0797724ab17b36f85a134349ffa52f3fce74490834c5f86b474ba893cbb34ebef604cd72c851436296add906dbdb8fca9eb50d1e5f74c7caa8e2963bdcc' # gamescope.patch
 )
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
               '946D09B5E4C9845E63075FF1D961C596A7203456'  # Andres Gomez <tanty@igalia.com>
