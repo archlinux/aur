@@ -1,16 +1,14 @@
 pkgbase = gnucash-docs-git
 	pkgdesc = GnuCash documentation package - GIT version
-	pkgver = 2.6.5
-	pkgrel = 1
+	pkgver = 5.5.r0.g1d039709
+	pkgrel = 2
 	url = http://www.gnucash.org/docs.phtml
 	arch = any
 	license = GPL3
 	license = FDL
+	makedepends = git
 	makedepends = rarian
 	makedepends = docbook-xsl
-	makedepends = libtool
-	makedepends = autoconf
-	makedepends = automake
 	depends = yelp
 	provides = gnucash-docs
 	conflicts = gnucash-docs
@@ -19,4 +17,3 @@ pkgbase = gnucash-docs-git
 	sha256sums = SKIP
 
 pkgname = gnucash-docs-git
-

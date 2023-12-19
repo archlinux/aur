@@ -8,15 +8,17 @@
 pkgname=gnucash-docs-git
 _pkgname=gnucash-docs
 __pkgname=Gnucash
-pkgver=2.6.5
+pkgver=5.5.r0.g1d039709
+#.r0.g1d039709
 #.r22.g874ac13
-pkgrel=1
+pkgrel=2
 pkgdesc="GnuCash documentation package - GIT version"
 arch=('any')
 url="http://www.gnucash.org/docs.phtml"
 license=('GPL3' 'FDL')
 depends=('yelp')
-makedepends=('rarian' 'docbook-xsl' 'libtool' 'autoconf' 'automake')
+makedepends=('git' 'rarian' 'docbook-xsl')
+# 'libtool' 'autoconf' 'automake')
 conflicts=('gnucash-docs')
 provides=('gnucash-docs')
 source=("$pkgname::git+https://github.com/${__pkgname}/${_pkgname}.git")
@@ -30,27 +32,33 @@ pkgver() {
 	)
 }
 
-prepare() {
-	cd "$srcdir/$pkgname"
-
-	./autogen.sh
-}
+#prepare() {
+#	cd "$srcdir/$pkgname"
+#
+#	./autogen.sh
+#}
 
 build() {
 	cd $srcdir/$pkgname
 
-	./configure --prefix=/usr
+#	./configure --prefix=/usr
+	mkdir build && cd build
+
+	cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		..
+
 	make
 }
 
-check() {
-	cd $srcdir/$pkgname
-
-	make -k check
-}
+#check() {
+#	cd $srcdir/$pkgname
+#
+#	cmake -k check
+#}
 
 package() {
-	cd $srcdir/$pkgname
+	cd $srcdir/$pkgname/build
 
 	make DESTDIR="$pkgdir/" install
 }
