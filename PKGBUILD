@@ -1,14 +1,15 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=partmc-git
-pkgver=2.6.1.r6.gb3e955e5
+pkgver=2.7.0.r3.g5760bfb5
 pkgrel=1
 pkgdesc="Particle-resolved Monte Carlo code for atmospheric aerosol simulation"
 arch=('x86_64')
 url="http://lagrange.mechse.illinois.edu/partmc/"
 license=('GPL')
 depends=('gsl' 'netcdf-fortran')
-makedepends=('cmake' 'doxygen' 'graphviz')
+# texlive-fontutils is for epstopdf only
+makedepends=('cmake' 'doxygen' 'graphviz' 'texlive-fontutils')
 source=(
 	'git+https://github.com/compdyn/partmc'
 )
