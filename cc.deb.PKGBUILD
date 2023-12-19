@@ -4,7 +4,7 @@ _pkgver=${pkgver}
 _pkgrel=${pkgrel}
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 _pkgarch=$(dpkg --print-architecture)
-_pkgarches=('amd64' 'arm64' 'armhf' 'armel') # 'riscv64')
+_pkgarches=('amd64' 'arm64' 'armhf' 'armel' 'riscv64')
 arch=('any')
 license=('license-free')
 makedepends=('dpkg')
@@ -16,15 +16,15 @@ source=("${_source[@]}"
 "${_release_url}-arm64.tar.gz"
 "${_release_url}-armhf.tar.gz"
 "${_release_url}-arm.tar.gz"
+"${_release_url}-riscv64.tar.gz"
 )
-#"${_release_url}-riscv64.tar.gz"
 noextract=(
 "${_binarchive}-amd64.tar.gz"
 "${_binarchive}-arm64.tar.gz"
 "${_binarchive}-armhf.tar.gz"
 "${_binarchive}-arm.tar.gz"
+"${_binarchive}-riscv64.tar.gz"
 )
-#"${_binarchive}-riscv64.tar.gz"
 sha256sums=('9257dc9cf98b382049b500f646c0005950077cedb83abbb62984983e4dda0874'
             '40c80ccce9e89ae559050b943be1f09d905476c614a72d74fac2a58c821ac058'
             '00da5a9afdf5a8c7033978d2074039ba1ff7bc7a7221fbd278eb1270bdeb8eae'
@@ -36,7 +36,8 @@ sha256sums=('9257dc9cf98b382049b500f646c0005950077cedb83abbb62984983e4dda0874'
             '413888a3ae982b439bcb4e6d91bb118d6cdc737cad00bddd92d4565750b59e61'
             'a6eba0e8dd463672eb91ff676dfcccca2ff114cdf904d866be963872eb3ff3c0'
             '30ab172e24876a08c75877b52fe0cdec1f65b1847d742d8b14e490b59cedfe09'
-            '2a58659b184e55a3e154cf91d2c59e3bd6680e27e9de444cc39cfa1f0a691baa')
+            '2a58659b184e55a3e154cf91d2c59e3bd6680e27e9de444cc39cfa1f0a691baa'
+            'be69d37fd8ea09e781a3ff9effdd16bb0a79a235d9257be9daab956489ac6a54')
 
 build() {
   _msg2 'creating the DEBIAN/control files'

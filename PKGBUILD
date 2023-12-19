@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.3.15'
-pkgrel='1'
+pkgrel='2'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -46,11 +46,11 @@ sha256sums_armv7l=('30ab172e24876a08c75877b52fe0cdec1f65b1847d742d8b14e490b59ced
 sha256sums_armv7h=('30ab172e24876a08c75877b52fe0cdec1f65b1847d742d8b14e490b59cedfe09')
 sha256sums_arm=('2a58659b184e55a3e154cf91d2c59e3bd6680e27e9de444cc39cfa1f0a691baa')
 sha256sums_riscv64=('be69d37fd8ea09e781a3ff9effdd16bb0a79a235d9257be9daab956489ac6a54')
-#https://github.com/skycoin/skywire/releases/download/v1.3.14/skywire-v1.3.14-linux-amd64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.14/skywire-v1.3.14-linux-arm64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.14/skywire-v1.3.14-linux-armhf.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.14/skywire-v1.3.14-linux-arm.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.14/skywire-v1.3.14-linux-riscv64.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-amd64.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-arm64.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-armhf.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-arm.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-riscv64.tar.gz
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
