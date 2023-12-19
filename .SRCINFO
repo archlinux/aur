@@ -1,0 +1,13 @@
+pkgbase = ShAm
+	pkgdesc = shell script compiler
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/neolabs-software/sham
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = gcc
+	source = ShAm-3.0.0.tar.gz::https://github.com/NEOLabs-software/ShAm/archive/refs/tags/3.0.0.tar.gz
+	md5sums = 59051b9d8374b79fd1875d1558c47b1b ShAm-3.0.0.tar.gz
+
+pkgname = ShAm
