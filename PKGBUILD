@@ -29,9 +29,10 @@ source_aarch64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_bui
 source_x86_64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_build}-3-jdk${pkgver}-linux_x64.tar.gz")
 #https://cdn.azul.com/zing-zvm/ZVM23.10.0.0/zing23.10.0.0-3-jdk21.0.1-linux_x64.tar.gz
 #https://cdn.azul.com/zing-zvm/${_zulu_build}/zing${_zulu_build}-3-jdk${pkgver}-linux_x64.tar.gz
+source=("${pkgname}.install")
 b2sums_aarch64=('49984c7a492e43a08bcec82b93deffbb2db7af7ed6269a3ee16a36c8c4391baa245677d55e851effc0f6462db42512349f0b87060897cb66349d1522316ccb18')
 b2sums_x86_64=('46c7506a4bd51d0d7845a339556f2cb5abc17007760622b6d0539697037b421d55457741a7fc830e48a024ce078a2b9f1124d37c6651c4868e09a04eac82dc37')
-
+b2sums=('2149bcde33dbdab799db449c67ec09cd73274f58dc356ebdd1a0ea89389bcb2be0f50ba52a07da2154c0da9aa39858fc215a3d222ddbf6fed31231d45cb0f77a')
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
 package() {
