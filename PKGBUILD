@@ -10,16 +10,15 @@ pkgname='kea_config'
 pkgdesc='Manage kea dhcp4 configs from single source config'
 _gitname='kea_config'
 
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 url="https://github.com/gene-git/kea_config"
 
 arch=(any)
 license=(MIT)
 # tomli only needed for python < 3.11
-depends=('python>3.9' 'python-packaging' 'python-netaddr' 
-         'python-tomli-w' 'python-qrcode' 'python-tomli'
-        )
+depends=('python>3.10' 'python-dnspython' 'python-toml')
+
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
             #'python-sphinx' 'texlive-latexextra' # Docs
