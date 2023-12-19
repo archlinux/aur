@@ -3,7 +3,8 @@
 pkgname=ten-hands-bin
 _pkgname="Ten Hands"
 pkgver=2.10.3
-pkgrel=6
+_electronversion=13
+pkgrel=7
 pkgdesc="Simplest way to organize and run tasks"
 arch=('x86_64')
 url='https://tenhands.app'
@@ -24,7 +25,6 @@ depends=(
     'libxfixes'
     'nspr'
     'libxkbcommon'
-    'dbus'
     'libdrm'
     'libcups'
     'pango'
@@ -36,7 +36,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-app_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/saisandeepvaddi/ten-hands/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/saisandeepvaddi/ten-hands/v${pkgver}/LICENSE"
 )
 sha256sums=('5a1a4d3970a46d1fde2ccb506653f637a8b0edac5a77a64d12a45e723b555daa'
             '4844817e0496e77b4ff7dbf8084f475a9dbcb4ffe533b06960feac9fbe7cef2b')
@@ -51,5 +51,5 @@ package() {
     ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}-app" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}-app.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/32x32/apps/${pkgname%-bin}-app.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
