@@ -1,6 +1,6 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 pkgname=ollama-bin
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=2
 pkgdesc='Get up and running with large language models, locally'
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('ollama-bin')
 source=("${pkgname%-bin}-linux-amd64::https://github.com/jmorganca/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64"
         "ollama.service::https://gitlab.com/mapanare-labs/packages/archlinux/${pkgname%-bin}/-/raw/main/ollama.service"
         "LICENSE::https://raw.githubusercontent.com/jmorganca/ollama/main/LICENSE")
-sha256sums=('dd0c6fd37359e7ee3fa852f88fb667e096be111e01b629b22fd5eb9e9b1cb29d'
+sha256sums=('96f082b45229387e3839682a49a80129cdf0c95cb223d8e74089677478f67e15'
             '2c39740ec51b7647d65821ea15b9f3ae8c08512e01aae0ec6bdba6cf3cc4462e'
             '5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226')
 
