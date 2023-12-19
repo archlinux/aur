@@ -1,12 +1,13 @@
 pkgbase = quaternion
 	pkgdesc = Qt-based IM client for the Matrix protocol
 	pkgver = 0.0.95.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/quotient-im/Quaternion
 	arch = aarch64
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
+	license = LGPL-2.1-or-later
 	makedepends = cmake
 	makedepends = git
 	depends = hicolor-icon-theme

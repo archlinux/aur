@@ -4,34 +4,51 @@
 # Contributor: Ivan Semkin <ivan at semkin dot ru>
 # Contributor: Martin Weinelt <hexa at darmstadt dot ccc dot de>
 
+## useful links
+# https://matrix.org/
+# https://github.com/quotient-im/Quaternion
+
+## options
+: ${_build_git:=false}
+
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+## basic info
 _pkgname="quaternion"
-pkgname="$_pkgname"
+pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.0.95.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Qt-based IM client for the Matrix protocol'
-#url="https://matrix.org/docs/projects/client/quaternion.html"
 url="https://github.com/quotient-im/Quaternion"
+license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
 arch=('aarch64' 'i686' 'x86_64')
-license=(GPL3)
 
-depends=(
-  hicolor-icon-theme
-  qt5-multimedia
-  qt5-quickcontrols2
-  qt5-tools
-  qtkeychain-qt5
-)
-makedepends=(
-  cmake
-  git
-)
-optdepends=(
-  'qt5-graphicaleffects: Display the conversation history at startup'
-)
+## main package
+_main_package() {
+  depends=(
+    hicolor-icon-theme
+    qt5-multimedia
+    qt5-quickcontrols2
+    qt5-tools
+    qtkeychain-qt5
+  )
+  makedepends=(
+    cmake
+    git
+  )
+  optdepends=(
+    'qt5-graphicaleffects: Display the conversation history at startup'
+  )
 
+  if [ "${_build_git::1}" != "t" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+}
 
-if [ x"$pkgname" == x"$_pkgname" ] ; then
-  # normal package
+## stable package
+_main_stable() {
   _pkgsrc="$_pkgname"
   source=(
     "$_pkgsrc"::"git+https://github.com/quotient-im/Quaternion#tag=${pkgver%%.r*}"
@@ -45,15 +62,17 @@ if [ x"$pkgname" == x"$_pkgname" ] ; then
     'SKIP'
   )
 
-  prepare() {
+  _prepare_package() {
     _prepare_submodules_quoternion
   }
 
   pkgver() {
     echo "${pkgver%%.r*}"
   }
-else
-  # git package
+}
+
+## git package
+_main_git() {
   provides=("$_pkgname")
   conflicts=("$_pkgname")
 
@@ -83,41 +102,42 @@ else
       | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   }
 
-  prepare() {
+  _prepare_package() {
     _prepare_submodules_quoternion
     _prepare_submodules_libquotient
   }
-fi
+}
 
-_prepare_submodules_quoternion() {
-  (
-    # submodules for quaternion
+## submodules
+_prepare_submodules_quoternion() (
     cd "$_pkgsrc"
     local -A _submodules=(
       ['libquotient']='lib'
     )
-     for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
-    done
-  )
-}
+    _submodule_update
+)
 
-_prepare_submodules_libquotient() {
-  (
-    # submodules for libquotient
+_prepare_submodules_libquotient() (
     cd "$_pkgsrc/lib"
     local -A _submodules=(
       ['doxygen-awesome-css']='doxygen-awesome-css'
       ['gtad']='gtad/gtad'
     )
-     for key in ${!_submodules[@]} ; do
+    _submodule_update
+)
+
+## common functions
+prepare() {
+  _submodule_update() {
+    local key
+    for key in ${!_submodules[@]} ; do
       git submodule init "${_submodules[${key}]}"
       git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
       git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
     done
-  )
+  }
+
+  _prepare_package
 }
 
 build() {
@@ -137,3 +157,6 @@ build() {
 package() {
   DESTDIR="${pkgdir:?}" cmake --install build
 }
+
+## execute
+_main_package
