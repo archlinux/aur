@@ -2,8 +2,8 @@
 pkgname=angie-tongsuo
 _pkgname=angie
 pkgver=1.4.0
-_tongsuo_version=8.3.3
-pkgrel=1
+_tongsuo_version=8.4.0
+pkgrel=2
 pkgdesc="Angie is an efficient, powerful, and scalable web server that was forked from angie.With Tongsuo.带了铜锁密码库的 angie，支持国密 NTLS。"
 arch=("x86_64")
 url="https://angie.software"
@@ -29,7 +29,7 @@ source=(https://download.angie.software/files/$_pkgname-$pkgver.tar.gz
         Tongsuo-$_tongsuo_version.tar.gz::https://github.com/Tongsuo-Project/Tongsuo/archive/refs/tags/$_tongsuo_version.tar.gz
 )
 sha256sums=('81a42c3f0a31b6dea85520d7d49096bf25300d068da6bc9aefd082c2ee33f1be'
-            '038a75a02d8f7063fbc36d6b9a28f136f25959acda2caa577276849b57c4f698')
+            '57c2741750a699bfbdaa1bbe44a5733e9c8fc65d086c210151cfbc2bbd6fc975')
 
 
 _common_flags=(
@@ -113,7 +113,7 @@ package() {
   install -Dm644 ../../logrotate "$pkgdir"/etc/logrotate.d/angie
   install -Dm644 ../../service "$pkgdir"/usr/lib/systemd/system/angie.service
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE_angie
-  install -Dm644 ../Tongsuo-$_tongsuo_version/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE_Tongsuo
+  install -Dm644 ../Tongsuo-$_tongsuo_version/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE_Tongsuo
 
   rmdir "$pkgdir"/run
 

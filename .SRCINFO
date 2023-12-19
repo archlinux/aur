@@ -1,7 +1,7 @@
 pkgbase = angie-tongsuo
 	pkgdesc = Angie is an efficient, powerful, and scalable web server that was forked from angie.With Tongsuo.带了铜锁密码库的 angie，支持国密 NTLS。
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://angie.software
 	arch = x86_64
 	license = custom
@@ -22,8 +22,8 @@ pkgbase = angie-tongsuo
 	backup = etc/angie/win-utf
 	backup = etc/logrotate.d/angie
 	source = https://download.angie.software/files/angie-1.4.0.tar.gz
-	source = Tongsuo-8.3.3.tar.gz::https://github.com/Tongsuo-Project/Tongsuo/archive/refs/tags/8.3.3.tar.gz
+	source = Tongsuo-8.4.0.tar.gz::https://github.com/Tongsuo-Project/Tongsuo/archive/refs/tags/8.4.0.tar.gz
 	sha256sums = 81a42c3f0a31b6dea85520d7d49096bf25300d068da6bc9aefd082c2ee33f1be
-	sha256sums = 038a75a02d8f7063fbc36d6b9a28f136f25959acda2caa577276849b57c4f698
+	sha256sums = 57c2741750a699bfbdaa1bbe44a5733e9c8fc65d086c210151cfbc2bbd6fc975
 
 pkgname = angie-tongsuo
