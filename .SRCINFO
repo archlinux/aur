@@ -1,0 +1,15 @@
+pkgbase = mcstas
+	pkgdesc = neutron ray tracing software package for simulating instruments, optics, and full experiments/measurements.
+	pkgver = 3.4
+	pkgrel = 1
+	url = https://download.mcstas.org/current/linux/src/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	optdepends = NeXus: output binary data in NeXus format
+	optdepends = openmpi: parallelization
+	source = mcstas-3.4-src.tar.gz::https://download.mcstas.org/current/linux/src//mcstas-3.4-src.tar.gz
+	source = mcstas-comps-3.4-src.tar.gz::https://download.mcstas.org/current/linux/src//mcstas-comps-3.4-src.tar.gz
+	source = mcstas-manuals-3.4-src.tar.gz::https://download.mcstas.org/current/linux/src//mcstas-manuals-3.4-src.tar.gz
+
+pkgname = mcstas
