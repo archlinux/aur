@@ -2,12 +2,12 @@
 
 pkgname=notesock
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another terminal pastebin server"
 arch=(any)
 url="https://github.com/Sir-Photch/notesock"
 license=(AGPL3)
-makedepends=(git cargo)
+makedepends=(cargo)
 optdepends=('nginx: reverse proxy')
 install=notesock.install
 backup=(etc/notesock/notesock.env)

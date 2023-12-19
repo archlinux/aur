@@ -1,12 +1,11 @@
 pkgbase = notesock
 	pkgdesc = Yet another terminal pastebin server
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sir-Photch/notesock
 	install = notesock.install
 	arch = any
 	license = AGPL3
-	makedepends = git
 	makedepends = cargo
 	optdepends = nginx: reverse proxy
 	backup = etc/notesock/notesock.env
