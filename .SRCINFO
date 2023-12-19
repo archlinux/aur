@@ -1,0 +1,15 @@
+pkgbase = qman-git
+	pkgdesc = A more modern manual page viewer for our terminals
+	pkgver = nightly
+	pkgrel = 1
+	url = https://github.com/plp13/qman
+	arch = x86_64
+	license = BSD-2-CLAUSE
+	makedepends = git
+	makedepends = meson
+	depends = ncurses
+	depends = libinih
+	source = qman-git::git+https://github.com/plp13/qman.git
+	sha256sums = SKIP
+
+pkgname = qman-git
