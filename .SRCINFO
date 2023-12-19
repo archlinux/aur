@@ -9,9 +9,10 @@ pkgbase = nomad-device-nvidia
 	arch = arm
 	arch = aarch64
 	license = MPL2
+	makedepends = go
 	provides = nomad-device-nvidia
 	options = !strip
-	source = nomad-device-nvidia-1.0.0.tar.gz::https://github.com/hashicorp/nomad-device-nvidia/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = c08e2735df78c3a02c6e2573a62150c0b905362757a0a8b5bbc5a3ea12901ccd
+	source = git+https://github.com/hashicorp/nomad-device-nvidia.git#tag=v1.0.0
+	sha256sums = SKIP
 
 pkgname = nomad-device-nvidia
