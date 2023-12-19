@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imageconverter2-bin
-pkgver=1.0.8
+pkgver=1.0.9
 _electronversion=25
 pkgrel=1
 pkgdesc="Batch image format converter app"
@@ -26,8 +26,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('458db5e721b3237209ea11e1e44859ffc58796f11c5d2ffc482f7287d5b93880'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+sha256sums=('42ac7f14104647beddd8813a27af2255d7a5b926ea9e556090451cafb9fe0005'
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
