@@ -103,4 +103,5 @@ package() {
     mv "$pkgdir"/usr/share/doc/vkdoom/licenses "$pkgdir"/usr/share/licenses/vkdoom
     desktop-file-install "$srcdir"/vkdoom.desktop --dir="$pkgdir"/usr/share/applications
     install src/posix/zdoom.xpm -D -m 644 "$pkgdir"/usr/share/icons/hicolor/256x256/apps/vkdoom.xpm
+    install vkdoom.svg -D -m 644 "$pkgdir"/usr/share/pixmaps/vkdoom.svg
 }
