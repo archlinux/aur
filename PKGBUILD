@@ -2,7 +2,7 @@
 pkgname=postman-cli
 pkgver=1.7.0
 pkgrel=1
-pkgdesc="The Postman CLI is the command-line companion that is developed, supported, and signed by Postman. It enables you to run collections, lint API schemas, run security and governance checks, and log in and out. All test results will be automatically pushed to the app."
+pkgdesc="The Postman CLI is the command-line companion that is developed, supported, and signed by Postman. All test results will be automatically pushed to the app."
 provides=('postman-cli')
 arch=('x86_64')
 options=("!strip")

@@ -1,5 +1,5 @@
 pkgbase = postman-cli
-	pkgdesc = The Postman CLI is the command-line companion that is developed, supported, and signed by Postman. It enables you to run collections, lint API schemas, run security and governance checks, and log in and out. All test results will be automatically pushed to the app.
+	pkgdesc = The Postman CLI is the command-line companion that is developed, supported, and signed by Postman. All test results will be automatically pushed to the app.
 	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://www.postman.com/product/what-is-postman/
