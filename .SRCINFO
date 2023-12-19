@@ -1,7 +1,7 @@
 pkgbase = electron25
 	pkgdesc = Build cross platform desktop apps with web technologies
-	pkgver = 25.9.4
-	pkgrel = 2
+	pkgver = 25.9.6
+	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
 	license = MIT
@@ -57,7 +57,7 @@ pkgbase = electron25
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
 	options = !lto
-	source = git+https://github.com/electron/electron.git#tag=v25.9.4
+	source = git+https://github.com/electron/electron.git#tag=v25.9.6
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main
 	source = chromium-mirror::git+https://github.com/chromium/chromium.git#tag=114.0.5735.289
 	source = REVERT-disable-autoupgrading-debug-info.patch
