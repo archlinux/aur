@@ -56,7 +56,7 @@ tag-name:
 prepare: rebuild bump-pkgrel checksum srcinfo
 
 publish: prepare
-    @echo -e "\e[36mNew version: $(just src-version)\e[0m"
+    @echo -e "\e[36mNew version: $(just src-version).$(just commit-count)\e[0m"
     @git add .
     @echo -e "\e[36mCommitting and tagging...\e[0m"
     @git tag -af $(just tag-name) -m "bump: $(just src-version).$(just commit-count)"
