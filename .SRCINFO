@@ -1,7 +1,7 @@
 pkgbase = gnucash-git
 	pkgdesc = A personal and small-business financial-accounting application - GIT version
-	pkgver = 3.7.r132.g9661a77f3
-	pkgrel = 1
+	pkgver = 5.5.r0.gbf460b0040
+	pkgrel = 2
 	url = http://www.gnucash.org
 	install = gnucash.install
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = gnucash-git
 	makedepends = cmake
 	makedepends = swig
 	makedepends = gtest
-	makedepends = gmock
 	makedepends = libdbi-drivers
 	makedepends = mariadb-libs
 	makedepends = postgresql-libs
@@ -21,6 +20,7 @@ pkgbase = gnucash-git
 	depends = guile
 	depends = libdbi
 	depends = webkit2gtk
+	depends = libofx
 	optdepends = evince: for print preview
 	optdepends = perl-date-manip: for stock information lookups
 	optdepends = perl-finance-quote: for stock information lookups
@@ -37,4 +37,3 @@ pkgbase = gnucash-git
 	sha256sums = SKIP
 
 pkgname = gnucash-git
-

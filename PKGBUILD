@@ -11,18 +11,19 @@
 pkgname=gnucash-git
 _pkgname=gnucash
 __pkgname=Gnucash
-pkgver=3.7.r132.g9661a77f3
+pkgver=5.5.r0.gbf460b0040
+#.r0.gbf460b0040
 #.r84.g451bbd53d
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal and small-business financial-accounting application - GIT version"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
-depends=('aqbanking' 'boost-libs' 'guile' 'libdbi' 'webkit2gtk')
+depends=('aqbanking' 'boost-libs' 'guile' 'libdbi' 'webkit2gtk' 'libofx')
 optdepends=('evince: for print preview'
 	    'perl-date-manip: for stock information lookups'
 	    'perl-finance-quote: for stock information lookups')
-makedepends=('git' 'boost' 'cmake' 'swig' 'gtest' 'gmock' 'libdbi-drivers' 'mariadb-libs' 'postgresql-libs' )
+makedepends=('git' 'boost' 'cmake' 'swig' 'gtest' 'libdbi-drivers' 'mariadb-libs' 'postgresql-libs' )
 options=('!emptydirs')
 conflicts=('gnucash' 'gnucash-devel' 'gnucash-latest' 'gnucash-gtk3-git' 'gnucash-python' 'gnucash-xbt')
 provides=('gnucash')
