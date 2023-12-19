@@ -1,8 +1,10 @@
 #!/bin/bash
-APPDIR=/opt/tencent-transmart
-export LD_LIBRARY_PATH="${APPDIR}/lib:${LD_LIBRARY_PATH}"
-export QT_PLUGIN_PATH="${APPDIR}/plugins:${QT_PLUGIN_PATH}"
-export QML2_IMPORT_PATH="${APPDIR}/qml:${QML2_IMPORT_PATH}"
+_APPDIR=/opt/@appname@
+_RUNAPP="${_APPDIR}/@runname@"
+export PATH="${_APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
+export QT_PLUGIN_PATH="${_APPDIR}/plugins:${QT_PLUGIN_PATH}"
+export QML2_IMPORT_PATH="${_APPDIR}/qml:${QML2_IMPORT_PATH}"
 export QTWEBENGINE_DISABLE_SANDBOX=1
-exec "${APPDIR}/TranSmart" --no-sandbox %U
-
+cd "${_APPDIR}"
+exec "${_RUNAPP}" --no-sandbox %U

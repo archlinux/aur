@@ -3,7 +3,7 @@ _pkgname=transmart
 pkgname="tencent-${_pkgname}-bin"
 _appname=TranSmart
 pkgver=Alpha0.10.1
-pkgrel=4
+pkgrel=5
 pkgdesc="腾讯交互翻译融合了腾讯人工智能实验室自研的交互式机器翻译、神经网络机器翻译、 统计机器翻译、语义理解、信息检索等技术，帮助用户更快、更好地完成翻译任务。"
 arch=("x86_64")
 url="https://transmart.qq.com/"
@@ -18,10 +18,8 @@ depends=(
     'fontconfig'
     'libglvnd'
     'freetype2'
-    'zlib'
     'alsa-lib'
     'libx11'
-    'sh'
     'libgpg-error'
     'e2fsprogs'
     'libp11-kit'
@@ -42,8 +40,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('acef0abb8fc0af1fa11514ceb5ea3f615c132e2c7770c58cfb9ca29f571ad3d7'
-            '8bbd612968b3aeaa0674e361d0e54ef1fda18de876eae781bdf195be4238544b')
+            '0457da21fc8ef72f5793a69bbdf8d8846a6d39fed639c518e3043c2d211a75bd')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname "tencent-${_pkgname}-bin" --name "腾讯交互翻译TranSmart" --categories "Utility" --exec "${pkgname%-bin}"
     mv "${srcdir}/${_pkgname}_${pkgver}_linux/使用说明" "${srcdir}/${_pkgname}_${pkgver}_linux/README"
 }

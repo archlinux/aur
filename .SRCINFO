@@ -1,7 +1,7 @@
 pkgbase = tencent-transmart-bin
 	pkgdesc = 腾讯交互翻译融合了腾讯人工智能实验室自研的交互式机器翻译、神经网络机器翻译、 统计机器翻译、语义理解、信息检索等技术，帮助用户更快、更好地完成翻译任务。
 	pkgver = Alpha0.10.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://transmart.qq.com/
 	arch = x86_64
 	license = custom
@@ -13,10 +13,8 @@ pkgbase = tencent-transmart-bin
 	depends = fontconfig
 	depends = libglvnd
 	depends = freetype2
-	depends = zlib
 	depends = alsa-lib
 	depends = libx11
-	depends = sh
 	depends = libgpg-error
 	depends = e2fsprogs
 	depends = libp11-kit
@@ -31,6 +29,6 @@ pkgbase = tencent-transmart-bin
 	source = tencent-transmart-Alpha0.10.1.tar.gz::https://cdn.transmart.qq.com/installation_pro/TranSmart_Alpha0.10.1(20230713)_linux.tar.gz
 	source = tencent-transmart.sh
 	sha256sums = acef0abb8fc0af1fa11514ceb5ea3f615c132e2c7770c58cfb9ca29f571ad3d7
-	sha256sums = 8bbd612968b3aeaa0674e361d0e54ef1fda18de876eae781bdf195be4238544b
+	sha256sums = 0457da21fc8ef72f5793a69bbdf8d8846a6d39fed639c518e3043c2d211a75bd
 
 pkgname = tencent-transmart-bin
