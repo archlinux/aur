@@ -4,7 +4,8 @@
 pkgname=apple-music-electron-bin
 _pkgname="Apple Music"
 pkgver=3.1.1
-pkgrel=4
+_electronversion=19
+pkgrel=5
 pkgdesc="A free, lightweight, open source alternative to iTunes and other Apple Music applications based on Electron 15"
 arch=('x86_64')
 url="https://github.com/Alex313031/Apple-Music-Electron"
@@ -12,7 +13,7 @@ license=("MIT")
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'electron15'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'java-runtime'
     'lib32-glibc'
@@ -26,13 +27,17 @@ optdepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-electron-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/Alex313031/Apple-Music-Electron/v${pkgver}/LICENSE.md"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Alex313031/Apple-Music-Electron/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7bf6157f871af6f3dee522ffbdb846c88689c2c87a542bdbe12898e1dfd280b8'
             '0fd63c3d94a7db5724728de22068188d45aa0c6be04c6e4c4c5983b5d46d5eee'
-            '7ad83e25812c58c83f9fdcdeabaf49a09d6f7172fc085c2d60da79e6b12182d2')
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
@@ -45,5 +50,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

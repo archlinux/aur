@@ -1,11 +1,11 @@
 pkgbase = apple-music-electron-bin
 	pkgdesc = A free, lightweight, open source alternative to iTunes and other Apple Music applications based on Electron 15
 	pkgver = 3.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Alex313031/Apple-Music-Electron
 	arch = x86_64
 	license = MIT
-	depends = electron15
+	depends = electron19
 	depends = hicolor-icon-theme
 	depends = java-runtime
 	depends = lib32-glibc
@@ -17,10 +17,10 @@ pkgbase = apple-music-electron-bin
 	provides = apple-music-electron=3.1.1
 	conflicts = apple-music-electron
 	source = apple-music-electron-3.1.1.deb::https://github.com/Alex313031/Apple-Music-Electron/releases/download/v3.1.1/apple-music_3.1.1_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/Alex313031/Apple-Music-Electron/v3.1.1/LICENSE.md
+	source = LICENSE-3.1.1::https://raw.githubusercontent.com/Alex313031/Apple-Music-Electron/v3.1.1/LICENSE.md
 	source = apple-music-electron.sh
 	sha256sums = 7bf6157f871af6f3dee522ffbdb846c88689c2c87a542bdbe12898e1dfd280b8
 	sha256sums = 0fd63c3d94a7db5724728de22068188d45aa0c6be04c6e4c4c5983b5d46d5eee
-	sha256sums = 7ad83e25812c58c83f9fdcdeabaf49a09d6f7172fc085c2d60da79e6b12182d2
+	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
 
 pkgname = apple-music-electron-bin
