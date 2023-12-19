@@ -34,7 +34,7 @@ optdepends=('python-hyperspy-gui-ipywidgets>=2.0: GUI components for Jupyter' # 
             'python-sphinx-gallery: build documentation'
             'python-sphinx>=1.7: build documentation'
             'python-sphinxcontrib-mermaid: build documentation'
-            'python-towncrier'
+            'python-sphinxcontrib-towncrier'
              )
 
 

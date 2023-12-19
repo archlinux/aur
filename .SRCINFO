@@ -30,7 +30,7 @@ pkgbase = python-exspy
 	optdepends = python-sphinx-gallery: build documentation
 	optdepends = python-sphinx>=1.7: build documentation
 	optdepends = python-sphinxcontrib-mermaid: build documentation
-	optdepends = python-towncrier
+	optdepends = python-sphinxcontrib-towncrier
 	provides = exspy
 	source = https://github.com/hyperspy/exspy/archive/v0.1.tar.gz
 	md5sums = 78e25251ee2ef6a18eda548887fe9c7c
