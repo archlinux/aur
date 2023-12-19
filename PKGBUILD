@@ -6,7 +6,7 @@
 
 _pkgname=droidcam
 pkgname=${_pkgname}-dev
-pkgver=2.1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('x86_64' 'aarch64')
