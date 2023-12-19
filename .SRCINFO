@@ -1,7 +1,7 @@
 pkgbase = d2launcher
 	pkgdesc = Launcher for Diablo 2, Median XL and D2 Stats
 	pkgver = 3.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/murkl/d2launcher
 	arch = x86_64
 	license = unknown
@@ -19,6 +19,6 @@ pkgbase = d2launcher
 	source = d2launcher.desktop
 	source = d2launcher-3.6.4.tar.gz::https://github.com/murkl/d2launcher/archive/refs/tags/3.6.4.tar.gz
 	sha256sums = SKIP
-	sha256sums = 2a255a4985f74d93e00abbdb128495dfaff0620d6a32f6b7160dff1fb3ef69bb
+	sha256sums = 2aa225ee00d653bb13f4a84caf48d7cfc172f7555613c2f7c063fdaa784e2c5d
 
 pkgname = d2launcher
