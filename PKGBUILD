@@ -2,7 +2,7 @@
 
 pkgname=notesock
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another terminal pastebin server"
 arch=(any)
 url="https://github.com/Sir-Photch/notesock"
@@ -43,7 +43,7 @@ package() {
 
     	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	
-	install -Dm640 "nginx/example.conf" "$pkgdir/usr/share/doc/$pkgname/nginx-example.conf"
+	install -Dm644 "nginx/example.conf" "$pkgdir/usr/share/doc/$pkgname/nginx-example.conf"
 	install -Dm640 "systemd/$pkgname.env" "$pkgdir/etc/$pkgname/notesock.env"
 	install -Dm644 "systemd/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 	install -Dm644 "$srcdir/sysusers-$pkgname.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
