@@ -2,7 +2,8 @@
 pkgname=webcam-glass-bin
 _appname=Glass
 pkgver=0.7.2
-pkgrel=4
+_electronversion=20
+pkgrel=5
 pkgdesc="Cross-platform tool for making video tutorials and video conferencing, blending the webcam over the screen."
 arch=('x86_64')
 url="https://github.com/jersonlatorre/webcam-glass-app"
@@ -10,7 +11,7 @@ license=('custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'electron20'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 makepends=(
@@ -22,8 +23,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6e9b08a0a3089616afbed76a660290b75de27342dc20f840e4239cee0db74e53'
-            'fc3655a6dcf9e9cf9f797cc579b3be1cdcb783b4f30dea56623ca39a1801708f')
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     asar extract "${srcdir}/${_appname}-${pkgver}_Linux/resources/app.asar" "${srcdir}/app.asar.unpacked"
     gendesk -q -f -n --categories "Utility" --name "${_appname}" --exec "${pkgname%-bin}"
 }
