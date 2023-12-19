@@ -19,7 +19,7 @@ depends=(python-click
   python-sphinx-copybutton
   python-sphinx-external-toc
   python-sphinx-jupyterbook-latex
-  python-sphinx-design
+  python-sphinx_design
   python-sphinx-thebe
   python-sphinx-book-theme
   python-sphinx-togglebutton
