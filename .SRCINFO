@@ -1,0 +1,14 @@
+pkgbase = winkeydaemon-n0nb
+	pkgdesc = API for sending CW (Morse Code) with K1EL's USB devices - N0NB version
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = http://home.kpn.nl/w.knol18/qle/winkeyer/index.html
+	arch = any
+	license = GPL
+	depends = perl-device-serialport
+	provides = winkeydaemon
+	source = https://github.com/N0NB/winkeydaemon/archive/refs/tags/v1.0.10.tar.gz
+	md5sums = 8ae113ec7fad13f060e77eb348ad128b
+	sha256sums = 48c7e29101f58d719fd89ab0cca9fdece05d4705c91b7da68a3d1e6075fab7ff
+
+pkgname = winkeydaemon-n0nb
