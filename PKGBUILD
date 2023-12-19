@@ -1,19 +1,19 @@
 pkgname=pguri
 pkgver=1.20151224
-pkgrel=10
+pkgrel=11
 pkgdesc="uri data type for PostgreSQL"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/petere/pguri/"
 license=('MIT')
-makedepends=('llvm')
-depends=('postgresql>15' 'postgresql<16' 'uriparser')
+makedepends=('clang15' 'llvm15')
+depends=('postgresql>16' 'postgresql<17' 'uriparser')
 source=(${url}archive/${pkgver}.tar.gz)
-b2sums=('f88707d8751c91221861afd287de77eb4cea44852856b17d28753d6f899eebeb1192d410d43b98d991d6e92a4670b9e1eca55052cbf5305b864a5873a768373a')
+b2sums=('3df2f93a2f21bbe2c492aeac47adb2451c20ea2c7c0639c82b086621f8425ec12db08229e73d1271752bf62143282c2b2cf48973871c0fec8c3fccc293481383')
 
 build() {
   cd $pkgname-$pkgver
 
-  make
+  make PG_CPPFLAGS=-Wno-int-conversion
 }
 
 package() {

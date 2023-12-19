@@ -1,16 +1,16 @@
 pkgbase = pguri
 	pkgdesc = uri data type for PostgreSQL
 	pkgver = 1.20151224
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/petere/pguri/
-	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = llvm
-	depends = postgresql>15
-	depends = postgresql<16
+	makedepends = clang15
+	makedepends = llvm15
+	depends = postgresql>16
+	depends = postgresql<17
 	depends = uriparser
 	source = https://github.com/petere/pguri/archive/1.20151224.tar.gz
-	b2sums = f88707d8751c91221861afd287de77eb4cea44852856b17d28753d6f899eebeb1192d410d43b98d991d6e92a4670b9e1eca55052cbf5305b864a5873a768373a
+	b2sums = 3df2f93a2f21bbe2c492aeac47adb2451c20ea2c7c0639c82b086621f8425ec12db08229e73d1271752bf62143282c2b2cf48973871c0fec8c3fccc293481383
 
 pkgname = pguri
