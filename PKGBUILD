@@ -40,12 +40,11 @@ _main_package() {
     'qt5-graphicaleffects: Display the conversation history at startup'
   )
 
-  if [ "$pkgname" == "$_pkgname" ] ; then
+  if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
   else
     _main_git
   fi
-
 }
 
 ## stable package
@@ -63,7 +62,7 @@ _main_stable() {
     'SKIP'
   )
 
-  prepare() {
+  _prepare_package() {
     _prepare_submodules_quoternion
   }
 
@@ -103,45 +102,44 @@ _main_git() {
       | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   }
 
-  prepare() {
+  _prepare_package() {
     _prepare_submodules_quoternion
     _prepare_submodules_libquotient
   }
 }
 
 ## submodules
-_prepare_submodules_quoternion() {
-  (
-    # submodules for quaternion
+_prepare_submodules_quoternion() (
     cd "$_pkgsrc"
     local -A _submodules=(
       ['libquotient']='lib'
     )
-     for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
-    done
-  )
-}
+    _submodule_update
+)
 
-_prepare_submodules_libquotient() {
-  (
-    # submodules for libquotient
+_prepare_submodules_libquotient() (
     cd "$_pkgsrc/lib"
     local -A _submodules=(
       ['doxygen-awesome-css']='doxygen-awesome-css'
       ['gtad']='gtad/gtad'
     )
-     for key in ${!_submodules[@]} ; do
+    _submodule_update
+)
+
+## common functions
+prepare() {
+  _submodule_update() {
+    local key
+    for key in ${!_submodules[@]} ; do
       git submodule init "${_submodules[${key}]}"
       git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
       git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
     done
-  )
+  }
+
+  _prepare_package
 }
 
-## common functions
 build() {
   local _cmake_options=(
     -B build
