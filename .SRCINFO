@@ -1,15 +1,16 @@
 pkgbase = mattermost-desktop-git
 	pkgdesc = Mattermost Desktop for Linux (git)
-	pkgver = 5.5.1.rc.1.r1.g31c3c51f
+	pkgver = 5.7.0.2154b404
 	pkgrel = 1
 	url = https://github.com/mattermost/desktop
 	arch = x86_64
 	license = Apache
+	makedepends = jq
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = git
 	makedepends = asar
 	makedepends = rpm-tools
-	makedepends = git
 	depends = alsa-lib
 	depends = gtk3
 	depends = libnotify
@@ -22,7 +23,7 @@ pkgbase = mattermost-desktop-git
 	depends = libsecret
 	provides = mattermost-desktop
 	conflicts = mattermost-desktop
-	source = git+https://github.com/mattermost/desktop.git#branch=release-5.5
+	source = git+https://github.com/mattermost/desktop.git#branch=master
 	source = mattermost-desktop.desktop
 	sha256sums = SKIP
 	sha256sums = 9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093
