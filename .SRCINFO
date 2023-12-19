@@ -1,0 +1,15 @@
+pkgbase = cdoc4j-util
+	pkgdesc = Command line utility for working with CDOC documents.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/open-eid/cdoc4j/blob/master/util/README.md
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = java-runtime>=8
+	source = https://github.com/open-eid/cdoc4j/releases/download/1.4/cdoc4j-util-1.4.zip
+	source = cdoc4j-util.sh
+	sha256sums = 717eef2c6d4369e73746f2e0c7c6b68a78b36fe1bf05068581853bc52c203c02
+	sha256sums = 7907decd0ee647ce8be80bc1af975f726edbe4390b1694539ddbd25d1b0bf526
+
+pkgname = cdoc4j-util
