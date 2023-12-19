@@ -12,6 +12,7 @@ pkgbase = monicelli-git
 	makedepends = cmake
 	makedepends = clang14
 	makedepends = ragel
+	makedepends = llvm14
 	provides = monicelli
 	conflicts = monicelli
 	source = monicelli::git+https://github.com/esseks/monicelli.git
