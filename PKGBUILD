@@ -6,7 +6,7 @@
 
 pkgname=mullvad-browser-bin
 pkgver=13.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
 url=https://mullvad.net/en/browser
@@ -63,6 +63,9 @@ package() {
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/mullvad-browser.png"
   done
 
-  ln -s "$pkgdir/usr/share/licenses/mullvad-browser" \
-    "$pkgdir/opt/mullvad-browser/MullvadBrowser/Docs/Licenses"
+  # license files
+  install -dm0755 "$pkgdir/usr/share/licenses/"
+
+  ln -sf /opt/mullvad-browser/MullvadBrowser/Docs/Licenses \
+    "$pkgdir/usr/share/licenses/mullvad-browser"
 }
