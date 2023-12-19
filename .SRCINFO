@@ -1,12 +1,11 @@
 pkgbase = dynamicarray
-	pkgdesc = C implementation of Java ArrayLists
-	pkgver = 1.0
-	pkgrel = 2
+	pkgdesc = dynamic arrays in C
+	pkgver = 2.0
+	pkgrel = 3
 	url = https://gitlab.com/deadgirl/dynamicarray
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
-	makedepends = git
 	makedepends = make
 	depends = glibc
 	source = dynamicarray.tar.gz::https://gitlab.com/deadgirl/dynamicarray/-/archive/master/dynamicarray-master.tar.gz

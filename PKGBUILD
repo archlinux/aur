@@ -1,13 +1,13 @@
 # Maintainer: Madison Lynch <madi@mxdi.xyz>
 pkgname='dynamicarray'
-pkgver=1.0
-pkgrel=2
-pkgdesc="C implementation of Java ArrayLists"
+pkgver=2.0
+pkgrel=3
+pkgdesc="dynamic arrays in C"
 arch=('x86_64')
 url="https://gitlab.com/deadgirl/dynamicarray"
 license=('MIT')
 depends=('glibc')
-makedepends=('gcc' 'git' 'make')
+makedepends=('gcc' 'make')
 source=("${pkgname}.tar.gz::https://gitlab.com/deadgirl/${pkgname}/-/archive/master/${pkgname}-master.tar.gz")
 md5sums=('SKIP')
 
