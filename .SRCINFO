@@ -11,5 +11,8 @@ pkgbase = mcstas
 	source = mcstas-3.4-src.tar.gz::https://download.mcstas.org/current/linux/src//mcstas-3.4-src.tar.gz
 	source = mcstas-comps-3.4-src.tar.gz::https://download.mcstas.org/current/linux/src//mcstas-comps-3.4-src.tar.gz
 	source = mcstas-manuals-3.4-src.tar.gz::https://download.mcstas.org/current/linux/src//mcstas-manuals-3.4-src.tar.gz
+	sha256sums = b48310a8859e768e4aca56810bc5dc7bdd67b9e39f6464f5a7cef4c631d07e53
+	sha256sums = 05e9279731c901d980fba922337e76c7d87d8f2c2c1ac7fc9238a06e00f0052c
+	sha256sums = 4f095d212bbcd8ee6ce15c61015e7c89bcfd9be5d7cf25a3156b8077c98bbeb2
 
 pkgname = mcstas
