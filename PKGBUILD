@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=uivonim-bin
 pkgver=0.29.0
-pkgrel=1
+_electronversion=16
+pkgrel=2
 pkgdesc="Fork of the Veonim Neovim GUI"
 arch=('x86_64')
 url="https://github.com/smolck/uivonim"
@@ -9,7 +10,7 @@ license=('AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron16'
+    "electron${_electronversion}"
     'libx11'
     'gdk-pixbuf2'
     'libxext'
@@ -25,8 +26,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('fe00f3085aea994003f159d407423eecbccdf1d34dc685dfff6ddbeb73509b77'
-            '3cf393ed80574caf0b334ca9c999ecaa4faba4ea91855e627465255ebb719d97')
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
