@@ -1,6 +1,6 @@
 pkgbase = wine-valve
 	pkgdesc = A compatibility layer for running Windows programs (Valve version)
-	pkgver = 8.0.4c
+	pkgver = 8.0.5
 	pkgrel = 1
 	epoch = 5
 	url = https://github.com/ValveSoftware/wine.git
@@ -132,10 +132,10 @@ pkgbase = wine-valve
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=8.0.4c
-	provides = bin32-wine=8.0.4c
-	provides = wine-wow64=8.0.4c
-	provides = wine-valve=8.0.4c
+	provides = wine=8.0.5
+	provides = bin32-wine=8.0.5
+	provides = wine-wow64=8.0.5
+	provides = wine-valve=8.0.5
 	conflicts = wine
 	conflicts = wine-staging
 	conflicts = wine-staging-git
@@ -145,11 +145,11 @@ pkgbase = wine-valve
 	options = staticlibs
 	options = !lto
 	options = !debug
-	source = https://github.com/ValveSoftware/wine/archive/proton-wine-8.0-4c.tar.gz
+	source = https://github.com/ValveSoftware/wine/archive/proton-wine-8.0-5.tar.gz
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	source = futex.patch
-	sha256sums = c6480c6997de62800768a86c8b42f5fbb5cf00f087f8e3f72a239f5970b85fbc
+	sha256sums = 7af74248820bdfbda65e2daa0b7a946f2fdeb60a02f994eff7ffdb0993c94c2e
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
 	sha256sums = 7c73a0fd35d8905d5d0fc33f5cf1558f77b4d70e544c92034ffe41a9d50d8c40
