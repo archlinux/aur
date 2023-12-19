@@ -1,7 +1,7 @@
 pkgbase = libvirt-xen
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = 9.9.0
-	pkgrel = 4
+	pkgver = 9.10.0
+	pkgrel = 1
 	url = https://libvirt.org/
 	arch = x86_64
 	license = LGPL
@@ -95,14 +95,14 @@ pkgbase = libvirt-xen
 	backup = etc/libvirt/libxl-lockd.conf
 	backup = etc/libvirt/virtxend.conf
 	backup = etc/logrotate.d/libvirtd.libxl
-	source = https://libvirt.org/sources/libvirt-9.9.0.tar.xz
-	source = https://libvirt.org/sources/libvirt-9.9.0.tar.xz.asc
+	source = https://libvirt.org/sources/libvirt-9.10.0.tar.xz
+	source = https://libvirt.org/sources/libvirt-9.10.0.tar.xz.asc
 	validpgpkeys = 453B65310595562855471199CA68BE8010084C9C
-	sha256sums = cb83be795548161af6718a6db75ee40719a87bcd6f9207a3565db2fc0e53a52e
+	sha256sums = 1060afc0e85a84c579bcdc91cfaf6d471918f97a780f04c5260a034ff7db7519
 	sha256sums = SKIP
 
 pkgname = libvirt-xen
-	provides = libvirt=9.9.0
+	provides = libvirt=9.10.0
 	provides = libvirt.so
 	provides = libvirt-admin.so
 	provides = libvirt-lxc.so
