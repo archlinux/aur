@@ -18,7 +18,7 @@ get_latest:
         echo "-e s|$key=.*|$key=$value|g"
       done) PKGBUILD
     - diff PKGBUILD.old PKGBUILD && exit 1 || exit_code=$?
-    - if [ $exit_code -ne 1 ]; exit $exit_code; fi
+    - if [ $exit_code -ne 1 ];then exit $exit_code; fi
   artifacts:
     paths:
       - "PKGBUILD"
