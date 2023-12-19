@@ -1,0 +1,83 @@
+diff --git a/common/code_spelling_ignore_words.txt b/common/code_spelling_ignore_words.txt
+index da90e620d..20c4a1521 100644
+--- a/common/code_spelling_ignore_words.txt
++++ b/common/code_spelling_ignore_words.txt
+@@ -682,6 +682,7 @@ ie
+ iff
+ i'm
+ impl
++importlib
+ ina
+ incrementing
+ indextemplates
+diff --git a/master/buildbot/www/plugin.py b/master/buildbot/www/plugin.py
+index c9654a4e1..a5b12435e 100644
+--- a/master/buildbot/www/plugin.py
++++ b/master/buildbot/www/plugin.py
+@@ -13,13 +13,19 @@
+ #
+ # Copyright Buildbot Team Members
+ 
+-
+-import importlib_resources
++import sys
+ 
+ from twisted.web import static
+ 
+ from buildbot.util import bytes2unicode
+ 
++if sys.version_info[:2] >= (3, 9):
++    # We need importlib.resources.files, which is added in Python 3.9
++    # https://docs.python.org/3/library/importlib.resources.html
++    import importlib.resources as importlib_resources
++else:
++    import importlib_resources
++
+ 
+ class Application:
+ 
+diff --git a/master/docs/spelling_wordlist.txt b/master/docs/spelling_wordlist.txt
+index 5eb784e8b..3312a9423 100644
+--- a/master/docs/spelling_wordlist.txt
++++ b/master/docs/spelling_wordlist.txt
+@@ -398,6 +398,7 @@ ie
+ img
+ implementers
+ impls
++importlib
+ incoherencies
+ incrementing
+ Indices
+diff --git a/master/setup.py b/master/setup.py
+index 8fe7cc51d..3a67aa821 100755
+--- a/master/setup.py
++++ b/master/setup.py
+@@ -478,7 +478,7 @@ setup_args['install_requires'] = [
+     'Jinja2 >= 2.1',
+     'msgpack >= 0.6.0',
+     "croniter >= 1.3.0",
+-    'importlib-resources >= 5',
++    'importlib-resources >= 5; python_version < "3.9"',
+     # required for tests, but Twisted requires this anyway
+     'zope.interface >= 4.1.1',
+     'sqlalchemy >= 1.3.0, < 1.5',
+diff --git a/newsfragments/importlib_resources.misc b/newsfragments/importlib_resources.misc
+new file mode 100644
+index 000000000..269058d97
+--- /dev/null
++++ b/newsfragments/importlib_resources.misc
+@@ -0,0 +1 @@
++Conditionalize importlib_resources for Python <3.9 only, for interoperability with more modern Pythons and without that module.
+diff --git a/requirements-ci.txt b/requirements-ci.txt
+index a7121fe33..e3a76ca3f 100644
+--- a/requirements-ci.txt
++++ b/requirements-ci.txt
+@@ -56,7 +56,7 @@ hyperlink==21.0.0
+ idna==2.10  # pyup: ignore (conflicts with moto on master)
+ imagesize==1.4.1
+ importlib-metadata==6.8.0
+-importlib-resources==6.1.1
++importlib-resources==6.1.1;  python_version < "3.9"
+ incremental==22.10.0
+ ipaddress==1.0.23
+ isort==4.3.21   # pyup: ignore (until https://github.com/PyCQA/pylint/pull/3725 is merged)

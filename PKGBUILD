@@ -9,9 +9,10 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges
+         python-buildbot-react-waterfall-view
          python-buildbot-react-console-view python-buildbot-react-grid-view)
 # https://github.com/buildbot/buildbot/releases
-pkgver=3.9.2
+pkgver=3.10.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -19,11 +20,11 @@ url='https://buildbot.net'
 license=(GPL2)
 checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-subunit
-              python-unidiff python-psutil python-ruamel-yaml python-markdown
+              python-psutil python-ruamel-yaml python-markdown
               openssh chromium)
 makedepends=(python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy
              python-alembic python-dateutil python-txaio
-             python-autobahn python-pyjwt python-yaml
+             python-autobahn python-pyjwt python-yaml python-croniter python-unidiff
              python-graphql-core python-hvac
              libvirt-python python-novaclient python-pypugjs python-aiohttp
              python-setuptools python-future
@@ -32,18 +33,20 @@ makedepends=(python-twisted python-jinja python-msgpack python-zope-interface py
              git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
-        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
-sha256sums=('e2ca2db432814771ce07660293b746fee090d77d3226858a1d232e78bcdd688d'
+        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
+        "pr7270.diff")
+sha256sums=('e80e00e40fc2eea7edc1eaf9faa019d1b46bbe535669bfea38f385bfb491498d'
             'SKIP'
             'SKIP'
-            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9')
+            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
+            '3ff88f0b273a63aa9b8710f71df9174dda62e619dd71d4487bcaaa0aa8f04567')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
 )
 
 _buildbot_www_modules_with_tests=(base waterfall_view console_view grid_view wsgi_dashboards)
-_buildbot_www_react_modules_with_tests=(react-base react-console_view react-grid_view)
+_buildbot_www_react_modules_with_tests=(react-base react-waterfall_view react-console_view react-grid_view)
 _buildbot_www_modules=(${_buildbot_www_modules_with_tests[@]} ${_buildbot_www_react_modules_with_tests[@]} badges)
 
 prepare() {
@@ -67,6 +70,9 @@ prepare() {
   # Don't treat warnings as errors. Arch often ships newer Python libraries than ones
   # in upstream CI and introduces extra deprecation warnings
   sed -r -i "s#warnings\\.filterwarnings\\('error'\\)##" master/buildbot/test/__init__.py
+
+  # Backported from https://github.com/buildbot/buildbot/pull/7270
+  patch -Np1 -i ../pr7270.diff
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
@@ -145,10 +151,9 @@ check() {
 
 package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
-  # include setuptools as plugins are enumerated via pkg_resources
   depends=(buildbot-common python python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy
            python-alembic python-dateutil python-txaio
-           python-autobahn python-pyjwt python-yaml python-setuptools)
+           python-autobahn python-pyjwt python-yaml python-croniter python-unidiff)
   optdepends=(
     # reporters
     'python-pyopenssl: to use SSL/TLS in mail or IRC notifiers'
@@ -163,7 +168,6 @@ package_buildbot() {
     'python-treq: for using HTTP requests as steps'
     'python-requests: for using HTTP requests as steps'
     'python-txrequests: for using HTTP requests as steps'
-    'python-unidiff: for GitDiffInfo'
     # workers
     'buildbot-worker: for local worker'
     'libvirt-python: for libvirt worker'
@@ -238,6 +242,7 @@ package_python-buildbot-www-react() {
   pkgdesc='React-based Buildbot UI (experimental)'
   depends=(python buildbot)
   optdepends=(
+    'python-buildbot-react-waterfall-view'
     'python-buildbot-react-console-view'
     'python-buildbot-react-grid-view'
   )
@@ -287,6 +292,14 @@ package_python-buildbot-badges() {
   )
 
   cd buildbot-$pkgver/www/badges
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-react-waterfall-view() {
+pkgdesc='Buildbot Waterfall View plugin (React)'
+  depends=(buildbot python-buildbot-www-react)
+
+  cd buildbot-$pkgver/www/react-waterfall_view
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
