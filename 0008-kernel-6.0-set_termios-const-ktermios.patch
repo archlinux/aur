@@ -8,7 +8,7 @@ diff -pNaru5 a/pserial/perle-serial.c b/pserial/perle-serial.c
  }
  
 -#if (LINUX_VERSION_CODE >  0x20612)		// 2.6.18
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,0,0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,1,0)
 +static void ps_set_termios(struct tty_struct *tty, const struct ktermios *old_termios)
 +#elif (LINUX_VERSION_CODE >  0x20612)		// 2.6.18
  static void ps_set_termios(struct tty_struct *tty, struct ktermios *old_termios)
