@@ -1,0 +1,20 @@
+diff -pNaru5 a/driver/mxusbserial/mxusb-serial.c b/driver/mxusbserial/mxusb-serial.c
+--- a/driver/mxusbserial/mxusb-serial.c	2023-12-18 22:26:56.544609750 -0500
++++ b/driver/mxusbserial/mxusb-serial.c	2023-12-18 22:27:01.967913954 -0500
+@@ -633,12 +633,16 @@ static void serial_close(struct tty_stru
+ 
+ }
+ #endif
+ 
+ #if (LINUX_VERSION_CODE > KERNEL_VERSION(2,6,9))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6,6,0))
+ static int serial_write (struct tty_struct * tty, const unsigned char *buf, int count)
+ #else
++static ssize_t serial_write (struct tty_struct * tty, const u8 *buf, size_t count)
++#endif
++#else
+ static int serial_write (struct tty_struct * tty, int from_user, const unsigned char *buf, int count)
+ #endif
+ {
+ 	struct usb_serial_port *port = tty->driver_data;
+ 	int retval = -EINVAL;

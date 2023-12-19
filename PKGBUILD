@@ -7,6 +7,8 @@
 
 _opt_DKMS=1           # This can be toggled between installs
 
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
+
 # ls -l /dev/ttyMXUSB[0-9]*
 # lsmod | grep mx
 # setserial -g /dev/ttyMXUSB*
@@ -44,7 +46,7 @@ _servicename="${pkgname}-settings"
 #pkgver='1.2'; _build='12071314'
 #pkgver='1.2.9'; _build='14103017'
 pkgver='1.2.13'; _build='18030617'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='kernel module driver for Moxa multi port USB serial 1250 1410 1450 1610 1650 RS-232 422 485'
 _servicedesc='Moxa UPort persistent settings'
 arch=('i686' 'x86_64')
@@ -72,25 +74,28 @@ source=(
   '0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
   '0009-kernel-6.1-user_termios_to_kernel_termios-copy_from_user.patch'
   '0010-kernel-6.0-set_termios-const-ktermios.patch'
+  '0011-kernel-6.6-struct-tty_operations-size_t.patch'
 )
 md5sums=('17a240340a322b3da2e07fc929950288'
          '9ec720fdaaccc41648ffb6d58c45c64e'
          '13cc25e1625f1dc8456aaf703efbe816'
-         'c06ffb879ec71eb19a74eb90839f4d91'
+         'dcf3339ea666cb7ed48e461ba07ebf48'
          'b20646163937da295547dc8bf4bbaccf'
          '4d1d2a36a1707e93f83db3d75e221c6f'
          '637fca359414559c4e5029775da82d85'
          'a9604e54d37a29590492c92311b18400'
-         'a9d2f5eb65ed26436692cfc37e607e66')
+         'a9d2f5eb65ed26436692cfc37e607e66'
+         '4d1271d2313ab713a006a2443b8284bd')
 sha256sums=('aed6f9a1bb6e88a22b520dc6cbbb6624accea080dcaca727c0fab031868228b6'
             'f753e48ea68282288bd53f045c88bd61e39a4c6cf691544953c6929888183370'
             '151a7c84d3815814d45cebd6d58427c27a2b3c6e06c1209d984738e94fea90d8'
-            '4840cccfcd432b7b4f861b5b556c0445f4cd93d277c6cb0045eeebaf92190c4e'
+            '5db4c06da7293de1a4070fa2313cdff27cc5c4b39832f7110ca52692ed16419b'
             '045a3957b540ff8a9f9e401c343683a794837bda4e047759564df6ce2e8912a4'
             '1b0bea590d671fc52b2e5231062ebdc07984e594e07ecdee4883fddbe78b4fa3'
             'f16425c12383498687fd3b38e782fe54c399e0962e437d49c417f86b0d99b563'
             'c765e7dfdcd684d29dc5dc7595733addb95eb4264100d73ed1d541cd4329dde7'
-            'fc62764f2be15e2906f7f28a80b818643257ea523eacc5aa18a444a1af4e178c')
+            'fc62764f2be15e2906f7f28a80b818643257ea523eacc5aa18a444a1af4e178c'
+            '17cc56a95f1a84aa00024da223a8f416a4da3d9b8f68768f460c530719e831c7')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -206,6 +211,10 @@ prepare() {
   # diff -pNaru5 'a' 'b' > '0010-kernel-6.0-set_termios-const-ktermios.patch'
   patch -Nup1 -i "${srcdir}/0010-kernel-6.0-set_termios-const-ktermios.patch"
 
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0011-kernel-6.6-struct-tty_operations-size_t.patch'
+  patch -Nup1 -i "${srcdir}/0011-kernel-6.6-struct-tty_operations-size_t.patch"
+
   # Fix umbrella Makefile
   sed -e '# Disable silent' \
       -e '/make / s:\s\+-s::g' \
@@ -216,6 +225,13 @@ prepare() {
   #cp -p driver/Makefile{,.Arch}
   sed -e '# Remove pesky blank line. n messes up the positioning so we do it separately' \
       -e '/^modules:/ {n; d}' \
+      -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
+      -e 's:shell uname -r:KERNELRELEASE:g' \
+      -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
+      -e '# Fix by changing the detection var.' \
+      -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
+      -e 's:^ifneq (\$(KERNELRELEASE),):ifneq (\$(SUBDIRS),):g' \
+      -e '1i KERNELRELEASE?=$(shell uname -r)' \
     -i 'driver/Makefile'
   # Make package compatible
   sed -e '# Fix path' \
@@ -413,13 +429,6 @@ DEST_MODULE_LOCATION[1]="${_driverfd}"
 EOF
     ) "${_dkms}/dkms.conf"
     cp -pr 'driver/' "${_dkms}/"
-    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-        -e 's:shell uname -r:KERNELRELEASE:g' \
-        -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
-        -e '# Fix by changing the detection var.' \
-        -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
-        -e 's:^ifneq (\$(KERNELRELEASE),):ifneq (\$(SUBDIRS),):g' \
-      -i "${_dkms}/driver/Makefile"
     make -s -C "${_dkms}/driver/" clean KERNELRELEASE="$(uname -r)"
   fi
   set +u
