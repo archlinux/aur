@@ -57,6 +57,8 @@ _opt_RealPort='RealPort' # Can also be Realport
 
 _opt_DKMS=1           # This can be toggled between installs
 
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
+
 # Since the kernel module isn't loaded until you have a device
 # configured, these services are automatically enabled and started
 # for immediate hardware support. They will be reenabled each time the
@@ -106,7 +108,7 @@ pkgname='dgrp'
 #_pkgver='1.9-40'; _dl='40002086_AA.tgz'
 _pkgver='1.9-41'; _dl='40002086_AB.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -203,6 +205,9 @@ source=(
   '0011-kernel-6.1-remove-TTY_MAGIC.patch'
   '0012-kernel-6.1-INIT_C_CC-termios_internal.patch'
   '0013-kernel-6.0-set_termios-const-ktermios.patch'
+  '0014-kernel-6.6-struct-tty_operations-size_t.patch'
+  '0015-kernel-6.4-class_create-1arg.patch'
+  '0016-0006-kernel-5.10-dropped-tty_check_change.patch'
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
@@ -255,7 +260,10 @@ md5sums=('df7d7093759350208fbe5abf5ceb27de'
          'a841defc71b4b1da33ac9b24cdff52ca'
          '18dad6ca1c3bc2dd5206fe8caf4bcdf1'
          'bca5ff7935af3fe539ec30f1e9f59190'
-         '40cf223579346f664c113cb7adcba434')
+         '26d60834e4804c1c8af826e4f2a45503'
+         'dc163d401cf3db6e07ff66793d3ec7ca'
+         '762d49459368bb78da084e57ffc25d7c'
+         '8aeeb382e88b712c163e149bea6c5e1a')
 sha256sums=('9ab56e0c841a1eab13e9ced8f1ff6943be6643773dbbbb7b189462950b9f2113'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
@@ -303,7 +311,10 @@ sha256sums=('9ab56e0c841a1eab13e9ced8f1ff6943be6643773dbbbb7b189462950b9f2113'
             'd1c641d3f024e8e11c4a36bf58570afb4b63fcaa4a22f05c59b513a35a6a4af7'
             '2b9ccbe92e4e1cbeafd16208ef011209bce30b6d3f9b4f288d0b83418479b1bc'
             '2ac185b8a27855c22d64d2e3f56e28f6a4442b1141ad46e4a0a078e0e22adc53'
-            'a23535a5681516931d7de12e35c49086cb38b5a44f831acd5840640e5f26ce09')
+            '3afe6487f26f7393aa1a05b1cd307b3bd29d164a49596e199a681b4432f6e23e'
+            '5787763cac47a3ba5df203f75d57c9d7d8d4364c7cd32db426b268f77f17247a'
+            'df2c6cf5943ca26f282b96f22cf7301cffa6521a273c8301199840b5dca57e8a'
+            '26022e04543aa8ccebe1b9c698c452e2dccc98d5bf1fd8c4f0dba000067e899a')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -461,6 +472,18 @@ prepare() {
     #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
     # diff -pNaru5 'a' 'b' > '0013-kernel-6.0-set_termios-const-ktermios.patch'
     patch -Nup1 -i "${startdir}/0013-kernel-6.0-set_termios-const-ktermios.patch"
+
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > '0014-kernel-6.6-struct-tty_operations-size_t.patch'
+    patch -Nup1 -i "${startdir}/0014-kernel-6.6-struct-tty_operations-size_t.patch"
+
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > '0015-kernel-6.4-class_create-1arg.patch'
+    patch -Nup1 -i "${startdir}/0015-kernel-6.4-class_create-1arg.patch"
+
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > '0016-0006-kernel-5.10-dropped-tty_check_change.patch'
+    patch -Nup1 -i "${srcdir}/0016-0006-kernel-5.10-dropped-tty_check_change.patch"
   fi
 
   # Standardize name of RealPort
@@ -537,6 +560,10 @@ prepare() {
   sed -e 's/^clean:$/&\n\trm -f .cache.mk/g' \
       -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
       -e 's:SUBDIRS=:M=:g' \
+      -e '# Build with any specified kernel, not just the current one' \
+      -e 's:@MODDIR@:/usr/lib/modules/$(KERNELRELEASE):g' \
+      -e 's:@KERNEL_HEADERS@:/usr/lib/modules/$(KERNELRELEASE)/build:g' \
+      -e '1i KERNELRELEASE?=$(shell uname -r)' \
     -i driver/*/Makefile*
 
   # Branding in dmesg
@@ -568,7 +595,7 @@ build() {
   _configure
 
   #. 'config/file_locations.Arch'
-  make -s all -j1 # This package doesn't support threaded make and it's too small to fix
+  make all -j1 # This package doesn't support threaded make and it's too small to fix
   set +u
 }
 
@@ -745,8 +772,8 @@ EOF
     cp -pr 'driver/build/' "${_dkms}/driver/"
     cp -pr 'commoninc/' "${_dkms}/"
     install -pm644 'Makefile.inc' -t "${_dkms}/"
-    sed -e 's:/usr/lib/modules/[^/]\+/:/usr/lib/modules/$(KERNELRELEASE)/:g' \
-       -i "${_dkms}/driver/build/Makefile"
+    #sed -e 's:/usr/lib/modules/[^/]\+/:/usr/lib/modules/$(KERNELRELEASE)/:g' \
+    #   -i "${_dkms}/driver/build/Makefile"
     make -C "${_dkms}/driver/build/" clean
   fi
   set +u

@@ -1,0 +1,35 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_tty.c b/driver/2.6.27/dgrp_tty.c
+--- a/driver/2.6.27/dgrp_tty.c	2023-12-18 20:56:27.737442928 -0500
++++ b/driver/2.6.27/dgrp_tty.c	2023-12-18 20:56:42.854022036 -0500
+@@ -110,11 +110,15 @@ static void dgrp_tty_input_stop(struct t
+ 
+ static void drp_wmove(struct ch_struct *, int, void*, int);
+ 
+ static int dgrp_tty_open(struct tty_struct *, struct file *);
+ static void dgrp_tty_close(struct tty_struct *, struct file *);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,6,0)
+ static int dgrp_tty_write(struct tty_struct *, const unsigned char *, int);
++#else
++static ssize_t dgrp_tty_write(struct tty_struct *, const unsigned char *, size_t);
++#endif
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5,14,0)
+ static int dgrp_tty_write_room(struct tty_struct *);
+ static int dgrp_tty_chars_in_buffer(struct tty_struct *);
+ #else
+ static unsigned int dgrp_tty_write_room(struct tty_struct *);
+@@ -1963,11 +1967,15 @@ static int dgrp_calculate_txprint_bounds
+ 
+ 	return space;
+ }
+ 
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,6,0)
+ static int dgrp_tty_write(struct tty_struct *tty, const unsigned char *buf, int count)
++#else
++static ssize_t dgrp_tty_write(struct tty_struct *tty, const unsigned char *buf, size_t count)
++#endif
+ {
+ 	struct nd_struct *nd;
+ 	struct un_struct *un;
+ 	struct ch_struct *ch;
+ 	int 	space;

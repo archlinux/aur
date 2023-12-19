@@ -1,0 +1,16 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_tty.c b/driver/2.6.27/dgrp_tty.c
+--- a/driver/2.6.27/dgrp_tty.c	2023-12-18 21:37:04.585172106 -0500
++++ b/driver/2.6.27/dgrp_tty.c	2023-12-18 21:38:48.197717779 -0500
+@@ -149,11 +149,11 @@ static int dgrp_tty_tiocmget(struct tty_
+ static int dgrp_tty_tiocmset(struct tty_struct *, unsigned int, unsigned int);
+ #endif
+ static int dgrp_tty_send_break(struct tty_struct *, int);
+ static void dgrp_tty_send_xchar(struct tty_struct *, char);
+ 
+-#if LINUX_VERSION_CODE > KERNEL_VERSION(5,12,19)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,10,180)
+ /* they decided that tty_check_change was internal to tty subsystem and
+  * no longer export it; now its down in kernel/driver/tty/..  So far the symbol is still 
+  * visible though, so can get away with a local decl.
+  */
+ int tty_check_change(struct tty_struct *t);

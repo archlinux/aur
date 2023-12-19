@@ -1,0 +1,19 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_sysfs.c b/driver/2.6.27/dgrp_sysfs.c
+--- a/driver/2.6.27/dgrp_sysfs.c	2022-11-02 12:57:58.000000000 -0400
++++ b/driver/2.6.27/dgrp_sysfs.c	2023-12-18 21:02:23.102079937 -0500
+@@ -189,11 +189,15 @@ static struct attribute_group dgrp_globa
+ void dgrp_create_class_sysfs_files(void)
+ {
+ 	int ret = 0;
+         int max_majors = 1U << (32 - MINORBITS);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,4,0)
+ 	dgrp_class = class_create(THIS_MODULE, "digi_realport");
++#else
++	dgrp_class = class_create("digi_realport");
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,13,0)
+ 	ret = class_create_file(dgrp_class, &class_attr_driver_version.attr);
+ #else
+ 	ret = class_create_file(dgrp_class, &class_attr_driver_version);
+ #endif

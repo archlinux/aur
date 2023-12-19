@@ -7,7 +7,7 @@ diff -pNaru5 a/driver/2.6.27/dgrp_tty.c b/driver/2.6.27/dgrp_tty.c
  #else
  static int dgrp_tty_ioctl(struct tty_struct *, unsigned int, unsigned long);
  #endif
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(6,0,0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
  static void dgrp_tty_set_termios(struct tty_struct *, struct ktermios *);
 +#else
 +static void dgrp_tty_set_termios(struct tty_struct *, const struct ktermios *);
@@ -23,7 +23,7 @@ diff -pNaru5 a/driver/2.6.27/dgrp_tty.c b/driver/2.6.27/dgrp_tty.c
   *  So we need to make sure that our copies of ch_oflag,
   *  ch_clag, and ch_iflag reflect the tty->termios flags.
   */
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(6,0,0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
  static void dgrp_tty_set_termios(struct tty_struct *tty, struct ktermios *old)
 +#else
 +static void dgrp_tty_set_termios(struct tty_struct *tty, const struct ktermios *old)
