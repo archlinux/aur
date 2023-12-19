@@ -4,6 +4,7 @@ Name=Q-Zandronum
 GenericName=Q-Zandronum
 Comment=Zandronum 3.0 fork with improved netcode and Quake movement
 Exec=/usr/bin/q-zandronum
+Icon=/usr/share/pixmaps/q-zandronum.png
 StartupNotify=true
 Terminal=false
 Type=Application
