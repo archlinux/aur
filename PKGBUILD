@@ -1,8 +1,8 @@
-# Maintainer: Plague-doctor <plague at privacyrequired dot com>
 # Maintainer: Winston Astrachan <winston dot astrachan at gmail dot com>
+# Contributor: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=pcloud-drive
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 pkgdesc='pCloud drive. Electron edition.'
 arch=('x86_64')
