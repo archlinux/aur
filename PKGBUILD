@@ -26,9 +26,9 @@ sha512sums=('SKIP'
             'SKIP'
             '20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87562326b21b5ed677032f'
             '8878b8118bb980f43d8686dc87f516768c300bb7d05788bc3a8961aa4009e118b5a22a8f5c9759fd9bcd906243ef10bf06c4c4cf27c62b4d1a1e04bca274f78b')
-sha512sums_x86_64=('SKIP'
-                   '22c955f76593f7fb0c965d9898a3fac4dae93855f3c4911849523b1882031ad8')
-sha512sums_aarch64=('SKIP'
+sha256sums_x86_64=('SKIP'
+                   '33df5baf21088b44c044320c02abe3de38ed7b06ecd0c69cf08729f9a58d12c1')
+sha256sums_aarch64=('SKIP'
                     '7651805695f07ba1aa6b0c201db2f7f47c58e0124e39e5d110058f7c4fa1c6a6')
 
 prepare() {
