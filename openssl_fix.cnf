@@ -1,0 +1,17 @@
+# Absolute minimum openssl config that works for FFXIV
+# Fixes SSL error when logging in
+# This is NOT SAFE to use as system default. Do not replace your
+# system openssl.cnf with this file.
+
+openssl_conf = openssl_init
+
+[openssl_init]
+ssl_conf = ssl_module
+
+[ ssl_module ]
+system_default = crypto_policy
+
+[ crypto_policy ]
+MinProtocol = TLSv1.2
+CipherString = DEFAULT:@SECLEVEL=1
+
