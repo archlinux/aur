@@ -1,4 +1,4 @@
-# Maintainer: Nicola Revelant <nicolarevelant44@gmail.com>
+# Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname=pinfo-patched-git
 pkgver=0.6.13.r8.g3d76eec
