@@ -2,7 +2,7 @@
 # Contributor: Prasad Kumar
 _pkgname=stremio
 pkgname=${_pkgname}-beta
-pkgver=4.4.164
+pkgver=4.4.165
 pkgrel=0
 pkgdesc="Watch videos, movies, TV series and TV channels instantly. (Beta Version)"
 arch=(any)

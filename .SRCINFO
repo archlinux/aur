@@ -1,6 +1,6 @@
 pkgbase = stremio-beta
 	pkgdesc = Watch videos, movies, TV series and TV channels instantly. (Beta Version)
-	pkgver = 4.4.164
+	pkgver = 4.4.165
 	pkgrel = 0
 	url = https://www.stremio.com
 	install = stremio.install
@@ -25,7 +25,7 @@ pkgbase = stremio-beta
 	conflicts = stremio-beta
 	conflicts = stremio-legacy
 	conflicts = stremio
-	source = stremio::git+https://github.com/Stremio/stremio-shell.git#tag=v4.4.164
+	source = stremio::git+https://github.com/Stremio/stremio-shell.git#tag=v4.4.165
 	md5sums = SKIP
 
 pkgname = stremio-beta
