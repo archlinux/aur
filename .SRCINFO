@@ -1,12 +1,11 @@
 pkgbase = switch-tools
 	pkgdesc = Helper tools for Switch homebrew development
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://github.com/switchbrew/switch-tools
 	arch = x86_64
 	license = custom:ISC
-	source = https://github.com/switchbrew/switch-tools/archive/v1.7.0.tar.gz
-	sha256sums = 919a82df4301dc22e21b41233b57b8ee3e20f2089d7cf21cffc94402eba5393e
+	source = https://github.com/switchbrew/switch-tools/archive/v1.12.0.tar.gz
+	sha256sums = 460b19fb3f597db584cefc3be0c08ebf61d26c3e342eea0b61da727e67ad60d6
 
 pkgname = switch-tools
-
