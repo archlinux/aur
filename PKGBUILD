@@ -2,7 +2,7 @@
 
 pkgbase=lckfb-meta
 pkgname=(lckfb-meta lckfb-taishanpi-meta)
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=0
 epoch=
 pkgdesc="立创开发板元包 / LCKFB Development Board meta package"
@@ -85,10 +85,19 @@ package_lckfb-taishanpi-meta() {
 
         # Third-party rockchip tools
         xrock
+
+        # android debug
+        android-sdk-platform-tools
+        balena-etcher
+        windterm
     )
     optdepends=(
         # Network Sharing
         samba
         # buildroot
-        buildroot-meta)
+        buildroot-meta
+        # ch34x driver
+        ch34x-dkms
+        ch343ser-dkms
+        )
 }
