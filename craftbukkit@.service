@@ -7,9 +7,12 @@ Group=craftbukkit
 RuntimeDirectory=craftbukkit@%i
 WorkingDirectory=%f
 Environment=JAVA_ARGS=-Xmx1G RUNTIME_DIR=/run/craftbukkit@%i
+# Undo PATH change by ExecSearchPath
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 ExecStartPre=/usr/share/craftbukkit-spigot/init-rcon.sh
-ExecStart=/usr/lib/jvm/java-17-openjdk/bin/java $JAVA_ARGS -jar /usr/share/java/craftbukkit-spigot/%p.jar --noconsole
+ExecStart=java $JAVA_ARGS -jar /usr/share/java/craftbukkit-spigot/%p.jar --noconsole
 ExecStop=/usr/share/craftbukkit-spigot/notify-shutdown.sh
+ExecSearchPath=/usr/lib/jvm/java-17-openjdk/bin:/usr/lib/jvm/java-21-openjdk/bin
 PrivateTmp=true
 SuccessExitStatus=143
 
