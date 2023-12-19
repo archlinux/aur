@@ -2,7 +2,7 @@
 
 pkgname=libselinux-static
 _pkgname=${pkgname%-static}
-pkgver=3.4
+pkgver=3.6
 pkgrel=1
 pkgdesc="SELinux library (static version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=()
 depends=('libsepol>=3.1')
 options=(staticlibs)
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('77c294a927e6795c2e98f74b5c3adde9c8839690e9255b767c5fca6acff9b779')
+sha256sums=('ba4e0ef34b270e7672a5e5f1b523fe2beab3a40bb33d9389f4ad3a8728f21b52')
 
 build() {
   cd "${_pkgname}-${pkgver}"
