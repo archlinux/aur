@@ -2,18 +2,16 @@
 pkgname=ricochlime-bin
 _pkgname=Ricochlime
 _appname="com.adilhanney.${pkgname%-bin}"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A game where you attack the advancing slimes with your ricocheting projectiles."
-arch=(
-    'aarch64'
-    'x86_64'
-)
+arch=('x86_64')
 url="https://ricochlime.adil.hanney.org/"
 _ghurl="https://github.com/adil192/ricochlime"
 license=('AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
+noextract=("${pkgname%-bin}-${pkgver}.tar.gz")
 depends=(
     'cairo'
     'harfbuzz'
@@ -24,19 +22,25 @@ depends=(
     'at-spi2-core'
     'gdk-pixbuf2'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_arm64.tar.gz")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('eea6ad3d9a07573e75d72e278a09a34a14fe8d02244f4a1f2c3284eb30b9e323')
-sha256sums_x86_64=('92fad6e22b398ba4d3e6fe84c91d9fdebd34f34eeb9da0eb456c1fc70f466941')
+source=(
+    "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('8ff6b9d4ac1a34a8c538498046715afa2d45f3cbf11687a6c89134e541d73eed'
+            '963a52a57f25294de30507333df4de486b67fb66a32aae9681401d03ee207859')
 build() {
-    sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/share/applications/${_appname}.desktop"
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    install -Dm755 -d "${srcdir}/${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.tar.gz" -C "${srcdir}/${pkgname%-bin}"
+    sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/${pkgname%-bin}/share/applications/${_appname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/"{data,lib} "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/bin"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/share/icons/hicolor/512x512/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/share/metainfo/${_appname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}/${pkgname%-bin}" -t "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/${pkgname%-bin}/"{data,lib} "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/${pkgname%-bin}/share/icons/hicolor/512x512/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/${pkgname%-bin}/share/metainfo/${_appname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
 }
