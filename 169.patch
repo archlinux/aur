@@ -1,0 +1,457 @@
+From 952abb265d7c0a3e566b242731a5c95a15bc18a5 Mon Sep 17 00:00:00 2001
+From: Philip Rinn <rinni@inventati.org>
+Date: Tue, 17 Oct 2023 20:15:11 +0200
+Subject: [PATCH 1/4] rename CTAP{1,2} classes
+
+---
+ solo/devices/base.py    | 10 +++++-----
+ solo/devices/solo_v1.py |  8 ++++----
+ solo/solotool.py        |  4 ++--
+ 3 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/solo/devices/base.py b/solo/devices/base.py
+index 2e030f4..39614dd 100644
+--- a/solo/devices/base.py
++++ b/solo/devices/base.py
+@@ -3,7 +3,7 @@
+ from cryptography import x509
+ from cryptography.hazmat.backends import default_backend
+ from fido2.attestation import Attestation
+-from fido2.ctap2 import CTAP2, CredentialManagement
++from fido2.ctap2 import Ctap2, CredentialManagement
+ from fido2.hid import CTAPHID
+ from fido2.utils import hmac_sha256
+ from fido2.webauthn import PublicKeyCredentialCreationOptions
+@@ -76,7 +76,7 @@ def ping(self, data="pong"):
+     def reset(
+         self,
+     ):
+-        CTAP2(self.get_current_hid_device()).reset()
++        Ctap2(self.get_current_hid_device()).reset()
+ 
+     def change_pin(self, old_pin, new_pin):
+         client = self.get_current_fido_client()
+@@ -114,8 +114,8 @@ def make_credential(self, pin=None):
+     def cred_mgmt(self, pin):
+         client = self.get_current_fido_client()
+         token = client.client_pin.get_pin_token(pin)
+-        ctap2 = CTAP2(self.get_current_hid_device())
+         return CredentialManagement(ctap2, client.client_pin.protocol, token)
++        ctap2 = Ctap2(self.get_current_hid_device())
+ 
+     def enter_solo_bootloader(
+         self,
+@@ -137,11 +137,11 @@ def is_solo_bootloader(
+         pass
+ 
+     def program_kbd(self, cmd):
+-        ctap2 = CTAP2(self.get_current_hid_device())
++        ctap2 = Ctap2(self.get_current_hid_device())
+         return ctap2.send_cbor(0x51, cmd)
+ 
+     def sign_hash(self, credential_id, dgst, pin):
+-        ctap2 = CTAP2(self.get_current_hid_device())
++        ctap2 = Ctap2(self.get_current_hid_device())
+         client = self.get_current_fido_client()
+         if pin:
+             pin_token = client.client_pin.get_pin_token(pin)
+diff --git a/solo/devices/solo_v1.py b/solo/devices/solo_v1.py
+index 0c4328f..fd64c22 100644
+--- a/solo/devices/solo_v1.py
++++ b/solo/devices/solo_v1.py
+@@ -8,8 +8,8 @@
+ 
+ from fido2.client import Fido2Client
+ from fido2.ctap import CtapError
+-from fido2.ctap1 import CTAP1
+-from fido2.ctap2 import CTAP2
++from fido2.ctap1 import Ctap1
++from fido2.ctap2 import Ctap2
+ from fido2.hid import CTAPHID, CtapHidDevice
+ from intelhex import IntelHex
+ 
+@@ -64,9 +64,9 @@ def find_device(self, dev=None, solo_serial=None):
+             dev = devices[0]
+         self.dev = dev
+ 
+-        self.ctap1 = CTAP1(dev)
++        self.ctap1 = Ctap1(dev)
+         try:
+-            self.ctap2 = CTAP2(dev)
++            self.ctap2 = Ctap2(dev)
+         except CtapError:
+             self.ctap2 = None
+ 
+diff --git a/solo/solotool.py b/solo/solotool.py
+index ca01454..9c4cddb 100644
+--- a/solo/solotool.py
++++ b/solo/solotool.py
+@@ -32,8 +32,8 @@
+ from fido2.attestation import Attestation
+ from fido2.client import ClientError, Fido2Client
+ from fido2.ctap import CtapError
+-from fido2.ctap1 import CTAP1, ApduError
+-from fido2.ctap2 import CTAP2
++from fido2.ctap1 import Ctap1, ApduError
++from fido2.ctap2 import Ctap2
+ from fido2.hid import CTAPHID, CtapHidDevice
+ from intelhex import IntelHex
+ 
+
+From 95d4e346a4f272b7ed3c531c723fc668728087cf Mon Sep 17 00:00:00 2001
+From: Philip Rinn <rinni@inventati.org>
+Date: Tue, 17 Oct 2023 20:16:08 +0200
+Subject: [PATCH 2/4] Fix solo key {set-pin,change-pin,verify} and solo key
+ credential info
+
+---
+ solo/cli/key.py         | 11 +----------
+ solo/devices/base.py    | 26 +++++++++++++-------------
+ solo/devices/solo_v1.py | 16 ++++++++++++++--
+ 3 files changed, 28 insertions(+), 25 deletions(-)
+
+diff --git a/solo/cli/key.py b/solo/cli/key.py
+index bea26bc..33b7e0e 100644
+--- a/solo/cli/key.py
++++ b/solo/cli/key.py
+@@ -349,18 +349,9 @@ def verify(pin, serial, udp):
+ 
+     key = solo.client.find(serial, udp=udp)
+ 
+-    if (
+-        key.client
+-        and ("clientPin" in key.client.info.options)
+-        and key.client.info.options["clientPin"]
+-        and not pin
+-    ):
+-        pin = getpass.getpass("PIN: ")
+-
+     # Any longer and this needs to go in a submodule
+-    print("Please press the button on your Solo key")
+     try:
+-        cert = key.make_credential(pin=pin)
++        cert = key.make_credential()
+     except Fido2ClientError as e:
+         cause = str(e.cause)
+         if "PIN required" in cause:
+diff --git a/solo/devices/base.py b/solo/devices/base.py
+index 39614dd..2f99abe 100644
+--- a/solo/devices/base.py
++++ b/solo/devices/base.py
+@@ -4,6 +4,7 @@
+ from cryptography.hazmat.backends import default_backend
+ from fido2.attestation import Attestation
+ from fido2.ctap2 import Ctap2, CredentialManagement
++from fido2.ctap2.pin import ClientPin
+ from fido2.hid import CTAPHID
+ from fido2.utils import hmac_sha256
+ from fido2.webauthn import PublicKeyCredentialCreationOptions
+@@ -79,12 +80,12 @@ def reset(
+         Ctap2(self.get_current_hid_device()).reset()
+ 
+     def change_pin(self, old_pin, new_pin):
+-        client = self.get_current_fido_client()
+-        client.client_pin.change_pin(old_pin, new_pin)
++        client = ClientPin(self.ctap2)
++        client.change_pin(old_pin, new_pin)
+ 
+     def set_pin(self, new_pin):
+-        client = self.get_current_fido_client()
+-        client.client_pin.set_pin(new_pin)
++        client = ClientPin(self.ctap2)
++        client.set_pin(new_pin)
+ 
+     def make_credential(self, pin=None):
+         client = self.get_current_fido_client()
+@@ -97,25 +98,24 @@ def make_credential(self, pin=None):
+             challenge,
+             [{"type": "public-key", "alg": -8}, {"type": "public-key", "alg": -7}],
+         )
+-        result = client.make_credential(options, pin=pin)
++        result = client.make_credential(options)
+         attest = result.attestation_object
+         data = result.client_data
+         try:
+             attest.verify(data.hash)
+         except AttributeError:
+             verifier = Attestation.for_type(attest.fmt)
+-            verifier().verify(attest.att_statement, attest.auth_data, data.hash)
++            verifier().verify(attest.att_stmt, attest.auth_data, data.hash)
+         print("Register valid")
+-        x5c = attest.att_statement["x5c"][0]
++        x5c = attest.att_stmt["x5c"][0]
+         cert = x509.load_der_x509_certificate(x5c, default_backend())
+ 
+         return cert
+ 
+     def cred_mgmt(self, pin):
+-        client = self.get_current_fido_client()
+-        token = client.client_pin.get_pin_token(pin)
+-        return CredentialManagement(ctap2, client.client_pin.protocol, token)
+-        ctap2 = Ctap2(self.get_current_hid_device())
++        client = ClientPin(self.ctap2)
++        token = client.get_pin_token(pin)
++        return CredentialManagement(self.ctap2, client.protocol, token)
+ 
+     def enter_solo_bootloader(
+         self,
+@@ -142,9 +142,9 @@ def program_kbd(self, cmd):
+ 
+     def sign_hash(self, credential_id, dgst, pin):
+         ctap2 = Ctap2(self.get_current_hid_device())
+-        client = self.get_current_fido_client()
++        client = ClientPin(ctap2)
+         if pin:
+-            pin_token = client.client_pin.get_pin_token(pin)
++            pin_token = client.get_pin_token(pin)
+             pin_auth = hmac_sha256(pin_token, dgst)[:16]
+             return ctap2.send_cbor(
+                 0x50,
+diff --git a/solo/devices/solo_v1.py b/solo/devices/solo_v1.py
+index fd64c22..dab0360 100644
+--- a/solo/devices/solo_v1.py
++++ b/solo/devices/solo_v1.py
+@@ -6,17 +6,29 @@
+ import time
+ from threading import Event
+ 
+-from fido2.client import Fido2Client
++from fido2.client import Fido2Client, UserInteraction
+ from fido2.ctap import CtapError
+ from fido2.ctap1 import Ctap1
+ from fido2.ctap2 import Ctap2
+ from fido2.hid import CTAPHID, CtapHidDevice
+ from intelhex import IntelHex
++from getpass import getpass
+ 
+ from .. import exceptions, helpers
+ from ..commands import SoloBootloader, SoloExtension
+ from .base import SoloClient
+ 
++# Handle user interaction
++class CliInteraction(UserInteraction):
++    def prompt_up(self):
++        print("\nTouch your authenticator device now...\n")
++
++    def request_pin(self, permissions, rd_id):
++        return getpass("Enter PIN: ")
++
++    def request_uv(self, permissions, rd_id):
++        print("User Verification required.")
++        return True
+ 
+ class Client(SoloClient):
+     def __init__(
+@@ -71,7 +83,7 @@ def find_device(self, dev=None, solo_serial=None):
+             self.ctap2 = None
+ 
+         try:
+-            self.client = Fido2Client(dev, self.origin)
++            self.client = Fido2Client(dev, self.origin, user_interaction=CliInteraction())
+         except CtapError:
+             print("Not using FIDO2 interface.")
+             self.client = None
+
+From 1fb9c0795a23ab59ab9faba830d8bc2d60f1c8af Mon Sep 17 00:00:00 2001
+From: Philip Rinn <rinni@inventati.org>
+Date: Tue, 17 Oct 2023 21:21:47 +0200
+Subject: [PATCH 3/4] WIP: 'solo key probe' still broken (no new breakage
+ though)
+
+---
+ solo/cli/key.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/solo/cli/key.py b/solo/cli/key.py
+index 33b7e0e..6bdb4fb 100644
+--- a/solo/cli/key.py
++++ b/solo/cli/key.py
+@@ -234,10 +234,10 @@ def probe(serial, udp, hash_type, filename):
+     p = solo.client.find(serial, udp=udp)
+     import fido2
+ 
+-    serialized_command = fido2.cbor.dumps({"subcommand": hash_type, "data": data})
++    serialized_command = fido2.cbor.encode({"subcommand": hash_type, "data": data})
+     from solo.commands import SoloBootloader
+ 
+-    result = p.send_data_hid(SoloBootloader.HIDCommandProbe, serialized_command)
++    result = p.send_data_hid(SoloBootloader.CommandProbe, serialized_command)
+     result_hex = result.hex()
+     print(result_hex)
+     if hash_type == "Ed25519":
+
+From 35a94e17859a108f1a7a1f93a298c21c0e52e946 Mon Sep 17 00:00:00 2001
+From: Philip Rinn <rinni@inventati.org>
+Date: Tue, 17 Oct 2023 22:48:21 +0200
+Subject: [PATCH 4/4] I might have fixed solo key make-credential
+
+---
+ solo/cli/key.py      | 36 ++----------------------------------
+ solo/devices/base.py |  2 +-
+ solo/hmac_secret.py  | 12 ------------
+ 3 files changed, 3 insertions(+), 47 deletions(-)
+
+diff --git a/solo/cli/key.py b/solo/cli/key.py
+index 6bdb4fb..5ff2929 100644
+--- a/solo/cli/key.py
++++ b/solo/cli/key.py
+@@ -124,38 +124,22 @@ def feedkernel(count, serial):
+     "--host", help="Relying party's host", default="solokeys.dev", show_default=True
+ )
+ @click.option("--user", help="User ID", default="they", show_default=True)
+-@click.option("--pin", help="PIN", default=None)
+ @click.option(
+     "--udp", is_flag=True, default=False, help="Communicate over UDP with software key"
+ )
+-@click.option(
+-    "--prompt",
+-    help="Prompt for user",
+-    default="Touch your authenticator to generate a credential...",
+-    show_default=True,
+-)
+-def make_credential(serial, host, user, udp, prompt, pin):
++def make_credential(serial, host, user, udp):
+     """Generate a credential.
+ 
+-    Pass `--prompt ""` to output only the `credential_id` as hex.
+     """
+ 
+     import solo.hmac_secret
+ 
+-    # check for PIN
+-    if not pin:
+-        pin = getpass.getpass("PIN (leave empty for no PIN): ")
+-    if not pin:
+-        pin = None
+-
+     solo.hmac_secret.make_credential(
+         host=host,
+         user_id=user,
+         serial=serial,
+         output=True,
+-        prompt=prompt,
+         udp=udp,
+-        pin=pin,
+     )
+ 
+ 
+@@ -163,19 +147,12 @@ def make_credential(serial, host, user, udp, prompt, pin):
+ @click.option("-s", "--serial", help="Serial number of Solo use")
+ @click.option("--host", help="Relying party's host", default="solokeys.dev")
+ @click.option("--user", help="User ID", default="they")
+-@click.option("--pin", help="PIN", default=None)
+ @click.option(
+     "--udp", is_flag=True, default=False, help="Communicate over UDP with software key"
+ )
+-@click.option(
+-    "--prompt",
+-    help="Prompt for user",
+-    default="Touch your authenticator to generate a reponse...",
+-    show_default=True,
+-)
+ @click.argument("credential-id")
+ @click.argument("challenge")
+-def challenge_response(serial, host, user, prompt, credential_id, challenge, udp, pin):
++def challenge_response(serial, host, user, credential_id, challenge, udp):
+     """Uses `hmac-secret` to implement a challenge-response mechanism.
+ 
+     We abuse hmac-secret, which gives us `HMAC(K, hash(challenge))`, where `K`
+@@ -187,27 +164,18 @@ def challenge_response(serial, host, user, prompt, credential_id, challenge, udp
+ 
+     If so desired, user and relying party can be changed from the defaults.
+ 
+-    The prompt can be suppressed using `--prompt ""`.
+     """
+ 
+     import solo.hmac_secret
+ 
+-    # check for PIN
+-    if not pin:
+-        pin = getpass.getpass("PIN (leave empty for no PIN): ")
+-    if not pin:
+-        pin = None
+-
+     solo.hmac_secret.simple_secret(
+         credential_id,
+         challenge,
+         host=host,
+         user_id=user,
+         serial=serial,
+-        prompt=prompt,
+         output=True,
+         udp=udp,
+-        pin=pin,
+     )
+ 
+ 
+diff --git a/solo/devices/base.py b/solo/devices/base.py
+index 2f99abe..97fe005 100644
+--- a/solo/devices/base.py
++++ b/solo/devices/base.py
+@@ -87,7 +87,7 @@ def set_pin(self, new_pin):
+         client = ClientPin(self.ctap2)
+         client.set_pin(new_pin)
+ 
+-    def make_credential(self, pin=None):
++    def make_credential(self):
+         client = self.get_current_fido_client()
+         rp = {"id": self.host, "name": "example site"}
+         user = {"id": self.user_id, "name": "example user"}
+diff --git a/solo/hmac_secret.py b/solo/hmac_secret.py
+index 773340a..d0058a9 100644
+--- a/solo/hmac_secret.py
++++ b/solo/hmac_secret.py
+@@ -21,8 +21,6 @@ def make_credential(
+     host="solokeys.dev",
+     user_id="they",
+     serial=None,
+-    pin=None,
+-    prompt="Touch your authenticator to generate a credential...",
+     output=True,
+     udp=False,
+ ):
+@@ -36,9 +34,6 @@ def make_credential(
+     user = {"id": user_id, "name": "A. User"}
+     challenge = secrets.token_bytes(32)
+ 
+-    if prompt:
+-        print(prompt)
+-
+     attestation_object = client.make_credential(
+         {
+             "rp": rp,
+@@ -50,7 +45,6 @@ def make_credential(
+             ],
+             "extensions": {"hmacCreateSecret": True},
+         },
+-        pin=pin,
+     ).attestation_object
+ 
+     credential = attestation_object.auth_data.credential_data
+@@ -67,8 +61,6 @@ def simple_secret(
+     host="solokeys.dev",
+     user_id="they",
+     serial=None,
+-    pin=None,
+-    prompt="Touch your authenticator to generate a response...",
+     output=True,
+     udp=False,
+ ):
+@@ -91,9 +83,6 @@ def simple_secret(
+     h.update(secret_input.encode())
+     salt = h.digest()
+ 
+-    if prompt:
+-        print(prompt)
+-
+     assertion = client.get_assertion(
+         {
+             "rpId": host,
+@@ -101,7 +90,6 @@ def simple_secret(
+             "allowCredentials": allow_list,
+             "extensions": {"hmacGetSecret": {"salt1": salt}},
+         },
+-        pin=pin,
+     ).get_response(0)
+ 
+     output = assertion.extension_results["hmacGetSecret"]["output1"]

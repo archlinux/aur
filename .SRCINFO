@@ -1,7 +1,7 @@
 pkgbase = solo1
 	pkgdesc = Python tool and library for SoloKeys Solo 1
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/solokeys/solo1-cli
 	arch = any
 	license = Apache
@@ -21,7 +21,7 @@ pkgbase = solo1
 	conflicts = solo-python
 	replaces = solo-python
 	source = solo1-cli-0.1.1.tar.gz::https://github.com/solokeys/solo1-cli/archive/refs/tags/0.1.1.tar.gz
-	source = 152.patch
+	source = 169.patch
 	sha256sums = 377f0c244ee0efc741f18b3370cc0e5dcaff852db90102eeb258201128643c84
 	sha256sums = SKIP
 
