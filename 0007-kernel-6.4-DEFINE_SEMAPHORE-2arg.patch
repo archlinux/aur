@@ -1,0 +1,39 @@
+diff -pNaru5 a/driver/snx_serial.c b/driver/snx_serial.c
+--- a/driver/snx_serial.c	2023-12-19 02:44:14.418405164 -0500
++++ b/driver/snx_serial.c	2023-12-19 02:44:14.421738526 -0500
+@@ -3,12 +3,16 @@
+ 
+ #define SNX_ioctl_DBG	0
+ #define	EEPROM_ACCESS_DELAY_COUNT			100000
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37))
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,4,0)
+ 		static DEFINE_SEMAPHORE(ser_port_sem);
+ #else
++		static DEFINE_SEMAPHORE(ser_port_sem,1);
++#endif
++#else
+ 		static DECLARE_MUTEX(ser_port_sem);
+ #endif
+ 
+ 
+ #define SNX_HIGH_BITS_OFFSET	((sizeof(long)-sizeof(int))*8)
+diff -pNaru5 a/driver/snx_share.c b/driver/snx_share.c
+--- a/driver/snx_share.c	2023-04-26 04:20:52.000000000 -0400
++++ b/driver/snx_share.c	2023-12-19 02:44:27.551851976 -0500
+@@ -37,11 +37,15 @@ static LIST_HEAD(snx_drivers);
+ 
+ static DECLARE_MUTEX(snx_registration_lock);
+ 
+ #else
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,4,0)
+ static DEFINE_SEMAPHORE(snx_registration_lock);
++#else
++static DEFINE_SEMAPHORE(snx_registration_lock,1);
++#endif
+ 
+ #endif
+ 
+ 
+ static void sunix_dead_write_lines(struct snx_parport *p, unsigned char b) {}

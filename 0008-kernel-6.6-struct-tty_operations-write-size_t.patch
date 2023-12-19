@@ -1,0 +1,37 @@
+diff -pNaru5 a/driver/snx_serial.c b/driver/snx_serial.c
+--- a/driver/snx_serial.c	2023-12-19 02:26:30.058442176 -0500
++++ b/driver/snx_serial.c	2023-12-19 02:28:47.647025968 -0500
+@@ -86,12 +86,16 @@ static int      snx_ser_set_info(struct
+ static unsigned int      snx_ser_write_room(struct tty_struct *);
+ #else
+ static int      snx_ser_write_room(struct tty_struct *);
+ #endif
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 10))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6, 6, 0))
+ static int      snx_ser_write(struct tty_struct *, const unsigned char *, int);
+ #else
++static ssize_t  snx_ser_write(struct tty_struct *, const unsigned char *, size_t);
++#endif
++#else
+ static int      snx_ser_write(struct tty_struct *, int, const unsigned char *, int);
+ #endif
+ static int      snx_ser_get_lsr_info(struct snx_ser_state *, unsigned int *);
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 39))
+@@ -1124,12 +1128,16 @@ static int snx_ser_write_room(struct tty
+     return status;
+ }
+ 
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 10))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6, 6, 0))
+ static int snx_ser_write(struct tty_struct *tty, const unsigned char *buf, int count)
+ #else
++static ssize_t snx_ser_write(struct tty_struct *tty, const unsigned char *buf, size_t count)
++#endif
++#else
+ static int snx_ser_write(struct tty_struct *tty, int from_user, const unsigned char *buf, int count)
+ #endif
+ {
+ 	struct snx_ser_state *state = tty->driver_data;
+ 	struct circ_buf *circ = NULL;

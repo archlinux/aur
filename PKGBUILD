@@ -2,6 +2,8 @@
 
 _opt_DKMS=1           # This can be toggled between installs
 
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
+
 # Todo: Unable to trigger timer to see if it works
 # Todo: modprobe snx with conflicting major, again modeprobe snx crashes kernel
 
@@ -95,7 +97,8 @@ pkgname='sunix-snx'
 #pkgver='2.0.4_2'; _dl='2016/20160706173626'
 #pkgver='2.0.4_3'; _dl='2017/20171122180114'
 #pkgver='2.0.5_0'; _dl='2021/20210407180737'
-pkgver='2.0.7_0'; _dl='2022/20220531161341'
+#pkgver='2.0.7_0'; _dl='2022/20220531161341'
+pkgver='2.0.8_0'; _dl='2023/20230427142706'
 pkgrel='1'
 pkgdesc='kernel module driver for Sunix SUN1889 SUN1989 SUN1999 SUN2212 SUN2410 UL7502AQ UL7512EQ UL7522EQ PCI PCIe multi I/O parallel serial RS-232 422 485 port Dell Lenovo Acer Startech'
 arch=('i686' 'x86_64')
@@ -122,21 +125,30 @@ source=(
   '0004-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
   '0005-kernel-6.0-set_termios-const-ktermios.patch'
   '0006-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
+  '0007-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch'
+  '0008-kernel-6.6-struct-tty_operations-write-size_t.patch'
+  '0009-kernel-6.4-class_create-1arg.patch'
 )
-md5sums=('b673f1b48581036f44f77bc3ce2246f6'
+md5sums=('04bd8a61796fabbef2bcae349dd8fae0'
          '71564d580faaf72ab3518c298883742e'
          'e3604145fb2b1678da395a600e4cf1ed'
          'a16e94419d504663c50d3d7522b0c019'
          '43db33db258f67122c58c3868d688d13'
-         '88978ceeeef410d00a2d465d3c756f6a'
-         '920cdd39dc868c2d216c23d180d9eb3e')
-sha256sums=('e46c22397886384ac6bd28401287b0e5f89fe1a1ac6a58518ba99774e59211be'
+         'a2fbf035e4dddf5cab87317223435633'
+         '920cdd39dc868c2d216c23d180d9eb3e'
+         '7e16e1860e93a08a0591be4bfc8ca558'
+         '4b38b409ec2d9aa23b51578587e7033c'
+         'd967f1bf0e7a16a778931223404fd046')
+sha256sums=('0997586558e219656543b5740e5202f31d2476dd0399e74d768277e862bb4746'
             '4ea9275ca8122543c25f17112d4c374dc39de32e3d9d1d0aa5488bacd514750d'
             'ab0ef161b7c7053299b18ab9b697047d37142e9e88d53d40ac087f64522a55dd'
             '12a9d8f11c60cef0e70d0d5cba684146beb32eef76e7519728e2e4453f671251'
             'fce8e15188f58fcfbea2720672709ea1e8d9e4703155c1222cf31ababd61807f'
-            'b7972237d3b91a3bb93e27931e8c9a60037512571131687382b6a410dc7a668c'
-            '71d3be91c017166ea523f0f1c7bc5d1e66d828d1de60923b24947be4cb960e01')
+            'bc1aeab271927cbb62c9c2d2517f535bbd30646d997c99c757ed4b92fd474218'
+            '71d3be91c017166ea523f0f1c7bc5d1e66d828d1de60923b24947be4cb960e01'
+            '6e98100a00af103ac21a7054519296ebc1958f7e15f129199189a63c6de5332c'
+            '628cb175f7b30e74d1c2f3ca78ccb9a9e4301f1d8e8756d25435581959e312a5'
+            '2fedbe6763ce6b7363af62264794fce05ff7bc28e377cc580f697c7b5553df5c')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -167,6 +179,12 @@ prepare() {
   _install_check
   cd "${_srcdir}"
 
+  # Kernel 3,4,5 all use the same makefile. Trim out everything but Kernel 4
+  mv driver/Makefile{,.Arch}
+  sed -n -e '/^# for kernel 4.0/,/^# for kernel 3.0/ p' 'driver/Makefile.Arch' > 'driver/Makefile'
+  sed -e '/findstring 4./ s:^:#:g' -i 'driver/Makefile'
+  rm 'driver/Makefile.Arch'
+
   # Make package compatible and fix some version problems
   #cp -p 'driver/Makefile'{,.Arch}
   sed -e 's: /lib/modules/: /usr/lib/modules/:g' \
@@ -189,6 +207,13 @@ prepare() {
       -e '/findstring / s:uname -a:uname -r:g ' \
       -e '# Kernel 5.4 compatible' \
       -e 's: SUBDIRS=\([^ ]\+\) : M=\1&:g ' \
+      -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
+      -e 's:shell uname -r:KERNELRELEASE:g' \
+      -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
+      -e '# Fix by changing the detection var.' \
+      -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
+      -e 's:ifneq ($(KERNELRELEASE),):ifneq ($(SUBDIRS),):g' \
+      -e '1i KERNELRELEASE?=$(shell uname -r)' \
     -i 'driver/Makefile'
   sed -e '/^install:/,/^$/ s: /usr/: "${DESTDIR}"/usr/:g' -i 'snxdump/Makefile' 'snxterm/Makefile'
   ! test -s 'driver/Makefile.Arch' || echo "${}"
@@ -232,18 +257,25 @@ prepare() {
   # diff -pNaru5 'a' 'b' > '0006-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
   patch -Nup1 -i "${srcdir}/0006-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch"
 
-  # Kernel 3,4,5 all use the same makefile. Trim out everything but Kernel 4
-  mv driver/Makefile{,.Arch}
-  sed -n -e '/^# for kernel 4.0/,/^# for kernel 3.0/ p' 'driver/Makefile.Arch' > 'driver/Makefile'
-  sed -e '/findstring =4./ s:^:#:g' -i 'driver/Makefile'
-  rm 'driver/Makefile.Arch'
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
+  # diff -pNaru5 'a' 'b' > '0007-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch'
+  patch -Nup1 -i "${srcdir}/0007-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch"
+
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
+  # diff -pNaru5 'a' 'b' > '0008-kernel-6.6-struct-tty_operations-write-size_t.patch'
+  patch -Nup1 -i "${srcdir}/0008-kernel-6.6-struct-tty_operations-write-size_t.patch"
+
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
+  # diff -pNaru5 'a' 'b' > '0009-kernel-6.4-class_create-1arg.patch'
+  patch -Nup1 -i "${srcdir}/0009-kernel-6.4-class_create-1arg.patch"
+
   set +u
 }
 
 build() {
   set -u
   cd "${_srcdir}"
-  make -s -j1 # too small for parallel make
+  make -j1 # too small for parallel make
   set +u
 }
 
@@ -264,7 +296,7 @@ package() {
   make -s -j1 DESTDIR="${pkgdir}" install
 
   # Don't install two copies.
-  rm -r "${pkgdir}/usr/lib/modules/$(uname -r)/misc"
+  rm -r "${pkgdir}/usr/lib/modules"/*/misc
 
   # The module is in the same folder as DKMS. Compress to a different name to prevent conflict.
   # When future versions of DKMS compress we'll stop doing this.
@@ -310,13 +342,6 @@ EOF
     ) "${_dkms}/dkms.conf"
     install -dm755 "${_dkms}/driver/"
     cp -pr 'driver/' "${_dkms}/"
-    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-        -e 's:shell uname -r:KERNELRELEASE:g' \
-        -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
-        -e '# Fix by changing the detection var.' \
-        -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
-        -e 's:ifneq ($(KERNELRELEASE),):ifneq ($(SUBDIRS),):g' \
-      -i "${_dkms}/driver/Makefile"
     make -s -C "${_dkms}/driver/" clean KERNELRELEASE="$(uname -r)"
   fi
   set +u

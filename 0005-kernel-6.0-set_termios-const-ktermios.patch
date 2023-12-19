@@ -7,7 +7,7 @@ diff -pNaru5 a/driver/snx_serial.c b/driver/snx_serial.c
  static void     snx_ser_hangup(struct tty_struct *);
  unsigned int    snx_ser_get_divisor(struct snx_ser_port *, unsigned int);
  extern void     snx_ser_change_speed(struct snx_ser_state *, struct SNXTERMIOS *);
-+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 0, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0))
 +static void     snx_ser_set_termios(struct tty_struct *, const struct SNXTERMIOS *);
 +#else
  static void     snx_ser_set_termios(struct tty_struct *, struct SNXTERMIOS *);
@@ -23,7 +23,7 @@ diff -pNaru5 a/driver/snx_serial.c b/driver/snx_serial.c
  }
  
  
-+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 0, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0))
 +static void snx_ser_set_termios(struct tty_struct *tty, const struct SNXTERMIOS *old_termios)
 +#else
  static void snx_ser_set_termios(struct tty_struct *tty, struct SNXTERMIOS *old_termios)
