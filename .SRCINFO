@@ -1,0 +1,15 @@
+pkgbase = abelian-wallet-desktop
+	pkgdesc = Abelian wallet desktop
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://www.abelian.info
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxtst
+	source = abelian-wallet-desktop-0.3.1.zip::https://download.abelian.info/release/abelwallet-desktop/abelian-desktop-wallet-linux-amd64-v0.3.1.zip
+	sha256sums = b565bf46bf69f1db9f17b23984f99ee52baf5e755f78ec4cb7b68cec82efed26
+
+pkgname = abelian-wallet-desktop
