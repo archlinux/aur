@@ -6,7 +6,7 @@
  	schedule_timeout(HZ/100);
  }
  
-+#if LINUX_VERSION_CODE >= VERSION_CODE(5,13,0)
++#if LINUX_VERSION_CODE >= VERSION_CODE(5,10,180)
 +int tty_check_change(struct tty_struct *tty);
 +#endif
 +
