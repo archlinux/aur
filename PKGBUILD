@@ -3,7 +3,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-pkgname=sham-git
+pkgname=sham
 pkgver=3.0.0
 pkgrel=1
 epoch=

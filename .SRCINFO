@@ -1,4 +1,4 @@
-pkgbase = sham-git
+pkgbase = sham
 	pkgdesc = shell script compiler
 	pkgver = 3.0.0
 	pkgrel = 1
