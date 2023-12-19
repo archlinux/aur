@@ -1,6 +1,6 @@
 pkgbase = python-grad-cam
 	pkgdesc = Image Test Time Augmentation with PyTorch
-	pkgver = 1.4.8
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/jacobgil/pytorch-grad-cam/
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-grad-cam
 	depends = python-torchvision
 	depends = python-tqdm
 	depends = python-ttach
-	source = grad-cam-1.4.8.tar.gz::https://files.pythonhosted.org/packages/source/g/grad-cam/grad-cam-1.4.8.tar.gz
-	sha512sums = 2f0502a3b8cb17ffc0e4aa804cb36bb5791c2e612426cac5be7837237312fa326949e546d7c6151f2ddd76693b38c1b3ddadda1968c95e0b836d31cd5e9cc2f9
+	source = grad-cam-1.5.0.tar.gz::https://files.pythonhosted.org/packages/source/g/grad-cam/grad-cam-1.5.0.tar.gz
+	sha512sums = 9946b74949ed70054816dc34bfa875783aaa822ed98b4ea00a1b2986a56202fea59268ac04a403995ea0d52e68a2700b66a5458ce84627785d19040ba9c332a3
 
 pkgname = python-grad-cam
