@@ -2,7 +2,7 @@
 
 pkgname=chunghwa-post-webatm
 epoch=1
-pkgver=1.2212.26.1
+pkgver=1.2307.31.1
 pkgrel=1
 pkgdesc='WebATM plugin for Chunghwa Post (中華郵政 WebATM 元件)'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(wine-wow64 gnutls pcsclite)
 makedepends=(msitools gendesk pev imagemagick)
 source=("ATMSetup-$pkgver.msi"::"https://webatm.post.gov.tw/postatm/cab/ATMSetup.msi"
         "$pkgname")
-sha256sums=('9aa944a921ac278e9bcaa25459d49d56825ed8c7fbe0a49adb61bb0746deaa02'
+sha256sums=('bccd273d60d3a9cb2b4221ee797ac596aa7d9917ed2c96b072e28e45088684bd'
             '2a21dba5dea4132d3693cf3d6332cee2f3a0be650f0e19e76ece27cd834abb75')
 
 prepare() {
