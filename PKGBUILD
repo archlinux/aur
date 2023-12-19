@@ -2,7 +2,7 @@
 
 pkgname=quarto-cli-pre-release
 pkgver=1.4.529
-pkgrel=1
+pkgrel=2
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
 _deno_arch="deno-x86_64-unknown-linux-gnu"
@@ -20,7 +20,7 @@ source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
        )
 
-sha256sums=('c7c7de1db44f85b0032c9b20e3cb40f4e4e940d4054fda5f5083144b3fe6594f'
+sha256sums=('0f1229fc6cc4487e4f87dafedb1491060f4ec102e02548220c9552ac42e5c807'
             '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c')
 
 build() {
