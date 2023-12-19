@@ -1,0 +1,69 @@
+From 74baf31e5505d03a71df49894d57e1011e771eb9 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Mon, 4 May 2020 15:26:01 -0400
+Subject: [PATCH] Use the system zoneinfo from the tzdata package.
+
+We don't need to ship these vendored blobs as our system copy works
+quite well.
+
+Signed-off-by: Eli Schwartz <eschwartz@archlinux.org>
+---
+ src/pytz/__init__.py | 13 +------------
+ src/pytz/tzfile.py   |  2 +-
+ src/setup.py         |  2 --
+ 3 files changed, 2 insertions(+), 15 deletions(-)
+
+diff --git a/src/pytz/__init__.py b/src/pytz/__init__.py
+index c25a1d1..3cc59ef 100644
+--- a/src/pytz/__init__.py
++++ b/src/pytz/__init__.py
+@@ -92,19 +92,8 @@ def open_resource(name):
+     if zoneinfo_dir is not None:
+         filename = os.path.join(zoneinfo_dir, *name_parts)
+     else:
+-        filename = os.path.join(os.path.dirname(__file__),
++        filename = os.path.join('/usr', 'share',
+                                 'zoneinfo', *name_parts)
+-        if not os.path.exists(filename):
+-            # http://bugs.launchpad.net/bugs/383171 - we avoid using this
+-            # unless absolutely necessary to help when a broken version of
+-            # pkg_resources is installed.
+-            try:
+-                from pkg_resources import resource_stream
+-            except ImportError:
+-                resource_stream = None
+-
+-            if resource_stream is not None:
+-                return resource_stream(__name__, 'zoneinfo/' + name)
+     return open(filename, 'rb')
+ 
+ 
+diff --git a/src/pytz/tzfile.py b/src/pytz/tzfile.py
+index 25117f3..98eba05 100644
+--- a/src/pytz/tzfile.py
++++ b/src/pytz/tzfile.py
+@@ -126,7 +126,7 @@ def build_tzinfo(zone, fp):
+ if __name__ == '__main__':
+     import os.path
+     from pprint import pprint
+-    base = os.path.join(os.path.dirname(__file__), 'zoneinfo')
++    base = os.path.join('/usr', 'share', 'zoneinfo')
+     tz = build_tzinfo('Australia/Melbourne',
+                       open(os.path.join(base, 'Australia', 'Melbourne'), 'rb'))
+     tz = build_tzinfo('US/Eastern',
+diff --git a/src/setup.py b/src/setup.py
+index fa9a592..675618c 100644
+--- a/src/setup.py
++++ b/src/setup.py
+@@ -22,8 +22,6 @@ for dirpath, dirnames, filenames in os.walk(os.path.join('pytz', 'zoneinfo')):
+                      for filename in filenames])
+ package_data = {'pytz': resources}
+ 
+-assert len(resources) > 10, 'zoneinfo files not found!'
+-
+ setup(
+     name='pytz',
+     version=pytz.VERSION,
+-- 
+2.26.2
+
