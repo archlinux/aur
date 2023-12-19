@@ -1,0 +1,13 @@
+[Unit]
+Description=Icinga DB
+After=syslog.target network-online.target mariadb.service postgresql.service
+
+[Service]
+Restart=always
+RestartSec=5
+Type=notify
+ExecStart=/usr/bin/icingadb --config /etc/icingadb/config.yml
+User=icingadb
+
+[Install]
+WantedBy=multi-user.target

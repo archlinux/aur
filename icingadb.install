@@ -1,0 +1,12 @@
+post_install() {
+    /usr/bin/systemd-sysusers icingadb.conf
+    post_upgrade
+}
+
+post_upgrade() {
+    /usr/bin/chown -R icingadb /etc/icingadb
+}
+
+post_remove() {
+    echo "You might want to consider removing the both user and group 'icingadb'."
+}
