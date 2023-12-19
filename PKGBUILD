@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=planify
 _app_id=io.github.alainm23.planify
-pkgver=4.3
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Task manager with Todoist support"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'gobject-introspection' 'meson' 'vala')
 checkdepends=('appstream')
 conflicts=('elementary-planner')
 replaces=('elementary-planner')
-_commit=4818e71c5b784b36746f8b7d81c71ba2708df361  # tags/4.3^0
+_commit=41d8957b785ac1d07c2f2f4088428db9326e29b4  # tags/4.3.1^0
 source=("git+https://github.com/alainm23/planify.git#commit=$_commit")
 sha256sums=('SKIP')
 
