@@ -7,7 +7,7 @@ pkgdesc='Nomad device driver for Nvidia GPU'
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/hashicorp/nomad-device-nvidia"
 license=('MPL2')
-makedepends=('go')
+makedepends=('git' 'go')
 provides=('nomad-device-nvidia')
 changelog=nomad-device-nvidia.changelog
 source=("git+${url}.git#tag=v${pkgver}")

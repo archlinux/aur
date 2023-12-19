@@ -9,6 +9,7 @@ pkgbase = nomad-device-nvidia
 	arch = arm
 	arch = aarch64
 	license = MPL2
+	makedepends = git
 	makedepends = go
 	provides = nomad-device-nvidia
 	options = !strip
