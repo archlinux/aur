@@ -4,7 +4,7 @@
 pkgname=kodi-addon-pvr-hts
 pkgbase=${pkgname}
 _gitname=pvr.hts
-pkgver=20.6.2
+pkgver=20.6.5
 
 _gitver=branch=Nexus
 pkgrel=1
