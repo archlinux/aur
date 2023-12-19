@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=timeSeries
-_pkgver=4031.107
+_pkgver=4032.108
 pkgname=r-${_pkgname,,}
-pkgver=4031.107
-pkgrel=3
+pkgver=4032.108
+pkgrel=1
 pkgdesc='Financial Time Series Objects (Rmetrics)'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('84386a342af69731024c524f0c28d28a18436b41ae94b9e60fdc67412bdab542')
+sha256sums=('ed3ecfed397e117569bb4f3e229955ef7c98eedbf0d0c83a7bdfc2e452019dd5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
