@@ -1,3 +1,4 @@
 #!/bin/sh
 export WINEDEBUG=-all
+export WINEDLLOVERRIDES="mscoree="
 exec wine /opt/rcedit/rcedit-x64.exe "$@"
