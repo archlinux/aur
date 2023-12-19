@@ -1,6 +1,6 @@
 pkgname=transifex-client-bin
 pkgver=1.6.10
-pkgrel=1.0
+pkgrel=2
 pkgdesc='transifex client go version'
 arch=('x86_64')
 url='https://github.com/transifex/cli'

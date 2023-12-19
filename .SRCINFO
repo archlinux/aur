@@ -1,7 +1,7 @@
 pkgbase = transifex-client-bin
 	pkgdesc = transifex client go version
 	pkgver = 1.6.10
-	pkgrel = 1.0
+	pkgrel = 2
 	url = https://github.com/transifex/cli
 	arch = x86_64
 	license = apache-2.0
