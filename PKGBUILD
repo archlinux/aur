@@ -2,15 +2,16 @@
 pkgname=alpaca-electron-bin
 _appname="Alpaca Electron"
 pkgver=1.0.5
-pkgrel=5
+_electronversion=13
+pkgrel=6
 pkgdesc="The simplest way to run Alpaca (and other LLaMA-based local LLMs) on your own computer"
-arch=(x86_64)
+arch=("x86_64")
 url="https://github.com/ItsPi3141/alpaca-electron"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron13'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'python'
     'lib32-gcc-libs'
@@ -24,8 +25,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f77cbb049b831a89be19ddc4b7334d3d5ad7779649d4f8410ba00c70a740f912'
-            '68b198321f5728038d28dfd1b8a8d38517b12471bc97ab7af204d993be928ab3')
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories "Utility" --name "${_appname}" --exec "${pkgname%-bin}"
 }
 package() {
