@@ -1,7 +1,7 @@
 diff -Naur libbpf-1.0.1.a/src/Makefile libbpf-1.0.1.b/src/Makefile
 --- libbpf-1.0.1.a/src/Makefile	2022-09-27 18:35:17.000000000 -0400
 +++ libbpf-1.0.1.b/src/Makefile	2023-03-03 11:33:22.505159232 -0500
-@@ -153,6 +153,9 @@
+@@ -157,6 +157,9 @@
  install: all install_headers install_pkgconfig
  	$(call do_s_install,$(STATIC_LIBS) $(SHARED_LIBS),$(LIBDIR))
  

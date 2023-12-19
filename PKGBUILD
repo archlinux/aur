@@ -2,7 +2,7 @@
 
 _pkgname=libbpf
 pkgname=${_pkgname}-static
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Library for loading eBPF programs and reading and manipulating eBPF objects from user-space (static libraries)'
 url='https://github.com/libbpf/libbpf'
@@ -14,10 +14,10 @@ provides=('libbpf.a')
 options=('staticlibs')
 source=(https://github.com/libbpf/libbpf/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz
         "add-install-static-target.patch")
-sha512sums=('bc7620207e6f521b9b5baab00bd81346084b8eabf81bff3ec24e5367d389f2a331a0b082798f8bb5d4fea836c3c0cc961fc881abc3a4e05d91152150bdfe47be'
-            '541fbc6b6e043f828fb9b4716a5d4093c0d3900d9039482a627fc07f6f06d9c8bfc7cd10d6e10e55dde81c075caaa37425dc095152f399944995350014de650f')
-b2sums=('45a2ceabd38b3ea55f466de68d0806df6ae802b509063ca12d670ba972bac3dc5c7e518e8c9904915dbc9877c27ea892a7b857aa03d4e86016969b2d278b0b4a'
-        'b9bceaf2abbb33597e242a4c20716196c677ee989997b47b3f6e9f62d91621b163cbe2ea3a5024e823ed9fdbb7bf9db84d95291bf466fb0454563b93d80425ba')
+sha512sums=('59990189538e47765542e9ed6e88bc78c9d29bc077b5666bb1303cf15579c90b3d35a0d631b9bbd4bff2708243dc91d901bd68c119fb74dfd10a3e1066aa9acc'
+            '8cbbef9233029e89688dfc7b29f5626de8a87ee0294e3cf4f674cc98798029268f325141b485f4d0729f9769555c0f713aa66f6d58267a96249dd643f41d9963')
+b2sums=('5ee0a45cd06be482c9523ec2a9bb26cf12b89df23f515b037badda868770069d5ffb751c011222b86b1d43034a1cdd537cb263883ed0645641548adc9c9896eb'
+        'c63de3ef270515aaf1d452c5f74e36509859066f240cb0c4f92b049d67b5cbd74272b47c61762b7a3078a48108febf737cc5a880550d835dc528899ddea92533')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
