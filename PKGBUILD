@@ -1,7 +1,7 @@
 # Maintainer: Qiu Wenbo <crab2313@gmail.com>
 
 pkgname=kas
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Setup tool for bitbake based projects "
 arch=(any)
@@ -11,7 +11,7 @@ depends=('python' 'python-yaml' 'python-distro' 'python-jsonschema' 'python-kcon
 optdepends=('libnewt: text based ui of menu plugin')
 makedepends=('python-setuptools')
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz)
-sha512sums=('6c8fc9de1d61ddaafbc86f4b1c0075264411e3664b6223abd8c5f4a91a01f5e59c8da67b5562db3bc6cea093904839f0f329597a037f042808f1d14e48b8d3d5')
+sha512sums=('f5386762e27a88142600a4d94c204c4af361234eae19714843c50a20d0bdab1746bded70035c9878d4977ab73f26106df6ecdcd3daedcb8bea12ffdc5ae66646')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
