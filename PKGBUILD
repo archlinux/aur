@@ -14,7 +14,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=24.0.0_devel.181988.9ca9b674462.d954e6c2b60b8d8c955b77483af4bdfb
+pkgver=24.0.0_devel.182416.4fdb381d02a.d41d8cd98f00b204e9800998ecf8427e
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers'
@@ -79,11 +79,9 @@ makedepends=(
 source=(
   'mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
   LICENSE
-  gamescope.patch
 )
 b2sums=('SKIP'
         'cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87'
-        '6219a0797724ab17b36f85a134349ffa52f3fce74490834c5f86b474ba893cbb34ebef604cd72c851436296add906dbdb8fca9eb50d1e5f74c7caa8e2963bdcc' # gamescope.patch
 )
 
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>

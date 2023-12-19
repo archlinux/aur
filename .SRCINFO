@@ -1,6 +1,6 @@
 pkgbase = mesa-amdonly-gaming-git
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 24.0.0_devel.181988.9ca9b674462.d954e6c2b60b8d8c955b77483af4bdfb
+	pkgver = 24.0.0_devel.182416.4fdb381d02a.d41d8cd98f00b204e9800998ecf8427e
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
@@ -44,7 +44,6 @@ pkgbase = mesa-amdonly-gaming-git
 	options = !lto
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main
 	source = LICENSE
-	source = gamescope.patch
 	validpgpkeys = 8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D
 	validpgpkeys = 946D09B5E4C9845E63075FF1D961C596A7203456
 	validpgpkeys = E3E8F480C52ADD73B278EE78E1ECBE07D7D70895
@@ -53,7 +52,6 @@ pkgbase = mesa-amdonly-gaming-git
 	validpgpkeys = 57551DE15B968F6341C248F68D8E31AFC32428A6
 	b2sums = SKIP
 	b2sums = cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87
-	b2sums = 6219a0797724ab17b36f85a134349ffa52f3fce74490834c5f86b474ba893cbb34ebef604cd72c851436296add906dbdb8fca9eb50d1e5f74c7caa8e2963bdcc
 
 pkgname = amdonly-gaming-vulkan-mesa-layers
 	pkgdesc = Mesa's Vulkan layers
