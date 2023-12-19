@@ -1,0 +1,20 @@
+--- postgresql-15.5_ori/src/backend/utils/adt/xml.c	2023-11-06 23:06:45.000000000 +0100
++++ postgresql-15.5/src/backend/utils/adt/xml.c	2023-12-19 14:04:26.288122882 +0100
+@@ -119,7 +119,7 @@
+ 
+ static xmlParserInputPtr xmlPgEntityLoader(const char *URL, const char *ID,
+ 										   xmlParserCtxtPtr ctxt);
+-static void xml_errorHandler(void *data, xmlErrorPtr error);
++static void xml_errorHandler(void *data, const xmlError *error);
+ static void xml_ereport_by_code(int level, int sqlcode,
+ 								const char *msg, int errcode);
+ static void chopStringInfoNewlines(StringInfo str);
+@@ -1749,7 +1749,7 @@
+  * Error handler for libxml errors and warnings
+  */
+ static void
+-xml_errorHandler(void *data, xmlErrorPtr error)
++xml_errorHandler(void *data, const xmlError *error)
+ {
+ 	PgXmlErrorContext *xmlerrcxt = (PgXmlErrorContext *) data;
+ 	xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) error->ctxt;

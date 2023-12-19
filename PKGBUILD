@@ -4,7 +4,7 @@ pkgbase=postgresql14
 pkgver=14.10
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=2
+pkgrel=3
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -16,6 +16,7 @@ optdepends=('perl')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
+        postgresql-xml.patch
         postgresql.service
         postgresql-check-db-dir
         postgresql.sysusers
@@ -24,6 +25,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
 sha256sums=('c99431c48e9d470b0d0ab946eb2141a3cd19130c2fb4dc4b3284a7774ecc8399'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
+            '344a1ef322bccdbdec465ddd2d6752f453e6e349551fcf31d92b168d602da141'
             '5f45d2ad3a93f5ea87ea40bc82a5377e5b8faca9586bfa84d4efe05bdd90ebb6'
             'e0445d31cbafe6a06af38224d4e6ff976cc8977d140adadc99a2e11f2152a485'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
@@ -34,6 +36,7 @@ prepare() {
   cd postgresql-${pkgver}
   patch -p1 < ../postgresql-run-socket.patch
   patch -p1 < ../postgresql-perl-rpath.patch
+  patch -p1 < ../postgresql-xml.patch
 }
 
 build() {
