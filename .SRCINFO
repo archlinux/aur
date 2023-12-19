@@ -15,7 +15,7 @@ pkgbase = aechoterm-bin
 	provides = aechoterm=4.0.1
 	conflicts = aechoterm
 	source = aechoterm.sh
-	sha256sums = d07e498ef8c07e15f5dfcf186b710b21c24726bb1ba48d024d99fd03814e0797
+	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
 	source_aarch64 = aechoterm-4.0.1-aarch64.deb::https://ec.cnd.nantiangzzx.com/Aechoterm_4.0.1_arm64.deb
 	sha256sums_aarch64 = 5ad55272b26a667cfcca3cc8c31b0afdabae8c718694b645cb19c83dc7387838
 	source_x86_64 = aechoterm-4.0.1-x86_64.deb::https://ec.cnd.nantiangzzx.com/Aechoterm_4.0.1_amd64.deb
