@@ -20,7 +20,7 @@ _fragment="#${FRAGMENT:-branch=main}"
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2023.12.r0.g2dbd2f4b1
+pkgver=2023.12.r7.gdfb630012
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -62,7 +62,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C "${srcdir}/build" install
-  mv $pkgdir/usr/lib/meshlab/{libIDTF,plugins/libio_e57}.so -t $pkgdir/usr/lib
+  # mv $pkgdir/usr/lib/meshlab/{libIDTF,plugins/libio_e57}.so -t $pkgdir/usr/lib
 }
 
 # Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
