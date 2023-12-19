@@ -42,9 +42,8 @@ source=(
 sha256sums=('acef0abb8fc0af1fa11514ceb5ea3f615c132e2c7770c58cfb9ca29f571ad3d7'
             '0457da21fc8ef72f5793a69bbdf8d8846a6d39fed639c518e3043c2d211a75bd')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+    sed -e "s|@appname@|${pkgname%-bin}|" \
+        -e "s|@runname@|${_appname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname "tencent-${_pkgname}-bin" --name "腾讯交互翻译TranSmart" --categories "Utility" --exec "${pkgname%-bin}"
     mv "${srcdir}/${_pkgname}_${pkgver}_linux/使用说明" "${srcdir}/${_pkgname}_${pkgver}_linux/README"
