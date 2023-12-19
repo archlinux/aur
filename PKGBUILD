@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=zola
-pkgver=0.17.2
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="An opinionated static site generator"
 arch=('x86_64')
@@ -10,9 +10,8 @@ url="https://github.com/getzola/zola"
 depends=('gcc-libs')
 makedepends=('cargo')
 license=('MIT')
-options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/getzola/zola/archive/v${pkgver}.tar.gz")
-sha256sums=('471238f38076803cb2af1c53cf418280ae51694fbcc2e547da3f6715a718c750')
+sha256sums=('c0e1711a68bc005c2e0ecc76a468f3459739c9e54af34850cb725d04391e19b5')
 
 prepare() {
   cd zola-$pkgver
@@ -21,6 +20,7 @@ prepare() {
 
 build() {
   cd zola-$pkgver
+  CFLAGS+=' -ffat-lto-objects'
   cargo build --frozen --release
 }
 
