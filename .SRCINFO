@@ -1,4 +1,4 @@
-pkgbase = waypaper-engine-git
+pkgbase = waypaper-engine
 	pkgdesc = An Electron-based graphical frontend for setting wallpapers and playlists
 	pkgver = v1.2.1.r0.g09eb623
 	pkgrel = 1

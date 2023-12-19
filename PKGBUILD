@@ -1,5 +1,4 @@
 # Maintainer: Diego Parra <diegoparranava@protonmail.com>
-pkgbase='waypaper-engine-git'
 pkgname='waypaper-engine'
 pkgver=v1.2.1.r0.g09eb623
 pkgrel=1
