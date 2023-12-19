@@ -1,0 +1,21 @@
+pkgbase = ical2orgpy-git
+	pkgdesc = This script converts an ical calendar (for instance, as exported from google calendar) into an org-mode document.
+	pkgver = 0.3.r38.gb2224f4
+	pkgrel = 1
+	url = https://github.com/ical2org-py/ical2org.py.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-tzlocal
+	depends = python-pytz
+	depends = python-icalendar
+	depends = python-recurring-ical-events
+	depends = python-future
+	depends = python-click
+	source = git+https://github.com/ical2org-py/ical2org.py.git
+	md5sums = SKIP
+
+pkgname = ical2orgpy-git
