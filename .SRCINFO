@@ -1,0 +1,11 @@
+pkgbase = libctl2
+	pkgdesc = CTL is a Software Transactional Memory Framework based in TL2 including new features and optimizations.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://docentes.fct.unl.pt/joao-lourenco/software/ctl-consistent-software-transactonal-layer
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = base-devel
+
+pkgname = libctl2
