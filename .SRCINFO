@@ -1,17 +1,17 @@
 pkgbase = jimud-bin
 	pkgdesc = MUD client for ShadowMUD.com, based on webclient
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://www.shadowmud.com/
 	arch = x86_64
 	license = custom
-	depends = electron27
+	depends = electron28
 	depends = hicolor-icon-theme
-	provides = jimud=1.1.1
+	provides = jimud=1.2.0
 	conflicts = jimud
-	source = jimud-1.1.1.rpm::https://github.com/icewolfz/jiMUD/releases/download/v1.1.1/jimud-1.1.1.x86_64.rpm
+	source = jimud-1.2.0.deb::https://github.com/icewolfz/jiMUD/releases/download/v1.2.0/jimud_1.2.0_amd64.deb
 	source = jimud.sh
-	sha256sums = 6c0cdae4e529a62a56c50743a845a2b3567c9010482d44dc1d1e8a48153de17c
-	sha256sums = 7c1266ecbea52e67a67f77f15f619761a327bb95499cedddd707c33779031adc
+	sha256sums = a35fa5dc28503a17148759fbec4e72d788a13f1e21f4f4ce9eb70d256250cd7d
+	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
 
 pkgname = jimud-bin
