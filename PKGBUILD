@@ -14,7 +14,7 @@ depends=('gcc-libs' 'sh')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$url/releases/download/release-${pkgver/./-}/icu4c-${pkgver/./_}-Fedora_Linux37-x64.tgz")
-b2sums=('9a5e257bb5558bf55d086e4308bc15e7e9cad8d47d9d67e6cac32f6f5164cf965d53d32002b8958076ef75607506be6c3e2844d6541d66d9021bf3d7ad84a9f3')
+b2sums=('7e257374768d24194484aca0a726ca8abb0ac2a2726a945d350bce06d08175b0479fd496647867a5b6c1c716be809eb8447693b95b5d0757a8a190632b4a2a42')
 
 _src_libdir=icu/usr/local/lib
 
