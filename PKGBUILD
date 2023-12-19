@@ -3,7 +3,7 @@
 # Contributor: Igor Scabini <furester @ gmail.com>
 
 pkgname=cython0
-pkgver=0.29.36
+pkgver=0.29.37.1
 pkgrel=1
 pkgdesc='C-Extensions for Python (legacy version)'
 arch=(x86_64)
@@ -14,7 +14,7 @@ conflicts=(cython)
 provides=(cython)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(https://github.com/cython/cython/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('bd8ee4208e1f2817914894eca8c4ca894f6c9a51803b0b815a9a3c03d01ab729')
+sha256sums=('cbd3949bec315ef1cc974c2907b69af3d36ec35dacc9b1ab258e3e9cf800b157')
 
 build() {
   cd cython-$pkgver
