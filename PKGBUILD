@@ -4,7 +4,7 @@
 pkgname=python-hyperspy
 pkgshort=hyperspy
 pkgver=2.0rc0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
@@ -46,7 +46,7 @@ optdepends=('python-numba: speed'  # AUR
             'python-pydata-sphinx-theme: build documentation'
             'python-setuptools-scm: build documentation'            
             'python-sphinx-copybutton: build documentation'
-            'python-sphinx-design: build documentation'
+            'python-sphinx_design: build documentation'
             'python-sphinx-favicon: build documentation'
             'python-sphinx-gallery: build documentation'
             'python-sphinx>=1.7: build documentation'
