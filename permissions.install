@@ -1,7 +1,7 @@
 post_install() {
 	echo "giving permissions to log file"
 	touch /var/log/waraddonclient.log
-	chmod 777 /var/log/waraddonclient.log
+	chmod 644 /var/log/waraddonclient.log
 }
 
 post_upgrade() {
