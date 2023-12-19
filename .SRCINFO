@@ -1,7 +1,7 @@
 pkgbase = xmachoviewer-bin
 	pkgdesc = Mach-O viewer for Windows, Linux and MacOS
 	pkgver = 0.04
-	pkgrel = 5
+	pkgrel = 6
 	url = https://horsicq.github.io/#xmachoviewer
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,10 @@ pkgbase = xmachoviewer-bin
 	provides = xmachoviewer=0.04
 	conflicts = xmachoviewer
 	source = xmachoviewer-0.04.deb::https://github.com/horsicq/XMachOViewer/releases/download/0.04/xmachoviewer_0.04_Ubuntu_22.04_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/horsicq/XMachOViewer/0.04/LICENSE
+	source = LICENSE-0.04::https://raw.githubusercontent.com/horsicq/XMachOViewer/0.04/LICENSE
+	source = xmachoviewer.sh
 	sha256sums = b39f9470d3b85e84b5123349a25e35ad414371c96d2980ac035780b6f69d2a8b
 	sha256sums = d0dfc6996d90bc96474a32b5656eec06bf988cdbcfd226f24fcb7a062208e4ee
+	sha256sums = 06a41f24ffb21e368fcbaf77adf39ac1748ab44e8e8fc5cc54fa5063490dacab
 
 pkgname = xmachoviewer-bin
