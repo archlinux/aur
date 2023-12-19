@@ -1,0 +1,16 @@
+pkgbase = tree-sitter-bash
+	pkgdesc = Bash grammar for tree-sitter
+	pkgver = 0.20.2
+	pkgrel = 2
+	url = https://github.com/tree-sitter/tree-sitter-bash
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter
+	makedepends = tree-sitter-cli
+	makedepends = npm
+	provides = libtree-sitter-bash
+	source = tree-sitter-bash-0.20.2.tar.gz::https://github.com/tree-sitter/tree-sitter-bash/archive/refs/tags/v0.20.2.tar.gz
+	sha256sums = b0b485dac6a3f8b018c34e62218cc3167b7a5f939fc69023c21fae8c9302e6b7
+
+pkgname = tree-sitter-bash
