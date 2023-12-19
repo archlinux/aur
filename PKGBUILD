@@ -7,17 +7,17 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-lol
-pkgver=p8_12
+pkgver=8_27
 pkgrel=1
-epoch=2
+epoch=3
 
 # Be sure to use commits from a "lol-pX-XX" branch here
-_gitver=0926dc8d033e4d7b32aa745bcfd2ec72adee089e
+_gitver=9870f7b23d1dac43324915ac54d784812a8f8e54
 
 # Using VCS source here (git+https...) takes forever so get a snapshot instead
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GloriousEggroll/proton-wine/archive/$_gitver.tar.gz"
         30-win32-aliases.conf)
-sha512sums=('0bb59bd7497cec5aeb325189abf9b191bcccbd9dc9ee45c9090b429da9d62b9aaa35aedb4a1bfde3d69bd2b665ad75f4f623c089689891db4652ce8c58ba64f9'
+sha512sums=('cb82f8407bfed1728787c83d8023f126c7679b2ff82c5a1ce8049a170126fc4e1f06f03d45a6ab62cda1a1bc724b2c7f073f2f25d1e12cbba65be2035295abda'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
 
 pkgdesc="A compatibility layer for running Windows programs - GloriousEggroll custom wine build for running League of Legends"
