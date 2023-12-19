@@ -3,11 +3,11 @@
 
 pkgname=osmium-tool
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for working with OpenStreetMap data based on the Osmium library"
 arch=('i686' 'x86_64')
 depends=('boost-libs' 'expat')
-makedepends=('cmake' 'libosmium>=2.17.0')
+makedepends=('cmake' 'libosmium>=2.17.0' 'protozero')
 optdepends=('pandoc: building documentation')
 url="https://osmcode.org/osmium-tool/"
 license=('GPL3')
