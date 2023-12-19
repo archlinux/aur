@@ -1,8 +1,8 @@
 pkgbase = vircon32-desktop-emulator-git
 	pkgdesc = Vircon32 Desktop Emulator
-	pkgver = 24770a4337f52553a792bbe618377297794149ae
+	pkgver = 2f5b85bbead2ecafed9394cabe7e0a6e26676148
 	pkgrel = 1
-	epoch = 20230909
+	epoch = 20231219
 	url = https://github.com/vircon32/ComputerSoftware
 	arch = x86_64
 	license = unknown
@@ -18,6 +18,6 @@ pkgbase = vircon32-desktop-emulator-git
 	depends = gtk2
 	provides = vircon32-desktop-emulator
 	source = ComputerSoftware::git+https://github.com/vircon32/ComputerSoftware.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = vircon32-desktop-emulator-git
