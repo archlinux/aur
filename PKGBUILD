@@ -6,7 +6,7 @@
 _pkgname=iventoy
 pkgname=${_pkgname}-bin
 pkgver=1.0.19
-pkgrel=2
+pkgrel=3
 pkgdesc="An enhanced version of the PXE server | 一个增强版的 PXE 服务器"
 arch=("x86_64")
 url="https://www.iventoy.com"

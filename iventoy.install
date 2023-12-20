@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 _pkgname=iventoy
 
@@ -12,7 +12,7 @@ note() {
 }
 
 post_install() {
-    if [ "$LANG" = 'zh_CN.UTF-8' ]; then
+    if [[ "$LANG" == "zh_CN.UTF-8" ]]; then
         note "请将你的镜像文件放置在 \"/var/lib/${_pkgname}/iso\" 下...
           或将存放镜像文件的目录手动软链接为 \"/var/lib/${_pkgname}/iso\"...
           然后以命令 \"sudo systemctl start ${_pkgname}.service\" 来启动...
@@ -30,7 +30,7 @@ post_install() {
 }
 
 post_upgrade() {
-    if [ "$LANG" = 'zh_CN.UTF-8' ]; then
+    if [[ "$LANG" == "zh_CN.UTF-8" ]]; then
         note "重载 ${_pkgname} systemd 配置：\"sudo systemctl daemon-reload\" ...
           重启 ${_pkgname} 服务：\"sudo systemctl restart ${_pkgname}.service\" ..."
     else
@@ -41,7 +41,7 @@ post_upgrade() {
 
 post_remove() {
     rm -rf /opt/$_pkgname/
-    if [ "$LANG" = 'zh_CN.UTF-8' ]; then
+    if [[ "$LANG" == "zh_CN.UTF-8" ]]; then
         note "${_pkgname} 的配置文件和镜像文件残留在 \"/var/lib/${_pkgname}\"，
           日志文件残留在 \"/var/log/iventoy\"，如果需要，请手动删除它们..."
     else
