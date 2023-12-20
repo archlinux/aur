@@ -1,12 +1,8 @@
-# Maintainer: Jesus Alvarez <jeezusjr@gmail.com>
+# Maintainer: Ivan Souza <ivanttt54@gmail.com>
+# Contributor: Jesus Alvarez <jeezusjr@gmail.com>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-# NOTICE: THIS PACKAGE DOES NOT BUILD WITH AURUTILS AND CONTAINERS!
-# NOTICE: The CXX env var does not propogate to the 'odin run' used by 'build_odin.sh' and results in build failure!
-
-# NOTICE: Use makepkg outside of a container!
-pkgver=dev_2023_07
-# NOTICE: Use makepkg outside of a container!
+pkgver=dev_2023_12
 
 _srcname=Odin
 pkgname=odin
@@ -16,18 +12,18 @@ pkgdesc="A fast, concise, readable, pragmatic and open sourced programming langu
 arch=('x86_64')
 url="https://odin-lang.org/"
 license=('BSD-2-Clause')
-depends=('llvm14' 'clang14' 'which')
-makedepends=('git')
+depends=('clang' 'llvm14-libs')
+makedepends=('git' 'clang' 'clang14' 'llvm14')
 provides=('odin')
 conflicts=('odin')
 source=("https://github.com/odin-lang/Odin/archive/refs/tags/${pkgver_actual}.tar.gz")
-sha256sums=('e32043fa873274e67254c890c30b8e1a538f9934c6482bd4e3bf81c5078e4f08')
+sha256sums=('9c4a39fcfc0fb29e5060a2513931000c0c3ce491f3672faaab1429b07cad0896')
 
 build() {
   cd "${srcdir}/Odin-${pkgver_actual}/"
   export LLVM_CONFIG=llvm-config-14
   export CXX=/usr/lib/llvm14/bin/clang++
-  ./build_odin.sh release
+  make release
 }
 
 package() {
