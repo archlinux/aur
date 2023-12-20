@@ -1,6 +1,6 @@
 pkgname=vapoursynth-preview-iew-git
-pkgver=0.4.3.3.g3e69628
-pkgrel=2
+pkgver=0.8.1.14.g0418418
+pkgrel=1
 pkgdesc="Standalone previewer for VapourSynth scripts (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-preview'
@@ -13,6 +13,8 @@ depends=(
     'python-qdarkstyle'
     'vapoursynth-plugin-vsengine-git'
     'vapoursynth-plugin-vsakarin-git'
+    'python-matplotlib'
+    'vapoursynth-plugin-vstools-git'
 )
 makedepends=('git'
     'python-pip'
