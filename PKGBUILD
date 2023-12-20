@@ -49,14 +49,14 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.36.0_656_g06c26e37ed
+pkgver=0.37.0_114_g17be6e1990
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 url='https://mpv.io'
 _undetected_depends=('hicolor-icon-theme')
-depends=('ffmpeg' 'libplacebo-git' "${_undetected_depends[@]}")
+depends=('ffmpeg' 'libplacebo' "${_undetected_depends[@]}")
 optdepends=('yt-dlp: for video-sharing websites playback (preferred over youtube-dl)'
             'youtube-dl: for video-sharing websites playback')
 makedepends=('git'
