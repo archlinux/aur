@@ -1,6 +1,6 @@
 pkgbase = asterisk-lts-18
 	pkgdesc = A complete open source PBX toolkit - Long Term Support release 18
-	pkgver = 18.20.1
+	pkgver = 18.20.2
 	pkgrel = 1
 	url = https://www.asterisk.org
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = asterisk-lts-18
 	optdepends = postgresql
 	optdepends = sqlite3
 	optdepends = unixodbc
-	provides = asterisk=18.20.1
+	provides = asterisk=18.20.2
 	conflicts = asterisk
 	backup = etc/asterisk/acl.conf
 	backup = etc/asterisk/adsi.conf
@@ -157,11 +157,11 @@ pkgbase = asterisk-lts-18
 	backup = etc/asterisk/voicemail.conf
 	backup = etc/asterisk/vpb.conf
 	backup = etc/asterisk/xmpp.conf
-	source = https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-18.20.1.tar.gz
+	source = https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-18.20.2.tar.gz
 	source = asterisk.sysusers
 	source = asterisk.logrotated
 	source = asterisk.tmpfiles
-	sha256sums = ad7d01f58e5c5266e5b23cc385e6a3d32a656b93c1d4b4fb0082f3300012bd02
+	sha256sums = 7ee8499fc704e5fcae57c5f195f806f2ce4da7ae5f62faa43e73b3e6d218747f
 	sha256sums = 38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486
 	sha256sums = b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164
 	sha256sums = 1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b
