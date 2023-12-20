@@ -4,24 +4,22 @@
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
-pkgname=wine-stable
-_pkgver=8.0.2
+pkgname=wine-stable-next
+_pkgver=9.0-rc2
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
 pkgrel=1
 
-source=(https://dl.winehq.org/wine/source/8.0/wine-$_pkgver.tar.xz{,.sign}
+source=(https://dl.winehq.org/wine/source/9.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
-        wine-binfmt.conf
-        0001-mshtml-Wine-Gecko-2.47.4-release.patch)
-b2sums=('dcffaba6c90c4e02a7bc591a81e11aced06c006370c4c316c8a367b2f5814926063482959fabfe9d674ee1b5a560e59087e9b711e28360ced3aee2bbd6bb8fdb'
+        wine-binfmt.conf)
+b2sums=('2eddc96df30a8239b4b3314b7127eb3a11f953826506f12b8f5dc2acfe45f8a4fc3de7a4af4ada5c14c60783771ba865eb35189dcdb09eeb7e52438dd34fe668'
         'SKIP'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
-        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
-        '0cf4946fa93a0af447419b984c725fc8a4e1f1d0c5ffdb579a6a1bebb5b35c8d4c8a00b85b2e1754fc6f38f904bba992be8ed6ad9837ecbda42b974238af21db')
+        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
 validpgpkeys=(DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
 pkgdesc="A compatibility layer for running Windows programs"
-url="http://www.winehq.com"
+url="https://www.winehq.org/"
 arch=(x86_64)
 options=(staticlibs !lto)
 license=(LGPL)
@@ -33,19 +31,16 @@ depends=(
   freetype2              lib32-freetype2
   gcc-libs               lib32-gcc-libs
   gettext                lib32-gettext
-  glu                    lib32-glu
   libpcap                lib32-libpcap
-  libsm                  lib32-libsm
+  libunwind              lib32-libunwind
   libxcursor             lib32-libxcursor
-  libxdamage             lib32-libxdamage
   libxi                  lib32-libxi
   libxrandr              lib32-libxrandr
+  wayland                lib32-wayland
 )
 
 makedepends=(
   alsa-lib               lib32-alsa-lib
-  fontforge
-  giflib                 lib32-giflib
   gnutls                 lib32-gnutls
   gst-plugins-base-libs  lib32-gst-plugins-base-libs
   libcups                lib32-libcups
@@ -53,17 +48,17 @@ makedepends=(
   libpulse               lib32-libpulse
   libxcomposite          lib32-libxcomposite
   libxinerama            lib32-libxinerama
-  libxmu                 lib32-libxmu
   libxxf86vm             lib32-libxxf86vm
   mesa                   lib32-mesa
   mingw-w64-gcc
-  ncurses                lib32-ncurses
   ocl-icd                lib32-ocl-icd
   opencl-headers
+  pcsclite               lib32-pcsclite
   perl
   samba
   sane
   sdl2                   lib32-sdl2
+  unixodbc               lib32-unixodbc
   v4l-utils              lib32-v4l-utils
   vulkan-headers
   vulkan-icd-loader      lib32-vulkan-icd-loader
@@ -72,26 +67,28 @@ makedepends=(
 optdepends=(
   alsa-lib               lib32-alsa-lib
   alsa-plugins           lib32-alsa-plugins
+  cups
   dosbox
-  giflib                 lib32-giflib
   gnutls                 lib32-gnutls
+  gst-plugins-bad        lib32-gst-plugins-bad
   gst-plugins-base       lib32-gst-plugins-base
   gst-plugins-base-libs  lib32-gst-plugins-base-libs
   gst-plugins-good       lib32-gst-plugins-good
-  libcups                lib32-libcups
+  gst-plugins-ugly       lib32-gst-plugins-ugly
   libgphoto2             lib32-libgphoto2
   libpulse               lib32-libpulse
   libxcomposite          lib32-libxcomposite
   libxinerama            lib32-libxinerama
-  ncurses                lib32-ncurses
   ocl-icd                lib32-ocl-icd
+  pcsclite               lib32-pcsclite
   samba
   sane
   sdl2                   lib32-sdl2
+  unixodbc               lib32-unixodbc
   v4l-utils              lib32-v4l-utils
   vulkan-icd-loader      lib32-vulkan-icd-loader
   wine-gecko
-  wine-stable-mono
+  wine-mono
 )
 
 provides=(wine=$pkgver)
@@ -108,8 +105,6 @@ prepare() {
       patch -d wine -p1 -i "../$patch"
     fi
   done
-
-  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine/configure*
 
   # Get rid of old build dirs
   rm -rf wine-{32,64}-build
