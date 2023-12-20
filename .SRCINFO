@@ -1,6 +1,6 @@
 pkgbase = wlclipblock
 	pkgdesc = A hack to prevent Wayland compositors from advertising support for the primary clipboard
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/notpeelz/wlclipblock
 	install = wlclipblock.install
@@ -12,7 +12,7 @@ pkgbase = wlclipblock
 	makedepends = wayland-protocols
 	makedepends = wayland
 	depends = glibc
-	source = wlclipblock::git+https://github.com/notpeelz/wlclipblock.git#commit=27b3ef7dc978c2e62aacb5572ffc12dd3acdd5fb
+	source = wlclipblock::git+https://github.com/notpeelz/wlclipblock.git#commit=566353c6a7640864d3c36000d23220c62dc41df1
 	sha256sums = SKIP
 
 pkgname = wlclipblock
