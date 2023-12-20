@@ -5,7 +5,7 @@
 pkgname=wiki-js
 _pkgname=wiki-js
 pkgver=2.5.300
-pkgrel=1
+pkgrel=2
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
 license=('AGPL3')
 arch=('any')
@@ -35,8 +35,8 @@ package() {
 	cd "$srcdir"
 
 	install -Dm644 "wiki-js.service" -t "${pkgdir}/usr/lib/systemd/system"
-	install -Dm644 "wiki-js.sysusers" "${pkgdir}/usr/lib/sysusers.d/wiki-js.conf"
-	install -Dm644 "wiki-js.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/wiki-js.conf"
+	install -Dm644 "wiki-js.sysusers.d" "${pkgdir}/usr/lib/sysusers.d/wiki-js.conf"
+	install -Dm644 "wiki-js.tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/wiki-js.conf"
 
 	install -Dm644 -o 5494 -g 5494 "config.sample.yml" "${pkgdir}/etc/wiki-js/config.yml"
 

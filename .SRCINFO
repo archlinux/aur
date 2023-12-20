@@ -1,7 +1,7 @@
 pkgbase = wiki-js
 	pkgdesc = Wiki.js | A modern, lightweight and powerful wiki app built on Node.js
 	pkgver = 2.5.300
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Requarks/wiki
 	arch = any
 	license = AGPL3
