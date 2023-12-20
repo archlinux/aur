@@ -24,7 +24,7 @@ makedepends=(
     'git'
     'nvm'
     'npm'
-    'go>=1.21.3'
+    'go>=1.21'
     'pnpm'
 )
 source=(
@@ -32,7 +32,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'ba4ed4aaf2c44af5118b06a3099a92ef3bdc969ed964ad508a857d37ae56fd3d')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'

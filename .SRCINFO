@@ -9,7 +9,7 @@ pkgbase = siyuan-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = npm
-	makedepends = go>=1.21.3
+	makedepends = go>=1.21
 	makedepends = pnpm
 	depends = electron27
 	provides = siyuan
@@ -18,6 +18,6 @@ pkgbase = siyuan-git
 	source = siyuan::git+https://github.com/siyuan-note/siyuan.git
 	source = siyuan.sh
 	sha256sums = SKIP
-	sha256sums = ba4ed4aaf2c44af5118b06a3099a92ef3bdc969ed964ad508a857d37ae56fd3d
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = siyuan-git
