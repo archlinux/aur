@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-utils-bin
 pkgver=3.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Electron Utils for every day usage as a dev."
 arch=('x86_64')
 url='https://github.com/SamTV12345/DevRustPilot'
@@ -18,7 +18,9 @@ depends=(
     'gtk3'
     'hicolor-icon-theme'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_0.0.0_amd64.deb")
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_0.0.0_amd64.deb"
+)
 sha256sums=('293213097856719ed5265a6d29783748c0da844b063eed0ab7314767e063e349')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"

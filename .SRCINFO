@@ -1,7 +1,7 @@
 pkgbase = electron-utils-bin
 	pkgdesc = Electron Utils for every day usage as a dev.
 	pkgver = 3.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/SamTV12345/DevRustPilot
 	arch = x86_64
 	license = custom
