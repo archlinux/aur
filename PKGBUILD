@@ -1,17 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sops-git
-pkgver=3.7.3.r32.g912478393
-pkgrel=2
+pkgver=3.8.1.r87.gc8a659e39
+pkgrel=1
 pkgdesc="Simple and flexible tool for managing secrets"
 arch=('i686' 'x86_64')
-url="https://github.com/mozilla/sops"
+url="https://getsops.io/"
 license=('MPL2')
 depends=('glibc')
 makedepends=('git' 'go')
 provides=("sops=$pkgver")
 conflicts=('sops')
-source=("git+https://github.com/mozilla/sops.git#branch=develop"
+source=("git+https://github.com/getsops/sops.git"
         "bash_autocomplete::https://gitlab.archlinux.org/archlinux/packaging/packages/sops/-/raw/main/bash_autocomplete"
         "zsh_autocomplete::https://gitlab.archlinux.org/archlinux/packaging/packages/sops/-/raw/main/zsh_autocomplete")
 sha256sums=('SKIP'
