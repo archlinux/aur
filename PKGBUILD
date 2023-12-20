@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.16.3
+pkgver=1.16.7
 _electronversion=27
+_nodeversion=18
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
 arch=(
@@ -18,8 +19,8 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'npm>=9.8.1'
-    'nodejs>=18.18.0'
+    'npm'
+    'nvm'
     'git'
 )
 source=(
@@ -27,19 +28,26 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appname@|${pkgname}|g" \
         -e "s|@appasar@|app.asar|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+        -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/npm_cache"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
+    export npm_config_cache="${srcdir}/.npm_cache"
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export ELECTRONVERSION="${_electronversion}"
     sed -e '81,84d' -e 's|"deb"|"AppImage"|g' -i electron-builder.json
     npm install
     npm run build:linux
