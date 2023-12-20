@@ -1,23 +1,22 @@
 pkgbase = icalingua++-bin
 	pkgdesc = A branch of deleted Icalingua, with limited support
 	pkgver = 2.10.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = AGPL3
-	depends = bash
 	depends = electron22
 	provides = icalingua++=2.10.10
 	conflicts = icalingua++
 	conflicts = icalingua++-electron
-	source = icalingua++.png::https://raw.githubusercontent.com/Icalingua-plus-plus/Icalingua-plus-plus/develop/pkgres/512x512.png
-	source = icalingua++.desktop::https://raw.githubusercontent.com/Icalingua-plus-plus/Icalingua-plus-plus/develop/pkgres/icalingua.desktop
+	source = icalingua++-2.10.10.png::https://raw.githubusercontent.com/Icalingua-plus-plus/Icalingua-plus-plus/develop/pkgres/512x512.png
+	source = icalingua++-2.10.10.desktop::https://raw.githubusercontent.com/Icalingua-plus-plus/Icalingua-plus-plus/develop/pkgres/icalingua.desktop
 	source = icalingua++.sh
 	sha256sums = 5743ef3d19be5e41e83c3a1171a807cd0505d7f5d5f9c5abdff8926dccadc6de
 	sha256sums = b088d20934708c53e50492694efefbf9a9dcb62fefb8d1d4976f36f32f84af86
-	sha256sums = c3cf01f71ea0004d31b759816a72694b2a64c3fb437c50c264646f7d524dce80
+	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
 	source_aarch64 = icalingua++-2.10.10-aarch64.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.10.10/app-arm64.asar
 	sha256sums_aarch64 = 710a76bccc2b25ed4963fec9a4a91ec5cf97e0036d66d4fdbc5dbbf4a9ce6c17
 	source_armv7h = icalingua++-2.10.10-armv7h.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.10.10/app-armv7l.asar
