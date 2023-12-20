@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dialogcraft
 _pkgname=DialogCraft
-pkgver=1.0.7
+pkgver=1.0.8
 _electronversion=25
+_nodeversion=16
 pkgrel=1
 pkgdesc="Desktop client for OpenAI GPT API."
 arch=('any')
@@ -43,8 +44,8 @@ sha256sums=('SKIP')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 16
-    nvm use 16
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     _ensure_local_nvm
@@ -55,8 +56,8 @@ build() {
     export SYSTEM_ELECTRON_VERSION=$(electron${_electronversion} -v | sed 's/v//g')
     export ELECTRONVERSION="${_electronversion}"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    npm ci
     sed -e '26,31d' -e '8,19d' -i forge.config.js
+    npm ci
     npm run package
 }
 package() {
