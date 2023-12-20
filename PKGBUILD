@@ -3,7 +3,7 @@
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
-_pkgver=1.0.0-beta.4.13.31
+_pkgver=1.0.0-beta.5.1.1
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc='Highly automated and intuitive digital audio workstation'
@@ -30,10 +30,11 @@ depends=(
 	libcyaml
 	libepoxy
 	libpanel
+	lilv
 	libxinerama
 	libxrandr
-	lilv
 	lsp-dsp-lib
+	pcre
 	portaudio
 	qt5-base
 	reproc
@@ -45,7 +46,7 @@ depends=(
 	sratom
 	vamp-plugin-sdk
 	xxhash
-	pcre
+	yyjson-git
 	zix
 )
 makedepends=(git meson cmake ruby-sass help2man sassc)
@@ -54,7 +55,7 @@ options=('debug')
 source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc}
         "git+https://github.com/drobilla/zix.git"
         0001-gcc13-fixes.patch)
-sha256sums=('bf503d4091d7d4ad06d1980cb9cff1fd3de18d1a268cc81578468cf0b2c30965'
+sha256sums=('e4216f18f830160d298ce9091a5fbb8d5c9d3f61a1096cba42536ab98c426abc'
             'SKIP'
             'SKIP'
             'bb93eea519020e491f85c38ab3901ac530bbf747c4e7acc3aaea39f402091653')
