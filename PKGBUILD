@@ -2,7 +2,7 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour
-pkgver=0.3.12.262
+pkgver=0.4.0.6245
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-declarative' 'qt6-multimedia'
          'qt6-shadertools' 'qt6-wayland' 'qt6-5compat' 'libutempter')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
-             'python' 'catch2' 'range-v3' 'fmt' 'microsoft-gsl')
+             'python' 'range-v3' 'fmt' 'microsoft-gsl' 'catch2')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('8d70cbd19b02196dd1f5c45ab85f5601a3226a1deaba5aa7d83bc79647a04b8945e4555fd735736366df05563a9d2d098b6936f3248e006e1e15ae3aa358170d')
 
@@ -28,7 +28,8 @@ build() {
         -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCONTOUR_QT_VERSION=6
+        -DCONTOUR_QT_VERSION=6 \
+        -DCONTOUR_TESTING=ON
   cmake --build build --parallel $_cpuCount
 }
 
