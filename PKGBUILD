@@ -1,8 +1,8 @@
 # Maintainer: Tristan Hill
 
 pkgname=changedetection.io
-pkgver=0.45.8.1
-pkgrel=3
+pkgver=0.45.9
+pkgrel=1
 pkgdesc='change monitoring of web pages'
 arch=('any')
 url='https://github.com/dgtlmoon/changedetection.io'
@@ -47,10 +47,10 @@ source=("https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/$pkgve
         'sysusers'
         'tmpfiles'
         'service')
-sha512sums=('47c99b11549995bb23133cb5b1d6b26de132fea5ee4d1e0bef0a4eac6572f5cdf6e82abbd2c76998862f96b6fb994582267a2d96eaf1973ca75ab7be4f07810e'
+sha512sums=('7dba39607ce699fc7f046242121bcf4dd1f4317ff291443d42efcfe4bd276574ecf0a189568c560ab4a1fd4af4cd2cf1ed141f94f2e3bcfb8cf91a3a59543270'
             '5ef8b215bddc02b04d55d3699f27ad043461d8771591be2ebf0ed6390c58ab881426214173c8e1cc8bb36ecd7acebc5d69d760fc65b8a3b191b2116150748f53'
             '62a684e35c3b479b8ab139b2d79f83f408bede0d4e0f1e500ee75f13126456fa5b574d8cb826c8c56ff0da488dec4ed3562854d0f05d44814beaa3b726bcd318'
-            '06bed54b6df80a603451bb8ffde14bf612da6787c1ec38611cd501e2b889591f942feccd04d60acf3cc90d62453b2413eb9724a7dc948c10fc3cfeade6a29eb2')
+            'd640ada5e7a0a82d551221a51c307abd37104361efe0ae4b805c58bd9092b21d8eb55e87e55cff8fb13bbb397ad98231edf1f6db99cfdb318de5e82cb0ed77bc')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
