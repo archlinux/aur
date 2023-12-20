@@ -1,6 +1,6 @@
 pkgbase = limesurvey
 	pkgdesc = The most popular FOSS online survey tool on the web.
-	pkgver = 6.3.9+231211
+	pkgver = 6.4.0+231218
 	pkgrel = 1
 	url = https://www.limesurvey.org
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = limesurvey
 	optdepends = php-gd: for CAPTCHAs and graphs
 	optdepends = php-sodium: for data encryption
 	backup = etc/webapps/limesurvey/config.php
-	source = https://download.limesurvey.org/latest-master/limesurvey6.3.9+231211.zip
-	sha256sums = a1cf383a72c50c683a361a769de9e6d496fb54bb3b2d5c544e958fa13ce338b2
+	source = https://download.limesurvey.org/latest-master/limesurvey6.4.0+231218.zip
+	sha256sums = 2631c8c03d96e2e5ba3f8c80f9e8488825c3259d6a5b8c1148400d3de4419382
 
 pkgname = limesurvey
