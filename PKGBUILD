@@ -2,18 +2,26 @@
 # Contributor: Miguel Revilla <yo@miguelrevilla.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
+#_opt_OpenSSL='-1.1'
+_opt_OpenSSL=''
+
 pkgname='proftpd'
 #pkgname+='-git'
-pkgver=1.3.8a
-pkgrel=1
+pkgver=1.3.8b
+# 0.0.0a to 0.0.0b are not seen as updates by some AUR helpers. We increase pkgrel with this kind of version change
+pkgrel=2
 epoch='2'
 pkgdesc='High-performance, scalable FTP SSL TLS and SFTP server'
 arch=('x86_64' 'i686')
 url='http://www.proftpd.org/'
 license=('GPL')
 depends=('mariadb-libs' 'postgresql-libs' 'libcap' 'pam' 'hiredis')
-depends+=('libsodium' 'acl' 'perl' 'zlib' 'libxcrypt' 'libldap' 'ncurses' 'glibc' 'openssl')
-backup=('etc/proftpd.conf')
+depends+=('libsodium' 'acl' 'perl' 'zlib' 'libxcrypt' 'libldap' 'ncurses' 'glibc' "openssl${_opt_OpenSSL}")
+backup=(
+  'etc/proftpd.conf'
+  'etc/dhparams.pem' # moduli
+  'etc/blacklist.dat'
+)
 options=('!emptydirs')
 source=(
   "ftp://ftp.proftpd.org/distrib/source/${pkgname}-${pkgver}.tar.gz"
@@ -21,11 +29,11 @@ source=(
   'proftpd.service'
   'proftpd.tmpfiles'
 )
-md5sums=('28f84d8f27380956dbb9cf4dcf606b7c'
+md5sums=('778cdeeac86e1d26451112bb7d4662af'
          '4d7a3eedc1852d4fa9faafc072fb8320'
          'f7e0c3a402a845ba8d546b2801f77ed2'
          '907b149a120b046f05647c73502e23c9')
-sha256sums=('56093b890a712220b09b98e29de2974a590e8fae6b36ed78c698a90945466aaf'
+sha256sums=('183ab7c6107de271a2959ff268f55c9b6c76b2cf0029e6584fccc019686601e0'
             'eaacf8df09c3d267cb08e962910af9cab50d1d5b007b232eb79b5240d8c5a721'
             '3a4558773ed747ab66b51551b6fc1732148e30908edc010f00a5e8675c817e64'
             '359cb8f5b30e66627929f7c50cbdd7dcc6919f7261f36eb617045210caf90abb')
@@ -58,12 +66,20 @@ prepare() {
     set +u; msg2 "Patch ${_f}"; set -u
   done
   shopt -u nullglob
+  sed -E -e '/^#define SFTP_DH_PREF_MIN_LEN/ s:2048:3072:g' -i 'contrib/mod_sftp/kex.c' # update group-exchange to modern standards
+  local _allcrypto=(
+    -e '/ciphers\[\] =/,/^}/ s:,\s*FALSE\s*,:,/* patched */TRUE,:'
+    -e '/digests\[\] =/,/^}/ s:,\s*FALSE\s*,:,/* patched */TRUE,:'
+  )
+  #sed -E "${_allcrypto[@]}" -i 'contrib/mod_sftp/crypto.c'
   set +u
 }
 
 _configure() {
   set -u
   cd "${_srcdir}"
+  #CFLAGS="${CFLAGS/-march=x86-64/-march=native}"
+  #CXXFLAGS="${CXXFLAGS/-march=x86-64/-march=native}"
   #CFLAGS+=' -fcommon'
   #CFLAGS+=' -fno-strict-aliasing'
   CFLAGS+=' -DOPENSSL_NO_DSA'
@@ -83,7 +99,7 @@ _configure() {
     'mod_tls'
     'mod_tls_shmcache'
   )
-  _modules+=()
+  _modules+=('mod_ifsession') # must be last
   local _m="$(printf '%s:' "${_modules[@]}")"
   local _conf=(
     --prefix='/usr'
@@ -103,6 +119,12 @@ _configure() {
     --with-systemd
     #CC=gcc-9 CXX=g++-9
   )
+  if [ ! -z "${_opt_OpenSSL}" ]; then
+    _conf+=(--with-openssl-cmdline="/usr/bin/openssl${_opt_OpenSSL}")
+    #LIBS+=" -lopenssl${_opt_OpenSSL}"
+    LDFLAGS+=" -L/usr/lib/openssl${_opt_OpenSSL}"
+    CPPFLAGS+=" -I/usr/include/openssl${_opt_OpenSSL}"
+  fi
   ./configure "${_conf[@]}"
   cd "${srcdir}"
   set +u
