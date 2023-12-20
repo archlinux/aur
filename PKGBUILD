@@ -18,8 +18,10 @@ depends=(
     'pango'
     'cairo'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-linux-amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/icidasset/diffuse/main/LICENSE")
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-linux-amd64.deb"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/icidasset/diffuse/main/LICENSE"
+)
 sha256sums=('47703b10325b6e4d65960d573b1a6a8b04d992a523ce2b2605aae0ec0522bcd0'
             '22f6e9359127b271eba050bc6e87abc699982ace7a6b386c1c346c7f3154eda8')
 build() {
@@ -29,5 +31,5 @@ package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/1716x1716/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
