@@ -31,7 +31,7 @@ checkdepends=(
 )
 optdepends=('python-argcomplete: tab completion for CLI tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8dd2d338074404fa32b85465258f8a2e49470b4b63e9267d8c00f77c6d23306b')
+sha256sums=('4be64e504f51d7272a3669f62e786e673051e3beabadf3dae3e09a44e38d2919')
 
 prepare() {
   cd "$pkgname-$pkgver"
