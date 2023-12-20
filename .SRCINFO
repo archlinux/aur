@@ -1,5 +1,5 @@
 pkgbase = mono-msbuild-git
-	pkgver = 16.10.1.r5004.g63458bd6c
+	pkgver = 16.10.1.r5005.gde7a9c7b8
 	pkgrel = 1
 	url = https://github.com/mono/msbuild
 	arch = x86_64

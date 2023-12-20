@@ -5,7 +5,7 @@
 _pkgbase=msbuild
 pkgbase=mono-msbuild-git
 pkgname=('mono-msbuild-git' 'mono-msbuild-sdkresolver-git')
-pkgver=16.10.1.r5004.g63458bd6c
+pkgver=16.10.1.r5005.gde7a9c7b8
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/mono/msbuild'
@@ -47,8 +47,8 @@ build() {
 
     cd "${srcdir}/${_pkgbase}"
 
-    DOTNET_MSBUILD_SDK_RESOLVER_CLI_DIR=/opt/dotnet eng/cibuild_bootstrapped_msbuild.sh --host_type mono --configuration Release --skip_tests /p:DisableNerdbankVersioning=true
-    stage1/mono-msbuild/msbuild mono/build/install.proj /p:MonoInstallPrefix="${srcdir}/target/usr" /p:Configuration=Release-MONO /p:IgnoreDiffFailure=true
+    LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 DOTNET_MSBUILD_SDK_RESOLVER_CLI_DIR=/opt/dotnet eng/cibuild_bootstrapped_msbuild.sh --host_type mono --configuration Release --skip_tests /p:DisableNerdbankVersioning=true
+    LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 stage1/mono-msbuild/msbuild mono/build/install.proj /p:MonoInstallPrefix="${srcdir}/target/usr" /p:Configuration=Release-MONO /p:IgnoreDiffFailure=true
     find "${srcdir}/target/usr/lib/mono/" -name 'Microsoft.DiaSymReader.Native.*dll' -delete
     find "${srcdir}/target/usr/lib/mono/" -name '*.dylib' -delete
     find "${srcdir}/target/usr/lib/mono/" -name '*.so' -print -delete
