@@ -1,7 +1,7 @@
 pkgbase = hiddify-next-bin
 	pkgdesc = A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks
-	pkgver = 0.11.1
-	pkgrel = 3
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://github.com/hiddify/hiddify-next
 	arch = x86_64
 	license = CC-BY-NC-SA-4.0
@@ -14,7 +14,7 @@ pkgbase = hiddify-next-bin
 	conflicts = hiddify-next
 	conflicts = hiddify-next-git
 	options = !strip
-	source = hiddify-next-0.11.1.zip::https://github.com/hiddify/hiddify-next/releases/download/v0.11.1/hiddify-linux-x64.zip
-	sha256sums = eb08f622288636acd9f40bc263010df6c92750744b0161fd7f4e842d11650f68
+	source = hiddify-next-0.12.0.zip::https://github.com/hiddify/hiddify-next/releases/download/v0.12.0/hiddify-linux-x64.zip
+	sha256sums = 07c833941ca4df8f36eda5dd0c50b7015d44b074251bd21efd67ed6819ebb1d2
 
 pkgname = hiddify-next-bin
