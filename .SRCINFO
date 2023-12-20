@@ -1,19 +1,20 @@
 pkgbase = primate-bin
 	pkgdesc = A modern dashboard for Kong Gateway admins
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.getprimate.xyz/
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
+	depends = electron22
 	depends = hicolor-icon-theme
 	provides = primate=1.1.0
 	conflicts = primate
 	source = primate-1.1.0.tar.gz::https://github.com/getprimate/primate/releases/download/v1.1.0/Primate-v1.1.0-x64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/getprimate/primate/v1.1.0/LICENSE
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/getprimate/primate/v1.1.0/LICENSE
 	source = primate.sh
 	sha256sums = ce23dc5a2e5373b16167817c1f588cee8a6a05c9b02b449e58682821f9e63b55
 	sha256sums = dd4c137b56da1d126c2aa91b11250f4b1c2973f4dec7f44ce904359bbb1d5612
-	sha256sums = fd12b3dbd3d187f9c7a24bcb1144878aeff02d9a5193bb4e1aff04f5bb66b183
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = primate-bin

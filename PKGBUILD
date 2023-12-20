@@ -2,29 +2,35 @@
 pkgname=primate-bin
 _pkgname=Primate
 pkgver=1.1.0
-pkgrel=2
+_electronversion=22
+pkgrel=3
 pkgdesc="A modern dashboard for Kong Gateway admins"
 arch=('x86_64')
 url="https://www.getprimate.xyz/"
-_githuburl="https://github.com/getprimate/primate"
+_ghurl="https://github.com/getprimate/primate"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x64.tar.gz"
-    "LICENSE::https://raw.githubusercontent.com/getprimate/primate/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x64.tar.gz"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/getprimate/primate/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ce23dc5a2e5373b16167817c1f588cee8a6a05c9b02b449e58682821f9e63b55'
             'dd4c137b56da1d126c2aa91b11250f4b1c2973f4dec7f44ce904359bbb1d5612'
-            'fd12b3dbd3d187f9c7a24bcb1144878aeff02d9a5193bb4e1aff04f5bb66b183')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} --no-sandbox %U"
 }
 package() {
@@ -36,5 +42,5 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
