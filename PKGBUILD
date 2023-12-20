@@ -3,7 +3,8 @@ _appname=flaru
 pkgname="${_appname}-player-bin"
 _pkgname="Flaru Player"
 pkgver=1.13.5
-pkgrel=1
+_electronversion=27
+pkgrel=2
 pkgdesc='An "unofficial" emulator based on Ruffle Flash Emulator. Created to provide a friendly interface and enhanced playing experience. It is a complete alternative to Adobe Flash Player. Run Flash Safely Anywhere'
 arch=('x86_64')
 url="https://github.com/jooy2/flaru"
@@ -32,13 +33,12 @@ depends=(
     'pango'
     'mesa'
     'at-spi2-core'
-    'dbus'
     'alsa-lib'
     'libdrm'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${_pkgname// /.}.${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/jooy2/flaru/${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/jooy2/flaru/${pkgver}/LICENSE"
 )
 sha256sums=('af81ddd6a4abec83fc95c90e37f5c9f055a686239ecd716d56524464cac1d092'
             '22f86a10f95ec7f4695c4d39a1df4464a6d61d7fe457dcd9181d71d530b0b70a')
@@ -56,5 +56,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
