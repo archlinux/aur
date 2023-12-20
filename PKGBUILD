@@ -22,7 +22,7 @@ _tag='bb59f566e1e5c387dbfd342bb3767f761422c744' # git rev-parse grub-${_pkgver}
 _pkgver=2.12rc1
 _unifont_ver='15.1.04'
 pkgver=${_pkgver/-/}
-pkgrel=5
+pkgrel=7
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
@@ -64,7 +64,6 @@ source=("git+https://git.savannah.gnu.org/git/grub.git#tag=${_tag}?signed"
         '0002-10_linux-detect-archlinux-initramfs.patch'
         '0003-support-dropins-for-default-configuration.patch'
         '0004-ntfs-module-security.patch'
-        '0005-fix-xfs-boundary-check.patch'
         'grub.default'
         'sbat.csv')
 
@@ -76,11 +75,13 @@ sha256sums=('SKIP'
             '8488aec30a93e8fe66c23ef8c23aefda39c38389530e9e73ba3fbcc8315d244d'
             'b5d9fcd62ffb3c3950fdeb7089ec2dc2294ac52e9861980ad90a437dedbd3d47'
             '4bdd5ceb13dbd4c41fde24163f16a0ba05447d821e74d938a0b9e5fce0431140'
-            '9f8921b2bacd69bde7ab0c3aff88c678d52c2a625c89264fb92184e7427b819b'
             '7df3f5cb5df7d2dfb17f4c9b5c5dedc9519ddce6f8d2c6cd43d1be17cecb65cb'
             'f34c2b0aa2ed4ab9c7e7bcab5197470c30fedc6c2148f337839dd24bceae35fd')
 
 _backports=(
+	'aa7c1322671eef48ba72d3b733da37e63eb37328'
+	'07318ee7e11a00b9c1dea4c6b4edf62af35a511a'
+	'ad7fb8e2e02bb1dd0475ead9919c1c82514d2ef8'
 )
 
 _reverts=(
@@ -140,9 +141,6 @@ prepare() {
 	# #79857 
 	# https://lists.gnu.org/archive/html/grub-devel/2023-09/msg00113.html
 	# https://savannah.gnu.org/bugs/?64514
-	echo "Patch to fo fix XFS incorrect short form directory data boundary check"
-	patch -Np1 -i "${srcdir}/0005-fix-xfs-boundary-check.patch"
-
 	echo "Patch to fix ntfs module security vulnerabilities"
 	patch -Np1 -i "${srcdir}/0004-ntfs-module-security.patch"
 
