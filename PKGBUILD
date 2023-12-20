@@ -2,7 +2,7 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=('llvm17' 'llvm17-libs')
-pkgver=17.0.5
+pkgver=17.0.6
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -15,13 +15,13 @@ _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkg
 source=($_source_base/llvm-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
         $_source_base/third-party-$pkgver.src.tar.xz{,.sig})
-b2sums=('9d00e77970b7e14f69b920c7ad7c63f9a7dca4f07ec74c1e36596f244cce65b32e39a45e9551f8ae46f064a0317f5eaa46ecbe0cebcb8e7b100b57f60fc9a69f'
+b2sums=('2d1305a7b059d6b425cbe560bc5b5764934bd690206ace1f50ab317972c5a380768a86f3542b27be299c12ab356099fe80876a57978c41d9131ec2a2e038f42c'
         'SKIP'
-        '3950b0701ab15bdeffcdf1b3658fd690f92f183f7399115a9906c91da8f0bd75b1c9a9a751bafd4da2304443cdba30387f0998073214f76bf372eeb97437f4ed'
+        'f95c1c951ba7bd943931bb18c8dc23ef0b3c20ee3dd254d458ab7a3339097fc0f9e11c3b892c352e3f5f131014265a6bb116f56c9ebd78408f05158a90f51d6b'
         'SKIP'
-        '8ee055699f933fc4c44cd502f6003e5976b073a66def5044b86d14636cc20232935f0f1304ad0da44a651b23301d79073a19f52a55817eb81c592e6fc0a5c765'
+        '98e7525ae1106bce37809b77bf23a75b7e3ea14fa31342bfe50e8da3532952254be2424aba7241850e8b7d97dc55c0da1162d31ae5485774b5902d521da449bd'
         'SKIP')
-validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
+validpgpkeys=('D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
 
 # Utilizing LLVM_DISTRIBUTION_COMPONENTS to avoid
 # installing static libraries; inspired by Gentoo
@@ -78,12 +78,13 @@ build() {
     -DLLVM_ENABLE_BINDINGS=OFF
     -DLLVM_ENABLE_FFI=ON
     -DLLVM_ENABLE_RTTI=ON
-    -DLLVM_ENABLE_SPHINX=OFF #
+    -DLLVM_ENABLE_SPHINX=OFF
     -DLLVM_HOST_TRIPLE=$CHOST
     -DLLVM_INCLUDE_BENCHMARKS=OFF
     -DLLVM_INSTALL_UTILS=ON
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_USE_PERF=ON
+    -DLLVM_INSTALL_GTEST=ON
     -DSPHINX_WARNINGS_AS_ERRORS=OFF
   )
 
