@@ -9,7 +9,7 @@
 # Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-core-git
-pkgver=r51467.a30c55f68a
+pkgver=r54176.fa92228b506
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
@@ -47,8 +47,6 @@ pkgver() {
 build() {
   cd "${srcdir}"/${pkgname}
   python -m build --wheel --no-isolation
-
-  make docs
 }
 
 package() {
