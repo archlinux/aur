@@ -1,7 +1,7 @@
 # Maintainer: éclairevoyant
 
 pkgname=bitwarden-cli-bin
-pkgver=2023.12.0
+pkgver=2023.12.1
 pkgrel=1
 pkgdesc='Bitwarden Command-line Interface'
 arch=(x86_64)
@@ -12,8 +12,8 @@ provides=(bitwarden-cli)
 conflicts=(bitwarden-cli)
 options=('!strip')
 source=("$url/releases/download/cli-v$pkgver/"bw-linux-{$pkgver.zip,sha256-$pkgver.txt})
-sha256sums=('2ac59071fbc7a39090b05a986bf9179c55f480b21564aa02aa83ad76303282fa'
-            '7c5d03f9f47304f52eee7b689fba9854c44a07e0e0e35fccdecced9dbb6cd82f')
+sha256sums=('ffea2c76c026a741ee6b7fe17e7385d4fe16e46edfd0cf685db2a50ca1d7b1e2'
+            '76feefab49830c4a88b6668b191f0657c8dfc2d4c30c29a63265a633327d82c6')
 
 prepare() {
 	sed -i "s/$/ bw-linux-$pkgver.zip/" bw-linux-sha256-$pkgver.txt
