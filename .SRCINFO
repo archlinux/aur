@@ -1,7 +1,7 @@
 pkgbase = proton
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
-	pkgver = 8.0.4.3
-	pkgrel = 3
+	pkgver = 8.0.5
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	install = proton.install
