@@ -16,9 +16,9 @@ arch=('any')
 url='https://github.com/ansible/ansible'
 license=('GPL3')
 depends=('python' 'python-yaml' 'python-paramiko' 'python-jinja' 'python-resolvelib')
-provides=('ansible-core' 'ansible-base' 'python-ansible')
-replaces=('ansible-core' 'ansible-base' 'python-ansible')
-conflicts=('ansible-core' 'ansible-base' 'python-ansible')
+provides=('ansible-core' 'python-ansible')
+replaces=('ansible-core' 'python-ansible')
+conflicts=('ansible-core' 'python-ansible')
 optdepends=('sshpass: for ssh connections with password'
             'python-passlib: crypt values for vars_prompt'
             'python-netaddr: for the ipaddr filter'
