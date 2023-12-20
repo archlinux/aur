@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=Development;
 Comment=A Clash GUI based on tauri.
-Exec=bash -c 'env GTK_USE_PORTAL=1 clash-nyanpasu'
+Exec=clash-nyanpasu
 Icon=clash-nyanpasu
 Name=Clash Nyanpasu
 Terminal=false
