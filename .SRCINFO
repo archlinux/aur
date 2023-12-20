@@ -1,6 +1,6 @@
 pkgbase = opentrace
 	pkgdesc = A cross-platform GUI wrapper for NextTrace. Bringing you the familiar traceroute experience.
-	pkgver = 1.4.0.0
+	pkgver = 1.4.2.1
 	pkgrel = 1
 	url = https://github.com/Archeb/opentrace
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = opentrace
 	makedepends = dotnet-sdk
 	depends = nexttrace
 	depends = dotnet-runtime
-	source = https://github.com/Archeb/opentrace/archive/refs/tags/v1.4.0.0.tar.gz
-	sha256sums = 5719d9ff2e891e6cdf81e0b9a333b9004fb2d7692fd6af334e9dde6bc78e980c
+	source = https://github.com/Archeb/opentrace/archive/refs/tags/v1.4.2.1.tar.gz
+	sha256sums = e7f39b83cf7307f8279191fb9212602a0585439995c179494386e0560d4e6013
 
 pkgname = opentrace
