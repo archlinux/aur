@@ -4,7 +4,7 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=6.12.0.173.r1404.5977f1ca545
+pkgver=6.12.0.205.r1487.89f1d3cc22f
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
@@ -88,7 +88,7 @@ prepare() {
     local submodule="external/${module}"
     git submodule init "${submodule}"
     git config "submodule.${submodule}.url" "${srcdir}/${module}"
-    git submodule update "${submodule}"
+    git -c protocol.file.allow=always submodule update "${submodule}"
   done
 }
 
