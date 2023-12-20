@@ -1,16 +1,15 @@
 pkgbase = sddm-old-breeze-theme
 	pkgdesc = Plasma 5.7 Breeze SDDM Theme
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sddm/sddm
 	install = sddm-old-breeze-theme.install
 	arch = any
 	license = CC-BY-SA
 	depends = sddm
-	source = https://github.com/gregodadone/sddm-old-breeze-theme/raw/master/breeze-5.7.tar.gz
+	source = https://github.com/gregodadone/sddm-old-breeze-theme/raw/main/breeze-5.7.tar.gz
 	source = sddm-old-breeze-theme.install
-	md5sums = 4be8292c5b47e8b59105334127afa4a8
+	md5sums = 9354b47e95d2159141ede75d3e56adec
 	md5sums = be5b8bb99f930776c91d580cd36f9cfe
 
 pkgname = sddm-old-breeze-theme
-
