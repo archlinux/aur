@@ -1,7 +1,7 @@
 # Maintainer: Miodrag Tokić
 
 pkgname=python-sqlglot
-pkgver=19.6.0
+pkgver=19.7.0
 pkgrel=1
 pkgdesc='An easily customizable SQL parser and transpiler'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tobymao/sqlglot/archive/v${pkgver}.tar.gz")
-sha256sums=('2fd39e18c84e7eb22f007f9246d02048155e1b0e920d0f10daee485c816b9a0d')
+sha256sums=('4c530e7083da321b29cfae1aada5eee0b4be3769ed9042f36c45cdfd81747c29')
 
 build() {
     cd "$srcdir/sqlglot-${pkgver}"
