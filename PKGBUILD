@@ -2,6 +2,7 @@
 pkgname=deskcal-bin
 _appname=Deskcal
 pkgver=1.0.6
+_electronversion=20
 pkgrel=6
 pkgdesc="An unofficial cross-platform desktop Google Calendar application."
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron18'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -20,8 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ab340f34a05895da69c61e1462b4b7d422e79b219633ed41f4e7d1a7ddf67d6a'
-            '8b86d12f9e2ab842a6137ab9a2949a2067ff748d70ae0c9d0cdccb863e73426f')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories "Utility" --name "Google ${_appname}" --exec "${pkgname%-bin}"
 }
 package() {

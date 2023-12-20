@@ -6,12 +6,12 @@ pkgbase = deskcal-bin
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
-	depends = electron18
+	depends = electron20
 	provides = deskcal=1.0.6
 	conflicts = deskcal
 	source = deskcal-1.0.6.zip::https://github.com/cognophile/Deskcal/releases/download/v1.0.6/Deskcal-linux-1.0.6.zip
 	source = deskcal.sh
 	sha256sums = ab340f34a05895da69c61e1462b4b7d422e79b219633ed41f4e7d1a7ddf67d6a
-	sha256sums = 8b86d12f9e2ab842a6137ab9a2949a2067ff748d70ae0c9d0cdccb863e73426f
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = deskcal-bin
