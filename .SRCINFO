@@ -1,7 +1,7 @@
 pkgbase = darkorbit-client-bin
 	pkgdesc = Open source darkorbit client (cross-platform and with better performance)
 	pkgver = 2.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kaiserdj/Darkorbit-client
 	arch = x86_64
 	license = AGPL3
@@ -22,6 +22,6 @@ pkgbase = darkorbit-client-bin
 	source = darkorbit-client-2.8.0.AppImage::https://github.com/kaiserdj/Darkorbit-client/releases/download/v2.8.0/DarkOrbit-Client-2.8.0.AppImage
 	source = darkorbit-client.sh
 	sha256sums = 36a64931d244c0524ce36288c191916374957006a1be81cbcff1d000a027c315
-	sha256sums = 821d0173bfe2cf7937fdf037be3b4d254100a813a5f3c258c377d6ad12cee20b
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = darkorbit-client-bin
