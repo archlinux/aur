@@ -1,13 +1,13 @@
 pkgbase = nexttrace
 	pkgdesc = An open source visual route tracking CLI tool
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/nxtrace/NTrace-core
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/nxtrace/NTrace-core.git#tag=v1.2.6
+	source = git+https://github.com/nxtrace/NTrace-core.git#tag=v1.2.7
 	sha256sums = SKIP
 
 pkgname = nexttrace
