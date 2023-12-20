@@ -1,0 +1,8 @@
+pkgbase = plutolang
+	pkgver = 0.7.4
+	pkgrel = 1
+	arch = x86_64
+	source = pluto-git::git+https://github.com/PlutoLang/Pluto#tag=0.7.4
+	sha256sums = SKIP
+
+pkgname = plutolang
