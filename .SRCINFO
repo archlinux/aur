@@ -1,0 +1,16 @@
+pkgbase = yyjson-git
+	pkgdesc = High performance C JSON library
+	pkgver = 0.8.0.r17.f1867b0
+	pkgrel = 1
+	url = https://ibireme.github.io/yyjson/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	provides = yyjson
+	conflicts = yyjson
+	source = git+https://github.com/ibireme/yyjson.git
+	b2sums = SKIP
+
+pkgname = yyjson-git
