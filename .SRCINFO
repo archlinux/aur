@@ -1,7 +1,7 @@
 pkgbase = boostchanger-bin
 	pkgdesc = With this app you can control CPU turbo boost and the settings of the cpu speed in order to consuming less battery voltage on Linux
 	pkgver = 5.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/nbebaw/boostchanger
 	arch = x86_64
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = boostchanger-bin
 	provides = boostchanger=5.0.3
 	conflicts = boostchanger
 	source = boostchanger-5.0.3.pacman::https://github.com/nbebaw/boostchanger/releases/download/v5.0.3/boostchanger-5.0.3.pacman
-	source = LICENSE::https://raw.githubusercontent.com/nbebaw/boostchanger/v5.0.3/LICENSE
+	source = LICENSE-5.0.3::https://raw.githubusercontent.com/nbebaw/boostchanger/v5.0.3/LICENSE
 	source = boostchanger.sh
 	sha256sums = 4f9d2239359802b2f0e3662556114a2c48a9f232064d6356f1a1501c7dd91726
 	sha256sums = af8aec94b8f5c88f4c4e4435570b94d143970c621048db7e25f27403fa4ec02e
-	sha256sums = d062213069b567babbf6989633dbfdfe88d7d5c645b78351cb2bd765358431a8
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = boostchanger-bin
