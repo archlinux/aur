@@ -1,23 +1,18 @@
 ### New professional features
 
-- Add support for Yubikey PKCS#11 identities for SSH connections
-- Add support for custom PKCS#11 libraries to use with SSH connections
-- Add support for the gpg-agent for SSH connections, e.g. for smart cards
+- Add ability to open files and directories in VSCode SSH remote environment in file browser
 
 ### Other changes
 
-- Add ESC and CTRL/CMD+W shortcuts to close dialog windows
-- Add support for JetBrains editors
-- Add support for docker versions <20
-- Add history button for file browser
-- Improve information display for docker containers
-- Properly update state of child connections on refresh
-- Fix SSH identity file chooser not opening up the correct system when using jump servers
-- Make git always use the native ssh client on Windows
-- Properly disable remote git storage during a session if a remote operation failed before
-- Show unavailable connection types when searching for connections automatically
-- Add ability to open compatible SSH connections in vscode
-- Fix some connections not being shared in a git repository even though they should
+- Optimize terminal launching performance. When no scripts, environment, or custom title/color are enabled for a connection,
+  it will now be instantly launched in a terminal without verifying the connection first.
+  This will speed up the process but will move any occurring errors into the terminal window.
+  It also fixes any login banners not being shown.
+- Improve error messages when an additional password was requested by the connection
+  when none was provided instead of just showing permission denied
+- Make SSH connection starting from a WSL environment use the native Windows key helper for FIDO2 keys
+- Automatically focus text field when showing askpass window
+- Fix connection state not being preserved when being added the first time
 
 ### Preview pro features
 
