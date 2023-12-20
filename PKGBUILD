@@ -2,13 +2,13 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=magick
-_pkgver=2.8.1
+_pkgver=2.8.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Advanced Graphics and Image-Processing in R"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(MIT)
 depends=(
   imagemagick
@@ -32,12 +32,12 @@ optdepends=(
   r-webp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1297730bf7e08b185ffc31bf7ea005c2')
-sha256sums=('d8fcd10e1817d42796102e85df05bb45fc8ced4c721b06fac37e61b6792b458e')
+md5sums=('9caa4c52db17cc5905422083d74cdf39')
+b2sums=('8740c445ac536d14569b3a7918fd061b66a5ffd6dbd525dfd22b7a89a4c56f4653c096162c1546036fe20f4a2f1e34e5a0a39b123ae080ad1f50f52d1533b0e2')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
