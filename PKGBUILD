@@ -2,7 +2,8 @@
 pkgname=subtitle-translator-electron-bin
 _pkgname=Subtitle-Translator
 pkgver=1.3.0
-pkgrel=1
+_electronversion=24
+pkgrel=2
 pkgdesc="Translate subtitle using ChatGPT"
 arch=('x86_64')
 url="https://github.com/gnehs/subtitle-translator-electron"
@@ -10,7 +11,7 @@ license=("custom")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron24'
+    "electron${_electronversion}"
     'gdk-pixbuf2'
     'libx11'
     'libdbusmenu-glib'
@@ -25,8 +26,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d3c30a6ad62b9fce68ca58308e268ca2147e0757ccf34c6b128ae647f3d7d4ca'
-            'f33ced8d2d781f25fb1e825b57a2c1e16942b0a3bd021840de63019a0e58b1cf')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
