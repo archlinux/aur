@@ -1,7 +1,7 @@
 pkgbase = chatgptx-bin
 	pkgdesc = A tray app for ChatGPT. Using this app you can easily access the ChatGPT from your system tray.
 	pkgver = 1.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/florindumitru/chatgpt-desktop-tray
 	arch = x86_64
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = chatgptx-bin
 	provides = chatgptx=1.0.1
 	conflicts = chatgptx
 	source = chatgptx-1.0.1.deb::https://github.com/florindumitru/chatgpt-desktop-tray/releases/download/v1.0.1/chatgptx_1.0.1_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/florindumitru/chatgpt-desktop-tray/v1.0.1/license
+	source = LICENSE-1.0.1::https://raw.githubusercontent.com/florindumitru/chatgpt-desktop-tray/v1.0.1/license
 	source = chatgptx.sh
 	sha256sums = 569172250abf0aafe7084a81997036f8ba39736912fff463c11fa1f2d8cf5b00
 	sha256sums = c4b2ddb85db30368f3e6c0ffb7ea3de437c72ea65504c2281cdb929bb920b670
-	sha256sums = 864f75743ea6e870e180458189854e6ff58693e552291cab8f5e80c49174f2ee
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = chatgptx-bin
