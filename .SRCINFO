@@ -1,6 +1,6 @@
 pkgbase = termius
 	pkgdesc = Desktop SSH Client
-	pkgver = 8.8.2
+	pkgver = 8.9.0
 	pkgrel = 1
 	url = https://www.termius.com/
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = termius
 	depends = util-linux-libs
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3
-	source = termius-8.8.2.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_175.snap
+	source = termius-8.9.0.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_177.snap
 	source = termius.desktop
 	source = tos.html
-	sha512sums = a74a4a233704348c2dd3ea6b298206308cc9247c76b7aa97e717db9980d754ed1cd6152ce7c89aac5b4aa3533e5b485136bdf73aba4a8770997fa237b457a32b
+	sha512sums = 620af7468b62e2d160b0f8708770451947f46f57d7ae3433ed4e6a3d53155201bcee87198939b3abfc995510b089ec9e3f9eb78791578d7f61cf830c07be3d68
 	sha512sums = f1ce576d42a624842c9d08807c11580421b708b4bd7fac3aa9874769735df87566012e8fc0f993b08618f31d2f38588cd83d8572a2700f35d42e2761984ca5d0
 	sha512sums = 6ac7c082d1adba92dd911f46f9926f702be0f92a9843e6252364477d81364569eeeee9b37170a6d9000fde644588734cb6a11d165fc0aff3dbfbcd6ad353ca96
 
