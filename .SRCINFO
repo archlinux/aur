@@ -1,0 +1,15 @@
+pkgbase = aqua-eap
+	pkgdesc = A powerful IDE for test automation by JetBrains.
+	pkgver = 233.13135.75
+	pkgrel = 1
+	epoch = 1
+	url = https://www.jetbrains.com/aqua
+	arch = any
+	license = custom
+	options = !strip
+	source = https://download-cdn.jetbrains.com/aqua/aqua-233.13135.75.tar.gz
+	source = aqua-eap.desktop
+	sha256sums = 2831fa44927f3ac3a88e6161ca6a410c65bc91548fb6135756e217b954c5acfa
+	sha256sums = f246e1ca271a49160a31107491c8b6b09a93ae4352ca928df3b16663967aa599
+
+pkgname = aqua-eap

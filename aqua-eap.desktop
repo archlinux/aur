@@ -1,0 +1,11 @@
+ [Desktop Entry]
+Name=Aqua EAP
+Version=1.0
+Type=Application
+Exec="/opt/aqua-eap/bin/aqua.sh" %f
+Icon=/opt/aqua-eap/bin/aqua.png
+Comment=A powerful IDE for test automation by JetBrains.
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-aqua
