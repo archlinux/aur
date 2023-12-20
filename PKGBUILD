@@ -15,7 +15,7 @@ if :; then
   _jsch_oldver='0.1.55'
   if :; then
     _JVM='/usr/lib/jvm/java-17-openjdk';  _JRE='jdk17-openjdk' # needed for all functionality of JSCH-0.2.0
-    _jsch_pkgver='0.2.13'
+    _jsch_pkgver='0.2.15'
     _jsch_srcdir="${_jsch_libname}-${_jsch_libname}-${_jsch_pkgver}"
     #_jsch_srcdir="${_jsch_libname}-${_jsch_srcdir}"
     _source=("https://github.com/mwiede/jsch/archive/refs/tags/${_jsch_libname}-${_jsch_pkgver}.tar.gz")
@@ -44,7 +44,7 @@ pkgname='mirthconnect'
 #pkgver='4.4.0.b2948'
 #pkgver='4.4.1.b310'
 pkgver='4.4.2.b326'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='hl7 connector by Nextgen'
 arch=('x86_64')
 # JSCH Updates https://github.com/mwiede/jsch/releases
@@ -74,15 +74,15 @@ source=(
 md5sums=('ebfbd7a1f2806e270ae2defcbf6d2351'
          '426de9435b21e90df7ae044510938270'
          'f1b18ae896b93be65a2e9b276f12c16f'
-         '0d5f86b3dabb39bff76f4899107cd4ac'
+         'f9c807d02d216ac4b1e6b56bf0a0acf0'
          'b9e1b8f9395622ba548d7fd07cfd7c26'
-         '15600619ce3917f4443ddf610d553da2')
+         '567897f379ea28623ec8aa83e4f5d2fb')
 sha256sums=('303bab13f6defaa0f3af16a474fb91b3c178c10b11a614aff5e78bc739032067'
             '4dc37b7ed9db5c9fcd74f45cd6197f6b631d74d3a30022bda6fda1c5900b7099'
             '254c858572a4949c09726859d3f790d7bee535b8dbea184e4f6679d3b7c3b269'
-            '3e4aa27e79c9f37f30162943002479cc441f47f58fc793a68c06438d2d13b88e'
+            '751d088eb00a2b41a4d320a23805fdbe75466ffb401b4099a8e0dd814adc9587'
             'f754da4581b5e390e13fc407ab9fc4cdc7f139585081929626be8569dae99ad9'
-            '28485f80f3a32ce73e063fb1efea9eef0df900f362ef8fae535b2f9ecb605088')
+            '1e0750b939776d6b537900dbd45ab9a942a71f16e9424637fbb31d6659e87f86')
 
 source+=(
   '0000-jsch-disable-md5-3des-cbc-dss-arcfour.patch'
