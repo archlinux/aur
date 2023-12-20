@@ -5,8 +5,8 @@
 
 _pkgname=reallymakepkg
 pkgname="${_pkgname}-git"
-pkgver="v1.0"
-pkgrel=2
+pkgver=v1.0+1+g18ea110
+pkgrel=1
 pkgdesc="System-independent makepkg"
 arch=(any)
 _repo="https://github.com"
@@ -20,7 +20,7 @@ makedepends=(
 provides=(
   "${_pkgname}=${pkgver}")
 conflicts=(
-  "${_pkgname}=${pkgver}")
+  "${_pkgname}")
 _url="file://${HOME}/${_pkgname}"
 source=(
   "git+${url}")
