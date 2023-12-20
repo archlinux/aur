@@ -1,6 +1,6 @@
 pkgbase = acmed
 	pkgdesc = An ACME (RFC 8555) client daemon
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/breard-r/acmed/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = acmed
 	optdepends = acmed-polkit-reload: polkit service reload rule
 	provides = acmed
 	backup = etc/acmed/acmed.toml
-	source = acmed-0.22.0.tar.gz::https://github.com/breard-r/acmed/archive/v0.22.0.tar.gz
-	sha256sums = 6e6262be877d553ccf1a481bf2772c6a056a98db281910b7ce6a722878ca777d
+	source = acmed-0.22.1.tar.gz::https://github.com/breard-r/acmed/archive/v0.22.1.tar.gz
+	sha256sums = 6476dd58acfd3dd01ca2bc04c9e96238000a95016babe241b26e90eedd6176a2
 
 pkgname = acmed
