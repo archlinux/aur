@@ -15,7 +15,7 @@ pkgdesc='Radically simple IT automation platform'
 arch=('any')
 url='https://github.com/ansible/ansible'
 license=('GPL3')
-depends=('python' 'python-yaml' 'python-paramiko' 'python-jinja' 'python-resolvelib')
+depends=('python' 'python-pyyaml' 'python-paramiko' 'python-jinja' 'python-resolvelib' 'python-typing-extensions')
 provides=('ansible-core' 'python-ansible')
 replaces=('ansible-core' 'python-ansible')
 conflicts=('ansible-core' 'python-ansible')
@@ -25,11 +25,19 @@ optdepends=('sshpass: for ssh connections with password'
             'python-systemd: log to journal'
             'python-pywinrm: connect to Windows machines'
             'python-dnspython: for dig lookup'
-            'python-jmespath: json_query support')
-makedepends=('python-setuptools' 'git')
+            'python-jmespath: json_query support'
+            'python-pip: for module to manage Python libarary dependencies'
+            'python-setuptools: for module to manage Python libarary dependencies')
+makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setuptools' 'python-straight.plugin' 'python-wheel' 'git')
 backup=('etc/ansible/ansible.cfg')
 source=($pkgname::git+https://github.com/ansible/ansible.git)
 sha512sums=('SKIP')
+
+prepare() {
+  cd "$pkgname"
+  # remove the resolvelib upper boundary (at least for < 0.9.0): https://github.com/ansible/ansible/pull/79399
+  sed -e 's/resolvelib.*/resolvelib/' -i requirements.txt
+}
 
 pkgver() {
   cd "$pkgname"
@@ -38,11 +46,17 @@ pkgver() {
 
 build() {
   cd "${srcdir}"/${pkgname}
-  python setup.py build
+  python -m build --wheel --no-isolation
+
+  make docs
 }
 
 package() {
   cd ${pkgname}
-  python setup.py install -O1 --root="${pkgdir}"
-  install -Dm644 COPYING "${pkgdir}"/usr/share/doc/${pkgname}/COPYING
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 COPYING -t "${pkgdir}"/usr/share/doc/${pkgname}/
+  install -Dm644 examples/ansible.cfg -t "${pkgdir}"/etc/ansible/
+  install -Dm644 examples/{ansible.cfg,hosts} -t "${pkgdir}"/usr/share/ansible/doc/examples/
+  install -Dm644 docs/man/man1/*.1 -t "${pkgdir}"/usr/share/man/man1/
 }
