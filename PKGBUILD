@@ -3,8 +3,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r100.4fd53f7
-pkgrel=2
+pkgver=r104.714d496
+pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-epoch"
@@ -13,6 +13,7 @@ depends=(
   'cage'
   'fontconfig'
   'greetd'
+  'gtk3'
   'gtk4'
   'libinput'
   'libglvnd'
@@ -142,7 +143,7 @@ prepare() {
   done
 
   # Use mold linker instead of lld
-  for f in cosmic-launcher/justfile cosmic-notifications/justfile cosmic-settings/justfile; do
+  for f in cosmic-launcher/justfile cosmic-notifications/justfile; do
     sed -i 's/lld/mold/g' "${f}"
   done
 
