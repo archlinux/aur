@@ -2,7 +2,7 @@
 
 pkgname=python-setuptools-git-ls-files-git
 pkgver=0.1.1.r1.g2327ed6
-pkgrel=1
+pkgrel=2
 pkgdesc='setuptools plugin to list all files tracked by git, recursing into submodules'
 url='https://github.com/anthrotype/setuptools_git_ls_files'
 license=('MIT')
@@ -20,6 +20,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
