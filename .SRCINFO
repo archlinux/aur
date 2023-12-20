@@ -9,10 +9,10 @@ pkgbase = ecency-surfer-bin
 	provides = ecency-surfer=3.0.35
 	conflicts = ecency-surfer
 	source = ecency-surfer-3.0.35.deb::https://github.com/ecency/ecency-vision/releases/download/3.0.35/ecency-surfer_3.0.35_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/ecency/ecency-vision/3.0.35/LICENSE
+	source = LICENSE-3.0.35::https://raw.githubusercontent.com/ecency/ecency-vision/3.0.35/LICENSE
 	source = ecency-surfer.sh
 	sha256sums = 95d6ef6078caef72715ce3e248d2e0be8dfbef9d996c3016f1f99902f7159879
 	sha256sums = 4f2d94ac09ba20ec3861cf9fbb2b52ee17592b64b6fb812f04d7b71417da494d
-	sha256sums = 67e9b32704965dac9b0e17b2eccc7e69c01e5432a890b8b9fc8bb77b6fe4ba89
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = ecency-surfer-bin
