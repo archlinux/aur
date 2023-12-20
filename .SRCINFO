@@ -1,19 +1,19 @@
 pkgbase = play-in-mpv
 	pkgdesc = Play Bilibili video in mpv player.
 	pkgver = 1.0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/diannaojiang/Bilibili-Playin-Mpv
 	arch = x86_64
-	license = custom
+	license = unknown
+	makedepends = gendesk
 	depends = xdg-utils
 	depends = mpv
-	provides = play-in-mpv
+	provides = play-in-mpv=1.0.4
 	conflicts = play-in-mpv
+	conflicts = playinmpv
 	options = !strip
 	options = !emptydirs
 	source = play-in-mpv-1.0.4.zip::https://github.com/diannaojiang/Bilibili-Playin-Mpv/releases/download/v1.0.4/Bilibili-Playin-Mpv.v1.0.Linux.x86_64.zip
-	source = play-in-mpv.desktop
 	sha256sums = 681505428d5703f91c414dfd8e6aab45221c96e072853bdfece6eaafa4f7b461
-	sha256sums = 122d9406677c0917dfa66eef7e2c23edf9014b28aea7c7463f900dceeebe4e6c
 
 pkgname = play-in-mpv
