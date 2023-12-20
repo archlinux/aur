@@ -1,0 +1,14 @@
+pkgbase = cargo-hakari
+	pkgdesc = Manage workspace-hack packages to speed up builds in large workspaces
+	pkgver = 0.9.14
+	pkgrel = 2
+	url = https://github.com/facebookincubator/cargo-guppy
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	depends = gcc-libs
+	source = cargo-hakari-0.9.14.tar.gz::https://github.com/facebookincubator/cargo-guppy/archive/cargo-hakari-0.9.14.tar.gz
+	sha512sums = 83fd807c65554fa2ad17ebea05286bb97951c370bdf1301ae993e6c6d48930e24ba0ce392940caa14782d4a464126a57afadcd9ddfaf8a2917c95e8c81e6941c
+
+pkgname = cargo-hakari
