@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 _APPDIR="/usr/lib/@appname@"
 _ASAR="${_APPDIR}/@appasar@"
