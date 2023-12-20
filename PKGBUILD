@@ -2,7 +2,7 @@
 
 pkgname=apk-editor-studio
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful yet easy to use APK editor"
 arch=('x86_64')
 url='https://qwertycube.com/apk-editor-studio'
@@ -27,14 +27,13 @@ build() {
   rm -rf build
   mkdir build
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake -B ./build -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="/usr/lib/qt"
-  cmake --build ./build --config Release
+  cmake -B ./build -DCMAKE_BUILD_TYPE=Release
+  cmake --build ./build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm755 build/bin/apk-editor-studio -t "${pkgdir}/usr/bin/"
-  install -Dm644 dist/linux/share/applications/* -t "${pkgdir}/usr/share/applications/"
-  cp -r dist/linux/share/icons/ "${pkgdir}/usr/share/"
+   cd "${pkgname}-${pkgver}"
+   cmake --install ./build --prefix="${pkgdir}/usr"
+   ln -s /usr/share/android-apktool/apktool.jar "${pkgdir}/usr/share/apk-editor-studio/tools/"
 }
 # vim:set ts=2 sw=2 et:
