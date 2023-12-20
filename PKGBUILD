@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=lintian
-pkgver=2.115.3
-pkgrel=2
+pkgver=2.116.3
+pkgrel=1
 pkgdesc="dissects Debian packages and tries to find bugs and policy violations"
 arch=(any)
 url="https://lintian.debian.org/"
@@ -71,7 +71,7 @@ makedepends=(
 optdepends=()
 options=('!emptydirs' purge)
 source=("https://salsa.debian.org/lintian/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('8472d63c95d6637de816676941b1666190d07fa87cb161eccb7d8635cbb8abffcc407ba985ae3c604c97e76a8891cfb98ac531140e86c24adf420c169c321056')
+sha512sums=('2c49bdbab7608c7c8e4f2cb6f92c478695b9af1bab9073ee1840b552c31d38408a0509463341f4805cac17a9d246e0ffe65391a9ae2d9d02ccc15f4da88b60c3')
 
 prepare() {
 	cd "$pkgname-$pkgver"
