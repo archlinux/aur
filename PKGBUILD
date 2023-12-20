@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=board4you-bin
 pkgver=1.0.6
-pkgrel=5
+_electronversion=23
+pkgrel=6
 pkgdesc="A whiteboard app built with Electron, React, react-icons, konva and bootstrap."
 arch=("x86_64")
 url="https://github.com/GachiLord/board4you"
@@ -9,7 +10,7 @@ license=("GPL3")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron23'
+    "electron${_electronversion}"
     'libx11'
     'gdk-pixbuf2'
     'libxext'
@@ -25,8 +26,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1aef780b30d0e45e460046c0c91119be5243918d027b98553a64a384604c9829'
-            'b284d97404bbfb24c2f48cd5b48325a78c9deba626bff139c2251a5e330d8e04')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
