@@ -4,14 +4,17 @@
 
 pkgname=python-rawpy
 _pkg="${pkgname#python-}"
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Python wrapper for the libraw library"
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/letmaik/rawpy"
 depends=('libraw' 'python-numpy')
-optdepends=('python-scikit-image' 'python-opencv')
+optdepends=(
+    'python-scikit-image: for rawpy.enhance'
+    'python-opencv: for rawpy.enhance'
+)
 makedepends=(
 	'cython'
 	'python-build'
@@ -20,9 +23,9 @@ makedepends=(
 	'python-sphinx'
 	'python-sphinx_rtd_theme'
 	'python-wheel')
-checkdepends=('python-pytest' 'python-imageio' 'python-scikit-image')
+checkdepends=('python-pytest' 'python-imageio' 'python-opencv')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a2d9b50697dc0bffc741d92c70dcf3b7ef3bdd4815b37a8377040b6ed21239e9')
+sha256sums=('8462cc19eec1d817a973d092bfe89ad1e3c9aa448037e1e7aac7e8c25c4562ff')
 
 build() {
 	cd "$_pkg-$pkgver"
@@ -33,7 +36,8 @@ build() {
 
 check() {
 	cd "$_pkg-$pkgver"
-	PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$_py" pytest --disable-warnings || true
+	PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$_py" \
+        pytest --disable-warnings || true
 }
 
 package() {
