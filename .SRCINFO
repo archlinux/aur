@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-gavl
+	pkgdesc = Low level library, upon which multimedia APIs can be built (mingw-w64)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://gmerlin.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://downloads.sourceforge.net/gmerlin/gavl-1.4.0.tar.gz
+	source = configure.patch
+	source = x86_64_cputest.patch
+	source = libtool.patch
+	sha256sums = 51aaac41391a915bd9bad07710957424b046410a276e7deaff24a870929d33ce
+	sha256sums = df2a64a3698856035c603bb28529208dc36b0d685c338a726c149d1157a6a0df
+	sha256sums = 86a7411fb43a6bb335661b1f38d6315efb3dc57cfafb274c911ee4a433837d1f
+	sha256sums = 7cc4329580294fbf62ec892acd56a43b4d914e86d534f658964a5b5ea256bf6e
+
+pkgname = mingw-w64-gavl

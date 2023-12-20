@@ -1,0 +1,33 @@
+diff -ruN gavl-1.4.0/configure patched/configure
+--- gavl-1.4.0/configure	2012-06-08 13:49:51.000000000 +0200
++++ patched/configure	2023-12-07 16:46:25.036667046 +0100
+@@ -11189,10 +11189,9 @@
+ $as_echo_n "checking for CLOCK_MONOTONIC... " >&6; }
+ 
+ if test "$cross_compiling" = yes; then :
+-  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+-as_fn_error "cannot run test program while cross compiling
+-See \`config.log' for more details." "$LINENO" 5; }
++  { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: warning: in \`$ac_pwd':" >&5
++printf "%s\n" "$as_me: warning: in \`$ac_pwd':" >&2;}
++printf "%s\n" "ignoring test program while cross compiling" >&6;}
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+diff -ruN gavl-1.4.0/configure.ac patched/configure.ac
+--- gavl-1.4.0/configure.ac	2012-06-08 13:49:47.000000000 +0200
++++ patched/configure.ac	2023-12-07 16:46:11.283333712 +0100
+@@ -177,8 +177,12 @@
+     HAVE_CLOCK_MONOTONIC="true"
+ 
+   ],
++  [
+     # program could not be run
+     AC_MSG_RESULT(no)
++  ],
++  [
++  ]
+ )
+ 
+ if test "x$HAVE_CLOCK_MONOTONIC" = "xtrue"; then

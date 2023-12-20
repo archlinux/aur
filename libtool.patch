@@ -1,0 +1,12 @@
+diff -ruN gavl-1.4.0/ltmain.sh patched/ltmain.sh
+--- gavl-1.4.0/ltmain.sh	2012-06-08 13:49:50.000000000 +0200
++++ patched/ltmain.sh	2023-12-07 23:10:44.283333945 +0100
+@@ -2560,7 +2560,7 @@
+     ;;
+   *ar\ archive*) # could be an import, or static
+     if eval $OBJDUMP -f $1 | $SED -e '10q' 2>/dev/null |
+-       $EGREP 'file format pe-i386(.*architecture: i386)?' >/dev/null ; then
++      $EGREP 'file format (pei*-i386(.*architecture: i386)?|pe-arm-wince|pe-x86-64)' >/dev/null; then
+       win32_nmres=`eval $NM -f posix -A $1 |
+ 	$SED -n -e '
+ 	    1,100{

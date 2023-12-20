@@ -1,0 +1,12 @@
+--- gavl-1.4.0/gavl/cputest.c	2012-06-08 13:49:47.000000000 +0200
++++ patched/gavl/cputest.c	2023-12-07 17:09:28.613333697 +0100
+@@ -65,7 +65,8 @@
+ 
+ int gavl_accel_supported()
+   {
+-#ifdef ARCH_X86
++//FIXME: 64 bit mingw throws an error
++#if defined(ARCH_X86) && !defined(ARCH_X86_64)
+      int rval = 0;
+     int eax, ebx, ecx, edx;
+     int max_std_level, max_ext_level, std_caps=0, ext_caps=0;
