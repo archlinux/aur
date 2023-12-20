@@ -4,7 +4,7 @@
 # Contributor: PedroHLC <root@pedrohlc.com>
 
 pkgname=gamescope
-pkgver=3.13.17
+pkgver=3.13.19
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -48,7 +48,7 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=9894245aa7a98063bf99fc78269d5d7a6f0a358b
+_tag=3e14ef9c37266b19ba77fbef467d1b8a77d827f2
 source=(
   git+https://github.com/ValveSoftware/gamescope.git#tag=${_tag}
   git+https://github.com/Joshua-Ashton/reshade.git
@@ -81,7 +81,8 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
+  DESTDIR="${pkgdir}" meson install -C build \
+    --skip-subprojects
   install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
 }
 
