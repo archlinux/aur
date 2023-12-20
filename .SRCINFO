@@ -1,7 +1,7 @@
 pkgbase = inethi-bin
 	pkgdesc = A GUI installer that can set up the iNethi Docker environment.
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.inethi.org.za/software/
 	arch = x86_64
 	license = custom
@@ -27,6 +27,6 @@ pkgbase = inethi-bin
 	source = inethi-1.0.1.deb::https://github.com/iNethi/inethi-network-builder/releases/download/1.0.1/inethi_1.0.1_amd64.deb
 	source = inethi.sh
 	sha256sums = 9e56a8eefe66574e99d04d198da338fc0577b2714450b1a61763d87b536e39dc
-	sha256sums = bb1bb91a1de21aee594d24a3e7e5883bc6f3ddf0269f52f16f376c84c4657a90
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = inethi-bin

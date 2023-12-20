@@ -1,16 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=inethi-bin
 pkgver=1.0.1
-pkgrel=2
+_electronversion=23
+pkgrel=3
 pkgdesc="A GUI installer that can set up the iNethi Docker environment."
 arch=("x86_64")
 url="https://www.inethi.org.za/software/"
-_githuburl="https://github.com/iNethi/inethi-network-builder"
+_ghurl="https://github.com/iNethi/inethi-network-builder"
 license=("custom")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron23'
+    "electron${_electronversion}"
     'python>=3'
     'python-lxml'
     'python-pytz'
@@ -29,12 +30,16 @@ depends=(
     'python-packaging'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9e56a8eefe66574e99d04d198da338fc0577b2714450b1a61763d87b536e39dc'
-            'bb1bb91a1de21aee594d24a3e7e5883bc6f3ddf0269f52f16f376c84c4657a90')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
     sed "s| %U||g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
