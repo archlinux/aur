@@ -1,6 +1,6 @@
 # Maintainer: Rodolphe Bréard <packages@what.tf>
 pkgname=acmed
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="An ACME (RFC 8555) client daemon"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('acmed-polkit-reload: polkit service reload rule')
 makedepends=('rust' 'cargo')
 backup=('etc/acmed/acmed.toml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/breard-r/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('1c5b023eb2593c9df878a341cf1cbded9b74c7c0bd738cc88529469ea65fe142')
+sha256sums=('6e6262be877d553ccf1a481bf2772c6a056a98db281910b7ce6a722878ca777d')
 
 build() {
   cd "${pkgname}-${pkgver}"
