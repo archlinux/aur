@@ -2,13 +2,13 @@ pkgbase = reallymakepkg-git
 	pkgdesc = System-independent makepkg
 	pkgver = 1
 	pkgrel = 2
-	url = https://gitlab.com/theamericancompany/reallymakepkg-git
+	url = https://github.com/themartiancompany/reallymakepkg-git
 	arch = any
 	license = AGPL3
 	makedepends = git
 	provides = reallymakepkg=1
 	conflicts = reallymakepkg=1
-	source = git+https://gitlab.com/theamericancompany/reallymakepkg-git
+	source = git+https://github.com/themartiancompany/reallymakepkg-git
 	sha256sums = SKIP
 
 pkgname = reallymakepkg-git

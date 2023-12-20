@@ -9,8 +9,8 @@ pkgver=1
 pkgrel=2
 pkgdesc="System-independent makepkg"
 arch=(any)
-_repo="https://gitlab.com"
-_ns="theamericancompany"
+_repo="https://github.com"
+_ns="themartiancompany"
 url="${_repo}/${_ns}/${pkgname}"
 license=(
   AGPL3)
