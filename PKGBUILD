@@ -2,7 +2,7 @@
 _repo=spark-wine
 _pkgname=spark-dwine-helper
 pkgname=$_pkgname-git
-pkgver=2.4.0.r7.fddb71e
+pkgver=2.5.r10.ed10de0
 pkgrel=1
 pkgdesc="Helper scripts from Spark Store to make deepin-wine perform better"
 arch=(any)
@@ -38,7 +38,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${_repo}/$_pkgname"
-	sed -i 's|/opt/durapps/transhell/transhell.sh|/usr/lib/transhell.sh|;s|/opt/durapps/|/usr/lib/|;s|#/bin/bash|#!/bin/bash|' \
+	sed -i 's|/opt/durapps/transhell/transhell.sh|/opt/bashimport/transhell.sh|;s|/opt/durapps/|/usr/lib/|;s|#/bin/bash|#!/bin/bash|' \
 		s-wine-helper/durapps/$_pkgname/scale-set-helper/set-wine-scale.sh \
 		$_settings $_deepinwine/tools/spark_run_v4.sh
 	sed -i 's|Exec=.*|Exec=/usr/bin/spark-dwine-helper-settings|' \

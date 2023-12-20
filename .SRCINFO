@@ -1,6 +1,6 @@
 pkgbase = spark-dwine-helper-git
 	pkgdesc = Helper scripts from Spark Store to make deepin-wine perform better
-	pkgver = 2.4.0.r7.fddb71e
+	pkgver = 2.5.r10.ed10de0
 	pkgrel = 1
 	url = https://gitee.com/deepin-community-store/spark-wine
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = spark-dwine-helper-git
 	depends = zenity
 	optdepends = noto-fonts-cjk: recommended fonts
 	optdepends = python2: required by spark_get_tray_window script
-	provides = spark-dwine-helper=2.4.0.r7.fddb71e
+	provides = spark-dwine-helper=2.5.r10.ed10de0
 	provides = spark-dwine-helper-settings
 	conflicts = spark-dwine-helper
 	source = git+https://gitee.com/deepin-community-store/spark-wine.git
