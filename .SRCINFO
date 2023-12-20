@@ -1,7 +1,7 @@
 pkgbase = distributionz-bin
 	pkgdesc = A simple tool to distribute Employees
 	pkgver = 1.1.4
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/TheDome/DistributionZ
 	arch = x86_64
 	license = Apache
@@ -19,6 +19,6 @@ pkgbase = distributionz-bin
 	source = distributionz-1.1.4.AppImage::https://github.com/TheDome/DistributionZ/releases/download/1.1.4/DistributionZ-1.1.4.AppImage
 	source = distributionz.sh
 	sha256sums = 657fc8ffdd9ed3e828a09e5498a7e01468e4e6bea36f3cde7525b53d5ea483a9
-	sha256sums = a6f7829317aa22aa46f8c2db01d31b1634807e6e8d9759ad15b390bdcf48eb2b
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = distributionz-bin

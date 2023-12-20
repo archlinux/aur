@@ -2,7 +2,8 @@
 pkgname=distributionz-bin
 _pkgname=DistributionZ
 pkgver=1.1.4
-pkgrel=6
+_electronversion=22
+pkgrel=7
 pkgdesc="A simple tool to distribute Employees"
 arch=('x86_64')
 url="https://github.com/TheDome/DistributionZ"
@@ -10,7 +11,7 @@ license=('Apache')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron22'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'libx11'
     'gdk-pixbuf2'
@@ -27,8 +28,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('657fc8ffdd9ed3e828a09e5498a7e01468e4e6bea36f3cde7525b53d5ea483a9'
-            'a6f7829317aa22aa46f8c2db01d31b1634807e6e8d9759ad15b390bdcf48eb2b')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
