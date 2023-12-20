@@ -1,7 +1,7 @@
 pkgbase = lumen-bin
 	pkgdesc = A simple and modulable personal assistant built on Electron.
 	pkgver = 1.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/L-U-M-E-N/lumen-desktop
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = lumen-bin
 	source = lumen-1.2.2.zip::https://github.com/L-U-M-E-N/lumen-desktop/releases/download/1.2.2/Project.L.U.M.E.N.-linux-x64.zip
 	source = lumen.sh
 	sha256sums = 37e1d2848757207cf3bb29fe43fe63e1791e31211eb9f5f1a209828653818843
-	sha256sums = f39de6b616aa7863b854378efd0367f8d29df1b2f1619a6f3be10a5b03ed4836
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = lumen-bin
