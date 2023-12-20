@@ -11,19 +11,12 @@ makedepends=(meson git)
 provides=(chr-editor)
 conflicts=(chr-editor)
 options=(strip)
-source=("git+https://github.com/istoph/editor.git"
-        "meson-install.patch")
-sha512sums=('SKIP'
-            'e400d64cf6ef5eb0a0935a716cf64a9a7a498532c42b9c46f4014f970efee4ae519cbeacabe9edd2f6c767232733613a8e7b9ca22b5a96642654653ed509c486')
+source=("git+https://github.com/istoph/editor.git")
+sha512sums=('SKIP')
 
 pkgver() {
     cd "editor"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "editor"
-    patch --forward --strip=1 --input="${srcdir}/meson-install.patch"
 }
 
 build() {

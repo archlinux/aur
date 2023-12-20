@@ -15,8 +15,6 @@ pkgbase = chr-editor-git
 	conflicts = chr-editor
 	options = strip
 	source = git+https://github.com/istoph/editor.git
-	source = meson-install.patch
 	sha512sums = SKIP
-	sha512sums = e400d64cf6ef5eb0a0935a716cf64a9a7a498532c42b9c46f4014f970efee4ae519cbeacabe9edd2f6c767232733613a8e7b9ca22b5a96642654653ed509c486
 
 pkgname = chr-editor-git
