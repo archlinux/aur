@@ -1,0 +1,9 @@
+pkgbase = jprq
+	pkgdesc = This is a free and open tool for exposing local servers to public network (the internet)
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/azimjohn/jprq/releases/download/2.2/jprq-darwin-amd64
+	arch = any
+	license = MIT
+
+pkgname = jprq
