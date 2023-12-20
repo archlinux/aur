@@ -1,4 +1,5 @@
-# Maintainer: Sam Guymer <sam at guymer dot me>
+# Maintainer: Maddie Mewmews <maddie at mewmews gay>
+# Contributor: Sam Guymer <sam at guymer dot me>
 
 _java_ver=8
 _jdkname="zing-${_java_ver}"
