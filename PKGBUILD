@@ -4,8 +4,8 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
-pkgver=5.4.0
-pkgrel=4
+pkgver=5.4.1
+pkgrel=1
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-22_04-x86-64'
@@ -53,7 +53,7 @@ EOF
 }
 
 package() {
-  cd "$srcdir" || exit 1
+  cd "$srcdir"
 
   # Let's be more verbose if standard output is a TTY:
   test -t 1 && _verbose='v' || _verbose=''
@@ -66,18 +66,8 @@ package() {
 }
 
 sha256sums=(
-  '530baf45dd705cd66d8efb3ab55c6ab668eb10dfc17fe8ccd571dd6710eb4278'
+  '38d85f8566e4c400a76c8f0ea5b94b769531d39b476dcd8127f5f3316b1dd859'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
-
-# 🪷 Beyond the Known — 365 Days of Exploration
-#
-# 📆 9th December
-#
-# Just look. See what is there within you; it is within us all.
-#
-# It is already right there, as plain as the nose on your face.
-#
-# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
