@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour-git
-pkgver=0.4.0.r4186.6df0a2f9
+pkgver=0.4.1.r4233.59c748ff
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
@@ -10,11 +10,9 @@ license=('Apache-2.0')
 depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-declarative' 'qt6-multimedia'
          'qt6-shadertools' 'qt6-wayland' 'qt6-5compat' 'libutempter')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
-             'python' 'range-v3' 'fmt' 'microsoft-gsl')
-source=("${pkgname}::git+https://github.com/contour-terminal/contour.git"
-        embed-catch2.patch)
-sha512sums=('SKIP'
-            '653e6381240f4682157e9ddcd64f0577e31ab6d14e41368b74b4eb7caac1769040247b549f2b2d2d5e0c3b3f3badc99f6228d1f53b8d549cb2fb35c23a1c51e9')
+             'python' 'range-v3' 'fmt' 'microsoft-gsl' 'catch2')
+source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")
+sha512sums=('SKIP')
 provides=('contour')
 conflicts=('contour')
 options=(!strip)
@@ -24,13 +22,6 @@ pkgver() {
   _pkgver="$(xmllint --xpath 'string(/component/releases/release[1]/@version)' metainfo.xml)"
 
   printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-
-  # embed catch2, due to outdated version in arch repos.
-  patch -Np1 -i ../embed-catch2.patch
 }
 
 build() {
