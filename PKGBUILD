@@ -2,7 +2,7 @@
 _srcname=SpeedReader
 pkgname=${_srcname,,}
 pkgver=1.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross-platform speed reading developed with Qt"
 url="http://www.vanniktech.de/${_srcname}"
 arch=('x86_64' 'i686')
