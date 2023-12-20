@@ -1,9 +1,9 @@
-diff --color --unified --recursive --text firefox-120.0.orig/widget/gtk/GfxInfo.cpp firefox-120.0.new/widget/gtk/GfxInfo.cpp
---- firefox-120.0.orig/widget/gtk/GfxInfo.cpp	2023-11-21 19:14:51.372690813 +0100
-+++ firefox-120.0.new/widget/gtk/GfxInfo.cpp	2023-11-21 19:22:55.458453940 +0100
-@@ -974,37 +974,6 @@
-         DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0),
-         "FEATURE_FAILURE_WEBRENDER_MESA_VM", "");
+diff --color --unified --recursive --text firefox-121.0.orig/widget/gtk/GfxInfo.cpp firefox-121.0.new/widget/gtk/GfxInfo.cpp
+--- firefox-121.0.orig/widget/gtk/GfxInfo.cpp	2023-12-20 14:07:03.535557519 +0100
++++ firefox-121.0.new/widget/gtk/GfxInfo.cpp	2023-12-20 14:07:43.125580785 +0100
+@@ -981,37 +981,6 @@
+         nsIGfxInfo::FEATURE_BLOCKED_DEVICE, DRIVER_COMPARISON_IGNORED,
+         V(0, 0, 0, 0), "FEATURE_FAILURE_WEBGL_MESA_VM", "");
  
 -    ////////////////////////////////////
 -    // FEATURE_WEBRENDER_COMPOSITOR
@@ -39,7 +39,7 @@ diff --color --unified --recursive --text firefox-120.0.orig/widget/gtk/GfxInfo.
      // Disable on all AMD devices not using Mesa.
      APPEND_TO_DRIVER_BLOCKLIST_EXT(
          OperatingSystem::Linux, ScreenSizeStatus::All, BatteryStatus::All,
-@@ -1015,23 +984,6 @@
+@@ -1022,23 +991,6 @@
  
      ////////////////////////////////////
      // FEATURE_DMABUF
@@ -63,7 +63,7 @@ diff --color --unified --recursive --text firefox-120.0.orig/widget/gtk/GfxInfo.
  
      ////////////////////////////////////
      // FEATURE_DMABUF_SURFACE_EXPORT
-@@ -1073,14 +1025,6 @@
+@@ -1080,14 +1032,6 @@
          V(21, 0, 0, 0), "FEATURE_HARDWARE_VIDEO_DECODING_MESA",
          "Mesa 21.0.0.0");
  
@@ -78,7 +78,7 @@ diff --color --unified --recursive --text firefox-120.0.orig/widget/gtk/GfxInfo.
      // Disable on all AMD devices not using Mesa.
      APPEND_TO_DRIVER_BLOCKLIST_EXT(
          OperatingSystem::Linux, ScreenSizeStatus::All, BatteryStatus::All,
-@@ -1122,15 +1066,6 @@
+@@ -1129,15 +1073,6 @@
          "FEATURE_HARDWARE_VIDEO_ZERO_COPY_LINUX_AMD_DISABLE", "Mesa 23.1.1.0");
  
      ////////////////////////////////////
@@ -94,7 +94,7 @@ diff --color --unified --recursive --text firefox-120.0.orig/widget/gtk/GfxInfo.
  
      APPEND_TO_DRIVER_BLOCKLIST_EXT(
          OperatingSystem::Linux, ScreenSizeStatus::All, BatteryStatus::All,
-@@ -1139,24 +1074,6 @@
+@@ -1146,24 +1081,6 @@
          DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0),
          "FEATURE_FAILURE_THREADSAFE_GL_NOUVEAU", "");
  
