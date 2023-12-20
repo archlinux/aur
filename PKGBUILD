@@ -1,4 +1,4 @@
-# Maintainer: Lift <clairdesoleil123@gmail.com>
+# Maintainer: snowiemischief <clairdesoleil123@gmail.com>
 
 pkgname=aqua-eap
 pkgver=233.13135.75
