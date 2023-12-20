@@ -4,7 +4,7 @@
 
 pkgname=clang17
 pkgver=17.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="C language family frontend for LLVM 17"
 arch=('x86_64')
 url="https://clang.llvm.org/"
@@ -86,6 +86,7 @@ build() {
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src"
     -DSPHINX_WARNINGS_AS_ERRORS=OFF
+    -DLLVM_INCLUDE_TESTS=OFF
   )
 
   cmake .. "${cmake_args[@]}"
