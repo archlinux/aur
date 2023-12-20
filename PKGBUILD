@@ -2,7 +2,7 @@
 # Contributor: Jonian Guveli <https://github.com/jonian/>
 pkgname=python-gtts
 _name=gTTS
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Python library and CLI tool to interface with Google Translate's text-to-speech API"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-click' 'python-requests')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest-cov' 'python-testfixtures')
 source=("$_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a41eb4bc1fa91174159f65ba9ba2225a7733bf16eb3c8c53aef9b225ccffa235')
+sha256sums=('58d086e9122f1d520ac2ce74f0e0b9da4ddbf0ffa325339c04cfdf0e875d4fea')
 
 build() {
   cd "$_name-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = python-gtts
 	pkgdesc = Python library and CLI tool to interface with Google Translate's text-to-speech API
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/pndurette/gTTS
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-gtts
 	makedepends = python-wheel
 	depends = python-click
 	depends = python-requests
-	source = gTTS-2.4.0.tar.gz::https://github.com/pndurette/gTTS/archive/v2.4.0.tar.gz
-	sha256sums = a41eb4bc1fa91174159f65ba9ba2225a7733bf16eb3c8c53aef9b225ccffa235
+	source = gTTS-2.5.0.tar.gz::https://github.com/pndurette/gTTS/archive/v2.5.0.tar.gz
+	sha256sums = 58d086e9122f1d520ac2ce74f0e0b9da4ddbf0ffa325339c04cfdf0e875d4fea
 
 pkgname = python-gtts
