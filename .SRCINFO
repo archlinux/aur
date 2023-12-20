@@ -1,7 +1,7 @@
 pkgbase = colorpicker-app-bin
 	pkgdesc = A mininal but complete colorpicker desktop app
 	pkgver = 2.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://colorpicker.fr/
 	arch = x86_64
 	license = GPL3
@@ -20,6 +20,6 @@ pkgbase = colorpicker-app-bin
 	source = colorpicker-app-2.2.0.AppImage::https://github.com/Toinane/colorpicker/releases/download/2.2.0/Colorpicker-2.2.0.AppImage
 	source = colorpicker-app.sh
 	sha256sums = 791495d718a2245294bda7ed431353a8b3f24d8f6b586fed104783aa85fe58a2
-	sha256sums = eef5c9288e15453359e3a7f7327c0b7e08166af0aaaa40f9a5a9b71ca9d2277c
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = colorpicker-app-bin
