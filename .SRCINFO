@@ -1,8 +1,8 @@
 pkgbase = jdprocessfilewatcher
 	pkgdesc = Effortlessly monitor and display real-time file access for any process
 	pkgver = 1.1
-	pkgrel = 1
-	url = https://jakobdev.codeberg.page/work/app/jdAppStreamEdit
+	pkgrel = 2
+	url = https://jakobdev.codeberg.page/work/app/jdProcessFileWatcher
 	arch = any
 	license = GPL3
 	makedepends = qt5-tools

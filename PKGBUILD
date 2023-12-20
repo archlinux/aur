@@ -1,9 +1,9 @@
 pkgname=jdprocessfilewatcher
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Effortlessly monitor and display real-time file access for any process"
 arch=("any")
-url="https://jakobdev.codeberg.page/work/app/jdAppStreamEdit"
+url="https://jakobdev.codeberg.page/work/app/jdProcessFileWatcher"
 license=("GPL3")
 depends=("python"  "python-pyqt6" "python-desktop-entry-lib" "strace" "polkit")
 makedepends=("qt5-tools"  "python-build" "python-setuptools" "python-installer" "python-wheel")
