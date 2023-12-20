@@ -4,7 +4,8 @@
 pkgname=easyconnect
 _pkgname=EasyConnect
 pkgver=7.6.7.3
-pkgrel=6
+_electronversion=2
+pkgrel=7
 _pangover=1.42.4
 pkgdesc="Support access to ssl vpn. With easyconect,you can secure and speed up connection to cooperate network at ease!"
 arch=('x86_64')
@@ -18,7 +19,6 @@ conflicts=(
     "${pkgname}-cas"
 )
 depends=(
-    'dbus'
     'dbus-glib'
     'libxrender'
     'nss'
@@ -57,27 +57,31 @@ source=(
     "${pkgname}-${pkgver}.deb::https://download.sangfor.com.cn/download/product/sslvpn/pkg/linux_767/${_pkgname}_x64_${pkgver//./_}.deb"
     "pango-${_pangover}.tar.xz::https://download.gnome.org/sources/pango/${_pangover%.4}/pango-${_pangover}.tar.xz"
     "LICENSE"
+    "${pkgname%-bin}.sh"
 )
 sha256sums=('ae623c6dc0354ff87afefbb770de5013bfd943051c9a653b93db708253b2f0d3'
             '1d2b74cd63e8bd41961f2f8d952355aa0f9be6002b52c8aa7699d9f5da597c9d'
-            'b4b0db5e577c1b565a7f065ce8f9a4f9622b673fbcffa27ccbaf68f061a67a68')
-prepare() {
+            'b4b0db5e577c1b565a7f065ce8f9a4f9622b673fbcffa27ccbaf68f061a67a68'
+            'ef6b9125a73803152843f25565b1c9ab65e0b1b2a92f8f8cc1d94ef1751b7ad8')
+build() {
+    sed -e "s|@appname@|sangfor|g" \
+        -e "s|@runpath@|${_pkgname}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.gz"
     bsdtar -xf "${srcdir}/pango-${_pangover}.tar.xz"
-    sed "s|Exec=|Exec=env LD_LIBRARY_PATH=/usr/share/sangfor/${_pkgname}/oldlib/pango/usr/lib |g" \
-        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-}
-build() {
     cd "${srcdir}/pango-${_pangover}"
     ./configure --prefix=/usr
-    make -j4 && make DESTDIR="${srcdir}/oldlib/pango" install
+    make -j4 && make DESTDIR="${srcdir}/pango" install
+    sed "s|/usr/share/sangfor/${_pkgname}/${_pkgname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/etc/init/EasyMonitor.conf" -t "${pkgdir}/etc/init"
     install -Dm644 "${srcdir}/usr/lib/systemd/system/EasyMonitor.service" -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" -t "${pkgdir}/usr/share/pixmaps"
     cp -r "${srcdir}/usr/share/sangfor" "${pkgdir}/usr/share"
-    cp -r "${srcdir}/oldlib" "${pkgdir}/usr/share/sangfor/${_pkgname}"
+    cp -r "${srcdir}/pango/usr/lib" "${pkgdir}/usr/share/sangfor/${_pkgname}"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
