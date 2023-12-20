@@ -1,15 +1,15 @@
 #Maintainer Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="mylibrary"
-pkgver="2.2.2"
+pkgver="2.3"
 pkgrel="1"
 pkgdesc="Home librarian"
 arch=('x86_64')
 provides=("${pkgname}")
-source=("https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v2.2.2.tar.gz")
+source=("https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v2.3.tar.gz")
 url="https://github.com/ProfessorNavigator/mylibrary"
 makedepends=('meson' 'pkgconf' 'gcc')
-depends=('gtkmm-4.0' 'libzip' 'icu' 'libgcrypt' 'gmp' 'poppler' 'djvulibre' 'libarchive')
-sha256sums=('5e41fb9b30e7f9a5b9d3c86ccd43f2629f296ab2206878d4a17ce26c3e723205')
+depends=('gtkmm-4.0' 'libzip' 'icu' 'libgcrypt' 'poppler' 'djvulibre' 'libarchive')
+sha256sums=('97dc78f69fc457bc72b5726479702061c3c15938d71045c85ad872730c97a7c8')
 
 build() {   
    mkdir -p $srcdir/builddir

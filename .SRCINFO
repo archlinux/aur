@@ -1,6 +1,6 @@
 pkgbase = mylibrary
 	pkgdesc = Home librarian
-	pkgver = 2.2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/ProfessorNavigator/mylibrary
 	arch = x86_64
@@ -11,12 +11,11 @@ pkgbase = mylibrary
 	depends = libzip
 	depends = icu
 	depends = libgcrypt
-	depends = gmp
 	depends = poppler
 	depends = djvulibre
 	depends = libarchive
 	provides = mylibrary
-	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v2.2.2.tar.gz
-	sha256sums = 5e41fb9b30e7f9a5b9d3c86ccd43f2629f296ab2206878d4a17ce26c3e723205
+	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v2.3.tar.gz
+	sha256sums = 97dc78f69fc457bc72b5726479702061c3c15938d71045c85ad872730c97a7c8
 
 pkgname = mylibrary
