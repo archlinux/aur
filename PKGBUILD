@@ -4,12 +4,12 @@
 
 pkgname=ums-headless
 pkgver=13.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems."
 arch=('i686' 'x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url="https://www.universalmediaserver.com/"
 license=('GPL2')
-depends=('java-runtime')
+depends=('java-runtime-headless')
 makedepends=("unzip")
 conflicts=('ums')
 provides=('ums')
