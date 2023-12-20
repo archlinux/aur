@@ -1,7 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chrolog-bin
+_pkgname=Chrolog
 pkgver=1.7.2
-pkgrel=1
+_electronversion=27
+pkgrel=2
 pkgdesc="An automated time tracking tool"
 arch=("x86_64")
 url="https://github.com/Lukylix/Chrolog"
@@ -9,7 +11,7 @@ license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron27'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 makedepends=(
@@ -20,9 +22,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('22836edb420c9be81348961d3d744e65464965faa20032964c8447e82fe81a3a'
-            'c0a36510a6446814e81b7643d4166064420267906f620d7e608948da811ce731')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
-    gendesk -q -f -n --categories "Utility" --name "Chrolog" --exec "${pkgname%-bin}"
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
