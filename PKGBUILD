@@ -1,11 +1,11 @@
 # Maintainer: Antheas Kapenekakis <aur at antheas dot dev>
 pkgname=hhd
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Handheld Daemon. A tool for managing the quirks of handheld devices.'
 arch=('x86_64')
 url='https://github.com/antheas/hhd'
-license=('APACHE')
+license=('MIT')
 depends=('python' python-setuptools 'python-evdev' 'python-rich' 'python-yaml')
 provides=('hhd')
 # optdepends=('hhd-user: allows running as a user service')
