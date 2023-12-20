@@ -7,7 +7,7 @@
 
 pkgname=chromium-wayland-vaapi
 pkgver=120.0.6099.109
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
 pkgdesc="Chromium, patched to enable VA-API video decoding on the Ozone Wayland backend"
@@ -33,12 +33,14 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         libxml2-2.12.patch
+        icu-74.patch
         drop-flags-unsupported-by-clang16.patch
         use-oauth2-client-switches-as-default.patch)
 sha256sums=('87c00c525ee07c2233b78dbece1496b697f686244a67fac2c71e4a30bd96849b'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2'
             '1808df5ba4d1e2f9efa07ac6b510bec866fa6d60e44505d82aea3f6072105a71'
+            'ff9ebd86b0010e1c604d47303ab209b1d76c3e888c423166779cefbc22de297f'
             '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
@@ -124,6 +126,9 @@ prepare() {
 
   # Upstream fixes
   patch -Np1 -i ../libxml2-2.12.patch
+
+  # Fix build with ICU 74
+  patch -Np1 -i ../icu-74.patch
 
   # Drop compiler flags that need newer clang
   patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
