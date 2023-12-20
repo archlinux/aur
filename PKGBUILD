@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=yuzu
-pkgver=1641
+pkgver=1657
 pkgrel=1
 pkgdesc='Nintendo Switch emulator'
 arch=(x86_64)
@@ -19,7 +19,6 @@ depends=(
   libboost_context.so
   libcrypto.so
   libfmt.so
-  libINIReader.so
   libopus.so
   libspeexdsp.so
   libssl.so
@@ -28,9 +27,9 @@ depends=(
   libva.so
   libzstd.so
   lz4
-  qt6-base
-  qt6-multimedia
-  qt6-webengine
+  qt5-base
+  qt5-multimedia
+  qt5-webengine
   sdl2
   zlib
 )
@@ -38,18 +37,19 @@ makedepends=(
   boost
   clang
   cmake
+  ffmpeg
   git
   glslang
   llvm
   ninja
   nlohmann-json
-  qt6-tools
+  qt5-tools
   shaderc
   spirv-headers
   vulkan-headers
 )
 options=(!debug)
-_tag=cf42a4a716606ed224f9bed05d9009317cc35a42
+_tag=3cff46c983b4e256f13269fdebc25d766c995e72
 source=(
   git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${_tag}
   git+https://github.com/arsenm/sanitizers-cmake.git
@@ -61,12 +61,14 @@ source=(
   yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
   git+https://github.com/brofield/simpleini.git
   yuzu-sirit::git+https://github.com/yuzu-emu/sirit.git
+  git+https://github.com/KhronosGroup/SPIRV-Headers.git
   git+https://github.com/eggert/tz.git
   git+https://github.com/lat9nq/tzdb_to_nx.git
   git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
   git+https://github.com/herumi/xbyak.git
 )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -105,6 +107,11 @@ prepare() {
   git config submodule.externals/tz/tz.url "${srcdir}"/tz
   git -c protocol.file.allow=always submodule update
   popd
+
+  pushd externals/sirit
+  git config submodule.externals/SPIRV-Headers.url "${srcdir}"/SPIRV-Headers
+  git -c protocol.file.allow=always submodule update
+  popd
 }
 
 pkgver() {
@@ -113,13 +120,14 @@ pkgver() {
 }
 
 build() {
+  export CXXFLAGS+=' -Wno-switch'
   cmake -S yuzu-mainline -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
     -DBUILD_TAG=${pkgver} \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
-    -DENABLE_QT6=ON \
+    -DENABLE_QT6=OFF \
     -DENABLE_QT_TRANSLATION=ON \
     -DENABLE_SDL2=ON \
     -DENABLE_WEB_SERVICE=ON \
@@ -128,6 +136,7 @@ build() {
     -DTITLE_BAR_FORMAT_RUNNING="yuzu | ${pkgver} | {}" \
     -DUSE_DISCORD_PRESENCE=OFF \
     -DYUZU_CHECK_SUBMODULES=OFF \
+    -DYUZU_DOWNLOAD_TIME_ZONE_DATA=ON \
     -DYUZU_USE_BUNDLED_FFMPEG=OFF \
     -DYUZU_USE_BUNDLED_QT=OFF \
     -DYUZU_USE_BUNDLED_SDL2=OFF \
@@ -144,6 +153,7 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 yuzu-mainline/dist/72-yuzu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 }
 
 # vim: ts=2 sw=2 et:
