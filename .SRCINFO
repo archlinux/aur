@@ -1,6 +1,6 @@
 pkgbase = mkpkg
 	pkgdesc = Tool to rebuild packages based on dependency triggers
-	pkgver = 4.9.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/gene-git/Arch-mkpkg
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = mkpkg
 	depends = pyalpm
 	depends = python-tomli
 	depends = python-tomli-w
-	source = git+https://github.com/gene-git/Arch-mkpkg#tag=4.9.0
+	source = git+https://github.com/gene-git/Arch-mkpkg#tag=5.0.0
 	sha512sums = SKIP
 
 pkgname = mkpkg
