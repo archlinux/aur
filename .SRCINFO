@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-xerces-c-icu
 	pkgdesc = A validating XML parser written in a portable subset of C++ (ICU) (mingw-w64)
-	pkgver = 3.2.4
+	pkgver = 3.2.5
 	pkgrel = 1
 	url = http://xerces.apache.org/xerces-c/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-xerces-c-icu
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = xerces-c-3.2.4.tar.gz::https://github.com/apache/xerces-c/archive/v3.2.4.tar.gz
-	sha256sums = 8dfaa30d6a641bda113625ef65e43c433e8ffd94fadd3b8d39dfe6faf450f26d
+	source = xerces-c-3.2.5.tar.gz::https://github.com/apache/xerces-c/archive/v3.2.5.tar.gz
+	sha256sums = 4042f6f11c9eba745dc0e5f8035d98b442097ee4efc69e4853410e4737a987f8
 
 pkgname = mingw-w64-xerces-c-icu
