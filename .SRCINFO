@@ -1,7 +1,7 @@
 pkgbase = xcp
 	pkgdesc = An extended 'cp'
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tarka/xcp
 	arch = i686
 	arch = x86_64

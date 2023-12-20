@@ -3,7 +3,7 @@
 
 pkgname='xcp'
 pkgver='0.16.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="An extended 'cp'"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/tarka/xcp'
@@ -26,7 +26,8 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
-  cargo test --release --locked
+  # reflink tests are currently broken on ext4
+  cargo test --release --locked --features test_no_reflink
 }
 
 package() {
