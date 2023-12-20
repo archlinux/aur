@@ -16,8 +16,10 @@ pkgbase = xplist-bin
 	conflicts = xplist
 	options = !strip
 	source = xplist-1.2.47.AppImage::https://github.com/ic005k/Xplist/releases/download/1.2.47/Xplist-Linux-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/ic005k/Xplist/1.2.47/LICENSE
+	source = LICENSE-1.2.47::https://raw.githubusercontent.com/ic005k/Xplist/1.2.47/LICENSE
+	source = xplist.sh
 	sha256sums = 9319fd1f4ccda8abe34ab18390f3cd81d69c442c5030f7583e59c8bc4c1395eb
 	sha256sums = 3515a1c9e2ce8df51e80f0a03a0ffca92430c7dca6989ff20b16031d676a652b
+	sha256sums = 12e9126d4957037d74b22293a0afd683a88e6fd72f82626128291bc5cedf50ee
 
 pkgname = xplist-bin
