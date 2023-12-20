@@ -3,12 +3,12 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.2.r15.g52381a9
+pkgver=0.1.2.r24.g79b0c3e
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
-license=("GPL2")
+license=('GPL-2.0-only')
 depends=('libbpf' 'bpf' 'libelf' 'zlib')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
 source=("git+https://github.com/sched-ext/scx")
@@ -44,4 +44,5 @@ build() {
 package() {
   cd $gitname
   meson install -C build --destdir "${pkgdir}"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$gitname/LICENSE"
 }
