@@ -2,7 +2,7 @@
 _pkgname=proxyman
 pkgname="${_pkgname}-bin"
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Proxyman is a native, high-performance app, which enables developers to capture, inspect, and manipulate HTTP/HTTPS requests/responses with ease."
 arch=('x86_64')
 url="https://proxyman.io"
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}" "${_pkgname}")
 options=('!strip')
 depends=()
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::https://github.com/ProxymanApp/proxyman-windows-linux/releases/download/2.9.0/Proxyman-2.9.0.AppImage?v=${pkgver//./-}"
+    "${pkgname%-bin}-${pkgver}.AppImage::https://github.com/ProxymanApp/proxyman-windows-linux/releases/download/${pkgver}/Proxyman-${pkgver}.AppImage?v=${pkgver//./-}"
     "LICENSE.md"
 )
 sha256sums=(
@@ -24,7 +24,7 @@ build() {
     chmod a+x "${srcdir}/${_pkgname}-${pkgver}.AppImage"
     "${srcdir}/${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
     rm -f  "${srcdir}"*.AppImage
-    sed "s|Exec=AppRun|Exec=${_pkgname}|g;s|Icon=proxyman|Icon=/opt/${_pkgname}/.DirIcon|g" \
+    sed "s|Exec=AppRun|Exec=env APPDIR=/opt/${_pkgname} ${_pkgname}|g;s|Icon=proxyman|Icon=/opt/${_pkgname}/.DirIcon|g" \
         -i "${srcdir}/squashfs-root/proxyman.desktop"
     find -type d -exec chmod 755 {} \;
 }
