@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ceRNAnetsim
-_pkgver=1.14.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='Regulation Simulator of Interaction between miRNA and Competing RNAs (ceRNA)'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b5faa2f86b1b229c39cc81c16e36bcf038f11be6cc84414b4bb4295a532b4e7')
+sha256sums=('7af2b34a242b9ea85688fcddf23b19dbcb0e1f45d0132cac30158381034ccf8e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
