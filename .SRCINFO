@@ -1,0 +1,13 @@
+pkgbase = reallymakepkg-git
+	pkgdesc = System-independent makepkg
+	pkgver = 1
+	pkgrel = 2
+	url = https://gitlab.com/theamericancompany/reallymakepkg-git
+	arch = any
+	license = AGPL3
+	checkdepends = shellcheck
+	makedepends = git
+	source = git+file:///data/data/com.termux/files/home/reallymakepkg
+	sha256sums = SKIP
+
+pkgname = reallymakepkg-git
