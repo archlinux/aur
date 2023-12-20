@@ -6,6 +6,7 @@ _xcp() {
   # but we don't list them here to limit visual noise
   local units='B KB MB GB'
   local drivers='parfile parblock'
+  local reflink='auto always never'
 
   case "$prev" in
   -h | --help) return ;;
@@ -14,10 +15,15 @@ _xcp() {
     if [[ -z $cur ]]; then
       COMPREPLY=(1MB) # show default block size
     else
-      local num="${cur%%[^0-9]*}"
+      local num="${cur%%[^0-9]*}" # show unit suffixes after numbers
       local unit="${cur##*[0-9]}"
       COMPREPLY=($(compgen -P "$num" -W "$units" -- "$unit"))
     fi
+    return
+    ;;
+
+  --reflink)
+    COMPREPLY=($(compgen -W "$reflink" -- "$cur"))
     return
     ;;
 
@@ -41,3 +47,4 @@ _xcp() {
 } && complete -F _xcp xcp
 
 # vim: sw=2 sts=2 et ai ft=bash
+# path: /usr/share/bash-completion/completions/xcp
