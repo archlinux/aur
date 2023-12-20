@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=lintian
 pkgver=2.115.3
-pkgrel=1
+pkgrel=2
 pkgdesc="dissects Debian packages and tries to find bugs and policy violations"
 arch=(any)
 url="https://lintian.debian.org/"
@@ -9,6 +9,7 @@ license=('GPL2')
 depends=(
 	perl
 	perl-aptpkg
+	perl-berkeleydb
 	perl-config-tiny
 	perl-data-dpath
 	perl-data-validate-domain
@@ -17,19 +18,27 @@ depends=(
 	perl-email-address-xs
 	perl-file-find-rule
 	perl-font-ttf
+	perl-html-tokeparser-simple
 	perl-io-interactive
 	perl-json-maybexs
 	perl-list-someutils
 	perl-list-utilsby
+	perl-mldbm
 	perl-moox-aliases
 	perl-namespace-clean
 	perl-path-tiny
 	perl-perlio-gzip
 	perl-perlio-utf8-strict
 	perl-proc-processtable
+	perl-regexp-wildcards
 	perl-syntax-keyword-try
+	perl-term-readkey
 	perl-text-levenshteinxs
+	perl-text-markdown-discount
+	perl-text-xslate
+	perl-time-duration
 	perl-time-moment
+	perl-www-mechanize
 	perl-xml-libxml
 	perl-yaml-libyaml
 )
