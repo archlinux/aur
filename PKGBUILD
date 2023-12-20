@@ -5,6 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc="This is a free and open tool for exposing local servers to public network (the internet)"
 arch=('any')
+makedepends=("curl")
 license=('MIT')
 url="https://github.com/azimjohn/jprq/releases/download/2.2/jprq-darwin-amd64"
 
