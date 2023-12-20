@@ -10,8 +10,6 @@ pkgbase = waypaper-engine
 	depends = swww
 	depends = nodejs
 	provides = waypaper-engine
-	conflicts = waypaper-engine
-	replaces = waypaper-engine
 	source = Waypaper-Engine-1.2.2.tar.gz::https://github.com/0bCdian/Waypaper-Engine/archive/refs/tags/v1.2.2.tar.gz
 	md5sums = SKIP
 
