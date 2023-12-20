@@ -1,7 +1,8 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Lancelot Owczarczak <lancelot@owczarczak.fr>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
-pkgname=lld
+pkgname=lld17
 pkgver=17.0.6
 pkgrel=1
 pkgdesc="Linker from LLVM 17"

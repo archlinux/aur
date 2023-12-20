@@ -1,4 +1,4 @@
-pkgbase = lld
+pkgbase = lld17
 	pkgdesc = Linker from LLVM 17
 	pkgver = 17.0.6
 	pkgrel = 1
@@ -33,4 +33,4 @@ pkgbase = lld
 	sha256sums = 807f069c54dc20cb47b21c1f6acafdd9c649f3ae015609040d6182cab01140f4
 	sha256sums = SKIP
 
-pkgname = lld
+pkgname = lld17
