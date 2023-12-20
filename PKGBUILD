@@ -2,7 +2,7 @@
 
 pkgname=python-mutatormath-git
 pkgver=3.0.1.r3.gb0a87ec
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for piecewise linear interpolation in multiple dimensions with multiple, arbitrarily placed, masters.'
 url='https://github.com/LettError/MutatorMath'
 license=('BSD')
@@ -23,6 +23,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {

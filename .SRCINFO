@@ -1,7 +1,7 @@
 pkgbase = python-mutatormath-git
 	pkgdesc = Python library for piecewise linear interpolation in multiple dimensions with multiple, arbitrarily placed, masters.
 	pkgver = 3.0.1.r3.gb0a87ec
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LettError/MutatorMath
 	arch = any
 	license = BSD
