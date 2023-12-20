@@ -1,7 +1,7 @@
 pkgbase = iventoy-bin
-	pkgdesc = An enhanced version of the PXE server. 一个增强版的 PXE 服务器。
+	pkgdesc = An enhanced version of the PXE server | 一个增强版的 PXE 服务器
 	pkgver = 1.0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.iventoy.com
 	install = iventoy.install
 	arch = x86_64
@@ -10,13 +10,14 @@ pkgbase = iventoy-bin
 	depends = coreutils
 	depends = glibc
 	provides = iventoy
+	options = !strip
 	source = iventoy-1.0.19.tar.gz::https://github.com/ventoy/PXE/releases/download/v1.0.19/iventoy-1.0.19-linux-free.tar.gz
 	source = iventoy
 	source = iventoy.service
 	source = iventoy.tmpfiles
 	sha256sums = c624dc593f17a118131fbc6490a00ce05809ed9e498dd85bc8d2338ffa214328
 	sha256sums = ef27beecddc5a9650194e8b033ae0b3172f29a9bf352cfff079a61ece86a3263
-	sha256sums = cd5565f2c67ea128604a44074fc3e6a1b741abbc47525af5d7671404e9854e18
-	sha256sums = 65131e0002958dbfc831375c1f31d7aa10c38ee8f1f39f945ae91b1becc69a47
+	sha256sums = 2f4bf44eb5efb78cce2a8d6f98469803f918a7b1d64b4cfec7d68f055a19e90b
+	sha256sums = 9d9378926284a0f2f2591bda744aff752e90de6b77b9b80bb2e5aa2e81173c61
 
 pkgname = iventoy-bin

@@ -1,1 +1,4 @@
 d /var/lib/iventoy 0755 root root -
+d /var/lib/iventoy/iso 0755 root root -
+d /var/log/iventoy 0755 root root -
+d /var/log/iventoy/history 0755 root root -
