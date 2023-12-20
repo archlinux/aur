@@ -12,6 +12,8 @@ pkgbase = chinesechesscontrol-bin
 	provides = chinesechesscontrol=2.0.11
 	conflicts = chinesechesscontrol
 	source = chinesechesscontrol-2.0.11.deb::https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.11/chinesechesscontrol_v2.0.11_Linux_x86_64_setup.deb
+	source = chinesechesscontrol.sh
 	sha256sums = af81a3bc853c3d5a26ba1ef6b23a25f0c65ce7fca5affe66ee8619b66c796bf6
+	sha256sums = cbd162f25a20f7137901901ebee7d90cb7d587ca46e10f5f23a9302adb85bee0
 
 pkgname = chinesechesscontrol-bin
