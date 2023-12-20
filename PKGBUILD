@@ -45,6 +45,9 @@ build() {
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
+  export CFLAGS=${CFLAGS/-Werror=format-security/}
+  export CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
   $srcdir/$_basedir/configure \
     --target=$_target \
     --prefix=/usr \
