@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=waveterm
 _pkgname=Wave
-pkgver=0.5.1
+pkgver=0.5.2
 _electronversion=27
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
@@ -32,7 +32,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
@@ -43,7 +43,7 @@ build() {
     export CGO_ENABLED=1
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
-    yarn --cache-folder "${srcdir}/.yarn_cache"
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     scripthaus run electron-rebuild
     scripthaus run build-backend
     scripthaus run build-package
