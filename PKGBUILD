@@ -3,16 +3,19 @@
 pkgname=lexconvert-git
 _pkgname="${pkgname%-git}"
 pkgver=0.39.r2.ge096c20
-pkgrel=2
+pkgrel=3
 pkgdesc="Convert phoneme codes and lexicon formats for English speech synths"
 arch=('any')
 url="https://github.com/ssb22/lexconvert"
 license=(Apache)
 makedepends=('git' 'dos2unix')
 depends=('python')
-source=("$pkgname::git+$url.git" fix-pickle-import.patch)
-sha256sums=('SKIP'
-            'b47f10c5e6617479f3ed7f4f479331982f1572a871cdf5ce0a9e32cb8c5ea8f4')
+# NOTE: Considering these require MacOS system voice resources at hardcoded
+# paths, it is highly unlikely this optdepend is useful. Keeping it around
+# mostly for documentation purposes.
+optdepends=('python2: for mac and mac-uk formats')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
@@ -22,7 +25,6 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     sed -i '/python2/d' Makefile.test
-    git apply ../fix-pickle-import.patch
     dos2unix lexconvert.py
 }
 
