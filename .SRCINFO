@@ -1,6 +1,6 @@
 pkgbase = basilisk-gtk2-bin
 	pkgdesc = A XUL-based web-browser demonstrating the Unified XUL Platform (UXP).
-	pkgver = 52.9.2023.11.05
+	pkgver = 52.9.2023.12.09
 	pkgrel = 1
 	epoch = 1
 	url = https://www.basilisk-browser.org
@@ -16,11 +16,11 @@ pkgbase = basilisk-gtk2-bin
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: record, convert, and stream audio and video
-	source = https://archive.basilisk-browser.org/2023.11.05/linux/x86_64/gtk2/basilisk-20231105022810.linux-x86_64-gtk2.tar.xz
-	source = https://archive.basilisk-browser.org/2023.11.05/linux/x86_64/gtk2/basilisk-20231105022810.linux-x86_64-gtk2.json
+	source = https://archive.basilisk-browser.org/2023.12.09/linux/x86_64/gtk2/basilisk-20231210185501.linux-x86_64-gtk2.tar.xz
+	source = https://archive.basilisk-browser.org/2023.12.09/linux/x86_64/gtk2/basilisk-20231210185501.linux-x86_64-gtk2.json
 	source = basilisk-gtk2.desktop
-	sha256sums = b8d4085793eb329fb4d3c47640e336b6a210a8adead722a3d39f1da8c869ebb6
-	sha256sums = 13716e93fa2002c98de6da8b6b0543cf27e699bf684ac22695e381958e9ba43c
+	sha256sums = ae28bd4a7605d53aca76b5e083d080792c35783792aeb4c72e5389b16624d425
+	sha256sums = 842bd752800b22e1d76dd21406d6ba8b93977d657045beece8c1e6e07624584a
 	sha256sums = 7bc2df127dce692d236cf822556d1ec325c7df54ea910fbbdf1a04a85008d14d
 
 pkgname = basilisk-gtk2-bin
