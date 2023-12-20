@@ -29,7 +29,6 @@ optdepends=('sshpass: for ssh connections with password'
             'python-pip: for module to manage Python libarary dependencies'
             'python-setuptools: for module to manage Python libarary dependencies')
 makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setuptools' 'python-straight.plugin' 'python-wheel' 'git')
-backup=('etc/ansible/ansible.cfg')
 source=($pkgname::git+https://github.com/ansible/ansible.git)
 sha512sums=('SKIP')
 

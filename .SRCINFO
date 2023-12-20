@@ -33,7 +33,6 @@ pkgbase = ansible-core-git
 	conflicts = python-ansible
 	replaces = ansible-core
 	replaces = python-ansible
-	backup = etc/ansible/ansible.cfg
 	source = ansible-core-git::git+https://github.com/ansible/ansible.git
 	sha512sums = SKIP
 
