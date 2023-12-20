@@ -10,7 +10,7 @@ url="https://ibireme.github.io/yyjson/"
 license=(MIT)
 depends=(glibc)
 makedepends=(cmake git)
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 source=("git+https://github.com/ibireme/yyjson.git")
 b2sums=('SKIP')

@@ -8,7 +8,7 @@ pkgbase = yyjson-git
 	makedepends = cmake
 	makedepends = git
 	depends = glibc
-	provides = yyjson
+	provides = yyjson=0.8.0
 	conflicts = yyjson
 	source = git+https://github.com/ibireme/yyjson.git
 	b2sums = SKIP
