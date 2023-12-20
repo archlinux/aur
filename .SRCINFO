@@ -1,7 +1,7 @@
 pkgbase = parsec-bin
 	pkgdesc = Remotely connect to a gaming pc for a low latency remote computing experience
 	pkgver = 150_86e
-	pkgrel = 4
+	pkgrel = 5
 	url = http://parsec.app
 	arch = x86_64
 	license = custom
@@ -16,6 +16,6 @@ pkgbase = parsec-bin
 	provides = parsec
 	options = !strip
 	source = parsec-bin-150_86e.deb::https://builds.parsecgaming.com/package/parsec-linux.deb
-	sha256sums = ac549d97b0609ee2408fac398a7d3fcacccef1be6a72bf5bfb08c5d5690053bd
+	sha256sums = feaba023b934358a6aee9f65f5ab83d8fa7e485a0567d8c066cc29ade55f80ee
 
 pkgname = parsec-bin
