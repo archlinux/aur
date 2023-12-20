@@ -1,7 +1,7 @@
 pkgbase = python-torchvision-rocm
 	pkgdesc = Datasets, transforms, and models specific to computer vision (with ROCM support)
-	pkgver = 0.16.1
-	pkgrel = 4
+	pkgver = 0.16.2
+	pkgrel = 1
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD
@@ -20,22 +20,22 @@ pkgbase = python-torchvision-rocm
 	depends = ffmpeg
 	depends = libjpeg-turbo
 	depends = libpng
-	conflicts = python-pytorch<2.1.0
-	source = vision-0.16.1.tar.gz::https://github.com/pytorch/vision/archive/v0.16.1.tar.gz
+	conflicts = python-pytorch<2.1.2
+	source = vision-0.16.2.tar.gz::https://github.com/pytorch/vision/archive/v0.16.2.tar.gz
 	source = pytorch-vision-8096.patch
-	sha512sums = ef82ce6a9a35c4034127b4204a87149619102395ac9671f91736289ade97e2fe50759dd05f468800fa0d6c5f1e70fb4a568a321ca79b1b28bd4172fbc5fd7d78
-	sha512sums = SKIP
+	sha256sums = 8c1f2951e98d8ada6e5a468f179af4be9f56d2ebc3ab057af873da61669806d7
+	sha256sums = SKIP
 
 pkgname = torchvision-rocm
 	pkgdesc = Datasets, transforms, and models specific to computer vision (C++ library only, with ROCM support)
 	provides = torchvision
-	provides = torchvision=0.16.1
-	conflicts = python-pytorch<2.1.0
+	provides = torchvision=0.16.2
+	conflicts = python-pytorch<2.1.2
 	conflicts = torchvision
 
 pkgname = python-torchvision-rocm
 	pkgdesc = Datasets, transforms, and models specific to computer vision (with ROCM support)
 	provides = python-torchvision
-	provides = python-torchvision=0.16.1
-	conflicts = python-pytorch<2.1.0
+	provides = python-torchvision=0.16.2
+	conflicts = python-pytorch<2.1.2
 	conflicts = python-torchvision
