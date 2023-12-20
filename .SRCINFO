@@ -1,11 +1,12 @@
 pkgbase = lexconvert-git
 	pkgdesc = Convert phoneme codes and lexicon formats for English speech synths
 	pkgver = 0.39.r2.ge096c20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ssb22/lexconvert
 	arch = any
 	license = Apache
 	makedepends = git
+	makedepends = dos2unix
 	depends = python
 	source = lexconvert-git::git+https://github.com/ssb22/lexconvert.git
 	source = fix-pickle-import.patch

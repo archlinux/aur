@@ -3,12 +3,12 @@
 pkgname=lexconvert-git
 _pkgname="${pkgname%-git}"
 pkgver=0.39.r2.ge096c20
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert phoneme codes and lexicon formats for English speech synths"
 arch=('any')
 url="https://github.com/ssb22/lexconvert"
 license=(Apache)
-makedepends=('git')
+makedepends=('git' 'dos2unix')
 depends=('python')
 source=("$pkgname::git+$url.git" fix-pickle-import.patch)
 sha256sums=('SKIP'
@@ -23,6 +23,7 @@ prepare() {
     cd "$pkgname"
     sed -i '/python2/d' Makefile.test
     git apply ../fix-pickle-import.patch
+    dos2unix lexconvert.py
 }
 
 check() {
