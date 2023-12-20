@@ -1,5 +1,5 @@
 pkgbase = lib32-svt-av1
-	pkgdesc = Scalable Video Technology AV1 encoder and decoder
+	pkgdesc = Scalable Video Technology AV1 encoder and decoder. (32-bits)
 	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://gitlab.com/AOMediaCodec/SVT-AV1
