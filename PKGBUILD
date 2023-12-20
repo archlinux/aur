@@ -3,7 +3,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.6.1.r71.g3c32464
+pkgver=0.7.0.r0.g4e8334e
 pkgrel=1
 pkgdesc='Mod tile is a daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd mod_tile || exit
-  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
