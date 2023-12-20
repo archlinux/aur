@@ -5,10 +5,10 @@ _pkgname=tiledb
 _pkgver=0.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Modern Database Engine for Multi-Modal Data via Sparse and Dense Multidimensional Arrays"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(MIT)
 depends=(
   r-nanotime
@@ -39,11 +39,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('87b3be22174ace6af2c0ae175ba59291')
-sha256sums=('73c08b4a37b428b1f74a261afa5ab296ba291dfa8c20f64880d74f7b0a735126')
+b2sums=('4838d8062cae14e1a267a0fe59cf94b1103c7ddeb3d79c612f9cae46c31391834d4b455825d13d4537a7663d2fcaf52ab95cad98fc70c35fe6d97050bf25aa54')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
