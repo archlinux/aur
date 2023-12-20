@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=keyd-git
-pkgver=2.4.2.r90.97b4255
+pkgver=2.4.3.r33.07a993d
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make
+	make DESTDIR="${pkgdir}" PREFIX='/usr'
 }
 
 package() {
