@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=x-minecraft-launcher-bin
 _appname="X Minecraft Launcher"
-pkgver=0.38.2
+pkgver=0.38.3
 _electronversion=27
 pkgrel=1
 pkgdesc="An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!"
@@ -26,9 +26,9 @@ source=(
 )
 sha256sums=('4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb'
             '72e17fb1c83deda594cf7c6bf61b45ee31880b86e2d526e9a4b16d2d8b3fc7fa'
-            'ba4ed4aaf2c44af5118b06a3099a92ef3bdc969ed964ad508a857d37ae56fd3d')
-sha256sums_aarch64=('098d8d4d3fa3d92e56d66ee078f889a095960951ac5d80328748d1e9ec7d5a00')
-sha256sums_x86_64=('f93818a3102e83f16391880c4f94bb883ff1b081fa06d14ba2f5629d193b130d')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+sha256sums_aarch64=('369b8e31bedcb046fb5dcf19ba9ac97a5b8a64ff9c77eb9ec7b30d347d6b9ad4')
+sha256sums_x86_64=('57b3bb003bcbee1d6549ebcc784c9a5cdf6e82c02e39999537e51396d58e1dfb')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
