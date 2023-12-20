@@ -5,15 +5,15 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/commits/main
 
-__arch_pkg_commit="108c7090a77081cd124c819e014ced95b4648d55"
-_gtkver=3.24.38
+__arch_pkg_commit="fd2d2dbbb1d22e97b79f308d6252523833a909d3"
+_gtkver=3.24.39
 
-_gtk3_classic_commit="ad4dccf4bda249e1725380dea660e6bded5c4444"
+_gtk3_classic_commit="7d7cfa3e8bf316a6e2d8400941b0dba39c2f82a9"
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase)
 pkgver=${_gtkver}
-pkgrel=3
+pkgrel=1
 pkgdesc="Patched GTK+3 that provides a more classic experience"
 url="https://github.com/lah7/gtk3-classic"
 conflicts=(gtk3 gtk3-typeahead gtk3-print-backends gtk3-nocsd gtk3-nocsd-git gtk3-nocsd-legacy-git)
@@ -91,7 +91,7 @@ source=(
 	settings.ini
 )
 sha256sums=('SKIP'
-            'ce11decf018b25bdd8505544a4f87242854ec88be054d9ade5f3a20444dd8ee7'
+            '1cac3e566b9b2f3653a458c08c2dcdfdca9f908037ac03c9d8564b4295778d79'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
