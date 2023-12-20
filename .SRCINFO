@@ -1,7 +1,7 @@
 pkgbase = r-spatialheatmap
 	pkgdesc = Creating spatial heatmaps from R and Shiny
-	pkgver = 2.8.2
-	pkgrel = 2
+	pkgver = 2.8.3
+	pkgrel = 1
 	url = https://bioconductor.org/packages/spatialHeatmap
 	arch = any
 	license = Artistic2.0
@@ -85,8 +85,8 @@ pkgbase = r-spatialheatmap
 	optdepends = r-visnetwork
 	optdepends = r-wgcna
 	optdepends = r-yaml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/spatialHeatmap_2.8.2.tar.gz
-	md5sums = 9bc0c45c674b5271f388f3c2579dacc1
-	b2sums = 2fa9d026a2c54aecf53619e6f14586362bb763db089009bb2c4d56a5c45ecf8c61542906f8a246799bdfff6b63ddeb13e68e6a7e6512ef60a87b70b03c0612e4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/spatialHeatmap_2.8.3.tar.gz
+	md5sums = 6de56848314c227f0c08215010dc9681
+	b2sums = 7e82a971ada6fff4b734fcf3a9e9a3b4039051f413274729c0a0313fa139df40bb3bbd8978b7fc26cd18583411604482be308e80c2c2aebdd85640b8c64e5d97
 
 pkgname = r-spatialheatmap
