@@ -5,13 +5,13 @@
 
 _pkgname=reallymakepkg
 pkgname="${_pkgname}-git"
-pkgver=1
+pkgver="v1.0"
 pkgrel=2
 pkgdesc="System-independent makepkg"
 arch=(any)
 _repo="https://github.com"
 _ns="themartiancompany"
-url="${_repo}/${_ns}/${pkgname}"
+url="${_repo}/${_ns}/${_pkgname}"
 license=(
   AGPL3)
 depends=()
@@ -26,6 +26,16 @@ source=(
   "git+${url}")
 sha256sums=(
   SKIP)
+
+pkgver() {
+  cd \
+    "${_pkgname}"
+  git \
+    describe \
+    --tags | \
+    sed \
+      's/-/+/g'
+}
 
 package() {
   cd \
