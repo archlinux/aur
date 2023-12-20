@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hyperamp-appimage
 _appname=Hyperamp
-pkgver=1.0.14
+pkgver=1.0.10
 _electronversion=28
 pkgrel=1
 pkgdesc="Humble music player"
@@ -23,9 +23,9 @@ _install_path="/opt/appimages"
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-arm64.AppImage")
 source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-armv7l.AppImage")
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage")
-sha256sums_aarch64=('047564aa66e920a43c71d76fcd2b87a12f4704637326c570f3023bdf6f11156e')
-sha256sums_armv7h=('a5aab391268192daad55d635fe7ad5f4bb4ab7d825a6f4cf6c751b83f626ba55')
-sha256sums_x86_64=('d09b7ba76f802d8442ce6f068f23f2b9c6c2e4861914168b992116a55f1bb53b')
+sha256sums_aarch64=('83c443a3a3f8b87c268c32e1d069b85375323b032815b6aa3242000ae8984b25')
+sha256sums_armv7h=('dfbda0a71756ee4c613a7c61cb316cfdda7dcf9df88454eb7d742c974ab7c807')
+sha256sums_x86_64=('72993835ce967557b772f7d9d8ee247d4255c2da3f023b10de0bdcf08e5fa1f6')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
