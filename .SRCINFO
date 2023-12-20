@@ -1,12 +1,11 @@
 pkgbase = xm-video-player-bin
 	pkgdesc = A high-quality client that supports playing multiple streaming formats such as MP4, M3U8, FLV, mpeg flash, etc.一款高颜值的支持播放mp4, m3u8,flv,mpeg-dash等多种流媒体格式的客户端
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tauri-update-server-chi.vercel.app/
 	arch = x86_64
 	license = BSD
 	depends = cairo
-	depends = dbus
 	depends = openssl-1.1
 	depends = pango
 	depends = webkit2gtk
@@ -16,7 +15,7 @@ pkgbase = xm-video-player-bin
 	provides = xm-video-player=0.5.1
 	conflicts = xm-video-player
 	source = xm-video-player-0.5.1.deb::https://github.com/singcl/XmVideoPlayer/releases/download/v0.5.1/xm-video-player_0.5.1_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/singcl/XmVideoPlayer/v0.5.1/LICENSE
+	source = LICENSE-0.5.1::https://raw.githubusercontent.com/singcl/XmVideoPlayer/v0.5.1/LICENSE
 	sha256sums = 0b9b0ce028241b6e303ee86d61f3a6dba94c44597e9260be81e07c7b78a01d55
 	sha256sums = 37231024f052817f3bc0e2f73047cca63feb6c18bbe443e3bcbfbd2d28cfab3d
 
