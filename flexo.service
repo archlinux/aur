@@ -1,6 +1,7 @@
 [Unit]
 Description=central pacman cache
-After=network.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 User=flexo
@@ -16,6 +17,8 @@ PrivateDevices=true
 ProtectClock=true
 ProtectKernelTunables=true
 ProtectSystem=true
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=true
 ProtectHome=true
 
 [Install]
