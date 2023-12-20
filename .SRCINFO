@@ -1,6 +1,6 @@
 pkgbase = linux-firmware-git
 	pkgdesc = Firmware files for Linux
-	pkgver = 20230814.0e048b06
+	pkgver = 20231215.c156e6be
 	pkgrel = 1
 	url = https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
 	arch = any
@@ -8,73 +8,74 @@ pkgbase = linux-firmware-git
 	license = GPL3
 	license = custom
 	makedepends = git
+	makedepends = rdfind
 	options = !strip
-	source = linux-firmware-git::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git?signed
+	source = linux-firmware-git::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
 	sha256sums = SKIP
 
 pkgname = linux-firmware-whence-git
 	pkgdesc = Firmware files for Linux - contains the WHENCE license file which documents the vendor license details
-	provides = linux-firmware-whence=20230814.0e048b06
+	provides = linux-firmware-whence=20231215.c156e6be
 	conflicts = linux-firmware-whence
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-git
 	depends = linux-firmware-whence
-	provides = linux-firmware=20230814.0e048b06
+	provides = linux-firmware=20231215.c156e6be
 	conflicts = linux-firmware
 
 pkgname = amd-ucode-git
 	pkgdesc = Microcode update image for AMD CPUs
 	license = custom
-	provides = amd-ucode=20230814.0e048b06
+	provides = amd-ucode=20231215.c156e6be
 	conflicts = amd-ucode
 
 pkgname = linux-firmware-nfp-git
 	pkgdesc = Firmware files for Linux - nfp / Firmware for Netronome Flow Processors
 	depends = linux-firmware-whence
-	provides = linux-firmware-nfp=20230814.0e048b06
+	provides = linux-firmware-nfp=20231215.c156e6be
 	conflicts = linux-firmware-nfp
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-mellanox-git
 	pkgdesc = Firmware files for Linux - mellanox / Firmware for Mellanox Spectrum switches
 	depends = linux-firmware-whence
-	provides = linux-firmware-mellanox=20230814.0e048b06
+	provides = linux-firmware-mellanox=20231215.c156e6be
 	conflicts = linux-firmware-mellanox
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-marvell-git
 	pkgdesc = Firmware files for Linux - marvell / Firmware for Marvell devices
 	depends = linux-firmware-whence
-	provides = linux-firmware-marvell=20230814.0e048b06
+	provides = linux-firmware-marvell=20231215.c156e6be
 	conflicts = linux-firmware-marvell
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-qcom-git
 	pkgdesc = Firmware files for Linux - qcom / Firmware for Qualcomm SoCs
 	depends = linux-firmware-whence
-	provides = linux-firmware-qcom=20230814.0e048b06
+	provides = linux-firmware-qcom=20231215.c156e6be
 	conflicts = linux-firmware-qcom
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-liquidio-git
 	pkgdesc = Firmware files for Linux - liquidio / Firmware for Cavium LiquidIO server adapters
 	depends = linux-firmware-whence
-	provides = linux-firmware-liquidio=20230814.0e048b06
+	provides = linux-firmware-liquidio=20231215.c156e6be
 	conflicts = linux-firmware-liquidio
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-qlogic-git
 	pkgdesc = Firmware files for Linux - qlogic / Firmware for QLogic devices
 	depends = linux-firmware-whence
-	provides = linux-firmware-qlogic=20230814.0e048b06
+	provides = linux-firmware-qlogic=20231215.c156e6be
 	conflicts = linux-firmware-qlogic
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-bnx2x-git
 	pkgdesc = Firmware files for Linux - bnx2x / Firmware for Broadcom NetXtreme II 10Gb ethernet adapters
 	depends = linux-firmware-whence
-	provides = linux-firmware-bnx2x=20230814.0e048b06
+	provides = linux-firmware-bnx2x=20231215.c156e6be
 	conflicts = linux-firmware-bnx2x
 	conflicts = linux-firmware<=20211216.f682ecb
