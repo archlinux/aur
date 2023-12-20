@@ -1,9 +1,8 @@
 pkgbase = obs-cmd
 	pkgdesc = A minimal OBS CLI for obs-websocket v5
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grigio/obs-cmd
-	install = obs-cmd.install
 	arch = x86_64
 	license = MIT
 	makedepends = git

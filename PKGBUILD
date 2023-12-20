@@ -2,7 +2,7 @@
 
 pkgname=obs-cmd
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal OBS CLI for obs-websocket v5"
 arch=('x86_64')
 url="https://github.com/grigio/obs-cmd"
@@ -10,7 +10,6 @@ license=('MIT')
 makedepends=('git' 'rust')
 provides=('obs-cmd')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grigio/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-install=obs-cmd.install
 
 # Upstream tar.gz
 
