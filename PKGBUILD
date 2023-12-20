@@ -1,9 +1,9 @@
 pkgname=1password-beta
 
-_tarver=8.10.24-1.BETA
+_tarver=8.10.24-6.BETA
 _tar="1password-${_tarver}.x64.tar.gz"
 pkgver=${_tarver//-/_}
-pkgrel=1
+pkgrel=6
 conflicts=('1password' '1password-beta-bin')
 pkgdesc="Password manager and secure wallet"
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('LicenseRef-1Password-Proprietary')
 options=(!strip)
 install="1password.install"
 source=(https://downloads.1password.com/linux/tar/beta/${CARCH}/${_tar}{,.sig})
-sha256sums=('d47c321f68dbbc8d353ec07836e3918cc2f2999e4dcc526992939b7b3588241c'
-            '778f176a61d81ee769d98ad79c45ec55fd4f30b5511b2d772e0992b3a0a59633'
+sha256sums=('beb0be2737114275d3074283a08a584c98e8402345805699b95fbc0574f0c269'
+            'e20695e1252b2a712b4221baf0ee070e0d8b31ae175ab9606d7a413b9a140a12'
 )
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
