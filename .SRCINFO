@@ -1,0 +1,20 @@
+pkgbase = brettspielwelt
+	pkgdesc = A large, popular, and free German online gaming site
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.brettspielwelt.de
+	arch = any
+	license = GPL
+	makedepends = tar
+	makedepends = imagemagick
+	depends = java-runtime>=6
+	depends = hicolor-icon-theme
+	depends = bash
+	source = http://www.brettspielwelt.de/Data/brettspielwelt.tar.gz
+	source = brettspielwelt.desktop
+	source = brettspielwelt
+	md5sums = bba907776d559d86286decb57e03cc03
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = brettspielwelt

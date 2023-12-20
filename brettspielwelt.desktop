@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=BrettspielWelt
+Comment=A large, popular, and free German online gaming site
+Exec=/opt/BrettspielWelt/start.sh
+Icon=brettspielwelt
+Terminal=false
+StartupNotify=true
+Categories=Application;Game;

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+umask 0000
+/opt/BrettspielWelt/start.sh
