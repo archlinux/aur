@@ -1,7 +1,7 @@
 pkgbase = deskaide-bin
 	pkgdesc = An aide to your desk life!
 	pkgver = 1.0.0_alpha.16
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/deskaide/deskaide
 	arch = x86_64
 	license = MIT
@@ -12,10 +12,10 @@ pkgbase = deskaide-bin
 	provides = deskaide=1.0.0_alpha.16
 	conflicts = deskaide
 	source = deskaide-1.0.0_alpha.16.deb::https://github.com/deskaide/deskaide/releases/download/v1.0.0-alpha.16/deskaide_1.0.0-alpha.16_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/deskaide/deskaide/v1.0.0-alpha.16/LICENSE
+	source = LICENSE-1.0.0_alpha.16::https://raw.githubusercontent.com/deskaide/deskaide/v1.0.0-alpha.16/LICENSE
 	source = deskaide.sh
 	sha256sums = 4abe8efb3fb909daf2f9034bc164155f77a9033a3699802c6ceb5ea3b32610b5
 	sha256sums = 60fcc2fb41c30d5afc1767a98ddec84656bdd10e2f563c0fb11cba23c5cbc271
-	sha256sums = e08b619911a79f86c5889d45921cf8665f6b254c69fe3363e4321fa2c3fc4e3a
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = deskaide-bin
