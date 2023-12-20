@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mdview-appimage
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Standalone Markdown viewer "
 arch=('x86_64')
@@ -11,9 +11,11 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/c3er/mdview/v${pkgver}/LICENSE")
-sha256sums=('df679931c0f183db7e50bbe87963746c5da42b1d7bf0b9ed7e9d5a49eb370487'
+source=(
+    "${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
+    "LICENSE::https://raw.githubusercontent.com/c3er/mdview/v${pkgver}/LICENSE"
+)
+sha256sums=('957bf7543e0133910b4766404130ab3980a7cb22403ddd355264cde3515d1870'
             '4014420ba4b48c5f19ac8645ebeec93b9a0ccd41359700efc8b4d83738d16eeb')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
