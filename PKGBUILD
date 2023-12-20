@@ -14,11 +14,11 @@
 
 _pkgname=chromium-unstable
 _debname=chromium-browser-unstable
-_pkgver=v121.0.6159.0-r1231436-linux64-deb-avx2
+_pkgver=v122.0.6184.0-r1237314-linux64-deb-avx2 
 
 pkgname="${_pkgname}-avx2-bin"
-pkgver=121.0.6159.0
-pkgrel=2
+pkgver=122.0.6184.0
+pkgrel=1
 pkgdesc="The Chromium web browser for Linux built with the open source Clang compiler and LLD linker. (AVX2 build)"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -61,7 +61,7 @@ options=('!emptydirs' '!strip')
 install=${_pkgname}.install
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
         "allow-user-flags.patch")
-sha1sums=('b0d4b6a63f441cb1c510c6b38b90fb6ccb82a870'
+sha1sums=('de023198867f881be30a5fc224a12477d0604563'
           'dd5c9032644b703aba5cf7c9e6766decb66989f7')
 
 package() {
