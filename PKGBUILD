@@ -1,7 +1,8 @@
-# Maintainer: VHSgunzo <vhsgunzo.github.io>
+# Maintainer: sandboiii <archlinux at sandboiii dot xyz>
+# Contributor: VHSgunzo <vhsgunzo.github.io>
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
-pkgver=23.10.1.36433
+pkgver=23.11.0.37534
 pkgrel=1
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
