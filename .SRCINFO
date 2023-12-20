@@ -16,7 +16,7 @@ pkgbase = des-talk-bin
 	conflicts = des-talk
 	conflicts = destalk
 	source = des-talk-0.1.2.deb::https://github.com/Red-Spaces/DesTalk/releases/download/v0.1.2/des-talk_0.1.2_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/Red-Spaces/DesTalk/v0.1.2/LICENSE
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/Red-Spaces/DesTalk/v0.1.2/LICENSE
 	sha256sums = 7ea8c24dfb47a1f10e09eb2cb0e6cb33d51192b9f4a2ddcda38d469030e7166c
 	sha256sums = 9f0d47ac26c0c5a6780c541ad8a392ec796c9933abf93260595ed641d8e623f2
 
