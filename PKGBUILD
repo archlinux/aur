@@ -2,11 +2,12 @@
 pkgname=droppoint-bin
 _pkgname=DropPoint
 pkgver=1.2.1
-pkgrel=6
+_electronversion=13
+pkgrel=7
 pkgdesc="Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows"
 arch=('x86_64')
 url="https://droppoint.netlify.app/"
-_githuburl="https://github.com/GameGodS3/DropPoint"
+_ghurl="https://github.com/GameGodS3/DropPoint"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -15,12 +16,16 @@ depends=(
     'hicolor-icon-theme'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b272d4415363eb33c54a6bec11aff870c51a1af4cf736ee76190bd4bd71ca5f4'
-            '23f759ad7de55de20b1bed653a5c7722f9bec3611b08d2731e1c3da2d61d014c')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
