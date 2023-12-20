@@ -3,7 +3,7 @@
 pkgname=butt-appimage
 _pkgname=butt
 pkgver=0.1.40
-pkgrel=4
+pkgrel=5
 pkgdesc="Easy to use, multi OS streaming tool (AppImage release)."
 arch=('x86_64')
 url='https://danielnoethen.de/butt/'
@@ -30,11 +30,13 @@ prepare() {
 
 package() {
   install -Dm755 "${srcdir}/${_appimage_filename}" "${pkgdir}/opt/${_pkgname}/${_appimage_filename}"
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 
-  for txtfile in AUTHORS ChangeLog KNOWN_BUGS NEWS README THANKS; do
+  for txtfile in AUTHORS ChangeLog COPYING KNOWN_BUGS NEWS README THANKS; do
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${txtfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${txtfile}"
   done
+
+  install -dm755 "${pkgdir}/usr/share/licenses/${_pkgname}"
+  ln -s "/usr/share/doc/${_pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 
   cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
   install -Dm755 "${srcdir}/squashfs-root/usr/share/applications/${_pkgname}.desktop" \
