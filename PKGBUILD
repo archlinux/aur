@@ -1,5 +1,6 @@
 # Maintainer: Sainan <sainan@calamity.gg>
 pkgname=plutolang
+pkgdesc="A superset of Lua 5.4 — with unique features, optimizations, and improvements."
 pkgver=0.7.4
 pkgrel=1
 arch=('x86_64')
