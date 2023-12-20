@@ -1,11 +1,12 @@
 pkgbase = dots-stable
 	pkgdesc = Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs
-	pkgver = 1.2.4
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/ulises-jeremias/dotfiles
 	arch = any
 	license = MIT
 	depends = git
+	depends = chezmoi
 	provides = dots
 	conflicts = dots
 	source = git+https://github.com/ulises-jeremias/dotfiles.git
