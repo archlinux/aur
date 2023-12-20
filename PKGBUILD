@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-pyclipper-git
-pkgver=1.3.0.post4.r0.ge349e2b
+pkgver=1.3.0.post5.r3.g410553d
 pkgrel=1
 pkgdesc='Cython wrapper for the C++ translation of the Angus Johnsons Clipper library'
 url='https://github.com/fonttools/pyclipper'
@@ -21,6 +21,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
