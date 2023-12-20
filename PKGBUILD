@@ -2,8 +2,8 @@
 # Contributor: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=ntcore
-pkgver=2024.1.1b2
-_pkgver="v2024.1.1-beta-2"
+pkgver=2024.1.1b4
+_pkgver="v2024.1.1-beta-4"
 pkgrel=1
 pkgdesc="WPILib's NetworkTables communication library"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' 'staticlibs')
 source=("git+https://github.com/wpilibsuite/allwpilib#tag=$_pkgver"
         'Don_t-treat-warnings-as-errors.patch')
 md5sums=('SKIP'
-         '06355c12d930efa26edbbe11f633831a')
+         '0ef5f9fdf0148e74d66c5cf66dba7813')
 
 prepare() {
   cd allwpilib
@@ -30,11 +30,12 @@ build() {
     -DWITH_JAVA=OFF \
     -DWITH_CSCORE=OFF \
     -DWITH_NTCORE=ON \
-    -DWITH_WPIMATH=OFF \
+    -DWITH_WPIMATH=ON \
     -DWITH_WPILIB=OFF \
     -DWITH_TESTS=ON \
     -DWITH_GUI=OFF \
     -DWITH_SIMULATION_MODULES=OFF \
+    -DWITH_JAVA_SOURCE=OFF \
     -Wno-dev
   cmake --build build
 }
