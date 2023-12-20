@@ -1,0 +1,20 @@
+pkgbase = python-arm-gdb
+	pkgdesc = Python module for an easier access to analyze ARM Cortex-M peripherals
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://pypi.org/project/arm-gdb
+	arch = any
+	license = MIT
+	checkdepends = python-test
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = arm-gdb
+	conflicts = arm-gdb
+	options = !strip
+	source = arm-gdb-0.9.9.tar.gz::https://files.pythonhosted.org/packages/source/a/arm-gdb/arm-gdb-0.9.9.tar.gz
+	sha256sums = e2a16bbe60e9af770117495c5cf4a7f2bdb3e658b61744d76089b5b4afb12d8d
+
+pkgname = python-arm-gdb
