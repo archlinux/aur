@@ -1,5 +1,7 @@
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0
 
 _pkgname=reallymakepkg
 pkgname="${_pkgname}-git"
@@ -15,11 +17,13 @@ license=(
 depends=()
 makedepends=(
   git)
-checkdepends=(
-  shellcheck)
-_url="${HOME}/${_pkgname}"
+provides=(
+  "${_pkgname}=${pkgver}")
+conflicts=(
+  "${_pkgname}=${pkgver}")
+_url="file://${HOME}/${_pkgname}"
 source=(
-  "git+file://${_url}")
+  "git+${url}")
 sha256sums=(
   SKIP)
 

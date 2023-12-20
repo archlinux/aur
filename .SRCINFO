@@ -5,9 +5,10 @@ pkgbase = reallymakepkg-git
 	url = https://gitlab.com/theamericancompany/reallymakepkg-git
 	arch = any
 	license = AGPL3
-	checkdepends = shellcheck
 	makedepends = git
-	source = git+file:///data/data/com.termux/files/home/reallymakepkg
+	provides = reallymakepkg=1
+	conflicts = reallymakepkg=1
+	source = git+https://gitlab.com/theamericancompany/reallymakepkg-git
 	sha256sums = SKIP
 
 pkgname = reallymakepkg-git
