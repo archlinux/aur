@@ -2,7 +2,8 @@
 pkgname=data-works-bin
 _appname=DataWorks
 pkgver=1.0.0
-pkgrel=5
+_electronversion=21
+pkgrel=6
 pkgdesc="A simple data management system intended to be flexible and expandable"
 arch=('x86_64')
 url="https://github.com/alexaib2002/project-dataworks_base"
@@ -11,7 +12,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    'electron21'
+    "electron${_electronversion}"
     'libx11'
     'gdk-pixbuf2'
     'libxext'
@@ -27,11 +28,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('90ca960db8eedcf706a490998f12111885a17d408b5016fe40d5628fe85697b0'
-            'cd4c06395fbd873b62bd0c9f92b75a37697ccf2c06ea7eacc5d34313ce98eebc')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
