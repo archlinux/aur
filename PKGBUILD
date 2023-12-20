@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=2.2.0
-pkgrel=3
+pkgver=3.0.0
+_electronversion=21
+pkgrel=1
 pkgdesc="An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab"
 arch=('any')
 url="https://github.com/hockyy/miteiru"
 license=("custom")
 conflicts=("${pkgname}")
 depends=(
-    'electron21'
-    'mecab'
+    "electron${_electronversion}"
     'mecab'
     'java-runtime'
     'lib32-glibc'
@@ -19,28 +19,38 @@ makedepends=(
     'npm'
     'nodejs'
     'gendesk'
+    'git'
+    'libicns'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('aba14b39d350a88eee9d8639730e829a82157ccbd01ac0a210d98dc3aa764b06'
-            '3e834169a0ac9dc85a39c5f914c0335bd73655d4c622ba205d11b7f0115aa3dc')
-prepare() {
-    gendesk -q -f -n --categories "Utility" --name "_pkgname" --exec "${pkgname}"
-}
+sha256sums=('SKIP'
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
+    gendesk -q -f -n --categories "Utility" --name "_pkgname" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    icns2png -x resources/icon.icns
+    cp resources/icon_512x512x32.png resources/icon.png
+    sed 's|icon.icns|icon.png|g;s|"deb", ||g' -i buildConfig/linux22.config.json
     npm install
-    sed '26d' -i package.json
-    sed '10,22d' -i package.json
-    npm run build:linux
+    npm run build:linux22
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
     cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/.icon-set/icon_512.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
