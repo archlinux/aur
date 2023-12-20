@@ -1,7 +1,7 @@
 pkgbase = clang17
 	pkgdesc = C language family frontend for LLVM 17
 	pkgver = 17.0.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://clang.llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception

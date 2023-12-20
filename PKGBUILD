@@ -4,7 +4,7 @@
 
 pkgname=clang17
 pkgver=17.0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="C language family frontend for LLVM 17"
 arch=('x86_64')
 url="https://clang.llvm.org/"
@@ -86,6 +86,7 @@ build() {
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src"
     -DSPHINX_WARNINGS_AS_ERRORS=OFF
+    -DLLVM_INCLUDE_TESTS=OFF
   )
 
   cmake .. "${cmake_args[@]}"
@@ -99,7 +100,7 @@ build() {
 
 check() {
   cd clang-$pkgver.src/build
-  LD_LIBRARY_PATH=$PWD/lib ninja check-clang
+  LD_LIBRARY_PATH=$PWD/lib ninja clang-check
 }
 
 package() {
@@ -107,9 +108,6 @@ package() {
 
   DESTDIR="$pkgdir" ninja install-distribution
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # Theses libraries are already handled by the llvm17 package
-  rm "$pkgdir"/usr/lib/llvm17/lib/{libLLVMTestingSupport.a,libLLVMTestingAnnotations.a}
 
   mv "$pkgdir"/usr/lib/{llvm17/lib/,}libclang-cpp.so.17
   ln -s ../../libclang-cpp.so.17 "$pkgdir/usr/lib/llvm17/lib/libclang-cpp.so.17"
