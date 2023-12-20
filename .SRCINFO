@@ -11,6 +11,6 @@ pkgbase = benchworx-bin
 	source = benchworx-0.0.1_beta.3_amd64.deb::https://github.com/simonireilly/dynamoDB-benchworx/releases/download/v0.0.1-beta.3/benchworx_0.0.1.beta.3_amd64.deb
 	source = benchworx.sh
 	sha256sums = 197f8c47e3b937ae6c24be5b7c49a2cd1f38f29205c6e28af987cc3581e8e41e
-	sha256sums = bf707797a51b92cb8e2a8b428e566f7b8b65aa9fb84509fd65878b3f9fb0d87d
+	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
 
 pkgname = benchworx-bin
