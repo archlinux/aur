@@ -1,12 +1,15 @@
 pkgbase = slune
 	pkgdesc = A racing game
 	pkgver = 1.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lesfleursdunormal.fr/static/informatique/old/slune/index_en.html
 	arch = x86_64
 	license = GPL2
 	makedepends = miniconda3
 	makedepends = base-devel
+	makedepends = tar
+	makedepends = gzip
+	makedepends = curl
 	depends = cal3d
 	depends = glew
 	depends = sdl12-compat
