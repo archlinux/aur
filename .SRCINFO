@@ -1,7 +1,7 @@
 pkgbase = clash-auto-bin
 	pkgdesc = use clash.meta & speedtest & easy to use
 	pkgver = 2.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://clashr-auto.gitbook.io/
 	arch = x86_64
 	license = custom
@@ -10,6 +10,6 @@ pkgbase = clash-auto-bin
 	source = clash-auto-2.4.8.deb::https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases/download/v2.4.8/clash-auto-amd64_2.4.8_amd64.deb
 	source = clash-auto.sh
 	sha256sums = 96580e856ec3f28b9aab5fa298e33c09f4a6b90c2033117aa9ef5030761c32c6
-	sha256sums = bf97c4826f34f65e5d4747bd82bc9a7f161964e1488dcdbc978482c8dbc92648
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = clash-auto-bin
