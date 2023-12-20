@@ -4,12 +4,12 @@
 
 pkgname=psysh
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A runtime developer console, interactive debugger and REPL for PHP."
 url="https://psysh.org/"
 arch=('x86_64')
 license=('MIT')
-depends=('php>=7.0.8')
+depends=('php>=7.4')
 install=.install
 source=(
 	"https://github.com/bobthecow/psysh/releases/download/v${pkgver}/psysh-v${pkgver}.tar.gz"
