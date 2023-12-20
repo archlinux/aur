@@ -7,7 +7,7 @@ index 4baa079..f767e54 100644
  url="https://github.com/istoph/editor"
  license=('Boost')
 -depends=('tuiwidgets-git' 'qt5-base' 'icu' 'gcc-libs')
-+depends=('tuiwidgets-git' 'qt5-base' 'icu' 'gcc-libs' 'syntax-highlighting')
++depends=('tuiwidgets-git' 'qt5-base' 'icu' 'gcc-libs' 'syntax-highlighting5')
  makedepends=(meson git)
  provides=(chr-editor)
  conflicts=(chr-editor)
