@@ -1,6 +1,6 @@
 pkgbase = any-sync-gui
 	pkgdesc = 一款支持在pc与pc或移动设备之间同步文本信息或文件的应用
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/easyhutu/any-sync-gui
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = any-sync-gui
 	depends = electron25
 	depends = hicolor-icon-theme
 	conflicts = any-sync-gui
-	source = any-sync-gui-1.4.0::git+https://github.com/easyhutu/any-sync-gui.git#tag=v1.4.0
+	source = any-sync-gui-1.5.0::git+https://github.com/easyhutu/any-sync-gui.git#tag=v1.5.0
 	source = any-sync-gui.sh
 	sha256sums = SKIP
-	sha256sums = 66aa4b6d9920d3c576521c88847720f62c226fac637bd9169ccc36e086012664
+	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
 
 pkgname = any-sync-gui

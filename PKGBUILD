@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=any-sync-gui
 _appname="Lan同步"
-pkgver=1.4.0
+pkgver=1.5.0
 _electronversion=25
 pkgrel=1
 pkgdesc="一款支持在pc与pc或移动设备之间同步文本信息或文件的应用"
@@ -24,7 +24,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '66aa4b6d9920d3c576521c88847720f62c226fac637bd9169ccc36e086012664')
+            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
