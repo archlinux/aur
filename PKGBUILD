@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dialogcraft-bin
 _pkgname=Dialogcraft
-pkgver=1.0.7
+pkgver=1.0.8
+_electronversion=25
 pkgrel=1
 pkgdesc="Desktop client for OpenAI GPT API."
 arch=('x86_64')
@@ -34,11 +35,10 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Hayden2018/dialogcraft/v${pkgver}/LICENSE"
 )
-sha256sums=('f8504ad427928fec9f23323af4687a7f80104685b7e310ca9ddc80c5ed545657'
+sha256sums=('c1a9d23a1700ae553224141ac938867b9125e139105e8495f383bd6c44fd5ceb'
             'c09d111b4c731bb0e1771677ef839c4db3f709238e7ed8bbd005d737b01286c8')
 build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
-    sed "s| %U||g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{usr/bin,opt}
