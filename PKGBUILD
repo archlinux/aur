@@ -1,7 +1,7 @@
 # Maintainer: bud
 # Contributor: bud
 
-pkgname=thunar-gtk2
+pkgname=thunar-gtk2-static-libs
 pkgver=1.6.17
 pkgrel=4
 pkgdesc='GTK+2 version of Thunar with old xfce dependencies statically linked'
