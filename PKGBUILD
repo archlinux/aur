@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-openstep-plist-git
-pkgver=0.3.0.post1.r0.gfe887b0
+pkgver=0.3.1.r3.g4f8a953
 pkgrel=1
 pkgdesc='OpenStep plist parser and writer written in Cython'
 url='https://github.com/fonttools/openstep-plist'
@@ -22,6 +22,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {

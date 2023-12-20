@@ -1,6 +1,6 @@
 pkgbase = python-openstep-plist-git
 	pkgdesc = OpenStep plist parser and writer written in Cython
-	pkgver = 0.3.0.post1.r0.gfe887b0
+	pkgver = 0.3.1.r3.g4f8a953
 	pkgrel = 1
 	url = https://github.com/fonttools/openstep-plist
 	arch = any
