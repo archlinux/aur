@@ -1,7 +1,7 @@
 pkgbase = bookmarks-manager-bin
 	pkgdesc = Edit bookmarks, check url.
 	pkgver = 0.1.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Hunlongyu/bookmarks-manager
 	arch = x86_64
 	license = MIT
@@ -16,10 +16,10 @@ pkgbase = bookmarks-manager-bin
 	provides = bookmarks-manager=0.1.2
 	conflicts = bookmarks-manager
 	source = bookmarks-manager-0.1.2.AppImage::https://github.com/Hunlongyu/bookmarks-manager/releases/download/v0.1.2/Bookmark-Manager-0.1.2.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/Hunlongyu/bookmarks-manager/v0.1.2/LICENSE
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/Hunlongyu/bookmarks-manager/v0.1.2/LICENSE
 	source = bookmarks-manager.sh
 	sha256sums = 05cc0f7a8c0664d47a5cb90af113729a27b63419b8dd9649caa81a46967a241f
 	sha256sums = c796c92731a81fb917e300438a8e5565ac96507ca0f4052fb3d8e2459e7b0f3b
-	sha256sums = 9f1858df4bd9bebec9023dc07b19ea799a10ee425d1097dfa5c74de282fa49a5
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = bookmarks-manager-bin
