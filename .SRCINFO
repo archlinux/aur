@@ -1,6 +1,6 @@
 pkgbase = python-fontmath-git
 	pkgdesc = A collection of objects that implement fast font, glyph, etc. math.
-	pkgver = 0.9.3.r2.g777dd88
+	pkgver = 0.9.3.r4.g8325a8f
 	pkgrel = 1
 	url = https://github.com/robotools/fontMath
 	arch = any

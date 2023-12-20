@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-fontmath-git
-pkgver=0.9.3.r2.g777dd88
+pkgver=0.9.3.r4.g8325a8f
 pkgrel=1
 pkgdesc='A collection of objects that implement fast font, glyph, etc. math.'
 url='https://github.com/robotools/fontMath'
@@ -21,6 +21,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
