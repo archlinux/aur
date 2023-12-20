@@ -54,7 +54,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 COPYING -t "${pkgdir}"/usr/share/doc/${pkgname}/
-  install -Dm644 examples/ansible.cfg -t "${pkgdir}"/etc/ansible/
-  install -Dm644 examples/{ansible.cfg,hosts} -t "${pkgdir}"/usr/share/ansible/doc/examples/
-  install -Dm644 docs/man/man1/*.1 -t "${pkgdir}"/usr/share/man/man1/
 }
