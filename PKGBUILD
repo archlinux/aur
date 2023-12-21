@@ -36,10 +36,22 @@ check-for-asdf() {
       echo -e "\nsource /opt/asdf-vm/asdf.fish" >> ~/.config/fish/config.fish
       source ~/.config/fish/config.fish
     elif [[ $SHELL == *"zsh"* ]]; then
+      # Just to make sure that an existing zsh config is not intervening,
+      # we need to check that the .zshrc file contains the proper shebang #!/usr/bin/env zsh
+      if ! grep -q "#!/usr/bin/env zsh" ~/.zshrc; then
+        echo "The .zshrc file does not contain the proper shebang #!/usr/bin/env zsh"
+        echo "This script is likely to fail."
+        echo "For convenience, we will add it for you."
+        echo "If you do not want this, please remove it manually after the installation has finished."
+        echo -e "# Shebang added by the dashlane-cli-git package\n#!/usr/bin/env zsh\n$(cat ~/.zshrc)" > ~/.zshrc
+      fi
+      # Adding the asdf path to .zshrc - if it would already be there, we would not be here
       echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.zshrc
       source ~/.zshrc
     else
       echo "Unsupported shell. Please add asdf to your shell's initialization file manually."
+      echo "Consider opening an issue or contribute a pull request to add support for your shell."
+      echo "https://github.com/skf-funzt/dashlane-cli-git"
       exit 1
     fi
   fi
