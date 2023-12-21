@@ -1,7 +1,7 @@
 # Maintainer: autinerd <autinerd-arch at kuyateh dot eu>
 
 pkgname=arcticons-icon-theme
-pkgver=8.2.0.0
+pkgver=8.2.0.1
 pkgrel=1
 pkgdesc='A monotone line-based icon pack for android - freedesktop version'
 arch=('any')
@@ -12,7 +12,7 @@ options=(!strip)
 provides=('arcticons-icon-theme')
 conflicts=('arcticons-icon-theme')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('bc7d1071ef95e17e87cb9230de637d15c98810aca5daf0b080a6acc05929a0ac57a02c55852f79c5d15e9c9ee20e7541c6bc7f1aef119178aef04edbb9910af0')
+sha512sums=('d4b1025f0b5e59c50c5ff4a4ef74f0277ee56a7e6d97ae76cd610958e5a49027b8e077e3bbe4fde2ff0b7a8eba7a01a63a3490b2652cd5802ea6abd90ff80205')
 
 package() {
 	cd "$srcdir/Arcticons-Linux-$pkgver"
