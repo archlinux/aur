@@ -1,28 +1,28 @@
 pkgbase = debhelper
 	pkgdesc = A collection of programs that can be used in a debian/rules file to automate common tasks
-	pkgver = 13.11.8
+	pkgver = 13.11.9
 	pkgrel = 1
 	url = https://salsa.debian.org/debian/debhelper
 	arch = any
 	license = GPL2
 	license = GPL3
-	makedepends = file
 	makedepends = git
 	makedepends = po4a
-	depends = binutils
-	depends = dpkg
-	depends = file
-	depends = html2text
-	depends = man-db
 	depends = perl-pod-parser
-	depends = strip-nondeterminism
-	depends = po-debconf
 	optdepends = dh-make: convert source archives into Debian package source
 	provides = dh-strip-nondeterminism
 	conflicts = dh-strip-nondeterminism
-	source = git+https://salsa.debian.org/debian/debhelper.git#tag=debian/13.11.8
+	source = git+https://salsa.debian.org/debian/debhelper.git#tag=debian/13.11.9
 	source = dh_strip_nondeterminism::https://salsa.debian.org/reproducible-builds/strip-nondeterminism/-/raw/master/bin/dh_strip_nondeterminism?inline=false
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = debhelper
+	depends = perl-pod-parser
+	depends = binutils
+	depends = dpkg
+	depends = file
+	depends = html2text
+	depends = man-db
+	depends = strip-nondeterminism
+	depends = po-debconf

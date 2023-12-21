@@ -6,7 +6,7 @@
 
 _pkgname="debhelper"
 pkgname="$_pkgname"
-pkgver=13.11.8
+pkgver=13.11.9
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 url="https://salsa.debian.org/debian/debhelper"
@@ -16,19 +16,9 @@ arch=('any')
 _url_dh_strip_nondeterminism="https://salsa.debian.org/reproducible-builds/strip-nondeterminism"
 
 depends=(
-  'binutils'
-  'dpkg'
-  'file'
-  'html2text'
-  'man-db'
   'perl-pod-parser'
-  'strip-nondeterminism'
-
-  # AUR
-  'po-debconf'
 )
 makedepends=(
-  'file'
   'git'
   'po4a'
 )
@@ -72,6 +62,18 @@ build() {
 }
 
 package() {
+  depends+=(
+    'binutils'
+    'dpkg'
+    'file'
+    'html2text'
+    'man-db'
+    'strip-nondeterminism'
+
+    # AUR
+    'po-debconf'
+  )
+
   cd "$_pkgsrc"
   make DESTDIR="${pkgdir:?}" install
   install -Dm755 "${srcdir:?}/dh_strip_nondeterminism" -t "${pkgdir:?}/usr/bin"
