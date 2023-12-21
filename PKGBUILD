@@ -1,22 +1,22 @@
 # Maintainer: Dmali <dmali@vk.com>
 
 pkgname=klaus-bin
-pkgver=9.3
-_releasedate=2023-12-11
+pkgver=9.4
+_releasedate=2023-12-21
 pkgrel=1
 pkgdesc="Arch manager that allows you to download, install, delete packages..."
 arch=('x86_64')
 url="https://github.com/dmaliog/kLausqt/"
 license=('GPL 2.0')
 groups=()
-depends=('qt6-base' 'qt6-multimedia' 'qt6-webengine' 'yay' 'zenity' 'libnotify' 'zip' 'tar' 'papirus-icon-theme')
+depends=('qt6-base>=6.6.1' 'qt6-multimedia>=6.6.1' 'qt6-webengine>=6.6.1' 'yay>=12.2.0' 'zenity' 'libnotify' 'zip' 'tar' 'papirus-icon-theme')
 optdepends=('ocs-url')
 source=(
 	"${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/klaus-${pkgver}-${_releasedate}-linux64.zip"
 )
 
 sha256sums=(
-	'8bb479b139233c71782f436987f72a832e5e8195bbb88b5b7f1fd0c81b07d834'
+	'5b453406f6762540403b3a9f91867065fc9047af71ef5e9aeeab79337e89e7c4'
 )
 
 package() {
