@@ -3,18 +3,58 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=kdeconnect
-pkgver=23.08.4
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://kdeconnect.kde.org/'
 arch=(x86_64)
 license=(GPL)
-groups=(kde-applications kde-network)
-depends=(kcmutils5 libfakekey qca-qt5 kpeoplevcard pulseaudio-qt qqc2-desktop-style5 kirigami-addons5 modemmanager-qt5)
-makedepends=(extra-cmake-modules kdoctools5 wayland-protocols)
-optdepends=('sshfs: remote filesystem browser' 'python-nautilus: Nautilus integration' 'qt5-tools: for some runcommand plugin actions')
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig})
-sha256sums=('0bd5a45a31da21d0e5939930059fad23b608efa727db6ff020166912db78f871'
+depends=(dbus
+         gcc-libs
+         glibc
+         kcmutils5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kdbusaddons5
+         kguiaddons5
+         ki18n5
+         kiconthemes5
+         kio5
+         kirigami-addons5
+         knotifications5
+         kpeople5
+         kpeoplevcard
+         kservice5
+         kwidgetsaddons5
+         kwindowsystem5
+         libfakekey
+         libx11
+         libxkbcommon
+         libxtst
+         modemmanager-qt5
+         openssl
+         pulseaudio-qt
+         qqc2-desktop-style5
+         qt5-base
+         qt5-connectivity
+         qt5-declarative
+         qt5-multimedia
+         qt5-quickcontrols2
+         qt5-wayland
+         qt5-x11extras
+         solid5
+         wayland)
+makedepends=(extra-cmake-modules
+             kdoctools5
+             wayland-protocols)
+optdepends=('python-nautilus: Nautilus integration'
+            'qt5-tools: for some runcommand plugin actions'
+            'sshfs: remote filesystem browser')
+groups=(kde-applications
+        kde-network)
+source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig})
+sha256sums=('c2a19cc36e6fdab7caf8697c997ef35e93853123faabfa58b034f2fe28f5bac1'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
