@@ -11,6 +11,8 @@ These instructions will get you a copy of the package up and running on your loc
 
 All tools required are installed on package installation.
 
+> Note: Your shell config will be configured if you haven't set up asdf yet.
+
 ### Installation
 
 Install the package using the `just` command:
