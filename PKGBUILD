@@ -17,11 +17,11 @@ options=('!makeflags')
 build() {
   cmake -S Elemental-$pkgver \
         -B build \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_SHARED_LIBS=ON \
-        -D__GIT_EXECUTABLE=OFF
-  cmake --build build --parallel
+        -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+        -D CMAKE_BUILD_TYPE:STRING=Release \
+        -D BUILD_SHARED_LIBS:BOOL=ON \
+        -D __GIT_EXECUTABLE:BOOL=OFF
+  cmake --build build --parallel 4
 }
 
 package() {
