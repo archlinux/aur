@@ -9,7 +9,7 @@ pkgname=(
   ${pkgbase}
   vte-notification-common
 )
-pkgver=0.74.1
+pkgver=0.74.2
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
@@ -41,7 +41,7 @@ options=('!emptydirs')
 _frepourl='https://src.fedoraproject.org/rpms/vte291'
 _frepobranch='rawhide'
 _fpatchfile100='vte291-cntnr-precmd-preexec-scroll.patch'
-_fcommit='486e715ea36f9a46101588a4801c67cf23684d3d'
+_fcommit='effdc88925f27e048c767ea2ca951ef453d4c4b2'
 
 source=(
   "git+https://gitlab.gnome.org/GNOME/vte#tag=${pkgver}"
