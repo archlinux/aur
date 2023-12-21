@@ -6,28 +6,19 @@ pkgver=0.0.2
 pkgrel=1
 pkgdesc='Tag-It is a CI and CLI tool to bump semver versions'
 url='https://gitea.retzer.xyz/pyscripter99/tag-it'
-arch=('aarch64' 'aarch64' 'i686' 'i686' 'x86_64' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 license=('AGPL-3.0')
 provides=('tag-it')
 conflicts=('tag-it')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.retzer.xyz/pyscripter99/tag-it/releases/download/v0.0.2/tag-it-CI_Linux_arm64.tar.gz")
-sha256sums_aarch64=('3aab0c6ffba92e571b8ece4a908c1a3b8a3a5725611772f4abe17c3b16ca32f0')
-
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.retzer.xyz/pyscripter99/tag-it/releases/download/v0.0.2/tag-it-CLI_Linux_arm64.tar.gz")
-sha256sums_aarch64=('a9d8a79432a64a4a417e6773f6f36bbde69ab3eeff3cdff6d2699f1418207047')
-
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.retzer.xyz/pyscripter99/tag-it/releases/download/v0.0.2/tag-it-CI_Linux_i386.tar.gz")
-sha256sums_i686=('6007f7905970e5903bf9107b01a8cea506a4c16888189a7604b38c32550f4e15')
+sha256sums_aarch64=('5e9668d3ab1bf8268e40911bd42284b49913403f0f3d178c3007537c0c5afa20')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.retzer.xyz/pyscripter99/tag-it/releases/download/v0.0.2/tag-it-CLI_Linux_i386.tar.gz")
-sha256sums_i686=('1ad2274a6cb88f5f0810c02e985132d0b335f2cd142ff5f2f8732548cb1ca535')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.retzer.xyz/pyscripter99/tag-it/releases/download/v0.0.2/tag-it-CI_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('f4198040738735f4c7fc4a93ccdc65287b331e6633f533708a16b3ab7107e778')
+sha256sums_i686=('34eee63047e79231639942cc54f744e33bbdfe012a1461542165235c3c0b817e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.retzer.xyz/pyscripter99/tag-it/releases/download/v0.0.2/tag-it-CLI_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('a2156601c1177285c73d41ac24fcb87a2485c4528f5390c8e93bacffa41aea0c')
+sha256sums_x86_64=('e8a11cd656a4fae0b399f3463b976c37a5250b4b8e444c99c5cc3861c52d559e')
 
 package() {
   install -Dm755 "./tag-it" "${pkgdir}/usr/bin/tag-it"
