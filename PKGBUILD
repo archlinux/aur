@@ -12,7 +12,8 @@ provides=(${pkgbase%-git}
         nanonng
         nng)
 conflicts=(${pkgbase%-git})
-depends=(mbedtls)
+depends=(mbedtls
+    python)
 makedepends=(asciidoctor
             boost
             cmake
@@ -95,6 +96,8 @@ package_nanomq-full-git() {
                 l8w8jwt)
     conflicts=(msquic
                mbedtls)
+    depends=(mbedtls
+        python)
 
     cd "${srcdir}/${pkgbase%-git}/"
     cmake -DCMAKE_BUILD_TYPE=None \
