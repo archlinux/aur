@@ -1,0 +1,39 @@
+pkgbase = python-pandera-git
+	pkgdesc = Provides a flexible and expressive API for performing data validation on dataframe-like objects to make data processing pipelines more readable and robust.
+	pkgver = 0.18.0+1.r625.20231215.812b2a8a
+	pkgrel = 1
+	url = https://www.union.ai/pandera
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-numpy>=1.19.0
+	depends = python-multimethod
+	depends = python-packaging>=20.0
+	depends = python-pandas>=1.2.0
+	depends = python-pydantic
+	depends = python-typeguard>=3.0.2
+	depends = python-typing_inspect>=0.6.0
+	depends = python-wrapt
+	optdepends = mypy
+	optdepends = python-dask
+	optdepends = python-frictionless<=4.40.8
+	optdepends = python-geopandas
+	optdepends = python-hypothesis>=5.41.1
+	optdepends = python-fastapi
+	optdepends = python-modin
+	optdepends = python-pandas-stubs
+	optdepends = python-pyspark>=3.2.0
+	optdepends = python-ray
+	optdepends = python-scipy
+	optdepends = python-shapely
+	optdepends = python-yaml>=5.1
+	provides = python-pandera=0.18.0+1.r625.20231215.812b2a8a
+	conflicts = python-pandera
+	source = python-pandera::git+https://github.com/unionai-oss/pandera.git
+	sha256sums = SKIP
+
+pkgname = python-pandera-git
