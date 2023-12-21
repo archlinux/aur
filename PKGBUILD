@@ -26,32 +26,29 @@ prepare() {
 }
 
 build() {
-    cd Trilinos-trilinos-release-"$_pkgver"
-    mkdir -p build
-    cd build
-
-    cmake .. -DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=ON \
-             -DTrilinos_ENABLE_ALL_PACKAGES:BOOL=ON \
-             -DTrilinos_ENABLE_PyTrilinos:BOOL=OFF \
-             -DTrilinos_ENABLE_Gtest:BOOL=OFF \
-             -DTrilinos_ENABLE_TESTS:BOOL=OFF \
-             -DTrilinos_ENABLE_TrilinosFrameworkTests:BOOL=OFF \
-             -DTrilinos_ENABLE_TrilinosATDMConfigTests:BOOL=OFF \
-             -DTPL_ENABLE_gtest:BOOL=OFF \
-             -DTPL_ENABLE_MPI:BOOL=ON \
-             -DTPL_ENABLE_HDF5:BOOL=ON \
-             -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-             -DBUILD_SHARED_LIBS:BOOL=ON \
-             -DCMAKE_Fortran_FLAGS=-fallow-argument-mismatch
-    make VERBOSE=1
+  cmake -S Trilinos-trilinos-release-"$_pkgver" \
+        -B build \
+        -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+        -D BUILD_SHARED_LIBS:BOOL=ON \
+        -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=ON \
+        -D Trilinos_ENABLE_ALL_PACKAGES:BOOL=ON \
+        -D Trilinos_ENABLE_PyTrilinos:BOOL=OFF \
+        -D Trilinos_ENABLE_Gtest:BOOL=OFF \
+        -D Trilinos_ENABLE_TESTS:BOOL=OFF \
+        -D Trilinos_ENABLE_TrilinosFrameworkTests:BOOL=OFF \
+        -D Trilinos_ENABLE_TrilinosATDMConfigTests:BOOL=OFF \
+        -D TPL_ENABLE_gtest:BOOL=OFF \
+        -D TPL_ENABLE_MPI:BOOL=ON \
+        -D TPL_ENABLE_HDF5:BOOL=ON \
+        -D CMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch"
+  cmake --build build --parallel 4
 }
 
 check() {
-    cd Trilinos-trilinos-release-"$_pkgver"/build
-    ctest
+  cd build
+  ctest
 }
 
 package() {
-    cd Trilinos-trilinos-release-"$_pkgver"/build
-    make DESTDIR="$pkgdir" install
+  DESTDIR=${pkgdir} cmake --install build
 }
