@@ -5,10 +5,18 @@ pkgbase = tal-filter2
 	url = https://tal-software.com/products/tal-filter
 	arch = x86_64
 	groups = pro-audio
-	groups = vst-plugins
-	groups = vst3-plugins
 	license = EULA
 	source = https://tal-software.com/downloads/plugins/TAL-Filter-2_64_linux.zip
 	sha256sums = b987c6fd5cc34ae441db93c753701dce049f2d12ab14e3890a4a3b52201b563f
 
-pkgname = tal-filter2-bin
+pkgname = tal-filter2-vst-bin
+	groups = vst-plugins
+	provides = tal-chorus-filter2-vst-bin
+	conflicts = tal-chorus-filter2-bin
+	replaces = tal-chorus-filter2-bin
+
+pkgname = tal-filter2-vst3-bin
+	groups = vst3-plugins
+	provides = tal-chorus-filter2-vst3-bin
+	conflicts = tal-chorus-filter2-bin
+	replaces = tal-chorus-filter2-bin
