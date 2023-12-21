@@ -1,5 +1,5 @@
 post_install() {
 	echo
-	echo "    Enable the radicle node with \`systemctl --user enable --now radicle-node\`"
+	echo "    Enable the radicle node with \`systemctl --user enable --now radicle-node.service\`"
 	echo
 }
