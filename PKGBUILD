@@ -3,7 +3,7 @@ pkgname=pycharm-community-jre
 _appname=pycharm-community
 
 # https://www.jetbrains.com/pycharm/download/other.html
-pkgver=2023.3
+pkgver=2023.3.2
 
 pkgrel=1
 pkgdesc="PyCharm Community Edition IDE for Python with bundled JRE"
@@ -20,11 +20,9 @@ source=(
   pycharm.sh
 )
 noextract=()
-sha256sums=(
-  '8d182dac3aa65b465c5a57c87ffb258dbcad7c3c6dc4b8df9a734a3b6b4a2371'
-  'f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21'
-  'b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc'
-)
+sha256sums=('1a4a95648c68890f2f9eb41cbb9eb041dcd08388c75a91298dfbe73f83a858c8'
+            'f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21'
+            'b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc')
 
 package() {
   cd "${_appname}-${pkgver}"
