@@ -67,7 +67,7 @@ publish: prepare
     @echo -e "\e[36mSwitching to aur master branch...\e[0m"
     @git checkout master
     @echo -e "\e[36mMerging main into aur master...\e[0m"
-    @git merge -X theirs main
+    @git merge -X theirs --no-edit main
     @echo -e "\e[36mPushing to aur...\e[0m"
     @git push aur master
     @echo -e "\e[36mSwitching back to main...\e[0m"
