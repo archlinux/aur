@@ -1,31 +1,28 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="osslsigncode"
-pkgver="2.6"
-pkgrel="3"
+pkgver="2.7"
+pkgrel="1"
 pkgdesc="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
 arch=('i686' 'x86_64')
 url="https://github.com/mtrojnar/osslsigncode"
 license=('GPL')
 depends=('curl' 'openssl')
-makedepends=('cmake')
+makedepends=('cmake' 'perl')
 checkdepends=('libfaketime')
-source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz"
-        "issue-276-8854cada70456102df32a1c5d51b46809e66d63f.diff")
-sha512sums=('f2ad32d13bd355b196484af47e66e972a4f27e54c7a9188d754a83e9f751363dcc4d6b93f1aed1fef16b5eadead43f08b831dbe9fdfde11d159880450e3e819d'
-            '7ca0deff8913623cbb2525eeae92b2369f35a68b46a4ec0fde4588113a2858df07e144c9a30d95487973d8fa9bc223bd6a655c6208a1000a0ef48a3aa08ff1b5')
+source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('474ea2fcce8efb999148f53637a701814d6625a7b2b407b0903f7876cbc78d330ca3b15167a334bc728c00516b638ebaf6233756331c9f3ec3d66a4a6de1fa19')
 
 prepare() {
-  patch -d "osslsigncode-${pkgver}" -p1 < "${srcdir}/issue-276-8854cada70456102df32a1c5d51b46809e66d63f.diff"
-
   cmake \
     -B build -S "$srcdir/osslsigncode-${pkgver}" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DSTOP_SERVER=OFF
+    -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
+  perl -pi -e 's{localhost}{127.0.0.1}' build/Testing/client_http.py
+
   cmake --build build
 }
 
@@ -35,5 +32,12 @@ check() {
 }
 
 package() {
+  # The HTTP server is started by cmake during the configuration
+  # phase, no matter if we want to run tests or not. Therefore we need
+  # to ensure the server's been shut down here.
+  cd build
+  python Testing/client_http.py || true 2> /dev/null
+  cd ..
+
   DESTDIR="$pkgdir" cmake --install build
 }

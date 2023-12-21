@@ -1,18 +1,17 @@
 pkgbase = osslsigncode
 	pkgdesc = OpenSSL based Authenticode signing for PE/MSI/Java CAB files
-	pkgver = 2.6
-	pkgrel = 3
+	pkgver = 2.7
+	pkgrel = 1
 	url = https://github.com/mtrojnar/osslsigncode
 	arch = i686
 	arch = x86_64
 	license = GPL
 	checkdepends = libfaketime
 	makedepends = cmake
+	makedepends = perl
 	depends = curl
 	depends = openssl
-	source = https://github.com/mtrojnar/osslsigncode/archive/2.6.tar.gz
-	source = issue-276-8854cada70456102df32a1c5d51b46809e66d63f.diff
-	sha512sums = f2ad32d13bd355b196484af47e66e972a4f27e54c7a9188d754a83e9f751363dcc4d6b93f1aed1fef16b5eadead43f08b831dbe9fdfde11d159880450e3e819d
-	sha512sums = 7ca0deff8913623cbb2525eeae92b2369f35a68b46a4ec0fde4588113a2858df07e144c9a30d95487973d8fa9bc223bd6a655c6208a1000a0ef48a3aa08ff1b5
+	source = https://github.com/mtrojnar/osslsigncode/archive/2.7.tar.gz
+	sha512sums = 474ea2fcce8efb999148f53637a701814d6625a7b2b407b0903f7876cbc78d330ca3b15167a334bc728c00516b638ebaf6233756331c9f3ec3d66a4a6de1fa19
 
 pkgname = osslsigncode
