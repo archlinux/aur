@@ -6,7 +6,7 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org> ([core] package)
 
 pkgname=mkinitcpio-git
-pkgver=36.r54.g69438c5
+pkgver=37.1.r17.ge7e20f2
 pkgrel=1
 pkgdesc='Modular initramfs image creation utility - git checkout'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=('gzip: Use gzip compression for the initramfs image'
             'lz4: Use lz4 compression for the initramfs image'
             'mkinitcpio-nfs-utils: Support for root filesystem on NFS')
 makedepends=('git' 'asciidoc')
-checkdepends=('bash-bats' 'bash-bats-assert' 'bzip2' 'gzip' 'lz4' 'lzop')
+checkdepends=('bats' 'bats-assert' 'bzip2' 'gzip' 'lz4' 'lzop')
 provides=('initramfs' "mkinitcpio=${pkgver}")
 conflicts=('mkinitcpio')
 backup=('etc/mkinitcpio.conf')
