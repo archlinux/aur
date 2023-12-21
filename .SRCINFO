@@ -1,7 +1,7 @@
 pkgbase = waypaper-engine
 	pkgdesc = An Electron-based graphical frontend for setting wallpapers and playlists
 	pkgver = 1.2.3
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/0bCdian/Waypaper-Engine
 	arch = x86_64
 	license = GLP
