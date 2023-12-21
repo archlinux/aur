@@ -14,11 +14,6 @@ if [ -f "/usr/lib/pkgconfig/fftw3.pc" ]; then
   CONFOPTS="${CONFOPTS} --with-fftw=1"
 fi
 
-# HDF5
-if [ -f "/usr/lib/pkgconfig/hdf5.pc" ]; then
-  CONFOPTS="${CONFOPTS} --with-hdf5=1 --with-hdf5-fortran-bindings=1"
-fi
-
 # HYPRE
 if [ -f "/usr/lib/libHYPRE.so" ]; then
   CONFOPTS="${CONFOPTS} --with-hypre-lib=/usr/lib/libHYPRE.so --with-hypre-include=/usr/include/hypre"
@@ -61,16 +56,6 @@ fi
 # SuiteSparse
 if [ -f "/usr/include/SuiteSparse_config.h" ]; then
   CONFOPTS="${CONFOPTS} --with-suitesparse=1"
-fi
-
-# SuperLU
-if [ -f "/usr/lib/pkgconfig/superlu.pc" ]; then
-  CONFOPTS="${CONFOPTS} --with-superlu-lib=-lsuperlu --with-superlu-include=/usr/include/superlu"
-fi
-
-# SuperLU_DIST
-if [ -f "/usr/lib/pkgconfig/superlu_dist.pc" ]; then
-  CONFOPTS="${CONFOPTS} --with-superlu_dist-lib=-lsuperlu_dist --with-superlu_dist-include=/usr/include/superlu_dist"
 fi
 
 # Triangle

@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgver=3.20.2
-pkgrel=1
+pkgrel=2
 pkgname=petsc
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -14,12 +14,11 @@ arch=('i686' 'x86_64')
 url="https://petsc.org"
 license=('BSD')
 options=(staticlibs)
-depends=('python-numpy' 'openmpi' 'boost' 'lapack')
+depends=('python-numpy' 'openmpi' 'boost' 'lapack' 'hdf5-openmpi' 'superlu' 'superlu_dist')
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'cython')
 provides=('petsc4py')
 optdepends=('trilinos: support for trilinos'
   'fftw: support for the FFTW'
-  'hdf5: support for the HDF5'
   'hypre: support for the HYPRE'
   'metis: support for METIS'
   'mumps: support for MUMPS'
@@ -27,8 +26,6 @@ optdepends=('trilinos: support for trilinos'
   'scalapack: support for ScaLAPACK'
   'scotch: support for Scotch'
   'suitesparse: support for SuiteSparse'
-  'superlu: support for SuperLU'
-  'superlu_dist: support for SuperLU_DIST',
   'triangle: support for Triangle'
   'trilinos: support for the ML package from Trilinos'
   )
@@ -37,7 +34,7 @@ install=petsc.install
 source=(http://web.cels.anl.gov/projects/petsc/download/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
 sha512sums=('16315a0f34982ac5e95d86b6e70d6a47be38b57cc1abf98c368f965cdb569039eaa8ce88447997461656b44fcccbbcf45e8846a9b4245bc942f6f30fc6dd2305'
-            '6fff53b92426672655e357938526e62a5636d96ba27ee5c34df3c5045fabcf60855f2f76de30527fab40a866003642f47b7fa164f57077731de9841efdad5b46')
+            'c2dfe19e09940735635c2f7568abd11bb83b411026177687666bd54c01fd231a01995b6d0a0b7f72007911e3429549319783b47cd17b92a0eb60676045d65da8')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch=arch-${_config}
@@ -54,6 +51,9 @@ build() {
             --with-petsc4py=1 \
             --with-mpi-f90module-visibility=0 \
             --with-mpi-dir=/usr \
+            --with-superlu-lib=-lsuperlu --with-superlu-include=/usr/include/superlu \
+            --with-superlu_dist-lib=-lsuperlu_dist --with-superlu_dist-include=/usr/include/superlu_dist \
+            --with-hdf5=1 --with-hdf5-fortran-bindings=1 \
             $(sh ${srcdir}/test_optdepends.sh)"
 
   echo ${CONFOPTS}
