@@ -2,7 +2,8 @@
 pkgname=flawesome-bin
 _appname=Flawesome
 pkgver=0.2.3
-pkgrel=11
+_electronversion=9
+pkgrel=12
 pkgdesc="A modern productivity tool that will help you organise your day-today work and thoughts."
 arch=("x86_64")
 url="https://github.com/ashishBharadwaj/flawesome"
@@ -10,8 +11,9 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron9'
-    'hicolor-icon-theme')
+    "electron${_electronversion}"
+    'hicolor-icon-theme'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
@@ -19,6 +21,10 @@ source=(
 sha256sums=('1cb04d7b3bb6c57b269c4214b46d7619b6480697b7ac73acd209448711ea4252'
             '7d54048cd9ec109b95942c835f4a8ac47370056346ad496caba8832fdd7052ab')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_appname}/${pkgname%-bin} %U|${pkgname%-bin}|g;s|Productivity|Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
