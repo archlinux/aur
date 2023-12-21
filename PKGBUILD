@@ -2,7 +2,7 @@
 
 pkgname=opengnb-git
 pkgver=1.3.0.c.33.g25ff341
-pkgrel=1
+pkgrel=6
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
 arch=(x86_64
     aarch64
@@ -27,6 +27,8 @@ pkgver() {
 }
 
 prepare() {
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
+
     cd "${srcdir}/${pkgname%-git}"
     sed -i 's|-I./libs/miniupnpc|-I/usr/include/miniupnpc/|g'  Makefile.linux
 }
