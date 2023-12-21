@@ -1,7 +1,7 @@
 pkgbase = proxmark3gui-git
 	pkgdesc = A cross-platform GUI for Proxmark3 client | 为 PM3 设计的图形界面
 	pkgver = 0.2.8.r0.ge2fb189
-	pkgrel = 1
+	pkgrel = 10
 	url = https://github.com/wh201906/Proxmark3GUI
 	arch = x86_64
 	license = LGPL-2.1

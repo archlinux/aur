@@ -2,7 +2,7 @@
 
 pkgname=proxmark3gui-git
 pkgver=0.2.8.r0.ge2fb189
-pkgrel=1
+pkgrel=10
 pkgdesc="A cross-platform GUI for Proxmark3 client | 为 PM3 设计的图形界面"
 arch=('x86_64')
 url="https://github.com/wh201906/Proxmark3GUI"
@@ -19,6 +19,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname}/"
     git describe --long --tags | sed 's/V//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
