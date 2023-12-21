@@ -2,7 +2,8 @@
 pkgname=ferrum-bin
 _pkgname=Ferrum
 pkgver=0.17.1
-pkgrel=4
+_electronversion=19
+pkgrel=5
 pkgdesc="Music library app for Mac, Linux and Windows"
 arch=('x86_64')
 url="https://github.com/probablykasper/ferrum"
@@ -10,7 +11,7 @@ license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron19'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
@@ -18,10 +19,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('42a0c42c3d24d50ff90fc30a8036023c2721697f855b1a6b02209dfd8602807e'
-            '51c96590631edbdcc6bf5a1bc19ed248c63af8c6018aebe3764d2cad97af50fd')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {

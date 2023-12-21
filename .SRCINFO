@@ -1,7 +1,7 @@
 pkgbase = ferrum-bin
 	pkgdesc = Music library app for Mac, Linux and Windows
 	pkgver = 0.17.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/probablykasper/ferrum
 	arch = x86_64
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = ferrum-bin
 	source = ferrum-0.17.1.deb::https://github.com/probablykasper/ferrum/releases/download/v0.17.1/Ferrum-v0.17.1-linux.deb
 	source = ferrum.sh
 	sha256sums = 42a0c42c3d24d50ff90fc30a8036023c2721697f855b1a6b02209dfd8602807e
-	sha256sums = 51c96590631edbdcc6bf5a1bc19ed248c63af8c6018aebe3764d2cad97af50fd
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = ferrum-bin
