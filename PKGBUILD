@@ -3,7 +3,7 @@
 pkgbase=hbdbus-git
 pkgname=hbdbus-git
 pkgver=2.0.0.r9.g9ed58d4
-pkgrel=1
+pkgrel=4
 pkgdesc="The data bus for HybridOS based on HVML PurC."
 arch=(x86_64
     aarch64
@@ -33,6 +33,11 @@ options=('!strip')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}/"
     git describe --long --tags | sed 's/ver.//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
 build() {
