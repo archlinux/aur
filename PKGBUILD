@@ -1,14 +1,14 @@
-# Maintainer: lily.software (contact@lily.software)
+# Maintainer: prismatica (contact@prismatica.dev)
 pkgname="dlcunlockerscript"
-pkgver="0.1.1"
-pkgrel="3"
+pkgver="0.1.2"
+pkgrel="1"
 pkgdesc="Interactive script for installing SmokeAPI or CreamLinux on Linux."
 arch=(any)
-url="https://github.com/lily-software/DLCUnlockerScript"
+url="https://github.com/prismatica-dev/DLCUnlockerScript"
 license=("MIT")
 makedepends=("git")
 depends=("lib32-gcc-libs" "lib32-glibc" "glibc" "gcc-libs" "bash")
-source=("${pkgname%-git}::git+https://github.com/lily-software/DLCUnlockerScript.git")
+source=("${pkgname%-git}::git+https://github.com/prismatica-dev/DLCUnlockerScript.git")
 sha512sums=("SKIP")
 package() {
   echo "Installing DLCUnlocker"
@@ -22,7 +22,7 @@ package() {
   install -Dm644 "${pkgname}/assets/CreamLinux/cream_api.ini" "${pkgdir}/usr/share/${pkgname}/assets/CreamLinux/cream_api.ini"
   install -Dm644 "${pkgname}/assets/CreamLinux/cream.sh" "${pkgdir}/usr/share/${pkgname}/assets/CreamLinux/cream.sh"
   install -Dm644 "${pkgname}/assets/CreamLinux/lib32Creamlinux.so" "${pkgdir}/usr/share/${pkgname}/assets/CreamLinux/lib32Creamlinux.so"
-  install -Dm644 "${pkgname}/assets/CreamLinux/lib64Creamlinux.so" "${pkgdir}/usr/share/${pkgname}/assets/CreamLinux/lib64reamlinux.so"
+  install -Dm644 "${pkgname}/assets/CreamLinux/lib64Creamlinux.so" "${pkgdir}/usr/share/${pkgname}/assets/CreamLinux/lib64Creamlinux.so"
 
   echo "Installing DLCUnlocker (SmokeAPI)"
   mkdir -p "${pkgdir}/usr/share/${pkgname}/assets/SmokeAPI"
