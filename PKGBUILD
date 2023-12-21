@@ -3,7 +3,7 @@
 # Maintainer: Xenhat Hex (me@xenh.at)
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-viewer
-pkgdesc="A Second Life client with focus on performance and code correctness."
+pkgdesc="A Second Life client with focus on performance and code correctness - Self-compiled Release."
 _build_id=2251
 pkgver=7.1.1.${_build_id}
 pkgrel=2

@@ -1,5 +1,5 @@
 pkgbase = alchemy-viewer
-	pkgdesc = A Second Life client with focus on performance and code correctness.
+	pkgdesc = A Second Life client with focus on performance and code correctness - Self-compiled Release.
 	pkgver = 7.1.1.2251
 	pkgrel = 2
 	url = https://www.alchemyviewer.org
