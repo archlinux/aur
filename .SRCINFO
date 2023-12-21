@@ -1,6 +1,6 @@
 pkgbase = python-ttfautohint-py-git
 	pkgdesc = Python wrapper for ttfautohint, a free auto-hinter for TrueType fonts
-	pkgver = 0.5.1.r0.gfe1dd22
+	pkgver = 0.5.1.r2.g5b66ad2
 	pkgrel = 1
 	url = https://github.com/fonttools/ttfautohint-py
 	arch = any

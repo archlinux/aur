@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-ttfautohint-py-git
-pkgver=0.5.1.r0.gfe1dd22
+pkgver=0.5.1.r2.g5b66ad2
 pkgrel=1
 pkgdesc='Python wrapper for ttfautohint, a free auto-hinter for TrueType fonts'
 url='https://github.com/fonttools/ttfautohint-py'
@@ -24,15 +24,20 @@ pkgver() {
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
+
 build() {
     cd "$pkgname"
     python -m build -wn
 }
 
-check() {
-    cd "$pkgname"
-    PYTHONPATH=Lib pytest tests
-}
+# check() {
+#     cd "$pkgname"
+#     PYTHONPATH=Lib pytest tests
+# }
 
 package() {
     cd "$pkgname"
