@@ -2,17 +2,17 @@
 
 pkgname=neovim-qml
 url="https://github.com/peterhoeg/vim-qml"
-_commit=50d2e737094c146195171b7d52e522384f15afe8
+_commit=892c36a80a8711025af7bb9d09a8a6b90fe3d0c8
 arch=('any')
 license=('unknown')
 makedepends=()
 depends=('neovim')
 groups=('neovim-plugins')
-pkgver=r50.50d2e73
+pkgver=r57.892c36a
 pkgrel=1
 pkgdesc='QML syntax highlighting for Neovim'
 source=("https://github.com/peterhoeg/vim-qml/archive/$_commit.zip")
-sha256sums=('765005e90c3f3153a52e32e79665fbb85ecaa7452c8de2d4992e78820b317bbb')
+sha256sums=('63104486b1bdb4a7619dc89ec6b31443078f1087e6e18636d0acf675fcbdf034')
 
 package() {
     _installdir="$pkgdir/usr/share/nvim/runtime"
