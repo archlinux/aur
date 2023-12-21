@@ -1,6 +1,6 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=omnisharp-roslyn-bin
-pkgver=1.39.10
+pkgver=1.39.11
 pkgrel=1
 pkgdesc='OmniSharp server (STDIO) based on Roslyn workspaces'
 arch=(x86_64)
@@ -12,7 +12,7 @@ conflicts=(${pkgname%-bin})
 source=(
 	"omnisharp-linux-x64-net6.0-$pkgver.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v$pkgver/omnisharp-linux-x64-net6.0.tar.gz"
 )
-sha256sums=('b5efcf52718c9e7032dd8eea24daf26565ab3af6a6c06f308f6376de7a49793d')
+sha256sums=('055ca4ccbcc562460c223d85dbb7462f8ee78979c696e37ff6a682dd5ba887ff')
 
 package() {
 	install -Dm755 OmniSharp *.dll -t"$pkgdir"/usr/lib/omnisharp
