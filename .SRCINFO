@@ -7,6 +7,7 @@ pkgbase = jql-bin
 	arch = x86_64
 	license = MIT
 	license = APACHE
+	provides = jql
 	source = https://github.com/yamafaktory/jql/raw/jql-v7.1.2/LICENSE-MIT
 	source = https://github.com/yamafaktory/jql/raw/jql-v7.1.2/LICENSE-APACHE
 	source = https://github.com/yamafaktory/jql/releases/download/jql-v7.1.2/jql-v7.1.2-arm-unknown-linux-musleabihf.tar.gz.sha256

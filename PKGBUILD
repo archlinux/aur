@@ -7,6 +7,7 @@ pkgdesc="A JSON Query Language CLI tool"
 url="https://github.com/yamafaktory/jql"
 arch=('arm' 'x86_64')
 license=('MIT' 'APACHE')
+provides=('jql')
 source=(
 	"$url/raw/jql-v$pkgver/LICENSE-MIT"
 	"$url/raw/jql-v$pkgver/LICENSE-APACHE"
