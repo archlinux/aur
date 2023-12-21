@@ -1,5 +1,5 @@
 pkgname=python-sip
-pkgver=6.7.11
+pkgver=6.8.1
 pkgrel=1
 arch=(x86_64)
 pkgdesc='A tool that makes it easy to create Python bindings for C and C++ libraries'
@@ -19,7 +19,7 @@ makedepends=(
     python-wheel
 )
 source=(https://pypi.python.org/packages/source/s/sip/sip-$pkgver.tar.gz)
-sha256sums=('f0dc3287a0b172e5664931c87847750d47e4fdcda4fe362b514af8edd655b469')
+sha256sums=('3002df415e168ac3ffe393942dbc7131cb82ade50000e1526f46a88ade26f598')
 
 build() {
   cd sip-$pkgver
