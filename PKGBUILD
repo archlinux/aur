@@ -3,7 +3,7 @@
 
 pkgname=python-pymc
 _name=${pkgname#python-}
-pkgver=5.10.2
+pkgver=5.10.3
 pkgrel=1
 pkgdesc="Markov chain Monte Carlo for Python"
 arch=(any)
@@ -35,7 +35,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a0b28c34220f0c46fddd8c0c947509c853d51696cad186ea2c2372939b9a32e1')
+sha256sums=('32e0d317f017b2e763b39e6e5946054970b2b5b2018a01cfae614537fe0a2560')
 
 _archive="$_name-$pkgver"
 
@@ -66,5 +66,5 @@ package() {
   cd "$_archive"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
