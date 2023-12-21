@@ -1,6 +1,6 @@
 pkgbase = ollama-cuda
 	pkgdesc = Create, run and share large language models (LLMs) with CUDA
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/jmorganca/ollama
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = ollama-cuda
 	makedepends = setconf
 	provides = ollama
 	conflicts = ollama
-	source = git+https://github.com/jmorganca/ollama#commit=6ee8c80199866f1d1826ca8f8239e7e70c96fab7
+	source = git+https://github.com/jmorganca/ollama#commit=6b5bdfa6c9321405174ad443f21c2e41db36a867
 	source = ggml::git+https://github.com/ggerganov/llama.cpp#commit=9e232f0234073358e7031c1b8d7aa45020469a3b
-	source = gguf::git+https://github.com/ggerganov/llama.cpp#commit=948ff137ec37f1ec74c02905917fa0afc9b97514
+	source = gguf::git+https://github.com/ggerganov/llama.cpp#commit=a7aee47b98e45539d491071b25778b833b77e387
 	source = sysusers.conf
 	source = tmpfiles.d
 	source = ollama.service
