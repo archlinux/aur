@@ -1,7 +1,7 @@
 pkgbase = excel-parser-processor-bin
 	pkgdesc = Simply generates an array of items from the rows of an Excel file and does the repetitive tedious operations step by step recursively till every item of the array is processed.
 	pkgver = 1.3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/btargac/excel-parser-processor
 	arch = x86_64
 	license = MIT
@@ -17,10 +17,10 @@ pkgbase = excel-parser-processor-bin
 	provides = excel-parser-processor=1.3.1
 	conflicts = excel-parser-processor
 	source = excel-parser-processor-1.3.1.AppImage::https://github.com/btargac/excel-parser-processor/releases/download/v1.3.1/Excel-Parser-Processor-1.3.1.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/btargac/excel-parser-processor/v1.3.1/LICENSE
+	source = LICENSE-1.3.1::https://raw.githubusercontent.com/btargac/excel-parser-processor/v1.3.1/LICENSE
 	source = excel-parser-processor.sh
 	sha256sums = 90b96fec41aae2dffdd5a7c72dfdd8ad954b2675662a4dc4360851410aa73b5d
 	sha256sums = cb199ba111f4311de39df0fc7458a8573f9c62f42eb2332b4262f0e6b31a3ff7
-	sha256sums = 50edd435b99fbbf512951cc5461694cb1818d39306336e98125be79352d7daf3
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = excel-parser-processor-bin
