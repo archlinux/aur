@@ -3,6 +3,10 @@
 
 This project provides a command-line interface (CLI) for Dashlane, built with the local Node.js version installed. It is the GitHub version of the Dashlane CLI.
 
+## Caution
+
+The rate limit for device registration is 40 calls per day. If you exceed this limit, you will not be able to register a new device for 24 hours. So if you tinker around with this package, you might want to slow it down a bit in case of errors.
+
 ## Getting Started
 
 These instructions will get you a copy of the package up and running on your local machine for development and testing purposes.
