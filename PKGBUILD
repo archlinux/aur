@@ -1,6 +1,9 @@
 # Maintainer: xiota / aur.chaotic.cx
 
 # options
+: ${_build_clang:=true}
+: ${_build_mold:=true}
+
 : ${_build_avx:=true}
 : ${_build_git:=true}
 
@@ -10,7 +13,7 @@
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5299.r0.g20c3178df
+pkgver=1.7.5318.r0.gfea213ee2
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -27,7 +30,6 @@ _main_package() {
     libpcap
     libpng
     libxrandr
-    lld
     qt6-base
     qt6-svg
     sdl2
@@ -36,15 +38,12 @@ _main_package() {
     xcb-util-cursor
   )
   makedepends=(
-    clang
     cmake
     extra-cmake-modules
     gendesk
     git
     libpipewire
     libpulse
-    lld
-    llvm
     p7zip
     qt6-tools
     qt6-wayland
@@ -53,11 +52,23 @@ _main_package() {
     'qt6-wayland: Wayland support'
   )
 
+  if [[ "${_build_mold::1}" == "t" ]] ; then
+    makedepends+=(
+      clang
+      llvm
+    )
+  fi
+
+  if [[ "${_build_mold::1}" == "t" ]] ; then
+    makedepends+=('mold')
+  else
+    makedepends+=('lld')
+  fi
+
   provides=("$_pkgname")
   conflicts=("$_pkgname")
 
   install="$_pkgname.install"
-  #options=(!lto)
 
   _pkgsrc="$_pkgname"
   source=(
@@ -209,18 +220,12 @@ pkgver() {
 }
 
 build() {
-  local _cmake_options=(
+  local _cmake_options
+  _cmake_options+=(
     -S "$_pkgsrc"
     -B build
     -DCMAKE_BUILD_TYPE="Release"
     -DCMAKE_INSTALL_PREFIX="/usr"
-
-    -DCMAKE_C_COMPILER=clang
-    -DCMAKE_CXX_COMPILER=clang++
-    -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld"
-    -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
-    -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld"
-    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
 
     #-DLTO_PCSX2_CORE=ON # default:unset
     -DDISABLE_BUILD_DATE=ON # default:unset
@@ -230,9 +235,35 @@ build() {
     -Wno-dev
   )
 
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    export AR=llvm-ar
+    export NM=llvm-nm
+
+    _cmake_options+=(
+      -DCMAKE_C_COMPILER=clang
+      -DCMAKE_CXX_COMPILER=clang++
+      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
+      -DENABLE_LTO=ON
+    )
+  fi
+
+  if [[ "${_build_mold::1}" == "t" ]] ; then
+    _cmake_options+=(
+      -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=mold"
+      -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=mold"
+      -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=mold"
+    )
+  else
+    _cmake_options+=(
+      -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld"
+      -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
+      -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld"
+    )
+  fi
+
   if [[ "${_build_avx::1}" == "t" ]] ; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-    export CXXFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
 
     _cmake_options+=(
       -DARCH_FLAG=" " # prevent march=native
@@ -240,7 +271,6 @@ build() {
   else
     _cmake_options+=(-DDISABLE_ADVANCE_SIMD=ON)
   fi
-
 
   cmake "${_cmake_options[@]}"
   cmake --build build

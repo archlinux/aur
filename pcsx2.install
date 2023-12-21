@@ -1,13 +1,15 @@
 # For DEV9 netplay support
 
+_PCSX2_BIN="opt/pcsx2/pcsx2-qt"
+
 post_install() {
-  setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' opt/pcsx2/pcsx2-qt
+  setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' "${_PCSX2_BIN}"
 }
 
 post_upgrade() {
-  setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' opt/pcsx2/pcsx2-qt
+  setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' "${_PCSX2_BIN}"
 }
 
 pre_remove() {
-  setcap -r opt/pcsx2/pcsx2-qt
+  setcap -r "${_PCSX2_BIN}"
 }
