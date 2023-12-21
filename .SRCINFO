@@ -1,6 +1,6 @@
 pkgbase = gossip-bin
-	pkgdesc = gossip nostr client AppImage, built with rust, egui based.
-	pkgver = 0.8.1
+	pkgdesc = gossip nostr client built with rust
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/mikedilger/gossip
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = gossip-bin
 	provides = gossip-bin
 	conflicts = gossip
 	conflicts = gossip-git
-	source = gossip.0.8.1.AppImage::https://github.com/mikedilger/gossip/releases/download/v0.8.1/gossip.0.8.1.AppImage
-	source = LICENSE::https://github.com/mikedilger/gossip/releases/download/v0.8.1/LICENSE.txt
-	source = gossip-bin.desktop
-	sha256sums = 54a123f3366ae672be4339dff5364dce268339cabe6aa99d574c200eb4645f63
+	source = gossip_0.8.2_amd64.deb::https://github.com/mikedilger/gossip/releases/download/v0.8.2/gossip_0.8.2_amd64.deb
+	source = LICENSE::https://github.com/mikedilger/gossip/releases/download/v0.8.2/LICENSE.txt
+	source = gossip.png::https://raw.githubusercontent.com/mikedilger/gossip/c437e3ebf30ff168395bcdcb94cab7c88a5d0543/logo/gossip.png
+	sha256sums = 25b5372911a2f699358eab7d641426e5a75ab31596cf5473a5adecce84ec7ca3
 	sha256sums = e2860f22b4ae91017e138509f14a0c6c7e63aaae1bda7178b85020301b67cce4
-	sha256sums = 52fa1438918a2233a0cd01a5b0937667c55b4d3a5ab820e4025710a9b7319e5f
+	sha256sums = 7f4f3e319a429825008c8d46cc2cfbaf3bdce70972e5900df7e548df6967258b
 
 pkgname = gossip-bin
