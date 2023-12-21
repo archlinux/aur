@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vikunja-desktop-bin
 _pkgname="Vikunja Desktop"
-pkgver=0.21.0
+pkgver=0.22.0
 _electronversion=25
 pkgrel=3
 pkgdesc="The open-source, self-hostable to-do app.Organize everything, on all platforms."
@@ -19,8 +19,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::https://dl.vikunja.io/desktop/${pkgver}/Vikunja%20Desktop-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d5236c3d0a6283aeb18bf400ac0fb296225b40bbf0563b1db63915fd8f4411c9'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+sha256sums=('23dfd62801f4d10295c0276787d58985569be125725068cb3e2d01e1efa78fe3'
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g;s|Productivity|Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
