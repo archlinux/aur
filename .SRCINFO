@@ -1,6 +1,6 @@
 pkgbase = shell-gpt
 	pkgdesc = A command-line productivity tool powered by OpenAI's ChatGPT
-	pkgver = 0.9.4
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/TheR1D/shell_gpt
 	arch = any
@@ -15,9 +15,7 @@ pkgbase = shell-gpt
 	depends = python-requests
 	depends = python-rich
 	depends = python-typer
-	source = shell-gpt-0.9.4.tar.gz::https://github.com/TheR1D/shell_gpt/archive/refs/tags/0.9.4.tar.gz
-	source = hatch-ignore-vcs.patch
-	sha256sums = 5bb53d634384fbde5d10b39429a89e59423457e60e7a2c746aec3ea541ea5856
-	sha256sums = d0eddae80416ad719369ba6d83f101f710ff2c875c78d858bce0cded8ab1c6bd
+	source = shell-gpt-1.0.0.tar.gz::https://github.com/TheR1D/shell_gpt/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = d25daa78e6763baa46bf4da49fd900ae30b8c851f964af1f3b443036a44f4ebf
 
 pkgname = shell-gpt
