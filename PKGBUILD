@@ -28,7 +28,7 @@ build() {
         -D SCALAPACK_BUILD_TESTS:BOOL=OFF \
         -D CMAKE_BUILD_TYPE:STRING=Release \
         -D CMAKE_Fortran_FLAGS:STRING="$FCFLAGS -fallow-argument-mismatch"
-  cmake --build build --parallel
+  cmake --build build --parallel 4
 }
 
 package(){
