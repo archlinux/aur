@@ -1,6 +1,6 @@
 pkgbase = eusoft-frhelper-bin
 	pkgdesc = 法语助手,权威的法语词典软件,法语学习者必备的工具.支持学习笔记、生词本多平台同步，让你随时随地学法语.
-	pkgver = 2023_11_07
+	pkgver = 2023.12.19
 	pkgrel = 1
 	url = https://www.eudic.net/v4/fr/app/frhelper
 	arch = x86_64
@@ -62,9 +62,11 @@ pkgbase = eusoft-frhelper-bin
 	conflicts = eusoft-frhelper
 	conflicts = frhelper
 	options = !strip
-	source = eusoft-frhelper-2023_11_07.deb::https://www.eudic.net/download/frhelper.deb?v=2023-11-07
+	source = eusoft-frhelper-2023.12.19.deb::https://www.eudic.net/download/frhelper.deb?v=2023-12-19
 	source = LICENSE.html
-	sha256sums = a2e40c51cfbb0425de8cbcba44fbbed9ff282697346a3bd940fbf8278d030dfe
+	source = eusoft-frhelper.sh
+	sha256sums = ce5fcba8f0a2ffd0bff6b62e63f658883e795577caca130698de799a8647530c
 	sha256sums = 69031e95591a339c4cd9c01547494e23196cea6438608f1f951b493ea8fca54f
+	sha256sums = 1f086c1275263d7be3291f28b211da94187870f88e7437511aa6496ffb7fe99f
 
 pkgname = eusoft-frhelper-bin
