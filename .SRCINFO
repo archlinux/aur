@@ -1,6 +1,6 @@
 pkgbase = glib2-patched-thumbnailer
 	pkgdesc = GLib2 patched with ahodesuka's thumbnailer patch.
-	pkgver = 2.78.1
+	pkgver = 2.78.3
 	pkgrel = 1
 	url = https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = glib2-patched-thumbnailer
 	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
 	optdepends = libelf: gresource inspection tool
 	optdepends = gvfs: most gio functionality
-	provides = glib2=2.78.1
+	provides = glib2=2.78.3
 	provides = libgio-2.0.so
 	provides = libglib-2.0.so
 	provides = libgmodule-2.0.so
@@ -36,7 +36,7 @@ pkgbase = glib2-patched-thumbnailer
 	conflicts = glib2
 	options = !docs
 	options = staticlibs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=21624e78f013ee8706483086e3086076d08fe242
+	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=03f7c1fbf3a3784cb4c3604f83ca3645e9225577
 	source = git+https://gitlab.gnome.org/GNOME/gvdb.git
 	source = 0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
 	source = 0002-glocalfileinfo-add-a-dbus-thumbnail-generator.patch
