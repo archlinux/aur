@@ -1,7 +1,7 @@
 pkgbase = python-hyperspy
 	pkgdesc = Hyperspectral data analysis
-	pkgver = 2.0rc0
-	pkgrel = 2
+	pkgver = 2.0
+	pkgrel = 1
 	url = http://hyperspy.org
 	arch = any
 	license = GPL3
@@ -56,7 +56,7 @@ pkgbase = python-hyperspy
 	provides = hyperspy
 	conflicts = hyperspy
 	replaces = hyperspy
-	source = https://github.com/hyperspy/hyperspy/archive/v2.0rc0.tar.gz
-	md5sums = d1bf21cd1e5c225a3ec5696730aebe11
+	source = https://github.com/hyperspy/hyperspy/archive/v2.0.tar.gz
+	md5sums = d25ec44e2fec425a72debedc7158838e
 
 pkgname = python-hyperspy

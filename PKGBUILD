@@ -3,8 +3,8 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=2.0rc0
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
@@ -77,4 +77,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('d1bf21cd1e5c225a3ec5696730aebe11')
+md5sums=('d25ec44e2fec425a72debedc7158838e')
