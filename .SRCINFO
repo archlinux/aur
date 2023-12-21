@@ -1,6 +1,6 @@
 pkgbase = piper-phonemize
 	pkgdesc = C++ library for converting text to phonemes for Piper.
-	pkgver = 2023.9.27
+	pkgver = 2023.11.14
 	pkgrel = 1
 	url = https://github.com/rhasspy/piper-phonemize
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = piper-phonemize
 	provides = onnxruntime
 	conflicts = espeak-ng
 	conflicts = onnxruntime
-	source = piper-phonemize.tar.gz::https://github.com/rhasspy/piper-phonemize/archive/refs/tags/2023.9.27-2.tar.gz
-	sha256sums = f868f2dd926791563fa47858abdfc7c630845b7d57d91b28bcbadd7f3fa6ea38
+	source = piper-phonemize.tar.gz::https://github.com/rhasspy/piper-phonemize/archive/refs/tags/2023.11.14-4.tar.gz
+	sha256sums = 4713d62b9d639d9e27c9abb6dcc5f98ee36c9b873ae0590644d325837ebf135a
 
 pkgname = piper-phonemize

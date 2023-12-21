@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=piper-phonemize
-pkgver=2023.9.27
-_rel=2
+pkgver=2023.11.14
+_rel=4
 pkgrel=1
 pkgdesc="C++ library for converting text to phonemes for Piper."
 arch=('aarch64' 'x86_64')
@@ -27,4 +27,4 @@ package() {
     cmake --install build
 }
 
-sha256sums=('f868f2dd926791563fa47858abdfc7c630845b7d57d91b28bcbadd7f3fa6ea38')
+sha256sums=('4713d62b9d639d9e27c9abb6dcc5f98ee36c9b873ae0590644d325837ebf135a')
