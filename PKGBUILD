@@ -18,14 +18,26 @@ sha256sums=('f62c38123213d1c1fe2eb8910b0ffbdc1cac56273c2520f3b64a553363190b9d')
 
 
 build() {
-  cmake -S ${pkgbase}-${pkgver_} -B build-test -DDAMASK_SOLVER=test -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Performance
-  cmake --build build-test --parallel
+  cmake -S ${pkgbase}-${pkgver_} \
+        -B build-test \
+        -D DAMASK_SOLVER:STRING=test \
+        -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+        -D CMAKE_BUILD_TYPE:STRING=Performance
+  cmake --build build-test --parallel 4
 
-  cmake -S ${pkgbase}-${pkgver_} -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Performance
-  cmake --build build-grid --parallel
+  cmake -S ${pkgbase}-${pkgver_} \
+        -B build-grid \
+        -D DAMASK_SOLVER:STRING=grid \
+        -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+        -D CMAKE_BUILD_TYPE:STRING=Performance
+  cmake --build build-grid --parallel 4
 
-  cmake -S ${pkgbase}-${pkgver_} -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Performance
-  cmake --build build-mesh --parallel
+  cmake -S ${pkgbase}-${pkgver_} \
+        -B build-mesh \
+        -D DAMASK_SOLVER:STRING=mesh \
+        -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+        -D CMAKE_BUILD_TYPE:STRING=Performance
+  cmake --build build-mesh --parallel 4
 
   cd ${pkgbase}-${pkgver_}/python
   python -m build --wheel --no-isolation
@@ -35,7 +47,10 @@ check() {
   mpirun -np 2 build-test/src/DAMASK_test
 
   example_dir=${pkgbase}-${pkgver_}/examples/grid
-  mpirun -np 2 build-grid/src/DAMASK_grid -l ${example_dir}/tensionX.yaml -m ${example_dir}/material.yaml -g ${example_dir}/20grains16x16x16.vti
+  mpirun -np 2 build-grid/src/DAMASK_grid \
+         -l ${example_dir}/tensionX.yaml \
+         -m ${example_dir}/material.yaml \
+         -g ${example_dir}/20grains16x16x16.vti
 
   PYTHONPATH=${pkgbase}-${pkgver_}/python:${PYTHONPATH}
   python -c "import damask;print(damask.__version__)"
@@ -43,7 +58,7 @@ check() {
 
 package_damask-grid() {
   pkgdesc='Grid solver for DAMASK'
-  depends=('petsc<3.21' 'hdf5-openmpi' 'fftw' 'zlib' 'libfyaml')
+  depends=('petsc<3.21' 'openmpi' 'hdf5-openmpi' 'fftw' 'zlib' 'libfyaml')
   optdepends=('dream3d: pre-processing')
 
   install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
@@ -55,7 +70,7 @@ package_damask-grid() {
 
 package_damask-mesh() {
   pkgdesc='Mesh solver for DAMASK'
-  depends=('petsc<3.21' 'hdf5-openmpi' 'libfyaml')
+  depends=('petsc<3.21' 'openmpi' 'hdf5-openmpi' 'libfyaml')
   optdepends=('neper: pre-processing')
 
   install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
