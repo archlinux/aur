@@ -2,7 +2,7 @@
 _pkgname=github-desktop
 _appname=GitHubDesktop
 pkgname="${_pkgname}-zh-bin"
-pkgver=3.3.6_linux2
+pkgver=3.3.6_linux3
 #_zhpkgver="${pkgver%_linux2}"
 _zhpkgver=3.3.6
 _electronversion=26
@@ -37,10 +37,10 @@ source=(
 )
 sha256sums=('bf4ed02cd93b8ee9fbaeb683fdb8e59b6411c89535bd6846546d1434dd8783a3'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
-            'ba4ed4aaf2c44af5118b06a3099a92ef3bdc969ed964ad508a857d37ae56fd3d')
-sha256sums_aarch64=('924760ffd139e4b6e18d33e0ffe0c473ef88602c7a53b4a8edab454e1bde0ca8')
-sha256sums_armv7h=('c9519cfc30167d8167ee0a914bce7f051df5f9648408110783731a57b3413ef4')
-sha256sums_x86_64=('5aa91259760f5542c732ff988b75bd40039081389eadb6b6fbe3b170a45b1438')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+sha256sums_aarch64=('2c1faf2dbfff1c69cadf1b4ace7bae20fb64b492298698e2bfa56482e6f8a584')
+sha256sums_armv7h=('10d0220438d04983d8dd01a12d9c44c8616244fb3a31f0152f85a8809c3fea73')
+sha256sums_x86_64=('f74d0985f1cdefc0ae017a6d3d7d93a13bd3f44fa0fb1457aa6966df827d97a9')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
