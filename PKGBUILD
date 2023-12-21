@@ -2,8 +2,8 @@
 
 pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git)
-pkgver=1.5.141.r16.g3abc23c
-pkgrel=1
+pkgver=1.5.141.r17.ge3850a8
+pkgrel=3
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
 arch=('x86_64' 'aarch64')
@@ -45,10 +45,12 @@ pkgver() {
     git describe --long --tags |  sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/uuu_//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# prepare() {
+prepare()
+{
+    git -C "${srcdir}/${pkgbase%-git}" clean -dfx
 #     cd "${srcdir}/${pkgbase%-git}"
 #     git submodule update --init --recursive
-# }
+}
 
 build() {
     cd "${srcdir}/${pkgbase%-git}"
