@@ -1,7 +1,7 @@
 # Maintainer: Mika Cousin <mika dot cousin at gmail dot com>
 
 pkgname=olc-git
-pkgver=0.8.beta
+pkgver=0.8.2.beta
 pkgrel=1
 pkgdesc='Open Lighting Console'
 arch=(any)
