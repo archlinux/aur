@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java @@VER@@ Shell
+Comment=OpenJDK Java @@VER@@ Shell
+Keywords=java;shell
+Exec=@@PATH@@/bin/jshell
+Terminal=true
+Type=Application
+Icon=@@ICON@@
+Categories=Application;System;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java @@VER@@ Console
+Comment=OpenJDK Java @@VER@@ Monitoring & Management Console
+Keywords=java;console;monitoring
+Exec=@@PATH@@/bin/jconsole
+Terminal=false
+Type=Application
+Icon=@@ICON@@
+Categories=Application;System;

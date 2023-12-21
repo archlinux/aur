@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OpenJDK Java @@VER@@ Runtime
+Comment=OpenJDK Java @@VER@@ Runtime
+Keywords=java;runtime
+Exec=@@PATH@@/bin/java -jar
+Terminal=false
+Type=Application
+Icon=@@ICON@@
+MimeType=application/x-java-archive;application/java-archive;application/x-jar;
+NoDisplay=true
