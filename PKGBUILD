@@ -2,20 +2,22 @@
 # Contributor: Gyo <nucleogeek_at_gmail_dot_com>
 pkgname=koules
 pkgver=1.4
-pkgrel=5
+pkgrel=6
 pkgdesc="A fast arcade game based on fundamental law of bodies attraction"
 arch=('i686' 'x86_64')
 url="http://www.ucw.cz/~hubicka/koules/English/"
 license=('GPL')
 depends=('dialog' 'libx11' 'libxext' 'alsa-oss')
-makedepends=('imake' 'xextproto' 'xproto')
+makedepends=('imake' 'xorgproto')
 source=(http://www.ucw.cz/~hubicka/koules/packages/$pkgname$pkgver-src.tar.gz
         $pkgname-$pkgver-gcc3.patch
         $pkgname-$pkgver-alsa-oss.patch
+        $pkgname-$pkgver-multiple-definition.patch
         koules.desktop)
 md5sums=('0a5ac9e57c8b72e9fc200bc98273235c'
          'ccc92d4ab7d61ca482d30192a5ee83ec'
          'cbb37f907f7e8726be364434b75b66a9'
+         '0efb694f178065e2fdbc98f4445d3d38'
          'fb3cd393464214643c239ac4350f963a')
 
 prepare() {
@@ -25,6 +27,8 @@ prepare() {
 
   rm -f oss-redir.c
   patch -p1 < "$srcdir/$pkgname-$pkgver-alsa-oss.patch"
+
+  patch -p1 < "$srcdir/$pkgname-$pkgver-multiple-definition.patch"
 
   # some source modifications
   sed -i \

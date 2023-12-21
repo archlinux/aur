@@ -1,14 +1,13 @@
 pkgbase = koules
 	pkgdesc = A fast arcade game based on fundamental law of bodies attraction
 	pkgver = 1.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.ucw.cz/~hubicka/koules/English/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = imake
-	makedepends = xextproto
-	makedepends = xproto
+	makedepends = xorgproto
 	depends = dialog
 	depends = libx11
 	depends = libxext
@@ -16,11 +15,12 @@ pkgbase = koules
 	source = http://www.ucw.cz/~hubicka/koules/packages/koules1.4-src.tar.gz
 	source = koules-1.4-gcc3.patch
 	source = koules-1.4-alsa-oss.patch
+	source = koules-1.4-multiple-definition.patch
 	source = koules.desktop
 	md5sums = 0a5ac9e57c8b72e9fc200bc98273235c
 	md5sums = ccc92d4ab7d61ca482d30192a5ee83ec
 	md5sums = cbb37f907f7e8726be364434b75b66a9
+	md5sums = 0efb694f178065e2fdbc98f4445d3d38
 	md5sums = fb3cd393464214643c239ac4350f963a
 
 pkgname = koules
-
