@@ -1,5 +1,6 @@
 # Maintainer: Pierre Mavro <pmavro at qovery dot com>
-
+# Maintainer: Mesmer <ldepaulaf at gmail dot com 
+# 
 # Check for new Linux releases in: https://app.vanta.com/employee/onboarding
 
 _binname=vanta
@@ -7,7 +8,7 @@ _svcname=vanta-agent
 
 pkgname=vanta-agent
 # https://app.vanta.com/downloads
-pkgver=2.5.3
+pkgver=2.6.1
 pkgrel=2
 pkgdesc="Vanta agent"
 arch=('x86_64')
@@ -61,5 +62,5 @@ package() {
     fi
 }
 
-sha256sums=('b47f49ca9920a7b3be7a77dd2dd787f298ccb840a69583ea637e420a091f973b'
+sha256sums=('ce87c648df9d4d792f05bedca72c162264df1c64ee8fcaf4a9bbde2680725125'
             '2d650c20f8cabb78d3c629c38d8eed3b15f0e3f9f0b96b68f67fbe5831b41307')
