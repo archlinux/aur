@@ -1,4 +1,4 @@
-pkgbase = cyber
+pkgbase = cyber-bin
 	pkgdesc = Fast and concurrent scripting.
 	pkgver = 0.3
 	pkgrel = 1
@@ -7,10 +7,12 @@ pkgbase = cyber
 	arch = x86_64
 	license = MIT
 	provides = cyber
+	provides = cyber-bin
 	provides = cyberscript
 	conflicts = cyber
+	conflicts = cyber-bin
 	conflicts = cyberscript
 	source = https://github.com/fubark/cyber/releases/download/0.3/cyber-linux-x64.tar.gz
 	sha256sums = 24343c64e6c249fc2c081d11d959ad0e1db612f534e0a891c96db6111d9a3e1d
 
-pkgname = cyber
+pkgname = cyber-bin
