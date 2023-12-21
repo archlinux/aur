@@ -1,7 +1,7 @@
 pkgbase = fishpi-bin
 	pkgdesc = 摸鱼派新版客户端
 	pkgver = 1.3.5
-	pkgrel = 6
+	pkgrel = 7
 	url = https://fishpi.cn
 	arch = x86_64
 	license = custom
@@ -10,12 +10,12 @@ pkgbase = fishpi-bin
 	provides = fishpi=1.3.5
 	conflicts = fishpi
 	source = fishpi-1.3.5.tar.gz::https://github.com/imlinhanchao/fishpi-desktop/releases/download/1.3.5/fishpi-1.3.5-linux.tar.gz
-	source = fishpi.png::https://raw.githubusercontent.com/imlinhanchao/fishpi-desktop/master/build/icons/256x256.png
-	source = LICENSE.html::https://fishpi.cn/privacy
+	source = fishpi-1.3.5.png::https://raw.githubusercontent.com/imlinhanchao/fishpi-desktop/master/build/icons/256x256.png
+	source = LICENSE-1.3.5.html::https://fishpi.cn/privacy
 	source = fishpi.sh
 	sha256sums = 87dad81ad2f57bb136254df8c52e06613e24d296ce3aa39b722b6271dd6c44f5
 	sha256sums = c8d477f31fadf5c61c54afbc28ddf06af73dfa062b53ce70c47e1092eb05bc94
 	sha256sums = 297384f1b1b182685453ce1c25ec88de538555fe88ce9bf97545525e31ea357e
-	sha256sums = 181ab7f13db15a0f576700c4fb4705bdbde61ff413b895db1ec1e1084144a35e
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = fishpi-bin
