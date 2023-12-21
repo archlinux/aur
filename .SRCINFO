@@ -1,12 +1,11 @@
 pkgbase = goldwarden
 	pkgdesc = A feature-packed Bitwarden compatible desktop integration
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/quexten/goldwarden
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	makedepends = libfido2
 	makedepends = gcc
 	makedepends = wayland
 	makedepends = libx11
@@ -16,7 +15,8 @@ pkgbase = goldwarden
 	makedepends = base-devel
 	makedepends = vulkan-headers
 	makedepends = egl-wayland
-	source = https://github.com/quexten/goldwarden/archive/refs/tags/v0.1.9.tar.gz
-	sha256sums = 57555dab4afd4fc60785e8ad34f41932988b4cd2ce130daaa719625a0e455481
+	depends = libfido2
+	source = https://github.com/quexten/goldwarden/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = cf859c0e63f6aa05813abedb6ac505e18f5ae6c010946401209d79f757f0d9ce
 
 pkgname = goldwarden
