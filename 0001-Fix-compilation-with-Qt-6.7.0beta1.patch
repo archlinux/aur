@@ -1,0 +1,33 @@
+From 51e266fbacff04708b7a8ff401ea78fe74a6d87d Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 21 Dec 2023 18:24:50 +0100
+Subject: [PATCH 1/2] Fix compilation with Qt 6.7.0beta1
+
+Fix the wrong placement of the `-->`; not sure why this was not detected as
+invalid XML before.
+---
+ syncthingconnector/org.freedesktop.systemd1.Unit.xml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/syncthingconnector/org.freedesktop.systemd1.Unit.xml b/syncthingconnector/org.freedesktop.systemd1.Unit.xml
+index 035118e..a070755 100644
+--- a/syncthingconnector/org.freedesktop.systemd1.Unit.xml
++++ b/syncthingconnector/org.freedesktop.systemd1.Unit.xml
+@@ -206,12 +206,12 @@
+         <!--<property name="Conditions" type="a(sbbsi)" access="read">
+             <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="false" />
+         </property>
+-        <property name="Asserts" type="a(sbbsi)" access="read">-->
++        <property name="Asserts" type="a(sbbsi)" access="read">
+             <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="false" />
+         </property>
+         <property name="LoadError" type="(ss)" access="read">
+             <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const" />
+-        </property>
++        </property>-->
+         <property name="Transient" type="b" access="read">
+             <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const" />
+         </property>
+-- 
+2.43.0
+
