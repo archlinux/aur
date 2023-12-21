@@ -1,6 +1,6 @@
 pkgbase = timedctl
 	pkgdesc = Click CLI for Timed using libtimed
-	pkgver = 5.8.0
+	pkgver = 5.9.0
 	pkgrel = 2
 	url = https://github.com/adfinis/timedctl.git
 	arch = any
