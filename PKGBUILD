@@ -3,7 +3,7 @@
 pkgbase=purc-git
 pkgname=purc-git
 pkgver=0.9.18.r2.g9759a6772
-pkgrel=1
+pkgrel=4
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
     aarch64
@@ -79,6 +79,11 @@ options=('!strip')
 pkgver() {
     cd "${srcdir}/${pkgname}/"
     git describe --long --tags | sed 's/ver.//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
