@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=any-sync-gui
 _appname="Lan同步"
-pkgver=1.5.0
+pkgver=1.6.0
 _electronversion=25
 pkgrel=1
 pkgdesc="一款支持在pc与pc或移动设备之间同步文本信息或文件的应用"
