@@ -1,7 +1,7 @@
 pkgbase = lx-music-desktop-git
 	pkgdesc = 一个免费的音乐查找助手
 	pkgver = 2.5.0.ac7daa70
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/lyswhut/lx-music-desktop
 	arch = x86_64
 	arch = aarch64
