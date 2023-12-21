@@ -2,7 +2,7 @@
 # Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
 
 pkgname=bluez-rfcomm
-pkgver=5.70
+pkgver=5.71
 pkgrel=1
 pkgdesc="deprecated rfcomm tool from bluez"
 url="http://www.bluez.org/"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 depends=("bluez")
 source=(https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz)
-sha256sums=('37e372e916955e144cb882f888e4be40898f10ae3b7c213ddcdd55ee9c009278')
+sha256sums=('b828d418c93ced1f55b616fb5482cf01537440bfb34fbda1a564f3ece94735d8')
 
 build() {
   cd bluez-${pkgver}
