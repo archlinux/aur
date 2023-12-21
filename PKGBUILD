@@ -5,7 +5,7 @@
 # Contributor: Rye Mutt
 #
 # shellcheck disable=2034,3030,2154
-pkgdesc="A Second Life client with focus on performance and code correctness."
+pkgdesc="A Second Life client with focus on performance and code correctness - Git build."
 arch=('x86_64')
 license=('LGPL')
 options=('!buildflags' '!lto' '!strip')
