@@ -1,16 +1,16 @@
 pkgbase = portfolio-performance-bin
 	pkgdesc = A simple tool to calculate the overall performance of an investment portfolio.
-	pkgver = 0.65.6
+	pkgver = 0.66.2
 	pkgrel = 1
 	url = https://www.portfolio-performance.info
 	arch = x86_64
 	license = EPL
 	depends = java-runtime
 	options = !strip
-	source = portfolio_0.65.6.tar.gz::https://github.com/buchen/portfolio/releases/download/0.65.6/PortfolioPerformance-0.65.6-linux.gtk.x86_64.tar.gz
-	source = portfolio-performance-bin.svg::https://raw.githubusercontent.com/buchen/portfolio/0.65.6/portfolio-product/icons/logo.svg
+	source = portfolio_0.66.2.tar.gz::https://github.com/buchen/portfolio/releases/download/0.66.2/PortfolioPerformance-0.66.2-linux.gtk.x86_64.tar.gz
+	source = portfolio-performance-bin.svg::https://raw.githubusercontent.com/buchen/portfolio/0.66.2/portfolio-product/icons/logo.svg
 	source = portfolio-performance-bin.desktop
-	sha512sums = 8997d23c0b1baf271f65c1b4fcce0669b0e9f06f7fb22c7d2cd6d95dd36e539764b9e7c4e37e7d8dce9c9986db1faee393adec794811c577f13e4b4fae6db27c
+	sha512sums = 1845dd832a89de10f80c413b82527d0a0c7a951d16150b790df69b06e30330040b91de9275db9c0992161ea5d00a26f081f9bed3946a656003103c62001d6a35
 	sha512sums = a7aef110c3379ea40644c3acc8681abd2bda82522d90fc4777632883454055c63426f97dada8ca247e5fa20a9f5b462eead46d2c2bf16989d35cebd774d32162
 	sha512sums = 30301e96d108f25b10d77bf370bef366cb774f400487f6ffb1d3d718691bd2ee29b6a0fe5e7d8e8cfbe8af538285e9b2953a67657c4c752025045a7a6d9efb82
 
