@@ -8,8 +8,8 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=polymc
-pkgver=5.1
-pkgrel=4
+pkgver=6.0
+pkgrel=1
 pkgdesc="Minecraft launcher with the ability to manage multiple instances"
 arch=('x86_64')
 url="https://github.com/PolyMC/PolyMC"
