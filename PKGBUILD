@@ -2,7 +2,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=1
+pkgrel=2
 pkgver=1.91.4
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -49,7 +49,7 @@ sha256sums=('1f94f8f6b3852c08c2b3564e0965883449104299133ae282ba4a7028f8f7d7ab'
             'd20455349cdb9409adb42cdbde48c30a176d2a5337ad148c6d2227ecc523c88a'
             '01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e'
             '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
-            'abe44046256b32a6b629fd288e48653f02a6c4728a67806fac771ab1cad759d6'
+            'cc6c937806589cbbafaf03e6bd893209b6a325305468d8e357c3ac2a0143c603'
             'cc405c774e34cd161f00ccd882e66c2d2ce28405964bf62472ebc3f59d642060'
             'd38cdaa031f741998f2d31504381bce4db1a8771c774a2c2bac547d7d2b3c70b'
             'cc5acbbdc534fd525ec0ef93a1dc5c82d433598a90e740a3841a84c89b802b7d'
