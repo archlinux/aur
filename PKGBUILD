@@ -22,13 +22,13 @@ pkgver() {
 }
 
 prepare() {
-  $SHELL -c "source ./commands.sh && prepare_commands"
+  $SHELL -c "source ./commands.sh && prepare_commands $srcdir $pkgname"
 }
 
 build() {
-  $SHELL -c "source ./commands.sh && build_commands"
+  $SHELL -c "source ./commands.sh && build_commands $srcdir $pkgname"
 }
 
 package() {
-  $SHELL -c "source ./commands.sh && package_commands"
+  $SHELL -c "source ./commands.sh && package_commands $srcdir $pkgname $pkgdir"
 }
