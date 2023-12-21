@@ -1,7 +1,7 @@
 # Maintainer: Lenny McLennington <lenny@sneed.church>
 
 pkgname=polymc-qt5-bin
-pkgver=5.1
+pkgver=6.0
 pkgrel=1
 pkgdesc="Minecraft launcher with the ability to manage multiple instances."
 arch=('x86_64')
