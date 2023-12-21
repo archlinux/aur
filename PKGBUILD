@@ -76,13 +76,13 @@ md5sums=('ebfbd7a1f2806e270ae2defcbf6d2351'
          'f1b18ae896b93be65a2e9b276f12c16f'
          'f9c807d02d216ac4b1e6b56bf0a0acf0'
          'b9e1b8f9395622ba548d7fd07cfd7c26'
-         '567897f379ea28623ec8aa83e4f5d2fb')
+         '6c6ca17a11918aaf0a35a6684ad9db88')
 sha256sums=('303bab13f6defaa0f3af16a474fb91b3c178c10b11a614aff5e78bc739032067'
             '4dc37b7ed9db5c9fcd74f45cd6197f6b631d74d3a30022bda6fda1c5900b7099'
             '254c858572a4949c09726859d3f790d7bee535b8dbea184e4f6679d3b7c3b269'
             '751d088eb00a2b41a4d320a23805fdbe75466ffb401b4099a8e0dd814adc9587'
             'f754da4581b5e390e13fc407ab9fc4cdc7f139585081929626be8569dae99ad9'
-            '1e0750b939776d6b537900dbd45ab9a942a71f16e9424637fbb31d6659e87f86')
+            '3c5a01dcebb364c9c7c9d73d91640cad23515573387f473e36dac5ad9393858b')
 
 source+=(
   '0000-jsch-disable-md5-3des-cbc-dss-arcfour.patch'

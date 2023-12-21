@@ -22,16 +22,16 @@ diff -pNaru5 a/src/main/java/com/jcraft/jsch/JSch.java b/src/main/java/com/jcraf
          Util.getSystemProperty("jsch.enable_ext_info_in_auth", "yes"));
      config.put("cipher.s2c", Util.getSystemProperty("jsch.cipher",
 -        "aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com"));
-+        "chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr,aes256-cbc,aes192-cbc,aes128-cbc"));
++        "aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,aes256-cbc,aes192-cbc,aes128-cbc,chacha20-poly1305@openssh.com"));
      config.put("cipher.c2s", Util.getSystemProperty("jsch.cipher",
 -        "aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com"));
-+        "chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr,aes256-cbc,aes192-cbc,aes128-cbc"));
++        "aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,aes256-cbc,aes192-cbc,aes128-cbc,chacha20-poly1305@openssh.com"));
      config.put("mac.s2c", Util.getSystemProperty("jsch.mac",
 -        "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1"));
-+        "hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,hmac-sha1-etm@openssh.com,hmac-sha1"));
++        "hmac-sha2-512,hmac-sha2-256,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha1"));
      config.put("mac.c2s", Util.getSystemProperty("jsch.mac",
 -        "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1"));
-+        "hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,hmac-sha1-etm@openssh.com,hmac-sha1"));
++        "hmac-sha2-512,hmac-sha2-256,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha1"));
      config.put("compression.s2c", Util.getSystemProperty("jsch.compression", "none"));
      config.put("compression.c2s", Util.getSystemProperty("jsch.compression", "none"));
  
