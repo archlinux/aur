@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=airisp-next-git
-pkgver=r3.0340f17
-pkgrel=5
+pkgver=r41.760d231
+pkgrel=2
 pkgdesc="An ISP tool for Air MCU (Rust)"
 arch=(x86_64
     aarch64
@@ -26,6 +26,11 @@ pkgver() {
     cd "${srcdir}/${pkgname}/"
 #     git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
