@@ -3,7 +3,7 @@
 pkgbase=rkbin-git
 pkgname=rkbin
 pkgver=r1714.b4558da
-pkgrel=1
+pkgrel=9
 epoch=
 pkgdesc="Rockchip Firmware and Tool Binarys"
 arch=('x86_64')
@@ -30,6 +30,11 @@ pkgver() {
     cd "${srcdir}/${pkgname}/"
 #     git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 package() {
