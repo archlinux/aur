@@ -1,6 +1,6 @@
 pkgbase = r-mixsqp
 	pkgdesc = Sequential Quadratic Programming for Fast Maximum-Likelihood Estimation of Mixture Proportions
-	pkgver = 0.3.48
+	pkgver = 0.3.54
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mixsqp
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-mixsqp
 	optdepends = r-rmarkdown
 	optdepends = r-rmosek
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/mixsqp_0.3-48.tar.gz
-	sha256sums = 8874d7c2ce1a43ffe55d2de450bc7bd4e252d7e621c40ebc8f1fc752c7789209
+	source = https://cran.r-project.org/src/contrib/mixsqp_0.3-54.tar.gz
+	sha256sums = f7d0de918a221c58b3618dc3290a0ebe052256999ee3be35a19384f26b1dfb8e
 
 pkgname = r-mixsqp
