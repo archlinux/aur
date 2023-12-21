@@ -1,13 +1,16 @@
 # Maintainer:
 
 # options
-#: ${_pkgtype:="git"}
+: ${_build_git:=false}
+: ${_nodeversion:=18}
+
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
 _pkgname="thorium-reader"
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgname="$_pkgname${_pkgtype:-}"
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 url="https://github.com/edrlab/thorium-reader"
 license=('MIT')
@@ -24,14 +27,11 @@ _main_package() {
     'nvm'
   )
 
-  if [ x"$pkgname" == x"$_pkgname" ] ; then
+  if [[ "${_build_git::1}" != "t" ]] ; then
     _main_stable
   else
     _main_git
   fi
-
-  source+=("$_pkgname.sh")
-  sha256sums+=('74bc28848d52be2dc78414b3fdb25b19e1064a40fa05103bb544b1d7c1b6546a')
 }
 
 # stable package
@@ -96,16 +96,8 @@ _main_git() {
   }
 }
 
+
 # common functions
-_ensure_local_nvm() {
-  export NVM_DIR="${NVM_DIR:-"${startdir}/nvm-node"}"
-  export NODE_MODULE_CACHE="${NODE_MODULE_CACHE:-"${startdir}/npm-cache"}"
-
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-  nvm install 18
-  nvm use 18
-}
-
 prepare() {
   _prepare
 
@@ -118,7 +110,7 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 _ELECTRON=/usr/bin/electron
 _ASAR="${APPDIR}/app.asar"
-_FLAGS_FILE="$XDG_CONFIG_HOME/logseq-flags.conf"
+_FLAGS_FILE="$XDG_CONFIG_HOME/thorium-reader-flags.conf"
 
 if [ -r "$_FLAGS_FILE" ]; then
   _USER_FLAGS="$(cat "$_FLAGS_FILE")"
@@ -149,8 +141,23 @@ EOF
 }
 
 build() {
-  _ensure_local_nvm
+  export HOME="${startdir:?}/node-home"
+  export NVM_DIR="${startdir:?}/node-nvm"
+  export NODE_MODULE_CACHE="${startdir:?}/node-module-cache"
 
+  #export npm_config_build_from_source=true
+  export npm_config_cache="${srcdir}/node-npm-cache"
+
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+  export SYSTEM_ELECTRON_VERSION=$(electron${_electronversion} -v | sed 's/^v//')
+  export ELECTRONVERSION=${SYSTEM_ELECTRON_VERSION%%.*}
+
+  # set up nvm
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  nvm install $_nodeversion
+  nvm use $_nodeversion
+
+  # build
   cd "$_pkgsrc"
   npm install --no-audit --no-fund --prefer-offline
   npm run package:pack-only
