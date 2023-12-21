@@ -6,7 +6,7 @@
 _pkgname=meson
 pkgname=meson-rust
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High productivity build system (version with improved Rust support)"
 url="https://mesonbuild.com/"
 arch=(any)
@@ -31,6 +31,7 @@ source=(
   arch-meson
   cross-lib32
   native-clang
+  rustc-rebuild.patch
 )
 b2sums=('cb9ac8e00fe924df67166938687584a9de35e784e1e52bff281649d787695d37e3044ea3d6d5869181fe1e9676b5136548293dbd5cdbd091a6de0c449b8932f5'
         'SKIP'
@@ -38,10 +39,19 @@ b2sums=('cb9ac8e00fe924df67166938687584a9de35e784e1e52bff281649d787695d37e3044ea
         'f50c3569c6330e8671c402953247fb456505dd75555c8fbf1487bd43881dcdc766d88348814a6c2bb631c571ad4c4efabb271b5a1e7f01748ae2d9a332b39330'
         '211cee61f117fd1d582d7a613a8634f044e9e307791c4154c6da72bccd5f06856801b14bcb26157ee682b5935c48ffd2098a5fabab2232726d7758cf091c07f7'
         '9b16477aa77a706492e26fb3ad42e90674b8f0dfe657dd3bd9ba044f921be12ceabeb0050a50a15caee4d999e1ec33ed857bd3bed9e4444d73bb4a4f06381081'
-        '7d88929d5a3b49d91c5c9969f19d9b47f3151706526b889515acaeda0141257d5115875ac84832e9ea46f83a7700d673adcc5db84b331cd798c70ae6e90eac1e')
+        '7d88929d5a3b49d91c5c9969f19d9b47f3151706526b889515acaeda0141257d5115875ac84832e9ea46f83a7700d673adcc5db84b331cd798c70ae6e90eac1e'
+        '1cf2521f6ebfdbedf1c58c09abfc0f77fcc0d59d903cca6634443d11cb5998cf51c3bfa61c6b17dca98a87f32c12e59558d6da25c57d8b341ae4c266ecd8857a')
 validpgpkeys=(
   19E2D6D9B46D8DAA6288F877C24E631BABB1FE70  # Jussi Pakkanen <jpakkane@gmail.com>
 )
+
+prepare() {
+  cd ${_pkgname}-${pkgver}
+
+  # Rebuild targets after a rustc update (https://github.com/mesonbuild/meson/pull/12536)
+  # (this should fix Rust project compile issues after a compiler update)
+  patch -Np1 -i ../rustc-rebuild.patch
+}
 
 build() {
   cd ${_pkgname}-${pkgver}
