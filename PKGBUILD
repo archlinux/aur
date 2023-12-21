@@ -8,7 +8,7 @@
 
 _pkgname=kate
 pkgname="${_pkgname}-root"
-pkgver=23.08.3
+pkgver=23.08.4
 pkgrel=1
 arch=(
   'x86_64'
@@ -118,14 +118,14 @@ source=(
   "0001-Defuse-root-block.patch"
 )
 sha256sums=(
-  '17cf08b10ac49ee3afdea239f5821c2e366b6f1350981f082a06505d0dd9a29a'
-  '5dee071d3e89173638d69b9bbcffa1556829ed5bb21fa1cd8570d60868c45c46'
-  'abc7a33c8e8cd3a79ea4699bca0086c4146a9a43771a10fc60b97dcf62faca44'
+  '297facaab205f67f2c61b17650ef27a10b32ea699083577eeece25d0beb3fba2'  # ${_pkgname}-${pkgver}.tar.xz
+  '8dd9eda2d14acf09cec12d3ecd3411922b2a37ccd5900a7637936088fe54e0ca'  # ${_pkgname}-${pkgver}.tar.xz.sig
+  'abc7a33c8e8cd3a79ea4699bca0086c4146a9a43771a10fc60b97dcf62faca44'  # 0001-Defuse-root-block.patch
 )
 validpgpkeys=(
-  CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7 # Albert Astals Cid <aacid@kde.org>
-  F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87 # Christoph Feck <cfeck@kde.org>
-  D81C0CB38EB725EF6691C385BB463350D6EF31EF # Heiko Becker <heiko.becker@kde.org>
+  'CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7'  # Albert Astals Cid <aacid@kde.org>
+  'F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87'  # Christoph Feck <cfeck@kde.org>
+  'D81C0CB38EB725EF6691C385BB463350D6EF31EF'  # Heiko Becker <heiko.becker@kde.org>
 )
 
 prepare() {
