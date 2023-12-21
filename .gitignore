@@ -1,0 +1,5 @@
+/mod_tile
+/pkg
+/src
+*.tar.gz
+*.zst
