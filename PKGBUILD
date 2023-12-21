@@ -1,7 +1,7 @@
 pkgbase=tal-chorus-lx
-pkgname=("${pkgbase}-bin")
-pkgver=1.6.2
-pkgrel=3
+pkgname=("${pkgbase}-clap-bin" "${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
+pkgver=1.6.3
+pkgrel=1
 arch=('x86_64')
 pkgdesc="A Simple Algorithmic Chorus By TAL Software"
 groups=('pro-audio' 'clap-plugins' 'vst-plugins' 'vst3-plugins')
@@ -9,15 +9,26 @@ url="https://tal-software.com/products/tal-chorus-lx"
 license=('EULA')
 depends=('libcurl-gnutls' 'glibc')
 source=('https://tal-software.com/downloads/plugins/Tal-Chorus-LX_64_linux.zip')
-sha256sums=('41a84f69fd0db3672c32193cc8c883d41c11671a358a4ad423ecf5f2347a5c80')
+sha256sums=('176396c83a3f43d3ec0ae0b1483c2ef7b9480952699cc999f393993fba786a0e')
 
-package_tal-chorus-lx-bin() {
-  ## VST2 Plugin
-  install -Dm755 ${srcdir}/TAL-Chorus-LX/libTAL-Chorus-LX.so ${pkgdir}/usr/lib/vst/TAL\ Software/libTAL-Chorus-LX.so
-
-  ## VST3 Plugin
-  install -Dm755 ${srcdir}/TAL-Chorus-LX/TAL-Chorus-LX.vst3/Contents/x86_64-linux/TAL-Chorus-LX.so ${pkgdir}/usr/lib/vst3/TAL\ Software/TAL-Chorus-LX.vst3/Contents/x86_64-linux/TAL-Chorus-LX.so
-
+package_tal-chorus-lx-clap-bin() {
   ## CLAP Plugin
+  replaces=("tal-chorus-lx-bin")
+  conflicts=("tal-chorus-lx-bin")
+  provides=("tal-chorus-lx-clap-bin")
   install -Dm755 ${srcdir}/TAL-Chorus-LX/TAL-Chorus-LX.clap ${pkgdir}/usr/lib/clap/TAL-Chorus-LX.clap
+}
+package_tal-chorus-lx-vst-bin() {
+  ## VST2 Plugin
+  replaces=("tal-chorus-lx-bin")
+  conflicts=("tal-chorus-lx-bin")
+  provides=("tal-chorus-lx-vst-bin")
+  install -Dm755 ${srcdir}/TAL-Chorus-LX/libTAL-Chorus-LX.so ${pkgdir}/usr/lib/vst/TAL\ Software/libTAL-Chorus-LX.so
+}
+package_tal-chorus-lx-vst3-bin() {
+  ## VST3 Plugin
+  replaces=("tal-chorus-lx-bin")
+  conflicts=("tal-chorus-lx-bin")
+  provides=("tal-chorus-lx-vst3-bin")
+  install -Dm755 ${srcdir}/TAL-Chorus-LX/TAL-Chorus-LX.vst3/Contents/x86_64-linux/TAL-Chorus-LX.so ${pkgdir}/usr/lib/vst3/TAL\ Software/TAL-Chorus-LX.vst3/Contents/x86_64-linux/TAL-Chorus-LX.so
 }
