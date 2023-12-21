@@ -1,0 +1,14 @@
+pre_install() {
+	echo "WARNING: 'freetype2-infinality-remix' is EOL and is to be removed from AUR."
+	echo "Please install 'freetype2' instead, to ensure proper system functionality."
+	echo "Additional warning pertaining to extra/freetype2:"
+  cat <<MSG
+  The "Infinality" TrueType interpreter version has been removed.
+  If you've previously configured "truetype:interpreter-version=38",
+  please update your choice in /etc/profile.d/freetype2.sh .
+MSG
+}
+
+pre_upgrade() {
+	pre_install
+}
