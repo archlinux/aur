@@ -13,7 +13,9 @@ licence=(Apache)
 conflicts=('lx-music-desktop')
 provides=('lx-music-desktop')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
-makedepends=('npm')
+makedepends=(
+	git
+	npm)
 source=(
 	${pkgbase}::git+${url}
 	lx-music-desktop.desktop

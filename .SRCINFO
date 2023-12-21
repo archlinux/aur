@@ -6,6 +6,7 @@ pkgbase = lx-music-desktop-git
 	arch = x86_64
 	arch = aarch64
 	arch = armv7l
+	makedepends = git
 	makedepends = npm
 	depends = c-ares
 	depends = ffmpeg
