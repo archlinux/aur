@@ -1,7 +1,7 @@
 pkgbase = continuous-testing
 	pkgdesc = An rust program to test in continuous application
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/taishingi/continuous-testing
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = continuous-testing
 	depends = libnotify
 	depends = curl
 	depends = fuse-overlayfs
+	depends = less
 	depends = fd
 	depends = git
 	provides = again
