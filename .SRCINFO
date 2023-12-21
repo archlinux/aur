@@ -1,6 +1,6 @@
 pkgbase = r-ggkegg
 	pkgdesc = KEGG pathway visualization by ggplot2
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ggkegg
 	arch = any
@@ -29,8 +29,8 @@ pkgbase = r-ggkegg
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggkegg_1.0.5.tar.gz
-	md5sums = 9adf4d26a8390b425194f9e69108682e
-	sha256sums = 3a845920ca7febe7f59b2029d43f71a420fd4d8831a49daa765b6d0c0a344ecf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggkegg_1.0.6.tar.gz
+	md5sums = c4d80b3c8d8d43b0dd2b831414176e67
+	b2sums = e7662eb63d96ec0ca5097ed65fdf0c054d767bd13f8a86c945fbf779a7d5ec9509d311ee1ef6f2bc54ec10b80be73138adeac673febff11b34f9eea372b812d5
 
 pkgname = r-ggkegg

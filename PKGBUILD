@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggkegg
-_pkgver=1.0.5
+_pkgver=1.0.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="KEGG pathway visualization by ggplot2"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(MIT)
 depends=(
   r-annotationdbi
@@ -40,12 +40,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9adf4d26a8390b425194f9e69108682e')
-sha256sums=('3a845920ca7febe7f59b2029d43f71a420fd4d8831a49daa765b6d0c0a344ecf')
+md5sums=('c4d80b3c8d8d43b0dd2b831414176e67')
+b2sums=('e7662eb63d96ec0ca5097ed65fdf0c054d767bd13f8a86c945fbf779a7d5ec9509d311ee1ef6f2bc54ec10b80be73138adeac673febff11b34f9eea372b812d5')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
