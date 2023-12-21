@@ -216,7 +216,8 @@ build() {
     'clang_base_path="/usr"'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
-    #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'
     'ffmpeg_branding="Chrome"'
@@ -224,9 +225,9 @@ build() {
     'rtc_use_pipewire=true'
     'link_pulseaudio=true'
     'use_custom_libcxx=true' # https://github.com/llvm/llvm-project/issues/61705
-    'use_gnome_keyring=false'
     'use_sysroot=false'
     'use_system_libffi=true'
+    'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'enable_nacl=false'
     'enable_rust=false'
