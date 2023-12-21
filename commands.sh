@@ -36,7 +36,8 @@ check-for-asdf() {
       fi
       source ~/.zshrc
       # Check if asdf is available now
-      if ! command -v asdf &> /dev/null then
+      if ! command -v asdf &> /dev/null 
+      then
         echo "asdf could not be found"
         echo "You need to add asdf to your shell's initialization file manually."
       fi
@@ -49,7 +50,10 @@ check-for-asdf() {
   fi
 }
 
-prepare_command() {
+prepare_commands() {
+  local srcdir=$1
+  local pkgname=$2
+
   check-for-asdf
 
   # Install all plugins stated in .tool-versions
@@ -60,16 +64,23 @@ prepare_command() {
   yarn install
 }
 
-build_command() {
+build_commands() {
+  local srcdir=$1
+  local pkgname=$2
+
   check-for-asdf
-  
+
   cd "$srcdir/$pkgname"
   yarn run build
   # Build linux binary
   yarn pkg:linux
 }
 
-package_command() {
+package_commands() {
+  local srcdir=$1
+  local pkgname=$2
+  local pkgdir=$3
+
   check-for-asdf
 
   cd "$srcdir/$pkgname"

@@ -1,7 +1,7 @@
 # Maintainer: Stephan Koglin-Fischer <stephan dot koglin-fischer at funzt dot dev>
 pkgname=dashlane-cli-git
 pkgver=v1.15.1.r0.g8368d87
-pkgrel=49
+pkgrel=61
 pkgdesc="Dashlane CLI GitHub repository version bundled with asdf-vm to ensure using the correct node version."
 arch=('x86_64')
 url="https://github.com/Dashlane/dashlane-cli"
@@ -22,13 +22,13 @@ pkgver() {
 }
 
 prepare() {
-  $SHELL -c "source ./commands.sh && prepare_commands"
+  $SHELL -c "source ./commands.sh && prepare_commands $srcdir $pkgname"
 }
 
 build() {
-  $SHELL -c "source ./commands.sh && build_commands"
+  $SHELL -c "source ./commands.sh && build_commands $srcdir $pkgname"
 }
 
 package() {
-  $SHELL -c "source ./commands.sh && package_commands"
+  $SHELL -c "source ./commands.sh && package_commands $srcdir $pkgname $pkgdir"
 }
