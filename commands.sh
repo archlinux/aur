@@ -1,5 +1,9 @@
 check-for-asdf() {
+<<<<<<< HEAD
   if ! commands -v asdf &> /dev/null
+=======
+  if ! command -v asdf &> /dev/null
+>>>>>>> 5292e5c (fix: still doesn't work)
   then
     echo "asdf could not be found"
     echo "Configuring asdf..."
@@ -7,14 +11,22 @@ check-for-asdf() {
     # Install asdf
     # for bash, fish, zsh - add more if needed
     if [[ $SHELL == *"bash"* ]]; then
+<<<<<<< HEAD
       # If the .bashrc file does not contain the asdf source commands, we add it
+=======
+      # If the .bashrc file does not contain the asdf source command, we add it
+>>>>>>> 5292e5c (fix: still doesn't work)
       if ! grep -q ". /opt/asdf-vm/asdf.sh" ~/.bashrc; then
         echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.bashrc
       fi
       source ~/.bashrc
     elif [[ $SHELL == *"fish"* ]]; then
       echo "Patching config.fish"
+<<<<<<< HEAD
       # If the config.fish file does not contain the asdf source commands, we add it
+=======
+      # If the config.fish file does not contain the asdf source command, we add it
+>>>>>>> 5292e5c (fix: still doesn't work)
       if ! grep -q ". /opt/asdf-vm/asdf.fish" ~/.config/fish/config.fish; then
         echo -e "\n. /opt/asdf-vm/asdf.fish" >> ~/.config/fish/config.fish
       fi
@@ -30,14 +42,22 @@ check-for-asdf() {
         echo "If you do not want this, please remove it manually after the installation has finished."
         echo -e "#!/usr/bin/env zsh\n# Shebang added by the dashlane-cli-git package\n\n$(cat ~/.zshrc)" > ~/.zshrc
       fi
+<<<<<<< HEAD
       # If the .zshrc file does not contain the asdf source commands, we add it
+=======
+      # If the .zshrc file does not contain the asdf source command, we add it
+>>>>>>> 5292e5c (fix: still doesn't work)
       if ! grep -q ". /opt/asdf-vm/asdf.sh" ~/.zshrc; then
         echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.zshrc
       fi
       source ~/.zshrc
       # Check if asdf is available now
+<<<<<<< HEAD
       if ! commands -v asdf &> /dev/null 
       then
+=======
+      if ! command -v asdf &> /dev/null then
+>>>>>>> 5292e5c (fix: still doesn't work)
         echo "asdf could not be found"
         echo "You need to add asdf to your shell's initialization file manually."
       fi
@@ -50,10 +70,14 @@ check-for-asdf() {
   fi
 }
 
+<<<<<<< HEAD
 prepare_commands() {
   local srcdir=$1
   local pkgname=$2
 
+=======
+prepare_command() {
+>>>>>>> 5292e5c (fix: still doesn't work)
   check-for-asdf
 
   # Install all plugins stated in .tool-versions
@@ -64,10 +88,14 @@ prepare_commands() {
   yarn install
 }
 
+<<<<<<< HEAD
 build_commands() {
   local srcdir=$1
   local pkgname=$2
 
+=======
+build_command() {
+>>>>>>> 5292e5c (fix: still doesn't work)
   check-for-asdf
   
   cd "$srcdir/$pkgname"
@@ -76,11 +104,15 @@ build_commands() {
   yarn pkg:linux
 }
 
+<<<<<<< HEAD
 package_commands() {
   local srcdir=$1
   local pkgname=$2
   local pkgdir=$3
 
+=======
+package_command() {
+>>>>>>> 5292e5c (fix: still doesn't work)
   check-for-asdf
 
   cd "$srcdir/$pkgname"
