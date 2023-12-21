@@ -1,5 +1,5 @@
 check-for-asdf() {
-  if ! command -v asdf &> /dev/null
+  if ! commands -v asdf &> /dev/null
   then
     echo "asdf could not be found"
     echo "Configuring asdf..."
@@ -7,14 +7,14 @@ check-for-asdf() {
     # Install asdf
     # for bash, fish, zsh - add more if needed
     if [[ $SHELL == *"bash"* ]]; then
-      # If the .bashrc file does not contain the asdf source command, we add it
+      # If the .bashrc file does not contain the asdf source commands, we add it
       if ! grep -q ". /opt/asdf-vm/asdf.sh" ~/.bashrc; then
         echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.bashrc
       fi
       source ~/.bashrc
     elif [[ $SHELL == *"fish"* ]]; then
       echo "Patching config.fish"
-      # If the config.fish file does not contain the asdf source command, we add it
+      # If the config.fish file does not contain the asdf source commands, we add it
       if ! grep -q ". /opt/asdf-vm/asdf.fish" ~/.config/fish/config.fish; then
         echo -e "\n. /opt/asdf-vm/asdf.fish" >> ~/.config/fish/config.fish
       fi
@@ -30,13 +30,13 @@ check-for-asdf() {
         echo "If you do not want this, please remove it manually after the installation has finished."
         echo -e "#!/usr/bin/env zsh\n# Shebang added by the dashlane-cli-git package\n\n$(cat ~/.zshrc)" > ~/.zshrc
       fi
-      # If the .zshrc file does not contain the asdf source command, we add it
+      # If the .zshrc file does not contain the asdf source commands, we add it
       if ! grep -q ". /opt/asdf-vm/asdf.sh" ~/.zshrc; then
         echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.zshrc
       fi
       source ~/.zshrc
       # Check if asdf is available now
-      if ! command -v asdf &> /dev/null 
+      if ! commands -v asdf &> /dev/null 
       then
         echo "asdf could not be found"
         echo "You need to add asdf to your shell's initialization file manually."
@@ -50,7 +50,7 @@ check-for-asdf() {
   fi
 }
 
-prepare_command() {
+prepare_commands() {
   check-for-asdf
 
   # Install all plugins stated in .tool-versions
@@ -61,7 +61,7 @@ prepare_command() {
   yarn install
 }
 
-build_command() {
+build_commands() {
   check-for-asdf
   
   cd "$srcdir/$pkgname"
@@ -70,7 +70,7 @@ build_command() {
   yarn pkg:linux
 }
 
-package_command() {
+package_commands() {
   check-for-asdf
 
   cd "$srcdir/$pkgname"
