@@ -1,12 +1,13 @@
 pkgbase = r-invgamma
 	pkgdesc = The Inverse Gamma Distribution
 	pkgver = 1.1
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=invgamma
 	arch = any
-	license = GPL
+	license = GPL2
 	depends = r
 	source = https://cran.r-project.org/src/contrib/invgamma_1.1.tar.gz
-	sha256sums = aaa8de7c2a852fa6df30d8262086f6a3eb2b1fefbbc66dfe2f6c25c68917ea89
+	md5sums = d47d0e0a48879a43e135e8e98f10ecee
+	b2sums = 0c20e9976c5d7aad339d6fd8162345e4f598421e6d991f728f80eedbcd1fc43d4a985d52e4a89ac6391694418959eeff9f16154b47ec1267ecbf7ebd139ff469
 
 pkgname = r-invgamma

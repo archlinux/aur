@@ -3,24 +3,25 @@
 _pkgname=invgamma
 _pkgver=1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1
-pkgrel=4
-pkgdesc='The Inverse Gamma Distribution'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="The Inverse Gamma Distribution"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL2)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aaa8de7c2a852fa6df30d8262086f6a3eb2b1fefbbc66dfe2f6c25c68917ea89')
+md5sums=('d47d0e0a48879a43e135e8e98f10ecee')
+b2sums=('0c20e9976c5d7aad339d6fd8162345e4f598421e6d991f728f80eedbcd1fc43d4a985d52e4a89ac6391694418959eeff9f16154b47ec1267ecbf7ebd139ff469')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
