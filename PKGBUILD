@@ -1,6 +1,6 @@
 # Maintainer: Jove Yu <yushijun110 at 126 dot com>
 
-_pkgver=v1.0.19
+_pkgver=v1.0.25
 _channel=stable
 pkgname=lazycat-cloud-client
 pkgver=${_pkgver//-/_}
@@ -14,7 +14,7 @@ makedepends=('tar' 'zstd')
 source=("https://dl.lazycat.cloud/client/desktop/${_channel}/lzc-client-desktop_${_pkgver}.tar.zst")
 install='lazycat-cloud-client.install'
 noextract=("lzc-client-desktop_${_pkgver}.tar.zst")
-sha256sums=('59a04bdda2dc55b9484c9f76fd79f01a192d8f96667042ea8c49e8b52b78da7a')
+sha256sums=('c32884b0581f66faedf2726ad02b3b8086cfadc0c905a88f48f3993c62240254')
 
 package() {
   install -d ${pkgdir}/opt/lzc-client-desktop/
