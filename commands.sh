@@ -36,7 +36,8 @@ check-for-asdf() {
       fi
       source ~/.zshrc
       # Check if asdf is available now
-      if ! command -v asdf &> /dev/null then
+      if ! command -v asdf &> /dev/null 
+      then
         echo "asdf could not be found"
         echo "You need to add asdf to your shell's initialization file manually."
       fi
