@@ -37,6 +37,7 @@ pkgname = mod_tile
 	depends = curl
 	depends = glib2
 	provides = mod_tile
+	conflicts = mod_tile
 
 pkgname = renderd
 	pkgdesc = A daemon that renders map tiles using mapnik
@@ -46,4 +47,5 @@ pkgname = renderd
 	depends = iniparser
 	depends = mapnik
 	provides = renderd
+	conflicts = renderd
 	backup = etc/renderd.conf
