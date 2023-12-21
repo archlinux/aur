@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-dist-git
-pkgver=0.0.7.r0.gb98f0fb
+pkgver=0.6.1.r1.gc9df96e
 pkgrel=1
 pkgdesc="Shippable application packaging for Rust (git)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --frozen
+  cargo test --frozen --lib
 }
 
 package() {
