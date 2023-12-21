@@ -2,7 +2,7 @@
 
 pkgname=sunxi-blobs-git
 pkgver=r146.fa44656
-pkgrel=1
+pkgrel=5
 pkgdesc="The goal of this project is to understand the various blobs provided by Allwinner for their sunxi series of ARM SoCs."
 arch=('any')
 url="https://github.com/smaeul/sunxi-blobs"
@@ -22,6 +22,11 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}"
 #     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
 package() {
