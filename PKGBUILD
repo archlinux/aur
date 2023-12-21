@@ -1,5 +1,3 @@
-# Contributor: Calimero <calimeroteknik@free.fr>
-# Contributor: jerry73204 <jerry73204@gmail.com>
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=('mod_tile' 'renderd')
