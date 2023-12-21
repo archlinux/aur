@@ -3,7 +3,7 @@
 
 _pkgname=libpoly
 pkgname=$_pkgname-git
-pkgver=0.1.13.r1.g1119aa4
+pkgver=0.1.13.r4.g862d7cb
 pkgrel=1
 pkgdesc='C library for manipulating polynomials'
 arch=('x86_64')
