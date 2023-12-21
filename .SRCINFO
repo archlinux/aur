@@ -1,6 +1,6 @@
 pkgbase = python-compreffor-git
 	pkgdesc = A CFF table subroutinizer for FontTools
-	pkgver = 0.5.3.r0.g3678d3e
+	pkgver = 0.5.5.r0.g639877c
 	pkgrel = 1
 	url = https://github.com/googlefonts/compreffor
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = python-compreffor-git
 	makedepends = cython
 	makedepends = python-setuptools-git-ls-files
 	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
