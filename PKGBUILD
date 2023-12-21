@@ -2,7 +2,7 @@
 
 pkgname=iceshrimp-bin
 pkgver=v2023.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
@@ -27,7 +27,7 @@ source=(
   "iceshrimp.hook"
 )
 
-sha512sums=('9b103ffd0d567afb2ea6c7885fcff02b3060128fac39d8e0260e16e129fe7257b6f7a1defa4503108fbf623d2096b915c21830493cd9c8fe49635c70989b8428'
+sha512sums=('243e00fbbd29cd7fbceee5d4c7ddf8c6f036589d4d6e615e275e8af4e360a35c7ff7f7896846b407f8a3c2c4d4707f49056c54604f3655c4c8a9b7b6e3071f15'
             '91c456bda5c14b01cbf770a2e9e57425ac5e82226799d39e11cc6e83b219a0559eeed8693c5eb051fffb28cdd23d4682ee40f46372117880aeeddb00ecb8726f')
 
 package() {
