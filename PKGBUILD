@@ -21,7 +21,7 @@ source=("$pkgname-$_pkgver.zip::https://github.com/Inochi2D/inochi-creator/relea
         "$pkgname-512x512.png::https://raw.githubusercontent.com/Inochi2D/branding/main/creator/Inochi-Creator.iconset/icon_512x512.png"
         "$pkgname.xml"
         "$pkgname.desktop")
-sha256sums=('7845ca9dbfbaf195d6fc6b4c09645a077e73daebcb7fb61b4bb6e8d423625245'
+sha256sums=('e3e0c08c8596ed033de4426d7cb47766a013e8abcb7857dcc2db308392addf1e'
             '37c155d83e2fcce788330af9e5f48779def980f4811f4e5ba77827e92811a59d'
             '51cbc6bb2a05cf400ecbecea36549b693b50b72b401f2083f09925657123a8ed'
             '40ab94b16ab88330352b1848de5a3698093bd041550defc56636c5415d2ca857'
