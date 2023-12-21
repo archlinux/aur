@@ -2,7 +2,7 @@
 
 pkgname=xfel-git
 pkgver=1.3.2.r19.g6f92b44
-pkgrel=5
+pkgrel=12
 pkgdesc="Tiny FEL tools for allwinner SOC, support RISC-V D1 chip."
 arch=(x86_64
     aarch64
@@ -19,6 +19,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
 build() {
