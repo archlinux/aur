@@ -3,7 +3,7 @@
 
 pkgname=elemental
 pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 url="https://github.com/LLNL/Elemental"
 pkgdesc="Distributed-memory dense linear algebra"
 makedepends=('cmake' 'libmpc' 'gcc-fortran')
@@ -15,13 +15,16 @@ sha256sums=('faefbe738bd364d0e26ce9ad079a11c93a18c6f075719a365fd4fa5f1f7a989a')
 options=('!makeflags')
 
 build() {
-  cd Elemental-$pkgver
-  cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -D__GIT_EXECUTABLE=OFF
-  cmake --build build --parallel 4 --target install
+  cmake -S Elemental-$pkgver \
+        -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_SHARED_LIBS=ON \
+        -D__GIT_EXECUTABLE=OFF
+  cmake --build build --parallel
 }
 
 package() {
-  cd Elemental-$pkgver/build
-  make install DESTDIR="$pkgdir"
-  install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  DESTDIR=${pkgdir} cmake --install build
+  install -Dm644 Elemental-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
