@@ -1,6 +1,6 @@
 pkgbase = picoscope7beta
 	pkgdesc = PicoScope 7 Test and Measurment Early Access
-	pkgver = 7.1.18_1r17429
+	pkgver = 7.1.19_1r17606
 	pkgrel = 1
 	url = https://oem.picotech.com/p7beta/download
 	install = picoscope7beta.install
@@ -24,7 +24,7 @@ pkgbase = picoscope7beta
 	provides = picoscope7
 	conflicts = picoscope7
 	options = !strip
-	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/p/picoscope/picoscope_7.1.18-1r17429_amd64.deb
-	md5sums = 711577863e69f05b5bef7c7aaf4600fe
+	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/p/picoscope/picoscope_7.1.19-1r17606_amd64.deb
+	md5sums = deee91241a56ffa5bfb4292ac45ec180
 
 pkgname = picoscope7beta
