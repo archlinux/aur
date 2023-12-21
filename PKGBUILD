@@ -1,26 +1,27 @@
-# Maintainer Victor Roest <victor@xirion.net>
+# Maintainer:  Sian1468 <sian1468-aur@.39011468.xyz>
+# Contributor: Victor Roest <victor@xirion.net>
 
 pkgname=xcursor-breeze-neutral-git
-pkgver=r9.08f15b2
-pkgrel=2
+_pkgname=xcursor-breeze-neutral
+pkgver=r12.f1f9624
+pkgrel=1
 pkgdesc="Neutral fork of KDEs Breeze Cursor"
+arch=(any)
 url="https://github.com/TheScrawl/xcursor-breeze-neutral"
 makedepends=('git')
 depends=('libxcursor')
 provides=('xcursor-breeze-neutral')
 source=(git+https://github.com/TheScrawl/xcursor-breeze-neutral)
 sha256sums=('SKIP')
-arch=(any)
 
 pkgver() {
-  cd "xcursor-breeze-neutral"
+  cd "${_pkgname}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
-
 package() {
-    install -dm755 "$pkgdir"/usr/share/icons/
-    cp -r ${srcdir}/xcursor-breeze-neutral $pkgdir/usr/share/icons/
+    install -dm755 "${pkgdir}"/usr/share/icons/"${_pkgname}"
+    cp -r "${_pkgname}"/{cursors,index.theme} "${pkgdir}"/usr/share/icons/"${_pkgname}"
 }
