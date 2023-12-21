@@ -1,6 +1,6 @@
 # Maintainer: Florian Thienel/DL3NEY <ftl@thecodingflow.com>
 pkgname="hellocontest"
-pkgver="0.18.0"
+pkgver="0.18.1"
 pkgrel=1
 pkgdesc="A simple HF contest logger for Linux."
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ depends=('gtk3' 'cairo' 'pango')
 makedepends=('git' 'make' 'go')
 provides=("${pkgname}")
 source=("hellocontest-$pkgver.tar.gz::https://github.com/ftl/hellocontest/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('00b3372e47e4e3e54b9266b9fdb0a131cf4e563f501af28ff21f69964cca6852')
+sha256sums=('c1ea06d0eba36546fa693518dd7564ba7a6c7fd982b3961e461b4041cef06fbd')
 
 build() {
     cd "$pkgname-$pkgver"
