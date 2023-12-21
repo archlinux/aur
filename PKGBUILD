@@ -1,6 +1,6 @@
-# Maintainer: Stephen <stephen.thomasdorin@gmail.com>
+# Maintainer: Stephen <stephen.thomasdorin at gmail.com>
 pkgname=audio-select
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Quick and rusty pulseaudio device selection app'
 url='https://github.com/sk8ersteve/audio-select'
@@ -8,7 +8,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/sk8ersteve/audio-select/arc
 arch=('x86_64')
 license=('MIT')
 makedepends=('cargo')
-sha256sums=('874a71c038291df569593e58a09904af1fffb96823abfb6c5ffe6461c6444529')
+sha256sums=('0cd91e0a3d1901d669b98fb7b85670726a794c70aa0cad837b33912d19a84ca5')
 
 prepare() {
     cd $pkgname-$pkgver
