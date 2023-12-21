@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=crm-git
-pkgver=0.2.1.r2.gb5c7c24
-pkgrel=2
+pkgver=0.2.1.r3.g10e818c
+pkgrel=6
 pkgdesc="crm (Cargo registry manager)"
 arch=(x86_64
     aarch64
@@ -23,6 +23,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}/"
     git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
 build() {
