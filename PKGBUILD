@@ -1,5 +1,6 @@
+# Maintainer: Martin Diehl <aur@martin-diehl.net>
 # Contributor: Myles English <myles at rockhead dot biz>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scalapack
 pkgver=2.2.0
@@ -20,26 +21,18 @@ sha256sums=('40b9406c20735a9a3009d863318cb8d3e496fb073d201c5463df810e01ab2a57'
 
 
 build() {
-  [[ -e build ]] && rm -rf build
-  mkdir build 
-  cd build
-  
-  cmake ../${pkgname}-${pkgver} \
-	-DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr \
-	-DBUILD_SHARED_LIBS=ON \
-	-DSCALAPACK_BUILD_TESTS=OFF \
-	-DCMAKE_BUILD_TYPE:STRING=Release \
-	-DCMAKE_CXX_COMPILER=/usr/bin/mpic++ \
-	-DCMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch" \
-	-DCMAKE_C_COMPILER=/usr/bin/mpicc
-  make
+  cmake -S ${pkgname}-${pkgver} \
+        -B build \
+        -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+        -D BUILD_SHARED_LIBS:BOOL=ON \
+        -D SCALAPACK_BUILD_TESTS:BOOL=OFF \
+        -D CMAKE_BUILD_TYPE:STRING=Release \
+        -D CMAKE_Fortran_FLAGS:STRING="$FCFLAGS -fallow-argument-mismatch"
+  cmake --build build --parallel
 }
 
 package(){
-  cd build
-  make install #DESTDIR="${pkgdir}"
-
-  sed -i 's#'${pkgdir}'##g' "${pkgdir}"/usr/lib/pkgconfig/scalapack.pc
+  DESTDIR=${pkgdir} cmake --install build
 
   # Install headers
   install -m 755 -d "${pkgdir}"/usr/include
