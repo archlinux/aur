@@ -1,7 +1,7 @@
 pkgbase = gdal-hdf4
 	pkgdesc = Translator library for raster and vector geospatial data formats
 	pkgver = 3.8.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gdal.org/
 	changelog = gdal-hdf4.changelog
 	arch = x86_64
