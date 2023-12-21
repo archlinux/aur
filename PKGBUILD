@@ -3,16 +3,22 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkcompactdisc
-pkgver=23.08.4
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='A library for interfacing with CDs'
 url='https://www.kde.org/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(solid5 ki18n5 phonon-qt5)
+depends=(alsa-lib
+         gcc-libs
+         glibc
+         ki18n
+         phonon-qt6
+         qt6-base
+         solid)
 makedepends=(extra-cmake-modules)
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('f10fbbf1ed0b8df0f565293ebe2b58cb3a26923baca119ba554567754f92d698'
+source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('a70cae2a889a92bb1d28bab2303b0142f5addb761e9cb216c7f36c68740a2940'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -20,7 +26,8 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DQT_MAJOR_VERSION=6
   cmake --build build
 }
 
