@@ -9,7 +9,7 @@ url="https://tal-software.com/tal-reverb-4"
 license=('EULA')
 depends=('libcurl-gnutls' 'glibc')
 source=('https://tal-software.com/downloads/plugins/TAL-Reverb-4_64_linux.zip')
-md5sums=('180ea564293a99cdb5841b63264ade98')
+md5sums=('8b38e6e18add8f8754847c0e27736c7f')
 
 package_tal-reverb4-clap-bin() {
   ## CLAP Plugin
