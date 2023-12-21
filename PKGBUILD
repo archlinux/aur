@@ -7,7 +7,7 @@
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
 pkgver=3.50.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
@@ -16,8 +16,9 @@ arch=(
   'x86_64'
 )
 depends=(
-  'vte3-notification>=0.74.0'
+  'libhandy'
   'gsettings-desktop-schemas'
+  'vte3-notification>=0.74.0'
 )
 makedepends=(
   'git'
@@ -62,11 +63,14 @@ prepare () {
 }
 
 build() {
-  arch-meson build gnome-terminal \
-      -D b_lto=false \
-      -D docs=true \
-      -D nautilus_extension=true \
-      -D search_provider=true
+  local meson_options=(
+    -D b_lto=false
+    -D docs=true
+    -D nautilus_extension=true
+    -D search_provider=true
+  )
+
+  arch-meson build gnome-terminal "${meson_options[@]}"
   meson compile -C build
 }
 
