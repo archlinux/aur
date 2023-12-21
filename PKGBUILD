@@ -7,7 +7,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=G6.0.5
+pkgver=G6.0.7
 pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements."
 arch=(x86_64)
@@ -59,9 +59,9 @@ source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/WaterfoxCo/Waterfox/archive/refs/tags/$pkgver.tar.gz
 	$pkgname.desktop
 )
-sha256sums=(
-	'16ebb539fd696bd4337641d0b5e9e871c69a31971d7a12bb4efa3b9f79034041'
-	'3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3'
+b2sums=(
+	'48a337f4fdab555d089e5bc2a0d1e3644ee0842846cc5b793294066c8b5ad59d2c207da13538fffb68dec737a6e3c9dcad5807ab8d1892dfca96b367c24b25ce'
+	'0fad7604486275fb74cdc11ce4375f024eda859eb6520f71cb6c4e73a042e9d16d3e6d03d3bc6e3d6bf6ec72d7c07394c922914042be3d0919205a55cf7ab978'
 )
 
 prepare () {
