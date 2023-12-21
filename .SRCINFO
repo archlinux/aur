@@ -1,15 +1,24 @@
 pkgbase = tal-reverb3
 	pkgdesc = A Simple Algorithmic Reverb V3 By TAL Software
 	pkgver = 2.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://tal-software.com/products/tal-reverb-4
 	arch = x86_64
-	groups = pro-audiovst-plugins
-	groups = vst3-plugins
+	groups = pro-audio
 	license = EULA
 	depends = libcurl-gnutls
 	depends = glibc
 	source = https://tal-software.com/downloads/plugins/TAL-Reverb-3_64_linux.zip
 	md5sums = fc584bf672bd98ed07226a86b7aef303
 
-pkgname = tal-reverb3-bin
+pkgname = tal-reverb3-vst-bin
+	groups = vst-plugins
+	provides = tal-reverb3-vst-bin
+	conflicts = tal-reverb3-bin
+	replaces = tal-reverb3-bin
+
+pkgname = tal-reverb3-vst3-bin
+	groups = vst3-plugins
+	provides = tal-reverb3-vst3-bin
+	conflicts = tal-reverb3-bin
+	replaces = tal-reverb3-bin
