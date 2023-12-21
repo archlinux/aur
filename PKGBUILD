@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kio5-extras
-pkgver=24.01.85
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Additional components to increase the functionality of KIO'
 arch=(x86_64)
@@ -49,7 +49,7 @@ optdepends=('icoutils: Windows executable thumbnails'
             'qt5-imageformats: thumbnails for additional image formats'
             'taglib: audio file thumbnails')
 source=(https://download.kde.org/unstable/release-service/$pkgver/src/kio-extras-kf5-$pkgver.tar.xz{,.sig})
-sha256sums=('db2e63a01bf2c08a097f6ad56d0dbf0e497f32d1ecff3f561c0f6626b4629efe'
+sha256sums=('72915f25e38014b7031afba203bdc02d0515b0f2b075a854b4316ae99f2f83cd'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
