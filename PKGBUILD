@@ -2,7 +2,7 @@
 
 pkgname=cdoc4j-util
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Command line utility for working with CDOC documents.'
 arch=('any')
 url='https://github.com/open-eid/cdoc4j/blob/master/util/README.md'

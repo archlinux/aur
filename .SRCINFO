@@ -1,7 +1,7 @@
 pkgbase = cdoc4j-util
 	pkgdesc = Command line utility for working with CDOC documents.
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/open-eid/cdoc4j/blob/master/util/README.md
 	arch = any
 	license = GPL2
