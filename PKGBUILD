@@ -1,8 +1,8 @@
 # Maintainer: João Freitas <joaj.freitas@gmail.com>
 pkgname=numbat-bin
 _pkgname=numbat
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
 arch=('x86_64')
 url="https://github.com/sharkdp/numbat"
@@ -13,7 +13,7 @@ provides=('numbat')
 conflicts=('numbat')
 source=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::https://github.com/sharkdp/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 sha512sums=(
-  '7aaf8ff7221e5584f48d4b712a9e79de7ee3b8ce9fe81d93e3e8c2c89c3d89449a5b1482cbd7f1c384ae204b583b5d4f88a3fa2363986c023029212ad82ef28a'
+  '64150c438a075ccd2216361128306ce4ec855c6cc3f69d240f40aeb538c6dd2b9e9dcec574b9f5a4ecb78664097d29a4b4b44c5cf942c21d632f5ffd553adba6'
 )
 
 
