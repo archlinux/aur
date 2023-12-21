@@ -10,7 +10,7 @@ pkgname=(
   vte-notification-common
 )
 pkgver=0.74.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
 license=(LGPL)
@@ -60,10 +60,13 @@ prepare () {
 }
 
 build() {
-  arch-meson vte build \
-    -D b_lto=false \
-    -D docs=true \
+  local meson_options=(
+    -D b_lto=false
+    -D docs=true
     -D gtk4=true
+  )
+
+  arch-meson vte build "${meson_options[@]}"
   meson compile -C build
 }
 
