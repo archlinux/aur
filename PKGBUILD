@@ -7,7 +7,7 @@ _microarchitecture=0
 ## Major kernel version
 _major=6.6
 ## Minor kernel version
-_minor=2
+_minor=8
 
 ## PKGBUILD ##
 
@@ -33,7 +33,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('73d4f6ad8dd6ac2a41ed52c2928898b7c3f2519ed5dbdb11920209a36999b77e'
+sha256sums=('5036c434e11e4b36d8da3f489851f7f829cf785fa7f7887468537a9ea4572416'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -59,7 +59,9 @@ prepare() {
   ### Apply patches
   msg2 "Apply Linux TKG Patches..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-clear-patches.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-mm-Support-soft-dirty-flag-read-with-reset.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-base.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-eevdf-additions.patch
