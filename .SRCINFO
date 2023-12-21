@@ -1,7 +1,7 @@
 pkgbase = gpshell
 	pkgdesc = gpshell GlobalPlatform command shell
-	pkgver = 2.3.1
-	pkgrel = 2
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/kaoh/globalplatform
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gpshell
 	makedepends = cmake
 	depends = glibc
 	depends = globalplatform
-	source = https://github.com/kaoh/globalplatform/archive/380b79869277706757bcca7df2f4d2f005d141cc.zip
-	md5sums = 9d6db6ab81ae23f22b15d189aff56c21
+	source = https://github.com/kaoh/globalplatform/archive/8d7587c78a8dac444491eb260edfe542359fb397.zip
+	md5sums = d0c14024fb74203e42ad51e5660f11be
 
 pkgname = gpshell
