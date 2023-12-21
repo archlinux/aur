@@ -1,7 +1,7 @@
 # Maintainer: John Lindgren <john@jlindgren.net>
 
 pkgname=qmpanel
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="A Minimal Qt-Based Desktop Panel"
 arch=("x86_64")
@@ -18,7 +18,7 @@ depends=(
 )
 
 source=("https://github.com/jlindgren90/qmpanel/archive/qmpanel-$pkgver.tar.gz")
-sha256sums=("a2e0ee55225124d1444b592f3ccb411c010ef84c5da6b91d4a3463e8da02427a")
+sha256sums=("14883ffa21fab0e76a7c7ae3c9416b8e999d4becc7ee12f10ecc5a8fcc60f7c4")
 
 build() {
   arch-meson qmpanel-qmpanel-$pkgver build
