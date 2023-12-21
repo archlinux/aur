@@ -1,15 +1,16 @@
 pkgbase = nut-monitor
 	pkgdesc = GUI to manage devices connected a NUT server
-	pkgver = 2.8.0
-	pkgrel = 2
+	pkgver = 2.8.1
+	pkgrel = 1
 	url = http://www.networkupstools.org/
 	arch = any
 	license = GPL3
 	makedepends = desktop-file-utils
+	depends = nut
 	depends = python
 	depends = python-pyqt5
 	depends = hicolor-icon-theme
-	source = http://www.networkupstools.org/source/2.8/nut-2.8.0.tar.gz
-	sha256sums = c3e5a708da797b7c70b653d37b1206a000fcb503b85519fe4cdf6353f792bfe5
+	source = http://www.networkupstools.org/source/2.8/nut-2.8.1.tar.gz
+	sha256sums = 7da48ee23b1f0d8d72560bb0af84f5c5ae4dbe35452b84cb49840132e47f099c
 
 pkgname = nut-monitor

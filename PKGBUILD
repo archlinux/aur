@@ -1,16 +1,16 @@
 # Maintainer: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=nut-monitor
-pkgver=2.8.0
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="GUI to manage devices connected a NUT server"
 arch=('any')
 url="http://www.networkupstools.org/"
 license=('GPL3')
-depends=('python' 'python-pyqt5' 'hicolor-icon-theme')
+depends=('nut' 'python' 'python-pyqt5' 'hicolor-icon-theme')
 makedepends=('desktop-file-utils')
 source=("http://www.networkupstools.org/source/2.8/nut-$pkgver.tar.gz")
-sha256sums=('c3e5a708da797b7c70b653d37b1206a000fcb503b85519fe4cdf6353f792bfe5')
+sha256sums=('7da48ee23b1f0d8d72560bb0af84f5c5ae4dbe35452b84cb49840132e47f099c')
 
 prepare() {
   cd "$srcdir/nut-$pkgver"
@@ -28,10 +28,6 @@ build() {
 
 package() {
   cd "$srcdir/nut-$pkgver"
-
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -v -d -m 755 "${pkgdir}${site_packages}"
-  install -m644 scripts/python/module/PyNUT.py "${pkgdir}${site_packages}"
 
   install -v -d -m 755 ${pkgdir}/usr/{bin,share/{appdata,nut-monitor/{pixmaps,ui,icons/256x256}}}
   install -m 755 scripts/python/app/NUT-Monitor-py3qt5 ${pkgdir}/usr/bin
