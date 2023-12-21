@@ -12,7 +12,6 @@ depends=(
   gtk3
   python-cairo
   python-gobject
-  portmidi
   python-mido
   python-pyliblo
   python-scipy

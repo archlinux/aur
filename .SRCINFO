@@ -12,7 +12,6 @@ pkgbase = olc-git
 	depends = gtk3
 	depends = python-cairo
 	depends = python-gobject
-	depends = portmidi
 	depends = python-mido
 	depends = python-pyliblo
 	depends = python-scipy
