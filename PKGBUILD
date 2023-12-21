@@ -7,24 +7,18 @@
 # options
 : ${_debugfast:=false}
 
-: ${_avx_build:=false}
-: ${_pkgtype:=debugfast-git}
+: ${_build_debugfast:=true}
+: ${_build_avx:=false}
+: ${_build_git:=true}
 
-
-if [[ "${_avx_build::1}" == "t" ]] ; then
-  if [ "${_pkgtype: -4}" == "-git" ] ; then
-    _pkgtype="${_pkgtype%-*}-avx-${_pkgtype##*-}"
-  elif [ "${_pkgtype::1}" == "g" ] ; then
-    _pkgtype="avx-$_pkgtype"
-  else
-    _pkgtype+="-avx"
-  fi
-fi
+[[ "${_build_debugfast::1}" == "t" ]] && _pkgtype+="-debugfast"
+[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
 _pkgname="dolphin-emu"
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=5.0.r20613.g003872d7dd
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=5.0.r20822.g70b7a59456
 pkgrel=1
 pkgdesc='A Gamecube / Wii / Triforce emulator'
 arch=(x86_64)
@@ -181,8 +175,16 @@ _main_stable() {
 _main_git() {
   url="${_url:?}"
 
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
+  provides=(
+    'dolphin-emu'
+    'dolphin-emu-nogui'
+    'dolphin-emu-tool'
+  )
+  conflicts=(
+    'dolphin-emu'
+    'dolphin-emu-nogui'
+    'dolphin-emu-tool'
+  )
 
   _pkgsrc="$_pkgname"
   source=("$_pkgname"::"git+$url.git")
@@ -218,7 +220,7 @@ prepare() {
 }
 
 build() {
-  if [[ "${_avx_build::1}" == "t" ]] ; then
+  if [[ "${_build_avx::1}" == "t" ]] ; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
     export CXXFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
   fi
