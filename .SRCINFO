@@ -1,15 +1,15 @@
 pkgbase = ardupilot-mission-planner
 	pkgdesc = Full-featured ground station application for the ArduPilot open source autopilot project
-	pkgver = 1.3.80
+	pkgver = 1.3.81
 	pkgrel = 4
 	epoch = 2
 	url = https://github.com/ArduPilot/MissionPlanner
 	arch = x86_64
 	license = GPL3
 	depends = mono
-	source = https://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-1.3.80.zip
+	source = https://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-1.3.81.zip
 	source = ardupilot-mission-planner.desktop
-	sha256sums = 8a2be56905ad38c247721991f76168a936a8b0627d17502016db8580313ff6a4
+	sha256sums = 197fcbba1e8c3c3ccc0afc568d4565cd253424618f0ecdeb69b04a8309c86cbf
 	sha256sums = 39ff90115c509ef661d8f13e0c0384ba8e94f887cd1b4d64b49ece31f8bf4523
 
 pkgname = ardupilot-mission-planner
