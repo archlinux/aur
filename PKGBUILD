@@ -4,17 +4,16 @@
 pkgname=ollama-cuda
 pkgdesc='Create, run and share large language models (LLMs) with CUDA'
 pkgver=0.1.17
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://github.com/jmorganca/ollama'
 license=(MIT)
-makedepends=(cmake git go setconf)
 _ollamacommit=6b5bdfa6c9321405174ad443f21c2e41db36a867 # tag: v0.1.17
 # The git submodule commit hashes are here:
 # https://github.com/jmorganca/ollama/tree/v0.1.17/llm/llama.cpp
 _ggmlcommit=9e232f0234073358e7031c1b8d7aa45020469a3b
 _ggufcommit=a7aee47b98e45539d491071b25778b833b77e387
-makedepends=(cmake cuda git go setconf)
+makedepends=(cmake cuda git go)
 provides=(ollama)
 conflicts=(ollama)
 source=(git+$url#commit=$_ollamacommit
@@ -42,21 +41,19 @@ prepare() {
   # Do not git clone when "go generate" is being run.
   sed -i 's,git submodule,true,g' llm/llama.cpp/generate_linux.go
 
-  # Set the version number
-  setconf version/version.go 'var Version string' "\"$pkgver\""
+  # Set build mode to release
+  sed -i '33s/DebugMode/ReleaseMode/;45s/DebugMode/ReleaseMode/' "$srcdir/ollama/server/routes.go"
 }
 
 build() {
   cd ${pkgname/-cuda}
   export CGO_CFLAGS="$CFLAGS" CGO_CPPFLAGS="$CPPFLAGS" CGO_CXXFLAGS="$CXXFLAGS" CGO_LDFLAGS="$LDFLAGS"
-
   go generate ./...
   go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid=''
 }
 
 check() {
   cd ${pkgname/-cuda}
-  setconf version/version.go 'var Version string' "\"0.0.0\""
   go test ./...
 }
 

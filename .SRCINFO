@@ -1,7 +1,7 @@
 pkgbase = ollama-cuda
 	pkgdesc = Create, run and share large language models (LLMs) with CUDA
 	pkgver = 0.1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmorganca/ollama
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = ollama-cuda
 	makedepends = cuda
 	makedepends = git
 	makedepends = go
-	makedepends = setconf
 	provides = ollama
 	conflicts = ollama
 	source = git+https://github.com/jmorganca/ollama#commit=6b5bdfa6c9321405174ad443f21c2e41db36a867
