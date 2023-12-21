@@ -51,6 +51,9 @@ check-for-asdf() {
 }
 
 prepare_commands() {
+  local srcdir=$1
+  local pkgname=$2
+
   check-for-asdf
 
   # Install all plugins stated in .tool-versions
@@ -58,10 +61,14 @@ prepare_commands() {
   asdf install
 
   cd "$srcdir/$pkgname"
+  echo $PWD
   yarn install
 }
 
 build_commands() {
+  local srcdir=$1
+  local pkgname=$2
+
   check-for-asdf
   
   cd "$srcdir/$pkgname"
@@ -71,6 +78,10 @@ build_commands() {
 }
 
 package_commands() {
+  local srcdir=$1
+  local pkgname=$2
+  local pkgdir=$3
+
   check-for-asdf
 
   cd "$srcdir/$pkgname"
