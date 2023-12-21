@@ -2,8 +2,8 @@
 
 pkgbase=deepin-unioncode-git
 pkgname=deepin-unioncode-git
-pkgver=1.2.4.r0.g8e97bdea
-pkgrel=1
+pkgver=1.2.8.r0.gaf3ed9fe
+pkgrel=3
 pkgdesc="IDE authored by deepin"
 arch=(x86_64
     aarch64
@@ -63,6 +63,11 @@ options=('!strip')
 pkgver() {
     cd "${srcdir}/${pkgname}/"
     git describe --long --tags | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {

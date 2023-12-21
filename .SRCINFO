@@ -1,7 +1,7 @@
 pkgbase = deepin-unioncode-git
 	pkgdesc = IDE authored by deepin
-	pkgver = 1.2.4.r0.g8e97bdea
-	pkgrel = 1
+	pkgver = 1.2.8.r0.gaf3ed9fe
+	pkgrel = 3
 	url = https://github.com/linuxdeepin/deepin-unioncode
 	arch = x86_64
 	arch = aarch64
