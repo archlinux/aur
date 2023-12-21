@@ -1,7 +1,7 @@
 pkgbase = fabio-bin
 	pkgdesc = A fast, modern, zero-conf load balancing HTTP(S) and TCP router for deploying applications managed by consul.
 	pkgver = 1.6.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://fabiolb.net
 	arch = aarch64
 	arch = armv7h
@@ -10,7 +10,7 @@ pkgbase = fabio-bin
 	license = MIT
 	provides = fabio=1.6.3
 	conflicts = fabio
-	source = LICENSE::https://raw.githubusercontent.com/fabiolb/fabio/v1.6.3/LICENSE
+	source = LICENSE-1.6.3::https://raw.githubusercontent.com/fabiolb/fabio/v1.6.3/LICENSE
 	sha256sums = 1b96863084c41c1557336dad7193f7b0d4c03042481da83136b53940ea5a3083
 	source_aarch64 = fabio-1.6.3-aarch64::https://github.com/fabiolb/fabio/releases/download/v1.6.3/fabio-1.6.3-linux_arm64
 	sha256sums_aarch64 = 627ade0d5693da64b827e67ae7a6b656c87e97567a7572edca8e4fc4c84a50e0
