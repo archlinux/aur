@@ -6,10 +6,10 @@
 : ${_system_cflags:=false}
 
 pkgname=proton-experimental
-_srctag=8.0-20231129
+_srctag=8.0-20231219
 _commit=
-pkgver=8.0.20231129 #${_srctag//-/.}
-_geckover=2.47.3
+pkgver=8.0.20231219 #${_srctag//-/.}
+_geckover=2.47.4
 _monover=8.1.0
 pkgrel=1
 epoch=1
@@ -263,15 +263,15 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
-            '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
+            '2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6'
+            'fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814'
             '4e3e8a40729e4c9e3e9e651cebe4f1aed8f9a4d22e991e6cd24608687f0eedd4'
-            'cc1a8b63c8b20920554f38eb5794db16908bdda62771e379ec75d9ed8acd6687'
-            '6845f4948411117189be50e55b0dbabab1deaad896ae4bf1104f52a371e45c40'
-            '541fc98de694231a8f2d99f336f35dbce10e837d6f142422628f7b3c826260cb'
-            'aa807d888522aafc254d812b2bcf9f193c25b83bac971a7d4134e554d819f2d0'
-            'e15287c3a986f525cbb88f5a20e68e33bebf10e47a8368739b1b23671a00e568'
-            '41c1eaa7cdf4633e72ebfa8ccc7be7edb4191c74bc8fd4d9d1ddc06f53e2aa31')
+            '9dffdab7d53dc81ab82ba86d1f4baa8f85b1fe0410ece76b89295b09aab7fbe0'
+            'f16e8271169cbaca1111e925a02bd0d1dfcfd6a0941435b724734b626689f6c6'
+            '42c869c47a3079087125efa94d786c5942cbd518a7ab087770a5c19d2007e0d6'
+            '0892daec01d88ae497d1389673931f5aa1a93de56b24eeee6a6beaefcee8943c'
+            'c589f9bf60c27033680036a048374632001eddf8a9ca2277c7ed5893263c2ac9'
+            'eefb327133ee164db6d8002a851b8fad72f9fc2e669f1d58901ebdadbc240823')
 # Optional patches
 sha256sums+=(
 )

@@ -1,4 +1,4 @@
-From 9a21ecbca6c7a1c536d1108e6064615facd08411 Mon Sep 17 00:00:00 2001
+From 51d4010480d581842ac324415f24b4b8a6a657d2 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 26 Apr 2023 14:22:23 +0300
 Subject: [PATCH 1/6] AUR Pkgbuild changes
@@ -20,7 +20,7 @@ Subject: [PATCH 1/6] AUR Pkgbuild changes
  13 files changed, 88 insertions(+), 42 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index 8937dc35..be29db7b 100644
+index 7ec939df..32211119 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -50,11 +50,12 @@ else
@@ -291,10 +291,10 @@ index 3b5f7a4a..d9297162 100755
    stat "Using $arg_container_engine."
  
 diff --git a/make/rules-autoconf.mk b/make/rules-autoconf.mk
-index 1f5fb9e9..8e34858a 100644
+index 878640d2..e7baa574 100644
 --- a/make/rules-autoconf.mk
 +++ b/make/rules-autoconf.mk
-@@ -32,9 +32,9 @@ $$(OBJ)/.$(1)-configure$(3): $$(OBJ)/.$(1)-pre-configure
+@@ -29,9 +29,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/configure
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
  	+cd "$$($(2)_OBJ$(3))" && env $$($(2)_ENV$(3)) \
@@ -459,7 +459,7 @@ index 5c3b59a3..ed6589e0 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index d8800684..9fa17d24 100755
+index f93f545f..e4713eec 100755
 --- a/proton
 +++ b/proton
 @@ -423,7 +423,6 @@ class Proton:
@@ -470,7 +470,7 @@ index d8800684..9fa17d24 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -1716,8 +1715,6 @@ if __name__ == "__main__":
+@@ -1742,8 +1741,6 @@ if __name__ == "__main__":
  
      g_proton = Proton(os.path.dirname(sys.argv[0]))
  
@@ -479,7 +479,7 @@ index d8800684..9fa17d24 100755
  
      g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-@@ -1726,7 +1723,8 @@ if __name__ == "__main__":
+@@ -1752,7 +1749,8 @@ if __name__ == "__main__":
      g_session.init_wine()
  
      if g_proton.missing_default_prefix():
