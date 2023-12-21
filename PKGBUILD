@@ -2,12 +2,27 @@
 
 pkgname=oterm
 pkgver=0.1.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A text-based terminal client for Ollama"
 arch=('any')
 url="https://github.com/ggozad/oterm"
 license=('MIT')
-depends=('ollama' 'python' 'python-rich' 'python-typer' 'python-textual' 'python-pyperclip' 'python-httpx' 'python-aiosqlite' 'python-aiosql' 'python-packaging' 'python-dotenv' 'python-linkify-it-py' 'python-rich-pixels')
+depends=(
+	'ollama'
+	'python'
+	'python-rich'
+	'python-typer'
+	'python-textual'
+	'python-pyperclip'
+	'python-httpx'
+	'python-aiosqlite'
+	'python-aiosql'
+	'python-packaging'
+	'python-dotenv'
+	'python-linkify-it-py'
+	'python-rich-pixels'
+	'python-pillow'
+)
 makedepends=('python-poetry')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ggozad/oterm/archive/refs/tags/$pkgver.tar.gz")
 
