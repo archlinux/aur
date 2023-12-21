@@ -10,6 +10,6 @@ pkgbase = cdoc4j-util
 	source = https://github.com/open-eid/cdoc4j/releases/download/1.4/cdoc4j-util-1.4.zip
 	source = cdoc4j-util.sh
 	sha256sums = 717eef2c6d4369e73746f2e0c7c6b68a78b36fe1bf05068581853bc52c203c02
-	sha256sums = 7907decd0ee647ce8be80bc1af975f726edbe4390b1694539ddbd25d1b0bf526
+	sha256sums = e9ccd058c87b331b08a1ce30e73f03ea5d65657123d57d4524905a3c14bca08c
 
 pkgname = cdoc4j-util
