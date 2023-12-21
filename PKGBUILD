@@ -23,15 +23,15 @@ prepare(){
 build() {
   cmake -S ${pkgname}-v${pkgver} \
         -B build \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_SHARED_LIBS=ON \
-        -DINSTALL_METIS_HEADERS=OFF \
-        -DCOMMON_PTHREAD_FILE=ON \
-        -DSCOTCH_PTHREAD=ON \
-        -DSCOTCH_PTHREAD_MPI=ON \
-        -DCOMMON_PTHREAD_AFFINITY_LINUX=ON
-  cmake --build build --parallel
+        -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+        -D CMAKE_BUILD_TYPE:STRING=Release \
+        -D BUILD_SHARED_LIBS:BOOL=ON \
+        -D INSTALL_METIS_HEADERS:BOOL=OFF \
+        -D COMMON_PTHREAD_FILE:BOOL=ON \
+        -D SCOTCH_PTHREAD:BOOL=ON \
+        -D SCOTCH_PTHREAD_MPI:BOOL=ON \
+        -D COMMON_PTHREAD_AFFINITY_LINUX:BOOL=ON
+  cmake --build build --parallel 4
 }
 
 check() {
