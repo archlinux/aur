@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-bin
 	pkgdesc = Jitsi Meet Web binary
-	pkgver = 1.0.7658
+	pkgver = 1.0.7712
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = jitsi.install
@@ -10,13 +10,13 @@ pkgbase = jitsi-meet-bin
 	optdepends = nginx
 	provides = jitsi-meet
 	conflicts = jitsi-meet
-	noextract = config_1.0.7658.deb
+	noextract = config_1.0.7712.deb
 	options = !strip
 	backup = etc/webapps/jitsi-meet/config.js
 	backup = etc/webapps/jitsi-meet/interface_config.js
-	source = https://download.jitsi.org/stable/jitsi-meet-web_1.0.7658-1_all.deb
-	source = config_1.0.7658.deb::https://download.jitsi.org/stable/jitsi-meet-web-config_1.0.7658-1_all.deb
-	sha256sums = 989426c2d96423639c5d780ac69c158b805b674bc266dbc9c2f07b932079b43d
-	sha256sums = a2456137f94e23330406ce782dc6d08d1c80a5b688c0bc74482d0f7f94baabea
+	source = https://download.jitsi.org/stable/jitsi-meet-web_1.0.7712-1_all.deb
+	source = config_1.0.7712.deb::https://download.jitsi.org/stable/jitsi-meet-web-config_1.0.7712-1_all.deb
+	sha256sums = 43917b5d3fd003823933d84beaf822a8a9edaa8f06f897e13b6b575bba3f3c18
+	sha256sums = d0373e4b4b55004cfb7f27269d0d7aa4c12196c04e7d2537f33142182a1f44c8
 
 pkgname = jitsi-meet-bin
