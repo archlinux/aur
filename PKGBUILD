@@ -4,7 +4,7 @@
 # Note: I hope wael is a nice woman now :troll:
 
 pkgname=vinegar
-pkgver=1.5.9
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio"
 arch=("x86_64")
@@ -18,7 +18,7 @@ optdepends=("gamemode: Gamemode integration"
             "wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar-git")
 source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
-sha256sums=("b241e371d29d05568bd720820e3d83300516c476760b917057c45e0ab489a89e")
+sha256sums=("78b4f0b5fcb49cd0804e1382160c055fb3a87369d332b8246063141ccbb5a0f5")
 
 build() {
   cd "${pkgname}-v${pkgver}"
@@ -31,8 +31,7 @@ build() {
   # Make sure Vinegar rebuilds
   make clean
 
-  # Enable all Gio features (overriding default upstream behavior)
-  make VINEGAR_GOFLAGS="" DESTDIR="${pkgdir}" PREFIX="/usr" all
+  make DESTDIR="${pkgdir}" PREFIX="/usr" all
 }
 
 package() {
