@@ -2,7 +2,7 @@
 
 pkgname=acme.sh-systemd
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A systemd units for renew certificates acquired via acme.sh"
 arch=('any')
 url="https://github.com/unknowndevQwQ/${pkgname}"
@@ -24,6 +24,6 @@ package() {
     install -Dm644 "user/acme.sh.timer" -t        "${pkgdir}/usr/lib/systemd/user"
 #    install -Dm644 "account.conf" -t              "${pkgdir}/usr/share/acme.sh"
     install -Dm640 "account.conf" -t              "${pkgdir}/etc/acme.sh"
-    chmod 0750 -R "${pkgdir}/etc/acme.sh"
-    mkdir -pm 0750 "${pkgdir}/var/log/acme.sh"
+    install -dm750 "${pkgdir}"/etc/acme.sh{,/certs}
+    install -dm750 "${pkgdir}/var/log/acme.sh"
 }
