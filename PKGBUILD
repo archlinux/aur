@@ -4,7 +4,7 @@ pkgver=1.6.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A Simple Algorithmic Chorus By TAL Software"
-groups=('pro-audio' 'clap-plugins' 'vst-plugins' 'vst3-plugins')
+groups=('pro-audio')
 url="https://tal-software.com/products/tal-chorus-lx"
 license=('EULA')
 depends=('libcurl-gnutls' 'glibc')
@@ -13,6 +13,7 @@ sha256sums=('176396c83a3f43d3ec0ae0b1483c2ef7b9480952699cc999f393993fba786a0e')
 
 package_tal-chorus-lx-clap-bin() {
   ## CLAP Plugin
+  groups=("clap-plugins")
   replaces=("tal-chorus-lx-bin")
   conflicts=("tal-chorus-lx-bin")
   provides=("tal-chorus-lx-clap-bin")
@@ -20,6 +21,7 @@ package_tal-chorus-lx-clap-bin() {
 }
 package_tal-chorus-lx-vst-bin() {
   ## VST2 Plugin
+  groups=("vst-plugins")
   replaces=("tal-chorus-lx-bin")
   conflicts=("tal-chorus-lx-bin")
   provides=("tal-chorus-lx-vst-bin")
@@ -27,6 +29,7 @@ package_tal-chorus-lx-vst-bin() {
 }
 package_tal-chorus-lx-vst3-bin() {
   ## VST3 Plugin
+  groups=("vst3-plugins")
   replaces=("tal-chorus-lx-bin")
   conflicts=("tal-chorus-lx-bin")
   provides=("tal-chorus-lx-vst3-bin")

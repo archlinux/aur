@@ -5,9 +5,6 @@ pkgbase = tal-chorus-lx
 	url = https://tal-software.com/products/tal-chorus-lx
 	arch = x86_64
 	groups = pro-audio
-	groups = clap-plugins
-	groups = vst-plugins
-	groups = vst3-plugins
 	license = EULA
 	depends = libcurl-gnutls
 	depends = glibc
@@ -15,16 +12,19 @@ pkgbase = tal-chorus-lx
 	sha256sums = 176396c83a3f43d3ec0ae0b1483c2ef7b9480952699cc999f393993fba786a0e
 
 pkgname = tal-chorus-lx-clap-bin
+	groups = clap-plugins
 	provides = tal-chorus-lx-clap-bin
 	conflicts = tal-chorus-lx-bin
 	replaces = tal-chorus-lx-bin
 
 pkgname = tal-chorus-lx-vst-bin
+	groups = vst-plugins
 	provides = tal-chorus-lx-vst-bin
 	conflicts = tal-chorus-lx-bin
 	replaces = tal-chorus-lx-bin
 
 pkgname = tal-chorus-lx-vst3-bin
+	groups = vst3-plugins
 	provides = tal-chorus-lx-vst3-bin
 	conflicts = tal-chorus-lx-bin
 	replaces = tal-chorus-lx-bin
