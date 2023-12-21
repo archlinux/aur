@@ -2,7 +2,7 @@
 # Contributor: mrAppleXZ <mr.applexz@gmail.com> 
 
 pkgname=blockbench
-pkgver=4.9.0
+pkgver=4.9.2
 pkgrel=1
 pkgdesc="A low-poly 3D model editor"
 arch=('x86_64')
