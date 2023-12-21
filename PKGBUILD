@@ -2,27 +2,32 @@
 pkgname=fotograph-bin
 _appname=Fotograph
 pkgver=0.1.0_alpha
-pkgrel=6
+_electronversion=23
+pkgrel=7
 pkgdesc="A cross platform image manipulation desktop application"
 arch=("x86_64")
 url="https://fotograph.vercel.app/"
-_githuburl="https://github.com/Adedoyin-Emmanuel/FotoGraph"
+_ghurl="https://github.com/Adedoyin-Emmanuel/FotoGraph"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'electron23'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver//_/-}/${_appname}_1.0.0_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${_appname}_1.0.0_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6c92bb3b3e160abf34bbd8a73e844792a679558ec37ab38a6dad9919e211278f'
-            '6853b9f80926ff3867e23941ac2b5eb55f4d1b91e06de43d877ca59fcc56a14b')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_appname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_appname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
