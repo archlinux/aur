@@ -1,6 +1,6 @@
 pkgbase = assh-bin
 	pkgdesc = make your ssh client smarter
-	pkgver = 2.15.0
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://github.com/moul/assh
 	arch = x86_64
@@ -8,11 +8,13 @@ pkgbase = assh-bin
 	arch = aarch64
 	license = MIT
 	provides = assh
-	source_x86_64 = https://github.com/moul/assh/releases/download/v2.15.0/assh_2.15.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5140cc08768c019bfc5a6432d619b6f7bb234994243fd951a6d84b6b3229c8a0
-	source_i686 = https://github.com/moul/assh/releases/download/v2.15.0/assh_2.15.0_linux_386.tar.gz
-	sha256sums_i686 = 7da1c977142450860f429a4edc84de94fd90677fa3068731fb5e29a86afba9d7
-	source_aarch64 = https://github.com/moul/assh/releases/download/v2.15.0/assh_2.15.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2cac9a3120c34282565196862cba00951da5bca24f723368b833bcb895928322
+	source = LICENSE-2.16.0::https://raw.githubusercontent.com/moul/assh/v2.16.0/LICENSE
+	sha256sums = 123a58223e5ac1d0ded53648643881130a8d1bea7faff755376a4e15b88055ce
+	source_x86_64 = https://github.com/moul/assh/releases/download/v2.16.0/assh_2.16.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8c1329f23d6a23e1e7318eda09510774512ed0b3fd9e0c7a5b9ee74c8af53572
+	source_i686 = https://github.com/moul/assh/releases/download/v2.16.0/assh_2.16.0_linux_386.tar.gz
+	sha256sums_i686 = a99939f6a74eb15ca39b6b9ca69a9f41f51a40d2fee4ebe1c1f9ff6b3f47c15c
+	source_aarch64 = https://github.com/moul/assh/assh/releases/download/v2.16.0/assh_2.16.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7bc8e8c1a14518b0c458c854787e5d106c4442c6fa85db10dfa690456a677498
 
 pkgname = assh-bin
