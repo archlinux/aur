@@ -2,11 +2,11 @@
 # Contributor: brikler
 
 pkgname=fwts-git
-pkgver=21.03.00.r56.69c98101
+pkgver=23.11.00.r9.ffc2469b
 pkgrel=1
 pkgdesc="The FirmWare Test Suite is a tool to do automatic testing of a PC's firmware"
 arch=('i686' 'x86_64')
-url="https://github.com/ColinIanKing/fwts"
+url="https://github.com/fwts/fwts"
 license=('GPL')
 depends=('dtc' 'libbsd' 'pcre' 'json-c')
 conflicts=("${pkgname%-git}")
