@@ -3,7 +3,7 @@ pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=2.6.0
 pkgrel=6
 arch=('x86_64')
-groups=('pro-audio''vst-plugins' 'vst3-plugins')
+groups=('pro-audio')
 pkgdesc="A Filter By TAL Software"
 url="https://tal-software.com/products/tal-filter"
 license=('EULA')
@@ -13,6 +13,7 @@ md5sums=('5239a5518007008755ced72c4e83510c')
 
 package_tal-filter-vst-bin() {
   ## VST2 Plugin
+  groups=("vst-plugins")
   replaces=("tal-chorus-filter-bin")
   conflicts=("tal-chorus-filter-bin")
   provides=("tal-chorus-filter-vst-bin")
@@ -21,6 +22,7 @@ package_tal-filter-vst-bin() {
 
 package_tal-filter-vst3-bin() {
   ## VST3 Plugin
+  groups=("vst3-plugins")
   replaces=("tal-chorus-filter-bin")
   conflicts=("tal-chorus-filter-bin")
   provides=("tal-chorus-filter-vst3-bin")

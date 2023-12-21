@@ -4,8 +4,7 @@ pkgbase = tal-filter
 	pkgrel = 6
 	url = https://tal-software.com/products/tal-filter
 	arch = x86_64
-	groups = pro-audiovst-plugins
-	groups = vst3-plugins
+	groups = pro-audio
 	license = EULA
 	depends = libcurl-gnutls
 	depends = glibc
@@ -13,11 +12,13 @@ pkgbase = tal-filter
 	md5sums = 5239a5518007008755ced72c4e83510c
 
 pkgname = tal-filter-vst-bin
+	groups = vst-plugins
 	provides = tal-chorus-filter-vst-bin
 	conflicts = tal-chorus-filter-bin
 	replaces = tal-chorus-filter-bin
 
 pkgname = tal-filter-vst3-bin
+	groups = vst3-plugins
 	provides = tal-chorus-filter-vst3-bin
 	conflicts = tal-chorus-filter-bin
 	replaces = tal-chorus-filter-bin
