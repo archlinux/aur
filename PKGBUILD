@@ -22,7 +22,7 @@ url="https://github.com/ungoogled-software/ungoogled-chromium"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
-         'wayland' 'desktop-file-utils' 'hicolor-icon-theme')
+         'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
              'qt5-base' 'java-runtime-headless' 'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
@@ -64,11 +64,23 @@ _uc_usr=ungoogled-software
 _uc_rel=1
 # _uc_ver="$pkgver-$_uc_rel"
 _uc_ver="120.0.6099.109-$_uc_rel"
+optdepends=("${optdepends[@]}"
+            'chromium-extension-web-store: Web Store Functionality')
 source=(${source[@]}
-        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
-        # ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip)
+        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz
+        0001-vaapi-flag-ozone-wayland.patch
+        0001-adjust-buffer-format-order.patch
+        0001-enable-linux-unstable-deb-target.patch
+        0001-ozone-wayland-implement-text_input_manager_v3.patch
+        0001-ozone-wayland-implement-text_input_manager-fixes.patch)
+        # ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip
 sha256sums=(${sha256sums[@]}
-            '8a54932b0f2098dcd334e79e4f680614f57dc192037bc495d2099e28dbc507c8')
+            '8a54932b0f2098dcd334e79e4f680614f57dc192037bc495d2099e28dbc507c8'
+            '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
+            '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
+            '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
+            'd9974ddb50777be428fd0fa1e01ffe4b587065ba6adefea33678e1b3e25d1285'
+            'a2da75d0c20529f2d635050e0662941c0820264ea9371eb900b9d90b5968fa6a')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -151,6 +163,20 @@ prepare() {
 
 
   # Custom Patches
+  sed -i '/^bool IsHevcProfileSupported(const VideoType& type) {$/{s++bool IsHevcProfileSupported(const VideoType\& type) { return true;+;h};${x;/./{x;q0};x;q1}' \
+			media/base/supported_types.cc
+
+  # Implement text_input_manager_v3
+  # https://chromium-review.googlesource.com/c/chromium/src/+/3750452
+  patch -Np1 -i ../0001-ozone-wayland-implement-text_input_manager_v3.patch
+  patch -Np1 -i ../0001-ozone-wayland-implement-text_input_manager-fixes.patch
+
+  # Enable VAAPI on Wayland
+  # https://discourse.ubuntu.com/t/chromium-hardware-accelerated-build-for-intel-based-platforms-available-for-beta-testing/35625
+  # https://git.launchpad.net/~chromium-team/chromium-browser/+git/snap-from-source/
+  # patch -Np1 -i ../0001-enable-linux-unstable-deb-target.patch
+  patch -Np1 -i ../0001-adjust-buffer-format-order.patch
+  patch -Np1 -i ../0001-vaapi-flag-ozone-wayland.patch
 
   # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
   patch -p1 -i ../xdg-basedir.patch
@@ -160,14 +186,8 @@ prepare() {
   # called 'shoulder surfing').
   patch -p1 -i ../no-omnibox-suggestion-autocomplete.patch
 
-
   # Ungoogled Chromium changes
-  if [[ -d "$srcdir/${pkgname%xdg*}$_uc_ver" ]]
-  then
-    _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
-  else
-    _ungoogled_repo="$srcdir/${pkgname%xdg*}update"
-  fi
+  _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
 
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
@@ -232,6 +252,7 @@ build() {
     'enable_widevine=true'
     'enable_nacl=false'
     'enable_rust=false'
+    "google_api_key=\"$_google_api_key\""
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
@@ -245,7 +266,7 @@ build() {
   )
 
   # Append ungoogled chromium flags to _flags array
-    _ungoogled_repo="$srcdir/${pkgname%xdg*}-$_uc_ver"
+  _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
