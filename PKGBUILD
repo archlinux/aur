@@ -1,7 +1,7 @@
 # Maintainer: Stephan Koglin-Fischer <stephan dot koglin-fischer at funzt dot dev>
 pkgname=dashlane-cli-git
 pkgver=v1.15.1.r0.g8368d87
-pkgrel=46
+pkgrel=47
 pkgdesc="Dashlane CLI GitHub repository version bundled with asdf-vm to ensure using the correct node version."
 arch=('x86_64')
 url="https://github.com/Dashlane/dashlane-cli"
@@ -32,16 +32,19 @@ check-for-asdf() {
     if [[ $SHELL == *"bash"* ]]; then
       # If the .bashrc file does not contain the asdf source command, we add it
       if ! grep -q ". /opt/asdf-vm/asdf.sh" ~/.bashrc; then
+        echo "Patching .bashrc"
         echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.bashrc
       fi
       source ~/.bashrc
     elif [[ $SHELL == *"fish"* ]]; then
+      echo "Patching config.fish"
       # If the config.fish file does not contain the asdf source command, we add it
       if ! grep -q ". /opt/asdf-vm/asdf.fish" ~/.config/fish/config.fish; then
         echo -e "\n. /opt/asdf-vm/asdf.fish" >> ~/.config/fish/config.fish
       fi
       source ~/.config/fish/config.fish
     elif [[ $SHELL == *"zsh"* ]]; then
+      echo "Patching .zshrc"
       # Just to make sure that an existing zsh config is not intervening,
       # we need to check that the .zshrc file contains the proper shebang #!/usr/bin/env zsh
       if ! grep -q "#!/usr/bin/env zsh" ~/.zshrc; then
