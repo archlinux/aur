@@ -30,10 +30,16 @@ check-for-asdf() {
     # Install asdf
     # for bash, fish, zsh - add more if needed
     if [[ $SHELL == *"bash"* ]]; then
-      echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.bashrc
+      # If the .bashrc file does not contain the asdf source command, we add it
+      if ! grep -q "source /opt/asdf-vm/asdf.sh" ~/.bashrc; then
+        echo -e "\nsource /opt/asdf-vm/asdf.sh" >> ~/.bashrc
+      fi
       source ~/.bashrc
     elif [[ $SHELL == *"fish"* ]]; then
-      echo -e "\nsource /opt/asdf-vm/asdf.fish" >> ~/.config/fish/config.fish
+      # If the config.fish file does not contain the asdf source command, we add it
+      if ! grep -q "source /opt/asdf-vm/asdf.fish" ~/.config/fish/config.fish; then
+        echo -e "\nsource /opt/asdf-vm/asdf.fish" >> ~/.config/fish/config.fish
+      fi
       source ~/.config/fish/config.fish
     elif [[ $SHELL == *"zsh"* ]]; then
       # Just to make sure that an existing zsh config is not intervening,
@@ -43,10 +49,12 @@ check-for-asdf() {
         echo "This script is likely to fail."
         echo "For convenience, we will add it for you."
         echo "If you do not want this, please remove it manually after the installation has finished."
-        echo -e "# Shebang added by the dashlane-cli-git package\n#!/usr/bin/env zsh\n$(cat ~/.zshrc)" > ~/.zshrc
+        echo -e "#!/usr/bin/env zsh\n# Shebang added by the dashlane-cli-git package\n\n$(cat ~/.zshrc)" > ~/.zshrc
       fi
-      # Adding the asdf path to .zshrc - if it would already be there, we would not be here
-      echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.zshrc
+      # If the .zshrc file does not contain the asdf source command, we add it
+      if ! grep -q "source /opt/asdf-vm/asdf.sh" ~/.zshrc; then
+        echo -e "\nsource /opt/asdf-vm/asdf.sh" >> ~/.zshrc
+      fi
       source ~/.zshrc
     else
       echo "Unsupported shell. Please add asdf to your shell's initialization file manually."
