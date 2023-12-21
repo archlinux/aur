@@ -3,7 +3,7 @@
 pkgname=shell-gpt
 _name=${pkgname/-/_}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT"
 arch=(any)
 url="https://github.com/TheR1D/shell_gpt"
@@ -22,10 +22,10 @@ makedepends=(
   python-installer
   python-wheel
 )
-# checkdepends=(
-#   python-pytest
-#   python-requests-mock
-# )
+checkdepends=(
+  python-pytest
+  python-requests-mock
+)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('d25daa78e6763baa46bf4da49fd900ae30b8c851f964af1f3b443036a44f4ebf')
@@ -35,16 +35,17 @@ _archive="$_name-$pkgver"
 build() {
   cd "$_archive"
 
-  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
-  python -m build --wheel --no-isolation
+  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver \
+    python -m build --wheel --no-isolation
 }
 
-# Need user input to set up OpenAI API key
-# check() {
-#   cd "$_archive"
+check() {
+  cd "$_archive"
 
-#   python -m pytest --ignore tests/test_integration.py
-# }
+  # Randomly generated mock API key
+  OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb \
+    python -m pytest --ignore tests/test_integration.py
+}
 
 package() {
   cd "$_archive"

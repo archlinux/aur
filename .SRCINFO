@@ -1,10 +1,12 @@
 pkgbase = shell-gpt
 	pkgdesc = A command-line productivity tool powered by OpenAI's ChatGPT
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheR1D/shell_gpt
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-requests-mock
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
