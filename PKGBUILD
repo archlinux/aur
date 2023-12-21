@@ -2,7 +2,7 @@
 
 pkgname=xrock-git
 pkgver=1.0.4.r5.gbb62b28
-pkgrel=5
+pkgrel=11
 epoch=
 pkgdesc="The low level tools for rockchip SOC with maskrom and loader mode support."
 arch=(x86_64
@@ -21,6 +21,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
 build() {
