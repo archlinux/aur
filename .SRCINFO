@@ -1,14 +1,13 @@
 pkgbase = python2-bsddb
 	pkgdesc = Python interface for BerkeleyDB
 	pkgver = 6.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jcea.es/programacion/pybsddb.htm
 	arch = x86_64
 	license = BSD
-	depends = db
+	depends = db5.3
 	depends = python2
 	source = https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.9.tar.gz
 	sha256sums = 70d05ec8dc568f42e70fc919a442e0daadc2a905a1cfb7ca77f549d49d6e7801
 
 pkgname = python2-bsddb
-
