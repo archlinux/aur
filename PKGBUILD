@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=liquidsoap
-pkgver=2.2.1
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
@@ -77,6 +77,6 @@ package() {
     "${pkgdir}/usr/lib/tmpfiles.d/liquidsoap.conf"
 }
 
-sha256sums=('3a8234aefb3051036d178c7d9508155333fff3d903a50b52903a4e7dbe153cd9'
+sha256sums=('064726d76ef3ad62e622af595d4c5b5603151fdd9f4c0d1f5ec2eab8f4f2f39a'
             'df6d2cec1be47a57a02ed04a1f527c0349221fad39d8d152aca13734d3808661'
             '9f286958af0c751c2a43d74614cdd1c4629c0583d619875385c09417a5383675')
