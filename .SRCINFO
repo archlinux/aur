@@ -1,7 +1,7 @@
 pkgbase = nginx-quic-libressl
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch
 	pkgver = 1.25.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://nginx.org
 	install = nginx.install
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = nginx-quic-libressl
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = hg+https://hg.nginx.org/nginx#revision=6c8595b77e66
+	source = hg+https://hg.nginx.org/nginx#revision=cc16989c6d61
 	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.8.2.tar.gz
 	source = service
 	source = logrotate
