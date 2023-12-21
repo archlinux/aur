@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.6.7.arch1
+pkgver=6.6.8.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -40,7 +40,6 @@ source=(
 
   0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch
   
-  #0001-Revert-PCI-Add-a-REBAR-size-quirk-for-Sapphire-RX-56.patch
   0001-linux6.6.y-bore3.3.0.patch
   
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
@@ -62,6 +61,14 @@ source=(
   amd-tablet-sfh.patch
   v2-0002-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-m.patch
   v6-0001-platform-x86-asus-wmi-add-support-for-ASUS-screen.patch
+  
+#  v1-0001-support-for-cs35l41-support-without-_DSD.patch
+#  v1-0002-support-for-cs35l41-support-without-_DSD.patch
+#  v1-0003-support-for-cs35l41-support-without-_DSD.patch
+#  v1-0004-support-for-cs35l41-support-without-_DSD.patch
+#  v1-0005-support-for-cs35l41-support-without-_DSD.patch
+#  v1-0006-support-for-cs35l41-support-without-_DSD.patch
+#  v1-0007-support-for-cs35l41-support-without-_DSD.patch
 
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
@@ -72,9 +79,9 @@ validpgpkeys=(
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('0ce68ec6019019140043263520955ecd04839e55a1baab2fa9155b42bb6fd841'
+sha256sums=('5036c434e11e4b36d8da3f489851f7f829cf785fa7f7887468537a9ea4572416'
             'SKIP'
-            'a8a4f329887dbb3b25bc06126115fc678b5bb295e5d0464d503301a5d25a6d5a'
+            '77f0ad619945e18ab880733129a49ad0af28c3f2fd7b1ae9bbb6465b5a4cd316'
             'SKIP'
             'bdfd2629b1fe907b9270fc540adaa51ff526cbd361b23aba38c4c5fce7f5397b'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
