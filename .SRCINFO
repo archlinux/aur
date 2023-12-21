@@ -1,8 +1,9 @@
 pkgbase = stressberry
-	pkgdesc = Stress tests and temperature plots for the Raspberry Pi
+	pkgdesc = Stress tests and temperature plots for the Raspberry Pi and other PCs
 	pkgver = 0.3.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/nschloe/stressberry
+	install = stressberry.install
 	arch = any
 	license = GPL3
 	makedepends = python-pytest
