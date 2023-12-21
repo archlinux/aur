@@ -1,7 +1,7 @@
 pkgbase = dashlane-cli-git
 	pkgdesc = Dashlane CLI GitHub repository version bundled with asdf-vm to ensure using the correct node version.
 	pkgver = v1.15.1.r0.g8368d87
-	pkgrel = 61
+	pkgrel = 63
 	url = https://github.com/Dashlane/dashlane-cli
 	install = .INSTALL
 	arch = x86_64
