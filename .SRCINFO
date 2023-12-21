@@ -1,6 +1,6 @@
 pkgbase = ih8rtcgui
 	pkgdesc = RTC Jazz (EWM) simple desktop application to manage/view workitems
-	pkgver = 0.0.5
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/kenny59/ih8rtcgui
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = ih8rtcgui
 	makedepends = git
 	depends = electron25
 	conflicts = ih8rtcgui
-	source = ih8rtcgui-0.0.5::git+https://github.com/kenny59/ih8rtcgui.git#tag=v0.0.5
+	source = ih8rtcgui::git+https://github.com/kenny59/ih8rtcgui.git#tag=v0.0.7
 	source = ih8rtcgui.sh
 	sha256sums = SKIP
-	sha256sums = 1c5d56c725567d14d63de7e88a0031cde456f7fb5d64a03c37cbedca05b8b902
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = ih8rtcgui
