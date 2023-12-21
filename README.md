@@ -29,6 +29,17 @@ You can use the `just _<task-name>_` command to perform various tasks:
 - `just uninstall`: Uninstall the package.
 - `just test`: Test the package installation.
 - `just publish`: Publish the package.
+- `just push:` Push to the AUR remote.
+- `just dcli-bundle-version`: Check the version of the Dashlane CLI bundle.
+- `just dcli-bundle-sync`: Sync the Dashlane CLI bundle.
+- `just test-local`: Test the local build.
+- `just test`: Test the package installation.
+- `just clean`: Clean the Git repository.
+- `just clean-force`: Force clean the Git repository.
+- `just set-remote-master-to-aur-branch`: Set the remote master branch to the AUR branch.
+- `just remote-add-aur`: Add the AUR remote.
+- `just clone-empty-aur`: Clone the empty AUR repository.
+
 
 Use only the `just` command to see the list of available tasks:
 
