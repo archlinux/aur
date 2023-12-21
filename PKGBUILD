@@ -13,7 +13,7 @@
 
 pkgname=ungoogled-chromium-xdg
 pkgver=120.0.6099.129
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
@@ -258,12 +258,6 @@ build() {
   if [[ -n ${_system_libs[icu]+set} ]]; then
     _flags+=('icu_use_data_file=false')
   fi
-
-  # enable HEVC decoding
-  _flags+=(
-    'enable_platform_hevc=true'
-    'enable_hevc_parser_and_hw_decoder=true'
-  )
 
   # Append ungoogled chromium flags to _flags array
   _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
