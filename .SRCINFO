@@ -6,12 +6,11 @@ pkgbase = cyber
 	changelog = changelog.txt
 	arch = x86_64
 	license = MIT
-	makedepends = libarchive
 	provides = cyber
 	provides = cyberscript
 	conflicts = cyber
 	conflicts = cyberscript
 	source = https://github.com/fubark/cyber/releases/download/0.3/cyber-linux-x64.tar.gz
-	sha256sums = 0bd24ecee6ea20cfbc80d825cf8f9228fa837ce3aa141f7a4705190621b0a11b
+	sha256sums = 24343c64e6c249fc2c081d11d959ad0e1db612f534e0a891c96db6111d9a3e1d
 
 pkgname = cyber
