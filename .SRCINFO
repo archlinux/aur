@@ -1,0 +1,12 @@
+pkgbase = ppm2pwg-git
+	pkgdesc = Misc printing format conversion utilities: ppm2pwg, pwg2ppm, pdf2printable, baselinify, ippposter
+	pkgver = r225.32960d3
+	pkgrel = 1
+	url = https://github.com/attah/ppm2pwg
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	source = git+https://github.com/attah/ppm2pwg.git
+	sha512sums = SKIP
+
+pkgname = ppm2pwg-git
