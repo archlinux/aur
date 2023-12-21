@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=airisp-git
-pkgver=1.2.7.0.r8.g95a8154
-pkgrel=1
+pkgver=1.2.8.0.r1.geebb818
+pkgrel=12
 epoch=
 pkgdesc="An ISP tool for Air MCU"
 arch=("x86_64" "aarch64")
@@ -25,6 +25,11 @@ noextract=()
 pkgver(){
     cd "${srcdir}/${pkgname}"
     git describe --long --tags | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
