@@ -1,7 +1,7 @@
 # Maintainer: Stephan Koglin-Fischer <stephan dot koglin-fischer at funzt dot dev>
 pkgname=dashlane-cli-git
 pkgver=v1.15.1.r0.g8368d87
-pkgrel=43
+pkgrel=44
 pkgdesc="Dashlane CLI GitHub repository version bundled with asdf-vm to ensure using the correct node version."
 arch=('x86_64')
 url="https://github.com/Dashlane/dashlane-cli"
@@ -32,7 +32,6 @@ check-for-asdf() {
     if [[ $SHELL == *"bash"* ]]; then
       # If the .bashrc file does not contain the asdf source command, we add it
       if ! grep -q ". /opt/asdf-vm/asdf.sh" ~/.bashrc; then
-        echo "Patching .bashrc"
         echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.bashrc
       fi
       source ~/.bashrc
