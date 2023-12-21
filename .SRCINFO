@@ -1,16 +1,16 @@
 pkgbase = hiddify-next-appimage
 	pkgdesc = Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free.
-	pkgver = 0.11.1
-	pkgrel = 2
+	pkgver = 0.12.1
+	pkgrel = 1
 	url = https://github.com/hiddify/hiddify-next
 	arch = any
 	license = custom:CC-BY-NC-SA-4.0
 	conflicts = hiddify-next
 	options = !strip
-	source = https://github.com/hiddify/hiddify-next/releases/download/v0.11.1/hiddify-linux-x64.zip
+	source = https://github.com/hiddify/hiddify-next/releases/download/v0.12.1/hiddify-linux-x64.zip
 	source = hiddify-next-appimage.desktop
 	source = LICENSE.md
-	sha256sums = eb08f622288636acd9f40bc263010df6c92750744b0161fd7f4e842d11650f68
+	sha256sums = d7c8998c09d2354e8c059b1fd43ee06fabdfb113c89abfc4d4165a2ea5139f86
 	sha256sums = 480389ec46cb38845fda0430c8bd4732732722b1ec62681f608b240ede1e0aea
 	sha256sums = f609d73370ca62925ba8c796afeeb7fb42f4a1569124f84cb25b7026c026d78a
 

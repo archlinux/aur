@@ -1,0 +1,5 @@
+/pkg
+/src
+/*.zst
+/*.proto
+/hiddify-linux-x64.zip

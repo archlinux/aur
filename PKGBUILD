@@ -7,8 +7,8 @@ _pkgname='hiddify-next'
 
 # Maintainer: Meow King <mr.meowking@anche.no>
 pkgname="hiddify-next-appimage"
-pkgver="0.11.1"
-pkgrel=2
+pkgver="0.12.1"
+pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free. "
 arch=('any')
 # Appimage should contains exclude "strip" option
@@ -19,7 +19,7 @@ conflicts=('hiddify-next')
 source=("https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
         "hiddify-next-appimage.desktop"
         "LICENSE.md")
-sha256sums=('eb08f622288636acd9f40bc263010df6c92750744b0161fd7f4e842d11650f68'
+sha256sums=('d7c8998c09d2354e8c059b1fd43ee06fabdfb113c89abfc4d4165a2ea5139f86'
             '480389ec46cb38845fda0430c8bd4732732722b1ec62681f608b240ede1e0aea'
             'f609d73370ca62925ba8c796afeeb7fb42f4a1569124f84cb25b7026c026d78a')
 
