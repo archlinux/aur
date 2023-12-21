@@ -1,0 +1,36 @@
+pkgbase = freac-bin
+	pkgdesc = Audio converter and CD ripper with support for various popular formats and encoders.
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://www.freac.org/
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = squashfuse
+	depends = libpulse
+	depends = gtk3
+	depends = libcdio
+	depends = libogg
+	depends = openssl-1.1
+	depends = cairo
+	depends = libvorbis
+	depends = libcdio-paranoia
+	depends = curl
+	depends = lib32-glibc
+	depends = pango
+	provides = freac=1.1.7
+	conflicts = freac
+	source = freac.sh
+	sha256sums = 3a93ab88f95f3938bf41c0b94450176b51c15b46910f25e91898cf1b80a46d28
+	source_aarch64 = freac-1.1.7-aarch64.AppImage::https://github.com/enzo1982/freac/releases/download/v1.1.7/freac-1.1.7-linux-aarch64.AppImage
+	sha256sums_aarch64 = 027a53acf9c083edaada7d9225d6b75b69020a8beec0b99e65e950a19716e37e
+	source_armv7h = freac-1.1.7-armv7h.AppImage::https://github.com/enzo1982/freac/releases/download/v1.1.7/freac-1.1.7-linux-armhf.AppImage
+	sha256sums_armv7h = 935a12b6c2b5113d6560c297ab6eceb8963d24b31020e1c7766f4095a08075a0
+	source_i686 = freac-1.1.7-i686.AppImage::https://github.com/enzo1982/freac/releases/download/v1.1.7/freac-1.1.7-linux-i686.AppImage
+	sha256sums_i686 = 76db7d56f61c282f63d3ef80dfd7f5be690ccecf724f5e730a336930629dc4c8
+	source_x86_64 = freac-1.1.7-x86_64.AppImage::https://github.com/enzo1982/freac/releases/download/v1.1.7/freac-1.1.7-linux-x86_64.AppImage
+	sha256sums_x86_64 = 17d5d8ee6c3a0498e1639d002ff64ee557fe3c9f4b347996107d8755ea91f2d6
+
+pkgname = freac-bin
