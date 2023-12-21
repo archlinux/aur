@@ -33,7 +33,7 @@ check-for-asdf() {
       echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.bashrc
       source ~/.bashrc
     elif [[ $SHELL == *"fish"* ]]; then
-      echo -e "\nsource /opt/asdf-vm/asdf.fishh" >> ~/.config/fish/config.fish
+      echo -e "\nsource /opt/asdf-vm/asdf.fish" >> ~/.config/fish/config.fish
       source ~/.config/fish/config.fish
     elif [[ $SHELL == *"zsh"* ]]; then
       echo -e "\n. /opt/asdf-vm/asdf.sh" >> ~/.zshrc
