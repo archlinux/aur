@@ -2,12 +2,12 @@
 # Contributor: 
 pkgname=python-tensorflow-probability
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Probabilistic reasoning and statistical analysis in TensorFlow"
 url="https://github.com/tensorflow/probability"
 arch=('any')
 license=('APACHE')
-depends=('python' 'python-tensorflow' 'python-numpy' 'python-six' 'python-decorator' 'python-cloudpickle' 'python-gast03' 'python-dm-tree' 'python-absl')
+depends=('python' 'python-tensorflow' 'python-numpy' 'python-six' 'python-decorator' 'python-cloudpickle' 'python-gast' 'python-dm-tree' 'python-absl')
 makedepends=('python-setuptools' 'bazel')
 source=("https://github.com/tensorflow/probability/archive/v${pkgver}.tar.gz")
 sha256sums=('a00769550da9284acbd69e32a005507153ad39b0c190feca2bbbf6373366cc14')
