@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xterminal-bin
 _pkgname=XTerminal
-pkgver=1.4.1
+pkgver=1.6.0
 #update:https://txc.qq.com/products/598955/change-log
-#_electronversion=23
+#_electronversion=28
 pkgrel=1
 pkgdesc="不仅是强大的SSH工具，更提供本地控制台，以及更多即将推出的开发相关功能，让您专注于创造卓越的代码"
 arch=("x86_64")
@@ -39,7 +39,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://cdn-cn.xterminal.cn/xterminal/${_pkgname}-${pkgver}-linux-amd64.deb"
     "LICENSE.html"
 )
-sha256sums=('13d8b2dbb5c50b704d97a174cc5fbbbb260d2a5ca0a035f1a6bd56cad8036e11'
+sha256sums=('c9b2ccdf4703593f4ea5ce89e7be866974b45a79fb9416d5bfdb03344a6d3ae2'
             '8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
