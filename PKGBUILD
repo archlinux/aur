@@ -10,21 +10,22 @@ pkgdesc="cli for radicle, a peer-to-peer GitHub alternative"
 arch=('x86_64' 'aarch64')
 url="https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5"
 _srcurl="https://files.radicle.xyz/$_srchash/$CARCH-unknown-linux-musl"
+_prefix=$pkgname-$pkgver
 source_x86_64=(
-	$_srcurl/rad
-	$_srcurl/rad-web
-	$_srcurl/git-remote-rad
-	$_srcurl/rad.1
-	$_srcurl/rad-patch.1
-	$_srcurl/git-remote-rad.1
+	$_prefix-rad::$_srcurl/rad
+	$_prefix-rad-web::$_srcurl/rad-web
+	$_prefix-git-remote-rad::$_srcurl/git-remote-rad
+	$_prefix-rad.1::$_srcurl/rad.1
+	$_prefix-rad-patch.1::$_srcurl/rad-patch.1
+	$_prefix-git-remote-rad.1::$_srcurl/git-remote-rad.1
 )
-source_aarch64=(
-	$_srcurl/rad
-	$_srcurl/rad-web
-	$_srcurl/git-remote-rad
-	$_srcurl/rad.1
-	$_srcurl/rad-patch.1
-	$_srcurl/git-remote-rad.1
+_srcurl4=(
+	$_prefix-rad::$_srcurl/rad
+	$_prefix-rad-web::$_srcurl/rad-web
+	$_prefix-git-remote-rad::$_srcurl/git-remote-rad
+	$_prefix-rad.1::$_srcurl/rad.1
+	$_prefix-rad-patch.1::$_srcurl/rad-patch.1
+	$_prefix-git-remote-rad.1::$_srcurl/git-remote-rad.1
 )
 sha256sums_x86_64=(
 	'c8096f4c136b12cd761540ce7270b0f4787662abb185394a557da4abbc1633c5'
@@ -48,11 +49,11 @@ conflicts=('radicle-cli')
 license=('MIT' 'Apache')
 
 package() {
-	install -Dm755 "$srcdir/rad" "$pkgdir/usr/bin/rad"
-	install -Dm755 "$srcdir/rad-web" "$pkgdir/usr/bin/rad-web"
-	install -Dm755 "$srcdir/git-remote-rad" "$pkgdir/usr/bin/git-remote-rad"
+	install -Dm755 "$srcdir/$_prefix-rad" "$pkgdir/usr/bin/rad"
+	install -Dm755 "$srcdir/$_prefix-rad-web" "$pkgdir/usr/bin/rad-web"
+	install -Dm755 "$srcdir/$_prefix-git-remote-rad" "$pkgdir/usr/bin/git-remote-rad"
 
-	install -Dm644 "$srcdir/rad.1" "$pkgdir/usr/share/man/man1/rad.1"
-	install -Dm644 "$srcdir/rad-patch.1" "$pkgdir/usr/share/man/man1/rad-patch.1"
-	install -Dm644 "$srcdir/git-remote-rad.1" "$pkgdir/usr/share/man/man1/git-remote-add.1"
+	install -Dm644 "$srcdir/$_prefix-rad.1" "$pkgdir/usr/share/man/man1/rad.1"
+	install -Dm644 "$srcdir/$_prefix-rad-patch.1" "$pkgdir/usr/share/man/man1/rad-patch.1"
+	install -Dm644 "$srcdir/$_prefix-git-remote-rad.1" "$pkgdir/usr/share/man/man1/git-remote-add.1"
 }
