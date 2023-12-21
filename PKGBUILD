@@ -2,7 +2,7 @@
 pkgname=gopeed-bin
 _pkgname=Gopeed
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="High speed downloader that supports all platforms."
 arch=('x86_64')
 url="https://gopeed.com/"
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('3dd491ffd2bdc7e23a08ea1b15a6182a67d7e86ce366ae0ab8ec2a4ac4b54776'
-            'd1c5136325dbd9788bb4c70b616253859a5e837de695fb26e315dd3418de69da')
+            '64c7bfe7e80844ee07bf8fb97763eae06c6404967a1f6bb21b214295e0919b16')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
