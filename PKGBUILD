@@ -1,8 +1,8 @@
 
 pkgname=('python-pyqt5-pre-release')
 pkgdesc="A set of Python bindings for the Qt5 toolkit"
-pkgver=5.15.10
-pkgrel=2
+pkgver=5.15.11
+pkgrel=1
 arch=('x86_64')
 url="https://riverbankcomputing.com/software/pyqt/intro"
 license=('GPL')
@@ -32,11 +32,12 @@ makedepends=(
     'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-remoteobjects' 'qt5-quick3d'
     'qt5-sensors' 'qt5-webchannel' 'qt5-location')
 conflicts=('pyqt5-common' 'python-pyqt5')
-source=("https://www.riverbankcomputing.com/pypi/packages/PyQt5/PyQt5-${pkgver}.tar.gz")
-md5sums=('73176f517992062bf5bfe226506b3201')
+source=("https://www.riverbankcomputing.com/pypi/packages/PyQt5/PyQt5-5.15.11.dev2311181444.tar.gz")
+md5sums=('c728844552577d75dd0acb76f85872da')
 
+_src=PyQt5-5.15.11.dev2311181444
 build() {
-    cd PyQt5-$pkgver
+    cd ${_src}
     sip-build \
         --confirm-license \
         --no-make \
@@ -48,7 +49,7 @@ build() {
 }
 
 package(){
-    cd PyQt5-$pkgver/build
+    cd ${_src}/build
     make INSTALL_ROOT="$pkgdir" install
 
     # Remove unused py2 version of uic modules:

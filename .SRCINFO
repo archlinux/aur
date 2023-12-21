@@ -1,7 +1,7 @@
 pkgbase = python-pyqt5-pre-release
 	pkgdesc = A set of Python bindings for the Qt5 toolkit
-	pkgver = 5.15.10
-	pkgrel = 2
+	pkgver = 5.15.11
+	pkgrel = 1
 	url = https://riverbankcomputing.com/software/pyqt/intro
 	arch = x86_64
 	groups = pyqt5
@@ -47,7 +47,7 @@ pkgbase = python-pyqt5-pre-release
 	provides = python-pyqt5
 	conflicts = pyqt5-common
 	conflicts = python-pyqt5
-	source = https://www.riverbankcomputing.com/pypi/packages/PyQt5/PyQt5-5.15.10.tar.gz
-	md5sums = 73176f517992062bf5bfe226506b3201
+	source = https://www.riverbankcomputing.com/pypi/packages/PyQt5/PyQt5-5.15.11.dev2311181444.tar.gz
+	md5sums = c728844552577d75dd0acb76f85872da
 
 pkgname = python-pyqt5-pre-release
