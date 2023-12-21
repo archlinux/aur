@@ -3,9 +3,9 @@
 
 pkgname=ntpdate
 _pkgname=ntp
-_pkgver=4.2.8p15
+_pkgver=4.2.8p17
 pkgver=${_pkgver/p/.p}
-pkgrel=2
+pkgrel=1
 pkgdesc='Client for the Network Time Protocol (NTP)'
 url='http://www.ntp.org/'
 license=('custom')
@@ -15,12 +15,10 @@ depends=('openssl')
 conflicts=('ntp' 'ntpdate-dev')
 backup=('etc/conf.d/ntpdate.conf')
 source=("https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${pkgver%*.*.*}/${_pkgname}-${_pkgver}.tar.gz"
-        "bug_3741.patch"::"https://bugs.ntp.org/attachment.cgi?id=1814"
         "${pkgname}.conf"
         "${pkgname}.service"
         "restore-html2man.patch")
-sha256sums=('f65840deab68614d5d7ceb2d0bb9304ff70dcdedd09abb79754a87536b849c19'
-            'c3fbc0766977bb768299ef32823ac234cdd3729b2af893f565cd353b77c54dcf'
+sha256sums=('103dd272e6a66c5b8df07dce5e9a02555fcd6f1397bdfb782237328e89d3a866'
             '1ddbf0f51e030c6ec48d50e1b0eb6682f2d51567fbbb8fdd695a0e38a6036fd7'
             '2267e19120de4a73703ed0d83a4a0088309600ce3fed88c3c17a950fa0c1aa85'
             '66abd6828171661f531d221e8ac57baeca7bf6ac96008cf4fa76f8fb840404ce')
@@ -28,9 +26,6 @@ sha256sums=('f65840deab68614d5d7ceb2d0bb9304ff70dcdedd09abb79754a87536b849c19'
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
   patch -p1 -i "../restore-html2man.patch"
-  # Bug 3741 - 4.2.8p15 can't build with glibc 2.34 
-  # https://bugs.ntp.org/show_bug.cgi?id=3741
-  patch -p1 -i "${srcdir}/bug_3741.patch"
 
   cp -f "scripts/deprecated/html2man.in" "scripts/"
 }
