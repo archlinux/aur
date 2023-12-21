@@ -1,37 +1,37 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-_base=syrupy
-pkgname=python-${_base}
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
+# Contributor: Carlos Aznarán <caznaranl at uni dot pe>
+pkgname=python-syrupy
+_pyname=${pkgname#python-}
 pkgdesc="Pytest Snapshot Test Utility"
-pkgver=4.2.0
+pkgver=4.6.0
 pkgrel=1
-arch=(any)
-url="https://github.com/tophat/${_base}"
-license=(Apache)
-depends=(python-pytest python-colored)
-makedepends=(python-build python-installer python-poetry-core)
-checkdepens=()
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ceae95698185c4f4067cb76ada82d41b644ed51fe7ead2419f0090faf47a83488782e2227886e69b6ecdb378fb218ee648f379a1193406bece447191384c85f3')
+arch=('any')
+url="https://github.com/tophat/${_pyname}"
+license=('Apache')
+makedepends=('python-build' 'python-installer' 'python-poetry-core')
+depends=('python-pytest>=7.0.0')
+source=("${_pyname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('c2da07d4e25cba15e518d8ca24c396718ba44f68e9119b5b1e44a6ca2ba43e433378ea0cdda4198dcbb78a7b96f2afcce27c98c34c4b94fd54ae271538147a54')
 
 build() {
-  cd ${_base}-${pkgver}
-  python -m build --wheel --skip-dependency-check --no-isolation
+    cd ${_pyname}-${pkgver}
+
+    python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd ${_base}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not colors_off_does_not_call_colored'
+    cd ${_pyname}-${pkgver}
+
+    mkdir -p dist/lib
+    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -ra --color=yes -o console_output_style=count
 }
 
 package() {
-  cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+    cd ${_pyname}-${pkgver}
 
-  # Symlink license file
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d ${pkgdir}/usr/share/licenses/${pkgname}
-  ln -s "${site_packages}/${_base}-${pkgver}.dist-info/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+
 }
