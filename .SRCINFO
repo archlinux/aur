@@ -1,11 +1,11 @@
 pkgbase = eusoft-ting-de-bin
 	pkgdesc = 听力统计、笔记同步、语音高亮跟随，让您轻松愉快学德语
 	pkgver = 9.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.godic.net/ting
 	arch = x86_64
 	license = custom
-	depends = hicolor-icon-theme
+	depends = electron13
 	depends = electron13
 	conflicts = eusoft-ting-de
 	conflicts = eudic-ting-de
@@ -15,6 +15,6 @@ pkgbase = eusoft-ting-de-bin
 	source = eusoft-ting-de.sh
 	sha256sums = 3bf27e84f6b6f65aad0bbb45b8602afb9124cd2539c62406d9b9c8f2bfa7249d
 	sha256sums = ca6b558863398cad1363bf850881d318dac47866dc2ba75353364c0de5615525
-	sha256sums = 50d5ba81cf2fd9f6d5d8d08deb309034fa73e88f38b9d918411a9cc5377eb6b7
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = eusoft-ting-de-bin

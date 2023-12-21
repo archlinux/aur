@@ -3,7 +3,8 @@ _appname=ting_de
 pkgname="eusoft-${_appname//_/-}-bin"
 _zhname="每日德语听力"
 pkgver=9.7.0
-pkgrel=1
+_electronversion=13
+pkgrel=2
 pkgdesc="听力统计、笔记同步、语音高亮跟随，让您轻松愉快学德语"
 arch=('x86_64')
 url="https://www.godic.net/ting"
@@ -13,7 +14,7 @@ conflicts=(
     "eudic-${_appname//_/-}"
     "${_appname//_/-}")
 depends=(
-    'hicolor-icon-theme'
+    "electron${_electronversion}"
     'electron13'
 )
 source=(
@@ -23,8 +24,12 @@ source=(
 )
 sha256sums=('3bf27e84f6b6f65aad0bbb45b8602afb9124cd2539c62406d9b9c8f2bfa7249d'
             'ca6b558863398cad1363bf850881d318dac47866dc2ba75353364c0de5615525'
-            '50d5ba81cf2fd9f6d5d8d08deb309034fa73e88f38b9d918411a9cc5377eb6b7')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_zhname}/${_appname}\" %U|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
