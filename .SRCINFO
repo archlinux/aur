@@ -1,6 +1,6 @@
 pkgbase = blockbench-bin
 	pkgdesc = A low-poly 3D model editor
-	pkgver = 4.9.0
+	pkgver = 4.9.2
 	pkgrel = 1
 	url = https://blockbench.net/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = blockbench-bin
 	depends = alsa-lib
 	provides = blockbench
 	conflicts = blockbench
-	source = https://github.com/JannisX11/blockbench/releases/download/v4.9.0/Blockbench_4.9.0.deb
-	sha512sums = 01fca173aeaa59e16bdde418562deb8e5bbc76b1aa808669fa649e835196ad2ebd3dc2233f3ccb8d08d894979fe17b189c7edc2537b990a0dfc896310a6ccc84
+	source = https://github.com/JannisX11/blockbench/releases/download/v4.9.2/Blockbench_4.9.2.deb
+	sha512sums = 73a35ababa0bb9cd78fff45e75fcdf334ef1f410c514eb669347eefdc783aefc416219d119e130fcfe930f96b2e1a4a56c91fd87b1fcfa963d6fbda6f484aef7
 
 pkgname = blockbench-bin
