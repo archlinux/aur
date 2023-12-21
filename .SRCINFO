@@ -1,7 +1,7 @@
 pkgbase = frosch-bin
 	pkgdesc = Frosch, software para juego de rana electrónica o rana digital.
 	pkgver = 2.0.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/ivanrey/Frosch
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = frosch-bin
 	depends = electron11
 	provides = frosch=2.0.2
 	conflicts = frosch
-	source = LICENSE::https://raw.githubusercontent.com/ivanrey/Frosch/v2.0.2/LICENSE
+	source = LICENSE-2.0.2::https://raw.githubusercontent.com/ivanrey/Frosch/v2.0.2/LICENSE
 	source = frosch.sh
 	sha256sums = 70d564391aa89ca77317a0716d27d450d939c41d0554a66da392b28784d6fa7d
-	sha256sums = 7d31e6c20fc5010a1e58d6579301c378608a4b5ba9c8f58d989735392d439d03
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 	source_i686 = frosch-2.0.2-i686.zip::https://github.com/ivanrey/Frosch/releases/download/v2.0.2/Frosch-linux-ia32.zip
 	sha256sums_i686 = 78ca0dbd64a0e6e1155632219d3990a76358abd8c385ef88a7094edc1a8aa8b6
 	source_x86_64 = frosch-2.0.2-x86_64.zip::https://github.com/ivanrey/Frosch/releases/download/v2.0.2/Frosch-linux-x64.zip
