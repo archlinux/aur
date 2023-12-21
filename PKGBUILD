@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libde265
-pkgver=1.0.8
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="Open h.265 video codec implementation (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=(https://github.com/strukturag/libde265/releases/download/v$pkgver/libde265-$pkgver.tar.gz)
-sha256sums=('24c791dd334fa521762320ff54f0febfd3c09fc978880a8c5fbc40a88f21d905')
+sha256sums=('00251986c29d34d3af7117ed05874950c875dd9292d016be29d3b3762666511d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
