@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=120.0.6099.109
+pkgver=120.0.6099.129
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -42,7 +42,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('87c00c525ee07c2233b78dbece1496b697f686244a67fac2c71e4a30bd96849b'
+sha256sums=('be36d5abecfafdc68d9b27b0bee65136316610a295e844b99483a7520b245f85'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2'
             '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
@@ -62,8 +62,8 @@ provides=("chromium=${pkgver}" "chromedriver=${pkgver}")
 conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
 _uc_rel=1
-_uc_ver="$pkgver-$_uc_rel"
-# _uc_ver="119.0.6045.123-$_uc_rel"
+# _uc_ver="$pkgver-$_uc_rel"
+_uc_ver="120.0.6099.109-$_uc_rel"
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
         # ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip)
