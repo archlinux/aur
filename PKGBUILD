@@ -2,7 +2,7 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 _pkgname=aspe
 pkgname="${_pkgname}-git"
-pkgver=1.0
+pkgver=v1.0
 pkgrel=1
 pkgdesc="Arch Linux build source file clone tool"
 arch=(any)
