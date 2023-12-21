@@ -1,15 +1,24 @@
 pkgbase = tal-reverb2
 	pkgdesc = A Simple Algorithmic Reverb V2 By TAL Software
 	pkgver = 2.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://tal-software.com/products/tal-reverb-4
 	arch = x86_64
-	groups = pro-audiovst-plugins
-	groups = vst3-plugins
+	groups = pro-audio
 	license = EULA
 	depends = libcurl-gnutls
 	depends = glibc
 	source = https://tal-software.com/downloads/plugins/TAL-Reverb-2_64_linux.zip
 	md5sums = accb9049e6edfc1276ccfacbccdd9e4b
 
-pkgname = tal-reverb2-bin
+pkgname = tal-reverb2-vst-bin
+	groups = vst-plugins
+	provides = tal-reverb2-vst-bin
+	conflicts = tal-reverb2-bin
+	replaces = tal-reverb2-bin
+
+pkgname = tal-reverb2-vst3-bin
+	groups = vst3-plugins
+	provides = tal-reverb2-vst3-bin
+	conflicts = tal-reverb2-bin
+	replaces = tal-reverb2-bin
