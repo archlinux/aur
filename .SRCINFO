@@ -1,4 +1,4 @@
-pkgbase = gtk-theme-clearlooks-flat-compact
+pkgbase = gtk-theme-clearlooks-flat-compact-git
 	pkgdesc = Clearlooks-flat-compact theme for GTK2, GTK3, metacity, and openbox
 	pkgver = r17.e115648
 	pkgrel = 1
@@ -6,8 +6,9 @@ pkgbase = gtk-theme-clearlooks-flat-compact
 	arch = any
 	license = GPL
 	makedepends = git
-	source = gtk-theme-clearlooks-flat-compact::git://github.com/linvinus/Clearlooks-flat-compact
+	provides = gtk-theme-clearlooks-flat-compact
+	conflicts = gtk-theme-clearlooks-flat-compact
+	source = gtk-theme-clearlooks-flat-compact-git::git+https://github.com/linvinus/Clearlooks-flat-compact
 	md5sums = SKIP
 
-pkgname = gtk-theme-clearlooks-flat-compact
-
+pkgname = gtk-theme-clearlooks-flat-compact-git
