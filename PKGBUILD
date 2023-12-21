@@ -2,19 +2,20 @@
 
 pkgname=unreal-tournament-goty-steam
 _pkgname=unreal-tournament-goty
-pkgver=469
-pkgrel=5
-arch=('i686' 'x86_64')
+pkgver=469d
+pkgrel=1
+arch=('i686' 'x86_64' 'aarch64')
 makedepends=('steamcmd' 'icoutils')
 depends=('lib32-libgl'
          'lib32-libpulse'
          'lib32-sdl')
-source=("https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c/OldUnreal-UTPatch469c-Linux-x86.tar.bz2" "https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c/OldUnreal-UTPatch469c-Linux-amd64.tar.bz2" "${_pkgname}.desktop" "${_pkgname}.png")
+source=("https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2" "https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2" "https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-arm64.tar.bz2" "${_pkgname}.desktop" "${_pkgname}.png")
 pkgdesc="Unreal Tournament GOTY Linux with data via Steam"
 license=('custom')
 url='https://store.steampowered.com/app/13240/Unreal_Tournament_Game_of_the_Year_Edition/'
-sha256sums=('30978800c100e8c5a20fbc66a04b9e12f843424b3a811b04e6fb8e1b6b5d6543'
-            '4c99bde06d26b724f14471d374d4d6105dbdc98c56ec2a40af3fa541956eeed9'
+sha256sums=('d49b052ae0008ff2ed62f3943c5bb41e7fb3bd8deb896d189496cb77852768a5'
+            '6a81b35ae6a4c0dfce2f8fb152af16129776735aeb34dfc391f7c8daf0d51a3b'
+            'd9ef651c1d768cb4d1f146287cb58bee0834a9bd88a8593a78d0f74f956a031d'
             '842987c1380e304c87d1b3909f1aa10a732c1206d8083beda448844fe0d6d1ed'
             '69c9c5eb9ff8f6ee5cbfd9df5d16f68461d682fbb15c75a34627eaff2474190e')
 
@@ -35,8 +36,9 @@ package() {
     cp -r $srcdir/${_pkgname}/* $pkgdir/opt/${_pkgname}/
     rm -rf $pkgdir/opt/${_pkgname}/steamapps
     rm $pkgdir/opt/${_pkgname}/installscript.vdf
-    tar --extract --file "OldUnreal-UTPatch469c-Linux-x86.tar.bz2" --directory "$pkgdir/opt/${_pkgname}"
-    tar --extract --file "OldUnreal-UTPatch469c-Linux-amd64.tar.bz2" --directory "$pkgdir/opt/${_pkgname}"
+    tar --extract --file "OldUnreal-UTPatch${pkgver}-Linux-arm64.tar.bz2" --directory "$pkgdir/opt/${_pkgname}"
+    tar --extract --file "OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2" --directory "$pkgdir/opt/${_pkgname}"
+    tar --extract --file "OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2" --directory "$pkgdir/opt/${_pkgname}"
     chmod 666 $pkgdir/opt/${_pkgname}/System/{UnrealTournament,User}.ini 
 
     # Install desktop file.
