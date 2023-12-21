@@ -21,14 +21,16 @@ prepare(){
 }
 
 build() {
-  cmake -S ${pkgname}-v${pkgver} -B build -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_SHARED_LIBS=ON \
-      -DINSTALL_METIS_HEADERS=OFF \
-      -DCOMMON_PTHREAD_FILE=ON \
-      -DSCOTCH_PTHREAD=ON \
-      -DSCOTCH_PTHREAD_MPI=ON \
-      -DCOMMON_PTHREAD_AFFINITY_LINUX=ON
+  cmake -S ${pkgname}-v${pkgver} \
+        -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_SHARED_LIBS=ON \
+        -DINSTALL_METIS_HEADERS=OFF \
+        -DCOMMON_PTHREAD_FILE=ON \
+        -DSCOTCH_PTHREAD=ON \
+        -DSCOTCH_PTHREAD_MPI=ON \
+        -DCOMMON_PTHREAD_AFFINITY_LINUX=ON
   cmake --build build --parallel
 }
 
