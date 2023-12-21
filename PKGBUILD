@@ -5,34 +5,19 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=azcopy
-pkgver=10.22.0
-pkgrel=2
+pkgver=10.22.1
+pkgrel=1
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Azure/azure-storage-azcopy"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-source=(
-  "${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz"
-  "remove-version-check.patch"
-  "fix-lifecyclemgr-nil-error.patch"
-)
-sha512sums=(
-  'e066a949098ba03770691cf7686e28c1adfdb8dca36f09933a0c5c3cde9dbd24e7e41ac4bc95c0bb35f3e01d2c68de75628aebae173f0e8d676be683965fcebf'
-  'd436770cf67213fd7118992d6c04a06e5604482b24213441296f2e18fe4653301652958019f7efeb460e54e3b673feb4cf5b1228d893ee39a81f55c9c0799e94'
-  '524a0f75c3a736623fdf344f8b1d406557ed34c3582958f1a3c3ca222931b3edc0f727acf04d73f877951163e62e1ca3441bf579afef491bdde037901273ff90'
-)
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
+sha512sums=('139913d6c9e3591cce8cd05df5d97d8ace2f294716b34003f37b6beb3a8ff4d93f7e1ae9ddabd7dbec66e113a16df6fbc6046f8a340117cf6d53eae5e6fa0b77')
 
 prepare() {
   cd "${srcdir}/azure-storage-azcopy-${pkgver}"
-
-  # Due to the version check, each invocation takes ~8 seconds. See:
-  # https://github.com/Azure/azure-storage-azcopy/issues/2482
-  patch --forward --strip=1 --input="$srcdir/remove-version-check.patch"
-
-  # Fix intermittent nil pointer dereference in common/lifecyleMgr.go:375.
-  patch --forward --strip=1 --input="$srcdir/fix-lifecyclemgr-nil-error.patch"
 
   # Avoid downloading Go dependencies in build() by doing it here instead
   go mod download -x
