@@ -1,17 +1,30 @@
 pkgbase = tal-vocoder
 	pkgdesc = A Phase Vocoder By TAL Software
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://tal-software.com/products/tal-vocoder
 	arch = x86_64
 	groups = pro-audio
-	groups = clap-plugins
-	groups = vst-plugins
-	groups = vst3-plugins
 	license = EULA
 	depends = libcurl-gnutls
 	depends = glibc
 	source = https://tal-software.com/downloads/plugins/TAL-Vocoder-2_64_linux.zip
-	md5sums = 3750f395f0f551249c04622230126997
+	md5sums = 1f0e553b20c7d04da55a76c224667372
 
-pkgname = tal-vocoder-bin
+pkgname = tal-vocoder-clap-bin
+	groups = clap-plugins
+	provides = tal-vocoder-clap-bin
+	conflicts = tal-vocoder-bin
+	replaces = tal-vocoder-bin
+
+pkgname = tal-vocoder-vst-bin
+	groups = vst-plugins
+	provides = tal-vocoder-vst-bin
+	conflicts = tal-vocoder-bin
+	replaces = tal-vocoder-bin
+
+pkgname = tal-vocoder-vst3-bin
+	groups = vst3-plugins
+	provides = tal-vocoder-vst3-bin
+	conflicts = tal-vocoder-bin
+	replaces = tal-vocoder-bin
