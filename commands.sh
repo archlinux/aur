@@ -61,7 +61,6 @@ prepare_commands() {
   asdf install
 
   cd "$srcdir/$pkgname"
-  echo $PWD
   yarn install
 }
 
