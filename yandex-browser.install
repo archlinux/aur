@@ -50,7 +50,7 @@ codecInstallationRequired() {
 codecs_required=$( codecInstallationRequired )
 if [ "$codecs_required" = "yes" ]; then
     # Do not break installation anyway
-    /opt/yandex/browser/update_codecs 116 /opt/yandex/browser || true
+    /opt/yandex/browser/update_codecs /opt/yandex/browser || true
 fi
 
 # This function uses sed to insert the contents of one file into another file,

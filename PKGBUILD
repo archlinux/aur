@@ -4,7 +4,7 @@ _pkgname=browser-stable
 pkgname=yandex-browser
 pkgver=23.11.1.714
 _pkgver=23.11.1.714-1
-pkgrel=1
+pkgrel=2
 #epoch=1
 
 pkgdesc="The web browser from Yandex.
