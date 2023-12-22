@@ -1,7 +1,7 @@
 pkgbase = firefox-opensuse-bin
 	pkgdesc = Standalone web browser from mozilla.org with openSUSE patches
-	pkgver = 120.0
-	pkgrel = 3
+	pkgver = 120.0.1
+	pkgrel = 1
 	url = https://en.opensuse.org/Firefox
 	arch = x86_64
 	license = GPL
@@ -25,7 +25,7 @@ pkgbase = firefox-opensuse-bin
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	provides = firefox
 	conflicts = firefox
-	source = https://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/x86_64/MozillaFirefox-120.0-5.2.x86_64.rpm
-	sha256sums = 71e488a60fe12ffee5ebd0bcb068ef3e9c3c1daba0ea68b7446777ced9cb1355
+	source = https://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/x86_64/MozillaFirefox-120.0.1-1.1.x86_64.rpm
+	sha256sums = 8f0d9626b9159bb792aaa061950fe77a3c4126368e170e6eb48e7123f67ee043
 
 pkgname = firefox-opensuse-bin

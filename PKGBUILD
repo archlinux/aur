@@ -3,8 +3,8 @@
 # Package info
 _pkgname=firefox
 pkgname=$_pkgname-opensuse-bin
-pkgver=120.0
-pkgrel=3
+pkgver=120.0.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with openSUSE patches"
 arch=(x86_64)
 url="https://en.opensuse.org/Firefox"
@@ -38,9 +38,9 @@ conflicts=($_pkgname)
 
 # RPM
 _opensuse="Tumbleweed"
-_rpmver="$pkgver-5.2"
+_rpmver="$pkgver-1.1"
 source=("https://download.opensuse.org/repositories/mozilla/openSUSE_$_opensuse/x86_64/MozillaFirefox-$_rpmver.x86_64.rpm")
-sha256sums=("71e488a60fe12ffee5ebd0bcb068ef3e9c3c1daba0ea68b7446777ced9cb1355")
+sha256sums=("8f0d9626b9159bb792aaa061950fe77a3c4126368e170e6eb48e7123f67ee043")
 
 # Build package
 package() {
