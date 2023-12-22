@@ -1,0 +1,9 @@
+post_install() {
+  printf ":: gnome-shell-extension-asusctl-gnome requires a gnome-shell restart to make it work.\n"
+}
+
+post_upgrade() {
+  post_install
+}
+
+
