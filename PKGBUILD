@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3
-_pkgver=0.17.0
+_pkgver=0.17.1
 pkgname=r-${_pkgname,,}
-pkgver=0.17.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Machine Learning in R - Next Generation'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('LGPL')
+pkgdesc="Machine Learning in R - Next Generation"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(LGPL3)
 depends=(
-  r
   r-backports
   r-checkmate
   r-data.table
@@ -25,29 +24,27 @@ depends=(
   r-paradox
   r-parallelly
   r-r6
+  r-rhpcblasctl
   r-uuid
 )
 optdepends=(
   r-callr
-  r-codetools
-  r-datasets
   r-future.callr
-  r-matrix
   r-mlr3data
   r-progressr
   r-remotes
-  r-rpart
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4a0f1138b33a6d79eef6f44068a13f3549e91c966b415a86065a283d464cd6be')
+md5sums=('290053bf3dcaaed5b3e7c9c7848e50e2')
+b2sums=('ecbe26807cfd140c5bf13c53dbd68c0bf4ec455fbbf3311be8987b81145fdf5524c64c2b7bc61d8ee41c2ccebc361028f1dd2f790f39641b6b107779cf7bf99c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
