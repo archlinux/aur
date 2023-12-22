@@ -1,0 +1,17 @@
+pkgbase = text-generation-cli-git
+	pkgdesc = A CLI frontend for text generation APIs.
+	pkgver = r0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/ai-cli/text-generation-cli
+	arch = x86_64
+	license = EUPL1.2
+	makedepends = git
+	makedepends = cargo
+	depends = openssl
+	depends = gcc-libs
+	depends = glibc
+	provides = tg-cli
+	source = text-generation-cli-git::git+https://gitlab.com/ai-cli/text-generation-cli.git
+	sha512sums = SKIP
+
+pkgname = text-generation-cli-git
