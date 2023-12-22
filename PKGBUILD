@@ -27,3 +27,26 @@ package() {
   install -Dm644 $srcdir/perimeter81helper.service $pkgdir/usr/lib/systemd/system/perimeter81helper.service
   install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
+
+pre_remove() {
+    exec /usr/bin/systemctl disable --now perimeter81helper.service > dev/null 2>&1
+    exec /usr/bin/systemctl daemon-reload > dev/null 2>&1
+}   
+
+post_install() {
+    exec $pkgdir/opt/Perimeter81/after-install.sh
+    exec /usr/bin/systemctl enable --now perimeter81helper.service > dev/null 2>&1
+    exec /usr/bin/systemctl daemon-reload > dev/null 2>&1
+}
+
+post_remove() {
+    exec $pkgdir/opt/Perimeter81/after-uninstall.sh
+}
+
+pre_upgrade() {
+    exec /usr/bin/systemctl stop perimeter81helper.service > dev/null 2>&1
+}
+
+post_upgrade() {
+    exec /usr/bin/systemctl start perimeter81helper.service > dev/null 2>&1
+}
