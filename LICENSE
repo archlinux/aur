@@ -1,0 +1,280 @@
+END USER LICENSE AGREEMENT (EULA)
+ZoIPer Soft Phone of Securax License Agreement
+
+
+IMPORTANT- PLEASE READ CAREFULLY:
+
+This EULA is a legal agreement between You (as an individual) and  Securax, granting you certain rights to access and use Software owned by Securax and/or downloaded from the Securax/Zoiper website. You must review and either accept or reject the terms of this EULA before installing and using the Software. By clicking the "I ACCEPT" button you agree that:
+1. You have read carefully the terms and conditions of this EULA
+2. You understand them
+3. You agree to be legally bound by them
+CLICKING THE "I ACCEPT" BUTTON BELOW IS EQUAL TO SIGNING A CONTRACT WRITTEN ON PAPER AND INDICATES YOUR ACCEPTANCE OF THESE TERMS AND CONDITIONS.
+YOU MAY TERMINATE THIS LICENSE BY DESTROYING THE SOFTWARE, DOCUMENTATION, AND ANY OTHER COPIES OF THE SOFTWARE OR THE DOCUMENTATION IN YOUR POSSESSION. THE LICENSE WILL TERMINATE AUTOMATICALLY UPON ANY VIOLATION OF THE TERMS AND CONDIDTIONS OF THIS LICENSE.
+
+1. Defined terms
+
+Zoiper is a multiprotocol (SIP and IAX / IAX2) Soft phone.
+Documentation means any user manuals, API etc.
+You means You, the person using the Software.
+Users means any users of the Software.
+Software means the Internet telephone software (Soft phone) and associated materials licensed from Securax.
+
+2. Conditions of use
+
+Except for the rights expressly granted below, this License transfers to you no right, title or interest in the software, the intellectual property or proprietary right in the software or the Documentation.
+
+1.1. This license only permits you to do the following:
+
+a. install, access, display, run and otherwise use the Software on a computer, terminal, work station, PC, or other digital device
+
+b. take copies of the Software
+
+1.2. You must:
+
+a. use this licenses in good faith and in accordance with the laws of the country in which you use the Software
+
+b. preserve the goodwill that subsists in the intellectual property rights of the Software
+
+c. follow any additional reasonable instructions from Securax in relation to the use of the Software
+
+d. notify Securax immediately if you become aware of any potential or actual infringement of any intellectual property rights in relation to the Software
+
+1.3. You must not do any of the following yourself, or through any other person:
+
+a. sell, rent, lease, license, sub-license or redistribute Software or its activation key(s), or use or permit others to install or directly or indirectly access or use the Software, its functionality or its activation key(s), except as  expressly agreed in writing
+b.  alter or remove any copyright, trademark, patent, or other protective notices contained in or on the Software
+c. reverse engineer, decompile or disassemble the Software or otherwise attempt to derive its source code, except and only to the extent that any of these activities is permitted by applicable law despite this restriction
+d. modify or create derivative works of the Software
+e. modify, disable, circumvent, avoid, bypass, remove, deactivate, impair or otherwise interfere with features of the Software that enforce license restrictions or limits, or report technical or statistical information regarding the Software
+f. permit any act which infringes Securax copyright in the Software other than in accordance with this EULA
+g. make available the Software or part thereof to another person other than in accordance with these terms and conditions
+
+h. remove or alter any marking or information whatsoever which may be attached to or form part of the Software and which identifies Securax or its related entities as the owner of copyright in the Software
+
+i. communicate or reproduce the Software other than in accordance with these terms and conditions
+
+j. enter into this Agreement and download, install or use the Zoiper Software if You are residing in a jurisdiction which restricts the use of internet-based applications according to age, or which restricts the ability to enter into agreements such as this agreement according to age and You are under such a jurisdiction and under such age limit Furthermore, if You are residing in a jurisdiction where it is forbidden by law to offer or use software for internet telephony, You may not enter into this Agreement and You may not download, install or use the Zoiper Software.
+BY CLICKING THE "I  AGREE" BUTTON YOU EXPLICITLY STATE THAT YOU HAVE VERIFIED IN YOUR OWN JURISDICTION THAT YOUR USE OF THE Zoiper SOFTWARE IS ALLOWED.
+
+3. Specific requirements and warnings
+
+You must ensure that your access to the Software is not illegal or prohibited by laws which apply to you.
+
+You acknowledge that the Software will be installed on your computer and will require access to your computer and network connectivity for the purpose of communicating with Zoiper, other users of the Software and other telecommunication networks.
+
+You acknowledge that the Software is not intended to be used to make any emergency calls of any type, including but not exclusive to, police, ambulance and fire brigade.
+
+Use of certain part of the Software may require you to pay license or other fees to third parties. You are responsible for payments of all such third party fees.  Securax is NOT responsible for payment of any such third party license fees.
+
+4. TERM AND TERMINATION
+
+4.1. This license shall commence on the date of first use of the Software, and shall remain in force until terminated in accordance with the the clouses mentioned in this EULA.
+
+4.2.  Securax may terminate any and all provisions of this license and your use of the Software at any time and for any reason upon written notice.
+
+5. This warranty gives you specific legal rights and you may also have other rights, which vary from jurisdiction to jurisdiction.
+
+Securax is licensing the Software and Documentation to You "AS IS", with no express or implied warranties of any kind, including, but not limited to, any implied warranties of merchantability or fitness for any proprietary rights of a third party. Under no circumstances and under no legal theory, tort, contract, or otherwise, shall  Securax be liable for any consequential, incidental, or special damages, or any other relief whatsoever, or for any claim by any third party, arising from use by You or others of the Software or Documentation, even if  Securax shall have been informed of the possibility of such damages.
+
+YOU EXPRESSLY ACKNOWLEDGE THAT YOU HAVE READ THIS AGREEMENT AND UNDERSTAND THE RIGHTS, OBLIGATIONS, TERMS AND CONDITIONS SET FORTH HEREIN. BY CLICKING ON THE ACCEPT BUTTON AND/OR CONTINUING TO INSTALL THE  Zoiper SOFTWARE, YOU EXPRESSLY CONSENT TO BE BOUND BY ITS TERMS AND CONSITIONS AND GRANT TO  Securax THE RIGHTS SET FORTH HEREIN.
+
+Zoiper is protected by a number of laws.
+
+Portion copyrights:
+
+JThread
+=================
+/*
+
+    This file is a part of the JThread package, which contains some object-
+    oriented thread wrappers for different thread implementations.
+
+    Copyright (c) 2000-2005  Jori Liesenborgs (jori@lumumba.uhasselt.be)
+
+    Permission is hereby granted, free of charge, to any person obtaining a  copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the  Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in  all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER  DEALINGS IN THE SOFTWARE.
+
+*/
+
+
+
+
+
+JRTPLIB
+===================
+/*
+
+  This file is a part of JRTPLIB
+  Copyright (c) 1999-2005 Jori Liesenborgs
+
+  Contact: jori@lumumba.uhasselt.be
+
+  This library was developed at the "Expertisecentrum Digitale Media"
+  (http://www.edm.uhasselt.be), a research center of the Hasselt University
+  (http://www.uhasselt.be). The library is based upon work done for
+  my thesis at the School for Knowledge Technology (Belgium/The Netherlands).
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included
+  in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+
+*/
+
+
+
+
+GSM
+================
+
+/*
+Copyright 1992, 1993, 1994 by Jutta Degener and Carsten Bormann,
+Technische Universitaet Berlin
+
+Any use of this software is permitted provided that this notice is not
+removed and that neither the authors nor the Technische Universitaet Berlin
+are deemed to have made any representations as to the suitability of this
+software for any purpose nor are held responsible for any defects of
+this software.  THERE IS ABSOLUTELY NO WARRANTY FOR THIS SOFTWARE.
+
+As a matter of courtesy, the authors request to be informed about uses
+this software has found, about bugs in this software, and about any
+improvements that may be of general interest.
+
+Berlin, 28.11.1994
+Jutta Degener
+Carsten Bormann
+ */
+
+
+
+iLBC
+===================
+
+/******************************************************************
+    iLBC Speech Coder ANSI-C Source Code
+    iLBC_define.h
+    Copyright (C) The Internet Society (2004).
+    All Rights Reserved.
+******************************************************************/
+
+
+
+
+
+SPEEX
+========================
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+- Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+- Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+- Neither the name of the Xiph.org Foundation nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+
+PortAudio
+=====================
+/*
+ * $Id: portaudio.h 1083 2006-08-23 07:30:49Z rossb $
+ * PortAudio Portable Real-Time Audio Library
+ * PortAudio API Header File
+ * Latest version available at: http://www.portaudio.com/
+ * Copyright (c) 1999-2002 Ross Bencina and Phil Burk
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files
+ * (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge,
+ * publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+ */
+
+/*
+ * The text above constitutes the entire PortAudio license; however,
+ * the PortAudio community also makes the following non-binding requests:
+ * Any person wishing to distribute modifications to the Software is
+ * requested to send the modifications to the original developer so that
+ * they can be incorporated into the canonical version. It is also
+ * requested that these non-binding requests be included along with the
+ * license above.
+ */
+
+/** @file
+ @brief The PortAudio API.
+*/
+
+
+
+
+PortMixer
+==========================
+/*
+ * PortMixer
+ * Windows WMME Implementation
+ * Copyright (c) 2002
+ * Written by Dominic Mazzoni and Augustus Saunders
+ * PortMixer is intended to work side-by-side with PortAudio,
+* the Portable Real-Time Audio Library by Ross Bencina and
+ * Phil Burk.
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files
+ * (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge,
+ * publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * Any person wishing to distribute modifications to the Software is
+ * requested to send the modifications to the original developer so that
+ * they can be incorporated into the canonical version.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+
+
+
+
+
+
+
+Resiprocate
+==========================
+The Vovida license
+The Vovida Software License, Version 1.0
+Copyright (c) 2000 Vovida Networks, Inc. All rights reserved.
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+   1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+   3. The names "VOCAL", "Vovida Open Communication Application Library", and "Vovida Open Communication Application Library (VOCAL)" must not be used to endorse or promote products derived from this software without prior written permission. For written permission, please contact vocal@vovida.org.
+   4. Products derived from this software may not be called "VOCAL", nor may "VOCAL" appear in their name, without prior written permission.
+THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT ARE DISCLAIMED. IN NO EVENT SHALL VOVIDA NETWORKS, INC. OR ITS CONTRIBUTORS BE LIABLE FOR ANY DAMAGES IN EXCESS OF $1,000, NOR FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
