@@ -3,8 +3,8 @@
 # Contributor: Grassblock <hi@imgb.space>
 
 pkgname=("yesplaymusicosd-origin-git" "yesplaymusicosd-origin-electron-git")
-pkgver=0.4.5.r45.g5e459bd
-pkgrel=2
+pkgver=0.4.5.r47.g90a57c3
+pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux :electron: 支持桌面歌词！(no fork)."
 arch=("x86_64" "aarch64")
 url="https://github.com/shih-liang/YesPlayMusicOSD" 
@@ -12,7 +12,7 @@ license=("MIT")
 provides=("yesplaymusicosd" "yesplaymusic")
 conflicts=("yesplaymusicosd" "yesplaymusic")
 depends=()
-makedepends=("git" "libvips" "nodejs-lts-gallium" "yarn" "node-gyp" "openjpeg2" "glib2")
+makedepends=("git" "libvips" "yarn" "node-gyp" "openjpeg2" "glib2")
 optdepends=('yt-dlp: Youtube source for built-in UnblockNeteaseMusic')
 source=(
     "git+https://github.com/shih-liang/YesPlayMusicOSD.git"
@@ -44,7 +44,7 @@ prepare(){
     git apply "${srcdir}/02-mpris-url.patch"
     # https://github.com/shih-liang/YesPlayMusicOSD/issues/266#issuecomment-1303486341
     cp .env.example .env
-    yarn install
+    yarn install --ignore-engines # Hope shih-liang will update vue to a newer version
 }
 pkgver(){
     cd "${srcdir}/YesPlayMusicOSD"
