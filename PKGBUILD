@@ -1,69 +1,65 @@
-# Maintainer: wedjat <wedjat@protonmail.com>
+# Maintainer: Butui Hu <hot123tea123@gmail.com>
+
+_pkgname=nipy
 pkgname=python-nipy
-pkgver=0.4.2
+pkgver=0.6.0
 pkgrel=1
-pkgdesc="Analysis of structural and functional neuroimaging data."
-arch=("x86_64")
-url="http://nipy.org/nipy/"
-license=('BSD 3-clause')
-depends=('python' 'python-numpy>=1.6.0' 'python-scipy>=0.9.0' 'python-sympy>=0.7.0' 'python-nibabel>=1.2.0')
-makedepends=('python-setuptools' 'cython') 	# ('python-sphinx>=1.0' 'python-numpydoc' 'python-matplotlib' 'python-texext' 'ipython')  # CAN'T BUILD DOCUMENTATION PROPERLY FOR SOME REASON
-# checkdepends=('python-nose' 'python-mock')
-optdepends=()
-options=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nipy/nipy/archive/$pkgver.tar.gz" "http://nipy.org/data-packages/nipy-templates-0.2.tar.gz" "http://nipy.org/data-packages/nipy-data-0.2.tar.gz")
-md5sums=('f8162b019845c41b57b44d181763e85a'
-         '8e7d607a3b83ba1216432907f0c954c8'
-         'ea94bd420ce103d920cfcd0e3b551424')
+pkgdesc='Neuroimaging in Python FMRI analysis package'
+arch=('x86_64')
+url='http://nipy.org/nipy'
+license=('BSD')
+depends=(
+  python-nibabel
+  python-numpy
+  python-scipy
+  python-sympy
+  python-transforms3d
+)
+makedepends=(
+  openblas
+  cmake
+  cython
+  git
+  meson-python
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+# data files from https://nipy.org/data-packages/
+source=(
+  'http://nipy.org/data-packages/nipy-templates-0.3.tar.gz'
+  'http://nipy.org/data-packages/nipy-data-0.3.tar.gz'
+  "${_pkgname}-${pkgver}::git+https://github.com/nipy/nipy.git")
+sha512sums=('3af927b8dde0b10ca45899016bce5e4f5b25ef285b2339a63346bfbfa99cc1a0e2f0728336c3ac7e32d4c05375f36fdfa7cf97cdfd26b42834cb3cb631d593b9'
+            'ea8ed3537fb00596c16fa8b3464a2da54845ce9782e7bb40eb1157eb94de53892dda99bb4f22a829493cd59cfb47551f39de7641bf65a33678e97e5a4974de1a'
+            'SKIP')
 
-prepare()
-{
-	# change "import ConfigParser" to "import configparser" (needed in python3)
-	cd "$srcdir/nipy-data-0.2/"
-	_old_line="$(sed '8q;d' setup.py)"
-	_new_line="import configparser"
-	sed --in-place "8 s/$_old_line/$_new_line/" setup.py
-	
-	_old_line="$(sed '23q;d' setup.py)"
-	_new_line=$(echo "config = configparser.SafeConfigParser()")
-	sed --in-place "23 s/$_old_line/$_new_line/" setup.py
-
-
-	# change "import ConfigParser" to "import configparser" (needed in python3)
-	cd "$srcdir/nipy-templates-0.2/"
-	_old_line="$(sed '8q;d' setup.py)"
-	_new_line="import configparser"
-	sed --in-place "8 s/$_old_line/$_new_line/" setup.py
-
-	_old_line="$(sed '23q;d' setup.py)"
-	_new_line=$(echo "config = configparser.SafeConfigParser()")
-	sed --in-place "23 s/$_old_line/$_new_line/" setup.py
-	
+prepare() {
+  # we don't use ninja from PyPI to build the package
+  sed -i "/ninja/d" "${srcdir}/${_pkgname}-${pkgver}/pyproject.toml"
 }
 
-build() 
-{
-	# buiding nipy package
-	cd "$srcdir/nipy-$pkgver"
-        make
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
 
-	# building documentation (CAN'T MAKE IT WORKING so far)
-#	python setup.py build_sphinx	
+  cd "${srcdir}/nipy-data-0.3"
+  python -m build --wheel --no-isolation
 
+  cd "${srcdir}/nipy-templates-0.3"
+  python -m build --wheel --no-isolation
 }
 
-package() 
-{
-	cd "$srcdir/nipy-$pkgver"
-	python setup.py install --root="$pkgdir"/ --optimize=1
-
-
-	# building nipy data 
-	cd "$srcdir/nipy-data-0.2/"
-	python setup.py install --root="$pkgdir"/ --optimize=1	
-	
-	# building nipy templates
-
-	cd "$srcdir/nipy-templates-0.2/"
-	python setup.py install --root="$pkgdir"/ --optimize=1
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  
+  cd "${srcdir}/nipy-data-0.3"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  
+  cd "${srcdir}/nipy-templates-0.3"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
+# vim:set ts=2 sw=2 et:
