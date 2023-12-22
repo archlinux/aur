@@ -1,6 +1,6 @@
 pkgbase = eprosima-fast-dds-monitor
 	pkgdesc = eProsima Fast DDS Monitor is a graphical desktop application aimed at monitoring DDS environments deployed using the eProsima Fast DDS library.
-	pkgver = 1.5.0
+	pkgver = 2.0.0
 	pkgrel = 2
 	url = https://github.com/eProsima/Fast-DDS-monitor
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = eprosima-fast-dds-monitor
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
 	provides = eprosima-fast-dds-monitor
-	source = https://github.com/eProsima/Fast-DDS-monitor/archive/refs/tags/v1.5.0.tar.gz
+	source = https://github.com/eProsima/Fast-DDS-monitor/archive/refs/tags/v2.0.0.tar.gz
 	source = fast-dds-monitor.desktop
 	source = eprosima.png
-	sha512sums = 4388a6aa7542cbea0e1a1578b2dcc8cbfc30a1f088d56e584d57ac76a7c3066db1a99c251e27040a63bb9d747b0ca08b0ab69246025acd5549b471cda6a4120c
+	sha512sums = f73167e88e268d71203a53f1fa7247e410f621e21d30dd78d51047f219e1ed9fe65c2a09e1a1d94628321deac9204821ff840850916771fb78118ffb7c42e610
 	sha512sums = 5dd6d0486e13765e498f9d499bcbe7a2ba78ae12e62be0b5af2997bdcc3a86a4c36baa1c919fd2745c130fdc9eada17621c4ac30a8e0d36bea23b60da5d8e138
 	sha512sums = 54132f15c6f770d8e7a844500a15a16b42f592d7295d09b04130cb8248587d2b825f32bf743c4d0927019392e70fc4d26277f52f03a4b56a65faa0343216e2fa
 
