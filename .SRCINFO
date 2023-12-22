@@ -1,6 +1,6 @@
 pkgbase = yfel-git
 	pkgdesc = Yet another Allwinner FEL Toolkit
-	pkgver = r325.5a76f55
+	pkgver = r327.f643e1e
 	pkgrel = 1
 	url = https://github.com/YuzukiTsuru/YFEL
 	arch = x86_64
