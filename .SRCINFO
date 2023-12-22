@@ -1,6 +1,6 @@
 pkgbase = element-desktop-deb-package
 	pkgdesc = All-in-one secure chat app for teams, friends and organisations (stable .deb build).
-	pkgver = 1.11.47
+	pkgver = 1.11.52
 	pkgrel = 1
 	url = https://element.io
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = element-desktop-deb-package
 	replaces = element-desktop-stable-bin
 	replaces = element-desktop-stable-bin-deb-package
 	replaces = element-bin-deb-package
-	source = https://packages.element.io/debian/pool/main/e/element-desktop/element-desktop_1.11.47_amd64.deb
+	source = https://packages.element.io/debian/pool/main/e/element-desktop/element-desktop_1.11.52_amd64.deb
 	source = element-desktop-stable-bin.sh
-	sha256sums = f4b44428f89051527edf5ff3955987fba2c9dbdeb61f8374ab958447dc56f997
+	sha256sums = e5b0be72e28fa6cebb608104b166f60ce62091e6e26ea5ee5850ac7f9dd4f0bf
 	sha256sums = b682d6ec847e0b6e5406313fbb6a5ed8c445eda2a873432b5645693a258ba98b
 
 pkgname = element-desktop-deb-package
