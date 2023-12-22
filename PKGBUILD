@@ -3,8 +3,8 @@
 
 _pkgname=SerialTest
 pkgname=serialtest-git
-pkgver=0.3.3.r0.g5799817
-pkgrel=1
+pkgver=0.3.3.r1.g10fc7a8
+pkgrel=12
 pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
 arch=('any')
 url="https://github.com/wh201906/SerialTest"
@@ -31,6 +31,12 @@ pkgver() {
     cd "${srcdir}/${_pkgname}/"
     git describe --long --tags | sed 's/V//g;s/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+prepare()
+{
+    git -C "${srcdir}/${_pkgname}" clean -dfx
+}
+
 
 build() {
     cd "${srcdir}/${_pkgname}/src/"
