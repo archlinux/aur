@@ -1,6 +1,6 @@
 pkgbase = llvm17
 	pkgver = 17.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -14,6 +14,8 @@ pkgbase = llvm17
 	makedepends = ncurses
 	makedepends = libxml2
 	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
 	options = staticlibs
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/llvm-17.0.6.src.tar.xz
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/llvm-17.0.6.src.tar.xz.sig

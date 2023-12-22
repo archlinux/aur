@@ -1,14 +1,16 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Daniele Basso
+# Maintainer: Lancelot Owczarczak <lancelot@owczarczak.fr>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=('llvm17' 'llvm17-libs')
 pkgver=17.0.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses'
-             'libxml2' 'python')
+             'libxml2' 'python' 'python-build' 'python-installer')
 checkdepends=('python-psutil')
 options=('staticlibs')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
