@@ -22,7 +22,7 @@ source=("https://github.com/git-ecosystem/git-credential-manager/releases/downlo
 		'LICENSE')
 noextract=("gcm-linux_amd64.$pkgver.tar.gz")
 sha256sums=('42637d3d497f1ea066256fbfca9848711edc3a90063b47e248f9cd6d134d652c'
-            '7df213d44ac22f9d2832f0a91820ceb37bc965697c6cfe53b4dd160e56d7ca62'
+            '42637d3d497f1ea066256fbfca9848711edc3a90063b47e248f9cd6d134d652c'
             '30147347d5ce41662672ea2be7b158ae0e014398b97a148dd07bfd46c5166292')
 
 prepare() {
