@@ -1,15 +1,14 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing-git
-pkgver=4.0.2.r1.g862aaf98b
+pkgver=4.3.r24.g6a2cf8cda
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
 license=(GPL LGPL)
-provides=(processing)
 conflicts=(processing)
-depends=('java-environment-openjdk=17' ffmpeg)
+depends=('java-environment-openjdk=17' ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
 optdepends=('processing-examples: Examples for Processing')
 makedepends=(ant gendesk rsync unzip)
 options=(!strip)
