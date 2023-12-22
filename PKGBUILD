@@ -3,7 +3,7 @@
 pkgbase=rkflashtool-git
 pkgname=rkflashtool-git
 pkgver=r210.5bc3cbf
-pkgrel=1
+pkgrel=8
 pkgdesc="Tools for flashing Rockchip devices"
 arch=(x86_64
     aarch64
@@ -32,6 +32,11 @@ pkgver() {
     cd "${srcdir}/${pkgname}/"
 
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 package() {

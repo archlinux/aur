@@ -1,7 +1,7 @@
 pkgbase = rkflashtool-git
 	pkgdesc = Tools for flashing Rockchip devices
 	pkgver = r210.5bc3cbf
-	pkgrel = 1
+	pkgrel = 8
 	url = https://github.com/linux-rockchip/rkflashtool
 	install = rkflashtool-git.install
 	arch = x86_64
