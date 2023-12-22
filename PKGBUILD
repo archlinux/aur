@@ -1,13 +1,14 @@
 # Maintainer: Sam A. Horvath-Hunt <hello@samhh.com>
 
-pkgname=tiny-irc-client-bin
 _pkgname=tiny
+pkgname=$_pkgname-bin
 pkgver=0.11.0
 pkgrel=1
-pkgdesc='tiny is an IRC client written in Rust.'
+pkgdesc='A terminal IRC client written in Rust'
 arch=('x86_64')
 license=('MIT')
-provides=('tiny-irc-client')
+provides=($_pkgname)
+replaces=('tiny-irc-client-bin')
 url="https://github.com/osa1/$_pkgname"
 source=(
   "${url}/releases/download/v${pkgver}/tiny-ubuntu-20.04-libssl-dbus.tar.gz"
