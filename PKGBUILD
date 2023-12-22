@@ -1,21 +1,16 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=daggy
-pkgver=2.0.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='Run multiple commands on remote servers simultaneously and save output locally'
 arch=('x86_64')
-depends=('qt5-base' 'yaml-cpp' 'libssh2')
+depends=('qt6-base' 'yaml-cpp' 'libssh2')
 makedepends=('cmake')
 license=('MIT')
 url='https://docs.daggy.dev/'
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/synacker/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('52533067684db505b567a794bbefc688684ce64db8a7e4726976125cd26534b4')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  sed -i 's|kainjow/mustache.hpp|mustache.hpp|' "src/Daggy/Precompiled.h"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/synacker/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('f96419b2199402eef31dd5fc8b4d15f64948bbdd350728549c890fdb8f0d2805')
 
 build() {
   cd "${pkgname}-${pkgver}"
