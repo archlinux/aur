@@ -3,7 +3,7 @@ pkgname=waveterm
 _pkgname=Wave
 pkgver=0.5.3
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
 arch=(
     'x86_64'
@@ -26,6 +26,7 @@ makedepends=(
     'scripthaus'
     'make'
     'gcc'
+    'zip'
 )
 source=(
     "${pkgname}::git+${_ghurl}.git#tag=v${pkgver}"
