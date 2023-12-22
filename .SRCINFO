@@ -1,7 +1,7 @@
 pkgbase = icu70
 	pkgdesc = International Components for Unicode library
 	pkgver = 70.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.icu-project.org/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = icu70
 	makedepends = make
 	makedepends = patch
 	depends = gcc-libs
-	depends = sh
+	depends = glibc
 	source = https://github.com/unicode-org/icu/releases/download/release-70-1/icu4c-70_1-src.tgz
 	sha512sums = 0b26ae7207155cb65a8fdb25f7b2fa4431e74b12bccbed0884a17feaae3c96833d12451064dd152197fd6ea5fd3adfd95594284a463e66c82e0d860f645880c9
 
