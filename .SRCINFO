@@ -1,18 +1,19 @@
 pkgbase = tuba
 	pkgdesc = Browse the Fediverse
-	pkgver = 0.5.0
-	pkgrel = 0.2
+	pkgver = 0.6.0
+	pkgrel = 0.1
 	url = https://tuba.geopjr.dev/
 	arch = aarch64
 	arch = armv7h
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
 	depends = dconf
 	depends = gdk-pixbuf2
+	depends = graphene
 	depends = gtk4
 	depends = gtksourceview5
 	depends = hicolor-icon-theme
@@ -25,7 +26,7 @@ pkgbase = tuba
 	depends = libxml2
 	depends = pango
 	depends = webp-pixbuf-loader
-	source = git+https://github.com/GeopJr/Tuba.git#commit=f702912954387808e238a5421460a7598f4c1984?signed
+	source = git+https://github.com/GeopJr/Tuba.git#commit=ee9d1785cda8f2407937edaef86c9d315dcb6ed5?signed
 	validpgpkeys = 04A92A61E5CE5342F40E48DCFE5185F095BFC8C9
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha256sums = SKIP
