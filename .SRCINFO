@@ -1,6 +1,6 @@
 pkgbase = requestly-bin
 	pkgdesc = Debug your network request across all platforms and browsers using a single app
-	pkgver = 1.5.14
+	pkgver = 1.5.15
 	pkgrel = 1
 	url = https://requestly.io/
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = requestly-bin
 	depends = nspr
 	depends = java-runtime
 	depends = nss
-	provides = requestly=1.5.14
+	provides = requestly=1.5.15
 	conflicts = requestly
-	source = requestly-1.5.14.AppImage::https://github.com/requestly/requestly-desktop-app/releases/download/v1.5.14/Requestly-1.5.14.AppImage
-	source = index.html::https://raw.githubusercontent.com/requestly/requestly-desktop-app/v1.5.14/src/loadingScreen/index.html
+	source = requestly-1.5.15.AppImage::https://github.com/requestly/requestly-desktop-app/releases/download/v1.5.15/Requestly-1.5.15.AppImage
+	source = index.html-1.5.15::https://raw.githubusercontent.com/requestly/requestly-desktop-app/v1.5.15/src/loadingScreen/index.html
 	source = requestly.sh
-	sha256sums = 4b55c575c733c0bed10c5929da5fe3f741552a4af11cfda92dc7983a9bfe86de
+	sha256sums = 193738562917b328847e037aa18fd840f06a34b89ae1c173d5a612eb9f926e82
 	sha256sums = 458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d
-	sha256sums = e530530d435b684ecf011f383d578f34d9835d9ef24380be04abe4661b2aa753
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = requestly-bin

@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-bin
 _pkgname=Requestly
-pkgver=1.5.14
+pkgver=1.5.15
 _electronversion=23
 pkgrel=1
 pkgdesc="Debug your network request across all platforms and browsers using a single app"
@@ -30,20 +30,23 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "index.html::https://raw.githubusercontent.com/requestly/requestly-desktop-app/v${pkgver}/src/loadingScreen/index.html"
+    "index.html-${pkgver}::https://raw.githubusercontent.com/requestly/requestly-desktop-app/v${pkgver}/src/loadingScreen/index.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4b55c575c733c0bed10c5929da5fe3f741552a4af11cfda92dc7983a9bfe86de'
+sha256sums=('193738562917b328847e037aa18fd840f06a34b89ae1c173d5a612eb9f926e82'
             '458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d'
-            'e530530d435b684ecf011f383d578f34d9835d9ef24380be04abe4661b2aa753')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
-    sed -i "s|@electronversion@|${_electronversion}|" "$srcdir/${pkgname%-bin}.sh"
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     cp -r "${srcdir}/squashfs-root/resources/assets" "${srcdir}/app.asar.unpacked"
-    install -Dm644 "${srcdir}/index.html" -t "${srcdir}/app.asar.unpacked/dist/loadingScreen"
+    install -Dm644 "${srcdir}/index.html-${pkgver}" "${srcdir}/app.asar.unpacked/dist/loadingScreen/index.html"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
 }
