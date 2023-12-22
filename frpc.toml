@@ -1,4 +1,4 @@
-serverAddr = "x.x.x.x"
+serverAddr = "0.0.0.0"
 serverPort = 7000
 
 includes = ["/etc/frp/frpc.d/*.toml"]

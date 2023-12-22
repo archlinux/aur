@@ -1,3 +1,9 @@
+post_install() {
+    echo -e '\tTo switch to the toml configuration, edit the corresponding systemd service file'
+    echo -e '\twith "systemctl edit ..." and replace'
+    echo -e '\t${CREDENTIALS_DIRECTORY}/config with ${CREDENTIALS_DIRECTORY}/config_toml\n'
+}
+
 pre_upgrade() {
     if (( $(vercmp "$2" "0.52.0-1") < 0 )); then
         echo -e '\n\tBreaking changes in version 0.52.0+'
@@ -12,9 +18,7 @@ pre_upgrade() {
     fi
 
     if (( $(vercmp "$2" "0.52.1-5") < 0 )); then
-        echo -e '\tTo switch to the toml configuration, edit the corresponding systemd service file'
-        echo -e '\twith "systemctl edit ..." and replace'
-        echo -e '\t${CREDENTIALS_DIRECTORY}/config with ${CREDENTIALS_DIRECTORY}/config_toml\n'
+        post_install
     fi
 }
 
