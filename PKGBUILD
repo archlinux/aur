@@ -1,4 +1,5 @@
-# Maintainer: Gabriel Guldner <gabriel at guldner.eu>
+# Maintainer: hzmi <contact at hzmi.xyz>
+# Contributor: Gabriel Guldner <gabriel at guldner.eu>
 _pkgname=git-credential-manager-core
 pkgname=git-credential-manager-core-bin
 pkgver=2.4.1
