@@ -2,7 +2,7 @@
 
 pkgname=labwc
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='stacking wayland compositor with look and feel from openbox'
 url="https://github.com/labwc/labwc"
 arch=('x86_64')
@@ -15,7 +15,6 @@ b2sums=('18ab44981eb4c8f949707243422feebe4292e7ac8b7cada8d309af12fad55bfc742f5ad
 
 
 build() {
-  export PKG_CONFIG_PATH='/usr/lib/wlroots0.16/pkgconfig'
   arch-meson -Dman-pages=enabled "$pkgname-$pkgver" build
   meson compile -C build
 }
