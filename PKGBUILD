@@ -58,7 +58,6 @@ build() {
     install -Dm755 "${srcdir}/Linux-x64/nvmd" -t "${srcdir}/${pkgname}/assets/sources"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
     yarn install --cache-folder "${srcdir}/.yarn_cache"
