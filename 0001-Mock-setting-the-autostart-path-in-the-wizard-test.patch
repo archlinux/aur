@@ -1,0 +1,140 @@
+From 549be45b55e401d2d22a07c87c85ccc9d1e4bbd8 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 22 Dec 2023 17:33:21 +0100
+Subject: [PATCH] Mock setting the autostart path in the wizard test
+
+This test would keep the autostart disabled but override an existing
+autostart entry (see https://github.com/Martchus/syncthingtray/issues/221).
+With this change it will no longer override an existing entry. Reading and
+writing the autostart entry is now mocked and properly checked.
+---
+ syncthingwidgets/settings/settingsdialog.cpp |  7 ++++++
+ syncthingwidgets/tests/wizard.cpp            | 26 ++++++++++++++++++--
+ 2 files changed, 31 insertions(+), 2 deletions(-)
+
+diff --git a/syncthingwidgets/settings/settingsdialog.cpp b/syncthingwidgets/settings/settingsdialog.cpp
+index bf3f778..c1ebdb0 100644
+--- a/syncthingwidgets/settings/settingsdialog.cpp
++++ b/syncthingwidgets/settings/settingsdialog.cpp
+@@ -818,6 +818,10 @@ QWidget *AutostartOptionPage::setupWidget()
+  */
+ std::optional<QString> configuredAutostartPath()
+ {
++    if (qEnvironmentVariableIsSet(PROJECT_VARNAME_UPPER "_AUTOSTART_PATH_MOCK")) {
++        auto mockedPath = qEnvironmentVariable(PROJECT_VARNAME_UPPER "_AUTOSTART_PATH_MOCK");
++        return mockedPath.isEmpty() ? std::nullopt : std::make_optional(mockedPath);
++    }
+ #if defined(PLATFORM_LINUX) && !defined(Q_OS_ANDROID)
+     auto desktopFile = QFile(QStandardPaths::locate(QStandardPaths::ConfigLocation, QStringLiteral("autostart/" PROJECT_NAME ".desktop")));
+     // check whether the file can be opened and whether it is enabled but prevent reading large files
+@@ -873,6 +877,9 @@ QString supposedAutostartPath()
+  */
+ bool setAutostartPath(const QString &path)
+ {
++    if (qEnvironmentVariableIsSet(PROJECT_VARNAME_UPPER "_AUTOSTART_PATH_MOCK")) {
++        return qputenv(PROJECT_VARNAME_UPPER "_AUTOSTART_PATH_MOCK", path.toLocal8Bit());
++    }
+ #if defined(PLATFORM_LINUX) && !defined(Q_OS_ANDROID)
+     const auto configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+     if (configPath.isEmpty()) {
+diff --git a/syncthingwidgets/tests/wizard.cpp b/syncthingwidgets/tests/wizard.cpp
+index 8fc00d7..8e6eb09 100644
+--- a/syncthingwidgets/tests/wizard.cpp
++++ b/syncthingwidgets/tests/wizard.cpp
+@@ -6,9 +6,12 @@
+ // use meta-data of syncthingtray application here
+ #include "resources/../../tray/resources/config.h"
+ 
++#include <qtutilities/misc/compat.h>
++
+ #include <QtTest/QtTest>
+ 
+ #include <QApplication>
++#include <QCheckBox>
+ #include <QCommandLinkButton>
+ #include <QDebug>
+ #include <QEventLoop>
+@@ -148,6 +151,9 @@ void WizardTests::testShowingSettings()
+  */
+ void WizardTests::testConfiguringLauncher()
+ {
++    // mock the autostart path; it is supposed to be preserved
++    QVERIFY(qputenv(PROJECT_VARNAME_UPPER "_AUTOSTART_PATH_MOCK", "fake-autostart-path"));
++
+     // pretend libsyncthing / systemd is already enabled
+     // note: Should be unset as we're selecting to use an external binary.
+     auto &settings = Settings::values();
+@@ -188,6 +194,9 @@ void WizardTests::testConfiguringLauncher()
+     auto *const mainConfigPage = qobject_cast<MainConfigWizardPage *>(wizardDlg.currentPage());
+     QVERIFY(mainConfigPage != nullptr);
+     auto &setupDetection = wizardDlg.setupDetection();
++    const auto &configuredAutostartPath = setupDetection.autostartConfiguredPath;
++    QVERIFY(configuredAutostartPath.has_value());
++    QCOMPARE(configuredAutostartPath.value(), QStringLiteral("fake-autostart-path"));
+     QVERIFY(!setupDetection.hasConfig());
+     // -> print debug output in certain launcher error cases to get the full picture if any of the subsequent checks fail
+     if (setupDetection.launcherError.has_value()) {
+@@ -223,6 +232,10 @@ void WizardTests::testConfiguringLauncher()
+     // keep autostart setting as-is
+     auto *const autostartPage = qobject_cast<AutostartWizardPage *>(wizardDlg.currentPage());
+     QVERIFY(autostartPage != nullptr);
++    auto *const keepExistingCheckBox = autostartPage->findChild<QCheckBox *>(QStringLiteral("keepExistingCheckBox"));
++    QVERIFY(keepExistingCheckBox != nullptr);
++    QVERIFY(keepExistingCheckBox->isVisible());
++    keepExistingCheckBox->setChecked(true);
+     wizardDlg.next();
+ 
+     // apply settings
+@@ -233,7 +246,7 @@ void WizardTests::testConfiguringLauncher()
+     const auto summary = summaryTextBrowser->toPlainText();
+     QVERIFY(summary.contains(QStringLiteral("Start Syncthing via Syncthing Tray's launcher")));
+     QVERIFY(summary.contains(QStringLiteral("executable from PATH as separate process")));
+-    QVERIFY(summary.contains(QStringLiteral("Keep autostart")));
++    QVERIFY(summary.contains(QStringLiteral("Keep autostart disabled")) || summary.contains(QStringLiteral("Preserve existing autostart entry")));
+     wizardDlg.next();
+ 
+     // check results
+@@ -343,6 +356,7 @@ void WizardTests::testConfiguringLauncher()
+     QVERIFY(!settings.connection.primary.syncthingUrl.isEmpty());
+     QVERIFY(!settings.connection.primary.apiKey.isEmpty());
+     QCOMPARE(settings.connection.secondary.size(), 0);
++    QCOMPARE(qEnvironmentVariable(PROJECT_VARNAME_UPPER "_AUTOSTART_PATH_MOCK"), QStringLiteral("fake-autostart-path"));
+ }
+ 
+ /*!
+@@ -351,6 +365,9 @@ void WizardTests::testConfiguringLauncher()
+  */
+ void WizardTests::testConfiguringCurrentlyRunningSyncthing()
+ {
++    // mock the autostart path; it is supposed to be changed
++    QVERIFY(qputenv(PROJECT_VARNAME_UPPER "_AUTOSTART_PATH_MOCK", "fake-autostart-path"));
++
+     // change port in config file
+     auto wizardDlg = Wizard();
+     auto &setupDetection = wizardDlg.setupDetection();
+@@ -427,9 +444,13 @@ void WizardTests::testConfiguringCurrentlyRunningSyncthing()
+     QVERIFY(!cfgNoneRadioButton->isChecked());
+     wizardDlg.next();
+ 
+-    // keep autostart setting as-is
++    // override existing autostart setting
+     auto *const autostartPage = qobject_cast<AutostartWizardPage *>(wizardDlg.currentPage());
+     QVERIFY(autostartPage != nullptr);
++    auto *const keepExistingCheckBox = autostartPage->findChild<QCheckBox *>(QStringLiteral("keepExistingCheckBox"));
++    QVERIFY(keepExistingCheckBox != nullptr);
++    QVERIFY(keepExistingCheckBox->isVisible());
++    keepExistingCheckBox->setChecked(false);
+     wizardDlg.next();
+     configureSyncthingArgs(setupDetection);
+ 
+@@ -483,6 +504,7 @@ void WizardTests::testConfiguringCurrentlyRunningSyncthing()
+     QVERIFY(!settings.connection.primary.apiKey.isEmpty());
+     QCOMPARE(settings.connection.secondary.size(), 1);
+     QCOMPARE(settings.connection.secondary[0].label, QStringLiteral("Backup of testconfig (created by wizard)"));
++    QCOMPARE(qEnvironmentVariable(PROJECT_VARNAME_UPPER "_AUTOSTART_PATH_MOCK"), setupDetection.autostartSupposedPath);
+ }
+ 
+ bool WizardTests::confirmMessageBox()
+-- 
+2.43.0
+

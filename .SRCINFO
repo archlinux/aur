@@ -32,6 +32,8 @@ pkgbase = syncthingtray
 	optdepends = kio5: KIO plugin for Syncthing actions in Dolphin
 	optdepends = plasma-workspace: Plasmoid for Plasma 5 desktop
 	source = syncthingtray-1.4.11.tar.gz::https://github.com/Martchus/syncthingtray/archive/v1.4.11.tar.gz
+	source = 0001-Mock-setting-the-autostart-path-in-the-wizard-test.patch
 	sha256sums = 0c48da193eb29338590bb297052a1274284d9c596a5078541c4d7cdf6b6eba6f
+	sha256sums = SKIP
 
 pkgname = syncthingtray
