@@ -1,14 +1,14 @@
 post_install() {
-    mkdir -p /opt/whoogle-search/
-    chown -R whoogle:whoogle /opt/whoogle-search/
-    echo "Enable the systemd unit and visit localhost:5000 to start searching!"
-    echo "If the search engine can't be reached, execute 'chown -R whoogle:whoogle /opt/whoogle-search/' to fix permissions."
+	mkdir -p /opt/whoogle-search/
+	chown -R whoogle:whoogle /opt/whoogle-search/
+	echo "Enable the systemd unit and visit localhost:5000 to start searching!"
+	echo "If the search engine can't be reached, execute 'chown -R whoogle:whoogle /opt/whoogle-search/' to fix permissions."
 }
 
 post_upgrade() {
-    chown -R whoogle:whoogle /opt/whoogle-search/
+	chown -R whoogle:whoogle /opt/whoogle-search/
 }
 
 post_remove() {
-    echo "Configuration files are still present in /opt/whoogle-search, run 'sudo rm -r /opt/whoogle-search' to remove them."
+	echo "Configuration files are still present in /opt/whoogle-search, run 'sudo rm -r /opt/whoogle-search' to remove them."
 }
