@@ -1,10 +1,14 @@
 pkgbase = python-paramz
 	pkgdesc = Parameterization Framework for parameterized model creation and handling
 	pkgver = 0.9.5
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/sods/paramz
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
