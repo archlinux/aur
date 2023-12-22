@@ -1,4 +1,5 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: 
 
 _py=python
 _pkg=customtkinter
@@ -8,7 +9,7 @@ pkgbase="${_pkg}"
 pkgname=(
   "${_pkg}"
 )
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="A modern and customizable python UI-library based on Tkinter."
 arch=(
@@ -17,6 +18,7 @@ arch=(
   pentium4
   aarch64
   armv7h
+  arm
 )
 _ns="TomSchimansky"
 url="https://github.com/${_ns}/${_pkg}"
@@ -46,7 +48,7 @@ source=(
   # "${_pypi_repo}/p/${_pkg}/${_pkg}-${pkgver}.tar.gz"
 )
 sha512sums=(
-  '88ce123b83fb6522c10d578e66ffbfe695a73aff91299edeaa38e0460dffb11109c3e04db1d93a655622a95aa6e10a850267f0e4ca97e15b00fe563ce8bf9c9d'
+  '39df0529db0c864c5bbedae1c1cba534fac8312fbd24d9569bcb624842bde619e221ab4ffb3204380840fe210fbca3b06d63a24f363f2bc639bc9c4917509a54'
 )
 
 build() {
