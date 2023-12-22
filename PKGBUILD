@@ -2,13 +2,13 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=yulab.utils
-_pkgver=0.1.1
+_pkgver=0.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Supporting Functions for Packages Maintained by 'YuLab-SMU'"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(Artistic2.0)
 depends=(
   r-cli
@@ -23,12 +23,12 @@ optdepends=(
   r-openssl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a9d96af7a04ec621f7f23de60dc8f2d9')
-sha256sums=('08ef5888ee341ee72702bc21c694e182c23b8c56b75287adf14d4ae0a7253e64')
+md5sums=('c3f7e0861644bc0867d34c2b90f157e6')
+b2sums=('c9f078cb94fd88b536c06aeaf4e10b8a58826eccece332fd4b78bab56ae28d68e4b522456a5d4bdb4a606b0b431f584e1f632824e4ef1aa803ca79aedf8cf7ca')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
