@@ -2,19 +2,23 @@
 
 _pkgname=flask-restx
 pkgname=python-${_pkgname}
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Flask extension that adds support for quickly building REST APIs"
 arch=('any')
 url="https://flask-restx.readthedocs.io/"
 license=('BSD')
 depends=(python python-{flask\>=0.8,aniso8601\>=0.82,jsonschema,pytz,werkzeug})
-makedepends=('python-setuptools')
+makedepends=(python-{build,installer,wheel})
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('9a5338b108c57fbed1d24d5d53fe98442b2be7ffa2ff3291305af7a613ce6fc0')
+sha256sums=('4f3d3fa7b6191fcc715b18c201a12cd875176f92ba4acc61626ccfd571ee1728')
+
+build() {
+    cd "$_pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
 
 package() {
     cd "$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
