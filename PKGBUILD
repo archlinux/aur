@@ -3,7 +3,7 @@
 pkgbase=hbdinetd-git
 pkgname=hbdinetd-git
 pkgver=r118.e7b1f42
-pkgrel=2
+pkgrel=6
 pkgdesc="The daemon managing network interfaces for HybridOS."
 arch=(x86_64
     aarch64
@@ -34,6 +34,11 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}/"
 #     git describe --long --tags | sed 's/ver.//g;s/\([^-]*-g\)/r\1/;s/-/./g'
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
 build() {
