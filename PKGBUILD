@@ -2,7 +2,7 @@
 
 pkgname=yjson-git
 pkgver=r73.a38e605
-pkgrel=1
+pkgrel=13
 pkgdesc="YJson"
 arch=('x86_64')
 url="https://github.com/yjmthu/YJson"
@@ -23,6 +23,11 @@ pkgver() {
     cd "${srcdir}/${pkgname}/"
 #     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
