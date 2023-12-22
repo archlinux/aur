@@ -2,7 +2,7 @@
 
 _pkgname=gogextract
 pkgname=${_pkgname}-git
-pkgver=r93.71b23e0
+pkgver=r96.e32f22d
 pkgrel=1
 pkgdesc='Unpack GOG Linux installers'
 arch=('any')

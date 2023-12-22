@@ -1,6 +1,6 @@
 pkgbase = gogextract-git
 	pkgdesc = Unpack GOG Linux installers
-	pkgver = r93.71b23e0
+	pkgver = r96.e32f22d
 	pkgrel = 1
 	url = https://framagit.org/IroAlexis/gogextract
 	arch = any
