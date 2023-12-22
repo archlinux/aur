@@ -2,7 +2,7 @@
 # Contributor: Erik Bročko <erik.brocko@letemsvetemapplem.eu>
 
 pkgname=csdr-luarvique
-pkgver=0.18.16
+pkgver=0.18.17
 pkgrel=1
 pkgdesc="A simple DSP library and command-line tool for Software Defined Radio."
 arch=('i686' 'x86_64')
