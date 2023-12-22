@@ -1,7 +1,7 @@
 pkgbase = bin2hex-git
 	pkgdesc = Convert raw binary files to Intel "IHEX" type files (used for loading large chunks of data into an Arduino board)
 	pkgver = r5.aa6b51a
-	pkgrel = 5
+	pkgrel = 11
 	url = https://github.com/krupski/bin2hex
 	arch = x86_64
 	arch = aarch64

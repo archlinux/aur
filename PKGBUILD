@@ -3,7 +3,7 @@
 pkgname=bin2hex-git
 _pkgname=bin2hex
 pkgver=r5.aa6b51a
-pkgrel=5
+pkgrel=11
 pkgdesc="Convert raw binary files to Intel \"IHEX\" type files (used for loading large chunks of data into an Arduino board)"
 arch=(x86_64
     aarch64
@@ -24,6 +24,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare()
+{
+    git -C "${srcdir}/${_pkgname}" clean -dfx
 }
 
 build() {
