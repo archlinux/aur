@@ -2,9 +2,9 @@
 
 pkgname=gocloc
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A little fast cloc(Count Lines Of Code)"
-arch=(x86_64)
+arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/hhatto/gocloc"
 license=(MIT)
 makedepends=(go)
