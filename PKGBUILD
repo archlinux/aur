@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=jumpy-git
-pkgver=0.9.0.r0.g58cf7810c
+pkgver=0.9.1.r0.g3ed99a73a
 pkgrel=1
 pkgdesc="Tactical 2D shooter in fishy pixels style"
 arch=('x86_64')
