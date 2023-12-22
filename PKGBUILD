@@ -1,3 +1,6 @@
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer: Truocolo <truocolo@aol.com>
+
 pkgname=gnome-keyring-git
 _pkgname=gnome-keyring
 pkgver=3.36.0+12+g4f531000

@@ -1,6 +1,6 @@
 pkgbase = gnome-keyring-git
 	pkgdesc = Stores passwords and encryption keys
-	pkgver = 3.35.1+8+gfd130b33
+	pkgver = 3.36.0+12+g4f531000
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeKeyring
@@ -20,9 +20,10 @@ pkgbase = gnome-keyring-git
 	provides = org.freedesktop.secrets
 	conflicts = gnome-keyring
 	source = git+https://gitlab.gnome.org/GNOME/gnome-keyring.git
+	source = 33.patch
 	source = add-cinnamon.diff
 	sha256sums = SKIP
+	sha256sums = 23294d6569bb7c8297cc2f95071576fac48ee82ec1ead1b818dd69fbbc72b069
 	sha256sums = d05210f5b0a7d4b22c0dff2854854af2eb5708aa2b296095e070dca68e9f815a
 
 pkgname = gnome-keyring-git
-
