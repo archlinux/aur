@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r104.714d496
+pkgver=r105.7bbdcad
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -53,6 +53,7 @@ _submodules=(
   cosmic-session
   cosmic-settings
   cosmic-settings-daemon
+  cosmic-term
   cosmic-workspaces-epoch
   xdg-desktop-portal-cosmic
 )
@@ -78,10 +79,12 @@ source=(
   'git+https://github.com/pop-os/cosmic-session.git'
   'git+https://github.com/pop-os/cosmic-settings.git'
   'git+https://github.com/pop-os/cosmic-settings-daemon.git'
+  'git+https://github.com/pop-os/cosmic-term.git'
   'git+https://github.com/pop-os/cosmic-workspaces-epoch.git'
   'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -121,6 +124,7 @@ _repos=(
   cosmic-session
   cosmic-settings
   cosmic-settings-daemon
+  cosmic-term
   cosmic-workspaces-epoch
   xdg-desktop-portal-cosmic
 )
@@ -186,6 +190,7 @@ check() {
 #    cosmic-panel
 #    cosmic-screenshot
 #    cosmic-settings
+#    cosmic-term
 #  )
 
 #  for item in "${_checklist[@]}"; do
