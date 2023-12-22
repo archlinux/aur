@@ -5,7 +5,7 @@ _module="diffusers"
 _pkgname="python-$_module"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pretrained diffusion models for image and audio generation in PyTorch'
 url='https://github.com/huggingface/diffusers'
 license=('Apache-2.0')
@@ -29,14 +29,18 @@ build() {
 
 package() {
   depends+=(
-    'python-pillow'
-    'python-requests'
-    'python-regex'
-    'python-numpy'
-    'python-huggingface-hub'
-    'python-filelock'
+    'python-beautifulsoup4'
     'python-importlib-metadata'
-    'python-setuptools'
+    'python-msgpack'
+    'python-numpy'
+    'python-pillow'
+    'python-pytorch'
+    'python-requests'
+    'python-scipy'
+    'python-tqdm'
+
+    # AUR
+    'python-huggingface-hub'
   )
 
   cd "$_pkgsrc"
