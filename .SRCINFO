@@ -11,6 +11,7 @@ pkgbase = frzr-sk
 	depends = dosfstools
 	depends = jq
 	depends = util-linux
+	depends = dmidecode
 	provides = frzr
 	conflicts = frzr
 	backup = etc/github_cdn.conf

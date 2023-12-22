@@ -10,7 +10,7 @@ provides=('frzr')
 conflicts=('frzr')
 url="https://github.com/honjow/frzr"
 license=('MIT')
-depends=('btrfs-progs' 'parted' 'libnewt' 'dosfstools' 'jq' 'util-linux')
+depends=('btrfs-progs' 'parted' 'libnewt' 'dosfstools' 'jq' 'util-linux' 'dmidecode')
 source=("git+$url#branch=dev")
 md5sums=('SKIP')
 backup=('etc/github_cdn.conf' 'etc/frzr-sk.conf')
