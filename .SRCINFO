@@ -1,19 +1,21 @@
 pkgbase = il2cpp-dumper-bin
 	pkgdesc = A tool to reverse engineer il2cpp games
-	pkgver = 6.7.18
-	pkgrel = 4
+	pkgver = 6.7.40
+	pkgrel = 1
 	url = https://github.com/Perfare/Il2CppDumper
 	arch = x86_64
 	license = MIT
+	makedepends = jq
+	makedepends = curl
 	depends = dotnet-host
-	depends = dotnet-runtime
+	depends = dotnet-runtime-7.0
 	provides = il2cpp-dumper
 	conflicts = il2cpp-dumper
-	source = https://github.com/Perfare/Il2CppDumper/releases/download/v6.7.18/Il2CppDumper-net6-v6.7.18.zip
+	source = il2cpp-dumper_6.7.40.zip::https://github.com/Perfare/Il2CppDumper/releases/download/v6.7.40/Il2CppDumper-net7-v6.7.40.zip
 	source = il2cpp-dumper
 	source = https://raw.githubusercontent.com/Perfare/Il2CppDumper/master/LICENSE
-	sha256sums = 484880b2f3612bbd0fbb67ed25b0c315fe0fefa68711a16e3c804e29ef72a55f
-	sha256sums = 2bfdb5eefa9dd52318f1ff8ee0e52ddc602022bdcb4411285d11c95587c7a9d2
+	sha256sums = SKIP
+	sha256sums = db3c1fb46b79cd5c786d0c4934735f1e93f3da9c13c8a16d7d9b78203f731e79
 	sha256sums = 373bd2ed813eaa8245d1290138985c6fb025d588db254602720697455ae36c6c
 
 pkgname = il2cpp-dumper-bin

@@ -1,8 +1,3 @@
 #!/bin/bash
-params="$#"
 
-if [ $params != 3 ]; then
-    echo -e "\033[0;31m" "Usage: il2cpp-dumper <executable-file> <global-metadata> <output-directory>" "\033[0m"
-else
-    dotnet "/usr/share/il2cpp-dumper-bin/Il2CppDumper.dll" "$1" "$2" "$3"
-fi
+dotnet "/usr/share/il2cpp-dumper/Il2CppDumper.dll" "$@"
