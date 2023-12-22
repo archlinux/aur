@@ -1,0 +1,27 @@
+pkgbase = libvpl-git
+	pkgdesc = Intel Video Processing Library (git version)
+	pkgver = 2.10.1.r0.g79ef61b
+	pkgrel = 1
+	url = https://intel.github.io/libvpl/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = libpciaccess
+	makedepends = wayland-protocols
+	depends = libdrm
+	depends = libva
+	depends = libx11
+	depends = wayland
+	optdepends = intel-media-sdk: runtime for legacy Intel GPUs
+	optdepends = onevpl-intel-gpu: runtime for Tiger Lake and newer GPUs
+	provides = libvpl
+	provides = onevpl
+	provides = libvpl.so
+	conflicts = libvpl
+	conflicts = onevpl
+	replaces = onevpl-git
+	source = git+https://github.com/intel/libvpl.git
+	sha256sums = SKIP
+
+pkgname = libvpl-git
