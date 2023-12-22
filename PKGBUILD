@@ -1,15 +1,34 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer:
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
-pkgname=python-diffusers
-pkgver=0.17.1
+_module="diffusers"
+_pkgname="python-$_module"
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=0.24.0
 pkgrel=1
-pkgdesc='Pretrained diffusion models'
-arch=(x86_64)
+pkgdesc='Pretrained diffusion models for image and audio generation in PyTorch'
 url='https://github.com/huggingface/diffusers'
-license=('Apache License 2.0')
-source=("$pkgname-$pkgver::https://github.com/huggingface/diffusers/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('d5ba1881849c78e39d604774ea16ddf7cb3c32735ae4ec567e561a8fd0b295e6653118db5f0952932465f13cc0f27b457a860c6b272124798cc8958a7c6a12d5')
-depends=(
+license=('Apache-2.0')
+arch=('any')
+
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+
+_pkgsrc="$_module-$pkgver"
+source=("$_module-$pkgver"::"$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('148d926605782d262e512d6ba819ff3b45dad7f2e84c7f9d2a5fc0b6e793e6a7')
+
+build() {
+  cd "$_pkgsrc"
+  python -m build --no-isolation --wheel
+}
+
+package() {
+  depends+=(
     'python-pillow'
     'python-requests'
     'python-regex'
@@ -18,14 +37,8 @@ depends=(
     'python-filelock'
     'python-importlib-metadata'
     'python-setuptools'
-)
+  )
 
-build() {
-    cd diffusers-$pkgver
-    python setup.py build
-}
-
-package() {
-    cd diffusers-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1
+  cd "$_pkgsrc"
+  python -m installer --destdir="${pkgdir:?}" dist/*.whl
 }
