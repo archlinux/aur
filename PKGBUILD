@@ -9,12 +9,12 @@
 pkgname=kochmorse-py
 _pkgname=KochMorse
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Morse Code (Ham Radio) trainer using the Koch-method. - PYTHON version"
 arch=('any')
 url="https://pypi.python.org/pypi/$_pkgname"
 license=('GPL')
-depends=('python3' 'gtk3' 'python-pyalsaaudio')
+depends=('python3' 'gtk3' 'python-pyalsaaudio' 'python-gobject' 'gobject-introspection-runtime')
 optdepends=('hamradio-menus: XDG compliant menuing')
 provides=('kochmorse')
 conflicts=('kochmorse' 'kochmorse-git')
