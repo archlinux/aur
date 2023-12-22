@@ -1,16 +1,16 @@
 pkgbase = packetsender
 	pkgdesc = Network utility for sending / receiving TCP and UDP packets
-	pkgver = 8.5.2
+	pkgver = 8.6.3
 	pkgrel = 1
 	url = http://packetsender.com/
 	arch = any
 	license = GPL
 	makedepends = qt5-base
 	depends = qt5-base
-	source = https://github.com/dannagle/PacketSender/archive/v8.5.2.tar.gz
+	source = https://github.com/dannagle/PacketSender/archive/v8.6.3.tar.gz
 	source = packetsender.desktop
 	source = packetsender.png
-	sha256sums = 15050ef6b5a67ed865213a09d6280e6dcf86a1c9b7d4e253e8a3fd32b371ddae
+	sha256sums = b09a9a741c37e9b0dce69cf5cddb7e1447329efb03645e7d5244274d7f406e30
 	sha256sums = 8a9c06f1ce7a0d7a919fb9664d2d5b83d957c34ef2357b0fd89ce0d638380370
 	sha256sums = 31f00a13c2823ddfadcf5cb3be90acc547c188ae3f3b30acde148eb8fce62ba8
 
