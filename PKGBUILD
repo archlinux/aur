@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r105.7bbdcad
+pkgver=r106.4edc841
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -49,6 +49,7 @@ _submodules=(
   cosmic-notifications
   cosmic-osd
   cosmic-panel
+  cosmic-randr
   cosmic-screenshot
   cosmic-session
   cosmic-settings
@@ -75,6 +76,7 @@ source=(
   'git+https://github.com/pop-os/cosmic-notifications.git'
   'git+https://github.com/pop-os/cosmic-osd.git'
   'git+https://github.com/pop-os/cosmic-panel.git'
+  'git+https://github.com/pop-os/cosmic-randr.git'
   'git+https://github.com/pop-os/cosmic-screenshot.git'
   'git+https://github.com/pop-os/cosmic-session.git'
   'git+https://github.com/pop-os/cosmic-settings.git'
@@ -84,6 +86,7 @@ source=(
   'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -120,6 +123,7 @@ _repos=(
   cosmic-notifications
   cosmic-osd
   cosmic-panel
+  cosmic-randr
   cosmic-screenshot
   cosmic-session
   cosmic-settings
@@ -188,6 +192,7 @@ check() {
 #    cosmic-launcher
 #    cosmic-notifications
 #    cosmic-panel
+#    cosmic-randr
 #    cosmic-screenshot
 #    cosmic-settings
 #    cosmic-term
