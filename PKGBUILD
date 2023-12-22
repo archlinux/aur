@@ -2,8 +2,8 @@
 # Contributor: Pylogmon <pylogmon@outlook.com>
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
-pkgver=2.7.2.r1.gd23a3d6
-_pkgver=2.7.2
+pkgver=2.7.3.r1.g7e8d7f8
+_pkgver=2.7.3
 _nodeversion=18
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件 | A cross-platform software for text translation."
@@ -23,7 +23,6 @@ depends=(
     'webkit2gtk'
     'libsoup'
     'bzip2'
-    'hicolor-icon-theme'
     'tessdata'
     'tesseract'
 )
@@ -40,7 +39,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'b8626b120c72299ae10a4269dac05f75ab08f3a671f4e7a96814c255e2dc7e83')
+            'fa8902c6bb854fff96b3c8b178f79baaace0cde2bf245f5bdad8e769b1b5a675')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -52,6 +51,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
+    sed "s|@runname@|${_pkgname}|g" -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname "${_pkgname}-translation-git" --categories "Office;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
     cd "${srcdir}/${pkgname%-git}"
