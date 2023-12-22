@@ -1,7 +1,7 @@
 pkgbase = mpg321
 	pkgdesc = A completely free drop-in replacement for mpg123
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/mpg321/
 	arch = i686
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = mpg321
 	sha512sums = f1bead2c11e4cde0f1a87e1b2e3d216ef80c9a5dd8b219841961688d44a5fc63a54b7af07359766fde0b2712ddc5d0a90b20149c3228cb2d70e830e15c8ab234
 
 pkgname = mpg321
-
