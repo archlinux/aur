@@ -1,7 +1,7 @@
 pkgbase = pipewire-screenaudio-librewolf
 	pkgdesc = Pipewire Screenaudio Native Messaging for LibreWolf
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IceDBorn/pipewire-screenaudio
 	arch = x86_64
 	license = GPL3
