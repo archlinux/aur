@@ -1,6 +1,6 @@
 pkgbase = insomnia-bin
 	pkgdesc = API Client and Design Platform for GraphQL and REST
-	pkgver = 8.5.0
+	pkgver = 8.5.1
 	pkgrel = 1
 	epoch = 1
 	url = https://insomnia.rest
@@ -14,9 +14,9 @@ pkgbase = insomnia-bin
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = insomnia
 	conflicts = insomnia
-	source = https://github.com/Kong/insomnia/releases/download/core@8.5.0/Insomnia.Core-8.5.0.deb
-	source = https://github.com/Kong/insomnia/raw/core@8.5.0/LICENSE
-	sha256sums = 318a98978625f5bad49eb6f5c0ad25db01ccc7c73632fb5b56297d80c5b6794d
+	source = https://github.com/Kong/insomnia/releases/download/core@8.5.1/Insomnia.Core-8.5.1.deb
+	source = https://github.com/Kong/insomnia/raw/core@8.5.1/LICENSE
+	sha256sums = 1d99161553ae5b3c200e483e906661ab1890d23f6bb8445ce8cef685d87f9d6f
 	sha256sums = 4197d1eeea274289901dc8b68e16f538ceb535ce1ff592f6895c0a7439908ca2
 
 pkgname = insomnia-bin
