@@ -7,7 +7,7 @@
 _gitname="webkit2gtk"
 _pkgname="$_gitname-unstable"
 pkgname="$_pkgname"
-pkgver=2.43.2
+pkgver=2.43.3
 pkgrel=1
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org/"
@@ -94,7 +94,7 @@ source=(
   "GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch"
 )
 sha256sums=(
-  '0540d158312e950d031add607b9d54f806f23396a11525f9db9c9f6cb041008a'
+  '738564bf3af6d96af91b644c84f7c5aaf499fdefddc435a2734fa7f2d45adb09'
   'SKIP'
   'e315919f2901e6eea70f6d29bccd22be7d76b5109f3f2487385b405911878f8f'
 )
@@ -143,12 +143,12 @@ build() {
   #     <artificial>:(.text+0x4a019): undefined reference to `ipint_extern_table_fill'
   #     collect2: error: ld returned 1 exit status
   export CC=clang CXX=clang++
-  LDFLAGS+=" -fuse-ld=lld"
+  export LDFLAGS+=" -fuse-ld=lld"
 
   # Produce minimal debug info: 4.3 GB of debug data makes the
   # build too slow and is too much to package for debuginfod
-  CFLAGS+=' -g1'
-  CXXFLAGS+=' -g1'
+  export CFLAGS+=' -g1'
+  export CXXFLAGS+=' -g1'
 
   cmake "${cmake_options[@]}"
   cmake --build build

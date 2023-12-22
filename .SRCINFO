@@ -1,6 +1,6 @@
 pkgbase = webkit2gtk-unstable
 	pkgdesc = Web content engine for GTK
-	pkgver = 2.43.2
+	pkgver = 2.43.3
 	pkgrel = 1
 	url = https://webkitgtk.org/
 	arch = x86_64
@@ -73,12 +73,12 @@ pkgbase = webkit2gtk-unstable
 	provides = webkitgtk-6.0
 	conflicts = webkitgtk-6.0
 	options = !emptydirs
-	source = https://webkitgtk.org//releases/webkitgtk-2.43.2.tar.xz
-	source = https://webkitgtk.org//releases/webkitgtk-2.43.2.tar.xz.asc
+	source = https://webkitgtk.org//releases/webkitgtk-2.43.3.tar.xz
+	source = https://webkitgtk.org//releases/webkitgtk-2.43.3.tar.xz.asc
 	source = GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch
 	validpgpkeys = D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3
 	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
-	sha256sums = 0540d158312e950d031add607b9d54f806f23396a11525f9db9c9f6cb041008a
+	sha256sums = 738564bf3af6d96af91b644c84f7c5aaf499fdefddc435a2734fa7f2d45adb09
 	sha256sums = SKIP
 	sha256sums = e315919f2901e6eea70f6d29bccd22be7d76b5109f3f2487385b405911878f8f
 
