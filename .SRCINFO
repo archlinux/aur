@@ -1,17 +1,16 @@
 pkgbase = cjdnsify
 	pkgdesc = Limit network access of bind-compatible programs to the local cjdns network
-	pkgver = 20140717.r6.bc354af
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/prurigro/cjdnsify
 	arch = any
 	license = GPL
-	makedepends = git
 	depends = bash
 	depends = cjdns
 	depends = force_bind
 	backup = etc/default/cjdnsify
-	source = git://github.com/prurigro/cjdnsify.git
-	sha512sums = SKIP
+	source = https://github.com/prurigro/cjdnsify/archive/refs/tags/v1.0.tar.gz
+	sha512sums = 4711b9bfdb17d3afd341c115dea4a6bf5f3095f0c2de51c8e7ac9d9f26900c532ae663b7581519ebfa74fd5ea41981cc8bdc3cabb01f7f25da116f780b911e77
 
 pkgname = cjdnsify
-
