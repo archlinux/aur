@@ -1,6 +1,6 @@
 pkgbase = jan-bin
 	pkgdesc = Run AI on your own PC
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://jan.ai/
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = jan-bin
 	depends = nss
 	depends = libxrandr
 	depends = libdrm
-	provides = jan=0.4.2
+	provides = jan=0.4.3
 	conflicts = jan
-	source = jan-0.4.2.deb::https://github.com/janhq/jan/releases/download/v0.4.2/jan-linux-amd64-0.4.2.deb
-	sha256sums = db8756c70176037a5043e06f78962a905f75bc8aacdd8b83a46b2d0e1d709cca
+	source = jan-0.4.3.deb::https://github.com/janhq/jan/releases/download/v0.4.3/jan-linux-amd64-0.4.3.deb
+	sha256sums = 38c8a8cfdd23fd9e2e2d0b63b16d0652a704d4f8d6116601fd61b60150541f8e
 
 pkgname = jan-bin
