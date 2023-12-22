@@ -3,7 +3,7 @@
 pkgbase=vim-pangu-git
 pkgname=vim-pangu-git
 pkgver=1.2.0.r11.gb721011
-pkgrel=2
+pkgrel=12
 pkgdesc="『盘古之白』中文排版自动规范化的 Vim 插件"
 arch=(any)
 url="https://github.com/hotoo/pangu.vim"
@@ -22,6 +22,11 @@ options=('!strip')
 pkgver() {
     cd "${srcdir}/${pkgname}/"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 package() {

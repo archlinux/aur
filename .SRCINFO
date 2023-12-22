@@ -1,7 +1,7 @@
 pkgbase = vim-pangu-git
 	pkgdesc = 『盘古之白』中文排版自动规范化的 Vim 插件
 	pkgver = 1.2.0.r11.gb721011
-	pkgrel = 2
+	pkgrel = 12
 	url = https://github.com/hotoo/pangu.vim
 	arch = any
 	license = unknow
