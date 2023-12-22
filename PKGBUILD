@@ -1,16 +1,17 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
+_pkgname=fc-usbser-tools
 pkgname=freecalypso-usbser-tools
 pkgver=r1
-pkgrel=1
+pkgrel=2
 pkgdesc="FreeCalypso USB-serial tools"
 arch=('x86_64' 'i686')
-url="https://www.freecalypso.org/hg/${pkgname}"
+url="https://www.freecalypso.org/hg/${_pkgname}"
 license=('custom')
 groups=('freecalypso')
 conflicts=("${pkgname}-hg")
 depends=('libusb-compat')
-_tarname=fc-usbser-tools-${pkgver}
+_tarname=${_pkgname}-${pkgver}
 source=("https://www.freecalypso.org/pub/GSM/FreeCalypso/${_tarname}.tar.bz2")
 sha256sums=('9df1ab84340c42f4485db10743d228997e631c8f4225d793cca511efa8d87346')
 
