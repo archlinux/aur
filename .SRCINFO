@@ -1,6 +1,6 @@
 pkgbase = moc-lyrics-git
 	pkgdesc = An ncurses console audio player (with lyrics patch)
-	pkgver = 0.2212.b21db58
+	pkgver = 0.2213.c51e02e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/christophgysin/moc
@@ -9,7 +9,7 @@ pkgbase = moc-lyrics-git
 	license = GPL
 	makedepends = git
 	makedepends = speex
-	makedepends = ffmpeg
+	makedepends = ffmpeg4.4
 	makedepends = taglib
 	makedepends = libmpcdec
 	makedepends = wavpack
@@ -31,6 +31,8 @@ pkgbase = moc-lyrics-git
 	provides = moc
 	conflicts = moc
 	source = git+https://github.com/christophgysin/moc#branch=lyrics
+	source = moc-ffmpeg4.patch
 	sha1sums = SKIP
+	sha1sums = 007a0580ac754e1c318a0d0b6f0d403883797eaf
 
 pkgname = moc-lyrics-git

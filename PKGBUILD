@@ -2,7 +2,7 @@
 
 pkgname=moc-lyrics-git
 _pkgname=moc
-pkgver=0.2212.b21db58
+pkgver=0.2213.c51e02e
 pkgrel=1
 epoch=1
 pkgdesc="An ncurses console audio player (with lyrics patch)"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/christophgysin/moc"
 license=('GPL')
 depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file')
-makedepends=('git' 'speex' 'ffmpeg' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2')
+makedepends=('git' 'speex' 'ffmpeg4.4' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2')
 optdepends=('speex: for using the speex plugin'
             'ffmpeg: for using the ffmpeg plugin'
             'taglib: for using the musepack plugin'
@@ -20,8 +20,10 @@ optdepends=('speex: for using the speex plugin'
             'libmodplug: for using the modplug plugin')
 provides=('moc')
 conflicts=('moc')
-source=('git+https://github.com/christophgysin/moc#branch=lyrics')
-sha1sums=('SKIP')
+source=('git+https://github.com/christophgysin/moc#branch=lyrics'
+        'moc-ffmpeg4.patch')
+sha1sums=('SKIP'
+          '007a0580ac754e1c318a0d0b6f0d403883797eaf')
 
 pkgver()
 {
@@ -31,9 +33,15 @@ pkgver()
     echo "0.${count}.${rev}"
 }
 
+prepare() {
+  cd "$_pkgname"
+  patch -p0 -i ../moc-ffmpeg4.patch
+}
+
 build()
 {
     cd $_pkgname
+    export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
     autoreconf -ifs
     ./configure \
         --prefix=/usr \
