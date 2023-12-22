@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-dist-git
-pkgver=0.6.1.r1.gc9df96e
+pkgver=0.6.2.r1.g7b1a3cf
 pkgrel=1
 pkgdesc="Shippable application packaging for Rust (git)"
 arch=('x86_64')
