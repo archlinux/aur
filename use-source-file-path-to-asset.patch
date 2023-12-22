@@ -1,0 +1,9 @@
+2a3
+> import os
+8,9c9,11
+< _GLADE_FILE = "assets/UI.glade"
+< _STYLE_FILE = "assets/UI.css"
+---
+> dir_path = os.path.dirname(os.path.realpath(__file__))
+> _GLADE_FILE = dir_path + "/../assets/UI.glade"
+> _STYLE_FILE = dir_path + "/../assets/UI.css"

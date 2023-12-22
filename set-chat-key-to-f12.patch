@@ -1,0 +1,5 @@
+89c89
+<         if event.keyval == 269025072:
+---
+>         if event.keyval == 269025072 or event.keyval == 65481:
+

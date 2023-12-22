@@ -1,0 +1,19 @@
+pkgbase = minimal-twitch-client
+	pkgdesc = A minimal GTK stream viewer for youtube and twitch
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lowczarc/minimal-twitch-client
+	arch = x86_64
+	license = custom
+	depends = python3
+	depends = python-vlc
+	depends = streamlink
+	depends = gtk3
+	source = https://github.com/lowczarc/minimal-twitch-client/archive/refs/tags/v1.0.0.zip
+	source = set-chat-key-to-f12.patch
+	source = use-source-file-path-to-asset.patch
+	sha256sums = b12f8829193c6da0cfd7ae605edcf8ed0c86ed0ce3162e7c5c2f95b0de9093d6
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = minimal-twitch-client
