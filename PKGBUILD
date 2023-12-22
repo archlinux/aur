@@ -2,7 +2,7 @@
 
 pkgname=python-cu2qu-git
 pkgver=1.6.7.post2.r0.g4cbc9b6
-pkgrel=1
+pkgrel=2
 pkgdesc='Cubic-to-quadratic bezier curve conversion'
 url='https://github.com/googlefonts/cu2qu'
 license=('Apache')
@@ -13,11 +13,11 @@ _pydeps=(defcon
 depends=(python
          "${_pydeps[@]/#/python-}")
 makedepends=(cython
-             python-{build,installer}
-             python-setuptools-scm)
-checkdepends=(git
-              python-coverage
-              python-pytest-runner)
+    git
+    python-{build,installer,wheel}
+    python-setuptools-scm)
+checkdepends=(python-coverage
+    python-pytest-runner)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -28,6 +28,11 @@ pkgver() {
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
+
 build() {
     cd "$pkgname"
     python -m build -wn
@@ -35,7 +40,7 @@ build() {
 
 check() {
     cd "$pkgname"
-    PYTHONPATH=tests pytest
+    python -m unittest discover
 }
 
 package() {
