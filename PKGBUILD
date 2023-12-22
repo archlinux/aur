@@ -3,7 +3,7 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 
 pkgname=sway-git
-pkgver=r7186.b3519c2d
+pkgver=r7230.bbabb9aa
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (git development version)'
@@ -42,16 +42,19 @@ optdepends=(
 	'swayidle: Idle management daemon'
 	'swaylock: Screen locker'
 	'xorg-xwayland: X11 support'
+	'xdg-desktop-portal-gtk: Default xdg-desktop-portal for file picking'
+	'xdg-desktop-portal-wlr: xdg-desktop-portal backend'
 )
 install=sway-git.install
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/sway/config")
 source=("${pkgname}::git+https://github.com/swaywm/sway.git"
-	"50-systemd-user.conf")
+	"50-systemd-user.conf"
+	"sway-portals.conf")
 b2sums=('SKIP'
-        '95e0862807c3b5bb490b88c46e6d2d4deaa8ba0d18be0c169f3d57606acbfa124cb712b48b22ab6f12f247ac5b8d5d3cf4db85f7b04420845c0e3ed742edf917')
-
+        '71f45f9abb4e9f98a52177b227aa30ab27d02c9eef8a31400460e71c72b6d40ec396581f0b1703d4cec655aaba704077212882f643c6efb6cda951ea69b5383d'
+        'eeaa6bdfae0fa6c0445d7d02209ef9142d529f1770fd8d9d614772c276ffa7461247523399164fed70ad39b25af9a91fcf8afa23af5c193c898c44487956de7f')
 pkgver() {
 	# Calculate the version dynamically using git information
 	printf "r%s.%s" "$(git -C "$srcdir/${pkgname}" rev-list --count HEAD)" "$(git -C "$srcdir/${pkgname}" rev-parse --short HEAD)"
@@ -66,6 +69,7 @@ build() {
 package() {
 	meson install -C build --destdir "$pkgdir"
 
-	install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
 	install -Dm644 "${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
+	install -Dm644 sway-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/sway-portals.conf"
 }
