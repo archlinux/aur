@@ -4,7 +4,7 @@ _pkgname=sast-evento
 
 pkgname="${_pkgname}"-appimage
 pkgver="1.0.1222"
-pkgrel=1
+pkgrel=2
 pkgdesc="An event management system developed and used by NJUPT SAST"
 arch=('x86_64')
 url="https://github.com/NJUPT-SAST/SAST-Evento-Desktop"
@@ -17,7 +17,7 @@ source_x86_64=(
     "LICENSE::https://raw.githubusercontent.com/NJUPT-SAST/SAST-Evento-Desktop/${pkgver}/LICENSE"
 )
 noextract=(${_appimage})
-sha256sums_x86_64=('1100ef5f090d8d0791ab884a62bdc9623c3611e42a48150f370e6a8ef21f3dca'
+sha256sums_x86_64=('27aea397e04f43b63e740feb6e3e3caf2254140b424ec95817bff5513a2f33b0'
     'dd961254a4f3599af88f965689f9e75674a300267df4e2110028c56724338a12')
 
 prepare() {

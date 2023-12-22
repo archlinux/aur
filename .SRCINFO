@@ -1,7 +1,7 @@
 pkgbase = sast-evento-appimage
 	pkgdesc = An event management system developed and used by NJUPT SAST
 	pkgver = 1.0.1222
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NJUPT-SAST/SAST-Evento-Desktop
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = sast-evento-appimage
 	options = !strip
 	source_x86_64 = sast-evento-appimage-1.0.1222.AppImage::https://github.com/NJUPT-SAST/SAST-Evento-Desktop/releases/download/1.0.1222/sast-evento_appimage_x86_64.AppImage
 	source_x86_64 = LICENSE::https://raw.githubusercontent.com/NJUPT-SAST/SAST-Evento-Desktop/1.0.1222/LICENSE
-	sha256sums_x86_64 = 1100ef5f090d8d0791ab884a62bdc9623c3611e42a48150f370e6a8ef21f3dca
+	sha256sums_x86_64 = 27aea397e04f43b63e740feb6e3e3caf2254140b424ec95817bff5513a2f33b0
 	sha256sums_x86_64 = dd961254a4f3599af88f965689f9e75674a300267df4e2110028c56724338a12
 
 pkgname = sast-evento-appimage
