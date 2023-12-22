@@ -1,6 +1,6 @@
 pkgbase = python-rnapolis
 	pkgdesc = A Python library containing RNA-related bioinformatics functions and classes
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/tzok/rnapolis-py
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-rnapolis
 	depends = python-requests
 	depends = python-scipy
 	depends = python-rna
-	source = https://files.pythonhosted.org/packages/source/R/RNApolis/RNApolis-0.3.1.tar.gz
-	sha256sums = e3cb0da5f780b967dc4c8c248c1a185f42735a4a4710612a2fcfa7fa445fe68b
+	source = https://files.pythonhosted.org/packages/source/R/RNApolis/RNApolis-0.3.2.tar.gz
+	sha256sums = 0c813b28674d3d532a51c4f40c217e7e81b87a333b478bdbd5b82b7b39c469a6
 
 pkgname = python-rnapolis
 	depends = python
