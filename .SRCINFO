@@ -1,7 +1,7 @@
 pkgbase = processing
 	pkgdesc = Programming environment for creating images, animations and interactions
 	pkgver = 4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.processing.org/
 	arch = x86_64
 	license = GPL
@@ -12,6 +12,18 @@ pkgbase = processing
 	makedepends = unzip
 	depends = java-environment-openjdk=17
 	depends = ffmpeg
+	depends = libxrender
+	depends = libx11
+	depends = java-runtime
+	depends = bash
+	depends = glibc
+	depends = libxi
+	depends = libxrandr
+	depends = libdrm
+	depends = libxcursor
+	depends = zlib
+	depends = libxxf86vm
+	depends = mesa
 	optdepends = processing-examples: Examples for Processing
 	options = !strip
 	source = https://github.com/processing/processing4/archive/processing-1293-4.3.tar.gz

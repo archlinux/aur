@@ -6,12 +6,12 @@
 pkgname=processing
 pkgver=4.3
 _build=1293
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
 license=(GPL LGPL)
-depends=('java-environment-openjdk=17' ffmpeg)
+depends=('java-environment-openjdk=17' ffmpeg libxrender libx11 java-runtime bash glibc libxi libxrandr libdrm libxcursor zlib libxxf86vm mesa)
 optdepends=('processing-examples: Examples for Processing')
 makedepends=(ant gendesk rsync unzip)
 options=(!strip)
