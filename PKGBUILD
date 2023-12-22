@@ -9,7 +9,7 @@
 _pkgname="xwayland-run"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.0.2.r2.g0f30bf5
-pkgrel=3
+pkgrel=4
 pkgdesc="xvfb-run substitute for wayland"
 url="https://gitlab.freedesktop.org/ofourdan/xwayland-run"
 license=('GPL-2.0-or-later')
@@ -29,8 +29,16 @@ optdepends=(
   'xorg-server-xwayland: X11 server'
 )
 
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=(
+  'wlheadless-run'
+  'xwayland-run'
+  'xwfb-run'
+)
+conflicts=(
+  'wlheadless-run'
+  'xwayland-run'
+  'xwfb-run'
+)
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
