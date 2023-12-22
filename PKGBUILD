@@ -28,10 +28,6 @@ depends=(
   'sdl2_ttf'
   'zlib'
 )
-optdepends=(
-  "widelands-maps-rttr: To play the maps from the game 'Return to the Roots' in Widelands."
-  "widelands-maps-siedler2: To play the maps from the game 'Settlers II' in Widelands."
-)
 makedepends=(
   'cmake'     # For configuring the build
   'coreutils' # For `nproc`
@@ -40,6 +36,8 @@ makedepends=(
 )
 optdepends=(
   'minizip: use system minizip instead of embedded one'
+  'widelands-maps-rttr: To play the maps from the game "Return to the Roots" in Widelands.'
+  'widelands-maps-siedler2: To play the maps from the game "Settlers II" in Widelands.'
 )
 provides=(
   "${_pkgname}=${pkgver}"

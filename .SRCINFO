@@ -1,8 +1,8 @@
 pkgbase = widelands-git
 	pkgdesc = An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'.
-	pkgver = 1.1+git
+	pkgver = 1.2+git26407_6f1730c_20231222
 	pkgrel = 1
-	epoch = 0
+	epoch = 1
 	url = http://widelands.org/
 	arch = aarch64
 	arch = i686
@@ -22,11 +22,13 @@ pkgbase = widelands-git
 	depends = sdl2_ttf
 	depends = zlib
 	optdepends = minizip: use system minizip instead of embedded one
-	provides = widelands=1.1+git
+	optdepends = widelands-maps-rttr: To play the maps from the game "Return to the Roots" in Widelands.
+	optdepends = widelands-maps-siedler2: To play the maps from the game "Settlers II" in Widelands.
+	provides = widelands=1.2+git26407_6f1730c_20231222
 	conflicts = widelands
 	conflicts = widelands-bzr
 	conflicts = widelands-data
-	replaces = widelands-bzr<=1.1+git
+	replaces = widelands-bzr<=1.2+git26407_6f1730c_20231222
 	options = !strip
 	source = widelands::git+https://github.com/widelands/widelands.git
 	sha256sums = SKIP
