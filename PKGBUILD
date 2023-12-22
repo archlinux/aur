@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/christophgysin/moc"
 license=('GPL')
 depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file')
-makedepends=('speex' 'ffmpeg' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2')
+makedepends=('git' 'speex' 'ffmpeg' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2')
 optdepends=('speex: for using the speex plugin'
             'ffmpeg: for using the ffmpeg plugin'
             'taglib: for using the musepack plugin'

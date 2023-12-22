@@ -7,6 +7,7 @@ pkgbase = moc-lyrics-git
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = speex
 	makedepends = ffmpeg
 	makedepends = taglib
@@ -33,4 +34,3 @@ pkgbase = moc-lyrics-git
 	sha1sums = SKIP
 
 pkgname = moc-lyrics-git
-
