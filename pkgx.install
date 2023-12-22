@@ -11,16 +11,6 @@ post_install() {
 EOF
 }
 
-post_upgrade() {
-  # New in v1.1.1
-  cat << 'EOF'
-    Shell integration:
-
-        pkgx integrate --dry-run
-        # ^^ https://docs.pkgx.sh/shell-integration
-EOF
-}
-
 post_remove() {
   cat << 'EOF'
     To clean up pkgx leftovers from your home directory, run:

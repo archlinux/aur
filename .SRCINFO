@@ -1,6 +1,6 @@
 pkgbase = pkgx
 	pkgdesc = Run Anything
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://pkgx.sh
 	install = pkgx.install
@@ -10,7 +10,7 @@ pkgbase = pkgx
 	depends = gcc-libs
 	depends = glibc
 	options = !strip
-	source = pkgx-1.1.1.tar.gz::https://github.com/pkgxdev/pkgx/archive/v1.1.1.tar.gz
-	sha512sums = 4012e05383b6d345f4733f44c27f086b14fb3518dd2252b2c07ede1d1b4207bd5726f445cb5c2c492e3b92b118a15265c15e7a110ef2c69e79fbc6155b2a9597
+	source = pkgx-1.1.2.tar.gz::https://github.com/pkgxdev/pkgx/archive/v1.1.2.tar.gz
+	sha512sums = 84d5f0ab7faf0d443fd92b8e6765d3edcfcaf2dd548d34a3d9e9dbbae6335a74b4d851a85ede8cb4f864c9dd5920280b3bdf3a9e57c75022433386e230c6be08
 
 pkgname = pkgx
