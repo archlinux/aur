@@ -2,9 +2,9 @@
 
 pkgname=prusa-slicer-rc-bin
 _pkgname="${pkgname%-rc-bin}"
-pkgver=2.7.0
+pkgver=2.7.1
 _pkgver="${pkgver//_/-}"
-_pkgdate=202311231454
+_pkgdate=202312121425
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (binary AppImage, includes release candidates)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source_x86_64=(
     'prusa-slicer.patch'
     'prusa-gcode.patch'
 )
-sha256sums_x86_64=('a6302c7dce109da162b95ce970cf1275c3872d45915a6593b1edbe6302514fee'
+sha256sums_x86_64=('1da71d564a856a0b6cd14a3630baa7d3df7d36f64bfda2ad97d9d25657d0906f'
                    '2a286cb975a16b04a35d7a308340bea42a7e09521fe4044eb73567ca5cf8a078'
                    'd4bd40600dba72286081fda53c8d6fa50b927cfdf07a571538e769ee133be381')
 
