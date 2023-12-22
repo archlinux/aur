@@ -2,7 +2,7 @@
 _pkgname=git-credential-manager-core
 pkgname=git-credential-manager-core-bin
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure, cross-platform Git credential storage with authentication to GitHub, Azure Repos, and other popular Git hosting services."
 arch=('x86_64')
 url="https://github.com/git-ecosystem/git-credential-manager"
@@ -19,11 +19,11 @@ changelog=
 options=('!strip')
 source=("https://github.com/git-ecosystem/git-credential-manager/releases/download/v$pkgver/gcm-linux_amd64.$pkgver.tar.gz"
 		"$_pkgname.install"
-		'LICENSE')
+		'https://raw.githubusercontent.com/git-ecosystem/git-credential-manager/main/LICENSE')
 noextract=("gcm-linux_amd64.$pkgver.tar.gz")
 sha256sums=('42637d3d497f1ea066256fbfca9848711edc3a90063b47e248f9cd6d134d652c'
             '32f49d3f3bf9835546b1335543107eb668fb2276017cf30a8c125f999bb3f00d'
-            '30147347d5ce41662672ea2be7b158ae0e014398b97a148dd07bfd46c5166292')
+            'b47f1a8a744ecdc7a3da35804f88552805d33f51a726b87a2105acdfae406b07')
 
 prepare() {
 	cd "$srcdir"
