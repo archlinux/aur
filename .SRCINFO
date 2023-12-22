@@ -1,0 +1,14 @@
+pkgbase = pizauth-git
+	pkgdesc = OAuth2 token requester daemon
+	pkgver = 1.0.3.r0.g973523f
+	pkgrel = 1
+	url = https://github.com/ltratt/pizauth
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cargo
+	provides = pizauth
+	source = pizauth-git::git+https://github.com/ltratt/pizauth.git
+	sha256sums = SKIP
+
+pkgname = pizauth-git
