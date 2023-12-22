@@ -1,6 +1,6 @@
 pkgbase = linuxcnc-git
 	pkgdesc = Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)
-	pkgver = 2.9.1.r1300.g1db56381a8
+	pkgver = 2.9.1.r1316.gd0885cf485
 	pkgrel = 1
 	url = http://linuxcnc.org
 	arch = i686

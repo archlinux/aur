@@ -1,7 +1,7 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.9.1.r1300.g1db56381a8
+pkgver=2.9.1.r1316.gd0885cf485
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
@@ -57,6 +57,8 @@ pkgver() {
 }
 
 prepare() {
+  git -C "${srcdir}/${pkgname}" clean -dfx
+  
   cd "${srcdir}/${pkgname}/src"
   echo "export TCLLIBPATH=$TCLLIBPATH:/usr/lib/tcltk/linuxcnc" > ${pkgname}.sh
   find . -iname fixpaths.py -o -iname checkglade -o \
