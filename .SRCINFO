@@ -1,6 +1,6 @@
 pkgbase = android-apktool
 	pkgdesc = a tool for reengineering Android apk files
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/iBotPeaches/Apktool
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = android-apktool
 	makedepends = java-environment
 	makedepends = gradle
 	depends = java-runtime
-	source = android-apktool-2.9.0.tar.gz::https://github.com/iBotPeaches/Apktool/archive/refs/tags/v2.9.0.tar.gz
+	source = android-apktool-2.9.1.tar.gz::https://github.com/iBotPeaches/Apktool/archive/refs/tags/v2.9.1.tar.gz
 	source = http://connortumbleson.com/apktool/googlecode/apktool-install-linux-r04-brut1.tar.bz2
-	sha256sums = c879e0f785d7f04365579a6f97766ca105b54373987b2f5fada4db780408bbbb
+	sha256sums = 050cdbcbecf81de75022bfd92a192a63b6846446c4ec7549d451c5465115b8de
 	sha256sums = cffa5c0a46bab9c66da02cc5db651c3a8321bee98580815e44c802d62a696dfa
 
 pkgname = android-apktool
