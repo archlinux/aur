@@ -1,7 +1,7 @@
 pkgbase = qucs-s-git
 	pkgdesc = Qucs-S provides GUI for different circuit simulation kernels.
-	pkgver = 2.1.0.r37.g0d52cd9f
-	pkgrel = 1
+	pkgver = 2.1.0.r41.g38b8df69
+	pkgrel = 2
 	url = https://github.com/ra3xdh/qucs_s
 	arch = x86_64
 	license = GPL-2.0

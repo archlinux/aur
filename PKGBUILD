@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qucs-s-git
-pkgver=2.1.0.r37.g0d52cd9f
-pkgrel=1
+pkgver=2.1.0.r41.g38b8df69
+pkgrel=2
 epoch=
 pkgdesc="Qucs-S provides GUI for different circuit simulation kernels. "
 arch=('x86_64')
@@ -44,6 +44,11 @@ validpgpkeys=()
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
 build() {
