@@ -23,7 +23,7 @@ _clangbuild=
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-gles" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
 pkgver=r64763.ffbc0975418
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -112,8 +112,6 @@ prepare() {
   mkdir "$srcdir/kodi-build-gles"
 
   cd "$_gitname"
-
-  rm -rf system/certs # remove not needed cacert
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
 
