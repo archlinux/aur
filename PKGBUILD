@@ -5,78 +5,85 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-wow64-for-wechat
-_name=wine
-pkgver=8.21
+_pkgver=9.0-rc2
+pkgver=${_pkgver//-/_}
 pkgrel=1
-provides=("wine=$pkgver")
-conflicts=("wine")
-source=(https://dl.winehq.org/wine/source/8.x/$_name-$pkgver.tar.xz
-        30-win32-aliases.conf
-        wine-binfmt.conf
-        0001-winex11.drv-Update-a-candidate-window-s-position-wit.patch
-        0002-wine-wechat.patch)
-sha512sums=('4d04d40141d2ea5e548b76aed870ac28d8a03241ffd4e761979c795310baa19136e54a8e518c6ea9bf563c3b23d3c4eb1baefc9906d7eeca469e9942ff99dc40'
-            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
-            '8c319dacdbd484ae2e02d9b967cd31866c525dd51a905c8ed9fa11b36794232c93ea97a94dbcaa5cacb3f44ab5570ee4a6da04576ae4963da300bf8d2c123705'
-            '646dfd6ec62fb9ddbfb27aac0ac80d87926fbc3360bb53cca942622e95d1ec380f0b5efdfd45bbe1cdce72661b7b36b15ffb7874b1b4269e3bd56a14ec0d2166')
-pkgdesc="A compatibility layer for running Windows programs (wechat patch version)"
+pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
-arch=(x86_64)
-options=(staticlibs !lto)
 license=(LGPL)
+arch=(x86_64)
 depends=(
   fontconfig      #lib32-fontconfig
-  libxcursor      #lib32-libxcursor
-  libxrandr       #lib32-libxrandr
-  libxi           #lib32-libxi
-  gettext         #lib32-gettext
   freetype2       #lib32-freetype2
+  gettext         #lib32-gettext
+  libxcursor      #lib32-libxcursor
+  libxi           #lib32-libxi
+  libxrandr       #lib32-libxrandr
   desktop-file-utils
 )
-makedepends=(autoconf bison perl flex mingw-w64-gcc
-  giflib                #lib32-giflib
-  libxinerama           #lib32-libxinerama
-  libxcomposite         #lib32-libxcomposite
-  libxxf86vm            #lib32-libxxf86vm
-  v4l-utils             #lib32-v4l-utils
-  libpulse              #lib32-libpulse
+makedepends=(
   alsa-lib              #lib32-alsa-lib
+  gst-plugins-base-libs #lib32-gst-plugins-base-libs
+  libcups               #lib32-libcups
+  libpulse              #lib32-libpulse
+  libxcomposite         #lib32-libxcomposite
+  libxinerama           #lib32-libxinerama
+  libxxf86vm            #lib32-libxxf86vm
   mesa                  #lib32-mesa
   mesa-libgl            #lib32-mesa-libgl
   opencl-icd-loader     #lib32-opencl-icd-loader
-  gst-plugins-base-libs #lib32-gst-plugins-base-libs
-  vulkan-icd-loader     #lib32-vulkan-icd-loader
+  pcsclite              #lib32-pcsclite
   sdl2                  #lib32-sdl2
-  libcups               #lib32-libcups
+  v4l-utils             #lib32-v4l-utils
+  vulkan-icd-loader     #lib32-vulkan-icd-loader
+  autoconf
+  bison
+  flex
   libgphoto2
+  mingw-w64-gcc
+  opencl-headers
+  perl
+  samba
   sane
   vulkan-headers
-  samba
-  opencl-headers
 )
 optdepends=(
-  giflib                #lib32-giflib
-  libldap               #lib32-libldap
-  v4l-utils             #lib32-v4l-utils
-  libpulse              #lib32-libpulse
-  alsa-plugins          #lib32-alsa-plugins
   alsa-lib              #lib32-alsa-lib
+  alsa-plugins          #lib32-alsa-plugins
+  gst-plugins-base-libs #lib32-gst-plugins-base-libs
+  libpulse              #lib32-libpulse
   libxcomposite         #lib32-libxcomposite
   libxinerama           #lib32-libxinerama
   opencl-icd-loader     #lib32-opencl-icd-loader
-  gst-plugins-base-libs #lib32-gst-plugins-base-libs
+  pcsclite              #lib32-pcsclite
   sdl2                  #lib32-sdl2
-  libgphoto2
-  sane
+  v4l-utils             #lib32-v4l-utils
   cups
-  samba           dosbox
+  dosbox
+  libgphoto2
+  samba
+  sane
 )
-makedepends=(${makedepends[@]} ${depends[@]})
-install=wine.install
+provides=("wine=$pkgver")
+conflicts=("wine")
+install="wine.install"
+options=(staticlibs !lto)
+source=(
+  "https://dl.winehq.org/wine/source/${_pkgver::1}.0/wine-${_pkgver}.tar.xz"
+  "30-win32-aliases.conf"
+  "wine-binfmt.conf"
+  "0001-winex11.drv-Update-a-candidate-window-s-position-wit.patch"
+  "0002-wine-wechat.patch"
+)
+sha256sums=('d9d7cc0bb4cabc28ae80e054e8743bceaa50dcfc6ac2fd9bf419deadfa43066f'
+            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+            '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
+            'd62ea49462e4f6cf40ec37d34c6690cf81b7cf0816c0464257910acab57dd416'
+            'b9ba6dd20c021688d46d0aaddd9c9635b78bd854d0593978f8dad3706e710481')
+
 
 prepare() {
-  cd $srcdir/$_name-$pkgver
+  cd $srcdir/wine-$_pkgver
   # fix fcitx position
   patch -p1 < $srcdir/0001-winex11.drv-Update-a-candidate-window-s-position-wit.patch
   # fix wechat shadow
@@ -84,13 +91,9 @@ prepare() {
 }
 
 build() {
-  # Doesn't compile without remove these flags as of 4.10
-  export CFLAGS="${CFLAGS/-fno-plt/} -ffat-lto-objects"
-  export LDFLAGS="${LDFLAGS/,-z,now/}"
-  mkdir -p $srcdir/$_name-$pkgver/build
-  cd $srcdir/$_name-$pkgver/build
-  ../configure \
-    --without-tests \
+  cd $srcdir/wine-$_pkgver
+  ./configure \
+    --disable-tests \
     --prefix=/usr \
     --libdir=/usr/lib \
     --enable-archs=x86_64,i386
@@ -98,22 +101,22 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_name-$pkgver/build
-  
-  make prefix="$pkgdir/usr" \
-    libdir="$pkgdir/usr/lib" \
-    dlldir="$pkgdir/usr/lib/wine" install
-  
+  cd $srcdir/wine-$_pkgver
+  make prefix="$pkgdir"/usr \
+    libdir="$pkgdir"/usr/lib \
+    dlldir="$pkgdir"/usr/lib/wine install
+
   i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/i386-windows/*.dll
   x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.dll
 
-  ln -sf /usr/bin/wine $pkgdir/usr/bin/wine64
+  ln -sf /usr/bin/wine "$pkgdir"/usr/bin/wine64
 
   # Font aliasing settings for Win32 applications
-  install -d "$pkgdir"/usr/share/fontconfig/conf.{avail,default}
-  install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/usr/share/fontconfig/conf.avail"
-  ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
-  install -Dm 644 "$srcdir/wine-binfmt.conf" "$pkgdir/usr/lib/binfmt.d/wine.conf"
+  install -Dm644 "$srcdir"/30-win32-aliases.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+  install -d "$pkgdir"/usr/share/fontconfig/conf.default
+  ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir"/usr/share/fontconfig/conf.default/30-win32-aliases.conf
+
+  install -Dm644 "$srcdir"/wine-binfmt.conf "$pkgdir"/usr/lib/binfmt.d/wine.conf
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
