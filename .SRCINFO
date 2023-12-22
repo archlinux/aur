@@ -1,6 +1,6 @@
 pkgbase = gocloc-git
 	pkgdesc = A little fast cloc(Count Lines Of Code)
-	pkgver = 0.4.1.r17.g734d3a7
+	pkgver = 0.5.2.r4.g7b24285
 	pkgrel = 1
 	url = https://github.com/hhatto/gocloc
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = gocloc-git
 	sha256sums = SKIP
 
 pkgname = gocloc-git
-
