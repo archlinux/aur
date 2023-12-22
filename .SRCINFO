@@ -1,6 +1,6 @@
 pkgbase = jdappstreamedit
 	pkgdesc = A graphical Program to create and edit AppStream files
-	pkgver = 7.0
+	pkgver = 8.0
 	pkgrel = 1
 	url = https://codeberg.org/JakobDev/jdAppStreamEdit
 	arch = any
@@ -13,8 +13,11 @@ pkgbase = jdappstreamedit
 	depends = python-pyqt6
 	depends = python-lxml
 	depends = python-requests
+	depends = appstream
+	optdepends = python-desktop-entry-lib: Create AppStream files from .desktop files
+	optdepends = appstream-glib: Validate with appstream-util
 	replaces = jdappdataedit
-	source = jdappstreamedit-7.0.tar.gz::https://codeberg.org/JakobDev/jdAppStreamEdit/archive/7.0.tar.gz
-	sha256sums = 8aaff6a698225b201f80767a5d8d06c59d759f503865228c4d53d1272161894b
+	source = jdappstreamedit-8.0.tar.gz::https://codeberg.org/JakobDev/jdAppStreamEdit/archive/8.0.tar.gz
+	sha256sums = cee90dd96b8ebb72701e13f26020154c7b95d06a9e429c5ded1b9f57c3fd8e34
 
 pkgname = jdappstreamedit
