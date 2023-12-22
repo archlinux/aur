@@ -2,7 +2,7 @@
 
 _pkgname=ffs-editor
 pkgname=freecalypso-ffs-editor-bin
-pkgver=r2
+pkgver=r3
 pkgrel=1
 pkgdesc="FreeCalypso FFS (Flash File System) editor firmware images"
 arch=('any')
@@ -12,7 +12,7 @@ groups=('freecalypso')
 conflicts=("${pkgname}-hg")
 _tarname=${_pkgname}-${pkgver}
 source=("https://www.freecalypso.org/pub/GSM/FreeCalypso/${_tarname}.tar.bz2")
-sha256sums=('6384f6aed462bac1f035b313a3e43382af06e0217a19b759e07dbcd5a570c5d2')
+sha256sums=('62c1b5031a0c53e0522b1a798fde605f0e61b40949336e3ef60cfa932e5f4a0b')
 
 package() {
 	cd "${_tarname}"
