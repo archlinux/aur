@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggh4x
-_pkgver=0.2.6
+_pkgver=0.2.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Hacks for 'ggplot2'"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(MIT)
 depends=(
   r-cli
@@ -34,12 +34,12 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('450be3fd3d39699ae65648f7b2880240')
-sha256sums=('eb7929b4c3167dce644b13d655144b2893e320072e7a998f07c37c4f7d9b2b3b')
+md5sums=('1a646ec43543f9e1a846b67739a72b64')
+b2sums=('ae61a36231364b406416498dfb389207d1fbb9444c4abec846215ffff37aec824ad688b5ccfe88bbf6781ecbe3fc7af6fc997f9e74147147b95b0cc7947df4a7')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

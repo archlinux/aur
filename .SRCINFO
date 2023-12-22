@@ -1,6 +1,6 @@
 pkgbase = r-ggh4x
 	pkgdesc = Hacks for 'ggplot2'
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggh4x
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = r-ggh4x
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggh4x_0.2.6.tar.gz
-	md5sums = 450be3fd3d39699ae65648f7b2880240
-	sha256sums = eb7929b4c3167dce644b13d655144b2893e320072e7a998f07c37c4f7d9b2b3b
+	source = https://cran.r-project.org/src/contrib/ggh4x_0.2.7.tar.gz
+	md5sums = 1a646ec43543f9e1a846b67739a72b64
+	b2sums = ae61a36231364b406416498dfb389207d1fbb9444c4abec846215ffff37aec824ad688b5ccfe88bbf6781ecbe3fc7af6fc997f9e74147147b95b0cc7947df4a7
 
 pkgname = r-ggh4x
