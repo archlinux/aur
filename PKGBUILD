@@ -1,28 +1,29 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=dreamerr
-_pkgver=1.3.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Error Handling Made Easy"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(GPL3)
 depends=(
   r-formula
+  r-stringmagic
 )
 optdepends=(
   r-knitr
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('76ea20c0b3ae718983374e2df3e94db5')
-sha256sums=('ee01dcaf3fa745b540980e4109616f0db4b4c15274641e7af8a223ba0f62eef2')
+md5sums=('df2e0c5e9378f06e81f48a71389bb692')
+b2sums=('80a031156c03db98cb76cdab2d962f6a3da0268a86bf0887519299c31c509fa33612e2ed06516b340f3279305063a3e460e416432a9122be6f3587dcf81cbc80')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
