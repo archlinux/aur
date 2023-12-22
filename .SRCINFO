@@ -1,0 +1,17 @@
+pkgbase = mdformat-front-matters-git
+	pkgdesc = mdformat plugin to format YAML, TOML, or JSON front matter
+	pkgver = v2.0.0.r2.ee81761
+	pkgrel = 1
+	url = https://github.com/KyleKing/mdformat-front-matters
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	depends = mdformat
+	provides = mdformat-front-matters
+	conflicts = mdformat-front-matters
+	source = mdformat-front-matters::git+https://github.com/KyleKing/mdformat-front-matters.git
+	sha256sums = SKIP
+
+pkgname = mdformat-front-matters-git
