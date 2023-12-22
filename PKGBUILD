@@ -1,4 +1,4 @@
-# Maintainer: xhyi <xhahaya@gmail.com>
+# Maintainer: IroAlexis <iroalexis@outlook.fr>
 
 _pkgname=gogextract
 pkgname=${_pkgname}-git
