@@ -1,11 +1,12 @@
 #!/bin/bash
 
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: PumpkinCheshire <me at pumpkincheshire dot com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname='perl-graph'
 _dist='Graph'
-pkgver='0.9725'
+pkgver='0.9727'
 pkgrel='1'
 pkgdesc='graph data structures and algorithms'
 url='https://metacpan.org/release/Graph'
@@ -19,7 +20,7 @@ depends=(
 )
 
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz")
-b2sums=('ab63a75653848ed6297f687cf8431f9e871f9b0473448008ad10d0f8e9d122bddc469069d4eefff1d0d03ba38facca5cc41048afea5f654b155812786e21d86c')
+b2sums=('f610b06722dbcc9c46946693dfebda95cda16cc0b4066a2af0875b8abec62fbcb508171234ec393a36019b3cb398d9bcfe72e86cdae51791ac9864a7aea9a2bb')
 
 build() {
   cd "$srcdir/$_dist-$pkgver" || exit
