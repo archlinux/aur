@@ -22,9 +22,19 @@ conflicts=(
   "${_pkgname}")
 _url="file://${HOME}/${_pkgname}"
 source=(
-  "git+${_url}")
+  "git+${url}")
 sha256sums=(
   SKIP)
+
+pkgver() {
+  cd \
+    "${_pkgname}"
+  git \
+    describe \
+    --tags | \
+    sed \
+      's/-/+/g'
+}
 
 package() {
   cd \
