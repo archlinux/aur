@@ -2,8 +2,8 @@
 
 pkgname=shell-gpt
 _name=${pkgname/-/_}
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT"
 arch=(any)
 url="https://github.com/TheR1D/shell_gpt"
@@ -28,7 +28,7 @@ checkdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d25daa78e6763baa46bf4da49fd900ae30b8c851f964af1f3b443036a44f4ebf')
+sha256sums=('ecbbf7f707952b29c68d9e394f2196835da8e1d5cc3047e8a46e6d97ceb1e525')
 
 _archive="$_name-$pkgver"
 
