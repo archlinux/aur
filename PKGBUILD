@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BioNAR
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Biological Network Analysis in R"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(Artistic2.0)
 depends=(
   r-annotationdbi
@@ -51,12 +51,12 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4cbc1fe5bd753444b3470a317029a885')
-sha256sums=('dacd5ee2b304b30fc882ff29336e603bce098c07d62a81d24d76ff1e4bb77c22')
+md5sums=('cce2273d564095b70d5b18aa6d134612')
+b2sums=('38bb15d26fa8dfa321e9ea801f949c39ac51189faf62aaa703e3ee2431261771e3485562f4b6ce6fe2311bbeec25875fd2b5a108911c84f16942805bb28752ae')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

@@ -1,6 +1,6 @@
 pkgbase = r-bionar
 	pkgdesc = Biological Network Analysis in R
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BioNAR
 	arch = any
@@ -40,8 +40,8 @@ pkgbase = r-bionar
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioNAR_1.4.0.tar.gz
-	md5sums = 4cbc1fe5bd753444b3470a317029a885
-	sha256sums = dacd5ee2b304b30fc882ff29336e603bce098c07d62a81d24d76ff1e4bb77c22
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioNAR_1.4.1.tar.gz
+	md5sums = cce2273d564095b70d5b18aa6d134612
+	b2sums = 38bb15d26fa8dfa321e9ea801f949c39ac51189faf62aaa703e3ee2431261771e3485562f4b6ce6fe2311bbeec25875fd2b5a108911c84f16942805bb28752ae
 
 pkgname = r-bionar
