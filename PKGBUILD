@@ -2,7 +2,7 @@
 
 pkgname=vnt-git
 pkgver=1.2.7.r0.g26d68ac
-pkgrel=5
+pkgrel=10
 pkgdesc="A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具"
 arch=(x86_64
     aarch64
@@ -31,6 +31,8 @@ pkgver() {
 }
 
 prepare() {
+    git -C "${srcdir}/${pkgbase}" clean -dfx
+
     cd "${srcdir}/${pkgbase}/"
 
     git submodule update --init --recursive
