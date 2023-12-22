@@ -1,6 +1,6 @@
 pkgbase = jre17
 	pkgdesc = Oracle Java 17 Runtime Environment
-	pkgver = 17.0.8
+	pkgver = 17.0.9
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	install = jre17.install
@@ -31,7 +31,7 @@ pkgbase = jre17
 	backup = etc/java17-jre17/logging.properties
 	backup = etc/java17-jre17/net.properties
 	backup = etc/java17-jre17/sound.properties
-	source = jdk-17.0.8.tar.gz::https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz
-	sha256sums = 74b528a33bb2dfa02b4d74a0d66c9aff52e4f52924ce23a62d7f9eb1a6744657
+	source = jdk-17.0.9.tar.gz::https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz
+	sha256sums = ad45ac97b3bc65497376f98ee276f84f4ab55ef2f62ab7f82ac0013e5b17744a
 
 pkgname = jre17
