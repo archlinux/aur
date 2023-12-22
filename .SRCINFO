@@ -1,0 +1,14 @@
+pkgbase = dwm-polybar-git
+	pkgdesc = Polybar script in Go without recompiling entire polybar
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Andrmist/dwm-polybar
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go-pie
+	makedepends = git
+	source = dwm-polybar-git::git+https://github.com/Andrmist/dwm-polybar
+	sha512sums = SKIP
+
+pkgname = dwm-polybar-git
