@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Clash Meta Console
+Name[zh_CN]=Clash托盘控制台
+Exec=python /opt/clash-console-tray-script/clash-console.py
+Terminal=false
+Type=Application
+Icon=clash-console-tray-script
+Categories=Network;Development;
