@@ -1,11 +1,11 @@
 # Maintainer: Ivan Gabaldon <aur[at]inetol.net>
 
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#! This package is NOT validated by checksums, careful... !!
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#! This package is NOT checked by checksums, careful... !!
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 pkgname=termius-deb
 _pkgname=Termius
-pkgver=8.8.3
+pkgver=8.9.0
 pkgrel=1
 pkgdesc='Desktop SSH Client (deb release)'
 arch=('x86_64')
