@@ -4,13 +4,13 @@
 
 pkgname=teams-for-linux
 pkgver=1.3.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Microsoft Teams client for Linux using Electron."
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/IsmaelMartinez/${pkgname}"
 license=("GPL3")
 depends=("gtk3" "libxss" "nss")
-makedepends=("nodejs>=21" "node-gyp" "yarn")
+makedepends=("nodejs>=18" "node-gyp" "yarn")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/IsmaelMartinez/${pkgname}/archive/v${pkgver}.tar.gz"
   "${pkgname}.desktop"
