@@ -3,32 +3,32 @@
 
 pkgname=python-gpy
 _name=GPy
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.13.0
+pkgrel=1
 pkgdesc="Gaussian processes framework in python"
 arch=("any")
 license=("BSD")
 url="https://github.com/SheffieldML/GPy"
 depends=('python' 'python-numpy' 'python-scipy' 'python-six' 'python-paramz' 'python-matplotlib' 'python-climin-git')
 optdepends=('python-plotly' 'ipython' 'python-sphinx' 'python-ipykernel' 'python-ipywidgets' 'python-jupyter_client' 'jupyter-notebook' 'python-mpi4py')
-makedepends=('python-setuptools' 'python-numpy' 'cython')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('a2b793ef8d0ac71739e7ba1c203bc8a5afa191058b42caa617e0e29aa52aa6fb')
+makedepends=('python-setuptools' 'python-numpy' 'cython' 'python-build' 'python-installer' 'python-wheel')
+source=("https://github.com/SheffieldML/GPy/archive/refs/tags/v.${pkgver}.tar.gz")
+sha256sums=('eceb9559b1ec565c767aa422ac896a5a3422da7dda0b42629e69311212766920')
 
 prepare() {
-    cd "GPy-${pkgver}"
+    cd "GPy-v.${pkgver}"
     
     # Forcibly update cython for python 3.7 (https://github.com/SheffieldML/GPy/issues/649)
     find . -name '*.pyx' -exec cython -v -3 {} \;
 }
 
 build() {
-    cd "GPy-${pkgver}"
-    python setup.py build
+    cd "GPy-v.${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "GPy-${pkgver}"
-    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+    cd "GPy-v.${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-gpy/LICENSE"
 }
