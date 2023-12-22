@@ -1,5 +1,5 @@
 pkgbase = kodi-nexus-git
-	pkgver = r62217.618d1e35d89
+	pkgver = r62252.b8fafb0a41d
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -98,7 +98,7 @@ pkgbase = kodi-nexus-git
 	b2sums = 7e15afcc0cc7f529e6c491c985968bc53be413424b890e4eab2ce8e3d0f21b08347698e660e0f4f0cc50c5279f052be7a2d84d5351509d34193066d797a44130
 
 pkgname = kodi-nexus-git
-	pkgdesc = A software media player and entertainment hub for digital media (Nexus branch)
+	pkgdesc = A software media player and entertainment hub for digital media (gl renderer, Nexus branch)
 	depends = bluez-libs
 	depends = curl
 	depends = dav1d
@@ -118,6 +118,7 @@ pkgname = kodi-nexus-git
 	depends = libvdpau
 	depends = libxslt
 	depends = lirc
+	depends = lzo
 	depends = mariadb-libs
 	depends = mesa
 	depends = libpipewire
@@ -142,7 +143,63 @@ pkgname = kodi-nexus-git
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = pipewire: PipeWire support
 	optdepends = upower: Display battery level
-	provides = kodi=r62217.618d1e35d89
+	provides = kodi-common=r62252.b8fafb0a41d
+	provides = kodi-x11
+	provides = kodi-wayland
+	provides = kodi-gbm
+	conflicts = kodi-gles
+	conflicts = kodi-x11
+	conflicts = kodi-wayland
+	conflicts = kodi-gbm
+
+pkgname = kodi-nexus-git-gles
+	pkgdesc = A software media player and entertainment hub for digital media (gles renderer, Nexus branch)
+	depends = bluez-libs
+	depends = curl
+	depends = dav1d
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = fmt
+	depends = lcms2
+	depends = libass
+	depends = libbluray
+	depends = libcdio
+	depends = libcec
+	depends = libmicrohttpd
+	depends = libnfs
+	depends = libplist
+	depends = libpulse
+	depends = libva
+	depends = libvdpau
+	depends = libxslt
+	depends = lirc
+	depends = lzo
+	depends = mariadb-libs
+	depends = mesa
+	depends = libpipewire
+	depends = python-pillow
+	depends = python-pycryptodomex
+	depends = python-simplejson
+	depends = shairplay
+	depends = smbclient
+	depends = sndio
+	depends = spdlog
+	depends = sqlite
+	depends = taglib
+	depends = tinyxml
+	depends = libxrandr
+	depends = libxkbcommon
+	depends = waylandpp
+	depends = libinput
+	depends = pcre
+	optdepends = afpfs-ng: Apple shares support
+	optdepends = bluez: Blutooth support
+	optdepends = python-pybluez: Bluetooth support
+	optdepends = pulseaudio: PulseAudio support
+	optdepends = pipewire: PipeWire support
+	optdepends = upower: Display battery level
+	provides = kodi-common=r62252.b8fafb0a41d
+	provides = kodi=r62252.b8fafb0a41d
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -155,7 +212,7 @@ pkgname = kodi-nexus-git-eventclients
 	pkgdesc = Kodi Event Clients (Nexus branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r62217.618d1e35d89
+	provides = kodi-eventclients=r62252.b8fafb0a41d
 	conflicts = kodi-eventclients
 
 pkgname = kodi-nexus-git-tools-texturepacker
@@ -164,11 +221,11 @@ pkgname = kodi-nexus-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r62217.618d1e35d89
+	provides = kodi-tools-texturepacker=r62252.b8fafb0a41d
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-nexus-git-dev
 	pkgdesc = Kodi dev files (Nexus branch)
 	depends = kodi-nexus-git
-	provides = kodi-nexus-dev=r62217.618d1e35d89
+	provides = kodi-nexus-dev=r62252.b8fafb0a41d
 	conflicts = kodi-nexus-dev

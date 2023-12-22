@@ -21,8 +21,8 @@
 _clangbuild=
 
 pkgbase=kodi-nexus-git
-pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r62217.618d1e35d89
+pkgname=("$pkgbase" "$pkgbase-gles" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
+pkgver=r62252.b8fafb0a41d
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -48,7 +48,6 @@ options=(!lto)
 
 _gitname=xbmc
 _codename=Nexus
-
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
@@ -113,12 +112,12 @@ pkgver() {
 }
 
 prepare() {
-  [[ -d kodi-build ]] && rm -rf kodi-build
+  [[ -d "$srcdir/kodi-build" ]] && rm -rf "$srcdir/kodi-build"
   mkdir "$srcdir/kodi-build"
+  [[ -d "$srcdir/kodi-build-gles" ]] && rm -rf "$srcdir/kodi-build-gles"
+  mkdir "$srcdir/kodi-build-gles"
 
   cd "$_gitname"
-
-  rm -rf system/certs # remove not needed cacert
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
 
@@ -132,7 +131,6 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/kodi-build"
 
   _args=(
     -DCMAKE_BUILD_TYPE=Release
@@ -174,26 +172,31 @@ build() {
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
-    -DAPP_RENDER_SYSTEM=gl
   )
 
   # https://github.com/google/flatbuffers/issues/7404
   CXXFLAGS+=' -Wno-error=restrict'
 
   echo "building kodi"
-  cmake "${_args[@]}" ../"$_gitname"
+  cd "$srcdir/kodi-build"
+  cmake "${_args[@]}" -DAPP_RENDER_SYSTEM=gl ../"$_gitname"
+  make
+
+  echo "building kodi-gles"
+  cd "$srcdir/kodi-build-gles"
+  cmake "${_args[@]}" -DAPP_RENDER_SYSTEM=gles ../"$_gitname"
   make
 }
 
 # kodi
 # components: kodi
 package_kodi-nexus-git() {
-  pkgdesc="A software media player and entertainment hub for digital media (Nexus branch)"
+  pkgdesc="A software media player and entertainment hub for digital media (gl renderer, Nexus branch)"
   depends=(
     'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
     'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
-    'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'mariadb-libs'
-    'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
+    'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'lzo'
+    'mariadb-libs' 'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
     'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'sqlite'
     'taglib' 'tinyxml' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
     'pcre'
@@ -208,8 +211,8 @@ package_kodi-nexus-git() {
     'pipewire: PipeWire support'
     'upower: Display battery level'
   )
-  provides=("kodi=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  conflicts=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  provides=("kodi-common=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  conflicts=('kodi-gles' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
 
   _components=(
     'kodi'
@@ -217,6 +220,48 @@ package_kodi-nexus-git() {
   )
 
   cd kodi-build
+  for _cmp in ${_components[@]}; do
+  DESTDIR="$pkgdir" /usr/bin/cmake \
+    -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+     -P cmake_install.cmake
+  done
+
+  # avoid error <general>: GetDirectory - Error getting /usr/lib/kodi/addons
+  # https://bugs.archlinux.org/task/77366
+  mkdir -p "$pkgdir"/usr/lib/kodi/addons
+}
+# kodi
+# components: kodi
+package_kodi-nexus-git-gles() {
+  pkgdesc="A software media player and entertainment hub for digital media (gles renderer, Nexus branch)"
+  depends=(
+    'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
+    'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
+    'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'lzo'
+    'mariadb-libs' 'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
+    'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'sqlite'
+    'taglib' 'tinyxml' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
+    'pcre'
+  )
+  [[ -n "$_clangbuild" ]] && depends+=('glu')
+
+  optdepends=(
+    'afpfs-ng: Apple shares support'
+    'bluez: Blutooth support'
+    'python-pybluez: Bluetooth support'
+    'pulseaudio: PulseAudio support'
+    'pipewire: PipeWire support'
+    'upower: Display battery level'
+  )
+  provides=("kodi-common=${pkgver}" "kodi=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  conflicts=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+
+  _components=(
+    'kodi'
+    'kodi-bin'
+  )
+
+  cd kodi-build-gles
   for _cmp in ${_components[@]}; do
   DESTDIR="$pkgdir" /usr/bin/cmake \
     -DCMAKE_INSTALL_COMPONENT="$_cmp" \
