@@ -1,6 +1,6 @@
 pkgbase = rpi-imager-bin
 	pkgdesc = Raspberry Pi Imaging Utility
-	pkgver = 1.8.3
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = https://github.com/raspberrypi/rpi-imager
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = rpi-imager-bin
 	optdepends = udisks2: non-root user support
 	provides = rpi-imager
 	conflicts = rpi-imager
-	source = https://github.com/raspberrypi/rpi-imager/releases/download/v1.8.3/rpi-imager_1.8.3_amd64.deb
-	sha256sums = 85fa2fd34772e23fd2ff6e71c9fd167a0fb15470f96c8d7ed94499b145bf39e3
+	source = https://github.com/raspberrypi/rpi-imager/releases/download/v1.8.4/rpi-imager_1.8.4_amd64.deb
+	sha256sums = cff1f88ed158519224a8790f2c4ea65baf547b8a215b55190470569b76d6476f
 
 pkgname = rpi-imager-bin
