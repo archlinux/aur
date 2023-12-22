@@ -3,15 +3,37 @@ release.
 
 ---
 
+## 0.5.9
+* **Breaking change**: Local attachment URLs (`[page](url)` syntax and `![alt](url)` image syntax) are now interpreted to relative to the page's folder, unless their URL starts with a `/` then they're relative to the space root (as per [this issue](https://github.com/silverbulletmd/silverbullet/issues/363))
+* **Breaking change:** Revamped [[Templates]], specifically changed the format of [[Page Templates]]. The “Template: Instantiate Page” has been renamed to {[Page: From Template]}.
+* It is now even more recommended to tag your [[Templates]] with the “template” tag, because completion in [[Live Queries]] and [[Live Templates]] will now only suggest `#template` tagged pages.
+* New [[Frontmatter]] attributes with special meaning: `displayName` and `aliases` (allowing to specify alternative names for pages)
+* The [[Page Picker]] now also shows (and matches against) tags, aliases and display names for pages.
+* Added new commands to manage [[Outlines]]. Note this resulted in changing names and keyboard shortcuts for managing folds as well, to be more consistent with the other outline commands.
+* Removed built-in multi-user [[Authentication]], `SB_AUTH` is no longer supported; use `--user` or `SB_USER` instead or an authentication layer such as [[Authelia]].
+* Background and more experimental work:
+  * Work on supporting multiple database and storage backends, reviving [[Install/Deno Deploy]] support.
+  * This is now documented on the brand-new [[Install/Configuration]] page.
+  * A new `silverbullet sync` command to [[Sync]] spaces (early days, use with caution)
+  * Technical refactoring in preparation for multi-tenant deployment support (allowing you to run a single SB instance and serve multiple spaces and users at the same time)
+    * Lazy everything: plugs are now lazily loaded (after a first load,  manifests are cached). On the server side, a whole lot of infrastructure is now only booted once the first HTTP request comes in
+
+---
+
+## 0.5.8
+* Various bugfixes, primarily related to the new way of running docker containers, which broke things for some people. Be sure to have a look at the new [[Install/Configuration]] configuration options
+
+---
+
 ## 0.5.7
 * New {[Upload: File]} command to upload files and pictures (particularly valuable for mobile use cases). Implemented by [prcrst](https://github.com/silverbulletmd/silverbullet/pull/571).
 * General support for highlighting errors (underlined) in the editor. Currently implemented for:
   * All YAML fenced code blocks (and [[Frontmatter]]): will now highlight YAML parse errors
   * [[Live Queries]]: will highlight non-existing query sources and non-existing template references in `render` clauses
-* Basic [[Table of Contents]] support: any page _with 3 headers or more_, now has a “Table of Contents” widget appear (see this very page). You can toggle this feature using the {[Table of Contents: Toggle]} command.
+* Basic [[Table of Contents]] support: any page _with 3 headers or more_ now has a “Table of Contents” widget appear (see this very page). You can toggle this feature using the {[Table of Contents: Toggle]} command.
 * Tapping/clicking the top bar (outside of the page name and action buttons) now scrolls your page to the very top.
-* Slightly more gracious error reporting on load, when using the Online [[Client Modes]] and the server is offline.
-* Any page tagged with `#template` is no longer indexed (beside as a `template`)
+* Slightly more gracious error reporting on load when using the Online [[Client Modes]] and the server is offline.
+* Any page tagged with `#template` is no longer indexed (besides as a `template`)
 * Upgraded set of emoji (completed via the :thinking_face: syntax) to 15.1 (so more emoji)
 * Various bug fixes
 
@@ -87,9 +109,9 @@ Due to significant changes in how data is stored, likely your space will be resy
 The big change in this release is that SilverBullet now supports two [[Client Modes|client modes]]: _online_ mode and _sync_ mode. Read more about them here: [[Client Modes]].
 
 Other notable changes:
-* Massive reshuffling of built-in [[🔌 Plugs]], splitting the old “core” plug into [[🔌 Editor]], [[🔌 Template]] and [[🔌 Index]].
+* Massive reshuffling of built-in [[🔌 Plugs]], splitting the old “core” plug into [[Plugs/Editor]], [[Plugs/Template]] and [[Plugs/Index]].
 * Directives in [[Live Preview]] now always take up a single line height.
-* [[🔌 Tasks]] now support custom states (not just `[x]` and `[ ]`), for example:
+* [[Plugs/Tasks]] now support custom states (not just `[x]` and `[ ]`), for example:
   * [IN PROGRESS] An in progress task
   * [BLOCKED] A task that’s blocked
   [[🔌 Tasks|Read more]]
