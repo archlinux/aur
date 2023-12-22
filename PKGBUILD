@@ -10,11 +10,10 @@
 
 pkgname=mpd-light-pulse-ffmpeg
 _pkgname=mpd
-pkgver=0.23.14
+pkgver=0.23.15
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, mikmod, modplug, mpg123, openmpt, pipewire, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.'
 url='https://www.musicpd.org/'
-# NOTE: BSD-2-Clause license file currently missing: https://github.com/MusicPlayerDaemon/MPD/issues/1877
 license=(
   BSD-2-Clause
   GPL-2.0-or-later
@@ -34,7 +33,7 @@ source=("https://www.musicpd.org/download/${_pkgname}/${pkgver%.*}/${_pkgname}-$
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles"
         "${_pkgname}.service.override")
-sha512sums=('4d97b22c37ca8c0939830cd6497023d868005a123f866db594716027c590e2d1dffb65bbd3af41404dcc7c0249466192e457ae1ba80f1f95ff044516be4c99ae'
+sha512sums=('12329dbd0c1994c1bd95b88ce2a62a4c1d691b655e9e4fac7e9ef7066d0be3422b26fad3ea6ca144ba9b21add0a7c492c4f74fd2b68a1539bff2e0d2714db709'
             'SKIP'
             '25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1'
             '6e467481406279767b709ec6d5c06dbd825c0de09045c52ffa2d21d0604dcfe19b7a92bf42bed25163d66a3a0d1dbde6185a648b433eaf5eac56be90491e2e18'
@@ -87,12 +86,10 @@ check() {
 }
 
 package() {
-  # depends+=('libFLAC.so' 'libasound.so' 'libaudiofile.so' 'libavcodec.so' 'libavformat.so'
-            # 'libcurl.so' 'libfaad.so' 'libfmt.so' 'libicui18n.so' 'libicuuc.so' 'libid3tag.so'
-            # 'libmpdclient.so' 'libogg.so' 'libsamplerate.so'
-            # 'libvorbis.so' 'libupnp.so' 'liburing.so' 'libixml.so')
   DESTDIR="$pkgdir" ninja -C build install
   install -vDm 644 ${_pkgname}-$pkgver/doc/${_pkgname}conf.example -t "$pkgdir/usr/share/doc/${_pkgname}/"
+  # NOTE: BSD-2-Clause license file currently missing: https://github.com/MusicPlayerDaemon/MPD/issues/1877
+  # install -vDm 644 $pkgname-$pkgver/LICENSES/BSD-2-Clause -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 ${_pkgname}.service.override "$pkgdir/usr/lib/systemd/system/mpd.service.d/00-arch.conf"
   install -vDm 644 ${_pkgname}.conf -t "$pkgdir/etc/"
   install -vDm 644 ${_pkgname}.sysusers "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
