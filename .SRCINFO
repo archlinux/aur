@@ -1,0 +1,12 @@
+pkgbase = davinconv
+	pkgdesc = Simple script written in bash to convert videos using ffmpeg to the format supported by Davinci Resolve for Linux.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gohny/davinconv
+	arch = x86_64
+	license = GPL3
+	depends = ffmpeg
+	source = davinconv-0.1.0.tar.gz::https://github.com/gohny/davinconv/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = dadba465482026d297df11fdf86404bb5e5cce870f97b95414cb23ae3d9e334b
+
+pkgname = davinconv
