@@ -1,20 +1,21 @@
-# Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
+# Maintainer: Mohamed Tarek <Mokhamed_tarek@mail.ru>
+# Contributor: Tomislav Ivek <tomislav.ivek@gmail.com>
 # Contributor: Carl George < arch at cgtx dot us >
 
 _name="pluginbase"
 _module="$_name"
 
 pkgname=("python-$_module")
-pkgver=1.0.0
-pkgrel=6
+pkgver=1.0.1
+pkgrel=0
 pkgdesc="A support library for building plugins systems in Python."
 arch=("any")
-url="http://pluginbase.pocoo.org/"
+url="https://pypi.org/project/pluginbase"
 license=("BSD")
 makedepends=("python-setuptools")
 depends=("python")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mitsuhiko/pluginbase/archive/$pkgver.tar.gz")
-sha256sums=('ab0e5fc405f1d28abe99724943ad54b5e7fb1c2f6b1519f0942e2074e6c8c22a')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/f3/07/753451e80d2b0bf3bceec1162e8d23638ac3cb18d1c38ad340c586e90b42/pluginbase-${pkgver}.tar.gz")
+sha256sums=('ff6c33a98fce232e9c73841d787a643de574937069f0d18147028d70d7dee287')
 
 build() {
     cd "$_name-$pkgver"
