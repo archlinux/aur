@@ -5,9 +5,9 @@
 
 _pkgname=widelands
 pkgname="${_pkgname}-git"
-epoch=0
+epoch=1
 _pkgver=latest
-pkgver=1.1+git25734_aa65c41_20220428
+pkgver=1.2+git26407_6f1730c_20231222
 pkgrel=1
 pkgdesc="An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'."
 url="http://widelands.org/"
@@ -27,6 +27,10 @@ depends=(
   'sdl2_mixer'
   'sdl2_ttf'
   'zlib'
+)
+optdepends=(
+  "widelands-maps-rttr: To play the maps from the game 'Return to the Roots' in Widelands."
+  "widelands-maps-siedler2: To play the maps from the game 'Settlers II' in Widelands."
 )
 makedepends=(
   'cmake'     # For configuring the build
