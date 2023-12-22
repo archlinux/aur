@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Zoiper
+GenericName=VoIP softphone
+Comment=A SIP and IAX2 VoIP softphone
+Type=Application
+Icon=zoiper
+Exec=zoiper --dial=%u
+StartupNotify=true
+Terminal=false
+Categories=Network;Telephony;InstantMessaging;
+Keywords=voip;iax;sip;internet;phone;zoiper
+MimeType=x-scheme-handler/callto;x-scheme-handler/tel;x-scheme-handler/sip;x-scheme-handler/zoiper;x-scheme-handler/zoiperh5;x-scheme-handler/zoiper5;
