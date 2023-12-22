@@ -9,7 +9,7 @@
 _pkgname="xwayland-run"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.0.2.r2.g0f30bf5
-pkgrel=2
+pkgrel=3
 pkgdesc="xvfb-run substitute for wayland"
 url="https://gitlab.freedesktop.org/ofourdan/xwayland-run"
 license=('GPL-2.0-or-later')
@@ -24,7 +24,6 @@ makedepends=(
 )
 optdepends=(
   'cage: Wayland compositor'
-  'gnome-kiosk: Wayland compositor'
   'mutter: Wayland compositor'
   'weston: Wayland compositor'
   'xorg-server-xwayland: X11 server'
