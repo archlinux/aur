@@ -1,10 +1,10 @@
 # Maintainer: bitwave
 pkgname=pngthermal
 pkgver=0.2a
-pkgrel=1
+pkgrel=2
 pkgdesc="pseudo thermal view of PNG compression efficiency"
 arch=('i686' 'x86_64')
-url="http://encode.ru/threads/1725-pngthermal-pseudo-thermal-view-of-PNG-compression-efficiency"
+url="http://encode.su/threads/1725-pngthermal-pseudo-thermal-view-of-PNG-compression-efficiency"
 license=('custom')
 groups=()
 depends=()
@@ -14,7 +14,7 @@ optdepends=()
 provides=()
 conflicts=()
 
-source=("http://encode.ru/attachment.php?attachmentid=3260&d=1416178646")
+source=("http://encode.su/attachment.php?attachmentid=3260&d=1416178646")
 sha256sums=('7479edcf7148bb6a571daca50dde6a69df752407eede1e2ecd01d64c9d42a142')
 
 package() {
