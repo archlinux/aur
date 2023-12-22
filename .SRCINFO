@@ -1,14 +1,14 @@
 pkgbase = nodejs-ajv-cli
 	pkgdesc = A command line interface for epoberezkin/ajv JSON schema validator
-	pkgver = 3.1.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/jessedc/ajv-cli#readme
 	arch = any
 	depends = nodejs
 	depends = npm
-	noextract = ajv-cli-3.1.0.tgz
-	source = http://registry.npmjs.org/ajv-cli/-/ajv-cli-3.1.0.tgz
-	sha1sums = 00e04c436c90ccc0883d31f21879ed932a774b19
+	noextract = ajv-cli-5.0.0.tgz
+	source = http://registry.npmjs.org/ajv-cli/-/ajv-cli-5.0.0.tgz
+	sha1sums = 78956ed2934e6dde4c9e696b587be1c2998862e8
 
 pkgname = nodejs-ajv-cli
 
