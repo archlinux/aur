@@ -2,8 +2,8 @@
 
 _pkgname=libtuntap
 pkgname=libtuntap-git
-pkgver=0.4.r49.gf2ae185
-pkgrel=1
+pkgver=0.4.r63.gc642154
+pkgrel=2
 pkgdesc="The portable Tun/Tap devices configuration utility"
 arch=('x86_64')
 url="https://github.com/LaKabane/libtuntap/"
@@ -22,7 +22,7 @@ build() {
 
   mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
   make -j "$(nproc)"
 }
 
