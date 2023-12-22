@@ -2,30 +2,34 @@
 # Contributor: sukanka <su975853527 at gmail.com>
 
 pkgname=tradingview
-pkgver=2.7.1
-pkgrel=5
+pkgver=2.7.2
+pkgrel=1
 pkgdesc='A charting platform for traders and investors'
 arch=('x86_64')
 url='https://www.tradingview.com/desktop/'
 license=('custom:proprietary')
 makedepends=('links'
              'squashfs-tools')
-source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_48.snap"
-        "$pkgname.desktop")
-b2sums=('979958b07225cb2cd0b132d98b7e8727cca2b6fca8fd5608b16f9c9daddbe39c21b9ea94ceac47447c79e97cb6ca15fab63bfe0fadbc8d221ba75cd71dc428f8'
-        '08a4fe6afaccd06dae85a3ee4b812c8807c544416926c90b48b0c4fdd7137bc585d4ccd5ade3f4eb950d4f69fb8813c3c9521de1918601bd8f5af3b5b75a0efe')
+noextract=("$pkgname-$pkgver.snap")
+source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_49.snap")
+b2sums=('d7eb52532ba10731bcd028bdb91e0b08bdd5732c07129e9bf83d88a12e92a57af818b150694f919bf72d68ea89ad87f49ff4468f3fffd65e19fba8bee38434f3')
 
 prepare() {
-    ## EULA
-    links -width 80 -dump https://www.tradingview.com/policies/ | \
-        sed -n '/Terms of Use, Policies and Disclaimers/,/TradingView may update these Rules at any time./p' > "$srcdir/EULA.txt"
+    unsquashfs -f -n -q -d "$pkgname-$pkgver/" "$pkgname-$pkgver.snap"
+    chmod 755 "$pkgname-$pkgver/"
 
-    ## Extract
-    unsquashfs -q -f -d "$pkgname-$pkgver/" "$pkgname-$pkgver.snap"
+    ## License
+    links -width 80 -dump 'https://www.tradingview.com/policies/' | sed -n '/Terms of Use/,/TradingView may update these Rules at any time/p' > "LICENSE.txt"
 
-    mv "$pkgname-$pkgver/meta/gui/icon.png" "$srcdir/$pkgname.png"
+    ## Convert
+    cd "$pkgname-$pkgver/"
 
-    rm -r "$pkgname-$pkgver/"{data-dir/,gnome-platform/,lib/,meta/,scripts/,usr/,*.sh}
+    mv "meta/gui/$pkgname.desktop" "$pkgname.desktop"
+    sed -i -e "s|Exec=.*|Exec=/usr/bin/$pkgname %U|" -e "s|Icon=.*|Icon=$pkgname|" "$pkgname.desktop"
+
+    mv "meta/gui/icon.png" "$pkgname.png"
+
+    rm -rf {data-dir/,gnome-platform/,lib/,meta/,scripts/,usr/,*.sh}
 }
 
 package() {
@@ -56,12 +60,18 @@ package() {
              'pango')
 
     install -d "$pkgdir/opt/$pkgname/"
-    cp -r "$srcdir/$pkgname-$pkgver/"* "$pkgdir/opt/$pkgname/"
+    cp -a "$pkgname-$pkgver/." "$pkgdir/opt/$pkgname/"
+
+    chmod 755 "$pkgdir/opt/$pkgname/$pkgname"
 
     install -d "$pkgdir/usr/bin/"
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-    install -Dm644 "$srcdir/$pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
-    install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
-    install -Dm644 "$srcdir/EULA.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -d "$pkgdir/usr/share/applications/"
+    ln -s "/opt/$pkgname/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+    install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
+    ln -s "/opt/$pkgname/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+
+    install -Dm644 "LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
