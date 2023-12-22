@@ -1,0 +1,4 @@
+/src
+/pkg
+/unmined*.deb
+/unmined-gui-*.pkg.tar*
