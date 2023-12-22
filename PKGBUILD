@@ -2,7 +2,7 @@
 pkgname=splayer-bin
 _pkgname=SPlayer
 pkgver=2.0.0_beta.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist music player.一个简约的在线音乐播放器，支持网易云音乐账号登录，逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理"
 arch=(
     'x86_64'
@@ -39,7 +39,7 @@ source=(
 sha256sums=('d9428682cb119c97b5df0180a60c912f1bb864f1ee07a0230b9e129a7ce03697')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g;s|Music;|AudioVide;|g" \
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g;s|Music;|AudioVideo;|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {

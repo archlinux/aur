@@ -1,7 +1,7 @@
 pkgbase = splayer-bin
 	pkgdesc = A minimalist music player.一个简约的在线音乐播放器，支持网易云音乐账号登录，逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理
 	pkgver = 2.0.0_beta.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://music.imsyy.top/
 	arch = x86_64
 	license = GPL3
