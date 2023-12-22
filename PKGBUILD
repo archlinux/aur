@@ -47,7 +47,8 @@ checkdepends=('cppunit' 'syncthing' 'iproute2')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
         0001-Fix-compilation-with-Qt-6.7.0beta1.patch
-        0002-Fix-rendering-issues-with-Syncthing-icon-with-Qt-6.7.patch)
+        0002-Fix-rendering-issues-with-Syncthing-icon-with-Qt-6.7.patch
+        0001-Mock-setting-the-autostart-path-in-the-wizard-test.patch)
 sha256sums=('0c48da193eb29338590bb297052a1274284d9c596a5078541c4d7cdf6b6eba6f'
             SKIP SKIP)
 
@@ -59,6 +60,7 @@ prepare() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   patch -p1 -i ../0001-Fix-compilation-with-Qt-6.7.0beta1.patch
   patch -p1 -i ../0002-Fix-rendering-issues-with-Syncthing-icon-with-Qt-6.7.patch
+  patch -p1 -i ../0001-Mock-setting-the-autostart-path-in-the-wizard-test.patch
 }
 
 build() {
