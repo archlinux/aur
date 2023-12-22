@@ -4,7 +4,7 @@
 _pkgname=mEDIFIER
 pkgname=medifier-git
 pkgver=0.2.r5.g91c3edd
-pkgrel=2
+pkgrel=7
 pkgdesc="An open-source alternative to the Edifier Connect app"
 arch=(x86_64
     aarch64
@@ -25,6 +25,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgname}/"
     git describe --long --tags | sed 's/V//g;s/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${_pkgname}" clean -dfx
 }
 
 build() {
