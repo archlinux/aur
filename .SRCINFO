@@ -1,0 +1,19 @@
+pkgbase = accounts-qml-module
+	pkgdesc = Expose the Online Accounts API to QML applications
+	pkgver = 0.7
+	pkgrel = 5
+	url = https://gitlab.com/accounts-sso/accounts-qml-module
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = libaccounts-qt
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = signond
+	source = git+https://gitlab.com/accounts-sso/accounts-qml-module#commit=05e79ebbbf3784a87f72b7be571070125c10dfe3
+	sha256sums = SKIP
+
+pkgname = accounts-qml-module
