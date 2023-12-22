@@ -1,0 +1,4 @@
+mdformat-mkdocs/
+*.pkg.*
+pkg/
+src/

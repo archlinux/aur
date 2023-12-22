@@ -1,0 +1,19 @@
+pkgbase = mdformat-mkdocs-git
+	pkgver = v1.1.0.r0.fb0132a
+	pkgrel = 1
+	url = https://github.com/KyleKing/mdformat-mkdocs
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-flit
+	makedepends = python-installer
+	makedepends = python-poetry
+	depends = mdformat
+	provides = mdformat-mkdocs
+	conflicts = mdformat-mkdocs
+	source = mdformat-mkdocs::git+https://github.com/KyleKing/mdformat-mkdocs.git
+	sha256sums = SKIP
+
+pkgname = mdformat-mkdocs-git
