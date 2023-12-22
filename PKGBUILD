@@ -1,18 +1,19 @@
 # Maintainer: linuxer <linuxer@artixlinux.org>
 # Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: David Cooper (dtcooper) <david@dtcooper.com>
 # Contributor: goll <adrian.goll+aur[at]gmail>
 # Contributor: Kosava <kosava@gmail.com>
 
 pkgname=butt
-pkgver=0.1.37
+pkgver=0.1.40
 pkgrel=1
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')
-url="http://butt.sourceforge.net/"
+url="https://danielnoethen.de/butt/"
 depends=('fltk' 'dbus' 'portaudio' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate')
-source=(${pkgname}-${pkgver}.tar.gz::"http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('1166c54672217e24ef604247d2dd56a68a2f36f6f59e94149b70d55b0c576f17b6c9ad11e829a0244096efde759bc459e0c6ae5e737b1f98067689d25669da57')
+source=("${pkgname}-${pkgver}.tar.gz::https://danielnoethen.de/${pkgname}/release/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+b2sums=('920680b90dc4a0936e2fac4cb155ed11f041b440bff3e6ca696b4bf633395550c7bbcf1fceb8f4aeedd0edf7e0d3be009874a7b141961b1bc34f867e16c4381a')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -36,13 +37,15 @@ package() {
   install -Dm644 "icons/icon_scalable.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
   # Documentation
-  for doc in AUTHORS ChangeLog KNOWN_BUGS NEWS README THANKS; do
+  for doc in AUTHORS ChangeLog COPYING KNOWN_BUGS NEWS README THANKS; do
     install -Dm644 "${doc}" "${pkgdir}/usr/share/doc/${pkgname}/${doc}"
   done
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "/usr/share/doc/${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
   # Pixmaps
   for file in usr/share/pixmaps/"${pkgname}"*; do
-    filename=`basename "${file}"`
+    filename="$(basename "${file}")"
     install -Dm644 "${file}" "${pkgdir}/usr/share/pixmaps/${filename}"
   done
 }
