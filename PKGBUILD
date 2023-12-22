@@ -1,7 +1,7 @@
 # Maintainer: Rohan Jain <crodjer [@] pm [dot] me>
 
 pkgname=sysit-bin
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc=' System Sit! Check on the system with a quick glance.'
 arch=('x86_64' 'aarch64' 'armv7')
@@ -15,9 +15,9 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-x
 source_aarch64=("${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7=("${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-armv7-unknown-linux-gnueabihf.tar.gz")
 
-sha256sums_x86_64=('8e05f1b50bc1f3157c9962859bd383cbb222643f088a2b71d8e316f2ac3be41e')
-sha256sums_aarch64=('7bd354bce3fbda9121e9d2fe85da52ac68dfb19b45032bfefe646925f5eda519')
-sha256sums_armv7=('8145da8356f8ee85f1f240d0215911cbf170d7a3de02a07c7b12645db7d42ee4')
+sha256sums_x86_64=('b40ee14e2cb4dac643f8fe0ea13f87b0916fc462287f0136b24d5328c3a065d8')
+sha256sums_aarch64=('8b4290997b22d2633ea95c1a7a61b5f28b154667054ed3d59873bf774762fbfe')
+sha256sums_armv7=('0cdd613ccfdbf0a63a6b15f9e2f938fcff75ab52cd6edde2e185f24b201407c4')
 
 package() {
   install -Dm755 "${srcdir}/sysit" "${pkgdir}/usr/bin/sysit"
