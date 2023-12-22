@@ -2,7 +2,7 @@
 
 pkgname=go-aliddns-git
 pkgver=r25.1109de0
-pkgrel=2
+pkgrel=6
 pkgdesc="用 golang 实现 aliddns，同时对 certbot 进行 txt 信息更新提交"
 arch=(x86_64
     aarch64
@@ -26,6 +26,11 @@ pkgver() {
     cd "${srcdir}/${pkgname}"
 #     git describe --tags | sed 's/^v//;s/-/./g'
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
