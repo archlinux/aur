@@ -1,12 +1,13 @@
 pkgbase = gnome-shell-extension-draw-on-your-screen2-git
 	pkgdesc = A drawing extension for the GNOME Shell.
-	pkgver = 12.r49.g9a3ff24
+	pkgver = 12.r77.ga7469e2
 	pkgrel = 1
 	url = https://github.com/zhrexl/DrawOnYourScreen2
 	arch = any
-	license = GPLv3
+	license = GPL3
 	makedepends = git
 	depends = gnome-shell
+	depends = gjs
 	source = git+https://github.com/zhrexl/DrawOnYourScreen2.git
 	sha256sums = SKIP
 
