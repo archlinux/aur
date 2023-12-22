@@ -11,7 +11,7 @@ pkgbase = clash-console-tray-script
 	source = clash-meta-console.desktop
 	source = Readme.md
 	sha256sums = b4a4572a226e6649a2fd917e47ac339a17865e1b766e0e098776be241cf080c5
-	sha256sums = 3b6a477db7763fc22eae7dfe3880cc2a0c9972d2d30e021bd4c49c56c89986d2
+	sha256sums = 6a0bcfe2b286f9d0288251c8e92b8bc18ac7af46755e7e434ade3bb46ec57cd9
 	sha256sums = 799cab737f3617cc608af1d959130e948e9c83940f6c1965f3d9cc5af8bac4cc
 	sha256sums = cad0d1fe26f9d960fc86b39a1d71886d0d7532199883d63ccc6119cc6bab2688
 

@@ -118,7 +118,7 @@ class CustomTrayIcon(QSystemTrayIcon):
         # 处理打开教程页操作，可以添加你的自定义逻辑
         user_home = os.path.expanduser("~")
         try:
-            open_command = "xdg-open /home/zzy/Desktop/clash-console-tray-script/Readme.md"  # 根据实际情况修改重启命令
+            open_command = "xdg-open /opt/clash-console-tray-script/Readme.md"  # 根据实际情况修改重启命令
             subprocess.run(open_command, shell=True)
         except Exception as e:
             print(f"Error: {e}")
