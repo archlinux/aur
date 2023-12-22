@@ -1,0 +1,21 @@
+pkgbase = xwayland-run-git
+	pkgdesc = xvfb-run substitute for wayland
+	pkgver = 0.0.2.r2.g0f30bf5
+	pkgrel = 2
+	url = https://gitlab.freedesktop.org/ofourdan/xwayland-run
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = python
+	optdepends = cage: Wayland compositor
+	optdepends = gnome-kiosk: Wayland compositor
+	optdepends = mutter: Wayland compositor
+	optdepends = weston: Wayland compositor
+	optdepends = xorg-server-xwayland: X11 server
+	provides = xwayland-run
+	conflicts = xwayland-run
+	source = xwayland-run::git+https://gitlab.freedesktop.org/ofourdan/xwayland-run.git
+	sha256sums = SKIP
+
+pkgname = xwayland-run-git
