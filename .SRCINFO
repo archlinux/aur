@@ -1,14 +1,12 @@
 pkgbase = pcalc
 	pkgdesc = A command-line programmer's calculator handling HEX/DEC/OCT/BIN
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
-	url = http://pcalc.sourceforge.net/
-	arch = i686
-	arch = x86_64
+	url = https://github.com/vapier/pcalc
+	arch = any
 	license = GPL
 	depends = glibc
-	source = http://downloads.sourceforge.net/pcalc/pcalc-4.tar.xz
-	sha512sums = 6492ca89c5f60549f9388d8b7edad21c1c912feea0ee1a1271d730a63832c3b562b1a6bc9f69a0bd3118407906646c8d8fbed6c6d9a62db6a6bbde22579c1fd0
+	source = pcalc-5.tar.gz::https://github.com/vapier/pcalc/archive/refs/tags/v5.tar.gz
+	sha512sums = 41a5fb412d1eded782158474d27816fa4845a7146bc6a357a77a2b3618d03875e1099bbb61a0d2463654361c2ff2ddb7354cdc6bfa3c95d7d9149b0780f2d09b
 
 pkgname = pcalc
-
