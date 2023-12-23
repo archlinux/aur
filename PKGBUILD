@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-git
-pkgver=1.0.21.r15.g5f02072b
+pkgver=1.0.22.r3.g22169bda
 pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors"
 arch=(x86_64 i686 armv7h aarch64)
@@ -9,7 +9,7 @@ url="https://www.strawberrymusicplayer.org/"
 license=(GPL3)
 depends=(chromaprint protobuf gst-plugins-base gst-plugins-good qt6-base
          sqlite udisks2 dbus alsa-lib libcdio fftw libebur128 kdsingleapplication
-libpulse libimobiledevice libplist libusbmuxd libgpod libmtp
+         libpulse libimobiledevice libplist libusbmuxd libgpod libmtp
 
          # namcap implicit depends
          glibc gcc-libs glib2 icu hicolor-icon-theme libx11 gstreamer
@@ -45,6 +45,7 @@ build() {
 }
 
 package() {
+  depends+=(libicuuc.so libicui18n.so libgpod.so libprotobuf.so)
   cd strawberry/strawberry-build
   make DESTDIR="${pkgdir}" install
 }
