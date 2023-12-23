@@ -1,16 +1,18 @@
 pkgbase = pnc
 	pkgdesc = libphonenumber command-line wrapper continued (by the sxmo project)
 	pkgver = 0.9.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~anjan/pnc
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = Apache
+	license = GPL3
 	makedepends = cmake
 	makedepends = gawk
-	depends = libphonenumber
-	depends = icu
+	depends = libphonenumber.so
+	depends = libicuuc.so
+	depends = gcc-libs
+	depends = glibc
 	source = pnc-0.9.4.tar.gz::https://git.sr.ht/~anjan/pnc/archive/0.9.4.tar.gz
 	sha256sums = a4852b5b15222c1846cc79d196c639aadf41615fded35fff33606f0639dffa42
 

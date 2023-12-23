@@ -3,12 +3,12 @@
 
 pkgname=pnc
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="libphonenumber command-line wrapper continued (by the sxmo project)"
 url="https://git.sr.ht/~anjan/pnc"
 arch=('x86_64' 'armv7h' 'aarch64')
-depends=('libphonenumber' 'icu')
-license=('Apache')
+depends=('libphonenumber.so' 'libicuuc.so' 'gcc-libs' 'glibc')
+license=('GPL3')
 makedepends=('cmake' 'gawk')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~anjan/pnc/archive/$pkgver.tar.gz")
 sha256sums=('a4852b5b15222c1846cc79d196c639aadf41615fded35fff33606f0639dffa42')
