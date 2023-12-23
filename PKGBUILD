@@ -9,7 +9,7 @@ url="https://github.com/tree-sitter/tree-sitter-python"
 license=('MIT')
 groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
-provides=('libtree-sitter-python.so')
+provides=('libtree-sitter-python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('1e38c991832f461c0da8ca222fbe5be3b82b868fe34025f0295206b5e5789d7a')
 
