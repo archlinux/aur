@@ -12,10 +12,10 @@ pkgdesc="Vim the editor. Components used by vim-minimal-git and gvim-git."
 arch=("i686" "x86_64")
 url="http://www.vim.org"
 license=("custom:vim")
-makedepends=("git" "gtk2" "lua" "python" "python2" "ruby")
-depends=("gpm" "gawk")
-provides=("vim-runtime")
-conflicts=("vim-runtime")
+makedepends=('git' 'lua' 'python' 'ruby')
+depends=('gpm' 'gawk')
+provides=('vim-runtime')
+conflicts=('vim-runtime')
 source=("git+https://github.com/vim/vim.git")
 sha256sums=("SKIP")
 
@@ -43,7 +43,6 @@ build() {
       --enable-cscope \
       --enable-multibyte \
       --enable-perlinterp=dynamic \
-      --enable-pythoninterp=dynamic \
       --enable-python3interp=dynamic \
       --enable-rubyinterp=dynamic \
       --enable-luainterp=dynamic
