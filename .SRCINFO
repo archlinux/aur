@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-pango
 	pkgdesc = A library for layout and rendering of text (mingw-w64)
 	pkgver = 1.51.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pango.gnome.org/
 	arch = any
 	license = LGPL

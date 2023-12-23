@@ -6,7 +6,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-pango
 pkgver=1.51.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=('any')
 url="https://pango.gnome.org/"
@@ -44,6 +44,7 @@ build() {
     ${_arch}-meson \
       --buildtype=release \
       --default-library=both \
+      -D 'fontconfig=enabled' \
       -D 'gtk_doc=false' \
       -D 'introspection=disabled' \
       ..
