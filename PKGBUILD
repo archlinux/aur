@@ -4,8 +4,8 @@ pkgname=opentabletdriver
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=0.6.3.0
-pkgrel=5
+pkgver=0.6.4.0
+pkgrel=1
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://opentabletdriver.net"
@@ -22,9 +22,9 @@ source=("OpenTabletDriver-$pkgver.tar.gz::https://github.com/OpenTabletDriver/Op
         "notes.install"
         )
 
-sha256sums=('7c38d92bb8176eead8f58d84532abd49e915254208c568a5618c92c093c1fdd0'
+sha256sums=('1ad04f4a32b54b9b62bd944b0196abb6613873b19c269abcc9f9e94c1dc3027f'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
-            '35f48af6cb7ce0d53fb4efd1a932937f806d55f520e73ac99292e49d7d7e33fd')
+            '33e50caf00ab290463acaa09b024bcd8bcf6a39911db2fc506e88495171bf3e3')
 
 _srcdir="OpenTabletDriver-$pkgver"
 
@@ -46,7 +46,7 @@ build() {
 
     ./eng/linux/package.sh -- $EXTRA_OPTIONS
 
-    ./generate-rules.sh > 70-$_lpkgname.rules
+    OTD_CONFIGURATIONS="${PWD}/OpenTabletDriver.Configurations/Configurations" ./generate-rules.sh > 70-$_lpkgname.rules
 }
 
 package() {
