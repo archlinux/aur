@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenomicScores
-_pkgver=2.14.2
+_pkgver=2.14.3
 pkgname=r-${_pkgname,,}
-pkgver=2.14.2
+pkgver=2.14.3
 pkgrel=1
 pkgdesc='Infrastructure to work with genomewide position-specific scores'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d3987921a8a1811127aa3429ffdf123ade92558014a28132fd6a9f2e163558f2')
+sha256sums=('a98eb24b700041b8756aa8f15295a7018ae45d6698a5ac9e97e4435eea721e66')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
