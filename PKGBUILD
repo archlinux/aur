@@ -2,7 +2,7 @@
 
 pkgname=rtt-rstudio-technician
 pkgver=5.3.191246
-pkgrel=1
+pkgrel=2
 # INFO:
 #   Intended for digital forensic labs, data recovery businesses, or individuals, it provides
 #   them with a first-class professional data recovery tool set that can solve most of

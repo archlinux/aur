@@ -1,7 +1,7 @@
 pkgbase = rtt-rstudio-technician
 	pkgdesc = R-Studio Technician is a powerful cost-effective undelete and data recovery software utility (non-free).
 	pkgver = 5.3.191246
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.r-studio.com/Data_Recovery_Technician.shtml
 	arch = x86_64
 	arch = i686
