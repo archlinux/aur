@@ -3,7 +3,7 @@
 # Contributor: loqs <bugs-archlinux@entropy-collector.net>
 
 pkgname=cozy-desktop
-pkgver=3.38.0
+pkgver=3.39.0
 pkgrel=1
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=(x86_64)
@@ -16,8 +16,8 @@ source=(https://github.com/cozy-labs/${pkgname}/archive/v${pkgver/b/-beta.}/${pk
         https://github.com/cozy-labs/${pkgname}/releases/download/v${pkgver/b/-beta.}/Cozy-Drive-${pkgver/b/-beta.}-x86_64.AppImage
         ${pkgname}.desktop
         ${pkgname}.sh)
-sha256sums=('d709cf5166bad539a07680fdd5cf3b20fca80805eca569bf408458ec6a146558'
-            'de588ecd954e8ed575706aca94e2a215146a9edf0a1cfaf961ee475347bf058a'
+sha256sums=('292d49c60e7e056417d0733bbca9f04a8f9351ecde35dd9a20c5902d2ded5397'
+            '993460f0a426ec126297cd530a5cb30ab5d21d36e7f86f6945830869e5e88f37'
             '563edd5a43c7f06080e03bec5f4e46154227f7e163500950ea39ecad466b198a'
             'a8783d3f6ce2da344ffe403f8e1a4f9da8de3b59e8bfda10e15a4ff5643244cf')
 
