@@ -1,0 +1,14 @@
+pkgbase = laigter
+	pkgdesc = Automatic normal map generator for sprites!
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/azagaya/laigter
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	source = laigter-1.11.0.tar.gz::https://github.com/azagaya/laigter/archive/refs/tags/1.11.0.tar.gz
+	sha256sums = 77823b770f099843e1c0f6408156367c3f12b22dc897781aebe079c8a67c62e4
+
+pkgname = laigter
