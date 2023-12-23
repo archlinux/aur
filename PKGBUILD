@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.G.2023.08.25
+pkgver=0.G.2023.12.23
 _pkgver=0.G
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
@@ -16,11 +16,12 @@ arch=('i686' 'x86_64')
 license=("CCPL:by-sa")
 conflicts=('cataclysm-dda' 'cataclysm-dda-ncurses' 'cataclysm-dda-tiles')
 depends=('ncurses' 'gettext')
-makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'git')
+makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'git' 'libbacktrace-git')
 optdepends=('sdl2_image: for tiles'
             'sdl2_ttf: for tiles'
             'freetype2: for tiles'
             'sdl2_mixer: for tiles')
+options=('!strip')
 #source=("$pkgname"::'git://github.com/CleverRaven/Cataclysm-DDA.git#branch=master')
 # The git repo is more than a GB
 # so download a snapshot while waiting for shallow clone support in makepkg
@@ -44,8 +45,8 @@ prepare() {
 
 build() {
   cd "Cataclysm-DDA-master"
-  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0
-  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1
+  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 LIBBACKTRACE=1
+  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1 LIBBACKTRACE=1
   # LOCALIZE = 0   to save 30MB
   # DYNAMIC_LINKING = 1 ?
 

@@ -1,6 +1,6 @@
 pkgbase = cataclysm-dda-git
 	pkgdesc = A post-apocalyptic roguelike.
-	pkgver = 0.G.2023.08.25
+	pkgver = 0.G.2023.12.23
 	pkgrel = 1
 	url = https://cataclysmdda.org/
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = cataclysm-dda-git
 	makedepends = sdl2_mixer
 	makedepends = freetype2
 	makedepends = git
+	makedepends = libbacktrace-git
 	depends = ncurses
 	depends = gettext
 	optdepends = sdl2_image: for tiles
@@ -20,6 +21,7 @@ pkgbase = cataclysm-dda-git
 	conflicts = cataclysm-dda
 	conflicts = cataclysm-dda-ncurses
 	conflicts = cataclysm-dda-tiles
+	options = !strip
 	source = https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip
 	sha512sums = SKIP
 
