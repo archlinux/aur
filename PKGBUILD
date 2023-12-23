@@ -61,7 +61,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson "${pkgname}" build -D sd-bus-provider=libsystemd -D werror=false
+	arch-meson build "${pkgname}" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
 
 	meson compile -C build
 }
