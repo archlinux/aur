@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=invidtui
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="TUI-based Invidious client"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('8a95c61c26ea04d21ed0c2907f13cc2c2cf8c1bea651913719d960691b8fb35b')
+sha256sums=('aff0cc8ae76befdcbd15a5b4c1da0868479e1374589f888fa39430f34d7039ae')
 
 prepare() {
   cd "$pkgname-$pkgver"
