@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libfdk-aac
 	pkgdesc = Fraunhofer FDK AAC codec library (mingw-w64)
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://sourceforge.net/projects/opencore-amr/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-libfdk-aac
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = https://downloads.sourceforge.net/opencore-amr/fdk-aac-2.0.2.tar.gz
-	sha256sums = c9e8630cf9d433f3cead74906a1520d2223f89bcd3fa9254861017440b8eb22f
+	source = https://downloads.sourceforge.net/opencore-amr/fdk-aac-2.0.3.tar.gz
+	sha256sums = 829b6b89eef382409cda6857fd82af84fabb63417b08ede9ea7a553f811cb79e
 
 pkgname = mingw-w64-libfdk-aac
