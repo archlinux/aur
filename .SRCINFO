@@ -1,0 +1,28 @@
+pkgbase = libindi-3rdparty-config
+	pkgdesc = 3rd party drivers for INDI, configured by /etc/indi.conf
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = http://www.indilib.org/index.php?title=Main_Page
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	depends = libvorbis
+	depends = libusb
+	depends = openal
+	depends = libnova
+	depends = libjpeg
+	depends = libindi=2.0.5
+	depends = libgphoto2
+	depends = libftdi-compat
+	depends = cfitsio
+	depends = dcraw
+	depends = libftdi
+	depends = rtl-sdr
+	depends = libraw
+	depends = gpsd
+	source = https://github.com/indilib/indi-3rdparty/archive/v2.0.5.tar.gz
+	sha256sums = 17f5a0536f2ee6bfbcbdcdde9a44c2e59c2156637004193f650bdd2dda123291
+
+pkgname = libindi-3rdparty-config
