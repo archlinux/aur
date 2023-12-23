@@ -1,10 +1,11 @@
 pkgname='doin-git'
 pkgdesc='Run any command inside any namespace-based Linux container'
-pkgver=r7.5982079
-pkgrel=2
+pkgver=r8.f783ea6
+pkgrel=1
 depends=('glibc')
 provides=('doin')
 conflicts=('doin')
+makedepends=('git')
 arch=('x86_64' 'i686')
 url='https://github.com/aperezdc/doin'
 source=("${pkgname}::git+${url}")
