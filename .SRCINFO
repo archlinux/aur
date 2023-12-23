@@ -1,0 +1,16 @@
+pkgbase = can-doc-git
+	pkgdesc = Linux-CAN / SocketCAN documentation
+	pkgver = r9.9f10695
+	pkgrel = 1
+	url = https://github.com/linux-can/can-doc
+	arch = any
+	license = unkown
+	makedepends = git
+	optdepends = can-utils: Linux-CAN / SocketCAN user space applications
+	optdepends = can-isotp-dkms: Kernel modules for isotp
+	provides = can-doc
+	conflicts = can-doc
+	source = can-doc-git::git+https://github.com/linux-can/can-doc.git
+	sha256sums = SKIP
+
+pkgname = can-doc-git
