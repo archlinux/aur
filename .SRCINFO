@@ -1,13 +1,13 @@
 pkgbase = nodejs-generator-code
 	pkgdesc = Visual Studio Code extension generator
-	pkgver = 1.7.0
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/Microsoft/vscode-generator-code
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs-yeoman
-	source = https://registry.npmjs.org/generator-code/-/generator-code-1.7.0.tgz
-	sha256sums = 4ec9761805c2d9d80d41fe3397515c3ab59c8dc1cf50322cb37eed16725ad453
+	source = https://registry.npmjs.org/generator-code/-/generator-code-1.8.2.tgz
+	sha256sums = eb2cc67413ab43c0268eed35ccab8800a435bba23682d129bda0cff0c1dab59d
 
 pkgname = nodejs-generator-code
