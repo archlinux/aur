@@ -29,12 +29,10 @@ source=(
 	wechat-${pkgver}.deb::"https://github.com/Riceneeder/electronic-wechat/releases/download/v2.3.2-6/electronic-wechat_2.3.2_amd64.deb"
 )
 noextract=()
-md5sums=(
-	'SKIP'
-	'ce7eb33de9571e8b8edca4685fc3e42d'
-	'600e74549ce2258c045d5c2f7689ea63'
-	'53d796e5a7c8c488998afdf5fb9020fe'
-)
+md5sums=('dfb16d1792048e3e01d29cf060e7afbc'
+         'ce7eb33de9571e8b8edca4685fc3e42d'
+         '600e74549ce2258c045d5c2f7689ea63'
+         '53d796e5a7c8c488998afdf5fb9020fe')
 validpgpkeys=()
 package() {
 	info '解压缩源文件...'

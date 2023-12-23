@@ -1,14 +1,17 @@
 #!/bin/bash
 
 function main(){
-    if [[ $@ =~ '-xwayland' ]]; then
-        x11Launch
-    fi
-    if [[ ${XDG_SESSION_DESKTOP} = KDE ]] && [[ ${XDG_SESSION_TYPE} = wayland ]]; then
-        probeKwinVersion "$@"
-    else
-        x11Launch "$@"
-    fi
+	if [[ $@ =~ '-xwayland' ]]; then
+		x11Launch
+	fi
+	if [[ ${_enable_Wayland} ]]; then
+		waylandLaunch "$@"
+	fi
+	if [[ ${XDG_SESSION_DESKTOP} = KDE ]] && [[ ${XDG_SESSION_TYPE} = wayland ]]; then
+		probeKwinVersion "$@"
+	else
+		x11Launch "$@"
+	fi
 }
 
 function launch(){
@@ -61,7 +64,7 @@ function waylandLaunch(){
     else
         waylandFlag="--ozone-platform=wayland"
     fi
-    launch ${waylandFlag} --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-wayland-ime --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder "$@" "${flagsIn}"
+    launch ${waylandFlag} --ignore-gpu-blocklist --enable-features=WaylandWindowDecorations --enable-gpu-rasterization --enable-zero-copy --enable-wayland-ime --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder "$@" "${flagsIn}"
 }
 
 function note() {
