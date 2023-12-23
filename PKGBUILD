@@ -100,6 +100,17 @@ EOF
   podman system service --time 0 "$DOCKER_HOST" >&2 &
   podman_pid="$!"
 
+  _kill_podman() {
+    trap - EXIT
+    if [[ $podman_pid ]]; then
+      msg2 "Stopping podman service instance (PID ${podman_pid})..."
+      kill "$podman_pid"
+      wait "$podman_pid"
+      podman_pid=
+    fi
+  }
+  trap _kill_podman EXIT
+
   # 5. Set $DAPPER_CACHE_HOME to hopefully persist (some) caches
   # FIXME: point this to $HOME after we make sure this works
   export DAPPER_CACHE_HOME="$BUILDDIR/dapper-cache"
@@ -122,8 +133,8 @@ EOF
   #scripts/archpkg
   make archpkg
 
-  kill "$podman_pid"
-  wait "$podman_pid"
+  # 8. Stop the podman-system-service instance.
+  _kill_podman
 }
 
 package() {
