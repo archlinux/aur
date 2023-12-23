@@ -1,12 +1,12 @@
 # Maintainer: icepie <icepie.dev [at] gmail dot com>
 pkgname=kylin-virtual-keyboard-git
 _pkgname=kylin-virtual-keyboard
-pkgver=r154.cad3675
+pkgver=3.0.0.0.r0.gcad3675
 pkgrel=1
 pkgdesc="麒麟虚拟键盘输入法UI工程，该工程适配fcitx5最新的虚拟键盘支持机制。"
 arch=("x86_64")
 url="https://gitee.com/openkylin/kylin-virtual-keyboard"
-license=("LGPL-3.0")
+license=("GPL-3.0-or-later")
 optdepends=()
 provides=('kylin-virtual-keyboard')
 conflicts=('kylin-virtual-keyboard-bin')
@@ -39,7 +39,7 @@ package() {
 
 pkgver() {
     cd ${srcdir}/${_pkgname}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | cut -d '/' -f 2 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # glib-compile-schemas /usr/share/glib-2.0/schemas
