@@ -3,7 +3,7 @@
 # Contributor: moyiz <8603313+moyiz@users.noreply.github.com>
 
 pkgname='na-bin'
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='CLI tool to effortlessly manage context aware nested shortcuts for shell commands.'
 url='https://github.com/moyiz/na'
@@ -13,14 +13,14 @@ provides=('na')
 conflicts=('na')
 depends=('glibc')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.4/na_linux_arm64.tar.gz")
-sha256sums_aarch64=('d686a271e33d36d52bb558518cac88e39a0675feff692ab8be2e40fa69bf61ce')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.5/na_linux_arm64.tar.gz")
+sha256sums_aarch64=('97768f2d871506ece572b958c011c0a46153bb9fe83a13ec46e8e7e9bdebae7c')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.4/na_linux_i386.tar.gz")
-sha256sums_i686=('f5ed93ac8c360446c6a7754106f12792418deb69c5995caae76ab81dc1c9d00a')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.5/na_linux_i386.tar.gz")
+sha256sums_i686=('f6a386a71b67667264e369a7fbd2e363afb6d2abb05ceb4e9d7841caf425cd09')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.4/na_linux_x86_64.tar.gz")
-sha256sums_x86_64=('4f9329bae5d90eb7ec2f9aae450fcf125df3c756b493dfae65a94046d7f8f8a3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.5/na_linux_x86_64.tar.gz")
+sha256sums_x86_64=('fe40efcc65c92630db42462b32da98f1b00fd61530e10054b6777315f9a94551')
 
 package() {
   cd ${srcdir}
@@ -31,13 +31,18 @@ package() {
   declare zsh_comp=${pkgdir}/usr/share/zsh/site-functions/
   declare fish_comp=${pkgdir}/usr/share/fish/vendor_completions.d
 
-  mkdir -p completions ${bash_comp} ${zsh_comp} ${fish_comp}
+  mkdir -p ${bash_comp} ${zsh_comp} ${fish_comp}
 
-  ./na completion bash > ./completions/na.bash
-  ./na completion zsh > ./completions/na.zsh
-  ./na completion fish > ./completions/na.fish
+  ./na completion bash > na.bash
+  ./na completion zsh > na.zsh
+  ./na completion fish > na.fish
 
-  install -Dm644 ./completions/na.bash ${bash_comp}/na
-  install -Dm644 ./completions/na.zsh ${zsh_comp}/_na
-  install -Dm644 ./completions/na.fish ${fish_comp}/na.fish
+  install -Dm644 ./na.bash ${bash_comp}/na
+  install -Dm644 ./na.zsh ${zsh_comp}/_na
+  install -Dm644 ./na.fish ${fish_comp}/na.fish
+
+  ./na docs -o ./man
+  mkdir -p ${pkgdir}/usr/share/man/man1/
+  install -Dm644 ./man/* ${pkgdir}/usr/share/man/man1/
+  install -d ${pkgdir}/usr/share
 }
