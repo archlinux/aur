@@ -13,8 +13,8 @@ pkgname=(
     'ruby-simpleitk'
     'tcl-simpleitk'
 )
-pkgver=2.3.0
-pkgrel=4
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
 url="http://www.simpleitk.org/"
@@ -49,9 +49,6 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    rm -rf build
-    mkdir -p build
-    cd build
 
     # Check that the required ITK modules are present
     local _itk
@@ -68,6 +65,7 @@ prepare() {
 
     JAVA_HOME=$_java_home \
         cmake \
+            -B build \
             -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_CXX_FLAGS:STRING="-std=c++17" \
             -DBUILD_SHARED_LIBS:BOOL=ON \
@@ -84,21 +82,23 @@ prepare() {
             -DWRAP_R:BOOL=ON \
             -DWRAP_RUBY:BOOL=ON \
             -DWRAP_TCL:BOOL=ON \
-            ..
+            .
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}/build"
+    cd "${srcdir}/${_pkgname}"
 
-    make all
+    cmake --build build --target all
 
-    PIP_CONFIG_FILE=/dev/null LD_LIBRARY_PATH="${srcdir}/${_pkgname}/build/lib" make PythonVirtualEnv dist
+    PIP_CONFIG_FILE=/dev/null LD_LIBRARY_PATH="${srcdir}/${_pkgname}/build/lib" cmake \
+        --build build \
+        --target PythonVirtualEnv dist
 }
 
 package_simpleitk() {
-    cd "${srcdir}/${_pkgname}/build"
+    cd "${srcdir}/${_pkgname}"
 
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir/" cmake --install build
 }
 
 package_python-simpleitk() {
@@ -106,7 +106,7 @@ package_python-simpleitk() {
 
     python -m installer \
         --destdir="$pkgdir" \
-        "${srcdir}/${_pkgname}/build/Wrapping/Python/dist/$_pkgname-"*"-linux_$CARCH.whl"
+        "${srcdir}/${_pkgname}/build/Wrapping/Python/dist/$_pkgname-$pkgver"*"-linux_$CARCH.whl"
 }
 
 package_lua-simpleitk() {
