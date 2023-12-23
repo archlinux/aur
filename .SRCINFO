@@ -1,0 +1,16 @@
+pkgbase = tree-sitter-go
+	pkgdesc = Go grammar for tree-sitter
+	pkgver = 0.20.0
+	pkgrel = 2
+	url = https://github.com/tree-sitter/tree-sitter-go
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter
+	makedepends = tree-sitter-cli
+	makedepends = npm
+	provides = libtree-sitter-go
+	source = tree-sitter-go-0.20.0.tar.gz::https://github.com/tree-sitter/tree-sitter-go/archive/refs/tags/v0.20.0.tar.gz
+	sha256sums = 28de0530d13cfd5530ba6011a66f00f432ae6c7117faf653130bc969d20f08c4
+
+pkgname = tree-sitter-go

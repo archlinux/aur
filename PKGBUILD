@@ -9,7 +9,7 @@ url="https://github.com/tree-sitter/tree-sitter-go"
 license=('MIT')
 groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
-provides=('libtree-sitter-go.so')
+provides=('libtree-sitter-go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('28de0530d13cfd5530ba6011a66f00f432ae6c7117faf653130bc969d20f08c4')
 
