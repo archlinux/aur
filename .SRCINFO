@@ -1,6 +1,6 @@
 pkgbase = komga
 	pkgdesc = Media server for comics/mangas/BDs with API and OPDS support
-	pkgver = 1.9.0
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://komga.org
 	install = komga.install
@@ -9,15 +9,15 @@ pkgbase = komga
 	depends = java-runtime-headless>=17
 	optdepends = libjxl: JPEG XL support
 	backup = etc/komga.conf
-	source = https://github.com/gotson/komga/releases/download/1.9.0/komga-1.9.0.jar
-	source = komga-1.9.0-LICENSE::https://raw.githubusercontent.com/gotson/komga/1.9.0/LICENSE
+	source = https://github.com/gotson/komga/releases/download/1.9.2/komga-1.9.2.jar
+	source = komga-1.9.2-LICENSE::https://raw.githubusercontent.com/gotson/komga/1.9.2/LICENSE
 	source = komga
 	source = komga.env
 	source = komga.install
 	source = komga.service
 	source = komga.sysusers
 	source = komga.tmpfiles
-	sha256sums = 63512b7e3206555b2669ce715e74fe48636ff2cd26a88d2030422cccc279fa33
+	sha256sums = 8a47a70d8d4677976e6a330680b2bcae7d37be81f7d63b18bcdfbf7fdbd9fbc5
 	sha256sums = 0c34b357f56a8d8947e5bf153d8a02ca378611f089d8a3c371667f28c223653f
 	sha256sums = ea583b007a654b24e96838033ae1ce01bd66a0aacf4bda429bb8bbec1bf400ef
 	sha256sums = a0265a0b8ee1bc887033830c21915939efb6872337dccd5b79edb4ca9e403c1d
