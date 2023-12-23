@@ -3,24 +3,25 @@
 _pkgname=Rlab
 _pkgver=4.0
 pkgname=r-${_pkgname,,}
-pkgver=4.0
-pkgrel=1
-pkgdesc='Functions and Datasets Required for ST370 class'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=6
+pkgdesc="Functions and Datasets Required for ST370 Class"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b3744ecb97a3858ac3386586fbfd87320b06c4ec086e987e69b9a88f23ab3905')
+md5sums=('37be3a8dbc0898ecd033f160c0123eb7')
+b2sums=('ecf2568409f0da94eec1e1076757a1fcd66a6d7d827c46f16d7c9ea0aa6f2bc13ca6c3ad861d13ebe5ffb830b820f691cd4893985981c19949340e3f4c80ad08')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
