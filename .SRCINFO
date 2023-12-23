@@ -1,6 +1,6 @@
 pkgbase = openage
 	pkgdesc = A free (as in freedom) clone of the Age of Empires II engine
-	pkgver = 0.5.1
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://openage.sft.mx/
 	arch = x86_64
@@ -12,16 +12,14 @@ pkgbase = openage
 	makedepends = git
 	makedepends = cmake
 	makedepends = cython
-	makedepends = doxygen
 	makedepends = vulkan-headers
-	makedepends = python-graphviz
 	makedepends = eigen
 	makedepends = toml11
 	depends = libepoxy
 	depends = opusfile
-	depends = sdl2
-	depends = sdl2_image
+	depends = ttf-dejavu
 	depends = qt6-declarative
+	depends = qt6-multimedia
 	depends = vulkan-icd-loader
 	depends = libpng
 	depends = libogg
@@ -43,12 +41,7 @@ pkgbase = openage
 	depends = libglvnd
 	depends = opus
 	depends = ncurses
-	optdepends = ttf-dejavu: for text display, but you can use any font
-	source = git+https://github.com/SFTtech/openage.git#tag=v0.5.1
-	source = openage-Fix_out_of_bound_access_in_matrix_constructor_1.patch::https://github.com/SFTtech/openage/pull/1570/commits/4002db5368e3a0f2908f810b20950bb2b8bb9b59.patch
-	source = openage-Fix_out_of_bound_access_in_matrix_constructor_2.patch::https://github.com/SFTtech/openage/pull/1570/commits/52058a1d261cceb3db4c345248ba76d2bc3017eb.patch
+	source = git+https://github.com/SFTtech/openage.git#tag=v0.5.3
 	sha256sums = SKIP
-	sha256sums = db510135ba71b65ece5faf990d3b7d42831b96ddacfa582b8ceaafe11fce00e9
-	sha256sums = b50039e9b5f2ac6aec59a6fd9b5143d3506256fcea49b549ed8627602b229d49
 
 pkgname = openage
