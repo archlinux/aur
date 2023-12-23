@@ -8,7 +8,7 @@ from PyQt5.QtGui import QIcon
 class CustomTrayIcon(QSystemTrayIcon):
     def __init__(self, parent=None):
         super(CustomTrayIcon, self).__init__(parent)
-        self.setIcon(QIcon("/home/zzy/Pictures/assassins-creed-b.png"))  # 替换为你的图标文件路径
+        self.setIcon(QIcon("/usr/share/icons/hicolor/512x512/apps/clash-console-tray-script.png"))  # 替换为你的图标文件路径
 
         # 创建菜单项
         self.menu = QMenu()
