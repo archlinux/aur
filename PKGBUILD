@@ -45,4 +45,6 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
+
+    install -Dm644 "${srcdir}/${pkgname}"/*.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
 }
