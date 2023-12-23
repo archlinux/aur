@@ -9,7 +9,7 @@ url="https://github.com/DerekStride/tree-sitter-sql"
 license=('MIT')
 groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
-provides=('libtree-sitter-sql.so')
+provides=('libtree-sitter-sql')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('6d56d0c307c1e64b88bd4da78a23597744093627d93ef0b0c78e7442b139877e')
 
