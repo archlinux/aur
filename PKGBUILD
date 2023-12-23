@@ -126,7 +126,7 @@
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=40
+pkgrel=41
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -155,8 +155,7 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'inlay-hints-blockend-linelimit10.patch'
         'resolve-incomplete-header-includes.patch'
         'lsp-remove-files-from-cdb.patch'
-        'hover-record-paddings.patch'
-        '74971.patch')
+        'hover-record-paddings.patch')
 sha256sums=('SKIP'
             '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
             '75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54'  # hover-doxygen-trunk
@@ -178,8 +177,7 @@ sha256sums=('SKIP'
             '3365392bf7d95a02e2fb22dffbba011a3fa1179543426a2558b9ac61a300a7a7'  # inlay-hints-blockend-linelimit10
             '991fac650864bbf16832a8c8a0689ee44ef2959a79c9b950ff6200cb4c51beff'  # resolve-incomplete-header-includes
             '459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d'  # lsp-remove-files-from-cdb
-            '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7'  # hover-record-paddings
-            '05dacb22ee83e95de4d6e6cc57f36585bcfeb56dbb90574fba4d97ba35baebf7') # 74971
+            '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7') # hover-record-paddings
 
 pkgver() {
     cd llvm-project
@@ -263,7 +261,6 @@ prepare() {
     # Resolve patches
     if [ "$CLANGD_RESOLVEDEPTYPE" != "n" ]; then
         patch -p1 -i ${srcdir}/resolve-depend-type.patch
-        patch -p1 -i ${srcdir}/74971.patch
     fi
     if [ "$CLANGD_RESOLVEINCHEADERS" != "n" ]; then
         patch -p1 -i ${srcdir}/resolve-incomplete-header-includes.patch
