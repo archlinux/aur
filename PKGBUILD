@@ -9,7 +9,7 @@ url="https://github.com/tree-sitter/tree-sitter-ocaml"
 license=('MIT')
 groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
-provides=('libtree-sitter-ocaml.so')
+provides=('libtree-sitter-ocaml')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('834dc225b6a00871bd4ba98efcec7f3882f3ec7043c6203fdc12396e77bcde6c')
 
