@@ -1,7 +1,7 @@
 pkgbase = yamagi-quake2-ref_vk
 	pkgdesc = Vulkan renderer for yamagi-quake2
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yquake2/ref_vk/
 	arch = i686
 	arch = x86_64

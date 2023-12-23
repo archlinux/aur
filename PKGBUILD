@@ -3,7 +3,7 @@
 
 pkgname=yamagi-quake2-ref_vk
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Vulkan renderer for yamagi-quake2"
 url="https://github.com/yquake2/ref_vk/"

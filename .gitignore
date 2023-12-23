@@ -1,5 +1,4 @@
 /pkg
 /src
-/udev-joystick-blacklist-git
 *.zst
 *.tar.gz
