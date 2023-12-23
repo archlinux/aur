@@ -1,16 +1,16 @@
 pkgbase = json2sharp-bin
 	pkgdesc = CLI tool for converting JSON objects to class definitions
-	pkgver = 1.1.0.0
-	pkgrel = 3
+	pkgver = 1.1.1.0
+	pkgrel = 1
 	url = https://github.com/Kaoticz/Json2Sharp
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	provides = json2sharp
 	options = !strip
-	source_x86_64 = https://github.com/Kaoticz/Json2Sharp/releases/download/1.1.0.0/Json2Sharp_linux-x64.zip
-	sha256sums_x86_64 = d9567184afff4466a5d089651a2b1f93f189d64a9715e01dc0d45d581ea8e31c
-	source_aarch64 = https://github.com/Kaoticz/Json2Sharp/releases/download/1.1.0.0/Json2Sharp_linux-arm64.zip
-	sha256sums_aarch64 = c222db12eb1fc141bb24c6cf9a9397bf7f9aeb6408a67e2e33e9d8146d4770fb
+	source_x86_64 = https://github.com/Kaoticz/Json2Sharp/releases/download/1.1.1.0/Json2Sharp_linux-x64.zip
+	sha256sums_x86_64 = d970c0490b40e8995dc592737454e55a2594dba990590711bbc59166841e65cc
+	source_aarch64 = https://github.com/Kaoticz/Json2Sharp/releases/download/1.1.1.0/Json2Sharp_linux-arm64.zip
+	sha256sums_aarch64 = da9353e7139cb2b254e20c509f1e292c3a4dccdbf985ea87981a36efcc6c3a24
 
 pkgname = json2sharp-bin
