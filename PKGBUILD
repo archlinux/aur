@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite
-pkgver=1.0.21
+pkgver=1.0.22
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only"
 arch=(x86_64 i686 armv7h aarch64)
@@ -45,6 +45,7 @@ build() {
 }
 
 package() {
+  depends+=(libicuuc.so libicui18n.so libprotobuf.so)
   cd strawberry/strawberry-build
   make DESTDIR="${pkgdir}" install
 }
