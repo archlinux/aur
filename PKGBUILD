@@ -2,8 +2,8 @@
 
 pkgname='json2sharp-bin'
 pkgver='1.1.0.0'
-pkgrel=1
-pkgdesc='CLI tool for converting JSON data to class declarations.'
+pkgrel=2
+pkgdesc='CLI tool for converting JSON objects to class definitions'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Kaoticz/Json2Sharp'
 license=('Apache-2.0')
@@ -17,4 +17,7 @@ sha256sums_aarch64=('c222db12eb1fc141bb24c6cf9a9397bf7f9aeb6408a67e2e33e9d8146d4
 package()
 {
     install -Dm755 "${srcdir}/Json2Sharp_linux-x64/json2sharp" "${pkgdir}/usr/bin/json2sharp"
+
+    # Delete the zip file
+    rm "$(readlink -f "${srcdir}/Json2Sharp_linux-x64.zip")"
 }
