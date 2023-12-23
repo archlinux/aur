@@ -1,12 +1,13 @@
 pkgbase = r-pbmcapply
 	pkgdesc = Tracking the Progress of Mc*pply with Progress Bar
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=pbmcapply
 	arch = x86_64
 	license = MIT
 	depends = r
 	source = https://cran.r-project.org/src/contrib/pbmcapply_1.5.1.tar.gz
-	sha256sums = 7ffc2854a384962f0dd523aa9ef33ce8fc290997206b71b840a49049d87112dd
+	md5sums = 23eabe886b2305e4790e3425d1f57e3c
+	b2sums = ebe9eae8fccc51add6fbe34152ca2a7179fdc4f171cb619c28399cbc7c1ed7b26b42bb7fb2aa5489b5d8c0e1ee5e0ce609ec1c9b74524c76c74df86cc38d0773
 
 pkgname = r-pbmcapply
