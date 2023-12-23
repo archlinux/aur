@@ -9,16 +9,18 @@ pkgdesc="阿里云盘官方客户端app.asar提取版，直接调用系统electr
 arch=("x86_64")
 license=("")
 _electron=electron
-depends=("$_electron")
+depends=("$_electron" "python")
 makedepends=('p7zip')
 source=(
   "https://cdn.aliyundrive.net/downloads/apps/desktop/aDrive-4.9.16.exe"
   "aDrive.desktop"
   "aDrive.png"
+  "aDrive.py"
 )
 sha256sums=('bb36e6204d6be7073ca9b13f273b55f788cd48dc9a849251a26b3239438b08d4'
             '3a7ce889fc9a31be70e36d37aba2cc23f00d4621cadcfa1c3eb40638ea8878d6'
-            'fc2493439b0766992698acd3a7c74a1a90d2877699442b1d7c410d8606d74244')
+            'fc2493439b0766992698acd3a7c74a1a90d2877699442b1d7c410d8606d74244'
+            '9cb2ed4e570a44bd1520ffc0bd0af437f9f178827199882ce0e67c8437a6414e')
 
 
 prepare() {
@@ -42,5 +44,6 @@ package() {
   ln -s /usr/lib/aDrive/aDrive.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/aDrive.png
 
   install -Dm644 ${srcdir}/aDrive.desktop -t ${pkgdir}/usr/share/applications/
-  install -Dm755 ${srcdir}/aDrive.sh ${pkgdir}/usr/bin/aDrive
-}
+  install -Dm755 ${srcdir}/aDrive.sh ${pkgdir}/usr/lib/aDrive/aDrive.sh
+  install -Dm755 ${srcdir}/aDrive.py ${pkgdir}/usr/bin/aDrive
+  }
