@@ -1,6 +1,6 @@
 pkgbase = unifi-beta
 	pkgdesc = Controller for Ubiquiti UniFi accesspoints
-	pkgver = 8.0.24
+	pkgver = 8.0.26
 	pkgrel = 1
 	url = https://www.ubnt.com/
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = unifi-beta
 	depends = java-runtime-headless>=17
 	depends = fontconfig
 	provides = unifi
-	source = unifi-beta-8.0.24.zip::https://www.ubnt.com/downloads/unifi/8.0.24-450f174e64/UniFi.unix.zip
+	source = unifi-beta-8.0.26.zip::https://www.ubnt.com/downloads/unifi/8.0.26-206d947763/UniFi.unix.zip
 	source = mongod
 	source = unifi.service
 	source = unifi.sysusers
 	source = unifi.tmpfiles
 	source = LICENSE
-	b2sums = d7b767908027bb6df460ebd8c9779f7816f2b3f14d94e1a5be368fbabe135e062a7401ecd6d5ea7d82044abc6f727d9ef4061dddacd7148d5627326ecff1243c
+	b2sums = 8a6cbb1ebf167bdf7bf8f38b97187f1b327b174b2d16b6bc1f9ccf62f9d93954650de94f1b893de33cf6ae2774f90d5febdce3fc103a5e99c2ed0f19fe2e02b7
 	b2sums = 2c8d535aabe8e738a9ba375fc4ab7aaa1713c9aefffc3e652fd49bc6288d0b7d24cae64d04ded5d5052486a377edca190818874a80bafb33cf2ac94742540106
 	b2sums = 6652c7bbdc8758c24cb38525bda5f3a27dfd0b58656fd7214d837cdde911f3e2141e7060fef17d9f55b362fdae1111b5b3aef1f32f93dedd4552c79a524b5d38
 	b2sums = 5474a726a8a222f463f47cdca44988889406e2bee7b3c7875d45b20dc283d1d9737772d8cb63cd35c75517f3606feaadcf02c00b73e5bbab40f459d78d066c3e
