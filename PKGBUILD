@@ -2,7 +2,7 @@
 _base=SeleniumBase
 pkgname=python-${_base,,}
 pkgdesc="A complete web automation framework for end-to-end testing"
-pkgver=4.22.0
+pkgver=4.22.1
 pkgrel=1
 arch=(any)
 url="https://${_base,,}.io"
@@ -27,7 +27,7 @@ depends=(python-filelock
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-rerunfailures selenium-manager chromium)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base,,}/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('0aaeda11caed57097b205723109e1e6dc6d62f7f1b66335312d3afacc2d7b55905ee5211c7ceffec61eb9ce7b653fdaedc3b77ece2062a09bf101a3e24e98ac4')
+sha512sums=('4cc8d162013e45bddb16e4f9ca62c0fbdcd9ae403c491f2937602f4cc3428fa1555e50d6552b5dc8226edc29fc548fc7f8b5b82a4df8244fc68c1f2e8dd08ed3')
 
 build() {
   cd ${_base}-${pkgver}
@@ -38,7 +38,10 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest examples/unit_tests/verify_framework.py --browser=chrome --headless
+  test-env/bin/python -m pytest \
+    --browser=chrome \
+    --headless \
+    examples/unit_tests/verify_framework.py
 }
 
 package() {
