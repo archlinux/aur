@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-full-git
-pkgver=1.0.21.r15.g5f02072b
+pkgver=1.0.22.r3.g22169bda
 pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, all options and engines"
 arch=(x86_64 i686 armv7h aarch64)
@@ -44,6 +44,7 @@ build() {
 }
 
 package() {
+  depends+=(libicuuc.so libicui18n.so libgpod.so libprotobuf.so)
   cd strawberry/strawberry-build
   make DESTDIR="${pkgdir}" install
 }
