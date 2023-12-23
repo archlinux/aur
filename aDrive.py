@@ -55,7 +55,7 @@ class CustomTrayIcon(QSystemTrayIcon):
         # 处理彻底退出程序操作，可以添加你的自定义逻辑
         user_home = os.path.expanduser("~")
         try:
-            exit_command = "PID=$(xdotool search --name '阿里云盘' getwindowpid);kill $PID"  # 根据实际情况修改重启命令
+            exit_command = "PID=$(xdotool search --name '^阿里云盘$' getwindowpid);kill $PID"  # 根据实际情况修改重启命令
             subprocess.run(exit_command, shell=True)
         
         except Exception as e:
