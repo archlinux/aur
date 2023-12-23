@@ -44,7 +44,6 @@ _submodules=(
   cosmic-comp
   cosmic-edit
   cosmic-greeter
-  cosmic-icons
   cosmic-launcher
   cosmic-notifications
   cosmic-osd
@@ -111,28 +110,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-# ${_submodules} minus cosmic-icons
-_repos=(
-  cosmic-applets
-  cosmic-applibrary
-  cosmic-bg
-  cosmic-comp
-  cosmic-edit
-  cosmic-greeter
-  cosmic-launcher
-  cosmic-notifications
-  cosmic-osd
-  cosmic-panel
-  cosmic-randr
-  cosmic-screenshot
-  cosmic-session
-  cosmic-settings
-  cosmic-settings-daemon
-  cosmic-term
-  cosmic-workspaces-epoch
-  xdg-desktop-portal-cosmic
-)
-
 prepare() {
   cd cosmic-epoch
   export CARGO_HOME="$srcdir/cargo-home"
@@ -141,11 +118,12 @@ prepare() {
   for submodule in "${_submodules[@]}"; do
     git submodule init "${submodule#*::}"
     git config submodule."${submodule#*::}".url "$srcdir/${submodule%::*}"
+    git config submodule.cosmic-icons.url "$srcdir/cosmic-icons"
     git -c protocol.file.allow=always submodule update "${submodule#*::}"
   done
 
-  for repo in "${_repos[@]}"; do
-    pushd "${repo#*::}"
+  for repo in "${__submodules[@]}"; do
+    pushd "${submodule#*::}"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
     popd
   done
