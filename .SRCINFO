@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = r64767.d9bc4008620
+	pkgver = r64774.7eebcfa3056
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -94,7 +94,7 @@ pkgbase = kodi-git
 	b2sums = 6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0
 
 pkgname = kodi-git
-	pkgdesc = A software media player and entertainment hub for digital media (gl renderer, master branch)
+	pkgdesc = A software media player and entertainment hub for digital media (master branch, gles renderer)
 	depends = bluez-libs
 	depends = curl
 	depends = dav1d
@@ -141,65 +141,7 @@ pkgname = kodi-git
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = pipewire: PipeWire support
 	optdepends = upower: Display battery level
-	provides = kodi-common=r64767.d9bc4008620
-	provides = kodi-x11
-	provides = kodi-wayland
-	provides = kodi-gbm
-	conflicts = kodi-gles
-	conflicts = kodi-x11
-	conflicts = kodi-wayland
-	conflicts = kodi-gbm
-
-pkgname = kodi-git-gles
-	pkgdesc = A software media player and entertainment hub for digital media (gles renderer, master branch)
-	depends = bluez-libs
-	depends = curl
-	depends = dav1d
-	depends = desktop-file-utils
-	depends = hicolor-icon-theme
-	depends = fmt
-	depends = lcms2
-	depends = libass
-	depends = libbluray
-	depends = libcdio
-	depends = libcec
-	depends = libmicrohttpd
-	depends = libnfs
-	depends = libplist
-	depends = libpulse
-	depends = libva
-	depends = libvdpau
-	depends = libxslt
-	depends = lirc
-	depends = lzo
-	depends = mariadb-libs
-	depends = mesa
-	depends = libpipewire
-	depends = python-pillow
-	depends = python-pycryptodomex
-	depends = python-simplejson
-	depends = shairplay
-	depends = smbclient
-	depends = sndio
-	depends = spdlog
-	depends = sqlite
-	depends = taglib
-	depends = tinyxml
-	depends = libxrandr
-	depends = libxkbcommon
-	depends = waylandpp
-	depends = libinput
-	depends = pcre
-	depends = libdisplay-info
-	depends = tinyxml2
-	optdepends = afpfs-ng: Apple shares support
-	optdepends = bluez: Blutooth support
-	optdepends = python-pybluez: Bluetooth support
-	optdepends = pulseaudio: PulseAudio support
-	optdepends = pipewire: PipeWire support
-	optdepends = upower: Display battery level
-	provides = kodi-common=r64767.d9bc4008620
-	provides = kodi=r64767.d9bc4008620
+	provides = kodi-common=r64774.7eebcfa3056
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -212,7 +154,7 @@ pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r64767.d9bc4008620
+	provides = kodi-eventclients=r64774.7eebcfa3056
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -221,11 +163,10 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r64767.d9bc4008620
+	provides = kodi-tools-texturepacker=r64774.7eebcfa3056
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
-	depends = kodi-git
-	provides = kodi-dev=r64767.d9bc4008620
+	provides = kodi-dev=r64774.7eebcfa3056
 	conflicts = kodi-dev
