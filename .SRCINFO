@@ -1,7 +1,7 @@
 pkgbase = r-yesno
 	pkgdesc = Ask Yes-No Questions
 	pkgver = 0.1.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=yesno
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = r-yesno
 	optdepends = r-covr
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/yesno_0.1.2.tar.gz
-	sha256sums = 2282ba2536336ce209d884ec8091d950d7eedc8233b443a11237cdc943453bd9
+	md5sums = 2b35fba2de07f303fc5eecdb0eb69ee6
+	b2sums = 3d9cedeb46393da9e96205a429fc92acef68cd5a1eeaa1b3d2e93de3e9c3aff0f150c41789600175b10a13b66dca3006bcfdaac9c1a14f90ef32f516489a1cc3
 
 pkgname = r-yesno

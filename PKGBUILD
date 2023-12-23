@@ -3,12 +3,12 @@
 _pkgname=yesno
 _pkgver=0.1.2
 pkgname=r-${_pkgname,,}
-pkgver=0.1.2
-pkgrel=4
-pkgdesc='Ask Yes-No Questions'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Ask Yes-No Questions"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2282ba2536336ce209d884ec8091d950d7eedc8233b443a11237cdc943453bd9')
+md5sums=('2b35fba2de07f303fc5eecdb0eb69ee6')
+b2sums=('3d9cedeb46393da9e96205a429fc92acef68cd5a1eeaa1b3d2e93de3e9c3aff0f150c41789600175b10a13b66dca3006bcfdaac9c1a14f90ef32f516489a1cc3')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
