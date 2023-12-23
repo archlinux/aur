@@ -8,9 +8,9 @@ pkgbase=java-13-openjdk
 pkgname=('jre13-openjdk-headless' 'jre13-openjdk' 'jdk13-openjdk' 'openjdk13-src' 'openjdk13-doc')
 _majorver=13
 _minorver=0
-_securityver=5.1
-_updatever=1
-pkgrel=2
+_securityver=14
+_updatever=5
+pkgrel=1
 pkgver="${_majorver}.${_minorver}.${_securityver}.u${_updatever}"
 _hg_tag="jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}"
 arch=('x86_64')
@@ -21,20 +21,14 @@ makedepends=('java-environment-jdk<=13' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
              'libnet' 'bash')
-source=("https://hg.openjdk.java.net/jdk-updates/jdk${_majorver}u/archive/${_hg_tag}.tar.gz"
+source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/openjdk/jdk${_majorver}u/archive/refs/tags/${_hg_tag}.tar.gz"
         "freedesktop-java.desktop"
         "freedesktop-jconsole.desktop"
-        "freedesktop-jshell.desktop"
-        "bug_8238380.patch"
-        "bug_8238386.patch"
-        "bug_8238388.patch")
-sha256sums=('c8ff6ceda71ec75aeeda6d037205f62fb5a5f4c59a572408201b4be9f00bda03'
+        "freedesktop-jshell.desktop")
+sha256sums=('4c8e88490ed30276ea0145d37f33e094fcf436ce528bab29f6a9a3546820faf4'
             '4edd8475037062cdff87993c1745ddb6df31f49e76c2774bca3841da70675580'
             'd759e5e360abe9fae7b5f87498f81dd786aa568aa997d0cb8ba3e75fa0c364dd'
-            '939b2d8b24f18ad82c4868880e337c6291daee9b7edcfeadb8951bf99d6c2acc'
-            'ae89106474b59a8e9b76e7645bcb05f0c45e6609f359b97f58147f9d55edc512'
-            '98cd6af562097fcb70ad0e533e9276f1a7b5c4a6b76755c811e8902c5d812620'
-            'e25600513da65ea42b40785fef27d7a33ced1157269e733e9a92897a141b9e0a')
+            '939b2d8b24f18ad82c4868880e337c6291daee9b7edcfeadb8951bf99d6c2acc')
 
 case "${CARCH}" in
   x86_64) _JARCH='x86_64';;
@@ -42,7 +36,7 @@ case "${CARCH}" in
 esac
 
 _jvmdir="/usr/lib/jvm/java-${_majorver}-openjdk"
-_jdkdir="jdk${_majorver}u-${_hg_tag}"
+_jdkdir="jdk${_majorver}u-jdk-${_majorver}.${_minorver}.${_securityver}-${_updatever}"
 _imgdir="${_jdkdir}/build/linux-${_JARCH}-server-release/images"
 
 _nonheadless=(lib/libawt_xawt.{so,debuginfo}
@@ -53,15 +47,6 @@ _nonheadless=(lib/libawt_xawt.{so,debuginfo}
 prepare() {
   # Use only Java versions 12-13
   export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -E '12-|13-' -m 1)"
-
-  cd "${_jdkdir}"
-  # Fixes for GCC 10
-  # https://bugs.openjdk.java.net/browse/JDK-8238380
-  patch -p1 -i "${srcdir}/bug_8238380.patch"
-  # https://bugs.openjdk.java.net/browse/JDK-8238386
-  patch -p1 -i "${srcdir}/bug_8238386.patch"
-  # https://bugs.openjdk.java.net/browse/JDK-8238388
-  patch -p1 -i "${srcdir}/bug_8238388.patch"
 }
 
 build() {
@@ -128,12 +113,6 @@ build() {
 
   # https://bugs.openjdk.java.net/browse/JDK-8173610
   find "../${_imgdir}" -iname '*.so' -exec chmod +x {} \;
-}
-
-check() {
-  cd "jdk${_majorver}u-${_hg_tag}"
-  # TODO package jtreg
-  # make -k check
 }
 
 package_jre13-openjdk-headless() {
@@ -219,7 +198,8 @@ package_jre13-openjdk() {
 
 package_jdk13-openjdk() {
   pkgdesc="OpenJDK Java ${_majorver} development kit"
-  depends=("jre${_majorver}-openjdk=${pkgver}-${pkgrel}" 'java-environment-common=3' 'hicolor-icon-theme' 'libelf')
+  depends=("jre${_majorver}-openjdk=${pkgver}-${pkgrel}" 'java-environment-common=3'
+           'hicolor-icon-theme' 'libelf')
   provides=("java-environment=${_majorver}" "java-environment-jdk=${_majorver}" "java-environment-openjdk=${_majorver}" "jdk${_majorver}-openjdk=${pkgver}-${pkgrel}")
   install=install_jdk-openjdk.sh
 
@@ -262,7 +242,7 @@ package_jdk13-openjdk() {
   # Icons
   for s in 16 24 32 48; do
     install -Dm 644 \
-      "${srcdir}/jdk${_majorver}u-${_hg_tag}/src/java.desktop/unix/classes/sun/awt/X11/java-icon${s}.png" \
+      "${srcdir}/${_jdkdir}/src/java.desktop/unix/classes/sun/awt/X11/java-icon${s}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/${pkgbase}.png"
   done
 
