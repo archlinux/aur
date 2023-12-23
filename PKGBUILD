@@ -1,6 +1,6 @@
 # Maintainer: George Woodall <georgewoodall82@gmail.com>
 pkgname=tgpt-bin
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="ChatGPT in terminal without needing API keys"
 arch=("x86_64" "aarch64" "i386" "i686")
