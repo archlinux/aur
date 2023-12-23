@@ -1,12 +1,14 @@
 pkgbase = r-snowballc
 	pkgdesc = Snowball Stemmers Based on the C 'libstemmer' UTF-8 Library
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=SnowballC
 	arch = x86_64
 	license = BSD
+	depends = libstemmer
 	depends = r
 	source = https://cran.r-project.org/src/contrib/SnowballC_0.7.1.tar.gz
-	sha256sums = 753cf13f3206751662c03b1cf39bce9e680024f6d9f8503b836a83797181c034
+	md5sums = c95c904382d30d7256d1fa710f9327f0
+	b2sums = da8d73888edc5a8b16af561b47ca88703a6619b0f00be235bbb610adfb43ab7e006cb7aa59e7a59ad6e6fe70135a5a12f1f8235145a09f8c99a0641bc74d7b87
 
 pkgname = r-snowballc
