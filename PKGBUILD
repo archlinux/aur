@@ -1,16 +1,16 @@
 # Maintainer: Michael Straube <michael.straubej@gmail.com>
 
 pkgname=edges
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Command-line tool to set up hot-corners"
 arch=(x86_64)
 url="https://github.com/MichaelStraube/edges"
 license=(MIT)
-depends=(gcc-libs libxi libxrandr)
+depends=(gcc-libs glibc libx11 libxi libxrandr)
 makedepends=(cargo)
 source=("https://github.com/MichaelStraube/edges/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('b9463996923cb620a223fd033ae56ebfe338ecb2ee8c08e13bb8a5b73a77f0986372c731f3cca8eea4eafc855b4645a41cb9dfa623005019fa305de827cc014d')
+sha512sums=('9df732483e89dde964dbcf8eaf092c927ac79f38152510799e0458b751f812e3d20e4336683d634fea30ddcb8596671f38a7fdb195cea9b14fdbaa45c99578eb')
 
 prepare() {
     cd $pkgname-$pkgver
