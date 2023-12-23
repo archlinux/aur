@@ -3,12 +3,12 @@
 _pkgname=assertive.base
 _pkgver=0.0-9
 pkgname=r-${_pkgname,,}
-pkgver=0.0.9
-pkgrel=4
+pkgver=${_pkgver//-/.}
+pkgrel=10
 pkgdesc="A Lightweight Core of the 'assertive' Package"
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL3)
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4bf0910b0eaa507e0e11c3c43c316b524500c548d307eb045d6f89047e6ba01e')
+md5sums=('a2ee821abdf770469319622fc5508ce4')
+b2sums=('49cd0644c1ddf25d9bd247574f2db7d0529adae92fdf78a79942cfafa5c22095a5ad39ace2b8712ff30e8c616f9b21271bf92810ad7226f06d177cb4255f7461')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

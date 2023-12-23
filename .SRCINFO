@@ -1,13 +1,14 @@
 pkgbase = r-assertive.base
 	pkgdesc = A Lightweight Core of the 'assertive' Package
 	pkgver = 0.0.9
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=assertive.base
 	arch = any
-	license = GPL
+	license = GPL3
 	depends = r
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/assertive.base_0.0-9.tar.gz
-	sha256sums = 4bf0910b0eaa507e0e11c3c43c316b524500c548d307eb045d6f89047e6ba01e
+	md5sums = a2ee821abdf770469319622fc5508ce4
+	b2sums = 49cd0644c1ddf25d9bd247574f2db7d0529adae92fdf78a79942cfafa5c22095a5ad39ace2b8712ff30e8c616f9b21271bf92810ad7226f06d177cb4255f7461
 
 pkgname = r-assertive.base
