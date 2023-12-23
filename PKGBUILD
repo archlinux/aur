@@ -2,7 +2,7 @@
 # Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
 
 pkgname=nfs-ganesha
-pkgver=5.6
+pkgver=5.7
 pkgrel=1
 pkgdesc="NFS and 9P protocols in user mode."
 arch=(x86_64 i686 armv7h aarch64)
