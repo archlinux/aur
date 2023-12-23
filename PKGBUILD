@@ -10,14 +10,13 @@ arch=('any')
 url="https://github.com/Riceneeder/electronic-wechat"
 license=('MIT')
 groups=()
-depends=('nss' 'lsb-release' 'xdg-utils' 'libxss' 'electron' 'bc' 'libnotify' 'bubblewrap')
+depends=('nss' 'lsb-release' 'xdg-utils' 'libxss' 'electron' 'bc' 'libnotify' 'bubblewrap' 'xdg-desktop-portal')
 makedepends=()
 checkdepends=()
 optdepends=(
-	'xdg-desktop-portal-kde: KDE 原生文件选取器'
-	'xdg-desktop-portal-lxqt: lxqt 原生文件选取器'
-	'xdg-desktop-portal-gnome: Gnome 原生文件选取器'
-	'xdg-desktop-portal: 原生文件选取器'
+	'xdg-desktop-portal-kde: KDE Portal'
+	'xdg-desktop-portal-lxqt: lxqt Portal'
+	'xdg-desktop-portal-gnome: Gnome Portal'
 )
 provides=()
 conflicts=(electronic-wechat)
