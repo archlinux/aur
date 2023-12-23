@@ -1,6 +1,6 @@
 pkgbase = python-envtpl-git
 	pkgdesc = Render jinja2 templates on the command line using shell environment variables
-	pkgver = r66.72262ff
+	pkgver = r82.b370fd3
 	pkgrel = 1
 	url = https://github.com/andreasjansson/envtpl
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = python-envtpl-git
 	makedepends = python-sh
 	makedepends = python-six
 	depends = python
-	depends = python-argparse
 	depends = python-jinja
 	provides = python-envtpl
 	conflicts = python-envtpl
@@ -18,4 +17,3 @@ pkgbase = python-envtpl-git
 	md5sums = SKIP
 
 pkgname = python-envtpl-git
-

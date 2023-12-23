@@ -1,13 +1,14 @@
-# Maintainer: bb010g <bb010g@gmail.com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: bb010g <bb010g@gmail.com>
 
 pkgname=python-envtpl-git
-pkgver=r66.72262ff
+pkgver=r82.b370fd3
 pkgrel=1
 pkgdesc='Render jinja2 templates on the command line using shell environment variables'
 arch=('any')
 url='https://github.com/andreasjansson/envtpl'
 license=('GPL')
-depends=(python python-{argparse,jinja})
+depends=(python{,-jinja})
 makedepends=(git python-{setuptools,sh,six})
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
