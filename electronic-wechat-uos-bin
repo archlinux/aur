@@ -21,8 +21,8 @@ function launch(){
 	--symlink usr/bin /bin \
 	--symlink usr/bin /sbin \
 	--ro-bind /opt /opt \
-	--ro-bind /opt/electronic-wechat-uos-bin/os-release /etc/os-release \
-	--ro-bind /opt/electronic-wechat-uos-bin/lsb-release /etc/lsb-release \
+	--ro-bind /usr/lib/electronic-wechat-uos-bin/os-release /etc/os-release \
+	--ro-bind /usr/lib/electronic-wechat-uos-bin/lsb-release /etc/lsb-release \
 	--ro-bind /etc /etc \
 	--ro-bind /usr /usr \
 	--dev /dev \
@@ -35,7 +35,8 @@ function launch(){
 	--bind /tmp /tmp \
 	--bind "$HOME" "$HOME" \
 	--bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
-	env GTK_USE_PORTAL=1 /usr/lib/electron/electron /opt/electronic-wechat-uos-bin/resources/app.asar "$@"
+	env GTK_USE_PORTAL=1 /usr/lib/electron/electron /usr/lib/electronic-wechat-uos-bin/app.asar "$@"
+	exit $?
 }
 
 function x11Launch(){
