@@ -1,7 +1,7 @@
 pkgbase = json2sharp-bin
 	pkgdesc = CLI tool for converting JSON objects to class definitions
 	pkgver = 1.1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Kaoticz/Json2Sharp
 	arch = x86_64
 	arch = aarch64
