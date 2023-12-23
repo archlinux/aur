@@ -2,20 +2,20 @@
 
 pkgname=rancher-k3d
 _pkgname=k3d
-pkgver=5.4.2
-pkgrel=2
-pkgdesc='k3s is the lightweight Kubernetes distribution by Rancher'
+pkgver=5.6.0
+pkgrel=1
+pkgdesc="Little helper to run CNCF's k3s in Docker"
 arch=('x86_64')
 url='https://github.com/k3d-io/k3d'
 license=('MIT')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/k3d-io/k3d/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fae4ffc61987321b58b562d7d6c6c0e60c148eb47a9dfeddb330937ef06b3523')
+sha256sums=('b9eb05c5fa213c8ec6d34a25e00ae07abeb23d70c94f55c1f32fbc16ea4e480e')
 makedepends=('go')
 provides=('k3d')
 
 build() {
   cd $_pkgname-$pkgver
-  export VERSION=$pkgver
+  export GIT_TAG_OVERRIDE=$pkgver
   make build
 }
 
