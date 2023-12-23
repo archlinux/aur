@@ -1,0 +1,11 @@
+pkgbase = upscaler-hollowaykeanho
+	pkgdesc = A consolidation of various compiled open-source AI image/video upscaling product for a working CLI friendly image and video upscaling program.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/hollowaykeanho/Upscaler
+	arch = any
+	license = BSD-3
+	source = https://github.com/hollowaykeanho/Upscaler/releases/download/0.7.0/upscaler-v0.7.0.zip
+	sha256sums = 2426a371401b749d671024e1411b935c8310af324c76eab71548869f4f947cd9
+
+pkgname = upscaler-hollowaykeanho
