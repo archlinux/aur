@@ -1,0 +1,18 @@
+pkgbase = yamagi-quake2-ref_gl4-git
+	pkgdesc = OpenGL 4.6 renderer for yamagi-quake2
+	pkgver = r1.a10924a
+	pkgrel = 1
+	url = https://github.com/yquake2/ref_gl4
+	arch = x86_64
+	license = GPL2
+	license = custom
+	makedepends = git
+	makedepends = sdl2
+	makedepends = mesa
+	depends = yamagi-quake2
+	provides = yamagi-quake2-ref_gl4
+	conflicts = yamagi-quake2-ref_gl4
+	source = yamagi-quake2-ref_gl4::git+https://github.com/yquake2/ref_gl4.git
+	sha256sums = SKIP
+
+pkgname = yamagi-quake2-ref_gl4-git
