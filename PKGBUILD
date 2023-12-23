@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='ocaml-containers'
-pkgver='3.13'
-_commit='7c1ca1d82f3894bbfb634cbd421f696e854cafbc'
+pkgver='3.13.1'
+_commit='60bb2c8c68e3fce3d77c0e521fd6a1861ce6701e'
 pkgrel='1'
 pkgdesc='A lightweight, modular standard library extension, string library, and interfaces to various libraries for OCaml'
 arch=('x86_64' 'aarch64')
