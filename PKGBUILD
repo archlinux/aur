@@ -20,16 +20,15 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver/src/"
-	cc $CFLAGS -std=c99 -c parser.c
-	cc $LDFLAGS -shared parser.o -o "$srcdir/bash-parser.so"
+	cc -shared -fno-exceptions -g -fPIC \
+		-o "$srcdir/parser.so" scanner.c parser.c
 }
 
 package() {
-	install -Dvm644 bash-parser.so "$pkgdir/usr/lib/libtree-sitter-bash.so"
+	install -Dvm644 parser.so "$pkgdir/usr/lib/libtree-sitter-bash.so"
 	install -dv "$pkgdir/usr/share/tree-sitter/queries/bash"
-	install -dv "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -sv "/usr/lib/libtree-sitter-bash.so" "$pkgdir/usr/share/nvim/runtime/parser/bash.so"
 	cd "$pkgname-$pkgver"
 	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dvm644 "queries/highlights.scm" "$pkgdir/usr/share/tree-sitter/queries/bash/highlights.scm"
+	install -Dvm644 "queries/highlights.scm" \
+		"$pkgdir/usr/share/tree-sitter/queries/bash/highlights.scm"
 }
