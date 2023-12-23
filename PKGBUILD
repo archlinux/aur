@@ -4,8 +4,8 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile-server
-pkgver=10.0.1
-pkgrel=2
+pkgver=11.0.3
+pkgrel=1
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/haiwen/seafile-server'
@@ -31,7 +31,7 @@ source=(
     'seafile-tmpfiles.conf'
 )
 sha256sums=(
-    '69dcec83155f86712b5ccfdff58be12b7a49bcd6d17b3b0f1478fb00ba91b20a'
+    'ef5eef8811a59b2a78db6d448ee48286a0dfb0dff0bec858b92e5ff43855aa11'
     'c4bd2b24fa2e5919b1ada61fff0dda7486460a8814764dc37db79178378d4930'
     'b09ab24829df0692e78b777802298b8cac23bdcdc31306e12ed3543833a7088e'
     '2faf52556d901ae18cfaa33b1cc55ee14abab4f78869eb6a2889ceeac4e3076a'
