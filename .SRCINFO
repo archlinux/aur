@@ -1,0 +1,19 @@
+pkgbase = lib32-fmt
+	pkgdesc = Open-source formatting library for C++
+	pkgver = 10.1.1
+	pkgrel = 2
+	url = https://fmt.dev
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = fmt
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	source = git+https://github.com/fmtlib/fmt.git#tag=f5e54359df4c26b6230fc61d38aa294581393084
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/fmt/-/raw/main/fmt-no-pip-no-virtualenv.patch
+	b2sums = SKIP
+	b2sums = 4e19e7b2cd8fd049b7c692c0efbc4b2f1dd6062f44a600f4f47be81ed0ed14defb4285eb09b8d8fb8bb55441689c3a659e157e91d2cdd94e4d7b00c28b6534f2
+
+pkgname = lib32-fmt
