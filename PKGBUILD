@@ -9,7 +9,7 @@ url="https://github.com/tree-sitter/tree-sitter-rust"
 license=('MIT')
 groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
-provides=('libtree-sitter-rust.so')
+provides=('libtree-sitter-rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('c75fd52f9ba4abe7a6ed20fc956cb0a67f9b38227c90dc4b71f75fb0a062cde4')
 
