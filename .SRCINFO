@@ -1,10 +1,10 @@
 pkgbase = geeqie-git
 	pkgdesc = Lightweight image viewer
-	pkgver = 2.1.r241.g022e9b12
+	pkgver = 2.1.r249.g214be330
 	pkgrel = 1
 	url = https://github.com/BestImageViewer/geeqie
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = doxygen
 	makedepends = evince
 	makedepends = fbida
@@ -47,8 +47,6 @@ pkgbase = geeqie-git
 	provides = geeqie=2.1
 	conflicts = geeqie
 	source = geeqie::git+https://github.com/BestImageViewer/geeqie.git
-	source = 1214-exiv2.patch
 	sha256sums = SKIP
-	sha256sums = dbabf63915eb018b219a7f887fd14adc163016852fdae9564f8979fbe58a55c0
 
 pkgname = geeqie-git

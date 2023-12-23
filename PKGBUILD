@@ -4,11 +4,11 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.1.r241.g022e9b12
+pkgver=2.1.r249.g214be330
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 arch=('x86_64')
 
 depends=(
@@ -74,25 +74,8 @@ provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgname"::"git+$url.git"
-  "1214-exiv2.patch"
-)
-sha256sums=(
-  'SKIP'
-  'dbabf63915eb018b219a7f887fd14adc163016852fdae9564f8979fbe58a55c0'
-)
-
-prepare() {
-  apply-patch() {
-    printf '\nApplying patch %s\n' "$1"
-    patch -Np1 -F100 -i "$1"
-  }
-
-  cd "$_pkgsrc"
-
-  apply-patch "$srcdir/1214-exiv2.patch"
-}
+source=("$_pkgname"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
