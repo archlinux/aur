@@ -1,6 +1,6 @@
 pkgbase = yamagi-quake2-ref_vk
 	pkgdesc = Vulkan renderer for yamagi-quake2
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/yquake2/ref_vk/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = yamagi-quake2-ref_vk
 	license = custom
 	makedepends = vulkan-headers
 	depends = yamagi-quake2
-	source = ref_vk-1.0.6.tar.gz::https://github.com/yquake2/ref_vk/archive/refs/tags/v1.0.6.tar.gz
-	sha256sums = 81dc3e89d64d9478c5bd1ba24999fb571294f632e6b232dbc82ee432ffb98d1a
+	source = ref_vk-1.0.7.tar.gz::https://github.com/yquake2/ref_vk/archive/refs/tags/v1.0.7.tar.gz
+	sha256sums = afa9a38eab633ed5193584c679e5c1e200b892a6d699024718238a47c17b7de7
 
 pkgname = yamagi-quake2-ref_vk
