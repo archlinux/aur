@@ -11,7 +11,7 @@ depends=('jre-openjdk')
 makedepends=('imagemagick')
 source=("$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
 	"iMIBrowser.desktop")
-sha256sums=('f7d710cd2707a221f1242bee4941364826f2ab7e74d217ade2fd06d469f7b6e9'
+sha256sums=('3db09eef52250b3255c54f42bb66fc84ca4e44ef019e6956a4496757c0240633'
             '5d2ca5f1199f429a09f700476753bfdabd111acbf4fdaf7ea43ae8ed3879aa29')
 
 prepare() {
