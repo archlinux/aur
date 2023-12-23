@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd "/usr/lib/firestorm-beta/"
+exec ./firestorm $*
