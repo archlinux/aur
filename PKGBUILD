@@ -19,7 +19,7 @@ optdepends=(
 	'xdg-desktop-portal-gnome: Gnome 原生文件选取器'
 	'xdg-desktop-portal: 原生文件选取器'
 )
-provides=(electronic-wechat)
+provides=()
 conflicts=(electronic-wechat)
 replaces=()
 install=${pkgname}.install

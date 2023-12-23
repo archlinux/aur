@@ -18,7 +18,6 @@ pkgbase = electronic-wechat-uos-bin
 	optdepends = xdg-desktop-portal-lxqt: lxqt 原生文件选取器
 	optdepends = xdg-desktop-portal-gnome: Gnome 原生文件选取器
 	optdepends = xdg-desktop-portal: 原生文件选取器
-	provides = electronic-wechat
 	conflicts = electronic-wechat
 	source = electronic-wechat-uos-bin
 	source = electronic-wechat-uos-bin.desktop
