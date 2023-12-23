@@ -9,7 +9,7 @@ url="https://github.com/amaanq/tree-sitter-capnp"
 license=('MIT')
 groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
-provides=('libtree-sitter-capnp.so')
+provides=('libtree-sitter-capnp')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('65631f0bb3d221b9dbacbb0b4c05daf514b080a8328d0e52200f162c7273636a')
 

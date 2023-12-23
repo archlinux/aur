@@ -1,0 +1,16 @@
+pkgbase = tree-sitter-capnp
+	pkgdesc = capnp grammar for tree-sitter
+	pkgver = 1.5.0
+	pkgrel = 2
+	url = https://github.com/amaanq/tree-sitter-capnp
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter
+	makedepends = tree-sitter-cli
+	makedepends = npm
+	provides = libtree-sitter-capnp
+	source = tree-sitter-capnp-1.5.0.tar.gz::https://github.com/amaanq/tree-sitter-capnp/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 65631f0bb3d221b9dbacbb0b4c05daf514b080a8328d0e52200f162c7273636a
+
+pkgname = tree-sitter-capnp
