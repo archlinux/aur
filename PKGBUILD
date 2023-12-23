@@ -2,18 +2,19 @@
 # Maintainer: Beej Jorgensen <beej@beej.us>
 
 pkgname=gtklife
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc="Fast, featureful, open-source Conway's Life program for *nix"
 arch=("i686" "x86_64")
 depends=('gtk2')
-url="http://ironphoenix.org/tril/gtklife/"
+url="https://homeforaday.org/gtklife/"
 license=("GPL")
 source=(
-  "http://ironphoenix.org/gtklife/$pkgname-$pkgver.tar.gz"
+  "https://homeforaday.org/gtklife/$pkgname-$pkgver.tar.gz"
   "${pkgname}.desktop"
 )
-sha1sums=('4ec6035794d18cb20552344b007888ab81cd4a3a'
+
+sha1sums=('8fec9c3c84adead4a3dc28dbecd7cd29f4c52bc3'
           'a0edc9ebeee96b087285a863e9b168732cd59b3a')
 
 prepare() {
