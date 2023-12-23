@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='The SILE Typesetter, a modern typesetting system inspired by LaTeX, customizable in Lua'
-pkgver=0.14.13.r208.g1e5773c
+pkgver=0.14.13.r232.g75a07af
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -34,8 +34,8 @@ depends=(fontconfig
          glibc
          harfbuzz
          icu
-         luajit
          libpng # this goes with libtexpdf if ever split out to a library package
+         luajit
          "${_luadeps[@]/#/lua51-}"
          zlib)
 depends+=(libfreetype.so
@@ -70,7 +70,7 @@ prepare () {
 	sed Makefile.am -i \
 		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
 	./bootstrap.sh
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 pkgver() {
