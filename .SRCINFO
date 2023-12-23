@@ -1,16 +1,18 @@
 pkgbase = python-pydensecrf-git
 	pkgdesc = Python wrapper to Philipp Krähenbühl's dense CRFs with Gaussian edge potentials
-	pkgver = r82.0632813
+	pkgver = r93.dd07054
 	pkgrel = 1
 	url = https://github.com/lucasb-eyer/pydensecrf
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = cython
+	makedepends = cython0
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-numpy
 	source = git+https://github.com/lucasb-eyer/pydensecrf.git
 	sha512sums = SKIP
 
 pkgname = python-pydensecrf-git
-
