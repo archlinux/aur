@@ -9,7 +9,7 @@ url="https://github.com/mmvanheusden/SteamDepotDownloaderGUI"
 license=('GPL3')
 conflicts=("${pkgname%-appimage}")
 provides=("${pkgname%-appimage}=${pkgver}")
-depends=('zlib' 'glibc' 'hicolor-icon-theme' 'dotnet-sdk-6.0' 'unzip', 'fuse3')
+depends=('zlib' 'glibc' 'hicolor-icon-theme' 'dotnet-sdk-6.0' 'unzip' 'fuse3')
 options=('!strip')
 _install_path="/opt/appimages"
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_appname}-linux-${pkgver}-arm64.AppImage")
