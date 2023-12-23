@@ -2,7 +2,7 @@
 
 pkgname=tinkerwell
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The code runner for PHP"
 _appimage_name="Tinkerwell-${pkgver}.AppImage"
 
@@ -30,4 +30,6 @@ package() {
 	ln -s /usr/lib/${pkgname}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
 	ln -s /usr/lib/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+
+	find ${pkgdir}/usr/lib/${pkgname} -type d -exec chmod 755 {} \;
 }
