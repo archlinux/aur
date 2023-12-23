@@ -1,12 +1,12 @@
 # Maintainer: Wasabi <wasabithumbs@gmail.com>
 pkgname=open-goal-launcher-bin
 pkgver="2.4.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A launcher for the OpenGOAL Project to simplify usage and installation"
 arch=("x86_64")
 url='https://github.com/open-goal/launcher'
 license=('ISC')
-depends=('bash')
+depends=('fuse')
 conflicts=('open-goal-launcher')
 _image="open-goal-launcher_${pkgver}_amd64.AppImage"
 source_x86_64=("https://github.com/open-goal/launcher/releases/download/v2.4.0/${_image}")
