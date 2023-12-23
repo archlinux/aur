@@ -1,6 +1,6 @@
 [Desktop Entry]
-Comment=A better WeChat on Linux.
-Comment[zh_CN]=Linux 上更好用的微信.
+Comment=A better WeChat on Linux
+Comment[zh_CN]=Linux 上更好用的微信
 Exec=electronic-wechat-uos-bin %u
 Icon=wechat
 Name=WeChat
