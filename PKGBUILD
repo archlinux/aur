@@ -1,16 +1,21 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=python-mutagen-git
-pkgver=1.45.1.r1.g22b6696
-pkgrel=1
+pkgver=1.47.0.r19.gf95d3ae
+pkgrel=2
 arch=(any)
 pkgdesc="An audio metadata tag reader and writer (python library)"
 url="https://mutagen.readthedocs.io/en/latest/"
 license=(GPL2)
-depends=(python-setuptools)
-checkdepends=(python-pytest python-hypothesis python-pyflakes python-pycodestyle flake8)
-makedepends=(git)
-source=("git+https://github.com/quodlibet/mutagen.git")
+depends=(python)
+makedepends=(git python-build python-wheel python-installer python-setuptools)
+checkdepends=(python-coverage python-pytest python-hypothesis liboggz vorbis-tools faad2
+
+             python-eyed3
+             libogg libvorbis)
+provides=(python-mutagen)
+conflicts=(python-mutagen)
+source=("git+https://github.com/quodlibet/mutagen.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,16 +25,17 @@ pkgver() {
 
 build() {
   cd "${srcdir}/mutagen"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd "${srcdir}/mutagen"
-  pytest -v
+  python -m coverage run -m unittest discover -v tests
+  python -m coverage report -m
 }
 
 package() {
   cd "${srcdir}/mutagen"
-  python setup.py install --skip-build --optimize=1 --prefix=/usr --root="${pkgdir}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 {NEWS,README.rst} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
