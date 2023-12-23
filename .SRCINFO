@@ -1,0 +1,15 @@
+pkgbase = asio-git
+	pkgdesc = A cross-platform C++ library for network and low-level I/O
+	pkgver = 1.29.0.r6.ged5db1b50
+	pkgrel = 1
+	url = https://think-async.com/Asio/
+	arch = any
+	license = BSL-1.0
+	makedepends = git
+	depends = glibc
+	provides = asio=1.29.0.r6.ged5db1b50
+	conflicts = asio
+	source = git+https://github.com/chriskohlhoff/asio.git
+	sha256sums = SKIP
+
+pkgname = asio-git
