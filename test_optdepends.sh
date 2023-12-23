@@ -53,11 +53,6 @@ if [ -f /usr/include/scotch.h ]; then
   CONFOPTS="${CONFOPTS} --with-ptscotch=1 --with-ptscotch-lib=${SCOTCH_LIBS} --with-ptscotch-include=${SCOTCH_DIR}"
 fi
 
-# SuiteSparse
-if [ -f "/usr/include/SuiteSparse_config.h" ]; then
-  CONFOPTS="${CONFOPTS} --with-suitesparse=1"
-fi
-
 # Triangle
 if [ -f "/usr/lib/libtriangle.so" ]; then
   CONFOPTS="${CONFOPTS} --with-triangle=1"
