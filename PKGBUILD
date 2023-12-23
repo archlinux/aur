@@ -7,13 +7,13 @@
 # Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 
 pkgname=tea-qt
-pkgver=62.0.2
+pkgver=62.2.1
 pkgrel=1
 pkgdesc="Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS with PDF and DJVU support"
 arch=(x86_64)
 url="https://tea.ourproject.org/"
 license=(GPL3)
-depends=(qt6-base qt6-5compat hunspell)
+depends=(qt6-base qt6-5compat hunspell )
 makedepends=(cmake git)
 optdepends=('poppler-qt6: open and search text in PDF files'
             'djvulibre: open and search in DJVU')
@@ -28,7 +28,6 @@ build() {
   cd "${srcdir}/tea-qt/build"
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DQT_DIR=/usr/lib/cmake/Qt6 \
     -DUSE_PDF=ON \
     -DUSE_DJVU=ON
 

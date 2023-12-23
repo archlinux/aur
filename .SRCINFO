@@ -1,6 +1,6 @@
 pkgbase = tea-qt
 	pkgdesc = Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS with PDF and DJVU support
-	pkgver = 62.0.2
+	pkgver = 62.2.1
 	pkgrel = 1
 	url = https://tea.ourproject.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tea-qt
 	depends = hunspell
 	optdepends = poppler-qt6: open and search text in PDF files
 	optdepends = djvulibre: open and search in DJVU
-	source = git+https://github.com/psemiletov/tea-qt.git#tag=62.0.2
+	source = git+https://github.com/psemiletov/tea-qt.git#tag=62.2.1
 	sha512sums = SKIP
 
 pkgname = tea-qt
