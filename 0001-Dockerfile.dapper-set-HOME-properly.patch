@@ -1,0 +1,40 @@
+From 18b1172fb9d59b50ab8473235c8954097b2a2850 Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Fri, 22 Dec 2023 22:43:56 +0100
+Subject: [PATCH 1/7] Dockerfile.dapper: set $HOME properly
+
+`$HOME` refers to `$DAPPER_SOURCE`, which is set in the same expression
+and is thus not visible at the time of substitution.
+
+This problem is not immediately visible with Docker, Inc.'s docker
+merely because it resets an unset `$HOME` to `/root` (but still breaking
+the Go cache). Under podman, this problem is immediately visible because
+an unset `$HOME` remains unset and subsequently breaks the `go generate`
+invocation.
+
+Fixes #9089.
+
+Signed-off-by: Ivan Shapovalov <intelfx@intelfx.name>
+---
+ Dockerfile.dapper | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Dockerfile.dapper b/Dockerfile.dapper
+index af99d3d35e..2f0cd5e64d 100644
+--- a/Dockerfile.dapper
++++ b/Dockerfile.dapper
+@@ -56,9 +56,10 @@ ENV DAPPER_RUN_ARGS="--privileged -v k3s-cache:/go/src/github.com/k3s-io/k3s/.ca
+     DAPPER_SOURCE="/go/src/github.com/k3s-io/k3s/" \
+     DAPPER_OUTPUT="./bin ./dist ./build/out ./build/static ./pkg/static ./pkg/deploy" \
+     DAPPER_DOCKER_SOCKET=true \
+-    HOME=${DAPPER_SOURCE} \
+     CROSS=true \
+     STATIC_BUILD=true
++# Set $HOME separately because it refers to $DAPPER_SOURCE, set above
++ENV HOME=${DAPPER_SOURCE}
+ 
+ WORKDIR ${DAPPER_SOURCE}
+ 
+-- 
+2.43.0
+

@@ -1,0 +1,52 @@
+From b5f0aa8933a97aef7f255b8b71bb6bc12c9d06a6 Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Sat, 23 Dec 2023 02:12:21 +0100
+Subject: [PATCH 7/7] scripts: moar compression, drop pigz and raw tar
+
+---
+ scripts/package-airgap | 10 +++++-----
+ scripts/package-cli    |  7 ++++---
+ 2 files changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/scripts/package-airgap b/scripts/package-airgap
+index 911357181a..4953a9639b 100755
+--- a/scripts/package-airgap
++++ b/scripts/package-airgap
+@@ -6,11 +6,11 @@ cd $(dirname $0)/..
+ . ./scripts/version.sh
+ 
+ airgap_image_file='scripts/airgap/image-list.txt'
+-images=$(cat "${airgap_image_file}")
+-xargs -n1 docker pull <<< "${images}"
+-docker save ${images} -o dist/artifacts/k3s-airgap-images-${ARCH}.tar
+-zstd --no-progress -T0 -16 -f --long=25 dist/artifacts/k3s-airgap-images-${ARCH}.tar -o dist/artifacts/k3s-airgap-images-${ARCH}.tar.zst
+-pigz -v -c dist/artifacts/k3s-airgap-images-${ARCH}.tar > dist/artifacts/k3s-airgap-images-${ARCH}.tar.gz
++airgap_tar_file="dist/artifacts/k3s-airgap-images-${ARCH}.tar"
++readarray -t images <"${airgap_image_file}"
++printf '%s\0' "${images[@]}" | xargs -0 -n1 -o docker pull
++docker save "${images[@]}" -o "${airgap_tar_file}"
++zstd -T0 --ultra -22 --long=25 --verbose --force --rm "${airgap_tar_file}"
+ if [ ${ARCH} = amd64 ]; then
+   cp "${airgap_image_file}" dist/artifacts/k3s-images.txt
+ fi
+diff --git a/scripts/package-cli b/scripts/package-cli
+index c790f04aab..0452d4b4fd 100755
+--- a/scripts/package-cli
++++ b/scripts/package-cli
+@@ -54,9 +54,10 @@ mkdir -p ./etc
+     set -x
+ )
+ 
+-tar cvf ./build/out/data.tar ./bin ./etc
+-zstd --no-progress -T0 -16 -f --long=25 --rm ./build/out/data.tar -o ./build/out/data.tar.zst
+-HASH=$(sha256sum ./build/out/data.tar.zst | awk '{print $1}')
++data_tar_file="./build/out/data.tar"
++tar cvf "${data_tar_file}" ./bin ./etc
++zstd -T0 --ultra -22 --long=25 --verbose --force --rm "${data_tar_file}"
++HASH=$(sha256sum "${data_tar_file}.zst" | awk '{print $1}')
+ 
+ cp ./build/out/data.tar.zst ./build/data/${HASH}.tar.zst
+ 
+-- 
+2.43.0
+

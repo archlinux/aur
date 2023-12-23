@@ -1,0 +1,33 @@
+From fe83fb9745c429ac6ba4bb4aa97f538762be0e11 Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Sat, 23 Dec 2023 01:11:52 +0100
+Subject: [PATCH 4/7] Dockerfile.dapper: sanitize $DAPPER_OUTPUT
+
+Existing $DAPPER_OUTPUT is not enough to be able to run build steps
+sequentially (i. e. `make download; make generate; make build;
+make package`) because it misses several directories with intermediate
+artifacts. The only working way to build k3s is a single `make`
+invocation (which calls scripts/ci, which in turn calls all build steps
+in sequence in a single Docker invocation, thus obviating the need to
+extract any intermediate artifacts at all). Thus, don't bother
+extracting anything other than the final artifacts.
+---
+ Dockerfile.dapper | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Dockerfile.dapper b/Dockerfile.dapper
+index 2f0cd5e64d..5ae64df57b 100644
+--- a/Dockerfile.dapper
++++ b/Dockerfile.dapper
+@@ -54,7 +54,7 @@ ENV SELINUX=${SELINUX}
+ ENV DAPPER_RUN_ARGS="--privileged -v k3s-cache:/go/src/github.com/k3s-io/k3s/.cache -v trivy-cache:/root/.cache/trivy" \
+     DAPPER_ENV="REPO TAG DRONE_TAG IMAGE_NAME SKIP_VALIDATE SKIP_IMAGE SKIP_AIRGAP AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID GITHUB_TOKEN GOLANG GOCOVER DEBUG" \
+     DAPPER_SOURCE="/go/src/github.com/k3s-io/k3s/" \
+-    DAPPER_OUTPUT="./bin ./dist ./build/out ./build/static ./pkg/static ./pkg/deploy" \
++    DAPPER_OUTPUT="./dist" \
+     DAPPER_DOCKER_SOCKET=true \
+     CROSS=true \
+     STATIC_BUILD=true
+-- 
+2.43.0
+

@@ -1,0 +1,67 @@
+From 1f17fa5bf080101dddc6ff4100ad38296faa8a4a Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Sat, 23 Dec 2023 01:08:37 +0100
+Subject: [PATCH 5/7] Dockerfile.dapper: sanitize cache configuration
+
+- set $HOME to /root because there is no good reason to keep it in $PWD
+- mount volumes to /go/pkg to cache downloaded Go sources (we'd set it
+  to /go, but that would mask the k3s source tree at /go/src) and
+  /root/.cache to cache Go object files ($GOCACHE, ~/.cache/go-build)
+---
+ .dockerignore     | 1 +
+ Dockerfile.dapper | 9 +++++++--
+ Makefile          | 1 +
+ 3 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/.dockerignore b/.dockerignore
+index 36131d3744..c7418f3674 100644
+--- a/.dockerignore
++++ b/.dockerignore
+@@ -5,3 +5,4 @@
+ ./.cache
+ ./.dapper
+ ./.trash-cache
++./.dapper-cache
+diff --git a/Dockerfile.dapper b/Dockerfile.dapper
+index 5ae64df57b..5c49581a76 100644
+--- a/Dockerfile.dapper
++++ b/Dockerfile.dapper
+@@ -50,8 +50,13 @@ RUN if [ "$(go env GOARCH)" = "amd64" ]; then \
+ ARG SELINUX=true
+ ENV SELINUX=${SELINUX}
+ 
++# Set to someone's $HOME to persist Go pkg cache ($GOPATH/pkg) Hand Go object cache ($GOCACHE)
++ARG DAPPER_CACHE_HOME=./.dapper-cache
++ARG DAPPER_CACHE_GOPATH=${DAPPER_CACHE_HOME}/go
++ARG DAPPER_CACHE_DOTCACHE=${DAPPER_CACHE_HOME}/cache
++
+ # Set Dapper configuration variables
+-ENV DAPPER_RUN_ARGS="--privileged -v k3s-cache:/go/src/github.com/k3s-io/k3s/.cache -v trivy-cache:/root/.cache/trivy" \
++ENV DAPPER_RUN_ARGS="--privileged -v ${DAPPER_CACHE_GOPATH}/pkg:/go/pkg -v ${DAPPER_CACHE_DOTCACHE}:/root/.cache" \
+     DAPPER_ENV="REPO TAG DRONE_TAG IMAGE_NAME SKIP_VALIDATE SKIP_IMAGE SKIP_AIRGAP AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID GITHUB_TOKEN GOLANG GOCOVER DEBUG" \
+     DAPPER_SOURCE="/go/src/github.com/k3s-io/k3s/" \
+     DAPPER_OUTPUT="./dist" \
+@@ -59,7 +64,7 @@ ENV DAPPER_RUN_ARGS="--privileged -v k3s-cache:/go/src/github.com/k3s-io/k3s/.ca
+     CROSS=true \
+     STATIC_BUILD=true
+ # Set $HOME separately because it refers to $DAPPER_SOURCE, set above
+-ENV HOME=${DAPPER_SOURCE}
++ENV HOME=/root
+ 
+ WORKDIR ${DAPPER_SOURCE}
+ 
+diff --git a/Makefile b/Makefile
+index 620f899894..50af6aa110 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,6 +10,7 @@ GO_FILES ?= $$(find . -name '*.go' | grep -v generated)
+ 	@mv .dapper.tmp .dapper
+ 
+ $(TARGETS): .dapper
++	@mkdir -p .dapper-cache/{go/pkg,cache}
+ 	./.dapper $@
+ 
+ .PHONY: deps
+-- 
+2.43.0
+

@@ -1,0 +1,25 @@
+From 447968ac1d6fc95ad71b93b400ce519ac740d8e3 Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Sat, 23 Dec 2023 01:10:59 +0100
+Subject: [PATCH 2/7] main: apply go-fmt to pkg/data/zz_generated_bindata.go
+
+No reason other than for consistency.
+---
+ main.go | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/main.go b/main.go
+index 8857094b87..c004a927bc 100644
+--- a/main.go
++++ b/main.go
+@@ -1,6 +1,7 @@
+ //go:generate go run pkg/codegen/cleanup/main.go
+ //go:generate rm -rf pkg/generated
+ //go:generate go run pkg/codegen/main.go
++//go:generate go fmt pkg/data/zz_generated_bindata.go
+ //go:generate go fmt pkg/deploy/zz_generated_bindata.go
+ //go:generate go fmt pkg/static/zz_generated_bindata.go
+ 
+-- 
+2.43.0
+
