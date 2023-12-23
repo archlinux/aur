@@ -6,7 +6,7 @@
 
 _pkgname=vim
 pkgname="gvim-git"
-pkgver=8.0.0342
+pkgver=9.0.2184.r3.gea9964a36
 pkgrel=1
 pkgdesc='Vim the editor. CLI version and GTK3 GUI providing majority of features.'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd $_pkgname
-    git describe --tags | sed 's/^v//;s/-/./g'
+    git describe --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {

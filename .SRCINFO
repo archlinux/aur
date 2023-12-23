@@ -1,6 +1,6 @@
 pkgbase = gvim-git
 	pkgdesc = Vim the editor. CLI version and GTK3 GUI providing majority of features.
-	pkgver = 8.0.0342
+	pkgver = 9.0.2184.r3.gea9964a36
 	pkgrel = 1
 	url = http://www.vim.org
 	arch = i686
