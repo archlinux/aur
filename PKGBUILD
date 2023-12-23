@@ -3,7 +3,7 @@
 pkgname=snort-nfqueue
 _pkgname=snort3
 _openappid=33380
-pkgver=3.1.74.0
+pkgver=3.1.77.0
 pkgrel=1
 pkgdesc='A lightweight network IDS / IPS with NFQUEUE and OpenAppID support.'
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/
         'snort.sysusers'
         'snort.tmpfiles'
         'snort.service')
-sha256sums=('4a4529e74bc202303c0330ae8b2317f0bef3ac92ae7216df8cfedfce24ddd129'
+sha256sums=('cb98c0d15caa7c84da24995e8521f42f4e86a860b9748418154d8649b6a0db2d'
             '3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a'
             '7fbf5c1b1ca10fba73350e563cafeb8ea4db7eb5d69ef62c067df602f27678f2'
             '55ae10b6d24abadb03dd4f010fdf71e077370227db6835e48881836a8ea082a8'
