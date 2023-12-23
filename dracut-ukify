@@ -204,6 +204,8 @@ function gen_image() {
   local path="/usr/lib/modules/${version}/pkgbase"
   local vmlinuz="/usr/lib/modules/${version}/vmlinuz"
 
+  echo "=> dracut-ukify -g $kernel"
+
   for variant in "${!ukify_variants[@]}"; do
     local image="${ESP_PATH}/$(uki_path "$kernel" "$version" "$variant")"
     local version_name=$(variant_name "$version" "$variant")
