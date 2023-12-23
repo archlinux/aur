@@ -4,7 +4,7 @@
 pkgbase=can-utils-git
 pkgname=can-utils-git
 pkgver=2023.03.r90.g31432ae
-pkgrel=1
+pkgrel=2
 groups=()
 pkgdesc="Linux-CAN / SocketCAN user space applications"
 arch=(x86_64
@@ -18,7 +18,8 @@ depends=(glibc)
 makedepends=(git
     cmake
     ninja)
-optdepends=("can-isotp-dkms: Kernel modules for isotp")
+optdepends=("can-doc: Linux-CAN / SocketCAN documentation"
+    "can-isotp-dkms: Kernel modules for isotp")
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
