@@ -1,0 +1,17 @@
+pkgbase = musializer-git
+	pkgdesc = Music Visualizer
+	pkgver = r256.0cc08f5
+	pkgrel = 1
+	url = https://github.com/tsoding/musializer
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libx11
+	makedepends = libxrandr
+	makedepends = libxinerama
+	makedepends = xorg-xinput
+	depends = ffmpeg
+	source = git+https://github.com/tsoding/musializer
+	sha256sums = SKIP
+
+pkgname = musializer-git
