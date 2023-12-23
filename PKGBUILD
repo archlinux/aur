@@ -163,7 +163,7 @@ build() {
         --enable-win64 \
         --disable-tests \
         --disable-winemenubuilder
-    make -j"$(nproc)"
+    make
 
     printf '%s\n' '  -> Building wine-lol-staging-32...'
     mkdir -p "${srcdir}/build-32"
@@ -179,7 +179,7 @@ build() {
         --with-wine64="${srcdir}/build-64" \
         --disable-tests \
         --disable-winemenubuilder
-    make -j"$(nproc)"
+    make
 }
 
 package() {
