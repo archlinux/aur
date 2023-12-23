@@ -1,7 +1,7 @@
 pkgbase = elfx86exts
 	pkgdesc = Decode ELF and MachO binaries and print out which instruction set extensions they use
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = https://github.com/pkgw/elfx86exts
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = elfx86exts
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = elfx86exts-0.5.0.tar.gz::https://github.com/pkgw/elfx86exts/archive/elfx86exts@0.5.0.tar.gz
-	sha512sums = 7caa0518fecba588ec02b053f019123a9f8aaeeed74ece8240e24679e820abb537bd29849e51ca664f7e8effc3d90ed50bae61eda51e83e10be0a988f7eb0626
+	source = elfx86exts-0.6.2.tar.gz::https://github.com/pkgw/elfx86exts/archive/elfx86exts@0.6.2.tar.gz
+	sha512sums = a8b7e9f7d7ef499fe5acd1cb4b2faa74f8ac6b494f3757c5cb415f83036af6edead477fdc8efade4e7a10ade6a499a0b76d0aeee95a650340fd8998f82f1cace
 
 pkgname = elfx86exts
