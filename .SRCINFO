@@ -1,0 +1,16 @@
+pkgbase = tree-sitter-diff-git
+	pkgdesc = diff grammar for tree-sitter
+	pkgver = 0.0.0
+	pkgrel = 2
+	url = https://github.com/the-mikedavis/tree-sitter-diff.git
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter
+	makedepends = tree-sitter-cli
+	makedepends = npm
+	provides = tree-sitter-diff
+	source = tree-sitter-diff-git::git+https://github.com/the-mikedavis/tree-sitter-diff.git
+	sha256sums = SKIP
+
+pkgname = tree-sitter-diff-git
