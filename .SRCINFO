@@ -1,0 +1,22 @@
+pkgbase = python-pook
+	pkgdesc = Versatile and expressive HTTP traffic mocking and testing made simple in Python
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/h2non/pook
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	checkdepends = python-pytest
+	checkdepends = python-aiohttp
+	checkdepends = python-requests
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-furl
+	depends = python-jsonschema
+	depends = python-xmltodict
+	source = https://github.com/h2non/pook/archive/v1.2.0/python-pook-1.2.0.tar.gz
+	sha512sums = 8ce9e430334b82bbd4f5105bf153d28029b28bb512fc42ccf91bb4af43d76a47ab82288dc4f476ee620b3ca5407a9ef384abb273affc07682eb425353f64d6a7
+
+pkgname = python-pook
