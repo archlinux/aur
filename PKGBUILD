@@ -1,7 +1,7 @@
 # Original maintainer: zxp19821005 <zxp19821005 at 163 dot com>, adopted by mmvanheusden.
 pkgname=steamdepotdownloadergui-appimage
 _appname=SteamDepotDownloaderGUI
-pkgver=2.3.1
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Easily download older versions of games from Steam using DepotDownloader"
 arch=('aarch64' 'x86_64')
@@ -9,13 +9,13 @@ url="https://github.com/mmvanheusden/SteamDepotDownloaderGUI"
 license=('GPL3')
 conflicts=("${pkgname%-appimage}")
 provides=("${pkgname%-appimage}=${pkgver}")
-depends=('zlib' 'glibc' 'hicolor-icon-theme' 'dotnet-sdk-6.0' 'unzip')
+depends=('zlib' 'glibc' 'hicolor-icon-theme' 'dotnet-sdk-6.0' 'unzip', 'fuse3')
 options=('!strip')
 _install_path="/opt/appimages"
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_appname}-linux-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_appname}-linux-${pkgver}-x64.AppImage")
-sha256sums_aarch64=('8489b739ee47353af7a2ec81bfac681f411048f5022eb6cf2de9a641e602c44c')
-sha256sums_x86_64=('b82b4cf06a729ab31ecff354457f3bb355403869e1daa7650b8c3eb293086001')
+sha256sums_aarch64=('2431e58e3e870e71ec047673f673d3897872d0d245c5aff92635ba90e0412d97')
+sha256sums_x86_64=('cd8a00d44b174b33d394997b56347d44b1a9f68b4d8c2444bd9401de4a2df0f0')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
