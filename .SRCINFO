@@ -1,6 +1,6 @@
 pkgbase = mayo-git
 	pkgdesc = 3D CAD viewer and converter based on Qt and OpenCascade (git version)
-	pkgver = 0.7.0.r83.gd466625
+	pkgver = 0.8.0.r0.g697226a
 	pkgrel = 1
 	url = https://github.com/fougue/mayo
 	arch = any

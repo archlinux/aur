@@ -1,11 +1,11 @@
 # Maintainer: pingplug <aur at pingplug dot me>
 
 _pkgname=mayo
-_tag="v0.7.0"
-_commit="c85fe27fbfa27ba9b163b01bb54036473fa31e4f"
+_tag="v0.8.0"
+_commit="697226a2a7d80e70103316ca1bb3be6a86132547"
 
 pkgname=mayo-git
-pkgver=0.7.0.r83.gd466625
+pkgver=0.8.0.r0.g697226a
 pkgrel=1
 pkgdesc="3D CAD viewer and converter based on Qt and OpenCascade (git version)"
 arch=('any')
