@@ -1,7 +1,7 @@
 # Maintainer: Somebody <somebody[at]foo[dot]tld>
 pkgname=g500-git
 _gitname=g500
-pkgver=r81.b16e6fb
+pkgver=r118.3884fcf
 pkgrel=1
 pkgdesc="Documentation and code for g500 specific HID protocol for profile configuration and other tweaks"
 url="https://github.com/cvuchener/g500"
@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('bash')
 optdepends=()
-makedepends=()
+makedepends=('git')
 conflicts=()
 replaces=()
 backup=()
