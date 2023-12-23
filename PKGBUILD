@@ -5,7 +5,7 @@
 
 pkgname=stellarium
 pkgver=23.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Software which renders realistic skies in real time with OpenGL"
 arch=(x86_64)
 url="https://${pkgname}.org"
@@ -14,23 +14,12 @@ depends=('libpng' 'libglvnd' 'freetype2' 'openssl' 'gpsd' 'calcmysky'
   'qt6-charts' 'qt6-serialport' 'qt6-multimedia' 'qt6-positioning' 'qt6-webengine' 'libindi') # 'qxlsx-qt6'
 makedepends=('cmake' 'ninja' 'mesa' 'qt6-tools')                                              # 'doxygen' 'graphviz'
 optdepends=('man-db: manual pages for stellarium')
-source=(https://github.com/Stellarium/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc}
-  indi-2.0.patch::https://github.com/Stellarium/${pkgname}/pull/3269.patch)
+source=(https://github.com/Stellarium/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
 md5sums=('6107d1e352216b1e20d3cf3d45cea277'
-         'SKIP'
-         'd36659c25e74041aa297885c865cdc78')
+  'SKIP')
 sha256sums=('db4db9f205cc13fb68e3f3c4c895754d16868e4d25a14da44db6d0d809e39943'
-            'SKIP'
-            '5f0dfb32194621afb50c3c52b46760e0bf588a938dc95c78d463a8ca554e327f')
-
-prepare() {
-  # FIXME: https://github.com/Stellarium/stellarium/issues/3132#issuecomment-1485304021
-  # sed -i 's/SOURCE_SUBDIR QXlsx/SOURCE_SUBDIR QXlsxQt${QT_VERSION_MAJOR}/' ${pkgname}-${pkgver}/CMakeLists.txt
-  # TODO: https://github.com/Stellarium/stellarium/issues/3038
-  cd ${pkgname}-${pkgver}
-  patch -p1 -i ../indi-2.0.patch
-}
+  'SKIP')
 
 build() {
   PATH="/usr/bin/core_perl/:$PATH"

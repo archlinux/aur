@@ -1,7 +1,7 @@
 pkgbase = stellarium
 	pkgdesc = Software which renders realistic skies in real time with OpenGL
 	pkgver = 23.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stellarium.org
 	arch = x86_64
 	license = GPL2
@@ -24,13 +24,10 @@ pkgbase = stellarium
 	optdepends = man-db: manual pages for stellarium
 	source = https://github.com/Stellarium/stellarium/releases/download/v23.4/stellarium-23.4.tar.gz
 	source = https://github.com/Stellarium/stellarium/releases/download/v23.4/stellarium-23.4.tar.gz.asc
-	source = indi-2.0.patch::https://github.com/Stellarium/stellarium/pull/3269.patch
 	validpgpkeys = 79151C2E6351E7278DA1A730BF38D4D02A328DFF
 	md5sums = 6107d1e352216b1e20d3cf3d45cea277
 	md5sums = SKIP
-	md5sums = d36659c25e74041aa297885c865cdc78
 	sha256sums = db4db9f205cc13fb68e3f3c4c895754d16868e4d25a14da44db6d0d809e39943
 	sha256sums = SKIP
-	sha256sums = 5f0dfb32194621afb50c3c52b46760e0bf588a938dc95c78d463a8ca554e327f
 
 pkgname = stellarium
