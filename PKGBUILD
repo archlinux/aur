@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=libplacebo-git
-pkgver=6.338.0.62.g52314e0e
+pkgver=7.342.0.3490.g52314e0e
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://code.videolan.org/videolan/libplacebo'
@@ -30,7 +30,7 @@ makedepends=(
 )
 _pkgver=$(echo $pkgver | cut -d . -f 1-3)
 provides=(
-  "libplacebo=${pkgver%%.r*}"
+  "libplacebo=${_pkgver}"
   'libplacebo.so'
 )
 conflicts=('libplacebo')
@@ -46,7 +46,12 @@ options=('debug')
 
 pkgver() {
   cd libplacebo
-  echo "$(git describe --long --tags | sed 's|-rc|rc|g' | tr - . | tr -d v)"
+  #   echo "$(git describe --long --tags | sed 's|-rc|rc|g' | tr - . | tr -d v)"
+
+  _major_ver="$(cat meson.build | sed -ne '/Major version/{N;p}' | tail -n1 | grep -o "[[:digit:]]*")"
+  _api="$(cat meson.build | sed -ne '/API version/{N;N;p}' | tail -n1 | grep -o "[[:digit:]]*")"
+  _fix_ver="$(cat meson.build | sed -ne '/Fix version/{N;p}' | tail -n1 | grep -o "[[:digit:]]*")"
+  echo "${_major_ver}.${_api}.${_fix_ver}.$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
