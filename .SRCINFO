@@ -1,6 +1,6 @@
 pkgbase = vim-runtime-git
 	pkgdesc = Vim the editor. Components used by vim-minimal-git and gvim-git.
-	pkgver = 8.0.0342
+	pkgver = 9.0.2184.r3.gea9964a36
 	pkgrel = 1
 	url = http://www.vim.org
 	arch = i686

@@ -6,7 +6,7 @@
 
 _pkgname=vim
 pkgname=$_pkgname-runtime-git
-pkgver=8.0.0342
+pkgver=9.0.2184.r3.gea9964a36
 pkgrel=1
 pkgdesc="Vim the editor. Components used by vim-minimal-git and gvim-git."
 arch=("i686" "x86_64")
@@ -21,7 +21,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd $_pkgname
-    git describe --tags | sed 's/^v//;s/-/./g'
+    git describe --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
