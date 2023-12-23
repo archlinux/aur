@@ -1,6 +1,6 @@
 pkgbase = gdal-libkml-filegdb
 	pkgdesc = A translator library for raster and vector geospatial data formats (with libkml and filegdb support)
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://gdal.org/
 	changelog = gdal.changelog
@@ -54,8 +54,8 @@ pkgbase = gdal-libkml-filegdb
 	makedepends = libaec
 	makedepends = libkml-git
 	provides = gdal
-	source = https://download.osgeo.org/gdal/3.8.1/gdal-3.8.1.tar.xz
-	b2sums = ccf2f84d561b66a220b5f3798cc6dceb6ef0c64e5bd1f12034aaead534cc9f5faa0174485a5c2be62e709eb4403883c959771fd7af197a2683c28ce4d47cea7c
+	source = https://download.osgeo.org/gdal/3.8.2/gdal-3.8.2.tar.xz
+	b2sums = c00a69810f9c7ac1f8dd30e5bcee6a87277cc93391a8569ebc77ea53df52ee712310baad36ff32354b7bea6fa5a5f3b8f4f106ffe1534df4aa2fbc9afa5a9ee9
 
 pkgname = gdal-libkml-filegdb
 	depends = proj
@@ -107,7 +107,7 @@ pkgname = gdal-libkml-filegdb
 
 pkgname = python-gdal-libkml-filegdb
 	pkgdesc = Python bindings for GDAL
-	depends = gdal-libkml-filegdb=3.8.1
+	depends = gdal-libkml-filegdb=3.8.2
 	depends = python-numpy
 	provides = python-gdal
 	conflicts = python-gdal
