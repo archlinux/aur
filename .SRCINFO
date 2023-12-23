@@ -1,7 +1,7 @@
 pkgbase = gnome-thumbnailers-git
 	pkgdesc = Thumbnailing utilities for 3D files for GNOME 42+
 	pkgver = r23.6d695f6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rcarmo/gnome-thumbnailers
 	arch = any
 	license = MIT

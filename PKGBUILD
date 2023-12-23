@@ -4,7 +4,7 @@ pkgname="gnome-thumbnailers-git"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 pkgver=r23.6d695f6
-pkgrel=2
+pkgrel=3
 pkgdesc="Thumbnailing utilities for 3D files for GNOME 42+"
 arch=(any)
 url="https://github.com/rcarmo/gnome-thumbnailers"
@@ -28,6 +28,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname}"
 	patch -p1 -i "$srcdir/no-stl.patch"
+	sed -i "/^Exec=/ s+/usr/local/bin/+/usr/bin/+" "$srcdir/${pkgname}"/*.thumbnailer
 }
 
 package() {
