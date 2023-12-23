@@ -3,7 +3,7 @@
 # Contributor: sukanka < su975853527 [at] gmail dot com >
 pkgname=adrive
 url="https://www.aliyundrive.com/"
-pkgrel=1
+pkgrel=2
 pkgver=4.9.16
 pkgdesc="阿里云盘官方客户端app.asar提取版，直接调用系统electron运行"
 arch=("x86_64")
