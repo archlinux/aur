@@ -2,7 +2,7 @@
 _pkgname=xemu
 pkgname=$_pkgname-git
 pkgver=0.7.118.r0.g03f40b1d8e
-pkgrel=1
+pkgrel=2
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
 url="https://xemu.app/"
@@ -58,7 +58,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'55fd67005d4fbfd0a068d91d33227c856b702e5d2616b11a33fcb83204024e5aa80eb7b9b501c85d192e79f93f5be5f0b8c78ff96dfa308746e807d3d278579b'
+	'ab5636092dd543c38b9756914100f15a44222d5e4a3160360a1d739725a65f95ea8a5c48e11358397c0a07bbbc04ed604fc86295d979209481b1e56c5c7b4dcf'
 )
 
 pkgver() {
