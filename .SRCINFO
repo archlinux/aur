@@ -1,0 +1,22 @@
+pkgbase = python-phiflow
+	pkgdesc = Differentiable PDE solving framework for machine learning
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = https://github.com/tum-pbs/PhiFlow
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytorch
+	checkdepends = python-tensorflow
+	checkdepends = python-jax
+	checkdepends = python-plotly
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-phiml
+	depends = python-matplotlib
+	source = PhiFlow-2.5.3.tar.gz::https://github.com/tum-pbs/PhiFlow/archive/2.5.3.tar.gz
+	sha512sums = 709d7ce42d7d67e2bd30de27fb46fbcdf4363877cc4d6d2b8b972a8527e5249157be1403513bebd370049057d854b5dd08679ed1aca16b1c4d25b39bf1294504
+
+pkgname = python-phiflow
