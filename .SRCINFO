@@ -1,6 +1,6 @@
 pkgbase = octave-dicom
 	pkgdesc = File io for medical images and other data using Grassroots DICOM (GDCM) library.
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/dicom/
 	install = octave-dicom.install
@@ -9,8 +9,8 @@ pkgbase = octave-dicom
 	license = GPL3
 	depends = octave>=3.8.0
 	depends = gdcm>2.0.16
-	noextract = dicom-0.5.1.tar.gz
-	source = https://downloads.sourceforge.net/octave/dicom-0.5.1.tar.gz
-	sha256sums = d2a36a8e92565810343792208d5d1ed123d0942bdbcc8c27220696a3edb02b0d
+	noextract = dicom-0.6.0.tar.gz
+	source = https://downloads.sourceforge.net/octave/dicom-0.6.0.tar.gz
+	sha256sums = 085b29a8f243494d4f83ea3a76e6f5ffe83e98f0e9b3db0f96eb3a91e0e3ea1d
 
 pkgname = octave-dicom
