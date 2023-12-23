@@ -1,7 +1,7 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.10.5
+pkgver=0.10.6
 pkgrel=1
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web)"
 arch=('any')
@@ -13,7 +13,6 @@ optdepends=('flatpak: required for Flatpak support'
             'python-beautifulsoup4: for Native Web applications support'
             'python-lxml: for Native Web applications support'
             'sqlite3: required for AppImage support'
-            'wget: required for AppImage and AUR support'
             'fuse2: may be required for AppImage support'
             'fuse3: may be required for AppImage support'
             'pacman: required for AUR support'             
@@ -37,18 +36,22 @@ optdepends=('flatpak: required for Flatpak support'
             'axel: multi-threaded downloading support'
             'shadow: to install AUR packages as the root user'
             'util-linux: to install AUR packages as the root user')
-makedepends=('git' 'python' 'python-pip' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('742903254efc8da0ce3253d04a19319b1b9e6e761ccd64deb9b7bf72cbb9f34afe90639b5bf8c4203ed3da9f61eb613bc26f5b5e2a4332ad7a915658a12725db')
+sha512sums=('0eb0bd836848e4688aa69d5cfbc911d0fe95e0afcf972d8a2b86213ede4a9ce400c0c9d1a97c9e58639baf274498944f2f36af9d576832e4df8093ccab48299f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python3 setup.py build
+
+  # removing outdated setup files
+  rm setup.cfg setup.py requirements.txt
+
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"  
-  python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   
   mkdir -p $pkgdir/usr/share/icons/hicolor/scalable/apps
 
