@@ -22,8 +22,8 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-gles" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r64763.ffbc0975418
-pkgrel=2
+pkgver=r64767.d9bc4008620
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -269,6 +269,8 @@ package_kodi-git-gles() {
 # components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-kodi-send
 package_kodi-git-eventclients() {
   pkgdesc="Kodi Event Clients (master branch)"
+  provides=("kodi-eventclients=${pkgver}")
+  conflicts=('kodi-eventclients')
   optdepends=(
     'kodi: local machine eventclient use'
     'python: most eventclients are implemented in python'
@@ -292,6 +294,8 @@ package_kodi-git-eventclients() {
 # components: kodi-tools-texturepacker
 package_kodi-git-tools-texturepacker() {
   pkgdesc="Kodi Texturepacker tool (master branch)"
+  provides=("kodi-tools-texturepacker=${pkgver}")
+  conflicts=('kodi-tools-texturepacker')
   depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
 
   _components=(
@@ -310,6 +314,8 @@ package_kodi-git-tools-texturepacker() {
 # components: kodi-addon-dev kodi-eventclients-dev
 package_kodi-git-dev() {
   pkgdesc="Kodi dev files (master branch)"
+  provides=("kodi-dev=${pkgver}")
+  conflicts=('kodi-dev')
   depends=('kodi-git')
 
   _components=(
