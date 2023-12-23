@@ -1,0 +1,24 @@
+pkgbase = python-click-params
+	pkgdesc = A bunch of useful click parameter types
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://click-params.readthedocs.io/en/stable
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core>=1.0.0
+	makedepends = python-poetry-plugin-export
+	makedepends = python-platformdirs<5.0
+	makedepends = python-platformdirs>=3.9.1
+	depends = python
+	depends = python-click>=7.0
+	depends = python-click<9.0
+	depends = python-validators
+	source = click_params.tar.gz::https://github.com/click-contrib/click_params/archive/7bed8d7405bafa542e3c9be58c308f04408f1c99.tar.gz
+	source = build.patch
+	sha256sums = 25848b84c9b4408cad5ac2a91a256f57b6bf6130bef66a289dc21d11f33a76cb
+	sha256sums = 88d3ec9f7d3b1e22088ad8dd3e57f57aa5772e4a17177903e58195868fe44c72
+
+pkgname = python-click-params

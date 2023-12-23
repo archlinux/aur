@@ -1,0 +1,10 @@
+--- a/pyproject.toml	2023-12-22 20:20:23.840012911 +0100
++++ b/pyproject.toml	2023-12-22 20:20:33.000013110 +0100
+@@ -56,5 +56,5 @@
+ skip-string-normalization = true
+ 
+ [build-system]
+-requires = ["poetry>=0.12"]
+-build-backend = "poetry.masonry.api"
++requires = ["poetry-core>=1.0.0"]
++build-backend = "poetry.core.masonry.api"
