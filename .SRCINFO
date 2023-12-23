@@ -1,6 +1,6 @@
 pkgbase = zuu
 	pkgdesc = An rust program to run tests with git hooks
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/taishingi/zuu
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = zuu
 	depends = rustup
 	depends = git
 	provides = zuu
-	source = 0.4.1.tar.gz::https://github.com/taishingi/zuu/archive/refs/tags/0.4.1.tar.gz
-	sha256sums = 3eb63abef4fe7f959f7da6d7fa2ab351f3fcb54a6eb4c5b17957e9c0078d26ec
+	source = 0.4.2.tar.gz::https://github.com/taishingi/zuu/archive/refs/tags/0.4.2.tar.gz
+	sha256sums = 3ed6557b5b8630e3191fa779c8a24c2d55a466db6f0b854b41fe1bd9bc993244
 
 pkgname = zuu
