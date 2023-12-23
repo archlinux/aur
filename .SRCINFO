@@ -1,0 +1,11 @@
+pkgbase = cycdm-bin
+	pkgdesc = 次元城动漫桌面端
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/CycityTeam/cyc-desktop
+	arch = x86_64
+	license = Commercial
+	source = git+https://github.com/CycityTeam/cyc-desktop.git
+	md5sums = SKIP
+
+pkgname = cycdm-bin
