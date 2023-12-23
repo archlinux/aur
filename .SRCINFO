@@ -1,6 +1,6 @@
 pkgbase = h2o-git
 	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
-	pkgver = 2.2.0.7539
+	pkgver = 2.2.0.7545
 	pkgrel = 1
 	url = https://github.com/h2o/h2o
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = h2o-git
 	conflicts = libh2o
 	options = lto
 	backup = etc/h2o.conf
-	source = git+https://github.com/h2o/h2o.git?commit=5c78fc1e3e7fd987cf699c9684e5b8483608e492?signed/
+	source = git+https://github.com/h2o/h2o.git?commit=cb0df42a179b640a970aed6987ceac55da5a9917?signed/
 	source = neverbleed-fix-when-lacking-engines.patch
 	source = h2o.service
 	sha256sums = SKIP
