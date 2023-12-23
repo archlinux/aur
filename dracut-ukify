@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+source /usr/share/makepkg/util/message.sh
+
 function usage {
   echo "$(basename "$0") [OPTIONS]"
   echo "  -h            shows usage"
@@ -23,6 +25,15 @@ declare -A ukify_variants=()
 declare -A ukify_install_path=()
 
 [ -f "/etc/dracut-ukify.conf" ] && source /etc/dracut-ukify.conf
+
+case "$colorize" in
+  "true")
+    colorize
+    ;;
+  "auto")
+    grep -q -e '^\w*Color\w*$' /etc/pacman.conf && colorize
+    ;;
+esac
 
 [ ${#ukify_variants[@]} -eq 0 ] && {
   # Fallback to default image if ukify_variants isn't specified
@@ -96,11 +107,11 @@ function sanity_check() {
     for variant in "${!ukify_variants[@]}"; do
       local path=$(uki_path "$kernel" "${sanity_kernel[$kernel]}" "$variant")
       if [ $verbose -ne 0 ]; then
-        printf "=> Resolved UKI path for package %s %s in variant %s: %s\n" "$kernel" "${sanity_kernel[$kernel]}" "$variant" "$path"
+        msg "Resolved UKI path for package %s %s in variant %s: %s\n" "$kernel" "${sanity_kernel[$kernel]}" "$variant" "$path"
       fi
 
       if [ ${uki_path[$path]+_} ]; then
-        printf "=> Found UKI path clash: %s-%s and %s points to the same path: %s\n" "$kernel" "$variant" "${uki_path[$path]}" "$path" >&2
+        error "Found UKI path clash: %s-%s and %s points to the same path: %s\n" "$kernel" "$variant" "${uki_path[$path]}" "$path"
         result=1
       fi
       uki_path[$path]="$kernel-$variant"
@@ -128,7 +139,7 @@ while getopts ":hag:sxyz" arg; do
         fi
       done
       if (( ! found )); then
-        echo "Error occurred during '$OPTARG' package traversal" >&2
+        error "Error occurred during '$OPTARG' package traversal"
         exit 1
       fi
       ;;
@@ -153,7 +164,7 @@ while getopts ":hag:sxyz" arg; do
           for variant in "${!ukify_variants[@]}"; do
             IMAGE="${ESP_PATH}/$(uki_path "$pkgbase" "$version" "$variant")"
             if [ -f "$IMAGE" ]; then
-              echo "==> Removing $IMAGE..."
+              msg "Removing $IMAGE..."
               rm -f "$IMAGE"
             fi
           done
@@ -204,7 +215,7 @@ function gen_image() {
   local path="/usr/lib/modules/${version}/pkgbase"
   local vmlinuz="/usr/lib/modules/${version}/vmlinuz"
 
-  echo "=> dracut-ukify -g $kernel"
+  msg "dracut-ukify -g %s" "$kernel"
 
   for variant in "${!ukify_variants[@]}"; do
     local image="${ESP_PATH}/$(uki_path "$kernel" "$version" "$variant")"
@@ -214,7 +225,7 @@ function gen_image() {
 
     local initrd=$(mktemp)
 
-    echo "==> Building initrd image $kernel ($version_name)"
+    msg2 "Building initrd image %s (%s)" "$kernel" "$version_name"
     dracut -q -f --no-hostonly-cmdline --kver "${version}" ${ukify_variants[$variant]} "$initrd"
 
     local os_release=$(mktemp)
@@ -237,7 +248,7 @@ function gen_image() {
       ukify_args+=(--initrd "$initrd")
     fi
 
-    echo "==> Ukify image $kernel ($version_name)"
+    msg2 "Ukify image %s (%s)" "$kernel" "$version_name"
 
     /usr/lib/systemd/ukify "${ukify_args[@]}"
 
@@ -248,11 +259,11 @@ function gen_image() {
     # Mark image as default if needed
     if [[ "$pkgbase" == "$default_kernel_package" && "$variant" == "default" ]]; then
       if ! bootctl is-installed --quiet; then
-        echo "==> systemd-boot is not installed, unable to mark image as default" >&2
+        warning "systemd-boot is not installed, unable to mark image as default"
       else
-        echo "===> Mark linux image $kernel ($version) as default"
+        msg2 "Mark linux image %s (%s) as default" "$kernel" "$version"
         bootctl set-default "$(basename "$image")" || {
-          echo "==> Unable to mark linux image $kernel ($version) as default due to error" >&2
+          error "Unable to mark linux image $kernel ($version) as default due to error"
         }
       fi
     fi
