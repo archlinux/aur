@@ -24,10 +24,10 @@ package() {
 	install -d ${pkgdir}/usr/share/icons/hicolor/512x512/apps
 
 	cp -r ${srcdir}/squashfs-root/* ${pkgdir}/usr/lib/${pkgname}
-	ln -s ${pkgdir}/usr/lib/${pkgname}/${pkgname}.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
+	ln -s /usr/lib/${pkgname}/${pkgname}.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
 	
 	sed -i "s/AppRun/${pkgname}/" ${pkgdir}/usr/lib/${pkgname}/${pkgname}.desktop
-	ln -s ${pkgdir}/usr/lib/${pkgname}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+	ln -s /usr/lib/${pkgname}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
-	ln -s ${pkgdir}/usr/lib/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+	ln -s /usr/lib/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
