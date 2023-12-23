@@ -1,8 +1,8 @@
 # Maintainer: r6eve <r6eve at acm dot org>
 
 pkgname=cntr-bin
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 pkgdesc='A container debugging tool based on FUSE'
 arch=('x86_64')
 url='https://github.com/Mic92/cntr'
@@ -17,7 +17,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname}-${pkgver}"::"${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-${CARCH}-unknown-linux-musl")
 noextract=("${pkgname}-${pkgver}")
-sha256sums=('63e172c49c64d97fd353e9517a5285ad75589b28d8e56f8bd58eaf19de395a29')
+sha256sums=('25fe7231b835fbed62be17a847ff04c54da9a9e8d0691ffe492650be023a64fa')
 
 package() {
   mv "${pkgname}-${pkgver}" "${pkgname%-bin}"
