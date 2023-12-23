@@ -1,41 +1,76 @@
-# Maintainer: Don Harper < duck at duckland dot org>
-_pkgname_base=sigal
-pkgname=$_pkgname_base-git
+# Maintainer:
+# Contributor: Don Harper < duck at duckland dot org>
 
-pkgver=r1280.86279cf
+# options
+: ${_build_git:=true}
+
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+# basic info
+_pkgname="sigal"
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=2.4.r7.g943d77c
 pkgrel=1
 pkgdesc="Simple Static Gallery Generator"
-arch=("any")
 url="https://github.com/saimn/sigal"
-license=('GPL')
-depends=( 'ffmpeg' 'python-blinker' 'python-click' 'python-jinja' 'python-markdown' 'python-natsort' 'python-pillow' 'python-pilkit')
-optdepends=( 'python-boto: upload to S3 plugin' 'python-brotli: compress assets plugin' 'python-cryptography: encrypt plugin' 'python-feedgenerator: feed plugin' 'python-zopfli: compress assets plugin')
+license=('MIT')
+arch=("any")
 
-provides=('sigal')
-conflicts=('sigal')
-makedepends=('git')
+depends=(
+  'ffmpeg'
+  'python-blinker'
+  'python-click'
+  'python-jinja'
+  'python-markdown'
+  'python-natsort'
+  'python-pilkit'
+  'python-pillow'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-setuptools-scm'
+  'python-sphinx'
+  'python-wheel'
+)
+optdepends=(
+  'python-boto: upload to S3 plugin'
+  'python-brotli: compress assets plugin'
+  'python-cryptography: encrypt plugin'
+  'python-feedgenerator: feed plugin'
+  'python-zopfli: compress assets plugin'
+)
 
-source=($pkgname::'git+https://github.com/saimn/sigal')
+provides=("$_pkgname=${pkgver%.r*}")
+conflicts=("$_pkgname")
 
-md5sums=('SKIP')
+_pkgsrc="$_pkgname"
+source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname}"
-  python setup.py build
-  make -C docs man PYTHONPATH="${PWD}"
+  cd "$_pkgsrc"
+  python -m build --no-isolation --wheel
+
+  # man page
+  PYTHONPATH="$PWD/src" make -C docs man
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
-  python setup.py install --skip-build \
-    --optimize=1 \
-    --prefix=/usr \
-    --root="${pkgdir}"
+  cd "$_pkgsrc"
+  python -m installer --destdir="${pkgdir:?}" dist/*.whl
+
+  # man page
+  install -Dm644 "docs/_build/man/sigal.1" -t "$pkgdir/usr/share/man/man1/"
+
+  # license
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
