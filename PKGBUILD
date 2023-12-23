@@ -2,9 +2,9 @@
 # Contributor: Nikola Hadžić <nikola@firemail.cc>
 
 pkgname=gst-plugins-rs
-pkgver=1.22.6
+pkgver=1.22.8
 pkgrel=1
-pkgdesc="GStreamer plugins written in Rust"
+pkgdesc="GStreamer plugins written in Rust (dav1d disabled when fail to build)"
 arch=(x86_64)
 url="https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs"
 license=(Apache LGPL2.1 MIT MPL2)
@@ -12,6 +12,8 @@ depends=(glibc gcc-libs glib2 pango cairo graphene openssl
          gst-plugins-base-libs gst-plugins-bad-libs
          gstreamer gtk4 dav1d libsodium libwebp)
 makedepends=(git rust meson cargo-c clang nasm hotdoc python-tomli)
+provides=(gst-plugin-gtk4)
+conflicts=(gst-plugin-gtk4)
 options=(!lto)
 source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=gstreamer-${pkgver}")
 sha256sums=(SKIP)
@@ -25,16 +27,16 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  #arch-meson build \
+
   #  -D doc=disabled \
   #  -D csound=enabled \
   #  -D dav1d=enabled \
   #  -D sodium=enabled
-  #ninja -C build
+  #  -D sodium-source=system
 
   arch-meson build \
-  #arch-meson build \
-  #  -D sodium-source=system
+    -D dav1d=disabled
+
   meson compile -C build
 }
 
