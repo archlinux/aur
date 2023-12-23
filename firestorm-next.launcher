@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd "/usr/lib/firestorm-beta/"
+cd "/usr/lib/firestorm-next/"
 exec ./firestorm $*

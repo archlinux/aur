@@ -1,9 +1,9 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=ALPHA Firestorm Second Life viewer
+Name=Pre-release Firestorm Second Life viewer
 Comment=Second Life is a 3-D virtual world entirely built and owned by its residents
-Exec=/usr/bin/firestorm-beta
-Icon=firestorm-beta
+Exec=/usr/bin/firestorm-next
+Icon=firestorm-next
 Terminal=false
 Categories=Game
