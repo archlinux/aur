@@ -1,6 +1,6 @@
 pkgbase = usdtweak
 	pkgdesc = USD Standalone Editor
-	pkgver = 0.60.g01b4f68
+	pkgver = 0.62.gc2ce217
 	pkgrel = 1
 	url = https://github.com/cpichard/usdtweak
 	arch = x86_64

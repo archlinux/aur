@@ -1,7 +1,7 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 
 pkgname=usdtweak
-pkgver=0.60.g01b4f68
+pkgver=0.62.gc2ce217
 pkgrel=1
 pkgdesc='USD Standalone Editor'
 arch=(x86_64)
