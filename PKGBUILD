@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=ruby-bake-modernize
-pkgver=0.17.8
-_commit=c4b3c6ab84eea4ce453541e025652f1f39089c94
+pkgver=0.18.0
+_commit=a64fc317f4d68ae0097d8d77fe5a6b5d95a286d3
 pkgrel=1
 pkgdesc='Automatically modernize parts of your project/gem'
 arch=(any)
@@ -10,7 +10,7 @@ url='https://github.com/ioquatix/bake-modernize'
 license=(MIT)
 depends=(ruby-async-http ruby-bake ruby-build-files ruby-markly ruby-rugged)
 makedepends=(git)
-checkdepends=(ruby-sus ruby-bake-test git)
+checkdepends=(ruby-sus ruby-covered ruby-bake-test ruby-bake-test-external git)
 options=(!emptydirs)
 source=(git+https://github.com/ioquatix/bake-modernize.git#commit=$_commit)
 sha256sums=('SKIP')

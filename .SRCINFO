@@ -1,0 +1,23 @@
+pkgbase = ruby-bake-modernize
+	pkgdesc = Automatically modernize parts of your project/gem
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/ioquatix/bake-modernize
+	arch = any
+	license = MIT
+	checkdepends = ruby-sus
+	checkdepends = ruby-covered
+	checkdepends = ruby-bake-test
+	checkdepends = ruby-bake-test-external
+	checkdepends = git
+	makedepends = git
+	depends = ruby-async-http
+	depends = ruby-bake
+	depends = ruby-build-files
+	depends = ruby-markly
+	depends = ruby-rugged
+	options = !emptydirs
+	source = git+https://github.com/ioquatix/bake-modernize.git#commit=a64fc317f4d68ae0097d8d77fe5a6b5d95a286d3
+	sha256sums = SKIP
+
+pkgname = ruby-bake-modernize
