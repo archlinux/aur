@@ -4,7 +4,7 @@
 # Thanks to the patch from the MXE project <mxe.cc>
 
 _basever=8.2
-_patchlevel=001
+_patchlevel=007
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-readline
@@ -29,8 +29,20 @@ fi
 
 sha256sums=('3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35'
             'SKIP'
-            '7e1fea150da3b4c446a3d8b8ce3f449ded5f44e0856b3c9c43d33766f9634f7e'
+            '3b5576e51471b248f5c89e0d4c01ac0bc443a239169fa19e25980f9a923f659a'
             'bbf97f1ec40a929edab5aa81998c1e2ef435436c597754916e6a5868f273aff7'
+            'SKIP'
+            'e06503822c62f7bc0d9f387d4c78c09e0ce56e53872011363c74786c7cd4c053'
+            'SKIP'
+            '24f587ba46b46ed2b1868ccaf9947504feba154bb8faabd4adaea63ef7e6acb0'
+            'SKIP'
+            '79572eeaeb82afdc6869d7ad4cba9d4f519b1218070e17fa90bbecd49bd525ac'
+            'SKIP'
+            '622ba387dae5c185afb4b9b20634804e5f6c1c6e5e87ebee7c35a8f065114c99'
+            'SKIP'
+            'c7b45ff8c0d24d81482e6e0677e81563d13c74241f7b86c4de00d239bc81f5a1'
+            'SKIP'
+            '5911a5b980d7900aabdbee483f86dab7056851e6400efb002776a0a4a1bab6f6'
             'SKIP')
 validpgpkeys=(7C0135FB088AAF6C66C650B9BB5869F064EA74AB) # Chet Ramey <chet@cwru.edu>
 
