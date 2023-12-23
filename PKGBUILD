@@ -3,7 +3,7 @@
 # Contributor: sukanka < su975853527 [at] gmail dot com >
 pkgname=adrive
 url="https://www.aliyundrive.com/"
-pkgrel=2
+pkgrel=3
 pkgver=4.9.16
 pkgdesc="阿里云盘官方客户端app.asar提取版，直接调用系统electron运行"
 arch=("x86_64")
@@ -20,7 +20,7 @@ source=(
 sha256sums=('bb36e6204d6be7073ca9b13f273b55f788cd48dc9a849251a26b3239438b08d4'
             '3a7ce889fc9a31be70e36d37aba2cc23f00d4621cadcfa1c3eb40638ea8878d6'
             'fc2493439b0766992698acd3a7c74a1a90d2877699442b1d7c410d8606d74244'
-            '9cb2ed4e570a44bd1520ffc0bd0af437f9f178827199882ce0e67c8437a6414e')
+            'cb1bd3c9690752a029017b424222d3149a8891980b3d8b8f49b1a1ba202efe73')
 
 
 prepare() {

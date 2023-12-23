@@ -55,8 +55,8 @@ class CustomTrayIcon(QSystemTrayIcon):
         # 处理彻底退出程序操作，可以添加你的自定义逻辑
         user_home = os.path.expanduser("~")
         try:
-            quit_command = "killall electron"  # 根据实际情况修改重启命令
-            subprocess.run(quit_command, shell=True)
+            exit_command = "PID=$(xdotool search --name '阿里云盘' getwindowpid);kill $PID"  # 根据实际情况修改重启命令
+            subprocess.run(exit_command, shell=True)
         
         except Exception as e:
             print(f"Error: {e}")
@@ -68,6 +68,7 @@ if __name__ == "__main__":
     try:
         open_command = "nohup /usr/lib/aDrive/aDrive.sh > /dev/null 2>&1 &"
         subprocess.run(open_command, shell=True)
+
     except Exception as e:
         print(f"Error running clash-meta: {e}")
 
