@@ -4,6 +4,7 @@ pkgbase = boomaga
 	pkgrel = 1
 	url = https://www.boomaga.org/
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	license = LGPL2.1
 	makedepends = cmake
