@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CBNplot
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="plot bayesian network inferred from gene expression data based on enrichment analysis results"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(Artistic2.0)
 depends=(
   r-biocfilecache
@@ -50,12 +50,12 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d589e9361caf3409d65345cc48e5ccee')
-sha256sums=('bf7db675851fc03082cf25320cd261c40635687249871cd185533764b637f012')
+md5sums=('e87c0c410d247fa34a6ab9e9d3863976')
+b2sums=('9b20898c1e9feac5e247388c0346bb5deacdcdcb6ee9d97629a2e705be6f0201c8e0be52d23ab1157e0f4d90387353542cb7cc769de3c715f1b60db8615841dc')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
