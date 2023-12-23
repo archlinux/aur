@@ -5,7 +5,7 @@
 
 _pkgname=vinegar
 pkgname=vinegar-git
-pkgver=1.5.0.r0.gd6d1f74
+pkgver=1.6.0.r1.gc3160de
 pkgrel=1
 pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio (Git version)"
 arch=("x86_64")
@@ -14,11 +14,20 @@ license=("GPL3")
 depends=("glibc" "hicolor-icon-theme" "libgles" "libxcursor" "libxfixes"
          "libxkbcommon" "libxkbcommon-x11" "libx11" "wayland")
 makedepends=("git" "go" "vulkan-headers" "wayland-protocols")
-optdepends=("vulkan-driver: Vulkan support in GUI"
+optdepends=("gamemode: Gamemode integration"
+            "vulkan-driver: Vulkan support in GUI"
             "wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar")
 source=("git+${url}")
 sha256sums=("SKIP")
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  # HACK (FIXME): Don't rebuild the icons when installing them
+  # (upstream repo has them anyway and building them causes race conditions)
+  sed -i 's/install-icons: icons/install-icons:/' Makefile
+}
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -36,8 +45,7 @@ build() {
   # Make sure Vinegar rebuilds
   make clean
 
-  # Enable all Gio features (overriding default upstream behavior)
-  make VINEGAR_GOFLAGS="" DESTDIR="${pkgdir}" PREFIX="/usr" all
+  make DESTDIR="${pkgdir}" PREFIX="/usr" all
 }
 
 package() {
