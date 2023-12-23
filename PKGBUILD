@@ -8,9 +8,9 @@ pkgbase=java-15-openjdk
 pkgname=('jre15-openjdk-headless' 'jre15-openjdk' 'jdk15-openjdk' 'openjdk15-src' 'openjdk15-doc')
 _majorver=15
 _minorver=0
-_securityver=3
-_updatever=3
-pkgrel=3
+_securityver=10
+_updatever=5
+pkgrel=1
 pkgver="${_majorver}.${_minorver}.${_securityver}.u${_updatever}"
 _hg_tag="jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}"
 arch=('x86_64')
@@ -19,12 +19,12 @@ license=('custom')
 makedepends=('java-environment-jdk<=15' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc')
-source=("https://hg.openjdk.java.net/jdk-updates/jdk${_majorver}u/archive/${_hg_tag}.tar.gz"
+             'libnet' 'bash' 'harfbuzz')
+source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/openjdk/jdk${_majorver}u/archive/refs/tags/${_hg_tag}.tar.gz"
         "freedesktop-java.desktop"
         "freedesktop-jconsole.desktop"
         "freedesktop-jshell.desktop")
-sha256sums=('9d90fc543c092f1bb399e674929088df5969bf7297bb9e607257d4edf6fc91f9'
+sha256sums=('7aaeab4a68471e630d91eaf5540d067c8ffd5f023031be082b889763c1f94f3a'
             '30b38fcbf1fcab6b33aea2e6d82e611f7d0ea974d1d11a87a262f598ba006fd9'
             '971a71d0a80d6e5e47d5ea722b723088e86425a943a5c3615da95417c8f5aca2'
             '77e45ece92bc9b0c638f5468c2050cc1dc4508308ec302e6910e793be97687ac')
@@ -35,7 +35,7 @@ case "${CARCH}" in
 esac
 
 _jvmdir="/usr/lib/jvm/java-${_majorver}-openjdk"
-_jdkdir="jdk${_majorver}u-${_hg_tag}"
+_jdkdir="jdk${_majorver}u-jdk-${_majorver}.${_minorver}.${_securityver}-${_updatever}"
 _imgdir="${_jdkdir}/build/linux-${_JARCH}-server-release/images"
 
 _nonheadless=(lib/libawt_xawt.{so,debuginfo}
@@ -114,17 +114,10 @@ build() {
   find "../${_imgdir}" -iname '*.so' -exec chmod +x {} \;
 }
 
-check() {
-  cd "jdk${_majorver}u-${_hg_tag}"
-  # TODO package jtreg
-  # make -k check
-}
-
 package_jre15-openjdk-headless() {
   pkgdesc="OpenJDK Java ${_majorver} headless runtime environment"
   depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
-           'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
-           'glibc' 'gcc-libs')
+           'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so')
   optdepends=('java-rhino: for some JavaScript support')
   provides=("java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
   backup=("etc/${pkgbase}/logging.properties"
@@ -183,8 +176,8 @@ package_jre15-openjdk-headless() {
 
 package_jre15-openjdk() {
   pkgdesc="OpenJDK Java ${_majorver} full runtime environment"
-  depends=("jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}" 'giflib' 'libgif.so'
-           'glibc' 'gcc-libs' 'libpng')
+  depends=("jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}" 'giflib'
+           'libgif.so' 'libpng')
   optdepends=('alsa-lib: for basic sound support'
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
@@ -207,7 +200,7 @@ package_jre15-openjdk() {
 package_jdk15-openjdk() {
   pkgdesc="OpenJDK Java ${_majorver} development kit"
   depends=("jre${_majorver}-openjdk=${pkgver}-${pkgrel}" 'java-environment-common=3'
-           'hicolor-icon-theme' 'libelf' 'glibc' 'gcc-libs')
+           'hicolor-icon-theme' 'libelf')
   provides=("java-environment=${_majorver}" "java-environment-jdk=${_majorver}" "java-environment-openjdk=${_majorver}" "jdk${_majorver}-openjdk=${pkgver}-${pkgrel}")
   install=install_jdk-openjdk.sh
 
@@ -250,7 +243,7 @@ package_jdk15-openjdk() {
   # Icons
   for s in 16 24 32 48; do
     install -Dm 644 \
-      "${srcdir}/jdk${_majorver}u-${_hg_tag}/src/java.desktop/unix/classes/sun/awt/X11/java-icon${s}.png" \
+      "${srcdir}/${_jdkdir}/src/java.desktop/unix/classes/sun/awt/X11/java-icon${s}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/${pkgbase}.png"
   done
 

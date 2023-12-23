@@ -1,6 +1,6 @@
 pkgbase = java-15-openjdk
-	pkgver = 15.0.3.u3
-	pkgrel = 3
+	pkgver = 15.0.10.u5
+	pkgrel = 1
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
@@ -27,13 +27,11 @@ pkgbase = java-15-openjdk
 	makedepends = libnet
 	makedepends = bash
 	makedepends = harfbuzz
-	makedepends = gcc-libs
-	makedepends = glibc
-	source = https://hg.openjdk.java.net/jdk-updates/jdk15u/archive/jdk-15.0.3+3.tar.gz
+	source = java-15-openjdk-15.0.10.u5.tar.gz::https://github.com/openjdk/jdk15u/archive/refs/tags/jdk-15.0.10+5.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 9d90fc543c092f1bb399e674929088df5969bf7297bb9e607257d4edf6fc91f9
+	sha256sums = 7aaeab4a68471e630d91eaf5540d067c8ffd5f023031be082b889763c1f94f3a
 	sha256sums = 30b38fcbf1fcab6b33aea2e6d82e611f7d0ea974d1d11a87a262f598ba006fd9
 	sha256sums = 971a71d0a80d6e5e47d5ea722b723088e86425a943a5c3615da95417c8f5aca2
 	sha256sums = 77e45ece92bc9b0c638f5468c2050cc1dc4508308ec302e6910e793be97687ac
@@ -53,12 +51,10 @@ pkgname = jre15-openjdk-headless
 	depends = libfreetype.so
 	depends = harfbuzz
 	depends = libharfbuzz.so
-	depends = glibc
-	depends = gcc-libs
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=15
 	provides = java-runtime-headless-openjdk=15
-	provides = jre15-openjdk-headless=15.0.3.u3-3
+	provides = jre15-openjdk-headless=15.0.10.u5-1
 	backup = etc/java-15-openjdk/logging.properties
 	backup = etc/java-15-openjdk/management/jmxremote.access
 	backup = etc/java-15-openjdk/management/jmxremote.password.template
@@ -77,39 +73,35 @@ pkgname = jre15-openjdk-headless
 pkgname = jre15-openjdk
 	pkgdesc = OpenJDK Java 15 full runtime environment
 	install = install_jre-openjdk.sh
-	depends = jre15-openjdk-headless=15.0.3.u3-3
+	depends = jre15-openjdk-headless=15.0.10.u5-1
 	depends = giflib
 	depends = libgif.so
-	depends = glibc
-	depends = gcc-libs
 	depends = libpng
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=15
 	provides = java-runtime-openjdk=15
-	provides = jre15-openjdk=15.0.3.u3-3
+	provides = jre15-openjdk=15.0.10.u5-1
 
 pkgname = jdk15-openjdk
 	pkgdesc = OpenJDK Java 15 development kit
 	install = install_jdk-openjdk.sh
-	depends = jre15-openjdk=15.0.3.u3-3
+	depends = jre15-openjdk=15.0.10.u5-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
-	depends = glibc
-	depends = gcc-libs
 	provides = java-environment=15
 	provides = java-environment-jdk=15
 	provides = java-environment-openjdk=15
-	provides = jdk15-openjdk=15.0.3.u3-3
+	provides = jdk15-openjdk=15.0.10.u5-1
 
 pkgname = openjdk15-src
 	pkgdesc = OpenJDK Java 15 sources
-	depends = jdk15-openjdk=15.0.3.u3-3
-	provides = openjdk15-src=15.0.3.u3-3
+	depends = jdk15-openjdk=15.0.10.u5-1
+	provides = openjdk15-src=15.0.10.u5-1
 
 pkgname = openjdk15-doc
 	pkgdesc = OpenJDK Java 15 documentation
-	depends = jdk15-openjdk=15.0.3.u3-3
-	provides = openjdk15-doc=15.0.3.u3-3
+	depends = jdk15-openjdk=15.0.10.u5-1
+	provides = openjdk15-doc=15.0.10.u5-1
