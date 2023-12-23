@@ -1,0 +1,18 @@
+pkgbase = python-pynamodb
+	pkgdesc = A pythonic interface to Amazon's DynamoDB
+	pkgver = 5.5.1
+	pkgrel = 1
+	url = https://pynamodb.readthedocs.io/
+	arch = any
+	license = MIT
+	checkdepends = python-blinker
+	checkdepends = python-pytest-env
+	checkdepends = python-pytest-mock
+	makedepends = python-setuptools
+	depends = python
+	depends = python-botocore
+	optdepends = python-blinker: for signals
+	source = https://github.com/pynamodb/PynamoDB/archive/5.5.1/PynamoDB-5.5.1.tar.gz
+	sha256sums = fdd9d7fec4874e998e3a7148a147ce4a59bc03123c08b048d944a191e5ea605a
+
+pkgname = python-pynamodb
