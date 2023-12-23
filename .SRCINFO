@@ -1,19 +1,18 @@
 pkgbase = msmtp-ntlm
 	pkgdesc = A mini smtp client - NTLM support
-	pkgver = 1.6.3
+	pkgver = 1.8.25
 	pkgrel = 1
-	url = http://msmtp.sourceforge.net
+	url = https://marlam.de/msmtp/
 	install = msmtp.install
-	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = texlive-plainextra
-	makedepends = gsasl-ntlm
 	makedepends = libsecret
+	makedepends = gsasl-ntlm
+	makedepends = texlive-plaingeneric
+	optdepends = netcat: for included msmtpq script
 	provides = msmtp
 	conflicts = msmtp
-	source = http://download.sourceforge.net/sourceforge/msmtp/msmtp-1.6.3.tar.xz
-	sha256sums = f982be069c0772c3ee83925f552f5dac5fb307d2d1c68202f9926bb13b757355
+	source = https://marlam.de/msmtp/releases/msmtp-1.8.25.tar.xz
+	sha256sums = 2dfe1dbbb397d26fe0b0b6b2e9cd2efdf9d72dd42d18e70d7f363ada2652d738
 
 pkgname = msmtp-ntlm
-
