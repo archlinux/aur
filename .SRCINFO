@@ -1,6 +1,6 @@
 pkgbase = gspt-git
 	pkgdesc = Spotify for Terminal written in Go.
-	pkgver = r287.29fb830
+	pkgver = r317.f85809c
 	pkgrel = 1
 	url = https://github.com/aditya-K2/gspt
 	arch = x86_64

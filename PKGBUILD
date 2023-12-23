@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=gspt-git
-pkgver=r287.29fb830
+pkgver=r317.f85809c
 pkgrel=1
 pkgdesc='Spotify for Terminal written in Go.'
 arch=('x86_64')
