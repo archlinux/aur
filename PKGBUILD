@@ -8,14 +8,14 @@ _pkgname=vim
 pkgname="gvim-git"
 pkgver=8.0.0342
 pkgrel=1
-pkgdesc='Vim the editor. CLI version and GTK2 GUI providing majority of features.'
+pkgdesc='Vim the editor. CLI version and GTK3 GUI providing majority of features.'
 arch=('i686' 'x86_64')
 url='http://www.vim.org'
 license=('custom:vim')
-depends=('vim-runtime-git' 'libxt' 'gtk2')
-optdepends=('lua: Lua interpreter' 'perl: Perl interpreter' 'python: Python 3 interpreter'
-            'python2: Python 2 interpreter' 'ruby: Ruby interpreter')
-makedepends=('git' 'lua' 'python' 'python2' 'ruby')
+depends=('vim-runtime-git' 'libxt' 'gtk3')
+optdepends=('lua: Lua interpreter' 'perl: Perl interpreter'
+            'python: Python 3 interpreter' 'ruby: Ruby interpreter')
+makedepends=('git' 'lua' 'python' 'ruby')
 provides=('gvim' 'xxd')
 conflicts=("vim-minimal"{,-git} "vim"{,-git} 'vim-python3' "gvim"{,-python3})
 source=("git+https://github.com/$_pkgname/$_pkgname.git")
@@ -40,12 +40,11 @@ build() {
       --enable-fail-if-missing \
       --with-compiledby='Arch Linux AUR' \
       --prefix=/usr \
-      --enable-gui=gtk2 \
+      --enable-gui=gtk3 \
       --with-features=huge \
       --enable-cscope \
       --enable-multibyte \
       --enable-perlinterp=dynamic \
-      --enable-pythoninterp=dynamic \
       --enable-python3interp=dynamic \
       --enable-rubyinterp=dynamic \
       --enable-luainterp=dynamic
