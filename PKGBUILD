@@ -2,13 +2,13 @@
 
 pkgname=bauh-staging
 pkgver=0.10.6.RC
-pkgrel=20
+pkgrel=21
 _commit="2bcbaf85e1648400c21b58e2214d2a117371a9a3"
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web). Testing branch (it may not be working properly)."
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
-depends=('python' 'python-pyqt5' 'python-pyqt5-sip' 'python-requests' 'python-colorama' 'python-pyaml' 'qt5-svg' 'python-dateutil' 'python-packaging')
+depends=('python' 'python-pyqt5' 'python-pyqt5-sip' 'python-requests' 'python-colorama' 'python-pyaml' 'qt5-svg' 'python-dateutil')
 optdepends=('flatpak: required for Flatpak support' 
             'snapd: required for Snap support'
             'python-beautifulsoup4: for Native Web applications support'
