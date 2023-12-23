@@ -1,6 +1,6 @@
-pkgbase = k3s-git
+pkgbase = k3s
 	pkgdesc = Lightweight Kubernetes
-	pkgver = 1.29.0+k3s1+r0+g3190a5faa2
+	pkgver = 1.29.0+k3s1
 	pkgrel = 1
 	url = https://k3s.io
 	arch = x86_64
@@ -8,12 +8,10 @@ pkgbase = k3s-git
 	makedepends = git
 	makedepends = go
 	makedepends = podman
-	provides = k3s
-	conflicts = k3s
 	backup = etc/systemd/system/k3s.service.env
 	backup = etc/systemd/system/k3s-agent.service.env
 	backup = etc/rancher/k3s/config.yaml
-	source = git+https://github.com/k3s-io/k3s
+	source = git+https://github.com/k3s-io/k3s#tag=v1.29.0+k3s1
 	source = k3s.service.env
 	source = k3s-agent.service.env
 	source = config.yaml
@@ -38,4 +36,4 @@ pkgbase = k3s-git
 	sha256sums = bb721e8850eb736ad9aad4f0a8ef20dac0e06d7731731c3541264f138be28b74
 	sha256sums = f448303dbbefef2645b8c2146d595643c0143c7300eab12a459b85a3b18b3d91
 
-pkgname = k3s-git
+pkgname = k3s

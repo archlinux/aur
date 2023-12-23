@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
-pkgname=k3s-git
-pkgver=1.29.0+k3s1+r0+g3190a5faa2
+pkgname=k3s
+pkgver=1.29.0+k3s1
 pkgrel=1
 pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
@@ -13,15 +13,13 @@ makedepends=(
   # docker container during the officially blessed build path
   # curl jq yq zstd pigz
 )
-provides=(k3s)
-conflicts=(k3s)
 backup=(
   etc/systemd/system/k3s.service.env
   etc/systemd/system/k3s-agent.service.env
   etc/rancher/k3s/config.yaml
 )
 source=(
-  "git+https://github.com/k3s-io/k3s"
+  "git+https://github.com/k3s-io/k3s#tag=v${pkgver}"
   'k3s.service.env'
   'k3s-agent.service.env'
   'config.yaml'
@@ -46,11 +44,6 @@ sha256sums=('SKIP'
             '616063a668d510f163aa684e78fcf89d1b8cc8e1524acdc170608bfbf0e80e47'
             'bb721e8850eb736ad9aad4f0a8ef20dac0e06d7731731c3541264f138be28b74'
             'f448303dbbefef2645b8c2146d595643c0143c7300eab12a459b85a3b18b3d91')
-
-pkgver() {
-  cd k3s
-  git describe --long --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
-}
 
 prepare() {
   cd k3s
