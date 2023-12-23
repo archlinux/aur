@@ -4,7 +4,7 @@
 pkgname=wine-lol-staging
 pkgver=8.21
 _winever=8.21
-pkgrel=1
+pkgrel=2
 pkgdesc='A compatibility layer for running Windows programs (staging branch) with LoL patches'
 arch=('x86_64')
 url='https://wiki.winehq.org/Wine-Staging'
@@ -20,6 +20,7 @@ source=("git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v${_winever}"
         "0008-ntdll-nopguard-call_vectored_handlers.patch"
         "0009-kernel32-dont-create-console-when-not-cui.patch"
         "0011-ntdll-signal_set_full_context-amd64.patch"
+        "0012-ntdll-implement-ntcontinueex.patch"
         )
 
 sha256sums=('SKIP'
@@ -29,6 +30,7 @@ sha256sums=('SKIP'
             '2075ddc417ddd11954f76be753c88e04db28f0b3937e60508f178630dd5763eb'
             'b19443ba1e01014ab478b03ac84797df2d481432798259371d94e4ba2e7b317c'
             '8dfef7fdbeb4bf503f72c2b3a15033849f67197d6d9571135369b4b0183ea213'
+            '8bb15743e589f7505817309122e04af8cb99e12459a9b4ef05b14eeef10ccc83'
             )
 
 depends=(
@@ -134,6 +136,10 @@ prepare() {
     # Fix NtSetContextThread syscall
     echo 'Apply 00011-ntdll-signal_set_full_context-amd64.patch'
     patch -Np1 < "${srcdir}/0011-ntdll-signal_set_full_context-amd64.patch"
+
+    # Missing syscall introduced in windows 10
+    echo 'Apply 0012-ntdll-implement-ntcontinueex.patch'
+    patch -Np1 < "${srcdir}/0012-ntdll-implement-ntcontinueex.patch"
 
     # Clean up .orig files
     echo "Clean up .orig files"
