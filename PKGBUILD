@@ -1,23 +1,35 @@
-# Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
-pkgname='easybuild-easyconfigs-git'
-pkgver=3.5.1.r142.g0c1a5150e
+# Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
+_pkg='easybuild-easyconfigs'
+pkgname="${_pkg}-git"
+pkgver=4.8.2.r812.g41cde8911c
 pkgrel=1
 pkgdesc="A software build and installation framework for HPC systems"
 arch=('any')
-groups=('easybuild-git')
 url="https://github.com/easybuilders/easybuild-easyconfigs"
-license=('GPL')
-depends=('python2' 'easybuild-easyblocks-git')
-makedepends=('git' 'python2-setuptools')
-source=('git+https://github.com/easybuilders/easybuild-easyconfigs.git#branch=develop')
+license=('GPL2')
+depends=('python' 'easybuild-easyblocks')
+makedepends=('git' 'python-setuptools')
+provides=("$_pkg")
+source=("git+https://github.com/easybuilders/${_pkg}.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/easybuild-easyconfigs"
+    cd "$srcdir/$_pkg"
     printf "%s" "$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/.*v\(.*\)$/\1/;s/-/./g')"
 }
 
+prepare() {
+    git -C "$srcdir/$_pkg" clean -dfx
+}
+
+build() {
+    cd "$srcdir/$_pkg"
+    python setup.py build
+}
+
 package() {
-    cd "$srcdir/easybuild-easyconfigs"
-    python2 setup.py install --root "$pkgdir"
+    cd "$srcdir/$_pkg"
+
+    local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+    python setup.py install --root="$pkgdir" --optimize=1
 }

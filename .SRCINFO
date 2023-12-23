@@ -1,17 +1,16 @@
 pkgbase = easybuild-easyconfigs-git
 	pkgdesc = A software build and installation framework for HPC systems
-	pkgver = 3.5.1.r142.g0c1a5150e
+	pkgver = 4.8.2.r812.g41cde8911c
 	pkgrel = 1
 	url = https://github.com/easybuilders/easybuild-easyconfigs
 	arch = any
-	groups = easybuild-git
-	license = GPL
+	license = GPL2
 	makedepends = git
-	makedepends = python2-setuptools
-	depends = python2
-	depends = easybuild-easyblocks-git
+	makedepends = python-setuptools
+	depends = python
+	depends = easybuild-easyblocks
+	provides = easybuild-easyconfigs
 	source = git+https://github.com/easybuilders/easybuild-easyconfigs.git#branch=develop
 	md5sums = SKIP
 
 pkgname = easybuild-easyconfigs-git
-
