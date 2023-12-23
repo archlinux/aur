@@ -1,0 +1,13 @@
+pkgbase = heynote-bin
+	pkgdesc = A dedicated scratchpad for developers
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/heynote/heynote
+	arch = x86_64
+	license = MIT
+	provides = heynote
+	options = !strip
+	source = https://github.com/heyman/heynote/releases/download/v1.4.2/Heynote_1.4.2_x86_64.AppImage
+	sha256sums = 439631946509546a565154529182a128ed94a86df1d205c0979b641727442ce9
+
+pkgname = heynote-bin
