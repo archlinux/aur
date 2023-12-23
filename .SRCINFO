@@ -1,6 +1,6 @@
 pkgbase = powerline-shell-git
 	pkgdesc = A pretty prompt for your shell
-	pkgver = r546.73b01d6
+	pkgver = r588.4b19aa4
 	pkgrel = 1
 	url = https://github.com/b-ryan/powerline-shell
 	arch = any
@@ -8,10 +8,8 @@ pkgbase = powerline-shell-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
-	depends = python-argparse
 	provides = powerline-shell
-	source = git://github.com/b-ryan/powerline-shell.git
+	source = git+http://github.com/b-ryan/powerline-shell.git
 	md5sums = SKIP
 
 pkgname = powerline-shell-git
-
