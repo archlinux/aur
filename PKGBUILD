@@ -18,7 +18,7 @@ depends=(glibc)
 makedepends=(git
     cmake
     ninja)
-optdepends=()
+optdepends=("can-isotp-dkms: Kernel modules for isotp")
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -34,6 +34,8 @@ prepare()
 
 build() {
     cd "${srcdir}/${pkgname}"
+    sed -i "s|sbin|bin|g" mcp251xfd/99-devcoredump.rules
+
     cmake -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D CMAKE_INSTALL_LIBDIR=lib \
@@ -46,5 +48,7 @@ build() {
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
 
-    install -Dm644 "${srcdir}/${pkgname}"/*.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
+    install -Dm0755 "${srcdir}/${pkgname}/mcp251xfd/devcoredump" -t "${pkgdir}/usr/bin/"
+    install -Dm0644 "${srcdir}/${pkgname}/mcp251xfd/99-devcoredump.rules" -t "${pkgdir}/usr/lib/udev/rules.d/"
+    install -Dm0644 "${srcdir}/${pkgname}"/*.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
 }

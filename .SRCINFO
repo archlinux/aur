@@ -11,6 +11,7 @@ pkgbase = can-utils-git
 	makedepends = cmake
 	makedepends = ninja
 	depends = glibc
+	optdepends = can-isotp-dkms: Kernel modules for isotp
 	provides = can-utils
 	conflicts = can-utils
 	source = can-utils-git::git+https://github.com/linux-can/can-utils.git
