@@ -2,7 +2,7 @@
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 _base=hvplot
 pkgname=python-${_base}
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A high-level plotting API for pandas, dask, xarray, and networkx built on HoloViews"
 arch=(any)
@@ -14,7 +14,7 @@ checkdepends=(python-pytest python-parameterized python-xarray python-matplotlib
   python-scipy python-plotly python-datashader python-dask python-geopandas) # python-netcdf4 python-streamz python-geoviews
 optdepends=('python-xarray: for datetime handled as xarray data')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('d5f602d75d2a4ac2b1790408955f6caf4329ee0442aedf288a2a3a5703ef797c30910e0fe3d60d087e21b42436a64ebb518fb0d2a6019efcdc6f4e2a4b0bdf54')
+sha512sums=('1c94b8e9cd16af9342fd2e0113dd93d7c7bae681840cb04bdf7ff0b3ecc472018c252b05bd0c00c9cc69b367232e640c3113ac9a4fe7598d89c774afee831973')
 
 build() {
   cd ${_base}-${pkgver}
