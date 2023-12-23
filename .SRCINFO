@@ -1,0 +1,18 @@
+pkgbase = league-rpc-linux-git
+	pkgdesc = League of Legends Discord Rich Presence for Linux (WINE / Lutris)
+	pkgver = 0.0.8.r0.2759805
+	pkgrel = 1
+	url = https://github.com/Its-Haze/league-rpc-linux
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-pypresence
+	makedepends = python-psutil
+	makedepends = python-requests
+	makedepends = pyinstaller
+	provides = league-rpc-linux
+	conflicts = league-rpc-linux
+	source = league-rpc-linux::git+https://github.com/Its-Haze/league-rpc-linux.git
+	sha256sums = SKIP
+
+pkgname = league-rpc-linux-git
