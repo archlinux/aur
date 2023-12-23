@@ -6,12 +6,12 @@
 
 pkgname=blockattack
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source Tetris Attack clone"
 arch=('i686' 'x86_64')
 url="https://blockattack.net"
 license=('GPL')
-depends=('boost-libs' 'sdl2_mixer' 'sdl2_image' 'sdl2_ttf' 'physfs' 'hicolor-icon-theme')
+depends=('gcc-libs' 'glibc' 'boost-libs' 'sdl2' 'sdl2_mixer' 'sdl2_image' 'sdl2_ttf' 'physfs' 'hicolor-icon-theme')
 makedepends=('cmake' 'boost' 'zip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/blockattack/blockattack-game/archive/v$pkgver.tar.gz")
 sha256sums=('854a46da145dd25a030c159363bb3fd9a6e9c0035f775bdc512a79358697d59c')
