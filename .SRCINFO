@@ -1,6 +1,6 @@
 pkgbase = python-widlparser
 	pkgdesc = WebIDL Parser
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://pypi.org/project/widlparser
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-widlparser
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-typing-extensions
-	source = python-widlparser::git+https://gitlab.linss.com/open-source/python/widlparser.git#tag=v1.1.3
+	source = python-widlparser::git+https://gitlab.linss.com/open-source/python/widlparser.git#tag=v1.1.4
 	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = f348501d1ffcefb090a49e4ec6911786e7913347f50f0924d5256497213a2493

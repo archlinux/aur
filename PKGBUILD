@@ -2,7 +2,7 @@
 
 _pkgname=widlparser
 pkgname="python-$_pkgname"
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="WebIDL Parser"
 arch=('any')
