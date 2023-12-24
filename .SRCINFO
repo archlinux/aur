@@ -12,7 +12,7 @@ pkgbase = hid-lg-g710-plus-dkms-git
 	conflicts = hid-lg-g710-plus
 	conflicts = logitech-g710-kmod-git
 	conflicts = logitech-g710
-	source = hid-lg-g710-plus::git://github.com/jonpas/logitech-g710-linux-driver.git
+	source = hid-lg-g710-plus::git+https://github.com/jonpas/logitech-g710-linux-driver.git
 	sha256sums = SKIP
 
 pkgname = hid-lg-g710-plus-dkms-git

@@ -16,7 +16,7 @@ makedepends=('git')
 provides=('hid-lg-g710-plus')
 conflicts=('hid-lg-g710-plus' 'logitech-g710-kmod-git' 'logitech-g710')
 
-source=("${_pkgbase}::git://github.com/jonpas/logitech-g710-linux-driver.git")
+source=("${_pkgbase}::git+https://github.com/jonpas/logitech-g710-linux-driver.git")
 sha256sums=('SKIP')
 
 pkgver() {
