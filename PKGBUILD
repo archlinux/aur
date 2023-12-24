@@ -2,16 +2,17 @@
 # Maintainer: Hristos N. Triantafillou <me@hristos.co>
 
 pkgname=openmw-validator
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc='Validate your OpenMW configuration file by checking it for various errors, also give various useful stats about data file usage.'
 arch=('x86_64')
-url='https://git.sr.ht/~hristoast/openmw-validator'
+url='https://gitlab.com/modding-openmw/openmw-validator'
 license=('GPL3')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha512sums=('333e83a3de9047d7fc6c4220c9c2361691d153dae8ba89736a6e9b5d59e5f864312d33d84554325e4d5c463e12f0e5ca31141cbf459e1d284cdd4394b34e23a1')
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/${pkgver}/openmw-validator-${pkgver}.tar.gz")
+sha512sums=('ed64a8e0d7411480eed0c9574485e497b347410d77ad5d939770580b1d706badb11e119cbdd1b809b1d6b0c67b9e65efdafdeb529c86b898de42cdc1018ad111')
+# https://gitlab.com/modding-openmw/openmw-validator/-/archive/1.8/openmw-validator-1.8.tar.gz
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
