@@ -1,19 +1,19 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
-pkgname=swayosd-git
-_pkgname="${pkgname%-git}"
+pkgname=swayosd-ferdi265-git
+_pkgname="${pkgname%-ferdi265-git}"
 _reponame=SwayOSD
-pkgver=r44.1c7d2f5
+pkgver=r56.25e69ae
 pkgrel=1
 pkgdesc="A GTK based on screen display for keyboard shortcuts like caps-lock and volume"
 arch=('x86_64' 'aarch64' 'i686')
-url="https://github.com/ErikReider/SwayOSD"
+url="https://github.com/Ferdi265/SwayOSD"
 license=('GPL3')
 depends=('gtk3' 'gtk-layer-shell' 'pulseaudio' 'libinput')
 makedepends=('git' 'cargo' 'meson' 'ninja')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname}" "${_pkgname}-git")
+conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 

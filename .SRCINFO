@@ -1,8 +1,8 @@
-pkgbase = swayosd-git
+pkgbase = swayosd-ferdi265-git
 	pkgdesc = A GTK based on screen display for keyboard shortcuts like caps-lock and volume
-	pkgver = r44.1c7d2f5
+	pkgver = r56.25e69ae
 	pkgrel = 1
-	url = https://github.com/ErikReider/SwayOSD
+	url = https://github.com/Ferdi265/SwayOSD
 	arch = x86_64
 	arch = aarch64
 	arch = i686
@@ -16,8 +16,10 @@ pkgbase = swayosd-git
 	depends = pulseaudio
 	depends = libinput
 	provides = swayosd
+	provides = swayosd-git
 	conflicts = swayosd
-	source = git+https://github.com/ErikReider/SwayOSD.git
+	conflicts = swayosd-git
+	source = git+https://github.com/Ferdi265/SwayOSD.git
 	sha256sums = SKIP
 
-pkgname = swayosd-git
+pkgname = swayosd-ferdi265-git
