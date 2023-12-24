@@ -4,7 +4,7 @@
 
 pkgname=("yesplaymusicosd-origin-git" "yesplaymusicosd-origin-electron-git")
 pkgver=0.4.5.r47.g90a57c3
-pkgrel=1
+pkgrel=2
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux :electron: 支持桌面歌词！(no fork)."
 arch=("x86_64" "aarch64")
 url="https://github.com/shih-liang/YesPlayMusicOSD" 
@@ -17,12 +17,10 @@ optdepends=('yt-dlp: Youtube source for built-in UnblockNeteaseMusic')
 source=(
     "git+https://github.com/shih-liang/YesPlayMusicOSD.git"
     "01-lyric.diff"
-    "02-mpris-url.patch"
     "yesplaymusic.desktop"
     "yesplaymusic")
 sha256sums=('SKIP'
             'f309cc37a283a9396d91056754e734e8f8e56afc82458b35e275d6c5e35efaab'
-            '59ef697b14cc20aa0769991de80057b1ed9ee3624d2ba00d60c23dbd1d90d214'
             '5b53cb0b2dfea09b992671e6e58057264fa4628fd61851d216bd0d7c7f8e0969'
             '1a668db904a1d8f5c849aace5916d7013949021f44b0ce9c8e40bf4d643821f3')
 _electron=electron13
@@ -41,7 +39,6 @@ esac
 prepare(){
     cd "${srcdir}/YesPlayMusicOSD"
     git apply "${srcdir}/01-lyric.diff"
-    git apply "${srcdir}/02-mpris-url.patch"
     # https://github.com/shih-liang/YesPlayMusicOSD/issues/266#issuecomment-1303486341
     cp .env.example .env
     yarn install --ignore-engines # Hope shih-liang will update vue to a newer version
