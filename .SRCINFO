@@ -1,18 +1,17 @@
 pkgbase = immersed
 	pkgdesc = Immersed Desktop Agent
-	pkgver = 9.9
+	pkgver = 10.0
 	pkgrel = 1
 	url = https://immersed.com/
 	arch = x86_64
 	license = unknown
-	makedepends = gendesk
 	depends = fuse
 	optdepends = V4L2LOOPBACK-MODULE: Virtual webcam support
 	noextract = Immersed-x86_64.AppImage
 	options = !strip
 	source_x86_64 = Immersed-x86_64.AppImage::https://static.immersed.com/dl/Immersed-x86_64.AppImage
-	source_x86_64 = immersed.png::https://immersed.com/assets/favicon/android-icon-192x192-202d04a8c19d3974616bc5dd9136796dbc04f4c10a4b32277d5eeb0d22e846b0.png
-	sha256sums_x86_64 = 3bcddffad1b236bb7122a99cfc3de08832098a4f98b504b2910c3bcfe0ac2ab6
+	source_x86_64 = immersed.desktop
+	sha256sums_x86_64 = a3fde755e3b048c148f4484704a78ddecb3c05f9ac7bd2cc21e82b77dbfb523e
 	sha256sums_x86_64 = SKIP
 
 pkgname = immersed

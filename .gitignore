@@ -1,6 +1,4 @@
 src
 pkg
-*.deb
 *.pkg*
-*.png
 *.AppImage
