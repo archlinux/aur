@@ -1,12 +1,13 @@
 pkgbase = opentabletdriver
 	pkgdesc = A cross-platform open source tablet driver
 	pkgver = 0.6.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opentabletdriver.net
 	install = notes.install
 	arch = x86_64
 	license = LGPL3
 	makedepends = dotnet-sdk>=6.0
+	makedepends = jq
 	depends = dotnet-runtime-6.0
 	depends = gtk3
 	depends = libevdev
