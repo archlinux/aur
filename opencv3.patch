@@ -1,18 +1,17 @@
 diff --git a/src/camera/pfsalign.cpp b/src/camera/pfsalign.cpp
-index 12c7642..91c97ab 100644
+index 4ea59c7..fcd94b2 100644
 --- a/src/camera/pfsalign.cpp
 +++ b/src/camera/pfsalign.cpp
-@@ -43,7 +43,8 @@
+@@ -48,6 +48,8 @@
  #include <opencv2/core/core.hpp>
  #include <opencv2/highgui/highgui.hpp>
  #include <opencv2/features2d/features2d.hpp>
--#include <opencv2/nonfree/features2d.hpp>
 +#include <opencv2/features2d.hpp>
 +#include <opencv2/xfeatures2d/nonfree.hpp>
  #include <opencv2/calib3d/calib3d.hpp>
  #include <opencv2/imgproc/imgproc.hpp>
  #include <libexif/exif-data.h>
-@@ -61,6 +62,7 @@ class QuietException
+@@ -69,6 +71,7 @@ class QuietException
  
  using namespace cv;
  using namespace std;
@@ -20,54 +19,34 @@ index 12c7642..91c97ab 100644
  
  void printHelp()
  {
-@@ -141,8 +143,12 @@ bool alignImagePair( const Mat &ref_img, const Mat &exp_img, Mat &homography, in
-     //    cv::imshow( "Result2", exp_img );
-     //    cv::waitKey(0);
+@@ -168,11 +171,10 @@ bool alignImagePair( const Mat &ref_img, const Mat &exp_img, Mat &homography, in
+     Mat descr_ref, descr_exp;
  
--    Ptr<FeatureDetector> detector(new DynamicAdaptedFeatureDetector( new SurfAdjuster( (11-sensitivity) * 100.f, 2, 1000 ),
+     #ifdef USE_SURF
+-        Ptr<FeatureDetector> detector(new DynamicAdaptedFeatureDetector( new SurfAdjuster( (11-sensitivity) * 100.f, 2, 1000 ),
 -                                                                     100, 1000, sensitivity/2+2 ));
-+    //Ptr<FeatureDetector> detector(new DynamicAdaptedFeatureDetector( new SurfAdjuster( (11-sensitivity) * 100.f, 2, 1000 ),
-+    //                                                                 100, 1000, sensitivity/2+2 ));
-+    
-+//        SiftDescriptorExtractor surfDesc;
-+    Ptr<SURF> surfDesc = SURF::create();
-+
- //    Ptr<FeatureDetector> detector;
-     //    detector = new GoodFeaturesToTrackDetector();
- //    detector = new SurfFeatureDetector();
-@@ -150,8 +156,8 @@ bool alignImagePair( const Mat &ref_img, const Mat &exp_img, Mat &homography, in
-     std::vector<KeyPoint> keypoints1, keypoints2;
- 
-     toc.tic( "feature detection" );
--    detector->detect( ref_img, keypoints1 );
--    detector->detect( exp_img, keypoints2 );
-+    surfDesc->detect( ref_img, keypoints1 );
-+    surfDesc->detect( exp_img, keypoints2 );
-     toc.toc( );
- 
-     if( keypoints1.size() < 10 || keypoints2.size() < 10 ) {
-@@ -171,13 +177,11 @@ bool alignImagePair( const Mat &ref_img, const Mat &exp_img, Mat &homography, in
++        Ptr<SURF> surfDesc = SURF::create();
+         toc.tic( "feature detection" );
+-        detector->detect( ref_img, keypoints1 );
+-        detector->detect( exp_img, keypoints2 );
++        surfDesc->detect( ref_img, keypoints1 );
++        surfDesc->detect( exp_img, keypoints2 );
+         toc.toc( );
+     #else
+         Ptr<AKAZE> akaze = AKAZE::create();
+@@ -202,13 +204,11 @@ bool alignImagePair( const Mat &ref_img, const Mat &exp_img, Mat &homography, in
          return false;
      }
  
 -    //        SiftDescriptorExtractor surfDesc;
--    SurfDescriptorExtractor surfDesc;
+     #ifdef USE_SURF
+-        SurfDescriptorExtractor surfDesc;
  
-     Mat descr_ref, descr_exp;
-     toc.tic( "descriptor extraction" );
--    surfDesc.compute( ref_img, keypoints1, descr_ref );
--    surfDesc.compute( exp_img, keypoints2, descr_exp );
-+    surfDesc->compute( ref_img, keypoints1, descr_ref );
-+    surfDesc->compute( exp_img, keypoints2, descr_exp );
-     toc.toc( );
+         toc.tic( "descriptor extraction" );
+-        surfDesc.compute( ref_img, keypoints1, descr_ref );
+-        surfDesc.compute( exp_img, keypoints2, descr_exp );
++        surfDesc->compute( ref_img, keypoints1, descr_ref );
++        surfDesc->compute( exp_img, keypoints2, descr_exp );
+         toc.toc( );
+     #endif
  
-     FlannBasedMatcher matcher;
-@@ -226,7 +230,7 @@
-
-     vector<uchar> inliners(matches_sym.size(), 0);
-     //        affine = findHomography( pp1, pp2, inliners, CV_RANSAC, 1. );
--    homography = findHomography( pp2, pp1, CV_RANSAC, 1., inliners );
-+    homography = findHomography( pp2, pp1, RANSAC, 1., inliners );
-
-     //    solve( pp1, pp2, affine, DECOMP_SVD );
-     //    Mat affine = (Mat_<float>(2,3) << 1, 0, 0, 0, 1, 10);
