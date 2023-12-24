@@ -1,7 +1,7 @@
 pkgbase = tcpterm
 	pkgdesc = a packet visualizer in TUI
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sachaos/tcpterm
 	arch = x86_64
 	license = GPL

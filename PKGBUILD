@@ -1,7 +1,7 @@
 # Maintainer: Matthew Sexton <matthew@asylumtech.com>
 pkgname=tcpterm
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='a packet visualizer in TUI'
 arch=('x86_64')
 url="https://github.com/sachaos/tcpterm"
