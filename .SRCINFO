@@ -1,0 +1,18 @@
+pkgbase = stable-diffusion.cpp-git
+	pkgdesc = Stable Diffusion in pure C/C++
+	pkgver = master.0e64238
+	pkgrel = 1
+	url = https://github.com/leejet/stable-diffusion.cpp
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	provides = stable-diffusion.cpp
+	conflicts = stable-diffusion.cpp
+	options = staticlibs
+	source = stable-diffusion.cpp::git+https://github.com/leejet/stable-diffusion.cpp
+	sha256sums = SKIP
+
+pkgname = stable-diffusion.cpp-git
