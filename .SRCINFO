@@ -1,6 +1,6 @@
 pkgbase = chatterino2-git
 	pkgdesc = Second installment of the Twitch chat client series "Chatterino", dev/git version
-	pkgver = 2.4.5.r91.g7d145e3
+	pkgver = 2.4.5.r152.g25add89
 	pkgrel = 1
 	url = https://chatterino.com
 	install = chatterino2-git.install
@@ -24,7 +24,6 @@ pkgbase = chatterino2-git
 	source = git+https://github.com/Chatterino/chatterino2
 	source = git+https://github.com/arsenm/sanitizers-cmake
 	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
-	source = git+https://github.com/getsentry/crashpad
 	source = git+https://github.com/pajlada/settings
 	source = git+https://github.com/pajlada/signals
 	source = git+https://github.com/pajlada/serialize
@@ -32,6 +31,7 @@ pkgbase = chatterino2-git
 	source = git+https://github.com/zaphoyd/websocketpp
 	source = git+https://github.com/Neargye/magic_enum
 	source = git+https://github.com/mackron/miniaudio
+	source = git+https://github.com/Chatterino/crash-handler
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
