@@ -3,7 +3,7 @@
 
 pkgname=bavarder
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chit-Chat with AI"
 arch=('any')
 url="https://bavarder.codeberg.page"
@@ -25,6 +25,7 @@ depends=(
     'python-curl-cffi'
     'libportal'
     'gtksourceview5'
+    'libportal-gtk4'
 )
 makedepends=(
     'blueprint-compiler>=0.8.1'
