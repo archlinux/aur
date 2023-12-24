@@ -9,7 +9,7 @@ pkgbase = ocaml-spawn
 	checkdepends = ocaml-ppx_expect
 	makedepends = dune>=2.8.0
 	depends = ocaml>=4.05.0
-	depends = ocaml-ppx_expect
+	depends = ocaml-ppx_bench
 	options = !strip
 	source = ocaml-spawn-0.15.1.tar.gz::https://github.com/janestreet/spawn/archive/v0.15.1.tar.gz
 	sha512sums = efdb31d5ec5ea36d0bc80224d4ee04e46ce3428d1662870e6cebece92bc313d6eebee378802c0c059dd6e0cafea515308c31b7dfaf04a098eb4566583c1e9ed4

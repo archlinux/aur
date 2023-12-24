@@ -9,7 +9,7 @@ pkgdesc='A small OCaml library for spawning sub-processes'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.05.0' 'ocaml-ppx_expect')
+depends=('ocaml>=4.05.0' 'ocaml-ppx_bench')
 makedepends=('dune>=2.8.0')
 checkdepends=('ocaml-ppx_expect')
 options=('!strip')
