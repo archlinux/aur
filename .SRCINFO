@@ -1,4 +1,5 @@
 pkgbase = mdformat-mkdocs-git
+	pkgdesc = mdformat plugin for MkDocs
 	pkgver = v1.1.0.r0.fb0132a
 	pkgrel = 1
 	url = https://github.com/KyleKing/mdformat-mkdocs
