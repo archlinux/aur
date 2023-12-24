@@ -13,7 +13,7 @@
 _name=protobuf
 pkgname=protobuf-21
 pkgver=21.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Protocol Buffers (legacy)'
 arch=(aarch64 x86_64)
 url='https://developers.google.com/protocol-buffers/'
@@ -57,7 +57,7 @@ build() {
 }
 
 package() {
-  provides=("protobuf=$pkgver" libprotoc.so libprotobuf.so libprotobuf-lite.so)
+  provides=(libprotoc.so libprotobuf.so libprotobuf-lite.so)
   DESTDIR="$pkgdir" cmake --install build
   cd $_name-$pkgver
   install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname

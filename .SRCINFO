@@ -1,7 +1,7 @@
 pkgbase = protobuf-21
 	pkgdesc = Protocol Buffers (legacy)
 	pkgver = 21.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.google.com/protocol-buffers/
 	arch = aarch64
 	arch = x86_64
@@ -23,7 +23,6 @@ pkgbase = protobuf-21
 	sha256sums = 96c4f97f662589d5daa0857ad47f740853cf273f817de21612383d76e4243b44
 
 pkgname = protobuf-21
-	provides = protobuf=21.12
 	provides = libprotoc.so
 	provides = libprotobuf.so
 	provides = libprotobuf-lite.so
