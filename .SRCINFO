@@ -1,12 +1,13 @@
 pkgbase = hyperrogue
 	pkgdesc = You are a lone outsider in a strange, non-Euclidean hyperbolic world
 	pkgver = 12.1q
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.roguetemple.com/z/hyper.php
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = glu
+	makedepends = glew
 	depends = sdl_gfx
 	depends = sdl_ttf
 	depends = sdl_mixer
