@@ -17,7 +17,7 @@ makedepends=('git' 'qt5-tools')
 conflicts=("${pkgname}-svn" "${pkgname}-for-screencloud" 'qt5-python27-git')
 replaces=("${pkgname}-qt5")
 
-source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('646ebb12ac0df0b7b26ed4efff6e5162681fb3d70a3f84342657da9ee0be0b9a31a24c094b5e3778e5529d7768a1b8ffbcdc94ce2161a9a5837ae7c376b2e5a8')
 
 build() {
