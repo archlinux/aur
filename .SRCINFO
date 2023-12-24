@@ -1,7 +1,7 @@
 pkgbase = bavarder
 	pkgdesc = Chit-Chat with AI
-	pkgver = 0.2.4
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://bavarder.codeberg.page
 	arch = any
 	license = GPL3
@@ -22,7 +22,9 @@ pkgbase = bavarder
 	depends = webkitgtk-6.0
 	depends = python-fake-useragent
 	depends = python-curl-cffi
-	source = bavarder-0.2.4.tar.gz::https://codeberg.org/Bavarder/Bavarder/archive/0.2.4.tar.gz
-	b2sums = 49605e7145ed657c58c94cbefb5f5c52c46adb40e4a59ea53baadc0d5055e228fdb961a1c9b801a59c075aa1f44e5f0db46be9030f8e77b6a5f9c0869793639d
+	depends = libportal
+	depends = gtksourceview5
+	source = bavarder-1.0.0.tar.gz::https://codeberg.org/Bavarder/Bavarder/archive/1.0.0.tar.gz
+	b2sums = 79a8ce6228450150e3ea7f2d93faaee97ae942648255475b1d777d5af663028b9fd1e0b0ee424b62c749122e81ee0b682a7ec243daca636260566c548d8b6ade
 
 pkgname = bavarder
