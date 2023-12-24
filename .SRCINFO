@@ -1,6 +1,6 @@
 pkgbase = pcsx2-avx-git
 	pkgdesc = Sony PlayStation 2 emulator
-	pkgver = 1.7.5318.r0.gfea213ee2
+	pkgver = 1.7.5329.r0.g47ae3ff8d
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2.install
@@ -18,6 +18,7 @@ pkgbase = pcsx2-avx-git
 	makedepends = qt6-wayland
 	makedepends = clang
 	makedepends = llvm
+	makedepends = lld
 	makedepends = mold
 	depends = alsa-lib
 	depends = ffmpeg

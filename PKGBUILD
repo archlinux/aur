@@ -13,7 +13,7 @@
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5318.r0.gfea213ee2
+pkgver=1.7.5329.r0.g47ae3ff8d
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -52,17 +52,16 @@ _main_package() {
     'qt6-wayland: Wayland support'
   )
 
-  if [[ "${_build_mold::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]] ; then
     makedepends+=(
       clang
       llvm
+      lld
     )
   fi
 
   if [[ "${_build_mold::1}" == "t" ]] ; then
     makedepends+=('mold')
-  else
-    makedepends+=('lld')
   fi
 
   provides=("$_pkgname")
@@ -227,11 +226,8 @@ build() {
     -DCMAKE_BUILD_TYPE="Release"
     -DCMAKE_INSTALL_PREFIX="/usr"
 
-    #-DLTO_PCSX2_CORE=ON # default:unset
     -DDISABLE_BUILD_DATE=ON # default:unset
-    #-DWAYLAND_API=OFF # default:ON
-
-    -DENABLE_TESTS=OFF
+    -DENABLE_TESTS=OFF # default:ON
     -Wno-dev
   )
 
@@ -253,7 +249,7 @@ build() {
       -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=mold"
       -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=mold"
     )
-  else
+  elif [[ "${_build_clang::1}" == "t" ]] ; then
     _cmake_options+=(
       -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld"
       -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
@@ -267,6 +263,7 @@ build() {
 
     _cmake_options+=(
       -DARCH_FLAG=" " # prevent march=native
+      -DDISABLE_ADVANCE_SIMD=OFF
     )
   else
     _cmake_options+=(-DDISABLE_ADVANCE_SIMD=ON)
