@@ -15,9 +15,9 @@ conflicts=("$pkgname")
 replaces=("wowman")
 noextract=("$pkgname-$pkgver")
 
-# "strongbox-1.2.3::https://github.com/ogri-la/strongbox/releases/download/1.2.3/strongbox"
+# "strongbox-1.2.3::https://github.com/ogri-la/strongbox/releases/download/1.2.3/strongbox-1.2.3-x86_64.AppImage"
 source=(
-    "$pkgname-$pkgver::https://github.com/ogri-la/strongbox/releases/download/$pkgver/$pkgname"
+    "$pkgname-$pkgver::https://github.com/ogri-la/strongbox/releases/download/$pkgver/$pkgname-$pkgver-x86_64.AppImage"
     "$pkgname.desktop"
 )
 
