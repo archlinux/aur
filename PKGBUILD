@@ -319,6 +319,7 @@ package_pipewire-git() {
   _pick pulse usr/share/pipewire/pipewire-pulse.conf
   _pick pulse usr/lib/udev
   _pick pulse usr/share/alsa-card-profile
+  _pick pulse usr/share/glib-2.0/schemas/org.freedesktop.pulseaudio.gschema.xml
 
   _pick alsa usr/lib/alsa-lib
   _pick alsa "usr/lib/spa-${_spa_ver}/alsa"
