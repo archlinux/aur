@@ -1,6 +1,6 @@
 pkgbase = knobs
 	pkgdesc = Manage system clock frequencies, power limits, and related values.
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://git.sr.ht/~eckso/knobs
 	install = knobs.install
@@ -14,7 +14,7 @@ pkgbase = knobs
 	depends = systemd
 	provides = knobs
 	conflicts = knobs
-	source = knobs::git+https://git.sr.ht/~eckso/knobs#commit=01587c0d131b3fd4abf3dbc6a1ba192017197672
+	source = knobs::git+https://git.sr.ht/~eckso/knobs#commit=22e517dc622fc8123398779731fd4f29d8200407
 	sha1sums = SKIP
 
 pkgname = knobs
