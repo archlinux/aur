@@ -1,13 +1,13 @@
 pkgbase = ttf-iosevka-fixed-curly
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 28.0.1
+	pkgver = 28.0.2
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v28.0.1/PkgTTF-IosevkaFixedCurly-28.0.1.zip
-	source = ttf-iosevka-fixed-curly-28.0.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v28.0.1/LICENSE.md
-	sha256sums = 8a5ed56401d7f961693a634f68fa94b1213076cc6b516e78f108f6ab22a772ca
+	source = https://github.com/be5invis/Iosevka/releases/download/v28.0.2/PkgTTF-IosevkaFixedCurly-28.0.2.zip
+	source = ttf-iosevka-fixed-curly-28.0.2-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v28.0.2/LICENSE.md
+	sha256sums = 90adbc6fd6bba6dd3cc68a838f60fb7824a675b10b03cc6953d98bb107715ed1
 	sha256sums = 7484961b97b41985d54c21700e53f7142a7007d72401acbd32c0b9c6a5a0b558
 
 pkgname = ttf-iosevka-fixed-curly
