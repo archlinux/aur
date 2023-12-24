@@ -1,12 +1,13 @@
 pkgbase = r-modeltools
 	pkgdesc = Tools and Classes for Statistical Models
 	pkgver = 0.2.23
-	pkgrel = 10
+	pkgrel = 12
 	url = https://cran.r-project.org/package=modeltools
 	arch = any
-	license = GPL
+	license = GPL2
 	depends = r
 	source = https://cran.r-project.org/src/contrib/modeltools_0.2-23.tar.gz
-	sha256sums = 6b3e8d5af1a039db5c178498dbf354ed1c5627a8cea9229726644053443210ef
+	md5sums = 954e3f72a5fd9086f070f7fcc41a08f1
+	b2sums = af734abbab0177159bcb62babe233d777c697d510d0d152b3b1303c02e174a2ee6bc1a3767725ba89b20a83222a1e848d62ac31cf625d0ccc0aa3db150204c33
 
 pkgname = r-modeltools
