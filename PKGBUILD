@@ -2,7 +2,7 @@
 
 pkgname='vodbot-git'
 pkgver=1.1.10.r0.g376e311
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line interface VOD and Clip manager for Twitch.'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/FriendTeamInc/VodBot"
@@ -36,4 +36,5 @@ build() {
 package() {
     cd "$pkgname"
     python setup.py install --root="${pkgdir}/"
+    install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname%????}/LICENSE"
 }
