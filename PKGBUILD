@@ -6,23 +6,23 @@
 
 _pkgname=stellarium
 pkgname=${_pkgname}-lite
-pkgver=23.3
+pkgver=23.4
 pkgrel=1
 pkgdesc="Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)"
 arch=(x86_64)
 url="https://${_pkgname}.org"
 license=(GPL2)
 depends=('libpng' 'libglvnd' 'freetype2' 'openssl' 'calcmysky>=0.3'
-         'qt6-charts' 'qt6-multimedia' 'qt6-webengine') # 'qxlsx'
+         'qt6-charts' 'qt6-multimedia' 'qt6-webengine' 'nlopt') # 'qxlsx'
 makedepends=('cmake' 'ninja' 'mesa' 'qt6-tools')
 optdepends=('man-db: manual pages for stellarium')
 conflicts=(${_pkgname})
 source=(https://github.com/Stellarium/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
-md5sums=('04bcc9996f73f9861700126eba1645ce'
-  'SKIP')
-sha256sums=('55afd3bd44de76c156dadb17d52023ed5d4a74297dcff3c98eb71adef0fd66d9'
-  'SKIP')
+md5sums=('6107d1e352216b1e20d3cf3d45cea277'
+         'SKIP')
+sha256sums=('db4db9f205cc13fb68e3f3c4c895754d16868e4d25a14da44db6d0d809e39943'
+            'SKIP')
 
 #prepare() {
 #  # FIXME: https://github.com/Stellarium/stellarium/issues/3132#issuecomment-1485304021

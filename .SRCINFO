@@ -1,6 +1,6 @@
 pkgbase = stellarium-lite
 	pkgdesc = Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)
-	pkgver = 23.3
+	pkgver = 23.4
 	pkgrel = 1
 	url = https://stellarium.org
 	arch = x86_64
@@ -17,14 +17,15 @@ pkgbase = stellarium-lite
 	depends = qt6-charts
 	depends = qt6-multimedia
 	depends = qt6-webengine
+	depends = nlopt
 	optdepends = man-db: manual pages for stellarium
 	conflicts = stellarium
-	source = https://github.com/Stellarium/stellarium/releases/download/v23.3/stellarium-23.3.tar.gz
-	source = https://github.com/Stellarium/stellarium/releases/download/v23.3/stellarium-23.3.tar.gz.asc
+	source = https://github.com/Stellarium/stellarium/releases/download/v23.4/stellarium-23.4.tar.gz
+	source = https://github.com/Stellarium/stellarium/releases/download/v23.4/stellarium-23.4.tar.gz.asc
 	validpgpkeys = 79151C2E6351E7278DA1A730BF38D4D02A328DFF
-	md5sums = 04bcc9996f73f9861700126eba1645ce
+	md5sums = 6107d1e352216b1e20d3cf3d45cea277
 	md5sums = SKIP
-	sha256sums = 55afd3bd44de76c156dadb17d52023ed5d4a74297dcff3c98eb71adef0fd66d9
+	sha256sums = db4db9f205cc13fb68e3f3c4c895754d16868e4d25a14da44db6d0d809e39943
 	sha256sums = SKIP
 
 pkgname = stellarium-lite
