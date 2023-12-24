@@ -6,6 +6,7 @@ pkgbase = coppeliasim-bin
 	arch = x86_64
 	license = GPL
 	license = LGPL
+	depends = ffmpeg
 	optdepends = icu60: BlueZero api dependency
 	provides = vrep
 	provides = coppeliasim

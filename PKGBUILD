@@ -11,6 +11,7 @@ arch=("x86_64")
 url="http://www.coppeliarobotics.com/"
 license=("GPL" "LGPL")
 optdepends=('icu60: BlueZero api dependency')
+depends=('ffmpeg')
 conflicts=('coppeliasim')
 options=(!strip)
 provides=('vrep' 'coppeliasim')
