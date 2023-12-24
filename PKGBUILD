@@ -1,7 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
-
 pkgname=python-scikit-learn-git
-pkgver=r26390.6b4f82433d
+pkgver=0.19.branching.r8706.2164bb16b9
 pkgrel=1
 pkgdesc="A set of Python modules for machine learning and data mining"
 arch=(x86_64)
@@ -18,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/scikit-learn"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = python-scikit-learn-git
 	pkgdesc = A set of Python modules for machine learning and data mining
-	pkgver = r26390.6b4f82433d
+	pkgver = 0.19.branching.r8706.2164bb16b9
 	pkgrel = 1
 	url = https://scikit-learn.org/
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = python-scikit-learn-git
 	sha256sums = SKIP
 
 pkgname = python-scikit-learn-git
-
