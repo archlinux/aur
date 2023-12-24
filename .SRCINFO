@@ -1,6 +1,6 @@
 pkgbase = python-readthedocs-sphinx-ext
 	pkgdesc = Sphinx extension for Read the Docs overrides
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://github.com/jayvdb/sphinx-epytext
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-readthedocs-sphinx-ext
 	checkdepends = python-pytest
 	checkdepends = python-sphinx
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/r/readthedocs-sphinx-ext/readthedocs-sphinx-ext-2.2.4.tar.gz
-	md5sums = c9688a9d10831dbd9c1826ee3465970b
+	source = https://files.pythonhosted.org/packages/source/r/readthedocs-sphinx-ext/readthedocs-sphinx-ext-2.2.5.tar.gz
+	md5sums = 822b8481398c118b9f5ab1ccabf7661d
 
 pkgname = python-readthedocs-sphinx-ext
 	depends = python-sphinx
