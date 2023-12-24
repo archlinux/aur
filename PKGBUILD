@@ -3,13 +3,13 @@ shopt -s globstar
 _pkgname=lichobile
 pkgname="$_pkgname-electron"
 pkgver=8.0.0
-pkgrel=2
+pkgrel=4
 pkgdesc="lichess.org mobile application, packaged with electron"
 arch=(any)
 url="https://lichess.org/mobile"
 license=("GPL-3.0-or-later")
 makedepends=(npm)
-source=("https://github.com/veloce/lichobile/archive/refs/tags/v$pkgver.tar.gz" "appconfig.prod.json" "run.sh" "lichobile-electron.desktop" "lichesslogowhite.svg" "hide-scrollbar.patch" "native-stockfish.patch" "index.js" "preload.js")
+source=("https://github.com/veloce/lichobile/archive/refs/tags/v$pkgver.tar.gz" "appconfig.prod.json" "run.sh" "lichobile-electron.desktop" "lichesslogowhite.svg" "hide-scrollbar.patch" "native-stockfish.patch" "toast.patch" "index.js.in" "preload.js")
 sha256sums=('7ab9bcb1900ff1ff07197cc871e1c0f3e4b4d0ed964f5757d98dd58e73e822d3'
             'a41fe45549f76234f1922a30289db674531a7fa4d11e355e57df2fbd2e5795aa'
             '759fd9dd1ee0423be68b0a0466bd059f71408fc8e1bff461c94b4378a23a2f49'
@@ -17,7 +17,8 @@ sha256sums=('7ab9bcb1900ff1ff07197cc871e1c0f3e4b4d0ed964f5757d98dd58e73e822d3'
             '3d9e0bb9a5d16df02483263810cfa461263cd320f83baaf5ec69ad5c2b8c01fa'
             '3168ad338a32361887f6592ebaf503e0594f8d4e5facb5ad71e5b6f84650b396'
             'd33f4ef5f0ad3fa0bee15c918199060f9e4148e96457285b1b6af7fdd1a741bd'
-            '68af775157aba1028e10c8504e4e0ad06042f032913a0a6bc4a35fd29c3a6af7'
+            '9737dc62e2984da6be3e4fdceaa112938d5e04035b9dfe9808d574d53dcd68d7'
+            'ffefed08caa1727c100a20c2421ea1a1e9a4f4a80c70c3986585802dd43bf068'
             '439a31acb844e7ca1afc670f8591c46f197c8ef65afea3df610704f19a8494c4')
 
 prepare() {
@@ -27,11 +28,15 @@ prepare() {
 
 	patch -Np1 -i ../hide-scrollbar.patch
 	patch -Np1 -i ../native-stockfish.patch
+	patch -Np1 -i ../toast.patch
 
 	npm install
 }
 
 build() {
+	cd "$srcdir"
+	sed "s/%VERSION%/$pkgver/g" index.js.in > index.js
+
 	cd "$_pkgname-$pkgver"
 	APP_MODE=release APP_CONFIG=prod npm run build
 }

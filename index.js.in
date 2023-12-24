@@ -1,0 +1,26 @@
+const { app, BrowserWindow } = require("electron");
+const path = require("path");
+
+app.whenReady().then(() => {
+	const mainWindow = new BrowserWindow({
+		autoHideMenuBar: true,
+		backgroundColor: "#161512",
+		webPreferences: {
+			preload: path.join(app.getAppPath(), "preload.js"),
+			sandbox: false,
+		},
+	});
+	mainWindow.loadFile("www/index.html");
+	mainWindow.webContents.session.webRequest.onBeforeSendHeaders(
+		{urls: ["https://lichess.org/*", "wss://socket.lichess.org/*"]},
+		(details, callback) => {
+			details.requestHeaders.Origin = "https://lichess.org";
+			details.requestHeaders["User-Agent"] += " Lichobile/%VERSION%";
+			callback({requestHeaders: details.requestHeaders});
+		},
+	);
+});
+
+app.on("window-all-closed", () => {
+	app.quit();
+});

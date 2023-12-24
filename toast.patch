@@ -1,0 +1,26 @@
+diff --git a/rollup.config.js b/rollup.config.js
+index 71af77fe9..47e2ba2e8 100644
+--- a/rollup.config.js
++++ b/rollup.config.js
+@@ -25,6 +25,10 @@ export default [{
+           // see path mapping in tsconfig.json
+           find: /^~/,
+           replacement: path.resolve(projectRootDir, 'build')
++        },
++        {
++          find: "@capacitor/toast",
++          replacement: "./src/utils/toast.js"
+         }
+       ],
+     }),
+diff --git a/src/utils/toast.js b/src/utils/toast.js
+new file mode 100644
+index 000000000..496cab89b
+--- /dev/null
++++ b/src/utils/toast.js
+@@ -0,0 +1,5 @@
++export const Toast = {
++	show(options) {
++		console.log("Showing toast:", options);
++	},
++};
