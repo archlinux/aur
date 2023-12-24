@@ -1,7 +1,7 @@
 _pkgname=slimevr
 pkgname=$_pkgname-bin
-pkgver=0.11.0.rc.2
-_tag=v0.11.0-rc.2
+pkgver=0.11.0
+_tag=v0.11.0
 pkgrel=3
 pkgdesc="VR Full Body Tracking System"
 arch=('x86_64')

@@ -1,4 +1,88 @@
 
+# v0.11.0
+
+Please report all bugs in our [Discord server](https://slimevr.dev/discord) for now in the appropriate development channels (`#server`, `#gui`, `#autobone`, etc.). If you need tech support or are not sure if you did find a bug, please use the `#support-forum`.
+
+## Use the installer to install or update!
+Use the installer to install or update SlimeVR if you're on Windows. You can find it here:
+* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
+* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
+
+### Flatpak distribution for Linux
+Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.slimevr.SlimeVR) and update it through there. You can install it by running: ``flatpak install flathub dev.slimevr.SlimeVR``
+
+## What's Changed
+* Use Bones by @Louka3000 and @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/787
+* Fix 3d preview reset math by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/881
+* Fix pipe crash when SteamVR fails to boot by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/887
+* Add new message from firmware for finding server by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/870
+* Prompt before closing SlimeVR when trackers are still connected by @Eric13246 in https://github.com/SlimeVR/SlimeVR-Server/pull/862
+* Update tauri 2 by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/858
+* fix nix not using toolchain version by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/857
+* add me to codeowners in settings parts of GUI by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/885
+* add android CI by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/889
+* Skeleton preview by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/817
+* Add errors and disabled state to Input by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/879
+* Add disabled state to Ratio, Fix typos and bad typing by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/878
+* Add more colors to checkbox by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/877
+* Fixed appearance on exit warning modal by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/890
+* Refactor TrashIcon ArrowIcon and LoaderIcon by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/876
+* fix resize glitches by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/874
+* Fix VRMode not going back to home screen when resizing to desktop layout by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/873
+* Make button and typography children optional by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/872
+* Refactor of the dropdown component by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/875
+* Kotlin leg tweaks by @Stermere in https://github.com/SlimeVR/SlimeVR-Server/pull/809
+* add android to release pipeline by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/891
+* New Pontoon translations by @SlimeVR-bot in https://github.com/SlimeVR/SlimeVR-Server/pull/868
+* Fix the connected tracker modal not having it's config saved by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/896
+* Try forcing manual mounting on setup by @ImUrX and @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/852
+* Don't set all trackers to "ok" on device reconnect by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/883
+* Add pause tracking keybind & protobuf command by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/867
+* Android serial by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/888
+* Add default mounting orientation for certain body parts by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/898
+* Separate scale from proportions in AutoBone by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/846
+* better checks for tracker id on tracker error by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/901
+* change codeowners by @TheButlah in https://github.com/SlimeVR/SlimeVR-Server/pull/908
+* Add a `TrackerStatus.TIMED_OUT` for temporal timeouts by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/903
+* Add reboot retries when trying to connect to WiFi by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/907
+* Clarify headset wording and update AutoBone requirements by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/910
+* New Pontoon translations by @SlimeVR-bot in https://github.com/SlimeVR/SlimeVR-Server/pull/904
+* decrease amount of retries to 1 in serial provisioning by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/911
+* New Pontoon translations by @SlimeVR-bot in https://github.com/SlimeVR/SlimeVR-Server/pull/912
+
+## Translation changes
+* :netherlands: Updated Dutch translation (@Smeltie @Vyolex)
+* :kr: Updated Korean translation (@Kamilake @infopcgood)
+* :de: Updated German translation (@TheDevMinerTV @Ise-Kaey @Zeidurth @Ninsbean @Piranja81 @unlogisch04 @CharDrax @Yasu3D @levi1532)
+* :earth_americas: Updated Latinamerican Spanish translation (@ImUrX @MaxEvil47)
+* :es: Updated Spain Spanish translation (@imbluewisp @ImUrX @MrAdrianki)
+* :finland: Updated Finnish translation (@valzzu)
+* :it: Updated Italian translation (@qHiyokop @namakeingo @Etch9 @diadu-dev)
+* :poland: Updated Polish translation (@ReDoXpl)
+* :brazil: Updated Brazilian Portuguese translation (@SrAstom)
+* :cn: Updated Simplified Chinese translation (@medicalwei)
+* :bubble_tea: Updated Traditional Chinese translation (@medicalwei)
+* :fr: Updated French translation (@Louka3000)
+* :vietnam: Updated Vietnamese translation (@iam-Allan)
+* :pleading_face: Updated Engwish translation (@ButterscotchV)
+
+## New Contributors
+* @Eric13246 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/862
+* @imbluewisp made their first contribution in #868 
+* @infopcgood made their first contribution in #904 
+* @Zeidurth made their first contribution in #904 
+* @Ninsbean made their first contribution in #904 
+* @qHiyokop made their first contribution in #904 
+* @SrAstom made their first contribution in #904 
+* @diadu-dev made their first contribution in #912
+* @iam-Allan made their first contribution in #912 
+* @CharDrax made their first contribution in #912 
+* @levi1532 made their first contribution in #912 
+
+**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.10.1...v0.11.0
+
+__________
+
 # v0.11.0-rc.2
 
 Please report all bugs in our [Discord server](https://slimevr.dev/discord) for now in the appropriate development channels (`#server`, `#gui`, `#autobone`, etc.). If you need tech support or are not sure if you did find a bug, please use the `#support-forum`.
@@ -76,7 +160,7 @@ Flatpak is not being updated because our framework is using an old version of `w
 
 ## New Contributors
 * @Eric13246 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/862
-* @imbluewisp made their first contribution in #868
+* @imbluewisp made their first contribution in #868 
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.10.1...v0.11.0-rc.1
 
@@ -240,7 +324,7 @@ Flatpak is not being updated because our framework is using a old version of `we
 * Fix Tauri 2 update by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/813
 * Fix OSCTrackers yawAlign by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/818
 * Fix nix with latest rust update by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/820
-* Fix HMD designation by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/821
+* Fix HMD designation by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/821 
 * Fix tauri 2 again by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/827
 * Fix receiving OSC by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/825
 * Fix the offsets of arms from controllers by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/826
@@ -268,12 +352,12 @@ Flatpak is not being updated because our framework is using a old version of `we
 
 ## New Contributors
 * @MakerKath made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/810
-* @Smeltie made their first contribution in #807
-* @SlimePuppyRR made their first contribution in #828
-* @mikkmer made their first contribution in #828
-* @valzzu made their first contribution in #828
-* @CheatEvent made their first contribution in #828
-* @RichardTello123 made their first contribution in #828
+* @Smeltie made their first contribution in #807 
+* @SlimePuppyRR made their first contribution in #828 
+* @mikkmer made their first contribution in #828 
+* @valzzu made their first contribution in #828 
+* @CheatEvent made their first contribution in #828 
+* @RichardTello123 made their first contribution in #828 
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.9.0...v0.9.1
 
@@ -450,7 +534,7 @@ Flatpak is not being updated because our framework is using a old version of `we
 * @LualtOfficial made their first contribution in #768
 * @KobraMP4 made their first contribution in #768
 * @Yasu3D made their first contribution in #768
-* @daizenz made their first contribution in #768
+* @daizenz made their first contribution in #768 
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.8.3...v0.9.0
 
@@ -635,13 +719,13 @@ Flatpak is not being updated because our framework is using a old version of `we
 
 ## New Contributors
 * @evg-zhabotinsky made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/692
-* @Noted5 made their first contribution in #739
-* @nyarl made their first contribution in #739
-* @Arxari made their first contribution in #739
-* @ZahnatomLetsPlay made their first contribution in #739
-* @ody007gr made their first contribution in #739
-* @TheStupidGuy21 made their first contribution in #739
-* @phoebeyay made their first contribution in #739
+* @Noted5 made their first contribution in #739 
+* @nyarl made their first contribution in #739 
+* @Arxari made their first contribution in #739 
+* @ZahnatomLetsPlay made their first contribution in #739 
+* @ody007gr made their first contribution in #739 
+* @TheStupidGuy21 made their first contribution in #739 
+* @phoebeyay made their first contribution in #739 
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.8.0...v0.8.1
 
@@ -734,9 +818,9 @@ Flatpak is not being updated because our framework is using a old version of `we
 * @MausyMaz made their first contribution in #659
 * @RexVizsla made their first contribution in #659
 * @Piranja81 made their first contribution in #659
-* @Toonmomo made their first contribution in #703
-* @jojos38 made their first contribution in #703
-* @Pixel6554 made their first contribution in #731
+* @Toonmomo made their first contribution in #703 
+* @jojos38 made their first contribution in #703 
+* @Pixel6554 made their first contribution in #731 
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.7.1...v0.8.0
 
@@ -813,8 +897,8 @@ Flatpak is not being updated because our framework is using a old version of `we
 * Updated :jp: Japanese translation (@sorenxysm)
 
 ## New Contributors
-* @Toonmomo made their first contribution in #703
-* @jojos38 made their first contribution in #703
+* @Toonmomo made their first contribution in #703 
+* @jojos38 made their first contribution in #703 
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.8.0-rc.1...v0.8.0-rc.2
 
@@ -985,10 +1069,10 @@ Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.
 * Updated :jp: Japanese translation (@beq2169)
 
 ## New Contributors
-* @Etch9 made their first contribution in #608
-* @ody007gr made their first contribution in #597
-* @LaeDev made their first contribution in #608
-* @ArcTheArc made their first contribution in #633
+* @Etch9 made their first contribution in #608 
+* @ody007gr made their first contribution in #597 
+* @LaeDev made their first contribution in #608 
+* @ArcTheArc made their first contribution in #633 
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.6.3...v0.7.0
 
@@ -1081,7 +1165,7 @@ Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.
 * Support arbitrary sensor id's for devices by @carl-anders in https://github.com/SlimeVR/SlimeVR-Server/pull/464
 * gui: Fix websocket send crash on reconnect by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/463
 * server: Send accel and ref-adjusted rotations by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/449
-* Do actions on creation of tag/branch by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/454
+* Do actions on creation of tag/branch by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/454 
 * Use `cache-apt-pkgs-action` for apt instead by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/474
 * Fix drift compensation affecting reset and fast resets by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/471
 * Add .editorconfig by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/469
@@ -1128,7 +1212,7 @@ Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.
 * feat: log file size limiter by @marcozzxx810 in https://github.com/SlimeVR/SlimeVR-Server/pull/560
 * Fix solarxr module by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/570
 * Update README by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/572
-* Add macOS builds by @ImUrX #573
+* Add macOS builds by @ImUrX #573 
 * Add warnings to the tracker selection page by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/547
 * Fix lang select being too long by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/571
 * Moving wifi provisioning and new device detection to the server by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/542
@@ -1142,26 +1226,26 @@ Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.
 
 ### Translation changes
 We are now using [Pontoon](https://i18n.slimevr.dev) for translations!
-* Use Pontoon for translations (@ImUrX) #521 #519 #533
+* Use Pontoon for translations (@ImUrX) #521 #519 #533 
 * **Added :united_arab_emirates: Arabian translation (@FennT)**
-* **Added :czech_republic: Czech translation (@Jeeko336)**
+* **Added :czech_republic: Czech translation (@Jeeko336)** 
 * **Added :de: German translation (@TheDevMinerTV @unlogisch04 @Philip6294)** #354 #493 #495
-* **Added :finland: Finland translation (@siofrawell)**
+* **Added :finland: Finland translation (@siofrawell)** 
 * **Added :netherlands: Dutch translation (@Vyolex)** #465 #486 #490
 * **Added :norway: Norwegian Bokmål translation (@Darkowsness)**
 * **Added :ru: Russian translation (@SummerArtz @Eirenliel @Hornil)** #500
-* **Added :bubble_tea: Traditional Chinese translation (@medicalwei @yenmax)**
+* **Added :bubble_tea: Traditional Chinese translation (@medicalwei @yenmax)** 
 * Updated :earth_americas: Latinamerican Spanish translation (@MaxEvil47 @Fowels @DaryeDev @ImUrX) #473
 * Updated :estonia: Estonian translation (@muumif)
 * Updated :fr: French translation (@Louka3000 @BubbleSolaris) #491
 * Updated :it: Italian translation (@namakeingo @albanobattistella) #522
 * Updated :jp: Japanese translation (@tamakiti3010 @beq2169 @kaisuko) #496
 * Updated :kr: Korean translation (@Kamilake) #507
-* Updated :poland: Polish translation (@ReDoXpl)
+* Updated :poland: Polish translation (@ReDoXpl) 
 * Updated :brazil: Brazilian Portuguese translation (@Gaabbu @vinchensyo)
-* Updated :vietnam: Vietnamese translation (@JINODK @MenacingExiler) #488
-* Updated :cn: Simplified Chinese translations (@Disappear9 @medicalwei) #459 #487 #498
-* Updated :pleading_face: OwO engwish (@Louka3000 @namakeingo) #499 #516
+* Updated :vietnam: Vietnamese translation (@JINODK @MenacingExiler) #488 
+* Updated :cn: Simplified Chinese translations (@Disappear9 @medicalwei) #459 #487 #498 
+* Updated :pleading_face: OwO engwish (@Louka3000 @namakeingo) #499 #516 
 * Rename "wifi" to "Wi-Fi" and "SSID" to "Wi-Fi" name by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/468
 * Fix translations errors (@Louka3000 @ImUrX) #482 #513
 
@@ -1171,25 +1255,25 @@ We are now using [Pontoon](https://i18n.slimevr.dev) for translations!
 * @Philip6294 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/354
 * @JINODK made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/488
 * @albanobattistella made their first contribution in #522
-* @SlimeVR-bot made their first contribution in #524
-* @medicalwei made their first contribution in #524
-* @MenacingExiler made their first contribution in #524
-* @BubbleSolaris made their first contribution in #539
+* @SlimeVR-bot made their first contribution in #524 
+* @medicalwei made their first contribution in #524 
+* @MenacingExiler made their first contribution in #524 
+* @BubbleSolaris made their first contribution in #539 
 * @FennT made their first contribution in #539
-* @DaryeDev made their first contribution in #539
-* @kaisuko made their first contribution in #539
-* @beq2169 made their first contribution in #539
-* @Darkowsness made their first contribution in #539
-* @YourEternalRewardl made their first contribution in #545
-* @iplusdvr made their first contribution in #545
-* @ReDoXpl made their first contribution in #545
-* @Jeeko336 made their first contribution in #545
-* @FennT made their first contribution in #545
+* @DaryeDev made their first contribution in #539 
+* @kaisuko made their first contribution in #539 
+* @beq2169 made their first contribution in #539 
+* @Darkowsness made their first contribution in #539 
+* @YourEternalRewardl made their first contribution in #545 
+* @iplusdvr made their first contribution in #545 
+* @ReDoXpl made their first contribution in #545 
+* @Jeeko336 made their first contribution in #545 
+* @FennT made their first contribution in #545 
 * @marcozzxx810 made their first contribution in #555
 * @siofrawell made their first contribution in #561
-* @vinchensyo made their first contribution in #561
-* @SummerArtz made their first contribution in #500
-* @Hornil made their first contribution in #561
+* @vinchensyo made their first contribution in #561 
+* @SummerArtz made their first contribution in #500 
+* @Hornil made their first contribution in #561 
 * @AxisAngles made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/517
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.6.0...v0.6.1
@@ -1225,7 +1309,7 @@ It is recommended that you use an installer to install or update SlimeVR if you'
 * **Added 🇮🇹 Italian translation** (@namakeingo, #382, #409)
 * **Added 🇯🇵 Japanese translation** (@tamakiti3010, #374, #426)
 * **Added 🇪🇪 Estonian translation** (@muumif, #452)
-* Improved 🇫🇷 French translation (@Louka3000, HeySora #402)
+* Improved 🇫🇷 French translation (@Louka3000, HeySora #402) 
 * Improved 🇻🇳 Vietnamese translation (@MenacingExiler, @TheDevMinerTV , #448, #407)
 * Improved 🇧🇷 Brazilian Portuguese translation (@Gaabbu, #376, #429)
 * Improved 🇰🇷 Korean translation (@Kamilake, #391)
@@ -1246,28 +1330,5 @@ Huge thanks to translation contributors! If you wish to contribute fixes or new 
 * @muumif made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/452
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.5.1...v0.6.0
-
-__________
-
-# v0.5.1
-
-Please report all bugs in [Discord](https://slimevr.dev/discord) for now in the #support-forum forum! Please send all new GUI problems to #gui channel! Help and support for VRChat's OSCTrackers is in #vrchat-osctrackers channel.
-
-It is recommended that you use an installer to install or update SlimeVR.  You can find it here:
-* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
-* To run, open SlimeVR folder and launch slimevr.exe, or use shortcut from start menu or desktop
-
-## Changelog since v0.5.0:
-* **Added OSC Router**. SlimeVR can now proxy Open Sound Control commands into VRChat if you want to use other OSC programs with it. If you need more control of OSC, it's recommended to use a dedicated OSC router. (#349. @Louka3000)
-* Fix some OSC problems (#330, @Louka3000)
-* English and French translation fixes (@Louka3000, @TheButlah, @Stermere, @carl-anders)
-* Added Engwish~ translation (@ButterscotchV)
-* Added Vietnamese translation (@MenacingExiler)
-* Added Polish translation (@Yexoo)
-* Added Chinese translation (@colasama)
-* Added Brazilian Portuguese translation (@Gaabbu)
-* Added Korean translation (@Kamilake)
-
-Huge thanks to translation contributors! If you wish to contribute fixes or new languages, feel free to create a PR. Currently we coordinate translations via our Discord server, you can check the general translation forum thread here: https://discord.com/channels/817184208525983775/1050413434249949235 or threads near it for specific languages.
 
 __________
