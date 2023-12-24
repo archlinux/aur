@@ -1,0 +1,22 @@
+pkgbase = power-profiles-daemon-multi-drv-git
+	pkgdesc = Makes power profiles handling available over D-Bus (with multi-driver support by Mario Limonciello)
+	pkgver = 0.13+8+g0086cd7
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/superm1/power-profiles-daemon/-/tree/mlimonci/multi-drivers
+	arch = x86_64
+	license = GPL3
+	checkdepends = python-dbusmock
+	checkdepends = python-pylint
+	checkdepends = umockdev
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = upower
+	depends = polkit
+	optdepends = python-gobject: for powerprofilesctl
+	provides = power-profiles-daemon
+	conflicts = power-profiles-daemon
+	source = git+https://gitlab.freedesktop.org/superm1/power-profiles-daemon.git#branch=mlimonci/multi-drivers
+	b2sums = SKIP
+
+pkgname = power-profiles-daemon-multi-drv-git
