@@ -41,29 +41,53 @@ sha512sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --tags | sed 's/-/+/g'
+  cd \
+    "${_pkgname}"
+  git \
+    describe \
+    --tags | \
+    sed 's/-/+/g'
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd \
+    "${_pkgname}"
 
-  git submodule init
-  git submodule set-url subprojects/libgd "${srcdir}/libgd"
-  git -c protocol.file.allow=always submodule update
+  git \
+    submodule \
+    init
+  git \
+    submodule \
+    set-url \
+    subprojects/libgd \
+    "${srcdir}/libgd"
+  git \
+    -c protocol.file.allow=always \
+    submodule \
+    update
 }
 
 build() {
-  local meson_options=(
+  local \
+    meson_options=()
+  meson_options=(
     -D manuals=true
   )
 
-  arch-meson "${_pkgname}" build "${meson_options[@]}"
-  meson compile -C build
+  arch-meson \
+    "${_pkgname}" \
+    build \
+    "${meson_options[@]}"
+  meson \
+    compile \
+    -C build
 }
 
 package() {
-  meson install -C build --destdir "${pkgdir}"
+  meson \
+    install \
+    -C build \
+    --destdir "${pkgdir}"
 }
 
 # vim:set sw=2 sts=-1 et:
