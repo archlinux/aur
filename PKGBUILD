@@ -93,7 +93,6 @@ _main_package() {
       clang
       lld
       llvm
-      mold
     )
   else
     options+=(!lto)
@@ -293,7 +292,7 @@ build() {
       -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=mold"
       -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=mold"
     )
-  else
+  elif [[ "${_build_clang::1}" == "t" ]] ; then
     _cmake_options+=(
       -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld"
       -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"

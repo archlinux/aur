@@ -12,7 +12,6 @@ pkgbase = dolphin-emu-debugfast-git
 	makedepends = lld
 	makedepends = llvm
 	makedepends = mold
-	makedepends = mold
 	depends = alsa-lib
 	depends = bluez-libs
 	depends = curl
