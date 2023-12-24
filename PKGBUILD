@@ -1,7 +1,7 @@
 # Maintainer: TheFeelTrain <thefeeltrain@thefeeltrain.com>
 pkgname=(league-rpc-linux-git)
 _srcname=${pkgname%-git}
-pkgver=0.0.8.r0.2759805
+pkgver=0.0.8.r0.g2759805
 pkgrel=1
 pkgdesc="League of Legends Discord Rich Presence for Linux (WINE / Lutris)"
 arch=('x86_64')
@@ -23,10 +23,10 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/${_srcname}"
-    pyinstaller --onefile --name $_srcname league_rpc_linux/__main__.py --clean
+    cd "${srcdir}/${_srcname}"
+    pyinstaller --onefile --name "${_srcname}" league_rpc_linux/__main__.py --clean
 }
 
 package() {
-	install -Dm755 "${srcdir}/${_srcname}/dist/${_srcname}" "${pkgdir}/usr/bin/${_srcname}"
+    install -Dm755 "${srcdir}/${_srcname}/dist/${_srcname}" "${pkgdir}/usr/bin/${_srcname}"
 }
