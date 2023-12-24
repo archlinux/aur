@@ -14,7 +14,7 @@ provides=("hyprforest-installer")
 conflicts=("hyprforest-installer")
 optdepends=("hyprland" "kitty" "neovim" "waybar" "wofi" "zsh")
 source=("https://github.com/3rfaan/hyprforest-installer/releases/download/v$pkgver/hyprforest-installer-$pkgver-x86_64.tar.gz")
-sha256sums=("eb633a52019f161e73c5f1cef25283f011b865f8f5be917130b2f5c573a7ba36")
+sha256sums=("53c5157f6a336506b70c238b531c8bfbebdfa3b75a2508b58ba2b8846d7b881e")
 
 package() {
     install -Dm755 hyprforest-installer -t "$pkgdir/usr/bin"
