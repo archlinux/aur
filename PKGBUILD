@@ -14,7 +14,7 @@ _gmpver=6.3.0
 _islver=0.26
 _mpcver=1.3.1
 _mpfrver=4.2.1
-pkgrel=8
+pkgrel=9
 pkgdesc="The GNU Compiler Collection"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -28,14 +28,13 @@ provides=("${_target}-gcc-stage1=${pkgver}" "${_target}-gcc-stage2=${pkgver}")
 source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
         https://gmplib.org/download/gmp/gmp-${_gmpver}.tar.xz{,.sig}
         https://libisl.sourceforge.io/isl-${_islver}.tar.xz
-        https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz{,.sig}
+        https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz
         https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc})
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # jakub@redhat.com
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
-              AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3  # andreas.enge@inria.fr
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
 sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
             'SKIP'
@@ -43,7 +42,6 @@ sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
             'SKIP'
             'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504'
             'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
-            'SKIP'
             '277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2'
             'SKIP')
 
