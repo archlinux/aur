@@ -5,7 +5,7 @@
 
 _pkgname=reallymakepkg
 pkgname="${_pkgname}-git"
-pkgver=v1.0+1+g18ea110
+pkgver=v1.0+6+gafc01c8
 pkgrel=1
 pkgdesc="System-independent makepkg"
 arch=(any)
