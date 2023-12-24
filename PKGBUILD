@@ -3,7 +3,6 @@
 # Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 # Contributor: Aliaksandr Stelmachonak <mail.avatar@gmail.com>
 
-
 set -u
 pkgname='zoiper-bin'
 _pkgname='zoiper'
