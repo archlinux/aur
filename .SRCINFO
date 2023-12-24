@@ -1,14 +1,14 @@
 pkgbase = python-siphashc
-	pkgdesc = python c-module for siphash
+	pkgdesc = Python module (in c) for siphash-2-4
 	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/WeblateOrg/siphashc
-	arch = any
+	arch = x86_64
 	license = ISC
+	checkdepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/WeblateOrg/siphashc/archive/v2.1.tar.gz
+	source = siphashc-2.1.tar.gz::https://github.com/WeblateOrg/siphashc/archive/refs/tags/v2.1.tar.gz
 	sha256sums = e6a9da952d684a52cb797dff7a96639bad2bdb779e4856158aa294618d505fbe
 
 pkgname = python-siphashc
-
