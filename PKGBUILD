@@ -14,7 +14,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
 # https://github.com/buildbot/buildbot/releases
 pkgver=3.10.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -25,6 +25,7 @@ checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
 makedepends=(python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy
              python-alembic python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml python-croniter python-unidiff
+             python-importlib_resources
              python-graphql-core python-hvac
              libvirt-python python-novaclient python-pypugjs python-aiohttp
              python-setuptools python-future
@@ -33,13 +34,11 @@ makedepends=(python-twisted python-jinja python-msgpack python-zope-interface py
              git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
-        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
-        "pr7270.diff")
+        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
 sha256sums=('e80e00e40fc2eea7edc1eaf9faa019d1b46bbe535669bfea38f385bfb491498d'
             'SKIP'
             'SKIP'
-            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
-            '3ff88f0b273a63aa9b8710f71df9174dda62e619dd71d4487bcaaa0aa8f04567')
+            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -70,9 +69,6 @@ prepare() {
   # Don't treat warnings as errors. Arch often ships newer Python libraries than ones
   # in upstream CI and introduces extra deprecation warnings
   sed -r -i "s#warnings\\.filterwarnings\\('error'\\)##" master/buildbot/test/__init__.py
-
-  # Backported from https://github.com/buildbot/buildbot/pull/7270
-  patch -Np1 -i ../pr7270.diff
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
@@ -153,7 +149,7 @@ package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
   depends=(buildbot-common python python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy
            python-alembic python-dateutil python-txaio
-           python-autobahn python-pyjwt python-yaml python-croniter python-unidiff)
+           python-autobahn python-pyjwt python-yaml python-croniter python-unidiff python-importlib_resources)
   optdepends=(
     # reporters
     'python-pyopenssl: to use SSL/TLS in mail or IRC notifiers'
