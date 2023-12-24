@@ -11,7 +11,6 @@ pkgbase = stable-diffusion.cpp-git
 	makedepends = git
 	provides = stable-diffusion.cpp
 	conflicts = stable-diffusion.cpp
-	options = staticlibs
 	source = stable-diffusion.cpp::git+https://github.com/leejet/stable-diffusion.cpp
 	sha256sums = SKIP
 

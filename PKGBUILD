@@ -11,7 +11,6 @@ makedepends=('cmake' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}")
-options=('staticlibs')
 
 prepare() {
   cd "${srcdir}/${pkgname%-git}"
