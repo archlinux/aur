@@ -5,15 +5,16 @@
 
 ### arg 1: the new package version
 post_install() {
-  echo "create symlinks to knobs subcommands:"
-  for SUBCMD in amd-pstate cpu cpufreq drm i915 intel-pstate intel-rapl; do
+  echo "create symlinks to subcommands:"
+  for SUBCMD in amd-pstate cpu cpufreq drm drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
     if [ -e /usr/bin/$SUBCMD ]; then
-      echo "- /usr/bin/$SUBCMD: skipped, already exists"
+      echo "- /usr/bin/$SUBCMD: skip"
     else
-      echo "- /usr/bin/$SUBCMD: creating"
+      echo "- /usr/bin/$SUBCMD: create"
       ln -s /usr/bin/knobs /usr/bin/$SUBCMD
     fi
   done
+  systemctl daemon-reload
 }
 
 ### arg 1: the new package version
@@ -25,15 +26,16 @@ post_install() {
 ### arg 1: the new package version
 ### arg 2: the old package version
 post_upgrade() {
-  echo "update symlinks to knobs subcommands:"
-  for SUBCMD in amd-pstate cpu cpufreq drm i915 intel-pstate intel-rapl; do
+  echo "update symlinks to subcommands:"
+  for SUBCMD in amd-pstate cpu cpufreq drm drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
     if [ -e /usr/bin/$SUBCMD ]; then
-      echo "- /usr/bin/$SUBCMD: skipped, already exists"
+      echo "- /usr/bin/$SUBCMD: skip"
     else
-      echo "- /usr/bin/$SUBCMD: creating"
+      echo "- /usr/bin/$SUBCMD: create"
       ln -s /usr/bin/knobs /usr/bin/$SUBCMD
     fi
   done
+  systemctl daemon-reload
 }
 
 ### arg 1: the old package version
@@ -44,17 +46,18 @@ post_upgrade() {
 ### arg 1: the old package version
 post_remove() {
   echo "remove symlinks to knobs subcommands:"
-  for SUBCMD in amd-pstate cpu cpufreq drm i915 intel-pstate intel-rapl; do
+  for SUBCMD in amd-pstate cpu cpufreq drm drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
     if [ -L /usr/bin/$SUBCMD ]; then
       TARGET=$(basename $(readlink /usr/bin/$SUBCMD))
       if [ "$TARGET" = "knobs" ]; then
-        echo "- /usr/bin/$SUBCMD: removing"
+        echo "- /usr/bin/$SUBCMD: delete"
         rm -f /usr/bin/$SUBCMD
       else
-        echo "- /usr/bin/$SUBCMD: skipped, does not link to knobs binary"
+        echo "- /usr/bin/$SUBCMD: skip (does not link to knobs binary)"
       fi
     else
       echo "- /usr/bin/$SUBCMD: not found"
     fi
   done
+  systemctl daemon-reload
 }
