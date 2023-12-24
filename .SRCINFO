@@ -14,7 +14,6 @@ pkgbase = songrec-git
     depends = libpulse
 	depends = openssl
 	depends = ffmpeg
-	optdepends = libpulse
 	provides = songrec
 	conflicts = songrec
 	source = songrec::git+https://github.com/marin-m/songrec.git
