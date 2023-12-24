@@ -6,6 +6,7 @@ pkgbase = tcpterm
 	arch = x86_64
 	license = GPL
 	makedepends = go
+	makedepends = libpcap
 	source = tcpterm-0.0.2.tar.gz::https://github.com/sachaos/tcpterm/archive/refs/tags/v0.0.2.tar.gz
 	sha256sums = c4c0c536ddd12509f1fa2607d84a1e2a002a5a82269ade98a9da4933bc8bd020
 

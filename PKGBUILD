@@ -6,7 +6,7 @@ pkgdesc='a packet visualizer in TUI'
 arch=('x86_64')
 url="https://github.com/sachaos/tcpterm"
 license=('GPL')
-makedepends=('go')
+makedepends=('go' 'libpcap')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sachaos/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('c4c0c536ddd12509f1fa2607d84a1e2a002a5a82269ade98a9da4933bc8bd020')
 
