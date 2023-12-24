@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=AmLite
+GenericName=Microscope Camera
+Comment=Camera viewing software for AmScope microscopes
+Keywords=photo;video;webcam;camera;microscope;
+Exec=env QT_QPA_PLATFORM=xcb AmLite
+TryExec=AmLite
+Icon=amlite
+StartupWMClass=amlite
+StartupNotify=true
+Terminal=false
+Type=Application
+Version=1.0
+Categories=Video;Recorder;

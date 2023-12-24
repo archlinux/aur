@@ -1,15 +1,14 @@
 pkgbase = amlite
 	pkgdesc = AmScope software
-	pkgver = 20171117
-	pkgrel = 2
+	pkgver = 20232603
+	pkgrel = 1
 	url = https://www.amscope.com/
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = https://www.amscope.com/software/AmScopeX/20171117/amlite_20171117.tar
-	source = amlite
-	md5sums = 955332833658f1111cfb42ad88504546
-	md5sums = 523d3755ff0768d0a6cec861542813d6
+	source = https://storage.googleapis.com/software-download-d79bb.appspot.com/software/AmLite/Linux/20232603/AmScopeAmLite.x64.tar.bz2
+	source = amlite.desktop
+	sha256sums = 1b2037a20b69b0d03fa5321adb585af4fd58b4d134ade4434c023b54e71dc676
+	sha256sums = SKIP
 
 pkgname = amlite
-
