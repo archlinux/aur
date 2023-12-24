@@ -13,7 +13,8 @@ depends=(usd
 		boost-libs
 		jemalloc
 		glibc
-		gcc-libs)
+		gcc-libs
+		boost)
 makedepends=(cmake)
 options=(!lto)
 source=("git+$url#branch=develop"

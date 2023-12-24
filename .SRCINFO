@@ -13,6 +13,7 @@ pkgbase = usdtweak
 	depends = jemalloc
 	depends = glibc
 	depends = gcc-libs
+	depends = boost
 	options = !lto
 	source = git+https://github.com/cpichard/usdtweak#branch=develop
 	source = usdtweak.desktop
