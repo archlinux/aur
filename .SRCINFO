@@ -1,10 +1,10 @@
 pkgbase = python-click-params
 	pkgdesc = A bunch of useful click parameter types
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://click-params.readthedocs.io/en/stable
 	arch = any
-	license = Apache-2.0
+	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

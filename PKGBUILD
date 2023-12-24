@@ -1,11 +1,11 @@
 # Maintainer: Eldred Habert <me@eldred.fr>
 pkgname=python-click-params
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A bunch of useful click parameter types"
 arch=('any')
 url="https://click-params.readthedocs.io/en/stable"
-license=('Apache-2.0')
+license=(Apache)
 groups=()
 depends=(python 'python-click>=7.0' 'python-click<9.0' python-validators)
 makedepends=(python-build python-installer python-wheel 'python-poetry-core>=1.0.0' python-poetry-plugin-export 'python-platformdirs<5.0' 'python-platformdirs>=3.9.1')
