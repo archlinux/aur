@@ -1,13 +1,19 @@
 pkgbase = floorp-bin
 	pkgdesc = Firefox-based web browser focused on performance and customizability
 	pkgver = 11.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://floorp.app/
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
 	makedepends = imagemagick
 	makedepends = optipng
+	optdepends = ffmpeg: h.264 video
+	optdepends = hunspell: spell checking
+	optdepends = hyphen: hyphenation
+	optdepends = libnotify: notification integration
+	optdepends = networkmanager: location detection via available WiFi networks
+	optdepends = speech-dispatcher: text-to-speech
 	provides = floorp=11.7.1
 	conflicts = floorp
 	source = floorp.desktop

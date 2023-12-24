@@ -3,7 +3,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
 pkgver=11.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="http://floorp.app/"
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,14 @@ license=('MPL-2.0')
 makedepends=(
   'imagemagick'
   'optipng'
+)
+optdepends=(
+  'ffmpeg: h.264 video'
+  'hunspell: spell checking'
+  'hyphen: hyphenation'
+  'libnotify: notification integration'
+  'networkmanager: location detection via available WiFi networks'
+  'speech-dispatcher: text-to-speech'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
@@ -34,9 +42,11 @@ sha256sums_aarch64=('1b094fbb84fcf5214ec7da98364ccd6b88e5fbbe8f6b067cee7cad945a7
 package() {
   depends+=('hicolor-icon-theme')
 
+  local _install_path="usr/lib/$_pkgname"
+
   # app
-  install -dm755 "$pkgdir/usr/lib/$_pkgname"
-  cp --reflink=auto -r "$_pkgname"/* "$pkgdir/usr/lib/$_pkgname/"
+  install -dm755 "$pkgdir/$_install_path"
+  cp --reflink=auto -r "$_pkgname"/* "$pkgdir/$_install_path/"
 
   # icons
   for i in 32 64 128 256 512; do
@@ -55,4 +65,19 @@ package() {
 #!/bin/sh
 exec /usr/lib/$_pkgname/$_pkgname "\$@"
 END
+
+  # Disable auto-updates
+  local _policies_json="$pkgdir/$_install_path/distribution/policies.json"
+  install -Dvm644 /dev/stdin "$_policies_json" <<END
+{
+  "policies": {
+    "DisableAppUpdate": true
+  }
+}
+END
+
+  # Use system-provided dictionaries
+  rm -rf "$pkgdir/$_install_path"/{dictionaries,hyphenation}
+  ln -sf /usr/share/hunspell "$pkgdir/$_install_path/dictionaries"
+  ln -sf /usr/share/hyphen "$pkgdir/$_install_path/hyphenation"
 }
