@@ -1,10 +1,11 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Matthew Sexton <matthew@asylumtech.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 _pkgname=setoptconf
 pkgname=python-setoptconf
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for retrieving program settings from various sources"
 arch=('any')
 url="https://github.com/jayclassless/setoptconf"
@@ -12,7 +13,7 @@ license=('MIT')
 depends=('python')
 optdepends=('python-pyyaml')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-nose')
+checkdepends=('python-nose' 'python-coverage')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('d2ecbd27c0c7d0d53990e2df98d9aad6490df8b75b71c621d8c441d6e91e3161')
 

@@ -1,11 +1,12 @@
 pkgbase = python-setoptconf
 	pkgdesc = Library for retrieving program settings from various sources
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jayclassless/setoptconf
 	arch = any
 	license = MIT
 	checkdepends = python-nose
+	checkdepends = python-coverage
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
