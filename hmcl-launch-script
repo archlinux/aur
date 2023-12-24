@@ -7,6 +7,11 @@ if [ "${1:-}" != -p ]; then
   cd "$WORKDIR"
 fi
 
-JAVA_HOME=/usr/lib/jvm/$(pacman -Ql java-openjfx | grep javafx | head -n 1 | cut -d / -f 5)
+JAVA_HOME=$(pacman -Ql java-runtime | grep -e '/usr/lib/jvm/.*/bin/java$' | head -n 1 | cut -s -d ' ' -f '2-' | cut -s -d / -f '-5')
+JAVAFX_HOME=$(dirname "$(pacman -Ql java-openjfx | grep -e '/javafx\..*\.jar$' | head -n 1 | cut -s -d ' ' -f '2-')")
 
-exec "${JAVA_HOME}"/bin/java --module-path "${JAVA_HOME}/lib/javafx.base.jar:${JAVA_HOME}/lib/javafx.fxml.jar:${JAVA_HOME}/lib/javafx.graphics.jar:${JAVA_HOME}/lib/javafx.media.jar:${JAVA_HOME}/lib/javafx.swing.jar:${JAVA_HOME}/lib/javafx.web.jar:${JAVA_HOME}/lib/javafx.controls.jar" --add-modules=javafx.base --add-modules=javafx.fxml --add-modules=javafx.graphics --add-modules=javafx.media --add-modules=javafx.swing --add-modules=javafx.web --add-modules=javafx.controls -jar /usr/share/java/hmcl-new/hmcl-new.jar "$@"
+exec "${JAVA_HOME}"/bin/java \
+  --module-path "${JAVAFX_HOME}/javafx.base.jar:${JAVAFX_HOME}/javafx.fxml.jar:${JAVAFX_HOME}/javafx.graphics.jar:${JAVAFX_HOME}/javafx.media.jar:${JAVAFX_HOME}/javafx.swing.jar:${JAVAFX_HOME}/javafx.web.jar:${JAVAFX_HOME}/javafx.controls.jar" \
+  --add-modules=javafx.base --add-modules=javafx.fxml --add-modules=javafx.graphics --add-modules=javafx.media --add-modules=javafx.swing --add-modules=javafx.web --add-modules=javafx.controls \
+  -jar /usr/share/java/hmcl-new/hmcl-new.jar \
+  "$@"

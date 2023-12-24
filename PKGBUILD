@@ -8,12 +8,12 @@ _pkgname=HMCL
 _ver=3.5.4
 _build=234
 pkgver=$_ver.$_build
-pkgrel=1
+pkgrel=2
 pkgdesc='An unofficial build of HMCL that trying to compile and run HMCL with the latest LTS version of java. (with HMCL-Clean changes)'
 arch=('any')
 url='https://github.com/huanghongxun/HMCL'
 license=('GPL3')
-depends=('java-openjfx>=17')
+depends=('java-runtime>=17' 'java-openjfx>=17' 'hicolor-icon-theme')
 makedepends=('java-environment>=17' 'gradle')
 provides=('hmcl')
 conflicts=('hmcl')
@@ -25,7 +25,7 @@ source=('hmcl.desktop'
   "0002-Cleanup.patch"
 )
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
-  '858b5082bc58ddc44fe74625937876e78442fdf5ff948d1e91cddbf170af9eeb'
+  '4fcd4bf8f8d2ca39cf25a8d59daeb53ffa54fbca0356bd55aa17a5ee31d59a95'
   '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
   '69680efbdb9dc18ab8d6973ee4be442671133641a61602608084fb7fe67c3082'
   '7b9511c0f0eceef29577e879a00e0ab341fddeed6e9e33f54cefbaca11ae9354'
