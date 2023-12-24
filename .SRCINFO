@@ -1,6 +1,6 @@
 pkgbase = ytfe
 	pkgdesc = Lightweight YouTube client using the LCL toolkit
-	pkgver = 1.19.5
+	pkgver = 1.19.6
 	pkgrel = 1
 	url = http://oscomp.hu
 	install = ytfe.install
@@ -20,9 +20,9 @@ pkgbase = ytfe
 	sha256sums = 1538efd4ad69915c36a12e48b2fb67606983d8dd38811726640952d6a3c03149
 	sha256sums = 44bc1c569ae7829e65bc5ec3525ad260a2dc64d340da0f9912c4395552134eae
 	sha256sums = bf8e1295602992c618eacbc43a36c201293c8a159f49dd42a724c72f5e8a5267
-	source_x86_64 = http://oscomp.hu/depot/ytfe_direct/1.19.5/ytfe_linux_x86_64.xz
-	sha256sums_x86_64 = 60c8fb153018c3765e18bc7b045b3057918a035375564a48ba16b159653bdb4e
-	source_i686 = http://oscomp.hu/depot/ytfe_direct/1.19.5/ytfe_linux_i686.xz
-	sha256sums_i686 = 3c4595ca53c6f5da01b28c914b9a5088fbdcdbd59eb427025c0f0ccd541fc002
+	source_x86_64 = http://oscomp.hu/depot/ytfe_direct/1.19.6/ytfe_linux_x86_64.xz
+	sha256sums_x86_64 = e4fb24b00de03d34faca71fe8e5f6a19cb41075eeb5c13befcd3fceecc8a91d9
+	source_i686 = http://oscomp.hu/depot/ytfe_direct/1.19.6/ytfe_linux_i686.xz
+	sha256sums_i686 = 14845481dac39089f624f3aa38e8b3c5c00ba1f7647a857c046a760967948006
 
 pkgname = ytfe
