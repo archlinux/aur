@@ -2,7 +2,7 @@
 
 pkgname=wofi-pass
 pkgver="v23.1.4"
-pkgrel=2
+pkgrel=3
 pkgdesc="A Wayland-native interface for conveniently using pass"
 arch=('any')
 url='https://github.com/schmidtandreas/wofi-pass'
@@ -22,7 +22,7 @@ noextract=("wofi-pass.1.gz")
 
 package() {
     install -Dm755 "${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${pkgname}.conf" -t "{pkgdir}/etc"
+    install -Dm644 "${pkgname}.conf" -t "${pkgdir}/etc"
     install -Dm644 "${pkgname}.1.gz" -t "${pkgdir}/usr/share/man/man1"
     install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
