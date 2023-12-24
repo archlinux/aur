@@ -6,6 +6,7 @@ pkgbase = gpic-git
 	arch = any
 	license = AGPL3
 	makedepends = git
+	depends = curl
 	provides = gpic=v1.0+1+g18ea110
 	conflicts = gpic=v1.0+1+g18ea110
 	source = git+https://github.com/themartiancompany/gpic

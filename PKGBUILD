@@ -14,7 +14,8 @@ _ns="themartiancompany"
 url="${_repo}/${_ns}/${_pkgname}"
 license=(
   AGPL3)
-depends=()
+depends=(
+  curl)
 makedepends=(
   git)
 provides=(
@@ -44,5 +45,4 @@ package() {
     DESTDIR="${pkgdir}" \
     install
 }
-
-# vim: ft=sh syn=sh et
+# vim:set sw=2 sts=-1 et:
