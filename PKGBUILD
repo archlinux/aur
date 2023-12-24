@@ -9,7 +9,7 @@
 _pkgname=logseq-desktop
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
@@ -85,8 +85,11 @@ package() {
   rm -- "$_pkgsrc/Logseq.png"
 
   # package files
-  install -dm755 "$pkgdir/usr/lib/$_pkgname"
-  cp --reflink=auto -r "$srcdir/$_pkgsrc"/* "$pkgdir/usr/lib/$_pkgname/"
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  cp --reflink=auto -r "$srcdir/$_pkgsrc"/* "$pkgdir/opt/$_pkgname/"
+
+  # fix permissions
+  chmod -R u=rwX,go=rX "$pkgdir"
 }
 
 # other functions
