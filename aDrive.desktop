@@ -4,3 +4,4 @@ Exec=aDrive
 Type=Application
 StartupNotify=true
 Icon=aDrive
+Categories=Network;
