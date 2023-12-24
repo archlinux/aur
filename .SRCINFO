@@ -1,7 +1,7 @@
 pkgbase = intune-portal-bin
 	pkgdesc = Enroll devices in Microsoft Azure Endpoint
 	pkgver = 1.2310.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://intune.microsoft.com
 	install = intune-portal-bin.install
 	arch = x86_64

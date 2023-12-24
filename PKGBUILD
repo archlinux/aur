@@ -3,7 +3,7 @@
 pkgname=intune-portal-bin
 _pkgname=intune-portal
 pkgver=1.2310.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Enroll devices in Microsoft Azure Endpoint"
 arch=('x86_64')
 url="http://intune.microsoft.com"
@@ -23,9 +23,9 @@ prepare() {
 package() {
   install -d "$pkgdir"/usr/lib/systemd/{system,user}
   install -d "$pkgdir"/opt/microsoft/intune/{bin,share}
-  install -d "$pkgdir"/usr/lib/{tmpfiles.d,x86_64-linux-gnu/security}
+  install -d "$pkgdir"/usr/lib/{tmpfiles.d,/security}
   install -Dm644 "$srcdir"/usr/share/pam-configs/intune -t "$pkgdir"/etc/pam.d/
-  install -Dm644 "$srcdir"/usr/lib/x86_64-linux-gnu/security/pam_intune.so -t "$pkgdir"/usr/lib/x86_64-linux-gnu/security/
+  install -Dm644 "$srcdir"/usr/lib/x86_64-linux-gnu/security/pam_intune.so -t "$pkgdir"/usr/lib/security/
   install -Dm644 "$srcdir"/usr/lib/tmpfiles.d/intune.conf -t "$pkgdir"/usr/lib/tmpfiles.d/
   install -Dm644 "$srcdir"/usr/share/applications/intune-portal.desktop -t "$pkgdir"/usr/share/applications/
   install -Dm644 "$srcdir"/usr/share/icons/hicolor/48x48/apps/intune.png -t "$pkgdir"/usr/share/icons/hicolor/48x48/apps/
