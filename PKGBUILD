@@ -1,29 +1,24 @@
 # Maintainer: Kud Lain <kasa7qi at gmail dot com>
-pkgname=ord-git
-pkgver=r706.52c4d57d
+pkgname=ord
+pkgver=0.13.1
 pkgrel=1
 epoch=
 pkgdesc="an index, block explorer, and command-line wallet"
 arch=('x86_64')
-url="https://github.com/casey/ord"
+url="https://github.com/ordinals/ord"
 license=('CC0-1.0')
 depends=(glibc gcc-libs)
 makedepends=(rust git)
 provides=(ord)
-source=("git+${url}")
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
 md5sums=('SKIP')
 
-pkgver() {
-	cd "${srcdir}/ord"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
-	cd "${srcdir}/ord"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	cargo build --release
 }
 
 package() {
-	install -Dm755 ${srcdir}/ord/target/release/ord -t "${pkgdir}/usr/bin/"
+	install -Dm755 ${srcdir}/${pkgname}-${pkgver}/target/release/ord -t "${pkgdir}/usr/bin/"
 }

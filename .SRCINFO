@@ -1,8 +1,8 @@
-pkgbase = ord-git
+pkgbase = ord
 	pkgdesc = an index, block explorer, and command-line wallet
-	pkgver = r706.52c4d57d
+	pkgver = 0.13.1
 	pkgrel = 1
-	url = https://github.com/casey/ord
+	url = https://github.com/ordinals/ord
 	arch = x86_64
 	license = CC0-1.0
 	makedepends = rust
@@ -10,7 +10,7 @@ pkgbase = ord-git
 	depends = glibc
 	depends = gcc-libs
 	provides = ord
-	source = git+https://github.com/casey/ord
+	source = https://github.com/ordinals/ord/archive/refs/tags/0.13.1.tar.gz
 	md5sums = SKIP
 
-pkgname = ord-git
+pkgname = ord
