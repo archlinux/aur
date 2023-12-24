@@ -1,7 +1,7 @@
 # Author: Torkus
 # Maintainer: Torkus <48141663+ogri-la@users.noreply.github.com>
 pkgname=strongbox
-pkgver=7.1.0
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="World of Warcraft addon manager. F/OSS, ad-free and privacy respecting."
 arch=("x86_64")
@@ -21,7 +21,7 @@ source=(
     "$pkgname.desktop"
 )
 
-strongbox_sha256="54bbf2bb841c124a1768e6db10a2984838799c2f21f284ad0a0e6ac09c082083"
+strongbox_sha256="2a109661aee5d4deda03ce9f353abafabdfc64a53e9a9c19d546e66cc36eef61"
 strongbox_desktop_sha256="b021ee257f90c04e05e8819774956fe51a7312f126884d9a71b12e067df48aa4"
 sha256sums=(
     "$strongbox_sha256"
