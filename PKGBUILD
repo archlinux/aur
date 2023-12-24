@@ -1,7 +1,7 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt-git
-pkgver=1.3.6.r7.gc01a1da
-pkgrel=2
+pkgver=1.3.6.r65.g53849f5
+pkgrel=1
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
 url="https://jakubmelka.github.io/"
@@ -30,13 +30,15 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname"::'git+https://github.com/JakubMelka/PDF4QT'
+source=(
+	"$pkgname"::'git+https://github.com/JakubMelka/PDF4QT'
 	'CMakeListsMain.patch'
 	'CMakeListsLib.patch'
-	'FindLCMS2.cmake')
+	'FindLCMS2.cmake'
+)
 sha256sums=('SKIP'
-	'07f8f1b3e89fbc33079235c17c9498181fdcb1916e44b7421925401a7cdca92c'
-	'7a54e7db1d2f2e246c9e9b66a2c41e992a2356976c0a70db876e4be9cc57cc5d'
+	'0aa0803cff10792a2f025cec558ab4851fcc193d92155ede844b8b71776c85e7'
+	'd53ecb1906965453b38e7b0e75495f60ee9da141162f39b02ba18ae6885ab31d'
 	'fb438faf87211cf3c21c6fa624cedd2ec6af49b03827e1ad230e0202e939a8ec')
 
 pkgver() {
