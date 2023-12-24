@@ -1,7 +1,7 @@
 pkgbase = wofi-pass
 	pkgdesc = A Wayland-native interface for conveniently using pass
 	pkgver = v23.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/schmidtandreas/wofi-pass
 	arch = any
 	license = GPL
@@ -18,9 +18,11 @@ pkgbase = wofi-pass
 	optdepends = pass-otp: OTP support
 	noextract = wofi-pass.1.gz
 	source = https://github.com/schmidtandreas/wofi-pass/releases/download/v23.1.4/wofi-pass
+	source = https://github.com/schmidtandreas/wofi-pass/releases/download/v23.1.4/wofi-pass.conf
 	source = https://github.com/schmidtandreas/wofi-pass/releases/download/v23.1.4/wofi-pass.1.gz
 	source = https://github.com/schmidtandreas/wofi-pass/releases/download/v23.1.4/LICENSE
 	sha256sums = d77e57a7e2f3c460ff7d5b06f6f14eb568f6eb641de77db7836ce381dbef7584
+	sha256sums = de9159969fca39ce888a6350660bbae418be1a26016c6c421bf90719e733a1a3
 	sha256sums = 4e79799f0f2ec249e16fe4412c143a226f0367ffb5e92a40baf926d1bb3bd9b4
 	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
 

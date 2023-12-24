@@ -13,5 +13,6 @@ pkg/
 src/
 
 wofi-pass
+wofi-pass.conf
 wofi-pass.1.gz
 LICENSE
