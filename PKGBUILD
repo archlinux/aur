@@ -1,7 +1,7 @@
 # Maintainer: Agampreet
 # Contributor: Agampreet
 pkgname=ms-365-electron-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Unofficial Microsoft 365 Web Desktop Wrapper made with Electron"
 arch=('x86_64')
