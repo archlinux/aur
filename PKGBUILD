@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-chos-tool
-pkgver=r189.426c9c2
+pkgver=r190.22a88dd
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
@@ -28,6 +28,10 @@ package() {
     # bin
     install -dm755 "${pkgdir}/usr/bin/"
     install -m755 -t "${pkgdir}/usr/bin/" "${source_dir}/bin"/*
+
+    # icon
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -m644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps" "${source_dir}/icon"/*.svg
 
     # conf
     install -dm755 "${pkgdir}/etc/${pkgname}"
