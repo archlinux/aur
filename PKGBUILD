@@ -3,27 +3,25 @@
 _pkgname=bigmemory.sri
 _pkgver=0.1.6
 pkgname=r-${_pkgname,,}
-pkgver=0.1.6
-pkgrel=3
-pkgdesc='A shared resource interface for Bigmemory Project packages'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=5
+pkgdesc="A Shared Resource Interface for Bigmemory Project Packages"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('LGPL-3.0-only OR Apache-2.0')
 depends=(
   r
 )
-optdepends=(
-  r-bigmemory
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3bfa6ac966ce0ea93283f5856a853d0ee5ff85aedd7a7d1ca8a93d0aa642860c')
+md5sums=('c9e558480d17b5d5abaa3fc8fa02fde6')
+b2sums=('50493caa6334f9719f3eb6142394fd43b795119790f221123ef1e26b27d30cf09caa5bada455f3fa927e86ee4a526d8c3c5ca9a31cd310b77581b83d29a411b8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
