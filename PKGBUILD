@@ -2,12 +2,13 @@
 
 pkgname=usdtweak
 pkgver=0.62.gc2ce217
-pkgrel=1
+pkgrel=2
 pkgdesc='USD Standalone Editor'
 arch=(x86_64)
 url='https://github.com/cpichard/'$pkgname
 license=('Apache')
 depends=(usd
+		usd-extras
 		python
 		libglvnd
 		boost-libs
@@ -48,7 +49,7 @@ build() {
 	)
 
 	cmake -S $pkgname -B build -G Ninja "${_CMAKE_FLAGS[@]}"
-	ninja -C build -j$(($(nproc) - 4))
+	ninja -C build -j$(($(nproc) - 2))
 }
 
 package() {

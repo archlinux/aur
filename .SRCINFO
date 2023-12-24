@@ -1,12 +1,13 @@
 pkgbase = usdtweak
 	pkgdesc = USD Standalone Editor
 	pkgver = 0.62.gc2ce217
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cpichard/usdtweak
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	depends = usd
+	depends = usd-extras
 	depends = python
 	depends = libglvnd
 	depends = boost-libs
