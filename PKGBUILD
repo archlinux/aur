@@ -3,7 +3,7 @@ pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.0~alpha8
 pkgver_=3.0.0-alpha8
-pkgrel=2
+pkgrel=3
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
@@ -23,21 +23,21 @@ build() {
         -D DAMASK_SOLVER:STRING=test \
         -D CMAKE_INSTALL_PREFIX:PATH=/usr \
         -D CMAKE_BUILD_TYPE:STRING=Performance
-  cmake --build build-test --parallel 4
+  make -C build-test
 
   cmake -S ${pkgbase}-${pkgver_} \
         -B build-grid \
         -D DAMASK_SOLVER:STRING=grid \
         -D CMAKE_INSTALL_PREFIX:PATH=/usr \
         -D CMAKE_BUILD_TYPE:STRING=Performance
-  cmake --build build-grid --parallel 4
+  make -C build-grid
 
   cmake -S ${pkgbase}-${pkgver_} \
         -B build-mesh \
         -D DAMASK_SOLVER:STRING=mesh \
         -D CMAKE_INSTALL_PREFIX:PATH=/usr \
         -D CMAKE_BUILD_TYPE:STRING=Performance
-  cmake --build build-mesh --parallel 4
+  make -C build-mesh
 
   cd ${pkgbase}-${pkgver_}/python
   python -m build --wheel --no-isolation
