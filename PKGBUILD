@@ -1,22 +1,22 @@
 # Maintainer: Jonpas <jonpas33@gmail.com>
-# Previous Maintainer: forivall <forivall@gmail.com>
+# Contributor: forivall <forivall@gmail.com>
 
 _pkgbase=hid-lg-g710-plus
 _pkgname=${_pkgbase}-dkms
 pkgname=${_pkgname}-git
 pkgdesc="Linux DKMS kernel module allowing use of extra keys and LEDs on the Logitech G710+"
-pkgver=r34.8433ee4
-pkgrel=5
+pkgver=r35.ba8c9f6
+pkgrel=6
 arch=('x86_64')
 license=('GPL2')
-url="http://github.com/wdouglass/logitech-g710-linux-driver"
+url="https://github.com/jonpas/logitech-g710-linux-driver"
 depends=('dkms')
 optdepends=('linux-headers: build the module against Arch kernel')
 makedepends=('git')
 provides=('hid-lg-g710-plus')
 conflicts=('hid-lg-g710-plus' 'logitech-g710-kmod-git' 'logitech-g710')
 
-source=("${_pkgbase}::git://github.com/wdouglass/logitech-g710-linux-driver.git")
+source=("${_pkgbase}::git://github.com/jonpas/logitech-g710-linux-driver.git")
 sha256sums=('SKIP')
 
 pkgver() {
