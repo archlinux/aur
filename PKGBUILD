@@ -3,12 +3,12 @@
 _pkgname=breastCancerVDX
 _pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
-pkgrel=1
-pkgdesc='Gene expression datasets published by Wang et al. [2005] and Minn et al. [2007] (VDX).'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Gene expression datasets published by Wang et al. [2005] and Minn et al. [2007] (VDX)"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(Artistic2.0)
 depends=(
   r
 )
@@ -18,14 +18,15 @@ optdepends=(
   r-survcomp
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c03d04aa3e347b6153f0f68cc38218a4f8a93957386ce43b03596b3028fe288b')
+md5sums=('446ef46e0bdd1480e12de21ded7b58f0')
+b2sums=('61e0ee4255350d171971f023f6e1b811a5429371cd09f47d8c060b5b0b58fbfdba39fdf20b88d649b63086215ca3812cca0a81534e9a19c5bc970bfd535399c4')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
