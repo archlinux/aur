@@ -1,7 +1,7 @@
 pkgbase = easybuild-easyblocks-git
 	pkgdesc = A software build and installation framework for HPC systems
 	pkgver = 4.8.2.r83.ge3e870d6c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/easybuilders/easybuild-easyblocks
 	arch = any
 	license = GPL2
@@ -11,6 +11,7 @@ pkgbase = easybuild-easyblocks-git
 	depends = python-toml
 	depends = easybuild-framework
 	provides = easybuild-easyblocks
+	conflicts = easybuild-easyblocks
 	source = git+https://github.com/easybuilders/easybuild-easyblocks.git#branch=develop
 	md5sums = SKIP
 
