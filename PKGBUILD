@@ -1,7 +1,7 @@
 # Maintainer: Robert Cegliński <rob.ceglinski@gmail.com>
 
 pkgname=minetest-mineclone2
-pkgver=0.85.0
+pkgver=0.86.0
 pkgrel=1
 pkgdesc='Minecraft clone game for Minetest'
 arch=('any')
@@ -9,9 +9,9 @@ url='https://git.minetest.land/MineClone2/MineClone2'
 license=('GPL3')
 depends=('minetest-common')
 source=("mineclone2-$pkgver.tar.gz::https://git.minetest.land/MineClone2/MineClone2/archive/${pkgver}.tar.gz")
-sha256sums=('7fb028aabdf579cffcd1014ca7bdea08bc615882973b87821fd8eed15b286a76')
-sha512sums=('7c80b73b06073842e1929ab5c91e797c9840330375e45cf3f78b6a905affc12502fc68d816d9c6fd3db7eb096a96287d59801e26227aa51ff4ddeffd2df1b20b')
-b2sums=('051f85923d1816ac043b4525acb65d4bf091453445e10fb189630bae30aa40eb761f1c26b95ba4b034d1446f1c184846e40de60ce669e9cb829ff4fda1c66eb3')
+sha256sums=('070183bc8ba5471c95c69f4fa9c90c88c4bd85baa56fbdcf05d13b734f17bfd0')
+sha512sums=('ac58db27fe6788e6485a08bd9b692f2ea6fac2d3a44f7d7402d67e4393803cdb7e8c5f03fb95d501ac74724dd3ffe94c1899efa38689c719857fb3a46390b8c7')
+b2sums=('5e3001d49cbed9f6b61d6a898190bf10f5049a280c5ba7d181eff69048a0b31be078912917f1d4e5abd6d5db5112cc6660e55a51e0f3523e471b8ea3a2fe3f97')
 
 package() {
   cd mineclone2
