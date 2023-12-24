@@ -1,8 +1,9 @@
-# Maintainer: knedl1k <knedl1k At tuta Dot io>
+# Maintainer: Mohamed Tarek <Mokhamed_tarek At mail Dot ru>
+# COntributer: knedl1k <knedl1k At tuta Dot io>
 
 pkgname=coppeliasim-bin
 _name=coppeliasim
-pkgver=4.5.1.rev4
+pkgver=4.6.0.rev16
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Robotic Simulation software from Coppelia Robotics. Formally known as VReP."
@@ -13,9 +14,9 @@ optdepends=('icu60: BlueZero api dependency')
 conflicts=('coppeliasim')
 options=(!strip)
 provides=('vrep' 'coppeliasim')
-source=("${_name}-${pkgver}.tar.xz::https://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V${_pkgver}_Ubuntu22_04.tar.xz")
+source=("${_name}-${pkgver}.tar.xz::https://www.coppeliarobotics.com/files/V4_6_0_rev16/CoppeliaSim_Edu_V${_pkgver}_Ubuntu22_04.tar.xz")
 noextract=("${source[0]%%::*}")
-sha256sums=('a1da77a587d4d834e246086823098b349797d66d634994170bde67d682daa20f')
+sha256sums=('2d2af2402a22438c858703237c6e42e3c7d47ef9c302242ea8f56cea8bf79251')
 
 package() {
     install -d "${pkgdir}/usr/"{bin,share/doc}
