@@ -31,4 +31,6 @@ makepkg -sri
 [ -d pkg ] && rm -fr pkg
 [ -d src ] && rm -fr src
 [ -f wofi-pass ] && rm wofi-pass
+[ -f wofi-pass.conf ] && rm wofi-pass.conf
 [ -f wofi-pass.1.gz ] && rm wofi-pass.1.gz
+[ -f LICENSE ] && rm LICENSE
