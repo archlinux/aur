@@ -1,7 +1,9 @@
 # Maintainer: Alexander Rundberg <alexanderrundberg [at] fastmail [dot] jp>
 # Maintainer: Ryan O'Beirne <ryanobeirne [at] ryanobeirne [dot] com>
-pkgname=pretty-git-prompt
-pkgver=0.2.1
+__pkgname=pretty-git-prompt
+pkgname="$__pkgname-git"
+conflicts=("$__pkgname")
+pkgver=0.2.1_63967bc
 pkgrel=1
 pkgdesc="Pretty git status for your shell prompt"
 arch=('any')
@@ -9,15 +11,22 @@ url="https://github.com/TomasTomecek/pretty-git-prompt"
 license=('MIT')
 depends=('git')
 makedepends=('rust' 'cmake')
-source=("https://github.com/TomasTomecek/pretty-git-prompt/archive/$pkgver.tar.gz")
-sha256sums=('56e1228209aa1e7d632ad98ca5d044dbf4d7c04d7b2cdea9132c3c3f759df93c')
+source=("git+https://github.com/TomasTomecek/pretty-git-prompt.git")
+sha256sums=(SKIP)
+
+pkgver() {
+	cd "$srcdir/$__pkgname"
+	local cargo_version="$(sed -En '/version/s/^.*=.*"(.*)".*$/\1/p' Cargo.toml | head -n1)"
+	local git_hash="$(git rev-parse --short HEAD)"
+	printf '%s_%s' "$cargo_version" "$git_hash"
+}
 
 build() {
-  cd "$srcdir"/"$pkgname"-"$pkgver"
+  cd "$srcdir/$__pkgname"
   make exec-stable-build
 }
 
 package() {
-  cd "$srcdir"/"$pkgname"-"$pkgver"
-  install -Dm755 target/release/pretty-git-prompt "$pkgdir"/usr/bin/pretty-git-prompt
+  cd "$srcdir/$__pkgname"
+  install -Dm755 "target/release/pretty-git-prompt" "$pkgdir/usr/bin/pretty-git-prompt"
 }

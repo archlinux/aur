@@ -3,3 +3,4 @@ pkg
 *.tar.gz
 *.tar.xz
 *.tar.zst
+pretty-git-prompt/
