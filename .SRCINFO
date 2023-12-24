@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-adaptive-any
 	pkgdesc = Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture
-	pkgver = 20.3.14
+	pkgver = 20.3.15
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.adaptive
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = kodi-addon-inputstream-adaptive-any
 	provides = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive-19
-	source = https://github.com/xbmc/inputstream.adaptive/archive/20.3.14-Nexus.tar.gz
+	source = https://github.com/xbmc/inputstream.adaptive/archive/20.3.15-Nexus.tar.gz
 	source = https://github.com/xbmc/xbmc/archive/20.2-Nexus.tar.gz
-	sha256sums = 59573a0d97bb665e0ada35b44f77e9bf9232adc669d0d44beccf727145d36aff
+	sha256sums = 1d7c933d05534e591e11fd204e836a3498fffc6a0717d5427c89acfd16fb9d40
 	sha256sums = 4e81abf81172812bc8891f69a7a80a2b846298cecaae7b5009725e28a3040c23
 
 pkgname = kodi-addon-inputstream-adaptive-any
