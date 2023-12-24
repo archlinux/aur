@@ -2,28 +2,23 @@
 
 _pkgname=amply
 pkgname=python-amply
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A Python package for AMPL/GMPL datafile parsing"
 arch=("any")
 license=("EPL")
 url="http://github.com/willu47/amply"
-makedepends=('python-pip' 'python-wheel')
+depends=('python-pyparsing')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('78ae51f18355968c7713351267fe8a60adc797c9e0e37092f538935026898b51413f346a0faecc748a290f3fd3e4c313cfab6d0ddacfe34f76ecdb4ecd562ffb')
-
-prepare() {
-	rm -fr python-amply
-	cp -r amply-$pkgver python-amply
-}
+b2sums=('e6d9408625aed372839290756f7569f21aa648c37a8fc53ac4cb5f3707550d7d9cad02c7bbfdcae77512ea53ca0b64911c2e1a9d476b1bc5cefd46356f61dda8')
 
 build() {
-	cd python-amply
-	python setup.py build
+	cd amply-$pkgver
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd python-amply
-
-	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+	cd amply-$pkgver
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
