@@ -1,4 +1,4 @@
-pkgbase = ord
+pkgbase = ord-git
 	pkgdesc = an index, block explorer, and command-line wallet
 	pkgver = 0.13.1
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = ord
 	source = https://github.com/ordinals/ord/archive/refs/tags/0.13.1.tar.gz
 	md5sums = SKIP
 
-pkgname = ord
+pkgname = ord-git

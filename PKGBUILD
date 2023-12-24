@@ -1,5 +1,6 @@
 # Maintainer: Kud Lain <kasa7qi at gmail dot com>
-pkgname=ord
+pkgname=ord-git
+pkg=ord
 pkgver=0.13.1
 pkgrel=1
 epoch=
@@ -15,10 +16,10 @@ noextract=()
 md5sums=('SKIP')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkg}-${pkgver}"
 	cargo build --release
 }
 
 package() {
-	install -Dm755 ${srcdir}/${pkgname}-${pkgver}/target/release/ord -t "${pkgdir}/usr/bin/"
+	install -Dm755 ${srcdir}/${pkg}-${pkgver}/target/release/ord -t "${pkgdir}/usr/bin/"
 }
