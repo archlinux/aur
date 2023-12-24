@@ -1,13 +1,14 @@
 pkgbase = r-gsl
 	pkgdesc = Wrapper for the Gnu Scientific Library
 	pkgver = 2.1.8
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=gsl
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL3
 	depends = gsl
+	depends = r
 	source = https://cran.r-project.org/src/contrib/gsl_2.1-8.tar.gz
-	sha256sums = f33609bf485abd190e65ff5d0fdab438b759294c47b921d983d89d6f053a2d95
+	md5sums = 357bceb886f42b70fb2056a401d5c401
+	b2sums = 6ed36abbe9f764b4157c2c0d0b0e3553770601a10858d2441af53de9a81277c0c35c81e1a3703784e83f7e7cbd71a3662716d3e8e519ca87bf937ae563547ecc
 
 pkgname = r-gsl

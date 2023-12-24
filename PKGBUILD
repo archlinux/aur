@@ -1,28 +1,28 @@
-# system requirements: Gnu Scientific Library version >= 2.1
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gsl
 _pkgver=2.1-8
 pkgname=r-${_pkgname,,}
-pkgver=2.1.8
-pkgrel=1
-pkgdesc='Wrapper for the Gnu Scientific Library'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Wrapper for the Gnu Scientific Library"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL3)
 depends=(
-  r
   gsl
+  r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f33609bf485abd190e65ff5d0fdab438b759294c47b921d983d89d6f053a2d95')
+md5sums=('357bceb886f42b70fb2056a401d5c401')
+b2sums=('6ed36abbe9f764b4157c2c0d0b0e3553770601a10858d2441af53de9a81277c0c35c81e1a3703784e83f7e7cbd71a3662716d3e8e519ca87bf937ae563547ecc')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
