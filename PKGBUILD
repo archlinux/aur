@@ -16,7 +16,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=1.0.0.2.g9daca346a
+pkgver=1.0.0.132.g03173530d
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -616,6 +616,7 @@ package_pipewire-pulse-git() {
     "pipewire-pulse=${pkgver}"
     'pulseaudio'
     'pulseaudio-bluetooth'
+    'pulse-native-provider'
     'alsa-card-profiles'
   )
   conflicts=(
