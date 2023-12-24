@@ -1,34 +1,96 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 
 # options
-: ${_pkgtype:=bin}
+: ${_autoupdate:=false}
+
+: ${_pkgtype:=-bin}
 
 # basic info
 _pkgname=logseq-desktop
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=0.10.1
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 arch=("x86_64")
 
-makedepends=(
-  'gendesk'
-)
+# main package
+_main_package() {
+  makedepends=(
+    'gendesk'
+  )
 
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
 
-install="$_pkgname.install"
+  install="$_pkgname.install"
 
-_pkgsrc="Logseq-linux-x64"
-source=(
-  "$url/releases/download/$pkgver/$_pkgsrc-$pkgver.zip"
-)
-sha256sums=('b67a2dff464610f2a64952eda858eaa7a4351edb6cd4076f63804d7f5b6b7423')
+  _pkgsrc="Logseq-linux-x64"
+  _pkgext="AppImage"
+  source=("$url/releases/download/$_pkgver/$_pkgsrc-$_pkgver.$_pkgext")
+  sha256sums=('b8aba5b33f23db5d79ee1566c88c1c5e2f3de679dda6f35828235de7f606b866')
+
+  if [[ "${_autoupdate::1}" == "t" ]] ; then
+    sha256sums=('SKIP')
+  fi
+}
+
+# common functions
+pkgver() {
+  printf '%s' "${_pkgver:?}"
+}
 
 prepare() {
+  _gen_script
+
+  local _gendesk_options=(
+    -q -f -n
+    --pkgname="$_pkgname"
+    --pkgdesc="$pkgdesc"
+    --name="Logseq"
+    --exec="logseq %u"
+    --icon="logseq"
+    --terminal=false
+    --categories="Office"
+    --mimetypes="x-scheme-handler/logseq"
+    --startupnotify=true
+    --custom="StartupWMClass=Logseq"
+  )
+
+  gendesk "${_gendesk_options[@]}"
+
+  # extract appimage
+  if [[ "${_pkgext::1}" == "A" ]] ; then
+    chmod +x "$_pkgsrc-$_pkgver.$_pkgext"
+    "./$_pkgsrc-$_pkgver.$_pkgext" --appimage-extract
+    ln -sf "squashfs-root" "$_pkgsrc"
+  fi
+}
+
+package() {
+  # desktop file
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+  # icons
+  install -Dm644 "$_pkgsrc/usr/share/icons/hicolor/256x256/apps/Logseq.png" \
+    -- "$pkgdir/usr/share/pixmaps/logseq.png"
+
+  # script
+  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/logseq"
+
+  # remove unneeded
+  rm -- "$_pkgsrc/AppRun"
+  rm -- "$_pkgsrc/Logseq.desktop"
+  rm -- "$_pkgsrc/Logseq.png"
+
+  # package files
+  install -dm755 "$pkgdir/usr/lib/$_pkgname"
+  cp --reflink=auto -r "$srcdir/$_pkgsrc"/* "$pkgdir/usr/lib/$_pkgname/"
+}
+
+# other functions
+_gen_script() {
   cat <<'EOF' > "$_pkgname.sh"
 #!/usr/bin/env sh
 set -e
@@ -47,37 +109,30 @@ else
     exec ${_ELECTRON} --no-sandbox $_USER_FLAGS "$@"
 fi
 EOF
+}
 
-  local _gendesk_options=(
-    -q -f -n
-    --pkgname="$_pkgname"
-    --pkgdesc="$pkgdesc"
-    --name="Logseq"
-    --exec="logseq %u"
-    --icon="logseq"
-    --terminal=false
-    --categories="Office"
-    --mimetypes="x-scheme-handler/logseq"
-    --startupnotify=true
-    --custom="StartupWMClass=Logseq"
+_update_version() {
+  : ${_pkgver:=$pkgver}
+
+  if [[ "${_autoupdate::1}" != "t" ]] ; then
+    return
+  fi
+
+  _response=$(curl -Ssf "$url/releases.atom")
+
+  _pkgver_new=$(
+    printf '%s' "$_response" \
+      | grep '/releases/tag/' \
+      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
+      | grep -Ev '[a-z]{2}' | sort -V | tail -1
   )
 
-  gendesk "${_gendesk_options[@]}"
+  # update _pkgver
+  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+    _pkgver="${_pkgver_new:?}"
+  fi
 }
 
-
-package() {
-  # copy files
-  install -dm755 "$pkgdir/opt/$_pkgname"
-  cp -r "$srcdir/$_pkgsrc"/* "$pkgdir/opt/$_pkgname/"
-
-  # desktop file
-  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/logseq-desktop.desktop"
-
-  # icons
-  install -Dm644 "$_pkgsrc/resources/app/icons/logseq.png" \
-    -t "$pkgdir/usr/share/pixmaps/"
-
-  # script
-  install -Dm755 "logseq-desktop.sh" "$pkgdir/usr/bin/logseq"
-}
+# execute
+_update_version
+_main_package
