@@ -1,7 +1,7 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
-	pkgver = 51.9
-	pkgrel = 2
+	pkgver = 51.10
+	pkgrel = 1
 	epoch = 2
 	url = https://github.com/bottlesdevs/Bottles
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = bottles
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = vkd3d
 	optdepends = vulkan-icd-loader
-	source = bottles-51.9.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/51.9.tar.gz
-	sha256sums = f476ec9e56ca38bc7400666e83094dffb840044fe7404b52fdedd694007451c3
+	source = bottles-51.10.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/51.10.tar.gz
+	sha256sums = fff942dcfaec70a56b115686bcad8d9be1f38ac5326b0873cfb372efab0a4a48
 
 pkgname = bottles
