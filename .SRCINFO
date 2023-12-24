@@ -1,5 +1,5 @@
 pkgbase = systemd-chromiumos
-	pkgver = 254.5
+	pkgver = 255.1
 	pkgrel = 2
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -47,10 +47,12 @@ pkgbase = systemd-chromiumos
 	makedepends = curl
 	makedepends = gnutls
 	makedepends = python-pyelftools
+	makedepends = libpwquality
+	makedepends = qrencode
 	makedepends = lib32-gcc-libs
 	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=42f5ba1e56ddb81c244e0d85f13109acdb14cbee?signed
-	source = git+https://github.com/systemd/systemd#tag=v254?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=6eb55199ed8953019853c2bcdb2e29743d90a86d?signed
+	source = git+https://github.com/systemd/systemd#tag=v255?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = 0002-Disable-mount_nofollow-for-ChromiumOS-kernels.patch
 	source = initcpio-hook-udev
@@ -64,7 +66,8 @@ pkgbase = systemd-chromiumos
 	source = 20-systemd-sysusers.hook
 	source = 30-systemd-binfmt.hook
 	source = 30-systemd-catalog.hook
-	source = 30-systemd-daemon-reload.hook
+	source = 30-systemd-daemon-reload-system.hook
+	source = 30-systemd-daemon-reload-user.hook
 	source = 30-systemd-hwdb.hook
 	source = 30-systemd-sysctl.hook
 	source = 30-systemd-tmpfiles.hook
@@ -79,17 +82,18 @@ pkgbase = systemd-chromiumos
 	sha512sums = 3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e
 	sha512sums = 14279a57ec414dc68c25d9e0fd688c94cd078143bf144ac9081ffaa1e369527f3f04369fc27a88c03ae15cc879ac9678c38ca4c7ebfc1d7cbb40a2c2941266d1
 	sha512sums = 4a6cd0cf6764863985dc5ad774d7c93b574645a05b3295f989342951d43c71696d069641592e37eeadb6d6f0531576de96b6392224452f15cd9f056fae038f8e
-	sha512sums = 94a3bf4720d428c2ec4e6c493f78debeb3d3b865ba2bef266f388bffccda8592af81a1fa2cd98f3d60720935e796572fa07256ffafb8d73342214f0ca8ba7acc
+	sha512sums = ada692514d758fa11e2be6b4c5e1dc2d9d47548f24ada35afdce1dcac918e72ae2251c892773e6cf41fa431c3613a1608668e999eb86a565870fecb55c47b4ba
 	sha512sums = a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
 	sha512sums = c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5
 	sha512sums = 5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75
 	sha512sums = b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19
-	sha512sums = 5c4119bf1d84b22986dc8d0c4c2de26500b824c21dfac69f22e36809e2673f0652447cc8c9f77190ad098896f4a5e1d03fa33676fe962de631bbfa44513a8860
+	sha512sums = 3cb8f88c1bffc753d0c540be5d25a0fdb9224478cca64743b5663340f2f26b197775286e6e680228db54c614dcd11da1135e625674a622127681662bec4fa886
 	sha512sums = 299dcc7094ce53474521356647bdd2fb069731c08d14a872a425412fcd72da840727a23664b12d95465bf313e8e8297da31259508d1c62cc2dcea596160e21c5
 	sha512sums = 0d6bc3d928cfafe4e4e0bc04dbb95c5d2b078573e4f9e0576e7f53a8fab08a7077202f575d74a3960248c4904b5f7f0661bf17dbe163c524ab51dd30e3cb80f7
 	sha512sums = 2b50b25e8680878f7974fa9d519df7e141ca11c4bfe84a92a5d01bb193f034b1726ea05b3c0030bad1fbda8dbb78bf1dc7b73859053581b55ba813c39b27d9dc
-	sha512sums = 63e55b3acd14bc54320b6f2310b43398651ad4e262d4f4a0135e05d34a993e56ed673cc46e57f15b418371df5c4cef6f54486db96325e4abb1d33fb1a3946254
+	sha512sums = a436d3f5126c6c0d6b58c6865e7bd38dbfbfb7babe017eeecb5e9d162c21902cbf4e0a68cf3ac2f99815106f9fa003b075bd2b4eb5d16333fa913df6e2f3e32a
+	sha512sums = bb7765e4c4f72ff51b9c24a36ace3ac43a7c7cf35c78ca44aac461fb099dfd7aa19bb49388ed68437e14b451c01f07a4be7994edc10871ef4dd4abbb31cfa257
 	sha512sums = a1661ab946c6cd7d3c6251a2a9fd68afe231db58ce33c92c42594aedb5629be8f299ba08a34713327b373a3badd1554a150343d8d3e5dfb102999c281bd49154
 	sha512sums = 9426829605bbb9e65002437e02ed54e35c20fdf94706770a3dc1049da634147906d6b98bf7f5e7516c84068396a12c6feaf72f92b51bdf19715e0f64620319de
 	sha512sums = da7a97d5d3701c70dd5388b0440da39006ee4991ce174777931fea2aa8c90846a622b2b911f02ae4d5fffb92680d9a7e211c308f0f99c04896278e2ee0d9a4dc
@@ -107,7 +111,6 @@ pkgname = systemd-chromiumos
 	depends = cryptsetup
 	depends = libcryptsetup.so
 	depends = dbus
-	depends = iptables
 	depends = kbd
 	depends = kmod
 	depends = libkmod.so
@@ -142,14 +145,17 @@ pkgname = systemd-chromiumos
 	optdepends = python: Unified Kernel Image with ukify
 	optdepends = curl: systemd-journal-upload, machinectl pull-tar and pull-raw
 	optdepends = gnutls: systemd-journal-gatewayd and systemd-journal-remote
+	optdepends = qrencode: show QR codes
+	optdepends = iptables: firewall features
 	optdepends = libbpf: support BPF programs
+	optdepends = libpwquality: check password quality
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=254.5
-	provides = udev=254.5
-	provides = systemd=254.5
+	provides = systemd-tools=255.1
+	provides = udev=255.1
+	provides = systemd=255.1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -188,7 +194,7 @@ pkgname = systemd-chromiumos-libs
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=254.5
+	provides = systemd-libs=255.1
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
@@ -199,15 +205,15 @@ pkgname = systemd-chromiumos-resolvconf
 	depends = systemd-chromiumos
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=254.5
-	conflicts = openresolv
+	provides = systemd-resolvconf=255.1
+	conflicts = resolvconf
 	conflicts = systemd-resolvconf
 
 pkgname = systemd-chromiumos-sysvcompat
 	pkgdesc = sysvinit compat for systemd - chromiumos patches
 	license = GPL2
 	depends = systemd-chromiumos
-	provides = systemd-sysvcompat=254.5
+	provides = systemd-sysvcompat=255.1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
@@ -220,5 +226,5 @@ pkgname = systemd-chromiumos-ukify
 	optdepends = python-pillow: Show the size of splash image
 	optdepends = sbsigntools: Sign the embedded kernel
 	provides = ukify
-	provides = systemd-ukify=254.5
+	provides = systemd-ukify=255.1
 	conflicts = systemd-ukify
