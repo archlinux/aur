@@ -2,7 +2,7 @@
 # Contributor: Luna Jernberg <lunajernberg@gnome.org>
 
 pkgname=tuba
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=0.1
 pkgdesc='Browse the Fediverse'
 arch=(
@@ -36,7 +36,7 @@ makedepends=(
   vala
 )
 
-_commit=ee9d1785cda8f2407937edaef86c9d315dcb6ed5 # tags/0.6.0^0
+_commit=8a4708d699e734d17305e9b08c08e5d7c32a1ad0 # tags/0.6.1^0
 validpgpkeys=(
   ## curl -sS https://github.com/GeopJr.gpg | gpg --import -
   '04A92A61E5CE5342F40E48DCFE5185F095BFC8C9' #Evangelos Paterakis <evan@geopjr.dev>
