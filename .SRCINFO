@@ -1,70 +1,58 @@
 pkgbase = wine-staging-wow64
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 9.0rc2
-	pkgrel = 3
+	pkgver = 9.0rc3
+	pkgrel = 1
 	url = https://www.winehq.org
 	install = wine.install
 	arch = x86_64
 	license = LGPL
-	makedepends = alsa-lib
-	makedepends = gst-plugins-base-libs
 	makedepends = libcups
-	makedepends = libpulse
-	makedepends = libxcomposite
-	makedepends = libxinerama
 	makedepends = libxxf86vm
 	makedepends = mesa
 	makedepends = mesa-libgl
-	makedepends = opencl-icd-loader
-	makedepends = pcsclite
-	makedepends = sdl2
-	makedepends = v4l-utils
 	makedepends = vulkan-icd-loader
 	makedepends = autoconf
 	makedepends = bison
 	makedepends = flex
-	makedepends = libgphoto2
 	makedepends = mingw-w64-gcc
 	makedepends = opencl-headers
 	makedepends = perl
-	makedepends = samba
-	makedepends = sane
 	makedepends = vulkan-headers
 	makedepends = git
+	depends = alsa-plugins
 	depends = fontconfig
 	depends = freetype2
 	depends = gettext
+	depends = gst-plugins-base-libs
+	depends = libpulse
+	depends = libxcomposite
 	depends = libxcursor
 	depends = libxi
+	depends = libxinerama
 	depends = libxrandr
+	depends = opencl-icd-loader
+	depends = pcsclite
+	depends = sdl2
+	depends = v4l-utils
 	depends = desktop-file-utils
+	depends = libgphoto2
+	depends = samba
+	depends = sane
 	optdepends = alsa-lib
-	optdepends = alsa-plugins
-	optdepends = gst-plugins-base-libs
-	optdepends = libpulse
-	optdepends = libxcomposite
-	optdepends = libxinerama
-	optdepends = opencl-icd-loader
-	optdepends = pcsclite
-	optdepends = sdl2
-	optdepends = v4l-utils
 	optdepends = cups
 	optdepends = dosbox
-	optdepends = libgphoto2
-	optdepends = samba
-	optdepends = sane
-	provides = wine=9.0rc2
-	provides = wine-staging=9.0rc2
-	provides = wine-wow64=9.0rc2
+	provides = wine=9.0rc3
+	provides = wine-staging=9.0rc3
+	provides = wine-wow64=9.0rc3
 	conflicts = wine
 	options = staticlibs
 	options = !lto
 	backup = usr/lib/binfmt.d/wine.conf
-	source = https://dl.winehq.org/wine/source/9.0/wine-9.0-rc2.tar.xz
+	source = https://dl.winehq.org/wine/source/9.0/wine-9.0-rc3.tar.xz
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
-	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v9.0-rc2
-	sha256sums = d9d7cc0bb4cabc28ae80e054e8743bceaa50dcfc6ac2fd9bf419deadfa43066f
+	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v9.0-rc3
+	sha256sums = 729801f1c933baa63cdce60b7758b6e2ea1f2ef46a160bb57475c5917a068921
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
 	sha256sums = SKIP
