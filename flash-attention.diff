@@ -1,29 +1,25 @@
---- pyproject.toml.old	2023-06-21 06:40:12.926595278 +0000
-+++ pyproject.toml	2023-06-21 06:45:23.050240508 +0000
-@@ -1,3 +1,3 @@
- [build-system]
--requires = ["ninja", "packaging", "setuptools", "wheel"]
-+requires = ["packaging", "setuptools", "wheel"]
- build-backend = "setuptools.build_meta"
---- setup.py.old	2023-06-20 23:03:56.492811870 +0000
-+++ setup.py	2023-06-21 06:46:07.850190147 +0000
-@@ -119,7 +119,6 @@
-     cc_flag.append("-gencode")
-     cc_flag.append("arch=compute_90,code=sm_90")
+--- setup.py	2023-12-24 11:32:47.740182920 +0300
++++ setup.py	2023-12-24 11:34:31.217200306 +0300
+@@ -89,10 +89,6 @@
+ cmdclass = {}
+ ext_modules = []
  
--subprocess.run(["git", "submodule", "update", "--init", "csrc/flash_attn/cutlass"])
- ext_modules.append(
-     CUDAExtension(
-         name="flash_attn_cuda",
-@@ -157,7 +156,6 @@
-         include_dirs=[
-             Path(this_dir) / 'csrc' / 'flash_attn',
-             Path(this_dir) / 'csrc' / 'flash_attn' / 'src',
--            Path(this_dir) / 'csrc' / 'flash_attn' / 'cutlass' / 'include',
-         ],
+-# We want this even if SKIP_CUDA_BUILD because when we run python setup.py sdist we want the .hpp
+-# files included in the source distribution, in case the user compiles from source.
+-subprocess.run(["git", "submodule", "update", "--init", "csrc/cutlass"])
+-
+ if not SKIP_CUDA_BUILD:
+     print("\n\ntorch.__version__  = {}\n\n".format(torch.__version__))
+     TORCH_MAJOR = int(torch.__version__.split(".")[0])
+@@ -207,7 +203,6 @@
+             include_dirs=[
+                 Path(this_dir) / "csrc" / "flash_attn",
+                 Path(this_dir) / "csrc" / "flash_attn" / "src",
+-                Path(this_dir) / "csrc" / "cutlass" / "include",
+             ],
+         )
      )
- )
-@@ -196,6 +194,5 @@
+@@ -319,6 +314,5 @@
          "torch",
          "einops",
          "packaging",

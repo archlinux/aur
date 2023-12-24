@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-flash-attention
 _pkgname=${pkgname#python-}
-pkgver=1.0.7
+pkgver=2.3.6
 pkgrel=1
 pkgdesc='Fast and memory-efficient exact attention'
 arch=('any')
@@ -14,18 +14,18 @@ makedepends=('cutlass' 'ninja' 'python-build' 'python-installer'
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/HazyResearch/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
         'flash-attention.diff')
-sha256sums=('57969210cb7f10114685931eda93e85dc523ad2e270b385a14d804bc47499f32'
+sha256sums=('aaf5147284d99996d9076fc87c9c5e0ab30139f78fce7f0e9eed31a390ab2aff'
             'SKIP')
 
 prepare() {
-    export CUDA_HOME=/opt/cuda
-    export TORCH_CUDA_ARCH_LIST=7.0,7.5,8.0,8.6,8.9,9.0
-
     cd $_pkgname-$pkgver
     patch -p 0 -i ../flash-attention.diff
 }
 
 build() {
+    export CUDA_HOME=/opt/cuda
+    export TORCH_CUDA_ARCH_LIST=7.0,7.5,8.0,8.6,8.9,9.0
+
     cd $_pkgname-$pkgver
     python setup.py build_ext
     python -m build -nw
