@@ -3,24 +3,25 @@
 _pkgname=awsMethods
 _pkgver=1.1-1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1
-pkgrel=4
+pkgver=${_pkgver//-/.}
+pkgrel=9
 pkgdesc="Class and Methods Definitions for Packages 'aws', 'adimpro', 'fmri', 'dwi'"
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('50934dc20cf4e015f1304a89de6703fed27e7bd54c6b9fc9fb253cdf2ecb7541')
+md5sums=('2a9265bc79c127c7a5c153bcefae6948')
+b2sums=('eabe1e977c8e6b8a5fdf64c875b288a16efa3c6948c79f62b65d039f8d72a85f4b9607c9803863b83ae196beee5277f3787f533c28548e1380941d63974b392a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
