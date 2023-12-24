@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Bagrii <dimich.dmb@gmail.com>
 
 pkgname=spi-ch341-usb-dkms-git
-pkgver=r46.d8187aa
+pkgver=r47.71971ce
 pkgver() {
     cd "$srcdir/spi-ch341-usb"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
