@@ -4,7 +4,7 @@
 # Contributor: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 pkgname=pfstools
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of command line programs for reading, writing and manipulating high-dynamic range (HDR) images"
 arch=('i686' 'x86_64')
 url="http://pfstools.sourceforge.net/"
@@ -30,15 +30,13 @@ makedepends=('cmake' 'qt5-base' 'octave'
              'freeglut' 'glu')
 options=(!libtool)
 source=("http://downloads.sourceforge.net/pfstools/$pkgname-$pkgver.tgz"
-        "opencv3.patch" "force_imagemagick6.patch")
+        "force_imagemagick6.patch")
 b2sums=('dbb5e0ab8613014b3698591acef95f5b846473997b158701ee1dbeb28f43d5af098f4267bac6c5194bf61da619bb5d38c5cd86f9e970483fb550b866b3d43a47'
-        '62dd4ff4c1fa50e409c1fde9f54996ca007aae98a8b45437f52f77faee8aac2bf9b1b50e41ed5374d958b9f3b5ea97f1fb2b7fa67e38cc79fc05cd40c14903d7'
         'f7874dbd47672278404085d372c44102a08b0e9ba69aaa0db625bb05cdd493fb6155ee02a76f2ff459797d5a74d326051c3a0979326ed8c36bd1fed5470f9c23')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  patch -Np1 < "$srcdir/opencv3.patch"
   patch -Np1 < "$srcdir/force_imagemagick6.patch"
 }
 
