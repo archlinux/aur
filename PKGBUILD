@@ -7,7 +7,7 @@ pkgname=(
   rog-control-center
   gnome-shell-extension-asusctl-gnome
 )
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=0.1
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
@@ -30,7 +30,7 @@ makedepends=(
   "unzip"
   "yarn"
 )
-_commit=1e5443e206e5a276b551f4025a415003bf7100aa # tags/5.0.3^0
+_commit=f421b8ee3b5409811e05b40429f7c47a78ba0a77 # tags/5.0.4^0
 source=("git+https://gitlab.com/asus-linux/asusctl.git#commit=$_commit")
 sha256sums=('SKIP')
 
