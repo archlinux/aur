@@ -14,64 +14,52 @@
 ## basic info
 _pkgname=wine
 pkgname="${_pkgname}${_pkgtype:-}"
-pkgver=9.0rc2
-pkgrel=3
+pkgver=9.0rc3
+pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
 arch=(x86_64)
 
 depends=(
-  fontconfig      #lib32-fontconfig
-  freetype2       #lib32-freetype2
-  gettext         #lib32-gettext
-  libxcursor      #lib32-libxcursor
-  libxi           #lib32-libxi
-  libxrandr       #lib32-libxrandr
-  desktop-file-utils
-)
-makedepends=(
-  alsa-lib              #lib32-alsa-lib
+  alsa-plugins          #lib32-alsa-plugins
+  fontconfig            #lib32-fontconfig
+  freetype2             #lib32-freetype2
+  gettext               #lib32-gettext
   gst-plugins-base-libs #lib32-gst-plugins-base-libs
-  libcups               #lib32-libcups
   libpulse              #lib32-libpulse
   libxcomposite         #lib32-libxcomposite
+  libxcursor            #lib32-libxcursor
+  libxi                 #lib32-libxi
   libxinerama           #lib32-libxinerama
-  libxxf86vm            #lib32-libxxf86vm
-  mesa                  #lib32-mesa
-  mesa-libgl            #lib32-mesa-libgl
+  libxrandr             #lib32-libxrandr
   opencl-icd-loader     #lib32-opencl-icd-loader
   pcsclite              #lib32-pcsclite
   sdl2                  #lib32-sdl2
   v4l-utils             #lib32-v4l-utils
+  desktop-file-utils
+  libgphoto2
+  samba
+  sane
+)
+makedepends=(
+  libcups               #lib32-libcups
+  libxxf86vm            #lib32-libxxf86vm
+  mesa                  #lib32-mesa
+  mesa-libgl            #lib32-mesa-libgl
   vulkan-icd-loader     #lib32-vulkan-icd-loader
   autoconf
   bison
   flex
-  libgphoto2
   mingw-w64-gcc
   opencl-headers
   perl
-  samba
-  sane
   vulkan-headers
 )
 optdepends=(
   alsa-lib              #lib32-alsa-lib
-  alsa-plugins          #lib32-alsa-plugins
-  gst-plugins-base-libs #lib32-gst-plugins-base-libs
-  libpulse              #lib32-libpulse
-  libxcomposite         #lib32-libxcomposite
-  libxinerama           #lib32-libxinerama
-  opencl-icd-loader     #lib32-opencl-icd-loader
-  pcsclite              #lib32-pcsclite
-  sdl2                  #lib32-sdl2
-  v4l-utils             #lib32-v4l-utils
   cups
   dosbox
-  libgphoto2
-  samba
-  sane
 )
 
 provides=("wine=$pkgver")
@@ -90,7 +78,7 @@ source=(
   "wine-binfmt.conf"
 )
 sha256sums=(
-  'd9d7cc0bb4cabc28ae80e054e8743bceaa50dcfc6ac2fd9bf419deadfa43066f'
+  '729801f1c933baa63cdce60b7758b6e2ea1f2ef46a160bb57475c5917a068921'
   '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
   '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
 )
