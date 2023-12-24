@@ -2,7 +2,7 @@
 _pkg='easybuild-easyconfigs'
 pkgname="${_pkg}-git"
 pkgver=4.8.2.r812.g41cde8911c
-pkgrel=1
+pkgrel=2
 pkgdesc="A software build and installation framework for HPC systems"
 arch=('any')
 url="https://github.com/easybuilders/easybuild-easyconfigs"
@@ -10,6 +10,7 @@ license=('GPL2')
 depends=('python' 'easybuild-easyblocks')
 makedepends=('git' 'python-setuptools')
 provides=("$_pkg")
+conflicts=("$_pkg")
 source=("git+https://github.com/easybuilders/${_pkg}.git#branch=develop")
 md5sums=('SKIP')
 
