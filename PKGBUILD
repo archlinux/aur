@@ -3,12 +3,12 @@
 _pkgname=profmem
 _pkgver=0.6.0
 pkgname=r-${_pkgname,,}
-pkgver=0.6.0
-pkgrel=1
-pkgdesc='Simple Memory Profiling for R'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=6
+pkgdesc="Simple Memory Profiling for R"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(LGPL)
 depends=(
   r
 )
@@ -18,14 +18,15 @@ optdepends=(
   r-r.rsp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('745ca9b22a8de3cda4374be6e2454e549742a3b72ff02c8894c972178192e63d')
+md5sums=('f67828b0287e8ca8d244982cc6c171e4')
+b2sums=('ecb07fca472cdc482f238792a3e8c0f48fcfda36534f3f2f5720d911474e7ac9bbd6ebc7ad32b2a8280534e4cf26deeeae3532e2af67a91f8cdaa0a918cdb7ce')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
