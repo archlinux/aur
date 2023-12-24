@@ -3,8 +3,8 @@
 
 _pkgname="python-elgato-streamdeck"
 pkgname="$_pkgname"
-pkgver=0.9.4
-pkgrel=2
+pkgver=0.9.5
+pkgrel=1
 pkgdesc="Library to control Elgato Stream Deck devices"
 url="https://github.com/abcminiuser/python-elgato-streamdeck"
 license=('MIT')
@@ -26,7 +26,7 @@ source=(
   "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver%%.r*}.$_pkgext"
 )
 sha256sums=(
-  '86ed641bb665dd27d064651775f2523e83df253659e937e72b2c2012b667fa6a'
+  '1aa458a9f718b3a62acc1cc0434fd5a41333bea1c7a318426132fdecc7603d19'
 )
 
 build() {
@@ -36,7 +36,7 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="${pkgdir:?}" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE -t "${pkgdir:?}/usr/share/licenses/${pkgname:?}/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
