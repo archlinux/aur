@@ -1,12 +1,13 @@
 pkgbase = r-bdsmatrix
 	pkgdesc = Routines for Block Diagonal Symmetric Matrices
 	pkgver = 1.3.6
-	pkgrel = 1
+	pkgrel = 7
 	url = https://cran.r-project.org/package=bdsmatrix
 	arch = x86_64
-	license = LGPL
+	license = LGPL2.1
 	depends = r
 	source = https://cran.r-project.org/src/contrib/bdsmatrix_1.3-6.tar.gz
-	sha256sums = f9c871d54378408902931792b3dbf8bda863d6aa67af6a0472a6ec1c420760bc
+	md5sums = 4f8ccf979ab7f88fa71b7e45323b219a
+	b2sums = 1bceed25e2ab1e3de9d6eb401797d87d4bd7e69bc90c436b41381649b9a1d11e8179fbf6d4ec3d03516c9587cbe7dacb2ecf673e1f10a7afb61bbb46874dd690
 
 pkgname = r-bdsmatrix
