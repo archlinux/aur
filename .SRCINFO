@@ -1,0 +1,14 @@
+pkgbase = gpic-git
+	pkgdesc = Downloads a google account's picture.
+	pkgver = v1.0+1+g18ea110
+	pkgrel = 1
+	url = https://github.com/themartiancompany/gpic
+	arch = any
+	license = AGPL3
+	makedepends = git
+	provides = gpic=v1.0+1+g18ea110
+	conflicts = gpic=v1.0+1+g18ea110
+	source = git+https://github.com/themartiancompany/gpic
+	sha256sums = SKIP
+
+pkgname = gpic-git
