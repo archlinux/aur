@@ -2,12 +2,12 @@
 _pkg='easybuild-framework'
 pkgname="${_pkg}-git"
 pkgver=4.8.2.r41.ga2eaf2365
-pkgrel=1
+pkgrel=2
 pkgdesc="A software build and installation framework for HPC systems (development)"
 arch=('any')
 url="https://github.com/easybuilders"
 license=('GPL2')
-depends=('python' 'env-modules-tcl' 'python-setuptools' 'python-distro'
+depends=('python' 'env-modules' 'python-setuptools' 'python-distro'
          'python-yaml' 'python-configobj' 'python-packaging'
          'python-humanfriendly' 'python-requests')
 optdepends=('lmod: another module management tool'
@@ -20,6 +20,7 @@ optdepends=('lmod: another module management tool'
             'python-rich: lets EasyBuild show rich-output, i.e. nice progress bars')
 makedepends=('git')
 provides=("${_pkg}")
+conflicts=("${_pkg}")
 source=("git+https://github.com/easybuilders/${_pkg}.git#branch=develop")
 md5sums=('SKIP')
 

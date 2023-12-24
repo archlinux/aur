@@ -1,13 +1,13 @@
 pkgbase = easybuild-framework-git
 	pkgdesc = A software build and installation framework for HPC systems (development)
 	pkgver = 4.8.2.r41.ga2eaf2365
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/easybuilders
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = python
-	depends = env-modules-tcl
+	depends = env-modules
 	depends = python-setuptools
 	depends = python-distro
 	depends = python-yaml
@@ -24,6 +24,7 @@ pkgbase = easybuild-framework-git
 	optdepends = python-keyring: for handling authentication with GitHub
 	optdepends = python-rich: lets EasyBuild show rich-output, i.e. nice progress bars
 	provides = easybuild-framework
+	conflicts = easybuild-framework
 	source = git+https://github.com/easybuilders/easybuild-framework.git#branch=develop
 	md5sums = SKIP
 
