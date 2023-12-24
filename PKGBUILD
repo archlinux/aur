@@ -8,7 +8,7 @@
 
 pkgbase=handbrake-full
 pkgname=(handbrake-full handbrake-full-cli)
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
 arch=(x86_64 i686)
@@ -17,6 +17,7 @@ license=(GPL2)
 source=("${pkgbase%-full}::git+https://github.com/HandBrake/HandBrake.git#tag=${pkgver}"
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/AMF-1.4.30-slim.tar.gz'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/dav1d-1.3.0.tar.bz2'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdovi-3.2.0.tar.gz'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/fdk-aac-2.0.2.tar.gz'
         'https://ffmpeg.org/releases/ffmpeg-6.1.tar.bz2'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libbluray-1.3.4.tar.bz2'
@@ -41,6 +42,7 @@ optdepends=('libdvdcss: for decoding encrypted DVDs'
 sha256sums=('SKIP'
             '665bd83dc7facb407e9e32168e38f9a1e0f37cd3802f4409d3889a3bcaec908f'
             'bde8db3d0583a4f3733bb5a4ac525556ffd03ab7dcd8a6e7c091bee28d9466b1'
+            '23c339b08bf32b66144b8fe17bf9a39f2dc810a37f081e5bc50207af9ae99922'
             '7812b4f0cf66acda0d0fe4302545339517e702af7674dd04e5fe22a5ade16a90'
             'eb7da3de7dd3ce48a9946ab447a7346bd11a3a85e6efb8f2c2ce637e7f547611'
             '478ffd68a0f5dde8ef6ca989b7f035b5a0a22c599142e5cd3ff7b03bbebe5f2b'
@@ -60,6 +62,7 @@ noextract=(
     'fdk-aac-2.0.2.tar.gz'
     'ffmpeg-6.1.tar.bz2'
     'libbluray-1.3.4.tar.bz2'
+    'libdovi-3.2.0.tar.gz'
     'libdvdnav-6.1.1.tar.bz2'
     'libdvdread-6.1.3.tar.bz2'
     'libvpx-1.7.0.tar.gz'
