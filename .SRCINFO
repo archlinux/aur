@@ -1,0 +1,11 @@
+pkgbase = templi
+	pkgdesc = Templi is a groundbreaking tool designed to expedite the template file generation process
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/RickaPrincy/Templi
+	arch = x86_64
+	license = MIT
+	source = templi_archlinux@3.0.0.tar.gz::https://github.com/RickaPrincy/Templi/releases/download/v3.0.0/templi_archlinux@3.0.0.tar.gz
+	sha256sums = c861ab51e5dc5cc2ca257c5f6d73236cef155fdbd940b923ca9b5b99eb517b26
+
+pkgname = templi
