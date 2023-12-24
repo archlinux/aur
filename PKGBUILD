@@ -3,12 +3,12 @@
 _pkgname=insight
 _pkgver=0.19.7
 pkgname=r-${_pkgname,,}
-pkgver=0.19.7
-pkgrel=1
-pkgdesc='Easy Access to Model Information for Various Model Objects'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Easy Access to Model Information for Various Model Objects"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL3)
 depends=(
   r
 )
@@ -25,7 +25,6 @@ optdepends=(
   r-biglm
   r-blavaan
   r-blme
-  r-boot
   r-brms
   r-broom
   r-car
@@ -53,10 +52,10 @@ optdepends=(
   r-gee
   r-geepack
   r-geor
+  r-ggeffects
   r-glmmadaptive
   r-glmmtmb
   r-gmnl
-  r-grdevices
   r-gt
   r-httr
   r-interp
@@ -72,8 +71,6 @@ optdepends=(
   r-logistf
   r-logitr
   r-marginaleffects
-  r-mass
-  r-matrix
   r-mclogit
   r-mclust
   r-mcmcglmm
@@ -82,7 +79,6 @@ optdepends=(
   r-metadat
   r-metafor
   r-metaplus
-  r-mgcv
   r-mhurdle
   r-mice
   r-mlogit
@@ -90,8 +86,6 @@ optdepends=(
   r-modelbased
   r-multgee
   r-nestedlogit
-  r-nlme
-  r-nnet
   r-nonnest2
   r-ordinal
   r-panelr
@@ -109,31 +103,30 @@ optdepends=(
   r-rms
   r-robustbase
   r-robustlmm
-  r-rpart
   r-rstanarm
   r-rstantools
   r-rstudioapi
   r-sandwich
   r-speedglm
-  r-splines
   r-statmod
   r-survey
-  r-survival
   r-testthat
   r-tmb
   r-truncreg
   r-tweedie
   r-vgam
+  r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('41a54c13a3f04108c79469cf35c41161f37e2d89e6d70791eb13fd5fc0e71f06')
+md5sums=('e13822ab6a330715c876b28a7a4805f4')
+b2sums=('149cbe5108b8fe8c37f64ccec4cddc3b60f21904098f67a1073a86758e5cccb4ee3ae0975c6231792aad286c333884f90d3fb61791e32ca386bea0cbaea2fb8f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
