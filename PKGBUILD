@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 url="https://petsc.org"
 license=('BSD')
 options=(staticlibs)
-depends=('python-numpy' 'openmpi' 'boost' 'lapack' 'hdf5-openmpi' 'superlu' 'superlu_dist' 'suitesparse')
+depends=('python-numpy' 'openmpi' 'boost' 'lapack' 'hdf5-openmpi' 'superlu' 'suitesparse')
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'cython')
 provides=('petsc4py')
 optdepends=('trilinos: support for trilinos'
@@ -25,6 +25,7 @@ optdepends=('trilinos: support for trilinos'
   'parmetis: support for ParMETIS'
   'scalapack: support for ScaLAPACK'
   'scotch: support for Scotch'
+  'superlu_dist: support for SuperLU_DIST',
   'triangle: support for Triangle'
   'trilinos: support for the ML package from Trilinos'
   )
@@ -33,7 +34,7 @@ install=petsc.install
 source=(http://web.cels.anl.gov/projects/petsc/download/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
 sha512sums=('16315a0f34982ac5e95d86b6e70d6a47be38b57cc1abf98c368f965cdb569039eaa8ce88447997461656b44fcccbbcf45e8846a9b4245bc942f6f30fc6dd2305'
-            'e9ed408f109be36f4b1baea2ba20ccd778ae8c0c16fdc9192a199155270fc289c564af9898dac8a1fc01f7205c2f8c3cb1d93ed18d099ec7761d3239ab41cf0a')
+            '80dfd422ba16e0fe529b65fd195d825095483282a2b202f03f81c507cfe694ce0ec9db606cbd74ac68d206343818a6aec15d32aea8faceddd1cec756409d5932')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch=arch-${_config}
@@ -51,7 +52,6 @@ build() {
             --with-mpi-f90module-visibility=0 \
             --with-mpi-dir=/usr \
             --with-superlu-lib=-lsuperlu --with-superlu-include=/usr/include/superlu \
-            --with-superlu_dist-lib=-lsuperlu_dist --with-superlu_dist-include=/usr/include/superlu_dist \
             --with-suitesparse=1 \
             --with-hdf5=1 --with-hdf5-fortran-bindings=1 \
             $(sh ${srcdir}/test_optdepends.sh)"

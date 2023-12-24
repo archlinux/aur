@@ -53,6 +53,11 @@ if [ -f /usr/include/scotch.h ]; then
   CONFOPTS="${CONFOPTS} --with-ptscotch=1 --with-ptscotch-lib=${SCOTCH_LIBS} --with-ptscotch-include=${SCOTCH_DIR}"
 fi
 
+# SuperLU_DIST
+if [ -f "/usr/lib/pkgconfig/superlu_dist.pc" ]; then
+  CONFOPTS="${CONFOPTS} --with-superlu_dist-lib=-lsuperlu_dist --with-superlu_dist-include=/usr/include/superlu_dist"
+fi
+
 # Triangle
 if [ -f "/usr/lib/libtriangle.so" ]; then
   CONFOPTS="${CONFOPTS} --with-triangle=1"
