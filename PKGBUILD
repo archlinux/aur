@@ -2,7 +2,7 @@
 # Contributor: Beej <beej@beej.us>
 
 pkgname=inform
-_pkgver=6.41-r9
+_pkgver=6.41-r10
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="The Inform 6 compiler, standard library, and PunyInform library"
@@ -14,8 +14,8 @@ makedepends=('frotz' 'ruby')
 optdepends=('perl: for blorb scripts')
 provides=('punyinform=5.0')
 source=("http://ifarchive.org/if-archive/infocom/compilers/inform6/source/${pkgname}-${_pkgver}.tar.gz")
-md5sums=('7ffb2d4476bfc40b4249eed6f0d7a07b')
-sha256sums=('1f834a977de7d52294b8471b64d768d2197f2117e6a0f6365ad743208ab05be1')
+md5sums=('b2fe59f61ef1f278c48808190cdd01d6')
+sha256sums=('a36781a732dcccd8de0a3a04b59b0681fa1b1303d58f51449620ca0b9a8de879')
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
