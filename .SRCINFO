@@ -1,15 +1,14 @@
 pkgbase = pretty-git-prompt
 	pkgdesc = Pretty git status for your shell prompt
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/TomasTomecek/pretty-git-prompt
 	arch = any
 	license = MIT
 	makedepends = rust
 	makedepends = cmake
 	depends = git
-	source = https://github.com/TomasTomecek/pretty-git-prompt/archive/0.2.0.tar.gz
-	md5sums = de78492d10f69c9946ecec184ea00398
+	source = https://github.com/TomasTomecek/pretty-git-prompt/archive/0.2.1.tar.gz
+	sha256sums = 56e1228209aa1e7d632ad98ca5d044dbf4d7c04d7b2cdea9132c3c3f759df93c
 
 pkgname = pretty-git-prompt
-
