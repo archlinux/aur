@@ -1,6 +1,6 @@
 pkgbase = nextpnr-ice40-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - for ice40
-	pkgver = 20231223_nextpnr_0.6_155_g56587859
+	pkgver = 20231224_nextpnr_0.6_156_g41914876
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
@@ -23,7 +23,7 @@ pkgbase = nextpnr-ice40-nightly
 	conflicts = nextpnr-git
 	conflicts = nextpnr-all-nightly
 	options = !strip
-	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=56587859
+	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=41914876
 	sha256sums = SKIP
 
 pkgname = nextpnr-ice40-nightly
