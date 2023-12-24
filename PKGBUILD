@@ -8,7 +8,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='5.0.r20580.gdd227fea5a'
+pkgver='5.0.r20840.g57327be7f3'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -16,9 +16,9 @@ arch=('x86_64' 'aarch64')
 url="https://$_mainpkgname.org"
 license=('GPL2')
 depends=(
-	'alsa-lib' 'bluez-libs' 'bzip2' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpulse'
-	'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml' 'sfml'
-	'speexdsp' 'xz' 'zstd' 'cubeb' 'zlib-ng'
+	'alsa-lib' 'bluez-libs' 'bzip2' 'hidapi' 'libevdev' 'libgl' 'libpulse' 'libx11'
+	'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml' 'sfml' 'speexdsp'
+	'xz' 'zstd' 'cubeb' 'zlib-ng'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
 	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so'
 	'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
@@ -28,6 +28,7 @@ optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
 source=(
 	"$pkgname::git+https://github.com/$_mainpkgname/$_projectname"
+	"$pkgname-enet::git+https://github.com/lsalzman/enet.git"
 	"$pkgname-implot::git+https://github.com/epezent/implot.git"
 	"$pkgname-mgba::git+https://github.com/mgba-emu/mgba.git"
 	"$pkgname-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
@@ -35,6 +36,7 @@ source=(
 	'minizip-ng.diff'
 )
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -53,6 +55,7 @@ prepare() {
 
 	# Provide submodules
 	declare -A _submodules=(
+		[enet]='enet/enet'
 		[implot]='implot/implot'
 		[mgba]='mGBA/mgba'
 		[rcheevos]='rcheevos/rcheevos'
