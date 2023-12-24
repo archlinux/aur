@@ -2,8 +2,8 @@
 
 _basename=exscript
 pkgname="python-${_basename}-git"
-pkgver=2.6.30
-pkgrel=2
+pkgver=2.6.r30.g9d5b035
+pkgrel=3
 pkgdesc="A Python module making Telnet and SSH easy"
 arch=('any')
 url="https://github.com/knipknap/exscript"
@@ -17,12 +17,14 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ${_basename}
-	git describe $HEAD --tags --match "v[0-9]*" | sed 's/^v//;s/-[^\-]*$//;s/-/./'
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
 	cd ${_basename}
-	sed -i "s/DEVELOPMENT/$pkgver/" ./Exscript/version.py
+	# from the upstream version.sh called by original Makefile
+	_version=`git describe $HEAD --tags --match "v[0-9]*" | sed 's/^v//;s/-[^\-]*$//;s/-/./' 2>/dev/null`
+	sed -i "s/DEVELOPMENT/$_version/" ./Exscript/version.py
 	python setup.py build
 }
 
