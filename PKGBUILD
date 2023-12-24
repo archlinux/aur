@@ -4,7 +4,7 @@ pkgbase=bitcoin-bin
 _util_suffixes=('cli' 'qt' 'tx' 'util' 'wallet')
 _pkgname=('bitcoin-daemon' "${_util_suffixes[@]/#/bitcoin-}")
 pkgname=("${_pkgname[@]/%/-bin}")
-pkgver=25.0
+pkgver=26.0
 pkgrel=1
 pkgdesc="A peer-to-peer network based digital currency (official binaries)"
 arch=('x86_64')
@@ -14,7 +14,6 @@ _bindirbase="${pkgbase}-${pkgver}-bin"
 _srcdirbase="${pkgbase}-${pkgver}-src"
 source=("${_bindirbase}.tar.gz::https://bitcoincore.org/bin/bitcoin-core-${pkgver}/bitcoin-${pkgver}-x86_64-linux-gnu.tar.gz"
         "${_srcdirbase}.tar.gz::https://bitcoincore.org/bin/bitcoin-core-${pkgver}/bitcoin-${pkgver}.tar.gz"
-        "bitcoind.service.patch"
         "bitcoin.sysusers"
         "bitcoin.tmpfiles"
         "bitcoin-qt.desktop"
@@ -22,9 +21,8 @@ source=("${_bindirbase}.tar.gz::https://bitcoincore.org/bin/bitcoin-core-${pkgve
 # We manually extract in prepare()
 noextract=("${_bindirbase}.tar.gz"
            "${_srcdirbase}.tar.gz")
-sha256sums=('33930d432593e49d58a9bff4c30078823e9af5d98594d2935862788ce8a20aec'
-            '5df67cf42ca3b9a0c38cdafec5bbb517da5b58d251f32c8d2a47511f9be1ebc2'
-            'ad527b35dcfecf4f6db6823b6a09b4fd2823a9db4cb6d528795f7cefe43d5a55'
+sha256sums=('23e5ab226d9e01ffaadef5ffabe8868d0db23db952b90b0593652993680bb8ab'
+            'ab1d99276e28db62d1d9f3901e85ac358d7f1ebcb942d348a9c4e46f0fcdc0a1'
             '7a77112fb094b9b2e6dd873e24c9a6bacb1f1c453d811a024f271f4b78f2a704'
             'ba83570b4671b18c230f23d8d93cd8faa73179a546655448c14d1644d9b49f35'
             'a020897651c03690eae3411fe401100fd1a2ffaa799247165eb71124609b7959'
@@ -40,10 +38,6 @@ _extract() {
 prepare() {
   _extract "$_bindirbase"
   _extract "$_srcdirbase"
-
-  # Drop this and entries in source= and sha256sums= after
-  # https://github.com/bitcoin/bitcoin/pull/25975 is in a release
-  patch --directory="$_srcdirbase" --forward --strip=1 --input="${srcdir}/bitcoind.service.patch"
 }
 
 # Usage: _package BINNAME
