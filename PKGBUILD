@@ -3,24 +3,25 @@
 _pkgname=infotheo
 _pkgver=1.2.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0.1
-pkgrel=3
-pkgdesc='Information-Theoretic Measures'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=8
+pkgdesc="Information-Theoretic Measures"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL3)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c0fb8ec97ad3a49f231c4c993b5eee70c6a61c8c30dc4a46197867e4763a29d4')
+md5sums=('980ad0bc179733e870c25276cc95680e')
+b2sums=('29605dd98d54deccf85ca2c2edd181042f4c83253973925a80b620742a96ed7b4b092f0aa56cb65eb8d38d10674d9f0a3891b2b925f7fe0f99ff1e3aa7649708')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
