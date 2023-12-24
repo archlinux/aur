@@ -1,6 +1,6 @@
 # Maintainer: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=rakudo-bin
-pkgver=2023.11_01
+pkgver=2023.12_01
 pkgrel=1
 pkgdesc="Raku compiler for MoarVM"
 arch=('x86_64')
@@ -12,8 +12,15 @@ conflicts=('rakudo-moar' 'perl6' 'raku' 'rakudo' 'nqp' 'moarvm')
 install="${pkgname}.install"
 source=("https://rakudo.org/dl/${pkgname%-bin}/${pkgname%-bin}-moar-${pkgver//_/-}-linux-x86_64-gcc.tar.gz"
         "https://rakudo.org/dl/${pkgname%-bin}/${pkgname%-bin}-moar-${pkgver//_/-}-linux-x86_64-gcc.tar.gz.asc")
-validpgpkeys=('DB2BA39D1ED967B584D65D71C09FF113BB6410D0')
-sha512sums=('2d6c9ad1ffbe631f528a8cdf3bdb4fc7e7107cd94af8e64bb8a7aa78bae34d7c79a335e42db9179dde0e2fea5dbf7576b0cad9e5166471c11165950151b2c8af'
+validpgpkeys=(
+    # Patrick Böker
+    'DB2BA39D1ED967B584D65D71C09FF113BB6410D0'
+    # Alexander Kiryuhin
+    'FE750D152426F3E50953176ADE8F8F5E97A8FCDE'
+    # Justin DeVuyst
+    '59E634736AFDCF9C6DBAC382602D51EACA887C01'
+)
+sha512sums=('ee54665d8f47e63a5d7c8e5ad8e1e5f71eb3be444bb965018c5426a4289cb6dd1fd7c717120e2eb60f1c8db702736eb82e2090d06b2070f65f26fb11af8e66da'
             'SKIP')
 
 package() {
