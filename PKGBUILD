@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 pkgname=neper
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Polycrystal generation and meshing'
 arch=('x86_64')
 url='https://neper.info'
@@ -19,7 +19,7 @@ build() {
   cmake -S ${pkgname}-${pkgver}/src \
         -B build \
         -D CMAKE_INSTALL_PREFIX:PATH=/usr
-  cmake --build build --parallel 4
+  make -C build
 }
 
 
