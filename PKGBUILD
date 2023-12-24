@@ -3,12 +3,12 @@
 _pkgname=additivityTests
 _pkgver=1.1-4.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.4.1
-pkgrel=1
-pkgdesc='Additivity Tests in the Two Way Anova with Single Sub-class Numbers'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=6
+pkgdesc="Additivity Tests in the Two Way Anova with Single Sub-Class Numbers"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL3)
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-knitr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0421d0aa00edb67c42a61a66722c43cb95d8cd1dafa6bff603739a6fd0767f02')
+md5sums=('0aa55442e90e17042e1fdb78b29c525c')
+b2sums=('fdddc851dc30942495272e759e06965a6cda841de4c7b7edb113beb74f2d96b5116f8d30f9c7a5f001377350e7d8d26d1c503957827d5cbb7ebf953f3f1488c7')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

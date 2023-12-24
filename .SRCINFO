@@ -1,13 +1,14 @@
 pkgbase = r-additivitytests
-	pkgdesc = Additivity Tests in the Two Way Anova with Single Sub-class Numbers
+	pkgdesc = Additivity Tests in the Two Way Anova with Single Sub-Class Numbers
 	pkgver = 1.1.4.1
-	pkgrel = 1
+	pkgrel = 6
 	url = https://cran.r-project.org/package=additivityTests
 	arch = any
-	license = GPL
+	license = GPL3
 	depends = r
 	optdepends = r-knitr
 	source = https://cran.r-project.org/src/contrib/additivityTests_1.1-4.1.tar.gz
-	sha256sums = 0421d0aa00edb67c42a61a66722c43cb95d8cd1dafa6bff603739a6fd0767f02
+	md5sums = 0aa55442e90e17042e1fdb78b29c525c
+	b2sums = fdddc851dc30942495272e759e06965a6cda841de4c7b7edb113beb74f2d96b5116f8d30f9c7a5f001377350e7d8d26d1c503957827d5cbb7ebf953f3f1488c7
 
 pkgname = r-additivitytests
