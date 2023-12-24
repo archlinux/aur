@@ -1,7 +1,7 @@
 # Maintainer: xiota / aur.chaotic.cx
 
 # options
-if [ "$_srcinfo" == "t" ] ; then
+if [ "${_srcinfo::1}" = "t" ] ; then
   : ${_autoupdate:=false}
 elif [ -z "$_pkgver" ] ; then
   : ${_autoupdate:=true}
@@ -9,12 +9,16 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgtype:=-latest-bin}
+: ${_build_latest:=true}
+: ${_build_bin:=true}
+
+[[ "${_build_latest::1}" == "t" ]] && _pkgtype+="-latest"
+[[ "${_build_bin::1}" == "t" ]] && _pkgtype+="-bin"
 
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5300
+pkgver=1.7.5321
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -29,6 +33,7 @@ _main_package() {
   conflicts=("$_pkgname")
 
   options=(!strip !debug)
+  install="$_pkgname.install"
 
   _url="https://github.com/PCSX2/pcsx2"
   _appimage="pcsx2-v$_pkgver-linux-appimage-x64-Qt.AppImage"
