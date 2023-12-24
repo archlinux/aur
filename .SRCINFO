@@ -1,0 +1,11 @@
+pkgbase = bats-battery
+	pkgdesc = Battery status in the console
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://github.com/cdown/bats
+	arch = any
+	license = Public Domain
+	source = https://github.com/cdown/bats/archive/1.2.0.zip
+	md5sums = 90e0cf682045908caa6357c01ea2405b
+
+pkgname = bats-battery
