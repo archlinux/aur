@@ -1,15 +1,15 @@
-diff -rudp xfce4-mpc-plugin-0.5.2.orig/panel-plugin/xfce4-mpc-plugin.c xfce4-mpc-plugin-0.5.2/panel-plugin/xfce4-mpc-plugin.c
---- xfce4-mpc-plugin-0.5.2.orig/panel-plugin/xfce4-mpc-plugin.c	2021-10-19 15:09:05.000000000 -0400
-+++ xfce4-mpc-plugin-0.5.2/panel-plugin/xfce4-mpc-plugin.c	2021-10-19 15:12:28.000000000 -0400
-@@ -32,6 +32,7 @@
- #define DEFAULT_MPD_HOST "localhost"
- #define DEFAULT_MPD_PORT 6600
- #define DIALOG_ENTRY_WIDTH 20
+diff -rudp xfce4-mpc-plugin-0.5.3.orig/panel-plugin/xfce4-mpc-plugin.c xfce4-mpc-plugin-0.5.3/panel-plugin/xfce4-mpc-plugin.c
+--- xfce4-mpc-plugin-0.5.3.orig/panel-plugin/xfce4-mpc-plugin.c	2023-04-21 04:18:03.000000000 -0400
++++ xfce4-mpc-plugin-0.5.3/panel-plugin/xfce4-mpc-plugin.c	2023-12-23 23:07:02.000000000 -0500
+@@ -36,6 +36,7 @@
+ #define TOOLTIP_TEXT _("... not connected?")
+ #define TOOLTIP_FORMAT "Volume: %vol%% - Mpd %status%%newline%%artist% - %album% -/- (#%track%) %title%"
+ #define PLAYLIST_FORMAT "%artist% - %album% -/- (#%track%) %title%"
 +#define TIMEOUT 1000
  
  static void resize_button(GtkWidget *, gint, gint);
  
-@@ -609,6 +610,37 @@ show_playlist (t_mpc* mpc)
+@@ -705,6 +706,37 @@ show_playlist (t_mpc* mpc)
     g_string_free(str, TRUE);
  }
  
@@ -47,7 +47,7 @@ diff -rudp xfce4-mpc-plugin-0.5.2.orig/panel-plugin/xfce4-mpc-plugin.c xfce4-mpc
  static void
  toggle(GtkWidget *widget, GdkEventButton* event, t_mpc* mpc)
  {
-@@ -785,6 +817,7 @@ mpc_create (XfcePanelPlugin * plugin)
+@@ -884,6 +916,7 @@ mpc_create (XfcePanelPlugin * plugin)
     mpc->toggle = new_button_with_cbk(plugin, mpc->box, "media-playback-pause-symbolic", G_CALLBACK(toggle), mpc);
     mpc->next = new_button_with_cbk(plugin, mpc->box, "media-skip-forward-symbolic", G_CALLBACK(next), mpc);
  
@@ -55,20 +55,18 @@ diff -rudp xfce4-mpc-plugin-0.5.2.orig/panel-plugin/xfce4-mpc-plugin.c xfce4-mpc
     mpc->random = gtk_check_menu_item_new_with_label (_("Random"));
     g_signal_connect (G_OBJECT(mpc->random), "toggled", G_CALLBACK (mpc_random_toggled), mpc);
     mpc->repeat = gtk_check_menu_item_new_with_label (_("Repeat"));
-@@ -857,7 +890,8 @@ mpc_construct (XfcePanelPlugin * plugin)
+@@ -963,6 +996,7 @@ mpc_construct (XfcePanelPlugin * plugin)
+           mpc_launch_streaming(mpc);
+    }
  
-    /* create a connection*/
-    mpc->mo = mpd_new(mpc->mpd_host,mpc->mpd_port,mpc->mpd_password);
--
-+   
 +   g_timeout_add (TIMEOUT, (GSourceFunc) mpc_timer, mpc);
     gtk_container_add (GTK_CONTAINER (plugin), mpc->frame);
     gtk_frame_set_shadow_type (GTK_FRAME (mpc->frame), ((mpc->show_frame) ? GTK_SHADOW_IN : GTK_SHADOW_NONE));
  
-diff -rudp xfce4-mpc-plugin-0.5.2.orig/panel-plugin/xfce4-mpc-plugin.h xfce4-mpc-plugin-0.5.2/panel-plugin/xfce4-mpc-plugin.h
---- xfce4-mpc-plugin-0.5.2.orig/panel-plugin/xfce4-mpc-plugin.h	2021-10-19 15:09:05.000000000 -0400
-+++ xfce4-mpc-plugin-0.5.2/panel-plugin/xfce4-mpc-plugin.h	2021-10-19 15:10:39.000000000 -0400
-@@ -51,6 +51,7 @@ typedef struct {
+diff -rudp xfce4-mpc-plugin-0.5.3.orig/panel-plugin/xfce4-mpc-plugin.h xfce4-mpc-plugin-0.5.3/panel-plugin/xfce4-mpc-plugin.h
+--- xfce4-mpc-plugin-0.5.3.orig/panel-plugin/xfce4-mpc-plugin.h	2021-08-24 16:55:29.000000000 -0400
++++ xfce4-mpc-plugin-0.5.3/panel-plugin/xfce4-mpc-plugin.h	2023-12-23 23:05:31.000000000 -0500
+@@ -54,6 +54,7 @@ typedef struct {
     gchar * playlist_format;
     gboolean mpd_repeat;
     gboolean mpd_random;

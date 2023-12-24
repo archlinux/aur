@@ -1,20 +1,20 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=xfce4-mpc-plugin-update
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Updates the toggle button icon depending on what MPD is doing"
 arch=(i686 x86_64)
 license=('GPL2')
-url="http://goodies.xfce.org/projects/panel-plugins/xfce4-mpc-plugin"
+url="https://docs.xfce.org/panel-plugins/xfce4-mpc-plugin"
 groups=('xfce4-goodies')
-depends=('xfce4-panel' 'libmpd>=0.16.1')
+depends=('xfce4-panel' 'libmpd')
 makedepends=('pkgconfig' 'intltool')
 conflicts=('xfce4-mpc-plugin')
 replaces=('xfce4-mpc-plugin')
 provides=('xfce4-mpc-plugin')
 options=(!libtool)
-source=(http://archive.xfce.org/src/panel-plugins/xfce4-mpc-plugin/${pkgver%.*}/xfce4-mpc-plugin-${pkgver}.tar.bz2 update.diff)
+source=(https://archive.xfce.org/src/panel-plugins/xfce4-mpc-plugin/${pkgver%.*}/xfce4-mpc-plugin-${pkgver}.tar.bz2 update.diff)
 
 build() {
   cd "${srcdir}"/xfce4-mpc-plugin-${pkgver}
@@ -29,5 +29,5 @@ package() {
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('eefe78b7b6b95312b3a52814b7f632dc92970c1b3e9535de616315749bf67760'
-            '97805caee68cbeb070af0af43c0f71203a64eb6828cfd2f040a20c0f61919f87')
+sha256sums=('0467fb4d1acd982d3c3e0b89cb41019946850524ff19ed0f658a8d56c7b7664d'
+            'b3f59a065178c1d68b0873a2b81055ad77368440b9e3dd1af7d7a1a0d8b0576b')
