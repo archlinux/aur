@@ -21,7 +21,7 @@ else
   pkgname="$_pkgname-git"
   pkgdesc="$_pkgdesc"
 fi
-pkgver=4.0.0.r26538.gdf6394ea80
+pkgver=4.0.0.r27115.g51ebebd2c4
 pkgrel=1
 url='https://code.videolan.org/videolan/vlc'
 arch=('i686' 'x86_64')
@@ -123,7 +123,7 @@ if [[ x"${_wayland::1}" == "xt" ]] ; then
 	'2419b.patch'
   )
   b2sums+=(
-	'977af105fb03aedd132091921c9ace0355c3211a2a3ba1ef51eb923330c09abb790950247c8c90c0fab9f048ad9d8bbd96dab06dc515879b72ff1d307f252208'
+	'124f67d29c72446e380f26f43f961e9c6a44420eb3a4bff286c3770ac3f32e253f3ac186c3a6cfd40296dda2d7e22192a4a1859909b3cf1d499f4d076039babb'
 	'e92e9cefd4adc84fcb45b398fd62e6d9ff770b0719835772e8add7edc13dee717e34effba8395d3437bb43c995f2fd3a5cf69765198cce2881730938b6bd04bb'
 	'c5fb28c47811a0f4bd91563e95d5ce45248a9a566e65daeaf870ff7ddf12b5edf6d37cf604b04fbde78934df0bb9d733c8f900fbb97795835b3a7061de377bf9'
   )
