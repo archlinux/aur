@@ -4,7 +4,7 @@ pkgbase=postgresql16
 pkgver=16.1
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=5
+pkgrel=6
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -152,7 +152,8 @@ package_postgresql16() {
   pkgdesc='Sophisticated object-relational DBMS'
   # backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
   depends=("${pkgbase}-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0'
-           'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs' 'libxslt')
+           'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs' 'libxslt'
+           'libxslt' 'lz4' 'zstd')
   optdepends=('python: for PL/Python 3 support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support')
