@@ -4,12 +4,12 @@
 _pkgname=clisymbols
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
-pkgrel=9
-pkgdesc='Unicode Symbols at the R Prompt'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('MIT')
+pkgver=${_pkgver//-/.}
+pkgrel=11
+pkgdesc="Unicode Symbols at the R Prompt"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(MIT)
 depends=(
   r
 )
@@ -17,15 +17,18 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0649f2ce39541820daee3ed408d765eddf83db5db639b493561f4e5fbf88efe0')
+md5sums=('15c0124e37789c5ec74e556eb866ff5c')
+b2sums=('d1ab07eb1e4806a9a4b530bc49ee15386b18f69e641bda9c67baab54abf7e5347e7117c1f87af3687309884cd132b6af902cf5bb612b571265fe401ba8d40d8c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
