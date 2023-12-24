@@ -4,8 +4,15 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Jeremy Newton (Mystro256) <alexjnewt@gmail.com>
 
+## useful links
+# https://dolphin-emu.org
+# https://github.com/dolphin-emu/dolphin
+
 # options
 : ${_debugfast:=false}
+
+: ${_build_clang:=true}
+: ${_build_mold:=true}
 
 : ${_build_debugfast:=true}
 : ${_build_avx:=false}
@@ -18,12 +25,11 @@
 # basic info
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=5.0.r20822.g70b7a59456
+pkgver=5.0.r20840.g57327be7f3
 pkgrel=1
 pkgdesc='A Gamecube / Wii / Triforce emulator'
 arch=(x86_64)
 _url="https://github.com/dolphin-emu/dolphin"
-url="https://dolphin-emu.org"
 license=(GPL2)
 
 # main package
@@ -80,9 +86,24 @@ _main_package() {
     'pulseaudio: PulseAudio backend'
   )
 
-  options=(!emptydirs !lto)
+  options=(!emptydirs)
 
-  if [ "${pkgname: -4}" != "-git" ] ; then
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    makedepends+=(
+      clang
+      lld
+      llvm
+      mold
+    )
+  else
+    options+=(!lto)
+  fi
+
+  if [[ "${_build_mold::1}" == "t" ]] ; then
+    makedepends+=(mold)
+  fi
+
+  if [[ "${_build_git::1}" != "t" ]] ; then
     _main_stable
   else
     _main_git
@@ -217,12 +238,15 @@ prepare() {
   # Fix minizip-ng name for Arch
   sed -E -e 's@(pkgconfig\(MINIZIP minizip)([^a-z]+)@\1-ng\2@' \
     -i "${srcdir:?}/$_pkgsrc/CMakeLists.txt"
+
+  # Delete gcc specific options
+  sed '/_ARCHIVE_/d' -i "${srcdir:?}/$_pkgsrc/CMakeLists.txt"
 }
 
 build() {
   if [[ "${_build_avx::1}" == "t" ]] ; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-    export CXXFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
   fi
 
   local _cmake_options=(
@@ -241,13 +265,40 @@ build() {
     -DUSE_SYSTEM_XXHASH=OFF
     -DUSE_SYSTEM_ZLIB=OFF
 
-    -DENABLE_LTO=OFF # segfault when on
     -DENABLE_TESTS=OFF
     -Wno-dev
   )
 
   if [ "${_debugfast::1}" == "t" ] ; then
     _cmake_options+=(-DFASTLOG=ON)
+  fi
+
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    export AR=llvm-ar
+    export NM=llvm-nm
+
+    _cmake_options+=(
+      -DCMAKE_C_COMPILER=clang
+      -DCMAKE_CXX_COMPILER=clang++
+      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
+      -DENABLE_LTO=ON
+    )
+  else
+    _cmake_options+=(-DENABLE_LTO=OFF)
+  fi
+
+  if [[ "${_build_mold::1}" == "t" ]] ; then
+    _cmake_options+=(
+      -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=mold"
+      -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=mold"
+      -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=mold"
+    )
+  else
+    _cmake_options+=(
+      -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld"
+      -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
+      -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld"
+    )
   fi
 
   cmake "${_cmake_options[@]}"
