@@ -2,7 +2,7 @@
 # Maintainer: Torkus <48141663+ogri-la@users.noreply.github.com>
 pkgname=strongbox
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="World of Warcraft addon manager. F/OSS, ad-free and privacy respecting."
 arch=("x86_64")
 url="https://github.com/ogri-la/strongbox"
