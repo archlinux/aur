@@ -4,30 +4,31 @@
 _pkgname=leaps
 _pkgver=3.1
 pkgname=r-${_pkgname,,}
-pkgver=3.1
-pkgrel=9
-pkgdesc='Regression Subset Selection'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=11
+pkgdesc="Regression Subset Selection"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
-)
-optdepends=(
-  r-biglm
 )
 makedepends=(
   gcc-fortran
 )
+optdepends=(
+  r-biglm
+)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3d7c3a102ce68433ecf167ece96a7ebb4207729e4defd0ac8fc00e7003f5c3b6')
+md5sums=('2535d3b89f1457e8a3918345629d802f')
+b2sums=('979eedd53566f8c416c7809d7cbb567dffcc8a5dfef3bd24ec51b6e622e413cc525cea932dbc74a6edfe7aa5eed97ddc5a82bf98e5c7ab691e61cd692421c7b3')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
