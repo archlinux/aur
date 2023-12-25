@@ -37,5 +37,5 @@ prepare() {
 }
 
 package() {
-	mv opt usr $pkgdir/
+	mv opt usr "$pkgdir/"
 }
