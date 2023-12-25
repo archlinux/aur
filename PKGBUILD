@@ -1,6 +1,6 @@
 pkgname=btop-gpu-git
-pkgver=1.3.0.r836.0d35746
-pkgrel=3
+pkgver=1.3.0.r875.e15e0b7
+pkgrel=1
 pkgdesc="A monitor of resources compiled with gpu support flags!"
 arch=(any)
 url="https://github.com/aristocratos/btop"
