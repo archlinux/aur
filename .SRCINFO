@@ -1,0 +1,17 @@
+pkgbase = oxeylyzer-git
+	pkgdesc = Alternative keyboard layout analyzer
+	pkgver = r364.d40c28f
+	pkgrel = 1
+	url = https://github.com/O-X-E-Y/oxeylyzer
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = oxeylyzer
+	conflicts = oxeylyzer
+	source = git+https://github.com/O-X-E-Y/oxeylyzer
+	sha256sums = SKIP
+
+pkgname = oxeylyzer-git
