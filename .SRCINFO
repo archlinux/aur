@@ -1,12 +1,13 @@
 pkgbase = r-dichromat
 	pkgdesc = Color Schemes for Dichromats
 	pkgver = 2.0.0.1
-	pkgrel = 6
+	pkgrel = 8
 	url = https://cran.r-project.org/package=dichromat
 	arch = any
-	license = GPL
+	license = GPL2
 	depends = r
 	source = https://cran.r-project.org/src/contrib/dichromat_2.0-0.1.tar.gz
-	sha256sums = a10578e9ad8a581bd8fe0d8a8370051f3cdcf12c7d282f3af2a18dacda566081
+	md5sums = ce89c0b9bec34cd2d0a4ba4ec64024fb
+	b2sums = 09dd81d2556dd6311cda1a01a6be182dd5d840fc96c75914b849e8379a1268348b90c43c646982c88b05001ee83785cb8d86f84b8dbb0d68c95a2e4fd214b4cf
 
 pkgname = r-dichromat
