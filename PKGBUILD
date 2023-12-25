@@ -1,31 +1,32 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Maintainer: taotieren <admin@taotieren.com>
 # Contributor: yochananmarqos
+
 pkgname=python-fbs
 _name=fbs
-pkgver=1.1.8
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Python and Qt-based lightweight alternative to Electron"
 arch=('any')
 url="https://build-system.fman.io/"
 license=('GPL3')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools'
+  python-{build,installer,wheel})
 optdepends=('python-pyqt5: Qt5 Python bindings'
-            'pyside2: PySide Qt5 Python bindings'
-            'python-sentry_sdk: upload errors that occur in your app to Sentry'
-            'python-boto3: AWS support')
-source=("${_name}-${pkgver}.tar.gz"::"https://github.com/mherrmann/fbs/archive/v${pkgver}.tar.gz")
-sha256sums=('8e3a698079d5f516806716ca5257ea295c3be194f654a8545bab2837346aa94f')
-sha512sums=('f9eb0da0ce9442f3534ac23b214f4df61a1e68749a14e4f5f1be6ac0a3306850c25b3a2d3f340b0c7a83d5284a8428903a0d35aaa2d3b6ee9d502373e5550605')
+  'pyside2: PySide Qt5 Python bindings'
+  'python-sentry_sdk: upload errors that occur in your app to Sentry'
+  'python-boto3: AWS support')
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('4ef587106d6b7cf515767d8f8ec3f5b241cbf8dad3fb49c78c5a7cde714f6a77')
 
 build() {
-  cd ${_name}-${pkgver}
-  python setup.py build
+    cd "${srcdir}/${_name}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${_name}-${pkgver}
-  python setup.py install --root="${pkgdir}/" --optimize=1
+    cd "${srcdir}/${_name}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
-
 # vim:set ts=2 sw=2 et:
