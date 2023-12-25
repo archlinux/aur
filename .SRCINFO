@@ -1,15 +1,15 @@
 pkgbase = r-nsprcomp
 	pkgdesc = Non-Negative and Sparse PCA
 	pkgver = 0.5.1.2
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=nsprcomp
 	arch = any
 	license = GPL
 	depends = r
-	optdepends = r-mass
 	optdepends = r-roxygen2
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/nsprcomp_0.5.1-2.tar.gz
-	sha256sums = 2e95c877b7d45aa89cee7c90e496bd33dcb58d761851c0ca10cea45e630f8cfe
+	md5sums = 2a10abde049fdcd04c30c1a4dc3409c3
+	b2sums = 547d0d059739b8d476278df82967bd3ac89b90f7e3e0bca7d20c708726ee59da165e9ca6e8703e99fbb840bc97801bf3d2d0c6aadbbae9e278c1e79028f90e80
 
 pkgname = r-nsprcomp
