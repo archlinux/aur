@@ -3,7 +3,7 @@
 
 pkgname=libindi-3rdparty-config
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="3rd party drivers for INDI, configured by /etc/indi.conf"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(GPL3)
@@ -11,15 +11,17 @@ arch=(i686 x86_64)
 depends=(libvorbis libusb openal libnova libjpeg libindi=${pkgver} libgphoto2 libftdi-compat cfitsio dcraw libftdi rtl-sdr libraw gpsd)
 
 makedepends=(cmake boost)
-source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("17f5a0536f2ee6bfbcbdcdde9a44c2e59c2156637004193f650bdd2dda123291")
+source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "CMakeLists.txt.diff")
+sha256sums=("17f5a0536f2ee6bfbcbdcdde9a44c2e59c2156637004193f650bdd2dda123291" "e7a4328259363afe0c43e88d90facbd28dc6fd65c499564291779feb77610d75")
 
 prepare() {
   mkdir -p build
   cd  indi-3rdparty-${pkgver}
   #set all to off by default
   sed -i -e '/option(WITH_.*On)$/s/ On)$/ Off)/' CMakeLists.txt
+  patch -Np1 < ${srcdir}/CMakeLists.txt.diff
   find ./ -name CMakeLists.txt -exec sed -i -e 's|^cmake_minimum_required.*|cmake_minimum_required(VERSION 3.5)|g' {} \; # Avoid Warning of CMake < 3.5
+  find ./ -name CMakeLists.txt -exec sed -i -e 's|"\/lib|"${CMAKE_INSTALL_PREFIX}/lib|g' {} \;
 }
 
 build() {
@@ -33,7 +35,8 @@ build() {
         build_args="${build_args} -DWITH_${module}=On"
      fi
   done < /etc/indi.conf
-  
+  #
+
   #
   echo "Build the base-libraries"
   #
@@ -46,6 +49,21 @@ build() {
         ${build_args} \
         ../indi-3rdparty-${pkgver}
   make DESTDIR="/tmp/${pkgname}_${pkgver}" install
+  #
+  for ii in `ls /tmp/${pkgname}_${pkgver}/usr/include/`
+  do 
+    proj=${ii#lib*}; 
+    proj=${proj^^}; 
+    build_args="${build_args} -D${proj}_INCLUDE_DIR=/tmp/${pkgname}_${pkgver}/usr/include/$ii"
+  done
+  #
+  for ii in `ls -1 /tmp/${pkgname}_${pkgver}/usr/lib/*.so`; do
+    library=`basename $ii` 
+    proj=${library#lib*}; 
+    proj=${proj%*.so}; 
+    proj=${proj^^};
+    build_args="${build_args} -D${proj}_LIBRARIES=/tmp/${pkgname}_${pkgver}/usr/lib/$library"
+  done
   #
   cmake --fresh \
     -DCMAKE_BUILD_TYPE=Release \

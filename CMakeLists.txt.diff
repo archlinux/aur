@@ -1,0 +1,11 @@
+diff --color -ru a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2023-12-25 16:48:59.734605816 +0100
++++ b/CMakeLists.txt	2023-12-25 17:03:34.432832655 +0100
+@@ -357,6 +357,7 @@
+ add_subdirectory(libmallincam)
+ add_subdirectory(libomegonprocam)
+ add_subdirectory(libtscam)
++add_subdirectory(libmeadecam)
+ endif (WITH_TOUPBASE)
+ 
+ #libsvbiny
