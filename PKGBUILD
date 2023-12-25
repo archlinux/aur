@@ -3,12 +3,12 @@
 _name=libbpf
 pkgname=lib32-$_name
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for loading eBPF programs and reading and manipulating eBPF objects from user-space'
 url='https://github.com/libbpf/libbpf'
 arch=('x86_64')
 license=('LGPL2.1')
-depends=('lib32-glibc' 'lib32-libelf')
+depends=($_name 'lib32-glibc' 'lib32-libelf')
 makedepends=('rsync')
 provides=('libbpf.so')
 source=(https://github.com/libbpf/libbpf/archive/v${pkgver}/${_name}-${pkgver}.tar.gz)
