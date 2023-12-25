@@ -3,7 +3,7 @@
 pkgname=stellarium-bin
 _pkgname=stellarium
 _pkgname2=Stellarium
-pkgver=23.3
+pkgver=23.4
 _pkgtag=v$pkgver
 pkgrel=1
 pkgdesc="Free GPL software which renders realistic skies in real time with OpenGL"
@@ -15,7 +15,7 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF')
 
-_qtver=5
+_qtver=6
 _target="$_pkgname2-$pkgver-qt$_qtver-x86_64.AppImage"
 _verifyfile="${_target}.asc"
 _download_url="https://github.com/Stellarium/$_pkgname/releases/download/$_pkgtag"
@@ -26,8 +26,8 @@ source=(
 	"$_pkgname.bash"
 )
 sha256sums=(
-	'bf27b276246842a3a080860cf2751b3258437676bfa5c0752d5c31b883656041'
-	'5fea92e6e3474bd0fc29a2c92d944a768804ac5d7b12e877a7fb8a12296c9ecf'
+	'804419f809c17aa2574caf685da758e6cb87491372efa34301c1b89fdee8a21b'
+	'57d93f0a96359082ae9099801f8330125623e5de9981cb310a9d7bd89bcdd82b'
 	'cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff'
 )
 
@@ -43,8 +43,14 @@ prepare() {
 	
 	echo -ne 'Preparing necessary resouces... '
 	mv -f $_squashfs_root/org.$_pkgname.$_pkgname2.desktop .
-	rm -rf ./hicolor
-	mv -f $_squashfs_root/usr/share/icons/hicolor .
+
+    # Clear possibly existing directory
+    rm -rf ./hicolor
+
+    mv -f $_squashfs_root/usr/share/icons/hicolor .
+    rm ./hicolor/icon-theme.cache
+    rm ./hicolor/index.theme
+
 	echo 'done'
 }
 
