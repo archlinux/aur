@@ -4,7 +4,7 @@
 # is available in the intel-mas-cli-tool-v1.x package.
 
 pkgname=intel-mas-cli-tool
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="A drive management CLI tool for Intel Optane SSDs and Intel Optane Memory devices"
 arch=(x86_64)
@@ -13,9 +13,9 @@ license=()
 makedepends=('libarchive')
 optdepends=()
 conflicts=('intel-mas-cli-tool-v1.x')
-source=(https://downloadmirror.intel.com/763590/Intel_MAS_CLI_Tool_Linux_2.2.zip)
-md5sums=('3e5c5844bff4c75c3a7a13235a7dfd1e')
-sha1sums=('3a0b0dd528409f56a605a7f2520b43bd5caeec34')
+source=(https://downloadmirror.intel.com/794735/Intel_MAS_CLI_Tool_Linux_2.3.zip)
+md5sums=('e2ba538a05a277587d745a3851a87192')
+sha1sums=('6a5ccecafb4756fcde8271bebbea69d336970fb6')
 
 package() {
 	cd "$pkgdir"
