@@ -1,7 +1,7 @@
 pkgbase = mplayer-vaapi
 	pkgdesc = A movie player, compiled with vaapi support
 	pkgver = 36265
-	pkgrel = 19
+	pkgrel = 20
 	url = http://gitorious.org/vaapi/mplayer
 	install = mplayer-vaapi.install
 	arch = i686
@@ -68,6 +68,7 @@ pkgbase = mplayer-vaapi
 	source = include-samba-4.0.patch
 	source = ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
 	source = ffmpeg-?-libx264-fix-compilation-with-x264-builds-ge-153.patch
+	source = ffmpeg-clip-constants-used-with-shift-instructions-within-inline-assembly.patch
 	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	sha256sums = 5747c28c30c15d1000fb655a8abaa4b22483746d0e82775b27466948ae0c549a
 	sha256sums = SKIP
@@ -77,6 +78,6 @@ pkgbase = mplayer-vaapi
 	sha256sums = 7a91109a107ac45c585653bc76459ca3ddc56329fb16260d14e7571d6c94eb08
 	sha256sums = 277994aca5a6e40c1a90750859828817e0646bfb28142fdb34d5f9d3196c3f7a
 	sha256sums = ab52cbbf93ec33beeed345d69540e24d5aa4db129d97cbe1926dc77bea786d1e
+	sha256sums = fec03e133521486ca258ae34ddf093eb6aab23f848c4332c367aadbfeaefda04
 
 pkgname = mplayer-vaapi
-

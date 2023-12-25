@@ -6,7 +6,7 @@
 
 pkgname=mplayer-vaapi
 pkgver=36265
-pkgrel=19
+pkgrel=20
 pkgdesc="A movie player, compiled with vaapi support"
 arch=('i686' 'x86_64')
 url="http://gitorious.org/vaapi/mplayer"
@@ -29,7 +29,8 @@ source=(https://github.com/ryshglene/mplayer-vaapi/releases/download/$pkgver/$pk
         subreader-fix-srt-parsing.patch
         include-samba-4.0.patch
         ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
-        ffmpeg-?-libx264-fix-compilation-with-x264-builds-ge-153.patch)
+        ffmpeg-?-libx264-fix-compilation-with-x264-builds-ge-153.patch
+        ffmpeg-clip-constants-used-with-shift-instructions-within-inline-assembly.patch)
 options=('!buildflags' '!emptydirs')
 install=mplayer-vaapi.install
 sha256sums=('5747c28c30c15d1000fb655a8abaa4b22483746d0e82775b27466948ae0c549a'
@@ -39,7 +40,8 @@ sha256sums=('5747c28c30c15d1000fb655a8abaa4b22483746d0e82775b27466948ae0c549a'
             '8b6cd325d89ff8bce3662c6aaa9b61b8e6163c6574e09b575426a1eed02b8ad3'
             '7a91109a107ac45c585653bc76459ca3ddc56329fb16260d14e7571d6c94eb08'
             '277994aca5a6e40c1a90750859828817e0646bfb28142fdb34d5f9d3196c3f7a'
-            'ab52cbbf93ec33beeed345d69540e24d5aa4db129d97cbe1926dc77bea786d1e')
+            'ab52cbbf93ec33beeed345d69540e24d5aa4db129d97cbe1926dc77bea786d1e'
+            'fec03e133521486ca258ae34ddf093eb6aab23f848c4332c367aadbfeaefda04')
 validpgpkeys=('86CFFCA918CF3AF47147588051E8B148A9999C34')
 
 
@@ -60,6 +62,9 @@ prepare() {
 
   # https://git.videolan.org/?p=ffmpeg.git;a=commitdiff_plain;h=2a111c99a60fdf4fe5eea2b073901630190c6c93
   patch -d ffmpeg -Np0 -i "$srcdir/ffmpeg-?-libx264-fix-compilation-with-x264-builds-ge-153.patch"
+  
+  # https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/effadce6c756247ea8bae32dc13bb3e6f464f0eb
+  patch -d ffmpeg -Np1 -i "$srcdir/ffmpeg-clip-constants-used-with-shift-instructions-within-inline-assembly.patch"
 }
 
 build() {
