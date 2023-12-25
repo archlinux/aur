@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reqable-bin
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols"
 arch=('x86_64')
 url="https://reqable.com"
@@ -35,7 +35,7 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b8447646771467d5424d6d5203beff2346f4a50786856cf55f42cc52eb18440e'
+sha256sums=('de37f646992803cd65e5cb0f79476eda1b77b4f8ff709e365499b3d7cbd223a5'
             '23392e1a40e734a004a13faec6db357230d1a3893a849ceaba3d25079a403630'
             'b79a227bd66355513f77dc5de668728a98ca7950b751aba1f490e680f65abc64')
 build() {
