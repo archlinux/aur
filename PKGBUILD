@@ -16,7 +16,7 @@ provides=('paru')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 sha256sums=('47cae94d227cc08f86706408d234444af6dda192ba24309c251a0b43a8aa7980')
 
-TARGET="x86_64-unknown-linux-musl"
+TARGET="$CARCH-unknown-linux-musl"
 export RUSTUP_TOOLCHAIN=stable
 #openssl-sys
 export PKG_CONFIG_ALLOW_CROSS=1
