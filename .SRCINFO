@@ -1,6 +1,6 @@
 pkgbase = mutt-language-server
 	pkgdesc = mutt/neomutt's language server
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/mutt-language-server
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mutt-language-server
 	optdepends = python-markdown-it-py
 	optdepends = mutt
 	optdepends = neomutt
-	source = https://files.pythonhosted.org/packages/py3/m/mutt_language_server/mutt_language_server-0.0.2-py3-none-any.whl
-	sha256sums = 4c37929f26c1604428bc9091a0c2c7e7165791af83a4d9fb0b370d3ed19394eb
+	source = https://files.pythonhosted.org/packages/py3/m/mutt_language_server/mutt_language_server-0.0.3-py3-none-any.whl
+	sha256sums = 6c1bd2d8da52a8f24345294f2b95974552fd9df70971a5221f5b6ff701e5bc70
 
 pkgname = mutt-language-server
