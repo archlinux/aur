@@ -1,0 +1,11 @@
+post_install() {
+    echo "Usage:"
+    echo "sudo systemctl enable update-github520-hosts.timer"
+    echo "sudo systemctl start update-github520-hosts.timer"
+    echo "sudo systemctl status update-github520-hosts.timer"
+}
+
+post_upgrade() {
+  post_install
+}
+
