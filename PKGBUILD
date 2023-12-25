@@ -1,8 +1,8 @@
 # Maintainer: Bertrand Lemasle <blemasle@gmail.com>
 
 pkgname=libindi-astrolink4usb-git
-pkgver=2.0.0.r33.0022661
-_libindiver=2.0.0
+pkgver=2.0.5.r33.0022661
+_libindiver=2.0.5
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, support for Astrolink 4 USB device"
 url="http://www.indilib.org/index.php?title=Main_Page"
