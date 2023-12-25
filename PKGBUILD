@@ -7,9 +7,9 @@
 
 pkgname=lib32-luajit
 # LuaJIT has a "rolling release" where you should follow git HEAD
-_commit=4611e25c0fbe911486cccae4556eb086c0254c5f
+_commit=ff204d0350575cf710f6f4af982db146cb454e1a
 # The patch version is the timestamp of the above git commit, obtain via `git show -s --format=%ct`
-_ct=1694285958
+_ct=1702233742
 pkgver="2.1.${_ct}"
 pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1 (32-bit)'
@@ -17,11 +17,11 @@ arch=('x86_64')
 url="https://luajit.org/"
 license=('MIT')
 depends=('lib32-gcc-libs' 'luajit')
-source=("LuaJIT-${_commit}.tar.gz::https://repo.or.cz/luajit-2.0.git/snapshot/${_commit}.tar.gz")
-sha256sums=('4d3d8c03807e4d716ee9ae725e66caaea691e796465edade94df6b7206b3c60e')
+source=("LuaJIT-${_commit}.tar.gz::https://github.com/LuaJIT/LuaJIT/archive/${_commit}.tar.gz")
+sha256sums=('3ec37f78ab3b1afd4c3af0fde743c332da3da32eadc8500489c1cc2e4f0ec7eb')
 
 build() {
-  cd "luajit-2.0-${_commit::7}"
+  cd "LuaJIT-${_commit}"
   # Avoid early stripping
   make amalg \
     CFLAGS="-m32" CXXFLAGS="-m32" LDFLAGS="-m32" MULTILIB="lib32" \
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "luajit-2.0-${_commit::7}"
+  cd "LuaJIT-${_commit}"
   make install DESTDIR="$pkgdir" MULTILIB="lib32" PREFIX="/usr"
   rm -r "$pkgdir/usr/"{bin,share,include}
 }
