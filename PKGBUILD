@@ -1,6 +1,6 @@
 # Maintainer: Andreas Tennert <mail at andreas-tennert dot de>
 pkgname='lcarswm'
-pkgver=23.1
+pkgver=23.2
 pkgrel=1
 pkgdesc="LCARS Window Manager for lcarsde"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('libx11' 'libxpm' 'libxrandr' 'pango' 'icu' 'libxml2' 'glib2' 'libxft' 
 optdepends=('ttf-ubuntu-font-family' 'alsa-utils')
 makedepends=('jdk-openjdk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lcarsde/lcarswm/archive/$pkgver.tar.gz")
-md5sums=('9a486fb9877f0c86846835559cf01600')
+md5sums=('3e49e38564caabb3a174c51c08091922')
 
 build() {
   cd "$pkgname-$pkgver"
