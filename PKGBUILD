@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3476.e419facdc
+pkgver=r3529.bef1567a6
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -39,6 +39,7 @@ source=(
 	'VulkanMemoryAllocator-Hpp'::'git+https://github.com/Macdu/VulkanMemoryAllocator-Hpp.git'
 	'better-enums'::'git+https://github.com/aantron/better-enums.git'
 	'capstone'::'git+https://github.com/aquynh/capstone.git'
+	'concurrentqueue'::'git+https://github.com/cameron314/concurrentqueue.git'
 	'crypto-algorithms'::'git+https://github.com/KorewaWatchful/crypto-algorithms.git'
 	'cubeb'::'git+https://github.com/mozilla/cubeb.git'
 	'dirent'::'git+https://github.com/tronkko/dirent.git'
@@ -123,6 +124,7 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
+	'SKIP'
 
 	'SKIP'
 
@@ -156,6 +158,7 @@ prepare() {
 			['VulkanMemoryAllocator-Hpp']='external/VulkanMemoryAllocator-Hpp'
 			['better-enums']='external/better-enums'
 			['capstone']='external/capstone'
+			['concurrentqueue']='external/concurrentqueue'
 			['crypto-algorithms']='external/crypto-algorithms'
 			['cubeb']='external/cubeb'
 			['dirent']='external/dirent'

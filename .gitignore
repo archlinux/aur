@@ -1,6 +1,7 @@
 better-enums/
 boost/
 capstone/
+concurrentqueue/
 crypto-algorithms/
 cubeb/
 dirent/
