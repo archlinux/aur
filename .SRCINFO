@@ -1,6 +1,6 @@
 pkgbase = mogan-bin
 	pkgdesc = A structured wysiwyg scientific text editor
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://mogan.app/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = mogan-bin
 	depends = qt6-base
 	depends = openssl
 	depends = fontconfig
-	provides = mogan=1.2.1
+	provides = mogan=1.2.2
 	conflicts = mogan
-	source = mogan-1.2.1.deb::https://github.com/XmacsLabs/mogan/releases/download/v1.2.1/mogan-research-v1.2.1-ubuntu22.04.deb
-	sha256sums = 269201fa56159825f1a9ac608abc07c27662826a2cd9f4ed34df7d9c32baa318
+	source = mogan-1.2.2.deb::https://github.com/XmacsLabs/mogan/releases/download/v1.2.2/mogan-research-v1.2.2-ubuntu22.04.deb
+	sha256sums = dc9f3d1e18afb4f27b598c8251815ad1082f14c58e6685e218965c63e6d19151
 
 pkgname = mogan-bin
