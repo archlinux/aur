@@ -1,15 +1,15 @@
 #Maintainer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo), YellowRoseCx
 pkgname=koboldcpp-hipblas
-pkgver=1.52.2
+pkgver=1.53
 pkgrel=1
 pkgdesc="HIPBLAS build of koboldcpp"
 arch=('x86_64')
 url="https://github.com/YellowRoseCx/koboldcpp-rocm"
 license=('AGPL3')
 depends=('python' 'cblas' 'openblas' 'clblast' 'hipblas' 'customtkinter')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v$pkgver.yr1-ROCm.tar.gz")
-md5sums=('f225a1659562d54100344d34602ade12')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v$pkgver.yr0-ROCm.tar.gz")
+md5sums=('2dfdcae87ec35518d8f66309caa8dff0')
 
 build() {
   cd "$srcdir/koboldcpp-rocm-$pkgver.yr0-ROCm"
@@ -17,7 +17,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/koboldcpp-rocm-$pkgver.yr1-ROCm"
+  cd "$srcdir/koboldcpp-rocm-$pkgver.yr0-ROCm"
 
   install -d "$pkgdir/usr/share/koboldcpp"
   cp -a . "$pkgdir/usr/share/koboldcpp"
