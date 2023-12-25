@@ -1,6 +1,6 @@
 pkgname=tuxclocker-git
 _pkgname=tuxclocker
-pkgver=1.4.0.r610.e9d439b
+pkgver=1.4.0.r617.38e178b
 pkgrel=1
 pkgdesc="A hardware controlling and monitoring program for GPUs and CPUs"
 arch=('x86_64')
@@ -45,7 +45,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
     git submodule update --init --recursive
-}
+}    free -s 1 -h
 
 build() {
     cd "$srcdir/$_pkgname"

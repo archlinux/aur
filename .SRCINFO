@@ -1,6 +1,6 @@
 pkgbase = tuxclocker-git
 	pkgdesc = A hardware controlling and monitoring program for GPUs and CPUs
-	pkgver = 1.4.0.r610.e9d439b
+	pkgver = 1.4.0.r617.38e178b
 	pkgrel = 1
 	url = https://github.com/Lurkki14/tuxclocker
 	install = tuxclocker-git.install
