@@ -1,30 +1,21 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=syndical
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 _pkgname="Syndical-${pkgver}"
-_exe="Syndical.Application"
+_exe="TheAirBlow.Syndical.Application"
 pkgdesc="An alternative to SamLoader - cleaner code, easier to understand and tamper with."
 arch=('any')
 url="https://github.com/Samsung-Loki/Syndical"
 license=('MPL2')
-depends=('dotnet-runtime-5.0' 'openssl-1.1')
-makedepends=('dotnet-sdk-5.0')
+depends=('dotnet-runtime-7.0' 'openssl-1.1')
+makedepends=('dotnet-sdk-7.0')
 optdepends=('android-udev: Adds udev rules for non-root users (Group adbusers)')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Samsung-Loki/Syndical/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0f43a8a6013169eed41cfe58b5b05c93d941e4afc47f693e0af8cd2a04350ece')
-
-prepare() {
-	cd "$srcdir"
-
-	# Fix for typo
-	sed -i "s|yelloe|yellow|" ${_pkgname}/${_exe}/Program.cs
-}
+sha256sums=('7d8b4156a3fe9b0bb28b358d2fdc61912ab04daae20177fac7aa8430bcd845a0')
 
 build() {
-	cd "$srcdir"
-
 	# https://learn.microsoft.com/en-us/dotnet/core/tools/#cli-commands
 	# Add needed Nuget packages for building
 	_NuPkgs=(
@@ -62,17 +53,12 @@ build() {
 }
 
 package() {
-	cd "$srcdir"
-
 	# Install package
-	install -d "$pkgdir"/opt/$pkgname
-	cp -dr --no-preserve=ownership build/* "$pkgdir"/opt/$pkgname
+	install -d "$pkgdir"/opt/$pkgname "$pkgdir"/usr/bin
+	cp -a --no-preserve=ownership build/* "$pkgdir"/opt/$pkgname
 	find "$pkgdir" -name *.pdb -delete
-	# Install executable shell file
-	install -Dm0755 /dev/stdin "$pkgdir"/usr/bin/${_exe} << EOF
-#!/bin/bash
-dotnet /opt/syndical/Syndical.Application.dll "\$@"
-EOF
+	# Install executable /usr/bin file
+	ln -s /opt/$pkgname/${_exe} "$pkgdir"/usr/bin/$pkgname
 	# Install license
 	install -Dm644 ${_pkgname}/LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
