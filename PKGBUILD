@@ -3,12 +3,12 @@
 _pkgname=BiocBaseUtils
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
-pkgrel=1
-pkgdesc='General utility functions for developing Bioconductor packages'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="General utility functions for developing Bioconductor packages"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(Artistic2.0)
 depends=(
   r
 )
@@ -19,14 +19,15 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e588788262936ed9cc83ab198ec4a0e3b95f92af6cd443a66d1b6c9827fa32a1')
+md5sums=('23ed1406ff70165a763ca2040c46353e')
+b2sums=('c48bc9b7fc906b3f7ed5850623abf66ea7ea18858ff30bc0f35c43f027856d6722f7d6c249b249a7b6e07f29b8bd9166c31dd4a5a67f62e18a5fd9c7189d04b3')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
