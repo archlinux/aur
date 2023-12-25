@@ -3,11 +3,11 @@
 pkgname='python-sphinx-needs'
 _name=sphinx_needs
 pkgver='2.0.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="Sphinx needs extension for managing needs/requirements and specifications"
 url="https://www.sphinx-needs.com/"
-depends=('python-jsonschema' 'python-matplotlib' 'python-requests-file' 'python-sphinx')
-makedepends=('python-poetry' 'python-setuptools')
+depends=('python-jsonschema' 'python-matplotlib' 'python-requests-file' 'python-sphinx' 'python-typing_extensions')
+makedepends=('python-build' 'python-installer' 'python-poetry' 'python-wheel')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")

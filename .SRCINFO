@@ -1,16 +1,19 @@
 pkgbase = python-sphinx-needs
 	pkgdesc = Sphinx needs extension for managing needs/requirements and specifications
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.sphinx-needs.com/
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-poetry
-	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-jsonschema
 	depends = python-matplotlib
 	depends = python-requests-file
 	depends = python-sphinx
+	depends = python-typing_extensions
 	source = https://files.pythonhosted.org/packages/source/s/sphinx_needs/sphinx_needs-2.0.0.tar.gz
 	sha256sums = cbb42e919b20cf758f6d0571709fe95ec08b3e2e8f386274ddd738e9e924ceb7
 
