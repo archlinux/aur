@@ -1,16 +1,16 @@
 # Maintainer: Michael Straube <michael.straubej@gmail.com>
 
 pkgname=enyo-launcher
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="Frontend for Doom engines"
 arch=(x86_64)
-url="https://gitlab.com/sdcofer70/enyo-launcher"
+url="https://github.com/stephendcofer/enyo-launcher"
 license=(GPL3)
-depends=(gcc-libs glibc qt5-base)
+depends=(gcc-libs glibc qt6-base)
 makedepends=(cmake)
-source=("https://gitlab.com/sdcofer70/enyo-launcher/-/archive/$pkgver/enyo-launcher-$pkgver.tar.bz2")
-sha512sums=('cb70e495a1ed31726725a18dfb931de133bf79c9b4105ca3692acc8e52be7db3610ae6f5b8fe40318a1704706386a1b2daabc3d41bbe357f8209c6b67dde88ff')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/stephendcofer/enyo-launcher/archive/$pkgver.tar.gz")
+sha512sums=('6150955173a75b682bef5e1f8c0f5ae75b26cc3fc7031b5e294896f8b3316b286c47ad735600cf6817e7a6a5d0d08cdb43ac6e6e660e44150fc57d54680af878')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
