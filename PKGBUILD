@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yarle-evernote-to-md-bin
-pkgver=5.8.2
-pkgrel=2
+pkgver=5.8.3
+_electronversion=22
+pkgrel=1
 pkgdesc="Yarle - The ultimate converter of Evernote notes to Markdown"
 arch=(x86_64)
 url="https://github.com/akosbalasko/yarle"
@@ -9,18 +10,22 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'electron22'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/akosbalasko/yarle/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/akosbalasko/yarle/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b327f774d768cbdbe019c35b5eee3fb1c32a05cba9b17a3ee29aa18154004cc0'
+sha256sums=('b55866542537cd58f6c750bdc3f493387ab124f8309d5c4612869ad00d7df90c'
             '16691c563f896a0d485a742fbd5a389fc7c798ff606c75cb3f753bb7297a9bdb'
-            '17532f4a93142427e0f4ef0da49de0a3758a342829773d7c83aadcd6c4753a36')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
@@ -32,5 +37,5 @@ package() {
       install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
         -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
