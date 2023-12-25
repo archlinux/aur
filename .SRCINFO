@@ -1,6 +1,6 @@
 pkgbase = mkdocs-minify-plugin
 	pkgdesc = A mkdocs plugin to minify the HTML of a page before it is written to disk
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/byrnereese/mkdocs-minify-plugin
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = mkdocs-minify-plugin
 	depends = python-csscompressor
 	conflicts = python-mkdocs-minify-plugin
 	replaces = python-mkdocs-minify-plugin
-	source = mkdocs-minify-plugin-0.7.1.tar.gz::https://github.com/byrnereese/mkdocs-minify-plugin/archive/refs/tags/0.7.1.tar.gz
-	sha256sums = 9f7271c96ef7b16d453b2d8624705a5db4de9fe854af21f218523a3c512eb8b7
+	source = mkdocs-minify-plugin-0.7.2.tar.gz::https://github.com/byrnereese/mkdocs-minify-plugin/archive/refs/tags/0.7.2.tar.gz
+	sha256sums = 31bccca289143a2936e8f9d2dd55986a4a2d1545251b376e8c6677b2188414ac
 
 pkgname = mkdocs-minify-plugin
