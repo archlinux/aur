@@ -1,7 +1,7 @@
 pkgbase = r-import
 	pkgdesc = An Import Mechanism for R
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=import
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = r-import
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/import_1.3.1.tar.gz
-	sha256sums = 587ae4ee09c3d264d2f25b912cc326136e102e0f238b10c0719dba500eaaf3c0
+	md5sums = 0e1640048136d1b5cb24025337698a23
+	b2sums = 0145cab3a62ef017e4427960580415c41c08a747f6a95782a07025eec27e30c624e25d193ac3e973e1fffa7c332976ea73c4f0e1a6f57460037708f366086090
 
 pkgname = r-import

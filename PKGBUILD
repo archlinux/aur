@@ -3,12 +3,12 @@
 _pkgname=import
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
-pkgver=1.3.1
-pkgrel=1
-pkgdesc='An Import Mechanism for R'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('MIT')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="An Import Mechanism for R"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(MIT)
 depends=(
   r
 )
@@ -19,15 +19,18 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('587ae4ee09c3d264d2f25b912cc326136e102e0f238b10c0719dba500eaaf3c0')
+md5sums=('0e1640048136d1b5cb24025337698a23')
+b2sums=('0145cab3a62ef017e4427960580415c41c08a747f6a95782a07025eec27e30c624e25d193ac3e973e1fffa7c332976ea73c4f0e1a6f57460037708f366086090')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
