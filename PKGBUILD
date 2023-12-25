@@ -3,30 +3,29 @@
 _pkgname=binom
 _pkgver=1.1-1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1.1
-pkgrel=1
-pkgdesc='Binomial Confidence Intervals For Several Parameterizations'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Binomial Confidence Intervals for Several Parameterizations"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
 optdepends=(
   r-ggplot2
-  r-lattice
   r-polynom
-  r-tcltk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ee215f41223bb1ca80f91f54b99dc75339aac74906db57698e7c2b0d9a86befb')
+md5sums=('6d9cbf4fa0fe82414417f2286d1007b5')
+b2sums=('94e84dd51084c3f1703745e085c4efeb992fa795426996a4db3d421e8dfc472f1b917e30a2e70da97ba7cfdbfc94959652273675337b364837008579693796ba')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
