@@ -24,8 +24,8 @@ prepare() {
 
 package() {
     unlink package.zip
-    mkdir -p $pkgdir/usr/autodesk/maya2024/{modules,plug-ins/arnold}
+    mkdir -p "$pkgdir/usr/autodesk/maya2024/"{modules,plug-ins/arnold}
 
-    mv mtoa.mod $pkgdir/usr/autodesk/maya2024/modules/
-    mv * $pkgdir/usr/autodesk/maya2024/plug-ins/arnold/
+    mv mtoa.mod "$pkgdir/usr/autodesk/maya2024/modules/"
+    mv * "$pkgdir/usr/autodesk/maya2024/plug-ins/arnold/"
 }
