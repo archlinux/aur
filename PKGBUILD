@@ -3,12 +3,12 @@
 _pkgname=bigassertr
 _pkgver=0.1.6
 pkgname=r-${_pkgname,,}
-pkgver=0.1.6
-pkgrel=1
-pkgdesc='Assertion and Message Functions'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Assertion and Message Functions"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL3)
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7780f02c0eee3941d430982f2a345a488c9834633561a54cdd2c306aa30c612e')
+md5sums=('117e5596df34dc306881809960c2233d')
+b2sums=('201f0e4c77894513116e4aaf4dfb5f26b7e0ab4cf1ea225c5a3dd1ae5f30697ce59c9579f810a3f7c3628fff0ec7683ac803619ec3aa8b1b0dd8bdd2e3a70270')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
