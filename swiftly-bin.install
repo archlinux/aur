@@ -1,14 +1,6 @@
 pre_remove() {
     echo "Removing all Swift installations..."
-    echo "IF THERE ARE ANY FILES IN ~/.local/share/swiftly/toolchains THAT ARE NOT MANAGED BY SWIFTLY, PLEASE INTERRUPT THIS AND REMOVE THEM. IT WILL CAUSE AN INFINITE LOOP OTHERWISE."
-	while true
-    do
-        if [ "$(ls -A /home/$SUDO_USER/.local/share/swiftly/toolchains)" ]; then
-            runuser -l $SUDO_USER -c 'swiftly uninstall latest -y'
-        else
-            break
-        fi
-    done
+    runuser -l $SUDO_USER -c 'swiftly uninstall all -y'
 }
 
 post_remove() {
