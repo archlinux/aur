@@ -1,11 +1,11 @@
 pkgbase = thor-flash-utility
 	pkgdesc = Thor Flash Utility (Developed with C#, based on dotnet 7.0)
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Samsung-Loki/Thor
 	arch = any
 	license = MPL2
-	makedepends = dotnet-sdk
+	makedepends = dotnet-sdk-7.0
 	depends = dotnet-runtime-7.0
 	optdepends = android-udev: Adds udev rules for non-root users (Group adbusers)
 	source = thor-flash-utility-1.0.4.tar.gz::https://github.com/Samsung-Loki/Thor/archive/refs/tags/1.0.4.tar.gz
