@@ -144,6 +144,7 @@ pkgname = libreoffice-dev-de
     source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_24.2.0.0.beta1_Linux_x86-64_rpm_helppack_de.tar.gz
     sha256sums = a274a45e5d594ec7942e510517fd47b07d4534bdf01088521fc0bf87894b77c5 
     sha256sums = 4d6e1dd6486792ca3b1da023f5a919160b7c38a5dcec79938e2c43089845ca56 
+
 pkgname = libreoffice-dev-dgo
     pkgdesc= Dogri language pack for LibreOffice Dev
     depends= libreoffice-dev-bin>=24.2.0.0beta1
@@ -154,6 +155,7 @@ pkgname = libreoffice-dev-dsb
     pkgdesc= Lower Sorbian language pack for LibreOffice Dev
     depends= libreoffice-dev-bin>=24.2.0.0beta1
     source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_24.2.0.0.beta1_Linux_x86-64_rpm_langpack_dsb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_24.2.0.0.beta1_Linux_x86-64_rpm_helppack_dsb.tar.gz
     sha256sums = 466e62111a8ff9bc525a95f3d041cb68dfb50ce939add764cf9b18149c0b0c43 
     sha256sums = 707844f5e4471cb972a86e3c8da651b266d819c623492016d3a418d144846178 
 
@@ -317,6 +319,7 @@ pkgname = libreoffice-dev-hsb
     pkgdesc= Upper Sorbian language pack for LibreOffice Dev
     depends= libreoffice-dev-bin>=24.2.0.0beta1
     source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_24.2.0.0.beta1_Linux_x86-64_rpm_langpack_hsb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_24.2.0.0.beta1_Linux_x86-64_rpm_helppack_hsb.tar.gz
     sha256sums = 7d96d98e1d32ab99b0ec023440de85eb411e786752b73fae5c6cc126e5987b24 
     sha256sums = f41ccb130f0e5716f4c740a8a842233eeb8df317932e89cbd53e41515d402883 
 

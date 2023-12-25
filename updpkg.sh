@@ -165,6 +165,7 @@ pkgname = libreoffice-dev-de
     source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_de.tar.gz
     sha256sums = $(sha256sum ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_de.tar.gz | sed "s/ ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_de.tar.gz//")
     sha256sums = $(sha256sum ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_de.tar.gz | sed "s/ ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_de.tar.gz//")
+
 pkgname = libreoffice-dev-dgo
     pkgdesc= Dogri language pack for LibreOffice Dev
     depends= libreoffice-dev-bin>=${pkgver}
@@ -175,6 +176,7 @@ pkgname = libreoffice-dev-dsb
     pkgdesc= Lower Sorbian language pack for LibreOffice Dev
     depends= libreoffice-dev-bin>=${pkgver}
     source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_dsb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_dsb.tar.gz
     sha256sums = $(sha256sum ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_dsb.tar.gz | sed "s/ ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_dsb.tar.gz//")
     sha256sums = $(sha256sum ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_dsb.tar.gz | sed "s/ ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_dsb.tar.gz//")
 
@@ -338,6 +340,7 @@ pkgname = libreoffice-dev-hsb
     pkgdesc= Upper Sorbian language pack for LibreOffice Dev
     depends= libreoffice-dev-bin>=${pkgver}
     source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_hsb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_hsb.tar.gz
     sha256sums = $(sha256sum ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_hsb.tar.gz | sed "s/ ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_hsb.tar.gz//")
     sha256sums = $(sha256sum ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_hsb.tar.gz | sed "s/ ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_hsb.tar.gz//")
 
