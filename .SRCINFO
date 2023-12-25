@@ -1,0 +1,14 @@
+pkgbase = python-oelint-parser
+	pkgdesc = Alternative parser for bitbake recipes
+	pkgver = 2.12.2
+	pkgrel = 1
+	url = https://github.com/priv-kweihmann/oelint-parser
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/o/oelint-parser/oelint_parser-2.12.2.tar.gz
+	sha256sums = 609e882bf52a0b52391a5bc4ee690039b185d80e473dd22b6905abcf89718aef
+
+pkgname = python-oelint-parser
+	depends = python
