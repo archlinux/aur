@@ -5,7 +5,7 @@ pkgver=2.0.1
 pkgrel=2
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz"
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz"
         "https://www.openssl.org/source/openssl-3.2.0.tar.gz")
 backup=("etc/paru.conf")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
