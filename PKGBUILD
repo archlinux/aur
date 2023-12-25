@@ -2,7 +2,7 @@
 
 _pkgname=plex
 pkgname=texlive-fonts-${_pkgname}
-pkgver=20230930
+pkgver=20231217
 pkgrel=1
 pkgdesc="Support for IBM Plex fonts for TEX(-alike) systems"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('texlive-core')
 conflicts=('texlive-fontsextra')
 install="${pkgname}.install"
 source=("http://mirrors.ctan.org/fonts/${_pkgname}.zip")
-md5sums=('0642f1a7bd5d617e1945b22b8d43a662')
+md5sums=('5c86dba5775b604997757cdf3a0aad66')
 
 package() {
     install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/enc/dvips/${_pkgname} ${_pkgname}/enc/*

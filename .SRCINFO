@@ -1,6 +1,6 @@
 pkgbase = texlive-fonts-plex
 	pkgdesc = Support for IBM Plex fonts for TEX(-alike) systems
-	pkgver = 20230930
+	pkgver = 20231217
 	pkgrel = 1
 	url = https://www.ctan.org/tex-archive/fonts/plex
 	install = texlive-fonts-plex.install
@@ -9,6 +9,6 @@ pkgbase = texlive-fonts-plex
 	depends = texlive-core
 	conflicts = texlive-fontsextra
 	source = http://mirrors.ctan.org/fonts/plex.zip
-	md5sums = 0642f1a7bd5d617e1945b22b8d43a662
+	md5sums = 5c86dba5775b604997757cdf3a0aad66
 
 pkgname = texlive-fonts-plex
