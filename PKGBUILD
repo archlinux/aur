@@ -1,8 +1,6 @@
 # Maintainer: Echo J. <aidas957 at gmail dot com>
 # shellcheck shell=bash disable=SC2034
 
-# Note: I hope wael is a nice woman now :troll:
-
 _pkgname=vinegar
 pkgname=vinegar-git
 pkgver=1.6.0.r1.gc3160de
