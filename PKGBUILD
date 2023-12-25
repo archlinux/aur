@@ -1,6 +1,6 @@
 # Maintainer: Alessandro Zanatta <alessandro.zanatta.lav@gmail.com>
 pkgname=seccomp-tools
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Provide powerful tools for seccomp analysis."
 arch=(any)
@@ -12,7 +12,7 @@ depends=(
 	ruby-os
 )
 source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
-sha256sums=('d8ac85a3e3e0ab51c87375d611755a26c4be80699390c32be4afa06d295b7449')
+sha256sums=('43e9dbbe6ad7e148263199f8e3b6cdf409fbcce5a8f6d6f20530d257fcf2bf6c')
 noextract=("$pkgname-$pkgver".gem)
 
 package() {
