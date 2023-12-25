@@ -4,7 +4,7 @@
 
 pkgname='mycorrhiza'
 pkgver=1.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup'
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://codeberg.org/bouncepaw/$pkgname"
@@ -53,10 +53,10 @@ package() {
 }
 
 sha256sums=(
-  'bab2b7c18c00053404edadea0aed24f5ef383ccd876ee472810d9530b8854573'
+  'caff68a04ed92868232179a5491ad0a0089f288a03c4567fb105494065d154bd'
 )
 b2sums=(
-  '3c2b78d28130b5b23bc2c456a771ddfd9202ea80d7ce68bcb98b7721d787bfc0357052fcb189bc936e50e8c152124f6ddd4ec62efa52315f85e08434cc39ab7e'
+  '3e3ee1db03b531abfb48c6a454bf68478207d17646b0684da2ad4824377315b2374c27b89685e5623d5f92fd671fce4a61ce63a417f692ba87563c9c9d1117f5'
 )
 
 # eof
