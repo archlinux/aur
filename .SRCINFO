@@ -1,7 +1,7 @@
 pkgbase = r-filelock
 	pkgdesc = Portable File Locking
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=filelock
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = r-filelock
 	optdepends = r-covr
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/filelock_1.0.3.tar.gz
-	sha256sums = 2dcd0ec453f5ec4d96f69b0c472569d57d3c5f9956a82a48492ee02f12071137
+	md5sums = db8ce0e4e54049a51875108aa996bbdb
+	b2sums = c36a82cc7c4f0720e84b400b3c800c0719ed1a526ea41ec9cad06c00371b5058ad5b08478c2da67b649bdee1acfeab2aaf51f1abb01b55ca639863bc8104aee0
 
 pkgname = r-filelock

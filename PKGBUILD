@@ -3,12 +3,12 @@
 _pkgname=filelock
 _pkgver=1.0.3
 pkgname=r-${_pkgname,,}
-pkgver=1.0.3
-pkgrel=1
-pkgdesc='Portable File Locking'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('MIT')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Portable File Locking"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(MIT)
 depends=(
   r
 )
@@ -18,15 +18,18 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2dcd0ec453f5ec4d96f69b0c472569d57d3c5f9956a82a48492ee02f12071137')
+md5sums=('db8ce0e4e54049a51875108aa996bbdb')
+b2sums=('c36a82cc7c4f0720e84b400b3c800c0719ed1a526ea41ec9cad06c00371b5058ad5b08478c2da67b649bdee1acfeab2aaf51f1abb01b55ca639863bc8104aee0')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
