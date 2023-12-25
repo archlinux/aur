@@ -1,12 +1,14 @@
 pkgbase = python-willow
 	pkgdesc = A Python image library that sits on top of Pillow, Wand and OpenCV
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sphinx-needs.com/
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	makedepends = python-build
 	makedepends = python-flit-core
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-defusedxml
 	depends = python-django
 	depends = python-filetype
