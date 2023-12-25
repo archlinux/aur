@@ -1,7 +1,7 @@
 pkgbase = libindi-3rdparty-config
 	pkgdesc = 3rd party drivers for INDI, configured by /etc/indi.conf
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,8 @@ pkgbase = libindi-3rdparty-config
 	depends = libraw
 	depends = gpsd
 	source = https://github.com/indilib/indi-3rdparty/archive/v2.0.5.tar.gz
+	source = CMakeLists.txt.diff
 	sha256sums = 17f5a0536f2ee6bfbcbdcdde9a44c2e59c2156637004193f650bdd2dda123291
+	sha256sums = e7a4328259363afe0c43e88d90facbd28dc6fd65c499564291779feb77610d75
 
 pkgname = libindi-3rdparty-config
