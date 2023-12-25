@@ -1,12 +1,11 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=chezmoi_modify_manager-git
-pkgver=2.1.5.r0.3a60643
+pkgver=2.2.3.r41.1c9844b
 pkgrel=1
 pkgdesc="Tools for chezmoi to handle mixed settings and state"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/chezmoi_modify_manager"
 license=('GPL3')
-depends=('openssl')
 makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -28,13 +27,13 @@ build() {
     cd "$srcdir/${pkgname%-git}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --no-default-features
+    cargo build --frozen --release --no-default-features --features=keyring
 }
 
 check() {
     cd "$srcdir/${pkgname%-git}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --no-default-features
+    cargo test --frozen --no-default-features --features=keyring
 }
 
 package() {
