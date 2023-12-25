@@ -1,6 +1,6 @@
 # Maintainer: Diego Parra <diegoparranava@protonmail.com>
 pkgname='waypaper-engine'
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="An Electron-based graphical frontend for setting wallpapers and playlists"
 arch=('x86_64')

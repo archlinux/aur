@@ -1,6 +1,6 @@
 pkgbase = waypaper-engine
 	pkgdesc = An Electron-based graphical frontend for setting wallpapers and playlists
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/0bCdian/Waypaper-Engine
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = waypaper-engine
 	depends = swww
 	depends = nodejs
 	provides = waypaper-engine
-	source = Waypaper-Engine-1.2.3.tar.gz::https://github.com/0bCdian/Waypaper-Engine/archive/refs/tags/v1.2.3.tar.gz
+	source = Waypaper-Engine-1.2.4.tar.gz::https://github.com/0bCdian/Waypaper-Engine/archive/refs/tags/v1.2.4.tar.gz
 	md5sums = SKIP
 
 pkgname = waypaper-engine
