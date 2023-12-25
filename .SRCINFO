@@ -1,13 +1,13 @@
 pkgbase = jnitrace
 	pkgdesc = A Frida based tool that traces usage of the JNI API in Android apps
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/chame1eon/jnitrace
 	arch = any
 	license = MIT
 	depends = python-frida
 	depends = python-hexdump
-	source = https://files.pythonhosted.org/packages/source/j/jnitrace/jnitrace-3.3.0.tar.gz
-	sha256sums = ed2d5c0729e1d6e6c50334e04751a43e7b7c107b4d8253791e8bfafb718c9c18
+	source = https://files.pythonhosted.org/packages/source/j/jnitrace/jnitrace-3.3.1.tar.gz
+	sha256sums = 6fc6b39a561b34415250ddcc8eaa54a8d9414ca4f42532e909506493d471efed
 
 pkgname = jnitrace
