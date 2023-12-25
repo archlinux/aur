@@ -19,15 +19,16 @@ options=(!strip)
 
 prepare() {
     chmod +x ./Bifrost_${pkgver}_Maya${_mayaver}_Linux.run
-    ./Bifrost_${pkgver}_Maya${_mayaver}_Linux.run --target extracted --phase2 --noexec
+    ./Bifrost_${pkgver}_Maya${_mayaver}_Linux.run --tar xvf
     echo 'Extracting rpm...'
-    bsdtar -xf extracted/*.rpm
+    bsdtar -xf *.rpm
     sed -i "s|<BIFROST_DIR>|/usr/autodesk/maya$_mayaver/plug-ins/bifrost|g" usr/autodesk/modules/maya/$_mayaver/bifrost.mod
     sed -i "s|<PLUGIN_DIR>|/usr/autodesk/maya$_mayaver/plug-ins/vnn|g" usr/autodesk/modules/maya/$_mayaver/vnn.mod
 }
 
 package() {
-    mkdir -p $pkgdir/usr/autodesk/maya$_mayaver/{modules,plug-ins}
+    mkdir -p "$pkgdir/usr/autodesk/maya$_mayaver/"{modules,plug-ins}
     mv usr/autodesk/modules/maya/$_mayaver/*.mod "$pkgdir/usr/autodesk/maya$_mayaver/modules/"
     mv usr/autodesk/bifrost/maya$_mayaver/$pkgver/* "$pkgdir/usr/autodesk/maya$_mayaver/plug-ins/"
+    install -Dm644 "$srcdir/EULA/English.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
