@@ -7,7 +7,7 @@ pkgrel=3
 pkgdesc="Plugin for generating HTML reports for pytest results"
 arch=(any)
 url="https://github.com/pytest-dev/pytest-html"
-license=(MPL2)
+license=(MPL-2.0)
 depends=(
   python-py
   python-pytest
