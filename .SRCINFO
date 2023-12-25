@@ -1,5 +1,5 @@
-pkgbase = swayosd-ferdi265-git
-	pkgdesc = A GTK based on screen display for keyboard shortcuts like caps-lock and volume
+pkgbase = swayosd-percentage-display-git
+	pkgdesc = A GTK based on screen display for keyboard shortcuts that shows percentages
 	pkgver = r56.25e69ae
 	pkgrel = 1
 	url = https://github.com/Ferdi265/SwayOSD
@@ -22,4 +22,4 @@ pkgbase = swayosd-ferdi265-git
 	source = git+https://github.com/Ferdi265/SwayOSD.git
 	sha256sums = SKIP
 
-pkgname = swayosd-ferdi265-git
+pkgname = swayosd-percentage-display-git

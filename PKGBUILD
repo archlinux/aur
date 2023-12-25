@@ -1,12 +1,12 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
-pkgname=swayosd-ferdi265-git
-_pkgname="${pkgname%-ferdi265-git}"
+pkgname=swayosd-percentage-display-git
+_pkgname="${pkgname%-percentage-display-git}"
 _reponame=SwayOSD
 pkgver=r56.25e69ae
 pkgrel=1
-pkgdesc="A GTK based on screen display for keyboard shortcuts like caps-lock and volume"
+pkgdesc="A GTK based on screen display for keyboard shortcuts that shows percentages"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/Ferdi265/SwayOSD"
 license=('GPL3')
