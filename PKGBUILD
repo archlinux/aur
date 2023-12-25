@@ -15,5 +15,5 @@ source=('manual://RenderManForHoudini-25.2_2282810-linuxRHEL7_gcc93icc219.x86_64
 sha256sums=('c81df25c27d24d2dd95b79ae2b820b13b0b1be632b65057bab55d88927a896ea')
 
 package() {
-    mv opt $pkgdir/
+    mv opt "$pkgdir/"
 }
