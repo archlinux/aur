@@ -1,7 +1,7 @@
 # Maintainer: AnnikaV9 <carrot.moncher@gmail.com>
 
 pkgname=hcclient
-pkgver=1.18.5
+pkgver=1.18.6
 pkgrel=1
 pkgdesc="A terminal client for hack.chat"
 arch=("x86_64")
@@ -16,8 +16,8 @@ source=(
 )
 noextract=("hcclient-${pkgver}-py3-none-any.whl")
 sha256sums=(
-  'f4255e4d5d0f9646717c503fe8b8e32a9c58f7f28057acacf0a58b5de6900098'
-  '6b6062a9f88be300550bbf49888e8c686a807ee6b3bd7ef1ce88cd893ea860f6'
+  '66b9098f5268bfebf9f7cad39a42a04a1d49300254020b6891410dd481be75a7'
+  'ab35243a5a91d1c04d2ec2d0a6702ed67a8709f21daa9deb6c32ffb445648f74'
 )
 
 build() {
