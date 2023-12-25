@@ -2,7 +2,7 @@
 
 pkgbase=github520-git
 pkgname=github520-git
-pkgver=r4
+pkgver=r5
 pkgrel=1
 pkgdesc="😘 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。"
 arch=(any)
@@ -21,7 +21,7 @@ optdepends=()
 source=(update-github520-hosts.service
     update-github520-hosts.timer)
 install=github520-git.install
-sha256sums=('b48be3e31639d8fa2e565ff72ddf0413d8efe9b033b03187c67b36e09b63b10f'
+sha256sums=('0bdc8a5a0b468b526dbff9737754698fcc0569779459bc07c1b9e2a95e9e5946'
             '2f35458ba93c2c233dfaf291e77ea6042e634b5575dcd69c6a98bed9a48b8569')
 options=('!strip')
 
