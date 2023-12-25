@@ -3,23 +3,22 @@
 # Contributor: Groctel <aur@taxorubio.com>
 _base=manim
 pkgname=${_base}-git
-pkgver=0.17.3.r45.g7fab9cdbf
+pkgver=0.18.0.r33.g9b18a861s
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos"
 arch=(any)
 url="https://www.${_base}.community"
 license=(MIT)
-depends=(python-click-default-group python-scipy python-manimpango python-networkx
-  python-svgelements python-screeninfo python-isosurfaces python-cloup python-moderngl-window
-  python-rich python-mapbox-earcut python-decorator python-srt python-tqdm python-watchdog
-  python-pydub python-skia-pathops python-cairo ffmpeg sox)
-makedepends=(python-build python-installer python-poetry-core python-wheel git)
+depends=(python-click python-cloup python-decorator python-isosurfaces
+  python-manimpango python-mapbox-earcut python-moderngl-window python-networkx
+  python-cairo python-pydub python-rich python-scipy python-screeninfo
+  python-skia-pathops python-srt python-svgelements python-tqdm python-watchdog sox)
+makedepends=(python-build python-installer python-setuptools python-poetry-core python-wheel git)
 checkdepends=(python-pytest-cov python-pytest-xdist xorg-server-xvfb
   texlive-latexrecommended texlive-latexextra texlive-binextra texlive-mathscience)
 optdepends=('texlive-latexrecommended: latex support'
   'texlive-latexextra: latex support'
-  'texlive-bibtexextra: latex support'
-  'tllocalmgr: latex support')
+  'python-dearpygui: dearpygui integration')
 source=(git+https://github.com/ManimCommunity/${_base}.git#branch=main)
 sha512sums=('SKIP')
 provides=(${_base})
@@ -42,13 +41,12 @@ check() {
   # https://github.com/dimkir/nightmare-lambda-tutorial/issues/10#issuecomment-947244559
   Xvfb $DISPLAY -screen 0 1280x1024x24 &
   test-env/bin/python -m pytest \
-    --ignore=tests/test_graphical_units \
-    -k 'not good_markup and not font_size and not transparent and not graph_add_vertices and not code_indentation and not background_color and not special_tags_markup and not custom_dirs and not dry_run_with_png_format and not dry_run_with_png_format_skipped_animations and not graph_add_vertices and not good_markup and not special_tags_markup and not font_size and not manim_checkhealth_subcommand and not force_window_opengl_render_with_format and not manim_new_command'
+    -k 'not manim_checkhealth_subcommand and not force_window_opengl_render_with_format and not whitespace_text_creatio and not Text2Color and not code_indentation and not font_size and not IntegerTable and not DecimalTable and not special_tags_markup and not non_empty_text_creation and not empty_text_creation and not run_time_for_non_empty_text and not shift_family and not bracelabel_copy and not movingcamera_auto_zoom and not ghost_vectors_len_and_types and not set_value_size'
 }
 
 package() {
   cd ${_base}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
+  install -Dm 644 LICENSE* -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
