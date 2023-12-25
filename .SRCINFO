@@ -5,8 +5,7 @@ pkgbase = maya-usd-bin
 	url = https://github.com/Autodesk/maya-usd
 	arch = x86_64
 	license = Apache
-	depends = maya>=2024.0
-	depends = maya<2025.0
+	depends = maya=2024.2
 	provides = maya-usd
 	conflicts = maya-usd
 	options = !strip
