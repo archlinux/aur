@@ -16,6 +16,6 @@ source=("manual://RenderMan-InstallerNCR-25.2.0_2282810-linuxRHEL7_gcc93icc219.x
 sha256sums=('066167a239b306ee624b0d737cca210b813400c12a32038a6457e267eab9d34c')
 
 package() {
-    mv opt $pkgdir/
+    mv opt "$pkgdir/"
 }
 
