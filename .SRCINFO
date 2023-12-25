@@ -1,0 +1,19 @@
+pkgbase = python-billiard
+	pkgdesc = Python multiprocessing fork with improvements and bugfixes.
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/billiard/
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest-runner
+	checkdepends = python-case
+	checkdepends = python-psutil
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://pypi.io/packages/source/b/billiard/billiard-4.2.0.tar.gz
+	sha512sums = 8f25cd44416cb5b89a4e511189d8381f7bd0b0bc15597d2adb4b4e3fe3542a651acd7803dea43dcf0a94e2be6347d509393dac7dcabf2902a5f81b3cad8b0685
+
+pkgname = python-billiard
