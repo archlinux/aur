@@ -5,7 +5,7 @@ _pkgname='ferdium'
 pkgname="ferdium-git"
 _electron='electron27'
 _electronpackage='electron27-bin'
-pkgver=6.6.1.nightly.1.r6543.65d24965
+pkgver=6.7.1.nightly.1.r6614.3712a50c
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest commit).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -89,9 +89,9 @@ build() {
     nvm use
 
     # Extract the correct versions of tools from the package.json file
-    expected_node_version=$(node -p 'require("./package.json").engines.node')
-    expected_npm_version=$(node -p 'require("./package.json").engines.npm')
-    expected_pnpm_version=$(node -p 'require("./package.json").engines.pnpm')
+    expected_node_version=$(node -p 'require("./package.json").engines.node' | sed -e 's/\^//g')
+    expected_npm_version=$(node -p 'require("./package.json").engines.npm' | sed -e 's/\^//g')
+    expected_pnpm_version=$(node -p 'require("./package.json").engines.pnpm' | sed -e 's/\^//g')
 
     # If pnpm is not found in the package.json, get it from recipes/package.json (old style)
     if [[ "${expected_pnpm_version}" == "undefined" ]]
