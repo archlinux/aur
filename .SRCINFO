@@ -1,0 +1,13 @@
+pkgbase = liri-cmake-shared
+	pkgdesc = Extra imports and modules for Cmake
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://liri.io
+	arch = any
+	groups = liri
+	license = BSD
+	depends = extra-cmake-modules
+	source = https://github.com/lirios/cmake-shared/releases/download/v2.0.0/liri-cmake-shared-2.0.0.tar.xz
+	sha256sums = a5083e126ec92c2b36396d320c7def58e10c77497a4e3240a6371821df0c74d4
+
+pkgname = liri-cmake-shared

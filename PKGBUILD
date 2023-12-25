@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=liri-cmake-shared
-pkgver=1.1.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Extra imports and modules for Cmake"
 arch=('any')
 url='https://liri.io'
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('extra-cmake-modules')
 groups=('liri')
 source=("https://github.com/lirios/cmake-shared/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('f549cc4741e20df6f097960eef809c3119ef08b33194efee957b0c44ab9a1b79')
+sha256sums=('a5083e126ec92c2b36396d320c7def58e10c77497a4e3240a6371821df0c74d4')
 
 prepare() {
   sed -i -e 's|/qml"|/qt/qml"|' -e 's|LIBDIR/qml|LIBDIR/qt/qml|' $pkgname-$pkgver/modules/LiriBuild.cmake
@@ -26,5 +26,5 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
-  install -Dm644 "$srcdir"/$pkgname-$pkgver/LICENSE.BSD -t "$pkgdir"/usr/share/licenses/$pkgname/
+  install -Dm644 "$srcdir"/$pkgname-$pkgver/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
