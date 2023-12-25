@@ -1,7 +1,7 @@
 # Maintainer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 pkgname=koboldcpp-clblast
-pkgver=1.52.1
+pkgver=1.53
 pkgrel=1
 pkgdesc="CLBlast build of koboldcpp"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('openblas' 'python' 'cblas' 'clblast')
 optdepends=('customtkinter')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('8af792ddf052fac214995a66ca01c1dc')
+md5sums=('d27909c9a762379f1b5f8b68fd0dc76a')
 
 build() {
   cd "$srcdir/koboldcpp-$pkgver"
