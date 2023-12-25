@@ -1,6 +1,6 @@
 post_install() {
     echo "Usage:"
-    echo "sudo systemctl enable --start update-github520-hosts.timer"
+    echo "sudo systemctl enable --now update-github520-hosts.timer"
     echo "sudo systemctl start update-github520-hosts.service"
     echo "sudo systemctl status update-github520-hosts.service"
     echo "cat /etc/hosts"

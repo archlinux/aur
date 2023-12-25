@@ -2,7 +2,7 @@
 
 pkgbase=github520-git
 pkgname=github520-git
-pkgver=r2
+pkgver=r3
 pkgrel=1
 pkgdesc="😘 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。"
 arch=(any)
