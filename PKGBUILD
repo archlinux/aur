@@ -2,7 +2,7 @@
 
 pkgname=hcclient-latex
 pkgver=1.18.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal client for hack.chat, with LaTeX support"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
@@ -18,7 +18,7 @@ source=(
 noextract=("hcclient-${pkgver}-py3-none-any.whl")
 sha256sums=(
   '66b9098f5268bfebf9f7cad39a42a04a1d49300254020b6891410dd481be75a7'
-  'ab35243a5a91d1c04d2ec2d0a6702ed67a8709f21daa9deb6c32ffb445648f74'
+  'c67e65b3ebe5417f3ab7d65a96623bad862e72c365e1bf79e899e37f0bbeda25'
 )
 
 build() {
