@@ -6,10 +6,10 @@
 : ${_pkgtype:=-bin}
 
 # basic info
-_pkgname=logseq-desktop
+_pkgname="logseq-desktop"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
@@ -28,8 +28,14 @@ _main_package() {
 
   _pkgsrc="Logseq-linux-x64"
   _pkgext="AppImage"
-  source=("$url/releases/download/$_pkgver/$_pkgsrc-$_pkgver.$_pkgext")
-  sha256sums=('b8aba5b33f23db5d79ee1566c88c1c5e2f3de679dda6f35828235de7f606b866')
+  source=(
+    "$url/releases/download/$_pkgver/$_pkgsrc-$_pkgver.$_pkgext"
+    "$_pkgname.png"::"$url/raw/master/resources/icons/logseq.png"
+  )
+  sha256sums=(
+    'b8aba5b33f23db5d79ee1566c88c1c5e2f3de679dda6f35828235de7f606b866'
+    '2c04bad999ef75b874bd185b84c4df560486685f5a36c2801224ef9b67642006'
+  )
 
   if [[ "${_autoupdate::1}" == "t" ]] ; then
     sha256sums=('SKIP')
@@ -73,8 +79,7 @@ package() {
   install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # icons
-  install -Dm644 "$_pkgsrc/usr/share/icons/hicolor/256x256/apps/Logseq.png" \
-    -- "$pkgdir/usr/share/pixmaps/logseq.png"
+  install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/logseq.png"
 
   # script
   install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/logseq"
