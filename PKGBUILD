@@ -2,7 +2,7 @@
 
 pkgname=oxeylyzer-git
 pkgver=r364.d40c28f
-pkgrel=2
+pkgrel=3
 pkgdesc="Alternative keyboard layout analyzer"
 url="https://github.com/O-X-E-Y/oxeylyzer"
 license=('Apache')
@@ -38,7 +38,7 @@ check() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    install -Dm0755 -t "$pkgdir/usr/bin/${pkgname%-git}" "target/release/${pkgname%-git}" "config.toml" "languages_default.cfg"
+    install -Dm0755 -t "$pkgdir/usr/bin" "target/release/${pkgname%-git}"
     install -Dm0755 -t "$pkgdir/usr/lib/${pkgname%-git}" "config.toml" "languages_default.cfg"
     cp -a "static" "$pkgdir/usr/lib/${pkgname%-git}"
 }

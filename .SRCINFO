@@ -1,7 +1,7 @@
 pkgbase = oxeylyzer-git
 	pkgdesc = Alternative keyboard layout analyzer
 	pkgver = r364.d40c28f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/O-X-E-Y/oxeylyzer
 	install = oxeylyzer.install
 	arch = x86_64
