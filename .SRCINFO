@@ -1,0 +1,19 @@
+pkgbase = stellarium-qt5-bin
+	pkgdesc = Free GPL software which renders realistic skies in real time with OpenGL, using Qt5
+	pkgver = 23.4
+	pkgrel = 1
+	url = https://stellarium.org/
+	arch = x86_64
+	license = GPL2
+	provides = stellarium
+	conflicts = stellarium
+	conflicts = stellarium-bin
+	source = https://github.com/Stellarium/stellarium/releases/download/v23.4/Stellarium-23.4-qt5-x86_64.AppImage
+	source = https://github.com/Stellarium/stellarium/releases/download/v23.4/Stellarium-23.4-qt5-x86_64.AppImage.asc
+	source = stellarium.bash
+	validpgpkeys = 79151C2E6351E7278DA1A730BF38D4D02A328DFF
+	sha256sums = 97e16722e38724847bac28c6634d96e9951892692f975c36aa25dae538263932
+	sha256sums = 0f8514b02325141e43fe07a7cb2d79453e151869aedd60a28ec7a69602e51f04
+	sha256sums = cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff
+
+pkgname = stellarium-qt5-bin
