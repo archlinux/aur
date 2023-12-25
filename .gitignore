@@ -2,3 +2,7 @@
 *.zst
 pkg/
 src/
+OpenRV/
+openrv-oiio/
+openrv-pub/
+openrv-WFObj/
