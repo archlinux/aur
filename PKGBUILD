@@ -1,12 +1,12 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=kokkos
 pkgver=4.2.00
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ performance portability programming ecosystem"
 arch=(x86_64)
 url="https://github.com/${pkgname}/${pkgname}"
 license=(Apache)
-depends=(bash hwloc)
+depends=(bash hwloc openmp)
 makedepends=(cmake)
 conflicts=('trilinos')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
