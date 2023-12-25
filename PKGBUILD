@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-hello')
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="GTK3-based greeter for greetd written in python"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('sway: this or hyprland must be installed'
             'hyprland: this or sway must be installed')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-hello/archive/v"$pkgver".tar.gz")
 
-md5sums=('5a1d30d39e4fa9c762f043f877a3bc80')
+md5sums=('664a3f6d08fc8497cfbe3a1b8b2ad4dd')
 
 package() {
   cd "${pkgname}-${pkgver}"
