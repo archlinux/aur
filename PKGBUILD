@@ -19,7 +19,7 @@ b2sums=('eb7a1d8a3f9125408f93511e16bbdea93d0dac2fb12c30d9bd7a1a3aafa3d3bdd19dd51
 options=(!strip)
 
 package() {
-    mkdir -p $pkgdir/usr/autodesk/maya$_mayaver/{modules,plug-ins}
-    mv usr/autodesk/lookdevx/maya$_mayaver/$pkgver/modules/*.mod $pkgdir/usr/autodesk/maya$_mayaver/modules/
-    mv usr/autodesk/lookdevx/maya$_mayaver/$pkgver/plug-ins/* $pkgdir/usr/autodesk/maya$_mayaver/plug-ins/
+    mkdir -p "$pkgdir/usr/autodesk/maya$_mayaver/"{modules,plug-ins}
+    mv usr/autodesk/lookdevx/maya$_mayaver/$pkgver/modules/*.mod "$pkgdir/usr/autodesk/maya$_mayaver/modules/"
+    mv usr/autodesk/lookdevx/maya$_mayaver/$pkgver/plug-ins/* "$pkgdir/usr/autodesk/maya$_mayaver/plug-ins/"
 }
