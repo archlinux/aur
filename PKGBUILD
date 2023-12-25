@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mootool-bin
 _pkgname=MooTool
-pkgver=1.5.7
-pkgrel=2
+pkgver=1.5.8
+pkgrel=1
 pkgdesc="Handy tool set for developers. 开发者常备小工具"
 arch=("x86_64")
 url="https://github.com/rememberber/MooTool"
@@ -24,12 +24,12 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/rememberber/MooTool/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d93816e63b6120de615fc1ac58db7108d25c03cebbe501f4e3c7d4d8d9a07006'
+sha256sums=('1b7dddc302bff6954d8e19b73ff3cd350b3881bd4aeeaad8e43b1eef62d1442a'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333'
-            '0532bec6588d7b9d6cba26c488fc638b28d35b1c21e1ed16510c0a8f8df54450')
+            '5d3f2a5359ef2945b88a8186d5d62799961769b9a77d5aa06f07bfd1d7b96444')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${_pkgname}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed -e "s|/opt/${_pkgname}/${_pkgname} %U|${pkgname%-bin} %U|g" \

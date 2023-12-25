@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 _APPDIR=/opt/@appname@
-_APPNAME=@runappname@
+_RUNNAME="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${PATH}"
 cd "${_APPDIR}"
-exec "${_APPDIR}/${_APPNAME}"
+exec "${_RUNNAME}" "$@" || exit
