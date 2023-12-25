@@ -7,9 +7,7 @@ pkgbase = bitbake-language-server
 	license = GPL3
 	makedepends = python-installer
 	depends = python-pygls
-	depends = python-platformdirs
-	depends = python-tree-sitter
-	optdepends = bitbake
+	depends = python-oelint-parser
 	source = https://files.pythonhosted.org/packages/cp310/b/bitbake_language_server/bitbake_language_server-0.0.6-cp310-cp310-manylinux_2_17_x86_64.manylinux_2_5_x86_64.manylinux1_x86_64.manylinux2014_x86_64.whl
 	sha256sums = 4adccebbca07719c94f6aa423bf79c9d72a74169e1a83f020ca15b2497637213
 
