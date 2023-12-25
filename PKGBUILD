@@ -14,26 +14,30 @@ source=("https://github.com/VoxelCubes/PanelCleaner/archive/refs/tags/$pkgver.ta
 sha256sums=('SKIP')
 provides=('pcleaner' 'pcleaner-gui')
 
-build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    # The following line adds /home/user/.local/bin to the PATH
-    # If it isn't already there, you will need to log out and back in
-    # for the change to take effect.
-    # This is because we are installing the package locally, not system-wide,
-    # in an isolated environment.
-    # Check if ~/.local/bin is in PATH
-    if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
-        echo 'Ensuring that ~/.local/bin is in PATH, due to pipx installing locally, in an isolated environment.'
-        echo 'If you did not have this in your PATH before, you will need to log out and back in after installation.'
-    fi
-    # Perform the ensurance either way, to be on the safe side.
-    pipx ensurepath
-}
 
 package() {
+
+    # Clean up old installation (a few GB) that otherwise would need manual cleanup. This will be removed in the next version.
+    # This is necessary because old installations in the home directory could not be properly cleaned up
+    # the package system.
+    # The new way is to install it in the /opt/ directory, where pacman can properly track files.
+    echo "Cleaning up old installation that was improperly placed in the home directory..."
+    pipx uninstall pcleaner || true
+    
+
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    pipx install pcleaner==${_pypi_pkgver}
+
+    # Use a directory within $srcdir for PIPX_HOME
+    local pipx_home="${pkgdir}/opt/pipx-${pkgname}"
+    local pipx_bin_dir="${pkgdir}/usr/bin"
+    mkdir -p "${pipx_home}"
+    mkdir -p "${pipx_bin_dir}"
+
+    # Once pipx 1.3.0+ is supported in the official repos (probably January), I can let pipx use heavier dependencies from
+    # the system site-packages that are installed with pacman/from the AUR.
+
+    PIPX_HOME=${pipx_home} PIPX_BIN_DIR=${pipx_bin_dir} pipx install pcleaner==${_pypi_pkgver}
 
     mkdir -p "$pkgdir/usr/share/applications"
     install --mode=644 --owner=root --group=root "PanelCleaner.desktop" "$pkgdir/usr/share/applications/"
