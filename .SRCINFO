@@ -1,6 +1,6 @@
-pkgbase = gammastep-git
+pkgbase = gammastep-fade-duration-git
 	pkgdesc = Adjust the color temperature of your screen according to your surroundings.
-	pkgver = 2.0.7.r1.gc5c3ac0
+	pkgver = 2.0.9.r1.geab8be4
 	pkgrel = 1
 	url = https://gitlab.com/chinstrap/gammastep
 	arch = x86_64
@@ -22,11 +22,13 @@ pkgbase = gammastep-git
 	optdepends = python-xdg: for gammastep-indicator
 	optdepends = gtk3: for gammastep-indicator
 	provides = gammastep
+	provides = gammastep-git
 	conflicts = gammastep
+	conflicts = gammastep-git
 	source = git+https://gitlab.com/chinstrap/gammastep.git
 	sha256sums = SKIP
 
-pkgname = gammastep-git
+pkgname = gammastep-fade-duration-git
 	depends = geoclue
 	depends = glibc
 	depends = hicolor-icon-theme

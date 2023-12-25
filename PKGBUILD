@@ -1,15 +1,15 @@
 # Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
-pkgname=gammastep-git
-pkgver=2.0.7.r1.gc5c3ac0
+pkgname=gammastep-fade-duration-git
+pkgver=2.0.9.r1.geab8be4
 pkgrel=1
 pkgdesc="Adjust the color temperature of your screen according to your surroundings."
 arch=('x86_64')
 url="https://gitlab.com/chinstrap/gammastep"
 license=('GPL3')
-provides=('gammastep')
-conflicts=('gammastep')
+provides=('gammastep' 'gammastep-git')
+conflicts=('gammastep' 'gammastep-git')
 depends=('geoclue' 'glibc' 'hicolor-icon-theme' 'libdrm' 'libx11' 'libxcb'
 'libxxf86vm' 'wayland')
 makedepends=('git' 'glib2' 'intltool' 'python' 'systemd')
