@@ -3,11 +3,11 @@
 pkgname='python-reqif'
 _name=${pkgname#python-}
 pkgver='0.0.41'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for ReqIF format. ReqIF parsing and unparsing."
 url="https://github.com/strictdoc-project/reqif"
-depends=('python-jinja' 'python-toml' 'python-lxml' 'python-beautifulsoup4')
-makedepends=('python-setuptools')
+depends=('python' 'python-jinja' 'python-lxml' 'python-xmlschema')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
