@@ -7,6 +7,7 @@ pkgbase = true-combat-elite-bin
 	arch = x86_64
 	license = unknown
 	depends = lib32-libstdc++5
+	depends = lib32-sdl12-compat
 	options = !strip
 	source = true-combat-elite-0.49b-linux.tar.xz::https://web.archive.org/web/20230927175150if_/https://pomf2.lain.la/f/m3epnqj6.tar.xz
 	sha256sums = 74d71667082ea08b49a61551611dccab4a161b80dae3cf0dd5a7802e7e10d254
