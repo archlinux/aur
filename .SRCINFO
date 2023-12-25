@@ -1,7 +1,7 @@
 pkgbase = deepqt
 	pkgdesc = Harness the power of the DeepL API with this friendly user interface. Translate plain text and epub files.
 	pkgver = 1.1.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/VoxelCubes/DeepQt
 	arch = any
 	license = GPL
