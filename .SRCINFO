@@ -1,7 +1,7 @@
 pkgbase = panelcleaner
 	pkgdesc = An AI-powered tool to clean manga panels. Provides both a CLI (pcleaner) and GUI (Qt-based)
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VoxelCubes/PanelCleaner
 	arch = any
 	license = GPL

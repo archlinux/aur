@@ -3,7 +3,7 @@ pkgname=panelcleaner
 _module='PanelCleaner'
 pkgver='2.1.2'
 _pypi_pkgver='2.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="An AI-powered tool to clean manga panels. Provides both a CLI (pcleaner) and GUI (Qt-based)"
 url="https://github.com/VoxelCubes/PanelCleaner"
 depends=('python>=3.10.0' 'python-pipx')
