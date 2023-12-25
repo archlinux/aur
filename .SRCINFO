@@ -1,7 +1,7 @@
 pkgbase = ola
 	pkgdesc = Open Lighting Architecture for controlling entertainment lighting equipment
 	pkgver = 0.10.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.openlighting.org
 	arch = x86_64
 	arch = aarch64
@@ -19,6 +19,7 @@ pkgbase = ola
 	makedepends = python-numpy
 	makedepends = python-protobuf
 	makedepends = util-linux-libs
+	options = !lto
 	source = ola-0.10.9.tar.gz::https://github.com/OpenLightingProject/ola/archive/refs/tags/0.10.9.tar.gz
 	source = fix-protobuf-v20.patch::https://github.com/OpenLightingProject/ola/pull/1875.patch
 	sha256sums = d2a80d907f5a0a5169583060bd32aa0fdbb2fdfe18d1194dd922595ab6d447b5
