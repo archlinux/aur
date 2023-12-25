@@ -2,12 +2,12 @@
 
 pkgbase=github520-git
 pkgname=github520-git
-pkgver=r3
+pkgver=r4
 pkgrel=1
 pkgdesc="😘 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。"
 arch=(any)
 url="https://github.com/521xueweihan/GitHub520"
-license=('unkown')
+license=('CC BY-NC-ND 4.0 DEED')
 groups=()
 provides=(${pkgbase%-git})
 conflicts=(${pkgbase%-git})

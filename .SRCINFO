@@ -1,11 +1,11 @@
 pkgbase = github520-git
 	pkgdesc = 😘 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。
-	pkgver = r3
+	pkgver = r4
 	pkgrel = 1
 	url = https://github.com/521xueweihan/GitHub520
 	install = github520-git.install
 	arch = any
-	license = unkown
+	license = CC BY-NC-ND 4.0 DEED
 	makedepends = git
 	makedepends = wget
 	makedepends = sed
