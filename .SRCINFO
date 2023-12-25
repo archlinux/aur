@@ -13,6 +13,7 @@ pkgbase = hyprshade
 	depends = python-click
 	depends = python-more-itertools
 	depends = util-linux
+	optdepends = systemd: activate shader on schedule
 	provides = hyprshade
 	source = https://files.pythonhosted.org/packages/source/h/hyprshade/hyprshade-2.0.1.tar.gz
 	source = https://raw.githubusercontent.com/loqusion/hyprshade/2.0.1/examples/config.toml

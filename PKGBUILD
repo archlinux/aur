@@ -16,6 +16,7 @@ depends=(
 	util-linux
 )
 makedepends=(git python-{build,hatchling,installer})
+optdepends=('systemd: activate shader on schedule')
 provides=($pkgname)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
 		"https://raw.githubusercontent.com/loqusion/$pkgname/$pkgver/examples/config.toml")
