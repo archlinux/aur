@@ -1,6 +1,6 @@
 pkgbase = hyprshade-git
 	pkgdesc = Hyprland shade configuration tool
-	pkgver = 0.13.1.r1.g3756a31
+	pkgver = 2.0.1.r1.g0aada94
 	pkgrel = 1
 	url = https://github.com/loqusion/hyprshade
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = hyprshade-git
 	depends = python-click
 	depends = python-more-itertools
 	depends = util-linux
+	optdepends = systemd: activate shader on schedule
 	provides = hyprshade
 	conflicts = hyprshade
 	source = git+https://github.com/loqusion/hyprshade.git

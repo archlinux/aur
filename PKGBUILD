@@ -1,7 +1,7 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 _pkgname=hyprshade
 pkgname=${_pkgname}-git
-pkgver=0.10.1.r1.gd976e0b
+pkgver=2.0.1.r1.g0aada94
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
 	util-linux
 )
 makedepends=(git python-{build,hatchling,installer})
+optdepends=('systemd: activate shader on schedule')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(git+https://github.com/loqusion/${_pkgname}.git)
