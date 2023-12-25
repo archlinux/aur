@@ -3,24 +3,25 @@
 _pkgname=RhpcBLASctl
 _pkgver=0.23-42
 pkgname=r-${_pkgname,,}
-pkgver=0.23.42
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=3
 pkgdesc="Control the Number of Threads on 'BLAS'"
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('AGPL')
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(AGPL3)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5c889d5b69e264060b9f1f0383c447f594855b8afc15b7d76d39e4d62b946615')
+md5sums=('825ec304404cad180a6bfb5aef5204b7')
+b2sums=('9e6f8471be6f26dafd764d4de8f6c1e1d0685edd851e7e0acc7972d64c3b89336df0df6bfc18616ef7759531134c1c42984f6e4dc9bc096c58497efbcabeee0f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

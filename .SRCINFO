@@ -1,12 +1,13 @@
 pkgbase = r-rhpcblasctl
 	pkgdesc = Control the Number of Threads on 'BLAS'
 	pkgver = 0.23.42
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=RhpcBLASctl
 	arch = x86_64
-	license = AGPL
+	license = AGPL3
 	depends = r
 	source = https://cran.r-project.org/src/contrib/RhpcBLASctl_0.23-42.tar.gz
-	sha256sums = 5c889d5b69e264060b9f1f0383c447f594855b8afc15b7d76d39e4d62b946615
+	md5sums = 825ec304404cad180a6bfb5aef5204b7
+	b2sums = 9e6f8471be6f26dafd764d4de8f6c1e1d0685edd851e7e0acc7972d64c3b89336df0df6bfc18616ef7759531134c1c42984f6e4dc9bc096c58497efbcabeee0f
 
 pkgname = r-rhpcblasctl
