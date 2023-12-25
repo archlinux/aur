@@ -1,7 +1,7 @@
 # Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 pkgname=jaxb-api
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Java Architecture for XML Binding (JAXB) API"
 arch=(any)
@@ -10,7 +10,7 @@ license=('custom:BSD-3-clause')
 depends=(java-runtime)
 makedepends=(java-environment maven)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('eb4eab396b894ab801433e0e31f93a4980f3913176a1960591a69e4fd55f10f316a7edb712df323c59f7dc9ca6cebacb7257be06aec72446059dd8b93c6de175')
+sha512sums=('ee4e3851f9f619339b883cc95ef41d2e8c7b31440384c9ae6f2ff4dc248ae8104aa05a204e89803d49863503c2fde134b9a21599d14b35f4fadc3a96200ed5f8')
 _M2_REPO=$(mktemp -d)
 
 build() {
