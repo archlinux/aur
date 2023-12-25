@@ -1,12 +1,13 @@
 # Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
 pkgname=paru-static
 _pkgname=paru
+_openssl_ver=3.2.0
 pkgver=2.0.1
 pkgrel=2
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz"
-        "https://www.openssl.org/source/openssl-3.2.0.tar.gz")
+        "https://www.openssl.org/source/openssl-${_openssl_ver}.tar.gz")
 backup=("etc/paru.conf")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL3')
@@ -19,7 +20,7 @@ sha256sums=('47cae94d227cc08f86706408d234444af6dda192ba24309c251a0b43a8aa7980'
             '14c826f07c7e433706fb5c69fa9e25dab95684844b4c962a2cf1bf183eb4690e')
 
 prepare() {
-  cd ${srcdir}/openssl-3.2.0
+  cd ${srcdir}/openssl-${_openssl_ver}
   mkdir -p ${srcdir}/musl
 
   CC="musl-gcc -fPIE -pie -fuse-ld=mold" ./Configure no-shared no-async -fPIC --prefix=${srcdir}/musl --openssldir=${srcdir}/musl/ssl linux-x86_64
