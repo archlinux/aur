@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=losslesscut-git
-pkgver=3.58.0.r57.g5df1269
+pkgver=3.59.1.r0.gd311656
 _electronversion=27
+_nodeversion=18
 pkgrel=1
 pkgdesc="The swiss army knife of lossless video/audio editing"
 arch=('x86_64')
@@ -53,8 +54,8 @@ pkgver() {
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 18
-    nvm use 18
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     _ensure_local_nvm
@@ -66,7 +67,7 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
-    sed -e '425,430d' -e '411,422d' -e '404,407d' -i package.json
+    sed -e '413,424d' -e '406,409d' -i package.json
     yarn install
     yarn download-ffmpeg-linux-x64
     yarn prepack-linux
