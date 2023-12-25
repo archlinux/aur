@@ -58,7 +58,7 @@ build () {
   export LIBZ_SYS_STATIC=1
   rustflags="strip=symbols no-redzone=y overflow-checks=y lto=fat embed-bitcode=y codegen-units=1 opt-level=z control-flow-guard=y link-self-contained=yes"
   link_args="-fuse-ld=mold -Wp,-D_FORTIFY_SOURCE=2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fPIE -fpie -Wl,-z,relro,-z,now -static"
-  RUSTFLAGS="$(printf -- '-C%s ' $rustflags)$(printf -- '-Clink-arg=%s ' $link_args)"
+  RUSTFLAGS="$(printf -- '-C%s ' $rustflags) $(printf -- '-Clink-arg=%s ' $link_args)"
   export RUSTFLAGS=$RUSTFLAGS" -L native=/usr/lib/musl/lib/ -L native=${srcdir}/musl/lib64/"
   cargo build --frozen --features "static,${_features:-}" --release --target-dir target --target $TARGET
   ./scripts/mkmo locale/
