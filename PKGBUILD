@@ -3,7 +3,7 @@
 pkgname=python-torchmetrics
 _pkgname=torchmetrics
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Machine learning metrics for distributed, scalable PyTorch applications'
 arch=('any')
 url='https://github.com/PyTorchLightning/metrics'
@@ -19,7 +19,8 @@ optdepends=(
   python-lpips
 )
 makedepends=(
-  python-setuptools
+  python-build
+  python-installer
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/PyTorchLightning/metrics/releases/download/v${pkgver}/torchmetrics-${pkgver}.tar.gz"
 )

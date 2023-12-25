@@ -1,11 +1,12 @@
 pkgbase = python-torchmetrics
 	pkgdesc = Machine learning metrics for distributed, scalable PyTorch applications
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PyTorchLightning/metrics
 	arch = any
 	license = Apache
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-lightning-utilities
 	depends = python-regex
 	depends = python-torchvision
