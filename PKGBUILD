@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=2.8.0
+pkgver=2.8.1
 _electronversion=28
+_nodeversion=18
 pkgrel=1
 pkgdesc="A GUI wrapper for png2icons, generates Apple ICNS and Microsoft ICO files from PNG files."
 arch=('x86_64')
@@ -14,8 +15,8 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'npm>=9'
-    'nodejs>=18.18.7'
+    'npm'
+    'nvm'
     'git'
 )
 source=(
@@ -23,12 +24,19 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Graphics;Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
