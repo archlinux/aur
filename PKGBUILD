@@ -19,6 +19,6 @@ sha256sums=('f49f4f3b11335b5a9bdff8a9254e6897fc48dcb8186e5dc62a0304490aeee0b2'
             'aae4ef8a54db7d53dc3de3cd100057561015ffd9280a95f5d762fd5e41530822')
 
 package() {
-    mv opt $pkgdir/
-    install -Dm644 "${srcdir}/RenderMan_for_Maya_25.2.module" "${pkgdir}/opt/pixar/RenderManForMaya-25.2/etc"
+    mv opt "$pkgdir/"
+    install -Dm644 "$srcdir/RenderMan_for_Maya_25.2.module" "$pkgdir/opt/pixar/RenderManForMaya-25.2/etc"
 }
