@@ -1,7 +1,7 @@
 diff --git a/intern/cycles/cmake/external_libs.cmake b/intern/cycles/cmake/external_libs.cmake
 index d0f473a2939..90fcb40107a 100644
---- a/intern/cycles/cmake/external_libs.cmake
-+++ b/intern/cycles/cmake/external_libs.cmake
+--- a/blender-2.79b/intern/cycles/cmake/external_libs.cmake
++++ b/blender-2.79b/intern/cycles/cmake/external_libs.cmake
 @@ -41,6 +41,11 @@ if(WITH_CYCLES_CUDA_BINARIES OR NOT WITH_CUDA_DYNLOAD)
  	find_package(CUDA) # Try to auto locate CUDA toolkit
  	if(CUDA_FOUND)

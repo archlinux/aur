@@ -1,0 +1,91 @@
+commit 7d92888cacde2d345fc2f4f6f69e9c78cb81db65
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 14:54:22 2023 +0100
+
+    opencollada: "Fix (devtalk 4053): Collada build with older cmake ver.."
+    
+    Fully applied Blender upstream ref: 3552731551ef1845b493ffebf78be5a42527e9f2
+
+commit bd0befaf99b42881a72eb68257bb7b6632ef0ebe
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 14:50:12 2023 +0100
+
+    opencollada: "fix T58568 build errors when using collada 1.6.68 or n.."
+    
+    Fully applied Blender upstream ref: 10c50d7dbf7578b35b3bf19a1948f556f9eb203b
+
+diff --git a/blender-2.79b/source/blender/collada/CMakeLists.txt b/blender-2.79b/source/blender/collada/CMakeLists.txt
+index 293049a..03ccf3b 100644
+--- a/blender-2.79b/source/blender/collada/CMakeLists.txt
++++ b/blender-2.79b/source/blender/collada/CMakeLists.txt
+@@ -25,6 +25,21 @@
+ 
+ remove_strict_flags()
+ 
++FIND_FILE(OPENCOLLADA_ANIMATION_CLIP
++      NAMES
++        COLLADAFWAnimationClip.h
++      PATHS
++        ${OPENCOLLADA_INCLUDE_DIRS}
++      NO_DEFAULT_PATH
++    )
++
++IF(OPENCOLLADA_ANIMATION_CLIP)
++   message(STATUS "Found opencollada: ${OPENCOLLADA_ANIMATION_CLIP} ")
++   add_definitions(-DWITH_OPENCOLLADA_ANIMATION_CLIP)
++ELSE()
++   message(STATUS "opencollada: Build without animation clip support")
++ENDIF()
++
+ set(INC
+ 	.
+ 	../blenkernel
+diff --git a/blender-2.79b/source/blender/collada/DocumentImporter.cpp b/blender-2.79b/source/blender/collada/DocumentImporter.cpp
+index 435eaa0..c55305a 100644
+--- a/blender-2.79b/source/blender/collada/DocumentImporter.cpp
++++ b/blender-2.79b/source/blender/collada/DocumentImporter.cpp
+@@ -1340,6 +1340,19 @@ bool DocumentImporter::writeAnimationList(const COLLADAFW::AnimationList *animat
+ 	return anim_importer.write_animation_list(animationList);
+ }
+ 
++#if WITH_OPENCOLLADA_ANIMATION_CLIP
++// Since opencollada 1.6.68
++// called on post-process stage after writeVisualScenes
++bool DocumentImporter::writeAnimationClip(const COLLADAFW::AnimationClip *AnimationClip)
++{
++	if (mImportStage != General)
++		return true;
++
++	return true;
++	//return animation_clip_importer.write_animation_clip(animationClip); // TODO: implement import of AnimationClips
++}
++#endif
++
+ /** When this method is called, the writer must write the skin controller data.
+  * \return The writer should return true, if writing succeeded, false otherwise.*/
+ bool DocumentImporter::writeSkinControllerData(const COLLADAFW::SkinControllerData *skin)
+diff --git a/blender-2.79b/source/blender/collada/DocumentImporter.h b/blender-2.79b/source/blender/collada/DocumentImporter.h
+index 62f76db..5ad938f 100644
+--- a/blender-2.79b/source/blender/collada/DocumentImporter.h
++++ b/blender-2.79b/source/blender/collada/DocumentImporter.h
+@@ -49,8 +49,6 @@
+ #include "MeshImporter.h"
+ #include "ImportSettings.h"
+ 
+-
+-
+ struct bContext;
+ 
+ /** Importer class. */
+@@ -108,6 +106,11 @@ public:
+ 
+ 	bool writeAnimationList(const COLLADAFW::AnimationList*);
+ 
++#if WITH_OPENCOLLADA_ANIMATION_CLIP
++	// Please enable this when building with Collada 1.6.65 or newer (also in DocumentImporter.cpp)
++	bool DocumentImporter::writeAnimationClip(const COLLADAFW::AnimationClip *AnimationClip);
++#endif
++
+ 	bool writeGeometry(const COLLADAFW::Geometry*);
+ 
+ 	bool writeMaterial(const COLLADAFW::Material*);

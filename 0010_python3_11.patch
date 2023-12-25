@@ -1,0 +1,122 @@
+commit 3e7abb113568b07627e00a7a4e5df5e3cfefccfe
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sun Dec 17 14:37:36 2023 +0100
+
+    python3.11: eval.h has been removed from Python 3.11
+    
+    And compile.h is included with Python.h
+
+commit 5b4980bb042bf23779de97f38d6678f483a6f23e
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 02:31:55 2023 +0100
+
+    python3.11: Remove invalid use of Py_TPFLAGS_HAVE_GC flag
+    
+    Error otherwise thrown:
+    
+      SystemError: type bpy_struct has the Py_TPFLAGS_HAVE_GC flag but has
+      no traverse function
+    
+    This is for Python 3.11, see https://docs.python.org/3/whatsnew/3.11.html
+    """
+    The PyType_Ready() function now raises an error if a type is defined
+    with the Py_TPFLAGS_HAVE_GC flag set but has no traverse function
+     (PyTypeObject.tp_traverse). (Contributed by Victor Stinner in
+     bpo-44263.)
+    """
+
+commit 54c261ddfcb7221b1e6828c0a6a29a8b07f57043
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 01:12:28 2023 +0100
+
+    python3.11: "Python: support v3.11 (beta) with changes to PyFrameObj.."
+    
+    Partially applied Blender upstream ref: 780c0ea097444c3be60314dffd203c099720badb
+
+diff --git a/blender-2.79b/source/blender/python/generic/py_capi_utils.c b/blender-2.79b/source/blender/python/generic/py_capi_utils.c
+index 17cb657..10a38da 100644
+--- a/blender-2.79b/source/blender/python/generic/py_capi_utils.c
++++ b/blender-2.79b/source/blender/python/generic/py_capi_utils.c
+@@ -282,17 +282,21 @@ void PyC_StackSpit(void)
+ void PyC_FileAndNum(const char **filename, int *lineno)
+ {
+ 	PyFrameObject *frame;
+-	
++	PyCodeObject *code;
++
+ 	if (filename) *filename = NULL;
+ 	if (lineno)   *lineno = -1;
+ 
+-	if (!(frame = PyThreadState_GET()->frame)) {
++	if (!(frame = PyEval_GetFrame())) {
++		return;
++	}
++	if (!(code = PyFrame_GetCode(frame))) {
+ 		return;
+ 	}
+ 
+ 	/* when executing a script */
+ 	if (filename) {
+-		*filename = PyUnicode_AsUTF8(frame->f_code->co_filename);
++		*filename = PyUnicode_AsUTF8(code->co_filename);
+ 	}
+ 
+ 	/* when executing a module */
+diff --git a/blender-2.79b/source/blender/python/intern/bpy_app_handlers.c b/blender-2.79b/source/blender/python/intern/bpy_app_handlers.c
+index 90aa22d..bcabd09 100644
+--- a/blender-2.79b/source/blender/python/intern/bpy_app_handlers.c
++++ b/blender-2.79b/source/blender/python/intern/bpy_app_handlers.c
+@@ -155,8 +155,7 @@ static PyTypeObject BPyPersistent_Type = {
+ 	0,                                          /* tp_getattro */
+ 	0,                                          /* tp_setattro */
+ 	0,                                          /* tp_as_buffer */
+-	Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC |
+-	Py_TPFLAGS_BASETYPE,                        /* tp_flags */
++	Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,   /* tp_flags */
+ 	0,                                          /* tp_doc */
+ 	0,                                          /* tp_traverse */
+ 	0,                                          /* tp_clear */
+diff --git a/blender-2.79b/source/blender/python/intern/bpy_rna.c b/blender-2.79b/source/blender/python/intern/bpy_rna.c
+index 722e23d..f2f0ed7 100644
+--- a/blender-2.79b/source/blender/python/intern/bpy_rna.c
++++ b/blender-2.79b/source/blender/python/intern/bpy_rna.c
+@@ -5753,7 +5753,7 @@ PyTypeObject pyrna_struct_Type = {
+ 	NULL,                       /* PyBufferProcs *tp_as_buffer; */
+ 
+ 	/*** Flags to define presence of optional/expanded features ***/
+-	Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC, /* long tp_flags; */
++	Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE, /* long tp_flags; */
+ 
+ 	NULL,                       /*  char *tp_doc;  Documentation string */
+ 	/*** Assigned meaning in release 2.0 ***/
+diff --git a/blender-2.79b/source/blender/python/intern/bpy_traceback.c b/blender-2.79b/source/blender/python/intern/bpy_traceback.c
+index fedf889..462438f 100644
+--- a/blender-2.79b/source/blender/python/intern/bpy_traceback.c
++++ b/blender-2.79b/source/blender/python/intern/bpy_traceback.c
+@@ -39,7 +39,9 @@
+ 
+ static const char *traceback_filepath(PyTracebackObject *tb, PyObject **coerce)
+ {
+-	return PyBytes_AS_STRING((*coerce = PyUnicode_EncodeFSDefault(tb->tb_frame->f_code->co_filename)));
++	PyCodeObject *code = PyFrame_GetCode(tb->tb_frame);
++	*coerce = PyUnicode_EncodeFSDefault(code->co_filename);
++	return PyBytes_AS_STRING(*coerce);
+ }
+ 
+ /* copied from pythonrun.c, 3.4.0 */
+diff --git a/blender-2.79b/source/gameengine/GameLogic/SCA_PythonController.cpp b/blender-2.79b/source/gameengine/GameLogic/SCA_PythonController.cpp
+index 6aaf6f0..f8a9cc4 100644
+--- a/blender-2.79b/source/gameengine/GameLogic/SCA_PythonController.cpp
++++ b/blender-2.79b/source/gameengine/GameLogic/SCA_PythonController.cpp
+@@ -41,11 +41,6 @@
+ #include "SCA_IActuator.h"
+ #include "EXP_PyObjectPlus.h"
+ 
+-#ifdef WITH_PYTHON
+-#include "compile.h"
+-#include "eval.h"
+-#endif // WITH_PYTHON
+-
+ #include <algorithm>
+ 
+ 

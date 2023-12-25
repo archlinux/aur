@@ -1,0 +1,608 @@
+commit fce4c8799bcddb8a159d4c3cd1480cf174d02ee4
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 02:43:28 2023 +0100
+
+    python3.8: "Cleanup: define PY_SSIZE_T_CLEAN for Python"
+    
+    Fully applied Blender upstream ref: 9dd5e3b6e89ca0be4207e64439f292519eaf7e6e
+
+commit 89c9462c0a921b6af37043ee2ab147c60cd0f422
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 01:49:26 2023 +0100
+
+    python3.8: "PyAPI: use public API's for module & builtin access"
+    
+    Partially applied Blender upstream ref: e413b39a936181cc954dfbf054b0a19794d8902c
+
+commit 2b0312742399a9143f33a78a4f5ceedd08d178d6
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 00:53:34 2023 +0100
+
+    python3.8: "Cleanup: warnings building with Python 3.8"
+    
+    Adjusted Blender upstream ref: 36b6fb5cd600a7067d24cfe836c0af4d94e083e4
+
+commit 2093b30818fcddf1f0d2d0011bae023d9124b351
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 00:23:26 2023 +0100
+
+    python3.8: "Cleanup: use PyImport_GetModuleDict"
+    
+    Adjusted Blender upstream ref: 44f719b63238503ef8f933f55383c6d4798995cc
+
+diff --git a/blender-2.79b/source/blender/python/bmesh/bmesh_py_api.c b/blender-2.79b/source/blender/python/bmesh/bmesh_py_api.c
+index d5973ba..d7324ea 100644
+--- a/blender-2.79b/source/blender/python/bmesh/bmesh_py_api.c
++++ b/blender-2.79b/source/blender/python/bmesh/bmesh_py_api.c
+@@ -196,7 +196,7 @@ PyObject *BPyInit_bmesh(void)
+ {
+ 	PyObject *mod;
+ 	PyObject *submodule;
+-	PyObject *sys_modules = PyThreadState_GET()->interp->modules;
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 
+ 	BPy_BM_init_types();
+ 	BPy_BM_init_types_select();
+diff --git a/blender-2.79b/source/blender/python/bmesh/bmesh_py_ops.c b/blender-2.79b/source/blender/python/bmesh/bmesh_py_ops.c
+index ee96c85..ea37159 100644
+--- a/blender-2.79b/source/blender/python/bmesh/bmesh_py_ops.c
++++ b/blender-2.79b/source/blender/python/bmesh/bmesh_py_ops.c
+@@ -142,7 +142,7 @@ static PyTypeObject bmesh_op_Type = {
+ 	0,                          /* tp_itemsize */
+ 	/* methods */
+ 	NULL,                       /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* DEPRECATED in python 3.0! */
+@@ -260,7 +260,7 @@ static PyTypeObject bmesh_ops_fakemod_Type = {
+ 	0,                          /* tp_itemsize */
+ 	/* methods */
+ 	NULL,                       /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* DEPRECATED in python 3.0! */
+diff --git a/blender-2.79b/source/blender/python/generic/blf_py_api.c b/blender-2.79b/source/blender/python/generic/blf_py_api.c
+index 69f1e29..bf8259f 100644
+--- a/blender-2.79b/source/blender/python/generic/blf_py_api.c
++++ b/blender-2.79b/source/blender/python/generic/blf_py_api.c
+@@ -26,6 +26,9 @@
+  * This file defines the 'bgl' module, used for drawing text in OpenGL.
+  */
+ 
++/* Future-proof, See https://docs.python.org/3/c-api/arg.html#strings-and-buffers */
++#define PY_SSIZE_T_CLEAN
++
+ #include <Python.h>
+ #include "blf_py_api.h"
+ 
+@@ -150,7 +153,7 @@ PyDoc_STRVAR(py_blf_draw_doc,
+ static PyObject *py_blf_draw(PyObject *UNUSED(self), PyObject *args)
+ {
+ 	const char *text;
+-	int text_length;
++	Py_ssize_t text_length;
+ 	int fontid;
+ 
+ 	if (!PyArg_ParseTuple(args, "is#:blf.draw", &fontid, &text, &text_length))
+diff --git a/blender-2.79b/source/blender/python/generic/idprop_py_api.c b/blender-2.79b/source/blender/python/generic/idprop_py_api.c
+index 5d6a7c5..576f114 100644
+--- a/blender-2.79b/source/blender/python/generic/idprop_py_api.c
++++ b/blender-2.79b/source/blender/python/generic/idprop_py_api.c
+@@ -1166,7 +1166,7 @@ PyTypeObject BPy_IDGroup_Type = {
+ 	/* Methods to implement standard operations */
+ 
+ 	NULL,                       /* destructor tp_dealloc; */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* cmpfunc tp_compare; */
+@@ -1560,7 +1560,7 @@ PyTypeObject BPy_IDArray_Type = {
+ 	/* Methods to implement standard operations */
+ 
+ 	NULL,                       /* destructor tp_dealloc; */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,     /* getattrfunc tp_getattr; */
+ 	NULL,     /* setattrfunc tp_setattr; */
+ 	NULL,                       /* cmpfunc tp_compare; */
+@@ -1675,7 +1675,7 @@ PyTypeObject BPy_IDGroup_Iter_Type = {
+ 	/* Methods to implement standard operations */
+ 
+ 	NULL,                       /* destructor tp_dealloc; */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,     /* getattrfunc tp_getattr; */
+ 	NULL,     /* setattrfunc tp_setattr; */
+ 	NULL,                       /* cmpfunc tp_compare; */
+@@ -1792,7 +1792,7 @@ PyObject *BPyInit_idprop(void)
+ {
+ 	PyObject *mod;
+ 	PyObject *submodule;
+-	PyObject *sys_modules = PyThreadState_GET()->interp->modules;
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 
+ 	mod = PyModule_Create(&IDProp_module_def);
+ 
+diff --git a/blender-2.79b/source/blender/python/generic/py_capi_utils.c b/blender-2.79b/source/blender/python/generic/py_capi_utils.c
+index 861e2db..f4a2595 100644
+--- a/blender-2.79b/source/blender/python/generic/py_capi_utils.c
++++ b/blender-2.79b/source/blender/python/generic/py_capi_utils.c
+@@ -29,6 +29,9 @@
+  * BLI_string_utf8() for unicode conversion.
+  */
+ 
++/* Future-proof, See https://docs.python.org/3/c-api/arg.html#strings-and-buffers */
++#define PY_SSIZE_T_CLEAN
++
+ #include <Python.h>
+ #include <frameobject.h>
+ 
+@@ -638,9 +641,10 @@ PyObject *PyC_UnicodeFromByte(const char *str)
+  ****************************************************************************/
+ PyObject *PyC_DefaultNameSpace(const char *filename)
+ {
+-	PyInterpreterState *interp = PyThreadState_GET()->interp;
++	PyObject *modules = PyImport_GetModuleDict();
++	PyObject *builtins = PyEval_GetBuiltins();
+ 	PyObject *mod_main = PyModule_New("__main__");
+-	PyDict_SetItemString(interp->modules, "__main__", mod_main);
++	PyDict_SetItemString(modules, "__main__", mod_main);
+ 	Py_DECREF(mod_main); /* sys.modules owns now */
+ 	PyModule_AddStringConstant(mod_main, "__name__", "__main__");
+ 	if (filename) {
+@@ -648,23 +652,23 @@ PyObject *PyC_DefaultNameSpace(const char *filename)
+ 		 * note: this wont map to a real file when executing text-blocks and buttons. */
+ 		PyModule_AddObject(mod_main, "__file__", PyC_UnicodeFromByte(filename));
+ 	}
+-	PyModule_AddObject(mod_main, "__builtins__", interp->builtins);
+-	Py_INCREF(interp->builtins); /* AddObject steals a reference */
++	PyModule_AddObject(mod_main, "__builtins__", builtins);
++	Py_INCREF(builtins); /* AddObject steals a reference */
+ 	return PyModule_GetDict(mod_main);
+ }
+ 
+ /* restore MUST be called after this */
+ void PyC_MainModule_Backup(PyObject **main_mod)
+ {
+-	PyInterpreterState *interp = PyThreadState_GET()->interp;
+-	*main_mod = PyDict_GetItemString(interp->modules, "__main__");
++	PyObject *modules = PyImport_GetModuleDict();
++	*main_mod = PyDict_GetItemString(modules, "__main__");
+ 	Py_XINCREF(*main_mod); /* don't free */
+ }
+ 
+ void PyC_MainModule_Restore(PyObject *main_mod)
+ {
+-	PyInterpreterState *interp = PyThreadState_GET()->interp;
+-	PyDict_SetItemString(interp->modules, "__main__", main_mod);
++	PyObject *modules = PyImport_GetModuleDict();
++	PyDict_SetItemString(modules, "__main__", main_mod);
+ 	Py_XDECREF(main_mod);
+ }
+ 
+@@ -732,7 +736,7 @@ void PyC_RunQuicky(const char *filepath, int n, ...)
+ 
+ 		va_list vargs;
+ 
+-		int *sizes = PyMem_MALLOC(sizeof(int) * (n / 2));
++		Py_ssize_t *sizes = PyMem_MALLOC(sizeof(*sizes) * (n / 2));
+ 		int i;
+ 
+ 		PyObject *py_dict = PyC_DefaultNameSpace(filepath);
+diff --git a/blender-2.79b/source/blender/python/intern/bpy_app_translations.c b/blender-2.79b/source/blender/python/intern/bpy_app_translations.c
+index 6ba858f..1b853be 100644
+--- a/blender-2.79b/source/blender/python/intern/bpy_app_translations.c
++++ b/blender-2.79b/source/blender/python/intern/bpy_app_translations.c
+@@ -714,7 +714,7 @@ static PyTypeObject BlenderAppTranslationsType = {
+ 	/* methods */
+ 	/* No destructor, this is a singleton! */
+ 	NULL,                       /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* DEPRECATED in python 3.0! */
+diff --git a/blender-2.79b/source/blender/python/intern/bpy_interface.c b/blender-2.79b/source/blender/python/intern/bpy_interface.c
+index 6077418..0d36ba1 100644
+--- a/blender-2.79b/source/blender/python/intern/bpy_interface.c
++++ b/blender-2.79b/source/blender/python/intern/bpy_interface.c
+@@ -529,7 +529,7 @@ static bool python_script_exec(
+ 
+ 	if (py_dict) {
+ #ifdef PYMODULE_CLEAR_WORKAROUND
+-		PyModuleObject *mmod = (PyModuleObject *)PyDict_GetItemString(PyThreadState_GET()->interp->modules, "__main__");
++		PyModuleObject *mmod = (PyModuleObject *)PyDict_GetItemString(PyImport_GetModuleDict(), "__main__");
+ 		PyObject *dict_back = mmod->md_dict;
+ 		/* freeing the module will clear the namespace,
+ 		 * gives problems running classes defined in this namespace being used later. */
+diff --git a/blender-2.79b/source/blender/python/intern/bpy_library_load.c b/blender-2.79b/source/blender/python/intern/bpy_library_load.c
+index cb6a714..c8fd392 100644
+--- a/blender-2.79b/source/blender/python/intern/bpy_library_load.c
++++ b/blender-2.79b/source/blender/python/intern/bpy_library_load.c
+@@ -98,7 +98,7 @@ static PyTypeObject bpy_lib_Type = {
+ 	0,                          /* tp_itemsize */
+ 	/* methods */
+ 	(destructor)bpy_lib_dealloc, /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* DEPRECATED in python 3.0! */
+diff --git a/blender-2.79b/source/blender/python/intern/bpy_props.c b/blender-2.79b/source/blender/python/intern/bpy_props.c
+index 3a18167..2b8e356 100644
+--- a/blender-2.79b/source/blender/python/intern/bpy_props.c
++++ b/blender-2.79b/source/blender/python/intern/bpy_props.c
+@@ -28,6 +28,8 @@
+  * existing blender types.
+  */
+ 
++/* Future-proof, See https://docs.python.org/3/c-api/arg.html#strings-and-buffers */
++#define PY_SSIZE_T_CLEAN
+ 
+ #include <Python.h>
+ 
+@@ -2012,7 +2014,7 @@ static PyObject *BPy_BoolProperty(PyObject *self, PyObject *args, PyObject *kw)
+ 		static const char *kwlist[] = {"attr", "name", "description", "default",
+ 		                               "options", "subtype", "update", "get", "set", NULL};
+ 		const char *id = NULL, *name = NULL, *description = "";
+-		int id_len;
++		Py_ssize_t id_len;
+ 		bool def = false;
+ 		PropertyRNA *prop;
+ 		PyObject *pyopts = NULL;
+@@ -2094,7 +2096,7 @@ static PyObject *BPy_BoolVectorProperty(PyObject *self, PyObject *args, PyObject
+ 		static const char *kwlist[] = {"attr", "name", "description", "default",
+ 		                               "options", "subtype", "size", "update", "get", "set", NULL};
+ 		const char *id = NULL, *name = NULL, *description = "";
+-		int id_len;
++		Py_ssize_t id_len;
+ 		int def[PYRNA_STACK_ARRAY] = {0};
+ 		int size = 3;
+ 		PropertyRNA *prop;
+@@ -2199,7 +2201,7 @@ static PyObject *BPy_IntProperty(PyObject *self, PyObject *args, PyObject *kw)
+ 		                               "min", "max", "soft_min", "soft_max",
+ 		                               "step", "options", "subtype", "update", "get", "set", NULL};
+ 		const char *id = NULL, *name = NULL, *description = "";
+-		int id_len;
++		Py_ssize_t id_len;
+ 		int min = INT_MIN, max = INT_MAX, soft_min = INT_MIN, soft_max = INT_MAX, step = 1, def = 0;
+ 		PropertyRNA *prop;
+ 		PyObject *pyopts = NULL;
+@@ -2296,7 +2298,7 @@ static PyObject *BPy_IntVectorProperty(PyObject *self, PyObject *args, PyObject
+ 		                               "min", "max", "soft_min", "soft_max",
+ 		                               "step", "options", "subtype", "size", "update", "get", "set", NULL};
+ 		const char *id = NULL, *name = NULL, *description = "";
+-		int id_len;
++		Py_ssize_t id_len;
+ 		int min = INT_MIN, max = INT_MAX, soft_min = INT_MIN, soft_max = INT_MAX, step = 1;
+ 		int def[PYRNA_STACK_ARRAY] = {0};
+ 		int size = 3;
+@@ -2410,7 +2412,7 @@ static PyObject *BPy_FloatProperty(PyObject *self, PyObject *args, PyObject *kw)
+ 		                               "step", "precision", "options", "subtype",
+ 		                               "unit", "update", "get", "set", NULL};
+ 		const char *id = NULL, *name = NULL, *description = "";
+-		int id_len;
++		Py_ssize_t id_len;
+ 		float min = -FLT_MAX, max = FLT_MAX, soft_min = -FLT_MAX, soft_max = FLT_MAX, step = 3, def = 0.0f;
+ 		int precision = 2;
+ 		PropertyRNA *prop;
+@@ -2521,7 +2523,7 @@ static PyObject *BPy_FloatVectorProperty(PyObject *self, PyObject *args, PyObjec
+ 		                               "step", "precision", "options", "subtype",
+ 		                               "unit", "size", "update", "get", "set", NULL};
+ 		const char *id = NULL, *name = NULL, *description = "";
+-		int id_len;
++		Py_ssize_t id_len;
+ 		float min = -FLT_MAX, max = FLT_MAX, soft_min = -FLT_MAX, soft_max = FLT_MAX, step = 3;
+ 		float def[PYRNA_STACK_ARRAY] = {0.0f};
+ 		int precision = 2, size = 3;
+@@ -2628,7 +2630,7 @@ static PyObject *BPy_StringProperty(PyObject *self, PyObject *args, PyObject *kw
+ 		static const char *kwlist[] = {"attr", "name", "description", "default",
+ 		                               "maxlen", "options", "subtype", "update", "get", "set", NULL};
+ 		const char *id = NULL, *name = NULL, *description = "", *def = "";
+-		int id_len;
++		Py_ssize_t id_len;
+ 		int maxlen = 0;
+ 		PropertyRNA *prop;
+ 		PyObject *pyopts = NULL;
+@@ -2738,7 +2740,7 @@ static PyObject *BPy_EnumProperty(PyObject *self, PyObject *args, PyObject *kw)
+ 		                               "options", "update", "get", "set", NULL};
+ 		const char *id = NULL, *name = NULL, *description = "";
+ 		PyObject *def = NULL;
+-		int id_len;
++		Py_ssize_t id_len;
+ 		int defvalue = 0;
+ 		PyObject *items, *items_fast;
+ 		EnumPropertyItem *eitems;
+@@ -2886,7 +2888,7 @@ PyObject *BPy_PointerProperty(PyObject *self, PyObject *args, PyObject *kw)
+ 	if (srna) {
+ 		static const char *kwlist[] = {"attr", "type", "name", "description", "options", "poll", "update", NULL};
+ 		const char *id = NULL, *name = NULL, *description = "";
+-		int id_len;
++		Py_ssize_t id_len;
+ 		PropertyRNA *prop;
+ 		StructRNA *ptype;
+ 		PyObject *type = Py_None;
+@@ -2960,7 +2962,7 @@ PyObject *BPy_CollectionProperty(PyObject *self, PyObject *args, PyObject *kw)
+ 	if (srna) {
+ 		static const char *kwlist[] = {"attr", "type", "name", "description", "options", NULL};
+ 		const char *id = NULL, *name = NULL, *description = "";
+-		int id_len;
++		Py_ssize_t id_len;
+ 		PropertyRNA *prop;
+ 		StructRNA *ptype;
+ 		PyObject *type = Py_None;
+diff --git a/blender-2.79b/source/blender/python/intern/bpy_rna.c b/blender-2.79b/source/blender/python/intern/bpy_rna.c
+index 832a872..b473398 100644
+--- a/blender-2.79b/source/blender/python/intern/bpy_rna.c
++++ b/blender-2.79b/source/blender/python/intern/bpy_rna.c
+@@ -5647,7 +5647,7 @@ PyTypeObject pyrna_struct_meta_idprop_Type = {
+ 	0,                          /* tp_itemsize */
+ 	/* methods */
+ 	NULL,                       /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* deprecated in python 3.0! */
+@@ -5729,7 +5729,7 @@ PyTypeObject pyrna_struct_Type = {
+ 	0,                          /* tp_itemsize */
+ 	/* methods */
+ 	(destructor) pyrna_struct_dealloc, /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* DEPRECATED in python 3.0! */
+@@ -5818,7 +5818,7 @@ PyTypeObject pyrna_prop_Type = {
+ 	0,                          /* tp_itemsize */
+ 	/* methods */
+ 	(destructor) pyrna_prop_dealloc, /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* DEPRECATED in python 3.0! */
+@@ -5902,7 +5902,7 @@ PyTypeObject pyrna_prop_array_Type = {
+ 	0,                          /* tp_itemsize */
+ 	/* methods */
+ 	(destructor)pyrna_prop_array_dealloc, /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* DEPRECATED in python 3.0! */
+@@ -5985,7 +5985,7 @@ PyTypeObject pyrna_prop_collection_Type = {
+ 	0,                          /* tp_itemsize */
+ 	/* methods */
+ 	(destructor)pyrna_prop_dealloc, /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* DEPRECATED in python 3.0! */
+@@ -6070,7 +6070,7 @@ static PyTypeObject pyrna_prop_collection_idprop_Type = {
+ 	0,                          /* tp_itemsize */
+ 	/* methods */
+ 	(destructor)pyrna_prop_dealloc, /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* DEPRECATED in python 3.0! */
+@@ -6155,7 +6155,7 @@ PyTypeObject pyrna_func_Type = {
+ 	0,                          /* tp_itemsize */
+ 	/* methods */
+ 	NULL,                       /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* DEPRECATED in python 3.0! */
+@@ -6251,7 +6251,7 @@ static PyTypeObject pyrna_prop_collection_iter_Type = {
+ 	0,                          /* tp_itemsize */
+ 	/* methods */
+ 	(destructor)pyrna_prop_collection_iter_dealloc, /* tp_dealloc */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,                       /* tp_compare */ /* DEPRECATED in python 3.0! */
+diff --git a/blender-2.79b/source/blender/python/intern/gpu.c b/blender-2.79b/source/blender/python/intern/gpu.c
+index 48230a7..25016c5 100644
+--- a/blender-2.79b/source/blender/python/intern/gpu.c
++++ b/blender-2.79b/source/blender/python/intern/gpu.c
+@@ -323,7 +323,7 @@ PyObject *GPU_initPython(void)
+ {
+ 	PyObject *module;
+ 	PyObject *submodule;
+-	PyObject *sys_modules = PyThreadState_GET()->interp->modules;
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 
+ 	module = PyInit_gpu();
+ 
+@@ -334,7 +334,7 @@ PyObject *GPU_initPython(void)
+ 	PyDict_SetItem(sys_modules, PyModule_GetNameObject(submodule), submodule);
+ 	Py_INCREF(submodule);
+ 
+-	PyDict_SetItem(PyImport_GetModuleDict(), PyModule_GetNameObject(module), module);
++	PyDict_SetItem(sys_modules, PyModule_GetNameObject(module), module);
+ 	return module;
+ }
+ 
+diff --git a/blender-2.79b/source/blender/python/intern/gpu_offscreen.c b/blender-2.79b/source/blender/python/intern/gpu_offscreen.c
+index 7711ce1..d301599 100644
+--- a/blender-2.79b/source/blender/python/intern/gpu_offscreen.c
++++ b/blender-2.79b/source/blender/python/intern/gpu_offscreen.c
+@@ -293,7 +293,7 @@ static PyTypeObject BPy_GPUOffScreen_Type = {
+ 	0,                                           /* tp_itemsize */
+ 	/* methods */
+ 	(destructor)BPy_GPUOffScreen__tp_dealloc,      /* tp_dealloc */
+-	NULL,                                        /* tp_print */
++	(printfunc)NULL,                             /* tp_print */
+ 	NULL,                                        /* tp_getattr */
+ 	NULL,                                        /* tp_setattr */
+ 	NULL,                                        /* tp_compare */
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils.c b/blender-2.79b/source/blender/python/mathutils/mathutils.c
+index 96ae0a9..21d3624 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils.c
+@@ -622,7 +622,7 @@ PyMODINIT_FUNC PyInit_mathutils(void)
+ {
+ 	PyObject *mod;
+ 	PyObject *submodule;
+-	PyObject *sys_modules = PyThreadState_GET()->interp->modules;
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 
+ 	if (PyType_Ready(&vector_Type) < 0)
+ 		return NULL;
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils_Color.c b/blender-2.79b/source/blender/python/mathutils/mathutils_Color.c
+index 9997cd9..b12982e 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils_Color.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils_Color.c
+@@ -846,7 +846,7 @@ PyTypeObject color_Type = {
+ 	sizeof(ColorObject),            /* tp_basicsize */
+ 	0,                              /* tp_itemsize */
+ 	(destructor)BaseMathObject_dealloc,  /* tp_dealloc */
+-	NULL,                           /* tp_print */
++	(printfunc)NULL,                /* tp_print */
+ 	NULL,                           /* tp_getattr */
+ 	NULL,                           /* tp_setattr */
+ 	NULL,                           /* tp_compare */
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils_Euler.c b/blender-2.79b/source/blender/python/mathutils/mathutils_Euler.c
+index 9492b6d..494b5ea 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils_Euler.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils_Euler.c
+@@ -700,7 +700,7 @@ PyTypeObject euler_Type = {
+ 	sizeof(EulerObject),            /* tp_basicsize */
+ 	0,                              /* tp_itemsize */
+ 	(destructor)BaseMathObject_dealloc,     /* tp_dealloc */
+-	NULL,                           /* tp_print */
++	(printfunc)NULL,                /* tp_print */
+ 	NULL,                           /* tp_getattr */
+ 	NULL,                           /* tp_setattr */
+ 	NULL,                           /* tp_compare */
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils_Matrix.c b/blender-2.79b/source/blender/python/mathutils/mathutils_Matrix.c
+index e368e88..1b05aae 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils_Matrix.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils_Matrix.c
+@@ -2768,7 +2768,7 @@ PyTypeObject matrix_Type = {
+ 	sizeof(MatrixObject),               /*tp_basicsize*/
+ 	0,                                  /*tp_itemsize*/
+ 	(destructor)BaseMathObject_dealloc, /*tp_dealloc*/
+-	NULL,                               /*tp_print*/
++	(printfunc)NULL,                    /*tp_print*/
+ 	NULL,                               /*tp_getattr*/
+ 	NULL,                               /*tp_setattr*/
+ 	NULL,                               /*tp_compare*/
+@@ -3092,7 +3092,7 @@ PyTypeObject matrix_access_Type = {
+ 	sizeof(MatrixAccessObject),         /*tp_basicsize*/
+ 	0,                                  /*tp_itemsize*/
+ 	(destructor)MatrixAccess_dealloc,   /*tp_dealloc*/
+-	NULL,                               /*tp_print*/
++	(printfunc)NULL,                    /*tp_print*/
+ 	NULL,                               /*tp_getattr*/
+ 	NULL,                               /*tp_setattr*/
+ 	NULL,                               /*tp_compare*/
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils_Quaternion.c b/blender-2.79b/source/blender/python/mathutils/mathutils_Quaternion.c
+index d283c71..02aabd0 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils_Quaternion.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils_Quaternion.c
+@@ -1275,7 +1275,7 @@ PyTypeObject quaternion_Type = {
+ 	sizeof(QuaternionObject),           /* tp_basicsize */
+ 	0,                                  /* tp_itemsize */
+ 	(destructor)BaseMathObject_dealloc, /* tp_dealloc */
+-	NULL,                               /* tp_print */
++	(printfunc)NULL,                    /* tp_print */
+ 	NULL,                               /* tp_getattr */
+ 	NULL,                               /* tp_setattr */
+ 	NULL,                               /* tp_compare */
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils_Vector.c b/blender-2.79b/source/blender/python/mathutils/mathutils_Vector.c
+index afc8a30..af73aa2 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils_Vector.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils_Vector.c
+@@ -2887,7 +2887,7 @@ PyTypeObject vector_Type = {
+ 	/* Methods to implement standard operations */
+ 
+ 	(destructor) BaseMathObject_dealloc, /* destructor tp_dealloc; */
+-	NULL,                       /* printfunc tp_print; */
++	(printfunc)NULL,            /* printfunc tp_print; */
+ 	NULL,                       /* getattrfunc tp_getattr; */
+ 	NULL,                       /* setattrfunc tp_setattr; */
+ 	NULL,   /* cmpfunc tp_compare; */
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils_bvhtree.c b/blender-2.79b/source/blender/python/mathutils/mathutils_bvhtree.c
+index 30c0cda..c3b28e7 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils_bvhtree.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils_bvhtree.c
+@@ -1243,7 +1243,7 @@ PyTypeObject PyBVHTree_Type = {
+ 	0,                                           /* tp_itemsize */
+ 	/* methods */
+ 	(destructor)py_bvhtree__tp_dealloc,          /* tp_dealloc */
+-	NULL,                                        /* tp_print */
++	(printfunc)NULL,                             /* tp_print */
+ 	NULL,                                        /* tp_getattr */
+ 	NULL,                                        /* tp_setattr */
+ 	NULL,                                        /* tp_compare */
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils_kdtree.c b/blender-2.79b/source/blender/python/mathutils/mathutils_kdtree.c
+index ca66c19..2e36a08 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils_kdtree.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils_kdtree.c
+@@ -415,7 +415,7 @@ PyTypeObject PyKDTree_Type = {
+ 	0,                                           /* tp_itemsize */
+ 	/* methods */
+ 	(destructor)PyKDTree__tp_dealloc,            /* tp_dealloc */
+-	NULL,                                        /* tp_print */
++	(printfunc)NULL,                             /* tp_print */
+ 	NULL,                                        /* tp_getattr */
+ 	NULL,                                        /* tp_setattr */
+ 	NULL,                                        /* tp_compare */
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils_noise.c b/blender-2.79b/source/blender/python/mathutils/mathutils_noise.c
+index 143e51e..f9d128f 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils_noise.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils_noise.c
+@@ -842,16 +842,17 @@ PyMODINIT_FUNC PyInit_mathutils_noise(void)
+ {
+ 	PyObject *submodule = PyModule_Create(&M_Noise_module_def);
+ 	PyObject *item_types, *item_metrics;
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 
+ 	/* use current time as seed for random number generator by default */
+ 	setRndSeed(0);
+ 
+ 	PyModule_AddObject(submodule, "types", (item_types = PyInit_mathutils_noise_types()));
+-	PyDict_SetItemString(PyThreadState_GET()->interp->modules, "noise.types", item_types);
++	PyDict_SetItemString(sys_modules, "noise.types", item_types);
+ 	Py_INCREF(item_types);
+ 
+ 	PyModule_AddObject(submodule, "distance_metrics", (item_metrics = PyInit_mathutils_noise_metrics()));
+-	PyDict_SetItemString(PyThreadState_GET()->interp->modules, "noise.distance_metrics", item_metrics);
++	PyDict_SetItemString(sys_modules, "noise.distance_metrics", item_metrics);
+ 	Py_INCREF(item_metrics);
+ 
+ 	return submodule;
+diff --git a/blender-2.79b/source/gameengine/Ketsji/KX_PythonInit.cpp b/blender-2.79b/source/gameengine/Ketsji/KX_PythonInit.cpp
+index 97a7e16..71e610d 100644
+--- a/blender-2.79b/source/gameengine/Ketsji/KX_PythonInit.cpp
++++ b/blender-2.79b/source/gameengine/Ketsji/KX_PythonInit.cpp
+@@ -1569,7 +1569,7 @@ PyTypeObject PyRASOffScreen_Type = {
+ 	0,                                           /* tp_itemsize */
+ 	/* methods */
+ 	(destructor)PyRASOffScreen__tp_dealloc,      /* tp_dealloc */
+-	NULL,                                        /* tp_print */
++	(printfunc)NULL,                             /* tp_print */
+ 	NULL,                                        /* tp_getattr */
+ 	NULL,                                        /* tp_setattr */
+ 	NULL,                                        /* tp_compare */
+@@ -2239,7 +2239,7 @@ PyMODINIT_FUNC initBGE(void)
+ {
+ 	PyObject *mod;
+ 	PyObject *submodule;
+-	PyObject *sys_modules = PyThreadState_GET()->interp->modules;
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 	const char *mod_full;
+ 
+ 	mod = PyModule_Create(&BGE_module_def);

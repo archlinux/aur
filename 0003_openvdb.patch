@@ -1,0 +1,112 @@
+commit 5fbaf5a402b4e54b4cc9803c1da6ee01ffa939a4
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 15:13:10 2023 +0100
+
+    openvdb: compile with C++17 (openvdb 11)
+
+commit ffa4ddd68e586a7cce81a79e8fc95413268d73a7
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 15:09:21 2023 +0100
+
+    openvdb: "Cleanup: fix compiler warnings"
+    
+    Partially applied Blender upstream ref: 37889011070ff2ec52159690f652238d2b325185
+
+commit 73a16ea250d7cd8b46fc16b824a54d238de66f0d
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 15:03:43 2023 +0100
+
+    openvdb: "Build: add WITH_OPENVDB_3_ABI_COMPATIBLE option."
+    
+    Fully applied Blender upstream ref: 71d7d6cd8c431b7f4fac8d65a4eaedf3cff6c8f6
+
+diff --git a/blender-2.79b/CMakeLists.txt b/blender-2.79b/CMakeLists.txt
+index bfea2dd..6ad2480 100644
+--- a/blender-2.79b/CMakeLists.txt
++++ b/blender-2.79b/CMakeLists.txt
+@@ -98,6 +98,9 @@ cmake_policy(SET CMP0010 NEW)
+ # Input directories must have CMakeLists.txt
+ cmake_policy(SET CMP0014 NEW)
+ 
++# Silence draco warning on macOS, new policy works fine.
++cmake_policy(SET CMP0068 NEW)
++
+ #-----------------------------------------------------------------------------
+ # Load some macros.
+ include(build_files/cmake/macros.cmake)
+@@ -251,6 +254,8 @@ option(WITH_OPENSUBDIV    "Enable OpenSubdiv for surface subdivision" _init_OPEN
+ 
+ option(WITH_OPENVDB       "Enable features relying on OpenVDB" OFF)
+ option(WITH_OPENVDB_BLOSC "Enable blosc compression for OpenVDB, only enable if OpenVDB was built with blosc support" OFF)
++option(WITH_OPENVDB_3_ABI_COMPATIBLE "Assume OpenVDB library has been compiled with version 3 ABI compatibility" OFF)
++mark_as_advanced(WITH_OPENVDB_3_ABI_COMPATIBLE)
+ 
+ # GHOST Windowing Library Options
+ option(WITH_GHOST_DEBUG   "Enable debugging output for the GHOST library" OFF)
+diff --git a/blender-2.79b/intern/opensubdiv/CMakeLists.txt b/blender-2.79b/intern/opensubdiv/CMakeLists.txt
+index 876b5c0..bf23acf 100644
+--- a/blender-2.79b/intern/opensubdiv/CMakeLists.txt
++++ b/blender-2.79b/intern/opensubdiv/CMakeLists.txt
+@@ -69,6 +69,7 @@ data_to_c_simple(gpu_shader_opensubdiv_geometry.glsl SRC)
+ data_to_c_simple(gpu_shader_opensubdiv_fragment.glsl SRC)
+ 
+ add_definitions(-DGLEW_STATIC)
++add_definitions(-DOSD_USES_GLEW)
+ 
+ if(WIN32)
+ 	add_definitions(-DNOMINMAX)
+diff --git a/blender-2.79b/intern/openvdb/CMakeLists.txt b/blender-2.79b/intern/openvdb/CMakeLists.txt
+index e0ecdb5..1695dc6 100644
+--- a/blender-2.79b/intern/openvdb/CMakeLists.txt
++++ b/blender-2.79b/intern/openvdb/CMakeLists.txt
+@@ -23,6 +23,8 @@
+ #
+ # ***** END GPL LICENSE BLOCK *****
+ 
++set(CMAKE_CXX_STANDARD 17)
++
+ set(INC
+ 	.
+ 	intern
+@@ -40,6 +42,12 @@ if(WITH_OPENVDB)
+ 		-DWITH_OPENVDB
+ 	)
+ 
++	if(WITH_OPENVDB_3_ABI_COMPATIBLE)
++		add_definitions(
++			-DOPENVDB_3_ABI_COMPATIBLE
++		)
++	endif()
++
+ 	list(APPEND INC_SYS
+ 		${BOOST_INCLUDE_DIR}
+ 		${TBB_INCLUDE_DIRS}
+diff --git a/blender-2.79b/intern/openvdb/intern/openvdb_writer.cc b/blender-2.79b/intern/openvdb/intern/openvdb_writer.cc
+index e886c5a..bedcfe6 100644
+--- a/blender-2.79b/intern/openvdb/intern/openvdb_writer.cc
++++ b/blender-2.79b/intern/openvdb/intern/openvdb_writer.cc
+@@ -45,7 +45,7 @@ void OpenVDBWriter::insert(const openvdb::GridBase::Ptr &grid)
+ 
+ void OpenVDBWriter::insert(const openvdb::GridBase &grid)
+ {
+-#if (OPENVDB_LIBRARY_MAJOR_VERSION_NUMBER == 3)
++#if (OPENVDB_LIBRARY_MAJOR_VERSION_NUMBER <= 3) || defined(OPENVDB_3_ABI_COMPATIBLE)
+ 	m_grids->push_back(grid.copyGrid());
+ #else
+ 	m_grids->push_back(grid.copyGridWithNewTree());
+diff --git a/blender-2.79b/intern/openvdb/openvdb_util.cc b/blender-2.79b/intern/openvdb/openvdb_util.cc
+index d187f55..a09122d 100644
+--- a/blender-2.79b/intern/openvdb/openvdb_util.cc
++++ b/blender-2.79b/intern/openvdb/openvdb_util.cc
+@@ -34,5 +34,10 @@ ScopeTimer::ScopeTimer(const std::string &message)
+ 
+ ScopeTimer::~ScopeTimer()
+ {
+-	std::printf("%s: %fms\n", m_message.c_str(), m_timer.delta());
++#if OPENVDB_LIBRARY_MAJOR_VERSION_NUMBER >= 7
++	double delta = m_timer.milliseconds();
++#else
++	double delta = m_timer.delta(); /* Deprecated in OpenVDB 7. */
++#endif
++	std::printf("%s: %fms\n", m_message.c_str(), delta);
+ }

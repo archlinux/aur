@@ -1,0 +1,229 @@
+commit cef9646dbecd745b70f10501477fd7497e874f19
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sun Dec 17 01:22:11 2023 +0100
+
+    python3.9: "Fix crash starting Blender with Python 3.9"
+    
+    Fully applied Blender upstream ref: 0133bcaf38f6ecb5d6937c9b762026cc452720de
+
+commit 500ea8f791406747ec430e654cabe8a5a90f5dad
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sun Dec 17 01:07:33 2023 +0100
+
+    python3.9: "Fix T81688: BPY_thread_save crashes with Python 3.9"
+    
+    Fully applied Blender upstream ref: 5edba9b42f684bf8b99894bb6988e7f46180e12c
+
+commit 1a02a89e57a5fcd61da7cf7c2949250ccc88c6bf
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 02:10:10 2023 +0100
+
+    python3.9: "Python: support building again version 3.9 (unreleased)"
+    
+    Fully applied Blender upstream ref: 56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f
+
+diff --git a/blender-2.79b/source/blender/python/generic/bpy_threads.c b/blender-2.79b/source/blender/python/generic/bpy_threads.c
+index fbc1456..628e28f 100644
+--- a/blender-2.79b/source/blender/python/generic/bpy_threads.c
++++ b/blender-2.79b/source/blender/python/generic/bpy_threads.c
+@@ -35,14 +35,11 @@
+ /* analogue of PyEval_SaveThread() */
+ BPy_ThreadStatePtr BPY_thread_save(void)
+ {
+-	PyThreadState *tstate = PyThreadState_Swap(NULL);
+-	/* note: tstate can be NULL when quitting Blender */
+-
+-	if (tstate && PyEval_ThreadsInitialized()) {
+-		PyEval_ReleaseLock();
++	/* The thread-state can be NULL when quitting Blender. */
++	if (_PyThreadState_UncheckedGet()) {
++		return (BPy_ThreadStatePtr)PyEval_SaveThread();
+ 	}
+-
+-	return (BPy_ThreadStatePtr)tstate;
++	return NULL;
+ }
+ 
+ /* analogue of PyEval_RestoreThread() */
+diff --git a/blender-2.79b/source/blender/python/intern/bpy_rna.c b/blender-2.79b/source/blender/python/intern/bpy_rna.c
+index b473398..26a4351 100644
+--- a/blender-2.79b/source/blender/python/intern/bpy_rna.c
++++ b/blender-2.79b/source/blender/python/intern/bpy_rna.c
+@@ -7321,13 +7321,15 @@ static int bpy_class_validate_recursive(PointerRNA *dummyptr, StructRNA *srna, v
+ 			PyErr_Clear();
+ 		}
+ 		else {
+-			Py_DECREF(item); /* no need to keep a ref, the class owns it (technically we should keep a ref but...) */
++			/* Store original so we can decrement it's reference before returning. */
++			PyObject *item_orig = item;
+ 			if (is_staticmethod) {
+ 				if (PyMethod_Check(item) == 0) {
+ 					PyErr_Format(PyExc_TypeError,
+ 					             "expected %.200s, %.200s class \"%.200s\" "
+ 					             "attribute to be a static/class method, not a %.200s",
+ 					             class_type, py_class_name, RNA_function_identifier(func), Py_TYPE(item)->tp_name);
++					Py_DECREF(item_orig);
+ 					return -1;
+ 				}
+ 				item = ((PyMethodObject *)item)->im_func;
+@@ -7338,6 +7340,7 @@ static int bpy_class_validate_recursive(PointerRNA *dummyptr, StructRNA *srna, v
+ 					             "expected %.200s, %.200s class \"%.200s\" "
+ 					             "attribute to be a function, not a %.200s",
+ 					             class_type, py_class_name, RNA_function_identifier(func), Py_TYPE(item)->tp_name);
++					Py_DECREF(item_orig);
+ 					return -1;
+ 				}
+ 			}
+@@ -7369,9 +7372,11 @@ static int bpy_class_validate_recursive(PointerRNA *dummyptr, StructRNA *srna, v
+ 						             class_type, py_class_name, RNA_function_identifier(func),
+ 						             func_arg_count, arg_count);
+ 					}
++					Py_DECREF(item_orig);
+ 					return -1;
+ 				}
+ 			}
++			Py_DECREF(item_orig);
+ 		}
+ 	}
+ 
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils_Matrix.c b/blender-2.79b/source/blender/python/mathutils/mathutils_Matrix.c
+index 1b05aae..0805ab1 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils_Matrix.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils_Matrix.c
+@@ -48,7 +48,8 @@ static PyObject *Matrix_copy_notest(MatrixObject *self, const float *matrix);
+ static PyObject *Matrix_copy(MatrixObject *self);
+ static PyObject *Matrix_deepcopy(MatrixObject *self, PyObject *args);
+ static int Matrix_ass_slice(MatrixObject *self, int begin, int end, PyObject *value);
+-static PyObject *matrix__apply_to_copy(PyNoArgsFunction matrix_func, MatrixObject *self);
++static PyObject *matrix__apply_to_copy(PyObject *(*matrix_func)(MatrixObject *),
++									   MatrixObject *self);
+ static PyObject *MatrixAccess_CreatePyObject(MatrixObject *matrix, const eMatrixAccess_t type);
+ 
+ static int matrix_row_vector_check(MatrixObject *mat, VectorObject *vec, int row)
+@@ -385,14 +386,15 @@ static PyObject *Matrix_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+ 	return NULL;
+ }
+ 
+-static PyObject *matrix__apply_to_copy(PyNoArgsFunction matrix_func, MatrixObject *self)
++static PyObject *matrix__apply_to_copy(PyObject *(*matrix_func)(MatrixObject *),
++									   MatrixObject *self)
+ {
+ 	PyObject *ret = Matrix_copy(self);
+ 	if (ret) {
+-		PyObject *ret_dummy = matrix_func(ret);
++		PyObject *ret_dummy = matrix_func((MatrixObject *)ret);
+ 		if (ret_dummy) {
+ 			Py_DECREF(ret_dummy);
+-			return (PyObject *)ret;
++			return ret;
+ 		}
+ 		else { /* error */
+ 			Py_DECREF(ret);
+@@ -1598,7 +1600,7 @@ PyDoc_STRVAR(Matrix_adjugated_doc,
+ );
+ static PyObject *Matrix_adjugated(MatrixObject *self)
+ {
+-	return matrix__apply_to_copy((PyNoArgsFunction)Matrix_adjugate, self);
++	return matrix__apply_to_copy(Matrix_adjugate, self);
+ }
+ 
+ PyDoc_STRVAR(Matrix_rotate_doc,
+@@ -1795,7 +1797,7 @@ PyDoc_STRVAR(Matrix_transposed_doc,
+ );
+ static PyObject *Matrix_transposed(MatrixObject *self)
+ {
+-	return matrix__apply_to_copy((PyNoArgsFunction)Matrix_transpose, self);
++	return matrix__apply_to_copy(Matrix_transpose, self);
+ }
+ 
+ /*---------------------------matrix.normalize() ------------------*/
+@@ -1842,7 +1844,7 @@ PyDoc_STRVAR(Matrix_normalized_doc,
+ );
+ static PyObject *Matrix_normalized(MatrixObject *self)
+ {
+-	return matrix__apply_to_copy((PyNoArgsFunction)Matrix_normalize, self);
++	return matrix__apply_to_copy(Matrix_normalize, self);
+ }
+ 
+ /*---------------------------matrix.zero() -----------------------*/
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils_Quaternion.c b/blender-2.79b/source/blender/python/mathutils/mathutils_Quaternion.c
+index 02aabd0..c8eeaa2 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils_Quaternion.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils_Quaternion.c
+@@ -40,7 +40,8 @@
+ 
+ #define QUAT_SIZE 4
+ 
+-static PyObject *quat__apply_to_copy(PyNoArgsFunction quat_func, QuaternionObject *self);
++static PyObject *quat__apply_to_copy(PyObject *(*quat_func)(QuaternionObject *),
++									 QuaternionObject *self);
+ static void      quat__axis_angle_sanitize(float axis[3], float *angle);
+ static PyObject *Quaternion_copy(QuaternionObject *self);
+ static PyObject *Quaternion_deepcopy(QuaternionObject *self, PyObject *args);
+@@ -381,7 +382,7 @@ PyDoc_STRVAR(Quaternion_normalized_doc,
+ );
+ static PyObject *Quaternion_normalized(QuaternionObject *self)
+ {
+-	return quat__apply_to_copy((PyNoArgsFunction)Quaternion_normalize, self);
++	return quat__apply_to_copy(Quaternion_normalize, self);
+ }
+ 
+ PyDoc_STRVAR(Quaternion_invert_doc,
+@@ -409,7 +410,7 @@ PyDoc_STRVAR(Quaternion_inverted_doc,
+ );
+ static PyObject *Quaternion_inverted(QuaternionObject *self)
+ {
+-	return quat__apply_to_copy((PyNoArgsFunction)Quaternion_invert, self);
++	return quat__apply_to_copy(Quaternion_invert, self);
+ }
+ 
+ PyDoc_STRVAR(Quaternion_identity_doc,
+@@ -473,7 +474,7 @@ PyDoc_STRVAR(Quaternion_conjugated_doc,
+ );
+ static PyObject *Quaternion_conjugated(QuaternionObject *self)
+ {
+-	return quat__apply_to_copy((PyNoArgsFunction)Quaternion_conjugate, self);
++	return quat__apply_to_copy(Quaternion_conjugate, self);
+ }
+ 
+ PyDoc_STRVAR(Quaternion_copy_doc,
+@@ -1146,10 +1147,11 @@ static PyObject *Quaternion_new(PyTypeObject *type, PyObject *args, PyObject *kw
+ 	return Quaternion_CreatePyObject(quat, type);
+ }
+ 
+-static PyObject *quat__apply_to_copy(PyNoArgsFunction quat_func, QuaternionObject *self)
++static PyObject *quat__apply_to_copy(PyObject *(*quat_func)(QuaternionObject *),
++									 QuaternionObject *self)
+ {
+ 	PyObject *ret = Quaternion_copy(self);
+-	PyObject *ret_dummy = quat_func(ret);
++	PyObject *ret_dummy = quat_func((QuaternionObject *)ret);
+ 	if (ret_dummy) {
+ 		Py_DECREF(ret_dummy);
+ 		return ret;
+diff --git a/blender-2.79b/source/blender/python/mathutils/mathutils_Vector.c b/blender-2.79b/source/blender/python/mathutils/mathutils_Vector.c
+index af73aa2..18ecf2f 100644
+--- a/blender-2.79b/source/blender/python/mathutils/mathutils_Vector.c
++++ b/blender-2.79b/source/blender/python/mathutils/mathutils_Vector.c
+@@ -92,10 +92,10 @@ static PyObject *Vector_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+ 	return Vector_CreatePyObject_alloc(vec, size, type);
+ }
+ 
+-static PyObject *vec__apply_to_copy(PyNoArgsFunction vec_func, VectorObject *self)
++static PyObject *vec__apply_to_copy(PyObject *(*vec_func)(VectorObject *), VectorObject *self)
+ {
+ 	PyObject *ret = Vector_copy(self);
+-	PyObject *ret_dummy = vec_func(ret);
++	PyObject *ret_dummy = vec_func((VectorObject *)ret);
+ 	if (ret_dummy) {
+ 		Py_DECREF(ret_dummy);
+ 		return (PyObject *)ret;
+@@ -378,7 +378,7 @@ PyDoc_STRVAR(Vector_normalized_doc,
+ );
+ static PyObject *Vector_normalized(VectorObject *self)
+ {
+-	return vec__apply_to_copy((PyNoArgsFunction)Vector_normalize, self);
++	return vec__apply_to_copy(Vector_normalize, self);
+ }
+ 
+ PyDoc_STRVAR(Vector_resize_doc,

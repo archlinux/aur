@@ -1,0 +1,66 @@
+commit 00f84e4cb1efc02149d9c04df79048c04351e46a
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sun Dec 17 01:13:47 2023 +0100
+
+    python3.7: "Cleanup: remove deprecated PyEval_InitThreads use"
+    
+    Fully applied Blender upstream ref: d377b1fe762c24ee74805ea8c1f666f121399698
+
+commit a6323887a2db1acd10bd0fd1539fb8c061efc7f3
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 17:51:18 2023 +0100
+
+    python3.7: "Fix PyRNA class registration w/ Python 3.7"
+    
+    Fully applied Blender upstream ref: 1db47a2ccd1e68994bf8140eba6cc2a26a2bc91f
+
+diff --git a/blender-2.79b/source/blender/python/intern/bpy_interface.c b/blender-2.79b/source/blender/python/intern/bpy_interface.c
+index 20cfd36..6077418 100644
+--- a/blender-2.79b/source/blender/python/intern/bpy_interface.c
++++ b/blender-2.79b/source/blender/python/intern/bpy_interface.c
+@@ -268,6 +268,7 @@ void BPY_python_start(int argc, const char **argv)
+ 
+ 	Py_FrozenFlag = 1;
+ 
++	/* Initialize Python (also acquires lock). */
+ 	Py_Initialize();
+ 
+ 	// PySys_SetArgv(argc, argv);  /* broken in py3, not a huge deal */
+@@ -284,9 +285,7 @@ void BPY_python_start(int argc, const char **argv)
+ 		PySys_SetObject("argv", py_argv);
+ 		Py_DECREF(py_argv);
+ 	}
+-	
+-	/* Initialize thread support (also acquires lock) */
+-	PyEval_InitThreads();
++
+ #else
+ 	(void)argc;
+ 	(void)argv;
+diff --git a/blender-2.79b/source/blender/python/intern/bpy_rna.c b/blender-2.79b/source/blender/python/intern/bpy_rna.c
+index 0d3781c..832a872 100644
+--- a/blender-2.79b/source/blender/python/intern/bpy_rna.c
++++ b/blender-2.79b/source/blender/python/intern/bpy_rna.c
+@@ -7385,10 +7385,12 @@ static int bpy_class_validate_recursive(PointerRNA *dummyptr, StructRNA *srna, v
+ 		if (!(flag & PROP_REGISTER))
+ 			continue;
+ 
++		/* TODO(campbell): Use Python3.7x _PyObject_LookupAttr(), also in the macro below. */
+ 		identifier = RNA_property_identifier(prop);
+ 		item = PyObject_GetAttrString(py_class, identifier);
+ 
+ 		if (item == NULL) {
++			PyErr_Clear();
+ 			/* Sneaky workaround to use the class name as the bl_idname */
+ 
+ #define     BPY_REPLACEMENT_STRING(rna_attr, py_attr)                         \
+@@ -7404,6 +7406,9 @@ static int bpy_class_validate_recursive(PointerRNA *dummyptr, StructRNA *srna, v
+ 					}                                                         \
+ 					Py_DECREF(item);                                          \
+ 				}                                                             \
++				else {                                                        \
++					PyErr_Clear();                                            \
++				}                                                             \
+ 			}  /* intentionally allow else here */
+ 
+ 			if (false) {}  /* needed for macro */

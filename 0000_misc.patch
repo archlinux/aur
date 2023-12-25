@@ -1,0 +1,394 @@
+commit 1a734229a8ed6f35f953349bc9bc09cb37d2f5c8
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sun Dec 17 18:29:28 2023 +0100
+
+    Fix some compiler warnings (invalid header definitions)
+
+commit 5aa7fe5e858dbd5adfc6bf8fb31549050f9cacc1
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sun Dec 17 03:01:40 2023 +0100
+
+    "Cleanup: remove use of deprecated uint32, utin16 types"
+    
+    Fully applied Blender upstream ref: e12a8aedce52a05a635a4a70721a33352fe5de58
+
+commit ebed5793e447501c1d6d60b643f6e6cd3a6ca0b0
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sun Dec 17 02:57:35 2023 +0100
+
+    misc: "Cleanup: pass arguments as const"
+    
+    Partially applied Blender upstream ref: 357acd1d5053b2ff9c8a09b9b6ad2e170c10b875
+
+commit 6d64717fdb0e3d74af99ee824fe364619424cd0b
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sun Dec 17 01:03:16 2023 +0100
+
+    "Cleanup: compiler warnings, use const"
+    
+    Partially applied Blender upstream ref: e159ec8bc1871da8766b319fcda5c76eff1c0a48
+
+commit e586b0156029339b3d651746ff27f818f4ab22d6
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Fri Dec 15 22:43:37 2023 +0100
+
+    inter: fix missing include (could not find std::cout)
+    
+    "error: ‘cout’ is not a member of ‘std’"
+
+commit 06a03f283d71a7eb6a1595476fb186638c6f1141
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Fri Dec 15 22:35:50 2023 +0100
+
+    intern: "Added extra "const" to satisfy the strict clang version in Xcode 9"
+    
+    Fully applied Blender upstream ref: ee30a4381f8989ed9f39b4baae9f74e45c9dcdc9
+
+commit a7bfbf39c45757df1fc866418595e48f9d99c242
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Fri Dec 15 22:28:33 2023 +0100
+
+    intern: "Fix for GCC9 new OpenMP data sharing"
+    
+    Applied whole Blender upstream ref: d780409156e838e366f4da5126e6aeab44174d62
+
+diff --git a/blender-2.79b/intern/elbeem/intern/solver_main.cpp b/blender-2.79b/intern/elbeem/intern/solver_main.cpp
+index 68f7c04..514087b 100644
+--- a/blender-2.79b/intern/elbeem/intern/solver_main.cpp
++++ b/blender-2.79b/intern/elbeem/intern/solver_main.cpp
+@@ -381,7 +381,7 @@ LbmFsgrSolver::mainLoop(const int lev)
+ 	GRID_REGION_INIT();
+ #if PARALLEL==1
+ 	const int gDebugLevel = ::gDebugLevel;
+-#pragma omp parallel default(none) num_threads(mNumOMPThreads) \
++#pragma omp parallel num_threads(mNumOMPThreads) \
+   reduction(+: \
+ 	  calcCurrentMass,calcCurrentVolume, \
+ 		calcCellsFilled,calcCellsEmptied, \
+@@ -1126,7 +1126,7 @@ LbmFsgrSolver::preinitGrids()
+ 		GRID_REGION_INIT();
+ #if PARALLEL==1
+ 	const int gDebugLevel = ::gDebugLevel;
+-#pragma omp parallel default(none) num_threads(mNumOMPThreads) \
++#pragma omp parallel num_threads(mNumOMPThreads) \
+   reduction(+: \
+ 	  calcCurrentMass,calcCurrentVolume, \
+ 		calcCellsFilled,calcCellsEmptied, \
+@@ -1164,7 +1164,7 @@ LbmFsgrSolver::standingFluidPreinit()
+ 	GRID_REGION_INIT();
+ #if PARALLEL==1
+ 	const int gDebugLevel = ::gDebugLevel;
+-#pragma omp parallel default(none) num_threads(mNumOMPThreads) \
++#pragma omp parallel num_threads(mNumOMPThreads) \
+   reduction(+: \
+ 	  calcCurrentMass,calcCurrentVolume, \
+ 		calcCellsFilled,calcCellsEmptied, \
+diff --git a/blender-2.79b/intern/itasc/kdl/tree.hpp b/blender-2.79b/intern/itasc/kdl/tree.hpp
+index c8a253f..bd35f82 100644
+--- a/blender-2.79b/intern/itasc/kdl/tree.hpp
++++ b/blender-2.79b/intern/itasc/kdl/tree.hpp
+@@ -34,7 +34,7 @@ namespace KDL
+     //Forward declaration
+     class TreeElement;
+     // Eigen allocator is needed for alignment of Eigen data types
+-    typedef std::map<std::string,TreeElement, std::less<std::string>, Eigen::aligned_allocator<std::pair<std::string, TreeElement> > > SegmentMap;
++    typedef std::map<std::string,TreeElement, std::less<std::string>, Eigen::aligned_allocator<std::pair<const std::string, TreeElement> > > SegmentMap;
+ 
+     class TreeElement
+     {
+diff --git a/blender-2.79b/intern/locale/boost_locale_wrapper.cpp b/blender-2.79b/intern/locale/boost_locale_wrapper.cpp
+index 0707c0d..580c7a4 100644
+--- a/blender-2.79b/intern/locale/boost_locale_wrapper.cpp
++++ b/blender-2.79b/intern/locale/boost_locale_wrapper.cpp
+@@ -27,6 +27,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <iostream> // std::cout
+ #include <boost/locale.hpp>
+ 
+ #include "boost_locale_wrapper.h"
+diff --git a/blender-2.79b/intern/mikktspace/mikktspace.c b/blender-2.79b/intern/mikktspace/mikktspace.c
+index 99e945d..67f0c2b 100644
+--- a/blender-2.79b/intern/mikktspace/mikktspace.c
++++ b/blender-2.79b/intern/mikktspace/mikktspace.c
+@@ -1193,7 +1193,7 @@ static tbool AssignRecur(const int piTriListIn[], STriInfo psTriInfos[],
+ 
+ static tbool CompareSubGroups(const SSubGroup * pg1, const SSubGroup * pg2);
+ static void QuickSort(int* pSortBuffer, int iLeft, int iRight, unsigned int uSeed);
+-static STSpace EvalTspace(int face_indices[], const int iFaces, const int piTriListIn[], const STriInfo pTriInfos[], const SMikkTSpaceContext * pContext, const int iVertexRepresentitive);
++static STSpace EvalTspace(const int face_indices[], const int iFaces, const int piTriListIn[], const STriInfo pTriInfos[], const SMikkTSpaceContext * pContext, const int iVertexRepresentitive);
+ 
+ static tbool GenerateTSpaces(STSpace psTspace[], const STriInfo pTriInfos[], const SGroup pGroups[],
+                              const int iNrActiveGroups, const int piTriListIn[], const float fThresCos,
+@@ -1364,7 +1364,7 @@ static tbool GenerateTSpaces(STSpace psTspace[], const STriInfo pTriInfos[], con
+ 	return TTRUE;
+ }
+ 
+-static STSpace EvalTspace(int face_indices[], const int iFaces, const int piTriListIn[], const STriInfo pTriInfos[],
++static STSpace EvalTspace(const int face_indices[], const int iFaces, const int piTriListIn[], const STriInfo pTriInfos[],
+                           const SMikkTSpaceContext * pContext, const int iVertexRepresentitive)
+ {
+ 	STSpace res;
+diff --git a/blender-2.79b/source/blender/blenlib/BLI_math_geom.h b/blender-2.79b/source/blender/blenlib/BLI_math_geom.h
+index 0fef849..7e06fff 100644
+--- a/blender-2.79b/source/blender/blenlib/BLI_math_geom.h
++++ b/blender-2.79b/source/blender/blenlib/BLI_math_geom.h
+@@ -429,9 +429,9 @@ MINLINE void add_sh_shsh(float r[9], const float a[9], const float b[9]);
+ MINLINE float dot_shsh(const float a[9], const float b[9]);
+ 
+ MINLINE float eval_shv3(float r[9], const float v[3]);
+-MINLINE float diffuse_shv3(float r[9], const float v[3]);
++MINLINE float diffuse_shv3(const float r[9], const float v[3]);
+ MINLINE void vec_fac_to_sh(float r[9], const float v[3], const float f);
+-MINLINE void madd_sh_shfl(float r[9], const float sh[3], const float f);
++MINLINE void madd_sh_shfl(float r[9], const float sh[9], const float f);
+ 
+ /********************************* Form Factor *******************************/
+ 
+diff --git a/blender-2.79b/source/blender/blenlib/BLI_math_vector.h b/blender-2.79b/source/blender/blenlib/BLI_math_vector.h
+index 4fdb339..c5f286f 100644
+--- a/blender-2.79b/source/blender/blenlib/BLI_math_vector.h
++++ b/blender-2.79b/source/blender/blenlib/BLI_math_vector.h
+@@ -120,16 +120,16 @@ MINLINE void mul_v2_v2(float r[2], const float a[2]);
+ MINLINE void mul_v3_v3(float r[3], const float a[3]);
+ MINLINE void mul_v3_v3v3(float r[3], const float a[3], const float b[3]);
+ MINLINE void mul_v4_fl(float r[4], float f);
+-MINLINE void mul_v4_v4fl(float r[3], const float a[3], float f);
++MINLINE void mul_v4_v4fl(float r[4], const float a[3], float f);
+ MINLINE void mul_v2_v2_cw(float r[2], const float mat[2], const float vec[2]);
+ MINLINE void mul_v2_v2_ccw(float r[2], const float mat[2], const float vec[2]);
+ MINLINE float mul_project_m4_v3_zfac(float mat[4][4], const float co[3]) ATTR_WARN_UNUSED_RESULT;
+-MINLINE float dot_m3_v3_row_x(float M[3][3], const float a[3]) ATTR_WARN_UNUSED_RESULT;
+-MINLINE float dot_m3_v3_row_y(float M[3][3], const float a[3]) ATTR_WARN_UNUSED_RESULT;
+-MINLINE float dot_m3_v3_row_z(float M[3][3], const float a[3]) ATTR_WARN_UNUSED_RESULT;
+-MINLINE float dot_m4_v3_row_x(float M[4][4], const float a[3]) ATTR_WARN_UNUSED_RESULT;
+-MINLINE float dot_m4_v3_row_y(float M[4][4], const float a[3]) ATTR_WARN_UNUSED_RESULT;
+-MINLINE float dot_m4_v3_row_z(float M[4][4], const float a[3]) ATTR_WARN_UNUSED_RESULT;
++MINLINE float dot_m3_v3_row_x(const float M[3][3], const float a[3]) ATTR_WARN_UNUSED_RESULT;
++MINLINE float dot_m3_v3_row_y(const float M[3][3], const float a[3]) ATTR_WARN_UNUSED_RESULT;
++MINLINE float dot_m3_v3_row_z(const float M[3][3], const float a[3]) ATTR_WARN_UNUSED_RESULT;
++MINLINE float dot_m4_v3_row_x(const float M[4][4], const float a[3]) ATTR_WARN_UNUSED_RESULT;
++MINLINE float dot_m4_v3_row_y(const float M[4][4], const float a[3]) ATTR_WARN_UNUSED_RESULT;
++MINLINE float dot_m4_v3_row_z(const float M[4][4], const float a[3]) ATTR_WARN_UNUSED_RESULT;
+ 
+ MINLINE void madd_v2_v2fl(float r[2], const float a[2], float f);
+ MINLINE void madd_v3_v3fl(float r[3], const float a[3], float f);
+@@ -145,7 +145,7 @@ MINLINE void negate_v2_v2(float r[2], const float a[2]);
+ MINLINE void negate_v3(float r[3]);
+ MINLINE void negate_v3_v3(float r[3], const float a[3]);
+ MINLINE void negate_v4(float r[4]);
+-MINLINE void negate_v4_v4(float r[4], const float a[3]);
++MINLINE void negate_v4_v4(float r[4], const float a[4]);
+ 
+ MINLINE void negate_v3_short(short r[3]);
+ MINLINE void negate_v3_db(double r[3]);
+@@ -171,7 +171,7 @@ MINLINE void cross_v3_v3v3(float r[3], const float a[3], const float b[3]);
+ 
+ MINLINE void add_newell_cross_v3_v3v3(float n[3], const float v_prev[3], const float v_curr[3]);
+ 
+-MINLINE void star_m3_v3(float rmat[3][3], float a[3]);
++MINLINE void star_m3_v3(float rmat[3][3], const float a[3]);
+ 
+ /*********************************** Length **********************************/
+ 
+@@ -246,7 +246,7 @@ void flip_v2_v2v2(float v[2], const float v1[2], const float v2[2]);
+ 
+ /********************************* Comparison ********************************/
+ 
+-MINLINE bool is_zero_v2(const float a[3])  ATTR_WARN_UNUSED_RESULT;
++MINLINE bool is_zero_v2(const float a[2])  ATTR_WARN_UNUSED_RESULT;
+ MINLINE bool is_zero_v3(const float a[3])  ATTR_WARN_UNUSED_RESULT;
+ MINLINE bool is_zero_v4(const float a[4])  ATTR_WARN_UNUSED_RESULT;
+ 
+diff --git a/blender-2.79b/source/blender/blenlib/intern/math_geom_inline.c b/blender-2.79b/source/blender/blenlib/intern/math_geom_inline.c
+index 68a2e68..3b672e2 100644
+--- a/blender-2.79b/source/blender/blenlib/intern/math_geom_inline.c
++++ b/blender-2.79b/source/blender/blenlib/intern/math_geom_inline.c
+@@ -99,7 +99,7 @@ MINLINE float dot_shsh(const float a[9], const float b[9])
+ 	return r;
+ }
+ 
+-MINLINE float diffuse_shv3(float sh[9], const float v[3])
++MINLINE float diffuse_shv3(const float sh[9], const float v[3])
+ {
+ 	/* See formula (13) in:
+ 	 * "An Efficient Representation for Irradiance Environment Maps" */
+diff --git a/blender-2.79b/source/blender/blenlib/intern/math_vector_inline.c b/blender-2.79b/source/blender/blenlib/intern/math_vector_inline.c
+index ee5e865..3f8f2c5 100644
+--- a/blender-2.79b/source/blender/blenlib/intern/math_vector_inline.c
++++ b/blender-2.79b/source/blender/blenlib/intern/math_vector_inline.c
+@@ -501,15 +501,15 @@ MINLINE float mul_project_m4_v3_zfac(float mat[4][4], const float co[3])
+ /**
+  * Has the effect of #mul_m3_v3(), on a single axis.
+  */
+-MINLINE float dot_m3_v3_row_x(float M[3][3], const float a[3])
++MINLINE float dot_m3_v3_row_x(const float M[3][3], const float a[3])
+ {
+ 	return M[0][0] * a[0] + M[1][0] * a[1] + M[2][0] * a[2];
+ }
+-MINLINE float dot_m3_v3_row_y(float M[3][3], const float a[3])
++MINLINE float dot_m3_v3_row_y(const float M[3][3], const float a[3])
+ {
+ 	return M[0][1] * a[0] + M[1][1] * a[1] + M[2][1] * a[2];
+ }
+-MINLINE float dot_m3_v3_row_z(float M[3][3], const float a[3])
++MINLINE float dot_m3_v3_row_z(const float M[3][3], const float a[3])
+ {
+ 	return M[0][2] * a[0] + M[1][2] * a[1] + M[2][2] * a[2];
+ }
+@@ -518,15 +518,15 @@ MINLINE float dot_m3_v3_row_z(float M[3][3], const float a[3])
+  * Has the effect of #mul_mat3_m4_v3(), on a single axis.
+  * (no adding translation)
+  */
+-MINLINE float dot_m4_v3_row_x(float M[4][4], const float a[3])
++MINLINE float dot_m4_v3_row_x(const float M[4][4], const float a[3])
+ {
+ 	return M[0][0] * a[0] + M[1][0] * a[1] + M[2][0] * a[2];
+ }
+-MINLINE float dot_m4_v3_row_y(float M[4][4], const float a[3])
++MINLINE float dot_m4_v3_row_y(const float M[4][4], const float a[3])
+ {
+ 	return M[0][1] * a[0] + M[1][1] * a[1] + M[2][1] * a[2];
+ }
+-MINLINE float dot_m4_v3_row_z(float M[4][4], const float a[3])
++MINLINE float dot_m4_v3_row_z(const float M[4][4], const float a[3])
+ {
+ 	return M[0][2] * a[0] + M[1][2] * a[1] + M[2][2] * a[2];
+ }
+@@ -756,7 +756,7 @@ MINLINE void add_newell_cross_v3_v3v3(float n[3], const float v_prev[3], const f
+ 	n[2] += (v_prev[0] - v_curr[0]) * (v_prev[1] + v_curr[1]);
+ }
+ 
+-MINLINE void star_m3_v3(float rmat[3][3], float a[3])
++MINLINE void star_m3_v3(float rmat[3][3], const float a[3])
+ {
+ 	rmat[0][0] = rmat[1][1] = rmat[2][2] = 0.0;
+ 	rmat[0][1] = -a[2];
+diff --git a/blender-2.79b/source/blender/editors/transform/transform.h b/blender-2.79b/source/blender/editors/transform/transform.h
+index d60eb2f..b2a308a 100644
+--- a/blender-2.79b/source/blender/editors/transform/transform.h
++++ b/blender-2.79b/source/blender/editors/transform/transform.h
+@@ -120,12 +120,12 @@ typedef struct TransCon {
+ 	void  (*drawExtra)(struct TransInfo *t);
+ 	                     /* For constraints that needs to draw differently from the other
+ 	                      * uses this instead of the generic draw function                            */
+-	void  (*applyVec)(struct TransInfo *t, struct TransData *td, const float in[3], float out[3], float pvec[3]);
++	void  (*applyVec)(struct TransInfo *t, const struct TransData *td, const float in[3], float out[3], float pvec[3]);
+ 	                     /* Apply function pointer for linear vectorial transformation                */
+ 	                     /* The last three parameters are pointers to the in/out/printable vectors    */
+-	void  (*applySize)(struct TransInfo *t, struct TransData *td, float smat[3][3]);
++	void  (*applySize)(struct TransInfo *t, const struct TransData *td, float smat[3][3]);
+ 	                     /* Apply function pointer for size transformation */
+-	void  (*applyRot)(struct TransInfo *t, struct TransData *td, float vec[3], float *angle);
++	void  (*applyRot)(struct TransInfo *t, const struct TransData *td, float vec[3], float *angle);
+ 	                     /* Apply function pointer for rotation transformation */
+ } TransCon;
+ 
+diff --git a/blender-2.79b/source/blender/editors/transform/transform_constraints.c b/blender-2.79b/source/blender/editors/transform/transform_constraints.c
+index 5621eed..a06e15f 100644
+--- a/blender-2.79b/source/blender/editors/transform/transform_constraints.c
++++ b/blender-2.79b/source/blender/editors/transform/transform_constraints.c
+@@ -331,7 +331,7 @@ static void planeProjection(TransInfo *t, const float in[3], float out[3])
+  *
+  */
+ 
+-static void applyAxisConstraintVec(TransInfo *t, TransData *td, const float in[3], float out[3], float pvec[3])
++static void applyAxisConstraintVec(TransInfo *t, const TransData *td, const float in[3], float out[3], float pvec[3])
+ {
+ 	copy_v3_v3(out, in);
+ 	if (!td && t->con.mode & CON_APPLY) {
+@@ -378,7 +378,7 @@ static void applyAxisConstraintVec(TransInfo *t, TransData *td, const float in[3
+  * Further down, that vector is mapped to each data's space.
+  */
+ 
+-static void applyObjectConstraintVec(TransInfo *t, TransData *td, const float in[3], float out[3], float pvec[3])
++static void applyObjectConstraintVec(TransInfo *t, const TransData *td, const float in[3], float out[3], float pvec[3])
+ {
+ 	copy_v3_v3(out, in);
+ 	if (t->con.mode & CON_APPLY) {
+@@ -436,7 +436,7 @@ static void applyObjectConstraintVec(TransInfo *t, TransData *td, const float in
+  * Generic callback for constant spatial constraints applied to resize motion
+  */
+ 
+-static void applyAxisConstraintSize(TransInfo *t, TransData *td, float smat[3][3])
++static void applyAxisConstraintSize(TransInfo *t, const TransData *td, float smat[3][3])
+ {
+ 	if (!td && t->con.mode & CON_APPLY) {
+ 		float tmat[3][3];
+@@ -460,7 +460,7 @@ static void applyAxisConstraintSize(TransInfo *t, TransData *td, float smat[3][3
+  * Callback for object based spatial constraints applied to resize motion
+  */
+ 
+-static void applyObjectConstraintSize(TransInfo *t, TransData *td, float smat[3][3])
++static void applyObjectConstraintSize(TransInfo *t, const TransData *td, float smat[3][3])
+ {
+ 	if (td && t->con.mode & CON_APPLY) {
+ 		float tmat[3][3];
+@@ -500,7 +500,7 @@ static void applyObjectConstraintSize(TransInfo *t, TransData *td, float smat[3]
+  * (ie: not doing counterclockwise rotations when the mouse moves clockwise).
+  */
+ 
+-static void applyAxisConstraintRot(TransInfo *t, TransData *td, float vec[3], float *angle)
++static void applyAxisConstraintRot(TransInfo *t, const TransData *td, float vec[3], float *angle)
+ {
+ 	if (!td && t->con.mode & CON_APPLY) {
+ 		int mode = t->con.mode & (CON_AXIS0 | CON_AXIS1 | CON_AXIS2);
+@@ -542,7 +542,7 @@ static void applyAxisConstraintRot(TransInfo *t, TransData *td, float vec[3], fl
+  * (ie: not doing counterclockwise rotations when the mouse moves clockwise).
+  */
+ 
+-static void applyObjectConstraintRot(TransInfo *t, TransData *td, float vec[3], float *angle)
++static void applyObjectConstraintRot(TransInfo *t, const TransData *td, float vec[3], float *angle)
+ {
+ 	if (t->con.mode & CON_APPLY) {
+ 		int mode = t->con.mode & (CON_AXIS0 | CON_AXIS1 | CON_AXIS2);
+diff --git a/blender-2.79b/source/blender/imbuf/intern/tiff.c b/blender-2.79b/source/blender/imbuf/intern/tiff.c
+index afd28bb..110cbef 100644
+--- a/blender-2.79b/source/blender/imbuf/intern/tiff.c
++++ b/blender-2.79b/source/blender/imbuf/intern/tiff.c
+@@ -351,7 +351,7 @@ static void scanline_separate_32bit(float *rectf, const float *fbuf, int scanlin
+ 
+ static void imb_read_tiff_resolution(ImBuf *ibuf, TIFF *image)
+ {
+-	uint16 unit;
++	uint16_t unit;
+ 	float xres;
+ 	float yres;
+ 
+@@ -535,7 +535,7 @@ ImBuf *imb_loadtiff(const unsigned char *mem, size_t size, int flags, char color
+ 	TIFF *image = NULL;
+ 	ImBuf *ibuf = NULL, *hbuf;
+ 	ImbTIFFMemFile memFile;
+-	uint32 width, height;
++	uint32_t width, height;
+ 	char *format = NULL;
+ 	int level;
+ 	short spp;
+@@ -656,7 +656,7 @@ ImBuf *imb_loadtiff(const unsigned char *mem, size_t size, int flags, char color
+ void imb_loadtiletiff(ImBuf *ibuf, const unsigned char *mem, size_t size, int tx, int ty, unsigned int *rect)
+ {
+ 	TIFF *image = NULL;
+-	uint32 width, height;
++	uint32_t width, height;
+ 	ImbTIFFMemFile memFile;
+ 
+ 	image = imb_tiff_client_open(&memFile, mem, size);
+@@ -710,7 +710,7 @@ void imb_loadtiletiff(ImBuf *ibuf, const unsigned char *mem, size_t size, int tx
+ int imb_savetiff(ImBuf *ibuf, const char *name, int flags)
+ {
+ 	TIFF *image = NULL;
+-	uint16 samplesperpixel, bitspersample;
++	uint16_t samplesperpixel, bitspersample;
+ 	size_t npixels;
+ 	unsigned char *pixels = NULL;
+ 	unsigned char *from = NULL, *to = NULL;
+@@ -723,7 +723,7 @@ int imb_savetiff(ImBuf *ibuf, const char *name, int flags)
+ 	/* check for a valid number of bytes per pixel.  Like the PNG writer,
+ 	 * the TIFF writer supports 1, 3 or 4 bytes per pixel, corresponding
+ 	 * to gray, RGB, RGBA respectively. */
+-	samplesperpixel = (uint16)((ibuf->planes + 7) >> 3);
++	samplesperpixel = (uint16_t)((ibuf->planes + 7) >> 3);
+ 	if ((samplesperpixel > 4) || (samplesperpixel == 2)) {
+ 		fprintf(stderr,
+ 		        "imb_savetiff: unsupported number of bytes per "

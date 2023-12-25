@@ -1,0 +1,305 @@
+commit ade5af81ba7b039b42eff6efeb580b78bd54b6b3
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 02:23:16 2023 +0100
+
+    openexr: fix header include
+    
+    Thanks to this patch: https://aur.archlinux.org/cgit/aur.git/tree/openexr3.patch?h=blender-2.7
+
+commit e00532824f88fbf8d6215df1509dd13ab33b8628
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Fri Dec 15 23:30:59 2023 +0100
+
+    openexr: "Images: update code to support OpenEXR 3"
+    
+    Adjusted Blender ref: cd7550cfe7
+
+commit 7af9405f175999f38df80a421bde7166641183fd
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Fri Dec 15 22:23:21 2023 +0100
+
+    openexr: "Build: update CMake to support OpenEXR 3"
+    
+    Applied whole Blender upstream ref: 2c9931699e2080639bb836357e116b8e340335d9
+
+diff --git a/blender-2.79b/build_files/cmake/Modules/FindOpenEXR.cmake b/blender-2.79b/build_files/cmake/Modules/FindOpenEXR.cmake
+index 41e60a7..7e1fdbd 100644
+--- a/blender-2.79b/build_files/cmake/Modules/FindOpenEXR.cmake
++++ b/blender-2.79b/build_files/cmake/Modules/FindOpenEXR.cmake
+@@ -37,14 +37,6 @@ ENDIF()
+ # Old versions (before 2.0?) do not have any version string, just assuming this should be fine though.
+ SET(_openexr_libs_ver_init "2.0")
+ 
+-SET(_openexr_FIND_COMPONENTS
+-  Half
+-  Iex
+-  IlmImf
+-  IlmThread
+-  Imath
+-)
+-
+ SET(_openexr_SEARCH_DIRS
+   ${OPENEXR_ROOT_DIR}
+   /usr/local
+@@ -101,6 +93,24 @@ UNSET(_openexr_libs_ver_init)
+ 
+ STRING(REGEX REPLACE "([0-9]+)[.]([0-9]+).*" "\\1_\\2" _openexr_libs_ver ${OPENEXR_VERSION})
+ 
++# Different library names in 3.0, and Imath and Half moved out.
++IF(OPENEXR_VERSION VERSION_GREATER_EQUAL "3.0.0")
++  SET(_openexr_FIND_COMPONENTS
++    Iex
++    IlmThread
++    OpenEXR
++    OpenEXRCore
++  )
++ELSE()
++  SET(_openexr_FIND_COMPONENTS
++    Half
++    Iex
++    IlmImf
++    IlmThread
++    Imath
++  )
++ENDIF()
++
+ SET(_openexr_LIBRARIES)
+ FOREACH(COMPONENT ${_openexr_FIND_COMPONENTS})
+   STRING(TOUPPER ${COMPONENT} UPPERCOMPONENT)
+@@ -118,6 +128,57 @@ ENDFOREACH()
+ 
+ UNSET(_openexr_libs_ver)
+ 
++IF(OPENEXR_VERSION VERSION_GREATER_EQUAL "3.0.0")
++  # For OpenEXR 3.x, we also need to find the now separate Imath library.
++  # For simplicity we add it to the OpenEXR includes and libraries, as we
++  # have no direct dependency on Imath and it's simpler to support both
++  # 2.x and 3.x this way.
++
++  # Find include directory
++  FIND_PATH(IMATH_INCLUDE_DIR
++    NAMES
++      Imath/ImathMath.h
++    HINTS
++      ${_openexr_SEARCH_DIRS}
++    PATH_SUFFIXES
++      include
++  )
++
++  # Find version
++  FIND_FILE(_imath_config
++    NAMES
++      ImathConfig.h
++    PATHS
++      ${IMATH_INCLUDE_DIR}/Imath
++    NO_DEFAULT_PATH
++  )
++
++  # Find line with version, extract string, and format for library suffix.
++  FILE(STRINGS "${_imath_config}" _imath_build_specification
++       REGEX "^[ \t]*#define[ \t]+IMATH_VERSION_STRING[ \t]+\"[.0-9]+\".*$")
++  STRING(REGEX REPLACE ".*#define[ \t]+IMATH_VERSION_STRING[ \t]+\"([.0-9]+)\".*"
++         "\\1" _imath_libs_ver ${_imath_build_specification})
++  STRING(REGEX REPLACE "([0-9]+)[.]([0-9]+).*" "\\1_\\2" _imath_libs_ver ${_imath_libs_ver})
++
++  # Find library, with or without version number.
++  FIND_LIBRARY(IMATH_LIBRARY
++    NAMES
++      Imath-${_imath_libs_ver} Imath
++    NAMES_PER_DIR
++    HINTS
++      ${_openexr_SEARCH_DIRS}
++    PATH_SUFFIXES
++      lib64 lib
++    )
++  LIST(APPEND _openexr_LIBRARIES "${IMATH_LIBRARY}")
++
++  # In cmake version 3.21 and up, we can instead use the NO_CACHE option for
++  # FIND_FILE so we don't need to clear it from the cache here.
++  UNSET(_imath_config CACHE)
++  UNSET(_imath_libs_ver)
++  UNSET(_imath_build_specification)
++ENDIF()
++
+ # handle the QUIETLY and REQUIRED arguments and set OPENEXR_FOUND to TRUE if 
+ # all listed variables are TRUE
+ INCLUDE(FindPackageHandleStandardArgs)
+@@ -126,13 +187,25 @@ FIND_PACKAGE_HANDLE_STANDARD_ARGS(OpenEXR  DEFAULT_MSG
+ 
+ IF(OPENEXR_FOUND)
+   SET(OPENEXR_LIBRARIES ${_openexr_LIBRARIES})
+-  # Both include paths are needed because of dummy OSL headers mixing #include <OpenEXR/foo.h> and #include <foo.h> :(
+-  SET(OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR} ${OPENEXR_INCLUDE_DIR}/OpenEXR)
++  # Both include paths are needed because of dummy OSL headers mixing
++  # #include <OpenEXR/foo.h> and #include <foo.h>, as well as Alembic
++  # include <half.h> directly.
++  SET(OPENEXR_INCLUDE_DIRS
++    ${OPENEXR_INCLUDE_DIR}
++    ${OPENEXR_INCLUDE_DIR}/OpenEXR)
++
++  IF(OPENEXR_VERSION VERSION_GREATER_EQUAL "3.0.0")
++    LIST(APPEND OPENEXR_INCLUDE_DIRS
++      ${IMATH_INCLUDE_DIR}
++      ${IMATH_INCLUDE_DIR}/Imath)
++  ENDIF()
+ ENDIF()
+ 
+ MARK_AS_ADVANCED(
+   OPENEXR_INCLUDE_DIR
+   OPENEXR_VERSION
++  IMATH_INCLUDE_DIR
++  IMATH_LIBRARY
+ )
+ FOREACH(COMPONENT ${_openexr_FIND_COMPONENTS})
+   STRING(TOUPPER ${COMPONENT} UPPERCOMPONENT)
+diff --git a/blender-2.79b/source/blender/alembic/intern/abc_transform.cc b/blender-2.79b/source/blender/alembic/intern/abc_transform.cc
+index 5392387..9dc3200 100644
+--- a/blender-2.79b/source/blender/alembic/intern/abc_transform.cc
++++ b/blender-2.79b/source/blender/alembic/intern/abc_transform.cc
+@@ -22,7 +22,7 @@
+ 
+ #include "abc_transform.h"
+ 
+-#include <OpenEXR/ImathBoxAlgo.h>
++#include <Imath/ImathBoxAlgo.h>
+ 
+ #include "abc_util.h"
+ 
+diff --git a/blender-2.79b/source/blender/imbuf/intern/openexr/openexr_api.cpp b/blender-2.79b/source/blender/imbuf/intern/openexr/openexr_api.cpp
+index 5ad42bd..94c2232 100644
+--- a/blender-2.79b/source/blender/imbuf/intern/openexr/openexr_api.cpp
++++ b/blender-2.79b/source/blender/imbuf/intern/openexr/openexr_api.cpp
+@@ -40,30 +40,46 @@
+ #include <algorithm>
+ #include <iostream>
+ 
+-#include <half.h>
+-#include <Iex.h>
+-#include <ImfVersion.h>
+-#include <ImathBox.h>
+-#include <ImfArray.h>
+-#include <ImfIO.h>
+-#include <ImfChannelList.h>
+-#include <ImfPixelType.h>
+-#include <ImfInputFile.h>
+-#include <ImfOutputFile.h>
+-#include <ImfCompression.h>
+-#include <ImfCompressionAttribute.h>
+-#include <ImfStringAttribute.h>
+-#include <ImfStandardAttributes.h>
++/* The OpenEXR version can reliably be found in this header file from OpenEXR,
++ * for both 2.x and 3.x:
++ */
++#include <OpenEXR/OpenEXRConfig.h>
++#define COMBINED_OPENEXR_VERSION \
++  ((10000 * OPENEXR_VERSION_MAJOR) + (100 * OPENEXR_VERSION_MINOR) + OPENEXR_VERSION_PATCH)
++
++#if COMBINED_OPENEXR_VERSION >= 20599
++/* >=2.5.99 -> OpenEXR >=3.0 */
++#  include <Imath/half.h>
++#  include <OpenEXR/ImfFrameBuffer.h>
++#  define exr_file_offset_t uint64_t
++#else
++/* OpenEXR 2.x, use the old locations. */
++#  include <OpenEXR/half.h>
++#  define exr_file_offset_t Int64
++#endif
++
++#include <OpenEXR/Iex.h>
++#include <OpenEXR/ImfArray.h>
++#include <OpenEXR/ImfChannelList.h>
++#include <OpenEXR/ImfCompression.h>
++#include <OpenEXR/ImfCompressionAttribute.h>
++#include <OpenEXR/ImfIO.h>
++#include <OpenEXR/ImfInputFile.h>
++#include <OpenEXR/ImfOutputFile.h>
++#include <OpenEXR/ImfPixelType.h>
++#include <OpenEXR/ImfStandardAttributes.h>
++#include <OpenEXR/ImfStringAttribute.h>
++#include <OpenEXR/ImfVersion.h>
+ 
+ /* multiview/multipart */
+-#include <ImfMultiView.h>
+-#include <ImfMultiPartInputFile.h>
+-#include <ImfInputPart.h>
+-#include <ImfOutputPart.h>
+-#include <ImfMultiPartOutputFile.h>
+-#include <ImfTiledOutputPart.h>
+-#include <ImfPartType.h>
+-#include <ImfPartHelper.h>
++#include <OpenEXR/ImfInputPart.h>
++#include <OpenEXR/ImfMultiPartInputFile.h>
++#include <OpenEXR/ImfMultiPartOutputFile.h>
++#include <OpenEXR/ImfMultiView.h>
++#include <OpenEXR/ImfOutputPart.h>
++#include <OpenEXR/ImfPartHelper.h>
++#include <OpenEXR/ImfPartType.h>
++#include <OpenEXR/ImfTiledOutputPart.h>
+ 
+ #include "DNA_scene_types.h" /* For OpenEXR compression constants */
+ 
+@@ -134,15 +150,15 @@ public:
+ 	}
+ 
+ 	virtual bool    read(char c[], int n);
+-	virtual Int64   tellg();
+-	virtual void    seekg(Int64 pos);
++	virtual exr_file_offset_t tellg();
++	virtual void    seekg(exr_file_offset_t pos);
+ 	virtual void    clear();
+ 	//virtual ~Mem_IStream() {}; // unused
+ 
+ private:
+ 
+-	Int64 _exrpos;
+-	Int64 _exrsize;
++	exr_file_offset_t _exrpos;
++	exr_file_offset_t _exrsize;
+ 	unsigned char *_exrbuf;
+ };
+ 
+@@ -157,12 +173,12 @@ bool Mem_IStream::read(char c[], int n)
+ 		return false;
+ }
+ 
+-Int64 Mem_IStream::tellg()
++exr_file_offset_t Mem_IStream::tellg()
+ {
+ 	return _exrpos;
+ }
+ 
+-void Mem_IStream::seekg(Int64 pos)
++void Mem_IStream::seekg(exr_file_offset_t pos)
+ {
+ 	_exrpos = pos;
+ }
+@@ -202,12 +218,12 @@ public:
+ 		return check_error();
+ 	}
+ 
+-	virtual Int64 tellg()
++	virtual exr_file_offset_t tellg()
+ 	{
+ 		return std::streamoff(ifs.tellg());
+ 	}
+ 
+-	virtual void seekg(Int64 pos)
++	virtual void seekg(exr_file_offset_t pos)
+ 	{
+ 		ifs.seekg(pos);
+ 		check_error();
+@@ -262,12 +278,12 @@ public:
+ 		check_error();
+ 	}
+ 
+-	virtual Int64 tellp()
++	virtual exr_file_offset_t tellp()
+ 	{
+ 		return std::streamoff(ofs.tellp());
+ 	}
+ 
+-	virtual void seekp(Int64 pos)
++	virtual void seekp(exr_file_offset_t pos)
+ 	{
+ 		ofs.seekp(pos);
+ 		check_error();

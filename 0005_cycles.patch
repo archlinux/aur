@@ -1,0 +1,155 @@
+commit c4818aa2fc716446ff3a109b18e63ff4ef79ff4c
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 17:21:32 2023 +0100
+
+    cycles: "Cycles: Cleanup, silence strict compiler warning"
+    
+    Partially applied Blender upstream ref: b763c34e80d3b20f9a7f0a592e479e5fa7ab295f
+
+commit c9f8cf23a076854f5dddae5f72a8182be2468118
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 17:07:44 2023 +0100
+
+    cycles: "Fix Cycles build error with OSL 1.12"
+    
+    Fully applied Blender upstream ref: 340529a8453ca9c2715c545245379e442f6006c8
+
+commit e47121b7cbfdbde9c9eb39b5e1bcf1c54a5e3a29
+Author: CYBERDEViL <cyberdevil@notabug.org>
+Date:   Sat Dec 16 17:05:53 2023 +0100
+
+    cycles: "Cycles: Fix bad register cast in sseb"
+    
+    Fully applied Blender upstream ref: be587d76efff6610f3b6d65cf42f1ee31ec3bdee
+
+diff --git a/blender-2.79b/intern/cycles/blender/blender_camera.cpp b/blender-2.79b/intern/cycles/blender/blender_camera.cpp
+index b29711d..0c4a48f 100644
+--- a/blender-2.79b/intern/cycles/blender/blender_camera.cpp
++++ b/blender-2.79b/intern/cycles/blender/blender_camera.cpp
+@@ -86,7 +86,7 @@ struct BlenderCamera {
+ static void blender_camera_init(BlenderCamera *bcam,
+                                 BL::RenderSettings& b_render)
+ {
+-	memset(bcam, 0, sizeof(BlenderCamera));
++	memset((void *)bcam, 0, sizeof(BlenderCamera));
+ 
+ 	bcam->type = CAMERA_PERSPECTIVE;
+ 	bcam->zoom = 1.0f;
+diff --git a/blender-2.79b/intern/cycles/blender/blender_util.h b/blender-2.79b/intern/cycles/blender/blender_util.h
+index 363e19f..f697156 100644
+--- a/blender-2.79b/intern/cycles/blender/blender_util.h
++++ b/blender-2.79b/intern/cycles/blender/blender_util.h
+@@ -251,7 +251,7 @@ static inline Transform get_transform(const BL::Array<float, 16>& array)
+ 
+ 	/* we assume both types to be just 16 floats, and transpose because blender
+ 	 * use column major matrix order while we use row major */
+-	memcpy(&tfm, &array, sizeof(float)*16);
++	memcpy((void *)&tfm, &array, sizeof(float)*16);
+ 	tfm = transform_transpose(tfm);
+ 
+ 	return tfm;
+diff --git a/blender-2.79b/intern/cycles/bvh/bvh_params.h b/blender-2.79b/intern/cycles/bvh/bvh_params.h
+index 7dd699b..75bf5ab 100644
+--- a/blender-2.79b/intern/cycles/bvh/bvh_params.h
++++ b/blender-2.79b/intern/cycles/bvh/bvh_params.h
+@@ -156,7 +156,10 @@ public:
+ 
+ 	BVHReference& operator=(const BVHReference &arg) {
+ 		if(&arg != this) {
+-			memcpy(this, &arg, sizeof(BVHReference));
++			/* TODO(sergey): Check if it is still faster to memcpy() with
++			 * modern compilers.
++			 */
++			memcpy((void *)this, &arg, sizeof(BVHReference));
+ 		}
+ 		return *this;
+ 	}
+diff --git a/blender-2.79b/intern/cycles/kernel/closure/alloc.h b/blender-2.79b/intern/cycles/kernel/closure/alloc.h
+index e799855..ff1de14 100644
+--- a/blender-2.79b/intern/cycles/kernel/closure/alloc.h
++++ b/blender-2.79b/intern/cycles/kernel/closure/alloc.h
+@@ -78,7 +78,7 @@ ccl_device_inline ShaderClosure *bsdf_alloc_osl(ShaderData *sd, int size, float3
+ 	if(!sc)
+ 		return NULL;
+ 
+-	memcpy(sc, data, size);
++	memcpy((void *)sc, data, size);
+ 
+ 	float sample_weight = fabsf(average(weight));
+ 	sc->weight = weight;
+diff --git a/blender-2.79b/intern/cycles/kernel/osl/osl_services.h b/blender-2.79b/intern/cycles/kernel/osl/osl_services.h
+index ec34ca7..29055ea 100644
+--- a/blender-2.79b/intern/cycles/kernel/osl/osl_services.h
++++ b/blender-2.79b/intern/cycles/kernel/osl/osl_services.h
+@@ -25,8 +25,9 @@
+  * attributes.
+  */
+ 
+-#include <OSL/oslexec.h>
+ #include <OSL/oslclosure.h>
++#include <OSL/oslexec.h>
++#include <OSL/rendererservices.h>
+ 
+ #ifdef WITH_PTEX
+ class PtexCache;
+diff --git a/blender-2.79b/intern/cycles/kernel/osl/osl_shader.cpp b/blender-2.79b/intern/cycles/kernel/osl/osl_shader.cpp
+index 13b19d8..4ad6b74 100644
+--- a/blender-2.79b/intern/cycles/kernel/osl/osl_shader.cpp
++++ b/blender-2.79b/intern/cycles/kernel/osl/osl_shader.cpp
+@@ -53,7 +53,7 @@ void OSLShader::thread_init(KernelGlobals *kg, KernelGlobals *kernel_globals, OS
+ 	OSL::ShadingSystem *ss = kg->osl->ss;
+ 	OSLThreadData *tdata = new OSLThreadData();
+ 
+-	memset(&tdata->globals, 0, sizeof(OSL::ShaderGlobals));
++	memset((void *)&tdata->globals, 0, sizeof(OSL::ShaderGlobals));
+ 	tdata->globals.tracedata = &tdata->tracedata;
+ 	tdata->globals.flipHandedness = false;
+ 	tdata->osl_thread_info = ss->create_thread_info();
+diff --git a/blender-2.79b/intern/cycles/render/svm.cpp b/blender-2.79b/intern/cycles/render/svm.cpp
+index 48287d8..0111d75 100644
+--- a/blender-2.79b/intern/cycles/render/svm.cpp
++++ b/blender-2.79b/intern/cycles/render/svm.cpp
+@@ -721,7 +721,7 @@ void SVMCompiler::compile_type(Shader *shader, ShaderGraph *graph, ShaderType ty
+ 	}
+ 
+ 	/* clear all compiler state */
+-	memset(&active_stack, 0, sizeof(active_stack));
++	memset((void *)&active_stack, 0, sizeof(active_stack));
+ 	current_svm_nodes.clear();
+ 
+ 	foreach(ShaderNode *node_iter, graph->nodes) {
+diff --git a/blender-2.79b/intern/cycles/util/util_sseb.h b/blender-2.79b/intern/cycles/util/util_sseb.h
+index 6e66970..9ffe391 100644
+--- a/blender-2.79b/intern/cycles/util/util_sseb.h
++++ b/blender-2.79b/intern/cycles/util/util_sseb.h
+@@ -116,7 +116,7 @@ __forceinline const sseb unpacklo( const sseb& a, const sseb& b ) { return _mm_u
+ __forceinline const sseb unpackhi( const sseb& a, const sseb& b ) { return _mm_unpackhi_ps(a, b); }
+ 
+ template<size_t i0, size_t i1, size_t i2, size_t i3> __forceinline const sseb shuffle( const sseb& a ) {
+-	return _mm_shuffle_epi32(a, _MM_SHUFFLE(i3, i2, i1, i0));
++	return _mm_castsi128_ps(_mm_shuffle_epi32(a, _MM_SHUFFLE(i3, i2, i1, i0)));
+ }
+ 
+ template<> __forceinline const sseb shuffle<0, 1, 0, 1>( const sseb& a ) {
+diff --git a/blender-2.79b/intern/cycles/util/util_vector.h b/blender-2.79b/intern/cycles/util/util_vector.h
+index 4add91a..caa6490 100644
+--- a/blender-2.79b/intern/cycles/util/util_vector.h
++++ b/blender-2.79b/intern/cycles/util/util_vector.h
+@@ -131,7 +131,7 @@ public:
+ 	{
+ 		if(this != &from) {
+ 			resize(from.size());
+-			memcpy(data_, from.data_, datasize_*sizeof(T));
++			memcpy((void*)data_, from.data_, datasize_*sizeof(T));
+ 		}
+ 
+ 		return *this;
+@@ -191,7 +191,7 @@ public:
+ 					return NULL;
+ 				}
+ 				else if(data_ != NULL) {
+-					memcpy(newdata, data_, ((datasize_ < newsize)? datasize_: newsize)*sizeof(T));
++					memcpy((void *)newdata, data_, ((datasize_ < newsize)? datasize_: newsize)*sizeof(T));
+ 					mem_free(data_, capacity_);
+ 				}
+ 				data_ = newdata;

@@ -4,10 +4,7 @@
 # shellcheck disable=SC2191 # preserve current _CMAKE_FLAGS initialization.
 
 # Configuration.
-_branch="blender2.7"
-_fragment=${FRAGMENT:-#branch=${_branch}}
 [[ -v CUDA_ARCH ]] && _cuda_capability=${CUDA_ARCH}
-_commit_url="https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch"
 
 #some extra, unofficially supported stuff goes here:
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
@@ -16,69 +13,71 @@ _commit_url="https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch"
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || makedepends+=('cuda')
 
 pkgname=blender-2.7
-pkgver=2.79b.r71421.e045fe53f1b
-pkgrel=3
-pkgdesc="Maintnance version of Blenders ${_branch} branch"
+pkgver=2.79b
+pkgrel=4
+pkgdesc="Keeping Blender 2.79b up-to-date with modern compiler and libs"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
-         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio1'
-         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
-makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm')
+depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'ffmpeg'
+          'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio1'
+          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff'
+          'libpng')
+makedepends+=('cmake' 'boost' 'mesa' 'llvm')
 provides=('blender-2.7')
 license=('GPL')
-# NOTE: the source array has to be kept in sync with .gitmodules
-# the submodules has to be stored in path ending with git to match
-# the path in .gitmodules.
-# More info:
-#   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
-source=("git://git.blender.org/blender.git${_fragment}"
-        'blender-addons.git::git://git.blender.org/blender-addons.git'
-        'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git'
-        'blender-translations.git::git://git.blender.org/blender-translations.git'
-        'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
+source=('https://download.blender.org/source/blender-2.79b.tar.gz'
         SelectCudaComputeArch.patch
-        stl_export_iter.patch
-        python3.7.patch
-        python3.8.patch
-        'python3.9.patch'   # ::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f
-        'python3.9_2.patch' # ::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/5edba9b42f684bf8b99894bb6988e7f46180e12c
-        openvdb7.patch
-        openvdb8.patch # ::${_commit_url}/37889011070ff2ec52159690f652238d2b325185
-        cycles.patch
-        openexr3.patch
         opencolorio1.patch
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '28e407e3aefdd9bd76805b6033ada0b5b41dd6183bcf4f58a642c109f10c1876'
-            '649c21a12a1bfc0207078e1e58b4813a3e898c6dbbbb35d21e1de7c9e8f1985a'
-            '47811284f080e38bcfbfb1f7346279245815a064df092989336b0bf3fe4530e9'
-            '229853b98bb62e1dec835aea6b2eab4c3dabbc8be591206573a3c1b85f10be59'
-            'd106248d55045f5ef913bf6243ad74a76f6282264d9ee4c9b87ec4a3d2e2064b'
-            'b2a2bc5de8d3b730e49d1f50cb025c1dfdbcb66c58ead573322585b6a887d3a7'
-            'c4079c4c142516d9cd476f5a3cafddf4068f0950c3c11ea4da9cf999c5ccc1f9'
-            'edfd784f8497417660c0b9fdc97893fd0d77764d0bc10f4cb92a9082f41bae75'
-            'd245f02d73bd5b767ffa49d369383d7cd6ae5e57b89c2975a78c1015e1884864'
-            'e7d75a5ef5cb6452b45f6e1e80b6fe69e2630878b1f4f6d53bf0e36ced237712'
-            'b3fa6ef21383287d0f8e7c3b848f3cf02186f9e3a0e8f194f3ca1323935e5e0e')
-
-pkgver() {
-# shellcheck disable=SC2164
-  cd "$srcdir/blender"
-  printf "2.79b.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+        0000_misc.patch
+        0001_openexr3.patch
+        0002_opencollada1_6_68.patch
+        0003_openvdb.patch
+        0004_openimageio.patch
+        0005_cycles.patch
+        0006_python3_7.patch
+        0007_python3_8.patch
+        0008_python3_9.patch
+        0009_python3_10.patch
+        0010_python3_11.patch
+        0011_ffmpeg.patch)
+sha512sums=('2db21ace446168dd683cdb5aad9dec001f8888ae4e9603a04ddb44fb78489ded827deb07e83712b0f1118a0e7bf66f2a5d935dc4ebb3a6703d72672ff414367f'
+            '15b10bf91c759a8ab6519f3c02f54e7d3ad105eb915663e0de2a65b38d1e42b55cc383bae96a1507f1eb55200eb14ebe904b6a7b772b4073aa6a53ac5d4dd194'
+            '4126ddaaab2dc8c45cd850353a2e4a0e6ff2ef4476f9a533916e59fc57e426ca3110f7b3d38685fffd97b969208f941359122b693584c2a70a3f8420a832214b'
+            'd7b6f1707ad902743a3f08c6423aabd7abd0841eb78404419884d7c0b02affc1b6c3eafea55f9db04bce5e27d22cfd0ec63153c61a5fa2c3227de54a09f0895d'
+            '0a8bd2ad7e199f95145bd0a66471686e0c545b071c73e6a659b570c001a860504f0970818fd686f52be9f5c18bd294c0efbede5c058ac96a4682e54b6235aac0'
+            '435e33926766a143cb6445a0c3219c9126b5d77e8114601a1f07848120b823ef2d1789bccb10079436b89eb9f894df54571ed50cde0713af857a8148be8f18ae'
+            'fc86d7a9a46e521ec22b2d87dfb023a71bfde624c4a6ddcf137038c7f46b97d614f8cb99951489a251cb2ea28460690cc0e5eb9ac6f2ccacc27c0052d137dcc9'
+            'c8bd5ee00f062760ae3a2493750b2eb66d0368955ebb443aad5313f91c1fd0680df239eb1ca957e79cda482c084a023efc60e4341c198d55f897415cf79de35d'
+            '3e3bef5e27279fc9c4f66398cd04a51a1ed268b7b99df2cf0151ed63994b742e39917e525ddac666d12a3df02a3ecef7dbe03da52c6be1aa143a3be960acbc5f'
+            '7c98cf29fa22e7e816789254e43ed0f5595529f8ed37c88abac8667a80bf2bee9f020fa204a45800586e4d0c2de977df9ceda6d8bc0b77c806743f761b6ffa9f'
+            '7effbd675b2167cc4c25a36d58f08824b2770e7b57fee93fd909a715003ee076ffcfc7e91cf965b9836da2fa54246fb68bbe613e44d312702298a5386b124dfa'
+            'a556445f27eaaba839d0efcfa70c530c269c7189e194c93b929044a54697f3606401dfdf5dbec05b181c26ba82d2b16560f2db7cd579104e0a0a322525cecaff'
+            'ecae55f642bf7f08edc56f8740a9fec650a3617f0ce7c7ba5b3211994ad8c46dc8fbbe897405699d46cb01c15129c0d4d9184657daeaf41172533195cdbbb104'
+            'de254cb5e43fe05c3b5e70df881c1ab847b58c383d8df28be6d044c058d4776a5a3d57f710eb3cf0a83b43c95fac29f772c446a23e0f9c2bf73d1dcc8b23b67c'
+            'a0ff4f4dbc3624692c16d45f632cda1362173a5685c85e62d54af1d63d5a421867a5eb89b5b1c5b72bbceef98664d96b54901790470cbe67f701c582858af0ed')
 
 prepare() {
-  # update the submodules
-  git -C "$srcdir/blender" -c protocol.file.allow=always submodule update --init --recursive --remote
+  # Apply CUDA patch
   if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
-    git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
+    patch -p1 < SelectCudaComputeArch.patch
   fi
-  git -C "$srcdir/blender" apply -v "${srcdir}"/{python3.7,stl_export_iter,python3.{8,9,9_2},openvdb{7,8},cycles,open{exr3,colorio1}}.patch
+
+  # Build with OpenColorIO 1 for now
+  patch -p1 < opencolorio1.patch
+
+  # Apply patches to build with modern libs and compiler
+  patch -p1 < 0000_misc.patch
+  patch -p1 < 0001_openexr3.patch
+  patch -p1 < 0002_opencollada1_6_68.patch
+  patch -p1 < 0003_openvdb.patch
+  patch -p1 < 0004_openimageio.patch
+  patch -p1 < 0005_cycles.patch
+  patch -p1 < 0006_python3_7.patch
+  patch -p1 < 0007_python3_8.patch
+  patch -p1 < 0008_python3_9.patch
+  patch -p1 < 0009_python3_10.patch
+  patch -p1 < 0010_python3_11.patch
+  patch -p1 < 0011_ffmpeg.patch
 }
 
 build() {
@@ -100,8 +99,8 @@ build() {
   fi
 
   ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
-  cmake -G "$generator" -S "$srcdir/blender" -B "$srcdir/build" \
-        -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
+  cmake -G "$generator" -S "$srcdir/blender-2.79b" -B "$srcdir/build" \
+        -C "${srcdir}/blender-2.79b/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DWITH_INSTALL_PORTABLE=OFF \
@@ -111,6 +110,16 @@ build() {
         -DWITH_PYTHON_INSTALL=OFF \
         -DPYTHON_VERSION="${_pyver}" \
         -DWITH_LLVM=ON \
+        -DWITH_CODEC_FFMPEG=ON \
+        -DWITH_CYCLES=ON \
+        -DWITH_OPENCOLLADA=ON \
+        -DWITH_OPENCOLORIO=ON \
+        -DWITH_OPENVDB=ON \
+        -DWITH_OPENIMAGEIO=ON \
+        -DWITH_GAMEENGINE=ON \
+        -DWITH_PLAYER=ON \
+        -DWITH_PYTHON_MODULE=OFF \
+        -DWITH_CYCLES_OSL=NO
         "${_CMAKE_FLAGS[@]}"
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
 # shellcheck disable=SC2086 # allow MAKEFLAGS to split when multiple flags provided.
