@@ -103,6 +103,7 @@ check() {
 
 package() {
   cd OpenRV
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   mkdir -p "$pkgdir/opt/openrv"
   export RV_INST="$pkgdir/opt/openrv"
   source rvcmds.sh
