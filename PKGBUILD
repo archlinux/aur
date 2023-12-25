@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastdownloader-bin
 _appname="Fast Downloader"
-pkgver=0.5.14
-pkgrel=2
+pkgver=0.5.15
+_electronversion=28
+pkgrel=1
 pkgdesc="A fast video/audio downloader in electron.js"
 arch=('x86_64')
 url="https://github.com/BERNARDO31P/FastDownloader"
@@ -10,16 +11,20 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron26-bin'
+    "electron${_electronversion}"
     'glibc>=2.38'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ebeb09336480b74091edb18134951fcd4357a2e381c3510e97e55ef5fbf6e0fa'
-            '23fc4d2d022710b918196a7fecef64a3d19698d840bc32d6d9fb70f695d7b0a4')
+sha256sums=('141cdf8bcb35f2bb49c1774d1270e7781e5e1a18b5e56c89cb5c24df07491aac'
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
