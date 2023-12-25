@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /etc/mautrix-signal 0770 root mautrix-signal
+z /etc/mautrix-signal/* 0640 mautrix-signal mautrix-signal -
+d /var/lib/mautrix-signal 0700 mautrix-signal mautrix-signal
