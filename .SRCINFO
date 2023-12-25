@@ -1,7 +1,7 @@
 pkgbase = python-kifield
 	pkgdesc = A utility for manipulating part fields in KiCad schematic files or libraries.
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/devbisme/KiField
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-kifield
 	depends = python-openpyxl
 	depends = python-future
 	provides = python-kifield
-	source = https://files.pythonhosted.org/packages/source/k/kifield/kifield-0.2.0.tar.gz
-	md5sums = 312523298662438e2649d0f431a4cc6d
+	source = https://files.pythonhosted.org/packages/source/k/kifield/kifield-1.0.1.tar.gz
+	md5sums = 56d5bf271d2674ed22aa0fa3544a5dda
 
 pkgname = python-kifield
