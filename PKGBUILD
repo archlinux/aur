@@ -1,14 +1,14 @@
-# Maintainer: Avery Warddhana <them+arch _ nullablevo id au>
+# Maintainer: Bet4 <bet4it@gmail.com>
+# Contributor: Avery Warddhana <them+arch _ nullablevo id au>
 
 pkgname=python-fx
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc=" A python-native JSON Viewer TUI"
 url='https://github.com/cielong/pyfx'
 arch=('any')
-license=('GPL2')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'antlr4')
-checkdepends=('python-pytest')
+license=('MIT')
+makedepends=('antlr4')
 depends=('python-antlr4' 'python-asciimatics' 'python-click'
 		'python-dacite' 'python-first' 'python-jsonpath-ng'
 		'python-loguru' 'python-overrides' 'python-pillow'
@@ -16,7 +16,7 @@ depends=('python-antlr4' 'python-asciimatics' 'python-click'
 		'python-yaml' 'python-urwid' 'python-wcwidth'
 		'python3-yamale')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('82866a06ff890fe7f741648be95e1ad4121c19bca73dd5cee69666d04c39e5e5')
+sha256sums=('76044ba32195b8e0ce444aa714981cb1481f9df44c3381c5ed4b43a4f6812c73')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -27,11 +27,6 @@ build() {
 
     python -m build --wheel --no-isolation
 }
-
-# check() {
-#     cd "${pkgname}-${pkgver}"
-#     pytest
-# }
 
 package() {
     cd "${pkgname}-${pkgver}"
