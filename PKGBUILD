@@ -45,7 +45,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
     git submodule update --init --recursive
-}    free -s 1 -h
+}
 
 build() {
     cd "$srcdir/$_pkgname"
