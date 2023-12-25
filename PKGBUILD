@@ -1,16 +1,15 @@
 # Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
 pkgname=paru-static
 _pkgname=paru
-_openssl_ver=3.2.0
 pkgver=2.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz")
 backup=("etc/paru.conf")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL3')
-makedepends=('cargo' 'musl' 'mold')
+makedepends=('rustup' 'cargo' 'musl')
 depends=('git' 'pacman')
 conflicts=('paru')
 provides=('paru')
@@ -19,10 +18,13 @@ sha256sums=('47cae94d227cc08f86706408d234444af6dda192ba24309c251a0b43a8aa7980')
 
 TARGET="x86_64-unknown-linux-musl"
 export RUSTUP_TOOLCHAIN=stable
+#openssl-sys
 export PKG_CONFIG_ALLOW_CROSS=1
 
 prepare() {
   cd "${srcdir}/$_pkgname-$pkgver"
+  # musl
+  rustup target add $TARGET
   cargo fetch --locked --target $TARGET
 }
 
@@ -38,20 +40,6 @@ build () {
     export CARGO_PROFILE_RELEASE_LTO=off
   fi
 
-  rustflags="
-  strip=symbols
-  no-redzone=y
-  overflow-checks=y
-  lto=fat
-  embed-bitcode=y
-  codegen-units=1
-  opt-level=z
-  control-flow-guard=y
-  link-self-contained=yes
-  "
-  link_args="-fuse-ld=mold -Wp,-D_FORTIFY_SOURCE=2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fPIE -fpie -Wl,-z,relro,-z,now -s"
-  RUSTFLAGS="$(printf -- '-C%s ' $rustflags) $(printf -- '-Clink-arg=%s ' $link_args)"
-  export RUSTFLAGS
   cargo build --frozen --features "${_features:-}" --release --target-dir target --target $TARGET
   ./scripts/mkmo locale/
 }
