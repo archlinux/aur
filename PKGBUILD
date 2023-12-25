@@ -1,7 +1,7 @@
 # Maintainer: adityaphra <aditya.phra@gmail.com>
 
 pkgname="sing-box-beta-bin"
-_pkgver="1.8.0-rc.3"
+_pkgver="1.8.0-rc.5"
 pkgver="${_pkgver/-/.}"
 pkgrel="1"
 pkgdesc="The universal proxy platform (beta binary version)."
@@ -24,9 +24,9 @@ sha512sums=('b5e5b8dad736b628a2761cc883b7e8439d604b5b1612447020ac7c143747e57acaf
             '0541f144ee33bb4cb182231794065babae530260b95bff26cbeb5491ab856d40e247895d130629f9dbef58dcd6652f0c69d3e28f57f3bae916d36294565399b0'
             '5afe85ede1e8af0f9caa2db7cd03dec3c7aa0a135feefe26f77748742b22402b90f3d8d8172e535b3c1353b136620e6f20d66d2d782ea8687a66b6c4e6c82650'
             '2a6ba5b9abfc0374c2cc79f0624ae5f4bef0f2fdc77624659ef91eff7ad899e86df2d5956a370eb27e4eb3e68c00165a32cba8ecad08f7d4845eca23ba7cd31f')
-sha512sums_x86_64=('8a0d3d26c0c03b53fb53b789ea1547e3504de949599bfd0088e03991a2a2e72be4a483d9ecc7cf86c31f592a84287d7ccfa757b134d6372dda89a916ce6aeedd')
-sha512sums_armv7h=('3d67db7ec630fb1e0cef27be1bdef2c451745dfcc55bccb890c9ace3df6857d4bad0bcc0eeeef7dfff2b4df47864f6234be8b342c179c866d3924d095bb4c98a')
-sha512sums_aarch64=('96925abbc96ad9f9803f6435ffe4afb20a4bb2bddb23aafe4f46a8562f158c5f1efda16ce20c4e52defff511b358e5547807062b249c2cb49e1be72b2a8b51a5')
+sha512sums_x86_64=('4a992e839c61b1914fe53ddeb0cc24a9e0a6c10a3a10a05bc7fd8e3fdca0712bce49023bef891a824236e9def483cc0b44274a82d15d8bf0d22ecf4484fefecc')
+sha512sums_armv7h=('93a40aa20f1251adb05dbaf19c36b04c2fa36c3f2197d4333ca28c8cc851f538c9bf57cd3e9287090081346c76393ceef258bf97f48c99105beba4771639458b')
+sha512sums_aarch64=('896be574f5ed7833ece78272df264e7935c58de490f74f4227d568ab22b91aa1fa2e3e57e12b57348e1c9efee2099e7b6fe85f1b1f19965b26cccb4a6ab2d9de')
 
 package() {
     declare -A ARCH_MAP
