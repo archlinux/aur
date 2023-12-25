@@ -3,7 +3,7 @@ pkgname=paru-static
 _pkgname=paru
 _openssl_ver=3.2.0
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz")
@@ -23,13 +23,13 @@ export PKG_CONFIG_ALLOW_CROSS=1
 
 prepare() {
   cd "${srcdir}/$_pkgname-$pkgver"
-  #cargo add openssl-src
   cargo fetch --locked --target $TARGET
 }
 
 build () {
   cd "$srcdir/$_pkgname-$pkgver"
 
+  _features+="static,"
   if pacman -T pacman-git > /dev/null; then
     _features+="git,"
   fi
@@ -39,7 +39,6 @@ build () {
   fi
 
   rustflags="
-  target-feature=+crt-static
   strip=symbols
   no-redzone=y
   overflow-checks=y
@@ -52,8 +51,8 @@ build () {
   "
   link_args="-fuse-ld=mold -Wp,-D_FORTIFY_SOURCE=2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fPIE -fpie -Wl,-z,relro,-z,now -s"
   RUSTFLAGS="$(printf -- '-C%s ' $rustflags) $(printf -- '-Clink-arg=%s ' $link_args)"
-  export RUSTFLAGS=$RUSTFLAGS" -L native=/usr/lib/musl/lib/"
-  cargo build --frozen --features "static,${_features:-}" --release --target-dir target --target $TARGET
+  export RUSTFLAGS
+  cargo build --frozen --features "${_features:-}" --release --target-dir target --target $TARGET
   ./scripts/mkmo locale/
 }
 
