@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bigrquery
 _pkgver=1.4.2
 pkgname=r-${_pkgname,,}
-pkgver=1.4.2
-pkgrel=4
+pkgver=${_pkgver//-/.}
+pkgrel=5
 pkgdesc="An Interface to Google's 'BigQuery' 'API'"
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL3)
 depends=(
-  r
   r-assertthat
   r-bit64
   r-brio
@@ -24,11 +24,20 @@ depends=(
   r-lifecycle
   r-prettyunits
   r-progress
-  r-rapidjsonr
   r-rcpp
   r-rlang
   r-tibble
   r-withr
+)
+makedepends=(
+  r-rapidjsonr
+)
+checkdepends=(
+  r-blob
+  r-dbplyr
+  r-dplyr
+  r-testthat
+  r-wk
 )
 optdepends=(
   r-blob
@@ -43,14 +52,20 @@ optdepends=(
   r-wk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('31fb4cb7fe471d8d869f99a727f7fbb1b6327533f6a0f364473b685c17e180e7')
+md5sums=('82e0f0e163cd2716a4c0996a2c4e0321')
+b2sums=('7426985c0e4cbd3c2f6daf9a76f0f87650209bf9d70b62629a763760fe6243226b2026ab28e8854cfdbc7d15d11a27d54f6587958ba448ee539accb6ec08d7f1')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
