@@ -1,13 +1,14 @@
 pkgbase = r-gsa
 	pkgdesc = Gene Set Analysis
 	pkgver = 1.03.2
-	pkgrel = 3
+	pkgrel = 8
 	url = https://cran.r-project.org/package=GSA
 	arch = any
-	license = LGPL
+	license = LGPL-2.0-or-later
 	depends = r
 	optdepends = r-impute
 	source = https://cran.r-project.org/src/contrib/GSA_1.03.2.tar.gz
-	sha256sums = 177d6059fc645d3d8883806d2dea1c5dfc68efdada9aadde8a96b6d57acf35b8
+	md5sums = 287111ee3bb2bbe301651cfac69f9c1b
+	b2sums = fac269fab725e80b7ae38e9c91149e5e5910f830690cc26149bb4dab734413feba02aec165abe78f843c6933c8f445d7c5a99107f9659449096313a2f5fb6d1b
 
 pkgname = r-gsa
