@@ -3,7 +3,7 @@
 
 pkgname=elemental
 pkgver=1.5.3
-pkgrel=3
+pkgrel=4
 url="https://github.com/LLNL/Elemental"
 pkgdesc="Distributed-memory dense linear algebra"
 makedepends=('cmake' 'libmpc' 'gcc-fortran')
@@ -12,7 +12,6 @@ arch=('i686' 'x86_64')
 license=("custom:BSD")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LLNL/Elemental/archive/v$pkgver.tar.gz")
 sha256sums=('faefbe738bd364d0e26ce9ad079a11c93a18c6f075719a365fd4fa5f1f7a989a')
-options=('!makeflags')
 
 build() {
   cmake -S Elemental-$pkgver \
@@ -21,7 +20,7 @@ build() {
         -D CMAKE_BUILD_TYPE:STRING=Release \
         -D BUILD_SHARED_LIBS:BOOL=ON \
         -D __GIT_EXECUTABLE:BOOL=OFF
-  cmake --build build --parallel 4
+  make -C build
 }
 
 package() {
