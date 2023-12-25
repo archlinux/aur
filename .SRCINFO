@@ -1,0 +1,18 @@
+pkgbase = netbeans-bin
+	pkgdesc = IDE for Java, HTML5, PHP, Groovy, C and C++
+	pkgver = 20
+	pkgrel = 2
+	url = https://netbeans.apache.org/
+	arch = any
+	license = Apache
+	makedepends = gendesk
+	depends = ttf-font
+	depends = which
+	depends = java-environment>=11
+	optdepends = php: for developing programs in php
+	optdepends = groovy: for developing programs in groovy
+	optdepends = lib32-glibc
+	source = https://downloads.apache.org/netbeans/netbeans/20/netbeans-20-bin.zip
+	sha512sums = 59eb2b0e7887f0d962d180c4004a81cf752f12a2b9456c59417daf90a312877f697500580c53566a220bde2a49df2b95ba1e4dedb4cf59b49bdacdc47c98745f
+
+pkgname = netbeans-bin
