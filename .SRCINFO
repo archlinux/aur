@@ -1,7 +1,7 @@
 pkgbase = iventoy-bin
 	pkgdesc = An enhanced version of the PXE server | 一个增强版的 PXE 服务器
 	pkgver = 1.0.19
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.iventoy.com
 	install = iventoy.install
 	arch = x86_64
