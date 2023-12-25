@@ -18,5 +18,5 @@ options=(!strip)
 install="${pkgname}.install"
 
 package() {
-	mv opt var $pkgdir/
+	mv opt var "$pkgdir/"
 }
