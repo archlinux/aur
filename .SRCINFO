@@ -1,0 +1,16 @@
+pkgbase = qt5-gsettings
+	pkgdesc = Qt-style wrapper for GSettings
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/lirios/qtgsettings
+	arch = x86_64
+	groups = liri
+	license = LGPL3
+	makedepends = liri-cmake-shared
+	makedepends = python
+	depends = qt5-declarative
+	depends = glib2
+	source = https://github.com/lirios/qtgsettings/releases/download/v1.4.0/qtgsettings-1.4.0.tar.xz
+	sha512sums = f8e32e5df3c4a9810c9a207e5acb5909e4e30cefabf54746dc223a878a9d10fe473a8634d82e71abc52b7259bb6c6c35d872b1c7b1b19964633d9967b0cd70ec
+
+pkgname = qt5-gsettings
