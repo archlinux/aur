@@ -1,6 +1,6 @@
 pkgname=blhelisuite32-bin
 _pkgname=blhelisuite32
-pkgver=1.0.3.8
+pkgver=1.0.4.4
 pkgrel=1
 pkgdesc="Configuration tool for BLHeli_32 based ESCs"
 arch=('x86_64')
@@ -8,27 +8,12 @@ url="https://github.com/bitdump/BLHeli/tree/master/BLHeli_32%20ARM"
 
 options=(!strip)
 license=('unknown')
-depends=('libcurl-gnutls')
+depends=('gcc-libs' 'zlib' 'gtk3' 'systemd-libs' 'glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-# Check Google Drive folder: https://drive.google.com/drive/folders/1Y1bUMnRRolmMD_lezL0FYd3aMBrNzCig
-# Right click the corresponding file and select "Copy Link" to obtain the sharing link.
-GDRIVENAME="BLHeliSuite32xLinux64_1038.zip"
-GDRIVELINK="https://drive.google.com/file/d/1Yo5jTqwGmgaU7BU-Rce5kTLfsOOqCVeW/view?usp=sharing"
-
-GDRIVELINK="https://drive.google.com/uc?export=download&id=$(echo "$GDRIVELINK" | cut -d'/' -f 6)"
-
-# Files larger than 25MB requires confirmation key from cookie.
-#CONFIRMKEY=$(/usr/bin/curl -c - -r 0-0 "$GDRIVELINK" --silent -o /dev/null | tee /tmp/bl32cookie | grep -F download_warning | head -n 1 | tr -d '[:space:]' | tail -c 4)
-#
-#if [ -n "$CONFIRMKEY" ] ; then
-#    GDRIVELINK="$GDRIVELINK&confirm=$CONFIRMKEY"
-#    DLAGENTS=('https::/usr/bin/curl -b /tmp/bl32cookie -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u')
-#fi
-
-source=("$GDRIVENAME::$GDRIVELINK")
-sha256sums=('06692e55625a1cac3a7a014ffdce603327ce13d04505ef176d43832c4aff7384')
+source=("https://github.com/bitdump/BLHeli/releases/download/Rev32.10/BLHeliSuite32xLinux64_1044.zip")
+sha256sums=('162feb310cf4dbfd90553637d90d7a0dc24f5a6795731f848dc37e99e071b75e')
 
 package() {
   mkdir -p "${pkgdir}/opt/${_pkgname}"
