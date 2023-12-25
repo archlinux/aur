@@ -30,14 +30,6 @@ diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated'
  
  IF(${RV_OSX_EMULATION})
    SET(_darwin_x86_64
-@@ -186,6 +201,7 @@
- LIST(APPEND RV_FFMPEG_COMMON_CONFIG_OPTIONS "--disable-programs")
- LIST(APPEND RV_FFMPEG_COMMON_CONFIG_OPTIONS "--disable-large-tests")
- LIST(APPEND RV_FFMPEG_COMMON_CONFIG_OPTIONS "--disable-vaapi")
-+LIST(APPEND RV_FFMPEG_COMMON_CONFIG_OPTIONS "--disable-doc")
- IF(RV_TARGET_WINDOWS)
-   LIST(APPEND RV_FFMPEG_COMMON_CONFIG_OPTIONS "--toolchain=msvc")
- ENDIF()
 @@ -254,14 +270,16 @@
  EXTERNALPROJECT_ADD(
    ${_target}

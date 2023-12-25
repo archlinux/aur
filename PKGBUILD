@@ -30,13 +30,12 @@ source=('git+https://github.com/AcademySoftwareFoundation/OpenRV.git'
         'jpegturbo-lib64.patch'
         'pyside2.patch'
         'pyside2-tools-root.patch'
-        'format-security.patch'
         'qt5.patch'
         'pyside2-build_scripts.patch')
         # 'manual://gcc_64.tar')  # Uncomment to pass Qt5 to chroot
 b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP'
         'b1424b55833ddc227f67a04897d416dd942405352e1b92ab8be8f7bc07ba059f6cb997b551d4fb7347f55fa4d809d3242db402bb19c028570447dc5955a782db' 
-        'cf6f36cbe434f0a07c138d96aa987b01e18658cf7f2fd507ec04ddf0a2db2686de581920e83a5c16ba83d184d897bc0cc6517da15766a585dfa5b8159359252c'
+        '1a09ccede75b3b6c57d19f7378c73a3a732dfe726c0bf6a70c168fe2b0aa92ea7c71d65e01020990f887d67a9a23232be2d71da97717248cb2d68ae8fc34d338'
         '521af5eb255ad0280bfb364e3a8710ae4450a5f0d0943cfb844053ff5058865265e790c132197f6003f14a6724b498b30fa8db013298ec5e55526a9eefc5486e'
         'f5d463d66fadff1d8d9fc7fadd04f5b723bc24a5530dce916e881e812d5e5d701bcbfbcaff6331ef94612028a82b3275fb309dfee292d12800ba4118ddd8c6eb'
         '03cd706fb027ee46aaa86c744800190f797da9a879e95c5f6e7ac830c7f4b0cb5bd9e2c66f6924664bb633e4552ba63b9c82cb4318ffea66b44e6b86fd13e59f'
@@ -44,7 +43,6 @@ b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP'
         '31ae9ab03451ac06771ae3d07d6b07ce86ea38494bea9d25c49940493a2a7e38db5267a5c4043a9811590ca236d3c9735376f4ab2c529b4565c33e57ee2b6448'
         '930f6c7a59a225247678bf7cce1a332547f8b47915bc176a204e3edc09edaa32a6fdf7475750a05c5483e7b813f8f11eb715a0d36efad06dd32cd5f5453ff996'
         'a29b8e8cd6b8a78d7cf31b314bd81e605b6ffaa347d1ff75363848d81cc4624a0ca89b63183f1be41159f1671a78bbf123c98c7e42fba824a7012b9622f12288'
-        'd4e7894519a54b62b430a0b63f9de78b9df348e0551ec23163bbedb0d926920d466f3ed5435fec502b86628784d021e1874842cca9ad9c65de03295aaec4a048'
         '9ed06e225dc5b3c2b367cd0756e448ffbca38bb658ba08ddb6b236b9b25eb83faf00ccaf9ad5ee741c7b0261d624a0c3a5c0d0728025c582d94c921f4b6e41a4'
         '5429215bda255dcd22687a89380babd0ff50091250c19ffd25feb4d88bf31cea29551572e52cdcc971a6a34fc6b468d9c80723e452763bd92ea826dccc148df5')
         # 'SKIP')  # Uncomment to pass Qt5 to chroot
@@ -77,7 +75,6 @@ prepare() {
   patch --forward --strip=1 --input="$srcdir/glew-lib64.patch"
   patch --forward --strip=1 --input="$srcdir/jpegturbo-lib64.patch"
   patch --forward --strip=1 --input="$srcdir/pyside2.patch"
-  patch --forward --strip=1 --input="$srcdir/format-security.patch"
   # patch --forward --strip=1 --input="$srcdir/qt5.patch"  # Holdover from trying to use Arch-provided Qt5
   # sed -i 's/os.cpu_count() or 1/min(os.cpu_count() or 1, 8)/' src/build/make_pyside.py  # May resolve random compiler segfault on AMD
   sed -i 's/pip install --user/pip install/' rvcmds.sh
