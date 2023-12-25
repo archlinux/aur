@@ -14,5 +14,5 @@ source=('manual://RenderManProServer-25.2_2282810-linuxRHEL7_gcc93icc219.x86_64.
 sha256sums=('6b3acebe3d5efd0f8cc16b6c1722548e6d11c957441e9bc04185226fd16660d3')
 
 package() {
-    mv opt $pkgdir/
+    mv opt "$pkgdir/"
 }
