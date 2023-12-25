@@ -1,0 +1,5 @@
+post_install() {
+    echo "Oxeylyzer assets have been installed to /usr/lib/oxeylyzer"
+    echo "You may wish to copy these to a local folder then run \`oxeylyzer\` within it."
+    echo "E.g. using \`cp -r /usr/lib/oxeylyzer/ my-layout-1/\`"
+}
