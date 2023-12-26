@@ -2,10 +2,10 @@
 _pkgname=slimjet
 pkgname="${_pkgname}-beta-bin"
 _appname="flashpeak-${_pkgname}"
-pkgver=41.0.0.0
-pkgrel=2
+pkgver=42.0.1.0
+pkgrel=1
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
-_libffmpegver=0.80.0
+_libffmpegver=0.83.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -45,13 +45,12 @@ options=(
 source=(
     "${pkgname%-bin}-${pkgver}_amd64.deb::${_downurl}/beta/${_pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
-    "LICENSE.html::${url}/en/webhelp/index.htm"
 )
-sha256sums=('17e42f09137b1884a4509d96d7f99d0226ea3c0be3271364b25fe0731c0c5972'
-            '8afa2102c5bc6e74ac8e812a78c72fbc6342443d06f42098cf496d8ea81529a9'
-            '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43')
+sha256sums=('9aee390395ac6483b1f9b782fc99174c39f99f353d102d74f891c0a1a0ed20f4'
+            '17d330079d91920e75521e9255a68b2a1bcc7d8aa84090bdce518b7160ea65e2')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/control.tar.xz"
     find "${srcdir}" -type d -exec chmod 755 {} \;
 }
 package() {
@@ -59,7 +58,7 @@ package() {
     cp -r "${srcdir}/opt/${_pkgname}" "${pkgdir}/opt"
     ln -sf "/opt/${_pkgname}/${_appname}" "${pkgdir}/usr/bin/${_appname}"
     install -Dm644 "${srcdir}/libffmpeg.so" -t "${pkgdir}/opt/${_pkgname}"
-    install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/gnome-control-center/default-apps/${_pkgname}.xml" -t "${pkgdir}/usr/share/gnome-control-center/default-apps".
     install -Dm644 "${srcdir}/usr/share/menu/${_pkgname}.menu" -t "${pkgdir}/usr/share/menu"
