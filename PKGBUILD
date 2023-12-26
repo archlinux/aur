@@ -3,9 +3,11 @@ pkgname=appimaged-bin
 pkgdesc="Deprecated: A daemon that monitors the system and integrates AppImages"
 url="https://github.com/AppImageCommunity/appimaged"
 pkgver=r199
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 license=(MIT)
+provides=(appimaged)
+conflicts=(appimaged)
 depends=(gdk-pixbuf2)
 source=(
   "appimaged.AppImage"::"https://github.com/AppImageCommunity/appimaged/releases/download/continuous/appimaged-x86_64.AppImage"
