@@ -4,14 +4,14 @@
 # Contributor: Vitaliy Berdinskikh <skipper13@root.ua>
 
 pkgname=libxmlrpc
-# Using the "super stable" version
-pkgver=1.51.08
-pkgrel=3
+# using the latest available release tarball (the "super stable" one) from
+# https://sourceforge.net/projects/xmlrpc-c/files/Xmlrpc-c%20Super%20Stable/
+pkgver=1.54.06
+pkgrel=1
 epoch=1
 pkgdesc='XML-RPC for C and C++'
 arch=(x86_64)
-# HTTPS is not available
-url='http://xmlrpc-c.sourceforge.net/'
+url='https://xmlrpc-c.sourceforge.net/'
 license=(custom)
 depends=(curl)
 makedepends=(libtool setconf)
@@ -19,11 +19,11 @@ conflicts=(xmlrpc-c)
 provides=(xmlrpc-c)
 replaces=(xmlrpc-c)
 options=(!emptydirs)
-source=("https://downloads.sourceforge.net/project/xmlrpc-c/Xmlrpc-c%20Super%20Stable/$pkgver/xmlrpc-$pkgver.tgz")
-b2sums=('636215329996a36dc8404e95b8791779f1e6afc063f8a3457c72e04475e49c3cbf213c872934c5116a2e761d579994b7c98fe1f2ad7a6dbb38a370963b921500')
+source=("https://downloads.sourceforge.net/project/xmlrpc-c/Xmlrpc-c%20Super%20Stable/$pkgver/xmlrpc-c-$pkgver.tgz")
+b2sums=('1286323b59aa4d77fe2f8b04fef18d9a448d29a7fa23aad143418e62c92ac6a5156bb61ee58e0df4b0667e73a9170663b02b42fac94b38df71fc789d13e929e0')
 
 build() {
-  cd xmlrpc-$pkgver
+  cd xmlrpc-c-$pkgver
 
   ./configure \
     --disable-cgi-server \
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-  cd xmlrpc-$pkgver
+  cd xmlrpc-c-$pkgver
 
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" -C tools install
