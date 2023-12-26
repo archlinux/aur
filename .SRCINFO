@@ -1,7 +1,7 @@
 pkgbase = giada
 	pkgdesc = A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians
-	pkgver = 0.26.0
-	pkgrel = 3
+	pkgver = 0.26.1
+	pkgrel = 1
 	url = https://www.giadamusic.com/
 	arch = x86_64
 	groups = pro-audio
@@ -38,15 +38,15 @@ pkgbase = giada
 	provides = giada
 	options = !buildflags
 	options = !makeflags
-	source = giada-0.26.0::git+https://github.com/monocasual/giada/#tag=0.26.0
-	source = git+https://github.com/juce-framework/JUCE.git#commit=69795dc8e589a9eb5df251b6dd994859bf7b3fab
-	source = git+https://github.com/steinbergmedia/vst3sdk.git#commit=ef0a70df2f82a3c218abaca0dbfbb66ae6c61025
-	source = git+https://github.com/monocasual/rtaudio.git#commit=8a362b1082ce17d3be1f47bd116839e40f189cf1
-	source = git+https://github.com/monocasual/geompp.git#commit=2b9edac100435d1ec1cf857f36605ca2f4f229ec
-	source = git+https://github.com/monocasual/mcl-audio-buffer.git#commit=d641e3e40219ea931e2a9945a1ef0aa2f54f4d2c
-	source = git+https://github.com/monocasual/mcl-atomic-swapper.git#commit=459d45df051408c8533483cd2b15aa309cef0767
-	source = git+https://github.com/fltk/fltk.git#commit=d9d474c59372a8b2b0829c400b5d0584129e3822
-	source = git+https://github.com/cameron314/concurrentqueue.git#commit=bf1fe24c8eb413494884dc151712a3ed526fc5a3
+	source = giada-0.26.1::git+https://github.com/monocasual/giada/#tag=0.26.1
+	source = git+https://github.com/juce-framework/JUCE.git#commit=69795dc
+	source = git+https://github.com/steinbergmedia/vst3sdk.git#commit=ef0a70d
+	source = git+https://github.com/monocasual/rtaudio.git#commit=8a362b1
+	source = git+https://github.com/monocasual/geompp.git#commit=dd75643
+	source = git+https://github.com/monocasual/mcl-audio-buffer.git#commit=d641e3e
+	source = git+https://github.com/monocasual/mcl-atomic-swapper.git#commit=459d45d
+	source = git+https://github.com/fltk/fltk.git#commit=06d1289
+	source = git+https://github.com/cameron314/concurrentqueue.git#commit=bf1fe24
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP

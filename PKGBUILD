@@ -4,8 +4,8 @@
 # NOTE: can currently not be built using devtools:
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
-pkgver=0.26.0
-pkgrel=3
+pkgver=0.26.1
+pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
 url="https://www.giadamusic.com/"
@@ -19,21 +19,21 @@ checkdepends=(catch2-v2)
 provides=(vst3-host giada)
 source=(
 "$pkgname-$pkgver::git+https://github.com/monocasual/giada/#tag=$pkgver"
-"git+https://github.com/juce-framework/JUCE.git#commit=69795dc8e589a9eb5df251b6dd994859bf7b3fab"
+"git+https://github.com/juce-framework/JUCE.git#commit=69795dc"
 
-"git+https://github.com/steinbergmedia/vst3sdk.git#commit=ef0a70df2f82a3c218abaca0dbfbb66ae6c61025"
+"git+https://github.com/steinbergmedia/vst3sdk.git#commit=ef0a70d"
 
-"git+https://github.com/monocasual/rtaudio.git#commit=8a362b1082ce17d3be1f47bd116839e40f189cf1"
+"git+https://github.com/monocasual/rtaudio.git#commit=8a362b1"
 
-"git+https://github.com/monocasual/geompp.git#commit=2b9edac100435d1ec1cf857f36605ca2f4f229ec"
+"git+https://github.com/monocasual/geompp.git#commit=dd75643"
 
-"git+https://github.com/monocasual/mcl-audio-buffer.git#commit=d641e3e40219ea931e2a9945a1ef0aa2f54f4d2c"
+"git+https://github.com/monocasual/mcl-audio-buffer.git#commit=d641e3e"
 
-"git+https://github.com/monocasual/mcl-atomic-swapper.git#commit=459d45df051408c8533483cd2b15aa309cef0767"
+"git+https://github.com/monocasual/mcl-atomic-swapper.git#commit=459d45d"
 
-"git+https://github.com/fltk/fltk.git#commit=d9d474c59372a8b2b0829c400b5d0584129e3822"
+"git+https://github.com/fltk/fltk.git#commit=06d1289"
 
-"git+https://github.com/cameron314/concurrentqueue.git#commit=bf1fe24c8eb413494884dc151712a3ed526fc5a3"
+"git+https://github.com/cameron314/concurrentqueue.git#commit=bf1fe24"
 )
 sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
