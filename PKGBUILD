@@ -16,6 +16,8 @@ sha256sums=(
 )
 
 build() {
+  # Clone the repo
+  git clone "$url" "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
   npm install -g npm@latest
   # Install dependencies
