@@ -1,0 +1,23 @@
+pkgbase = kx3utility
+	pkgdesc = Elecraft Factory APP for use with the KX3 Ham Radio.
+	pkgver = 1_23_4_23
+	pkgrel = 1
+	url = https://elecraft.com/pages/kx3-hand-held-5-band-cw-transceiver-firmware-and-utility
+	arch = x86_64
+	license = custom:ELECRAFT
+	depends = gcc-libs
+	depends = gtk2
+	depends = curl
+	depends = hamradio-menus
+	options = !strip
+	source = https://ftp.elecraft.com/KX3/Utilities/KX3UtilityLINUX64BIT_1_23_4_23.tar.gz
+	source = kx3utility.1
+	source = kx3utility.desktop
+	md5sums = f46a2786b81bcb82d874c9e5c00427ac
+	md5sums = f4b373e99d2a8f95808215b4025db0df
+	md5sums = de0447372391b050565d14ea21aa4b70
+	sha256sums = 8f5fca7e8c192ad3cacdda5cf75cf07492abaa72f85dcbbc889977d8e46125fa
+	sha256sums = 40343738556bddf99f2a7bdce874433acd8253c1f392f5074bccd15b166ae7cc
+	sha256sums = 5647d6082ebe8109899c550b9f991d8709cb7be7b20ee3596e4bad2bee794aed
+
+pkgname = kx3utility

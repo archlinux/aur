@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=KX3-Utility
+Name[en_US]=KX3-Utility
+Comment=Elecraft KH3 Control Utility
+Comment[en_US]=Elecraft KH3 Control Utility
+Exec=kx3utility
+Icon=kx3utility
+MimeType=text/plain
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Network;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
