@@ -1,0 +1,20 @@
+pkgbase = can-tests-git
+	pkgdesc = Linux-CAN / SocketCAN testing applications
+	pkgver = 2023.05.0.r5.g3258274
+	pkgrel = 1
+	url = https://github.com/linux-can/can-tests
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPLv2
+	makedepends = git
+	depends = glibc
+	optdepends = can-utils: Linux-CAN / SocketCAN user space applications
+	optdepends = can-doc: Linux-CAN / SocketCAN documentation
+	optdepends = can-isotp-dkms: Kernel modules for isotp
+	provides = can-tests
+	conflicts = can-tests
+	source = can-tests-git::git+https://github.com/linux-can/can-tests.git
+	sha256sums = SKIP
+
+pkgname = can-tests-git
