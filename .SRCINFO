@@ -1,19 +1,17 @@
 pkgbase = telepathy-farstream
 	pkgdesc = Telepathy GLib-based client library that uses Farstream to handle Call channels
 	pkgver = 0.6.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://telepathy.freedesktop.org/components/telepathy-farstream/
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	makedepends = dbus-glib
+	makedepends = glib2-docs
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
-	makedepends = git
-	makedepends = glib2-docs
-	depends = telepathy-glib
 	depends = farstream
-	replaces = telepathy-farsight
-	source = git+https://github.com/TelepathyIM/telepathy-farstream#commit=0b1bba79cfe94e7676fe69e9e0d2e3983a3c14c5
-	sha256sums = SKIP
+	depends = telepathy-glib
+	source = telepathy-farstream-0.6.2.tar.gz::http://telepathy.freedesktop.org/releases/telepathy-farstream/telepathy-farstream-0.6.2.tar.gz
+	sha256sums = 6fa099f22d13a2a49240445a13e918928aef097675d76e5cc9f98ab496087e0a
 
 pkgname = telepathy-farstream
