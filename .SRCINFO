@@ -1,10 +1,10 @@
 pkgbase = gowebly-bin
-	pkgdesc = A language for writing HTML user interfaces in Go.
+	pkgdesc = 🔥 A next-generation CLI tool to easily build amazing web applications with Go on the backend, using htmx & hyperscript and the most popular CSS frameworks on the frontend
 	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/gowebly/gowebly
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	provides = gowebly
 	conflicts = gowebly
 	source_x86_64 = gowebly-x64-1.10.0.tar.gz::https://github.com/gowebly/gowebly/releases/download/v1.10.0/gowebly_1.10.0_linux_amd64.tar.gz

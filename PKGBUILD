@@ -4,10 +4,10 @@
 pkgname=gowebly-bin
 pkgver=1.10.0
 pkgrel=1
-pkgdesc="A language for writing HTML user interfaces in Go."
+pkgdesc="🔥 A next-generation CLI tool to easily build amazing web applications with Go on the backend, using htmx & hyperscript and the most popular CSS frameworks on the frontend"
 arch=('x86_64')
 url="https://github.com/gowebly/gowebly"
-license=('MIT')
+license=('Apache-2.0')
 provides=('gowebly')
 conflicts=('gowebly')
 sha256sums_x86_64=("432f1695e6afb4df93927b46673316afdf8f58fce7e33c127ec95b8eada94ca6")
