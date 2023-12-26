@@ -1,7 +1,7 @@
 pkgname=hath-rust
 pkgdesc="Hentai@Home but rusty"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url="https://github.com/james58899/hath-rust"
 license=("GPL3")
@@ -14,8 +14,8 @@ source=(
     "hath-rust.sysusers"
 )
 sha256sums=('4ea70d90a9262494cf8c12b2ce9696d191474df5d5bc301816b9a475845ad4e3'
-            '5d2234eb0d842260a63bcb3e6d75270cbda06b2d5b26046d279063f74c059f54'
-            'c8723c66c17d9fe289bb6bbbf6cfb662a8e67c3d7ca6f4d3dd27bd675eff6df5'
+            'f427254389f172d55c2ce52c635a8ab0f683d1c8373df497590519db69b1c813'
+            '4732b0b6683df5734e652e3d8c5875d90d48577cc46e579bdf43e656d3ca216e'
             '28b78e349e96777177e6f95f078c3d09fec0dcd174b1a70d5dc9b18e309b0a81')
 
 build() {

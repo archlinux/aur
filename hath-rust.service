@@ -7,7 +7,7 @@ After=network-online.target
 [Service]
 Type=simple
 EnvironmentFile=/etc/hath-rust.conf
-ExecStart=hath-rust --port=$PORT --max-connection=$MAX_CONNECTION \
+ExecStart=hath-rust $HATH_EXTRA_ARGS \
     --cache-dir=/var/lib/hath-rust/cache \
     --data-dir=/var/lib/hath-rust/data \
     --download-dir=/var/lib/hath-rust/download \

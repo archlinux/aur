@@ -1,3 +1,3 @@
 d   /var/log/hath-rust  -       hath-rust   hath-rust   30d -
 v   /var/lib/hath-rust  0700    hath-rust   hath-rust   -   -
-f   /etc/hath-rust.conf -       -           -           -   PORT=443\nMAX_CONNECTION=65535
+f   /etc/hath-rust.conf -       -           -           -   -
