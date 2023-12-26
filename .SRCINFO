@@ -1,0 +1,18 @@
+pkgbase = aribb24-git
+	pkgdesc = A library for ARIB STD-B24, decoding JIS 8 bit characters and parsing MPEG-TS stream
+	pkgver = 1.0.3.r5.g5e9be27
+	pkgrel = 1
+	url = https://github.com/nkoriyama/aribb24
+	arch = i686
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = git
+	depends = glibc
+	depends = libpng
+	provides = aribb24=1.0.3.r5.g5e9be27
+	conflicts = aribb24
+	options = staticlibs
+	source = git+https://github.com/nkoriyama/aribb24.git
+	sha256sums = SKIP
+
+pkgname = aribb24-git
