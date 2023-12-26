@@ -4,4 +4,4 @@ _APPDIR="/opt/@appname@"
 _RUNAPP="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${_APPDIR}/bin:${PATH}"
 cd "${_APPDIR}"
-exec "${_APPDIR}/${_RUNAPP}" "$@"
+exec "${_RUNAPP}" "$@" | exit

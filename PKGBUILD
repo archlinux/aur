@@ -3,7 +3,7 @@ _pkgname=koishi
 pkgname="${_pkgname}-desktop-bin"
 _appname="chat.${_pkgname}.desktop"
 _shortname=koi
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Launch Koishi from your desktop"
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-v${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7f86b03f63981d98098fbdaa866f57cb73e6e291e32bf16227604e5d49dd3a28'
-            '690b0ed85633e2690d22e31a799f329758d08e5c23a583d16a26aab8caa3c88d')
+sha256sums=('2fc27b94307ca8dc7900a7d16d19616126e541eaee59bcda2fb2b1eca083f437'
+            'c2dc027ca05ca1289c1a6f30c126b4dddc105ee2d95df2f5db5e05e33ad24e14')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_shortname}|g" \
