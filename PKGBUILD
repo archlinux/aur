@@ -1,6 +1,6 @@
 # Maintainer: Marcin Zyla <marcin.zyla@vprocess.pl>
 pkgname=apyr
-pkgver=0.0.0
+pkgver=0.1.0
 pkgrel=1
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ url="https://github.com/demo-exe/apyr"
 license=('MIT')
 
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('66e0c118ccf8650c51204661ae0555b9ff2b6f1e1e7f9900e7aad3a2047e1f3a')
+sha256sums=('a05f260c22e53101ac4b2493c4e1e8a5186c266270d9b05e46cc0f3a1c97a2b7')
 
 prepare() {
     cd $pkgname-$pkgver

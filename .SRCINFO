@@ -1,6 +1,6 @@
 pkgbase = apyr
 	pkgdesc = A simple, fast, and easy to use TUI log browser.
-	pkgver = 0.0.0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/demo-exe/apyr
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = apyr
 	arch = armv7h
 	license = MIT
 	makedepends = cargo
-	source = apyr-0.0.0.tar.gz::https://static.crates.io/crates/apyr/apyr-0.0.0.crate
-	sha256sums = 66e0c118ccf8650c51204661ae0555b9ff2b6f1e1e7f9900e7aad3a2047e1f3a
+	source = apyr-0.1.0.tar.gz::https://static.crates.io/crates/apyr/apyr-0.1.0.crate
+	sha256sums = a05f260c22e53101ac4b2493c4e1e8a5186c266270d9b05e46cc0f3a1c97a2b7
 
 pkgname = apyr
