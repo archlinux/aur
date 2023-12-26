@@ -11,6 +11,6 @@ pkgbase = neper
 	depends = scotch
 	depends = gsl
 	source = https://github.com/rquey/neper/archive/v4.7.0.tar.gz
-	sha256sums = 56189f274bd3cae0369ec807b7e3e7ed2672da236e900ae3a49eb7c3a21199cc
+	sha512sums = 56189f274bd3cae0369ec807b7e3e7ed2672da236e900ae3a49eb7c3a21199cc
 
 pkgname = neper

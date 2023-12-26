@@ -13,7 +13,7 @@ depends=('nlopt'
 makedepends=('cmake')
 source=(https://github.com/rquey/neper/archive/v${pkgver}.tar.gz)
 
-sha256sums=('56189f274bd3cae0369ec807b7e3e7ed2672da236e900ae3a49eb7c3a21199cc')
+sha512sums=('56189f274bd3cae0369ec807b7e3e7ed2672da236e900ae3a49eb7c3a21199cc')
 
 build() {
   cmake -S ${pkgname}-${pkgver}/src \
