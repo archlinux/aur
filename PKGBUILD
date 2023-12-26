@@ -1,13 +1,13 @@
 # Maintainer: ros3 <ros3@ros3.cc>
 
 pkgname=hello-http-bin
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='HTTP client for testing REST APIs, WebSocket, GraphQL and gRPC endpoints'
 url='https://sunny-chung.github.io/hello-http/'
 arch=('any')
 license=('Apache-2.0')
-source=("https://github.com/sunny-chung/hello-http/releases/download/v$pkgver/HelloHTTP-v$pkgver-ubuntu-X64.tar.gz")
+source=("https://github.com/sunny-chung/hello-http/releases/download/v$pkgver/HelloHTTP-v$pkgver-linux-X64.tar.gz")
 md5sums=('SKIP')
 
 pkgver() {
