@@ -1,12 +1,14 @@
 pkgbase = appimaged-bin
 	pkgdesc = Deprecated: A daemon that monitors the system and integrates AppImages
 	pkgver = r199
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AppImageCommunity/appimaged
 	arch = x86_64
 	license = MIT
 	depends = gdk-pixbuf2
 	source = appimaged.AppImage::https://github.com/AppImageCommunity/appimaged/releases/download/continuous/appimaged-x86_64.AppImage
+	source = LICENSE::https://github.com/AppImageCommunity/appimaged/raw/continuous/LICENSE
 	sha256sums = 0cb439698ccd542c622c5aec5496efb0fe6a56575b16be9e77bd5467b97b4555
+	sha256sums = b54da09f0d48f1c42a1b27035711ed41494551ed8a20b991746e669e6f944a94
 
 pkgname = appimaged-bin
