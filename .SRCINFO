@@ -1,7 +1,7 @@
 pkgbase = varicad
 	pkgdesc = VariCAD is 3D/2D CAD for mechanical engineering.
 	pkgver = 2024.1.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.varicad.com/
 	arch = x86_64
 	license = custom
@@ -15,7 +15,7 @@ pkgbase = varicad
 	depends = gtk2
 	depends = hicolor-icon-theme
 	provides = varicad
-	source = https://www.varicad.com/userdata/files/release/en/VariCAD-2024.1.01_en-1.x86_64.rpm
+	source = https://www.varicad.com//userdata/files/release/en/VariCAD-2024.1.01_en-1.x86_64.rpm
 	sha256sums = 321b33ae9f67d937f95ff3a13183acc92f432c3718192288ab8796b1a574696c
 
 pkgname = varicad
