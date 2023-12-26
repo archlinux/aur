@@ -2,7 +2,7 @@
 
 _pkgname='cmake-init'
 pkgname="${_pkgname}-git"
-pkgver=0.37.2.r0.g643134f
+pkgver=0.39.0.r0.g4618fbb
 pkgrel=1
 pkgdesc='An opinionated CMake project initializer that generates CMake projects.'
 arch=(any)
@@ -28,7 +28,7 @@ pkgver() {
 	cd "${_srcdir}"
 	( set -o pipefail
 		git describe --tags --abbrev=7 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 	)
 }
 
