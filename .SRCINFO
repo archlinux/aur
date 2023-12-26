@@ -1,6 +1,6 @@
 pkgbase = pacdef
 	pkgdesc = multi-backend declarative package manager for Linux
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/steven-omaha/pacdef
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pacdef
 	license = GPL3
 	makedepends = rust
 	depends = gcc-libs
-	source = pacdef-1.3.1.tar.gz::https://crates.io/api/v1/crates/pacdef/1.3.1/download
-	sha256sums = b9fd0c947beb927303bd5bafd7972719414df96af9e328054a77f455f7835533
+	source = pacdef-1.3.2.tar.gz::https://crates.io/api/v1/crates/pacdef/1.3.2/download
+	sha256sums = 83097d45fb570c0fb5986c3e1dff6389314794d7acc6fc4c1277a6a1bb89c5e9
 
 pkgname = pacdef
