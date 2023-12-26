@@ -1,0 +1,14 @@
+Index: monkey-bubble/src/net/Makefile.am
+===================================================================
+--- monkey-bubble.orig/src/net/Makefile.am	2013-04-07 00:15:52.798001549 -0400
++++ monkey-bubble/src/net/Makefile.am	2013-04-07 00:16:16.554000555 -0400
+@@ -31,7 +31,8 @@
+ 	libmonkeynet.a \
+ 	../monkey/libmonkey.a \
+ 	../util/libmonkeyutil.a \
+-	$(MONKEY_SRV_LIBS)
++	$(MONKEY_SRV_LIBS) \
++	-lm
+ 
+ $(libmonkeynet_a_OBJECTS): $(marshal_sources)
+ 

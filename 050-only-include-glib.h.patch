@@ -1,0 +1,38 @@
+Index: monkey-bubble/src/net/message-handler.c
+===================================================================
+--- monkey-bubble.orig/src/net/message-handler.c	2004-12-24 12:35:30.000000000 +0100
++++ monkey-bubble/src/net/message-handler.c	2012-09-30 13:19:18.000000000 +0200
+@@ -28,7 +28,7 @@
+ #include <unistd.h>
+ #include <string.h>
+ #include <arpa/inet.h>
+-#include <glib/gthread.h>
++#include <glib.h>
+ #include <sys/time.h>
+ #include <time.h>
+ 
+Index: monkey-bubble/src/net/simple-server.c
+===================================================================
+--- monkey-bubble.orig/src/net/simple-server.c	2006-03-21 21:17:40.000000000 +0100
++++ monkey-bubble/src/net/simple-server.c	2012-09-30 13:19:35.000000000 +0200
+@@ -31,7 +31,6 @@
+ #include <unistd.h>
+ #include <string.h>
+ #include <arpa/inet.h>
+-#include <glib/gthread.h>
+ #include <sys/time.h>
+ #include <time.h>
+ 
+Index: monkey-bubble/src/ui/main.c
+===================================================================
+--- monkey-bubble.orig/src/ui/main.c	2004-12-03 08:05:59.000000000 +0100
++++ monkey-bubble/src/ui/main.c	2012-09-30 13:19:06.000000000 +0200
+@@ -14,7 +14,7 @@
+ #include <gtk/gtk.h>
+ #include <glib/gi18n.h>
+ #include <libgnome/gnome-score.h>
+-#include <glib/gthread.h>
++#include <glib.h>
+ 
+ #include <math.h>
+ #include <stdio.h>

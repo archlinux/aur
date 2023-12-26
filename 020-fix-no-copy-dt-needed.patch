@@ -1,0 +1,22 @@
+Description: fix build with ld --as-needed
+ the libraries where placed before object files on the compile commandline
+ this leads to the references not being registered as needed and dropped.
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/monkey-bubble/+bug/771130
+Author: Julian Taylor <jtaylor.debian@googlemail.com>
+Index: monkey-bubble/src/net/Makefile.am
+===================================================================
+--- monkey-bubble.orig/src/net/Makefile.am	2011-07-02 19:06:24.189604281 +0200
++++ monkey-bubble/src/net/Makefile.am	2011-07-02 19:06:46.849604295 +0200
+@@ -28,10 +28,10 @@
+ monkey_srv_LDFLAGS =
+ 
+ monkey_srv_LDADD = \
+-	$(MONKEY_SRV_LIBS) \
+ 	libmonkeynet.a \
+ 	../monkey/libmonkey.a \
+-	../util/libmonkeyutil.a 
++	../util/libmonkeyutil.a \
++	$(MONKEY_SRV_LIBS)
+ 
+ $(libmonkeynet_a_OBJECTS): $(marshal_sources)
+ 

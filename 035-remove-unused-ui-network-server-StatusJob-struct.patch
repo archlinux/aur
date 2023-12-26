@@ -1,0 +1,19 @@
+diff --git monkey-bubble.orig/src/ui/ui-network-server.c monkey-bubble/src/ui/ui-network-server.c
+index b5e1f18..5b11939 100644
+--- monkey-bubble.orig/src/ui/ui-network-server.c
++++ monkey-bubble/src/ui/ui-network-server.c
+@@ -204,14 +204,6 @@ ui_network_server_new (NetworkSimpleServer* server)
+   return ngl;
+ }
+ 
+-
+-struct StatusJob {
+-        UiNetworkServer * self;
+-        gchar * message;
+-} StatusJob;
+-
+-
+-
+ static void 
+ number_of_players_changed(UiNetworkServer * self,
+                           GtkWidget  *widget)

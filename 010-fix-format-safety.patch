@@ -1,0 +1,15 @@
+Description: Changed the code to be compilable
+Author: Sven Herzberg <herzi@gnome-de.org>
+Bug-Ubuntu: https://launchpad.net/bugs/303464
+--- monkey-bubble.orig/src/ui/ui-main.c
++++ monkey-bubble/src/ui/ui-main.c
+@@ -668,7 +668,7 @@ static void show_error_dialog (GtkWindow
+                                          GTK_DIALOG_DESTROY_WITH_PARENT,
+                                          GTK_MESSAGE_ERROR,
+                                          GTK_BUTTONS_CLOSE,
+-                                         message);
++                                         "%s", message ? message : "");
+     
+         g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+     
+
