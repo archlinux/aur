@@ -3,8 +3,8 @@
 # Contributor: Patrick Eigensatz <patrick.eigensatz@gmail.com>
 
 pkgname=qjournalctl
-pkgver=0.6.3
-pkgrel=4
+pkgver=0.6.4
+pkgrel=1
 pkgdesc='Qt-based graphical user interface for the journalctl command'
 arch=('x86_64')
 url='https://github.com/pentix/qjournalctl'
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'libssh' 'qt5-base')
 makedepends=('imagemagick')
 source=("https://github.com/pentix/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'qjournalctl.appdata.xml')
-sha256sums=('a8226177c72f3867b34eb5f7150c672d5e0a21ac5f808e64576c5771a097ef36'
+sha256sums=('8f456e599d5b54f8463e18e2880129393ba65a5e5dbdde19c893291f9ab92cb3'
             '8f82dfee83ef1b4b66661f54ea7fbf781c2f971fdbb83bed0d1ef8777324efaa')
 
 prepare() {
