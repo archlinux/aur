@@ -1,6 +1,6 @@
 # Maintainer: Premysl Srubar <premysl.srubar at gmail com>
 pkgname=python-mediapipe-git
-pkgver=v0.8.9.r0.ge6c19885
+pkgver=v0.10.9.r42.g8609e5fae
 pkgrel=1
 pkgdesc="MediaPipe offers cross-platform, customizable ML solutions for live and streaming media."
 arch=('any')
@@ -37,6 +37,9 @@ prepare() {
     #Uncommend opencv4 includes
     #https://google.github.io/mediapipe/getting_started/install.html
     sed -i 's!#"include/opencv4/!"include/opencv4/!g' third_party/opencv_linux.BUILD
+    formatted_version=$(echo $pkgver | sed 's/^v//; s/r\([0-9]*\)\./post\1+/')
+    sed -i "s/^__version__ = .*/__version__ = '$formatted_version'/" setup.py
+    
 
     #python setup.py gen_protos #Without this the cleanup after the build would fail on non-existing files
 }
@@ -62,7 +65,7 @@ package() {
     # /tmp/bazel/_bazel_${USER}/
 
     cd "$srcdir/${pkgname}"
-    
+ 
     python setup.py gen_protos #Without this the cleanup after the install would fail on non-existing files
     echo python setup.py install --root="${pkgdir}" --optimize=1 --link-opencv
    
