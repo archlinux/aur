@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Dolle  <dev at gdolle.com>
 pkgname=micromamba
 _pkgname=${pkgname/micro/}
-pkgver=1.5.5
-_pkgver=2023.12.11
+pkgver=1.5.6
+_pkgver=2023.12.21
 pkgrel=1
 pkgdesc="C++ tiny version of mamba, the fast conda package installer"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libarchive' 'cmake' 'curl' 'libsolv' 'cli11' 'pybind11' 'fmt' 'spdlog' 'nlohmann-json' 'python-pip' 'yaml-cpp' 'reproc' 'ghc-filesystem' 'termcolor' 'tl-expected')
 makedepends=('gtest')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/mamba-org/mamba/archive/refs/tags/${_pkgver}.tar.gz )
-md5sums=('58b124a95f02c1959aa7870dace5288e')
+md5sums=('1c398b6e09a9d62be148284f35ef7c71')
 provides=('micromamba')
 conflict=('micromamba-bin')
 
