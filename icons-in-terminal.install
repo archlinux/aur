@@ -1,0 +1,6 @@
+post_install() {
+cat << 'EOM'
+	Font(s) that should use icons are added to file /usr/share/fontconfig/conf.avail/30-icons-in-terminal.conf
+	Use command 'icons-in-terminal' to view a list of available icons.
+EOM
+}
