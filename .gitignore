@@ -1,0 +1,8 @@
+/test.py
+*.pkg.tar.xz
+*.pkg.tar.zst
+python-bitsandbytes**
+src
+pkg
+prepare.sh
+repo

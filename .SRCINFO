@@ -1,0 +1,20 @@
+pkgbase = python-bitsandbytes-git
+	pkgdesc = Lightweight wrapper around CUDA custom functions, in particular 8-bit optimizers, matrix multiplication (LLM.int8()), and quantization functions.
+	pkgver = 0.41.0.r50.gf63abb5
+	pkgrel = 1
+	url = https://github.com/TimDettmers/bitsandbytes
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python>=3.9
+	depends = cuda>=11.0
+	depends = openssl
+	depends = python-pytorch
+	provides = python-bitsandbytes
+	conflicts = python-bitsandbytes
+	source = python-bitsandbytes-git::git+https://github.com/TimDettmers/bitsandbytes.git
+	sha256sums = SKIP
+
+pkgname = python-bitsandbytes-git
