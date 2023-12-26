@@ -19,8 +19,8 @@ source=("git+${url}.git")
 pkgver() {
 	cd "${_pkgname}"
 	( set -o pipefail
-		git describe --abbrev=7 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		git describe --tags --abbrev=7 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 	)
 }
 
@@ -31,5 +31,4 @@ build() {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
-	install -Dm644 "${_pkgname}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
