@@ -11,6 +11,7 @@ pkgbase = rez
 	depends = python
 	depends = python-yaml
 	optdepends = bash-completion: command-line autocomplete with bash
+	optdepends = cmake: alternative build system
 	options = !strip
 	source = rez-2.114.1.tar.gz::https://github.com/AcademySoftwareFoundation/rez/archive/refs/tags/2.114.1.tar.gz
 	b2sums = 803d862ec0978b228eb1597800de56e0966a046126bb237b36c3be3fce3cceae96c67cf1dfe88f3138ade926dd8edcace8e0bd2e3ec095c57aa60b2ce46da4f7

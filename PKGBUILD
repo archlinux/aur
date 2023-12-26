@@ -9,7 +9,8 @@ url='https://github.com/AcademySoftwareFoundation/rez'
 license=('Apache')
 depends=('python' 'python-yaml')  # Python 2.7 is supported as well. Replace with python2.
 makedepends=('python>=3.7' 'python-pip' 'python-setuptools')
-optdepends=('bash-completion: command-line autocomplete with bash')
+optdepends=('bash-completion: command-line autocomplete with bash'
+            'cmake: alternative build system')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/rez/archive/refs/tags/$pkgver.tar.gz")
 b2sums=('803d862ec0978b228eb1597800de56e0966a046126bb237b36c3be3fce3cceae96c67cf1dfe88f3138ade926dd8edcace8e0bd2e3ec095c57aa60b2ce46da4f7')
 
