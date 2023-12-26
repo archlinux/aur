@@ -1,6 +1,6 @@
 pkgbase = photobroom-git
 	pkgdesc = Photos managing tool
-	pkgver = v1.6.0.r175.ge9b0d6b95
+	pkgver = v1.6.0.r461.g947e54877
 	pkgrel = 1
 	url = https://github.com/Kicer86/photobroom
 	arch = i686
@@ -27,6 +27,8 @@ pkgbase = photobroom-git
 	source = qml-colorpicker::git+https://github.com/rshest/qml-colorpicker.git#commit=5967b3e38033794f54d66c57a03f9a356df0dc03
 	source = face_recognition_models::git+https://github.com/ageitgey/face_recognition_models.git#commit=e67de717267507d1e9246de95692eb8be736ab61
 	source = animated_webp::git+https://github.com/Kicer86/AnimatedWebP.git#commit=996e92a0c45b2ea20034c9e97ec75d2098faf2f8
+	source = reflectpp::git+https://github.com/Kicer86/reflectpp.git#commit=5dc631cb129dd6a5dbdcab8836ba7e0772c2b02c
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
