@@ -14,7 +14,7 @@ makedepends=('cmake' 'python-setuptools'
 optdepends=('paraview: post-processing')
 source=(https://damask.mpie.de/download/damask-${pkgver_}.tar.xz)
 
-sha256sums=('f62c38123213d1c1fe2eb8910b0ffbdc1cac56273c2520f3b64a553363190b9d')
+sha512sums=('142aca21c51a23f8eb3cc0284ac8d837bedc6e6c20ec0c9ddb239842497239ebc3584d43c2b0e7919de4a4ecc4e180b810bfd46146058fafa3544ca0a5af2da2')
 
 
 build() {
