@@ -5,8 +5,8 @@
 
 _pkgname="velox"
 pkgname="$_pkgname-git"
-pkgver=0.0.2.r287.gfcc0412
-pkgrel=2
+pkgver=0.0.3.r255.gfcc0412
+pkgrel=1
 pkgdesc="Simple xcb window manager inspired by awesome, xmonad, and dwm"
 url="https://github.com/michaelforney/velox"
 license=('MIT')
@@ -30,7 +30,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  local _tag=$(git tag | sort -V | tail -1)
+  local _pkgver=$(sed -E 's&^[^0-9]*&&' <<< "${_tag:?}")
+  local _revision=$(git rev-list --count --cherry-pick $_tag...HEAD)
+  local _hash=$(git rev-parse --short HEAD)
+  printf '%s.r%s.g%s' "${_pkgver:?}" "${_revision:?}" "${_hash:?}"
 }
 
 prepare() {

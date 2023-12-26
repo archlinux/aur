@@ -1,7 +1,7 @@
 pkgbase = velox-git
 	pkgdesc = Simple xcb window manager inspired by awesome, xmonad, and dwm
-	pkgver = 0.0.2.r287.gfcc0412
-	pkgrel = 2
+	pkgver = 0.0.3.r255.gfcc0412
+	pkgrel = 1
 	url = https://github.com/michaelforney/velox
 	arch = i686
 	arch = x86_64
