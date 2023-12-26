@@ -1,10 +1,12 @@
 [Desktop Entry]
+Version=1.0
+Type=Application
 Name=AudioRelay
 Comment=Stream your PC audio to your phone
 Comment[zh_CN]=将电脑音频流式传输到手机
-Exec=audiorelay
+Exec=audiorelay %U
 Icon=audiorelay
 Terminal=false
-Type=Application
+StartupNotify=false
 Categories=Audio;AudioVideo;Utility
-MimeType=
+StartupWMClass=com-azefsw-audioconnect-desktop-app-mainkt
