@@ -7,8 +7,8 @@ pkgdesc="MSDF font atlas generator"
 url=https://github.com/Chlumsky/msdf-atlas-gen
 arch=(x86_64)
 license=(MIT)
-depends=(msdfgen-git2)
-makedepends=(git cmake ninja)
+depends=(tinyxml2 libpng freetype2 zlib)
+makedepends=(git cmake ninja msdfgen-git2)
 provides=(msdf-atlas-gen=$pkgver)
 conflicts=(msdf-atlas-gen)
 

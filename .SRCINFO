@@ -8,7 +8,11 @@ pkgbase = msdf-atlas-gen-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
-	depends = msdfgen-git2
+	makedepends = msdfgen-git2
+	depends = tinyxml2
+	depends = libpng
+	depends = freetype2
+	depends = zlib
 	provides = msdf-atlas-gen=1.2.2.r12.g3cf874b
 	conflicts = msdf-atlas-gen
 	source = msdf-atlas-gen-git::git+https://github.com/Chlumsky/msdf-atlas-gen.git
