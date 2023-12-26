@@ -2,7 +2,7 @@
 
 pkgname=alephium-desktop-wallet-bin
 pkgdesc="The official Alephium wallet for desktop."
-pkgver=2.1.6
+pkgver=2.2.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/alephium/desktop-wallet"
@@ -10,7 +10,7 @@ license=('LGPL3')
 conflicts=("alephium-wallet-bin")
 replaces=("alephium-wallet-bin")
 source_x86_64=("${url}/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums_x86_64=('62ea35ce3eef12319389dcb2ce3a43cecdd2f43ef0beae191ff1f703f109b1a0')
+sha256sums_x86_64=('27279b13c287d98cfc990fbd5398d46ab183999d68bf737f2b30a21911d07cf5')
 depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'gtk3'
     'hicolor-icon-theme' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext'
     'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango'
