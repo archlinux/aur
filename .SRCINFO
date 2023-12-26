@@ -1,0 +1,13 @@
+pkgbase = gowebly-bin
+	pkgdesc = A language for writing HTML user interfaces in Go.
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/gowebly/gowebly
+	arch = x86_64
+	license = MIT
+	provides = gowebly
+	conflicts = gowebly
+	source_x86_64 = gowebly-x64-1.10.0.tar.gz::https://github.com/gowebly/gowebly/releases/download/v1.10.0/gowebly_1.10.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 432f1695e6afb4df93927b46673316afdf8f58fce7e33c127ec95b8eada94ca6
+
+pkgname = gowebly-bin
