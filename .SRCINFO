@@ -1,45 +1,46 @@
 pkgbase = wireplumber-set-route-git
-	pkgdesc = Session / policy manager implementation for PipeWire
-	pkgver = 0.4.17.r3.gf01177d0
+	pkgdesc = Session / policy manager implementation for PipeWire, with wpctl set-route
+	pkgver = 0.4.17.r3.gf01177d
 	pkgrel = 1
-	url = https://gitlab.freedesktop.org/Ferdi265/wireplumber
-	install = wireplumber.install
+	url = https://pipewire.pages.freedesktop.org/wireplumber/
 	arch = x86_64
 	license = MIT
-	checkdepends = pipewire-alsa
-	checkdepends = pipewire-jack
-	checkdepends = pipewire-pulse
-	makedepends = cmake
+	checkdepends = pipewire-audio
+	makedepends = doxygen
+	makedepends = git
 	makedepends = glib2
 	makedepends = gobject-introspection
+	makedepends = graphviz
+	makedepends = lua
 	makedepends = meson
 	makedepends = pipewire
-	makedepends = doxygen
-	makedepends = glib2
-	makedepends = python-breathe
 	makedepends = python-lxml
-	makedepends = python-sphinx_rtd_theme
-	makedepends = python-sphinx
 	makedepends = systemd
-	makedepends = git
-	depends = gcc-libs
-	depends = glibc
+	source = git+https://gitlab.freedesktop.org/Ferdi265/wireplumber.git
+	b2sums = SKIP
+
+pkgname = wireplumber-set-route-git
+	install = wireplumber.install
+	depends = libwireplumber-set-route-git=0.4.17.r3.gf01177d-1
+	depends = libsystemd.so
 	depends = lua
-	depends = libgio-2.0.so
+	depends = pipewire
+	provides = pipewire-session-manager
+	provides = wireplumber
+	provides = wireplumber-git
+	conflicts = pipewire-media-session
+	conflicts = wireplumber
+	conflicts = wireplumber-git
+
+pkgname = libwireplumber-set-route-git
+	pkgdesc = Session / policy manager implementation for PipeWire, with wpctl set-route - client library
 	depends = libglib-2.0.so
 	depends = libgmodule-2.0.so
 	depends = libgobject-2.0.so
+	depends = libgio-2.0.so
 	depends = libpipewire-0.3.so
-	provides = wireplumber=0.4.17.r3.gf01177d0
-	provides = wireplumber-git=0.4.17.r3.gf01177d0
-	provides = libwireplumber
 	provides = libwireplumber-0.4.so
-	provides = pipewire-session-manager
-	conflicts = wireplumber
-	conflicts = wireplumber-git
+	provides = libwireplumber
+	provides = libwireplumber-git
 	conflicts = libwireplumber
-	conflicts = pipewire-media-session
-	source = git+https://gitlab.freedesktop.org/Ferdi265/wireplumber.git
-	sha512sums = SKIP
-
-pkgname = wireplumber-set-route-git
+	conflicts = libwireplumber-git
