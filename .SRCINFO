@@ -1,6 +1,6 @@
 pkgbase = jfa-go-git
 	pkgdesc = A web app for managing users on Jellyfin
-	pkgver = r1389.753f5fc
+	pkgver = r1672.7223981
 	pkgrel = 1
 	url = https://github.com/hrfee/jfa-go
 	arch = x86_64

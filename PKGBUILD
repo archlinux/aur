@@ -1,7 +1,7 @@
 # Maintainer: Harvey Tindall <hrfee@protonmail.ch>
 pkgname=jfa-go-git
 _pkgname=jfa-go
-pkgver=r1389.753f5fc
+pkgver=r1672.7223981
 pkgrel=1
 pkgdesc="A web app for managing users on Jellyfin"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -49,7 +49,7 @@ package() {
     mkdir -p "$pkgdir"/usr/bin
     chown -R root "$pkgdir"/opt/$_pkgname/
     chmod 755 "$pkgdir"/opt/$_pkgname/$_pkgname
-    ln -sf "$pkgdir"/opt/$_pkgname/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+    ln -sf /opt/$_pkgname/$_pkgname "$pkgdir"/usr/bin/$_pkgname
     install -Dm644 static/fonts/OFL.txt -t "$pkgdir"/usr/share/licenses/$_pkgname
     install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$_pkgname
 }
