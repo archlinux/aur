@@ -18,7 +18,7 @@ if [ ! -e ~/.steam/steamcmd ]
 then
     mkdir -p ~/.steam/steamcmd/linux32
     # steamcmd will replace these files with newer ones itself on first run
-    cp /usr/share/steamcmd/steamcmd.sh ~/.steam/steamcmd/steamcmd.sh
-    cp /usr/share/steamcmd/linux32/steamcmd ~/.steam/steamcmd/linux32/steamcmd
+    cp /usr/lib/steamcmd/steamcmd.sh ~/.steam/steamcmd/steamcmd.sh
+    cp /usr/lib/steamcmd/linux32/steamcmd ~/.steam/steamcmd/linux32/steamcmd
 fi
-exec ~/.steam/steamcmd/steamcmd.sh $@
+exec ~/.steam/steamcmd/steamcmd.sh "$@"

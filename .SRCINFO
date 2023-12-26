@@ -1,7 +1,7 @@
 pkgbase = steamcmd
 	pkgdesc = Steam Command Line Tools
 	pkgver = latest
-	pkgrel = 3
+	pkgrel = 4
 	url = http://developer.valvesoftware.com/wiki/SteamCMD
 	install = steamcmd.install
 	arch = i686
@@ -10,8 +10,12 @@ pkgbase = steamcmd
 	source = https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
 	source = steamcmd
 	md5sums = 70a38a1c8688d170c48b7f4990782c7a
-	md5sums = 5de1fddd114f10ff5d2a8fbeee044a8f
+	md5sums = f344bc28c473a75d68021c4cf5cd019c
+	depends_i686 = gcc-libs
+	depends_i686 = sdl2
+	depends_i686 = dbus
 	depends_x86_64 = lib32-gcc-libs
+	depends_x86_64 = lib32-sdl2
+	depends_x86_64 = lib32-dbus
 
 pkgname = steamcmd
-
