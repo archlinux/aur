@@ -1,0 +1,17 @@
+pkgbase = full-dracula-theme-git
+	pkgdesc = Dracula Dark Theme for GTK, KDE with Cursor
+	pkgver = 2023.12.27.80d5a3f
+	pkgrel = 0
+	url = https://github.com/dracula/gtk
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = kvantum-qt5
+	conflicts = dracula-gtk-theme-git
+	conflicts = dracula-kde-theme-git
+	conflicts = dracula-gtk-theme
+	options = !strip
+	source = dracula-gtk::git+https://github.com/dracula/gtk.git
+	sha256sums = SKIP
+
+pkgname = full-dracula-theme-git
