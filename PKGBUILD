@@ -7,7 +7,7 @@
 _pkgname=openmpi
 pkgname=openmpi-ucx
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='High performance message passing library (MPI)'
 arch=(x86_64)
 url='https://www.open-mpi.org'
@@ -79,6 +79,9 @@ build() {
     --with-valgrind
   )
   cd $_pkgname-$pkgver
+
+  # set FCFLAGS for CET support in gfortran
+  export FCFLAGS=${CFLAGS/ -Wformat -Werror=format-security/}
 
   ./configure "${configure_options[@]}"
   # prevent excessive overlinking due to libtool
