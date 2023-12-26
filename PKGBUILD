@@ -1,16 +1,17 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Stephen Caraher <moskvax@gmail.com>
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.5.r20201207.11381
+pkgver=6.1.r20231222.12393
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility - git version"
 arch=('i686' 'x86_64')
 url="https://github.com/gnuplot/gnuplot"
 license=('custom')
 depends=('gd' 'lua' 'qt5-svg' 'pango' 'libcerf' 'libwebp')
-makedepends=('git' 'clang' 'qt5-tools')
+makedepends=('git' 'qt5-tools')
 provides=("gnuplot=${_majorver}")
 conflicts=('gnuplot')
 provides=('gnuplot')
@@ -28,7 +29,7 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
   ./prepare
-  CC=clang CXX=clang++ ./configure --prefix=/usr \
+  ./configure --prefix=/usr \
 	  --libexecdir=/usr/lib \
 	  --with-gihdir=/usr/share/gnuplot \
 	  --with-readline=gnu \
