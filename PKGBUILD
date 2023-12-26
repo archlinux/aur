@@ -7,7 +7,7 @@ pkgdesc='Dracula Dark Theme for GTK, KDE with Cursor'
 url='https://github.com/dracula/gtk'
 arch=('any')
 license=('GPL')
-depends=('kvantum-qt5')
+depends=('kvantum')
 conflicts=('dracula-gtk-theme-git'
            'dracula-kde-theme-git'
            'dracula-gtk-theme')
