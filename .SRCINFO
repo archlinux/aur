@@ -1,6 +1,6 @@
 pkgbase = libayatana-common
 	pkgdesc = Ayatana System Indicators' common API functions
-	pkgver = 0.9.9
+	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/libayatana-common
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = libayatana-common
 	makedepends = intltool
 	depends = dconf
 	depends = zenity
-	source = libayatana-common-0.9.9.tar.gz::https://github.com/AyatanaIndicators/libayatana-common/archive/0.9.9.tar.gz
-	md5sums = 884f56abfdb34461843e3f2f70ac37c9
+	source = libayatana-common-0.9.10.tar.gz::https://github.com/AyatanaIndicators/libayatana-common/archive/0.9.10.tar.gz
+	md5sums = c2d55bad8c3c902cd01b6be842141498
 
 pkgname = libayatana-common
