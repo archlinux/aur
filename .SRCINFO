@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-a11y
 	pkgdesc = Ayatana Indicator for Accessibility Settings
-	pkgver = 23.10.1
+	pkgver = 23.10.3
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-a11y
 	arch = i686
@@ -18,7 +18,9 @@ pkgbase = ayatana-indicator-a11y
 	depends = orca
 	depends = espeak-ng
 	depends = dconf
-	source = ayatana-indicator-a11y-23.10.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-a11y/archive/23.10.1.tar.gz
-	md5sums = 9c5eb51ecd13adfb167dfb667b453945
+	depends = magnus
+	depends = libayatana-common
+	source = ayatana-indicator-a11y-23.10.3.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-a11y/archive/23.10.3.tar.gz
+	md5sums = 684015aca47c479f3866f436d1300f3b
 
 pkgname = ayatana-indicator-a11y
