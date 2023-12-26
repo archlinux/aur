@@ -7,7 +7,7 @@
 pkgname=trilinos
 pkgver=15.0.0
 _pkgver=${pkgver//./-}
-pkgrel=1
+pkgrel=2
 pkgdesc="algorithms for the solution of large-scale scientific problems"
 arch=('x86_64')
 url="http://trilinos.org"
@@ -41,7 +41,7 @@ build() {
         -D TPL_ENABLE_MPI:BOOL=ON \
         -D TPL_ENABLE_HDF5:BOOL=ON \
         -D CMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch"
-  cmake --build build --parallel 4
+  make -C build
 }
 
 check() {
