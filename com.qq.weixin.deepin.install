@@ -1,0 +1,16 @@
+info() {
+    echo -e "\033[0;34m============================提示/INFO==============================="
+    echo -e "此脚本主要是覆盖安装时使用，删除原有的运行及配置文件。"
+    echo -e "====================================================================\033[0m"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -f \{\}/@bottlename@/reinstalled \;
+    info
+}
+pre_remove() {
+    echo "deleting the @bottlename@ bottle..."
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/@bottlename@/ \;
+}

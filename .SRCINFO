@@ -1,19 +1,22 @@
 pkgbase = com.qq.weixin.deepin
 	pkgdesc = Deepin Wine WeChat
-	pkgver = 3.2.1.154_14
-	pkgrel = 2
+	pkgver = 3.9.5.80deepin10
+	pkgrel = 1
 	url = http://pc.weixin.qq.com/
+	install = com.qq.weixin.deepin.install
 	arch = x86_64
 	license = Proprietary
-	makedepends = tar
-	depends = deepin-wine6-stable
+	depends = deepin-wine6-stable>=6.0.0.58
 	depends = deepin-wine-helper
 	conflicts = deepin-wine-wechat
-	conflicts = deepin.com.wechat
-	conflicts = deepin.com.wechat2
-	source = com.qq.weixin.deepin_3.2.1.154deepin14_i386.deb::https://github.com/JoveYu/PKGBUILD/releases/download/0.0.1/com.qq.weixin.deepin_3.2.1.154deepin14_i386.deb
+	conflicts = com.qq.weixin.spark
+	source = com.qq.weixin.deepin-3.9.5.80deepin10.deb::https://community-store-packages.deepin.com/appstore/pool/appstore/c/com.qq.weixin.deepin/com.qq.weixin.deepin_3.9.5.80deepin10_i386.deb
 	source = libldap24.tar.gz
-	md5sums = b48cd3c089b7c2bb7b68aba018b306b1
-	md5sums = 9f42504749b5d9936428a83c28d13aad
+	source = com.qq.weixin.deepin.install
+	source = com.qq.weixin.deepin.sh
+	sha256sums = 2967aad7806e0c72980aa9e1880ddf82ab793b322fd9af83ff54d477ac4fdb81
+	sha256sums = af3327e55951d901c3bca2851f933e643ce71be3270715c2d01993a6acf0675b
+	sha256sums = 9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201
+	sha256sums = ba600b75b6754bd5a82d9d8dd0ba727f997135662fff37521470fb3c690bdec8
 
 pkgname = com.qq.weixin.deepin
