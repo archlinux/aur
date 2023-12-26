@@ -3,8 +3,8 @@
 # Contributor: Sasasu <lizhaolong0123@gmail.com>
 
 pkgname=hex2bin-git
-pkgver=1.9.r0.g20430e8
-pkgrel=1
+pkgver=1.9.r2.g34c263d
+pkgrel=2
 pkgdesc="Hex to binary converter."
 arch=(aarch64
 	riscv64
@@ -12,7 +12,8 @@ arch=(aarch64
 url="https://github.com/Keidan/hex2bin"
 license=('GPL3')
 replaces=('hex2bin')
-depends=()
+depends=(glibc
+    gcc-libs)
 makedepends=(git
 	cmake
 	ninja)
