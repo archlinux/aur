@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-range-v3-git
 	pkgdesc = Experimental range library for C++11/14/17 (mingw-w64)
-	pkgver = 0.11.0.r71.g8f690283c
+	pkgver = 0.12.0.r28.g97452bb
 	pkgrel = 1
 	url = https://github.com/ericniebler/range-v3
 	arch = any

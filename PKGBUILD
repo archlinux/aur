@@ -4,7 +4,7 @@ _pkgname=range-v3
 pkgname=mingw-w64-${_pkgname}-git
 provides=("mingw-w64-${_pkgname}")
 conflicts=("mingw-w64-${_pkgname}")
-pkgver=0.11.0.r71.g8f690283c
+pkgver=0.12.0.r28.g97452bb
 pkgrel=1
 pkgdesc='Experimental range library for C++11/14/17 (mingw-w64)'
 url="https://github.com/ericniebler/${_pkgname}"
@@ -15,12 +15,8 @@ makedepends=('mingw-w64-cmake' 'git')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=(
-	'SKIP'
-)
-source=(
-	"git+${url}.git"
-)
+sha256sums=('SKIP')
+source=("git+${url}.git")
 
 _dir="${_pkgname}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -30,8 +26,8 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DND
 pkgver() {
 	cd "${_dir}"
 	( set -o pipefail
-		git describe --tags --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		git describe --tags --abbrev=7 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 	)
 }
 
