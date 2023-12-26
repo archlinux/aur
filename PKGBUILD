@@ -7,12 +7,12 @@
 
 pkgname=pytrainer
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='tool to log your sport activities.'
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}/wiki"
 license=('GPL')
-depends=('python-setuptools' 'python-lxml' 'python-matplotlib')
+depends=('python-setuptools' 'python-lxml' 'python-matplotlib' 'python-sqlalchemy')
 optdepends=('garmintools: "Garmin via garmintools" plugin'
             'gdal: "Elevation correction" plugin'
             'gpsbabel: "Garmin via GPSBabel 1.3.5" plugin'
