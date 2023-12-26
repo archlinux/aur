@@ -41,10 +41,11 @@ prepare() {
     # Remove redundant file
     rm usr/autodesk/${pkgname}${_majorver}/desktop/Autodesk-Maya.directory
 
-    # Avoid reading the system libmd which is a different library of the same name
+    # Avoid reading the system libmd, which is a different library of the same name
     touch usr/autodesk/${pkgname}${_majorver}/lib/libmd.so
 }
 
 package() {
     mv opt usr var "$pkgdir/"
+    install -Dm644 "$pkgdir/usr/autodesk/${pkgname}${_majorver}/resources/copyrights.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
