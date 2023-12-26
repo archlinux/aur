@@ -2,7 +2,7 @@
 # Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 
 pkgname=idasen
-pkgver=0.10.3
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Python API and CLI for the IKEA IDÅSEN standing desk.'
 url='https://github.com/newAM/idasen'
@@ -12,7 +12,7 @@ makedepends=('python-build' 'python-installer' 'python-poetry')
 license=('MIT')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/newAM/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('74887a3546d7e5a693fa627937b31bcf32d24faedd045843a526ddbdc11e275b237687a18bf937d2c814b03fbd3a5ba54d099c1d173ce050ded12b72eb528269')
+sha512sums=('3a9971ff1e093fd7dc4dedbe1841a72c17139761c03482d4729a824e58683ed3ced4f7a92e349f81c431d87343b80d76dff3c62d3feaa2fbb81b6e9048830358')
 
 build(){
   cd "${srcdir}/$pkgname-$pkgver"
