@@ -1,0 +1,18 @@
+pkgbase = libfdk-aac-git
+	pkgdesc = Modified library of Fraunhofer AAC decoder and encoder
+	pkgver = 2.0.3.r0.g716f439
+	pkgrel = 1
+	url = https://opencore-amr.sourceforge.io/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = libfdk-aac=2.0.3.r0.g716f439
+	provides = libfdk-aac.so
+	conflicts = libfdk-aac
+	source = git+https://git.code.sf.net/p/opencore-amr/fdk-aac
+	sha256sums = SKIP
+
+pkgname = libfdk-aac-git
