@@ -1,6 +1,6 @@
 pkgbase = shlink
 	pkgdesc = The definitive self-hosted URL shortener
-	pkgver = 3.6.4
+	pkgver = 3.7.2
 	pkgrel = 1
 	url = https://shlink.io
 	install = shlink.install
@@ -18,7 +18,7 @@ pkgbase = shlink
 	optdepends = nginx: web server
 	options = !strip
 	backup = etc/webapps/shlink/generated_config.php
-	source = https://github.com/shlinkio/shlink/releases/download/v3.6.4/shlink3.6.4_php8.2_dist.zip
-	sha256sums = 6e08d25a05f8937d83f06f9c7a23e78d439e45682505f0f738c505a056597d71
+	source = https://github.com/shlinkio/shlink/releases/download/v3.7.2/shlink3.7.2_php8.2_dist.zip
+	sha256sums = 0f958b9e12a4d083b0ec4a7046d981f8fe359daf24b5f3f91419e05babcdc7bc
 
 pkgname = shlink
