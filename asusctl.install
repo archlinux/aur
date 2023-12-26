@@ -1,9 +1,15 @@
+post_install() {
+  printf ":: asusd provides a service that is activated by an udev rule on\n"
+  printf ":: startup. Please reboot the system or run\n"
+  printf ":: # systemctl start asusd.service\n"
+  printf ":: to make it work.\n"
+}
+
 post_upgrade() {
-  if [ $(systemctl is-active asusd.service) == "active" ]
+  if systemctl is-active asusd.service --quiet
     then
-      printf ":: asusd is running, and requires a restart of the service…\n"
+      printf ":: asusd service will be restarted…\n"
       systemctl daemon-reload
       systemctl restart asusd.service
   fi
 }
-
