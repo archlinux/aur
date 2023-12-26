@@ -11,7 +11,7 @@
 # Maintainer: Kordian Bruck <k@bruck.me>
 
 pkgname=android-studio-system
-pkgver=2022.3.1.22
+pkgver=2023.1.1.26
 pkgrel=1
 pkgdesc="The official Android IDE (Stable branch)"
 arch=('x86_64')
@@ -24,9 +24,9 @@ optdepends=('ncurses5-compat-libs: native debugger support')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-$pkgver-linux.tar.gz"
         "android-studio.desktop"
         "license.html")
-sha256sums=('b2cb395a154eb25a36b6e43544569fbc704e466c86966ea0ee4ac4900b4112c9'
-            '73cd2dde1d0f99aaba5baad1e2b91c834edd5db3c817f6fb78868d102360d3c4'
-            '9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e')
+b2sums=('0fc944ee63dbb82267f974e4f893af26537077b25764be10c7bc732d298edf95af567a2f099d889c4d17750044d47dc84dba78922487e15dfd54808fb50abb35'
+        '16940866032d710ce995cc6bb0b994875215df0f6191b09a3ece5d6c5750c4fb3d430c683f545154eeceecad10d70333d59302fe6c5efd97c3fc9e66f3009dca'
+        '43b288fb81656cd72826a52620e41fbd0daa65d37246cb5b7dbff9c326022eabf18344513517b16134b557d6ae86535f44f863ebd06d6fe0410f92117c1a8c67')
 provides=("android-studio")
 conflicts=("android-studio")
 
