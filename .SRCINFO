@@ -1,7 +1,7 @@
 pkgbase = mapnik-git
 	pkgdesc = Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)
 	pkgver = 4.0.0.r13808.g2e1b325
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mapnik/mapnik
 	arch = i686
 	arch = x86_64
@@ -32,11 +32,9 @@ pkgbase = mapnik-git
 	provides = mapnik
 	conflicts = mapnik
 	source = git+https://github.com/mapnik/mapnik.git
-	source = mapnik-cmake-harfbuzz.patch
 	source = mapnik-datasource-ogr-test.patch
 	source = git+https://github.com/mapnik/test-data.git
 	sha256sums = SKIP
-	sha256sums = 90f541c0845e3c7005564fa113771ce01cf2bcfd57662b7fa8849aabf4151638
 	sha256sums = 3fcf178e646df526e9a5c278f56ad16e4f75d2f27108e7b33419649a46b92f52
 	sha256sums = SKIP
 
