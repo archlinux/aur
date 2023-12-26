@@ -12,6 +12,7 @@ pkgbase = photobroom-git
 	makedepends = imagemagick
 	makedepends = libwebp
 	makedepends = cs-libguarded
+	makedepends = boost
 	depends = exiv2
 	depends = qt6-base
 	depends = qt6-multimedia
