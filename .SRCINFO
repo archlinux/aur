@@ -1,6 +1,6 @@
 pkgbase = libretro-swanstation-git
 	pkgdesc = SwanStation is an open-source Libretro core implementation of DuckStation, a PSX emulator.
-	pkgver = r5790.37674474
+	pkgver = r5793.6a8c32b
 	pkgrel = 1
 	url = https://github.com/libretro/swanstation
 	arch = x86_64
