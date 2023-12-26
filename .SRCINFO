@@ -1,0 +1,18 @@
+pkgbase = speexdsp-git
+	pkgdesc = DSP library derived from speex
+	pkgver = 1.2.1.r8.g738e179
+	pkgrel = 1
+	url = https://www.speex.org/
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = glibc
+	provides = speexdsp=1.2.1.r8.g738e179
+	provides = libspeexdsp.so
+	conflicts = speexdsp
+	options = staticlibs
+	source = git+https://gitlab.xiph.org/xiph/speexdsp.git
+	sha256sums = SKIP
+
+pkgname = speexdsp-git
