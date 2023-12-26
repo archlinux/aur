@@ -3,7 +3,7 @@
 # Contributor: Kirill Viks <kirillvix at yandex dot com>
 
 pkgname='anilibria-winmaclinux'
-pkgver=1.2.11
+pkgver=1.2.13
 pkgrel=1
 pkgdesc='AniLibria client for major desktop platforms (stable)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/anilibria/anilibria-winmacl
 		"0001-Change-instalation-path-to-be-Arch-linux-friendly.patch"
 		"0001-disable-version-check.patch")
 
-sha256sums=('7c14a2b45acf07d904b14482ba97c84d98b2569ba66032cc1c30a2c3ca2bfc3d'
+sha256sums=('c5f7ba17c3fdb260a8087c7991ff98d0edd003ad9af308e6d62127f8f7cc9bcb'
             '31185f54427a0b14a4992672477fe2ae79aefd408c92ded1f3730bed55af4649'
             'c4e0e43fc23d9e3da36eb0245c52e60ac893ecb86e0617bac999cc38adfd337b'
             'a15f3aa3e7bc0fbaaa8da4f84beaecef06446e06bf42a8000e354e39ac6effe4')
