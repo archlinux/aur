@@ -1,18 +1,17 @@
 pkgbase = hath-rust
 	pkgdesc = Hentai@Home but rusty
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/james58899/hath-rust
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
-	makedepends = git
+	makedepends = cargo
 	options = !lto
-	source = git+https://github.com/james58899/hath-rust.git#tag=v1.0.4
+	source = https://github.com/james58899/hath-rust/archive/refs/tags/v1.1.0.tar.gz
 	source = hath-rust.service
 	source = hath-rust.tmpfiles
 	source = hath-rust.sysusers
-	sha256sums = SKIP
+	sha256sums = 4ea70d90a9262494cf8c12b2ce9696d191474df5d5bc301816b9a475845ad4e3
 	sha256sums = 5d2234eb0d842260a63bcb3e6d75270cbda06b2d5b26046d279063f74c059f54
 	sha256sums = c8723c66c17d9fe289bb6bbbf6cfb662a8e67c3d7ca6f4d3dd27bd675eff6df5
 	sha256sums = 28b78e349e96777177e6f95f078c3d09fec0dcd174b1a70d5dc9b18e309b0a81

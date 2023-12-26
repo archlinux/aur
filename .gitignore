@@ -2,4 +2,4 @@ pkg
 src
 *.pkg.tar.*
 *.log
-hath-rust
+*.tar.gz
