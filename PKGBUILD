@@ -1,8 +1,8 @@
 # Maintainer: Rodolphe Bréard <packages@what.tf>
 pkgname=acmed-polkit-reload
 _pkgname=acmed
-pkgver=0.18.0
-pkgrel=3
+pkgver=0.22.1
+pkgrel=1
 pkgdesc="Polkit rule allowing ACMEd to reload services"
 arch=('any')
 url="https://github.com/breard-r/acmed/"
