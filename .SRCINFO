@@ -1,7 +1,7 @@
 pkgbase = pulldown-cmark
 	pkgdesc = Pull parser for CommonMark, written in Rust
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/raphlinus/pulldown-cmark
 	arch = x86_64
 	license = MIT
