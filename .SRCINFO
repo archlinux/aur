@@ -1,17 +1,17 @@
 pkgbase = ytdownloader-gui-bin
 	pkgdesc = A modern GUI App for downloading Videos and Audios from hundreds of sites.
-	pkgver = 3.15.1
+	pkgver = 3.16.0
 	pkgrel = 1
 	url = https://ytdn.netlify.app/
 	arch = x86_64
 	license = GPL3
 	depends = electron27
 	depends = hicolor-icon-theme
-	provides = ytdownloader-gui=3.15.1
+	provides = ytdownloader-gui=3.16.0
 	conflicts = ytdownloader-gui
-	source = ytdownloader-gui-3.15.1.rpm::https://github.com/aandrew-me/ytDownloader/releases/download/v3.15.1/YTDownloader_Linux.rpm
+	source = ytdownloader-gui-3.16.0.rpm::https://github.com/aandrew-me/ytDownloader/releases/download/v3.16.0/YTDownloader_Linux.rpm
 	source = ytdownloader-gui.sh
-	sha256sums = 9290b107645df72e87f52d561d0343c849edebe4f4de3c9fc7dad1deb5329e2f
-	sha256sums = e5a1a5667cf4862963ca2fc164a31cf5ed3334bc5a096108b9b8a172d3b52434
+	sha256sums = 2f6de8a9eb97bc063bfdfc3daf119af25d211c82d7df7e33e00a633f75771d2c
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = ytdownloader-gui-bin
