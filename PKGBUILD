@@ -1,8 +1,10 @@
 # Maintainer: Alfonso Reyes <hola@alfon.so>
 pkgname=heynote-git
 pkgver=1.4.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A dedicated scratchpad for developers"
+
+gitPackageName="heynote"
 
 arch=('any')
 url="https://github.com/heyman/heynote"
@@ -16,9 +18,7 @@ sha256sums=(
 )
 
 build() {
-  # Clone the repo
-  git clone "$url" "$pkgname-$pkgver"
-  cd "$pkgname-$pkgver"
+  cd $gitPackageName-$pkgver
   npm install -g npm@latest
   # Install dependencies
   npm install --quiet
@@ -27,11 +27,11 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$gitPackageName-$pkgver"
   # copy content from release folder to /usr/share
-  mkdir -p "$pkgdir/usr/share/$pkgname"
-  cp -r release/$pkgver/linux-unpacked/* "$pkgdir/usr/share/$pkgname"
-  cp resources/icon.png "$pkgdir/usr/share/$pkgname/icon.png"
+  mkdir -p "$pkgdir/usr/share/$gitPackageName"
+  cp -r release/$pkgver/linux-unpacked/* "$pkgdir/usr/share/$gitPackageName"
+  cp resources/icon.png "$pkgdir/usr/share/$gitPackageName/icon.png"
   # copy .desktop file to /usr/share/applications
   mkdir -p "$pkgdir/usr/share/applications"
   cp -a ../../heynote.desktop "$pkgdir/usr/share/applications"
