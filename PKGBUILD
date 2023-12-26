@@ -3,12 +3,12 @@
 _pkgname=breakpointRdata
 _pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
-pkgrel=1
-pkgdesc='Strand-seq data for demonstration purposes'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('custom')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Strand-seq data for demonstration purposes"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r
 )
@@ -17,15 +17,18 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b297da45e4a070b3dc7bf4467f779eca0b36ccf9d3640db9b7772a33c8dd898f')
+md5sums=('e3f74132513d150cb5d5cc62bfd49586')
+b2sums=('d7f0d7a89b134d6977f657992ec8b54f8e737083e77085c5f82cf493f463c9c5b2754fb6c502ca435a4f338a188db3edaa307a228fbc8cc09be2024453238529')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
