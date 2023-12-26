@@ -1,15 +1,18 @@
 pkgbase = hex2bin-git
 	pkgdesc = Hex to binary converter.
-	pkgver = r45.141f873
+	pkgver = 1.9.r0.g20430e8
 	pkgrel = 1
 	url = https://github.com/Keidan/hex2bin
-	arch = any
+	arch = aarch64
+	arch = riscv64
+	arch = x86_64
 	license = GPL3
+	checkdepends = python
 	makedepends = git
-	makedepends = make
 	makedepends = cmake
+	makedepends = ninja
 	replaces = hex2bin
-	source = hex2bin-git::git+https://github.com/Keidan/hex2bin
+	source = hex2bin-git::git+https://github.com/Keidan/hex2bin.git
 	md5sums = SKIP
 
 pkgname = hex2bin-git
