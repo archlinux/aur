@@ -24,7 +24,7 @@ conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_assetname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_assetname}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('78fa56b7d32c691877b1a955037e87622657e627cbc112b8f5114f8b620415d3')
+sha256sums=('1aa05e25cde9ce5423b310196844141a9a3ea2ff4c515b128eecf286fd13f3e4')
 sha256sums_aarch64=('3250774bb3d2b5a11045c4814f572e9ca58efc975b25aa84559736452d4b5a78')
 sha256sums_x86_64=('b08f769ee19d32e27301ace10f0034594e364a1cf5bad4260d401d1eea3accaa')
 build() {
