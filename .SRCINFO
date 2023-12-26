@@ -1,6 +1,6 @@
 pkgbase = asus-numberpad-driver-git
 	pkgdesc = Linux newest feature-rich configurable driver for Asus numberpad
-	pkgver = r664.156a31f
+	pkgver = r664.d54b8f5
 	pkgrel = 1
 	url = https://github.com/asus-linux-drivers/asus-numberpad-driver
 	install = asus-numberpad-driver-git.install
