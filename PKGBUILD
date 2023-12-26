@@ -4,10 +4,10 @@
 # Contributor: franciscod <demartino.francisco@gmail.com>
 
 pkgname=simulide
-pkgver=1.0.0_SR0
+pkgver=1.0.0_SR2
 _version_branch=1.0.0
 _realver=${pkgver//_/-}
-_rev=1320
+_rev=1449
 pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)."
 arch=("x86_64")
@@ -59,7 +59,7 @@ package() {
   rm ${pkgdir}/usr/share/simulide/simulide
  
   # icon
-  mkdir -p "${pkgdir}/usr/share/icons"
-  cp -r ${srcdir}/${pkgname}/resources/icons/* "${pkgdir}/usr/share/icons"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256"
+  cp -r ${srcdir}/${pkgname}/resources/icons/simulide.png* "${pkgdir}/usr/share/icons/hicolor/256x256/simulide.png"
 
 }
