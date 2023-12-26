@@ -1,15 +1,16 @@
 # Maintainer: Mathew Kamkar <roosts_knotty0u at icloud dot com>
 pkgname=mautrix-signal-bin
 provides=('mautrix-signal')
-pkgver=main
+pkgver="r12562.7186350d"
 pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge (Golang version)"
 arch=('x86_64' 'aarch64')
 license=('AGPL')
+makedepends=('unzip')
 url="https://github.com/mautrix/signal"
-buildurl="https://mau.dev/mautrix/signal/-/jobs/artifacts/main/download"
-source_x86_64=("$pkgname-x86_64-$pkgver.zip"::"${buildurl}?job=build%20amd64")
-source_aarch64=("$pkgname-aarch64-$pkgver.zip"::"${buildurl}?build%20arm64")
+_ci_job_url="https://mau.dev/mautrix/signal/-/jobs"
+source_x86_64=("$pkgname-x86_64-$pkgver.zip"::"${_ci_job_url}/40715/artifacts/download")
+source_aarch64=("$pkgname-aarch64-$pkgver.zip"::"${_ci_job_url}/40716/artifacts/download")
 source=(
           "sysusers-${pkgname/-bin}.conf"
           "${pkgname/-bin}.tmpfiles"

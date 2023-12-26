@@ -1,11 +1,12 @@
 pkgbase = mautrix-signal-bin
 	pkgdesc = A Matrix-Signal puppeting bridge (Golang version)
-	pkgver = main
+	pkgver = r12562.7186350d
 	pkgrel = 1
 	url = https://github.com/mautrix/signal
 	arch = x86_64
 	arch = aarch64
 	license = AGPL
+	makedepends = unzip
 	provides = mautrix-signal
 	backup = etc/mautrix-signal/config.yaml
 	source = sysusers-mautrix-signal.conf
@@ -14,9 +15,9 @@ pkgbase = mautrix-signal-bin
 	sha256sums = 3384dd44aa72937047f03f4a524efdf92162029ab85e830f5c7d4747b40359d8
 	sha256sums = f086d8c1c187e22faced78fb885607c4fb11e99960958e54b884983158d8ec0e
 	sha256sums = a6c23d8bb6ca5bd36853a954ee30fa75302ce2a9c3e03897169869743dad2cc6
-	source_x86_64 = mautrix-signal-bin-x86_64-main.zip::https://mau.dev/mautrix/signal/-/jobs/artifacts/main/download?job=build%20amd64
+	source_x86_64 = mautrix-signal-bin-x86_64-r12562.7186350d.zip::https://mau.dev/mautrix/signal/-/jobs/40715/artifacts/download
 	sha256sums_x86_64 = 0f2fc49de1971c51e4b55c37dd3f3c01503fd55a44e20b6bdb10bf4f6567174d
-	source_aarch64 = mautrix-signal-bin-aarch64-main.zip::https://mau.dev/mautrix/signal/-/jobs/artifacts/main/download?build%20arm64
+	source_aarch64 = mautrix-signal-bin-aarch64-r12562.7186350d.zip::https://mau.dev/mautrix/signal/-/jobs/40716/artifacts/download
 	sha256sums_aarch64 = fefd4763e17bb0951e81e95982aa7923e50fcf100f8091ea1735b501c7bce07a
 
 pkgname = mautrix-signal-bin
