@@ -1,6 +1,6 @@
 pkgbase = flare-bin
 	pkgdesc = Chat with your friends on Signal
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://gitlab.com/schmiddi-on-mobile/flare-bin
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = flare-bin
 	optdepends = libspelling-git: for spell-checking support
 	provides = flare
 	conflicts = flare
-	source = https://gitlab.com/schmiddi-on-mobile/flare/-/archive/0.10.0/flare-0.10.0.tar.gz
-	source = https://gitlab.com/schmiddi-on-mobile/flare/-/package_files/90580214/download
-	sha256sums = c34d1531bdf4a30c0a68a05f66465f26b726a392cc08b9b3267b60f73319b23e
-	sha256sums = 6ccdcc28100b25846be973a4a6e17d170f2da9989e11aa8386908657f0aa8c91
+	source = https://gitlab.com/schmiddi-on-mobile/flare/-/archive/0.11.0/flare-0.11.0.tar.gz
+	source = https://gitlab.com/schmiddi-on-mobile/flare/-/package_files/107143279/download
+	sha256sums = 88f64c4ad3e4ffeb49ac81dabd2d2badf8a006aaf4a4f08b4353b8711dacd614
+	sha256sums = 86d19c8a92b4ca92c5140527cd6f7e7714eace9b29a19fc37f42b6b0ac5fd8f6
 
 pkgname = flare-bin
