@@ -11,7 +11,7 @@ depends=('openmpi' 'lapack')
 arch=('i686' 'x86_64')
 license=("custom:BSD")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LLNL/Elemental/archive/v$pkgver.tar.gz")
-sha256sums=('faefbe738bd364d0e26ce9ad079a11c93a18c6f075719a365fd4fa5f1f7a989a')
+sha512sums=('7f2b0669e068a0717ed97246d9971cfcf5ff0f79c340a9946b909d67db10e0b462a1ef249edd99acd9071f5c0ade7ca01b46eebad6f07af8d0ce8e24373d9972')
 
 build() {
   cmake -S Elemental-$pkgver \
