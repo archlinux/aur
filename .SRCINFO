@@ -1,12 +1,12 @@
 pkgbase = selenium-ide-bin
 	pkgdesc = Open Source record and playback test automation for the web.
-	pkgver = 4.0.0_alpha.63
+	pkgver = 4.0.1_alpha.68
 	pkgrel = 2
 	url = https://selenium.dev/selenium-ide/
 	arch = x86_64
 	license = Apache
 	makedepends = squashfuse
-	depends = electron26
+	depends = electron28
 	depends = libx11
 	depends = gdk-pixbuf2
 	depends = libxext
@@ -17,11 +17,12 @@ pkgbase = selenium-ide-bin
 	depends = nspr
 	depends = libxcb
 	depends = nss
-	provides = selenium-ide=4.0.0_alpha.63
+	depends = nodejs
+	provides = selenium-ide=4.0.1_alpha.68
 	conflicts = selenium-ide
-	source = selenium-ide-4.0.0_alpha.63.AppImage::https://github.com/SeleniumHQ/selenium-ide/releases/download/4.0.0-alpha.63-linux/Selenium.IDE-4.0.0-alpha.63.AppImage
+	source = selenium-ide-4.0.1_alpha.68.AppImage::https://github.com/SeleniumHQ/selenium-ide/releases/download/4.0.1-alpha.68-linux/Selenium.IDE-4.0.1-alpha.68.AppImage
 	source = selenium-ide.sh
-	sha256sums = 4a56c483e77a0f5d40fca26cf9af0dd32d762f546a5847bf1ea0f7962275cbb1
+	sha256sums = 412eb96dd13ca22e289377fea50522fbbf8e8ecdf27ea478d07ea503aa3ea6b0
 	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = selenium-ide-bin
