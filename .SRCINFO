@@ -1,4 +1,4 @@
-pkgbase = heynote
+pkgbase = heynote-git
 	pkgdesc = A dedicated scratchpad for developers
 	pkgver = 1.4.2
 	pkgrel = 4
@@ -9,4 +9,4 @@ pkgbase = heynote
 	source = heynote-1.4.2.tar.gz::https://github.com/heyman/heynote/archive/v1.4.2.tar.gz
 	sha256sums = 6a4efec095ef0d2676ea7f93238430f8c56d3c57426bf9711dfd057d97a1eb4e
 
-pkgname = heynote
+pkgname = heynote-git
