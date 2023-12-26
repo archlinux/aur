@@ -1,7 +1,7 @@
 pkgbase = heynote-git
 	pkgdesc = A dedicated scratchpad for developers
 	pkgver = 1.4.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/heyman/heynote
 	arch = any
 	license = MIT

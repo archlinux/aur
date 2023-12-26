@@ -1,7 +1,7 @@
 # Maintainer: Alfonso Reyes <hola@alfon.so>
 pkgname=heynote-git
 pkgver=1.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A dedicated scratchpad for developers"
 
 arch=('any')
