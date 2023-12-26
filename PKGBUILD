@@ -2,13 +2,12 @@
 
 pkgname=perl-alien-gnuplot
 pkgver=1.042
-pkgrel=1
+pkgrel=2
 pkgdesc="Find and verify functionality of the gnuplot executable."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'gnuplot')
-makedepends=('perl-alien-build')
+depends=('perl-alien-build' 'gnuplot')
 checkdepends=('perl-test-exception')
 url='https://metacpan.org/dist/Alien-Gnuplot'
 _distdir="Alien-Gnuplot"
