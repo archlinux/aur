@@ -6,9 +6,9 @@
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
 pkgver=42.0.1.0
-pkgrel=1
+pkgrel=2
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
-_libffmpegver=0.82.0
+_libffmpegver=0.83.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -55,7 +55,7 @@ source=(
     "LICENSE-${pkgver}.html::${url}/en/webhelp/index.htm"
 )
 sha256sums=('9aee390395ac6483b1f9b782fc99174c39f99f353d102d74f891c0a1a0ed20f4'
-            'f68fac7117b551d0466198a5efbe65ab6cef5969bea9403eeb57ec92237fc893'
+            '17d330079d91920e75521e9255a68b2a1bcc7d8aa84090bdce518b7160ea65e2'
             '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
