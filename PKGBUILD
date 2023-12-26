@@ -4,7 +4,7 @@
 
 pkgname=scalapack
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers."
 url="http://www.netlib.org/scalapack/"
@@ -28,7 +28,7 @@ build() {
         -D SCALAPACK_BUILD_TESTS:BOOL=OFF \
         -D CMAKE_BUILD_TYPE:STRING=Release \
         -D CMAKE_Fortran_FLAGS:STRING="$FCFLAGS -fallow-argument-mismatch"
-  cmake --build build --parallel 4
+  make -C build
 }
 
 package(){
