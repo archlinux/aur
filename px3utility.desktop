@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=PX3-Utility
+Name[en_US]=PX3-Utility
+Comment=Elecraft PX3 Control Utility
+Comment[en_US]=Elecraft PX3 Control Utility
+Exec=px3utility
+Icon=px3utility
+MimeType=text/plain
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Network;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
