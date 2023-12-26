@@ -1,13 +1,13 @@
 pkgbase = driverkit
 	pkgdesc = Kit for building Falco drivers: kernel modules or eBPF probes
-	pkgver = 0.16.2
+	pkgver = 0.16.3
 	pkgrel = 1
 	url = https://github.com/falcosecurity/driverkit
 	arch = any
 	license = APACHE
 	makedepends = go
 	makedepends = git
-	source = driverkit-0.16.2::git+https://github.com/falcosecurity/driverkit#tag=v0.16.2
+	source = driverkit-0.16.3::git+https://github.com/falcosecurity/driverkit#tag=v0.16.3
 	sha256sums = SKIP
 
 pkgname = driverkit
