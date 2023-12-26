@@ -5,7 +5,7 @@
 # Based on: https://aur.archlinux.org/packages/simulide
 
 pkgname=simulide-bzr
-pkgver=r1666
+pkgver=r2109
 #_realver=${pkgver//.r*/}
 pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version."
@@ -55,8 +55,8 @@ package() {
   rm ${pkgdir}/usr/share/simulide/simulide
  
   # icon
-  mkdir -p "${pkgdir}/usr/share/icons"
-  cp -r ${srcdir}/${pkgname}/resources/icons/* "${pkgdir}/usr/share/icons"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256"
+  cp -r ${srcdir}/${pkgname}/resources/icons/simulide.png* "${pkgdir}/usr/share/icons/hicolor/256x256/simulide.png"
 
 }
 
