@@ -2,7 +2,7 @@
 # Contributor: Samuel Williams <samuel.williams@oriontransfer.co.nz>
 pkgname=scotch
 pkgver=7.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
 url="https://gitlab.inria.fr/scotch/scotch"
 license=("custom:CeCILL-C")
@@ -31,14 +31,14 @@ build() {
         -D SCOTCH_PTHREAD:BOOL=ON \
         -D SCOTCH_PTHREAD_MPI:BOOL=ON \
         -D COMMON_PTHREAD_AFFINITY_LINUX:BOOL=ON
-  cmake --build build --parallel 4
+  make -C build
 }
 
 check() {
   if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
     export _libcuda=0
   fi
-  cmake --build build --parallel --target test
+  make -C build test
 }
 
 package() {
