@@ -1,6 +1,6 @@
 pkgbase = myks-bin
 	pkgdesc = A configuration framework for Kubernetes applications
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/mykso/myks
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = myks-bin
 	conflicts = myks
 	provides = myks
 	arch = aarch64
-	source_aarch64 = https://github.com/mykso/myks/releases/download/v3.0.3/myks_3.0.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 42f3826ddfddc7b012d4eaa3b42c952cfd2e29e0c5dc8703b4fdfded3879e0d0
+	source_aarch64 = https://github.com/mykso/myks/releases/download/v3.0.4/myks_3.0.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3a771ed968e4e3ab3700f01fccdad62f0fdc130bef4d79e99ac5571a278b7675
 	arch = x86_64
-	source_x86_64 = https://github.com/mykso/myks/releases/download/v3.0.3/myks_3.0.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = b0a5f35b375600e30398dba547ccab09bd047d66d8396564063a9955b1d55e32
+	source_x86_64 = https://github.com/mykso/myks/releases/download/v3.0.4/myks_3.0.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6b49c89db6c725379d4fbbc1aeb888cb21176e4c328f6d867c6a1a6db02c1700
 	
 pkgname = myks-bin
