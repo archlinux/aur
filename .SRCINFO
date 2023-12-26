@@ -7,7 +7,7 @@ pkgbase = msdf-atlas-gen-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = make
+	makedepends = ninja
 	depends = msdfgen-git2
 	provides = msdf-atlas-gen=1.2.2.r12.g3cf874b
 	conflicts = msdf-atlas-gen
