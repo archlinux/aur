@@ -1,7 +1,7 @@
 pkgbase = slic3r-bin
 	pkgdesc = Open Source toolpath generator for 3D printers
 	pkgver = 1.3.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://slic3r.org/
 	arch = x86_64
 	license = AGPL3
@@ -24,12 +24,11 @@ pkgbase = slic3r-bin
 	depends = libsm
 	depends = openssl-1.0
 	depends = libxxf86vm
-	depends = perl-local-lib
 	provides = slic3r=1.3.0
 	conflicts = slic3r
 	source = slic3r-1.3.0.tar.bz2::https://github.com/slic3r/Slic3r/releases/download/1.3.0/slic3r-1.3.0-linux-x64.tar.bz2
 	source = slic3r.sh
 	sha256sums = 23761e32aca057de12e940fca097bcfef5a1efea9ff4998f8aa9fd58241db6dd
-	sha256sums = ee689a9c98965ca9b12e265b82f9989c65362c01f9815820f2204bfac1dae410
+	sha256sums = b0d43eb126182883574f969990236275106af80775d21cdfdfb84ff61574b3b1
 
 pkgname = slic3r-bin
