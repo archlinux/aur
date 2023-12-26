@@ -1,0 +1,12 @@
+--- util/ifdtool/Makefile.inc   2023-12-26 16:28:55.501707610 -0500
++++ util/ifdtool/Makefile.inc   2023-12-26 16:29:07.721749140 -0500
+@@ -2,7 +2,7 @@
+ 
+ ifdtoolobj = ifdtool.o fmap.o kv_pair.o valstr.o
+ 
+-IFDTOOLCFLAGS  = -O2 -g -Wall -Wextra -Wmissing-prototypes -Werror
++IFDTOOLCFLAGS  = -O2 -g -Wall -Wextra -Wmissing-prototypes
+ IFDTOOLCFLAGS += -I$(top)/src/commonlib/include -I$(top)/src/commonlib/bsd/include
+ IFDTOOLCFLAGS += -I$(top)/util/cbfstool/flashmap
+ IFDTOOLCFLAGS += -include $(top)/src/commonlib/bsd/include/commonlib/bsd/compiler.h
+ 
