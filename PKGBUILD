@@ -2,9 +2,9 @@
 # Contributor: lsf
 
 pkgname=briar-desktop
-pkgver=0.5.0.beta
+pkgver=0.6.0.beta
 pkgrel=1
-_bin_ver=0.5.0
+_bin_ver=0.6.0
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 
