@@ -1,6 +1,6 @@
 pkgbase = python-stfio-git
 	pkgdesc = Python module for reading and writing data in common electrophysiology formats from Stimfit project.
-	pkgver = v0.13.12macports.r353.g0ebd6e3
+	pkgver = v0.13.12macports.r713.g993d3f66
 	pkgrel = 1
 	url = http://www.stimfit.org
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = python-stfio-git
 	md5sums = SKIP
 
 pkgname = python-stfio-git
-

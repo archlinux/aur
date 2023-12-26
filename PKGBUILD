@@ -1,7 +1,7 @@
 # Maintainer: Taomach <adresatt@gmail.com>
 pkgname=python-stfio-git
 _realname=stfio
-pkgver=v0.13.12macports.r353.g0ebd6e3
+pkgver=v0.13.12macports.r713.g993d3f66
 pkgrel=1
 pkgdesc="Python module for reading and writing data in common electrophysiology formats from Stimfit project."
 arch=('i686' 'x86_64' 'armv7h')
