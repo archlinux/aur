@@ -1,17 +1,17 @@
 pkgbase = python-timeout-decorator
 	pkgdesc = Timeout decorator for Python
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pnpnpn/timeout-decorator
-	arch = i686
-	arch = x86_64
-	arch = armv6
+	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/t/timeout-decorator/timeout-decorator-0.5.0.tar.gz
-	md5sums = 8545649e70b3ca43bcff11f08a996c3e
+	sha256sums = 6a2f2f58db1c5b24a2cc79de6345760377ad8bdc13813f5265f6c3e63d16b3d7
 
 pkgname = python-timeout-decorator
-
