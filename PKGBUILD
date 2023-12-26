@@ -1,39 +1,54 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer:
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Trizen <trizenx at gmail dot com>
 # Contributor: Federico Cinelli <cinelli.federico@gmail.com>
 
-pkgname=velox-git
-pkgver=0.0.2.r255.gbde08e0
-pkgrel=1
-pkgdesc="A simple xcb window manager inspired by awesome, xmonad, and dwm."
-arch=('i686' 'x86_64')
-url="http://www.ohloh.net/p/velox-wm"
+_pkgname="velox"
+pkgname="$_pkgname-git"
+pkgver=0.0.2.r287.gfcc0412
+pkgrel=2
+pkgdesc="Simple xcb window manager inspired by awesome, xmonad, and dwm"
+url="https://github.com/michaelforney/velox"
 license=('MIT')
-depends=('swc-git')
-conflicts=('velox')
-provides=('velox')
-source=("$pkgname::git+https://github.com/michaelforney/velox.git")
-md5sums=('SKIP')
+arch=('i686' 'x86_64')
+
+depends=(
+  'swc'
+  'wld'
+  'libxkbcommon'
+  'wayland'
+  'libinput'
+)
+makedepends=('git')
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "$_pkgsrc"
   git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
-  cd $pkgname
+prepare() {
+  cd "$_pkgsrc"
   tee config.mk <<EOF
 PREFIX = /usr
 LIBEXECDIR = /usr/lib
 V = 1
 EOF
+}
 
+build() {
+  cd "$_pkgsrc"
   make
 }
 
 package() {
-  cd $pkgname
+  cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# vim: ft=sh syn=sh et
