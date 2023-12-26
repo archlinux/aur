@@ -20,7 +20,7 @@ _srcdir="${_pkgname}"
 pkgver() {
 	cd "${_srcdir}"
 	( set -o pipefail
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 	)
 }
 
