@@ -12,7 +12,7 @@ makedepends=('git')
 depends=('curl' 'snappy' 'automake' 'autoconf')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git://github.com/openvenues/${pkgname%-git}.git")
+source=("git+https://github.com/openvenues/${pkgname%-git}")
 md5sums=('SKIP')
 install="${pkgname}.install"
 
