@@ -1,8 +1,8 @@
-pkgbase = wireplumber-git
+pkgbase = wireplumber-set-route-git
 	pkgdesc = Session / policy manager implementation for PipeWire
-	pkgver = 0.4.8.r33.gf46a801
+	pkgver = 0.4.17.r3.gf01177d0
 	pkgrel = 1
-	url = https://gitlab.freedesktop.org/pipewire/wireplumber
+	url = https://gitlab.freedesktop.org/Ferdi265/wireplumber
 	install = wireplumber.install
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = wireplumber-git
 	checkdepends = pipewire-jack
 	checkdepends = pipewire-pulse
 	makedepends = cmake
-	makedepends = cpptoml
 	makedepends = glib2
 	makedepends = gobject-introspection
 	makedepends = meson
@@ -31,12 +30,16 @@ pkgbase = wireplumber-git
 	depends = libgmodule-2.0.so
 	depends = libgobject-2.0.so
 	depends = libpipewire-0.3.so
-	provides = wireplumber=0.4.8.r33.gf46a801
+	provides = wireplumber=0.4.17.r3.gf01177d0
+	provides = wireplumber-git=0.4.17.r3.gf01177d0
+	provides = libwireplumber
 	provides = libwireplumber-0.4.so
 	provides = pipewire-session-manager
 	conflicts = wireplumber
+	conflicts = wireplumber-git
+	conflicts = libwireplumber
 	conflicts = pipewire-media-session
-	source = git+https://gitlab.freedesktop.org/pipewire/wireplumber.git
+	source = git+https://gitlab.freedesktop.org/Ferdi265/wireplumber.git
 	sha512sums = SKIP
 
-pkgname = wireplumber-git
+pkgname = wireplumber-set-route-git

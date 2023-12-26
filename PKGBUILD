@@ -5,22 +5,22 @@
 # Contributor: Eduard Tolosa <edu4rdshl@protonmail.com>
 
 _pkgname=wireplumber
-pkgname="${_pkgname}-git"
-pkgver=0.4.8.r33.gf46a801
+pkgname="${_pkgname}-set-route-git"
+pkgver=0.4.17.r3.gf01177d0
 pkgrel=1
 pkgdesc="Session / policy manager implementation for PipeWire"
 arch=('x86_64')
-url="https://gitlab.freedesktop.org/pipewire/wireplumber"
+url="https://gitlab.freedesktop.org/Ferdi265/wireplumber"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'lua' 'libgio-2.0.so' 'libglib-2.0.so'
   'libgmodule-2.0.so' 'libgobject-2.0.so' 'libpipewire-0.3.so')
-makedepends=('cmake' 'cpptoml' 'glib2' 'gobject-introspection' 'meson' 'pipewire'
+makedepends=('cmake' 'glib2' 'gobject-introspection' 'meson' 'pipewire'
   'doxygen' 'glib2'  'python-breathe' 'python-lxml' 'python-sphinx_rtd_theme'
   'python-sphinx' 'systemd' 'git')
 checkdepends=('pipewire-alsa' 'pipewire-jack' 'pipewire-pulse')
 install='wireplumber.install'
-provides=("wireplumber=${pkgver}" 'libwireplumber-0.4.so' 'pipewire-session-manager')
-conflicts=('wireplumber' 'pipewire-media-session')
+provides=("wireplumber=${pkgver}" "wireplumber-git=${pkgver}" 'libwireplumber' 'libwireplumber-0.4.so' 'pipewire-session-manager')
+conflicts=('wireplumber' 'wireplumber-git' 'libwireplumber' 'pipewire-media-session')
 source=("git+$url.git")
 sha512sums=('SKIP')
 
