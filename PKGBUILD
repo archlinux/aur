@@ -3,7 +3,7 @@
 pkgbase=can-tests-git
 pkgname=can-tests-git
 pkgver=2023.05.0.r5.g3258274
-pkgrel=1
+pkgrel=2
 groups=()
 pkgdesc="Linux-CAN / SocketCAN testing applications"
 arch=(x86_64
@@ -33,15 +33,13 @@ prepare()
 }
 
 build() {
-#     cd "${srcdir}/${pkgname}"
-#     sed -i "s|sbin|bin|g" mcp251xfd/99-devcoredump.rules
-
     make -C $pkgname PREFIX=/usr
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
     make PREFIX=/usr DESTDIR="$pkgdir/" install
+
     cd "$pkgdir/usr/bin"
     mv canfdtest tst-canfdtest
     mv cansniffer tst-cansniffer

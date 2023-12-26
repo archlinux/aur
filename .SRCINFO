@@ -1,7 +1,7 @@
 pkgbase = can-tests-git
 	pkgdesc = Linux-CAN / SocketCAN testing applications
 	pkgver = 2023.05.0.r5.g3258274
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-can/can-tests
 	arch = x86_64
 	arch = aarch64
