@@ -1,13 +1,13 @@
 pkgbase = osd-bin
 	pkgdesc = Cli tool for downloading subtitles from opensubtitles.org using the new API
-	pkgver = 0.1.5
-	pkgrel = 1
+	pkgver = 0.1.7
+	pkgrel = 2
 	url = https://github.com/druidamix/Opensubtitles-downloader
 	arch = x86_64
 	license = GPL
 	provides = osd
 	conflicts = osd
-	source = https://github.com/druidamix/Opensubtitles-downloader/releases/download/v0.1.5/osd-0.1.5-x86_64.tar.gz
-	sha256sums = 9b7ba5020772ddf93d197495c9d165ed3fe94aaad85bddc8020aef6a1deedca9
+	source = https://github.com/druidamix/Opensubtitles-downloader/releases/download/v0.1.7/osd-0.1.7-x86_64.tar.gz
+	sha256sums = 4096312be613dd004d01e2e4a6f8a928753bdb3a8f81f347d3e77c925e68d4cb
 
 pkgname = osd-bin
