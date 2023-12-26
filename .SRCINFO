@@ -1,0 +1,17 @@
+pkgbase = msdf-atlas-gen-git
+	pkgdesc = MSDF font atlas generator
+	pkgver = 1.2.2.r12.g3cf874b
+	pkgrel = 1
+	url = https://github.com/Chlumsky/msdf-atlas-gen
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = msdfgen-git2
+	provides = msdf-atlas-gen=1.2.2.r12.g3cf874b
+	conflicts = msdf-atlas-gen
+	source = msdf-atlas-gen-git::git+https://github.com/Chlumsky/msdf-atlas-gen.git
+	sha256sums = SKIP
+
+pkgname = msdf-atlas-gen-git
