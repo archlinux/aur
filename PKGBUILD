@@ -3,7 +3,7 @@
 pkgname=openrv-git
 pkgver=1.0.0.r171.c5ba738
 pkgrel=1
-pkgdesc="An image and sequence viewer for VFX and animation artists"
+pkgdesc="aka Open RV, an image and sequence viewer for VFX and animation artists"
 arch=('x86_64')
 url='https://github.com/AcademySoftwareFoundation/OpenRV'
 license=('Apache' 'custom')
