@@ -1,0 +1,22 @@
+pkgbase = random-browser-git
+	pkgdesc = A little experiment of an internet browser
+	pkgver = 2.0.0.r0.g81835b1
+	pkgrel = 1
+	url = https://github.com/YisusGaming/random-browser
+	arch = x86_64
+	license = custom:CC BY-NC-ND 4.0
+	makedepends = gendesk
+	makedepends = git
+	makedepends = npm
+	makedepends = yarn
+	makedepends = imagemagick
+	depends = electron22
+	depends = nodejs
+	provides = random-browser
+	conflicts = random-browser
+	source = random-browser::git+https://github.com/YisusGaming/random-browser.git
+	source = random-browser.sh
+	sha256sums = SKIP
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+
+pkgname = random-browser-git
