@@ -8,7 +8,7 @@ url=https://github.com/Chlumsky/msdfgen
 arch=(x86_64)
 license=(MIT)
 depends=(tinyxml2 libpng freetype2 zlib)
-makedepends=(git cmake make)
+makedepends=(git cmake ninja)
 provides=(msdfgen=$pkgver)
 conflicts=(msdfgen)
 
