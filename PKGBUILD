@@ -10,14 +10,14 @@ pkgname='dmarc_report'
 pkgdesc='"Generate human readable DMARC and TLS reports from standard email reports.'
 _gitname='dmarc_report'
 
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 url="https://github.com/gene-git/dmarc_report"
 
 arch=(any)
 license=(MIT)
 # tomli only needed if python version < 3.11
-depends=('python>3.9' 'python-netaddr' 'python-tomli')
+depends=('python>3.9' 'python-netaddr' 'python-tomli' 'python-dateutil')
 
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-installer' 'python-build' 'python-wheel' 'python-hatch' 'rsync'

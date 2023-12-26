@@ -1,6 +1,6 @@
 pkgbase = dmarc_report
 	pkgdesc = "Generate human readable DMARC and TLS reports from standard email reports.
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/gene-git/dmarc_report
 	arch = any
@@ -14,7 +14,8 @@ pkgbase = dmarc_report
 	depends = python>3.9
 	depends = python-netaddr
 	depends = python-tomli
-	source = git+https://github.com/gene-git/dmarc_report#tag=4.3.0
+	depends = python-dateutil
+	source = git+https://github.com/gene-git/dmarc_report#tag=4.3.1
 	sha512sums = SKIP
 
 pkgname = dmarc_report
