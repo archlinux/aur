@@ -1,6 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=mermaid-filter
-pkgver=1.4.6
+# renovate: datasource=npm depName=mermaid-filter
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="pandoc filter that adds support for mermaid syntax diagrams in markdown"
 arch=('any')
@@ -10,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('4e7b922600e2bbf86eb5bd3cecb384e8b0513346353248eafd5f7fe3f276f976')
+sha256sums=('61c60f8aa7cf669d11232c2623d484a71ce85864183b35bed8096f37aabefd51')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
