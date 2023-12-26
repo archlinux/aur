@@ -2,52 +2,48 @@
 # Maintainer: qlrd <qlrddev at gmail dot com>
 pkgname=krux-installer-bin
 _pkgname="org.selfcustody.${pkgname%-bin}"
-pkgver=0.0.1_beta
-revision=2f0ee130
-pkgrel=2
+pkgver=0.0.1
+_electronversion=28
+pkgrel=1
 pkgdesc="A GUI based application to flash Krux firmware on K210 based devices"
 arch=('x86_64')
 url="https://github.com/selfcustody/krux-installer"
 license=('MIT')
-provides=("${pkgname%-bin}=${pkgver}.${revision}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron26'
+    "electron${_electronversion}"
     'libx11'
     'gdk-pixbuf2'
-    'libxext'
-    'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
+    'java-runtime'
+    'startup-notification'
 )
 makedepends=(
     'squashfuse'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}.${revision}/${pkgname%-bin}-${pkgver//_/-}.AppImage"    
-    "${pkgname%-bin}-${pkgver}.AppImage.sig::${url}/releases/download/v${pkgver//_/-}.${revision}/${pkgname%-bin}-${pkgver//_/-}.AppImage.sig"
-    "LICENSE::https://raw.githubusercontent.com/selfcustody/krux-installer/v${pkgver//_/-}.${revision}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"    
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/selfcustody/krux-installer/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1d9ca2a004a94438b6c36c9768b5b1ac6d4404a896a021649474be3064f83ade'
-            'SKIP'
+sha256sums=('02ec46048b0e46ea95ac53c450804cd445b32343144b1a61939ad1d9fc488f4b'
             '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
-            '6c4570da6a41a5b6e18fee07b0cda0020445199c2462451c596d9871471ceb16')
-
-validpgpkeys=(
-    'B4281DDDFBBD207BFA4113138974C90299326322'
-)
-
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|${_pkgname}|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data.tar.xz"
+    sed "s|/opt/${pkgname%-bin}/||g;s|org.selfcustody.${pkgname%-bin}|${pkgname%-bin}|g" \
+        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
