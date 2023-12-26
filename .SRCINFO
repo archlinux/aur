@@ -1,0 +1,21 @@
+pkgbase = mrbayes-mpi-git
+	pkgdesc = MrBayes is a program for Bayesian inference and model choice across a wide range of phylogenetic and evolutionary models. https://doi.org/10.1093/sysbio/sys029
+	pkgver = 3.2.7.r15.a3903b3b
+	pkgrel = 1
+	url = nbisweden.github.io/MrBayes
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = openmpi
+	depends = readline
+	depends = gcc
+	optdepends = beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep
+	provides = mrbayes=3.2.7
+	conflicts = mrbayes
+	conflicts = mrbayes-beagle
+	conflicts = mrbayes-mpi
+	conflicts = mrbayes-mpi-beagle
+	source = git+https://github.com/NBISweden/MrBayes.git
+	b2sums = SKIP
+
+pkgname = mrbayes-mpi-git
