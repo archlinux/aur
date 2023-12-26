@@ -35,7 +35,7 @@ package() {
 
     # Add to PATH
     mkdir -p "$pkgdir/etc/profile.d"
-    echo "set path=(\$path /opt/$pkgname)" >> "$pkgdir/etc/profile.d/$pkgname.csh"
+    echo "set path=(\$path /opt/$pkgname/bin/$pkgname)" >> "$pkgdir/etc/profile.d/$pkgname.csh"
     printf '%s\n' "PATH=\$PATH:/opt/$pkgname/bin/$pkgname" 'export PATH' >> "$pkgdir/etc/profile.d/$pkgname.sh"
 
     # Create these directories separately to avoid clogging up the verbose output
