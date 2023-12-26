@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sunxi-fw-git
-pkgver=r21.1f49133
+pkgver=r21.a768b73
 pkgrel=1
 pkgdesc="Allwinner firmware images decoding and extraction tool"
 arch=(aarch64
@@ -25,6 +25,11 @@ pkgver() {
     cd "${srcdir}/${pkgname}"
 #     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = sunxi-fw-git
 	pkgdesc = Allwinner firmware images decoding and extraction tool
-	pkgver = r21.1f49133
+	pkgver = r21.a768b73
 	pkgrel = 1
 	url = https://github.com/apritzel/sunxi-fw
 	arch = aarch64
