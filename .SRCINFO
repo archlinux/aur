@@ -1,0 +1,16 @@
+pkgbase = stags
+	pkgdesc = scala tags generator
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/pjrt/stags
+	arch = any
+	license = MIT
+	makedepends = java-environment=8
+	makedepends = sbt
+	depends = java-runtime=8
+	source = https://github.com/pjrt/stags/archive/refs/tags/v0.5.0.tar.gz
+	source = stags.sh
+	sha512sums = cb0696c098a9b83b523d4a2fcd3ddc7476622e668c8462bbbf671ce6639756be6eaba21692833ee4b3cfc98473a3c0c06b3483341a9a70682a01d403d6baaf91
+	sha512sums = 3e96967cef72893524e69df1879aa60778e54f15bad8530679f223219a46588bcfb05a2fe56d6ebbfd6b1d383ceaba55af409db044dd17ec7621c1152ddb2400
+
+pkgname = stags
