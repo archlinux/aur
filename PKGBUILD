@@ -4,12 +4,12 @@ _pkgname=netns-helper
 pkgname=${_pkgname}-git
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=r77.123b803
+pkgver=r81.a8ae0ab
 pkgrel=1
 pkgdesc='Helper systemd services to create network namespaces for other programs and services.'
 url="https://gitlab.com/patlefort/${_pkgname}"
 license=('GPL3')
-depends=('systemd' 'iproute2')
+depends=()
 arch=('any')
 optdepends=(
 	'nftables: nat feature'
@@ -25,8 +25,8 @@ options=('!strip')
 pkgver() {
 	cd "${_pkgname}"
 	( set -o pipefail
-		git describe --abbrev=7 --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		git describe --tags --abbrev=7 --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 	)
 }
 
@@ -36,6 +36,8 @@ build() {
 }
 
 package() {
+	depends=('systemd' 'iproute2')
+	
 	DESTDIR="${pkgdir}" cmake --install 'build'
 	
 	install -dm755 "${pkgdir}/etc/netns-helper/ns"
