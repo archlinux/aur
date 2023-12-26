@@ -9,7 +9,6 @@ pkgbase = chezmoi_modify_manager
 	arch = aarch64
 	license = GPL3
 	makedepends = cargo
-	depends = openssl
 	source = chezmoi_modify_manager-2.2.3.tar.gz::https://static.crates.io/crates/chezmoi_modify_manager/chezmoi_modify_manager-2.2.3.crate
 	sha256sums = 39388025f2f8c8206e032a75dac5de1de3b671a1c718163b1587e904e10086ef
 

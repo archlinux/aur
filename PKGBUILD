@@ -7,14 +7,9 @@ pkgdesc="Tools for chezmoi to handle mixed settings and state"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/chezmoi_modify_manager"
 license=('GPL3')
-depends=('openssl')
 makedepends=('cargo')
-install=
-changelog=
 source=("$pkgname-$_pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-${_pkgver}.crate")
-noextract=()
 sha256sums=('39388025f2f8c8206e032a75dac5de1de3b671a1c718163b1587e904e10086ef')
-validpgpkeys=()
 
 prepare() {
     cd "$pkgname-$_pkgver"
@@ -26,13 +21,13 @@ build() {
     cd "$pkgname-$_pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --no-default-features
+    cargo build --frozen --release --no-default-features --features=keyring
 }
 
 check() {
     cd "$pkgname-$_pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --no-default-features
+    cargo test --frozen --no-default-features --features=keyring
 }
 
 package() {
