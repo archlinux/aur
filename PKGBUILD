@@ -2,14 +2,14 @@
 
 pkgname=jlc-assistant-bin
 pkgver=5.0.69
-pkgrel=6
+pkgrel=14
 pkgdesc="嘉立创下单助手:该应用为您下单提供便利，快速获取优惠及下单信息，无需在网站等待审核审单！在下单助手下单立享打折优惠！ "
 arch=('x86_64')
 url="https://www.jlc.com/portal/appDownloadsWithConfig.html"
 license=('custom')
-provides=(${pkgname})
+provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
-replaces=(${pkgname})
+replaces=(${pkgname%-bin})
 depends=(gtk3 nss libxss electron libappindicator-gtk3 libnotify)
 makedepends=()
 backup=()

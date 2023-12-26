@@ -1,7 +1,7 @@
 pkgbase = jlc-assistant-bin
 	pkgdesc = 嘉立创下单助手:该应用为您下单提供便利，快速获取优惠及下单信息，无需在网站等待审核审单！在下单助手下单立享打折优惠！
 	pkgver = 5.0.69
-	pkgrel = 6
+	pkgrel = 14
 	url = https://www.jlc.com/portal/appDownloadsWithConfig.html
 	arch = x86_64
 	license = custom
@@ -11,9 +11,9 @@ pkgbase = jlc-assistant-bin
 	depends = electron
 	depends = libappindicator-gtk3
 	depends = libnotify
-	provides = jlc-assistant-bin
+	provides = jlc-assistant
 	conflicts = jlc-assistant
-	replaces = jlc-assistant-bin
+	replaces = jlc-assistant
 	source = jlc-assistant-5.0.69.zip::https://download.jlc.com/pcAssit/5.0.69/JLCPcAssit-linux-x64-5.0.69.zip
 	sha256sums = d943ebf9ee328a657cd608bdf301f637ea48988b57adeae1ae770fae944caacd
 
