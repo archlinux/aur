@@ -18,7 +18,7 @@ provides=('trilinos-sacado' 'zoltan')
 checkdepends=('cmake')
 source=("https://github.com/trilinos/Trilinos/archive/refs/tags/trilinos-release-$_pkgver.tar.gz"
         'compiler-errors.patch')
-sha256sums=('5651f1f967217a807f2c418a73b7e649532824dbf2742fa517951d6cc11518fb'
+sha512sums=('5651f1f967217a807f2c418a73b7e649532824dbf2742fa517951d6cc11518fb'
             'a75cf248121cb7284982075523f3e4eadcc799c9cc40ee9527330905e29bb3c3')
 
 prepare() {
