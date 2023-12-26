@@ -4,7 +4,7 @@ pkgbase=postgresql16
 pkgver=16.1
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=6
+pkgrel=7
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -43,7 +43,7 @@ build() {
     --with-gssapi
     --with-libxml
     --with-openssl
-#    --with-perl
+    --with-perl
     --with-python
     --with-tcl
     --with-pam
@@ -73,7 +73,7 @@ build() {
 }
 
 _postgres_check() {
-  make "${1}" || (find . -name regression.diffs | \
+  LANG=C make "${1}" || (find . -name regression.diffs | \
     while read -r line; do
       echo "make ${1} failure: ${line}"
       cat "${line}"
