@@ -3,28 +3,28 @@
 _pkgname=profileModel
 _pkgver=0.6.1
 pkgname=r-${_pkgname,,}
-pkgver=0.6.1
-pkgrel=4
-pkgdesc='Profiling Inference Functions for Various Model Classes'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Profiling Inference Functions for Various Model Classes"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
 optdepends=(
   r-gnm
-  r-mass
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('91dc25e81f52506593f5c8d80a6131510b14525262f65b4ac10ae0cad0b2a506')
+md5sums=('4e6b2c73ecfc85cc289c0612fa27c33e')
+b2sums=('6dbd8543d97dbf6b193d167aef0e177b7dce9019b0658f3d1c3a3273ddf4de0855543419538cee7a3609d0113aa862d9534d6bb6a789695e1d6cf662065d0113')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
