@@ -1,38 +1,22 @@
-# Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
-pkgname="replit-desktop-bin"
-_pkgname="repl.it"
-pkgver="2.1.0"
-pkgrel=1
-arch=('x86_64')
-pkgdesc="Un-official electron desktop app for https://repl.it"
-url="https://github.com/repl-it-discord/repl-it-electron"
-license=('Apache 2.0')
-makedepends=('gendesk')
-conflicts=('replit-desktop')
-source_x86_64=(
-    "repl.it_${pkgver}_amd64.deb::https://github.com/repl-it-discord/repl-it-electron/releases/download/${pkgver}/repl.it_${pkgver}_amd64.deb"
-)
+# Maintainer: Fernando Basso <fernandobasso.br@gmail.com>
 
-md5sums_x86_64=('SKIP')
+pkgname='replit-desktop-bin'
+pkgver=1.0.5
+pkgrel=1
+pkgdesc='Replit desktop application'
+arch=('x86_64')
+url='https://desktop.replit.com/download'
+license=('MIT')
+depends=('libarchive' 'binutils')
+provides=('replit')
+source=("replit-desktop-${pkgver}.deb::$url/deb")
+sha256sums=('fdb60274b7b81b465d5e3d2cd6ad028c8f53d0f837745bfd1aaf2b110d7da49f')
+
+prepare() {
+  ar xv replit-desktop-1.0.5.deb
+  bsdtar xf data.tar.zst
+}
 
 package() {
-    # Extract deb file
-    tar xf data.tar.xz -C "${pkgdir}"
-
-    # install the main files.
-    install -d -m755 "${pkgdir}/opt/${_pkgname}"
-
-    # install the icon
-    install -d -m755 "${pkgdir}/usr/share/icons"
-
-    # fix file permissions - all files as 644 - directories as 755
-    find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
-    find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
-
-    # make sure the main binary has the right permissions
-    chmod +x "${pkgdir}/opt/${_pkgname}/${_pkgname}"
-
-    # link the binary
-    install -d -m755 "${pkgdir}/usr/bin"
-    ln -sr "${pkgdir}/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  mv -v usr "$pkgdir"
 }

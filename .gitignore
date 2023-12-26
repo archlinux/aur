@@ -1,0 +1,8 @@
+#
+# .gitignore
+#
+
+pkg
+src
+*.deb
+*.zst
