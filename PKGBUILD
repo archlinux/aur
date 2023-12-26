@@ -3,24 +3,25 @@
 _pkgname=PoiClaClu
 _pkgver=1.0.2.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0.2.1
-pkgrel=4
-pkgdesc='Classification and Clustering of Sequencing Data Based on a Poisson Model'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Classification and Clustering of Sequencing Data Based on a Poisson Model"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL2)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dd439983cae8b08f2e1e12100d80e705897b6858363cfeea8e51fceb2d5809e1')
+md5sums=('0b6a96b5e02ab7fcad913e7f6c538d12')
+b2sums=('cb7d4b40d5e7d2250c653c4d4d5ce4513265cd4978d98228fb289ca80672eba8a860694031318650196617f82c06fe5e61a75d186368eebbb4161444492f0e3f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
