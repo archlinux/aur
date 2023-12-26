@@ -1,20 +1,21 @@
 # Maintainer: Patrick Gelvin <patrick@gelvin.dev>
 pkgname="rcalc"
-pkgver=v1.2.0
+pkgver=v1.3.0
 pkgrel=1
 pkgdesc="A lightweight RPN calculator"
 arch=("x86_64")
 url="https://github.com/gelvinp/rcalc"
 license=('MIT')
-depends=('glfw>=3.0.0', 'freetype2>=2.0.0')
+depends=('glfw>=3.0.0' 'freetype2>=2.0.0' "libxcb")
 makedepends=("python>=3.11.0" "scons>=4.5.0" "pkg-config" "git")
-_tag=e0c2e8ede0eb420d412c034d950b1ea17df3820b # git rev-parse "tag-name"
+_tag=ea547738660a18395d9310d8383595b7f1592ca6 # git rev-parse "tag-name"
 source=(git+https://github.com/gelvinp/rcalc#tag=$_tag?signed
         git+https://github.com/glfw/glfw
         git+https://gitlab.freedesktop.org/freetype/freetype
         git+https://github.com/ArthurSonzogni/FTXUI
-        git+https://github.com/dacap/clip)
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        git+https://github.com/dacap/clip
+        git+https://github.com/snitch-org/snitch)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -29,6 +30,7 @@ prepare() {
   git config submodule.modules/freetype/upstream.url "$srcdir/freetype"
   git config submodule.modules/ftxui/upstream.url "$srcdir/FTXUI"
   git config submodule.modules/clip/upstream.url "$srcdir/clip"
+  git config submodule.modules/snitch/upstream.url "$srcdir/snitch"
 
   git -c protocol.file.allow=always submodule update
 }
