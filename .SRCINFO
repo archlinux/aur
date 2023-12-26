@@ -1,21 +1,21 @@
 pkgbase = r-gbm
 	pkgdesc = Generalized Boosted Regression Models
 	pkgver = 2.1.8.1
-	pkgrel = 1
+	pkgrel = 6
 	url = https://cran.r-project.org/package=gbm
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-covr
 	optdepends = r-gridextra
 	optdepends = r-knitr
 	optdepends = r-pdp
 	optdepends = r-runit
-	optdepends = r-splines
 	optdepends = r-tinytest
 	optdepends = r-vip
 	optdepends = r-viridis
 	source = https://cran.r-project.org/src/contrib/gbm_2.1.8.1.tar.gz
-	sha256sums = 8d2456124552658ee9500707c4e9992cf42cb88705008c32ea258efb4f2be80b
+	md5sums = 55746a84b439a943e9a39149dd371825
+	b2sums = 5a075659056e1b4c0e7c0017265e9b2e16941c8f60a7830515cd5dd42728643f55d80847c812eadaa3a47e0b67a0b5c4d6677f9d86fe6c51bb6346b27814070b
 
 pkgname = r-gbm
