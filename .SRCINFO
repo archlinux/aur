@@ -1,6 +1,6 @@
 pkgbase = openucx-gpu
 	pkgdesc = Communication framework for data-centric and high-performance applications
-	pkgver = 1.14.1
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = http://www.openucx.org
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = openucx-gpu
 	makedepends = rocm-language-runtime
 	depends = binutils
 	depends = glibc
-	depends = numactl
 	depends = zlib
 	depends = zstd
 	optdepends = rdma-core: for InfiniBand and RDMA support
@@ -23,9 +22,7 @@ pkgbase = openucx-gpu
 	provides = libucs_signal.so
 	provides = libuct.so
 	conflicts = openucx
-	source = openucx-1.14.1.tar.gz::https://github.com/openucx/ucx/archive/refs/tags/v1.14.1.tar.gz
-	source = openucx-fix-conflicting-types.patch::https://patch-diff.githubusercontent.com/raw/openucx/ucx/pull/8804.patch
-	sha256sums = e7e82d5812261b5a38f0ba72921b6e0c392f04e2663e740cccbbe11f691880ea
-	sha256sums = 9fbf26b39cd5c9e469ff152e18d79a4bf685fca175d4088b9bbe8644b74c1401
+	source = openucx-1.15.0.tar.gz::https://github.com/openucx/ucx/archive/refs/tags/v1.15.0.tar.gz
+	sha256sums = e3082101dd61b2482390e7917b390f0fe9ecf399a839d97ee025ee559e6cb12d
 
 pkgname = openucx-gpu

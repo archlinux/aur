@@ -3,7 +3,7 @@
 _project=ucx
 _pkgname=openucx
 pkgname=$_pkgname-gpu
-pkgver=1.14.1
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Communication framework for data-centric and high-performance applications"
 arch=(x86_64)
@@ -12,7 +12,6 @@ license=('BSD')
 depends=(
   binutils
   glibc
-  numactl
   zlib
   zstd
 )
@@ -35,17 +34,8 @@ provides=(
   libuct.so
 )
 conflicts=($_pkgname)
-source=(
-  "$_pkgname-$pkgver.tar.gz::https://github.com/openucx/$_project/archive/refs/tags/v${pkgver}.tar.gz"
-  "$_pkgname-fix-conflicting-types.patch::https://patch-diff.githubusercontent.com/raw/openucx/ucx/pull/8804.patch"
-)
-sha256sums=('e7e82d5812261b5a38f0ba72921b6e0c392f04e2663e740cccbbe11f691880ea'
-            '9fbf26b39cd5c9e469ff152e18d79a4bf685fca175d4088b9bbe8644b74c1401')
-
-prepare() {
-  cd $_project-$pkgver
-  patch -Np1 < ../$_pkgname-fix-conflicting-types.patch
-}
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/openucx/$_project/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e3082101dd61b2482390e7917b390f0fe9ecf399a839d97ee025ee559e6cb12d')
 
 build() {
   cd $_project-$pkgver
