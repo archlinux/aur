@@ -1,3 +1,5 @@
-appimaged*
+appimaged-*.pkg.tar.zst
+appimaged.AppImage
+LICENSE
 src
 pkg
