@@ -1,7 +1,7 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-git
-pkgver=7.99.0.r505.ge51594cdf5
+pkgver=7.99.0.r4086.g5c20c5732d
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://kicad.org/"
 license=('GPL')
 depends=('glew' 'wxwidgets-gtk3' 'desktop-file-utils' 'boost-libs' 'python'
          'glm' 'curl' 'swig' 'python-wxpython' 'opencascade'
-         'ngspice>=27' 'unixodbc')
+         'ngspice>=27' 'unixodbc' 'libgit2')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
