@@ -1,4 +1,4 @@
-# Maintainer : tio@tiotrom.com
+# Maintainer : contact@tiotrom.com
 # Contributer: nsz32 <nszabo2 at gmail dot com>, bittin
 
 pkgname="xfce4-docklike-plugin"
