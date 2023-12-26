@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=nexus_wallet
 pkgname="${_pkgname//_/-}-appimage"
-pkgver=3.1.0
-pkgrel=5
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="The official Logical and Interface layers of the Nexus Software Stack."
 arch=('x86_64')
 url="https://crypto.nexus.io/wallet"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Nexusoft/NexusInterface/v${pkgver}/LICENSE"
 )
-sha256sums=('05069e89be8316217c7414316da8367057092f287aa44a2d0e5ba9dbea3d5011'
+sha256sums=('9886ea53dde1202ef3d40cd64901df6f72c32bc09a379b2986a23e37a08a684f'
             'e7ee68282295100c6be4565152cb535d43086d2354760a8f006f1e980e0a3bb5')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
