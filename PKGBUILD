@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='The official Twitch CLI to make developing on Twitch easier'
 arch=(x86_64)
 url=https://github.com/twitchdev/twitch-cli
-license=(Apache)
+license=(Apache-2.0)
 
 provides=($pkgname)
 conflicts=($pkgname)
