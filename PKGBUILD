@@ -42,6 +42,8 @@ makedepends=(
     'nvm'
     'npm'
     'yarn'
+    'make'
+    'gcc'
 )
 source=(
     "${pkgname%-git}"::"git+${url}.git"
