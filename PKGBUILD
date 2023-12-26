@@ -6,7 +6,7 @@
 
 _pkgname=openmpi
 pkgname=openmpi-ucx
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='High performance message passing library (MPI)'
 arch=(x86_64)
@@ -50,8 +50,8 @@ conflicts=($_pkgname)
 source=(
   https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/$_pkgname-$pkgver.tar.bz2
 )
-sha256sums=('9d845ca94bc1aeb445f83d98d238cd08f6ec7ad0f73b0f79ec1668dbfdacd613')
-b2sums=('d6277714945ee7e82649cc450253b9cad642ab5b5d00b5c1d77ab4c07329148e940038c34c46d92e01f2b1bb7768effb6e95ad34aa509b3287582683e09f669a')
+sha256sums=('e357043e65fd1b956a47d0dae6156a90cf0e378df759364936c1781f1a25ef80')
+b2sums=('4a5b1d6c1cb2c81186f1d1347aee2e78b8634e0db08053a99a10d54df31d2afa5982d64b49a351aea99fc9db64f8ab81adeab9ae427442892774f99de3602230')
 
 build() {
   local configure_options=(
