@@ -1,6 +1,6 @@
 pkgbase = python-trl
 	pkgdesc = Train transformer language models with reinforcement learning
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://github.com/huggingface/trl
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-trl
 	optdepends = python-deepspeed: Low-level routines for distributed training
 	optdepends = python-diffusers: Diffusion models
 	optdepends = python-peft: Parameter efficient fine-tuning
-	source = python-trl-0.7.6.tar.gz::https://github.com/lvwerra/trl/archive/refs/tags/v0.7.6.tar.gz
-	sha256sums = e960ba8b57c5e4c6541764aed24cf2fa17ea20415200966db6e1f626e6cead3b
+	source = python-trl-0.7.7.tar.gz::https://github.com/lvwerra/trl/archive/refs/tags/v0.7.7.tar.gz
+	sha256sums = c087ea0e0ec0c72550fb823e6547cd96b781718362494321bf28b8cb3c0405a0
 
 pkgname = python-trl
