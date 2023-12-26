@@ -1,12 +1,12 @@
 pkgbase = nss-docker
 	pkgdesc = Hostname resolution for Docker containers
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/nhqml/nss-docker
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = meson>=0.61.1
+	makedepends = meson>=1.3.0
 	depends = libcurl.so
 	depends = cjson>=1.7.15
 	provides = libnss_docker.so=2-64
