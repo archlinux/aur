@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Heynote
+Exec=/usr/share/heynote/heynote
+Icon=/usr/share/heynote/icon.png
+Terminal=false
+Categories=Utility;
