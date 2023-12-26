@@ -7,7 +7,7 @@ pkgdesc="Python module for reading and writing data in common electrophysiology 
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.stimfit.org"
 license=('GPLv2')
-depends=('hdf5' 'python-numpy' 'swig')
+depends=('hdf5' 'python-numpy' 'swig' 'python-wxpython' 'python-biosig')
 makedepends=('python' 'git' 'boost')
 
 source=('stfio::git+https://github.com/neurodroid/stimfit.git')

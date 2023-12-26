@@ -13,6 +13,8 @@ pkgbase = python-stfio-git
 	depends = hdf5
 	depends = python-numpy
 	depends = swig
+	depends = python-wxpython
+	depends = python-biosig
 	source = stfio::git+https://github.com/neurodroid/stimfit.git
 	md5sums = SKIP
 
