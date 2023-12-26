@@ -1,16 +1,14 @@
 pkgbase = qogir-cursor-theme-git
-	pkgdesc = This is an x-cursor theme inspired by Qogir theme
-	pkgver = 2023.06.05.r16.g4f199dbc
+	pkgdesc = An x-cursor theme inspired by Qogir theme and based on capitaine-cursors
+	pkgver = 2023.06.05.r5.g7edbf61f
 	pkgrel = 1
-	url = https://github.com/vinceliuice/Qogir-icon-theme.git
+	url = https://github.com/vinceliuice/qogir-cursor-theme
 	arch = any
 	license = GPL3
 	makedepends = git
 	provides = qogir-cursor-theme
 	conflicts = qogir-cursor-theme
-	options = !strip
-	options = !debug
-	source = qogir-cursor-theme::git+https://github.com/vinceliuice/Qogir-icon-theme.git
+	source = git+https://github.com/vinceliuice/qogir-cursor-theme.git
 	sha256sums = SKIP
 
 pkgname = qogir-cursor-theme-git
