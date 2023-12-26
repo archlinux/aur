@@ -1,7 +1,7 @@
 pkgbase = python-yamlpath
 	pkgdesc = Command-line get/set/merge/validate/scan/convert/diff processors for YAML/JSON/Compatible data using powerful, intuitive, command-line friendly syntax.
-	pkgver = 3.8.0
-	pkgrel = 2
+	pkgver = 3.8.1
+	pkgrel = 1
 	url = https://github.com/wwkimball/yamlpath/wiki
 	arch = any
 	license = ISC
@@ -11,7 +11,7 @@ pkgbase = python-yamlpath
 	makedepends = python-pytest
 	depends = python-ruyaml
 	depends = python-dateutil
-	source = https://files.pythonhosted.org/packages/source/y/yamlpath/yamlpath-3.8.0.tar.gz
-	sha512sums = ab4f9c370a344d88f2089e3fd1ffd1307e77ed071ee30537b215c79d57aa1779e42bc55429c8cf7d77ed16b4c2a35b17c302724bf9970d00d16ec18e32ae4535
+	source = https://files.pythonhosted.org/packages/source/y/yamlpath/yamlpath-3.8.1.tar.gz
+	sha512sums = 8df74b1419670339c64252fc7ced277858acea9c2162f79d1da6b37af386f1a6debe302514d72b52bb373abed44d91e3a6ea15e8e6228ec14acd4afca348769a
 
 pkgname = python-yamlpath
