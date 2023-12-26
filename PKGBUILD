@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('python-sphinx')
 makedepends=('python-setuptools' 'python-pip')
 source=("https://github.com/adamtheturtle/sphinx-substitution-extensions/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5a228398d91dd979d778dd08cc1468c811c5d453eaae7a4c8faf5b14f66a40f5')
+sha512sums=('202612ad9826ed6e3b02859cf6d7fabf010ad5997a7dd26b47b6383d950514a02bf6738ea2fc0ca47f64bbf66da0c3d83c47cc4b016a2d40112de35b4781fd62')
 
 prepare() {
   cd $srcdir/sphinx-substitution-extensions-${pkgver}
