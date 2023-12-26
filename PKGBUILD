@@ -1,27 +1,42 @@
-# system requirements: Perl
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=WriteXLS
 _pkgver=6.4.0
 pkgname=r-${_pkgname,,}
-pkgver=6.4.0
-pkgrel=3
-pkgdesc='Cross-Platform Perl Based R Function to Create Excel 2003 (XLS) and Excel 2007 (XLSX) Files'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Cross-Platform Perl Based R Function to Create Excel 2003 (XLS) and Excel 2007 (XLSX) Files"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
+  perl-archive-zip
+  perl-parse-recdescent
+  perl-text-csv
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('644b90a82683c668b6e05bb4f940111a42cd634f63a5b559351e8cd4274a19b7')
+md5sums=('b62412fab12ed7ffa5f47ed4238cdb15')
+b2sums=('848296aa855563889e3473c4b00e9958d44667611114e39010d504b67787db9c5050bac51fefc65e802f67642b4add53b4170e97b136fb8caa07a90752eb73dc')
+
+prepare() {
+  # remove some vendored perl modules, use system provided versions instead
+  cd "$_pkgname/inst/Perl"
+  rm -r Archive File Getopt Parse Text
+}
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
+}
+
+check() {
+  # test that all required perl modules are available
+  R_LIBS="$srcdir/build" Rscript --vanilla -e "stopifnot(WriteXLS::testPerl())"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
