@@ -1,8 +1,8 @@
-# Maintainer : hayao@fascode.net
+# Maintainer : tio@tiotrom.com
 # Contributer: nsz32 <nszabo2 at gmail dot com>, bittin
 
 pkgname="xfce4-docklike-plugin"
-pkgver="0.4.1"
+pkgver="0.4.2"
 pkgrel=1
 pkgdesc='A modern, docklike, minimalist taskbar for XFCE'
 arch=('i686' 'x86_64' "aarch64")
