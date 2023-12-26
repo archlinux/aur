@@ -1,7 +1,7 @@
 pkgbase = muse-hub-bin
 	pkgdesc = Manage Muse Group apps, mostly MuseScore soundpacks
 	pkgver = 1.0.1.451
-	pkgrel = 5
+	pkgrel = 4
 	url = https://www.musehub.com/
 	install = muse-hub-bin.install
 	arch = x86_64
