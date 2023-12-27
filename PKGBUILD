@@ -11,7 +11,7 @@ license=("custom")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    #'mecab'
+    'mecab'
     'java-runtime'
     'lib32-glibc'
 )
