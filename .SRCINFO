@@ -1,0 +1,15 @@
+pkgbase = speedata-publisher
+	pkgdesc = a database publishing software that creates high-quality layouted PDFs fully automatically
+	pkgver = 4.15.19
+	pkgrel = 0
+	url = https://github.com/speedata/publisher
+	arch = x86_64
+	license = AGPL3
+	makedepends = go
+	makedepends = lua
+	makedepends = ruby-rake
+	depends = glibc
+	source = https://github.com/speedata/publisher/archive/7d1037fdd9b002ba53c8352d8ef67b7e552f3599/publisher-7d1037fdd9b002ba53c8352d8ef67b7e552f3599.tar.gz
+	sha256sums = 634ea7abecec41c83d3e7c5cce81a1be22e7e81dbb0b01610810dc89230237d0
+
+pkgname = speedata-publisher
