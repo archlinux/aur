@@ -1,6 +1,6 @@
 pkgbase = electerm-git
 	pkgdesc = Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)
-	pkgver = 1.37.88.r4.g82ed2ced
+	pkgver = 1.37.92.r1.g08babe0d
 	pkgrel = 1
 	url = https://electerm.html5beta.com/
 	arch = any
