@@ -1,11 +1,19 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
-_pkgname=electron
-_major=27
-pkgname="${_pkgname}-bin"
-pkgver="${_major}"
+# Based on extra/electron by
+# Bruno Pagani <archange@archlinux.org>
+# Caleb Maclennan <caleb@alerque.com>
+
+pkgver=28
 pkgrel=1
-pkgdesc='Build cross platform desktop apps with web technologies — Binary meta package'
-arch=('x86_64' 'aarch64')
-url='https://electronjs.org/'
-depends=("${_pkgname}${_major}-bin")
+pkgname=electron-bin
+pkgdesc='Meta package, always depends on the latest stable Electron binary build'
+arch=(any)
+url='https://electronjs.org'
+license=(MIT)
+depends=("electron${pkgver}-bin")
+
+package() {
+	mkdir -p "${pkgdir}/usr/bin"
+	ln -sf "electron${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+}
