@@ -1,0 +1,17 @@
+pkgbase = boost-multi-git
+	pkgdesc = Multidimensional array access to contiguous or regularly contiguous memory. (Not an official Boost library)
+	pkgver = 0.83.0.r170.gf1b04da
+	pkgrel = 1
+	url = https://gitlab.com/correaa/boost-multi
+	arch = any
+	license = Boost
+	checkdepends = boost
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	provides = boost-multi
+	conflicts = boost-multi
+	source = boost-multi::git+https://gitlab.com/correaa/boost-multi.git
+	sha512sums = SKIP
+
+pkgname = boost-multi-git
