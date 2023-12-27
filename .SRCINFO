@@ -1,21 +1,18 @@
 pkgbase = selvania-launcher-bin
 	pkgdesc = Custom launcher for modded minecraft written in electron.js and Node.js
-	pkgver = 1.3.5
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://luuxis.fr/
 	arch = x86_64
 	license = custom
-	makedepends = gendesk
-	depends = electron26
-	provides = selvania-launcher=1.3.5
+	depends = electron27
+	provides = selvania-launcher=2.0.0
 	conflicts = selvania-launcher
-	source = selvania-launcher-1.3.5.tar.gz::https://github.com/luuxis/Selvania-Launcher/releases/download/1.3.5/Selvania-Launcher-linux-x64.tar.gz
-	source = selvania-launcher.png::https://raw.githubusercontent.com/luuxis/Selvania-Launcher/1.3.5/src/assets/images/icon.png
-	source = LICENSE.md::https://raw.githubusercontent.com/luuxis/Selvania-Launcher/1.3.5/LICENSE.md
+	source = selvania-launcher-2.0.0.deb::https://github.com/luuxis/Selvania-Launcher/releases/download/2.0.0/Selvania-Launcher-linux-amd64.deb
+	source = LICENSE-2.0.0.md::https://raw.githubusercontent.com/luuxis/Selvania-Launcher/2.0.0/LICENSE.md
 	source = selvania-launcher.sh
-	sha256sums = 60c5993b370060a937b555473755b44367a1c247bc7989624626d63adf55b60f
-	sha256sums = 8b6d0dde9d975f1f9fe7c8307066a6e0d06ba316ee1ef239359ead9d007316ab
+	sha256sums = 6d0c607eb866f2f079be63ca283b538cfe22c402f49b941a5283c2a37dfb3eff
 	sha256sums = 7c73b8f626696c0403394da3dae0d5ed33009cc2d674803d40bc4e2c7e67174b
-	sha256sums = b51b14b64fded648a1a45c70ef6d2512cf6697b1c81b76cfba947eb1148d6f23
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = selvania-launcher-bin
