@@ -1,0 +1,15 @@
+pkgbase = gamemaker-beta-bin
+	pkgdesc = Make a game with GameMaker, the best free video game engine. Perfect for beginners and professionals.
+	pkgver = 2023.1100.0.450
+	pkgrel = 1
+	url = https://gamemaker.io
+	arch = x86_64
+	license = custom
+	provides = gamemaker-beta
+	options = !strip
+	source = https://gms.yoyogames.com/GameMaker-Beta-2023.1100.0.450.deb
+	source = LICENSE.txt
+	sha256sums = 33cb96561eb65becbcb9080da05157c56c1fd0327e4917d2a6d45fead0dd4bad
+	sha256sums = 9ebe45546ac7bb43156c62f42947ccaf660f96cd4fcc684f42df49754aaeac51
+
+pkgname = gamemaker-beta-bin
