@@ -7,7 +7,7 @@ pkgbase = vonal-bin
 	license = GPLv3
 	provides = vonal
 	options = !strip
-	source = https://github.com/fxdave/vonal-rust/releases/download/v1.4.0/vonal.tar.gz
+	source = https://github.com/fxdave/vonal-rust/releases/download/v1.5/vonal.tar.gz
 	b2sums = 1df08061035d67231b62d96f2de54ed922797f43114757138d01b0286621c98de5bbc133170682430c6e72d38f7e40768ac1a39738e70d6f817476f7f6bd4d5e
 
 pkgname = vonal-bin
