@@ -1,7 +1,7 @@
 # Maintainer: tocic <tocic at protonmail dot ch>
 
 pkgname=functionalplus
-pkgver=0.2.20_p0
+pkgver=0.2.22
 pkgrel=1
 pkgdesc="Functional Programming Library for C++"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://www.editgym.com/fplus-api-search"
 license=("Boost")
 makedepends=("python")
 source=("${pkgname}-${pkgver}::https://github.com/Dobiasd/FunctionalPlus/archive/v${pkgver//_/-}.tar.gz")
-b2sums=("835ba4c86e433b3445347d56ff38cfe752a529186e071224ed81bf8ce40dcd30ca97e1a475c124dc337034010ae0b22dc4124682e85af5ae5e5428b666293525")
+b2sums=("dd32e0c518d3b18dd7f31498579edb05cd8a73108c4720db560b48931ed50d8a1a970916d517d488188cdfd69d04d2a3bc6dbfe193b5b8adf114ee7a2938208c")
 
 build() {
   cmake -B "build/" -S "FunctionalPlus-${pkgver//_/-}" \
