@@ -1,5 +1,5 @@
 pkgname=julia-bin
-pkgver=1.9.4
+pkgver=1.10.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc='High-level, high-performance, dynamic programming language - official binaries'
@@ -8,10 +8,10 @@ conflicts=(julia)
 depends=('bash' 'gmp' 'libnghttp2' 'libssh2' 'libunwind' 'python' 'llvm')
 url='https://julialang.org/'
 license=('MIT')
-source_x86_64=("https://julialang-s3.julialang.org/bin/linux/x64/${pkgver:0:3}/julia-${pkgver}-linux-${arch}.tar.gz")
-sha256sums_x86_64=('07d20c4c2518833e2265ca0acee15b355463361aa4efdab858dad826cf94325c')
-source_aarch64=("https://julialang-s3.julialang.org/bin/linux/aarch64/${pkgver:0:3}/julia-${pkgver}-linux-${arch}.tar.gz")
-sha256sums_aarch64=('541d0c5a9378f8d2fc384bb8595fc6ffe20d61054629a6e314fb2f8dfe2f2ade')
+source_x86_64=("https://julialang-s3.julialang.org/bin/linux/x64/${pkgver:0:4}/julia-${pkgver}-linux-${arch}.tar.gz")
+sha256sums_x86_64=('a7298207f72f2b27b2ab1ce392a6ea37afbd1fbee0f1f8d190b054dcaba878fe')
+source_aarch64=("https://julialang-s3.julialang.org/bin/linux/aarch64/${pkgver:0:4}/julia-${pkgver}-linux-${arch}.tar.gz")
+sha256sums_aarch64=('048d96b4398efd524e94be3f49e8829cf6b30c8f3f4b46c75751a4679635e45b')
 options=(!strip)
 
 package() {
