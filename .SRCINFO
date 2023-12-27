@@ -1,7 +1,7 @@
 pkgbase = gtk3-patched-filechooser-icon-view
 	pkgdesc = GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch.
 	pkgver = 3.24.39
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Dudemanguy/gtk
 	install = gtk3.install
