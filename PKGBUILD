@@ -1,7 +1,7 @@
 # Maintainer: Raphael Nestler (rnestler) <raphael.nestler@gmail.com>
 
 pkgbase=linux-rust
-pkgver=6.5.9.arch2
+pkgver=6.6.8.arch1
 pkgrel=1
 pkgdesc='Rust Linux'
 url='https://github.com/archlinux/linux'
@@ -41,14 +41,14 @@ validpgpkeys=(
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('c6662f64713f56bf30e009c32eac15536fad5fd1c02e8a3daf62a0dc2f058fd5'
+sha256sums=('5036c434e11e4b36d8da3f489851f7f829cf785fa7f7887468537a9ea4572416'
             'SKIP'
-            '98c8e04079699a9316c37ed299a363c80ff9625388c492116683b929f35dcab6'
+            '77f0ad619945e18ab880733129a49ad0af28c3f2fd7b1ae9bbb6465b5a4cd316'
             'SKIP'
             '3d5c668aabf64983342e0753b7549e0d0a678f8812a3a367692c1b0a79b5ba26')
-b2sums=('fb5fcc0dc79e2f615a550283481492a8185414d65369cbe805909112735593e5fc8bdbd482a347dc4cb3dcac979bea21cd03c503932e9321856eeea685d31c65'
+b2sums=('d6f58bfae29239f985c1aa329b19c2fdea1c08c79e819e60f85359e9ef00e97a7f72d74662df7d9def75ff85a3b4bdf36dc9ded578ee472e9b4efa7bf50fcd33'
         'SKIP'
-        '2b8309c03ae0dd7582b471e39b459fbcb653bd3971eda91576791b1dabe73aad89d4b468a59d0cf3e834f6085ad33ac5449b60a567960835f6f56dd739411262'
+        '3445b1884f0ec6fccd72091e23c74538c80991195aab53f54c9a955437e35951ba689aa59eee35f2faa2440273e3c384e043333e63a22ce41dc5cd9d054d1a2f'
         'SKIP'
         '7fc391d272211c7fcce3407cfa666f182a83dd5df1e6aaa0d5cf57e2f52d90f31d5f45756324f5a229ebffb8f37f90f66bf5cc2143139570af0b92eff6c89520')
 
@@ -77,7 +77,7 @@ prepare() {
   rustup component add rust-src
 
   echo "Installing rust-bindgen"
-  cargo install --locked --version 0.62.0 bindgen-cli
+  cargo install --locked --version 0.65.1 bindgen-cli
 
   echo "Setting config..."
   cp ../config .config
