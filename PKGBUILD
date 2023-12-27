@@ -1,14 +1,15 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
-# Maintainer: Ndoskrnl <lollipop.studio.cn@gmail.com>
+# Maintainer: Ben Song <bensongsyz@gmail.com>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
+# Contributor: Ndoskrnl <lollipop.studio.cn@gmail.com>
 pkgname=coredns-wgsd-git
 _pkgname='wgsd'
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.11.1
+pkgrel=1
 pkgdesc="A DNS server that chains plugins - with module wgsd"
 makedepends=('go')
 conflicts=('coredns-bin')
 arch=('i686' 'x86_64')
-url="https://github.com/tobikris/wgsd"
+url="https://github.com/jwhited/wgsd"
 license=('Apache')
 provides=('coredns')
 conflicts=('coredns')
@@ -27,13 +28,15 @@ pkgver() {
 
 build() {
   export GOPATH="$srcdir/build"
-  export PATH=$GOPATH/bin:$PATH
+  export PATH="$GOPATH"/bin:"$PATH"
 
   cd $srcdir/$_pkgname/cmd/coredns
   go build
 
   cd $srcdir/$_pkgname/cmd/wgsd-client
   go build
+
+  chmod -R u+w "${GOPATH:?}"
 }
 
 package() {
