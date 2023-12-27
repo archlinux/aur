@@ -1,19 +1,19 @@
 pkgbase = p3x-redis-ui-bin
 	pkgdesc = A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app
 	pkgver = 2023.10.243
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.corifeus.com/redis-ui
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	depends = hicolor-icon-theme
 	depends = electron25
+	depends = hicolor-icon-theme
 	conflicts = p3x-redis-ui=2023.10.243
-	source = LICENSE::https://raw.githubusercontent.com/patrikx3/redis-ui/v2023.10.243/LICENSE
+	source = LICENSE-2023.10.243::https://raw.githubusercontent.com/patrikx3/redis-ui/v2023.10.243/LICENSE
 	source = p3x-redis-ui.sh
 	sha256sums = a44e4f4811cc55ebe83c9ba750697ee94c56401c1f3963ace79fa6938ebb46ac
-	sha256sums = 2036372d05355f2a25fbaeb5d70b91bfa95a9d2b45b4add5f589316d06f500f9
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 	source_aarch64 = p3x-redis-ui-2023.10.243-aarch64.deb::https://github.com/patrikx3/redis-ui/releases/download/v2023.10.243/p3x-redis-ui_2023.10.243_arm64.deb
 	sha256sums_aarch64 = 5f933871e30a426942fb9a89ab3fa0000438d456fa4232bf9389690bbe5318f8
 	source_armv7h = p3x-redis-ui-2023.10.243-armv7h.deb::https://github.com/patrikx3/redis-ui/releases/download/v2023.10.243/p3x-redis-ui_2023.10.243_armv7l.deb
