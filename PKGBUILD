@@ -3,14 +3,14 @@
 
 pkgname="python-tts"
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Coqui deep learning toolkit for Text-to-Speech, battle-tested in research and production"
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
 arch=("any")
 provides=("tts" "python-tts")
 conflicts=("python-tts")
-depends=("cython"
+depends=("cython0"
          "python"
          "python-numpy"
          "python-scipy"
