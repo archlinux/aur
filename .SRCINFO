@@ -1,7 +1,7 @@
 pkgbase = chirp-next
 	pkgdesc = GUI tool for programming ham radios, built from daily build
 	pkgver = 20231223
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chirp.danplanet.com
 	install = chirp-next.install
 	arch = any
