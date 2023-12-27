@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.15.0
 _pkgver=2.15.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -37,7 +37,7 @@ sha512sums=('51976c7255ffbdb98fe67a28f6ae1c3b9a073e49fe6b44187a53d99654e4af753de
             'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e')
 
 # consolidate common dependencies to prevent mishaps
-_common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
+_common_py_depends=(python-termcolor python-astor python-gast python-numpy python-protobuf
                     absl-py python-h5py python-keras python-keras-applications python-keras-preprocessing
                     python-tensorflow-estimator python-opt_einsum python-astunparse python-pasta
                     python-flatbuffers python-typing_extensions python-ml-dtypes)
