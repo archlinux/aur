@@ -1,6 +1,6 @@
 pkgbase = rcalc
 	pkgdesc = A lightweight RPN calculator
-	pkgver = v1.3.0
+	pkgver = v1.3.1
 	pkgrel = 1
 	url = https://github.com/gelvinp/rcalc
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rcalc
 	depends = glfw>=3.0.0
 	depends = freetype2>=2.0.0
 	depends = libxcb
-	source = git+https://github.com/gelvinp/rcalc#tag=ea547738660a18395d9310d8383595b7f1592ca6?signed
+	source = git+https://github.com/gelvinp/rcalc#tag=8dcfd738757a4153ea9f92eae6705fa517422c88?signed
 	source = git+https://github.com/glfw/glfw
 	source = git+https://gitlab.freedesktop.org/freetype/freetype
 	source = git+https://github.com/ArthurSonzogni/FTXUI

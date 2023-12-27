@@ -1,6 +1,6 @@
 # Maintainer: Patrick Gelvin <patrick@gelvin.dev>
 pkgname="rcalc"
-pkgver=v1.3.0
+pkgver=v1.3.1
 pkgrel=1
 pkgdesc="A lightweight RPN calculator"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/gelvinp/rcalc"
 license=('MIT')
 depends=('glfw>=3.0.0' 'freetype2>=2.0.0' "libxcb")
 makedepends=("python>=3.11.0" "scons>=4.5.0" "pkg-config" "git")
-_tag=ea547738660a18395d9310d8383595b7f1592ca6 # git rev-parse "tag-name"
+_tag=8dcfd738757a4153ea9f92eae6705fa517422c88 # git rev-parse "tag-name"
 source=(git+https://github.com/gelvinp/rcalc#tag=$_tag?signed
         git+https://github.com/glfw/glfw
         git+https://gitlab.freedesktop.org/freetype/freetype
