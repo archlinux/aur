@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/printfn/fend"
 license=('GPL-3.0-or-later')
 groups=()
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('cargo' 'pandoc')
 checkdepends=()
 optdepends=()
@@ -27,7 +27,8 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
