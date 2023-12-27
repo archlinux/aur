@@ -1,0 +1,23 @@
+pkgbase = kx2utility
+	pkgdesc = Elecraft Factory APP for use with the KX2 Ham Radio.
+	pkgver = 1_23_4_23
+	pkgrel = 1
+	url = https://ftp.elecraft.com/KX2/Manuals%20Downloads/
+	arch = x86_64
+	license = custom:ELECRAFT
+	depends = gcc-libs
+	depends = gtk2
+	depends = curl
+	depends = hamradio-menus
+	options = !strip
+	source = https://ftp.elecraft.com/KX2/Utilities/KX2UtilityLINUX64BIT_1_23_4_23.tar.gz
+	source = kx2utility.1
+	source = kx2utility.desktop
+	md5sums = fc5cd97a4c49fae374c36f0c95aeb47f
+	md5sums = 8be8f31caf2b8f86886aa4725b2d3373
+	md5sums = a8a0ffdaa2fd7d4a3c49d36bc455a780
+	sha256sums = 69303f9bb98f4fa22253e45accd263cfdf91155fc33b1ec2d621156c0eefbede
+	sha256sums = db6b32d842cf1703c750c6460443199acae7a1ff45086b48c24204cce84a9950
+	sha256sums = 14e5808ce76e134e6a8da87cd81e5181c6fc75f7904d973dcff9e993c45f160d
+
+pkgname = kx2utility

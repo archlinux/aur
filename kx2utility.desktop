@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=KX2-Utility
+Name[en_US]=KX2-Utility
+Comment=Elecraft KH2 Control Utility
+Comment[en_US]=Elecraft KH2 Control Utility
+Exec=kx2utility
+Icon=kx2utility
+MimeType=text/plain
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Network;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
