@@ -1,7 +1,7 @@
 pkgbase = neper
 	pkgdesc = Polycrystal generation and meshing
 	pkgver = 4.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://neper.info
 	arch = x86_64
 	license = GPL
