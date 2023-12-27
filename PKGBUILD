@@ -4,8 +4,8 @@
 _module="diffusers"
 _pkgname="python-$_module"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.24.0
-pkgrel=2
+pkgver=0.25.0
+pkgrel=1
 pkgdesc='Pretrained diffusion models for image and audio generation in PyTorch'
 url='https://github.com/huggingface/diffusers'
 license=('Apache-2.0')
@@ -20,7 +20,7 @@ makedepends=(
 
 _pkgsrc="$_module-$pkgver"
 source=("$_module-$pkgver"::"$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('148d926605782d262e512d6ba819ff3b45dad7f2e84c7f9d2a5fc0b6e793e6a7')
+sha256sums=('02a791c998eaa0510b6e588a48bb4a35916465c956ae277d27d62724b8efdea0')
 
 build() {
   cd "$_pkgsrc"
@@ -44,5 +44,5 @@ package() {
   )
 
   cd "$_pkgsrc"
-  python -m installer --destdir="${pkgdir:?}" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
