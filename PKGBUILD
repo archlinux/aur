@@ -1,8 +1,8 @@
 # Maintainer: luelista <luelista@gmail.com>
 
 pkgname=kdbxviewer-git
-pkgver=0.0.1
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="ncurses GUI to browse and command-line tool to dump all contents of a KeePass2 Database files (kdbx)"
 arch=('x86_64')
 url="https://github.com/luelista/kdbxviewer"
