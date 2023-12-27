@@ -1,20 +1,21 @@
-# Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Maintainer: HueponiK <hueponik@gmail.com>
+# Contributor: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: Stefan Karner <stefan.karner at student.tuwien.ac.at>
 # Contributor: Drenn
 
-pkgbase=openxcom-git
-pkgname=('openxcom-git' 'openxcom-docs-git')
+pkgbase=openxcom-hueponik
+pkgname=('openxcom-hueponik' 'openxcom-docs-hueponik')
 _gitname=OpenXcom
-pkgver=1.0_r3059_g3af9628ba
+pkgver=1.0_r3108_g427f9e121
 pkgrel=1
-pkgdesc="An open-source reimplementation of the famous X-COM game (git-version)"
-arch=('i686' 'x86_64')
+pkgdesc="An open-source reimplementation of the famous X-COM game (version with improved scaling option)"
+arch=('i686' 'x86_64' 'arm64')
 url="https://openxcom.org/"
 license=('GPL3')
 makedepends=('git' 'xmlto' 'docbook-xml' 'docbook-xsl' 'doxygen' 'sdl_mixer'
              'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs' 'glibc'
              'boost' 'glu' 'cmake' 'hicolor-icon-theme' 'xorgproto')
-source=(git+"https://github.com/SupSuper/${_gitname}.git")
+source=(git+"https://github.com/HueponiK/${_gitname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -35,8 +36,8 @@ build() {
   make doxygen
 }
 
-package_openxcom-git() {
-  pkgdesc="An open-source reimplementation of the famous X-COM game (git-version)"
+package_openxcom-hueponik() {
+  pkgdesc="An open-source reimplementation of the famous X-COM game (version with improved scaling option)"
   depends=('sdl_mixer' 'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs'
            'glibc' 'hicolor-icon-theme')
   optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam')
@@ -51,8 +52,8 @@ package_openxcom-git() {
   install -Dm644 "${srcdir}/OpenXcom/docs/openxcom.6" "${pkgdir}/usr/share/man/man6/openxcom.6"
 }
 
-package_openxcom-docs-git() {
-  pkgdesc="Documentation for the open-source reimplementation of the famous X-COM game (git-version)"
+package_openxcom-docs-hueponik() {
+  pkgdesc="Documentation for the open-source reimplementation of the famous X-COM game (hueponik-version)"
   arch=('any')
   cd ${_gitname}/build/docs
   install -dm755 "${pkgdir}/usr/share/doc/openxcom/"
