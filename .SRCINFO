@@ -1,12 +1,13 @@
 pkgbase = r-beeswarm
 	pkgdesc = The Bee Swarm Plot, an Alternative to Stripchart
 	pkgver = 0.4.0
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=beeswarm
 	arch = x86_64
 	license = Artistic2.0
 	depends = r
 	source = https://cran.r-project.org/src/contrib/beeswarm_0.4.0.tar.gz
-	sha256sums = 51f4339bf4080a2be84bb49a844c636625657fbed994abeaa42aead916c3d504
+	md5sums = 20c0aaccd552488e1f5ba7924d59ab33
+	b2sums = 9ceeec0dc6dab75cad2c6b67da6656169cb8de231dcc3f9fab2ecb2241ac7dfe3d4647342928ac28b33c4db06538c5fef210d84924eb22249ef562ee90fac3a6
 
 pkgname = r-beeswarm
