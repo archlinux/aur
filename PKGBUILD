@@ -1,15 +1,21 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 
 # options
-: ${_autoupdate:=false}
+if [ "${_srcinfo::1}" == "t" ] ; then
+  : ${_autoupdate:=false}
+elif [ -z "$_pkgver" ] ; then
+  : ${_autoupdate:=true}
+else
+  : ${_autoupdate:=false}
+fi
 
 : ${_pkgtype:=-bin}
 
 # basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.10.2
-pkgrel=3
+pkgver=0.10.3
+pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
@@ -27,18 +33,19 @@ _main_package() {
   install="$_pkgname.install"
 
   _pkgsrc="Logseq-linux-x64"
-  _pkgext="AppImage"
-  source=(
-    "$url/releases/download/$_pkgver/$_pkgsrc-$_pkgver.$_pkgext"
-    "$_pkgname.png"::"$url/raw/master/resources/icons/logseq.png"
-  )
-  sha256sums=(
-    'b8aba5b33f23db5d79ee1566c88c1c5e2f3de679dda6f35828235de7f606b866'
-    '2c04bad999ef75b874bd185b84c4df560486685f5a36c2801224ef9b67642006'
-  )
+  _pkgext="zip"
+  source+=("$url/releases/download/$_pkgver/$_pkgsrc-$_pkgver.$_pkgext")
 
   if [[ "${_autoupdate::1}" == "t" ]] ; then
-    sha256sums=('SKIP')
+    sha256sums+=('SKIP')
+  else
+    sha256sums+=('f72703a080773873c6106587e30e91506dac114ad0f6b33383171f0cc2a6d5e5')
+  fi
+
+  # appimage - missing icon
+  if [[ "${_pkgext::1}" == "A" ]] ; then
+    source+=("$_pkgname.png"::"$url/raw/master/resources/icons/logseq.png")
+    sha256sums+=('2c04bad999ef75b874bd185b84c4df560486685f5a36c2801224ef9b67642006')
   fi
 }
 
@@ -66,7 +73,7 @@ prepare() {
 
   gendesk "${_gendesk_options[@]}"
 
-  # extract appimage
+  # appimage - extract
   if [[ "${_pkgext::1}" == "A" ]] ; then
     chmod +x "$_pkgsrc-$_pkgver.$_pkgext"
     "./$_pkgsrc-$_pkgver.$_pkgext" --appimage-extract
@@ -75,19 +82,24 @@ prepare() {
 }
 
 package() {
+  if [[ "${_pkgext::1}" == "A" ]] ; then
+    # appimage - icons
+    install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/logseq.png"
+
+    # appimage - remove unneeded
+    rm -- "$_pkgsrc/AppRun"
+    rm -- "$_pkgsrc/Logseq.desktop"
+    rm -- "$_pkgsrc/Logseq.png"
+  else
+    # zip - icons
+    install -Dm644 "$_pkgsrc/resources/app/icon.png" "$pkgdir/usr/share/pixmaps/logseq.png"
+  fi
+
   # desktop file
   install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-  # icons
-  install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/logseq.png"
-
   # script
   install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/logseq"
-
-  # remove unneeded
-  rm -- "$_pkgsrc/AppRun"
-  rm -- "$_pkgsrc/Logseq.desktop"
-  rm -- "$_pkgsrc/Logseq.png"
 
   # package files
   install -dm755 "$pkgdir/opt/$_pkgname"
