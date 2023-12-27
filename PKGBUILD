@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.15.0
 _pkgver=2.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -83,8 +83,6 @@ prepare() {
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
 
   # These environment variables influence the behavior of the configure call below.
-  export PYTHON_BIN_PATH=/usr/bin/python
-  export USE_DEFAULT_PYTHON_LIB_PATH=1
   export TF_NEED_JEMALLOC=1
   export TF_NEED_KAFKA=1
   export TF_NEED_OPENCL_SYCL=0
@@ -130,6 +128,9 @@ prepare() {
   # add latest PTX for future compatibility
   # Valid values can be discovered from nvcc --help
   export TF_CUDA_COMPUTE_CAPABILITIES=sm_52,sm_53,sm_60,sm_61,sm_62,sm_70,sm_72,sm_75,sm_80,sm_86,sm_87,sm_89,sm_90,compute_90
+  export TF_PYTHON_VERSION=$(get_pyver)
+  export PYTHON_BIN_PATH=/usr/bin/python$(get_pyver)
+  export USE_DEFAULT_PYTHON_LIB_PATH=1
 
   export BAZEL_ARGS="--config=mkl -c opt"
 }
