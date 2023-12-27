@@ -3,7 +3,7 @@
 pkgbase=canopenlinux-git
 pkgname=canopenlinux-git
 pkgver=4.0.r11.gebcc3c8
-pkgrel=1
+pkgrel=2
 groups=()
 pkgdesc="CANopenNode on Linux devices"
 arch=(x86_64
@@ -14,7 +14,8 @@ license=('Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(glibc)
-makedepends=(git)
+makedepends=(git
+    doxygen)
 optdepends=(
     "can-utils: Linux-CAN / SocketCAN user space applications"
     "can-doc: Linux-CAN / SocketCAN documentation"
@@ -45,6 +46,8 @@ prepare()
 build() {
     make -C $pkgname PREFIX=/usr
     make -C $pkgname/cocomm PREFIX=/usr
+    cd "${srcdir}/${pkgname}"
+    doxygen
 }
 
 package() {
@@ -53,4 +56,5 @@ package() {
     install -Dm0755 cocomm/cocomm -t "$pkgdir/usr/bin"
     install -Dm0644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/${pkgname%-git}.md"
     install -Dm0644 cocomm/README.md "$pkgdir/usr/share/doc/${pkgname%-git}/cocomm.md"
+    cp -rva html "$pkgdir/usr/share/doc/${pkgname%-git}/"
 }

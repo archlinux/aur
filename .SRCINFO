@@ -1,13 +1,14 @@
 pkgbase = canopenlinux-git
 	pkgdesc = CANopenNode on Linux devices
 	pkgver = 4.0.r11.gebcc3c8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CANopenNode/CANopenLinux
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
 	license = Apache-2.0
 	makedepends = git
+	makedepends = doxygen
 	depends = glibc
 	optdepends = can-utils: Linux-CAN / SocketCAN user space applications
 	optdepends = can-doc: Linux-CAN / SocketCAN documentation
