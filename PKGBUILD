@@ -4,7 +4,7 @@
 _name=manim
 pkgname=python-${_name}gl
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Animation engine for explanatory math videos"
 arch=(any)
 url="https://github.com/3b1b/manim"
@@ -14,7 +14,7 @@ depends=(
     'texlive-core'
     'python'
     'python-colour'
-    'python-numpy'
+    'python-numpy<1.25'
     'python-pillow'
     'python-scipy'
     'python-sympy'
@@ -38,16 +38,16 @@ depends=(
     'python-svgelements'
 )
 makedepends=(python-build python-installer python-wheel)
-source=("https://github.com/3b1b/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('424116107f8ba627a9c6de6dc9d475f24479c8e96cb48862da40d6a68d8e0c1e')
+source=("$url/archive//v$pkgver.tar.gz")
+b2sums=('70c0d4b893e1b15b536fd98e0584d2e5676802e2165407ed0cd62878120ce7f3ff43bf7eec8e16c12c95494322118215689f4138ff9dc190c86be206aa57124c')
 
 build() {
-    cd "$_name-$pkgver"
+    cd $_name-$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_name-$pkgver"
+    cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
