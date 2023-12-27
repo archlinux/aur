@@ -2,7 +2,7 @@
 
 pkgname='json2sharp-bin'
 pkgver='1.1.6.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool for converting JSON objects to class definitions'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Kaoticz/Json2Sharp'
