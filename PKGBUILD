@@ -3,30 +3,26 @@
 _pkgname=Rmpi
 _pkgver=0.7-2
 pkgname=r-${_pkgname,,}
-pkgver=0.7.2
-pkgrel=1
-pkgdesc='Interface (Wrapper) to MPI (Message-Passing Interface)'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Interface (Wrapper) to MPI (Message-Passing Interface)"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
-  r
   openmpi
-)
-makedepends=(
-  openssh
-  inetutils
-  nvidia-utils
+  r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8591fa9f50de52535a32b36e7ed142c6ca4e03fdfdbef79a1e27a63ed5322eef')
+md5sums=('ba8538ddb5d4c12863d5b16e3d64f290')
+b2sums=('c59054786e90a5d98da365fcee3ccec55399dfe039feacfe2530850505c7ded50d37c41328a3393cd76ec18ecf21fcb0ad0614eca4b400996ac4924c8521cab8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
