@@ -1,7 +1,7 @@
 pkgbase = trgui-ng
 	pkgdesc = Remote GUI for Transmission torrent daemon
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openscopeproject/TrguiNG
 	arch = x86_64
 	license = AGPL-3.0
