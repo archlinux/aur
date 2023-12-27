@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytdownloader-gui-bin
 _pkgname=YTDownloader
-pkgver=3.16.0
+pkgver=3.16.1
 _electronversion=27
 pkgrel=1
 pkgdesc="A modern GUI App for downloading Videos and Audios from hundreds of sites."
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_Linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2f6de8a9eb97bc063bfdfc3daf119af25d211c82d7df7e33e00a633f75771d2c'
+sha256sums=('064169b8ece9c6666aaa537bdf29888c1b073865645c8bebc40be9a0907fc354'
             '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
