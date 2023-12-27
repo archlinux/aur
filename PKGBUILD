@@ -2,7 +2,7 @@
 pkgname=weechat-matrix
 pkgver=0.3.0
 _tag=ebf792a233a50d639b13e5f7c9a1c1fe988e7476 # git rev-parse "$pkgver"
-pkgrel=10
+pkgrel=11
 pkgdesc='WeeChat Matrix protocol script written in Python'
 arch=('any')
 url='https://github.com/poljar/weechat-matrix'
@@ -19,9 +19,11 @@ install='weechat-matrix.install'
 source=(
   "git+$url.git?signed#tag=$_tag"
   0001-Switch-to-correct-build-system-definition.patch
+  0002-Fix-compatibility-with-matrix-nio-0.21.patch
 )
 sha512sums=('SKIP'
-            '65be133214b4497fead85e718d3dc57502063f4411c759d878e7132b2cb49befe5515714edda188169710c246537d893611aa8ef6faeaeab23762302e6e783b6')
+            '65be133214b4497fead85e718d3dc57502063f4411c759d878e7132b2cb49befe5515714edda188169710c246537d893611aa8ef6faeaeab23762302e6e783b6'
+            '026781b26839373e749b6e4e035a669ac73a996dfbbd392ff710a436b4133c987e5142a898b481b7e33b473eba225826fe9c55e93717afc0153c98c1ef08ad5e')
 validpgpkeys=('689A3B5BC6560AB4C99A2A0581314DA807EF4E22') # Damir Jelić (poljar) <poljar@termina.org.uk>
 
 pkgver() {
@@ -32,6 +34,8 @@ pkgver() {
 prepare() {
 	# fix PEP517 build-system definition: https://github.com/poljar/weechat-matrix/pull/340/files
 	patch -Np1 -d $pkgname -i ../0001-Switch-to-correct-build-system-definition.patch
+        # update python-matrix-nio (0.20.1-1 -> 0.23.0-1) broke the plugin
+        patch -Np1 -d $pkgname -i ../0002-Fix-compatibility-with-matrix-nio-0.21.patch
 
 	cd "$pkgname"
 	sed -ri 's|#!/usr/bin/env( -S)? python3|#!/usr/bin/python3|' contrib/*.py
