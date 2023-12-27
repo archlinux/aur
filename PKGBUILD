@@ -27,7 +27,7 @@ build() {
   cd build
   cp -r "${srcdir}/dist" .
   cmake -DCMAKE_INSTALL_PREFIX='/usr/' -DCMAKE_BUILD_TYPE='Debug' -DQTROOT=./qt -DCMAKE_SKIP_RPATH=1 ..
-  make
+  cmake build .
 }
 
 package() {
