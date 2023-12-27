@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.15.0
 _pkgver=2.15.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -115,7 +115,7 @@ prepare() {
   # https://github.com/tensorflow/tensorflow/issues/60577
   export CC=gcc
   export CXX=g++
-  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-13
+  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc
   export HOST_C_COMPILER=/usr/bin/${CC}
   export HOST_CXX_COMPILER=/usr/bin/${CXX}
   export TF_CUDA_CLANG=0  # Clang currently disabled because it's not compatible at the moment.
