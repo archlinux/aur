@@ -2,15 +2,16 @@
 
 pkgname=ysflight
 pkgver=20181124
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable flight simulator"
 arch=('x86_64')
 url="http://wwwe.ysflight.com/"
 license=('freeware')
+depends=('glu')
 makedepends=(python)
 ysflight_dir="/opt/ysflight-$pkgver"
 
-source=('YsflightForLinux.zip::https://forum.ysfhq.com/download/file.php?id=499'
+source=('YsflightForLinux.zip::https://ysflight.org/files/20181124YsflightForMacAndLinux.zip'
         'ysflight.sh')
 md5sums=('26a8f7bcc79eb710895547f052a09fef'
          '540ca8dec29fec23c67f830c6cce5d5c')

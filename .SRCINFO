@@ -1,15 +1,15 @@
 pkgbase = ysflight
 	pkgdesc = A portable flight simulator
 	pkgver = 20181124
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wwwe.ysflight.com/
 	arch = x86_64
 	license = freeware
 	makedepends = python
-	source = YsflightForLinux.zip::https://forum.ysfhq.com/download/file.php?id=499
+	depends = glu
+	source = YsflightForLinux.zip::https://ysflight.org/files/20181124YsflightForMacAndLinux.zip
 	source = ysflight.sh
 	md5sums = 26a8f7bcc79eb710895547f052a09fef
 	md5sums = 540ca8dec29fec23c67f830c6cce5d5c
 
 pkgname = ysflight
-
