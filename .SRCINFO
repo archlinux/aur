@@ -1,0 +1,19 @@
+pkgbase = opencore-amr-git
+	pkgdesc = Open source implementation of the Adaptive Multi Rate (AMR) speech codec
+	pkgver = 0.1.6.r0.g7dba8c3
+	pkgrel = 1
+	url = https://opencore-amr.sourceforge.io/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = glibc
+	provides = opencore-amr=0.1.6.r0.g7dba8c3
+	provides = libopencore-amrnb.so
+	provides = libopencore-amrwb.so
+	conflicts = opencore-amr
+	options = staticlibs
+	source = git+https://git.code.sf.net/p/opencore-amr/code
+	sha256sums = SKIP
+
+pkgname = opencore-amr-git
