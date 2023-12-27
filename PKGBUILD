@@ -1,7 +1,7 @@
 # Maintainer: Thomas Letan <lthms@soap.coffee>
 
 pkgname=spatial-shell
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc='Implementing a spatial model inspired by Material Shell and Paper WM, for Sway.'
 url=https://github.com/lthms/spatial-shell
@@ -18,10 +18,10 @@ makedepends=(
   'scdoc'
 )
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/lthms/spatial-shell/archive/refs/tags/$pkgver.tar.gz"
+  "$pkgname-$pkgver.tbz::https://github.com/lthms/spatial-shell/releases/download/$pkgver/spatial-shell-$pkgver.tbz"
 )
 sha512sums=(
-  'b16a251ca1dffb9c52f7aa180291c55b8eaa4b4bbbdf835bbbd4cf7902fa4134fe4336f42e74677db50c4f81552ff92f97566a542d113dd82559f995f8fa8bff'
+  '700ee2553f4d160caed2ac62b1f982b44b726297d8d3baa1e1b775c7d4eae7d5df22ad653a56418269e9d8e18265780d9bdfdf84d8a66aa4430324b9b4c7376f'
 )
 
 prepare() {
