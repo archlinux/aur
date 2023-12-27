@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=3.0.0
+pkgver=3.1.0
 _electronversion=21
 pkgrel=1
 pkgdesc="An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab"
@@ -11,7 +11,7 @@ license=("custom")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'mecab'
+    #'mecab'
     'java-runtime'
     'lib32-glibc'
 )
@@ -21,13 +21,16 @@ makedepends=(
     'gendesk'
     'git'
     'libicns'
+    'node-gyp'
+    'make'
+    'gcc'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
@@ -41,7 +44,7 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
     icns2png -x resources/icon.icns
-    cp resources/icon_512x512x32.png resources/icon.png
+    cp icon_512x512x32.png resources/icon.png
     sed 's|icon.icns|icon.png|g;s|"deb", ||g' -i buildConfig/linux22.config.json
     npm install
     npm run build:linux22
