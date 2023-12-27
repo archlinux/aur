@@ -2,7 +2,7 @@
 
 pkgname=virtiofsd
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Vhost-user virtio-fs device backend written in Rust"
 arch=(x86_64)
 url="https://gitlab.com/virtio-fs/virtiofsd"
@@ -34,13 +34,13 @@ build() {
   cd $pkgname-v$pkgver
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
   cd $pkgname-v$pkgver
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --frozen
 }
 
 package() {
