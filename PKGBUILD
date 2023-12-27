@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uthenticode
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A cross-platform library for verifying Authenticode signatures"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'openssl' 'pe-parse')
 makedepends=('cmake')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/trailofbits/uthenticode/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6750f2b065c2ed58cf089c776876a2cd2886e8adb626fd2d17da5050428bde2c')
+sha256sums=('74cf6c428469ecd3eb05fab94f9a0d5e42b2cdab54894b33c940ef33d81dc2ad')
 
 
 build() {
