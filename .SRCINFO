@@ -1,6 +1,6 @@
 pkgbase = libkrunfw
 	pkgdesc = A dynamic library bundling the guest payload consumed by libkrun
-	pkgver = 3.12.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/containers/libkrunfw
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = libkrunfw
 	makedepends = bc
 	makedepends = python-pyelftools
 	depends = glibc
-	noextract = linux-6.2.14.tar.xz
+	noextract = linux-6.4.7.tar.xz
 	options = !debug
-	source = https://github.com/containers/libkrunfw/archive/refs/tags/v3.12.0/libkrunfw-3.12.0.tar.gz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.2.14.tar.xz
-	sha256sums = ecdac7dfaaa97d20bd3e999fc9be8ceb672aa5307dcb636ddcfb6487f3da1b3b
-	sha256sums = 0ebc9fa309d496d474b06682578c5f7b42f0cf330365102b2feaab65ba296729
+	source = https://github.com/containers/libkrunfw/archive/refs/tags/v4.0.0/libkrunfw-4.0.0.tar.gz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.4.7.tar.xz
+	sha256sums = 7196541fe565c69033a6575bcbeacb25b77feea3a040966ade02aa0651ae23a1
+	sha256sums = de143cb61dcaa756c05f56ff35144316d810615819518a33e34754f064c4a7d8
 
 pkgname = libkrunfw
