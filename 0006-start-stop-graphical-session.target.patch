@@ -1,0 +1,41 @@
+From 3ba6d0415e24febb1dcf26c1f4ec6d144f32b8e2 Mon Sep 17 00:00:00 2001
+From: ArenM <aren@peacevolution.org>
+Date: Fri, 22 Apr 2022 18:24:27 -0400
+Subject: [PATCH sxmo-utils 6/6] start / stop graphical-session.target
+
+---
+ configs/default_hooks/sxmo_hook_service.sh | 2 ++
+ configs/services/sxmo-session.target       | 6 ++++++
+ 2 files changed, 8 insertions(+)
+ create mode 100644 configs/services/sxmo-session.target
+
+diff --git a/configs/default_hooks/sxmo_hook_service.sh b/configs/default_hooks/sxmo_hook_service.sh
+index 18ae8b3..3ce6d8f 100644
+--- a/configs/default_hooks/sxmo_hook_service.sh
++++ b/configs/default_hooks/sxmo_hook_service.sh
+@@ -54,8 +54,10 @@ case "$MANAGER" in
+ 		case "$1" in
+ 			sxmo_starting)
+ 				printenv | cut -d '=' -f 1 | xargs systemctl --user import-environment
++				systemctl --user start sxmo-session.target
+ 				;;
+ 			sxmo_stopping)
++				systemctl --user stop graphical-session.target
+ 				systemctl --user unset-environment \
+ 					WAYLAND_DISPLAY DISPLAY SXMO_WM XDG_CURRENT_DESKTOP
+ 				;;
+diff --git a/configs/services/sxmo-session.target b/configs/services/sxmo-session.target
+new file mode 100644
+index 0000000..1bea6c3
+--- /dev/null
++++ b/configs/services/sxmo-session.target
+@@ -0,0 +1,6 @@
++[Unit]
++Description=Graphical sxmo session
++Documentation=man:systemd.special
++BindsTo=graphical-session.target
++Wants=graphical-session-pre.target
++After=graphical-session-pre.target
+-- 
+2.43.0
+

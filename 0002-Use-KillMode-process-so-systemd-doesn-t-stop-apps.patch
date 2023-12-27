@@ -1,0 +1,24 @@
+From 09ba55bd9935cc7c47e6e200f75c7ef6562e8057 Mon Sep 17 00:00:00 2001
+From: ArenM <aren@peacevolution.org>
+Date: Sat, 23 Apr 2022 13:28:59 -0400
+Subject: [PATCH sxmo-utils 2/6] Use KillMode=process so systemd doesn't stop
+ apps
+
+Systemd kills processes by cgroup, not session, so the setsid calls in
+sxmo_hook_lisgdstart.sh don't prevent this.
+---
+ configs/services/sxmo_hook_lisgd.service | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configs/services/sxmo_hook_lisgd.service b/configs/services/sxmo_hook_lisgd.service
+index 182d995..c671235 100644
+--- a/configs/services/sxmo_hook_lisgd.service
++++ b/configs/services/sxmo_hook_lisgd.service
+@@ -5,3 +5,4 @@ Description=run user defined lisgd start hook
+ Type=simple
+ Restart=always
+ ExecStart=sh -c sxmo_hook_lisgdstart.sh
++KillMode=process
+-- 
+2.43.0
+

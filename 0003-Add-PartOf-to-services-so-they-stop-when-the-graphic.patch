@@ -1,7 +1,7 @@
-From 70b602bca76652ee21c6807b6fefee0836cc1211 Mon Sep 17 00:00:00 2001
+From 5a9247d3eb92cd18be0991de6dbd5298a4764fef Mon Sep 17 00:00:00 2001
 From: ArenM <aren@peacevolution.org>
 Date: Sat, 18 Feb 2023 15:13:53 -0500
-Subject: [PATCH sxmo-utils 6/9] Add BindsTo to services so they stop when the
+Subject: [PATCH sxmo-utils 3/6] Add PartOf to services so they stop when the
  graphical session ends
 
 ---
@@ -25,192 +25,192 @@ Subject: [PATCH sxmo-utils 6/9] Add BindsTo to services so they stop when the
  17 files changed, 17 insertions(+)
 
 diff --git a/configs/services/autocutsel-primary.service b/configs/services/autocutsel-primary.service
-index 9574e09..869e422 100644
+index 9574e09..3a65320 100644
 --- a/configs/services/autocutsel-primary.service
 +++ b/configs/services/autocutsel-primary.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=automated xcutsel
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/autocutsel.service b/configs/services/autocutsel.service
-index c97dc64..a9ad01b 100644
+index c97dc64..99223ad 100644
 --- a/configs/services/autocutsel.service
 +++ b/configs/services/autocutsel.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=automated xcutsel
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/bonsaid.service b/configs/services/bonsaid.service
-index f17fa1a..1093453 100644
+index f17fa1a..52c2823 100644
 --- a/configs/services/bonsaid.service
 +++ b/configs/services/bonsaid.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=Bonsai daemon
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo-x11-status.service b/configs/services/sxmo-x11-status.service
-index f27a613..4934697 100644
+index f27a613..a263e21 100644
 --- a/configs/services/sxmo-x11-status.service
 +++ b/configs/services/sxmo-x11-status.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=periodically set the status bar content
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_autosuspend.service b/configs/services/sxmo_autosuspend.service
-index 86ce1bc..b1949f8 100644
+index 86ce1bc..c32bed7 100644
 --- a/configs/services/sxmo_autosuspend.service
 +++ b/configs/services/sxmo_autosuspend.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=daemon for autosuspending
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_battery_monitor.service b/configs/services/sxmo_battery_monitor.service
-index 1918ba5..54d902a 100644
+index 1918ba5..621733f 100644
 --- a/configs/services/sxmo_battery_monitor.service
 +++ b/configs/services/sxmo_battery_monitor.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=Sxmo: monitors the battery
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_conky.service b/configs/services/sxmo_conky.service
-index de8b83e..79b7e93 100644
+index de8b83e..a4fca14 100644
 --- a/configs/services/sxmo_conky.service
 +++ b/configs/services/sxmo_conky.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=Conky
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_desktop_widget.service b/configs/services/sxmo_desktop_widget.service
-index 199d9a6..5322b35 100644
+index 199d9a6..aca4df0 100644
 --- a/configs/services/sxmo_desktop_widget.service
 +++ b/configs/services/sxmo_desktop_widget.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=Sxmo: start desktop widget (ie. clock)
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_hook_lisgd.service b/configs/services/sxmo_hook_lisgd.service
-index c671235..277b410 100644
+index c671235..3fcff2b 100644
 --- a/configs/services/sxmo_hook_lisgd.service
 +++ b/configs/services/sxmo_hook_lisgd.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=run user defined lisgd start hook
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_menumode_toggler.service b/configs/services/sxmo_menumode_toggler.service
-index d6c949e..6264bf4 100644
+index d6c949e..8a6d339 100644
 --- a/configs/services/sxmo_menumode_toggler.service
 +++ b/configs/services/sxmo_menumode_toggler.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=Sxmo: sets menu buttons for sway
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_modemmonitor.service b/configs/services/sxmo_modemmonitor.service
-index 53171ef..9daf547 100644
+index 53171ef..b80c05d 100644
 --- a/configs/services/sxmo_modemmonitor.service
 +++ b/configs/services/sxmo_modemmonitor.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=daemon for monitoring modem-related dbuses (calls, sms, mms, etc.)
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_networkmonitor.service b/configs/services/sxmo_networkmonitor.service
-index cc30f48..dcc4887 100644
+index cc30f48..80c33e5 100644
 --- a/configs/services/sxmo_networkmonitor.service
 +++ b/configs/services/sxmo_networkmonitor.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=Sxmo: watch network changes and update the status bar
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_notificationmonitor.service b/configs/services/sxmo_notificationmonitor.service
-index 4d6033a..78d9c13 100644
+index 4d6033a..52dcca7 100644
 --- a/configs/services/sxmo_notificationmonitor.service
 +++ b/configs/services/sxmo_notificationmonitor.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=display notifications popup messages
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_soundmonitor.service b/configs/services/sxmo_soundmonitor.service
-index 1f759f3..cf6f6c0 100644
+index 1f759f3..04c0d3a 100644
 --- a/configs/services/sxmo_soundmonitor.service
 +++ b/configs/services/sxmo_soundmonitor.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=Sxmo: watch audio changes and update the status bar
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_wob.service b/configs/services/sxmo_wob.service
-index 600646f..97a2e23 100644
+index 600646f..5bacf13 100644
 --- a/configs/services/sxmo_wob.service
 +++ b/configs/services/sxmo_wob.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=A lightweight overlay volume/backlight/progress/anything bar for Wayland
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/unclutter-xfixes.service b/configs/services/unclutter-xfixes.service
-index 3125786..c6de932 100644
+index 3125786..66746b4 100644
 --- a/configs/services/unclutter-xfixes.service
 +++ b/configs/services/unclutter-xfixes.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=Hides mouse pointer while not in use
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 diff --git a/configs/services/unclutter.service b/configs/services/unclutter.service
-index f987ac3..f0c262c 100644
+index f987ac3..0f5d2f6 100644
 --- a/configs/services/unclutter.service
 +++ b/configs/services/unclutter.service
 @@ -1,5 +1,6 @@
  [Unit]
  Description=Hides mouse pointer while not in use
-+BindsTo=graphical-session.target
++PartOf=graphical-session.target
  
  [Service]
  Type=simple
 -- 
-2.39.2
+2.43.0
 

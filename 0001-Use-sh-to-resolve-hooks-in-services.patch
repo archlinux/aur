@@ -1,0 +1,35 @@
+From b911477916ae71e5af06be8bda7f374c0c0daada Mon Sep 17 00:00:00 2001
+From: ArenM <aren@peacevolution.org>
+Date: Wed, 20 Apr 2022 20:37:03 -0400
+Subject: [PATCH sxmo-utils 1/6] Use sh to resolve hooks in services
+
+systemd uses a path configured at build time, so we need to use a shell
+to launch hooks in order to find them correctly.
+---
+ configs/services/sxmo_desktop_widget.service | 2 +-
+ configs/services/sxmo_hook_lisgd.service     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configs/services/sxmo_desktop_widget.service b/configs/services/sxmo_desktop_widget.service
+index c161bb1..199d9a6 100644
+--- a/configs/services/sxmo_desktop_widget.service
++++ b/configs/services/sxmo_desktop_widget.service
+@@ -4,4 +4,4 @@ Description=Sxmo: start desktop widget (ie. clock)
+ [Service]
+ Type=simple
+ Restart=always
+-ExecStart=sxmo_hook_desktop_widget.sh
++ExecStart=sh -c sxmo_hook_desktop_widget.sh
+diff --git a/configs/services/sxmo_hook_lisgd.service b/configs/services/sxmo_hook_lisgd.service
+index 202510c..182d995 100644
+--- a/configs/services/sxmo_hook_lisgd.service
++++ b/configs/services/sxmo_hook_lisgd.service
+@@ -4,4 +4,4 @@ Description=run user defined lisgd start hook
+ [Service]
+ Type=simple
+ Restart=always
+-ExecStart=sxmo_hook_lisgdstart.sh
++ExecStart=sh -c sxmo_hook_lisgdstart.sh
+-- 
+2.43.0
+

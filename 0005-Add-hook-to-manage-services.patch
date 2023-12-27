@@ -1,0 +1,208 @@
+From e6c38034a069ad6e0e451d8bf7418e6b743d6575 Mon Sep 17 00:00:00 2001
+From: Aren Moynihan <aren@peacevolution.org>
+Date: Fri, 13 Oct 2023 17:23:28 -0400
+Subject: [PATCH sxmo-utils 5/6] Add hook to manage services
+
+This adds a layer of abstraction over superctl and systemctl, and
+possibly others like s6 if someone wants to add that in the future. The
+command format is mostly the same as it was with superd, but this allows
+us to hide the differences between service managers.
+---
+ .../default_hooks/sxmo_hook_contextmenu.sh    | 12 ++--
+ configs/default_hooks/sxmo_hook_service.sh    | 65 +++++++++++++++++++
+ configs/default_hooks/sxmo_hook_start.sh      |  7 +-
+ scripts/core/sxmo_appmenu.sh                  |  4 +-
+ scripts/core/sxmo_common.sh                   |  1 +
+ scripts/core/sxmo_winit.sh                    |  1 +
+ scripts/core/sxmo_xinit.sh                    |  1 +
+ 7 files changed, 75 insertions(+), 16 deletions(-)
+ create mode 100644 configs/default_hooks/sxmo_hook_service.sh
+
+diff --git a/configs/default_hooks/sxmo_hook_contextmenu.sh b/configs/default_hooks/sxmo_hook_contextmenu.sh
+index 2445c2f..e0a8953 100755
+--- a/configs/default_hooks/sxmo_hook_contextmenu.sh
++++ b/configs/default_hooks/sxmo_hook_contextmenu.sh
+@@ -14,10 +14,6 @@
+ XPROPOUT="$(sxmo_wm.sh focusedwindow)"
+ WMCLASS="${1:-$(printf %s "$XPROPOUT" | grep app: | cut -d" " -f2- | tr '[:upper:]' '[:lower:]')}"
+ 
+-superd_service_isrunning() {
+-	superctl status "$1" | grep -q started
+-}
+-
+ sxmo_service_isrunning() {
+ 	sxmo_jobs.sh running "$1" > /dev/null
+ }
+@@ -44,7 +40,7 @@ case "$WMCLASS" in
+ 		CHOICES="
+ 			$icon_plk Modem PIN                ^ 0 ^ sxmo_unlocksim.sh
+ 			$icon_phn Modem Monitor $(
+-				superd_service_isrunning sxmo_modemmonitor &&
++				sxmo_hook_service.sh is-active sxmo_modemmonitor &&
+ 				printf %b "$icon_ton ^ 1 ^ superctl stop sxmo_modemmonitor" ||
+ 				printf %b "$icon_tof ^ 1 ^ superctl start sxmo_modemmonitor"
+ 			) && sxmo_hook_statusbar.sh modem_monitor
+@@ -72,9 +68,9 @@ case "$WMCLASS" in
+ 				printf %b "$icon_tof ^ 1 ^ sxmo_wm.sh inputevent stylus on"
+ 			)
+ 			$icon_cfg Gestures $(
+-				superd_service_isrunning "sxmo_hook_lisgd" &&
++				sxmo_hook_service.sh is-active "sxmo_hook_lisgd" &&
+ 				printf "%s" "$icon_ton" || printf "%s" "$icon_tof"
+-			) ^ 1 ^ supertoggle_daemon 'sxmo_hook_lisgd' && (rm $XDG_CACHE_HOME/sxmo/sxmo.nogesture 2>/dev/null || touch $XDG_CACHE_HOME/sxmo/sxmo.nogesture)
++			) ^ 1 ^ toggle_service 'sxmo_hook_lisgd' && (rm $XDG_CACHE_HOME/sxmo/sxmo.nogesture 2>/dev/null || touch $XDG_CACHE_HOME/sxmo/sxmo.nogesture)
+ 			$icon_cfg Toggle Bar ^ 0 ^ sxmo_wm.sh togglebar
+ 			$icon_bth Bluetooth $(
+ 				rfkill list bluetooth | grep -q "yes" &&
+@@ -642,7 +638,7 @@ case "$WMCLASS" in
+ 		;;
+ 	org.gnome.maps)
+ 	CHOICES="
+-		$icon_gps Toggle Geoclue ^ 0 ^ superctl status geoclue-agent |grep started >/dev/null && superctl stop geoclue-agent || superctl start geoclue-agent
++		$icon_gps Toggle Geoclue ^ 0 ^ toggle_service geoclue-agent
+ 		$icon_zmi Zoom in ^ 1 ^ sxmo_type -M ctrl =
+ 		$icon_zmo Zoom out ^ 1 ^ sxmo_type -M ctrl -k minus
+ 		$icon_fnd Explore POI ^ 0 ^ sxmo_type -M ctrl -M Shift F
+diff --git a/configs/default_hooks/sxmo_hook_service.sh b/configs/default_hooks/sxmo_hook_service.sh
+new file mode 100644
+index 0000000..18ae8b3
+--- /dev/null
++++ b/configs/default_hooks/sxmo_hook_service.sh
+@@ -0,0 +1,65 @@
++#! /bin/sh
++# SPDX-License-Identifier: AGPL-3.0-only
++# Copyright 2023 Sxmo Contributors
++
++# include common definitions
++# shellcheck source=scripts/core/sxmo_common.sh
++. sxmo_common.sh
++# prevent infinite recursion
++unalias superd
++
++set -e
++
++if [ -n "$SXMO_SERVICE_MANAGER" ]; then
++	MANAGER="$SXMO_SERVICE_MANAGER"
++elif command -v systemctl > /dev/null; then
++	MANAGER=systemd
++elif command -v superd > /dev/null; then
++	MANAGER=superd
++fi
++
++case "$1" in
++	restart|start|status|stop|is-active|sxmo_starting|sxmo_stopping) ;;
++	*)
++		cat <<EOF
++sxmo_hook_service.sh is a thin wrapper around the superctl / systemctl commands
++that provides a single interface for the rest of the sxmo to use.
++
++Usage: sxmo_hook_service.sh <restart|start|status|stop|is-active> [args]
++
++Unknown subcommand: $1
++EOF
++		exit 127
++		;;
++esac
++
++case "$MANAGER" in
++	superd)
++		case "$1" in
++			sxmo_starting)
++				sxmo_jobs.sh start daemon_manager superd
++				# wait for superd to start
++				while ! superctl status > /dev/null 2>&1; do
++					sleep 0.5
++				done
++				;;
++			sxmo_stopping) ;;
++			"is-active") superctl status "$1" | grep -q started ;;
++			*) superctl "$@" ;;
++		esac
++		;;
++	systemd)
++		# systemd waits for processes to start, run start asyncrounously
++		# to prevent hanging the start hook
++		case "$1" in
++			sxmo_starting)
++				printenv | cut -d '=' -f 1 | xargs systemctl --user import-environment
++				;;
++			sxmo_stopping)
++				systemctl --user unset-environment \
++					WAYLAND_DISPLAY DISPLAY SXMO_WM XDG_CURRENT_DESKTOP
++				;;
++			start) systemctl --user "$@" & ;;
++			*) systemctl --user "$@" ;;
++		esac
++esac
+diff --git a/configs/default_hooks/sxmo_hook_start.sh b/configs/default_hooks/sxmo_hook_start.sh
+index 35bc59a..1a79d63 100755
+--- a/configs/default_hooks/sxmo_hook_start.sh
++++ b/configs/default_hooks/sxmo_hook_start.sh
+@@ -9,12 +9,7 @@
+ # Create xdg user directories, such as ~/Pictures
+ xdg-user-dirs-update
+ 
+-sxmo_jobs.sh start daemon_manager superd
+-
+-# let time to superd to start correctly
+-while ! superctl status > /dev/null 2>&1; do
+-	sleep 0.5
+-done
++sxmo_hook_service.sh sxmo_starting
+ 
+ # Not dangerous if "locker" isn't an available state
+ sxmo_state.sh set locker
+diff --git a/scripts/core/sxmo_appmenu.sh b/scripts/core/sxmo_appmenu.sh
+index 10c2f51..a7c7733 100755
+--- a/scripts/core/sxmo_appmenu.sh
++++ b/scripts/core/sxmo_appmenu.sh
+@@ -18,8 +18,8 @@ confirm() {
+ 	fi
+ }
+ 
+-supertoggle_daemon() {
+-	if superctl status "$1" | grep -q started; then
++toggle_service() {
++	if sxmo_hook_service.sh is-active "$1"; then
+ 		superctl stop "$1"
+ 		sxmo_notify_user.sh "$1 Stopped"
+ 	else
+diff --git a/scripts/core/sxmo_common.sh b/scripts/core/sxmo_common.sh
+index 4eb0a1f..b6cabf9 100755
+--- a/scripts/core/sxmo_common.sh
++++ b/scripts/core/sxmo_common.sh
+@@ -16,6 +16,7 @@ command -v shopt > /dev/null && shopt -s expand_aliases
+ alias dmenu="sxmo_dmenu.sh"
+ alias bemenu="sxmo_dmenu.sh"
+ alias jq="gojq" # better performances
++alias superctl=sxmo_hook_service.sh
+ 
+ if ! command -v sxmobar > /dev/null; then
+ 	sxmobar() {
+diff --git a/scripts/core/sxmo_winit.sh b/scripts/core/sxmo_winit.sh
+index 220daac..a8c381f 100755
+--- a/scripts/core/sxmo_winit.sh
++++ b/scripts/core/sxmo_winit.sh
+@@ -23,6 +23,7 @@ with_dbus() {
+ }
+ 
+ cleanup() {
++	sxmo_hook_service.sh sxmo_stopping
+ 	sxmo_jobs.sh stop all
+ 	pkill bemenu
+ 	pkill wvkbd
+diff --git a/scripts/core/sxmo_xinit.sh b/scripts/core/sxmo_xinit.sh
+index 9a491ba..f490aa4 100755
+--- a/scripts/core/sxmo_xinit.sh
++++ b/scripts/core/sxmo_xinit.sh
+@@ -45,6 +45,7 @@ with_dbus() {
+ }
+ 
+ cleanup() {
++	sxmo_hook_service.sh sxmo_stopping
+ 	sxmo_jobs.sh stop all
+ 	pkill svkbd
+ 	pkill dmenu
+-- 
+2.43.0
+
