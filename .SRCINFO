@@ -1,0 +1,15 @@
+pkgbase = chart-releaser
+	pkgdesc = Hosting Helm Charts via GitHub Pages and Releases
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/helm/chart-releaser
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	license = Apache
+	makedepends = go
+	depends = git
+	source = https://github.com/helm/chart-releaser/archive/v1.6.1/chart-releaser-1.6.1.tar.gz
+	sha256sums = 2de4f4ba4d10ce70bd15e52967b65979b9e5289cd0d7268d497a6729a91ee3be
+
+pkgname = chart-releaser
