@@ -3,11 +3,11 @@
 pkgname='python-goes2go'
 _name=${pkgname#python-}
 pkgver='2023.8.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Track earth satellite TLE orbits using up-to-date 2010 version of SGP4"
 url="https://github.com/blaylockbk/goes2go"
 depends=('python-matplotlib' 'python-metpy' 'python-cartopy' 'python-pandas' 'python-s3fs' 'python-shapely' 'python-toml' 'python-xarray')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")

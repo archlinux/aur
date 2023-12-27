@@ -1,11 +1,13 @@
 pkgbase = python-goes2go
 	pkgdesc = Track earth satellite TLE orbits using up-to-date 2010 version of SGP4
 	pkgver = 2023.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blaylockbk/goes2go
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-matplotlib
 	depends = python-metpy
 	depends = python-cartopy
