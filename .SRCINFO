@@ -1,0 +1,21 @@
+pkgbase = fava-portfolio-returns-git
+	pkgdesc = Show portfolio returns in Fava
+	pkgver = r34.796f680
+	pkgrel = 1
+	url = https://github.com/andreasgerstmayr/fava-portfolio-returns
+	arch = any
+	license = GPL3
+	makedepends = npm
+	makedepends = esbuild
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = fava
+	depends = beangrow
+	options = !strip
+	source = git+https://github.com/andreasgerstmayr/fava-portfolio-returns
+	b2sums = SKIP
+
+pkgname = fava-portfolio-returns-git
