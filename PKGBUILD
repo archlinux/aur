@@ -36,7 +36,6 @@ sha256sums=(
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
-    ln -s '/opt/GameMaker-Beta/GameMaker' "${pkgdir}/usr/bin/GameMaker"
 
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
