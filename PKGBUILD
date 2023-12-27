@@ -20,6 +20,7 @@ pkgver() {
 
 package() {
     efidir=$(find /boot -type d -name "EFI")
+    efidir=${efidir:-/boot/EFI}
 
     mkdir -p "${pkgdir}/${efidir}/refind/themes"
     cp -r "${srcdir}/${pkgname}/" "${pkgdir}/${efidir}/refind/themes/${_pkgname}"
