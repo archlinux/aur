@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bookget-git
-pkgver=1.2.5.15.g6d48135
-pkgrel=1
+pkgver=23.1227.3.g9c75fa4
+pkgrel=2
 pkgdesc="bookget 数字图书馆下载工具，目前支持约50+个数字图书馆。"
 arch=(x86_64
     aarch64
@@ -20,6 +20,14 @@ options=('!strip')
 #install=${pkgname}.install
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
+    
+    cd "${srcdir}/${pkgname%-git}"
+    git tag --delete nightly
+}
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
