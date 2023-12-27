@@ -1,38 +1,49 @@
-# Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Leonard de Ruijter <alderuijter@gmail.com>
 # Contributor: Matthias Grosser <mtgrosser at gmx dot net>
 
 pkgname=shine-git
-pkgver=git
+pkgver=3.1.1.r59.gab5e352
 pkgrel=1
-pkgdesc='Revived fixed-point MP3 encoder'
+pkgdesc="Super fast fixed-point MP3 encoder"
 arch=('i686' 'x86_64')
-url='https://github.com/savonet/shine'
-source=($pkgname::git://github.com/savonet/shine.git)
-license=(GPL2)
+url="https://github.com/toots/shine"
+license=('GPL-2.0-or-later')
 depends=('glibc')
-makedepends=('git' 'automake' 'autoconf' 'make' 'libtool')
-provides=('shine')
+makedepends=('git')
+provides=("shine=$pkgver")
 conflicts=('shine')
-options=('!libtool' '!strip')
-md5sums=('SKIP')
-pkgver() {
-  cd $pkgname
-  # Use the tag of the last commit
-  git describe --always | sed 's|-|.|g'
-}
+options=('staticlibs')
+source=("git+https://github.com/toots/shine.git")
+sha256sums=('SKIP')
 
-prepare() {
-	cd $srcdir/$pkgname
- ./bootstrap
+
+pkgver() {
+  cd "shine"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	cd $srcdir/$pkgname
-	./configure --prefix=/usr
-        make all
+  cd "shine"
+
+  ./bootstrap
+  ./configure \
+    --prefix="/usr"
+  make
+}
+
+check() {
+  cd "shine"
+
+  make check
 }
 
 package() {
-  cd $srcdir/$pkgname
-  make DESTDIR="${pkgdir}" install
+  cd "shine"
+
+  make DESTDIR="$pkgdir" install
 }
