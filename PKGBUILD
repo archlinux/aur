@@ -2,8 +2,8 @@
 
 pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git)
-pkgver=1.5.141.r17.ge3850a8
-pkgrel=3
+pkgver=1.5.141.r18.g764f0fe
+pkgrel=4
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
 arch=('x86_64' 'aarch64')
@@ -90,5 +90,5 @@ package_mfgtools-doc-git() {
     echo "</revhistory>" >> UUU-docinfo.xml
     a2x -L -a docinfo UUU
 
-    install -Dm0644 "${srcdir}/${pkgname%-git}/UUU.pdf" -t "${pkgdir}/usr/doc/${pkgname%-git}/"
+    install -Dm0644 "${srcdir}/${pkgname%-git}/UUU.pdf" -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
 }
