@@ -1,8 +1,9 @@
-# Maintainer: Jakub 'Eremiell' Marek <eremiell at eremiell dot net>
-# See also https://github.com/eremiell-aur/dpp
+# Maintainer: Matthew Sexton <matthew@asylumtech.com>
+# Contributor: Jakub 'Eremiell' Marek <eremiell at eremiell dot net>
+
 pkgname=dpp
 _pkgname=DPP
-pkgver=10.0.25
+pkgver=10.0.29
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library"
 arch=('x86_64')
@@ -15,14 +16,13 @@ install="${pkgname}.install"
 changelog="${pkgname}.changelog"
 source=("${_url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 	"${_url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('bd39d24e01748ff4cc34ad7ca0faaa0f53542efd8843d4bcc75566a11f0f248b'
+sha256sums=('a37e91fbdabee20cb0313700588db4077abf0ebabafe386457d999d22d2d0682'
             'SKIP')
 validpgpkeys=('EDCEFB1FDAFFAC7952EED46F9927644B850BDD23')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	rm -rf "include/dpp/nlohmann"
-	#sed -i -E "s/(#pragma once)/\1\n#include <cstdint>/" "include/dpp/sslclient.h"
 }
 
 build() {
