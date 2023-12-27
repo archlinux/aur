@@ -13,14 +13,14 @@ arch=('any')
 
 depends=('python')
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-setuptools'
   'python-wheel'
-  'git'
 )
 
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"

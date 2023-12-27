@@ -5,13 +5,13 @@ pkgbase = python-efb-telegram-master-git
 	url = https://github.com/blueset/efb-telegram-master
 	arch = any
 	license = AGPL-3.0-or-later
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = git
 	depends = python
-	provides = python-efb-telegram-master
+	provides = python-efb-telegram-master=2.3.0
 	conflicts = python-efb-telegram-master
 	source = python-efb-telegram-master::git+https://github.com/blueset/efb-telegram-master.git
 	sha256sums = SKIP
