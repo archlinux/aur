@@ -1,35 +1,54 @@
-# Maintainer: Daniel Scheiermann  <daniel.scheiermann@stud.uni-hannover.de>
-_name=supersolids
-pkgname=python-${_name}
+# Maintainer:
+# Contributor: Daniel Scheiermann  <daniel.scheiermann@stud.uni-hannover.de>
+
+## useful links:
+# https://pypi.org/project/supersolids
+# https://github.com/Scheiermann/supersolids
+
+_module="supersolids"
+_pkgname="python-$_module"
+pkgname="$_pkgname"
 pkgver=0.1.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Simulate and animate supersolids by solving the Schrödinger equation"
-url="https://github.com/Scheiermann/${_name}"
-arch=(any)
+url="https://pypi.org/project/supersolids"
 license=("MIT")
-depends=("ffmpeg" "python-dill" "python-ffmpeg" "python-matplotlib" "python-numpy" "python-psutil"
-         "python-pyqt5" "python-scipy" "python-sphinx-autoapi" "python-sphinx_rtd_theme"
-         )
-makedepends=("python-setuptools")
-optdepends=("")
-source=(${_name}-$pkgver.tar.gz::"https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name}-$pkgver.tar.gz")
+arch=(any)
+
+depends=('python')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+
+_pkgsrc="$_module-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_pkgsrc.$_pkgext")
 sha256sums=('01d7068678a577fcf6b8b4a5785a00333128ad22d9e4596c3dd3c1eba7103e7e')
 
 build() {
-  cd "$srcdir/${_name}-$pkgver"
-  python setup.py build
-}
-
-check_disabled() {
-  cd "$srcdir/${_name}-$pkgver"
-  python setup.py test
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${_name}-$pkgver"
-  # install mayavi, vtk is needed
-  python -m pip install -U vtk
-  python -m pip install -U mayavi
-  python setup.py install --skip-build --root="$pkgdir" --optimize=1
+  depends+=(
+    'python-dill'
+    'python-matplotlib'
+    'python-numpy'
+    'python-psutil'
+    'python-ffmpeg-python'
+    'python-scipy'
+    'vtk'
 
+    # AUR
+    'python-mayavi'
+      # python-envisage
+  )
+
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
