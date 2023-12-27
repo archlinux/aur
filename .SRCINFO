@@ -1,14 +1,14 @@
 pkgbase = python-torchinfo
 	pkgdesc = Model summary in PyTorch, based off of the original torchsummary
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
-	url = https://github.com/
+	url = https://github.com/tyleryep/torchinfo
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-pytorch
 	depends = python-torchvision
-	source = https://files.pythonhosted.org/packages/source/t/torchinfo/torchinfo-1.7.1.tar.gz
-	sha256sums = 7eb76ef0ca2d75aa7bf973451ba3693333ba97e197f8fa69d671b7f636384db4
+	source = https://files.pythonhosted.org/packages/source/t/torchinfo/torchinfo-1.8.0.tar.gz
+	sha256sums = 72e94b0e9a3e64dc583a8e5b7940b8938a1ac0f033f795457f27e6f4e7afa2e9
 
 pkgname = python-torchinfo
