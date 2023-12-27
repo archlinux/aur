@@ -3,12 +3,12 @@
 _pkgname=ProtGenerics
 _pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
-pkgrel=1
-pkgdesc='Generic infrastructure for Bioconductor mass spectrometry packages'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Generic infrastructure for Bioconductor mass spectrometry packages"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(Artistic2.0)
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('35a042777fdebf518d0b6223739aac8e6b78f01acac3c4eaff36a96ecd515bbe')
+md5sums=('5d55c00588169aa089bb457e2d94669a')
+b2sums=('2502effe500375cce60b36746f54d10f5780e5f052aa0da190a6bac5ca96071ee3647e275df1eafaf6f9f84e57947ded49151ffef218a0f884a40282fc4e8a34')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
