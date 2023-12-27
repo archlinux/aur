@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 pkgname=neper
 pkgver=4.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Polycrystal generation and meshing'
 arch=('x86_64')
 url='https://neper.info'
