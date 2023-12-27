@@ -1,0 +1,19 @@
+pkgbase = kdbxviewer-git
+	pkgdesc = ncurses GUI to browse and command-line tool to dump all contents of a KeePass2 Database files (kdbx)
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://github.com/luelista/kdbxviewer
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = ncurses
+	depends = libgcrypt
+	depends = zlib
+	depends = expat
+	depends = stfl
+	provides = kdbxviewer
+	source = git+https://github.com/luelista/kdbxviewer.git
+	md5sums = SKIP
+
+pkgname = kdbxviewer-git
+
