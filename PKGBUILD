@@ -1,7 +1,7 @@
 # Maintainer: David Biro <dbiro97@gmail.com>
 
 pkgname=vonal-bin
-pkgver="v1.4.0"
+pkgver="v1.5"
 pkgrel=1
 pkgdesc='Global search for tiling window managers'
 arch=(x86_64)
