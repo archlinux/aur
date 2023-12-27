@@ -1,6 +1,6 @@
 pkgbase = minetest-game-cdb
 	pkgdesc = Latest version of “Minetest Game” from the Minetest Content Database, but installed system-wide as a regular Arch package.
-	pkgver = 5.7.0
+	pkgver = 5.8.0
 	pkgrel = 1
 	url = https://content.minetest.net/packages/Minetest/minetest_game/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = minetest-game-cdb
 	makedepends = curl
 	makedepends = unzip
 	makedepends = jq
-	depends = minetest>=5.8.0
-	depends = minetest-common>=5.8.0
-	conflicts = minetest<=5.7.0
-	conflicts = minetest-common<=5.7.0
+	depends = minetest
+	depends = minetest-common
+	source = minetest_cdb_icon.png
+	sha256sums = 77883f101d4b46e3ed37bfc6095e1b2143a79ff852c702d6d98509b6d998ca6b
 
 pkgname = minetest-game-cdb
