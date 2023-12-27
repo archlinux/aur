@@ -3,7 +3,7 @@
 # This file is generated automatically by CI job at https://github.com/openscopeproject/TrguiNG
 pkgname=trgui-ng
 pkgver='1.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Remote GUI for Transmission torrent daemon'
 url="https://github.com/openscopeproject/TrguiNG"
 arch=('x86_64')
