@@ -1,0 +1,19 @@
+pkgbase = python-leapc
+	pkgdesc = Open-source Python bindings for the Gemini LeapC API.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/ultraleap/leapc-python-bindings
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cffi
+	depends = ultraleap-hand-tracking-service
+	provides = python-leapc
+	source = git+https://github.com/ultraleap/leapc-python-bindings.git#commit=2341c6c
+	source = leapc-python-api-init.patch
+	sha256sums = SKIP
+	sha256sums = 8834bf822b6dc7eb8c44eaa7cb0b20db6f10c68d3c77e5c972f8ace7163399af
+
+pkgname = python-leapc
