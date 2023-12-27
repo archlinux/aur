@@ -1,26 +1,30 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# based on aur electron8-bin: Tom Vincent <http://tlvince.com/contact/>
+
+# Based on aur/electron8-bin by Tom Vincent <http://tlvince.com/contact>
+# Based on extra/electron* by
+# Bruno Pagani <archange@archlinux.org>
+# Caleb Maclennan <caleb@alerque.com>
 
 _projectname=electron
 _major=26
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver="6.2"
+_subver="6.3"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
-pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
-arch=('x86_64' 'aarch64')
-url=https://electronjs.org/
-license=('MIT' 'custom')
+pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
+arch=(x86_64 aarch64)
+url='https://electronjs.org'
+license=(MIT custom)
 depends=(c-ares
          alsa-lib
          gtk3
          libevent
          libffi
          nss)
-optdepends=('pipewire: WebRTC desktop sharing under Wayland'
-            'kde-cli-tools: file deletion support (kioclient5)'
+optdepends=('kde-cli-tools: file deletion support (kioclient5)'
+            'pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
@@ -35,10 +39,10 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('15a901d0adf41be34eac1c3b35c1da304aa5ff3356183edab776fab02122a396'
-                   'a3b8b059780e9839f8c43253b42aa23b1fd679d1521c26ee85063b65c0b650f2')
-sha256sums_aarch64=('3418d33b51a282790e6e5abc57efc8adce5e47837eed86d73065e308ec9fc2b8'
-                    '9c2ed9f569af5f633ccfc4e596019d8d6778c17a0acd99720432916d9c4a2463')
+sha256sums_x86_64=('91ad46c6a43d20c61e97bac8ebc3177dfb64f767a4839017115af35af1fbd9f3'
+                   '30276236f368ba034209388807f3f7ad4f3d140ca18ec657ccc5d9c4faf226bf')
+sha256sums_aarch64=('caf62ea035a23ef24b20ffd439484bdf5c34c3b6048c978e43ff23b79c4dfe8f'
+                    'b169bfeecddc122d1414c701c76ec9c4d642e9dda6a4bcb5ad6f0bbb77ff3f73')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
