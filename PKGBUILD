@@ -3,27 +3,20 @@
 # Contributor: Brendan Szymanski <hello@bscubed.dev>
 
 # options
-: ${_avx_build:=false}
+: ${_build_clang:=true}
 
-: ${_pkgtype:=git}
+: ${_build_avx:=false}
+: ${_build_git:=true}
 
-
-if [[ "${_avx_build::1}" == "t" ]] ; then
-  if [ "${_pkgtype: -4}" == "-git" ] ; then
-    _pkgtype="${_pkgtype%-*}-avx-${_pkgtype##*-}"
-  elif [ "${_pkgtype::1}" == "g" ] ; then
-    _pkgtype="avx-$_pkgtype"
-  else
-    _pkgtype+="-avx"
-  fi
-fi
+[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
 _pkgname="yuzu"
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=r26071.d590cfb9d
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=r26199.12178c694
 pkgrel=1
-pkgdesc='An experimental open-source emulator for the Nintendo Switch'
+pkgdesc='Nintendo Switch emulator'
 url="https://github.com/yuzu-emu/yuzu"
 license=('GPL-3.0-only')
 arch=('i686' 'x86_64')
@@ -46,10 +39,8 @@ _main_package() {
     'catch2'
     'cmake'
     'ffmpeg'
-    'gcc'
     'git'
     'glslang'
-    'mold'
     'ninja'
     'nlohmann-json'
     'qt6-tools'
@@ -57,10 +48,8 @@ _main_package() {
     'robin-map'
     'stb'
 
-    #'clang'
     #'cpp-httplib'
     #'cpp-jwt'
-    #'llvm'
     #'renderdoc'
     #'spirv-headers'
     #'vulkan-headers'
@@ -69,6 +58,14 @@ _main_package() {
   optdepends=(
     "qt6-wayland: Wayland support"
   )
+
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    makedepends+=(
+      'clang'
+      'lld'
+      'llvm'
+    )
+  fi
 
   provides=("$_pkgname")
   conflicts=("$_pkgname")
@@ -264,44 +261,63 @@ prepare() {
 }
 
 build() {
-  if [[ "${_avx_build::1}" == "t" ]] ; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-    export CXXFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-  fi
-
   local _cmake_options=(
     -S "$_pkgsrc"
     -B build
     -GNinja
-    -DCMAKE_INSTALL_PREFIX="/usr"
-    -DCMAKE_C_COMPILER="gcc"
-    -DCMAKE_CXX_COMPILER="g++"
-    -DCMAKE_C_FLAGS="$CFLAGS"
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS"
     -DCMAKE_BUILD_TYPE="Release"
+    -DCMAKE_INSTALL_PREFIX="/usr"
 
-    -DYUZU_DOWNLOAD_TIME_ZONE_DATA=ON
-    -DYUZU_ENABLE_LTO=ON
-    -DYUZU_TESTS=OFF
     -DYUZU_USE_BUNDLED_FFMPEG=OFF
-    -DYUZU_USE_BUNDLED_QT=OFF
     -DYUZU_USE_FASTER_LD=OFF
     -DYUZU_USE_EXTERNAL_SDL2=OFF
     -DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF
+
+    -DYUZU_USE_BUNDLED_QT=OFF
     -DYUZU_USE_QT_MULTIMEDIA=ON
     -DYUZU_USE_QT_WEB_ENGINE=ON
     -DENABLE_QT6=ON
     -DENABLE_QT_TRANSLATION=ON
+
+    -DYUZU_DOWNLOAD_TIME_ZONE_DATA=ON
     -DUSE_DISCORD_PRESENCE=ON
     -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=OFF
+    -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON
 
     -DBUILD_REPOSITORY=yuzu-emu/yuzu
-    -DTITLE_BAR_FORMAT_IDLE="yuzu | ${pkgver} {}"
+    -DTITLE_BAR_FORMAT_IDLE="yuzu | ${pkgver} | {}"
     -DTITLE_BAR_FORMAT_RUNNING="yuzu | ${pkgver} | {}"
-    -Wno-dev
 
-    -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON
+    -DYUZU_TESTS=OFF
+    -Wno-dev
   )
+
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    export AR=llvm-ar
+    export NM=llvm-nm
+
+    _cmake_options+=(
+      -DCMAKE_C_COMPILER=clang
+      -DCMAKE_CXX_COMPILER=clang++
+
+      -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld"
+      -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
+      -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld"
+
+      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
+      -DCMAKE_POLICY_DEFAULT_CMP0069=NEW
+      -DYUZU_ENABLE_LTO=ON
+    )
+  else
+    _cmake_options+=(
+      -DYUZU_ENABLE_LTO=ON
+    )
+  fi
+
+  if [[ "${_build_avx::1}" == "t" ]] ; then
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
+  fi
 
   cmake "${_cmake_options[@]}"
   cmake --build build
@@ -313,5 +329,5 @@ package() {
   install -Dm644 "$_pkgsrc/dist/72-yuzu-input.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 }
 
-# execut
+# execute
 _main_package
