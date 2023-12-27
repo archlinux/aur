@@ -2,23 +2,20 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=python-virtualenvwrapper
-pkgver=4.8.4
-pkgrel=8
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="Extensions to Ian Bicking's virtualenv tool"
 arch=('any')
 url="https://virtualenvwrapper.readthedocs.io/"
 license=('MIT')
 depends=('python-virtualenv' 'python-virtualenv-clone' 'python-stevedore'
          'which')
-makedepends=('python-pbr')
-source=(https://pypi.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-$pkgver.tar.gz
-        replace-egrep.patch)
-sha256sums=('51a1a934e7ed0ff221bdd91bf9d3b604d875afbb3aa2367133503fee168f5bfa'
-            '791969953c2a65b36993163fbd804775594d2c897cf788750db5b09defdac53d')
+makedepends=('python-pbr' 'python-setuptools')
+source=(https://pypi.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-$pkgver.tar.gz)
+sha256sums=('4cdaca4a01bb11c3343b01439cf2d76ebe97bb28c4b9a653a9b1f1f7585cd097')
 
 prepare() {
   cd virtualenvwrapper-$pkgver
-  patch -Np1 -i ../replace-egrep.patch
 }
 
 build() {
