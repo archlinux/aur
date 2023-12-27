@@ -1,4 +1,4 @@
-/src/
-/pkg/
-/python-efb-wechat-slave/
-*.pkg.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
