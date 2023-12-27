@@ -1,18 +1,26 @@
 pkgbase = tokei-git
 	pkgdesc = A blazingly fast CLOC(Count Lines Of Code) program
-	pkgver = 7.0.1.r17.16d49fc
+	pkgver = 13.0.0_alpha.0.r986.e2625c0
 	pkgrel = 1
-	url = https://github.com/Aaronepower/tokei
+	epoch = 1
+	url = https://github.com/XAMPPRocky/tokei
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	license = Apache
+	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = gcc
 	depends = gcc-libs
+	depends = glibc
+	provides = tokei
 	conflicts = tokei
-	source = git+https://github.com/Aaronepower/tokei
-	sha512sums = SKIP
+	options = !lto
+	source = tokei::git+https://github.com/XAMPPRocky/tokei.git
+	sha256sums = SKIP
 
 pkgname = tokei-git
-
