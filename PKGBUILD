@@ -4,7 +4,7 @@ pkgbase=sunxi-livesuite-git
 pkgname=($pkgbase sunxi-livesuite-dkms-git)
 epoch=1
 pkgver=r5.20140913.1a0b52a
-pkgrel=2
+pkgrel=5
 arch=('x86_64' 'i686')
 url="https://github.com/linux-sunxi/sunxi-livesuite"
 license=('GPLv2')
@@ -32,6 +32,11 @@ pkgver() {
     else
         printf '%s' "r${_rev}.${_date}.${_hash}"
     fi
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgbase%-git}" clean -dfx
 }
 
 package_sunxi-livesuite-git() {
