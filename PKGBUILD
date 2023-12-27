@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.16.7
+pkgver=1.16.8
 _electronversion=27
 _nodeversion=18
 pkgrel=1
@@ -45,9 +45,9 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export ELECTRONVERSION="${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     sed -e '81,84d' -e 's|"deb"|"AppImage"|g' -i electron-builder.json
     npm install
     npm run build:linux
