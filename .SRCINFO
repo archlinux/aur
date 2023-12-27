@@ -1,10 +1,11 @@
 pkgbase = python-lightning-utilities
 	pkgdesc = Common Python utilities and GitHub Actions in Lightning Ecosystem
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lightning-AI/utilities
 	arch = any
 	license = Apache
+	makedepends = python-setuptools
 	depends = python-fire
 	depends = python-importlib-metadata
 	depends = python-packaging
