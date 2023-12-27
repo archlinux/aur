@@ -16,16 +16,17 @@ pkgname=()
 
 pkgver=2.15.0
 _pkgver=2.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
 arch=('x86_64')
-depends=('c-ares' 'pybind11' 'openssl' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp')
-makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'roctracer' 'rccl' 'git' 'miopen' 'python-wheel'
+depends=('c-ares' 'pybind11' 'openssl' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'intel-oneapi-openmp'
+         'intel-oneapi-compiler-shared-runtime-libs')
+makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'roctracer' 'rccl' 'git' 'miopen' 'python-wheel' 'openmp'
              'python-installer' 'python-setuptools' 'python-h5py' 'python-keras-applications'
-             'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests'
-             'gcc12' 'libxcrypt-compat' 'clang' 'jdk11-openjdk')
+             'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests' 'gcc12' 'libxcrypt-compat' 'clang'
+             'jdk11-openjdk')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
         https://github.com/bazelbuild/bazel/releases/download/6.1.0/bazel_nojdk-6.1.0-linux-x86_64
@@ -113,8 +114,9 @@ prepare() {
   # export TF_NCCL_VERSION=$(pkg-config nccl --modversion | grep -Po '\d+\.\d+')
   export NCCL_INSTALL_PATH=/usr
   # Does tensorflow really need the compiler overridden in 5 places? Yes.
-  export CC=gcc
-  export CXX=g++
+  # https://github.com/tensorflow/tensorflow/issues/60577
+  export CC=gcc-12
+  export CXX=g++-12
   export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-12
   export HOST_C_COMPILER=/usr/bin/${CC}
   export HOST_CXX_COMPILER=/usr/bin/${CXX}
@@ -215,9 +217,6 @@ _package() {
 
   # Fix interoperability of C++14 and C++17. See https://bugs.archlinux.org/task/65953
   patch -Np0 -i "${srcdir}"/fix-c++17-compat.patch -d "${pkgdir}"/usr/include/tensorflow/absl/base
-
-  # Fix FS#75571
-  find "${pkgdir}"/usr/lib -type f -exec patchelf --replace-needed libiomp5.so libomp.so '{}' \; -print
 }
 
 _python_package() {
