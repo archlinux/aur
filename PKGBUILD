@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=hotshots-git
 pkgver=r19.e3712ae
-pkgrel=3
+pkgrel=4
 pkgdesc="Screenshot and annotation software"
 arch=('x86_64')
 url="https://github.com/obiwankennedy/HotShots"
@@ -31,6 +31,6 @@ package() {
     cd "${srcdir}/${pkgname%-git}"
     make INSTALL_ROOT="$pkgdir" install
 
-    install -Dm644 packaging/flatpak/HotShots.metainfo.xml \
-        "$pkgdir/usr/share/metainfo/${pkgname%-git}.xml"
+    install -Dm644 packaging/flatpak/HotShots.metainfo.xml -t \
+        "$pkgdir/usr/share/metainfo/"
 }
