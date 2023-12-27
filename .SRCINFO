@@ -1,7 +1,7 @@
 pkgbase = python-leapc
 	pkgdesc = Open-source Python bindings for the Gemini LeapC API.
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ultraleap/leapc-python-bindings
 	arch = x86_64
 	license = Apache-2.0

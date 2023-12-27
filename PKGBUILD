@@ -2,7 +2,7 @@
 _commit=2341c6c
 pkgname=python-leapc
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Open-source Python bindings for the Gemini LeapC API."
 arch=("x86_64")
@@ -28,8 +28,10 @@ sha256sums=(SKIP
 validpgpkeys=()
 
 prepare() {
+    cd "leapc-python-bindings"
+
     # We have to modify the binding as it will try to find the cffi module at the wrong place
-    git apply --directory="leapc-python-bindings" leapc-python-api-init.patch
+    patch --forward --strip=1 --input="${srcdir}/leapc-python-api-init.patch"
 }
 
 build() {
