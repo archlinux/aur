@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.3.beta0.r0.g272582be9e0
+pkgver=10.3.beta4.r0.ge249befd47a
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -51,6 +51,7 @@ depends=(brial
          pari-seadata-small
          planarity
          python
+         python-conway-polynomials
          python-cvxopt
          python-cysignals
          python-cypari2
@@ -76,7 +77,6 @@ depends=(brial
          python-traitlets
          rankwidth
          sage-data-combinatorial_designs
-         sage-data-conway_polynomials
          sage-data-elliptic_curves
          sage-data-graphs
          sage-data-polytopes_db
