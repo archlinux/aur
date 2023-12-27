@@ -1,12 +1,13 @@
 pkgbase = r-rtensor
 	pkgdesc = Tools for Tensor Analysis and Decomposition
 	pkgver = 1.4.8
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=rTensor
 	arch = any
 	license = GPL
 	depends = r
 	source = https://cran.r-project.org/src/contrib/rTensor_1.4.8.tar.gz
-	sha256sums = 0e7d193996fc3ed9db98bdf1e1127c081aec7073530af6cad344401d15cf44cf
+	md5sums = ef511906da889a60037086dccd717054
+	b2sums = abf98c9cbc81c523597c20717ee0fa695a8c074be7c6c10e656a19e3fe5e5ea112e8c5faed80d766852cd7fb8469d489d754b182734a7ba635615fbf8c95a9b4
 
 pkgname = r-rtensor
