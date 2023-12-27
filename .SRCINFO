@@ -1,6 +1,6 @@
 pkgbase = android-knot-bin
 	pkgdesc = An Android gadget that integrates common modules such as Todo, Notes and Reader and supports various clients (Win, Mac, Linux) for editing Todo and Notes.
-	pkgver = 1.1.25
+	pkgver = 1.1.26
 	pkgrel = 1
 	url = https://github.com/ic005k/Knot
 	arch = x86_64
@@ -20,13 +20,14 @@ pkgbase = android-knot-bin
 	depends = fontconfig
 	depends = sqlite
 	depends = libx11
-	provides = android-knot=1.1.25
+	provides = android-knot=1.1.26
 	conflicts = android-knot
 	options = !strip
-	source = android-knot-1.1.25.AppImage::https://github.com/ic005k/Knot/releases/download/1.1.25/Knot-Linux-x86_64.AppImage
-	source = LICENSE-1.1.25::https://raw.githubusercontent.com/ic005k/Knot/1.1.25/LICENSE
+	options = emptydirs
+	source = android-knot-1.1.26.AppImage::https://github.com/ic005k/Knot/releases/download/1.1.26/Knot-Linux-x86_64.AppImage
+	source = LICENSE-1.1.26::https://raw.githubusercontent.com/ic005k/Knot/1.1.26/LICENSE
 	source = android-knot.sh
-	sha256sums = cd781c9eedfa413b0dde1472f585092c5cd30543d69be16543a9cf87681f40dd
+	sha256sums = bbba922d1e5ada82ba314cdb7bc0e3e488552b5d55fad82aaee1627d44594296
 	sha256sums = e81172c8f0c194e8fb34edd30b153e60407a094bbf2492abe4e012e6a1ad854a
 	sha256sums = c5d5e1144b57ca67d62b21740936543e302d88a29ea3293ce060242b40a0bfdf
 
