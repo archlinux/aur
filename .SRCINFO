@@ -1,7 +1,7 @@
 pkgbase = glimboi-bin
 	pkgdesc = A chatbot for Glimesh.tv
 	pkgver = 2.7.6
-	pkgrel = 6
+	pkgrel = 7
 	url = https://glimboi.com/
 	arch = x86_64
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = glimboi-bin
 	provides = glimboi=2.7.6
 	conflicts = glimboi
 	source = glimboi-2.7.6.deb::https://github.com/aMytho/GlimBoi/releases/download/v2.7.6/glimboi_2.7.6_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/aMytho/GlimBoi/v2.7.6/LICENSE
+	source = LICENSE-2.7.6::https://raw.githubusercontent.com/aMytho/GlimBoi/v2.7.6/LICENSE
 	source = glimboi.sh
 	sha256sums = 69006428124c19401c663a1848a6e0c1190e4f778641ceab2bb63de41092cef6
 	sha256sums = 0a1fcb16cfedd24007679bc30fc10294f89a479a466adb1a2a0aa77f63dfc755
-	sha256sums = b1a5dca2fab616e0cd9d9e1c007691785950eacaaeb0f53db63236eb5909d662
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = glimboi-bin
