@@ -4,13 +4,14 @@ pkgname=google-assistant-unofficial-desktop-client-bin
 _appname=g-assist
 _pkgname="Google Assistant"
 pkgver=1.1.0
-pkgrel=7
+_electronversion=10
+pkgrel=8
 pkgdesc="A cross-platform unofficial Google Assistant Client for Desktop (powered by Google Assistant SDK)"
 arch=('x86_64')
 url="https://github.com/Melvin-Abraham/Google-Assistant-Unofficial-Desktop-Client"
 license=('Apache')
 depends=(
-    'electron10'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 provides=("${pkgname%-bin}=${pkgver}")
@@ -20,10 +21,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('97ef51b6950d14ac0bc34aa5705b125b09d67d0f5e5cafa686f7757ff751a510'
-            'e13c8b11c230975ef1c1c788103bc701515ecdcc1816fb307e3c965694242757')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|\"/opt/${_pkgname}/${_appname}\" %U|${pkgname%-bin}|g;s|${_appname}|${pkgname%-bin}|g;s|Productivity|Utility|g" \
+    sed "s|\"/opt/${_pkgname}/${_appname}\"|${pkgname%-bin}|g;s|${_appname}|${pkgname%-bin}|g;s|Productivity|Utility|g" \
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
