@@ -16,6 +16,6 @@ source=("$_name-$pkgver.xpi::https://addons.mozilla.org/firefox/downloads/latest
 sha256sums=('09e79457ecf19596570fdef9f90d4374861785738f71d3558b013be7208477d2')
 
 package() {
-    cd "$srcdir"
+    # cd "$srcdir"
     install -Dm644 ${_name}-${pkgver}.xpi "${pkgdir}/usr/lib/firefox/browser/extensions/${_id}.xpi"
 }
