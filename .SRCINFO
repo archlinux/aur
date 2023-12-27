@@ -1,17 +1,19 @@
 pkgbase = odin
 	pkgdesc = A fast, concise, readable, pragmatic and open sourced programming language.
-	pkgver = dev_2023_07
+	pkgver = dev_2023_12
 	pkgrel = 1
 	url = https://odin-lang.org/
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = git
-	depends = llvm14
-	depends = clang14
-	depends = which
+	makedepends = clang
+	makedepends = clang14
+	makedepends = llvm14
+	depends = clang
+	depends = llvm14-libs
 	provides = odin
 	conflicts = odin
-	source = https://github.com/odin-lang/Odin/archive/refs/tags/dev-2023-07.tar.gz
-	sha256sums = e32043fa873274e67254c890c30b8e1a538f9934c6482bd4e3bf81c5078e4f08
+	source = https://github.com/odin-lang/Odin/archive/refs/tags/dev-2023-12.tar.gz
+	sha256sums = 9c4a39fcfc0fb29e5060a2513931000c0c3ce491f3672faaab1429b07cad0896
 
 pkgname = odin
