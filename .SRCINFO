@@ -1,0 +1,18 @@
+pkgbase = celt-git
+	pkgdesc = Very low delay audio codec designed for high-quality communications
+	pkgver = 0.11.3.r19.ge18de77
+	pkgrel = 1
+	url = https://web.archive.org/web/20200502050215/http://www.celt-codec.org/
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = glibc
+	depends = libogg
+	provides = celt=0.11.3.r19.ge18de77
+	conflicts = celt
+	options = staticlibs
+	source = git+https://gitlab.xiph.org/xiph/celt.git
+	sha256sums = SKIP
+
+pkgname = celt-git
