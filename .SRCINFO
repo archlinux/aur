@@ -115,7 +115,6 @@ pkgbase = wine-lol-staging
 	source = git+https://gitlab.winehq.org/wine/wine.git#tag=wine-8.21
 	source = 0004-LoL-broken-client-update-fix.patch
 	source = 0008-ntdll-nopguard-call_vectored_handlers.patch
-	source = 0009-kernel32-dont-create-console-when-not-cui.patch
 	source = 0011-ntdll-signal_set_full_context-amd64.patch
 	source = 0012-ntdll-implement-ntcontinueex.patch
 	source = 0013-server-error-on-connect-to-zero.patch
@@ -123,7 +122,6 @@ pkgbase = wine-lol-staging
 	sha256sums = SKIP
 	sha256sums = 7607a84fd357a86bc8fb59d2cf002a3e471bd8ec78ecdb844b0b77b1ae6d11a0
 	sha256sums = 2075ddc417ddd11954f76be753c88e04db28f0b3937e60508f178630dd5763eb
-	sha256sums = b19443ba1e01014ab478b03ac84797df2d481432798259371d94e4ba2e7b317c
 	sha256sums = 8dfef7fdbeb4bf503f72c2b3a15033849f67197d6d9571135369b4b0183ea213
 	sha256sums = 8bb15743e589f7505817309122e04af8cb99e12459a9b4ef05b14eeef10ccc83
 	sha256sums = 1c58cd6efaf0c74c83b8a887fc79d3d23f427e14edd08eeef3bfc568b281caaa

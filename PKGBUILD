@@ -17,7 +17,6 @@ source=("git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v${_winever}"
         "git+https://gitlab.winehq.org/wine/wine.git#tag=wine-${_winever}"
         "0004-LoL-broken-client-update-fix.patch"
         "0008-ntdll-nopguard-call_vectored_handlers.patch"
-        "0009-kernel32-dont-create-console-when-not-cui.patch"
         "0011-ntdll-signal_set_full_context-amd64.patch"
         "0012-ntdll-implement-ntcontinueex.patch"
         "0013-server-error-on-connect-to-zero.patch"
@@ -27,7 +26,6 @@ sha256sums=('SKIP'
             'SKIP'
             '7607a84fd357a86bc8fb59d2cf002a3e471bd8ec78ecdb844b0b77b1ae6d11a0'
             '2075ddc417ddd11954f76be753c88e04db28f0b3937e60508f178630dd5763eb'
-            'b19443ba1e01014ab478b03ac84797df2d481432798259371d94e4ba2e7b317c'
             '8dfef7fdbeb4bf503f72c2b3a15033849f67197d6d9571135369b4b0183ea213'
             '8bb15743e589f7505817309122e04af8cb99e12459a9b4ef05b14eeef10ccc83'
             '1c58cd6efaf0c74c83b8a887fc79d3d23f427e14edd08eeef3bfc568b281caaa'
@@ -124,10 +122,6 @@ prepare() {
     # Game, Add some nops around exception dispatch for pacman/stub.dll to be able to hook
     echo 'Apply 0008-ntdll-nopguard-call_vectored_handlers.patch'
     patch -Np1 < "${srcdir}/0008-ntdll-nopguard-call_vectored_handlers.patch"
-
-    # Game Optional, only necessary when starting LoL.exe wine manually (e.g. when running .rofl files)
-    echo 'Apply 0009-kernel32-dont-create-console-when-not-cui.patch'
-    patch -Np1 < "${srcdir}/0009-kernel32-dont-create-console-when-not-cui.patch"
 
     # Fix NtSetContextThread syscall
     echo 'Apply 00011-ntdll-signal_set_full_context-amd64.patch'
