@@ -1,0 +1,3 @@
+# rules file provided by the playdate-mirror aur package
+# this is not the one provided in the official deb/rpm download
+SUBSYSTEMS=="tty|usb", ATTRS{idProduct}=="5740", ATTRS{idVendor}=="1331", MODE="0660", TAG+="uaccess"

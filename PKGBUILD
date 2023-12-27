@@ -1,8 +1,21 @@
 # Maintainer: Zoey Mertes (zmertes at zmertes dot net)
 # shellcheck shell=bash disable=SC2034,SC2154
 
+# release 1.1.0 notes
+# * yay finally a proper packaging, no more nabbing it out of the macos version
+# * yay svg icon!
+# * for some reason they think their app binary being `mirror` is okay, we're moving it back to `PlaydateMirror`
+# * the /usr/share/doc/mirror/README.md contains nothing of value, so we don't package it
+# * they put the udev rule in /etc instead of /usr/lib, so we move it to the right spot
+# * though, their udev rule is wayyyy too broad, so we're using our own
+# * the app always tries to read gamecontrollerdb.txt from /usr/share/mirror/gamecontrollerdb.txt, so we're stuck putting the file there
+#   (sorta felt like a wrapper env var script for that might be overkill)
+
+# side note: are the playdate devs reading my pkgbuilds? because they did nearly every change I did in my original pkgbuild
+# if so, can you make the binary named PlaydateMirror from the beginning pretty please? thanks <3
+
 pkgname=playdate-mirror
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Screen viewer and controller for the Playdate console'
 arch=('x86_64')
@@ -11,49 +24,60 @@ license=('custom:proprietary')
 depends=(
   'gtk3'
   'webkit2gtk'
-  'libserialport'
 )
-makedepends=('libicns')
+makedepends=()
 optdepends=()
 options=()
 
 source=(
-  "https://download.panic.com/mirror/Linux/Mirror-1.0.0.tar.gz"
-  "https://download-cdn.panic.com/mirror/Mirror-1.0.0.zip" # macOS version, which we extract the icon out of
-  "date.play.Mirror.desktop"
+  "https://download-cdn.panic.com/mirror/Linux/Mirror-${pkgver}.x86_64.deb"
+  "50-playdate-mirror.rules"
 )
 
 sha512sums=(
-  '9d24e6cec47e64d8eab359e0d945a0e46abeae0fb05b1992a3bc8b936a2a4f334fbddac77090237baaff8a2c8ab82c6ee8490ec2febebcf556af7750a91a0303'
-  '8ad9ee2ff9446f1d3cd0138ab89f9411707e8030998061cc607d935e6e9cd6f2ca66c79527748a0144feec3ea37c58bd5c4cae444445a0c2262b6d7a0c5bed4b'
-  '6c89ab283862499713e779aabe046cfe23c8117f82f3e79a73a79f477ecb428753b1835e62eeb30247101dfa0f14b68f7b2c4ef026c678657dac644888503952'
+  'c79ae1e7f7090e7746acb6ba85735449f44ea8b401ecbf13aebd9e0c160311cf66fc24cfa82ed3e18d678c9128ae538d3f61544df6e34697b51c4c8b2641e8c3'
+  '84d348266722753a81bdf95e17917f4c4665c484fdb3ac258b0f46d5e3e92c62aff0df91b78c0e1d43ace9f2e15f3a9a6a24726a37302ddbf40499f5ca60864c'
 )
+
+build() {
+  echo >&2 "Extracting the deb"
+  cd "${srcdir}" || exit 2
+  tar xvf "${srcdir}/data.tar.xz"
+
+  echo >&2 "Patching the desktop file"
+  sed -i -e 's|/usr/bin/mirror|/usr/bin/PlaydateMirror|' \
+         -e 's/Name=Mirror/Name=Playdate Mirror/' \
+   ./usr/share/applications/date.play.mirror.desktop
+}
 
 package() {
   # make needed directories
-  mkdir -p "${pkgdir}/usr/bin" \
-    "${pkgdir}/usr/share/licenses/playdate-mirror/"
+  # mkdir -p "${pkgdir}/usr/bin" \
+  #   "${pkgdir}/usr/share/licenses/playdate-mirror/"
 
   echo >&2 'Packaging the mirror binary'
-  install -m755 "${srcdir}/Mirror-1.0.0/Mirror" "${pkgdir}/usr/bin/PlaydateMirror"
-  
-  echo >&2 'Extracting the icons from the macOS package'
-  icns2png -x --output "${srcdir}" "${srcdir}/Mirror.app/Contents/Resources/AppIcon.icns"
-  install -D -m 644 "${srcdir}/AppIcon_256x256x32.png" \
-    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/date.play.Mirror.png"
-  install -D -m 644 "${srcdir}/AppIcon_512x512x32.png" \
-    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/date.play.Mirror.png"
-  install -D -m 644 "${srcdir}/AppIcon_1024x1024x32.png" \
-    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/date.play.Mirror.png"
+  install -D -m 755 "${srcdir}/usr/bin/mirror" "${pkgdir}/usr/bin/PlaydateMirror"
+
+  echo >&2 'Packaging the mirror assets'
+  mkdir -p "${pkgdir}/usr/share/"
+  cp -vr "${srcdir}/usr/share/mirror" "${pkgdir}/usr/share/mirror"
 
   echo >&2 'Packaging the license'
-  # the NSHumanReadableCopyright string from the macOS Info.plist
-  # which matches the text in the Linux version's About dialog
-  echo "Copyright © Panic, Inc. All rights reserved." > "${pkgdir}/usr/share/licenses/playdate-mirror/license.txt"
+  install -D -m 644 "${srcdir}/usr/share/doc/mirror/LICENSE.md" "${pkgdir}/usr/share/licenses/playdate-mirror/LICENSE.md"
+
+  echo >&2 'Packaging the icon svg'
+  install -D -m 644 -T \
+    "${srcdir}/usr/share/icons/hicolor/scalable/apps/date.play.mirror.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/date.play.mirror.svg"
+
+  echo >&2 'Packaging the udev rule'
+  install -D -m 644 -T \
+    "${srcdir}/50-playdate-mirror.rules" \
+    "${pkgdir}/usr/lib/udev/rules.d/50-playdate-mirror.rules"
 
   echo >&2 'Packaging the desktop file'
   install -D -m 755 -T \
-    "${srcdir}/date.play.Mirror.desktop" \
+    "${srcdir}/usr/share/applications/date.play.mirror.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 }
