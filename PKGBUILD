@@ -1,7 +1,7 @@
 # Maintainer: hexchain <arch at hexchain dot org>
 
 pkgname=go-dnscollector
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc="Ingestor, aggregator and analyzer for your DNS traffic"
 url="https://github.com/dmachard/go-dnscollector"
@@ -14,7 +14,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/dmachard/go-dnscollector/archive/refs/tags/v$pkgver.tar.gz"
     go-dnscollector.service
 )
-b2sums=('e16b498782614d5914e89947feb0730224216469fb25bcf99382b6ed4d80566a66a9aa6321bf1de18c1b2a2fa190298270a2d8525ca0d8b7abd1e6e014ddae58'
+b2sums=('aa7721fe19215ed2e78a745b14667114741fc02cecbab08cbafd4b94e453152d745b3b3f860cb8b5f096e0e0b0dbff24e044468724cb3ad669197708db20a8d5'
         'fbe5c63e637d832b94ee5b35732df8d1fafa9f790062820504108ebaa8b0be4f52d864478cfeb42d1db52058e98c912d6690635a3604ba16adb03a6f6ac92062')
 
 prepare() {
