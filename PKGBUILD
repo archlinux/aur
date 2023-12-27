@@ -8,7 +8,7 @@ pkgver=2.3.0.r2.g0850aeb
 pkgrel=1
 pkgdesc='EFB Telegram Master, a channel for EH Forwarder Bot'
 url='https://github.com/blueset/efb-telegram-master'
-license=('AGPL-3')
+license=('AGPL-3.0-or-later')
 arch=('any')
 
 depends=('python')
