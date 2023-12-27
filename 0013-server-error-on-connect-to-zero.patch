@@ -1,0 +1,26 @@
+diff --git a/server/sock.c b/server/sock.c
+index 84c0d4a4931..b33d06aa706 100644
+--- a/server/sock.c
++++ b/server/sock.c
+@@ -2647,6 +2647,21 @@ static void sock_ioctl( struct fd *fd, ioctl_code_t code, struct async *async )
+         if (unix_addr.addr.sa_family == AF_INET && !memcmp( &unix_addr.in.sin_addr, magic_loopback_addr, 4 ))
+             unix_addr.in.sin_addr.s_addr = htonl( INADDR_LOOPBACK );
+ 
++        /* NOTE: winsock treats 0.0.0.0 address as special case error. */
++        /* TODO: this should also work for AF_INET6, AF_IPX, AF_... */
++        if (unix_addr.addr.sa_family == AF_INET && unix_addr.in.sin_addr.s_addr == 0 && unix_addr.in.sin_port == 0)
++        {
++            /* TODO: Microsoft docs mention that socket can not be connect-ed after this.
++             * Maybe shutdown and transition to special state for this? */
++            sock->errors[AFD_POLL_BIT_CONNECT_ERR] = EADDRNOTAVAIL;
++            set_error( sock_get_ntstatus( EADDRNOTAVAIL ) );
++            post_socket_event( sock, AFD_POLL_BIT_CONNECT_ERR );
++
++            /* NOTE: Some applications rely on this behaviour as a mechanism to abort select from another thread. */
++            async_wake_up( &sock->poll_q, STATUS_SUCCESS );
++            return;
++        }
++
+         memcpy( &peer_addr, &unix_addr, sizeof(unix_addr) );
+         ret = connect( unix_fd, &unix_addr.addr, unix_len );
+         if (ret < 0 && errno == ECONNABORTED)
