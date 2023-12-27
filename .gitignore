@@ -1,0 +1,7 @@
+eigen/
+lv2/
+NeuralAmpModelerCore/
+neural-amp-modeler-lv2/
+neural-amp-modeler-lv2-git-*.pkg.tar.*
+pkg/
+src/
