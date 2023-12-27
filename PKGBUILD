@@ -11,7 +11,7 @@ depends=('nlopt'
          'scotch'
          'gsl')
 makedepends=('cmake')
-source=(https://github.com/rquey/neper/archive/v${pkgver}.tar.gz)
+source=(neper-${pkgver}.tar.gz::https://github.com/neperfepx/neper/archive/refs/tags/v${pkgver}.tar.gz)
 
 sha512sums=('ce73bbc3d1c0a6eae8956559431e910df3f84ec14317f6653163799982780b4bd952ee3d7ab0138b9ff4d7796a88e3d948242e8747e235f458e77d9f3e7c43db')
 
