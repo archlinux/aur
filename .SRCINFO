@@ -1,6 +1,6 @@
 pkgbase = caddy-naiveproxy
 	pkgdesc = Caddy web server
-	pkgver = 2.7.4
+	pkgver = 2.7.6
 	pkgrel = 1
 	url = https://github.com/caddyserver/caddy
 	arch = any
