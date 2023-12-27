@@ -3,24 +3,25 @@
 _pkgname=squash
 _pkgver=1.0.9
 pkgname=r-${_pkgname,,}
-pkgver=1.0.9
-pkgrel=4
-pkgdesc='Color-Based Plots for Multivariate Visualization'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Color-Based Plots for Multivariate Visualization"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(Artistic2.0)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ff381c85071e3407574e3db28d789657f64e7d3f9d74ac123539de22ab8ac6f4')
+md5sums=('1b89b5972d72f95b976f0deedf50c2ac')
+b2sums=('1a5d3e78279986ce97d719ebe48e75de3dc0e59020c377640e44d8091173ed948950d79fcc411b15d5a364995e8607a121b3e8034ee51ca600b6f8381905dd33')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
