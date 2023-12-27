@@ -30,7 +30,7 @@ build() {
 
 package() {
   cd "$srcdir/$_appname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --skip-build --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -dm755 "$pkgdir/usr/include/python$_py2basever/"
