@@ -1,0 +1,12 @@
+pkgbase = dumb_types
+	pkgdesc = Header-only C++ library providing convenient data types (header only)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RickaPrincy/dumb_types
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = dumb_types.tar.gz::https://github.com/RickaPrincy/dumb_types/releases/download/v1.0.0/dumb_types.tar.gz
+	sha256sums = a9b87cc3da72c3ce746380fa207f52229f8907e1735aaf8e9b1d5abd19df4929
+
+pkgname = dumb_types
