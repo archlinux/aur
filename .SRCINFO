@@ -1,0 +1,13 @@
+pkgbase = cortile
+	pkgdesc = Auto tiling manager with hot corner support for EWMH compliant window managers using the X11 window system.
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/leukipp/cortile
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = cortile-2.3.1.tar.gz::https://github.com/leukipp/cortile/archive/refs/tags/v2.3.1.tar.gz
+	sha256sums = 12b6874e9cea49fee426c3cbd9a23a14a0fd45d757616e659074deb9bdabd6b6
+
+pkgname = cortile
