@@ -1,6 +1,6 @@
 pkgbase = obs-service-tar_scm
 	pkgdesc = Source Service for the OpenSUSE Build Service (OBS)
-	pkgver = 0.10.22
+	pkgver = 0.10.41
 	pkgrel = 1
 	url = https://github.com/openSUSE/obs-service-tar_scm
 	arch = any
@@ -25,8 +25,7 @@ pkgbase = obs-service-tar_scm
 	optdepends = mercurial: hg repo support
 	optdepends = bzr: bzr repo support
 	backup = etc/obs/services/tar_scm
-	source = obs-service-tar_scm-0.10.22.tar.gz::https://github.com/openSUSE/obs-service-tar_scm/archive/0.10.22.tar.gz
-	sha512sums = 974f407c2d603cdcd1c300d0442ab34c9233b2925565fa36644d32994735611c53c531d45a4067e0f9caa1d1774648554c783334884be8e772b7f1575275f063
+	source = obs-service-tar_scm-0.10.41.tar.gz::https://github.com/openSUSE/obs-service-tar_scm/archive/0.10.41.tar.gz
+	sha512sums = 2f7c3b807ee9d2735330db7dbae5eac71e2a344c37276ab31941576693dfcceb6524f50d055cbb23bfc081a8152f645d4981a25a31a7c3dc07cd17be93a50c8f
 
 pkgname = obs-service-tar_scm
-
