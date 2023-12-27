@@ -37,9 +37,9 @@ build() {
   cd "$_pkgsrc"
   python -m build --wheel --no-isolation
 
-  cd "build/lib/$_module/locale/"
-  for _locale in [a-z][a-z]_[A-Z][A-Z]; do
-    (cd "$_locale/LC_MESSAGES/"; msgfmt "$_module.po" -o "$_module.mo")
+  cd "build/lib/${_module//-/_}/locale/"
+  for _locale in [a-z][a-z]*; do
+    (cd "$_locale/LC_MESSAGES/"; msgfmt "${_module//-/_}.po" -o "${_module//-/_}.mo")
   done
 }
 
