@@ -1,6 +1,6 @@
 # $Id$
-# Maintainer: Morgan <morganamilo@archlinux.org>
-# Contributor: Masato TOYOSHIMA <phoepsilonix@gmail.com>
+# Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
+# Contributor: Morgan <morganamilo@archlinux.org>
 pkgname=paru-static
 _pkgname=paru
 pkgver=2.0.1
