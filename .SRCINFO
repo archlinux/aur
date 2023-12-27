@@ -1,7 +1,7 @@
 pkgbase = grx-bin
 	pkgdesc = Fastest Web Gerber Renderer
 	pkgver = 2.1.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://grx.creery.org/
 	arch = x86_64
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = grx-bin
 	provides = grx=2.1.3
 	conflicts = grx
 	source = grx-2.1.3.deb::https://github.com/hpcreery/GRX/releases/download/v2.1.3/grx.deb
-	source = https://raw.githubusercontent.com/hpcreery/GRX/v2.1.3/LICENSE
+	source = LICENSE-2.1.3::https://raw.githubusercontent.com/hpcreery/GRX/v2.1.3/LICENSE
 	source = grx.sh
 	sha256sums = 8221259df476971fffd25bee80132d61d08ffe2088fc4688920ea8de7c720526
 	sha256sums = 6af73551667116d187b1a4e5dac0933f99a4c1151bd1a44c12249cd540a69444
-	sha256sums = 87718eeb0134f4434f0fb0f2234da3ce2b5f03bf8be80dfba62b4101a1913f22
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = grx-bin
