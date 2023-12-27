@@ -1,12 +1,13 @@
 pkgbase = r-nistunits
 	pkgdesc = Fundamental Physical Constants and Unit Conversions from NIST
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=NISTunits
 	arch = any
-	license = GPL
+	license = GPL3
 	depends = r
 	source = https://cran.r-project.org/src/contrib/NISTunits_1.0.1.tar.gz
-	sha256sums = eaccd68db5c73d6a089ce5b323cdd51bc6a6a58ce467987158ba8c9be6a0a94e
+	md5sums = 5354e46703018bd47f18eecb311029dc
+	b2sums = aedacad168855898f7e6d2226f4ef8041a619178585af7a6875ec914c192efe3125278545d3faa56a1b885ecff414cf222e8a11ab800d200b27941a94a7e419f
 
 pkgname = r-nistunits
