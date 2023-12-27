@@ -1,11 +1,11 @@
 pkgbase = syng-bin
 	pkgdesc = A free, open source, cross-platform, Chinese-To-English dictionary for desktops.
 	pkgver = 2.0.0_beta_5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getsyng.com/
 	arch = x86_64
 	license = GPL3
-	license = CC-CEDICT
+	license = custom:CC-CEDICT
 	depends = hicolor-icon-theme
 	depends = gtk3
 	depends = openssl
@@ -16,7 +16,7 @@ pkgbase = syng-bin
 	provides = syng=2.0.0_beta_5
 	conflicts = syng
 	source = syng-2.0.0_beta_5.deb::https://github.com/sotch-pr35mac/syng/releases/download/v2.0.0-beta-5/syng-2_0.0.5_amd64.deb
-	source = LICENSE-2.0.0_beta_5::https://raw.githubusercontent.com.com/sotch-pr35mac/syng/v2.0.0_beta_5/LICENSE-CC-CEDICT
+	source = LICENSE-2.0.0_beta_5::https://raw.githubusercontent.com/sotch-pr35mac/syng/v2.0.0-beta-5/LICENSE-CC-CEDICT
 	sha256sums = 18d9c3474e4c486460cc34f07b00259381875f0ac22db6a3cbe24713ba1693ab
 	sha256sums = 997e0e57760a71dfc656727d5bc14149bae55f907990f8c75650673924434f0c
 
