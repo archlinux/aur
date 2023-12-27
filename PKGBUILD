@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.15.0
 _pkgver=2.15.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -40,7 +40,7 @@ sha512sums=('51976c7255ffbdb98fe67a28f6ae1c3b9a073e49fe6b44187a53d99654e4af753de
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
                     absl-py python-h5py python-keras python-keras-applications python-keras-preprocessing
                     python-tensorflow-estimator python-opt_einsum python-astunparse python-pasta
-                    python-flatbuffers python-typing_extensions)
+                    python-flatbuffers python-typing_extensions python-ml-dtypes)
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'

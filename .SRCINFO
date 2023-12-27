@@ -1,7 +1,7 @@
 pkgbase = tensorflow-rocm
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning
 	pkgver = 2.15.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.tensorflow.org/
 	arch = x86_64
 	license = APACHE
@@ -94,6 +94,7 @@ pkgname = python-tensorflow-rocm
 	depends = python-pasta
 	depends = python-flatbuffers
 	depends = python-typing_extensions
+	depends = python-ml-dtypes
 	provides = python-tensorflow
 	conflicts = python-tensorflow
 
@@ -148,6 +149,7 @@ pkgname = python-tensorflow-opt-rocm
 	depends = python-pasta
 	depends = python-flatbuffers
 	depends = python-typing_extensions
+	depends = python-ml-dtypes
 	provides = python-tensorflow
 	provides = python-tensorflow-rocm
 	conflicts = python-tensorflow
