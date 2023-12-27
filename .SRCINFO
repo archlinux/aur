@@ -1,0 +1,19 @@
+pkgbase = beangrow-git
+	pkgdesc = Show portfolio returns in Fava
+	pkgver = r15.7dd642b
+	pkgrel = 1
+	url = https://github.com/beancount/beangrow
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = beancount
+	provides = beangrow
+	options = !strip
+	source = git+https://github.com/beancount/beangrow
+	b2sums = SKIP
+
+pkgname = beangrow-git
