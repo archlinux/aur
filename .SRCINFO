@@ -1,0 +1,17 @@
+pkgbase = xroachng
+	pkgdesc = Cockroaches hide under your windows (compatible with modern desktop environments)
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://www.ratrabbit.nl/ratrabbit/software/xroach_ng/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = custom:xroach
+	makedepends = pkgconfig
+	makedepends = make
+	makedepends = libxt
+	depends = gtk3
+	source = https://www.ratrabbit.nl/downloads/xroachng/xroachng-1.0.3.tar.gz
+	sha256sums = 54f8c26f3ad0d3a76367a8d40556ef58fc9844009973de42d5d305b460e2f755
+
+pkgname = xroachng
