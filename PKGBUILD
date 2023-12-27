@@ -1,5 +1,5 @@
 pkgname=openmodelica-omlibraries
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - A collection of Modelica libraries for use with OpenModelica."
 arch=('x86_64')
