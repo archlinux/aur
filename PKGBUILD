@@ -1,8 +1,5 @@
 # Maintainer: xiota / aur.chaotic.cx
 # Contributor: Kerrick Staley <kerrick@kerrickstaley.com>
-# Contributor: schuay <jakob.gruber@gmail.com>
-# Contributor: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: Jeremy Newton (Mystro256) <alexjnewt@gmail.com>
 
 ## useful links
 # https://dolphin-emu.org
@@ -12,7 +9,7 @@
 : ${_debugfast:=false}
 
 : ${_build_clang:=true}
-: ${_build_mold:=true}
+: ${_build_mold:=false}
 
 : ${_build_debugfast:=true}
 : ${_build_avx:=false}
@@ -25,12 +22,12 @@
 # basic info
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=5.0.r20840.g57327be7f3
+pkgver=5.0.r20842.g3cb5d3455f
 pkgrel=1
-pkgdesc='A Gamecube / Wii / Triforce emulator'
+pkgdesc='A Gamecube and Wii emulator'
+url="https://github.com/dolphin-emu/dolphin"
+license=('GPL-2.0-or-later')
 arch=(x86_64)
-_url="https://github.com/dolphin-emu/dolphin"
-license=(GPL2)
 
 # main package
 _main_package() {
@@ -82,16 +79,12 @@ _main_package() {
     git
     python
   )
-  optdepends=(
-    'pulseaudio: PulseAudio backend'
-  )
 
   options=(!emptydirs)
 
   if [[ "${_build_clang::1}" == "t" ]] ; then
     makedepends+=(
       clang
-      lld
       llvm
     )
   else
@@ -100,6 +93,8 @@ _main_package() {
 
   if [[ "${_build_mold::1}" == "t" ]] ; then
     makedepends+=(mold)
+  else
+    makedepends+=(lld)
   fi
 
   if [[ "${_build_git::1}" != "t" ]] ; then
@@ -193,8 +188,6 @@ _main_stable() {
 
 # git package
 _main_git() {
-  url="${_url:?}"
-
   provides=(
     'dolphin-emu'
     'dolphin-emu-nogui'
@@ -243,11 +236,6 @@ prepare() {
 }
 
 build() {
-  if [[ "${_build_avx::1}" == "t" ]] ; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-  fi
-
   local _cmake_options=(
     -B build
     -S "$_pkgname"
@@ -298,6 +286,11 @@ build() {
       -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
       -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld"
     )
+  fi
+
+  if [[ "${_build_avx::1}" == "t" ]] ; then
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
   fi
 
   cmake "${_cmake_options[@]}"
