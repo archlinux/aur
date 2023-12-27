@@ -2,7 +2,7 @@
 
 pkgname="tts"
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Coqui-TSS for inference"
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
@@ -10,7 +10,7 @@ arch=("any")
 provides=("tts" "python-tts")
 conflicts=("python-tts")
 replaces=("python-tts")
-depends=("cython"
+depends=("cython0"
          "python"
          "python-numpy"
          "python-scipy"

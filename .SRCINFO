@@ -1,14 +1,14 @@
 pkgbase = tts
 	pkgdesc = Coqui-TSS for inference
 	pkgver = 0.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coqui-ai/TTS
 	arch = any
 	license = MPL2
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = cython
+	depends = cython0
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
