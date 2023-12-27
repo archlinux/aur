@@ -25,7 +25,7 @@ pkgbase = wox-bin
 	conflicts = wox-git
 	conflicts = wox
 	options = !strip
-	source = wox-2.0.0_alpha.1-81::https://github.com/Wox-launcher/Wox/releases/download/v2.0.0-alpha.1/wox-linux-amd64-20231226-3f4456
-	sha256sums = 0ca49c954317b7474707f41fc78d283c534a6feab2551e198c5565b2cb13f92b
+	source = wox-2.0.0_alpha.1-81::https://github.com/Wox-launcher/Wox/releases/download/v2.0.0-alpha.1/wox-linux-amd64-20231227-b08bb5
+	sha256sums = 49c7c9068c747a127dbbafaa68aa0a8e21b14e04814f7fa5045d3587dd98f200
 
 pkgname = wox-bin
