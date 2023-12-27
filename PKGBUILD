@@ -3,7 +3,7 @@
 
 pkgname='qx-entity-editor'
 _pkgname='QxEntityEditor'
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=2
 pkgdesc="A graphic editor for QxOrm library."
 arch=('x86_64' 'i686')
