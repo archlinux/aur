@@ -1,6 +1,6 @@
 pkgbase = vonal-bin
 	pkgdesc = Global search for tiling window managers
-	pkgver = v1.4.0
+	pkgver = v1.5
 	pkgrel = 1
 	url = https://github.com/fxdave/vonal-rust
 	arch = x86_64
