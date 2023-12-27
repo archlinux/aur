@@ -1,7 +1,7 @@
 pkgbase = fsolauncher
 	pkgdesc = Official FreeSO Launcher made with Electron
-	pkgver = 1.9.2_prod.1
-	pkgrel = 2
+	pkgver = 1.9.2_prod.2
+	pkgrel = 1
 	url = https://beta.freeso.org/
 	arch = x86_64
 	license = MPL2
@@ -11,9 +11,9 @@ pkgbase = fsolauncher
 	makedepends = git
 	depends = electron22
 	conflicts = fsolauncher
-	source = fsolauncher-1.9.2_prod.1::https://github.com/ItsSim/fsolauncher.git#tag=1.9.2-prod.1
+	source = fsolauncher-1.9.2_prod.2::git+https://github.com/ItsSim/fsolauncher.git#tag=1.9.2-prod.2
 	source = fsolauncher.sh
-	sha256sums = 2c750858c140cfdd6000e3a64efff873a52e860c4429cc202ad15f75fd1c5691
-	sha256sums = 0264bc572b31604345e61a71d6af0cfdee9b3bbfdf0d4b9a51022c9157db21a3
+	sha256sums = SKIP
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = fsolauncher

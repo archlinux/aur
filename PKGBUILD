@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher
-pkgver=1.9.2_prod.1
+pkgver=1.9.2_prod.2
 _electronversion=22
-pkgrel=2
+_nodeversion=16
+pkgrel=1
 pkgdesc="Official FreeSO Launcher made with Electron"
 arch=('x86_64')
 url="https://beta.freeso.org/"
@@ -19,16 +20,16 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::${_ghurl}.git#tag=${pkgver//_/-}"
+    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=${pkgver//_/-}"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2c750858c140cfdd6000e3a64efff873a52e860c4429cc202ad15f75fd1c5691'
-            '0264bc572b31604345e61a71d6af0cfdee9b3bbfdf0d4b9a51022c9157db21a3')
+sha256sums=('SKIP'
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 16
-    nvm use 16
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
