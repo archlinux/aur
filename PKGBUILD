@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.21.6
+pkgver=0.21.7
 _electronversion=28
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
@@ -22,9 +22,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
-sha256sums_aarch64=('2dc5911e141e82a27e50764b114d0296c74eccb0853b7a01cf1c96e355ef2ffd')
-sha256sums_armv7h=('dad58a89c76a2264f4374e57a9386a5684adcf45e86f9555f128abbe9d1b61b1')
-sha256sums_x86_64=('dcc467f6504f300bef5f62d81b306931c9c2c94324eb6a65ff868674b4290360')
+sha256sums_aarch64=('2aa3f0e7fcc9bfa09d7585ebcfa7919895f90abe3a63c58db9d42310bb9ca7c5')
+sha256sums_armv7h=('59177d50f4d9e7a2da41ca59d894577605918691d490dbdd71970fc6d1b5e665')
+sha256sums_x86_64=('544799d4a1e16dc89bb94dc333726ea68e4bab215d72e3b179560414321ea81d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
