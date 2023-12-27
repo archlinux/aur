@@ -18,7 +18,7 @@ fi
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5321
+pkgver=1.7.5345
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -33,7 +33,6 @@ _main_package() {
   conflicts=("$_pkgname")
 
   options=(!strip !debug)
-  install="$_pkgname.install"
 
   _url="https://github.com/PCSX2/pcsx2"
   _appimage="pcsx2-v$_pkgver-linux-appimage-x64-Qt.AppImage"
@@ -88,15 +87,14 @@ _update_version() {
     return
   fi
 
-  _repo="${url#*//*/}"
-  _response=$(curl "https://api.github.com/repos/${_repo:?}/releases" -s)
+  _response=$(curl -Ssf "$url/releases.atom")
 
-  _get() {
+  _pkgver_new=$(
     printf '%s' "$_response" \
-      | awk -F '"' '/"'"$1"'":/{print $4}' \
-      | head -1 | sed 's/^v//'
-  }
-  _pkgver_new=$(_get name)
+      | grep '/releases/tag/' \
+      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@; s@^v@@' \
+      | grep -Ev '[a-z]{2}' | sort -V | tail -1
+  )
 
   # update _pkgver
   if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
