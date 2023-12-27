@@ -4,7 +4,7 @@
 # Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-bin
 pkgver=2023.12.0_369
-pkgrel=2
+pkgrel=3
 pkgdesc="A integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('x86_64')
 license=('GPL')
