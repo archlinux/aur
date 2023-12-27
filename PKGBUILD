@@ -27,7 +27,7 @@ build() {
         -DLINUX_X11POWER=ON \
         -DQTROOT=./qt \
         ..
-    make
+    cmake build .
 }
 
 package() {
