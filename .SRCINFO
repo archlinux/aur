@@ -16,11 +16,9 @@ pkgbase = paru-static
 	makedepends = musl
 	depends = git
 	depends = pacman
+	depends = paru
 	optdepends = bat: colored pkgbuild printing
 	optdepends = devtools: build in chroot and downloading pkgbuilds
-	provides = paru
-	conflicts = paru
-	backup = etc/paru.conf
 	source = paru-2.0.1.tar.gz::https://github.com/Morganamilo/paru/archive/v2.0.1.tar.gz
 	sha256sums = 47cae94d227cc08f86706408d234444af6dda192ba24309c251a0b43a8aa7980
 
