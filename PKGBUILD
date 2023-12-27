@@ -1,27 +1,30 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# based on aur electron8-bin: Tom Vincent <http://tlvince.com/contact/>
+
+# Based on aur/electron8-bin by Tom Vincent <http://tlvince.com/contact>
+# Based on extra/electron* by
+# Bruno Pagani <archange@archlinux.org>
+# Caleb Maclennan <caleb@alerque.com>
 
 _projectname=electron
 _major=28
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_dev=11
-_dev_kind=beta
-_pkgver="${_major}.0.0-${_dev_kind}.${_dev}"
-pkgver="${_pkgver/-/}"
+_subver="1.0"
+_pkgver="${_major}.${_subver}"
+pkgver="${_pkgver/-/.}"
 pkgrel=1
-pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
-arch=('x86_64' 'aarch64')
-url=https://electronjs.org/
-license=('MIT' 'custom')
+pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
+arch=(x86_64 aarch64)
+url='https://electronjs.org'
+license=(MIT custom)
 depends=(c-ares
          alsa-lib
          gtk3
          libevent
          libffi
          nss)
-optdepends=('pipewire: WebRTC desktop sharing under Wayland'
-            'kde-cli-tools: file deletion support (kioclient5)'
+optdepends=('kde-cli-tools: file deletion support (kioclient5)'
+            'pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
@@ -36,10 +39,10 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('f18cefb41ba8eba10fe12785cbfeb8d38dd2594bb3160656baed8caa0d42336a'
-                   '5cc51b7014f69bf30bcc75fe546c02b434b73f3525e621ce044a0b402e433fc4')
-sha256sums_aarch64=('58226e324e6508c775a274d1685a815e6f14a5aaf45da7c1905d5291d7c3f5b7'
-                    '52dbf7fe32acbf35088204635324f9f116eb1341301b8d9d49afbba0a5bd9173')
+sha256sums_x86_64=('88eff59e5ab5fbd2f25608f218cbb30b8dddb9158ac63468c6797bb648e925a5'
+                   'e94f5da5b78015eba5eb3bea4cb4389c0a70fa6c456f5657da2e7d2c3bf8d0b1')
+sha256sums_aarch64=('2f7277c156dd775746d7d725b352d3581be1706910246fcf727e40f4326929c4'
+                    '589144d71603bc651e5cb0433fe19e49777e74ec50a57d5a5c0b6dcc9a50d516')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
