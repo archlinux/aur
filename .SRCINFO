@@ -1,7 +1,7 @@
 pkgbase = gotepad-bin
 	pkgdesc = A simple text editor built with Wails
 	pkgver = 2.3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Sammy-T/gotepad
 	arch = x86_64
 	license = MIT
@@ -12,8 +12,8 @@ pkgbase = gotepad-bin
 	provides = gotepad=2.3.2
 	conflicts = gotepad
 	source = gotepad-2.3.2.zip::https://github.com/Sammy-T/gotepad/releases/download/v2.3.2/gotepad_linux.zip
-	source = LICENSE::https://raw.githubusercontent.com/Sammy-T/gotepad/v2.3.2/LICENSE
-	source = gotepad.png::https://raw.githubusercontent.com/Sammy-T/gotepad/v2.3.2/build/appicon.png
+	source = LICENSE-2.3.2::https://raw.githubusercontent.com/Sammy-T/gotepad/v2.3.2/LICENSE
+	source = gotepad-2.3.2.png::https://raw.githubusercontent.com/Sammy-T/gotepad/v2.3.2/build/appicon.png
 	sha256sums = d385b11d6abb20175de0d7df5e42f4c7fa4df92cd43c70168bc8bfdd80abe5f2
 	sha256sums = dca196dfc07025990b7613625b114fa8ae063e0fb5de6f29a81e42ffd1b5eaae
 	sha256sums = de674115ab3a065b2d5f6f229777ed33369ccdeabdc6020047d72fe35441014d
