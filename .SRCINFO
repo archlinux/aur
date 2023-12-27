@@ -1,7 +1,7 @@
 pkgbase = python-tulir-telethon
 	pkgdesc = is a fork of Telethon library with custom patches from Tulir.
-	pkgver = 1.33.0a1
-	pkgrel = 2
+	pkgver = 1.34.0a2
+	pkgrel = 1
 	url = https://github.com/tulir/Telethon
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-tulir-telethon
 	optdepends = python-pillow
 	provides = python-telethon
 	conflicts = python-telethon
-	source = https://files.pythonhosted.org/packages/source/t/tulir-telethon/tulir-telethon-1.33.0a1.tar.gz
-	sha256sums = 6adfcc8955c028584c1f53759be2bd1e662fc6fcd86bbc4a8489690ececa9375
+	source = https://files.pythonhosted.org/packages/source/t/tulir-telethon/tulir-telethon-1.34.0a2.tar.gz
+	sha256sums = fb79a4f87d2c403decb043e2844fcfbd6a58559ce41903178454bae26ee3a09f
 
 pkgname = python-tulir-telethon
