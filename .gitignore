@@ -1,4 +1,4 @@
-/src/
-/pkg/
-/python-efb-telegram-master/
-*.pkg.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

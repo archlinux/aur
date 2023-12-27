@@ -1,60 +1,70 @@
-# Maintainer: Ke Liu <spcter119@gmail.com>
+# Maintainer:
+# Contributor: Ke Liu <spcter119@gmail.com>
 
-pkgname=python-efb-telegram-master-git
-_provide=${pkgname%-git}
-_name=${_provide#python-}
-pkgver=r432.9617272
+_module="efb-telegram-master"
+_pkgname="python-$_module"
+pkgname="$_pkgname-git"
+pkgver=2.3.0.r2.g0850aeb
 pkgrel=1
-pkgdesc='EFB Telegram Master, a channel for EH Forwarder Bot.'
-arch=('any')
+pkgdesc='EFB Telegram Master, a channel for EH Forwarder Bot'
 url='https://github.com/blueset/efb-telegram-master'
 license=('AGPL-3')
-groups=('efb')
-depends=(
-	'python-ehforwarderbot'
-	'python-telegram-bot-git'
-	'python-magic-ahupp'
-	'python-ffmpeg'
-	'python-peewee'
-	'python-requests'
-	'python-pydub'
-	'python-ruamel-yaml'
-	'python-language-tags'
-	'python-retrying'
-	'python-bullet'
-	'python-cjkwrap'
-	'python-humanize'
-	'python-lottie'
-	'python-typing_extensions'
-	'python-cairosvg')
+arch=('any')
+
+depends=('python')
 makedepends=(
-	'git'
-	'python-setuptools')
-provides=($_provide)
-conflicts=($_provide)
-source=("$_provide"::"git+${url}.git")
-md5sums=('SKIP')
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+  'git'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_provide"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$_provide"
-	sed -i 's/typing-extensions[>=0-9\.]*/typing-extensions/' setup.py
-	python setup.py clean --all
-	python setup.py build
-	cd "build/lib/${_name//-/_}/locale/"
-	rm -rf ach_UG
-	for _locale in $(ls); do
-		(cd "$_locale/LC_MESSAGES/"; msgfmt "${_name//-/_}.po" -o "${_name//-/_}.mo")
-	done
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation
+
+  cd "build/lib/$_module/locale/"
+  for _locale in [a-z][a-z]_[A-Z][A-Z]; do
+    (cd "$_locale/LC_MESSAGES/"; msgfmt "$_module.po" -o "$_module.mo")
+  done
 }
 
 package() {
-	cd "$srcdir/$_provide"
-	python setup.py install --root="$pkgdir/" --skip-build --optimize=1
-	install -Dm644 "$srcdir/$_provide/LICENSE.md" "$pkgdir/usr/share/licenses/$_provide/LICENSE.md"
-}
+  depends+=(
+    'python-cjkwrap'
+    'python-humanize'
+    'python-magic'
+    'python-peewee'
+    'python-pillow'
+    'python-python-socks'
+    'python-retrying'
+    'python-ruamel-yaml'
+    'python-typing_extensions'
 
+    # AUR
+    'python-bullet'
+    'python-ehforwarderbot'
+    'python-ffmpeg-python'
+    'python-language-tags'
+    'python-lottie'
+    'python-pydub'
+    'python-telegram-bot'
+  )
+
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
