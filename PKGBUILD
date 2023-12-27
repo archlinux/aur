@@ -1,6 +1,6 @@
 # Maintainer: Tomaz Canabrava <tcanabrava@archlinux.org>
 pkgname=xwaylandvideobridge
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Utility to allow streaming Wayland windows to X applications'
 arch=(x86_64)
@@ -30,7 +30,7 @@ makedepends=(
 source=(https://download.kde.org/stable/xwaylandvideobridge/$pkgname-$pkgver.tar.xz{,.sig})
 
 sha256sums=(
-    'f8da6e8fe0ec3bd5ea797af8aad8fe1daab36fc3c77e2d36bb7443832cdfcffa'
+    'ea72ac7b2a67578e9994dcb0619602ead3097a46fb9336661da200e63927ebe6'
     'SKIP'
 )
 
