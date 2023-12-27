@@ -32,7 +32,6 @@ check() {
 }
 
 package_mod_tile() {
-  conflicts=('mod_tile')
   depends=('apache' 'apr' 'cairo' 'curl' 'glib2')
   install="${pkgname}.install"
   pkgdesc='An Apache 2 module to deliver map tiles'
@@ -53,7 +52,6 @@ package_mod_tile() {
 }
 
 package_renderd() {
-  conflicts=('renderd')
   backup=('etc/renderd.conf')
   depends=('cairo' 'curl' 'glib2' 'iniparser' 'mapnik')
   pkgdesc='A daemon that renders map tiles using mapnik'
