@@ -10,23 +10,22 @@ arch=(any)
 url='https://github.com/ojarva/python-sshpubkeys'
 license=(BSD)
 depends=(python-ecdsa python-cryptography)
-makedepends=(python-setuptools)
-source=("https://files.pythonhosted.org/packages/source/s/sshpubkeys/$_pkgname-$pkgver.tar.gz")
-sha256sums=('3020ed4f8c846849299370fbe98ff4157b0ccc1accec105e07cfa9ae4bb55064')
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=("https://github.com/ojarva/python-sshpubkeys/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('04dbd4ed78b288b0cb2b265f7594367676d740d5ce0eda66cb745aaa9a597125')
 
 build() {
-    cd $_pkgname-$pkgver
-    python setup.py build
+    cd $pkgname-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 check() {
-    cd $_pkgname-$pkgver
-    # Upstream MANIFEST.in uses `graft tests`, so pyc files in tests will be listed in SOURCES.txt
-    PYTHONDONTWRITEBYTECODE=1 python -m unittest tests
+    cd $pkgname-$pkgver
+    python -m unittest tests
 }
 
 package() {
-    cd $_pkgname-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd $pkgname-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname
 }
