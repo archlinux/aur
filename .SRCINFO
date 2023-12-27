@@ -5,6 +5,7 @@ pkgbase = diffr
 	url = https://github.com/mookid/diffr
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
