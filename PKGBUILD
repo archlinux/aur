@@ -1,22 +1,22 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+
 # Based on aur/android-studio by Kordian Bruck <k@bruck.me>
 # Based on aur/android-studio-canary by tilal6991 <lalitmaganti@gmail.com>, vanpra <pranavmaganti@gmail.com>
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
-#
+
 # PRs are welcome here: https://github.com/yurikoles-aur/android-studio-beta
 # SHA-256 Checksums and binary links can be found here: https://developer.android.com/studio/archive
-#
 
 PKGEXT='.pkg.tar'
 _pkgname=android-studio
+_beta=1
 pkgname="${_pkgname}-beta"
-pkgver=2023.1.1.25
+pkgver=2023.2.1.19
 pkgrel=1
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
 license=('APACHE')
-makedepends=('zip')
 depends=(
   'fontconfig'
   'freetype2'
@@ -48,7 +48,7 @@ options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "license.html")
-sha256sums=('8cea9300760093c8fdf88af4d532c1b29db4bbbfe204a57c4ff8e864b2130ece'
+sha256sums=('95f2415fb44b2338a2baff34e7e81db7cc5f264163cb46d287beff6e390d147e'
             'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f'
             '6c4ae36e7e336f833de7d6151a4e1bb1d0133affeba9cef86f1190e0637128d1')
 
@@ -57,14 +57,18 @@ if [ "${CARCH}" = "i686" ]; then
 fi
 
 build() {
+  if [[ "${_beta}" -eq 0 ]]; then return 0; fi
+
   cd "${_pkgname}"
 
   # Change the product name to produce a unique WM_CLASS attribute
-  mkdir -p idea
-  bsdtar -Oxf lib/resources.jar idea/AndroidStudioApplicationInfo.xml \
-    | sed "s/\"Studio\"/\"Studio Beta\"/" > idea/AndroidStudioApplicationInfo.xml
-  zip -r lib/resources.jar idea
-  rm -r idea
+  mkdir -p _resources
+  bsdtar -xf lib/resources.jar -C _resources
+  pushd _resources
+  sed "s/\"Studio\"/\"Studio Beta\"/" -i idea/AndroidStudioApplicationInfo.xml
+  bsdtar -acf ../lib/resources.jar .
+  popd
+  rm -r _resources
 }
 
 package() {
