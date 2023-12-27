@@ -3,7 +3,7 @@
 # Contributor: Stefan Karner <stefan.karner at student.tuwien.ac.at>
 # Contributor: Drenn
 
-pkgbase=openxcom-git
+pkgbase=openxcom-hueponik
 pkgname=('openxcom-hueponik' 'openxcom-docs-hueponik')
 _gitname=OpenXcom
 pkgver=1.0_r3108_g427f9e121
