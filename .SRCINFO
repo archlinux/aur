@@ -1,0 +1,25 @@
+pkgbase = socalabs-wavetable
+	pkgver = 20231227
+	pkgrel = 1
+	url = https://socalabs.com/synths/wavetable/
+	arch = x86_64
+	groups = pro-audio
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = glibc
+	depends = libcurl-gnutls
+	source = https://socalabs.com/files/get.php?id=Wavetable_Linux.zip
+	sha256sums = SKIP
+
+pkgname = socalabs-wavetable-lv2-bin
+	pkgdesc = Socalabs Retro Wavetable Synth (LV2)
+	groups = lv2-plugins
+
+pkgname = socalabs-wavetable-vst-bin
+	pkgdesc = Socalabs Retro Wavetable Synth (VST)
+	groups = vst-plugins
+
+pkgname = socalabs-wavetable-vst3-bin
+	pkgdesc = Socalabs Retro Wavetable Synth (VST3)
+	groups = vst3-plugins
