@@ -1,6 +1,6 @@
 pkgbase = woodpecker-agent-sudo
 	pkgdesc = A simple CI engine with great extensibility (agent), patched to use sudo to run local pipelines
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://woodpecker-ci.org
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = woodpecker-agent-sudo
 	replaces = woodpecker-agent
 	options = !lto
 	backup = etc/woodpecker/agent.env
-	source = woodpecker::git+https://github.com/woodpecker-ci/woodpecker#commit=0fc428aa8eb8152aafd186d5232f27008c78add8
+	source = woodpecker::git+https://github.com/woodpecker-ci/woodpecker#commit=49764f6ebafc64e9476ccbcdfb3359ae6655bb0a
 	source = agent-systemd.service
 	source = agent-sysusers.conf
 	source = agent-tmpfiles.conf
