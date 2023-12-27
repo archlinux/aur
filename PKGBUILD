@@ -1,7 +1,8 @@
-# Maintainer: X0rg
+# Maintainer: steeltitanium <steeltitanium1 at gmail dot com>
+# Contributor: X0rg
 
 pkgname=obs-service-set_version
-pkgver=0.5.13
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Version Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
@@ -13,7 +14,7 @@ depends=('obs-build'
 checkdepends=('flake8'
 	'python-ddt')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/openSUSE/obs-service-set_version/archive/$pkgver.tar.gz")
-sha512sums=('65471e8c637037d412ef0ea0b7e8ad2b64b417f22eac7636ce6989465f3a994ee159f28a146cc925928b68be3d2f6d0560c056ec976233149d7148dabe23054a')
+sha512sums=('d3fdc776785736a4e1d12318d781a007398d6fa7401a806d89827fed81e6285bbf3b8ea89284785435760cbc323ee01b862e13b6d3185d0e5e1de68e704ead9d')
 
 check() {
 	cd "$srcdir/$pkgname-$pkgver"

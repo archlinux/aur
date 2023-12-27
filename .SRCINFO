@@ -1,6 +1,6 @@
 pkgbase = obs-service-set_version
 	pkgdesc = Version Service for the OpenSUSE Build Service (OBS)
-	pkgver = 0.5.13
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/openSUSE/obs-service-set_version
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = obs-service-set_version
 	checkdepends = python-ddt
 	depends = obs-build
 	depends = python-packaging
-	source = obs-service-set_version-0.5.13.tar.gz::https://github.com/openSUSE/obs-service-set_version/archive/0.5.13.tar.gz
-	sha512sums = 65471e8c637037d412ef0ea0b7e8ad2b64b417f22eac7636ce6989465f3a994ee159f28a146cc925928b68be3d2f6d0560c056ec976233149d7148dabe23054a
+	source = obs-service-set_version-0.6.2.tar.gz::https://github.com/openSUSE/obs-service-set_version/archive/0.6.2.tar.gz
+	sha512sums = d3fdc776785736a4e1d12318d781a007398d6fa7401a806d89827fed81e6285bbf3b8ea89284785435760cbc323ee01b862e13b6d3185d0e5e1de68e704ead9d
 
 pkgname = obs-service-set_version
-
