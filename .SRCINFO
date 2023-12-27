@@ -5,6 +5,7 @@ pkgbase = musicpod-git
 	url = https://github.com/ubuntu-flutter-community/musicpod
 	arch = x86_64
 	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
