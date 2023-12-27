@@ -1,12 +1,13 @@
-# Maintainer: Lukas Weber <laochailan web de>
+# Maintainer: Poly000
+# Contributor: Lukas Weber <laochailan web de>
 # Contributor: Emmanuel Gil Peyrot <linkmauve linkmauve fr>
 # Contributor: Andrei Alexeyev <akari alienslab net>
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
-pkgname=taisei-git
+pkgname=taisei-git-unlock
 pkgver=1.3.r1132.ga5678791
 pkgrel=1
-pkgdesc="Open source Touhou clone (development version)"
+pkgdesc="Open source Touhou clone (development version) -D PROGRESS_UNLOCK_ALL"
 arch=('i686' 'x86_64')
 url="https://taisei-project.org/"
 license=('MIT')
@@ -42,7 +43,7 @@ prepare() {
 
 build() {
     cd taisei
-    meson setup --prefix /usr --libexecdir lib --sbindir bin --buildtype plain --wrap-mode nodownload -D b_lto=true -D b_pie=true build
+    meson setup --prefix /usr --libexecdir lib --sbindir bin --buildtype plain --wrap-mode nodownload -D b_lto=true -D b_pie=true -D c_args="-D PROGRESS_UNLOCK_ALL" build
     meson compile -C build
 }
 
