@@ -1,7 +1,7 @@
 pkgbase = speedata-publisher-bin
 	pkgdesc = a database publishing software that creates high-quality layouted PDFs fully automatically
 	pkgver = 4.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.speedata.de/en/product
 	arch = x86_64
 	license = AGPL3
