@@ -1,12 +1,13 @@
 pkgbase = r-som
 	pkgdesc = Self-Organizing Map
 	pkgver = 0.3.5.1
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=som
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	depends = r
 	source = https://cran.r-project.org/src/contrib/som_0.3-5.1.tar.gz
-	sha256sums = a6f4c0e5b36656b7a8ea144b057e3d7642a8b71972da387a7133f3dd65507fb9
+	md5sums = 802a5a80902579354ce3420faeeeb756
+	b2sums = ca8fd769ee84497051ef0f14e288dbf1bd05e17a1d72d5b0520b8b0771e36e58f17ed41dfe771f3a3654e77610b365789e74b45e5d2eb4e274ba55adc2caa905
 
 pkgname = r-som
