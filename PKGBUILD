@@ -7,7 +7,7 @@ pkgname=(
 )
 
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc='MooreThreads MUSA'
 arch=('x86_64')
@@ -39,24 +39,22 @@ prepare()
     rm control.tar.gz debian-binary
     tar -xf data.tar.gz
     rm data.tar.gz
-    tar -xf mudnn_rtm2.1.1.tar -C usr/lib/x86_64-linux-gnu/musa --strip-components 3 \
-        ./mudnn/lib/libmudnn.so.1.1.0.0 \
-        ./mudnn/lib/libmudnn.so.1 \
-        ./mudnn/lib/libmudnn.so
-    tar -xf mccl_rc1.2.0.tar.gz -C usr/lib/x86_64-linux-gnu/musa --strip-components 3 \
-        ./mccl/lib/libmccl.so.2.11.4 \
-        ./mccl/lib/libmccl.so.2 \
-        ./mccl/lib/libmccl.so
-    tar -xf musa_toolkits_rc1.4.1.tar.gz -C usr/lib/x86_64-linux-gnu/musa --strip-components 2 \
-        musa_toolkits_1.4.1/lib/libmusart.so.1.0.0 \
-        musa_toolkits_1.4.1/lib/libmusart.so.1.0 \
-        musa_toolkits_1.4.1/lib/libmusart.so \
-        musa_toolkits_1.4.1/lib/libmusa.so.1.0.0 \
-        musa_toolkits_1.4.1/lib/libmusa.so.1.0 \
-        musa_toolkits_1.4.1/lib/libmusa.so \
-        musa_toolkits_1.4.1/lib/libmublas.so \
-        musa_toolkits_1.4.1/lib/libmufft.so
-    
+
+    install -d -m0755 usr/local/musa
+
+    # install packages
+    tar -xf mudnn_rtm2.1.1.tar -C usr/local/musa --strip-components 2 \
+        ./mudnn/lib \
+        ./mudnn/include
+    tar -xf mccl_rc1.2.0.tar.gz -C usr/local/musa --strip-components 2 \
+        ./mccl/lib \
+        ./mccl/include \
+        ./mccl/LICENSE.txt
+    tar -xf musa_toolkits_rc1.4.1.tar.gz -C usr/local/musa --strip-components 1 \
+        musa_toolkits_1.4.1 \
+        --exclude='musa_toolkits_1.4.1/install.sh'
+
+    # dkms sources
     mv usr/src/mtgpu-1.0.0 "usr/src/mtgpu-${pkgver}"
     cd "usr/src/mtgpu-${pkgver}"
     patch -p1 < "${srcdir}/fix-lts-build.diff"
@@ -76,8 +74,14 @@ package_musa-userspace()
     pkgdesc="MooreThreads MUSA userspace libraries include muDNN, mccl"
     depends=()
 
+    # ldconfig
+    install -d -m0755 "${pkgdir}/etc/ld.so.conf.d"
+    cat > "${pkgdir}/etc/ld.so.conf.d/musa.conf" <<EOF
+/usr/lib/x86_64-linux-gnu/musa
+/usr/local/musa/lib
+EOF
+
     # config files
-    install -D -m0644 etc/ld.so.conf.d/00-mtgpu.conf "${pkgdir}/etc/ld.so.conf.d/00-mtgpu.conf"
     install -D -m0644 etc/OpenCL/vendors/MT.icd "${pkgdir}/etc/OpenCL/vendors/MT.icd"
     install -D -m0644 etc/vulkan/icd.d/musaicdconf.json "${pkgdir}/etc/vulkan/icd.d/musaicdconf.json"
 
