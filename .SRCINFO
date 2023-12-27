@@ -1,7 +1,7 @@
 pkgbase = tensorflow-rocm
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning
 	pkgver = 2.15.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.tensorflow.org/
 	arch = x86_64
 	license = APACHE
@@ -22,7 +22,6 @@ pkgbase = tensorflow-rocm
 	makedepends = cython
 	makedepends = patchelf
 	makedepends = python-requests
-	makedepends = gcc12
 	makedepends = libxcrypt-compat
 	makedepends = clang
 	makedepends = jdk11-openjdk

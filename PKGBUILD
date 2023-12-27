@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.15.0
 _pkgver=2.15.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -25,7 +25,7 @@ depends=('c-ares' 'pybind11' 'openssl' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-t
          'intel-oneapi-compiler-shared-runtime-libs')
 makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'roctracer' 'rccl' 'git' 'miopen' 'python-wheel' 'openmp'
              'python-installer' 'python-setuptools' 'python-h5py' 'python-keras-applications'
-             'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests' 'gcc12' 'libxcrypt-compat' 'clang'
+             'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests' 'libxcrypt-compat' 'clang'
              'jdk11-openjdk')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
@@ -113,9 +113,9 @@ prepare() {
   export NCCL_INSTALL_PATH=/usr
   # Does tensorflow really need the compiler overridden in 5 places? Yes.
   # https://github.com/tensorflow/tensorflow/issues/60577
-  export CC=gcc-12
-  export CXX=g++-12
-  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-12
+  export CC=gcc
+  export CXX=g++
+  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-13
   export HOST_C_COMPILER=/usr/bin/${CC}
   export HOST_CXX_COMPILER=/usr/bin/${CXX}
   export TF_CUDA_CLANG=0  # Clang currently disabled because it's not compatible at the moment.
