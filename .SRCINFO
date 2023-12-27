@@ -1,12 +1,16 @@
 pkgbase = python-lru-dict
 	pkgdesc = A fast and memory efficient LRU cache for Python
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amitdev/lru-dict
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
 	depends = python
 	source = git+https://github.com/amitdev/lru-dict.git#tag=51c2761d94fd6fc85faea550240814938d1594f9
 	b2sums = SKIP
