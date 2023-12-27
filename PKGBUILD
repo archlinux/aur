@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SparseArray
-_pkgver=1.2.2
+_pkgver=1.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Efficient in-memory representation of multidimensional sparse arrays"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(Artistic2.0)
 depends=(
   r-biocgenerics
@@ -29,12 +29,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a73b2e316ce8135de81af01a9a9610ec')
-sha256sums=('372134d465e554124f55c6c74955a5ac3e1b8c094e2194e9058c5de6c51e5ace')
+md5sums=('86224ea83ca5df5984cfc6907c8f0bc1')
+b2sums=('bc7e74e5d2284c41cc81d03b817589e0791ba0252adbaec58ed65ad8ea68243a699bb72aa98d5f55760be050f572624bd0d19443fb80d6b1424fdf339c65aee2')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

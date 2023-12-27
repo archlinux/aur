@@ -1,6 +1,6 @@
 pkgbase = r-sparsearray
 	pkgdesc = Efficient in-memory representation of multidimensional sparse arrays
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SparseArray
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = r-sparsearray
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SparseArray_1.2.2.tar.gz
-	md5sums = a73b2e316ce8135de81af01a9a9610ec
-	sha256sums = 372134d465e554124f55c6c74955a5ac3e1b8c094e2194e9058c5de6c51e5ace
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SparseArray_1.2.3.tar.gz
+	md5sums = 86224ea83ca5df5984cfc6907c8f0bc1
+	b2sums = bc7e74e5d2284c41cc81d03b817589e0791ba0252adbaec58ed65ad8ea68243a699bb72aa98d5f55760be050f572624bd0d19443fb80d6b1424fdf339c65aee2
 
 pkgname = r-sparsearray
