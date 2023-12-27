@@ -32,7 +32,9 @@ build () {
   cd "$srcdir/$_pkgname-$pkgver"
 
   # static link
-  _features+="static,"
+  if [[ $TARGET =~ musl ]]; then
+    _features+="static,"
+  fi
   if pacman -T pacman-git > /dev/null; then
     _features+="git,"
   fi
