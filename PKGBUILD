@@ -14,9 +14,9 @@ pkgname=()
 [ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
 [ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
 
-pkgver=2.13.0
-_pkgver=2.13.0
-pkgrel=4
+pkgver=2.15.0
+_pkgver=2.15.0
+pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -25,21 +25,17 @@ depends=('c-ares' 'pybind11' 'openssl' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-t
 makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'roctracer' 'rccl' 'git' 'miopen' 'python-wheel'
              'python-installer' 'python-setuptools' 'python-h5py' 'python-keras-applications'
              'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests'
-             'gcc12' 'jdk11-openjdk')
+             'gcc12' 'libxcrypt-compat' 'clang' 'jdk11-openjdk')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
         tensorflow-2.10-sparse-transpose-op2.patch
-        https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
-        fix-c++17-compat.patch
-        "llvm_includes.patch::https://github.com/tensorflow/tensorflow/commit/c97cec76fc145c25543b0e7545d5ea3ad4f8e764.patch"
-        "hipcc_path.patch::https://patch-diff.githubusercontent.com/raw/tensorflow/tensorflow/pull/61824.patch")
+        https://github.com/bazelbuild/bazel/releases/download/6.1.0/bazel_nojdk-6.1.0-linux-x86_64
+        fix-c++17-compat.patch)
 
-sha512sums=('b243ef9ded002faf8127fedb74e7e60685a0fc636790a9616fbb67a1e902d45b28f044f3da58d7febde1c5bd13a9578a0a463db24b2f2f06daf558cc7eadfec4'
+sha512sums=('51976c7255ffbdb98fe67a28f6ae1c3b9a073e49fe6b44187a53d99654e4af753de53bfa7229cdd1997ac71e8ddecbc15e4759d46c6d24b55eb84c5d31523dfe'
             '45325ef3130aa95d48121d8c39bb4e683bdb5faa936ff29af953a2c359edb441a29e2dc0cae53ec6c08eee0432c0eeeaa7a40fbd063467b7f3c250d0f7f8ffed'
-            'e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281'
-            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
-            'eb32e9629c58c09812a9b85b2acb2edb9e802ece7f3e7a731d0523ab095d98b59cdb6f205485c128b072a0b9a7001563140e9b1d24419ed5c08cb9ed36b08166'
-            'SKIP')
+            'b71aed83ae1c3f610df77f7c148703fd3e7aa5901794a2b31c6044c71b3f030831d59f7f3641992105117a422655160fc9b509326b31586c6bca378cbff08762'
+            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e')
 
 # consolidate common dependencies to prevent mishaps
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
@@ -76,9 +72,9 @@ prepare() {
   # Allow any bazel version
   echo "*" > tensorflow-${_pkgver}/.bazelversion
 
-  # Since Tensorflow is currently imcompatible with Bazel 6, we're going to use
-  # a local Bazel 5 to fix that. Stupid problems call for stupid solutions.
-  install -Dm755 "${srcdir}"/bazel_nojdk-5.4.0-linux-x86_64 bazel/bazel
+  # Since Tensorflow is currently imcompatible with our version of Bazel, we're going to use
+  # their exact version of Bazel to fix that. Stupid problems call for stupid solutions.
+  install -Dm755 "${srcdir}"/bazel_nojdk-6.1.0-linux-x86_64 bazel/bazel
   PATH="/usr/lib/jvm/java-11-openjdk/bin:$PATH"
   export PATH="${srcdir}/bazel:$PATH"
   bazel --version
@@ -87,14 +83,7 @@ prepare() {
   # thinks about which versions should be used anyway. ;) (FS#68772)
   sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
 
-  # setup.py generates ~1Mb of warnings if you don't explicitly include namespace packages.
-  sed -i -E "s/find_packages/find_namespace_packages/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
-
-  patch -Np1 -i "${srcdir}/tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-${_pkgver}
-
-  patch -Np1 -i "${srcdir}/llvm_includes.patch" -d tensorflow-${_pkgver}
-
-  patch -Np1 -i "${srcdir}/hipcc_path.patch" -d tensorflow-${_pkgver}
+  # patch -Np1 -i "${srcdir}/tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-${_pkgver}
 
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
@@ -122,11 +111,13 @@ prepare() {
   # Otherwise tensorflow will automatically detect your architecture
   # See: https://github.com/tensorflow/tensorflow/commit/c04822a49d669f2d74a566063852243d993e18b1
   # export TF_ROCM_AMDGPU_TARGETS=gfx803,gfx900,gfx906,gfx908,gfx90a,gfx1030,gfx1100,gfx1101,gfx1102
+  export TF_NEED_CLANG=1
+  export CLANG_COMPILER_PATH=/usr/bin/clang
   # See https://github.com/tensorflow/tensorflow/blob/master/third_party/systemlibs/syslibs_configure.bzl
-  export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,nasm,png,pybind11,zlib"
+  export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,nasm,png,zlib"
   export TF_SET_ANDROID_WORKSPACE=0
   export TF_DOWNLOAD_CLANG=0
-  export TF_NCCL_VERSION=$(pkg-config nccl --modversion | grep -Po '\d+\.\d+')
+  # export TF_NCCL_VERSION=$(pkg-config nccl --modversion | grep -Po '\d+\.\d+')
   export TF_IGNORE_MAX_BAZEL_VERSION=1
   export NCCL_INSTALL_PATH=/usr
   # Does tensorflow really need the compiler overridden in 5 places? Yes.
@@ -144,7 +135,7 @@ prepare() {
   # according to the above, we should be specifying CUDA compute capabilities as 'sm_XX' or 'compute_XX' from now on
   # add latest PTX for future compatibility
   # Valid values can be discovered from nvcc --help
-  export TF_CUDA_COMPUTE_CAPABILITIES=sm_52,sm_53,sm_60,sm_61,sm_62,sm_70,sm_72,sm_75,sm_80,sm_86,sm_87,compute_87
+  export TF_CUDA_COMPUTE_CAPABILITIES=sm_52,sm_53,sm_60,sm_61,sm_62,sm_70,sm_72,sm_75,sm_80,sm_86,sm_87,sm_89,sm_90,compute_90
 
   export BAZEL_ARGS="--config=mkl -c opt"
 }
@@ -176,7 +167,7 @@ build() {
     export TF_NEED_ROCM=1
     ./configure
     bazel \
-      build --config=avx2_linux \
+      build --config=avx_linux \
         ${BAZEL_ARGS[@]} \
         //tensorflow:libtensorflow.so \
         //tensorflow:libtensorflow_cc.so \
@@ -269,7 +260,7 @@ package_tensorflow-rocm() {
 }
 
 package_tensorflow-opt-rocm() {
-  pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM and AVX2 CPU optimizations)"
+  pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM and AVX CPU optimizations)"
   depends+=(rocm-hip-sdk miopen rccl)
   conflicts=(tensorflow)
   provides=(tensorflow tensorflow-rocm)
@@ -289,7 +280,7 @@ package_python-tensorflow-rocm() {
 }
 
 package_python-tensorflow-opt-rocm() {
-  pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM and AVX2 CPU optimizations)"
+  pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM and AVX CPU optimizations)"
   depends+=(tensorflow-opt-rocm rocm-hip-sdk miopen rccl "${_common_py_depends[@]}")
   conflicts=(python-tensorflow)
   provides=(python-tensorflow python-tensorflow-rocm)
