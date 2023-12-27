@@ -1,77 +1,29 @@
-diff -Naur bumps-0.7.11/bumps/numdifftools/core.py bumps-0.7.11_patched/bumps/numdifftools/core.py
---- bumps-0.7.11/bumps/numdifftools/core.py	2019-07-22 11:00:07.663853366 +0200
-+++ bumps-0.7.11_patched/bumps/numdifftools/core.py	2018-09-24 21:06:44.000000000 +0200
-@@ -23,7 +23,7 @@
- import numpy as np
- from collections import namedtuple
- from numpy import linalg
--from scipy import misc
-+from scipy import misc, special
- import warnings
- 
- # 2016-04-19 PAK use relative imports
-@@ -631,9 +631,9 @@
-     def _vstack(self, sequence, steps):
-         # sequence = np.atleast_2d(sequence)
-         original_shape = np.shape(sequence[0])
--        f_del = np.vstack(list(np.ravel(r)) for r in sequence)
--        h = np.vstack(list(np.ravel(np.ones(original_shape)*step))
--                      for step in steps)
-+        f_del = np.vstack([list(np.ravel(r)) for r in sequence])
-+        h = np.vstack([list(np.ravel(np.ones(original_shape)*step))
-+                      for step in steps])
-         if f_del.size != h.size:
-             raise ValueError('fun did not return data of correct size ' +
-                              '(it must be vectorized)')
-@@ -683,6 +683,7 @@
-     >>> np.allclose(fd(1), 2.71828183)
-     True
- 
-+    >>> fd = nd.Derivative(np.exp)
-     >>> d2 = fd([1, 2])
-     >>> np.allclose(d2, [ 2.71828183,  7.3890561 ])
-     True
-@@ -781,7 +780,7 @@
-         inv_sr = 1.0 / step_ratio
-         offset = [1, 1, 2, 2, 4, 1, 3][parity]
-         c0 = [1.0, 1.0, 1.0, 2.0, 24.0, 1.0, 6.0][parity]
--        c = c0/misc.factorial(np.arange(offset, step * nterms + offset, step))
-+        c = c0/special.factorial(np.arange(offset, step * nterms + offset, step))
-         [i, j] = np.ogrid[0:nterms, 0:nterms]
-         return np.atleast_2d(c[j] * inv_sr ** (i * (step * j + offset)))
- 
-diff -Naur bumps-0.7.11/doc/conf.py bumps-0.7.11_patched/doc/conf.py
---- bumps-0.7.11/doc/conf.py	2019-07-22 11:01:21.761248474 +0200
-+++ bumps-0.7.11_patched/doc/conf.py	2018-09-24 21:06:44.000000000 +0200
-@@ -51,8 +51,8 @@
-               #'sphinx.ext.jsmath',
-               'sphinx.ext.mathjax',
-               #'only_directives',
-+              'matplotlib.sphinxext.mathmpl',
-+              #'matplotlib.sphinxext.only_directives',
--              #'matplotlib.sphinxext.mathmpl',
--              'matplotlib.sphinxext.only_directives',
-               'matplotlib.sphinxext.plot_directive',
-               #'inheritance_diagram',
-               'dollarmath',
-diff -Naur bumps-0.7.11/doc/Makefile bumps-0.7.11_patched/doc/Makefile
---- bumps-0.7.11/doc/Makefile	2019-07-22 11:00:58.871022945 +0200
-+++ bumps-0.7.11_patched/doc/Makefile	2018-09-24 21:06:44.000000000 +0200
-@@ -4,7 +4,7 @@
- # You can set these variables from the command line.
- PYTHON        ?= python
- SPHINXOPTS    =
-+SPHINXBUILD   = sphinx-build
--SPHINXBUILD   = $(PYTHON) -m sphinx.__init__
- #sphinx-build
- PAPER         =
- BUILDDIR      = _build
-@@ -12,7 +12,7 @@
- # Internal variables.
- PAPEROPT_a4     = -D latex_paper_size=a4
- PAPEROPT_letter = -D latex_paper_size=letter
-+ALLSPHINXOPTS   = -a $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
--ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
- 
- .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp \
-         devhelp epub latex pdf text man changes linkcheck doctest
+From ddfae0d984220e28628cc4706fc14685302d12fe Mon Sep 17 00:00:00 2001
+From: bbm <brian.maranville@nist.gov>
+Date: Wed, 13 Dec 2023 16:54:36 -0500
+Subject: [PATCH] apply fix suggested in #129
+
+---
+ bumps/plotutil.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/bumps/plotutil.py b/bumps/plotutil.py
+index 3f47e61e..cbbda879 100644
+--- a/bumps/plotutil.py
++++ b/bumps/plotutil.py
+@@ -54,6 +54,15 @@ def next_color():
+     import pylab
+     lines = pylab.gca()._get_lines
+     try:
++        base = lines.get_next_color()
++    except Exception:
++        try: # Cruft 1.7 - 3.7?
++            base = next(lines.prop_cycler)['color']
++        except Exception:
++            try: # Cruft 1.4-1.6?
++                base = next(lines.color_cycle)
++            except Exception:  # Cruft 1.3 and earlier
++                base = lines._get_next_cycle_color()
+         base = next(lines.prop_cycler)['color']
+     except Exception:
+         try: # Cruft 1.4-1.6?
