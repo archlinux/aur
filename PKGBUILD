@@ -1,6 +1,6 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname=dolibarr
-pkgver=18.0.3
+pkgver=18.0.4
 pkgrel=1
 pkgdesc="Dolibarr ERP CRM: modern software package to manage your company"
 arch=('any')
@@ -18,7 +18,7 @@ source=("http://downloads.sourceforge.net/project/$pkgname/Dolibarr%20ERP-CRM/$p
         dolibarr.conf
         nginx.conf.example
         apache.conf.example)
-b2sums=('85e955e99f76ee4be464c38d13b39605babda59f6a24b922df99c529c48c2c07ccfddc8513268b5db1e171f8e85326f44a23155734734ee2a5af82391fb12525'
+b2sums=('a87250d4146d9606e8351cfd3b7550dbd4fd353c2766b1aa3b7d5e064a6f0f80b5dd44c92319cbb7bf6b29eaa4229a469b91485a56ddb39f6ddbd9f9abb202e5'
         'e78f127924e37c9d5910ec3081cf0b13d79c58e6350f499261380cffd0ee0023e2488e20e24d0463c01548694c80e45e79b27efc9a81a3458e96c050dce7211d'
         '6ab4f2b86e9db40c91a0db181421594b78deccaac8d45c851f8d61a2999bdd14b84ac11018356728d1ec6ec0215094a6658ab5b74960f37a67e1d089c4ed61ac'
         '8bb3823afee0515931cfbd4ddc8714ccab29f3d46fa249554670cce9d5ed79b8645515cc758edf3293c40bd9a7917bc1ae8664e3bd6b6a2a1502379b4257f499')
