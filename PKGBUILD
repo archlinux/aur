@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/git-ecosystem/git-credential-manager"
 license=('MIT')
 depends=('fontconfig' 'git' 'icu' 'krb5' 'zlib')
-optdepends=(	'org.freedesktop.secrets: For storing credentials using freedesktop.org Secret Service API (libsecret)'
+optdepends=('org.freedesktop.secrets: For storing credentials using freedesktop.org Secret Service API (libsecret)'
 		'pass: For storing credentials using gpg via pass' )
 provides=($_pkgname)
 conflicts=($_pkgname)
