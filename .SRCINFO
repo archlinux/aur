@@ -1,0 +1,12 @@
+pkgbase = tcolor
+	pkgdesc = tcolor is a simple header file that provides you with options to print text in color within the terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RickaPrincy/TColor.hpp
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = TColor.tar.gz::https://github.com/RickaPrincy/TColor.hpp/releases/download/v1.0.0/TColor.tar.gz
+	sha256sums = 697e410c550ee639b28f15ad317fac13198e14a6559df644bffb23b1538d0bec
+
+pkgname = tcolor
