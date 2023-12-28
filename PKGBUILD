@@ -1,7 +1,8 @@
-# Maintainer: Tobias Markus < tobias AT miglix DOT eu >
+# Maintainer: SteamedFish <steamedfish@hotmail.com>
+# Contributor: Tobias Markus < tobias AT miglix DOT eu >
 
 pkgname=libacars
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A library for decoding various ACARS message payloads"
 arch=('x86_64')
@@ -11,7 +12,7 @@ depends=('zlib' 'libxml2')
 makedepends=('cmake' 'git')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/szpajder/libacars/archive/v$pkgver.tar.gz")
-sha256sums=('d221629dd750d203e62813dcd55d58c46dce6b9b5e31ff438c661a99ba659ee4')
+sha256sums=('495e9836c8a1033a5d7814e68ebfc3b0d8f7db1747d13310e7df47c561aee9ce')
 
 build() {
   cd "$srcdir"
