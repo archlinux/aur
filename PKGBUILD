@@ -3,24 +3,25 @@
 _pkgname=RPMM
 _pkgver=1.25
 pkgname=r-${_pkgname,,}
-pkgver=1.25
-pkgrel=4
-pkgdesc='Recursively Partitioned Mixture Model'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Recursively Partitioned Mixture Model"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f04a524b13918062616beda50c4e759ce2719ce14150a0e677d07132086c88c8')
+md5sums=('3b449d676fd71ec4493db50e7f849dc9')
+b2sums=('0232bec224a2c3f63ad34b2f980fc356e4bd77dc75fc7ca4b1655955dcb126eaf492c43486ea5276bbe5451427c6d7d4555d5b5c7045dc50f6a63c566acf9538')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

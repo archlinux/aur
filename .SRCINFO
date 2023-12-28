@@ -1,12 +1,13 @@
 pkgbase = r-rpmm
 	pkgdesc = Recursively Partitioned Mixture Model
 	pkgver = 1.25
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=RPMM
 	arch = any
 	license = GPL
 	depends = r
 	source = https://cran.r-project.org/src/contrib/RPMM_1.25.tar.gz
-	sha256sums = f04a524b13918062616beda50c4e759ce2719ce14150a0e677d07132086c88c8
+	md5sums = 3b449d676fd71ec4493db50e7f849dc9
+	b2sums = 0232bec224a2c3f63ad34b2f980fc356e4bd77dc75fc7ca4b1655955dcb126eaf492c43486ea5276bbe5451427c6d7d4555d5b5c7045dc50f6a63c566acf9538
 
 pkgname = r-rpmm
