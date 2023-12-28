@@ -8,7 +8,7 @@ license=('MIT')
 depends=('libfido2')
 makedepends=('go' 'gcc' 'base-devel')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3c9be85d5632d444f3982a867fc74a311029de4c85c305a01ee95df4302fd70c')
+sha256sums=('cec00e4990ab002bd78cb7578ade3af5a75fb04172e31d23ad2a0cd8baee8e98')
 
 prepare(){
   cd "$pkgname-$pkgver"
