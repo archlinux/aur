@@ -2,9 +2,9 @@
 # Contributor: Giulio Guzzinati <guzzinati.giulio at gmail>
 pkgname=imagej
 pkgver=1.54g
-_pkgver=153
+_pkgver=154
 _jar=ij-$pkgver.jar
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Image manipulation software for scientists"
 arch=('any')
@@ -19,7 +19,7 @@ source=("http://wsr.imagej.net/distros/cross-platform/ij$_pkgver.zip"
         "imagej.desktop"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
-sha256sums=('1ebcc34bd3568f2799bed1832f3ddb4d8e962f02bf002ef18b29d00813482155'
+sha256sums=('f13e6d39ae0ac1e2635347e47d597df43716f68608221b819226559b8efa2450'
             '2d5cebe89b2b99faadd9e9700d7358efaa9cdefea307d043f5ac1af8dcde86ed'
             'c223a3b2437501edd92176f87bbea75d994104e1545eea6c120ef8c774c7114e'
             '799188b0b2cf1dc684dc2f029dbd31a4b44b691b51fd5e42027a994452bc038e'
