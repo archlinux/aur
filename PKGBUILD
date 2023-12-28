@@ -1,5 +1,5 @@
 pkgname=goldwarden
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='A feature-packed Bitwarden compatible desktop integration'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('libfido2')
 makedepends=('go' 'gcc' 'base-devel')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7c504639fe43d60544d4d98c4d5a62763b5167eeeb4c0bc7aec97e93ec2727e8')
+sha256sums=('3c9be85d5632d444f3982a867fc74a311029de4c85c305a01ee95df4302fd70c')
 
 prepare(){
   cd "$pkgname-$pkgver"
