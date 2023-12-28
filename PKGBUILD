@@ -3,14 +3,14 @@
 
 pkgname=candevstudio-git
 _pkgbasename=candevstudio
-pkgver=r269.fe417bd3
+pkgver=r329.3b51e481
 pkgrel=1
 pkgdesc="Development tool for CAN bus simulation"
 arch=('i686' 'x86_64')
 url="https://github.com/GENIVI/CANdevStudio"
 license=('MPL2')
 depends=('qt5-base' 'qt5-serialbus')
-makedepends=('git' 'cmake' 'qt5-tools' 'boost')
+makedepends=('git' 'cmake' 'qt5-tools' 'qt5-svg' 'boost')
 provides=('candevstudio')
 source=('candevstudio::git+https://github.com/GENIVI/CANdevStudio.git'
 		'CANdevStudio.desktop')
