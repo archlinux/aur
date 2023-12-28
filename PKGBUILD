@@ -1,5 +1,5 @@
 _pkgname=augustus
-_pkgver=3.2.0
+_pkgver=4.0.0
 _appimage="${_pkgname}-${_pkgver}-linux.AppImage"
 _desktopfile="com.github.keriew.augustus"
 
@@ -14,7 +14,7 @@ depends=('fuse2')
 conflicts=('augustus-game' 'augustus-game-git')
 options=(!strip)
 source=("https://github.com/Keriew/augustus/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('e973adfc01db2dd03637dd22f6b3ecc578a604bf4e761582d6f6eb243f995be0')
+sha256sums=('a0a0a0737666479ecb7b941eafe7dee991ddd7631fde9fb1944009cc0a09a82e')
 
 
 prepare() {
