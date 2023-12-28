@@ -1,6 +1,6 @@
 pkgbase = flowtime
 	pkgdesc = Get what motivates you done, without losing concentration
-	pkgver = 5.1
+	pkgver = 6.1
 	pkgrel = 1
 	url = https://github.com/Diego-Ivan/Flowtime
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = flowtime
 	depends = libportal-gtk4
 	depends = libxml2
 	depends = libgee
-	source = flowtime::git+https://github.com/Diego-Ivan/Flowtime.git#tag=v5.1
+	source = flowtime::git+https://github.com/Diego-Ivan/Flowtime.git#tag=v6.1
 	b2sums = SKIP
 
 pkgname = flowtime

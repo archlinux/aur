@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=flowtime
-pkgver=5.1
+pkgver=6.1
 pkgrel=1
 pkgdesc="Get what motivates you done, without losing concentration"
 arch=('x86_64' 'aarch64')
