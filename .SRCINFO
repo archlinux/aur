@@ -1,17 +1,16 @@
 pkgbase = r-pls
 	pkgdesc = Partial Least Squares and Principal Component Regression
 	pkgver = 2.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=pls
 	arch = any
-	license = GPL
+	license = GPL2
 	depends = r
-	optdepends = r-mass
-	optdepends = r-parallel
 	optdepends = r-rmpi
 	optdepends = r-runit
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/pls_2.8-3.tar.gz
-	sha256sums = e6eb728dd38cd4867698df06e02601ed767e69098b1daadde5beef634ae66be3
+	md5sums = 3206a18410583f0672f02cac9dbedce5
+	b2sums = 0f403612c86ce91b40e810f4311c69e0d965dc96b1ec6b9a56a7ae2b7603f0051f0f72079ad318cbe7e933122942fc422f6da3746db823d8e2dd9949222e8333
 
 pkgname = r-pls
