@@ -26,6 +26,7 @@ build() {
 }
 
 check() {
+    cd "_pkgname"
     cargo test --release
 }
 
