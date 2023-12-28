@@ -2,20 +2,19 @@
 # Contributor: Jonas Nyrén <jonas.nyren*mindkiller.com>
 
 pkgname=sidplayfp
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Sidplay2 fork with improved filter emulation"
 arch=('i686' 'x86_64')
 url="https://github.com/libsidplayfp/sidplayfp"
 license=('GPL')
-depends=('libsidplayfp>=2.5.0' 'alsa-lib' 'gcc-libs' 'glibc')
+depends=('libsidplayfp>=2.5.1' 'alsa-lib' 'gcc-libs' 'glibc')
+optdepends=('libpulse')
 reaplces=('sidplay-residfp' 'sidplay-residfp-alsa' 'sidplay-residfp-pulse')
 conflicts=('sidplay-residfp' 'sidplay-residfp-alsa' 'sidplay-residfp-pulse')
-install=${pkgname}.install
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz" "${pkgname}.install")
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('6782c42a40465ac1be9fdd231735c697732e0978926d1068aa17e15d131e810a'
-            '4064bb649615a6d8825b7dcddb9880dd766169591e2643b631ef3b6c12171a33')
+sha256sums=('93cb9ea85c8cdcab2b27a04130f10d871c10e34b0dad842e612f7fc259c35980')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
