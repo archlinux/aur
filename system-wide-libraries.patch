@@ -1,0 +1,75 @@
+diff --unified --recursive --text python-simplification.orig/setup.py python-simplification.new/setup.py
+--- python-simplification.orig/setup.py	2023-11-14 17:56:40.000000000 +0200
++++ python-simplification.new/setup.py	2023-12-28 14:42:17.254159069 +0200
+@@ -6,39 +6,19 @@
+ Created by Stephan Hügel on 2016-07-25
+ """
+ 
+-import sys
+ from setuptools import setup, Extension
+ import numpy
+ from Cython.Build import cythonize
+ 
+ 
+-# Set dynamic RPATH differently, depending on platform
+-ldirs = []
+-ddirs = []
+-if "linux" in sys.platform:
+-    # from http://stackoverflow.com/a/10252190/416626
+-    # the $ORIGIN trick is not perfect, though
+-    ldirs = ["-Wl,-rpath", "-Wl,$ORIGIN/"]
+-    platform_lib = "librdp.so"
+-if sys.platform == "darwin":
+-    # You must compile your binary with rpath support for this to work
+-    # RUSTFLAGS="-C rpath" cargo build --release
+-    platform_lib = "librdp.dylib"
+-    ldirs = ["-Wl,-rpath", "-Wl,@loader_path/"]
+-if sys.platform == "win32":
+-    ddirs = ["src/simplification/header.h"]
+-    platform_lib = "rdp.dll"
+-
+-
+ extension = Extension(
+     "simplification.cutil",
+     sources=["src/simplification/cutil.pyx"],
+     libraries=["rdp"],
+-    depends=ddirs,
++    depends=["/usr/include/librdp/header.h"],
+     language="c",
+-    include_dirs=["src/simplification", numpy.get_include()],
+-    library_dirs=["src/simplification"],
+-    extra_link_args=ldirs,
++    include_dirs=["/usr/include/librdp", numpy.get_include()],
++    library_dirs=["/usr/lib"],
+ )
+ 
+ extensions = cythonize(
+@@ -50,7 +30,7 @@
+ 
+ setup(
+     package_data={
+-        "simplification": [platform_lib],
++        "simplification": ["librdp.so"],
+     },
+     ext_modules=[extension],
+ )
+diff --unified --recursive --text python-simplification.orig/src/simplification/util.py python-simplification.new/src/simplification/util.py
+--- python-simplification.orig/src/simplification/util.py	2023-11-14 17:56:40.000000000 +0200
++++ python-simplification.new/src/simplification/util.py	2023-12-28 14:41:49.874331441 +0200
+@@ -58,15 +58,7 @@
+ 
+     py3 = False
+ 
+-try:
+-    lib = cdll.LoadLibrary(os.path.join(file_path, prefix + "rdp" + extension))
+-except OSError:
+-    # the Rust lib's been grafted by manylinux1
+-    if not py3:
+-        fname = spop(["ls", fpath]).split()[0]
+-    else:
+-        fname = spop(["ls %s" % fpath]).split()[0]
+-    lib = cdll.LoadLibrary(os.path.join(file_path, ".libs", fname))
++lib = cdll.LoadLibrary("/usr/lib/librdp.so")
+ 
+ 
+ class _FFIArray(Structure):

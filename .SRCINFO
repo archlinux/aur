@@ -1,0 +1,23 @@
+pkgbase = python-simplification
+	pkgdesc = Very fast Python LineString simplification using RDP or Visvalingam-Whyatt
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = https://github.com/urschrei/simplification
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-toml
+	makedepends = python-wheel
+	depends = librdp
+	depends = python
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/s/simplification/simplification-0.7.10.tar.gz
+	source = system-wide-libraries.patch
+	b2sums = 0dc9c376b31d236697eb5beb32f475534f85626f47ed5a1838e34ee6bc6fc2489e5e49e0a4b798bdd46fe4580fb79f36f17f4c83b8f7648240f1e2cb14c3d4cb
+	b2sums = 2f3cfb66346c66f50f7c1d8cd832324bb9337cca9676d92e4dc8ca1e0d967a02e6fbc253a1abf865404c293cb7b3c87084685080aea8f701fe8d38ebf78e0e33
+
+pkgname = python-simplification
