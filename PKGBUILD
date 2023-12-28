@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=browser360-bin
 _pkgname=com.360.browser-stable
-pkgver=13.3.1010.176
+pkgver=13.3.1010.201
 pkgrel=1
 pkgdesc="360 Browser stable version"
 arch=(
@@ -11,6 +11,8 @@ arch=(
 )
 url="https://browser.360.net/gc/index.html"
 license=('custom')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=(
     'libdrm'
     'gtk3'
@@ -21,7 +23,6 @@ depends=(
     'libxdamage'
     'nss'
     'gtk2'
-    'dbus'
     'libxtst'
     'mesa'
     'libpulse'
@@ -42,13 +43,11 @@ depends=(
     'libcups'
     'libxcb'
 )
-provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://gedown.360safe.com/gc/signed_${_pkgname}_${pkgver}-1_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://gedown.360safe.com/gc/signed_${_pkgname}_${pkgver}-1_amd64.deb")
-sha256sums_aarch64=('b38276bbe5836003845db72874135c30cd51a5b585b776c9bdc66d10f89183dc')
-sha256sums_x86_64=('e5eb4348a34fdc23e17d9194c83325cf044dd84e4806b78fa3b25da4b649ee3b')
+sha256sums_aarch64=('73f2fe5984117633d555cf7758bd5c7a14da9e3284de483b4391de49b6941bd0')
+sha256sums_x86_64=('fdc89cb0ce0a07f67cf37449825060d9e7178fb211315c855d9d1fe2eaab2335')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     rm -rf "${srcdir}/opt/apps/${_pkgname}/info" \

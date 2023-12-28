@@ -1,6 +1,6 @@
 pkgbase = browser360-bin
 	pkgdesc = 360 Browser stable version
-	pkgver = 13.3.1010.176
+	pkgver = 13.3.1010.201
 	pkgrel = 1
 	url = https://browser.360.net/gc/index.html
 	install = browser360.install
@@ -16,7 +16,6 @@ pkgbase = browser360-bin
 	depends = libxdamage
 	depends = nss
 	depends = gtk2
-	depends = dbus
 	depends = libxtst
 	depends = mesa
 	depends = libpulse
@@ -36,11 +35,11 @@ pkgbase = browser360-bin
 	depends = systemd-libs
 	depends = libcups
 	depends = libxcb
-	provides = browser360=13.3.1010.176
+	provides = browser360=13.3.1010.201
 	conflicts = browser360
-	source_aarch64 = browser360-13.3.1010.176-aarch64.deb::https://gedown.360safe.com/gc/signed_com.360.browser-stable_13.3.1010.176-1_arm64.deb
-	sha256sums_aarch64 = b38276bbe5836003845db72874135c30cd51a5b585b776c9bdc66d10f89183dc
-	source_x86_64 = browser360-13.3.1010.176-x86_64.deb::https://gedown.360safe.com/gc/signed_com.360.browser-stable_13.3.1010.176-1_amd64.deb
-	sha256sums_x86_64 = e5eb4348a34fdc23e17d9194c83325cf044dd84e4806b78fa3b25da4b649ee3b
+	source_aarch64 = browser360-13.3.1010.201-aarch64.deb::https://gedown.360safe.com/gc/signed_com.360.browser-stable_13.3.1010.201-1_arm64.deb
+	sha256sums_aarch64 = 73f2fe5984117633d555cf7758bd5c7a14da9e3284de483b4391de49b6941bd0
+	source_x86_64 = browser360-13.3.1010.201-x86_64.deb::https://gedown.360safe.com/gc/signed_com.360.browser-stable_13.3.1010.201-1_amd64.deb
+	sha256sums_x86_64 = fdc89cb0ce0a07f67cf37449825060d9e7178fb211315c855d9d1fe2eaab2335
 
 pkgname = browser360-bin
