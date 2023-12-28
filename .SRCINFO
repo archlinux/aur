@@ -1,12 +1,13 @@
 pkgbase = r-nozzle.r1
 	pkgdesc = Nozzle Reports
 	pkgver = 1.1.1.1
-	pkgrel = 1
+	pkgrel = 6
 	url = https://cran.r-project.org/package=Nozzle.R1
 	arch = any
-	license = LGPL
+	license = LGPL2.1
 	depends = r
 	source = https://cran.r-project.org/src/contrib/Nozzle.R1_1.1-1.1.tar.gz
-	sha256sums = 777e0fdada4a4d4c590885897a52beb91a5d5a1b8073c471448b3644d9715639
+	md5sums = 284892dbc261f1e919855a99e20b06ca
+	b2sums = 0bdd96b5fe864fe3f3b779281dcfdd267e1f2dde9614d1a930997289ad82eeba2b77125dc1383be67ff9c2217c6829e965baa09ce8d76215c737fec52d3bcc01
 
 pkgname = r-nozzle.r1

@@ -3,24 +3,25 @@
 _pkgname=Nozzle.R1
 _pkgver=1.1-1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1.1
-pkgrel=1
-pkgdesc='Nozzle Reports'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=6
+pkgdesc="Nozzle Reports"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(LGPL2.1)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('777e0fdada4a4d4c590885897a52beb91a5d5a1b8073c471448b3644d9715639')
+md5sums=('284892dbc261f1e919855a99e20b06ca')
+b2sums=('0bdd96b5fe864fe3f3b779281dcfdd267e1f2dde9614d1a930997289ad82eeba2b77125dc1383be67ff9c2217c6829e965baa09ce8d76215c737fec52d3bcc01')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
