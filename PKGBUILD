@@ -1,7 +1,7 @@
 # Maintainer: TwoFinger
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
-pkgver=23.9
+pkgver=23.12
 pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="https://picolisp.com"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(openssl libffi readline ncurses)
 makedepends=(clang llvm)
 source=("https://software-lab.de/picoLisp-$pkgver.tgz")
-md5sums=(4dc8e8d22c200786e61d6a4c3477f9df)
+md5sums=(82d39e878a591fd00f30595121d2c10b)
 
 prepare() {
   MAKEFILE="$srcdir/pil21/src/Makefile"
