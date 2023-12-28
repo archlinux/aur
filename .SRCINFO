@@ -1,0 +1,16 @@
+pkgbase = zsh-eza-git
+	pkgdesc = Zsh plugin to replace command gnu/ls with eza-community/eza
+	pkgver = r111.d6b0278
+	pkgrel = 1
+	url = https://github.com/z-shell/zsh-eza
+	install = zsh-eza-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	depends = eza
+	provides = zsh-eza
+	source = zsh-eza-git::git+https://github.com/z-shell/zsh-eza.git
+	b2sums = SKIP
+
+pkgname = zsh-eza-git
