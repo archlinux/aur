@@ -1,18 +1,18 @@
 # Maintainer: hossbeast <todd DOT freed AT gmail DOT com>
 
 pkgname=meshboard-wayland
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Synchronize the clipboard across a mesh of hosts, with wayland integration"
 provides=('meshboard')
 conflicts=('meshboard')
 arch=('x86_64')
-url="https://github.com/hossbeast/meshboard"
+url="https://git.sr.ht/~hossbeast/meshboard"
 license=('GPL3')
 depends=('wayland')
 makedepends=('git' 'perl')
 source=(
-  "meshboard::git+https://github.com/hossbeast/meshboard#tag=v${pkgver}?signed"
+  "meshboard::git+https://git.sr.ht/~hossbeast/meshboard#tag=v${pkgver}?signed"
 )
 sha512sums=('SKIP')
 validpgpkeys=('79154EE9C4811D32B814EB88B1B3C76D76638462') # hossbeast
