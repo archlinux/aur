@@ -22,10 +22,6 @@ arch=('x86_64')
 _main_package() {
   _update_version
 
-  makedepends=(
-    'gendesk'
-  )
-
   provides=(
     'citra'
     'citra-qt'

@@ -5,7 +5,6 @@ pkgbase = citra-nightly-bin
 	url = https://github.com/citra-emu/citra-nightly
 	arch = x86_64
 	license = GPL-2.0-or-later
-	makedepends = gendesk
 	provides = citra
 	provides = citra-qt
 	conflicts = citra
