@@ -6,6 +6,8 @@ pkgbase = squint
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
+	makedepends = txt2tags
+	depends = gtk3
 	source = https://github.com/a-ba/squint/archive/v0.8.3.tar.gz
 	sha256sums = 1b5845e359a94bf93e87a8dfb0a3e3df6ad2914e47fa646275a4261a81b638d9
 
