@@ -1,0 +1,18 @@
+pkgbase = ocaml-earley
+	pkgdesc = Parsing library based on Earley Algorithm
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/rlepigre/ocaml-earley
+	arch = i686
+	arch = x86_64
+	license = custom:CECILLB
+	makedepends = dune
+	makedepends = ocaml-stdlib-shims
+	depends = ocaml
+	depends = zstd
+	depends = libzstd.so
+	options = !strip
+	source = https://github.com/rlepigre/ocaml-earley/archive/3.0.0/ocaml-earley-3.0.0.tar.gz
+	sha256sums = 1fb2e0098bfa82407c7bf287edcc78a7c0410acc16f3a975551850b7457f0c77
+
+pkgname = ocaml-earley
