@@ -1,23 +1,23 @@
 pkgbase = memopal
 	pkgdesc = Online backup, storage, synchronization and file sharing tool, all-in-one.
-	pkgver = 3.6.3
-	pkgrel = 2
+	pkgver = 3.7.1
+	pkgrel = 1
 	url = https://www.memopal.com
 	arch = x86_64
 	license = custom
 	depends = ca-certificates
-	depends = curl>=7.64.0
-	depends = gcc-libs>=8.3.0
-	depends = glibc>=2.28
+	depends = curl>=7.74.0
+	depends = gcc-libs
+	depends = glibc>=2.31
 	depends = openssl-1.1
 	depends = openssl>=1.1.1
 	depends = zlib
 	backup = etc/memopal.conf
 	source = LICENSE
 	source = memopal.service
-	source = memopal-3.6.3-amd64.deb::https://packages.memopal.com/deb/pool/non-free/m/memopal/memopal_3.6.3-deb10_amd64.deb
+	source = memopal-3.7.1-amd64.deb::https://packages.memopal.com/deb/pool/non-free/m/memopal/memopal_3.7.1-deb11_amd64.deb
 	sha512sums = 8c2f5f0a18c384db35aa17b1372a1f10c74109681fe6922e70f39f788a8396b50e15dbb443a22cb7397e22e4d33814e2771505150d6a192296aeb2d0a950652a
 	sha512sums = cded6a4ae073b9586c1e071427e840269ddf2cefe3c59af141755b2e6997ed5b86a7c5c253f121a6fdee21706f4bac658bec3c6c90c193e4bf7597fd8ab3e97e
-	sha512sums = a1c80f893d46564c6266ce8d70b8a97cf1f52a9fe729556c271e1b9bcc14c8650110145af236a8a759318ef57c2b8e6d972bb0d294b52ab7aba9c936c4b59215
+	sha512sums = a059422113ce97a9cbb964cfe9226b70ce60b86e040ea233545031052bb22ba66da22f08d25fdf8af62f82f67373a2a12e21eaf0ba45fe634c2f26de96e1db5a
 
 pkgname = memopal
