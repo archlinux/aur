@@ -2,7 +2,7 @@
 # Maintainer: Elara Musayelyan <elara@elara.ws>
 
 pkgname='owobot-bin'
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='Your server's guardian and entertainer'
 url='https://gitea.elara.ws/owobot/owobot'
@@ -12,17 +12,17 @@ provides=('owobot')
 conflicts=('owobot')
 backup=('etc/owobot/config.toml')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.4/owobot_0.0.4_linux_arm64.tar.gz")
-sha256sums_aarch64=('08e81ebd69befdee476a04c83a4813896849145770edebf0fdf4f8b4fb02ef9c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.5/owobot_0.0.5_linux_arm64.tar.gz")
+sha256sums_aarch64=('d027740601b5911cc011f194697d7a36db0a2bcd970d95ec85cedcc000d95b73')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.4/owobot_0.0.4_linux_armv6.tar.gz")
-sha256sums_armv6h=('e518ee63a3e4f2267ec47be6c4b27fb965b1703d28613dd8d70199536cae8390')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.5/owobot_0.0.5_linux_armv6.tar.gz")
+sha256sums_armv6h=('9ae82177cfe961092fbebe216fdec53b4070fa62dbe19de01112f8626dbf2c58')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.4/owobot_0.0.4_linux_386.tar.gz")
-sha256sums_i686=('6cdc2f18218841ab4599ac7b9193ede5dc8da2c167b09de80fd8d0cb2cc403c1')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.5/owobot_0.0.5_linux_386.tar.gz")
+sha256sums_i686=('da9837ef2f65b765a023cd859c512b0f73c74edd008c63e54f95787914ec9cfa')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.4/owobot_0.0.4_linux_amd64.tar.gz")
-sha256sums_x86_64=('f5586a18fb33ac3772cb763c5ded0a1af1a3fe7bb289f4a350de15ad36e38938')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.5/owobot_0.0.5_linux_amd64.tar.gz")
+sha256sums_x86_64=('f079fc4251d61f7ab3d889e553ddee27c8abf72f8b39de0cf0ed901812b09933')
 
 package() {
   # binaries
