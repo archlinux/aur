@@ -1,12 +1,11 @@
 pkgbase = ttf-averia-libre
 	pkgdesc = Averia Libre Font
 	pkgver = 20200306
-	pkgrel = 1
+	pkgrel = 2
 	url = http://iotic.com/averia/
 	arch = any
 	license = custom:OFL
-	source = ttf-averia-libre-20200306::http://www.ffonts.net/Averia-Libre-Regular.font.zip
-	md5sums = fbc998528812612855e1e512916c82cc
+	source = ttf-averia-libre-20200306-2::http://iotic.com/averia/font-files/Averia.zip
+	md5sums = dc61396d0f8e3b0130933b1227022c20
 
 pkgname = ttf-averia-libre
-
