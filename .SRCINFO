@@ -1,6 +1,6 @@
 pkgbase = opensaucer-git
 	pkgdesc = Mutiny on the mothership
-	pkgver = r212.00ac403
+	pkgver = r217.3557d96
 	pkgrel = 1
 	url = https://gitlab.com/luckeyproductions/games/opensaucer
 	arch = x86_64

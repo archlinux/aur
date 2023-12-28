@@ -2,7 +2,7 @@
 
 _pkgname=opensaucer
 pkgname=${_pkgname}-git
-pkgver=r212.00ac403
+pkgver=r217.3557d96
 pkgrel=1
 pkgdesc='Mutiny on the mothership'
 arch=('x86_64')
@@ -32,7 +32,7 @@ package() {
   cd "${srcdir}/${pkgname}"
   install -Dm 644 saucer.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/saucer.svg
   install -Dm 755 saucer ${pkgdir}/usr/bin/saucer
-  install -Dm 755 launcher ${pkgdir}/usr/bin/saucer-launcher
+  install -Dm 755 saucer-launcher ${pkgdir}/usr/bin/saucer-launcher
   install -Dm 755 saucer.desktop ${pkgdir}/usr/share/applications/saucer.desktop
   mkdir -p ${pkgdir}/usr/share/luckey/saucer
   cp -R "${srcdir}/${pkgname}/Resources/." ${pkgdir}/usr/share/luckey/saucer/
