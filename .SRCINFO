@@ -1,0 +1,15 @@
+pkgbase = python-async_generator
+	pkgdesc = Making it easy to write async iterators
+	pkgver = 1.10
+	pkgrel = 8
+	url = https://github.com/python-trio/async_generator
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	source = python-async_generator-1.10.tar.gz::https://github.com/python-trio/async_generator/archive/v1.10.tar.gz
+	sha256sums = 7b61d78c5bb14fb89e5d67b58755033f234bb411e71924820d5a23e087de4535
+	sha512sums = bf5db7a6c8e5ff96685675f1015b33fd855d459675e2d457818b70a63c4d1866b9c4bde3d5401952cce07db875c1ea6484e36590683efb67080fb3a564b7757d
+
+pkgname = python-async_generator
