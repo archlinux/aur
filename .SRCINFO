@@ -1,18 +1,17 @@
 pkgbase = dug-git
 	pkgdesc = A powerful global DNS progagation checker that can output in a variety of formats.
-	pkgver = r218.7502669
+	pkgver = r284.55f6ecb
 	pkgrel = 1
 	url = https://dug.unfrl.com/
 	arch = x86_64
 	license = custom:ANTI-CAPITALIST SOFTWARE LICENSE v1.4
 	makedepends = git
-	makedepends = dotnet-runtime>=5.0.0
-	makedepends = dotnet-sdk>=5.0.0,
-	makedepends = dotnet-host>=5.0.0
+	makedepends = dotnet-runtime>=6.0.0
+	makedepends = dotnet-sdk>=6.0.0,
+	makedepends = dotnet-host>=6.0.0
 	provides = dug
 	options = !strip
 	source = dug-git::git+https://github.com/unfrl/dug.git
 	md5sums = SKIP
 
 pkgname = dug-git
-
