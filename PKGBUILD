@@ -2,7 +2,7 @@
 
 pkgname=rymdport-bin
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform application for easy encrypted sharing of files, folders, and text between devices."
 url="https://github.com/Jacalz/rymdport"
 license=('GPLv3')
