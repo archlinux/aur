@@ -7,6 +7,7 @@ pkgbase = pycharm-community-jre
 	license = APACHE
 	conflicts = pycharm-community-eap
 	conflicts = pycharm-community-edition
+	options = !strip
 	source = https://download.jetbrains.com/python/pycharm-community-2023.3.2.tar.gz
 	source = pycharm.desktop
 	source = pycharm.sh
