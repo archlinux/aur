@@ -1,7 +1,7 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 
 pkgname=dotbackup
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='YAML config based backup utility'
 arch=('any')
@@ -9,8 +9,8 @@ url='https://github.com/jaxvanyang/dotbackup'
 license=('MIT')
 depends=('python-ruamel-yaml')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-source=("https://github.com/jaxvanyang/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e3e4b3541299fc64afe2440f826623914e7143992428125450ac61075c137a71')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jaxvanyang/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('5245f9d8f792b11d81c19bc5f66103611b16b78b5cdcb0516d7556e5ed601bc1')
 
 build() {
 	cd "$pkgname-$pkgver"
