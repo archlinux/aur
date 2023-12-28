@@ -1,7 +1,7 @@
 pkgbase = bookstack
 	pkgdesc = A simple, self-hosted, easy-to-use platform for organising and storing information
 	pkgver = 23.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BookStackApp/BookStack
 	arch = any
 	license = MIT
