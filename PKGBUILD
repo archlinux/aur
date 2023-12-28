@@ -2,7 +2,7 @@
 # Contributor: graysky <graysky AT archlinux DOT us>
 
 pkgname=ssh-audit
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='SSH configuration auditing'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
   'python-setuptools'
 )
 checkdepends=('python-pytest')
-_commit='f517e03d9f7ff283838b7d0af334b38ef3b2f90c'
+_commit='dd91c2a41adf12deb4dc5bf51544413abec22289'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 

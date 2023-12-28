@@ -1,0 +1,18 @@
+pkgbase = ssh-audit
+	pkgdesc = SSH configuration auditing
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/jtesta/ssh-audit
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = ssh-audit::git+https://github.com/jtesta/ssh-audit#commit=dd91c2a41adf12deb4dc5bf51544413abec22289
+	b2sums = SKIP
+
+pkgname = ssh-audit
