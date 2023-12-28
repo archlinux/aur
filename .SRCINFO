@@ -11,6 +11,6 @@ pkgbase = horanghill-bin
 	source = horanghill-0.4.8.deb::https://github.com/HorangStudios/Editor/releases/download/v0.4.8/horanghill_0.4.8_amd64.deb
 	source = horanghill.sh
 	sha256sums = 4c9e0ef661ecb2174d8e4ae173eb68f0d82033d7913342005a5af6cd746a8cb5
-	sha256sums = 2d8a27e5adb9a2ca34954027e9dcc28676a27a5904d173a5522725b6bfe85fd5
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = horanghill-bin
