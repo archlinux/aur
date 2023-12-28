@@ -13,7 +13,7 @@ pkgbase = citra-nightly-bin
 	conflicts = citra-qt-git
 	options = !strip
 	options = !debug
-	source = citra-linux-appimage-20231226-602f4f6-2062.20231226.602f4f6.tar.gz::https://github.com/citra-emu/citra-nightly/releases/download/nightly-2062/citra-linux-appimage-20231226-602f4f6.tar.gz
+	source = citra-linux-appimage-20231226-602f4f6.tar.gz::https://github.com/citra-emu/citra-nightly/releases/download/nightly-2062/citra-linux-appimage-20231226-602f4f6.tar.gz
 	sha256sums = SKIP
 
 pkgname = citra-nightly-bin

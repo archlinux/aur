@@ -42,7 +42,7 @@ _main_package() {
 
   _pkgsrc="citra-linux-appimage-$_date-$_hash"
   _pkgext="tar.gz"
-  source+=("$_pkgsrc-$_pkgver.$_pkgext"::"$url/releases/download/nightly-$_version/$_pkgsrc.$_pkgext")
+  source+=("$_pkgsrc.$_pkgext"::"$url/releases/download/nightly-$_version/$_pkgsrc.$_pkgext")
   sha256sums+=('SKIP')
 }
 
