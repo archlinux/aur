@@ -1,19 +1,16 @@
-# Maintainer: Pappy STĂNESCU <pappy _AT_ a s c e l i o n _DOT_ com>
+# Maintainer: pappy <pa314159@users.noreply.github.com>
 
 _cpan_name=HTTP-Server-Simple-Static
 _cpan_desc='Serve static files with HTTP::Server::Simple'
 _cpan_author=sjquinney
-_cpan_version=0.12
-_cpan_md5=4ef0085b300a1e001b76b484d724e0d3
+_cpan_version=0.14
 
 pkgrel=1
 pkgname=perl-${_cpan_name,,}
 pkgdesc=$_cpan_desc
 pkgver=$_cpan_version
-md5sums=($_cpan_md5)
+sha256sums=('a66532dc9745ce50f7ad75f0b635a4d010d2dce03e94da1b985b161d07586902')
 depends=('perl-http-server-simple' 'perl-http-date')
-makedepends=('')
-checkdepends=()
 
 _cpan_path=${_cpan_author:0:1}/${_cpan_author:0:2}/${_cpan_author}
 

@@ -1,14 +1,13 @@
 pkgbase = perl-http-server-simple-static
 	pkgdesc = Serve static files with HTTP::Server::Simple
-	pkgver = 0.12
+	pkgver = 0.14
 	pkgrel = 1
-	url = http://search.cpan.org/~sjquinney/HTTP-Server-Simple-Static-0.12
+	url = http://search.cpan.org/~sjquinney/HTTP-Server-Simple-Static-0.14
 	arch = any
 	depends = perl-http-server-simple
 	depends = perl-http-date
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SJ/SJQUINNEY/HTTP-Server-Simple-Static-0.12.tar.gz
-	md5sums = 4ef0085b300a1e001b76b484d724e0d3
+	source = http://search.cpan.org/CPAN/authors/id/S/SJ/SJQUINNEY/HTTP-Server-Simple-Static-0.14.tar.gz
+	sha256sums = a66532dc9745ce50f7ad75f0b635a4d010d2dce03e94da1b985b161d07586902
 
 pkgname = perl-http-server-simple-static
-
