@@ -4,19 +4,19 @@
 # (https://aur.archlinux.org/packages/fanficfare-git)
 _pkgname=kalamine
 pkgname=kalamine-git
-pkgver=r75.56b4e79
+pkgver=r76.b566115
 pkgrel=1
 pkgdesc="A text-based, cross-platform Keyboard Layout Maker."
 arch=('any')
 url="https://github.com/fabi1cazenave/${_pkgname}"
 license=('MIT')
 groups=()
-deps=(
-        'click',
-        'pyyaml',
-        'setuptools',
-        'tomli',
-        'lxml',
+_deps=(
+        'click'
+        'pyyaml'
+        'setuptools'
+        'tomli'
+        'lxml'
 )
 depends=("${_deps[@]/#/python-}")
 makedepends=('git')
@@ -35,11 +35,11 @@ pkgver() {
 build() {
 	cd "$srcdir/${_pkgname}"
 
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/${_pkgname}"
 
-	python setup.py install --root="$pkgdir" --optimize=1
+	python -m installer --destdir="${pkgdir}" dist/*.whl
 }
