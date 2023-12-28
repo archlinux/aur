@@ -2,15 +2,16 @@
 
 pkgname=xwaylandvideobridge-git
 _pkgname=xwaylandvideobridge
-pkgver=r165.e3a0eba
+pkgver=r197.5c0d9fd
 pkgrel=1
 pkgdesc="A tool to make it easy to stream wayland windows and screens to Xwayland applicatons that don't have native pipewire support."
 arch=(x86_64)
 url='https://invent.kde.org/system/xwaylandvideobridge'
 license=(GPL2)
+provides=( xwaylandvideobridge )
 depends=('ninja' 'qt5-base' 'qt5-x11extras' 'qt5-declarative' 'kcoreaddons5' 'kwidgetsaddons5' 'kwindowsystem5' 'knotifications5' 'ki18n5' 'libxcb' 'kpipewire'  'gcc-libs' 'glibc' 'hicolor-icon-theme' 'extra-cmake-modules')
 makedepends=('git')
-conflicts=('xwaylandvideobridge-bin' 'xwaylandvideobridge-cursor-mode-2-git')
+conflicts=('xwaylandvideobridge' 'xwaylandvideobridge-cursor-mode-2-git')
 source=("${pkgname}::git+https://invent.kde.org/system/xwaylandvideobridge.git")
 sha256sums=('SKIP')
 

@@ -1,6 +1,6 @@
 pkgbase = xwaylandvideobridge-git
 	pkgdesc = A tool to make it easy to stream wayland windows and screens to Xwayland applicatons that don't have native pipewire support.
-	pkgver = r108.75f6852
+	pkgver = r165.e3a0eba
 	pkgrel = 1
 	url = https://invent.kde.org/system/xwaylandvideobridge
 	arch = x86_64
@@ -21,7 +21,8 @@ pkgbase = xwaylandvideobridge-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = extra-cmake-modules
-	conflicts = xwaylandvideobridge-bin
+	provides = xwaylandvideobridge
+	conflicts = xwaylandvideobridge
 	conflicts = xwaylandvideobridge-cursor-mode-2-git
 	source = xwaylandvideobridge-git::git+https://invent.kde.org/system/xwaylandvideobridge.git
 	sha256sums = SKIP
