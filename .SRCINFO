@@ -1,6 +1,6 @@
 pkgbase = wlroots-hidpi-xprop
 	pkgdesc = Modular Wayland compositor library (stable, with patches)
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	arch = x86_64
@@ -28,11 +28,11 @@ pkgbase = wlroots-hidpi-xprop
 	depends = xorg-xwayland
 	optdepends = xorg-xwayland-hidpi-xprop: HiDPI support, see https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/733
 	provides = libwlroots.so
-	provides = wlroots=0.17.0
+	provides = wlroots=0.17.1
 	conflicts = wlroots
 	conflicts = wlroots-git
 	options = debug
-	source = wlroots-hidpi-xprop::git+https://gitlab.freedesktop.org/wlroots/wlroots#tag=0.17.0
+	source = wlroots-hidpi-xprop::git+https://gitlab.freedesktop.org/wlroots/wlroots#tag=0.17.1
 	source = 0001-xwayland-support-HiDPI-scale.patch
 	source = 0002-Fix-configure_notify-event.patch
 	source = 0003-Fix-size-hints-under-Xwayland-scaling.patch
