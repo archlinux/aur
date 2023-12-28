@@ -69,7 +69,7 @@ _main_package() {
 # stable package
 _main_stable() {
   _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
+  source+=("$_pkgsrc"::"git+$url.git#tag=v$_pkgver")
   sha256sums+=('SKIP')
 
   pkgver() {
