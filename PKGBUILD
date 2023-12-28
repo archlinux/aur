@@ -1,14 +1,14 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Bruno Galeotti <bgaleotti at gmail dot com>
 pkgname=clocker
 pkgver=1.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tracks project hours"
 arch=('x86_64' 'i686' 'arm' 'armv6' 'armv7h' 'aarch64')
 url="https://github.com/substack/${pkgname}"
 license=(MIT)
-depends=(nodejs)
+depends=(gcc-libs glibc nodejs)
 makedepends=(npm)
 source=(${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)

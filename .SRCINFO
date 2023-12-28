@@ -1,7 +1,7 @@
 pkgbase = clocker
 	pkgdesc = Tracks project hours
 	pkgver = 1.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/substack/clocker
 	arch = x86_64
 	arch = i686
@@ -11,6 +11,8 @@ pkgbase = clocker
 	arch = aarch64
 	license = MIT
 	makedepends = npm
+	depends = gcc-libs
+	depends = glibc
 	depends = nodejs
 	noextract = clocker-1.23.1.tgz
 	source = clocker-1.23.1.tgz::https://registry.npmjs.org/clocker/-/clocker-1.23.1.tgz
