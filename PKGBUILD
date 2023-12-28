@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=eartag
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Simple music tag editor"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('libadwaita' 'chromaprint' 'python-gobject' 'python-pyacoustid' 'python
 makedepends=('meson')
 checkdepends=('appstream-glib' 'python-pytest')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('47cc4ad43bd3f07f00ee4954d5c6d2c6796db41c89be86c34b5074e686e5b7fa0d0d34620e1bddd747774e8bb2a33dfa3225b1680fc4e04f152a8ed7a9d080ab')
+b2sums=('2a1fdf76aeac56e63dd4aa66350eefb857191ebb136cde8f80233181d76b7aab1383d884f33823494da70b5f0b0678f4dd46d31f185315c675baf4fd15218f9a')
 
 build() {
   arch-meson $pkgname-$pkgver build
