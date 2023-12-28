@@ -1,7 +1,7 @@
 pkgbase = webkitty-bin
 	pkgdesc = Local web development IDE
 	pkgver = 3.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://dartfling.com/product?pid=3
 	arch = x86_64
 	license = MIT
@@ -16,10 +16,10 @@ pkgbase = webkitty-bin
 	provides = webkitty=3.2.1
 	conflicts = webkitty
 	source = webkitty-3.2.1.AppImage::https://github.com/yikuansun/webkitty/releases/download/v3.2.1/WebKitty-3.2.1.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/yikuansun/webkitty/v3.2.1/LICENSE
+	source = LICENSE-3.2.1::https://raw.githubusercontent.com/yikuansun/webkitty/v3.2.1/LICENSE
 	source = webkitty.sh
 	sha256sums = 103f4ccb57d0e7685993b6cc1a47ead500f5eef0c63a7c501af36456e5d696f1
 	sha256sums = c46ac74ef8cd13c7541f9de280f3d759319f70292fd32d4d170193041b06300b
-	sha256sums = a01688f97371b639383f492c90cbbc33ef3d8e87dc86f0d44b1f306c31a42f41
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = webkitty-bin
