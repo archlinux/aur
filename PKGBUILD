@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 source=("$_pkgname::git+https://github.com/AppFlowy-IO/AppFlowy.git"
-        'flutter::git+https://github.com/flutter/flutter.git#tag=3.13.9')
+        'flutter::git+https://github.com/flutter/flutter.git#tag=3.18.0-0.2.pre')
 sha256sums=('SKIP'
             'SKIP')
 
