@@ -2,7 +2,7 @@
 
 pkgbase=github520-git
 pkgname=github520-git
-pkgver=r7
+pkgver=r8
 pkgrel=1
 pkgdesc="😘 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。"
 arch=(any)
@@ -33,6 +33,6 @@ options=('!strip')
 # }
 
 package() {
-    install -Dm0644 ${srcdir}/update-github520-hosts.* -t ${pkgdir}/usr/lib/systemd/system/
+    install -Dm0644 ${srcdir}/*-github520-hosts.* -t ${pkgdir}/usr/lib/systemd/system/
 }
 

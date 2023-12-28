@@ -4,6 +4,8 @@ post_install() {
     echo "sudo systemctl start update-github520-hosts.service"
     echo "sudo systemctl status update-github520-hosts.service"
     echo "cat /etc/hosts"
+    echo "sudo systemctl start remove-github520-hosts.service"
+    echo "cat /etc/hosts"
 }
 
 post_upgrade() {
