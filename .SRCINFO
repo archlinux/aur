@@ -1,6 +1,6 @@
 pkgbase = texmacs-guile3-git
 	pkgdesc = Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface. Pulled from github.com/hammerfunctor/texmacs
-	pkgver = 2.1.2_r13435.ed4abef8e
+	pkgver = 2.1.4_r13445.90fda4700
 	pkgrel = 1
 	url = http://www.texmacs.org/
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = texmacs-guile3-git
 	optdepends = ghostscript: rendering ps files
 	optdepends = imagemagick: convert images
 	optdepends = aspell: spell checking
+	optdepends = inkscape: hand-draw pictures
 	provides = texmacs
 	conflicts = texmacs
 	options = !emptydirs

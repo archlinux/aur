@@ -2,7 +2,7 @@
 
 pkgname=texmacs-guile3-git
 _pkgname=texmacs
-pkgver=2.1.2_r13435.ed4abef8e
+pkgver=2.1.4_r13445.90fda4700
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG
 editor and CAS-interface. Pulled from github.com/hammerfunctor/texmacs"
@@ -14,7 +14,8 @@ depends=('perl' 'guile' 'texlive-basic' 'python' 'libxext' 'freetype2'
 optdepends=('transfig: convert images using fig2ps'
             'ghostscript: rendering ps files'
             'imagemagick: convert images'
-            'aspell: spell checking')
+            'aspell: spell checking'
+            'inkscape: hand-draw pictures')
 makedepends=('ghostscript' 'cmake' 'git' 'gcc')
 source=("${_pkgname}::git+https://github.com/hammerfunctor/texmacs")
 sha256sums=('SKIP')
