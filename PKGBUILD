@@ -1,9 +1,9 @@
-# Maintainer: Thomas Lercher <aur@tlercher.de>
+# Contributor: Thomas Lercher <aur@tlercher.de>
 # Contributor: NiNjA <heinep at gmail dot com>
 
 _pkgname=augustus
 pkgname=$_pkgname-game
-pkgver=3.2.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="An enhanced re-implementation of Caesar III (Original copy required)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ install="${pkgname}.install"
 source=(${pkgname}.desktop ${pkgname}.install $url/archive/v$pkgver.tar.gz)
 sha256sums=('52fd21bbd8a32cee21399c598283dfea11fa507e01e92c8344fb6e021fae0928'
             'd0d9e1fdfa9edbb22239d55612c8b7ffdb501a1cfebea82cce2ccf4259f867ef'
-            '90d66d33737a7b72a2f51d408e987c442fcc9bdf56b9a1b2eea087a1d0862d39')
+            'd95957ccf7b66cec80d787692ff857a7a1558eccfa1927e22f717891b2dfb4a2')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
