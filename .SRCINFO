@@ -1,7 +1,7 @@
 pkgbase = pnc
 	pkgdesc = libphonenumber command-line wrapper continued (by the sxmo project)
 	pkgver = 0.9.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.sr.ht/~anjan/pnc
 	arch = x86_64
 	arch = armv7h
