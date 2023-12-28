@@ -1,0 +1,18 @@
+pkgbase = muserv
+	pkgdesc = muserv (UPnP server for music)
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://gitlab.com/mipimipi/muserv/
+	arch = aarch64
+	arch = x86_64
+	license = GPL3
+	makedepends = bash
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	depends = mailcap
+	conflicts = muserv-git
+	source = https://gitlab.com/mipimipi/muserv/-/archive/v0.6.2/muserv-v0.6.2.tar.gz
+	sha256sums = d4f573cee81676bc37c08b0a45d30962f5cbd4809a0dd12a6008f4927cc4672b
+
+pkgname = muserv
