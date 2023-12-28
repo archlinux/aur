@@ -2,10 +2,10 @@
 
 pkgname="beangrow-git"
 pkgver=r15.7dd642b
-pkgrel=1
-pkgdesc="Show portfolio returns in Fava"
+pkgrel=2
+pkgdesc="Returns calculations on portfolios in Beancount"
 url="https://github.com/beancount/beangrow"
-license=("GPL3")
+license=("GPL2")
 arch=("any")
 provides=("beangrow")
 depends=("beancount")
