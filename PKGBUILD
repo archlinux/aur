@@ -1,6 +1,6 @@
 # Maintainer: Bitals <me at bitals dot xyz>\
 pkgname=docker-autocompose-git
-pkgver=r70.3ad0d36
+pkgver=r71.2e6a55f
 pkgrel=1
 pkgdesc='Generate a docker-compose yaml definition from a running container'
 arch=('any')
@@ -11,6 +11,7 @@ depends=(
     'python-docker>=4.4.4'
     'python-six>=1.16.0'
 )
+conflicts=('docker-autocompose')
 makedepends=('python-setuptools')
 source=($pkgname::git+https://github.com/Red5d/docker-autocompose.git)
 sha256sums=('SKIP')

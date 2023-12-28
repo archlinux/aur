@@ -1,6 +1,6 @@
 pkgbase = docker-autocompose-git
 	pkgdesc = Generate a docker-compose yaml definition from a running container
-	pkgver = r70.3ad0d36
+	pkgver = r71.2e6a55f
 	pkgrel = 1
 	url = https://github.com/Red5d/docker-autocompose
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = docker-autocompose-git
 	depends = python-pyaml>=20.4.0
 	depends = python-docker>=4.4.4
 	depends = python-six>=1.16.0
+	conflicts = docker-autocompose
 	source = docker-autocompose-git::git+https://github.com/Red5d/docker-autocompose.git
 	sha256sums = SKIP
 
