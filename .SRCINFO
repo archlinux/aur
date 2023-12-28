@@ -6,9 +6,10 @@ pkgbase = libacars
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = git
 	depends = zlib
 	depends = libxml2
+	depends = jansson
+	depends = glibc
 	source = libacars-2.2.0.tar.gz::https://github.com/szpajder/libacars/archive/v2.2.0.tar.gz
 	sha256sums = 495e9836c8a1033a5d7814e68ebfc3b0d8f7db1747d13310e7df47c561aee9ce
 
