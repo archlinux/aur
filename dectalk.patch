@@ -1,0 +1,47 @@
+diff --color --unified --recursive --text dectalk.old/src/Makefile.in dectalk.new/src/Makefile.in
+--- dectalk.old/src/Makefile.in	2023-12-28 14:37:17.607385115 -0500
++++ dectalk.new/src/Makefile.in	2023-12-28 14:38:12.975301780 -0500
+@@ -111,12 +111,37 @@
+ 	echo "LANG:fr,French" >> $(DESTDIR)$(INSTALL_PREFIX)/DECtalk.conf
+ 
+ 	-mkdir -p $(DESTDIR)/usr/bin/
+-	-ln -sf $(DESTDIR)$(INSTALL_PREFIX)/gspeak $(DESTDIR)/usr/bin/gspeak
+-	-ln -sf $(DESTDIR)$(INSTALL_PREFIX)/say $(DESTDIR)/usr/bin/say
+-	-ln -sf $(DESTDIR)$(INSTALL_PREFIX)/windic $(DESTDIR)/usr/bin/windic
+-	-ln -sf $(DESTDIR)$(INSTALL_PREFIX)/dtmemory $(DESTDIR)/usr/bin/dtmemory
+-	-ln -sf $(DESTDIR)$(INSTALL_PREFIX)/aclock $(DESTDIR)/usr/bin/aclock
+-	-ln -sf $(DESTDIR)$(INSTALL_PREFIX)/tools/* $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/gspeak $(DESTDIR)/usr/bin/gspeak
++	-ln -sf $(INSTALL_PREFIX)/say $(DESTDIR)/usr/bin/say
++	-ln -sf $(INSTALL_PREFIX)/windic $(DESTDIR)/usr/bin/windic
++	-ln -sf $(INSTALL_PREFIX)/dtmemory $(DESTDIR)/usr/bin/dtmemory
++	-ln -sf $(INSTALL_PREFIX)/aclock $(DESTDIR)/usr/bin/aclock
++	-ln -sf $(INSTALL_PREFIX)/tools/dic_fr $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/dic_gr $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/dic_la $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/dic_sp $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/dic_uk $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/dic_us $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/dump_vdf $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/mfg_load $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/say_demo_fr $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/say_demo_gr $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/say_demo_la $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/say_demo_sp $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/say_demo_uk $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/say_demo_us $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/tunecheck_fr $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/tunecheck_gr $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/tunecheck_la $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/tunecheck_sp $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/tunecheck_uk $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/tunecheck_us $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/udic_fr $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/udic_gr $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/udic_la $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/udic_sp $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/udic_uk $(DESTDIR)/usr/bin/
++	-ln -sf $(INSTALL_PREFIX)/tools/udic_us $(DESTDIR)/usr/bin/
+ 
+ english_release:
+ 	$(MAKE) -f Makefile.sub "LANGUAGE=ENGLISH -DENGLISH_US -DACNA" \
