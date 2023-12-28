@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=odbc
-_cranver=1.4.0
+_cranver=1.4.1
 pkgname=r-${_cranname,,}
 pkgdesc="Connect to ODBC Compatible Databases (using the DBI Interface)"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -38,7 +38,7 @@ checkdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("3329b8b8ad6ed26bdeb5e3dc5c986684dc0a3b3f9a2486bb9a411511b14184c5489546a24ac546b0a576285210a85413226381d0e166e65a043dc05987cd8f17")
+b2sums=("2d83ece53f2e0c5dfbe452c3390b59925a62eb2c218f72e4f1b26fb71ab79d7c117130f39f0fd5eba778992e1c96cb623495def41c0c76afeb936accd26778ac")
 
 build() {
     mkdir -p "${srcdir}/build/"
