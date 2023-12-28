@@ -2,7 +2,7 @@
 
 _pkgname=colorpick
 pkgname=$_pkgname-git
-pkgver=r79.6c3b195
+pkgver=r87.727df35
 pkgrel=1
 pkgdesc="Color picker and contrast checker"
 url=https://github.com/qtilities/$_pkgname
@@ -14,6 +14,8 @@ depends=(
 makedepends=(
   cmake
   git
+  qt5-tools
+  qtilitools
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
