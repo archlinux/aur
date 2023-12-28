@@ -6,7 +6,10 @@ _pkgname=otr
 pkgver=0.6.1
 pkgrel=1
 pkgdesc="Decode and cut video files from Online TV Recorder (OTR)"
-arch=("any")
+arch=(
+  aarch64
+  x86_64
+)
 url="https://$_pkgorg/$_pkgname"
 license=(GPL3)
 source=("git+https://$_pkgorg/$_pkgname.git")
