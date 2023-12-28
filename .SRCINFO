@@ -1,7 +1,7 @@
 pkgbase = fsthost
 	pkgdesc = A linux VST host using winelib
-	pkgver = 1.6.2
-	pkgrel = 2
+	pkgver = 1.6.3
+	pkgrel = 1
 	url = http://sourceforge.net/projects/fsthost/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = fsthost
 	depends = lib32-gtk3
 	depends = wine
 	depends = perl-xml-libxml
-	source = http://downloads.sourceforge.net/project/fsthost/fsthost-1.6.2.tar.xz
-	md5sums = 0769970ea13f3e6b860944db3803d339
+	source = http://downloads.sourceforge.net/project/fsthost/fsthost-1.6.3.tar.xz
+	md5sums = 04ccc778e4202a52ca78b32f7c05686d
 
 pkgname = fsthost
-
