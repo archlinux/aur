@@ -2,16 +2,16 @@
 
 _pkgname=opensaucer
 pkgname=${_pkgname}-git
-pkgver=r118.3e0306b
+pkgver=r212.00ac403
 pkgrel=1
 pkgdesc='Mutiny on the mothership'
 arch=('x86_64')
 url="https://gitlab.com/luckeyproductions/games/${_pkgname}"
 license=('GPL2')
-depends=('dry')
+depends=('dry' 'sfml' 'qt5-base')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-makedepends=('git' 'qt5-base')
+makedepends=('git')
 sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")
 
@@ -22,9 +22,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  rm -f Dry
-  ln -s /opt/dry/ Dry
-  qmake OpenSaucer.pro "DATADIR=/usr/share"
+  DRY_HOME=/opt/dry qmake OpenSaucer.pro "DATADIR=/usr/share"
+  make
+  qmake OpenEncounter.pro
   make
 }
 
@@ -32,6 +32,7 @@ package() {
   cd "${srcdir}/${pkgname}"
   install -Dm 644 saucer.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/saucer.svg
   install -Dm 755 saucer ${pkgdir}/usr/bin/saucer
+  install -Dm 755 launcher ${pkgdir}/usr/bin/saucer-launcher
   install -Dm 755 saucer.desktop ${pkgdir}/usr/share/applications/saucer.desktop
   mkdir -p ${pkgdir}/usr/share/luckey/saucer
   cp -R "${srcdir}/${pkgname}/Resources/." ${pkgdir}/usr/share/luckey/saucer/
