@@ -1,7 +1,7 @@
 pkgbase = guiwrapper-bin
 	pkgdesc = A simple cross platform graphical user interface (GUI) wrapper to launch executable desktop applications
 	pkgver = 0.7.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/frodal/GUIwrapper
 	arch = x86_64
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = guiwrapper-bin
 	provides = guiwrapper=0.7.3
 	conflicts = guiwrapper
 	source = guiwrapper-0.7.3.zip::https://github.com/frodal/GUIwrapper/releases/download/v0.7.3/GUIwrapper-linux-x64.zip
-	source = guiwrapper.png::https://raw.githubusercontent.com/frodal/GUIwrapper/v0.7.3/assets/icons/png/512x512.png
+	source = guiwrapper-0.7.3.png::https://raw.githubusercontent.com/frodal/GUIwrapper/v0.7.3/assets/icons/png/512x512.png
 	source = guiwrapper.sh
 	sha256sums = 9fe4cd794aae62af8867149fe22a05859b03974871963bf37f9617556ebaf085
 	sha256sums = c2655948673313ef780c59ed39d9cc8d7db09929330223d44e8014f0860435ba
-	sha256sums = c26c3adcec87606ab123a946c662aa5d7649a6d0e1bfc429585ebc91756e49ce
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = guiwrapper-bin
