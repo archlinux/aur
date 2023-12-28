@@ -1,6 +1,6 @@
 pkgbase = vot-cli
 	pkgdesc = The voice-over translation of the video is now available not only in YandexBrowser.
-	pkgver = 1.1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/FOSWLY/vot-cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = vot-cli
 	license = MIT
 	makedepends = npm
 	depends = nodejs>=17
-	source = vot-cli-1.1.1.tgz::https://github.com/FOSWLY/vot-cli/archive/1.1.1.tar.gz
-	b2sums = a3aed0a2431855e2e9cb87f40c3884b33b5fa491809f5c8632947c87bd6e968fe7ccd4455bcf2c247d761d3714c6c7f22b6844736d8b5f087a8595a3851809bf
+	source = vot-cli-1.2.1.tgz::https://github.com/FOSWLY/vot-cli/archive/1.2.1.tar.gz
+	b2sums = e51f9b1e42caad9ce3ccb0cd599bdccbfe45fd99fa24410a2023d3fcf1b0800d90eec02da92736e77ddbdb6978f3a6cbba100f6b2cfb93368e57dc1d04bad986
 
 pkgname = vot-cli
