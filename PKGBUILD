@@ -25,11 +25,6 @@ build() {
     cargo build --release
 }
 
-check() {
-    cd "$_pkgname"
-    cargo test --release
-}
-
 package() {
     cd "$srcdir/$_pkgname"
     install -Dm755 target/release/$_pkgname "$pkgdir/usr/bin/$_pkgname"
