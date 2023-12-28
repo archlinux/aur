@@ -2,7 +2,7 @@
 
 _pkgname=nchat
 pkgname=${_pkgname}
-pkgver=3.67
+pkgver=4.13
 pkgrel=1
 pkgdesc="nchat is a console-based chat client for Linux and macOS with support for Telegram."
 arch=('any')
