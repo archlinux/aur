@@ -6,7 +6,7 @@ pkgname=(
   boost174-libs
 )
 pkgver=1.74.0
-pkgrel=4
+pkgrel=5
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries (version 1.74)"
 arch=(x86_64)
@@ -40,8 +40,10 @@ prepare() {
 
   # https://github.com/boostorg/ublas/issues/96
   patch -Np2 -i ../$pkgbase-ublas-c++20-allocator-patch1.patch
-  patch -Np2 -i <(<../$pkgbase-ublas-c++20-allocator-patch2.patch \
-    sed 's:test/:pls-apply-cleanly-kthxbai/libs/numeric/ublas/&:g')
+  patch -Np2 -i <(
+    sed < ../$pkgbase-ublas-c++20-allocator-patch2.patch \
+      's:test/:pls-apply-cleanly-kthxbai/libs/numeric/ublas/&:g'
+  )
 
   # https://github.com/boostorg/ublas/pull/97
   patch -Np2 -i ../$pkgbase-ublas-c++20-iterator.patch
@@ -56,7 +58,8 @@ build() {
   # shellcheck disable=2001
   JOBS="$(sed 's/.*\(-j *[0-9]\+\).*/\1/' <<< "$MAKEFLAGS")"
   python_version=$(
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+  )
 
   pushd "$_srcname/tools/build"
   ./bootstrap.sh --cxxflags="$CXXFLAGS $LDFLAGS"
@@ -68,7 +71,7 @@ build() {
   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=python3
 
   # support for OpenMPI
-  echo "using mpi ;" >>project-config.jam
+  echo "using mpi ;" >> project-config.jam
 
   # boostbook is needed by quickbook
   install -dm755 "$srcdir"/fakeinstall/share/boostbook
@@ -95,7 +98,7 @@ build() {
 package_boost174() {
   local python_version
   python_version=$(
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))' \
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
   )
 
   pkgdesc+=' (development headers)'
@@ -119,14 +122,14 @@ package_boost174() {
 
   # https://github.com/boostorg/python/issues/203#issuecomment-391477685
   for _lib in python numpy; do
-    ln -srL "$pkgdir"/opt/boost-$pkgver/lib/libboost_${_lib}{"${python_version/.}","${python_version%.*}"}.so
+    ln -srL "$pkgdir"/opt/boost-$pkgver/lib/libboost_${_lib}{"${python_version/./}","${python_version%.*}"}.so
   done
 }
 
 package_boost174-libs() {
   local python_version
   python_version=$(
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))' \
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
   )
 
   pkgdesc+=' (runtime libraries)'
