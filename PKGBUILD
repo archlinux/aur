@@ -20,7 +20,6 @@ replaces=()
 depends=(
     glib2
     glibc
-    dtkgui
     dtkwidget)
 makedepends=(
     argtable
@@ -31,6 +30,7 @@ makedepends=(
     capstone
     clang
     dbus
+    dtkgui
     doxygen
     hiredis
     llvm
@@ -39,6 +39,7 @@ makedepends=(
     ncurses
     libelf
     libelfin
+    libdwarf
     libmicrohttpd
     libunwind
     libutf8proc
@@ -70,14 +71,16 @@ prepare()
 }
 
 build() {
+    export LDFLAGS="-Wl,--no-as-needed"
     cd "${srcdir}/${pkgname}"
 
 # See：https://wiki.archlinux.org/title/CMake_package_guidelines
-    # cmake -DCMAKE_BUILD_TYPE=Release \
-    cmake -DCMAKE_BUILD_TYPE=None \
+    # cmake -DCMAKE_BUILD_TYPE=None \
+    cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
+        -Wno-dev \
         -B build \
         -G Ninja
 
