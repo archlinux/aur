@@ -1,6 +1,6 @@
 pkgbase = python-geoalchemy2
 	pkgdesc = Using SQLAlchemy with Spatial Databases
-	pkgver = 0.14.2
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://geoalchemy-2.readthedocs.io/
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-geoalchemy2
 	depends = python-packaging
 	depends = python-shapely
 	depends = python-sqlalchemy>=1.4
-	source = https://files.pythonhosted.org/packages/source/G/GeoAlchemy2/GeoAlchemy2-0.14.2.tar.gz
-	b2sums = 801f09d5bda8fa44897fb58d69b428fe7e7229cfec75b0a2e0e239df8f687f7fec3d5f735ba91f0639036741a87c4f0cecb54a9835d49035cfc70616576d7c41
+	source = https://files.pythonhosted.org/packages/source/G/GeoAlchemy2/GeoAlchemy2-0.14.3.tar.gz
+	b2sums = 1d28d9a5d79b11cb27e257d5ff8ba80011929dcc30eeba758724811c08a2dc6727358dffd9a7caaf707aa4cdce7d8a61790205d74cb582265389473422be4244
 
 pkgname = python-geoalchemy2
