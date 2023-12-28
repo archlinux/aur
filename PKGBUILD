@@ -1,7 +1,7 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/tv_viewer
 pkgname=tv_viewer
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="GUI to view television show details using TV maze API. Python3 Pyqt5 SQLite"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-prettytable' 'python-pyqt5' 'python-pytvmaze')
 makedepends=('python-setuptools')
 source=("https://github.com/gavinlyonsrepo/tv_viewer/archive/$pkgver.tar.gz")
 
-sha256sums=('67a7d7132fe1388d743d712ea35e40cb2f3acd337d8e842e328b631ffae6d181')
+sha256sums=('807f22e82c2698869cdd75eff70cffc7cc2aaa8e51d4d85de77968494f70941c')
 
 package() {
     
