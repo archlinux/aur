@@ -1,7 +1,7 @@
 # Maintainer: anon <anon@example.com>
 
 pkgname=wmenu
-pkgver=0.1.5
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Efficient dynamic menu for Wayland"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('cairo' 'libxkbcommon' 'pango' 'wayland')
 makedepends=('meson' 'ninja' 'scdoc' 'wayland-protocols')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~adnano/wmenu/archive/$pkgver.tar.gz")
-b2sums=('be3d03a3433af9b7c5d934630404f7cb3691f7d79ae1a53eaf8d528a385311844900e9f37d72f53bdf92360cc5115977d98e3ea862677bed27471342c8d9c9c8')
+b2sums=('9670ec0e9040fe8015938d005eb6b366dd56344694d585b2958fb20e8a38b921ed0ffdd9df0f8a6f05bd4c24a69b58d4b06e886916489627380e9258c940af87')
 
 build() {
 	cd "$pkgname-$pkgver"
