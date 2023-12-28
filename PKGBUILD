@@ -10,10 +10,10 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.8.0')
+provides=('gdal=3.8.2')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.8.0
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
@@ -37,20 +37,9 @@ optdepends=('postgresql: postgresql database support'
             'libkml: when present while building, adds kml support'
 )
 options=('!emptydirs')
-changelog=$pkgbase.changelog
-source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
-        https://github.com/OSGeo/gdal/commit/cbed9fc9.patch
-        https://github.com/OSGeo/gdal/commit/ec33f6d6.patch)
-b2sums=('646aa91283e7228a054221d120bddb456c8b898f9155edd289f2b2e0bf8706fa3045a98d26e4cf5ba5dba6d8c1c7f0a7f4aaaded9457481a65910c2d313c8f9d'
-        'e75eb8edb5507450ded3bca618a03a283ba49791df416b0a7732f859d93124704e8508fcd11271bbbeef299d05d3ad2df9e03bd805580445407cb6b8c003a98e'
-        '5c0abcfcfbb0ca2a96156abb4c7daaf4860fa30d553228172eb8def8b2f95e93bae9217974fba9621dcf9921e906a5ada9b710b1c0b29e7e580191a0a56a76e2')
-
-
-prepare() {
-# Fix build with libxml2 2.12
-  patch -d $_pkgbase-$pkgver -p1 < cbed9fc9.patch
-  patch -d $_pkgbase-$pkgver -p1 < ec33f6d6.patch
-}
+changelog=${_pkgbase}.changelog
+source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
+b2sums=('c00a69810f9c7ac1f8dd30e5bcee6a87277cc93391a8569ebc77ea53df52ee712310baad36ff32354b7bea6fa5a5f3b8f4f106ffe1534df4aa2fbc9afa5a9ee9')
 
 build() {
   opt_libs=""
