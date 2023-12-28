@@ -9,18 +9,14 @@ arch=('any')
 url="https://github.com/friendlyanon/cmake-init"
 license=('GPL3')
 depends=('python3')
-makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('d3802e9ca3dd2b6b85bb563514912ad138858652d22500e66db24d46d36f81ec')
+source=("cmake-init-${pkgver}.pyz::https://github.com/friendlyanon/cmake-init/releases/download/v${pkgver}/cmake-init.pyz")
+sha256sums=('01d14c029a70e8a6f12b2b3d06c4551d53ad7e91c0a8a5e90905385dc55e3069')
 
 #pkgver() {
 #	curl -sH "Accept: application/vnd.github.v3+json" 'https://api.github.com/repos/friendlyanon/cmake-init/tags'  | jq -r '.[0].name' | sed 's/v//;s/-/./;s/-/./'
 #}
 
 package() {
-	PIP_CONFIG_FILE=/dev/null pip install --no-warn-script-location --isolated --root="$pkgdir" --ignore-installed --no-deps "${_name//-/_}-$pkgver-py3-none-any.whl"
-
-	# cd "${pkgdir}/usr/lib/python3/site-packages/cmake_init_lib"
-	COMPILE_DIR=$(find "${pkgdir}" -name cmake_init_lib -type d | head -n 1) # this is a shitty hack, please inform me of a better way to do this.
-	[ ! -z "$COMPILE_DIR" ] && python -O -m compileall  "${COMPILE_DIR}"
+    cd "$srcdir/$_pkgname"
+    install -D -m755 "cmake-init-${pkgver}.pyz" "${pkgdir}/usr/bin/cmake-init"
 }
