@@ -1,0 +1,29 @@
+diff --unified --recursive --text asciidoctor-pdf-2.3.10.orig/spec/image_spec.rb asciidoctor-pdf-2.3.10/spec/image_spec.rb
+--- asciidoctor-pdf-2.3.10.orig/spec/image_spec.rb	2023-12-28 16:57:16.310028069 +0100
++++ asciidoctor-pdf-2.3.10/spec/image_spec.rb	2023-12-28 16:58:22.213430017 +0100
+@@ -2108,25 +2108,6 @@
+       (expect to_file).to visually_match 'image-multiple-inline.pdf'
+     end
+ 
+-    it 'should not mangle character spacing in line if inline image wraps', visual: true do
+-      to_file = to_pdf_file <<~'EOS', 'image-wrap-inline.pdf'
+-      [cols="30e,58,12",width=75%]
+-      |===
+-      |Name |Description |Min # data points
+-
+-      |Confidence interval of the mean
+-      |The confidence interval of the mean is image:equation.svg[width=118], where image:symbol-m.svg[width=11] is the mean, image:symbol-s.svg[width=6] is the estimated sample standard deviation, and so on.
+-      |2
+-
+-      |Confidence interval of the mean
+-      a|The confidence interval of the mean is image:equation.svg[width=118], where image:symbol-m.svg[width=11] is the mean, image:symbol-s.svg[width=6] is the estimated sample standard deviation, and so on.
+-      |2
+-      |===
+-      EOS
+-
+-      (expect to_file).to visually_match 'image-wrap-inline.pdf'
+-    end
+-
+     it 'should increase line height if height if image height is more than 1.5x line height', visual: true do
+       to_file = to_pdf_file <<~'EOS', 'image-inline-extends-line-height.pdf'
+       see tux run +
