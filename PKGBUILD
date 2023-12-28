@@ -3,8 +3,8 @@
 # Contributor: Vlad Petrov <ejiek@mail.ru>
 
 pkgname=nb
-pkgver=7.9.0
-pkgrel=2
+pkgver=7.9.1
+pkgrel=1
 pkgdesc="A command-line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
 url="https://github.com/xwmx/${pkgname}"
@@ -60,28 +60,10 @@ package() {
 }
 
 sha256sums=(
-  '2cd7df83c6f24625b2ee671ed0f1e2caf9adc297231d851ce6da4cc6909247c6'
+  '9d16d886feac16a99aaa6b3c2a7d327e6f3b3c96b4d4213c17b03350e579630a'
 )
 b2sums=(
-  'f2980c0809f57bf993eef18aaab73a6bdfeb34e12a66db3c56bd57454c4e7c4e217a768fd443e6362dcc7c003d374cb99eb0bb3374368fdf51962e69da411560'
+  '589cacaac7759b97061bd0c2d51b1833626639810099b2056f99b49579a27c59a88c2868719090fce9e02af318d1908898a240aed8bdddbf3b3065701b2aebf7'
 )
-
-sha256sums=(
-  '213c1138d9a87ebc4e0e6e956cf19812d10e8ddd2373fd97cab15437a46e6f1b'
-)
-b2sums=(
-  '526954d09782c13a71cfea4b70680e49ddd9533e1faab0436aa3cf1944e9d8550b92b4d78a73d2dda11fb6d7f686eb7cba233b70db8efccb267722a3dda26ed8'
-)
-
-# 🪷 Beyond the Known — 365 Days of Exploration
-#
-# 📆 28th November
-#
-# Go into the darkest cave for yourself.
-#
-# You may find, in the deepest recesses, there is far more light
-# than you ever thought possible.
-#
-# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
