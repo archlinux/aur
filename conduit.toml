@@ -30,8 +30,16 @@ port = 6167
 # Max size for uploads
 max_request_size = 20_000_000 # in bytes
 
-# Enables registration. If set to false, no users can register on this server.
-allow_registration = true
+# Enables registration. If set to false, no users can register on this server
+# except for if you have a registration token configured (see below). It is
+# NOT recommended to leave this enabled as your server will be left open
+# to registration by anyone, including spambots.
+allow_registration = false
+
+# A static registration token that new users will have to provide when creating
+# an account. If unset and `allow_registration` is true, registration is open
+# without any condition. YOU NEED TO EDIT THIS
+registration_token = "change this token for something specific to your server"
 
 # Disable encryption, so no new encrypted rooms can be created
 # Note: existing rooms will continue to work

@@ -6,7 +6,6 @@ After=network.target nss-lookup.target
 
 [Service]
 Type=notify
-DynamicUser=yes
 ExecStart=/usr/bin/conduit-matrix
 ExecReload=/bin/kill -HUP ${MAINPID}
 TimeoutSec=10
@@ -49,8 +48,8 @@ SystemCallErrorNumber=EPERM
 StateDirectory=conduit-matrix
 RuntimeDirectory=conduit-matrix
 
-User=_conduit-matrix
-Group=_conduit-matrix
+User=conduit-matrix
+Group=conduit-matrix
 ReadWriteDirectories=-/var/lib/conduit-matrix
 ReadWriteDirectories=-/var/log/conduit-matrix
 
