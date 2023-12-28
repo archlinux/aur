@@ -1,26 +1,42 @@
-### New professional features
+## New professional features
 
-- Add support for Yubikey PKCS#11 identities for SSH connections
-- Add support for custom PKCS#11 libraries to use with SSH connections
-- Add support for the gpg-agent for SSH connections, e.g. for smart cards
+- Add ability to open files and directories in VSCode SSH remote environment in file browser
+- Added support for fully offline licenses. You can obtain them via email request
+  in case you're running it on a system without internet connectivity or restricted proxy settings
 
-### Other changes
+## Changes
 
-- Add ESC and CTRL/CMD+W shortcuts to close dialog windows
-- Add support for JetBrains editors
-- Add support for docker versions <20
-- Add history button for file browser
-- Improve information display for docker containers
-- Rework SSH agent integration for all agent types to fix many issues
-- Properly update state of child connections on refresh
-- Fix SSH identity file chooser not opening up the correct system when using jump servers
-- Make git always use the native ssh client on Windows
-- Properly disable remote git storage during a session if a remote operation failed before
-- Show unavailable connection types when searching for connections automatically
-- Add ability to open compatible SSH connections in vscode
-- Fix some connections not being shared in a git repository even though they should
+- Make current default shell also show up in shell environments to prevent confusion about missing bash environment
+- Improve error messages when an additional password was requested by the connection
+  when none was provided instead of just showing permission denied
+- Make SSH connection starting from a WSL environment use the native Windows key helper for FIDO2 keys
+- Rework insights button for connection creation across the board
 
-### Preview pro features
+## Additions
 
-For anyone interested in giving any new professional features a try without having to commit to buying a full license,
-there is now a special preview mode available: Simply enter the license key `D18D1C9F-D3CB-49CA-A909-FF385DECD948` and get full access to newly released professional features for two weeks after their initial release date. In fact, you can try it out right now to get access to the new SSH authentication features.
+- Add warning message if git vault URL was an HTTP URL and you are trying to use an SSH identity
+- Add ability to clone existing connections to make the process of adding similar connections easier
+- Add ability to debug local background shell in developer options
+- Add notice when a professional feature is available in preview mode
+- Add some more OS logos
+- Add check to verify whether font loading with fontconfig works on Linux on startup
+- Add more extensive note on first startup for potential issues when Malwarebytes, McAfee, or Bitdefender are installed
+
+## Fixes
+
+- Fix application not starting on Asahi Linux due to executable page size issue
+- Fix file existence check for SSH key files reporting wrong results on Windows in directory links/junctions
+- Fix k8s integration not working when user did not have permission to list nodes
+- Fix rare error when switching to tray operation mode on Linux
+- Fix connection state not being preserved when being added the first time
+- Fix application failing to start up if OS reported invalid screen size bounds
+- Fix VMware VM not being able to be parsed if configuration file did not specify an encoding or name
+- Fix startup failing when installation was located on a ramdisk
+- Fix some miscellaneous cache data being stored in the user home directory
+- Fix error handling when jump host chain formed a loop
+- Fix PowerShell remote sessions being blocked by execution policy
+- Fix race condition when locking user data directory
+- Fix some CLI commands not starting daemon correctly if it is not already running
+- Fix text field when showing askpass window not being focused automatically
+- Fix combobox selections not working well with keyboard-only workflows
+- Fix many possible small NullPointerExceptions
