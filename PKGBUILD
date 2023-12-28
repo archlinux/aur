@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Extended refactoring capabilities for Python LSP Server using Rope."
 arch=(any)
 url="https://github.com/python-rope/pylsp-rope"
-license=(MIT license)
+license=('MIT')
 depends=("python-rope" "python-typing_extensions" "python" "python-lsp-server")
 makedepends=("python" "python-pip" "python-build" "python-installer" "python-pytest" "python-wheel")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
@@ -21,6 +21,7 @@ build() {
 package() {
 	cd $_name-$pkgver
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 check() {
 	cd $_name-$pkgver
