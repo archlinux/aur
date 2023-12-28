@@ -1,7 +1,7 @@
 pkgbase = hexhoot-bin
 	pkgdesc = An Opensource Peer-to-peer communication platform with Zero-Knowledge-Proof based authentication.
 	pkgver = 1.0.3
-	pkgrel = 5
+	pkgrel = 6
 	url = http://blog.hexhoot.com/
 	arch = x86_64
 	license = AGPL3
@@ -11,6 +11,6 @@ pkgbase = hexhoot-bin
 	source = hexhoot-1.0.3.deb::https://github.com/zenineasa/HexHoot/releases/download/v1.0.3/hexhoot_1.0.3_amd64.deb
 	source = hexhoot.sh
 	sha256sums = 32718c19454f79216858ef3406f59a777e3f1724330d716498d5b4cb262eab9d
-	sha256sums = 47680e0e2fe75cf5faa9c963d515f229d91f48a94463c717044301ea80e52dcc
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = hexhoot-bin
