@@ -13,7 +13,7 @@ optdepends=()
 provides=()
 conflicts=()
 source=("$_pkgname::git+https://github.com/frapa/femto.git")
-md5sums=()
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -23,6 +23,10 @@ pkgver() {
 build() {
     cd "$_pkgname"
     cargo build --release
+}
+
+check() {
+    cargo test --release
 }
 
 package() {

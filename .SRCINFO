@@ -8,5 +8,6 @@ pkgbase = femto-git
 	makedepends = git
 	makedepends = cargo
 	source = femto::git+https://github.com/frapa/femto.git
+	sha256sums = SKIP
 
 pkgname = femto-git
