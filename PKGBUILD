@@ -2,11 +2,12 @@
 
 _pkgname="qogir-cursor-theme"
 pkgname="${_pkgname}-git"
+gitname="Qogir-icon-theme"
 pkgver=r268.4f227b75
 pkgrel=1
 pkgdesc="An x-cursor theme inspired by Qogir theme and based on capitaine-cursors"
 arch=("any")
-url="https://github.com/vinceliuice/Qogir-icon-theme"
+url="https://github.com/vinceliuice/${gitname}"
 license=("GPL3")
 makedepends=("git")
 provides=("${_pkgname}")
@@ -15,13 +16,13 @@ source=("git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/Qogir-icon-theme/src/cursors/"
+  cd "${srcdir}/${gitname}/src/cursors/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   install -d "${pkgdir}/usr/share/icons"
-  cd "${srcdir}/Qogir-icon-theme/src/cursors/"
+  cd "${srcdir}/${gitname}/src/cursors/"
   cp -r "dist" "${pkgdir}/usr/share/icons/Qogir-cursors"
   cp -r "dist-dark" "${pkgdir}/usr/share/icons/Qogir-dark-cursors"
   cp -r "dist-manjaro" "${pkgdir}/usr/share/icons/Qogir-manjaro-cursors"
