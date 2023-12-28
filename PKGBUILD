@@ -11,7 +11,7 @@ arch=('any')
 url="https://cryptomator.org/"
 license=('GPL3')
 depends=('fuse3' 'alsa-lib' 'hicolor-icon-theme' 'libxtst' 'libnet' 'libxrender')
-makedepends=('maven')
+makedepends=('maven' 'unzip')
 optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords' 'ttf-hanazono: Install this font when using Japanese system language')
 source=("cryptomator-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/${pkgver}.tar.gz"
         "cryptomator-${pkgver}.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}.tar.gz.asc")
@@ -49,9 +49,9 @@ build() {
 
   cd target
 
-  $JAVA_HOME/bin/jlink \
+  "$JAVA_HOME/bin/jlink" \
     --output runtime \
-    --module-path $JMODS_PATH \
+    --module-path "$JMODS_PATH" \
     --add-modules java.base,java.desktop,java.instrument,java.logging,java.naming,java.net.http,java.scripting,java.sql,java.xml,javafx.base,javafx.graphics,javafx.controls,javafx.fxml,jdk.unsupported,jdk.crypto.ec,jdk.security.auth,jdk.accessibility,jdk.management.jfr,jdk.net \
     --strip-native-commands \
     --no-header-files \
@@ -59,7 +59,7 @@ build() {
     --strip-debug \
     --compress=1
 
-  $JAVA_HOME/bin/jpackage \
+  "$JAVA_HOME/bin/jpackage" \
     --type app-image \
     --runtime-image runtime \
     --input libs \
