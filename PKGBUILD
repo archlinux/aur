@@ -13,7 +13,8 @@ conflicts=('xwaylandvideobridge' 'xwaylandvideobridge-git' 'xwaylandvideobridge-
 depends=('qt5-base' 'qt5-x11extras' 'qt5-declarative' 'kcoreaddons5' 'kwindowsystem5' 'kwidgetsaddons5' 'knotifications5' 'ki18n5' 'gettext' 'xdg-desktop-portal' 'libxcb')
 makedepends=('git' 'ostree')
 optdepends=('freetype2' 'fontconfig' 'pkgconf')
-source=("$_name-$pkgver.flatpak::${url}/-/jobs/${_job}/artifacts/raw/${_name}.flatpak"
+source=($_name-$pkgver.flatpak #"$_name-$pkgver.flatpak::${url}/-/jobs/${_job}/artifacts/raw/${_name}.flatpak"
+    #↑↑↑ Error 404 - they removed ALL the artifacts as of 29 Dec 2023. My copy temporarily until new jobs are pushed. Sorry for inconvenience ↑↑↑
 		xwaylandvideobridge.sh)
 sha512sums=('f664c408c16a34a178cb6a7bb83ad540b07520374d3ffe48643866ea676222f9b95856afd076683e21ee258c4b8ac1ed67d44a6fb917c8223b6cf9aef776d16c'
             '71a5a0abff0ae6d6c8b4ff94ce1f343864b33a8e403d9f7c8d1fd7b07c0981468917f1589af7acf1e6296aa20697eda0a99fc8f2afea86cff06849a166e94d53')
