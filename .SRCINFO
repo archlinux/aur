@@ -1,11 +1,10 @@
 pkgbase = python-pylsp-rope
 	pkgdesc = Extended refactoring capabilities for Python LSP Server using Rope.
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/python-rope/pylsp-rope
 	arch = any
 	license = MIT
-	license = license
 	makedepends = python
 	makedepends = python-pip
 	makedepends = python-build
@@ -16,7 +15,7 @@ pkgbase = python-pylsp-rope
 	depends = python-typing_extensions
 	depends = python
 	depends = python-lsp-server
-	source = https://files.pythonhosted.org/packages/source/p/pylsp-rope/pylsp-rope-0.1.10.tar.gz
-	sha256sums = 9e6104f15f922f633a4ba06ba0280f08a5e18973028f9bbdcae57b715d81cdd7
+	source = https://files.pythonhosted.org/packages/source/p/pylsp-rope/pylsp-rope-0.1.11.tar.gz
+	sha256sums = 48aadf993dafa5e8fca1108b4a5431314cf80bc78cffdd56400ead9c407553be
 
 pkgname = python-pylsp-rope

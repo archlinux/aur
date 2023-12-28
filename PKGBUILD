@@ -3,7 +3,7 @@
 # Python package author: Lie Ryan <lie.1296@gmail.com>
 pkgname=python-pylsp-rope
 _name=${pkgname#python-}
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Extended refactoring capabilities for Python LSP Server using Rope."
 arch=(any)
@@ -12,7 +12,7 @@ license=('MIT')
 depends=("python-rope" "python-typing_extensions" "python" "python-lsp-server")
 makedepends=("python" "python-pip" "python-build" "python-installer" "python-pytest" "python-wheel")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("9e6104f15f922f633a4ba06ba0280f08a5e18973028f9bbdcae57b715d81cdd7")
+sha256sums=('48aadf993dafa5e8fca1108b4a5431314cf80bc78cffdd56400ead9c407553be')
 build() {
 	cd $_name-$pkgver
 	python -m build --wheel --no-isolation
