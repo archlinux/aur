@@ -13,7 +13,7 @@ url='http://www.snapgene.com/products/snapgene-viewer/'
 license=('custom')
 # A valid licence is required to use the full version of snapgene
 source=("https://cdn.snapgene.com/downloads/SnapGeneViewer/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/snapgene_viewer_"$pkgver"_linux.rpm" "snapgene-viewer")
-sha512sums=('c39ed1e5d5f1960b2d052faa086c898a56a6541982649870a0afdd122c49264e1c957a94fa6bbea9704f3c2f42536250a5d27f9485ae59addd4468c30b9951a8' '521c2804514c25768df142aae58f94847c52e0d1f6008eae902b591b6d7988a4b11fece1e7192e7f8ee31652315cb4413e530231276a983a626f083fe0442690')
+sha512sums=('c39ed1e5d5f1960b2d052faa086c898a56a6541982649870a0afdd122c49264e1c957a94fa6bbea9704f3c2f42536250a5d27f9485ae59addd4468c30b9951a8' '082c0fe6d8d5a6b8822d73589718d1baf9d4f651092c4beea8247e8a7af7ee9597858502124300111d020a07b3da612609caca21eb78fc889e6948d579ee7ea9')
 
 package() {
   cd "$pkgdir"
