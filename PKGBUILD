@@ -6,7 +6,7 @@ _pkgver=6.1
 _kernel_tag="opi"
 pkgbase=linux-$_kernel_tag
 pkgname=("${pkgbase}-headers" $pkgbase)
-pkgver=6.1.25
+pkgver=6.1.25.opi
 pkgrel=1
 arch=('aarch64')
 license=('GPL2')
@@ -20,8 +20,8 @@ source=(git+$url/linux.git#branch=linux-6.1-rkbsp6-panthor-v4
         'config'
         )
 
-b2sums=('SKIP'
-        '60ef0a5252d57212b79158c42928d255f62dd8139a57bb66e013f101aa78a54976850edb30d07b72dfbd52cff5e739176c59172dbededf53c3499fb7a72d263b'
+sha512sums=('SKIP'
+        '03cdaa19ff754c1b16cbfe8b08d38fed2f21c688a6e00d331ca53c4ef937c1cd3fdcfca2241d136238f220a87f3da04c1e6e192d262b4505f8bff3ddcbc8b9ad'
         '6529c8735a6279caba7724f5369b86e7e1e411d782c786009ba808c052e49d391af2d909d175c10ee027f6a08c23d9273343f31799cd93b6d5ddd6ef3bfd3fb4')
 
 pkgver(){
