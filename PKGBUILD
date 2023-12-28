@@ -2,7 +2,7 @@
 
 _pkgname="psource"
 pkgname="${_pkgname}-git"
-pkgver=0.1.3.80cad0e # This will be dynamically replaced by the pkgver() function
+pkgver=0.1.7.f02b632 # This will be dynamically replaced by the pkgver() function
 pkgrel=1
 pkgdesc="CLI tool to pretty print source code to stdout or directly to the clipboard."
 arch=('x86_64')
