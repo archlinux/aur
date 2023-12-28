@@ -5,12 +5,12 @@ pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
 pkgver=5.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-22_04-x86-64'
 url='https://simplex.chat/'
-_rawurl='https://raw.githubusercontent.com/simplex-chat/simplex-chat/master'
+_rawurl='https://raw.githubusercontent.com/simplex-chat/simplex-chat/stable'
 source=(
   "$_pkgname-$pkgver::https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-$_platform"
   "$_rawurl/PRIVACY.md"
