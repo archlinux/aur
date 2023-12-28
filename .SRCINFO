@@ -1,0 +1,24 @@
+pkgbase = haskoy-font
+	pkgdesc = Open-source variable sans-serif typeface family
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ertekinno/haskoy
+	arch = any
+	license = OFL
+	source = git+https://github.com/ertekinno/haskoy
+	sha256sums = SKIP
+
+pkgname = otf-haskoy
+	pkgdesc = Open-source variable sans-serif typeface family (16 static cuts)
+
+pkgname = ttf-haskoy
+	pkgdesc = Open-source variable sans-serif typeface family (16 static cuts)
+
+pkgname = woff2-haskoy
+	pkgdesc = Open-source variable sans-serif typeface family (16 static cuts)
+
+pkgname = ttf-haskoy-variable
+	pkgdesc = Open-source variable sans-serif typeface family (variable version)
+
+pkgname = woff2-haskoy-variable
+	pkgdesc = Open-source variable sans-serif typeface family (variable version)
