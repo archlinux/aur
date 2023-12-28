@@ -1,6 +1,6 @@
 pkgbase = i3stat-git
 	pkgdesc = A lightweight and batteries-included status_command for i3 and sway
-	pkgver = r368.fae1e70
+	pkgver = r369.fae181a
 	pkgrel = 1
 	url = https://github.com/acheronfail/i3stat
 	arch = x86_64
