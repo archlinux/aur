@@ -1,6 +1,6 @@
 # Maintainer: VCalV
 pkgname=qlipmon-git
-pkgver=r19.a2852b2
+pkgver=r21.de4c39e
 pkgrel=2
 pkgdesc="clipboard manager with rofi plugin and dbus interface"
 arch=('x86_64')
