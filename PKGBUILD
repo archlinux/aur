@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname=mingw-w64-jasper
-pkgver=4.0.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (mingw-w64)"
 arch=(any)
@@ -13,12 +13,10 @@ depends=('mingw-w64-libjpeg-turbo')
 options=(staticlibs !strip !buildflags)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/mdadams/jasper/archive/version-${pkgver}.tar.gz
         0001-Fix-exports.patch
-        0002-Fix-building-for-mingw-w64-target.patch
-        0003-Fix-filename-buffer-overflow.patch)
-sha512sums=('dc03434870e85b1fdbdf41a3e07ce5a8044c8d225717d3d7a5969d45e3bd716bfb2abc4b4e0b8cec2f4071a7520c5d3e48939dba0cabe6d192eacd593de0c563'
-            '0eb2588a54e154ca93977088a63b7261bed605047e51ae0e9d537b0abbb5846a94f47f3e5df7cfd753d12c80273b922c74a752578938d3ba4da81f3b756b0ffb'
-            'bd61f586bc910fd698d5f3e66a7892a63ee85eabc6c2802672d607d1b7b3fda6e412973f5bcc7b47db2c80b3c627f679dd45cbe2d13b08f8520314d4d29e2468'
-            '31d900b6c160205151cbfac9f36fa0e5243dc87b0b8eab159cfa0b6935d87dd08119a52a0f853e6c2f3f754ca6c0030ec229379deb68ba16befd5f99983112ad')
+        0002-Fix-building-for-mingw-w64-target.patch)
+sha512sums=('a15c196d7e448fb3c8b6512793d4b430e58ba6adf343b46392cac0880ae8c385cd75b43dd566c4a25baab983089cb95c00ae538dc0b84282cc98f2a9ce398d43'
+            'ffa3b51509c626ba7e93375161c2d8d80fe27b54601a1f66bd93032f7c5d2125d8f3d7f8a48701ee9c7422c79035f769f8dd032242475d3628bbf2da27cdcf00'
+            '643020a9f930d4bff0ea73f24c0801910b9bf34e5cc2feb9adbaf4b74965dd38739b957153393468f7d1d87c88232364ae5d3087e17c99b0f7c194febc825355')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -26,11 +24,9 @@ prepare() {
   cd "$srcdir/jasper-version-$pkgver"
   patch -p1 -i "${srcdir}"/0001-Fix-exports.patch
   patch -p1 -i "${srcdir}"/0002-Fix-building-for-mingw-w64-target.patch
-  patch -p1 -i "${srcdir}"/0003-Fix-filename-buffer-overflow.patch
 }
 
 build() {
-  cd "$srcdir/jasper-version-$pkgver"
   local options=(
     -DCMAKE_INSTALL_LIBDIR=lib
     -DCMAKE_BUILD_TYPE=Release
@@ -43,11 +39,11 @@ build() {
   )
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
-    ${_arch}-cmake ${options[@]} -DJAS_ENABLE_SHARED=OFF ..
+    ${_arch}-cmake ${options[@]} -DJAS_ENABLE_SHARED=OFF "$srcdir/jasper-version-$pkgver"
     make
     popd
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake ${options[@]} -DJAS_ENABLE_SHARED=ON ..
+    ${_arch}-cmake ${options[@]} -DJAS_ENABLE_SHARED=ON "$srcdir/jasper-version-$pkgver"
     make
     popd
   done
@@ -55,9 +51,9 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/jasper-version-${pkgver}/build-${_arch}-static"
+    cd "${srcdir}/build-${_arch}-static"
     make DESTDIR="$pkgdir" install
-    cd "${srcdir}/jasper-version-${pkgver}/build-${_arch}"
+    cd "${srcdir}/build-${_arch}"
     make DESTDIR="$pkgdir" install
     rm -r "$pkgdir/usr/${_arch}/share"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
