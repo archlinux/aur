@@ -1,0 +1,15 @@
+pkgbase = ttf-dm-fonts-git
+	pkgdesc = A set of fonts commissioned from Colophon Foundry for the DeepMind team.
+	pkgver = 5.003r45.da9bd90
+	pkgrel = 1
+	url = https://github.com/googlefonts/dm-fonts
+	arch = any
+	license = SIL
+	makedepends = git
+	depends = fontconfig
+	provides = ttf-dm-fonts
+	conflicts = ttf-dm-fonts
+	source = git+https://github.com/googlefonts/dm-fonts.git
+	md5sums = SKIP
+
+pkgname = ttf-dm-fonts-git
