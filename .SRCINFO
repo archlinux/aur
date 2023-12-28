@@ -1,6 +1,6 @@
 pkgbase = upbge-git
 	pkgdesc = Uchronia Project Blender Game Engine fork of Blender Game Engine
-	pkgver = 136340.df8f20a0abb
+	pkgver = 137410.f523c32ec73
 	pkgrel = 1
 	url = https://upbge.org/
 	arch = i686
@@ -68,7 +68,6 @@ pkgbase = upbge-git
 	source = 0001-use-github.com-for-make-update-git.patch
 	source = 0003-usd-python.patch
 	source = 0004-fix-opencollada-pcre.patch
-	source = 1001-python11.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -79,6 +78,5 @@ pkgbase = upbge-git
 	sha256sums = 0bb8ac4cba0ac00999790087c51e601d185b78a96081f08a7c7afb8c0f4b0d7c
 	sha256sums = c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397
 	sha256sums = 6beedc541e33288a282f57cd2bd09860f333154027b6175e9f61cce49b8db5df
-	sha256sums = ae81c77dd41736bbcf65e31fa77477979b214004be3423e10eddef7af3f12dff
 
 pkgname = upbge-git
