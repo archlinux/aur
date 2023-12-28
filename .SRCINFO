@@ -1,0 +1,14 @@
+pkgbase = bananacakepop-beta-bin
+	pkgdesc = A powerful GraphQL IDE that joins you and your team on your GraphQL journey.
+	pkgver = 14.0.0_insider.2
+	pkgrel = 1
+	url = https://chillicream.com/products/bananacakepop/
+	arch = x86_64
+	license = custom:ChilliCreamLicense1.0
+	options = !strip
+	source = https://cdn.bananacakepop.com/app/BananaCakePop-14.0.0-insider.2-linux-x86_64.AppImage
+	source = LICENSE
+	b2sums = f1adb5abe6849f2e38dd83a8cc9a8d567bee05c12471b658def63999135d16e51d0ef56972b32c4ae56ed983cb14cac8d11929c379b1a4b310d50d7e3ff07de0
+	b2sums = 65c1186762988ba427d42dc746f97aa9a7ceabc245570aeab701752e675ffec82c4f3718f4f4a116cc92e967bc38cae5df1baf5eb053da045bf2a122de2aeaf6
+
+pkgname = bananacakepop-beta-bin
