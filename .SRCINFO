@@ -1,8 +1,8 @@
 pkgbase = meshboard-headless
 	pkgdesc = Synchronize the clipboard across a mesh of hosts, without display server support
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
-	url = https://github.com/hossbeast/meshboard
+	url = https://git.sr.ht/~hossbeast/meshboard
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = meshboard-headless
 	depends = glibc
 	provides = meshboard
 	conflicts = meshboard
-	source = meshboard::git+https://github.com/hossbeast/meshboard#tag=v0.5.4?signed
+	source = meshboard::git+https://git.sr.ht/~hossbeast/meshboard#tag=v0.5.5?signed
 	validpgpkeys = 79154EE9C4811D32B814EB88B1B3C76D76638462
 	sha512sums = SKIP
 
