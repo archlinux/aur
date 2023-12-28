@@ -24,15 +24,6 @@ sha512sums=('SKIP'
         '03cdaa19ff754c1b16cbfe8b08d38fed2f21c688a6e00d331ca53c4ef937c1cd3fdcfca2241d136238f220a87f3da04c1e6e192d262b4505f8bff3ddcbc8b9ad'
         '6529c8735a6279caba7724f5369b86e7e1e411d782c786009ba808c052e49d391af2d909d175c10ee027f6a08c23d9273343f31799cd93b6d5ddd6ef3bfd3fb4')
 
-pkgver(){
-  #gets the commit count of both repos + _pkgrel and sums them to calculate the revision number
-  cd linux
-  rm localversion.*
-  echo "-$_kernel_tag" > localversion.20-pkgname
-  _version=$(make kernelrelease) 
-  printf "${_version//-/\.}"
-}
-
 prepare() {
   cd linux
 
