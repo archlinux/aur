@@ -1,6 +1,6 @@
 /pkg
 /src
 /PKGBUILD-namcap.log
-/*.tar.xz
-/*.tar.xz.asc
-/*.pkg.tar.zst
+/python-yappi-*.log
+/python-yappi-*.tar.gz
+/python-yappi-*.pkg.tar.zst
