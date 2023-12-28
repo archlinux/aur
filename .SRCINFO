@@ -1,0 +1,15 @@
+pkgbase = python-biscuits
+	pkgdesc = Fast and tasty cookies handling
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/pyrates/biscuits
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest-runner
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	source = python-biscuits-0.3.1.tar.gz::https://github.com/pyrates/biscuits/archive/0.3.1.tar.gz
+	sha512sums = d603ee536348686d958fde9de6c79f438f1ab753746518a05abc4b7ff5b236e6b744fad5a41d712c5c01867e63e63ce11da47394cdc4f9c2e89a04fa0fb4fb14
+
+pkgname = python-biscuits

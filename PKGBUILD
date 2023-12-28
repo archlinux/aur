@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-biscuits
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Fast and tasty cookies handling"
 url="https://github.com/pyrates/biscuits"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('cython' 'python-setuptools')
 checkdepends=('python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pyrates/biscuits/archive/$pkgver.tar.gz")
-sha512sums=('75650cef8512301ffef29fd6b55f200a299812739038b43f470885e59a038ed66beeb851312f9e5a2b1a448d0bae15d68ead11bce0563632c559177b72688f95')
+sha512sums=('d603ee536348686d958fde9de6c79f438f1ab753746518a05abc4b7ff5b236e6b744fad5a41d712c5c01867e63e63ce11da47394cdc4f9c2e89a04fa0fb4fb14')
 
 build() {
   cd biscuits-$pkgver
