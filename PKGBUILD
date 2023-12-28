@@ -2,28 +2,28 @@
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 
 pkgname=imhex-bin
-pkgver=1.31.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM. "
 arch=("x86_64")
 url="https://github.com/WerWolv/ImHex"
 license=('GPL2')
-depends=(glfw mbedtls freetype2 libglvnd dbus gtk3 curl fmt yara nlohmann-json)
+depends=(glfw mbedtls freetype2 libglvnd dbus gtk3 curl fmt yara nlohmann-json libarchive)
 makedepends=(git)
 provides=(imhex)
 conflicts=(imhex)
 source=("$url/releases/download/v$pkgver/imhex-$pkgver-ArchLinux-x86_64.pkg.tar.zst")
-md5sums=(d681f13acee25dbe330105f71d64b446)
+md5sums=(140c18f324fefb73a5499449e9808476)
 
 package() {
     install -Dm755 "$srcdir/usr/bin/imhex" "$pkgdir/usr/bin/imhex"
     install -Dm644 "$srcdir/usr/lib/libimhex.so.$pkgver" "$pkgdir/usr/lib/libimhex.so.$pkgver"
 
-    for plugin in "$srcdir/usr/lib/imhex/plugins/"*.hexplug; do
+    for plugin in "$srcdir/usr/lib/imhex/plugins/"*.hexplug*; do
         install -Dm644 "$plugin" "$pkgdir/usr/lib/imhex/plugins/${plugin##*/}"
     done
 
     install -d "$pkgdir/usr/share/imhex"
     cp -r "$srcdir/usr/share/imhex/"{constants,encodings,includes,magic,patterns} "$pkgdir/usr/share/imhex"
-    cp -r "$srcdir/usr/share/"{applications,licenses} "$pkgdir/usr/share"
+    cp -r "$srcdir/usr/share/"{applications,licenses,pixmaps} "$pkgdir/usr/share"
 }
