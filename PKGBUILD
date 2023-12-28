@@ -3,7 +3,7 @@
 pkgname=jriver-media-center
 _debpkgver=31.0.83
 pkgver=31.0.83
-pkgrel=1
+pkgrel=2
 pkgdesc="The Most Comprehensive Media Software"
 arch=('x86_64' 'x86_64_v3')
 url="http://www.jriver.com/"
@@ -19,4 +19,5 @@ package() {
   bsdtar xf data.tar.xz -C "$pkgdir"
     install -Dm644 "License.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  rm -r "$pkgdir/etc"
 }

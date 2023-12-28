@@ -1,7 +1,7 @@
 pkgbase = jriver-media-center
 	pkgdesc = The Most Comprehensive Media Software
 	pkgver = 31.0.83
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jriver.com/
 	arch = x86_64
 	arch = x86_64_v3
