@@ -1,7 +1,7 @@
 # Maintainer: Callum Osmotherly <acheronfail@gmail.com>
 pkgname=i3stat-git
-pkgver=r367.fae1a6b
-pkgrel=2
+pkgver=r368.fae1e70
+pkgrel=1
 pkgdesc="A lightweight and batteries-included status_command for i3 and sway"
 arch=('x86_64')
 url="https://github.com/acheronfail/i3stat"
