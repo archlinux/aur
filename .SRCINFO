@@ -1,0 +1,17 @@
+pkgbase = python-gnuplot
+	pkgdesc = Plot graphs with Gnuplot
+	pkgver = 1.8
+	pkgrel = 13
+	url = https://gnuplot-py.sourceforge.net/
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = gnuplot
+	source = git+https://github.com/yuyichao/gnuplot-py#commit=2c2218dc67
+	source = 0001-1.8-is-not-a-valid-version-number.patch
+	sha256sums = SKIP
+	sha256sums = 8d37967c27426669b42b7644f4c9ee3c424e99eeb46b82a6c8b6662a29781b6c
+
+pkgname = python-gnuplot
