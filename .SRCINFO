@@ -1,6 +1,6 @@
 pkgbase = python-coverxygen
 	pkgdesc = Generate doxygen's documentation coverage report
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/psycofdj/coverxygen
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = python-coverxygen
 	makedepends = python-build
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = python-coverxygen-1.8.0.tar.gz::https://github.com/psycofdj/coverxygen/archive/refs/tags/1.8.0.tar.gz
-	sha512sums = ab6e42eedb147bbf49ed0b61fc7e41ac42deccfa0c0ae7c0febe04f30ee38ed48f09779d6ac527b67371eef5d90c3d7cb6738ee3696819c2fef7006f8e85b923
+	source = python-coverxygen-1.8.1.tar.gz::https://github.com/psycofdj/coverxygen/archive/refs/tags/1.8.1.tar.gz
+	sha512sums = 3e1e42b4ca08439360c060705e04b6f77815eb72c2babc2abdb1b45df9064801a0adc80b99676260fa53764331740fbc7adee060d8bd1a8155b054a91cfbb09d
 
 pkgname = python-coverxygen

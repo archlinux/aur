@@ -2,7 +2,7 @@
 
 pkgname=python-coverxygen
 _name=${pkgname#python-}
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Generate doxygen's documentation coverage report"
 arch=(x86_64)
@@ -17,7 +17,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha512sums=(
-  'ab6e42eedb147bbf49ed0b61fc7e41ac42deccfa0c0ae7c0febe04f30ee38ed48f09779d6ac527b67371eef5d90c3d7cb6738ee3696819c2fef7006f8e85b923'
+  '3e1e42b4ca08439360c060705e04b6f77815eb72c2babc2abdb1b45df9064801a0adc80b99676260fa53764331740fbc7adee060d8bd1a8155b054a91cfbb09d'
 )
 
 _archive="$_name-$pkgver"
