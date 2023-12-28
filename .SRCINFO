@@ -1,11 +1,12 @@
 pkgbase = kalamine-git
 	pkgdesc = A text-based, cross-platform Keyboard Layout Maker.
-	pkgver = r76.b566115
+	pkgver = r77.decbb32
 	pkgrel = 1
 	url = https://github.com/fabi1cazenave/kalamine
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-hatchling
 	depends = python-click
 	depends = python-pyyaml
 	depends = python-setuptools
