@@ -1,6 +1,6 @@
 pkgbase = gtk3-no_deadkeys_underline
 	pkgdesc = Like gtk3 in extra but with a patch to disable dead keys having an underline below them while typing and also without tracker3
-	pkgver = 3.24.38
+	pkgver = 3.24.39
 	pkgrel = 1
 	epoch = 1
 	url = https://www.gtk.org/
@@ -58,7 +58,7 @@ pkgbase = gtk3-no_deadkeys_underline
 	conflicts = gtk3
 	replaces = gtk3-print-backends<=3.22.26-1
 	options = debug
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=3e6fd55ee00d4209ce2f2af292829e4d6f674adc
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=9ce32d5d7d2411032876232d86b66f9fd5f7e815
 	source = gtk-query-immodules-3.0.hook
 	source = no_deadkeys_underline.patch
 	sha256sums = SKIP
