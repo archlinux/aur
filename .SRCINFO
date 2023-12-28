@@ -1,6 +1,6 @@
 pkgbase = hyprdots-ctl
 	pkgdesc = CLI for Hyprdots Configurations
-	pkgver = v0.0.23122811
+	pkgver = v0.1.23122811
 	pkgrel = 1
 	url = https://github.com/kRHYME7/Hyprdots-ctl
 	arch = x86_64
