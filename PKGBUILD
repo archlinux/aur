@@ -2,8 +2,8 @@
 
 pkgbase=deepin-unioncode-git
 pkgname=deepin-unioncode-git
-pkgver=1.2.8.r0.gaf3ed9fe
-pkgrel=3
+pkgver=1.2.8.r12.gf0ca4e64
+pkgrel=1
 pkgdesc="IDE authored by deepin"
 arch=(x86_64
     aarch64
@@ -20,7 +20,8 @@ replaces=()
 depends=(
     glib2
     glibc
-    )
+    dtkgui
+    dtkwidget)
 makedepends=(
     argtable
     cmake
@@ -30,8 +31,6 @@ makedepends=(
     capstone
     clang
     dbus
-    dtkgui
-    dtkwidget
     doxygen
     hiredis
     llvm
