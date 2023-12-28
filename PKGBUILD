@@ -15,7 +15,7 @@ _pkgname=qgis
 provides=('qqis=3.34.1')
 conflicts=('qgis')
 pkgver=3.34.1
-pkgrel=1
+pkgrel=2
 pkgdesc="QGIS with GRASS and QtWebkit to support some plugins and qgis' functions"
 arch=(x86_64)
 url="https://qgis.org/"
@@ -24,8 +24,8 @@ depends=(ocl-icd proj geos gdal expat spatialindex qwt libzip sqlite3 protobuf
          zlib exiv2 postgresql-libs libspatialite zstd pdal
          qt5-base qt5-svg qt5-serialport qt5-location qt5-3d qt5-declarative qt5-multimedia
          qscintilla-qt5 qtkeychain-qt5 qca-qt5 gsl python-pyqt5 python-qscintilla-qt5
-         hdf5 netcdf libxml2 draco grass python-pyqt5-webkit) # laz-perf
-makedepends=(cmake ninja opencl-clhpp fcgi qt5-tools sip67 pyqt-builder)
+         hdf5 netcdf libxml2 draco grass python-pyqt5-webkit nodejs-lts-hydrogen)
+makedepends=(cmake ninja opencl-clhpp fcgi qt5-tools sip pyqt-builder)
 optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin')
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
