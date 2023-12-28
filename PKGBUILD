@@ -1,14 +1,13 @@
 # Maintainer: Aline Abler <alinea@riseup.net>
 
 pkgname=ttf-metamorphous
-pkgver=20170131
-pkgrel=3
+pkgver=20231228
+pkgrel=1
 pkgdesc='Metamorphous Font'
-url="http://sorkintype.com/fonts.html"
+url="https://fonts.google.com/specimen/Metamorphous"
 license=('custom:OFL')
 arch=('any')
-source=(Metamorphous.ttf::"https://fonts.gstatic.com/s/metamorphous/v20/Wnz8HA03aAXcC39ZEX5y1330PCCthTsmaQ.ttf"
-        OFL.txt)
+source=(${pkgname}-${pkgver}-${pkgrel}::"https://fonts.google.com/download?family=Metamorphous")
 
 package() {
 	cd "${srcdir}"
@@ -17,5 +16,4 @@ package() {
 
 	install -Dm644 "OFL.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('f5405664216eaa1c1433b01da1c23582'
-         '6ed93967ff0dc6dd9c8d31c17f817a06')
+md5sums=('29716b2b9074bd5cf54af3a7cd661a19')
