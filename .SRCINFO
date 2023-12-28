@@ -7,7 +7,6 @@ pkgbase = curseofwar-sdl
 	license = GPL3
 	makedepends = git
 	depends = sdl2
-	conflicts = curseofwar
 	source = git+https://github.com/a-nikolaev/curseofwar.git
 	md5sums = SKIP
 

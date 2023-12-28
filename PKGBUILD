@@ -6,7 +6,6 @@ pkgdesc="A fast-paced action strategy game with SDL support"
 arch=('x86_64')
 url="https://a-nikolaev.github.io/curseofwar/"
 license=('GPL3')
-conflicts=('curseofwar')
 depends=('sdl2')  # This might be sdl or sdl2, check the specific dependency
 makedepends=('git')
 source=("git+https://github.com/a-nikolaev/curseofwar.git")  # The Git repository
