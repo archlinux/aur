@@ -1,5 +1,5 @@
 pkgname=mingw-w64-speex
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A free codec for free speech (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-speexdsp' 'mingw-w64-libogg')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://downloads.xiph.org/releases/speex/speex-$pkgver.tar.gz")
-md5sums=('8ab7bb2589110dfaf0ed7fa7757dc49c')
+md5sums=('fe7bf610883ff202092b92c72fe0fe3e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
