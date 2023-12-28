@@ -2,15 +2,17 @@
 
 pkgname=ocaml-earley
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Parsing library based on Earley Algorithm'
 arch=(i686 x86_64)
 url="https://github.com/rlepigre/$pkgname"
 license=(custom:CECILLB)
-depends=(ocaml
+depends=(glibc
+         ocaml
          zstd libzstd.so)
 makedepends=(dune
-             ocaml-stdlib-shims)
+             ocaml-stdlib-shims
+             ocaml-findlib)
 options=(!strip)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
@@ -25,7 +27,7 @@ package() {
 	cd "$_archive"
 	dune install \
 		--prefix "/usr" \
-		--libdir "/usr/lib/ocaml" \
+		--libdir "$(ocamlfind printconf destdir)" \
 		--docdir "/usr/share/doc" \
 		--destdir "$pkgdir"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENCE
