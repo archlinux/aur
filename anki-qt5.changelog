@@ -1,3 +1,11 @@
+# 23.12.1-1
+  * Revert Qt to 6.5 on Mac to fix crashes some users were experiencing.
+  * Update FSRS to fix an overly aggressive outlier filter by @L-M-Sherlock in open-spaced-repetition/fsrs-rs#146
+  * Fix incorrect retention estimates in deck options by @L-M-Sherlock in #2911
+  * Improve description of stability in graphs by @user1823 in #2910
+  * Fix I/O shortcuts conflicting with editor on mobile by @krmanik in #2916
+  * Fix some bugs in notetype merging by @RumovZ in #2912
+
 # 23.12-1
 FSRS:
 
