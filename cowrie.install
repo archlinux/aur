@@ -1,7 +1,8 @@
 post_install() {
-  getent group cowrie &> /dev/null || groupadd cowrie
-  getent passwd cowrie &> /dev/null || \
-    useradd -d /opt/cowrie -g cowrie -s /bin/nologin cowrie
+  echo '
+  u cowrie - "cowrie daemon" /opt/cowrie
+  m cowrie cowrie' | \
+          systemd-sysusers --replace=/usr/lib/sysusers.d/cowrie.conf -
 
   chown -R cowrie:cowrie /opt/cowrie
 }

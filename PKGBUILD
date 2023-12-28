@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=cowrie
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Medium interaction SSH honeypot designed to log brute force attacks and entire shell interaction'
 url='https://github.com/cowrie/cowrie'
@@ -37,17 +37,12 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/cowrie/${pkgname}/archiv
 #source=(${pkgname}-${_gitrev}.tar.gz::https://github.com/micheloosterhof/${pkgname}/archive/${_gitrev}.tar.gz
 # '0001-patch-service.patch')
 
-sha512sums=('8412450f1306076ef7a9e04d6c8dad75ba68c2436827fa675c71efbc8ea31d19f9c85463a20eab9c61f361ab950673302cb35f799eb53d113daed6391d1a6452'
+sha512sums=('e87f2794edd0db7cd599a5bb9ffdda12c9ceab06ffe1e31714cb988796dadea01ca093c66ed4a2ca6065634773c296cebca14a13e2a6ca1862e716e767838bcd'
             'a79904d764829b246fce7691f90d1de7a478985217eb458d441a2fad0aed4558d70eb2d38208d2bfb393bc42f662dba129678fc14765392959d1316c0d1a8dd1')
 
 prepare() {
   cd "${_pkgdir}"
   patch -p1 -Ni '../0001-patch-service.patch'
-}
-
-build() {
-  cd "${_pkgdir}"
-  python setup.py build
 }
 
 package() {
