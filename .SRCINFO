@@ -1,0 +1,15 @@
+pkgbase = smw-bin
+	pkgdesc = A reverse engineered implementation engine for Super Mario World.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = sdl2
+	source_x86_64 = https://gitlab.com/smw4/binaries/0.1/-/raw/main/smw-linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://gitlab.com/smw4/binaries/0.1/-/raw/main/smw-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+
+pkgname = smw-bin
