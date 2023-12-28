@@ -1,0 +1,14 @@
+pkgbase = curseofwar-sdl
+	pkgdesc = A fast-paced action strategy game with SDL support
+	pkgver = v1.3.0.2.g6292ca8
+	pkgrel = 1
+	url = https://a-nikolaev.github.io/curseofwar/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = sdl2
+	conflicts = curseofwar
+	source = git+https://github.com/a-nikolaev/curseofwar.git
+	md5sums = SKIP
+
+pkgname = curseofwar-sdl
