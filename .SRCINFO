@@ -1,12 +1,12 @@
 pkgbase = heynote-git
 	pkgdesc = A dedicated scratchpad for developers
-	pkgver = 1.4.2
-	pkgrel = 6
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/heyman/heynote
 	arch = any
 	license = MIT
 	depends = npm
-	source = heynote-git-1.4.2.tar.gz::https://github.com/heyman/heynote/archive/v1.4.2.tar.gz
-	sha256sums = 6a4efec095ef0d2676ea7f93238430f8c56d3c57426bf9711dfd057d97a1eb4e
+	source = heynote-git-1.5.0.tar.gz::https://github.com/heyman/heynote/archive/v1.5.0.tar.gz
+	sha256sums = d70159d192e93014e3880c7f2488e1ae09845945405d82d2498b680b1166b8c8
 
 pkgname = heynote-git

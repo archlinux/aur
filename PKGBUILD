@@ -1,7 +1,7 @@
 # Maintainer: Alfonso Reyes <hola@alfon.so>
 pkgname=heynote-git
-pkgver=1.4.2
-pkgrel=6
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="A dedicated scratchpad for developers"
 
 gitPackageName="heynote"
@@ -14,7 +14,7 @@ depends=('npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 sha256sums=(
-  "6a4efec095ef0d2676ea7f93238430f8c56d3c57426bf9711dfd057d97a1eb4e"
+  "d70159d192e93014e3880c7f2488e1ae09845945405d82d2498b680b1166b8c8"
 )
 
 build() {
