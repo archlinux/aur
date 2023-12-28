@@ -2,25 +2,24 @@
 
 pkgbase='python-krpc'
 _pyname='krpc'
-pkgname=('python-krpc' 'python2-krpc')
-pkgver=0.4.8
+pkgname=('python-krpc')
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Client library for kRPC, a Remote Procedure Call server for Kerbal Space Program"
 url="https://github.com/krpc/krpc"
 license=("LGPL3")
 arch=('any')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
+makedepends=('python' 'python-setuptools')
 source=("https://github.com/krpc/krpc/releases/download/v$pkgver/krpc-python-$pkgver.zip")
-sha256sums=('a5681560e50c90de2a2834ae35ce095b4aa00f4fc44ad7bb8ff03016df8d305c')
+b2sums=("467d328729e9978d0aa4b1d42ac2a2c68c584dd55e38f94d7151037fe06fb865e2dfdec5c90c287da06ecbcc546c017b5cd8c1a769c23b5f71c059ff3165b460")
 
-package_python-krpc() {
-  depends=('python' 'python-protobuf')
-  cd "$srcdir/$_pyname-$pkgver"
-  python setup.py install -O1 --root=$pkgdir
+build() {
+	cd $_pyname-$pkgver
+	python setup.py build
 }
 
-package_python2-krpc() {
-  depends=('python2' 'python2-protobuf')
-  cd "$srcdir/$_pyname-$pkgver"
-  python2 setup.py install -O1 --root=$pkgdir
+package() {
+	cd $_pyname-$pkgver
+	python setup.py install --root="$pkgdir" --optimize=1
+	install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
