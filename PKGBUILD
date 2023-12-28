@@ -3,7 +3,7 @@
 pkgname=bookstack
 _camelname=BookStack
 pkgver=23.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
 arch=('any')
 url="https://github.com/BookStackApp/BookStack"
