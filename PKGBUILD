@@ -26,7 +26,7 @@ build() {
 }
 
 check() {
-    cd "_pkgname"
+    cd "$_pkgname"
     cargo test --release
 }
 
