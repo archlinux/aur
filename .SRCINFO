@@ -5,7 +5,6 @@ pkgbase = python-pylsp-rope
 	url = https://github.com/python-rope/pylsp-rope
 	arch = any
 	license = MIT
-	makedepends = python
 	makedepends = python-pip
 	makedepends = python-build
 	makedepends = python-installer
