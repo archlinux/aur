@@ -9,7 +9,14 @@ arch=(any)
 url="https://github.com/toumorokoshi/deepmerge"
 license=(MIT)
 depends=(python)
-makedepends=(python-build python-installer python-setuptools python-setuptools-scm python-toml python-wheel)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-setuptools-scm
+  python-toml
+  python-wheel
+)
 checkdepends=(python-pytest)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
 sha512sums=('9facde604ee02271ad49d9a14e88fa23690c41728c3c350594533725c2e38803cc75f9345ff19bb63ceb318ea7c58a46ed0d6091682560509401206c8b4e8537')
