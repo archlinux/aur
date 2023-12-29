@@ -1,43 +1,46 @@
-# Maintainer: Primalmotion <primalmotion@pm.me>
+# Maintainer: GreyXor <greyxor@protonmail.com>
+# Contributor: Primalmotion <primalmotion@pm.me>
 # Contributor: gilbus <aur@tinkershell.eu>
+
 pkgname=swaylock-git
-pkgver=v1.7.2.r2.gac3b49b
+pkgver=r317.91bb968
 pkgrel=1
-pkgdesc='Screen locker for Wayland '
+pkgdesc='Screen locker for Wayland (git development version)'
 url='https://github.com/swaywm/swaylock'
 license=('MIT')
-provides=('swaylock')
-conflicts=('swaylock')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('wayland' 'libxkbcommon' 'pam' 'cairo' 'gdk-pixbuf2')
-makedepends=('meson' 'git' 'scdoc' 'wayland-protocols')
-source=("${pkgname%-git}::git+$url")
-sha1sums=('SKIP')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+arch=('x86_64')
+depends=(
+    "cairo"
+    "gdk-pixbuf2"
+    "glib2"
+    "glibc"
+    "pam"
+    "wayland"
+    "libxkbcommon"
+)
+makedepends=(
+    "git"
+    "meson"
+    "scdoc"
+    "wayland-protocols"
+)
+backup=('etc/pam.d/swaylock')
+source=("${pkgname}::git+https://github.com/swaywm/swaylock.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-  # Fix ticket FS#31544, sed line taken from gentoo
-  sed -i -e 's:login:system-auth:' "pam/swaylock"
+    # Calculate the version dynamically using git information
+    printf "r%s.%s" "$(git -C "$srcdir/${pkgname}" rev-list --count HEAD)" "$(git -C "$srcdir/${pkgname}" rev-parse --short HEAD)"
 }
 
 build() {
-  mkdir -p build
-  # makepkg is unable to strip the binary, so we tell meson to do it.
-  arch-meson build "${pkgname%-git}" -Dwerror=false --strip
-  ninja -C build
+    arch-meson build "${pkgname}"
+    meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  meson install -C build --destdir "$pkgdir"
+  install -Dm644 "${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim: ts=2 sw=2 et
