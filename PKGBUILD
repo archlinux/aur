@@ -6,7 +6,7 @@ gitver=v6.6.8
 patchver=20230105
 patchname=more-uarches-for-kernel-5.17+.patch
 pkgver=6.6.v.8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -20,8 +20,6 @@ source=(
         'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
-	# linux package install directives for pacman
-	'linux.install'
 	# patch from our graysky archlinux colleague
 	"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/$patchver/$patchname"
 )
@@ -30,8 +28,6 @@ sha256sums=('SKIP'
             '50fce2b270e56a69644294ae93714fe9ee8d6e5dcecca94ef23630334dbe94b5'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
-            #linux install file
-            'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #grayskypatch
             '81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe'
            )
@@ -53,9 +49,6 @@ prepare() {
     echo "Sorry, non x86_64 arch not supported."
       exit 2
   fi
-
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  sed -i '2iexit 0' scripts/depmod.sh
 
   # Implement all packaged patches, report errors but advance anyway.
   msg2 "Implementing custom kernel patches/reverts"
@@ -84,7 +77,6 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'lzop')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install=linux.install
 
   cd "${_srcname}"
 
@@ -98,13 +90,6 @@ _package() {
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
-
-  # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg" && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
   install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
