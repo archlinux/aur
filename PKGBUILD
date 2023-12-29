@@ -3,7 +3,7 @@
 
 pkgname=seamonkey
 pkgver=2.53.18
-pkgrel=1
+pkgrel=2
 pkgdesc="SeaMonkey internet suite"
 arch=(x86_64)
 url="https://www.seamonkey-project.org"
@@ -22,7 +22,6 @@ depends=(
   glibc
   gtk3
   hunspell
-  icu
   libevent
   libffi
   libpulse
@@ -70,7 +69,7 @@ source=(
 )
 sha256sums=(
   'cef8349e2c9343871f46e08be75dbc8b02206d40df1e332c82f592b600911911'
-  '9d7b5df44fe6c73187acf9211ba3f59841912e0d06cfed12ec791b0193a838ec'
+  '9554b2823d05c7d406325daec629c8b3f64e7d6a32db1bae5683c57d41de529f'
 )
 install="$pkgname.install"
 options=(!lto)

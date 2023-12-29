@@ -1,7 +1,7 @@
 pkgbase = seamonkey
 	pkgdesc = SeaMonkey internet suite
 	pkgver = 2.53.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.seamonkey-project.org
 	install = seamonkey.install
 	arch = x86_64
@@ -31,7 +31,6 @@ pkgbase = seamonkey
 	depends = glibc
 	depends = gtk3
 	depends = hunspell
-	depends = icu
 	depends = libevent
 	depends = libffi
 	depends = libpulse
@@ -59,6 +58,6 @@ pkgbase = seamonkey
 	source = https://archive.mozilla.org/pub/seamonkey/releases/2.53.18/source/seamonkey-2.53.18.source.tar.xz
 	source = mozconfig
 	sha256sums = cef8349e2c9343871f46e08be75dbc8b02206d40df1e332c82f592b600911911
-	sha256sums = 9d7b5df44fe6c73187acf9211ba3f59841912e0d06cfed12ec791b0193a838ec
+	sha256sums = 9554b2823d05c7d406325daec629c8b3f64e7d6a32db1bae5683c57d41de529f
 
 pkgname = seamonkey
