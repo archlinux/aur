@@ -11,7 +11,7 @@ pkgbase = firefox-gnome-theme
 	conflicts = firefox-gnome-theme-git
 	source = firefox-gnome-theme-121.tar.gz::https://github.com/rafaelmardojai/firefox-gnome-theme/archive/refs/tags/v121.tar.gz
 	source = INSTALL.md
-	md5sums = 48092bf6d208218663e57bc83a9d7adb
+	md5sums = c9a2f43e4cf083d3ed589d72b121bb9a
 	md5sums = 25f18456221ffc91f472b1abff8aae84
 
 pkgname = firefox-gnome-theme
