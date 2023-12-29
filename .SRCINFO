@@ -1,6 +1,6 @@
 pkgbase = obs-replay-source
 	pkgdesc = Plugin to (slow motion) instant replay sources from memory
-	pkgver = 1.6.12
+	pkgver = 1.6.13
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/replay-source.686/
 	arch = i686
@@ -9,9 +9,10 @@ pkgbase = obs-replay-source
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
-	makedepends = libcaption
-	depends = obs-studio>=28
-	source = obs-replay-source::git+https://github.com/exeldro/obs-replay-source#tag=1.6.12
+	depends = obs-studio>=30
+	depends = glibc
+	options = debug
+	source = obs-replay-source::git+https://github.com/exeldro/obs-replay-source#tag=1.6.13
 	sha256sums = SKIP
 
 pkgname = obs-replay-source
