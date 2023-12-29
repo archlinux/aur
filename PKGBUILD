@@ -8,17 +8,17 @@
 # https://github.com/RobRich999/Chromium_Clang
 #
 # Check the latest release:
-# curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -om1 '"name": *"[^"]*-linux64-deb-avx"' | awk -F'"' '{print $4}'
+# curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -om1 '"tag_name": *"[^"]*-linux64-deb-avx"' | awk -F'"' '{print $4}'
 #
 # Based on aur/google-chrome-dev
 
 _pkgname=chromium-unstable
 _debname=chromium-browser-unstable
-_pkgver=v122.0.6184.0-r1237314-linux64-deb-avx
+_pkgver=v122.0.6215.0-r1241500-linux64-deb-avx
 
 pkgname="${_pkgname}-bin"
-pkgver=122.0.6184.0
-pkgrel=2
+pkgver=122.0.6215.0
+pkgrel=1
 pkgdesc="The Chromium web browser for Linux built with the open source Clang compiler and LLD linker."
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -59,9 +59,9 @@ conflicts=("${_debname}")
 provides=("${_debname}")
 options=('!emptydirs' '!strip')
 install=${_pkgname}.install
-source=("https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
+source=("${_pkgname}_${_pkgver}.deb::https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
         "allow-user-flags.patch")
-sha1sums=('7fc641b081c22dd637e8edaf5954d4a3f9e84994'
+sha1sums=('09985aac8ad7b69fbead890f2b3e378f31c8f027'
           'dd5c9032644b703aba5cf7c9e6766decb66989f7')
 
 package() {
