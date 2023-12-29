@@ -1,12 +1,13 @@
 pkgbase = r-shape
 	pkgdesc = Functions for Plotting Graphical Shapes, Colors
 	pkgver = 1.4.6
-	pkgrel = 4
+	pkgrel = 11
 	url = https://cran.r-project.org/package=shape
 	arch = any
-	license = GPL
+	license = GPL3
 	depends = r
 	source = https://cran.r-project.org/src/contrib/shape_1.4.6.tar.gz
-	sha256sums = b9103e5ed05c223c8147dbe3b87a0d73184697343634a353a2ae722f7ace0b7b
+	md5sums = 41827d1eed10cfb32f3cf2d75817ba18
+	b2sums = d0bee95680affa418254700e9a89df9e31ee4f96e4bf3a9915fd878b17f184e57c010844c150041556a4894392e94b0a191fb02bfb342f7a88257e1eda61b126
 
 pkgname = r-shape
