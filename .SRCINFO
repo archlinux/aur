@@ -1,6 +1,6 @@
 pkgbase = quickcurver-git
 	pkgdesc = Qt Material design implementation of Achtung die Kurve with online multiplayer
-	pkgver = 0.1.r59.gd9293b6
+	pkgver = 0.1.r82.gb45c671
 	pkgrel = 1
 	url = https://github.com/vimpostor/quickcurver
 	arch = i686
@@ -14,8 +14,6 @@ pkgbase = quickcurver-git
 	depends = qt6-declarative
 	depends = qt6-svg
 	source = git+https://github.com/vimpostor/quickcurver.git
-	source = git+https://github.com/feathericons/feather.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = quickcurver-git
