@@ -1,0 +1,25 @@
+pkgbase = musa
+	pkgdesc = MooreThreads MUSA
+	pkgver = 2.1.2
+	pkgrel = 4
+	url = https://developer.mthreads.com/sdk/download/musa
+	arch = x86_64
+	license = custom
+	makedepends = binutils
+	options = !strip
+	source = MUSA+Toolkits-rc1.4.1+Intel+CPU_Ubuntu.zip::https://developer.mthreads.com/sdk/download/musa?equipment=&os=&driverVersion=&version=
+	source = 00-port-ti-img-rouge-newer-sources.diff::https://github.com/dixyes/mtgpu-drv/commit/2b3f0f09bd1acf1cf66d479827a3ba8d331cac73.diff
+	source = 01-disable-cursor_set-things.diff::https://github.com/dixyes/mtgpu-drv/commit/eb252e36927d8a6ff4bcd575e91972991d163583.diff
+	source = 02-avoid-redefine.diff::https://github.com/dixyes/mtgpu-drv/commit/8d996e13b388aa56974208cd610861c9556dc22b.diff
+	sha512sums = 74d49e14538c3430bd9c21d5be4eb3bd5b726be3e40e53ba780303e8bb1cc350986e6ab5109034f59fc7623650f21089e5fdd4068bb20463abea22e1cd6a2313
+	sha512sums = b81a6c31e8ea94dcefb4b8b531d8e1392660c25bf4655fdae9c95b799ec9ca20e64011ab43cd2ab07c003a8b72d6e3e6bb408ea53866bc246eea64acd3260954
+	sha512sums = 77bbb7bd82bd9289f7d13ccdd60a04ec3f097f4ad2d55aafe6aa9b7cb285e8297ffc9b126cfdd4cf4541cc3bb7d8d9dd01acc202a9df32f2658fbf39e70f410b
+	sha512sums = 21f4b395462f1e3af0178427931caae7dca139eceda16e65943e4989b8aa73acb36bfebd076ab3d80936942f16b94892d28b10e68bbbead015a2de68d4ba2629
+
+pkgname = musa-userspace
+	pkgdesc = MooreThreads MUSA userspace libraries include muDNN, mccl
+	depends = 
+
+pkgname = mtgpu-dkms
+	pkgdesc = MooreThreads mtgpu dkms driver
+	depends = dkms
