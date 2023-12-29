@@ -50,14 +50,19 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c74e69c2dd5cd4543f078bce866947b1f6fdf9eea2de843810f0a6b89ee76f3f'
-            '7f0df53075a486605a571c96890821b83a2a791ca49b38406583dbd56b0309a9')
+            'cfae4c473975db0c39ffeafdd4159b436f814d4204fd152d182a91618710caef')
 sha256sums_aarch64=('65037262aa27d692c964155919f969286fb706d5cb77eed04883e74bdd50c06f')
 sha256sums_x86_64=('a09f7741801e0231eaa83ed569cb9e9a789be9fc0c22e12e9a8a4e882c9d125f')
 build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/apps/${pkgname%-bin}/${pkgname%-bin}.sh|${pkgname%-bin}|g;s|/opt/apps/${pkgname%-bin}/${pkgname%-bin}.png|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" -t "${srcdir}/opt/apps/${pkgname%-bin}"
+    install -Dm755 -d "${srcdir}/opt/apps/${pkgname%-bin}/swiftshader"
+    mv "${srcdir}/opt/apps/${pkgname%-bin}/libGLESv2.so" "${srcdir}/opt/apps/${pkgname%-bin}/swiftshader"
+    mv "${srcdir}/opt/apps/${pkgname%-bin}/libEGL.so" "${srcdir}/opt/apps/${pkgname%-bin}/swiftshader"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

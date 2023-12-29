@@ -1,25 +1,12 @@
 #!/bin/sh
 set -e
 _APPDIR=/opt/@appname@
+_RUNNAME="${_APPDIR}/@runname@"
 export CHROME_WRAPPER="${_APPDIR}"
-cd "${_APPDIR}"
-if ! which xdg-settings &> /dev/null; then
-  export PATH="${_APPDIR}:${PATH}"
-else
-  _xdg_app_dir="${XDG_DATA_HOME}:${HOME}/.local/share/applications"
-  mkdir -p "${_xdg_app_dir}"
-  [ -f "${_xdg_app_dir}/mimeapps.list" ] || touch "${_xdg_app_dir}/mimeapps.list"
-fi
-
-if [[ -n "${LD_LIBRARY_PATH}" ]]; then
-  LD_LIBRARY_PATH="${_APPDIR}:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
-else
-  LD_LIBRARY_PATH="${_APPDIR}:${_APPDIR}/lib"
-fi
-
+export PATH="${_APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
 export CHROME_VERSION_EXTRA="Built from source for @@BUILD_TARGET@@"
 export CHROME_HEADLESS=1
-
 export GNOME_DISABLE_CRASH_DIALOG=SET_BY_GOOGLE_CHROME
 
 CHROMIUM_DISTRO_FLAGS=" --enable-plugins \
@@ -42,8 +29,8 @@ do
    RUID="${var}"
 done
 #echo $RUID
-if [ ${RUID} = "0" ];then
-    exec -a "$0" "${_APPDIR}/htbrowser" --no-sandbox --disable-print-preview "${CHROMIUM_DISTRO_FLAGS}" "${CHROMIUM_FLASH_FLAGS}" "$@"
+if [ "${RUID}" = "0" ];then
+    exec -a "$0" "${_RUNNAME}" --no-sandbox --disable-print-preview "${CHROMIUM_DISTRO_FLAGS}" "${CHROMIUM_FLASH_FLAGS}" "$@"
 else
-    exec -a "$0" "${_APPDIR}/htbrowser" --disable-gpu "${CHROMIUM_DISTRO_FLAGS}" "${CHROMIUM_FLASH_FLAGS}" "$@"
+    exec -a "$0" "${_RUNNAME}" --disable-gpu "${CHROMIUM_DISTRO_FLAGS}" "${CHROMIUM_FLASH_FLAGS}" "$@"
 fi
