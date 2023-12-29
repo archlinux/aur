@@ -2,7 +2,8 @@
 pkgname=intrigue-bin
 _pkgname=Intrigue
 pkgver=0.1.6
-pkgrel=4
+_electronversion=12
+pkgrel=5
 pkgdesc="Organize literature into ideas, fast."
 arch=('x86_64')
 url="https://github.com/shaunabanana/intrigue"
@@ -10,7 +11,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron12'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'libx11'
     'gdk-pixbuf2'
@@ -24,11 +25,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('467fdc85ce640e9289604e7e7ce60e0b9146b295da857b100603749f988e38d0'
-            '5e52be5ebe48538f82c1865d9efd1dd3feb14faff2136b94629f1ee8ee080faa')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

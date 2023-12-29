@@ -1,7 +1,7 @@
 pkgbase = intrigue-bin
 	pkgdesc = Organize literature into ideas, fast.
 	pkgver = 0.1.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/shaunabanana/intrigue
 	arch = x86_64
 	license = GPL3
@@ -18,6 +18,6 @@ pkgbase = intrigue-bin
 	source = intrigue-0.1.6.AppImage::https://github.com/shaunabanana/intrigue/releases/download/v0.1.6/Intrigue-0.1.6.AppImage
 	source = intrigue.sh
 	sha256sums = 467fdc85ce640e9289604e7e7ce60e0b9146b295da857b100603749f988e38d0
-	sha256sums = 5e52be5ebe48538f82c1865d9efd1dd3feb14faff2136b94629f1ee8ee080faa
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = intrigue-bin
