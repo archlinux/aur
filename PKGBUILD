@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mqttx-git
 _pkgname=MQTTX
-pkgver=1.9.7.r0.gb1f0e3ff
+pkgver=1.9.8.r1.g54acd89a
 _electronversion=13
+_nodeversion=16
 pkgrel=1
 pkgdesc="A cross-platform MQTT 5.0 client tool open sourced by EMQ"
 arch=(
@@ -27,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -35,8 +36,8 @@ pkgver() {
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 16
-    nvm use 16
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
@@ -53,12 +54,12 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     if [ "${CARCH}" = x86_64 ];then
-        install -Dm644 "${srcdir}/${pkgname%-git}/dist_electron/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-        install -Dm644 "${srcdir}/${pkgname%-git}/dist_electron/linux-unpacked/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-git}/swiftshader"
+        _osarchpath=linux-unpacked;
     elif [ "${CARCH}" = aarch64 ];then
-        install -Dm644 "${srcdir}/${pkgname%-git}/dist_electron/linux-arm64-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-        install -Dm644 "${srcdir}/${pkgname%-git}/dist_electron/linux-arm64-unpacked/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-git}/swiftshader"
+        _osarchpath=linux-arm64-unpacked
     fi
+    install -Dm644 "${srcdir}/${pkgname%-git}/dist_electron/${_osarchpath}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}/dist_electron/${_osarchpath}/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-git}/swiftshader"
     install -Dm644 "${srcdir}/${pkgname%-git}/public/icons/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
