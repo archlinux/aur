@@ -1,6 +1,6 @@
 pkgname=kde-fcstd-thumbnailer-git
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='FreeCAD Thumbnail Creator.'
 arch=('i686' 'x86_64')
 url='https://github.com/StefanHamminga/kde-fcstd-thumbnailer'
@@ -8,6 +8,7 @@ license=('GPL3')
 
 depends=('qt5-base' 'kio5')
 makedepends=('cmake' 'extra-cmake-modules' 'qt5-tools')
+
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 

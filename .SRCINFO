@@ -1,7 +1,7 @@
 pkgbase = kde-fcstd-thumbnailer-git
 	pkgdesc = FreeCAD Thumbnail Creator.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/StefanHamminga/kde-fcstd-thumbnailer
 	arch = i686
 	arch = x86_64
