@@ -1,21 +1,20 @@
 pkgbase = hat-syslog
 	pkgdesc = Syslog server and clients
-	pkgver = 0.7.6
+	pkgver = 0.7.8
 	pkgrel = 1
 	url = https://github.com/hat-open/hat-syslog
 	arch = any
 	license = Apache
+	makedepends = python-build
 	makedepends = python-hat-doit
 	makedepends = python-installer
 	makedepends = yarn
-	makedepends = python-sphinxcontrib-plantuml
-	makedepends = python-sphinxcontrib-programoutput
 	depends = python-appdirs
 	depends = python-hat-aio
 	depends = python-hat-json
 	depends = python-hat-juggler
 	depends = python-hat-util
-	source = https://github.com/hat-open/hat-syslog/archive/refs/tags/v0.7.6.tar.gz
-	sha256sums = 4ecda026b63fce6bc289fe74d91b585c7dff8f12bb22ee5f549c08639ae85e5f
+	source = https://github.com/hat-open/hat-syslog/archive/refs/tags/v0.7.8.tar.gz
+	sha256sums = 9c9202e4c06f48c809c35a9f5703d046890248a264e7d08bd1515e33aba9b1d1
 
 pkgname = hat-syslog
