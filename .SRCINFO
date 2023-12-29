@@ -1,0 +1,22 @@
+pkgbase = libretro-lutro-git
+	pkgver = r596.09a134e
+	pkgrel = 1
+	url = https://github.com/libretro/libretro-lutro
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = riscv32
+	arch = riscv64
+	arch = x86_64
+	groups = libretro
+	license = MIT
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libretro-core-info
+	source = libretro-lutro::git+https://github.com/libretro/libretro-lutro
+	b2sums = SKIP
+
+pkgname = libretro-lutro-git
