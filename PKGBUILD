@@ -2,7 +2,7 @@
 # Maintainer: alescdb
 
 pkgname=aid-git
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A simple ChatGPT command line with basic markdown display"
 arch=("x86_64")
