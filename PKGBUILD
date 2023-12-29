@@ -6,6 +6,7 @@ url="https://github.com/Cloudef/macopix-fork"
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 depends=(gtk2 openssl)
+makedepends=(git)
 provides=(macopix=$pkgver)
 conflicts=(macopix)
 source=("git+https://github.com/Cloudef/macopix-fork"
@@ -39,7 +40,7 @@ pkgver() {
 build() {
 	cd macopix-fork
 	./configure --prefix=/usr
-	make LDFLAGS+="-lX11"
+	make CFLAGS+=" -fcommon" LDFLAGS+=" -lX11"
 }
 
 package() {
