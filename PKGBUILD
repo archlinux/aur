@@ -13,7 +13,7 @@ depends=(libxext ncurses readline)
 source=(${pkgname}-${pkgver}.deb::https://master.dl.sourceforge.net/project/${_base}/Binaries/Agena%20${pkgver}/${_base}-${pkgver}a-linux.amd64.deb
   ${_base}.desktop)
 sha512sums=('c1e61200dcc3d3fdc17836c3a45274bb627d0b6c228fe85c11966b4c6c78b9a64562172c430bf01d8215c9b7f45a34f725a22945657eb4cbc67816650fdb4d0b'
-  'fb5ab7b3922977b770e4b8b29528aad9fe6c2666721c3ebefdf385ddb95abc68c2f3a22eb26fda68088301f9118eefc39997432198ecf2763eff1ac49b063848')
+  '7b891c404b0a188d5c4012c9c239f6b94b20f1c7472897b9e310b8d7d9ee3013bef0904ebde4eef24e15e07011551b96928be718deb5495a8845b9786a063b0a')
 
 prepare() {
   bsdtar xf data.tar.xz
