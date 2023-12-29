@@ -22,8 +22,7 @@ optdepends=('vc: C++ Vectorization library'
   'scotch: Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering'
   'onetbb: High level abstract threading library'
   'man-db: manual pages for dune'
-  'python-matplotlib: for Matplotlib rendering'
-  'python-mayavi: for 3D plotting')
+  'python-matplotlib: for Matplotlib rendering') # 'python-mayavi: for 3D plotting'
 provides=('dunecontrol' 'dune-ctest' 'dune-git-whitespace-hook' 'dunepackaging.py' 'duneproject' 'rmgenerated.py')
 source=(https://dune-project.org/download/${_tar}{,.asc})
 sha512sums=('554d9f5dde66930d8966b99832728d17bb7670aa055c071e00260c6f90e739818672e3b9fb3f292bcb96f128f9e82679c921d8603bb993eb768f89a7b3951ac1'

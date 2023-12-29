@@ -30,7 +30,6 @@ pkgbase = dune-common
 	optdepends = onetbb: High level abstract threading library
 	optdepends = man-db: manual pages for dune
 	optdepends = python-matplotlib: for Matplotlib rendering
-	optdepends = python-mayavi: for 3D plotting
 	provides = dunecontrol
 	provides = dune-ctest
 	provides = dune-git-whitespace-hook
