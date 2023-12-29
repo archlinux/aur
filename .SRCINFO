@@ -1,0 +1,14 @@
+pkgbase = hypersomnia-appimage
+	pkgdesc = Online shooter with relentless dynamics.
+	pkgver = 1.2.8674
+	pkgrel = 1
+	url = https://hypersomnia.xyz
+	arch = x86_64
+	license = AGPL3
+	depends = fuse2
+	conflicts = hypersomnia-git
+	options = !strip
+	source = https://hypersomnia.xyz/builds/latest/Hypersomnia.AppImage
+	sha512sums = SKIP
+
+pkgname = hypersomnia-appimage
