@@ -1,6 +1,6 @@
 pkgname=zero-k
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source RTS game running on the Spring engine"
 arch=('x86_64')
 url="https://zerok.itch.io/zero-k"
@@ -10,7 +10,7 @@ install=zero-k.install
 source=("https://zero-k.info/lobby/Zero-K.exe"
 	"Zero-K.desktop"
 	"Zero-K.png")
-sha256sums=('5bf857d954d99f287afb36077a761c52e3f09855d6a6cc69d89cc7a3f850c2a1'
+sha256sums=('651fa50d02483cd6e90131666bc62754a25d60091f454fb332685e14a47dac61'
             'a58bdd9083bedea8d32d0523f49f2ff016e48e7b58762e4d4cad3b3b01ce012f'
             '5ef8f0004a08fa0e94fccdbf1e1682132aa4e89af5b493c464742d51bf52368f')
         
