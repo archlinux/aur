@@ -2,7 +2,7 @@
 
 pkgname=swhkd-bin
 pkgver=1.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc='sxhkd clone for Wayland, X11 or TTY. Written in Rust.'
 arch=(x86_64)
 url='https://github.com/waycrate/swhkd'
@@ -41,7 +41,7 @@ package() {
     install -Dm 644 com.github.swhkd.pkexec.policy -t "$pkgdir/usr/share/polkit-1/actions"
 
     # LICENSE
-    install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/swhkd"
+    install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
     # docs
     for md in *.{md,scd} ; do

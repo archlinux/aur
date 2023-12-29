@@ -1,7 +1,7 @@
 pkgbase = swhkd-bin
 	pkgdesc = sxhkd clone for Wayland, X11 or TTY. Written in Rust.
 	pkgver = 1.2.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/waycrate/swhkd
 	arch = x86_64
 	license = BSD
