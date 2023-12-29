@@ -51,12 +51,16 @@ build() {
   
   # according to upstream, plymouth expects these files and symlinks to be there, so...
   local DEFAULT_FONT=$(fc-match -f %{file})
-  add_file "$DEFAULT_FONT"
-  add_symlink '/usr/share/fonts/Plymouth.ttf' "$DEFAULT_FONT"
+  if [ ! -z $"DEFAULT_FONT" ]; then
+    add_file "$DEFAULT_FONT"
+    add_symlink '/usr/share/fonts/Plymouth.ttf' "$DEFAULT_FONT"
+  fi
   local DEFAULT_MONOSPACE_FONT=$(fc-match -f %{file} monospace)
-  add_file "$DEFAULT_MONOSPACE_FONT"
-  add_symlink '/usr/share/fonts/Plymouth-monospace.ttf' "$DEFAULT_MONOSPACE_FONT"
-
+  if [ ! -z $"DEFAULT_MONOSPACE_FONT" ]; then
+    add_file "$DEFAULT_MONOSPACE_FONT"
+    add_symlink '/usr/share/fonts/Plymouth-monospace.ttf' "$DEFAULT_MONOSPACE_FONT"
+  fi
+  
   # copy configured theme
   if [ -d "$PLYMOUTH_THEME_DIR" ]; then
     add_full_dir "$PLYMOUTH_THEME_DIR"
@@ -71,7 +75,7 @@ build() {
   add_dir '/dev/pts'
   
   # help people who use XKBLAYOUT in /etc/vconsole.conf
-  add_full_dir '/usr/share/X11/xkb'
+  [ -d '/usr/share/X11/xkb' ] && add_full_dir '/usr/share/X11/xkb'
 
   # needed to access DRM devices
   add_udev_rule '71-seat.rules'

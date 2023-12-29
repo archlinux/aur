@@ -27,7 +27,7 @@ source=("git+https://gitlab.freedesktop.org/$_pkgname/$_pkgname.git"
 
 sha256sums=('SKIP'
             'de852646e615e06d4125eb2e646d0528d1e349bd9e9877c08c5d32c43d288b6f'
-            'ce57a0b76b59ead51cf512a6b5b0aba4b32d84a6203111088bc35680213602e6'
+            '2056d02ba8ba4f1b4ad1691669b5960e6440d5df24f9639aca1e293b0c90e2af'
             'cfd0c754437d582bbc8d2cbb545a777b00b5c77a6302522577e9d88b169e2f59')
 
 pkgver() {
