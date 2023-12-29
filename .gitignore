@@ -1,14 +1,14 @@
-# from https://github.com/github/gitignore/blob/master/ArchLinuxPackages.gitignore
-*.tar
-*.tar.*
-*.rpm
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
-
-*/
+# Only exclude files from the root of the package repo, as some AUR helpers download sources into the directory of the repo,
+# which causes the gitignore file to apply to them too, which breaks some builds
+# Based on https://github.com/github/gitignore/blob/master/ArchLinuxPackages.gitignore
+/*.tar
+/*.tar.*
+/*.rpm
+/*.jar
+/*.exe
+/*.msi
+/*.zip
+/*.tgz
+/*.log
+/*.log.*
+/*.sig
