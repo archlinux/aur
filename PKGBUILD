@@ -15,7 +15,7 @@ optdepends=('transfig: convert images using fig2ps'
             'ghostscript: rendering ps files'
             'imagemagick: convert images'
             'aspell: spell checking'
-            'inkscape: hand-draw pictures')
+            'inkscape: svg convertion')
 makedepends=('ghostscript' 'cmake' 'git' 'gcc')
 source=("${_pkgname}::git+https://github.com/hammerfunctor/texmacs")
 sha256sums=('SKIP')
