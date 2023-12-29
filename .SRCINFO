@@ -1,14 +1,14 @@
 pkgbase = animetetris-bin
 	pkgdesc = A simple block game
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jordanhandboy/Tetris
 	arch = x86_64
 	license = unknown
 	makedepends = git
 	depends = python
 	depends = python-pygame
-	source = https://github.com/jordanhandboy/Tetris/releases/download/v1.0/animetetris.tar.gz
+	source = https://github.com/jordanhandboy/Tetris/releases/download/v1.1/animetetris.tar.gz
 	md5sums = SKIP
 
 pkgname = animetetris-bin
