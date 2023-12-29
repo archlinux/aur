@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com> / ihipop <ihipop at gmail dot com>
 _pkgname=eudic
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2023.12.01
+pkgver=2023.12.25
 pkgrel=1
 pkgdesc="权威的英语词典软件,英语学习者必备的工具,支持学习笔记、生词本多平台同步,让你随时随地学英语."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}" "${_pkgname}")
 options=('!strip')
 depends=()
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::https://cn.francochinois.com/beta_release/linux/2023-12-01/${_pkgname}-13.5.2-x86_64.AppImage?v=${pkgver//./-}"
+    "${pkgname%-bin}-${pkgver}.AppImage::https://static-main.frdic.com/pkg/eudic.AppImage?v=${pkgver//./-}"
     "LICENSE.html::https://www.eudic.net/v4/en/home/privacy"
 )
 sha256sums=(
