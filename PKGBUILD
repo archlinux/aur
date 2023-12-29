@@ -1,13 +1,13 @@
 # Maintainer: Yngve Levinsen <yngve.levinsen@ess.eu>
 
 pkgname=madx-git
-pkgver=5.09.00.r24.g2f1e95ed
+pkgver=5.09.01.r3.geb495b4f
 pkgrel=1
 pkgdesc="Accelerator Optics simulation code, git master version"
 url="http://cern.ch/mad"
 license=("custom")
 depends=('libx11' 'lapack')
-conflicts=('madx-dev' 'nmap')
+conflicts=('madx-dev')
 provides=('madx')
 makedepends=('git' 'cmake')
 arch=('i686' 'x86_64')
@@ -34,8 +34,8 @@ build() {
           -DMADX_STATIC=OFF \
           -DMADX_ONLINE=OFF \
           -DBUILD_SHARED_LIBS=ON \
+          -DCMAKE_C_FLAGS="-fvisibility=protected" \
           -DCMAKE_INSTALL_PREFIX=/usr \
-          -DCMAKE_BUILD_TYPE=Release \
          ../$_gitname
 
       make
