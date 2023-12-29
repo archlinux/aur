@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-advanced-scene-switcher
-pkgver=1.24.1
+pkgver=1.24.2
 pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("x86_64" "aarch64")
