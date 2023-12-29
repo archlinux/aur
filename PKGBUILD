@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=appimageupdate-git
-pkgver=2.0.0.alpha.1.20230526.r0.g496a69e
+pkgver=2.0.0.alpha.1.20230526.r1.gd89e6bf
 pkgrel=1
 pkgdesc="Graphical front end to manage AppImage applications built using MauiKit"
 arch=(x86_64)
@@ -11,12 +11,13 @@ depends=(glibc gcc-libs cpr gpgme libgcrypt zsync2)
 makedepends=(git cmake argagg nlohmann-json libxpm cairo librsvg libappimage)
 provides=(appimageupdate)
 conflicts=(appimageupdate)
+options=(staticlibs)
 source=("git+https://github.com/AppImageCommunity/AppImageUpdate.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd AppImageUpdate
-  git describe --long --tags --exclude latest | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --exclude latest --exclude continuous | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

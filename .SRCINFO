@@ -1,6 +1,6 @@
 pkgbase = appimageupdate-git
 	pkgdesc = Graphical front end to manage AppImage applications built using MauiKit
-	pkgver = 2.0.0.alpha.1.20230526.r0.g496a69e
+	pkgver = 2.0.0.alpha.1.20230526.r1.gd89e6bf
 	pkgrel = 1
 	url = https://github.com/AppImageCommunity/AppImageUpdate
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = appimageupdate-git
 	depends = zsync2
 	provides = appimageupdate
 	conflicts = appimageupdate
+	options = staticlibs
 	source = git+https://github.com/AppImageCommunity/AppImageUpdate.git
 	sha256sums = SKIP
 
