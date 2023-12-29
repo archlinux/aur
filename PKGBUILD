@@ -3,7 +3,7 @@
 
 pkgname=mpd-mpris-bin
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of the MPRIS protocol for MPD.'
 arch=("x86_64" "i686" "aarch64" "armv6h" "armv7h")
 url='https://github.com/natsukagami/mpd-mpris'
@@ -26,9 +26,10 @@ sha256sums_armv6h=('1bf8d2af1c97e50ca1ef7c0b6577391146a1a806f26383d4312a22541138
 sha256sums_armv7h=('eac3ed6fd1cf0dcad8c67b426ac403955da378c003d57eaa5e3ea75a2eb83a89')
 
 package() {
-    # Install binary
-	install -D -m 0755 mpd-mpris "$pkgdir/usr/bin/mpd-mpris"
-	# Install other files
-	install -D -m 0644 README.md "$pkgdir/usr/doc/mpd-mpris/README"
-	install -D -m 0644 ${pkgname}.service "$pkgdir/usr/lib/systemd/user/mpd-mpris.service"
+  # Install binary
+  install -D -m 0755 mpd-mpris "$pkgdir/usr/bin/mpd-mpris"
+  # Install other files
+  install -D -m 0644 LICENSE "$pkgdir/usr/share/licenses/mpd-mpris/LICENSE"
+  install -D -m 0644 README.md "$pkgdir/usr/share/doc/mpd-mpris/README"
+  install -D -m 0644 ${pkgname}.service "$pkgdir/usr/lib/systemd/user/mpd-mpris.service"
 }
