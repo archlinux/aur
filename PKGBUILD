@@ -1,18 +1,16 @@
-# system requirements: On a Unix-alike, one of the C functionsmach_absolute_time (macOS), clock_gettime or gethrtime. If noneof these is found, the obsolescent POSIX function gettimeofdaywill be tried.
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=microbenchmark
 _pkgver=1.4.10
 pkgname=r-${_pkgname,,}
-pkgver=1.4.10
-pkgrel=1
-pkgdesc='Accurate Timing Functions'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('BSD')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Accurate Timing Functions"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(BSD)
 depends=(
   r
-  gcc
 )
 optdepends=(
   r-ggplot2
@@ -20,15 +18,18 @@ optdepends=(
   r-runit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('04cc41be72708dce8d31ff1cb105d88cc9f167250ea00fe9a165c99204b9b481')
+md5sums=('c64e467a01e792461a5cc544eac12f15')
+b2sums=('458cb280410737719481b65b6bdd7281bf2c4d8320af55477f747c3b90c5f2d39c138b407ab2e64ea6a4dcafa3bdb6daa531a6a5fa94904dfe31672273f31a88')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
