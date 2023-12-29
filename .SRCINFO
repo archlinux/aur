@@ -1,20 +1,19 @@
 pkgbase = linux-ck-autobuild
-	pkgdesc = A tool to automatically build ck kernels
-	pkgver = 0.4.0
-	pkgrel = 1
-	url = https://github.com/j00ch/linux-ck-autobuild
-	arch = x86_64
+	pkgdesc = A tool to automatically build linux-ck kernels on a headless machines
+	pkgver = 0.7.3
+	pkgrel = 2
+	url = https://github.com/nebulosa2007/linux-ck-autobuild
+	arch = any
 	license = GPL3
+	depends = base-devel
 	depends = bash
-	depends = zenity
-	depends = zensu
-	depends = grep
-	depends = sed
-	depends = nano
-	depends = curl
-	provides = linux-ck-autobuild
-	source = https://github.com/j00ch/linux-ck-autobuild/archive/0.4.0.tar.gz
-	sha256sums = 797cf31b47531c73dae963b614261dd19862ea614e98a1ddf7a8ed6c0fa2a6e0
+	depends = git
+	optdepends = fzf: for selecting subarches
+	source = linux-ck-autobuild-0.7.3.tar.gz::https://github.com/nebulosa2007/linux-ck-autobuild/archive/refs/tags/v0.7.3.tar.gz
+	source = linux-ck-autobuild@.service
+	source = linux-ck-autobuild@.timer
+	sha256sums = 4d6f6d08c5d0bae2d5e4bdf44e85066cb8d679de66acf5460c71f1930e2da150
+	sha256sums = 54e81f184026efe2e3076ff99388c1d75376c7d1739d3d23a4a469d46a596c69
+	sha256sums = c4580b194309c53916ae76903876b585c845193e86f7c48ca86eb6cb36dd3236
 
 pkgname = linux-ck-autobuild
-

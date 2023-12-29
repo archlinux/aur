@@ -1,0 +1,9 @@
+[Unit]
+Description=A tool to automatically build linux-ck kernels
+Documentation=https://github.com/nebulosa2007/linux-ck-autobuild
+
+[Service]
+User=%I
+Type=simple
+ExecStart=/usr/bin/linux-ck-autobuild
+PrivateTmp=true

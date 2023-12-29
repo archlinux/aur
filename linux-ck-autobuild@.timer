@@ -1,0 +1,9 @@
+[Unit]
+Description=Timer for automatically build linux-ck kernels
+Documentation=https://github.com/nebulosa2007/linux-ck-autobuild
+
+[Timer]
+OnCalendar=00:02
+
+[Install]
+WantedBy=timers.target
