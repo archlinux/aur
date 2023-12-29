@@ -1,10 +1,11 @@
 pkgbase = python-hat-json
 	pkgdesc = Hat JSON library
-	pkgver = 0.5.17
+	pkgver = 0.5.21
 	pkgrel = 1
 	url = https://github.com/hat-open/hat-json
 	arch = any
 	license = Apache
+	makedepends = python-build
 	makedepends = python-hat-doit
 	makedepends = python-installer
 	depends = python-hat-util
@@ -13,7 +14,7 @@ pkgbase = python-hat-json
 	depends = python-yaml
 	depends = python-tomli
 	depends = python-tomli-w
-	source = https://github.com/hat-open/hat-json/archive/refs/tags/v0.5.17.tar.gz
-	sha256sums = a60dcbab21c7b42770a7ca9a9c6c6ba839a52556dc2480e9b85bd2b9a5a1128b
+	source = https://github.com/hat-open/hat-json/archive/refs/tags/v0.5.21.tar.gz
+	sha256sums = 9a416325b6bbef3d90d86193794e203373b2e365c209d51558430dd9c9164e7d
 
 pkgname = python-hat-json
