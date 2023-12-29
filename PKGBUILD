@@ -6,7 +6,7 @@
 # Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=dbus-x11-git
-pkgname=(dbus-x11 dbus-x11-docs)
+pkgname=(dbus-x11-git dbus-x11-docs-git)
 pkgver=1.15.8+17+gd9756df2
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system (with x11 autolaunch) (git version)"
