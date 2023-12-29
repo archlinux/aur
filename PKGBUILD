@@ -1,25 +1,27 @@
-# Maintainer: éclairevoyant
+# Maintainer:
+# Contributor: éclairevoyant
 # Contributor: Mark Weiman (markzz) <mark.weiman@markzz.com>
 # Contributor: Katelyn Schiesser (slowbro) <katelyn.schiesser@gmail.com>
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux-vfio
-pkgver=6.3.7.arch1
+_gitname="linux"
+_pkgname="$_gitname-vfio"
+pkgbase="$_pkgname"
+pkgver=6.3.9
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v${pkgver%.*}-${pkgver##*.}
-url="https://github.com/archlinux/linux/commits/$_srctag"
+url='https://www.kernel.org'
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc
   cpio
   gettext
-  git
   libelf
   pahole
   perl
+  python
   tar
   xz
 
@@ -30,32 +32,29 @@ makedepends=(
   texlive-latexextra
 )
 options=('!strip')
-_srcname=archlinux-linux
+_srcname=linux-$pkgver
 source=(
-  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config                       # the main kernel config file
-  0001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-  0002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
+  1001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+  1002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
-  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
-  C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('SKIP'
-        'c2d1c69265adc041dc0364e448f6e86dc4c9ca1207c84071abc1675dd820534a8ab5a230e579e68bfb1bf2b861f23ad34e090f8ceaef5e265ea95e2bc6946013'
-        'b1bb6028bead89c277f0e98b308574e47feee2ece5b7f0a2422d40d5b2532216550f99153fbb451c2bee2df398a1a2d596f776281243cf55d4e94c1d5d854ef2'
-        '7c99c5d965bda71f1d08e72fadc529b594d95648950aab49212daee8b34af525404bd98737d2bd715d81959fb71ed143416cb21d88075d833f931f9d0d313ab5')
+sha256sums=(
+  '41ecf21399b17ab85163750ba22347d09b54fa099b80b63d0e2ef0066129b13e'
+  'SKIP'
+  '21b9a9e542f853cdc695648d6ab6219bd2e881a4954277f241e104723c373d42'
+
+  'bdd2a5a56e01e91723907afb40d28bed77b7d5107aba92c85adb3ce6967e713a'
+  '9a698eaf1a0bd740981e909b6ad9bd41300488a2a771843bf30b9bdc94aa3c3b'
+)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
-
-_make() {
-  test -s version
-  make KERNELRELEASE="$(<version)" "$@"
-}
 
 prepare() {
   cd $_srcname
@@ -63,30 +62,31 @@ prepare() {
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-  make defconfig
-  make -s kernelrelease > version
-  make mrproper
 
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    src="${src%.zst}"
     [[ $src = *.patch ]] || continue
+    echo
     echo "Applying patch $src..."
-    patch -Np1 < "../$src"
+    patch -Np1 -F100 -i "../$src"
   done
 
   echo "Setting config..."
   cp ../config .config
-  _make olddefconfig
+  make olddefconfig
   diff -u ../config .config || :
 
+  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  _make htmldocs all
+  make all
+  make htmldocs
 }
 
 _package() {
@@ -112,13 +112,13 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links

@@ -1,6 +1,4 @@
 *
-!.gitignore
-!.SRCINFO
 !PKGBUILD
-!config
-!*.patch
+!.SRCINFO
+!.gitignore
