@@ -20,15 +20,14 @@
 # modify package name
 : ${_build_hg:=true}
 
-# -----
 [[ "${_build_nightly::1}" == "t" ]] && _pkgtype+="-nightly"
 [[ "${_build_wayland::1}" == "t" ]] && _pkgtype+="-wayland"
 [[ "${_build_hg::1}" == "t" ]] && _pkgtype+="-hg"
 
-## -----
+## basic info
 pkgname="firefox${_pkgtype:-}"
 _pkgname=firefox-nightly
-pkgver=123.0a1+20231222.2+h8481bdfea5c4
+pkgver=123.0a1+20231228.1+ha0075cc44476
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -76,10 +75,9 @@ makedepends=(
   zip
 )
 optdepends=(
-  'hunspell-en_US: Spell checking, American English'
+  'hunspell-dictionary: Spell checking'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
-  'pulseaudio: Audio support'
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
@@ -192,7 +190,10 @@ mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
+ac_add_options --enable-optimize=-O3
+ac_add_options --enable-lto=cross,full
 ac_add_options --enable-rust-simd
+ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
@@ -281,10 +282,7 @@ END
     ./mach clobber
 
     echo "Building optimized browser..."
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-optimize=-O3
-ac_add_options --enable-lto=cross
-END
+    cat >.mozconfig ../mozconfig
 
     if [[ -s merged.profdata ]] ; then
       stat -c "Profile data found (%s bytes)" merged.profdata
@@ -304,10 +302,7 @@ END
     ./mach build
   else
     echo "Building browser..."
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-optimize=-O3
-ac_add_options --enable-lto=cross
-END
+    cat >.mozconfig ../mozconfig
     ./mach build
   fi
 
@@ -338,6 +333,12 @@ pref("browser.gnome-search-provider.enabled", true);
 
 // Enable JPEG XL images
 pref("image.jxl.enabled", true);
+
+// Prevent about:config warning
+pref("browser.aboutConfig.showWarning", false);
+
+// Prevent telemetry notification
+pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
 END
 
   local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
@@ -378,7 +379,7 @@ END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/firefox-bin"
+  ln -srfv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/${_pkgname%-*}-bin"
 
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
