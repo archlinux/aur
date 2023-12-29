@@ -2,7 +2,7 @@
 # Based on the existing AUR package firefox-gnome-theme-git
 
 pkgname=firefox-gnome-theme
-pkgver=120
+pkgver=121
 pkgrel=1
 pkgdesc='A GNOME theme for Firefox'
 arch=('any')
