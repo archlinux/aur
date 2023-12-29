@@ -1,7 +1,7 @@
 pkgbase = stashpad
 	pkgdesc = Stashpad is the developer notepad.
 	pkgver = 1.2.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.stashpad.com/
 	arch = x86_64
 	license = proprietary
