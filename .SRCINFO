@@ -1,0 +1,16 @@
+pkgbase = hypr-trans-git
+	pkgdesc = hypr-trans is a tiny bash utility that sets alpha attribute of an Hyprland window (like picom-trans on X11)
+	pkgver = r8.0033fb6
+	pkgrel = 1
+	url = https://github.com/jlaunay/hypr-trans
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = jq
+	depends = hyprland
+	provides = hypr-trans
+	source = git+https://github.com/jlaunay/hypr-trans.git
+	sha256sums = SKIP
+
+pkgname = hypr-trans-git
