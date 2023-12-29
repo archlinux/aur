@@ -1,0 +1,15 @@
+pkgbase = sway-trans-git
+	pkgdesc = sway-trans is a tiny bash utility that sets alpha attribute of a Sway window (like picom-trans on X11)
+	pkgver = r3.b00fdba
+	pkgrel = 1
+	url = https://github.com/jlaunay/sway-trans
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = sway
+	provides = sway-trans
+	source = git+https://github.com/jlaunay/sway-trans.git
+	sha256sums = SKIP
+
+pkgname = sway-trans-git
