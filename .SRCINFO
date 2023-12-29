@@ -1,6 +1,6 @@
 pkgbase = bluestone-bin
 	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience.
-	pkgver = 0.12.4
+	pkgver = 0.12.5
 	pkgrel = 1
 	url = https://github.com/1943time/bluestone
 	arch = aarch64
@@ -25,11 +25,11 @@ pkgbase = bluestone-bin
 	depends = libx11
 	depends = libxfixes
 	depends = libxext
-	provides = bluestone=0.12.4
+	provides = bluestone=0.12.5
 	conflicts = bluestone
-	source_aarch64 = bluestone-0.12.4-aarch64.deb::https://github.com/1943time/bluestone/releases/download/v0.12.4/Bluestone-linux-arm64-0.12.4.deb
-	sha256sums_aarch64 = 794a9f38370e3ea29155881b0e4dc4d6914ac5683e57725be4c56e0903709c67
-	source_x86_64 = bluestone-0.12.4-x86_64.deb::https://github.com/1943time/bluestone/releases/download/v0.12.4/Bluestone-linux-amd64-0.12.4.deb
-	sha256sums_x86_64 = 489bbb593ca66fd164280dbc69bca6095223a01a8f9d441e4430bc2e6268fa32
+	source_aarch64 = bluestone-0.12.5-aarch64.deb::https://github.com/1943time/bluestone/releases/download/v0.12.5/Bluestone-linux-arm64-0.12.5.deb
+	sha256sums_aarch64 = 035ef485006343704e6b905e57150406802f2873154c4475fb8192ebdc70e0d8
+	source_x86_64 = bluestone-0.12.5-x86_64.deb::https://github.com/1943time/bluestone/releases/download/v0.12.5/Bluestone-linux-amd64-0.12.5.deb
+	sha256sums_x86_64 = ae5f156ec757c4173025cee26ef985706b612691404ea43ce93e692522b7519b
 
 pkgname = bluestone-bin
