@@ -1,13 +1,13 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-rtspserver
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="This is a plugin for obs-studio, encoding the output and publish rtsp stream"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-rtspserver.1037/"
 license=("GPL2")
-depends=("obs-studio>=29")
+depends=("obs-studio>=30" "gcc-libs" "glibc" "qt6-base")
 makedepends=("cmake" "git")
 source=(
   "$pkgname::git+https://github.com/iamscottxu/obs-rtspserver.git#tag=v$pkgver"
@@ -36,7 +36,7 @@ build() {
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
-  -DQT_VERSION=6 \
+  -Wno-dev \
   -DLIBOBS_INCLUDE_DIR=/usr/include/obs \
   -DOBS_FRONTEND_API_INCLUDE_DIR=/usr/include/obs
 
