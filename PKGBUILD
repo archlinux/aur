@@ -5,7 +5,7 @@ pkgname=$_appname-jre
 pkgver=2023.3.2
 pkgrel=1
 pkgdesc="PyCharm Community Edition IDE for Python with bundled JRE"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://www.jetbrains.com/pycharm/"
 license=('APACHE')
 conflicts=(
@@ -13,14 +13,18 @@ conflicts=(
   "pycharm-community-edition"
 )
 source=(
-  "https://download.jetbrains.com/python/pycharm-community-${pkgver}.tar.gz"
   pycharm.desktop
   pycharm.sh
 )
 options=(!strip)
-sha256sums=('1a4a95648c68890f2f9eb41cbb9eb041dcd08388c75a91298dfbe73f83a858c8'
-            'f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21'
+sha256sums=('f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21'
             'b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc')
+sha256sums_x86_64=('1a4a95648c68890f2f9eb41cbb9eb041dcd08388c75a91298dfbe73f83a858c8')
+sha256sums_aarch64=('1d63c0ea7dec718f67ad78e0ccef76058d92f63d07afe931a4ac6ff3f74c9052')
+
+source_x86_64=("https://download.jetbrains.com/python/pycharm-community-${pkgver}.tar.gz")
+
+source_aarch64=("https://download.jetbrains.com/python/pycharm-community-${pkgver}-aarch64.tar.gz")
 
 package() {
   cd "${_appname}-${pkgver}"
