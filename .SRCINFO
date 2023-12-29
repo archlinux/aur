@@ -1,9 +1,9 @@
 pkgbase = sddm-theme-corners-git
-	pkgdesc = SDDM theme that places UI elements on the corners of your screen
-	pkgver = r34.a76d451
+	pkgdesc = Extremely customizable SDDM theme with controls placed on your screen corners
+	pkgver = r38.2e784e0
 	pkgrel = 1
 	url = https://github.com/aczw/sddm-theme-corners
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = sddm

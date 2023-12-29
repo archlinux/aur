@@ -1,10 +1,10 @@
-# Maintainer: Charles Wang <charleszw16@gmail.com>
+# Maintainer: Charles Wang <zwcharl@gmail.com>
 
 pkgname=sddm-theme-corners-git
-pkgver=r34.a76d451
+pkgver=r38.2e784e0
 pkgrel=1
-pkgdesc="SDDM theme that places UI elements on the corners of your screen"
-arch=('any')
+pkgdesc="Extremely customizable SDDM theme with controls placed on your screen corners"
+arch=('x86_64')
 url="https://github.com/aczw/sddm-theme-corners"
 license=('GPL3')
 depends=('sddm' 'qt5-graphicaleffects' 'qt5-svg' 'qt5-quickcontrols2')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/sddm-theme-corners"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
