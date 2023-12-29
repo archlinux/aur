@@ -1,0 +1,26 @@
+pkgbase = qepgs-player-git
+	pkgdesc = An application to watch videos recorded by EPGStation.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://gitlab.com/oioi555/QEPGS-Player
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-webengine
+	depends = qt5-svg
+	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
+	depends = mpv
+	depends = postgresql-libs
+	depends = mariadb-libs
+	depends = breeze-icons
+	source = qepgs-player-git::git+https://gitlab.com/oioi555/QEPGS-Player.git
+	sha256sums = SKIP
+
+pkgname = qepgs-player-git
