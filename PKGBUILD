@@ -2,7 +2,7 @@
 # Contributor: Marie Piontek <marie@kaifa.ch>
 
 pkgname=honkers-launcher-bin
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/honkers-launcher"
@@ -12,13 +12,10 @@ license=("GPL3")
 
 depends=(
     "libadwaita"
-    "tar"
-    "unzip"
     "xdg-desktop-portal"
+    "p7zip"
     "xdelta3"
-    "cabextract"
     "git"
-    "iputils"
     "gtk4"
     "glibc"
 )
@@ -36,7 +33,7 @@ source=(
 )
 
 md5sums=(
-    'e571d45b12c96ed8d97538dd52db3be5'
+    'c08f5b2fab572eadc0e87420661886fb'
     '26b637e96d0f4382c8b132656a9ce3a5'
     '739854fbecc047beb55d738dbdfe85d9'
 )
