@@ -3,24 +3,25 @@
 _pkgname=locfdr
 _pkgver=1.1-8
 pkgname=r-${_pkgname,,}
-pkgver=1.1.8
-pkgrel=4
-pkgdesc='Computes Local False Discovery Rates'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Computes Local False Discovery Rates"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL2)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('42d6e12593ae6d541e6813a140b92591dabeb1df94432a515507fc2eee9a54b9')
+md5sums=('d4ee3349e9cb39b70bfff94ff665d2aa')
+b2sums=('7dd22100014c830e53bf192f4cc82d5216f53b97d6db3394f9ab0234e5f36566f295196e9211351422cca9b562a36b23fc9a8cfd440ee5333b48c4aaa08872bc')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
