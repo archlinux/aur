@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=symbolic-preview
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Symbolics made easy"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libadwaita')
 makedepends=('meson' 'cargo')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('ddb823cf11ff7e2bbdd728ed944cb6eddc7e6efc98c9d4e16cd9a12ea0d19131e8df6207b792c0d2515572712e3e90f66159821a73839544798b355dda408692')
+b2sums=('24590e99d8821a1018924d91c5e2aa50b7b752e0c4c081ec5f642fdf989d6ef86faa846bbebb11a04e64e035a21f240ec8654c4c78618572e4b5816690a51a26')
 
 build() {
   arch-meson $pkgname-$pkgver build
