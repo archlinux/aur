@@ -1,10 +1,12 @@
 pkgbase = mkwhl
 	pkgdesc = Python wheel creation utility
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bozokopic/mkwhl
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-packaging
 	depends = python-tomli
 	source = https://github.com/bozokopic/mkwhl/archive/refs/tags/v0.3.0.tar.gz
