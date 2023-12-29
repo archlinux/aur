@@ -1,17 +1,19 @@
-# Maintainer: Justine Smithies <justine AT smithies DOT me DOT uk>
-# Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
-# Maintainer: gilbus <aur(AT)tinkershell.eu>
+# Maintainer: GreyXor <greyxor@protonmail.com>
+# Contributor: Justine Smithies <justine AT smithies DOT me DOT uk>
+# Contributor: Sibren Vasse <arch@sibrenvasse.nl>
+# Contributor: gilbus <aur(AT)tinkershell.eu>
+
 pkgname=swayidle-git
-_pkgname=swayidle
-pkgver=1.8.0.r9.ge883186
+pkgver=r118.61d653f
 pkgrel=1
 license=('MIT')
-pkgdesc='Idle management daemon for Wayland'
+pkgdesc='Idle management daemon for Wayland (git development version)'
 makedepends=(
-    'meson'
-    'scdoc'
-    'wayland-protocols'
-    'git'
+    "git"
+    "meson"
+    "scdoc"
+    "wayland-protocols"
+    "glibc"
 )
 depends=(
     'wayland'
@@ -19,28 +21,23 @@ depends=(
 )
 arch=('x86_64')
 url="https://github.com/swaywm/swayidle"
-source=("${pkgname%-*}::git+https://github.com/swaywm/swayidle.git")
-sha1sums=('SKIP')
-provides=('swayidle')
-conflicts=('swayidle')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+https://github.com/swaywm/swayidle.git")
+b2sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    # Calculate the version dynamically using git information
+    printf "r%s.%s" "$(git -C "$srcdir/${pkgname}" rev-list --count HEAD)" "$(git -C "$srcdir/${pkgname}" rev-parse --short HEAD)"
 }
 
 build() {
-    meson "$_pkgname" build \
-        --prefix /usr \
-        --buildtype=plain
-    ninja -C build
+    arch-meson build "${pkgname}"
+    meson compile -C build
 }
 
 package() {
-    DESTDIR="$pkgdir/" ninja -C build install
-    install -Dm644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
-    install -Dm644 "$_pkgname/README.md" -t "$pkgdir/usr/share/doc/$_pkgname"
+    meson install -C build --destdir "$pkgdir"
+
+    install -Dm644 "${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
