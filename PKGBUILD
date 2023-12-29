@@ -3,7 +3,7 @@ pkgname=(red-{view,cli,toolchain})
 pkgbase=red-meta
 _pkgver='22dec23-6cb7d502b'
 pkgver=2023.12.22.6cb7d502b
-pkgrel=1
+pkgrel=2
 pkgdesc="Red is a next-generation programming language strongly inspired by REBOL"
 arch=('i686' 'x86_64')
 url="https://www.red-lang.org"
@@ -30,7 +30,7 @@ package_red-cli() {
 	provides=(red)
 	conflicts=(red)
 	depends=(lib32-curl)
-	install -Dm755 "$pkgname" "$pkgdir/usr/bin/red"
+	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin/"
 }
 
 package_red-toolchain() {

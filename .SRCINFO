@@ -1,7 +1,7 @@
 pkgbase = red-meta
 	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL
 	pkgver = 2023.12.22.6cb7d502b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.red-lang.org
 	arch = i686
 	arch = x86_64
