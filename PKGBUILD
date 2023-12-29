@@ -1,6 +1,6 @@
 # Maintainer: noprobelm@protonmail.com
 pkgname=tca
-pkgver=0.1.0.r140.f8d6106
+pkgver=1.0.1.r140.f8d6106
 pkgrel=1
 pkgdesc="Simulate cellular automaton and render it to the terminal"
 arch=(any)

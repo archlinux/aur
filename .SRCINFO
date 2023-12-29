@@ -1,6 +1,6 @@
 pkgbase = tca
 	pkgdesc = Simulate cellular automaton and render it to the terminal
-	pkgver = 0.1.0.r140.f8d6106
+	pkgver = 1.0.1.r140.f8d6106
 	pkgrel = 1
 	url = https://github.com/noprobelm/terminal-cellular-automaton.git
 	arch = any
