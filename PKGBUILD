@@ -19,8 +19,7 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -d "$pkgdir/usr/lib/$pkgname"
 	cp -ra theme userChrome.css userContent.css configuration "$pkgdir/usr/lib/$pkgname"
-	# Install docs & license
+	# Install docs
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 "$srcdir/INSTALL.md" "$pkgdir/usr/share/doc/$pkgname/INSTALL.md"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
