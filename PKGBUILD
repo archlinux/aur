@@ -3,12 +3,12 @@
 
 pkgname=mangareader
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Manga Reader for local files'
 arch=('x86_64')
 url='https://github.com/g-fb/mangareader'
 license=('GPL3')
-depends=('hicolor-icon-theme' 'kconfig' 'kcoreaddons' 'ki18n' 'kxmlgui' 'kio' 'kconfigwidgets' 'gettext')
+depends=('hicolor-icon-theme' 'kconfig5' 'kcoreaddons5' 'ki18n5' 'kxmlgui5' 'kio5' 'kconfigwidgets5' 'gettext')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja')
 source=("https://github.com/g-fb/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('b6efda5e3fb9cdd77f483adf0822e85f274cc67201e183a8de51beaa4d805e99')
