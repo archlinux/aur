@@ -5,7 +5,7 @@
 pkgname=010editor
 pkgver=14.0
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional text and hex editing with Binary Templates technology"
 arch=('i686' 'x86_64')
 url="https://www.sweetscape.com/010editor/"
@@ -31,8 +31,8 @@ package() {
   install -dm 755 "${pkgdir}/opt"
   cp -r "${pkgname}" "${_}/"
 
-  # Clean up unnecessary items (assitant is part of qt5-tools)
-  rm -r "${pkgdir}/opt/${pkgname}/"{'assistant','uninstall'}
+  # Clean up unnecessary items
+  rm -r "${pkgdir}/opt/${pkgname}/uninstall"
 
   install -dm 755 "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/010editor" "${_}/010editor"

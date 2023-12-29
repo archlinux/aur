@@ -1,7 +1,7 @@
 pkgbase = 010editor
 	pkgdesc = Professional text and hex editing with Binary Templates technology
 	pkgver = 14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sweetscape.com/010editor/
 	arch = i686
 	arch = x86_64
