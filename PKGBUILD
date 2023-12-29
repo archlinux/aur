@@ -2,7 +2,7 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
-pkgver=1.9.5.r80.g5e2298daa
+pkgver=1.9.10.r104.gf89bae6e3
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=('x86_64')
@@ -47,6 +47,7 @@ makedepends=(
     'gobject-introspection'
     'meson'
     'python-cairo'
+    'python-jinja'
     'python-markdown'
     'vala'
     'valgrind'
