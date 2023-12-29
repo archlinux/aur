@@ -1,7 +1,7 @@
 pkgbase = ensenso-sdk
 	pkgdesc = Ensenso SDK and tools
 	pkgver = 3.5.1375
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ensenso.com
 	arch = x86_64
 	license = custom
@@ -18,11 +18,20 @@ pkgbase = ensenso-sdk
 	sha512sums = 421a4e0c742bf60ddee785021e9e81bab14f36e5fde22a6db5dee8fdf8d0b7e303394cfbef855d775cdf8e701ed3fa416d50ec1145a8cb2c875cc2553b5e2c06
 
 pkgname = ensenso-sdk
+	depends = ensenso-sdk
+	depends = ensenso-sdk-gui
+	optdepends = ensenso-sdk-examples: for coding examples
+	optdepends = ensenso-sdk-doc: for documentation
+
+pkgname = ensenso-sdk-runtime
 	depends = glibc
 	depends = glu
 	depends = libsm
-	depends = qt4
 	optdepends = ueyed: for capturing from live cameras
+
+pkgname = ensenso-sdk-gui
+	depends = ensenso-sdk-runtime
+	depends = qt4
 
 pkgname = ensenso-sdk-doc
 

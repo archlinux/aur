@@ -1,9 +1,9 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 pkgbase=ensenso-sdk
-pkgname=(ensenso-sdk ensenso-sdk-doc ensenso-sdk-examples)
+pkgname=(ensenso-sdk ensenso-sdk-runtime ensenso-sdk-gui ensenso-sdk-doc ensenso-sdk-examples)
 pkgdesc="Ensenso SDK and tools"
 pkgver=3.5.1375
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 license=(custom)
 url='http://ensenso.com'
@@ -31,7 +31,15 @@ _hash="632fd5c"
 _dir="ensenso-sdk-$pkgver-x64-$_hash"
 
 package_ensenso-sdk() {
-	depends=('glibc' 'glu' 'libsm' 'qt4')
+	depends=('ensenso-sdk' 'ensenso-sdk-gui')
+	optdepends=(
+		'ensenso-sdk-examples: for coding examples'
+		'ensenso-sdk-doc: for documentation'
+	)
+}
+
+package_ensenso-sdk-runtime() {
+	depends=('glibc' 'glu' 'libsm')
 	optdepends=(
 		'ueyed: for capturing from live cameras'
 	)
@@ -39,16 +47,14 @@ package_ensenso-sdk() {
 	local dir="$srcdir/$_dir/"
 
 	install -Dd "$pkgdir/usr"
-	install -Dd "$pkgdir/usr/bin"
 	install -Dd "$pkgdir/usr/lib/pkgconfig"
 	install -Dd "$pkgdir/usr/include"
-	install -Dd "$pkgdir/usr/share/doc"
 	install -Dd "$pkgdir/usr/share/licenses/$pkgname"
 
 	cp -a "$dir/usr/lib" "$pkgdir/usr/"
-	cp -a "$dir/usr/share" "$pkgdir/usr/"
 	cp -a "$dir/opt" "$pkgdir/"
 	rm -r "$pkgdir/opt/ensenso/development/examples"
+	rm -r "$pkgdir/opt/ensenso/bin"
 
 	rm -r "$pkgdir/opt/ensenso/lib"
 	rm -r "$pkgdir/opt/ensenso/manual"
@@ -56,14 +62,27 @@ package_ensenso-sdk() {
 	ln -s "/opt/ensenso/development/c/include" "$pkgdir/usr/include/ensenso"
 	ln -s "/opt/ensenso/pkgconfig/"* "$pkgdir/usr/lib/pkgconfig/"
 
+	install -D "$dir/opt/ensenso/eula.txt" "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
+	install -D "$dir/Readme"               "$pkgdir/opt/ensenso/"
+}
+
+package_ensenso-sdk-gui() {
+	depends=('ensenso-sdk-runtime' 'qt4')
+
+	local dir="$srcdir/$_dir/"
+
+	install -Dd "$pkgdir/usr"
+	install -Dd "$pkgdir/usr/bin"
+	install -Dd "$pkgdir/opt/ensenso"
+
+	cp -a "$dir/opt/ensenso/bin" "$pkgdir/opt/ensenso/"
+	cp -a "$dir/usr/share" "$pkgdir/usr/"
+
 	install -Dt "$pkgdir/usr/bin" -m 755 \
 		"$srcdir/nxCalTab" \
 		"$srcdir/nxProfiler" \
 		"$srcdir/nxTreeEdit" \
 		"$srcdir/nxView"
-
-	install -D "$dir/opt/ensenso/eula.txt" "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
-	install -D "$dir/Readme"               "$pkgdir/opt/ensenso/"
 }
 
 package_ensenso-sdk-examples() {
