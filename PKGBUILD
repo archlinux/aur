@@ -1,7 +1,7 @@
 # Maintainer: Maxim Korotkov <maximkorotkov4@gmail.com>
 
 pkgname=the-honkers-railway-launcher-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/the-honkers-railway-launcher"
@@ -11,13 +11,10 @@ license=("GPL3")
 
 depends=(
     "libadwaita"
-    "tar"
-    "unzip"
+    "p7zip"
     "xdg-desktop-portal"
     "xdelta3"
-    "cabextract"
     "git"
-    "iputils"
     "gtk4"
     "glibc"
 )
@@ -35,7 +32,7 @@ source=(
 )
 
 md5sums=(
-    '08b62a7eeedf30bd0ac2b7e915d36c13'
+    '81ccfa3b9ebffaad4e64256f3ed90f23'
     '3a9757edaaa59d9696ffc1ffacdafb30'
     '3817083b3f90f0ec4e5290a914dcaa9b'
 )
