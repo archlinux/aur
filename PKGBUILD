@@ -3,7 +3,7 @@
 
 pkgbase=linux-lts515
 pkgver=5.15.145
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
 arch=(x86_64 pentium4 i686 i486)
@@ -230,7 +230,7 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
     if [ "${sha256sums[${i}]}" = 'a9ca5b1da8cbff089a9d683fd7b4475ebd4785a9d7083ae6de25c03487f2e564' ]; then
       sha256sums_pentium4=('b03ebaca83a9dc0cbc87254977d54e6f5c0628a7433484f7604a6a8b807225c0')
       sha256sums_i686=('adcd677f08f581069e37282ffe5bb2e58cf79a45d520e0a93692e5b160277e09')
-      sha256sums_i486=('efb0726ddc7e92a113d01d62c6e1fd0eba1fbf294e1ea18b779b')
+      sha256sums_i486=('7a55547cf1f5efb0726ddc7e92a113d01d62c6e1fd0eba1fbf294e1ea18b779b')
     fi
   done
 
