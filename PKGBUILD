@@ -2,7 +2,7 @@
 _commit=2341c6c
 pkgname=python-leapc
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Open-source Python bindings for the Gemini LeapC API."
 arch=("x86_64")
@@ -37,23 +37,21 @@ prepare() {
 build() {
     cd "leapc-python-bindings"
 
-    # Build the package with setup.py
-    # This is a deprecated way and setuptools will tell you so, ignore the warnings
-    # Upstream should switch to using a pyproject.toml
+    # Build the package with python -m build
     cd "leapc-cffi"
-    python setup.py build
+    python -m build .
 
     cd "../leapc-python-api"
-    python setup.py build
+    python -m build .
 }
 
 package() {
     cd "leapc-python-bindings"
 
-    # Package with setup.py
+    # Install the package with python -m installer
     cd "leapc-cffi"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     cd "../leapc-python-api"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
