@@ -1,7 +1,7 @@
 pkgbase = r-amap
 	pkgdesc = Another Multidimensional Analysis Package
 	pkgver = 0.8.19
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=amap
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = r-amap
 	depends = r
 	optdepends = r-biobase
 	source = https://cran.r-project.org/src/contrib/amap_0.8-19.tar.gz
-	sha256sums = 7349ea684b69eba0fcc48f78b7ac09a838d95d3bc0c6a94b6055605ac0291900
+	md5sums = 0693299e20587073c234e7c4a0079f95
+	b2sums = cf3b51c17a3f2246c3398ba508d60ffef0a218d81f262dcd63994034686fe24dccaa9621f513f3034afb6485a7f2c08a7949623492d04dd1626869c91c1bb20e
 
 pkgname = r-amap
