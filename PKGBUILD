@@ -51,7 +51,7 @@ conflicts=("${pkgname%-git}")
 backup=("etc/sway/config")
 source=("${pkgname}::git+https://github.com/swaywm/sway.git"
     "50-systemd-user.conf"
-	"sway-portals.conf")
+    "sway-portals.conf")
 b2sums=('SKIP'
         '71f45f9abb4e9f98a52177b227aa30ab27d02c9eef8a31400460e71c72b6d40ec396581f0b1703d4cec655aaba704077212882f643c6efb6cda951ea69b5383d'
         'eeaa6bdfae0fa6c0445d7d02209ef9142d529f1770fd8d9d614772c276ffa7461247523399164fed70ad39b25af9a91fcf8afa23af5c193c898c44487956de7f')
