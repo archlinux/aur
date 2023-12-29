@@ -1,6 +1,6 @@
 pkgbase = python-hat-doit
 	pkgdesc = Hat build utility functions
-	pkgver = 0.12.5
+	pkgver = 0.15.7
 	pkgrel = 1
 	url = https://github.com/hat-open/hat-doit
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-hat-doit
 	depends = python-setuptools
 	depends = python-sphinx
 	depends = python-wheel
-	source = https://github.com/hat-open/hat-doit/archive/refs/tags/v0.12.5.tar.gz
-	sha256sums = 7ad0718486239161ad027b2b8644fd6ecdb0056ab8b766110ad2bbd87449f9ac
+	source = https://github.com/hat-open/hat-doit/archive/refs/tags/v0.15.7.tar.gz
+	sha256sums = 7f8e49f14ed0ebe2628bdba7e4f6917bc8078a540edd1cedcab2c48ca4d41eec
 
 pkgname = python-hat-doit
