@@ -1,20 +1,16 @@
 pkgbase = lib32-agena-bin
 	pkgdesc = An Algol-inspired procedural programming language designed for science, scripting, and other applications
-	pkgver = 2.39.2
+	pkgver = 3.7.6
 	pkgrel = 1
 	url = http://agena.sourceforge.net
 	arch = x86_64
-	arch = i686
 	license = GPL
-	source = lib32-agena-bin-2.39.2.deb::https://master.dl.sourceforge.net/project/agena/Binaries/Agena%202.39.2/agena-2.39.2-linux.i386.deb
-	source = agena.desktop
-	sha512sums = 0db3059017acdb444d949cf1cbc714681bbca5e1321e0e6d371662fb4987f1b58eddbdf8f9e47167f695e2cfc27700db4ea58bc2dfd642511e364dbfa187f248
-	sha512sums = b43884e220d979054e4f532fdb96ad373a0a5fed23ac755f44bccdf0bc12959b96cd45f40eabaf8a35b7bd3c6fa9958ccef68faa180063ab46624a2a624781b6
-
-pkgname = lib32-agena-bin
-	arch = x86_64
 	depends = lib32-libxext
 	depends = lib32-ncurses
 	depends = lib32-readline
-	provides = agena
-	provides = agena-editor
+	source = lib32-agena-bin-3.7.6.deb::https://master.dl.sourceforge.net/project/agena/Binaries/Agena%203.7.6/agena-3.7.6a-linux.i386.deb
+	source = agena.desktop
+	sha512sums = 89f7cd5b9bfd7910015bdbd9127a9f53d91ac7f9958567c7296b696be89c15d33d64761f813f893dcf4de3b2f44f19b44ea42c2bb8cba7a60030847186c24dc5
+	sha512sums = d09d4061c090039c06aa025543620da36a31a14a121cf3c73fd03e15583042577a63bc7555b27f572f22b409691c38a64969d66b655d42c773f0048b2d824c70
+
+pkgname = lib32-agena-bin
