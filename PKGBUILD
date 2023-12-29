@@ -3,24 +3,25 @@
 _pkgname=COHCAPanno
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
-pkgrel=1
-pkgdesc='Annotations for City of Hope CpG Island Analysis Pipeline'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Annotations for City of Hope CpG Island Analysis Pipeline"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(GPL3)
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0362bd4a6d984f5748613751d4b525d6580e360d61d60bc625617d4855a10539')
+md5sums=('78fd4891651a8a62779fe402a13ba6b1')
+b2sums=('80b9b704786213e621f80e67255a86992aea04d4f1044741835deda529ce86b3cfb0f46c1962dc6a2ccfeb6b17000586548c39cde2629855742ef82f1d5642a8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
