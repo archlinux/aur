@@ -11,7 +11,7 @@ pkgname=(
   protonmail-bridge
 )
 pkgver=3.6.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
@@ -41,7 +41,7 @@ source=(
 sha256sums=(
   '2dd18b5460fff9c84edaf3eb7401357e8d311c3e63564db8c5adcb63e54877af'
   '404db600803b9be875365d84e0726c3f7aedceaf122a795ca2248ee9f005753b'
-  '4411cbed6aba2144daba08eae8ae99868a8939be8ecc7f6160623dd6cf4b9a6f'
+  'd51fb6efde22354d84b894b979a685d06fcc9cf3040d999d1cd6ebf5242a5043'
   '436a9a293424fb7d48a8fd61fff7d63985dec56d6170cd2fbae24fe03ef98136'
 )
 
