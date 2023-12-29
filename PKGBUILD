@@ -2,24 +2,24 @@
 
 _name=hat-util
 pkgname=python-$_name
-pkgver=0.6.9
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="Hat utility library"
 url="https://github.com/hat-open/hat-util"
 license=('Apache')
 arch=('any')
 depends=('python')
-makedepends=('python-hat-doit' 'python-installer')
+makedepends=('python-build' 'python-hat-doit' 'python-installer')
 source=("https://github.com/hat-open/hat-util/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ee19f44ace8b321f36ec36321725975584c636cfb9439973e6c610183ded4142')
+sha256sums=('d848dfb256c3886d667bcf2d3192887f5ffcca29160f1544e4b61ebbec750e36')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
-    python -m doit build_py
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" build/py/dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -D -m 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
