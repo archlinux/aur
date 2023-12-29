@@ -1,16 +1,16 @@
 pkgbase = r-simplecache
 	pkgdesc = Simply Caching R Objects
 	pkgver = 0.4.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=simpleCache
 	arch = any
 	license = BSD
 	depends = r
-	optdepends = r-batchtools
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/simpleCache_0.4.2.tar.gz
-	sha256sums = 9f129c43fa648a882fba3798b0b9e710f9e74b717bcbc9be7e1d30862cc15e7d
+	md5sums = 9c06a53b3452831d7ae6ffdc415c6ed3
+	b2sums = dc60c0bab0556b69dcc772c56a4af9a139cc559694870f3b0d726f6584a5f566dd03f52a4cb287e11eef33cbba6034ff7cb334ed232d237acf5aec27e9eee77b
 
 pkgname = r-simplecache
