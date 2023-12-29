@@ -1,7 +1,7 @@
 # Maintainer: Patrick Gelvin <patrick@gelvin.dev>
 pkgname="rcalc"
 pkgver=v1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight RPN calculator"
 arch=("x86_64")
 url="https://github.com/gelvinp/rcalc"
@@ -44,6 +44,8 @@ build() {
   then
     GPERF_CMD="gperf_path=$(which gperf)"
   fi
+
+  export CXXFLAGS="" # Temporary workaround until 1.4
 
   BUILD_NAME="pkgbuild" VERSION_STATUS="stable" scons target=release default_renderer=terminal $GPERF_CMD
 }
