@@ -1,12 +1,13 @@
 pkgbase = r-howmany
 	pkgdesc = A lower bound for the number of correct rejections
 	pkgver = 0.3.1
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=howmany
 	arch = any
 	license = GPL
 	depends = r
 	source = https://cran.r-project.org/src/contrib/howmany_0.3-1.tar.gz
-	sha256sums = ee40f4b730f5be864b3d1952b534a901fb2c06bded38ff16d7e239a8309aac10
+	md5sums = 2a734431375a7214f6dc831ca004dc38
+	b2sums = aee401ad94d4be278d571a03c409ece86eadcf4d797dc697f4474fa2bbbd6194fa5277f044cfd9f24b15b6a3db6baaca42325aa52d542d3411ab43fa6d4bc39b
 
 pkgname = r-howmany
