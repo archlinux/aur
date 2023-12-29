@@ -25,7 +25,7 @@ pkgbase = dbus-x11-git
 	sha256sums = d636205622d0ee3b0734360225739ef0c7ad2468a09489e6ef773d88252960f3
 	sha256sums = 78f985647f112bbe25dfea26f9dd40f49e26389da8fa09a667db54e58f22c2d9
 
-pkgname = dbus-x11
+pkgname = dbus-x11-git
 	depends = systemd-libs
 	depends = expat
 	depends = audit
@@ -38,7 +38,7 @@ pkgname = dbus-x11
 	conflicts = libdbus
 	replaces = libdbus
 
-pkgname = dbus-x11-docs
+pkgname = dbus-x11-docs-git
 	pkgdesc = Freedesktop.org message bus system (with x11 autolaunch) (git version) (documentation)
 	depends = 
 	provides = dbus-docs

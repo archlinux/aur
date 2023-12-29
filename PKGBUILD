@@ -65,7 +65,7 @@ check() {
   ninja -C _build test
 }
 
-package_dbus-x11() {
+package_dbus-x11-git() {
   depends+=(libsystemd.so libaudit.so)
   provides=({,lib}dbus libdbus-1.so)
   conflicts=({,lib}dbus)
@@ -82,18 +82,18 @@ package_dbus-x11() {
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/dbus.conf"
 
   install -Dm644 "$srcdir/dbus-reload.hook" -t "$pkgdir/usr/share/libalpm/hooks"
-  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/dbus"
 
   # Split docs
   mv "$pkgdir/usr/share/doc" "$srcdir"
 }
 
-package_dbus-x11-docs() {
+package_dbus-x11-docs-git() {
   pkgdesc+=" (documentation)"
   provides=(dbus-docs)
   conflicts=(dbus-docs)
   depends=()
 
-  install -Dm644 "dbus/COPYING" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "dbus/COPYING" -t "$pkgdir/usr/share/licenses/dbus-docs"
   mv doc "$pkgdir/usr/share"
 }
