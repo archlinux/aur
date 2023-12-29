@@ -8,7 +8,7 @@
 _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname"
-pkgver=6.6.7
+pkgver=6.6.8
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -33,9 +33,13 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-$pkgver
+_srctag=v$pkgver-arch1
+_dl_url_arch='https://github.com/archlinux/linux'
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  config                       # the main kernel config file
+  $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+  config  # the main kernel config file
+
   1001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
   1002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
@@ -44,7 +48,9 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 sha256sums=(
-  '0ce68ec6019019140043263520955ecd04839e55a1baab2fa9155b42bb6fd841'
+  '5036c434e11e4b36d8da3f489851f7f829cf785fa7f7887468537a9ea4572416'
+  'SKIP'
+  '77f0ad619945e18ab880733129a49ad0af28c3f2fd7b1ae9bbb6465b5a4cd316'
   'SKIP'
   '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
 
@@ -121,8 +127,8 @@ _package() {
   ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
