@@ -3,10 +3,10 @@
 _pkgname='ttrack'
 pkgname="$_pkgname-git"
 pkgver=r5.250baad
-pkgrel=1
+pkgrel=2
 pkgdesc='simple CLI time tracker'
 arch=('x86_64')
-url='https://0xacab.org/just1602/ttrack'
+url='https://github.com/just1602/ttrack'
 license=('GPL')
 makedepends=("cargo")
 provides=("$_pkgname")

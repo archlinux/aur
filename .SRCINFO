@@ -1,13 +1,13 @@
 pkgbase = ttrack-git
 	pkgdesc = simple CLI time tracker
 	pkgver = r5.250baad
-	pkgrel = 1
-	url = https://0xacab.org/just1602/ttrack
+	pkgrel = 2
+	url = https://github.com/just1602/ttrack
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
 	provides = ttrack
-	source = git+https://0xacab.org/just1602/ttrack
+	source = git+https://github.com/just1602/ttrack
 	b2sums = SKIP
 
 pkgname = ttrack-git
