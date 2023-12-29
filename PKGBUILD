@@ -8,9 +8,6 @@ license=('GPL3')
 
 depends=('qt5-base' 'kio5')
 makedepends=('cmake' 'extra-cmake-modules' 'qt5-tools')
-provides=(${pkgname}=${pkgver})
-conflicts=(${pkgname})
-replaces=(${pkgname})
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
