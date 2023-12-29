@@ -3,7 +3,7 @@ pkgname=selenium-ide-bin
 _pkgname=Selenium.IDE
 pkgver=4.0.1_alpha.71
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source record and playback test automation for the web."
 arch=('x86_64')
 url="https://selenium.dev/selenium-ide/"
@@ -32,7 +32,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver//_/-}-linux/${_pkgname}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1126c2cb4fba64efcd240cae529c7a95a7e3637f9f778412c722328fe984d32f'
+sha256sums=('ae8e063cf1ad3f776e64b16d2effd64786f58918509fbe1fae40ae0d00ccb57b'
             '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
