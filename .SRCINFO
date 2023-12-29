@@ -1,0 +1,20 @@
+pkgbase = kde-fcstd-thumbnailer-git
+	pkgdesc = FreeCAD Thumbnail Creator.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/StefanHamminga/kde-fcstd-thumbnailer
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = kio5
+	provides = kde-fcstd-thumbnailer-git=2.0.0
+	conflicts = kde-fcstd-thumbnailer-git
+	replaces = kde-fcstd-thumbnailer-git
+	source = kde-fcstd-thumbnailer-git::git+https://github.com/StefanHamminga/kde-fcstd-thumbnailer.git
+	sha256sums = SKIP
+
+pkgname = kde-fcstd-thumbnailer-git
