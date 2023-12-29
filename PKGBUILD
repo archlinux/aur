@@ -7,7 +7,7 @@ pkgname=(
 )
 
 pkgver=2.1.2
-pkgrel=3
+pkgrel=4
 
 pkgdesc='MooreThreads MUSA'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     # # https://www.mthreads.com/pes/drivers/driver-info?productType=DESKTOP&productModel=DESKTOP_MTT_S80&osVersion=MTT_S80_Ubuntu
     # "musa_${pkgver}-Ubuntu_amd64.deb"::"invalid://musa_${pkgver}-Ubuntu_amd64.deb"
     # https://developer.mthreads.com/sdk/download/musa?equipment=&os=&driverVersion=&version=
-    "MUSA+Toolkits-rc1.4.1+Intel+CPU_Ubuntu.zip::MUSA+Toolkits-rc1.4.1+Intel+CPU_Ubuntu.zip"
+    "MUSA+Toolkits-rc1.4.1+Intel+CPU_Ubuntu.zip::https://developer.mthreads.com/sdk/download/musa?equipment=&os=&driverVersion=&version="
     "00-port-ti-img-rouge-newer-sources.diff::https://github.com/dixyes/mtgpu-drv/commit/2b3f0f09bd1acf1cf66d479827a3ba8d331cac73.diff"
     "01-disable-cursor_set-things.diff::https://github.com/dixyes/mtgpu-drv/commit/eb252e36927d8a6ff4bcd575e91972991d163583.diff"
     "02-avoid-redefine.diff::https://github.com/dixyes/mtgpu-drv/commit/8d996e13b388aa56974208cd610861c9556dc22b.diff"
