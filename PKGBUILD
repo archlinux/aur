@@ -3,12 +3,13 @@
 
 pkgname=meh-git
 pkgver=0.3.27.g426bd3d
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal image viewer using raw XLib."
 arch=('i686' 'x86_64')
 url="http://www.johnhawthorn.com/meh/"
 license=('custom:MIT')
 depends=('libxext' 'libjpeg' 'giflib' 'libpng')
+makedepends=('git')
 optdepends=('imagemagick')
 conflicts=('meh')
 source=('git+https://github.com/afarah1/meh.git' gif_main.patch)
