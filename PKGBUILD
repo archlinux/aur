@@ -17,12 +17,10 @@ options=('!strip')
 
 source=(git+$url/linux.git#branch=linux-6.1-rkbsp6-panthor-v4
         'linux.preset'
-        'config'
         )
 
 sha512sums=('SKIP'
-        '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-        '6529c8735a6279caba7724f5369b86e7e1e411d782c786009ba808c052e49d391af2d909d175c10ee027f6a08c23d9273343f31799cd93b6d5ddd6ef3bfd3fb4')
+        '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
 
 prepare() {
   cd linux
