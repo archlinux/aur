@@ -1,13 +1,13 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=simpleini
 pkgname=$_pkgname-git
-pkgver=4.20.r1.gafb295b
+pkgver=4.22.r0.g09c21bd
 pkgrel=1
 pkgdesc="Cross-platform C++ library providing a simple API to read and write INI-style configuration files"
 arch=('any')
 url="https://github.com/brofield/simpleini"
 license=('MIT')
-makedepends=('git')
+makedepends=('cmake' 'git')
 checkdepends=('gtest')
 optdepends=('icu: for ICU conversion')
 provides=("$_pkgname=$pkgver")
@@ -20,19 +20,26 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	sed -i 's/(IS_TOPLEVEL_PROJECT)/(BUILD_TESTING)/' $_pkgname/CMakeLists.txt
+}
+
 build() {
-	if ((CHECKFUNC)); then
-		make -C $_pkgname
-	fi
+	cmake -S $_pkgname -B build \
+		-DBUILD_TESTING="$CHECKFUNC" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DSIMPLEINI_USE_SYSTEM_GTEST=ON \
+		-Wno-dev
+	cmake --build build
 }
 
 check() {
-	make -C $_pkgname test
+	ctest --test-dir build
 }
 
 package() {
-	cd $_pkgname
 	# shellcheck disable=SC2154
-	make DESTDIR="$pkgdir" PREFIX=/usr install
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENCE.txt
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENCE.txt
 }
