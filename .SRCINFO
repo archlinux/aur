@@ -1,0 +1,18 @@
+pkgbase = librivox-checker
+	pkgdesc = Validator for LibriVox audio files
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://cgjennings.ca/projects/checker/
+	arch = any
+	license = MIT
+	checkdepends = desktop-file-utils
+	makedepends = java-environment
+	makedepends = ant
+	makedepends = gendesk
+	makedepends = desktop-file-utils
+	depends = java-runtime
+	depends = sh
+	source = librivox-checker-1.1.tar.gz::https://github.com/CGJennings/librivox-checker/archive/v1.1.tar.gz
+	b2sums = c914571e85d62d6bae495fc369f040500d01383c98a041f30c971c6b3235e5a26a8a62f5c2d4efd613005cd1c1fc57ce519fbdae1a839bcb4b3c3d6df164ef01
+
+pkgname = librivox-checker
