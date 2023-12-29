@@ -3,20 +3,31 @@
 
 pkgname=azure-kubelogin
 _name=kubelogin
-pkgver=0.0.34
-pkgrel=2
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="A Kubernetes credential (exec) plugin implementing azure authentication"
 arch=(x86_64)
 url="https://github.com/Azure/kubelogin"
 license=(MIT)
-makedepends=(go)
 depends=(glibc)
+makedepends=(
+  git
+  go
+)
 conflicts=(kubelogin)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('794da3ea64c26eb4cd709b807fff6629fe14cf3e7c384bddf2b890caa0018d26')
+_commit=0fcd072d45250a50cde855cf50204ad2dc784095 # git rev-parse "$pkgver"
+source=("$pkgname::git+$url.git?signed#commit=$_commit")
+sha256sums=('SKIP')
+validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') # GitHub (web-flow commit signing)
 
-_archive="$_name-$pkgver"
+_archive="$pkgname"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags | sed 's/^v//'
+}
 
 build() {
   cd "$_archive"
@@ -27,13 +38,7 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  _go_version=$(go version | cut -d " " -f 3)
-  _ld_flags=" \
-    -linkmode external \
-    -X main.version=v$pkgver/? \
-    -X main.goVersion=$_go_version \
-    -X 'main.platform=linux/amd64' \
-  "
+  _ld_flags="-linkmode external -X main.gitTag=$pkgver"
   go build -ldflags "$_ld_flags" .
 
   # Completions
@@ -51,11 +56,11 @@ check() {
 package() {
   cd "$_archive"
 
-  install -Dm755 kubelogin "$pkgdir/usr/bin/kubelogin"
+  install -Dm755 -t "$pkgdir/usr/bin" kubelogin
 
   install -Dm644 kubelogin.bash "$pkgdir/usr/share/bash-completion/completions/kubelogin"
   install -Dm644 kubelogin.fish "$pkgdir/usr/share/fish/vendor_completions.d/kubelogin.fish"
   install -Dm644 kubelogin.zsh "$pkgdir/usr/share/zsh/site-functions/_kubelogin"
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
