@@ -8,7 +8,7 @@
 _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname"
-pkgver=6.3.9
+pkgver=6.6.7
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -44,12 +44,12 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 sha256sums=(
-  '41ecf21399b17ab85163750ba22347d09b54fa099b80b63d0e2ef0066129b13e'
+  '0ce68ec6019019140043263520955ecd04839e55a1baab2fa9155b42bb6fd841'
   'SKIP'
-  '21b9a9e542f853cdc695648d6ab6219bd2e881a4954277f241e104723c373d42'
+  '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
 
-  'bdd2a5a56e01e91723907afb40d28bed77b7d5107aba92c85adb3ce6967e713a'
-  '9a698eaf1a0bd740981e909b6ad9bd41300488a2a771843bf30b9bdc94aa3c3b'
+  'f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb'
+  '2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db'
 )
 
 export KBUILD_BUILD_HOST=archlinux
