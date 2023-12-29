@@ -1,6 +1,6 @@
 pkgbase = libmediawiki-git
 	pkgdesc = A KDE C++ interface for MediaWiki based web services like Wikipedia
-	pkgver = 5.37.0.r16.g8741b29
+	pkgver = 5.38.0.r0.g5c6086f
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/libmediawiki
 	arch = i686
@@ -10,11 +10,11 @@ pkgbase = libmediawiki-git
 	makedepends = extra-cmake-modules
 	depends = gcc-libs
 	depends = glibc
-	depends = kcoreaddons
+	depends = kcoreaddons5
 	depends = qt5-base
 	source = git+https://invent.kde.org/libraries/libmediawiki.git
 	sha256sums = SKIP
 
 pkgname = libmediawiki-git
-	provides = libmediawiki=5.37.0.r16.g8741b29
+	provides = libmediawiki=5.38.0.r0.g5c6086f
 	conflicts = libmediawiki

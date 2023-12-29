@@ -2,9 +2,9 @@
 # Contributor: Sevenseven < forauronly AT gmail.com >
 
 pkgname=libmediawiki-git
-_last_non_tagged_release_ver=5.37.0
-_last_non_tagged_release_commit=1a6e469024128a10ac4d54457dbae58aaec52fb0
-pkgver=5.37.0.r16.g8741b29
+_last_non_tagged_release_ver=5.38.0
+_last_non_tagged_release_commit=5c6086f040aa768ae3a9b86c2e35b46e5e85f81a
+pkgver=5.38.0.r0.g5c6086f
 pkgrel=1
 pkgdesc='A KDE C++ interface for MediaWiki based web services like Wikipedia'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=(
   'gcc-libs'
   'glibc'
-  'kcoreaddons'
+  'kcoreaddons5'
   'qt5-base'
 )
 makedepends=('git' 'extra-cmake-modules')
