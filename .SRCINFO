@@ -1,6 +1,6 @@
 pkgbase = xiezuo-bin
 	pkgdesc = WPS一站式企业沟通与协作平台. 整合即时沟通、文档协作、精选应用功能于一体，让办公更高效、更愉悦
-	pkgver = 4.12.0
+	pkgver = 4.13.0
 	pkgrel = 1
 	url = https://xz.wps.cn/
 	install = xiezuo-bin.install
@@ -21,7 +21,7 @@ pkgbase = xiezuo-bin
 	conflicts = xiezuo
 	options = !strip
 	options = !emptydirs
-	source = xiezuo-linux-x64-stable-4.12.0.deb::https://woa.wps.cn/download/deb-X64
-	sha256sums = b428c39c1a3076f3351df503c543c8f0d2beea50d67f4381934d5a98b0601b23
+	source = xiezuo-linux-x64-stable-4.13.0.deb::https://woa.wps.cn/download/deb-X64
+	sha256sums = d1d97ca9c7f85fbbaef84861f4ecac62b9570e1c056d6453d36e90b6efed899e
 
 pkgname = xiezuo-bin
