@@ -1,18 +1,31 @@
 pkgbase = red-bin
-	pkgdesc = Red is a next-generation programming language strongly inspired by Rebol
-	pkgver = 0.6.4
+	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL
+	pkgver = 2023.12.22.6cb7d502b
 	pkgrel = 1
 	url = https://www.red-lang.org
 	arch = i686
 	arch = x86_64
 	license = custom:BSD-3-Clause
 	license = custom:BSL-1.0
+	source = red-view::https://static.red-lang.org/dl/auto/linux/red-view-22dec23-6cb7d502b
+	source = red-cli::https://static.red-lang.org/dl/auto/linux/red-22dec23-6cb7d502b
+	source = red-toolchain::https://static.red-lang.org/dl/auto/linux/red-toolchain-22dec23-6cb7d502b
+	sha256sums = 2b264cea7e0284a456ce669c402151be6605db0d765cff65d6aa86ae5c262885
+	sha256sums = 6b73db6e4a891d4cc443fdf2475f07c32d14f9a4a91330d46d3376872640df53
+	sha256sums = 71761e2459209c1de8f6d9f3102f6728ad38ce7fc7db1cd85aef279569abf518
+
+pkgname = red-view
+	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL (GUI)
+	groups = red-bin
+	depends = lib32-gtk3
+
+pkgname = red-cli
+	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL (CLI)
+	groups = red-bin
+	depends = lib32-curl
 	provides = red
 	conflicts = red
-	options = !strip
-	source = red-0.6.4::https://static.red-lang.org/dl/linux/red-064
-	sha256sums = ad08b85356e24c3bf77d624c005c6fd7a44bb6b1924118af3dcdb94e7d7b4531
-	depends_x86_64 = lib32-curl
 
-pkgname = red-bin
-
+pkgname = red-toolchain
+	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL (Toolchain)
+	groups = red-bin
