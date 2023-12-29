@@ -1,7 +1,8 @@
 pkgbase = sonicthehedgehog2
-	pkgdesc = Sonic the Hedgehog 2 game powered by the rsdkv4 engine. Full details on how to to use this are at https://gitlab.com/SonicRSDK/sonicthehedgehog2
-	pkgver = 1.0.1
+	pkgdesc = Sonic the Hedgehog 2 game powered by the rsdkv4 engine.
+	pkgver = 1.0.2
 	pkgrel = 1
+	url = https://gitlab.com/SonicRSDK/sonicthehedgehog2
 	arch = x86_64
 	arch = aarch64
 	arch = i686
@@ -14,7 +15,9 @@ pkgbase = sonicthehedgehog2
 	depends = sdl2
 	depends = unzip
 	depends = zenity
-	source = https://gitlab.com/SonicRSDK/sonicthehedgehog2/-/archive/1.0.1-1/sonicthehedgehog2-1.0.1-1.tar.bz2
+	source = https://gitlab.com/SonicRSDK/sonicthehedgehog2/-/archive/1.0.2-1/sonicthehedgehog2-1.0.2-1.tar.bz2
+	source = https://archive.org/download/data_20231229/Data.rsdk
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = sonicthehedgehog2
