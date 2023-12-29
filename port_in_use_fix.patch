@@ -1,0 +1,34 @@
+diff --color --unified --recursive --text package.orig/dbus/test/internals/misc-internals.c package.patched/dbus/test/internals/misc-internals.c
+--- package.orig/dbus/test/internals/misc-internals.c	2023-12-30 02:34:05.560436033 +0800
++++ package.patched/dbus/test/internals/misc-internals.c	2023-12-30 02:35:01.040434307 +0800
+@@ -741,10 +741,10 @@
+ static dbus_bool_t
+ _dbus_server_test (const char *test_data_dir _DBUS_GNUC_UNUSED)
+ {
+-  start_test_dbus_server ("tcp:port=1234");
+-  start_test_dbus_server ("tcp:host=localhost,port=1234");
+-  start_test_dbus_server ("tcp:host=localhost,port=1234;tcp:port=5678");
+-  start_test_dbus_server ("tcp:port=1234");
++  start_test_dbus_server ("tcp:port=8765");
++  start_test_dbus_server ("tcp:host=localhost,port=8765");
++  start_test_dbus_server ("tcp:host=localhost,port=8765;tcp:port=5678");
++  start_test_dbus_server ("tcp:port=8765");
+ #ifdef DBUS_UNIX
+   /* Create a unique temporary directory for socket paths. */
+   if (mkdtemp (test_socket_dir) == NULL)
+@@ -756,13 +756,13 @@
+ 
+   /* Check that both absolute and relative paths work. */
+   start_test_dbus_server ("unix:path=%s/boogie", test_socket_dir);
+-  start_test_dbus_server ("tcp:port=1234;unix:path=%s/boogie",
++  start_test_dbus_server ("tcp:port=8765;unix:path=%s/boogie",
+                           test_socket_dir);
+ 
+   if (chdir (test_socket_dir) != 0)
+     _dbus_test_fatal ("Failed to chdir() to %s.", test_socket_dir);
+   start_test_dbus_server ("unix:path=./boogie");
+-  start_test_dbus_server ("tcp:port=1234;unix:path=./boogie");
++  start_test_dbus_server ("tcp:port=8765;unix:path=./boogie");
+ #endif
+   return TRUE;
+ }

@@ -1,0 +1,13 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = etc/dbus-1/system.d/*.conf
+Target = usr/share/dbus-1/system.d/*.conf
+Target = usr/share/dbus-1/system-services/*.service
+
+[Action]
+Description = Reloading system bus configuration...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/systemd-hook reload dbus
