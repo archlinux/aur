@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netpad-bin
 _pkgname=NetPad
-pkgver=0.6.0
+pkgver=0.6.1
+_electronversion=23
 pkgrel=1
 pkgdesc="A cross-platform C# editor and playground."
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron23'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'dotnet-sdk'
 )
@@ -19,11 +20,11 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tareqimbasher/NetPad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dd873d409a81a6f5215232ce0534d9c363c531d1af5b0ecb257edd9b0ed58f84'
+sha256sums=('4c58c6de973c242de83f2a4ac8c122ea0f12bfb09d03a7564c97c86d26bea16a'
             '43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6'
-            'f88716600efbd08a3a7e8828df9a19d4af1727fbb435b3de61129354c37cdb90')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
-    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
