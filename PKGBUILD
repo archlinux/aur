@@ -1,8 +1,8 @@
 # Maintainer: Antheas Kapenekakis <aur at antheas dot dev>
 pkgname=hhd-user
 pkgver=0.0.1
-pkgrel=1
-pkgdesc='Handheld Daemon User Service. Adds a user service file, and the appropriate rules so that hhd can run as a user daemon. Reboot and enable with `systemctl --user enable hhd-user`.'
+pkgrel=2
+pkgdesc='Handheld Daemon User Service. Adds a user service file, and the appropriate rules so that hhd can run as a user daemon. Enable with `systemctl --user enable hhd-user` and reboot.'
 arch=('x86_64')
 url='https://github.com/antheas/hhd'
 license=('MIT')
