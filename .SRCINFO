@@ -1,7 +1,7 @@
 pkgbase = libretro-lutro-git
 	pkgver = r596.09a134e
-	pkgrel = 1
-	url = https://github.com/libretro/libretro-lutro
+	pkgrel = 2
+	url = https://lutro.libretro.com/
 	arch = aarch64
 	arch = armv7h
 	arch = i486

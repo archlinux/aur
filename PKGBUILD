@@ -3,14 +3,14 @@
 _pkgname=libretro-lutro
 pkgname=libretro-lutro-git
 pkgver=r596.09a134e
-pkgrel=1
+pkgrel=2
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'riscv32' 'riscv64' 'x86_64')
-url="https://github.com/libretro/${_pkgname}"
+url="https://lutro.libretro.com/"
 license=('MIT')
 groups=('libretro')
 depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('git')
-source=("${_pkgname}::git+${url}")
+source=("${_pkgname}::git+https://github.com/libretro/${_pkgname}")
 b2sums=('SKIP')
 
 pkgver() {
