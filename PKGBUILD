@@ -1,7 +1,7 @@
 # Maintainer: Horror Proton <https://github.com/horror-proton>
 
 pkgname=maa-assistant-arknights
-_pkgver=v4.28.4
+_pkgver=v4.28.6
 pkgver=${_pkgver//-/}
 pkgver=${pkgver#v}
 pkgrel=1
@@ -15,7 +15,7 @@ _fastdeploy_ref=d0b018ac6c3daa22c7b55b555dc927a5c734d430
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('474fc59585cbd2cf125c4e6eca5ef722'
+md5sums=('5ac9adcd8d3d1fffc6fa963919d3add4'
          '93190bbc6785e35e231af5cd4931f16a')
 
 if ((WITH_GPU)); then
