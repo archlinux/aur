@@ -1,17 +1,18 @@
 pkgbase = python-hat-juggler
 	pkgdesc = Juggler communication protocol
-	pkgver = 0.6.10
+	pkgver = 0.6.12
 	pkgrel = 1
 	url = https://github.com/hat-open/hat-juggler
 	arch = any
 	license = Apache
+	makedepends = python-build
 	makedepends = python-hat-doit
 	makedepends = python-installer
 	depends = python-aiohttp
 	depends = python-hat-aio
 	depends = python-hat-json
 	depends = python-hat-util
-	source = https://github.com/hat-open/hat-juggler/archive/refs/tags/v0.6.10.tar.gz
-	sha256sums = 179e8f7664898860c5cc127467e53e9fea103fdf410ae7f6e449b763f72784d6
+	source = https://github.com/hat-open/hat-juggler/archive/refs/tags/v0.6.12.tar.gz
+	sha256sums = a06a1a8410f5cc0455596325d43263ebb8c510b320c11441b7ba20ad96726d35
 
 pkgname = python-hat-juggler
