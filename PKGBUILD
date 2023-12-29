@@ -7,7 +7,7 @@ _kernel_tag="opi"
 pkgbase=linux-$_kernel_tag
 pkgname=("${pkgbase}-headers" $pkgbase)
 pkgver=6.1.25
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 license=('GPL2')
 url="https://hub.nuaa.cf/hbiyik"
@@ -15,7 +15,7 @@ pkgdesc="Linux kernel package targeting to pretest 6.1 merges for opi"
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
 
-source=(git+$url/linux.git#branch=linux-6.1-rkbsp6-panthor-v4
+source=(git+$url/linux.git#branch=linux-6.1-gen-rkr6+panthor
         'linux.preset'
         )
 

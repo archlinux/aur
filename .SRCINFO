@@ -1,7 +1,7 @@
 pkgbase = linux-opi
 	pkgdesc = Linux kernel package targeting to pretest 6.1 merges for opi
 	pkgver = 6.1.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hub.nuaa.cf/hbiyik
 	arch = aarch64
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = linux-opi
 	makedepends = vboot-utils
 	makedepends = dtc
 	options = !strip
-	source = git+https://hub.nuaa.cf/hbiyik/linux.git#branch=linux-6.1-rkbsp6-panthor-v4
+	source = git+https://hub.nuaa.cf/hbiyik/linux.git#branch=linux-6.1-gen-rkr6+panthor
 	source = linux.preset
 	sha512sums = SKIP
 	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
