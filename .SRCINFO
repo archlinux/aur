@@ -23,6 +23,8 @@ pkgbase = tageditor
 	depends = qt5-webengine
 	depends = qt5-declarative
 	source = tageditor-3.9.0.tar.gz::https://github.com/Martchus/tageditor/archive/v3.9.0.tar.gz
+	source = 0001-Avoid-use-of-jq-argument-argjson-as-it-has-been-remo.patch
 	sha256sums = ebafac24ab7c3833a018b5848b32d9fa2cfa01cafeff1b1ec1a6e30eb7415b1b
+	sha256sums = SKIP
 
 pkgname = tageditor
