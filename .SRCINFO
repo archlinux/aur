@@ -1,12 +1,13 @@
 pkgbase = r-tensor
 	pkgdesc = Tensor product of arrays
 	pkgver = 1.5
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=tensor
 	arch = any
 	license = GPL
 	depends = r
 	source = https://cran.r-project.org/src/contrib/tensor_1.5.tar.gz
-	sha256sums = e1dec23e3913a82e2c79e76313911db9050fb82711a0da227f94fc6df2d3aea6
+	md5sums = 067d8ce235aa25756d178f5548b39328
+	b2sums = 2d0c14938aded2884d6033ab10614269898c3ceff8e933c403d580f70c57207853d57bdfbaefe8e3c3cc9a7fd4dee14c1135ace6c4529a25198bc4a9499fb769
 
 pkgname = r-tensor
