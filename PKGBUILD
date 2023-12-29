@@ -3,12 +3,12 @@
 _pkgname=FNN
 _pkgver=1.1.3.2
 pkgname=r-${_pkgname,,}
-pkgver=1.1.3.2
-pkgrel=1
-pkgdesc='Fast Nearest Neighbor Search Algorithms and Applications'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Fast Nearest Neighbor Search Algorithms and Applications"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-mvtnorm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d701a13487979ebb07a071f4cc83fcf4daea5832d1f3923bce1e0d671dfe0e87')
+md5sums=('e05bd9b5adef28dc6e0cdfed2b994064')
+b2sums=('2d13e0b6a32b3cc285cc81512e704be1a3eea01f4f3b23d11a67c2489366122d59635d83fc9eae2af9b01d711d0e33dc0a70d352c398c27df25bb6388dcfa594')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
