@@ -1,0 +1,33 @@
+From e1e979f9f5df83cd705ff6e47e75f71905e58495 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 29 Dec 2023 17:58:43 +0100
+Subject: [PATCH] Avoid use of `jq`-argument `--argjson` as it has been removed
+
+Apprently `--slurpfile` is supposed to be used instead.
+---
+ tests/cli.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/cli.cpp b/tests/cli.cpp
+index 123d485..7e5a2cb 100644
+--- a/tests/cli.cpp
++++ b/tests/cli.cpp
+@@ -1164,12 +1164,12 @@ void CliTests::testJsonExport()
+     cout << "\nJSON export" << endl;
+     string stdout, stderr;
+ 
+-    const auto file(testFilePath("matroska_wave1/test3.mkv"));
+-    const auto expectedJsonPath(testFilePath("matroska_wave1-test3.json"));
++    const auto file = testFilePath("matroska_wave1/test3.mkv");
++    const auto expectedJson = readFile(testFilePath("matroska_wave1-test3.json"));
+     const char *const args[] = { "tageditor", "export", "--pretty", "-f", file.data(), nullptr };
+     TESTUTILS_ASSERT_EXEC(args);
+     const char *const jqArgs[]
+-        = { "jq", "--argfile", "expected", expectedJsonPath.data(), "--argjson", "actual", stdout.data(), "-n", "$actual == $expected", nullptr };
++        = { "jq", "--argjson", "expected", expectedJson.data(), "--argjson", "actual", stdout.data(), "-n", "$actual == $expected", nullptr };
+     const auto *const logJsonExport = std::getenv(PROJECT_VARNAME_UPPER "_LOG_JQ_INVOCATION");
+     execHelperAppInSearchPath("jq", jqArgs, stdout, stderr, !logJsonExport || !std::strlen(logJsonExport));
+     CPPUNIT_ASSERT_EQUAL(""s, stderr);
+-- 
+2.43.0
+
