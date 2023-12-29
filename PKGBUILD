@@ -3,24 +3,25 @@
 _pkgname=genalg
 _pkgver=0.2.1
 pkgname=r-${_pkgname,,}
-pkgver=0.2.1
-pkgrel=3
-pkgdesc='R Based Genetic Algorithm'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=8
+pkgdesc="R Based Genetic Algorithm"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL2)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('caee6c5f3c04176c39f03037d2ee164eebac0429f9a522460eedfe8274f898f8')
+md5sums=('6677e43553558816799b33d10163c09d')
+b2sums=('4225fc3d12f5a4911e4ddebda944e69bb00824b45d86e3613a6c428f868ed1627e62479bcae94785b3585d2ed1c4345e5566468fed82849c47de188fd007855e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
