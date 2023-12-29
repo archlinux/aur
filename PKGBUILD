@@ -50,8 +50,8 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
-    #npm ci
-    #npm run package
+    npm ci
+    npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
