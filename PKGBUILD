@@ -21,7 +21,7 @@ prepare() {
 
 package() {
   install -Dm 755 usr/local/bin/agena -t "${pkgdir}/usr/bin"
-  install -Dm 644 usr/local/lib/libagena.so -t "${pkgdir}/usr/lib32"
+  install -Dm 644 usr/local/lib/libagena.so -t "${pkgdir}/usr/lib"
   install -Dm 644 agena.desktop -t "${pkgdir}/usr/share/applications"
   install -Dm 644 usr/agena/share/icons/agenasmall.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/agena.png"
   install -Dm 644 usr/agena/share/icons/agena.png -t "${pkgdir}/usr/share/icons/hicolor/32x32/apps/"
