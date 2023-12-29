@@ -22,7 +22,7 @@ optdepends=('lxde-icon-theme: fallback icons'
 	'elementary-xfce-icons: fallback icons'
 	'elementary-icon-theme: fallback icons'
 	'humanity-icon-theme: fallback icons')
-source=("https://drive.google.com/uc?export=download&id=0B4tmeufpN98QeUdab01IRzVaQkU")
+source=("https://github.com/ctag/Victory-Icon-Theme/releases/download/0.0.1/Victory.Icon.Theme.2016-01-17.tar.gz")
 md5sums=('229600b74a43cabd3a395bfa8f6b3697')
 
 package() {
