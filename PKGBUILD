@@ -2,25 +2,25 @@
 # Contributor: Jiuyang Liu <jiuyang.liu@sifive.com>
 
 pkgname=openroad-git
-pkgver=r15912.76dc13430
+pkgver=r19869.1bb904876
 pkgrel=1
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64')
 url='https://theopenroadproject.org/'
 license=('BSD')
-conflicts=('openroad')
+conflicts=('openroad' 'opensta')
 provides=('openroad')
-depends=('blas' 'boost-libs' 'tcl' 'python' 'zlib' 'or-tools' 'spdlog' 'qt5-base')
+depends=('blas' 'boost-libs' 'tcl' 'python' 'zlib' 'or-tools' 'coin-or-lemon' 'spdlog' 'qt5-base')
 makedepends=('git' 'cmake' 'boost' 'swig' 'bison' 'flex')
 source=('git+https://github.com/The-OpenROAD-Project/OpenROAD.git'
         'git+https://github.com/The-OpenROAD-Project/OpenSTA.git'
         'git+https://github.com/The-OpenROAD-Project/abc.git'
-        '0001-fmt-deprecated-ostream.patch')
+        )
 
 sha256sums=('SKIP'
            'SKIP'
            'SKIP'
-           '2420e4e4a3d60ad2043018507617d44fc44a1e622cc5809591d03fd2982a7cbc')
+           )
 
 pkgver() {
   cd $srcdir/OpenROAD
@@ -33,7 +33,7 @@ prepare() {
   git config submodule.module/OpenSTA.url $srcdir/OpenSTA
   git config submodule.src/abc.url $srcdir/abc
   git -c protocol.file.allow=always submodule update
-  git apply ../0001-fmt-deprecated-ostream.patch
+  # git apply ../0001-fmt-deprecated-ostream.patch
 }
 
 build() {

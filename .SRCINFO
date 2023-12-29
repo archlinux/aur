@@ -1,6 +1,6 @@
 pkgbase = openroad-git
 	pkgdesc = A framework for RTL synthesis
-	pkgver = r15912.76dc13430
+	pkgver = r19869.1bb904876
 	pkgrel = 1
 	url = https://theopenroadproject.org/
 	arch = x86_64
@@ -17,17 +17,17 @@ pkgbase = openroad-git
 	depends = python
 	depends = zlib
 	depends = or-tools
+	depends = coin-or-lemon
 	depends = spdlog
 	depends = qt5-base
 	provides = openroad
 	conflicts = openroad
+	conflicts = opensta
 	source = git+https://github.com/The-OpenROAD-Project/OpenROAD.git
 	source = git+https://github.com/The-OpenROAD-Project/OpenSTA.git
 	source = git+https://github.com/The-OpenROAD-Project/abc.git
-	source = 0001-fmt-deprecated-ostream.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 2420e4e4a3d60ad2043018507617d44fc44a1e622cc5809591d03fd2982a7cbc
 
 pkgname = openroad-git
