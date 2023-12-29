@@ -17,10 +17,8 @@ pkgbase = linux-opi
 	options = !strip
 	source = git+https://hub.nuaa.cf/hbiyik/linux.git#branch=linux-6.1-rkbsp6-panthor-v4
 	source = linux.preset
-	source = config
 	sha512sums = SKIP
-	sha512sums = 03cdaa19ff754c1b16cbfe8b08d38fed2f21c688a6e00d331ca53c4ef937c1cd3fdcfca2241d136238f220a87f3da04c1e6e192d262b4505f8bff3ddcbc8b9ad
-	sha512sums = 6529c8735a6279caba7724f5369b86e7e1e411d782c786009ba808c052e49d391af2d909d175c10ee027f6a08c23d9273343f31799cd93b6d5ddd6ef3bfd3fb4
+	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
 
 pkgname = linux-opi-headers
 
