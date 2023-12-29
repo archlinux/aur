@@ -1,22 +1,26 @@
 pkgbase = chatd
 	pkgdesc = Chat with your documents using local AI
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://chatd.ai/
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
-	makedepends = nodejs>=18
+	makedepends = nvm
+	makedepends = git
 	depends = electron24
 	depends = hicolor-icon-theme
 	depends = libvips
+	depends = ollama
+	depends = python
+	depends = nodejs
 	conflicts = chatd
-	source = chatd-1.0.1::git+https://github.com/BruceMacD/chatd#tag=v1.0.1
-	source = ollama-0.1.12::https://github.com/jmorganca/ollama/releases/download/v0.1.12/ollama-linux-amd64
+	options = !emptydirs
+	options = !strip
+	source = chatd::git+https://github.com/BruceMacD/chatd#tag=v1.0.1
 	source = chatd.sh
 	sha256sums = SKIP
-	sha256sums = a890d66c37621aed531dc7795fa62b2ac1b8bebcce87f56c5cef35b026a3ad0f
-	sha256sums = fcaeb0dbb5ef834b40ae32c177deed39a8a79e280305c6195a84fa70b525b844
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = chatd
