@@ -1,12 +1,13 @@
 pkgbase = r-outliers
-	pkgdesc = Tests for outliers
+	pkgdesc = Tests for Outliers
 	pkgver = 0.15
-	pkgrel = 3
+	pkgrel = 8
 	url = https://cran.r-project.org/package=outliers
 	arch = any
 	license = GPL
 	depends = r
 	source = https://cran.r-project.org/src/contrib/outliers_0.15.tar.gz
-	sha256sums = cc31d7f2faefd2c3a27f8ce78c7e67d3b321dcd6690292fad2468125e5e635fb
+	md5sums = be743c547e809a684e2831e82e88206b
+	b2sums = c02012c458adaaa24b12aec32584399a7f4d393c9db4eff99b12eca97e81000e0451c572d4a73ea94864743db0b71b90cb8cfc6be319dbb29545312a463b1bb0
 
 pkgname = r-outliers

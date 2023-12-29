@@ -3,24 +3,25 @@
 _pkgname=outliers
 _pkgver=0.15
 pkgname=r-${_pkgname,,}
-pkgver=0.15
-pkgrel=3
-pkgdesc='Tests for outliers'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=8
+pkgdesc="Tests for Outliers"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cc31d7f2faefd2c3a27f8ce78c7e67d3b321dcd6690292fad2468125e5e635fb')
+md5sums=('be743c547e809a684e2831e82e88206b')
+b2sums=('c02012c458adaaa24b12aec32584399a7f4d393c9db4eff99b12eca97e81000e0451c572d4a73ea94864743db0b71b90cb8cfc6be319dbb29545312a463b1bb0')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
