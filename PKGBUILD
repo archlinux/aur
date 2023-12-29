@@ -34,7 +34,7 @@ prepare() {
     patch -p1 -N -i $p || true
   done
 
-  cat "${srcdir}/config" > '.config'
+  cp -f arch/arm64/configs/rockchip_defconfig ./.config
   
   make olddefconfig prepare
   make -s kernelrelease > version
