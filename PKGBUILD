@@ -18,13 +18,13 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('9facde604ee02271ad49d9a14e88fa23690c41728c3c350594533725c2e38803cc75f9345ff19bb63ceb318ea7c58a46ed0d6091682560509401206c8b4e8537')
-b2sums=('747fc6c553c5a3b9ddcef77556004456980da91168e198b063444961e4d545828833c43d15b5ec3811539a05a528c90d2e7efb16842603642264286dffede000')
+source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+sha512sums=('f658518c11e0ea8b4e59a686e2e6ce90916c5e798c3521ef91a1fc09ec59badd9cddb74f51973cfe50891c5e8d054909e7a8acf2156cbb884492a059196a8d97')
+b2sums=('30fc1cdd7a5ce81783fa0804c20f44d4d7d62a1a6481a6defab3a2b5f542596fb4ab0d4ede5a7d4d128d188b56d17f260c67690deb89b55fb2fc76e1fbcffebc')
 
 build() {
   cd $_name-$pkgver
-  python -m build --wheel --skip-dependency-check --no-isolation
+  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
