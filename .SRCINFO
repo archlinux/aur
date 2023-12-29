@@ -1,0 +1,15 @@
+pkgbase = audiality2
+	pkgdesc = Realtime audio and music engine
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = http://audiality.org/
+	arch = x86_64
+	license = zlib
+	makedepends = base-devel
+	makedepends = cmake
+	depends = sdl
+	depends = jack
+	source = http://audiality.org/download/Audiality2-1.9.0.tar.bz2
+	sha256sums = 9fbc79f361085767b76dac6bb1bd886a03d5126297e078a6491df4530643fc8e
+
+pkgname = audiality2
