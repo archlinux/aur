@@ -1,0 +1,17 @@
+pkgbase = python-raet
+	pkgdesc = Asynchronous encrypted transaction based protocol using Ioflo
+	pkgver = 0.6.8
+	pkgrel = 8
+	url = https://github.com/saltstack/raet
+	arch = any
+	license = Apache
+	checkdepends = python-pytest-runner
+	checkdepends = python-bitvector
+	makedepends = python-setuptools-git
+	depends = python-libnacl
+	depends = python-ioflo
+	depends = python-six
+	source = https://pypi.io/packages/source/r/raet/raet-0.6.8.tar.gz
+	sha512sums = 01279e7414ec3edc9f2bc0641cb9e0606ebf5700b5ce37a05fd5919f3274b3b43aad64110baf4c4b1fda3843cb1a87b6be4ab592a8f62e82b3a716a86ae61b20
+
+pkgname = python-raet
