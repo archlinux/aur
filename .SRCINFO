@@ -1,7 +1,7 @@
 pkgbase = recastnavigation-openmw
 	pkgdesc = Navigation-mesh Toolset for openmw
-	pkgver = 1.5.1.r797.405cc09
-	pkgrel = 2
+	pkgver = 1.6.0.r832.c393777
+	pkgrel = 1
 	url = https://github.com/recastnavigation/recastnavigation
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = recastnavigation-openmw
 	conflicts = recastnavigation
 	options = debug
 	options = strip
-	source = git+https://github.com/recastnavigation/recastnavigation.git#commit=405cc095ab3a2df976a298421974a2af83843baf
+	source = git+https://github.com/recastnavigation/recastnavigation.git#commit=c393777d26d2ff6519ac23612abf8af42678c9dd
 	sha256sums = SKIP
 
 pkgname = recastnavigation-openmw

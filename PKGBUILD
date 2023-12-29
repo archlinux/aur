@@ -3,17 +3,21 @@
 pkgname=recastnavigation-openmw
 _pkgname=recastnavigation
 # recastnavigation hasn't had an official release in a long time and openmw includes recast as external component
-# foolowing them to determine which commit to use.
-# for latest see https://gitlab.com/OpenMW/openmw/-/commit/35b2292e617bc1fbfe1e5f8351d77d3cd5906bdc
-_pkgver=1.5.1
-pkgver=1.5.1.r797.405cc09
-pkgrel=2
+# following them to determine which commit to use.
+# switching to https://github.com/recastnavigation/recastnavigation/commit/c393777d26d2ff6519ac23612abf8af42678c9dd c393777d26d2ff6519ac23612abf8af42678c9dd
+# https://gitlab.com/OpenMW/openmw/-/issues/7457
+
+_pkgver=1.6.0
+pkgver=1.6.0.r832.c393777
+pkgrel=1
 pkgdesc="Navigation-mesh Toolset for openmw"
 url="https://github.com/recastnavigation/recastnavigation"
 arch=('x86_64' 'aarch64')
 license=('Zlib')
 makedepends=(git cmake sdl2 glut)
-source=("git+https://github.com/recastnavigation/recastnavigation.git#commit=405cc095ab3a2df976a298421974a2af83843baf")
+# use https://github.com/recastnavigation/recastnavigation/commit/c393777d26d2ff6519ac23612abf8af42678c9dd c393777d26d2ff6519ac23612abf8af42678c9dd
+# https://gitlab.com/OpenMW/openmw/-/issues/7457 for more info
+source=("git+https://github.com/recastnavigation/recastnavigation.git#commit=c393777d26d2ff6519ac23612abf8af42678c9dd")
 sha256sums=("SKIP")
 conflicts=('recastnavigation')
 options=(debug strip)
