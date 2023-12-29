@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reqable-bin
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols"
 arch=('x86_64')
@@ -30,12 +30,16 @@ depends=(
     'libdbusmenu-glib'
     'fontconfig'
 )
+options=(
+    '!emptydirs'
+    '!strip'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-app-linux-${CARCH}.deb"
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f2143757a75ae99d25888278838fc2ea5498a31d74315b2e66152389ef88c9f3'
+sha256sums=('5872e1b9da6896860b450d6f540b0b93aa9ddf9e2a00a1c13cb1f0f073525dfb'
             '23392e1a40e734a004a13faec6db357230d1a3893a849ceaba3d25079a403630'
             '728911f1eb0f8ac69af459050cf1aade3b6ca658e9f2242462fa1408256fde9f')
 build() {
