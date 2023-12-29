@@ -1,7 +1,7 @@
 pkgbase = chatd-bin
 	pkgdesc = Chat with your documents using local AI
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://chatd.ai/
 	arch = x86_64
 	license = MIT
@@ -9,13 +9,15 @@ pkgbase = chatd-bin
 	depends = hicolor-icon-theme
 	depends = libvips
 	depends = python
+	depends = ollama
+	depends = nodejs
 	provides = chatd=1.0.1
 	conflicts = chatd
+	options = !emptydirs
+	options = !strip
 	source = chatd-1.0.1.zip::https://github.com/BruceMacD/chatd/releases/download/v1.0.1/chatd-linux-x64.zip
-	source = ollama-linux-0.1.12::https://github.com/jmorganca/ollama/releases/download/v0.1.12/ollama-linux-amd64
 	source = chatd.sh
 	sha256sums = d403be8aa8a26ec555db850efbc59277ec57e0d4f393795919d9b125029e2a2d
-	sha256sums = a890d66c37621aed531dc7795fa62b2ac1b8bebcce87f56c5cef35b026a3ad0f
-	sha256sums = fcaeb0dbb5ef834b40ae32c177deed39a8a79e280305c6195a84fa70b525b844
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = chatd-bin
