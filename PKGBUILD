@@ -3,7 +3,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
 pkgver=11.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="http://floorp.app/"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=(
 )
 optdepends=(
   'ffmpeg: h.264 video'
-  'hunspell: spell checking'
+  'hunspell-dictionary: spell checking'
   'hyphen: hyphenation'
   'libnotify: notification integration'
   'networkmanager: location detection via available WiFi networks'
@@ -42,7 +42,7 @@ sha256sums_aarch64=('1b094fbb84fcf5214ec7da98364ccd6b88e5fbbe8f6b067cee7cad945a7
 package() {
   depends+=('hicolor-icon-theme')
 
-  local _install_path="usr/lib/$_pkgname"
+  local _install_path="opt/$_pkgname"
 
   # app
   install -dm755 "$pkgdir/$_install_path"
@@ -63,7 +63,7 @@ package() {
   # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/bin/sh
-exec /usr/lib/$_pkgname/$_pkgname "\$@"
+exec /opt/$_pkgname/$_pkgname "\$@"
 END
 
   # Disable auto-updates
