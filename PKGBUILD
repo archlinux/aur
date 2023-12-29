@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=gmult
-pkgver=12.0
+pkgver=13.0
 pkgrel=1
 pkgdesc="Multiplication Puzzle is a simple game inspired by the multiplication game inside the popular editor emacs"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libadwaita')
 makedepends=('meson' 'vala')
 checkdepends=('appstream')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('daafb02c0fdbb09cd9e3334296052427caf659c1209340568fa8465a76fa6a30a8e0a33e88a7d412e16e1e5142f2c180efd2299eb5e831f69549afdcf7f87062')
+b2sums=('0b03e343fd21360e23b30de874723ab7d6883520b03ed3cddeb2ee7df231e0fc6af9a34c136c8c78defb82a65e020ca3fae6794f0ae6b0e3e0db478d36ce0710')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
