@@ -1,7 +1,7 @@
 pkgbase = freshplayerplugin
 	pkgdesc = PPAPI-host NPAPI-plugin adapter.
 	pkgver = 0.3.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/i-rinat/freshplayerplugin
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = freshplayerplugin
 	makedepends = ragel
 	depends = alsa-lib
 	depends = cairo
-	depends = ffmpeg
 	depends = freetype2
 	depends = glib2
 	depends = icu
@@ -33,4 +32,3 @@ pkgbase = freshplayerplugin
 	sha1sums = 55d43f0c045cc0b16aed1c39fc8aab6aba1e8c98
 
 pkgname = freshplayerplugin
-

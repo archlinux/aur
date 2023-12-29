@@ -8,12 +8,12 @@
 
 pkgname=freshplayerplugin
 pkgver=0.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc='PPAPI-host NPAPI-plugin adapter.'
 arch=('i686' 'x86_64')
 url='https://github.com/i-rinat/freshplayerplugin'
 license=('MIT')
-depends=('alsa-lib' 'cairo' 'ffmpeg' 'freetype2' 'glib2' 'icu' 'jack'
+depends=('alsa-lib' 'cairo' 'freetype2' 'glib2' 'icu' 'jack'
          'libevent' 'libgl' 'libsoxr' 'libva' 'libvdpau' 'libx11'
          'libxcursor' 'libxrandr' 'libxrender' 'openssl' 'pango'
          'v4l-utils' 'pepper-flash')
@@ -28,7 +28,7 @@ prepare() {
 build() {
   cd ${pkgname}-${pkgver}/build
 
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DWITH_HWDEC=OFF ..
   make
 }
 
