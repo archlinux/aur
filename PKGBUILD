@@ -1,7 +1,7 @@
 # Maintainer: Mansour Behabadi <mansour@oxplot.com>
 
 pkgname=pdfrankenstein
-pkgver=0.9.12
+pkgver=1
 pkgrel=1
 pkgdesc="PDF Annotator of Nightmares"
 url="https://github.com/oxplot/$pkgname"
