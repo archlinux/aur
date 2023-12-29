@@ -1,6 +1,6 @@
 pkgbase = dbus-git
 	pkgdesc = Message bus system
-	pkgver = 1.15.4.r31.ga6654eae
+	pkgver = 1.15.8.r17.gd9756df2
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/dbus/
 	arch = i686
@@ -8,14 +8,17 @@ pkgbase = dbus-git
 	license = GPL
 	license = custom
 	makedepends = git
-	makedepends = autoconf-archive
+	makedepends = meson
 	makedepends = systemd
 	depends = glibc
 	depends = audit
 	depends = expat
+	depends = libaudit.so
+	depends = libsystemd.so
 	depends = systemd-libs
-	provides = dbus=1.15.4.r31.ga6654eae
+	provides = dbus=1.15.8.r17.gd9756df2
 	provides = libdbus
+	provides = libdbus-1.so
 	conflicts = dbus
 	conflicts = libdbus
 	options = staticlibs
