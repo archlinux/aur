@@ -1,8 +1,8 @@
 pkgbase = victory-icon-theme
 	pkgdesc = An icon project by Darin
 	pkgver = 1.0
-	pkgrel = 4
-	url = https://www.reddit.com/r/linux/comments/41jbjc/an_icon_theme_im_working_on_anyone_willing_to/
+	pkgrel = 5
+	url = https://web.archive.org/web/20231229141916/https://old.reddit.com/r/linux/comments/41jbjc/an_icon_theme_im_working_on_anyone_willing_to/
 	arch = any
 	license = GPL3
 	makedepends = bash

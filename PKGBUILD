@@ -8,10 +8,10 @@
 
 pkgname=victory-icon-theme
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="An icon project by Darin"
 arch=('any')
-url="https://www.reddit.com/r/linux/comments/41jbjc/an_icon_theme_im_working_on_anyone_willing_to/"
+url="https://web.archive.org/web/20231229141916/https://old.reddit.com/r/linux/comments/41jbjc/an_icon_theme_im_working_on_anyone_willing_to/"
 license=('GPL3')
 makedepends=('bash')
 optdepends=('lxde-icon-theme: fallback icons'
