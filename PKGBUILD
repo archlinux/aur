@@ -3,16 +3,16 @@
 _name=hat-doit
 pkgname=python-$_name
 pkgver=0.15.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Hat build utility functions"
 url="https://github.com/hat-open/hat-doit"
 license=('Apache')
 arch=('any')
-depends=('python-build' 'python-doit' 'flake8' 'python-sphinx-furo'
+depends=('python-doit' 'flake8' 'python-sphinx-furo' 'mkwhl'
          'python-packaging' 'python-pdoc' 'python-pytest'
          'python-pytest-asyncio' 'python-pytest-cov' 'python-pytest-timeout'
-         'python-setuptools' 'python-sphinx' 'python-wheel')
-makedepends=('python-installer')
+         'python-sphinx' 'python-tomli')
+makedepends=('python-build' 'python-installer')
 source=("https://github.com/hat-open/hat-doit/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('7f8e49f14ed0ebe2628bdba7e4f6917bc8078a540edd1cedcab2c48ca4d41eec')
 
