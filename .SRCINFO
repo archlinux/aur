@@ -1,0 +1,14 @@
+pkgbase = nvs
+	pkgdesc = A cross-platform tool for switching between versions and forks of Node.js
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/jasongin/nvs
+	install = nvs.install
+	arch = any
+	license = MIT
+	source = nvs-1.7.1.tar.gz::https://github.com/jasongin/nvs/archive/refs/tags/v1.7.1.tar.gz
+	source = nvs.sh
+	sha256sums = 0df024c8c8489a63674cac148e766eab0cc2de3cd8e97c6caffd8e117a09863e
+	sha256sums = SKIP
+
+pkgname = nvs

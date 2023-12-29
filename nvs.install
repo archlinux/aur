@@ -1,0 +1,18 @@
+post_install() {
+	echo -e "
+To enable NVS, first run: \033[7mnvs-init\033[0m
+
+Then restart your shell or source its init file.
+For example, in bash run: \033[7m. ~/.bashrc\033[0m
+"
+}
+
+post_remove() {
+	echo -e "
+Edit your shell init file to remove NVS references.
+For example, in bash run: \033[7mnano ~/.bashrc\033[0m
+
+Delete installed Node versions to free up disk space.
+For example, if you used the default home directory location, run: \033[7mrm -rv ~/.nvs\033[0m
+"
+}
