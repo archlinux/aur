@@ -4,7 +4,7 @@
 _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname-lts"
-pkgver=6.1.60
+pkgver=6.1.69
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -35,8 +35,6 @@ source=(
   config         # the main kernel config file
 
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  #0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
-  #0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
   1001-add-acs-overrides.patch
   1002-i915-vga-arbiter.patch
 )
@@ -46,13 +44,11 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=(
-  '58520e7ae5a6af254ddf7ddbfc42e4373b0d36c67d467f6e35a3bd1672f5fb0a'
+  '7e3d2694d18ce502068cc88a430da809abbd17d0773268524ebece442612b541'
   'SKIP'
   'fcf0b005d3cde29b54a61b25bef3efb42a12ac38c039200ac8f4756618270820'
 
   '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
-  #'39649dc1dfcb06b411ad124e123769e955a78961b4ea17538c0919a930925549'
-  #'56c12551e859cc67520909e64feecbf1b190cee8addef150c5b9d1bb1d40981e'
   'bdd2a5a56e01e91723907afb40d28bed77b7d5107aba92c85adb3ce6967e713a'
   '9a698eaf1a0bd740981e909b6ad9bd41300488a2a771843bf30b9bdc94aa3c3b'
 )
