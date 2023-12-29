@@ -1,6 +1,6 @@
 pkgbase = agena-bin
 	pkgdesc = An Algol-inspired procedural programming language designed for science, scripting, and other applications
-	pkgver = 3.4.5
+	pkgver = 3.7.6
 	pkgrel = 1
 	url = https://agena.sourceforge.net
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = agena-bin
 	depends = libxext
 	depends = ncurses
 	depends = readline
-	source = agena-bin-3.4.5.deb::https://master.dl.sourceforge.net/project/agena/Binaries/Agena%203.4.5/agena-3.4.5-linux.amd64.deb
+	source = agena-bin-3.7.6.deb::https://master.dl.sourceforge.net/project/agena/Binaries/Agena%203.7.6/agena-3.7.6a-linux.amd64.deb
 	source = agena.desktop
-	sha512sums = 1666b4b930d213010913be2fc75712737792b0a6242154deddb1fab69ea69ae976bb0f2d015681a1ac8afade794912aebf082c973a32069a570d4ba8450f76b1
+	sha512sums = c1e61200dcc3d3fdc17836c3a45274bb627d0b6c228fe85c11966b4c6c78b9a64562172c430bf01d8215c9b7f45a34f725a22945657eb4cbc67816650fdb4d0b
 	sha512sums = fb5ab7b3922977b770e4b8b29528aad9fe6c2666721c3ebefdf385ddb95abc68c2f3a22eb26fda68088301f9118eefc39997432198ecf2763eff1ac49b063848
 
 pkgname = agena-bin
