@@ -4,25 +4,26 @@
 # Contributor: redtide <redtid3 at gmail dot com>
 
 pkgname=lite-xl
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=(x86_64 aarch64)
 url="https://$pkgname.com"
 license=(MIT)
-makedepends=(meson)
 depends=(freetype2
          lua
          pcre2
          sdl2)
+makedepends=(git # used by Meson to fetch submodule, TODO: move to source()
+             meson)
 conflicts=(lite)
 provides=(lite)
 _archive="$pkgname-$pkgver"
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('75c0cbda2d34a88e86d3aa48abe9f0366093df3019796c03067a7594cc55abe6')
+sha256sums=('0ad5acbdc7a08f771386283f40f967c87a1d002bc5232ca78af2aa4fdb7bf38b')
 
 build() {
-        arch-meson "$_archive" build
+        arch-meson "$_archive" build -D use_system_lua=true
         meson compile -C build
 }
 
