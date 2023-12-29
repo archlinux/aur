@@ -1,6 +1,6 @@
 pkgbase = wakapi-bin
 	pkgdesc = A minimalist, self-hosted WakaTime-compatible backend for coding statistics
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://github.com/muety/wakapi
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = wakapi-bin
 	makedepends = unzip
 	provides = wakapi
 	conflicts = wakapi
-	source = wakapi-2.10.1.zip::https://github.com/muety/wakapi/releases/download/2.10.1/wakapi_linux_amd64.zip
+	source = wakapi-2.10.2.zip::https://github.com/muety/wakapi/releases/download/2.10.2/wakapi_linux_amd64.zip
 	source = https://raw.githubusercontent.com/muety/wakapi/master/LICENSE
-	b2sums = eee363a2d7469777ec5ada3534b7a647c7ae41005cb6d5340d9f3bbd54d60cd38734f0496b247b316d52e65566e24edd9e42b02ee3fc72acf47f11aff0de136e
+	b2sums = f0fa2adada084c5623876ba69e8adf2ee468856b491364777c4735b8b1311899d93e77b8d28cf785b7eaa97c1e49b3a22fc2f0c72538fa8106795e6208edbd1c
 	b2sums = 70b100a6a08c18dd710d0ac9ae59acfb3fa9c6a02ff7090f59dfa94f41dd648a9f2e02fec6ba96cbe607c1ffcab3d9430366f45291649e033457ed436d9603fd
 
 pkgname = wakapi-bin
