@@ -3,7 +3,7 @@
 
 pkgname=rarian
 pkgver=0.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Documentation meta-data library, designed as a replacement for Scrollkeeper"
 arch=(
   x86_64
@@ -33,6 +33,7 @@ _archive="$pkgname-$pkgver"
 build() {
   cd "$_archive"
 
+  export LANG=C LC_ALL=C
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -47,7 +48,8 @@ build() {
 check() {
   cd "$_archive"
 
-  LANG=C LC_ALL=C make check
+  export LANG=C LC_ALL=C
+  make check
 }
 
 package() {
