@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=htbrowser-bin
-pkgver=5.0.2.20
+pkgver=5.0.2.21
 pkgrel=1
 pkgdesc="红莲花国密浏览器是政企专用浏览器，支持国产密码算法，全面适配信创环境，可以提供国产密码改造服务，既满足安全可靠又保障自主可控的浏览器使用需求。"
 arch=(
@@ -37,6 +37,11 @@ depends=(
     'freetype2'
     'libglvnd'
     'fontconfig'
+    'xdg-utils'
+)
+options=(
+    '!emptydirs'
+    '!strip'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_downurl}/${pkgname%-bin}_l_arm_uos_${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_downurl}/${pkgname%-bin}_l_x86_uos_${pkgver}.deb")
@@ -45,9 +50,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c74e69c2dd5cd4543f078bce866947b1f6fdf9eea2de843810f0a6b89ee76f3f'
-            '2c605eabd60bc4e4e2aa0cb02c9b7363b12c006bcda5cc328d779976970369e8')
-sha256sums_aarch64=('165560170875d1fab323f46695439ebf785c90c687e5b5c3fcf9d503d89f697e')
-sha256sums_x86_64=('808616e4736d853dc2964fdbbd4b2be888db14c23108cc2332c69f4f2b57c284')
+            '7f0df53075a486605a571c96890821b83a2a791ca49b38406583dbd56b0309a9')
+sha256sums_aarch64=('65037262aa27d692c964155919f969286fb706d5cb77eed04883e74bdd50c06f')
+sha256sums_x86_64=('a09f7741801e0231eaa83ed569cb9e9a789be9fc0c22e12e9a8a4e882c9d125f')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/apps/${pkgname%-bin}/${pkgname%-bin}.sh|${pkgname%-bin}|g;s|/opt/apps/${pkgname%-bin}/${pkgname%-bin}.png|${pkgname%-bin}|g" \

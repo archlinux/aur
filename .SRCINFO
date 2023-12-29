@@ -1,6 +1,6 @@
 pkgbase = htbrowser-bin
 	pkgdesc = 红莲花国密浏览器是政企专用浏览器，支持国产密码算法，全面适配信创环境，可以提供国产密码改造服务，既满足安全可靠又保障自主可控的浏览器使用需求。
-	pkgver = 5.0.2.20
+	pkgver = 5.0.2.21
 	pkgrel = 1
 	url = http://www.haitaibrowser.com
 	arch = aarch64
@@ -30,15 +30,18 @@ pkgbase = htbrowser-bin
 	depends = freetype2
 	depends = libglvnd
 	depends = fontconfig
-	provides = htbrowser=5.0.2.20
+	depends = xdg-utils
+	provides = htbrowser=5.0.2.21
 	conflicts = htbrowser
+	options = !emptydirs
+	options = !strip
 	source = LICENSE
 	source = htbrowser.sh
 	sha256sums = c74e69c2dd5cd4543f078bce866947b1f6fdf9eea2de843810f0a6b89ee76f3f
-	sha256sums = 2c605eabd60bc4e4e2aa0cb02c9b7363b12c006bcda5cc328d779976970369e8
-	source_aarch64 = htbrowser-5.0.2.20-aarch64.deb::https://haitaibrowser.com:20003/download/htbrowser_l_arm_uos_5.0.2.20.deb
-	sha256sums_aarch64 = 165560170875d1fab323f46695439ebf785c90c687e5b5c3fcf9d503d89f697e
-	source_x86_64 = htbrowser-5.0.2.20-x86_64.deb::https://haitaibrowser.com:20003/download/htbrowser_l_x86_uos_5.0.2.20.deb
-	sha256sums_x86_64 = 808616e4736d853dc2964fdbbd4b2be888db14c23108cc2332c69f4f2b57c284
+	sha256sums = 7f0df53075a486605a571c96890821b83a2a791ca49b38406583dbd56b0309a9
+	source_aarch64 = htbrowser-5.0.2.21-aarch64.deb::https://haitaibrowser.com:20003/download/htbrowser_l_arm_uos_5.0.2.21.deb
+	sha256sums_aarch64 = 65037262aa27d692c964155919f969286fb706d5cb77eed04883e74bdd50c06f
+	source_x86_64 = htbrowser-5.0.2.21-x86_64.deb::https://haitaibrowser.com:20003/download/htbrowser_l_x86_uos_5.0.2.21.deb
+	sha256sums_x86_64 = a09f7741801e0231eaa83ed569cb9e9a789be9fc0c22e12e9a8a4e882c9d125f
 
 pkgname = htbrowser-bin
