@@ -1,13 +1,13 @@
 pkgbase = aid-git
 	pkgdesc = A simple ChatGPT command line with basic markdown display
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/alescdb/aid
 	arch = x86_64
 	license = Apache
 	makedepends = dart
 	makedepends = make
-	provides = aid=0.3.0
+	provides = aid=0.5.0
 	options = !strip
 	source = git+https://github.com/alescdb/aid.git
 	b2sums = SKIP
