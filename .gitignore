@@ -1,0 +1,5 @@
+src
+pkg
+mailpot
+*.tar.gz
+*.zst
