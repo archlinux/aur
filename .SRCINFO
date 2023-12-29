@@ -1,0 +1,17 @@
+pkgbase = audiality2-git
+	pkgdesc = Realtime audio and music engine
+	pkgver = 1.9.4
+	pkgrel = 1
+	url = http://audiality.org/
+	arch = x86_64
+	license = zlib
+	makedepends = base-devel
+	makedepends = cmake
+	depends = sdl
+	depends = jack
+	provides = audiality2
+	conflicts = audiality2
+	source = git+https://github.com/olofson/audiality2#tag=v1.9.4
+	sha256sums = SKIP
+
+pkgname = audiality2-git
