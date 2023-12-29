@@ -1,0 +1,17 @@
+pkgbase = koboredux-git
+	pkgdesc = Arcade style 2D shooter
+	pkgver = 0.7.5.1
+	pkgrel = 1
+	url = http://koboredux.com/
+	arch = x86_64
+	license = GPL2
+	makedepends = base-devel
+	makedepends = cmake
+	depends = sdl
+	depends = audiality2
+	provides = koboredux
+	conflicts = koboredux
+	source = git+https://github.com/olofson/koboredux#tag=v0.7.5.1
+	sha256sums = SKIP
+
+pkgname = koboredux-git
