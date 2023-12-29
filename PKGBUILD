@@ -3,12 +3,12 @@
 _pkgname=GlobalOptions
 _pkgver=0.1.2
 pkgname=r-${_pkgname,,}
-pkgver=0.1.2
-pkgrel=4
-pkgdesc='Generate Functions to Get or Set Global Options'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('MIT')
+pkgver=${_pkgver//-/.}
+pkgrel=10
+pkgdesc="Generate Functions to Get or Set Global Options"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(MIT)
 depends=(
   r
 )
@@ -19,15 +19,18 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('47890699668cfa9900a829c51f8a32e02a7a7764ad07cfac972aad66f839753e')
+md5sums=('5cda5a0e15be8bedcd21898ea59eae32')
+b2sums=('77dca36b7a3aa0c2f83d7639f76db1eafee409da0c11d90c039a186edbaf3a4e835d33110179b6b004878673c93efd97b3c015ce0bf1cd71e2ed292df3188525')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:

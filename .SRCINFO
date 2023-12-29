@@ -1,7 +1,7 @@
 pkgbase = r-globaloptions
 	pkgdesc = Generate Functions to Get or Set Global Options
 	pkgver = 0.1.2
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=GlobalOptions
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = r-globaloptions
 	optdepends = r-markdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/GlobalOptions_0.1.2.tar.gz
-	sha256sums = 47890699668cfa9900a829c51f8a32e02a7a7764ad07cfac972aad66f839753e
+	md5sums = 5cda5a0e15be8bedcd21898ea59eae32
+	b2sums = 77dca36b7a3aa0c2f83d7639f76db1eafee409da0c11d90c039a186edbaf3a4e835d33110179b6b004878673c93efd97b3c015ce0bf1cd71e2ed292df3188525
 
 pkgname = r-globaloptions
