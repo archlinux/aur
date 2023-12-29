@@ -6,7 +6,7 @@ _aqt=aqt
 _py=cp39
 
 pkgname=anki-bin
-pkgver=23.12
+pkgver=23.12.1
 pkgrel=1
 pkgdesc='Helps you remember facts (like words/phrases in a foreign language) efficiently.
 Installed with wheel.'
@@ -63,8 +63,8 @@ source=(
 	"anki-$pkgver.xpm::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.xpm"
 )
 noextract=("${source[@]##*/}")
-sha256sums=('f00150e5bdef1a3e38d340e679e5ab6bbc5dceb3ccfafb460d400acb3a716b32'
-            'e89e253033e3c832320ca8ae06656c956376a9ff6bfb0660a4f62e423a89e1b1'
+sha256sums=('d9676c1595c28d335ef5dc1e60e5eb624f4f1e948a5344dde43374bfd8a98b29'
+            '2e961cf3ba133b45bca3361c5757dd6c9ed719b642b821b5b1986c28e9bbfaeb'
             '9648e7e915f51f08e05c48ef5f39b4015922fe1cf3d7f2895535ef10ef4507ae'
             '8b9fec8fdf2897b4722f8cee169e9fb1e46cee90d3fb03ee12587e30c2f5dad7'
             '53db2e5bfeb00aa249667e09466a34bfacb17b61097875a8cdd93ee1a9380b9a'
