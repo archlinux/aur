@@ -11,15 +11,15 @@ shift
 
 [[ -f $token && -s $token ]] || die "Invalid TOKEN-FILE ${token@Q}"
 
-for zip; do
-  [[ $(file -Ebi "$zip") == application/zip* ]] || die "Invalid SYMBOL-ARCHIVE ${zip@Q}"
+for archive; do
+  [[ $(file -Ebi "$archive") == application/zstd* ]] || die "Invalid SYMBOL-ARCHIVE ${archive@Q}"
 done
 
-for zip; do
-  echo >&2 "Uploading ${zip@Q} ..."
-  curl -X POST -H "Auth-Token: $(<"$token")" -F "${zip##*/}=@$zip" \
+for archive; do
+  echo >&2 "Uploading ${archive@Q} ..."
+  curl -X POST -H "Auth-Token: $(<"$token")" -F "${archive##*/}=@$archive" \
     --retry 4 --retry-connrefused --connect-timeout 120 \
     https://symbols.mozilla.org/upload/
   echo
-  mv -v "$zip" "$zip.uploaded"
+  mv -v "$archive" "$archive.uploaded"
 done
