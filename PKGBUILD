@@ -1,43 +1,43 @@
-# Maintainer: Taran Lynn <taranlynn0gmail.com>
+# Maintainer: GreyXor <greyxor@protonmail.com>
+# Contributor: Taran Lynn <taranlynn0gmail.com>
+
 pkgname=swaybg-git
-_pkgname=swaybg
-pkgver=r95.a8f109a
+pkgver=r130.eabc06e
 pkgrel=1
 license=("MIT")
-pkgdesc="Wallpaper tool for Wayland compositors"
+pkgdesc="Wallpaper tool for Wayland compositors (git development version)"
 makedepends=(
-  'meson'
-  'git'
-  'scdoc'
-  'wayland-protocols'
-  'gdk-pixbuf2'
+    'meson'
+    "git"
+    "scdoc"
+    "wayland-protocols"
 )
 depends=(
-    "wayland" "cairo"
+    "cairo"
+    "gdk-pixbuf2"
+    "glib2"
+    "glibc"
+    "wayland"
 )
-
-arch=("i686" "x86_64")
-url="https://swaywm.org"
-source=("${pkgname%-*}::git+https://github.com/swaywm/swaybg.git#branch=master")
-sha1sums=("SKIP")
-provides=("swaybg")
-conflicts=("swaybg")
+arch=('x86_64')
+url="https://github.com/swaywm/swaybg"
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+https://github.com/swaywm/swaybg.git")
+b2sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # Calculate the version dynamically using git information
+    printf "r%s.%s" "$(git -C "$srcdir/${pkgname}" rev-list --count HEAD)" "$(git -C "$srcdir/${pkgname}" rev-parse --short HEAD)"
 }
-
 
 build() {
-  arch-meson "${_pkgname}" build
-  meson compile -C build
-}
-
-check() {
-  meson test -C build
+    arch-meson build "${pkgname}"
+    meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+    meson install -C build --destdir "$pkgdir"
+
+    install -Dm644 "${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
