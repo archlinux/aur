@@ -1,13 +1,15 @@
 # Maintainer: xiota / aur.chaotic.cx
 
 # options
-#: ${_pkgtype:=git}
+: ${_build_git:=false}
+
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
 _module='python-ffmpeg'
 _pkgname="python-$_module"
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=2.0.7
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="Python binding for FFmpeg which provides sync and async APIs"
 url="https://github.com/jonghwanhyeon/python-ffmpeg"
@@ -40,7 +42,7 @@ _main_package() {
 
   options=(!emptydirs)
 
-  if [ "$pkgname" == "$_pkgname" ] ; then
+  if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
   else
     _main_git
@@ -53,7 +55,7 @@ _main_stable() {
   _pkgsrc="$_module-${_pkgver:?}"
   _pkgext="tar.gz"
   source+=("$_pkgsrc.$_pkgext"::"$url/archive/v$_pkgver.$_pkgext")
-  sha256sums+=('c135685a1963480b58d40d0ea95e30ba29651ed005d75ccc8f724548e636f61f')
+  sha256sums+=('73c0f98fe0a54e9484b061013bc95a3e5762fff24e8d81e605f185919f5a5e0e')
 
   pkgver() {
     echo "${_pkgver:?}"
@@ -73,7 +75,7 @@ _main_git() {
   sha256sums=('SKIP')
 
   pkgver() {
-    cd "$srcdir/$_pkgsrc"
+    cd "$_pkgsrc"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   }
 }
@@ -87,7 +89,6 @@ build() {
 package() {
   cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
