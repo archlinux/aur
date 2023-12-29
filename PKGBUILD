@@ -1,6 +1,7 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 
-# Bug: New in 2.3.0 initd/advttyd.c was completely rewritten and now doesn't work
+# Bug: New in 2.3.0 - 2.3.4, initd/advttyd.c was completely rewritten and now doesn't work
+# Bug: New in 2.3.0 - 2.3.4, compiles in Linux 6.6 but kernel oops
 
 _opt_DKMS=1           # This can be toggled between installs
 _opt_MAXINSTPORTS=16  # Maximum install ports.
@@ -8,6 +9,8 @@ _opt_MAXINSTPORTS=16  # Maximum install ports.
                       # It's best to use a small number. Nodes are created for
                       # /dev/ttyADV{0..n-1}
 #_opt_defaultmode='666' # default: 666
+
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
 
 # Products, Intelligent Connectivity, Industrial Communication, Serial Device Servers
 
@@ -65,7 +68,8 @@ pkgname='advantech-vcom'
 #pkgver='2.2.1'; _dl='5/1-1NOKMCV'; _opt_RAR=1 # not compatible with Linux 3.16, a RAR file
 #pkgver='2.2.3'; _dl='5/1-1Y9Q0Z6'
 #pkgver='2.2.5'; _dl='4/1-23X5L51'
-pkgver='2.3.0'; _dl='3/1-250ZNM3'
+#pkgver='2.3.0'; _dl='3/1-250ZNM3'
+pkgver='2.3.4'; _dl='2/1-2HNI41Q'
 pkgrel='1'
 pkgdesc='tty driver for Advantech Adam EKI serial console terminal servers'
 _pkgdescshort="Advantech ${pkgname} TTY driver"
@@ -75,8 +79,8 @@ license=('GPL')
 depends=('glibc' 'gawk' 'psmisc' 'sed' 'grep')
 backup=('etc/advttyd.conf')
 install="${pkgname}-install.sh"
-_srcdir="VCOM_LINUX_${pkgver}.TAR.BZ2"
-_srcdir="${_srcdir,,}"
+_srcdir="Advantech-VCOM-Linux-Driver-${pkgver}.zip"
+#_srcdir="${_srcdir,,}"
 source=("${_srcdir}::https://advdownload.advantech.com/productfile/Downloadfile${_dl}/${_srcdir}")
 if [ "${_opt_RAR}" -ne 0 ]; then
   _srcrar="${_srcdir//.tar.bz2/.rar}"
@@ -85,7 +89,7 @@ if [ "${_opt_RAR}" -ne 0 ]; then
   source[0]="${_srcrar}::${source[0]##*::}"
 fi
 #source=("${_srcdir,,}::http://downloadt.advantech.com/download/downloadsr.aspx?File_Id=${_dl}") # redirect works sooner but can be changed arbitrairly
-_srcdir="${_srcdir%\.tar*}"
+_srcdir="${_srcdir%.zip}"
 #source=("http://advdownload.advantech.com/productfile/Downloadfile4/${_dl}/${_srcdir}.rar")
 source+=(
   '0000-advman.systemd.patch'
@@ -100,7 +104,7 @@ source+=(
   '0005-kernel-5.17-change-PDE_DATA.patch'
   '0006-kernel-6.0-set_termios-const-ktermios.patch'
 )
-md5sums=('a3f195545fa67310e754e682bf2414de'
+md5sums=('d1650157bea8b25c321c6c6c80e47ac2'
          '65bb3f58bf90650cd629b94057c80da5'
          'e8e05eebaa36ccf7bfe456ab59b75386'
          'cf730b084619fac9c20106e8e6359ccc'
@@ -113,7 +117,7 @@ md5sums=('a3f195545fa67310e754e682bf2414de'
          '32f3a081b5926d6ea7f1cd2a22655d95'
          'b005fdd5de28f835b7b37ecd74453785'
          'f16423b34e00d486c6d5dc877ddde32c')
-sha256sums=('47d49391ad6863face08ec3129b65fa10e53c9849c10a45a7f0abb394f7ddafc'
+sha256sums=('fdb2672d513c25039b46b5cf4fd449062f03567ca8617902023f2ed8213515df'
             '02f504a23fbef07f666aaa595faba0513d9ffec5e99ebca7b7fe2299a0179e32'
             '17fa883aeaea5821e00ead10777f54f4ad6b96f3a2f07097e3d9a77755f21c10'
             '85785f80c7be4452e5b620b5d405646f0e9bacdbec2aecea68a059b6245519aa'
@@ -133,7 +137,7 @@ else
   makedepends+=('linux-headers')
 fi
 
-if [ "${pkgver}" = '2.3.0' ]; then
+if [ "${pkgver}" = '2.3.0' ] || [ "${pkgver}" = '2.3.4' ]; then
   _altver='2.2.5'; _altdl='4/1-23X5L51'
   _altdir="VCOM_LINUX_${_altver}.TAR.BZ2"
   _altdir="${_altdir,,}"
@@ -168,7 +172,7 @@ prepare() {
     #cp -pr daemon{,.orig}; false
     #diff -pNarZu5 daemon{.orig,} > '../0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch'
     patch -Nup0 -i "${srcdir}/0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch"
-  else
+  elif [ "$(vercmp "${pkgver}" "2.3.0")" -le 0 ]; then
     #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
     #diff -pNarZu5 'a' 'b' > '0003a-gcc-10-duplicate-variables-vc_mon-stk_mon.patch'
     patch -Nup1 -i "${srcdir}/0003a-gcc-10-duplicate-variables-vc_mon-stk_mon.patch"
@@ -179,7 +183,7 @@ prepare() {
     patch -Nup0 -i "${srcdir}/0004-adv_main-proc_create_data-kernel-5.6.patch"
   fi
 
-  if :; then
+  if [ "$(vercmp "${pkgver}" "2.3.0")" -le 0 ]; then
     #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
     #diff -pNarZu5 'a' 'b' > '0005-kernel-5.17-change-PDE_DATA.patch'
     patch -Nup1 -i "${srcdir}/0005-kernel-5.17-change-PDE_DATA.patch"
@@ -208,13 +212,24 @@ prepare() {
   test ! -s 'Makefile.Arch' || echo "${}"
 
   # Fix driver Makefile
+  #cp -p 'driver/Makefile'{,.Arch}
   sed -e '# Cosmetic correction of spaces' \
       -e 's:\s\+$::g' \
       -e '# Clean missed some files' \
       -e 's:^\s\+rm -.*$:& *.order *.symvers:g' \
       -e '# Adding the current dir (.) to the include path seems unnecessary' \
       -e 's:^ccflags-y += -I:#&:g' \
+      -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
+      -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
+      -e 's:`uname -r`:$(KERNELRELEASE):g' \
+      -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
+      -e '# Fix by changing the detection var.' \
+      -e 's:^ifneq ($(KERNELRELEASE),):ifneq ($(ARCHLINUX),):g' \
+      -e '# Put the detection var in' \
+      -e 's:^\s\+\$(MAKE)\s-C\s\$(KERNELDIR):& ARCHLINUX=1:g' \
+      -e '1i KERNELRELEASE?=$(shell uname -r)' \
     -i 'driver/Makefile'
+    test ! -s 'driver/Makefile.Arch'
 
   local _lines='
 set -u
@@ -417,15 +432,6 @@ EOF
     cp -pr driver/* "${_dkms}/driver/"
     make -C "${_dkms}/driver/" clean
     rm "${_dkms}/driver/dkms.conf"
-    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-        -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
-        -e 's:`uname -r`:$(KERNELRELEASE):g' \
-        -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
-        -e '# Fix by changing the detection var.' \
-        -e 's:^ifneq ($(KERNELRELEASE),):ifneq ($(ARCHLINUX),):g' \
-        -e '# Put the detection var in' \
-        -e 's:^\s\+\$(MAKE)\s-C\s\$(KERNELDIR):& ARCHLINUX=1:g' \
-       -i "${_dkms}/driver/Makefile"
   fi
   set +u
 }
