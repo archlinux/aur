@@ -1,15 +1,16 @@
 pkgbase = r-coop
 	pkgdesc = Co-Operation: Fast Covariance, Correlation, and Cosine Similarity Operations
 	pkgver = 0.6.3
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=coop
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
+	depends = blas
+	depends = lapack
 	depends = r
-	optdepends = r-matrix
 	optdepends = r-memuse
-	optdepends = r-slam
 	source = https://cran.r-project.org/src/contrib/coop_0.6-3.tar.gz
-	sha256sums = 40904e172812c14810f83bc7ee7f6e3fc768fae268208fb3b14f73f5b44e8973
+	md5sums = b6e2755b67964b2fb4f204c6a9ef944c
+	b2sums = d4a31336dff511ee4890b1d64fac5814b19c658a3759ce088187f8706a68d95f20a94ca8857838e4c19d7b9c55eecc01e9c117ff89383cda9e6aededbeb53e80
 
 pkgname = r-coop
