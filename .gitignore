@@ -1,6 +1,6 @@
 # packages
-chromium-browser-unstable_*_amd64.deb
-chromium-unstable-avx2-bin-*-x86_64.pkg.tar.zst
+chromium-*.deb
+chromium-*.pkg.tar.zst
 
 # build dirs
 pkg/
