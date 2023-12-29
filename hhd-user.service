@@ -1,0 +1,10 @@
+[Unit]
+Description=Handheld Daemon User Service
+
+[Service]
+ExecStart=hhd
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

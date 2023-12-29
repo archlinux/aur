@@ -1,0 +1,20 @@
+# FIXME: These udev rules are too permissive. Fix uaccess so permissions can be changed
+# from 0666 to 0660.
+
+# Allow access to legion go controllers
+#KERNEL=="hidraw[0-9]*", SUBSYSTEM=="hidraw", 
+ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="618*", MODE="0666", TAG+="uaccess"
+
+# Enable access to iio sensors
+KERNEL=="iio:device[0-9]*", SUBSYSTEM=="iio", ATTR{name}=="accel_3d", MODE="0666", TAG+="uaccess", RUN+="/bin/sh -c 'chmod -R 0777 /sys/%p'"
+KERNEL=="iio:device[0-9]*", SUBSYSTEM=="iio", ATTR{name}=="gyro_3d", MODE="0666", TAG+="uaccess", RUN+="/bin/sh -c 'chmod -R 0777 /sys/%p'"
+# KERNEL=="iio_sysfs_trigger", SUBSYSTEM=="iio", MODE="0666", TAG+="uaccess", RUN+="/bin/sh -c 'chmod -R 0777 /sys/%p'"
+# KERNEL=="trigger[0-9]*" SUBSYSTEM=="iio", MODE="0666", TAG+="uaccess", RUN+="/bin/sh -c 'chmod -R 0777 /sys/%p'"
+
+# Allow power button access
+SUBSYSTEMS=="acpi", DRIVERS=="button", ATTRS{hid}=="PNP0C0C", MODE="0666", TAG+="uaccess"
+KERNELS=="input[0-9]*", SUBSYSTEMS=="input", ATTRS{phys}=="isa0060*", MODE="0666", TAG+="uaccess"
+
+# Enable access to uhid and uinput
+KERNEL=="uinput", MODE="0666", TAG+="uaccess"
+KERNEL=="uhid", MODE="0666", TAG+="uaccess"
