@@ -1,13 +1,15 @@
 pkgbase = swift-language-git
 	pkgdesc = The Swift programming language, taken directly from the Apple repository
-	pkgver = 2023.10.30a.r490.gb15065675
+	pkgver = 2023.12.21a.r6.gf08f86c7161
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
-	license = apache2
+	license = Apache-2.0
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
+	makedepends = lld
+	makedepends = llvm
 	makedepends = ninja
 	makedepends = patch
 	makedepends = python-six
@@ -19,84 +21,86 @@ pkgbase = swift-language-git
 	depends = python
 	depends = libbsd
 	depends = ncurses
+	provides = swift-language
+	conflicts = swift-language
 	options = !strip
 	source = git+https://github.com/apple/swift#branch=main
-	source = apple-cmark::git+https://github.com/apple/swift-cmark#branch=main
-	source = llbuild::git+https://github.com/apple/swift-llbuild#branch=main
-	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser#commit=1.2.3
-	source = swift-atomics::git+https://github.com/apple/swift-atomics#commit=1.0.2
-	source = swift-collections::git+https://github.com/apple/swift-collections#commit=1.0.1
-	source = swift-crypto::git+https://github.com/apple/swift-crypto#commit=2.5.0
-	source = swift-driver::git+https://github.com/apple/swift-driver#branch=main
-	source = swift-numerics::git+https://github.com/apple/swift-numerics#commit=1.0.1
-	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main
-	source = swiftpm::git+https://github.com/apple/swift-package-manager#branch=main
-	source = swift-syntax::git+https://github.com/apple/swift-syntax#branch=main
-	source = swift-system::git+https://github.com/apple/swift-system#commit=1.1.1
-	source = swift-stress-tester::git+https://github.com/apple/swift-stress-tester#branch=main
-	source = swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#branch=main
-	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#branch=main
-	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#branch=main
-	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main
-	source = apple-llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20220421
-	source = swift-llvm-bindings::git+https://github.com/apple/swift-llvm-bindings#branch=stable/20220421
 	source = 0001-arch-aur-patches.patch
-	source = indexstore-db::git+https://github.com/apple/indexstore-db#branch=main
-	source = yams::git+https://github.com/jpsim/Yams#commit=5.0.1
-	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main
+	source = 0002-stdint.patch
+	source = apple-indexstore-db::git+https://github.com/apple/indexstore-db#branch=main
+	source = apple-llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20220421
+	source = apple-sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main
+	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser#commit=1.2.3
 	source = swift-asn1::git+https://github.com/apple/swift-asn1#commit=1.0.0
+	source = swift-atomics::git+https://github.com/apple/swift-atomics#commit=1.0.2
 	source = swift-certificates::git+https://github.com/apple/swift-certificates#commit=0.6.0
 	source = swift-cmark::git+https://github.com/apple/swift-cmark#branch=gfm
+	source = swift-cmark::git+https://github.com/apple/swift-cmark#branch=main
+	source = swift-collections::git+https://github.com/apple/swift-collections#commit=1.0.1
+	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#branch=main
+	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#branch=main
+	source = swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#branch=main
+	source = swift-crypto::git+https://github.com/apple/swift-crypto#commit=2.5.0
 	source = swift-docc::git+https://github.com/apple/swift-docc#branch=main
 	source = swift-docc-render-artifact::git+https://github.com/apple/swift-docc-render-artifact#branch=main
 	source = swift-docc-symbolkit::git+https://github.com/apple/swift-docc-symbolkit#branch=main
+	source = swift-driver::git+https://github.com/apple/swift-driver#branch=main
 	source = swift-experimental-string-processing::git+https://github.com/apple/swift-experimental-string-processing#branch=main
 	source = swift-format::git+https://github.com/apple/swift-format#branch=main
 	source = swift-installer-scripts::git+https://github.com/apple/swift-installer-scripts#branch=main
+	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main
+	source = swift-llbuild::git+https://github.com/apple/swift-llbuild#branch=main
+	source = swift-llvm-bindings::git+https://github.com/apple/swift-llvm-bindings#branch=stable/20220421
 	source = swift-lmdb::git+https://github.com/apple/swift-lmdb#branch=main
 	source = swift-markdown::git+https://github.com/apple/swift-markdown#branch=main
 	source = swift-nio::git+https://github.com/apple/swift-nio#commit=2.31.2
 	source = swift-nio-ssl::git+https://github.com/apple/swift-nio-ssl#commit=2.15.0
+	source = swift-numerics::git+https://github.com/apple/swift-numerics#commit=1.0.1
+	source = swift-package-manager::git+https://github.com/apple/swift-package-manager#branch=main
+	source = swift-stress-tester::git+https://github.com/apple/swift-stress-tester#branch=main
+	source = swift-syntax::git+https://github.com/apple/swift-syntax#branch=main
+	source = swift-system::git+https://github.com/apple/swift-system#commit=1.1.1
 	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main
 	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#branch=main
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	source = yams::git+https://github.com/jpsim/Yams#commit=5.0.1
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = swift-language-git
