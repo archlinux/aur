@@ -7,7 +7,7 @@ pkgname=(
 )
 
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 
 pkgdesc='MooreThreads MUSA'
 arch=('x86_64')
@@ -25,13 +25,14 @@ source=(
     # "musa_${pkgver}-Ubuntu_amd64.deb"::"invalid://musa_${pkgver}-Ubuntu_amd64.deb"
     # https://developer.mthreads.com/sdk/download/musa?equipment=&os=&driverVersion=&version=
     "MUSA+Toolkits-rc1.4.1+Intel+CPU_Ubuntu.zip::MUSA+Toolkits-rc1.4.1+Intel+CPU_Ubuntu.zip"
-    "fix-lts-build.diff::https://github.com/dixyes/mtgpu-drv/commit/56e502df5e0994a1f8cfae635066b8f29df2d1b3.diff"
+    "00-port-ti-img-rouge-newer-sources.diff::https://github.com/dixyes/mtgpu-drv/commit/2b3f0f09bd1acf1cf66d479827a3ba8d331cac73.diff"
+    "01-disable-cursor_set-things.diff::https://github.com/dixyes/mtgpu-drv/commit/eb252e36927d8a6ff4bcd575e91972991d163583.diff"
+    "02-avoid-redefine.diff::https://github.com/dixyes/mtgpu-drv/commit/8d996e13b388aa56974208cd610861c9556dc22b.diff"
 )
-sha512sums=(
-    # 'e65522867013e82aaaa45e1e343b620d47cd8742ab8aa21edae6eae0d5a3ccdc188a0eb9264d61e0c09aa728c070a0356b2fc49f97f617e01746f55c1943502a'
-    '74d49e14538c3430bd9c21d5be4eb3bd5b726be3e40e53ba780303e8bb1cc350986e6ab5109034f59fc7623650f21089e5fdd4068bb20463abea22e1cd6a2313'
-    '984258a9570ddf4df68490f240e0fd8fa648202951cab888192b20505536f53a763b8238655fde50c2b1dbfaedc0694c9b183ec7788bb38325c65756fe212876'
-)
+sha512sums=('74d49e14538c3430bd9c21d5be4eb3bd5b726be3e40e53ba780303e8bb1cc350986e6ab5109034f59fc7623650f21089e5fdd4068bb20463abea22e1cd6a2313'
+            'b81a6c31e8ea94dcefb4b8b531d8e1392660c25bf4655fdae9c95b799ec9ca20e64011ab43cd2ab07c003a8b72d6e3e6bb408ea53866bc246eea64acd3260954'
+            '77bbb7bd82bd9289f7d13ccdd60a04ec3f097f4ad2d55aafe6aa9b7cb285e8297ffc9b126cfdd4cf4541cc3bb7d8d9dd01acc202a9df32f2658fbf39e70f410b'
+            '21f4b395462f1e3af0178427931caae7dca139eceda16e65943e4989b8aa73acb36bfebd076ab3d80936942f16b94892d28b10e68bbbead015a2de68d4ba2629')
 
 prepare()
 {
@@ -57,7 +58,11 @@ prepare()
     # dkms sources
     mv usr/src/mtgpu-1.0.0 "usr/src/mtgpu-${pkgver}"
     cd "usr/src/mtgpu-${pkgver}"
-    patch -p1 < "${srcdir}/fix-lts-build.diff"
+    
+    for patch in "${srcdir}"/*.diff; do
+        patch -p1 < "${patch}"
+    done
+
     cat > dkms.conf << EOF
 MAKE="make ARCH=x86_64 KERNELVER=\$kernelver"
 CLEAN="make ARCH=x86_64 clean"
