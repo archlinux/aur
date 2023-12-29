@@ -2,7 +2,7 @@
 
 pkgname=honkers-launcher-git
 _pkgname="${pkgname%-git}"
-pkgver=1.1.0.r1.g735c6bf
+pkgver=1.6.0.r0.gd2ef29c
 pkgrel=1
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/honkers-launcher"
@@ -18,13 +18,10 @@ pkgver(){
 
 depends=(
     "libadwaita"
-    "tar"
-    "unzip"
     "xdg-desktop-portal"
+    "p7zip"
     "xdelta3"
-    "cabextract"
     "git"
-    "iputils"
     "gtk4"
     "glibc"
 )
