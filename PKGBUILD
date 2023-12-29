@@ -2,22 +2,18 @@
 # Contributor: DrakeTDL <everyone@disroot.org>
 pkgname="an-anime-game-launcher-git"
 _pkgname="${pkgname%-git}"
-pkgver=3.9.0.r12.gf5c206f
+pkgver=3.9.4.r1.gfc9c650
 pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=("x86_64")
 url="https://github.com/an-anime-team/an-anime-game-launcher"
 license=("GPL3")
 depends=(
-  cabextract
-  curl
   git
+  p7zip
   glibc
   gtk4
-  iputils
   libadwaita
-  tar
-  unzip
   xdelta3
 )
 makedepends=(rust)
@@ -45,6 +41,7 @@ prepare() {
   cd "${_pkgname}"
   git switch next
   git submodule update --init --recursive --single-branch
+  git pull
 }
 
 build() {
