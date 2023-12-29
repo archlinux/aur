@@ -1,7 +1,7 @@
 pkgbase = mpd-mpris-bin
 	pkgdesc = An implementation of the MPRIS protocol for MPD.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/natsukagami/mpd-mpris
 	arch = x86_64
 	arch = i686
