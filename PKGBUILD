@@ -2,8 +2,8 @@
 
 pkgname=neosurf-git
 pkgdesc="A NetSurf fork with various improvements"
-pkgver=16.r0.g21ddcde
-pkgrel=3
+pkgver=16.r14.ge60719e
+pkgrel=1
 arch=("x86_64")
 makedepends=(
 	git
@@ -27,7 +27,7 @@ depends=(
 	libssl.so
 	libpsl
 	libxml2
-	libjpeg-turbo
+	libjpeg
 	libpng
 	libwebp
 	libxkbcommon.so
@@ -42,10 +42,10 @@ source=(
 	'neosurf-gtk.desktop'
 	'neosurf-vi.desktop'
 )
-sha256sums=(
+b2sums=(
 	'SKIP'
-	'd74ca71905c6336357ad7be9eb3be874623a3c86bddcc08501854e053f9e79f3'
-	'bab0e4af03f7ecd5f86cc37c9ca6990e4ad73a4db4ee5248f2cbcde1dca5e28d'
+	'03d406b98179c20c541b3b3263a55ecdeca0fee91cce0732a7437ffd51cfd0207d6ddd13a4dc3fc8156712249f3082c6a3473f80afdfce1a2da72fbec471e3f0'
+	'777a433c6f7f1b00b8d6d5387944e4ef2961b6b15d3eb77611df34e1f03bb477112a49c60431e261c82a5b2912587a69ac16b7a7fb92fbf5eb89d75b75b19ceb'
 )
 
 build() {
@@ -58,7 +58,7 @@ package() {
 	install -Dm 664 neosurf-gtk.desktop -t "$pkgdir/usr/share/applications"
 	install -Dm 664 neosurf-vi.desktop -t "$pkgdir/usr/share/applications"
 	cd "neosurf"
-	cmake --install build --prefix "$pkgdir/usr"
+	DESTDIR="$pkgdir" cmake --install build
 }
 
 pkgver() {
