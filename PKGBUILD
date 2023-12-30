@@ -26,7 +26,7 @@ function prepare(){
 function build(){
 	echo "Starting build"
 	cd "${srcdir}/Cloudreve"
-	#goreleaser build --clean --single-target
+	goreleaser build --clean --single-target
 }
 
 function package(){
