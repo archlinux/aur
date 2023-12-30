@@ -15,7 +15,7 @@ _sourcedir="${_repoauthor}_${_reponame}_${_pkgbranch}"
 # Package Build Info
 pkgname="$_pkgname-git"
 pkgver=r54.bf5217b
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The C implementation of Pixelflut"
 arch=('x86_64')
@@ -39,8 +39,8 @@ makedepends=(
 provides=()
 conflicts=()
 if $_setprovides; then
-  provides+=("$pkgname")
-  conflicts+=($pkgname)
+  provides+=("$_pkgname")
+  conflicts+=($_pkgname)
 fi
 source=(
   "$_sourcedir::git+$_repo#branch=master"

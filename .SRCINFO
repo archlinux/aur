@@ -1,7 +1,7 @@
 pkgbase = pixelnuke-git
 	pkgdesc = The C implementation of Pixelflut
 	pkgver = r54.bf5217b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/defnull/pixelflut
 	arch = x86_64
 	license = unknown
@@ -16,8 +16,8 @@ pkgbase = pixelnuke-git
 	depends = libdecor
 	depends = glibc
 	depends = glib2
-	provides = pixelnuke-git
-	conflicts = pixelnuke-git
+	provides = pixelnuke
+	conflicts = pixelnuke
 	source = defnull_pixelflut_master::git+https://github.com/defnull/pixelflut#branch=master
 	sha512sums = SKIP
 
