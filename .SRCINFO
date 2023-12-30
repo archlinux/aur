@@ -1,0 +1,13 @@
+pkgbase = python-spacy-it_core_news_lg
+	pkgdesc = Italian pretrained model for spaCy (large)
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://spacy.io/models/da#section-it_core_news_lg
+	arch = any
+	license = CCPL
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/it_core_news_lg-3.7.0/it_core_news_lg-3.7.0.tar.gz
+	b2sums = 4e34d4a674eec1216877d5992a1337c0428156cc9bac422e0b8f1cd31ebfee71d559d992bbcb07085a695fa745f8e92dca0012c3068e8de4d18d00b9914d3363
+
+pkgname = python-spacy-it_core_news_lg
