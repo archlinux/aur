@@ -1,6 +1,6 @@
 pkgbase = swaybg-git
 	pkgdesc = Wallpaper tool for Wayland compositors (git development version)
-	pkgver = r130.eabc06e
+	pkgver = 1.2.0.r4.geabc06e
 	pkgrel = 1
 	url = https://github.com/swaywm/swaybg
 	arch = x86_64
