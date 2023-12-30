@@ -1,0 +1,13 @@
+pkgbase = python-spacy-da_core_news_lg
+	pkgdesc = Danish pretrained model for spaCy (large)
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://spacy.io/models/da#section-da_core_news_lg
+	arch = any
+	license = CCPL
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/da_core_news_lg-3.7.0/da_core_news_lg-3.7.0.tar.gz
+	b2sums = 2c4bdc3521a5c250662635f475c5ef296b7ca2f3fa02d5d8e9e0f7bf3d091af8c885d324cedc7c52244c0001cac48743e82ee755f15852cc3a4f3fc48dcf4cfc
+
+pkgname = python-spacy-da_core_news_lg
