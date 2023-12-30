@@ -1,44 +1,36 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
-
 pkgname=libliftoff-git
-pkgver=0.4.0.r7.g58b8494
+pkgver=0.4.0.r11.g29a06ad
 pkgrel=1
 pkgdesc="Lightweight KMS plane library (git development version)"
 arch=('x86_64')
 url="https://gitlab.freedesktop.org/emersion/libliftoff"
-license=("custom:MIT")
+license=("MIT")
 depends=("libdrm"
-"glibc"
-)
+"glibc")
 makedepends=("git"
 "meson"
 "ninja"
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname}::git+https://gitlab.freedesktop.org/emersion/libliftoff.git")
+source=("${pkgname}::git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
+  cd "$pkgname"
 
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	meson --prefix /usr --buildtype=release "$pkgname" build
-	ninja -C build
-}
-
-check() {
-	ninja -C build test
+  arch-meson "$pkgname" build
+  meson compile -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 
-	cd "$srcdir/$pkgname"
-
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
