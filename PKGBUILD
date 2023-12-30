@@ -2,15 +2,14 @@
 
 pkgname=spatial-shell
 pkgver=6
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementing a spatial model inspired by Material Shell, for i3 and sway.'
 url=https://github.com/lthms/spatial-shell
 license=('MPL2')
 arch=('x86_64')
-depends=(
-  'sway'
-)
 optdepends=(
+  'sway'
+  'i3-wm'
   'waybar'
 )
 makedepends=(
