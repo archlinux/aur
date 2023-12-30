@@ -1,7 +1,7 @@
 pkgbase = red-meta
 	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL
 	pkgver = 2023.12.30.f8f255970
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.red-lang.org
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = red-meta
 	source = red-view::https://static.red-lang.org/dl/auto/linux/red-view-30dec23-f8f255970
 	source = red-cli::https://static.red-lang.org/dl/auto/linux/red-30dec23-f8f255970
 	source = red-toolchain::https://static.red-lang.org/dl/auto/linux/red-toolchain-30dec23-f8f255970
-	sha256sums = 2b264cea7e0284a456ce669c402151be6605db0d765cff65d6aa86ae5c262885
-	sha256sums = 6b73db6e4a891d4cc443fdf2475f07c32d14f9a4a91330d46d3376872640df53
-	sha256sums = 71761e2459209c1de8f6d9f3102f6728ad38ce7fc7db1cd85aef279569abf518
+	sha256sums = e8933667930e7d57a6278d902820395f1e84b1baecbe8da0cf23fd1b9a62f7ed
+	sha256sums = 0b19fbd55461708e90bca1ea9a249c595293e45e3efcad40e48d6ab31e027a73
+	sha256sums = ec804aec818b6ce4f7dd455da5b5c2eefe5254ea446053d08367c0322c4e334d
 
 pkgname = red-view
 	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL (GUI)

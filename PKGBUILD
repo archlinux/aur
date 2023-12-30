@@ -2,8 +2,8 @@
 pkgname=(red-{view,cli,toolchain})
 pkgbase=red-meta
 _pkgver='30dec23-f8f255970'
-pkgver="$(date -d ${_pkgver%%-*} '+%Y.%m.%d').${_pkgver##*-}"
-pkgrel=1
+pkgver="$(date --date="${_pkgver%%-*}" "+%Y.%m.%d.${_pkgver##*-}")"
+pkgrel=2
 pkgdesc="Red is a next-generation programming language strongly inspired by REBOL"
 arch=('i686' 'x86_64')
 depends=(lib32-curl)
@@ -15,9 +15,9 @@ source=(
 	"red-cli::https://static.red-lang.org/dl/auto/linux/red-$_pkgver"
 	"red-toolchain::https://static.red-lang.org/dl/auto/linux/red-toolchain-$_pkgver"
 )
-sha256sums=('2b264cea7e0284a456ce669c402151be6605db0d765cff65d6aa86ae5c262885'
-	'6b73db6e4a891d4cc443fdf2475f07c32d14f9a4a91330d46d3376872640df53'
-	'71761e2459209c1de8f6d9f3102f6728ad38ce7fc7db1cd85aef279569abf518')
+sha256sums=('e8933667930e7d57a6278d902820395f1e84b1baecbe8da0cf23fd1b9a62f7ed'
+	'0b19fbd55461708e90bca1ea9a249c595293e45e3efcad40e48d6ab31e027a73'
+	'ec804aec818b6ce4f7dd455da5b5c2eefe5254ea446053d08367c0322c4e334d')
 
 package_red-view() {
 	pkgdesc="$pkgdesc (GUI)"
