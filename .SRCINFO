@@ -1,14 +1,14 @@
 pkgbase = minetest-mineclone2
 	pkgdesc = Minecraft clone game for Minetest
-	pkgver = 0.86.1
+	pkgver = 0.86.2
 	pkgrel = 1
 	url = https://git.minetest.land/MineClone2/MineClone2
 	arch = any
 	license = GPL3
 	depends = minetest-common
-	source = mineclone2-0.86.1.tar.gz::https://git.minetest.land/MineClone2/MineClone2/archive/0.86.1.tar.gz
-	sha256sums = 6ffc084ad564f578ccece777592d65a42dec81dc96154037ec398e2feaa57f83
-	sha512sums = 2e4db0c78aca07899fc75bb6ec11b6ab69a3f5ca6cce0f10eb07e677ac3fad62747f5b6bc8b4e518ed89d09ede1b128335f0fc227ab222c2b9a30a55bef1d82b
-	b2sums = 82bd2b3a0d0209e921c6154fe31be9a388d2b68d66d93a879e5ebced114427c91436a0cc478f7728a17457fb513188ab2c11326d49031b618f0e7978d08d8f6c
+	source = mineclone2-0.86.2.tar.gz::https://git.minetest.land/MineClone2/MineClone2/archive/0.86.2.tar.gz
+	sha256sums = e344eb18311a92dcaebc6bc0961b4affb108e2d5cdba1c973f8d6b22b9664895
+	sha512sums = e8d11914d5a222420154a08b4d76fd18a7aa02864facb7be486099676d0646db8f25f68613665aba9bf233f3d67b4163068cf523e2f82bb35dd2cfeffdb91f30
+	b2sums = 2079a79b26b3c528377dd0df93603cc79312d0b7110bdf328bf7d82947a812fd37fa0ee068e2390104735b1dbfb9cbf915215ce84560a5d2227e9848a312702e
 
 pkgname = minetest-mineclone2
