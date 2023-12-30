@@ -1,13 +1,14 @@
 pkgbase = r-copyhelper
 	pkgdesc = Helper files for CopywriteR
 	pkgver = 1.34.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/CopyhelpeR
 	arch = any
-	license = GPL
+	license = GPL2
 	depends = r
 	optdepends = r-biocstyle
 	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/CopyhelpeR_1.34.0.tar.gz
-	sha256sums = 305c890df69d08425b48b02467b723abd1becf7dced083961bc9525a4cecdafd
+	md5sums = bb8d3e8cba0c27898e43cbdcfcac6c62
+	b2sums = 34db3e34ece10102c088a5ed8dcff2634fdcd47ed6fc5e1ae3994fb7c2d193220ff8f7b61153aeb973c4668c5d11c476de1948bcdadcf20cc21512c8b4cdb591
 
 pkgname = r-copyhelper

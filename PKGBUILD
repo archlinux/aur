@@ -3,12 +3,12 @@
 _pkgname=CopyhelpeR
 _pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
-pkgrel=1
-pkgdesc='Helper files for CopywriteR'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Helper files for CopywriteR"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(GPL2)
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('305c890df69d08425b48b02467b723abd1becf7dced083961bc9525a4cecdafd')
+md5sums=('bb8d3e8cba0c27898e43cbdcfcac6c62')
+b2sums=('34db3e34ece10102c088a5ed8dcff2634fdcd47ed6fc5e1ae3994fb7c2d193220ff8f7b61153aeb973c4668c5d11c476de1948bcdadcf20cc21512c8b4cdb591')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
