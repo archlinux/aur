@@ -1,0 +1,6 @@
+/pkg
+/src
+/PKGBUILD-namcap.log
+/python-pycddlib-*.log
+/python-pycddlib-*.tar.gz
+/python-pycddlib-*.pkg.tar.zst

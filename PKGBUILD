@@ -1,8 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: is1 <is1@sdf.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-pycddlib
-_pkg="${pkgname#python-}"
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc='Python wrapper for cddlib'
 license=('GPL')
@@ -12,21 +12,23 @@ url='https://github.com/mcmtroffaes/pycddlib'
 depends=('python' 'gmp')
 makedepends=('cython' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-numpy')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('c7c87c0992edb608e999c84b3977bdc36035e651bed4ef089427f3b0e840aa3d')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pycddlib/pycddlib-$pkgver.tar.gz")
+sha256sums=('6d0be26049ee303181a1433fc5d57c78fe231b458bdf86855887ca8de83fb55e')
 
 build() {
-	cd "$_pkg-$pkgver"
+	cd pycddlib-"$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "$_pkg-$pkgver"
-	local _version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
-	PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_version" pytest -x
+	cd pycddlib-"$pkgver"
+	local python_version=$(
+	  python -c 'from sys import version_info as v; print(f"{v.major}{v.minor}")')
+	export PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version"
+	pytest -x
 }
 
 package() {
-	cd "$_pkg-$pkgver"
+	cd pycddlib-"$pkgver"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 }
