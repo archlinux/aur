@@ -1,7 +1,7 @@
 pkgbase = meh-git
 	pkgdesc = A minimal image viewer using raw XLib.
-	pkgver = 0.3.27.g426bd3d
-	pkgrel = 2
+	pkgver = 0.3.37.gd941ee8
+	pkgrel = 3
 	url = http://www.johnhawthorn.com/meh/
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = meh-git
 	depends = libpng
 	optdepends = imagemagick
 	conflicts = meh
-	source = git+https://github.com/afarah1/meh.git
-	source = gif_main.patch
+	source = git+https://github.com/andreasbaumann/meh.git#branch=integration
 	md5sums = SKIP
-	md5sums = 38367b30851491dc818a2da365f55adc
 
 pkgname = meh-git
