@@ -1,22 +1,12 @@
 pkgbase = ttf-inter
-	pkgver = 3.13
+	pkgdesc = The Inter font family.
+	pkgver = 4.0
 	pkgrel = 1
-	epoch = 1
-	url = https://rsms.me/inter
+	url = https://github.com/rsms/inter
 	arch = any
-	license = custom
-	makedepends = unzip
+	license = OFL
 	depends = fontconfig
-	noextract = Inter-3.13.zip
-	noextract = Inter-3.13-display-5e8095f9ba.zip
-	source = https://github.com/rsms/inter/releases/download/v3.13/Inter-3.13.zip
-	source = https://github.com/rsms/inter/releases/download/display-beta-1/Inter-3.13-display-5e8095f9ba.zip
-	b2sums = d8630d083529f23ffdc92d4bad9b08ded1060d379cfe82aacc50e513d69bb51c7b6dc226ad10133a8781e9edceddc03fde665dc586c07863cf2c6faeb6e266d7
-	b2sums = cd84c5251a6bdc7e973d08635815aa3af1f688d24376d3d2d2ffc52fca25dea84308e9b9d2133bb859447835cb32d47c471910ef61ccdc5e3573e6b1960ecd78
+	source = https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip
+	md5sums = 7a198bd4c103c01dc09f7b6abf92a06a
 
 pkgname = ttf-inter
-	pkgdesc = A typeface carefully crafted & designed for computer screens
-
-pkgname = ttf-inter-display
-	pkgdesc = A new "display" variant of Inter
-
