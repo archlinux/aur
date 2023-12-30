@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
-pkgver=4.8.1
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
@@ -14,9 +14,9 @@ source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver
   "0001-mingw-w64-cmake.patch"
   "0004-generate-proper-pkg-config-file.patch"
   "0008-mingw-w64-cmake-lib-path.patch")
-sha256sums=('62f650467a60a38794d681ae7e66e3e8cfba38f445e0bf87867e2f2cdc8be9d5'
-  '0c082a0b29b3118f2a0a1856b403bb098643af7b994a0080f402a12159a99c6e'
-  '34e63a897024d41adeadcf593480ae4074ecaed5fc7b05ba5cc2469c7669a83e'
+sha256sums=('ddf76f9dffd322c7c3cb1f721d0887f62d747b82059342213138dc190f28bc6c'
+  '8952c45a73b75676c522dd574229f563e43c271ae1d5bbbd26f8e2b6bc1a4dae'
+  '1ec0c7d215068174a04a62b5655a94052b426b0c2ae3b94942d39b8b4978ef35'
   '7fac6a7788638f8843f562381413ce13c59038d2fafc5dc05258195128e5caf5'
   '7398e66f80be37382bd427b5eb3a1201a23113c14e71435a44df8779ea1b8a34')
 
