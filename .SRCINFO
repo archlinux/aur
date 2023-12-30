@@ -1,6 +1,6 @@
 pkgbase = planner
 	pkgdesc = Project management application for GNOME
-	pkgver = 0.14.91
+	pkgver = 0.14.92
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Planner
 	install = planner.install
@@ -14,7 +14,7 @@ pkgbase = planner
 	depends = libxslt>=1.1.23,
 	depends = libgda>=5.0
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/World/planner.git#tag=0.14.91
+	source = git+https://gitlab.gnome.org/World/planner.git#tag=0.14.92
 	sha256sums = SKIP
 
 pkgname = planner

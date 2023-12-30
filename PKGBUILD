@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=planner
-pkgver=0.14.91
+pkgver=0.14.92
 pkgrel=1
 pkgdesc='Project management application for GNOME'
 arch=('x86_64')
