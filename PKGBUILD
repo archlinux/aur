@@ -1,7 +1,7 @@
 # Maintainer: Ábel Futó
 # Contributor: Ábel Futó <lebaotuf@gmail.com>
 pkgname=perl-cpu-z80-assembler
-pkgver=2.18
+pkgver=2.25
 pkgrel=1
 pkgdesc="This module implements a Z80 assembler"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('perl-asm-preproc' 'perl-regexp-trie')
 makedepends=('make')
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/P/PS/PSCUST/CPU-Z80-Assembler-$pkgver.tar.gz")
-sha256sums=('c50c8dac1e4dcc5c54c20a48d37b48f1cf5a26e4e8190bd07d467521b6c5ce13')
+sha256sums=('709f05976299c3dfdb9c10d4cc5bb0c1dc3dc76dce52f71fb64efc930eda6dd5')
 
 build() {
     cd "$srcdir/CPU-Z80-Assembler-$pkgver"
