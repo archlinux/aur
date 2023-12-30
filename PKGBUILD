@@ -3,7 +3,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
 pkgver=11.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="http://floorp.app/"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ source=(
   "floorp.png"
 )
 sha256sums=(
-  '031ed9b2973315247e716836bb365ac5ce70cb4624742a7e565050c654eba4f9'
+  '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   '71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8'
 )
 
@@ -63,7 +63,7 @@ package() {
   # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/bin/sh
-exec /opt/$_pkgname/$_pkgname "\$@"
+exec /$_install_path/$_pkgname "\$@"
 END
 
   # Disable auto-updates
