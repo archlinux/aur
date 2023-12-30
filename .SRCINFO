@@ -1,0 +1,13 @@
+pkgbase = python-spacy-uk_core_news_lg
+	pkgdesc = Ukrainian pretrained model for spaCy (large)
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://spacy.io/models/da#section-uk_core_news_lg
+	arch = any
+	license = CCPL
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/uk_core_news_lg-3.7.0/uk_core_news_lg-3.7.0.tar.gz
+	b2sums = b60f04106bf837c0878eaaad6f36a4f8b82ec0cebaf803be9088e8d5725d5d0a18273239903a4c81cc7e0e4b212acc1749e17a183acadf99a29c0fb562d0c393
+
+pkgname = python-spacy-uk_core_news_lg
