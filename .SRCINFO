@@ -1,0 +1,21 @@
+pkgbase = incus-ui-canonical
+	pkgdesc = lxd-ui rebranded to incus
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/KosmX/incus-ui-canonical-arch
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = yarn
+	makedepends = npm
+	makedepends = rsync
+	depends = incus
+	source = git+https://github.com/zabbly/incus.git
+	source = https://github.com/canonical/lxd-ui/archive/refs/tags/0.5.tar.gz
+	source = incus.service
+	sha256sums = SKIP
+	sha256sums = b9e2f8a486d5b8b1155895f7339319b907540bc6c50c76e86bde7f8a00f669ee
+	sha256sums = 760c221d5105eae80665fa48d4195b0e6bf2b72106cb03d8eea9e4ffafa81411
+
+pkgname = incus-ui-canonical
