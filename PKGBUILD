@@ -8,13 +8,12 @@ arch=(x86_64)
 url="https://www.maartenbaert.be/alterpcb/tlinesim/"
 license=(GPL3)
 depends=(
-	blas
-	eigen
 	qt5-base
-	suitesparse
 )
 makedepends=(
 	git
+	eigen
+	suitesparse
 )
 checkdepends=()
 optdepends=()
