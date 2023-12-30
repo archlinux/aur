@@ -4,21 +4,22 @@
 # Contributor: Whovian9369 <Whovian9369@gmail.com>
 
 pkgname=gitahead-git
-pkgver=2.6.3.r91.g81df5b4
+pkgver=2.7.1.r0.gaf959bf
 pkgrel=1
 pkgdesc="Graphical Git client"
 url="https://gitahead.github.io/gitahead.com/"
 arch=(x86_64)
 license=(MIT)
-depends=(qt5-base cmark libssh2 libsecret)
-makedepends=(git cmake ninja qt5-tools qt5-translations libgnome-keyring)
+depends=(qt6-base qt6-5compat cmark libssh2 libsecret)
+makedepends=(git cmake ninja qt6-tools qt6-translations libgnome-keyring python pcre)
 optdepends=('libgnome-keyring: for GNOME Keyring for auth credentials'
-            'qt5-translations: translations '
+            'qt6-translations: translations '
             'git-lfs: git-lfs support')
 provides=(gitahead)
 conflicts=(gitahead)
+options=(!lto)
 source=("git+https://github.com/gitahead/gitahead.git"
-        "Gittyup-libgit2::git+https://github.com/stinb/libgit2.git"
+        "gitahead-libgit2::git+https://github.com/stinb/libgit2.git"
         "git+https://github.com/git/git.git"
         "git+https://github.com/hunspell/hunspell.git"
         'gitahead.desktop')
@@ -37,7 +38,7 @@ prepare() {
   cd "${srcdir}/gitahead"
 
   git submodule init
-  git config submodule.dep/libgit2/libgit2.url "${srcdir}/Gittyup-libgit2"
+  git config submodule.dep/libgit2/libgit2.url "${srcdir}/gitahead-libgit2"
   git config submodule.dep/git/git.url "${srcdir}/git"
   git config submodule.dep/hunspell/hunspell.url "${srcdir}/hunspell"
   git config submodule.dep/openssl/openssl.update none
