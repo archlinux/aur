@@ -16,8 +16,6 @@ pkgbase = sonicthehedgehog2
 	depends = unzip
 	depends = zenity
 	source = https://gitlab.com/SonicRSDK/sonicthehedgehog2/-/archive/1.0.2-1/sonicthehedgehog2-1.0.2-1.tar.bz2
-	source = https://archive.org/download/data_20231229/Data.rsdk
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = sonicthehedgehog2
