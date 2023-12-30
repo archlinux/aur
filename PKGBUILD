@@ -2,7 +2,7 @@
 
 _pkgname=colorpick
 pkgname=$_pkgname-git
-pkgver=r87.727df35
+pkgver=r90.8d0efbf
 pkgrel=1
 pkgdesc="Color picker and contrast checker"
 url=https://github.com/qtilities/$_pkgname
@@ -30,7 +30,8 @@ pkgver() {
   )
 }
 
-build() {
+prepare() {
+  # Configure in prepare() because downloading translations via git with CMake
   local cmake_options=(
     -B build
     -D CMAKE_BUILD_TYPE=None
@@ -39,6 +40,9 @@ build() {
     -W no-dev
   )
   cmake "${cmake_options[@]}"
+}
+
+build() {
   cmake --build build --verbose
 }
 

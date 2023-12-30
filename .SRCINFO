@@ -1,6 +1,6 @@
 pkgbase = colorpick-git
 	pkgdesc = Color picker and contrast checker
-	pkgver = r87.727df35
+	pkgver = r90.8d0efbf
 	pkgrel = 1
 	url = https://github.com/qtilities/colorpick
 	arch = x86_64
