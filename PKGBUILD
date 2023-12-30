@@ -3,7 +3,7 @@
 # Contributor: Fabio Lolix <fabio.loli@disroot.org>>
 
 pkgname=free-delta
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="An Open Source System for Processing Taxonomic Descriptions"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("git+https://github.com/maurobio/freedelta.git#tag=v$pkgver"
 	"git+https://github.com/skalogryz/richmemo.git")
 sha256sums=('SKIP'
             'df398bcf5f3ef5ae7bddd624e309f9b30188eb1200befc436acf11f4a8fcd7c9'
-            'bbc66138fc88575a4c3d0c2363976d35deeb85fd686910d8b0ef1d3ac7eb85d8'
+            'f1016ae77daafcc54e7a5055bfbb08b019ded06036e2766d2dd3b650305dce25'
             '7d7176cb08b546c6f7537032aba9fbca60c72e17cfc66dc320ebcbb8a239b03a'
             '520f7ec155398c94a96d504453bcc6bfec08108c42e8b5db78c8d7b5187fa04c'
             '56921e78696d12690f0123e742d92663706386e6342a46e96a0ed9a14cbecc92'
