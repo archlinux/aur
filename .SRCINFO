@@ -1,0 +1,27 @@
+pkgbase = dillo-git
+	pkgdesc = A small, fast graphical web browser built on FLTK
+	pkgver = v3.0.5.r4630.g1711ba8
+	pkgrel = 1
+	url = https://github.com/dillo-browser/dillo
+	arch = x86_64
+	license = GPL
+	depends = fltk
+	depends = libjpeg
+	depends = perl
+	depends = openssl
+	depends = libpng
+	depends = gcc-libs
+	depends = libxcursor
+	depends = libxi
+	depends = libxinerama
+	conflicts = dillo
+	backup = etc/dillo/dillorc
+	backup = etc/dillo/dpidrc
+	source = git+https://github.com/dillo-browser/dillo.git
+	source = dillo.desktop
+	source = ProgramIcon48.png
+	sha256sums = SKIP
+	sha256sums = 54848080de1911a2af8ff786fbe92bdad8fe8b7b8a0d580c9c79b0a98f9fdcde
+	sha256sums = de629745e6f3a271475a501e2b94558b3deb7bf9a407bcef16426e600e1731f3
+
+pkgname = dillo-git
