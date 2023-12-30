@@ -1,13 +1,13 @@
 pkgbase = mkshousetsu
 	pkgdesc = Generates EPUBs for ncode.syosetu.com novels
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://git.sr.ht/~jamnor/mkshousetsu
 	arch = any
 	license = GPL3
 	depends = python-requests
 	depends = python-lxml
-	source = mkshousetsu-0.2.4.tar.gz::https://git.sr.ht/~jamnor/mkshousetsu/archive/v0.2.4.tar.gz
-	sha256sums = 5e9116548d5196284584019f627b8fb1616053d7e9237b7e93f12ba5045d2844
+	source = mkshousetsu-0.2.5.tar.gz::https://git.sr.ht/~jamnor/mkshousetsu/archive/v0.2.5.tar.gz
+	sha256sums = 662695174c7e319fd9c3447840dabad912a076dbd8eca7c3f065f2fa425d9ef5
 
 pkgname = mkshousetsu
