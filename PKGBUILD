@@ -26,7 +26,6 @@ pkgdesc="The C implementation of Pixelflut"
 arch=('x86_64')
 url="$_repo"
 license=('unknown')
-groups=()
 depends=(
   base
   glew
@@ -39,23 +38,14 @@ makedepends=(
   make
   gcc
 )
-checkdepends=()
-optdepends=()
 provides=()
 conflicts=()
 if $_setprovides; then
   provides+=($pkgname)
   conflicts+=($pkgname)
 fi
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("https://codeload.github.com/$_repoauthor/$_reponame/zip/$_pkgcommit")
-noextract=()
 sha512sums=('00b21531791f772b121ab3d803ea5402b2f735fb996348753ad340085ef0a60435e2227ea9c6972c6e5bfb877d626d54690efd4340363d4d59daa7f8a8c2224a')
-validpgpkeys=()
 
 # Package Build Functions
 build() {
