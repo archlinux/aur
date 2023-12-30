@@ -4,7 +4,7 @@
 
 pkgname=brewtarget
 pkgver=3.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Beer calculator compatible with BeerSmith. Generates instructions from the recipe and interactive mash designer."
 url="https://github.com/Brewtarget/brewtarget/"
 arch=('x86_64' 'i686')
@@ -24,7 +24,7 @@ prepare() {
 # Disable static linking
   sed -i 's/static : true/static : false/g' meson.build
 # Don't screw with Arch's build flags
-  sed -i '/if compliler.getid/ s/gcc/disable/' meson.build
+  sed -i '/if compiler.get_id/ s/gcc/disable/' meson.build
 }
 
 build() {

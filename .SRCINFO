@@ -1,7 +1,7 @@
 pkgbase = brewtarget
 	pkgdesc = Beer calculator compatible with BeerSmith. Generates instructions from the recipe and interactive mash designer.
 	pkgver = 3.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Brewtarget/brewtarget/
 	arch = x86_64
 	arch = i686
