@@ -1,7 +1,8 @@
 #!/bin/zsh
 
 # Variable Replacement tool
-PKGBUILD=$(pwd)/PKGBUILD
+REPODIR=$(pwd)
+PKGBUILD=$REPODIR/PKGBUILD
 setVar() {
   echo 'import("fs").then(fs=>fs.writeFileSync("'"$PKGBUILD"'",fs.readFileSync("'"$PKGBUILD"'","utf-8").replace(/(?<='$1'=")[a-zA-Z0-9_]*(?=")/,"'$2'")))' | node;
 }
@@ -24,16 +25,8 @@ setVar _pkgcommit $(git rev-parse --short HEAD);
 # Cleanup
 rm -rf $tmpdir;
 
-# Get the package
-source $PKGBUILD;
-tmpdir=/tmp/pixelnuke-zip-$pkgver
-mkdir -p $tmpdir;
-cd $tmpdir;
-curl -o pixelflut-repo.zip $source[1];
-# unzip pixelflut-repo.zip;
+# Re-enter the repo dir
+cd $REPODIR;
 
-# Update the PKGBUILD hash
-setVar _pkghash $(sha512sum pixelflut-repo.zip);
-
-# Cleanup
-rm -rf $tmpdir;
+# Update the package hash sums
+updpkgsums;
