@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-editing-services
-pkgver=1.22.6
+pkgver=1.22.8
 pkgrel=1
 pkgdesc="GStreamer editing services (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-meson')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=("${url}src/gst-editing-services/gst-editing-services-${pkgver}.tar.xz")
-sha256sums=('748d423672c597f876e130804fb984848f5b4b89efd78a506cb17f7646795301')
+sha256sums=('d1d5e75e190eb0be3fd49409e41a3aa8e68cfb4deaa7353488554674956cd1df')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
