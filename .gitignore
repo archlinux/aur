@@ -2,4 +2,4 @@
 /src
 
 /**/*.zip
-/**.pkg.tar.zst
+/**.pkg.tar*
