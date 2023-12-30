@@ -9,7 +9,7 @@
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=3.90.11
+pkgver=3.90.22
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
