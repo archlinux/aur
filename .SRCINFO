@@ -1,0 +1,18 @@
+pkgbase = python-salinic
+	pkgdesc = provides modular search and features a unified API that allows to plug in different search backends
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/papermerge/salinic
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python-pydantic
+	depends = python-requests
+	depends = python-xapian
+	source = https://files.pythonhosted.org/packages/source/s/salinic/salinic-0.3.9.tar.gz
+	sha256sums = 4139b38d0131ad8e014b0f86fb281eb7e702166f65b0c8e92c9e5c2b5a706204
+
+pkgname = python-salinic
