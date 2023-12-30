@@ -16,5 +16,5 @@ package() {
     #chmod +x install
     ./setup 
     install -dm755 "$pkgdir/opt/libelectron"
-    cp -r $srcdir/libelectron "$pkgdir/opt/libelectron"
+    cp -r "$srcdir/libelectron/node_modules" "$pkgdir/opt/libelectron"
 }
