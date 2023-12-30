@@ -3,12 +3,12 @@
 _pkgname=sgeostat
 _pkgver=1.0-27
 pkgname=r-${_pkgname,,}
-pkgver=1.0.27
-pkgrel=4
-pkgdesc='An Object-Oriented Framework for Geostatistical Modeling in S+'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="An Object-Oriented Framework for Geostatistical Modeling in S+"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
@@ -16,14 +16,15 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6b930d09901be3a80368b3b23127b4bd15565a4834a851100cfb2e34a5b809c7')
+md5sums=('0d1b7caa41af627124796a22d3141f12')
+b2sums=('50973328b5da0db6721da63ff6b7ae6049d22ab9b4793c578965c901f7e41142b50887422c80469d51fa34dd75626bec37bb68c561deb657391f1bdcbad59d75')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
