@@ -2,7 +2,7 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-server-minimal
-pkgver=0.23.10
+pkgver=0.23.15
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback over alsa as server running under mpd user."
 arch=(i686 x86_64 armv7h)
@@ -18,13 +18,13 @@ source=("${url}/download/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{
         ${_pkgname}.sysusers
         ${_pkgname}.tmpfiles
         ${_pkgname}.service.override)
-sha512sums=(15e51a1fab2e187529141ebb25f0bb6cc9c2ad5127c1a9f4c40d1a944ed5bc4e7e76b26eb71f659ddd8a5ce448089e6d3dcf0c302ced8a4d08951ef1b1f09c49
+sha512sums=(12329dbd0c1994c1bd95b88ce2a62a4c1d691b655e9e4fac7e9ef7066d0be3422b26fad3ea6ca144ba9b21add0a7c492c4f74fd2b68a1539bff2e0d2714db709
             SKIP
             25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1
             d6f36996089cbe746f7d7062e12723d8a41a0118da9301c053e4c244221d7a32b2b0c3d64b604714243be50a98dde00f2513680dc43fc6ac12622200fc234f73
             db473db27cd68994c3ee26e78e0fb34d13126301d8861563dcc12a22d62ecb14c4ffb1e0798c6aaccdff34e73bae3fbeeff7b42606c901a2d35e278865cdf35d
             c1782b82f9db1d30aece43a07230c5d57370f2494a16e108af03815d83968805472f10f53ea5495cf0e08ff8f245430c3c3bc44025af43aaf9ecd12fcd6afc6c)
-b2sums=(6b648971412a5f83fe9ff2694c030b451393c415de9c34cbea9894555ac7ea87c5a991edfdd41c7cd76511ae0680ecab35eb36ceae5e372900518c9cf5e9c55c
+b2sums=(78036078b850afab900b5d50e44ce83cbbf900369f5028d4177fdbfc4128dd3c35c59a773528a1fcfcc0179d0e579566b827fe87ef780a88082dc3b7f70cd5e7
         SKIP
         0969a3c477b6a3f34b44e067e515d7f306414dd14e0163584417b9d071e3cc825898219f7ff66ead7905b15429b8411304052d3b2b14a72e560bfabf9bf0adcf
         97e7d992a0c347fa6f34464136e5b603bdf50eb4a4718504c951ab9ef34d17f0f7b9f917974d049b88e54185dce2f64eb0e59fd40aa921b11d9703219809c29e
