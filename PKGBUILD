@@ -3,24 +3,25 @@
 _pkgname=binr
 _pkgver=1.1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1
-pkgrel=1
-pkgdesc='Cut Numeric Values into Evenly Distributed Groups'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('Apache')
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Cut Numeric Values into Evenly Distributed Groups"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(Apache)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9e9f2279f056bd3d3081553fc0fa1d9012a7bd169160b3556c43dc0fb99a3fc0')
+md5sums=('51b205731c7101342207cf31a01b3d57')
+b2sums=('8f6bae4464d3ed4bbb33fff4bc93e2724fa31b1902cfb3e00ac338dcba3f0622f38beb22b82c4b10adb9c56d39dfd723e3178585e26512d199e2ce5323e63781')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

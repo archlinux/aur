@@ -1,12 +1,13 @@
 pkgbase = r-binr
 	pkgdesc = Cut Numeric Values into Evenly Distributed Groups
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=binr
 	arch = any
 	license = Apache
 	depends = r
 	source = https://cran.r-project.org/src/contrib/binr_1.1.1.tar.gz
-	sha256sums = 9e9f2279f056bd3d3081553fc0fa1d9012a7bd169160b3556c43dc0fb99a3fc0
+	md5sums = 51b205731c7101342207cf31a01b3d57
+	b2sums = 8f6bae4464d3ed4bbb33fff4bc93e2724fa31b1902cfb3e00ac338dcba3f0622f38beb22b82c4b10adb9c56d39dfd723e3178585e26512d199e2ce5323e63781
 
 pkgname = r-binr
