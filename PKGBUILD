@@ -1,5 +1,4 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
-
+# Maintainer: Ash Price <eisleggje@gmail.com>
 pkgname=python-spacy-nl_core_news_lg
 pkgver=3.7.0
 pkgrel=1
