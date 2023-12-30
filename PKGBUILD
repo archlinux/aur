@@ -18,10 +18,13 @@ depends=('incus')
 makedepends=('git' 'yarn' 'npm' 'rsync')
 changelog=
 source=("git+https://github.com/zabbly/incus.git"
-        "https://github.com/canonical/lxd-ui/archive/refs/tags/${pkgver}.tar.gz")
+        "https://github.com/canonical/lxd-ui/archive/refs/tags/${pkgver}.tar.gz"
+        "incus.service"
+        )
 sha256sums=(
     'SKIP'
     'b9e2f8a486d5b8b1155895f7339319b907540bc6c50c76e86bde7f8a00f669ee'
+    '760c221d5105eae80665fa48d4195b0e6bf2b72106cb03d8eea9e4ffafa81411'
 )
 noextract=()
 validpgpkeys=()
@@ -54,8 +57,11 @@ build() {
 
 
 package() {
-	cd "$_canonical_name-$pkgver"
+	pushd "$_canonical_name-$pkgver"
 
     mkdir -p "$pkgdir/opt/incus/ui-canonical/"
-    rsync -a build/ui/ "$pkgdir/opt/incus/ui-canonical/"
+    rsync -a build/ui/ "$pkgdir/opt/incus/ui/"
+    popd
+    mkdir -p "$pkgdir/etc/systemd/system/"
+    cp incus.service "$pkgdir/etc/systemd/system/"
 }
