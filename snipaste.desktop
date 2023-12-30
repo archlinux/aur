@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Snipaste
+Comment=Snip & Paste!
+Exec=/usr/bin/snipaste
+Icon=/usr/share/pixmaps/snipaste.png
+Categories=Office;ImageProcessing;

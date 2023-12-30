@@ -1,0 +1,20 @@
+pkgbase = snipaste
+	pkgdesc = Snip & Paste!
+	pkgver = 2.8.8_Beta2
+	pkgrel = 1
+	url = https://www.snipaste.com
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	noextract = snipaste-2.8.8_Beta2-x86_64.AppImage
+	options = !strip
+	source_x86_64 = snipaste-2.8.8_Beta2-x86_64.AppImage::https://download.snipaste.com/archives/Snipaste-2.8.8-Beta2-x86_64.AppImage
+	source_x86_64 = snipaste.desktop
+	source_x86_64 = snipaste.png
+	source_x86_64 = snipaste
+	sha256sums_x86_64 = b3434dc6649889472c8e52d0771643047e3dfbbe8e84eaf8c45ab42b3f956458
+	sha256sums_x86_64 = 2f2f9aebca52e156644c95f3b59339a9948293de3ec70ac5ad38cc2c9cfd68b7
+	sha256sums_x86_64 = d48295bddc8dfc7108e281950d21b76224772c9406ccee4028350f96d3facc4a
+	sha256sums_x86_64 = a7b331657c84957fa0f1c1979549071e9f9a00c1c9ee577fd26fbebec83708c9
+
+pkgname = snipaste
