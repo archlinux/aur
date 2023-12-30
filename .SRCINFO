@@ -1,0 +1,15 @@
+pkgbase = zelda3-bin
+	pkgdesc = A reverse engineered implementation engine for Legend Of Zelda: Link to the Past.
+	pkgver = 0.3
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = sdl2
+	source_x86_64 = https://gitlab.com/zelda3pkg/binaries/0.3/-/raw/main/zelda3-linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://gitlab.com/zelda3pkg/binaries/0.3/-/raw/main/zelda3-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+
+pkgname = zelda3-bin
