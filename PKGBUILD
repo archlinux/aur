@@ -3,27 +3,28 @@
 _pkgname=nor1mix
 _pkgver=1.3-2
 pkgname=r-${_pkgname,,}
-pkgver=1.3.2
-pkgrel=1
-pkgdesc='Normal aka Gaussian (1-d) Mixture Models (S3 Classes and Methods)'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Normal aka Gaussian 1-d Mixture Models"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
 optdepends=(
-  r-cluster
+  r-copula
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('463636ceab6512e8ef0a57dbbba23461e9da0c0bf5a6c27424675cdd209ea208')
+md5sums=('2309fce297cbfb80b367b7c7f7cf007e')
+b2sums=('a1fa2885e170f9bb66f4e5d17c413647040524e39018d37a3182f3144a205df5de4fee0071a813ad9f10681b64337e99390ecc4d813705abca662175ab453002')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
