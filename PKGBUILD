@@ -1,4 +1,4 @@
-# Maintainer: Alfredo Ramos <alfredo.ramos@tutanota.com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@skiff.com>
 # Contributor: Jose Galvez (galvez_65)
 # Contributor: Sabu Siyad <hello@ssiyad.com>
 # Contributor: Hunter Wittenborn <hunter@hunterwittenborn.me>
