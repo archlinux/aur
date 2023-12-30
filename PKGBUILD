@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libnghttp2
-pkgver=1.57.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library (mingw-w64)'
 arch=(any)
@@ -9,18 +9,10 @@ license=(MIT)
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=(staticlibs !strip !buildflags)
-source=(https://github.com/nghttp2/nghttp2/releases/download/v$pkgver/nghttp2-$pkgver.tar.xz
-  bf8f419ca9f2d8bce48591710aa25f08e3fc67f8.patch)
-sha256sums=('9210b0113109f43be526ac5835d58a701411821a4d39e155c40d67c40f47a958'
-  'bfdfc189f47ea3b4c2ae1818b38ecc696641bb437ef333f9d06b7d7813d17acf')
+source=(https://github.com/nghttp2/nghttp2/releases/download/v$pkgver/nghttp2-$pkgver.tar.xz)
+sha256sums=('4a68a3040da92fd9872c056d0f6b0cd60de8410de10b578f8ade9ecc14d297e0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd nghttp2-$pkgver
-  # https://github.com/nghttp2/nghttp2/issues/1962
-  patch -Nbp1 -i "${srcdir}/bf8f419ca9f2d8bce48591710aa25f08e3fc67f8.patch"
-}
 
 build() {
   cd nghttp2-$pkgver
