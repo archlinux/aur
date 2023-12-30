@@ -3,7 +3,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: KosmX <kosmx.mc@gmail.com>
+# Maintainer: KosmX <kosmx dot mc at gmail dot com>
 _canonical_name=lxd-ui
 
 pkgname=incus-ui-canonical
