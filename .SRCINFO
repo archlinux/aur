@@ -1,7 +1,7 @@
 pkgbase = fend-bin
 	pkgdesc = Arbitrary-precision unit-aware calculator
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/printfn/fend
 	arch = x86_64
 	arch = armv7h
@@ -10,7 +10,7 @@ pkgbase = fend-bin
 	provides = fend
 	conflicts = fend
 	source = https://github.com/printfn/fend/releases/download/v1.4.0/fend.1
-	sha256sums = 11b921e5976ac2f994a9b0105f0bb2c3b49499a17906694762ec6774199f4145
+	sha256sums = b2a23e220473a9151f76bf18dc27c94ccc09afe4b7eacb49848d0a181bfdee38
 	source_x86_64 = fend-bin-1.4.0-x86_64.tar.gz::https://github.com/printfn/fend/releases/download/v1.4.0/fend-1.4.0-linux-x64.zip
 	sha256sums_x86_64 = 9b2db780866a2617f904fb47af3a927bb77833865dd32f520f2954eda0dcc77f
 	source_armv7h = fend-bin-1.4.0-armv7h.tar.gz::https://github.com/printfn/fend/releases/download/v1.4.0/fend-1.4.0-linux-armv7-gnueabihf.zip
