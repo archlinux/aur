@@ -1,5 +1,5 @@
 # Maintainer: Nullptrderef <echo "$(LC_ALL=C pacman -V|sed -r 's#[0-9]+#128#g'|tr -d '\r\n '|md5sum|openssl "md5" -hmac "mbmm" -binary|cut -c10-12|tr -d '\n';printf "la";echo "2" | openssl "sha512" -hmac "78k7" -binary|cut -c31-33|tr -d '\n';echo -n "eref@cock.li")" | sed 's/\n//g'>
-#                           ^ Inspired by the AUR registration CAPTCHA; run in a shell after verifying the code's fine.
+#                           ^ Obfuscation method inspired by the AUR registration CAPTCHA; run in a shell after verifying the code's fine. Alternatively, contact me on matrix: @nullptrderef:piratenpartei.ch
 
 # Configuration
 _reposerver=github.com
