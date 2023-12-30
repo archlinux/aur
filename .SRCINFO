@@ -1,16 +1,16 @@
 pkgbase = tramp
 	pkgdesc = emacs extension that provides transparent remote file editing
-	pkgver = 2.6.1
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = http://www.gnu.org/software/tramp/
 	arch = any
 	license = GPL
 	makedepends = emacs
 	makedepends = texinfo
-	source = ftp://ftp.gnu.org/gnu/tramp/tramp-2.6.1.tar.gz
-	source = ftp://ftp.gnu.org/gnu/tramp/tramp-2.6.1.tar.gz.sig
+	source = ftp://ftp.gnu.org/gnu/tramp/tramp-2.7.0.tar.gz
+	source = ftp://ftp.gnu.org/gnu/tramp/tramp-2.7.0.tar.gz.sig
 	validpgpkeys = C9A04D6E84B6DB548F4585A2AC966DC9E3E1AECA
-	sha256sums = 17f4e9f68baec00b3cdeefaa07ee087852dd72a97142378e2b86703535b07535
+	sha256sums = 72abae07d920d98ff1af22b8e7b3a24d8ef94bdebaf3a5f375f9a7b6660563ed
 	sha256sums = SKIP
 
 pkgname = tramp
