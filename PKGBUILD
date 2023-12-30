@@ -1,46 +1,47 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 # Contributor: Primalmotion <primalmotion@pm.me>
 # Contributor: gilbus <aur@tinkershell.eu>
-
 pkgname=swaylock-git
-pkgver=r317.91bb968
+pkgver=1.7.2.r18.g91bb968
 pkgrel=1
 pkgdesc='Screen locker for Wayland (git development version)'
-url='https://github.com/swaywm/swaylock'
-license=('MIT')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 arch=('x86_64')
+url="https://github.com/swaywm/swaylock"
+license=("MIT")
 depends=(
-    "cairo"
-    "gdk-pixbuf2"
-    "glib2"
-    "glibc"
-    "pam"
-    "wayland"
-    "libxkbcommon"
+"cairo"
+"gdk-pixbuf2"
+"glib2"
+"glibc"
+"pam"
+"wayland"
+"libxkbcommon"
 )
 makedepends=(
-    "git"
-    "meson"
-    "scdoc"
-    "wayland-protocols"
+"git"
+"meson"
+"scdoc"
+"wayland-protocols"
 )
-backup=('etc/pam.d/swaylock')
-source=("${pkgname}::git+https://github.com/swaywm/swaylock.git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
-    # Calculate the version dynamically using git information
-    printf "r%s.%s" "$(git -C "$srcdir/${pkgname}" rev-list --count HEAD)" "$(git -C "$srcdir/${pkgname}" rev-parse --short HEAD)"
+  cd "$pkgname"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    arch-meson build "${pkgname}"
-    meson compile -C build
+  arch-meson "$pkgname" build
+  meson compile -C build
 }
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  install -Dm644 "${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

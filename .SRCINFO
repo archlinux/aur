@@ -1,6 +1,6 @@
 pkgbase = swaylock-git
 	pkgdesc = Screen locker for Wayland (git development version)
-	pkgver = r317.91bb968
+	pkgver = 1.7.2.r18.g91bb968
 	pkgrel = 1
 	url = https://github.com/swaywm/swaylock
 	arch = x86_64
@@ -18,7 +18,6 @@ pkgbase = swaylock-git
 	depends = libxkbcommon
 	provides = swaylock
 	conflicts = swaylock
-	backup = etc/pam.d/swaylock
 	source = swaylock-git::git+https://github.com/swaywm/swaylock.git
 	b2sums = SKIP
 
