@@ -32,6 +32,8 @@ depends=(
   glfw
   libevent
   libdecor
+  glibc
+  glib2
 )
 makedepends=(
   base-devel
