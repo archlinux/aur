@@ -3,24 +3,25 @@
 _pkgname=capushe
 _pkgver=1.1.2
 pkgname=r-${_pkgname,,}
-pkgver=1.1.2
-pkgrel=1
-pkgdesc='CAlibrating Penalities Using Slope HEuristics'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="CAlibrating Penalities Using Slope HEuristics"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('67258c925ee1faabc58f9952692880372544314e8463a8b8071e561c9bd35fd5')
+md5sums=('c80cfe276d1f4f27bf3ff80ac1872232')
+b2sums=('5ed3b67256c341e39c59d968c4838e1b5b293303955a95167f68c6146999631b8cfad0b13281c7945497339875c6ee5f527b4dae357692d6e9d43d24a8c5b38a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

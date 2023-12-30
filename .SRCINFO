@@ -1,12 +1,13 @@
 pkgbase = r-capushe
 	pkgdesc = CAlibrating Penalities Using Slope HEuristics
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=capushe
 	arch = any
 	license = GPL
 	depends = r
 	source = https://cran.r-project.org/src/contrib/capushe_1.1.2.tar.gz
-	sha256sums = 67258c925ee1faabc58f9952692880372544314e8463a8b8071e561c9bd35fd5
+	md5sums = c80cfe276d1f4f27bf3ff80ac1872232
+	b2sums = 5ed3b67256c341e39c59d968c4838e1b5b293303955a95167f68c6146999631b8cfad0b13281c7945497339875c6ee5f527b4dae357692d6e9d43d24a8c5b38a
 
 pkgname = r-capushe
