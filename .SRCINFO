@@ -11,6 +11,7 @@ pkgbase = incus-ui-canonical
 	makedepends = npm
 	makedepends = rsync
 	depends = incus
+	backup = etc/systemd/system/incus.service
 	source = git+https://github.com/zabbly/incus.git
 	source = https://github.com/canonical/lxd-ui/archive/refs/tags/0.5.tar.gz
 	source = incus.service

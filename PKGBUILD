@@ -23,6 +23,7 @@ sha256sums=(
 )
 noextract=()
 validpgpkeys=()
+backup=('etc/systemd/system/incus.service')
 
 prepare() {
     REPO="${PWD}"/incus
