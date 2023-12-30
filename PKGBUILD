@@ -38,7 +38,7 @@ b2sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$_pkgbase"
-    git describe --long --tags | sed -r 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
