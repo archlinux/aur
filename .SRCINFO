@@ -1,14 +1,14 @@
 pkgbase = r-beanplot
-	pkgdesc = Visualization via Beanplots (like Boxplot/Stripchart/Violin Plot)
+	pkgdesc = Visualization via Beanplots (Like Boxplot/Stripchart/Violin Plot)
 	pkgver = 1.3.1
-	pkgrel = 3
+	pkgrel = 9
 	url = https://cran.r-project.org/package=beanplot
 	arch = any
-	license = GPL
+	license = GPL2
 	depends = r
-	optdepends = r-lattice
 	optdepends = r-vioplot
 	source = https://cran.r-project.org/src/contrib/beanplot_1.3.1.tar.gz
-	sha256sums = 49158aee3449108fd857ef43fb777f55a2b975b350a4a710788996ad19dd15ad
+	md5sums = 64bf7f77c3c50703f0842e78dd56ef69
+	b2sums = 212e72add89361e188d08c169511ae62d5a9b00c56feddf4c6c25f18404f49371144b9c08b60c7efdb7b424821ccce08fb2fbb815d7dd26144cf2425b1544052
 
 pkgname = r-beanplot
