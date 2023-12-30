@@ -14,7 +14,7 @@ pkgbase = sonicthehedgehog
 	depends = wget
 	depends = sdl2
 	depends = unzip
-	depends = zenity
+	depends = yad
 	source = https://gitlab.com/SonicRSDK/sonicthehedgehog/-/archive/1.0.0-1/sonicthehedgehog-1.0.0-1.tar.bz2
 	sha256sums = SKIP
 
