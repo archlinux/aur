@@ -1,6 +1,6 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Contributor:  Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
-# Contributor:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 # Contributor: gbr <gbr@protonmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -10,84 +10,80 @@
 
 _pkgname=ffmpeg
 pkgname="${_pkgname}5.1"
-pkgver=5.1.2
-pkgrel=2
+pkgver=5.1.4
+pkgrel=1
 epoch=1
-pkgdesc='Complete solution to record, convert and stream audio and video'
+pkgdesc='Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)'
 arch=(
-  x86_64
-  i686
   aarch64
-  armv7h
-  pentium4)
+  i686
+  x86_64
+)
 url="https://${_pkgname}.org"
 license=(GPL3)
 depends=(
   alsa-lib
   aom
   bzip2
+  cairo
+  dav1d
   fontconfig
+  freetype2
   fribidi
+  glib2
+  glibc
   gmp
   gnutls
   gsm
   jack
   lame
-  libass.so
+  libass
   libavc1394
-  libbluray.so
-  libbs2b.so
-  libdav1d.so
+  libbluray
+  libbs2b
   libdrm
-  libfreetype.so
   libgl
   libiec61883
-  libmfx
   libmodplug
+  libplacebo
   libpulse
-  librav1e.so
   libraw1394
-  librsvg-2.so
+  librsvg
   libsoxr
   libssh
   libtheora
-  libva.so
-  libva-drm.so
-  libva-x11.so
+  libva
   libvdpau
-  libvidstab.so
-  libvorbisenc.so
-  libvorbis.so
-  libvpx.so
-  libvulkan.so
+  libvorbis
+  libvpx
   libwebp
   libx11
-  libx264.so
-  libx265.so
   libxcb
   libxext
   libxml2
   libxv
-  libxvidcore.so
-  libzimg.so
-  ocl-icd
+  opencl-icd-loader
   opencore-amr
-  openjpeg2
   opus
+  rav1e
+  rubberband
   sdl2
-  speex
+  snappy
   srt
   svt-av1
   v4l-utils
-  vmaf
-  xz
+  vid.stab
+  vulkan-icd-loader
+  x264
+  x265
+  zimg
   zlib
 )
+depends_x86_64=(libmfx)
 makedepends=(
   amf-headers
   avisynthplus
-  # clang
-  'gcc<=12.0'
+  clang
   ffnvcodec-headers
   git
   ladspa
@@ -98,44 +94,24 @@ makedepends=(
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
+  'ffmpeg: v6.x provides libswresample.so.4, omitted from this ffmpeg5.1 pkg'
   'intel-media-sdk: Intel QuickSync support'
   'ladspa: LADSPA filters'
+)
+optdepends_x86_64=(
   'nvidia-utils: Nvidia NVDEC/NVENC support'
 )
-provides=(
-  libavcodec.so
-  libavdevice.so
-  libavfilter.so
-  libavformat.so
-  libavutil.so
-  libpostproc.so
-  libswresample.so
-  libswscale.so
-)
-options=(
-  debug
-)
-_tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7
-source=(
-  "git+https://git.${_pkgname}.org/${_pkgname}.git?signed#tag=${_tag}"
-  add-av_stream_get_first_dts-for-chromium.patch
-)
-b2sums=('SKIP'
-        '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
+provides=(ffmpeg-compat-59)
+conflicts=(ffmpeg-compat-59)
+source=("git+https://git.${_pkgname}.org/${_pkgname}.git?signed#tag=n${pkgver}")
+b2sums=('SKIP')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
   cd "${_pkgname}"
-
-  # https://crbug.com/1251779
-  patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch
-  # https://github.com/FFmpeg/FFmpeg/commit/eb0455d64690eed0068e5cb202f72ecdf899837c
-  git cherry-pick -n eb0455d64690eed0068e5cb202f72ecdf899837c
-}
-
-pkgver() {
-  cd "${_pkgname}"
-  git describe --tags | sed 's/^n//'
+  echo "Applying patches for ffnvcodec SDK 12.1..."
+  git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
+  git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
 }
 
 build() {
@@ -144,14 +120,23 @@ build() {
     --prefix=/usr
     --incdir="/usr/include/${pkgname}"
     --libdir="/usr/lib/${pkgname}"
-    --shlibdir="/usr/lib/${pkgname}"
+    --disable-autodetect
     --disable-debug
+    --disable-doc
+    --disable-libopenjpeg
+    --disable-libspeex
+    --disable-libvmaf
+    --disable-libxvid
+    --disable-programs
+    --disable-sndio
     --disable-static
     --disable-stripping
+    --disable-swresample    # ffmpeg 6.0 & 6.1 contains same major SO version 4
+    --enable-alsa
     --enable-amf
     --enable-avisynth
-    --enable-cuda-llvm
-    --enable-lto
+    --enable-bzlib
+    --enable-ffnvcodec
     --enable-fontconfig
     --enable-gmp
     --enable-gnutls
@@ -162,6 +147,7 @@ build() {
     --enable-libbluray
     --enable-libbs2b
     --enable-libdav1d
+    --enable-libdc1394
     --enable-libdrm
     --enable-libfreetype
     --enable-libfribidi
@@ -173,20 +159,20 @@ build() {
     --enable-libmp3lame
     --enable-libopencore_amrnb
     --enable-libopencore_amrwb
-    --enable-libopenjpeg
     --enable-libopus
+    --enable-libplacebo
     --enable-libpulse
     --enable-librav1e
     --enable-librsvg
+    --enable-librubberband
+    --enable-libsnappy
     --enable-libsoxr
-    --enable-libspeex
     --enable-libsrt
     --enable-libssh
     --enable-libsvtav1
     --enable-libtheora
     --enable-libv4l2
     --enable-libvidstab
-    --enable-libvmaf
     --enable-libvorbis
     --enable-libvpx
     --enable-libwebp
@@ -194,27 +180,51 @@ build() {
     --enable-libx265
     --enable-libxcb
     --enable-libxml2
-    --enable-libxvid
     --enable-libzimg
-    --enable-nvdec
-    --enable-nvenc
+    --enable-lto
     --enable-opencl
     --enable-opengl
+    --enable-sdl2
     --enable-shared
+    --enable-v4l2-m2m
+    --enable-vaapi
+    --enable-vdpau
     --enable-version3
-    --enable-vulkan)
+    --enable-vulkan
+    --enable-xlib
+    --enable-zlib
+  )
 
-  ./configure "${_opts[@]}"
+  [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && \
+    _build_opts+=(--host-cflags="-fPIC")
+
+  [[ $CARCH == "x86_64" ]] && \
+    _build_opts+=(
+      --enable-cuda-llvm
+      --enable-libmfx
+      --enable-nvdec
+      --enable-nvenc
+    )
+
+  ./configure "${_build_opts[@]}"
   make
 }
 
 package() {
   make DESTDIR="${pkgdir}" \
        -C "${_pkgname}" install
-  rm -rf ${pkgdir}/usr/share
-  find ${pkgdir}/usr/bin \
-       -type f \
-       -exec mv {} {}5.1 \;
-}
 
-# vim: ts=2 sw=2 et:
+  cd "${pkgdir}"
+  echo "Moving libs to /usr/lib, except the .so symlinks..."
+  local file
+  for file in "usr/lib/${pkgname}/"*; do
+    if [[ "$file" == *.so ]]; then
+      ln -srfv -- usr/lib/"$(readlink "$file")" "$file"
+    elif [[ ! -d "$file" ]]; then
+      mv -v "$file" usr/lib
+    fi
+  done
+
+  echo "Removing unneeded docs / example files..."
+  rm -rv usr/share
+}
