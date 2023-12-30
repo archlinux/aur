@@ -1,7 +1,7 @@
 pkgbase = spatial-shell
 	pkgdesc = Implementing a spatial model inspired by Material Shell, for i3 and sway.
 	pkgver = 6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lthms/spatial-shell
 	arch = x86_64
 	license = MPL2

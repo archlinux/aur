@@ -2,7 +2,7 @@
 
 pkgname=spatial-shell
 pkgver=6
-pkgrel=2
+pkgrel=3
 pkgdesc='Implementing a spatial model inspired by Material Shell, for i3 and sway.'
 url=https://github.com/lthms/spatial-shell
 license=('MPL2')
@@ -24,14 +24,19 @@ sha512sums=(
 )
 
 prepare() {
-  [ -f "${HOME}/.opam/config" ] || opam init -n
+  export OPAMROOT="${srcdir}/opam"
+  rm -rf "${OPAMROOT}"
+  opam init -n
 }
 
 build() {
+  export OPAMROOT="${srcdir}/opam"
+  eval $(opam env)
   cd "${srcdir}/${pkgname}-${pkgver}"
   make build-deps
   eval $(opam env)
   make
+  rm -rf "${OPAMROOT}"
 }
 
 package() {
