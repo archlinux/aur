@@ -6,8 +6,19 @@ build() {
   local PLYMOUTH_THEME_DIR="/usr/share/plymouth/themes/$PLYMOUTH_THEME_NAME"
   local PLYMOUTH_MODULE_NAME=$(sed -n "s/^ *ModuleName *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
   local PLYMOUTH_IMAGE_DIR=$(sed -n "s/^ *ImageDir *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
-  local PLYMOUTH_FONT_NAME=$(grep "\bFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/Font *= *//' | head -1)
+  local PLYMOUTH_FONT_NAME=$(sed -n "s/^ *Font *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
   local PLYMOUTH_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_FONT_NAME")
+  local PLYMOUTH_TITLE_FONT_NAME=$(sed -n "s/^ *TitleFont *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_TITLE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_TITLE_FONT_NAME")
+  local PLYMOUTH_MONOSPACE_FONT_NAME=$(sed -n "s/^ *MonospaceFont *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+
+  if [ -n "$PLYMOUTH_MONOSPACE_FONT_NAME" ]; then
+    local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_FONT_NAME")
+    local PLYMOUTH_MONOSPACE_BOLD_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_FONT_NAME:weight=bold")
+  else
+    local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} monospace)
+    local PLYMOUTH_MONOSPACE_BOLD_FONT_PATH=$(fc-match -f %{file} monospace:weight=bold)
+  fi
 
   # exit if no module exists on the system for the theme
   if [ ! -f "/usr/lib/plymouth/$PLYMOUTH_MODULE_NAME.so" ]; then
@@ -35,20 +46,19 @@ build() {
     '/usr/share/pixmaps/archlinux-logo.png' \
     '/usr/share/plymouth/plymouthd.defaults' \
     '/etc/plymouth/plymouthd.conf' \
-    "$PLYMOUTH_FONT_PATH"
+    "$PLYMOUTH_FONT_PATH" \
+    "$PLYMOUTH_TITLE_FONT_PATH" \
+    "$PLYMOUTH_MONOSPACE_FONT_PATH" \
+    "$PLYMOUTH_MONOSPACE_BOLD_FONT_PATH"
 
-  # more font stuff
-  local PLYMOUTH_TITLE_FONT_NAME=$(grep "\bTitleFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/TitleFont *= *//' | head -1)
-  if [ ! -z "$PLYMOUTH_TITLE_FONT_NAME" ]; then
-    local PLYMOUTH_TITLE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_TITLE_FONT_NAME")
-    add_file "$PLYMOUTH_TITLE_FONT_PATH"
+  # copy xkb info and x11 locale
+  if [ -d '/usr/share/X11/locale' ]; then
+    add_full_dir '/usr/share/X11/locale'
   fi
-  local PLYMOUTH_MONOSPACE_FONT_NAME=$(grep "\bMonospaceFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/MonospaceFont *= *//' | head -1)
-  if [ ! -z "$PLYMOUTH_MONOSPACE_FONT_NAME" ]; then
-    local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_FONT_NAME")
-    add_file "$PLYMOUTH_MONOSPACE_FONT_PATH"
+  if [ -d '/usr/share/X11/xkb' ]; then
+    add_full_dir '/usr/share/X11/xkb'
   fi
-  
+
   # according to upstream, plymouth expects these files and symlinks to be there, so...
   local DEFAULT_FONT=$(fc-match -f %{file})
   if [ ! -z $"DEFAULT_FONT" ]; then
@@ -73,9 +83,6 @@ build() {
   
   # adding this back in seems to help with getting the graphical password prompt to work
   add_dir '/dev/pts'
-  
-  # help people who use XKBLAYOUT in /etc/vconsole.conf
-  [ -d '/usr/share/X11/xkb' ] && add_full_dir '/usr/share/X11/xkb'
 
   # needed to access DRM devices
   add_udev_rule '71-seat.rules'

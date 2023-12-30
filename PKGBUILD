@@ -5,14 +5,13 @@
 
 pkgname=plymouth-git
 _pkgname=plymouth
-pkgver=22.02.122.r232.g2c4578a1
+pkgver=23.360.11.r41.g66162119
 pkgrel=1
 pkgdesc='Graphical boot splash screen (git version)'
 arch=('i686' 'x86_64')
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
 license=('GPL2')
-depends=('bash' 'cairo' 'cantarell-fonts' 'filesystem' 'glib2' 'glibc' 'libdrm' 'libpng' 'pango'
-         'systemd-libs' 'libevdev' 'libxkbcommon')
+depends=('bash' 'cantarell-fonts' 'libdrm' 'libevdev' 'pango' 'systemd-libs' 'libxkbcommon')
 makedepends=('gtk3' 'docbook-xsl' 'git' 'meson')
 optdepends=('gtk3: x11 renderer')
 provides=('plymouth')
@@ -27,7 +26,7 @@ source=("git+https://gitlab.freedesktop.org/$_pkgname/$_pkgname.git"
 
 sha256sums=('SKIP'
             'de852646e615e06d4125eb2e646d0528d1e349bd9e9877c08c5d32c43d288b6f'
-            '2056d02ba8ba4f1b4ad1691669b5960e6440d5df24f9639aca1e293b0c90e2af'
+            '907e55c7adf6701aa7bcd92c361ef9c1cd936e4f88d4616d81d1a714edc93a6b'
             'cfd0c754437d582bbc8d2cbb545a777b00b5c77a6302522577e9d88b169e2f59')
 
 pkgver() {
@@ -39,7 +38,7 @@ prepare() {
   cd $_pkgname
 
   # Use mkinitcpio to update initrd
-  sed -i 's/dracut -f/mkinitcpio -P/' scripts/plymouth-update-initrd
+  sed -i 's/^dracut -f$/mkinitcpio -P/' scripts/plymouth-update-initrd
 
   # Patch config file
   patch -p1 -i $srcdir/plymouthd.conf.patch
@@ -53,7 +52,7 @@ build() {
     -D background-end-color-stop=0x4D4D4D
   )
 
-  arch-meson $_pkgname build "${meson_options[@]}"
+  arch-meson build $_pkgname "${meson_options[@]}"
   meson compile -C build
 
   # Convert logo for the spinner theme
@@ -66,7 +65,8 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  
+  rm -r "$pkgdir/run"
+
   # Install mkinitcpio hook
   install -Dm644 $srcdir/plymouth.initcpio_hook "$pkgdir/usr/lib/initcpio/hooks/$_pkgname"
   install -Dm644 $srcdir/plymouth.initcpio_install "$pkgdir/usr/lib/initcpio/install/$_pkgname"
