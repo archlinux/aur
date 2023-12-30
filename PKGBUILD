@@ -4,8 +4,8 @@
 
 _pkgname=gpiozero
 pkgname="python-${_pkgname}"
-pkgver=1.6.2
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc='A simple interface to GPIO devices with Raspberry Pi'
 arch=('any')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -16,7 +16,7 @@ optdepends=(
 )
 depends=('python-colorzero' 'python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('7e6da923774437e24edc0c056e486415bace8c4ba4123c22ac4214147854ea6d')
+sha256sums=('c57d9c81854f72ab54351d72fa1e6b2e4bc1ff56c57422c30772d271824e1916')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
