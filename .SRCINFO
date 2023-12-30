@@ -1,0 +1,14 @@
+pkgbase = bam-build
+	pkgdesc = build optimally
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://git.sr.ht/~hossbeast/bam
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = perl
+	source = bam::git+https://git.sr.ht/~hossbeast/bam#tag=v0.8.1?signed
+	validpgpkeys = 79154EE9C4811D32B814EB88B1B3C76D76638462
+	sha512sums = SKIP
+
+pkgname = bam-build
