@@ -1,7 +1,7 @@
 pkgbase = neosurf-git
 	pkgdesc = A NetSurf fork with various improvements
 	pkgver = 16.r14.ge60719e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CobaltBSD/neosurf
 	arch = x86_64
 	license = GPL2

@@ -3,7 +3,7 @@
 pkgname=neosurf-git
 pkgdesc="A NetSurf fork with various improvements"
 pkgver=16.r14.ge60719e
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 makedepends=(
 	git
@@ -50,7 +50,7 @@ b2sums=(
 
 build() {
 	cd "neosurf"
-	cmake -B build -GNinja -DCMAKE_INSTALL_PREFIX="/usr"
+	cmake -B build -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr"
 	cmake --build build
 }
 
