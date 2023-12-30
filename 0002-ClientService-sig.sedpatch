@@ -1,0 +1,16 @@
+diff -pNaru5 a/urbackupclient/ClientService.cpp b/urbackupclient/ClientService.cpp
+--- a/urbackupclient/ClientService.cpp	2023-09-24 18:26:50.000000000 -0400
++++ b/urbackupclient/ClientService.cpp	2023-12-30 15:52:23.104287195 -0500
+@@ -611,11 +611,11 @@ bool ClientConnector::Run(IRunOtherCallb
+ 					{
+ #if defined(__APPLE__)
+ 						// ./UrBackup\ Client.app/Contents/MacOS/sbin/../share/urbackup/urbackup_ecdsa409k1.pub
+ 						std::string pubkey = ExtractFilePath(Server->getServerWorkingDir()) + "/share/urbackup/urbackup_ecdsa409k1.pub";
+ #else
+-						std::string pubkey = UPDATE_SIGNATURE_PREFIX "@OLDSIG@";
++						std::string pubkey = UPDATE_SIGNATURE_PREFIX "@NEWSIG@";
+ #endif
+ 						if (crypto_fak->verifyFile(pubkey,
+ 							UPDATE_FILE_PREFIX "UrBackupUpdate_untested.dat", UPDATE_FILE_PREFIX "UrBackupUpdate.sig2"))
+ 						{
+ 							std::auto_ptr<IFile> updatefile(Server->openFile(UPDATE_FILE_PREFIX "UrBackupUpdate_untested.dat"));

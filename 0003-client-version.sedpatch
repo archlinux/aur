@@ -1,0 +1,66 @@
+diff -pNaru5 a/client/Info.cpp b/client/Info.cpp
+--- a/client/Info.cpp	2023-05-04 16:32:49.000000000 -0400
++++ b/client/Info.cpp	2023-12-30 15:58:22.801759308 -0500
+@@ -35,11 +35,11 @@ Info::Info(wxWindow* parent) : GUIInfo(p
+ {
+ 	std::string inf= getFile(g_res_path + "info.txt");
+ 	m_textCtrl14->SetValue(ConvertToUnicode(inf));
+ 	Show(true);
+ 
+-	std::string n_version = getFile(g_res_path+"@OLDVER@");
++	std::string n_version = getFile(g_res_path+"@NEWVER@");
+ 	std::string c_version = getFile(g_res_path+"curr_version.txt");
+ 	if (n_version.empty())n_version = "0";
+ 	if (c_version.empty())c_version = "0";
+ 
+ 	if (atoi(n_version.c_str()) > atoi(c_version.c_str()))
+diff -pNaru5 a/client/main.cpp b/client/main.cpp
+--- a/client/main.cpp	2023-05-04 16:32:49.000000000 -0400
++++ b/client/main.cpp	2023-12-30 15:58:22.801759308 -0500
+@@ -626,11 +626,11 @@ void MyTimer::Notify()
+ 
+ 	long ct=wxGetLocalTime();
+ 
+ 	if(ct-lastversioncheck>600 && !displayed_update_info)
+ 	{
+-		std::string n_version=getFile("@OLDVER@");
++		std::string n_version=getFile("@NEWVER@");
+ 		std::string c_version=getFile("curr_version.txt");
+ 		if(n_version.empty())n_version="0";
+ 		if(c_version.empty())c_version="0";
+ 
+ 		if( atoi(n_version.c_str())>atoi(c_version.c_str()))
+diff -pNaru5 a/urbackupclient/ClientServiceCMD.cpp b/urbackupclient/ClientServiceCMD.cpp
+--- a/urbackupclient/ClientServiceCMD.cpp	2023-02-25 18:47:01.000000000 -0500
++++ b/urbackupclient/ClientServiceCMD.cpp	2023-12-30 15:58:22.801759308 -0500
+@@ -2595,11 +2595,11 @@ void ClientConnector::CMD_VERSION_UPDATE
+ 		return;
+ 	}
+ #endif
+ 
+ #if defined(_WIN32) || defined(URB_WITH_CLIENTUPDATE)
+-	std::string version_1=getFile(VERSION_FILE_PREFIX "@OLDVER@");
++	std::string version_1=getFile(VERSION_FILE_PREFIX "@NEWVER@");
+ 	std::string version_2=getFile(VERSION_FILE_PREFIX "curr_version.txt");
+ 	if(version_1.empty() ) version_1="0";
+ 	if(version_2.empty() ) version_2="0";
+ 
+ 	if(versionNeedsUpdate(version_1, server_version)
+diff -pNaru5 a/urbackupclient/ClientService.cpp b/urbackupclient/ClientService.cpp
+--- a/urbackupclient/ClientService.cpp	2023-09-24 18:26:50.000000000 -0400
++++ b/urbackupclient/ClientService.cpp	2023-12-30 15:58:22.801759308 -0500
+@@ -639,12 +639,12 @@ bool ClientConnector::Run(IRunOtherCallb
+ 									{
+ 										update_silent();
+ 									}
+ 									else
+ 									{
+-										Server->deleteFile(UPDATE_FILE_PREFIX "@OLDVER@");
+-										moveFile(UPDATE_FILE_PREFIX "version_new.txt", UPDATE_FILE_PREFIX "@OLDVER@");
++										Server->deleteFile(UPDATE_FILE_PREFIX "@NEWVER@");
++										moveFile(UPDATE_FILE_PREFIX "version_new.txt", UPDATE_FILE_PREFIX "@NEWVER@");
+ 									}
+ 								}
+ 								else
+ 								{
+ 									updatefile.reset();

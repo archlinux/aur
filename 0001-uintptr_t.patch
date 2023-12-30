@@ -1,0 +1,16 @@
+diff -pNaru5 a/blockalign_src/crc.cpp b/blockalign_src/crc.cpp
+--- a/blockalign_src/crc.cpp	2022-08-21 04:45:31.000000000 -0400
++++ b/blockalign_src/crc.cpp	2023-12-30 15:30:07.153693741 -0500
+@@ -116,10 +116,12 @@
+ // uintptr_t and ptrdiff_t
+ #if (__cplusplus < 201103L) && (!defined(_MSC_VER) || (_MSC_VER >= 1700))
+ # include <stdint.h>
+ #elif defined(_MSC_VER) && (_MSC_VER < 1700)
+ # include <stddef.h>
++#else
++# include <cstdint>
+ #endif
+ 
+ #if CRYPTOPP_BOOL_SSE4_INTRINSICS_AVAILABLE
+ #include <smmintrin.h>
+ #endif
