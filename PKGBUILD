@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mixo
-pkgver=0.46.0
+pkgver=1.47.0
 pkgrel=1
 pkgdesc="Connect your DJ software, sync your library to all your devices, listen to your sets on your phone, and backup your library to the cloud"
 arch=('x86_64')
@@ -11,11 +11,10 @@ license=("custom:${pkgname}")
 makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
-source=("${pkgname}-${pkgver}.AppImage::https://www.mixo.tech/download/beta/MIXO-${pkgver}.AppImage"
+source=("${pkgname}-${pkgver}.AppImage::https://www.mixo.tech/download/MIXO-${pkgver}.AppImage"
         'LICENSE')
-sha256sums=('8f0d9fd6b5c7045c2308df103cfa581e1af917e28da570f7a54415cadf12157e'
-            '3ef95533dcac842af147bc12911270438deb91b7ea616adcdc28ffd38ebe46b8')
-
+sha256sums=('9cc6ad148b36f8ebef02835d29a0f3f8d66cfd0d28ab91a2ac0d977ab84fdcb9'
+            '84b2a88e0ca0dad3ddca2244b6300af37da7c79eb83b7dfa21457f8a72def1ee')
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
   ./${pkgname}-${pkgver}.AppImage --appimage-extract
