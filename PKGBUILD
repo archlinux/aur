@@ -2,7 +2,7 @@
 
 pkgname=simplex-desktop-appimage
 pkgver=5.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest release of Simplex Desktop, the first messaging platform operating without user identifiers of any kind - 100% private by design!"
 arch=('x86_64')
 url="https://simplex.chat/"
@@ -10,11 +10,11 @@ url="https://simplex.chat/"
 license=('AGPLv3')
 depends=()
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
+_filename="simplex-desktop-${arch}-${pkgver}-${pkgrel}.AppImage"
 source=(
-    https://github.com/simplex-chat/simplex-chat/releases/download/v${pkgver}/simplex-desktop-${arch}.AppImage
+    "${_filename}::https://github.com/simplex-chat/simplex-chat/releases/download/v${pkgver}/simplex-desktop-${arch}.AppImage"
 )
 sha512sums=('2a92627cefc63a4b04b9ca0e794b5f9fa56d69c492a0995bd39ff786885c09847bf20fb1384f03aaa12686c058a94f091237b2fb093345cea32866aa43b4086f')
-_filename="simplex-desktop-${arch}.AppImage"
 _squashfs_desktop_file="chat.simplex.app.desktop"
 _desktop_file="/usr/share/applications/simplex-desktop.desktop"
 _appimage_name=$(echo "${_filename}"|sed -E 's/-[0-9]*.[0-9]*.[0-9]*//')
