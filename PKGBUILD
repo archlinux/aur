@@ -1,4 +1,4 @@
-# Maintainer: Alfredo Ramos <alfredo.ramos@tutanota.com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@skiff.com>
 
 _pkgname=nulloy
 pkgname=${_pkgname}-git
