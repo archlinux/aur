@@ -1,7 +1,9 @@
 post_install() {
-	echo -e "\n\nTo preview and apply themes use: rofi-theme-selector \n\n"
+    echo -e "\nTo preview and apply themes use: rofi-theme-selector \n"
 }
 
 post_upgrade() {
-	echo -e "\n\nTo preview and apply themes use: rofi-theme-selector \n\n"
+    post_install
 }
+
+# vim: ts=4 sw=4 et:
