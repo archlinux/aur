@@ -2,17 +2,17 @@
 # If you think this package is shit, contact me with patch
 
 pkgname=keystore-explorer-git
-pkgver=v5.5.1+30+ge9b355ac
+pkgver=v5.5.3+2+g61975f7e
 pkgrel=1
 pkgdesc="KeyStore Explorer is a free GUI replacement for the Java command-line utilities keytool and jarsigner."
 _pkgname=keystore-explorer
 _short_pkgname=kse
-_short_pkgver=5.5.1
+_short_pkgver=5.5.3
 arch=('any')
 url="https://keystore-explorer.org/"
 license=('GPLv3')
-depends=('java-environment' 'bash' 'desktop-file-utils')
-makedepends=('unzip' 'gradle' 'java-environment')
+depends=('archlinux-java-run>=10' 'java-environment>=11' 'bash' 'desktop-file-utils')
+makedepends=('unzip' 'gradle>=8')
 conflicts=('keystore-explorer' 'keystore-explorer-bin')
 provides=('keystore-explorer')
 source=('git+https://github.com/kaikramer/keystore-explorer.git')
@@ -32,11 +32,27 @@ build() {
   cd "${_pkgname}/${_short_pkgname}"
 
   # get current version from source
-  _v=$(grep 'KSE.Version' src/org/${_short_pkgname}/version.properties | sed 's/KSE.Version=//')
+  _v=$(grep 'KSE.Version' src/main/resources/org/${_short_pkgname}/version.properties | sed 's/KSE.Version=//')
   export _current_short_pkgver=${_v:-$_short_pkgver}
 
+  # mkdir -p "${srcdir}"/gradle
+  # export GRADLE_USER_HOME=${srcdir}/gradle
+
+  # export JAVA_HOME=$(archlinux-java-run -a 21 -b 21 -f jdk -j)
+  # echo "Using JDK from $JAVA_HOME to build keystore-explorer."
+
+  # disable forcing toolchain version - gradle should auto-detect? 
+  # TODO: find a better way
+  #   https://docs.gradle.org/current/userguide/toolchains.html
+  sed -i 's/languageVersion/\/\/languageVersion/' build.gradle
+
   # build it
-  gradle clean build
+  #./gradlew \
+  /usr/bin/gradle \
+    --no-daemon \
+    -PprojVersion="${pkgver}" \
+    -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" \
+    clean build
 
   # extract freshly built dist file
   cd "${srcdir}"
