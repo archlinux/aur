@@ -3,7 +3,7 @@
 
 pkgname=katago-avx2
 _pkgname=KataGo
-pkgver=1.13.2
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Strong open-source self-play-trained Go engine'
 url='https://github.com/lightvector/KataGo'
@@ -13,9 +13,9 @@ license=('MIT')
 depends=('libzip' 'boost-libs')
 makedepends=('git' 'cmake' 'boost' 'eigen')
 source=("git+https://github.com/lightvector/KataGo.git#tag=v${pkgver}"
-        "https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b18c384nbt-s5832081920-d3223508649.bin.gz")
+        'https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b18c384nbt-s8526915840-d3929217702.bin.gz')
 sha256sums=('SKIP'
-            '4cebe31b2dc31f41826a35d99807d4a32b8b72d7a50fecb62cb5c4f3d724289d')
+            '8e094b75f3a5c20ab943da8ca072a48a16e32013c7a9eb2a8686dc0b72fa0ad6')
 
 # For fast playouts on this CPU-bound katago, we ship the strongest neural
 # network with reasonable number of blocks. See: https://katagotraining.org/
