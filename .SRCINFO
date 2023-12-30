@@ -1,6 +1,6 @@
 pkgbase = r-flexplot
 	pkgdesc = Graphically Based Data Analysis
-	pkgver = 0.19.1
+	pkgver = 0.20.3
 	pkgrel = 1
 	url = https://github.com/dustinfife/flexplot
 	arch = x86_64
