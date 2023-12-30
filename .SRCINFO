@@ -1,0 +1,20 @@
+pkgbase = brother-dcpl2620dw
+	pkgdesc = CUPS and LPR drivers for the Brother DCP-L2620DW
+	pkgver = 4.1.0_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=dcpl2620dw_eu
+	install = brother-dcpl2620dw.install
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0-only
+	license = custom:Brother EULA
+	depends = cups
+	depends = perl
+	source = fix-setupPrintcap.diff
+	source = brprintconflsr3_DCPL2620DW
+	source = https://download.brother.com/welcome/dlf106011/dcpl2620dwpdrv-4.1.0-1.i386.rpm
+	sha256sums = 7a30601ab333104caecef2ee71dab2874641c3fa3e2e8e9442a0a6522b4fc1a6
+	sha256sums = 773166df20f1d2b72c3dceb93da9f359e3ec0023fc240a9e494c2a5141e073ef
+	sha256sums = d7e86191c654cd4e4138766bf20bde955c07a41ec8e975553c86783a15145a7c
+
+pkgname = brother-dcpl2620dw

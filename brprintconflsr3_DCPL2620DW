@@ -1,0 +1,2 @@
+#! /bin/sh
+/opt/brother/Printers/DCPL2620DW/lpd/brprintconflsr3 -P DCPL2620DW $*
