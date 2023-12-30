@@ -1,0 +1,22 @@
+pkgbase = alterpcb-tlinesim-git
+	pkgdesc = transmission line simulation tool
+	pkgver = r56.3061766
+	pkgrel = 1
+	url = https://www.maartenbaert.be/alterpcb/tlinesim/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = blas
+	depends = eigen
+	depends = qt5-base
+	depends = suitesparse
+	provides = alterpcb-tlinesim
+	conflicts = alterpcb-tlinesim
+	source = git+https://github.com/MaartenBaert/alterpcb-tlinesim.git
+	source = 0001-Include-Eigen-headers-with-pkg-config.patch
+	source = 0002-Support-installation.patch
+	sha256sums = SKIP
+	sha256sums = 98f633c6e0339f64e8701253c7cf840053a10fda48634660943078e4fc055f2c
+	sha256sums = d038eaf0ca90322e844a6e4ff989eb62f0ed9b5c4651169ff7a3d68de73ee4d4
+
+pkgname = alterpcb-tlinesim-git

@@ -1,0 +1,57 @@
+From 5b509338f78aeda23588ac6fb04468cb69b63b87 Mon Sep 17 00:00:00 2001
+From: Sean Anderson <seanga2@gmail.com>
+Date: Sat, 30 Dec 2023 12:39:56 -0500
+Subject: [PATCH 2/2] Support installation
+
+Support installing the program and its data files.
+---
+ src/alterpcb-tlinesim.pro   | 19 +++++++++++++++++++
+ src/gui/ApplicationDirs.cpp |  1 +
+ 2 files changed, 20 insertions(+)
+
+diff --git a/src/alterpcb-tlinesim.pro b/src/alterpcb-tlinesim.pro
+index f65b46a..22fc246 100644
+--- a/src/alterpcb-tlinesim.pro
++++ b/src/alterpcb-tlinesim.pro
+@@ -7,7 +7,26 @@ greaterThan(QT_MAJOR_VERSION, 4) {
+ TARGET = alterpcb-tlinesim
+ TEMPLATE = app
+ 
++data.files = ../data/*
++
++isEmpty(PREFIX) {
++	PREFIX = /usr/local
++}
++
++isEmpty(BINDIR) {
++	BINDIR = $$PREFIX/bin
++}
++
++isEmpty(DATADIR) {
++	DATADIR = $$PREFIX/share
++}
++
++target.path = $$BINDIR
++data.path = $$DATADIR/$$TARGET
++INSTALLS += target data
++
+ DEFINES += "ALTERPCB_VERSION=\\\"0.0.0\\\""
++DEFINES += "DATADIR=\\\"$${data.path}\\\""
+ 
+ QMAKE_CXXFLAGS += -std=c++11 -Wconversion -Wsign-conversion -Wfloat-conversion
+ QMAKE_CXXFLAGS_RELEASE -= -O2 -g
+diff --git a/src/gui/ApplicationDirs.cpp b/src/gui/ApplicationDirs.cpp
+index b6b0f7e..042d1a6 100644
+--- a/src/gui/ApplicationDirs.cpp
++++ b/src/gui/ApplicationDirs.cpp
+@@ -29,6 +29,7 @@ void InitApplicationDirs() {
+ 	std::vector<QString> global_data_dirs = {
+ 		QCoreApplication::applicationDirPath() + "/data",
+ 		QCoreApplication::applicationDirPath() + "/../data",
++		DATADIR,
+ 	};
+ 	for(auto &dir : global_data_dirs) {
+ 		if(QDir(dir).exists()) {
+-- 
+2.37.1
+

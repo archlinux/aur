@@ -1,0 +1,29 @@
+From b58e1123841e8c888df26ec5e2caacbd7c519773 Mon Sep 17 00:00:00 2001
+From: Sean Anderson <seanga2@gmail.com>
+Date: Sat, 30 Dec 2023 12:23:24 -0500
+Subject: [PATCH] Include Eigen headers with pkg-config
+
+Use pkg-config to determine where the Eigen headers are located.
+---
+ src/alterpcb-tlinesim.pro | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/alterpcb-tlinesim.pro b/src/alterpcb-tlinesim.pro
+index 3b62288..f65b46a 100644
+--- a/src/alterpcb-tlinesim.pro
++++ b/src/alterpcb-tlinesim.pro
+@@ -16,6 +16,11 @@ QMAKE_CXXFLAGS_RELEASE += -O3 -DNDEBUG
+ INCLUDEPATH += common gui simulation
+ DEPENDPATH += common gui simulation
+ 
++unix {
++	CONFIG += link_pkgconfig
++	PKGCONFIG += eigen3
++}
++
+ ########## Warning: Everything below this line is auto-generated and will be overwritten! ##########
+ 
+ HEADERS += \
+-- 
+2.37.1
+
