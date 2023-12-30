@@ -4,7 +4,7 @@ _name=Amulet-NBT
 _lowername=${_name,,}
 _pyname=${_lowername/-/_}
 pkgname=python-$_lowername
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='A Python and Cython library for reading and writing binary NBT and stringified NBT'
 arch=('x86_64')
@@ -14,13 +14,10 @@ depends=('python' 'python-mutf8' 'python-numpy')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-versioneer' 'python-wheel')
 # tests directory isn't in pypi sdist
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('6164ddd80c9735b67cb19118dfeb9bac7c3457a95778d13e016347f7c8e18b0c')
+sha256sums=('1104dcd85699f6fd560b5f5b1e008bef9d9ef23622936b8f68af1663aa8e85c5')
 
 prepare() {
   cd "$_name-$pkgver"
-
-  # ignore cython version requirement
-  sed -Ei 's/(cython) >= 3\.0\.0a9, != 3\.0\.0b1/\1/' pyproject.toml
 
   # use current versioneer
   sed -Ei 's/(versioneer)-518/\1/' pyproject.toml
