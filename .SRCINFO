@@ -1,7 +1,7 @@
 pkgbase = ov-git
 	pkgdesc = Feature-rich terminal-based text pager (built from latest git commit)
 	pkgver = 0.33.0.r0.ge415836
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/noborus/ov
 	arch = aarch64
 	arch = arm
@@ -15,7 +15,6 @@ pkgbase = ov-git
 	depends = glibc
 	provides = ov
 	conflicts = ov
-	conflicts = ov-bin
 	options = lto
 	source = git+https://github.com/noborus/ov.git
 	sha256sums = SKIP
