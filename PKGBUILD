@@ -1,6 +1,6 @@
 # Maintainer: szdytom <szdytom@qq.com>
 pkgname=nyanpasu-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="BiliBili 番剧视频和弹幕元数据的解析脚本(∠・ω< )⌒☆"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 )
 
 sha256sums=(
-	'298a55dbc08c0308b435ccd24d51cd035b7f00f222bf9778744df2a26774fc54'
+	'41334c9f710ff159cc79b0600f3f7b86cc2a11352aa3f9aea7dd96c84e70ab5c'
 	'8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'
 )
 
