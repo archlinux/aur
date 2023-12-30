@@ -6,7 +6,7 @@
 pkgname=notesnook-bin
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote (binary release)"
 pkgver=2.6.13
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/streetwriters/notesnook"
 license=('GPL3')
@@ -50,6 +50,13 @@ prepare() {
   sed -i -E "s|Exec=AppRun|Exec=notesnook|g" notesnook.desktop
   sed -i "/X-AppImage-Version=$pkgver/d; /actions=undefined/d" notesnook.desktop
   sed -i 's/--no-sandbox //g' notesnook.desktop
+# Remove folders based on architecture
+  arch=$(uname -m)
+  if [ "$arch" == "x86_64" ]; then
+    rm -dr resources/app/build/prebuilds/linux-arm64
+  elif [ "$arch" == "aarch64" ]; then
+    rm -dr resources/app/build/prebuilds/linux-x64
+fi
 }
 
 package() {
