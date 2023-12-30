@@ -1,12 +1,13 @@
 pkgbase = red-meta
 	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL
 	pkgver = 2023.12.22.6cb7d502b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.red-lang.org
 	arch = i686
 	arch = x86_64
 	license = custom:BSD-3-Clause
 	license = custom:BSL-1.0
+	depends = lib32-curl
 	source = red-view::https://static.red-lang.org/dl/auto/linux/red-view-22dec23-6cb7d502b
 	source = red-cli::https://static.red-lang.org/dl/auto/linux/red-22dec23-6cb7d502b
 	source = red-toolchain::https://static.red-lang.org/dl/auto/linux/red-toolchain-22dec23-6cb7d502b
@@ -17,12 +18,14 @@ pkgbase = red-meta
 pkgname = red-view
 	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL (GUI)
 	groups = red-bin
+	depends = lib32-curl
 	depends = lib32-gtk3
 
 pkgname = red-cli
 	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL (CLI)
 	groups = red-bin
 	depends = lib32-curl
+	depends = lib32-gdk-pixbuf2
 	provides = red
 	conflicts = red
 
