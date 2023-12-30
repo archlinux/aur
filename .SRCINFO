@@ -1,7 +1,7 @@
 pkgbase = guiscrcpy
 	pkgdesc = Open Source GUI based Android Screen Mirroring System
 	pkgver = 2023.1.1
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://guiscrcpy.srev.in
 	arch = any
