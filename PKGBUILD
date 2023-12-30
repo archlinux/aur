@@ -68,6 +68,11 @@ build() {
   )
   cd $pkgname-$pkgver
 
+  # set environment variables for reproducible build
+  # see https://github.com/open-mpi/ompi/blob/main/docs/release-notes/general.rst
+  export HOSTNAME=buildhost
+  export USER=builduser
+
   # TODO: depend on prrte with openmpi >= 5
   # TODO: remove ac_cv_func_sem_open=no when there is a glibc release fixing https://sourceware.org/bugzilla/show_bug.cgi?id=30789
   ac_cv_func_sem_open=no ./configure "${configure_options[@]}"
