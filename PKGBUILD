@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 url=""
 license=('GPL3')
 depends=('incus')
-makedepends=('yarn' 'npm' 'rsync')
+makedepends=('git' 'yarn' 'npm' 'rsync')
 changelog=
 source=("git+https://github.com/zabbly/incus.git"
         "https://github.com/canonical/lxd-ui/archive/refs/tags/${pkgver}.tar.gz")
