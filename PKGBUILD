@@ -11,7 +11,8 @@ license=("Apache")
 depends=("postgresql>13")
 source=("git+https://github.com/matrix-org/sliding-sync.git" "sliding-sync-git.service")
 makedepends=("go" "git")
-sha256sums=("SKIP" "b3b669052508077f16107b0de662699669a47dfb0519701119d5548110869f1c")
+sha256sums=('SKIP'
+            'b3b669052508077f16107b0de662699669a47dfb0519701119d5548110869f1c')
 provides=("sliding-sync")
 install="sliding-sync-git.install"
 
@@ -34,5 +35,5 @@ function package(){
 	mkdir -p "${pkgdir}/usr/lib/sysusers.d/"
 	echo 'u	sliding-sync	-	"Sliding Sync Proxy User"	-	-' >"${pkgdir}/usr/lib/sysusers.d/sliding-sync.conf"
 	mkdir -p "${pkgdir}/usr/lib/tmpfiles.d"
-	echo 'f	/etc/default/sliding-sync	0660	sliding-sync	root' >"${pkgdir}/usr/lib/tmpfiles.d/sliding-sync.tmpfiles"
+	echo 'f	/etc/default/sliding-sync	0660	sliding-sync	root' >"${pkgdir}/usr/lib/tmpfiles.d/sliding-sync.conf"
 }
