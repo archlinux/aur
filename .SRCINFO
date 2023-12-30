@@ -1,6 +1,6 @@
 pkgbase = cloudreve
 	pkgdesc = Self-hosted file management and sharing system, supports multiple storage providers
-	pkgver = 1
+	pkgver = 3.8.3
 	pkgrel = 1
 	url = https://github.com/cloudreve/Cloudreve
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = cloudreve
 	source = cloudreve.service
 	source = config.ini
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = fa15c67beb6a9c47c11062f8bd168d5a078dea5944e72a0234eb7568eddcd91e
+	sha256sums = 28e397ff097c4abd38d9d23dcdf963df8401c31040b56d076ed3f3f2e83c155a
 
 pkgname = cloudreve
