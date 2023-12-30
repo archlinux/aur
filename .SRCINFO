@@ -1,7 +1,7 @@
 pkgbase = onepage
 	pkgdesc = OnePage is a simple web application that serves a single page, allowing users to edit content in Markdown format and view it rendered as HTML
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/maveonair/onepage
 	arch = x86_64
 	arch = aarch64
@@ -12,8 +12,10 @@ pkgbase = onepage
 	source = onepage-0.0.3.tar.gz::https://github.com/maveonair/onepage/archive/0.0.3.tar.gz
 	source = onepage.service
 	source = onepage-sysusers.conf
+	source = onepage-tmpfiles.conf
 	sha256sums = 32b11944bc0b4287aff858f3dc41af152d8680538c3014d285e6fc6c0d2acbc0
 	sha256sums = ba251d5e4e6937046cdc368aee8a775ee127c1285287f8f6be9cc367a3c4d237
 	sha256sums = a89aef7858dfdabf000ad362baa502294255a79661c09d4bf481455145dcf097
+	sha256sums = 885712287ced675b98050a2dc03218255ca69242fc4520417cfac1f3e0d645b5
 
 pkgname = onepage
