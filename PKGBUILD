@@ -1,7 +1,7 @@
 # Maintainer: balaraz <balaraz@tuta.io>
 
 pkgname=sof-bin
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
@@ -11,11 +11,11 @@ depends=()
 makedepends=()
 provides=(sof)
 conflicts=()
-source=("${url}/releases/download/v4%2C0/sof-v${pkgver}-linux-amd64"
-				"${url}/releases/download/v4%2C0/sof.1.gz")
+source=("${url}/releases/download/v4%2C1/sof-v${pkgver}-linux-amd64"
+				"${url}/releases/download/v4%2C1/sof.1.gz")
 noextract=("sof.1.gz")
-sha256sums=("812ae2755a8b0cb51b84ddf8024bad1f7bf98458bb85132938fdca765fe63130"
-						"efb50d1d3a7fda5cc5f87faa898e0b3a3efe906dcc623703ba8c5ba432872f79")
+sha256sums=("7461bb19eb61f56d089426b83506d4107e85f1f797f1d5a3fb0666814cc18cdd"
+						"1dab231407c59a70e255e9080f987c8b89322bf17196e95e0c6fa257cf145fe0")
 
 package() {
 		install -Dm775 \
