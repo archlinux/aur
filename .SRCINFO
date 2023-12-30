@@ -1,0 +1,18 @@
+pkgbase = delta-icon-theme-git
+	pkgdesc = Matted out icon pack for Linux.
+	pkgver = r85.3fa71b7
+	pkgrel = 1
+	url = https://delta-icons.github.io/
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	provides = delta-icon-theme
+	conflicts = delta-icon-theme
+	source = delta-icons-linux::git+https://github.com/Delta-Icons/linux.git
+	source = license.txt
+	sha256sums = SKIP
+	sha256sums = 38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea
+
+pkgname = delta-icon-theme-git
