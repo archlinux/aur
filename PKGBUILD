@@ -30,16 +30,16 @@ source=(git+${url}.git)
 cksums=('SKIP')
 noextract=()
 
-#prepare() {
-	# TODO Update $pkgver
-#}
+
+pkgver() {
+	git -C "${pkgname%-git}" describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+}
 
 build() {
-	meson setup --prefix "/usr" ./lunion ./build
+	meson setup --prefix "/usr" "${pkgname%-git}" ./build
 	meson compile -C ./build
 }
 
 package() {
-	#cd "$pkgname"
 	meson install -C ./build --destdir "$pkgdir"
 }
