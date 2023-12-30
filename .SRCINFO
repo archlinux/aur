@@ -1,6 +1,6 @@
 pkgbase = xorg-xwayland-explicit-sync-git
 	pkgdesc = Run X clients under Wayland with explicit sync patch
-	pkgver = 23.1.2.r175.g073b90ea5
+	pkgver = 23.1.2.r199.gf59871587
 	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
@@ -37,9 +37,7 @@ pkgbase = xorg-xwayland-explicit-sync-git
 	conflicts = xorg-server-xwayland-git
 	source = xserver::git+https://gitlab.freedesktop.org/xorg/xserver.git
 	source = https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/967.patch
-	source = 0000_syncobj.patch
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = bec09ac6197fc4311a1cf3260af427b1f8dcb30dafac6813414bc1988f3ac494c22520ed779baa1e9f0068e3dfcc6515e6259003dbe3bdd61d79230523e3ae87
 
 pkgname = xorg-xwayland-explicit-sync-git
