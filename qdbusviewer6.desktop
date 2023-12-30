@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Qt QDBusViewer 
+Name=Qt6 QDBusViewer 
 GenericName=D-Bus Debugger
 Comment=Debug D-Bus applications
 Exec=/usr/lib/qt6/bin/qdbusviewer

@@ -1,6 +1,6 @@
 # Maintainer: nomisge <nomisge @ live . de>
 pkgname=qt6-tools-desktop
-pkgver=6.2.2
+pkgver=6.6.1
 pkgrel=1
 pkgdesc="Adds desktop integration files for qt6-tools
  (assistent, designer, linguist and qdbusviewer)"
@@ -19,7 +19,7 @@ source=("assistant6.desktop"
 sha256sums=('72677ebbe6904b119b68e4dbefd21198fe8941332e0ce489c7c4b9ad50d97a79'
             'a28c63b0e77944b7182eda7dfa31120cb9e5919ffa0d9cbd56a98d53a905a328'
             'eb0b3c887825ca21c812e0431fa61087497d84f26d9fb27b5c30b19dd556aee6'
-            'cec88926fca418bdebc6f75cc8169be1c2d52b0ca0355e4ea0bce495c5618c86')
+            '8d2c9e9642afb8cd4ab491cb877c8c7fae3af1128b14af58fbfd3550d0c0791e')
 
 package() {
 	# install .desktop file 
