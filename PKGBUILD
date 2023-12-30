@@ -17,9 +17,6 @@ source=("git+https://github.com/lightvector/KataGo.git#tag=v${pkgver}"
 sha256sums=('SKIP'
             '8e094b75f3a5c20ab943da8ca072a48a16e32013c7a9eb2a8686dc0b72fa0ad6')
 
-# For fast playouts on this CPU-bound katago, we ship the strongest neural
-# network with reasonable number of blocks. See: https://katagotraining.org/
-
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	git submodule init
