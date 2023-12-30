@@ -1,7 +1,7 @@
 pkgbase = linux-amd-drm-next
 	pkgdesc = Linux kernel next with bleeding edge AMD DRM drivers
-	pkgver = 6.7.2023.10.13
-	pkgrel = 1
+	pkgver = 6.8.2023.12.15
+	pkgrel = 2
 	url = https://kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -11,13 +11,17 @@ pkgbase = linux-amd-drm-next
 	makedepends = git
 	makedepends = libelf
 	makedepends = pahole
-	makedepends = python
 	makedepends = perl
+	makedepends = python
 	makedepends = tar
 	makedepends = xz
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = python-sphinx
+	makedepends = texlive-latexextra
 	options = !strip
 	options = !debug
-	source = linux-amd-drm-next::git+https://gitlab.freedesktop.org/agd5f/linux#tag=amd-drm-next-6.7-2023-10-13
+	source = linux-amd-drm-next::git+https://gitlab.freedesktop.org/agd5f/linux#tag=amd-drm-next-6.8-2023-12-15
 	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux/trunk/config
 	sha256sums = SKIP
 	sha256sums = 6b337a9d3cfdc00005589a80b8d36fa500f6a92ed21565a3aceec48d7202a7da
