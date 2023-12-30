@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 epoch=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=('x86_64')
@@ -22,7 +22,7 @@ checkdepends=(
     'python-yaml'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-quantum-safe/${pkgname}/archive/refs/tags/${pkgver//_/-}.tar.gz")
-b2sums=('5a8c3ccf570ded1dd66e420a22400f1c3320ba385e09a2edb41323e994597dcd812e1742986d34300c76bed54c2a0baf24587d2eaef00e7f03265f3dc632ddda')
+b2sums=('9036a1b1794a27036941abfa6bfcd8242686ce983e78e559cabf2e82d4c6a281d455981317a6b46de05c131f6497c385c5ac018c5afc927afc3b7470c51bb511')
 
 prepare() {
     # Fixes issue with Doxygen trying to resolve reference that makes ninja gen_docs fail
