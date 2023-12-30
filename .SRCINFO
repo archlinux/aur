@@ -17,4 +17,3 @@ pkgbase = pigpio-git
 	sha512sums = SKIP
 
 pkgname = pigpio-git
-
