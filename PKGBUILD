@@ -2,17 +2,17 @@
 # https://github.com/TD-Sky/PKGBUILDs
 
 pkgname=conceal-bin
-_pkgname=conceal
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line recycle bin"
 arch=('x86_64')
 url="https://github.com/TD-Sky/conceal"
 license=('MIT')
-conflicts=('conceal')
-depends=('skim')
-optdepends=('fzf: supports fzf as finder')
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$arch-unknown-linux-gnu.tar.gz")
+provides=("$pkgname")
+conflicts=("${pkgname%-bin}")
+depends=('fzf')
+optdepends=('skim: supports skim as finder')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-$arch-unknown-linux-gnu.tar.gz")
 sha256sums=('e1b42463fbd6d8dc2c4874ae62c7963c5f21639e02ea54c0d41e350b5c559688')
 
 package() {
@@ -28,6 +28,6 @@ package() {
   install -Dm 644 "completions/cnc/cnc.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d"
   install -Dm 644 "completions/cnc/cnc.nu" -t "$pkgdir/usr/share/nushell/completions"
 
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
 }
