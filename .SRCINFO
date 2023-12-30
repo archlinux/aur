@@ -1,0 +1,13 @@
+pkgbase = python-spacy-da_core_news_trf
+	pkgdesc = Danish pretrained model for spaCy (large)
+	pkgver = 3.7.2
+	pkgrel = 1
+	url = https://spacy.io/models/da#section-da_core_news_trf
+	arch = any
+	license = CCPL
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/da_core_news_trf-3.7.2/da_core_news_trf-3.7.2.tar.gz
+	b2sums = c234b91d77a4412c96c1b4fca5dee323e88895f86dbf64212aa96159b0eefcaa3851a834a9288cf4111f6fb0ec01c41225101443727c7f9ed06d3e3d33100032
+
+pkgname = python-spacy-da_core_news_trf
