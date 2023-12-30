@@ -1,6 +1,6 @@
 # Maintainer: Dan Maftei <dan.maftei@gmail.com>
 pkgname="molden"
-pkgver=6.9
+pkgver=7.3
 pkgrel=1
 pkgdesc="A program for molecular and electronic structure visualization"
 arch=('i686' 'x86_64')
@@ -13,8 +13,7 @@ makedepends=(
     'gcc-fortran'
     'xorgproto'
     'libx11'
-    'mesa'
-    'glu'
+    'makedepend'
 )
 optdepends=(
    'openbabel: to create 2D images of the molecules in a .sdf file'
@@ -31,19 +30,16 @@ source=(
     "https://ftp.science.ru.nl/Molden/${pkgname}${pkgver}.tar.gz"
 )
 noextract=()
-md5sums=('3551167d2853e5a6b3379edf74e81f1f')
+sha256sums=('870f4fa6635229791bb09bbbd07f51456b2c90101d73564dc47ed7769b8c07a1')
 
 build() {
   cd "molden${pkgver}"
-  # Patch Makefile for surf utility to reflect
-  # the replacement of missing makedepend
-  sed -i 's/@.*makedepend.*$/@ \$(CC) \$(INCLUDE) -M \$(SRCS) \> makedep/' src/surf/Makefile
 
-  # Patch to compile with gfortran 10
-  # Contributed by Panadestein on 5/31/2020
-  sed -i 's/FFLAGS = -g ${AFLAG}/& -fallow-argument-mismatch/g' makefile
-  sed -i 's/FFLAGS = -c -g -ffast-math -funroll-loops -O3/& -fallow-argument-mismatch/g' src/ambfor/makefile
-  make
+  # Patch to compile with gfortran 10+
+  # Original contribution by Panadestein on 5/31/2020
+  sed -i 's/FFLAGS += -g ${AFLAG}/& -fallow-argument-mismatch/g' makefile
+  sed -i 's/FFLAGS = -g ${AFLAG}/& -fallow-argument-mismatch/g' docker/makefile
+  make -k
 }
 
 package() {
