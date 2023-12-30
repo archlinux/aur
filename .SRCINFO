@@ -1,6 +1,6 @@
 pkgbase = application-inspector-bin
 	pkgdesc = A source code analyzer built for surfacing features of interest and other characteristics to answer the question 'What's in the code?' quickly using static analysis with a json based rules engine (binary release)
-	pkgver = 1.9.14
+	pkgver = 1.9.16
 	pkgrel = 1
 	url = https://github.com/microsoft/ApplicationInspector
 	install = application-inspector-bin.install
@@ -10,7 +10,7 @@ pkgbase = application-inspector-bin
 	provides = application-inspector
 	conflicts = application-inspector
 	options = staticlibs
-	source = https://github.com/microsoft/ApplicationInspector/releases/download/v1.9.14/ApplicationInspector_linux_1.9.14.zip
-	sha256sums = 409662ea4b1f530910c24aef68896406a93f5d7667e72410d4b51ceaecdd40c7
+	source = https://github.com/microsoft/ApplicationInspector/releases/download/v1.9.16/ApplicationInspector_linux_1.9.16.zip
+	sha256sums = 4c73a2ec60f67978a299c065b1eb3db98b2c67c6758cc3531efb4855aa3162b2
 
 pkgname = application-inspector-bin
