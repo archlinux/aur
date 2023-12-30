@@ -1,0 +1,15 @@
+pkgbase = onepage
+	pkgdesc = OnePage is a simple web application that serves a single page, allowing users to edit content in Markdown format and view it rendered as HTML
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/maveonair/onepage
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = nodejs-lts-iron
+	makedepends = npm
+	source = onepage-0.0.3.tar.gz::https://github.com/maveonair/onepage/archive/0.0.3.tar.gz
+	sha256sums = 32b11944bc0b4287aff858f3dc41af152d8680538c3014d285e6fc6c0d2acbc0
+
+pkgname = onepage
