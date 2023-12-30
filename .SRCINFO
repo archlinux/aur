@@ -1,0 +1,13 @@
+pkgbase = python-spacy-sv_core_news_lg
+	pkgdesc = Swedish pretrained model for spaCy (large)
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://spacy.io/models/da#section-sv_core_news_lg
+	arch = any
+	license = CCPL
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/sv_core_news_lg-3.7.0/sv_core_news_lg-3.7.0.tar.gz
+	b2sums = 39c7a9c9d2cfd65a7e911d770e1ddf7ac413e3c38198315b73b1ad929df227267957c7e8be39a14f6e15163eab83648ca168df74f1495770b5dcd61e8310ad39
+
+pkgname = python-spacy-sv_core_news_lg
