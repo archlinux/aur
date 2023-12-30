@@ -11,7 +11,7 @@ url=https://github.com/cloudreve/Cloudreve
 license=("GPL-3.0-only")
 #depends=("")
 source=("git+https://github.com/cloudreve/Cloudreve.git#tag=${_tag}" "cloudreve.service" "config.ini")
-makedepends=("go" "git" "goreleaser" "yarn")
+makedepends=("go" "git" "goreleaser" "yarn" "zip")
 sha256sums=('SKIP'
             'fa15c67beb6a9c47c11062f8bd168d5a078dea5944e72a0234eb7568eddcd91e'
             '28e397ff097c4abd38d9d23dcdf963df8401c31040b56d076ed3f3f2e83c155a')
