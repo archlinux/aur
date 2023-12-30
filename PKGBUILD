@@ -1,7 +1,7 @@
 # Maintainer: IroAlexis <iroalexis@outlook.com>
 
 pkgname=lunion-git
-pkgver=0.5.0
+pkgver=0.5.beta
 pkgrel=1
 epoch=0
 pkgdesc="Wine wrapper for running Windows games on Linux"
@@ -31,9 +31,9 @@ cksums=('SKIP')
 noextract=()
 
 
-pkgver() {
-	git -C "${pkgname%-git}" describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
-}
+#pkgver() {
+#	git -C "${pkgname%-git}" describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+#}
 
 build() {
 	meson setup --prefix "/usr" "${pkgname%-git}" ./build

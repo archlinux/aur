@@ -1,6 +1,6 @@
 pkgbase = lunion-git
 	pkgdesc = Wine wrapper for running Windows games on Linux
-	pkgver = 0.5.0
+	pkgver = 0.5.beta
 	pkgrel = 1
 	epoch = 0
 	url = https://framagit.org/IroAlexis/lunion
