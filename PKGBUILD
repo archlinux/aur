@@ -4,13 +4,13 @@
 _pkgname='ov'
 pkgname="${_pkgname}-git"
 pkgver=0.33.0.r0.ge415836
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature-rich terminal-based text pager (built from latest git commit)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noborus/ov'
 license=('MIT')
 provides=('ov')
-conflicts=('ov')
+conflicts=('ov' 'ov-bin')
 depends=('glibc')
 makedepends=('git' 'go')
 source=('git+https://github.com/noborus/ov.git')
