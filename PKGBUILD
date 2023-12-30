@@ -2,13 +2,13 @@
 # Contributor:
 
 pkgname=waypaper-git
-pkgver=2.0.2.r0.gbf55f79
+pkgver=2.0.2.r13.g8d96861
 pkgrel=2
 pkgdesc='GUI wallpaper setter for both Wayland and X11 window managers that works as a frontend for popular backends like swaybg, swww, and feh.'
 arch=('any')
 url='https://github.com/anufrievroman/waypaper'
 license=('GPL3')
-depends=('gtk3' 'gdk-pixbuf2' 'python-gobject')
+depends=('gtk3' 'gdk-pixbuf2' 'python-gobject' 'python-importlib-metadata' 'python-platformdirs')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('swaybg: the wayland backend that supports only static images'
             'swww: the wayland backend that supports animated GIFs'
