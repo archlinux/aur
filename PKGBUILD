@@ -7,13 +7,13 @@
 pkgbase=minetest-git
 pkgname=(minetest-git minetest-server-git minetest-common-git)
 _pkgname=minetest
-pkgver=5.8.0.r4.g689aaf50b
+pkgver=5.8.0.r67.g431444ba9
 pkgrel=1
 epoch=1
 url=https://www.minetest.net
 license=(LGPLv2.1)
 arch=(i686 x86_64)
-makedepends=(cmake curl freetype2 git gmp hicolor-icon-theme hiredis jsoncpp leveldb libgl libjpeg libvorbis libxi luajit openal postgresql-libs spatialindex sqlite ninja)
+makedepends=(cmake curl freetype2 git gmp hicolor-icon-theme hiredis jsoncpp leveldb libgl libjpeg libvorbis libxi luajit openal postgresql-libs spatialindex sqlite ninja sdl2)
 source=(git+https://github.com/minetest/minetest.git
 		git+https://github.com/minetest/irrlicht.git
 		minetest.service
@@ -50,7 +50,7 @@ build() {
 
 package_minetest-git() {
 	pkgdesc='Free and open source voxel-based game engine (git)'
-	depends=(curl freetype2 gmp jsoncpp libgl libjpeg libvorbis libxi luajit minetest-common-git openal postgresql-libs spatialindex sqlite)
+	depends=(curl leveldb freetype2 gmp jsoncpp libgl libjpeg libvorbis libxi luajit minetest-common-git openal postgresql-libs hiredis spatialindex sqlite sdl2)
 	provides=("${_pkgname}")
 	conflicts=("${_pkgname}")
 
@@ -66,7 +66,7 @@ package_minetest-git() {
 
 package_minetest-server-git() {
 	pkgdesc='Free and open source voxel-based game engine (headless server) (git)'
-	depends=(minetest-common leveldb curl sqlite hiredis luajit postgresql-libs spatialindex jsoncpp gmp)
+	depends=(minetest-common-git leveldb curl sqlite hiredis luajit postgresql-libs spatialindex jsoncpp gmp)
 	provides=("${_pkgname}-server")
 	conflicts=("${_pkgname}-server")
 
