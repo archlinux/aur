@@ -1,0 +1,21 @@
+pkgbase = cloudreve
+	pkgdesc = Self-hosted file management and sharing system, supports multiple storage providers
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/cloudreve/Cloudreve
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = go
+	makedepends = git
+	makedepends = goreleaser
+	makedepends = yarn
+	provides = cloudreve
+	backup = etc/cloudreve/config.ini
+	source = git+https://github.com/cloudreve/Cloudreve.git#tag=88409cc1f0a0a55b7ea8f0aee15e82876260b2d8
+	source = cloudreve.service
+	source = config.ini
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cloudreve
