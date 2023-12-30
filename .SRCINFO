@@ -1,13 +1,16 @@
 pkgbase = r-geigen
 	pkgdesc = Calculate Generalized Eigenvalues, the Generalized Schur Decomposition and the Generalized Singular Value Decomposition of a Matrix Pair with Lapack
 	pkgver = 2.3
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=geigen
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
+	depends = blas
+	depends = lapack
 	depends = r
 	source = https://cran.r-project.org/src/contrib/geigen_2.3.tar.gz
-	sha256sums = c7ffb869afb8b439a8288addccaa645289b00b12a355f351572b5fc913278f2e
+	md5sums = 08951fde411893278e127769a9cfa394
+	b2sums = 7d5b1df9c1ed49b61cb93be5470e22b5c73b1ff54db1abc82892d5397a1fda3e6c02b8430d79a7106b8ea421dfd9f5b102e225dfb0847a6bb87e1528a3774028
 
 pkgname = r-geigen
