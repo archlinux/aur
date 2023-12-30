@@ -1,0 +1,13 @@
+pkgbase = python-spacy-ru_core_news_lg
+	pkgdesc = Russian pretrained model for spaCy (large)
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://spacy.io/models/da#section-ru_core_news_lg
+	arch = any
+	license = CCPL
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/ru_core_news_lg-3.7.0/ru_core_news_lg-3.7.0.tar.gz
+	b2sums = 605069809ec98d44086c90ddae8189cea6541e24d9be9ee406fdcce7821b731d4d5c7ee21cca9898e6c0aab7164bfc9f3fd80153c7420e53f9c2e0c28acda971
+
+pkgname = python-spacy-ru_core_news_lg
