@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=local-ai
 _pkgname=LocalAI
-pkgver=2.0.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first."
 arch=('aarch64' 'x86_64')
@@ -17,10 +17,17 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgname}.service"
 )
 
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  export GO_TAGS="tinydream tts"
+
+  make get-sources
+}
+
 build() {
   cd "${_pkgname}-${pkgver}"
-  # export GO_TAGS="stablediffusion tts"
-  export GO_TAGS="tts"
+  export GO_TAGS="tinydream tts"
+
   make build
 }
 
@@ -41,7 +48,7 @@ package() {
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
 
-sha256sums=('9627a52a7a494839805b13f5efae6d6fdf5170116a1f1075acc3010ea4fa21d3'
+sha256sums=('7b9b0265b6039bd6bb47de5fd96e61f15f1b51e22689fc2132333cdbe9418011'
   'a642a3eda0fe24fa2ebffc5ec997fdbcc2ee74b615045fe5f0e40c4efc7b8399'
   '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
   '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
