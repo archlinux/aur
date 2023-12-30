@@ -1,16 +1,16 @@
 pkgbase = mixo
 	pkgdesc = Connect your DJ software, sync your library to all your devices, listen to your sets on your phone, and backup your library to the cloud
-	pkgver = 0.46.0
+	pkgver = 1.47.0
 	pkgrel = 1
 	url = https://www.mixo.dj
 	arch = x86_64
 	license = custom:mixo
 	makedepends = gendesk
-	noextract = mixo-0.46.0.AppImage
+	noextract = mixo-1.47.0.AppImage
 	options = !strip
-	source = mixo-0.46.0.AppImage::https://www.mixo.tech/download/beta/MIXO-0.46.0.AppImage
+	source = mixo-1.47.0.AppImage::https://www.mixo.tech/download/MIXO-1.47.0.AppImage
 	source = LICENSE
-	sha256sums = 8f0d9fd6b5c7045c2308df103cfa581e1af917e28da570f7a54415cadf12157e
-	sha256sums = 3ef95533dcac842af147bc12911270438deb91b7ea616adcdc28ffd38ebe46b8
+	sha256sums = 9cc6ad148b36f8ebef02835d29a0f3f8d66cfd0d28ab91a2ac0d977ab84fdcb9
+	sha256sums = 84b2a88e0ca0dad3ddca2244b6300af37da7c79eb83b7dfa21457f8a72def1ee
 
 pkgname = mixo
