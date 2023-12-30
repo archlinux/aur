@@ -1,8 +1,8 @@
 # Maintainer: Ábel Futó <lebaotuf+arch at gmail dot com>
 # Contributor: John Schug <xtr.xtrnet@gmail.com>
 pkgname=z88dk
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="Developement kit for Z80 computers"
 arch=('i686' 'x86_64')
 url="http://z88dk.org"
@@ -13,20 +13,9 @@ makedepends=('perl' 'perl-modern-perl' 'perl-yaml-tiny' 'perl-cpu-z80-assembler'
 	     'ragel' 're2c' 'dos2unix')
 backup=(etc/profile.d/z88dk.sh)
 source=(https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-src-${pkgver}.tgz
-	fix-whitespace-Makefile.patch
-        fix-makefile-v2.2.patch
         z88dk.sh)
-sha256sums=('942aef3f5c55209a76925c8df681271e8340cf6623bedcb5a2933d4024657a41'
-            'dea585b77f15d42b1f9c9ca4bf20b26f884ed828e7b0891afb915361f008a8a1'
-            '55a7d58e239f5513cd110d924b30f2cb8d3b3f1d38b3c24d90ddc65bb1e345e2'
+sha256sums=('e08887ef9344f8dbd9d669bb904e17c35290a316bb1fe8b02c1a45b0d291292f'
             '4eef7c67e5b142db3006a4076876cdae9f386a7b94a66841a5a8fac869bea156')
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-
-  patch -Np0 < ../fix-whitespace-Makefile.patch
-  patch -Np0 < ../fix-makefile-v2.2.patch
-}
 
 build() {
   cd "${srcdir}/${pkgname}"
@@ -42,8 +31,8 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  make -C libsrc prefix="/usr" DESTDIR="${pkgdir}" install
-  make prefix="/usr" DESTDIR="${pkgdir}" install
+  make -C libsrc PREFIX="/usr" DESTDIR="${pkgdir}" install
+  make PREFIX="/usr" DESTDIR="${pkgdir}" install
 
   # Uncomment for a cleaner install directory - no functionality will be lost
   #rm -rf ${pkgdir}/usr/share/z88dk/libsrc/target/{zx,zxn,ts2068}/newlib/obj

@@ -1,7 +1,7 @@
 pkgbase = z88dk
 	pkgdesc = Developement kit for Z80 computers
-	pkgver = 2.2
-	pkgrel = 2
+	pkgver = 2.3
+	pkgrel = 1
 	url = http://z88dk.org
 	arch = i686
 	arch = x86_64
@@ -17,13 +17,9 @@ pkgbase = z88dk
 	makedepends = dos2unix
 	depends = libxml2
 	backup = etc/profile.d/z88dk.sh
-	source = https://github.com/z88dk/z88dk/releases/download/v2.2/z88dk-src-2.2.tgz
-	source = fix-whitespace-Makefile.patch
-	source = fix-makefile-v2.2.patch
+	source = https://github.com/z88dk/z88dk/releases/download/v2.3/z88dk-src-2.3.tgz
 	source = z88dk.sh
-	sha256sums = 942aef3f5c55209a76925c8df681271e8340cf6623bedcb5a2933d4024657a41
-	sha256sums = dea585b77f15d42b1f9c9ca4bf20b26f884ed828e7b0891afb915361f008a8a1
-	sha256sums = 55a7d58e239f5513cd110d924b30f2cb8d3b3f1d38b3c24d90ddc65bb1e345e2
+	sha256sums = e08887ef9344f8dbd9d669bb904e17c35290a316bb1fe8b02c1a45b0d291292f
 	sha256sums = 4eef7c67e5b142db3006a4076876cdae9f386a7b94a66841a5a8fac869bea156
 
 pkgname = z88dk
