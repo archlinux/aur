@@ -2,7 +2,7 @@
 pkgname=python-spacy-da_core_news_trf
 pkgver=3.7.2
 pkgrel=1
-pkgdesc='Danish pretrained model for spaCy (large)'
+pkgdesc='Danish pretrained model for spaCy (transformer)'
 arch=(any)
 url='https://spacy.io/models/da#section-da_core_news_trf'
 license=(CCPL)

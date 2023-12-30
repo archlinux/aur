@@ -1,5 +1,5 @@
 pkgbase = python-spacy-da_core_news_trf
-	pkgdesc = Danish pretrained model for spaCy (large)
+	pkgdesc = Danish pretrained model for spaCy (transformer)
 	pkgver = 3.7.2
 	pkgrel = 1
 	url = https://spacy.io/models/da#section-da_core_news_trf
