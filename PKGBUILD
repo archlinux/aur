@@ -1,8 +1,3 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: KosmX <kosmx dot mc at gmail dot com>
 _canonical_name=lxd-ui
 
@@ -20,7 +15,7 @@ changelog=
 source=("git+https://github.com/zabbly/incus.git"
         "https://github.com/canonical/lxd-ui/archive/refs/tags/${pkgver}.tar.gz"
         "incus.service"
-        )
+)
 sha256sums=(
     'SKIP'
     'b9e2f8a486d5b8b1155895f7339319b907540bc6c50c76e86bde7f8a00f669ee'
