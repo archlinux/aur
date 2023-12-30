@@ -1,0 +1,13 @@
+[Unit]
+Description=OnePage service
+Documentation=https://github.com/maveonair/onepage
+
+[Service]
+Restart=on-failure
+User=onepage
+WorkingDirectory=/var/lib/onepage
+ExecStart=/usr/bin/onepage
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
