@@ -1,7 +1,8 @@
 # Contributor: charlesneimog <charlesneimog@outlook.com>
 # Contributor: Asuka Minato
 # Contributor: elementh <hello@lucasmarino.me>
-#                                            
+# Contributor: Ash Price <eisleggje@gmail.com>
+#
 # WARNING WARNING WARNING WARNING WARNING    
 # IMPORTANT: MIGRATION
 #                                            
@@ -15,7 +16,7 @@
 # Thanks.
 #                                            
 pkgname=anytype-electron-bin
-pkgver=0.36.0
+pkgver=0.37.3
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
@@ -29,7 +30,7 @@ conflicts=('anytype'
 source=(
 	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}/anytype_${pkgver}_amd64.deb"
     )
-sha256sums=('238a0eacea55f471b39ae1dff9beb895fc2656bf9ff371d056b2da3307279a9d')
+sha256sums=('0877d61d598f2917ef5a8a30974e63f1bb3dbefd0d67065b8ace07617523fba4')
 
 package() {
   	tar -xvf data.tar.* -C $pkgdir
@@ -37,6 +38,5 @@ package() {
   	printf '#!/bin/sh
 	exec env ELECTRON_IS_DEV=0 electron /opt/Anytype/resources/app.asar "$@"
 	' | install -Dm755 /dev/stdin $pkgdir/opt/Anytype/anytype
-	install -Dm644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/anytype.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/anytype.png"
 
 }
