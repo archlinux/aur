@@ -1,9 +1,9 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-brotli
 _pkgname=brotli
-_gitcommit=e61745a6b7add50d380cfd7d3883dd6c62fc2c71
-pkgver=1.0.9
-pkgrel=3
+_gitcommit=ed738e842d2fbdf2d6459e39267a633c4a9b2f5d
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Brotli compression library (mingw-w64)'
 arch=('any')
 license=('MIT')
