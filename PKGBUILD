@@ -1,4 +1,4 @@
-# Maintainer: Alfredo Ramos <alfredo dot ramos at protonmail dot com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@skiff.com>
 
 _binname=asdf
 _pkgname=${_binname}-vm

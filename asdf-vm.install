@@ -1,5 +1,5 @@
 post_install() {
-    cat <<-'EOF'
+	cat <<-'EOF'
 :: Shell configuration
 
 You will need to add some lines in your shell configuration file to make asdf-vm to work.
@@ -12,7 +12,7 @@ EOF
 }
 
 post_remove() {
-    cat <<-'EOF'
+	cat <<-'EOF'
 :: Revert the configuration from your shell.
 
 For more information refer to the official instructions.
