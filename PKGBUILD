@@ -3,31 +3,32 @@
 _pkgname=tweedie
 _pkgver=2.3.5
 pkgname=r-${_pkgname,,}
-pkgver=2.3.5
-pkgrel=1
-pkgdesc='Evaluation of Tweedie Exponential Family Models'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Evaluation of Tweedie Exponential Family Models"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
+)
+makedepends=(
+  gcc-fortran
 )
 optdepends=(
   r-stabledist
   r-statmod
 )
-makedepends=(
-  gcc-fortran
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('983c745fee5a780d46e8dd04c2eb1c10cb2e222d3679654f0d6934d3db7b1c3e')
+md5sums=('b4048e492744c22b39c9ca631e1c1b81')
+b2sums=('c82354103d5ed4940bf382731e7a9c27a7070c0ce6ea50eabbf8887daf477cdcc8e3e5e9bcf92b5cf3415221abe51a14d591796d270801eea6c4fa6aee7e3c45')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
