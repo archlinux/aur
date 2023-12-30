@@ -1,0 +1,13 @@
+pkgbase = python-spacy-ko_core_news_lg
+	pkgdesc = Korean pretrained model for spaCy (large)
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://spacy.io/models/da#section-ko_core_news_lg
+	arch = any
+	license = CCPL
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/ko_core_news_lg-3.7.0/ko_core_news_lg-3.7.0.tar.gz
+	b2sums = ffbf8bbb8a4ed5188f47e66cb0d4bdc002715aeab70a6fb4930229212e4eaa874ae87427d3ed78235139d6da700471b6d01f8a426c3607d9ef5fe82e5264e105
+
+pkgname = python-spacy-ko_core_news_lg
