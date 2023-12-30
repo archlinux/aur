@@ -1,4 +1,4 @@
-# Maintainer: Alfredo Ramos <alfredo.ramos@tutanota.com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@skiff.com>
 # Contributor: Alison Watson <marrub@greyserv.net>
 # Contributor: Antonio Rojas <arojas@archlinux,org>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
