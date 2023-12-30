@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=alfae
-pkgver=1.4.1
-pkgrel=3
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="An Itch.io/Epic Games/GOG launcher that works through plugins"
 arch=('x86_64')
 url="https://github.com/suchmememanyskill/Alfae"
@@ -24,7 +24,7 @@ prepare() {
   sed -i '1 i\Exec=/opt/Alfae/Alfae %U' desktop
   sed -i '1 i\Name=Alfae' desktop
   sed -i '1 i\[Desktop Entry]' desktop
-  mv desktop $pkgname.desktop
+  mv desktop alfae.desktop
 }
 
 build() {
@@ -70,9 +70,7 @@ package() {
   mkdir -p "$pkgdir/opt/Alfae" "$pkgdir/usr/bin"
   # Install
   mv Alfae/Release/* "$pkgdir/opt/Alfae"
-  ln -s /opt/Alfae/Alfae "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 Alfae/Launcher/Assets/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-  install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm644 Alfae/README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 Alfae/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s /opt/Alfae/Alfae "$pkgdir/usr/bin/alfae"
+  install -Dm644 Alfae/Launcher/Assets/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/alfae.png"
+  install -Dm644 alfae.desktop -t "$pkgdir/usr/share/applications"
 }
