@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-ffmpeg-minimal
-pkgver=6.0
-pkgrel=2
+pkgver=6.1
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -16,9 +16,10 @@ options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
 provides=('mingw-w64-ffmpeg')
 conflicts=('mingw-w64-ffmpeg')
-_tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
-source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}")
+_tag=3cdfac27d3ea06f8719faed48b4ae2e75e94a463
+source=("git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}")
 sha256sums=('SKIP')
+validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _builds="static shared"
 
