@@ -1,6 +1,6 @@
 pkgbase = ov-git
 	pkgdesc = Feature-rich terminal-based text pager (built from latest git commit)
-	pkgver = 0.31.0.r10.g06c7f69
+	pkgver = 0.33.0.r0.ge415836
 	pkgrel = 1
 	url = https://github.com/noborus/ov
 	arch = x86_64

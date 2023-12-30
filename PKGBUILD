@@ -1,8 +1,9 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+# -*- sh -*-
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.31.0.r10.g06c7f69
+pkgver=0.33.0.r0.ge415836
 pkgrel=1
 pkgdesc='Feature-rich terminal-based text pager (built from latest git commit)'
 arch=('x86_64' 'aarch64')
@@ -57,9 +58,9 @@ check() {
 package() {
   cd "$_pkgname"
 
-  install -Dm0755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dt "$pkgdir/usr/share/doc/$pkgname" -m0644 *.yaml
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -vDt "$pkgdir/usr/share/doc/$pkgname" -m0644 *.yaml README.md
+  install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # eof
