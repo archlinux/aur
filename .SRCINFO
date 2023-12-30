@@ -1,6 +1,6 @@
 pkgbase = freeciv21
 	pkgdesc = Freeciv for the 21st Century
-	pkgver = 3.0_patch.1
+	pkgver = 3.0_patch.2
 	pkgrel = 1
 	url = https://github.com/longturn/freeciv21
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = freeciv21
 	depends = sdl2_mixer
 	depends = karchive5
 	depends = libertinus-font
-	source = freeciv21-3.0_patch.1.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.0-patch.1/Freeciv21-v3.0-patch.1.tar.gz
-	sha256sums = ff3ab4a79ada46b3431c2853dc20b0c115c2cc2332032ab590a18c1f54090059
+	source = freeciv21-3.0_patch.2.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.0-patch.2/Freeciv21-v3.0-patch.2.tar.gz
+	sha256sums = 741cc30f69b551fec6ac0146eef1a4606220d3e28ba5521b64a2e434e6a9f85f
 
 pkgname = freeciv21
