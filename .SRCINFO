@@ -1,0 +1,11 @@
+pkgbase = rcli
+	pkgdesc = rcli is a powerful C++ library that simplifies the creation of CLI applications
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/RickaPrincy/rcli
+	arch = any
+	license = MIT
+	source = https://github.com/RickaPrincy/rcli/releases/download/v1.4.2/rcli-v1.4.2.tar.gz
+	sha256sums = e37a7cdd33cd54d83ce00cc0c85744c28f4b06e71318e57418b157e950f3d935
+
+pkgname = rcli
