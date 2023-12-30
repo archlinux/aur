@@ -1,41 +1,39 @@
 # Maintainer: Robert Hamblin <hamblingreen@hotmail.com>
-pkgname=pinedio-lora-driver-git
-_pkgname=pinedio-lora-driver
-pkgver=r6.3312f08
+pkgname=libnsfb-git
+_pkgname=libnsfb
+pkgver=r150.d5b4c96
 pkgrel=1
-pkgdesc="Driver and demo applications for the PineDio LoRa backplate for the Pinephone and USB adapter"
-arch=('i686' 'x86_64' 'arm' 'aarch64')
-url="https://codeberg.org/JF002/pinedio-lora-driver.git"
-license=('LGPL3')
-depends=('spi-ch341-usb-dkms-git')
-makedepends=('git')
-conflicts=('pinedio-lora-driver')
-provides=('pinedio-lora-driver')
-source=("$_pkgname"::"git+$url")
+pkgdesc="Framebuffer abstraction library (git version)"
+arch=('any')
+url="https://www.netsurf-browser.org/projects/$_pkgname/"
+license=('MIT')
+depends=('glibc')
+makedepends=('git' 'netsurf-buildsystem')
+conflicts=('libnsfb')
+provides=('libnsfb')
+source=("git://git.netsurf-browser.org/$_pkgname.git")
 sha512sums=(SKIP)
+_makeopts="-C $_pkgname PREFIX=/usr COMPONENT_TYPE=lib-shared"
 
 pkgver() {
 	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-        cd "$_pkgname"
-	git submodule update --init
+build() {
+	make $_makeopts
 }
 
-build() {
-        cd "$_pkgname"
-	mkdir build
-	cd build
-
-	cmake -DBUILD_FOR_PINEPHONE=1 -DBUILD_FOR_USB=1 ..
-	make -j
+check() {
+	make $_makeopts test
 }
 
 package() {
-        cd "$_pkgname/build"
-        mkdir -p "$pkgdir/usr/bin"
-        install apps/pinephone-communicator/pinephone-communicator "$pkgdir/usr/bin/pinedio-pinephone-communicator"
-        install apps/usb-communicator/usb-communicator "$pkgdir/usr/bin/pinedio-usb-communicator"
+	local installopts='--mode 0644 -D --target-directory'
+	local shrdir="$pkgdir/usr/share"
+	local licdir="$shrdir/licenses/$pkgname"
+	local docdir="$shrdir/doc/$pkgname"
+	install $installopts "$licdir" $_pkgname/COPYING
+	install $installopts "$docdir" $_pkgname/{README,usage}
+	make $_makeopts DESTDIR="$pkgdir" install
 }
