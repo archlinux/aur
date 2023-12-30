@@ -3,24 +3,25 @@
 _pkgname=ADGofTest
 _pkgver=0.3
 pkgname=r-${_pkgname,,}
-pkgver=0.3
-pkgrel=4
-pkgdesc='Anderson-Darling GoF test'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Anderson-Darling GoF test"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9cd9313954f6ecd82480d373f6c5371ca84ab33e3f5c39d972d35cfcf1096846')
+md5sums=('a601ed539181dce143fcbc738f75fa7b')
+b2sums=('bbc5d3963aa2bb06bbdeb25f4273a7de5d9a0569e1638c5abb8246395a3a9d180de4a4351527a64b641ccc59fbdaac16c65ea6cb5980b609238cee1e58212d07')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
