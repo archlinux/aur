@@ -26,15 +26,6 @@ check_postgres() {
     fi
 }
 
-check_mugen() {
-    if [ -f "/usr/lib/karaokemugen/app.asar" ]; then
-        echo -e "${_COL_GREEN_}Karaoke Mugen is installed in /usr/lib/karaokemugen."
-    else
-        echo -e "${_COL_BRED_}Karaoke Mugen is not installed in /usr/lib/karaokemugen. Exiting."
-        exit 1
-    fi
-}
-
 setup_postgres() {
     echo -e "${_BEGIN_}Creating the karaokemugen_app database..."
     # Create the DB for Mugen
@@ -53,7 +44,6 @@ setup_postgres() {
     sudo -u postgres -g postgres -H -- psql -c "CREATE DATABASE karaokemugen_app ENCODING 'UTF8';"
     sudo -u postgres -g postgres -H -- psql -c "CREATE USER karaokemugen_app WITH ENCRYPTED PASSWORD 'musubi'; GRANT ALL PRIVILEGES ON DATABASE karaokemugen_app TO karaokemugen_app;"
     sudo -u postgres -g postgres -H -- psql -d karaokemugen_app -c "CREATE EXTENSION unaccent;"
-    sudo -u postgres -g postgres -H -- psql -d karaokemugen_app -c "CREATE EXTENSION pgcrypto;"
     echo -e "${_COL_GREEN_}karaokemugen_app database created!"
 }
 
@@ -69,6 +59,23 @@ if [[ $(which tput > /dev/null 2>&1 && tput -T "${TERM}" colors || echo -n '0') 
     _BEGIN_="${_COL_BRED_}-> ${_COL_BBLUE_}"
 fi
 
+while getopts ":g" opt; do
+  case ${opt} in
+    g )
+      #target=$OPTARG
+      echo -e "${_COL_YELLOW_}You may have to enter your sudo password"
+      add_user_to_group
+      echo -e "${_BEGIN_}Done! You need to restart your session to apply these changes."
+      exit 0
+      ;;
+    \? )
+      echo "Invalid option: $OPTARG" 1>&2
+      exit 1
+      ;;
+  esac
+done
+shift $((OPTIND -1))
+
 echo -e "${_BEGIN_}Welcome to the Karaoke Mugen installer!"
 echo -e "${_COL_YELLOW_}⚠️ You may have to enter your sudo password a couple times during this installation."
 echo -e "${_COL_YELLOW_}This script may not work if you tweaked your PostgreSQL configuration."
@@ -78,7 +85,6 @@ sleep 5
 
 echo -e "${_BEGIN_}Doing some initial checks..."
 check_postgres
-check_mugen
 
 setup_postgres
 
