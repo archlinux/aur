@@ -1,12 +1,13 @@
 pkgbase = r-wavethresh
 	pkgdesc = Wavelets Statistics and Transforms
 	pkgver = 4.7.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=wavethresh
 	arch = x86_64
 	license = GPL
 	depends = r
 	source = https://cran.r-project.org/src/contrib/wavethresh_4.7.2.tar.gz
-	sha256sums = 9a9774ca23496df4ecaa2bf9bff345a2ae40ded07f6afd81dd8847d48b43b656
+	md5sums = 1e88d73de0dfee4283b44f474c50b427
+	b2sums = 3335d9e8834165fe69f5f97694fc04d5011a1d3025476c15f920714e1c121a515317287bcdd250fec9b9fdcb0b0f522f1ed5e4547af2d234ade2f68c9268a3f1
 
 pkgname = r-wavethresh

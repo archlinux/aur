@@ -3,24 +3,25 @@
 _pkgname=wavethresh
 _pkgver=4.7.2
 pkgname=r-${_pkgname,,}
-pkgver=4.7.2
-pkgrel=1
-pkgdesc='Wavelets Statistics and Transforms'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Wavelets Statistics and Transforms"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9a9774ca23496df4ecaa2bf9bff345a2ae40ded07f6afd81dd8847d48b43b656')
+md5sums=('1e88d73de0dfee4283b44f474c50b427')
+b2sums=('3335d9e8834165fe69f5f97694fc04d5011a1d3025476c15f920714e1c121a515317287bcdd250fec9b9fdcb0b0f522f1ed5e4547af2d234ade2f68c9268a3f1')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
