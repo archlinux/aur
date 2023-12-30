@@ -2,8 +2,8 @@
 
 pkgname=teleprompter
 pkgdesc='A simple Gtk4 application to read scrolling text from your screen'
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/Nokse22/teleprompter"
 license=('GPL3')
