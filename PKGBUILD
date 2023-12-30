@@ -4,22 +4,22 @@
 # Contributor: Alec Ari <neotheuser@ymail.com>
 
 pkgname=linuxcnc
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=(x86_64)
 license=(GPL2 'custom: unredestributable')
-url="http://linuxcnc.org"
+url="https://linuxcnc.org/"
 depends=(glibc python gtk3 libusb libxss python-cairo gobject-introspection-runtime dbus-python python-pillow libxmu
          python-gobject tk python-matplotlib boost-libs python-numpy gstreamer at-spi2-core libepoxy libtirpc libxft
          harfbuzz gcc-libs fontconfig gdk-pixbuf2 libxext librsvg glib2 zlib cairo readline systemd-libs freetype2
-         libx11 libxinerama python-configobj libgpiod  python-yapps2 tcl pango)
-makedepends=(intltool boost asciidoc glu procps-ng psmisc bwidget tclx)
+         libx11 libxinerama python-configobj libgpiod  python-yapps2 tcl pango bwidget)
+makedepends=(intltool boost asciidoc glu procps-ng psmisc tclx)
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LinuxCNC/linuxcnc/archive/refs/tags/v${pkgver}.tar.gz"
         'unredestributable.txt'
         'libtirpc.patch')
-sha256sums=('e9cf46c9a29bd1f93628bae5d554dbb19be84a4e0752e205fd259cb0de3453a3'
+sha256sums=('56648e0a9a6fcd4ea7d5c00174a90177f8e39c2f10b130ceff8f0481f26bfaf7'
             '228a035c143ccbdd6056e1189267b034f046742cae034bff821eccc8dbc68ee3'
             'bc95bafd67fad1c1d3722261bc586cdc612ec9e1597fadb95fa825c10550ac2c')
 
