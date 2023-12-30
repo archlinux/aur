@@ -2,14 +2,14 @@
 
 _pkgname=thunar
 pkgname=${_pkgname}-devel
-pkgver=4.19.0
+pkgver=4.19.1
 pkgrel=1
 pkgdesc='File manager for Xfce (development version)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL')
 groups=('xfce4-devel')
 url='https://thunar.xfce.org'
-depends=('desktop-file-utils' 'exo' 'gtk3' 'hicolor-icon-theme' 'libgudev'
+depends=('desktop-file-utils' 'exo>=4.19.0' 'gtk3' 'hicolor-icon-theme' 'libgudev'
          'libexif' 'libnotify' 'libpng' 'libxfce4ui' 'libxfce4util')
 makedepends=('xfce4-panel' 'gtk-doc' 'gobject-introspection')
 optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
@@ -22,7 +22,7 @@ optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('684f1422c4d92b00db477ecaa2a0ed38ce688e2a567e5d70b7cf66fc6dd6fd18')
+sha256sums=('2a5705d91d00a40fced036e185fcc40cae93c4e64ad2507047a6d36c93ad6df2')
 
 build() {
     cd "${_pkgname}-${pkgver}"
