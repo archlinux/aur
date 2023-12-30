@@ -10,6 +10,11 @@ setVar() {
 # Get package info
 source $PKGBUILD;
 
+# Set pkgrel
+if [[ "$REL" != "" ]]; then
+  setVar pkgrel $REL
+fi;
+
 # Update the PKGBUILD version
 setVar _pkgdate $(date +'%Y%M%d_%H%M_%S');
 
@@ -21,6 +26,7 @@ cd $tmpdir/$_pkgsubdir;
 
 # Update the PKGBUILD commit
 setVar _pkgcommit $(git rev-parse --short HEAD);
+setVar _commitcount $(git rev-list --all | wc -l);
 
 # Cleanup
 rm -rf $tmpdir;

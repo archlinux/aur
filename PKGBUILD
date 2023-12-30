@@ -7,16 +7,18 @@ _repoauthor=defnull
 _repo=https://$_reposerver/$_repoauthor/$_reponame
 _pkgname=pixelnuke
 _pkgsubdir=$_pkgname
+_setprovides=true # if we should set the provides variable to the pkgname; for -git variants
 
 # Generated Config
-_pkgdate="20233230_0132_41"
+_pkgdate="20234330_0143_03"
 _pkgcommit="bf5217b"
+_commitcount="55";
 
 # The directory the source outputs to
 _builddir="$_reponame-$_pkgcommit/$_pkgsubdir"
 
-pkgname="$_pkgname"
-pkgver="${_pkgdate}_${_pkgcommit}"
+pkgname="$_pkgname-git"
+pkgver="r${_commitcount}.${_pkgcommit}"
 pkgrel="1"
 epoch=
 pkgdesc="The C implementation of Pixelflut"
@@ -40,6 +42,10 @@ checkdepends=()
 optdepends=()
 provides=()
 conflicts=()
+if $_setprovides; then
+  provides+=($pkgname)
+  conflicts+=($pkgname)
+fi
 replaces=()
 backup=()
 options=()
