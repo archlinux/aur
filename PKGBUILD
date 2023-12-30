@@ -5,14 +5,14 @@ url="https://github.com/superg/redumper"
 arch=('x86_64')
 pkgdesc="Low level CD dumper utility"
 provides=('redumper')
-pkgver=build_299
+pkgver=build_306
 pkgrel=1
-_pkgfilename="redumper-2023.12.17_build299-Linux" # deviation from release tag, inclusion of date makes archive name nondeterministic :(
+_pkgfilename="redumper-2023.12.29_build306-Linux" # deviation from release tag, inclusion of date makes archive name nondeterministic :(
 license=('GPL3')
-source=('https://github.com/superg/redumper/releases/download/build_299/redumper-2023.12.17_build299-Linux.zip'
+source=('https://github.com/superg/redumper/releases/download/build_306/redumper-2023.12.29_build306-Linux.zip'
 'https://raw.githubusercontent.com/superg/redumper/main/README.md'
 'https://raw.githubusercontent.com/superg/redumper/main/LICENSE')
-sha256sums=('652fa7b7d78aa1bf5033244091a91d77b8e94bc614f3aae7867543fdf73bd05f'
+sha256sums=('61e7bf2936db4e4fa98b7079cabf45b844f7073efa6eb041d24eb76059e4e612'
 'SKIP'
 'SKIP')
 
