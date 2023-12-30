@@ -5,19 +5,24 @@
 # Contributor: Whovian9369 <Whovian9369@gmail.com>
 
 pkgname=gittyup-git
-pkgver=1.3.0.r26.g34625fb
-pkgrel=3
+pkgver=1.3.0.r129.g66bc256e
+pkgrel=2
 pkgdesc="Graphical Git client (GitAhead fork)"
 url="https://github.com/Murmele/Gittyup"
 arch=(x86_64)
 license=(MIT)
-depends=(qt5-base hunspell lua cmark pcre libssh2)
+depends=(qt5-base hunspell lua cmark pcre libssh2
+
+         # namcap implict depends
+         hicolor-icon-theme glibc gcc-libs zlib openssl
+)
 makedepends=(git cmake ninja qt5-tools qt5-translations ) #libgit2 libgnome-keyring
 optdepends=('git-lfs: git-lfs support'
             'libgnome-keyring: for GNOME Keyring for auth credentials'
             'qt5-translations: translations')
 provides=(gittyup)
 conflicts=(gittyup)
+options=(!lto)
 source=("git+https://github.com/Murmele/Gittyup.git"
         "stinb-libgit2::git+https://github.com/stinb/libgit2.git"
         "git+https://github.com/kuba--/zip.git"
@@ -69,6 +74,7 @@ build() {
     -DUSE_SYSTEM_LIBSSH2=ON \
     -DUSE_SYSTEM_LUA=ON \
     -DUSE_SYSTEM_OPENSSL=ON \
+    -DLUA_MODULES_PATH=/usr/lib/ \
     -DUSE_SYSTEM_QT=ON
 
   ninja
