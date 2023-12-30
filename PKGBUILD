@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=guiscrcpy-git
-pkgver=2023.1.1.r5.g077adac
-pkgrel=2
+pkgver=2023.1.1.r6.g9a912f9
+pkgrel=1
 epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
@@ -38,6 +38,10 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+
+  # Add non-localized key "Comment"
+  desktop-file-edit --set-key=Comment --set-value="Comment=Screen mirroring application for Android" \
+    "appimage/${pkgname%-git}.desktop"
 
   # Force launching with PySide2
   desktop-file-edit --set-key=Exec --set-value="env QT_API=pyside2 ${pkgname%-git}" \
