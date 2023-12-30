@@ -1,7 +1,7 @@
 # Maintainer: IroAlexis <iroalexis@outlook.com>
 
 pkgname=lunion-git
-pkgver=0.5.beta
+pkgver=0.5
 pkgrel=1
 epoch=0
 pkgdesc="Wine wrapper for running Windows games on Linux"
