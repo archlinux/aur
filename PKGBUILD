@@ -4,6 +4,7 @@ _pkgname='libretro-swanstation'
 pkgname=${_pkgname}-git
 provides=(${_pkgname})
 conflicts=(${_pkgname})
+groups=('libretro')
 pkgver=r5793.6a8c32b
 pkgrel=1
 pkgdesc='SwanStation is an open-source Libretro core implementation of DuckStation, a PSX emulator.'
