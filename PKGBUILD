@@ -1,4 +1,4 @@
-# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@skiff.com>
 
 pkgname=hexeditor
 pkgver=1.17.0
