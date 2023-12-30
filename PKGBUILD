@@ -1,7 +1,7 @@
 # Maintainer: balaraz <balaraz@tuta.io>
 
 pkgname=sof
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
@@ -12,7 +12,7 @@ makedepends=(cmake argumentum)
 provides=(sof sof.1.gz)
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=("a7bc10da2ef01eba47eafc1743e1f39ebd3342c40ee8650bde11a16ac92445fb")
+sha256sums=("6b9b2d84161226dcf2f66f3a3e054e8a5c5d092bd65e00a440629446465cf273")
 
 package() {
 		cd ./sof
