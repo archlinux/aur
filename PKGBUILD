@@ -17,6 +17,7 @@ _commitcount="55";
 # The directory the source outputs to
 _builddir="$_reponame-$_pkgcommit/$_pkgsubdir"
 
+# Package Build Info
 pkgname="$_pkgname-git"
 pkgver="r${_commitcount}.${_pkgcommit}"
 pkgrel="1"
@@ -56,11 +57,7 @@ noextract=()
 sha512sums=('00b21531791f772b121ab3d803ea5402b2f735fb996348753ad340085ef0a60435e2227ea9c6972c6e5bfb877d626d54690efd4340363d4d59daa7f8a8c2224a')
 validpgpkeys=()
 
-# prepare() {
-# 	cd "$_builddir"
-#   # apply any necessary patches here
-# }
-
+# Package Build Functions
 build() {
 	cd "$_builddir"
 	make
