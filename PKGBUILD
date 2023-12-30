@@ -14,8 +14,8 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 package() {
-	install -d ${pkgdir}/usr/share/icons/BeautyLine
-    cp -r ${pkgname}/. ${pkgdir}/usr/share/icons/BeautyLine
-    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
-    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+    install -d "${pkgdir}/usr/share/icons/BeautyLine"
+    cp -r "${pkgname}/." "${pkgdir}/usr/share/icons/BeautyLine"
+    find "${pkgdir}/usr" -type f -exec chmod 644 {} \;
+    find "${pkgdir}/usr" -type d -exec chmod 755 {} \;
 }
