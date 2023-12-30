@@ -31,9 +31,9 @@ cksums=('SKIP')
 noextract=()
 
 
-#pkgver() {
-#	git -C "${pkgname%-git}" describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
-#}
+pkgver() {
+	git -C "${pkgname%-git}" describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+}
 
 build() {
 	meson setup --prefix "/usr" "${pkgname%-git}" ./build
