@@ -1,19 +1,17 @@
-# Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Contributor: Justin Dray <justin@dray.be>
+# Contributor: Daniel Egeberg <daniel.egeberg@gmail.com>
 # Helpful URL: http://services.sonarr.tv/v1/releases
 
 pkgname='sonarr'
-pkgver=3.0.10.1567
+pkgver=4.0.0.741
 pkgrel=1
 pkgdesc='TV download automation for usenet and torrents.'
-arch=(any)
+arch=('x86_64' 'aarch64' 'armv7h')
 url='https://sonarr.tv/'
 license=('GPL3')
 
 depends=(
-  'mono'
-  'libmediainfo'
   'sqlite'
 )
 
@@ -31,8 +29,11 @@ optdepends=(
   'prowlarr: torrent and usenet indexer proxy'
 )
 
+source_x86_64=("https://download.sonarr.tv/v4/main/${pkgver}/Sonarr.main.${pkgver}.linux-x64.tar.gz")
+source_aarch64=("https://download.sonarr.tv/v4/main/${pkgver}/Sonarr.main.${pkgver}.linux-arm64.tar.gz")
+source_armv7h=("https://download.sonarr.tv/v4/main/${pkgver}/Sonarr.main.${pkgver}.linux-arm.tar.gz")
+
 source=(
-  "https://download.sonarr.tv/v3/main/${pkgver}/Sonarr.main.${pkgver}.linux.tar.gz"
   'sonarr.service'
   'sonarr.sysusers'
   'sonarr.tmpfiles'
@@ -40,11 +41,13 @@ source=(
 )
 
 noextract=()
-sha256sums=('eb3769fc183ef6972b1255b99de07e042d7a567d558538e1311448c46aca8717'
-            '52e72fde34bc8d123cd2ea0dd10c35685de9873d866935fc15bb6bf1a0ebb686'
+sha256sums=('2373381d508403469cf58396b1f8f7cc7778ba619604469006bdfdc3f2f25960'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             '7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411'
             '19112dc0051224b4de66f28077c93b6ee06e163b5194e6aecf62dedf66ff45a9')
+sha256sums_x86_64=('62c158518e37778a82b2873e3f2009f728c7179f7f3399fceda6dda3bbcdb949')
+sha256sums_aarch64=('ab28f3a555913a7585bfa880dbd5754b96e96b6ab00a5e4473b2dd11168117b9')
+sha256sums_armv7h=('12dcfc3cbbc7ab7340a2198685ff5f3158c2a5225fb93f542ffaa36c44b97259')
 
 package() {
   rm -rf "${srcdir}/Sonarr/Sonarr.Update"
