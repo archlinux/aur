@@ -1,18 +1,18 @@
 pkgbase = r-stabledist
 	pkgdesc = Stable Distribution Functions
 	pkgver = 0.7.1
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=stabledist
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-fbasics
 	optdepends = r-fmstable
-	optdepends = r-matrix
 	optdepends = r-rmpfr
 	optdepends = r-runit
 	optdepends = r-sfsmisc
 	source = https://cran.r-project.org/src/contrib/stabledist_0.7-1.tar.gz
-	sha256sums = 06c5704d3a3c179fa389675c537c39a006867bc6e4f23dd7e406476ed2c88a69
+	md5sums = 0f6159d8f129e4c367a1adc5860079b0
+	b2sums = 90166fde731946283e688c632cc013e288bb2a0ab9b58e86cbf0445a0e77a174411fb9683f1c546839cc87e965a16f6880b7ea8642f825d5da084ef475820c83
 
 pkgname = r-stabledist
