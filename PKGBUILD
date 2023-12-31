@@ -1,7 +1,7 @@
 # Contributor: james@stampatron.com
 
 pkgname=daggerfall-unity-aur-bin
-pkgver=0.16.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="The Elder Scrolls: Daggerfall rebuilt using the unity engine"
 arch=('x86_64')
@@ -12,12 +12,12 @@ source=(daggerfall-unity
   daggerfall.desktop
   settings-template.ini
   data-files.txt
-  https://github.com/Interkarma/daggerfall-unity/releases/download/v${pkgver}-rc/dfu_linux_64bit-v${pkgver}-rc.zip)
+  https://github.com/Interkarma/daggerfall-unity/releases/download/v${pkgver}/dfu_linux_64bit-v${pkgver}.zip)
 sha256sums=('0b312ea87a391da827da5296a59f6c19412a408d497ce06bbe68b45be98c3bcb'
             '1015b75af1876313bf8727cc57dc3c033e82b0904ee623a6944c333d6e4de1ae'
             'f8c7e4de325a5a25add4b2404cfdaa59f490a7cc43c89f4b72ed12db66e52ff5'
             'a6a45d321dda7b98484dbe38099d8f697c3d25e570a7bfbcdd975c206cadef2f'
-            'c063bf5469a0f7eb69d1e3d6772c50beab2c901c99475fc2a6cf54a79aa7fb0b')
+            'ffba580fcf5e15edc97826ee3679048d098f016c79e057b9273876ce089e4761')
 
 ###Package Variables###
 
@@ -25,7 +25,7 @@ sha256sums=('0b312ea87a391da827da5296a59f6c19412a408d497ce06bbe68b45be98c3bcb'
 REMOTE_DATA_FILES=FALSE
 
 #Engine zip file name
-ENGINE_NAME=dfu_linux_64bit-v$pkgver-rc.zip
+ENGINE_NAME=dfu_linux_64bit-v$pkgver.zip
 
 #Directory Names
 DEST_DIR="opt/daggerfall-unity"
