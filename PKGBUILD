@@ -2,7 +2,7 @@
 
 _pkgname=gnome-text-editor
 pkgname=${_pkgname}-without-save-dialog
-pkgver=44.0
+pkgver=45.1
 pkgrel=1
 pkgdesc='Simple text editor that focuses on session management but without the save dialog on close'
 arch=(x86_64 aarch64)
@@ -22,7 +22,7 @@ makedepends=(
 options=(debug)
 _commit=${pkgver}
 source=("${url}/-/archive/${_commit}/${_pkgname}-${_commit}.tar.gz" "avoid_save_dialog_on_close.patch")
-b2sums=('0c844163e3754d87aae78c90f78f16ef662597f8a8b8394fdd88f70bbeca06c98ca79d78212f6e3b80d7b366afd21d8edc8019a3f88bca9127040bac49c0c6ed'
+b2sums=('96ea8b0302e740c2a9d642bea4e4ca066f73c6408e6f55c9c102ab60c572cca214b2d0297409ad5f08cca30f3504ee87e8e90e8b1436110273b53320aa2e5837'
         '722af314f923453f61542f9b1bb564d0242fbd0049dc9bc0091c46b78167163a166899ca0657e221a9dcac29a7705d73a8c22309cfade99a09140783a8908089')
 
 prepare() {
