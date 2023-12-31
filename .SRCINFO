@@ -1,0 +1,27 @@
+pkgbase = python-picologging
+	pkgdesc = An optimized logging library for Python
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/microsoft/picologging
+	arch = x86_64
+	license = MIT
+	checkdepends = python-flaky
+	checkdepends = python-hypothesis
+	checkdepends = python-pytest
+	checkdepends = python-pytest-memray
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-scikit-build
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	source = python-picologging-0.9.3.tar.gz::https://github.com/microsoft/picologging/archive/refs/tags/0.9.3.tar.gz
+	source = remove-build-dependencies-cmake-ninja.patch
+	sha256sums = ed5e9d31c2d06fd02d4304bfb98cb200acbf11e1f03d6a5b341263cf312a18b2
+	sha256sums = 7a74c72ad8fafa38116b5c717092024d607a426b2040b625267dadc190e90c4b
+
+pkgname = python-picologging

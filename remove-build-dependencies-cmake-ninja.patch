@@ -1,0 +1,12 @@
+diff --unified --recursive --text picologging-0.9.3.orig/pyproject.toml picologging-0.9.3/pyproject.toml
+--- picologging-0.9.3.orig/pyproject.toml	2023-12-31 14:08:25.680232814 +0100
++++ picologging-0.9.3/pyproject.toml	2023-12-31 14:08:34.000266413 +0100
+@@ -2,8 +2,6 @@
+ requires = [
+     "setuptools>=65.4.1",
+     "scikit-build>=0.17.0",
+-    "cmake>=3.18",
+-    "ninja",
+ ]
+ build-backend = "setuptools.build_meta"
+ 
