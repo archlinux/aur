@@ -8,7 +8,7 @@
 pkgname='flightgear'
 pkgver=2020.3.19
 _pkgver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
 depends=('libxmu' 'libxi' 'zlib' 'openscenegraph' 'libxrandr' 'glu' 'openal')
@@ -18,7 +18,6 @@ optdepends=('qt5-base: fgfs --launcher'
             'flightgear-data')
 license=("GPL")
 url="http://www.flightgear.org/"
-options=('makeflags')
 source=("http://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('167d08de9cc0f72218b379b23cd7e56c7f6ee18d7d559512da51a3bd67f38e6e')
 
@@ -28,22 +27,18 @@ prepare() {
 }
 
 build() {
-  rm -rf "$srcdir"/flightgear-build
-  mkdir "$srcdir"/flightgear-build
-  cd "$srcdir"/flightgear-build
+  mkdir -p "$srcdir"/fgbuild
+  cd "$srcdir"/fgbuild
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DFG_DATA_DIR:STRING="/usr/share/flightgear/data" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DFG_BUILD_TYPE=Release \
     ../flightgear-$pkgver
   make
 }
 
 package() {
-  cd "$srcdir"/flightgear-build
-  make DESTDIR="$pkgdir" install
+  cd "$srcdir"/fgbuild
+  make DESTDIR=${pkgdir} install
 
   cd "$srcdir"/flightgear-$pkgver
   install -Dm0644 package/flightgear.ico "$pkgdir"/usr/share/icons/flightgear.ico
