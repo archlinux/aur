@@ -1,12 +1,13 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Cullen Ross <cullenrss@gmail.com>
-pkgver=0.5.0.3
+
+pkgver=0.6.0.1
 pkgrel=1
-sha256sums=('dfb17dc0fdb437c7206a853e2f38e58edfc703e0b9234f194cb9f5d223bf1f2b')
+sha256sums=('23cddf37bd5872553506ec47e21053756f91459d756e9f5793ebd569d2b1b3fa')
 
 pkgname=hascard
 pkgdesc="A TUI for reviewing notes using 'flashcards' written with markdown-like syntax."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/Yvee1/hascard"
 license=('BSD-3')
 makedepends=('stack')
