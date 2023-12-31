@@ -104,15 +104,6 @@ _package() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/build
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # make room for external modules
-  #ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-
-  # add real version for building modules and running depmod from post_install/upgrade
-  #mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-  #echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
-
-  # Now we call depmod...
-  #depmod -b "${pkgdir}" -F System.map "${_kernver}"
 
   # move module tree /lib -> /usr/lib
   mkdir -p "${pkgdir}/usr"
