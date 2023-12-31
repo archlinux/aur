@@ -1,7 +1,7 @@
 /*
 !.gitignore
 !gdl.profile
-!gdl_pr_1337.patch
+!gdl-cmake.patch
 !PKGBUILD
 !.SRCINFO
 !.gitlab-ci.yml

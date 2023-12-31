@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f7b8801d..dc9bece9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -155,7 +155,7 @@ set(GDL_LIB_DIR "" CACHE PATH "GDL: library directory relative to CMAKE_INSTALL_
+ if ( GDL_LIB_DIR STREQUAL "" OR NOT GDL_LIB_DIR)
+  set (GDL_DRV_DIR "${CMAKE_INSTALL_PREFIX}/${GDL_DATA_DIR}/drivers") # CACHE PATH "GDL: where the drivers will be installed.")
+ else()
+- set (GDL_DRV_DIR "${GDL_LIB_DIR}" ) # CACHE PATH "GDL: where the drivers will be installed.")
++ set (GDL_DRV_DIR "${CMAKE_INSTALL_PREFIX}/${GDL_LIB_DIR}" ) # CACHE PATH "GDL: where the drivers will be installed.")
+ endif()
+ # check for 64-bit OS
+ if(${CMAKE_SIZEOF_VOID_P} EQUAL 8)
+diff --git a/config.h.cmake b/config.h.cmake
+index 7080df9a..327c01d8 100644
+--- a/config.h.cmake
++++ b/config.h.cmake
+@@ -3,7 +3,7 @@
+ 
+ #define EXEC_PREFIX "@CMAKE_INSTALL_PREFIX@"
+ #define GDLDATADIR "@CMAKE_INSTALL_PREFIX@@GDL_DATA_DIR@"
+-#define GDLLIBDIR "@GDL_LIB_DIR@"
++#define GDLLIBDIR "@CMAKE_INSTALL_PREFIX@@GDL_LIB_DIR@"
+ #define GDL_DRV_DIR "@GDL_DRV_DIR@"
+ #define VERSION "@VERSION@"
+ 
