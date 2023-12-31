@@ -21,5 +21,6 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 $pkgname-$pkgver/README.md "$pkgdir"/usr/share/docs/$pkgname/README.md
 	install -Dm644 $pkgname-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
