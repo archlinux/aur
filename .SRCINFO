@@ -11,7 +11,7 @@ pkgbase = rsgain
 	depends = taglib
 	depends = ffmpeg
 	depends = libinih
-	source = https://github.com/complexlogic/rsgain/archive/refs/tags/v3.4.tar.gz
-	sha256sums = 
+	source = rsgain-3.4.tar.gz::https://github.com/complexlogic/rsgain/archive/refs/tags/v3.4.tar.gz
+	sha512sums = 75df281d1ad2dc34adc84545eef18677ce026260f7da16e4741f4dcf4a53a77cb2b490a65f0cdbb75a4e08be5c36d6dd8c96154295f52b8779d54159798fdb3b
 
 pkgname = rsgain
