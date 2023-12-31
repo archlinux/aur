@@ -11,7 +11,7 @@ depends=(
 	# drop-down terminal
 	yakuake
 	# input method framework
-	fcitx5-im
+	fcitx5 fcitx5-configtool fcitx5-gtk fcitx5-qt
 	# preferred keychain
 	gnome-keyring
 	seahorse
