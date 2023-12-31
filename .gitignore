@@ -21,3 +21,6 @@
 
 # archlinux packages
 *.pkg.tar*
+
+# build logs (makechrootpkg)
+*.log
