@@ -6,7 +6,7 @@ pkgbase = zw3d-bin
 	arch = x86_64
 	license = custom
 	provides = zw3d
-	source = file:///home/lei/Downloads/zw3d_2024.0.3.0_chs_eng_amd64.deb
+	source = file:///home/$USER/Downloads/zw3d_2024.0.3.0_chs_eng_amd64.deb
 	sha256sums = cb65208e92250e325096a0900583cd02e801774df17f3500055963c3e58cf006
 
 pkgname = zw3d-bin
