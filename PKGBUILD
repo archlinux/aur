@@ -4,12 +4,12 @@ _pkgmajor=1
 _pkgminor=4
 _pkgpatch=0
 pkgver=${_pkgmajor}.${_pkgminor}.${_pkgpatch}
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom build of Iosevka with different style and metrics than the default."
 arch=('any')
 url="https://git.sr.ht/~protesilaos/iosevka-comfy"
 license=('OFL')
-source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~protesilaos/iosevka-comfy/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/protesilaos/iosevka-comfy/archive/refs/tags/${pkgver}.tar.gz")
 b2sums=('abf174a9fab83201088cd07aca7660685b37ce865fabb8a5929449dff7df423c86fe13e1d00ea074e9e9f8724e444221486bc01c2f3d2fa0a6d8488690e47540')
 
 package() {
