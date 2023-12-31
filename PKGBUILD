@@ -1,16 +1,28 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="1.7.13-2"
+_fullver="1.7.13-3"
 pkgname="xpipe-ptb"
 pkgver="1.7.13"
-pkgrel="2"
+pkgrel="3"
 epoch=1
 pkgdesc="XPipe (Public Test Build) releases"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xpipe-io/${pkgname}"
 license=('unknown')
 groups=()
-depends=()
+# From https://aur.archlinux.org/packages/java-openjfx
+depends=(
+  cairo
+  freetype2
+  gdk-pixbuf2
+  glib2
+  gperf
+  gtk3
+  libgl
+  libx11
+  libxtst
+  pango
+)
 makedepends=()
 checkdepends=()
 optdepends=()

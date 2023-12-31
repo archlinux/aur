@@ -8,11 +8,14 @@
 
 - You can now add SSH connections from arbitrary OpenSSH config files under `Add remote host` -> `SSH Config`
 - Add a self test functionality on startup to handle cases where the local shell could not be initialized correctly 
+- Add fallback to bundled fonts on Linux systems that do not have fontconfig
+- The Linux installers now correctly report their dependencies. This was not really a problem on any
+  normal desktop system, but should make it easier to run on embedded systems or in WSL2g 
 
 ## Changes
 
 - The SSH config importer now supports include statements. Included files are automatically resolved and joined
-- Improve performance mode appearance setting gains by removing more styling
+- Improve performance mode speedup by removing more styling. You can find the mode under Settings -> Appearance
 - Change layout of connection names and status to better handle very long
   connection names across all window sizes
 - Make any connection quickly renameable in the edit window without verifying whether we can actually connect
@@ -22,6 +25,7 @@
 
 - Fix some zsh shells not properly setting up the PATH
 - Fix git vault repository throwing initialization errors when shared with multiple Windows user permissions
+- Fix displayed connection summary not updating on edit
 - Fix copying and pasting a file into the same directory returning an error
 - Fix connections being accidentally listed under scripts category
   if they were added while scripts category was selected
