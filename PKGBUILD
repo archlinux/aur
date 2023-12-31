@@ -4,7 +4,7 @@ pkgname=python-minecraft-model-reader
 pkgdesc="Minecraft-Model-Reader for Amulet-Core"
 license=(custom)
 arch=(any)
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 url="https://github.com/gentlegiantJGC/Minecraft-Model-Reader"
 makedepends=(python-build python-installer python-wheel)
@@ -13,8 +13,12 @@ source=(
 	"model-reader-${pkgver}"::"https://github.com/gentlegiantJGC/Minecraft-Model-Reader/archive/refs/tags/${pkgver}.tar.gz"
 )
 md5sums=(
-	"130fe7f4ef20b35b530b617e69d83074"
+	"SKIP"
 )
+
+function prepare() {
+	sed -i 's/versioneer-518/versioneer/g' "${srcdir}/Minecraft-Model-Reader-${pkgver}/pyproject.toml"
+}
 
 function build() {
 	cd "${srcdir}/Minecraft-Model-Reader-${pkgver}"
