@@ -1,7 +1,8 @@
+# Maintainer: Kaito Udagawa <umireon at gmail dot com>
 # Maintainer: Ng Oon-Ee <n g o o n e e dot t a l k @ gmail dot com>
 # Based on obs-backgroundremoval PKGBUILD by PedroHLC <root@pedrohlc.com>
 pkgname=obs-backgroundremoval-git
-pkgver=1.1.7.r1.2cf587a
+pkgver=1.1.8.r1.d77ff28
 pkgrel=1
 pkgdesc="Background removal plugin for OBS studio"
 arch=(x86_64)
@@ -14,13 +15,13 @@ source=('git+https://github.com/royshil/obs-backgroundremoval.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "$srcdir/${pkgname%-git}"
+  printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  cmake -B build --preset linux-x86_64 -DLINUX_PORTABLE=OFF -DUSE_SYSTEM_OPENCV=ON -DUSE_SYSTEM_CURL=ON
+  cmake -B build --preset linux-x86_64 -DUSE_SYSTEM_OPENCV=ON
   cmake --build build
 }
 

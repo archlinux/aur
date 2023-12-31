@@ -1,6 +1,6 @@
 pkgbase = obs-backgroundremoval-git
 	pkgdesc = Background removal plugin for OBS studio
-	pkgver = 1.1.7.r1.2cf587a
+	pkgver = 1.1.8.r1.d77ff28
 	pkgrel = 1
 	url = https://github.com/royshil/obs-backgroundremoval
 	arch = x86_64
