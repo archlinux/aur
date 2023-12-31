@@ -1,11 +1,16 @@
 pkgbase = pnket
 	pkgdesc = A download manager
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/Ablaze-MIRAI/pnket
 	arch = x86_64
 	license = MIT
-	source = https://github.com/Ablaze-MIRAI/pnket/releases/download/v0.2.2/pnket
-	md5sums = SKIP
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	options = !lto
+	source = pnket-0.3.1.tar.gz::https://github.com/Ablaze-MIRAI/pnket/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 796d0ef3a27a74244d26a30f83f79df62a7c924e76b537416547689ff14d56e8
 
 pkgname = pnket
