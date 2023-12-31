@@ -1,7 +1,7 @@
 # Maintainer: Cain Atkinson <yellowsink@riseup.net>
 
 pkgname=cozette-drawing-git
-pkgver=0
+pkgver=r151.b6752ee
 pkgrel=1
 pkgdesc="Patch to make Cozette's braille characters take up their entire space."
 arch=(any)
@@ -12,6 +12,13 @@ depends=()
 makedepends=(git fontforge python-pipenv pyenv java-runtime-headless)
 source=('cozette::git+https://github.com/slavfox/cozette' 'drawing::git+https://github.com/redstonekasi/cozette-drawing')
 sha256sums=(SKIP SKIP)
+
+pkgver() {
+	cd "${srcdir}/cozette"
+
+# Git, no tags available
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
 	# patch

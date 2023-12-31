@@ -1,6 +1,6 @@
 pkgbase = cozette-drawing-git
 	pkgdesc = Patch to make Cozette's braille characters take up their entire space.
-	pkgver = 0
+	pkgver = r151.b6752ee
 	pkgrel = 1
 	url = https://github.com/redstonekasi/cozette-drawing
 	arch = any
