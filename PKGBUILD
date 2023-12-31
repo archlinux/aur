@@ -4,7 +4,7 @@
 pkgname=briar-desktop-bin
 _pkgname=briar-desktop
 pkgver=0.6.0.beta
-pkgrel=1
+pkgrel=2
 _bin_ver=0.6.0
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
@@ -22,7 +22,7 @@ source=(
 	"${_pkgname}.svg::https://code.briarproject.org/briar/${_pkgname}/-/raw/main/${_pkgname}/src/main/resources/images/logo_circle.svg"
 	"briar16.png" "briar32.png" "briar48.png" "briar64.png" "briar128.png" "briar192.png"
 	"${_pkgname}.desktop"
-	"https://code.briarproject.org/briar/briar-desktop/-/raw/${_bin_ver}-${_build_type}/${_pkgname}/src/appResources/linux/org.briarproject.Briar.metainfo.xml"
+	"metainfo-${_bin_ver}-${_build_type}.xml::https://code.briarproject.org/briar/briar-desktop/-/raw/${_bin_ver}-${_build_type}/${_pkgname}/src/appResources/linux/org.briarproject.Briar.metainfo.xml"
 )
 
 noextract=("${_pkgname}-linux-${_bin_ver}-${_build_type}.jar")
@@ -69,6 +69,6 @@ EOF
   install -Dm644 ${srcdir}/$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-  install -Dm644 ${srcdir}/org.briarproject.Briar.metainfo.xml \
+  install -Dm644 ${srcdir}/metainfo-${_bin_ver}-${_build_type}.xml \
     "$pkgdir/usr/share/metainfo/org.briarproject.Briar.metainfo.xml"
 }
