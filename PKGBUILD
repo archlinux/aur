@@ -1,5 +1,5 @@
 pkgname=nordvpn
-pkgver=3.16.6
+pkgver=3.16.9
 pkgrel=1
 pkgdesc="NordVPN client for Linux"
 arch=('x86_64' 'arm64')
@@ -10,7 +10,7 @@ depends=('iptables' 'iproute2' 'wireguard-tools')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn' 'nordvpn-bin' 'nordvpn-cli-bin' 'nordvpn-git')
 source=("https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f68d839fca739d5bf7dfd905e558949e461d28fa815ccd88440889c15c3d3e6c')
+sha256sums=('c32be14f6ece9ff710f6495d5d1cff8eaa81a3d545ab517fd1b1cc1bd50c0ba5')
 install=nordvpn.install
 
 prepare() {
@@ -21,7 +21,7 @@ prepare() {
     bsdtar -xf "${pkgver}.tar.gz"
     cd "nordvpn-linux-${pkgver}"
     patch --forward --strip=1 --input="${srcdir}/../ci_env.sh.patch"
-    patch --forward --strip=1 --input="${srcdir}/../ci_compile.sh.patch"
+    # patch --forward --strip=1 --input="${srcdir}/../ci_compile.sh.patch"
     patch --forward --strip=1 --input="${srcdir}/../magefiles_scripts.go.patch"
 }
 

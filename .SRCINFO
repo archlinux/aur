@@ -1,6 +1,6 @@
 pkgbase = nordvpn
 	pkgdesc = NordVPN client for Linux
-	pkgver = 3.16.6
+	pkgver = 3.16.9
 	pkgrel = 1
 	url = https://github.com/NordSecurity/nordvpn-linux
 	install = nordvpn.install
@@ -18,7 +18,7 @@ pkgbase = nordvpn
 	conflicts = nordvpn-bin
 	conflicts = nordvpn-cli-bin
 	conflicts = nordvpn-git
-	source = https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/3.16.6.tar.gz
-	sha256sums = f68d839fca739d5bf7dfd905e558949e461d28fa815ccd88440889c15c3d3e6c
+	source = https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/3.16.9.tar.gz
+	sha256sums = c32be14f6ece9ff710f6495d5d1cff8eaa81a3d545ab517fd1b1cc1bd50c0ba5
 
 pkgname = nordvpn
