@@ -1,7 +1,7 @@
-# Maintainer: Kimiblock Zhou <kimiblock at icloud dot com>
+# Maintainer: Kimiblock Moe
 pkgname=bili-you-bin
 pkgver=1.1.5+15
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="一个用flutter制作的第三方B站客户端."
 arch=('x86_64')
@@ -12,15 +12,17 @@ depends=('gtk3' 'mpv')
 makedepends=('fuse' 'imagemagick')
 checkdepends=()
 optdepends=()
-provides=(bili-you-bin)
-conflicts=(bili-you-bin)
+provides=(bili-you)
+conflicts=(bili-you)
 replaces=()
 source=(
-	bili-you-${pkgver}.AppImage::'https://github.com/lucinhu/bili_you/releases/latest/download/BiliYou-x86_64.AppImage'
+	bili-you-${pkgver}.AppImage::"https://github.com/lucinhu/bili_you/releases/latest/download/BiliYou-x86_64.AppImage"
+	"bili-you"
 )
 noextract=()
 md5sums=(
-	'SKIP'
+	"SKIP"
+	"SKIP"
 )
 validpgpkeys=()
 function package() {
@@ -44,8 +46,7 @@ Type=Application''' >"${pkgdir}"/usr/share/applications/bili_you.desktop
 	install -d "${pkgdir}/opt/bili_you"
 	cp -r "${srcdir}/squashfs-root/opt"/* "${pkgdir}/opt/bili_you"
 	convert "${pkgdir}/opt/bili_you/data/flutter_assets/assets/icon/bili.png" -resize 512x512 "${pkgdir}/usr/share/icons/hicolor/512x512/apps/bili.png"
-	ln -s /opt/bili_you/bili_you "${pkgdir}/usr/bin/bili_you"
-	chmod 755 "${pkgdir}/usr/bin" -R
+	install -Dm755 "${srcdir}/bili-you" "${pkgdir}/usr/bin/bili-you"
 }
 
 function info() {
