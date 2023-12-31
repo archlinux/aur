@@ -1,5 +1,5 @@
 pkgname=webone
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='HTTP 1.x proxy that makes old web browsers usable again in the Web 2.0 world'
 url='https://github.com/atauenis/webone'
@@ -9,9 +9,9 @@ arch=(x86_64)
 source=(webone.sysusers
         webone.tmpfiles)
 source_x86_64=("https://github.com/atauenis/webone/releases/download/v$pkgver/webone.$pkgver.linux-amd64.rpm")
-sha256sums=(SKIP
-            SKIP)
-sha256sums_x86_64=('2228fcd067f30ec95737dd412e63d65ffae75e498c91c76834034226dfc3082f')
+sha256sums=('1eccc0c99a8c19519299c817766584d4d0f8f889b5d9f9ef60b6f7fb4afd9435'
+            '84afa16b03edf86ef4d0c3234b7a64af1f8bd4e82d5027bf622656571a73f679')
+sha256sums_x86_64=('22e8f0f99e7e36eb82722f35cd2f3129f932b96b352ecd1bf46ebaa9f23a830e')
 
 package() {
 	cp -av "$srcdir"/etc/. "$pkgdir"/etc
