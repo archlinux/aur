@@ -1,8 +1,8 @@
 # Maintainer: Kimiblock Moe
 pkgname=bili-you-bin
 pkgver=1.1.5+15
-pkgrel=5
-epoch=
+pkgrel=1
+epoch=1
 pkgdesc="一个用flutter制作的第三方B站客户端."
 arch=('x86_64')
 url="https://github.com/lucinhu/bili_you"
