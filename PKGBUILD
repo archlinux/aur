@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgver=3.20.3
-pkgrel=1
+pkgrel=2
 pkgname=petsc
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -56,11 +56,21 @@ build() {
             --with-hdf5=1 --with-hdf5-fortran-bindings=1 \
             $(sh ${srcdir}/test_optdepends.sh)"
 
-  echo ${CONFOPTS}
-  python ./configure --prefix=${_install_dir} ${CONFOPTS} \
-                     --COPTFLAGS='-O3 -march=native' --CXXOPTFLAGS='-O3 -march=native' --FOPTFLAGS='-O3 -march=native'
+  echo './configure' ${CONFOPTS}
+  echo 'CFLAGS='${CFLAGS}
+  echo 'CXXFLAGS='${CXXFLAGS}
+  echo 'FFLAGS='${FFLAGS}
+  echo 'LDFLAGS='${LDFLAGS}
+  echo 'MAKEFLAGS='${MAKEFLAGS}
 
-  make ${MAKEFLAGS} all
+  ./configure --prefix=${_install_dir} ${CONFOPTS} \
+              "CFLAGS=$CFLAGS" \
+              "CXXFLAGS=$CXXFLAGS" \
+              "FFLAGS=$FFLAGS" \
+              "LDFLAGS=$LDFLAGS" \
+              "MAKEFLAGS=$MAKEFLAGS"
+
+  make all
   make DESTDIR=${srcdir}/tmp install
 }
 
