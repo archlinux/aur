@@ -1,5 +1,5 @@
 pkgname=openbox-theme-bluebird-openboxed
-pkgver=20130428.r8.eadea03
+pkgver=20201024.r9.323f528
 pkgrel=1
 epoch=1
 pkgdesc="Bluebird theme for Openbox, based on Numix."
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('openbox')
 makedepends=('git')
 optdepends=('xfce-theme-bluebird' 'xfce-theme-greybird')
-source=('git://github.com/scienzedellevanghe/Bluebird-openboxed.git')
+source=('git+https://github.com/scienzedellevanghe/Bluebird-openboxed.git')
 md5sums=('SKIP')
 
 pkgver() {
