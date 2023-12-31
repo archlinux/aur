@@ -26,7 +26,7 @@ sha512sums=(
 prepare() {
   export OPAMROOT="${srcdir}/opam"
   rm -rf "${OPAMROOT}"
-  opam init -n
+  opam init -n --bare
 }
 
 build() {
