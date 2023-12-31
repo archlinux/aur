@@ -1,9 +1,7 @@
-*.tar
-*.tar.*
+# Ignore everything
+*
 
-src/
-pkg/
-
-nvidia-container-runtime/
-nvidia-container-runtime-hook/
-runc/
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
