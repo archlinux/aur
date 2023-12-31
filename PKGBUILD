@@ -7,7 +7,8 @@ pkgdesc='Flexible evolution of Mercurial history'
 arch=('any')
 license=('GPL2')
 depends=('mercurial')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel'
+             'python-setuptools')
 #groups=('hgext')
 url='https://www.mercurial-scm.org/doc/evolution/'
 source=("https://files.pythonhosted.org/packages/source/h/hg-evolve/hg-evolve-${pkgver}.tar.gz")
