@@ -1,15 +1,15 @@
 # Contributor: Spyros Stathopoulos <foucault.online@gmail.com>
 pkgname=python-regex-git
-pkgver=387.bf5e239
+pkgver=431.4f2ed52
 pkgrel=1
 pkgdesc="Alternative regular expression module, to replace re."
 arch=('i686' 'x86_64')
-url="https://bitbucket.org/mrabarnett/mrab-regex"
+url="https://github.com/mrabarnett/mrab-regex"
 license=('custom')
 depends=('python')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 _gitname='mrab-regex'
-source=("git+https://bitbucket.org/mrabarnett/$_gitname")
+source=("git+https://github.com/mrabarnett/mrab-regex")
 md5sums=('SKIP')
 provides=(python-regex)
 conflicts=(python-regex)
@@ -17,16 +17,16 @@ conflicts=(python-regex)
 
 pkgver() {
   cd ${_gitname}
-  echo "$(git rev-list --count HEAD)"."$(git rev-parse --short HEAD)"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
   cd ${_gitname}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd ${_gitname}
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  sed -n '1,/^$/p' regex_3/regex.py | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
