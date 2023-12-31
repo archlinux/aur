@@ -1,35 +1,32 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=downzemall
-pkgver=3.0.6
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
-url="https://setvisible.github.io/DownZemAll"
+url="https://www.arrow-dl.com/ArrowDL"
 license=('LGPL3' 'CC BY-SA 3.0')
 depends=('libtorrent-rasterbar' 'qt6-base' 'yt-dlp')
 makedepends=('boost' 'cmake' 'qt6-tools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/DownZemAll/archive/v$pkgver.tar.gz"
-        "$pkgname.desktop"
-        'add-missing-include.patch')
-sha256sums=('a5f1eefdbc83f7f3e1e72b4c6102829e511331ef96c466bfa23cb5bba543bb2f'
-            '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff'
-            '9167312e19c9239bebc5c328ec651828a2738de552fb7e7c5a54f22d15b50109')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/ArrowDL/archive/v$pkgver.tar.gz"
+        "$pkgname.desktop")
+sha256sums=('3cab020b150d503a651a6910707c45d66ed4990aa07a04b581b18c430c9702b2'
+            '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff')
 
 prepare() {
-  cd "DownZemAll-$pkgver"
+  cd "ArrowDL-$pkgver"
+
+  # set absolute path to app directory
   sed -i 's|ABSOLUTE/PATH/TO/APP/DIRECTORY|opt/downzemall|g' \
     web-extension/launcher/unix/*.json
 
   # Look for system shared object, not source archive
   sed -i 's/libtorrent-rasterbar.a/libtorrent-rasterbar.so/g' \
     cmake/Modules/FindLibtorrentRasterbar.cmake
-
-  # https://github.com/setvisible/DownZemAll/issues/120
-  patch -Np1 -i ../add-missing-include.patch
 }
 
 build() {
-  cmake -B build -S "DownZemAll-$pkgver" \
+  cmake -B build -S "ArrowDL-$pkgver" \
     -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_SKIP_RPATH='YES' \
@@ -43,10 +40,10 @@ build() {
 }
 
 package() {
-  cd "DownZemAll-$pkgver"
+  cd "ArrowDL-$pkgver"
   install -Dm755 ../build/src/DownZemAll -t "$pkgdir/opt/$pkgname/"
   install -Dm755 ../build/web-extension/launcher/launcher -t "$pkgdir/opt/$pkgname/"
-  install -Dm644 src/locale/*.ts -t "$pkgdir/opt/$pkgname/locale/"
+  install -Dm644 ../build/src/*.qm -t "$pkgdir/opt/$pkgname/locale/"
 
   install -Dm644 web-extension/launcher/unix/launcher-manifest-chrome.json \
     "$pkgdir/etc/chromium/native-messaging-hosts/com.setvisible.downrightnow.json"
@@ -71,8 +68,10 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/DownZemAll" "$pkgdir/usr/bin/$pkgname"
 
+  # Use system yt-dlp
   ln -s /usr/bin/yt-dlp "$pkgdir/opt/$pkgname/"
 
+  # Allow write permissions to queue.json
   touch "$pkgdir/opt/$pkgname/queue.json"
   chmod 777 "$pkgdir/opt/$pkgname/queue.json"
 }
