@@ -1,0 +1,26 @@
+pkgbase = garagejam
+	pkgdesc = GarageJam is Free Software in development for musicians who want to compose, record and share original music to the Internet from the GNOME Desktop.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Garagejam
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = python
+	depends = libchamplain
+	depends = geoclue
+	depends = gst-plugins-base
+	depends = gst-plugins-bad
+	depends = geocode-glib
+	depends = geocode-glib-2
+	depends = gobject-introspection
+	depends = gstreamer
+	depends = libxml2
+	depends = vorbis-tools
+	depends = pango
+	depends = gtk3
+	source = https://www.garagejam.org/src/garagejam-1.0.0.tar.xz
+	sha256sums = b7008972b167df451b6db9b4cf39b0576d70631f14563b70405cf8f113ed98af
+
+pkgname = garagejam
