@@ -1,0 +1,15 @@
+pkgbase = stylua52-git
+	pkgdesc = An opinionated code formatter for Lua 5.2, built using full-moon.
+	pkgver = 0.19.1.r29.gfa568d5
+	pkgrel = 1
+	url = https://github.com/JohnnyMorganz/StyLua
+	arch = x86_64
+	license = MPL2
+	makedepends = rust
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	source = stylua52::git+https://github.com/JohnnyMorganz/StyLua.git
+	sha512sums = SKIP
+
+pkgname = stylua52-git
