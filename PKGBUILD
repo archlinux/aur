@@ -12,7 +12,7 @@ depends=('libxext' 'libjpeg' 'giflib' 'libpng')
 makedepends=('git')
 optdepends=('imagemagick')
 conflicts=('meh')
-_commit=6fa14a2c9f69c6f9654155b306aff253d78d7cf3
+_commit=a8da4f8a2f17e58a38777a37ddddbb1d1e941384
 source=("git+https://github.com/andreasbaumann/meh.git#commit=$_commit")
 md5sums=('SKIP')
 _gitname=meh
