@@ -1,0 +1,18 @@
+pkgbase = cozette-drawing-git
+	pkgdesc = Patch to make Cozette's braille characters take up their entire space.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/redstonekasi/cozette-drawing
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = fontforge
+	makedepends = python-pipenv
+	makedepends = pyenv
+	makedepends = java-runtime-headless
+	source = cozette::git+https://github.com/slavfox/cozette
+	source = drawing::git+https://github.com/redstonekasi/cozette-drawing
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cozette-drawing-git
