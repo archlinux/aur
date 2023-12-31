@@ -7,7 +7,7 @@ license=(unknown)
 arch=(any)
 pkgver=r29.11aa86c
 pkgrel=2
-makedepends=(python-setuptools)
+makedepends=(python-setuptools git)
 depends=(python python-versioneer python-portalocker python-leveldb)
 source=(
 	"git+https://github.com/Amulet-Team/Amulet-LevelDB.git"
