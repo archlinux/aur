@@ -7,6 +7,7 @@ pkgbase = sof
 	license = GPL3
 	makedepends = cmake
 	makedepends = argumentum
+	makedepends = gzip
 	provides = sof
 	source = sof-4.2.tar.gz::https://codeberg.org/balaraz/sof/archive/v4.2.tar.gz
 	sha256sums = a41db914c8c0de9a2a71fc9d7436485747645b8b849ae0bb9e3f75f96831c926
