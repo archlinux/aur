@@ -51,7 +51,7 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then
   sha256sums[0]='SKIP'
   sha512sums[0]='SKIP'
   makedepends+=('git')
-  provides+=("gamin=${pkgver#.r*}")
+  provides+=("gamin=${pkgver%.r*}")
   conflicts+=('gamin')
   _srcdir="${pkgname%-git}"
 pkgver(){

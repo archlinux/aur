@@ -11,7 +11,7 @@ pkgbase = gamin-git
 	depends = glib2
 	optdepends = python: for the python module
 	provides = fam
-	provides = gamin=0.1.10.6.r1.g08a6371
+	provides = gamin=0.1.10.6
 	conflicts = fam
 	conflicts = gamin
 	source = git+https://salsa.debian.org/gnome-team/gamin.git
