@@ -1,14 +1,14 @@
-From c982ce67525c28554dacd03e697f034510d84e3f Mon Sep 17 00:00:00 2001
+From 1183682561b0c6e0833f7ba645fc431836e12e04 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Tue, 26 Sep 2023 14:52:25 +0200
-Subject: [PATCH] fix(cmake): Fix when multiple .NET packages are installed
+Subject: [PATCH 1/2] fix(cmake): Fix when multiple .NET packages are installed
 
 ---
  cmake/modules/FindCoreClrEmbed.cmake | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/cmake/modules/FindCoreClrEmbed.cmake b/cmake/modules/FindCoreClrEmbed.cmake
-index 41ea53a7..145b71d7 100644
+index 9bcb6738..d18085e0 100644
 --- a/cmake/modules/FindCoreClrEmbed.cmake
 +++ b/cmake/modules/FindCoreClrEmbed.cmake
 @@ -49,7 +49,8 @@ endif()
@@ -22,5 +22,5 @@ index 41ea53a7..145b71d7 100644
      get_filename_component(_CORECLR_HOST_ARCH_FILENAME ${_CORECLR_HOST_ARCH_PATH} NAME)
      string(REPLACE "Microsoft.NETCore.App.Host." "" _CORECLR_COMPUTED_ARCH "${_CORECLR_HOST_ARCH_FILENAME}")
 -- 
-2.42.0
+2.43.0
 

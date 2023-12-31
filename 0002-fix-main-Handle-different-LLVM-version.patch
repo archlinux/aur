@@ -1,0 +1,36 @@
+From 095536f5aaaa3ae85d6fe05ca11ba387c6ecb30f Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Sun, 31 Dec 2023 13:29:36 +0100
+Subject: [PATCH 2/2] fix(main): Handle different LLVM version
+
+---
+ main/gui/source/crash_handlers.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/main/gui/source/crash_handlers.cpp b/main/gui/source/crash_handlers.cpp
+index fdda088a..005096f5 100644
+--- a/main/gui/source/crash_handlers.cpp
++++ b/main/gui/source/crash_handlers.cpp
+@@ -14,6 +14,7 @@
+ 
+ #include <nlohmann/json.hpp>
+ 
++#include <llvm/Config/llvm-config.h>
+ #include <llvm/Demangle/Demangle.h>
+ 
+ #include <csignal>
+@@ -142,7 +143,11 @@ namespace hex::crash {
+         try {
+             std::rethrow_exception(std::current_exception());
+         } catch (std::exception &ex) {
++#if LLVM_VERSION_MAJOR >= 17
+             std::string exceptionStr = hex::format("{}()::what() -> {}", llvm::itaniumDemangle(typeid(ex).name()), ex.what());
++#else
++            std::string exceptionStr = hex::format("{}()::what() -> {}", llvm::itaniumDemangle(typeid(ex).name(), nullptr, nullptr, nullptr), ex.what());
++#endif
+ 
+             handleCrash(exceptionStr);
+             log::fatal("Program terminated with uncaught exception: {}", exceptionStr);
+-- 
+2.43.0
+
