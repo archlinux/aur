@@ -1,0 +1,15 @@
+pkgbase = gl4es
+	pkgdesc = OpenGL 2.1/1.5 to GL ES 2.0/1.1 translation library
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/ptitSeb/gl4es
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = glibc
+	depends = libx11
+	source = gl4es-1.1.4.tar.gz::https://github.com/ptitSeb/gl4es/archive/v1.1.4.tar.gz
+	sha256sums = b565e717c7d192e936bda25f3cb90ad8db398af56414ec08294b6716574c1a6d
+
+pkgname = gl4es
