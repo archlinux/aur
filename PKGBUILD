@@ -1,10 +1,10 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 
 _pkgname=libint
 pkgname=libint2
-pkgver=2.7.2
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc='A high-performance library for computing Gaussian integrals in quantum mechanics'
 url='https://github.com/evaleev/libint'
 license=('GPL')
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=('boost')
 makedepends=('python' 'gcc-fortran' 'cmake' 'automake' 'autoconf' 'eigen')
 source=("https://github.com/evaleev/libint/archive/v${pkgver}.tar.gz")
-sha256sums=('fd0466ce9eb6786b8c5bbe3d510e387ed44b198a163264dfd7e60b337e295fd9')
+sha256sums=('54ae9c55f03f1989ee4792ab1ec24eda8ac88126f9c11f3723ed76a3275b3e24')
 options=(staticlibs)
 
 
