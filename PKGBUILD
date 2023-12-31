@@ -1,7 +1,7 @@
 # Maintainer: Gin <ginnokami8@gmail.com>
 pkgname=waifu2x-caffe
 pkgver=v1.1.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks. Rewritten from the original Waifu2x using Caffe. Compiled with CUDA & cuDNN enabled flags."
 arch=('x86_64')
 url="https://github.com/Gin-no-kami/waifu2x-caffe"
@@ -57,7 +57,7 @@ prepare() {
 
     # Change Source.cpp to update the model file location
     sed -i 's+models/cunet+/usr/share/waifu2x-caffe/models/cunet+g' waifu2x-caffe/Source.cpp
-    
+
     # create symlink to caffe
     ln -sf ../caffe ./caffe
     ln -sf ../caffe ./libcaffe
@@ -67,12 +67,16 @@ prepare() {
     sed -i 's~-std=c++14~-std=c++17~g' caffe/Makefile.config.example
 
     cd ${srcdir}/build
+    export CC=/usr/bin/gcc-12
+    export CXX=/usr/bin/g++-12
     cmake "${srcdir}/waifu2x-caffe" -DCMAKE_EXE_LINKER_FLAGS="-Wl,--copy-dt-needed-entries" -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--copy-dt-needed-entries" -DCUDA_NVCC_FLAGS="-D_FORCE_INLINES  -gencode arch=compute_86,code=sm_86 "
     # Fix issue with the compile failing. These flags need to be removed from the CUDA_FLAGS, but I can't find which CMakeFile is generating this line. So just remove it with sed.
     sed -i 's/-Xcudafe --diag_suppress=set_but_not_used -DBOOST_ALL_NO_LIB;-DUSE_LMDB;-DUSE_LEVELDB;-DUSE_CUDNN;-DUSE_OPENCV;-DWITH_PYTHON_LAYER//g' libcaffe/src/caffe/CMakeFiles/caffe.dir/flags.make
 }
 
 build() {
+    export CC=/usr/bin/gcc-12
+    export CXX=/usr/bin/g++-12
     # Build caffe
     cd "${srcdir}/caffe"
     make $MAKEFLAGS
