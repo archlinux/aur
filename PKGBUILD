@@ -1,7 +1,7 @@
 # Maintainer: Andrej Halveland (SnipeX_ / SnipeX) <andrej.halv@gmail.com>
 
 pkgname=qnearbyshare-git
-pkgver=r40.eca645f
+pkgver=r51.701d54c
 pkgrel=1
 pkgdesc='Nearby Share implementation for Linux'
 arch=(x86_64)
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_LIBEXECDIR=lib
   cmake --build build
 }
 
