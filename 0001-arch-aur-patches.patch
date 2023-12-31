@@ -28,7 +28,7 @@ index 57518c0853d..e959488e23e 100644
  install-xctest
 -install-libicu
 -install-prefix=/usr
-+install-prefix=/usr/lib/swift-git
++install-prefix=/usr/lib/swift
  install-sourcekit-lsp
  install-swiftdocc
  build-swift-static-stdlib
