@@ -2,7 +2,7 @@
 
 _plug=vsdeband
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.0.1.g13e1d1c
+pkgver=1.1.1.2.g01f9f0d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -26,6 +26,7 @@ makedepends=(
   'python-installer'
   'python-setuptools'
 )
+optdepends=('vapoursynth-plugin-neo_f3kdb-git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=(
   "vapoursynth-plugin-${_plug}"

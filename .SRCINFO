@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsdeband-git
 	pkgdesc = Plugin for Vapoursynth: vsdeband (GIT version)
-	pkgver = 1.0.0.1.g13e1d1c
+	pkgver = 1.1.1.2.g01f9f0d
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-deband
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = vapoursynth-plugin-vsdeband-git
 	depends = vapoursynth-plugin-vsaa-git
 	depends = vapoursynth-plugin-vsscale-git
 	depends = vapoursynth-plugin-vsdenoise-git
+	optdepends = vapoursynth-plugin-neo_f3kdb-git
 	provides = vapoursynth-plugin-vsdeband
 	conflicts = vapoursynth-plugin-vsdeband
 	conflicts = vapoursynth-plugin-debandshit-git
