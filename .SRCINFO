@@ -1,0 +1,25 @@
+pkgbase = kikoplay-beta
+	pkgdesc = NOT ONLY A Full-Featured Danmu Player
+	pkgver = 1.0.1rc1_1033e2421949a5f94e51edafc9bf36229c8feb90
+	pkgrel = 1
+	url = https://github.com/KikoPlayProject/KikoPlay
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = mpv
+	depends = qt5-base
+	depends = qhttpengine
+	depends = qt5-websockets
+	optdepends = aria2: for downloading
+	provides = kikoplay
+	conflicts = kikoplay-bin
+	conflicts = kikoplay
+	source = https://github.com/KikoPlayProject/KikoPlay/archive/1033e2421949a5f94e51edafc9bf36229c8feb90.tar.gz
+	source = git+https://github.com/KikoPlayProject/KikoPlayScript
+	source = git+https://github.com/KikoPlayProject/KikoPlayApp
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kikoplay-beta
