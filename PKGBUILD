@@ -9,61 +9,63 @@ pkgname="$_pkgname-git"
 pkgver=2023.12.21a.r6.gf08f86c7161
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
-arch=('x86_64')
 url="https://swift.org/"
 license=('Apache-2.0')
+arch=('x86_64')
+
 depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses' )
-makedepends=('clang' 'cmake' 'git' 'lld' 'llvm' 'ninja' 'patch' 'python-six' 'rsync' 'swig')
+makedepends=(
+  'clang' 'cmake' 'git' 'lld' 'llvm' 'ninja'
+  'patch' 'python-six' 'rsync' 'swift-language' 'swig'
+)
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=(
-  'git+https://github.com/apple/swift#branch=main'
+  'git+https://github.com/apple/swift'
   '0001-arch-aur-patches.patch'
-  '0002-stdint.patch'
 
-  'apple-indexstore-db'::'git+https://github.com/apple/indexstore-db#branch=main'
-  'apple-llvm-project'::'git+https://github.com/apple/llvm-project#branch=stable/20220421'
-  'apple-sourcekit-lsp'::'git+https://github.com/apple/sourcekit-lsp#branch=main'
-  'swift-argument-parser'::'git+https://github.com/apple/swift-argument-parser#commit=1.2.3'
-  'swift-asn1'::'git+https://github.com/apple/swift-asn1#commit=1.0.0'
-  'swift-atomics'::'git+https://github.com/apple/swift-atomics#commit=1.0.2'
-  'swift-certificates'::'git+https://github.com/apple/swift-certificates#commit=0.6.0'
-  'swift-cmark'::'git+https://github.com/apple/swift-cmark#branch=gfm'
-  'swift-cmark'::'git+https://github.com/apple/swift-cmark#branch=main'
-  'swift-collections'::'git+https://github.com/apple/swift-collections#commit=1.0.1'
-  'swift-corelibs-foundation'::'git+https://github.com/apple/swift-corelibs-foundation#branch=main'
-  'swift-corelibs-libdispatch'::'git+https://github.com/apple/swift-corelibs-libdispatch#branch=main'
-  'swift-corelibs-xctest'::'git+https://github.com/apple/swift-corelibs-xctest#branch=main'
-  'swift-crypto'::'git+https://github.com/apple/swift-crypto#commit=2.5.0'
-  'swift-docc'::'git+https://github.com/apple/swift-docc#branch=main'
-  'swift-docc-render-artifact'::'git+https://github.com/apple/swift-docc-render-artifact#branch=main'
-  'swift-docc-symbolkit'::'git+https://github.com/apple/swift-docc-symbolkit#branch=main'
-  'swift-driver'::'git+https://github.com/apple/swift-driver#branch=main'
-  'swift-experimental-string-processing'::'git+https://github.com/apple/swift-experimental-string-processing#branch=main'
-  'swift-format'::'git+https://github.com/apple/swift-format#branch=main'
-  'swift-installer-scripts'::'git+https://github.com/apple/swift-installer-scripts#branch=main'
-  'swift-integration-tests'::'git+https://github.com/apple/swift-integration-tests#branch=main'
-  'swift-llbuild'::'git+https://github.com/apple/swift-llbuild#branch=main'
-  'swift-llvm-bindings'::'git+https://github.com/apple/swift-llvm-bindings#branch=stable/20220421'
-  'swift-lmdb'::'git+https://github.com/apple/swift-lmdb#branch=main'
-  'swift-markdown'::'git+https://github.com/apple/swift-markdown#branch=main'
-  'swift-nio'::'git+https://github.com/apple/swift-nio#commit=2.31.2'
-  'swift-nio-ssl'::'git+https://github.com/apple/swift-nio-ssl#commit=2.15.0'
-  'swift-numerics'::'git+https://github.com/apple/swift-numerics#commit=1.0.1'
-  'swift-package-manager'::'git+https://github.com/apple/swift-package-manager#branch=main'
-  'swift-stress-tester'::'git+https://github.com/apple/swift-stress-tester#branch=main'
-  'swift-syntax'::'git+https://github.com/apple/swift-syntax#branch=main'
-  'swift-system'::'git+https://github.com/apple/swift-system#commit=1.1.1'
-  'swift-tools-support-core'::'git+https://github.com/apple/swift-tools-support-core#branch=main'
-  'swift-xcode-playground-support'::'git+https://github.com/apple/swift-xcode-playground-support#branch=main'
-  'yams'::'git+https://github.com/jpsim/Yams#commit=5.0.1'
+  'apple-indexstore-db'::'git+https://github.com/apple/indexstore-db'
+  'apple-llvm-project'::'git+https://github.com/apple/llvm-project'
+  'apple-sourcekit-lsp'::'git+https://github.com/apple/sourcekit-lsp'
+  'swift-argument-parser'::'git+https://github.com/apple/swift-argument-parser'
+  'swift-asn1'::'git+https://github.com/apple/swift-asn1'
+  'swift-atomics'::'git+https://github.com/apple/swift-atomics'
+  'swift-certificates'::'git+https://github.com/apple/swift-certificates'
+  'swift-cmark'::'git+https://github.com/apple/swift-cmark'
+  'swift-cmark'::'git+https://github.com/apple/swift-cmark'
+  'swift-collections'::'git+https://github.com/apple/swift-collections'
+  'swift-corelibs-foundation'::'git+https://github.com/apple/swift-corelibs-foundation'
+  'swift-corelibs-libdispatch'::'git+https://github.com/apple/swift-corelibs-libdispatch'
+  'swift-corelibs-xctest'::'git+https://github.com/apple/swift-corelibs-xctest'
+  'swift-crypto'::'git+https://github.com/apple/swift-crypto'
+  'swift-docc'::'git+https://github.com/apple/swift-docc'
+  'swift-docc-render-artifact'::'git+https://github.com/apple/swift-docc-render-artifact'
+  'swift-docc-symbolkit'::'git+https://github.com/apple/swift-docc-symbolkit'
+  'swift-driver'::'git+https://github.com/apple/swift-driver'
+  'swift-experimental-string-processing'::'git+https://github.com/apple/swift-experimental-string-processing'
+  'swift-format'::'git+https://github.com/apple/swift-format'
+  'swift-installer-scripts'::'git+https://github.com/apple/swift-installer-scripts'
+  'swift-integration-tests'::'git+https://github.com/apple/swift-integration-tests'
+  'swift-llbuild'::'git+https://github.com/apple/swift-llbuild'
+  'swift-llvm-bindings'::'git+https://github.com/apple/swift-llvm-bindings'
+  'swift-lmdb'::'git+https://github.com/apple/swift-lmdb'
+  'swift-markdown'::'git+https://github.com/apple/swift-markdown'
+  'swift-nio'::'git+https://github.com/apple/swift-nio'
+  'swift-nio-ssl'::'git+https://github.com/apple/swift-nio-ssl'
+  'swift-numerics'::'git+https://github.com/apple/swift-numerics'
+  'swift-package-manager'::'git+https://github.com/apple/swift-package-manager'
+  'swift-stress-tester'::'git+https://github.com/apple/swift-stress-tester'
+  'swift-syntax'::'git+https://github.com/apple/swift-syntax'
+  'swift-system'::'git+https://github.com/apple/swift-system'
+  'swift-tools-support-core'::'git+https://github.com/apple/swift-tools-support-core'
+  'swift-xcode-playground-support'::'git+https://github.com/apple/swift-xcode-playground-support'
+  'yams'::'git+https://github.com/jpsim/Yams'
 )
 sha256sums=(
   'SKIP'
   'SKIP'
-  'SKIP'
 
   'SKIP'
   'SKIP'
@@ -102,7 +104,6 @@ sha256sums=(
   'SKIP'
   'SKIP'
 )
-
 
 # By default makepkg runs strip on binaries. This causes issues with the Swift REPL.
 # from https://github.com/RLovelett/swift-aur/blob/master/PKGBUILD
@@ -148,8 +149,7 @@ prepare () {
   ln -sfP 'swift-tools-support-core' 'tools-support-core'
   ln -sfP 'swift-xcode-playground-support' 'xcode-playground-support'
 
-  ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-patches.patch" )
-  ( cd llvm-project && patch -p1 -F100 -i "$srcdir/0002-stdint.patch" )
+  ( cd swift && patch -Np1 -F100 -i "${srcdir:?}/0001-arch-aur-patches.patch" )
 }
 
 pkgver() {
@@ -163,17 +163,33 @@ build() {
   find "$srcdir/llvm-project/clang" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
   find "$srcdir/llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
 
-  # By default in /etc/makepkg.conf this is "-D_FORTIFY_SOURCE=2"
-  # Which will break `compiler-rt`
-  unset CPPFLAGS
-  export DISTCC_HOSTS='--randomize localhost red,cpp,lzo green,cpp,lzo blue,cpp,lzo'
+  local _build_options_test=(
+    --dry-run
+    --preset=buildbot_linux,no_test
+    install_destdir="destdir"
+  )
 
-  python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$srcdir/destdir"
+  local _build_options=(
+    --release
+    --skip-early-swift-driver
+    --skip-early-swiftsyntax
+  )
+
+  "$srcdir/swift/utils/build-script" "${_build_options[@]}"
 }
 
 package() {
-  ls -la "$srcdir/destdir"
-  mv "$srcdir/destdir"/* "$pkgdir"
+  DESTDIR="$pkgdir" cmake \
+    --install "$srcdir/build/Ninja-ReleaseAssert/cmark-linux-x86_64" \
+    --prefix "/usr/lib/swift"
+
+  DESTDIR="$pkgdir" cmake \
+    --install "$srcdir/build/Ninja-ReleaseAssert/llvm-linux-x86_64" \
+    --prefix "/usr/lib/swift"
+
+  DESTDIR="$pkgdir" cmake \
+    --install "$srcdir/build/Ninja-ReleaseAssert/swift-linux-x86_64" \
+    --prefix "/usr/lib/swift"
 }
 
 # vim:set ts=2 sw=2 et:
