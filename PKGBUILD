@@ -1,4 +1,4 @@
-# Maintainer: Nep_Nep <nepnep91 at protonmail dot com>
+# Maintainer: Nep_Nep <nepnep91 at child dot pizza>
 
 pkgname=hyfetch-extra-git
 pkgver=1.4.10.r78.g6932a9fb
