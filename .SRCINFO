@@ -1,0 +1,17 @@
+pkgbase = vim-beancount-git
+	pkgdesc = Vim support for beancount accounting files
+	pkgver = r105.25bcbc7
+	pkgrel = 1
+	url = https://github.com/nathangrigg/vim-beancount
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-beamcount
+	conflicts = vim-beamcount
+	source = git+https://github.com/nathangrigg/vim-beancount.git
+	source = https://www.gnu.org/licenses/vim-license.txt
+	sha256sums = SKIP
+	sha256sums = cfc1edda2b488ecd5b4f1504ea74f5d4a3965d717b5051a51d968ca0b58b3e65
+
+pkgname = vim-beancount-git

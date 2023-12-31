@@ -1,0 +1,6 @@
+vim-beancount/
+pkg/
+src/
+vim-beancount-git-r*.tar*
+*.log
+vim-license.txt
