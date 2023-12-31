@@ -1,5 +1,5 @@
-# Maintainer: Nep_Nep <nepnep91 at protonmail dot com>
-# Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
+# Maintainer: Nep_Nep <nepnep91 at child dot pizza>
+# Contributor: xXR01I1Xx <xxr01i1xx@tuta.io>
 
 pkgname=session-desktop-git
 pkgver=v1.11.0.r135.g83079a8b4
