@@ -46,6 +46,7 @@ source=(
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
 sha256sums=(
   '5036c434e11e4b36d8da3f489851f7f829cf785fa7f7887468537a9ea4572416'
@@ -79,6 +80,9 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 -F100 -i "../$src"
   done
+
+  # remove extra version suffix
+  sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
 
   echo "Setting config..."
   cp ../config .config
