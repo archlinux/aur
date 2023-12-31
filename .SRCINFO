@@ -1,4 +1,4 @@
-pkgbase = tubefeeder
+pkgbase = pipeline-gtk
 	pkgdesc = Watch YouTube and PeerTube videos in one place
 	pkgver = 1.14.2
 	pkgrel = 1
@@ -9,11 +9,9 @@ pkgbase = tubefeeder
 	makedepends = rust
 	makedepends = meson
 	depends = libadwaita
-	optdepends = mpv: Play the videos,
-	optdepends = youtube-dl: Play and download the videos
-	provides = tubefeeder
 	conflicts = tubefeeder
+	replaces = tubefeeder
 	source = https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/v1.14.2/pipeline-v1.14.2.tar.gz
 	sha256sums = dfb5cfce43da6d4471bdae0bcbd58799fcc7b686061eebe9686809a6d4b80d00
 
-pkgname = tubefeeder
+pkgname = pipeline-gtk
