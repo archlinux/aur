@@ -1,4 +1,4 @@
-# Maintainer: Nep_Nep <nepnep91 at protonmail dot com>
+# Maintainer: Nep_Nep <nepnep91 at child dot pizza>
 # Contributor: Tim Paik <timpaik@163.com>
 _extname=quick-settings-tweaks
 _uuid=$_extname@qwreey
