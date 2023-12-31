@@ -1,4 +1,5 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Maintainer:  A Farzat <a@farzat.xyz>
+# Contributor: Vincent Grande <shoober420@gmail.com>
 # Contributor: Static_Rocket
 # Contributor: Jose Riha <jose1711 gmail com>
 # Contributor: Sebastian J. Bronner <waschtl@sbronner.com>
@@ -6,7 +7,7 @@
 # Contributor: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st-git
-pkgver=0.8.3.r19.g9ba7ecf
+pkgver=0.9.r11.g9846a56
 pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,12 +18,12 @@ provides=(st)
 conflicts=(st)
 url=https://st.suckless.org
 source=(git://git.suckless.org/st
-	terminfo.patch
-	README.terminfo.rst)
+        terminfo.patch
+        README.terminfo.rst)
 sha256sums=(SKIP
-	    SKIP
+            SKIP
             SKIP)
-_gitname="st"	    
+_gitname="st"
 _sourcedir="$_gitname"
 _makeopts="--directory=$_sourcedir"
 _gitdir=${pkgname%'-git'}
@@ -38,13 +39,13 @@ prepare() {
 patch --directory="$_sourcedir" --strip=0 < terminfo.patch
 
 
-	echo 'Applying patches from $_startdir if they exist...'
-	if [ -d "$_startdir/patches" ]; then
-	        for patch in $_startdir/patches/*.diff; do
-                        echo "Applying $patch ..."
-		        patch -p1 -s -i "$patch"
-		done;
-	fi;
+  echo 'Applying patches from $_startdir if they exist...'
+  if [ -d "$_startdir/patches" ]; then
+    for patch in $_startdir/patches/*.diff; do
+      echo "Applying $patch ..."
+      patch -d "$_sourcedir" -p1 -s -i "$patch"
+    done;
+  fi;
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in
