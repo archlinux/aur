@@ -2,13 +2,13 @@
 
 pkgname=moneymanagerex
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
 license=('GPL')
 depends=('wxwidgets-gtk3' 'webkit2gtk')
-makedepends=('curl' 'cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'jq' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
+makedepends=('appstream' 'curl' 'cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'jq' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
 optdepends=('cups: for printing support')
 replaces=('mmex')
 provides=('moneymanagerex')
