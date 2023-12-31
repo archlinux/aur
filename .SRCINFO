@@ -1,13 +1,13 @@
 pkgbase = ntpsec
 	pkgdesc = Security-hardened Network Time Protocol implementation
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ntpsec.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = custom
+	license = Apache-2.0,BSD-2-Clause,BSD-4-Clause,ISC,NTP,Beerware,BSD-3-Clause,CC-BY-4.0,MIT
 	makedepends = asciidoc
 	makedepends = pps-tools
 	makedepends = w3m

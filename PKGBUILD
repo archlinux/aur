@@ -2,11 +2,11 @@
 
 pkgname=ntpsec
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.ntpsec.org/"
-license=('custom')
+license=('Apache-2.0','BSD-2-Clause','BSD-4-Clause','ISC','NTP','Beerware','BSD-3-Clause','CC-BY-4.0','MIT')
 depends=('avahi' 'libbsd' 'python' 'openssl')
 makedepends=('asciidoc' 'pps-tools' 'w3m' 'binutils')
 optdepends=('gnuplot: for ntpviz'
@@ -65,6 +65,7 @@ package() {
   install -Dm 644 build/main/etc/ntpd.service "$pkgdir/usr/lib/systemd/system/ntpd.service"
   install -Dm 644 docs/copyright.text "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm 644 ../ntpsec.sysusers "$pkgdir/usr/lib/sysusers.d/ntpsec.conf"
+  install -Dm 644 LICENSES/*.txt "$pkgdir/usr/share/licenses/$pkgname/"
 
   for configfile in etc/ntp.d/*; do
      install -Dm 644 "$configfile" "$pkgdir/$configfile"
