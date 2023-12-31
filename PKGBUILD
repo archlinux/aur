@@ -9,7 +9,7 @@
 pkgname=simgear
 pkgver=2020.3.19
 _pkgver=${pkgver%.*}
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=('x86_64')
 url="http://home.flightgear.org/"
@@ -30,7 +30,7 @@ build() {
   mkdir -p "$srcdir"/sgbuild
   cd "$srcdir"/sgbuild
   cmake \
-    -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DSIMGEAR_SHARED=ON \
     -DENABLE_TESTS=OFF \
     ../simgear-${pkgver}
