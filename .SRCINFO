@@ -1,0 +1,13 @@
+pkgbase = mailhog
+	pkgdesc = Web and API based SMTP testing
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/mailhog/MailHog
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = MailHog-1.0.1.tar.gz::https://github.com/mailhog/MailHog/archive/refs/tags/v1.0.1.tar.gz
+	sha512sums = 98df715d84ba70c7eace19e4a8c22756a485d93b1a7fbc309dfc97132272c26766e321477b694447aa5e600e3c2046f3f868b0743d2596c611867269f927094f
+
+pkgname = mailhog
