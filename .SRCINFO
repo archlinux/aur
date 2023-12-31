@@ -1,14 +1,12 @@
 pkgbase = zw3d-bin
-	pkgdesc = 国内首款支持Linux系统的三维CAD软件
-	pkgver = 2022.26.00
-	pkgrel = 2.0
+	pkgdesc = Parametric 3D modelling
+	pkgver = 2024.0.3.0
+	pkgrel = 1
 	url = https://www.zwsoft.cn/product/zw3d/linux
 	arch = x86_64
-	license = unknown
-	depends = libjbig-shared
+	license = custom
 	provides = zw3d
-	options = !strip
-	source = zw3d-bin-2022.26.00-x86_64.deb::https://download.zwcad.com/zw3d/3d_linux/preview/2022/ZW3D-2022-Preview-V1_amd64.deb
-	sha512sums = e9f3c062b4f859dee806ba0fc624ebc6b9f813d2bbfd36092705aff1a7daa35fd69ef3249381ea3392df4cc7f1087b9612d094bd4ea1ad899f0d2665a6ab4203
+	source = file:///home/lei/Downloads/zw3d_2024.0.3.0_chs_eng_amd64.deb
+	sha256sums = cb65208e92250e325096a0900583cd02e801774df17f3500055963c3e58cf006
 
 pkgname = zw3d-bin

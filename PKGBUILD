@@ -1,52 +1,26 @@
-# Maintainer sakura1943 <1436700265@qq.com>
-
-pkgname='zw3d-bin'
-_pkgname='zw3d'
-_pkgname_o='com.zwsoft.zw3dpreview'
-pkgver=2022.26.00
-_year=$(echo $pkgver | cut -d '.' -f1)
-##pkgrel
-pkgrel=2.0
-pkgdesc="国内首款支持Linux系统的三维CAD软件"
+# Maintainer yueduz <yueduz at gmail dot com>
+pkgname=zw3d-bin
+pkgver=2024.0.3.0
+pkgrel=1
+pkgdesc="Parametric 3D modelling"
 arch=('x86_64')
-depends=('libjbig-shared')
-license=('unknown')
+license=(custom)
+makedepends=()
+depends=()
+provides=(zw3d)
+#请手动从 https://www.zwsoft.cn/product/zw3d/linux 下载deb包到 Downloads 目录,版本请选择"银河麒麟V10 SP1/中科方德5.0/Ubuntu18.04及以上	x86_64/兆芯/海光"
+source=("file:///home/$USER/Downloads/zw3d_${pkgver}_chs_eng_amd64.deb")
 url="https://www.zwsoft.cn/product/zw3d/linux"
-provides=("zw3d")
-options=('!strip')
-intall=zw3d-bin.install
-source=("${pkgname}-${pkgver}-${arch}.deb::https://download.zwcad.com/zw3d/3d_linux/preview/${_year}/ZW3D-${_year}-Preview-V1_amd64.deb")
-sha512sums=('e9f3c062b4f859dee806ba0fc624ebc6b9f813d2bbfd36092705aff1a7daa35fd69ef3249381ea3392df4cc7f1087b9612d094bd4ea1ad899f0d2665a6ab4203')
-
-prepare(){
-    cd $srcdir
-    tar -xJvf data.tar.xz -C "${srcdir}"
+sha256sums=('cb65208e92250e325096a0900583cd02e801774df17f3500055963c3e58cf006')
+  prepare(){
+  mkdir -p "${srcdir}/zw3d2024"
+  cd $srcdir
+  bsdtar -zxf data.tar.xz -C "${srcdir}/zw3d2024"
 }
-
-package(){
-    mkdir -p "${pkgdir}"/opt
-    mv "${srcdir}"/usr   "${pkgdir}"
-    mkdir -p "${pkgdir}"/usr/share/icons/hicolor/scalable/apps
-    mv "${srcdir}"/opt/apps/${_pkgname_o} "${pkgdir}"/opt/${_pkgname_o}
-    mv "${pkgdir}"/opt/${_pkgname_o}/entries/icons/hicolor/scalable/apps/*.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps
-    
-    
-    sed -i '5c Exec=zw3d %F'   "$pkgdir/usr/share/applications/${_pkgname_o}.desktop"
-    sed -i '6c Icon=ZW3Dpreview'     "$pkgdir/usr/share/applications/${_pkgname_o}.desktop"
-    
-    # create executable
-    mkdir -p "$pkgdir"/usr/bin/
-    
-    echo '''#!/bin/bash
-_pkgname_o='com.zwsoft.zw3dpreview'
-run_path="/opt/${_pkgname_o}/files"
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$run_path/lib:$run_path/lib/xlator:$run_path/libqt:$run_path/libqt/plugins/designer:$run_path/lib3rd
-cd /opt/${_pkgname_o}/files
-
-./zw3d $*
-
-''' >"$pkgdir"/opt/${_pkgname_o}/zw3d 
-    chmod 0755 "$pkgdir"/opt/${_pkgname_o}/zw3d
-    
-    ln -s /opt/${_pkgname_o}/zw3d "$pkgdir"/usr/bin/zw3d
+ 
+package() {
+  mv "${srcdir}/zw3d2024/opt/apps/zw3d2024/files/lib3rd/llibtiff.so.5" "${srcdir}/zw3d2024/opt/apps/zw3d2024/files/lib3rd/libtiff.so.5" #修复官方错误
+  rm  ${srcdir}/zw3d2024/opt/apps/zw3d2024/files/lib3rd/libfreetype.s* #删除自带libfreetype库使用系统库
+	mkdir -p $pkgdir/opt/apps/zw3d2024
+  cp -r  ${srcdir}/zw3d2024/* "$pkgdir"
 }
