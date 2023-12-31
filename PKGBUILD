@@ -1,6 +1,6 @@
-# Maintainer: jiriks74 <jiri@stefka.eu>
 # Maintainer: rbartlensky <robert@electricwisp.com>
-# Old maintainer: Entith <entith@entith.net>
+# Contributor: jiriks74 <jiri@stefka.eu>
+# Contributor: Entith <entith@entith.net>
 
 realpkgname=vkdevicechooser
 pkgname=lib32-vkdevicechooser
