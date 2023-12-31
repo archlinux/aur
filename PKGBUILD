@@ -57,6 +57,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         default_app-icon.patch
         electron-launcher.sh
         electron.desktop
+        icu-74.patch
         jinja-python-3.10.patch
         libxml2-2.12.patch
         std-vector-non-const.patch
@@ -69,6 +70,7 @@ sha256sums=('SKIP'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             'b0ac3422a6ab04859b40d4d7c0fd5f703c893c9ec145c9894c468fbc0a4d457c'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
+            'ff9ebd86b0010e1c604d47303ab209b1d76c3e888c423166779cefbc22de297f'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             '1808df5ba4d1e2f9efa07ac6b510bec866fa6d60e44505d82aea3f6072105a71'
             '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c'
@@ -170,6 +172,9 @@ EOF
   # Upstream fixes
   # Fix build with libxml2 2.12
   patch -Np1 -i ../libxml2-2.12.patch
+
+  # Fix build with ICU 74
+  patch -Np1 -i ../icu-74.patch
 
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
