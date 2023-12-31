@@ -1,0 +1,26 @@
+pkgbase = mount-gui
+	pkgdesc = Quickly mounts anything, anywhere, with any options. Discovers MTP devices and scans local networks for shared folders.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kirillnow/mount-gui
+	arch = x86_64
+	license = GPL
+	license = MIT
+	makedepends = cmake
+	depends = qt6-base
+	depends = systemd
+	depends = polkit
+	depends = libmtp
+	optdepends = nmap: local network scanning
+	optdepends = avahi: network discovery
+	optdepends = smbclient: detecting samba shares
+	optdepends = nfs-utils: detecting nfs shares
+	optdepends = android-file-transfer: mounting mtp devices
+	optdepends = simple-mtpfs: mounting mtp devices
+	optdepends = jmtpfs: mounting mtp devices
+	optdepends = lxqt-sudo: alternative to pkexec
+	backup = etc/polkit-1/rules.d/mount-gui.rules
+	source = https://github.com/kirillnow/mount-gui/archive/refs/tags/1.0.tar.gz
+	sha256sums = f7284d40d3dfd344078a0cdd957c1ac4b13691306d104819f3253d3d282eb519
+
+pkgname = mount-gui
