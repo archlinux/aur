@@ -1,7 +1,7 @@
 pkgbase = code-translucent
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!
 	pkgver = 1.85.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/vscode
 	arch = x86_64
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = code-translucent
 	optdepends = icu69: Needed for live share
 	provides = code-oss
 	conflicts = code-oss
-	source = code-translucent::git+https://github.com/microsoft/vscode.git#branch=release/1.85
+	source = code-translucent::git+https://github.com/microsoft/vscode.git#tag=1.85.1
 	source = build-with-chroot.sh
 	source = translucent.patch
 	source = product.json

@@ -2,10 +2,8 @@
 
 pkgname="code-translucent"
 pkgver=1.85.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
-
-gitbranch="release/1.85"
 
 arch=(
 	"x86_64"
@@ -48,7 +46,7 @@ makedepends=(
 )
 
 source=(
-	"${pkgname}::git+${url}.git#branch=${gitbranch}"
+	"${pkgname}::git+${url}.git#tag=${pkgver}"
 	"build-with-chroot.sh"
 	"translucent.patch"
 	"product.json"
@@ -122,9 +120,9 @@ build() {
 
 	cd "${srcdir}/${pkgname}"
 
-	yarn install --arch="${_vscode_arch}" --check-files
+	yarn install --arch="${_vscode_arch}"
 
-	yarn gulp --openssl-legacy-provider vscode-linux-"${_vscode_arch}"-min
+	gulp --max_old_space_size=8192 --openssl-legacy-provider vscode-linux-"${_vscode_arch}"-min
 
 }
 
