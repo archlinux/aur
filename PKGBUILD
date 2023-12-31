@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi [dot] net>
 
 pkgname=snowflake-pt-proxy
-pkgver=2.7.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Snowflake is a pluggable transport that proxies traffic through temporary proxies using WebRTC (proxy part)"
 url="https://snowflake.torproject.org"
@@ -11,9 +11,9 @@ depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/archive/v$pkgver/snowflake-v$pkgver.tar.gz"
         snowflake-proxy.service)
-sha256sums=('69d0408905a29919940e9a3994b480dd3414f0dc177aac24e9afe9ff56495029'
+sha256sums=('4272cdea61107792d8a7098063447d65ee3d27f71e9ba222e414bbcfafe11560'
             '81ed80bea97fb9874734d4ec7ccb9a850e6aa5b186a354990066344446bd1412')
-b2sums=('43ad178143af9f9f5b9c167c7a1b59adbcf77370fb59690b20d5e05731330ccf69acdd221810ff99f72754418826ad2ec07dfdfec40d9607fd0ae52b92d1a3b2'
+b2sums=('bacf5398a62c2783b51f5424ea6cb8e2fe07ea93da5651ec0b8a1d6e3d06e079d456188c2a958da99884796da138375b1b71c39091111a9fdad7353e1ec0b98f'
         '2ba698a76a06b8ebee3cd8c44562783aa3939f66528d1573ac93a59dcc6a8de61f160b5dbc0e8b83c2473bedf037d69fbee9b33befa24027693e556fd5d3d575')
 
 build() {
