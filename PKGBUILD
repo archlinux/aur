@@ -1,12 +1,12 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=(ifcopenshell blender-plugin-bim)
-pkgver=0.7.0a9
+pkgver=0.7.0a10
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="http://ifcopenshell.org/"
 license=('LGPL3')
-depends=('boost-libs>=1.58.0' 'opencascade' 'icu' 'opencollada' 'python')
+depends=('boost-libs>=1.58.0' 'opencascade' 'icu' 'opencollada' 'python' 'cgal' 'nlohmann-json')
 optdepends=('python-svgwrite: blender bim addon svg support'
       'python-occ-core: blender bim addon cut ifc support'
       'python-pystache: blender bim addon'
@@ -26,7 +26,7 @@ optdepends=('python-svgwrite: blender bim addon svg support'
       'python-brickschema: brickschema support'
       'python-shapely>=2.0.1: blender bim addon space generation support')
 makedepends=('cmake' 'boost>=1.58.0' 'swig' 'python-babel')
-provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf' 'python-bimtester' 'python-ifccsv')
+provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf' 'python-bimtester' 'python-ifccsv' 'python-bsdd')
 conflicts=()
 replaces=()
 backup=()
@@ -93,8 +93,9 @@ package_ifcopenshell() {
   cp -rf "${srcdir}/${_iosdir}/src/ifcpatch" "./"
   cp -rf "${srcdir}/${_iosdir}/src/ifc4d/ifc4d" "./"
   cp -rf "${srcdir}/${_iosdir}/src/ifc5d/ifc5d" "./"
+  cp -rf "${srcdir}/${_iosdir}/src/bsdd" "./"
   pybabel compile -d "./bimtester/locale"
-  python -O -m compileall "./"
+  python -O -m compileall "./" -x './ifcopenshell/api/profile/add_arbitrary_profile_with_voids.py' # Remove -x "" in next version
 }
 
 package_blender-plugin-bim() {
@@ -106,4 +107,4 @@ package_blender-plugin-bim() {
   chmod -R a+rwX "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim/bim/data"
 }
 
-md5sums=('273d83440e646be689cddb723f50b57b' 'SKIP' 'SKIP' '8a1fabbe039bda399ff9cb0f646fca89' 'SKIP')
+md5sums=('3e86e5d481e072511520a25d2502cf8c' 'SKIP' 'SKIP' '8a1fabbe039bda399ff9cb0f646fca89' 'SKIP')
