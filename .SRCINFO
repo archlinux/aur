@@ -1,0 +1,17 @@
+pkgbase = gql
+	pkgdesc = Git Query language (GQL) is an SQL like language to perform queries on .git files
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/AmrDeveloper/GQL
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	conflicts = gitql-bin
+	options = !lto
+	source = gql-0.11.0.tar.gz::https://github.com/AmrDeveloper/GQL/archive/refs/tags/0.11.0.tar.gz
+	sha256sums = a0e089cc314640a7d004c563c8c76147b56a75ac0a1a06c0b5c8e0736c449bb6
+
+pkgname = gql
