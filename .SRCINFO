@@ -1,0 +1,23 @@
+pkgbase = plome
+	pkgdesc = PLOME, mix of Plasma desktop and GNOME applications
+	pkgver = 5.91.0
+	pkgrel = 1
+	arch = x86_64
+	license = LGPL
+	depends = plasma-desktop
+	depends = plasma-pa
+	depends = yakuake
+	depends = fcitx5-im
+	depends = gnome-keyring
+	depends = seahorse
+	depends = network-manager-applet
+	depends = blueman
+	depends = flatpak
+	depends = discover
+	depends = xdg-desktop-portal-kde
+	conflicts = ibus
+	conflicts = plasma-nm
+	conflicts = bluedevil
+	conflicts = packagekit-qt6
+
+pkgname = plome
