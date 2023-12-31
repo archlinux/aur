@@ -1,6 +1,6 @@
 pkgbase = flightgear-git
 	pkgdesc = An open-source, multi-platform flight simulator
-	pkgver = 2020.4.0r15830.5d6ac7a1c
+	pkgver = 2020.4.0r16085.1757b1d5b
 	pkgrel = 1
 	url = https://home.flightgear.org
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = flightgear-git
 	optdepends = qt5-base: fgfs --launcher
 	optdepends = qt5-declarative: fgfs --launcher
 	optdepends = flightgear-data
-	provides = flightgear=2020.4.0r15830.5d6ac7a1c
+	provides = flightgear=2020.4.0r16085.1757b1d5b
 	conflicts = flightgear
 	source = flightgear::git+https://git.code.sf.net/p/flightgear/flightgear#branch=next
 	sha256sums = SKIP

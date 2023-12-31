@@ -4,7 +4,7 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-git
-pkgver=2020.4.0r15830.5d6ac7a1c
+pkgver=2020.4.0r16085.1757b1d5b
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
@@ -34,20 +34,17 @@ prepare() {
 }
 
 build() {
-  mkdir -p "$srcdir"/flightgear-build
-  cd "$srcdir"/flightgear-build
+  mkdir -p "$srcdir"/fgbuild
+  cd "$srcdir"/fgbuild
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DFG_DATA_DIR:STRING="/usr/share/flightgear/data" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DFG_BUILD_TYPE=Release \
     ../flightgear
   make
 }
 
 package() {
-  cd "$srcdir"/flightgear-build
+  cd "$srcdir"/fgbuild
   make DESTDIR="$pkgdir" install
 
   cd "$srcdir"/flightgear
@@ -56,4 +53,3 @@ package() {
   install -Dm0644 scripts/completion/fg-completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_fgfs
   ln -sf flightgear "$pkgdir"/usr/share/FlightGear
 }
-
