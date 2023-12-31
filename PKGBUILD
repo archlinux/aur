@@ -2,7 +2,7 @@
 
 _plug=vsdehalo
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.7.0.2.g753aa14
+pkgver=1.8.1.3.g508b8b2
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -26,6 +26,7 @@ makedepends=(
   'python-installer'
   'python-setuptools'
 )
+optdepends=('vapoursynth-plugin-misc-git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=(
   "vapoursynth-plugin-${_plug}"
