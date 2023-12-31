@@ -15,7 +15,7 @@ arch=('x86_64' 'i386' 'aarch64' 'armv7h' 'riscv64' 'loong64')
 provides=("$_pkg")
 conflicts=("$_pkg" "$_pkg-bin")
 depends=('mpv')
-makedepends=('git' 'cmake' 'gcc' 'libwebp')
+makedepends=('git' 'cmake' 'gcc' 'libwebp' 'python' 'wayland-protocols' 'libxi')
 
 # options("name")
 
