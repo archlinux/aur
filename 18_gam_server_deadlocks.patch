@@ -67,3 +67,4 @@ index 5d3b6d0..d36b5fd 100644
  void		 ih_sub_foreach		(void *callerdata, gboolean (*f)(ih_sub_t *sub, void *callerdata));
 -- 
 1.7.7.2
+
