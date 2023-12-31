@@ -3,7 +3,7 @@
 _pkgname=koboredux
 pkgname=$_pkgname-git
 pkgver=0.7.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Arcade style 2D shooter'
 arch=(x86_64)
 url='http://koboredux.com/'
@@ -16,6 +16,7 @@ makedepends=(
 )
 depends=(
   'sdl'
+  'sdl2_image'
   'audiality2'
 )
 
