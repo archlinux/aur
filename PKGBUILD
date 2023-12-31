@@ -4,7 +4,7 @@
 
 pkgname=bup-git
 epoch=1
-pkgver=0.33.r49.gc3660183
+pkgver=0.33.r72.g50f57708
 pkgrel=1
 pkgdesc='Efficient file backup system based on the git packfile format'
 arch=('i686' 'x86_64' 'aarch64')
