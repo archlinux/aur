@@ -1,7 +1,7 @@
 pkgbase = php74-imagick
 	pkgdesc = PHP 7.4 extension to create and modify images using the ImageMagick library
 	pkgver = 3.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pecl.php.net/package/imagick
 	arch = x86_64
 	license = PHP

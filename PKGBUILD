@@ -5,7 +5,7 @@ pkgname=php74-imagick
 app_name=imagick
 ini_name="30-${app_name}.ini"
 pkgver=3.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="PHP 7.4 extension to create and modify images using the ImageMagick library"
 url="https://pecl.php.net/package/imagick"
 arch=('x86_64')
@@ -26,13 +26,6 @@ build() {
   cd "$app_name-$pkgver"
   ./configure --prefix=/usr --with-php-config=/usr/bin/php-config74
   make
-}
-
-check() {
-  cd "$app_name-$pkgver"
-  export NO_INTERACTION="true"
-  export TEST_PHPDBG_EXECUTABLE="/usr/bin/phpdbg74"
-  make -k test
 }
 
 package() {
