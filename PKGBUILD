@@ -1,7 +1,7 @@
 # Maintainer: bitcoinlizard <bitcoinlizard at fastmail dot com>
 
 pkgname=ride-the-lightning
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="RTL is a full function, device agnostic, web user interface to help manage lightning node operations."
 arch=(any)
@@ -20,7 +20,7 @@ source=("https://github.com/Ride-The-Lightning/RTL/archive/refs/tags/v${pkgver}.
 	"RTL.tmpfiles")
 
 #noextract=("v${pkgver}.tar.gz")
-sha256sums=('b1b57b77f8a67425e0969012de187b7c44ef4b13337a08badc07db4b58a6a9b9'
+sha256sums=('f177a65d8ae4830ef3e617112fb711f0f308d9efe0b9337c234c09bd3c36b469'
             'SKIP'
             '8018bd40de57b45b282943c27887d3eba35e3b0bae26a5a4f6b833b3aff66a7e'
             '0898aaf7835abde7680b17b4dc9969ae4d1d3e173328e49c57617bd3e3fa0b95'
