@@ -1,6 +1,6 @@
 pkgbase = thunar-extended
 	pkgdesc = Thunar with cursor audio preview and extra options for trash
-	pkgver = 4.18.4
+	pkgver = 4.18.9
 	pkgrel = 1
 	url = http://thunar.xfce.org
 	arch = i686
@@ -27,14 +27,14 @@ pkgbase = thunar-extended
 	optdepends = thunar-volman: manages removable devices
 	optdepends = thunar-archive-plugin: create and deflate archives
 	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
-	provides = thunar=4.18.3
+	provides = thunar=4.18.9
 	conflicts = thunar
 	replaces = thunar
 	options = !libtool
-	source = https://archive.xfce.org/src/xfce/thunar/4.18/thunar-4.18.4.tar.bz2
+	source = https://archive.xfce.org/src/xfce/thunar/4.18/thunar-4.18.9.tar.bz2
 	source = notrash.patch
 	source = preview.patch
-	sha256sums = c4463ce2fb1d628adce70a828e8b4de5fa0802236894d2c40f749471619bedcc
+	sha256sums = 1d6179b0f57804824221ae55054a690f1cf249a6f86a14df32cca7be665df346
 	sha256sums = 1d2bb30a12076c2882585bfca6d6722e3d995e730afc604a4f01229220097452
 	sha256sums = a9aec6e90ea6012fc7c24f9c4b368264e778998c1c761428f1a862be5187eff8
 

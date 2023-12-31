@@ -1,7 +1,7 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=thunar-extended
-pkgver=4.18.4
+pkgver=4.18.9
 pkgrel=1
 pkgdesc="Thunar with cursor audio preview and extra options for trash"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ url="http://thunar.xfce.org"
 groups=('xfce4')
 conflicts=('thunar')
 replaces=('thunar')
-provides=('thunar=4.18.3')
+provides=('thunar=4.18.9')
 depends=('desktop-file-utils' 'libexif' 'hicolor-icon-theme' 'libnotify' 'libgudev' \
          'exo' 'libxfce4util' 'libxfce4ui' 'libpng' 'gstreamer')
 makedepends=('intltool' 'gobject-introspection' 'xfce4-panel' 'xfce4-dev-tools')
@@ -46,6 +46,6 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('c4463ce2fb1d628adce70a828e8b4de5fa0802236894d2c40f749471619bedcc'
+sha256sums=('1d6179b0f57804824221ae55054a690f1cf249a6f86a14df32cca7be665df346'
             '1d2bb30a12076c2882585bfca6d6722e3d995e730afc604a4f01229220097452'
             'a9aec6e90ea6012fc7c24f9c4b368264e778998c1c761428f1a862be5187eff8')
