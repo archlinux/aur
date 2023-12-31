@@ -1,12 +1,12 @@
 pkgbase = ratpoison-sloppymove
 	pkgdesc = Improved version of sloppy focus for Ratpoison that allows for keyboard frame switches when the rat is not in motion
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/cactus-d/ratpoison-sloppymove
 	arch = x86_64
 	license = GPL
 	depends = ratpoison
-	source = ratpoison-sloppymove-1.0.0.tar.gz::https://github.com/cactus-d/ratpoison-sloppymove/archive/v1.0.0.tar.gz
-	md5sums = 5650c0f85ce192659899d62d0f4580e6
+	source = ratpoison-sloppymove-1.0.1.tar.gz::https://github.com/cactus-d/ratpoison-sloppymove/archive/v1.0.1.tar.gz
+	md5sums = cd563251ec5f9613c9b6b0dad3289200
 
 pkgname = ratpoison-sloppymove
