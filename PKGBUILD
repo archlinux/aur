@@ -2,16 +2,16 @@
 
 _pkgname=wordcloud
 pkgname=python-wordcloud
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="A little word cloud generator in Python"
 arch=('any')
 url="https://github.com/amueller/word_cloud"
 license=('Apache')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'cython')
 depends=('python' 'python-matplotlib' 'python-pillow' 'python-numpy')
-source=("https://files.pythonhosted.org/packages/fe/f9/35e6f31e57c2f51351625045c9d1ad2fc33fe79cac21973f8985c7dbcbb9/$_pkgname-$pkgver.tar.gz")
-sha256sums=('71062ba6bfeaf1a7f8b6f18f6a8a7a810ef10973ebd9aa10c04d9fff690363d3')
+source=("https://files.pythonhosted.org/packages/7c/60/5f927145b65de0f299079db846c89fa031d56e4df9764607add12a03714e/$_pkgname-$pkgver.tar.gz")
+sha256sums=('a9aa738d63ed674a40f0cc31adb83f4ca5fc195f03a6aff6e010d1f5807d1c58')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
