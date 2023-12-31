@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Bilibili Manga Downloader
+Exec=/opt/bilibili_manga_downloader/bilibili-manga-downloader %u
+Terminal=false
+Type=Application
+Icon=bilibili_manga_downloader
+StartupWMClass=Bilibili Manga Downloader
+Comment=Bilibili Manga Downloader
+Categories=Utility;
