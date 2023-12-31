@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=bili-you-bin
 pkgver=1.1.5+15
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="一个用flutter制作的第三方B站客户端."
 arch=('x86_64')
@@ -37,7 +37,7 @@ function package() {
 Categories=AudioVideo;
 Comment[zh_CN]=一个用flutter制作的第三方B站客户端
 Comment=Third party Bilibili client.
-Exec=/usr/bin/bili_you
+Exec=/usr/bin/bili-you
 Icon=bili
 Name[zh_CN]=BiliYou
 Name=BiliYou
