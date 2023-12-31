@@ -1,6 +1,6 @@
 pkgbase = hcclient
 	pkgdesc = A terminal client for hack.chat
-	pkgver = 1.19.0
+	pkgver = 1.19.1
 	pkgrel = 1
 	url = https://github.com/AnnikaV9/hcclient
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = hcclient
 	makedepends = python-wheel
 	depends = python
 	provides = hcclient
-	noextract = hcclient-1.19.0-py3-none-any.whl
-	source = https://github.com/AnnikaV9/hcclient/releases/download/v1.19.0/hcclient-1.19.0-py3-none-any.whl
-	source = hcclient-1.19.0.tar.gz::https://github.com/AnnikaV9/hcclient/archive/refs/tags/v1.19.0.tar.gz
-	sha256sums = 00faf769abcf4e8fe0bc83090052af39dcf8d63ff32a65364ff888d231ddc68c
-	sha256sums = f64677c09bdcd6cf60f23e34ebd2a83b39b95b5cb0058761b0592e947f350b4a
+	noextract = hcclient-1.19.1-py3-none-any.whl
+	source = https://github.com/AnnikaV9/hcclient/releases/download/v1.19.1/hcclient-1.19.1-py3-none-any.whl
+	source = hcclient-1.19.1.tar.gz::https://github.com/AnnikaV9/hcclient/archive/refs/tags/v1.19.1.tar.gz
+	sha256sums = 47a9bce44d02943303d3fc1211f4775746dc1f6d4af34eaf8ca4fe5cef54a5da
+	sha256sums = 543a297336e22462adf25dbf5cfb52ceb07c7500addfc67dae8003fcd6265b4d
 
 pkgname = hcclient
