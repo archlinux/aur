@@ -2,7 +2,7 @@
 
 _pkgname=vimdecrypt
 pkgname=vimdecrypt-git
-pkgver=r21.975fdb7
+pkgver=r32.2ab3280
 pkgrel=1
 pkgdesc="Command line tool for decrypting vim-blowfish-encrypted files."
 
@@ -10,8 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/gertjanvanzwieten/vimdecrypt"
 license=('GPL2')
 
-depends=('glibc')
-makedepends=('git' 'make' 'gcc')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 
 source=("git+https://github.com/gertjanvanzwieten/vimdecrypt.git")
 sha256sums=('SKIP')
@@ -22,12 +21,11 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgname"
-  make
+    cd "$_pkgname"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm755 "vimdecrypt" "$pkgdir/usr/bin/vimdecrypt"
+    cd "$_pkgname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
