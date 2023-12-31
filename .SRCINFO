@@ -3,6 +3,10 @@ pkgbase = python-cairo-git
 	pkgver = 1.25.0.r21.ge44fe88
 	pkgrel = 2
 	url = http://www.cairographics.org/
+	arch = arm
+	arch = armv7h
+	arch = aarch64
+	arch = powerpc
 	arch = i686
 	arch = x86_64
 	license = LGPL3
@@ -11,10 +15,12 @@ pkgbase = python-cairo-git
 	makedepends = python-setuptools
 	depends = python
 	depends = cairo>=1.12
-	provides = python-cairo
+	provides = python-cairo=1.20.0
+	provides = pycairo=1.20.0
 	conflicts = python-cairo
+	conflicts = pycairo
 	options = !libtool
-	source = python-cairo-git::git+https://github.com/pygobject/pycairo
+	source = python-cairo::git+https://github.com/pygobject/pycairo
 	sha256sums = SKIP
 
 pkgname = python-cairo-git
