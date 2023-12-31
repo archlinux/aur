@@ -1,0 +1,27 @@
+pkgbase = aligator
+	pkgdesc = A versatile and efficient framework for constrained trajectory optimization
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Simple-Robotics/aligator
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = eigen
+	makedepends = fmt
+	makedepends = boost
+	makedepends = benchmark
+	depends = boost-libs
+	depends = eigenpy
+	depends = pinocchio
+	depends = proxsuite-nlp
+	depends = crocoddyl
+	optdepends = doxygen
+	source = pkgname-0.4.0.tar.gz::https://github.com/Simple-Robotics/aligator/archive/refs/tags/v0.4.0.tar.gz
+	source = https://github.com/Simple-Robotics/aligator/pull/103.patch
+	sha256sums = f5d3e3f97b76ff6f72c00c1b856970e2ebb2862fd2ccb48a51e8d890ac1fb0f8
+	sha256sums = d440e3d8ae9aa4a0260677bfbc222caf633cb5fbaab8fa3d631a9d98a39edd4e
+
+pkgname = aligator
+
+pkgname = aligator-docs
