@@ -2,7 +2,7 @@
 
 pkgname=mopidy-ytmusic
 pkgver=0.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Mopidy extension for playing music from Youtube Music"
 
 arch=('any')
@@ -24,15 +24,21 @@ depends=(
   'python-ytmusicapi')
 makedepends=('python' 'git')
 
-source=("$pkgname-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-${pkgver}.zip::$url/archive/refs/heads/master.zip")
 
 package() {
-  cd "mopidy-ytmusic-${pkgver}"
+  cd "mopidy-ytmusic-master"
 
   # change pytube dependency:
   sed -i 's/pytube>=12.1.0,<13.0.0/pytube>=15/' setup.py
 
+  # use oauth in `mopidy ytmusic setup` command:
+  sed -i '20s/ytmusicapi import YTMusic/ytmusicapi.setup import setup_oauth/' mopidy_ytmusic/command.py
+  sed -i 's/\/auth.json/\/oauth.json/' mopidy_ytmusic/command.py
+  sed -i '32,38d' mopidy_ytmusic/command.py
+  sed -i 's/print(YTMusic(filepath=str(path)))/setup_oauth(filepath=str(path))/' mopidy_ytmusic/command.py
+
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
-sha256sums=('14309ed1705cb1f67dc3502ff94387df3c8116d6c5947ba574f91f5744bb1108')
+sha256sums=('adedacf5192e3b541dd47534902d7f1848478e21bf40b723079a4d85d486a2a1')
