@@ -1,0 +1,15 @@
+pkgbase = ormolu-static-git
+	pkgdesc = A formatter for Haskell source code
+	pkgver = 0.7.3.0.r6.g05647fd
+	pkgrel = 1
+	url = https://github.com/tweag/ormolu
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = stack
+	depends = gmp
+	provides = ormolu
+	source = ormolu-static-git::git+https://github.com/tweag/ormolu
+	sha256sums = SKIP
+
+pkgname = ormolu-static-git
