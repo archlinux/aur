@@ -1,6 +1,6 @@
 pkgname='alacritty-git'
 _pkgname="alacritty"
-pkgver=0.13.0.2194.gd65357b2
+pkgver=0.14.0.2261.g2786683e
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/alacritty/alacritty"
 pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
 license=('Apache')
 depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
-makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb' 'libxkbcommon' 'git' 'scdoc' 'gzip')
+makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb' 'libxkbcommon-x11' 'git' 'scdoc' 'gzip')
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=('alacritty')

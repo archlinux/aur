@@ -1,6 +1,6 @@
 pkgbase = alacritty-git
 	pkgdesc = A cross-platform, GPU-accelerated terminal emulator
-	pkgver = 0.13.0.2194.gd65357b2
+	pkgver = 0.14.0.2261.g2786683e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/alacritty/alacritty
@@ -17,7 +17,7 @@ pkgbase = alacritty-git
 	makedepends = desktop-file-utils
 	makedepends = gdb
 	makedepends = libxcb
-	makedepends = libxkbcommon
+	makedepends = libxkbcommon-x11
 	makedepends = git
 	makedepends = scdoc
 	makedepends = gzip
