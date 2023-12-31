@@ -8,5 +8,5 @@ post_upgrade() {
 }
 
 post_remove() {
-    echo "You might want to consider removing the both user and group 'icingadb'."
+    echo "You might want to consider removing both user and group 'icingadb'."
 }
