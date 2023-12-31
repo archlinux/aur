@@ -1,6 +1,6 @@
 pkgbase = pwninit-git
 	pkgdesc = Automate starting binary exploit challenges (git)
-	pkgver = 3.3.0.r0.ga35f697
+	pkgver = 3.3.1.r0.gef64318
 	pkgrel = 1
 	url = https://github.com/io12/pwninit
 	arch = x86_64

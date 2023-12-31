@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=pwninit-git
-pkgver=3.3.0.r0.ga35f697
+pkgver=3.3.1.r0.gef64318
 pkgrel=1
 pkgdesc="Automate starting binary exploit challenges (git)"
 arch=('x86_64')
