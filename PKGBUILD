@@ -1,13 +1,13 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=mini-audicle
-pkgver=1.3.5.2
+pkgver=1.5.2.0
 pkgrel=1
 pkgdesc='Integrated Development + Performance Environment for ChucK'
-arch=('i686' 'x86_64')
-url="http://audicle.cs.princeton.edu/mini/"
+arch=('x86_64')
+url="https://github.com/ccrma/miniAudicle"
 license=('GPL')
 groups=('multimedia')
-depends=('qscintilla-qt4' 'libsndfile'
+depends=('qt6-base' 'qscintilla-qt6' 'libsndfile'
 # Uncomment one of the following three lines depending on the backend that you
 # want. Also uncomment the corresponding make target in build() below.
 # Default: PulseAudio
@@ -15,20 +15,31 @@ depends=('qscintilla-qt4' 'libsndfile'
 #        'alsa-lib'
 #        'jack'
 )
+makedepends=('git' 'rtaudio')
 optdepends=('chuck: for documentation and command line interface')
-source=("http://audicle.cs.princeton.edu/mini/release/files/miniAudicle-$pkgver.tgz"
-        'miniAudicle.desktop')
-sha512sums=('888771609cda50c873efe27dd94d9f10ea0f2904f14300baa4bc485b427814f0cfdcf214f8b2c8a17857dd64549397bfa3aa18d3053b74e3095594aa4d433084'
-            'ac5fa241ab3651f985f0cc9a1c50fee72ee1aa731dd7330824c8f98c77d6d0f12a62aa43fede2930720657b9a526659139c954eaa76a38a19b9b6848aec6318e')
+source=('git+https://github.com/ccrma/miniAudicle.git#tag=de3c3a49816f77681e038fbcd13877ec92c01c07'
+	'git+https://github.com/ccrma/chuck.git'
+	'git+https://github.com/ccrma/chugins.git'
+        'miniAudicle.desktop'
+	'rtaudio.patch')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        '44219938670cd42953c2e948702adea3a33efd99c858638c0b0f824defede799937cc0c49459c10820b44d9fce56c2a071c893fef4b8b27c7e08b348be5c9d7d'
+        '1288e3aa8af0b5e09c00575344cf2142696e7e0c346d6a789aaa9fce7879d463cd876796d3641ca48d430c9fa5f137255bd1ea9b40e8bdc27b34b3daf6ac6f1c')
 
 prepare() {
-	cd "miniAudicle-$pkgver"/src
-	sed -e '/GIT_REVISION/,+2 d' -i miniAudicle.pro
-	perl -pe 's/(?<=-lqscintilla2)\b/_qt4/' -i miniAudicle.pro
+	cd miniAudicle/src
+	git apply -3 "$srcdir"/rtaudio.patch
+	git submodule init
+	git config submodule.src/chuck.url "$srcdir/chuck"
+	git config submodule.src/chugins.url "$srcdir/chugins"
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	cd "miniAudicle-$pkgver"/src
+	cd miniAudicle/src
+	export QMAKE=qmake6
 	make \
 		linux-pulse
 #		linux-alsa
@@ -38,7 +49,7 @@ build() {
 package() {
 	install -Dm644 miniAudicle.desktop "$pkgdir"/usr/share/applications/miniAudicle.desktop
 
-	cd "miniAudicle-$pkgver"/src
+	cd miniAudicle/src
 	install -Dm755 miniAudicle "$pkgdir"/usr/bin/miniAudicle
 	install -Dm644 qt/icon/miniAudicle.png "$pkgdir"/usr/share/pixmaps/miniAudicle.png
 }
