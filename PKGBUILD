@@ -5,7 +5,10 @@ pkgver="1.1.1"
 pkgrel=1
 epoch=0
 pkgdesc="Icinga configuration and state database supporting multiple environments"
-arch=("x86_64")
+arch=(
+    "x86_64"
+    "aarch64"
+)
 url="https://github.com/Icinga/icingadb"
 license=("GPL")
 groups=()
