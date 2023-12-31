@@ -14,7 +14,9 @@ arch=('x86_64' 'i386' 'aarch64' 'armv7h' 'riscv64' 'loong64')
 # arch=('any')
 provides=("$_pkg")
 conflicts=("$_pkg" "$_pkg-bin")
-depends=('mpv')
+# This depends list base on  AUR repo wiliwili.
+# Thanks Puqns67 <me@puqns67.icu> depends list.
+depends=('mpv' 'opencc' 'pystring')
 makedepends=('git' 'cmake' 'gcc' 'libwebp' 'python' 'wayland-protocols' 'libxi')
 
 # options("name")
