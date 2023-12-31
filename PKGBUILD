@@ -11,7 +11,7 @@
 pkgbase=tensorflow-amd-git
 pkgname=(tensorflow-amd-git python-tensorflow-amd-git)
 pkgver=2.13
-_known_good_commit=644d3a917abbcc107fa61e4f719464b68efc2d5c      
+_known_good_commit=92070027fdd41c14710a3bd21b5fca33d8408da0      
 # You can find the latest probably successful official build at:
 # http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r213-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
 # Look for the revision for the "ROCmSoftwarePlatform/tensorflow-upstream" repository.
@@ -109,7 +109,7 @@ prepare() {
 
   # setup.py generates ~1Mb of warnings if you don't explicitly include namespace packages.
   sed -i -E "s/find_packages/find_namespace_packages/" tensorflow-upstream-rocm/tensorflow/tools/pip_package/setup.py
-  
+
   patch -Np1 -i "${srcdir}/fix-tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-upstream-rocm
   # Patch for gcc13: cstdint is no longer implicitly included in some headers, so include it explicitly.
   # See https://gcc.gnu.org/gcc-13/porting_to.html
@@ -184,6 +184,16 @@ build() {
   export TF_NEED_CUDA=0
   export TF_NEED_ROCM=1
   ./configure
+  
+  # echo
+  # echo
+  # echo
+  # sed -i -E "s/\"-licuuc\"/\"--verbose\", \"-lkrunk\", \"-licuuc\"/" "${srcdir}"/tensorflow-upstream-rocm/third_party/icu/BUILD.system
+  # # sed -i -E -z "s/name = \"icuuc\",\n/name = \"icuuc\",\n    copts = \[\"-licuuc\", \"--verbose\"\],\n/" "${srcdir}"/tensorflow-upstream-rocm/third_party/icu/BUILD.system
+  
+  # echo
+  # echo
+  # echo
   
   bazel \
     build ${BAZEL_ARGS[@]} \
