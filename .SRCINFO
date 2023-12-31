@@ -6,6 +6,7 @@ pkgbase = icingadb
 	url = https://github.com/Icinga/icingadb
 	install = icingadb.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = go
 	provides = icingadb
