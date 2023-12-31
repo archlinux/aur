@@ -1,6 +1,6 @@
 # Maintainer: jlaunay
 pkgname=hyprlang-git
-pkgver=r32.1210de1
+pkgver=0.1.0.r3.1210de1
 pkgrel=1
 pkgdesc="hyprlang - the hypr configuration language"
 arch=('any')
@@ -14,11 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname/-git/}"
-	(
-		set -o pipefail
-		git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-	)
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
