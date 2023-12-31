@@ -1,0 +1,28 @@
+pkgbase = proxsuite-nlp
+	pkgdesc = A primal-dual augmented Lagrangian solver for nonlinear programming on manifolds.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Simple-Robotics/proxsuite-nlp
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = eigen
+	makedepends = boost
+	makedepends = fmt
+	depends = proxsuite
+	depends = boost-libs
+	depends = eigenpy
+	depends = pinocchio
+	depends = casadi
+	optdepends = doxygen
+	source = https://github.com/Simple-Robotics/proxsuite-nlp/releases/download/v0.3.1/proxsuite-nlp-0.3.1.tar.gz
+	source = https://github.com/Simple-Robotics/proxsuite-nlp/releases/download/v0.3.1/proxsuite-nlp-0.3.1.tar.gz.sig
+	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
+	validpgpkeys = 1462AF00C9CF3C9E7AFC905E63380359F089A579
+	sha256sums = c3cf8f4a54c94ffa95628b47da15e3feeb573d17ccca370fc53c1ca4befb0b37
+	sha256sums = SKIP
+
+pkgname = proxsuite-nlp
+
+pkgname = proxsuite-nlp-docs
