@@ -1,17 +1,17 @@
-# system requirements: GNU make
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rhdf5lib
 _pkgver=1.24.1
 pkgname=r-${_pkgname,,}
-pkgver=1.24.1
-pkgrel=1
-pkgdesc='hdf5 library as an R package'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="hdf5 library as an R package"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(Artistic2.0)
 depends=(
   r
+  zlib
 )
 optdepends=(
   r-biocstyle
@@ -21,14 +21,15 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('90eb76a2f6b73e18c8fb560ab14e5e3a2c85ae747f278d66e67d3bebfe6c6551')
+md5sums=('8ff63f889952862ce7e1a5a55d693655')
+b2sums=('4041fc6101094a3861b188f19a2468b23b2131f906cc45cb83dd9f998af0396906856d1c2f25bc8a6f60ae35dcffebf6b321e04f93e2a0d58f431e61892bc9ee')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
