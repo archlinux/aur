@@ -2,7 +2,7 @@
 # Contributor: Nicolas Quiénot < niQo at aur >
 
 pkgname=libkqueue
-pkgver=2.3.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="userspace implementation of the kqueue kernel event notification mechanism found in FreeBSD and other BSD-based"
 url="https://github.com/mheily/libkqueue"
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('cmake')
 options=('!libtool')
 source=(https://github.com/mheily/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('38fcbcb97555d5409eec9e51cdd3c6a100b5d2a05edbc77c95e2ab49ee4e0836')
+sha256sums=('c3502d918ad167957302314b6d97e14052beabc5f5698ea76d0527878900d300')
 
 prepare() {
   mkdir -p build
