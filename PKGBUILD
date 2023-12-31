@@ -1,7 +1,7 @@
 # Maintainer:  Andrew O'Neill <andrew at haunted dot sh>
 
 pkgname=crate
-pkgver=5.5.1
+pkgver=5.5.2
 pkgrel=1
 pkgdesc='Shared nothing, fully searchable, document oriented cluster datastore'
 arch=('x86_64')
@@ -12,7 +12,7 @@ install='crate.install'
 source=("https://cdn.crate.io/downloads/releases/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.env")
-sha256sums=('10efd3f46061b69f51f4f8d805b6f527a76a74e2f9b3ffbc5cf1f3262719fa1e'
+sha256sums=('3458cd747b4eb5e5866d428afcb33afa1afd4cfbebef5ed1aed196acc1d43fd5'
             '04b36b561498332b1b569e49b42d0bedf04141de07b7b16ff1b06072673cfd21'
             '6182b8d527d52de4fc80023827518b2e8d873afdda873ef6bd2ed92b91982f75')
 
