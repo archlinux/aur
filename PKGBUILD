@@ -4,7 +4,7 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=simgear-git
-pkgver=2020.4.0r5819.5e30d83a
+pkgver=2020.4.0r6266.a5af7601
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=('x86_64')
@@ -14,9 +14,8 @@ depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph')
 makedepends=('boost' 'cmake' 'git' 'mesa')
 provides=("simgear=${pkgver}")
 conflicts=('simgear')
-options=('staticlibs')
 source=("simgear::git+https://git.code.sf.net/p/flightgear/simgear#branch=next")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/simgear
@@ -27,18 +26,17 @@ pkgver() {
 }
 
 build() {
-  mkdir -p "$srcdir"/simgear-build
-  cd "$srcdir"/simgear-build
+  mkdir -p "$srcdir"/sgbuild
+  cd "$srcdir"/sgbuild
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DENABLE_TESTS=off \
+    -DSIMGEAR_SHARED=ON \
+    -DENABLE_TESTS=OFF \
     ../simgear
   make
 }
 
 package() {
-  cd "$srcdir"/simgear-build
+  cd "$srcdir"/sgbuild
   make DESTDIR="$pkgdir" install
 }
