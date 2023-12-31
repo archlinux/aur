@@ -1,5 +1,5 @@
 # Maintainer: Kaito Udagawa <umireon at gmail dot com>
-# Maintainer: Ng Oon-Ee <n g o o n e e dot t a l k @ gmail dot com>
+# Contributor: Ng Oon-Ee <n g o o n e e dot t a l k @ gmail dot com>
 # Based on obs-backgroundremoval PKGBUILD by PedroHLC <root@pedrohlc.com>
 pkgname=obs-backgroundremoval-git
 pkgver=1.1.8.r1.d77ff28
