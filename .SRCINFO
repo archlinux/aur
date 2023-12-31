@@ -1,6 +1,6 @@
 pkgbase = sof
 	pkgdesc = Simple and fast calculate size of directories
-	pkgver = 4.1
+	pkgver = 4.2
 	pkgrel = 1
 	url = https://codeberg.org/balaraz/sof
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sof
 	makedepends = argumentum
 	provides = sof
 	provides = sof.1.gz
-	source = sof-4.1.tar.gz::https://codeberg.org/balaraz/sof/archive/v4.1.tar.gz
-	sha256sums = 6b9b2d84161226dcf2f66f3a3e054e8a5c5d092bd65e00a440629446465cf273
+	source = sof-4.2.tar.gz::https://codeberg.org/balaraz/sof/archive/v4.2.tar.gz
+	sha256sums = a41db914c8c0de9a2a71fc9d7436485747645b8b849ae0bb9e3f75f96831c926
 
 pkgname = sof
