@@ -1,11 +1,15 @@
 pkgbase = python-wordcloud
 	pkgdesc = A little word cloud generator in Python
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amueller/word_cloud
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = cython
 	depends = python
 	depends = python-matplotlib
