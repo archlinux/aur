@@ -1,7 +1,7 @@
 # Maintainer: Paul Stemmet <aur@luxolus.com>
 
 pkgbase='ceph-bin'
-pkgname=('ceph-bin' 'ceph-libs-bin' 'ceph-mgr-bin')
+pkgname=('ceph-bin' 'ceph-libs-bin')
 pkgver=18.2.0
 pkgrel=2
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
@@ -126,13 +126,6 @@ package_ceph-bin() {
       -x -f "${p}_${pkgver}_${pkgrel}.tar.zst" \
       -C "${pkgdir}"
   done
-}
-
-package_ceph-mgr-bin() {
-  depends=(
-    "ceph-bin>=18.2.0"
-  )
-  conflicts=('ceph-mgr')
 }
 
 # vim:set ts=2 sw=2 et:

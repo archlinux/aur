@@ -182,7 +182,3 @@ pkgname = ceph-libs-bin
 	depends = python-yaml
 	provides = ceph-libs
 	conflicts = ceph-libs
-
-pkgname = ceph-mgr-bin
-	depends = ceph-bin>=18.2.0
-	conflicts = ceph-mgr
