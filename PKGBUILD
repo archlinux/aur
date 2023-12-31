@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-dashboard"
 _nodename="cellframe-node"
-pkgver=2.12.81
+pkgver=2.13.5
 pkgrel=1
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(qt5-graphicaleffects qt5-base qt5-quickcontrols2 qt5-quickcontrols logrotate libxcrypt-compat)
 makedepends=(git qt5-base qt5-declarative cmake python3)
 options=(!makeflags !buildflags)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=4a55d77efdb3c6a05fbb8b802706ae979b31859d)
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=d38b3cd135e31c6a2569ff9582bbc4f4094ecd8c)
 md5sums=(SKIP)
 conflicts=(cellframe-node cellframe-wallet)
 install=$pkgname.install
