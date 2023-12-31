@@ -1,33 +1,33 @@
-# system requirements: GNU Make
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=scs
 _pkgver=3.2.4
 pkgname=r-${_pkgname,,}
-pkgver=3.2.4
-pkgrel=1
-pkgdesc='Splitting Conic Solver'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
-makedepends=('make')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Splitting Conic Solver"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL3)
 depends=(
+  blas
+  lapack
   r
 )
 optdepends=(
-  r-matrix
   r-slam
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c3f39874bf4532fa8c2f2e2c41533ba4fe20b61cf6dfc6314407dc981621298f')
+md5sums=('90d47bf8723da0545ee1edbd294cd4d6')
+b2sums=('ef5e092b2977adfaf83de0fc499d81a0f21e68d964e3a8b07b3af25d56c47ab6398da18cd553c26863bd352b7552a4ce3da37fbf4a09857c6905cc9fbcd0a767')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
