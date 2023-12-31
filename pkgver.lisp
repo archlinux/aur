@@ -1,0 +1,8 @@
+(let* ((version (getf (with-open-file (s "version.sexp") (read s)) :version))
+       (p1 (position #\- version))
+       (p2 (position #\- version :from-end t)))
+  (write-string (subseq version 0 p1))
+  (write-string ".r")
+  (write-string (subseq version (1+ p1) p2))
+  (write-char #\.)
+  (write-string (subseq version (1+ p2))))
