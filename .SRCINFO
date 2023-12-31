@@ -6,6 +6,7 @@ pkgbase = hyprlang-git
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = cmake
 	depends = bash
 	provides = hyprlang
 	source = git+https://github.com/hyprwm/hyprlang.git
