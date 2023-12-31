@@ -1,14 +1,14 @@
 # Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
 
 pkgname=moneymanagerex-git
-pkgver=v1.6.3.r1461.g355d4cb42
+pkgver=1.6.4.r1630.g3296c175e
 pkgrel=1
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest commit."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
 license=('GPL')
 depends=('wxwidgets-gtk3' 'webkit2gtk')
-makedepends=('cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'jq' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
+makedepends=('appstream' 'cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'jq' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
 optdepends=('cups: for printing support')
 replaces=('mmex')
 provides=('moneymanagerex')
