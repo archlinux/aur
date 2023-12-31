@@ -23,7 +23,6 @@ depends=(
 makedepends=(
   cuda
   gcc-fortran
-  inetutils
   valgrind
 )
 optdepends=(

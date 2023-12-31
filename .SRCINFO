@@ -7,7 +7,6 @@ pkgbase = openmpi
 	license = custom:OpenMPI
 	makedepends = cuda
 	makedepends = gcc-fortran
-	makedepends = inetutils
 	makedepends = valgrind
 	depends = gcc-libs
 	depends = glibc
