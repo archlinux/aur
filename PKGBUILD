@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi@kokakiwi.net>
 
 pkgname=elixir-ls
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc='A frontend-independent Language Server Protocol for Elixir'
 url='https://github.com/elixir-lsp/elixir-ls'
@@ -10,8 +10,8 @@ arch=('any')
 depends=('elixir' 'erlang-nox')
 makedepends=('git' 'rebar3')
 source=("elixir-ls-$pkgver.tar.gz::https://github.com/elixir-lsp/elixir-ls/archive/v$pkgver.tar.gz")
-sha256sums=('032d280e4bf5cb8871563a2715ca08dc1d98bc1d49a6d3f8713cd3b263072567')
-b2sums=('78277822f59df6ce4986ff85967d97a67183d5b25a36f1ed6aaf30645fb86ff169bccee0001d4f716e107cd74b53364b297f3ff0e169c7a879c94a7c5f1f1ed2')
+sha256sums=('5592b242d5c341af4b12499b2fcc537f3b9476a4d91337abe49553b702cd7234')
+b2sums=('a676087c584f8026fd887b6ed0981cfe210e062808dacc772a7a599f6f8ec5b066cfdc1bb2116b5c919d442e8963d933e72656b76c98446ec0c92668fb1e0fe1')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -33,7 +33,7 @@ package() {
   export MIX_ENV=prod
 
   install -dm0755 "$pkgdir"/usr/lib/$pkgname
-  mix elixir_ls.release -o "$pkgdir"/usr/lib/$pkgname
+  mix elixir_ls.release2 -o "$pkgdir"/usr/lib/$pkgname
 
   install -dm0755 "$pkgdir"/usr/bin
 
