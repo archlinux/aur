@@ -1,6 +1,6 @@
 pkgbase = windscribe-bin
 	pkgdesc = Windscribe Client
-	pkgver = 2.8.6-1
+	pkgver = 2.8.6
 	pkgrel = 1
 	url = https://windscribe.com/download
 	install = windscribe-bin.install
