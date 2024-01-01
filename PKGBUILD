@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
-pkgver=3.6.2
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
 arch=('x86_64')
