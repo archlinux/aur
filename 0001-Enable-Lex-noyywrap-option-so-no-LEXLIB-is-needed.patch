@@ -1,0 +1,45 @@
+From 7cecf788d029241b50aabfb886767ad5b1e03000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Mon, 1 Jan 2024 21:40:03 +0000
+Subject: [PATCH] Enable Lex noyywrap option so no LEXLIB is needed.
+
+Fixes the build with regenerated ./configure. Seems related to:
+- https://lists.fedorahosted.org/archives/list/pam-developers@lists.fedorahosted.org/thread/4T5ZGPKGHHYOQFAOBFJO7J7SIFZLQARP/
+- https://bugs.archlinux.org/task/79780
+---
+ Simulator/input/lex.l | 2 ++
+ configure.ac          | 5 -----
+ 2 files changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/Simulator/input/lex.l b/Simulator/input/lex.l
+index 885864c..8d91a02 100644
+--- a/Simulator/input/lex.l
++++ b/Simulator/input/lex.l
+@@ -32,6 +32,8 @@
+ 
+ \* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+ 
++%option noyywrap
++
+ %{
+ char lex_l_rcsid[]="$Id$";
+ #include <stddef.h>
+diff --git a/configure.ac b/configure.ac
+index 8b0d0b8..9eeccf1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -152,11 +152,6 @@ if test -z "$YACC"; then
+   ac_cv_errcount=$((ac_cv_errcount + 1)) 
+ fi 
+ 
+-if test -z "$LEXLIB"; then 
+-  AC_MSG_WARN(flex or lex not found. Please install flex before continuing) 
+-  ac_cv_errcount=$((ac_cv_errcount + 1)) 
+-fi 
+-	 
+ if test $ac_cv_errcount -gt 0; then 
+   AC_MSG_ERROR("Critical packages are missing and compilation will fail. Please 
+                install the packages listed above and rerun ./configure")
+-- 
+2.43.0
+

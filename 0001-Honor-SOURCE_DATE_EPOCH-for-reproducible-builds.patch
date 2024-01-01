@@ -1,0 +1,25 @@
+From f523d53cf9428e667bacc449892a8e5bef7f290c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Mon, 1 Jan 2024 21:40:38 +0000
+Subject: [PATCH] Honor SOURCE_DATE_EPOCH for reproducible builds.
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9eeccf1..ea1f62d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -19,7 +19,7 @@ AM_INIT_AUTOMAKE([tar-ustar subdir-objects no-dependencies])
+ AC_PREFIX_DEFAULT(${DIMEMASDIR:-/usr/local})
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+-AC_DEFINE_UNQUOTED(DATE, ["`date`"], [Current date of compilation] )
++AC_DEFINE_UNQUOTED(DATE, ["`date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}"`"], [Current date of compilation] )
+ #AM_SILENT_RULES([yes])
+ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+ 
+-- 
+2.43.0
+
