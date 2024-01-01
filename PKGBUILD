@@ -6,7 +6,7 @@ gitver=v6.6.9
 patchver=20230105
 patchname=more-uarches-for-kernel-5.17+.patch
 pkgver=6.6.v.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -89,7 +89,6 @@ _package() {
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # install mkinitcpio preset file for kernel
   install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
@@ -155,7 +154,6 @@ _package-headers() {
 
   # fix permissions on scripts dir
   msg2 "fix perms on scripts dir"
-  #chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
   echo "makedir tmp_versions"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
   echo "makedir buildarchkernel"
