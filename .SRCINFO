@@ -1,0 +1,14 @@
+pkgbase = textbar-git
+	pkgdesc = Text status bar for X11
+	pkgver = db4159c546
+	pkgrel = 1
+	url = https://gitea.itycodes.org/itycodes/textbar
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = gcc>=11.0.0,cairo>=1.17.8,libx11>=1.8.0
+	provides = textbar
+	conflicts = textbar
+	source = https://gitea.itycodes.org/itycodes/textbar/archive/db4159c5469d763c3b8c901d2bd0559a9d03129a.tar.gz
+	sha256sums = b2d5b985a697dfbf09059084d030ac8ccf6b1a92791f7877bc9ba109d0a8e43b
+
+pkgname = textbar-git
