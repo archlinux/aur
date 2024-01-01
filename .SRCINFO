@@ -1,6 +1,6 @@
 pkgbase = alchemy-next-viewer-bin
 	pkgdesc = A Second Life client with focus on performance and code correctness - Binary Project build.
-	pkgver = 7.1.2.2288
+	pkgver = 7.1.2.2309
 	pkgrel = 1
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
@@ -36,7 +36,7 @@ pkgbase = alchemy-next-viewer-bin
 	optdepends = wine: More up-to-date, less buggy SLVoice support
 	provides = alchemy-viewer
 	options = !strip
-	source = https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/Alchemy_Beta/7.1.2.2288/Alchemy_Beta_7_1_2_2288_x86_64.tar.xz
-	sha256sums = 49d349c110b7c07ab3f5311001fd96deabf0771e2d4eff8a71c0338dfbcdda15
+	source = https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/Alchemy_Beta/7.1.2.2309/Alchemy_Beta_7_1_2_2309_x86_64.tar.xz
+	sha256sums = 3260fb38a310eceb340e0b5333c58d7b11d17869a7768ac8e48aa02676835e01
 
 pkgname = alchemy-next-viewer-bin
