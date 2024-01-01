@@ -15,7 +15,7 @@ checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=(
   'dosbox: required for Boxtron'
   'git: required for SteamTinkerLaunch'
-  'inotify-tools: required for Boxtron & Robera'
+  'inotify-tools: required for Boxtron & Roberta'
   'scummvm: required for Roberta'
   'timidity++: required for Boxtron'
   'unzip: required for SteamTinkerLaunch'
