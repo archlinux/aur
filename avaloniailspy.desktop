@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=AvaloniaILSpy
-GenericName=AvaloniaILSpy
-Comment=Avalonia-based .NET Decompiler (port of ILSpy)
-Categories=Development;
-Exec=avaloniailspy
-Icon=avaloniailspy
-Terminal=false
-Type=Application
