@@ -2,14 +2,14 @@
 pkgname=python-olca-ipc
 _name=${pkgname#python-}
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="API for communicating with an openLCA IPC server"
 arch=('x86_64')
 url="https://github.com/GreenDelta/olca-ipc.py"
 license=('MPL2')
 groups=()
 depends=()
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel)
 optdepends=()
 provides=('python-olca-ipc')
 conflicts=()

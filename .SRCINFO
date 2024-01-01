@@ -1,11 +1,13 @@
 pkgbase = python-olca-ipc
 	pkgdesc = API for communicating with an openLCA IPC server
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GreenDelta/olca-ipc.py
 	arch = x86_64
 	license = MPL2
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	provides = python-olca-ipc
 	source = https://files.pythonhosted.org/packages/source/o/olca-ipc/olca-ipc-2.0.2.tar.gz
 	md5sums = b3d7142c99c7ae843902a9fd7a860a3f
