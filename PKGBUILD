@@ -38,7 +38,7 @@ _opt_altcommand=0
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre9.dev.r1551.g5a001d2f3
+pkgver=2.0pre9.dev.r1646.g5959e5fb8
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
@@ -60,7 +60,8 @@ optdepends=(
   'sdl2: graphical display'
   'fluidsynth: MIDI support'
   'soundfont-fluid: or other SoundFont for MIDI support' # ERROR: Your fluidsynth is too old and soundfonts not found
-  'vde2-dosemu2: networking support'
+  #'vde2-dosemu2: networking support' # https://github.com/dosemu2/dosemu2/issues/327
+  #'slirp: networking support' # Integrated
   'fbset: graphical display on console'
 )
 makedepends=('git' 'flex' 'bison' 'binutils' 'sed' 'perl' 'bash')
@@ -432,7 +433,8 @@ config {
   sysconfdir /etc
   fdtarball ${_freedos}
   prefix /usr
-  plugin_vde on
+  plugin_vde off
+  plugin_slirp on
   fdpp ${_onoff[${_opt_fdpp}]}
   debug ${_onoff[${_opt_Debug}]}
 }
