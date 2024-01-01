@@ -8,7 +8,7 @@ url="https://gitlab.com/skidoo/zzzfm"
 license=(GPL3)
 provides=('zzzfm')
 conflicts=('zzzfm')
-depends=('ffmpegthumbnailer' 'e2fsprogs' 'gdk-pixbuf2' 'glibc' 'gtk2>=2.24.32' 'hicolor-icon-theme' 'libudev')
+depends=('ffmpegthumbnailer' 'e2fsprogs' 'gdk-pixbuf2' 'glibc' 'gtk2>=2.24.32' 'hicolor-icon-theme' 'udev')
 makedepends=(intltool git)
 optdepends=('dbus: dbus integration'
             'util-linux: disk eject support'

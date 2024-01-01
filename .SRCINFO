@@ -14,7 +14,7 @@ pkgbase = zzzfm-git
 	depends = glibc
 	depends = gtk2>=2.24.32
 	depends = hicolor-icon-theme
-	depends = libudev
+	depends = udev
 	optdepends = dbus: dbus integration
 	optdepends = util-linux: disk eject support
 	optdepends = lsof: device processes
