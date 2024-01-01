@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce-git
 pkgver=r1722.b7f3457
-pkgrel=1
+pkgrel=2
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
@@ -16,8 +16,10 @@ source=("git+https://github.com/nestybox/sysbox.git"
         "git+https://github.com/nestybox/libseccomp-golang.git"
         "git+https://github.com/nestybox/sysbox-mgr.git"
         "git+https://github.com/nestybox/sysbox-pkgr.git"
-        "git+https://github.com/nestybox/sysbox-runc.git")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        "git+https://github.com/nestybox/sysbox-runc.git"
+        Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            5264ed0c448868083a9f1bedc2846d744c9ea90e58f8555c50bbc155008512e5)
 install=install.sh
 provides=('sysbox-ce')
 conflicts=('sysbox-ce')
@@ -58,6 +60,8 @@ prepare() {
 	sed -i 's/--go_out=plugins=grpc:./--go_out=. --go-grpc_out=. --go-grpc_opt=require_unimplemented_servers=false/g' \
 		sysbox/sysbox-ipc/sysboxFsGrpc/sysboxFsProtobuf/Makefile \
 		sysbox/sysbox-ipc/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile
+
+       patch -d sysbox -Np1 -i "$srcdir/Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch"
 }
 
 build() {
