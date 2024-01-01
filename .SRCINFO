@@ -1,7 +1,7 @@
 pkgbase = tomato
 	pkgdesc = AUR local repository manager
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aji-prod/tomato
 	arch = any
 	license = GPL3
