@@ -5,16 +5,24 @@
 # Contributor: Gábor Sebestyén <segabor@gmail.com>
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
+## useful links
+# https://swift.org/
+# https://github.com/apple/swift
+
+## options
+
+
+## basic info
 _pkgname="swift-language"
 pkgname="$_pkgname"
 _swiftver=swift-5.9.2-RELEASE
 pkgver=5.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language and debugger"
-arch=('x86_64')
-#url="https://swift.org/"
 url="https://github.com/apple/swift"
-license=('apache2')
+license=('Apache-2.0')
+arch=('x86_64')
+
 depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses')
 makedepends=(
   'clang' 'cmake' 'git' 'lld' 'llvm' 'ninja'
@@ -46,7 +54,6 @@ source=(
   "swift-asn1"::"git+https://github.com/apple/swift-asn1#tag=0.7.0"
   "swift-atomics"::"git+https://github.com/apple/swift-atomics#tag=1.0.2"
   "swift-certificates"::"git+https://github.com/apple/swift-certificates#tag=0.4.1"
-  "swift-cmark-gfm"::"git+https://github.com/apple/swift-cmark#tag=${_swiftver}"
   "swift-collections"::"git+https://github.com/apple/swift-collections#tag=1.0.1"
   "swift-crypto"::"git+https://github.com/apple/swift-crypto#tag=2.5.0"
   "swift-docc"::"git+https://github.com/apple/swift-docc#tag=${_swiftver}"
@@ -103,16 +110,14 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  'SKIP'
 )
-
 
 # By default makepkg runs strip on binaries. This causes issues with the Swift REPL.
 # from https://github.com/RLovelett/swift-aur/blob/master/PKGBUILD
 # termux had no trouble up to now, strip all executables and shared objects:
 # https://github.com/termux/termux-packages/blob/master/scripts/build/termux_step_massage.sh#L24
 # would be cool to not strip only the ones which really are necessary, but how?
-options=(!strip)
+#options=(!strip)
 
 prepare () {
   ln -sfP 'apple-indexstore-db' 'indexstore-db'
@@ -122,7 +127,6 @@ prepare () {
   ln -sfP 'swift-asn1' 'asn1'
   ln -sfP 'swift-atomics' 'atomics'
   ln -sfP 'swift-certificates' 'certificates'
-  ln -sfP 'swift-cmark' 'cmark'
   ln -sfP 'swift-cmark' 'cmark'
   ln -sfP 'swift-collections' 'collections'
   ln -sfP 'swift-corelibs-foundation' 'corelibs-foundation'
@@ -176,17 +180,22 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake \
-    --install "$srcdir/build/Ninja-ReleaseAssert/cmark-linux-x86_64" \
-    --prefix "/usr/lib/swift"
-
-  DESTDIR="$pkgdir" cmake \
-    --install "$srcdir/build/Ninja-ReleaseAssert/llvm-linux-x86_64" \
-    --prefix "/usr/lib/swift"
+  local _install_path='usr/lib/swift'
 
   DESTDIR="$pkgdir" cmake \
     --install "$srcdir/build/Ninja-ReleaseAssert/swift-linux-x86_64" \
-    --prefix "/usr/lib/swift"
+    --prefix "/$_install_path"
+
+  find "$pkgdir/$_install_path" -type f -name '*.a' -delete
+  find "$pkgdir/$_install_path" -type f -name '*.syms' -delete
+  find "$pkgdir/$_install_path" -type f -name '*-test' -delete
+
+  for i in swift swift sourcekit-lsp ; do
+    install -Dm644 /dev/stdin "$pkgdir/usr/bin/$i" <<END
+#!/usr/bin/env sh
+exec "/$_install_path/bin/$i" "\$@"
+END
+  done
 }
 
 # vim:set ts=2 sw=2 et:
