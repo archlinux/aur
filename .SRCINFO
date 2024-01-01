@@ -1,12 +1,12 @@
 pkgbase = prisma-language-server
 	pkgdesc = Language Server Protocol (LSP) implementation for Prisma
-	pkgver = 5.5.2
+	pkgver = 5.7.1
 	pkgrel = 1
 	url = https://www.npmjs.com/package/@prisma/language-server
 	arch = any
 	makedepends = npm
-	noextract = language-server-5.5.2.tgz
-	source = https://registry.npmjs.org/@prisma/language-server/-/language-server-5.5.2.tgz
-	md5sums = da05bca1268579a24fac3ced9c2ce08b
+	noextract = language-server-5.7.1.tgz
+	source = https://registry.npmjs.org/@prisma/language-server/-/language-server-5.7.1.tgz
+	md5sums = d4ef6261138d1aed1b2652201d67accf
 
 pkgname = prisma-language-server
