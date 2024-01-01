@@ -6,7 +6,8 @@ pkgbase = textbar-git
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = gcc>=11.0.0
-	depends = cairo>=1.17.8,libx11>=1.8.0
+	depends = cairo>=1.17.8
+	depends = libx11>=1.8.0
 	provides = textbar
 	conflicts = textbar
 	source = https://gitea.itycodes.org/itycodes/textbar/archive/db4159c5469d763c3b8c901d2bd0559a9d03129a.tar.gz
