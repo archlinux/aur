@@ -1,0 +1,14 @@
+pkgbase = dnschanger-desktop
+	pkgdesc = Build DNS Changer Desktop Application from source
+	pkgver = 2.1.11
+	pkgrel = 1
+	url = https://github.com/DnsChanger/dnsChanger-desktop
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	source = https://github.com/DnsChanger/dnsChanger-desktop/archive/refs/tags/v2.1.11.zip
+	sha256sums = c259c0c1e227c73378b55689574397706cfb063e7192dc34fde004dd3aa883de
+
+pkgname = dnschanger-desktop
