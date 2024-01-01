@@ -1,7 +1,7 @@
 # Maintainer: Cyril <cyrwae[at]hotmail[dot]com>
 pkgname=python-pyshacl
 _name=${pkgname#python-}
-pkgver=0.20.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Python SHACL Validator"
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=()
 depends=('python-rdflib')
 makedepends=('python-setuptools')
 optdepends=()
-provides=('python-brickschema')
+provides=('python-pyshacl')
 conflicts=()
 replaces=()
 backup=()
@@ -20,14 +20,14 @@ install=
 changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
 noextract=()
-md5sums=('63c1eb58c26072ea73741b143cae8a44')
+md5sums=('7e13c493aa917e6756f0f0df56b2811d')
 
 build() {
     cd "${_name}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${_name}-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
