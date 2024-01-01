@@ -18,6 +18,7 @@ prepare() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
 
 	patch -Np1 -i "$srcdir/0001-Enable-Lex-noyywrap-option-so-no-LEXLIB-is-needed.patch"
+	rm Simulator/input/lex.c # Force the file to be re-generated from the Lex input
 	patch -Np1 -i "$srcdir/0001-Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch"
 
 	autoreconf -i -f
