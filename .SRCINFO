@@ -1,0 +1,15 @@
+pkgbase = r-mus
+	pkgdesc = Monetary Unit Sampling and Estimation Methods, Widely Used in Auditing
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=MUS
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-desctools
+	optdepends = r-pander
+	source = https://cran.r-project.org/src/contrib/MUS_0.1.6.tar.gz
+	md5sums = ff9dda815a29881a16a55986440bdd96
+	b2sums = 4317364996569fa864240d94622e8bf71ea3834656c2ee72bb4fd7b3ba336f8e62436e61f3c0292a105b456acaeda6fa3fc658531fd301b68d873fedb6c7e39f
+
+pkgname = r-mus
