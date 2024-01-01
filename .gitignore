@@ -1,5 +1,4 @@
-pkg/
-src/
-OFL-*.txt
-static_otf-*.zip
-otf-stix-*.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

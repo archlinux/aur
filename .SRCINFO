@@ -1,13 +1,17 @@
 pkgbase = otf-stix
-	pkgdesc = An OpenType font with math support, designed for scientific and engineering printing
-	pkgver = 2.13
+	pkgdesc = OpenType Unicode fonts for Scientific, Technical, and Mathematical texts
+	pkgver = 2.13.b171
 	pkgrel = 1
-	url = http://www.stixfonts.org
+	url = https://github.com/stipub/stixfonts
 	arch = any
-	license = custom:OFL
-	source = static_otf-2.13.zip::https://github.com/stipub/stixfonts/raw/v2.13/zipfiles/static_otf.zip
-	source = OFL-2.13.txt::https://github.com/stipub/stixfonts/raw/v2.13/OFL.txt
-	sha256sums = 58f759a766ba4fa3d4d112b190e8119afd64984aaa31d5dc273a8ce46223cc29
-	sha256sums = bec17cee6412788db45fd2644b301afbc99cc5d372ddd3345dc4a7bfdefb9f04
+	license = OFL-1.1-RFN
+	source = stix-otf-static-2.13.b171.zip::https://github.com/stipub/stixfonts/raw/v2.13b171/zipfiles/static_otf.zip
+	source = stix-ttf-variable-2.13.b171.zip::https://github.com/stipub/stixfonts/raw/v2.13b171/zipfiles/variable_ttf.zip
+	source = stix-license-2.13.b171.txt::https://github.com/stipub/stixfonts/raw/v2.13b171/OFL.txt
+	sha256sums = b5ec34636e117ec97e71e6b89ad2718618184329bbb3d3be5d1e3b0f8ed52789
+	sha256sums = d567c6c9a899665744e08391daeee1adbf039e109b10309855321b6c1a8f8acd
+	sha256sums = 0c8825913b60d858aacdb33c4ca6660a7d64b0d6464702efbb19313f5765861a
 
 pkgname = otf-stix
+
+pkgname = ttf-stix-variable
