@@ -1,10 +1,11 @@
 pkgbase = swiftly-bin
 	pkgdesc = A Swift toolchain installer and manager, written in Swift.
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://swift-server.github.io/swiftly/
 	install = swiftly-bin.install
 	arch = x86_64
+	arch = aarch64
 	license = apache
 	depends = libutil-linux
 	depends = libxml2
@@ -13,7 +14,9 @@ pkgbase = swiftly-bin
 	provides = swift-language
 	conflicts = swift-language
 	options = !strip
-	source = https://github.com/swift-server/swiftly/releases/download/0.2.0/swiftly-x86_64-unknown-linux-gnu
-	sha256sums = e0e58f6cbd4ad60c4cd51eeed88c3e908b3e2951bf55bcd3799fdd66d0fddbf4
+	source_x86_64 = https://github.com/swift-server/swiftly/releases/download/0.2.0/swiftly-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = e0e58f6cbd4ad60c4cd51eeed88c3e908b3e2951bf55bcd3799fdd66d0fddbf4
+	source_aarch64 = https://github.com/swift-server/swiftly/releases/download/0.2.0/swiftly-x86_64-unknown-linux-gnu
+	sha256sums_aarch64 = 446053021cc3c36ba78c6742d2a885650d6de59258382d229a167d070b827f69
 
 pkgname = swiftly-bin

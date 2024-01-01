@@ -3,9 +3,9 @@
 _pkgname=swiftly
 pkgname=swiftly-bin
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Swift toolchain installer and manager, written in Swift."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://swift-server.github.io/swiftly/"
 license=('apache')
 depends=('libutil-linux' 'libxml2' 'ncurses')
@@ -13,8 +13,10 @@ optdepends=('python39: required for REPL')
 options=('!strip')
 provides=(swift-language)
 conflicts=(swift-language)
-source=("https://github.com/swift-server/${_pkgname}/releases/download/${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu")
-sha256sums=('e0e58f6cbd4ad60c4cd51eeed88c3e908b3e2951bf55bcd3799fdd66d0fddbf4')
+source_x86_64=("https://github.com/swift-server/${_pkgname}/releases/download/${pkgver}/${_pkgname}-$CARCH-unknown-linux-gnu")
+source_aarch64=("https://github.com/swift-server/${_pkgname}/releases/download/${pkgver}/${_pkgname}-$CARCH-unknown-linux-gnu")
+sha256sums_x86_64=('e0e58f6cbd4ad60c4cd51eeed88c3e908b3e2951bf55bcd3799fdd66d0fddbf4')
+sha256sums_aarch64=('446053021cc3c36ba78c6742d2a885650d6de59258382d229a167d070b827f69')
 install='swiftly-bin.install'
 
 package() {
@@ -23,7 +25,7 @@ package() {
     echo "{ \"platform\": { \"name\": \"ubi9\", \"nameFull\": \"ubi9\", \"namePretty\": \"Arch Linux\" }, \"installedToolchains\": [] }" > ~/.local/share/${_pkgname}/config.json    # basic config.json setup
   fi
 
-  install -D -m 0755 ${_pkgname}-x86_64-unknown-linux-gnu ${pkgdir}/usr/bin/${_pkgname}
+  install -D -m 0755 ${_pkgname}-$CARCH-unknown-linux-gnu ${pkgdir}/usr/bin/${_pkgname}
 
   # setting up symlinks to existing ncurses libs (no ncurses5-compat-libs needed!)
   mkdir -p ${pkgdir}/usr/lib
