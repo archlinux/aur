@@ -1,0 +1,16 @@
+diff -pNaru5 a/libparistraceroute/algorithms/mda/interface.c b/libparistraceroute/algorithms/mda/interface.c
+--- a/libparistraceroute/algorithms/mda/interface.c	2016-07-11 06:22:56.000000000 -0400
++++ b/libparistraceroute/algorithms/mda/interface.c	2023-12-31 21:18:16.562870584 -0500
+@@ -180,11 +180,11 @@ static inline void mda_hop_dump_with_res
+     address_resolv(hop->address, &hostname, CACHE_ENABLED);
+     mda_hop_dump(hop, hostname);
+     if (hostname) free(hostname);
+ }
+ 
+-void mda_link_dump(const mda_interface_t * link[2], bool do_resolv)
++void mda_link_dump(const mda_interface_t ** link, bool do_resolv)
+ {
+     char *  hostname = NULL;
+     uint8_t ttl;
+     size_t  i;
+ 
