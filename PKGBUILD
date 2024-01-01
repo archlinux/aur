@@ -15,7 +15,7 @@ source=(.install)
 source_x86_64=("https://github.com/Bin-Huang/chatbox/releases/download/v$pkgver/Chatbox-${pkgver}-amd64.deb")
 
 source_aarch64=("https://github.com/Bin-Huang/chatbox/releases/download/v$pkgver/Chatbox-${pkgver}-arm64.deb")
-sha256sums=('597d64a01d6cff6ca39549363a5ffe9142691ad9a2f4ed3369912cbf2391230b')
+sha256sums=('a5987382857685e5851bade958603ee0025fe18eb667044999b35737a30e6a0c')
 sha256sums_x86_64=('04ba834634dbdee9b902e1a60788aadb8e74c43a61a81250467fdbcf3d370548')
 sha256sums_aarch64=('e1d48f491b2edc596fa68670507c3e787212a3eacf723f470b0e9beedaf8e66a')
 
