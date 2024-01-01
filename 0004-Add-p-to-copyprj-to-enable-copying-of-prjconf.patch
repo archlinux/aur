@@ -9,7 +9,7 @@ Subject: [PATCH] Add -p to copyprj to enable copying of prjconf
  2 files changed, 8 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index d67a4184afac79795c2e3dd7a2ca1ad64d77fe9a..2eff6bfb2a38a7919d2c1850a57f49ebe7feba92 100644
+index 46bbc28087338961ff09cabc964ae0024a73001c..c7ad5927974123bae6e31bd23057ffd6f6d1ecdd 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -2114,6 +2114,8 @@ class Osc(cmdln.Cmdln):
@@ -21,33 +21,42 @@ index d67a4184afac79795c2e3dd7a2ca1ad64d77fe9a..2eff6bfb2a38a7919d2c1850a57f49eb
      @cmdln.option('-r', '--re-sign', action='store_true',
                          help='re-sign the binaries')
      @cmdln.option('-m', '--message', metavar='TEXT',
-@@ -2159,6 +2161,7 @@ class Osc(cmdln.Cmdln):
+@@ -2156,6 +2158,7 @@ class Osc(cmdln.Cmdln):
+         r = copy_prj(src_apiurl, src_project, dst_project,
+                      withbinaries = opts.with_binaries,
+                      withhistory = opts.with_history,
++                     withprjconf = opts.prjconf,
                       makeolder = opts.make_older,
                       resign = opts.re_sign,
                       now = opts.now,
-+                     prjconf = opts.prjconf,
-                      comment = comment)
-         print("done cp")
-         print(r)
 diff --git a/osc/core.py b/osc/core.py
-index d3d4ca9cf3b3cfc6ad966fa3692cfa019d8d567c..66b51f437df47cb09cb7b440338836cf9a79ec62 100644
+index d3d4ca9cf3b3cfc6ad966fa3692cfa019d8d567c..d79c1bac7e35daa73a700344c23410be16adfe9e 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -6284,6 +6284,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -6282,8 +6282,10 @@ def copy_pac(
+ def copy_prj(src_apiurl, src_project, dst_project,
+              withbinaries = False,
               withhistory = False,
++             withprjconf = False,
               makeolder = False,
               resign = False,
 +             now = False,
-+             prjconf = False,
               comment = None):
      """
      Create a copy of a project.
-@@ -6305,6 +6307,9 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -6297,6 +6299,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
+         query['withbinaries'] = '1'
+     if withhistory:
+         query['withhistory'] = '1'
++    if withprjconf:
++        query['withprjconf'] = '1'
+     if makeolder:
+         query['makeolder'] = '1'
+     if resign:
+@@ -6305,6 +6309,7 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['comment'] = comment
      if now:
          query['nodelay'] = '1'
-+    if prjconf:
-+        query['prjconf'] = '1'
 +
      u = makeurl(src_apiurl, ['source', dst_project], query=query)
      print("copyprj ", u, file=sys.stderr)

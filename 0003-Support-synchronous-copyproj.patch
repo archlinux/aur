@@ -9,7 +9,7 @@ Subject: [PATCH] Support synchronous copyproj
  2 files changed, 7 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index ad45daa45efbb4f4e53e2bcc03e6731a22e78e59..d67a4184afac79795c2e3dd7a2ca1ad64d77fe9a 100644
+index 7fc9dd5c47cb46d494f206a94793511e5fe901de..46bbc28087338961ff09cabc964ae0024a73001c 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -2108,6 +2108,8 @@ class Osc(cmdln.Cmdln):
@@ -18,7 +18,7 @@ index ad45daa45efbb4f4e53e2bcc03e6731a22e78e59..d67a4184afac79795c2e3dd7a2ca1ad6
                          help='copy the built binaries over to avoid a rebuild')
 +    @cmdln.option('-n', '--now', action='store_true',
 +                  help='copy synchronously (may take some time to complete)')
-     @cmdln.option('-x', '--with-history', action='store_true',
+     @cmdln.option('-H', '--with-history', action='store_true',
                          help='replicate the history of each package.')
      @cmdln.option('-o', '--make-older', action='store_true',
 @@ -2126,6 +2128,8 @@ class Osc(cmdln.Cmdln):

@@ -13,7 +13,7 @@ Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
  2 files changed, 80 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index b7c19bc63e1dbd5566ead116890df62a72a4bb05..ad45daa45efbb4f4e53e2bcc03e6731a22e78e59 100644
+index b7c19bc63e1dbd5566ead116890df62a72a4bb05..7fc9dd5c47cb46d494f206a94793511e5fe901de 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -2106,6 +2106,58 @@ class Osc(cmdln.Cmdln):
@@ -22,7 +22,7 @@ index b7c19bc63e1dbd5566ead116890df62a72a4bb05..ad45daa45efbb4f4e53e2bcc03e6731a
  
 +    @cmdln.option('-b', '--with-binaries', action='store_true',
 +                        help='copy the built binaries over to avoid a rebuild')
-+    @cmdln.option('-x', '--with-history', action='store_true',
++    @cmdln.option('-H', '--with-history', action='store_true',
 +                        help='replicate the history of each package.')
 +    @cmdln.option('-o', '--make-older', action='store_true',
 +                        help='No idea')

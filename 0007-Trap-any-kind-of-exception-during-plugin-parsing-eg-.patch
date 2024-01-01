@@ -9,7 +9,7 @@ Subject: [PATCH] Trap any kind of exception during plugin parsing (eg IOError
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 2e575eddd4aa044ca53c4677fd8a99a8d92890c8..ed110d359bb6803ab06d21fe88ea6a43006943fa 100644
+index 2866ceead87dd276b10ac845f9a996c67e350704..5ebd0cecc876ee8499b5010f2739db643cf9a50c 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -10164,7 +10164,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
