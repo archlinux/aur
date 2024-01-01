@@ -11,6 +11,11 @@ makedepends=('python-setuptools')
 source=("https://github.com/joanbm/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('6b7023ce58599eba5fb723f951830d7e1bb04544be4f559b83dd4fb6afa60c09')
 
+check() {
+  cd "${pkgname}-${pkgver}"
+  python -m unittest
+}
+
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
