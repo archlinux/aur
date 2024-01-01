@@ -1,8 +1,8 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=(python-specklepy)
 pkgver=2.17.17
-pkgrel=1
-pkgdesc="This is the start of the Python client for Speckle 2.0. It is currently quite nebulous and may be trashed and rebuilt at any moment! It is compatible with Python 3.6+."
+pkgrel=2
+pkgdesc="The Python SDK for Speckle 2.0"
 arch=('x86_64' 'i686')
 url="https://github.com/specklesystems/speckle-py"
 license=('Apache')

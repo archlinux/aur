@@ -1,7 +1,7 @@
 pkgbase = python-specklepy
-	pkgdesc = This is the start of the Python client for Speckle 2.0. It is currently quite nebulous and may be trashed and rebuilt at any moment! It is compatible with Python 3.6+.
+	pkgdesc = The Python SDK for Speckle 2.0
 	pkgver = 2.17.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/specklesystems/speckle-py
 	arch = x86_64
 	arch = i686
