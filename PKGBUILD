@@ -59,10 +59,9 @@ package() {
 
   install -Dm644 src/resources/logo/DownZemAll.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  for icon_size in 16 24 32 48 64 128 256 512 1024; do
-    icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -Dm644 src/resources/logo/icon${icon_size}.png \
-      "$pkgdir/${icons_dir}/$pkgname.png"
+  for i in 16 24 32 48 64 128 256 512 1024; do
+    install -Dm644 "src/resources/logo/icon${i}.png" \
+      "$pkgdir/$usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
 
   install -d "$pkgdir/usr/bin"
