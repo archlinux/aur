@@ -43,6 +43,9 @@ prepare() {
 
 build() {
   cd "Cataclysm-DDA-master"
+
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109418
+  # -Werror=maybe-uninitialized has false positives, including in gcc libs, so we disable it here.
   CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 LIBBACKTRACE=1
   CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1 LIBBACKTRACE=1
   # LOCALIZE = 0   to save 30MB
