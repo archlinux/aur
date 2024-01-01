@@ -1,0 +1,13 @@
+pkgbase = pgburst-bin
+	pkgdesc = A file-based way to edit postgresql databases (procedures, views, triggers) without GUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Jakubzik/pgburst
+	arch = x86_64
+	license = GPLv3
+	provides = pgburst
+	conflicts = pgburst
+	source = https://github.com/Jakubzik/pgburst/releases/download/v0.1.0/pgburst-0.1.0-x86_64.tar.gz
+	sha256sums = 4a78e5705667d8053de7ad679263f899896c9bda65b0a1b298a401f307cbbbff
+
+pkgname = pgburst-bin
