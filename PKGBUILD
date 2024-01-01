@@ -1,7 +1,7 @@
 # Maintaoner: Yamada Hayao <development@fascode.net>
 
 pkgname="jquake"
-pkgver="1.7.1"
+pkgver="1.8.5"
 pkgrel="1"
 pkgdesc="JQuake provides real-time earthquake sensor map of Japan"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 source=("https://fleneindre.github.io/downloads/JQuake_${pkgver}_linux.zip"
         "icon.png"
         "jquake.desktop")
-md5sums=('7cc3cb64c229e942282ff40e7f981a17'
+md5sums=('2c42a9dd8d5cb3597e5dcd5986ccf370'
          'ae8c0b172c57f76594e182246ddcdac2'
          'b815ce5958a40757e15add0c42cb015f')
 package() {
