@@ -62,8 +62,14 @@ package() {
   RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 PCH=0 TILES=1 SOUND=1 \
   install
 
-  # Icon
-  install -D 'build-data/osx/AppIcon.iconset/icon_128x128.png' "$pkgdir/usr/share/icons/hicolor/128x128/apps/cataclysm-dda.png"
+  # Icons
+  pushd build-data/osx/AppIcon.iconset
+  for i in *.png
+  do
+    local _isize="$(echo "$i" | sed -Ee 's/icon_([[:digit:]]+)x\1\.png/\1x\1/')"
+    install -Dm644 "$i" "$pkgdir/usr/share/icons/hicolor/$_isize/apps/cataclysm-dda.png"
+  done
+  popd
 
   # Docs
   install -d "$pkgdir/usr/share/doc/cataclysm-dda"
