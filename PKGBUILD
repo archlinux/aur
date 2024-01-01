@@ -13,17 +13,17 @@ sha256sums=('c259c0c1e227c73378b55689574397706cfb063e7192dc34fde004dd3aa883de')
 
 
 prepare() {
- cd "$srcdir/$pkgname-$pkgver"
+ cd "$srcdir/dnsChanger-desktop-$pkgver"
  npm install .
 }
 
 build() {
- cd "$srcdir/$pkgname-$pkgver"
+ cd "$srcdir/dnsChanger-desktop-$pkgver"
  npm run build > /dev/null 2>&1
 }
 
 package() {
- cd "$srcdir/$pkgname-$pkgver"
+ cd "$srcdir/dnsChanger-desktop-$pkgver" 
 
 # Move the AppImage to /usr/bin/
  mkdir -p "${pkgdir}"/usr/bin/dnsChanger-desktop/
@@ -53,6 +53,6 @@ package() {
 }
 
 clean() {
- rm -rf "$srcdir/$pkgname-$pkgver"
+ rm -rf "$srcdir/dnsChanger-desktop-$pkgver"
 }
 
