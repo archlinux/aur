@@ -46,8 +46,8 @@ build() {
 
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109418
   # -Werror=maybe-uninitialized has false positives, including in gcc libs, so we disable it here.
-  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 LIBBACKTRACE=1
-  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1 LIBBACKTRACE=1
+  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 LIBBACKTRACE=1
+  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1 LIBBACKTRACE=1
 }
 
 package() {
@@ -78,4 +78,12 @@ package() {
 
   # License
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Languages
+  pushd lang/mo
+  for i in *; do
+    install -d "${pkgdir}/usr/share/locale/${i}/LC_MESSAGES"
+    cp "${i}/LC_MESSAGES/cataclysm-dda.mo" "${pkgdir}/usr/share/locale/${i}/LC_MESSAGES"
+  done
+  popd
 }
