@@ -25,7 +25,7 @@ prepare() {
   # gen/nvml: add --export-dynamic linker flag
   # https://github.com/NVIDIA/go-nvml/issues/36
   cd vendor/github.com/NVIDIA/go-nvml
-  git apply -3 "$srcdir/79.patch"
+  git apply "$srcdir/79.patch"
 }
 
 build() {
