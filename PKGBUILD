@@ -36,7 +36,7 @@ package() {
  Icon=/usr/share/pixmaps/dnsChanger-desktop.png
  Type=Application
  Categories=Network;
- " > "$pkgname.desktop"
+ " > "dnsChanger-desktop.desktop"
 
 # Move the .desktop file to applications folder
  mkdir -p "${pkgdir}"/usr/share/applications/
