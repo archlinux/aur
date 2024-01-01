@@ -1,0 +1,15 @@
+pkgbase = nim-atlas-git
+	pkgdesc = isolated workspaces manager for nim projects
+	pkgver = 0.6.2.r33.cbba9fa
+	pkgrel = 1
+	url = https://github.com/nim-lang/atlas
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nim
+	provides = nim-atlas
+	conflicts = nim-atlas
+	source = git+https://github.com/nim-lang/atlas
+	md5sums = SKIP
+
+pkgname = nim-atlas-git
