@@ -1,6 +1,6 @@
 pkgbase = meh-git
 	pkgdesc = A minimal image viewer using raw XLib.
-	pkgver = 0.3.45.g6fa14a2
+	pkgver = 0.3.56.ga8da4f8
 	pkgrel = 1
 	url = http://www.johnhawthorn.com/meh/
 	arch = i686
