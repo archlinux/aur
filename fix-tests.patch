@@ -1,0 +1,35 @@
+diff --git a/samplingbook/tests/testthat/tests_ch2.r b/samplingbook/tests/testthat/tests_ch2.r
+index 2881e69..434c8de 100644
+--- a/samplingbook/tests/testthat/tests_ch2.r
++++ b/samplingbook/tests/testthat/tests_ch2.r
+@@ -61,7 +61,7 @@ test_that('election poll example page 54: proportion estimation 2', {
+ 
+ test_that('edge cases: proportion estimation', {
+   
+-  expect_warning(est5 <- Sprop(m = 10, n = 20, N = 20), "Standard error is 'NA'")
++  expect_warning(est5 <- Sprop(m = 10, n = 20, N = 20), "Standard error is ‘NA’")
+ 
+   expect_equal(est5$p, 0.5, tolerance=0.01)
+   expect_equal(est5$nr$approx, c(10,10))
+diff --git a/samplingbook/tests/testthat/tests_ch4.r b/samplingbook/tests/testthat/tests_ch4.r
+index 803d52f..8e98439 100644
+--- a/samplingbook/tests/testthat/tests_ch4.r
++++ b/samplingbook/tests/testthat/tests_ch4.r
+@@ -45,7 +45,7 @@ test_that('toy example page 128: pps sampling madow', {
+   
+   data <- data.frame(id=1:7, z=c(1.8, 2, 3.2, 2.9, 1.5, 2, 2.2))
+   set.seed(178209)
+-  expect_warning(pps_madow <- pps.sampling(z=data$z, n=2, method="madow"), "Systematic Sample with zeros in 'PI'" )
++  expect_warning(pps_madow <- pps.sampling(z=data$z, n=2, method="madow"), "Systematic Sample with zeros in ‘PI’" )
+   
+   expect_equal(pps_madow$sample, c(3,6), tolerance=0.1)
+   expect_equal(pps_madow$PI, 
+@@ -92,7 +92,7 @@ test_that('influenza data example page 128/132: pps sampling/htestimate', {
+   expect_equal(est.ha1$mean, 40.4, tolerance=0.1)
+   expect_equal(est.ha1$se, 8.26, tolerance=0.01)
+   
+-  expect_warning(est.ha2 <- htestimate(sample$cases, N=N, pk=pk, method = "ha"), "Without input of 'pik' just approximative calculation of Hajek method is possible.")
++  expect_warning(est.ha2 <- htestimate(sample$cases, N=N, pk=pk, method = "ha"), "Without input of ‘pik’ just approximative calculation of Hajek method is possible.")
+   
+   expect_equal(est.ha2$mean, 40.4, tolerance=0.1)
+   expect_equal(est.ha2$se, 8.24, tolerance=0.01)
