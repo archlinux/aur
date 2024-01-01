@@ -1,7 +1,7 @@
 # Maintainer: AnnikaV9 <carrot.moncher@gmail.com>
 
 pkgname=hcclient-latex
-pkgver=1.19.1
+pkgver=1.19.2
 pkgrel=1
 pkgdesc="A terminal client for hack.chat, with LaTeX support"
 arch=("x86_64")
@@ -11,11 +11,12 @@ provides=("hcclient")
 conflicts=("hcclient")
 depends=("python")
 makedepends=("python-pip" "python-wheel") 
-source=("${url}/releases/download/v${pkgver}/hcclient-$pkgver-py3-none-any.whl"
+source=("hcclient-${pkgver}-py3-none-any.whl::${url}/releases/download/v${pkgver}/hcclient-${pkgver}-py3-none-any.whl"
         "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=("hcclient-${pkgver}-py3-none-any.whl")
-sha256sums=('47a9bce44d02943303d3fc1211f4775746dc1f6d4af34eaf8ca4fe5cef54a5da'
-            '543a297336e22462adf25dbf5cfb52ceb07c7500addfc67dae8003fcd6265b4d')
+sha256sums=('305664e612e89f7bbd2872929c3bd98da3429d0ed2f2757487f098582f430901'
+            'ad8fbd083e399cc0a895f63613eedf5b311adfcf058faf0fea8eb0aefce9678a')
+
 build() {
   python -m venv iso-env
   ./iso-env/bin/pip install --disable-pip-version-check --no-color "hcclient-${pkgver}-py3-none-any.whl[latex]"
