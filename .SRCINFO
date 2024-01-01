@@ -1,6 +1,6 @@
 pkgbase = hyprshade
 	pkgdesc = Hyprland shade configuration tool
-	pkgver = 2.0.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/loqusion/hyprshade
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = hyprshade
 	depends = util-linux
 	optdepends = systemd: activate shader on schedule
 	provides = hyprshade
-	source = https://files.pythonhosted.org/packages/source/h/hyprshade/hyprshade-2.0.1.tar.gz
-	source = https://raw.githubusercontent.com/loqusion/hyprshade/2.0.1/examples/config.toml
-	sha256sums = 9539934760de683d1906d5fbdd2cb2d512aa04d0c77c1698c37c1176d6dcec72
+	source = https://files.pythonhosted.org/packages/source/h/hyprshade/hyprshade-3.0.0.tar.gz
+	source = https://raw.githubusercontent.com/loqusion/hyprshade/3.0.0/examples/config.toml
+	sha256sums = cf683be419646ae48748eab0357219a328db57f4c3c040d3f3395729af51b228
 	sha256sums = 411517f06dc484fb8aad729d73d66cb5b91982ac0c5908184ec9343974392f0a
 
 pkgname = hyprshade
