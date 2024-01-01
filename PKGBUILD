@@ -2,7 +2,7 @@
 
 pkgname=sof
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sof"
@@ -19,4 +19,6 @@ package() {
 		cmake -Bbuild -DCMAKE_BUILD_TYPE=Release -DVERSION=${pkgver}
 		cmake --build ./build
 		DESTDIR="$pkgdir" cmake --install ./build --prefix=/usr
+
+		install -Dm644 ./COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
