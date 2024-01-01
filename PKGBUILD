@@ -2,7 +2,7 @@
 # Maintainer: Malachi Soord <me@malachisoord.com>
 
 pkgname='git-pair-bin'
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='A simple CLI app to make it easier for pairing for co-authoring commits'
 url='https://github.com/inverse/git-pair/'
@@ -12,14 +12,14 @@ provides=('git-pair')
 conflicts=('git-pair')
 depends=('git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/inverse/git-pair/releases/download/v0.1.8/git-pair_Linux_arm64.tar.gz")
-sha256sums_aarch64=('47c85594a5d696dfe023b9611cecaaf0d7c50cf0e7ba028a72c5de2dc9796b20')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/inverse/git-pair/releases/download/v0.1.9/git-pair_Linux_arm64.tar.gz")
+sha256sums_aarch64=('510b4406c27a25d79d7c724ba016ff567e107605dcf5dc35e12a84acac2ed23b')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/inverse/git-pair/releases/download/v0.1.8/git-pair_Linux_i386.tar.gz")
-sha256sums_i686=('09c9a944c8a740c7fa3f5ea81a2a25222b6a8bc0a0afbc389b6969c300df7b2c')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/inverse/git-pair/releases/download/v0.1.9/git-pair_Linux_i386.tar.gz")
+sha256sums_i686=('2b7f3433a59f5e961f174c98eb926f0a7eb3729ce167e4d576f3bfb2f5121999')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/inverse/git-pair/releases/download/v0.1.8/git-pair_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d2f82d1319bb7436e65a41158964d1b5212b64530af38f74ebe36c30bb40f1df')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/inverse/git-pair/releases/download/v0.1.9/git-pair_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('5aad6474f6c3ff9eadc11379c77a1b26333da1718d7652e53be9f90480709c32')
 
 package() {
   install -Dm755 "./git-pair" "$pkgdir/usr/bin/git-pair"
