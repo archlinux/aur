@@ -1,17 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=downzemall
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
 url="https://www.arrow-dl.com/ArrowDL"
 license=('LGPL3' 'CC BY-SA 3.0')
 depends=('libtorrent-rasterbar' 'qt6-base' 'yt-dlp')
 makedepends=('boost' 'cmake' 'qt6-tools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/ArrowDL/archive/v$pkgver.tar.gz"
-        "$pkgname.desktop")
-sha256sums=('3cab020b150d503a651a6910707c45d66ed4990aa07a04b581b18c430c9702b2'
-            '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/ArrowDL/archive/v$pkgver.tar.gz")
+sha256sums=('3cab020b150d503a651a6910707c45d66ed4990aa07a04b581b18c430c9702b2')
 
 prepare() {
   cd "ArrowDL-$pkgver"
@@ -55,7 +53,8 @@ package() {
   install -Dm644 src/resources/logo/LICENSE.txt \
     "$pkgdir/usr/share/licenses/$pkgname/LOGO_LICENSE.txt"
 
-  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 installer/unix/appimage/DownZemAll.desktop -t \
+    "$pkgdir/usr/share/applications/"
 
   install -Dm644 src/resources/logo/DownZemAll.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
@@ -65,7 +64,7 @@ package() {
   done
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/DownZemAll" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/$pkgname/DownZemAll" "$pkgdir/usr/bin/"
 
   # Use system yt-dlp
   ln -s /usr/bin/yt-dlp "$pkgdir/opt/$pkgname/"
