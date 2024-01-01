@@ -8,35 +8,39 @@
 set -u
 pkgname='knem'
 #pkgver='1.1.2'; _relno='34521'
-pkgver='1.1.3'; _relno='37186'
+#pkgver='1.1.3'; _relno='37186'
+pkgver='1.1.4'
 pkgrel='1'
 pkgdesc='High-Performance Intra-Node MPI Communication'
 arch=('any')
-url='http://knem.gforge.inria.fr'
+#url='http://knem.gforge.inria.fr'
+url='https://knem.gitlabpages.inria.fr/'
 license=('BSD')
 depends=('hwloc')
 makedepends=('make')
 install='knem.install'
-_verwatch=("${url}/download/" "http://gforge.inria.fr/frs/download.php/[0-9]\+/${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
-_srcdir="${pkgname}-${pkgver}"
+#_verwatch=("${url}/download/" "http://gforge.inria.fr/frs/download.php/[0-9]\+/${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
+_srcdir="${pkgname}-${pkgname}-${pkgver}"
 source=(
   #"http://runtime.bordeaux.inria.fr/knem/download/knem-${pkgver}.tar.gz"
-  "http://gforge.inria.fr/frs/download.php/${_relno}/knem-${pkgver}.tar.gz"
-  "0000-gentoo-knem-1.1.3-setup_timer.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-cluster/knem/files/knem-1.1.3-setup_timer.patch?id=768341030da4acb06798dc0d444ba8ca9dfea5f8"
+  #"http://gforge.inria.fr/frs/download.php/${_relno}/knem-${pkgver}.tar.gz"
+  "https://gitlab.inria.fr/knem/knem/-/archive/knem-${pkgver}/knem-knem-${pkgver}.tar.gz"
+  #"0000-gentoo-knem-1.1.3-setup_timer.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-cluster/knem/files/knem-1.1.3-setup_timer.patch?id=768341030da4acb06798dc0d444ba8ca9dfea5f8"
 )
-sha256sums=('50d3c4a20c140108b8ce47aaafd0ade0927d6f507e1b5cc690dd6bddeef30f60'
-            'd0871602c83047adf60fcc96e34cf4d2d79b9b4b76c3842f64b731fa91cf4380')
+md5sums=('17aa29f62ab9f612c8f4f5e851c10067')
+sha256sums=('2196777458626c467057dd7eaee915154acda47dcd0600edb271ef7535198e7b')
 
 prepare() {
   set -u
   cd "${_srcdir}"
-  patch -Nup1 -i "${srcdir}/0000-gentoo-knem-1.1.3-setup_timer.patch"
+  #patch -Nup1 -i "${srcdir}/0000-gentoo-knem-1.1.3-setup_timer.patch"
   set +u
 }
 
 build() {
   set -u
   cd "${_srcdir}"
+  [ -s 'configure' ] || ./autogen.sh
   [ -s 'Makefile' ] || ./configure --prefix='/opt/knem'
   #[ -s 'Makefile' ] || ./configure --prefix='/usr' --sbindir='/usr/bin' --sysconfdir='/etc'
   make -s
