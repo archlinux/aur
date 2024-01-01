@@ -1,7 +1,7 @@
 # Contributor: Asuka Minato
 pkgname=caido-desktop
-pkgver=0.29.2
-_commit=e0f8102b
+pkgver=0.30.0
+_commit=c60f15f7
 pkgrel=1
 pkgdesc="A lightweight web security auditing toolkit."
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('private')
 depends=(glibc gcc-libs cairo glib2 hicolor-icon-theme dbus gtk3 gdk-pixbuf2 webkit2gtk pango)
 provides=(caido caido-backend)
 source=("https://storage.googleapis.com/caido-releases/v${pkgver}/caido-desktop-linux-v${pkgver}-${_commit}.AppImage")
-sha256sums=('e0f8102b9d8b017d7369c9a850ad26b8886bbc50c5eda9d0eacc77e48f84ad5b')
+sha256sums=('c60f15f73340824c156e7eb5faae2a295105121f1ff9af8d0de32b5e2b4cfc8a')
 
 prepare() {
 	chmod +x *.AppImage
