@@ -1,7 +1,7 @@
 pkgbase = sysbox-ce
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = sysbox-ce
 	source = git+https://github.com/nestybox/sysbox-mgr.git#commit=4b5fb1def9abe6a256cfe62bacaf2a7d333d81d2
 	source = git+https://github.com/nestybox/sysbox-pkgr.git#commit=b560194d516b300e9e201274a29348d3626055c1
 	source = git+https://github.com/nestybox/sysbox-runc.git#commit=60ca93c783b19c63581e34aa183421ce0b9b26b7
+	source = Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -37,5 +38,6 @@ pkgbase = sysbox-ce
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 5264ed0c448868083a9f1bedc2846d744c9ea90e58f8555c50bbc155008512e5
 
 pkgname = sysbox-ce

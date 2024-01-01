@@ -1,0 +1,39 @@
+diff --git a/sysbox-fs/Makefile b/sysbox-fs/Makefile
+index b2c2de8..bf83db0 100644
+--- a/sysbox-fs/Makefile
++++ b/sysbox-fs/Makefile
+@@ -32,7 +32,7 @@ NSENTER_SRC := $(shell find $(NSENTER_DIR) 2>&1 | grep -E '.*\.(c|h|go)')
+ 
+ COMMIT_NO := $(shell git rev-parse HEAD 2> /dev/null || true)
+ COMMIT ?= $(if $(shell git status --porcelain --untracked-files=no),$(COMMIT_NO)-dirty,$(COMMIT_NO))
+-BUILT_AT := $(shell date)
++BUILT_AT := $(shell date --utc --date="@$${SOURCE_DATE_EPOCH:-$$(date +%s)}")
+ BUILT_BY := $(shell git config user.name)
+ 
+ LDFLAGS := -X 'main.edition=${EDITION}' -X main.version=${VERSION} \
+diff --git a/sysbox-mgr/Makefile b/sysbox-mgr/Makefile
+index 8de0a67..d09eb68 100644
+--- a/sysbox-mgr/Makefile
++++ b/sysbox-mgr/Makefile
+@@ -23,7 +23,7 @@ SYSLIB_SRC := $(shell find $(SYSLIB_DIR) 2>&1 | grep -E '.*\.(c|h|go|proto)$$')
+ 
+ COMMIT_NO := $(shell git rev-parse HEAD 2> /dev/null || true)
+ COMMIT ?= $(if $(shell git status --porcelain --untracked-files=no),$(COMMIT_NO)-dirty,$(COMMIT_NO))
+-BUILT_AT := $(shell date)
++BUILT_AT := $(shell date --utc --date="@$${SOURCE_DATE_EPOCH:-$$(date +%s)}")
+ BUILT_BY := $(shell git config user.name)
+ 
+ LDFLAGS := -X 'main.edition=${EDITION}' -X main.version=${VERSION} \
+diff --git a/sysbox-runc/Makefile b/sysbox-runc/Makefile
+index 82b6f7e..036d607 100644
+--- a/sysbox-runc/Makefile
++++ b/sysbox-runc/Makefile
+@@ -40,7 +40,7 @@ RUNC := $(NBOX)/sysbox-runc
+ 
+ COMMIT_NO := $(shell git rev-parse HEAD 2> /dev/null || true)
+ COMMIT ?= $(if $(shell git status --porcelain --untracked-files=no),$(COMMIT_NO)-dirty,$(COMMIT_NO))
+-BUILT_AT := $(shell date)
++BUILT_AT := $(shell date --utc --date="@$${SOURCE_DATE_EPOCH:-$$(date +%s)}")
+ BUILT_BY := $(shell git config user.name)
+ 
+ SYSIPC_DIR := ../sysbox-ipc

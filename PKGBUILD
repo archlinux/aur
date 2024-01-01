@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
@@ -17,8 +17,10 @@ source=("git+https://github.com/nestybox/sysbox.git#tag=v$pkgver"
         "git+https://github.com/nestybox/libseccomp-golang.git#commit=11a59bb55bc48351c32a814b20f284ad4e941af4"
         "git+https://github.com/nestybox/sysbox-mgr.git#commit=4b5fb1def9abe6a256cfe62bacaf2a7d333d81d2"
         "git+https://github.com/nestybox/sysbox-pkgr.git#commit=b560194d516b300e9e201274a29348d3626055c1"
-        "git+https://github.com/nestybox/sysbox-runc.git#commit=60ca93c783b19c63581e34aa183421ce0b9b26b7")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        "git+https://github.com/nestybox/sysbox-runc.git#commit=60ca93c783b19c63581e34aa183421ce0b9b26b7"
+        Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            5264ed0c448868083a9f1bedc2846d744c9ea90e58f8555c50bbc155008512e5)
 install=install.sh
 depends=('rsync' 'fuse2')
 makedepends=('git' 'go' 'protobuf' 'protoc-gen-go-grpc')
@@ -52,6 +54,8 @@ prepare() {
 	sed -i 's/--go_out=plugins=grpc:./--go_out=. --go-grpc_out=. --go-grpc_opt=require_unimplemented_servers=false/g' \
 		sysbox/sysbox-ipc/sysboxFsGrpc/sysboxFsProtobuf/Makefile \
 		sysbox/sysbox-ipc/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile
+
+       patch -d sysbox -Np1 -i "$srcdir/Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch"
 }
 
 build() {
