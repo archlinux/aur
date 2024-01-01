@@ -2,10 +2,10 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v6.6.8
+gitver=v6.6.9
 patchver=20230105
 patchname=more-uarches-for-kernel-5.17+.patch
-pkgver=6.6.v.8
+pkgver=6.6.v.9
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -19,17 +19,13 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         # linux package install directives for pacman
-        'linux.install'
-	# patch from graysky (https://github.com/graysky2/kernel_compiler_patch/) hosted on gentoo
 	'more-uarches-for-kernel-5.17+.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '3eda67a55bfa5b69de56c851485061e6a70ae68547d7d44259da586738fe4e04'
+            '9c2edd2b0e06ff6346204b9dcea2fb558359104d67541c093ab601c445e8bc5a'
             #.preset file
             'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
-            #linux install file
-            'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #grayskypatch file
             '81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe'
 )
@@ -48,9 +44,6 @@ prepare() {
     echo "Sorry, non x86_64 arch not supported."
       exit 2
   fi
-
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  sed -i '2iexit 0' scripts/depmod.sh
 
   # Implement all packaged patches and reverts. Ignore errors.
   msg2 "Implementing custom kernel patches/reverts"
@@ -87,7 +80,6 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'kmod' 'lzop')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install=linux.install
 
   cd "${_srcname}"
 
@@ -102,14 +94,6 @@ _package() {
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
-  # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
-
   # install mkinitcpio preset file for kernel
   install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   sed \
@@ -123,14 +107,6 @@ _package() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/build
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-  # add real version for building modules and running depmod from post_install/upgrade
-  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
-
-  # Now we call depmod...
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
 
   # move module tree /lib -> /usr/lib
   mkdir -p "${pkgdir}/usr"
