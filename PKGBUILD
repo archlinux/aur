@@ -14,9 +14,9 @@ conflicts=('nvidia-container-runtime-hook' 'nvidia-container-runtime<2.0.0')
 replaces=('nvidia-container-runtime-hook')
 backup=('etc/nvidia-container-runtime/config.toml')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        'https://github.com/NVIDIA/go-nvml/pull/79.patch')
+        'go-nvml-79.patch')
 sha256sums=('a8dbb6a8d45fe8cb2ecbb7b5d49c332e0e7270e8988e57d2a8587ab1e004f6dd'
-            '9909db17ef060f3f2da384018217e2009182203b516dd8242ff86b8d6e8b7ca1')
+            '24182b216338472867bf0d597b9318281998b8f352e612c997913fa7a829f32b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -25,7 +25,7 @@ prepare() {
   # gen/nvml: add --export-dynamic linker flag
   # https://github.com/NVIDIA/go-nvml/issues/36
   cd vendor/github.com/NVIDIA/go-nvml
-  git apply "$srcdir/79.patch"
+  git apply "$srcdir/go-nvml-79.patch"
 }
 
 build() {
