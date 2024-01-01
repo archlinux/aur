@@ -3,8 +3,8 @@
 
 pkgname=quran-companion
 _pkgname=quran-companion
-pkgver=1.1.11
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Cross-platform desktop offline Quran reader and player (binary release)"
 arch=('x86_64')
 url="https://github.com/0xzer0x/quran-companion"
@@ -14,21 +14,20 @@ makedepends=()
 provides=(quran-companion)
 conflicts=(quran-companion-git)
 source=("https://github.com/0xzer0x/quran-companion/releases/download/v${pkgver}/Quran_Companion-${pkgver}-x86_64.AppImage")
-md5sums=("84b59af35703a17dbb7fe3066fae814e")
+md5sums=("69fafe17dfb2f323ef3410a7664b4653")
 options=(!strip)
 
 prepare() {
-  chmod +x "${srcdir}/Quran_Companion-${pkgver}-x86_64.AppImage"
-  "${srcdir}/Quran_Companion-${pkgver}-x86_64.AppImage" --appimage-extract usr/share
+	chmod +x "${srcdir}/Quran_Companion-${pkgver}-x86_64.AppImage"
+	"${srcdir}/Quran_Companion-${pkgver}-x86_64.AppImage" --appimage-extract usr/share
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/share"
-  mkdir -p "${pkgdir}/usr/bin"
+	mkdir -p "${pkgdir}/usr/share"
+	mkdir -p "${pkgdir}/usr/bin"
 
-  install -Dm755 "${srcdir}/Quran_Companion-${pkgver}-x86_64.AppImage" "${pkgdir}/opt/quran-companion/quran_companion.AppImage"
-  cp -r "${srcdir}/squashfs-root/usr/share" "${pkgdir}/usr/"
+	install -Dm755 "${srcdir}/Quran_Companion-${pkgver}-x86_64.AppImage" "${pkgdir}/opt/quran-companion/quran_companion.AppImage"
+	cp -r "${srcdir}/squashfs-root/usr/share" "${pkgdir}/usr/"
 
-  ln -sf /opt/quran-companion/quran_companion.AppImage "${pkgdir}/usr/bin/quran-companion"
+	ln -sf /opt/quran-companion/quran_companion.AppImage "${pkgdir}/usr/bin/quran-companion"
 }
-
