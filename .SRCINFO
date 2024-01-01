@@ -1,0 +1,19 @@
+pkgbase = snowglobe-git
+	pkgdesc = Virtualization viewer using QEMU over DBus
+	pkgver = r52.262dbd2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/bilelmoussaoui/snowglobe/
+	arch = x86_64
+	license = GPL3
+	makedepends = gtk4
+	makedepends = glib2
+	makedepends = desktop-file-utils
+	makedepends = meson
+	depends = postgresql
+	depends = icu
+	provides = snowglobe
+	conflicts = snowglobe
+	source = git+https://gitlab.gnome.org/bilelmoussaoui/snowglobe.git
+	sha256sums = SKIP
+
+pkgname = snowglobe-git
