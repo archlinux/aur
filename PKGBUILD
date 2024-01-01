@@ -7,7 +7,7 @@ pkgname=('brave-extension-bitwarden-git'
          'firefox-extension-bitwarden-git'
          'librewolf-extension-bitwarden-git'
          'opera-extension-bitwarden-git')
-pkgver=2023.10.2.r13552.g49ba838
+pkgver=2023.12.1.r13833.gec417cf
 pkgrel=1
 pkgdesc='Bitwarden browser extensions'
 arch=('any')
