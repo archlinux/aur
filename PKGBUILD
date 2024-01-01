@@ -1,6 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=gridmonger-git
-pkgver=v1.1.0.r37.aeec810
+pkgver=1.1.0.r37.aeec810
+epoch=1
 pkgrel=1
 pkgdesc="Your trusty old-school cRPG mapping companion"
 arch=('x86_64')
@@ -15,7 +16,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
