@@ -1,7 +1,7 @@
 # Maintainer : aji <43468383+aji-prod@users.noreply.github.com>
 pkgname=tomato
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AUR local repository manager"
 arch=('any')
 url="https://github.com/aji-prod/tomato"
@@ -20,7 +20,6 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	install -Dm755 tomato "$pkgdir/usr/bin/tomato"
 	install -Dm644 tomato.conf "$pkgdir/etc/tomato.conf"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licences/$pkgname/LICENSE"
 	for dockfile in $(cd ./docker && ls -A ./*); do
 		install -Dm644 docker/$dockfile "$pkgdir/usr/share/$pkgname/$dockfile"
 	done
