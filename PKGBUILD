@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.G.2023.12.23
+pkgver=0.G.2023.12.21
 _pkgver=0.G
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
