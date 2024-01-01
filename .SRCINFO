@@ -1,0 +1,15 @@
+pkgbase = python-fcl
+	pkgdesc = Python bindings for the Flexible Collision Library
+	pkgver = 0.7.0.5
+	pkgrel = 1
+	url = https://github.com/BerkeleyAutomation/python-fcl
+	arch = x86_64
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	provides = python-fcl
+	source_x86_64 = https://files.pythonhosted.org/packages/cp311/p/python-fcl/python_fcl-0.7.0.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	md5sums_x86_64 = f4286584d79f65d65a5319c49d43effb
+
+pkgname = python-fcl
