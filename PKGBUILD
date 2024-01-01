@@ -1,8 +1,8 @@
 # Maintainer: Keith Plant <kplantjr at gmail dot com>
 
 pkgname="wlroots-nvidia"
-pkgver="0.17.0"
-pkgrel="2"
+pkgver="0.17.1"
+pkgrel="1"
 pkgdesc="Modular Wayland compositor library, with fix for nvidia flickering"
 license=("MIT")
 
@@ -53,7 +53,7 @@ source=(
 	"nvidia.patch"
 )
 sha256sums=(
-	'9da3475a6834a6a9a8fd93de84f4ef91f9ee48ff70c305aa9522bf0db9e61128'
+	'd58d68e3f90d92de4d49fa43b4d75dc78f8af1d920d090729331cefbdfcf361b'
 	'SKIP'
 	'980f4e7c37b30412d2726e5628d41541b76511a36297be7bdd305ba50ed89588'
 )
