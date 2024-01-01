@@ -1,11 +1,11 @@
 _pkgname=flightgear
-_pkgver=2020.3.18
+_pkgver=2020.3.19
 _appimage="FlightGear-${_pkgver}-x86_64.AppImage"
 _desktopfile="org.flightgear.FlightGear.desktop"
 
 pkgname=flightgear-appimage
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator. Appimage version"
 arch=(x86_64)
 license=('GPL')
@@ -16,7 +16,7 @@ optdepends=('qt5-base: fgfs --launcher'
             'flightgear-data: game data files')
 options=(!strip)
 source=("${_appimage}::https://sourceforge.net/projects/flightgear/files/release-2020.3/${_appimage}/download")
-sha256sums=('1598b59ffd0213963e623b559100eecb89e03b058d1e30ff353a86799baefb54')
+sha256sums=('0e84088e5ac5de7bed23b1975e80cff3f888c1477e71260615439fe13131cd15')
 
 
 prepare() {
