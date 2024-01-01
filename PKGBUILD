@@ -48,11 +48,6 @@ build() {
   # -Werror=maybe-uninitialized has false positives, including in gcc libs, so we disable it here.
   CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 LIBBACKTRACE=1
   CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1 LIBBACKTRACE=1
-  # LOCALIZE = 0   to save 30MB
-  # DYNAMIC_LINKING = 1 ?
-
-  # 'make install' needs this
-  touch README.txt
 }
 
 package() {
