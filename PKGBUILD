@@ -1,20 +1,22 @@
-#Maintainer: Jason Preszler <jpreszler@gmail.com>, 4/16/2019
-pkgname=python-tslearn
-pkgver=0.1.29
-pkgrel=1
-pkgdesc="'tslearn' is a python package that provides machine learning tools for the analysis of time series."
-arch=('x86_64')
-url='https://github.com/rtavenar/tslearn'
-license=('BSD')
-groups=()
-depends=('python' 'python-numpy' 'python-scipy' 'cython' 'python-scikit-learn')
-optdepends=('python-tensorflow' 'python-keras-applications' 'python-keras-preprocessing')
-makedepends=('python-setuptools' 'cython>=0.17')
-options=(!emptydirs)
-source=("git+https://github.com/rtavenar/tslearn.git")
-sha256sums=('SKIP')
+# Maintainer: Alexander Bocken <alexander@bocken.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Federico Cassani <federico dot cassani at outlook dot com>
 
+_name=tslearn
+pkgname=python-${_name,,}
+pkgver=0.6.3
+pkgrel=1
+pkgdesc='A machine learning toolkit dedicated to time-series data'
+arch=('any')
+url="https://github.com/tslearn-team/tslearn"
+license=('BSD-2-Clause')
+depends=('python' 'python-numpy' 'python-scipy' 'python-scikit-learn' 'python-numba' 'python-joblib' 'python-tensorflow')
+makedepends=('python-installer' 'python-wheel')
+_whl="${_name//-/_}-$pkgver-py3-none-any.whl"
+source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
+sha256sums=('18c3b1984b4be2af0e7579c0b914633f2220bba2b6610c11861c4563272e9169')
+
+noextract=("$_whl")
 package() {
-  cd "$srcdir/tslearn"
-  python setup.py install --root="$pkgdir/" --optimize=1
+    python -m installer --destdir="$pkgdir" "$_whl"
 }

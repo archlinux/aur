@@ -1,23 +1,21 @@
 pkgbase = python-tslearn
-	pkgdesc = 'tslearn' is a python package that provides machine learning tools for the analysis of time series.
-	pkgver = 0.1.29
+	pkgdesc = A machine learning toolkit dedicated to time-series data
+	pkgver = 0.6.3
 	pkgrel = 1
-	url = https://github.com/rtavenar/tslearn
-	arch = x86_64
-	license = BSD
-	makedepends = python-setuptools
-	makedepends = cython>=0.17
+	url = https://github.com/tslearn-team/tslearn
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
-	depends = cython
 	depends = python-scikit-learn
-	optdepends = python-tensorflow
-	optdepends = python-keras-applications
-	optdepends = python-keras-preprocessing
-	options = !emptydirs
-	source = git+https://github.com/rtavenar/tslearn.git
-	sha256sums = SKIP
+	depends = python-numba
+	depends = python-joblib
+	depends = python-tensorflow
+	noextract = tslearn-0.6.3-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/t/tslearn/tslearn-0.6.3-py3-none-any.whl
+	sha256sums = 18c3b1984b4be2af0e7579c0b914633f2220bba2b6610c11861c4563272e9169
 
 pkgname = python-tslearn
-
