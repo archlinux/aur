@@ -1,6 +1,6 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=freeserf-git
-pkgver=0.3_20_g4507374
+pkgver=0.3_51_g3848c74
 pkgrel=1
 pkgdesc="Opensource Settlers 1 clone (requires original game file)"
 arch=('i686' 'x86_64')
@@ -12,8 +12,10 @@ optdepends=('libxmp: Amiga audio playback')
 conflicts=('freeserf')
 provides=('freeserf')
 install=freeserf.install
-source=(git+"https://github.com/freeserf/freeserf.git")
-md5sums=('SKIP')
+source=(git+"https://github.com/freeserf/freeserf.git"
+        "cstdint.patch")
+md5sums=('SKIP'
+         '98a869d79db05db90d22bf69cdba159d')
 
 pkgver() {
   cd freeserf
@@ -22,6 +24,11 @@ pkgver() {
 
 prepare() {
   mkdir freeserf/build
+
+  # Fix cstdint bustage, remove once fixed upstream
+  # https://github.com/freeserf/freeserf/pull/526
+  cd freeserf
+  patch -p1 -i "${srcdir}/cstdint.patch"
 }
 
 build() {
