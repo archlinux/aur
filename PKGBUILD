@@ -2,7 +2,7 @@
 # Contributor: xiliuya <xiliuya@aliyun.com>
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 pkgname=ffdec
-pkgver=20.0.0
+pkgver=20.1.0
 pkgrel=1
 pkgdesc="Open source Flash SWF decompiler and editor"
 arch=('any')
@@ -14,7 +14,7 @@ source=(https://github.com/jindrapetrik/jpexs-decompiler/archive/refs/tags/versi
         $pkgname
         $pkgname.desktop
         version.patch)
-b2sums=('2003ec2986f1fa95be9b201e2aa718ec6f10b1b39505f79f708da8ded5fb02bae0e59eca3f2db75a699d195db358a85307536436b23966ac52126a857b7fe744'
+b2sums=('41ebb5c913baa16071f70ac9e8c4788ba39c803137002a45944df9df75733932faaf1cdbe3e5d1b17906016f2ac6f1742a66347b91047e5065ab6fe376f54301'
         '9fb18759764df78715295e3e110edde21fde377117a0166cb94677f9824e43624933e2fb49d2a9787531aa0f3ddcb22d9b6702f13d05d5667136b6cea674b546'
         '4ab0b43f051893bbc5ea8b5c4822474b139622f5023b157e7763ca8802494fd53af4eaf1471ea03c0130f339e838604daf84c2766935e4bc00c75d1d9a566fef'
         'd874316146f395ddde442cf73610aa0213d51df9b7b6e5de7fe06254119d7937cdfb07ce6aeb0aedbf37635356069331011e64e47aec06db10dd5c46abca4b7c')
@@ -47,10 +47,10 @@ package() {
 
     cd "lib"
     for f in *.license.txt; do
-        cp -d --no-preserve=ownership "$f" "${pkgdir}/usr/share/licenses/${pkgname}/$f"
+        install -Dm644 "$f" "${pkgdir}/usr/share/licenses/${pkgname}/$f"
     done
     for f in *.jar; do
-        cp -d --no-preserve=ownership "$f" "${pkgdir}/usr/share/java/${pkgname}/lib/$f"
+        install -Dm644 "$f" "${pkgdir}/usr/share/java/${pkgname}/lib/$f"
     done
 
     cd "$srcdir"
