@@ -1,6 +1,6 @@
 # Maintainer: Rizzzi Git <rizzzigit@gmail.com>
 
-tmlver="2023.10.3.0"
+tmlver="2023.11.3.0"
 terrariaver="1.4.4.9"
 pkgrel=1
 epoch=0
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-  "3e57edab68514ae756562301e9fd26311cc10b691f3736101fc8a47b64d8b544"
+  "ac1db759249c6493443c11e74cfddb23304bb0957e7e05870e8e2c163b1b3e4b"
 )
 
 noextract=("tml-$tmlver.zip")
