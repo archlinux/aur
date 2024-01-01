@@ -3,7 +3,7 @@
 _electron_version=25
 pkgname=stretchly
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The break time reminder app"
 arch=('i686' 'x86_64')
 url="https://hovancik.net/stretchly"
@@ -22,7 +22,7 @@ _ensure_local_nvm() {
     fi
     unset npm_config_prefix
     export NVM_DIR=${srcdir}/.nvm
-    . /usr/share/nvm/init-nvm.sh
+    . /usr/share/nvm/init-nvm.sh || return
 }
 
 prepare() {
@@ -30,14 +30,14 @@ prepare() {
     _ensure_local_nvm
     _node_version=$(jq -r '.engines.node' package.json)
     nvm ls "$_node_version" &>/dev/null ||
-        nvm install "$_node_version"
+        nvm install "$_node_version" || return
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     _ensure_local_nvm
     _node_version=$(jq -r '.engines.node' package.json)
-    nvm use "$_node_version"
+    nvm use "$_node_version" || return
     # 'husky install' doesn't work outside of a git repository
     [[ -d .git ]] || git init
     npm install --no-save --no-audit --no-progress --no-fund

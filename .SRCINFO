@@ -1,7 +1,7 @@
 pkgbase = stretchly
 	pkgdesc = The break time reminder app
 	pkgver = 1.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hovancik.net/stretchly
 	arch = i686
 	arch = x86_64
