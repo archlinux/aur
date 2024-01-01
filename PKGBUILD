@@ -1,19 +1,19 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
-_electron_version=24
+_electron_version=25
 pkgname=stretchly
-pkgver=1.14.1
-pkgrel=3
+pkgver=1.15.1
+pkgrel=1
 pkgdesc="The break time reminder app"
 arch=('i686' 'x86_64')
-url="https://github.com/hovancik/stretchly/"
+url="https://hovancik.net/stretchly"
 license=('BSD')
 depends=('gtk3' 'http-parser' 'libappindicator-gtk3' 'libnotify' 'libxcrypt-compat' 'libxss' "electron$_electron_version")
 makedepends=('git' 'nvm' 'jq' 'python')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("https://github.com/hovancik/stretchly/archive/v${pkgver}.tar.gz")
 
-sha256sums=('abde2d1c1bb58418ebc4b71be2d8fe66ef88c263ca1bc3f06c1bc5e2b5601597')
+sha256sums=('efb765a64aca7c3c9f1b8139a37248f1660c2ccfc7557a7ed6cd688b5885d607')
 
 _ensure_local_nvm() {
     if type nvm &>/dev/null; then
@@ -29,10 +29,8 @@ prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     _ensure_local_nvm
     _node_version=$(jq -r '.engines.node' package.json)
-    # ` || false` is a workaround until this upstream fix is released:
-    # https://github.com/nvm-sh/nvm/pull/2698
     nvm ls "$_node_version" &>/dev/null ||
-        nvm install "$_node_version" || false
+        nvm install "$_node_version"
 }
 
 build() {

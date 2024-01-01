@@ -1,8 +1,8 @@
 pkgbase = stretchly
 	pkgdesc = The break time reminder app
-	pkgver = 1.14.1
-	pkgrel = 3
-	url = https://github.com/hovancik/stretchly/
+	pkgver = 1.15.1
+	pkgrel = 1
+	url = https://hovancik.net/stretchly
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -16,10 +16,10 @@ pkgbase = stretchly
 	depends = libnotify
 	depends = libxcrypt-compat
 	depends = libxss
-	depends = electron24
+	depends = electron25
 	conflicts = stretchly-bin
 	conflicts = stretchly-git
-	source = https://github.com/hovancik/stretchly/archive/v1.14.1.tar.gz
-	sha256sums = abde2d1c1bb58418ebc4b71be2d8fe66ef88c263ca1bc3f06c1bc5e2b5601597
+	source = https://github.com/hovancik/stretchly/archive/v1.15.1.tar.gz
+	sha256sums = efb765a64aca7c3c9f1b8139a37248f1660c2ccfc7557a7ed6cd688b5885d607
 
 pkgname = stretchly
