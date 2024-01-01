@@ -1,0 +1,13 @@
+pkgbase = r-pps
+	pkgdesc = PPS Sampling
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=pps
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/pps_1.0.tar.gz
+	md5sums = d639aaaa13550a442ba018927b4f763a
+	b2sums = a4fbfe784bb3824191cc78a878493ca67cb4a7e2ab5254642674b0c4482d24d44b2b71bade4e6aed6ec8592c1d19f254fa989aa2c73bdf07fc8f5c7bd19652bf
+
+pkgname = r-pps
