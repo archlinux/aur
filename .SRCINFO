@@ -1,0 +1,21 @@
+pkgbase = r-fairness
+	pkgdesc = Algorithmic Fairness Metrics
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=fairness
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-caret
+	depends = r-devtools
+	depends = r-e1071
+	depends = r-ggplot2
+	depends = r-proc
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/fairness_1.2.2.tar.gz
+	md5sums = 9d76842530b3f2d04109786bfee2a333
+	b2sums = 5f65184977a8c5e74b66f324fd671542c6b8495ef5c186e6dc7663fa001c0ae7a39ef58fcb043f5b7eebca0e74d2f3780037192b2d8ce8defe863caa7b3d7ba9
+
+pkgname = r-fairness
