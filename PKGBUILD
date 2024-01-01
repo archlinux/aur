@@ -2,7 +2,7 @@
 # Contributor: Tarn W. Burton <twburton@gmail.com>
 
 pkgname=clasp-cl
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Bringing Common Lisp and C++ Together'
 arch=('x86_64')
@@ -27,8 +27,8 @@ provides=('cclasp-boehm' 'clasp-cl' 'common-lisp')
 conflicts=('cando' 'cando-git' 'clasp-cl-git')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/clasp-developers/clasp/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('5cb3642fbfe5f936e733cae95b4746d86fec9af6017b04ccd6b87eded4f80eae48c2965af104688eaa54648ec99b21a79bf0f0f69637eab8ca7a909dd9987832')
-b2sums=('743e409e1b90882c544c040ca0b98b591edb12aab7d26f6e20475cec3095c94e6e820b40701a79e9374538a7beb2dec24fd127b1931b8b390e8872c3f2182f4f')
+sha512sums=('47996a938682a5a377a090d22e961dc19d9682dd925f064ac4230aca0ab1a439ad3a51528d89cd798224d8644bc3e45eaa7802fc3e9ec0188bc72694f88b1556')
+b2sums=('52d42b0da0704da53235d313fe525923f467946d96ee511a1186f8da5e263706b9bedcd9562138f50c32a9d171b9a19be647cc155a9c55d3289fe992dba4b6e8')
 
 build() {
   cd clasp-$pkgver
