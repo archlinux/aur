@@ -2,14 +2,14 @@
 pkgname=python-pyshacl
 _name=${pkgname#python-}
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python SHACL Validator"
 arch=('x86_64')
 url="https://github.com/RDFLib/pySHACL"
 license=('APACHE')
 groups=()
 depends=('python-rdflib')
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel)
 optdepends=()
 provides=('python-pyshacl')
 conflicts=()
