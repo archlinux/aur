@@ -1,7 +1,7 @@
 # Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
 
 pkgname=bashcities
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 pkgdesc="A Neocities client written in Bash."
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/tatsumoto-ren/bashcities"
 license=("GPL3")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 depends=('python' 'curl' 'git' 'bash')
-sha256sums=('a3a0978550eeb5825817c91c79ae175e21407a69f1362f46bf51cee0a3cfa197')
+sha256sums=('0e74b269d5a6b1c0ff9f20ef574e7176609de4b05b22be63c628b1fd183fad57')
 
 package() {
 	cd -- "${pkgname}-${pkgver}"

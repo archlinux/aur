@@ -1,6 +1,6 @@
 pkgbase = bashcities
 	pkgdesc = A Neocities client written in Bash.
-	pkgver = 0.9
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/tatsumoto-ren/bashcities
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = bashcities
 	depends = curl
 	depends = git
 	depends = bash
-	source = bashcities-0.9.tar.gz::https://github.com/tatsumoto-ren/bashcities/archive/refs/tags/v0.9.tar.gz
-	sha256sums = a3a0978550eeb5825817c91c79ae175e21407a69f1362f46bf51cee0a3cfa197
+	source = bashcities-1.0.tar.gz::https://github.com/tatsumoto-ren/bashcities/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 0e74b269d5a6b1c0ff9f20ef574e7176609de4b05b22be63c628b1fd183fad57
 
 pkgname = bashcities
