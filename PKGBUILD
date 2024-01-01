@@ -2,7 +2,7 @@
 
 pkgname=wind-bin
 _pkgname=wind
-pkgver=22.4.1.0
+pkgver=23.8.1.12060
 pkgrel=1
 pkgdesc="Wind financial terminal, 万得金融终端"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wind
 )
 
 
-sha512sums=('54ad13a278b1337f053fd05a4a9895550550164498e66e45180498ed2171748ff8106d76a5ecaa724440388b735cdd1b189d399e4f032508d0e9e460e65f53a8'
+sha512sums=('2e600186f01ba53121fe0f69c869324b3653d8232b7c143d7911fbfbecdb8e220e025722664b4fd2d7ae7157939c2564e15ecdbd39abec4e494120a1a9c6afdc'
             'ccfa9c937df21012337c07dbcd8cbba977cb6cdad4e701d8396c260bc0876cd94d1bf57a8fd6b8dfac901c47bd4448f99232169bb3d10f49b16616caa7cc43a4')
 
 prepare(){
