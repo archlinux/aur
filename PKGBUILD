@@ -2,7 +2,7 @@
 pkgname=kd
 pkgver=v0.0.3
 pkgrel=1
-pkgdesc='a command-line dictionary'
+pkgdesc='A command-line dictionary'
 arch=('x86_64')
 url='https://github.com/Karmenzind/kd'
 license=('MIT')
