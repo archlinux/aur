@@ -7,7 +7,7 @@ url="https://gitlab.com/skidoo/zzzfm"
 arch=(x86_64)
 source=("https://gitlab.com/antix-contribs/zzzfm/-/raw/contribs/deb-packages/zzzfm_1.0.7-6~contribs2_amd64.deb")
 license=('GPL3')
-depends=('cairo>=1.2.4' 'desktop-file-utils' 'e2fsprogs' 'gdk-pixbuf2' 'glib2>=2.41.1' 'glibc>=2.28' 'gtk2>=2.24.32' 'hicolor-icon-theme' 'libudev>=183' 'libx11' 'pango' 'shared-mime-info' 'zzzfm-common-bin=1.0.7' )
+depends=('cairo>=1.2.4' 'desktop-file-utils' 'e2fsprogs' 'gdk-pixbuf2' 'glib2>=2.41.1' 'glibc>=2.28' 'gtk2>=2.24.32' 'hicolor-icon-theme' 'udev' 'libx11' 'pango' 'shared-mime-info' 'zzzfm-common-bin=1.0.7' )
 optdepends=('bash-completion' 'curlftpfs' 'dbus' 'fuseiso' 'gksu' 'gphotofs' 'ifuse' 'jmtpfs' 'sshfs' 'udisks2' 'util-linux')
 provides=('zzzfm')
 conflicts=('zzzfm-gtk3')

@@ -13,7 +13,7 @@ pkgbase = zzzfm-bin
 	depends = glibc>=2.28
 	depends = gtk2>=2.24.32
 	depends = hicolor-icon-theme
-	depends = libudev>=183
+	depends = udev
 	depends = libx11
 	depends = pango
 	depends = shared-mime-info
