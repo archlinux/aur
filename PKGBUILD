@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 _pkgname=moonraker
 pkgname="${_pkgname}-git"
-pkgver=r1845.fe12095
+pkgver=r1950.84a8538
 pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
@@ -19,14 +19,17 @@ depends=(klipper
          python-paho-mqtt
          python-jinja
          python-dbus-next
-         curl
-         libgpiod)
+         python-periphery
+         curl)
 #checkdepends=("python-pytest>=7.0" python-pytest-asyncio python-pytest-timeout)
 makedepends=(git python-build python-installer python-wheel python-pdm)
 optdepends=("polkit: enable service and machine control through moonraker"
             "python-preprocess-cancellation: enables exclude object processing"
             "python-apprise: enable [notifier] module for sending notifications"
             "python-ldap3: [authorization] using LDAP"
+            "python-msgspec: potentially improves moonraker performance"
+            # Leave the following off for now as moonraker used methods deprecated in py3.12
+            #"python-uvloop: potentially improves moonraker performance"
             "python-zeroconf: enable zeroconf announcements"
             "wireless_tools: network detection")
 provides=("$_pkgname")
@@ -36,7 +39,7 @@ install=moonraker.install
 source=('git+https://github.com/Arksine/moonraker.git#branch=master' 'moonraker.install' 'moonraker.conf' 'moonraker.service' 'moonraker.env' 'moonraker.rules' 'sysusers.conf' 'tmpfiles.conf' 'moonraker-klipper.cfg')
 sha256sums=('SKIP'
             'b118f346ec57228add79b9c37555adc5dbae4cb6de0e39659912376b5ad2e932'
-            '85855665ec1ff10c95529f456d8b00314d8909db4d83be48bb76d0fc2a5fd3d0'
+            '16ac5116ff18e67b7334cf9baf4c404734aede0b1d56d5bed8bde90fbd926e8c'
             'c9ab1efe9e225fddaaa20b82ff33d9b00c7e7fffe06d0a27502c17d5484131fc'
             '5611f1a48bb18d0d95a31eaead4f59d84c0ae5e3c407f3488770e2236b97c3bf'
             'cef040e973a9bb697659d1506a37a5f829551d5cc96e3f81ff588d5bd67cf1d0'
@@ -65,6 +68,11 @@ package() {
   cd "$srcdir/$_pkgname"
 
   python -m installer --destdir="${pkgdir}" --prefix="/opt/$_pkgname" dist/*.whl
+  # clean wheel after installation to prevent later package() runs from erroring
+  # due to `dist/*.whl` expanding to multiple files (which `python -m install`
+  # doesn't support)
+  rm -f dist/*.whl
+
   rm -rf "$pkgdir/opt/$_pkgname/bin" # clean bin/moonraker as it doesn't work with /opt prefix
 
   install -Dm644 "$srcdir/moonraker.conf" "$pkgdir/etc/klipper/moonraker.conf"
