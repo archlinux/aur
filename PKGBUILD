@@ -1,4 +1,4 @@
-# Maintainer: Yukina <yukihana3230 at gmail dot com>
+# Maintainer: Yukina <yukinohana3230 at gmail dot com>
 
 _pkgname="qogir-cursor-theme"
 pkgname="${_pkgname}-git"
