@@ -1,0 +1,22 @@
+pkgbase = render50
+	pkgdesc = Generate syntax-highlighted PDFs of source code
+	pkgver = 9.2.7
+	pkgrel = 1
+	url = https://github.com/cs50/render50
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-backports.shutil_get_terminal_size
+	depends = python-beautifulsoup4
+	depends = python-braceexpand
+	depends = python-natsort
+	depends = python-pygments
+	depends = python-pypdf
+	depends = python-requests
+	depends = python-termcolor
+	depends = python-weasyprint
+	source = https://files.pythonhosted.org/packages/source/r/render50/render50-9.2.7.tar.gz
+	sha256sums = 3cb9b7697adc246a689ae40afa12746d50f9ba301f5d0b9e008b1219f7bb0614
+
+pkgname = render50
