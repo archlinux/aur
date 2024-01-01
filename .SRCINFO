@@ -1,7 +1,7 @@
 pkgbase = xivlauncher
 	pkgdesc = Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/goatcorp/XIVLauncher.Core
 	arch = x86_64
@@ -48,7 +48,11 @@ pkgbase = xivlauncher
 	options = !strip
 	source = XIVLauncher.Core::git+https://github.com/goatcorp/XIVLauncher.Core.git#tag=1.0.6
 	source = XIVLauncher.desktop
+	source = openssl_fix.cnf
+	source = xivlauncher-core
 	sha512sums = SKIP
-	sha512sums = 5ac774f858d4015c59e6758e2a706b93e822bca9c046ed87210deabc141ac101020d2654fbcf8314f9409a4cfcf921d1e26ec0a3b0beab02d1bcd045fb6e6f14
+	sha512sums = d94f652f9571598799fcd9bf87cb7d2e54ca924bc100b73024e81efd0fe9fc12d494f7adc500ff34ed1e53c59f94e1d6f3c5ae29a1c33133cc30988197e46389
+	sha512sums = c702d45b607a54716ae3f1c9b0aa548b3226da76b0ae4b8a88e49d16e5117a7ff5164e7dd5b6a2799a16a18d53b2de55a26a87888054c25152df5c4824b38fe0
+	sha512sums = dad16da8e1d2bc772f7e1be1f59fd799c596fa88fb77a7e58a94baf10a1ca2f0ad7e79ad3baa8ba24e35dd0bc748884c74371c447816b1ea61098f58a130313a
 
 pkgname = xivlauncher

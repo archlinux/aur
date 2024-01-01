@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=XIVLauncher.Core
 Comment=Custom launcher for Final Fantasy XIV Online
-Exec=XIVLauncher.Core
+Exec=xivlauncher-core
 Icon=xivlauncher
 Terminal=false
 Type=Application
