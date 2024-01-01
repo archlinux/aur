@@ -2,13 +2,13 @@
 # Maintainer: alescdb
 
 pkgname=air-git
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A simple ChatGPT & Llama-cpp command line with ansi markdown display (written in Rust)"
 arch=("x86_64")
 url="https://github.com/alescdb/air.git"
 license=('Apache')
-makedepends=(rust)
+makedepends=(rust clang)
 conflicts=('aid')
 source=('air-git::git+https://github.com/alescdb/air.git')
 provides=("air=${pkgver%%.r*}")
