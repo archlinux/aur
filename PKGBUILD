@@ -2,7 +2,7 @@
 # Current Maintainer: Dylan Morrison <dylanjmorrison611 at gmail.com>
 
 pkgname=megazeux
-pkgver=2.92f
+pkgver=2.93
 pkgrel=1
 pkgdesc="Game creation system"
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ _filename=${_base}src.tar.xz
 # To get the _rid from upstream, look at the last page of
 # https://www.digitalmzx.com/search.php?browse=4&desc=recordReleaseDate.
 # Look for the "Source Code" download.
-_rid=2610
+_rid=2786
 
 # To get the _sha256sum from upstream, open the link from the table in the step
 # above, and look at the target of the download link in the sidebar on the left.
-_sha256sum=239bac1ed064ab2c08679116c25cf5fea49a337dd3835ad0bf661de1663339bc
+_sha256sum=504486958591255eaf3c725e26be21501dcb16171554aa3317a4429ea4a78ffd
 
 # download.php URL: Identifies the download using the Megazeux version.
 #source=("${_filename}::https://www.digitalmzx.com/download.php?latest=src&ver=${pkgver}")
