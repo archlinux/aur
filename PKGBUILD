@@ -153,6 +153,8 @@ EOF
   depot_tools/download_from_google_storage.py --no_resume --extract --no_auth \
     --bucket chromium-nodejs -s src/third_party/node/node_modules.tar.gz.sha1
 
+  patch -Np1 -i "${srcdir}/std-vector-non-const.patch" -d src/electron
+
   src/electron/script/apply_all_patches.py \
       src/electron/patches/config.json
 
@@ -185,9 +187,6 @@ EOF
   patch -Np1 -i "${srcdir}/jinja-python-3.10.patch" -d "third_party/electron_node/tools/inspector_protocol/jinja2"
   patch -Np1 -i "${srcdir}/use-system-libraries-in-node.patch"
   patch -Np1 -i "${srcdir}/default_app-icon.patch"  # Icon from .desktop file
-  pushd electron
-  patch -Np1 -i "${srcdir}/std-vector-non-const.patch"
-  popd
 
   # Allow building against system libraries in official builds
   echo "Patching Chromium for using system libraries..."
