@@ -1,7 +1,7 @@
 pkgbase = resolute-bin
-	pkgdesc = GUI wrapper in Tauri for the Arch Linux package manager, pacman using the wrapper paru. Designed to be intuitive, powerful and user-friendly
+	pkgdesc = Mod Manager GUI for Resonite
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gawdl3y/Resolute
 	arch = x86_64
 	license = GPL-3-or-later

@@ -1,8 +1,8 @@
 # Maintainer: ljoonal <aur at ljoonal.xyz>
 pkgname="resolute-bin"
 pkgver="0.6.1"
-pkgrel=1
-pkgdesc="GUI wrapper in Tauri for the Arch Linux package manager, pacman using the wrapper paru. Designed to be intuitive, powerful and user-friendly"
+pkgrel=2
+pkgdesc="Mod Manager GUI for Resonite"
 arch=('x86_64')
 url="https://github.com/Gawdl3y/Resolute"
 license=('GPL-3-or-later')
