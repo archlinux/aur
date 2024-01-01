@@ -1,7 +1,7 @@
 pkgbase = focus-bin
 	pkgdesc = A simple and fast text editor
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/focus-editor/focus
 	arch = x86_64
 	license = GPL-3.0

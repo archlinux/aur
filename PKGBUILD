@@ -2,7 +2,7 @@
 _pkg=focus
 pkgname=focus-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and fast text editor'
 arch=(x86_64)
 url="https://github.com/focus-editor/focus"
@@ -21,7 +21,7 @@ b2sums_x86_64=('04d47500db9974ce24a425b14c6fe82f43c61de3fce8c8b37ccd81e2e8642326
 package() {
 	install -Dm0755 "$_pkg-$pkgver" "$pkgdir/usr/bin/$_pkg"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 focus.desktop "$pkgdir"/usr/share/applications/focus.desktop
-	install -Dm755 focus.png "$pkgdir"/usr/share/pixmaps/focus.svg
+	install -Dm644 focus.desktop -t "$pkgdir"/usr/share/applications/
+	install -Dm755 focus.png -t "$pkgdir"/usr/share/pixmaps/
 }
 # vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
