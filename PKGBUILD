@@ -2,8 +2,8 @@
 # This is based off the tagged releases in the official hashlink repo
 # So if you want official releases, this is the PKGBUILD for you.
 pkgname=hashlink
-pkgver=1.13
-pkgrel=3
+pkgver=1.14
+pkgrel=1
 pkgdesc="A virtual machine for Haxe (tagged releases)"
 url="https://hashlink.haxe.org/"
 arch=(x86_64)
@@ -22,7 +22,7 @@ depends=(
 )
 source=("https://github.com/HaxeFoundation/hashlink/archive/${pkgver}.tar.gz"
         "mbedtls2-Makefile.patch")
-sha256sums=('696aef6871771e5e12c617df79187d1761e79bcfe3927531e99f665a8002956f'
+sha256sums=('7def473c8fa620011c7359dc36524246c83d0b6a25d495d421750ecb7182cc99'
             '3d272e39333fbf0cbe17667f608a7616a3eef543fb574e1e9b51460f8b5f3db0')
 
 prepare() {
