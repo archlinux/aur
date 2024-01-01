@@ -3,7 +3,7 @@
 
 #  shellcheck disable=SC2034
 pkgname=transmission-remote-gtk-git
-pkgver=1.6.0.r2.g67e8f88
+pkgver=1.6.0.r14.gc7017f5
 pkgrel=1
 pkgdesc='A remote interface to the Transmission BitTorrent client'
 arch=('i686' 'x86_64' 'armv6h')
@@ -11,7 +11,7 @@ url='https://github.com/transmission-remote-gtk/transmission-remote-gtk'
 license=('GPL')
 options=('!libtool')
 depends=('gtk3' 'libproxy' 'libsoup3' 'json-glib' 'gettext')
-makedepends=('git' 'appstream-glib' 'meson' 'desktop-file-utils' 'perl' 'pod2man')
+makedepends=('git' 'appstream-glib' 'meson' 'desktop-file-utils' 'perl' 'python-docutils')
 optdepends=(
   'geoip: country of origin of peers'
   'libayatana-indicator: Application tray support'
