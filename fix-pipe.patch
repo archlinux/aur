@@ -1,0 +1,15 @@
+diff -u a/main.c b/main.c
+--- a/main.c
++++ b/main.c
+@@ -573,7 +573,10 @@
+ 			}
+ 
+ 			int fds[2];
+-			pipe(fds);
++			if (pipe(fds) == -1) {
++				// Pipe failed
++				return;
++			}
+ 			wl_data_offer_receive(state->offer, "text/plain", fds[1]);
+ 			close(fds[1]);
+ 
