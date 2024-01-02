@@ -1,6 +1,6 @@
 pkgbase = r-jasptimeseries
 	pkgdesc = A Time Series module for JASP
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspTimeSeries
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-jasptimeseries
 	depends = r-forecast
 	depends = r-jaspbase
 	depends = r-jaspgraphs
-	source = jaspTimeSeries_0.18.1.tar.gz::https://github.com/jasp-stats/jaspTimeSeries/archive/refs/tags/v0.18.1.tar.gz
-	sha256sums = cbe2dd8c61700d939641b4c5b99c5d0febfec8a78a166445cf85df5fb6078fed
+	source = jaspTimeSeries_0.18.2.tar.gz::https://github.com/jasp-stats/jaspTimeSeries/archive/refs/tags/v0.18.2.tar.gz
+	sha256sums = 2a25cc1076481510569ea9993bab6e97111bb0b0273f792ce7e67040ba936a72
 
 pkgname = r-jasptimeseries
