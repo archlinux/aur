@@ -1,7 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=net-player
 _pkgname="${pkgname//-p/P}"
-pkgver=1.3.2
+pkgver=1.3.4
+_electronversion=13
+_nodeversion=16
 pkgrel=1
 pkgdesc="A Subsonic based music player.基于Subsonic API的桌面端播放器"
 arch=(
@@ -12,45 +14,55 @@ url="https://github.com/Zhoucheng133/net-player"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'electron13'
+    "electron${_electronversion}"
 )
 makedepends=(
-    'yarn'
     'gendesk'
     'npm'
     'nvm'
     'git'
+    'pnpm'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'cf30b550beac6dfd1582048dd68b57c8d9f5404561357b731dedfac3559dcf56')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 16
-    nvm use 16
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --categories "AudioVideo" --name "${_pkgname}" --exec "${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     sed -e "s|mac|linux|g" -e "s|zip|AppImage|g" -i vue.config.js
-    yarn --cache-folder "${srcdir}/npm-cache" 
+    #export npm_config_build_from_source=true
+    #export npm_config_cache="${srcdir}/.npm_cache"
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export ELECTRONVERSION="${_electronversion}"
+    yarn install #--cache-folder "${srcdir}/.yarn_cache" --production
     yarn electron:build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     if [ "${CARCH}" == "aarch64" ];then
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist_electron/linux-arm64-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist_electron/linux-arm64-unpacked/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
+        _osarch=linux-arm64-unpacked
     elif [ "${CARCH}" == "x86_64" ];then
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist_electron/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist_electron/linux-unpacked/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
+        _osarch=linux-unpacked
     fi
+    install -Dm644 "${srcdir}/${pkgname}/dist_electron/${_osarch}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/${pkgname}/dist_electron/${_osarch}/resources/build" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname}/dist_electron/${_osarch}/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644  "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}/src/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
