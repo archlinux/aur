@@ -8,8 +8,8 @@
 : ${use_ibm_tss:=1}
 
 pkgname=openssl-tpm2-engine
-_commit=d9433dc6be201d6c71a7decbecc482dce879b67b
-pkgver=4.0.1
+_commit=e7fb66b6a702e31cb24f51ec1e2d4d7187b2462e
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="OpenSSL engine & provider for TPM-backed keys using IBM's TPM2 software stack"
 arch=(x86_64)
