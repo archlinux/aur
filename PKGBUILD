@@ -1,12 +1,11 @@
 pkgname=chicken-srfi-13
 _name=srfi-13
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Chicken Scheme SRFI-13 string library'
 arch=('x86_64')
 license=('BSD')
-depends=('chicken')
-makedepends=("chicken-srfi-14")
+depends=('chicken' 'chicken-srfi-14')
 url='http://wiki.call-cc.org/eggref/5/srfi-13'
 
 build() {
