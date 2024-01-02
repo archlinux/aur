@@ -2,22 +2,25 @@
 
 pkgname=licensee
 _name=licensee
-pkgver=9.16.0
-pkgrel=2
-pkgdesc='Detect under what license a project is distributed'
+pkgver=9.16.1
+pkgrel=1
+pkgdesc="Detect under what license a project is distributed"
 arch=(any)
-url='https://github.com/licensee/licensee'
+url="https://github.com/licensee/licensee"
 license=(MIT)
 depends=(
+  ruby
   ruby-dotenv
   ruby-octokit
   ruby-reverse_markdown
   ruby-rugged
   ruby-thor
 )
-makedepends=(rubygems)
-checkdepends=(
+makedepends=(
   git
+  rubygems
+)
+checkdepends=(
   ruby-mustache
   ruby-rspec
   ruby-simplecov
@@ -25,19 +28,24 @@ checkdepends=(
 )
 options=(!emptydirs)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7f1895d93f16886c427027deda254139d7fde23f6e7a8c7ea1c3def00804ff8e')
+_commit=7a206e936e479bf7dfaf396d7f6658f07319d6bd # git rev-parse "$pkgver"
+source=("git+$url.git?signed#commit=$_commit")
+sha256sums=('SKIP')
+validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') # GitHub (web-flow commit signing)
 
-_archive="$pkgname-$pkgver"
+_archive="$pkgname"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   cd "$_archive"
 
-  # update gemspec/Gemfile to allow newer version of the dependencies
+  # Update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
-
-  # we don't build from a git checkout
-  sed --in-place --regexp-extended 's|.*git ls-files.*|  ]|' "$_name.gemspec"
 }
 
 build() {
@@ -91,54 +99,26 @@ check() {
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
 
-  # Not running the following tests due to failures:
-  # spec/bin_spec.rb
-  # spec/licensee/commands/detect_spec.rb
-  # spec/licensee/commands/license_path_spec.rb
-  # spec/licensee/commands/version_spec.rb
+  _excluded_tests=(
+    bin_spec.rb
+    licensee/commands/detect_spec.rb
+    licensee/commands/license_path_spec.rb
+    licensee/commands/version_spec.rb
+  )
+  _exclude_pattern_arg="spec/{$(printf "%s," "${_excluded_tests[@]}")"
+  _exclude_pattern_arg="${_exclude_pattern_arg%,}}"
+
   local _gemdir
   _gemdir="$(gem env gemdir)"
   GEM_HOME="tmp_install/$_gemdir" rspec \
-    spec/fixture_spec.rb \
-    spec/integration_spec.rb \
-    spec/licensee/content_helper_spec.rb \
-    spec/licensee/hash_helper_spec.rb \
-    spec/licensee/license_field_spec.rb \
-    spec/licensee/license_meta_spec.rb \
-    spec/licensee/license_rules_spec.rb \
-    spec/licensee/license_spec.rb \
-    spec/licensee/matchers/cabal_matcher_spec.rb \
-    spec/licensee/matchers/cargo_matcher_spec.rb \
-    spec/licensee/matchers/copyright_matcher_spec.rb \
-    spec/licensee/matchers/cran_matcher_spec.rb \
-    spec/licensee/matchers/dice_matcher_spec.rb \
-    spec/licensee/matchers/dist_zilla_matcher_spec.rb \
-    spec/licensee/matchers/exact_matcher_spec.rb \
-    spec/licensee/matchers/gemspec_matcher_spec.rb \
-    spec/licensee/matchers/matcher_spec.rb \
-    spec/licensee/matchers/npm_bower_matcher_spec.rb \
-    spec/licensee/matchers/nu_get_matcher_spec.rb \
-    spec/licensee/matchers/package_matcher_spec.rb \
-    spec/licensee/matchers/reference_matcher_spec.rb \
-    spec/licensee/matchers/spdx_matcher_spec.rb \
-    spec/licensee/project_files/license_file_spec.rb \
-    spec/licensee/project_files/package_info_spec.rb \
-    spec/licensee/project_files/project_file_spec.rb \
-    spec/licensee/project_files/readme_file_spec.rb \
-    spec/licensee/project_spec.rb \
-    spec/licensee/projects/git_project_spec.rb \
-    spec/licensee/projects/github_project_spec.rb \
-    spec/licensee/rule_spec.rb \
-    spec/licensee_spec.rb \
-    spec/spec_helper.rb \
-    spec/vendored_license_spec.rb
+    --exclude-pattern "$_exclude_pattern_arg"
 }
 
 package() {
   cd "$_archive"
 
-  cp --archive --verbose tmp_install/* "${pkgdir}"
+  cp --archive --verbose tmp_install/* "$pkgdir"
 
-  install --verbose -D --mode=0644 LICENSE.md --target-directory "$pkgdir/usr/share/licenses/$pkgname"
   install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
+  install --verbose -D --mode=0644 LICENSE.md --target-directory "$pkgdir/usr/share/licenses/$pkgname"
 }
