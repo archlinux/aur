@@ -1,0 +1,13 @@
+pkgbase = chicken-srfi-179
+	pkgdesc = SRFI-179: Nonempty Intervals and Generalized Arrays (Updated) for Chicken Scheme
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-179
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-133
+	depends = chicken-srfi-160
+
+pkgname = chicken-srfi-179
