@@ -20,7 +20,7 @@ prepare() {
 build() {
     cd "$pkgname"
 
-    local revision="$(git rev-parse --short "v$pkgver")"
+    local revision="$(git rev-parse --short "$_tag")"
 
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
