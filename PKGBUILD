@@ -2,7 +2,7 @@
 
 pkgname=gz-common5
 pkgver=5.4.2
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Gazebo Common, a component of Gazebo, provides a set of libraries that cover many different use cases."
