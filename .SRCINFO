@@ -1,0 +1,16 @@
+pkgbase = chicken-string-utils
+	pkgdesc = String Utilities for Chicken Scheme
+	pkgver = 2.7.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/string-utils
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-utf8
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+	depends = chicken-srfi-69
+	depends = chicken-miscmacros
+	depends = chicken-check-errors>=3.5.0
+
+pkgname = chicken-string-utils
