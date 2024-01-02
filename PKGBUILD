@@ -17,22 +17,22 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$_pkgname"
+    cd "$_pkgname"
     git submodule update --init --recursive
 }
 
 build() {
-	make -C "$_pkgname"
+    make -C "$_pkgname"
 }
 
 package() {
-	cd "$_pkgname"
-	make DESTDIR="$pkgdir" NAME=ly-dm install installsystemd
+    cd "$_pkgname"
+    make DESTDIR="$pkgdir" NAME=ly-dm install installsystemd
     sed -i "s;/usr/bin/ly;/usr/bin/ly-dm;g" "$pkgdir/usr/lib/systemd/system/ly.service"
-	install -D -m644 license.md "${pkgdir}/usr/share/licenses/${pkgname}/WTFPL"
+    install -D -m644 license.md "${pkgdir}/usr/share/licenses/${pkgname}/WTFPL"
 }
