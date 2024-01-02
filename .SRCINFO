@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-34
+	pkgdesc = SRFI-34: Exception Handling for Programs for Chicken Scheme
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-34
+	arch = x86_64
+	license = SRFI
+	depends = chicken
+
+pkgname = chicken-srfi-34
