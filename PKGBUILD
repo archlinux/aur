@@ -1,10 +1,10 @@
-# Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: SimPilotAdamT <adam_tazul@outlook.com>
 # Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname='teamviewer-quicksupport'
 epoch=2
-pkgver=15.31.3
+pkgver=15.49.2
 pkgrel=1
 pkgdesc='All-in-one software for remote support and online meetings'
 arch=('x86_64')
@@ -12,30 +12,16 @@ url='http://www.teamviewer.com/'
 options=('!strip')
 depends=(
     'bash'
-    'dbus'
-    'gcc-libs'
-    'glib2'
     'glibc'
     'hicolor-icon-theme'
-    'libcap'
-    'libgcrypt'
-    'libgpg-error'
-    'libglvnd'
-    'libx11'
-    'libxcb'
-    'lz4'
-    'qt5-quickcontrols'
+    'qt5-base'
+    'qt5-declarative'
     'qt5-x11extras'
-    'pcre'
-    'systemd-libs'
-    'xz'
-    'zlib'
-    'zstd'
 )
 conflicts=('teamviewer')
 license=('custom')
 source=("teamviewer_qs-${pkgver}.tar.gz::https://download.teamviewer.com/download/teamviewer_qs.tar.gz")
-b2sums=('baaed54141fc43e6bf06ae94364bf4e4a8afe7007085e9adeb2d8067632817f1c6b186d9674bff0a552de056d6b1318a7799b1c0140b1e22803f2043eea77f4e')
+b2sums=('5581894aa3a86e1367fb1f00a921d61fd9aa4b475179872ca9507727eed78a9dd125bfce4645ffe99e09a5a8e1866606b4fae7172f31a20efa8f61e70cfd23ba')
 
 prepare() {
     cd teamviewerqs
