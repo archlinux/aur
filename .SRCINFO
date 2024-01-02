@@ -1,0 +1,10 @@
+pkgbase = chicken-box
+	pkgdesc = Boxing for Chicken Scheme
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/box
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-box
