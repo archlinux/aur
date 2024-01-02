@@ -1,0 +1,10 @@
+pkgbase = chicken-sql-null
+	pkgdesc = A convenience extension for representing SQL NULL values for Chicken Scheme
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/sql-null
+	arch = x86_64
+	license = Public Domain
+	depends = chicken
+
+pkgname = chicken-sql-null
