@@ -3,7 +3,7 @@
 # Contributor: Julie Shapiro <jshapiro at nvidia dot com>
 pkgname=nvidia-container-toolkit
 pkgver=1.14.3
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA container runtime toolkit"
 arch=('x86_64')
 url="https://github.com/NVIDIA/nvidia-container-toolkit"
@@ -13,6 +13,7 @@ makedepends=('git' 'go')
 conflicts=('nvidia-container-runtime-hook' 'nvidia-container-runtime<2.0.0')
 replaces=('nvidia-container-runtime-hook')
 backup=('etc/nvidia-container-runtime/config.toml')
+options=('!lto') # flag provided but not defined: -flto
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'go-nvml-79.patch')
 sha256sums=('a8dbb6a8d45fe8cb2ecbb7b5d49c332e0e7270e8988e57d2a8587ab1e004f6dd'
@@ -31,12 +32,13 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/gopath"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GO_LDFLAGS="-Wl,-z,lazy -s -w,${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v -o build ./...
+  go build -v \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -s -w -X github.com/NVIDIA/nvidia-container-toolkit/internal/info.version=$pkgver" \
+    -o build ./...
 
   # Clean module cache for makepkg -C
   go clean -modcache

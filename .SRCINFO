@@ -1,7 +1,7 @@
 pkgbase = nvidia-container-toolkit
 	pkgdesc = NVIDIA container runtime toolkit
 	pkgver = 1.14.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NVIDIA/nvidia-container-toolkit
 	arch = x86_64
 	license = Apache
@@ -11,6 +11,7 @@ pkgbase = nvidia-container-toolkit
 	conflicts = nvidia-container-runtime-hook
 	conflicts = nvidia-container-runtime<2.0.0
 	replaces = nvidia-container-runtime-hook
+	options = !lto
 	backup = etc/nvidia-container-runtime/config.toml
 	source = nvidia-container-toolkit-1.14.3.tar.gz::https://github.com/NVIDIA/nvidia-container-toolkit/archive/v1.14.3.tar.gz
 	source = go-nvml-79.patch
