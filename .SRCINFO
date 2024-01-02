@@ -1,0 +1,15 @@
+pkgbase = chicken-srfi-27
+	pkgdesc = Sources of Random Bits for Chicken Scheme
+	pkgver = 4.2.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-27
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-vector-lib
+	depends = chicken-timed-resource
+	depends = chicken-miscmacros
+	depends = chicken-check-errors>=3.6.0
+
+pkgname = chicken-srfi-27
