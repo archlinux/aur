@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-143
+	pkgdesc = SRFI 143: Fixnums for Chicken Scheme
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-143
+	arch = x86_64
+	license = MIT
+	depends = chicken
+
+pkgname = chicken-srfi-143
