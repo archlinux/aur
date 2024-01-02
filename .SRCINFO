@@ -1,0 +1,10 @@
+pkgbase = chicken-memory-mapped-files
+	pkgdesc = Chicken Scheme Memory-mapped file access for UNIX and Windows
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/memory-mapped-files
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-memory-mapped-files
