@@ -18,10 +18,6 @@ prepare() {
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
-pkgver() {
-  cd $pkgname-$pkgver
-  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --always)
-}
 
 build() {
   cd $pkgname-$pkgver
