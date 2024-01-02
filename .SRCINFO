@@ -1,0 +1,12 @@
+pkgbase = chicken-dyn-vector
+	pkgdesc = Dynamic (dense) vectors based on SRFI-43. for Chicken Scheme
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/dyn-vector
+	arch = x86_64
+	license = LGPL-3
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-vector-lib
+
+pkgname = chicken-dyn-vector
