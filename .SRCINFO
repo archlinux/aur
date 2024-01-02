@@ -1,0 +1,10 @@
+pkgbase = chicken-hahn
+	pkgdesc = In-source documentation for Chicken Scheme
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/hahn
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-hahn
