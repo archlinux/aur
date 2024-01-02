@@ -1,0 +1,13 @@
+pkgbase = chicken-yaml
+	pkgdesc = Bindings to libyaml for Chicken Scheme
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/yaml
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-sql-null
+	depends = chicken-srfi-13
+	depends = chicken-srfi-69
+
+pkgname = chicken-yaml
