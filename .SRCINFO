@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-64
+	pkgdesc = SRFI 64:"A Scheme API for test suites" implementation for Chicken Scheme
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-64
+	arch = x86_64
+	license = SRFI
+	depends = chicken
+
+pkgname = chicken-srfi-64
