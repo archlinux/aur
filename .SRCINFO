@@ -1,7 +1,7 @@
 pkgbase = python-gnuplot
 	pkgdesc = Plot graphs with Gnuplot
 	pkgver = 1.8
-	pkgrel = 13
+	pkgrel = 14
 	url = https://gnuplot-py.sourceforge.net/
 	arch = any
 	license = LGPL

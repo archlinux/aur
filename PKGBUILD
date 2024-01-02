@@ -1,11 +1,11 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Michael Krauss <hippodriver@gmx.net>
 # Contributor: Baptiste Jonglez <zerstorer at free dot fr>
 
 pkgbase=python-gnuplot
 pkgname=(python-gnuplot)
 pkgver=1.8
-pkgrel=13
+pkgrel=14
 pkgdesc='Plot graphs with Gnuplot'
 arch=(any)
 license=(LGPL)
@@ -22,10 +22,15 @@ prepare() {
   patch -Np1 -i ${srcdir}/0001-1.8-is-not-a-valid-version-number.patch
 }
 
+build() {
+	cd gnuplot-py
+	python setup.py build
+}
+
 package() {
   cd gnuplot-py
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 # vim: ts=2 sw=2 et:
