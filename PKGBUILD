@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deckboard-bin
 _pkgname=Deckboard
-pkgver=3.0.0_rc3
+pkgver=3.0.0_rc4
 _electronversion=4
 pkgrel=1
 pkgdesc="Control your PC with your phone in easy way possible."
@@ -22,8 +22,8 @@ source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${_ghurl}/releases/download/v$
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
-sha256sums_i686=('5df4d985e3374672a67645e5663f0f92e884b3270bd6694a0a408b1b4d29a082')
-sha256sums_x86_64=('40f696c7eb11dd396bc878257de97b2cdfbf9a2fef06fd3599e6b6ccfadd421f')
+sha256sums_i686=('478972b3605f8f05db0f2d3439897b325774584f93171ec025ac88997febf135')
+sha256sums_x86_64=('a31584cfd1a15b4c6da51faa003e01c164c85c117b8bf2eac67327e1f484aede')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
