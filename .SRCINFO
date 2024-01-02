@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-kokkos
+	pkgdesc = C++ performance portability programming ecosystem (mingw-w64)
+	pkgver = 4.2.00
+	pkgrel = 1
+	url = https://github.com/kokkos/kokkos
+	arch = any
+	license = Apache
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/kokkos/kokkos/archive/4.2.00.tar.gz
+	sha512sums = 01a27163c34ce09b87ac612e94c09909174bab674051041a0056ddc4587a832b218a0dbb093becb85d28cf6b21ba1987ef86fd8b96692df16bed07934b46d1af
+
+pkgname = mingw-w64-kokkos
