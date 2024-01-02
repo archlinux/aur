@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-69
+	pkgdesc = Chicken Scheme SRFI-69 hash-table library
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-69
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-srfi-69
