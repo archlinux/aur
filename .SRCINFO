@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-25
+	pkgdesc = Multidimensional arrays for Chicken Scheme
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-25
+	arch = x86_64
+	license = SRFI
+	depends = chicken
+
+pkgname = chicken-srfi-25
