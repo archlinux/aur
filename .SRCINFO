@@ -25,7 +25,7 @@ pkgbase = picsimlab-bin
 	depends = zlib
 	provides = picsimlab
 	conflicts = picsimlab
-	source = PICSimLab-0.9.1.deb::https://github.com/lcgamboa/picsimlab/releases/download/latestbuild/PICSimLab_0.9.1_231112_Ubuntu_20.04.6_LTS_amd64.deb
-	sha256sums = fe953cfcb015f54b03b6ebd5d1a455d1e53561072ab3964d1da8f74f7f585152
+	source = PICSimLab-0.9.1-231210.deb::https://github.com/lcgamboa/picsimlab/releases/download/v0.9.1/PICSimLab_0.9.1_231210_Ubuntu_20.04.6_LTS_amd64.deb
+	sha256sums = b5c3f15685fb1c682c85c7343c2fbb8770d97cd5b4e9362bbbb51729539363da
 
 pkgname = picsimlab-bin

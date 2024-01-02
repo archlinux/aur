@@ -4,7 +4,7 @@
 pkgname=picsimlab-bin
 _pkgname=PICSimLab
 _pkgname2=${pkgname%-bin}
-_date=231112
+_date=231210
 pkgver=0.9.1
 pkgrel=0
 pkgdesc="A realtime emulator of development boards with integrated MPLABX/avr-gdb debugger"
@@ -31,9 +31,9 @@ depends=('gtkwave'
 	 'wxgtk3'
 	 'zlib')
 makedepends=('tar')
-source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/latestbuild/${_pkgname}_${pkgver}_${_date}_Ubuntu_20.04.6_LTS_amd64.deb")
+source=("${_pkgname}-${pkgver}-${_date}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${_date}_Ubuntu_20.04.6_LTS_amd64.deb")
 # source=("${_pkgname}-${pkgver}.deb::https://sourceforge.net/projects/picsim/files/latestbuild/${_pkgname}_${pkgver}_${_date}_Ubuntu_20.04.6_LTS_amd64.deb/download")
-sha256sums=('fe953cfcb015f54b03b6ebd5d1a455d1e53561072ab3964d1da8f74f7f585152')
+sha256sums=('b5c3f15685fb1c682c85c7343c2fbb8770d97cd5b4e9362bbbb51729539363da')
 
 package() {
   # extract
