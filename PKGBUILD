@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=simpleini
 pkgname=$_pkgname-git
-pkgver=4.22.r0.g09c21bd
+pkgver=4.22.r2.gf7862c3
 pkgrel=1
 pkgdesc="Cross-platform C++ library providing a simple API to read and write INI-style configuration files"
 arch=('any')
@@ -18,10 +18,6 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	sed -i 's/(IS_TOPLEVEL_PROJECT)/(BUILD_TESTING)/' $_pkgname/CMakeLists.txt
 }
 
 build() {

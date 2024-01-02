@@ -1,6 +1,6 @@
 pkgbase = simpleini-git
 	pkgdesc = Cross-platform C++ library providing a simple API to read and write INI-style configuration files
-	pkgver = 4.22.r0.g09c21bd
+	pkgver = 4.22.r2.gf7862c3
 	pkgrel = 1
 	url = https://github.com/brofield/simpleini
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = simpleini-git
 	makedepends = cmake
 	makedepends = git
 	optdepends = icu: for ICU conversion
-	provides = simpleini=4.22.r0.g09c21bd
+	provides = simpleini=4.22.r2.gf7862c3
 	conflicts = simpleini
 	source = simpleini::git+https://github.com/brofield/simpleini.git
 	b2sums = SKIP
