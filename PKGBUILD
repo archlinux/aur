@@ -2,8 +2,8 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 # Sipeed Slogic Analyzer support:
-1. mainline pull request: [sipeed slogic new hardware support #212](https://github.com/sigrokproject/libsigrok/pull/212)
-2. MartinHerren\'s branch: https://github.com/MartinHerren/libsigrok/commits/slogiclite8/
+# 1. mainline pull request: [sipeed slogic new hardware support #212](https://github.com/sigrokproject/libsigrok/pull/212)
+# 2. MartinHerren\'s branch: https://github.com/MartinHerren/libsigrok/commits/slogiclite8/
 
 pkgname="libsigrok-sipeed-slogic-git"
 _gitname="libsigrok"

@@ -1,6 +1,6 @@
 pkgbase = libsigrok-sipeed-slogic-git
-	pkgdesc = Client software that supports various hardware logic analyzers, core library (git version)
-	pkgver = 0.2.1.r3652.g025bd56f
+	pkgdesc = Client software that supports various hardware logic analyzers, core library with Sipeed Slogic Analyzer support patches (git version)
+	pkgver = 0.2.1.r4311.gda175133
 	pkgrel = 1
 	url = http://www.sigrok.org/wiki/Libsigrok
 	arch = armv6h
