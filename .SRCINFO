@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-141
+	pkgdesc = SRFI 141: Integer division for Chicken Scheme
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-141
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-srfi-141
