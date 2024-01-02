@@ -26,8 +26,8 @@ _reponame=syncthingtray
 _cfg=qt6
 pkgname=syncthingtray-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=1.4.11
-pkgrel=2
+pkgver=1.4.12
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing (using Qt 6)'
 license=('GPL')
@@ -45,12 +45,8 @@ checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 [[ $_enable_plasmoid ]] && makedepends+=('libplasma' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
-source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
-        0001-Fix-compilation-with-Qt-6.7.0beta1.patch
-        0002-Fix-rendering-issues-with-Syncthing-icon-with-Qt-6.7.patch
-        0001-Mock-setting-the-autostart-path-in-the-wizard-test.patch)
-sha256sums=('0c48da193eb29338590bb297052a1274284d9c596a5078541c4d7cdf6b6eba6f'
-            SKIP SKIP)
+source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+sha256sums=('569d50ac1fd5799fda86d948b3e15934b14ac469d3055738415f359452e3290f')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
@@ -58,9 +54,6 @@ ephemeral_port() {
 
 prepare() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  patch -p1 -i ../0001-Fix-compilation-with-Qt-6.7.0beta1.patch
-  patch -p1 -i ../0002-Fix-rendering-issues-with-Syncthing-icon-with-Qt-6.7.patch
-  patch -p1 -i ../0001-Mock-setting-the-autostart-path-in-the-wizard-test.patch
 }
 
 build() {
