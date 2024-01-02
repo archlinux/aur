@@ -2,7 +2,7 @@
 
 pkgname=gz-msgs10
 pkgver=10.0.0
-pkgrel=3
+pkgrel=4
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Messages for Gazebo robot simulation."
