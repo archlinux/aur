@@ -1,0 +1,12 @@
+pkgbase = chicken-srfi-74
+	pkgdesc = SRFI-74: Octet-Addressed Binary Blocks for Chicken Scheme
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-74
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-srfi-60
+	depends = chicken-srfi-66
+
+pkgname = chicken-srfi-74
