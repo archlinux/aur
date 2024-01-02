@@ -1,7 +1,7 @@
 pkgbase = picsimlab-bin
 	pkgdesc = A realtime emulator of development boards with integrated MPLABX/avr-gdb debugger
 	pkgver = 0.9.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/lcgamboa/picsimlab
 	arch = x86_64
 	license = GPL2
