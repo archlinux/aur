@@ -1,4 +1,4 @@
-# Maintainer: fossdd <fossdd@tutanota.com>
+# Maintainer: fossdd <fossdd@pwned.life>
 pkgname=granex-git
 _pkgname=${pkgname%-git}
 pkgver=r1.c16d188
