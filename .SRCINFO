@@ -8,7 +8,9 @@ pkgbase = granex-git
 	makedepends = rust
 	makedepends = git
 	provides = granex
+	source = Remove-feature-due-to-error-on-stable-release-channe.patch
 	source = git+https://github.com/dotcypress/granex
+	sha256sums = 954bd50440d5507b710d223b69162dff1fc5ec546ae4c36708a13ca432716420
 	sha256sums = SKIP
 
 pkgname = granex-git

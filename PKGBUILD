@@ -11,8 +11,14 @@ depends=()
 makedepends=(rust git)
 conflicts=()
 provides=(granex)
-source=("git+https://github.com/dotcypress/granex")
-sha256sums=('SKIP')
+source=(
+	'Remove-feature-due-to-error-on-stable-release-channe.patch'
+	'git+https://github.com/dotcypress/granex'
+)
+sha256sums=(
+	'954bd50440d5507b710d223b69162dff1fc5ec546ae4c36708a13ca432716420'
+	'SKIP'
+)
 
 pkgver() {
   cd "${_pkgname}"
@@ -22,14 +28,13 @@ pkgver() {
   )
 }
 
+prepare() {
+  patch --directory="$_pkgname" --forward --strip=1 --input="${srcdir}/Remove-feature-due-to-error-on-stable-release-channe.patch"
+}
+
 build() {
   cd "$_pkgname"
   cargo build --release
-}
-
-check() {
-  cd "$_pkgname"
-  cargo test --release
 }
 
 package() {

@@ -1,0 +1,36 @@
+From 1c118bd072797389e325a4504a5f7f348f7337ee Mon Sep 17 00:00:00 2001
+From: fossdd <fossdd@pwned.life>
+Date: Tue, 2 Jan 2024 15:13:48 +0000
+Subject: [PATCH] Remove #![feature] due to error on stable release channel
+
+==> Starting build()...
+   Compiling granex v0.1.0 (/tmp/granex-git/src/granex)
+error[E0554]: `#![feature]` may not be used on the stable release channel
+ --> src/main.rs:1:12
+  |
+1 | #![feature(test)]
+  |            ^^^^
+
+For more information about this error, try `rustc --explain E0554`.
+error: could not compile `granex` (bin "granex") due to previous error
+==> ERROR: A failure occurred in build().
+    Aborting...
+
+Signed-off-by: fossdd <fossdd@pwned.life>
+---
+ src/main.rs | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/main.rs b/src/main.rs
+index 04e76fb..c63bd65 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -1,5 +1,3 @@
+-#![feature(test)]
+-
+ use clap::{App, Arg};
+ use std::env::current_dir;
+ use std::path::PathBuf;
+-- 
+2.43.0
+
