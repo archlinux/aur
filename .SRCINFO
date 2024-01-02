@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-38
+	pkgdesc = A Chicken version of the SRFI-38 reference implementation for Chicken Scheme
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-38
+	arch = x86_64
+	license = Public Domain
+	depends = chicken
+
+pkgname = chicken-srfi-38
