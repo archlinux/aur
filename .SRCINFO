@@ -1,0 +1,14 @@
+pkgbase = chicken-srfi-196
+	pkgdesc = SRFI-196: Range Objects for Chicken Scheme
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-196
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-133
+	depends = chicken-typed-records
+	depends = chicken-utf8
+
+pkgname = chicken-srfi-196
