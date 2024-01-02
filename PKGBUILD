@@ -1,7 +1,7 @@
-# Maintainer: Alad Wenter <alad@mailbox.org>
+# Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=jshon-git
-pkgver=20131105.r21.g783d3bf
+pkgver=20131105.r22.gd919aea
 pkgrel=1
 pkgdesc="A json parser for the shell."
 arch=('i686' 'x86_64')
@@ -33,5 +33,5 @@ package() {
   cd "$pkgname"
   make DESTDIR="$pkgdir" install
   install -Dm644 jshon.1 "$pkgdir/usr/share/man/man1/jshon.1"
-  install -Dm644 LICENSE    "$pkgdir/usr/share/licenses/jshon/LICENSE"
+  install -Dm644 LICENSE    "$pkgdir/usr/share/licenses/jshon-git/LICENSE"
 }
