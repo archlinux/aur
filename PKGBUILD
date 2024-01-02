@@ -4,8 +4,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-finance-quote'
-pkgver='1.58'
-pkgrel='2'
+pkgver='1.59'
+pkgrel='1'
 pkgdesc="Get stock and mutual fund quotes from various exchanges"
 arch=('any')
 license=('PerlArtistic' 'GPL')
