@@ -1,0 +1,12 @@
+pkgbase = chicken-srfi-42
+	pkgdesc = SRFI-42 (Eager comprehensions) for Chicken Scheme
+	pkgver = 1.76
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-42
+	arch = x86_64
+	license = SRFI
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+
+pkgname = chicken-srfi-42
