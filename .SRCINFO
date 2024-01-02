@@ -1,0 +1,16 @@
+pkgbase = r-mvnormaltest
+	pkgdesc = Powerful Tests for Multivariate Normality
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mvnormalTest
+	arch = any
+	license = GPL
+	depends = r-copula
+	depends = r-moments
+	depends = r-nortest
+	optdepends = r-knitr
+	source = https://cran.r-project.org/src/contrib/mvnormalTest_1.0.0.tar.gz
+	md5sums = f3525fd9bd8d908ba0b2201a3f147039
+	b2sums = 66e8dd404ea7e16f42e286f5432ec9993f4fade45795823258e81087b7f2fe048b2b94ec650a61d7ee9453689f2fad916b412416d081ba07186ec042b884ac8b
+
+pkgname = r-mvnormaltest
