@@ -3,7 +3,7 @@
 # URL: https://github.com/AiCorein/arch-wine-neteasemusic
 pkgname=com.163.music.spark
 pkgver=3.0.1.201795spark11
-pkgrel=2
+pkgrel=1
 pkgdesc="Netease Music Wine Client from Spark Store"
 url="https://music.163.com/"
 arch=('x86_64')
