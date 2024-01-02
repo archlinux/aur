@@ -1,0 +1,12 @@
+pkgbase = chicken-srfi-121
+	pkgdesc = SRFI-121: Generators for Chicken Scheme
+	pkgver = 1.8
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-121
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+
+pkgname = chicken-srfi-121
