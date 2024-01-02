@@ -14,6 +14,7 @@ pkgbase = lfortran-git
 	depends = zlib
 	depends = ncurses
 	depends = xeus-zmq
+	optdepends = kokkos: cpp backend
 	source = git+https://github.com/lfortran/lfortran.git
 	sha512sums = SKIP
 

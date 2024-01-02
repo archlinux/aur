@@ -6,6 +6,7 @@ arch=('x86_64')
 url="https://${pkgname}.org"
 license=('custom:BSD-3-clause')
 depends=(clang zlib ncurses xeus-zmq)
+optdepends=('kokkos: cpp backend')
 makedepends=(llvm cmake cppzmq git re2c)
 source=(git+https://github.com/lfortran/lfortran.git)
 sha512sums=('SKIP')
