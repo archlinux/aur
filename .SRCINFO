@@ -1,0 +1,13 @@
+pkgbase = chicken-locale
+	pkgdesc = Provides locale operations for Chicken Scheme
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/locale
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-utf8
+	depends = chicken-check-errors
+
+pkgname = chicken-locale
