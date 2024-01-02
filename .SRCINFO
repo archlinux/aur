@@ -1,0 +1,11 @@
+pkgbase = chicken-defstruct
+	pkgdesc = Chicken Scheme A more convenient form of define-record
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/defstruct
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+
+pkgname = chicken-defstruct
