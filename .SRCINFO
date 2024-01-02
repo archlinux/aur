@@ -1,0 +1,10 @@
+pkgbase = chicken-salmonella
+	pkgdesc = Chicken Scheme A tool for testing eggs
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/salmonella
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-salmonella
