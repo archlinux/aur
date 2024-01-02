@@ -1,0 +1,11 @@
+pkgbase = chicken-base64
+	pkgdesc = Encoding and decoding of base64 strings for Chicken Scheme
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/base64
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-13
+
+pkgname = chicken-base64
