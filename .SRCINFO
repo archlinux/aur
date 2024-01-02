@@ -1,0 +1,13 @@
+pkgbase = chicken-srfi-41
+	pkgdesc = SRFI 41 (Streams) for Chicken Scheme
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-41
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-record-variants
+	depends = chicken-check-errors>=3.6.0
+
+pkgname = chicken-srfi-41
