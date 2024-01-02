@@ -5,6 +5,7 @@ pkgbase = hy-hyrule
 	url = https://pypi.org/project/hyrule/
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-build
