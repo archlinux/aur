@@ -1,0 +1,10 @@
+pkgbase = chicken-hash-trie
+	pkgdesc = hash-trie for Chicken Scheme
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/hash-trie
+	arch = x86_64
+	license = MIT
+	depends = chicken
+
+pkgname = chicken-hash-trie
