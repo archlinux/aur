@@ -1,15 +1,10 @@
 pkgbase = chicken-matchable
-	pkgdesc = Chicken Scheme Egg: Hygienic MATCH replacement
-	pkgver = 3.3
-	pkgrel = 2
-	url = http://chicken.wiki.br/eggref/4/matchable
-	arch = i686
+	pkgdesc = Chicken Scheme Hygienic MATCH replacement
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/matchable
 	arch = x86_64
-	license = public
-	depends = chicken>=4.5.0
-	options = docs
-	options = !libtool
-	options = !emptydirs
+	license = Public Domain
+	depends = chicken
 
 pkgname = chicken-matchable
-

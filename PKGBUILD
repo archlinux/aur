@@ -1,23 +1,18 @@
-# Maintainer: Aaron P <aaronbpaden@gmail.com>
-# Contributer: Jim Pryor <profjim@jimpryor.net>
-
 pkgname=chicken-matchable
-_pkgname=matchable
-pkgver=3.3
-pkgrel=2
-pkgdesc="Chicken Scheme Egg: Hygienic MATCH replacement"
-arch=('i686' 'x86_64')
-url="http://chicken.wiki.br/eggref/4/matchable"
-license=('public')
-depends=('chicken>=4.5.0')
-options=(docs !libtool !emptydirs)
+_name=matchable
+pkgver=1.1
+pkgrel=1
+pkgdesc='Chicken Scheme Hygienic MATCH replacement'
+arch=('x86_64')
+license=('Public Domain')
+depends=("chicken")
+url='http://wiki.call-cc.org/eggref/5/matchable'
 
 build() {
-	cd "$srcdir/"
-	chicken-install -r "${_pkgname}":"${pkgver}"
+  CHICKEN_INSTALL_REPOSITORY=${srcdir} CHICKEN_INSTALL_PREFIX=${srcdir} chicken-install -no-install-dependencies $_name:$pkgver
+}
+package() {
+  install -d ${pkgdir}/usr/lib/chicken/11
+  find ${srcdir} -maxdepth 1 -type f | xargs -I {} cp {} ${pkgdir}/usr/lib/chicken/11
 }
 
-package() {
-	cd "$_pkgname"
-	chicken-install -p "$pkgdir/usr"
-}
