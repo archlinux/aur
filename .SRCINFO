@@ -1,6 +1,6 @@
 pkgbase = kaiteki-bin
 	pkgdesc = A comfy Fediverse client for microblogging instances, made with Flutter and Dart. Currently with simple Mastodon, Pleroma, Misskey and Calckey support
-	pkgver = 2023_50
+	pkgver = 2024_00
 	pkgrel = 1
 	url = https://kaiteki.app
 	arch = x86_64
@@ -15,9 +15,11 @@ pkgbase = kaiteki-bin
 	depends = gdk-pixbuf2
 	depends = fontconfig
 	depends = harfbuzz
-	provides = kaiteki=2023_50
+	provides = kaiteki=2024_00
 	conflicts = kaiteki
-	source = kaiteki-2023_50.zip::https://github.com/Kaiteki-Fedi/Kaiteki/releases/download/weekly-2023-50/linux.zip
-	sha256sums = 09d0ea219d44fcb9b729e89e21b4cd4506933b756357131217df5a008294e27c
+	source = kaiteki-2024_00.zip::https://github.com/Kaiteki-Fedi/Kaiteki/releases/download/weekly-2024-00/linux.zip
+	source = kaiteki.sh
+	sha256sums = 3dd9188f6f85daa6e36ae367b151badad91d048ff90f9818f491197258d79bb0
+	sha256sums = 07c295fbb74a50ae5c27e5d0ee1a55f8ef4f3be793dcb7490d8d7df20be9d90a
 
 pkgname = kaiteki-bin
