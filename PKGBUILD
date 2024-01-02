@@ -1,7 +1,7 @@
 # Maintainer: Lev Babiev <harley at hosers dot org>
 
 pkgname=sfwbar
-pkgver=1.0_beta13
+pkgver=1.0_beta14
 pkgrel=1
 
 pkgdesc='S* Floating Window taskBar'
@@ -27,7 +27,7 @@ makedepends=(
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('06abcfbdf1c0d1e547cdf5110a8b58f2997bbc243d350c2a3e02f70120ee0c5a')
+sha256sums=('e5fa6147e3a58e9440b24b8f1ef2378ae088631b8013ecf7770e984f97c5eeb4')
 
 build() {
     cd "$pkgname-$pkgver"
