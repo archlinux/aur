@@ -1,11 +1,11 @@
 pkgbase = python-billiard
 	pkgdesc = Python multiprocessing fork with improvements and bugfixes.
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/billiard/
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest-runner
+	checkdepends = python-pytest
 	checkdepends = python-case
 	checkdepends = python-psutil
 	makedepends = python-build
