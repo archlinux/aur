@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-14
+	pkgdesc = Chicken Scheme SRFI-14 character-sets library
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-14
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-srfi-14
