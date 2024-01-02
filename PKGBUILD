@@ -1,4 +1,5 @@
 # Maintainer: tippfehlr <tippfehlr at gmail dot com>
+
 _pkgname=inav-blackbox-explorer
 pkgname=inav-blackbox-explorer-bin
 pkgver=7.0.0
