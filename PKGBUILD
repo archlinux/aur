@@ -2,7 +2,7 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=1.14.1
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ makedepends=('clang'
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('294d9b820a2427e8cb7544d38e648de00e3b655e14066502f9a0f469267dd4aa')
+sha256sums=('6022012359fcc21fac3e12645ce731384f8ed705c3cb95a4dc5a1ccea7408f42')
 
 prepare() {
   flutter --no-version-check --suppress-analytics config --enable-linux-desktop
