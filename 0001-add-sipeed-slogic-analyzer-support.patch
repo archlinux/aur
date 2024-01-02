@@ -1,0 +1,1919 @@
+From 1b73b03afff6bf890dc6373c9f1993bd036ea103 Mon Sep 17 00:00:00 2001
+From: taorye <taorye@outlook.com>
+Date: Sun, 29 Jan 2023 18:19:49 +0800
+Subject: [PATCH 1/8] sipeed-slogic-analyzer: Initial driver skeleton.
+
+---
+ Makefile.am                                   |   6 +
+ configure.ac                                  |   1 +
+ src/hardware/sipeed-slogic-analyzer/api.c     | 154 ++++++++++++++++++
+ .../sipeed-slogic-analyzer/protocol.c         |  43 +++++
+ .../sipeed-slogic-analyzer/protocol.h         |  35 ++++
+ 5 files changed, 239 insertions(+)
+ create mode 100644 src/hardware/sipeed-slogic-analyzer/api.c
+ create mode 100644 src/hardware/sipeed-slogic-analyzer/protocol.c
+ create mode 100644 src/hardware/sipeed-slogic-analyzer/protocol.h
+
+diff --git a/Makefile.am b/Makefile.am
+index 63b7cacd..797cbb05 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -646,6 +646,12 @@ src_libdrivers_la_SOURCES += \
+ 	src/hardware/siglent-sds/protocol.c \
+ 	src/hardware/siglent-sds/api.c
+ endif
++if HW_SIPEED_SLOGIC_ANALYZER
++src_libdrivers_la_SOURCES += \
++	src/hardware/sipeed-slogic-analyzer/protocol.h \
++	src/hardware/sipeed-slogic-analyzer/protocol.c \
++	src/hardware/sipeed-slogic-analyzer/api.c
++endif
+ if HW_SYSCLK_LWLA
+ src_libdrivers_la_SOURCES += \
+ 	src/hardware/sysclk-lwla/lwla.h \
+diff --git a/configure.ac b/configure.ac
+index b482419c..68798da1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -358,6 +358,7 @@ SR_DRIVER([SCPI PPS], [scpi-pps])
+ SR_DRIVER([serial DMM], [serial-dmm], [serial_comm])
+ SR_DRIVER([serial LCR], [serial-lcr], [serial_comm])
+ SR_DRIVER([Siglent SDS], [siglent-sds])
++SR_DRIVER([Sipeed Slogic Analyzer], [sipeed-slogic-analyzer])
+ SR_DRIVER([Sysclk LWLA], [sysclk-lwla], [libusb])
+ SR_DRIVER([Sysclk SLA5032], [sysclk-sla5032], [libusb])
+ SR_DRIVER([Teleinfo], [teleinfo], [serial_comm])
+diff --git a/src/hardware/sipeed-slogic-analyzer/api.c b/src/hardware/sipeed-slogic-analyzer/api.c
+new file mode 100644
+index 00000000..365e8592
+--- /dev/null
++++ b/src/hardware/sipeed-slogic-analyzer/api.c
+@@ -0,0 +1,154 @@
++/*
++ * This file is part of the libsigrok project.
++ *
++ * Copyright (C) 2023 taorye <taorye@outlook.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <config.h>
++#include "protocol.h"
++
++static struct sr_dev_driver sipeed_slogic_analyzer_driver_info;
++
++static GSList *scan(struct sr_dev_driver *di, GSList *options)
++{
++	struct drv_context *drvc;
++	GSList *devices;
++
++	(void)options;
++
++	devices = NULL;
++	drvc = di->context;
++	drvc->instances = NULL;
++
++	/* TODO: scan for devices, either based on a SR_CONF_CONN option
++	 * or on a USB scan. */
++
++	return devices;
++}
++
++static int dev_open(struct sr_dev_inst *sdi)
++{
++	(void)sdi;
++
++	/* TODO: get handle from sdi->conn and open it. */
++
++	return SR_OK;
++}
++
++static int dev_close(struct sr_dev_inst *sdi)
++{
++	(void)sdi;
++
++	/* TODO: get handle from sdi->conn and close it. */
++
++	return SR_OK;
++}
++
++static int config_get(uint32_t key, GVariant **data,
++	const struct sr_dev_inst *sdi, const struct sr_channel_group *cg)
++{
++	int ret;
++
++	(void)sdi;
++	(void)data;
++	(void)cg;
++
++	ret = SR_OK;
++	switch (key) {
++	/* TODO */
++	default:
++		return SR_ERR_NA;
++	}
++
++	return ret;
++}
++
++static int config_set(uint32_t key, GVariant *data,
++	const struct sr_dev_inst *sdi, const struct sr_channel_group *cg)
++{
++	int ret;
++
++	(void)sdi;
++	(void)data;
++	(void)cg;
++
++	ret = SR_OK;
++	switch (key) {
++	/* TODO */
++	default:
++		ret = SR_ERR_NA;
++	}
++
++	return ret;
++}
++
++static int config_list(uint32_t key, GVariant **data,
++	const struct sr_dev_inst *sdi, const struct sr_channel_group *cg)
++{
++	int ret;
++
++	(void)sdi;
++	(void)data;
++	(void)cg;
++
++	ret = SR_OK;
++	switch (key) {
++	/* TODO */
++	default:
++		return SR_ERR_NA;
++	}
++
++	return ret;
++}
++
++static int dev_acquisition_start(const struct sr_dev_inst *sdi)
++{
++	/* TODO: configure hardware, reset acquisition state, set up
++	 * callbacks and send header packet. */
++
++	(void)sdi;
++
++	return SR_OK;
++}
++
++static int dev_acquisition_stop(struct sr_dev_inst *sdi)
++{
++	/* TODO: stop acquisition. */
++
++	(void)sdi;
++
++	return SR_OK;
++}
++
++static struct sr_dev_driver sipeed_slogic_analyzer_driver_info = {
++	.name = "sipeed-slogic-analyzer",
++	.longname = "Sipeed Slogic Analyzer",
++	.api_version = 1,
++	.init = std_init,
++	.cleanup = std_cleanup,
++	.scan = scan,
++	.dev_list = std_dev_list,
++	.dev_clear = std_dev_clear,
++	.config_get = config_get,
++	.config_set = config_set,
++	.config_list = config_list,
++	.dev_open = dev_open,
++	.dev_close = dev_close,
++	.dev_acquisition_start = dev_acquisition_start,
++	.dev_acquisition_stop = dev_acquisition_stop,
++	.context = NULL,
++};
++SR_REGISTER_DEV_DRIVER(sipeed_slogic_analyzer_driver_info);
+diff --git a/src/hardware/sipeed-slogic-analyzer/protocol.c b/src/hardware/sipeed-slogic-analyzer/protocol.c
+new file mode 100644
+index 00000000..7b01e981
+--- /dev/null
++++ b/src/hardware/sipeed-slogic-analyzer/protocol.c
+@@ -0,0 +1,43 @@
++/*
++ * This file is part of the libsigrok project.
++ *
++ * Copyright (C) 2023 taorye <taorye@outlook.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <config.h>
++#include "protocol.h"
++
++SR_PRIV int sipeed_slogic_analyzer_receive_data(int fd, int revents, void *cb_data)
++{
++	const struct sr_dev_inst *sdi;
++	struct dev_context *devc;
++
++	(void)fd;
++
++	sdi = cb_data;
++	if (!sdi)
++		return TRUE;
++
++	devc = sdi->priv;
++	if (!devc)
++		return TRUE;
++
++	if (revents == G_IO_IN) {
++		/* TODO */
++	}
++
++	return TRUE;
++}
+diff --git a/src/hardware/sipeed-slogic-analyzer/protocol.h b/src/hardware/sipeed-slogic-analyzer/protocol.h
+new file mode 100644
+index 00000000..fab48d9a
+--- /dev/null
++++ b/src/hardware/sipeed-slogic-analyzer/protocol.h
+@@ -0,0 +1,35 @@
++/*
++ * This file is part of the libsigrok project.
++ *
++ * Copyright (C) 2023 taorye <taorye@outlook.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef LIBSIGROK_HARDWARE_SIPEED_SLOGIC_ANALYZER_PROTOCOL_H
++#define LIBSIGROK_HARDWARE_SIPEED_SLOGIC_ANALYZER_PROTOCOL_H
++
++#include <stdint.h>
++#include <glib.h>
++#include <libsigrok/libsigrok.h>
++#include "libsigrok-internal.h"
++
++#define LOG_PREFIX "sipeed-slogic-analyzer"
++
++struct dev_context {
++};
++
++SR_PRIV int sipeed_slogic_analyzer_receive_data(int fd, int revents, void *cb_data);
++
++#endif
+-- 
+2.43.0
+
+From fb4027c79ab08c9fae7208a5d249cf41af70a9fe Mon Sep 17 00:00:00 2001
+From: taorye <taorye@outlook.com>
+Date: Mon, 20 Feb 2023 09:43:04 +0800
+Subject: [PATCH 2/8] feat: use pattern to control active channels
+
+---
+ src/hardware/sipeed-slogic-analyzer/api.c     | 306 +++++++++++++++++-
+ .../sipeed-slogic-analyzer/protocol.h         |  14 +
+ 2 files changed, 312 insertions(+), 8 deletions(-)
+
+diff --git a/src/hardware/sipeed-slogic-analyzer/api.c b/src/hardware/sipeed-slogic-analyzer/api.c
+index 365e8592..4023d236 100644
+--- a/src/hardware/sipeed-slogic-analyzer/api.c
++++ b/src/hardware/sipeed-slogic-analyzer/api.c
+@@ -20,8 +20,78 @@
+ #include <config.h>
+ #include "protocol.h"
+ 
++/* Note: No spaces allowed because of sigrok-cli. */
++static const char *logic_pattern_str[] = {
++	"1ch",
++	"2ch",
++	"4ch",
++	"8ch",
++	// "16ch",
++};
++
++static const uint32_t scanopts[] = {
++	SR_CONF_NUM_LOGIC_CHANNELS,
++	SR_CONF_CONN,
++};
++
++static const uint32_t drvopts[] = {
++	SR_CONF_LOGIC_ANALYZER,
++};
++
++static const uint32_t devopts[] = {
++	SR_CONF_CONTINUOUS,
++	SR_CONF_CONN | SR_CONF_GET,
++	SR_CONF_LIMIT_SAMPLES | SR_CONF_GET | SR_CONF_SET,
++	SR_CONF_SAMPLERATE | SR_CONF_GET | SR_CONF_SET | SR_CONF_LIST,
++	SR_CONF_TRIGGER_MATCH | SR_CONF_LIST,
++	SR_CONF_CAPTURE_RATIO | SR_CONF_GET | SR_CONF_SET,
++};
++
++static const uint32_t devopts_cg_logic[] = {
++	SR_CONF_PATTERN_MODE | SR_CONF_GET | SR_CONF_SET | SR_CONF_LIST,
++};
++
++static const int32_t trigger_matches[] = {
++	SR_TRIGGER_ZERO,
++	SR_TRIGGER_ONE,
++	SR_TRIGGER_RISING,
++	SR_TRIGGER_FALLING,
++	SR_TRIGGER_EDGE,
++};
++
++static const uint64_t samplerates[] = {
++	SR_KHZ(20),
++	SR_KHZ(25),
++	SR_KHZ(50),
++	SR_KHZ(100),
++	SR_KHZ(200),
++	SR_KHZ(250),
++	SR_KHZ(500),
++	/* 160M = 2*2*2*2*2*5M */
++	SR_MHZ(1),
++	SR_MHZ(2),
++	SR_MHZ(4),
++	SR_MHZ(5),
++	SR_MHZ(8),
++	SR_MHZ(10),
++	SR_MHZ(16),
++	SR_MHZ(20),
++	SR_MHZ(32),
++	SR_MHZ(40),
++	/* must less than 47MHZ */
++};
++
+ static struct sr_dev_driver sipeed_slogic_analyzer_driver_info;
+ 
++#define DBG_VAL(expr) do {\
++	__typeof((expr)) _expr = (expr);\
++	sr_warn("[%u]%s<"#expr"> i:%d\tu:%u\tf:%f\th:%x", __LINE__, __func__, \
++		*(long*)(&_expr), \
++		*(unsigned long*)(&_expr), \
++		*(float*)(&_expr), \
++		*(unsigned long*)(&_expr)); \
++}while(0)
++
+ static GSList *scan(struct sr_dev_driver *di, GSList *options)
+ {
+ 	struct drv_context *drvc;
+@@ -35,8 +105,77 @@ static GSList *scan(struct sr_dev_driver *di, GSList *options)
+ 
+ 	/* TODO: scan for devices, either based on a SR_CONF_CONN option
+ 	 * or on a USB scan. */
++	const char *conn = NULL;
++	int num_logic_channels = 8;
++	for (GSList *l = options; l; l = l->next) {
++		struct sr_config *src = l->data;DBG_VAL(src->key);
++		switch (src->key) {
++		case SR_CONF_NUM_LOGIC_CHANNELS:
++			num_logic_channels = g_variant_get_int32(src->data);
++			break;
++		case SR_CONF_CONN:
++			conn = g_variant_get_string(src->data, NULL);
++			break;
++		}
++	}
++	
++	if(!conn) {
++		conn = "359f.0300";
++	}
+ 
+-	return devices;
++	/* Find all slogic compatible devices. */
++	GSList * conn_devices = sr_usb_find(drvc->sr_ctx->libusb_ctx, conn);
++	for(GSList *l = conn_devices; l; l = l->next) {
++		struct sr_usb_dev_inst *usb = l->data;
++		if (SR_OK != sr_usb_open(drvc->sr_ctx->libusb_ctx, usb))
++			continue;
++
++		unsigned char iManufacturer[64], iProduct[64], iSerialNumber[64];
++		unsigned char connection_id[64];
++		struct libusb_device_descriptor des;
++		libusb_get_device_descriptor(libusb_get_device(usb->devhdl), &des);
++		if (libusb_get_string_descriptor_ascii(usb->devhdl,
++				des.iManufacturer, iManufacturer, sizeof(iManufacturer)) < 0)
++			continue;
++		if (libusb_get_string_descriptor_ascii(usb->devhdl,
++				des.iProduct, iProduct, sizeof(iProduct)) < 0)
++			continue;
++		if (libusb_get_string_descriptor_ascii(usb->devhdl,
++				des.iSerialNumber, iSerialNumber, sizeof(iSerialNumber)) < 0)
++			continue;
++		if (usb_get_port_path(libusb_get_device(usb->devhdl),
++				connection_id, sizeof(connection_id)) < 0)
++			continue;
++		sr_usb_close(usb);
++
++		struct sr_dev_inst *sdi = sr_dev_inst_user_new(iManufacturer, iProduct, NULL);
++		sdi->serial_num = g_strdup(iSerialNumber);
++		sdi->connection_id = g_strdup(connection_id);
++
++		sdi->inst_type = SR_INST_USB;
++		sdi->status = SR_ST_INACTIVE;
++		sdi->conn = usb;
++
++		struct dev_context *devc = g_malloc0(sizeof(struct dev_context));
++		sdi->priv = devc;
++		devc->profile = NULL;
++
++		if (num_logic_channels > 0) {
++			/* Logic channels, all in one channel group. */
++			struct sr_channel_group *cg = sr_channel_group_new(sdi, "Logic", NULL);
++			for (int i = 0; i < num_logic_channels; i++) {
++				char channel_name[16];
++				sprintf(channel_name, "D%d", i);
++				struct sr_channel *ch = sr_channel_new(sdi, i, SR_CHANNEL_LOGIC, TRUE, channel_name);
++				cg->channels = g_slist_append(cg->channels, ch);
++			}
++		}
++
++		devices = g_slist_append(devices, sdi);
++	}
++	// g_slist_free_full(conn_devices, (GDestroyNotify)sr_usb_dev_inst_free);
++
++	return std_scan_complete(di, devices);
+ }
+ 
+ static int dev_open(struct sr_dev_inst *sdi)
+@@ -44,8 +183,37 @@ static int dev_open(struct sr_dev_inst *sdi)
+ 	(void)sdi;
+ 
+ 	/* TODO: get handle from sdi->conn and open it. */
++	int ret;
++	struct sr_usb_dev_inst *usb= sdi->conn;
++	struct dev_context *devc= sdi->priv;
++	struct sr_dev_driver *di = sdi->driver;
++	struct drv_context *drvc = di->context;
++
++	ret = sr_usb_open(drvc->sr_ctx->libusb_ctx, usb);DBG_VAL(ret);
++	if (ret != SR_OK)
++		return ret;
++
++	ret = libusb_claim_interface(usb->devhdl, 0);DBG_VAL(ret);
++	if (ret != LIBUSB_SUCCESS) {
++		switch (ret) {
++		case LIBUSB_ERROR_BUSY:
++			sr_err("Unable to claim USB interface. Another "
++			       "program or driver has already claimed it.");
++			break;
++		case LIBUSB_ERROR_NO_DEVICE:
++			sr_err("Device has been disconnected.");
++			break;
++		default:
++			sr_err("Unable to claim interface: %s.",
++			       libusb_error_name(ret));
++			break;
++		}
++		return SR_ERR;
++	}
+ 
+-	return SR_OK;
++	devc->logic_pattern = 3;  /* 2^3 = 8 default */
++	
++	return std_dummy_dev_open(sdi);
+ }
+ 
+ static int dev_close(struct sr_dev_inst *sdi)
+@@ -53,8 +221,20 @@ static int dev_close(struct sr_dev_inst *sdi)
+ 	(void)sdi;
+ 
+ 	/* TODO: get handle from sdi->conn and close it. */
++	int ret;
++	struct sr_usb_dev_inst *usb = sdi->conn;
++	struct dev_context *devc= sdi->priv;
++
++	ret = libusb_release_interface(usb->devhdl, 0);DBG_VAL(ret);
++	if (ret != LIBUSB_SUCCESS) {
++		sr_err("Unable to release Interface for %s.",
++			       libusb_error_name(ret));
++		return SR_ERR;
++	}
+ 
+-	return SR_OK;
++	sr_usb_close(usb);
++
++	return std_dummy_dev_close(sdi);
+ }
+ 
+ static int config_get(uint32_t key, GVariant **data,
+@@ -66,9 +246,42 @@ static int config_get(uint32_t key, GVariant **data,
+ 	(void)data;
+ 	(void)cg;
+ 
+-	ret = SR_OK;
++	struct sr_usb_dev_inst *usb = sdi->conn;
++	struct dev_context *devc= sdi->priv;
++	struct sr_channel *ch;
++	ret = SR_OK;DBG_VAL(key);
+ 	switch (key) {
+ 	/* TODO */
++	case SR_CONF_CONN:
++		if (usb->address == 0xff)
++			/* Device still needs to re-enumerate after firmware
++			 * upload, so we don't know its (future) address. */
++			return SR_ERR;
++		*data = g_variant_new_printf("%d.%d", usb->bus, usb->address);
++		break;
++	case SR_CONF_SAMPLERATE:
++		*data = g_variant_new_uint64(devc->cur_samplerate);
++		break;
++	case SR_CONF_LIMIT_SAMPLES:
++		*data = g_variant_new_uint64(devc->limit_samples);
++		break;
++	case SR_CONF_PATTERN_MODE:
++		if (!cg)
++			return SR_ERR_CHANNEL_GROUP;
++		/* Any channel in the group will do. */
++		ch = cg->channels->data;
++		if (ch->type == SR_CHANNEL_LOGIC) {
++			int pattern = devc->logic_pattern;
++			*data = g_variant_new_string(logic_pattern_str[pattern]);
++		} else
++			return SR_ERR_BUG;
++		break;
++	case SR_CONF_CAPTURE_RATIO:
++		*data = g_variant_new_uint64(devc->capture_ratio);
++		break;
++	case SR_CONF_VOLTAGE_THRESHOLD:
++		*data = std_gvar_tuple_double(devc->voltage_threshold[0], devc->voltage_threshold[1]);
++		break;
+ 	default:
+ 		return SR_ERR_NA;
+ 	}
+@@ -85,9 +298,60 @@ static int config_set(uint32_t key, GVariant *data,
+ 	(void)data;
+ 	(void)cg;
+ 
+-	ret = SR_OK;
++	struct dev_context *devc= sdi->priv;
++	int logic_pattern;
++	ret = SR_OK;DBG_VAL(key);
+ 	switch (key) {
+ 	/* TODO */
++	case SR_CONF_SAMPLERATE:
++		if (std_u64_idx(data, ARRAY_AND_SIZE(samplerates)) < 0)
++			return SR_ERR_ARG;
++		devc->cur_samplerate = g_variant_get_uint64(data);
++		break;
++	case SR_CONF_LIMIT_SAMPLES:
++		devc->limit_samples = g_variant_get_uint64(data);
++		break;
++	case SR_CONF_PATTERN_MODE:
++		if (!cg)
++			return SR_ERR_CHANNEL_GROUP;
++		logic_pattern = std_str_idx(data, ARRAY_AND_SIZE(logic_pattern_str));
++		if (logic_pattern < 0)
++			return SR_ERR_ARG;
++		if (((struct sr_channel *)cg->channels->data)->type == SR_CHANNEL_LOGIC) {
++			sr_dbg("Setting logic pattern to %s",
++					logic_pattern_str[logic_pattern]);
++			devc->logic_pattern = logic_pattern;
++			/* Might as well do this now, these are static. */
++		}
++		{
++			
++			size_t idx = 0;
++			for (GSList *l = cg->channels; l; l = l->next, idx += 1) {
++				struct sr_channel *ch = l->data;
++				if (ch->type == SR_CHANNEL_LOGIC) {
++					/* Might as well do this now, these are static. */
++					switch (devc->logic_pattern)
++					{
++					case 0/* 2^0 = 1 */:
++					case 1/* 2^1 = 2 */:
++					case 2/* 2^2 = 4 */:
++					case 3/* 2^3 = 8 */:
++						sr_dev_channel_enable(ch, (idx >= (1 << (devc->logic_pattern))) ? FALSE : TRUE);
++						break;
++					default:
++						break;
++					}
++				} else
++					return SR_ERR_BUG;
++			}
++		}
++		break;
++	case SR_CONF_CAPTURE_RATIO:
++		devc->capture_ratio = g_variant_get_uint64(data);
++		break;
++	case SR_CONF_VOLTAGE_THRESHOLD:
++		g_variant_get(data, "(dd)", &devc->voltage_threshold[0], &devc->voltage_threshold[1]);
++		break;
+ 	default:
+ 		ret = SR_ERR_NA;
+ 	}
+@@ -104,9 +368,35 @@ static int config_list(uint32_t key, GVariant **data,
+ 	(void)data;
+ 	(void)cg;
+ 
+-	ret = SR_OK;
++	struct sr_channel *ch;
++	ret = SR_OK;DBG_VAL(key);
+ 	switch (key) {
+ 	/* TODO */
++	case SR_CONF_SCAN_OPTIONS:
++	case SR_CONF_DEVICE_OPTIONS:
++		if (!cg)
++			return STD_CONFIG_LIST(key, data, sdi, cg, scanopts, drvopts, devopts);
++		ch = cg->channels->data;
++		if (ch->type == SR_CHANNEL_LOGIC)
++			*data = std_gvar_array_u32(ARRAY_AND_SIZE(devopts_cg_logic));
++		else
++			return SR_ERR_BUG;
++		break;
++	case SR_CONF_SAMPLERATE:
++		*data = std_gvar_samplerates(ARRAY_AND_SIZE(samplerates));
++		break;
++	case SR_CONF_TRIGGER_MATCH:
++		*data = std_gvar_array_i32(ARRAY_AND_SIZE(trigger_matches));
++		break;
++	case SR_CONF_PATTERN_MODE:
++		if (!cg)
++			return SR_ERR_NA;
++		ch = cg->channels->data;
++		if (ch->type == SR_CHANNEL_LOGIC)
++			*data = g_variant_new_strv(ARRAY_AND_SIZE(logic_pattern_str));
++		else
++			return SR_ERR_BUG;
++		break;
+ 	default:
+ 		return SR_ERR_NA;
+ 	}
+@@ -119,7 +409,7 @@ static int dev_acquisition_start(const struct sr_dev_inst *sdi)
+ 	/* TODO: configure hardware, reset acquisition state, set up
+ 	 * callbacks and send header packet. */
+ 
+-	(void)sdi;
++	(void)sdi;DBG_VAL(sdi);
+ 
+ 	return SR_OK;
+ }
+@@ -128,7 +418,7 @@ static int dev_acquisition_stop(struct sr_dev_inst *sdi)
+ {
+ 	/* TODO: stop acquisition. */
+ 
+-	(void)sdi;
++	(void)sdi;DBG_VAL(sdi);
+ 
+ 	return SR_OK;
+ }
+diff --git a/src/hardware/sipeed-slogic-analyzer/protocol.h b/src/hardware/sipeed-slogic-analyzer/protocol.h
+index fab48d9a..84e31087 100644
+--- a/src/hardware/sipeed-slogic-analyzer/protocol.h
++++ b/src/hardware/sipeed-slogic-analyzer/protocol.h
+@@ -22,12 +22,26 @@
+ 
+ #include <stdint.h>
+ #include <glib.h>
++#include <libusb.h>
+ #include <libsigrok/libsigrok.h>
+ #include "libsigrok-internal.h"
+ 
+ #define LOG_PREFIX "sipeed-slogic-analyzer"
+ 
++struct slogic_profile {
++	uint16_t vid;
++	uint16_t pid;
++};
++
+ struct dev_context {
++    struct slogic_profile *profile;
++
++	uint64_t cur_samplerate;
++	uint64_t limit_samples;
++    int logic_pattern;
++	double voltage_threshold[2];
++	/* Triggers */
++	uint64_t capture_ratio;
+ };
+ 
+ SR_PRIV int sipeed_slogic_analyzer_receive_data(int fd, int revents, void *cb_data);
+-- 
+2.43.0
+
+From 1aa1e9ec026c0394e6be9bb9274bb4bec5dc1f91 Mon Sep 17 00:00:00 2001
+From: taorye <taorye@outlook.com>
+Date: Tue, 21 Feb 2023 12:00:58 +0800
+Subject: [PATCH 3/8] feat: capture data and regroup channels
+
+---
+ src/hardware/sipeed-slogic-analyzer/api.c     |  52 +--
+ .../sipeed-slogic-analyzer/protocol.c         | 356 +++++++++++++++++-
+ .../sipeed-slogic-analyzer/protocol.h         |  76 +++-
+ 3 files changed, 435 insertions(+), 49 deletions(-)
+
+diff --git a/src/hardware/sipeed-slogic-analyzer/api.c b/src/hardware/sipeed-slogic-analyzer/api.c
+index 4023d236..4038a6e2 100644
+--- a/src/hardware/sipeed-slogic-analyzer/api.c
++++ b/src/hardware/sipeed-slogic-analyzer/api.c
+@@ -83,15 +83,6 @@ static const uint64_t samplerates[] = {
+ 
+ static struct sr_dev_driver sipeed_slogic_analyzer_driver_info;
+ 
+-#define DBG_VAL(expr) do {\
+-	__typeof((expr)) _expr = (expr);\
+-	sr_warn("[%u]%s<"#expr"> i:%d\tu:%u\tf:%f\th:%x", __LINE__, __func__, \
+-		*(long*)(&_expr), \
+-		*(unsigned long*)(&_expr), \
+-		*(float*)(&_expr), \
+-		*(unsigned long*)(&_expr)); \
+-}while(0)
+-
+ static GSList *scan(struct sr_dev_driver *di, GSList *options)
+ {
+ 	struct drv_context *drvc;
+@@ -212,6 +203,11 @@ static int dev_open(struct sr_dev_inst *sdi)
+ 	}
+ 
+ 	devc->logic_pattern = 3;  /* 2^3 = 8 default */
++	devc->cur_samplerate = samplerates[0];
++	devc->limit_samples = 0;
++	devc->num_frames = 0;
++	devc->limit_frames = 1;
++	devc->capture_ratio = 0;
+ 	
+ 	return std_dummy_dev_open(sdi);
+ }
+@@ -322,25 +318,12 @@ static int config_set(uint32_t key, GVariant *data,
+ 					logic_pattern_str[logic_pattern]);
+ 			devc->logic_pattern = logic_pattern;
+ 			/* Might as well do this now, these are static. */
+-		}
+-		{
+-			
+ 			size_t idx = 0;
+ 			for (GSList *l = cg->channels; l; l = l->next, idx += 1) {
+ 				struct sr_channel *ch = l->data;
+ 				if (ch->type == SR_CHANNEL_LOGIC) {
+ 					/* Might as well do this now, these are static. */
+-					switch (devc->logic_pattern)
+-					{
+-					case 0/* 2^0 = 1 */:
+-					case 1/* 2^1 = 2 */:
+-					case 2/* 2^2 = 4 */:
+-					case 3/* 2^3 = 8 */:
+-						sr_dev_channel_enable(ch, (idx >= (1 << (devc->logic_pattern))) ? FALSE : TRUE);
+-						break;
+-					default:
+-						break;
+-					}
++					sr_dev_channel_enable(ch, (idx >= (1 << (devc->logic_pattern))) ? FALSE : TRUE);
+ 				} else
+ 					return SR_ERR_BUG;
+ 			}
+@@ -404,25 +387,6 @@ static int config_list(uint32_t key, GVariant **data,
+ 	return ret;
+ }
+ 
+-static int dev_acquisition_start(const struct sr_dev_inst *sdi)
+-{
+-	/* TODO: configure hardware, reset acquisition state, set up
+-	 * callbacks and send header packet. */
+-
+-	(void)sdi;DBG_VAL(sdi);
+-
+-	return SR_OK;
+-}
+-
+-static int dev_acquisition_stop(struct sr_dev_inst *sdi)
+-{
+-	/* TODO: stop acquisition. */
+-
+-	(void)sdi;DBG_VAL(sdi);
+-
+-	return SR_OK;
+-}
+-
+ static struct sr_dev_driver sipeed_slogic_analyzer_driver_info = {
+ 	.name = "sipeed-slogic-analyzer",
+ 	.longname = "Sipeed Slogic Analyzer",
+@@ -437,8 +401,8 @@ static struct sr_dev_driver sipeed_slogic_analyzer_driver_info = {
+ 	.config_list = config_list,
+ 	.dev_open = dev_open,
+ 	.dev_close = dev_close,
+-	.dev_acquisition_start = dev_acquisition_start,
+-	.dev_acquisition_stop = dev_acquisition_stop,
++	.dev_acquisition_start = sipeed_slogic_acquisition_start,
++	.dev_acquisition_stop = sipeed_slogic_acquisition_stop,
+ 	.context = NULL,
+ };
+ SR_REGISTER_DEV_DRIVER(sipeed_slogic_analyzer_driver_info);
+diff --git a/src/hardware/sipeed-slogic-analyzer/protocol.c b/src/hardware/sipeed-slogic-analyzer/protocol.c
+index 7b01e981..f232c25f 100644
+--- a/src/hardware/sipeed-slogic-analyzer/protocol.c
++++ b/src/hardware/sipeed-slogic-analyzer/protocol.c
+@@ -20,12 +20,17 @@
+ #include <config.h>
+ #include "protocol.h"
+ 
++static void LIBUSB_CALL receive_transfer(struct libusb_transfer *transfer);
++static int command_start_acquisition(const struct sr_dev_inst *sdi);
++
+ SR_PRIV int sipeed_slogic_analyzer_receive_data(int fd, int revents, void *cb_data)
+ {
+ 	const struct sr_dev_inst *sdi;
+ 	struct dev_context *devc;
++	struct drv_context *drvc;
+ 
+ 	(void)fd;
++	(void)revents;
+ 
+ 	sdi = cb_data;
+ 	if (!sdi)
+@@ -35,9 +40,354 @@ SR_PRIV int sipeed_slogic_analyzer_receive_data(int fd, int revents, void *cb_da
+ 	if (!devc)
+ 		return TRUE;
+ 
+-	if (revents == G_IO_IN) {
+-		/* TODO */
+-	}
++	drvc = sdi->driver->context;
++	if (!drvc)
++		return TRUE;
++
++	struct timeval tv = {
++		.tv_sec = 0,
++		.tv_usec = 0,
++	};
++	libusb_handle_events_timeout(drvc->sr_ctx->libusb_ctx, &tv);
+ 
+ 	return TRUE;
+ }
++
++SR_PRIV int sipeed_slogic_acquisition_start(const struct sr_dev_inst *sdi)
++{
++	/* TODO: configure hardware, reset acquisition state, set up
++	 * callbacks and send header packet. */
++
++	(void)sdi;DBG_VAL(sdi);
++	struct dev_context *devc = sdi->priv;
++
++	int timeout = get_timeout(devc);
++	usb_source_add(sdi->session, sdi->session->ctx, timeout, sipeed_slogic_analyzer_receive_data, sdi);
++
++	struct sr_usb_dev_inst *usb = sdi->conn;
++	devc->sent_samples = 0;
++	devc->acq_aborted = FALSE;
++	devc->empty_transfer_count = 0;
++
++	struct sr_trigger *trigger;
++	if ((trigger = sr_session_trigger_get(sdi->session))) {
++		int pre_trigger_samples = 0;
++		if (devc->limit_samples > 0)
++			pre_trigger_samples = (devc->capture_ratio * devc->limit_samples) / 100;
++		devc->stl = soft_trigger_logic_new(sdi, trigger, pre_trigger_samples);
++		if (!devc->stl)
++			return SR_ERR_MALLOC;
++		devc->trigger_fired = FALSE;
++	} else {
++		std_session_send_df_frame_begin(sdi);
++		devc->trigger_fired = TRUE;
++	}
++
++	devc->submitted_transfers = 0;
++	size_t num_transfers = get_number_of_transfers(devc);
++	devc->num_transfers = num_transfers;
++	devc->transfers = g_try_malloc0(sizeof(*devc->transfers) * devc->num_transfers);
++	if (!devc->transfers) {
++		sr_err("USB transfers malloc failed.");
++		return SR_ERR_MALLOC;
++	}
++	size_t size = get_buffer_size(devc);
++	for (int i = 0; i < devc->num_transfers; i++) {
++		uint8_t *buf = g_try_malloc(size * 8); /* max 8xu1 */
++		if (!buf) {
++			sr_err("USB transfer buffer malloc failed.");
++			return SR_ERR_MALLOC;
++		}
++		struct libusb_transfer *transfer = libusb_alloc_transfer(0);
++		libusb_fill_bulk_transfer(transfer, usb->devhdl,
++				1 | LIBUSB_ENDPOINT_IN, buf, size,
++				receive_transfer, (void *)sdi, timeout);
++		sr_info("submitting transfer: %d", i);
++		int ret = 0;
++		if ((ret = libusb_submit_transfer(transfer)) != 0) {
++			sr_err("Failed to submit transfer: %s.",
++			       libusb_error_name(ret));
++			libusb_free_transfer(transfer);
++			g_free(buf);
++			sipeed_slogic_acquisition_stop(sdi);
++			return SR_ERR;
++		}
++		devc->transfers[i] = transfer;
++		devc->submitted_transfers++;
++	}
++
++	std_session_send_df_header(sdi);
++
++	int ret = SR_OK;
++	if ((ret = command_start_acquisition(sdi)) != SR_OK) {
++		sipeed_slogic_acquisition_stop(sdi);
++		return ret;
++	}
++
++	return SR_OK;
++}
++
++SR_PRIV int sipeed_slogic_acquisition_stop(struct sr_dev_inst *sdi)
++{
++	/* TODO: stop acquisition. */
++
++	(void)sdi;DBG_VAL(sdi);
++	struct dev_context *devc = sdi->priv;
++
++	devc->acq_aborted = TRUE;
++	for (int i = devc->num_transfers - 1; i >= 0; i--) {
++		if (devc->transfers[i])
++			libusb_cancel_transfer(devc->transfers[i]);
++	}
++	return SR_OK;
++}
++
++static void finish_acquisition(struct sr_dev_inst *sdi)
++{
++	struct dev_context *devc;
++
++	devc = sdi->priv;
++
++	std_session_send_df_end(sdi);
++
++	usb_source_remove(sdi->session, sdi->session->ctx);
++
++	devc->num_transfers = 0;
++	g_free(devc->transfers);
++
++	if (devc->stl) {
++		soft_trigger_logic_free(devc->stl);
++		devc->stl = NULL;
++	}
++}
++
++static void free_transfer(struct libusb_transfer *transfer)
++{
++	struct sr_dev_inst *sdi;
++	struct dev_context *devc;
++	unsigned int i;
++
++	sdi = transfer->user_data;
++	devc = sdi->priv;
++
++	g_free(transfer->buffer);
++	transfer->buffer = NULL;
++	libusb_free_transfer(transfer);
++
++	for (i = 0; i < devc->num_transfers; i++) {
++		if (devc->transfers[i] == transfer) {
++			devc->transfers[i] = NULL;
++			break;
++		}
++	}
++
++	devc->submitted_transfers--;
++	if (devc->submitted_transfers == 0)
++		finish_acquisition(sdi);
++}
++
++static void resubmit_transfer(struct libusb_transfer *transfer)
++{
++	int ret;
++
++	if ((ret = libusb_submit_transfer(transfer)) == LIBUSB_SUCCESS)
++		return;
++
++	sr_err("%s: %s", __func__, libusb_error_name(ret));
++	free_transfer(transfer);
++}
++
++static void la_send_data_proc(struct sr_dev_inst *sdi,
++	uint8_t *data, size_t length, size_t sample_width)
++{
++	const struct sr_datafeed_logic logic = {
++		.length = length,
++		.unitsize = sample_width,
++		.data = data
++	};
++
++	const struct sr_datafeed_packet packet = {
++		.type = SR_DF_LOGIC,
++		.payload = &logic
++	};
++
++	sr_session_send(sdi, &packet);
++}
++
++static void LIBUSB_CALL receive_transfer(struct libusb_transfer *transfer)
++{
++	struct sr_dev_inst *sdi = transfer->user_data;
++	struct dev_context *devc = sdi->priv;
++	gboolean packet_has_error = FALSE;
++	unsigned int num_samples;
++	int trigger_offset, cur_sample_count, unitsize, processed_samples;
++	int pre_trigger_samples;
++
++	/*
++	 * If acquisition has already ended, just free any queued up
++	 * transfer that come in.
++	 */
++	if (devc->acq_aborted) {
++		free_transfer(transfer);
++		return;
++	}
++
++	sr_dbg("receive_transfer(): status %s received %d bytes.",
++		libusb_error_name(transfer->status), transfer->actual_length);
++
++	/* Save incoming transfer before reusing the transfer struct. */
++	unitsize = 1+(((1<<devc->logic_pattern)-1)>>3);
++	cur_sample_count = transfer->actual_length * 8 / (1<<devc->logic_pattern);
++	processed_samples = 0;
++
++	switch (transfer->status) {
++	case LIBUSB_TRANSFER_NO_DEVICE:
++		sipeed_slogic_acquisition_stop(sdi);
++		free_transfer(transfer);
++		return;
++	case LIBUSB_TRANSFER_COMPLETED:
++	case LIBUSB_TRANSFER_TIMED_OUT: /* We may have received some data though. */
++		break;
++	default:
++		packet_has_error = TRUE;
++		break;
++	}
++
++	if (transfer->actual_length == 0 || packet_has_error) {
++		devc->empty_transfer_count++;
++		if (devc->empty_transfer_count > MAX_EMPTY_TRANSFERS) {
++			/*
++			 * The FX2 gave up. End the acquisition, the frontend
++			 * will work out that the samplecount is short.
++			 */
++			sipeed_slogic_acquisition_stop(sdi);
++			free_transfer(transfer);
++		} else {
++			resubmit_transfer(transfer);
++		}
++		return;
++	} else {
++		devc->empty_transfer_count = 0;
++	}
++
++	uint8_t real_bits = 1<<devc->logic_pattern;
++check_trigger:
++	if (real_bits < 8) {
++		for (int i = cur_sample_count-1; i>=0; i--) {
++			((uint8_t *)transfer->buffer)[i] = 
++				(((uint8_t *)transfer->buffer)[i/real_bits] >> (real_bits-1-i%real_bits))
++				& ((1<<real_bits)-1);
++		}
++	}
++	if (devc->trigger_fired) {
++		if (!devc->limit_samples || devc->sent_samples < devc->limit_samples) {
++			/* Send the incoming transfer to the session bus. */
++			num_samples = cur_sample_count - processed_samples;
++			if (devc->limit_samples && devc->sent_samples + num_samples > devc->limit_samples)
++				num_samples = devc->limit_samples - devc->sent_samples;
++
++			la_send_data_proc(sdi, (uint8_t *)transfer->buffer
++				+ processed_samples * unitsize,
++				num_samples * unitsize, unitsize);
++			devc->sent_samples += num_samples;
++			processed_samples += num_samples;
++		}
++	} else {
++		trigger_offset = soft_trigger_logic_check(devc->stl,
++			transfer->buffer + processed_samples * unitsize,
++			transfer->actual_length - processed_samples * unitsize,
++			&pre_trigger_samples);
++		if (trigger_offset > -1) {
++			std_session_send_df_frame_begin(sdi);
++			devc->sent_samples += pre_trigger_samples;
++			num_samples = cur_sample_count - processed_samples - trigger_offset;
++			if (devc->limit_samples &&
++					devc->sent_samples + num_samples > devc->limit_samples)
++				num_samples = devc->limit_samples - devc->sent_samples;
++
++			la_send_data_proc(sdi, (uint8_t *)transfer->buffer
++				+ processed_samples * unitsize
++				+ trigger_offset * unitsize,
++				num_samples * unitsize, unitsize);
++			devc->sent_samples += num_samples;
++			processed_samples += trigger_offset + num_samples;
++
++			devc->trigger_fired = TRUE;
++		}
++	}
++
++	const int frame_ended = devc->limit_samples && (devc->sent_samples >= devc->limit_samples);
++	const int final_frame = devc->limit_frames && (devc->num_frames >= (devc->limit_frames - 1));
++
++	if (frame_ended) {
++		devc->num_frames++;
++		devc->sent_samples = 0;
++		devc->trigger_fired = FALSE;
++		std_session_send_df_frame_end(sdi);
++
++		/* There may be another trigger in the remaining data, go back and check for it */
++		if (processed_samples < cur_sample_count) {
++			/* Reset the trigger stage */
++			if (devc->stl)
++				devc->stl->cur_stage = 0;
++			else {
++				std_session_send_df_frame_begin(sdi);
++				devc->trigger_fired = TRUE;
++			}
++			if (!final_frame)
++				goto check_trigger;
++		}
++	}
++	if (frame_ended && final_frame) {
++		sipeed_slogic_acquisition_stop(sdi);
++		free_transfer(transfer);
++	} else
++		resubmit_transfer(transfer);
++}
++
++#define USB_TIMEOUT 100
++
++static int command_start_acquisition(const struct sr_dev_inst *sdi)
++{
++	struct dev_context *devc;
++	struct sr_usb_dev_inst *usb;
++	uint64_t samplerate;
++	struct cmd_start_acquisition cmd;
++	int ret;
++
++	devc = sdi->priv;
++	usb = sdi->conn;
++	samplerate = devc->cur_samplerate;
++
++	/* Compute the sample rate. */
++	if (0) {
++		sr_err("Unable to sample at %" PRIu64 "Hz "
++		       "when collecting 16-bit samples.", samplerate);
++		return SR_ERR;
++	}
++
++	cmd.sample_rate_h = cmd.sample_rate_l = 0;
++
++	if ((SR_MHZ(160) % samplerate) != 0) {
++		sr_err("Unable to sample at %" PRIu64 "Hz.", samplerate);
++		return SR_ERR;
++	}
++
++	sr_dbg("SLogic samplerate = %d, clocksource = %sMHz.", samplerate, "160");
++
++	samplerate /= SR_KHZ(1);
++	cmd.sample_rate_h = (samplerate >> 8) & 0xff;
++	cmd.sample_rate_l = samplerate & 0xff;
++
++	/* Send the control message. */
++	ret = libusb_control_transfer(usb->devhdl, LIBUSB_REQUEST_TYPE_VENDOR |
++			LIBUSB_ENDPOINT_OUT, CMD_START, 0x0000, 0x0000,
++			(unsigned char *)&cmd, sizeof(cmd), USB_TIMEOUT);
++	if (ret < 0) {
++		sr_err("Unable to send start command: %s.",
++		       libusb_error_name(ret));
++		return SR_ERR;
++	}
++
++	return SR_OK;
++}
+diff --git a/src/hardware/sipeed-slogic-analyzer/protocol.h b/src/hardware/sipeed-slogic-analyzer/protocol.h
+index 84e31087..12f06396 100644
+--- a/src/hardware/sipeed-slogic-analyzer/protocol.h
++++ b/src/hardware/sipeed-slogic-analyzer/protocol.h
+@@ -28,6 +28,18 @@
+ 
+ #define LOG_PREFIX "sipeed-slogic-analyzer"
+ 
++#define NUM_SIMUL_TRANSFERS 32
++#define MAX_EMPTY_TRANSFERS (NUM_SIMUL_TRANSFERS * 2)
++
++#define DBG_VAL(expr) do {\
++	__typeof((expr)) _expr = (expr);\
++	sr_warn("[%u]%s<"#expr"> i:%d\tu:%u\tf:%f\th:%x", __LINE__, __func__, \
++		*(long*)(&_expr), \
++		*(unsigned long*)(&_expr), \
++		*(float*)(&_expr), \
++		*(unsigned long*)(&_expr)); \
++}while(0)
++
+ struct slogic_profile {
+ 	uint16_t vid;
+ 	uint16_t pid;
+@@ -36,14 +48,74 @@ struct slogic_profile {
+ struct dev_context {
+     struct slogic_profile *profile;
+ 
+-	uint64_t cur_samplerate;
+ 	uint64_t limit_samples;
+-    int logic_pattern;
++	uint64_t limit_frames;
++
++	gboolean acq_aborted;
++	gboolean trigger_fired;
++	struct soft_trigger_logic *stl;
++
++	uint64_t num_frames;
++	uint64_t sent_samples;
++	int submitted_transfers;
++	int empty_transfer_count;
++
++	uint64_t num_transfers;
++	struct libusb_transfer **transfers;
++
++	uint64_t cur_samplerate;
++	int logic_pattern;
+ 	double voltage_threshold[2];
+ 	/* Triggers */
+ 	uint64_t capture_ratio;
+ };
+ 
++#pragma pack(push, 1)
++struct cmd_start_acquisition {
++	uint8_t sample_rate_l;
++	uint8_t sample_rate_h;
++};
++#pragma pack(pop)
++
++/* Protocol commands */
++#define CMD_START			0xb1
++
+ SR_PRIV int sipeed_slogic_analyzer_receive_data(int fd, int revents, void *cb_data);
++SR_PRIV int sipeed_slogic_acquisition_start(const struct sr_dev_inst *sdi);
++SR_PRIV int sipeed_slogic_acquisition_stop(struct sr_dev_inst *sdi);
++
++static inline size_t to_bytes_per_ms(struct dev_context *devc)
++{
++	size_t channel_counts = 1 << (devc->logic_pattern);
++	return (devc->cur_samplerate * channel_counts)/8/1000;
++}
++
++static inline size_t get_buffer_size(struct dev_context *devc)
++{
++	/**
++	 * The buffer should be large enough to hold 10ms of data and
++	 * a multiple of 512.
++	 */
++	size_t s = 10 * to_bytes_per_ms(devc);
++	size_t pack_size = 512;
++	return (s + (pack_size-1)) & ~(pack_size-1);
++}
++
++static inline size_t get_number_of_transfers(struct dev_context *devc)
++{
++	/* Total buffer size should be able to hold about 500ms of data. */
++	size_t n = (500 * to_bytes_per_ms(devc) / get_buffer_size(devc));
++	if (n > NUM_SIMUL_TRANSFERS)
++		return NUM_SIMUL_TRANSFERS;
++	return n;
++}
++
++static inline size_t get_timeout(struct dev_context *devc)
++{
++	size_t total_size = get_buffer_size(devc) *
++			get_number_of_transfers(devc);
++	size_t timeout = total_size / to_bytes_per_ms(devc);
++	return timeout + timeout / 4; /* Leave a headroom of 25% percent. */
++}
+ 
+ #endif
+-- 
+2.43.0
+
+From e834484756e6e601464da0b9b5532409abb05255 Mon Sep 17 00:00:00 2001
+From: taorye <taorye@outlook.com>
+Date: Wed, 22 Feb 2023 10:14:24 +0800
+Subject: [PATCH 4/8] feat: now support max 160Msps(2ch)
+
+---
+ src/hardware/sipeed-slogic-analyzer/api.c     | 16 ++++++------
+ .../sipeed-slogic-analyzer/protocol.c         | 25 ++++++++++---------
+ .../sipeed-slogic-analyzer/protocol.h         |  1 +
+ 3 files changed, 23 insertions(+), 19 deletions(-)
+
+diff --git a/src/hardware/sipeed-slogic-analyzer/api.c b/src/hardware/sipeed-slogic-analyzer/api.c
+index 4038a6e2..a0aefd96 100644
+--- a/src/hardware/sipeed-slogic-analyzer/api.c
++++ b/src/hardware/sipeed-slogic-analyzer/api.c
+@@ -60,13 +60,13 @@ static const int32_t trigger_matches[] = {
+ };
+ 
+ static const uint64_t samplerates[] = {
+-	SR_KHZ(20),
+-	SR_KHZ(25),
+-	SR_KHZ(50),
+-	SR_KHZ(100),
+-	SR_KHZ(200),
+-	SR_KHZ(250),
+-	SR_KHZ(500),
++	// SR_KHZ(20),
++	// SR_KHZ(25),
++	// SR_KHZ(50),
++	// SR_KHZ(100),
++	// SR_KHZ(200),
++	// SR_KHZ(250),
++	// SR_KHZ(500),
+ 	/* 160M = 2*2*2*2*2*5M */
+ 	SR_MHZ(1),
+ 	SR_MHZ(2),
+@@ -79,6 +79,8 @@ static const uint64_t samplerates[] = {
+ 	SR_MHZ(32),
+ 	SR_MHZ(40),
+ 	/* must less than 47MHZ */
++	SR_MHZ(80),
++	SR_MHZ(160),
+ };
+ 
+ static struct sr_dev_driver sipeed_slogic_analyzer_driver_info;
+diff --git a/src/hardware/sipeed-slogic-analyzer/protocol.c b/src/hardware/sipeed-slogic-analyzer/protocol.c
+index f232c25f..434e3bc5 100644
+--- a/src/hardware/sipeed-slogic-analyzer/protocol.c
++++ b/src/hardware/sipeed-slogic-analyzer/protocol.c
+@@ -93,7 +93,7 @@ SR_PRIV int sipeed_slogic_acquisition_start(const struct sr_dev_inst *sdi)
+ 	}
+ 	size_t size = get_buffer_size(devc);
+ 	for (int i = 0; i < devc->num_transfers; i++) {
+-		uint8_t *buf = g_try_malloc(size * 8); /* max 8xu1 */
++		uint8_t *buf = g_try_malloc(size * (8+1)); /* max 8xu1 */
+ 		if (!buf) {
+ 			sr_err("USB transfer buffer malloc failed.");
+ 			return SR_ERR_MALLOC;
+@@ -274,9 +274,10 @@ static void LIBUSB_CALL receive_transfer(struct libusb_transfer *transfer)
+ check_trigger:
+ 	if (real_bits < 8) {
+ 		for (int i = cur_sample_count-1; i>=0; i--) {
+-			((uint8_t *)transfer->buffer)[i] = 
+-				(((uint8_t *)transfer->buffer)[i/real_bits] >> (real_bits-1-i%real_bits))
+-				& ((1<<real_bits)-1);
++			
++			((uint8_t *)transfer->buffer+get_buffer_size(devc))[i] = 
++				(((uint8_t *)transfer->buffer)[i/(8/real_bits)] >> (real_bits*(i%(8/real_bits))))
++				&((1<<real_bits)-1);
+ 		}
+ 	}
+ 	if (devc->trigger_fired) {
+@@ -286,7 +287,7 @@ check_trigger:
+ 			if (devc->limit_samples && devc->sent_samples + num_samples > devc->limit_samples)
+ 				num_samples = devc->limit_samples - devc->sent_samples;
+ 
+-			la_send_data_proc(sdi, (uint8_t *)transfer->buffer
++			la_send_data_proc(sdi, (uint8_t *)transfer->buffer + (real_bits<8?get_buffer_size(devc):0)
+ 				+ processed_samples * unitsize,
+ 				num_samples * unitsize, unitsize);
+ 			devc->sent_samples += num_samples;
+@@ -305,7 +306,7 @@ check_trigger:
+ 					devc->sent_samples + num_samples > devc->limit_samples)
+ 				num_samples = devc->limit_samples - devc->sent_samples;
+ 
+-			la_send_data_proc(sdi, (uint8_t *)transfer->buffer
++			la_send_data_proc(sdi, (uint8_t *)transfer->buffer + (real_bits<8?get_buffer_size(devc):0)
+ 				+ processed_samples * unitsize
+ 				+ trigger_offset * unitsize,
+ 				num_samples * unitsize, unitsize);
+@@ -351,13 +352,14 @@ static int command_start_acquisition(const struct sr_dev_inst *sdi)
+ {
+ 	struct dev_context *devc;
+ 	struct sr_usb_dev_inst *usb;
+-	uint64_t samplerate;
++	uint64_t samplerate, samplechannel;
+ 	struct cmd_start_acquisition cmd;
+ 	int ret;
+ 
+ 	devc = sdi->priv;
+ 	usb = sdi->conn;
+ 	samplerate = devc->cur_samplerate;
++	samplechannel = 1<<devc->logic_pattern;
+ 
+ 	/* Compute the sample rate. */
+ 	if (0) {
+@@ -366,18 +368,17 @@ static int command_start_acquisition(const struct sr_dev_inst *sdi)
+ 		return SR_ERR;
+ 	}
+ 
+-	cmd.sample_rate_h = cmd.sample_rate_l = 0;
+-
+-	if ((SR_MHZ(160) % samplerate) != 0) {
++	if ((SR_MHZ(160) % samplerate) != 0 || samplechannel * samplerate > 40 * 8 * 1000 * 1000) {
+ 		sr_err("Unable to sample at %" PRIu64 "Hz.", samplerate);
+ 		return SR_ERR;
+ 	}
+ 
+-	sr_dbg("SLogic samplerate = %d, clocksource = %sMHz.", samplerate, "160");
++	sr_dbg("SLogic samplerate(%dch) = %d, clocksource = %sMHz.", samplechannel, samplerate, "160");
+ 
+-	samplerate /= SR_KHZ(1);
++	samplerate /= SR_MHZ(1);
+ 	cmd.sample_rate_h = (samplerate >> 8) & 0xff;
+ 	cmd.sample_rate_l = samplerate & 0xff;
++	cmd.sample_channel = samplechannel;
+ 
+ 	/* Send the control message. */
+ 	ret = libusb_control_transfer(usb->devhdl, LIBUSB_REQUEST_TYPE_VENDOR |
+diff --git a/src/hardware/sipeed-slogic-analyzer/protocol.h b/src/hardware/sipeed-slogic-analyzer/protocol.h
+index 12f06396..92da5f74 100644
+--- a/src/hardware/sipeed-slogic-analyzer/protocol.h
++++ b/src/hardware/sipeed-slogic-analyzer/protocol.h
+@@ -74,6 +74,7 @@ struct dev_context {
+ struct cmd_start_acquisition {
+ 	uint8_t sample_rate_l;
+ 	uint8_t sample_rate_h;
++	uint8_t sample_channel;
+ };
+ #pragma pack(pop)
+ 
+-- 
+2.43.0
+
+From 114f8a57495227fee56e03ac4917dec4017c05ce Mon Sep 17 00:00:00 2001
+From: taorye <taorye@outlook.com>
+Date: Wed, 26 Jul 2023 18:16:44 +0800
+Subject: [PATCH 5/8] fix: limit samplerate and auto fit channel and ...
+
+enable to reconnect by rescan and add new samplerates
+---
+ src/hardware/sipeed-slogic-analyzer/api.c     | 55 +++++++++++++------
+ .../sipeed-slogic-analyzer/protocol.c         | 25 +++++++--
+ 2 files changed, 58 insertions(+), 22 deletions(-)
+
+diff --git a/src/hardware/sipeed-slogic-analyzer/api.c b/src/hardware/sipeed-slogic-analyzer/api.c
+index a0aefd96..eefb69d1 100644
+--- a/src/hardware/sipeed-slogic-analyzer/api.c
++++ b/src/hardware/sipeed-slogic-analyzer/api.c
+@@ -60,13 +60,6 @@ static const int32_t trigger_matches[] = {
+ };
+ 
+ static const uint64_t samplerates[] = {
+-	// SR_KHZ(20),
+-	// SR_KHZ(25),
+-	// SR_KHZ(50),
+-	// SR_KHZ(100),
+-	// SR_KHZ(200),
+-	// SR_KHZ(250),
+-	// SR_KHZ(500),
+ 	/* 160M = 2*2*2*2*2*5M */
+ 	SR_MHZ(1),
+ 	SR_MHZ(2),
+@@ -78,8 +71,11 @@ static const uint64_t samplerates[] = {
+ 	SR_MHZ(20),
+ 	SR_MHZ(32),
+ 	SR_MHZ(40),
+-	/* must less than 47MHZ */
++	/* x 4ch */
++	SR_MHZ(64),
+ 	SR_MHZ(80),
++	/* x 2ch */
++	SR_MHZ(128),
+ 	SR_MHZ(160),
+ };
+ 
+@@ -87,6 +83,7 @@ static struct sr_dev_driver sipeed_slogic_analyzer_driver_info;
+ 
+ static GSList *scan(struct sr_dev_driver *di, GSList *options)
+ {
++	// sr_dbg("Enter func %s with di: %p, options: %p", __func__, di, options);
+ 	struct drv_context *drvc;
+ 	GSList *devices;
+ 
+@@ -101,7 +98,7 @@ static GSList *scan(struct sr_dev_driver *di, GSList *options)
+ 	const char *conn = NULL;
+ 	int num_logic_channels = 8;
+ 	for (GSList *l = options; l; l = l->next) {
+-		struct sr_config *src = l->data;DBG_VAL(src->key);
++		struct sr_config *src = l->data;
+ 		switch (src->key) {
+ 		case SR_CONF_NUM_LOGIC_CHANNELS:
+ 			num_logic_channels = g_variant_get_int32(src->data);
+@@ -168,11 +165,13 @@ static GSList *scan(struct sr_dev_driver *di, GSList *options)
+ 	}
+ 	// g_slist_free_full(conn_devices, (GDestroyNotify)sr_usb_dev_inst_free);
+ 
++	// sr_dbg("Leave func %s", __func__);
+ 	return std_scan_complete(di, devices);
+ }
+ 
+ static int dev_open(struct sr_dev_inst *sdi)
+ {
++	// sr_dbg("Enter func %s with sdi: %p", __func__, sdi);
+ 	(void)sdi;
+ 
+ 	/* TODO: get handle from sdi->conn and open it. */
+@@ -182,11 +181,11 @@ static int dev_open(struct sr_dev_inst *sdi)
+ 	struct sr_dev_driver *di = sdi->driver;
+ 	struct drv_context *drvc = di->context;
+ 
+-	ret = sr_usb_open(drvc->sr_ctx->libusb_ctx, usb);DBG_VAL(ret);
++	ret = sr_usb_open(drvc->sr_ctx->libusb_ctx, usb);
+ 	if (ret != SR_OK)
+ 		return ret;
+ 
+-	ret = libusb_claim_interface(usb->devhdl, 0);DBG_VAL(ret);
++	ret = libusb_claim_interface(usb->devhdl, 0);
+ 	if (ret != LIBUSB_SUCCESS) {
+ 		switch (ret) {
+ 		case LIBUSB_ERROR_BUSY:
+@@ -211,11 +210,13 @@ static int dev_open(struct sr_dev_inst *sdi)
+ 	devc->limit_frames = 1;
+ 	devc->capture_ratio = 0;
+ 	
++	// sr_dbg("Leave func %s", __func__);
+ 	return std_dummy_dev_open(sdi);
+ }
+ 
+ static int dev_close(struct sr_dev_inst *sdi)
+ {
++	// sr_dbg("Enter func %s with sdi: %p", __func__, sdi);
+ 	(void)sdi;
+ 
+ 	/* TODO: get handle from sdi->conn and close it. */
+@@ -223,21 +224,23 @@ static int dev_close(struct sr_dev_inst *sdi)
+ 	struct sr_usb_dev_inst *usb = sdi->conn;
+ 	struct dev_context *devc= sdi->priv;
+ 
+-	ret = libusb_release_interface(usb->devhdl, 0);DBG_VAL(ret);
++	ret = libusb_release_interface(usb->devhdl, 0);
+ 	if (ret != LIBUSB_SUCCESS) {
+ 		sr_err("Unable to release Interface for %s.",
+ 			       libusb_error_name(ret));
+-		return SR_ERR;
++		// return SR_ERR;
+ 	}
+ 
+ 	sr_usb_close(usb);
+ 
++	// sr_dbg("Leave func %s", __func__);
+ 	return std_dummy_dev_close(sdi);
+ }
+ 
+ static int config_get(uint32_t key, GVariant **data,
+ 	const struct sr_dev_inst *sdi, const struct sr_channel_group *cg)
+ {
++	// sr_dbg("Enter func %s with key: %u, data: %p, sdi: %p, cg: %p", __func__, key, data, sdi, cg);
+ 	int ret;
+ 
+ 	(void)sdi;
+@@ -247,7 +250,7 @@ static int config_get(uint32_t key, GVariant **data,
+ 	struct sr_usb_dev_inst *usb = sdi->conn;
+ 	struct dev_context *devc= sdi->priv;
+ 	struct sr_channel *ch;
+-	ret = SR_OK;DBG_VAL(key);
++	ret = SR_OK;
+ 	switch (key) {
+ 	/* TODO */
+ 	case SR_CONF_CONN:
+@@ -284,12 +287,14 @@ static int config_get(uint32_t key, GVariant **data,
+ 		return SR_ERR_NA;
+ 	}
+ 
++	// sr_dbg("Leave func %s", __func__);
+ 	return ret;
+ }
+ 
+ static int config_set(uint32_t key, GVariant *data,
+ 	const struct sr_dev_inst *sdi, const struct sr_channel_group *cg)
+ {
++	sr_dbg("Enter func %s with key: %u, data: %p, sdi: %p, cg: %p", __func__, key, data, sdi, cg);
+ 	int ret;
+ 
+ 	(void)sdi;
+@@ -298,13 +303,24 @@ static int config_set(uint32_t key, GVariant *data,
+ 
+ 	struct dev_context *devc= sdi->priv;
+ 	int logic_pattern;
+-	ret = SR_OK;DBG_VAL(key);
++	ret = SR_OK;
+ 	switch (key) {
+ 	/* TODO */
+ 	case SR_CONF_SAMPLERATE:
+ 		if (std_u64_idx(data, ARRAY_AND_SIZE(samplerates)) < 0)
+ 			return SR_ERR_ARG;
+ 		devc->cur_samplerate = g_variant_get_uint64(data);
++		if (devc->cur_samplerate >= SR_MHZ(128)) {
++			sr_dbg("set 2 ch");
++			sdi->driver->config_set(SR_CONF_PATTERN_MODE,
++				g_variant_new_string(logic_pattern_str[1]),
++				sdi, sdi->channel_groups->data);
++		} else if (devc->cur_samplerate >= SR_MHZ(64)) {
++			sr_dbg("set 4 ch");
++			sdi->driver->config_set(SR_CONF_PATTERN_MODE,
++				g_variant_new_string(logic_pattern_str[2]),
++				sdi, sdi->channel_groups->data);
++		}
+ 		break;
+ 	case SR_CONF_LIMIT_SAMPLES:
+ 		devc->limit_samples = g_variant_get_uint64(data);
+@@ -316,8 +332,7 @@ static int config_set(uint32_t key, GVariant *data,
+ 		if (logic_pattern < 0)
+ 			return SR_ERR_ARG;
+ 		if (((struct sr_channel *)cg->channels->data)->type == SR_CHANNEL_LOGIC) {
+-			sr_dbg("Setting logic pattern to %s",
+-					logic_pattern_str[logic_pattern]);
++			// sr_dbg("Setting logic pattern to %s", logic_pattern_str[logic_pattern]);
+ 			devc->logic_pattern = logic_pattern;
+ 			/* Might as well do this now, these are static. */
+ 			size_t idx = 0;
+@@ -341,12 +356,14 @@ static int config_set(uint32_t key, GVariant *data,
+ 		ret = SR_ERR_NA;
+ 	}
+ 
++	// sr_dbg("Leave func %s", __func__);
+ 	return ret;
+ }
+ 
+ static int config_list(uint32_t key, GVariant **data,
+ 	const struct sr_dev_inst *sdi, const struct sr_channel_group *cg)
+ {
++	// sr_dbg("Enter func %s with key: %x, data: %p, sdi: %p, cg: %p", __func__, key, data, sdi, cg);
+ 	int ret;
+ 
+ 	(void)sdi;
+@@ -354,7 +371,7 @@ static int config_list(uint32_t key, GVariant **data,
+ 	(void)cg;
+ 
+ 	struct sr_channel *ch;
+-	ret = SR_OK;DBG_VAL(key);
++	ret = SR_OK;
+ 	switch (key) {
+ 	/* TODO */
+ 	case SR_CONF_SCAN_OPTIONS:
+@@ -370,6 +387,7 @@ static int config_list(uint32_t key, GVariant **data,
+ 	case SR_CONF_SAMPLERATE:
+ 		*data = std_gvar_samplerates(ARRAY_AND_SIZE(samplerates));
+ 		break;
++	// sr_dbg("Leave func %s", __func__);
+ 	case SR_CONF_TRIGGER_MATCH:
+ 		*data = std_gvar_array_i32(ARRAY_AND_SIZE(trigger_matches));
+ 		break;
+@@ -386,6 +404,7 @@ static int config_list(uint32_t key, GVariant **data,
+ 		return SR_ERR_NA;
+ 	}
+ 
++	// sr_dbg("Leave func %s", __func__);
+ 	return ret;
+ }
+ 
+diff --git a/src/hardware/sipeed-slogic-analyzer/protocol.c b/src/hardware/sipeed-slogic-analyzer/protocol.c
+index 434e3bc5..759be36b 100644
+--- a/src/hardware/sipeed-slogic-analyzer/protocol.c
++++ b/src/hardware/sipeed-slogic-analyzer/protocol.c
+@@ -25,6 +25,7 @@ static int command_start_acquisition(const struct sr_dev_inst *sdi);
+ 
+ SR_PRIV int sipeed_slogic_analyzer_receive_data(int fd, int revents, void *cb_data)
+ {
++	// sr_dbg("Enter func %s", __func__);
+ 	const struct sr_dev_inst *sdi;
+ 	struct dev_context *devc;
+ 	struct drv_context *drvc;
+@@ -50,11 +51,13 @@ SR_PRIV int sipeed_slogic_analyzer_receive_data(int fd, int revents, void *cb_da
+ 	};
+ 	libusb_handle_events_timeout(drvc->sr_ctx->libusb_ctx, &tv);
+ 
++	// sr_dbg("Leave func %s", __func__);
+ 	return TRUE;
+ }
+ 
+ SR_PRIV int sipeed_slogic_acquisition_start(const struct sr_dev_inst *sdi)
+ {
++	// sr_dbg("Enter func %s", __func__);
+ 	/* TODO: configure hardware, reset acquisition state, set up
+ 	 * callbacks and send header packet. */
+ 
+@@ -124,11 +127,13 @@ SR_PRIV int sipeed_slogic_acquisition_start(const struct sr_dev_inst *sdi)
+ 		return ret;
+ 	}
+ 
++	// sr_dbg("Leave func %s", __func__);
+ 	return SR_OK;
+ }
+ 
+ SR_PRIV int sipeed_slogic_acquisition_stop(struct sr_dev_inst *sdi)
+ {
++	// sr_dbg("Enter func %s", __func__);
+ 	/* TODO: stop acquisition. */
+ 
+ 	(void)sdi;DBG_VAL(sdi);
+@@ -139,11 +144,13 @@ SR_PRIV int sipeed_slogic_acquisition_stop(struct sr_dev_inst *sdi)
+ 		if (devc->transfers[i])
+ 			libusb_cancel_transfer(devc->transfers[i]);
+ 	}
++	// sr_dbg("Leave func %s", __func__);
+ 	return SR_OK;
+ }
+ 
+ static void finish_acquisition(struct sr_dev_inst *sdi)
+ {
++	// sr_dbg("Enter func %s", __func__);
+ 	struct dev_context *devc;
+ 
+ 	devc = sdi->priv;
+@@ -159,10 +166,12 @@ static void finish_acquisition(struct sr_dev_inst *sdi)
+ 		soft_trigger_logic_free(devc->stl);
+ 		devc->stl = NULL;
+ 	}
++	// sr_dbg("Leave func %s", __func__);
+ }
+ 
+ static void free_transfer(struct libusb_transfer *transfer)
+ {
++	// sr_dbg("Enter func %s", __func__);
+ 	struct sr_dev_inst *sdi;
+ 	struct dev_context *devc;
+ 	unsigned int i;
+@@ -184,10 +193,12 @@ static void free_transfer(struct libusb_transfer *transfer)
+ 	devc->submitted_transfers--;
+ 	if (devc->submitted_transfers == 0)
+ 		finish_acquisition(sdi);
++	// sr_dbg("Leave func %s", __func__);
+ }
+ 
+ static void resubmit_transfer(struct libusb_transfer *transfer)
+ {
++	// sr_dbg("Enter func %s", __func__);
+ 	int ret;
+ 
+ 	if ((ret = libusb_submit_transfer(transfer)) == LIBUSB_SUCCESS)
+@@ -195,11 +206,13 @@ static void resubmit_transfer(struct libusb_transfer *transfer)
+ 
+ 	sr_err("%s: %s", __func__, libusb_error_name(ret));
+ 	free_transfer(transfer);
++	// sr_dbg("Leave func %s", __func__);
+ }
+ 
+ static void la_send_data_proc(struct sr_dev_inst *sdi,
+ 	uint8_t *data, size_t length, size_t sample_width)
+ {
++	// sr_dbg("Enter func %s", __func__);
+ 	const struct sr_datafeed_logic logic = {
+ 		.length = length,
+ 		.unitsize = sample_width,
+@@ -212,10 +225,12 @@ static void la_send_data_proc(struct sr_dev_inst *sdi,
+ 	};
+ 
+ 	sr_session_send(sdi, &packet);
++	// sr_dbg("Leave func %s", __func__);
+ }
+ 
+ static void LIBUSB_CALL receive_transfer(struct libusb_transfer *transfer)
+ {
++	// sr_dbg("Enter func %s", __func__);
+ 	struct sr_dev_inst *sdi = transfer->user_data;
+ 	struct dev_context *devc = sdi->priv;
+ 	gboolean packet_has_error = FALSE;
+@@ -232,8 +247,7 @@ static void LIBUSB_CALL receive_transfer(struct libusb_transfer *transfer)
+ 		return;
+ 	}
+ 
+-	sr_dbg("receive_transfer(): status %s received %d bytes.",
+-		libusb_error_name(transfer->status), transfer->actual_length);
++	// sr_dbg("receive_transfer(): status %s received %d bytes.", libusb_error_name(transfer->status), transfer->actual_length);
+ 
+ 	/* Save incoming transfer before reusing the transfer struct. */
+ 	unitsize = 1+(((1<<devc->logic_pattern)-1)>>3);
+@@ -344,12 +358,14 @@ check_trigger:
+ 		free_transfer(transfer);
+ 	} else
+ 		resubmit_transfer(transfer);
++	// sr_dbg("Leave func %s", __func__);
+ }
+ 
+ #define USB_TIMEOUT 100
+ 
+ static int command_start_acquisition(const struct sr_dev_inst *sdi)
+ {
++	// sr_dbg("Enter func %s", __func__);
+ 	struct dev_context *devc;
+ 	struct sr_usb_dev_inst *usb;
+ 	uint64_t samplerate, samplechannel;
+@@ -368,9 +384,9 @@ static int command_start_acquisition(const struct sr_dev_inst *sdi)
+ 		return SR_ERR;
+ 	}
+ 
+-	if ((SR_MHZ(160) % samplerate) != 0 || samplechannel * samplerate > 40 * 8 * 1000 * 1000) {
++	if (samplerate > SR_MHZ(160) || samplechannel * samplerate > SR_MHZ(40 * 8)) {
+ 		sr_err("Unable to sample at %" PRIu64 "Hz.", samplerate);
+-		return SR_ERR;
++		// return SR_ERR;
+ 	}
+ 
+ 	sr_dbg("SLogic samplerate(%dch) = %d, clocksource = %sMHz.", samplechannel, samplerate, "160");
+@@ -390,5 +406,6 @@ static int command_start_acquisition(const struct sr_dev_inst *sdi)
+ 		return SR_ERR;
+ 	}
+ 
++	// sr_dbg("Leave func %s", __func__);
+ 	return SR_OK;
+ }
+-- 
+2.43.0
+
+From dc604b7fcabec9ff158bb0de1dec7a7bdc76a7ff Mon Sep 17 00:00:00 2001
+From: Martin Herren <martin.herren@ecorobotix.com>
+Date: Wed, 4 Oct 2023 19:45:03 +0200
+Subject: [PATCH 6/8] [Sipeed SLogic Lite8] Add dependency to libusb
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 68798da1..19f11576 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -358,7 +358,7 @@ SR_DRIVER([SCPI PPS], [scpi-pps])
+ SR_DRIVER([serial DMM], [serial-dmm], [serial_comm])
+ SR_DRIVER([serial LCR], [serial-lcr], [serial_comm])
+ SR_DRIVER([Siglent SDS], [siglent-sds])
+-SR_DRIVER([Sipeed Slogic Analyzer], [sipeed-slogic-analyzer])
++SR_DRIVER([Sipeed Slogic Analyzer], [sipeed-slogic-analyzer], [libusb])
+ SR_DRIVER([Sysclk LWLA], [sysclk-lwla], [libusb])
+ SR_DRIVER([Sysclk SLA5032], [sysclk-sla5032], [libusb])
+ SR_DRIVER([Teleinfo], [teleinfo], [serial_comm])
+-- 
+2.43.0
+
+From 24978df3a369380466fcb20ced79fae074909e55 Mon Sep 17 00:00:00 2001
+From: Martin Herren <martin.herren@ecorobotix.com>
+Date: Wed, 4 Oct 2023 19:45:34 +0200
+Subject: [PATCH 7/8] [Sipeed SLogic Lite8] Add udev rule
+
+---
+ contrib/60-libsigrok.rules | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/contrib/60-libsigrok.rules b/contrib/60-libsigrok.rules
+index 398ee404..bf812a3b 100644
+--- a/contrib/60-libsigrok.rules
++++ b/contrib/60-libsigrok.rules
+@@ -354,4 +354,7 @@ ATTRS{idVendor}=="0c12", ATTRS{idProduct}=="7016", ENV{ID_SIGROK}="1"
+ ATTRS{idVendor}=="0c12", ATTRS{idProduct}=="7025", ENV{ID_SIGROK}="1"
+ ATTRS{idVendor}=="0c12", ATTRS{idProduct}=="7100", ENV{ID_SIGROK}="1"
+ 
++# Sipeed SLogic Lite 8
++ATTRS{idVendor}=="359f", ATTRS{idProduct}=="0300", ENV{ID_SIGROK}="1"
++
+ LABEL="libsigrok_rules_end"
+-- 
+2.43.0
+
+From fe587691af2f86089385a0b145cb2bf2f2e30f5e Mon Sep 17 00:00:00 2001
+From: Martin Herren <martin.herren@ecorobotix.com>
+Date: Wed, 4 Oct 2023 20:12:18 +0200
+Subject: [PATCH 8/8] [Sipeed SLogic Lite8] Fix setting back to 8 channels when
+ selecting 40 MS/s and less from a higher sample rate
+
+---
+ src/hardware/sipeed-slogic-analyzer/api.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/hardware/sipeed-slogic-analyzer/api.c b/src/hardware/sipeed-slogic-analyzer/api.c
+index eefb69d1..6f44dadf 100644
+--- a/src/hardware/sipeed-slogic-analyzer/api.c
++++ b/src/hardware/sipeed-slogic-analyzer/api.c
+@@ -320,6 +320,11 @@ static int config_set(uint32_t key, GVariant *data,
+ 			sdi->driver->config_set(SR_CONF_PATTERN_MODE,
+ 				g_variant_new_string(logic_pattern_str[2]),
+ 				sdi, sdi->channel_groups->data);
++		} else {
++			sr_dbg("set 8 ch");
++			sdi->driver->config_set(SR_CONF_PATTERN_MODE,
++				g_variant_new_string(logic_pattern_str[3]),
++				sdi, sdi->channel_groups->data);
+ 		}
+ 		break;
+ 	case SR_CONF_LIMIT_SAMPLES:
+-- 
+2.43.0
+
