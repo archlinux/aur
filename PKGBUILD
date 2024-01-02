@@ -1,9 +1,9 @@
-# Maintainer: Jeff Dickey <releases at rtx dot pub>
+# Maintainer: Jeff Dickey <releases at mise dot pub>
 
 pkgname=mise
-pkgver=2024.0.0
+pkgver=2024.1.0
 pkgrel=1
-pkgdesc='Polyglot runtime manager'
+pkgdesc='The front-end to your dev env'
 arch=('x86_64')
 url='https://github.com/jdx/mise'
 license=('MIT')
@@ -12,7 +12,7 @@ provides=('mise')
 conflicts=('mise-bin')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jdx/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('1d0f4785eaa79865139998430402c28320d1d6c762169e9bf49ed228af77d690d3a8db13713130be6126ae4901308c5746fff01299cd265b4728b980d791a561')
+sha512sums=('9ddd8c2d1c93a30b17df1d55cb1cc786f3a2a692dc579141ef15a1024113c6ffb36b6ee2024d3686743cedba8338017feb34be5a9d67b11ca32842500943002b')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"

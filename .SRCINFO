@@ -1,6 +1,6 @@
 pkgbase = mise
-pkgdesc = Polyglot runtime manager
-pkgver = 2024.0.0
+pkgdesc = The front-end to your dev env
+pkgver = 2024.1.0
 pkgrel = 1
 url = https://github.com/jdx/mise
 arch = x86_64
@@ -8,7 +8,7 @@ license = MIT
 makedepends = cargo
 provides = mise
 conflicts = mise
-source = mise-2024.0.0.tar.gz::https://github.com/jdx/mise/archive/v2024.0.0.tar.gz
-sha512sums = 1d0f4785eaa79865139998430402c28320d1d6c762169e9bf49ed228af77d690d3a8db13713130be6126ae4901308c5746fff01299cd265b4728b980d791a561
+source = mise-2024.1.0.tar.gz::https://github.com/jdx/mise/archive/v2024.1.0.tar.gz
+sha512sums = 9ddd8c2d1c93a30b17df1d55cb1cc786f3a2a692dc579141ef15a1024113c6ffb36b6ee2024d3686743cedba8338017feb34be5a9d67b11ca32842500943002b
 
 pkgname = mise
