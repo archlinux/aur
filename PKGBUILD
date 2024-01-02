@@ -9,8 +9,8 @@
 __pkgname=firedragon
 pkgname=$__pkgname-unsigned-extensions
 _pkgname=FireDragon
-pkgver=120.0.1
-pkgrel=2
+pkgver=121.0
+pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -42,11 +42,11 @@ options=(!emptydirs !makeflags !strip !lto !debug)
 install=$__pkgname.install
 source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefox-"$pkgver".source.tar.xz{,.asc}
   "$__pkgname.desktop"
-  "common::git+https://codeberg.org/stefanwimmer128/firedragon-unsigned-extensions-common.git#tag=120.0.1-1"
+  "common::git+https://codeberg.org/stefanwimmer128/firedragon-unsigned-extensions-common.git#tag=121.0-1"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
-  "librewolf-source::git+https://codeberg.org/librewolf/source.git#tag=120.0.1-1"
+  "librewolf-source::git+https://codeberg.org/librewolf/source.git#tag=121.0-1"
   "librewolf-settings::git+https://codeberg.org/librewolf/settings.git")
-sha256sums=('76e7bb2a144880158444d8e9014f4d080d219bd150c3db405b27e4c7e3959ae2'
+sha256sums=('edc7a5159d23ff2a23e22bf5abe22231658cee2902b93b5889ee73958aa06aa4'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
