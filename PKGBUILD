@@ -12,7 +12,7 @@ conflicts=('dae')
 source=(
     "$_pkgname-$pkgver.zip::https://github.com/daeuniverse/dae/releases/download/v$pkgver/dae-full-src.zip"
 )
-sha256sums=('decceaef717b08ad64e51d9695f6b080c0e4299a1207d88271d896ce46a9b1e1')
+sha256sums=('db3e8654c06267e986da0d90e607893a5a770628770be4dba897d07cef2a8c5a')
 
 build() {
     export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
