@@ -1,6 +1,6 @@
 # Maintainer: emilweth <coucou@emi.cool>
 pkgname=eco
-pkgver=0.10.0.0
+pkgver=0.10.0.3
 pkgrel=1
 pkgdesc="Eco game client"
 arch=('x86_64')
@@ -11,11 +11,9 @@ file://EcoLinux_v${pkgver}-beta.zip
 eco.desktop
 logo.png
 )
-sha256sums=(
-b3b79b6a2ff33a4faed00b374e062a6a57ddf74000d6cc369e452e891fc33d83
-9901ff9e70874eada413517cf4d110eae3b5f0353bfa450423c269beb539c4fd
-bfa1088a624021b3e47f67f61c40a8dae71672f632ddab6e049669c19e2e9670
-)
+sha256sums=('5b7cc4ffe7894b1bfb465100c18f3e9e03cedfe71ce8e40cbed3dded3716333f'
+            '5a34ccaf9bce359768fb900a948cdc715d138800491b4f017effbcff27ab9fc0'
+            'bfa1088a624021b3e47f67f61c40a8dae71672f632ddab6e049669c19e2e9670')
 
 build() {
   cd "$srcdir"

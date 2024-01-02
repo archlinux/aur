@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=0.9.2.4
+Version=0.10.0.3
 Name=Eco
 Comment=Eco is an online game where players must collaborate to build a civilization in a world where everything they do affects the environment.
 Exec=/opt/eco/Eco.x86_64

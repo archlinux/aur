@@ -1,15 +1,15 @@
 pkgbase = eco
 	pkgdesc = Eco game client
-	pkgver = 0.10.0.0
+	pkgver = 0.10.0.3
 	pkgrel = 1
 	url = https://play.eco
 	arch = x86_64
 	license = All rights reserved
-	source = file://EcoLinux_v0.10.0.0-beta.zip
+	source = file://EcoLinux_v0.10.0.3-beta.zip
 	source = eco.desktop
 	source = logo.png
-	sha256sums = b3b79b6a2ff33a4faed00b374e062a6a57ddf74000d6cc369e452e891fc33d83
-	sha256sums = 9901ff9e70874eada413517cf4d110eae3b5f0353bfa450423c269beb539c4fd
+	sha256sums = 5b7cc4ffe7894b1bfb465100c18f3e9e03cedfe71ce8e40cbed3dded3716333f
+	sha256sums = 5a34ccaf9bce359768fb900a948cdc715d138800491b4f017effbcff27ab9fc0
 	sha256sums = bfa1088a624021b3e47f67f61c40a8dae71672f632ddab6e049669c19e2e9670
 
 pkgname = eco
