@@ -1,0 +1,11 @@
+pkgbase = chicken-address-info
+	pkgdesc = Network address information access for Chicken Scheme
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/address-info
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+
+pkgname = chicken-address-info
