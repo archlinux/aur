@@ -1,0 +1,11 @@
+pkgbase = chicken-srfi-67
+	pkgdesc = SRFI-67: Compare Procedures for Chicken Scheme
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-67
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-srfi-27
+
+pkgname = chicken-srfi-67
