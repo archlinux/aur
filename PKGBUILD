@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=kangaroo
 pkgname="${_pkgname}-max-bin"
-pkgver=3.99.2.231201
-pkgrel=2
+pkgver=4.0.0.240101
+pkgrel=1
 pkgdesc="A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly."
 arch=('x86_64')
 url="https://www.datatable.online"
@@ -40,7 +40,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-multiple-${pkgver}-1-${CARCH}.pkg.tar.zst"
 )
-sha256sums=('42b961b15a5568ad29916b41ef6f91cfbc1b628fc3f142928d9c3f4739d55e10')
+sha256sums=('0c7192f688f2b9a0f85f5564a86b2465a050138d39a7435115d1753d77e778e5')
 package() {
     cp -p -a "${srcdir}/usr" "${pkgdir}"
     mv "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgdir}/usr/share/licenses/${pkgname}"
