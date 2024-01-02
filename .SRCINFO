@@ -1,0 +1,10 @@
+pkgbase = chicken-test
+	pkgdesc = Chicken Scheme Yet Another Testing Utility
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/test
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-test
