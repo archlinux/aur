@@ -15,12 +15,12 @@ replaces=('nvidia-container-runtime-hook')
 backup=('etc/nvidia-container-runtime/config.toml')
 options=('!makeflags' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-#        'go-nvml-79.patch'
+#        'go-nvml-79.patch'  # only for Go 1.21.X
         )
 sha256sums=('a8dbb6a8d45fe8cb2ecbb7b5d49c332e0e7270e8988e57d2a8587ab1e004f6dd')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "$pkgname-$pkgver"
   mkdir -p build
 
   # gen/nvml: add --export-dynamic linker flag
@@ -34,7 +34,7 @@ build() {
   export GOPATH="$srcdir/gopath"
   export GOTOOLCHAIN=go1.20.8
   go build -v \
-    -ldflags "-extldflags=-Wl,-z,lazy -s -w -X github.com/NVIDIA/nvidia-container-toolkit/internal/info.version=$pkgver" \
+    -ldflags "-extldflags=-Wl,-z,lazy -s -w -X github.com/NVIDIA/$pkgname/internal/info.version=$pkgver" \
     -o build ./...
 
   # Clean module cache for makepkg -C
