@@ -6,7 +6,7 @@
 # Maintainer: James Williams <jowilliams12000 at gmail dot com>
 pkgname=wallust-git
 pkgver=2.9.0.r5.g0a6981a
-pkgrel=1
+pkgrel=2
 pkgdesc="generate colors from an image"
 arch=('any')
 url="https://codeberg.org/explosion-mental/wallust"
