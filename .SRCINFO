@@ -1,0 +1,13 @@
+pkgbase = mise-bin
+pkgdesc = Polyglot runtime manager
+pkgver = 2024.0.0
+pkgrel = 1
+url = https://github.com/jdx/mise
+arch = x86_64
+license = MIT
+provides = mise
+conflicts = mise
+source = rtx-2024.0.0.tar.gz::https://github.com/jdx/rtx/releases/download/v2024.0.0/rtx-v2024.0.0-linux-x64.tar.gz
+sha512sums = aa36f0c91613a8790f04928f01f2d483086923bc085493efb268706d15ef857a10d081f9f0b5c8b32dc1a77a84c9c0e054045ed7a02bd422a86f3937e57dacf8
+
+pkgname = mise-bin
