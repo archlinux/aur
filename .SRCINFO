@@ -1,7 +1,7 @@
 pkgbase = craftos-pc-ccemux
 	pkgdesc = CCEmuX plugin wrapper for CraftOS-PC, providing the ccemux API for compatibility with CCEmuX-enhanced programs.
-	pkgver = 2.6
-	pkgrel = 2
+	pkgver = 2.8
+	pkgrel = 1
 	url = https://github.com/MCJack123/craftos2
 	arch = x86_64
 	arch = i386
@@ -9,11 +9,11 @@ pkgbase = craftos-pc-ccemux
 	arch = aarch64
 	license = MIT
 	makedepends = patchelf
-	depends = craftos-pc>=2.6
+	depends = craftos-pc>=2.8
 	depends = sdl2>=2.0.8
-	source = craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.6.tar.gz
-	source = craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.6.tar.gz
-	sha256sums = 8e46e62894bf5ac7e990ffc83f3a357c0a24e817dc039a32bc3493179dfc949f
-	sha256sums = 079a4f6d8595b4f313925558376dd72f2902e6cec6d15d118bd9a19b7021bbe0
+	source = craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.8.tar.gz
+	source = craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.8.tar.gz
+	sha256sums = 058e0e4f83f7c08c7cc4b26801a0effa28d316fc747f21e793be8bc7a6c8a68b
+	sha256sums = 359f5bbedef7f7c8093d73a06d8c455934bc3057a9ddfbeb487966ec38dac2e1
 
 pkgname = craftos-pc-ccemux
