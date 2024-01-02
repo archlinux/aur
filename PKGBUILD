@@ -1,6 +1,6 @@
 # Maintainer: libjared <4498312-libjared@users.noreply.gitlab.com>
 pkgname=vrc-get
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Open Source command line client of VRChat Package Manager"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=(gcc-libs glibc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7fb486f92ad8b30cb40205002643ce57ddf44d67d0ace92e4ad0f98d68c49f01')
+sha256sums=('f2ee500352423395496ef8a2739e7fac0d97b0bdb1c43e74213bfd494c7e810f')
 
 prepare() {
   cd "$pkgname-$pkgver"
