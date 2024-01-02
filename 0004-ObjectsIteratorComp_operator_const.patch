@@ -1,0 +1,16 @@
+diff -pNaru5 a/objectcache.hh b/objectcache.hh
+--- a/objectcache.hh	2020-06-07 11:35:57.000000000 -0400
++++ b/objectcache.hh	2024-01-01 23:03:39.196822579 -0500
+@@ -64,11 +64,11 @@ private:
+   };
+   typedef std::list< Object > Objects;
+ 
+   struct ObjectsIteratorComp
+   {
+-    bool operator () ( Objects::iterator const & x, Objects::iterator const & y )
++    bool operator () ( Objects::iterator const & x, Objects::iterator const & y ) const
+     { return x->id < y->id; }
+   };
+ 
+   typedef std::set< Objects::iterator, ObjectsIteratorComp > ObjectMap;
+ 
