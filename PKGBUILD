@@ -4,13 +4,15 @@
 
 pkgname=commitlint
 pkgver=18.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lint commit messages"
 arch=(any)
 url="https://github.com/conventional-changelog/commitlint"
 license=(MIT)
 depends=(nodejs)
 makedepends=(npm)
+conflicts=(nodejs-commitlint)
+replaces=(nodejs-commitlint)
 
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
