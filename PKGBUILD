@@ -7,7 +7,7 @@ pkgbase=etlegacy
 pkgname=('etlegacy' 'etlegacy-mod')
 pkgver=2.81.1
 _binaryversion=553
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3' 'custom')
@@ -78,7 +78,7 @@ package_etlegacy() {
     mkdir -p $pkgdir/etc/xdg/$_pkgbase/etmain
     mkdir -p $pkgdir/usr/lib/systemd/system
     install -m 644 misc/etlegacy.conf $pkgdir/etc/xdg/$_pkgbase/
-    install -m 644 misc/etlegacy-x86_64.service $pkgdir/usr/lib/systemd/system/etlegacy.service
+    install -m 644 misc/etlegacy.x86_64.service $pkgdir/usr/lib/systemd/system/etlegacy.service
 
     # config
     mv $pkgdir/usr/lib/$_pkgbase/etmain/*.cfg $pkgdir/etc/xdg/$_pkgbase/etmain/
