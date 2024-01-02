@@ -1,0 +1,7 @@
+#!/bin/sh
+
+post_install() {
+  cat <<EOM
+use 'vkcv.sh' to bring up all the demos (which are installed in '/opt/vkcv/')
+EOM
+}

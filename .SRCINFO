@@ -1,0 +1,24 @@
+pkgbase = vkcv-test
+	pkgdesc = implementation of A Vulkan framework for computer visualistics (like FSR,SS,..) simplifying building applications, for Radeon/amdgpu hardware
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/TheJackiMonster/vkcv-framework
+	install = vkcv-test.install
+	arch = x86_64
+	license = MIT
+	depends = cmake
+	depends = make
+	depends = gcc
+	depends = vulkan-icd-loader
+	depends = vulkan-headers
+	depends = vulkan-validation-layers
+	depends = vulkan-tools
+	depends = vulkan-radeon
+	source = git+https://github.com/TheJackiMonster/vkcv-framework/
+	source = wrapper.sh
+	source = vkcv-test.install
+	sha256sums = SKIP
+	sha256sums = a571d0b5e6807c23921bb4c053f83ccdab46add11817effab717b263091a3753
+	sha256sums = 5c7f27abf39f705e2146b65c4a2a60f60070fd48b5b038601f928fc1e79db983
+
+pkgname = vkcv-test
