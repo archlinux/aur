@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libaec
 	pkgdesc = Adaptive Entropy Coding library (mingw-w64)
-	pkgver = 1.0.6
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://gitlab.dkrz.de/k202009/libaec
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-libaec
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://gitlab.dkrz.de/k202009/libaec/-/archive/v1.0.6/libaec-v1.0.6.tar.bz2
-	sha256sums = 31fb65b31e835e1a0f3b682d64920957b6e4407ee5bbf42ca49549438795a288
+	source = https://gitlab.dkrz.de/k202009/libaec/-/archive/v1.1.2/libaec-v1.1.2.tar.bz2
+	sha256sums = bdad8c7923537c3695327aa85afdcd714fb3d30a5f956a27ba2971ef98c043ac
 
 pkgname = mingw-w64-libaec
