@@ -1,18 +1,19 @@
 pkgbase = nestopia
-	pkgdesc = An NES emulator featuring cycle exact emulation, a ridiculous number of mappers, and lots of custom sound chips.
+	pkgdesc = High-accuracy NES/Famicom emulator
 	pkgver = 1.52.0
-	pkgrel = 4
-	url = http://0ldsk00l.ca/nestopia/
+	pkgrel = 5
+	url = https://github.com/0ldsk00l/nestopia
 	install = nestopia.install
 	arch = x86_64
-	license = GPL
-	makedepends = mesa
+	license = GPL-2.0-only
 	makedepends = autoconf-archive
-	depends = sdl2
+	makedepends = mesa
+	makedepends = clang
+	makedepends = lld
 	depends = fltk
-	depends = zlib
 	depends = libarchive
-	depends = glu
+	depends = sdl2
+	depends = zlib
 	source = nestopia-1.52.0.tar.gz::https://github.com/0ldsk00l/nestopia/archive/1.52.0.tar.gz
 	sha256sums = eae1d2f536ae8585edb8d723caf905f4ae65349edee4ffbee45f9f52b5e3b06c
 
