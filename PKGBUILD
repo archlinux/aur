@@ -1,8 +1,8 @@
 # Maintainer: Billy Yang <me at billyyang dot dev>
 
 pkgname=mihomo
-pkgver=1.17.0
-pkgrel=4
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="Mihomo Kernel by MetaCubeX, formerly known as Clash.Meta"
 arch=("x86_64" 'aarch64')
 url="https://github.com/MetaCubeX/mihomo"
