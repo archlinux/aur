@@ -2,7 +2,7 @@
 pkgname=simple-inventory-bin
 _pkgname=Inventario
 _appname=electron-vite-project
-pkgver=1.0.0
+pkgver=1.0.1
 _electronversion=26
 pkgrel=1
 pkgdesc="Simple desktop app to manage a wearhose inventory."
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-Linux-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('01153e86361364bf75e62e924ec34d19faf70b04e1a60dd1d8092a2fb9898ecf'
+sha256sums=('7c3eff2dc086aa6cab60fe1d8e44730c7e31a47e7b755bb25e5ab9336c06aa2f'
             '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
