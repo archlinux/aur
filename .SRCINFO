@@ -1,0 +1,11 @@
+pkgbase = chicken-srfi-144
+	pkgdesc = SRFI 144: Flonums for Chicken Scheme
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-144
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-r7rs
+
+pkgname = chicken-srfi-144
