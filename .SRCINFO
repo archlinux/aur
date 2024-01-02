@@ -1,0 +1,11 @@
+pkgbase = chicken-typed-records
+	pkgdesc = Typed variants of various record-definition macros for Chicken Scheme
+	pkgver = 0.82
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/typed-records
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-defstruct
+
+pkgname = chicken-typed-records
