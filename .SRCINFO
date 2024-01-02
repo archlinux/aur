@@ -1,0 +1,14 @@
+pkgbase = chicken-srfi-171
+	pkgdesc = SRFI-171: Transducers for Chicken Scheme
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-171
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-r6rs-bytevectors
+	depends = chicken-vector-lib
+	depends = chicken-srfi-1
+	depends = chicken-srfi-69
+
+pkgname = chicken-srfi-171
