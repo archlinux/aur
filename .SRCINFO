@@ -1,6 +1,6 @@
 pkgbase = lfortran-git
 	pkgdesc = Modern interactive LLVM-based Fortran compiler
-	pkgver = r12027.de81d7d42
+	pkgver = r14057.5305b8043
 	pkgrel = 1
 	url = https://lfortran-git.org
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = lfortran-git
 	makedepends = cmake
 	makedepends = cppzmq
 	makedepends = git
+	makedepends = re2c
 	depends = clang
 	depends = zlib
 	depends = ncurses

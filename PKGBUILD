@@ -1,12 +1,12 @@
 pkgname=lfortran-git
-pkgver=r12027.de81d7d42
+pkgver=r14057.5305b8043
 pkgrel=1
 pkgdesc="Modern interactive LLVM-based Fortran compiler"
 arch=('x86_64')
 url="https://${pkgname}.org"
 license=('custom:BSD-3-clause')
 depends=(clang zlib ncurses xeus-zmq)
-makedepends=(llvm cmake cppzmq git)
+makedepends=(llvm cmake cppzmq git re2c)
 source=(git+https://github.com/lfortran/lfortran.git)
 sha512sums=('SKIP')
 
@@ -17,6 +17,7 @@ pkgver() {
 
 prepare () {
   cd lfortran
+  sed -i "/StaticZSTD/d" CMakeLists.txt
 }
 
 build() {
