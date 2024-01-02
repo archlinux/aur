@@ -5,14 +5,14 @@
 pkgname=netatalk2
 _pkgname=netatalk
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source implementation of the Apple Filing Protocol (for old Macs)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://netatalk.sourceforge.io"
 license=('GPL')
 depends=(
     'acl'
-    # Avahi and SLP seem to be mutually exlusive due to bugs currently
+    # Avahi and SLP seem to be mutually exclusive due to bugs currently
     #'avahi'
     'db' 
     'libcups'
@@ -58,19 +58,19 @@ build() {
     mkdir ../build
     cd ../build
     "../$_pkgname-$pkgver/configure" \
-        --prefix=/usr \
-        --localstatedir=/var \
-        --runstatedir=/run \
-        --sbindir=/usr/bin \
-        --libexecdir=/usr/lib \
-        --sysconfdir=/etc \
         --disable-install-privileged \
+        --disable-zeroconf \
         --enable-ddp \
         --enable-pgp-uam \
         --enable-shared \
         --enable-srvloc \
         --enable-systemd \
-        --disable-zeroconf \
+        --libexecdir=/usr/lib \
+        --localstatedir=/var \
+        --prefix=/usr \
+        --runstatedir=/run \
+        --sbindir=/usr/bin \
+        --sysconfdir=/etc \
         --with-systemd-prefix=/usr/lib \
         --without-cracklib
     make
