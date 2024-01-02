@@ -1,0 +1,13 @@
+pkgbase = chicken-uri-generic
+	pkgdesc = Chicken Scheme URI generic syntax (RFC 3986) parsing and manipulation.
+	pkgver = 3.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/uri-generic
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-matchable
+	depends = chicken-srfi-1
+	depends = chicken-srfi-14
+
+pkgname = chicken-uri-generic
