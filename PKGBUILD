@@ -1,13 +1,13 @@
 pkgname=tuxonice-userui
-pkgver=1.1.65200132
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="TuxOnIce userspace user interface"
-url="https://github.com/NigelCunningham/Tuxonice-Userui"
+url="https://github.com/gdamjan/Tuxonice-Userui"
 license=("GPL")
 install=tuxonice-userui.install
-arch=('i686' 'x86_64')
-depends=('bash' 'libmng' 'libpng' 'freetype2')
-makedepends=('')
+arch=('x86_64')
+depends=('bash' 'libmng' 'libpng' 'libjpeg-turbo' 'freetype2')
+makedepends=()
 options=('!makeflags')
 source=(
     'https://github.com/gdamjan/Tuxonice-Userui/archive/v'${pkgver}'.tar.gz'
@@ -34,8 +34,8 @@ package () {
   make INSTDIR=$pkgdir/usr/bin DESTDIR=$pkgdir PREFIX=/usr install
 }
 
-md5sums=('dc8fbc3b93e56755694c63c67f388cca'
-         'a8e8ecb03e319321713652e25bc34a98'
-         '96a359994273ab0e8baa198914ef0433'
-         '9f647880008584b7751c3f9ecec7945b'
-         '44dcb2f1318ecac4155e275d28f1f443')
+sha256sums=('c607e172e7746c83889af760d2cc42d2bffb330d88d51a118d122731b1f09d82'
+            'b275d7306aa2dbb76acb2c3684340418cfb0835435e2f58c1973bf162e2c000c'
+            'dd6f403a0d38830c5d7dd6bc155f4d3c0fa904b87783cf6962f7e94edcc1047a'
+            'c6a0f807c59929765fc6793d6d854c43c25ad57e62d0afd6c5ea8e247db9da3b'
+            'c2d6d8ba21ba8037cbf1cf4889a58ab608d235934173d9659f9e1d7e1e9942ee')
