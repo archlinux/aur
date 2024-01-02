@@ -1,0 +1,11 @@
+pkgbase = chicken-srfi-116
+	pkgdesc = SRFI-116: Immutable Lists. for Chicken Scheme
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-116
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-128
+
+pkgname = chicken-srfi-116
