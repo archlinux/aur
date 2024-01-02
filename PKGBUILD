@@ -2,7 +2,7 @@
 
 pkgname=gz-sim8
 pkgver=8.0.0
-pkgrel=3
+pkgrel=4
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Open source robotics simulator"
@@ -26,6 +26,7 @@ depends=(
   'qt5-base'
   'qt5-quickcontrols2'
   'sdformat=14'
+  'tinyxml2'
   )
 makedepends=(
   'cmake'
