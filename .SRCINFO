@@ -1,0 +1,13 @@
+pkgbase = chicken-utf8
+	pkgdesc = Unicode support for Chicken Scheme
+	pkgver = 3.6.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/utf8
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-69
+	depends = chicken-iset
+	depends = chicken-regex
+
+pkgname = chicken-utf8
