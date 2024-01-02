@@ -1,0 +1,23 @@
+pkgbase = r-ibreakdown
+	pkgdesc = Model Agnostic Instance Level Variable Attributions
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=iBreakDown
+	arch = any
+	license = GPL3
+	depends = r-ggplot2
+	optdepends = r-covr
+	optdepends = r-dalex
+	optdepends = r-e1071
+	optdepends = r-jsonlite
+	optdepends = r-knitr
+	optdepends = r-r2d3
+	optdepends = r-randomforest
+	optdepends = r-ranger
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/iBreakDown_2.1.2.tar.gz
+	md5sums = 1db5e84db005e7daf9474ea073b23789
+	b2sums = a4c6592563e2219f4c12c50592733638e1436b65e56fa8dee6cf2075b4e2c367700b16d5b128370413e227594c5cfa6bbd99ccc635bebbc982e2feca5819c4e7
+
+pkgname = r-ibreakdown
