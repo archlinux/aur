@@ -3,11 +3,12 @@
 pkgname=python-classdiff
 _name=${pkgname#python-}
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to diff classes"
 url="https://pypi.org/project/classdiff/"
 depends=(
-  'python-dictdiffer')
+  'python-dictdiffer'
+  'python-deepdiff')
 makedepends=(
   'python-build'
   'python-installer'
