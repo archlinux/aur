@@ -1,11 +1,11 @@
 pkgname=chicken-yaml
 _name=yaml
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Bindings to libyaml for Chicken Scheme'
 arch=('x86_64')
 license=('MIT')
-depends=("chicken" "chicken-sql-null" "chicken-srfi-13" "chicken-srfi-69")
+depends=("libyaml" "chicken" "chicken-sql-null" "chicken-srfi-13" "chicken-srfi-69")
 url='http://wiki.call-cc.org/eggref/5/yaml'
 
 build() {
