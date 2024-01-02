@@ -1,7 +1,7 @@
 pkgbase = zzzfm-bin
 	pkgdesc = zzzFM is a multi-panel tabbed file and desktop manager for Linux with built-in VFS, udev device manager, customizable menu system and bash integration. This is the GTK2 version
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/skidoo/zzzfm
 	arch = x86_64
 	license = GPL3

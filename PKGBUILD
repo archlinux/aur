@@ -1,7 +1,7 @@
 # Maintainer: purpleleaf <max@ganoia.eu>
 pkgname=zzzfm-bin
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="zzzFM is a multi-panel tabbed file and desktop manager for Linux with built-in VFS, udev device manager, customizable menu system and bash integration. This is the GTK2 version"
 url="https://gitlab.com/skidoo/zzzfm"
 arch=(x86_64)
