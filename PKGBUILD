@@ -2,8 +2,8 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=nextcloud-app-calendar_resource_management
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Resource manager for nextcloud calendar app"
 arch=('any')
 url="https://github.com/nextcloud/calendar_resource_management"
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=('ripgrep' 'yq')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud-releases/calendar_resource_management/releases/download/v$pkgver/calendar_resource_management-v$pkgver.tar.gz")
-sha256sums=('b9b6e9b14003584e68eb2384b6c0a5d86c8c29ba5520a61ee80938b4fdeb11d2')
+sha256sums=('e92b9899017919ce324d47406187be78465e6c2f1e2c5b805e035117b92b6f9a')
 
 _get_nextcloud_versions() {
   _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "calendar_resource_management/appinfo/info.xml"| sed 's/"//g')"
