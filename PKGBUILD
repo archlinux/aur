@@ -2,7 +2,7 @@
 
 pkgname=python-pytensor
 _name=${pkgname#python-}
-pkgver=2.18.4
+pkgver=2.18.5
 pkgrel=1
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
@@ -43,7 +43,7 @@ source=(
   "remove-bin-package.patch"
 )
 sha256sums=(
-  'bc97604f0455130728e0978c1955735502b63c1c18c3df1833ebda8934cf8c51'
+  '2808dd15ab233b1f479f2da95f285e3314ca82e4624b930742c57cfb0170cbc7'
   '73360d53a5c5e5718a544c69218d3d64adc2390007a9b6781f7b61cc32415e59'
 )
 

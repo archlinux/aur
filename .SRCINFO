@@ -1,6 +1,6 @@
 pkgbase = python-pytensor
 	pkgdesc = Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays
-	pkgver = 2.18.4
+	pkgver = 2.18.5
 	pkgrel = 1
 	url = https://github.com/pymc-devs/pytensor
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = python-pytensor
 	depends = python-typing_extensions
 	optdepends = python-numba: for graph transpilation compilation
 	optdepends = python-jax: for graph transpilation compilation
-	source = python-pytensor-2.18.4.tar.gz::https://github.com/pymc-devs/pytensor/archive/refs/tags/rel-2.18.4.tar.gz
+	source = python-pytensor-2.18.5.tar.gz::https://github.com/pymc-devs/pytensor/archive/refs/tags/rel-2.18.5.tar.gz
 	source = remove-bin-package.patch
-	sha256sums = bc97604f0455130728e0978c1955735502b63c1c18c3df1833ebda8934cf8c51
+	sha256sums = 2808dd15ab233b1f479f2da95f285e3314ca82e4624b930742c57cfb0170cbc7
 	sha256sums = 73360d53a5c5e5718a544c69218d3d64adc2390007a9b6781f7b61cc32415e59
 
 pkgname = python-pytensor
