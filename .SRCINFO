@@ -1,0 +1,11 @@
+pkgbase = chicken-srfi-78
+	pkgdesc = SRFI-78: Lightweight testing for Chicken Scheme
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-78
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-srfi-42
+
+pkgname = chicken-srfi-78
