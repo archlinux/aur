@@ -43,7 +43,7 @@ install=$__pkgname.install
 source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefox-"$pkgver".source.tar.xz{,.asc}
   "$__pkgname.desktop"
   "common::git+https://codeberg.org/stefanwimmer128/firedragon-unsigned-extensions-common.git#tag=121.0-1"
-  "git+https://gitlab.com/dr460nf1r3/settings.git"
+  "git+https://gitlab.com/dr460nf1r3/settings.git#commit=4a29d148fe9fc14eec4930dc0cf41ab33699a675"
   "librewolf-source::git+https://codeberg.org/librewolf/source.git#tag=121.0-1"
   "librewolf-settings::git+https://codeberg.org/librewolf/settings.git")
 sha256sums=('edc7a5159d23ff2a23e22bf5abe22231658cee2902b93b5889ee73958aa06aa4'
