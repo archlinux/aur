@@ -1,0 +1,11 @@
+pkgbase = chicken-doc-repo
+	pkgdesc = Chicken Scheme Documentation repository
+	pkgver = 5.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/chicken-doc
+	arch = any
+	license = custom
+	source = https://3e8.org/pub/chicken-doc/chicken-doc-repo-5.tgz
+	sha256sums = SKIP
+
+pkgname = chicken-doc-repo
