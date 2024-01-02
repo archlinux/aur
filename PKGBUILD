@@ -3,7 +3,7 @@
 
 pkgname='tuc-bin'
 _pkgname=${pkgname%%-bin}
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A more powerful alternative to cut, when cut doesn’t cut it (pre-compiled)'
 arch=('x86_64')
@@ -21,9 +21,9 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 package() {
-  cd "$srcdir" || exit 1
+  cd "$srcdir"
 
-  install -Dm0755 "tuc-$pkgver" "$pkgdir/usr/bin/tuc"
+  install -vDm0755 "tuc-$pkgver" "$pkgdir/usr/bin/tuc"
 
   for mdname in {CHANGELOG,README}.md; do
     install -Dm0644 "$mdname" "$pkgdir/usr/share/doc/$pkgname/$mdname"
@@ -33,24 +33,12 @@ package() {
 }
 
 sha256sums=(
-  'ef59a13728205c9008bace27f782882a39293e4ba1b2ddd67a66d9456487bd7c'
+  '5ad1a9545b598040e9a51d82bb1acd7b41da550661135aeb82fbd9ce926908cb'
   'SKIP' 'SKIP' 'SKIP'
 )
 b2sums=(
-  '4f6af9ff5ae202822d6942e70ea37607654655b2af3531c93016219259143651c27c97cf81b24d2579ae87f79aa6a6d9c0d1e76f970e3f596f686ff3c07de7b5'
+  '2e608348d9187bed3a12e90dd46ffbb93c3f595ed924b291ea1f9d5b398a8732605fed82534850fa8cd5237dc16ed7c8987004d2718bbc6469bb1df9c65e3624'
   'SKIP' 'SKIP' 'SKIP'
 )
-
-# 🪷 Beyond the Known — 365 Days of Exploration
-#
-# 📆 2nd December
-#
-# You will never be free someday. It will never happen.
-#
-# You can only be free now, in every possible moment.
-#
-# Now does not include someday.
-#
-# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
