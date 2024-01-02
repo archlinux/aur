@@ -5,7 +5,7 @@
 _name=igbinary
 _phpversion=74
 pkgname=php${_phpversion}-${_name}
-pkgver=3.2.7
+pkgver=3.2.15
 pkgrel=1
 pkgdesc="A drop in replacement for the standard php serializer (PHP 7.4)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('glibc' "php${_phpversion}")
 backup=("etc/php${_phpversion}/conf.d/${_name}.ini")
 source=("https://pecl.php.net/get/${_name}-${pkgver}.tgz")
-sha512sums=('b168e9b7aecaa9ae7760d813f2225381333b8f9a0611cc9701307202da5fefc8239dff5a4ed65faf5f165f11db79aba14e6ff942fe07191dec98cfd7eb65b21a')
+sha512sums=('1901765d302624ec0e8356fde6feabb8406122357e8ba178af6e9863e78a30f779c711785b981b8871d6c59f17bccfafe1d257a05a449935013ad8b62f7121c5')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
