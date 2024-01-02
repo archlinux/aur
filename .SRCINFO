@@ -1,0 +1,17 @@
+pkgbase = midnight-dler
+	pkgdesc = downloads links and updates pacman at night. manual bios wake-on-clock settings needed for pc to wake up automatically.
+	pkgver = 1
+	pkgrel = 1
+	url = unknown
+	install = midnight-dler.install
+	arch = any
+	license = GPL
+	depends = aria2
+	depends = yt-dlp
+	provides = midnight-dler.sh
+	source = midnight-dler.sh
+	source = midnight-dler.service
+	sha256sums = 11e5a5ca8f6652594c3e9ab7318f3717a4c7e021a518d699a2b6c04e0a658e01
+	sha256sums = 6a1b03ea5c7df622aa149eb523082da9ab4a3f0cbb8c79b49790da3b2984f4a8
+
+pkgname = midnight-dler

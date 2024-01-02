@@ -1,52 +1,22 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=NAME
-pkgver=VERSION
+# Maintainer: Aryan Ghasemi <aryan@irc>
+pkgname=midnight-dler
+pkgver=1
 pkgrel=1
-epoch=
-pkgdesc=""
-arch=()
-url=""
+pkgdesc="downloads links and updates pacman at night. manual bios wake-on-clock settings needed for pc to wake up automatically."
+arch=('any')
+url="unknown"
 license=('GPL')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz"
-        "$pkgname-$pkgver.patch")
-noextract=()
-md5sums=()
-validpgpkeys=()
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
-
-build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	make -k check
-}
+depends=('aria2' 'yt-dlp')
+provides=("$pkgname.sh")
+install=${pkgname}.install
+source=("$pkgname.sh"
+        "$pkgname.service")
+sha256sums=('11e5a5ca8f6652594c3e9ab7318f3717a4c7e021a518d699a2b6c04e0a658e01'
+            '6a1b03ea5c7df622aa149eb523082da9ab4a3f0cbb8c79b49790da3b2984f4a8')
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+#	cd "$pkgname-$pkgver"
+	install -Dm 644 $pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	install -Dm 744 $pkgname.sh "$pkgdir/usr/bin/$pkgname.sh"
 }
