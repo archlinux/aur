@@ -1,0 +1,11 @@
+pkgbase = chicken-srfi-4-comprehensions
+	pkgdesc = SRFI-42 Comprehensions for SRFI-4 Vectors for Chicken Scheme
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-4-comprehensions
+	arch = x86_64
+	license = SRFI
+	depends = chicken
+	depends = chicken-srfi-42
+
+pkgname = chicken-srfi-4-comprehensions
