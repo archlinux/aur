@@ -5,19 +5,19 @@
 pkgname=php74-redis
 _name=redis
 _upstream=phpredis
-pkgver=5.3.7
+pkgver=6.0.2
 pkgrel=2
 pkgdesc="An API for communicating with the Redis key-value store"
 arch=('x86_64')
 url="https://pecl.php.net/package/redis"
 license=('PHP')
-depends=('glibc' 'php74-igbinary')
+depends=('glibc' 'php74' 'php74-igbinary')
 makedepends=('liblzf')
 checkdepends=('lsof' 'redis')
 optdepends=('redis: use a local redis instance')
 backup=("etc/php74/conf.d/${_name}.ini")
 source=("https://pecl.php.net/get/${_name}-${pkgver}.tgz")
-sha512sums=('b945d5aa86d3f58e75094369b0f324e987202f104aca7d7b46ba23cfaed54d186bb66931e200dd16d2dbeea11732dd0311da4e3d7485c3b725027f7924652832')
+sha512sums=('1918d15433d1b4d782a9fb0364f6dfeed8d9e6c2ae70c34e235be5f890992c73a40ef19842e0aabb181da86dd2cde28b9aebab8698b387738321298a2ab94aa6')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
@@ -57,5 +57,4 @@ package() {
   cd "$pkgname-$pkgver"
   make INSTALL_ROOT="$pkgdir/" install
   install -vDm 644 "${_name}.ini" -t "${pkgdir}/etc/php74/conf.d/"
-  install -vDm 644 {{README,arrays,cluster}.markdown,CREDITS} -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
