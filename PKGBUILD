@@ -3,20 +3,20 @@
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
 
 pkgname=python-libnacl
-pkgver=1.8.0
-pkgrel=4
+pkgver=1.9.0
+pkgrel=1
 pkgdesc='A simple ctypes based python binding to libsodium'
 arch=('any')
 url='https://libnacl.readthedocs.org'
 license=('Apache')
 depends=('python' 'libsodium')
-makedepends=('python-setuptools')
-source=("https://pypi.io/packages/source/l/libnacl/libnacl-$pkgver.tar.gz")
-sha512sums=('a57b0a17a27d81c0192edb62d64f9e6a93efd21a580df6721f5bb6e2fb4f23a9dbc448d430428bdcd664e5cec2622e0e4cd5588752e232cdc48842ad5144f848')
+makedepends=('python-build' 'python-installer' 'python-poetry-core')
+source=("https://github.com/saltstack/libnacl/archive/v$pkgver/libnacl-$pkgver.tar.gz")
+sha512sums=('1c1011f218864f4eab6a985a957f7ec5b8a227ed107ab336a0bc076be10bae6d598f3e81f3a20177e81f25f93c36b23118f515b98f87e11b1f727cae3db1e267')
 
 build() {
   cd libnacl-$pkgver
-  python setup.py build
+  python -m build -nw
 }
 
 check() {
@@ -26,5 +26,5 @@ check() {
 
 package() {
   cd libnacl-$pkgver
-  python setup.py install --root="$pkgdir" -O1
+  python -m installer -d "$pkgdir" dist/*.whl
 }

@@ -1,0 +1,16 @@
+pkgbase = python-libnacl
+	pkgdesc = A simple ctypes based python binding to libsodium
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://libnacl.readthedocs.org
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = libsodium
+	source = https://github.com/saltstack/libnacl/archive/v1.9.0/libnacl-1.9.0.tar.gz
+	sha512sums = 1c1011f218864f4eab6a985a957f7ec5b8a227ed107ab336a0bc076be10bae6d598f3e81f3a20177e81f25f93c36b23118f515b98f87e11b1f727cae3db1e267
+
+pkgname = python-libnacl
