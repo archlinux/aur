@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-133
+	pkgdesc = SRFI-133: Vector Library (R7RS-compatible) for Chicken Scheme
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-133
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-srfi-133
