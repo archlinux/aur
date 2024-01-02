@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drawio-desktop-git
-pkgver=22.1.15.r1.g76845d3
+pkgver=22.1.16.r3.gc2973ce
 _electronversion=28
 _nodeversion=16
 pkgrel=1
