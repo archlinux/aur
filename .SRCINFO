@@ -1,0 +1,11 @@
+pkgbase = chicken-sendfile
+	pkgdesc = Chicken Scheme Sending a file over the network
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/sendfile
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-memory-mapped-files
+
+pkgname = chicken-sendfile
