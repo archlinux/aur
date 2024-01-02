@@ -12,8 +12,8 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
         "license.txt")
-sha1sums=('SKIP'
-          'SKIP')
+sha1sums=('9b1a97dade25c188949bb122b7f28522fa24587e'
+          '178e8165b4c57b6a2c126d3440209427264e6bcb')
 
 prepare() {
     cd $pkgname-$pkgver
