@@ -8,7 +8,7 @@ introspection"
 arch=('any')
 license=('LGPL')
 url="https://github.com/UbiCastTeam/${pkgname}"
-depends=('python' 'python-gobject' 'gtk3' 'xdot' 'graphviz')
+depends=('python' 'python-setuptools' 'python-gobject' 'gtk3' 'xdot' 'graphviz')
 source=("git+${url}.git")
 sha512sums=('SKIP')
 makedepends=('git')
