@@ -1,0 +1,18 @@
+pkgbase = hy-hyrule
+	pkgdesc = A utility library for the Hy programming language
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://pypi.org/project/hyrule/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = hy
+	source = https://pypi.io/packages/source/h/hyrule/hyrule-0.4.0.tar.gz
+	sha256sums = 4f72eb791b0551d0aab9113f982abb617c37b2d8d04af4a223b05939baf2a97c
+	b2sums = 69379197e345c8254b918ee64c01691f336024ad6fd326c1dc1a60b06184f9f226a7e8e935269a958c70590095407f2621747130753aea20a6bd031ce2d821c0
+
+pkgname = hy-hyrule
