@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-47
+	pkgdesc = SRFI-47: Arrays for Chicken Scheme
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-47
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-srfi-47
