@@ -1,5 +1,4 @@
 # Maintainer: h3li0p4us3 Moharami <h3li0p4us3@proton.me>
-groups=('modified')
 
 pkgname=dnschanger-desktop
 pkgver=2.1.11
