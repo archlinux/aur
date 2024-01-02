@@ -1,0 +1,13 @@
+pkgbase = chicken-alist-lib
+	pkgdesc = SRFI-69-like library for alists for Chicken Scheme
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/alist-lib
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-hahn>=0.9.3
+	depends = chicken-matchable
+	depends = chicken-srfi-1
+
+pkgname = chicken-alist-lib
