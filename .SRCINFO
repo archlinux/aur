@@ -1,0 +1,15 @@
+pkgbase = chicken-srfi-146
+	pkgdesc = SRFI 146: Mappings for Chicken Scheme
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-146
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-hash-trie
+	depends = chicken-srfi-1
+	depends = chicken-srfi-128
+	depends = chicken-srfi-145
+	depends = chicken-srfi-158
+
+pkgname = chicken-srfi-146
