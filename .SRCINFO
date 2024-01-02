@@ -1,6 +1,6 @@
 pkgbase = bctoolbox
 	pkgdesc = A library written in C that allows you to create and run audio and video streams
-	pkgver = 5.2.112
+	pkgver = 5.3.5
 	pkgrel = 1
 	url = https://gitlab.linphone.org/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = bctoolbox
 	makedepends = cmake
 	depends = gcc-libs
 	depends = libdecaf
-	depends = mbedtls2-dtls
-	source = https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/5.2.112/bctoolbox-5.2.112.tar.bz2
-	sha256sums = 458a7eef09951d97f35946b640ab25d6345ebe215413d5d76ef276b8e23a9a7e
+	depends = mbedtls
+	source = https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/5.3.5/bctoolbox-5.3.5.tar.bz2
+	sha256sums = d1dbbfe05fea4623e93469fd7dcf374c8680f461acfe8afc6ad22d651ec63320
 
 pkgname = bctoolbox

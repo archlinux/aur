@@ -3,16 +3,16 @@
 # Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
 
 pkgname=bctoolbox
-pkgver=5.2.112
+pkgver=5.3.5
 pkgrel=1
 pkgdesc='A library written in C that allows you to create and run audio and video streams'
 arch=(x86_64)
 url='https://gitlab.linphone.org/'
 license=(GPL)
-depends=(gcc-libs libdecaf mbedtls2-dtls)
+depends=(gcc-libs libdecaf mbedtls)
 makedepends=(cmake)
 source=(https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('458a7eef09951d97f35946b640ab25d6345ebe215413d5d76ef276b8e23a9a7e')
+sha256sums=('d1dbbfe05fea4623e93469fd7dcf374c8680f461acfe8afc6ad22d651ec63320')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -23,10 +23,10 @@ prepare() {
 build() {
   cmake -B build -S $pkgname-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_STATIC=OFF \
     -DCMAKE_C_FLAGS="${CFLAGS} -Wno-error=unused-parameter" \
-    -DDISABLE_MBEDTLS_SEARCH=ON \
-    -DENABLE_TESTS_COMPONENT=OFF
+    -DENABLE_TESTS_COMPONENT=OFF \
+    -DBUILD_SHARED_LIBS=ON \
+    -DENABLE_DECAF=ON
   cmake --build build
 }
 
