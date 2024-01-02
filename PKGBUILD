@@ -9,8 +9,10 @@ license=('MIT')
 makedepends=('cargo')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha1sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
+        "license.txt")
+sha1sums=('SKIP'
+          'SKIP')
 
 prepare() {
     cd $pkgname-$pkgver
@@ -29,5 +31,5 @@ build() {
 package() {
   cd $pkgname-$pkgver
   install -Dm755 target/release/csvlens "$pkgdir/usr/bin/csvlens"
-
+  install -Dm 644 license.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
