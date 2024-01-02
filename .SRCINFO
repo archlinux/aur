@@ -1,0 +1,24 @@
+pkgbase = r-ingredients
+	pkgdesc = Effects and Importances of Model Ingredients
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ingredients
+	arch = any
+	license = GPL3
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-scales
+	optdepends = r-covr
+	optdepends = r-dalex
+	optdepends = r-gower
+	optdepends = r-jsonlite
+	optdepends = r-knitr
+	optdepends = r-r2d3
+	optdepends = r-ranger
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ingredients_2.3.0.tar.gz
+	md5sums = 46458d9e09b13c884e88f8ebfdcd5a29
+	b2sums = d771328f64a1ed4460ee21913633a56fee89e253f88fbc185937dc243b610b4c8b37fed57bd4104da94cecefd8593126758fa44c78e21f0ded4d04ba6dcb0cd4
+
+pkgname = r-ingredients
