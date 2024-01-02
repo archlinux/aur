@@ -1,0 +1,10 @@
+pkgbase = chicken-iset
+	pkgdesc = Integer sets for Chicken Scheme
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/iset
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-iset
