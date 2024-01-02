@@ -1,0 +1,17 @@
+pkgbase = chicken-srfi-29
+	pkgdesc = Localization for Chicken Scheme
+	pkgver = 3.0.7
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-29
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-69
+	depends = chicken-utf8
+	depends = chicken-locale
+	depends = chicken-posix-utils
+	depends = chicken-condition-utils
+	depends = chicken-check-errors>=3.6.0
+
+pkgname = chicken-srfi-29
