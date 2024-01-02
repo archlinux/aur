@@ -2,7 +2,7 @@
 # Maintainer: alescdb
 
 pkgname=air-git
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A simple ChatGPT & Llama-cpp command line with ansi markdown display (written in Rust)"
 arch=("x86_64")
