@@ -2,8 +2,8 @@
 _pkgname=airdrop_tool
 pkgname="${_pkgname//_/-}-bin"
 _appname="Bitshares Airdrop tool"
-pkgver=0.3.20
-pkgrel=3
+pkgver=0.3.31
+pkgrel=1
 pkgdesc="Fetch & analyse blockchain tickets. View leaderboards and user tickets. Calculate and perform provably fair airdrops."
 arch=('x86_64')
 url="https://github.com/BTS-CM/airdrop_tool"
@@ -35,7 +35,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}.deb"
     "LICENSE::https://raw.githubusercontent.com/BTS-CM/airdrop_tool/v${pkgver}/License.md"
 )
-sha256sums=('3e14258bc7b643cea135bc0f1d5c63a035390ce7722b7ad5986bbf879861469d'
+sha256sums=('1e7ea870a92905605c2905f1193ba022e88c24d0fcc9e437b641e1bba37ced19'
             '48ecd55adc52c7a1ad9e3f699b9e2348bca9bb6797ce8ad4e9cbe38f7aa11c8a')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
