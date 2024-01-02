@@ -1,6 +1,6 @@
 pkgbase = r-fgga
 	pkgdesc = Hierarchical ensemble method based on factor graph
-	pkgver = 1.9.0
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/fgga
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-fgga
 	optdepends = r-proc
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/fgga_1.9.0.tar.gz
-	sha256sums = 1159dcd6d0727d4ac9a879ea92c4d451f5e418f3e7230ba88f05de679e6dde6a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fgga_1.10.2.tar.gz
+	sha256sums = d7356dea18ec53ffac06f2e2231a814ec054f786b21cb1a4ab2410a1d71b6db1
 
 pkgname = r-fgga
