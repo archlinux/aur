@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-1
+	pkgdesc = Chicken Scheme SRFI-1 list library
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-1
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-srfi-1
