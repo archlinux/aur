@@ -1,7 +1,7 @@
 pkgname=tribler
 _pkgname=tribler
-pkgver=7.13.0
-pkgrel=2
+pkgver=7.13.1
+pkgrel=1
 pkgdesc="P2P/Bittorrent/YouTube client"
 arch=("x86_64")
 url="http://tribler.org"
@@ -36,6 +36,7 @@ python-bitarray
 libtorrent
 python-file-read-backwards
 brotli
+python-filelock
 python-pillow
 python-pyqt5
 python-pyqt5-sip
@@ -44,7 +45,7 @@ python-pyqt5-webengine
 )
 source=(https://github.com/Tribler/tribler/releases/download/v$pkgver/tribler_$pkgver\_all.deb)
 
-sha256sums=('ca88db42ad685eaa9b79b9eef79bb49fab070fe77457f8db99409ee3e9244109')
+sha256sums=('c6031a68133d0f02c2d2c074a44fac8c720ebb74fe7563e3dc7a224b8483cf51')
 
 package() {
     cd "${pkgdir}"
