@@ -1,0 +1,10 @@
+pkgbase = chicken-vector-lib
+	pkgdesc = Port of the SRFI-43 reference implementation for Chicken Scheme
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/vector-lib
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-vector-lib
