@@ -3,8 +3,8 @@
 pkgname=mingw-w64-directxtex
 pkgdesc="Texture processing library (mingw-w64)"
 # Version from CMakeLists.txt.
-pkgver=2.0.0
-_tag=sept2023
+pkgver=2.0.2
+_tag=dec2023
 pkgrel=1
 arch=('any')
 depends=('mingw-w64-directx-headers' 'mingw-w64-directxmath')
@@ -13,12 +13,12 @@ url="https://go.microsoft.com/fwlink/?LinkId=248926"
 license=('MIT')
 options=('staticlibs' '!strip' '!buildflags')
 source=(directxtex-${_tag}.tar.gz::https://github.com/microsoft/DirectXTex/archive/refs/tags/${_tag}.tar.gz)
-sha256sums=('781ebb113652fab045d351fd488f26a23f17d99fdf6c09fdd1541f511073de48')
+sha256sums=('5a2c479aa976ea5cd26e5a4fb253eb634bab0c2c9456ac2f5bf9a14caa11d2e0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  # Fix case/path issues
+  # Fix case/path issues when cross compiling
   cd "${srcdir}/DirectXTex-$_tag"
   grep -Frl Windows.h | xargs sed -i 's/Windows.h/windows.h/g'
   grep -Frl ShlObj.h | xargs sed -i 's/ShlObj.h/shlobj.h/g'
@@ -26,7 +26,7 @@ prepare() {
 }
 
 # We disable d3d11/d3d12 and compile software only for now.
-# This depends on a windows based shader compiler by default.
+# This otherwise depends on a windows-based shader compiler by default.
 
 build() {
   for _arch in ${_architectures}; do
