@@ -2,7 +2,7 @@
 pkgname=framework-laptop-kmod-dkms-git
 _pkgbase=framework-laptop-kmod
 _modname=framework_laptop
-pkgver=r14.d5367eb
+pkgver=r16.40aadc1
 pkgrel=1
 pkgdesc="Kernel module to expose more Framework Laptop stuff"
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-git}")
 source=('framework-laptop-kmod::git+https://github.com/DHowett/framework-laptop-kmod'
         'dkms.conf')
 sha256sums=('SKIP'
-            'f83bb5bff72db632a11dfe8876e429adc6221d574502428796944221d0da5427')
+            '73fb009573b58aed6b2ba513945fcc501b43515a6e8342af6b80afcfb09b6adf')
 
 pkgver() {
   cd "${srcdir}/${_pkgbase}"
