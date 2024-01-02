@@ -1,0 +1,20 @@
+pkgbase = unoffical-wallhaven-desktop-git
+	pkgdesc = Wallhaven desktop app made with Electron + React + TypeScript
+	pkgver = 1.0.2.r1.ge65889e
+	pkgrel = 1
+	url = https://github.com/luisflorido/wallhaven-desktop
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = electron17
+	provides = unoffical-wallhaven-desktop
+	conflicts = unoffical-wallhaven-desktop
+	source = unoffical-wallhaven-desktop::git+https://github.com/luisflorido/wallhaven-desktop.git
+	source = unoffical-wallhaven-desktop.sh
+	sha256sums = SKIP
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+
+pkgname = unoffical-wallhaven-desktop-git
