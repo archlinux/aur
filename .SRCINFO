@@ -1,0 +1,14 @@
+pkgbase = chicken-openssl
+	pkgdesc = Bindings to the OpenSSL SSL/TLS library for Chicken Scheme
+	pkgver = 2.2.5
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/openssl
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+	depends = chicken-srfi-18
+	depends = chicken-address-info
+
+pkgname = chicken-openssl
