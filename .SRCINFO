@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-117
+	pkgdesc = SRFI-117: Mutable Queues for Chicken Scheme
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-117
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-srfi-117
