@@ -1,0 +1,18 @@
+pkgbase = chicken-srfi-19
+	pkgdesc = Time Data Types and Procedures for Chicken Scheme
+	pkgver = 4.9.5
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-19
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-utf8
+	depends = chicken-srfi-18
+	depends = chicken-srfi-29
+	depends = chicken-miscmacros
+	depends = chicken-locale
+	depends = chicken-record-variants
+	depends = chicken-check-errors>=3.6.0
+
+pkgname = chicken-srfi-19
