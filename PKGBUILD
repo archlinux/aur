@@ -2,7 +2,7 @@
 _pkgbase="library-brainmap"
 pkgname=${_pkgbase}
 pkgver=1.0.2
-pkgrel=0
+pkgrel=1
 url="https://github.com/badcast/${_pkgbase}"
 pkgdesc="Brain Neuron Map - for Generate Maze and Path-Finder interface."
 arch=("any")
