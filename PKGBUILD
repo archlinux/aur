@@ -8,7 +8,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=v3.10.6.r1.g6d5d3db11
+pkgver=v3.11.4.r2.g7560d21a8
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -47,6 +47,7 @@ depends=('python'
          'python-zxcvbn'
          'python-progressbar>=2.5'
          'python-loguru>=0.4.1'
+         'python-pendulum>=3.0.0'
          )
 optdepends=(
             'python-transmissionrpc: Transmission support' #AUR#
