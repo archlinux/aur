@@ -4,8 +4,8 @@
 # https://github.com/sudoforge/pkgbuilds
 
 pkgname=weechat-notify-send
-pkgver=0.9
-pkgrel=6
+pkgver=0.10
+pkgrel=1
 pkgdesc="A WeeChat script that sends highlight and message notifications through notify-send"
 url='https://github.com/s3rvac/weechat-notify-send'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 )
 install=$pkgname.install
 source=("${pkgname}_${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('108c094ab9080581284255bd7c9aa8f4d9dcb836b91a082c21370810b60eabbc8825d37deffa651d650d24427fdf45233d08b5225c710e7e63450cda45f9c1f1')
+sha512sums=('8c52061b52976f9619899288b1d831d5da6d333eaf3c9950f3bde4cce2dc8650517c420d3518597bc04e44a3154a44038a153a59a598d8cae5b2f9c066ca87e8')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
