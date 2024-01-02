@@ -3,10 +3,10 @@
 # Contributor: Grigory Kirillov <txgk@bk.ru>
 
 pkgname=newsraft-git
-pkgver=0.21.5259a9112d
+pkgver=0.22.13b98fb5e7
 pkgrel=1
 pkgdesc='Feed reader with ncurses user interface'
-url='https://codeberg.org/grisha/newsraft'
+url='https://codeberg.org/newsraft/newsraft'
 arch=('any')
 license=('ISC')
 makedepends=('git')
