@@ -30,7 +30,7 @@ build() {
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
     cd "${srcdir}/${pkgname}"
     sed '/- snap/d;/- deb/d' -i electron-builder.yml
     export npm_config_build_from_source=true
@@ -45,5 +45,6 @@ package() {
     install -Dm644  "${srcdir}/${pkgname}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}/dist/linux-unpacked/resources/app.asar.unpacked/resources/"* -t "${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked/resources"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644  "${srcdir}/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
