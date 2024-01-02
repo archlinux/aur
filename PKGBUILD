@@ -7,12 +7,12 @@
 #
 
 pkgname=fileobj
-pkgver=0.7.25
+pkgver=0.8.2
 pkgrel=1
 
-pkgdesc="Portable hex editor with vi like interface written in Python "
+pkgdesc="Ncurses based hex editor with vi interface written in Python "
 arch=('any')
-url="http://sourceforge.net/projects/fileobj"
+url="https://github.com/kusumi/fileobj"
 license=('GPL')
 depends=('python')
 makedepends=()
@@ -20,7 +20,7 @@ optdepends=()
 
 source=(https://github.com/kusumi/${pkgname}/archive/v${pkgver//_/-}.tar.gz)
 
-md5sums=('509c1ad4ae2ef36d3677a26cd68344b9')
+sha256sums=('6d459eb801e381652868bc1799b6ed9b80ac670559f7019e7d9aeed0a5f06416')
 
 noextract=()
 
