@@ -4,13 +4,13 @@
 
 pkgname=webkit2gtk-hvml
 pkgver=2.34.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Web content engine for GTK (HVML)"
 url="https://hvml.fmsoft.cn/"
 arch=(x86_64)
 license=(custom)
-provides=(${pkgname}  'webkit2gtk')
-conflicts=(webkit2gtk)
+provides=(${pkgname}  'webkithbd')
+conflicts=(webkit2gtk 'webkithbd')
 depends=(cairo fontconfig freetype2 libgcrypt glib2 gtk3 harfbuzz harfbuzz-icu
          icu libjpeg libsoup libxml2 zlib libpng sqlite atk libwebp at-spi2-core
          libegl libgl libgles libwpe wpebackend-fdo libxslt libsecret libtasn1
@@ -20,16 +20,19 @@ depends=(cairo fontconfig freetype2 libgcrypt glib2 gtk3 harfbuzz harfbuzz-icu
 makedepends=(cmake ninja gtk-doc python ruby gobject-introspection
              wayland-protocols systemd gst-plugins-bad gperf)
 optdepends=('geoclue: Geolocation support'
-            'gst-plugins-good: media decoding'
-            'gst-plugins-bad: media decoding'
-            'gst-libav: nonfree media decoding'
-            'purc: The prime HVML interpreter for C Language.'
-            'purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.'
-            'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
+  'gst-plugins-good: media decoding'
+  'gst-plugins-bad: media decoding'
+  'gst-libav: nonfree media decoding'
+  'purc: The prime HVML interpreter for C Language.'
+  'purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.'
+  'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 # options=(debug)
 options=()
-source=("https://files.fmsoft.cn/hvml/webkitgtk-2.34.1-hvml-220804.tar.bz2")
-sha256sums=('dc6be72b1c974a79f9ceb48a9c5e17221668675603278f05cf6da11521b7746f')
+_date=20231116
+_time=015630
+_name=WebKitHBD-${pkgver}-${_date}-${_time}-Source
+source=("https://files.fmsoft.cn/sources/${_name}.tar.xz")
+sha256sums=('522aa2bd80db6c24bd8d7f9da424aed7243acede048ed2fbcd321c256f3a77f9')
 
 
 # prepare() {
@@ -42,7 +45,11 @@ build() {
   CFLAGS+=' -g1'
   CXXFLAGS+=' -g1'
 
-  cmake -S webkitgtk-$pkgver -B build -G Ninja \
+  sed -i '/#pragma once/i #include <cstdio>' ${_name}/Source/bmalloc/bmalloc/IsoSharedPageInlines.h
+  sed -i '/#include <vector>/a #include <cstdint>' ${_name}/Source/ThirdParty/ANGLE/src/common/angleutils.h
+  sed -i '/#include <vector>/a #include <cstdint>' ${_name}/Source/ThirdParty/ANGLE/include/GLSLANG/ShaderVars.h
+
+  cmake -S ${_name} -B build -G Ninja \
     -DPORT=GTK \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -67,7 +74,7 @@ package() {
 
   rm -r "$pkgdir/usr/bin"
 
-  cd webkitgtk-$pkgver
+  cd ${_name}
   find Source -name 'COPYING*' -or -name 'LICENSE*' -print0 | sort -z |
     while IFS= read -d $'\0' -r _f; do
       echo "### $_f ###"
