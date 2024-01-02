@@ -1,3 +1,13 @@
+2024-01-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.5.1.2-1:
+    std command will now return as soon as refresh is scheduled, rather than actually finished like before (@JustArchi).
+    match command can now be executed without explicit MatchActively: true in bot config (@JustArchi).
+    Misc optimizations of MatchActively in regards to server communication (@JustArchi).
+    Fixed swagger spec not loading in OS-specific builds (@JustArchi, #3115).
+    Fixed swagger schema problems with enums after .NET 8 upgrade (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2023-12-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.5.0.11-1:
     🔧 Fixed very rare ASF crash caused by access tokens race condition (@JustArchi).
