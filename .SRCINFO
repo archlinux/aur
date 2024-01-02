@@ -1,7 +1,7 @@
 pkgbase = zzzfm-git
 	pkgdesc = Multi-panel tabbed file manager - gtk2 version
 	pkgver = 1.0.7.5.r0.gc7e340f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/skidoo/zzzfm
 	arch = i686
 	arch = x86_64

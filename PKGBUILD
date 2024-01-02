@@ -1,7 +1,7 @@
 _gitname=zzzfm
 pkgname=${_gitname}-git
 pkgver=1.0.7.5.r0.gc7e340f
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-panel tabbed file manager - gtk2 version'
 arch=(i686 x86_64)
 url="https://gitlab.com/skidoo/zzzfm"
