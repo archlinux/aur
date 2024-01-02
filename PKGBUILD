@@ -3,7 +3,7 @@
 # Contributor: Julie Shapiro <jshapiro at nvidia dot com>
 pkgname=nvidia-container-toolkit
 pkgver=1.14.3
-pkgrel=3
+pkgrel=4
 pkgdesc="NVIDIA container runtime toolkit"
 arch=('x86_64')
 url="https://github.com/NVIDIA/nvidia-container-toolkit"
@@ -35,7 +35,7 @@ build() {
   go build -v \
     -trimpath \
     -buildmode=pie \
-    -mod=readonly \
+    -mod=vendor \
     -modcacherw \
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -s -w -X github.com/NVIDIA/nvidia-container-toolkit/internal/info.version=$pkgver" \
     -o build ./...
