@@ -1,0 +1,20 @@
+pkgbase = meteor-todo-desktop
+	pkgdesc = A meter based ToDo List. used Electron-Vue
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://hideko.f5.si/project/meteor.html
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = electron22
+	depends = hicolor-icon-theme
+	conflicts = meteor-todo-desktop
+	source = meteor-todo-desktop::git+https://github.com/Hideko-Dev/Meteor.git#tag=2.0.1
+	source = meteor-todo-desktop.sh
+	sha256sums = SKIP
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+
+pkgname = meteor-todo-desktop
