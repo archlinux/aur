@@ -1,6 +1,6 @@
 pkgbase = python-degiro-connector
 	pkgdesc = Yet another library to access Degiro's API
-	pkgver = 2.0.23
+	pkgver = 3.0.11
 	pkgrel = 1
 	url = https://github.com/Chavithra/degiro-connector
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = python-degiro-connector
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry
 	depends = python
 	depends = python-grpcio
 	depends = python-onetimepass
@@ -17,7 +18,7 @@ pkgbase = python-degiro-connector
 	depends = python-wrapt
 	provides = degiro-connector
 	options = !strip
-	source = python-degiro-connector-2.0.23.tar.gz::https://github.com/Chavithra/degiro-connector/archive/refs/tags/2.0.23.tar.gz
-	sha256sums = 0b19911cb0899d81c62c61ae72cdfe654b82496c1b7f128b21b7b5ba17d27521
+	source = https://files.pythonhosted.org/packages/source/d/degiro_connector/degiro_connector-3.0.11.tar.gz
+	b2sums = ab7d3a6f77d0d0e3f224d47c9c2ac3864b910792a7b21cb72b00f19fbf13a454e13f2a8bb51bb5c189985fb3e8d800a46a9c46cee3cf5d7dbbc05dea5689b4a3
 
 pkgname = python-degiro-connector
