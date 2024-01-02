@@ -5,7 +5,7 @@
 
 pkgname=radium
 pkgver=7.1.92
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
 url=https://users.notam02.no/~kjetism/radium
@@ -59,7 +59,8 @@ makedepends=(
   libxinerama
   libxkbfile
   libxrandr
-  llvm
+  llvm15
+  clang15
   qt5-tools
   vst2sdk
 )
@@ -71,13 +72,13 @@ optdepends=(
 )
 options=( !strip )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz"
-				add-vstsdk-location-var.patch
-				build_libpds.patch
-				radium.install
-				grep.patch
-				build_linux_common.patch
-				sndfilexprt.patch
-				gcc13faust3.patch
+        add-vstsdk-location-var.patch
+        build_libpds.patch
+        radium.install
+        grep.patch
+        build_linux_common.patch
+        sndfilexprt.patch
+        gcc13faust3.patch
 )
 sha256sums=('324ac3df6d18eae69e1dee0ed18b4b53065098ec8b3cad7be6c0c5944e7c9b9a'
             'ed456586a1f28eec9acd081a676e61145e13f07c1a6e967c0af1f7d08be4023e' 
@@ -85,35 +86,41 @@ sha256sums=('324ac3df6d18eae69e1dee0ed18b4b53065098ec8b3cad7be6c0c5944e7c9b9a'
             'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
             '7ccb4eb8c2924a5b6c610b4f35bc9ff22602cb2e131035d285bef87d813460b3'
             '0decfc3adcba836004ac34d970a83d4d0b69743334a586f42be53b3de7bdd5a4'
-						'f0391d772111592ac249d990ed418f87b5e083e5aaeb6b50b9198f93403ed9ab'
-						'eb1400e5ec180a10455ac4e300360dba718ec586719fcb73a591f4f6e58e1a42'
-					)
+            'f0391d772111592ac249d990ed418f87b5e083e5aaeb6b50b9198f93403ed9ab'
+            'eb1400e5ec180a10455ac4e300360dba718ec586719fcb73a591f4f6e58e1a42'
+           )
 install=radium.install
 
 prepare() {
   cd radium-$pkgver
-  #sed "/grep [^\-]*\\\ /s/grep \([^\]*\)\\\ \([^ ]*\)/grep \"\1 \2\"/p" -i check_dependencies.sh
+
+  # use llvm15 to compile
+  #OPATH=$PATH
+  export PATH=$(pwd):$PATH
+  ln -sf /usr/lib/llvm15/bin/clang clang
+  ln -sf /usr/bin/llvm-config-15 llvm-config
+
   patch -p0 < "$srcdir/grep.patch"
 
   # Add VST2SDK env var so we can use VST2 headers from steinberg-vst36 in AUR
   patch -p1 < "$srcdir/add-vstsdk-location-var.patch"
   
-	# fix for binutils 2.40
-	patch -p0 < "$srcdir/build_linux_common.patch"
+  # fix for binutils 2.40
+  patch -p0 < "$srcdir/build_linux_common.patch"
   
   # This tweak edits new file template and demo songs to be compatible with chorus plugin from calf-ladspa package
   # !! NOTE TO LMMS USERS !!
   # !! Comment next line out if you have LMMS installed as it already comes with their own version of Calf plugins !!
   for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
   # See comment on calf-ladspa AUR page then on how to let Radium load Calf from LMMS package
-	
-	# temp fix for soundfileexport
-	patch -p0 < "$srcdir/sndfilexprt.patch"
+  
+  # temp fix for soundfileexport
+  patch -p0 < "$srcdir/sndfilexprt.patch"
 
   cd bin/packages
   patch -p0 < "$srcdir/build_libpds.patch"
 
-	# patch for faust3.patch gcc13 
+  # patch for faust3.patch gcc13 
   patch -p0 < "$srcdir/gcc13faust3.patch"
 }
 
