@@ -1,0 +1,14 @@
+pkgbase = chicken-srfi-130
+	pkgdesc = SRFI-130: Cursor-based string library for Chicken Scheme
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-130
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+	depends = chicken-typed-records
+	depends = chicken-utf8
+
+pkgname = chicken-srfi-130
