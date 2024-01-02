@@ -2,7 +2,7 @@
 
 pkgname=gz-launch7
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Run and manage programs and plugins."
@@ -20,6 +20,7 @@ depends=(
   'gz-utils=2'
   'qt5-base'
   'qt5-quickcontrols2'
+  'tinyxml2'
   )
 makedepends=(
   'cmake'
