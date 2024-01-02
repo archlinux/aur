@@ -1,0 +1,20 @@
+pkgbase = aihub
+	pkgdesc = A collection of large model capabilities, AI capabilities Electron client, with a minimalist interface, will support more AI capabilities in the future.一款集合众多大模型能力、AI能力的Electron客户端，具有极简的界面，将在未来支持更多AI能力.
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = https://github.com/classfang/AIHub
+	arch = any
+	license = Apache
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = gendesk
+	makedepends = git
+	depends = electron28
+	provides = aihub
+	conflicts = aihub
+	source = aihub::git+https://github.com/classfang/AIHub.git#tag=v1.1.9
+	source = aihub.sh
+	sha256sums = SKIP
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+
+pkgname = aihub
