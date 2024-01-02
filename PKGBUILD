@@ -4,7 +4,7 @@
 
 pkgname=webkit2gtk-hvml
 pkgver=2.34.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Web content engine for GTK (HVML)"
 url="https://hvml.fmsoft.cn/"
 arch=(x86_64)
@@ -52,6 +52,7 @@ build() {
   cmake -S ${_name} -B build -G Ninja \
     -DPORT=GTK \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_CXX_FLAGS="-Wno-dangling-reference" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
