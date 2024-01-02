@@ -1,11 +1,12 @@
 pkgbase = neverball-git
 	pkgdesc = 3D game similar to Super Monkey Ball or Marble Madness
-	pkgver = 1.6.0.r154.gc1f75922
+	pkgver = 1.6.0.r433.g96c23af4
 	pkgrel = 1
-	url = http://neverball.org/
+	url = https://neverball.org/
 	arch = x86_64
 	license = GPL
 	makedepends = mesa
+	makedepends = git
 	depends = sdl2_ttf
 	depends = libgl
 	depends = libpng
@@ -18,4 +19,3 @@ pkgbase = neverball-git
 	sha256sums = SKIP
 
 pkgname = neverball-git
-

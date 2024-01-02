@@ -1,17 +1,18 @@
-# Maintainer: Davide Depau <davide@depau.eu>
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Davide Depau <davide@depau.eu>
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=neverball-git
-pkgver=1.6.0.r154.gc1f75922
+pkgver=1.6.0.r433.g96c23af4
 pkgrel=1
 pkgdesc="3D game similar to Super Monkey Ball or Marble Madness"
 arch=('x86_64')
-url="http://neverball.org/"
+url="https://neverball.org/"
 license=('GPL')
 depends=('sdl2_ttf' 'libgl' 'libpng' 'libjpeg' 'libvorbis' 'physfs' \
          'hicolor-icon-theme' 'xdg-utils')
-makedepends=('mesa')
+makedepends=('mesa' 'git')
 source=("${pkgname}::git+https://github.com/Neverball/neverball.git")
 sha256sums=('SKIP')
 
