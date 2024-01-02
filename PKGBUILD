@@ -1,12 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xfel-git
-pkgver=1.3.2.r19.g6f92b44
-pkgrel=12
+pkgver=1.3.2.r26.g4dda7f2
+pkgrel=1
 pkgdesc="Tiny FEL tools for allwinner SOC, support RISC-V D1 chip."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=('x86_64')
 url="https://github.com/xboot/xfel"
 license=('MIT')
 provides=(${pkgname%-git})
@@ -19,11 +17,6 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare()
-{
-    git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
 build() {
