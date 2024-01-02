@@ -1,7 +1,7 @@
 # Maintainer: Zhaose <zhaose233@outlook.com>
 pkgname=xmcl-launcher-bin
 _pkgname=xmcl-launcher
-pkgver=0.34.1
+pkgver=0.39.5
 pkgrel=1
 pkgdesc="X Minecraft Launcher - Modern Minecraft Launcher"
 arch=('x86_64')
@@ -21,9 +21,9 @@ source=(
 
 
 
-sha256sums=('b98fe9f8cb9797961bce691da9a8d54d5f9236c0ebca9c2b61377d6f0f578259'
+sha256sums=('74e1367b0a1d10afac2a6cadee841cd0ae4d7f279d9b469f729fa7dee46fb59c'
             '7292bbcf951bba1e34d265925c1ca5f786198a3b289a081e134e0e59b743e742'
-            'e253e7e922f496ff6800b639ebc8cdbdc1c984b25d0598a0d175d07f0aa1dc67')
+            '4e138d88cbecac4f380a17e0bb312472b94e8e65c273f5d7c508f5f4716b39fd')
 
 package(){
   cd ${pkgdir}
