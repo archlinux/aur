@@ -1,15 +1,10 @@
 pkgbase = chicken-miscmacros
-	pkgdesc = Chicken Scheme Egg: Various helper macros
-	pkgver = 2.96
+	pkgdesc = Various helper macros for Chicken Scheme
+	pkgver = 1.0
 	pkgrel = 1
-	url = http://chicken.wiki.br/eggref/4/miscmacros
-	arch = i686
+	url = http://wiki.call-cc.org/eggref/5/miscmacros
 	arch = x86_64
 	license = BSD
-	depends = chicken>=4.5.0
-	options = docs
-	options = !libtool
-	options = !emptydirs
+	depends = chicken
 
 pkgname = chicken-miscmacros
-
