@@ -1,5 +1,5 @@
 pkgbase = chicken-srfi-180
-	pkgdesc = This library describes a JavaScript Object Notation (JSON) parser and printer. It supports JSON that may be bigger than memory. for Chicken Scheme
+	pkgdesc = Chicken Scheme library describes a JavaScript Object Notation (JSON) parser and printer. It supports JSON that may be bigger than memory
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://wiki.call-cc.org/eggref/5/srfi-180
