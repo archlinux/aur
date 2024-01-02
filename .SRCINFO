@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-127
+	pkgdesc = SRFI-127: Lazy Sequences for Chicken Scheme
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-127
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-srfi-127
