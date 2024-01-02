@@ -2,7 +2,7 @@
 
 pkgname=gz-gui7
 pkgver=7.2.1
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Graphical interfaces for robotics applications"
