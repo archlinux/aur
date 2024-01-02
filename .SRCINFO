@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-37
+	pkgdesc = A simple and flexible command-line option parsing facility for Chicken Scheme
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-37
+	arch = x86_64
+	license = SRFI
+	depends = chicken
+
+pkgname = chicken-srfi-37
