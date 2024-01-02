@@ -1,6 +1,6 @@
 pkgbase = xonotic-autobuild
 	pkgdesc = A free, fast-paced cross-platform first person shooter
-	pkgver = 20230622
+	pkgver = 20240103
 	pkgrel = 1
 	url = http://xonotic.org
 	arch = x86_64

@@ -4,7 +4,7 @@
 # Contributor: Alexander Suhoverhov <cy at ngs dot ru>
 # Contributor: Jookia <166291@gmail.com>
 pkgname=xonotic-autobuild
-pkgver=20230622
+pkgver=20240103
 pkgrel=1
 pkgdesc="A free, fast-paced cross-platform first person shooter"
 arch=('x86_64' 'aarch64')
@@ -34,12 +34,6 @@ prepare() {
 
 build() {
   # compile engine
-  make -C Xonotic/source/darkplaces \
-    CPUOPTIMIZATIONS="${CFLAGS}" \
-    DP_FS_BASEDIR=/usr/share/xonotic/ \
-    DP_LINK_TO_LIBJPEG=1 \
-    cl-release
-
   make -C Xonotic/source/darkplaces \
     CPUOPTIMIZATIONS="${CFLAGS}" \
     DP_FS_BASEDIR=/usr/share/xonotic/ \
