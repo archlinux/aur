@@ -1,7 +1,7 @@
 pkgbase = brother-dcpl660dw-cups-bin
 	pkgdesc = CUPS wrapper for Brother HL-L8360CDW printer
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hll8360cdw_us_eu_as
 	arch = i686
 	arch = x86_64
