@@ -5,6 +5,7 @@ pkgbase = chicken-openssl
 	url = http://wiki.call-cc.org/eggref/5/openssl
 	arch = x86_64
 	license = BSD
+	depends = openssl-1.1
 	depends = chicken
 	depends = chicken-srfi-1
 	depends = chicken-srfi-13

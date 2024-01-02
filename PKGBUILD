@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='Bindings to the OpenSSL SSL/TLS library for Chicken Scheme'
 arch=('x86_64')
 license=('BSD')
-depends=("chicken" "chicken-srfi-1" "chicken-srfi-13" "chicken-srfi-18" "chicken-address-info")
+depends=("openssl-1.1" "chicken" "chicken-srfi-1" "chicken-srfi-13" "chicken-srfi-18" "chicken-address-info")
 url='http://wiki.call-cc.org/eggref/5/openssl'
 
 build() {
