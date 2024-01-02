@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webgal-terre-bin
 _appname=WebGAL_Terre
-pkgver=4.4.7
+pkgver=4.4.8
 pkgrel=1
 pkgdesc="Galgame Editing. Redefined | 视觉小说编辑，再进化"
 arch=(
@@ -40,17 +40,24 @@ makedepends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/${pkgver}/${_appname}_Linux_Arm64_${pkgver}.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/${pkgver}/${_appname}_Linux_${pkgver}.zip")
-source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/MakinoharaShoko/WebGAL_Terre/${pkgver}/LICENSE")
-sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5')
-sha256sums_aarch64=('7d95d725e868f6ab283d4324ef933a528151e1a69abcfdf7876bc310c4b3b475')
-sha256sums_x86_64=('e234e25804a9e4314af5356c74a2eff63a3f14673e1ab8a45c1c466e17ebfdac')
+source=(
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/MakinoharaShoko/WebGAL_Terre/${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
+            '6e7e8e34178355741e8c8eab9771f3a9f0c0fcf6897f8ebc1409bebc924a5332')
+sha256sums_aarch64=('f85f52bb6c922162ba356a4b6fc1146ba448c4a9a030fd1ce03e2cea24d38771')
+sha256sums_x86_64=('dc1018b5b7079dd746b10d4a7e6ca806d6a9cb920d30b72e89c676f400f844c0')
 build() {
-    gendesk -q -f -n --categories "Game;Utility" --name "${_appname//_/ }" --exec "${pkgname%-bin}"
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${_appname}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -q -f -n --categories "Game;Utility" --name "${_appname//_/ }" --exec "${pkgname%-bin} --no-sandbox %U"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
     cp -r "${srcdir}/release/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/opt/${pkgname%-bin}/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/assets/templates/WebGAL_Android_Template/app/src/main/ic_launcher-playstore.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
