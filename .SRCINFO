@@ -1,6 +1,6 @@
 pkgbase = framework-laptop-kmod-dkms-git
 	pkgdesc = Kernel module to expose more Framework Laptop stuff
-	pkgver = r16.40aadc1
+	pkgver = r17.a9e8db9
 	pkgrel = 1
 	url = https://github.com/DHowett/framework-laptop-kmod
 	arch = x86_64
@@ -10,8 +10,6 @@ pkgbase = framework-laptop-kmod-dkms-git
 	provides = framework-laptop-kmod-dkms
 	conflicts = framework-laptop-kmod-dkms
 	source = framework-laptop-kmod::git+https://github.com/DHowett/framework-laptop-kmod
-	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = 73fb009573b58aed6b2ba513945fcc501b43515a6e8342af6b80afcfb09b6adf
 
 pkgname = framework-laptop-kmod-dkms-git
