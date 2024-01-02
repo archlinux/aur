@@ -1,10 +1,11 @@
 pkgbase = python-magic-filter
 	pkgdesc = A filter package based on dynamic attribute getter
 	pkgver = 1.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aiogram/magic-filter
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
