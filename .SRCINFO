@@ -1,0 +1,12 @@
+pkgbase = chicken-srfi-174
+	pkgdesc = srfi-174 for Chicken Scheme
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-174
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-r7rs
+	depends = chicken-srfi-19>=4.9.3
+
+pkgname = chicken-srfi-174
