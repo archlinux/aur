@@ -1,58 +1,54 @@
 # Maintainer: h3li0p4us3 Moharami <h3li0p4us3@proton.me>
+groups=('modified')
+
 pkgname=dnschanger-desktop
 pkgver=2.1.11
 pkgrel=1
-pkgdesc="Build DNS Changer Desktop Application from source"
-arch=('any')
-url="https://github.com/DnsChanger/dnsChanger-desktop"
+_electronversion=23
+pkgdesc="DNS Changer for Windows, Mac and Linux operating systems"
+arch=('x86_64')
+url="https://dnschanger.github.io"
 license=('MIT')
-depends=('nodejs' 'npm')
-makedepends=('git')
-source=("$url/archive/refs/tags/v$pkgver.zip")
-sha256sums=('c259c0c1e227c73378b55689574397706cfb063e7192dc34fde004dd3aa883de')
-
+depends=("electron${_electronversion}" 'polkit')
+makedepends=('libxcrypt-compat' 'npm')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DnsChanger/dnsChanger-desktop/archive/refs/tags/v${pkgver}.tar.gz"
+        'target.patch'
+        'dnschanger.sh'
+        'dnschanger.desktop')
+sha256sums=('3743f8bb349d24f138a225d7042d6a89326953b94d6edf03cd903601df4eb24d'
+            '7f2c3505459ad37f493426d6be90b9befe017efacb18dafc332654eaf2a3d440'
+            '7502440862c3320ee8e3c3a6ce741adaf852cef337f366c55f67a0fe237a4500'
+            'eae9227511b3714910b9dffb7986a0dbdfebe33f70898c96055bb40314e6c206')
 
 prepare() {
- cd "$srcdir/dnsChanger-desktop-$pkgver"
- npm install .
+  cd "dnsChanger-desktop-${pkgver}"
+  export npm_config_cache="${srcdir}/npm_cache"
+  npm install
+
+  # Don't package AppImage or rpm
+  patch -Np1 -i ../target.patch
 }
 
 build() {
- cd "$srcdir/dnsChanger-desktop-$pkgver"
- npm run build > /dev/null 2>&1
+  cd "dnsChanger-desktop-${pkgver}"
+  electronDist="/usr/lib/electron${_electronversion}"
+  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+  export npm_config_cache="${srcdir}/npm_cache"
+  npm exec tsc
+  npm exec vite build
+  npm exec electron-builder --linux --dir \
+    $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
- cd "$srcdir/dnsChanger-desktop-$pkgver" 
+  cd "dnsChanger-desktop-${pkgver}"
+  install -Dm644 "release/${pkgver}/linux-unpacked/resources/app.asar" -t \
+    "${pkgdir}/usr/lib/dnschanger/"
 
-# Move the AppImage to /usr/bin/
- mkdir -p "${pkgdir}"/usr/bin/dnsChanger-desktop/
- rsync -r release/2.1.11/linux-unpacked/ "${pkgdir}"/usr/bin/dnsChanger-desktop/
+  install -Dm644 public/icons/icon.png "${pkgdir}/usr/share/pixmaps/dnschanger.png"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-# Create a .desktop file
- echo "[Desktop Entry]
- Name=$pkgname
- Exec=/usr/bin/dnsChanger-desktop/dnschanger
- Icon=/usr/share/pixmaps/dnsChanger-desktop.png
- Type=Application
- Categories=Network;
- " > "dnsChanger-desktop.desktop"
-
-# Move the .desktop file to applications folder
- mkdir -p "${pkgdir}"/usr/share/applications/
-
-# Use rsync to copy the .desktop file
- rsync -r dnsChanger-desktop.desktop "${pkgdir}"/usr/share/applications/
-
- # Copy the icon to /usr/share/pixmaps/
- mkdir -p "${pkgdir}"/usr/share/pixmaps/
-
-# Use rsync to copy the icon file
- rsync -r public/icons/icon.png "${pkgdir}"/usr/share/pixmaps/dnsChanger-desktop.png
-
+  install -Dm755 "${srcdir}/dnschanger.sh" "${pkgdir}/usr/bin/dnschanger"
+  install -Dm644 "${srcdir}/dnschanger.desktop" -t "${pkgdir}/usr/share/applications/"
 }
-
-clean() {
- rm -rf "$srcdir/dnsChanger-desktop-$pkgver"
-}
-
