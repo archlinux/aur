@@ -2,11 +2,12 @@
 pkgname=csvlens
 pkgver=0.5.0
 pkgrel=1
-pkgdesc='csvlens is a command line CSV file viewer. It is like less but made for CSV.'
+pkgdesc='A command line CSV file viewer. It is like less but made for CSV.'
 arch=('x86_64')
 url='https://github.com/YS-L/csvlens'
 license=('MIT')
 makedepends=('cargo')
+depends=('glibc' 'gcc-libs')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
@@ -29,7 +30,8 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -Dm755 target/release/csvlens "$pkgdir/usr/bin/csvlens"
   install -Dm 644 license.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd $pkgname-$pkgver
+  install -Dm 755 target/release/csvlens "$pkgdir/usr/bin/csvlens"
+  
 }
