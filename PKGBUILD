@@ -3,7 +3,7 @@
 # Contributor: Julie Shapiro <jshapiro at nvidia dot com>
 pkgname=nvidia-container-toolkit
 pkgver=1.14.3
-pkgrel=6
+pkgrel=7
 pkgdesc="NVIDIA container runtime toolkit"
 arch=('x86_64')
 url="https://github.com/NVIDIA/nvidia-container-toolkit"
@@ -32,13 +32,12 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/gopath"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=vendor -modcacherw"
   go build -v \
-    -ldflags "-extldflags=-Wl,-z,lazy -s -w -X github.com/NVIDIA/nvidia-container-toolkit/internal/info.version=$pkgver" \
+    -trimpath \
+    -buildmode=pie \
+    -mod=vendor \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -s -w -X github.com/NVIDIA/nvidia-container-toolkit/internal/info.version=$pkgver" \
     -o build ./...
 
   # Clean module cache for makepkg -C
