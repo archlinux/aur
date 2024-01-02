@@ -1,13 +1,13 @@
-# Maintainer: Alexandr Boiko <4le34n at gmail dot com>
+# Contributor: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp-git
-pkgver=1.12.0_57_gc983d6f
+pkgver=1.12.0_260_g19c36e59
 pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="https://github.com/accel-ppp/accel-ppp"
 license=('GPL')
 depends=('openssl>=1.0.0' 'pcre>=8.30' 'libnl>=2.0' 'lua')
-makedepends=('git' 'cmake>=2.6' 'libnl1' 'net-snmp>=5.x')
+makedepends=('git' 'cmake>=2.6' 'libnl' 'net-snmp>=5.x')
 optdepends=('accel-ppp-ipoe-dkms-git' 'accel-ppp-vlanmon-dkms-git' 'logrotate')
 conflicts=('accel-ppp')
 install='accel-ppp.install'
@@ -51,6 +51,7 @@ build() {
 	cmake \
 		-DCMAKE_SYSTEM_NAME=Linux \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
 		-DCMAKE_BUILD_TYPE=Debug \
                 -DMEMDEBUG=TRUE \
 		-DLOG_FILE=TRUE \
