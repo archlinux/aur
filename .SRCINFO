@@ -1,0 +1,11 @@
+pkgbase = chicken-records
+	pkgdesc = Procedural record-type interface for Chicken Scheme
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/records
+	arch = x86_64
+	license = Public Domain
+	depends = chicken
+	depends = chicken-srfi-1
+
+pkgname = chicken-records
