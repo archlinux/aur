@@ -1,0 +1,11 @@
+[Unit]
+Description=Update and Shutdown Service
+After=network-online.target
+#SuccessAction=none
+#OnSuccess=systemd-suspend.service
+[Service]
+RemainAfterExit=no
+Type=oneshot
+ExecStart=/usr/local/bin/midnight-dler.sh 
+[Install]
+WantedBy=default.target
