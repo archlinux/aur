@@ -2,8 +2,8 @@
 
 pkgname=python-classdiff
 _name=${pkgname#python-}
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Utility to diff classes"
 url="https://pypi.org/project/classdiff/"
 depends=(
@@ -15,7 +15,7 @@ makedepends=(
 license=('Apache-2.0')
 arch=(any)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a6897c95e6fed9dd1798a045ed1d6ab1b07b6632aedc9290d4a9313ef2f9b999')
+sha256sums=('64f631bbdf171429b5e03556ab0952dfdff63cb3d37340e81646c49f831a4f89')
 
 build() {
     cd "$_name-$pkgver"
