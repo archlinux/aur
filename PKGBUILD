@@ -1,22 +1,18 @@
-# Maintainer: Aaron P <aaronbpaden@gmail.com>
-# Contributer: Jim Pryor <profjim@jimpryor.net>
-
 pkgname=chicken-condition-utils
-_pkgname=condition-utils
-pkgver=1.1.1
+_name=condition-utils
+pkgver=2.2.3
 pkgrel=1
-pkgdesc="Chicken Scheme Egg: SRFI 12 Condition Utilities"
-arch=('i686' 'x86_64')
-url="http://chicken.wiki.br/eggref/4/condition-utils"
+pkgdesc='SRFI 12 Condition Utilities for Chicken Scheme'
+arch=('x86_64')
 license=('BSD')
-depends=('chicken>=4.5.0' 'chicken-setup-helper' 'chicken-check-errors>=1.12.0' )
+depends=("chicken" "chicken-srfi-1" "chicken-srfi-69" "chicken-check-errors")
+url='http://wiki.call-cc.org/eggref/5/condition-utils'
 
 build() {
-	cd "$srcdir/"
-	chicken-install -r "${_pkgname}":"${pkgver}"
+  CHICKEN_INSTALL_REPOSITORY=${srcdir} CHICKEN_INSTALL_PREFIX=${srcdir} chicken-install -no-install-dependencies $_name:$pkgver
+}
+package() {
+  install -d ${pkgdir}/usr/lib/chicken/11
+  find ${srcdir} -maxdepth 1 -type f -exec cp -t ${pkgdir}/usr/lib/chicken/11 {} +
 }
 
-package() {
-	cd "$_pkgname"
-	chicken-install -p "$pkgdir/usr"
-}
