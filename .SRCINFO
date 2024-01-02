@@ -1,0 +1,16 @@
+pkgbase = chicken-uri-common
+	pkgdesc = Chicken Scheme Parser for common URI schemes
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/uri-common
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-uri-generic
+	depends = chicken-defstruct
+	depends = chicken-matchable
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+	depends = chicken-srfi-14
+
+pkgname = chicken-uri-common
