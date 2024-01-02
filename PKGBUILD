@@ -5,7 +5,7 @@
 pkgname='moc-pulse'
 _pkgname='moc'
 pkgver=2.5.2
-pkgrel=10
+pkgrel=11
 pkgdesc='An ncurses console audio player with support for pulseaudio'
 arch=('x86_64')
 url="https://moc.daper.net/"
@@ -24,13 +24,11 @@ conflicts=('moc')
 source=("https://ftp.daper.net/pub/soft/${_pkgname}/stable/${_pkgname}-${pkgver}.tar.bz2"
         'pulseaudio.patch'
         'moc-ffmpeg4.patch'
-        'moc-https.patch'
-        '0001-Workaround-mbsrtowcs-fortify-crash-in-GLIBC-2.35.patch')
+        'moc-https.patch')
 sha1sums=('9d27a929b63099416263471c16367997c0ae6dba'
           '5c6385760ba40ee8a330d28d520c44eac2cbbae1'
           '007a0580ac754e1c318a0d0b6f0d403883797eaf'
-          'e3362ddd41126e2be874cd372a053fdaccf0f616'
-          'd3673707b2d96c34287042dc26698b2c5a00952a')
+          'e3362ddd41126e2be874cd372a053fdaccf0f616')
 # validpgpkeys=('59359B80406D9E73E80599BEF3121E4F2885A7AA')
 
 prepare() {
@@ -42,9 +40,6 @@ prepare() {
   patch -p0 -i ../moc-https.patch
   # Add pulseaudio backend
   patch -p1 -i ../pulseaudio.patch
-
-  # HOTFIX for GLIBC 2.35 buffer overflow error
-  patch -p1 -i ../0001-Workaround-mbsrtowcs-fortify-crash-in-GLIBC-2.35.patch
 
   # reconfigure the build system
   autoreconf -i -f
