@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=editorconfig-geany
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="EditorConfig plugin for Geany"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url="https://github.com/editorconfig/editorconfig-geany"
 license=('GPL')
 depends=('geany' 'editorconfig-core-c')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/editorconfig/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('4b0c37eb534613e7454c1e068179db5b262cf9e5aa00681802787231e1b35edf')
+b2sums=('22be66b409477b2e4936d27c5112db7e145346e084aebb88f8aec86cffb876a4f425d9eda8c9c18256cf51780e55dd3a44d18a4e2a3d89e368c6e49b350c6ac0')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}/"
