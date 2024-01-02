@@ -1,0 +1,13 @@
+pkgbase = chicken-posix-utils
+	pkgdesc = posix-utils for Chicken Scheme
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/posix-utils
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-utf8
+	depends = chicken-check-errors>=3.5.0
+
+pkgname = chicken-posix-utils
