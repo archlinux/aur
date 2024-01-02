@@ -1,0 +1,11 @@
+pkgbase = chicken-srfi-95
+	pkgdesc = SRFI-95: Sorting and merging for Chicken Scheme
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-95
+	arch = x86_64
+	license = Public Domain
+	depends = chicken
+	depends = chicken-srfi-63
+
+pkgname = chicken-srfi-95
