@@ -1,6 +1,6 @@
 pkgbase = mediastreamer
 	pkgdesc = A library written in C that allows you to create and run audio and video streams
-	pkgver = 5.2.112
+	pkgver = 5.3.5
 	pkgrel = 1
 	url = https://gitlab.linphone.org/
 	arch = x86_64
@@ -12,15 +12,13 @@ pkgbase = mediastreamer
 	depends = bcmatroska2
 	depends = bcg729
 	depends = bzrtp
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = glew
 	depends = libsrtp
 	depends = libyuv
 	depends = ortp
 	depends = zxing-cpp
-	source = https://gitlab.linphone.org/BC/public/mediastreamer2/-/archive/5.2.112/mediastreamer2-5.2.112.tar.bz2
-	source = ffmpeg5.patch
-	sha256sums = 0e79befebf5d1f83ad6b61958f3f83195e10b20af1bb70919514d33631476333
-	sha256sums = 7687516b61b33a89adf90790bc01e0a724160bcdd475706228ccbcd19891283a
+	source = https://gitlab.linphone.org/BC/public/mediastreamer2/-/archive/5.3.5/mediastreamer2-5.3.5.tar.bz2
+	sha256sums = 77c9d8d5cd2b599a6968b5f9a459ffc248b03b657cb004451b122fe8d853b7e9
 
 pkgname = mediastreamer

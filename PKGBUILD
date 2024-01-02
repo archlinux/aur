@@ -5,30 +5,25 @@
 # Contributor: Mark Lee <mark@markelee.com>
 
 pkgname=mediastreamer
-pkgver=5.2.112
+pkgver=5.3.5
 pkgrel=1
 pkgdesc='A library written in C that allows you to create and run audio and video streams'
 arch=(x86_64)
 url='https://gitlab.linphone.org/'
 license=(AGPL3)
-depends=(bcmatroska2 bcg729 bzrtp ffmpeg glew libsrtp libyuv ortp zxing-cpp)
+depends=(bcmatroska2 bcg729 bzrtp ffmpeg4.4 glew libsrtp libyuv ortp zxing-cpp)
 makedepends=(cmake python bcunit doxygen)
-source=(https://gitlab.linphone.org/BC/public/${pkgname}2/-/archive/$pkgver/${pkgname}2-$pkgver.tar.bz2
-        ffmpeg5.patch)
-sha256sums=('0e79befebf5d1f83ad6b61958f3f83195e10b20af1bb70919514d33631476333'
-            '7687516b61b33a89adf90790bc01e0a724160bcdd475706228ccbcd19891283a')
-
-prepare() {
-  patch -d ${pkgname}2-$pkgver -p1 < ffmpeg5.patch
-}
+source=(https://gitlab.linphone.org/BC/public/${pkgname}2/-/archive/$pkgver/${pkgname}2-$pkgver.tar.bz2)
+sha256sums=('77c9d8d5cd2b599a6968b5f9a459ffc248b03b657cb004451b122fe8d853b7e9')
 
 build() {
   cmake -B build -S ${pkgname}2-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_STATIC=OFF \
+    -DBUILD_SHARED_LIBS=ON \
     -DENABLE_STRICT=OFF \
     -DENABLE_UNIT_TESTS=OFF \
     -DENABLE_MKV=ON \
+    -DCMAKE_SKIP_INSTALL_RPATH=ON \
     -Wno-dev
   cmake --build build
 }
