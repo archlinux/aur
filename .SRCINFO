@@ -1,0 +1,25 @@
+pkgbase = r-dalex
+	pkgdesc = moDel Agnostic Language for Exploration and eXplanation
+	pkgver = 2.4.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=DALEX
+	arch = any
+	license = GPL
+	checkdepends = r-caret
+	checkdepends = r-gower
+	checkdepends = r-kernlab
+	checkdepends = r-parsnip
+	checkdepends = r-randomforest
+	checkdepends = r-ranger
+	checkdepends = r-testthat
+	depends = r-ggplot2
+	depends = r-ibreakdown
+	depends = r-ingredients
+	optdepends = r-gower
+	optdepends = r-ranger
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/DALEX_2.4.3.tar.gz
+	md5sums = eb0756c65611440e8d9a11742d47472f
+	b2sums = a53533fca756a05a4748b6eb3698437c7a64c74c35c3b84cd264a8caa0536428796c1799be8db2865e6f80cc35dc873756712bc19fe492250cf8f22267b8b386
+
+pkgname = r-dalex
