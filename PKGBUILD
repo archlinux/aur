@@ -1,7 +1,7 @@
 # Maintainer: Marc Riera <marcriera@softcatala.org>
 
 pkgname=okapi-apps
-pkgver=1.45.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc="Cross-platform and free open-source set of applications that offer extensive support for localizing and translating documentation and software."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(https://okapiframework.org/binaries/main/${pkgver}/okapi-apps_gtk2-linux
         ratel.desktop
         https://okapiframework.org/wiki/images/0/0c/CheckMateIcon.png
         https://okapiframework.org/wiki/images/8/8f/RatelIcon.png)
-sha256sums=('8e81363a667d80199bc7978386fb7515d5751939020dffb2eda674aaf5c45374'
+sha256sums=('da9b21e4710f87081a8f85389b63976769d2ab2603304033aa0888250f5bbb2a'
             '6578cdfdc0e745a231f89fb45e5fb2e2950598cb0795288d0a66855c0cc8a3b7'
             'e2fb58c6a2430ad5356ba356cfcbe965cabc2b8bb22b9c53ebdfca9eccc34f86'
             '2bbbd39c56e42f51c17a5a47d83eac3bcc829d9198fae629df7e3ff8cacf30e1'
