@@ -2,8 +2,8 @@
 # URL: https://aur.archlinux.org/packages/com.163.music.spark
 # URL: https://github.com/AiCorein/arch-wine-neteasemusic
 pkgname=com.163.music.spark
-pkgver=3.0.1.201795spark10
-pkgrel=1
+pkgver=3.0.1.201795spark11
+pkgrel=2
 pkgdesc="Netease Music Wine Client from Spark Store"
 url="https://music.163.com/"
 arch=('x86_64')
@@ -23,14 +23,14 @@ optdepends=(
 )
 _mirror="https://mirrors.sdu.edu.cn/spark-store-repository"
 source=("${_mirror}/store/music/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
-md5sums=('1fc6104eb494e1df3b4cdd95e6863baa')
+md5sums=('68261e750622435d4cad4a3ed3dc8428')
 
 package() {
     cd "${pkgdir}"
     bsdtar -xpvf "${srcdir}/data.tar.xz"
     install -d usr/share
     mv opt/apps/${pkgname}/entries/* usr/share
-    sed -i 's/"spark-wine"/"wine"/' opt/apps/${pkgname}/files/run.sh
+    sed -i 's/"deepin-wine8-stable"/"wine"/' opt/apps/${pkgname}/files/run.sh
     rmdir opt/apps/${pkgname}/entries/
     rm opt/apps/${pkgname}/info
     chown -R root:root .

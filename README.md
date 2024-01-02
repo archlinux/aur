@@ -30,12 +30,6 @@ sudo pacman -Sy
 yay -S com.163.music.spark
 ```
 
-或者 clone 此项目后：
-
-```bash
-cd arch-wine-neteasemusic && makepkg -si
-```
-
 随后正常运行即可。但你更新本 aur 包后需要手动删除以下目录使其重新生成：
 
 ```bash
@@ -53,14 +47,14 @@ cd arch-wine-neteasemusic && makepkg -si
 如果你遇到运行问题，或有其他自定义需求，可以自行使用其他 wine 版本。方法是：更改 [PKGBUILD](./PKGBUILD) 文件的 depends，同时更改此文件第 30 行：
 
 ```bash
-sed -i 's/"spark-wine"/"wine"/' opt/apps/${pkgname}/files/run.sh
+sed -i 's/"deepin-wine8-stable"/"wine"/' opt/apps/${pkgname}/files/run.sh
 ```
 
-其中的 `wine` 这一值需要改为其他 wine 二进制名。例如使用 `deepin-wine6-stable`，就改为：
+其中的 `wine` 这一值需要改为其他 wine 二进制名。例如使用 `spark-wine`，就改为：
 
 ```bash
-sed -i 's/"spark-wine"/"deepin-wine6-stable"/' opt/apps/${pkgname}/files/run.sh
+sed -i 's/"deepin-wine8-stable"/"spark-wine"/' opt/apps/${pkgname}/files/run.sh
 ```
 
-当然，如果你使用的是 `spark-wine` 本身，可以直接删除此行。
+当然，如果你使用的是 `deepin-wine8-stable` 本身，可以直接删除此行。
 
