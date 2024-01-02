@@ -1,17 +1,20 @@
 pkgbase = pixman-git
-	pkgdesc = The pixel-manipulation library for X and cairo
-	pkgver = pixman+0.38.4+11+gfd5c0da
+	pkgdesc = Library for pixel manipulation
+	pkgver = 0.42.2.r26.g7883ab8
 	pkgrel = 1
-	url = https://cgit.freedesktop.org/pixman/
+	url = https://www.pixman.org/
+	arch = i686
 	arch = x86_64
-	license = custom
-	makedepends = meson
+	license = MIT
+	makedepends = git
 	makedepends = libpng
+	makedepends = meson
 	depends = glibc
-	provides = pixman
+	provides = pixman=0.42.2.r26.g7883ab8
+	provides = libpixman-1.so
 	conflicts = pixman
-	source = git+https://gitlab.freedesktop.org/pixman/pixman.git
-	sha1sums = SKIP
+	options = staticlibs
+	source = git+https://gitlab.freedesktop.org/pixman/pixman
+	sha256sums = SKIP
 
 pkgname = pixman-git
-
