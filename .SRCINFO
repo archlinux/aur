@@ -1,0 +1,14 @@
+pkgbase = chicken-srfi-135
+	pkgdesc = SRFI 135: Immutable Texts for Chicken Scheme
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-135
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-r7rs
+	depends = chicken-utf8
+	depends = chicken-srfi-141
+	depends = chicken-typed-records
+
+pkgname = chicken-srfi-135
