@@ -1,69 +1,90 @@
-# Maintainer: yustin <#archlinux-proaudio@libera.chat>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: yustin <#archlinux-proaudio@libera.chat>
 # Contributor: kiasoc5 <kiasoc5 at tutanota dot com>
 # Contributor: xantares
 
 pkgname=stargate
-pkgver=23.08.1
+pkgver=24.01.1
 pkgrel=1
-pkgdesc="A digital audio workstation (DAW) with a powerful pattern-based workflow"
-license=('GPL')
-arch=('x86_64' 'aarch64')
+pkgdesc="Innovation-first digital audio workstation (DAW), instrument and effect plugins, wave editor"
+license=(GPL)
+arch=(
+  x86_64
+  aarch64
+)
 url="https://github.com/stargatedaw/stargate"
 depends=(
-    'alsa-lib'
-    'fftw'
-    'libsndfile'
-    'portaudio'
-    'portmidi'
-    'python-jinja'
-    'python-mido'
-    'python-mutagen'
-    'python-numpy'
-    'python-psutil'
-    'python-yaml'
-    'python-pymarshal'
-    'python-wavefile'
-    'python-pyqt6'
-    'qt6-svg'
-    'rubberband'
-    'sbsms'
+  alsa-lib
+  fftw
+  gcc-libs
+  glibc
+  libsndfile
+  portaudio
+  portmidi
+  python
+  python-jinja
+  python-mido
+  python-numpy
+  python-psutil
+  python-pymarshal
+  python-pyqt6
+  python-rtmidi
+  python-wavefile
+  python-yaml
+  rubberband
 )
 makedepends=(
-    'jq'
-    'libsbsms'
+  git
+  jq
+  libsbsms
 )
 optdepends=(
-    'lame'
-    'ffmpeg'
-    'vorbis-tools'
-    'python-pyqt5: qt5 backend'
+  'ffmpeg'
+  'lame'
+  'vorbis-tools'
 )
-source=("https://github.com/stargateaudio/stargate/archive/refs/tags/release-${pkgver}.tar.gz"
-	"git+https://codeberg.org/soundtouch/soundtouch.git#commit=dd2252e9af3f2d6b749378173a4ae89551e06faf"
-	"git+https://github.com/stargatedaw/stargate-sbsms.git"
-	)
-sha256sums=('f7ff8fca827b0a684f3ee928344811bd130a5394ea71d516a96206ba1360220d'
-  'SKIP'
-  'SKIP'
-  )
 
-prepare(){
-  cd stargate-release-${pkgver}
-	rm -rf src/vendor/soundtouch/
-	cd src/vendor
-	cp -r ${srcdir}/soundtouch .
-	cp -r ${srcdir}/stargate-sbsms/* sbsms/
-	cd .. 
-	sed "/\binstall_symlinks:/s/:.*/:/" -i Makefile 
+_commit=835ef6f081a5d72035e1c9767eaaf74e59783df0 # git rev-parse "$pkgver"
+source=(
+  "git+$url.git#commit=$_commit"
+  "git+https://github.com/spatialaudio/portaudio-binaries.git"
+  "git+https://github.com/stargatedaw/stargate-soundtouch.git"
+  "git+https://github.com/stargatedaw/stargate-sbsms.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
+
+_archive="$pkgname"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags | sed 's/release-//'
+}
+
+prepare() {
+  cd "$_archive"
+
+  git submodule init
+  git config submodule.src/vendor/portaudio-binaries.url "$srcdir/portaudio-binaries"
+  git config submodule.src/vendor/soundtouch.url "$srcdir/stargate-soundtouch"
+  git config submodule.src/vendor/sbsms.url "$srcdir/stargate-sbsms"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cd stargate-release-${pkgver}/src
+  cd "$_archive/src"
+
   # for non-x86 architectures
-  PLAT_FLAGS="${CFLAGS}" make all
+  PLAT_FLAGS="$CFLAGS" make all
 }
 
 package() {
-  cd stargate-release-${pkgver}/src
-  DESTDIR=${pkgdir} make install
+  cd "$_archive/src"
+
+  DESTDIR=$pkgdir make install
 }
