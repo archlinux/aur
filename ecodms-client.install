@@ -1,5 +1,6 @@
 post_install() {
   echo "Execute /opt/ecodms/ecodmsclient/ecodmsconmgr.sh to connect to the server"
+  echo "Update the symlink /opt/ecodms/ecodmsclient/language.qm to change the UI language"
 }
 
 post_upgrade() {

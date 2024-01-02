@@ -1,6 +1,6 @@
 pkgbase = ecodms-client
 	pkgdesc = Document Management Software
-	pkgver = 23.01
+	pkgver = 23.02
 	pkgrel = 1
 	url = http://www.ecodms.de/index.php/de/
 	install = ecodms-client.install
@@ -19,7 +19,7 @@ pkgbase = ecodms-client
 	depends = qt5-svg
 	depends = qt5-x11extras
 	options = !strip
-	source_x86_64 = ecodmsclient-23.01-1_amd64.deb::https://www.ecodms.de/ecodms_230164/jammy/ecodmsclient-23.01-1_amd64.deb
-	sha256sums_x86_64 = 4d797bf11c4615041bb22b57e4a469cd15e125adce6eb5a241f8007f697bdf29
+	source_x86_64 = ecodmsclient-23.02-1_amd64.deb::https://www.ecodms.de/ecodms_230264/jammy/ecodmsclient-23.02-1_amd64.deb
+	sha256sums_x86_64 = a67d62bff4050605a6fb54b1e7b4991652af73142f92bf5031531645d47d2988
 
 pkgname = ecodms-client

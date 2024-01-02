@@ -2,10 +2,11 @@
 
 # Default language is english
 # Languages to choose from: en, de
-_LANG='en'
+# Export the environment variable ECODMS_LANG to select a non-default value.
+# for example: export ECODMS_LANG=de
 
 pkgname=ecodms-client
-pkgver=23.01
+pkgver=23.02
 pkgrel=1
 pkgdesc="Document Management Software"
 arch=('x86_64')
@@ -15,8 +16,8 @@ depends=('apr' 'bash' 'libappindicator-gtk2' 'libgcrypt' 'libpng' 'libjpeg-turbo
 options=('!strip')
 install=${pkgname}.install
 
-source_x86_64=("ecodmsclient-23.01-1_amd64.deb::https://www.ecodms.de/ecodms_230164/jammy/ecodmsclient-23.01-1_amd64.deb")
-sha256sums_x86_64=("4d797bf11c4615041bb22b57e4a469cd15e125adce6eb5a241f8007f697bdf29")
+source_x86_64=("ecodmsclient-23.02-1_amd64.deb::https://www.ecodms.de/ecodms_230264/jammy/ecodmsclient-23.02-1_amd64.deb")
+sha256sums_x86_64=("a67d62bff4050605a6fb54b1e7b4991652af73142f92bf5031531645d47d2988")
 
 package() {
   cd "${srcdir}"
@@ -28,8 +29,14 @@ package() {
   sed -i '1 i #!/bin/sh' opt/ecodms/ecodmsclient/ecodmsclient.sh
   sed -i '1 i #!/bin/sh' opt/ecodms/ecodmsclient/ecodmsconmgr.sh
 
+  if [[ -z "${ECODMS_LANG}" ]]; then
+    _LANG='en'
+  else
+    _LANG="${ECODMS_LANG}"
+  fi
+
   # Set client language
-  cp -f opt/ecodms/ecodmsclient/language_${_LANG}.qm opt/ecodms/ecodmsclient/language.qm
+  ln -sf language_${_LANG}.qm opt/ecodms/ecodmsclient/language.qm
 
   cp -dr --no-preserve=ownership etc opt usr "${pkgdir}"/
 }
