@@ -1,0 +1,11 @@
+pkgbase = chicken-srfi-63
+	pkgdesc = Homogeneous and heterogeneous arrays for Chicken Scheme
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-63
+	arch = x86_64
+	license = Artistic
+	depends = chicken
+	depends = chicken-records
+
+pkgname = chicken-srfi-63
