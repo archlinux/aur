@@ -3,7 +3,7 @@
 pkgname="python-degiro-connector"
 _name="degiro_connector"
 pkgver=3.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another library to access Degiro's API"
 url="https://github.com/Chavithra/degiro-connector"
 license=("BSD-3")
@@ -22,11 +22,11 @@ b2sums=('ab7d3a6f77d0d0e3f224d47c9c2ac3864b910792a7b21cb72b00f19fbf13a454e13f2a8
 options=("!strip")
 
 build(){
- cd "degiro-connector-$pkgver"
+ cd "$_name-$pkgver"
  python -m build --wheel --no-isolation
 }
 
 package(){
- cd "degiro-connector-$pkgver"
+ cd "$_name-$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
 }
