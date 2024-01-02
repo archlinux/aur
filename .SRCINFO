@@ -1,18 +1,18 @@
 pkgbase = slack-on-keys-bin
 	pkgdesc = Control your Slack from any app window with keyboard shortcuts ⚡ Set up custom keyboard shortcuts for various Slack actions
-	pkgver = 1.1.0
-	pkgrel = 5
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://github.com/yakshaG/slack-on-keys
 	arch = x86_64
 	license = MIT
 	depends = electron24
-	provides = slack-on-keys=1.1.0
+	provides = slack-on-keys=1.1.2
 	conflicts = slack-on-keys
-	source = slack-on-keys-1.1.0.deb::https://github.com/yakshaG/slack-on-keys/releases/download/v1.1.0/slack-on-keys_1.1.0_amd64.deb
-	source = LICENSE-1.1.0::https://raw.githubusercontent.com/yakshaG/slack-on-keys/main/LICENSE
+	source = slack-on-keys-1.1.2.deb::https://github.com/yakshaG/slack-on-keys/releases/download/v1.1.2/slack-on-keys_1.1.2_amd64.deb
+	source = LICENSE-1.1.2::https://raw.githubusercontent.com/yakshaG/slack-on-keys/main/LICENSE
 	source = slack-on-keys.sh
-	sha256sums = 73e383feed41399ef29c309be84eeb252ad6b26ab51c3db40b8485384e856fc1
+	sha256sums = 4c491c4d8a3ebe49089463265d80ca5b46e74dc1e802f0466940b1f194f14525
 	sha256sums = f95d9068a4ccb1cbc8bad397f046494b5e2d6546fd6be7546edd5c26765cd956
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = slack-on-keys-bin
