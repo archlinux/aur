@@ -1,0 +1,16 @@
+pkgbase = chicken-intarweb
+	pkgdesc = Chicken Scheme A more convenient HTTP library
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/intarweb
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+	depends = chicken-srfi-14
+	depends = chicken-defstruct
+	depends = chicken-uri-common
+	depends = chicken-base64
+
+pkgname = chicken-intarweb
