@@ -6,6 +6,6 @@ After=network-online.target
 [Service]
 RemainAfterExit=no
 Type=oneshot
-ExecStart=/usr/local/bin/midnight-dler.sh 
+ExecStart=/usr/bin/midnight-dler.sh 
 [Install]
 WantedBy=default.target
