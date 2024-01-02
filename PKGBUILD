@@ -1,6 +1,6 @@
 # Maintainer: Madhur Ahuja <ahuja.madhur@gmail.com>
-pkgname=csvlens-git
-pkgver=0.5.0.d023864
+pkgname=csvlens
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='csvlens is a command line CSV file viewer. It is like less but made for CSV.'
 arch=('x86_64')
@@ -19,19 +19,19 @@ prepare() {
 }
 
 pkgver() {
-  cd "${pkgname%-*}"
+  cd $pkgname-$pkgver
   echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --always)
 }
 
 build() {
-  cd "${pkgname%-*}"
+  cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 package() {
-  cd "${pkgname%-*}"
+  cd $pkgname-$pkgver
   install -Dm755 target/release/csvlens "$pkgdir/usr/bin/csvlens"
 
 }
