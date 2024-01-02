@@ -13,11 +13,11 @@ checkdepends=('python-setuptools' 'shunit2')
 provides=('python-distro-info' 'python3-distro-info' 'perl-distro-info')
 conflicts=('python-distro-info' 'python3-distro-info' 'perl-distro-info')
 options=('!emptydirs')
-source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
+source=("http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('6fa91b888320b74cd4391941092601a9bc33f3427d1d0ba93efcb7f31bcecf7e')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   sed -i \
     -e 's/^\(LDFLAGS = .*\)/\1 '"${LDFLAGS}/" \
     -e 's/ --install-layout=deb//g' \
@@ -25,12 +25,12 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make test-commandline
   make test-perl
   # We don't want to test all installed python versions -> don't use "make test"
@@ -42,11 +42,11 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   # vendor can currently be only ubuntu or debian
   # with ubuntu you can build for PPA (with bzr-builddeb)
-  make DESTDIR="$pkgdir/" VENDOR="ubuntu" install
-  install -D -m 644 debian/copyright "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  make DESTDIR="${pkgdir}/" VENDOR="ubuntu" install
+  install -D -m 644 debian/copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
