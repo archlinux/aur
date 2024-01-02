@@ -1,7 +1,7 @@
 # Maintainer: AnnikaV9 <carrot.moncher@gmail.com>
 
 pkgname=hcclient-latex
-pkgver=1.19.2
+pkgver=1.19.3
 pkgrel=1
 pkgdesc="A terminal client for hack.chat, with LaTeX support"
 arch=("x86_64")
@@ -14,8 +14,8 @@ makedepends=("python-pip" "python-wheel")
 source=("hcclient-${pkgver}-py3-none-any.whl::${url}/releases/download/v${pkgver}/hcclient-${pkgver}-py3-none-any.whl"
         "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=("hcclient-${pkgver}-py3-none-any.whl")
-sha256sums=('305664e612e89f7bbd2872929c3bd98da3429d0ed2f2757487f098582f430901'
-            'ad8fbd083e399cc0a895f63613eedf5b311adfcf058faf0fea8eb0aefce9678a')
+sha256sums=('01e8fe70d4401594d7ee2eeeabc8f4084d41f6162e7f40d66489ae561989baf9'
+            '820d66751f829ec2017686146ac2876396b8fb1e9b4488e7a57da87030f6fdbc')
 
 build() {
   python -m venv iso-env
