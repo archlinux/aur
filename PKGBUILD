@@ -1,52 +1,26 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=NAME
-pkgver=VERSION
+# Maintainer: Daniele Moser <dnlmsr0@gmail.com>
+pkgname="buf-language-server-git"
+pkgver=r11.05bbd97
 pkgrel=1
-epoch=
-pkgdesc=""
-arch=()
-url=""
-license=('GPL')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz"
-        "$pkgname-$pkgver.patch")
-noextract=()
-md5sums=()
-validpgpkeys=()
+pkgdesc="Protobuf language server"
+arch=("x86_64")
+url="https://github.com/bufbuild/buf-language-server"
+license=("Apache-2.0")
+makedepends=("go" "git")
+source=("$pkgname::git+https://github.com/bufbuild/buf-language-server")
+sha256sums=(SKIP)
 
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	make -k check
+    cd "$srcdir/$pkgname/cmd/bufls"
+    go build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    cd "$srcdir/$pkgname/cmd/bufls"
+    install -Dm755 bufls "${pkgdir}/usr/bin/bufls"
 }
