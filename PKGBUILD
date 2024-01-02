@@ -1,7 +1,7 @@
 # Maintainer: Edward Pacman <edward at edward-p dot xyz>
 
 pkgname=k5prog-git
-pkgver=r17.6eb4ac3
+pkgver=r31.241ab18
 pkgrel=1
 pkgdesc="Quansheng UV-K5 EEPROM programmer"
 arch=("x86_64")
