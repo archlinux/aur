@@ -2,17 +2,18 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: taotieren <admin@taotieren.com>
 
-pkgname=webkit2gtk-hvml
+pkgbase=webkit2gtk-hvml
+pkgname=(webkit2gtk-{3,4}.0-hvml webkit2hbd)
 pkgver=2.34.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Web content engine for GTK (HVML)"
 url="https://hvml.fmsoft.cn/"
 arch=(x86_64)
 license=(custom)
 provides=(${pkgname}  'webkithbd')
 conflicts=(webkit2gtk 'webkithbd')
-depends=(cairo fontconfig freetype2 libgcrypt glib2 gtk3 harfbuzz harfbuzz-icu
-         icu libjpeg libsoup libxml2 zlib libpng sqlite atk libwebp at-spi2-core
+depends=(cairo fontconfig freetype2 libgcrypt glib2 gtk3 gtk4  harfbuzz harfbuzz-icu
+         icu libjpeg libsoup libsoup3 libxml2 zlib libpng sqlite atk libwebp at-spi2-core
          libegl libgl libgles libwpe wpebackend-fdo libxslt libsecret libtasn1
          enchant libx11 libxext libice libxt wayland libnotify hyphen openjpeg2
          woff2 libsystemd bubblewrap libseccomp xdg-dbus-proxy gstreamer
@@ -27,7 +28,7 @@ optdepends=('geoclue: Geolocation support'
   'purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.'
   'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 # options=(debug)
-options=()
+options=(!strip !lto )
 _date=20231116
 _time=015630
 _name=WebKitHBD-${pkgver}-${_date}-${_time}-Source
@@ -43,35 +44,81 @@ build() {
   # Produce minimal debug info: 4.3 GB of debug data makes the
   # build too slow and is too much to package for debuginfod
   CFLAGS+=' -g1'
-  CXXFLAGS+=' -g1'
+  CXXFLAGS+=' -g1 -Wno-dangling-reference'
 
   sed -i '/#pragma once/i #include <cstdio>' ${_name}/Source/bmalloc/bmalloc/IsoSharedPageInlines.h
   sed -i '/#include <vector>/a #include <cstdint>' ${_name}/Source/ThirdParty/ANGLE/src/common/angleutils.h
   sed -i '/#include <vector>/a #include <cstdint>' ${_name}/Source/ThirdParty/ANGLE/include/GLSLANG/ShaderVars.h
 
-  cmake -S ${_name} -B build -G Ninja \
+  # webkit2gtk-3.0-hvml Using Gtk3 and Soup2
+  cmake -S ${_name} -B build-gkt3 -G Ninja \
     -DPORT=GTK \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS="-Wno-dangling-reference" \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DENABLE_HVML_ATTRS=ON \
+    -DENABLE_GAMEPAD=OFF \
+    -DENABLE_INTROSPECTION=OFF \
+    -DUSE_SOUP2=ON \
+    -DUSE_WPE_RENDERER=OFF \
+    -DUSE_LCMS=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCMAKE_SKIP_RPATH=ON \
-    -DUSE_SOUP2=ON \
-    -DENABLE_HVML_ATTRS=ON \
     -DENABLE_GTKDOC=OFF \
     -DENABLE_MINIBROWSER=ON
 
-#   cmake --build build
-    ninja -C build
+  ninja -C build-gtk3
+
+  # webkit2gtk-4.0-hvml Using Gtk4.0 and Soup3
+  cmake -S ${_name} -B build-gkt4 -G Ninja \
+    -DPORT=GTK \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DENABLE_HVML_ATTRS=ON \
+    -DENABLE_GAMEPAD=OFF \
+    -DENABLE_INTROSPECTION=OFF \
+    -DUSE_SOUP3=ON \
+    -DUSE_WPE_RENDERER=OFF \
+    -DUSE_LCMS=OFF \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DENABLE_GTKDOC=OFF \
+    -DENABLE_MINIBROWSER=ON
+
+  ninja -C build-gtk4
+
+  # WebKit2HBD Using  Minigui and Soup2
+  cmake -S ${_name} -B build-hbd -G Ninja \
+    -DPORT=HBD \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DENABLE_HVML_ATTRS=ON \
+    -DENABLE_RSQL=OFF \
+    -DENABLE_NOTIFICATIONS=OFF \
+    -DENABLE_NETSCAPE_PLUGIN_API=OFF \
+    -DENABLE_PDFKIT_PLUGIN=OFF \
+    -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+    -DUSE_SOUP2=ON \
+    -DENABLE_GAMEPAD=OFF \
+    -DENABLE_INTROSPECTION=OFF \
+    -DUSE_WPE_RENDERER=OFF \
+    -DUSE_LCMS=OFF \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DENABLE_GTKDOC=OFF \
+    -DENABLE_MINIBROWSER=ON
+
+    ninja -C build-hbd
 }
 
-package() {
+package_webkit2gtk-3.0-hvml() {
   depends+=(libwpe-1.0.so libWPEBackend-fdo-1.0.so)
   provides+=(libjavascriptcoregtk-4.0.so libwebkit2gtk-4.0.so)
 
-#   DESTDIR="$pkgdir" cmake --install build
-    DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" ninja -C build-gtk3.0 install
 
   rm -r "$pkgdir/usr/bin"
 
@@ -85,4 +132,39 @@ package() {
     install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
+package_webkit2gtk-4.0-hvml() {
+  depends+=(libwpe-1.0.so libWPEBackend-fdo-1.0.so)
+  provides+=(libjavascriptcoregtk-4.0.so libwebkit2gtk-4.0.so)
+
+  DESTDIR="${pkgdir}" ninja -C build-gtk4.0 install
+
+  rm -r "$pkgdir/usr/bin"
+
+  cd ${_name}
+  find Source -name 'COPYING*' -or -name 'LICENSE*' -print0 | sort -z |
+    while IFS= read -d $'\0' -r _f; do
+      echo "### $_f ###"
+      cat "$_f"
+      echo
+    done |
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_webkit2hbd() {
+  depends+=(libwpe-1.0.so libWPEBackend-fdo-1.0.so)
+  provides+=(libjavascriptcoregtk-4.0.so libwebkit2gtk-4.0.so)
+
+  DESTDIR="${pkgdir}" ninja -C build-hbd install
+
+  rm -r "$pkgdir/usr/bin"
+
+  cd ${_name}
+  find Source -name 'COPYING*' -or -name 'LICENSE*' -print0 | sort -z |
+    while IFS= read -d $'\0' -r _f; do
+      echo "### $_f ###"
+      cat "$_f"
+      echo
+    done |
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
 # vim:set sw=2 et:
