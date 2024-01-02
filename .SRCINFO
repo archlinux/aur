@@ -1,0 +1,11 @@
+pkgbase = chicken-srfi-13
+	pkgdesc = Chicken Scheme SRFI-13 string library
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-13
+	arch = x86_64
+	license = BSD
+	makedepends = chicken-srfi-14
+	depends = chicken
+
+pkgname = chicken-srfi-13
