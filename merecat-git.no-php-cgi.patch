@@ -1,0 +1,27 @@
+diff '--color=auto' -crB src/merecat-git/tests/Makefile.am _patched/tests/Makefile.am
+*** src/merecat-git/tests/Makefile.am	2024-01-02 18:53:08.507935103 +0900
+--- _patched/tests/Makefile.am	2024-01-02 18:55:20.235174996 +0900
+***************
+*** 1,11 ****
+  EXTRA_DIST       = merecat.conf start.sh stop.sh
+! EXTRA_DIST      += cgi.sh gzip.sh redirect.sh location.sh php.sh
+  CLEANFILES       = *~ *.trs *.log
+  TEST_EXTENSIONS  = .sh
+  
+  TESTS            = start.sh
+  TESTS           += cgi.sh
+- TESTS           += php.sh
+  TESTS           += gzip.sh
+  TESTS           += redirect.sh
+  TESTS           += location.sh
+--- 1,10 ----
+  EXTRA_DIST       = merecat.conf start.sh stop.sh
+! EXTRA_DIST      += cgi.sh gzip.sh redirect.sh location.sh
+  CLEANFILES       = *~ *.trs *.log
+  TEST_EXTENSIONS  = .sh
+  
+  TESTS            = start.sh
+  TESTS           += cgi.sh
+  TESTS           += gzip.sh
+  TESTS           += redirect.sh
+  TESTS           += location.sh
