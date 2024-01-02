@@ -5,7 +5,7 @@
 
 pkgname=csd-background
 _realname=cinnamon-settings-daemon
-pkgver=5.2.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="The Cinnamon Settings daemon (background plugin only)"
 arch=('x86_64')
@@ -16,14 +16,14 @@ optdepends=('cinnamon-translations: i18n')
 makedepends=('meson' 'samurai')
 conflicts=("$_realname")
 options=('!emptydirs')
-source=("${_realname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+source=("${_realname}-${pkgver}.tar.gz::${url}/archive/${pkgver}/${_realname}-${pkgver}.tar.gz"
         strip-{plugins,dependencies}.patch)
-sha512sums=('ae076956715bc7b47746868df0f1cb4034a8ce26b2d64878c74654f08a4498155063f16bf7972316fa138f72e10a82e8589fdb607f8072bbcd92e106bedbe98e'
-            '5cd2697c6a9af2af278b20f4a5aff01727350e001ab29df98b79d501b38564497ea5ce23a8e9b3743f42db34f1cc15a5f46a3c3f3d0144cd9455d38ae587d1ef'
-            '99578525531baf6e8436c393fd0c9643e4ca1fefaf78976d5bc6baa98e587907f4a4f0a5409e5a2f712d4a4b14fca1d6d2511b92ae984a801a3efb36a051e4ff')
-b2sums=('aca6aac0a7b85fa9fb60f1101e0027d5faf3f6d95f7d306ae0ad9dd2e19bb1b48ab4333bbcdff5405b52c306f67eb34bfce895b37529d3ce015182aac41dcf07'
-        'cf814f7059c24964f1242277a328c10813e81dbc2103c22148889b17a05c96d637ccc6c8aed7dbed3636798755158365482e719202a8c9620c89aacd672e074a'
-        'b5e89c0d773945466635fab79dc43c88eecad2fecc626e6496275a425fb1ff331990a3289cd9ed5accc2a017abeff4eab17cd52d9d13ecd49fe5b8cf9a8f66ae')
+sha512sums=('44348765bf8c0cb941d177a6765aef10796d72f5c215dbffa4b514523956e257128d6bbbb0dcd9c3f0b2bcde24745e082ad82a7cee149125903e13b349c07200'
+            '600359796ecd9ebcc54d2e96f75722e03e394c43468a1ac5ecb2a9171f57ead1a7a01bc8156b77c89adb06edc71fa58b71ebfbe6c911178354d5a390c05f1592'
+            'e5adc6badb72e55f359289afb2d7b5f796555d6e2cc0dcfb896cddf6cc54e97f8cc63637b96a7389afd4166b04ebd2ca82377878cf55ddb88a93c94e9790e373')
+b2sums=('f05e14e9d3c15bc94df5435b0f317e1924993fbf4908491ea5a825b623c6a6f127ce20f5c31f54bfbd547a70ad645c3dbe71d9c55f790a3e0730d55bc58d6316'
+        'e36f06bbbacb205f3df3bdc3c1ebaeb317411c38622a52121ab4c58376dd391339072dc5dc3cf8b8b10b2c5d66650493d00363024531535eeeb368acaacfde7f'
+        '098449f15eb34167517e2d1ed6261ea355cb3f474b305356f9625f0fee16ab750106e5cddb67e9d4c36977913133b9984bfd56a6194e3ad4cf48caed71d87c2f')
 
 prepare() {
    cd "${srcdir}"/${_realname}-${pkgver}
@@ -32,21 +32,13 @@ prepare() {
 }
 
 build() {
-    mkdir -p "${srcdir}"/${_realname}-${pkgver}/builddir
-    cd "${srcdir}"/${_realname}-${pkgver}/builddir
+  arch-meson --libexecdir=lib/${_realname} ${_realname}-${pkgver} build
 
-    meson --prefix=/usr \
-          --libexecdir="/usr/lib/${_realname}" \
-          --buildtype=plain \
-          ..
-
-    samu
+  samu -C build
 }
 
 package() {
-    cd "${srcdir}"/${_realname}-${pkgver}/builddir
+    DESTDIR="${pkgdir}" samu -C build install
 
-     DESTDIR="${pkgdir}" samu install
-
-     find "${pkgdir}" \( -type f -o -type l \) ! \( -name '*background*' -o -name '*.pc' -o -name '*.so' \) -delete
+    find "${pkgdir}" \( -type f -o -type l \) ! \( -name '*background*' -o -name '*.pc' -o -name '*.so' \) -delete
 }
