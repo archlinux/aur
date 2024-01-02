@@ -1,0 +1,17 @@
+pkgbase = mtdev-git
+	pkgdesc = A stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol
+	pkgver = 1.1.6.r1.g2ed588e
+	pkgrel = 1
+	url = https://bitmath.org/code/mtdev/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = mtdev=1.1.6.r1.g2ed588e
+	conflicts = mtdev
+	options = staticlibs
+	source = git+https://bitmath.org/git/mtdev.git
+	sha256sums = SKIP
+
+pkgname = mtdev-git
