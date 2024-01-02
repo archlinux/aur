@@ -1,6 +1,6 @@
 # Maintainer: elementh <hello@lucasmarino.me>                                     
 pkgname=anytype-bin
-pkgver=0.37.0  
+pkgver=0.37.3
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "anytype.png"
     )
 noextract=("${_appimage}")
-sha256sums=('678e864dc2686aabe356ec543fe3aec43df628cd0d408496325bf7b9ca39afa8'
+sha256sums=('5b7a7aecbd3b5ce12d5d896e23e4ef8205c175a35169dca965cf4c3ba4138783'
             '9d789ae73ce87a7a6c37ef60f7fbcc519e96f96fe5c5ffdf1abfc6c71fc62b81'
             '48ee23a45c29cf081ccf5188c045150b7410007cd21743ce8592974ab18120c0')
 
