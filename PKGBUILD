@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "config.yaml")
-sha256sums=('0c6f2c073189211aaa5a6ce8019f1c3f421bc4cdc1e46217a0a76912c6a38927'
+sha256sums=('e9958904180437fc9526b3d43f0b4c23d5bf560cc64bfb32a4bfc6f6c644eb3d'
             '7b60925a78c9a4b726833e194b395cabddf89b364a5c721522cb78aaece33e79'
             '81a93a53a59dee006bfaa3f8b6490e654ea8a929cd2acb136136b5f7d569aad4'
             '60b5e5308d9aec711e797c402b82899ea0f20951de9baca1594884fbe21f8acc'
@@ -27,15 +27,15 @@ sha256sums=('0c6f2c073189211aaa5a6ce8019f1c3f421bc4cdc1e46217a0a76912c6a38927'
 
 build(){
     cd "${srcdir}"/mihomo-${pkgver}
-    BUILDTIME=$(date -u)
+    BUILDTIME=$(date -u --rfc-3339=seconds)
     GOOS=linux go build \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" \
-    -X \"github.com/MetaCubeX/mihomo/constant.Version=${pkgver}\" \
-    -X \"github.com/MetaCubeX/mihomo/constant.BuildTime=${BUILDTIME}\" \
+    -X \"github.com/metacubex/mihomo/constant.Version=${pkgver}\" \
+    -X \"github.com/metacubex/mihomo/constant.BuildTime=${BUILDTIME}\" \
     " \
     -tags with_gvisor -o ${pkgname}-${pkgver}
 }
