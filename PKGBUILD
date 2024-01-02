@@ -9,7 +9,7 @@
 
 _gitname=gkrellm
 pkgname=${_gitname}-git
-pkgver=20160206.5e76842
+pkgver=20240102.2833da7
 pkgrel=1
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
@@ -22,7 +22,7 @@ conflicts=('gkrellm')
 backup=('etc/gkrellmd.conf')
 options=('emptydirs')
 source=('gkrellm.service'
-        'git://git.srcbox.net/gkrellm')
+        'git+https://git.srcbox.net/gkrellm/gkrellm.git')
 md5sums=('63c78daed61c82b933f558177f6d3721'
          'SKIP')
 
