@@ -2,7 +2,7 @@
 pkgname=argos-translate-gui
 _name=argostranslategui
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical user interface for Argos Translate"
 arch=('any')
 url="https://www.argosopentech.com"
@@ -24,5 +24,5 @@ package() {
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 argos-translate.png -t "$pkgdir/usr/share/pixmaps/"
-  install -Dm644 argos-translate.desktop -t "$pkgdir/usr/sahre/applications/"
+  install -Dm644 argos-translate.desktop -t "$pkgdir/usr/share/applications/"
 }

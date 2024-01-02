@@ -1,7 +1,7 @@
 pkgbase = argos-translate-gui
 	pkgdesc = Graphical user interface for Argos Translate
 	pkgver = 1.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.argosopentech.com
 	arch = any
 	license = MIT
