@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=encrypt0r-bin
-pkgver=3.11.64
+pkgver=3.11.65
 _electronversion=22
 pkgrel=1
 pkgdesc="App to encrypt and decrypt your files with a passphrase, powered by electron"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kunalnagar/encrypt0r/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bdb10ea2900bd6a7ee514a39e503f07ed3c307f36281c02b638fd69a89ef7bfa'
+sha256sums=('811d54f2463575918d1a775b7cb43fef5093a870b7a9f52c6dc8483435318818'
             'dd8cfe4d2d540a3c670cf0aa6c95e9076e8949d7c50d04495feb0a6ce9d82cc3'
             '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
@@ -31,7 +31,6 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/release-builds/${pkgname%-bin}_0.0.0_amd64.deb" -C "${srcdir}"
     bsdtar -xf "${srcdir}/data.tar.zst"
-    sed "s| %U||g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
