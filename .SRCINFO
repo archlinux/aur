@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-18
+	pkgdesc = Chicken Scheme SRFI-18 thread library
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-18
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-srfi-18
