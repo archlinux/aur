@@ -1,0 +1,11 @@
+pkgbase = chicken-tcp-server
+	pkgdesc = A simple generic multithreaded tcp-server for Chicken Scheme
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/tcp-server
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-18
+
+pkgname = chicken-tcp-server
