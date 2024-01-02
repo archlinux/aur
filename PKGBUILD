@@ -2,7 +2,7 @@
 
 pkgname=sdformat14
 pkgver=14.0.0
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Simulation Description Format (SDFormat) parser and description files."
