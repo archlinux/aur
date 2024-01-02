@@ -1,0 +1,13 @@
+pkgbase = chicken-srfi-178
+	pkgdesc = SRFI 178: Bitvector library for Chicken Scheme
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-178
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-srfi-151
+	depends = chicken-srfi-160
+	depends = chicken-srfi-141
+
+pkgname = chicken-srfi-178
