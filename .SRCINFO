@@ -8,6 +8,7 @@ pkgbase = zbackup
 	license = GPL2
 	checkdepends = python
 	makedepends = cmake
+	makedepends = libunwind
 	depends = xz
 	depends = openssl
 	depends = protobuf

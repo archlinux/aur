@@ -17,7 +17,7 @@ _giturl='https://github.com/davidbartonau/zbackup'
 license=('GPL2')
 depends=('xz' 'openssl' 'protobuf')
 depends+=('lzo' 'gcc-libs' 'glibc' 'abseil-cpp' 'zlib')
-makedepends=('cmake')
+makedepends=('cmake' 'libunwind')
 checkdepends=('python')
 _srcdir="${_pkgname}-${pkgver}"
 source=(
@@ -87,14 +87,16 @@ build() {
   cd "${_srcdir}"
   #export CC=clang
   #export CXX=clang
-  LDFLAGS+=',--copy-dt-needed-entries' # https://stackoverflow.com/questions/19901934/libpthread-so-0-error-adding-symbols-dso-missing-from-command-line
+  #LDFLAGS+=',--copy-dt-needed-entries' # https://stackoverflow.com/questions/19901934/libpthread-so-0-error-adding-symbols-dso-missing-from-command-line
   local _cmakeflags=(
     -DCMAKE_INSTALL_PREFIX='/usr'
     #-DCMAKE_CXX_STANDARD='11'
+    # PROTOBUF lib detection misses this one.
+    -DCMAKE_CXX_STANDARD_LIBRARIES='-labsl_spinlock_wait' # https://stackoverflow.com/questions/25243336/specifying-libraries-for-cmake-to-link-to-from-command-line
   )
   set +u; msg2 'Compile zbackup'; set -u
   cmake . -B'build-zbackup' "${_cmakeflags[@]}"
-  make -C 'build-zbackup' #-j1
+  make -C 'build-zbackup' # VERBOSE=1 # -j1
   set +u; msg2 'Compile tartool'; set -u
   cmake 'tools/tartool' -B'build-tartool' "${_cmakeflags[@]}"
   make -C 'build-tartool' -j1
