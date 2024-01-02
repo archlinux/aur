@@ -2,7 +2,7 @@
 # Contributor: David P. <megver83@parabola.nu>
 
 pkgname=liblinphone
-pkgver=5.2.112
+pkgver=5.3.5
 pkgrel=1
 pkgdesc='A high-level SIP library'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('GPL')
 depends=(belcard belle-sip jsoncpp-cmake mediastreamer xerces-c lime)
 makedepends=(cmake doxygen graphviz python-pystache python-sphinx xsd)
 source=("https://gitlab.linphone.org/BC/public/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2762c6bb5a822db2553ea9fa13a6bb3da67727524b5c1971fc50875d124ce2f5')
+sha256sums=('4e57fa4f2bb4cd00f15e0af155c2cb279ffcef960557ffa23bf9c276ed7f6d89')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -23,7 +23,7 @@ build() {
 
   cmake -B build -S "${pkgname}-${pkgver}"\
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DENABLE_STATIC=NO \
+        -DBUILD_SHARED_LIBS=YES \
         -DENABLE_CXX_WRAPPER=YES \
         -DENABLE_DOC=NO \
         -DENABLE_LIME=NO \
