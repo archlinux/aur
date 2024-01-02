@@ -2,12 +2,12 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=distro-info
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="provides information about the distributions' releases"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/sid/distro-info"
 license=('MIT')
-depends=('distro-info-data>=0.59' 'glibc' 'python')
+depends=('distro-info-data>=0.60' 'glibc' 'python')
 makedepends=('dpkg')
 checkdepends=('python-setuptools' 'shunit2')
 provides=('python-distro-info' 'python3-distro-info' 'perl-distro-info')

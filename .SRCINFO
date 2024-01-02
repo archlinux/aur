@@ -1,7 +1,7 @@
 pkgbase = distro-info
 	pkgdesc = provides information about the distributions' releases
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.debian.org/sid/distro-info
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = distro-info
 	checkdepends = python-setuptools
 	checkdepends = shunit2
 	makedepends = dpkg
-	depends = distro-info-data>=0.59
+	depends = distro-info-data>=0.60
 	depends = glibc
 	depends = python
 	provides = python-distro-info
