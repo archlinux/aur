@@ -1,0 +1,14 @@
+pkgbase = chicken-srfi-207
+	pkgdesc = SRFI-207: String-notated bytevectors for Chicken Scheme
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-207
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+	depends = chicken-srfi-151
+	depends = chicken-r7rs
+
+pkgname = chicken-srfi-207
