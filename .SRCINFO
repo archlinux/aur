@@ -1,0 +1,13 @@
+pkgbase = chicken-henrietta-cache
+	pkgdesc = Chicken Scheme Fetch and cache extensions from various sources for Henrietta to consume
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/henrietta-cache
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-http-client
+	depends = chicken-matchable
+	depends = chicken-srfi-1
+
+pkgname = chicken-henrietta-cache
