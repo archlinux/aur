@@ -1,7 +1,7 @@
 pkgbase = ruby-tty-screen
 	pkgdesc = Terminal screen detection
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.8.2
+	pkgrel = 1
 	url = https://github.com/piotrmurach/tty-screen
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = ruby-tty-screen
 	makedepends = ruby-rdoc
 	depends = ruby
 	options = !emptydirs
-	source = https://github.com/piotrmurach/tty-screen/archive/v0.8.1.tar.gz
-	sha256sums = 8b2c80a410d79c597880e9e981b006d2543ae9fd1338b183054392fe42ae06ae
+	source = https://github.com/piotrmurach/tty-screen/archive/v0.8.2.tar.gz
+	sha256sums = ee2d8cd8fce43c8653a5db13657f04b22ee0d32d75e0c83bf0df6245f130090b
 
 pkgname = ruby-tty-screen
