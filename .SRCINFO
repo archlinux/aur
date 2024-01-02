@@ -1,0 +1,11 @@
+pkgbase = chicken-format
+	pkgdesc = Common-Lisp style formatted output for Chicken Scheme
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/format
+	arch = x86_64
+	license = Public Domain
+	depends = chicken
+	depends = chicken-srfi-13
+
+pkgname = chicken-format
