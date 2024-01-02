@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-71
+	pkgdesc = SRFI-71: Extended LET-syntax for multiple values for Chicken Scheme
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-71
+	arch = x86_64
+	license = SRFI
+	depends = chicken
+
+pkgname = chicken-srfi-71
