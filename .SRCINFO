@@ -1,7 +1,7 @@
 pkgbase = sentry-native
 	pkgdesc = Sentry SDK for C, C++ and native applications
 	pkgver = 0.6.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/getsentry/sentry-native
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,15 @@ pkgbase = sentry-native
 	depends = curl
 	depends = gcc-libs
 	depends = glibc
-	source = git+https://github.com/getsentry/sentry-native.git#tag=a3d58622a807b9dda174cb9fc18fa0f98c89d043
+	source = git+https://github.com/getsentry/sentry-native.git#commit=a3d58622a807b9dda174cb9fc18fa0f98c89d043
+	source = git+https://github.com/getsentry/libunwindstack-ndk.git
+	source = git+https://github.com/getsentry/breakpad.git
+	source = git+https://chromium.googlesource.com/linux-syscall-support.git
+	source = git+https://github.com/getsentry/crashpad.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = sentry-native

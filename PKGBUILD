@@ -2,7 +2,7 @@
 
 pkgname=sentry-native
 pkgver=0.6.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Sentry SDK for C, C++ and native applications"
 arch=(x86_64)
 url="https://github.com/getsentry/sentry-native"
@@ -21,9 +21,21 @@ checkdepends=(
   python-msgpack
 )
 
-_tag=a3d58622a807b9dda174cb9fc18fa0f98c89d043 # git rev-parse "$pkgver"
-source=("git+$url.git#tag=$_tag")
-sha256sums=('SKIP')
+_commit=a3d58622a807b9dda174cb9fc18fa0f98c89d043 # git rev-parse "$pkgver"
+source=(
+  "git+$url.git#commit=$_commit"
+  "git+https://github.com/getsentry/libunwindstack-ndk.git"
+  "git+https://github.com/getsentry/breakpad.git"
+  "git+https://chromium.googlesource.com/linux-syscall-support.git"
+  "git+https://github.com/getsentry/crashpad.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 _archive="$pkgname"
 
@@ -36,7 +48,12 @@ pkgver() {
 prepare() {
   cd "$_archive"
 
-  git submodule update --init --recursive
+  git submodule init
+  git config submodule.external/libunwindstack-ndk.url "$srcdir/libunwindstack-ndk"
+  git config submodule.external/breakpad.url "$srcdir/breakpad"
+  git config submodule.external/third_party/lss.url "$srcdir/linux-syscall-support"
+  git config submodule.external/crashpad.url "$srcdir/crashpad"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
