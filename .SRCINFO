@@ -9,7 +9,7 @@ pkgbase = adasockets
 	makedepends = gcc-ada
 	depends = sh
 	options = !libtool
-	source = https://rfc1149.net/download/adasockets/adasockets-1.13.tar.gz
+	source = https://rfc1149.net/download/adasockets/adasockets-1.14.tar.gz
 	sha256sums = 84dc04e5f61ca158f629edb1aeda7783d8ca8f458d4a5daae2d2daf6628087c6
 	sha512sums = f0cfe699792c6cc54c18f925ba5941435e37dbf23c4629b0cb90b5f7d699e2d95fea4a28b703d1e7c88af36e42214a53c415d0d840f8be3bd60f57bab592e663
 
