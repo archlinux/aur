@@ -1,7 +1,7 @@
 # Maintainer: Alireza S.N. <alireza6677 at gmail dot com>
 
 pkgname=libkrunfw-git
-pkgver=v2.0.0.r91.g8a71842
+pkgver=v4.0.0.r0.g8a71842
 pkgrel=1
 pkgdesc="A dynamic library bundling the guest payload consumed by libkrun"
 arch=("x86_64")
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 pkgver() {
     cd "${pkgname}"
     ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
