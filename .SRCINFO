@@ -1,0 +1,22 @@
+pkgbase = tm-desktop-bin
+	pkgdesc = A TikTok Music desktop application.
+	pkgver = 09.11.2023
+	pkgrel = 1
+	url = https://github.com/NeverExcel/tm-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = squashfuse
+	depends = electron27
+	depends = gtk2
+	depends = libdbusmenu-glib
+	depends = dbus-glib
+	provides = tm-desktop
+	conflicts = tm-desktop
+	source = tm-desktop-09.11.2023.AppImage::https://github.com/NeverExcel/tm-desktop/releases/download/v09.11.2023/tm-desktop-0.8.2.AppImage
+	source = LICENSE-09.11.2023::https://raw.githubusercontent.com/NeverExcel/tm-desktop/v09.11.2023/LICENSE
+	source = tm-desktop.sh
+	sha256sums = f109a8a3eddd61e0497537114dd2ca4f548eb946c3acbc6e58d0f8af2445e1f2
+	sha256sums = fca810bcb164e26493b6e6bf39e95aaca781fba20ad6e02fec625a43d142aecd
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+
+pkgname = tm-desktop-bin
