@@ -1,6 +1,6 @@
 pkgbase = qlipmon-git
 	pkgdesc = clipboard manager with rofi plugin and dbus interface
-	pkgver = r21.de4c39e
+	pkgver = r22.1a8d3c0
 	pkgrel = 2
 	url = https://github.com/vcalv/qlipmon
 	arch = x86_64
