@@ -7,6 +7,7 @@ pkgbase = kickstart-git
 	license = unknown
 	makedepends = git
 	depends = bash
+	depends = which
 	source = kickstart::git+https://github.com/bltavares/kickstart.git
 	sha256sums = SKIP
 
