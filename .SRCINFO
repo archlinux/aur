@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-193
+	pkgdesc = SRFI 193: Command line for Chicken Scheme
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-193
+	arch = x86_64
+	license = ISC
+	depends = chicken
+
+pkgname = chicken-srfi-193
