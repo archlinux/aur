@@ -1,44 +1,34 @@
 diff --git a/Makefile b/Makefile
-index a2e391f..0a94385 100644
+index c8a00a0..a2e391f 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1,7 +1,7 @@
--CC           = gcc
--CFLAGS       = -g -O2 -Wall $(RPM_OPT_FLAGS)
--LDFLAGS      = -L. -lmediacheck
--SHARED_FLAGS = -fPIC -fvisibility=hidden
-+CC           ?= gcc
-+CFLAGS       += -O2 -Wall
-+_LDFLAGS     = $(LDFLAGS) -L. -lmediacheck
-+SHARED_FLAGS += -fPIC -fvisibility=hidden
+@@ -21,8 +21,6 @@ DIGEST_OBJ  = $(DIGEST_SRC:.c=.o)
  
- ARCH    := $(shell uname -m)
- GIT2LOG := $(shell if [ -x ./git2log ] ; then echo ./git2log --update ; else echo true ; fi)
-@@ -19,15 +19,15 @@ LIB_SONAME   = $(LIB_NAME).so.$(MAJOR_VERSION)
- DIGEST_SRC  = $(wildcard md5.c sha*.c)
- DIGEST_OBJ  = $(DIGEST_SRC:.c=.o)
+ LIBDIR = /usr/lib$(shell ldd /bin/sh | grep -q /lib64/ && echo 64)
  
--LIBDIR = /usr/lib$(shell ldd /bin/sh | grep -q /lib64/ && echo 64)
-+LIBDIR ?= /usr/lib
- 
+-.PHONY: all doc clean install test archive
+-
  all: checkmedia digestdemo
  
  checkmedia: checkmedia.c $(LIB_FILENAME)
--	$(CC) $(CFLAGS) checkmedia.c $(LDFLAGS) -DVERSION=\"$(VERSION)\" -o $@
-+	$(CC) $(CFLAGS) checkmedia.c $(_LDFLAGS) -DVERSION=\"$(VERSION)\" -o $@
+@@ -59,14 +57,6 @@ install: checkmedia
+ 	ln -snf $(LIB_SONAME) $(DESTDIR)$(LIBDIR)/$(LIB_NAME).so
+ 	install -m 644 -D mediacheck.h $(DESTDIR)/usr/include/mediacheck.h
  
- digestdemo: digestdemo.c $(LIB_FILENAME)
--	$(CC) $(CFLAGS) digestdemo.c $(LDFLAGS) -o $@
-+	$(CC) $(CFLAGS) digestdemo.c $(_LDFLAGS) -o $@
+-%.1: %_man.adoc
+-	asciidoctor -b manpage -a version=$(VERSION) -a soversion=${MAJOR_VERSION} $<
+-
+-README.html: README.adoc
+-	asciidoctor -b html -a version=$(VERSION) -a soversion=${MAJOR_VERSION} $<
+-
+-doc: tagmedia.1 checkmedia.1 README.html
+-
+ archive: changelog
+ 	@if [ ! -d .git ] ; then echo no git repo ; false ; fi
+ 	mkdir -p package
+@@ -75,4 +65,4 @@ archive: changelog
+ 	xz -f package/$(PREFIX).tar
  
- mediacheck.o: mediacheck.c mediacheck.h
- 	$(CC) -c $(CFLAGS) $(SHARED_FLAGS) -o $@ $<
-@@ -36,7 +36,7 @@ $(DIGEST_OBJ): %.o: %.c %.h
- 	$(CC) -c $(CFLAGS) $(SHARED_FLAGS) -o $@ $<
- 
- $(LIB_FILENAME): $(DIGEST_OBJ) mediacheck.o
--	$(CC) -shared -Wl,-soname,$(LIB_SONAME) mediacheck.o $(DIGEST_OBJ) -o $(LIB_FILENAME)
-+	$(CC) -shared -Wl,-soname,$(LIB_SONAME) mediacheck.o $(DIGEST_OBJ) -o $(LIB_FILENAME) $(LDFLAGS)
- 	@ln -snf $(LIB_FILENAME) $(LIB_SONAME)
- 	@ln -snf $(LIB_SONAME) $(LIB_NAME).so
- 
+ clean:
+-	rm -rf *.o *.so *.so.* *.1 *.html package checkmedia digestdemo *~ tests/*.{img,check,tag}
++	rm -rf *.o *.so *.so.* package checkmedia digestdemo *~ tests/*.{img,check,tag}
