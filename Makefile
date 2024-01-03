@@ -9,4 +9,4 @@ package: PKGBUILD .SRCINFO
 all: package
 
 clean:
-	rm -fRv .SRCINFO *.tar.* ktlint-*/ src/ pkg/ *.asc 2> /dev/null || true
+	rm -fRv .SRCINFO *.tar.* ktlint/ ktlint-*/ src/ pkg/ *.asc 2> /dev/null || true
