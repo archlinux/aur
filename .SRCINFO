@@ -1,0 +1,19 @@
+pkgbase = steam_hdr
+	pkgdesc = Add desktop files to launch Steam in a Gamescope session with HDR enabled
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = steam
+	depends = steam-native-runtime
+	depends = gamescope
+	source = steam_hdr.sh
+	source = steam-native_hdr.sh
+	source = steam_hdr.desktop
+	source = steam-native_hdr.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = steam_hdr
