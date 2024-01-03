@@ -27,7 +27,7 @@
 ## basic info
 pkgname="firefox${_pkgtype:-}"
 _pkgname=firefox-nightly
-pkgver=123.0a1+20231228.1+ha0075cc44476
+pkgver=123.0a1+20231230.1+h9660032084db
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -207,6 +207,7 @@ ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
+export NIGHTLY_BUILD=1
 export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
 
 # Keys
