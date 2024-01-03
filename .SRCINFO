@@ -1,0 +1,22 @@
+pkgbase = bilibili
+	pkgdesc = 基于哔哩哔哩官方客户端移植的Linux版本 支持漫游
+	pkgver = 1.13.0_2
+	pkgrel = 1
+	url = https://github.com/msojocs/bilibili-linux
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = asar
+	depends = electron21
+	depends = hicolor-icon-theme
+	provides = bilibili
+	conflicts = bilibili
+	source = bilibili::git+https://github.com/msojocs/bilibili-linux.git#tag=v1.13.0-2
+	source = bilibili.sh
+	sha256sums = SKIP
+	sha256sums = 21c4d48798f22280ced9cf05e6bcbcc57c24f0952262a128c3bad0e73ba433f4
+
+pkgname = bilibili
