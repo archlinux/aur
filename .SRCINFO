@@ -1,0 +1,16 @@
+pkgbase = certbot-dns-standalone
+	pkgdesc = Standalone DNS server plugin for certbot verification
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/siilike/certbot-dns-standalone
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-mock
+	makedepends = python-setuptools
+	depends = certbot
+	depends = python-acme
+	depends = python-dnslib
+	source = certbot-dns-standalone-1.1.tar.gz::https://github.com/siilike/certbot-dns-standalone/archive/refs/tags/1.1.tar.gz
+	sha256sums = 79e38d4733de019e16f343aaeb18cf3aa8f5d4d53ffbbedfafb8e23d1710a792
+
+pkgname = certbot-dns-standalone
