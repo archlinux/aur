@@ -2,7 +2,6 @@
 pkgname=bilibili
 pkgver=1.13.0_2
 _electronversion=21
-_nodeversion=16
 pkgrel=1
 pkgdesc="基于哔哩哔哩官方客户端移植的Linux版本 支持漫游"
 arch=(
@@ -20,8 +19,9 @@ depends=(
     'hicolor-icon-theme'
 )
 makedepends=(
-    'npm'
-    'nvm'
+    'wget'
+    'perl-image-exiftool'
+    'p7zip'
     'git'
     'asar'
 )
@@ -31,24 +31,12 @@ source=(
 )
 sha256sums=('SKIP'
             '21c4d48798f22280ced9cf05e6bcbcc57c24f0952262a128c3bad0e73ba433f4')
-_ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
-}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    _ensure_local_nvm
     cd "${srcdir}/${pkgname}"
-    export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
     sh "${srcdir}/${pkgname}/tools/setup-${pkgname}"
 }
 package() {
