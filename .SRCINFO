@@ -1,0 +1,12 @@
+pkgbase = chicken-module-declarations
+	pkgdesc = Module declarations for Chicken Scheme
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/module-declarations
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-matchable
+	depends = chicken-srfi-1
+
+pkgname = chicken-module-declarations
