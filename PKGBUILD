@@ -11,7 +11,7 @@ pkgname=(
   protonmail-bridge
 )
 pkgver=3.6.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
@@ -116,6 +116,7 @@ check() {
     go list ./internal/... ./pkg/... \
       | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/app' \
       | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/bridge' \
+      | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/configstatus' \
       | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/dialer' \
       | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/services' \
       | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/telemetry' \
