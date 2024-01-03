@@ -2,7 +2,7 @@
 
 pkgname=pg_cron
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Run periodic jobs in PostgreSQL'
 arch=(x86_64 armv5h armv6h armv7h aarch64)
 license=(MIT)
