@@ -2,12 +2,12 @@
 pkgname=minetest-nodeverse
 _pkgname=nodeverse
 _pkgauthor=aerkiaga
-pkgver=0.2.2
-_cdbrel=13551
+pkgver=0.4.1
+_cdbrel=22625
 pkgrel=1
 pkgdesc="A procedurally generated space exploration game"
 license=("GPLv3")
-sha256sums=('81686a589b9cb48437aa5e7dacea54f96207ea5ffbe25c9c1f9ddad7f8dc7cb1')
+sha256sums=('2b8257fd370c1b2bad7bf0959ec3db31d68275ce3e238355a2abd41b325e45c1')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
