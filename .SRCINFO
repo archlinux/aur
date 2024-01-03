@@ -1,0 +1,11 @@
+pkgbase = chicken-clojurian
+	pkgdesc = Syntax and utility functions inspired by Clojure for Chicken Scheme
+	pkgver = 3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/clojurian
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-18
+
+pkgname = chicken-clojurian
