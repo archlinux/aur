@@ -3,7 +3,7 @@
 
 _pkgname="xdg-desktop-portal-hyprland"
 pkgname="${_pkgname}-git"
-pkgver=r321.d8daa2a
+pkgver=r339.09e97f5
 pkgrel=1
 epoch=1
 pkgdesc="xdg-desktop-portal backend for hyprland"
@@ -12,8 +12,8 @@ arch=(x86_64)
 license=(custom:MIT)
 provides=("${pkgname%-git}" "xdg-desktop-portal-impl" "xdg-desktop-portal-wlr")
 conflicts=("${pkgname%-git}" "xdg-desktop-portal-wlr")
-depends=(pipewire libinih qt6-base qt6-wayland)
-makedepends=(git meson wayland-protocols wayland scdoc cmake sdbus-cpp)
+depends=(pipewire libinih qt6-base qt6-wayland sdbus-cpp hyprlang)
+makedepends=(git meson wayland-protocols wayland scdoc cmake)
 optdepends=(
   "grim: required for the screenshot portal to function"
   "slurp: support for interactive mode for the screenshot portal; one of the built-in chooser options for the screencast portal"
