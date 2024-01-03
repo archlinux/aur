@@ -1,0 +1,15 @@
+pkgbase = yape-git
+	pkgdesc = Multiplatform Commodore 64 and 264 family emulator written in C++ using SDL2 - Development version
+	pkgver = 0.71.2.r29.g251f99c
+	pkgrel = 1
+	url = https://github.com/calmopyrin/yapesdl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sdl2
+	conflicts = yape
+	source = git+https://github.com/calmopyrin/yapesdl.git
+	sha256sums = SKIP
+
+pkgname = yape-git
