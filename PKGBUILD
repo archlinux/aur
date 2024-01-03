@@ -3,7 +3,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
-pkgver=4.14.1
+pkgver=4.14.2
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -13,15 +13,15 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'jemalloc' 'abseil-cpp' 'libdispatch'
+         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'abseil-cpp' 'libdispatch'
          'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'glibmm-2.68')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
-             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'libsigc++-3.0')
+             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz")
-sha512sums=('e6c25253acee137e03af42e60c2f5ca8a92220e7ed2175a0a20ed49e3d310a724a1fa9e24e5a94c77e70be3d9dc49ccfbe3790bd9074a0417355af54636f7631')
+sha512sums=('7ab1f8b93d4c1efcb08ca42f9b4604a17a22517d6616ba973018a4b7ef63de3d6650deeb74d752548ec7fce8b3581a73b974c6bc6d2c16e4f31049bc11d87b7a')
 
 prepare() {
     cd tdesktop-$pkgver-full
