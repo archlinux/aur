@@ -1,0 +1,11 @@
+pkgbase = chicken-sxml-transforms
+	pkgdesc = The SXML transformations (to XML, SXML, and HTML) from the SSAX project at Sourceforge for Chicken Scheme
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/sxml-transforms
+	arch = x86_64
+	license = Public Domain
+	depends = chicken
+	depends = chicken-srfi-13
+
+pkgname = chicken-sxml-transforms
