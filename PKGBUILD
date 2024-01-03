@@ -1,13 +1,9 @@
+pkgname=gtk4-customizable
+
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=gtk4
-pkgname=(
-  gtk4
-  gtk4-demos
-  gtk4-docs
-  gtk-update-icon-cache
-)
 pkgver=4.12.1
+apiver="${pkgver%.*}"
 pkgrel=1
 epoch=1
 pkgdesc="GObject-based multi-platform GUI toolkit"
@@ -65,18 +61,9 @@ makedepends=(
   shaderc
   wayland-protocols
 )
-checkdepends=(
-  gst-plugin-pipewire
-  gst-plugins-base
-  mutter
-  pipewire
-  python-pydbus
-  weston
-  wireplumber
-)
 _commit=b51a3980f365775d92fa188f5533e78094474401  # tags/4.12.1^0
 source=(
-  "git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
+  "https://download.gnome.org/sources/gtk/$apiver/gtk-$pkgver.tar.xz"
   gtk-update-icon-cache.{hook,script}
   gtk4-querymodules.{hook,script}
 )
@@ -85,11 +72,6 @@ b2sums=('SKIP'
         '6bcd839ef82296d864587e0cc7acc0145bdea8e5235af304747cf3c0e564c2757cc67c0373dc044bec83dccfc57dc899546c2fccea96cff2bba22f09978a3814'
         'dd589bd1ad2b13f0e06f6899776a083f20a1aac24d4308d666ffd0d1cff38457b8257b8366f92e767b4233b3d86b6b54fa50339faf84c4801a824986366dce30'
         '4b90eb8d582509b09aab401313d4399cc139ad21b5dd7d45d79860d0764c7494c60714e0794e09823e51d1894ac032a994f27d79d1499abf24ee6f59bdb0c243')
-
-pkgver() {
-  cd gtk
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
 
 prepare() {
   cd gtk
@@ -114,18 +96,6 @@ build() {
   meson compile -C build
 }
 
-check() (
-  export XDG_RUNTIME_DIR="$PWD/runtime-dir" WAYLAND_DISPLAY=wayland-5
-
-  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
-  weston --backend=headless-backend.so --socket=$WAYLAND_DISPLAY --idle-time=0 &
-  _w=$!
-
-  trap "kill $_w; wait" EXIT
-
-  meson test -C build --print-errorlogs
-)
-
 _pick() {
   local p="$1" f d; shift
   for f; do
@@ -136,10 +106,11 @@ _pick() {
   done
 }
 
-package_gtk4() {
+package() {
   depends+=(gtk-update-icon-cache)
   optdepends=('evince: Default print preview command')
-  provides=(libgtk-4.so)
+  provides=(gtk libgtk-4.so)
+  conflicts=(gtk4)
 
   meson install -C build --destdir "$pkgdir"
 
@@ -169,30 +140,6 @@ END
   _pick guic usr/share/man/man1/gtk4-update-icon-cache.1
 
 
-}
-
-package_gtk4-demos() {
-  pkgdesc+=" (demo applications)"
-  depends=(gtk4)
-  mv demo/* "$pkgdir"
-}
-
-package_gtk4-docs() {
-  pkgdesc+=" (documentation)"
-  depends=()
-  mv docs/* "$pkgdir"
-}
-
-package_gtk-update-icon-cache() {
-  pkgdesc="GTK icon cache updater"
-  depends=(gdk-pixbuf2 librsvg hicolor-icon-theme)
-
-  mv guic/* "$pkgdir"
-  ln -s gtk4-update-icon-cache "$pkgdir/usr/bin/gtk-update-icon-cache"
-  ln -s gtk4-update-icon-cache.1 "$pkgdir/usr/share/man/man1/gtk-update-icon-cache.1"
-
-  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk-update-icon-cache.hook
-  install -D gtk-update-icon-cache.script "$pkgdir/usr/share/libalpm/scripts/gtk-update-icon-cache"
 }
 
 # vim:set sw=2 sts=-1 et:

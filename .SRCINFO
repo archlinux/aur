@@ -1,4 +1,4 @@
-pkgbase = gtk4
+pkgbase = gtk4-customizable
 	pkgdesc = GObject-based multi-platform GUI toolkit
 	pkgver = 4.12.1
 	pkgrel = 1
@@ -6,13 +6,6 @@ pkgbase = gtk4
 	url = https://www.gtk.org/
 	arch = x86_64
 	license = LGPL
-	checkdepends = gst-plugin-pipewire
-	checkdepends = gst-plugins-base
-	checkdepends = mutter
-	checkdepends = pipewire
-	checkdepends = python-pydbus
-	checkdepends = weston
-	checkdepends = wireplumber
 	makedepends = docbook-xsl
 	makedepends = gi-docgen
 	makedepends = git
@@ -60,7 +53,7 @@ pkgbase = gtk4
 	depends = shared-mime-info
 	depends = tracker3
 	depends = wayland
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=b51a3980f365775d92fa188f5533e78094474401
+	source = https://download.gnome.org/sources/gtk/4.12/gtk-4.12.1.tar.xz
 	source = gtk-update-icon-cache.hook
 	source = gtk-update-icon-cache.script
 	source = gtk4-querymodules.hook
@@ -71,7 +64,7 @@ pkgbase = gtk4
 	b2sums = dd589bd1ad2b13f0e06f6899776a083f20a1aac24d4308d666ffd0d1cff38457b8257b8366f92e767b4233b3d86b6b54fa50339faf84c4801a824986366dce30
 	b2sums = 4b90eb8d582509b09aab401313d4399cc139ad21b5dd7d45d79860d0764c7494c60714e0794e09823e51d1894ac032a994f27d79d1499abf24ee6f59bdb0c243
 
-pkgname = gtk4
+pkgname = gtk4-customizable
 	depends = adwaita-icon-theme
 	depends = cairo
 	depends = cantarell-fonts
@@ -111,18 +104,6 @@ pkgname = gtk4
 	depends = wayland
 	depends = gtk-update-icon-cache
 	optdepends = evince: Default print preview command
+	provides = gtk
 	provides = libgtk-4.so
-
-pkgname = gtk4-demos
-	pkgdesc = GObject-based multi-platform GUI toolkit (demo applications)
-	depends = gtk4
-
-pkgname = gtk4-docs
-	pkgdesc = GObject-based multi-platform GUI toolkit (documentation)
-	depends = 
-
-pkgname = gtk-update-icon-cache
-	pkgdesc = GTK icon cache updater
-	depends = gdk-pixbuf2
-	depends = librsvg
-	depends = hicolor-icon-theme
+	conflicts = gtk4
