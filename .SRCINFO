@@ -1,6 +1,6 @@
 pkgbase = linux-amd-znver3
 	pkgver = 6.6.v.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -36,6 +36,3 @@ pkgname = linux-amd-znver3
 
 pkgname = linux-amd-znver3-headers
 	pkgdesc = Header files and scripts for building modules for the linux-amd-znver3 kernel
-
-pkgname = linux-amd-znver3-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
