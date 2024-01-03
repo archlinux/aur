@@ -1,0 +1,13 @@
+pkgbase = chicken-srfi-101
+	pkgdesc = SRFI 101 for Chicken Scheme
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-101
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-69
+	depends = chicken-vector-lib
+
+pkgname = chicken-srfi-101
