@@ -4,7 +4,7 @@
 pkgname='treegrep-bin'
 _pkgname="${pkgname%%-bin}"
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Frontend for grep or ripgrep that presents results in a tree format (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/4imothy/treegrep'
@@ -51,7 +51,7 @@ package() {
   # FIXME: Does anyone know the proper location for Elvish completions?
   # Elvish
   install "-${_v}Dm0644" completions/tgrep.elv \
-    "$pkgdir/usr/share/elvish/completions/tgrep.elv"
+    "$pkgdir/usr/share/elvish/lib/completions-tgrep.elv"
 }
 
 sha256sums_aarch64=(
