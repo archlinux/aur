@@ -1,15 +1,15 @@
 pkgbase = vtm-bin
 	pkgdesc = Terminal multiplexer with window manager and session sharing
-	pkgver = 0.9.9v
+	pkgver = 0.9.9w
 	pkgrel = 1
 	url = https://github.com/netxs-group/vtm
 	arch = x86_64
 	license = MIT
 	provides = vtm
 	conflicts = vtm-git
-	source = vtm-bin-0.9.9v.tar.gz::https://github.com/netxs-group/vtm/releases/download/v0.9.9v/vtm_linux_x86_64.tar.gz
+	source = vtm-bin-0.9.9w.zip::https://github.com/netxs-group/vtm/releases/download/v0.9.9w/vtm_linux_x86_64.zip
 	source = https://raw.githubusercontent.com/netxs-group/vtm/92dbe4054f0824648a8e33a6320bd6f3946508cf/LICENSE
-	sha256sums = bd2530020d6fc240bcfe15c46c40112b72a829591a13d82db281da6879978f28
+	sha256sums = 6e23e37fc9fccb6769b1c9138733ef38cbcc811dc8d68673923c371e901745a8
 	sha256sums = 7b7086edfedec1a2d8b40bc3748c2b77688806b4ab1081c3570fd7bb9b2c7842
 
 pkgname = vtm-bin
