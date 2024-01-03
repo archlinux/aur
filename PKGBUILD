@@ -11,7 +11,7 @@
 
 pkgname=fish-smart-prompt-truncate
 _pkgname=fish
-pkgver=3.6.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='Fork of fish that allows non-final prompt lines to be reflowed by the terminal instead of truncated.'
 url='https://fishshell.com/'
@@ -30,10 +30,7 @@ source=(
   only-truncate-final-line.patch
 )
 validpgpkeys=(003837986104878835FA516D7A67D962D88A709A) # David Adam <zanchey@gmail.com>
-sha256sums=('55402bb47ca6739d8aba25e41780905b5ce1bce0a5e0dd17dca908b5bc0b49b2'
-            'SKIP'
-            'SKIP')
-sha512sums=('ee6f5c7699307d515f111c8c4f1633d9eb9703e045a93cfc2fcec722a03cca4ab25e4e09f6fd94ff2d07180d8b37c6ab733323bb2645065fdeb4e94771347597'
+sha256sums=('df1b7378b714f0690b285ed9e4e58afe270ac98dbc9ca5839589c1afcca33ab1'
             'SKIP'
             'SKIP')
 
