@@ -7,7 +7,7 @@ _upstream_name="pyav"
 pkgdesc="WyattBlue fork of python-av (Python bindings for FFmpeg)"
 url="https://github.com/WyattBlue/pyav"
 
-pkgver=12.0.0
+pkgver=12.0.1
 pkgrel=1
 
 arch=("x86_64" "i686")
@@ -40,7 +40,7 @@ conflicts=('python-av')
 # source=( "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 # upload failed upstream: https://github.com/PyAV-Org/PyAV/actions/runs/6747799842/job/18350415863
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('74b3fa8eca8a25c0e671dab67fd1773316d6036fbc000f77f9c785e43a12af0f1dafe96cbe747b381c7bb67af5e56d771164d0cb1a8f1b0c26a6b9d981665062')
+b2sums=('1a0dfd50e6b9ff80fc58df710fe1d5dd96ad8d35532cf8f3ac56c029e45f6044d7af807485b7037480f76f830f16bdc3560c9b68c29e5a747e67a2a96737ba30')
 
 build() {
     cd "${srcdir}"/${_upstream_name}-${pkgver}
