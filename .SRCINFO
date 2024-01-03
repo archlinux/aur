@@ -1,6 +1,6 @@
 pkgbase = smfc
 	pkgdesc = Supermicro Fan Control
-	pkgver = 2.5.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/petersulyok/smfc
 	install = smfc.install
@@ -16,9 +16,9 @@ pkgbase = smfc
 	depends = pacman-hook-reload-modules
 	backup = etc/default/smfc
 	backup = opt/smfc/smfc.conf
-	source = smfc-v2.5.0.tar.gz::https://github.com/petersulyok/smfc/archive/refs/tags/v2.5.0.tar.gz
+	source = smfc-v3.4.0.tar.gz::https://github.com/petersulyok/smfc/archive/refs/tags/v3.4.0.tar.gz
 	source = modules-load.conf
-	sha256sums = 38e817ff4d9a5bd8d91a3fe395a0ce1f8770f5b0681847b958031bed866b864f
+	sha256sums = 92412bc73e13e8fbb6e3d00835d9954698ad4d0b3cd98275778875d63bc8afcc
 	sha256sums = 695a1124cf2922feb6a7d2892e664a1b4fcb11329ff635734dc1b95df1f9dc51
 
 pkgname = smfc
