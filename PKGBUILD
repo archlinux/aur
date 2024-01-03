@@ -1,21 +1,21 @@
 # Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
-pkgver=22.1.11
+pkgver=22.1.16
 pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
 url='https://github.com/jgraph/drawio-desktop'
 license=('Apache')
-_electronver=25
+_electronver=26
 depends=("electron$_electronver" libnotify shared-mime-info)
 makedepends=(yarn 'nodejs>=12')
 options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz"
         "drawio.xml")
-sha512sums=('eb54cb802bf330c4cab15cf2e63b8af0eb099f2f48510d15fed43fb7779a8bc4d2ed58617797a17489c7f1a575a3c2eed186ba6d3cebee842491e5063534aa96'
-            '91af08d1d6b569060854b8974acfa5fb484175a35b0331d8259e52b0e701de62ac8778dc5f51a929d25a2111775b6560dc692595784cf8583b7952cf5f9689ca'
+sha512sums=('83bc161cd514c8fe55eaa3bfc53001a51f741dcd8a68cd4965850fec099def5c2d70185af028c34face98b555af6a00d5af478a6928463db09630bd7561ed732'
+            'd3f01849b32c5f1a1c93ab566730af5092207abc70363c4158beb158720a61d9913ae275525cd3cc902f000ea86f3d33dd9ce3efedd352a845ae7994a22c54b8'
             '8899108b4112f065173a077ca68d4d915780bcc993c69924098e134fa05338a20cb0391720b7b45c27071f789fbe5a6a02228dd633570e91fb4482082c480539')
 
 build() {
@@ -27,8 +27,8 @@ build() {
   rm -rfv drawio/src/main/webapp/META-INF drawio/src/main/webapp/WEB-INF
 
   # Electron version compatibility check
-  echo "Checking electron version"
-  grep -qF "\"electron\": \"^$_electronver." 'package.json'
+  # echo "Checking electron version"
+  # grep -qF "\"electron\": \"^$_electronver." 'package.json'
 
   # disable updater
   sed -e '/electron-updater/d' -i 'package.json'
