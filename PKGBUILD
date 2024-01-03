@@ -3,7 +3,7 @@
 # Contributor: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=standardnotes-bin
-pkgver=3.181.32
+pkgver=3.183.22
 pkgrel=1
 pkgdesc='Free, open-source encrypted notes app.'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::$url/releases/download/%40stan
 source_aarch64=("$pkgname-$pkgver-aarch64.AppImage::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-arm64.AppImage")
 
 sha256sums=('71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16')
-sha256sums_x86_64=('491483a4e4ca263a80e2e30e46e116627784e4b0dbf1411549a68cc899fa4901')
-sha256sums_aarch64=('6c9cfb71a493d4f1ce479f0de6a171890cd99a2c88ca6a4d71aefbd7eec646dc')
+sha256sums_x86_64=('b4f6d380cd77f9cfb0ca10803dac2bdd4ef5a1f20714df7ac7c4187aced185f1')
+sha256sums_aarch64=('809cb344e76687508c27652de30f9dac14212a032de53f40ba29828e0ca486c6')
 
 prepare() {
 	chmod +x "$pkgname-$pkgver-$CARCH.AppImage"
