@@ -1,7 +1,7 @@
 # Maintainer: AlanChen <chenzunlai@qq.com>
 
 pkgname=translator-rs
-pkgver=0.3.4
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A simple real-time translator written in Rust. 选中文本即翻译。"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('xsel' 'libx11' 'libxcb')
 makedepends=('rust')
 source=("https://github.com/rikonaka/translator-rs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=(9c1ab76abb4bb4e69e4262ee9037a0b27579f58369862341446a645dd436c0b2)
+sha256sums=(81810611654b73a25334baa461dd1e71da8d254c0a8be05beed42ddc2341b19f)
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
