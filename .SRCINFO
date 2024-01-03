@@ -1,0 +1,26 @@
+pkgbase = treegrep-bin
+	pkgdesc = Frontend for grep or ripgrep that presents results in a tree format (pre-compiled)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/4imothy/treegrep
+	arch = aarch64
+	arch = x86_64
+	license = Custom:CC-BY-4.0
+	provides = tgrep
+	provides = treegrep
+	conflicts = tgrep
+	conflicts = treegrep
+	source_aarch64 = treegrep-aarch64-0.1.0.tar.gz::https://github.com/4imothy/treegrep/releases/download/0.1.0/treegrep-aarch64-unknown-linux-musl.tar.gz
+	source_aarch64 = https://raw.githubusercontent.com/4imothy/treegrep/main/LICENSE
+	source_aarch64 = https://raw.githubusercontent.com/4imothy/treegrep/main/README.md
+	sha256sums_aarch64 = 9ae3829dee8c5bcc5e57e5fcff9a809d7b740f395b5dcb989b0fb9ffbd75294f
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+	source_x86_64 = treegrep-x86_64-0.1.0.tar.gz::https://github.com/4imothy/treegrep/releases/download/0.1.0/treegrep-x86_64-unknown-linux-musl.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/4imothy/treegrep/main/LICENSE
+	source_x86_64 = https://raw.githubusercontent.com/4imothy/treegrep/main/README.md
+	sha256sums_x86_64 = dedc405ae77f9df13a3ebb8d2ad63b2676e43858212e2f75e7336ccd35e35809
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+
+pkgname = treegrep-bin
