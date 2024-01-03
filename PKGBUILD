@@ -4,7 +4,7 @@ _pkgname=nym-connect
 pkgname="${_pkgname}-appimage"
 pkgver=1.1.21
 _pkgvername=kitkat
-pkgrel=1
+pkgrel=2
 pkgdesc="Nym Connects sets up a SOCKS5 proxy for local applications to use."
 arch=('x86_64')
 url="https://github.com/nymtech/nym"
@@ -12,7 +12,7 @@ license=('Apache 2.0')
 depends=('webkit2gtk')
 options=(!strip)
 _filename="${_pkgname}_${pkgver}_amd64.AppImage"
-source_x86_64=("https://github.com/nymtech/nym/releases/download/nym-wallet-v${pkgver}-{$_pkgvername}/${_filename}")
+source_x86_64=("https://github.com/nymtech/nym/releases/download/nym-connect-v${pkgver}-${_pkgvername}/${_filename}")
 sha256sums_x86_64=(ebc756e12037a6a3a274d9d5e16e53b042e4f1b785db17ecaf81c1e7a55f86a2)
 
 package() {
