@@ -1,17 +1,17 @@
 pkgbase = nodejs-whistle
 	pkgdesc = HTTP, HTTP2, HTTPS, Websocket debugging proxy
-	pkgver = 2.9.61
+	pkgver = 2.9.62
 	pkgrel = 1
 	url = https://github.com/avwo/whistle
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = whistle-2.9.61.tgz
-	source = https://registry.npmjs.org/whistle/-/whistle-2.9.61.tgz
+	noextract = whistle-2.9.62.tgz
+	source = https://registry.npmjs.org/whistle/-/whistle-2.9.62.tgz
 	source = whistle.desktop
 	source = nodejs-whistle.png::https://raw.githubusercontent.com/avwo/whistle/master/biz/webui/htdocs/img/whistle.png
-	sha1sums = 9aa4b36aa32336ce51ce4f400f6d7fa57a26cfa0
+	sha1sums = f693465edee578f9d9f8fc5d1b607719553e933c
 	sha1sums = ad7056273ff8d5c2798b4ab870f5981288a67c60
 	sha1sums = 74d44892ab7cac4c4b3f56b24158605ede05c984
 
