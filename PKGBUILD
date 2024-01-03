@@ -14,5 +14,8 @@ build() {
 package() {
   install -d ${pkgdir}/usr/lib/chicken/11
   find ${srcdir} -maxdepth 1 -type f -exec cp -t ${pkgdir}/usr/lib/chicken/11 {} +
+
+  install -d ${pkgdir}/usr/bin
+  cp -a ${srcdir}/bin/* ${pkgdir}/usr/bin
 }
 
