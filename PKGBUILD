@@ -1,8 +1,14 @@
 pkgname=gtk4-customizable
-pkgver=4.12.3
-pkgrel=2
+# reduce pkgs to build
+_pkgname=(
+  gtk4
+  gtk4-demos
+  gtk4-docs
+  gtk-update-icon-cache
+)
+pkgver=4.12.4
+pkgrel=1
 epoch=1
-apiver="${pkgver%.*}"
 pkgdesc="GObject-based multi-platform GUI toolkit"
 url="https://www.gtk.org/"
 arch=(x86_64)
@@ -58,19 +64,29 @@ makedepends=(
   shaderc
   wayland-protocols
 )
-_commit=11ef4c8f43dca478d6acfaa31a3fea659946db26  # tags/4.12.3^0
+_checkdepends=(
+  gst-plugin-pipewire
+  gst-plugins-base
+  mutter
+  noto-fonts
+  pipewire
+  python-pydbus
+  weston
+  wireplumber
+)
+_commit=0cdb58af49aac6061cce81ffee75e11baf100cf9  # tags/4.12.4^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
   gtk-update-icon-cache.{hook,script}
   gtk4-querymodules.{hook,script}
-  force-no-objcopy.diff
+  0001-HACK-Don-t-use-objcopy-for-resource-embedding.patch
 )
 b2sums=('SKIP'
         '136bdb410c46daf769175e8e8837286576391797a4762b8cf388217e893dd6c5087c5c91c347cbdf7d3e9dcd2c978c2fb275b5af1f3425c9f7979fbc65a81324'
         '6bcd839ef82296d864587e0cc7acc0145bdea8e5235af304747cf3c0e564c2757cc67c0373dc044bec83dccfc57dc899546c2fccea96cff2bba22f09978a3814'
         'dd589bd1ad2b13f0e06f6899776a083f20a1aac24d4308d666ffd0d1cff38457b8257b8366f92e767b4233b3d86b6b54fa50339faf84c4801a824986366dce30'
         '4b90eb8d582509b09aab401313d4399cc139ad21b5dd7d45d79860d0764c7494c60714e0794e09823e51d1894ac032a994f27d79d1499abf24ee6f59bdb0c243'
-        '0392de7d8700a69a5959f0ad62a9910e0a007db014926a8b351bbcc577ca8dda693883ebac8e403510c8a581ec73dd34a56f0fd9eb24cc6707d458d5175851f7')
+        '017e27dae284b91125e82634589451ed36c1cce49bd5bbefa2c820a6efc791cd9e42448fa4cb4197189104ceb06acdb187d06b480ccb9aab67b2982f42089b0c')
 
 pkgver() {
   cd gtk
@@ -80,13 +96,9 @@ pkgver() {
 prepare() {
   cd gtk
 
-  # https://bugs.archlinux.org/task/79310
-  # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/6250
-  git cherry-pick -n 4d7277f72c8f4915f237e36982ffd7dfba524b15
-
   # Allow -fcf-protection to work
   # https://gitlab.gnome.org/GNOME/gtk/-/issues/6153
-  git apply -3 ../force-no-objcopy.diff
+  git apply -3 ../0001-HACK-Don-t-use-objcopy-for-resource-embedding.patch
 }
 
 build() {
