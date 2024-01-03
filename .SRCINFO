@@ -1,0 +1,11 @@
+pkgbase = chicken-char-set-literals
+	pkgdesc = A reader extension providing Gauche style literals for SRFI-14 char-sets for Chicken Scheme
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/char-set-literals
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-14
+
+pkgname = chicken-char-set-literals
