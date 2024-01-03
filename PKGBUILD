@@ -2,20 +2,32 @@
 pkgname=kdesktop-bin
 _pkgname="cn.kdocs.${pkgname%-bin}"
 pkgver=3.7.7
-pkgrel=5
+_electronversion=13
+pkgrel=6
 pkgdesc="金山文档"
 arch=('x86_64')
 url="https://www.kdocs.cn"
 _downurl="https://d.store.deepinos.org.cn/store"
 license=('custom')
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron13' 'hicolor-icon-theme')
-makedepends=('gendesk')
-source=("${pkgname%-bin}-${pkgver}.deb::${_downurl}/office/${_pkgname}/${_pkgname}_${pkgver}_amd64.deb"
-    "${pkgname%-bin}.sh")
+depends=(
+    "electron${_electronversion}"
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'gendesk'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_downurl}/office/${_pkgname}/${_pkgname}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('57e6e623bbb761d5b2e3a8dd5c179189e585b40e14cc9f9f17213797093e88ef'
-            'ac14f8fd3bd971232b0d693f95a55c5f6025b600061362214766001cbf1f143d')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     gendesk -q -f -n --categories "Office" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
     sed "5i Name[zh_CN]=${pkgdesc}" -i "${srcdir}/${pkgname%-bin}.desktop"
