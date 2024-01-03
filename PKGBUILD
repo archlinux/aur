@@ -1,13 +1,13 @@
 # Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
 pkgname=minetest-dreambuilder
 _pkgname=dreambuilder
-_pkgauthor=VanessaE
-pkgver=2022.10.15
-_cdbrel=14371
+_pkgauthor=mt-mods
+pkgver=2024.01.03
+_cdbrel=22728
 pkgrel=1
 pkgdesc="An attempt to give the player pretty much everything they could ever want to build with, and all the tools they should need to actually get the job done. "
 license=("LGPLv3")
-sha256sums=('44af1be87cfbf3e4f60cbca1071da809e02be5cc1d1e7f9d196a3f1a8acadc45')
+sha256sums=('c0ccaaf58f58ed82748ada1c4bd0befec36a61db07ad319395988e162af7f215')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
