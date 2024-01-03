@@ -8,6 +8,7 @@
 
 ## options
 : ${_build_clang:=true}
+: ${_build_mold:=false}
 : ${_build_noglu:=true}
 
 : ${_build_avx:=false}
@@ -38,6 +39,7 @@ makedepends=(
 )
 
 [ "${_build_clang::1}" == "t" ] && makedepends+=('clang' 'lld' )
+[ "${_build_mold::1}" == "t" ] && makedepends+=('mold' )
 [ "${_build_noglu::1}" != "t" ] && makedepends+=('glu')
 
 install="$_pkgname.install"
@@ -69,6 +71,11 @@ build() {
     export CC=clang
     export CXX=clang++
     export CXXFLAGS+=" -Wno-narrowing -Wno-ignored-optimization-argument"
+  fi
+
+  if [[ "${_build_mold::1}" == "t" ]] ; then
+    export LDFLAGS+=" -flto -fuse-ld=mold"
+  elif [[ "${_build_clang::1}" == "t" ]] ; then
     export LDFLAGS+=" -fuse-ld=lld"
   fi
 
@@ -85,8 +92,7 @@ build() {
 
   # respect CFLAGS -march=...
   local _march=$(sed -E 's#^.*(-march.*-O\S*) .*$#\1#' <<< "${CFLAGS}")
-  [ -n _march ] && sed -E -i Makefile \
-    -e "s#-march.*-O\S* #$_march #g"
+  [ -n _march ] && sed -E -i Makefile -e "s#-march.*-O\S* #$_march #g"
 
   make
 }
