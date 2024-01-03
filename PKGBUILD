@@ -30,8 +30,8 @@ prepare() {
 }
 
 package() {
-# Create directories
-  mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt/LikeTaskManager"
+# Create a directory
+  mkdir -p "$pkgdir/usr/bin"
 # Install
   install -Dm644 $_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/512x512/apps"
   cd squashfs-root/usr
