@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="wewechat++-bin"
+pkgname=wewechat++-bin
 _pkgver=1.2.5
 pkgver="${_pkgver}_20230523"
 _electronversion=2
-pkgrel=5
+pkgrel=6
 pkgdesc="Make weweChat great again!!! 美丽的第三方微信PC客户端"
 arch=(
     'aarch64'
@@ -32,7 +32,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b64d5463454e756d3008ff1a0511179b777884a0b4ed50dfe33e9182cf0c54db'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 sha256sums_aarch64=('5ac045251db9af48a7a2d898cfefd0198de23c69e4bd91b7162344bf574051f8')
 sha256sums_x86_64=('48f0ede636da8f3a7b4d94a75a8324a51413dbf7ad040cf0acc173cd200088cb')
 build() {
@@ -41,13 +41,16 @@ build() {
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|Name=${pkgname%++-bin}|Name=${pkgname%-bin}|g;s|\"/opt/${pkgname%++-bin}/${pkgname%++-bin}\" %U|${pkgname%-bin}|g" \
+    sed -e "s|Name=${pkgname%++-bin}|Name=${pkgname%-bin}|g" \
+        -e "s|\"/opt/${pkgname%++-bin}/${pkgname%++-bin}\"|${pkgname%-bin}|g" \
+        -e "s|Chat;|Chat;Network;|g" \
+        -e "s|Icon=${pkgname%++-bin}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%++-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${pkgname%++-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%++-bin}.desktop" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%++-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%++-bin}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
