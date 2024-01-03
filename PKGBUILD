@@ -1,13 +1,12 @@
 pkgname=lfortran-git
-pkgver=r14057.5305b8043
+pkgver=r14109.8e4d53012
 pkgrel=1
 pkgdesc="Modern interactive LLVM-based Fortran compiler"
 arch=('x86_64')
-url="https://${pkgname}.org"
+url="https://lfortran.org"
 license=('custom:BSD-3-clause')
-depends=(clang zlib ncurses xeus-zmq)
-optdepends=('kokkos: cpp backend')
-makedepends=(llvm cmake cppzmq git re2c)
+depends=(clang zlib ncurses xeus-zmq kokkos)
+makedepends=(llvm cmake cppzmq git re2c fmt)
 source=(git+https://github.com/lfortran/lfortran.git)
 sha512sums=('SKIP')
 
@@ -32,6 +31,8 @@ build() {
     -DWITH_RUNTIME_LIBRARY=yes \
     -DWITH_XEUS=yes \
     -DWITH_ZLIB=yes \
+    -DWITH_KOKKOS=yes \
+    -DWITH_FMT=yes \
     -DLFORTRAN_BUILD_ALL=ON
 
   cmake --build build --target all

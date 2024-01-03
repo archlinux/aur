@@ -1,8 +1,8 @@
 pkgbase = lfortran-git
 	pkgdesc = Modern interactive LLVM-based Fortran compiler
-	pkgver = r14057.5305b8043
+	pkgver = r14109.8e4d53012
 	pkgrel = 1
-	url = https://lfortran-git.org
+	url = https://lfortran.org
 	arch = x86_64
 	license = custom:BSD-3-clause
 	makedepends = llvm
@@ -10,11 +10,12 @@ pkgbase = lfortran-git
 	makedepends = cppzmq
 	makedepends = git
 	makedepends = re2c
+	makedepends = fmt
 	depends = clang
 	depends = zlib
 	depends = ncurses
 	depends = xeus-zmq
-	optdepends = kokkos: cpp backend
+	depends = kokkos
 	source = git+https://github.com/lfortran/lfortran.git
 	sha512sums = SKIP
 
