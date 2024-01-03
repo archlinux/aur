@@ -1,0 +1,23 @@
+pkgbase = fzfs-git
+	pkgdesc = Flipper Zero filesystem driver
+	pkgver = r20.5d756b5
+	pkgrel = 1
+	url = https://github.com/dakhnod/fzfs
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = python
+	depends = python-async-timeout
+	depends = python-bleak
+	depends = python-dbus-fast
+	depends = python-fusepy
+	depends = python-numpy
+	depends = python-protobuf
+	depends = python-pyserial
+	provides = fzfs
+	source = git+https://github.com/dakhnod/fzfs.git
+	source = make-fzfs.py-executable.patch
+	sha256sums = SKIP
+	sha256sums = 3149c87a528a5caac36e90e953c4c7aba5d69019128cf9b00f350d5a9e4cf16f
+
+pkgname = fzfs-git
