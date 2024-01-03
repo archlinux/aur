@@ -2,7 +2,7 @@
 
 pkgname=black-pearl-origin-git
 _realname=black-pearl-origin
-pkgver=r440.960af08
+pkgver=r479.88917f9
 pkgrel=1
 pkgdesc='Free and open-source tool for managing game sources using community-made modules.'
 arch=('x86_64')
@@ -28,7 +28,7 @@ build () {
 
 package () {
    install -Dv "$srcdir/blackpearlorigin/src-tauri/target/release/$_realname" "$pkgdir/usr/bin/$_realname"
-   cd "$srcdir/blackpearlorigin/src-tauri/target/release/bundle/deb/black-pearl-origin_0.3.0_amd64/data"
+   cd "$srcdir/blackpearlorigin/src-tauri/target/release/bundle/deb/black-pearl-origin_1.2.0_amd64/data"
    install -Dv "./usr/share/applications/$_realname.desktop" "$pkgdir/usr/share/applications/$_realname.desktop"
    install -Dv "./usr/share/icons/hicolor/32x32/apps/$_realname.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_realname.png"
    install -Dv "./usr/share/icons/hicolor/128x128/apps/$_realname.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_realname.png"
