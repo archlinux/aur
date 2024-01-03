@@ -1,0 +1,30 @@
+# Colored makepkg-like functions
+msg_blue() {
+  printf "${BLUE}==>${BOLD} $1${ALL_OFF}\n"
+}
+
+note1() {
+  printf "${BLUE}==>${YELLOW} NOTE:${BOLD} $1${ALL_OFF}\n"
+}
+
+note2() {
+  printf "${BLUE}==>      ${BOLD} $1${ALL_OFF}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="${ALL_OFF}$(tput bold)"
+BLACK="${BOLD}$(tput setaf 0)"
+RED="${BOLD}$(tput setaf 1)"
+GREEN="${BOLD}$(tput setaf 2)"
+YELLOW="${BOLD}$(tput setaf 3)"
+BLUE="${BOLD}$(tput setaf 4)"
+MAGENTA="${BOLD}$(tput setaf 5)"
+CYAN="${BOLD}$(tput setaf 6)"
+WHITE="${BOLD}$(tput setaf 7)"
+
+post_upgrade() {
+  if [ $(vercmp "$2" 1.51.0) -lt 0 ]; then
+    note1 "The settings and data directories have been moved"
+    note2 "from ~/.nestopia to respect xdg basedir spec."
+  fi
+}

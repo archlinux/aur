@@ -1,4 +1,4 @@
-pkg/
-src/
-nestopia
-*pkg.tar*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
