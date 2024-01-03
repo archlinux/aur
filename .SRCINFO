@@ -1,23 +1,26 @@
 pkgbase = espanso
 	pkgdesc = Cross-platform Text Expander written in Rust
-	pkgver = 2.1.8
+	pkgver = 2.2.1
 	pkgrel = 1
-	url = https://espanso.org/
+	url = https://github.com/espanso/espanso
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	makedepends = cargo-make
-	makedepends = git
-	makedepends = rust-script
+	depends = bzip2
 	depends = dbus
-	depends = libnotify
+	depends = gcc-libs
+	depends = glibc
+	depends = libx11
+	depends = libxcb
 	depends = libxkbcommon
 	depends = libxtst
+	depends = openssl
+	depends = wxwidgets-common
 	depends = wxwidgets-gtk3
 	depends = xclip
 	depends = xdotool
 	options = !lto
-	source = git+https://github.com/federico-terzi/espanso.git#tag=v2.1.8
-	sha512sums = SKIP
+	source = espanso-2.2.1.tar.gz::https://github.com/espanso/espanso/archive/v2.2.1.tar.gz
+	sha256sums = 795663cb64c28322b667998f95910134b042be2baaace5506790f7e44ae3be91
 
 pkgname = espanso

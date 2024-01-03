@@ -1,4 +1,4 @@
-espanso
-pkg
-src
-espanso-*.pkg.tar.zst
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
