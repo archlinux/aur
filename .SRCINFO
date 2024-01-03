@@ -1,0 +1,17 @@
+pkgbase = joml-git
+	pkgdesc = JSON to TOML conversion utility, for use with jq
+	pkgver = r4.58cd474
+	pkgrel = 1
+	url = https://codeberg.org/Expo/joml
+	arch = x86_64
+	license = unknown
+	makedepends = base-devel
+	makedepends = cargo
+	makedepends = rust
+	makedepends = make
+	provides = joml
+	conflicts = joml
+	source = src_Expo_joml_senpai::git+https://codeberg.org/Expo/joml#branch=senpai
+	sha512sums = SKIP
+
+pkgname = joml-git

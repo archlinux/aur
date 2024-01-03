@@ -1,4 +1,4 @@
-# Maintainer: Expo <snorted@cocaine.ninja>
+# Maintainer: Expo <snorted at cocaine dot ninja>
 # Pkgbuild based on https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=pixelnuke-git
 
 # Configuration
