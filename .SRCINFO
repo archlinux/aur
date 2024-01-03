@@ -1,5 +1,5 @@
 pkgbase = gtk4-customizable
-	pkgdesc = GObject-based multi-platform GUI toolkit
+	pkgdesc = GObject-based multi-platform GUI toolkit, with SSD support and additional theming options
 	pkgver = 4.12.4
 	pkgrel = 1
 	epoch = 1

@@ -9,7 +9,7 @@ _pkgname=(
 pkgver=4.12.4
 pkgrel=1
 epoch=1
-pkgdesc="GObject-based multi-platform GUI toolkit"
+pkgdesc="GObject-based multi-platform GUI toolkit, with SSD support and additional theming options"
 url="https://www.gtk.org/"
 arch=(x86_64)
 license=(LGPL)
@@ -64,6 +64,7 @@ makedepends=(
   shaderc
   wayland-protocols
 )
+# do not check for now
 _checkdepends=(
   gst-plugin-pipewire
   gst-plugins-base
@@ -95,6 +96,10 @@ pkgver() {
 
 prepare() {
   cd gtk
+
+  # Implement xdg-decoration protocol to allow SSD
+  # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/6398
+  git cherry-pick -n 5c3fd3f4730a110b663a7bb7af9c9d958f6e7241
 
   # Allow -fcf-protection to work
   # https://gitlab.gnome.org/GNOME/gtk/-/issues/6153
