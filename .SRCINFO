@@ -1,7 +1,7 @@
 pkgbase = flying-carpet-bin
 	pkgdesc = File transfer between Android, iOS, Linux, macOS, and Windows over ad hoc WiFi. No network infrastructure required, just two devices with WiFi chips in close range.
-	pkgver = 7.1
-	pkgrel = 2
+	pkgver = 8.0.1
+	pkgrel = 1
 	url = https://github.com/spieglt/FlyingCarpet
 	changelog = changelog.txt
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = flying-carpet-bin
 	makedepends = libarchive
 	provides = flying-carpet
 	conflicts = flying-carpet
-	source = https://github.com/spieglt/FlyingCarpet/releases/download/v7.1/linux_flying-carpet_7.1.0_amd64.deb
-	sha256sums = 0bd24ecee6ea20cfbc80d825cf8f9228fa837ce3aa141f7a4705190621b0a11b
+	source = https://github.com/spieglt/FlyingCarpet/releases/download/v8.0.1/linux_flying-carpet_8.0.1_amd64.deb
+	sha256sums = 5f4318dbdba14f561b180d4f0bcf0821b9c7cae4b8e10691eb9133833d7473c8
 
 pkgname = flying-carpet-bin

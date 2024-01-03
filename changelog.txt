@@ -1,9 +1,11 @@
-The Android version is available on the Play Store, or android_FlyingCarpet.apk is available here if you would like to sideload.
+Version 8.0 allows sending folders from Android and iOS. Flying Carpet now skips a transfer if a file of the same name, location, and contents already exists on the receiving end. This allows folders to be mirrored and interrupted transfers to be quickly resumed. If a file of the same name, but different size/contents exists, the transfer will still take place, with the new file renamed. To send a folder from the Linux, macOS, and Windows versions, select Send and then drag a folder onto the window.
+
+Version 8.0.1 fixes a bug with path handling.
+
+The Android version is available on the Play Store, or android_FlyingCarpet_8.0.0.apk is available here if you would like to sideload.
 
 The iOS version is available here or search the App Store for "Flying Carpet File Transfer".
 
 Send and receive files between Android, iOS, Linux, macOS, and Windows over ad hoc WiFi. No shared network or cell connection required, just two devices with WiFi chips in close range.
 
 Don't have a flash drive? Don't have access to a wireless network? Need to move a file larger than 2GB between different filesystems but don't want to set up a network share? Try it out!
-
-Version 7.1 adds support for computers with multiple wireless interfaces on Linux and Windows.

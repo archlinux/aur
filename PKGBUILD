@@ -1,7 +1,7 @@
 # Maintainer: Meow King <mr.ziqiyang@gmail.com>
 pkgname=flying-carpet-bin
-pkgver=7.1 # NOTE
-pkgrel=2 # NOTE
+pkgver=8.0.1 # NOTE
+pkgrel=1 # NOTE
 pkgdesc="File transfer between Android, iOS, Linux, macOS, and Windows over ad hoc WiFi. No network infrastructure required, just two devices with WiFi chips in close range. "
 arch=("x86_64")
 url="https://github.com/spieglt/FlyingCarpet"
@@ -13,8 +13,8 @@ depends=()
 provides=("flying-carpet") 
 conflicts=("flying-carpet")
 changelog="changelog.txt" # NOTE
-source=("${url}/releases/download/v${pkgver}/linux_flying-carpet_${pkgver}.0_amd64.deb")
-sha256sums=('0bd24ecee6ea20cfbc80d825cf8f9228fa837ce3aa141f7a4705190621b0a11b')
+source=("${url}/releases/download/v${pkgver}/linux_flying-carpet_${pkgver}_amd64.deb")
+sha256sums=('5f4318dbdba14f561b180d4f0bcf0821b9c7cae4b8e10691eb9133833d7473c8')
 
 prepare() {
     bsdtar -xf data.tar.gz
