@@ -1,0 +1,15 @@
+pkgbase = chicken-svnwiki2html
+	pkgdesc = A program to convert Chicken Scheme svnwiki syntax to HTML
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/svnwiki2html
+	arch = x86_64
+	license = BSD
+	makedepends = chicken-qwiki
+	makedepends = chicken-svnwiki-sxml
+	makedepends = chicken-sxml-transforms
+	makedepends = chicken-srfi-1
+	makedepends = chicken-srfi-13
+	depends = chicken
+
+pkgname = chicken-svnwiki2html
