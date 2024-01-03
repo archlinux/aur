@@ -2,7 +2,7 @@
 
 _pkgname=codegpt
 pkgname=${_pkgname}-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A CLI written in Go language that writes git commit messages or do a code review brief for you using ChatGPT AI (gpt-4, gpt-3.5-turbo model) and automatically installs a git prepare-commit-msg hook"
 arch=('x86_64' 'aarch64')
@@ -13,12 +13,12 @@ conflicts=(${_pkgname}-git ${_pkgname})
 source=(
     "https://raw.githubusercontent.com/appleboy/CodeGPT/main/LICENSE"
 )
-source_x86_64=("${_pkgname}-$CARCH-${pkgver}::${url}/releases/download/v${pkgver}/CodeGPT-${pkgver}-linux-amd64")
-source_aarch64=("${_pkgname}-$CARCH-${pkgver}::${url}/releases/download/v${pkgver}/CodeGPT-${pkgver}-linux-arm64")
+source_x86_64=("${_pkgname}-x86_64-${pkgver}::${url}/releases/download/v${pkgver}/CodeGPT-${pkgver}-linux-amd64")
+source_aarch64=("${_pkgname}-aarch64-${pkgver}::${url}/releases/download/v${pkgver}/CodeGPT-${pkgver}-linux-arm64")
 sha256sums=(
     "SKIP"
 )
-sha256sums_x86_64=('d8200d8d4170fa76aedd9157b052852f082e622d33fa79dbdc387c85d23e8028')
+sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
 package() {
