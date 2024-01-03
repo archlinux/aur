@@ -1,10 +1,11 @@
 pkgbase = dotbackup
 	pkgdesc = YAML config based backup utility
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jaxvanyang/dotbackup
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
