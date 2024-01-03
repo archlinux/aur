@@ -5,7 +5,7 @@
 
 _pkgname=phpunit
 pkgname=${_pkgname}-bin
-pkgver=10.5.3
+pkgver=10.5.5
 pkgrel=1
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 provides=('phpunit')
@@ -21,7 +21,7 @@ source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
 # To add the key use gpg
 #  gpg --keyserver pgp.uni-mainz.de --recv-keys 4AA394086372C20A
 validpgpkeys=('D8406D0D82947747293778314AA394086372C20A')
-sha256sums=('42519b018ce187c86136438ac7c546dd9b6a5e8735330cbf1e4cf2e9bf1b8d4c'
+sha256sums=('521aef8ca6419169ed10d03f1298d1731028d6342adc7f645d51c5a6977a3afa'
             'SKIP'
             '3f62dc64839f2fbf8aebfee011cdc34b66aaf403f2b43f5cf5803e242048688d')
 
