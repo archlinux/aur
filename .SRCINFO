@@ -11,6 +11,7 @@ pkgbase = python-restrictedpython
 	makedepends = python-setuptools
 	makedepends = python-installer
 	makedepends = python-build
+	makedepends = python-wheel
 	depends = python
 	source = https://github.com/zopefoundation/RestrictedPython/archive/7.0.tar.gz
 	b2sums = c71a70ce4f71b92d87e2bdab157cba4327227da6f1be226df573c25268cbd1afbde608ffcc5d8deb6cbe063244d7611bc8792c6e17ce495c50c5812527674e2e
