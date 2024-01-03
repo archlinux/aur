@@ -113,6 +113,10 @@ build() {
     -D colord=enabled
     -D documentation=true
     -D man-pages=true
+    -D build-tests=false
+    -D build-demos=false
+    -D build-examples=false
+    -D build-testsuite=false
     -D tracker=enabled
   )
 
@@ -134,7 +138,7 @@ _pick() {
 package() {
   depends+=(gtk-update-icon-cache)
   optdepends=('evince: Default print preview command')
-  provides=(gtk libgtk-4.so)
+  provides=(gtk4 libgtk-4.so)
   conflicts=(gtk4)
 
   meson install -C build --destdir "$pkgdir"
@@ -151,14 +155,8 @@ END
 
   cd "$pkgdir"
 
-  _pick demo usr/bin/gtk4-{demo,demo-application,icon-browser,node-editor,print-editor,widget-factory}
-  _pick demo usr/share/applications/org.gtk.{Demo4,IconBrowser4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}.desktop
-  _pick demo usr/share/glib-2.0/schemas/org.gtk.Demo4.gschema.xml
-  _pick demo usr/share/icons/hicolor/*/apps/org.gtk.{Demo4,IconBrowser4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}[-.]*
+  # belongs to gtk4-demo
   _pick demo usr/share/man/man1/gtk4-{demo,demo-application,icon-browser,node-editor,widget-factory}.1
-  _pick demo usr/share/metainfo/org.gtk.{Demo4,IconBrowser4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}.appdata.xml
-
-  _pick docs usr/share/doc
 
   # Built by GTK 4, shared with GTK 3
   _pick guic usr/bin/gtk4-update-icon-cache

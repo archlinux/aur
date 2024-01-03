@@ -106,6 +106,6 @@ pkgname = gtk4-customizable
 	depends = wayland
 	depends = gtk-update-icon-cache
 	optdepends = evince: Default print preview command
-	provides = gtk
+	provides = gtk4
 	provides = libgtk-4.so
 	conflicts = gtk4
