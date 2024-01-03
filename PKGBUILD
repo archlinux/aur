@@ -65,7 +65,7 @@ prepare() {
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
+  #make xconfig # X-based configuration 
   #make oldconfig # using old config from previous kernel version
   make olddefconfig # old config from previous kernel, defaults for new options
   # ... or manually edit .config
