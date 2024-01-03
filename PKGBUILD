@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-bnx2x-2.5g
-pkgver=6.6.8.arch1
+pkgver=6.6.9.arch1
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/archlinux/linux'
@@ -32,19 +32,19 @@ source=(
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
-  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
+  83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('5036c434e11e4b36d8da3f489851f7f829cf785fa7f7887468537a9ea4572416'
+sha256sums=('8ebc65af0cfc891ba63dce0546583da728434db0f5f6a54d979f25ec47f548b3'
             'SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
-            '77f0ad619945e18ab880733129a49ad0af28c3f2fd7b1ae9bbb6465b5a4cd316'
+            'da9d15179f3a0e1b19c57344c6e10b886d598f5256ea6f82adbe2940ccf68b34'
             'SKIP'
             '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7')
-b2sums=('d6f58bfae29239f985c1aa329b19c2fdea1c08c79e819e60f85359e9ef00e97a7f72d74662df7d9def75ff85a3b4bdf36dc9ded578ee472e9b4efa7bf50fcd33'
+b2sums=('c7deb1221716144b636018ee2936abe6397e15204c9bdb4cb5806f6bd303cd5d3f953a7da5865c4f211b866e4dfec4cd347c0a1a0a675f18b1a4ad197b099cec'
         'SKIP'
         '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'
-        '3445b1884f0ec6fccd72091e23c74538c80991195aab53f54c9a955437e35951ba689aa59eee35f2faa2440273e3c384e043333e63a22ce41dc5cd9d054d1a2f'
+        'aab29beac241ad2a789c5d0f5536f3d3277e42ee3a0df2b32cdbfbe60bbf02e337c439f7bd6eb18bed266de4ad2751b859de00aab595b3f9565a34327b78fdbf'
         'SKIP'
         '72b204712173dd109f60c6c81a10dc24c64eba7c2be8182a520b52f31ba2ecc4082fc711656a7e4893aac26120f9271c1fda3e37ad94236db95b14a6fdb56a82')
 
