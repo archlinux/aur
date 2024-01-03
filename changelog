@@ -1,3 +1,6 @@
+2024-01-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.5.1.4-1:
+    Fixed a possibility of sending invalid heartbeats to ASF STM if account was unused for more than 14 days (@JustArchi).
 2024-01-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.5.1.2-1:
     std command will now return as soon as refresh is scheduled, rather than actually finished like before (@JustArchi).
