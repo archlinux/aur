@@ -1,0 +1,11 @@
+pkgbase = chicken-trie
+	pkgdesc = A trie (prefix tree) implementation for Chicken Scheme
+	pkgver = 2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/trie
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+
+pkgname = chicken-trie
