@@ -1,6 +1,4 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
-# Contributor: Pascal Ernster <archlinux@hardfalcon.net>
 # Contributor: loqs <bugs-archlinux@entropy-collector.net>
 
 # https://releases.electronjs.org/
