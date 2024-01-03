@@ -5,7 +5,7 @@ BUILDENV+=(!check)
 
 pkgname=qsv
 pkgver=0.120.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CSV data-wrangling toolkit (fork of xsv)'
 arch=(x86_64)
 url="https://github.com/jqnatividad/$pkgname"
@@ -21,9 +21,6 @@ sha256sums=('4f0d7a14ee75fa056be4932f4a9c044d0ccba2c7a404c1e3961a0d8de8f1962f')
 
 # all_features minus self_update
 _features='feature_capable,apply,fetch,foreach,generate,geocode,luau,polars,python,to,to_parquet'
-
-# the polars feature has issues has clang build issues
-# _features='feature_capable,apply,fetch,foreach,generate,geocode,luau,python,to,to_parquet'
 
 prepare() {
 	cd "$_archive"
