@@ -27,6 +27,7 @@ makedepends=(
   cargo
   rust
   make
+  git
 )
 provides=()
 conflicts=()
