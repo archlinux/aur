@@ -1,0 +1,16 @@
+pkgbase = chicken-markdown-svnwiki
+	pkgdesc = Convert Markdown to svnwiki for Chicken Scheme
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/markdown-svnwiki
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-lowdown
+	depends = chicken-sxml-transforms
+	depends = chicken-miscmacros
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+	depends = chicken-srfi-37
+
+pkgname = chicken-markdown-svnwiki
