@@ -1,4 +1,5 @@
-*.pkg.tar.zst
-espanso
-pkg/
-src/
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!espanso-wayland.install
