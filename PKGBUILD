@@ -1,24 +1,18 @@
-#submitter: perlawk
-
 pkgname=chicken-coops
-_pkgname=coops
-pkgver=1.93
+_name=coops
+pkgver=1.3
 pkgrel=1
-pkgdesc="An featureful object system"
-arch=('i686' 'x86_64')
-url="http://chicken.wiki.br/eggref/4/coops"
+pkgdesc='A featureful object system for Chicken Scheme'
+arch=('x86_64')
 license=('BSD')
-depends=('chicken>=4.5.0' 'chicken-matchable' 'chicken-record-variants')
-install=
+depends=("chicken" "chicken-matchable" "chicken-miscmacros" "chicken-record-variants" "chicken-srfi-1")
+url='http://wiki.call-cc.org/eggref/5/coops'
 
 build() {
-	cd "$srcdir"
-	if [ ! -e "$_pkgname" ]; then
-		chicken-install -r "$_pkgname:$pkgver"
-	fi
+  CHICKEN_INSTALL_REPOSITORY=${srcdir} CHICKEN_INSTALL_PREFIX=${srcdir} chicken-install -no-install-dependencies $_name:$pkgver
+}
+package() {
+  install -d ${pkgdir}/usr/lib/chicken/11
+  find ${srcdir} -maxdepth 1 -type f -exec cp -t ${pkgdir}/usr/lib/chicken/11 {} +
 }
 
-package() {
-	cd "$srcdir/$_pkgname"
-	chicken-install -p "$pkgdir/usr"
-}
