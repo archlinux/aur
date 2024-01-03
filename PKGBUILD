@@ -1,5 +1,5 @@
 # Maintainer: Paul <pb.orzel@proton.me>
-pkgname=steam_hdr
+pkgname=steam-hdr
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Add desktop files to launch Steam in a Gamescope session with HDR enabled"
