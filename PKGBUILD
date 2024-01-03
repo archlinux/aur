@@ -1,7 +1,7 @@
 # Maintainer: Alireza S.N. <alireza6677 at gmail dot com>
 
 pkgname=libkrun-git
-pkgver=v0.2.0.r182.g524508f
+pkgver=v1.7.2.r0.gadb5eb1
 pkgrel=1
 pkgdesc="A dynamic library providing Virtualization-based process isolation capabilities"
 arch=("x86_64")
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 pkgver() {
     cd "${pkgname}"
     ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
