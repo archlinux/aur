@@ -1,0 +1,14 @@
+pkgbase = chicken-pyffi
+	pkgdesc = An interface to the Python programming language. for Chicken Scheme
+	pkgver = 3.14
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/pyffi
+	arch = x86_64
+	license = GPL-3
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-69
+	depends = chicken-bind
+	depends = chicken-utf8
+
+pkgname = chicken-pyffi
