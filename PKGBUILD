@@ -8,11 +8,11 @@
 pkgname=cairo-dock-plug-ins-wayland-git
 pkgver=3.4.99.alpha1.20231110.f7e1711bf
 pkgrel=1
-pkgdesc='Plugins for Cairo-Dock'
+pkgdesc='Plugins for Cairo-Dock with wayland support'
 arch=('x86_64')
 url='https://github.com/dkondor/cairo-dock-plug-ins'
 license=('GPL')
-depends=('cairo-dock')
+depends=('cairo-dock-core-wayland-git')
 makedepends=('alsa-lib' 'cmake' 'dbus-sharp-glib' 'fftw' 'gnome-menus'
              'gtk-sharp-3' 'gvfs' 'libetpan' 'libexif' 'libical' 'libpulse'
              'libxklavier' 'lm_sensors' 'python' 'ruby' 'upower'

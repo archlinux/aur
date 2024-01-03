@@ -1,5 +1,5 @@
 pkgbase = cairo-dock-plug-ins-wayland-git
-	pkgdesc = Plugins for Cairo-Dock
+	pkgdesc = Plugins for Cairo-Dock with wayland support
 	pkgver = 3.4.99.alpha1.20231110.f7e1711bf
 	pkgrel = 1
 	url = https://github.com/dkondor/cairo-dock-plug-ins
@@ -24,7 +24,7 @@ pkgbase = cairo-dock-plug-ins-wayland-git
 	makedepends = vala
 	makedepends = vte3
 	makedepends = zeitgeist
-	depends = cairo-dock
+	depends = cairo-dock-core-wayland-git
 	optdepends = alsa-lib: Sound Control, Sound Effects applets
 	optdepends = dbus-sharp-glib: Mono API
 	optdepends = fftw: Impulse applet
