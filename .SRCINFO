@@ -1,7 +1,7 @@
 pkgbase = vkcv-test
 	pkgdesc = implementation of A Vulkan framework for computer visualistics (like FSR,SS,..) simplifying building applications, for Radeon/amdgpu hardware
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheJackiMonster/vkcv-framework
 	install = vkcv-test.install
 	arch = x86_64
