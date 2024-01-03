@@ -1,0 +1,12 @@
+pkgbase = starnet2-bin
+	pkgdesc = StarNet2 is the 2nd iteration of a neural network to remove stars from (nonlinear) astronomical images.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://www.starnetastro.com/
+	arch = x86_64
+	license = custom
+	depends = bash
+	source = https://starnetastro.com/wp-content/uploads/2022/03/StarNetv2CLI_linux.zip
+	sha256sums = 504ce100ef08c39c0059d70a096075573e3cb3ec93d44015db6a60c014b76e96
+
+pkgname = starnet2-bin
