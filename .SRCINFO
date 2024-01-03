@@ -1,0 +1,11 @@
+pkgbase = chicken-ncurses
+	pkgdesc = An interface to the UNIX ncurses package for Chicken Scheme
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/ncurses
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = ncurses
+
+pkgname = chicken-ncurses
