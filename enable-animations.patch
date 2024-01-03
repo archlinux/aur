@@ -1,0 +1,17 @@
+---
+ src/grd-session.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/grd-session.c b/src/grd-session.c
+index 42de4a8..e8298cf 100644
+--- a/src/grd-session.c
++++ b/src/grd-session.c
+@@ -1412,7 +1412,7 @@ on_eis_connected (GObject      *object,
+                          g_variant_new_string (remote_desktop_session_id));
+   g_variant_builder_add (&properties_builder, "{sv}",
+                          "disable-animations",
+-                         g_variant_new_boolean (TRUE));
++                         g_variant_new_boolean (FALSE));
+   properties_variant = g_variant_builder_end (&properties_builder);
+ 
+   screen_cast_proxy = grd_context_get_mutter_screen_cast_proxy (priv->context);
