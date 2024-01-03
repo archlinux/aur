@@ -1,15 +1,17 @@
 pkgbase = qlipmon-git
 	pkgdesc = clipboard manager with rofi plugin and dbus interface
 	pkgver = r22.1a8d3c0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vcalv/qlipmon
+	install = qlipmon-git.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = qt5-base
 	optdepends = rofi: for rofi integration
+	provides = qlipmon
+	conflicts = qlipmon
 	source = qlipmon-git::git+https://github.com/vcalv/qlipmon
 	md5sums = SKIP
 
 pkgname = qlipmon-git
-
