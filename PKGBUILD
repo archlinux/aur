@@ -2,22 +2,22 @@
 
 pkgname=black-pearl-origin-bin
 _realname=black-pearl-origin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Free and open-source tool for managing game sources using community-made modules.'
 arch=('x86_64')
 url='https://github.com/BlackPearlOrigin/blackpearlorigin'
 license=('BSD')
-depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3' 'openssl-1.1')
+depends=('libayatana-appindicator' 'webkit2gtk' 'gtk3' 'openssl-1.1')
 makedepends=('binutils' 'tar')
 provides=('black-pearl-origin')
 conflicts=('black-pearl-origin')
-source=("$url/releases/download/$pkgver/black-pearl-origin_0.3.0_amd64.deb")
+source=("$url/releases/download/$pkgver/black-pearl-origin_1.1.1_amd64.deb")
 
-sha256sums=('b1f2afcffe3e1ef31b0b9b0b0c6381152fc0b366977cb67f1d6cda2e7a5226a7')
+sha256sums=('80964a5b0095d5c2f31311db2d9ca3e61e7e44fe8d6cc3f746bd8223197c784c')
 
 prepare () {
-	ar x "$_realname"_0.3.0_amd64.deb
+	ar x "$_realname"_1.1.1_amd64.deb
 	tar xvf data.tar.gz
 }
 
