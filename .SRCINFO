@@ -1,0 +1,10 @@
+pkgbase = chicken-queues
+	pkgdesc = A queue data structure for Chicken Scheme
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/queues
+	arch = x86_64
+	license = Public Domain
+	depends = chicken
+
+pkgname = chicken-queues
