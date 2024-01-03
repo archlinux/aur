@@ -1,7 +1,7 @@
 # Maintainer: A4-Tacks <wdsjxhno 1001 aT 163 dot com>
 
 pkgname=mindustry_logic_bang_lang-bin
-pkgver=0.13.3
+pkgver=0.14.5
 pkgrel=1
 pkgdesc='Mindustry logic extension language, for zero additional overhead!'
 arch=(x86_64 aarch64)
@@ -18,11 +18,11 @@ source=(
     "$url/releases/download/v$pkgver/${c_name}_v${pkgver}_${s_arch}-unknown-linux-musl.tar.xz"
 )
 sha256sums=(
-    6cd1a8480b1791915e8bc005901754a6c73870e66f2a34c5d40b845aa4516527
+    318160ccf41358428a77437674384b0cc757d9ba02dbf38b6dd95487f12fdca2
 )
 case "$s_arch" in
-    aarch64) sha256sums+=(d51071b78b44a67114fdc8bad6ba9b5f3bdac7332513b7eca802cd7c3871debc);;
-    x86_64)  sha256sums+=(94b921b186a02c14cd2b04eac074bcff65d75d4deb82b125b31847cb95f582e5);;
+    aarch64) sha256sums+=(b877dbc9b81667dbebf238dbc5eee0a137fe80ef89313be5f05d92a407df3e4a);;
+    x86_64)  sha256sums+=(274ed9a28665885cf77982808e2452f24f21361fd120f381875a96aedc78bff9);;
     *)
         echo "E: Arch $s_arch unsupported!" >&2
         exit 1
