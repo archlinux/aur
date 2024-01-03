@@ -1,0 +1,11 @@
+pkgbase = chicken-srfi-227
+	pkgdesc = SRFI 227: Optional Arguments for Chicken Scheme
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-227
+	arch = x86_64
+	license = MIT
+	depends = chicken
+	depends = chicken-srfi-1
+
+pkgname = chicken-srfi-227
