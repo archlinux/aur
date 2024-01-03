@@ -1,7 +1,7 @@
 # Maintainer: Alireza S.N. <alireza6677 at gmail dot com>
 
 pkgname=krunvm-git
-pkgver=r54.12dac81
+pkgver=v0.2.3.r16.g5494d84
 pkgrel=1
 pkgdesc="Create microVMs from OCI images"
 arch=("x86_64")
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 pkgver() {
     cd "${pkgname}"
     ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
