@@ -1,0 +1,25 @@
+pkgbase = mbedtls-dtls
+	pkgdesc = An open source, portable, easy to use, readable and flexible TLS library (with DTLS support)
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://tls.mbed.org
+	arch = x86_64
+	license = Apache
+	checkdepends = python
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = python
+	depends = glibc
+	depends = sh
+	provides = libmbedcrypto.so
+	provides = libmbedtls.so
+	provides = libmbedx509.so
+	provides = polarssl
+	conflicts = polarssl
+	replaces = polarssl
+	options = staticlibs
+	source = git+https://github.com/ARMmbed/mbedtls.git#tag=1ec69067fa1351427f904362c1221b31538c8b57
+	b2sums = SKIP
+
+pkgname = mbedtls-dtls
