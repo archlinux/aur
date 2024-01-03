@@ -1,0 +1,15 @@
+pkgbase = chicken-bind
+	pkgdesc = Automatically generate bindings from C/C++ declarations for Chicken Scheme
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/bind
+	arch = x86_64
+	license = public domain
+	depends = chicken
+	depends = chicken-silex
+	depends = chicken-matchable
+	depends = chicken-coops
+	depends = chicken-srfi-1
+	depends = chicken-regex
+
+pkgname = chicken-bind
