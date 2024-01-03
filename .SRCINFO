@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-203
+	pkgdesc = SRFI 203: A Simple Picture Language in the Style of SICP for Chicken Scheme
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-203
+	arch = x86_64
+	license = BSD
+	depends = chicken
+
+pkgname = chicken-srfi-203
