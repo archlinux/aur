@@ -1,0 +1,12 @@
+pkgbase = chicken-srfi-45
+	pkgdesc = SRFI-45: Primitives for Expressing Iterative Lazy Algorithms for Chicken Scheme
+	pkgver = 4.0.7
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-45
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-record-variants
+	depends = chicken-check-errors
+
+pkgname = chicken-srfi-45
