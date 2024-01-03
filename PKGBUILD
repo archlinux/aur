@@ -1,18 +1,18 @@
 # Maintainer: Davron <xamdamovdavron6@gmail.com>
 pkgname='jprq'
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 epoch=
 pkgdesc="This is a free and open tool for exposing local servers to public network (the internet)"
 arch=('any')
 makedepends=("curl")
 license=('MIT')
-url="https://github.com/azimjohn/jprq/releases/download/2.2/jprq-darwin-amd64"
+url="https://github.com/azimjohn/jprq/releases/download/2.3"
 
 build() {
 	set -e
 
-	URL_PREFIX="https://github.com/azimjohn/jprq/releases/download/2.2"
+	URL_PREFIX="https://github.com/azimjohn/jprq/releases/download/2.3"
 
 	case "$(uname -sm)" in
 	  "Darwin $CARCH") FILENAME="jprq-darwin-amd64" ;;

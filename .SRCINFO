@@ -1,6 +1,6 @@
 pkgbase = jprq
 	pkgdesc = This is a free and open tool for exposing local servers to public network (the internet)
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/azimjohn/jprq
 	arch = any
