@@ -7,7 +7,7 @@
 
 pkgname=libkml-git
 _pkgname=libkml
-pkgver=1062.878abd1
+pkgver=1.3.0.r130.g878abd1
 pkgrel=1
 pkgdesc="A KML library written in C++ with bindings to other languages"
 arch=('i686' 'x86_64')
@@ -19,12 +19,15 @@ optdepends=('swig: bindings for additional languages'
 makedepends=('cmake' 'swig' 'boost' 'patchelf')
 provides=('libkml')
 conflicts=('libkml')
-source=("libkml::git+https://github.com/libkml/libkml.git")
+source=("${_pkgname}::git+https://github.com/libkml/libkml.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
-  printf "%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+    cd "${_pkgname}"
+    ( set -o pipefail
+      git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare() {
