@@ -1,0 +1,15 @@
+pkgbase = cooja-git
+	pkgdesc = An open source network simulator
+	pkgver = be76fec5
+	pkgrel = 1
+	url = https://github.com/contiki-ng/cooja
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = java-environment
+	depends = sh
+	depends = java-runtime
+	source = git+https://github.com/contiki-ng/cooja.git
+	md5sums = SKIP
+
+pkgname = cooja-git
