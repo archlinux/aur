@@ -6,6 +6,7 @@ pkgbase = kickstart-git
 	arch = any
 	license = unknown
 	makedepends = git
+	makedepends = which
 	depends = bash
 	depends = which
 	source = kickstart::git+https://github.com/bltavares/kickstart.git
