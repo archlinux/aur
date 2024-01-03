@@ -1,6 +1,6 @@
 # Maintainer: cubercsl <2014cais01 at gmail dot com>
 pkgname=dae-beta
-pkgver=0.5.0rc1
+pkgver=0.5.0rc2
 pkgrel=1
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ conflicts=('dae')
 source=(
     "$_pkgname-$pkgver.zip::https://github.com/daeuniverse/dae/releases/download/v$pkgver/dae-full-src.zip"
 )
-sha256sums=('db3e8654c06267e986da0d90e607893a5a770628770be4dba897d07cef2a8c5a')
+sha256sums=('c3afea4bed1664a565f313fe9a47a72de7374023f70496c3f3a9eeccd304c37e')
 
 build() {
     export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
