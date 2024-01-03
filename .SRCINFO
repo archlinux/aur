@@ -1,4 +1,4 @@
-pkgbase = steam_hdr
+pkgbase = steam-hdr
 	pkgdesc = Add desktop files to launch Steam in a Gamescope session with HDR enabled
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = steam_hdr
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = steam_hdr
+pkgname = steam-hdr
