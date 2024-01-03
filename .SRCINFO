@@ -1,0 +1,10 @@
+pkgbase = chicken-srfi-158
+	pkgdesc = SRFI 158: Generators and Accumulators for Chicken Scheme
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/srfi-158
+	arch = x86_64
+	license = MIT
+	depends = chicken
+
+pkgname = chicken-srfi-158
