@@ -1,20 +1,14 @@
-diff --git a/setup.py b/setup.py
-index 401add7..faf7b99 100644
+diff -u --label a/setup.py b/setup.py
 --- a/setup.py
 +++ b/setup.py
-@@ -27,10 +27,10 @@ setup(
-     include_package_data=True,
-     packages=find_packages(),
+@@ -31,7 +31,7 @@
      install_requires=['pillow','wand','ttkbootstrap'],
--#    entry_points = {
--#        "gui_scripts": [
--#            "fotokilof = fotokilof:__main__",
--#        ]
--#    },
-+    entry_points = {
-+        "gui_scripts": [
+     entry_points = {
+         "gui_scripts": [
+-            "fotokilof = fotokilof:__main__",
 +            "fotokilof = fotokilof.__main__",
-+        ]
-+    },
+         ]
+     },
  )
- 
+
+Diff finished.  Wed Jan  3 14:13:44 2024
