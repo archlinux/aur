@@ -1,0 +1,14 @@
+pkgbase = mc-dracula-theme
+	pkgdesc = A dark theme for midnight commander (mc)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://draculatheme.com/midnight-commander
+	arch = any
+	license = MIT
+	depends = mc
+	source = https://github.com/dracula/midnight-commander/raw/master/skins/dracula256.ini
+	source = https://github.com/dracula/midnight-commander/raw/master/LICENSE
+	sha256sums = 45e3477cfdead992f237b63de01a3881cf266ba30127d593f7bee2dcd909d79d
+	sha256sums = 4cdad101db975232dfef7ae7aa4058f676da365cabb45a19579f5e99aead9f30
+
+pkgname = mc-dracula-theme
