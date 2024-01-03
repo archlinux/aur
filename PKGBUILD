@@ -1,20 +1,17 @@
-# system requirements: GNU make
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ppcseq
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
-pkgrel=3
-pkgdesc='Probabilistic Outlier Identification for RNA Sequencing Generalized Linear Models'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Probabilistic Outlier Identification for RNA Sequencing Generalized Linear Models"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(GPL3)
 depends=(
-  make
-  r
   r-benchmarkme
-  r-bh
   r-dplyr
   r-edger
   r-foreach
@@ -23,15 +20,21 @@ depends=(
   r-magrittr
   r-purrr
   r-rcpp
-  r-rcppeigen
   r-rcppparallel
   r-rlang
   r-rstan
   r-rstantools
-  r-stanheaders
   r-tibble
   r-tidybayes
   r-tidyr
+)
+makedepends=(
+  r-bh
+  r-rcppeigen
+  r-stanheaders
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-biocstyle
@@ -40,14 +43,20 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b60e366828d56b33735e5b37aad4a643b8b69e65c35202d6ac319c39f53ae605')
+md5sums=('5a95706ac4269643dd1eb6efd4bccb67')
+b2sums=('dbf5c6406bb76ea7ab53f583f6518a93157f4ae61bc49feef88a02e668219ed28281516b664aeb5440cf2f9a3f20a72a5c3c9b7331991f414870bcdc7c914d54')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
