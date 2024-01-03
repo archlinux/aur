@@ -1,8 +1,8 @@
 # Maintainer: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=notesock
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Yet another terminal pastebin server"
 arch=(any)
 url="https://github.com/Sir-Photch/notesock"
@@ -18,7 +18,7 @@ source=(
 	"tmpfiles-$pkgname.conf"
 )
 
-sha256sums=('ab8c4f437aa7d52078ae3d84873983a2c19b2a55520221255b3d44265dbffcf3'
+sha256sums=('315333b3595bebf402fa663967455afb956ca44e7717eb895806f9fba8d8f98e'
             'd0a96a5ed09ff4f4495c51b95e5da6a7755f105b8b3f7ff9ec6f5038d1425f03'
             'e7be2fb5db531367a9c45363ed46bfee783a3be24e99ce3631c6627825e47c89'
             '509f304e8f912f31ed010a46fb3c542b37fa1327a176e066f3c9cab9d16439a0')
@@ -43,9 +43,10 @@ package() {
 
     	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	
-	install -Dm644 "nginx/example.conf" "$pkgdir/usr/share/doc/$pkgname/nginx-example.conf"
-	install -Dm640 "systemd/$pkgname.env" "$pkgdir/etc/$pkgname/notesock.env"
-	install -Dm644 "systemd/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	install -Dm644 "contrib/nginx-example.conf" "$pkgdir/usr/share/doc/$pkgname/nginx-example.conf"
+	install -Dm644 "contrib/fail2ban-example.conf" "$pkgdir/usr/share/doc/$pkgname/fail2ban-example.conf"
+	install -Dm640 "contrib/systemd-example.env" "$pkgdir/etc/$pkgname/notesock.env"
+	install -Dm644 "contrib/systemd-example.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 	install -Dm644 "$srcdir/sysusers-$pkgname.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 	install -Dm644 "$srcdir/tmpfiles-$pkgname.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
