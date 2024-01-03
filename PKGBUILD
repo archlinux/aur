@@ -2,7 +2,7 @@
 _pkgname=moonraker
 pkgname="${_pkgname}-git"
 pkgver=r1950.84a8538
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
 url="https://github.com/Arksine/moonraker"
@@ -56,6 +56,11 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
+  # clean wheel before build to prevent later package() runs from erroring due
+  # to `dist/*.whl` expanding to multiple files (which `python -m install` later
+  # doesn't support)
+  rm -f dist/*.whl
+
   python -m build --wheel --no-isolation
 }
 
@@ -68,10 +73,6 @@ package() {
   cd "$srcdir/$_pkgname"
 
   python -m installer --destdir="${pkgdir}" --prefix="/opt/$_pkgname" dist/*.whl
-  # clean wheel after installation to prevent later package() runs from erroring
-  # due to `dist/*.whl` expanding to multiple files (which `python -m install`
-  # doesn't support)
-  rm -f dist/*.whl
 
   rm -rf "$pkgdir/opt/$_pkgname/bin" # clean bin/moonraker as it doesn't work with /opt prefix
 
