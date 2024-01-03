@@ -5,22 +5,16 @@ _basever=0.8.6
 pkgrel=1
 pkgdesc="A featureful fork of beatoraja."
 arch=('x86_64')
-depends=('liberica-jre-8-full-bin' 'portaudio')
+depends=('liberica-jre-8-full-bin' 'portaudio' 'lr2oraja')
 makedepend=('unzip')
 source=(
   "https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v0.1.1/lr2oraja-${_basever}-endlessdream-linux-${pkgver}.jar"
-  'https://github.com/pfych/lr2oraja-pkgbuild/releases/download/skin/skin.zip'
-  'https://github.com/TNG-dev/tachi-beatoraja-ir/releases/download/v3.0.0/bokutachiIR-3.0.0.jar'
-  'libjportaudio.so'
   'lr2oraja-endlessdream.sh'
   'lr2oraja-endlessdream-icon.png'
 )
 sha256sums=(
   'd09e8b3838b29e702edc8ad42aa49b323f722ac42d0180451a12f530fb61655c' # LR2oraja-endlessdream.jar
-  'ef23b516537b4f52c306fd61ab9c4197192c06b7202b3b27b63481fec1042a26' # skin.zip
-  '3754959d5d6f121dbeed3a78dec2b91a26e915ff4ce68fdee4262b89ad150cb9' # bokutachiIR
-  'a65d1290d3ee7710f9327c040e6369bf7587eb3609835ed782caaf0ac02d84ed' # libjportaudio.so
-  '539d037783b9689cf108088b8e23b1713a3baba51465fba2983e182849619ed9' # lr2oraja-endlessdream.sh
+  '00f25e5f709943171f0a9fb6db77e103845f5538bdd385c06e2b7598fab0140d' # lr2oraja-endlessdream.sh
   'fdbd37ff43aa6af20f9eb643bf271a77ef579014970a7a3dcecf78e65123d83d' # lr2oraja-endlessdream-icon.png
 )
 license=(
@@ -31,25 +25,17 @@ license=(
   'unknown'
 )
 
-prepare() {
-  # Beatoraja will fail to load without a default skin
-  unzip -o skin.zip
-}
-
 package() {
   # Create required directories
   cd "$srcdir/"
-  mkdir -p "$pkgdir/opt/lr2oraja-endlessdream/ir"
-  mkdir -p "$pkgdir/usr/lib"
+  mkdir -p "$pkgdir/opt/beatoraja"
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/usr/share/pixmaps"
 
-  # Move all required Beatoraja Files
-  cp libjportaudio.so "$pkgdir/usr/lib"
-  cp "lr2oraja-${_basever}-endlessdream-linux-${pkgver}.jar" "$pkgdir/opt/lr2oraja-endlessdream/LR2oraja-endlessdream.jar" 
-  cp -r skin "$pkgdir/opt/lr2oraja-endlessdream"
-  cp "bokutachiIR-3.0.0.jar" "$pkgdir/opt/lr2oraja-endlessdream/ir"
-  chmod -R 777 "$pkgdir/opt/lr2oraja-endlessdream"
+
+  # Move new Jar
+  cp "lr2oraja-${_basever}-endlessdream-linux-${pkgver}.jar" "$pkgdir/opt/beatoraja/LR2oraja-endlessdream.jar" 
+  chmod -R 777 "$pkgdir/opt/beatoraja"
 
   # Create Desktop entry
   cp lr2oraja-endlessdream-icon.png "$pkgdir/usr/share/pixmaps"
@@ -67,9 +53,6 @@ package() {
   if [ -z "$XDG_CONFIG_HOME" ]; then
     XDG_CONFIG_HOME="$HOME/.config"
   fi
-
-  # Create config symlink
-  ln -sfn "$pkgdir/opt/lr2oraja-endlessdream" "$XDG_CONFIG_HOME/lr2oraja-endlessdream"
 
   # Install LR2oraja
   install -D lr2oraja-endlessdream.sh "$pkgdir/usr/bin/lr2oraja-endlessdream"
