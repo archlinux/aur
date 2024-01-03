@@ -4,7 +4,7 @@
 
 pkgname=('conan1')
 _pkgname=('conan')
-pkgver=1.61.0
+pkgver=1.62.0
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager. Version 1, to help people transition to version 2"
 arch=('any')
@@ -53,4 +53,4 @@ package() {
   install -m755 -d "${pkgdir}/usr/share/doc/conan"
   install -m644 contributors.txt "${pkgdir}/usr/share/doc/conan/"
 }
-md5sums=('03b2e38494683d85c255c777e9422ff1')
+md5sums=('698b8c8519c674e79563429c5601c74d')
