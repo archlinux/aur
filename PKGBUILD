@@ -1,9 +1,9 @@
 # Maintainer: Simon Banka <simon.banka@gmail.com>
 pkgname=k9s-sbanka-bin
-pkgver=0.30.6
+pkgver=0.30.8
 pkgrel=1
 _srcname=k9s
-_srcver=0.30.6
+_srcver=0.30.8
 pkgdesc="Kubernetes CLI To Manage Your Clusters In Style!"
 url='https://github.com/sbanka/k9s'
 arch=(x86_64 aarch64)
@@ -13,15 +13,14 @@ source_x86_64=(
 	"${pkgname}-${pkgver}_linux_amd64.tar.gz::https://github.com/derailed/k9s/releases/download/v${_srcver}/k9s_Linux_amd64.tar.gz"
 )
 sha256sums_x86_64=(
-	49523dac3c2c679b8c7a77b7afe1fb0ceca10673f565b1ffa6d2e3698bb6378b
+	40752ef7192eefab50e012cc24d521fb615bdd1d517717cffe1dc341378aaf85
 )
 
 source_aarch64=(
 	"${pkgname}-${pkgver}_linux_arm64.tar.gz::https://github.com/derailed/k9s/releases/download/v${_srcver}/k9s_Linux_arm64.tar.gz"
 )
 sha256sums_aarch64=(
-	49872e72054f0751aa3ac316bd55f657784fd06f494fb9977adb0ba1b50b44d7
-
+	01d74c0e813f75cf1b6ad89f654098cce0a8f7f39c15022b3e57c456b1d20556
 )
 
 package() {
