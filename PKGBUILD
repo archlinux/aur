@@ -10,7 +10,7 @@ license=('GPL3')
 provides=("${_pkgroot}")
 source=("https://dl.typesense.org/releases/${pkgver}/${_pkgroot}-server-${pkgver}-linux-amd64.tar.gz"
         'typesense.sysusers' 'typesense.tmpfiles' 'typesense-server.service')
-sha256sums=('5de6ccce64e42e7fa429ad20027a1230f98fc5bc72b1f3e77ace1143786a4a17'
+sha256sums=('0ae08a1401a01a1ab880a8a78d99fc6d1cf4042246e466ef5bbad26805ce849a'
             'b6075bd95e71f017d46967ccbba2ebcddcd87a55f7770ad67824a296c9d9cb24'
             '884e2b52f2c4314ee6614a5b7f2d662e48c9ef7e065ada28bcdebfcff924f348'
             '0b6b12af5ea5c12f0ef4321ab3cfbe54b9c4cf454921d7d6e970e3160631bad7')
