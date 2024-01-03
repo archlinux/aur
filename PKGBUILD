@@ -3,20 +3,20 @@
 pkgname=cmake-init
 _name=${pkgname#python-}
 pkgver=0.39.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The missing CMake project initializer"
 arch=('any')
 url="https://github.com/friendlyanon/cmake-init"
 license=('GPL3')
 depends=('python3')
-source=("cmake-init-${pkgver}.pyz::https://github.com/friendlyanon/cmake-init/releases/download/v${pkgver}/cmake-init.pyz")
-sha256sums=('01d14c029a70e8a6f12b2b3d06c4551d53ad7e91c0a8a5e90905385dc55e3069')
+makedepends=('python-pip')
+source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
+sha256sums=('d3802e9ca3dd2b6b85bb563514912ad138858652d22500e66db24d46d36f81ec')
 
-#pkgver() {
-#	curl -sH "Accept: application/vnd.github.v3+json" 'https://api.github.com/repos/friendlyanon/cmake-init/tags'  | jq -r '.[0].name' | sed 's/v//;s/-/./;s/-/./'
-#}
+# pkgver() {
+#     curl -sH "Accept: application/vnd.github.v3+json" 'https://api.github.com/repos/friendlyanon/cmake-init/tags'  | jq -r '.[0].name' | sed 's/v//;s/-/./;s/-/./'
+# }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    install -D -m755 "cmake-init-${pkgver}.pyz" "${pkgdir}/usr/bin/cmake-init"
+    PIP_CONFIG_FILE=/dev/null pip install --root-user-action=ignore --isolated --prefix=/usr --root="$pkgdir" --ignore-installed --no-deps "${_name//-/_}-$pkgver-py3-none-any.whl"
 }
