@@ -1,0 +1,11 @@
+pkgbase = chicken-interfaces
+	pkgdesc = Simple interface/implementation abstraction for Chicken Scheme
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/interfaces
+	arch = x86_64
+	license = public domain
+	depends = chicken
+	depends = chicken-srfi-1
+
+pkgname = chicken-interfaces
