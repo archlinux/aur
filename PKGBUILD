@@ -15,7 +15,7 @@ _sourcedir="src_${_repoauthor}_${_reponame}_${_pkgbranch}"
 # Package Build Info
 pkgname="$_pkgname-git"
 pkgver=r4.58cd474
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="JSON to TOML conversion utility, for use with jq"
 arch=('x86_64')
