@@ -1,7 +1,7 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=nodejs-inshellisense
 _pkgname=@microsoft/inshellisense
-pkgver=0.0.1_rc.5
+pkgver=0.0.1_rc.6
 pkgrel=1
 pkgdesc="IDE style command line auto complete"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(nodejs glibc gcc-libs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$_pkgname/-/inshellisense-${pkgver//_/-}.tgz)
 noextract=(inshellisense-${pkgver//_/-}.tgz)
-sha256sums=('0faccdd646e79543bf27402b20fb60eeb62b91cadd79f40b96e6eaa3422f6274')
+sha256sums=('a13779cbf5447f72eac8247e5ea99d7e6930dd7f080a8f593ddbbac509ea58a2')
 
 package() {
 	npm install --omit=dev -g --prefix "${pkgdir}/usr" "${srcdir}/inshellisense-${pkgver//_/-}.tgz"
@@ -21,6 +21,6 @@ package() {
 	rm -r $pkgdir/usr/lib/node_modules/@microsoft/inshellisense/node_modules/.bin
 	find $pkgdir \( -name "*.py" -or -name "*.sh" -or -name "*.ts" \) -delete
 	# fix https://github.com/xtermjs/xterm.js/issues/2749
-	find $pkgdir -name "xterm-headless.js" -print -exec sed -i 's/in window?/in this?/' {} \;
+	# find $pkgdir -name "xterm-headless.js" -print -exec sed -i 's/in window?/in this?/' {} \;
 	find $pkgdir -type d -empty -delete
 }
