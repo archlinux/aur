@@ -1,6 +1,6 @@
 pkgbase = python-restrictedpython
 	pkgdesc = A restricted execution environment for Python to run untrusted code
-	pkgver = 6.2
+	pkgver = 7.0
 	pkgrel = 1
 	url = https://github.com/zopefoundation/RestrictedPython
 	arch = any
@@ -9,8 +9,10 @@ pkgbase = python-restrictedpython
 	checkdepends = python-pytest-mock
 	makedepends = python
 	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-build
 	depends = python
-	source = https://github.com/zopefoundation/RestrictedPython/archive/6.2.tar.gz
-	b2sums = cac63465192d425dc2b18a787fe4e75749f19768bbcb3be921512ccf0558e30f8ab3f8a89c36b77d370ae2c160b5aba4e9481ad66c36909b7189559c20a532fe
+	source = https://github.com/zopefoundation/RestrictedPython/archive/7.0.tar.gz
+	b2sums = c71a70ce4f71b92d87e2bdab157cba4327227da6f1be226df573c25268cbd1afbde608ffcc5d8deb6cbe063244d7611bc8792c6e17ce495c50c5812527674e2e
 
 pkgname = python-restrictedpython
