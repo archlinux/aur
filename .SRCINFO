@@ -1,0 +1,20 @@
+pkgbase = kd-bin
+	pkgdesc = A crystal clean command-line dictionary.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/Karmenzind/kd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kd
+	conflicts = kd
+	source = LICENSE
+	source = kd-server.service
+	sha256sums = 01fc1f8f20ef852628985a6fdb862fadd1c2f3b438cd3104c6a8e724bc16986a
+	sha256sums = 98c414c016faefb96f0f5e998328d60a5a248c71eb17b89b0d52784779f95940
+	source_x86_64 = kd::https://github.com/Karmenzind/kd/releases/download/v0.0.5/kd_linux_amd64
+	sha256sums_x86_64 = e615a1b76f885d0f065384656346b25990ece57f2450971be5ed8c402c7442d3
+	source_aarch64 = kd::https://github.com/Karmenzind/kd/releases/download/v0.0.5/kd_linux_arm64
+	sha256sums_aarch64 = e615a1b76f885d0f065384656346b25990ece57f2450971be5ed8c402c7442d3
+
+pkgname = kd-bin
