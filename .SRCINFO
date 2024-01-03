@@ -1,0 +1,17 @@
+pkgbase = chicken-comparse
+	pkgdesc = Schemely parser combinators for Chicken Scheme
+	pkgver = 3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/comparse
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-lazy-seq>=0.1.0
+	depends = chicken-trie
+	depends = chicken-matchable
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+	depends = chicken-srfi-14
+	depends = chicken-srfi-69
+
+pkgname = chicken-comparse
