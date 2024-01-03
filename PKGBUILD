@@ -1,7 +1,7 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=tcl-combobox
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A combobox megawidget for TK written in pure TCL"
 url="https://core.tcl-lang.org/jenglish/gutter/packages/combobox.html"
 arch=('x86_64' 'i686')
@@ -13,11 +13,11 @@ conflicts=()
 replaces=()
 backup=()
 install=
-source=("http://tcltk.co.kr/files/combobox-${pkgver}.zip")
+source=("https://github.com/Geballin/tcl-combobox/archive/refs/tags/v${pkgver}.zip")
 
-md5sums=(36e76912017d54481ac9567ab4abada6)
+md5sums=(4c382716035747036cd630cf4b474ae5)
 
 package() {
   mkdir -p ${pkgdir}/usr/lib/
-  cp -rfp ${srcdir}/combobox-${pkgver} ${pkgdir}/usr/lib/
+  cp -rfp ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/usr/lib/
 }
