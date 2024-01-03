@@ -2,12 +2,12 @@
 pkgname=minetest-loria
 _pkgname=loria
 _pkgauthor=siegment
-pkgver=21w30h
-_cdbrel=8599
+pkgver=23w03a
+_cdbrel=16565
 pkgrel=1
 pkgdesc="Survival in hardcore acid-alien sci-fi themed world"
 license=("GPLv3")
-sha256sums=('e984047236d08289c62eb9ca2deac53ba2ead60b2af05773cf4f9381e22efc8d')
+sha256sums=('977b3eba8a8c66f68a9b9e69f795767640de6ba34e4808feb9827725aa36d875')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
