@@ -1,11 +1,11 @@
 pkgbase = collision
 	pkgdesc = Check hashes for your files. A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://collision.geopjr.dev
 	arch = x86_64
 	license = BSD
-	checkdepends = appstream-glib
+	checkdepends = appstream
 	makedepends = crystal
 	makedepends = gobject-introspection
 	makedepends = shards
@@ -18,9 +18,9 @@ pkgbase = collision
 	conflicts = hashbrown
 	replaces = collision-hashes
 	replaces = hashbrown
-	source = collision-3.6.0.tar.gz::https://github.com/GeopJr/Collision/archive/v3.6.0.tar.gz
+	source = collision-3.7.0.tar.gz::https://github.com/GeopJr/Collision/archive/v3.7.0.tar.gz
 	source = Makefile.patch
-	sha256sums = f52a61aa6f9028342b6d6ea56133e7c62bce99ad794e36b7aefb0cd1321b6f2f
+	sha256sums = 37af60e2a977eddad6633a949e02d9ab8fedd2a91348c7edb60e77e60702f1bc
 	sha256sums = da920ec69e57f780613fddfa1cd0c9bb2b39a3cba6350f9060c2e91c5b15d3b5
 
 pkgname = collision
