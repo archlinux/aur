@@ -3,7 +3,7 @@ pkgname=vencord-desktop
 _pkgname=Vesktop
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
 pkgver=0.4.4
-pkgrel=3
+pkgrel=4
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
@@ -28,7 +28,7 @@ sha256sums=(98776a826017803826b8f24483ac460ce9d725d75882ea1b79a303c3d25da620
 prepare() {
     #grabbin path for an installed electron
     #any ideas for a better way of doing this are welcome
-    find /usr/lib -type d -name electron* |\
+    find /usr/lib -maxdepth 1 -type d -name electron* |\
     sed 's/\/usr\//        "electronDist": "\/usr\//' |\
     sed 's/$/",/' |\
     sed -i '72e cat /dev/stdin' "$srcdir/$_pkgname-$pkgver/package.json"
