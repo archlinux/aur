@@ -10,7 +10,7 @@ arch=(any)
 url="https://github.com/harlowja/fasteners"
 license=(Apache)
 depends=("python")
-makedepends=("git" "python-setuptools" "python-build" "python-installer")
+makedepends=("git" "python-setuptools" "python-build" "python-installer" "python-wheel")
 source=("fasteners::git+${url}")
 sha512sums=('SKIP')
 

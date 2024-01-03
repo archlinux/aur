@@ -9,6 +9,7 @@ pkgbase = python-fasteners-git
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	provides = python-fasteners
 	conflicts = python-fasteners
