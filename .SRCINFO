@@ -1,7 +1,7 @@
 pkgbase = ollamamodelupdater
 	pkgdesc = Tool to help you update your Ollama models
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thatonecalculator/ollamamodelupdater
 	arch = any
 	license = MIT
