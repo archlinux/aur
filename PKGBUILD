@@ -1,11 +1,11 @@
 pkgname=chicken-lowdown
 _name=lowdown
 pkgver=3
-pkgrel=2
+pkgrel=3
 pkgdesc='A pure Chicken Markdown parser for Chicken Scheme'
 arch=('x86_64')
 license=('BSD')
-depends=("chicken" "chicken-char-set-literals" "chicken-clojurian" "chicken-comparse>=3.0" "chicken-fancypants" "chicken-srfi-1" "chicken-srfi-13" "chicken-srfi-14" "chicken-srfi-69" "chicken-sxml-transforms")
+depends=("chicken" "chicken-char-set-literals" "chicken-clojurian" "chicken-comparse" "chicken-fancypants" "chicken-srfi-1" "chicken-srfi-13" "chicken-srfi-14" "chicken-srfi-69" "chicken-sxml-transforms")
 url='http://wiki.call-cc.org/eggref/5/lowdown'
 
 build() {

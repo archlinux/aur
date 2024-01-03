@@ -1,14 +1,14 @@
 pkgbase = chicken-lowdown
 	pkgdesc = A pure Chicken Markdown parser for Chicken Scheme
 	pkgver = 3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.call-cc.org/eggref/5/lowdown
 	arch = x86_64
 	license = BSD
 	depends = chicken
 	depends = chicken-char-set-literals
 	depends = chicken-clojurian
-	depends = chicken-comparse>=3.0
+	depends = chicken-comparse
 	depends = chicken-fancypants
 	depends = chicken-srfi-1
 	depends = chicken-srfi-13
