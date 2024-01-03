@@ -1,0 +1,26 @@
+pkgbase = lr2oraja-endlessdream
+	pkgdesc = A featureful fork of beatoraja.
+	pkgver = 0.1.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	license = GPL3
+	license = MIT
+	license = unknown
+	license = unknown
+	depends = liberica-jre-8-full-bin
+	depends = portaudio
+	source = https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v0.1.1/lr2oraja-0.8.6-endlessdream-linux-0.1.1.jar
+	source = https://github.com/pfych/lr2oraja-pkgbuild/releases/download/skin/skin.zip
+	source = https://github.com/TNG-dev/tachi-beatoraja-ir/releases/download/v3.0.0/bokutachiIR-3.0.0.jar
+	source = libjportaudio.so
+	source = lr2oraja-endlessdream.sh
+	source = lr2oraja-endlessdream-icon.png
+	sha256sums = d09e8b3838b29e702edc8ad42aa49b323f722ac42d0180451a12f530fb61655c
+	sha256sums = ef23b516537b4f52c306fd61ab9c4197192c06b7202b3b27b63481fec1042a26
+	sha256sums = 3754959d5d6f121dbeed3a78dec2b91a26e915ff4ce68fdee4262b89ad150cb9
+	sha256sums = a65d1290d3ee7710f9327c040e6369bf7587eb3609835ed782caaf0ac02d84ed
+	sha256sums = 539d037783b9689cf108088b8e23b1713a3baba51465fba2983e182849619ed9
+	sha256sums = fdbd37ff43aa6af20f9eb643bf271a77ef579014970a7a3dcecf78e65123d83d
+
+pkgname = lr2oraja-endlessdream
