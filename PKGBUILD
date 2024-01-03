@@ -1,7 +1,8 @@
 # Maintainer: Allddd <allddd (at) proton (dot) me>
-_path='3710/1697301266'
+
+_path='3710/1704200967'
 pkgname=libreoffice-extension-languagetool
-pkgver=6.3
+pkgver=6.3.1
 _filename="LanguageTool-${pkgver}.oxt"
 pkgrel=1
 pkgdesc='An Open Source style and grammar checker (more than 30 languages)'
