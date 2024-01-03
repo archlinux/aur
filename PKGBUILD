@@ -2,7 +2,7 @@
 
 pkgname=h7toolpc-wine
 pkgver=2.2.4
-pkgrel=0
+pkgrel=1
 pkgdesc="Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
 url="http://www.armbbs.cn/forum.php?mod=viewthread&tid=95468"
@@ -125,12 +125,13 @@ export WINEARCH=win64 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
 if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
     mkdir -p "$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    cp -r /${armfly}/${pkgname%-wine}/app.ini "$HOME"/.${pkgname%-wine} || exit 1
+    cp -r /${armfly}/${pkgname%-wine}/app*.ini "$HOME"/.${pkgname%-wine} || exit 1
     cp -r /${armfly}/${pkgname%-wine}/Backup "$HOME"/.${pkgname%-wine} || exit 1
     cp -r /${armfly}/${pkgname%-wine}/Readback "$HOME"/.${pkgname%-wine} || exit 1
     cp -r /${armfly}/${pkgname%-wine}/ini "$HOME"/.${pkgname%-wine} || exit 1
     cp -r /${armfly}/${pkgname%-wine}/log "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/*.lua "$HOME"/.${pkgname%-wine} || exit 1
+    cp -r /${armfly}/${pkgname%-wine}/Lua "$HOME"/.${pkgname%-wine} || exit 1
+    cp -r /${armfly}/${pkgname%-wine}/Trace "$HOME"/.${pkgname%-wine} || exit 1
     cp -r /${armfly}/${pkgname%-wine}/regpatch.reg "$HOME"/.${pkgname%-wine}/wine || exit 1
 
     ln -s /${armfly}/${pkgname%-wine}/${pkgname/pc-wine/PC}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
@@ -145,8 +146,8 @@ if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
 #     winetricks -q comctl32
 #     winetricks -q comctl32ocx
 #     winetricks -q comdlg32ocx
-    wine "$HOME"/.${pkgname%-wine}/Driver/stm32_vcp/VCP_V1.5.0_Setup_W7_x86_32bits.exe /S
-    wine "$HOME"/.${pkgname%-wine}/Driver/WinUSB/zadig-2.5.exe
+#     wine "$HOME"/.${pkgname%-wine}/Driver/stm32_vcp/VCP_V1.5.0_Setup_W7_x86_32bits.exe /S
+#     wine "$HOME"/.${pkgname%-wine}/Driver/WinUSB/zadig-2.5.exe
     wineserver -k
 fi
 

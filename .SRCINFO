@@ -1,7 +1,7 @@
 pkgbase = h7toolpc-wine
 	pkgdesc = Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等
 	pkgver = 2.2.4
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.armbbs.cn/forum.php?mod=viewthread&tid=95468
 	install = h7toolpc-wine.install
 	arch = x86_64
