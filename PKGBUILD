@@ -2,7 +2,7 @@
 # contributor: mrtuxa <mrtuxa@infra-sys.de>
 # 
 pkgname=meson-init-cpp-git
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="meson init cpp"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/mrtuxa/meson-init-cpp"
 license=('GPL-3.0')
 depends=('meson')
 source=("https://github.com/mrtuxa/meson-init-cpp/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('eacba5cdb00f46cd820e238d82aedb001e89627a0b3a6e3806f54a893738a72f')
+sha256sums=('a041408864534b4d1b78d3dd8fa8d49c45428fe4dff89750ee893fbc6ed2e5df')
 
 build() {
   cd "${srcdir}/meson-init-cpp-${pkgver}"
