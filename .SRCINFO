@@ -1,18 +1,21 @@
 pkgbase = lcd4linux-git
 	pkgdesc = Grabs information from the kernel and other systems and displays it on an LCD
 	pkgver = r1167.cb69a93
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.lcd4linux.tk/doku.php
 	arch = i686
 	arch = x86_64
-	license = GPLv2
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = pkg-config
 	makedepends = automake
 	makedepends = autoconf
 	provides = lcd4linux
 	conflicts = lcd4linux-svn
+	backup = etc/lcd4linux.conf
 	source = lcd4linux::git+https://github.com/jmccrohan/lcd4linux
+	source = lcd4linux.service
 	md5sums = SKIP
+	md5sums = 809b7eefb65fd5545e9716dd1b7cf925
 
 pkgname = lcd4linux-git
