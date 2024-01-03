@@ -2,7 +2,7 @@
 pkgname=python-typst-mpl-backend
 _pkgname=${pkgname#python-}
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Typst backend for matplotlib (Python visualization library).'
 arch=('any')
 url="https://github.com/daskol/$_pkgname"
@@ -12,7 +12,7 @@ depends=('python-matplotlib' 'typst')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('41240e2a8867c682ed32240805ca5da63c54fd64adfb7b83b5fd2c676c2d530b')
+sha256sums=('226f9acbbe08a92874ce73fc7e408c19a325fc1d2d1e2642112bd7887d473a95')
 
 build() {
     python -m build -nw $srcdir/$_pkgname-$pkgver
