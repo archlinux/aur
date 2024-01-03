@@ -2,12 +2,12 @@
 pkgname=minetest-labyrinth
 _pkgname=labyrinth
 _pkgauthor=Just_Visiting
-pkgver=1.0.0
-_cdbrel=9620
+pkgver=1.0.1
+_cdbrel=16683
 pkgrel=1
 pkgdesc="An aMAZEing Game"
 license=("MIT")
-sha256sums=('70b547ab7031b74fe483aa7f7ff87d98d4c42496d146c35e30731dd1859e940a')
+sha256sums=('e874be2df976a0c04a9bd64267f7e3f4d097d0926f919f111158a31cc5b2ef23')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"

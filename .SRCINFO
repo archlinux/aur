@@ -1,15 +1,15 @@
 pkgbase = minetest-labyrinth
 	pkgdesc = An aMAZEing Game
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://content.minetest.net/packages/Just_Visiting/labyrinth/
 	arch = any
 	license = MIT
 	makedepends = unzip
 	depends = minetest-common
-	noextract = labyrinth-1.0.0.zip
+	noextract = labyrinth-1.0.1.zip
 	options = !strip
-	source = labyrinth-1.0.0.zip::https://content.minetest.net/packages/Just_Visiting/labyrinth/releases/9620/download/
-	sha256sums = 70b547ab7031b74fe483aa7f7ff87d98d4c42496d146c35e30731dd1859e940a
+	source = labyrinth-1.0.1.zip::https://content.minetest.net/packages/Just_Visiting/labyrinth/releases/16683/download/
+	sha256sums = e874be2df976a0c04a9bd64267f7e3f4d097d0926f919f111158a31cc5b2ef23
 
 pkgname = minetest-labyrinth
