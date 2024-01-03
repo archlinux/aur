@@ -1,7 +1,7 @@
 # Maintainer: bastidest <bastidest at mailbox dot org>
 
 pkgname=git-conventional-commits
-pkgver=2.6.3
+pkgver=2.6.7
 pkgrel=1
 pkgdesc="Git Conventional Commits Util to generate Semantic Version and Markdown Change Log and Validate Commit Messages"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs' 'git')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('c391540a87183c3a7fd84662794355d8c370365017c195f4bf525d651520fad3')
+sha256sums=('55e81d25af8965abc0da4b48aabbc006bd478d2172d22df7c779c6c5c4e468db')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
