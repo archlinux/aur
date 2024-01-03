@@ -6,7 +6,7 @@
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
-pkgver=25.9.6
+pkgver=25.9.8
 _chromiumver=114.0.5735.289
 pkgrel=1
 
