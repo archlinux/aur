@@ -1,0 +1,11 @@
+pkgbase = chicken-posix-regex
+	pkgdesc = A thin wrapper around POSIX regular expression matching for Chicken Scheme
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/posix-regex
+	arch = x86_64
+	license = GPL-3
+	depends = chicken
+	depends = chicken-r7rs
+
+pkgname = chicken-posix-regex
