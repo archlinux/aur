@@ -1,7 +1,7 @@
 # Maintainer: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=notesock
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Yet another terminal pastebin server"
 arch=(any)
@@ -18,7 +18,7 @@ source=(
 	"tmpfiles-$pkgname.conf"
 )
 
-sha256sums=('315333b3595bebf402fa663967455afb956ca44e7717eb895806f9fba8d8f98e'
+sha256sums=('fd3994c12bf0df43e774e69cd7646ca0adb0de7d14f9e83b068d66052705ccb1'
             'd0a96a5ed09ff4f4495c51b95e5da6a7755f105b8b3f7ff9ec6f5038d1425f03'
             'e7be2fb5db531367a9c45363ed46bfee783a3be24e99ce3631c6627825e47c89'
             '509f304e8f912f31ed010a46fb3c542b37fa1327a176e066f3c9cab9d16439a0')
