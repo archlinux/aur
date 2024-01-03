@@ -1,6 +1,8 @@
 pkgname=imgui
-pkgver=1.89.9
-pkgrel=2
+# On each update, keep up to date with latest sha in https://github.com/microsoft/vcpkg/commits/master/ports/imgui
+_vcpkg_sha=f7a371bbd9945c9059875492ba018ec12cb925c2
+pkgver=1.90
+pkgrel=1
 pkgdesc="Bloat-free Graphical User interface for C++"
 license=('MIT')
 arch=('x86_64')
@@ -8,11 +10,11 @@ url="https://github.com/ocornut/imgui"
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/ocornut/imgui/tar.gz/v${pkgver}"
-        "CMakeLists.v${pkgver}-${pkgrel}.txt::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt"
-        "imgui-config.v${pkgver}-${pkgrel}.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/imgui-config.cmake.in")
-sha256sums=('1acc27a778b71d859878121a3f7b287cd81c29d720893d2b2bf74455bf9d52d6'
-            'd91c95d73bcf3d8f2a05d15394a1a6600a91df6f5dee99cc467a548ee8f05a1f'
-            '1e7b523fca4b85ef4bd995c8c0485ba15be78d91731f6a5a444711762b947493')
+        "CMakeLists.v${pkgver}-${pkgrel}.txt::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/CMakeLists.txt"
+        "imgui-config.v${pkgver}-${pkgrel}.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/imgui-config.cmake.in")
+sha256sums=('170986e6a4b83d165bfc1d33c2c5a5bc2d67e5b97176287485c51a2299249296'
+            'f1d4a017e97f2a43ee4f79ceba7a7c26c068bc29703e8d3a937193b7729260c5'
+            'dc7580735db811d67e61fc3a37037f72aabc36c23d074ab98e670b00ad3f4a97')
 
 prepare () {
   cp CMakeLists.v${pkgver}-${pkgrel}.txt        ${pkgname}-${pkgver}/CMakeLists.txt
