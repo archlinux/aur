@@ -63,7 +63,7 @@ makedepends=(
 )
 _commit=b51a3980f365775d92fa188f5533e78094474401  # tags/4.12.1^0
 source=(
-  "https://download.gnome.org/sources/gtk/$apiver/gtk-$pkgver.tar.xz"
+  "git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
   gtk-update-icon-cache.{hook,script}
   gtk4-querymodules.{hook,script}
 )

@@ -53,7 +53,7 @@ pkgbase = gtk4-customizable
 	depends = shared-mime-info
 	depends = tracker3
 	depends = wayland
-	source = https://download.gnome.org/sources/gtk/4.12/gtk-4.12.1.tar.xz
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=b51a3980f365775d92fa188f5533e78094474401
 	source = gtk-update-icon-cache.hook
 	source = gtk-update-icon-cache.script
 	source = gtk4-querymodules.hook
