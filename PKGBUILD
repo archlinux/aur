@@ -8,8 +8,18 @@ pkgdesc="Slack Desktop (Beta) for Linux with Wayland Support"
 arch=('x86_64')
 url="https://slack.com/downloads"
 license=('custom')
-depends=('gtk3' 'libsecret' 'libxss' 'nss' 'pipewire' 'xdg-utils' 'xdg-desktop-portal')
-optdepends=('libappindicator-gtk3: Systray indicator support'
+depends=(
+    'electron'
+    'gtk3'
+    'libsecret'
+    'libxss'
+    'nss'
+    'pipewire'
+    'xdg-desktop-portal'
+    'xdg-utils'
+)
+optdepends=(
+    'libappindicator-gtk3: Systray indicator support'
     'org.freedesktop.secrets: Keyring password store support'
     'xdg-desktop-portal-gnome: xdg-desktop-portal support for GNOME'
     'xdg-desktop-portal-gtk: xdg-desktop-portal support for GNOME and GTK'
@@ -17,33 +27,37 @@ optdepends=('libappindicator-gtk3: Systray indicator support'
     'xdg-desktop-portal-lxqt: xdg-desktop-portal support for LXQt'
     'xdg-desktop-portal-wlr: xdg-desktop-portal support for wlroots-based Wayland compositors'
 )
+
 source=(
-    "https://downloads.slack-edge.com/releases/linux/${pkgver}/prod/x64/${_original_pkgname}-${pkgver}-amd64.deb"
-    "${_original_pkgname}.patch"
+    "$pkgname-$pkgver.deb::https://downloads.slack-edge.com/releases/linux/$pkgver/prod/x64/slack-desktop-$pkgver-amd64.deb"
+    'slack.sh'
 )
+
 noextract=("${_original_pkgname}-${pkgver}-amd64.deb")
 b2sums=('d24e5ad17c4a340bf57c341e67f31d515cc516277fab021e9a7dd2deea02464230aacb72dff56af971df2f5d08ba2881694a9faa559a70bb53ad7d3edb944a1f'
-        '556dfdffabf790b100813bb0ff34ee48e5ec0a9e40b701f52bc8dc2bcd82f1e7701877798e6764f12a611bdc33dfeca8af63915dd713d75bb7fef9e5aac053fe')
+    'a0eb3cd65b1035f65e600ec3567be7814b5443c0cac1d24fccc15dff563221c55e1261c819635e3d4461a87e91ef42fa5df4b1d62b26a4d2739f713623ecb20a')
 provides=('slack-desktop')
 conflicts=('slack-desktop' 'slack-electron')
 
+prepare() {
+    bsdtar -xf data.tar.xz
+
+    # Enable slack silent mode and fix icon
+    sed -ri \
+        -e 's|^(Exec=.+/slack)(.+)|\1 -s\2|' \
+        -e 's/^Icon=.+slack\.png/Icon=slack/' \
+        "usr/share/applications/slack.desktop"
+
+    # patch the asar file to fix/enable pipewire
+    # see https://github.com/flathub/com.slack.Slack/issues/101#issuecomment-1807073763
+    sed -i -e 's/,"WebRTCPipeWireCapturer"/,"_ebRTCPipeWireCapturer"/' usr/lib/slack/resources/app.asar
+}
+
 package() {
-    bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
-    
-    # Fix hardcoded icon path in .desktop file
-    patch -d "${pkgdir}" -p1 <"${_original_pkgname}".patch
-    
-    # Permission fix
-    find "${pkgdir}" -type d -exec chmod 755 {} +
-    
-    # Remove all unnecessary stuff
-    rm -rf "${pkgdir}/etc"
-    rm -rf "${pkgdir}/usr/lib/slack/src"
-    rm -rf "${pkgdir}/usr/share/lintian"
-    rm -rf "${pkgdir}/usr/share/doc"
-    
-    # Move license
-    install -dm755 "${pkgdir}/usr/share/licenses/${_original_pkgname}"
-    mv "${pkgdir}/usr/lib/slack/LICENSE" "${pkgdir}/usr/share/licenses/${_original_pkgname}"
-    ln -s "/usr/share/licenses/${_original_pkgname}/LICENSE" "${pkgdir}/usr/lib/slack/LICENSE"
+    install -Dv "slack.sh" "$pkgdir/usr/bin/slack"
+    install -dv "$pkgdir/usr/lib/slack/"
+    cp -av --no-preserve=ownership usr/lib/slack/resources/* "$pkgdir/usr/lib/slack/"
+    install -Dvm644 "usr/share/applications/slack.desktop" -t "$pkgdir/usr/share/applications"
+    install -Dvm644 "usr/share/pixmaps/slack.png" -t "$pkgdir/usr/share/pixmaps"
+    install -Dvm644 "usr/lib/slack/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
