@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=harec-git
 _pkgname=harec
-pkgver=r1382.ef3e7d0
+pkgver=r1828.770566a
 pkgrel=1
 license=("GPL3")
 pkgdesc="The Hare compiler"
@@ -23,13 +23,13 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	./configure --prefix=/usr
-	make
+	cp configs/linux.mk config.mk
+	make ARCH=$CARCH
 }
 
 check () {
 	cd "$srcdir/$_pkgname"
-	make check
+	make ARCH=$CARCH check
 }
 
 
