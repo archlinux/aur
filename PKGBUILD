@@ -1,23 +1,18 @@
-# Maintainer: Jim Pryor <profjim@jimpryor.net>
-# Maintainer: perlawk
-
 pkgname=chicken-silex
-_pkgname=silex
-pkgver=1.4
-pkgrel=5
-pkgdesc="Chicken Scheme Egg: An efficient and powerful lexer generator"
-arch=('i686' 'x86_64')
-url="http://chicken.wiki.br/eggref/4/silex"
+_name=silex
+pkgver=1.0
+pkgrel=1
+pkgdesc='An efficient and powerful lexer generator for Chicken Scheme'
+arch=('x86_64')
 license=('BSD')
-depends=('chicken>=4.5.0'  )
-options=(docs !libtool !emptydirs)
+depends=("chicken" "chicken-srfi-13")
+url='http://wiki.call-cc.org/eggref/5/silex'
 
 build() {
-	cd "$srcdir/"			
-	chicken-install -r "$_pkgname"
+  CHICKEN_INSTALL_REPOSITORY=${srcdir} CHICKEN_INSTALL_PREFIX=${srcdir} chicken-install -no-install-dependencies $_name:$pkgver
+}
+package() {
+  install -d ${pkgdir}/usr/lib/chicken/11
+  find ${srcdir} -maxdepth 1 -type f -exec cp -t ${pkgdir}/usr/lib/chicken/11 {} +
 }
 
-package() {
-	cd "$_pkgname"
-	chicken-install -p "$pkgdir/usr"
-}

@@ -1,15 +1,11 @@
 pkgbase = chicken-silex
-	pkgdesc = Chicken Scheme Egg: An efficient and powerful lexer generator
-	pkgver = 1.4
-	pkgrel = 5
-	url = http://chicken.wiki.br/eggref/4/silex
-	arch = i686
+	pkgdesc = An efficient and powerful lexer generator for Chicken Scheme
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/silex
 	arch = x86_64
 	license = BSD
-	depends = chicken>=4.5.0
-	options = docs
-	options = !libtool
-	options = !emptydirs
+	depends = chicken
+	depends = chicken-srfi-13
 
 pkgname = chicken-silex
-
