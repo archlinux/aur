@@ -1,6 +1,6 @@
 pkgbase = linux-amd-raven
 	pkgver = 6.6.v.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -34,6 +34,3 @@ pkgname = linux-amd-raven
 
 pkgname = linux-amd-raven-headers
 	pkgdesc = Header files and scripts for building modules for Linux kerel with working amdgpu for Raven Ridge hardware
-
-pkgname = linux-amd-raven-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
