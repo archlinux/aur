@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bookget-git
-pkgver=23.1227.3.g9c75fa4
-pkgrel=2
+pkgver=24.0102
+pkgrel=1
 pkgdesc="bookget 数字图书馆下载工具，目前支持约50+个数字图书馆。"
 arch=(x86_64
     aarch64
@@ -24,9 +24,9 @@ sha256sums=('SKIP')
 prepare()
 {
     git -C "${srcdir}/${pkgname%-git}" clean -dfx
-    
-    cd "${srcdir}/${pkgname%-git}"
-    git tag --delete nightly
+
+#     cd "${srcdir}/${pkgname%-git}"
+#     git tag --delete nightly
 }
 
 pkgver() {
