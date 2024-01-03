@@ -1,6 +1,6 @@
 pkgbase = python-hep_ml
 	pkgdesc = Specific machine learning tools for purposes of high energy physics
-	pkgver = 0.7.0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://arogozhnikov.github.io/hep_ml/
 	arch = any
@@ -13,9 +13,7 @@ pkgbase = python-hep_ml
 	depends = python-six
 	depends = python-pandas
 	depends = python-theano
-	source = python-hep_ml-0.7.0.tar.gz::https://github.com/arogozhnikov/hep_ml/archive/v0.7.0.tar.gz
-	source = mse.patch
-	sha256sums = 24bd5c61d0f3dc0660c158fcc2313fba3be04de9bf1162bf53728ff381154f0c
-	sha256sums = 86d42b9026fce2d623da01c6ceabb4bc85249dfa271d3a7c60fc8645623045d0
+	source = python-hep_ml-0.7.2.tar.gz::https://github.com/arogozhnikov/hep_ml/archive/v0.7.2.tar.gz
+	b2sums = a9da308da46ecc70aa1829e01b1e1692f5231c498ee6d6687132fbd03b3b6b1e028a4e1ae53a53e8f7e024784fcb47278ce17d8bbd310193b4be57955babd123
 
 pkgname = python-hep_ml

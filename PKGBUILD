@@ -2,7 +2,7 @@
 
 _pkgname=hep_ml
 pkgname="python-${_pkgname}"
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Specific machine learning tools for purposes of high energy physics"
 arch=('any')
@@ -11,15 +11,8 @@ license=('Apache')
 makedepends=('python-setuptools')
 depends=('python-numpy' 'python-scikit-learn' 'python-scipy' 'python-six' 'python-pandas' 'python-theano')
 checkdepends=('python-nose')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/arogozhnikov/${_pkgname}/archive/v${pkgver}.tar.gz"
-        'mse.patch')
-sha256sums=('24bd5c61d0f3dc0660c158fcc2313fba3be04de9bf1162bf53728ff381154f0c'
-            '86d42b9026fce2d623da01c6ceabb4bc85249dfa271d3a7c60fc8645623045d0')
-
-prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/mse.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/arogozhnikov/${_pkgname}/archive/v${pkgver}.tar.gz")
+b2sums=('a9da308da46ecc70aa1829e01b1e1692f5231c498ee6d6687132fbd03b3b6b1e028a4e1ae53a53e8f7e024784fcb47278ce17d8bbd310193b4be57955babd123')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
