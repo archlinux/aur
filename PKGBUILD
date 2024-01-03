@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=publii-bin
 _pkgname=Publii
-pkgver=0.44.3
+pkgver=0.44.4
 _electronversion=26
 pkgrel=1
 pkgdesc="The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites."
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/download/${_pkgname}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f5195f2657e4f331add7fa3869864e911fc7d28ea311ab1ab5036df0e59d3c84'
+sha256sums=('424ec8c7c54b7eb813e156d2210170079a157e381e4a2f27b6d416a2fa6d962c'
             '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
