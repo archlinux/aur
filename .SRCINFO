@@ -1,7 +1,7 @@
 pkgbase = changedetection.io
 	pkgdesc = change monitoring of web pages
 	pkgver = 0.45.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dgtlmoon/changedetection.io
 	arch = any
 	license = Apache 2.0

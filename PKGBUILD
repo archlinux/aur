@@ -2,7 +2,7 @@
 
 pkgname=changedetection.io
 pkgver=0.45.9
-pkgrel=1
+pkgrel=2
 pkgdesc='change monitoring of web pages'
 arch=('any')
 url='https://github.com/dgtlmoon/changedetection.io'
@@ -55,7 +55,7 @@ sha512sums=('7dba39607ce699fc7f046242121bcf4dd1f4317ff291443d42efcfe4bd276574ecf
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   # pinned to old versions
-  sed -Ei '/jsonschema|cryptography|selenium/s/[~=]=.*//' requirements.txt
+  sed -Ei '/jsonschema|cryptography|selenium|apprise/s/[~=]=.*//' requirements.txt
   # waiting on updates
   sed -Ei '/werkzeug|flask_wtf|flask-login/s/[~=>]=.*//' requirements.txt
   python setup.py install --root="$pkgdir" --optimize=1
