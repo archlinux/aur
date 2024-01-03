@@ -5,7 +5,7 @@
 pkgbase=webkit2gtk-hvml
 pkgname=(webkit2gtk-{3,4}.0-hvml webkit2hbd)
 pkgver=2.34.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Web content engine for GTK (HVML)"
 url="https://hvml.fmsoft.cn/"
 arch=(x86_64)
@@ -51,7 +51,7 @@ build() {
   sed -i '/#include <vector>/a #include <cstdint>' ${_name}/Source/ThirdParty/ANGLE/include/GLSLANG/ShaderVars.h
 
   # webkit2gtk-3.0-hvml Using Gtk3 and Soup2
-  cmake -S ${_name} -B build-gkt3 -G Ninja \
+  cmake -S ${_name} -B build-gtk3 -G Ninja \
     -DPORT=GTK \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DENABLE_HVML_ATTRS=ON \
@@ -70,7 +70,7 @@ build() {
   ninja -C build-gtk3
 
   # webkit2gtk-4.0-hvml Using Gtk4.0 and Soup3
-  cmake -S ${_name} -B build-gkt4 -G Ninja \
+  cmake -S ${_name} -B build-gtk4 -G Ninja \
     -DPORT=GTK \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DENABLE_HVML_ATTRS=ON \
