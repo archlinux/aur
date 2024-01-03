@@ -20,8 +20,11 @@ epoch=
 pkgdesc="JSON to TOML conversion utility, for use with jq"
 arch=('x86_64')
 url="$_repo"
-license=('unknown')
-depends=()
+license=('Unlicense')
+depends=(
+  glibc
+  gcc-libs
+)
 makedepends=(
   base-devel
   cargo
