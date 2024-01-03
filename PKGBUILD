@@ -2,8 +2,8 @@
 
 _pkgname='ttrack'
 pkgname="$_pkgname-git"
-pkgver=r5.250baad
-pkgrel=2
+pkgver=r16.b8213c7
+pkgrel=1
 pkgdesc='simple CLI time tracker'
 arch=('x86_64')
 url='https://github.com/just1602/ttrack'
@@ -21,6 +21,11 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
   cargo build --frozen --release --target-dir target
+}
+
+check() {
+  cd "$srcdir/$_pkgname"
+  cargo test --frozen
 }
 
 package() {
