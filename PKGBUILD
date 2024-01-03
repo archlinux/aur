@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sleek-bin
-pkgver=2.0.3
-_electronversion=25
+pkgver=2.0.4
+_electronversion=27
 pkgrel=1
 pkgdesc="todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS)"
 arch=("x86_64")
@@ -18,16 +18,16 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ransome1/sleek/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('36dc6e46477391a1616d541e3d0fe46a9aa736ea38b37e56e096c99bc2ac4787'
+sha256sums=('ec46a2e5c228e7f3bc78f2770fa8ca7b33e82cfcc72a4a543101a07bd95c8453'
             '3ad193e099728945a4483894e75ce62b0867ce735822f8800afd8d71bf32dad6'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed -e "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin}|g" \
+    sed -e "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" \
         -e "s|ProjectManagement|Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
