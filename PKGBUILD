@@ -1,18 +1,18 @@
 # Maintainer: Samuel Tardieu <sam@rfc1149.net>
 
 pkgname=adasockets
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="BSD sockets in Ada"
-url="http://www.rfc1149.net/devel/adasockets"
+url="https://rfc1149.net/devel/adasockets"
 license=('custom:GNAT_Modified_GPL')
 depends=('sh')
 makedepends=('gcc-ada')
 options=('!libtool')
 source=(https://rfc1149.net/download/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('a0b34c5595d42f78ff2aed177f90f47b5a55f321d4e56b3f031a9d1cb7e8920a')
-sha512sums=('ff7fbacbad7c946ad15258bf1965df14d74224ab3c0c7b87e68ff99dd82f03bf8760fc70f6b53b1eea67b4332bfca62071a0704b2cf4e1f457cf486f09b56ce0')
+sha256sums=('84dc04e5f61ca158f629edb1aeda7783d8ca8f458d4a5daae2d2daf6628087c6')
+sha512sums=('f0cfe699792c6cc54c18f925ba5941435e37dbf23c4629b0cb90b5f7d699e2d95fea4a28b703d1e7c88af36e42214a53c415d0d840f8be3bd60f57bab592e663')
 
 build() {
   cd ${pkgname}-${pkgver}
