@@ -1,0 +1,15 @@
+pkgbase = projclean
+	pkgdesc = project dependencies & build artifacts cleanup tool
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/sigoden/projclean
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/sigoden/projclean/archive/v0.7.0/projclean-0.7.0.tar.gz
+	sha256sums = 2528257ee66fd740d01180a4ac0e01dbff885ceeb209286d4d24815391f71cbe
+
+pkgname = projclean
