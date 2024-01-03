@@ -2,7 +2,7 @@
 
 pkgname=belcard
 pkgver=5.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for working with vCards"
 arch=('x86_64')
 url="http://www.linphone.org/"
@@ -16,7 +16,7 @@ build() {
   cmake -B build -S "$pkgname-$pkgver" \
       -DCMAKE_PREFIX_PATH="/usr/lib" \
       -DCMAKE_INSTALL_PREFIX="/usr" \
-      -DBUILD_SHARED_LIBS=NO \
+      -DBUILD_SHARED_LIBS=YES \
       -DENABLE_UNIT_TESTS=NO
   make -C build
 }
