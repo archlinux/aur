@@ -20,7 +20,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/${pkgname%-git}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
