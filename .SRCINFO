@@ -1,12 +1,12 @@
 pkgbase = batsignal
 	pkgdesc = A lightweight battery monitor daemon
-	pkgver = 1.6.4
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/electrickite/batsignal
 	arch = any
 	license = ISC
 	depends = libnotify
-	source = batsignal-1.6.4.tar.gz::https://github.com/electrickite/batsignal/archive/1.6.4.tar.gz
-	sha256sums = 58439dac2b678ab798831fe861c06d2d5c128c4bb4bae1476a62ba1771da3983
+	source = batsignal-1.7.0.tar.gz::https://github.com/electrickite/batsignal/archive/1.7.0.tar.gz
+	sha256sums = cef6b79a99a0ecc830576e17e79d05b99200ccb07a7506a9595d873be05c2236
 
 pkgname = batsignal
