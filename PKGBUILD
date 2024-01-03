@@ -2,7 +2,7 @@
 pkgname=calendar-bin
 _pkgname=Calendar
 _appname="org.Rabbit.${_pkgname}"
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="Task, calendar, Vision protection."
 arch=("x86_64")
@@ -21,8 +21,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_ubuntu_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('59771b5a5321e9b9ceb90ccdca24e7a6de36ea16144e3913487181c0ddfa95b0'
-            'dde181a8c8f5c213873cb50f2881d99391c14c8a4279ba902da9754aa4f26605')
+sha256sums=('2721c1bbfe5b2a2af653c45218a5fbfe085714dd9cdcce5419efb46d9fe87ca5'
+            'a7a7d76eea59303d476c2691be53a84c9c8ad2a7fa31749ac6f78d7e118ad198')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@apprunname@|${_pkgname}App-v${pkgver}|g" \
