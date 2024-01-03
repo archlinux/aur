@@ -1,11 +1,11 @@
 # Maintainer: Rihards Skuja <rihards at skuja dot eu>
 
 pkgname=rtl88x2bu-openhd-dkms-git
-_modname=88x2bu
-pkgver=5.13.1.r210.6554258
+_modname=88x2bu_ohd
+pkgver=5.13.1.r214.g7a54b83
 _pkgver=5.13.1
-pkgrel=1
-pkgdesc='Realtek RTL88x2BU WiFi USB Driver for Linux (with OpenHD patches)'
+pkgrel=2
+pkgdesc='Realtek RTL88x2BU WiFi USB driver (with OpenHD patches)'
 arch=(any)
 url='https://github.com/OpenHD/rtl88x2bu'
 license=(GPL2)
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/rtl88x2bu"
-	printf '%s.r%s.%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	printf '%s.r%s.g%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
