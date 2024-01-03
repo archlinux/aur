@@ -1,5 +1,5 @@
 pkgname="carapace"
-pkgver=0.28.5
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="multi-shell multi-command argument completer"
 arch=("x86_64")
