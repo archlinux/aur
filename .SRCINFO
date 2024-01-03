@@ -1,15 +1,15 @@
 pkgbase = minetest-colour-hop
 	pkgdesc = Help the jumping blobs defeat the evil dragons and bring colour back to the world.
-	pkgver = 1.2.1
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://content.minetest.net/packages/talas/colourhop/
 	arch = any
 	license = GPLv3
 	makedepends = unzip
 	depends = minetest-common
-	noextract = colourhop-1.2.1.zip
+	noextract = colourhop-1.2.4.zip
 	options = !strip
-	source = colourhop-1.2.1.zip::https://content.minetest.net/packages/talas/colourhop/releases/11925/download/
-	sha256sums = e202610082c403c69f4f95319e2b535e8f758a33a07c0f8075ccaa8c53427fd6
+	source = colourhop-1.2.4.zip::https://content.minetest.net/packages/talas/colourhop/releases/21713/download/
+	sha256sums = b91071148fa7aa02aa7dabeb0d8c8fcf85c0bb90e0344bd72bd6926c473aff08
 
 pkgname = minetest-colour-hop
