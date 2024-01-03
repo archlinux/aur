@@ -2,7 +2,7 @@
 _name="r2modman"
 pkgname="r2modman-bin"
 pkgver=3.1.45
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple and easy to use mod manager for several games using Thunderstore."
 arch=('x86_64')
 url="https://github.com/ebkr/r2modmanPlus"
@@ -18,9 +18,9 @@ md5sums=(
          'cdc88d3d1b56736d0dbc702aaa7de854')
 
 package() {
-	cp -r "$srcdir"/{opt,usr} "$pkgdir/"
+	mv "$srcdir"/{opt,usr} "$pkgdir/"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	mkdir "${pkgdir}/usr/bin"
+	install -d "${pkgdir}/usr/bin"
 	ln -sf "/opt/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
 }
