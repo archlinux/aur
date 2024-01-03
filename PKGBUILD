@@ -48,7 +48,7 @@ package() {
   echo "Version=$pkgver" >> "$desktopEntry"
   echo "Name=LR2oraja Endless Dream" >> "$desktopEntry"
   echo "Categories=Games;" >> "$desktopEntry"
-  echo "Icon=lr2oraja-icon-endlessdream" >> "$desktopEntry"
+  echo "Icon=lr2oraja-endlessdream-icon" >> "$desktopEntry"
   
   if [ -z "$XDG_CONFIG_HOME" ]; then
     XDG_CONFIG_HOME="$HOME/.config"

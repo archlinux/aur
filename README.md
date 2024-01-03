@@ -1,8 +1,6 @@
 # LR2oraja \~Endless Dream\~
 
-Install LR2oraja Endless Dream with the default Beatoraja Skin, Bokutachi and `libjportaudio.so`.
-
-This will install alongside `lr2oraja` at `/opt/lr2oraja-endlessdream`.
+Install LR2oraja Endless Dream alongside standard LR2oraja
 
 ## Install
 
