@@ -14,3 +14,4 @@ pkgbase = kail-sbanka-bin
         sha256sums_aarch64 = c9e9a8d595dc30f35373d4901d103806308171fe1e562db48632765d4f8099b8
 
 pkgname = kail-sbanka-bin
+
