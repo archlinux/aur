@@ -1,0 +1,13 @@
+pkgbase = archer-bin
+	pkgdesc = An async terminal interface for interacting with multi-stage LLM agents.
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://kcaverly.dev
+	arch = x86_64
+	license = MIT
+	provides = archer
+	conflicts = archer
+	source = https://github.com/kcaverly/archer/releases/download/v0.1.10/archer-0.1.10-x86_64.tar.gz
+	sha256sums = 5d1dc21d2f48c79bf6ea46a665a1085d23ea0d07f015dddf5d13ceac8ac2a18e
+
+pkgname = archer-bin
