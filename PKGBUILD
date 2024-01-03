@@ -3,14 +3,14 @@
 pkgname=libscfg-git
 _pkgver='branch=master'
 pkgver=r10.e44023f
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library for scfg"
 arch=(x86_64)
 url="https://git.sr.ht/~emersion/libscfg"
 license=('MIT')
 groups=()
 depends=()
-makedepends=(git meson ninja) # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=(git meson ninja zsh gyosu) # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=(libscfg)
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -43,6 +43,14 @@ build() {
 		"$srcdir/${pkgname%-git}" \
 		"$srcdir/build"
 	ninja -C "$srcdir/build"
+	[ ! -e "$srcdir/docs" ] \
+		|| rm -rf "$srcdir/docs" \
+		&& mkdir -p "$srcdir/docs"
+	find "$srcdir/${pkgname%-git}/include" -type f -name '*.h' -print0 \
+		| xargs -0 gyosu \
+		-I "$srcdir/${pkgname%-git}/include" \
+		-ffile-prefix-map="$srcdir/${pkgname%-git}/include"/= \
+		-o "$srcdir/docs"
 }
 
 check() {
@@ -51,4 +59,7 @@ check() {
 
 package() {
 	DESTDIR="$pkgdir/" ninja -C "$srcdir/build" install
+	[ -d "$pkgdir/usr/share/$pkgname" ] || mkdir -p "$pkgdir/usr/share/$pkgname"
+	[ ! -e "$pkgdir/usr/share/$pkgname/docs" ] || rm -rf "$pkgdir/usr/share/$pkgname/docs"
+	cp -r "$srcdir"/docs "$pkgdir"/usr/share/"$pkgname"/
 }
