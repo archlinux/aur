@@ -1,0 +1,13 @@
+post_install()
+{
+  echo -e "\e[38;5;82mTo start the QlipMon server service for a username, login as that user and run"
+  echo -e "\e[38;5;198msystemctl --user start qlipmon-server.service"
+  echo -e "\e[38;5;82mTo enabe it by default at login"
+  echo -e "\e[38;5;198msystemctl --user enable qlipmon-server.service"
+  echo -e "\e[0m"
+}
+
+post_upgrade()
+{
+  post_install
+}
