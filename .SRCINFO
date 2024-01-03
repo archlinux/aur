@@ -1,15 +1,10 @@
 pkgbase = chicken-record-variants
-	pkgdesc = Chicken Scheme Egg: Optimized record access
-	pkgver = 0.5.1
+	pkgdesc = Optimized record access for Chicken Scheme
+	pkgver = 1.1
 	pkgrel = 1
-	url = http://chicken.wiki.br/eggref/4/record-variants
-	arch = i686
+	url = http://wiki.call-cc.org/eggref/5/record-variants
 	arch = x86_64
 	license = BSD
-	depends = chicken>=4.5.0
-	options = docs
-	options = !libtool
-	options = !emptydirs
+	depends = chicken
 
 pkgname = chicken-record-variants
-

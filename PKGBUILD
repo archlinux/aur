@@ -1,23 +1,18 @@
-# Maintainer: Aaron P <aaronbpaden@gmail.com>
-# Contributer: Jim Pryor <profjim@jimpryor.net>
-
 pkgname=chicken-record-variants
-_pkgname=record-variants
-pkgver=0.5.1
+_name=record-variants
+pkgver=1.1
 pkgrel=1
-pkgdesc="Chicken Scheme Egg: Optimized record access"
-arch=('i686' 'x86_64')
-url="http://chicken.wiki.br/eggref/4/record-variants"
+pkgdesc='Optimized record access for Chicken Scheme'
+arch=('x86_64')
 license=('BSD')
-depends=('chicken>=4.5.0'  )
-options=(docs !libtool !emptydirs)
+depends=("chicken")
+url='http://wiki.call-cc.org/eggref/5/record-variants'
 
 build() {
-	cd "$srcdir/"
-	chicken-install -r "${_pkgname}":"${pkgver}"
+  CHICKEN_INSTALL_REPOSITORY=${srcdir} CHICKEN_INSTALL_PREFIX=${srcdir} chicken-install -no-install-dependencies $_name:$pkgver
+}
+package() {
+  install -d ${pkgdir}/usr/lib/chicken/11
+  find ${srcdir} -maxdepth 1 -type f -exec cp -t ${pkgdir}/usr/lib/chicken/11 {} +
 }
 
-package() {
-	cd "$_pkgname"
-	chicken-install -p "$pkgdir/usr"
-}
