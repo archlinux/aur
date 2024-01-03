@@ -1,0 +1,13 @@
+diff --git i/meson.build w/meson.build
+index c6653d3d00..9bf0b35f68 100644
+--- i/meson.build
++++ w/meson.build
+@@ -763,7 +763,7 @@ if ld.found()
+ endif
+ 
+ if not meson.is_cross_build() and build_machine.cpu_family() == 'x86_64' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and objcopy_supports_section_alignment and ld.found() and ld_is_bfd
+-  can_use_objcopy_for_resources = true
++  can_use_objcopy_for_resources = false
+ else
+   can_use_objcopy_for_resources = false
+ endif

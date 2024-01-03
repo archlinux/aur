@@ -1,7 +1,7 @@
 pkgbase = gtk4-customizable
 	pkgdesc = GObject-based multi-platform GUI toolkit
-	pkgver = 4.12.1
-	pkgrel = 1
+	pkgver = 4.12.3
+	pkgrel = 2
 	epoch = 1
 	url = https://www.gtk.org/
 	arch = x86_64
@@ -53,16 +53,18 @@ pkgbase = gtk4-customizable
 	depends = shared-mime-info
 	depends = tracker3
 	depends = wayland
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=b51a3980f365775d92fa188f5533e78094474401
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=11ef4c8f43dca478d6acfaa31a3fea659946db26
 	source = gtk-update-icon-cache.hook
 	source = gtk-update-icon-cache.script
 	source = gtk4-querymodules.hook
 	source = gtk4-querymodules.script
+	source = force-no-objcopy.diff
 	b2sums = SKIP
 	b2sums = 136bdb410c46daf769175e8e8837286576391797a4762b8cf388217e893dd6c5087c5c91c347cbdf7d3e9dcd2c978c2fb275b5af1f3425c9f7979fbc65a81324
 	b2sums = 6bcd839ef82296d864587e0cc7acc0145bdea8e5235af304747cf3c0e564c2757cc67c0373dc044bec83dccfc57dc899546c2fccea96cff2bba22f09978a3814
 	b2sums = dd589bd1ad2b13f0e06f6899776a083f20a1aac24d4308d666ffd0d1cff38457b8257b8366f92e767b4233b3d86b6b54fa50339faf84c4801a824986366dce30
 	b2sums = 4b90eb8d582509b09aab401313d4399cc139ad21b5dd7d45d79860d0764c7494c60714e0794e09823e51d1894ac032a994f27d79d1499abf24ee6f59bdb0c243
+	b2sums = 0392de7d8700a69a5959f0ad62a9910e0a007db014926a8b351bbcc577ca8dda693883ebac8e403510c8a581ec73dd34a56f0fd9eb24cc6707d458d5175851f7
 
 pkgname = gtk4-customizable
 	depends = adwaita-icon-theme
