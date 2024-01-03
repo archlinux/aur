@@ -6,10 +6,10 @@ pkgbase = qlipmon
 	install = qlipmon.install
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	depends = qt5-base
 	optdepends = rofi: for rofi integration
 	provides = qlipmon
+	conflicts = qlipmon-git
 	source = https://github.com/vcalv/qlipmon/archive/refs/tags/1.0.0.tar.gz
 	sha512sums = 944dae7605510ab81db63b526f18227d995638c52185a0a07ef19eb834a598140ed8b58ae8eaab64246675a482ee7183b76658aa1655abeb3822b279f07948f4
 
