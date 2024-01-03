@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ijq
-pkgver=0.4.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Interactive jq tool, like jqplay for the commandline'
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(go
              scdoc)
 _archive="$pkgname-v$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('314d9a451666981aaab5e0a18c1ea98b1a3ca1afe275f0fcd87fb12f4c7b2b74')
+sha256sums=('77a50e3de7d640b8d4ce8f6fe98275251b9d34f9dda06a0d36be63060171bd27')
 
 prepare(){
 	cd "$_archive"
