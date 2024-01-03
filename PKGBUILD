@@ -3,7 +3,7 @@
 _pkgname='ttrack'
 pkgname="$_pkgname-git"
 pkgver=r16.b8213c7
-pkgrel=1
+pkgrel=3
 pkgdesc='simple CLI time tracker'
 arch=('x86_64')
 url='https://github.com/just1602/ttrack'

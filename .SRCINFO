@@ -1,7 +1,7 @@
 pkgbase = ttrack-git
 	pkgdesc = simple CLI time tracker
 	pkgver = r16.b8213c7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/just1602/ttrack
 	arch = x86_64
 	license = GPL
