@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.37.106.r0.gf77804e5
+pkgver=1.37.110.r1.g35e99da6
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '58971a8f065ccfd2fcec7ecec47c5f26454b6ab76af6ea46473aa9a45358cfce')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'

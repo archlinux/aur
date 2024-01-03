@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-_APPDIR="/usr/lib/@appname@"
+_APPDIR=/usr/lib/@appname@
 _ASAR="${_APPDIR}/@appasar@"
 export PATH="${_APPDIR}:${PATH}"
 export LD_LIBRARY_PATH="${_APPDIR}/swiftshader:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
