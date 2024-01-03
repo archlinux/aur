@@ -1,9 +1,10 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 pkgname=kickstart-git
-pkgver=r133.8d4b516
+pkgver=r144.fe17004
 pkgrel=1
 pkgdesc="Bash only provisioning tool"
 depends=('bash')
+makedepends=('git')
 arch=('any')
 url="https://github.com/bltavares/kickstart"
 license=('unknown')
