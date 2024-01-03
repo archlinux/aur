@@ -1,0 +1,16 @@
+pkgbase = kail-sbanka-bin
+        pkgdesc = Kubernetes log viewer
+        pkgver = 0.17.3
+        pkgrel = 1
+        url = https://github.com/boz/kail
+        arch = x86_64
+        arch = aarch64
+        license = MIT
+        optdepends = bash-completion: auto-completion for flux in Bash
+        optdepends = zsh-completions: auto-completion for flux in ZSH
+        source_x86_64 = kail-sbanka-bin-0.17.3_linux_amd64.tar.gz::https://github.com/boz/kail/releases/download/v0.17.3/kail_v0.17.3_linux_amd64.tar.gz
+        sha256sums_x86_64 = 49523dac3c2c679b8c7a77b7afe1fb0ceca10673f565b1ffa6d2e3698bb6378b
+        source_aarch64 = kail-sbanka-bin-0.17.3_linux_arm64.tar.gz::https://github.com/boz/kail/releases/download/v0.17.3/kail_v0.17.3_linux_arm64.tar.gz
+        sha256sums_aarch64 = c9e9a8d595dc30f35373d4901d103806308171fe1e562db48632765d4f8099b8
+
+pkgname = kail-sbanka-bin
