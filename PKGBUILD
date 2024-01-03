@@ -3,14 +3,14 @@ pkgbase=mindustry
 pkgname=("${pkgbase}" "${pkgbase}-server")
 _build=146
 pkgver="7.0_${_build}"
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('any')
 _repo_name="Mindustry"
 url="https://github.com/Anuken/${_repo_name}"
 license=('GPL3')
 depends=("java-runtime>=8" "sh" "hicolor-icon-theme")
-makedepends=("java-environment>=16" "libicns" "alsa-lib")
+makedepends=("java-environment>=16" "libicns" "alsa-lib" "archlinux-java-run")
 source=("${pkgbase}-${_build}.tar.gz::https://github.com/Anuken/${_repo_name}/archive/v${_build}.tar.gz"
         "${pkgbase}.desktop"
         "${pkgbase}.sh"
@@ -25,44 +25,13 @@ sha256sums=('aa1684d87d9f3e1d1a2da415b5e055ea6493fe31398748447927bd903019adbd'
 build() {
   cd "${_repo_name}-${_build}"
 
-  # NOTE: JDK discovery code is not needed for now because the upstream switched
-  # to Gradle 6.x.  Keeping it just in case.
-
-  # # find JDK older than 13 because Gradle 5.x doesn't support it
-  # for java_dir in /usr/lib/jvm/*; do
-  #   if ! [ -x "${java_dir}/bin/java" ]; then break; fi
-
-  #   if [ -f "${java_dir}/release" ]; then
-  #     version="$(sed -n 's/^JAVA_VERSION="\(.*\)"$/\1/p' "${java_dir}/release")"
-  #   elif [ -f "${java_dir}/jre/lib/rt.jar" ]; then
-  #     version="$(unzip -p "${java_dir}/jre/lib/rt.jar" META-INF/MANIFEST.MF | sed -n 's/Implementation-Version: 1\.\(.*\)$/\1/p')"
-  #   else
-  #     break
-  #   fi
-
-  #   if [ -z "${version}" ]; then break; fi
-
-  #   if [ "$(vercmp "${version}" 8)" -ge 0 ] && [ "$(vercmp "${version}" 13)" -lt 0 ]; then
-  #     msg2 "Using JDK v%s from %s" "${version}" "${java_dir}"
-  #     msg2 "Edit the PKGBUILD if you wish to change the JDK used to compile %s" "${pkgbase}"
-  #     found_correct_jdk=1
-  #     break
-  #   fi
-  # done; unset version
-
-  # if [ -n "$found_correct_jdk" ]; then
-  #   export JAVA_HOME="${java_dir}"
-  # else
-  #   error "Couldn't find a JDK with version >=8 and <13"
-  #   return 1
-  # fi
-
   # Skip configuring of the android subproject because we aren't compiling the
   # Android app here.
   # <https://github.com/Anuken/Mindustry/blob/00e3a59463f41bdce5b12cf5b4715a253f7af306/settings.gradle#L14>
   unset ANDROID_HOME
 
-  ./gradlew --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
+  JAVA_HOME=$(archlinux-java-run --min 16 --feature jdk --java-home) \
+    ./gradlew --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
 
   cd core/assets/icons
   icns2png --extract icon.icns

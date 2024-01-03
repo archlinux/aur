@@ -1,6 +1,6 @@
 pkgbase = mindustry
 	pkgver = 7.0_146
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = mindustry
 	makedepends = java-environment>=16
 	makedepends = libicns
 	makedepends = alsa-lib
+	makedepends = archlinux-java-run
 	depends = java-runtime>=8
 	depends = sh
 	depends = hicolor-icon-theme
