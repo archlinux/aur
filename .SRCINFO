@@ -1,7 +1,7 @@
 pkgbase = cooja-git
 	pkgdesc = An open source network simulator
 	pkgver = be76fec5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/contiki-ng/cooja
 	arch = any
 	license = BSD-3-Clause
@@ -10,6 +10,10 @@ pkgbase = cooja-git
 	depends = sh
 	depends = java-runtime
 	source = git+https://github.com/contiki-ng/cooja.git
-	md5sums = SKIP
+	source = cooja.sh
+	source = cooja.desktop
+	sha512sums = SKIP
+	sha512sums = 3f632db76b93ea0ed5423c98b669265fe4589d9d947ffa61729b1b5c738675aa4784a03dbe60e7e853ca405e6909f829353e160308f41450c79a5f7c7a3a0fc9
+	sha512sums = 375dcacc687700d6ee557ec8eb22d1ea3c73e201dae2c757102cc57964ca9ac3388760b278f086adf4dd854b9aa075e9dd416e1d2a21bddfd0d449dfb56dff70
 
 pkgname = cooja-git

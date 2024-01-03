@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Cooja
+Comment=An open source network simulator
+Exec=cooja
+Terminal=false
+Categories=Network;X-netsim;
