@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="people-git"
-pkgver=r46.c6bdba3
+pkgver=r50.0917002
 pkgrel=1
 pkgdesc="A CLI tool for tracking the number of days since you have made contact with your network"
 url="https://github.com/CallumBeaney/people"
@@ -10,7 +10,7 @@ arch=("x86_64" "armv7h" "aarch64")
 # these packages come with /usr/bin/people
 conflicts=("fortune-mod" "misfortune" "tracker3-docs")
 source=("git+$url")
-sha256sums=("SKIP")
+b2sums=("SKIP")
 
 pkgver() {
  cd "${pkgname/-git/}"
@@ -19,7 +19,7 @@ pkgver() {
 
 build(){
  cd "${pkgname/-git/}"
- gcc -o people "src/main.c" "src/helpers.c"
+ gcc -o "people" src/main.c src/helpers.c src/mainFunctions.c   
 }
 
 package(){
