@@ -133,7 +133,6 @@ source=(
     "php-makefile-patcher.php"
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
-    "php-libxml.patch"
     "debian-php-8.2.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -201,7 +200,6 @@ makedepends=(
 arch=(
 )
 _patches=(
-    "php-libxml.patch"
     "debian-php-8.2.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -1534,7 +1532,6 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '763ecd39fcf51c3815af6ef6e43fa9aa0d0bd8e5a615009e5f4780c92705f583'
-            'e757f84d2d72ea39259450c32f3a83c72262da4294152ae3e9fbc0cada622bba'
             '169d52d6fc78e24e88a5923715d965bc247a62697c59d06d468c1908eba1c189'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
