@@ -6,7 +6,8 @@ pkgdesc="TUI program to check the ProtonDB compatibility of all the games of a S
 arch=('any')
 url="https://github.com/TabulateJarl8/vapor"
 license=('GPLv3')
-depends=('python-aiohttp' 'python-rich' 'python-textual' 'python-platformdirs')
+# linkify-it-py isn't included in the python-textual package for some reason
+depends=('python-aiohttp' 'python-rich' 'python-textual' 'python-platformdirs' 'python-linkify-it-py')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 _name=${pkgname#python-}
 _name=${_name//-/_}

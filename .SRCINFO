@@ -13,6 +13,7 @@ pkgbase = python-vapor-steam
 	depends = python-rich
 	depends = python-textual
 	depends = python-platformdirs
+	depends = python-linkify-it-py
 	source = https://files.pythonhosted.org/packages/source/v/vapor_steam/vapor_steam-1.4.1.tar.gz
 	sha512sums = 1be537f111cc71ce64d3815f286cd96775fd30d29e0e7fe8c1f4ad14b6cadc6660040868ce02df47a4018678bf16885ff3e7931e6ff68e0c4eb2e299a0c830f3
 
