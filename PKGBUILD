@@ -23,6 +23,9 @@ depends=(
         flatpak
 	discover
 	xdg-desktop-portal-kde
+	# patched gtk/libadwaita to allow SSD and theming
+	gtk4-customizable
+	libadwaita-without-adwaita-git
 )
 conflicts=(
 	# use fcitx5 instead
