@@ -1,7 +1,7 @@
 pkgbase = rtl8812au-openhd-dkms-git
-	pkgdesc = Patched rtl88xxau drivers for wifibroadcast
-	pkgver = 5.2.20.2.r781.8f30f65
-	pkgrel = 1
+	pkgdesc = Realtek RTL88xxAU WiFi USB driver (with OpenHD patches)
+	pkgver = 5.2.20.2.r804.g4515487
+	pkgrel = 2
 	url = https://github.com/OpenHD/rtl8812au
 	arch = any
 	license = GPL2

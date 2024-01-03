@@ -1,11 +1,11 @@
 # Maintainer: Rihards Skuja <rihards at skuja dot eu>
 
 pkgname=rtl8812au-openhd-dkms-git
-_modname=88XXau_wfb
-pkgver=5.2.20.2.r781.8f30f65
+_modname=88XXau_ohd
+pkgver=5.2.20.2.r804.g4515487
 _pkgver=5.2.20.2
-pkgrel=1
-pkgdesc='Patched rtl88xxau drivers for wifibroadcast'
+pkgrel=2
+pkgdesc='Realtek RTL88xxAU WiFi USB driver (with OpenHD patches)'
 arch=(any)
 url='https://github.com/OpenHD/rtl8812au'
 license=(GPL2)
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/rtl8812au"
-	printf '%s.r%s.%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	printf '%s.r%s.g%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
