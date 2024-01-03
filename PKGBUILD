@@ -2,14 +2,14 @@
 # Contributor: Christoph Drexler <chrdr at gmx dot at>
 # Contributor: me at oguzkaganeren dot com dot tr
 pkgname=grisbi
-pkgver=2.0.5
-_pkgver=upstream_version_2_0_5
-pkgrel=5
+pkgver=3.0.1
+_pkgver=upstream_version_3_0_1
+pkgrel=1
 pkgdesc="Shared files for the finance management program Grisbi."
 arch=('x86_64')
 url="https://www.grisbi.org"
 license=('GPL')
-depends=('gtk3' 'libgsf' 'openssl-1.1')
+depends=('gtk3' 'libgsf' 'openssl')
 optdepends=('libofx: for OFX support')
 makedepends=('intltool' 'imagemagick')
 provides=('grisbi')
@@ -17,7 +17,7 @@ conflicts=('grisbi-git')
 replaces=('grisbi')
 options=(!libtool)
 source=(https://github.com/grisbi/grisbi/archive/refs/tags/$_pkgver.tar.gz)
-sha256sums=('69f5cd60748864e0fb9c6d99f10bf7b9b022b87748a9c8a0fb7408267765bd66')
+sha256sums=('b6a05aeec760f5cb33e4f3e365605608e1b87817d7837a344dd18ce8b7434c94')
 
 prepare() {
 	cd "${srcdir}/grisbi-${_pkgver}"
