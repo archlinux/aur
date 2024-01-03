@@ -2,8 +2,8 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=typst-lsp
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.12.1
+pkgrel=1
 pkgdesc='Language server for Typst'
 arch=(i686 x86_64)
 url="https://github.com/nvarner/$pkgname"
@@ -15,7 +15,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('45654fccf76ffb32e8e3f6e1deb4cddc9b92269e3db72760667e5f728e849556')
+sha256sums=('88c2053678147e6a3a01389644892f32244317f763622d19eaf7a64fe7e7e2dc')
 
 _features='remote-packages,native-tls,fontconfig'
 
@@ -24,22 +24,25 @@ prepare() {
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
-build() {
+_srcenv() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+}
+
+build() {
+	_srcenv
 	CFLAGS+=' -ffat-lto-objects'
 	cargo build --frozen --release --no-default-features --features "$_features"
 }
 
 check() {
-	cd "$_archive"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen  --no-default-features --features "$_features"
+	_srcenv
+	cargo test --frozen --no-default-features --features "$_features"
 }
 
 package() {
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/typst-lsp/" "LICENSE-MIT.txt"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/typst-lsp/" LICENSE-MIT.txt
 }
