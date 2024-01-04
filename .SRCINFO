@@ -1,0 +1,14 @@
+pkgbase = python-sacn
+	pkgdesc = sACN / E1.31 module for easy handling of DMX data over ethernet
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://www.github.com/Hundemeier/sacn
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pytest
+	source = sacn-1.9.0.tar.gz::https://github.com/Hundemeier/sacn/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = 4544a6fdc5f608e88c187a231d828d38f19c6f195408a924cdc19bb746e1a1bc
+
+pkgname = python-sacn
