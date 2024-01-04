@@ -28,7 +28,7 @@ sha256sums=('39943b2ce2f0232e112d14f4f39ec0008ef71d435246067692ba6dc574298337'
             '459af2e36090998e7807b1d2a5b8d6a381bf94b69cbd2ec68e7943a09e2ce1e2'
             '1134757ac7b3db89209a87f9689cdfe30da93a647c1e468b95fc26384e2f958b')
 build() {
-    gendesk -q -f -n --pkgname "${_pkgname//_/-}-bin" --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --pkgname "${_pkgname//_/-}-bin" --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin} %U"
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
