@@ -3,7 +3,7 @@
 pkgname=shortix-desktop
 _name=shortix
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Script that creates human-readable symlinks for Steam Proton game prefixes, adapted for traditional desktops.'
 arch=('any')
 url='https://github.com/Jannomag/shortix'
