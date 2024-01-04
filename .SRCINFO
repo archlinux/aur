@@ -1,14 +1,14 @@
 pkgbase = typora-electron
 	pkgdesc = A minimal markdown editor and reader. (Typora with system electron)
 	pkgver = 1.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://typora.io
 	arch = x86_64
 	arch = aarch64
 	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
 	makedepends = asar
 	depends = ripgrep
-	depends = electron
+	depends = electron27
 	optdepends = noto-fonts-emoji: Or some other emoji font to see emojis
 	optdepends = pandoc: Import/export for extra file formats
 	provides = typora

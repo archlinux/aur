@@ -5,8 +5,8 @@
 pkgname=typora-electron
 _pkgname=typora
 pkgver=1.7.6
-_electron=electron
-pkgrel=1
+_electron=electron27
+pkgrel=2
 pkgdesc="A minimal markdown editor and reader. (Typora with system electron)"
 arch=('x86_64' 'aarch64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
