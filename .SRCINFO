@@ -1,6 +1,6 @@
 pkgbase = octopi-dev
 	pkgdesc = This is Octopi, a powerful Pacman frontend using Qt libs
-	pkgver = 0.15.0.r4.b4301d7
+	pkgver = 0.16.0.r1.f79da34
 	pkgrel = 1
 	url = https://github.com/aarnt/octopi
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = octopi-dev
 	provides = octopi
 	provides = octopi-repoeditor
 	provides = octopi-cachecleaner
-	source = git+https://github.com/aarnt/octopi.git#commit=b4301d72cc24c4b00f555b2ddf38db8df1640ec1
+	source = git+https://github.com/aarnt/octopi.git#commit=f79da34b3e77264cd3b0b08b343cc474713a1462
 	sha256sums = SKIP
 
 pkgname = octopi-dev
