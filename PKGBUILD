@@ -1,4 +1,5 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
+# Maintainer: devolutionsinfra https://devolutions.net/
 pkgname=remote-desktop-manager
 pkgver=2023.3.1.4
 pkgrel=1
@@ -30,7 +31,7 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/applications"
   mv "usr/share/applications/remotedesktopmanager.desktop" "${pkgdir}/usr/share/applications/"
-  
+
   mkdir -p "${pkgdir}/usr/share/icons"
   mv "usr/share/icons/remotedesktopmanager.png" "${pkgdir}/usr/share/icons/"
 }
