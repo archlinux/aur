@@ -1,4 +1,4 @@
-pkgbase = olc
+pkgbase = olc-git
 	pkgdesc = Open Lighting Console
 	pkgver = 0.8.5.beta
 	pkgrel = 4
@@ -20,4 +20,4 @@ pkgbase = olc
 	source = olc-0.8.5.beta.tar.gz::https://github.com/mikacousin/olc/archive/refs/tags/0.8.5.beta.tar.gz
 	sha256sums = 06a7dd9b7d2c2695a9f6f439f7fc0f943d2bc5ec43764475ea644e1bf9139b54
 
-pkgname = olc
+pkgname = olc-git
