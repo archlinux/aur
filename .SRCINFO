@@ -1,7 +1,7 @@
 pkgbase = houdoku-appimage
 	pkgdesc = Manga reader and library manager for the desktop
 	pkgver = 2.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://houdoku.org/
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = houdoku-appimage
 	conflicts = houdoku
 	options = !strip
 	source = houdoku-2.13.1.AppImage::https://github.com/xgi/houdoku/releases/download/v2.13.1/Houdoku-2.13.1.AppImage
-	source = LICENSE.txt::https://raw.githubusercontent.com/xgi/houdoku/v2.13.1/LICENSE.txt
+	source = LICENSE-2.13.1.txt::https://raw.githubusercontent.com/xgi/houdoku/v2.13.1/LICENSE.txt
 	sha256sums = 1eeb55755b6d8b14f812d47e78639065c20fc5fc592fd6aaa387693ba349e978
 	sha256sums = aaa8944d0b38e6aed006c07f2c43e16332f5700f93dc7a00a3490a6d27450a18
 
