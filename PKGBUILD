@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="a static site generator for creating simple academic websites"
 
 arch=(any)
-url="https://web.stanford.edu/~wsshin/jemdoc+mathjax.html"
+url="https://www.mit.edu/~wsshin/jemdoc+mathjax.html"
 license=('GPL')
 depends=(python)
 source=('git+https://github.com/wsshin/jemdoc_mathjax.git')
