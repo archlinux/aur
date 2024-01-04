@@ -1,13 +1,11 @@
 pkgbase = rarian
 	pkgdesc = Documentation meta-data library, designed as a replacement for Scrollkeeper
 	pkgver = 0.8.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.freedesktop.org/rarian/rarian
 	arch = x86_64
 	arch = i686
 	license = GPL
-	checkdepends = man-db
-	checkdepends = man-pages
 	makedepends = check
 	makedepends = libxslt
 	depends = gcc-libs
