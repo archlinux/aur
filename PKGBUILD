@@ -14,7 +14,8 @@ makedepends=('git')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _srcdir="${_pkgname^^}"
-source=("${_srcdir}::git://github.com/Abazigal/simward.git")
+source=("${_srcdir}::git+${url}.git")
+md5sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {

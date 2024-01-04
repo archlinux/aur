@@ -9,8 +9,8 @@ pkgbase = simward-git
 	makedepends = git
 	provides = simward=0.5
 	conflicts = simward
-	source = SIMWARD::git://github.com/Abazigal/simward.git
+	source = SIMWARD::git+https://github.com/Abazigal/simward.git
+	md5sums = SKIP
 	sha256sums = SKIP
 
 pkgname = simward-git
-
