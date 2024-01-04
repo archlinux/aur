@@ -1,4 +1,4 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Ethan Skinner <aur@etskinner.com>
 # Contributor: Grégoire Seux <grego_aur@familleseux.net>
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
@@ -6,55 +6,30 @@
 
 pkgname=home-assistant-git
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2022.6.1_r225_g0829bec1c3
+pkgver=2024.1.0_r215_g890615bb92e
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
 depends=(
+  bluez-libs
+  ffmpeg
   gcc
-  python-aiodiscover
-  python-aiohttp
-  python-aiohttp-cors
-  python-astral
-  python-async-timeout
-  python-atomicwrites
-  python-attrs
-  python-awesomeversion
-  python-bcrypt
-  python-certifi
-  python-ciso8601
-  python-cryptography
-  python-defusedxml
-  python-httpx
-  python-jinja
-  python-lru-dict
-  python-mutagen
-  python-pillow
-  python-pip
-  python-pyjwt
-  python-pytz
-  python-requests
-  python-ruamel-yaml
-  python-slugify
-  python-sqlalchemy
-  python-voluptuous
-  python-voluptuous-serialize
-  python-yaml
-  python-yarl
-  python-zeroconf
+  lapack
+  libffi
+  libjpeg-turbo
+  libtiff
+  openjpeg2
+  openssl
+  python
+  tzdata
+  zlib
 )
 makedepends=(
   git
   python-build
-  python-pip
   python-setuptools
-)
-optdepends=(
-  'net-tools: Nmap host discovery'
-  'openzwave: Z-Wave integration'
-  'python-dtlssocket: Ikea Tradfri integration'
-  'python-lxml: Meteo France integration'
+  python-wheel
 )
 conflicts=('home-assistant')
 provides=('home-assistant')
@@ -63,7 +38,7 @@ source=(
   home-assistant.service
 )
 b2sums=('SKIP'
-        'b5e181e00e499cd0c6e3922af44afe7e8043063d49c89c207beeff9b56ea2920a6f7b6d211be027cb4b6cf8450396623515dadcebdbdbdf0f934d3d16963790e')
+        'd7a6cd85b89c74997cd7794e5205504033c37684d798bd12e40786f33fce846980d10373261444077cc527ef382246b8235573e1bb6ade8bb8e6d9e34f9961ad')
 
 pkgver() {
   cd home-assistant
@@ -76,19 +51,20 @@ pkgver() {
 
 prepare() {
   cd home-assistant
-  # lift hard dep constraints, we'll deal with breaking changes ourselves
-  sed 's/==/>=/g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
-  # allow pip >= 20.3 to be used
-  sed 's/,<20.3//g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
+  # allow any setuptools and wheel to be used
+  sed 's/==68.0.0//; s/~=0.40.0//' -i pyproject.toml
 }
 
 build() {
   cd home-assistant
-  python -m build
+  python -m script.translations develop --all
+  python -m build --wheel --no-isolation
+  mv dist/*.whl dist/homeassistant-$pkgver-py3-none-any.whl
 }
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps home-assistant/dist/*.whl
+  install -Dm 644 home-assistant/dist/*.whl -t "${pkgdir}"/usr/share/home-assistant/
+  sed "s/@VERSION@/${pkgver}/" -i home-assistant.service
   install -Dm 644 home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
