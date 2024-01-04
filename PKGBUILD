@@ -2,7 +2,7 @@
 
 _name=hatch
 pkgname=python-hatch-git
-pkgver=1.6.2.r42.g1834c921
+pkgver=1.9.1.r8.g7b1ef02a
 pkgrel=1
 pkgdesc="Modern, extensible Python project management"
 arch=('any')
@@ -12,10 +12,10 @@ groups=()
 depends=(
   'python' 'python-click' 'python-hatchling' 'python-httpx' 'python-hyperlink'
   'python-keyring' 'python-packaging' 'python-pexpect' 'python-platformdirs'
-  'python-pyperclip' 'python-rich' 'python-shellingham' 'python-tomli-w' 'python-tomlkit'
-  'python-userpath' 'python-virtualenv'
+  'python-rich' 'python-setuptools' 'python-shellingham' 'python-tomli' 'python-tomli-w' 'python-tomlkit'
+  'python-userpath' 'python-virtualenv' 'python-zstandard'
 )
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch-vcs')
 checkdepends=()
 optdepends=()
 provides=('python-hatch')
