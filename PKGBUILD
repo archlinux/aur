@@ -1,10 +1,10 @@
 # Maintainer: Tpaefawzen <GitHub: Tpaefawzen>
 pkgname=merecat-git
 pkgver=r999.606774e
-pkgrel=1
+pkgrel=2
 pkgdesc="Small and made-easy HTTP/HTTPS server based on Jef Poskanzer's thttpd"
 arch=(x86_64)
-url=""
+url="https://github.com/troglobit/merecat"
 license=('custom:2BSD')
 groups=()
 depends=()

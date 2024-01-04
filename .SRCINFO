@@ -1,7 +1,8 @@
 pkgbase = merecat-git
 	pkgdesc = Small and made-easy HTTP/HTTPS server based on Jef Poskanzer's thttpd
 	pkgver = r999.606774e
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/troglobit/merecat
 	arch = x86_64
 	license = custom:2BSD
 	makedepends = git
