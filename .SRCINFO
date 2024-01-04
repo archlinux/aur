@@ -1,13 +1,13 @@
 pkgbase = scap-security-guide
 	pkgdesc = Collection of Security Content Automation Protocol policy documents
-	pkgver = 0.1.70
+	pkgver = 0.1.71
 	pkgrel = 1
 	url = https://www.open-scap.org/security-policies/scap-security-guide/
 	arch = any
 	license = BSD
 	makedepends = ansible-core
 	makedepends = ansible-lint
-	makedepends = bash-bats
+	makedepends = bats
 	makedepends = expat
 	makedepends = libxml2
 	makedepends = libxslt
@@ -24,7 +24,7 @@ pkgbase = scap-security-guide
 	makedepends = python-yaml
 	makedepends = shellcheck
 	makedepends = yamllint
-	source = https://github.com/ComplianceAsCode/content/releases/download/v0.1.70/scap-security-guide-0.1.70.tar.bz2
-	sha256sums = ebc18bb92c101b5cb842a1521afaa39a23742185f66a07f354a0ff7faa547edb
+	source = https://github.com/ComplianceAsCode/content/releases/download/v0.1.71/scap-security-guide-0.1.71.tar.bz2
+	sha256sums = bfa1e9b5c17d8caa937433896c31461424e07ae3b95378bd67c6d369a3e51aae
 
 pkgname = scap-security-guide
