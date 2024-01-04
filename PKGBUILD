@@ -4,7 +4,7 @@
 _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname-lts"
-pkgver=6.1.69
+pkgver=6.1.70
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -29,14 +29,13 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-$pkgver
-_srctag=v$pkgver
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  config         # the main kernel config file
+  config                       # the main kernel config file
 
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  1001-add-acs-overrides.patch
-  1002-i915-vga-arbiter.patch
+  1001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+  1002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -44,7 +43,7 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=(
-  '7e3d2694d18ce502068cc88a430da809abbd17d0773268524ebece442612b541'
+  'ed1365266456c07696a7499581aec5d851ca2296f4f6f90f23d189ea5a56afef'
   'SKIP'
   'fcf0b005d3cde29b54a61b25bef3efb42a12ac38c039200ac8f4756618270820'
 
@@ -87,7 +86,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
-  make htmldocs
+  #make htmldocs
 }
 
 _package() {
@@ -230,7 +229,7 @@ _package-docs() {
 pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
-  "$pkgbase-docs"
+  #"$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
@@ -238,5 +237,3 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-
-# vim:set ts=8 sts=2 sw=2 et:
