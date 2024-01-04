@@ -1,7 +1,7 @@
 pkgbase = mini-music-bin
 	pkgdesc = A simple and beautiful music player.一个简单、美观的音乐播放器
 	pkgver = 1.5.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://gitee.com/cgper/miniMusic
 	arch = x86_64
 	license = custom:MulanPSL2
@@ -10,10 +10,10 @@ pkgbase = mini-music-bin
 	provides = mini-music=1.5.0
 	conflicts = mini-music
 	source = mini-music-1.5.0.deb::https://gitee.com/cgper/miniMusic/releases/download/V1.5.0/mini-music_1.5.0_amd64.deb
-	source = LICENSE::https://gitee.com/cgper/miniMusic/raw/V1.5.0/LICENSE
+	source = LICENSE-1.5.0::https://gitee.com/cgper/miniMusic/raw/V1.5.0/LICENSE
 	source = mini-music.sh
 	sha256sums = f451f4e717c9364e8e302e9f24e2f7a8a0573734508d96b1c48b3ff548d5b310
 	sha256sums = d0b16a3cb603569486834cb55fa8a539832063864793339386f5e1f646928987
-	sha256sums = 4620ae7a05dae0182c4e56fc3bbce8015b3bc0668c42f4457c06acdd429228be
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = mini-music-bin
