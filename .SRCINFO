@@ -1,6 +1,6 @@
 pkgbase = citra-nightly-git
 	pkgdesc = Nintendo 3DS emulator
-	pkgver = 2062.r0.g602f4f60
+	pkgver = 2067.r0.gc6bcbc02
 	pkgrel = 1
 	url = https://github.com/citra-emu/citra-nightly
 	arch = i686
@@ -37,7 +37,6 @@ pkgbase = citra-nightly-git
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = sdl2
-	optdepends = chaotic-interfere: chaotic-aur interference tracker
 	optdepends = libxkbcommon-x11: for X11 support
 	optdepends = qt6-wayland: for Wayland support
 	provides = citra

@@ -19,7 +19,7 @@
 # basic info
 _pkgname="citra${_build_channel:-}"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2062.r0.g602f4f60
+pkgver=2067.r0.gc6bcbc02
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator"
 _url="https://github.com/citra-emu/citra"
@@ -66,7 +66,6 @@ _main_package() {
     'vulkan-headers'
   )
   optdepends=(
-    'chaotic-interfere: chaotic-aur interference tracker'
     'libxkbcommon-x11: for X11 support'
     'qt6-wayland: for Wayland support'
   )
@@ -281,6 +280,13 @@ prepare() {
   _prepare_mozilla_cubeb
   _prepare_bylaws_libadrenotools
   _prepare_yuzu_emu_sirit
+
+  # fix version
+  sed -E \
+    -e 's&@BUILD_FULLNAME@&Nightly '"${pkgver%%.r*}"'&' \
+    -e 's&@GIT_BRANCH@&HEAD&' \
+    -e 's&@GIT_DESC@&'$(git -C $_pkgsrc rev-parse --short=8 HEAD)'&' \
+    -i "$_pkgsrc/src/common/scm_rev.cpp.in"
 }
 
 pkgver() {
@@ -305,10 +311,6 @@ build() {
 
     -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON
-
-    -DBUILD_TAG="${pkgver}"
-    -DTITLE_BAR_FORMAT_IDLE="citra | ${pkgver} | {}"
-    -DTITLE_BAR_FORMAT_RUNNING="citra | ${pkgver} | {}"
 
     -DUSE_DISCORD_PRESENCE=ON
     -DUSE_SYSTEM_BOOST=OFF
@@ -339,8 +341,8 @@ build() {
   fi
 
   if [[ "${_build_avx::1}" == "t" ]] ; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
   cmake "${_cmake_options[@]}"
