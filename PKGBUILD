@@ -3,22 +3,22 @@
 
 pkgname=simplicitystudio5-bin
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc='Design tools, documentation, software and support resources for EFM32™, EFM8™, 8051, Wireless MCUs and Wireless SoCs.'
 arch=(x86_64)
 url=https://www.silabs.com/products/development-tools/software/simplicity-studio
 license=(unknown)
 backup=("opt/$installdir/studio.ini")
-depends=(qt5-base libxtst webkit2gtk)
+depends=(qt5-base qt5-networkauth webkit2gtk git git-lfs make openssl ncurses5-compat-libs)
+#ncurses5 is required by the gdb packaged in studio, /opt/simplicitystudio5/developer/toolchains/gnu_arm/10.3_2021.10/bin/arm-none-eabi-gdb
 optdepends=('wine: for IAR support'
-            'lib32-qt4: for old tools like battery estimator'
-            'qt4: for Segger tools like systemview')
+            'lib32-qt4: for old tools like battery estimator')
 options=('!strip')
 install=simplicitystudio5.install
 source=(https://www.silabs.com/documents/login/software/SimplicityStudio-5.tgz
         simplicitystudio5.desktop)
 sha256sums=('SKIP'
-            'd0c7b8d6f8b9bcb8d900dfdb047d5a833aae2d131bc4c675e67aec7e3ac3f0e7')
+            '124f76950ab6b8dba75f3094ee22169d92822df633a1262ad7de5d1561d65f11')
             
 installdir=simplicitystudio5
 
@@ -36,6 +36,7 @@ package() {
 
   mkdir -p $pkgdir/usr/bin
   ln -sf /opt/$installdir/studio $pkgdir/usr/bin/$installdir
+  
   install -Dm644 "simplicitystudio5.desktop" \
     "$pkgdir/usr/share/applications/simplicitystudio5.desktop"
 
