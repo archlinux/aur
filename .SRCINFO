@@ -11,7 +11,7 @@ pkgbase = moose-appimage
 	conflicts = moose
 	options = !strip
 	source = moose-0.6.2.AppImage::https://github.com/ritz078/moose/releases/download/v0.6.2/moose-0.6.2.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/ritz078/moose/v0.6.2/LICENSE
+	source = LICENSE-0.6.2::https://raw.githubusercontent.com/ritz078/moose/v0.6.2/LICENSE
 	sha256sums = 3db219ca2c04ff538f81df99e485f9ae843e62adf1406b57d108662dc80773f4
 	sha256sums = 85438e003b5df78c417d91e824cdc860f0b8848b076afe44a5d73925ec24ff0c
 
