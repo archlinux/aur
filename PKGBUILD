@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Zok <tomasz.zok [at] gmail.com>
 pkgname=xplor-nih
-pkgver=3.7.0.1
+pkgver=3.8
 pkgrel=1
 pkgdesc="XPLOR-NIH is a structure determination program which builds on the X-PLOR program, including additional tools developed at the NIH"
 arch=('x86_64')
