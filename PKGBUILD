@@ -2,11 +2,12 @@
 pkgname=terrapin-scanner
 _name=Terrapin-Scanner
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple vulnerability scanner for the Terrapin attack'
 arch=('x86_64')
 url="https://github.com/RUB-NDS/${_name}"
 license=('Apache')
+depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RUB-NDS/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('9f7803e6f4941514480e57f358fd0c0e64b89d165d20d5bfe8d90c34be0e38e7a3162ad5a173f50e94cfac78c63959d19c90dc79dc55b8b98cb5fd96aa4a7cd0')
