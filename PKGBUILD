@@ -1,14 +1,15 @@
 # Maintainer: jlaunay
 pkgname=hyprlang-git
-pkgver=0.2.0.r0.5cb3d2b
+pkgver=0.2.1.r3.4c28464
 pkgrel=1
 pkgdesc="hyprlang - the hypr configuration language"
 arch=('any')
 url="https://github.com/hyprwm/hyprlang"
 license=("GPL")
-depends=('bash')
-makedepends=('git' 'cmake' 'gcc')
-provides=('hyprlang')
+depends=('gcc-libs' 'glibc')
+makedepends=('git' 'cmake')
+provides=("lib${pkgname/-git/}.so" "${pkgname/-git/}")
+conflicts=("${pkgname/-git/}")
 source=("${pkgname/-git/}::git+https://github.com/hyprwm/${pkgname/-git/}.git")
 sha256sums=('SKIP')
 
@@ -20,7 +21,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname/-git/}"
 	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=${PKGDIR}/usr -S . -B build
-	cmake --build ./build --config Release --target hyprlang -j$(nproc 2>/dev/null || getconf NPROCESSORS_CONF)
+	cmake --build ./build --config Release --target ${pkgname/-git/} -j$(nproc)
 
 }
 
