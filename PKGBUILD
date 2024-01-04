@@ -1,12 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=liground-bin
 pkgver=0.4.0
-pkgrel=4
+_electronversion=11
+pkgrel=5
 pkgdesc="A free, open-source and modern Chess Variant Analysis GUI for the 21st century"
 arch=('x86_64')
 url="https://ml-research.github.io/liground.github.io/"
 _ghurl="https://github.com/ml-research/liground"
 license=('AGPL3')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=(
     'electron11'
     'libx11'
@@ -19,18 +22,20 @@ depends=(
 makedepends=(
     'squashfuse'
 )
-provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7d0c4994cb489689183b3768952d9199971060dd873037a988c25f8d86cc1ad4'
-            '6d4a0582113bbeeb99c1fd54948b437d152bdcfc4540e28db4fb5e2ea798cbb6')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
 }
 package() {
