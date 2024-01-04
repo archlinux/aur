@@ -1,6 +1,6 @@
 pkgbase = pipebench-git
-	pkgdesc = pipebench: Measures the speed of stdin/stdout communication.
-	pkgver = 0.40.r5.g1809422
+	pkgdesc = Measures the speed of stdin/stdout communication.
+	pkgver = 0.40.r9.g317cbdf
 	pkgrel = 1
 	url = https://github.com/ThomasHabets/pipebench
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = pipebench-git
 	makedepends = git
 	provides = pipebench=0.40
 	conflicts = pipebench
-	source = git://github.com/ThomasHabets/pipebench
+	source = git+https://github.com/ThomasHabets/pipebench.git
+	md5sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pipebench-git
-

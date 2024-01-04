@@ -5,9 +5,9 @@
 set -u
 _pkgname='pipebench'
 pkgname="${_pkgname}-git"
-pkgver=0.40.r5.g1809422
+pkgver=0.40.r9.g317cbdf
 pkgrel=1
-pkgdesc="pipebench: Measures the speed of stdin/stdout communication."
+pkgdesc='Measures the speed of stdin/stdout communication.'
 arch=('i686' 'x86_64')
 url="https://github.com/ThomasHabets/pipebench"
 license=('GPL2')
@@ -16,18 +16,21 @@ provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _srcdir="${_pkgname}"
 _verwatch=("${url}/releases" "${url#*github.com}/archive/${pkgname}-\(.*\)\.tar\.gz" 'l')
-source=("${url//https:/git:}")
+source=("git+${url}.git")
+md5sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
+  set -u
   cd "${_srcdir}"
   git describe --long --tags | sed -e "s:^${_pkgname}-::g" -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
+  set +u
 }
 
 build() {
   set -u
   cd "${_srcdir}"
-  make -s -j "$(nproc)"
+  nice make -s
   set +u
 }
 
