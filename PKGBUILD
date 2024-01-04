@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot
-pkgver=15
+pkgver=16
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('lib32-glibc'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b62d5e033f04359f9d5450f45111f3f8b676eb14a8d8fdb0bd8382e48398bee1')
+sha256sums=('72719b400b0588812fd1e62b4bada43372536d185b518ddaf24ef1e2c47b8ffb')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 # Fixes:
