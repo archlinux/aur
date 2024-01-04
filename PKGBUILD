@@ -8,7 +8,7 @@ url="http://irreader.fatecore.com/"
 license=('PRIVATE')
 depends=(electron11 bash gcc-libs glibc)
 makedepends=(asar npm)
-options=(!strip)
+options=()
 source=("http://irreader.fatecore.com/download/irreader-$pkgver.zip"
 	$pkgname.desktop)
 source_x86_64=("https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v6-linux-glibc-x64.tar.gz"
@@ -26,10 +26,14 @@ prepare() {
 	rm *.gz
 	bsdtar -xvpf *.exe ./resources
 	asar e ./**/app.asar ./app
-	echo "exports.is_vip = () => true;" >>./app/libuser.js
-	echo "exports.vip_source_limit = Infinity;" >>./app/scs/scsdef.js
-	echo "exports.left_vip_days = () => 999;" >>./app/libuser.js
-	echo "exports.is_need_show_vip_renew = () => false;" >>./app/libuser.js
+	printf "
+exports.is_vip = () => true;
+exports.left_vip_days = () => 999;
+exports.is_need_show_vip_renew = () => false;
+" >>./app/libuser.js
+	printf "
+exports.vip_source_limit = Infinity;
+" >>./app/scs/scsdef.js
 	pushd app
 	cp -av $srcdir/napi-* ./node_modules/sqlite3/lib/binding
 	rm -vrf ./node_modules/node-gyp/

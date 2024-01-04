@@ -12,7 +12,6 @@ pkgbase = irreader
 	depends = bash
 	depends = gcc-libs
 	depends = glibc
-	options = !strip
 	source = http://irreader.fatecore.com/download/irreader-1.6.11.zip
 	source = irreader.desktop
 	sha256sums = d15beff5e8b9ea76f8ede27b1cf2679ebe377293f2e6aef6c5442aad51553ada
