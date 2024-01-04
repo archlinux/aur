@@ -1,5 +1,5 @@
 # Contributor: LPB <lpb612@gmail.com>
-# Maintainer: gajjanag <gajjanagadde@gmail.com>
+# Maintainer: gajjanag <gajjanag@alum.mit.edu>
 pkgname=jemdoc-mathjax-git
 pkgver=253.4b83aa4
 pkgver() {
