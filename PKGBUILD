@@ -3,7 +3,7 @@
 pkgname=japokwm-git
 _pkgname=japokwm
 url=https://github.com/werererer/japokwm
-pkgver=v0.4.1
+pkgver=0.4.2.r52.g2ef563e5
 pkgrel=1
 license=("BSD 2-Clause")
 pkgdesc="A wlroots and dwl based tiling-windowmanager based around creating layouts"
