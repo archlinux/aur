@@ -3,69 +3,74 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=8.1.r108.g9070f0d572e
+pkgver=9.0rc3.r16.geed778467ab
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
 url='https://www.winehq.org/'
 license=('LGPL')
 depends=(
+    'desktop-file-utils'
     'fontconfig'      'lib32-fontconfig'
-    'libxcursor'      'lib32-libxcursor'
-    'libxrandr'       'lib32-libxrandr'
-    'libxi'           'lib32-libxi'
-    'gettext'         'lib32-gettext'
     'freetype2'       'lib32-freetype2'
     'gcc-libs'        'lib32-gcc-libs'
+    'gettext'         'lib32-gettext'
     'libpcap'         'lib32-libpcap'
-    'desktop-file-utils'
+    'libunwind'       'lib32-libunwind'
+    'libxcursor'      'lib32-libxcursor'
+    'libxi'           'lib32-libxi'
+    'libxrandr'       'lib32-libxrandr'
+
 )
 makedepends=('git' 'perl' 'mingw-w64-gcc'
-    'giflib'                'lib32-giflib'
-    'gnutls'                'lib32-gnutls'
-    'libxinerama'           'lib32-libxinerama'
-    'libxcomposite'         'lib32-libxcomposite'
-    'libxxf86vm'            'lib32-libxxf86vm'
-    'v4l-utils'             'lib32-v4l-utils'
     'alsa-lib'              'lib32-alsa-lib'
+    'gnutls'                'lib32-gnutls'
+    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
+    'libcups'               'lib32-libcups'
+    'libgphoto2'
+    'libpulse'              'lib32-libpulse'
     'libxcomposite'         'lib32-libxcomposite'
+    'libxcomposite'         'lib32-libxcomposite'
+    'libxinerama'           'lib32-libxinerama'
+    'libxxf86vm'            'lib32-libxxf86vm'
     'mesa'                  'lib32-mesa'
     'mesa-libgl'            'lib32-mesa-libgl'
-    'opencl-icd-loader'     'lib32-opencl-icd-loader'
-    'libpulse'              'lib32-libpulse'
-    'libva'                 'lib32-libva'
-    'gtk3'                  'lib32-gtk3'
-    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
-    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-    'sdl2'                  'lib32-sdl2'
-    'libcups'               'lib32-libcups'
-    'sane'
-    'libgphoto2'
-    'ffmpeg'
-    'samba'
     'opencl-headers'
+    'opencl-icd-loader'     'lib32-opencl-icd-loader'
+    'pcsclite'              'lib32-pcsclite'
+    'samba'
+    'sane'
+    'sdl2'                  'lib32-sdl2'
+    'unixodbc'
+    'v4l-utils'             'lib32-v4l-utils'
+    'vulkan-headers'
+    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
 )
 optdepends=(
-    'giflib'                'lib32-giflib'
-    'gnutls'                'lib32-gnutls'
-    'v4l-utils'             'lib32-v4l-utils'
-    'libpulse'              'lib32-libpulse'
-    'alsa-plugins'          'lib32-alsa-plugins'
     'alsa-lib'              'lib32-alsa-lib'
+    'alsa-plugins'          'lib32-alsa-plugins'
+    'cups'                  'lib32-libcups'
+    'dosbox'
+    'gnutls'                'lib32-gnutls'
+    'gst-plugins-bad'
+    'gst-plugins-base'      'lib32-gst-plugins-base'
+    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
+    'gst-plugins-good'      'lib32-gst-plugins-good'
+    'gst-plugins-ugly'
+    'libgphoto2'
+    'libpulse'              'lib32-libpulse'
     'libxcomposite'         'lib32-libxcomposite'
     'libxinerama'           'lib32-libxinerama'
     'opencl-icd-loader'     'lib32-opencl-icd-loader'
-    'libva'                 'lib32-libva'
-    'gtk3'                  'lib32-gtk3'
-    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
-    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-    'sdl2'                  'lib32-sdl2'
-    'sane'
-    'libgphoto2'
-    'ffmpeg'
-    'cups'
+    'pcsclite'              'lib32-pcsclite'
     'samba'
-    'dosbox'
+    'sane'
+    'sdl2'                  'lib32-sdl2'
+    'unixodbc'
+    'v4l-utils'             'lib32-v4l-utils'
+    'wine-gecko'
+    'wine-mono'
+
 )
 options=('staticlibs' '!lto')
 install="${pkgname}.install"
@@ -143,8 +148,4 @@ package() {
     
     # wine binfmt
     install -D -m644 "${srcdir}/wine-binfmt.conf" "${pkgdir}/usr/lib/binfmt.d/wine.conf"
-    
-    # strip native PE libraries
-    i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/usr/lib32/wine/i386-windows"/*.dll
-    "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine/${CARCH}-windows"/*.dll
 }
