@@ -1,0 +1,9 @@
+post_install() {
+    printf '====> %s\n' 'Make sure to add your user to the video group.'
+}
+
+post_upgrade() {
+    if (( $(vercmp $2 '1.2-3') < 0 )); then
+        printf '====> %s\n' 'Make sure to add your user to the video group.'
+    fi
+}

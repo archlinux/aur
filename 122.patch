@@ -1,0 +1,48 @@
+diff --git a/90-backlight.rules b/90-light-backlight.rules
+similarity index 100%
+rename from 90-backlight.rules
+rename to 90-light-backlight.rules
+diff --git a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -4,8 +4,8 @@ doc_DATA       = README.md COPYING ChangeLog.md
+ EXTRA_DIST     = README.md COPYING ChangeLog.md
+
+ if UDEV
+-udev_DATA      = 90-backlight.rules
+-EXTRA_DIST    += $(top_srcdir)/90-backlight.rules
++udev_DATA      = 90-light-backlight.rules
++EXTRA_DIST    += $(top_srcdir)/90-light-backlight.rules
+ endif
+
+ # lintian --profile debian -i -I --show-overrides ../$PKG.changes
+--- a/README.md
++++ b/README.md
+@@ -167,7 +167,7 @@ Optionally, instead of the classic SUID root mode of operation, udev rules can b
+     ./configure --with-udev && make
+     sudo make install
+
+-This installs the `90-backlight.rules` into `/usr/lib/udev/rules.d/`.
++This installs the `90-light-backlight.rules` into `/usr/lib/udev/rules.d/`.
+ If your udev rules are located elsewhere, use `--with-udev=PATH`.
+
+ **Note:** make sure that your user is part of the `video` group, otherwise you will not get access to the devices.
+--- a/debian/light.postinst
++++ b/debian/light.postinst
+@@ -9,4 +9,4 @@ udevadm trigger --subsystem-match=backlight --subsystem-match=leds --action=chan
+
+ # Reset udev rule action back to 'add', it was set to 'change' during
+ # dh_auto_configure to make sure they are effective right away.
+-sed -i 's/^ACTION=="change"/ACTION=="add"/g' /usr/lib/udev/rules.d/90-backlight.rules
++sed -i 's/^ACTION=="change"/ACTION=="add"/g' /usr/lib/udev/rules.d/90-light-backlight.rules
+--- a/debian/rules
++++ b/debian/rules
+@@ -9,7 +9,7 @@ override_dh_auto_configure:
+ 	dh_auto_configure -- --with-udev
+ 	# Change action type of udev rules to make it effective after
+ 	# installation, they are reset back with the poinst script.
+-	sed -i 's/^ACTION=="add"/ACTION=="change"/g' 90-backlight.rules
++	sed -i 's/^ACTION=="add"/ACTION=="change"/g' 90-light-backlight.rules
+
+ override_dh_installchangelogs:
+ 	dh_installchangelogs ChangeLog.md
