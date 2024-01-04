@@ -1,7 +1,7 @@
 # Contributor: LPB <lpb612@gmail.com>
 # Maintainer: gajjanag <gajjanagadde@gmail.com>
 pkgname=jemdoc-mathjax-git
-pkgver=240.8eb3dc1
+pkgver=253.4b83aa4
 pkgver() {
     cd "jemdoc_mathjax"
     echo $(git rev-list --count master).$(git rev-parse --short master)
