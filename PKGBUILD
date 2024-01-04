@@ -3,7 +3,7 @@
 # Contributor: Peter Reschenhofer < peterreschenhofer at gmail dot com >
 
 pkgname=gams
-pkgver=42.4.0
+pkgver=45.5.0
 pkgrel=1
 pkgdesc='A high-level modeling system for mathematical optimization'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 options=('!strip')
 source=("$pkgname-$pkgver.exe::https://d37drm4t2jghv5.cloudfront.net/distributions/$pkgver/linux/linux_x64_64_sfx.exe"
         "gams-studio.desktop")
-sha256sums=('59d585307bf171ffa5cbf4ebab62978d3b50287d814648c5cfbdd45714385a7b'
+sha256sums=('dfa45855dc9db4d1d832f590c156b4cb8fc549b890c95687917ffd50ddbad76b'
             '5349929ad07ea8de5e6f1e5d03f264b2fd5afc161b4204981d30fc2ff8faed7e')
 
 package() {
