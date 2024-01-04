@@ -1,0 +1,14 @@
+pkgbase = kmeet-appimage
+	pkgdesc = kMeet allows you to organise secure online meetings via your web browser, your mobile, your tablet or your computer.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://www.infomaniak.com/en/apps/download-kmeet
+	arch = x86_64
+	license = custom:Unlicense
+	depends = zlib
+	noextract = kmeet-appimage-2.0.1.AppImage
+	options = !strip
+	source_x86_64 = kmeet-appimage-2.0.1.AppImage::https://download.storage5.infomaniak.com/meet/kmeet-desktop-2.0.1-linux-x86_64.AppImage
+	sha256sums_x86_64 = d25ca005b230684c9dbc511fbc00e22f6939196cd5a4cd635f8a2bc1eae2058c
+
+pkgname = kmeet-appimage
