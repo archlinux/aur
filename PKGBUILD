@@ -2,10 +2,10 @@
 
 pkgname=python-mautrix
 pkgver=0.20.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python 3 asyncio Matrix framework."
 url="https://github.com/mautrix/python/"
-depends=('python>=3.6')
+depends=('python' 'python-aiohttp' 'python-attrs' 'python-yarl')
 makedepends=('python-setuptools')
 license=('MPL')
 arch=('any')
