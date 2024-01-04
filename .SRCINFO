@@ -7,6 +7,7 @@ pkgbase = shortix-desktop
 	arch = any
 	license = GPL3
 	depends = sed
+	depends = protontricks
 	optdepends = steam: create and run proton prefixes
 	source = https://github.com/SeongGino/shortix/archive/refs/tags/v0.6.1.zip
 	sha256sums = 0c0ac91a066ac20afa19863b57a42c7528b19e078bfb850b2b73ff320eb7d8cf
