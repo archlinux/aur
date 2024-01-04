@@ -12,6 +12,6 @@ pkgbase = mounter-elite-plus
 	optdepends = ccd2iso: BIN/IMG conversion support
 	optdepends = mdf2iso: MDF/MDS conversion support
 	source = https://github.com/siyia2/mounter-elite-plus/archive/v2.2.10.tar.gz
-	md5sums = 0a1f32dfdf20e1e2c2315bdf0a8b7099
+	md5sums = 467fa17b312be183518a4ad86b3559c5
 
 pkgname = mounter-elite-plus
