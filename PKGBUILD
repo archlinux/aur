@@ -1,23 +1,21 @@
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='music-assistant-desktop-bin'
 pkgver=0.0.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Music Assistant Companion App"
 arch=('x86_64')
 url="https://github.com/music-assistant/music-assistant-desktop"
 conflicts=(music-assistant-desktop)
 provides=(music-assistant-companion)
-dependencies=(curl)
 license=('Apache-2.0')
-md5sums=('87832020c154b1b2864fb3252fb33e44')
-source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/music-assistant-companion-${pkgver}")
+md5sums=('4309dc5363be649ea1ba99cafebdc4fd'
+         '4d6cfc74a2b2d09a0f28c259d2a39eb7'
+         'c1c710f0f2736214866afd8bb14aafd5'
+         '87832020c154b1b2864fb3252fb33e44')
+source=("squeezelite::$url/releases/download/v$pkgver/squeezelite-x86_64-unknown-linux-gnu" "music-assistant-companion.png::https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v$pkgver/src-tauri/icons/128x128.png" "music-assistant-companion.desktop::https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v$pkgver/musicassistant.desktop" "$pkgname-$pkgver::$url/releases/download/v$pkgver/music-assistant-companion-${pkgver}")
 
 package() {
   cd "$srcdir/"
-
-  curl -L -o music-assistant-companion.desktop https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v$pkgver/musicassistant.desktop
-  curl -L -o music-assistant-companion.png https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v$pkgver/src-tauri/icons/128x128.png
-  curl -L -o squeezelite $url/releases/download/v$pkgver/squeezelite-x86_64-unknown-linux-gnu
 
   install -DCm644 ./music-assistant-companion.desktop "$pkgdir/usr/share/applications/music-assistant-companion.desktop"
   install -DCm644 ./music-assistant-companion.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/music-assistant-companion.png"
