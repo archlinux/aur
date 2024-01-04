@@ -3,8 +3,9 @@
 # Contributor: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=standardnotes-bin
+_realname="Standard Notes"
 pkgver=3.183.22
-pkgrel=2
+pkgrel=3
 pkgdesc='Free, open-source encrypted notes app.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/standardnotes/app'
@@ -28,11 +29,12 @@ prepare() {
 	tar xvf data.tar.xz
 }
 
-package() {
-	install -dv "$pkgdir/opt/$pkgname/"
-	chmod -R 755 squashfs-root/{usr,locales,resources}
-	cp -av --no-preserve=ownership squashfs-root/* "$pkgdir/opt/$pkgname/"
 
+package() {
+	install -dv "$pkgdir/opt/$pkgname"
+        cp -rv $srcdir/opt/Standard\ Notes/* "$pkgdir/opt/$pkgname/"
+
+	install -Dv "$srcdir/usr/share/applications/standard-notes.desktop" "$pkgdir/opt/$pkgname"
 	install -Dv "standard-notes.sh" "$pkgdir/usr/bin/standard-notes"
 	install -dv "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
 	install -dv "$pkgdir/usr/share/applications/"
