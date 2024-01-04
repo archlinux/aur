@@ -2,7 +2,7 @@
 
 pkgname=pizauth-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.3.r0.g973523f
+pkgver=1.0.3.r12.g1af7401
 pkgrel=1
 pkgdesc="OAuth2 token requester daemon"
 arch=('i686' 'x86_64')
@@ -41,5 +41,9 @@ check() {
 
 package() {
     cd "$pkgname"
-    PREFIX="$pkgdir/usr" MAN_PREFIX="$pkgdir/usr/share/man" make install
+    make \
+        PREFIX='/usr' \
+        EXAMPLESDIR='/usr/share/' \
+        DESTDIR="$pkgdir/" \
+        install
 }
