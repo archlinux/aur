@@ -1,5 +1,5 @@
---- chuck-1.4.0.1/src/host/RtAudio/RtAudio.cpp
-+++ chuck-1.4.0.1/src/host/RtAudio/RtAudio.cpp
+--- chuck-1.5.2.0/src/host/RtAudio/RtAudio.cpp
++++ chuck-1.5.2.0/src/host/RtAudio/RtAudio.cpp
 @@ -5663,7 +5663,7 @@
          if ( result < 0 ) break;
          if ( subdevice < 0 ) break;

@@ -7,7 +7,7 @@
 # Contributor: tardo <tardo@nagi-fanboi.net>
 
 pkgname=chuck-pulse
-pkgver=1.4.0.1
+pkgver=1.5.2.0
 pkgrel=1
 pkgdesc='Concurrent, on-the-fly audio programming language'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ depends=('gcc-libs' 'libsndfile')
 conflicts=('chuck')
 provides=('chuck')
 source=("http://chuck.cs.princeton.edu/release/files/chuck-$pkgver.tgz")
-sha256sums=('11a20c34b385e132bf43d5ae6a562c652f631828cc6b1562a4c029bc9a850ed4')
+sha256sums=('04d846f776752ff0d4dfd3c2e208c90226559de2ae24960ed30a456e67264f27')
 
 build() {
     patch -p0 --binary -i "$startdir/pulse.patch"
