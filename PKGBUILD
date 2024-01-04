@@ -1,6 +1,6 @@
 _name=Telethon
 pkgname=python-telethon-tulir-git
-pkgver=v1.33.0a1
+pkgver=v1.34.0a2
 pkgrel=1
 pkgdesc="Full-featured Telegram client library for Python 3"
 arch=(any)
