@@ -2,7 +2,8 @@
 pkgname=kui-bin
 _pkgname=Kui
 pkgver=13.1.4
-pkgrel=4
+_electronversion=22
+pkgrel=5
 pkgdesc="A hybrid command-line/UI development experience for cloud-native development"
 arch=(
     'aarch64'
@@ -13,7 +14,7 @@ license=('Apache')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'electron22'
+    "electron${_electronversion}"
     'kubectl'
     'hicolor-icon-theme'
 )
@@ -23,10 +24,14 @@ makedepends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('970ba5120db447caf8604a23843096f30838df2318b29a5a6a60fbaad30c3888')
+sha256sums=('5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 sha256sums_aarch64=('2138d7b605fb9cc0a28a7bceaa071b7b70a6a8f009110e34eeb6ec4aa0772c85')
 sha256sums_x86_64=('ebdf87c7746e82d3464f5dbeae98629a9aaff94da69d817fbd9307f44ebf9a36')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
