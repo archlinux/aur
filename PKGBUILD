@@ -4,7 +4,7 @@
 
 pkgname=nodejs-commitlint
 _name=${pkgname#nodejs-}
-pkgver=18.4.3
+pkgver=18.4.4
 pkgrel=1
 pkgdesc="Lint commit messages"
 arch=(any)
@@ -15,7 +15,7 @@ makedepends=(npm)
 
 source=("https://registry.npmjs.org/$_name/-/$_name-$pkgver.tgz")
 noextract=("$_name-$pkgver.tgz")
-sha256sums=('b5561489d36cd73dd10bc817df62036e3c35d3ff2ec994efb9fe22fa4f9b31a3')
+sha256sums=('eef2f1bb00bb8e342c2bb37fb09e2d7251bd3a01e9e9d7cb33ad4d2e90f5d7ae')
 
 package() {
   npm install -g \
