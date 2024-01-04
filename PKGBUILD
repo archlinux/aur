@@ -15,7 +15,8 @@ makedepends=('git')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _srcdir="${pkgname^^}"
-source=("${_srcdir}::git://github.com/tamentis/${_pkgname}.git")
+source=("${_srcdir}::git+https://github.com/tamentis/${_pkgname}.git")
+md5sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,16 +28,12 @@ pkgver() {
   set +u
 }
 
-prepare() {
-  set -u
-  cd "${_srcdir}"
-  ./configure
-  set +u
-}
-
 build() {
   set -u
   cd "${_srcdir}"
+  if [ ! -s 'Makefile' ]; then
+    ./configure
+  fi
   make -s
   set +u
 }
