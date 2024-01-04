@@ -1,43 +1,32 @@
 pkgbase = ytmdl
-	pkgdesc = Download songs from YouTube with metadata from sources like Itunes, Gaana, Deezer etc.
+	pkgdesc = Download songs from YouTube with metadata from iTunes, Spotify, LastFM, etc
 	pkgver = 2023.11.26
-	pkgrel = 0
+	pkgrel = 2
 	url = https://github.com/deepjyoti30/ytmdl
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-pip
-	depends = python>=3.6
-	depends = ffmpeg
-	depends = yt-dlp>=2022.03.08.1
-	depends = python-mutagen
+	makedepends = python-wheel
 	depends = python-beautifulsoup4
-	depends = python-colorama
-	depends = downloader-cli>=0.3.4
-	depends = python-itunespy
-	depends = python-ffmpeg
-	depends = python-pysocks
-	depends = python-xdg
-	depends = python-requests
-	depends = python-lxml
-	depends = python-wheel
-	depends = python-unidecode
-	depends = python-simber>=0.2.6
-	depends = python-pydes
-	depends = python-urllib3
-	depends = python-rich
 	depends = python-musicbrainzngs
+	depends = python-mutagen
+	depends = python-pyxdg
+	depends = python-rich
+	depends = python-unidecode
+	depends = python-urllib3
 	depends = python-ytmusicapi
+	depends = yt-dlp
+	depends = downloader-cli
+	depends = python-ffmpeg-python
+	depends = python-itunespy
+	depends = python-pydes
+	depends = python-simber
 	depends = python-spotipy
 	depends = youtube-search-python
-	depends = python-brotli
-	depends = python-websockets
-	depends = python-pycryptodome
-	optdepends = tensorflow: Trim Support
-	provides = ytmdl
-	conflicts = ytmdl
-	source = https://files.pythonhosted.org/packages/ae/e3/e0ab2e483e89477a492470b93b99c349a3ef648552e795878b303d65d839/ytmdl-2023.11.26.tar.gz
-	md5sums = SKIP
+	source = ytmdl::git+https://github.com/deepjyoti30/ytmdl#tag=2023.11.26
+	sha256sums = SKIP
 
 pkgname = ytmdl
