@@ -1,6 +1,6 @@
 pkgbase = tesla_auth
 	pkgdesc = Tesla token generator
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/adriankumpf/tesla_auth
 	arch = i686
@@ -11,7 +11,10 @@ pkgbase = tesla_auth
 	makedepends = rust
 	makedepends = cargo
 	depends = webkit2gtk-4.1
-	source = tesla_auth-0.8.0.tar.gz::https://github.com/adriankumpf/tesla_auth/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 6381c9a9dd1be1671b38a5ef1267fa908db22dee46faeb6ce601fd96d9d6bf48
+	depends = xdotool
+	provides = tesla_auth
+	conflicts = tesla_auth
+	source = tesla_auth-0.9.0.tar.gz::https://github.com/adriankumpf/tesla_auth/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 88587285bce793342865eb23ad128a7a88d8cf575281af4e87c772ffb283db34
 
 pkgname = tesla_auth
