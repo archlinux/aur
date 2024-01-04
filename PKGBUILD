@@ -2,7 +2,7 @@
 
 pkgname=libldap24
 pkgver=2.4.59
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Directory Access Protocol (LDAP) client libraries"
 arch=('x86_64')
 url="https://www.openldap.org/"
@@ -10,7 +10,6 @@ license=('custom')
 makedepends=('libtool' 'libsasl' 'e2fsprogs' 'util-linux' 'chrpath' 'unixodbc' 'libsodium')
 depends=('libsasl' 'e2fsprogs')
 options=('!makeflags' 'emptydirs')
-provides=(libldap=${pkgver})
 source=(https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-${pkgver}.tgz
     libldap-symbol-versions.patch)
 sha256sums=('99f37d6747d88206c470067eda624d5e48c1011e943ec0ab217bae8712e22f34'
