@@ -32,8 +32,9 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
-     python -m build --wheel --no-isolation
+  cd "$pkgname"
+  [ -d pyradio/__pycache__ ] && rm -rf pyradio/__pycache__
+  python -m build --wheel --no-isolation
 }
 
 package() {
