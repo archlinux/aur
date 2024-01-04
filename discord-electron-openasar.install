@@ -1,4 +1,12 @@
 post_upgrade() {
+	# return if old package version is greater than or equal to 0.0.39+824-2...
+	(( $(vercmp $2 '0.0.39+824-2') >= 0 )) && return
+
+	cat <<EOF
+==> In order to patch Krisp noise suppression support set 'PATCH_KRISP=true'
+    in '~/.config/discord.conf' in addition to having 'rizin' installed.
+EOF
+
 	# return if old package version is greater than or equal to 0.0.27+809-5...
 	(( $(vercmp $2 '0.0.27+809-5') >= 0 )) && return
 
@@ -18,8 +26,9 @@ EOF
 
 post_install() {
 	cat <<EOF
-==> For Krisp noise suppression support consider installing 'rizin'. Restart
-    your Discord client after installation or update to apply the patch.
+==> For Krisp noise suppression support consider installing 'rizin' and
+    setting 'PATCH_KRISP=true' in '~/.config/discord.conf'. Restart your
+    Discord client afterwards to apply the patch.
 ==> Additional Electron flags can be set in '~/.config/discord-flags.conf'.
 EOF
 }

@@ -5,29 +5,26 @@ set -euo pipefail
 declare -a flags
 
 
+[[ -r "${XDG_CONFIG_HOME:-$HOME/.config}/@PKGNAME@.conf" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/@PKGNAME@.conf"
+
 flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/@PKGNAME@-flags.conf"
 krisp_bin="${XDG_CONFIG_HOME:-$HOME/.config}/@PKGNAME@/@PKGVER@/modules/@PKGNAME@_krisp/@PKGNAME@_krisp.node"
 krisp_b2=@KRISPB2@
 
-if hash rizin &> /dev/null; then
+if hash rizin &> /dev/null && [[ "${PATCH_KRISP}" == true ]]; then
 	# Patch Krisp binary to ignore signature check
-	if [[ -f "${krisp_bin}" && $(b2sum "${krisp_bin}" | head -c 128) == $krisp_b2 ]]; then
+	if [[ -w "${krisp_bin}" && $(b2sum "${krisp_bin}" | head -c 128) == $krisp_b2 ]]; then
 		addr=$(rz-find -x '4881ec00010000' "${krisp_bin}" | head -n1)
 		rizin -q -w -c "s $addr + 0x30 ; wao nop" "${krisp_bin}" &> /dev/null
 	fi
 fi
 
-if [[ -f "${flags_file}" ]]; then
+if [[ -w "${flags_file}" ]]; then
+	# Replacing because old flag does not work
 	if grep -q '\--ignore-gpu-blacklist' "${flags_file}"; then
 		sed -i "s|--ignore-gpu-blacklist|--ignore-gpu-blocklist|" "${flags_file}"
 	fi
 	mapfile -t < "${flags_file}"
-else
-	cat > "${flags_file}" <<EOF
-#--ignore-gpu-blocklist
-#--enable-gpu-rasterization
-#--enable-zero-copy
-EOF
 fi
 
 for line in "${MAPFILE[@]}"; do
