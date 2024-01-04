@@ -1,11 +1,11 @@
 pkgname=chicken-test-new-egg
 _name=test-new-egg
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Chicken Scheme A tool to test new eggs before they are added to the official CHICKEN repository'
 arch=('x86_64')
 license=('BSD')
-depends=("chicken" "chicken-henrietta-cache" "chicken-salmonella" "chicken-srfi-1")
+depends=("chicken" "chicken-henrietta-cache" "chicken-salmonella" "chicken-srfi-1" "chicken-openssl")
 url='http://wiki.call-cc.org/eggref/5/test-new-egg'
 
 build() {

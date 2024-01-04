@@ -1,7 +1,7 @@
 pkgbase = chicken-test-new-egg
 	pkgdesc = Chicken Scheme A tool to test new eggs before they are added to the official CHICKEN repository
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.call-cc.org/eggref/5/test-new-egg
 	arch = x86_64
 	license = BSD
@@ -9,5 +9,6 @@ pkgbase = chicken-test-new-egg
 	depends = chicken-henrietta-cache
 	depends = chicken-salmonella
 	depends = chicken-srfi-1
+	depends = chicken-openssl
 
 pkgname = chicken-test-new-egg
