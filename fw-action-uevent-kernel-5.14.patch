@@ -1,0 +1,29 @@
+--- emi.c.orig	2024-01-04 16:58:17.493539594 +0100
++++ emi.c	2024-01-04 16:58:33.339981464 +0100
+@@ -352,7 +352,7 @@
+ 	dev_dbg(&dev->dev, "emi: got bitstream file\n");
+ 
+ 	err = request_firmware_nowait(THIS_MODULE,
+-				      FW_ACTION_HOTPLUG,
++				      FW_ACTION_UEVENT,
+ 				      fw_file,
+ 				      &dev->dev,
+ 				      GFP_KERNEL,
+@@ -393,7 +393,7 @@
+ 	dev_dbg(&dev->dev, "emi: got EZ-USB loader\n");
+ 
+ 	err = request_firmware_nowait(THIS_MODULE,
+-				      FW_ACTION_HOTPLUG,
++				      FW_ACTION_UEVENT,
+ 				      fw_file,
+ 				      &dev->dev,
+ 				      GFP_KERNEL,
+@@ -451,7 +451,7 @@
+ 	fw_file = "emi/loader.fw";
+ 
+ 	ret = request_firmware_nowait(THIS_MODULE,
+-				      FW_ACTION_HOTPLUG,
++				      FW_ACTION_UEVENT,
+ 				      fw_file,
+ 				      &dev->dev,
+ 				      GFP_KERNEL,
