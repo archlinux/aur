@@ -2,7 +2,7 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-local-git
-pkgver=3.5.0.0.r18187
+pkgver=3.5.0.0.r18368
 pkgrel=1
 pkgdesc="Record and edit audio files - Built with mostly system libraries, except for xwWidgets and PortMidi"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('gtk3' 'gtk2' 'ffmpeg' 'portmidi' 'python'
 	'libsbsms' 'libsm' 'opusfile' 'libice' 'soundtouch'
 	'libid3tag' 'twolame' 'wavpack' 'portsmf' 'rapidjson')
 makedepends=('opusfile' 'xcb-util-keysyms' 'xcb-util' 'cmake' 'autoconf' 
-	'automake' 'libtool' 'git' 'conan' 'catch2')
+	'automake' 'libtool' 'git' 'conan')
 provides=(
     audacity
     ladspa-host
@@ -23,7 +23,7 @@ provides=(
     vst-host
     vst3-host
     )
-conflicts=("audacity")
+conflicts=("audacity" "catch2")
 source=("git+https://github.com/audacity/audacity.git")
 sha512sums=('SKIP')
 
@@ -61,7 +61,8 @@ prepare() {
         -Daudacity_use_zlib=system \
         -Daudacity_use_curl=system \
         -Daudacity_use_midi=local \
-        -Daudacity_use_wxwidgets=local 
+        -Daudacity_use_wxwidgets=local \
+        -Daudacity_has_tests=Off
 }
 
 build() {
