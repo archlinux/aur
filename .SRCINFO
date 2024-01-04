@@ -15,6 +15,7 @@ pkgbase = python-neurodiffeq
 	depends = python-seaborn
 	depends = python-tqdm
 	depends = python-dill
+	depends = python-ordered-set
 	source = neurodiffeq-0.6.3.tar.gz::https://github.com/NeuroDiffGym/neurodiffeq/archive/v0.6.3.tar.gz
 	sha512sums = 4215850b1196a2760ec748897f8c30cbbc4e541447c4bc98b0ecdf2674b623ff2f144d089fc260be2f1ce91c3eb5555bc5a971d656ce9b5acd78494c0536e15b
 
