@@ -1,6 +1,6 @@
 # Maintainer: Paul <pb.orzel@proton.me>
 pkgname=amdgpu_top
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Tool that shows AMD GPU utilization"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -12,7 +12,7 @@ depends=(
 )
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Umio-Yasuno/amdgpu_top/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6fd4bf25737f1a3ac83993dc7bdaa5ed63593e25d4de1dc15ac98459d5b2bc0d')
+sha256sums=('01abd4856f7697b2d1fc830ec4250b5723cff9c0992ef28a4939f1b49688ecb5')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = amdgpu_top
 	pkgdesc = Tool that shows AMD GPU utilization
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/Umio-Yasuno/amdgpu_top
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = amdgpu_top
 	makedepends = cargo
 	depends = glibc
 	depends = libdrm
-	source = amdgpu_top-0.6.0.tar.gz::https://github.com/Umio-Yasuno/amdgpu_top/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 6fd4bf25737f1a3ac83993dc7bdaa5ed63593e25d4de1dc15ac98459d5b2bc0d
+	source = amdgpu_top-0.6.1.tar.gz::https://github.com/Umio-Yasuno/amdgpu_top/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 01abd4856f7697b2d1fc830ec4250b5723cff9c0992ef28a4939f1b49688ecb5
 
 pkgname = amdgpu_top
