@@ -1,11 +1,12 @@
 pkgbase = eidmiddleware
 	pkgdesc = AKD eID Middleware basic user package
 	pkgver = 3.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eid.hr
 	arch = x86_64
 	license = Custom
 	depends = qt5-base
+	depends = openssl-1.0
 	depends = ccid
 	options = !strip
 	options = staticlibs
