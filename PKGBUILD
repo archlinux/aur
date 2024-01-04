@@ -4,7 +4,7 @@ _edition=' Isolated Edition Beta'
 pkgname="mongodb-$_target"
 _pkgver='1.40.5-beta.17'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version'
 # If you're running on armv7h or aarch64, use the electron25-bin package from the AUR for the electron25 dependency
 # If you're running on armv7h, you have to add it to the arch and source arrays of the electron25-bin AUR dependency
@@ -22,9 +22,9 @@ source=(
 	'fix-argv.diff'
 )
 sha512sums=('391ccd132b50c6165970a41ca7d6573f4ea23d9f09439e36dfd81bad779b695cf6c5cfade1db7e4b1fbe7a36ffa1837ce5ee57449ec7053651b2e6ea9190fdc7'
-            '5a08541d194838b15b9bd7e58ea6998a8ffc3cb5ce2fe702d41d14dfd0a1becddfcee04f018a5fd9f0992d18b86c56d062f9b11ebda21e3b51815280198dc8da'
-            'e1082fd804ba72ccf3e53576077562f8b159b76e6aa07fa2324e31dd45c0d863d844fbb8be139be427e2cdd0401a2c4b8e6279ee9305c5507fbd73c5bc0df65d'
-            'e350765c6694133b7dec1e1e8b4a5fa610c2d18ee8ea15ecc3aa6e63fb9bb1c5f64f4d2a67cc2a38738f5c1c843cc3120edf42627b1079f1cb73a1919398b8db')
+            '6338626b9c957c79cd761f19a3d17d856ff88ce96d38c5507269b8dbaf3f20bef00012d035e5e1bde6493db495e2cfce172bcd021a5a8ae1c37dcb5f7a46a875'
+            '084dfe4feae0ac1997a141ac92294b4d132301bd493162abfe0a5acdff2f997928e5b24f21c27bcbce6c74b6b1d1014738d43a387074d7a3b5296279bbb15f6c'
+            '375142120fd97a3fd9e24d19c864ee3b24e50a5e6b0b224b7ce74742dc5bde185056a9b6f1add63d5ce66e3f0a9309e03873096540e5697547d60a2bc9e769ae')
 
 _sourcedirectory="compass-$_pkgver"
 
@@ -41,7 +41,7 @@ prepare() {
 	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
 
 	# Use a fork of os-dns-native (as there are issues with the path not being in the main node_modules directory, a local copy is not used)
-	sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"dpeukert/os-dns-native\",|" 'packages/compass/package.json'
+	sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"1\.2\.1\",|" 'packages/compass/package.json'
 	patch --forward -p1 < "$srcdir/hadron-build-os-dns-native.diff"
 
 	# Don't use the bundled ffmpeg

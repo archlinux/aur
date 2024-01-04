@@ -51,7 +51,7 @@ index 30d287c2f..a8477996d 100644
    }
    text += '\nSee the MongoDB Compass documentation for more details.\n';
 diff --git a/packages/compass/src/main/protocol-handling.ts b/packages/compass/src/main/protocol-handling.ts
-index fb4486333..6f2921174 100644
+index 812261c22..3df06fc8f 100644
 --- a/packages/compass/src/main/protocol-handling.ts
 +++ b/packages/compass/src/main/protocol-handling.ts
 @@ -13,9 +13,15 @@ async function appProtocolsConfig(): Promise<ProtocolsList> {
