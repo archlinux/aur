@@ -5,8 +5,8 @@
 # To start SABNzbd once for USER use:
 #   systemctl start sabnzbd@USER.service
 #
-# To start SABNzbd on boot for USER use:
-#   systemctl enable sabnzbd@USER.service
+# To enable and start SABNzbd for USER use:
+#   systemctl enable --now sabnzbd@USER.service
 #
 # Config will be placed in ~USER/.sabnzbd/
 

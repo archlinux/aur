@@ -53,8 +53,8 @@ pkgbase = sabnzbd
 	source = sabnzbd.sysusers
 	source = sabnzbd.tmpfiles
 	sha256sums = ed21b2bf1fb8f2e12da61bd2f31c24b03bbe44869268047fa695ccbdd201bf46
-	sha256sums = c1bcdb5ce7787aab5ab4f07508c1451441f42df0ec7be85a5dedda0a5ee70014
-	sha256sums = 4c4ff2882de744d1b5435470ed829d58defcc84fafc56e6211d1298c0b22813f
+	sha256sums = c7db4d54dbf9a687239ea29fecd311f295059e15f77699d4549882b46e0848ef
+	sha256sums = fcc4e5a9ff4bc28cf4dd9fdb28f1ebd440669e630d8677a1afbef97349ac7466
 	sha256sums = 525f294372963fde09db08b0368c80078a16d4cefcb34f8179706336709afdf7
 	sha256sums = 3a3c292020cca0251478c70a6499afa64aeca3dfcb6d5e32f6e21d5d4d94fa81
 
