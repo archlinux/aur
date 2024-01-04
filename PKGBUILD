@@ -22,7 +22,7 @@ _build_platforms="x86_64-efi"
 
 _pkgname="grub"
 pkgname="${_pkgname}-improved-luks2-git"
-pkgver=2.12.rc1.r68.g64e3cee72
+pkgver=2.12.r2.gb835601c7
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 support. Patch made by Patrick Steinhardt"
 arch=('x86_64')
