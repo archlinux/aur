@@ -2,7 +2,7 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=nyrna
-pkgver=2.17.2
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 arch=('x86_64')
@@ -14,10 +14,8 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v$pkgver.tar.gz"
     "flutter::git+https://github.com/flutter/flutter.git"
 )
-sha256sums=(
-    'ba9a05e7e457351f58b0ad8e8db984cebd15f2a880b6bfa06ac8b6089a225bd6'
-    'SKIP'
-)
+sha256sums=('2a0e5ebf111b9eaf13468b96fa0b7fc1720fcfb97338c3ec71a36a5e5f71ce08'
+            'SKIP')
 
 _setpath() {
     PATH="$PATH:$srcdir/flutter/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin"
@@ -27,7 +25,7 @@ prepare() {
     _setpath
 
     # Enable desktop build
-    flutter --no-version-check channel beta
+    flutter --no-version-check channel stable
     flutter --no-version-check config --no-analytics
     flutter --no-version-check config --enable-linux-desktop
 
