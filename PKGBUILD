@@ -17,7 +17,7 @@
 pkgname=discord-canary-electron-bin
 _pkgname=discord-canary
 pkgver=0.0.233
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord-canary')
@@ -25,7 +25,7 @@ conflicts=('discord-canary')
 url='https://canary.discordapp.com'
 license=('custom')
 options=(!strip)
-depends=('electron' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
+depends=('electron26' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
 makedepends=('asar')
 optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files'
@@ -70,8 +70,8 @@ package() {
   cp -r "$_tarname"/resources/*  "$pkgdir"/usr/lib/$_pkgname/
   
   # Create starter script for discord
-  echo "#!/bin/sh" >> "$srcdir"/$_pkgname
-  echo "exec electron /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
+  echo "#!/bin/sh" > "$srcdir"/$_pkgname
+  echo "exec electron26 /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
   
   install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
   install -Dm 755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
