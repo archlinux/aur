@@ -1,11 +1,12 @@
 pkgname=plome
 pkgver=5.91.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PLOME, mix of Plasma desktop and GNOME applications'
 arch=(x86_64)
 license=(LGPL)
 depends=(
 	plasma-desktop
+	kscreen
 	# audio volume control
 	plasma-pa
 	# drop-down terminal
@@ -30,6 +31,7 @@ depends=(
 conflicts=(
 	# use fcitx5 instead
 	ibus
+	scim
 	# use network-manager-applet instead
 	plasma-nm
 	# use blueman instead
