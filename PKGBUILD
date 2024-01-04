@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=multiset
 pkgname=python-${_pkgname}
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=2
 pkgdesc="A multiset implementation for python"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('2ccad28744cebb6b6536fce59f50bddabf65c6ec285eae9740a1b3b386c35b0e5679699bf1af640b9a345fb32218a10360420126afdcddf208da30ec53d7f92f')
+b2sums=('babde68ad979e173e0afb6a87b05fc63f536d8a9f4dfc2c817f1237344efc684a7225e0d1ca19163007c43451e9a706db9aa489fa10e5e4ec84d85f15f4b5bf4')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -30,11 +30,10 @@ build() {
 }
 
 check() {
+    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python -m installer --destdir="$srcdir/test" dist/*.whl
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    export PYTHONPATH="$srcdir"/test/usr/lib/python${python_version}/site-packages
-    python -m pytest -v tests
+    python -m installer --destdir=test_dir dist/*.whl
+    PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" pytest -v
 }
 
 package() {
