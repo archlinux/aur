@@ -1,11 +1,9 @@
 # Maintainer: szdytom <szdytom@qq.com>
 # Maintainer: k0kubun <takashikkbn@gmail.com>
-# This PKGBUILD is managed by <https://github.com/xremap/aur-autoupdater>
-
 pkgname=xremap-gnome-bin
 pkgdesc='Dynamic key remapper for X11 and Wayland (Gnome Wayland Version)'
-pkgver=0.8.12
-pkgrel=2
+pkgver=0.8.13
+pkgrel=1
 
 provides=('xremap')
 license=('MIT')
@@ -16,10 +14,10 @@ source=("LICENSE")
 sha256sums=("60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343")
 
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/k0kubun/xremap/releases/download/v$pkgver/xremap-linux-x86_64-gnome.zip")
-sha256sums_x86_64=('c93488080ba33262747f24b07a3ac09753f7fe255612e821f9eab9e830caf780')
+sha256sums_x86_64=('17479f3a51a56ffeee3c88895ffea0956593357cf97f34981f990f3a495a8a5e')
 
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/k0kubun/xremap/releases/download/v$pkgver/xremap-linux-aarch64-gnome.zip")
-sha256sums_aarch64=('0a7729d716e8111b6acce04bf94127d51e9f69fe3c75901da358536c2979531c')
+sha256sums_aarch64=('c7bb8cffe5229ca8f6f966e1568fc2abd5ac5bfaeb398eb56fee5304f6556cdb')
 
 package() {
 	cd "$srcdir/"
@@ -32,4 +30,3 @@ package() {
 	install -Dm755 xremap "${pkgdir}/usr/bin/xremap"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/xremap-gnome-bin/LICENSE"
 }
-
