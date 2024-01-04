@@ -2,7 +2,8 @@
 pkgname=mediachips-bin
 _pkgname=MediaChips
 pkgver=0.11.3_beta
-pkgrel=6
+_electronversion=17
+pkgrel=7
 pkgdesc="Manage your videos, add any metadata to them and play them."
 arch=("x86_64")
 url="https://mediachips.app/"
@@ -11,14 +12,11 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
-    'electron17'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    "electron${_electronversion}"
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
+    'nodejs'
 )
 makedepends=(
     'squashfuse'
@@ -28,11 +26,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8af9d3e09bc812826e8c67908b2bfb7b6c638d70946cf45ae696f26b2e276610'
-            '4861e55a83e7fd5b76a55cf870b0839c4172c1a84d3342a0583324b39ee6962f')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|Utility|Utility;AudioVideo|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Utility|Utility;AudioVideo|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
