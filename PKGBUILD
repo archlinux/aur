@@ -1,7 +1,7 @@
 # Maintainer: jsimon0 <jonathansimon@protonmail.com>
 _pkgname=immich-go
 pkgname=immich-go-bin
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="An alternative to the immich-CLI command that doesn't depend on nodejs installation."
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ license=('custom')
 options+=('!strip')
 source_x86_64=(${_pkgname}-${pkgver}-${pkgrel}_Linux_x86_64.tar.gz::"${url}/releases/download/${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
 source_aarch64=(${_pkgname}-${pkgver}-${pkgrel}_Linux_aarch64.tar.gz::"${url}/releases/download/${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('c2553b147832f8551d465f156323ab572dabb3cd86239ba0813f0c6437557906')
-sha256sums_aarch64=('e8c7f57dff66e48ecf88c96f250bcb8ffb3b4d12d4d33831d142009c911c49bf')
+sha256sums_x86_64=('be92a809685d7bf79e4fce7904ed8701e4c848b8f8f6cd5d0fb8433c528c7be9')
+sha256sums_aarch64=('d361e9bc739172a3e3383a7eba2052db3fff6bf69ff3fe10792605a89941f311')
 
 prepare() {
     _tarball="${_pkgname}-${pkgver}-${pkgrel}_Linux_${CARCH}.tar.gz"
