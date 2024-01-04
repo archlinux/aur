@@ -2,37 +2,39 @@
 
 pkgname=olc-git
 pkgver=0.8.5.beta
-pkgrel=2
-pkgdesc='Open Lighting Console'
+pkgrel=3
+pkgdesc="Open Lighting Console"
 arch=(any)
 url=https://mikacousin.github.io/olc/
-license=(GPL3)
+license=("GPL3")
 depends=(
-  ola-git
-  gtk3
-  python-cairo
-  python-gobject
-  python-mido
-  python-pyliblo
-  python-scipy
-  python-charset-normalizer
-  python-sacn
+  "gtk3"
+  "python-cairo"
+  "python-gobject"
+  "python-mido"
+  "python-pyliblo"
+  "python-scipy"
+  "python-charset-normalizer"
+  "python-sacn"
 )
 makedepends=(
-  git
-  gobject-introspection
-  meson
+  "git"
+  "gobject-introspection"
+  "meson"
 )
-provides=('olc')
-source=('git+https://github.com/mikacousin/olc')
+optdepends=(
+  "ola: ola backend"
+)
+provides=("olc")
+source=("git+https://github.com/mikacousin/olc")
 
 pkgver() {
   cd "$srcdir/olc"
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 build() {
-  arch-meson olc build --libexec='lib/olc'
+  arch-meson olc build --libexec="lib/olc"
   ninja -C build
 }
 
@@ -40,4 +42,4 @@ package() {
   DESTDIR="${pkgdir}" ninja -C build install
 }
 
-md5sums=('SKIP')
+md5sums=("SKIP")
