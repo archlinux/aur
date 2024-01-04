@@ -19,7 +19,8 @@ conflicts=("${_pkgname}")
 _srcdir="${pkgname^^}"
 _giturl="https://github.com/gmsoft-tuxicoman/${_pkgname}"
 _verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
-source=("${_srcdir}::${_giturl//https:/git:}.git")
+source=("${_srcdir}::git+${_giturl}.git")
+md5sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver () {
