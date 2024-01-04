@@ -1,6 +1,6 @@
 pkgbase = utools-bin
 	pkgdesc = uTools Utilities.新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集
-	pkgver = 4.3.1
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://u.tools
 	arch = x86_64
@@ -30,11 +30,11 @@ pkgbase = utools-bin
 	depends = libxtst
 	depends = lib32-gcc-libs
 	depends = alsa-lib
-	provides = utools=4.3.1
+	provides = utools=4.4.1
 	conflicts = utools
-	source = utools-4.3.1.deb::https://res.u-tools.cn/version2/utools_4.3.1_amd64.deb
-	source = LICENSE.html::https://u.tools/agreement.html
-	sha256sums = 9221328d5735bfa8b32bee73d668821a91f6e40850b877d031e8d09b17cb9f57
+	source = utools-4.4.1.deb::https://res.u-tools.cn/version2/utools_4.4.1_amd64.deb
+	source = LICENSE-4.4.1.html::https://u.tools/agreement.html
+	sha256sums = 24cd6613008cfabffaab1727324ddd772123acf8d89781b0ddc0486a84384e0f
 	sha256sums = 79ece83ed12ba8fe68f7ae40af48df0e3e8f23fcb0f1cae6908fa14221cbab64
 
 pkgname = utools-bin
