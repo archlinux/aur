@@ -1,7 +1,7 @@
 pkgbase = ctool-electron-bin
 	pkgdesc = Common tools for program development.程序开发常用工具 chrome/edge/firefox/utools/windows/linux/mac
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ctool.dev
 	arch = x86_64
 	license = MIT
@@ -11,12 +11,12 @@ pkgbase = ctool-electron-bin
 	conflicts = ctool-electron
 	conflicts = ctool-electron
 	source = ctool-electron-2.3.0.tar.gz::https://github.com/baiy/Ctool/releases/download/v2.3.0/ctool_electron_linux_x64.tar.gz
-	source = ctool-electron.png::https://raw.githubusercontent.com/baiy/Ctool/v2.3.0/packages/ctool-core/public/icon/icon_1024.png
-	source = LICENSE::https://raw.githubusercontent.com/baiy/Ctool/v2.3.0/LICENSE
+	source = ctool-electron-2.3.0.png::https://raw.githubusercontent.com/baiy/Ctool/v2.3.0/packages/ctool-core/public/icon/icon_1024.png
+	source = LICENSE-2.3.0::https://raw.githubusercontent.com/baiy/Ctool/v2.3.0/LICENSE
 	source = ctool-electron.sh
 	sha256sums = 39943b2ce2f0232e112d14f4f39ec0008ef71d435246067692ba6dc574298337
 	sha256sums = 77467c477d328a27c45d59d1b808511dcff33824ca674f1aad43c606d8a1ab9c
 	sha256sums = 459af2e36090998e7807b1d2a5b8d6a381bf94b69cbd2ec68e7943a09e2ce1e2
-	sha256sums = b4b2561cbb8513a4978d1d006d5d7ac151360381ca411de78b1a7b515abcf028
+	sha256sums = 1134757ac7b3db89209a87f9689cdfe30da93a647c1e468b95fc26384e2f958b
 
 pkgname = ctool-electron-bin

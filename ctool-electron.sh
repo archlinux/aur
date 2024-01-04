@@ -1,12 +1,18 @@
-#!/bin/bash
-_ELECTRON=/usr/bin/electron26
+#!/bin/sh
+set -e
+_APPDIR="/usr/lib/@appname@"
+_ASAR="${_APPDIR}/@appasar@"
 _ENV="env JSC_useDFGJIT=0"
-APPDIR="/usr/lib/ctool-electron"
-export PATH="${APPDIR}:${PATH}"
-export LD_LIBRARY_PATH="${APPDIR}/swiftshader:${LD_LIBRARY_PATH}"
-_ASAR="${APPDIR}/app.asar"
+export PATH="${_APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}/swiftshader:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
+export ELECTRON_IS_DEV=0
+export NODE_ENV=production
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec ${_ENV} ${_ELECTRON} ${_ASAR} "$@"
+    cd "${_APPDIR}"
+    "${_ENV}" exec electron@electronversion@ "${_ASAR}" "$@"
+    exit
 else
-    exec ${_ENV} ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
+    cd "${_APPDIR}"
+    "${_ENV}" exec electron@electronversion@ "${_ASAR}" --no-sandbox "$@"
+    exit
 fi
