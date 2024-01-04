@@ -2,7 +2,7 @@
 
 pkgname=simplex-desktop-appimage
 pkgver=5.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The latest release of Simplex Desktop, the first messaging platform operating without user identifiers of any kind - 100% private by design!"
 arch=('x86_64')
 url="https://simplex.chat/"
@@ -25,18 +25,19 @@ sha512sums=("${_appimage_sum}")
 
 package() {
 
+    echo "Extracting appimage"
     chmod +x "${_filename}"
     # mkdir -p squashfs-root/usr/share/icons/hicolor/256x256/apps
     ./${_filename} --appimage-extract "usr/share/icons/simplex.png" > /dev/null 2>&1
     ./${_filename} --appimage-extract ${_squashfs_desktop_file} > /dev/null 2>&1
 
-    # install icons
+    echo "Install icons"
     install -dm755 "${pkgdir}/usr/share/icons/"
     cp -dpr --no-preserve=ownership "squashfs-root/usr/share/icons/simplex.png" "${pkgdir}/usr/share/icons/"
     chmod -R 755 "${pkgdir}/usr/share/icons"
     find "${pkgdir}/usr/share/icons" -type f -name "simplex.png" -exec chmod 644 {} \;
 
-    # install .desktop file and image file
+    echo "Install .desktop file and image file"
     # disable appimage desktop integration: https://github.com/AppImage/AppImageSpec/blob/master/draft.md#desktop-integration
     # disable AppimageLauncher integration prompt
     # https://github.com/TheAssassin/AppImageLauncher/issues/78#issuecomment-466390939
@@ -46,6 +47,7 @@ package() {
     mkdir "${pkgdir}/usr/bin/" && chmod 755 "${pkgdir}/usr/bin/"
     ln -s "${_install_path}" "${pkgdir}/usr/bin/simplex"
 
+    echo "Disable AppImage integration prompt"
     # disable AppImage integration prompt
     # https://github.com/electron-userland/electron-builder/issues/1962
     install -dm755 "${pkgdir}/usr/share/appimagekit"
