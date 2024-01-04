@@ -1,24 +1,21 @@
 pkgbase = mizar-bin
 	pkgdesc = A TCP testing tool, immediately useful and intuitive to use right out of the box
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Fabio286/mizar
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
 	depends = electron22
 	depends = hicolor-icon-theme
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
 	provides = mizar=1.2.0
 	conflicts = mizar
 	source = mizar-1.2.0.AppImage::https://github.com/Fabio286/mizar/releases/download/v1.2.0/Mizar-1.2.0-linux_x86_64.AppImage
 	source = mizar.sh
 	sha256sums = ff4bb7bcce708f5e7c8efa2b4da824a27e16efb9495db758b18a7a31efd12335
-	sha256sums = 81c4d89a69d50f807b53f34ec0e4fdd1f294fc7c552d1b8e631e3094c54cab18
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = mizar-bin
