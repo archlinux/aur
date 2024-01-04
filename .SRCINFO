@@ -1,7 +1,7 @@
 pkgbase = olc-git
 	pkgdesc = Open Lighting Console
 	pkgver = 0.8.5.beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mikacousin.github.io/olc/
 	arch = any
 	license = GPL3
