@@ -5,13 +5,12 @@
 pkgname=standardnotes-bin
 _realname="Standard Notes"
 pkgver=3.183.22
-pkgrel=3
+pkgrel=4
 pkgdesc='Free, open-source encrypted notes app.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/standardnotes/app'
 license=('AGPL3')
 depends=('hicolor-icon-theme')
-makedepends=('asar')
 options=(!strip)
 provides=('standardnotes-desktop')
 conflicts=('standardnotes-desktop')
