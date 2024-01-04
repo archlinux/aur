@@ -1,4 +1,6 @@
-# Maintaoner: Yamada Hayao <development@fascode.net>
+# Maintainer: Benoit <archlinux@benoit.jp.net>
+# Contributor: OpenSauce04 <opensauce04@gmail.com>
+# Contributor: Yamada Hayao <development@fascode.net>
 
 pkgname="jquake"
 pkgver="1.8.5"
