@@ -1,7 +1,7 @@
 # Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
 
 pkgname=sdpb-git
-pkgver=1691.d6b948b
+pkgver=1718.2443d6d5
 pkgrel=1
 pkgdesc="A semidefinite program solver for the conformal bootstrap"
 arch=(x86_64)
@@ -42,3 +42,7 @@ package() {
         done
 }
 
+check () {
+        cd "$srcdir"/sdpb/test
+        /usr/bin/sh run_all_tests.sh
+}
