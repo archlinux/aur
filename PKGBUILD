@@ -1,7 +1,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 pkgname=boom
 _buildpkgname=lifish
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="A game inspired by Factor Software's BOOM.Bomberman meets DOOM."
 arch=('any')
@@ -10,13 +10,12 @@ license=('custom')
 makedepends=('cmake')
 depends=('sfml')
 provides=(${pkgname})
-options=()
 source=(
   "https://github.com/silverweed/lifish/archive/refs/tags/${pkgver}.tar.gz"
   "${pkgname}"
   "${pkgname}.desktop"
 )
-sha256sums=('f6c04388d67364bbf044f155731a911d8861576c170bca16dcc8d2e078d9eb2a'
+sha256sums=('0b47f57e51dfbdfa811fc07ff13fd54a63838ad3998cb4f4fbbd2b6655f80ef1'
             'efc02b4b2da6f08fd392236b6e3b1b30d0a1e4b30a68b80eee6e5be40cfb2c11'
             '80349740c8b281d2110524e38f8cd774e31616ced4ea6fc894b516a7772c474f')
 build() {
