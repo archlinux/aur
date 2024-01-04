@@ -1,5 +1,10 @@
 # Be sure to use `systemctl edit radarr` to modify this service with an override.conf because
 # direct changes will be overwritten by package updates.
+#
+# A user per service w/ shared group setup would have an override like:
+# [Service]
+# Group=sharedgroupname
+# Umask=002
 
 [Unit]
 Description=Radarr Service
