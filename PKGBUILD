@@ -4,7 +4,7 @@
 
 pkgname=notion-app-electron
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Your connected workspace for wiki, docs & projects'
 arch=(x86_64)
 url=https://www.notion.so/desktop
@@ -30,7 +30,7 @@ source=(
 )
 sha256sums=('d8027c86503ff050c4eb988c7c12936002968a704c069b9d5932ca5e971d66f2'
             '9d9381dd7b53f06759916dbcfae24ede7e7e26c18ea45f00f40c35d4217ce7fb'
-            'd95b5cd37b59dcabe63520b0e2a27a2de3cb950fcc56b30ae3076e99ed6d4747'
+            '1ee5a3847a6aba3cba9b757ddc0f2364a5c24c4b63e057e03aede5c56f126642'
             '19a5f973f1e9291081aa05512e07c61447e8c30e1a43dd22d0cc1090837d1e19')
 
 prepare() {
