@@ -1,6 +1,6 @@
 pkgbase = clvk-git
 	pkgdesc = Experimental implementation of OpenCL 3.0 on Vulkan
-	pkgver = r617.a4e685c
+	pkgver = r627.5b43ca3
 	pkgrel = 1
 	url = https://github.com/kpet/clvk
 	install = clvk-git.install
@@ -15,6 +15,7 @@ pkgbase = clvk-git
 	makedepends = spirv-tools
 	makedepends = spirv-llvm-translator
 	makedepends = mold
+	makedepends = vulkan-headers
 	depends = vulkan-icd-loader
 	depends = ocl-icd
 	depends = ncurses
