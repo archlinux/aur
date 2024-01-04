@@ -6,12 +6,13 @@
 # Maintainer: James Williams <jowilliams12000 at gmail dot com>
 pkgname=wallust-git
 pkgver=2.9.0.r5.g0a6981a
-pkgrel=2
+pkgrel=3
 pkgdesc="generate colors from an image"
 arch=('any')
 url="https://codeberg.org/explosion-mental/wallust"
 license=('custom:MIT')
 makedepends=('cargo' 'git')
+optdepends=('imagemagick')
 source=("$pkgname::git+$url#branch=dev")
 sha256sums=('SKIP')
 
@@ -27,7 +28,6 @@ build() {
 
 package() {
 	cd "$pkgname"
-	echo "$pkgdir"
 	install -Dm755 target/release/wallust -t "${pkgdir}/usr/bin"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/wallust/LICENSE"
 }
