@@ -1,23 +1,25 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-# Upstream repository is missing tags:
-# https://github.com/speedata/publisher/issues/550
-_sha=7d1037fdd9b002ba53c8352d8ef67b7e552f3599
-
 pkgname=speedata-publisher
-pkgver=4.15.19
+pkgver=4.15.20
 pkgrel=0
 pkgdesc='a database publishing software that creates high-quality layouted PDFs fully automatically'
 arch=(x86_64)
 url='https://github.com/speedata/publisher'
 license=(AGPL3)
-depends=(glibc)
+depends=(crimson-pro-font
+         glibc
+         tex-gyre-fonts
+         tex-gyre-fonts
+         ttf-camingocode)
 makedepends=(go
              lua
              ruby-rake)
-_archive="${pkgname#*-}-$_sha"
-source=("$url/archive/$_sha/$_archive.tar.gz")
-sha256sums=('634ea7abecec41c83d3e7c5cce81a1be22e7e81dbb0b01610810dc89230237d0')
+provides=(libsplib.so
+          luaglue.so)
+_archive="${pkgname#*-}-$pkgver"
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('ab37e2aa8d91071dd13a601385403802c34ebeb69eda1b092ad5e4231a310832')
 
 prepare() {
 	cd "$_archive"
@@ -39,4 +41,6 @@ package() {
 	# https://github.com/speedata/publisher/issues/551
 	# rake install
 	install -Dm0755 -t "$pkgdir/usr/bin/" bin/sp
+	install -Dm0755 -t "$pkgdir/usr/lib/" build/dylib/{luaglue,libsplib}.so
+	install -Dm0644 -t "$pkgdir/usr/include/" build/dylib/libsplib.h
 }
