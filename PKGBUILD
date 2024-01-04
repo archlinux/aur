@@ -3,7 +3,7 @@
 pkgname=libscfg-git
 _pkgver='branch=master'
 pkgver=r10.e44023f
-pkgrel=2
+pkgrel=3
 pkgdesc="A C library for scfg"
 arch=(x86_64)
 url="https://git.sr.ht/~emersion/libscfg"
@@ -62,4 +62,5 @@ package() {
 	[ -d "$pkgdir/usr/share/$pkgname" ] || mkdir -p "$pkgdir/usr/share/$pkgname"
 	[ ! -e "$pkgdir/usr/share/$pkgname/docs" ] || rm -rf "$pkgdir/usr/share/$pkgname/docs"
 	cp -r "$srcdir"/docs "$pkgdir"/usr/share/"$pkgname"/
+	install -Dm0644 -t "$pkgdir"/usr/share/licenses/"$pkgname" "$srcdir/${pkgname%-git}/LICENSE"
 }
