@@ -1,0 +1,16 @@
+pkgbase = librewolf-extension-istilldontcareaboutcookies-bin
+	pkgdesc = Debloated fork of the extension I don't care about cookies
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/istilldontcareaboutcookies
+	arch = any
+	groups = librewolf-addons
+	license = GPLv3
+	depends = librewolf
+	provides = librewolf-extension-istilldontcareaboutcookies
+	conflicts = librewolf-extension-istilldontcareaboutcookies
+	noextract = istilldontcareaboutcookies-1.1.2.xpi
+	source = idcac-pub@guus.ninja.xpi::https://addons.mozilla.org/firefox/downloads/file/4213061/istilldontcareaboutcookies-1.1.2.xpi
+	sha256sums = ee931591b4d7d7ba7cc15472dd3de0295d44ef798a14bb5b0159512be53fa126
+
+pkgname = librewolf-extension-istilldontcareaboutcookies-bin
