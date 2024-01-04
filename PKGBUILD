@@ -1,14 +1,14 @@
-# Maintainer: 404DeadLink <>
+# Maintainer: EDEADLINK <>
 
 pkgname=otf-riemann-git
 _pkgname=Riemann
 pkgver=r1.4f85304
-pkgrel=1
+pkgrel=2
 pkgdesc="An OpenType font for Functional Analysis of music"
 url="https://github.com/mmeyn/Riemann"
 makedepends=('fontforge' 'git')
-license=('OFL')
-source=('git://github.com/mmeyn/Riemann')
+license=('OFL-1.1-RFN')
+source=('git+https://github.com/mmeyn/Riemann')
 sha256sums=('SKIP')
 arch=('any')
 
@@ -25,5 +25,5 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	install -Dm644 -t "${pkgdir}/usr/share/fonts/OTF/" Riemann.otf
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE.md
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/OFL.md" LICENSE.md
 }

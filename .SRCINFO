@@ -1,13 +1,13 @@
 pkgbase = otf-riemann-git
 	pkgdesc = An OpenType font for Functional Analysis of music
 	pkgver = r1.4f85304
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mmeyn/Riemann
 	arch = any
-	license = OFL
+	license = OFL-1.1-RFN
 	makedepends = fontforge
 	makedepends = git
-	source = git://github.com/mmeyn/Riemann
+	source = git+https://github.com/mmeyn/Riemann
 	sha256sums = SKIP
 
 pkgname = otf-riemann-git
