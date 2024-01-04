@@ -1,5 +1,5 @@
 pkgname=gandi-automatic-dns
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Script that updates Gandi DNS reccords to point at a machine's external IP address."
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=(
   'bind-tools: to discover external IP via DNS request using dig'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4eb102e156600bf16d3c8a3a952dcf2910c5bc8c1cf2ecd1d8bedc46e7d092c4')
+sha256sums=('d461b3215bd4fa19c249550ce45ef06d7493d39988b3a6f0816dea8d86e1ed7f')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
