@@ -1,7 +1,7 @@
 # Maintainer: Dane Johnson <dane@danejohnson.org>
 
 pkgname="couch"
-pkgver="0.1.2"
+pkgver="0.1.3"
 pkgrel="1"
 pkgdesc="The Last Bastion of Co-operative Interactive Arts"
 arch=("x86_64")
@@ -14,7 +14,7 @@ source=(
 )
 
 md5sums=(
-        "b3b8e3a2d33a245f144a2df720b821df"
+    "acca12312ea31e2897e59425984639b7"
 )
 
 build() {
