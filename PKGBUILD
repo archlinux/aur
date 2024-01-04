@@ -8,7 +8,7 @@
 _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname"
-pkgver=6.6.8
+pkgver=6.6.9
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -49,9 +49,9 @@ validpgpkeys=(
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
 sha256sums=(
-  '5036c434e11e4b36d8da3f489851f7f829cf785fa7f7887468537a9ea4572416'
+  '8ebc65af0cfc891ba63dce0546583da728434db0f5f6a54d979f25ec47f548b3'
   'SKIP'
-  '77f0ad619945e18ab880733129a49ad0af28c3f2fd7b1ae9bbb6465b5a4cd316'
+  'da9d15179f3a0e1b19c57344c6e10b886d598f5256ea6f82adbe2940ccf68b34'
   'SKIP'
   '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
 
@@ -96,7 +96,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
-  make htmldocs
+  #make htmldocs
 }
 
 _package() {
@@ -239,7 +239,7 @@ _package-docs() {
 pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
-  "$pkgbase-docs"
+  #"$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
