@@ -1,27 +1,23 @@
 pkgbase = mechakeys-bin
 	pkgdesc = An integrated typing environment, a collection of interconnected customization tools built around your keyboard and mouse.
 	pkgver = 2.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://v2.robolab.io
 	arch = x86_64
 	license = custom
 	makedepends = squashfuse
 	depends = electron12
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
-	depends = libxtst
 	depends = libxkbcommon-x11
 	provides = mechakeys=2.0.6
 	conflicts = mechakeys
 	source = mechakeys-2.0.6.AppImage::https://github.com/robolab-io/mechakeys-distro/releases/download/v2.0.6/MechaKeys-2.0.6.AppImage
-	source = LICENSE.html::https://v2.robolab.io/terms
+	source = LICENSE-2.0.6.html::https://v2.robolab.io/terms
 	source = mechakeys.sh
 	sha256sums = ba45cb02a9cf9ccef4842768b612d42cf11c82dc22e94a860364975abd60f74b
-	sha256sums = 04d6d6a6e5f277ec57b1365e94c56d39e00f4792cec45254cc1cc1ac8b73727a
-	sha256sums = 33d0882e1cd13a7684b64a147c3b21ae30ff394f205d1541ee790cc315506200
+	sha256sums = 61095272481b31698b4b156b3b9d3c1082067e7356d185ab4ffe8ed3e3711e92
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = mechakeys-bin
