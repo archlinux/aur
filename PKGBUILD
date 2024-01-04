@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=moneydance-bin
 _pkgname=Moneydance
-pkgver=2023.1.5006
-pkgrel=5
+pkgver=2023.3
+pkgrel=1
 pkgdesc="An easy to use and full-featured personal finance app that doesn't compromise your privacy. "
 arch=('x86_64')
 url="http://moneydance.com/"
@@ -17,7 +17,6 @@ depends=(
     'libglvnd'
     'libxi'
     'java-runtime'
-    'gtk2'
     'hicolor-icon-theme'
     'libxext'
     'libx11'
@@ -29,8 +28,10 @@ depends=(
 makedepends=(
     'gendesk'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::https://infinitekind.com/stabledl/current/${pkgname%-bin}_linux_amd64.deb")
-sha256sums=('abe15c7a10576cfeca5283f5ba30a9164c70ad4653928912675a65cd0748d208')
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::https://infinitekind.com/stabledl/current/${pkgname%-bin}_linux_amd64.deb"
+)
+sha256sums=('b758c1649dac2f4603c7df75e545a0a42cca9e936ad50cf98bbca01970c8e5d9')
 build() {
     bsdtar -xf "${srcdir}/data.tar.bz2"
     gendesk -q -f -n --categories "Finance;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
