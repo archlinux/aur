@@ -8,7 +8,6 @@ pkgbase = mingw-w64-cgal
 	license = LGPL
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-eigen
-	makedepends = mingw-w64-wine
 	depends = mingw-w64-crt
 	depends = mingw-w64-mpfr
 	depends = mingw-w64-boost
