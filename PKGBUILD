@@ -2,7 +2,8 @@
 pkgname=gmail-desktop-bin
 _appname="Gmail Desktop"
 pkgver=3.0.0_alpha.37
-pkgrel=5
+_electronversion=23
+pkgrel=6
 pkgdesc="Nifty Gmail desktop app (unofficial)"
 arch=('x86_64')
 url="https://github.com/timche/gmail-desktop"
@@ -10,20 +11,24 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron23'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver//_/-}-linux.deb"
-    "LICENSE::https://raw.githubusercontent.com/timche/gmail-desktop/v${pkgver//_/-}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/timche/gmail-desktop/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('aa125803e43bd295154e3d0fa9def4fe3a89d1f312b15e2989aa3a25b1a49861'
             '056c7c1e5bf66eba0167d966d192c743f6b66ed854011c9b6dac04f959f8f5b5'
-            '35ca15fcfbca3d7e92ee3665e47a8148ab89cc4ccb5ca4e8e212cb738cff15e1')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|\"/opt/${_appname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -35,5 +40,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
