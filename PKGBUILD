@@ -19,9 +19,9 @@ build() {
 }
 
 package() {
-  # Delete unnecessary files
+# Delete unnecessary files
   find . -name .gitignore -exec rm {} \;
-  # Install
+# Install
   cd build/ViewerInstall/Package
   INPUT=$(find . -maxdepth 1 -type d | grep "${_pkgname}_*")
   mv $INPUT/usr "$pkgdir"
