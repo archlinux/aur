@@ -1,3 +1,24 @@
+# Changes in version v0.13.0:
+
+## Breaking changes
+
+- jj git fetch no longer imports new remote branches as local branches. Set
+git.auto-local-branch = true to restore the old behavior.
+
+## New features
+
+- Information about new and resolved conflicts is now printed by every command.
+
+- jj branch has gained a new rename subcommand that allows changing a branch
+name atomically. jj branch help rename for details.
+
+## Fixed bugs
+
+- Command aliases can now be loaded from repository config relative to the
+current working directory. #2414
+
+
+
 # Changes in version v0.12.0:
 
 ## Breaking changes
