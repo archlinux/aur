@@ -7,10 +7,17 @@
 # https://www.siril.org/
 # https://gitlab.com/free-astro/siril
 
+## options
+: ${_build_avx:=false}
+: ${_build_git:=true}
+
+[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
 # basic info
 _pkgname="siril"
-pkgname="$_pkgname-git"
-pkgver=1.2.0.r515.g5bc6fc71a
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=1.2.0.r538.g22ca41c40
 pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 url="https://gitlab.com/free-astro/siril"
@@ -117,7 +124,22 @@ build() {
     build
 
     # curl/curl.h provided by core/curl via base-devel
-    -Denable-libcurl=yes
+    -Dlibcurl=true
+
+    # force features
+    -Dexiv2=true
+    -Dffmpeg=true
+    -Dffms2=true
+    -Djson_glib=true
+    -DlibXISF=true
+    -Dlibgit2=true
+    -Dlibheif=true
+    -Dlibjpeg=true
+    -Dlibjxl=true
+    -Dlibpng=true
+    -Dlibraw=true
+    -Dlibtiff=true
+    -Dopenmp=true
   )
 
   # criterion not available when using --nocheck
@@ -125,6 +147,11 @@ build() {
     _meson_options+=(
       -Dcriterion=true
     )
+  fi
+
+  if [[ "${_build_avx::1}" == "t" ]] ; then
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
   arch-meson "${_meson_options[@]}"
