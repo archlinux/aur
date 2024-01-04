@@ -1,5 +1,5 @@
 post_upgrade() {
-	# return if old package version is greater than or equal to 0.0.39-1...
+	# return if old package version is greater than or equal to 0.0.39-2...
 	(( $(vercmp $2 '0.0.39-2') >= 0 )) && return
 
 	cat <<EOF
