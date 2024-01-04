@@ -1,12 +1,11 @@
 # Maintainer: Timothy Gelter <timothy dot gelter plus aur at gmail dot com>
 pkgname=cryptr-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI for Vault"
 arch=('x86_64')
 url="https://github.com/adobe/cryptr#readme"
 license=('Apache')
-groups=('')
 depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'libxss')
 options=('!strip' '!emptydirs')
 install=cryptr.install
