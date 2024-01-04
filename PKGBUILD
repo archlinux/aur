@@ -2,14 +2,14 @@
 
 _name=hatchling
 pkgname=python-hatchling-git
-pkgver=1.11.1.r43.g15a583af
+pkgver=1.21.0.r17.g7b1ef02a
 pkgrel=1
 pkgdesc="Modern, extensible Python build backend"
 arch=('any')
 url="https://hatch.pypa.io/latest/"
 license=('MIT')
 groups=()
-depends=('python-editables' 'python-packaging' 'python-pathspec' 'python-pluggy' 'python-tomli')
+depends=('python-editables' 'python-packaging' 'python-pathspec' 'python-pluggy' 'python-trove-classifiers')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=()
 optdepends=()

@@ -1,6 +1,6 @@
 pkgbase = python-hatchling-git
 	pkgdesc = Modern, extensible Python build backend
-	pkgver = 1.11.1.r43.g15a583af
+	pkgver = 1.21.0.r17.g7b1ef02a
 	pkgrel = 1
 	url = https://hatch.pypa.io/latest/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-hatchling-git
 	depends = python-packaging
 	depends = python-pathspec
 	depends = python-pluggy
-	depends = python-tomli
+	depends = python-trove-classifiers
 	provides = python-hatchling
 	conflicts = python-hatchling
 	source = hatch::git+https://github.com/pypa/hatch.git
