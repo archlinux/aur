@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cpuid2cpuflags
-pkgver=12
+pkgver=13
 pkgrel=1
 pkgdesc='Tool to get the instruction sets supported by the local CPU'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/mgorny/cpuid2cpuflags/'
 license=('BSD')
 depends=('glibc')
 source=("https://github.com/mgorny/cpuid2cpuflags/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('9d37fa04316a36016aa14b9e6db9db12017bfc5fa063dde7e67a18e4d48793d2')
+sha256sums=('3bf757f34b8ba7aed0087d87b7da4028a45896ddb4242bb4ec7745795ab5ddff')
 
 build() {
     cd "${pkgname}-${pkgver}"
