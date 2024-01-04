@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -eo pipefail
 
 declare -a flags
 
@@ -19,9 +19,9 @@ if hash rizin &> /dev/null && [[ "${PATCH_KRISP}" == true ]]; then
 	fi
 fi
 
-if [[ -w "${flags_file}" ]]; then
+if [[ -r "${flags_file}" ]]; then
 	# Replacing because old flag does not work
-	if grep -q '\--ignore-gpu-blacklist' "${flags_file}"; then
+	if [[ -w "${flags_file}" ]] && grep -q '\--ignore-gpu-blacklist' "${flags_file}"; then
 		sed -i "s|--ignore-gpu-blacklist|--ignore-gpu-blocklist|" "${flags_file}"
 	fi
 	mapfile -t < "${flags_file}"
