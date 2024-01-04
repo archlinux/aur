@@ -35,4 +35,6 @@ pkgname = python-gobject-git
 pkgname = pygobject-devel-git
 	pkgdesc = Common development files for pygobject
 	provides = pygobject-devel=3.40.0+10+gb15e81fc
+	provides = python-gobject-devel-git=3.40.0+10+gb15e81fc
 	conflicts = pygobject-devel
+	conflicts = python-gobject-devel-git
