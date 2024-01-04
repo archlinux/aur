@@ -1,0 +1,19 @@
+pkgbase = tofuenv
+	pkgdesc = OpenTofu version manager inspired by tfenv
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = https://github.com/tofuutils/tofuenv
+	install = tofuenv.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = unzip
+	depends = grep
+	depends = jq
+	provides = tofuenv
+	provides = tofu
+	conflicts = tofu
+	source = https://github.com/tofuutils/tofuenv/archive/v1.0.2.tar.gz
+	sha512sums = b529203eddbe4ab67d87cf1e98ea5db86364da4205b5abd72fbaa4e73b963b810cad497e94bef6944dc03ba1c6f405804fdda786470d938f8588a09bb4cc853d
+
+pkgname = tofuenv
