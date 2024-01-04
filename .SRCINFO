@@ -1,0 +1,15 @@
+pkgbase = python-aiohttp-fast-url-dispatcher
+	pkgdesc = A faster URL dispatcher for aiohttp
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/bdraco/aiohttp-fast-url-dispatcher
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-asyncio
+	makedepends = python-setuptools
+	depends = python-aiohttp
+	source = aiohttp-fast-url-dispatcher-0.3.0.tar.gz::https://github.com/bdraco/aiohttp-fast-url-dispatcher/archive/v0.3.0.tar.gz
+	sha256sums = b194f9fa973443c75c000b86ae7aa9134924ff6bfec168aee36367decf7f2bf7
+
+pkgname = python-aiohttp-fast-url-dispatcher
