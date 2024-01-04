@@ -10,9 +10,10 @@ pkgdesc="Line-by-line profiler"
 url="https://pypi.python.org/pypi/line_profiler"
 arch=('x86_64')
 license=('BSD')
-depends=('python-setuptools' 'ipython')
-makedepends=('cython' 'python-build' 'python-installer' 'python-wheel')
+depends=(ipython python)
+makedepends=(cython python-build python-installer python-setuptools python-wheel)
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-ubelt')
+optdepends=(python-rich)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/pyutils/line_profiler/archive/v$pkgver.tar.gz")
 
 sha256sums=('a1f3458c1dd1bf4b2d1d2657b78225f4e4e9046a1841f18cf528f01ebd3d5f43')
