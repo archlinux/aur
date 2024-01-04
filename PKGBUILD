@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=uARMSolver
 pkgname=${_base,,}
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Universal Association Rule Mining Solver"
 url="https://github.com/firefly-cpp/${_base}"
@@ -10,7 +10,7 @@ arch=(any)
 # depends=()
 makedepends=(cmake)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('dd63b799a3e215dc0fc49636f81d2f3156e51657212469d05f05e4ce9cefbe386f74c414d8213cf9be0879e49a93ee923a1552b0cd6a5036ceee0e3c3ac3acd0')
+sha512sums=('ead2ed00c99b1aa11703a2862f9fc5ccb9f4fe3940ceb6890bd9e051ffcf6a5fde6e6d159eec63611d630bf70b75e8d66a73bf5d2ccf10865a4abb0e6672c7df')
 
 build() {
   cmake \
