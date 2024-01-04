@@ -1,7 +1,7 @@
 pkgbase = python-ftfy
 	pkgdesc = Fixes some problems with Unicode text after the fact
 	pkgver = 6.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LuminosoInsight/python-ftfy
 	arch = any
 	license = MIT
