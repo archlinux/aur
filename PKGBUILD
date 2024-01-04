@@ -2,7 +2,7 @@
 
 pkgname=olc-git
 pkgver=0.8.5.beta
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Lighting Console'
 arch=(any)
 url=https://mikacousin.github.io/olc/
@@ -16,6 +16,7 @@ depends=(
   python-pyliblo
   python-scipy
   python-charset-normalizer
+  python-sacn
 )
 makedepends=(
   git
