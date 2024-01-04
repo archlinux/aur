@@ -1,13 +1,13 @@
-# Maintainer: lsdaniel <lsdaniel01+aur at gee mail dot com>
+# Maintainer: Logan Sevcik <logan+aur@sevcik.email>
 pkgname=symmy-git
-pkgver=156.3ae3fec
+pkgver=263.deaa059
 pkgrel=1
 pkgdesc="GPG symmetric encryption frontend"
 arch=(any)
 url="https://invent.kde.org/utilities/symmy"
 license=(GPL2 BSD)
-depends=(kio gpgme)
-makedepends=(git cmake extra-cmake-modules kdoctools kio ki18n kwidgetsaddons gpgme qt5-base kdelibs4support)
+depends=(kio5 qgpgme-qt5)
+makedepends=(git cmake extra-cmake-modules kdoctools5 kio5 ki18n5 kwidgetsaddons5 gpgme qt5-base kdelibs4support)
 source=(git+https://invent.kde.org/utilities/symmy.git)
 md5sums=('SKIP')
 
