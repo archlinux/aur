@@ -1,7 +1,7 @@
 # Maintainer: Whyme Lyu <callme5long@gmail.com>
 pkgname=dnsproxy-bin
 pkgver=0.61.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support"
 arch=('x86_64')
 url="https://github.com/AdguardTeam/dnsproxy"
@@ -19,7 +19,7 @@ backup=($_conf)
 package() {
   cd "$srcdir"
   install -Dm755 linux-amd64/dnsproxy "$pkgdir"/usr/bin/dnsproxy
-  install -Dm644 linux-amd64/LICENSE "$pkgdir"/usr/share/license/dnsproxy/LICENSE
+  install -Dm644 linux-amd64/LICENSE "$pkgdir"/usr/share/licenses/dnsproxy/LICENSE
   install -Dm644 linux-amd64/README.md "$pkgdir"/usr/share/doc/dnsproxy/README.md
   install -Dm644 dnsproxy.yaml "$pkgdir/$_conf"
   install -Dm644 dnsproxy.service "$pkgdir"/usr/lib/systemd/system/dnsproxy.service
