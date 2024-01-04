@@ -2,7 +2,7 @@
 # Maintainer: Ashley Watson <ashley.watson@proton.me>
 
 pkgname=datadog-agent
-pkgver=7.50.1
+pkgver=7.50.2
 _agentrel=1
 pkgrel=1
 pkgdesc='Datadog Agent: collect metrics and events from your systems and apps'
@@ -27,9 +27,9 @@ sha512sums=('SKIP'
             '20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87562326b21b5ed677032f'
             '8878b8118bb980f43d8686dc87f516768c300bb7d05788bc3a8961aa4009e118b5a22a8f5c9759fd9bcd906243ef10bf06c4c4cf27c62b4d1a1e04bca274f78b')
 sha256sums_x86_64=('SKIP'
-                   'f92cfce8bc05835c156831b8029ae42923b29083eaa815d00a63f1a04c41473d')
+                   'd08f262b7697905c3422f416ef75d59c51b50efafeec290c50fdd574fc12ff99')
 sha256sums_aarch64=('SKIP'
-                    '61e0f8f7f2698c0d7fe78503df904e498dc2efd2a15d2b7c73f110ff6750f799')
+                    '502d7b262a29227bcbddfa5ba152a7d195be8052601059165edfd41736bd4c78')
 
 prepare() {
     case "$CARCH" in
