@@ -1,7 +1,7 @@
 pkgbase = nodejs-inshellisense
 	pkgdesc = IDE style command line auto complete
 	pkgver = 0.0.1_rc.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/inshellisense
 	arch = any
 	license = MIT

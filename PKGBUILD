@@ -2,7 +2,7 @@
 pkgname=nodejs-inshellisense
 _pkgname=@microsoft/inshellisense
 pkgver=0.0.1_rc.6
-pkgrel=1
+pkgrel=2
 pkgdesc="IDE style command line auto complete"
 arch=(any)
 url="https://github.com/microsoft/inshellisense"
@@ -21,6 +21,6 @@ package() {
 	rm -r $pkgdir/usr/lib/node_modules/@microsoft/inshellisense/node_modules/.bin
 	find $pkgdir \( -name "*.py" -or -name "*.sh" -or -name "*.ts" \) -delete
 	# fix https://github.com/xtermjs/xterm.js/issues/2749
-	# find $pkgdir -name "xterm-headless.js" -print -exec sed -i 's/in window?/in this?/' {} \;
+	find $pkgdir -name "xterm-headless.js" -print -exec sed -i 's/in window?/in this?/' {} \;
 	find $pkgdir -type d -empty -delete
 }
