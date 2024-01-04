@@ -1,6 +1,6 @@
 pkgbase = imhex
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
-	pkgver = 1.32.1
+	pkgver = 1.32.2
 	pkgrel = 1
 	url = https://imhex.werwolv.net
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = imhex
 	depends = mbedtls
 	depends = curl
 	depends = dbus
-	depends = libarchive
 	depends = freetype2
 	depends = file
 	depends = hicolor-icon-theme
@@ -30,13 +29,13 @@ pkgbase = imhex
 	conflicts = imhex-patterns-git
 	options = !lto
 	options = !strip
-	source = imhex::git+https://github.com/WerWolv/ImHex.git#tag=v1.32.1
+	source = imhex::git+https://github.com/WerWolv/ImHex.git#tag=v1.32.2
 	source = nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git#commit=5786fabceeaee4d892f3c7a16b243796244cdddc
 	source = xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp#commit=f01f810714443d0f10c333d4d1d9c0383be41375
 	source = libromfs::git+https://github.com/WerWolv/libromfs#commit=0a72f7bb33d87c4fb2709b6b94bf83518ab0022d
 	source = libwolv::git+https://github.com/WerWolv/libwolv#commit=d25459dfa8e706af938427e979e454a8326c5984
-	source = pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v1.32.1
-	source = imhex-patterns::git+https://github.com/WerWolv/ImHex-Patterns#tag=ImHex-v1.32.1
+	source = pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v1.32.2
+	source = imhex-patterns::git+https://github.com/WerWolv/ImHex-Patterns#tag=ImHex-v1.32.2
 	source = 0001-fix-cmake-Fix-when-multiple-.NET-packages-are-instal.patch
 	source = 0002-fix-main-Handle-different-LLVM-version.patch
 	sha256sums = SKIP
@@ -46,8 +45,8 @@ pkgbase = imhex
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = f35c206bbda1a3d9a593e09ef30d19f46083d51985088b771e64f36cb6c53666
-	sha256sums = 436d89ec4a7aea948ccd1cb5d5cc6783079705107c6ad767e8dbe1208d395ed7
+	sha256sums = 3b27f99abc4040630f53cb098b67d4a8086d87c9c2c6e0a6a29afd83dcd6ec3a
+	sha256sums = 6cd6297b2269a7299f81781e9f4bcaa4b78bc69d757d2eafab10433daee6ed48
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -55,7 +54,7 @@ pkgbase = imhex
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = d67844dccd070ba302599c85e9a7c5269fa1d6d592b3919148f13a640ac1bd002103b75c8a721c9de40d0a96c3169ef383fe59f96d43bb5bb6f3e573ca39c5fa
-	b2sums = 90c1872766e16e76509b378437ceb8f8f0638c31cbacba29fc153a4a9046b79af1083751a8a1f73c42662bf2bf2484601c4dc4533bdf4fc0b40c4306b98a1c78
+	b2sums = 4c1c0451e3c4033ed331f6339342926f1ee25b6097cc9bf540f6944f089a3db2eaa42237a673522dbcfe37540b9be9563a12b5aa146d5c5e873cce36ca637b99
+	b2sums = 0e6fdf7cb14df8c2983822c5bc52c080d68fbc57d995cc9e24c6a84589e2dd904e48e4657a27155dcab9048a720f5d60e8fc2d70ab5d8d42b3186703a878a960
 
 pkgname = imhex

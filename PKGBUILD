@@ -3,13 +3,13 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.32.1
+pkgver=1.32.2
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
 arch=('x86_64')
-depends=('glfw' 'mbedtls' 'curl' 'dbus' 'libarchive'
+depends=('glfw' 'mbedtls' 'curl' 'dbus'
          'freetype2' 'file' 'hicolor-icon-theme' 'xdg-desktop-portal'
          'fmt' 'yara' 'capstone')
 makedepends=('git' 'cmake'
@@ -35,8 +35,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'f35c206bbda1a3d9a593e09ef30d19f46083d51985088b771e64f36cb6c53666'
-            '436d89ec4a7aea948ccd1cb5d5cc6783079705107c6ad767e8dbe1208d395ed7')
+            '3b27f99abc4040630f53cb098b67d4a8086d87c9c2c6e0a6a29afd83dcd6ec3a'
+            '6cd6297b2269a7299f81781e9f4bcaa4b78bc69d757d2eafab10433daee6ed48')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -44,8 +44,8 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'd67844dccd070ba302599c85e9a7c5269fa1d6d592b3919148f13a640ac1bd002103b75c8a721c9de40d0a96c3169ef383fe59f96d43bb5bb6f3e573ca39c5fa'
-        '90c1872766e16e76509b378437ceb8f8f0638c31cbacba29fc153a4a9046b79af1083751a8a1f73c42662bf2bf2484601c4dc4533bdf4fc0b40c4306b98a1c78')
+        '4c1c0451e3c4033ed331f6339342926f1ee25b6097cc9bf540f6944f089a3db2eaa42237a673522dbcfe37540b9be9563a12b5aa146d5c5e873cce36ca637b99'
+        '0e6fdf7cb14df8c2983822c5bc52c080d68fbc57d995cc9e24c6a84589e2dd904e48e4657a27155dcab9048a720f5d60e8fc2d70ab5d8d42b3186703a878a960')
 options=(!lto !strip)
 
 prepare() {

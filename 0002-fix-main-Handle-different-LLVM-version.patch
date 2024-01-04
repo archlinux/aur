@@ -1,25 +1,26 @@
-From 095536f5aaaa3ae85d6fe05ca11ba387c6ecb30f Mon Sep 17 00:00:00 2001
+From 460ae24e289f8c10696b88a468a94100b2a39965 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sun, 31 Dec 2023 13:29:36 +0100
 Subject: [PATCH 2/2] fix(main): Handle different LLVM version
 
 ---
- main/gui/source/crash_handlers.cpp | 5 +++++
- 1 file changed, 5 insertions(+)
+ main/gui/source/crash_handlers.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/main/gui/source/crash_handlers.cpp b/main/gui/source/crash_handlers.cpp
-index fdda088a..005096f5 100644
+index 2ddf766c..2ff85621 100644
 --- a/main/gui/source/crash_handlers.cpp
 +++ b/main/gui/source/crash_handlers.cpp
-@@ -14,6 +14,7 @@
- 
+@@ -14,6 +14,8 @@
  #include <nlohmann/json.hpp>
  
+ #include <stacktrace.hpp>
++
 +#include <llvm/Config/llvm-config.h>
  #include <llvm/Demangle/Demangle.h>
  
  #include <csignal>
-@@ -142,7 +143,11 @@ namespace hex::crash {
+@@ -142,7 +144,11 @@ namespace hex::crash {
          try {
              std::rethrow_exception(std::current_exception());
          } catch (std::exception &ex) {

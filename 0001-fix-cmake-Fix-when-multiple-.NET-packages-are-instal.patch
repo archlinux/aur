@@ -1,4 +1,4 @@
-From 1183682561b0c6e0833f7ba645fc431836e12e04 Mon Sep 17 00:00:00 2001
+From 07b603fa2fc4a3b980ac39ede97e221549cffdb1 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Tue, 26 Sep 2023 14:52:25 +0200
 Subject: [PATCH 1/2] fix(cmake): Fix when multiple .NET packages are installed
