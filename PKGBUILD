@@ -4,7 +4,7 @@
 # Contributor: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname=rpi-eeprom-git
-pkgver=r436.a4c259a
+pkgver=r603.72cedfe
 pkgrel=1
 pkgdesc='Raspberry Pi4 boot EEPROM updater, latest git version'
 arch=('any')
@@ -21,9 +21,9 @@ provides=('rpi-eeprom')
 conflicts=('rpi-eeprom')
 backup=('etc/default/rpi-eeprom-update')
 source=("git+https://github.com/raspberrypi/rpi-eeprom.git"
-        'rpi-eeprom-update.patch')
+  'rpi-eeprom-update.patch')
 md5sums=('SKIP'
-         '9036901f8345f0e0cbf25f4440529213')
+  '9036901f8345f0e0cbf25f4440529213')
 options=(!strip)
 
 pkgver() {
@@ -44,9 +44,13 @@ package() {
     "${srcdir}/rpi-eeprom-update.patch"
 
   # Copy all the firmware and files to the right place
-  install -d -m 755 "${pkgdir}/usr/lib/firmware/raspberrypi/bootloader"
-  cp -a rpi-eeprom/firmware/* \
-    "${pkgdir}/usr/lib/firmware/raspberrypi/bootloader"
+  install -d -m 755 "${pkgdir}/usr/lib/firmware/raspberrypi/bootloader-2711"
+  cp -a rpi-eeprom/firmware-2711/* \
+    "${pkgdir}/usr/lib/firmware/raspberrypi/bootloader-2711"
+
+  install -d -m 755 "${pkgdir}/usr/lib/firmware/raspberrypi/bootloader-2712"
+  cp -a rpi-eeprom/firmware-2712/* \
+    "${pkgdir}/usr/lib/firmware/raspberrypi/bootloader-2712"
 
   # Copy the override in place
   install -d -m 755 "${pkgdir}/etc/default"
