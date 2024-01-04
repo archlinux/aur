@@ -1,7 +1,7 @@
 pkgbase = inkscape-silhouette-git
 	pkgdesc = inkscape plugin to control Silhouette vinyl cutters
-	pkgver = r469.c3e1fa4
-	pkgrel = 2
+	pkgver = r663.8128b6c
+	pkgrel = 1
 	url = https://github.com/fablabnbg/inkscape-silhouette
 	arch = any
 	license = GPLv2

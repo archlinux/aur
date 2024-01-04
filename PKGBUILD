@@ -1,7 +1,7 @@
 # Maintainer: Matthew Hiles <matthew.hiles@gmail.com>
 pkgname=inkscape-silhouette-git
-pkgver=r469.c3e1fa4
-pkgrel=2
+pkgver=r663.8128b6c
+pkgrel=1
 pkgdesc="inkscape plugin to control Silhouette vinyl cutters"
 arch=(any)
 url="https://github.com/fablabnbg/inkscape-silhouette"
@@ -32,10 +32,12 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	#python setup.py install --root="$pkgdir/"
+	make DESTDIR="$pkgdir/" install
+	cp ../../*.svg "$pkgdir/usr/share/inkscape/templates/"
 	mkdir -p "$pkgdir/usr/share/inkscape/extensions/"
 	cp sendto_silhouette.* "$pkgdir/usr/share/inkscape/extensions/"
 	cp -R silhouette "$pkgdir/usr/share/inkscape/extensions/"
 	mkdir -p "$pkgdir/etc/udev/rules.d/"
 	cp silhouette-udev.rules "$pkgdir/etc/udev/rules.d/"
+	mv "$pkgdir/lib/" "$pkgdir/usr/"
 }
