@@ -1,27 +1,27 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=COTAN
-_pkgver=2.2.1
+_pkgver=2.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="COexpression Tables ANalysis"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL3)
 depends=(
   r-assertthat
+  r-biocsingular
   r-circlize
   r-complexheatmap
   r-dendextend
   r-dplyr
-  r-factoextra
   r-ggplot2
   r-ggrepel
   r-ggthemes
-  r-irlba
   r-paralleldist
   r-parallelly
+  r-pcatools
   r-plyr
   r-rcolorbrewer
   r-rfast
@@ -59,12 +59,12 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ec3bbfe10c1ede4ae12398534ab5395b')
-sha256sums=('c1cf78c924b2566204cddce43fe15ea0d935688bc48d6bff81478134e0548d46')
+md5sums=('a3d6f259a1ad5ac8203558ca7e61a91b')
+b2sums=('a0e97f4c4d0d22a5172533f21d83b667c7a999f37f0dff1bdf95d842b2dcd16683c7eb456dfaac4278f5d759f665cef671d8a313639c549fe0c1f50ac07546a2')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
