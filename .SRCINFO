@@ -1,0 +1,15 @@
+pkgbase = python-aiohttp-zlib-ng
+	pkgdesc = Enable zlib_ng on aiohttp
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/bdraco/aiohttp-zlib-ng
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest-cov
+	makedepends = python-setuptools
+	depends = python-aiohttp
+	depends = python-isal
+	source = aiohttp-zlib-ng-0.2.0.tar.gz::https://github.com/bdraco/aiohttp-zlib-ng/archive/v0.2.0.tar.gz
+	sha256sums = ea9268ed926e4d8b44bfe5e367af44f0134ee9b939a5ef0e91506f1897a0d4b8
+
+pkgname = python-aiohttp-zlib-ng
