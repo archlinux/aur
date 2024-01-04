@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=amdgpu_top-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Tool that shows AMD GPU utilization (binary release)"
 url="https://github.com/Umio-Yasuno/amdgpu_top"
@@ -11,7 +11,7 @@ depends=('libdrm')
 provides=("amdgpu_top")
 conflicts=("amdgpu_top")
 source=("$url/releases/download/v$pkgver/amdgpu-top_${pkgver}-1_amd64.deb")
-sha256sums=('865b0cc61d842ead413e51a3f05299d4a682c378e01a0cbcf72041e97151bc64')
+sha256sums=('fce89024266b21f60d3d465f84148ac76c8adbb6172e01512640a35730db6647')
 
 prepare() {
   tar Jxpf data.tar.xz
