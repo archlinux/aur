@@ -1,13 +1,13 @@
 pkgbase = slackdump
 	pkgdesc = Save your private and public slack messages, threads, files, and users locally
-	pkgver = 2.4.7
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/rusq/slackdump
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	depends = glibc
-	source = slackdump-2.4.7.tar.gz::https://github.com/rusq/slackdump/archive/refs/tags/v2.4.7.tar.gz
-	b2sums = 719a7df454360fb334d27e27c7e2c092a25e4c06d332ddad79a6dc387432060c6c513f0f5ffe472284a5af0b16260908d651f76471ef3f07dfc78471614d222e
+	source = slackdump-2.5.0.tar.gz::https://github.com/rusq/slackdump/archive/refs/tags/v2.5.0.tar.gz
+	b2sums = b486b996252ebea53294f94e9551b5b1a45d6fcbe2dcda562ac325ea01505859b0c790cd32ec89c8dbbba6f8c04383489c8e3284d16c07412562efdfe5987469
 
 pkgname = slackdump
