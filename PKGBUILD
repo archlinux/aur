@@ -2,7 +2,7 @@
 
 _pkgname=box86
 pkgname=${_pkgname}-git
-pkgver=v0.3.0.r2.ga43884ff
+pkgver=0.3.4.r6.g90f21fb7
 pkgrel=1
 pkgdesc='Linux Userspace x86 Emulator with a twist'
 arch=('armv7h')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd ${_pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
