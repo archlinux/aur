@@ -3,7 +3,7 @@
 
 pkgname=espanso
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://github.com/espanso/espanso"
@@ -39,11 +39,11 @@ prepare() {
 
   # Don't change the original service file, as it will be embedded in the
   # binary
-  sed 's|{{{espanso_path}}}|/usr/bin/espanso|g' "$pkgname/src/res/linux/systemd.service" \
+  sed 's|{{{espanso_path}}}|/usr/bin/espanso|g' espanso/src/res/linux/systemd.service \
     > espanso.service
 
   # Icon name
-  sed 's/Icon=icon/Icon=espanso/g' "$pkgname/src/res/linux/espanso.desktop" \
+  sed 's/Icon=icon/Icon=espanso/g' espanso/src/res/linux/espanso.desktop \
     > espanso.desktop
 }
 
@@ -64,10 +64,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features -- \
     --skip tests::ipc_multiple_clients \
-    --skip tests::test_migration::base_case \
-    --skip tests::test_migration::other_directories_case \
-    --skip tests::test_migration::all_config_parameters_case \
-    --skip tests::test_migration::form_syntax
+    --skip tests::test_migration
 }
 
 package() {
@@ -76,7 +73,7 @@ package() {
   install -Dm755 -t "$pkgdir/usr/bin" target/release/espanso
   install -Dm644 -t "$pkgdir/usr/lib/systemd/user" espanso.service
   install -Dm644 -t "$pkgdir/usr/share/applications" espanso.desktop
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/espanso" ./*.md
   install -Dm644 espanso/src/res/linux/icon.png \
     "$pkgdir/usr/share/pixmaps/espanso.png"
 }
