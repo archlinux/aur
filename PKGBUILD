@@ -6,7 +6,7 @@
 # Maintainer: James Williams <jowilliams12000 at gmail dot com>
 pkgname=wallust-git
 pkgver=2.9.0.r5.g0a6981a
-pkgrel=3
+pkgrel=4
 pkgdesc="generate colors from an image"
 arch=('any')
 url="https://codeberg.org/explosion-mental/wallust"
@@ -23,7 +23,9 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	cargo build --release
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_BUILD_DIR=target
+	cargo build --frozen --release
 }
 
 package() {

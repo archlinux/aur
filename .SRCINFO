@@ -1,7 +1,7 @@
 pkgbase = wallust-git
 	pkgdesc = generate colors from an image
 	pkgver = 2.9.0.r5.g0a6981a
-	pkgrel = 1
+	pkgrel = 4
 	url = https://codeberg.org/explosion-mental/wallust
 	arch = any
 	license = custom:MIT
