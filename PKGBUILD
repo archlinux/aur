@@ -1,7 +1,7 @@
 # Maintainer: Samantha Baldwin <fuhsaz 'plus' aur 'at' cryptic 'dot' li>
 pkgname=tabbed-git
 _pkgname=tabbed
-pkgver=0.6.29.gbc23614
+pkgver=0.7.r9.g97ba13b
 pkgrel=1
 pkgdesc="Simple generic tabbed fronted to xembed aware applications"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ source=("$_pkgname::git+http://git.suckless.org/tabbed")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's+[-_]+.+g'
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

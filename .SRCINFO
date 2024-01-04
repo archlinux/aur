@@ -1,6 +1,6 @@
 pkgbase = tabbed-git
 	pkgdesc = Simple generic tabbed fronted to xembed aware applications
-	pkgver = 0.6.29.gbc23614
+	pkgver = 0.7.r9.g97ba13b
 	pkgrel = 1
 	url = http://tools.suckless.org/tabbed/
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = tabbed-git
 	md5sums = SKIP
 
 pkgname = tabbed-git
-
