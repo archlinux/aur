@@ -2,7 +2,7 @@
 # Contributor: frousties
 
 pkgname=tacentview
-pkgver=1.0.42
+pkgver=1.0.43
 pkgrel=1
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent"
 arch=('x86_64')
