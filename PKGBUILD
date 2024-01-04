@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=codex-bin
 _pkgname=Codex
-pkgver=2.0.3
+pkgver=2.0.4
+_electronversion=26
 pkgrel=1
 pkgdesc="A free note-taking software for programmers and Computer Science students"
 arch=('x86_64')
@@ -12,39 +13,26 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    'mesa'
-    'pango'
-    'expat'
-    'libxfixes'
-    'nss'
-    'gtk3'
-    'libxext'
-    'libxrandr'
-    'libxkbcommon'
-    'libx11'
-    'cairo'
-    'alsa-lib'
-    'libxcomposite'
-    'nspr'
-    'at-spi2-core'
-    'libcups'
-    'libdrm'
-    'libxdamage'
-    'libxcb'
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb"
+    "${pkgname%-bin}.sh"
 )
-sha256sums=('9619d986aefe4df5706df85398c9af72f4ba6f53b17178afc6d7dd5ec80521db')
+sha256sums=('e36b9cab0f56cf8084d3657e754629df065042aabe704efd15a4e9985529c321'
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin} --no-sandbox|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
+    sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
-    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/opt/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
