@@ -4,7 +4,7 @@
 
 pkgname=standardnotes-bin
 pkgver=3.183.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Free, open-source encrypted notes app.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/standardnotes/app'
@@ -16,18 +16,16 @@ provides=('standardnotes-desktop')
 conflicts=('standardnotes-desktop')
 install=standardnotes.install
 source=("standard-notes.sh")
-source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-x86_64.AppImage")
-source_aarch64=("$pkgname-$pkgver-aarch64.AppImage::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-arm64.AppImage")
+source_x86_64=("$pkgname-$pkgver-amd64.deb::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-amd64.deb")
+source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-arm64.deb")
 
 sha256sums=('71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16')
-sha256sums_x86_64=('b4f6d380cd77f9cfb0ca10803dac2bdd4ef5a1f20714df7ac7c4187aced185f1')
-sha256sums_aarch64=('809cb344e76687508c27652de30f9dac14212a032de53f40ba29828e0ca486c6')
+sha256sums_x86_64=('09611c6aa3a93fc8b0beb1b52909b3c4927bc48735c18eecde0f767ea1c3beb0')
+sha256sums_aarch64=('fad7d33b2261bd5ee7646b7b38b318b0ca21ad7eec95f87b86228806fc22bd07')
 
 prepare() {
-	chmod +x "$pkgname-$pkgver-$CARCH.AppImage"
-	"./$pkgname-$pkgver-$CARCH.AppImage" --appimage-extract 2>&1 >/dev/null
-	asar e squashfs-root/resources/app.asar squashfs-root/resources/app
-	rm squashfs-root/resources/{app.asar,app-update.yml}
+	ar x "$pkgname-$pkgver-amd64.deb"
+	tar xvf data.tar.xz
 }
 
 package() {
