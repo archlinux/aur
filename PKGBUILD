@@ -1,6 +1,6 @@
 # Maintainer: Brett Cornwall <ainola@archlinux.org>
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
-# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
+# Contributor: Maxim Baz <archlinux at maximbaz dot com>
 
 pkgname=swaybg
 pkgver=1.2.0
