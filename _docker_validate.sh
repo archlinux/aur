@@ -5,7 +5,9 @@ if ! [ -f '/source/_docker_validate.sh' ]; then
     exit 1
 fi
 if [ "$EUID" = 0 ]; then
+    echo "[ ] Installing required build tools"
     pacman -Sy --needed --noconfirm base-devel
+    echo "[ ] Creating builduser"
     useradd builduser -m # Create the builduser
     passwd -d builduser # Delete the buildusers password
     printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # Allow the builduser passwordless sudo

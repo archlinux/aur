@@ -4,8 +4,8 @@
 
 pkgbase="cups-gssapi"
 pkgname=('libcups-gssapi' 'cups-gssapi')
-pkgver=2.4.6
-pkgrel=1
+pkgver=2.4.7
+pkgrel=2
 epoch=1
 arch=('x86_64')
 license=('Apache' 'custom')
@@ -23,7 +23,7 @@ source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-$
         cups-freebind.patch
         guid.patch
 )
-sha256sums=('58e970cf1955e1cc87d0847c32526d9c2ccee335e5f0e3882b283138ba0e7262'
+sha256sums=('dd54228dd903526428ce7e37961afaed230ad310788141da75cebaa08362cf6c'
             'SKIP'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
@@ -127,7 +127,8 @@ backup=(etc/cups/cupsd.conf
 depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters'
          'dbus' 'systemd' 'systemd-libs' 'libpaper' 'hicolor-icon-theme'
          'glibc' 'gcc-libs' 'avahi' 'gnutls')
-optdepends=('libusb: for usb printer backend'
+optdepends=('cups-browsed: to browse the network for remote CUPS queues and IPP network printers'
+            'libusb: for usb printer backend'
             'ipp-usb: allows to send HTTP requests via a USB connection on devices without Ethernet or WiFi connections'
             'xdg-utils: xdg .desktop file support'
             'colord: for ICC color profile support'
