@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=public_suffix_list
-pkgver=20160212
+pkgver=20240104
 pkgrel=1
 pkgdesc='List of "public suffixes" under which Internet users can (or historically could) directly register names'
 arch=('any')
@@ -12,4 +12,4 @@ package() {
   cd "$srcdir"
   install -Dm644 public_suffix_list.dat "$pkgdir/usr/share/publicsuffix/effective_tld_names.dat"
 }
-sha256sums=('f90ec9d0db993d68dae5028c91834b9b1da1e8a1242df9c3f3526a438757ab7b')
+sha256sums=('d68c0cb4d0d90683201d47b6ed4b95a1cd9a91f6906e240b6b5387d056da1ab6')
