@@ -4,7 +4,7 @@
 
 pkgname=notion-app-electron
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Your connected workspace for wiki, docs & projects'
 arch=(x86_64)
 url=https://www.notion.so/desktop
@@ -14,7 +14,7 @@ depends=(
 	gcc-libs
 	glibc
 	hicolor-icon-theme
-	electron
+	electron28
 )
 makedepends=(
 	asar
@@ -24,12 +24,12 @@ install=.install
 
 source=(
 	"https://desktop-release.notion-static.com/Notion%20Setup%20${pkgver}.exe"
-	https://github.com/WiseLibs/better-sqlite3/releases/download/v9.2.2/better-sqlite3-v9.2.2-electron-v116-linux-x64.tar.gz
+	https://github.com/WiseLibs/better-sqlite3/releases/download/v9.2.2/better-sqlite3-v9.2.2-electron-v119-linux-x64.tar.gz
 	notion-app
 	notion.desktop
 )
 sha256sums=('d8027c86503ff050c4eb988c7c12936002968a704c069b9d5932ca5e971d66f2'
-            '973f1cd3b1803ce6a3be74c87edae1cdb3fba603efba9a4f68673a8288b6c5c7'
+            '9d9381dd7b53f06759916dbcfae24ede7e7e26c18ea45f00f40c35d4217ce7fb'
             'd95b5cd37b59dcabe63520b0e2a27a2de3cb950fcc56b30ae3076e99ed6d4747'
             '19a5f973f1e9291081aa05512e07c61447e8c30e1a43dd22d0cc1090837d1e19')
 
