@@ -69,7 +69,7 @@ _meson_options=(
   -D pycairo=disabled
   -D python="${_py}3")
 
-_cflags=(                                                                                                   "-I$( \
+_cflags=(                                                                     "-I$( \
     dirname \
       "$(gcc \
            -v 2>&1 |
@@ -111,11 +111,6 @@ package_python-gobject-git() {
       -C build \
       --destdir "${pkgdir}"
   "${_py}${_pyver}" \
-    -m compileall \
-    -d /usr/lib \
-    "${pkgdir}/usr/lib"
-  "${_py}${_pyver}" \
-    -O \
     -m compileall \
     -d /usr/lib \
     "${pkgdir}/usr/lib"
