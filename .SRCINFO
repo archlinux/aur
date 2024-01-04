@@ -1,0 +1,17 @@
+pkgbase = latex-flatten
+	pkgdesc = Make the file structure of your LaTeX project boring and flat
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://gitlab.com/nobodyinperson/latex-flatten
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-rich
+	source = https://files.pythonhosted.org/packages/source/l/latex-flatten/latex_flatten-0.3.0.tar.gz
+	sha256sums = 671cd00d1289f86df5dfb80e80daf16fa1ddf8d222567f978e956306f3ad601d
+
+pkgname = latex-flatten
