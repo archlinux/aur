@@ -3,14 +3,13 @@
 _pkgname=rhdf5client
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
-pkgrel=1
-pkgdesc='Access HDF5 content from h5serv'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Access HDF5 content from HDF Scalable Data Service"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(Artistic2.0)
 depends=(
-  r
   r-data.table
   r-delayedarray
   r-httr
@@ -24,14 +23,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('441b144dc73c4c34a84e9d335781679b8b57d2bf1d84656d41b7ad5782975156')
+md5sums=('9205b30177d59d75b7e544f795a90de5')
+b2sums=('82c3a85cb5fb087adbc9db997b7589a871605649860764ed95c91d2e9d902c770d4aeb0f74d7defd8e6fd39dea2cf82491c2070c386d5c7181b8195f6e54f80c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
