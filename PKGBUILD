@@ -1,5 +1,5 @@
 # Maintainer: Brett Cornwall <ainola@archlinux.org>
-# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
+# Contributor Maxim Baz <archlinux at maximbaz dot com>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=sway
