@@ -3,7 +3,7 @@
 
 _pkgname="xdg-desktop-portal-hyprland"
 pkgname="${_pkgname}-git"
-pkgver=r339.09e97f5
+pkgver=r343.f46cff1
 pkgrel=1
 epoch=1
 pkgdesc="xdg-desktop-portal backend for hyprland"
@@ -35,16 +35,13 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	git submodule update --init
-	meson build --prefix=/usr --libexecdir lib
-	ninja -C build
-	cd hyprland-share-picker && make all && cd ..
+	cmake --no-warn-unused-cli -DCMAKE_INSTALL_LIBEXECDIR:STRING=/usr/lib -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}" -S . -B ./build
+	cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
 }
 
 package() {
   depends=(xdg-desktop-portal)
 	cd "${srcdir}/${_pkgname}"
-	DESTDIR="${pkgdir}" ninja -C build install
-	install -Dm755 hyprland-share-picker/build/hyprland-share-picker -t "${pkgdir}/usr/bin"
+	cmake --install build
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
