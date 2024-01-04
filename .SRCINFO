@@ -1,10 +1,13 @@
 pkgbase = python-crossref-commons
 	pkgdesc = High-level library for getting data from Crossref APIs (REST, XML, ...)
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/crossref/crossref_commons_py
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-ratelimit
 	depends = python-requests
 	source = https://files.pythonhosted.org/packages/source/c/crossref_commons/crossref_commons-0.0.7.tar.gz
