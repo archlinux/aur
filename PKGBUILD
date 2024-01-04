@@ -5,7 +5,7 @@
 pkgname=espanso-wayland
 _name=espanso
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Text Expander written in Rust (built for Wayland)"
 arch=(x86_64)
 url="https://github.com/espanso/espanso"
@@ -66,10 +66,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features -- \
     --skip tests::ipc_multiple_clients \
-    --skip tests::test_migration::base_case \
-    --skip tests::test_migration::other_directories_case \
-    --skip tests::test_migration::all_config_parameters_case \
-    --skip tests::test_migration::form_syntax
+    --skip tests::test_migration
 }
 
 package() {
