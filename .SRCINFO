@@ -1,0 +1,12 @@
+pkgbase = chicken-pstk
+	pkgdesc = PS/Tk: Portable Scheme interface to Tk for Chicken Scheme
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/pstk
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+
+pkgname = chicken-pstk
