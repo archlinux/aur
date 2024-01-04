@@ -4,7 +4,7 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 pkgname=python-lineprofiler
 _pkgname=line_profiler
-pkgver=4.0.3
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Line-by-line profiler"
 url="https://pypi.python.org/pypi/line_profiler"
@@ -15,7 +15,7 @@ makedepends=('cython' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-ubelt')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/pyutils/line_profiler/archive/v$pkgver.tar.gz")
 
-sha256sums=('81df8a475048d1c8c905cb5a4530c44f2581b6c78c2f64301a65fe2d4a3028d3')
+sha256sums=('a1f3458c1dd1bf4b2d1d2657b78225f4e4e9046a1841f18cf528f01ebd3d5f43')
 
 build() {
   cd "$_pkgname-$pkgver"
