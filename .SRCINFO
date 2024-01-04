@@ -1,6 +1,6 @@
 pkgbase = ayugram-desktop
 	pkgdesc = Desktop Telegram client with good customization and Ghost mode.
-	pkgver = 4.13.1
+	pkgver = 4.14.2
 	pkgrel = 1
 	url = https://github.com/AyuGram/AyuGramDesktop
 	arch = x86_64
@@ -22,7 +22,6 @@ pkgbase = ayugram-desktop
 	makedepends = fmt
 	makedepends = mm-common
 	makedepends = perl-xml-parser
-	makedepends = libsigc++-3.0
 	depends = hunspell
 	depends = ffmpeg
 	depends = hicolor-icon-theme
@@ -49,7 +48,7 @@ pkgbase = ayugram-desktop
 	depends = glibmm-2.68
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
-	source = git+https://github.com/AyuGram/AyuGramDesktop.git#tag=v4.13.1
+	source = git+https://github.com/AyuGram/AyuGramDesktop.git#tag=v4.14.2
 	sha256sums = SKIP
 
 pkgname = ayugram-desktop

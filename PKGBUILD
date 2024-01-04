@@ -1,7 +1,7 @@
 # Use environment variable MAKEPKG_AYUGRAM_API_ID and MAKEPKG_AYUGRAM_API_HASH to override default values
 
 pkgname=ayugram-desktop
-pkgver=4.13.1
+pkgver=4.14.2
 pkgrel=1
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
@@ -16,7 +16,7 @@ depends=(
 makedepends=(
     "cmake" "git" "ninja" "python" "range-v3" "tl-expected" "microsoft-gsl" "meson"
     "extra-cmake-modules" "wayland-protocols" "plasma-wayland-protocols" "libtg_owt"
-    "gobject-introspection" "boost" "fmt" "mm-common" "perl-xml-parser" "libsigc++-3.0"
+    "gobject-introspection" "boost" "fmt" "mm-common" "perl-xml-parser"
 )
 optdepends=(
     "webkit2gtk: embedded browser features"
@@ -46,8 +46,4 @@ build() {
 }
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    # Some fixups
-    sed -i s/Icon=telegram/Icon=ayugram/ "$pkgdir/usr/share/applications/ayugram.desktop.desktop"
-    [[ -f "$pkgdir/usr/share/icons/hicolor/symbolic/apps/telegram-symbolic.svg" ]] && \
-        mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"{telegram,ayugram}-symbolic.svg
 }
