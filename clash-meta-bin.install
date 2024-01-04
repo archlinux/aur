@@ -1,12 +1,10 @@
 post_install(){
     post_upgrade
 }
-post_upgrade(){
-    cat << EOF
-    This is the core of Clash Meta by MetaCubeX forked from Clash by Dreamacro.
-    You can find the manual at https://github.com/Dreamacro/clash/wiki/configuration
-    Home directory clash-meta.service at /etc/clash-meta
-    User home directory ~/.config/clash by default
-EOF
 
+post_upgrade(){
+    echo -e "\e[93mWarning:\e[0m"
+    echo -e "\e[93mClash.Meta is now replaced by mihomo. This package now only provide symlink to mihomo to keep compatibility.\e[0m"
+    echo -e "\e[93mWe recommend all users to remove this package and install mihomo-bin instead.\e[0m"
 }
+
