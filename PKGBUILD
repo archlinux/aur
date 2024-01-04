@@ -9,8 +9,8 @@
 
 pkgbase=fontconfig-ubuntu
 pkgname=('fontconfig-ubuntu' 'fontconfig-ubuntu-docs')
-pkgver=2.14.1
-_ubuver=3ubuntu3
+pkgver=2.14.2
+_ubuver=6ubuntu1
 pkgrel=1
 pkgdesc='A library for configuring and customizing font access (with Ubuntu patches)'
 arch=('x86_64')
@@ -25,8 +25,8 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_${pkgve
         'fontconfig-ubuntu.hook'
         '40-fontconfig-config.hook'
         '40-fontconfig-config.script')
-sha256sums=('298e883f6e11d2c5e6d53c8a8394de58d563902cfab934e6be12fb5a5f361ef0'
-            '886cba87cf97804fe1499912b318a248210a76dc0f062fba709902899d307f9f'
+sha256sums=('dba695b57bce15023d2ceedef82062c2b925e51f5d4cc4aef736cf13f60a468b'
+            'b2465690f84f1144faa4096136b5112a5c4881ffbdf15965335aa3e5500bd3cb'
             'fd7b6ce8ce178107f2e0b52462ebf186b6051c6eec945770107fda57048c9f34'
             '44f12491c9fd7eff825853846a2b3b8df2b96fc6520be5cb31ce7f37a160ff02'
             '7a9d50bccc709eb15db6ba8e13f69bc9d79b0bf354f1d17c1a5b2748edff3c33')

@@ -1,6 +1,6 @@
 pkgbase = fontconfig-ubuntu
 	pkgdesc = A library for configuring and customizing font access (with Ubuntu patches)
-	pkgver = 2.14.1
+	pkgver = 2.14.2
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu/+source/fontconfig
 	arch = x86_64
@@ -19,13 +19,13 @@ pkgbase = fontconfig-ubuntu
 	makedepends = json-c
 	makedepends = expat
 	makedepends = freetype2
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.14.1.orig.tar.xz
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.14.1-3ubuntu3.debian.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.14.2.orig.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.14.2-6ubuntu1.debian.tar.xz
 	source = fontconfig-ubuntu.hook
 	source = 40-fontconfig-config.hook
 	source = 40-fontconfig-config.script
-	sha256sums = 298e883f6e11d2c5e6d53c8a8394de58d563902cfab934e6be12fb5a5f361ef0
-	sha256sums = 886cba87cf97804fe1499912b318a248210a76dc0f062fba709902899d307f9f
+	sha256sums = dba695b57bce15023d2ceedef82062c2b925e51f5d4cc4aef736cf13f60a468b
+	sha256sums = b2465690f84f1144faa4096136b5112a5c4881ffbdf15965335aa3e5500bd3cb
 	sha256sums = fd7b6ce8ce178107f2e0b52462ebf186b6051c6eec945770107fda57048c9f34
 	sha256sums = 44f12491c9fd7eff825853846a2b3b8df2b96fc6520be5cb31ce7f37a160ff02
 	sha256sums = 7a9d50bccc709eb15db6ba8e13f69bc9d79b0bf354f1d17c1a5b2748edff3c33
@@ -34,7 +34,7 @@ pkgname = fontconfig-ubuntu
 	install = fontconfig-ubuntu.install
 	depends = expat
 	depends = libfreetype.so
-	provides = fontconfig=2.14.1
+	provides = fontconfig=2.14.2
 	provides = libfontconfig.so
 	conflicts = fontconfig
 	options = !emptydirs
