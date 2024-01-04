@@ -1,1 +1,10 @@
-*.jar
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!shodo.install
+!shodo.png
+!shodo
