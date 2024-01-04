@@ -6,7 +6,7 @@
 set -u
 _pkgname='pom-ng-webui'
 pkgname="${_pkgname}-git"
-pkgver=0.0.2.r3.g07b9869
+pkgver=0.0.2.r10.g83dcd23
 pkgrel=1
 pkgdesc='Packet-o-Matic real time network packet capture forensic tool'
 pkgdesc+=' web interface'
@@ -20,7 +20,8 @@ conflicts=("${_pkgname}")
 _srcdir="${pkgname^^}"
 _giturl="https://github.com/gmsoft-tuxicoman/${_pkgname}"
 _verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
-source=("${_srcdir}::${_giturl//https:/git:}.git")
+source=("${_srcdir}::git+${_giturl}.git")
+md5sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver () {
