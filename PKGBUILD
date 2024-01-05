@@ -7,7 +7,7 @@ arch=("any")
 url="https://git.sr.ht/~whereswaldon/$_repo"
 _branch='main'
 pkgver=r68.ff39752
-pkgrel=1
+pkgrel=2
 license=("Unlicense")
 makedepends=("git" "go" "gcc" "lm_sensors")
 source=("$_repo::git+$url#branch=$_branch")
@@ -32,7 +32,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -o "$_pkgname" .
+  go build -o "$_pkgname" ./cmd/watt-wiser-sensors
 }
 
 check() {
