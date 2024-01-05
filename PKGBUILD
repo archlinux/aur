@@ -3,7 +3,7 @@
 _pkgname=3dslicer
 pkgname=3dslicer
 pkgver=5.6.1
-pkgrel=1
+pkgrel=3
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
 url='https://www.slicer.org'
@@ -97,7 +97,7 @@ package() {
   make -C "${srcdir}/build/Slicer-build" package
   install -d "${pkgdir}/opt/${_pkgname}" "${pkgdir}/usr/bin"
   tar xvf "${srcdir}/build/Slicer-build/"*.tar.gz -C "${pkgdir}/opt/${_pkgname}" --strip-components 1
-  ln -s /opt/${_pkgname}/Slicer "${pkgdir}/usr/bin"
+  ln -s /opt/${_pkgname}/Slicer "${pkgdir}/usr/bin/Slicer"
   install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "${srcdir}/${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
 }
