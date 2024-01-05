@@ -5,7 +5,7 @@
 pkgname=standardnotes-bin
 _realname="Standard Notes"
 pkgver=3.183.39
-pkgrel=1
+pkgrel=2
 pkgdesc='Free, open-source encrypted notes app.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/standardnotes/app'
@@ -25,13 +25,13 @@ sha256sums_aarch64=('fcf9a90b41dc1eb8deea6721572e32407a3e9439ae60d0c3416fa611fca
 
 prepare() {
 	ar x "$pkgname-$pkgver-amd64.deb"
-	tar xvf data.tar.xz
+	tar xf data.tar.xz
 }
-
 
 package() {
 	install -dv "$pkgdir/opt/$pkgname"
-        cp -rv $srcdir/opt/Standard\ Notes/* "$pkgdir/opt/$pkgname/"
+    cp -rv $srcdir/opt/Standard\ Notes/* "$pkgdir/opt/$pkgname/"
+	cp -rv $srcdir/usr/* "$pkgdir/opt/$pkgname"
 
 	install -Dv "$srcdir/usr/share/applications/standard-notes.desktop" "$pkgdir/opt/$pkgname"
 	install -Dv "standard-notes.sh" "$pkgdir/usr/bin/standard-notes"
