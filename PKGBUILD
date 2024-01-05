@@ -3,8 +3,8 @@
 
 _name=passwords
 pkgname=nextcloud-app-passwords
-pkgver=2023.11.30
-_pkgver=2023.11.0
+pkgver=2023.12.32
+_pkgver=2023.12.2
 pkgrel=1
 pkgdesc='Easy to use yet feature-rich and secure password manager for Nextcloud'
 arch=('any')
@@ -13,7 +13,7 @@ license=('AGPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.mdns.eu/api/v4/projects/45/packages/generic/${_name}/${_pkgver}/passwords.tar.gz")
-sha512sums=('c5b46f7833a2b5cfc48b1f883ee5b197f543d7076cadd7d5e05b710c07977fe3095c708b3fc7e2b5df9127a7fde47cae511b07f6a7856f99c22d5ea971e9186c')
+sha512sums=('c9adc98c27423b97cad0cab617775460761791f722cab4c25c1810eae359b01dac940aff38e6f6b81a71e6bc3ea29fc80c078f22905c947e3477745079e9a952')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
