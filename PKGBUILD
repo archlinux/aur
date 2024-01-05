@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-websockets
-_basever=5.15.11
+_basever=5.15.12
 pkgver=5.15.11+kde+r2
 pkgrel=1
-_commit=d41bb9f4f7ab9d5ff184ef94cf2f6ff7cf01de00
+_commit=9a7b9972a54137d5f2e0d49559fe58d07c90662e
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
