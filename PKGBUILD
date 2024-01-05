@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sleek-bin
-pkgver=2.0.4
+pkgver=2.0.5
 _electronversion=27
 pkgrel=1
 pkgdesc="todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS)"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ransome1/sleek/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ec46a2e5c228e7f3bc78f2770fa8ca7b33e82cfcc72a4a543101a07bd95c8453'
+sha256sums=('2ed731bd3de0274839128011b6ad713ea8555b82e2d0d822fa9ab0b4a92ff179'
             '3ad193e099728945a4483894e75ce62b0867ce735822f8800afd8d71bf32dad6'
             '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
