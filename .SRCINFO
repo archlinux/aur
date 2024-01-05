@@ -1,7 +1,7 @@
 pkgbase = z-library-electron
 	pkgdesc = Stay connected to our library! use system electron
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://go-to-zlibrary.se/#desktop_app_tab
 	arch = x86_64
 	arch = aarch64

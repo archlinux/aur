@@ -1,7 +1,7 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=z-library-electron
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Stay connected to our library! use system electron"
 arch=(x86_64 aarch64)
 url="https://go-to-zlibrary.se/#desktop_app_tab"
@@ -32,5 +32,6 @@ package() {
 	printf "#!/bin/bash
 exec electron /opt/Z-Library/resources/app \"\$@\"
 " | install -Dm755 /dev/stdin $pkgdir/usr/bin/z-library
-	find $pkgdir -name "*.desktop" -print -exec sed -i "s/^Exec=.*/Exec=$pkgname/g" {} \;
+	find $pkgdir -name "*.desktop" -print -exec sed -i "s/^Exec=.*/Exec=z-library/g" {} \;
+	find $pkgdir -type d -empty -delete
 }
