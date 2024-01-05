@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cd '/opt/mule/'
-./mule.sh > "/tmp/nohup-$$.out" 2>&1

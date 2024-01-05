@@ -7,4 +7,4 @@ Terminal=false
 Type=Application
 StartupNotify=false
 Categories=GNOME;Game
-Icon=/opt/mule/data/icon.gif
+Icon=/opt/planemule/planemule.png
