@@ -1,12 +1,12 @@
 pkgbase = jquake
 	pkgdesc = JQuake provides real-time earthquake sensor map of Japan
 	pkgver = 1.8.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jquake.net/?home
 	arch = x86_64
 	license = custom
 	makedepends = git
-	depends = jre-openjdk
+	depends = java-runtime
 	source = https://fleneindre.github.io/downloads/JQuake_1.8.5_linux.zip
 	source = icon.png
 	source = jquake.desktop
