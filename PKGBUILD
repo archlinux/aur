@@ -2,8 +2,8 @@
 pkgname=joindesktop-git
 _app_id=com.joaomgcd.join
 pkgver=1.1.2.r2.ga4748ff
-pkgrel=5
-_electronversion=25
+pkgrel=6
+_electronversion=28
 pkgdesc="An official desktop app for Join by Joaoapps built in Electron."
 arch=('x86_64')
 url="https://joaoapps.com/join/desktop"
@@ -18,7 +18,7 @@ source=('git+https://github.com/joaomgcd/JoinDesktop.git'
         "${_app_id}.sh")
 sha256sums=('SKIP'
             'e53498372d93c74641ff58c1ac1e658f5c1c5645b9b878afffa85b079f5803da'
-            '5582e9f4c46f749ec2de54cf6d25c44376f7901644657e0cbf0a05693c5f36b3')
+            '80d1b1440b6601be076c662c44b4018b951f1cec1bb3bea919cf532c9a4f2b92')
 
 pkgver() {
   cd JoinDesktop
@@ -29,6 +29,8 @@ prepare() {
   cd JoinDesktop
   export npm_config_cache="$srcdir/npm_cache"
   npm install
+
+  sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/${_app_id}.sh"
 }
 
 build() {
