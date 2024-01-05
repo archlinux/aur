@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archi
         "$pkgname.sh"
         "$pkgname.desktop")
 sha256sums=('78ef6a6e9d7b878a284a4f43227ff9cc52ba424c4d6ee699268d9c80f9a5c97f'
-            '29f38d7cef381cd7b4ac26721d3d76c61ae6072fcee85a08c169eefbcaffe4df'
+            '05a97a350ffe07c1dfdf064dfc223ab4b38efc89942ba196d90c64a88a5afb3e'
             '3ed0c519e62483bb411e258df6d100463b8a417930ea67b34844bde8464e143d')
 
 _ensure_local_nvm() {
@@ -35,6 +35,8 @@ prepare() {
   cd "$pkgname-$pkgver"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+
+  sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
 }
 
 build() {
@@ -44,7 +46,7 @@ build() {
   _ensure_local_nvm
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   yarn --frozen-lockfile
-  ./node_modules/.bin/electron-builder --linux --dir -p always --config electron-builder64.yml \
+  yarn electron-builder --linux --dir -p always --config electron-builder64.yml \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
