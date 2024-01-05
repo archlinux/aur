@@ -1,10 +1,10 @@
 pkgbase = python-aiohttp-middlewares
 	pkgdesc = Collection of useful middlewares for aiohttp.web applications
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/playpauseandstop/aiohttp-middlewares
 	arch = any
-	license = custom:BSD3
+	license = custom:BSD-3-Clause
 	checkdepends = python-pytest
 	checkdepends = python-pytest-aiohttp
 	checkdepends = python-pytest-asyncio

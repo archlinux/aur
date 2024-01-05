@@ -3,11 +3,11 @@
 pkgname=python-aiohttp-middlewares
 _name=${pkgname#python-}
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of useful middlewares for aiohttp.web applications"
 arch=(any)
 url="https://github.com/playpauseandstop/aiohttp-middlewares"
-license=(custom:BSD3)
+license=(custom:BSD-3-Clause)
 depends=(
   python
   python-aiohttp
@@ -39,13 +39,18 @@ prepare() {
 build() {
   cd "$_archive"
 
-  GIT_DIR=$PWD python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$_archive"
 
-  PYTHONPATH=src/ python -m pytest --override-ini='addopts=""'
+  rm -rf tmp_install
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH"
+  python -m pytest --override-ini="addopts="
 }
 
 package() {
