@@ -1,6 +1,6 @@
 pkgbase = cavalier
 	pkgdesc = Audio visualizer based on CAVA
-	pkgver = 2023.11.0
+	pkgver = 2024.1.0
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/cavalier
 	arch = any
