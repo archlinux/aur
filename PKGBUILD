@@ -3,17 +3,23 @@
 _gitname=gym
 pkgname=python-${_gitname}-git
 pkgver=0.26.2.r3.gdcd18584
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit for developing and comparing reinforcement learning algorithms."
 arch=('any')
-url="https://gym.openai.com"
+url='https://github.com/openai/gym#readme'
 license=('MIT')
 depends=(
   'python'
   'python-cloudpickle'
   'python-numpy'
 )
-makedepends=('git' 'python-setuptools')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 provides=("python-gym=${pkgver%.r*}")
 conflicts=('python-gym')
 source=("git+https://github.com/openai/$_gitname")
@@ -35,9 +41,14 @@ pkgver() {
         -e 's;\(post.*\);\.\1;'
 }
 
+build() {
+    cd "${_gitname}"
+    python -m build --wheel --no-isolation
+}
+
 package() {
   cd "${_gitname}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.md"
 }
