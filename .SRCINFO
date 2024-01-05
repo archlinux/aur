@@ -1,0 +1,18 @@
+pkgbase = resticpy-git
+	pkgdesc = A Python wrapper for Restic (<https://restic.net/>) using a json configuration file.
+	pkgver = 1.1+3.r41.20220623.b52b1a0
+	pkgrel = 1
+	url = https://github.com/stefphd/ResticPy
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python>=3
+	depends = restic
+	provides = resticpy=1.1+3.r41.20220623.b52b1a0
+	conflicts = resticpy
+	replaces = resticpy=1.2.1
+	replaces = resticpy<1.1+3.r41.20220623.b52b1a0
+	source = resticpy::git+https://github.com/stefphd/ResticPy.git
+	md5sums = SKIP
+
+pkgname = resticpy-git
