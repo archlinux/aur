@@ -1,14 +1,14 @@
 # Maintainer: Tadeusz Magura-Witkowski <tadeuszmw gmail>
 
 pkgname=droidstar-git
-pkgver=r54.396faec
+pkgver=r61.7463728
 pkgrel=1
 pkgdesc="This software connects to M17, Fusion (YSF/FCS, DN and VW modes are supported), DMR, P25, NXDN, D-STAR (REF/XRF/DCS) reflectors and AllStar nodes (as an IAX2 client) over UDP."
 arch=('i686' 'x86_64')
 url="https://github.com/nostar/DroidStar"
 license=('GPL2 GPL3')
-depends=('qt5-quickcontrols2' 'qt5-multimedia' 'qt5-serialport' 'qt5-declarative' 'qt5-base' 'qt5-quickcontrols' 'make' 'pulseaudio' 'libvorbis' 'dina-font')
-makedepends=('gcc' 'git' 'libimbe_vocoder')
+depends=('qt6-declarative' 'qt6-multimedia' 'qt6-serialport' 'qt6-base' 'make')
+makedepends=('gcc' 'git')
 conflicts=('droidstar')
 provides=('droidstar')
 source=("$pkgname"::'git+https://github.com/nostar/DroidStar'
@@ -23,9 +23,10 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+
 build() {
     cd "$srcdir/$pkgname"
-    qmake
+    qmake6
     make
 }
 
@@ -33,5 +34,5 @@ package() {
     install -Dm644 "droidstar.desktop" "$pkgdir/usr/share/applications/droidstar.desktop"
     install -Dm644 "droidstar.png" "$pkgdir/usr/share/pixmaps/droidstar.png"
     cd "$srcdir/$pkgname"
-    qmake -install qinstall -exe DroidStar ${pkgdir}/usr/bin/droidstar
+    qmake6 -install qinstall -exe DroidStar ${pkgdir}/usr/bin/droidstar
 }
