@@ -1,6 +1,6 @@
 pkgbase = python-runtype
 	pkgdesc = Python utilities for run-time type validation and multiple dispatch
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/erezsh/runtype
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-runtype
 	makedepends = python-wheel
 	depends = python
 	depends = python-typing_extensions
-	source = python-runtype-0.4.1.tar.gz::https://github.com/erezsh/runtype/archive/refs/tags/0.4.1.tar.gz
-	sha256sums = e95c7270b337cdb61e387c19cda2661585e10a2c2607a761210d112e58b9a327
-	b2sums = acca04ad501043c1b019021b4133459a59b478a834c19a2ce8fda67d1d28382206dc9bd70ec97d29eb8407ece24d24152c9369ee9351b4a1c03079262efad423
+	source = python-runtype-0.4.2.tar.gz::https://github.com/erezsh/runtype/archive/refs/tags/0.4.2.tar.gz
+	sha256sums = f9c4fe31a70f8385dd1c92606b1f7a5c3b89f4d76e0f801537005c04241ddaca
+	b2sums = 31095c51075b1dffca87d5b611992c6abb1c1973a8df36a1fc09997ddafbcb3790f05d00a335e79736fa1933a6156f1e363bb9710bbd987a53d43e6b318a91bb
 
 pkgname = python-runtype

@@ -3,7 +3,7 @@
 
 pkgname='python-runtype'
 _pkgname="${pkgname#python-}"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
@@ -35,20 +35,23 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Let's be more verbose if standard output is a TTY
+  test -t 1 && _v='v' || _v=''
+
+  install "-${_v}Dm0644" LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   for mdfile in {CHANGES,README}.md; do
-    install -Dm0644 "$mdfile" "$pkgdir/usr/share/doc/$pkgname/$mdfile"
+    install "-${_v}Dm0644" "$mdfile" "$pkgdir/usr/share/doc/$pkgname/$mdfile"
   done
 
-  install -Dm0644 docs/_build/man/runtype.7 "$pkgdir/usr/share/man/man7/${pkgname}.7"
+  install "-${_v}Dm0644" docs/_build/man/runtype.7 "$pkgdir/usr/share/man/man7/${pkgname}.7"
 }
 
 sha256sums=(
-  'e95c7270b337cdb61e387c19cda2661585e10a2c2607a761210d112e58b9a327'
+  'f9c4fe31a70f8385dd1c92606b1f7a5c3b89f4d76e0f801537005c04241ddaca'
 )
 b2sums=(
-  'acca04ad501043c1b019021b4133459a59b478a834c19a2ce8fda67d1d28382206dc9bd70ec97d29eb8407ece24d24152c9369ee9351b4a1c03079262efad423'
+  '31095c51075b1dffca87d5b611992c6abb1c1973a8df36a1fc09997ddafbcb3790f05d00a335e79736fa1933a6156f1e363bb9710bbd987a53d43e6b318a91bb'
 )
 
 # eof
