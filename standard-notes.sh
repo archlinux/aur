@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron27 /usr/lib/standard-notes/app.asar "$@"
+exec electron@ELECTRONVERSION@ /usr/lib/standard-notes/app.asar "$@"

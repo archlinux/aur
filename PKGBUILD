@@ -17,7 +17,7 @@ source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/arch
         "standard-notes.sh")
 sha256sums=('a7126567f8e9b428f89dcb9b408833a4adc3867956be0561338d1b48d1a6a5b7'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
-            'c13baaf5e71174a46a5a315885794cf50a80a30b8105f0ac28c109d62f47fe9d')
+            '3ef9a5d2b4f2ba2e5b210a492c7398073f3cdd472d989e5ce2d4c6105d905666')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -34,6 +34,8 @@ prepare() {
   cd "app--$pkgname-$pkgver"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+
+  sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/standard-notes.sh"
 }
 
 build() {
