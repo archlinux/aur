@@ -98,7 +98,6 @@ _base_dir="${startdir}"/src/"${_base}"
 
 prepare() {
   cd "${_base_dir}"
-  patch -Np1 -i ../0001-add-cstdint-to-finite-element.h.patch
   git -C "${_base_dir}" clean -dfx
 }
 
