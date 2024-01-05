@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 ExecStart=/usr/bin/jellything /etc/jellything.yaml
-User=keks-meet-server
+User=jellything
 LockPersonality=yes
 MemoryDenyWriteExecute=yes
 NoNewPrivileges=yes
