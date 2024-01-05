@@ -1,6 +1,6 @@
 pkgbase = python-pyav
 	pkgdesc = WyattBlue fork of python-av (Python bindings for FFmpeg)
-	pkgver = 12.0.1
+	pkgver = 12.0.2
 	pkgrel = 1
 	url = https://github.com/WyattBlue/pyav
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = python-pyav
 	depends = python-numpy
 	depends = python-pillow
 	conflicts = python-av
-	source = pyav-12.0.1.tar.gz::https://github.com/WyattBlue/pyav/archive/refs/tags/12.0.1.tar.gz
-	b2sums = 1a0dfd50e6b9ff80fc58df710fe1d5dd96ad8d35532cf8f3ac56c029e45f6044d7af807485b7037480f76f830f16bdc3560c9b68c29e5a747e67a2a96737ba30
+	source = pyav-12.0.2.tar.gz::https://github.com/WyattBlue/pyav/archive/refs/tags/12.0.2.tar.gz
+	b2sums = 7518d96c7e62c64c3464f05621bf0ea47906656e6de2d9791fedcd2eec37d4ed3496434a2a8198e7a7a24ecc547f85d1f3551ff743a0c363c6210c3b74867d9d
 
 pkgname = python-pyav
