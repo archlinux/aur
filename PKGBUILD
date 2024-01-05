@@ -8,7 +8,7 @@ _branch='main'
 pkgver=r68.ff39752
 pkgrel=1
 license=("Unlicense")
-makedepends=("git" "go" "gcc" "libx11" "vulkan-headers" "pkgconf" "wayland" "wayland-protocols" "libx11" "libxkbcommon-x11" "libxcursor" "lm_sensors")
+makedepends=("git" "go" "gcc" "libx11" "vulkan-headers" "pkgconf" "wayland" "wayland-protocols" "libx11" "libxkbcommon-x11" "libxcursor" "watt-wiser-sensors")
 source=("$pkgname::git+$url#branch=$_branch")
 sha256sums=("SKIP")
 provides=($_pkgname)
