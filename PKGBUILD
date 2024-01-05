@@ -1,16 +1,16 @@
 # Maintainer: Willy Micieli <micieli@vivaldi.net>
 
 pkgname=zuu
-pkgver=0.4.2
+pkgver=5.0.4
 pkgrel=1
-pkgdesc="An rust program to run tests with git hooks" 
+pkgdesc="A git hook test runner for rust programer" 
 provides=("zuu")
 arch=('any')
 url="https://github.com/taishingi/zuu"
 license=('GPL3')
-depends=('rustup' 'git')
+depends=('rustup' 'wget' 'git')
 source=("${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3ed6557b5b8630e3191fa779c8a24c2d55a466db6f0b854b41fe1bd9bc993244')
+sha256sums=('2f8edba77db8a9f4a406a9b305aed59d8b03f55abcf80f639b76050a217b5990')
 
 package() {
     cd "${pkgname}-${pkgver}"
