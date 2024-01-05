@@ -1,7 +1,7 @@
 pkgbase = python-picologging
 	pkgdesc = An optimized logging library for Python
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/picologging
 	arch = x86_64
 	license = MIT

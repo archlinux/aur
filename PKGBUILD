@@ -3,7 +3,7 @@
 pkgname=python-picologging
 _name=${pkgname#python-}
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An optimized logging library for Python"
 arch=(x86_64)
 url="https://github.com/microsoft/picologging"
@@ -59,10 +59,9 @@ check() {
   _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
 
-  # Disable leaking test - not sure how to fix.
-  PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH" \
-    python -m pytest \
-    -k "not test_nested_frame_stack"
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH"
+  python -m pytest \
+    --deselect tests/unit/test_logger.py::test_nested_frame_stack
 }
 
 package() {
