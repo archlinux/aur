@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec electron27 /usr/lib/electronmail/app.asar "$@"
+exec electron@ELECTRONVERSION@ /usr/lib/electronmail/app.asar "$@"

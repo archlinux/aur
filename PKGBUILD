@@ -17,7 +17,7 @@ source=("git+https://github.com/vladimiry/ElectronMail.git#commit=${_commit}"
         "$pkgname.sh")
 sha256sums=('SKIP'
             'fa9159a243673390d1f36108b01af2ab9819fdec192ad7ffd405bbf7ab49f10b'
-            'eefff93811dbca372fd32c670d20c646c6bec127e82e00bf67b3335cea19a6ba')
+            'e7e9dd6e065118ae5d9624c7c81328086719fab198d30a92b08979c29757a3b2')
 
 pkgver() {
   cd ElectronMail
@@ -26,6 +26,7 @@ pkgver() {
 
 prepare() {
   cd ElectronMail
+  sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
 }
 
 build() {
