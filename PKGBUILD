@@ -4,7 +4,7 @@
 pkgname=python-port-for
 _name=${pkgname#python-}
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line utility and a python library that helps with local TCP ports managment"
 arch=(any)
 url="https://github.com/kmike/port-for"
@@ -13,8 +13,8 @@ depends=(python)
 makedepends=(
   python-build
   python-installer
-  python-wheel
   python-setuptools
+  python-wheel
 )
 checkdepends=(python-pytest)
 
@@ -32,7 +32,7 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest
+  pytest
 }
 
 package() {
@@ -40,5 +40,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
