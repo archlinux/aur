@@ -2,7 +2,7 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour
-pkgver=0.4.0.6245
+pkgver=0.4.1.6292
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-declarative' 'qt6-mu
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
              'python' 'range-v3' 'fmt' 'microsoft-gsl' 'catch2')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('8d70cbd19b02196dd1f5c45ab85f5601a3226a1deaba5aa7d83bc79647a04b8945e4555fd735736366df05563a9d2d098b6936f3248e006e1e15ae3aa358170d')
+sha512sums=('a693db3123c0c6303794f9b3e08394a06a95ef1d769d9bc2959cd7ef968c6ff734d21199b7946cb653a17c816509f1ed47b48883dab93ca20c921968b28c3184')
 
 build() {
   _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)
