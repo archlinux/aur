@@ -1,0 +1,14 @@
+pkgbase = viddy-bin
+	pkgdesc = A modern watch command, binary version
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/sachaos/viddy
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = viddy
+	conflicts = viddy
+	source = https://github.com/sachaos/viddy/releases/download/v0.4.0/viddy_Linux_x86_64.tar.gz
+	sha256sums = c6bd8b9889faa8680ea97c7392efe31788a9700cc5a84a26f9ecd317c932b9ac
+
+pkgname = viddy-bin
