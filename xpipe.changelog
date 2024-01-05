@@ -1,42 +1,28 @@
-## New professional features
-
-- Add ability to open files and directories in VSCode SSH remote environment in file browser
-- Added support for fully offline licenses. You can obtain them via email request
-  in case you're running it on a system without internet connectivity or restricted proxy settings
-
 ## Changes
 
-- Make current default shell also show up in shell environments to prevent confusion about missing bash environment
-- Improve error messages when an additional password was requested by the connection
-  when none was provided instead of just showing permission denied
-- Make SSH connection starting from a WSL environment use the native Windows key helper for FIDO2 keys
-- Rework insights button for connection creation across the board
-
-## Additions
-
-- Add warning message if git vault URL was an HTTP URL and you are trying to use an SSH identity
-- Add ability to clone existing connections to make the process of adding similar connections easier
-- Add ability to debug local background shell in developer options
-- Add notice when a professional feature is available in preview mode
-- Add some more OS logos
-- Add check to verify whether font loading with fontconfig works on Linux on startup
-- Add more extensive note on first startup for potential issues when Malwarebytes, McAfee, or Bitdefender are installed
+- You can now add SSH connections from arbitrary OpenSSH config files under `Add remote host` -> `SSH Config`
+- The SSH config importer now supports include statements. Included files are automatically resolved and joined
+- Add experimental ability to automatically fix SSH key file permissions on Windows if OpenSSH complains
+- Rework file browser connection history overview to always update when you close a tab
+- The Linux installers now correctly report their dependencies. This was not really a problem on any
+  normal desktop system, but should make it easier to run on embedded systems or in WSL2g
+- Improve performance mode speedup by removing more styling. You can enable the mode under Settings -> Appearance
+- Change layout of connection names and status to better handle very long connection names across all window sizes
+- Make any connection quickly renameable in the edit window without verifying whether we can actually connect
+- Allow for creation of multiple connections with the same name
+- Add a self test functionality on startup to handle cases where the local shell could not be initialized correctly
+- Implement fallback to bundled fonts on Linux systems that do not have fontconfig
+- There is now a repository for nixos releases at https://github.com/xpipe-io/nixpkg
+- Improve documentation for custom terminal command setting
 
 ## Fixes
 
-- Fix application not starting on Asahi Linux due to executable page size issue
-- Fix file existence check for SSH key files reporting wrong results on Windows in directory links/junctions
-- Fix k8s integration not working when user did not have permission to list nodes
-- Fix rare error when switching to tray operation mode on Linux
-- Fix connection state not being preserved when being added the first time
-- Fix application failing to start up if OS reported invalid screen size bounds
-- Fix VMware VM not being able to be parsed if configuration file did not specify an encoding or name
-- Fix startup failing when installation was located on a ramdisk
-- Fix some miscellaneous cache data being stored in the user home directory
-- Fix error handling when jump host chain formed a loop
-- Fix PowerShell remote sessions being blocked by execution policy
-- Fix race condition when locking user data directory
-- Fix some CLI commands not starting daemon correctly if it is not already running
-- Fix text field when showing askpass window not being focused automatically
-- Fix combobox selections not working well with keyboard-only workflows
-- Fix many possible small NullPointerExceptions
+- Fix some zsh shells not properly setting up the PATH
+- Fix git vault repository throwing initialization errors when shared with multiple Windows user permissions
+- Fix displayed connection summary not updating on edit
+- Fix copying and pasting a file into the same directory returning an error
+- Fix connections being accidentally listed under scripts category
+  if they were added while scripts category was selected
+- Fix default terminal detection sometimes selecting iTerm even though it was not installed
+- Fix shell environments for BSD bourne shell failing with invalid -l switch
+- Fix connections to pfSense systems not working
