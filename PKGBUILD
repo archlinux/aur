@@ -1,8 +1,8 @@
-# Maintainer: tippfehlr <tippfehlr <tippfehlr at tippfehlr dot eu>
+# Maintainer: tippfehlr tippfehlr at tippfehlr dot eu>
 
 pkgname=wrestic
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A wrapper around restic built in rust'
 arch=('x86_64')
 url="https://github.com/alvaro17f/$pkgname"
@@ -24,7 +24,6 @@ prepare() {
 
 build() {
   cd "$pkgname"
-
   cargo build --frozen --release --all-features
 
   # # completions
@@ -36,12 +35,10 @@ build() {
 
 package() {
   cd "$pkgname"
-
-  # bin
   install -Dm755 target/release/$pkgname "$pkgdir"/usr/bin/$pkgname
-
-  # license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/wrestic"
+  install -Dm644 wrestic.toml "$pkgdir/usr/share/doc/wrestic"
 
   # # completions
   # cd target/release
