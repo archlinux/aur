@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bbg-bin
-pkgver=20231016
+pkgver=20240104
 _electronversion=27
-pkgrel=2
+pkgrel=1
 pkgdesc="A static blog generator based on Electron Technology"
 arch=(
     'aarch64'
@@ -15,12 +15,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -32,9 +29,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
-sha256sums_aarch64=('402275c6b980f1c11853dae3139cd4fca4ebc618d412d09db308e0a71f20e61a')
-sha256sums_x86_64=('de9b0968e1161bd4bf72e53fa3bec137593486978c20804b4110808998e083bc')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+sha256sums_aarch64=('2955334403f927cf55f3d4f106a3e627186b50864dfba76cd7db3aedbd4d66d9')
+sha256sums_x86_64=('8989cb9eb0491fea78d35bd48ccbce63ac46ea374e88b83def659a6e7c89dd3f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
