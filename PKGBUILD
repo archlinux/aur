@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="This plugin provides svtav1enc element to GStreamer in order to use the Scalable Video Technology for AV1 Encoder (SVT-AV1)"
 url="https://gitlab.com/AOMediaCodec/SVT-AV1/-/tree/master/gstreamer-plugin"
 arch=('x86_64')
-license=(BSD 'custom: Alliance for Open Media Patent License 1.0')
+license=('BSD' 'custom: Alliance for Open Media Patent License 1.0')
 depends=('gstreamer')
 makedepends=('meson')
 source=("https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v$pkgver/SVT-AV1-v$pkgver.tar.bz2?path=gstreamer-plugin"
@@ -23,5 +23,5 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  install -Dm644 LICENSE.md PATENTS.md -t "$pkgdir/usr/share/licenses/gstreamer-svt-av1"
+  install -Dm644 LICENSE.md PATENTS.md -t "$pkgdir/usr/share/licenses/$pkgname"
 }
