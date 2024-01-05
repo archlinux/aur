@@ -1,0 +1,16 @@
+diff --git a/pydicom/pixel_data_handlers/pillow_handler.py b/pydicom/pixel_data_handlers/pillow_handler.py
+index ff781025d..adcab9c80 100644
+--- a/pydicom/pixel_data_handlers/pillow_handler.py
++++ b/pydicom/pixel_data_handlers/pillow_handler.py
+@@ -129,7 +129,10 @@ def _decompress_single_frame(
+                 image.tile[0][2],
+                 (color_mode, ''),
+             )]
+-            image.mode = color_mode
++            if hasattr(image, "_mode"):
++                image._mode = color_mode
++            else:
++                image.mode = color_mode
+             image.rawmode = color_mode
+     return image
+ 

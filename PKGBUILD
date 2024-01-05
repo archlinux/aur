@@ -2,7 +2,7 @@
 # Contributor: wedjat <wedjat@protonmail.com>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=python-pydicom
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="Pure python package for working with DICOM files"
 arch=("any")
@@ -18,8 +18,18 @@ optdepends=('python-numpy: for working with pixel data'
             'python-pylibjpeg-rle: for working with compressed RLE images'
             )
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/v$pkgver.tar.gz")
-md5sums=('699086918b267894f303d101b833406a')
+source=(
+"$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/v$pkgver.tar.gz"
+"pillow-10.1.patch"
+)
+md5sums=('748bfd7ad12373675c9df4e088f38dd1'
+         '837949b3e4505c3fee9c43e8d5665251')
+
+prepare()
+{
+	cd "$srcdir/pydicom-$pkgver"
+	patch --forward --strip=1 --input="$srcdir/pillow-10.1.patch"
+}
 
 build()
 {
