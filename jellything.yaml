@@ -1,0 +1,20 @@
+hostname: example.org
+brand: "Jellything"
+slogan: ""
+
+media_path: "/srv/media"
+asset_path: "/var/lib/jellything/assets"
+database_path: "/var/lib/jellything/db"
+library_path: "/var/lib/jellything/library"
+temp_path: "/tmp/jellything"
+cache_path: "/var/cache/jellything"
+
+# Both options need to be set to enable admin login.
+#admin_username: "admin"
+#admin_password: "hunter2"
+
+# To avoid sign-out on server restart, generate persistent keys here.
+# Use `head -c 32 /dev/random | base64`.
+#session_key:
+#cookie_key:
+

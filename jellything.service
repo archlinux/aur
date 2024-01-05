@@ -1,0 +1,32 @@
+[Unit]
+Description=jellything media streaming server
+After=network.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/jellything /etc/jellything.yaml
+User=keks-meet-server
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateDevices=true
+PrivateTmp=true
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=true
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=full
+RestrictAddressFamilies=~AF_PACKET AF_NETLINK
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+Restart=always
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
