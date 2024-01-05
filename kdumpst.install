@@ -13,11 +13,10 @@ pre_remove() {
 	#  Delete all minimal initramfs images created for kdump
 	/usr/lib/kdumpst/kdumpst-load.sh clear-initrd
 
-	#  Remove the initcpio hooks unconditionally (if they were
-	#  never installed, no biggies).
-	#  TODO: perform the dracut removal as well (a bit harder
-	#  since not hardcoded folders like initcpio).
+	#  Remove the initcpio/dracut hooks unconditionally (if they
+	#  were never installed, no biggies).
 
 	rm -f /usr/lib/initcpio/install/kdump
 	rm -f /usr/lib/initcpio/hooks/kdump
+	rm -rf /usr/lib/dracut/modules.d/55kdump
 }
