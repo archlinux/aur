@@ -1,7 +1,7 @@
 pkgbase = python-mirakuru
 	pkgdesc = Start your subprocess and wait for a clear indication that it's running
 	pkgver = 2.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ClearcodeHQ/mirakuru
 	arch = any
 	license = LGPL3

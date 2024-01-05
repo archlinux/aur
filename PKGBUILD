@@ -3,7 +3,7 @@
 pkgname=python-mirakuru
 _name=${pkgname#python-}
 pkgver=2.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Start your subprocess and wait for a clear indication that it's running"
 arch=(any)
 url="https://github.com/ClearcodeHQ/mirakuru"
@@ -38,13 +38,11 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest
+  pytest
 }
 
 package() {
   cd "$_archive"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
