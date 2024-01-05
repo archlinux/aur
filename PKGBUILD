@@ -5,9 +5,9 @@
 
 pkgname=proto
 pkgdesc='Pluggable multi-language version manager'
-_sha='22289283ac5699a1bdd414ca5c4fbee8827ade23'
+_sha='0441fba931060122b55dd972573e126e607b306e'
 _short_sha="${_sha::7}"
-pkgver=0.26.5
+pkgver=0.27.0
 pkgrel=1
 arch=('x86_64')
 _gh_owner='moonrepo'
@@ -18,7 +18,7 @@ depends=('git' 'gcc-libs' 'xz')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/${_gh_owner}/${_gh_repo}/tarball/${_sha}")
-sha256sums=('2f96a8ab3017a69c74cb32655655373988f0ce28351960a652ed675ebe006a1d')
+sha256sums=('cf5a456d0e6999f1e7142d8fa58489f422528b6d06fc822355bd6e96a327733a')
 
 prepare() {
   cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
