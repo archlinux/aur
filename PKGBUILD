@@ -1,6 +1,7 @@
-# Maintainer: Gabriel Guldner <gabriel at guldner dot eu>
+# Maintainer: Fredrik Magnusson <fredrikmagnusson3@gmail.com>
 
 # Contributor: Martin Kröning <m.kroening@hotmail.de>
+# Contributor: Gabriel Guldner <gabriel at guldner dot eu>
 
 pkgname=git-interactive-rebase-tool
 _binname=interactive-rebase-tool
