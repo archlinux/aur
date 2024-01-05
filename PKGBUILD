@@ -2,7 +2,7 @@
 
 pkgname=certomancer
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Quickly construct, mock & deploy PKI test configurations"
 url="https://github.com/MatthiasValvekens/certomancer"
 license=(MIT)
@@ -51,7 +51,7 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest -k "not test_validate[setup1]"
+  pytest
 }
 
 package() {
@@ -59,5 +59,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

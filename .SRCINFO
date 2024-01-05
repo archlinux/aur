@@ -1,7 +1,7 @@
 pkgbase = certomancer
 	pkgdesc = Quickly construct, mock & deploy PKI test configurations
 	pkgver = 0.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MatthiasValvekens/certomancer
 	arch = any
 	license = MIT
