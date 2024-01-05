@@ -1,13 +1,13 @@
 pkgbase = mingw-w64-libsamplerate
 	pkgdesc = Secret Rabbit Code - aka Sample Rate Converter for audio (mingw-w64)
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libsndfile.github.io/libsamplerate/index.html
 	arch = any
 	license = BSD
 	makedepends = mingw-w64-cmake
-	depends = mingw-w64-libsndfile
-	depends = mingw-w64-opus
+	makedepends = mingw-w64-libsndfile
+	makedepends = mingw-w64-opus
 	options = !strip
 	options = !buildflags
 	options = !staticlibs
