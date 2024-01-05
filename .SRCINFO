@@ -1,17 +1,18 @@
 pkgbase = jquake
-	pkgdesc = JQuake provides real-time earthquake sensor map of Japan
+	pkgdesc = Free software that helps you monitor real-time shaking events in Japan
 	pkgver = 1.8.5
 	pkgrel = 3
-	url = https://jquake.net/?home
+	url = https://jquake.net/en/
+	install = jquake.install
 	arch = x86_64
-	license = custom
-	makedepends = git
+	license = Apache
+	makedepends = fastjar
 	depends = java-runtime
 	source = https://fleneindre.github.io/downloads/JQuake_1.8.5_linux.zip
-	source = icon.png
 	source = jquake.desktop
+	source = jquake.sh
 	md5sums = 2c42a9dd8d5cb3597e5dcd5986ccf370
-	md5sums = ae8c0b172c57f76594e182246ddcdac2
 	md5sums = b815ce5958a40757e15add0c42cb015f
+	md5sums = 0779492cbbb01e2c250fa6d8b0702046
 
 pkgname = jquake

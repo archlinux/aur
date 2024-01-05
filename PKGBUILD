@@ -10,34 +10,36 @@ arch=('x86_64')
 url="https://jquake.net/en/"
 license=('Apache')
 depends=('java-runtime')
+makedepends=('fastjar')
+install="${pkgname}.install"
 source=("https://fleneindre.github.io/downloads/JQuake_${pkgver}_linux.zip"
-        "icon.png"
-        "jquake.desktop")
+        "jquake.desktop"
+        "jquake.sh")
 md5sums=('2c42a9dd8d5cb3597e5dcd5986ccf370'
-         'ae8c0b172c57f76594e182246ddcdac2'
-         'b815ce5958a40757e15add0c42cb015f')
-package() {
-    local lib
-    lib=(
-        "JQuake_lib"
-        "sounds"
-        "JQuake.jar"
-    )
+         'SKIP'
+         'SKIP')
 
-    mkdir -p "${pkgdir}/usr/lib/jquake" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/licenses/jquake" "${pkgdir}/usr/share/pixmaps" "${pkgdir}/usr/share/applications"
-
-    # Library
-    cp -r ${lib[@]} "${pkgdir}/usr/lib/jquake/"
-
-    # Documents
-    cp -r "${srcdir}/LICENSE"* "${pkgdir}/usr/share/licenses/jquake"
-    cp -r "${srcdir}/readme.txt" "${pkgdir}/usr/share/licenses/jquake"
-
-    # Icon
-    cp "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/jquake.png"
-    cp "${srcdir}/jquake.desktop" "${pkgdir}/usr/share/applications"
-
-    echo -e "#!/usr/bin/env bash\njava -jar /usr/lib/jquake/JQuake.jar -Xmx200m -Xms32m -Xmn2m -Djava.net.preferIPv4Stack=true" > "${pkgdir}/usr/bin/jquake"
-    chmod 755 "${pkgdir}/usr/bin/jquake"
-
+build() {
+  # Extract app icon
+  fastjar xf JQuake.jar icon.png .
 }
+
+package() {
+  # Desktop and launchers
+  install -m 755 -D "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -m 755 -D "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # Install icon
+  install -m 644 -D "icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  # Install licenses
+  install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m 755 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE*
+  # Install main program and libraries
+  install -m 755 -d "${pkgdir}/usr/share/java/${pkgname}"
+  install -m 644 -t "${pkgdir}/usr/share/java/${pkgname}" JQuake.jar
+  install -m 755 -d "${pkgdir}/usr/lib/${pkgname}"
+  install -m 644 -t "${pkgdir}/usr/lib/${pkgname}" JQuake_lib/*.jar
+  # Install sounds
+  install -m 755 -d "${pkgdir}/usr/share/${pkgname}"
+  cp -r sounds "${pkgdir}/usr/share/${pkgname}/"
+}
+
