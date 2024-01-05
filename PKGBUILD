@@ -6,7 +6,7 @@ arch=("any")
 url="https://git.sr.ht/~whereswaldon/watt-wiser"
 _branch='main'
 pkgver=r68.ff39752
-pkgrel=1
+pkgrel=2
 license=("Unlicense")
 makedepends=("git" "go" "gcc" "libx11" "vulkan-headers" "pkgconf" "wayland" "wayland-protocols" "libx11" "libxkbcommon-x11" "libxcursor" "watt-wiser-sensors")
 source=("$pkgname::git+$url#branch=$_branch")
