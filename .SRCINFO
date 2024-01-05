@@ -1,7 +1,7 @@
 pkgbase = courier-pythonfilter
 	pkgdesc = pythonfilter is a collection of useful filters for the Courier MTA, and a framework for developing new filters in Python.
-	pkgver = 3.0.3
-	pkgrel = 3
+	pkgver = 3.0.4
+	pkgrel = 1
 	url = https://pypi.org/project/courier-pythonfilter
 	install = courier-pythonfilter.install
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = courier-pythonfilter
 	depends = courier-mta
 	backup = etc/pythonfilter.conf
 	backup = etc/pythonfilter-modules.conf
-	source = https://bitbucket.org/gordonmessmer/courier-pythonfilter/get/fdf2f466e757.zip
+	source = https://files.pythonhosted.org/packages/05/d1/219cf53af0cb4e0cacfcbb43b53c6660d59de7adbe72be79de607ffe1b3e/courier-pythonfilter-3.0.4.tar.gz
 	source = courier-pythonfilter.install
-	sha1sums = c885c66ce0e5876873da6575419d116ca1d7bdda
+	sha1sums = 0236621cea68af13097fa9aec3d87f700e53d2f9
 	sha1sums = 678bd5e4a3da90e267d359cbe04572cf976c6a07
 
 pkgname = courier-pythonfilter
