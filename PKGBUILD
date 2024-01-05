@@ -3,7 +3,7 @@
 
 _pkgname="xdg-desktop-portal-hyprland"
 pkgname="${_pkgname}-git"
-pkgver=r343.f46cff1
+pkgver=r349.1c80212
 pkgrel=1
 epoch=1
 pkgdesc="xdg-desktop-portal backend for hyprland"
@@ -35,7 +35,8 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	cmake --no-warn-unused-cli -DCMAKE_INSTALL_LIBEXECDIR:STRING=/usr/lib -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}" -S . -B ./build
+	git submodule update --init
+	cmake --no-warn-unused-cli -DCMAKE_INSTALL_LIBEXECDIR:STRING=/usr/lib -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" -S . -B ./build
 	cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
 }
 
