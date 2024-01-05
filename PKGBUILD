@@ -2,7 +2,7 @@
 pkgname=webgal-terre-bin
 _appname=WebGAL_Terre
 pkgver=4.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Galgame Editing. Redefined | 视觉小说编辑，再进化"
 arch=(
     "aarch64"
@@ -38,6 +38,7 @@ depends=(
 makedepends=(
     'gendesk'
 )
+options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/${pkgver}/${_appname}_Linux_Arm64_${pkgver}.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/${pkgver}/${_appname}_Linux_${pkgver}.zip")
 source=(
@@ -45,14 +46,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
-            '6e7e8e34178355741e8c8eab9771f3a9f0c0fcf6897f8ebc1409bebc924a5332')
+            '44e15f9f1d9a180e4788d0dec55394dd45e59a137d627d163304c1a13aa80ac0')
 sha256sums_aarch64=('f85f52bb6c922162ba356a4b6fc1146ba448c4a9a030fd1ce03e2cea24d38771')
 sha256sums_x86_64=('dc1018b5b7079dd746b10d4a7e6ca806d6a9cb920d30b72e89c676f400f844c0')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_appname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Game;Utility" --name "${_appname//_/ }" --exec "${pkgname%-bin} --no-sandbox %U"
+    gendesk -q -f -n --categories "Game;Utility" --name "${_appname//_/ }" --exec "${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
