@@ -1,25 +1,23 @@
 pkgbase = pdmaner-bin
 	pkgdesc = A multi operating system open source and free desktop version relational database modeling tool.一款多操作系统开源免费的桌面版关系数据库模型建模工具
-	pkgver = 4.6.3
-	pkgrel = 2
+	pkgver = 4.7.0
+	pkgrel = 1
 	url = http://www.pdmaner.com
 	arch = x86_64
 	license = MPL2
 	makedepends = squashfuse
 	depends = electron13
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
-	provides = pdmaner=4.6.3
+	depends = java-runtime
+	provides = pdmaner=4.7.0
 	conflicts = pdmaner
-	source = pdmaner-4.6.3.AppImage::https://github.com/zxp19821005/My_AUR_Files/releases/download/v4.6.3/PDManer-linux_v4.6.3.AppImage
-	source = LICENSE::https://gitee.com/robergroup/pdmaner/raw/master/LICENSE
+	source = pdmaner-4.7.0.AppImage::https://github.com/zxp19821005/My_AUR_Files/releases/download/v4.7.0/PDManer-linux_v4.7.0.AppImage
+	source = LICENSE-4.7.0::https://gitee.com/robergroup/pdmaner/raw/master/LICENSE
 	source = pdmaner.sh
-	sha256sums = 19337a28b8071b32594ee7da87298fa058be409d1031b9f07326c586ff93155c
-	sha256sums = 05eec509c11d99970dc4ca5bed4aae992960fd7f168e1746089c49643a18f461
-	sha256sums = 893e9e7caeceb1eb2211915922da99337350327146b1c5876337d4c5df6adde5
+	sha256sums = 0cefaaddb2296f85f203961aef70520fbd9304ae971d7545dc7356fa296dc3b1
+	sha256sums = 7c91afc2c15fc478de3fc38f2678e560906859da6932f2c03b6bc9076d592d18
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = pdmaner-bin
