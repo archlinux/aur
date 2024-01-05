@@ -2,16 +2,15 @@
 
 _pkgname=fdns
 pkgname=${_pkgname}-git
-pkgver=0.9.72+g59e3afc
+pkgver=0.9.73+d7e053a
 pkgrel=1
-pkgdesc="Firejail DNS-over-HTTPS proxy server - git version"
+pkgdesc="Firejail DNS-over-HTTPS proxy server"
 arch=(x86_64)
 url="https://github.com/netblue30/fdns"
 license=(GPL2)
 backup=(
     etc/fdns/list.adblocker
     etc/fdns/list.coinblocker
-    etc/fdns/list.fp-trackers
     etc/fdns/hosts
     etc/fdns/list.phishing
     etc/fdns/resolver.seccomp
@@ -32,17 +31,30 @@ optdepends=('apparmor: support for apparmor profiles'
     'systemd: run fdns as a systemd service')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+_sd_fdns="${url}/raw/39711eac58e60ae2d02052223aabbf22b5379906/etc/${_pkgname}.service"
 source=("git+${url}.git"
-    "fdns.hardened.service::${url}/raw/39711eac58e60ae2d02052223aabbf22b5379906/etc/${_pkgname}.service")
+    "${_pkgname}.hardened.service::${_sd_fdns}")
 sha256sums=('SKIP'
             'e7f1f0d58b3333c5fa10740886967a6acc674c28d2bcfe77356254c1dd6ffc62')
 
 pkgver() {
     cd "$_pkgname"
-    #git describe --tags | sed -e 's/-/+/g' -e 's/^v//'
+    #git describe --always --tags | sed -e 's/-/+/g' -e 's/^v//'
     _version="$(grep "PACKAGE_VERSION=" configure | awk '{split($0,a,"="); print a[2]}' | sed "s/'//g")"
-    _tag="$(git describe --tags | sed -e 's/-/+/g' -e 's/^v//' | awk '{split($0,a,"+"); print a[3]}')"
+    #_tag="$(git describe --always --tags | sed -e 's/-/+/g' -e 's/^v//' | awk '{split($0,a,"+"); print a[3]}')"
+    _tag="$(git describe --always --tags | sed -e 's/-/+/g' -e 's/^v//')"
     echo "${_version}+${_tag}"
+}
+
+prepare() {
+    cd "$_pkgname"
+
+    git -c protocol.file.allow=always submodule update --init
+
+    # drop removed options from hardened systemd unit
+    sed -i \
+        -e "/all interfaces/d" \
+        -e "/--proxy-addr-any/d" "${srcdir}/${_pkgname}.hardened.service"
 }
 
 build() {
