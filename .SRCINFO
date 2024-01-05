@@ -1,6 +1,6 @@
 pkgbase = cataclysm-bn
 	pkgdesc = Cataclysm: Bright Nights, A fork/variant of Cataclysm:DDA by CleverRaven
-	pkgver = 0.4
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://docs.cataclysmbn.org
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = cataclysm-bn
 	depends = ncurses
 	depends = hicolor-icon-theme
 	depends = gettext
-	source = cataclysm-bn-0.4.tar.gz::https://github.com/cataclysmbnteam/Cataclysm-BN/archive/refs/tags/cbn-0.4.tar.gz
-	sha256sums = d96b6e40c0ecc0fbaa12b671bb24a4b881225789e709a868aaf746b0061ad34d
+	source = cataclysm-bn-0.5.2.tar.gz::https://github.com/cataclysmbnteam/Cataclysm-BN/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = 226b61661255c5cc59df4db21a9fcadfa51f2492396afcb62f823c2edcb8a894
 
 pkgname = cataclysm-bn
 

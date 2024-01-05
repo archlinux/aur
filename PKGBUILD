@@ -1,8 +1,8 @@
 pkgbase=cataclysm-bn
 pkgname=(cataclysm-bn cataclysm-bn-tiles)
 pkgname=cataclysm-bn
-pkgver=0.4
-_pkgver=0.4
+pkgver=0.5.2
+_pkgver=0.5.2
 pkgrel=1
 pkgdesc="Cataclysm: Bright Nights, A fork/variant of Cataclysm:DDA by CleverRaven"
 url="https://docs.cataclysmbn.org"
@@ -10,11 +10,11 @@ arch=('x86_64')
 license=("CCPL")
 depends=('ncurses' 'hicolor-icon-theme' 'gettext')
 makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'astyle')
-source=("$pkgname-$_pkgver.tar.gz::https://github.com/cataclysmbnteam/Cataclysm-BN/archive/refs/tags/cbn-${_pkgver}.tar.gz")
-sha256sums=('d96b6e40c0ecc0fbaa12b671bb24a4b881225789e709a868aaf746b0061ad34d')
+source=("$pkgname-$_pkgver.tar.gz::https://github.com/cataclysmbnteam/Cataclysm-BN/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('226b61661255c5cc59df4db21a9fcadfa51f2492396afcb62f823c2edcb8a894')
 
 build() {
-  cd "Cataclysm-BN-cbn-$_pkgver"
+  cd "Cataclysm-BN-$_pkgver"
 
   export CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}"
   export CXXFLAGS="${CXXFLAGS/-fcf-protection}"
@@ -26,7 +26,7 @@ build() {
 }
 
 package_cataclysm-bn() {
-  cd "Cataclysm-BN-cbn-$_pkgver"
+  cd "Cataclysm-BN-$_pkgver"
 
   make DESTDIR="$pkgdir" PREFIX=/usr PCH=0 RELEASE=1 USE_XDG_DIR=1 LTO=1 RUNTESTS=0 LOCALIZE=1 LANGUAGES=all install
 
@@ -56,7 +56,7 @@ package_cataclysm-bn() {
 package_cataclysm-bn-tiles() {
   pkgdesc="Cataclysm: Bright Nights, A fork/variant of Cataclysm:DDA by CleverRaven"
   depends=('cataclysm-bn' 'sdl2_image' 'sdl2_ttf' 'freetype2' 'sdl2_mixer')
-  cd "Cataclysm-BN-cbn-$_pkgver"
+  cd "Cataclysm-BN-$_pkgver"
 
   make DESTDIR="$pkgdir" PREFIX=/usr PCH=0 RELEASE=1 USE_XDG_DIR=1 LTO=1 LOCALIZE=1 LANGUAGES=all TILES=1 SOUND=1 install
 
