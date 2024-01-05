@@ -4,7 +4,7 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full
-pkgver=6.1
+pkgver=6.1.1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
     'alsa-lib'
     'aom'
     'aribb24'
+    'libaribcaption'
     'avisynthplus'
     'bzip2'
     'celt'
@@ -75,6 +76,7 @@ depends=(
     'ocl-icd'
     'openal'
     'opencore-amr'
+    'opencv2'
     'openh264'
     'openjpeg2'
     'opus'
@@ -108,7 +110,7 @@ depends=(
     'zvbi'
     'chromaprint-fftw'
     'davs2'
-    'libklvanc-git'
+    'libklvanc'
     'librist'
     'shine'
     'uavs3d-git'
@@ -131,13 +133,15 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch'
+        '070-ffmpeg-fix-lensfun-detection.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/e1c1dc8347f13104bc21e4100fcf4d4dddf5e5d8'
         'LICENSE')
-sha256sums=('488c76e57dd9b3bee901f71d5c95eaf1db4a5a31fe46a28654e837144207c270'
+sha256sums=('8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968'
             'SKIP'
             'e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a'
             '0433016c8523c7ce159523946a76c8fa06a926f33f94b70e8de7c2082d14178c'
             '7d5ce8058b143bae1be10a06d79ac0f1a72daf00cf648309450d83bea249a6b1'
             'bf563193f450ece58a93db6840c0db33875df945fa81477b9b02fb209d3bf57a'
+            '2b72fe52ea73fbc1ce7eb70b4c181893c761e30121879ddd5513976232d7adf8'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -148,6 +152,7 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-fix-lensfun-detection.patch"
 }
 
 build() {
@@ -181,6 +186,7 @@ build() {
         --enable-lcms2 \
         --enable-libaom \
         --enable-libaribb24 \
+        --enable-libaribcaption \
         --enable-libass \
         --enable-libbluray \
         --enable-libbs2b \
@@ -211,7 +217,7 @@ build() {
         --enable-libmp3lame \
         --enable-libopencore-amrnb \
         --enable-libopencore-amrwb \
-        --disable-libopencv \
+        --enable-libopencv \
         --enable-libopenh264 \
         --enable-libopenjpeg \
         --enable-libopenmpt \
