@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 _APPDIR=/opt/@appname@
-_APPNAME=@apprunname@
+_RUNNAME="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${_APPDIR}/jre/bin:${PATH}"
 export LD_LIBRARY_PATH="${_APPDIR}/jre/lib:${LD_LIBRARY_PATH}"
 cd "${_APPDIR}"
-exec "${_APPDIR}/${_APPNAME}" "$@"
+exec "${_RUNNAME}" "$@"
