@@ -4,14 +4,14 @@
 # Contributor: erm67 <erm67@yahoo.it>
 
 pkgname=cairo-dock-wayland-git
-pkgver=3.4.99.r.bf8da4ef
+pkgver=3.4.99.r.85830c2c
 pkgrel=1
 pkgdesc='Light eye-candy fully themable animated dock with wayland support'
 arch=('i686' 'x86_64')
 url='http://glx-dock.org/'
 license=('GPL')
-depends=('curl' 'dbus-glib' 'glu' 'gtk3' 'librsvg' 'wayland')
-makedepends=('cmake' 'git')
+depends=('curl' 'dbus-glib' 'glu' 'gtk3' 'librsvg' 'wayland' 'gtk-layer-shell')
+makedepends=('cmake' 'extra-cmake-modules' 'git')
 optdepends=(
   'wayfire-plugins-scale-ipc: Additional functionality on wayfire'
 )
