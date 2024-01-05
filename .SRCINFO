@@ -1,7 +1,7 @@
 pkgbase = hererocks
 	pkgdesc = Tool for installing Lua and LuaRocks locally
 	pkgver = 0.25.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/luarocks/hererocks
 	arch = any
 	license = MIT
