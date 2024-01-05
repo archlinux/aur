@@ -1,12 +1,12 @@
 pkgbase = wgshadertoy
 	pkgdesc = A WGSL playground inspired by Shadertoy
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/fralonra/wgshadertoy
 	arch = any
 	license = MIT
 	makedepends = rust
-	source = https://github.com/fralonra/wgshadertoy/archive/v0.3.2.tar.gz
-	md5sums = c32fd6110df43624191be309dccbb52f
+	source = https://github.com/fralonra/wgshadertoy/archive/v0.3.3.tar.gz
+	md5sums = 6933d0d5fa8ba14e485c2089ee310e7a
 
 pkgname = wgshadertoy
