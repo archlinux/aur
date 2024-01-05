@@ -1,7 +1,7 @@
 pkgbase = python-pytest-postgresql
 	pkgdesc = Test your code that relies on a running PostgreSQL Database
 	pkgver = 5.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ClearcodeHQ/pytest-postgresql
 	arch = any
 	license = GPL3
@@ -9,11 +9,12 @@ pkgbase = python-pytest-postgresql
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-pytest
-	depends = python-port-for
+	depends = python
 	depends = python-mirakuru
-	depends = python-setuptools
+	depends = python-port-for
 	depends = python-psycopg
+	depends = python-pytest
+	depends = python-setuptools
 	source = python-pytest-postgresql-5.0.0.tar.gz::https://github.com/ClearcodeHQ/pytest-postgresql/archive/refs/tags/v5.0.0.tar.gz
 	sha256sums = dcf4963205d0c81919c59be64b170a3aa707954484dc0dc7aa18b34d3e5b724b
 
