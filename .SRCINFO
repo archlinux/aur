@@ -1,6 +1,6 @@
 pkgbase = qt5-quicktimeline
 	pkgdesc = Qt module for keyframe-based timeline construction
-	pkgver = 5.15.11
+	pkgver = 5.15.12
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qt5-quicktimeline
 	license = custom
 	makedepends = git
 	depends = qt5-declarative
-	source = git+https://invent.kde.org/qt/qt/qtquicktimeline#commit=b1b4b882dabaa036c3fb73c4a879ba8efbb02ded
+	source = git+https://invent.kde.org/qt/qt/qtquicktimeline#commit=58f4f22662023efe6f223d5ef4a6d0be3708182b
 	sha256sums = SKIP
 
 pkgname = qt5-quicktimeline
