@@ -1,6 +1,6 @@
 pkgbase = qt5-doc
-	pkgver = 5.15.11
-	pkgrel = 2
+	pkgver = 5.15.12
+	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
 	groups = qt5
@@ -21,10 +21,10 @@ pkgbase = qt5-doc
 	makedepends = nss
 	makedepends = clang
 	makedepends = nodejs
-	source = https://download.qt.io/official_releases/qt/5.15/5.15.11/single/qt-everywhere-opensource-src-5.15.11.tar.xz
+	source = https://download.qt.io/official_releases/qt/5.15/5.15.12/single/qt-everywhere-opensource-src-5.15.12.tar.xz
 	source = qt5-webengine-python3.patch
 	source = no-qmake.patch
-	sha256sums = 7426b1eaab52ed169ce53804bdd05dfe364f761468f888a0f15a308dc1dc2951
+	sha256sums = 93f2c0889ee2e9cdf30c170d353c3f829de5f29ba21c119167dee5995e48ccce
 	sha256sums = 398c996cb5b606695ac93645143df39e23fa67e768b09e0da6dbd37342a43f32
 	sha256sums = db90fa31381fa0814c9c8c803c9e2f9b36bdd6f52da753399e500c0692352498
 
