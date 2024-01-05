@@ -14,8 +14,8 @@ pkgbase = kodi-addon-inputstream-ffmpegdirect-git
 	makedepends = nasm
 	makedepends = pkgconf
 	provides = kodi-addon-inputstream-ffmpegdirect-git
-	source = --::git+https://github.com/xbmc/inputstream.ffmpegdirect.git#branch=
-	source = xbmc--::git+https://github.com/xbmc/xbmc.git#tag=-
+	source = inputstream.ffmpegdirect-21.0b2-Omega::git+https://github.com/xbmc/inputstream.ffmpegdirect.git#branch=Omega
+	source = xbmc-Omega-21.0b2::git+https://github.com/xbmc/xbmc.git#tag=21.0b2-Omega
 	sha256sums = SKIP
 	sha256sums = SKIP
 
