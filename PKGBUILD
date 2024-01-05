@@ -1,6 +1,6 @@
 # Maintainer: szdytom <szdytom@qq.com>
 pkgname=nyanpasu-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="BiliBili 番剧视频和弹幕元数据的解析脚本(∠・ω< )⌒☆"
 arch=('any')
