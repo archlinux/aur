@@ -1,7 +1,7 @@
 # Maintainer: Jan Krüger <jk@jk.gs>
 
 pkgname=perl-xml-easy
-pkgver=0.009
+pkgver=0.011
 pkgrel=1
 pkgdesc="XML processing with a clean interface"
 _dist=XML-Easy
@@ -11,8 +11,8 @@ arch=('i686' 'x86_64')
 depends=('perl' 'perl-params-classify')
 makedepends=('perl-module-build')
 options=('!emptydirs' purge)
-source=(http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/$_dist-$pkgver.tar.gz)
-md5sums=('f263b36b7197eb5e83ec3a39c8b0327c')
+source=(https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/$_dist-$pkgver.tar.gz)
+md5sums=('b2f7a938ed51c4550fc84f30264412c5')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
