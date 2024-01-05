@@ -1,0 +1,17 @@
+pkgbase = watt-wiser-sensors-git
+	pkgdesc = A software energy consumption estimation tool
+	pkgver = r68.ff39752
+	pkgrel = 1
+	url = https://git.sr.ht/~whereswaldon/watt-wiser
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = go
+	makedepends = gcc
+	makedepends = lm_sensors
+	provides = watt-wiser-sensors
+	conflicts = watt-wiser-sensors
+	source = watt-wiser::git+https://git.sr.ht/~whereswaldon/watt-wiser#branch=main
+	sha256sums = SKIP
+
+pkgname = watt-wiser-sensors-git
