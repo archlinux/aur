@@ -1,3 +1,4 @@
+# Maintainer: VCalV
 pkgname="gourou"
 pkgver=0.8.3
 pkgrel=1
@@ -6,6 +7,7 @@ arch=('x86_64')
 license=('LGPL3')
 url="https://forge.soutade.fr/soutade/libgourou"
 depends=(glibc gcc-libs zlib libzip openssl pugixml curl)
+makedepends=(git)
 conflicts=(gourou-git gourou-bin)
 provides=("gourou=${pkgver}" "libgourou=${pkgver}")
 options=(strip)
