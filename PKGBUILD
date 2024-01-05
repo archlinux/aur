@@ -1,31 +1,28 @@
-# Maintainer: selfdenial <selfdenial@pm.me>
+# Maintainer: bkuri <aur+nzbget-git@bkuri.com>
+# Contributor: selfdenial <selfdenial@pm.me>
 # Contributor: Nicola Hinssen <nicola.hinssen@gmail.com>
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=21.4.r2400.c6db0ecb
+pkgver=testing.r2376.becca5eb
 pkgrel=1
-epoch=1
 pkgdesc="Download from Usenet using .nzb files"
 arch=('x86_64')
-url="https://github.com/nzbget-ng/nzbget"
+url="https://github.com/nzbgetcom/nzbget"
 license=('GPL')
-depends=('libxml2')
-makedepends=('git'
-             'autoconf')
+depends=('libxml2' 'openssl')
+makedepends=('autoconf' 'git')
 optdepends=('python: run scripts'
             'unrar: unpacking archives' 
             'p7zip: unpacking archives' 
             'par2cmdline: verificate and repair PAR 2.0 files')
-provides=('nzbget'
-          'nzbget-systemd')
-conflicts=('nzbget'
-           'nzbget-systemd')
+provides=('nzbget' 'nzbget-systemd')
+conflicts=('nzbget' 'nzbget-systemd')
 install=nzbget.install
-source=("$pkgname::git+https://github.com/nzbget-ng/nzbget.git#branch=develop"
+source=("$pkgname::git+https://github.com/nzbgetcom/nzbget.git#branch=develop"
         "nzbget.service")
 sha256sums=('SKIP'
-            '4f8b03b7a52bfb7595c73cb551d2f75bde4a68c4916e4a28dbd359cd4184f097')
+            'e92d2d09e56930475c9f28641a3326a17aa187834e1bd6328a65b6ed7cc25e99')
 
 pkgver() {
   cd "$pkgname"
@@ -35,6 +32,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 
+  make clean
   autoreconf --install
   ./configure --prefix=/usr --sbindir='/usr/bin' --enable-parcheck --with-tlslib=OpenSSL
   make
@@ -46,12 +44,11 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   install -d "${pkgdir}/usr/share/nzbget"
-  install -m 644 -t "${pkgdir}/usr/share/nzbget" README
+  install -m 644 -t "${pkgdir}/usr/share/nzbget" README.md
 
   cd "$srcdir"
 
   install -d "${pkgdir}/usr/lib/systemd/system"
   install -m 644 -t "${pkgdir}/usr/lib/systemd/system" nzbget.service
-  
   install -dm 750 "${pkgdir}/var/lib/nzbget"
 }
