@@ -1,7 +1,7 @@
-From fe83fb9745c429ac6ba4bb4aa97f538762be0e11 Mon Sep 17 00:00:00 2001
+From 87e9a03ff45bcdb151e1200cd9ae49cab20ea2d2 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:11:52 +0100
-Subject: [PATCH 4/7] Dockerfile.dapper: sanitize $DAPPER_OUTPUT
+Subject: [PATCH 3/6] Dockerfile.dapper: sanitize $DAPPER_OUTPUT
 
 Existing $DAPPER_OUTPUT is not enough to be able to run build steps
 sequentially (i. e. `make download; make generate; make build;

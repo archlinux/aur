@@ -1,7 +1,7 @@
-From b5f0aa8933a97aef7f255b8b71bb6bc12c9d06a6 Mon Sep 17 00:00:00 2001
+From f7922fae6727af66515123be1e00cb2d72d0852b Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:12:21 +0100
-Subject: [PATCH 7/7] scripts: moar compression, drop pigz and raw tar
+Subject: [PATCH 6/6] scripts: moar compression, drop pigz and raw tar
 
 ---
  scripts/package-airgap | 10 +++++-----

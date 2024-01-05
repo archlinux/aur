@@ -25,27 +25,23 @@ source=(
   'k3s.service.env'
   'k3s-agent.service.env'
   'config.yaml'
-  '0000-Fix-issue-8293.-Remove-useless-log-init-code.patch'
-  '0001-Dockerfile.dapper-set-HOME-properly.patch'
-  '0002-main-apply-go-fmt-to-pkg-data-zz_generated_bindata.g.patch'
-  '0003-.dockerignore-do-not-ignore-parts-of-GITDIR.patch'
-  '0004-Dockerfile.dapper-sanitize-DAPPER_OUTPUT.patch'
-  '0005-Dockerfile.dapper-sanitize-cache-configuration.patch'
-  '0006-.service-update-systemd-service-files.patch'
-  '0007-scripts-moar-compression-drop-pigz-and-raw-tar.patch'
+  '0001-main-apply-go-fmt-to-pkg-data-zz_generated_bindata.g.patch'
+  '0002-.dockerignore-do-not-ignore-parts-of-GITDIR.patch'
+  '0003-Dockerfile.dapper-sanitize-DAPPER_OUTPUT.patch'
+  '0004-Dockerfile.dapper-sanitize-cache-configuration.patch'
+  '0005-.service-update-systemd-service-files.patch'
+  '0006-scripts-moar-compression-drop-pigz-and-raw-tar.patch'
 )
 sha256sums=('SKIP'
             '94b0dd21fa4f075d4db7f6efe7a775de476b278de72f99773ee3de0bb54e7f68'
             '2f6964aed46deb38095801e124a6603f3a29e6886815d52c59c02883f7a37925'
             '6f0500a656ed78c0bb689c12264dbcd79f579edc3b9e17d512be742c1b2c43a4'
-            'fe667d538cf94bf8f9a62d9812a03bf423204f452aa11f0f2addf0dbe1b95866'
-            '9307c9dbec1bdd73a1a3186668e0f5d5c9900474f53a842a133feba62c92b0ac'
-            '350438be7abe98eeee60f23e9aa566eba38df5422597ab4e7184cc7a12309ebb'
-            '659ee5e6a7c7df532418032e7b115ab7804fd60593e497814cc553504545af3c'
-            '6e00974e4ec3ee5999da87c7d1e43fed5b64e84ce6eec3a43ed971f24c5cb820'
-            '616063a668d510f163aa684e78fcf89d1b8cc8e1524acdc170608bfbf0e80e47'
-            'bb721e8850eb736ad9aad4f0a8ef20dac0e06d7731731c3541264f138be28b74'
-            'f448303dbbefef2645b8c2146d595643c0143c7300eab12a459b85a3b18b3d91')
+            'a9414087c64788cdca41da004e967e07649a49b1738dc321f5eea0784f659fd2'
+            '508567cfcbe586fb37b13597ab6dcc54054c38c545572b4ad430b92fbad42b6d'
+            'cc821200609eff8ceca746f4ada46e09e32c3d680be411d3bbe52f23a580edb6'
+            '5436f98a1058bd7a2f385e42f0ffb23806fa8b5f41bf43b17706a2bf4dd1eaf0'
+            '9eb251530ef9bb81b667ce07bc811876dead9d2ae5e748ea7351bcb719bb5c3d'
+            '7ea31aab59fc7268dfa1f97daa209d8b94f2f6c9e19248bc80d2c5b9b05bbccf')
 
 pkgver() {
   cd k3s
@@ -58,7 +54,7 @@ prepare() {
   # fix #8293, #9089, sanitize buildsystem, moar compression
   for p in "${source[@]}"; do
     if [[ $p == *.patch ]]; then
-      git apply -3 "$srcdir/$p"
+      git am -3 "$srcdir/$p"
     fi
   done
 }

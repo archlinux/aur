@@ -1,7 +1,7 @@
-From 1f17fa5bf080101dddc6ff4100ad38296faa8a4a Mon Sep 17 00:00:00 2001
+From 2e7ba23c8853b7ad86a431bfe588e94385989c94 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:08:37 +0100
-Subject: [PATCH 5/7] Dockerfile.dapper: sanitize cache configuration
+Subject: [PATCH 4/6] Dockerfile.dapper: sanitize cache configuration
 
 - set $HOME to /root because there is no good reason to keep it in $PWD
 - mount volumes to /go/pkg to cache downloaded Go sources (we'd set it
