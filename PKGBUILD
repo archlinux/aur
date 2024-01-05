@@ -5,7 +5,7 @@ pkgver=24.1
 pkgrel=1
 pkgdesc='Naive XML bindings for python'
 url='https://xsdata.readthedocs.io'
-checkdepends=(python-pytest python-pytest-benchmark)
+checkdepends=(python-pytest python-pytest-benchmark ruff)
 depends=(
     python
     python-click
@@ -18,7 +18,7 @@ depends=(
     python-typing-extensions
 )
 makedepends=(python-build python-installer python-setuptools python-wheel)
-optdepends=()
+optdepends=(ruff)
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
