@@ -2,37 +2,47 @@
 pkgname=cgdi
 _pkgname=CGDI
 pkgver=0.0.8
-pkgrel=2
+_electronversion=23
+pkgrel=3
 pkgdesc="Application to calculate duration between 2 dates (Electron app)"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/nullfuzz-pentest/CGDI"
 license=('GPL3')
 conflicts=("${pkgname}")
 depends=(
-    'electron23'
+    "electron${_electronversion}"
+    'nodejs'
 )
 makedepends=(
     'gendesk'
-    'npm'
-    'nodejs>=12'
+    'npm'    
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}::git+${url}.git#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('02115102012acdec1bbe2aed9df1d5a6da6bd91302422d78c6f29251f6b8edef'
-            '66fd7ccb81f685488595bcac8b40e1ee0eb1b0b3438034461fe26371c50c3ba8')
+sha256sums=('SKIP'
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
-    cd "${srcdir}/${_pkgname}-${pkgver}/src"
-    npm install
-    sed "s|win32|linux|g" -i package.json
-    npm run build
+    cd "${srcdir}/${pkgname}/src"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    npm install    
+    npx electron-packager ./ --platform=linux -overwrite
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${_pkgname}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}/src/${pkgname}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
