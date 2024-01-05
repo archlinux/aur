@@ -6,6 +6,9 @@ pkgrel=1
 pkgdesc="Inputstream ffmpegdirect kodi plugin - Omega version"
 arch=('any')
 url="https://github.com/xbmc/${_gitname}"
+_kodiname=Omega
+_gitname=inputstream.ffmpegdirect
+_kodiver=21.0b2
 license=('GPL')
 groups=('kodi')
 makedepends=('cmake' 'git' 'autoconf' 'automake' 'patch' 'nasm' 'pkgconf')
@@ -15,9 +18,6 @@ source=("$_gitname-$_kodiver-$_kodiname::git+https://github.com/xbmc/inputstream
 	"xbmc-$_kodiname-$_kodiver::git+https://github.com/xbmc/xbmc.git#tag=$_kodiver-$_kodiname")
 sha256sums=('SKIP'
 	    'SKIP')
-_kodiname=Omega
-_gitname=inputstream.ffmpegdirect
-_kodiver=21.0b2
 
 pkgver() {
 
