@@ -4,7 +4,7 @@
 pkgname=python-pyhanko-certvalidator
 _name=certvalidator
 pkgver=0.26.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Validates X.509 certificates and paths"
 url="https://github.com/MatthiasValvekens/certvalidator"
 license=(MIT)
@@ -44,15 +44,7 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest \
-    -k "\
-      not test_revocation_mode_soft \
-      and not test_revocation_mode_hard \
-      and not test_revocation_mode_hard_async \
-      and not test_revocation_mode_hard_aiohttp_autofetch \
-      and not test_revocation_mode_hard_requests_autofetch \
-      and not test_basic_certificate_validator_tls_aia[icpedu.rnp.br] \
-    "
+  pytest
 }
 
 package() {
@@ -60,5 +52,5 @@ package() {
 
   python -m installer -d "$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
