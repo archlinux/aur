@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=svgo
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Tool for optimizing SVG files'
 arch=(any)
@@ -16,7 +16,7 @@ conflicts=(nodejs-svgo)
 _archive="$pkgname-$pkgver"
 source=("https://registry.npmjs.org/$pkgname/-/$_archive.tgz")
 noextract=("$_archive.tgz")
-sha256sums=('49fa1a7c41da242ddd095d0d9911b558faf28671ff776777bba576839c3f25ae')
+sha256sums=('e21ceba784118ebfd45a767d4a35b65bfcea4c743bced0ac5a3b75e7e8beb27c')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$_archive.tgz"
