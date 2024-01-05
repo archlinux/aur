@@ -12,10 +12,10 @@
 
 pkgname=qgis-qtwebkit
 _pkgname=qgis
-provides=('qqis=3.34.1')
+provides=('qqis=3.34.2')
 conflicts=('qgis')
-pkgver=3.34.1
-pkgrel=2
+pkgver=3.34.2
+pkgrel=1
 pkgdesc="QGIS with GRASS and QtWebkit to support some plugins and qgis' functions"
 arch=(x86_64)
 url="https://qgis.org/"
@@ -33,13 +33,12 @@ source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
         "https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-gcc13.patch"
         "https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-qwt.patch"
         "https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-serverprefix.patch"
-        "https://patch-diff.githubusercontent.com/raw/qgis/QGIS/pull/55576.patch")
-sha256sums=('3cc827aefab62f3a636c17c08b253ff5338ac72b5701d97c39639c43a4174148'
-            'dcdf4b3c97f25aaa67535f9344dadc906cec40c5d5f5145e057299bf851c89cb'
+)
+sha256sums=('8cf11d5f271847d654da94ee3f98a4f0e24b15ebaf3554c52fa0073ccd8f6271'            'dcdf4b3c97f25aaa67535f9344dadc906cec40c5d5f5145e057299bf851c89cb'
             'efb66c3a8cb6bd61d3402b9400b8a3e50cd2775082a5a93fa7a8152c37e01aaa'
             '4dc9f6191ee497eebad2da17c93e36c3f9a88719e8c81c41531b45245f2f9446'
             'ba2ca94cb492107005dade1ee920b8684deb2cdf11cc27992d10c1755da682b3'
-            '9458cc91774eef948b77556c94c3fb0e4b0f5a29afa734c0604e6f96c5af3e36')
+)
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -47,11 +46,11 @@ prepare() {
   patch -p1 -i ../qgis-gcc13.patch
   patch -p1 -i ../qgis-qwt.patch
   patch -p1 -i ../qgis-serverprefix.patch
-  patch -p1 -i ../55576.patch
 }
 
 build() {
   cmake -S $_pkgname-$pkgver -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DWITH_BINDINGS=TRUE \
     -DWITH_GRASS8=TRUE \
@@ -70,26 +69,6 @@ build() {
     -DWITH_3D=TRUE \
     -DWITH_QSPATIALITE=TRUE \
     -DWITH_SERVER_LANDINGPAGE_WEBAPP=ON
-#    -DWITH_3D=TRUE \
-#    -DWITH_QUICK=TRUE \
-#    -DWITH_SERVER=FALSE \
-#    -DWITH_CUSTOM_WIDGETS=TRUE \
-#    -DBINDINGS_GLOBAL_INSTALL=TRUE \
-#    -DQGIS_MANUAL_SUBDIR=share/man \
-#    -DWITH_QTWEBKIT=FALSE \
-#    -DWITH_QWTPOLAR=TRUE \
-#    -DQWTPOLAR_LIBRARY=/usr/lib/libqwt.so \
-#    -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
-#    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
-#    -DWITH_INTERNAL_QWTPOLAR=FALSE \
-#    -DWITH_PDAL=TRUE \
-#    -DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE \
-#    -DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE \
-#    -DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
-    # https://github.com/qgis/QGIS/issues/48374
-    #-DWITH_INTERNAL_LAZPERF=FALSE \
-    # https://github.com/qgis/QGIS/issues/35440
-    #-DWITH_PY_COMPILE=TRUE \
 
   cmake --build build
 }
