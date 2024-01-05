@@ -1,0 +1,4 @@
+*.pkg.tar.zst
+/watt-wiser-git/
+/pkg/
+/src/
