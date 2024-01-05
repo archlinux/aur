@@ -2,7 +2,7 @@
 
 _pkgname=fdns
 pkgname=${_pkgname}-git
-pkgver=0.9.73+d7e053a
+pkgver=0.9.73+448b6cc
 pkgrel=1
 pkgdesc="Firejail DNS-over-HTTPS proxy server"
 arch=(x86_64)
@@ -17,6 +17,7 @@ backup=(
     etc/fdns/servers
     etc/fdns/list.tld-blacklist
     etc/fdns/list.trackers
+    etc/fdns/whitelist
 )
 depends=(
     libseccomp
