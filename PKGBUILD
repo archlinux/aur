@@ -4,7 +4,7 @@
 
 pkgname=python-graph-tool
 pkgver=2.59
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
 url='https://graph-tool.skewed.de'
@@ -18,7 +18,7 @@ conflicts=(python3-graph-tool)
 replaces=(python3-graph-tool)
 options=(!libtool)
 source=("https://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
-sha256sums=('72a36c3cf17d0f624f093d6d083dd5ecaf040c7022bf332148c772008c987a17')
+sha256sums=('cde479c0a7254b72f6e795d03b0273b0a7d81611a6a3364ba649c2c85c99acae')
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
   # disable assertions which lead to runtime performance degradation
