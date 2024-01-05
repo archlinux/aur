@@ -1,6 +1,6 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=cando-git
-pkgver=2.5.0.r1.g9f74f94ba.gfc99a3fa
+pkgver=2.5.0.r20.ge8735696d.gfc99a3fa
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together, including Cando"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP'
 
 prepare() {
   cd clasp
-  ./koga --reproducible-build --package-path=$pkgdir --extensions=cando,seqan-clasp --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/ --skip-sync=ansi-test,mps,cl-bench,cl-who
+  ./koga --build-mode=bytecode-faso --reproducible-build --package-path=$pkgdir --extensions=cando,seqan-clasp --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/ --skip-sync=ansi-test,mps,cl-bench,cl-who
   ./koga --skip-sync --extensions=cando,seqan-clasp --update-version
 }
 
