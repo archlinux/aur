@@ -1,5 +1,5 @@
-# Contributor: Evaggelos Balaskas < Evaggelos _AT_ Balaskas _DOT_ GR >
-# Maintainer:  Evaggelos Balaskas < Evaggelos _AT_ Balaskas _DOT_ GR >
+# Contributor: Evaggelos Balaskas < evaggelos _AT_ balaskas _DOT_ gr >
+# Maintainer:  Evaggelos Balaskas < evaggelos _AT_ balaskas _DOT_ gr >
 
 _pkg=lua-sodium
 pkgname=$_pkg-git
@@ -12,7 +12,7 @@ arch=('any')
 license=('custom:LUA')
 
 makedepends=('git' 'cmake' 'gcc')
-depends=('lua')
+depends=('lua' 'libsodium')
 
 conflicts=(${_pkg})
 
