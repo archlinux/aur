@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=padloc-bin
 pkgver=4.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern, open source password manager for individuals and teams."
 url="https://padloc.app/"
 _ghurl="https://github.com/padloc/padloc"
@@ -9,9 +9,6 @@ arch=("x86_64")
 license=("AGPL3")
 depends=(
     'webkit2gtk'
-    'openssl'
-    'cairo'
-    'gdk-pixbuf2'
     'gtk3'
     'hicolor-icon-theme'
 )
