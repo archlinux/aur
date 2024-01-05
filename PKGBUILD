@@ -5,7 +5,7 @@
 pkgname="jquake"
 pkgver="1.8.5"
 pkgrel="3"
-pkgdesc="JQuake provides real-time earthquake sensor map of Japan"
+pkgdesc="Free software that helps you monitor real-time shaking events in Japan"
 arch=('x86_64')
 url="https://jquake.net/?home"
 license=('custom')
