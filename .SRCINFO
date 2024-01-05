@@ -1,14 +1,13 @@
 pkgbase = python-environ-config
 	pkgdesc = Python Application Configuration With Environment Variables
 	pkgver = 23.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hynek/environ-config
 	arch = any
 	license = Apache
-	checkdepends = python-pytest
 	checkdepends = python-moto
+	checkdepends = python-pytest
 	makedepends = python-build
-	makedepends = python-hatchling
 	makedepends = python-hatch-fancy-pypi-readme
 	makedepends = python-hatch-vcs
 	makedepends = python-installer
@@ -17,8 +16,6 @@ pkgbase = python-environ-config
 	depends = python-attrs
 	optdepends = python-boto3: secret extraction from AWS Secrets Manager
 	source = python-environ-config-23.2.0.tar.gz::https://github.com/hynek/environ-config/archive/refs/tags/23.2.0.tar.gz
-	source = remove-failing-tests.patch
 	sha256sums = b717dbdf671a79b8c73427bc2c8eeaabed7abf36252281accfd5db25b50db21a
-	sha256sums = 1950f7520048462cb5669c928ea0c260ba5ba26f272fbd0053498aecc781abe0
 
 pkgname = python-environ-config

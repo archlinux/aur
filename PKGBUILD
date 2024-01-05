@@ -3,7 +3,7 @@
 pkgname=python-environ-config
 _name=${pkgname#python-}
 pkgver=23.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python Application Configuration With Environment Variables"
 arch=(any)
 url="https://github.com/hynek/environ-config"
@@ -14,36 +14,21 @@ depends=(
 )
 makedepends=(
   python-build
-  python-hatchling
   python-hatch-fancy-pypi-readme
   python-hatch-vcs
   python-installer
   python-wheel
 )
 checkdepends=(
-  python-pytest
   python-moto
+  python-pytest
 )
-optdepends=(
-  'python-boto3: secret extraction from AWS Secrets Manager'
-)
+optdepends=('python-boto3: secret extraction from AWS Secrets Manager')
 
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-  "remove-failing-tests.patch"
-)
-sha256sums=(
-  'b717dbdf671a79b8c73427bc2c8eeaabed7abf36252281accfd5db25b50db21a'
-  '1950f7520048462cb5669c928ea0c260ba5ba26f272fbd0053498aecc781abe0'
-)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('b717dbdf671a79b8c73427bc2c8eeaabed7abf36252281accfd5db25b50db21a')
 
 _archive="$_name-$pkgver"
-
-prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --input="${srcdir}/remove-failing-tests.patch"
-}
 
 build() {
   cd "$_archive"
@@ -55,13 +40,17 @@ build() {
 check() {
   cd "$_archive"
 
-  PYTHONPATH=src/ python -m pytest --ignore=tests/test_packaging.py
+  rm -rf tmp_install
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH"
+  pytest \
+    --deselect tests/test_packaging.py::TestLegacyMetadataHack
 }
 
 package() {
   cd "$_archive"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
