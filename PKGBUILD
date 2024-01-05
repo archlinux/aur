@@ -3,15 +3,16 @@
 pkgorg='vsg-dev'
 _pkgname=vsgXchange
 pkgname=vsgxchange
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Utility library for converting data+materials to/from VulkanSceneGraph"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$_pkgname"
 license=('MIT')
-makedepends=('cmake' 'vulkan-headers' 'vulkan-icd-loader' 'libxcb' 'vulkanscenegraph' 'freetype2' 'gdal' 'assimp' 'curl')
+depends=('freetype2' 'glibc' 'gdal' 'assimp' 'curl' 'gcc-libs' 'vulkanscenegraph' 'vulkan-icd-loader' 'openexr')
+makedepends=('cmake' 'vulkan-headers' 'libxcb' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b43aeb4619f86bd2b17db67560b4c92e2e0805477a6adc2a55e47ae995ca33d7')
+sha256sums=('4daa2f41b81dcf4e4aacc831dc59b53a296d1142ce13e1529343c26ab2bbcd98')
 
 build() {
     cmake -B "build-$pkgver" -S "$_pkgname-$pkgver" \
@@ -22,4 +23,5 @@ build() {
 
 package() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
+    install -Dm644 "$_pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
