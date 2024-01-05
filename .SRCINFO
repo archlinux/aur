@@ -1,6 +1,6 @@
 pkgbase = cs-libguarded-git
 	pkgdesc = Header only library for multithreaded programming (git version)
-	pkgver = 1.1.0.r60.gfcc67e3
+	pkgver = 1.4.1.r2.g1940568
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = any
@@ -11,7 +11,8 @@ pkgbase = cs-libguarded-git
 	provides = cs-libguarded
 	conflicts = cs-libguarded
 	source = git+https://github.com/copperspice/cs_libguarded.git
+	source = 020-cs-libguarded-catch2-v3-fix.patch
 	sha256sums = SKIP
+	sha256sums = 69088e9c0a57834695c7ec27fda5c3df8900621225a5551c37e1b5ad03e6f5e1
 
 pkgname = cs-libguarded-git
-
