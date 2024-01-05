@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone
 _pkgname=Bluestone
-pkgver=0.12.6
+pkgver=0.12.7
 _electronversion=22
 _nodeversion=18
 pkgrel=1
