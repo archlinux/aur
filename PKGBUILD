@@ -2,7 +2,7 @@
 
 pkgname=modbus-tcp-client-shm
 pkgrel=1
-pkgver=1.3.2
+pkgver=1.4.0
 pkgdesc="modbus tcp client that stores its data (registers) in shared memory"
 url="https://github.com/NikolasK-source/modbus_tcp_client_shm"
 license=('MIT')
