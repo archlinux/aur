@@ -1,7 +1,7 @@
 pkgbase = python-pandoc-include
 	pkgdesc = Panflute filter to allow file includes
-	pkgver = 0.8.7
-	pkgrel = 3
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/DCsunset/pandoc-include
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-pandoc-include
 	makedepends = python-setuptools
 	depends = python-natsort>=7
 	depends = python-panflute>=2.0.5
-	source = https://github.com/DCsunset/pandoc-include/archive/v0.8.7/pandoc-include-0.8.7.tar.gz
-	sha256sums = af4a8d950713896d5f6bf4f43d51b978a8f4bef842bdd10974f4760e78db8262
+	source = https://github.com/DCsunset/pandoc-include/archive/v1.2.1/pandoc-include-1.2.1.tar.gz
+	sha256sums = e0c3a14e3a9ff34f23f2b27823d6d3b864453fe31f748d55cf430fb5f6eb7111
 
 pkgname = python-pandoc-include
