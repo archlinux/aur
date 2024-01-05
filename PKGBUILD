@@ -2,7 +2,7 @@
 
 pkgname=teracli
 _pkgname=tera-cli # upstream repo conflicts with a different project on crates.io
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A utility on top of the tera templating engine, takes json|yaml|toml|ENV as input'
 arch=(x86_64)
@@ -14,24 +14,26 @@ makedepends=(cargo)
 conflicts=($_pkgname)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('60b9af7175109200155f36a4fa01d63e323e018d1bf7fcc28c92afd3274ab45b')
+sha256sums=('bdabf901bf615effba307a9aa9a6e143149f1c2f047e7d81921c77ec83254cf4')
 
 prepare() {
 	cd "$_archive"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
-build() {
+_srcenv() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+}
+
+build() {
+	_srcenv
 	cargo build --frozen --release --all-features
 }
 
 check() {
-	cd "$_archive"
-	export RUSTUP_TOOLCHAIN=stable
+	_srcenv
 	cargo test --frozen --all-features
 }
 
