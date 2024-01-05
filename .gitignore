@@ -2,4 +2,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!remove-faulty-pyproject-section.patch
+!0001-dont-include-tests-in-built-wheel.patch

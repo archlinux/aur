@@ -1,0 +1,42 @@
+From 20e67bb855eaa3f83fd54bfc0240795020d1c6e8 Mon Sep 17 00:00:00 2001
+From: Carl Smedstad <carl.smedstad@protonmail.com>
+Date: Fri, 5 Jan 2024 11:40:57 +0100
+Subject: [PATCH] Don't include tests in built wheel
+
+Tests should be included in the source distribution but there is no
+reason to include them in the build wheel.
+
+Disable implicit packages (directories without an __init__.py file)
+altogether by setting the following in pyproject.toml:
+
+[tool.setuptools.packages.find]
+include = ["mlxtend", "mlxtend.*"]
+namespaces = false
+
+I assume the files in mlxtend/data/data are still needed so I've
+modified the package data to include files in that directory.
+---
+ pyproject.toml | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 49210aa8..13b9866d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -47,8 +47,12 @@ platforms = ["any"]
+ version = {attr = "mlxtend.__version__"}
+ dependencies = {file = "requirements.txt"}
+ 
++[tool.setuptools.packages.find]
++include = ["mlxtend", "mlxtend.*"]
++namespaces = false
++
+ [tool.setuptools.package-data]
+-"*" = ["LICENSE-BSD3.txt", "LICENSE-CC-BY.txt", "README.md", "requirements.txt"]
++mlxtend = ["LICENSE-BSD3.txt", "LICENSE-CC-BY.txt", "README.md", "requirements.txt", "mlxtend/data/data/*"]
+ 
+ [tool.pytest.ini_options]
+ norecursedirs = [
+-- 
+2.43.0
+
