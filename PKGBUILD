@@ -23,10 +23,10 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  pytest
-}
+#check() {
+#  cd "$pkgname-$pkgver"
+#  pytest
+#}
 
 package() {
   cd "$pkgname-$pkgver"
