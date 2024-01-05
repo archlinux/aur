@@ -23,9 +23,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
-sha256sums_aarch64=('84e4c4204b5c97ed99ea3cb7d6c56fa734bce3d31c51c25a3257e2700a516e47')
-sha256sums_armv7h=('8cca7ad3760637999b767dc0726efc20148ae663c2e8da37eff7e4b9c05f0ba6')
-sha256sums_x86_64=('883c04868144dc0ca5178f3cd45bd4bee3b1b46bc8b2d12e5c046350f54845f7')
+sha256sums_aarch64=('94b74008332fac51775a3018f6bf5e55d0f8e76663ceb112aa23926decd0b1d1')
+sha256sums_armv7h=('5cb00672b54abbe29a38d706589c6838da7519d6ef0b72d55ae0b6168c4d51c4')
+sha256sums_x86_64=('cbc857d48ae1f3fd8258c11c6bd57a77e94faabd6c855e2168e6c6e828c72b17')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
