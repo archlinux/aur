@@ -16,23 +16,23 @@ sha256sums=('34ba351c4aead498e2778d67d6fe01ce1e19723fb4a92dfd0611bbd230b29191'
             'SKIP')
 
 prepare() {
-  # Create a shortcut
-  echo "Categories=Game;" >> desktop
-  sed -i '1 i\Comment=An Itch.io/Epic Games/GOG launcher that works through plugins' desktop
-  sed -i '1 i\StartupWMClass=Alfae' desktop
-  sed -i '1 i\Icon=alfae' desktop
-  sed -i '1 i\Type=Application' desktop
-  sed -i '1 i\Terminal=false' desktop
-  sed -i '1 i\Exec=/opt/Alfae/Alfae %U' desktop
-  sed -i '1 i\Name=Alfae' desktop
-  sed -i '1 i\[Desktop Entry]' desktop
+# Create a shortcut
+  echo -e "[Desktop Entry]\n\
+Name=Alfae\n\
+Exec=/opt/Alfae/Alfae %U\n\
+Terminal=false\n\
+Type=Application\n\
+Icon=alfae\n\
+StartupWMClass=Alfae\n\
+Comment=An Itch.io/Epic Games/GOG launcher that works through plugins\n\
+Categories=Game;" > desktop
   mv desktop alfae.desktop
 }
 
 package() {
-  # Create folders
+# Create directories
   mkdir -p "$pkgdir/opt/Alfae" "$pkgdir/usr/bin"
-  # Install
+# Install
   mv Release/* "$pkgdir/opt/Alfae"
   ln -s /opt/Alfae/Alfae $pkgdir/usr/bin/alfae
   install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/alfae.png"
