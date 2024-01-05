@@ -1,6 +1,6 @@
 pkgbase = cataclysm-dda-git
 	pkgdesc = A post-apocalyptic roguelike.
-	pkgver = 0.G.2024.01.01
+	pkgver = 0.G.2024.01.05
 	pkgrel = 1
 	url = https://cataclysmdda.org/
 	arch = i686
