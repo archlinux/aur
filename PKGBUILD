@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=authy-electron
 pkgver=2.4.2
-pkgrel=1
-_electronversion=25
+pkgrel=2
+_electronversion=28
 pkgdesc="Two factor authentication desktop application"
 arch=('x86_64')
 url="https://authy.com"
@@ -16,13 +16,15 @@ _snaprev='22'
 source=("authy-$pkgver-${_snaprev}.snap::https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap"
         "authy.sh")
 sha256sums=('406bde28157122272c1a192ab3e953ee50c3204260a1e5dfe3d71c89d18ae115'
-            'c76a44a0b42b7b590c4b6318b0544cedb96ef76b92269a79d29f71ced5c74331')
+            '5ec304c59d4f7770fb1bcf3465ae77b445be553b9e6be466c5e42381ccaed610')
 
 prepare() {
   unsquashfs -f -d "authy-$pkgver" "authy-$pkgver-${_snaprev}.snap"
 
   cd "authy-$pkgver"
   sed -i 's|${SNAP}/meta/gui/icon.png|authy|g' "meta/gui/authy.desktop"
+
+  sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/authy.sh"
 }
 
 package() {
