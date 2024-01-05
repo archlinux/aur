@@ -35,7 +35,6 @@ provides=(
 	"libgvm_osp.so=${pkgver::2}-64"
 	"libgvm_util.so=${pkgver::2}-64")
 replaces=('openvas-libraries')
-changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz.asc")
 sha256sums=('af081e5cca0736063076246282a416fba016131f44f7407b2702ae7dfb96016d'

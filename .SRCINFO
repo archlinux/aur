@@ -3,7 +3,6 @@ pkgbase = gvm-libs
 	pkgver = 22.7.3
 	pkgrel = 1
 	url = https://github.com/greenbone/gvm-libs
-	changelog = CHANGELOG.md
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
 	license = GPL
