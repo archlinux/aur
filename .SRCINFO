@@ -1,0 +1,50 @@
+pkgbase = serverstatus-git
+	pkgdesc = 云探针、多服务器探针、云监控、多服务器云监控
+	pkgver = 1.1.1.r2.g4a9f5ad
+	pkgrel = 1
+	url = https://github.com/cppla/ServerStatus
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = openssl
+	depends = systemd
+	depends = python
+	optdepends = python-psutil
+	provides = serverstatus
+	conflicts = serverstatus
+	source = serverstatus-git::git+https://github.com/cppla/ServerStatus.git
+	sha256sums = SKIP
+
+pkgname = serverstatus-git
+	depends = serverstatus-clients-linux-git
+	depends = serverstatus-clients-psutil-git
+	depends = serverstatus-server-git
+
+pkgname = serverstatus-clients-linux-git
+	pkgdesc = 云探针、多服务器探针、云监控、多服务器云监控-- Linux 客户端
+	arch = any
+	depends = python
+	depends = systemd
+	provides = serverstatus-clients-linux
+	conflicts = serverstatus-clients-linux
+
+pkgname = serverstatus-clients-psutil-git
+	pkgdesc = 云探针、多服务器探针、云监控、多服务器云监控-- Linux psutil 客户端
+	arch = any
+	depends = python
+	depends = python-psutil
+	depends = systemd
+	provides = serverstatus-clients-psutil
+	conflicts = serverstatus-clients-psutil
+
+pkgname = serverstatus-server-git
+	pkgdesc = 云探针、多服务器探针、云监控、多服务器云监控-- 服务端
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	depends = glibc
+	depends = openssl
+	depends = systemd
+	provides = serverstatus-server
+	conflicts = serverstatus-server
