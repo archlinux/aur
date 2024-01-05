@@ -10,7 +10,6 @@ license=('GPL')
 groups=('kodi')
 makedepends=('cmake' 'git' 'autoconf' 'automake' 'patch' 'nasm' 'pkgconf')
 provides=('kodi-addon-inputstream-ffmpegdirect-git')
-depends=('kodi-git')
 #options=('lto')
 source=("$_gitname-$_kodiver-$_kodiname::git+https://github.com/xbmc/inputstream.ffmpegdirect.git#branch=$_kodiname"
 	"xbmc-$_kodiname-$_kodiver::git+https://github.com/xbmc/xbmc.git#tag=$_kodiver-$_kodiname")
