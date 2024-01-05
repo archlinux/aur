@@ -29,7 +29,7 @@ source=(
 	wechat-${pkgver}.deb::"https://github.com/Riceneeder/electronic-wechat/releases/download/v2.3.2-6/electronic-wechat_2.3.2_amd64.deb"
 )
 noextract=()
-md5sums=('f1dfa2799d2bbba02b2d2f79e466cee3'
+md5sums=('80926ab68877da9bb8e7e710fc006089'
          '1bbe6f48fe0496f9a9e737da6119eb2f'
          '600e74549ce2258c045d5c2f7689ea63'
          '53d796e5a7c8c488998afdf5fb9020fe')
