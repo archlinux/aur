@@ -8,4 +8,11 @@ post_upgrade() {
     warning ''
     warning 'tinyMediaManager v4 changed to a subscription based license model, see https://www.tinymediamanager.org/blog/version-4-0/'
   fi
+  if [ -d HOME_DIR/.tiny-media-manager ]; then
+    warning "This package no longer stores user data in $HOME/.tiny-media-manager. Please migrate the data to .local/share/tinyMediaManager"
+    warning '$ mkdir $HOME/.local/share/tinyMediaManager/'
+    warning '$ mv $HOME/.tiny-media-manager/{backup,data} $HOME/.local/share/tinyMediaManager'
+    warning 'Optional remove the old data directory'
+    warning '$ rm -r $HOME/.tiny-media-manager'
+  fi
 }

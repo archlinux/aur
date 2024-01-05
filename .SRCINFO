@@ -1,23 +1,22 @@
 pkgbase = tiny-media-manager
 	pkgdesc = A multi-OS media managment tool
-	pkgver = 4.3.14
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://www.tinymediamanager.org/
 	install = tinyMediaManager.install
 	arch = any
 	license = Apache
 	depends = libmediainfo
-	depends = java-runtime>=11
-	noextract = tmm_4.3.14_linux.tar.gz
-	source = tmm_4.3.14_linux.tar.gz::https://release.tinymediamanager.org/v4/dist/tmm_4.3.14_linux-amd64.tar.gz
+	optdepends = ffmpeg: replace bundled version
+	optdepends = java-runtime>=11: replace bundled version
+	noextract = tmm_5.0_linux.tar.xz
+	source = tmm_5.0_linux.tar.xz::https://archive.tinymediamanager.org/v5.0/tinyMediaManager-5.0-linux-amd64.tar.xz
 	source = tinyMediaManager.desktop
 	source = tinymediamanager
 	source = tinymediamanager-cli
-	source = tinymediamanager.JAVA_OPTS
-	sha256sums = d6e5a6f3d9623c2be9be70429ffc892fcee688b39a286e13ea773ed9fdc0a487
-	sha256sums = 02bbfd492d10114cd314fc24fd7016532b0b992077d722d8bfccc4f99a79b7a3
-	sha256sums = 1b59df28ba5d1c52e6681b132a6342e8a38e4e6ae131c4f3a6db0d498f4fbf4f
-	sha256sums = 2d7501c13d4b608e440fec5db404a44d66fe91b2b7e2811c711feab06b292299
-	sha256sums = 0ef3bc3693a346dde08c0d01693a48ccf630bea2cb2aa2e31ce9ce77a408f2ba
+	sha256sums = 1c827e592313a1e41c763b4d782483d35c8a3406a8ddaf3eb2d6508ee020ff49
+	sha256sums = 7f4107fa13ffff4ecfdfcc38cbeb96800ab48117fef7abfe38a175a842ce86e1
+	sha256sums = d97b2206915a882c034149f3fa097445bb8bb350441bf8fdf331245e11be4f6c
+	sha256sums = d6cc87cf9166f0c47940ffa6c279a9c2bc237533ebf38afb2a387532019f5675
 
 pkgname = tiny-media-manager
