@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.G.2024.01.01
+pkgver=0.G.2024.01.05
 _pkgver=0.G
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
@@ -48,7 +48,7 @@ build() {
   # -Werror=maybe-uninitialized has false positives, including in gcc libs, so we disable it here.
   CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 LIBBACKTRACE=1
   CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1 LIBBACKTRACE=1
-  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr TILES=1 LINTJSON=0 RELEASE=1 object_creator
+  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr LINTJSON=0 RELEASE=1 PCH=0 LIBBACKTRACE=1 object_creator
 }
 
 package() {
