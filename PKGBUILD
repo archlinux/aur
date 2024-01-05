@@ -1,7 +1,7 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=gemmi
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Macromolecular crystallography library and utilities"
 arch=('x86_64')
 url="https://project-gemmi.github.io"
@@ -13,12 +13,12 @@ sha256sums=('507eea6ea112e2b142cc3dfa7de20c25e9f34c76ef77ef3caabfaf94d3657cb3')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	# cmake -D USE_FORTRAN=1 -D USE_PYTHON=1 -D CMAKE_INSTALL_PREFIX=/usr .
+	 cmake -D USE_FORTRAN=1 -D USE_PYTHON=1 -D BUILD_SHARED_LIBS=ON -D CMAKE_INSTALL_PREFIX=/usr .
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-	# make
+	make
 }
 
 package() {
