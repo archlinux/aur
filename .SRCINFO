@@ -1,6 +1,6 @@
 pkgbase = upscaler-git
 	pkgdesc = Upscale and enhance images (latest commit)
-	pkgver = 1.2.2.r26.gea5f43f
+	pkgver = 1.2.2.r38.g8cba706
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Upscaler
 	arch = x86_64

@@ -1,9 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
-_pkgname=upscaler
-pkgname=$_pkgname-git
-pkgver=1.2.2.r26.gea5f43f
+pkgname=upscaler-git
+pkgver=1.2.2.r38.g8cba706
 pkgrel=1
 pkgdesc="Upscale and enhance images (latest commit)"
 arch=('x86_64')
@@ -12,8 +11,8 @@ license=('GPL3')
 depends=('libadwaita' 'python-cffi' 'python-gobject' 'python-vulkan' 'realesrgan-ncnn-vulkan')
 makedepends=('blueprint-compiler' 'git' 'meson')
 checkdepends=('appstream-glib')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("upscaler")
+conflicts=("upscaler")
 source=(git+$url.git)
 sha256sums=('SKIP')
 
