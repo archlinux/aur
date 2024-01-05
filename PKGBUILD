@@ -3,7 +3,7 @@
 
 pkgname=qt5-webchannel
 _basever=5.15.12
-pkgver=5.15.11+kde+r3
+pkgver=5.15.12+kde+r3
 pkgrel=1
 _commit=6d2f0c3a36d9b2cdcd759a464c608365a0afda98
 arch=('x86_64')
