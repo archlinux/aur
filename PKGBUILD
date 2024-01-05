@@ -6,7 +6,7 @@ pkgdesc="An unobtrusive and user-friendly desktop application for IPFS on Window
 arch=(x86_64 aarch64)
 url="https://ipfs.tech/"
 license=('MIT')
-depends=(electron bash hicolor-icon-theme kubo)
+depends=(electron bash hicolor-icon-theme go-ipfs)
 source=("https://github.com/ipfs-shipyard/ipfs-desktop/releases/download/v${pkgver}/ipfs-desktop-${pkgver}-linux-amd64.deb"
 	https://raw.githubusercontent.com/ipfs/ipfs-desktop/main/LICENSE
 )
