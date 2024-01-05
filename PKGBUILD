@@ -1,9 +1,9 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 # Contributor: Fredrik Strandin <fredrik@strandin.name>
 
-_commit='c9326191c769c230a56fd7eab7ea699fae00c858'
+_commit='a18206c8a72657289ccc56555d0b27f773930cfb'
 pkgname=mop
-pkgver=2023.05.28
+pkgver=2024.01.04
 pkgrel=1
 pkgdesc='Stock market tracker for hackers'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('git' 'go')
 conflicts=('mop-git')
 options=('!emptydirs' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mop-tracker/${pkgname}/archive/${_commit}.tar.gz")
-b2sums=('00b1a0aaec49c38ef94c05afdeb208661688274c593482cec587708fdced9ccd5ce279dcf8a07097562c27c29a9633f83f83bd7c914b4820e4e95c92c909be8e')
+b2sums=('801ace564ca20c816aafd65ebc548b85ef75a419e4bf21515ec798fea7f086af513cd8aaacee48d0b2eda6c8382d7578cef1cc1c4a3d58031ee2024bdcaa0899')
 
 build() {
   cd "${pkgname}-${_commit}"
