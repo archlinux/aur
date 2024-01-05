@@ -1,0 +1,81 @@
+From 9409fb344f43c54a8f7ef4e908c5c7b988dba7b4 Mon Sep 17 00:00:00 2001
+From: detiam <dehe_tian@outlook.com>
+Date: Thu, 21 Dec 2023 13:54:13 +0800
+Subject: [PATCH] Fix scroll issue in media view on some logitech hi-res wheel
+ mouse
+
+---
+ .../media/view/media_view_overlay_widget.cpp  | 26 +++++++++++++++----
+ .../media/view/media_view_overlay_widget.h    |  3 ++-
+ 2 files changed, 23 insertions(+), 6 deletions(-)
+
+diff --git a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
+index 2295982fe..d11ac5806 100644
+--- a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
++++ b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
+@@ -5186,27 +5186,43 @@ void OverlayWidget::handleKeyPress(not_null<QKeyEvent*> e) {
+ void OverlayWidget::handleWheelEvent(not_null<QWheelEvent*> e) {
+ 	constexpr auto step = int(QWheelEvent::DefaultDeltasPerStep);
+ 
++	const auto _thisWheelDelta = e->angleDelta().y();
+ 	const auto acceptForJump = !_stories
+ 		&& ((e->source() == Qt::MouseEventNotSynthesized)
+ 			|| (e->source() == Qt::MouseEventSynthesizedBySystem));
+-	_verticalWheelDelta += e->angleDelta().y();
+-	while (qAbs(_verticalWheelDelta) >= step) {
+-		if (_verticalWheelDelta < 0) {
+-			_verticalWheelDelta += step;
++
++	const bool directionChanges =
++		std::signbit(_lastWheelDelta) != std::signbit(_thisWheelDelta);
++
++	if ((qAbs(_thisWheelDelta) != step) && directionChanges) {
++		// linux: first scroll after direction changes on hi-res wheel in
++		// libinput is unreliable. offen lost first half of it's value,
++		// or even only remain one with 15 delta, so we just hardcode it
++		// to same as step here, other system should be fine too.
++		_absWheelDelta = _thisWheelDelta > 0 ? step : step * -1;
++	} else {
++		_absWheelDelta += _thisWheelDelta;
++	}
++
++	while (qAbs(_absWheelDelta) >= step) {
++		if (_absWheelDelta < 0) {
++			// _absWheelDelta += step;
+ 			if (e->modifiers().testFlag(Qt::ControlModifier)) {
+ 				zoomOut();
+ 			} else if (acceptForJump) {
+ 				moveToNext(1);
+ 			}
+ 		} else {
+-			_verticalWheelDelta -= step;
++			// _absWheelDelta -= step;
+ 			if (e->modifiers().testFlag(Qt::ControlModifier)) {
+ 				zoomIn();
+ 			} else if (acceptForJump) {
+ 				moveToNext(-1);
+ 			}
+ 		}
++		_absWheelDelta = 0; // reset to 0 to reduce pic move jump or skip.
+ 	}
++	_lastWheelDelta = _thisWheelDelta; // record last wheel delta
+ }
+ 
+ void OverlayWidget::setZoomLevel(int newZoom, bool force) {
+diff --git a/Telegram/SourceFiles/media/view/media_view_overlay_widget.h b/Telegram/SourceFiles/media/view/media_view_overlay_widget.h
+index 94a7e7b2f..24294fef3 100644
+--- a/Telegram/SourceFiles/media/view/media_view_overlay_widget.h
++++ b/Telegram/SourceFiles/media/view/media_view_overlay_widget.h
+@@ -725,7 +725,8 @@ private:
+ 	rpl::event_stream<TouchBarItemType> _touchbarDisplay;
+ 	rpl::event_stream<bool> _touchbarFullscreenToggled;
+ 
+-	int _verticalWheelDelta = 0;
++	int _absWheelDelta = 0;
++	int _lastWheelDelta = 0;
+ 
+ 	bool _themePreviewShown = false;
+ 	uint64 _themePreviewId = 0;
+-- 
+2.43.0
+
