@@ -3,7 +3,7 @@
 
 pkgname=clasp-cl
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bringing Common Lisp and C++ Together'
 arch=('x86_64')
 url='https://github.com/clasp-developers/clasp'
@@ -34,6 +34,7 @@ build() {
   cd clasp-$pkgver
 
   ./koga \
+    --build-mode=bytecode-faso \
     --reproducible-build \
     --broken-stdlib \
     --package-path=$pkgdir \
