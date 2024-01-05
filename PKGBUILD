@@ -2,7 +2,8 @@
 pkgname=dk-c++-bin
 _pkgname=DK-C++
 pkgver=1.3.0
-pkgrel=3
+_electronversion=19
+pkgrel=4
 pkgdesc="A C++ IDE designed for easy use."
 arch=('x86_64')
 url="https://github.com/EntityPlantt/DK-CPP"
@@ -10,8 +11,9 @@ license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron19'
+    "electron${_electronversion}"
     'gcc'
+    'nodejs'
 )
 makedepends=(
     'gendesk'
@@ -22,8 +24,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('3b59ed87183c16072a6db41108c940cece6d5c51a452c6a48c78f1b8d69315d2'
-            'efe6b083aba80f657277f28c68e011536f158e87b0e2759a3441f27a5142bb8c')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname%-bin}"
     convert "${srcdir}/resources/app/icon.ico" "${srcdir}/${pkgname%-bin}.png"
 }
