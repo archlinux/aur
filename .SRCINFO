@@ -1,15 +1,18 @@
 pkgbase = python-ws4py
-	pkgdesc = WebSocket client and server library for Python.
+	pkgdesc = WebSocket client and server library for Python
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lawouach/WebSocket-for-Python
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	provides = ws4py
+	provides = python-ws4py
 	source = ws4py-0.5.1.tar.gz::https://github.com/Lawouach/WebSocket-for-Python/archive/0.5.1.tar.gz
-	sha256sums = 3fb493bd1af767a46cd6cb9db4c7d7b8db5eac3466f7513aa9cd20385e4740d4
+	b2sums = 31db304800f0d3da61dc4c1a3381a8fcfcfa8f16b36d916311cc32f1d294c9f7b3627dac673edf824f529f485f825ca418ab1e1a8a2fda5583c6a6a1bd9b752c
 
 pkgname = python-ws4py
-
