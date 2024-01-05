@@ -1,32 +1,31 @@
 # Maintainer: dario loi <dario13 loi at gmail dot com>
 pkgname=staplegl-git
-pkgver=v0.9.3
-pkgrel=2
+pkgver=v0.10.0
+pkgrel=1
 pkgdesc="Header-only C++20 OpenGL wrapper"
 arch=('any')
 url="https://github.com/dario-loi/staplegl"
 license=('MIT')
 source=("https://github.com/dario-loi/staplegl.git")
 md5sums=('SKIP')
-optdepends=('glfw: to compile the examples', 'tbb: for the multithreading in the batches example',
-'cmake: to compile the examples', 'doxygen: to generate the documentation locally')
+optdepends=('glfw: to compile the examples'
+            'tbb: for the multithreading in the batches example'
+            'cmake: to compile the examples'
+            'doxygen: to generate the documentation locally')
 
 
 package() {
-    # Extract the source code
     cd "$srcdir"
     git clone --branch=${pkgver} https://github.com/dario-loi/staplegl.git
-    
-    printf "Building StapleGL...\n"
+    cd "staplegl"
     
     # Copy the include files and modules to the appropriate destination
-    install -d "${pkgdir}/staplegl/usr/include/"
-    install -d "${pkgdir}/staplegl/usr/include/modules"
-    cp -r "staplegl/include/"* "${pkgdir}/staplegl/usr/include/"
-    cp -r "staplegl/include/modules/"* "${pkgdir}/staplegl/usr/include/modules/"
+    install -d "${pkgdir}/usr/include/"
+    install -d "${pkgdir}/usr/include/modules"
+    cp -r "include/"* "${pkgdir}/usr/include/${pkgname}"
+    cp -r "include/modules/"* "${pkgdir}/usr/include/${pkgname}/modules/"
     
     # Install the LICENSE file
-    install -Dm644 "staplegl/LICENSE" "${pkgdir}/staplegl/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
 
