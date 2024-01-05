@@ -3,7 +3,7 @@
 
 pkgname=qt5-connectivity
 _basever=5.15.12
-pkgver=5.15.11+kde+r6
+pkgver=5.15.12+kde+r6
 pkgrel=1
 _commit=70020cb64f71dcf2fd65a8a167cb785d2127e159
 arch=('x86_64')
