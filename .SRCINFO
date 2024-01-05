@@ -1,6 +1,6 @@
 pkgbase = qt5-virtualkeyboard
 	pkgdesc = Virtual keyboard framework
-	pkgver = 5.15.11
+	pkgver = 5.15.12
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qt5-virtualkeyboard
 	depends = qt5-declarative
 	depends = qt5-svg
 	depends = hunspell
-	source = git+https://invent.kde.org/qt/qt/qtvirtualkeyboard#commit=817378aa10176fd26eed36542bc657e48d9dd42e
+	source = git+https://invent.kde.org/qt/qt/qtvirtualkeyboard#commit=8b885af5ad3c2f2ff500c060a41e312ea7276e50
 	sha256sums = SKIP
 
 pkgname = qt5-virtualkeyboard
