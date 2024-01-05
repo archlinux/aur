@@ -13,8 +13,13 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
 sha256sums=('07c7387376c71690baf8a5f2a8af4de500e561bbd8e093cc62ec0fb9a1d44dd2'
-            'e7151555e8f57ab7c212aef1cc2312abc796fd6258713158c683eb5e099c7201'
+            '3310fc2c6cabab9f7e7177a710bc4a5ec6a0fd946eb14f791205ffeade6cb844'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
+}
 
 build() {
   cd "$pkgname-$pkgver"
