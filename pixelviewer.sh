@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
-APPDIR=/opt/@appname@
-APPNAME=@runappname@
+_APPDIR=/opt/@appname@
+_RUNNAME="${_APPDIR}/@runname@"
 export LC_CTYPE=en_US.UTF-8
-exec "${APPDIR}/${APPNAME}"
+cd "${_APPDIR}"
+exec "${_RUNNAME}" "$@" | exit

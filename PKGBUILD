@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pixelviewer-bin
 _pkgname=PixelViewer
-pkgver=2.7.4.312
-pkgrel=4
+pkgver=3.0.2.104
+pkgrel=1
 pkgdesc="A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it."
 arch=(
     'aarch64'
@@ -29,12 +29,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
-            'cd87dcfa438cbda7cee315933d5c260629bbe09ac6201b8bf37993c8ab1610cc')
-sha256sums_aarch64=('92bfb0c33f2cf808ef56ebff1a5255613122c15ff6ad6097d91a16214f61317f')
-sha256sums_x86_64=('55ca0c80d5adfb9a0b9661622c789b84646f3e3875faad6b8f61f17bca9380ab')
+            '0522ee4edde02041a2c8594b0ff84b38103eb5f499e36accc0f378c9829a240a')
+sha256sums_aarch64=('a466953765db4ee574b8135e3645ae4b2ae19c9bcd803fa4ebe6d1a02b094fbc')
+sha256sums_x86_64=('16afd0649e662b5c3f1f5a59ca9340f0b9c3adb37d89f1e7ef892f07d13345fb')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${_pkgname}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories "Graphics;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
     install -Dm755 -d "${srcdir}/${pkgname%-bin}"
