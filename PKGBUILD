@@ -1,6 +1,6 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=clasp-cl-git
-pkgver=2.5.0.r1.g9f74f94ba
+pkgver=2.5.0.r19.g74ab9a21e
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP'
 
 prepare() {
   cd clasp
-  ./koga --reproducible-build "--package-path=$pkgdir" -bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/ --skip-sync=ansi-test,mps,cl-bench,cl-who
+  ./koga --build-mode=bytecode-faso --reproducible-build "--package-path=$pkgdir" -bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/ --skip-sync=ansi-test,mps,cl-bench,cl-who
   ./koga --skip-sync --update-version
 }
 

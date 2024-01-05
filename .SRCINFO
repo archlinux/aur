@@ -1,6 +1,6 @@
 pkgbase = clasp-cl-git
 	pkgdesc = Bringing Common Lisp and C++ Together
-	pkgver = 2.5.0.r1.g9f74f94ba
+	pkgver = 2.5.0.r19.g74ab9a21e
 	pkgrel = 1
 	url = https://github.com/clasp-developers/clasp
 	arch = x86_64
