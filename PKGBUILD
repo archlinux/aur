@@ -9,8 +9,8 @@
 _pkgname="xwayland-run"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.0.2.r2.g0f30bf5
-pkgrel=4
-pkgdesc="xvfb-run substitute for wayland"
+pkgrel=5
+pkgdesc="Utilities to run headless X/Wayland clients"
 url="https://gitlab.freedesktop.org/ofourdan/xwayland-run"
 license=('GPL-2.0-or-later')
 arch=(x86_64)
@@ -25,20 +25,23 @@ makedepends=(
 optdepends=(
   'cage: Wayland compositor'
   'mutter: Wayland compositor'
-  'weston: Wayland compositor'
+  'weston: Wayland compositor (recommended)'
   'xorg-server-xwayland: X11 server'
 )
 
 provides=(
-  'wlheadless-run'
-  'xwayland-run'
-  'xwfb-run'
+  "wlheadless-run=${pkgver%%.r*}"
+  "xwfb-run=${pkgver%%.r*}"
 )
 conflicts=(
   'wlheadless-run'
-  'xwayland-run'
   'xwfb-run'
 )
+
+if [[ "${_build_git::1}" == "t" ]] ; then
+  provides+=("xwayland-run=${pkgver%%.r*}")
+  conflicts+=('xwayland-run')
+fi
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
