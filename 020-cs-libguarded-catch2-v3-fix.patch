@@ -1,0 +1,99 @@
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -10,7 +10,7 @@ add_executable(CsLibGuardedTest "")
+ target_link_libraries(CsLibGuardedTest
+    PUBLIC
+    CsLibGuarded
+-   Catch2::Catch2
++   Catch2::Catch2WithMain
+    Threads::Threads
+ )
+ 
+--- a/test/test_cow.cpp
++++ b/test/test_cow.cpp
+@@ -19,7 +19,7 @@
+ 
+ #include <thread>
+ 
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ 
+ using namespace libguarded;
+ 
+--- a/test/test_deferred.cpp
++++ b/test/test_deferred.cpp
+@@ -21,7 +21,7 @@
+ #include <shared_mutex>
+ using shared_mutex = std::shared_timed_mutex;
+ 
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ 
+ using namespace libguarded;
+ 
+--- a/test/test_lock.cpp
++++ b/test/test_lock.cpp
+@@ -22,7 +22,7 @@
+ #include <mutex>
+ 
+ #define CATCH_CONFIG_MAIN
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ 
+ #include <atomic>
+ #include <thread>
+--- a/test/test_lr.cpp
++++ b/test/test_lr.cpp
+@@ -19,7 +19,7 @@
+ 
+ #include <thread>
+ 
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ 
+ using namespace libguarded;
+ 
+--- a/test/test_ordered.cpp
++++ b/test/test_ordered.cpp
+@@ -23,7 +23,7 @@
+ #include <shared_mutex>
+ using shared_mutex = std::shared_timed_mutex;
+ 
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ 
+ using namespace libguarded;
+ 
+--- a/test/test_rcu.cpp
++++ b/test/test_rcu.cpp
+@@ -21,7 +21,7 @@
+ #include <thread>
+ #include <iostream>
+ 
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ 
+ using namespace libguarded;
+ 
+--- a/test/test_read_lock.cpp
++++ b/test/test_read_lock.cpp
+@@ -20,7 +20,7 @@
+ #include <cs_shared_guarded.h>
+ #include <mutex>
+ 
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ 
+ #include <atomic>
+ #include <thread>
+--- a/test/test_shared.cpp
++++ b/test/test_shared.cpp
+@@ -24,7 +24,7 @@
+ using shared_mutex = std::shared_timed_mutex;
+ namespace chrono   = std::chrono;
+ 
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ 
+ using namespace libguarded;
+ 
