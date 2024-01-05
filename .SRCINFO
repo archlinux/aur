@@ -1,6 +1,6 @@
 pkgbase = qt5-purchasing
 	pkgdesc = Qt In-App Purchasing API
-	pkgver = 5.15.11
+	pkgver = 5.15.12
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = qt5-purchasing
 	makedepends = git
 	depends = qt5-base
 	optdepends = qt5-declarative: QML bindings
-	source = git+https://invent.kde.org/qt/qt/qtpurchasing#commit=736144c5827385000e391e9a55a0f0162b7e8112
+	source = git+https://invent.kde.org/qt/qt/qtpurchasing#commit=f563e7f2d1668a3d216e9d396e050df25fd15532
 	sha256sums = SKIP
 
 pkgname = qt5-purchasing
