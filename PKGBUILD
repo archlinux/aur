@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BSgenomeForge
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Forge BSgenome data packages"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(Artistic2.0)
 depends=(
   r-biobase
@@ -32,12 +32,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ed03f4628533403765aae28991855bca')
-sha256sums=('fa0fc3076e4e7f769d3295aba9735a10f8cac62d2f504ee44a0a1a19cb2ebafc')
+md5sums=('7a8ad7be8dbfe9034eb38bb87bf92e31')
+b2sums=('4f5e7c70f3a56423d87a5b881329eea8f92735c0a3c650552d021e52ee9c646d961f169099c7c990af5fdb68ddffa0bc7040dbbf05319ff18adbb11a6e01e878')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
