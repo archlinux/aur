@@ -38,7 +38,7 @@ fi
 ## Stock Archlinux has this enabled.
 ## Set variable "use_tracers" to: n to disable (possibly increase performance, XanMod default)
 if [ -z ${use_tracers+x} ]; then
-  use_tracers=y
+  use_tracers=n
 fi
 
 # Unique compiler supported upstream is GCC
@@ -49,11 +49,11 @@ if [ "${_compiler}" = "clang" ]; then
 fi
 
 # Choose between the 4 main configs for stable branch. Default x86-64-v1 which use CONFIG_GENERIC_CPU2:
-# Possible values: config_x86-64-v1 (default) / config_x86-64-v2 / config_x86-64-v3 / config_x86-64-v4
+# Possible values: config_x86-64-v1 / config_x86-64-v2 (default) / config_x86-64-v3 / config_x86-64-v4
 # This will be overwritten by selecting any option in microarchitecture script
 # Source files: https://github.com/xanmod/linux/tree/5.17/CONFIGS/xanmod/gcc
 if [ -z ${_config+x} ]; then
-  _config=config_x86-64-v1
+  _config=config_x86-64-v2
 fi
 
 # Compress modules with ZSTD (to save disk space)
@@ -83,22 +83,25 @@ fi
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=6.4
-pkgver=${_major}.5
+_major=6.6
+pkgver=${_major}.9
 _branch=6.x
 xanmod=1
+_sf_branch=main
 pkgrel=1
-pkgdesc='Linux Xanmod'
+pkgdesc='Linux Manjaro Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="b7f9ddcc394c11061450ef3f813701454865b1bd" # 6.4.5
+__commit="14b0a9c44b9aafe0efdd16bf79b81ddda1d703da" # 6.6.9
 
 license=(GPL2)
+
 makedepends=(
-  xmlto kmod inetutils bc libelf cpio
-  python-sphinx python-sphinx_rtd_theme graphviz imagemagick git
+  bc cpio gettext libelf pahole perl python tar xz
+  python-sphinx inetutils kmod xmlto
 )
+
 if [ "${_compiler}" = "clang" ]; then
   makedepends+=(clang llvm lld python)
 fi
@@ -106,7 +109,7 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
+        "patch-${pkgver}-xanmod${xanmod}${_revision}.xz::https://sourceforge.net/projects/xanmod/files/releases/${_sf_branch}/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
         choose-gcc-optimization.sh
         "https://gitlab.manjaro.org/packages/core/linux${_major//.}/-/archive/${__commit}/linux${_major//.}-${__commit}.tar.gz")
         #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
@@ -115,15 +118,14 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 _commit="ec9e9a4219fe221dec93fa16fddbe44a34933d8d"
 _patches=()
 for _patch in ${_patches[@]}; do
-    #source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
-sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'  # kernel tar.xz
+sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '225f7f1c616f4796eade829f8f7c5543f9e4075441482c55fd84373c2ac93bf4'  # xanmod
+            '674be54d39a405cd11d8cbd9c2604f5e6e7fedee6b37d307edbb8ac46bc6a27f'  # xanmod
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f'  # choose-gcc-optimization.sh
-            '7c528562d20c01035277d4897eaafd5245865cffbfa8d542c0e0bfa47dde8997') # manjaro
+            'ac7d476c2a4eff99929909e97263142770923e24decddedf04735867294d6e0e') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -157,9 +159,11 @@ prepare() {
   # Manjaro patches 
   
   # remove conflicting ones
-  rm ../linux${_major//.}-$__commit/0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
-  rm ../linux${_major//.}-$__commit/0102-netfilter-nf_tables-unbind_non-anonymous.patch
-  rm ../linux${_major//.}-$__commit/0202-amd-drm-fixes-6.4-2023-06-23.patch
+  patchdir=../linux${_major//.}-$__commit
+  rm $patchdir/0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
+  # fix patch order
+  mv $patchdir/000{1,0}-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-miss.patch
+  
   
   local _patch
   for _patch in ../linux${_major//.}-$__commit/*; do
@@ -188,7 +192,7 @@ prepare() {
   # User set. See at the top of this file
   if [ "$use_tracers" = "n" ]; then
     msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
-    if [ "${_compiler}" = "gcc" ]; then
+    if [ "${_compiler}" = "gcc" ] || [ "${_compiler}q" = "q" ]; then
       scripts/config --disable CONFIG_FUNCTION_TRACER \
                      --disable CONFIG_STACK_TRACER
     fi
@@ -200,13 +204,11 @@ prepare() {
   fi
     
   msg2 "add anbox support"
-  scripts/config --enable CONFIG_ASHMEM
   # CONFIG_ION is not set
   scripts/config --enable CONFIG_ANDROID
   scripts/config --enable CONFIG_ANDROID_BINDER_IPC
   scripts/config --enable CONFIG_ANDROID_BINDERFS
   scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES "binder,hwbinder,vndbinder"
-  scripts/config --enable CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION
   # CONFIG_ANDROID_BINDER_IPC_SELFTEST is not set
   
   scripts/config --set-str CONFIG_DEFAULT_HOSTNAME "manjaro"
@@ -275,9 +277,8 @@ build() {
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod and Manjaro patches"
   depends=('coreutils' 'linux-firmware' 'kmod' 'initramfs')
-  optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices'
-              'bootsplash-systemd: for bootsplash functionality')
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES
             WIREGUARD-MODULE
             KSMBD-MODULE
@@ -286,8 +287,7 @@ _package() {
   conflicts=()
 
   cd linux-${_major}
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
@@ -301,10 +301,11 @@ _package() {
   echo "${pkgver}-${pkgrel}-Manjaro-Xanmod x64" | install -Dm644 /dev/stdin "${pkgdir}/boot/${pkgbase}.kver"
 
   msg2 "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
@@ -372,7 +373,7 @@ _package-headers() {
   msg2 "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
