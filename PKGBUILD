@@ -10,7 +10,6 @@ arch=('x86_64')
 url="https://jquake.net/?home"
 license=('Apache')
 depends=('java-runtime')
-makedepends=('git')
 source=("https://fleneindre.github.io/downloads/JQuake_${pkgver}_linux.zip"
         "icon.png"
         "jquake.desktop")
