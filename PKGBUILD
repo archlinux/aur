@@ -4,24 +4,30 @@
 pkgname=python-envisage
 _name=${pkgname#python-}
 pkgver=7.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible Application Framework"
 arch=(any)
 url="https://github.com/enthought/envisage"
 license=(BSD)
 depends=(
+  python
   python-apptools
-  python-configobj  # Optional dependency for python-apptools - required here
+  python-numpy
+  python-pyface
   python-scipy
+  python-setuptools
+  python-traits
   python-traitsui
 )
 makedepends=(
   python-build
   python-installer
-  python-setuptools
   python-wheel
 )
-checkdepends=(python-pytest)
+checkdepends=(
+  python-configobj
+  python-pytest
+)
 optdepends=('ipython: for IPython shell plugin')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
@@ -38,7 +44,7 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest
+  pytest
 }
 
 package() {
@@ -46,5 +52,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -D LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
