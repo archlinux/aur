@@ -5,7 +5,7 @@
 pkgbase=webkit2gtk-hvml
 pkgname=(webkit2gtk-{3,4}.0-hvml webkit2hbd)
 pkgver=2.34.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Web content engine for GTK (HVML)"
 url="https://hvml.fmsoft.cn/"
 arch=(x86_64)
@@ -13,13 +13,13 @@ license=(custom)
 provides=(${pkgname}  'webkithbd')
 conflicts=(webkit2gtk 'webkithbd')
 depends=(cairo fontconfig freetype2 libgcrypt glib2 gtk3 gtk4  harfbuzz harfbuzz-icu
-         icu libjpeg libsoup libsoup3 libxml2 zlib libpng sqlite atk libwebp at-spi2-core
-         libegl libgl libgles libwpe wpebackend-fdo libxslt libsecret libtasn1
-         enchant libx11 libxext libice libxt wayland libnotify hyphen openjpeg2
-         woff2 libsystemd bubblewrap libseccomp xdg-dbus-proxy gstreamer
-         gst-plugins-base-libs libmanette)
+  icu libjpeg libsoup libsoup3 libxml2 zlib libpng sqlite atk libwebp at-spi2-core
+  libegl libgl libgles libwpe wpebackend-fdo libxslt libsecret libtasn1
+  enchant libx11 libxext libice libxt wayland libnotify hyphen openjpeg2
+  woff2 libsystemd bubblewrap libseccomp xdg-dbus-proxy gstreamer
+  gst-plugins-base-libs libmanette)
 makedepends=(cmake ninja gtk-doc python ruby gobject-introspection
-             wayland-protocols systemd gst-plugins-bad gperf)
+  wayland-protocols systemd gst-plugins-bad gperf)
 optdepends=('geoclue: Geolocation support'
   'gst-plugins-good: media decoding'
   'gst-plugins-bad: media decoding'
@@ -44,7 +44,7 @@ build() {
   # Produce minimal debug info: 4.3 GB of debug data makes the
   # build too slow and is too much to package for debuginfod
   CFLAGS+=' -g1'
-  CXXFLAGS+=' -g1 -Wno-dangling-reference'
+  CXXFLAGS+=' -g1'
 
   sed -i '/#pragma once/i #include <cstdio>' ${_name}/Source/bmalloc/bmalloc/IsoSharedPageInlines.h
   sed -i '/#include <vector>/a #include <cstdint>' ${_name}/Source/ThirdParty/ANGLE/src/common/angleutils.h
@@ -62,7 +62,8 @@ build() {
     -DUSE_LCMS=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations"
 
   ninja -C build-gtk3
 
@@ -78,7 +79,9 @@ build() {
     -DUSE_LCMS=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations"
+
 
   ninja -C build-gtk4
 
@@ -100,7 +103,8 @@ build() {
     -DUSE_LCMS=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations"
 
     ninja -C build-hbd
 }
