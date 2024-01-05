@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=net-player
 _pkgname="${pkgname//-p/P}"
-pkgver=1.3.4
+pkgver=1.4.0
 _electronversion=13
 _nodeversion=16
 pkgrel=1
