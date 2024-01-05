@@ -1,27 +1,22 @@
-# From: https://github.com/github/gitignore/blob/master/ArchLinuxPackages.gitignore
-
+# based on https://github.com/github/gitignore/blob/master/ArchLinuxPackages.gitignore
 *.tar
 *.tar.*
+*.rpm
+*.jar
+*.exe
+*.msi
 *.zip
 *.tgz
+*.deb
+*.gem
+*.out
+*.html
 *.log
 *.log.*
 *.sig
 
-# makepkg working folders
-pkg
-src
-
-#
-# Additional ignore patterns:
-#
-
-# Source files
-*.deb
-*.gem
-*.out
-*.rpm
-*.html
-
-# Ignore package source folders
-*/*
+*/
+*.orig
+*.bak
+*.backup
+*.kate-swp

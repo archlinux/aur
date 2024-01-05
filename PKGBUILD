@@ -1,20 +1,20 @@
-# Maintainer: James An <james@jamesan.ca>
+# Contributor: James An <james@jamesan.ca>
 
 pkgname=drush-launcher-git
 _pkgname=${pkgname%-git}
 __pkgname=${_pkgname%-launcher}
-pkgver=0.5.1.r1.gace4b71
+pkgver=0.10.2.r1.gb168e45
 pkgrel=1
 pkgdesc='A small wrapper around Drush for your global $PATH.'
 arch=('any')
 url="https://github.com/drush-ops/drush-launcher"
 license=('GPL')
-depends=('php-composer')
-makedepends=('git' 'php-box')
-provides=("$__pkgname" "$_pkgname=$pkgver")
+depends=('php')
+makedepends=('composer' 'git' 'php-box')
+provides=("$__pkgname=${pkgver%.r*}" "$_pkgname=${pkgver%.r*}")
 conflicts=("$__pkgname" "$_pkgname")
 source=("$_pkgname"::"git+https://github.com/$__pkgname-ops/$_pkgname.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -33,7 +33,7 @@ prepare() {
 build() {
   cd "$_pkgname"
 
-  php -d phar.readonly=Off /usr/bin/php-box build
+  php -d phar.readonly=Off /usr/bin/box compile
 }
 
 package() {
