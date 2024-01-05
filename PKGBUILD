@@ -37,8 +37,8 @@ package() {
   cd "$pkgname"
   install -Dm755 target/release/$pkgname "$pkgdir"/usr/bin/$pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/wrestic"
-  install -Dm644 wrestic.toml "$pkgdir/usr/share/doc/wrestic"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/wrestic/README.md"
+  install -Dm644 wrestic.toml "$pkgdir/usr/share/doc/wrestic/wrestic.toml"
 
   # # completions
   # cd target/release
