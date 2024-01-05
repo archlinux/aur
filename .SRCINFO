@@ -1,13 +1,17 @@
 pkgbase = com.qq.weixin.deepin
 	pkgdesc = Deepin Wine WeChat
 	pkgver = 3.9.5.80deepin10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pc.weixin.qq.com/
 	install = com.qq.weixin.deepin.install
 	arch = x86_64
 	license = Proprietary
 	depends = deepin-wine6-stable>=6.0.0.58
 	depends = deepin-wine-helper
+	depends = wine-for-wechat
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = deepin-udis86
 	conflicts = deepin-wine-wechat
 	conflicts = com.qq.weixin.spark
 	source = com.qq.weixin.deepin-3.9.5.80deepin10.deb::https://community-store-packages.deepin.com/appstore/pool/appstore/c/com.qq.weixin.deepin/com.qq.weixin.deepin_3.9.5.80deepin10_i386.deb
@@ -17,6 +21,6 @@ pkgbase = com.qq.weixin.deepin
 	sha256sums = 2967aad7806e0c72980aa9e1880ddf82ab793b322fd9af83ff54d477ac4fdb81
 	sha256sums = af3327e55951d901c3bca2851f933e643ce71be3270715c2d01993a6acf0675b
 	sha256sums = 9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201
-	sha256sums = ba600b75b6754bd5a82d9d8dd0ba727f997135662fff37521470fb3c690bdec8
+	sha256sums = 6e2bb0cd28019eb79fccbbb882ead93130031e5e62c85e46de1901010c4ca573
 
 pkgname = com.qq.weixin.deepin
