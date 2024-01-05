@@ -7,7 +7,7 @@ pkgdesc="This plugin provides svtav1enc element to GStreamer in order to use the
 url="https://gitlab.com/AOMediaCodec/SVT-AV1/-/tree/master/gstreamer-plugin"
 arch=('x86_64')
 license=('BSD' 'custom: Alliance for Open Media Patent License 1.0')
-depends=('gstreamer')
+depends=('gstreamer' 'svt-av1')
 makedepends=('meson')
 source=("https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v$pkgver/SVT-AV1-v$pkgver.tar.bz2?path=gstreamer-plugin"
         "https://gitlab.com/AOMediaCodec/SVT-AV1/-/raw/v$pkgver/LICENSE.md"
