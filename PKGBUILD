@@ -1,40 +1,39 @@
 # Maintainer: Baal <weiss.sebastian@gmx.net
 
 pkgname=theforceengine
-pkgver=1.09.100
-pkgrel=2
-pkgdesc="Modern \"Jedi Engine\" replacement supporting Dark Forces, Outlaws and the mods"
+pkgver=1.09.540
+pkgrel=1
+pkgdesc='Modern "Jedi Engine" replacement supporting Dark Forces, mods, and in the future Outlaws.'
 arch=('x86_64')
 url="https://theforceengine.github.io/"
 license=('GPL2')
-depends=("libgl" "sdl2" "devil" "glew" "rtaudio" "rtmidi" "hicolor-icon-theme")
-makedepends=("cmake" "ninja" "git")
-optdepends=()
+depends=('glew'
+         'hicolor-icon-theme'
+         'libgl'
+         'rtaudio'
+         'rtmidi'
+         'sdl2'
+         'sdl2_image')
+makedepends=("cmake")
+optdepends=('kdialog: display file dialogs using QT'
+            'zenity: display file dialogs using GTK')
 install="theforceengine.install"
-_tag=00c87198486cb9ccf10fa4f4ac1980435f0837a6
-source=("TheForceEngine::git+https://github.com/luciusDXL/TheForceEngine.git#tag=$_tag"
+source=("TheForceEngine-$pkgver.tar.gz::https://github.com/luciusDXL/TheForceEngine/archive/refs/tags/v$pkgver.tar.gz"
         "theforceengine.install")
-sha256sums=('SKIP'
-            'ad204328c72e6e996a42f0b3f42408de1a8a15632214d36cb08ecffc9ab34178')
-
-pkgver() {
-  cd TheForceEngine
-  git describe --tags | sed 's/^v//'
-}
+sha256sums=('ccb7fa9728deb24af5cef04dc9da7afb1f65f532929d02536720d7bd322dc0a0'
+            '5e1c92324e453a21b44d7252b44d8d0a2e057f75050f0387f6fc5b9edee4c023')
 
 build() {
-  cd TheForceEngine
-  mkdir build
-  cd build
-  cmake -S .. \
-    -G Ninja\
-    -DCMAKE_INSTALL_PREFIX=/usr\
-    -DCMAKE_BUILD_TYPE=Release
-  ninja
+	cmake -B build \
+		-S "TheForceEngine-$pkgver" \
+		-DCMAKE_BUILD_TYPE='None' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-Wno-dev \
+		-G "Unix Makefiles"
+	cmake --build build
 }
 
 package() {
-  cd TheForceEngine/build
-  DESTDIR="$pkgdir" ninja install
+	cd build
+	make DESTDIR="$pkgdir" install
 }
-
