@@ -1,6 +1,6 @@
 pkgbase = hoptodesk-bin
 	pkgdesc = A free remote desktop tool that allows users to share their screens and remotely control access to their computers and devices.
-	pkgver = 1.40.9
+	pkgver = 1.41.4
 	pkgrel = 1
 	url = https://www.hoptodesk.com
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = hoptodesk-bin
 	depends = libxcb
 	depends = libpulse
 	depends = xdotool
-	provides = hoptodesk=1.40.9
+	provides = hoptodesk=1.41.4
 	conflicts = hoptodesk
-	source = hoptodesk-1.40.9.deb::https://www.hoptodesk.com/hoptodesk.deb
-	sha256sums = 90e6b02a4e5a686ed9e7d227b6edbb29fc6994fe04b16398ca2987893c89ae86
+	source = hoptodesk-1.41.4.deb::https://www.hoptodesk.com/hoptodesk.deb
+	sha256sums = 452664c1666cddd6fbb118341b45318ac5155481f8ce79c309f46a4b6a330e8e
 
 pkgname = hoptodesk-bin
