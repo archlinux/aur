@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/tagspaces/tagspaces/archive
         "$pkgname.sh")
 sha256sums=('2f881eac0f5de2e69ae2ef364e8f927c25f9b0f3f1ac7e321bfce7e2beedfa39'
             'a548e2b62a61a93d80482ebe43ef11e33e2c2bfef9db641fc583bd5539ac6948'
-            '28aea5402d15b91a681e52cbcb3a7a0fafb12eec2313ad9be3bd933c52a8f680')
+            '9337f82424a160a0b44684209fffff0a047e96ce0449134d75e67d81f409805b')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -36,6 +36,8 @@ prepare() {
   touch .env
   generated_key=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 128)
   echo "KEY=${generated_key}" > .env
+
+  sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
 }
 
 build() {

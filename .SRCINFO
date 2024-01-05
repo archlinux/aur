@@ -17,6 +17,6 @@ pkgbase = tagspaces
 	source = tagspaces.sh
 	sha256sums = 2f881eac0f5de2e69ae2ef364e8f927c25f9b0f3f1ac7e321bfce7e2beedfa39
 	sha256sums = a548e2b62a61a93d80482ebe43ef11e33e2c2bfef9db641fc583bd5539ac6948
-	sha256sums = 28aea5402d15b91a681e52cbcb3a7a0fafb12eec2313ad9be3bd933c52a8f680
+	sha256sums = 9337f82424a160a0b44684209fffff0a047e96ce0449134d75e67d81f409805b
 
 pkgname = tagspaces
