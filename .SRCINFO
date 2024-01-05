@@ -1,7 +1,7 @@
 pkgbase = cctag
 	pkgdesc = Detection of CCTag markers made up of concentric circles
 	pkgver = 1.0.3
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/alicevision/CCTag
 	arch = x86_64
 	license = MPL2
