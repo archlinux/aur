@@ -2,12 +2,12 @@
 
 pkgname=footage
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Polish your videos"
 url="https://gitlab.com/adhami3310/Footage"
 arch=('x86_64' 'aarch64')
 license=('GPL3')
-depends=('a52dec' 'fdkaac' 'gst-editing-services' 'gst-plugins-rs'
+depends=('a52dec' 'fdkaac' 'gst-editing-services' 'gst-plugins-rs' 'gstreamer-svt-av1'
          'libadwaita' 'libmpeg2' 'svt-av1' 'vo-aacenc' 'x264' 'x265')
 makedepends=('blueprint-compiler' 'cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
