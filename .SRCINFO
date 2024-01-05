@@ -1,6 +1,6 @@
 pkgbase = helioslauncher-bin
 	pkgdesc = Custom launcher for modded minecraft written in Electron and Node.js
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/dscalzi/HeliosLauncher
 	arch = x86_64
@@ -8,19 +8,16 @@ pkgbase = helioslauncher-bin
 	makedepends = squashfuse
 	depends = electron27
 	depends = java-runtime
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
-	provides = helioslauncher=2.1.0
+	provides = helioslauncher=2.1.1
 	conflicts = helioslauncher
-	source = helioslauncher-2.1.0.AppImage::https://github.com/dscalzi/HeliosLauncher/releases/download/v2.1.0/Helios-Launcher-setup-2.1.0.AppImage
-	source = LICENSE-2.1.0::https://raw.githubusercontent.com/dscalzi/HeliosLauncher/v2.1.0/LICENSE.txt
+	source = helioslauncher-2.1.1.AppImage::https://github.com/dscalzi/HeliosLauncher/releases/download/v2.1.1/Helios-Launcher-setup-2.1.1.AppImage
+	source = LICENSE-2.1.1::https://raw.githubusercontent.com/dscalzi/HeliosLauncher/v2.1.1/LICENSE.txt
 	source = helioslauncher.sh
-	sha256sums = 880cef61293019004495f868810d89695b408c20f939f2129c8922453637db37
+	sha256sums = 161dd2d1765c5cd3b1ba13f5235b4eeb7597c28b87402fa6596d9edf822f4146
 	sha256sums = 4ffd6e4c132ebc4ecde76d809f9f88e151ee0eb2175e7ea0f0b0b51a9d48539e
-	sha256sums = 7076a00849ffd2342db853b81296da7c913d58da382fc94e5ea5fb181b225c2b
+	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = helioslauncher-bin
