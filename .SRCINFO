@@ -1,7 +1,7 @@
 pkgbase = beaker
 	pkgdesc = Full-stack software and hardware integration testing system
 	pkgver = 28.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://beaker-project.org/
 	arch = any
 	license = GPL
@@ -19,7 +19,7 @@ pkgbase = beaker
 	provides = bkr
 	provides = beaker-wizard
 	options = zipman
-	source = beaker-28.3.tar.gz::https://github.com/beaker-project/beaker/archive/refs/tags/beaker-28.3.tar.gz
+	source = beaker-28.3.tar.gz::https://github.com/beaker-project/beaker/archive/beaker-28.3.tar.gz
 	source = 0001-add-sphinx-extension.patch
 	source = 0002-fix-sphinx-extlinks.patch
 	sha256sums = be2bea573bc6ab70a0eacf366c63623c9cca679bbf3313c8dc6625b76e2c66b8

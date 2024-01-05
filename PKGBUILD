@@ -3,7 +3,7 @@
 pkgname=('beaker-common' 'beaker-client')
 pkgbase='beaker'
 pkgver=28.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Full-stack software and hardware integration testing system"
 arch=('any')
 url="https://beaker-project.org/"
@@ -11,7 +11,7 @@ license=('GPL' 'BSD')
 makedepends=('python-nose' 'python-mock' 'python-docutils' 'python-sphinx' 'make' 'python-gssapi' 'python-lxml' 'python-prettytable' 'python-lxml' 'python-sphinxcontrib-httpdomain')
 provides=('bkr' 'beaker-wizard')
 options=('zipman')
-source=("beaker-$pkgver.tar.gz::https://github.com/beaker-project/beaker/archive/refs/tags/$pkgbase-$pkgver.tar.gz"
+source=("beaker-$pkgver.tar.gz::https://github.com/beaker-project/beaker/archive/$pkgbase-$pkgver.tar.gz"
         "0001-add-sphinx-extension.patch"
         "0002-fix-sphinx-extlinks.patch")
 sha256sums=('be2bea573bc6ab70a0eacf366c63623c9cca679bbf3313c8dc6625b76e2c66b8'
