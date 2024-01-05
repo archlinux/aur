@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=pixi
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A package management and workflow tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('gcc-libs' 'openssl' 'bzip2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('a9bf7c55472e333e7b19837e9e06e350715b45523b09c6fc051541e194ffbf2b1525d54708e447a53d47d247c1432b019495239ad42da89ea37f9dd0e7afdbd3')
+sha512sums=('810b61084bb26ff91408eef8d26664989a35fc3168e3555919e59f72727a8069fad7ade9b3b931de7e2a5b68c0b6ed174cd6748abee24b8ab99051814ca6ec54')
 options=('!lto')
 
 prepare() {
