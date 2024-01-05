@@ -2,13 +2,13 @@
 # Contributor: Thiago França<tfsthiagobr98@outlook.com>
 _pkgname=poetry-core
 pkgname=python-${_pkgname}-git
-pkgver=1.2.0b3.r16.gec610a34
+pkgver=1.8.1.r17.g21b0033
 pkgrel=1
-pkgdesc="Poetry PEP 517 Build Backend & Core Utilities"
-arch=('any')
+pkgdesc="Poetry PEP 517 Build Backend"
+arch=(any)
 url="https://github.com/python-poetry/${_pkgname}"
 license=('MIT')
-_deps=('jsonschema' 'lark-parser' 'packaging' 'tomlkit')
+_deps=(fastjsonschema lark-parser packaging)
 depends=("${_deps[@]/#/python-}")
 makedepends=(python-{build,installer} git)
 # checkdepends=(python-pytest python-pytest-mock python-virtualenv)
