@@ -1,0 +1,23 @@
+pkgbase = xg3utility
+	pkgdesc = Elecraft Factory APP for use with the XG3 Generator - Ham Radio.
+	pkgver = 19_9_6
+	pkgrel = 1
+	url = https://ftp.elecraft.com/XG3/Manuals%20Downloads/
+	arch = x86_64
+	license = custom:ELECRAFT
+	depends = gcc-libs
+	depends = gtk2
+	depends = curl
+	depends = hamradio-menus
+	options = !strip
+	source = https://ftp.elecraft.com/XG3/Utilities/XG3UtilityLINUX64BIT_19_9_6.tar.gz
+	source = xg3utility.1
+	source = xg3utility.desktop
+	md5sums = 9cfe876d6e1220d29ee22e1904e1fd98
+	md5sums = 9b109dc79ad4195f9a937f0482cb4324
+	md5sums = 1aed68a5d4c8631f0027156eaebe62a3
+	sha256sums = f0592a133d0e86fccf57413c89e096f8207a983a7a10aa9b49745d382c75df1e
+	sha256sums = de9c77223d69dbbf2d5fc451a3128dd53dcf326cee577cb9b2340e22367e5cc1
+	sha256sums = 3b08d63227279cd82d0703dfcc7f66cfa1d5b3a7f28c188b13672f1460fb7563
+
+pkgname = xg3utility

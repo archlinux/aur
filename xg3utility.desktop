@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=XG3-Utility
+Name[en_US]=XG3-Utility
+Comment=Elecraft XG3 Control Utility
+Comment[en_US]=Elecraft XG3 Control Utility
+Exec=xg3utility
+Icon=xg3utility
+MimeType=text/plain
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Network;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
