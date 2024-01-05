@@ -1,6 +1,6 @@
 pkgbase = orca-slicer-bin
 	pkgdesc = G-code generator for 3D printers
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = orca-slicer-bin
 	depends = ttf-harmonyos-sans
 	provides = orca-slicer
 	conflicts = orca-slicer
-	source = https://github.com/SoftFever/OrcaSlicer/releases/download/v1.8.1/OrcaSlicer_Linux_V1.8.1.AppImage
-	sha512sums = 9927f79ced5310af0375576f8b1a72663a1725985e0ad1caec3274ce4f3fd08fccd3b272beb0872426831aabd979957339f0cd730bb43975e89b404cd62ead78
+	source = https://github.com/SoftFever/OrcaSlicer/releases/download/v1.9.0/OrcaSlicer_Linux_V1.9.0.AppImage
+	sha512sums = 84642af068413744c05720f0bf2a7ad23c9b9d1a34a9a5393459209ee982d00dcc96e14dcdd168434d796c7297af16fadebb08690836454af8e0c5cb1b5b51ce
 
 pkgname = orca-slicer-bin
