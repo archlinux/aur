@@ -8,7 +8,7 @@ pkgname=${_pkgname}-bin
 
 _ghrepo=andydecleyre/archbuilder_${_pkgname}
 
-pkgver=4.14.1  # match telegram-desktop-userfonts:pkgver
+pkgver=4.14.2  # match telegram-desktop-userfonts:pkgver
 _pkgrel=1      # match telegram-desktop-userfonts:pkgrel
 
 pkgrel=1
@@ -22,7 +22,7 @@ license=('GPL3')
 # depends match telegram-desktop-userfonts:depends
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'jemalloc' 'abseil-cpp' 'libdispatch'
+         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'abseil-cpp' 'libdispatch'
          'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'glibmm-2.68')
 
 # optdepends match telegram-desktop-userfonts:optdepends
@@ -32,7 +32,7 @@ optdepends=('webkit2gtk: embedded browser features'
 source=("https://github.com/${_ghrepo}/releases/download/${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-${arch}.pkg.tar.zst")
 
 # sha512sums match latest successful build at releases URL
-sha512sums=('a91694dd1ae11d2886f9e71d5b2c39b4f8b02138c06dadde8a3f9c4f91c1b141e39647c270511838b755f3ac4beb812bb0181d0b6c8bfe2e7f2cd89c44bd4ca6')
+sha512sums=('1518f3ec54d714b3515fa92de0f4820262a5c359ce27d1df7e79c216ad56776b0267c11dae6ce787d8b2fb4d174390496b2b6c84c98e77a53162978522e2d106')
 
 package() {
   cp -a usr $pkgdir/
