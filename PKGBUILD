@@ -15,7 +15,7 @@ build () {
 
 package () {
 	cd $srcdir/pluto-git
-	mkdir -p $pkgdir/usr/local/bin
-	cp src/pluto $pkgdir/usr/local/bin/pluto
-	cp src/plutoc $pkgdir/usr/local/bin/plutoc
+	mkdir -p $pkgdir/usr/bin
+	cp src/pluto $pkgdir/usr/bin/pluto
+	cp src/plutoc $pkgdir/usr/bin/plutoc
 }
