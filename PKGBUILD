@@ -3,8 +3,8 @@
 # Contributor: Jean Lucas <jean at 4ray dot co>
 
 pkgname=tiny
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='A terminal IRC client written in Rust'
 arch=(x86_64)
 url=https://github.com/osa1/tiny
@@ -16,7 +16,7 @@ replaces=(tiny-irc-client)
 depends=(dbus)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=(4bd412760a35ff41220ab918702d003c710379537db9621477f63ee201a68440)
+sha256sums=(95406a234fe4c7013edab622970e89a5b56d4441fb5c1ec871a992fc6ee8db7a)
 options=(!lto)
 
 prepare() {
@@ -30,12 +30,10 @@ build() {
     cargo build --frozen --release --features desktop-notifications
 }
 
-# TODO: re-enable in the next tagged release
-# refer: issue #407, commit aaac385
-# check() {
-#     cd "$srcdir"/$pkgname-$pkgver
-#     cargo test --frozen --workspace --features desktop-notifications
-# }
+check() {
+    cd "$srcdir"/$pkgname-$pkgver
+    cargo test --frozen --workspace --features desktop-notifications
+}
 
 package() {
     cd "$srcdir"/$pkgname-$pkgver
