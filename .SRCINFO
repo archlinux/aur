@@ -1,0 +1,16 @@
+pkgbase = gdglight
+	pkgdesc = rust impliment for light
+	pkgver = 0.1.1
+	pkgrel = 1.0
+	url = https://github.com/Decodetalkers/gdglight
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = ninja
+	makedepends = meson
+	makedepends = rust
+	source = gdglight-v0.1.1.tar.gz::https://github.com/Decodetalkers/gdglight/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = df35759aa7539830ab3be1b61f42c3366f99cfe5561c5491b9812b239ceafaa5
+
+pkgname = gdglight
