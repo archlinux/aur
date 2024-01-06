@@ -1,0 +1,17 @@
+pkgbase = python-flash-patcher
+	pkgdesc = Adobe Flash SWF file patching tool
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/rayyaw/flash-patcher
+	arch = any
+	license = CC-BY-SA-4.0
+	makedepends = python-installer
+	makedepends = python-hatch
+	makedepends = antlr4
+	depends = ffdec
+	depends = python
+	depends = python-antlr4
+	source = https://github.com/rayyaw/flash-patcher/archive/refs/tags/v5.0.0.tar.gz
+	b2sums = 30468ef0737e908c16c9bf5e51484c1eab06a0841213a5bd7b082673a4b17addba0618cc0a988d6cc849ca6db9e966a91fd20830c5980789426be04739963e9f
+
+pkgname = python-flash-patcher
