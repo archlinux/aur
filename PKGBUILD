@@ -5,7 +5,7 @@
 
 pkgname=nzbget-git
 pkgver=testing.r2376.becca5eb
-pkgrel=1
+pkgrel=2
 pkgdesc="Download from Usenet using .nzb files"
 arch=('x86_64')
 url="https://github.com/nzbgetcom/nzbget"
@@ -32,7 +32,6 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 
-  make clean
   autoreconf --install
   ./configure --prefix=/usr --sbindir='/usr/bin' --enable-parcheck --with-tlslib=OpenSSL
   make
