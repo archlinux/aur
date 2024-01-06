@@ -2,27 +2,26 @@
 # Contributor K1412 <jonathan@opensides.be>
 
 pkgname="fusiondirectory-plugins"
-pkgver=1.4.dev
-pkgrel=3
-_commit="ffbf0f994950abac4a411b7840fcbcc614db9692"
+pkgver=1.4
+pkgrel=1
 pkgdesc="FusionDirectory core plugins"
 url="http://fusiondirectory.org/"
 license=("GPL2")
 arch=("any")
 depends=("fusiondirectory")
-source=("https://github.com/fusiondirectory/fusiondirectory-plugins/archive/$_commit.tar.gz"
+makedepends=("schema2ldif")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fusiondirectory/$pkgname/archive/refs/tags/fusiondirectory-$pkgver.tar.gz"
         #"WebAuthn.tar.gz::https://github.com/lbuchs/WebAuthn/archive/refs/heads/master.tar.gz"
         #"otphp.tar.gz::https://github.com/Spomky-Labs/otphp/archive/refs/tags/v10.0.1.tar.gz"
        )
-sha256sums=('dcef93d300e78328849bcaa1fbc7d1e8354f0cb3edf5ce088b05b210d93b5aad'
+b2sums=('e1902641e23a550ad0908d40efac2c55a7085693e5a424f7fa21257d1aa74799f2956451eb822e03f39eeaf27375c35fdb91dce18627a7b12201943226d26b21')
             #'78a6f197960e64d3a82de95c2264113bb7140df65c255f57786d8c248bdf1125'
             #'54f22631b429ae59c9a1fbe6ebb176bb55a4e1a4778110321acca6e48fe65fff'
-           )
 install="$pkgname.install"
 options=("!strip")
 
 package(){
- cd "$pkgname-$_commit"
+ cd "$pkgname-fusiondirectory-$pkgver"
  # remove hidden folders and files, but not the current directory (".")
  rm -r .[!.]*
  find . -maxdepth 1  -type f -exec rm {} \;
@@ -30,8 +29,8 @@ package(){
  plugins=(*)
  # broken plugins
  pluginsToSkip=(
-  "mixedgroups" # Duplicate attributeType: "1.3.6.1.1.1.1.2"
-  "webauthn" # Cannot initiate OTPHP/FactoryInterface class
+  #"mixedgroups" # Duplicate attributeType: "1.3.6.1.1.1.1.2"
+  #"webauthn" # Cannot initiate OTPHP/FactoryInterface class
  )
  # iterate for every plugin folder
  for plugin in "${plugins[@]}"; do
@@ -122,9 +121,11 @@ package(){
  done
  # convert schema to ldif
  # import of ldif files will be done by end user
- for file in "$pkgdir/etc/openldap/schema/fusiondirectory"/*.schema; do
-  schema2ldif "$file" > "${file/.schema/.ldif}"
- done
+ if [ -x "$(command -v schema2ldif)" ]; then
+  for file in "$pkgdir/etc/openldap/schema/fusiondirectory"/*.schema; do
+   schema2ldif "$file" > "${file/.schema/.ldif}"
+  done
+ fi
  # extract third party packages
  #echo "Installing third party packages for webauthn"
  #tar -xzf "$srcdir/WebAuthn.tar.gz" --strip-components=1 "WebAuthn-master/src/"
