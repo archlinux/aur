@@ -6,6 +6,7 @@ pkgbase = python-privy-git
 	arch = any
 	license = MIT
 	license = Apache
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
