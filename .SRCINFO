@@ -1,5 +1,5 @@
 pkgbase = immich-go-bin
-	pkgdesc = An alternative to the immich-CLI command that doesn't depend on nodejs installation.
+	pkgdesc = An alternative to the immich-CLI command that doesn't depend on a nodejs installation
 	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/simulot/immich-go
