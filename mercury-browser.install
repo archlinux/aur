@@ -3,8 +3,12 @@ msg_blue() {
   printf "${BLUE}==>${BOLD} $1${ALL_OFF}\n"
 }
 
-note() {
+note1() {
   printf "${BLUE}==>${YELLOW} NOTE:${BOLD} $1${ALL_OFF}\n"
+}
+
+note2() {
+  printf "${BLUE}==>      ${BOLD} $1${ALL_OFF}\n"
 }
 
 ALL_OFF="$(tput sgr0)"
@@ -20,10 +24,10 @@ WHITE="${BOLD}$(tput setaf 7)"
 
 post_install() {
   if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v3.*supported.*$' ; then
-    note "Enjoy the fastest Firefox fork on Earth: mercury-browser"
+    note1 "Enjoy the fastest Firefox fork on Earth: mercury-browser"
   else
-    note "Your processor does not support x86-64-v3."
-    note "mercury-browser may not work on your computer."
+    note1 "Your processor does not support x86-64-v3."
+    note2 "mercury-browser may not work on your computer."
   fi
 }
 

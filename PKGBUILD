@@ -2,26 +2,22 @@
 # Contributor: Alexey Peschany <archlinux at sandboiii dot xyz>
 
 # options
-if [ -z "$_srcinfo" ] ; then
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
   : ${_autoupdate:=false}
-elif [ -z "$_pkgver" ] ; then
-  : ${_autoupdate:=true}
 else
-  : ${_autoupdate:=false}
+  : ${_autoupdate:=true}
 fi
 
-: ${_pkgver:=115.4.0}
-
-: ${_pkgtype:=bin}
+: ${_pkgtype:=-bin}
 
 # basic info
 _pkgname="mercury-browser"
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=115.4.0
-pkgrel=5
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=121.0.1
+pkgrel=1
 pkgdesc="Compiler optimized, private Firefox fork"
 url="https://github.com/Alex313031/Mercury"
-license=('MPL' 'GPL' 'LGPL')
+license=('MPL-2.0')
 arch=('x86_64')
 
 # main package
@@ -33,15 +29,13 @@ _main_package() {
     'hunspell: Spell checking'
     'hyphen: Hyphenation'
     'networkmanager: Location detection via available WiFi networks'
-    'pulseaudio: Sound'
-    'upower: Battery API'
   )
 
   options=('!emptydirs' '!strip')
   install="$_pkgname.install"
 
   : ${_dl_filename:=${_pkgname}_${_pkgver:?}_amd64.deb}
-  : ${_dl_url:=$url/releases/download/v.$pkgver/$_dl_filename}
+  : ${_dl_url:=$url/releases/download/v.$_pkgver/$_dl_filename}
 
   noextract+=("$_dl_filename")
   source=(
@@ -65,28 +59,50 @@ package() {
   conflicts=("$_pkgname")
 
   depends+=(
+    'alsa-lib'
     'dbus-glib'
     'gtk3'
     'libnotify' # notify-send
-    'libxt'
-    'nss'
+
+    ## implicit
+    #at-spi2-core
+    #cairo
+    #dbus
+    #fontconfig
+    #freetype2
+    #gcc-libs
+    #gdk-pixbuf2
+    #glib2
+    #glibc
+    #libx11
+    #libxcb
+    #libxcomposite
+    #libxcursor
+    #libxdamage
+    #libxext
+    #libxfixes
+    #libxi
+    #libxrandr
+    #libxrender
+    #pango
   )
 
-  # extract archive
-  bsdtar -xf "$_dl_filename" data.tar.gz
-  bsdtar -xf data.tar.gz -C "${pkgdir:?}/"
-  rm data.tar.gz
+  local _filetype="zip"
+  if bsdtar -xf "$_dl_filename" -- data.tar.* &> /dev/null ; then
+    _filetype="deb"
+  fi
 
-  # move and copy files into position
-  install -Dm755 "$_pkgname.sh" "${pkgdir:?}/usr/bin/$_pkgname"
+  if [[ "${_filetype::1}" == 'z' ]] ; then
+    _package_zip
+  else
+    _package_deb
+  fi
 
-  install -dm755 "${pkgdir:?}/opt/$_pkgname"
-  mv "${pkgdir:?}/usr/lib/mercury"/* "${pkgdir:?}/opt/$_pkgname/"
-
-  install -Dm644 "${pkgdir:?}/usr/share/doc/mercury-browser/copyright" "${pkgdir:?}/usr/share/licenses/$pkgname/LICENSE"
+  # script
+  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 
   # fix permissions
-  chmod -R u+rwX,go+rX,go-w "${pkgdir:?}/"
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 
   # remove unnecessary folders
   \rm -rf "${pkgdir:?}/usr/lib/"
@@ -94,34 +110,83 @@ package() {
   \rm -rf "${pkgdir:?}/usr/share/lintian/"
 }
 
+_package_deb() {
+  # extract archive
+  bsdtar -xf "$_dl_filename" data.tar.*
+  bsdtar -xf data.tar.gz -C "$pkgdir/"
+  rm data.tar.gz
+
+  # move files from /lib to /opt
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  mv "$pkgdir/usr/lib/mercury"/* "$pkgdir/opt/$_pkgname/"
+}
+
+_package_zip() {
+  local _depth=$(
+    bsdtar -tf "$_dl_filename" -- */mercury/mercury$ \
+      | tr -cd '/' | wc -c
+  )
+
+  # extract archive
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  bsdtar --strip-components="$_depth" -C "$pkgdir/opt/$_pkgname/" -xf "$_dl_filename" '*/mercury/*'
+
+  # icon
+  install -Dm644 "$pkgdir/opt/$_pkgname/browser/chrome/icons/default/default128.png" -t "$pkgdir/usr/share/pixmaps/"
+
+  # desktop
+  install -Dvm644 /dev/stdin "$pkgdir/usr/share/applications/mercury-browser.desktop" <<END
+[Desktop Entry]
+Version=1.0
+Name=Mercury
+Comment=Browse the World Wide Web
+GenericName=Web Browser
+Keywords=Internet;WWW;Browser;Web;Explorer;Mercury
+Exec=mercury-browser %u
+StartupWMClass=mercury
+Terminal=false
+X-MultipleArgs=true
+Type=Application
+Icon=mercury
+Categories=GNOME;GTK;Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
+StartupNotify=true
+Actions=NewWindow;NewPrivateWindow;TempUserDir;
+
+[Desktop Action NewWindow]
+Name=New Window
+Exec=mercury-browser -new-window
+
+[Desktop Action NewPrivateWindow]
+Name=New Private Window
+Exec=mercury-browser -private-window
+
+[Desktop Action TempUserDir]
+Name=Open With Temporary User Profile
+Exec=mercury-browser --temp-profile
+END
+}
+
 # update version
 _update_version() {
-  if [ x"${_autoupdate::1}" != "xt" ] ; then
+  : ${_pkgver:=${pkgver%%.r*}}
+
+  if [[ "${_autoupdate::1}" != "t" ]] ; then
     return
   fi
 
-  _response=$(curl "https://api.github.com/repos/${url#*.com/}/releases" -s)
-
-  _get() {
+  local _response=$(curl -Ssf "$url/releases.atom")
+  local _tag=$(
     printf '%s' "$_response" \
-      | awk -F '"' '/"'"$1"'":/{print $4}' \
-      | grep -E '_amd64\.deb' \
-      | head -1 | sed 's/^v//'
-  }
-
-  _dl_url=$(_get browser_download_url)
-  _dl_filename="${_dl_url##*/}"
-
-  _regex='^.*mercury-browser_([0-9\.]+)_.*\.deb.*$'
-  _pkgver_new=$(
-    printf '%s' "$_dl_url" \
-      | grep -E "$_regex" | head -1 | sed -E "s@$_regex@\1@"
+      | grep '/releases/tag/' \
+      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
+      | grep -Ev '[a-z]{2}' | sort -V | tail -1
   )
+  local _pkgver_new="${_tag#v.}"
 
   # update _pkgver
-  if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
-    _pkgver="$_pkgver_new"
-    sed -Ei "s@^(\s*: \\\$\{_pkgver):=.*\}\$@\1:=${_pkgver:?}}@" "$startdir/PKGBUILD"
+  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+    _pkgver="${_pkgver_new:?}"
   fi
 }
 

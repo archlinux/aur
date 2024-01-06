@@ -1,32 +1,27 @@
 pkgbase = mercury-browser-bin
 	pkgdesc = Compiler optimized, private Firefox fork
-	pkgver = 115.4.0
-	pkgrel = 5
+	pkgver = 121.0.1
+	pkgrel = 1
 	url = https://github.com/Alex313031/Mercury
 	install = mercury-browser.install
 	arch = x86_64
-	license = MPL
-	license = GPL
-	license = LGPL
+	license = MPL-2.0
 	optdepends = ffmpeg: H264/AAC/MP3 decoding
 	optdepends = hunspell: Spell checking
 	optdepends = hyphen: Hyphenation
 	optdepends = networkmanager: Location detection via available WiFi networks
-	optdepends = pulseaudio: Sound
-	optdepends = upower: Battery API
-	noextract = mercury-browser_115.4.0_amd64.deb
+	noextract = mercury-browser_121.0.1_amd64.deb
 	options = !emptydirs
 	options = !strip
-	source = mercury-browser_115.4.0_amd64.deb::https://github.com/Alex313031/Mercury/releases/download/v.115.4.0/mercury-browser_115.4.0_amd64.deb
+	source = mercury-browser_121.0.1_amd64.deb::https://github.com/Alex313031/Mercury/releases/download/v.121.0.1/mercury-browser_121.0.1_amd64.deb
 	source = mercury-browser.sh
 	sha256sums = SKIP
 	sha256sums = 7565aa160be433bcc030c2fc14627ce12c91fbb953d8ba8af8185ccd356022f5
 
 pkgname = mercury-browser-bin
+	depends = alsa-lib
 	depends = dbus-glib
 	depends = gtk3
 	depends = libnotify
-	depends = libxt
-	depends = nss
-	provides = mercury-browser=115.4.0
+	provides = mercury-browser=121.0.1
 	conflicts = mercury-browser
