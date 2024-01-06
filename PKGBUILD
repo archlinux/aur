@@ -2,7 +2,7 @@
 
 _name=kcalendarcore
 pkgname=${_name}5
-pkgver=5.113.0
+pkgver=5.114.0
 pkgrel=1
 pkgdesc='The KDE calendar access library'
 arch=(x86_64)
@@ -14,7 +14,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('82715224f349c254f3c0894840a30163df5c074aaac92b1da3577dc7f097faa2'
+sha256sums=('f74cca0dc11a769b9015a6ee09400621ae630edce4ef46cb7784e31f806a352a'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
