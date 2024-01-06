@@ -3,27 +3,23 @@
 
 pkgname=ollama-cuda
 pkgdesc='Create, run and share large language models (LLMs) with CUDA'
-pkgver=0.1.17
-pkgrel=2
+pkgver=0.1.18
+pkgrel=1
 arch=(x86_64)
 url='https://github.com/jmorganca/ollama'
 license=(MIT)
-_ollamacommit=6b5bdfa6c9321405174ad443f21c2e41db36a867 # tag: v0.1.17
 # The git submodule commit hashes are here:
-# https://github.com/jmorganca/ollama/tree/v0.1.17/llm/llama.cpp
-_ggmlcommit=9e232f0234073358e7031c1b8d7aa45020469a3b
-_ggufcommit=a7aee47b98e45539d491071b25778b833b77e387
+# https://github.com/jmorganca/ollama/tree/v$pkgver
+_llamacppcommit=328b83de23b33240e28f4e74900d1d06726f5eb1
 makedepends=(cmake cuda git go)
 provides=(ollama)
 conflicts=(ollama)
-source=(git+$url#commit=$_ollamacommit
-        ggml::git+https://github.com/ggerganov/llama.cpp#commit=$_ggmlcommit
-        gguf::git+https://github.com/ggerganov/llama.cpp#commit=$_ggufcommit
+source=(git+$url#tag=v$pkgver
+        llamacpp::git+https://github.com/ggerganov/llama.cpp#commit=$_llamacppcommit
         sysusers.conf
         tmpfiles.d
         ollama.service)
 b2sums=('SKIP'
-        'SKIP'
         'SKIP'
         '3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec'
         'c890a741958d31375ebbd60eeeb29eff965a6e1e69f15eb17ea7d15b575a4abee176b7d407b3e1764aa7436862a764a05ad04bb9901a739ffd81968c09046bb6'
@@ -32,14 +28,13 @@ b2sums=('SKIP'
 prepare() {
   cd ${pkgname/-cuda}
 
-  rm -frv llm/llama.cpp/gg{ml,uf}
+  rm -frv llm/llama.cpp
 
   # Copy git submodule files instead of symlinking because the build process is sensitive to symlinks.
-  cp -r "$srcdir/ggml" llm/llama.cpp/ggml
-  cp -r "$srcdir/gguf" llm/llama.cpp/gguf
+  cp -r "$srcdir/llamacpp" llm/llama.cpp
 
   # Do not git clone when "go generate" is being run.
-  sed -i 's,git submodule,true,g' llm/llama.cpp/generate_linux.go
+  sed -i 's,git submodule,true,g' llm/generate/gen_common.sh
 
   # Set build mode to release
   sed -i '33s/DebugMode/ReleaseMode/;45s/DebugMode/ReleaseMode/' "$srcdir/ollama/server/routes.go"
