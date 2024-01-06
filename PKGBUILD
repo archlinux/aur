@@ -2,7 +2,7 @@
 # Contributor: Harold Leboulanger <harold.leboulanger AT gmail DOT com>
 # Contributor: McNoggins <gagnon88 AT gmail DOT com>
 pkgname=ttwatch-git
-pkgver=20190211
+pkgver=20231110
 pkgrel=1
 pkgdesc="TomTom GPS Watch Utilities"
 arch=('i686' 'x86_64')
