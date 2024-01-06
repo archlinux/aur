@@ -1,13 +1,13 @@
 pkgbase = passmantrs-bin
 	pkgdesc = PassmanTRS is a password manager that uses Tauri and Rust
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/gamersi/passmantrs
 	arch = x86_64
 	license = MIT
 	depends = gtk3
 	depends = webkit2gtk
-	source = https://github.com/gamersi/PassmanTRS/releases/download/app-v0.1.0/passman-trs_0.1.0_amd64.deb
+	source = https://github.com/gamersi/PassmanTRS/releases/download/app-v0.1.1/passman-trs_0.1.1_amd64.deb
 	sha256sums = SKIP
 
 pkgname = passmantrs-bin

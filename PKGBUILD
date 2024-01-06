@@ -1,6 +1,6 @@
 # Maintainer: Simon <simon at gamersi dot at>
 pkgname='passmantrs-bin'
-pkgver='0.1.0'
+pkgver='0.1.1'
 pkgrel='1'
 pkgdesc='PassmanTRS is a password manager that uses Tauri and Rust'
 arch=('x86_64')
