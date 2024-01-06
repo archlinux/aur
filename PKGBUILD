@@ -4,12 +4,12 @@
 : ${_autoupdate:=true}
 : ${_system_electron:=true}
 
-: ${_pkgtype:=latest-bin}
+: ${_pkgtype:=-latest-bin}
 
 # basic info
 _pkgname='beeper'
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=3.90.22
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=3.91.55
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
@@ -144,7 +144,7 @@ _update_version() {
 
   _pkgver_new=$(
     printf '%s' "$_filename" \
-      | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]+)(-.*)?.AppImage$@\1@'
+      | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]{2})(.*)?.AppImage$@\1@'
   )
 
   # update _pkgver
