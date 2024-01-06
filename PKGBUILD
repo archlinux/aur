@@ -1,7 +1,7 @@
 # Maintainer: Maria Lisina <sekoohaka.sarisan@gmail.com>
 
 pkgname=telegram-bot-api
-pkgver=6.9.2
+pkgver=7.0
 pkgrel=1
 pkgdesc="Telegram Bot API server"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('gcc-libs' 'openssl' 'zlib')
 makedepends=('cmake>=3.0.2' 'gcc>=4.9.2' 'git' 'gperf')
 provides=('telegram-bot-api')
 conflicts=('telegram-bot-api-git')
-_commit=96d0d1c6689451207bc66d179983c10949322823
-_commit1=9184b3e62de59663a59d3500528aee7e5f0d83fa
+_commit=ade0841d41b7126c2d908475291a5e1cd8a1b905
+_commit1=27c3eaeb4964bd5f18d8488e354abde1a4383e49
 source=("git+https://github.com/tdlib/telegram-bot-api.git#commit=$_commit"
         "git+https://github.com/tdlib/td.git#commit=$_commit1")
 sha256sums=('SKIP'
