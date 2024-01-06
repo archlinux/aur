@@ -1,0 +1,50 @@
+diff --git a/src/cmake/FindUncertaintyTE.cmake b/src/cmake/FindUncertaintyTE.cmake
+index bcd4d6bfe..9047b264e 100644
+--- a/src/cmake/FindUncertaintyTE.cmake
++++ b/src/cmake/FindUncertaintyTE.cmake
+@@ -30,7 +30,7 @@ FIND_LIBRARY(UNCERTAINTYTE_LIBRARY NAMES uncertaintyTE
+   PATH_SUFFIXES
+     lib
+ )
+-
++message("lalalalala " ${UNCERTAINTYTE_LIBRARY})
+ IF(UNCERTAINTYTE_INCLUDE_DIR)
+   MESSAGE(STATUS "UncertaintyTE headers found in ${UNCERTAINTYTE_INCLUDE_DIR}")
+   IF(NOT MAGMA_FOUND)
+@@ -39,6 +39,7 @@ IF(UNCERTAINTYTE_INCLUDE_DIR)
+     IF(MAGMA_FOUND)
+       set(UNCERTAINTYTE_INCLUDE_DIR ${UNCERTAINTYTE_INCLUDE_DIR} ${MAGMA_INCLUDE_DIRS})
+       set(UNCERTAINTYTE_LIBRARY ${UNCERTAINTYTE_LIBRARY} ${MAGMA_LIBRARIES})
++      message("lelelelelele " ${UNCERTAINTYTE_LIBRARY})
+     ELSE()
+       MESSAGE(WARNING "Couldn't find Magma, this is needed for compiling with UncertaintyTE")
+       # this is to make the find_package_handle_standard_args  fail
+diff --git a/src/software/utils/main_computeUncertainty.cpp b/src/software/utils/main_computeUncertainty.cpp
+index 23d2ab9ee..5bba4d7b2 100644
+--- a/src/software/utils/main_computeUncertainty.cpp
++++ b/src/software/utils/main_computeUncertainty.cpp
+@@ -41,7 +41,8 @@ int aliceVision_main(int argc, char **argv)
+   std::string algorithm = cov::EAlgorithm_enumToString(cov::eAlgorithmSvdTaylorExpansion);
+   bool debug = false;
+ 
+-  params.add_options()
++  po::options_description requiredParams("Required parameters");
++  requiredParams.add_options()
+     ("input,i", po::value<std::string>(&sfmDataFilename)->required(),
+       "SfMData file to align.")
+   ("output,o", po::value<std::string>(&outSfMDataFilename)->required(),
+@@ -51,12 +52,10 @@ int aliceVision_main(int argc, char **argv)
+   ("algorithm,a", po::value<std::string>(&algorithm)->default_value(algorithm),
+     "Algorithm.")
+   ("debug,d", po::value<bool>(&debug)->default_value(debug),
+-    "Enable creation of debug files in the current folder.")
+-    ("verboseLevel,v", po::value<std::string>(&verboseLevel)->default_value(verboseLevel),
+-      "verbosity level (fatal,  error, warning, info, debug, trace).");
++    "Enable creation of debug files in the current folder.");
+ 
+   CmdLine cmdline("AliceVision computeUncertainty");
+-  cmdline.add(params);
++  cmdline.add(requiredParams);
+   if (!cmdline.execute(argc, argv))
+   {
+       return EXIT_FAILURE;
