@@ -1,0 +1,19 @@
+pkgbase = wscreensaver-bridge-git
+	pkgdesc = Bridge screensaver inhibit D-Bus interfaces to Wayland idle inhibit
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/kelvie/wscreensaver-bridge
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = dbus
+	depends = glibc
+	provides = wscreensaver-bridge
+	conflicts = wscreensaver-bridge
+	source = wscreensaver-bridge::git+https://github.com/kelvie/wscreensaver-bridge.git
+	sha256sums = SKIP
+
+pkgname = wscreensaver-bridge-git
