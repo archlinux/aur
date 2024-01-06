@@ -1,13 +1,13 @@
 # Maintainer: hossbeast <todd DOT freed AT gmail DOT com>
 
 pkgname=meshboard
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Synchronize the clipboard across a mesh of hosts"
 arch=('x86_64')
 url="https://git.sr.ht/~hossbeast/meshboard"
 license=('GPL3')
-depends=('wayland' 'libxfixes')
+depends=('glibc' 'wayland' 'libxfixes' 'libx11')
 makedepends=('git' 'perl')
 source=(
   "meshboard::git+https://git.sr.ht/~hossbeast/meshboard#tag=v${pkgver}?signed"
