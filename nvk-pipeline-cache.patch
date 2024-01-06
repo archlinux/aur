@@ -1,7 +1,7 @@
-From 0b2ef75bc3ccdf2738ba16ef472d48514c1c9a2c Mon Sep 17 00:00:00 2001
+From 9c098f7632f921debc33f77c5a9d438fcfe54204 Mon Sep 17 00:00:00 2001
 From: "Thomas H.P. Andersen" <phomes@gmail.com>
 Date: Wed, 4 Oct 2023 20:37:40 +0200
-Subject: [PATCH 1/9] nvk: loop over stages in MESA order
+Subject: [PATCH 1/8] nvk: loop over stages in MESA order
 
 we do this to make the VkPipelineShaderStageCreateInfo available
 when we want to calculate the shader hash
@@ -10,10 +10,10 @@ when we want to calculate the shader hash
  1 file changed, 15 insertions(+), 4 deletions(-)
 
 diff --git a/src/nouveau/vulkan/nvk_graphics_pipeline.c b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-index c5077086500..5a662e62938 100644
+index 8485818fcd34..657954108659 100644
 --- a/src/nouveau/vulkan/nvk_graphics_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-@@ -318,12 +318,20 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -183,12 +183,20 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
                                              NULL, 0, &all, NULL, 0, NULL);
     assert(result == VK_SUCCESS);
  
@@ -34,7 +34,7 @@ index c5077086500..5a662e62938 100644
  
        vk_pipeline_robustness_state_fill(&dev->vk, &robustness[stage],
                                          pCreateInfo->pNext, sinfo->pNext);
-@@ -339,16 +347,19 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -204,16 +212,19 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
        merge_tess_info(&nir[MESA_SHADER_TESS_EVAL]->info, &nir[MESA_SHADER_TESS_CTRL]->info);
     }
  
@@ -59,23 +59,23 @@ index c5077086500..5a662e62938 100644
  
        struct nak_fs_key fs_key_tmp, *fs_key = NULL;
 -- 
-2.43.0
+GitLab
 
 
-From 4aa96fead4a0bbe04c13fceb835d04cb9b175591 Mon Sep 17 00:00:00 2001
+From 8261e3502b3e81777e0a6a6784bf6617b9fd1876 Mon Sep 17 00:00:00 2001
 From: "Thomas H.P. Andersen" <phomes@gmail.com>
 Date: Wed, 4 Oct 2023 20:38:01 +0200
-Subject: [PATCH 2/9] nvk: add hashing for shaders
+Subject: [PATCH 2/8] nvk: add hashing for shaders
 
 ---
  src/nouveau/vulkan/nvk_compute_pipeline.c  |  3 ++
  src/nouveau/vulkan/nvk_graphics_pipeline.c |  3 ++
  src/nouveau/vulkan/nvk_shader.c            | 33 ++++++++++++++++++++++
- src/nouveau/vulkan/nvk_shader.h            | 23 ++++-----------
- 4 files changed, 45 insertions(+), 17 deletions(-)
+ src/nouveau/vulkan/nvk_shader.h            |  7 +++++
+ 4 files changed, 46 insertions(+)
 
 diff --git a/src/nouveau/vulkan/nvk_compute_pipeline.c b/src/nouveau/vulkan/nvk_compute_pipeline.c
-index a74b3765aa1..1618a6e1c5b 100644
+index a74b3765aa16..1618a6e1c5b0 100644
 --- a/src/nouveau/vulkan/nvk_compute_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_compute_pipeline.c
 @@ -188,6 +188,9 @@ nvk_compute_pipeline_create(struct nvk_device *dev,
@@ -89,10 +89,10 @@ index a74b3765aa1..1618a6e1c5b 100644
                              shader);
     ralloc_free(nir);
 diff --git a/src/nouveau/vulkan/nvk_graphics_pipeline.c b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-index 5a662e62938..cda13c2fe0a 100644
+index 657954108659..8f2b621cc26d 100644
 --- a/src/nouveau/vulkan/nvk_graphics_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-@@ -368,6 +368,9 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -233,6 +233,9 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
           fs_key = &fs_key_tmp;
        }
  
@@ -103,10 +103,10 @@ index 5a662e62938..cda13c2fe0a 100644
                                 &robustness[stage], fs_key,
                                 &pipeline->base.shaders[stage]);
 diff --git a/src/nouveau/vulkan/nvk_shader.c b/src/nouveau/vulkan/nvk_shader.c
-index 88f83343b6e..4ff4ebed5a3 100644
+index f37bf1f44780..e4dd2b914c60 100644
 --- a/src/nouveau/vulkan/nvk_shader.c
 +++ b/src/nouveau/vulkan/nvk_shader.c
-@@ -511,3 +511,36 @@ nvk_shader_finish(struct nvk_device *dev, struct nvk_shader *shader)
+@@ -514,3 +514,36 @@ nvk_shader_finish(struct nvk_device *dev, struct nvk_shader *shader)
     if (shader->nak)
        nak_shader_bin_destroy(shader->nak);
  }
@@ -116,7 +116,7 @@ index 88f83343b6e..4ff4ebed5a3 100644
 +                const VkPipelineShaderStageCreateInfo *sinfo,
 +                const struct vk_pipeline_robustness_state *rstate,
 +                const struct vk_pipeline_layout *layout,
-+                const struct nvk_fs_key *fs_key)
++                const struct nak_fs_key *fs_key)
 +{
 +   struct mesa_sha1 ctx;
 +
@@ -144,75 +144,65 @@ index 88f83343b6e..4ff4ebed5a3 100644
 +   _mesa_sha1_final(&ctx, hash);
 +}
 diff --git a/src/nouveau/vulkan/nvk_shader.h b/src/nouveau/vulkan/nvk_shader.h
-index 0644b4e4e7a..60cf955c6b3 100644
+index dea5cdf0bd6a..d8b019bece91 100644
 --- a/src/nouveau/vulkan/nvk_shader.h
 +++ b/src/nouveau/vulkan/nvk_shader.h
-@@ -124,22 +124,11 @@ nvk_shader_upload(struct nvk_device *dev, struct nvk_shader *shader);
+@@ -130,6 +130,13 @@ nvk_shader_upload(struct nvk_device *dev, struct nvk_shader *shader);
  void
  nvk_shader_finish(struct nvk_device *dev, struct nvk_shader *shader);
  
--/* Codegen wrappers.
-- *
-- * TODO: Delete these once NAK supports everything.
-- */
--uint64_t nvk_cg_get_prog_debug(void);
--uint64_t nvk_cg_get_prog_optimize(void);
--
--const nir_shader_compiler_options *
--nvk_cg_nir_options(const struct nvk_physical_device *pdev,
--                   gl_shader_stage stage);
--
--void nvk_cg_preprocess_nir(nir_shader *nir);
--void nvk_cg_optimize_nir(nir_shader *nir);
--
--VkResult nvk_cg_compile_nir(struct nvk_physical_device *pdev, nir_shader *nir,
--                            const struct nak_fs_key *fs_key,
--                            struct nvk_shader *shader);
 +void
 +nvk_hash_shader(unsigned char *hash,
 +                 const VkPipelineShaderStageCreateInfo *sinfo,
 +                 const struct vk_pipeline_robustness_state *rstate,
 +                 const struct vk_pipeline_layout *layout,
-+                 const struct nvk_fs_key *fs_key);
- 
- #endif
++                 const struct nak_fs_key *fs_key);
++
+ /* Codegen wrappers.
+  *
+  * TODO: Delete these once NAK supports everything.
 -- 
-2.43.0
+GitLab
 
 
-From 073aee0aa8f39f04745e88ba59c0b20ec330bc22 Mon Sep 17 00:00:00 2001
+From 2925989d9bcbfa7f3f99b28d53c21ee4ce93bb86 Mon Sep 17 00:00:00 2001
 From: "Thomas H.P. Andersen" <phomes@gmail.com>
 Date: Tue, 17 Oct 2023 02:08:33 +0200
-Subject: [PATCH 3/9] nvk: allocatable nvk_shaders
+Subject: [PATCH 3/8] nvk: allocatable nvk_shaders
 
 This will be needed later when the shader life cycle will be managed
 by the pipeline cache
 ---
- src/nouveau/vulkan/nvk_cmd_buffer.c        |  2 +
- src/nouveau/vulkan/nvk_cmd_dispatch.c      |  2 +-
- src/nouveau/vulkan/nvk_compute_pipeline.c  |  4 +-
- src/nouveau/vulkan/nvk_graphics_pipeline.c | 15 +++++---
- src/nouveau/vulkan/nvk_pipeline.c          |  2 +-
+ src/nouveau/vulkan/nvk_cmd_buffer.c        |  6 ++++--
+ src/nouveau/vulkan/nvk_cmd_dispatch.c      |  4 ++--
+ src/nouveau/vulkan/nvk_cmd_draw.c          | 12 ++++++------
+ src/nouveau/vulkan/nvk_compute_pipeline.c  |  5 +++--
+ src/nouveau/vulkan/nvk_graphics_pipeline.c | 13 +++++++------
+ src/nouveau/vulkan/nvk_pipeline.c          | 10 ++++++----
  src/nouveau/vulkan/nvk_pipeline.h          |  2 +-
- src/nouveau/vulkan/nvk_shader.c            | 44 +++++++++++++++++-----
- src/nouveau/vulkan/nvk_shader.h            |  6 +--
- 8 files changed, 54 insertions(+), 23 deletions(-)
+ src/nouveau/vulkan/nvk_shader.c            | 21 ++++++++++++++++++++-
+ src/nouveau/vulkan/nvk_shader.h            |  7 +++++--
+ 9 files changed, 54 insertions(+), 26 deletions(-)
 
 diff --git a/src/nouveau/vulkan/nvk_cmd_buffer.c b/src/nouveau/vulkan/nvk_cmd_buffer.c
-index 53327917092..e763295df64 100644
+index 53327917092b..b8828b7d350e 100644
 --- a/src/nouveau/vulkan/nvk_cmd_buffer.c
 +++ b/src/nouveau/vulkan/nvk_cmd_buffer.c
-@@ -537,6 +537,8 @@ nvk_CmdBindPipeline(VkCommandBuffer commandBuffer,
+@@ -537,8 +537,10 @@ nvk_CmdBindPipeline(VkCommandBuffer commandBuffer,
     struct nvk_device *dev = nvk_cmd_buffer_device(cmd);
  
     for (unsigned s = 0; s < ARRAY_SIZE(pipeline->shaders); s++) {
-+      if (!pipeline->shaders[s])
+-      if (pipeline->shaders[s].info.slm_size)
+-         nvk_device_ensure_slm(dev, pipeline->shaders[s].info.slm_size);
++      if(!pipeline->shaders[s])
 +         continue;
-       if (pipeline->shaders[s].info.slm_size)
-          nvk_device_ensure_slm(dev, pipeline->shaders[s].info.slm_size);
++      if (pipeline->shaders[s]->info.slm_size)
++         nvk_device_ensure_slm(dev, pipeline->shaders[s]->info.slm_size);
     }
+ 
+    switch (pipelineBindPoint) {
 diff --git a/src/nouveau/vulkan/nvk_cmd_dispatch.c b/src/nouveau/vulkan/nvk_cmd_dispatch.c
-index 5708c815da6..2ca1e9daca1 100644
+index 5708c815da62..c43bf3773604 100644
 --- a/src/nouveau/vulkan/nvk_cmd_dispatch.c
 +++ b/src/nouveau/vulkan/nvk_cmd_dispatch.c
 @@ -148,7 +148,7 @@ nvk_compute_local_size(struct nvk_cmd_buffer *cmd)
@@ -224,16 +214,70 @@ index 5708c815da6..2ca1e9daca1 100644
  
     return shader->info.cs.local_size[0] *
            shader->info.cs.local_size[1] *
+@@ -211,7 +211,7 @@ nvk_flush_compute_state(struct nvk_cmd_buffer *cmd,
+    }
+ 
+    const struct nvk_shader *shader =
+-      &pipeline->base.shaders[MESA_SHADER_COMPUTE];
++      pipeline->base.shaders[MESA_SHADER_COMPUTE];
+    for (uint32_t c = 0; c < shader->cbuf_map.cbuf_count; c++) {
+       const struct nvk_cbuf *cbuf = &shader->cbuf_map.cbufs[c];
+ 
+diff --git a/src/nouveau/vulkan/nvk_cmd_draw.c b/src/nouveau/vulkan/nvk_cmd_draw.c
+index 22b2b760d2fc..5cbf6b978c8c 100644
+--- a/src/nouveau/vulkan/nvk_cmd_draw.c
++++ b/src/nouveau/vulkan/nvk_cmd_draw.c
+@@ -934,7 +934,7 @@ nvk_cmd_bind_graphics_pipeline(struct nvk_cmd_buffer *cmd,
+     * tessellation parameters at flush_ts_state, as the domain origin can be
+     * dynamic.
+     */
+-   if (nvk_shader_is_enabled(&pipeline->base.shaders[MESA_SHADER_TESS_EVAL])) {
++   if (nvk_shader_is_enabled(pipeline->base.shaders[MESA_SHADER_TESS_EVAL])) {
+       BITSET_SET(cmd->vk.dynamic_graphics_state.dirty,
+                  MESA_VK_DYNAMIC_TS_DOMAIN_ORIGIN);
+    }
+@@ -1017,7 +1017,7 @@ nvk_flush_ts_state(struct nvk_cmd_buffer *cmd)
+    if (BITSET_TEST(dyn->dirty, MESA_VK_DYNAMIC_TS_DOMAIN_ORIGIN)) {
+       const struct nvk_graphics_pipeline *pipeline= cmd->state.gfx.pipeline;
+       const struct nvk_shader *shader =
+-         &pipeline->base.shaders[MESA_SHADER_TESS_EVAL];
++         pipeline->base.shaders[MESA_SHADER_TESS_EVAL];
+ 
+       if (nvk_shader_is_enabled(shader)) {
+          enum nak_ts_prims prims = shader->info.ts.prims;
+@@ -1883,8 +1883,8 @@ nvk_flush_descriptors(struct nvk_cmd_buffer *cmd)
+ 
+    uint32_t root_cbuf_count = 0;
+    for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
+-      const struct nvk_shader *shader = &pipeline->base.shaders[stage];
+-      if (shader->code_size == 0)
++      const struct nvk_shader *shader = pipeline->base.shaders[stage];
++      if (!shader || shader->code_size == 0)
+          continue;
+ 
+       uint32_t group = stage;
+@@ -1953,8 +1953,8 @@ nvk_flush_descriptors(struct nvk_cmd_buffer *cmd)
+    P_NV9097_SET_CONSTANT_BUFFER_SELECTOR_C(p, root_desc_addr);
+ 
+    for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
+-      const struct nvk_shader *shader = &pipeline->base.shaders[stage];
+-      if (shader->code_size == 0)
++      const struct nvk_shader *shader = pipeline->base.shaders[stage];
++      if (!shader || shader->code_size == 0)
+          continue;
+ 
+       uint32_t group = stage;
 diff --git a/src/nouveau/vulkan/nvk_compute_pipeline.c b/src/nouveau/vulkan/nvk_compute_pipeline.c
-index 1618a6e1c5b..eb3413d2eb5 100644
+index 1618a6e1c5b0..fa976f0374c8 100644
 --- a/src/nouveau/vulkan/nvk_compute_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_compute_pipeline.c
-@@ -184,14 +184,14 @@ nvk_compute_pipeline_create(struct nvk_device *dev,
+@@ -184,14 +184,15 @@ nvk_compute_pipeline_create(struct nvk_device *dev,
     if (result != VK_SUCCESS)
        goto fail;
  
 -   struct nvk_shader *shader = &pipeline->base.shaders[MESA_SHADER_COMPUTE];
-+   struct nvk_shader *shader = pipeline->base.shaders[MESA_SHADER_COMPUTE];
++   struct nvk_shader *shader = nvk_shader_init(dev);
++   pipeline->base.shaders[MESA_SHADER_COMPUTE] = shader;
  
     nvk_lower_nir(dev, nir, &robustness, false, pipeline_layout, shader);
  
@@ -246,10 +290,10 @@ index 1618a6e1c5b..eb3413d2eb5 100644
     ralloc_free(nir);
     if (result != VK_SUCCESS)
 diff --git a/src/nouveau/vulkan/nvk_graphics_pipeline.c b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-index cda13c2fe0a..11e845d85f1 100644
+index 8f2b621cc26d..5dc69e38af59 100644
 --- a/src/nouveau/vulkan/nvk_graphics_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-@@ -300,7 +300,6 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -165,7 +165,6 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
                               VkPipeline *pPipeline)
  {
     VK_FROM_HANDLE(vk_pipeline_layout, pipeline_layout, pCreateInfo->layout);
@@ -257,14 +301,28 @@ index cda13c2fe0a..11e845d85f1 100644
     struct nvk_graphics_pipeline *pipeline;
     VkResult result = VK_SUCCESS;
  
-@@ -371,14 +370,14 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -217,9 +216,11 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+       if (sinfo == NULL)
+          continue;
+ 
++      pipeline->base.shaders[stage] = nvk_shader_init(dev);
++
+       nvk_lower_nir(dev, nir[stage], &robustness[stage],
+                     state.rp->view_mask != 0, pipeline_layout,
+-                    &pipeline->base.shaders[stage]);
++                    pipeline->base.shaders[stage]);
+    }
+ 
+    for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
+@@ -236,14 +237,14 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
        unsigned char sha1[SHA1_DIGEST_LENGTH];
        nvk_hash_shader(sha1, sinfo, &robustness[stage], pipeline_layout, fs_key);
  
 -      result = nvk_compile_nir(pdev, nir[stage], pipeline_flags,
 +      result = nvk_compile_nir(dev, nir[stage], pipeline_flags,
                                 &robustness[stage], fs_key,
-                                &pipeline->base.shaders[stage]);
+-                               &pipeline->base.shaders[stage]);
++                               pipeline->base.shaders[stage]);
        ralloc_free(nir[stage]);
        if (result != VK_SUCCESS)
           goto fail;
@@ -274,31 +332,17 @@ index cda13c2fe0a..11e845d85f1 100644
        if (result != VK_SUCCESS)
           goto fail;
     }
-@@ -391,15 +390,19 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -256,7 +257,7 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
  
     struct nvk_shader *last_geom = NULL;
     for (gl_shader_stage stage = 0; stage <= MESA_SHADER_FRAGMENT; stage++) {
 -      struct nvk_shader *shader = &pipeline->base.shaders[stage];
 +      struct nvk_shader *shader = pipeline->base.shaders[stage];
-+      uint32_t upload_size = 0;
-+      if (shader)
-+         upload_size = shader->upload_size;
-+
        uint32_t idx = mesa_to_nv9097_shader_type[stage];
  
        P_IMMD(p, NV9097, SET_PIPELINE_SHADER(idx), {
--         .enable  = shader->upload_size > 0,
-+         .enable  = upload_size > 0,
-          .type    = mesa_to_nv9097_shader_type[stage],
-       });
- 
--      if (shader->upload_size == 0)
-+      if (!shader || shader->upload_size == 0)
-          continue;
- 
-       if (stage != MESA_SHADER_FRAGMENT)
 diff --git a/src/nouveau/vulkan/nvk_pipeline.c b/src/nouveau/vulkan/nvk_pipeline.c
-index a4ee7f8b37f..29519e6c281 100644
+index a4ee7f8b37f3..196c8bec457f 100644
 --- a/src/nouveau/vulkan/nvk_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_pipeline.c
 @@ -33,7 +33,7 @@ nvk_pipeline_free(struct nvk_device *dev,
@@ -310,8 +354,33 @@ index a4ee7f8b37f..29519e6c281 100644
  
     vk_object_free(&dev->vk, pAllocator, pipeline);
  }
+@@ -131,7 +131,8 @@ nvk_GetPipelineExecutablePropertiesKHR(
+                           pProperties, pExecutableCount);
+ 
+    for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
+-      if (pipeline->shaders[stage].code_size == 0)
++      const struct nvk_shader *shader = pipeline->shaders[stage];
++      if (!shader || shader->code_size == 0)
+          continue;
+ 
+       vk_outarray_append_typed(VkPipelineExecutablePropertiesKHR, &out, props) {
+@@ -150,11 +151,12 @@ static struct nvk_shader *
+ shader_for_exe_idx(struct nvk_pipeline *pipeline, uint32_t idx)
+ {
+    for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
+-      if (pipeline->shaders[stage].code_size == 0)
++      const struct nvk_shader *shader = pipeline->shaders[stage];
++      if (!shader || shader->code_size == 0)
+          continue;
+ 
+       if (idx == 0)
+-         return &pipeline->shaders[stage];
++         return pipeline->shaders[stage];
+ 
+       idx--;
+    }
 diff --git a/src/nouveau/vulkan/nvk_pipeline.h b/src/nouveau/vulkan/nvk_pipeline.h
-index c48bd92764b..b7a33249ddb 100644
+index c48bd92764b7..b7a33249ddb3 100644
 --- a/src/nouveau/vulkan/nvk_pipeline.h
 +++ b/src/nouveau/vulkan/nvk_pipeline.h
 @@ -23,7 +23,7 @@ struct nvk_pipeline {
@@ -324,14 +393,14 @@ index c48bd92764b..b7a33249ddb 100644
  
  VK_DEFINE_NONDISP_HANDLE_CASTS(nvk_pipeline, base, VkPipeline,
 diff --git a/src/nouveau/vulkan/nvk_shader.c b/src/nouveau/vulkan/nvk_shader.c
-index 4ff4ebed5a3..5994f11d09a 100644
+index e4dd2b914c60..311709017d8d 100644
 --- a/src/nouveau/vulkan/nvk_shader.c
 +++ b/src/nouveau/vulkan/nvk_shader.c
-@@ -435,19 +435,40 @@ nvk_compile_nir_with_nak(struct nvk_physical_device *pdev,
+@@ -438,13 +438,28 @@ nvk_compile_nir_with_nak(struct nvk_physical_device *pdev,
     return VK_SUCCESS;
  }
  
-+static struct nvk_shader *
++struct nvk_shader *
 +nvk_shader_init(struct nvk_device *dev)
 +{
 +   VK_MULTIALLOC(ma);
@@ -349,35 +418,15 @@ index 4ff4ebed5a3..5994f11d09a 100644
 +nvk_compile_nir(struct nvk_device *dev, nir_shader *nir,
                  VkPipelineCreateFlagBits2KHR pipeline_flags,
                  const struct vk_pipeline_robustness_state *rs,
--                const struct nak_fs_key *fs_key,
--                struct nvk_shader *shader)
-+                const struct nvk_fs_key *fs_key,
-+                struct nvk_shader **shader_out)
+                 const struct nak_fs_key *fs_key,
+                 struct nvk_shader *shader)
  {
--   if (use_nak(pdev, nir->info.stage)) {
--      return nvk_compile_nir_with_nak(pdev, nir, pipeline_flags, rs,
--                                      fs_key, shader);
--   } else {
--      return nvk_cg_compile_nir(pdev, nir, fs_key, shader);
--   }
 +   struct nvk_physical_device *pdev = nvk_device_physical(dev);
 +
-+   struct nvk_shader *shader = nvk_shader_init(dev);
-+   if (shader == NULL)
-+      return vk_error(dev, VK_ERROR_OUT_OF_HOST_MEMORY);
-+
-+   if (use_nak(pdev, nir->info.stage))
-+      VkResult result = nvk_compile_nir_with_nak(pdev, nir, pipeline_flags,
-+                                                 rs, fs_key, shader);
-+   else
-+      VkResult result = nvk_cg_compile_nir(pdev, nir, fs_key, shader);
-+
-+   *shader_out = shader;
-+   return result;
- }
- 
- VkResult
-@@ -502,6 +523,9 @@ nvk_shader_upload(struct nvk_device *dev, struct nvk_shader *shader)
+    if (use_nak(pdev, nir->info.stage)) {
+       return nvk_compile_nir_with_nak(pdev, nir, pipeline_flags, rs,
+                                       fs_key, shader);
+@@ -505,6 +520,9 @@ nvk_shader_upload(struct nvk_device *dev, struct nvk_shader *shader)
  void
  nvk_shader_finish(struct nvk_device *dev, struct nvk_shader *shader)
  {
@@ -387,20 +436,28 @@ index 4ff4ebed5a3..5994f11d09a 100644
     if (shader->upload_size > 0) {
        nvk_heap_free(dev, &dev->shader_heap,
                      shader->upload_addr,
-@@ -510,6 +534,8 @@ nvk_shader_finish(struct nvk_device *dev, struct nvk_shader *shader)
+@@ -513,6 +531,7 @@ nvk_shader_finish(struct nvk_device *dev, struct nvk_shader *shader)
  
     if (shader->nak)
        nak_shader_bin_destroy(shader->nak);
-+
 +   vk_free(&dev->vk.alloc, shader);
  }
  
  void
 diff --git a/src/nouveau/vulkan/nvk_shader.h b/src/nouveau/vulkan/nvk_shader.h
-index 60cf955c6b3..935055cc8d2 100644
+index d8b019bece91..01b54bd1122c 100644
 --- a/src/nouveau/vulkan/nvk_shader.h
 +++ b/src/nouveau/vulkan/nvk_shader.h
-@@ -112,11 +112,11 @@ nvk_lower_nir(struct nvk_device *dev, nir_shader *nir,
+@@ -67,7 +67,7 @@ nvk_shader_address(const struct nvk_shader *shader)
+ static inline bool
+ nvk_shader_is_enabled(const struct nvk_shader *shader)
+ {
+-   return shader->upload_size > 0;
++   return shader && shader->upload_size > 0;
+ }
+ 
+ VkShaderStageFlags nvk_nak_stages(const struct nv_device_info *info);
+@@ -118,7 +118,7 @@ nvk_lower_nir(struct nvk_device *dev, nir_shader *nir,
                struct nvk_shader *shader);
  
  VkResult
@@ -408,21 +465,25 @@ index 60cf955c6b3..935055cc8d2 100644
 +nvk_compile_nir(struct nvk_device *dev, nir_shader *nir,
                  VkPipelineCreateFlagBits2KHR pipeline_flags,
                  const struct vk_pipeline_robustness_state *rstate,
--                const struct nak_fs_key *fs_key,
--                struct nvk_shader *shader);
-+                const struct nvk_fs_key *fs_key,
-+                struct nvk_shader **shader_out);
- 
+                 const struct nak_fs_key *fs_key,
+@@ -127,6 +127,9 @@ nvk_compile_nir(struct nvk_physical_device *dev, nir_shader *nir,
  VkResult
  nvk_shader_upload(struct nvk_device *dev, struct nvk_shader *shader);
+ 
++struct nvk_shader *
++nvk_shader_init(struct nvk_device *dev);
++
+ void
+ nvk_shader_finish(struct nvk_device *dev, struct nvk_shader *shader);
+ 
 -- 
-2.43.0
+GitLab
 
 
-From 35e92a76535739b8b5e8c3f9361e72fcdd6f5770 Mon Sep 17 00:00:00 2001
+From aea9a84bb5a55aac0c4816ad9b8ed5cf83ff8942 Mon Sep 17 00:00:00 2001
 From: "Thomas H.P. Andersen" <phomes@gmail.com>
 Date: Wed, 18 Oct 2023 23:55:36 +0200
-Subject: [PATCH 4/9] nvk: pipeline shader cache
+Subject: [PATCH 4/8] nvk: pipeline shader cache
 
 dEQP-VK.pipeline.monolithic.cache.*
 
@@ -435,27 +496,27 @@ Test run totals:
 
 Timing these test:
 Before:
-real    0m19,523s
-user    0m15,858s
-sys     0m0,654s
+real    0m11,304s
+user    0m9,442s
+sys     0m0,477s
 
 After:
-real    0m6,521s
-user    0m3,327s
-sys     0m0,665s
+real    0m3,470s
+user    0m1,962s
+sys     0m0,504s
 ---
- src/nouveau/vulkan/nvk_compute_pipeline.c  |  49 ++++++--
- src/nouveau/vulkan/nvk_graphics_pipeline.c |  72 ++++++++---
+ src/nouveau/vulkan/nvk_compute_pipeline.c  |  54 ++++++++---
+ src/nouveau/vulkan/nvk_graphics_pipeline.c |  80 ++++++++++++----
  src/nouveau/vulkan/nvk_pipeline.c          |   3 -
- src/nouveau/vulkan/nvk_shader.c            | 137 ++++++++++++++++++++-
- src/nouveau/vulkan/nvk_shader.h            |  11 ++
- 5 files changed, 237 insertions(+), 35 deletions(-)
+ src/nouveau/vulkan/nvk_shader.c            | 105 ++++++++++++++++++++-
+ src/nouveau/vulkan/nvk_shader.h            |  13 ++-
+ 5 files changed, 217 insertions(+), 38 deletions(-)
 
 diff --git a/src/nouveau/vulkan/nvk_compute_pipeline.c b/src/nouveau/vulkan/nvk_compute_pipeline.c
-index eb3413d2eb5..ee2da38dd38 100644
+index fa976f0374c8..2d1c08b0d172 100644
 --- a/src/nouveau/vulkan/nvk_compute_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_compute_pipeline.c
-@@ -178,22 +178,47 @@ nvk_compute_pipeline_create(struct nvk_device *dev,
+@@ -178,26 +178,54 @@ nvk_compute_pipeline_create(struct nvk_device *dev,
                                       pCreateInfo->pNext,
                                       pCreateInfo->stage.pNext);
  
@@ -468,42 +529,45 @@ index eb3413d2eb5..ee2da38dd38 100644
 +   nvk_hash_shader(sha1, &pCreateInfo->stage, &robustness,
 +                   pipeline_layout, NULL);
  
--   struct nvk_shader *shader = pipeline->base.shaders[MESA_SHADER_COMPUTE];
+-   struct nvk_shader *shader = nvk_shader_init(dev);
+-   pipeline->base.shaders[MESA_SHADER_COMPUTE] = shader;
 +   bool cache_hit = false;
-+   struct vk_pipeline_cache_object *object = NULL;
++   struct vk_pipeline_cache_object *cache_obj = NULL;
  
 -   nvk_lower_nir(dev, nir, &robustness, false, pipeline_layout, shader);
 +   if (cache) {
-+      object = vk_pipeline_cache_lookup_object(cache, &sha1, sizeof(sha1),
-+                                               &nvk_shader_ops, &cache_hit);
++      cache_obj = vk_pipeline_cache_lookup_object(cache, &sha1, sizeof(sha1),
++                                                  &nvk_shader_ops, &cache_hit);
 +      pipeline->base.shaders[MESA_SHADER_COMPUTE] =
-+         container_of(object, struct nvk_shader, base);
++         container_of(cache_obj, struct nvk_shader, base);
 +      result = VK_SUCCESS;
 +   }
  
 -   unsigned char sha1[SHA1_DIGEST_LENGTH];
 -   nvk_hash_shader(sha1, &pCreateInfo->stage, &robustness, pipeline_layout, NULL);
-+   if (!object) {
++   if (!cache_obj) {
 +      nir_shader *nir;
 +      result = nvk_shader_stage_to_nir(dev, &pCreateInfo->stage, &robustness,
 +                                       cache, NULL, &nir);
 +      if (result != VK_SUCCESS)
 +         goto fail;
 +
-+      nvk_lower_nir(dev, nir, &robustness, false, pipeline_layout);
++      struct nvk_shader *shader = nvk_shader_init(dev, sha1, SHA1_DIGEST_LENGTH);
++      if(shader == NULL)
++         return vk_error(dev, VK_ERROR_OUT_OF_HOST_MEMORY);
 +
-+      struct nvk_shader *shader;
-+      result = nvk_compile_nir(dev, nir, pipeline_flags, &robustness, NULL,
-+                               cache, sha1, &shader);
++      nvk_lower_nir(dev, nir, &robustness, false, pipeline_layout, shader);
++
++      result = nvk_compile_nir(dev, nir, pipeline_flags, &robustness, NULL, cache, shader);
 +
 +      if (result == VK_SUCCESS) {
-+         object = &shader->base;
++         cache_obj = &shader->base;
 +
 +         if (cache)
-+            object = vk_pipeline_cache_add_object(cache, object);
++            cache_obj = vk_pipeline_cache_add_object(cache, cache_obj);
 +
 +         pipeline->base.shaders[MESA_SHADER_COMPUTE] =
-+            container_of(object, struct nvk_shader, base);
++            container_of(cache_obj, struct nvk_shader, base);
 +      }
 +
 +      ralloc_free(nir);
@@ -515,24 +579,29 @@ index eb3413d2eb5..ee2da38dd38 100644
     if (result != VK_SUCCESS)
        goto fail;
  
++   struct nvk_shader *shader = container_of(cache_obj, struct nvk_shader, base);
++
+    result = nvk_shader_upload(dev, shader);
+    if (result != VK_SUCCESS)
+       goto fail;
 diff --git a/src/nouveau/vulkan/nvk_graphics_pipeline.c b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-index 11e845d85f1..c193050a1cb 100644
+index 5dc69e38af59..98158a31c611 100644
 --- a/src/nouveau/vulkan/nvk_graphics_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-@@ -321,6 +321,12 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -186,6 +186,12 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
     nir_shader *nir[MESA_SHADER_STAGES] = {};
     struct vk_pipeline_robustness_state robustness[MESA_SHADER_STAGES];
  
-+   struct vk_pipeline_cache_object *objects[MESA_SHADER_STAGES] = {};
++   struct vk_pipeline_cache_object *cache_objs[MESA_SHADER_STAGES] = {};
 +
-+   struct nvk_fs_key fs_key_tmp, *fs_key = NULL;
++   struct nak_fs_key fs_key_tmp, *fs_key = NULL;
 +   nvk_populate_fs_key(&fs_key_tmp, state.ms, &state);
 +   fs_key = &fs_key_tmp;
 +
     for (uint32_t i = 0; i < pCreateInfo->stageCount; i++) {
        const VkPipelineShaderStageCreateInfo *sinfo = &pCreateInfo->pStages[i];
        gl_shader_stage stage = vk_to_mesa_shader_stage(sinfo->stage);
-@@ -334,6 +340,30 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -199,6 +205,32 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
  
        vk_pipeline_robustness_state_fill(&dev->vk, &robustness[stage],
                                          pCreateInfo->pNext, sinfo->pNext);
@@ -549,61 +618,70 @@ index 11e845d85f1..c193050a1cb 100644
 +
 +      if (cache) {
 +         bool cache_hit = false;
-+         objects[stage] = vk_pipeline_cache_lookup_object(cache, &sha1, sizeof(sha1),
-+                                                  &nvk_shader_ops, &cache_hit);
-+         pipeline->base.shaders[stage] =
-+            container_of(objects[stage], struct nvk_shader, base);
++         cache_objs[stage] = vk_pipeline_cache_lookup_object(cache, &sha1, sizeof(sha1),
++                                                             &nvk_shader_ops, &cache_hit);
++         if (cache_objs[stage]) {
++            pipeline->base.shaders[stage] =
++               container_of(cache_objs[stage], struct nvk_shader, base);
++         }
 +      }
 +   }
 +
 +   for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
 +      const VkPipelineShaderStageCreateInfo *sinfo = infos[stage];
-+      if (sinfo == NULL || objects[stage])
++      if (sinfo == NULL || cache_objs[stage])
 +         continue;
  
        result = nvk_shader_stage_to_nir(dev, sinfo, &robustness[stage],
                                         cache, NULL, &nir[stage]);
-@@ -351,29 +381,33 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -216,31 +248,39 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
        if (sinfo == NULL)
           continue;
  
+-      pipeline->base.shaders[stage] = nvk_shader_init(dev);
++      if (!cache_objs[stage]) {
++         unsigned char sha1[SHA1_DIGEST_LENGTH];
++         nvk_hash_shader(sha1, sinfo, &robustness[stage], pipeline_layout,
++                         stage == MESA_SHADER_FRAGMENT ? fs_key : NULL);
+ 
 -      nvk_lower_nir(dev, nir[stage], &robustness[stage],
 -                    state.rp->view_mask != 0, pipeline_layout,
--                    &pipeline->base.shaders[stage]);
+-                    pipeline->base.shaders[stage]);
 -   }
-+      if (!objects[stage]) {
-+         nvk_lower_nir(dev, nir[stage], &robustness[stage],
-+                       state.rp->view_mask != 0, pipeline_layout);
++         struct nvk_shader *shader = nvk_shader_init(dev, sha1, SHA1_DIGEST_LENGTH);
++         if(shader == NULL) {
++            result = vk_error(dev, VK_ERROR_OUT_OF_HOST_MEMORY);
++            goto fail;
++         }
  
 -   for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
 -      const VkPipelineShaderStageCreateInfo *sinfo = infos[stage];
 -      if (sinfo == NULL)
 -         continue;
-+         unsigned char sha1[SHA1_DIGEST_LENGTH];
-+         nvk_hash_shader(sha1, sinfo, &robustness[stage], pipeline_layout,
-+                         stage == MESA_SHADER_FRAGMENT ? fs_key : NULL);
++         nvk_lower_nir(dev, nir[stage], &robustness[stage],
++                       state.rp->view_mask != 0, pipeline_layout, shader);
  
 -      struct nak_fs_key fs_key_tmp, *fs_key = NULL;
 -      if (stage == MESA_SHADER_FRAGMENT) {
 -         nvk_populate_fs_key(&fs_key_tmp, state.ms, &state);
 -         fs_key = &fs_key_tmp;
 -      }
-+         struct nvk_shader *shader;
-+         result = nvk_compile_nir(dev, nir[stage], pipeline_flags, &robustness[stage],
++         result = nvk_compile_nir(dev, nir[stage],
++                                  pipeline_flags, &robustness[stage],
 +                                  stage == MESA_SHADER_FRAGMENT ? fs_key : NULL,
-+                                  cache, sha1, &shader);
++                                  cache, shader);
  
 -      unsigned char sha1[SHA1_DIGEST_LENGTH];
 -      nvk_hash_shader(sha1, sinfo, &robustness[stage], pipeline_layout, fs_key);
 +         if (result == VK_SUCCESS) {
-+            objects[stage] = &shader->base;
++            cache_objs[stage] = &shader->base;
 +
 +            if (cache)
-+               objects[stage] = vk_pipeline_cache_add_object(cache,
-+                                                             objects[stage]);
++               cache_objs[stage] = vk_pipeline_cache_add_object(cache,
++                                                                cache_objs[stage]);
 +
 +            pipeline->base.shaders[stage] =
-+               container_of(objects[stage], struct nvk_shader, base);
++               container_of(cache_objs[stage], struct nvk_shader, base);
 +         }
 +
 +         ralloc_free(nir[stage]);
@@ -611,13 +689,13 @@ index 11e845d85f1..c193050a1cb 100644
  
 -      result = nvk_compile_nir(dev, nir[stage], pipeline_flags,
 -                               &robustness[stage], fs_key,
--                               &pipeline->base.shaders[stage]);
+-                               pipeline->base.shaders[stage]);
 -      ralloc_free(nir[stage]);
        if (result != VK_SUCCESS)
           goto fail;
  
 diff --git a/src/nouveau/vulkan/nvk_pipeline.c b/src/nouveau/vulkan/nvk_pipeline.c
-index 29519e6c281..7c9d109e965 100644
+index 196c8bec457f..2a467448553b 100644
 --- a/src/nouveau/vulkan/nvk_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_pipeline.c
 @@ -32,9 +32,6 @@ nvk_pipeline_free(struct nvk_device *dev,
@@ -631,13 +709,13 @@ index 29519e6c281..7c9d109e965 100644
  }
  
 diff --git a/src/nouveau/vulkan/nvk_shader.c b/src/nouveau/vulkan/nvk_shader.c
-index 5994f11d09a..896b0215e54 100644
+index 311709017d8d..dd7fec94b330 100644
 --- a/src/nouveau/vulkan/nvk_shader.c
 +++ b/src/nouveau/vulkan/nvk_shader.c
-@@ -436,15 +436,21 @@ nvk_compile_nir_with_nak(struct nvk_physical_device *pdev,
+@@ -439,15 +439,21 @@ nvk_compile_nir_with_nak(struct nvk_physical_device *pdev,
  }
  
- static struct nvk_shader *
+ struct nvk_shader *
 -nvk_shader_init(struct nvk_device *dev)
 +nvk_shader_init(struct nvk_device *dev, const void *key_data, size_t key_size)
  {
@@ -657,34 +735,15 @@ index 5994f11d09a..896b0215e54 100644
     return shader;
  }
  
-@@ -453,12 +459,26 @@ nvk_compile_nir(struct nvk_device *dev, nir_shader *nir,
+@@ -456,6 +462,7 @@ nvk_compile_nir(struct nvk_device *dev, nir_shader *nir,
                  VkPipelineCreateFlagBits2KHR pipeline_flags,
                  const struct vk_pipeline_robustness_state *rs,
-                 const struct nvk_fs_key *fs_key,
+                 const struct nak_fs_key *fs_key,
 +                struct vk_pipeline_cache *cache,
-+                unsigned char hash[SHA1_DIGEST_LENGTH],
-                 struct nvk_shader **shader_out)
+                 struct nvk_shader *shader)
  {
     struct nvk_physical_device *pdev = nvk_device_physical(dev);
- 
-+<<<<<<< HEAD
-    struct nvk_shader *shader = nvk_shader_init(dev);
-    if (shader == NULL)
-+=======
-+   if (use_nak(pdev, nir->info.stage))
-+      return nvk_compile_nir_with_nak(pdev, nir, fs_key, shader);
-+
-+   info = CALLOC_STRUCT(nv50_ir_prog_info);
-+   if (!info)
-+      return false;
-+
-+   struct nvk_shader *shader = nvk_shader_init(dev, hash, SHA1_DIGEST_LENGTH);
-+   if(shader == NULL)
-+>>>>>>> cda60b14147 (nvk: pipeline shader cache)
-       return vk_error(dev, VK_ERROR_OUT_OF_HOST_MEMORY);
- 
-    if (use_nak(pdev, nir->info.stage))
-@@ -570,3 +590,118 @@ nvk_hash_shader(unsigned char *hash,
+@@ -566,3 +573,99 @@ nvk_hash_shader(unsigned char *hash,
  
     _mesa_sha1_final(&ctx, hash);
  }
@@ -724,27 +783,17 @@ index 5994f11d09a..896b0215e54 100644
 +   struct nvk_shader *shader =
 +      container_of(object, struct nvk_shader, base);
 +
-+   blob_write_bytes(blob, &shader->stage, sizeof(shader->stage));
++   blob_write_bytes(blob, &shader->info, sizeof(shader->info));
++   blob_write_bytes(blob, &shader->cbuf_map, sizeof(shader->cbuf_map));
 +   blob_write_uint32(blob, shader->code_size);
-+   blob_write_uint8(blob, shader->num_gprs);
-+   blob_write_uint8(blob, shader->num_barriers);
-+   blob_write_uint32(blob, shader->slm_size);
-+   blob_write_bytes(blob, &shader->hdr, sizeof(shader->hdr));
-+   blob_write_bytes(blob, &shader->flags, sizeof(shader->flags));
-+
-+   blob_write_bytes(blob, &shader->vs, sizeof(shader->vs));
-+   blob_write_bytes(blob, &shader->fs, sizeof(shader->fs));
-+   blob_write_bytes(blob, &shader->tp, sizeof(shader->tp));
-+   blob_write_bytes(blob, &shader->cp, sizeof(shader->cp));
-+
-+   if (shader->xfb) {
++   blob_write_bytes(blob, shader->code_ptr, shader->code_size);
++   if (shader->nak) {
 +      blob_write_uint8(blob, 1);
-+      blob_write_bytes(blob, shader->xfb, sizeof(*shader->xfb));
++      blob_write_bytes(blob, shader->nak, sizeof(struct nak_shader_bin));
++      blob_write_string(blob, shader->nak->asm_str ? shader->nak->asm_str : "\n");
 +   } else {
 +      blob_write_uint8(blob, 0);
 +   }
-+
-+   blob_write_bytes(blob, shader->code_ptr, shader->code_size);
 +
 +   return true;
 +}
@@ -759,42 +808,33 @@ index 5994f11d09a..896b0215e54 100644
 +      container_of(cache->base.device, struct nvk_device, vk);
 +   struct nvk_shader *shader =
 +      nvk_shader_init(dev, key_data, key_size);
-+   struct nvk_transform_feedback_state *xfb = NULL;
-+   uint8_t *code_ptr = NULL;
 +
 +   if (!shader)
 +      return NULL;
 +
-+   blob_copy_bytes(blob, &shader->stage, sizeof(shader->stage));
++   blob_copy_bytes(blob, &shader->info, sizeof(shader->info));
++   blob_copy_bytes(blob, &shader->cbuf_map, sizeof(shader->cbuf_map));
++
 +   shader->code_size = blob_read_uint32(blob);
-+   shader->num_gprs = blob_read_uint8(blob);
-+   shader->num_barriers = blob_read_uint8(blob);
-+   shader->slm_size = blob_read_uint32(blob);
-+
-+   blob_copy_bytes(blob, &shader->hdr, sizeof(shader->hdr));
-+   blob_copy_bytes(blob, &shader->flags, sizeof(shader->flags));
-+
-+   blob_copy_bytes(blob, &shader->vs, sizeof(shader->vs));
-+   blob_copy_bytes(blob, &shader->fs, sizeof(shader->fs));
-+   blob_copy_bytes(blob, &shader->tp, sizeof(shader->tp));
-+   blob_copy_bytes(blob, &shader->cp, sizeof(shader->cp));
-+
-+   bool has_xfb = blob_read_uint8(blob);
-+   if (has_xfb) {
-+      xfb = malloc(sizeof(struct nvk_transform_feedback_state));
-+      if(!xfb)
-+         goto fail;
-+
-+      shader->xfb = xfb;
-+      blob_copy_bytes(blob, shader->xfb, sizeof(*shader->xfb));
-+   }
-+
-+   code_ptr = malloc(shader->code_size);
++   void *code_ptr = malloc(shader->code_size);
 +   if (!code_ptr)
 +      goto fail;
 +
 +   blob_copy_bytes(blob, code_ptr, shader->code_size);
 +   shader->code_ptr = code_ptr;
++
++   bool is_nak = blob_read_uint8(blob);
++   if (is_nak) {
++      shader->nak = malloc(sizeof(struct nak_shader_bin));
++      if(!shader->nak)
++         goto fail;
++      blob_copy_bytes(blob, shader->nak, sizeof(struct nak_shader_bin));
++
++      shader->nak->info = shader->info;
++      shader->nak->code = shader->code_ptr;
++      shader->nak->code_size = shader->code_size;
++      shader->nak->asm_str = strdup(blob_read_string(blob));
++   }
 +
 +   return &shader->base;
 +
@@ -804,7 +844,7 @@ index 5994f11d09a..896b0215e54 100644
 +   return NULL;
 +}
 diff --git a/src/nouveau/vulkan/nvk_shader.h b/src/nouveau/vulkan/nvk_shader.h
-index 935055cc8d2..c27b77b4fcc 100644
+index 01b54bd1122c..fc88e154c6a5 100644
 --- a/src/nouveau/vulkan/nvk_shader.h
 +++ b/src/nouveau/vulkan/nvk_shader.h
 @@ -8,6 +8,8 @@
@@ -816,47 +856,52 @@ index 935055cc8d2..c27b77b4fcc 100644
  #include "nak.h"
  #include "nir.h"
  #include "nouveau_bo.h"
-@@ -48,6 +50,7 @@ struct nvk_cbuf_map {
+@@ -46,6 +48,8 @@ struct nvk_cbuf_map {
+ };
+ 
  struct nvk_shader {
++   struct vk_pipeline_cache_object base;
++
     struct nak_shader_info info;
     struct nvk_cbuf_map cbuf_map;
-+   struct vk_pipeline_cache_object base;
  
-    struct nak_shader_bin *nak;
-    const void *code_ptr;
-@@ -116,11 +119,15 @@ nvk_compile_nir(struct nvk_device *dev, nir_shader *nir,
+@@ -122,13 +126,16 @@ nvk_compile_nir(struct nvk_device *dev, nir_shader *nir,
                  VkPipelineCreateFlagBits2KHR pipeline_flags,
                  const struct vk_pipeline_robustness_state *rstate,
-                 const struct nvk_fs_key *fs_key,
+                 const struct nak_fs_key *fs_key,
 +                struct vk_pipeline_cache *cache,
-+                unsigned char hash[SHA1_DIGEST_LENGTH],
-                 struct nvk_shader **shader_out);
+                 struct nvk_shader *shader);
  
  VkResult
  nvk_shader_upload(struct nvk_device *dev, struct nvk_shader *shader);
  
-+extern const struct vk_pipeline_cache_object_ops nvk_shader_ops;
+ struct nvk_shader *
+-nvk_shader_init(struct nvk_device *dev);
++nvk_shader_init(struct nvk_device *dev, const void *key_data, size_t key_size);
 +
++extern const struct vk_pipeline_cache_object_ops nvk_shader_ops;
+ 
  void
  nvk_shader_finish(struct nvk_device *dev, struct nvk_shader *shader);
- 
-@@ -131,4 +138,8 @@ nvk_hash_shader(unsigned char *hash,
+@@ -140,6 +147,10 @@ nvk_hash_shader(unsigned char *hash,
                   const struct vk_pipeline_layout *layout,
-                  const struct nvk_fs_key *fs_key);
+                  const struct nak_fs_key *fs_key);
  
 +void
 +nvk_shader_destroy(struct vk_device *dev,
 +                   struct vk_pipeline_cache_object *object);
 +
- #endif
+ /* Codegen wrappers.
+  *
+  * TODO: Delete these once NAK supports everything.
 -- 
-2.43.0
+GitLab
 
 
-From 0d8adb09e2a1fc3f8c31767ccc66d773214274bd Mon Sep 17 00:00:00 2001
+From 2ee48f3e0d9fa781de784ab4f53d491fbac0e47b Mon Sep 17 00:00:00 2001
 From: "Thomas H.P. Andersen" <phomes@gmail.com>
 Date: Mon, 23 Oct 2023 21:29:18 +0200
-Subject: [PATCH 5/9] nvk: VK_EXT_pipeline_creation_feedback
+Subject: [PATCH 5/8] nvk: VK_EXT_pipeline_creation_feedback
 
 dEQP-VK.*creation_feedback*
 
@@ -867,15 +912,15 @@ Test run totals:
   Warnings:      0/73 (0.0%)
   Waived:        0/73 (0.0%)
 ---
- src/nouveau/vulkan/nvk_graphics_pipeline.c | 35 ++++++++++++++++++++++
+ src/nouveau/vulkan/nvk_graphics_pipeline.c | 41 +++++++++++++++++++---
  src/nouveau/vulkan/nvk_physical_device.c   |  1 +
- 2 files changed, 36 insertions(+)
+ 2 files changed, 38 insertions(+), 4 deletions(-)
 
 diff --git a/src/nouveau/vulkan/nvk_graphics_pipeline.c b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-index c193050a1cb..d6675fc29bc 100644
+index 98158a31c611..e19d6d654719 100644
 --- a/src/nouveau/vulkan/nvk_graphics_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-@@ -317,6 +317,17 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -182,6 +182,17 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
                                              NULL, 0, &all, NULL, 0, NULL);
     assert(result == VK_SUCCESS);
  
@@ -893,10 +938,16 @@ index c193050a1cb..d6675fc29bc 100644
     const VkPipelineShaderStageCreateInfo *infos[MESA_SHADER_STAGES] = {};
     nir_shader *nir[MESA_SHADER_STAGES] = {};
     struct vk_pipeline_robustness_state robustness[MESA_SHADER_STAGES];
-@@ -357,6 +368,10 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
-                                                   &nvk_shader_ops, &cache_hit);
-          pipeline->base.shaders[stage] =
-             container_of(objects[stage], struct nvk_shader, base);
+@@ -220,10 +231,12 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+          bool cache_hit = false;
+          cache_objs[stage] = vk_pipeline_cache_lookup_object(cache, &sha1, sizeof(sha1),
+                                                              &nvk_shader_ops, &cache_hit);
+-         if (cache_objs[stage]) {
+-            pipeline->base.shaders[stage] =
+-               container_of(cache_objs[stage], struct nvk_shader, base);
+-         }
++         pipeline->base.shaders[stage] =
++            container_of(cache_objs[stage], struct nvk_shader, base);
 +
 +         if (cache_hit && cache != dev->mem_cache)
 +            pipeline_feedback.flags |=
@@ -904,29 +955,29 @@ index c193050a1cb..d6675fc29bc 100644
        }
     }
  
-@@ -382,6 +397,8 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -249,6 +262,8 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
           continue;
  
-       if (!objects[stage]) {
+       if (!cache_objs[stage]) {
 +         int64_t stage_start = os_time_get_nano();
 +
-          nvk_lower_nir(dev, nir[stage], &robustness[stage],
-                        state.rp->view_mask != 0, pipeline_layout);
- 
-@@ -401,10 +418,12 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
-                objects[stage] = vk_pipeline_cache_add_object(cache,
-                                                              objects[stage]);
+          unsigned char sha1[SHA1_DIGEST_LENGTH];
+          nvk_hash_shader(sha1, sinfo, &robustness[stage], pipeline_layout,
+                          stage == MESA_SHADER_FRAGMENT ? fs_key : NULL);
+@@ -274,10 +289,12 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+                cache_objs[stage] = vk_pipeline_cache_add_object(cache,
+                                                                 cache_objs[stage]);
  
 +            stage_feedbacks[stage].flags = VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT;
              pipeline->base.shaders[stage] =
-                container_of(objects[stage], struct nvk_shader, base);
+                container_of(cache_objs[stage], struct nvk_shader, base);
           }
  
 +         stage_feedbacks[stage].duration += os_time_get_nano() - stage_start;
           ralloc_free(nir[stage]);
        }
  
-@@ -554,6 +573,22 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -414,6 +431,22 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
     pipeline->dynamic.ms.sample_locations = &pipeline->_dynamic_sl;
     vk_dynamic_graphics_state_fill(&pipeline->dynamic, &state);
  
@@ -950,10 +1001,10 @@ index c193050a1cb..d6675fc29bc 100644
  
     return VK_SUCCESS;
 diff --git a/src/nouveau/vulkan/nvk_physical_device.c b/src/nouveau/vulkan/nvk_physical_device.c
-index 2d5cf0ae4bd..bc5cdc80baf 100644
+index 103e0e7c56bb..273d782a066b 100644
 --- a/src/nouveau/vulkan/nvk_physical_device.c
 +++ b/src/nouveau/vulkan/nvk_physical_device.c
-@@ -163,6 +163,7 @@ nvk_get_device_extensions(const struct nv_device_info *info,
+@@ -174,6 +174,7 @@ nvk_get_device_extensions(const struct nvk_instance *instance,
        .EXT_mutable_descriptor_type = true,
        .EXT_non_seamless_cube_map = true,
        .EXT_pci_bus_info = info->type == NV_DEVICE_TYPE_DIS,
@@ -962,13 +1013,13 @@ index 2d5cf0ae4bd..bc5cdc80baf 100644
        .EXT_primitive_topology_list_restart = true,
        .EXT_private_data = true,
 -- 
-2.43.0
+GitLab
 
 
-From c65ddcd5d2d2575166c8c2cfa829115912abde18 Mon Sep 17 00:00:00 2001
+From 2a26d206aafc932dbf4b632dfeca391cbfa3dcd0 Mon Sep 17 00:00:00 2001
 From: "Thomas H.P. Andersen" <phomes@gmail.com>
 Date: Fri, 6 Oct 2023 20:15:21 +0200
-Subject: [PATCH 6/9] nvk: VK_EXT_pipeline_creation_cache_control
+Subject: [PATCH 6/8] nvk: VK_EXT_pipeline_creation_cache_control
 
 dEQP-VK.pipeline.monolithic.creation_cache_control.*
 
@@ -985,13 +1036,13 @@ Test run totals:
  3 files changed, 14 insertions(+)
 
 diff --git a/src/nouveau/vulkan/nvk_compute_pipeline.c b/src/nouveau/vulkan/nvk_compute_pipeline.c
-index ee2da38dd38..3cb93b26dea 100644
+index 2d1c08b0d172..dfd58ff3e4e4 100644
 --- a/src/nouveau/vulkan/nvk_compute_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_compute_pipeline.c
 @@ -194,6 +194,12 @@ nvk_compute_pipeline_create(struct nvk_device *dev,
     }
  
-    if (!object) {
+    if (!cache_obj) {
 +      if (pCreateInfo->flags &
 +          VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT) {
 +         result = VK_PIPELINE_COMPILE_REQUIRED;
@@ -1002,16 +1053,16 @@ index ee2da38dd38..3cb93b26dea 100644
        result = nvk_shader_stage_to_nir(dev, &pCreateInfo->stage, &robustness,
                                         cache, NULL, &nir);
 diff --git a/src/nouveau/vulkan/nvk_graphics_pipeline.c b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-index d6675fc29bc..64bba3dd94c 100644
+index e19d6d654719..f0ef7daca1d3 100644
 --- a/src/nouveau/vulkan/nvk_graphics_pipeline.c
 +++ b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-@@ -373,6 +373,12 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
+@@ -238,6 +238,12 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
              pipeline_feedback.flags |=
                 VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT;
        }
 +
-+      if (!objects[stage] && pCreateInfo->flags &
-+         VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT) {
++      if (!cache_objs[stage] &&
++          pCreateInfo->flags & VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT) {
 +         result = VK_PIPELINE_COMPILE_REQUIRED;
 +         goto fail;
 +      }
@@ -1019,10 +1070,10 @@ index d6675fc29bc..64bba3dd94c 100644
  
     for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
 diff --git a/src/nouveau/vulkan/nvk_physical_device.c b/src/nouveau/vulkan/nvk_physical_device.c
-index bc5cdc80baf..25643e5e56b 100644
+index 273d782a066b..0a520a0777cd 100644
 --- a/src/nouveau/vulkan/nvk_physical_device.c
 +++ b/src/nouveau/vulkan/nvk_physical_device.c
-@@ -163,6 +163,7 @@ nvk_get_device_extensions(const struct nv_device_info *info,
+@@ -174,6 +174,7 @@ nvk_get_device_extensions(const struct nvk_instance *instance,
        .EXT_mutable_descriptor_type = true,
        .EXT_non_seamless_cube_map = true,
        .EXT_pci_bus_info = info->type == NV_DEVICE_TYPE_DIS,
@@ -1030,7 +1081,7 @@ index bc5cdc80baf..25643e5e56b 100644
        .EXT_pipeline_creation_feedback = true,
        .EXT_physical_device_drm = true,
        .EXT_primitive_topology_list_restart = true,
-@@ -310,6 +311,7 @@ nvk_get_device_features(const struct nv_device_info *info,
+@@ -325,6 +326,7 @@ nvk_get_device_features(const struct nv_device_info *info,
        .robustImageAccess = true,
        .inlineUniformBlock = true,
        .descriptorBindingInlineUniformBlockUpdateAfterBind = true,
@@ -1039,20 +1090,20 @@ index bc5cdc80baf..25643e5e56b 100644
        .shaderDemoteToHelperInvocation = true,
        .shaderTerminateInvocation = true,
 -- 
-2.43.0
+GitLab
 
 
-From 752da50674969d356dcd5ac7539370ccf4e4a1ce Mon Sep 17 00:00:00 2001
+From afb89407e54a4a77343bb289a02fc28570f87f2e Mon Sep 17 00:00:00 2001
 From: "Thomas H.P. Andersen" <phomes@gmail.com>
 Date: Mon, 23 Oct 2023 23:03:52 +0200
-Subject: [PATCH 7/9] nvk: VK_EXT_shader_module_identifier
+Subject: [PATCH 7/8] nvk: VK_EXT_shader_module_identifier
 
 dEQP-VK.pipeline.monolithic.shader_module_identifier.*
 
 Test run totals:
-  Passed:        482/1292 (37.3%)
+  Passed:        530/1292 (41.0%)
   Failed:        0/1292 (0.0%)
-  Not supported: 810/1292 (62.7%)
+  Not supported: 762/1292 (59.0%)
   Warnings:      0/1292 (0.0%)
   Waived:        0/1292 (0.0%)
 ---
@@ -1060,7 +1111,7 @@ Test run totals:
  1 file changed, 12 insertions(+)
 
 diff --git a/src/nouveau/vulkan/nvk_physical_device.c b/src/nouveau/vulkan/nvk_physical_device.c
-index 25643e5e56b..f7457b8a167 100644
+index 0a520a0777cd..a9ef92e3106d 100644
 --- a/src/nouveau/vulkan/nvk_physical_device.c
 +++ b/src/nouveau/vulkan/nvk_physical_device.c
 @@ -18,6 +18,7 @@
@@ -1071,7 +1122,7 @@ index 25643e5e56b..f7457b8a167 100644
  #include "vulkan/wsi/wsi_common.h"
  
  #include <sys/stat.h>
-@@ -178,6 +179,7 @@ nvk_get_device_extensions(const struct nv_device_info *info,
+@@ -189,6 +190,7 @@ nvk_get_device_extensions(const struct nvk_instance *instance,
        .EXT_shader_image_atomic_int64 = info->cls_eng3d >= MAXWELL_A &&
                                         nvk_use_nak(info),
        .EXT_shader_demote_to_helper_invocation = true,
@@ -1079,7 +1130,7 @@ index 25643e5e56b..f7457b8a167 100644
        .EXT_shader_subgroup_ballot = true,
        .EXT_shader_subgroup_vote = true,
        .EXT_shader_viewport_index_layer = info->cls_eng3d >= MAXWELL_B,
-@@ -471,6 +473,9 @@ nvk_get_device_features(const struct nv_device_info *info,
+@@ -492,6 +494,9 @@ nvk_get_device_features(const struct nv_device_info *info,
        .sparseImageInt64Atomics = info->cls_eng3d >= MAXWELL_A &&
                                   nvk_use_nak(info),
  
@@ -1089,7 +1140,7 @@ index 25643e5e56b..f7457b8a167 100644
        /* VK_EXT_texel_buffer_alignment */
        .texelBufferAlignment = true,
  
-@@ -794,6 +799,13 @@ nvk_get_device_properties(const struct nvk_instance *instance,
+@@ -815,6 +820,13 @@ nvk_get_device_properties(const struct nvk_instance *instance,
     snprintf(properties->deviceName, sizeof(properties->deviceName),
              "%s", info->device_name);
  
@@ -1104,354 +1155,46 @@ index 25643e5e56b..f7457b8a167 100644
        uint16_t vendor_id;
        uint16_t device_id;
 -- 
-2.43.0
+GitLab
 
 
-From 1da3412a9fd3dcfebbb5ac52f2129c27e2cd5c38 Mon Sep 17 00:00:00 2001
-From: "Echo J." <aidas957@gmail.com>
-Date: Wed, 15 Nov 2023 10:33:08 +0200
-Subject: [PATCH 8/9] nvk: Various pipeline caching patch hotfixes
+From 2235fdf7161abbea0801d15ffc371f5d5e47e6cb Mon Sep 17 00:00:00 2001
+From: "Thomas H.P. Andersen" <phomes@gmail.com>
+Date: Thu, 4 Jan 2024 03:01:38 +0100
+Subject: [PATCH 8/8] docs: update features.txt for nvk
 
+Advertise:
+VK_EXT_pipeline_creation_cache_control
+VK_EXT_pipeline_creation_feedback
+VK_EXT_shader_module_identifier
 ---
- src/nouveau/vulkan/nvk_cmd_buffer.c        |  4 +-
- src/nouveau/vulkan/nvk_graphics_pipeline.c |  2 +-
- src/nouveau/vulkan/nvk_pipeline.c          |  6 +-
- src/nouveau/vulkan/nvk_shader.c            | 86 +++++++---------------
- src/nouveau/vulkan/nvk_shader.h            | 22 +++++-
- 5 files changed, 53 insertions(+), 67 deletions(-)
+ docs/features.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/src/nouveau/vulkan/nvk_cmd_buffer.c b/src/nouveau/vulkan/nvk_cmd_buffer.c
-index e763295df64..698c4ab23ad 100644
---- a/src/nouveau/vulkan/nvk_cmd_buffer.c
-+++ b/src/nouveau/vulkan/nvk_cmd_buffer.c
-@@ -539,8 +539,8 @@ nvk_CmdBindPipeline(VkCommandBuffer commandBuffer,
-    for (unsigned s = 0; s < ARRAY_SIZE(pipeline->shaders); s++) {
-       if (!pipeline->shaders[s])
-          continue;
--      if (pipeline->shaders[s].info.slm_size)
--         nvk_device_ensure_slm(dev, pipeline->shaders[s].info.slm_size);
-+      if (pipeline->shaders[s]->info.slm_size)
-+         nvk_device_ensure_slm(dev, pipeline->shaders[s]->info.slm_size);
-    }
- 
-    switch (pipelineBindPoint) {
-diff --git a/src/nouveau/vulkan/nvk_graphics_pipeline.c b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-index 64bba3dd94c..941357a89db 100644
---- a/src/nouveau/vulkan/nvk_graphics_pipeline.c
-+++ b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-@@ -334,7 +334,7 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
- 
-    struct vk_pipeline_cache_object *objects[MESA_SHADER_STAGES] = {};
- 
--   struct nvk_fs_key fs_key_tmp, *fs_key = NULL;
-+   struct nak_fs_key fs_key_tmp, *fs_key = NULL;
-    nvk_populate_fs_key(&fs_key_tmp, state.ms, &state);
-    fs_key = &fs_key_tmp;
- 
-diff --git a/src/nouveau/vulkan/nvk_pipeline.c b/src/nouveau/vulkan/nvk_pipeline.c
-index 7c9d109e965..8a4f68574a7 100644
---- a/src/nouveau/vulkan/nvk_pipeline.c
-+++ b/src/nouveau/vulkan/nvk_pipeline.c
-@@ -128,7 +128,7 @@ nvk_GetPipelineExecutablePropertiesKHR(
-                           pProperties, pExecutableCount);
- 
-    for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
--      if (pipeline->shaders[stage].code_size == 0)
-+      if (pipeline->shaders[stage]->code_size == 0)
-          continue;
- 
-       vk_outarray_append_typed(VkPipelineExecutablePropertiesKHR, &out, props) {
-@@ -147,11 +147,11 @@ static struct nvk_shader *
- shader_for_exe_idx(struct nvk_pipeline *pipeline, uint32_t idx)
- {
-    for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
--      if (pipeline->shaders[stage].code_size == 0)
-+      if (pipeline->shaders[stage]->code_size == 0)
-          continue;
- 
-       if (idx == 0)
--         return &pipeline->shaders[stage];
-+         return pipeline->shaders[stage];
- 
-       idx--;
-    }
-diff --git a/src/nouveau/vulkan/nvk_shader.c b/src/nouveau/vulkan/nvk_shader.c
-index 896b0215e54..6ed50f12029 100644
---- a/src/nouveau/vulkan/nvk_shader.c
-+++ b/src/nouveau/vulkan/nvk_shader.c
-@@ -458,34 +458,23 @@ VkResult
- nvk_compile_nir(struct nvk_device *dev, nir_shader *nir,
-                 VkPipelineCreateFlagBits2KHR pipeline_flags,
-                 const struct vk_pipeline_robustness_state *rs,
--                const struct nvk_fs_key *fs_key,
-+                const struct nak_fs_key *fs_key,
-                 struct vk_pipeline_cache *cache,
-                 unsigned char hash[SHA1_DIGEST_LENGTH],
-                 struct nvk_shader **shader_out)
- {
-    struct nvk_physical_device *pdev = nvk_device_physical(dev);
--
--<<<<<<< HEAD
--   struct nvk_shader *shader = nvk_shader_init(dev);
--   if (shader == NULL)
--=======
--   if (use_nak(pdev, nir->info.stage))
--      return nvk_compile_nir_with_nak(pdev, nir, fs_key, shader);
--
--   info = CALLOC_STRUCT(nv50_ir_prog_info);
--   if (!info)
--      return false;
-+   VkResult result = VK_SUCCESS;
- 
-    struct nvk_shader *shader = nvk_shader_init(dev, hash, SHA1_DIGEST_LENGTH);
--   if(shader == NULL)
-->>>>>>> cda60b14147 (nvk: pipeline shader cache)
-+   if (shader == NULL)
-       return vk_error(dev, VK_ERROR_OUT_OF_HOST_MEMORY);
- 
-    if (use_nak(pdev, nir->info.stage))
--      VkResult result = nvk_compile_nir_with_nak(pdev, nir, pipeline_flags,
--                                                 rs, fs_key, shader);
-+      result = nvk_compile_nir_with_nak(pdev, nir, pipeline_flags,
-+                                        rs, fs_key, shader);
-    else
--      VkResult result = nvk_cg_compile_nir(pdev, nir, fs_key, shader);
-+      result = nvk_cg_compile_nir(pdev, nir, fs_key, shader);
- 
-    *shader_out = shader;
-    return result;
-@@ -563,7 +552,7 @@ nvk_hash_shader(unsigned char *hash,
-                 const VkPipelineShaderStageCreateInfo *sinfo,
-                 const struct vk_pipeline_robustness_state *rstate,
-                 const struct vk_pipeline_layout *layout,
--                const struct nvk_fs_key *fs_key)
-+                const struct nak_fs_key *fs_key)
- {
-    struct mesa_sha1 ctx;
- 
-@@ -626,25 +615,17 @@ nvk_shader_serialize(struct vk_pipeline_cache_object *object,
-    struct nvk_shader *shader =
-       container_of(object, struct nvk_shader, base);
- 
--   blob_write_bytes(blob, &shader->stage, sizeof(shader->stage));
-+   blob_write_bytes(blob, &shader->info.stage, sizeof(shader->info.stage));
-    blob_write_uint32(blob, shader->code_size);
--   blob_write_uint8(blob, shader->num_gprs);
--   blob_write_uint8(blob, shader->num_barriers);
--   blob_write_uint32(blob, shader->slm_size);
--   blob_write_bytes(blob, &shader->hdr, sizeof(shader->hdr));
--   blob_write_bytes(blob, &shader->flags, sizeof(shader->flags));
--
--   blob_write_bytes(blob, &shader->vs, sizeof(shader->vs));
--   blob_write_bytes(blob, &shader->fs, sizeof(shader->fs));
--   blob_write_bytes(blob, &shader->tp, sizeof(shader->tp));
--   blob_write_bytes(blob, &shader->cp, sizeof(shader->cp));
--
--   if (shader->xfb) {
--      blob_write_uint8(blob, 1);
--      blob_write_bytes(blob, shader->xfb, sizeof(*shader->xfb));
--   } else {
--      blob_write_uint8(blob, 0);
--   }
-+   blob_write_uint8(blob, shader->info.num_gprs);
-+   blob_write_uint8(blob, shader->info.num_barriers);
-+   blob_write_uint32(blob, shader->info.slm_size);
-+
-+   blob_write_bytes(blob, &shader->info.hdr, sizeof(shader->info.hdr));
-+   blob_write_bytes(blob, &shader->info.cs, sizeof(shader->info.cs));
-+   blob_write_bytes(blob, &shader->info.fs, sizeof(shader->info.fs));
-+   blob_write_bytes(blob, &shader->info.ts, sizeof(shader->info.ts));
-+   blob_write_bytes(blob, &shader->info.vtg, sizeof(shader->info.vtg));
- 
-    blob_write_bytes(blob, shader->code_ptr, shader->code_size);
- 
-@@ -661,35 +642,22 @@ nvk_shader_deserialize(struct vk_pipeline_cache *cache,
-       container_of(cache->base.device, struct nvk_device, vk);
-    struct nvk_shader *shader =
-       nvk_shader_init(dev, key_data, key_size);
--   struct nvk_transform_feedback_state *xfb = NULL;
-    uint8_t *code_ptr = NULL;
- 
-    if (!shader)
-       return NULL;
- 
--   blob_copy_bytes(blob, &shader->stage, sizeof(shader->stage));
-+   blob_copy_bytes(blob, &shader->info.stage, sizeof(shader->info.stage));
-    shader->code_size = blob_read_uint32(blob);
--   shader->num_gprs = blob_read_uint8(blob);
--   shader->num_barriers = blob_read_uint8(blob);
--   shader->slm_size = blob_read_uint32(blob);
--
--   blob_copy_bytes(blob, &shader->hdr, sizeof(shader->hdr));
--   blob_copy_bytes(blob, &shader->flags, sizeof(shader->flags));
--
--   blob_copy_bytes(blob, &shader->vs, sizeof(shader->vs));
--   blob_copy_bytes(blob, &shader->fs, sizeof(shader->fs));
--   blob_copy_bytes(blob, &shader->tp, sizeof(shader->tp));
--   blob_copy_bytes(blob, &shader->cp, sizeof(shader->cp));
--
--   bool has_xfb = blob_read_uint8(blob);
--   if (has_xfb) {
--      xfb = malloc(sizeof(struct nvk_transform_feedback_state));
--      if(!xfb)
--         goto fail;
--
--      shader->xfb = xfb;
--      blob_copy_bytes(blob, shader->xfb, sizeof(*shader->xfb));
--   }
-+   shader->info.num_gprs = blob_read_uint8(blob);
-+   shader->info.num_barriers = blob_read_uint8(blob);
-+   shader->info.slm_size = blob_read_uint32(blob);
-+
-+   blob_copy_bytes(blob, &shader->info.hdr, sizeof(shader->info.hdr));
-+   blob_copy_bytes(blob, &shader->info.cs, sizeof(shader->info.cs));
-+   blob_copy_bytes(blob, &shader->info.fs, sizeof(shader->info.fs));
-+   blob_copy_bytes(blob, &shader->info.ts, sizeof(shader->info.ts));
-+   blob_copy_bytes(blob, &shader->info.vtg, sizeof(shader->info.vtg));
- 
-    code_ptr = malloc(shader->code_size);
-    if (!code_ptr)
-diff --git a/src/nouveau/vulkan/nvk_shader.h b/src/nouveau/vulkan/nvk_shader.h
-index c27b77b4fcc..43a364dd846 100644
---- a/src/nouveau/vulkan/nvk_shader.h
-+++ b/src/nouveau/vulkan/nvk_shader.h
-@@ -118,7 +118,7 @@ VkResult
- nvk_compile_nir(struct nvk_device *dev, nir_shader *nir,
-                 VkPipelineCreateFlagBits2KHR pipeline_flags,
-                 const struct vk_pipeline_robustness_state *rstate,
--                const struct nvk_fs_key *fs_key,
-+                const struct nak_fs_key *fs_key,
-                 struct vk_pipeline_cache *cache,
-                 unsigned char hash[SHA1_DIGEST_LENGTH],
-                 struct nvk_shader **shader_out);
-@@ -136,10 +136,28 @@ nvk_hash_shader(unsigned char *hash,
-                  const VkPipelineShaderStageCreateInfo *sinfo,
-                  const struct vk_pipeline_robustness_state *rstate,
-                  const struct vk_pipeline_layout *layout,
--                 const struct nvk_fs_key *fs_key);
-+                 const struct nak_fs_key *fs_key);
- 
- void
- nvk_shader_destroy(struct vk_device *dev,
-                    struct vk_pipeline_cache_object *object);
- 
-+/* Codegen wrappers.
-+ *
-+ * TODO: Delete these once NAK supports everything.
-+ */
-+uint64_t nvk_cg_get_prog_debug(void);
-+uint64_t nvk_cg_get_prog_optimize(void);
-+
-+const nir_shader_compiler_options *
-+nvk_cg_nir_options(const struct nvk_physical_device *pdev,
-+                   gl_shader_stage stage);
-+
-+void nvk_cg_preprocess_nir(nir_shader *nir);
-+void nvk_cg_optimize_nir(nir_shader *nir);
-+
-+VkResult nvk_cg_compile_nir(struct nvk_physical_device *pdev, nir_shader *nir,
-+                            const struct nak_fs_key *fs_key,
-+                            struct nvk_shader *shader);
-+
- #endif
+diff --git a/docs/features.txt b/docs/features.txt
+index 367ebd4a6897..acc038e3565b 100644
+--- a/docs/features.txt
++++ b/docs/features.txt
+@@ -488,8 +488,8 @@ Vulkan 1.3 -- all DONE: anv, radv, tu, lvp, vn
+   VK_EXT_extended_dynamic_state                         DONE (anv, hasvk, lvp, nvk, radv, tu, vn)
+   VK_EXT_extended_dynamic_state2                        DONE (anv, hasvk, lvp, nvk, radv, tu, vn)
+   VK_EXT_inline_uniform_block                           DONE (anv, hasvk, lvp, nvk, radv, tu, v3dv, vn)
+-  VK_EXT_pipeline_creation_cache_control                DONE (anv, hasvk, lvp, radv, tu, v3dv, vn)
+-  VK_EXT_pipeline_creation_feedback                     DONE (anv, hasvk, lvp, radv, tu, v3dv, vn)
++  VK_EXT_pipeline_creation_cache_control                DONE (anv, hasvk, lvp, nvk, radv, tu, v3dv, vn)
++  VK_EXT_pipeline_creation_feedback                     DONE (anv, hasvk, lvp, nvk, radv, tu, v3dv, vn)
+   VK_EXT_private_data                                   DONE (anv, hasvk, lvp, nvk, pvr, radv, tu, v3dv, vn)
+   VK_EXT_image_robustness                               DONE (anv, hasvk, lvp, nvk, radv, tu, v3dv, vn)
+   VK_EXT_shader_demote_to_helper_invocation             DONE (anv, hasvk, lvp, nvk, radv, tu, vn)
+@@ -611,7 +611,7 @@ Khronos extensions that are not part of any Vulkan version:
+   VK_EXT_shader_stencil_export                          DONE (anv/gen9+, lvp, radv, tu, vn)
+   VK_EXT_shader_subgroup_ballot                         DONE (anv, dzn, hasvk, lvp, nvk, radv, vn)
+   VK_EXT_shader_subgroup_vote                           DONE (anv, dzn, hasvk, lvp, nvk, radv)
+-  VK_EXT_shader_module_identifier                       DONE (anv, hasvk, radv, tu, v3dv)
++  VK_EXT_shader_module_identifier                       DONE (anv, hasvk, nvk, radv, tu, v3dv)
+   VK_EXT_transform_feedback                             DONE (anv, hasvk, lvp, nvk, radv, tu, vn)
+   VK_EXT_vertex_attribute_divisor                       DONE (anv, dzn, hasvk, lvp, nvk, panvk, radv, tu, v3dv, vn)
+   VK_EXT_vertex_input_dynamic_state                     DONE (anv, lvp, nvk, radv, tu, vn)
 -- 
-2.43.0
-
-
-From 222f3512211b982f97f4977cd5aaec27dc7ba4bf Mon Sep 17 00:00:00 2001
-From: "Echo J." <aidas957@gmail.com>
-Date: Fri, 15 Dec 2023 12:27:59 +0200
-Subject: [PATCH 9/9] nvk: Various pipeline caching hotfixes 2
-
----
- src/nouveau/vulkan/nvk_cmd_dispatch.c      | 2 +-
- src/nouveau/vulkan/nvk_cmd_draw.c          | 4 ++--
- src/nouveau/vulkan/nvk_compute_pipeline.c  | 5 +++--
- src/nouveau/vulkan/nvk_graphics_pipeline.c | 5 +++--
- 4 files changed, 9 insertions(+), 7 deletions(-)
-
-diff --git a/src/nouveau/vulkan/nvk_cmd_dispatch.c b/src/nouveau/vulkan/nvk_cmd_dispatch.c
-index 2ca1e9daca1..c43bf377360 100644
---- a/src/nouveau/vulkan/nvk_cmd_dispatch.c
-+++ b/src/nouveau/vulkan/nvk_cmd_dispatch.c
-@@ -211,7 +211,7 @@ nvk_flush_compute_state(struct nvk_cmd_buffer *cmd,
-    }
- 
-    const struct nvk_shader *shader =
--      &pipeline->base.shaders[MESA_SHADER_COMPUTE];
-+      pipeline->base.shaders[MESA_SHADER_COMPUTE];
-    for (uint32_t c = 0; c < shader->cbuf_map.cbuf_count; c++) {
-       const struct nvk_cbuf *cbuf = &shader->cbuf_map.cbufs[c];
- 
-diff --git a/src/nouveau/vulkan/nvk_cmd_draw.c b/src/nouveau/vulkan/nvk_cmd_draw.c
-index 8284de36635..69b3ae169d6 100644
---- a/src/nouveau/vulkan/nvk_cmd_draw.c
-+++ b/src/nouveau/vulkan/nvk_cmd_draw.c
-@@ -1745,7 +1745,7 @@ nvk_flush_descriptors(struct nvk_cmd_buffer *cmd)
- 
-    uint32_t root_cbuf_count = 0;
-    for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
--      const struct nvk_shader *shader = &pipeline->base.shaders[stage];
-+      const struct nvk_shader *shader = pipeline->base.shaders[stage];
-       if (shader->code_size == 0)
-          continue;
- 
-@@ -1815,7 +1815,7 @@ nvk_flush_descriptors(struct nvk_cmd_buffer *cmd)
-    P_NV9097_SET_CONSTANT_BUFFER_SELECTOR_C(p, root_desc_addr);
- 
-    for (gl_shader_stage stage = 0; stage < MESA_SHADER_STAGES; stage++) {
--      const struct nvk_shader *shader = &pipeline->base.shaders[stage];
-+      const struct nvk_shader *shader = pipeline->base.shaders[stage];
-       if (shader->code_size == 0)
-          continue;
- 
-diff --git a/src/nouveau/vulkan/nvk_compute_pipeline.c b/src/nouveau/vulkan/nvk_compute_pipeline.c
-index 3cb93b26dea..5ee52710c4d 100644
---- a/src/nouveau/vulkan/nvk_compute_pipeline.c
-+++ b/src/nouveau/vulkan/nvk_compute_pipeline.c
-@@ -193,6 +193,8 @@ nvk_compute_pipeline_create(struct nvk_device *dev,
-       result = VK_SUCCESS;
-    }
- 
-+   struct nvk_shader *shader = pipeline->base.shaders[MESA_SHADER_COMPUTE];
-+
-    if (!object) {
-       if (pCreateInfo->flags &
-           VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT) {
-@@ -206,9 +208,8 @@ nvk_compute_pipeline_create(struct nvk_device *dev,
-       if (result != VK_SUCCESS)
-          goto fail;
- 
--      nvk_lower_nir(dev, nir, &robustness, false, pipeline_layout);
-+      nvk_lower_nir(dev, nir, &robustness, false, pipeline_layout, shader);
- 
--      struct nvk_shader *shader;
-       result = nvk_compile_nir(dev, nir, pipeline_flags, &robustness, NULL,
-                                cache, sha1, &shader);
- 
-diff --git a/src/nouveau/vulkan/nvk_graphics_pipeline.c b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-index 941357a89db..3f0af421631 100644
---- a/src/nouveau/vulkan/nvk_graphics_pipeline.c
-+++ b/src/nouveau/vulkan/nvk_graphics_pipeline.c
-@@ -404,15 +404,16 @@ nvk_graphics_pipeline_create(struct nvk_device *dev,
- 
-       if (!objects[stage]) {
-          int64_t stage_start = os_time_get_nano();
-+         struct nvk_shader *shader;
- 
-          nvk_lower_nir(dev, nir[stage], &robustness[stage],
--                       state.rp->view_mask != 0, pipeline_layout);
-+                       state.rp->view_mask != 0, pipeline_layout,
-+                       shader);
- 
-          unsigned char sha1[SHA1_DIGEST_LENGTH];
-          nvk_hash_shader(sha1, sinfo, &robustness[stage], pipeline_layout,
-                          stage == MESA_SHADER_FRAGMENT ? fs_key : NULL);
- 
--         struct nvk_shader *shader;
-          result = nvk_compile_nir(dev, nir[stage], pipeline_flags, &robustness[stage],
-                                   stage == MESA_SHADER_FRAGMENT ? fs_key : NULL,
-                                   cache, sha1, &shader);
--- 
-2.43.0
+GitLab
 

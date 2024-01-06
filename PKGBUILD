@@ -3,7 +3,7 @@
 
 pkgname=lib32-vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (32-bit Git version)"
-pkgver=23.3.branchpoint.r2826.g33e8f22
+pkgver=23.3.branchpoint.r3322.g023e78b
 pkgrel=1
 arch=('x86_64')
 depends=('lib32-libdrm' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-systemd' 'lib32-vulkan-icd-loader' 'lib32-wayland')
@@ -16,9 +16,11 @@ url="https://gitlab.freedesktop.org/mesa/mesa"
 license=('custom')
 source=("git+${url}.git"
         nvk-memory-budget.patch
+        nvk-pipeline-cache.patch
         LICENSE)
 sha512sums=('SKIP'
             '6bb223fb4c4e799c71bca2b4e8f290cda94fe712a9d378e9b4a43280831b7e96f8ef9d94d6c1fa1a29c39e123ead3ef573bc54e3ae4484070fff2bd1cf316e3f'
+            '7c5c9a7faaeb997322b021a89cd5cd946b5966ee0107cac73fdd77eee626f5cb7cb2bcfb2d1186ee148761d2424dea640fea53c412cabc17fcbfd3131ab9799b'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 install="${pkgname}.install"
 
@@ -54,9 +56,8 @@ prepare() {
   patch ${_patch_opts} ../nvk-memory-budget.patch
 
   # Pipeline caching (https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/25550)
-  # (might improve performance) (this patch is rebased for the NVK shader code rework)
-  # TODO: Fix the segfault issues/MMU faults with this enabled after the recent shader changes
-  #patch ${_patch_opts} ../nvk-pipeline-cache.patch
+  # (might improve performance)
+  patch ${_patch_opts} ../nvk-pipeline-cache.patch
 
   # Mark this NVK package with a signature (so I could track who's using it for bug report purposes)
   sed -i 's/"Mesa " PACKAGE_VERSION/"Mesa DodoNVK " PACKAGE_VERSION/' src/nouveau/vulkan/nvk_physical_device.c
@@ -74,6 +75,7 @@ build() {
   # HACK: Remove crate .rlib files before build
   # (This prevents build errors after a Rust update: https://github.com/mesonbuild/meson/issues/10706)
   [ -d build/subprojects ] && find build/subprojects -iname "*.rlib" -delete
+  [ -d build/src/nouveau/compiler ] && find build/src/nouveau/compiler -iname "*.rlib" -delete
 
   # As you can see, I optimized the build options pretty well 🐸
   arch-meson mesa build \
