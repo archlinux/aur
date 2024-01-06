@@ -1,6 +1,6 @@
 pkgbase = octave-arduino
 	pkgdesc = Basic Octave implementation of the matlab arduino extension, allowing communication to a programmed arduino board to control its hardware
-	pkgver = 0.11.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/arduino
 	install = octave-arduino.install
@@ -10,8 +10,8 @@ pkgbase = octave-arduino
 	depends = octave>=4.0.0
 	depends = octave-instrument-control>=0.5.0
 	depends = arduino
-	noextract = arduino-0.11.0.tar.gz
-	source = https://github.com/gnu-octave/octave-arduino/releases/download/release-0.11.0/arduino-0.11.0.tar.gz
-	sha512sums = 6c653750387cfa5f17ab00fedf49a334605a61a733de5ac5e994d5e31179dc4c17824f82b5fbcc3d356d37d0a54c0ff397e3531ae12a7adff8ca3618cc6c1d33
+	noextract = arduino-0.12.1.tar.gz
+	source = https://github.com/gnu-octave/octave-arduino/releases/download/release-0.12.1/arduino-0.12.1.tar.gz
+	sha512sums = 7543cd786418c84f89d7cb27e619892005f72b060b104c455529699b33bc045c3cc70a9aad20bc1431f770902b855dd469e2780530c63f50204a0305c7a11cdc
 
 pkgname = octave-arduino
