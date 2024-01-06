@@ -1,0 +1,40 @@
+From e10b09333c8ba4fad83ff261585de11a786d0a28 Mon Sep 17 00:00:00 2001
+From: Frederik Schwan <frederik.schwan@linux.com>
+Date: Sat, 6 Jan 2024 13:11:51 +0100
+Subject: [PATCH] add option to build PIE executables
+
+---
+ build.zig | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/build.zig b/build.zig
+index 8bc0486..d27afdd 100644
+--- a/build.zig
++++ b/build.zig
+@@ -8,6 +8,7 @@ pub fn build(b: *std.Build) !void {
+     const target = b.standardTargetOptions(.{});
+     const optimize = b.standardOptimizeOption(.{});
+     const options = b.addOptions();
++    const pie = b.option(bool, "pie", "Build with PIE support (by default false)") orelse false;
+ 
+     const scanner = Scanner.create(b, .{});
+     scanner.addCustomProtocol("protocol/wlr-layer-shell-unstable-v1.xml");
+@@ -57,6 +58,7 @@ pub fn build(b: *std.Build) !void {
+     wayprompt_cli.linkSystemLibrary("pixman-1");
+     wayprompt_cli.addModule("spoon", spoon);
+     wayprompt_cli.addOptions("build_options", options);
++    wayprompt_cli.pie = pie;
+     b.installArtifact(wayprompt_cli);
+ 
+     const wayprompt_pinentry = b.addExecutable(.{
+@@ -78,6 +80,7 @@ pub fn build(b: *std.Build) !void {
+     wayprompt_pinentry.linkSystemLibrary("pixman-1");
+     wayprompt_pinentry.addModule("spoon", spoon);
+     wayprompt_pinentry.addOptions("build_options", options);
++    wayprompt_pinentry.pie = pie;
+     b.installArtifact(wayprompt_pinentry);
+ 
+     const tests = b.addTest(.{
+-- 
+2.43.0
+
