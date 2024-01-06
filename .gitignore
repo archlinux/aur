@@ -1,0 +1,5 @@
+nugget-doom-*.tar.gz
+nugget-doom-*.log
+nugget-doom-*.tar.zst
+pkg/
+src/
