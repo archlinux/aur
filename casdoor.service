@@ -1,0 +1,17 @@
+[Unit]
+Description=Casdoor IAM
+After=network.target multi-user.target mariadb.service
+Wants=network.target multi-user.target
+
+[Service]
+RestartSec=2s
+Type=simple
+User=casdoor
+WorkingDirectory=/var/lib/casdoor
+ExecStart=/usr/bin/casdoor
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

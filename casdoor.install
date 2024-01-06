@@ -1,0 +1,5 @@
+post_install() {
+echo -n "
+Check you config file /etc/casdoor/casdoor.conf and add database credentials before starting casdoor.service
+"
+}
