@@ -1,4 +1,8 @@
 ansel-git-*.pkg.tar.zst
 ansel/
+rawspeed/
+OpenCL-Headers/
+libxcf/
+whereami/
 pkg/
 src/
