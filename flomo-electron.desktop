@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Flomo-electron
+Comment=浮墨笔记,像发微博一样记笔记,记录你想法的川流.全平台覆盖,还支持微信服务号输入.
+Exec=flomo
+Icon=flomo-electron
+Terminal=false
+StartupNotify=false
+Categories=Application;
