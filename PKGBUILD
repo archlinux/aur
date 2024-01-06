@@ -1,4 +1,4 @@
-# Mainstainer: Josef Vybíhal <josef.vybihal@gmail.com>
+# Maintainer: Josef Vybíhal <josef.vybihal@gmail.com>
 # Contributor: Polarian <polarian@polarian.dev>
 # Contributor: Benjamin Denhartog <ben@sudoforge.com>
 # Contributor: Mansour Behabadi <mansour@oxplot.com>
@@ -14,7 +14,7 @@
 #  - https://packages.cloud.google.com/apt/pool/google-cloud-cli_455.0.0-0_all_568366af2c266f73f44b302536eb2b7e143d67d783aaf0f89452dbd8ca805410.deb
 _extractedName="google-cloud-sdk"
 pkgname="google-cloud-cli"
-pkgver=458.0.0
+pkgver=458.0.1
 pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/cli/"
@@ -38,7 +38,7 @@ source=(
 # Conflict the old package name to force migration
 conflicts=('google-cloud-sdk')
 provides=('google-cloud-sdk')
-sha256sums=('1aeb7d6549efaf8a578ce9dbd5f8bb4f7862fb81d105a8dcde5e576414e25e33'
+sha256sums=('7b96905bd6b47ad34cc4832a96a08389fab79694b09eca8b8a787b923c8b6265'
             'e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a'
             '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93')
 
