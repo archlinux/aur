@@ -4,12 +4,12 @@ pkgname=nugget-doom
 _pkgname=nugget-doom
 _tardir="Nugget-Doom-$_pkgname"
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of Woof! with additional features"
 arch=('x86_64')
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL2')
-depends=(sdl2 sdl2_net openal libsndfile)
+depends=(sdl2 sdl2_net openal libsndfile hicolor-icon-theme glibc)
 # FluidSynth is optional, but can not be an optdepends since it gets linked to the built executable
 # Required for high-quality MIDI music, you probably want it.
 depends+=(fluidsynth)
