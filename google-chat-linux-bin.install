@@ -1,0 +1,17 @@
+post_install() {
+    ln -sfn "/opt/${appname}/${appname}" "/usr/bin/${appname}"
+}
+
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    rm "/usr/bin/${appname}"
+}
+
+appname="google-chat-linux"
+op=$1
+shift
+$op $*
