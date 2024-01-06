@@ -1,7 +1,7 @@
 pkgbase = google-chat-linux-bin
 	pkgdesc = Unofficial electron-based desktop client for Google Chat, electron included
 	pkgver = 5.27.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/squalou/google-chat-linux.git
 	arch = x86_64
 	arch = i686
