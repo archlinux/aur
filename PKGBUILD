@@ -8,7 +8,7 @@
 
 pkgname=python-cx-freeze
 pkgver=6.15.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
 url='https://marcelotduarte.github.io/cx_Freeze'
@@ -25,6 +25,7 @@ sha512sums=('e18823c106049a72180d99b7910986fc727f1301426a90028e39700b183436ffd3c
 
 prepare() {
   sed -e 's|69|70|g' -i cx_Freeze-$pkgver/pyproject.toml # Support setuptools 69
+  sed -e '/patchelf/d' -i cx_Freeze-$pkgver/pyproject.toml # don't require patchelf pip module
 }
 
 build() {
