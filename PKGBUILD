@@ -1,7 +1,7 @@
 # Maintainer: hossbeast <todd DOT freed AT gmail DOT com>
 
 pkgname=meshboard-headless
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Synchronize the clipboard across a mesh of hosts, without display server support"
 provides=('meshboard')
