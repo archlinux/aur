@@ -1,9 +1,8 @@
 pkgbase = hexagonrpcd
 	pkgdesc = Qualcomm HexagonFS daemon
-	pkgver = v0.1.0
+	pkgver = 0.1.0.r0.g23b7681
 	pkgrel = 1
 	url = https://gitlab.com/flamingradian/sensh/
-	install = hexagonrpcd.install
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = linux-headers
@@ -19,8 +18,8 @@ pkgbase = hexagonrpcd
 	sha256sums = SKIP
 	sha256sums = 41dfc4e8c4fd88f461a5a6e4a4e86849eb302f8bcb2b5ce2efa9690f5415d52d
 	sha256sums = 2b22f7c6ab7e9dce334aa219cd1b07f4fadab1679f5f39a0da5631e2ee0bc0fa
-	sha256sums = ca375937f6e3ad0a69f7418e479ebbb4e488bc26e8b8547df59f2196d5c30c20
-	sha256sums = c63e9df4b593b3445253b48fe6d386cfcba6123737d54469d7da5b46786004e7
-	sha256sums = b514cf5d6a8c35fc2b43fcac01f54145c75650784d6791835aadb596c033eb69
+	sha256sums = 545d9db944cd3237fa3aec6de69837c7d5091d290092846e561b73529964d46f
+	sha256sums = 8034ebd8d4a7301d29ba7badbd87c165379272c8d99a32d75c68715cbceb9ff1
+	sha256sums = 67a474836f161055dedcaf99ecc32a9995127fce5ecca2d25d7b9d460cdf7413
 
 pkgname = hexagonrpcd

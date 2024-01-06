@@ -1,5 +1,8 @@
 [Unit]
-Description="Hexagonrpcd ADSP SensorPD"
+Name=Hexagonrpcd ADSP SensorPD
+Description=Daemon to support Qualcomm Hexagon ADSP virtual filesystem for SensorPD
+Requires=dev-fastrpc\x2dadsp.device
+After=dev-fastrpc\x2dadsp.device
 
 [Service]
 User=fastrpc

@@ -1,5 +1,8 @@
 [Unit]
-Description="Hexagonrpcd ADSP RootPD"
+Name=Hexagonrpcd ADSP RootPD
+Description=Daemon to support Qualcomm Hexagon ADSP virtual filesystem for RootPD
+Requires=dev-fastrpc\x2dadsp.device
+After=dev-fastrpc\x2dadsp.device
 
 [Service]
 User=fastrpc

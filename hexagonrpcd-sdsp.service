@@ -1,5 +1,8 @@
 [Unit]
-Description=Hexagonrpcd SDSP
+Name=Hexagonrpcd SDSP
+Description=Daemon to support Qualcomm Hexagon SDSP virtual filesystem
+Requires=dev-fastrpc\x2dsdsp.device
+After=dev-fastrpc\x2dsdsp.device
 
 [Service]
 User=fastrpc
