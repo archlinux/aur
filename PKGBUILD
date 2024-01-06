@@ -5,7 +5,7 @@ pkgver=1.1
 pkgrel=1
 pkgdesc='A simple restic helper'
 arch=('any')
-url='https://gitlab.com/connectical/connectical-infrastructure'
+url='https://aur.archlinux.org/cgit/aur.git/tree/README.md?h=resticctl'
 license=('GPL3')
 depends=('bash' 'restic')
 optdepends=('fuse2: mount archive')
