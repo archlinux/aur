@@ -1,5 +1,5 @@
 pkgbase = supertux-advance
-	pkgdesc = a fan game of SuperTux written in Squirrel using Brux GDK. The name comes from the graphical style, which uses a lower resolution display and a sprite style similar to Sonic Advance. Gameplay is not a 1 to 1 recreation of SuperTux, nor does it aim to be. It's meant to be a more fast-paced action platformer than a Mario clone. While the gameplay is designed with speed running in mind, it is not an essential skill; the game can be played and beaten casually.
+	pkgdesc = a fan game of SuperTux written in Squirrel using Brux GDK. The name comes from the graphical style, which uses a lower resolution display and a sprite style similar to Sonic Advance.
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/KelvinShadewing/supertux-advance
