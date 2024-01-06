@@ -1,7 +1,7 @@
 pkgbase = sing-geoip-git
 	pkgdesc = sing-geoip
 	pkgver = 20231212.r1.g9c34309
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SagerNet/sing-geoip
 	arch = any
 	license = GPL3
@@ -20,10 +20,10 @@ pkgname = sing-geoip-rule-set-git
 	depends = sing-geoip-common-git
 	provides = sing-geoip-rule-set
 	conflicts = sing-geoip-rule-set
-	replaces = sing-geoip-git
 
 pkgname = sing-geoip-db-git
 	pkgdesc = sing-geoip (database)
 	depends = sing-geoip-common-git
 	provides = sing-geoip-db
 	conflicts = sing-geoip-db
+	replaces = sing-geoip-git
