@@ -1,20 +1,31 @@
-# Maintainer: Leonidas Spyropoulos <artafinde AT gmail DOT com>
+# Maintainer: Nicola Revelant <nicolarevelant@outlook.com>
+# Contributor: Leonidas Spyropoulos <artafinde AT gmail DOT com>
 
-pkgname=gnome-shell-extension-cpufreq
-_pkgname=${pkgname#gnome-shell-extension-}
-pkgver=49.0
-pkgrel=2
+_extname=cpufreq
+pkgname=gnome-shell-extension-$_extname
+pkgver=50.0
+pkgrel=1
 pkgdesc="Gnome Shell CPU Frequency Monitor and Governor Manager."
 arch=('any')
 url="https://github.com/konkor/cpufreq"
 license=('GPL3')
-conflicts=('gnome-shell-extension-cpufreq-git')
-depends=('gnome-shell')
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('05844f66a9b808a058ae6b51d67c9bea66e3500736a02fa25cd7e340ba57f14f66eea71918c05396cd5586c04012af2a8393aa24d63519b82555625ef915009b')
+depends=(
+	'dconf'
+	'gnome-shell'
+	'gjs'
+	'hicolor-icon-theme'
+)
+makedepends=('gnome-common')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('686d8a262e353f4c7037d7798efc52b26a2fd05b3c66e6d21cd54e743bc1253d953d544bbd8f96ff996f123de32c7567b808fd42fc9029a7702c2a95102dff31')
+
+build() {
+	cd "cpufreq-$pkgver"
+	./autogen.sh --prefix="/usr"
+	make
+}
 
 package() {
-  _extid='cpufreq@konkor'
-  install -dm755 "${pkgdir}/usr/share/gnome-shell/extensions/"
-  mv "${_pkgname}-${pkgver}" "${pkgdir}/usr/share/gnome-shell/extensions/${_extid}"
+	cd "cpufreq-$pkgver"
+	DESTDIR="$pkgdir" make install
 }
