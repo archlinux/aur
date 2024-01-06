@@ -2,7 +2,7 @@
 _pkgname=powerliminalsplayer
 pkgname=${_pkgname}-appimage
 pkgver=3.3
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Plays multiple audios simultaneously at varying speeds"
 arch=('x86_64')
 url="https://github.com/mysteryx93/NaturalGroundingPlayer/wiki/Powerliminals-Player"
