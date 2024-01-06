@@ -3,14 +3,14 @@
 # Contributor: Benjamin Klettbach <b.klettbach@gmail.com>
 
 pkgname=obs-studio-amf
-pkgver=29.1.3
+pkgver=30.0.2
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording. Includes new AMF encoding patch & browser plugin"
 arch=('x86_64')
 url="https://obsproject.com"
 license=('GPL2')
 depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls' 'rnnoise' 'pciutils' 'nss'
-	'qt6-svg' 'qt6-wayland' 'xdg-desktop-portal' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite' 'amf-amdgpu-pro')
+	'qt6-svg' 'qt6-wayland' 'xdg-desktop-portal' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite' 'amf-amdgpu-pro' 'qrcodegencpp-cmake' 'libdatachannel')
 makedepends=('cmake' 'libfdk-aac' 'x264' 'swig' 'python' 'luajit' 'sndio' 'git' 'nlohmann-json' 'websocketpp' 'asio' 'amf-headers')
 provides=("obs-studio=$pkgver" "obs-websocket")
 conflicts=("obs-studio" "obs-studio-tytan652" "obs-websocket")
@@ -23,18 +23,18 @@ optdepends=('libfdk-aac: FDK AAC codec support'
 	'v4l2loopback-dkms: virtual camera support')
 source=(obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver
 	cef_binary_5060_linux64.tar.bz2::https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
-	7206.patch
+	obs-amf-patch.patch
 	com.obsproject.Studio.desktop)
 md5sums=('SKIP'
          '815a03f3436ff29d7d8ef406b1ee0cec'
-         '6dcf01430679459b744b03f915512935'
+         '2978ea86c67b116adaad671f2b04fa4d'
          '2f0f4b1f1814716d345a8f028b987361')
 
 prepare() {
 	tar -xjf ./cef_binary_5060_linux64.tar.bz2
 	cd obs-studio
 	git submodule update --init --recursive
-	patch -Np1 <"$srcdir"/7206.patch
+	patch -Np1 <"$srcdir"/obs-amf-patch.patch
 }
 
 build() {
@@ -42,6 +42,7 @@ build() {
 	mkdir -p build
 	cd build
 
+	cmake -E env CFLAGS="-Wno-deprecated-declarations" \
 	cmake -DCMAKE_INSTALL_PREFIX="/usr" \
 		-DENABLE_VST=ON \
 		-DENABLE_VLC=OFF \

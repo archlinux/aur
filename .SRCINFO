@@ -1,6 +1,6 @@
 pkgbase = obs-studio-amf
 	pkgdesc = Free, open source software for live streaming and recording. Includes new AMF encoding patch & browser plugin
-	pkgver = 29.1.3
+	pkgver = 30.0.2
 	pkgrel = 1
 	url = https://obsproject.com
 	arch = x86_64
@@ -34,6 +34,8 @@ pkgbase = obs-studio-amf
 	depends = pipewire
 	depends = libxcomposite
 	depends = amf-amdgpu-pro
+	depends = qrcodegencpp-cmake
+	depends = libdatachannel
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = libva-intel-driver: hardware encoding
 	optdepends = libva-mesa-driver: hardware encoding
@@ -41,18 +43,18 @@ pkgbase = obs-studio-amf
 	optdepends = python: scripting support
 	optdepends = sndio: Sndio input client
 	optdepends = v4l2loopback-dkms: virtual camera support
-	provides = obs-studio=29.1.3
+	provides = obs-studio=30.0.2
 	provides = obs-websocket
 	conflicts = obs-studio
 	conflicts = obs-studio-tytan652
 	conflicts = obs-websocket
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=29.1.3
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.0.2
 	source = cef_binary_5060_linux64.tar.bz2::https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
-	source = 7206.patch
+	source = obs-amf-patch.patch
 	source = com.obsproject.Studio.desktop
 	md5sums = SKIP
 	md5sums = 815a03f3436ff29d7d8ef406b1ee0cec
-	md5sums = 6dcf01430679459b744b03f915512935
+	md5sums = 2978ea86c67b116adaad671f2b04fa4d
 	md5sums = 2f0f4b1f1814716d345a8f028b987361
 
 pkgname = obs-studio-amf
