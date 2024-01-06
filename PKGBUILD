@@ -3,7 +3,7 @@ _pkgnameU=Converter432Hz
 _pkgname=converter432hz
 pkgname=${_pkgname}-appimage
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts and re-encodes music to 432Hz"
 arch=('x86_64')
 url="https://github.com/mysteryx93/NaturalGroundingPlayer/wiki/432hz-Batch-Converter"
@@ -13,7 +13,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mysteryx93/NaturalGroundingPlayer/releases/download/v${pkgver}/${_pkgnameU}-${pkgver}_Linux_x64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('f8ee4d09144b4954419999ecbe6180ff40828d0841a265f9425ef25dec452979')
+sha256sums_x86_64=('cc19c0d989abd956cd26f327543a4f2ab6b9566a3680a6e94469fd50f565d3ad')
 
 prepare() {
     chmod +x "${_appimage}"
