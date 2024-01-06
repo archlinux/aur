@@ -3,7 +3,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
 pkgver=11.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="http://floorp.app/"
 arch=('x86_64' 'aarch64')
@@ -40,7 +40,19 @@ sha256sums_x86_64=('af943e71ed5d5d43e58ea34a8e23e8fc543f8013b834bf961fb3852b3632
 sha256sums_aarch64=('1b094fbb84fcf5214ec7da98364ccd6b88e5fbbe8f6b067cee7cad945a796f11')
 
 package() {
-  depends+=('hicolor-icon-theme')
+  depends+=(
+    'alsa-lib'
+    'dbus-glib'
+    'gtk3'
+
+    ## implicit
+    #'at-spi2-core'
+    #'hicolor-icon-theme'
+    #'libxcomposite'
+    #'libxi'
+    #'libxrandr'
+    #'libxtst'
+  )
 
   local _install_path="opt/$_pkgname"
 
