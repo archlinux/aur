@@ -5,4 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!dbxfs.patch
+!update-check.patch

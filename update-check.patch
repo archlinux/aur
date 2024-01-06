@@ -1,0 +1,21 @@
+diff --unified --recursive --text a/dbxfs/main.py b/dbxfs/main.py
+--- a/dbxfs/main.py	2024-01-05 11:51:24.000000000 -0700
++++ b/dbxfs/main.py	2024-01-05 17:27:44.099881866 -0700
+@@ -396,7 +396,7 @@
+                                     "while the new version is %s. Would you like "
+                                     "to download the new version?") %
+                                    (version, rversion)):
+-                    webbrowser.open(("https://www.dbxfs.org/new_version?%s" %
++                    webbrowser.open(("https://aur.archlinux.org/packages/dbxfs" %
+                                      (urllib.parse.urlencode([
+                                          ("old_version", version),
+                                          ("new_version", rversion),
+@@ -407,7 +407,7 @@
+                 save_config = True
+                 config['upgrade_asked'] = rversion
+             else:
+-                ui.warning("dbxfs is out of date (%s vs %s), upgrade with 'pip3 install --upgrade dbxfs'" %
++                ui.warning("dbxfs is out of date (%s vs %s)" %
+                            (rversion, version))
+     except Exception:
+         log.warning("Failed to get most recent version", exc_info=True)
