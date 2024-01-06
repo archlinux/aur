@@ -1,19 +1,19 @@
 pkgbase = clickhouse-bin
 	pkgdesc = ClickHouse is a fast open-source OLAP database management system
-	pkgver = 23.12.1.1368
+	pkgver = 23.12.2.59
 	pkgrel = 1
 	url = https://clickhouse.tech/
 	arch = x86_64
 	license = Apache
 	provides = clickhouse
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-23.12.1.1368-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-23.12.1.1368-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-23.12.1.1368-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-23.12.2.59-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-23.12.2.59-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-23.12.2.59-amd64.tgz
 	source = clickhouse.sysusers
 	source = clickhouse-server.service
-	sha512sums = 04ffaf4becd4f555d18e28dbbf08c0b3838cd8e70e3a92e294c6a723313109f14957c329b09cc69b329051d91c5b3b312df8ac688abd5822bd5161540887d3f6
-	sha512sums = 2d5046b30f6e43bf24de027844408a7e3ee5aaeda65ac97c50b7c7b10c217ce239657746e5237cd0a1024d670aaf0f0b21dcc8ac8a5216392f92dc9efc3856d4
-	sha512sums = c51253ca1ee9fbed0542a9f8b2f3a34a8de970b68d42fdec39b0108b17f4f4c84dd6c0452599f532ee27e9fa6aa1edb0b19f3850a28e52a162431b45e61f88eb
+	sha512sums = 908fc5880ba81289bb05e62f433b78ddc1a8502952bea7104329da82e677ceb061e8d9dd7a30dd7f98e1faf4cd20fa62ee2998517c16d53280b50d2a47670165
+	sha512sums = d1beb8f5f26145c464a3972ca46dd9e34f0f9204e4d070409b136a84db1ab98787a0c60d252f725428dc2210534dcf135e460f17c4b5844082ccc2ee1447a954
+	sha512sums = 15f430fa9de69b366d47018b369fca37ae4d5cdd5eb3a436f99ee897b8f13159c4c0a6c0b7a36d38aa09a81c110d2d116b859f8bd9f7ad75237ad685b7867c8e
 	sha512sums = 70af4456ded1a1bb5cf29d2d3b29086aedc7875ef673e8817f389243f0c79eb491c9ce715b94542cbe16eb7489d97411ff0ab4a1a7f6c9b9120c659b87ea25b7
 	sha512sums = 6b22c7e27961c1453f8ce71457085cb24271ed1962033f78ea2483560bb6ad265a117414c5a9627a1733429d4080adf1fea4490073a7e522a002753d4d87d01c
 
