@@ -1,13 +1,13 @@
 # Maintainer: RickaPrincy <rckprincy@gmail.com>
 pkgname=rcli
-pkgver=1.4.2
-pkgrel=1
-pkgdesc="rcli is a powerful C++ library that simplifies the creation of CLI applications"
+pkgver=1.4.3
+pkgrel=2
+pkgdesc="Powerful C++ library that simplifies the creation of CLI applications"
 arch=(any)
 url="https://github.com/RickaPrincy/rcli"
 license=('MIT')
 source=("https://github.com/RickaPrincy/$pkgname/releases/download/v$pkgver/rcli-v$pkgver.tar.gz")
-sha256sums=('e37a7cdd33cd54d83ce00cc0c85744c28f4b06e71318e57418b157e950f3d935')
+sha256sums=('81e69ea1e80f9a9b6c2d3497a838496f24a6efd578816e48167320f0713355d1')
 
 package() {
     echo "Installing to \"$pkgdir/usr/local/\""
