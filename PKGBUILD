@@ -1,7 +1,7 @@
 # Maintainer: hossbeast <todd DOT freed AT gmail DOT com>
 
 pkgname=meshboard-xorg
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Synchronize the clipboard across a mesh of hosts, with xorg integration"
 provides=('meshboard')
@@ -9,7 +9,7 @@ conflicts=('meshboard')
 arch=('x86_64')
 url="https://git.sr.ht/~hossbeast/meshboard"
 license=('GPL3')
-depends=('libxfixes')
+depends=('glibc' 'libx11' 'libxfixes')
 makedepends=('git' 'perl')
 source=(
   "meshboard::git+https://git.sr.ht/~hossbeast/meshboard#tag=v${pkgver}?signed"
