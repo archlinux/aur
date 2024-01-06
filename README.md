@@ -5,7 +5,9 @@ The little helper of `restic`.
 ## Installation
 
 Simply copy the `resticctl` bash script to `/usr/bin` or install it vía
-[Arch Linux package](https://aur.archlinux.org/packages/resticctl).
+[Arch Linux package][alp].
+
+[alp]: https://aur.archlinux.org/packages/resticctl
 
 ## Configuration
 
@@ -24,10 +26,14 @@ script itself, which are the following.
    pass to `restic forget` in case we want it to be executed before the
    `backup` command.
 
+To find out which environment variables `restic` accepts you can consult its
+documentation [here][env].
 
 In addition, if in the location of `resticctl.conf` there is a file
 `excludes.lst` then this file is used as a list of backup exclusion
 patterns.
+
+[env]: https://restic.readthedocs.io/en/stable/040_backup.html#environment-variables
 
 ## Run
 
