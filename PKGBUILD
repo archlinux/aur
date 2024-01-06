@@ -2,7 +2,7 @@
 _pkgname=yangdownloader
 pkgname=${_pkgname}-appimage
 pkgver=3.3
-pkgrel=1.1
+pkgrel=2
 pkgdesc="Downloads best-quality audio and video from YouTube"
 arch=('x86_64')
 url="https://github.com/mysteryx93/HanumanInstituteApps/wiki/Yang-YouTube-Downloader"
