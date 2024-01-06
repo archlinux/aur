@@ -4,7 +4,7 @@
 pkgbase=alice-vision
 pkgname=('alice-vision') # 'alice-vision-cuda'
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.github.io/"
@@ -111,8 +111,6 @@ package_alice-vision() {
   ninja -C build doc_doxygen
   DESTDIR="${pkgdir}" ninja -C build install
 
-  # Fix OpenImageIO linkage in client libraries
-  sed -i 's/OpenImageIO::OpenImageIO/${OPENIMAGEIO_LIBRARIES}/g' "${pkgdir}"/usr/share/aliceVision/cmake/AliceVisionTargets.cmake
   # Don't search for unofficial coin-or cmake config
   sed -e '/CoinUtils/d' -e '/Clp/d' -e '/Osi/d' -i "$pkgdir"/usr/share/aliceVision/cmake/AliceVisionConfig.cmake
 
@@ -132,8 +130,6 @@ package_alice-vision-cuda() {
   ninja -C build-cuda doc_doxygen
   DESTDIR="${pkgdir}" ninja -C build-cuda install
 
-  # Fix OpenImageIO linkage in client libraries
-  sed -i 's/OpenImageIO::OpenImageIO/${OPENIMAGEIO_LIBRARIES}/g' "${pkgdir}"/usr/share/aliceVision/cmake/AliceVisionTargets.cmake
   # Don't search for unofficial coin-or cmake config
   sed -e '/CoinUtils/d' -e '/Clp/d' -e '/Osi/d' -i "$pkgdir"/usr/share/aliceVision/cmake/AliceVisionConfig.cmake
 
