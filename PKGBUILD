@@ -88,11 +88,11 @@
 _major=6.6
 _minor=10
 _srcname=linux-${_major}
-_clr=${_major}.9-1395
+_clr=${_major}.10-1398
 _gcc_more_v='20230105'
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
