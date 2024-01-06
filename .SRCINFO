@@ -6,6 +6,7 @@ pkgbase = patacrep-git
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
 	depends = python-ply
 	depends = python-jinja

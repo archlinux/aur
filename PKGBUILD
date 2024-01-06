@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python' 'python-ply' 'python-jinja' 'python-chardet'
          'python-unidecode' 'texlive-fontsextra' 'texlive-latexextra'
          'lilypond')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 source=("patacrep-git::git+https://github.com/patacrep/patacrep.git#branch=master")
 sha256sums=('SKIP')
 
