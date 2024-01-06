@@ -1,6 +1,6 @@
 pkgbase = hqplayer-pro
 	pkgdesc = Professional high-end audio file converter, recorder and player
-	pkgver = 4.22.1
+	pkgver = 4.22.2
 	pkgrel = 1
 	url = https://www.signalyst.com/professional.html
 	install = hqplayer-pro.install
@@ -21,7 +21,7 @@ pkgbase = hqplayer-pro
 	conflicts = hqplayer-embedded-amd
 	conflicts = hqplayer-embedded-rocm
 	conflicts = hqplayer4
-	source = http://www.signalyst.com/bins/hqplayer4pro_4.22.1-36_amd64.deb
-	sha256sums = c68316ee41e8acd8a7216285fa0b13d6022126aaf0343825c6c205360d7a1d18
+	source = http://www.signalyst.com/bins/hqplayer4pro_4.22.2-37_amd64.deb
+	sha256sums = baabde760d9d72fd56c8558265aba5acd97122712ec650f0a93ac13d63428ce9
 
 pkgname = hqplayer-pro
