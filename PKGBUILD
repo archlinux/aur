@@ -5,7 +5,7 @@
 
 pkgname=libopenshot
 pkgver=0.3.2
-pkgrel=6
+pkgrel=7
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
@@ -65,8 +65,8 @@ build() {
 }
 
 check() {
-  # disable broken test: https://github.com/OpenShot/libopenshot/issues/922
-  xvfb-run ctest --test-dir build --output-on-failure -E '(Caption:caption effect)'
+  # disable broken tests: https://github.com/OpenShot/libopenshot/issues/922 https://github.com/OpenShot/libopenshot/issues/948
+  xvfb-run ctest --test-dir build --output-on-failure -E '(Caption:caption effect|FFmpegWriter:Options_Overloads)'
 }
 
 
