@@ -1,7 +1,7 @@
 pkgbase = player432hz-appimage
 	pkgdesc = Plays music in 432hz
 	pkgver = 3.3
-	pkgrel = 1.1
+	pkgrel = 2
 	url = https://github.com/mysteryx93/NaturalGroundingPlayer/wiki/432hz-Player
 	arch = x86_64
 	license = MIT
