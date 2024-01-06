@@ -1,7 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=dvdisaster-unofficial
-_pkgver=0.79.6-pl9
-pkgver=${_pkgver//-/}
+_pkgver=0.79.10-pl2
+pkgver=${_pkgver//-/.}
 pkgrel=1
 
 pkgdesc="Provides a margin of safety against data loss on CD and DVD media caused by aging or scratches (unofficial fork)."
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk2')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('b8ccd5f4f43884ec8c506356da3d95cb37ae324965423577e4036b13b5dc8e8b')
+sha256sums=('b0841719f499c0367e58a0306674bfb08758a6ade2716fb5d9b35feab307f7f7')
 
 build() {
 	cd "${pkgname%-unofficial}-${_pkgver}"
