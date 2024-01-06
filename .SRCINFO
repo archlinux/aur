@@ -1,0 +1,19 @@
+pkgbase = supertux-advance
+	pkgdesc = a fan game of SuperTux written in Squirrel using Brux GDK. The name comes from the graphical style, which uses a lower resolution display and a sprite style similar to Sonic Advance. Gameplay is not a 1 to 1 recreation of SuperTux, nor does it aim to be. It's meant to be a more fast-paced action platformer than a Mario clone. While the gameplay is designed with speed running in mind, it is not an essential skill; the game can be played and beaten casually.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/KelvinShadewing/supertux-advance
+	install = supertux-advance.install
+	arch = any
+	license = GPL
+	depends = physfs
+	depends = sdl2_gfx
+	depends = sdl2_image
+	depends = sdl2_net
+	depends = sdl2_mixer
+	source = supertux-advance
+	source = supertux-advance-0.2.0.zip::https://github.com/KelvinShadewing/supertux-advance/releases/download/v0.2.0/sta-0.2.0.zip
+	sha256sums = e8636bd49b8388350f20a1e9f3bbb007ee612f5c9c59a1413cb10b960dac8e5c
+	sha256sums = 781cf8012fa4b79bdbd135b9d6b9244a287dcbcabcef2e6c451e8f00520aba72
+
+pkgname = supertux-advance
