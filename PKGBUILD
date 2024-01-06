@@ -90,6 +90,7 @@ if [[ "${_build_staging::1}" == "t" ]] ; then
   )
 
   source+=("git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$_pkgver")
+  b2sums+=('SKIP')
 
   prepare() {
     # apply wine-staging patchset
