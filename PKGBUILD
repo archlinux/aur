@@ -1,21 +1,42 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
-pkgname=sing-geoip
+pkgbase=sing-geoip
+pkgname=(sing-geoip-db sing-geoip-rule-set sing-geoip-common)
 pkgver=20231212
-pkgrel=2
+pkgrel=3
 
 pkgdesc='sing-geoip database'
 arch=('any')
-_repo="SagerNet/${pkgname}"
-url="https://github.com/${_repo}"
+url="https://github.com/SagerNet/sing-geoip"
 license=('GPL3')
 
-source=("${pkgver}.geoip.db::${url}/releases/download/${pkgver}/geoip.db"
-        "${pkgver}.LICENSE::https://raw.githubusercontent.com/${_repo}/${pkgver}/LICENSE")
-sha256sums=('1d00fe87e50854e10444813413d2b81a90dc40058817f12e6775a0ff23fa676c'
-            '2f02b7486bcfa90d115c71a20437f3906b6fd5bef81c5dc0efd341399e89d0fd')
+makedepends=(go)
 
-package() {
-    install -Dm644 "${pkgver}.geoip.db"    "${pkgdir}/usr/share/${pkgname}/geoip.db"
-    install -Dm644 "${pkgver}.LICENSE"     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+_srcbase="${pkgbase}-${pkgver}"
+
+source=("${_srcbase}.tar.gz::https://github.com/SagerNet/sing-geoip/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('e1055c8190a7f79a00ce3870b4f482161483ff68ffb10ed6f7915849ec513bd9')
+
+build() {
+    cd "${_srcbase}" || exit
+    go run -v .
+}
+
+package_sing-geoip-common() {
+    install -Dm644 "${_srcbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+}
+
+package_sing-geoip-db() {
+    depends=(sing-geoip-common)
+    replaces=(sing-geoip)
+
+    install -dm755 "${pkgdir}/usr/share/${pkgbase}/rule-set"
+    install -Dm644 "${_srcbase}/rule-set/"* "${pkgdir}/usr/share/${pkgbase}/rule-set"
+}
+
+package_sing-geoip-rule-set() {
+    depends=(sing-geoip-common)
+
+    install -dm755 "${pkgdir}/usr/share/${pkgbase}"
+    install -Dm644 "${_srcbase}/"*.db "${pkgdir}/usr/share/${pkgbase}"
 }
