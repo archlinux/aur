@@ -1,7 +1,7 @@
 pkgbase = sing-geosite-git
 	pkgdesc = sing-geosite
 	pkgver = 20240104053246.r0.gfc71b5c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SagerNet/sing-geosite
 	arch = any
 	license = GPL3
@@ -20,10 +20,10 @@ pkgname = sing-geosite-rule-set-git
 	depends = sing-geosite-common-git
 	provides = sing-geosite-rule-set
 	conflicts = sing-geosite-rule-set
-	replaces = sing-geosite-git
 
 pkgname = sing-geosite-db-git
 	pkgdesc = sing-geosite (database)
 	depends = sing-geosite-common-git
 	provides = sing-geosite-db
 	conflicts = sing-geosite-db
+	replaces = sing-geosite-git

@@ -4,7 +4,7 @@ _pkgbase=sing-geosite
 pkgbase=${_pkgbase}-git
 pkgname=("${_pkgbase}-common-git" "${_pkgbase}-rule-set-git" "${_pkgbase}-db-git")
 pkgver=20240104053246.r0.gfc71b5c
-pkgrel=1
+pkgrel=2
 
 pkgdesc='sing-geosite'
 arch=('any')
@@ -35,7 +35,6 @@ package_sing-geosite-common-git() {
 package_sing-geosite-rule-set-git() {
     pkgdesc='sing-geosite (rule sets)'
     depends=(sing-geosite-common-git)
-    replaces=(sing-geosite-git)
     provides=(sing-geosite-rule-set)
     conflicts=(sing-geosite-rule-set)
 
@@ -49,6 +48,7 @@ package_sing-geosite-db-git() {
     depends=(sing-geosite-common-git)
     provides=(sing-geosite-db)
     conflicts=(sing-geosite-db)
+    replaces=(sing-geosite-git)
 
     install -dm755 "${pkgdir}/usr/share/${_pkgbase}"
     install -Dm644 "sing-geosite/"*.db "${pkgdir}/usr/share/${_pkgbase}"
