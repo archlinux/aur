@@ -6,7 +6,7 @@
 
 pkgname=gnome-shell-screencast-vaapi
 _pkgname=gnome-shell
-pkgver=45.0
+pkgver=45.2
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -64,7 +64,7 @@ optdepends=(
 conflicts=(gnome-shell gnome-shell-debug)
 provides=(gnome-shell)
 groups=(gnome)
-_commit=2127c62b210f605747e019e6e2abee82516e3ccb  # tags/45.0^0
+_commit=8bb752adf47efa1e225d1aa885ae71865cabce8a  # tags/45.2^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"

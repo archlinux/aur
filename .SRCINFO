@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-screencast-vaapi
 	pkgdesc = Next generation desktop shell
-	pkgver = 45.0
+	pkgver = 45.2
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
@@ -50,7 +50,7 @@ pkgbase = gnome-shell-screencast-vaapi
 	provides = gnome-shell
 	conflicts = gnome-shell
 	conflicts = gnome-shell-debug
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=2127c62b210f605747e019e6e2abee82516e3ccb
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=8bb752adf47efa1e225d1aa885ae71865cabce8a
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = screencast-vaapi.patch
 	b2sums = SKIP
