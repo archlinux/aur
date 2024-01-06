@@ -1,0 +1,47 @@
+pkgbase = lua-combustion-git
+	pkgdesc = pack any lua project (including dependencies) into a single executable
+	pkgver = r60.4294fca
+	pkgrel = 1
+	url = https://github.com/Frityet/combustion
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = luarocks
+	source = git+https://github.com/Frityet/combustion.git
+	sha256sums = SKIP
+
+pkgname = lua-combustion-git
+	depends = lua
+	depends = lua-argparse
+	depends = lua-filesystem
+	depends = lua-penlight
+	provides = lua-combustion
+	conflicts = lua-combustion
+
+pkgname = lua53-combustion-git
+	depends = lua53
+	depends = lua53-argparse
+	depends = lua53-filesystem
+	depends = lua53-penlight
+	provides = lua53-combustion
+	conflicts = lua53-combustion
+
+pkgname = lua52-combustion-git
+	depends = lua52
+	depends = lua52-argparse
+	depends = lua52-filesystem
+	depends = lua52-penlight
+	provides = lua52-combustion
+	conflicts = lua52-combustion
+
+pkgname = lua51-combustion-git
+	depends = lua51
+	depends = lua51-argparse
+	depends = lua51-filesystem
+	depends = lua51-penlight
+	provides = lua51-combustion
+	conflicts = lua51-combustion
