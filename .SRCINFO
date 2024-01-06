@@ -1,0 +1,12 @@
+pkgbase = ttf-lucide
+	pkgdesc = Beautiful & consistent icon toolkit made by the community.
+	pkgver = 0.306.0
+	pkgrel = 0
+	url = https://lucide.dev/
+	arch = any
+	source = https://raw.githubusercontent.com/lucide-icons/lucide/main/LICENSE
+	source = https://github.com/lucide-icons/lucide/releases/download/0.306.0/lucide-font-0.306.0.zip
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ttf-lucide
