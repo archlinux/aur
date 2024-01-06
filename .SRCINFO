@@ -1,0 +1,20 @@
+pkgbase = python-privy
+	pkgdesc = An easy, fast lib to correctly password-protect your data
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/ofek/privy
+	arch = any
+	license = MIT
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-cryptography
+	depends = python-argon2_cffi
+	source = https://files.pythonhosted.org/packages/py2.py3/p/privy/privy-6.0.0-py2.py3-none-any.whl
+	source = https://raw.githubusercontent.com/ofek/privy/master/LICENSE-MIT
+	sha256sums = e68679bb4006ce83206d9a7af1158cf4d56a2ed6861ee39276907be618dfb8d9
+	sha256sums = d502748a33db7ade1318e37f0b5f219f478330ed74a673e387756e53fb516715
+
+pkgname = python-privy
