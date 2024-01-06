@@ -2,7 +2,7 @@
 _base=trame-simput
 pkgname=python-${_base}
 pkgdesc="Simput implementation for trame"
-pkgver=2.3.3
+pkgver=2.4.1
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -11,12 +11,16 @@ depends=(python-trame-client python-yaml)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-hydrogen npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d2333bc9e5a31c7d4b1faa7cc5416c2df3240159ab29baa3a02a26f5c234e470060bd982bbc81ad03d4c5d887e88ad51e42f8abb592eaca3442341b9dbca65a1')
+sha512sums=('f97729024ba88a53eaec2b38fb6ddc3d9abf00e9e5c2e90c891978401c91aee6be187801ae9d2ac51380fbc10a6c38a37d65410e834c099a26637d96c3718345')
 
 build() {
   # Workaround: https://stackoverflow.com/a/69746937/9302545
-  export NODE_OPTIONS=--openssl-legacy-provider
-  cd ${srcdir}/${_base}-${pkgver}/vue-components
+  # export NODE_OPTIONS=--openssl-legacy-provider
+  # cd ${srcdir}/${_base}-${pkgver}/vue2-components
+  # npm install
+  # npm run build
+
+  cd ${srcdir}/${_base}-${pkgver}/vue3-components
   npm install
   npm run build
 
