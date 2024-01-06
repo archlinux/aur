@@ -1,12 +1,15 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+
 _pkgname=aspe
 pkgname="${_pkgname}-git"
-pkgver=v1.0
-pkgrel=1
+pkgver=v1.0+7+g357ce6c
+pkgrel=2
 pkgdesc="Arch Linux build source file clone tool"
 arch=(any)
-_host='https://gitlab.com'
+_host='https://github.com'
 _ns='themartiancompany'
 url="${_host}/${_ns}/${_pkgname}"
 license=(
