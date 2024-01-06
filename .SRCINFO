@@ -16,6 +16,6 @@ pkgbase = flomo-electron
 	source = local://flomo-3.23.111-x64.exe
 	source = flomo-electron.desktop
 	sha256sums = da41994cc06fd9c1b7f4458fee588ef4ba9fce570731ef762bd6e49bc2a6d29b
-	sha256sums = 1b616181e37f172ef3664103774ad6eb245fda9c2f11dad2534c719da5135afa
+	sha256sums = ad1d9d71bd7f6765f1caef32532e233def9e09632262b3cfbc909e042b6961ef
 
 pkgname = flomo-electron
