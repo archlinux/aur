@@ -1,0 +1,11 @@
+pkgbase = acronym
+	pkgdesc = A tool that syncs shell usage between development environments through aliases
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/chinarjoshi/acronym
+	arch = x86_64
+	license = MIT
+	source = https://github.com/chinarjoshi/acronym/releases/download/v1.0.1/acronym-1.0.1-amd64
+	sha256sums = SKIP
+
+pkgname = acronym
