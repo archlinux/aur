@@ -1,16 +1,30 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonup-qt
 _app_id=net.davidotek.pupgui2
-pkgver=2.8.2
-pkgrel=2
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris"
 arch=('any')
 url="https://davidotek.github.io/protonup-qt"
 license=('GPL3')
-depends=('pyside6' 'python-inputs' 'python-psutil' 'python-requests'
-         'python-steam' 'python-vdf' 'python-pyxdg' 'python-pyaml'
-         'python-zstandard' 'qt6-tools')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+  'pyside6'
+  'python-inputs'
+  'python-psutil'
+  'python-pyaml'
+  'python-pyxdg'
+  'python-requests'
+  'python-steam'
+  'python-vdf'
+  'python-zstandard'
+  'qt6-tools'
+)
+makedepends=(
+ 'python-build'
+ 'python-installer'
+ 'python-setuptools'
+ 'python-wheel'
+ )
 checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=(
   'dosbox: required for Boxtron'
@@ -28,18 +42,12 @@ optdepends=(
   'yad: required for SteamTinkerLaunch'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v$pkgver.tar.gz"
-        "${_app_id}.sh"
-        'https://github.com/DavidoTek/ProtonUp-Qt/pull/301.patch')
-sha256sums=('1bb0e18cc6825a9f84e4447f8985fd91b099f9ed88cf6be301dd813580cc866d'
-            '732fd88026a801d64ffb85c98c1bc53536100524cced87ab86a112d83de07c1f'
-            'e67e5f6f6270769ce59132576eeecb1e6014d9eed568480157aead133a80b836')
+        "${_app_id}.sh")
+sha256sums=('5fecede9e710f5be544d8f18b0f44072bc247177aa3bd81eed194e232cad9bf3'
+            '732fd88026a801d64ffb85c98c1bc53536100524cced87ab86a112d83de07c1f')
 
 prepare() {
   cd "ProtonUp-Qt-$pkgver"
-
-  # SteamTinkerLaunch: rename 'xwinfo' to 'xwininfo'
-  # https://github.com/DavidoTek/ProtonUp-Qt/issues/300
-  patch -Np1 -i ../301.patch
 }
 
 build() {
