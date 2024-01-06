@@ -9,7 +9,7 @@ _projectname=electron
 _major=26
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver="6.3"
+_subver="6.4"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
@@ -39,10 +39,10 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('91ad46c6a43d20c61e97bac8ebc3177dfb64f767a4839017115af35af1fbd9f3'
-                   '30276236f368ba034209388807f3f7ad4f3d140ca18ec657ccc5d9c4faf226bf')
-sha256sums_aarch64=('caf62ea035a23ef24b20ffd439484bdf5c34c3b6048c978e43ff23b79c4dfe8f'
-                    'b169bfeecddc122d1414c701c76ec9c4d642e9dda6a4bcb5ad6f0bbb77ff3f73')
+sha256sums_x86_64=('4435c0f449c2e3aabff49c1b527c221d31d3e40993d0b7e506cc2bc8f356ac4e'
+                   '5c3703ee22b022755c15eaa01d6c669ea7461d9e8e1a25a0b67931ee16b63098')
+sha256sums_aarch64=('f93717ba4feae6fc289731f3d26bce86956dfb9170c3f481aaf11e8957a72b9f'
+                    '6ed22888ee6683c13a58bbef04b61f61af3c347ce0bf107d5d939a790182e0f9')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
