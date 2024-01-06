@@ -3,13 +3,14 @@
 _pkgname=spectro
 pkgname=spectro-git
 pkgver=r48.1714c5a
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides BBCode formatted text with the spectrograms of audio files."
 
 arch=('any')
 url="https://github.com/welpo/spectro"
 license=('GPL3')
 
+makedepends=('git')
 depends=('sox' 'curl')
 optdepends=('ffmpeg: to process ape, WMA, MP4 and AAC files'
             'imagemagick: to use the --compare feature'
