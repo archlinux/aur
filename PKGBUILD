@@ -4,7 +4,7 @@
 pkgbase=alice-vision
 pkgname=('alice-vision') # 'alice-vision-cuda'
 pkgver=3.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.github.io/"
@@ -21,6 +21,7 @@ source=("git+https://github.com/alicevision/AliceVision#tag=v${pkgver}"
         "FindClp.cmake"
         "FindOsi.cmake"
         "fix-computeUncertainty-build.patch"
+        "fix-default-ocio-path.patch"
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -28,7 +29,8 @@ sha256sums=('SKIP'
             'd21691bfd9c2561cea52b5f48caf885ec6f8c2a0603ce594914bff610e77a0c5'
             '6523435334eec6e39a244371287504cd0a0e88aa0cbe5dcac38b819ea881074e'
             'fbb87c86bc0b2ee2c98abfbecb0d555f75f01ccf5d4c59c22bb598e7f2897bf9'
-            '9d704d7f584c016d0eedb8fdb93d4fde600bcc984a722b9daadfde14e66e50c6')
+            '17546a6c362782f90d1d85eb7a4b42b96f5f51879c68efbcbcf07635e0f60cbc'
+            '3f02c715f27498ac8982edee3e3af151b0cd2a9cb83da37fef3b7fec1e34b169')
 
 prepare() {
   cd AliceVision
@@ -48,6 +50,8 @@ prepare() {
   # fix build
   patch -p1 -i ../fix-computeUncertainty-build.patch
 
+  # fix default OCIO config path
+  patch -p1 -i ../fix-default-ocio-path.patch
   # fix doc build
   sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
   ln -rs docs/sphinx{,/rst}

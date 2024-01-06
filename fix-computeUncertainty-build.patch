@@ -1,24 +1,3 @@
-diff --git a/src/cmake/FindUncertaintyTE.cmake b/src/cmake/FindUncertaintyTE.cmake
-index bcd4d6bfe..9047b264e 100644
---- a/src/cmake/FindUncertaintyTE.cmake
-+++ b/src/cmake/FindUncertaintyTE.cmake
-@@ -30,7 +30,7 @@ FIND_LIBRARY(UNCERTAINTYTE_LIBRARY NAMES uncertaintyTE
-   PATH_SUFFIXES
-     lib
- )
--
-+message("lalalalala " ${UNCERTAINTYTE_LIBRARY})
- IF(UNCERTAINTYTE_INCLUDE_DIR)
-   MESSAGE(STATUS "UncertaintyTE headers found in ${UNCERTAINTYTE_INCLUDE_DIR}")
-   IF(NOT MAGMA_FOUND)
-@@ -39,6 +39,7 @@ IF(UNCERTAINTYTE_INCLUDE_DIR)
-     IF(MAGMA_FOUND)
-       set(UNCERTAINTYTE_INCLUDE_DIR ${UNCERTAINTYTE_INCLUDE_DIR} ${MAGMA_INCLUDE_DIRS})
-       set(UNCERTAINTYTE_LIBRARY ${UNCERTAINTYTE_LIBRARY} ${MAGMA_LIBRARIES})
-+      message("lelelelelele " ${UNCERTAINTYTE_LIBRARY})
-     ELSE()
-       MESSAGE(WARNING "Couldn't find Magma, this is needed for compiling with UncertaintyTE")
-       # this is to make the find_package_handle_standard_args  fail
 diff --git a/src/software/utils/main_computeUncertainty.cpp b/src/software/utils/main_computeUncertainty.cpp
 index 23d2ab9ee..5bba4d7b2 100644
 --- a/src/software/utils/main_computeUncertainty.cpp

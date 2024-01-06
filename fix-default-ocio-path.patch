@@ -1,0 +1,14 @@
+diff --git a/src/aliceVision/image/colorspace.cpp b/src/aliceVision/image/colorspace.cpp
+index 134017e27..85d5c351f 100644
+--- a/src/aliceVision/image/colorspace.cpp
++++ b/src/aliceVision/image/colorspace.cpp
+@@ -26,8 +26,7 @@ oiio::ColorConfig& getGlobalColorConfigOCIO() { return colorConfigOCIO; }
+ 
+ std::string getColorConfigFilePathFromSourceCode()
+ {
+-    const fs::path moduleFolder = fs::path(__FILE__).parent_path();
+-    return (moduleFolder / "share/aliceVision/config.ocio").string();
++    return std::string("/usr/share/aliceVision/config.ocio");
+ }
+ 
+ std::string getDefaultColorConfigFilePath()
