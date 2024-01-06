@@ -12,7 +12,7 @@ url="https://github.com/libretro/swanstation"
 license=('GPL3')
 depends=('libretro-core-info')
 makedepends=('cmake' 'git')
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 sha256sums=('SKIP')
 source=("git+${url}.git")
 
@@ -34,5 +34,4 @@ build() {
 package() {
 	#DESTDIR="${pkgdir}" cmake --install 'build'
 	install -Dm755 'build/swanstation_libretro.so' -t "${pkgdir}/usr/lib/libretro"
-	install -Dm644 "${_srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
