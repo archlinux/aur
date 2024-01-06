@@ -1,28 +1,26 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=wireguard-ui
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A web user interface to manage your WireGuard setup."
 arch=(i686 x86_64 armv7h aarch64)
-url="https://github.com/${pkgname}/${pkgname}"
+url="https://github.com/ngoduykhanh/${pkgname}"
 license=(MIT)
 makedepends=(yarn npm go)
 depends=(wireguard-tools bash glibc)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
-        001.patch::${url}/commit/c065a97aae0a69ff16ce3209965f0857330e8096.patch
         ${pkgname}.service
         99-wg.conf
         wgiptables.sh
         wgui.path
         wgui.service)
-sha256sums=('9e658f0fc933a9f998bbe0182789bc3f7e3ae6ec5b74def0a4395418d734f8c4'
-            'SKIP'
-            'eba6e4f87c30dff6d6d1c80a855ed702e6c56bfa0023d088432a5c8e8c16783f'
+sha256sums=('cec2ea55f0ab0a9469821b6516f28123c67dbb616ea62ab92b331efc089183cc'
+            '99df93fd8e6916ddad872e9a1bee496de5173bc544dc2c09f5c2a688b8deac76'
             'cf5bdce2ce87b5054042a70d8630f40a0f991c64c42786824f660245b943d2be'
             '87983b041d8beb7303bb57dd7f724163a157390cdf3cd74900aff6904e9402e0'
             '4b63dee5d287bb16a8e1a588ba24ccaeb91a4e0d2993bfeb9a1fb423bf08432d'
-            '6722f8665bcf91c724f754a756a61a9933999da93943fb8d788a9d6b82e1de40')
+            'fe98a7f947bc26d67a7714186e79343917e40e05546e23ee9acf1d04484c6809')
 conflicts=(${pkgname}-bin)
 install=${pkgname}.install
 
