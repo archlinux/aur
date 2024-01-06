@@ -7,6 +7,7 @@ pkgbase = one-click-bing-wallpaper-git
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-base
+	makedepends = git
 	depends = python-requests
 	depends = dtkwidget
 	depends = libnotify
