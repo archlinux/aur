@@ -1,6 +1,6 @@
 pkgbase = na-bin
 	pkgdesc = CLI tool to effortlessly manage context aware nested shortcuts for shell commands.
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/moyiz/na
 	license = BSD-3-Clause
@@ -8,13 +8,13 @@ pkgbase = na-bin
 	conflicts = na
 	provides = na
 	arch = aarch64
-	source_aarch64 = https://github.com/moyiz/na/releases/download/v0.0.6/na_linux_arm64.tar.gz
-	sha256sums_aarch64 = dc20f77a13fdaa5e5f6064e80fbfd3aa459bb0caa6f7a4a7624cfeb343fa13b4
+	source_aarch64 = https://github.com/moyiz/na/releases/download/v0.0.7/na_linux_arm64.tar.gz
+	sha256sums_aarch64 = 208c7d664c60f5dd9357bc6a0ad2701c2bcad3d9024ecc6ddf5312e8287248dd
 	arch = i686
-	source_i686 = https://github.com/moyiz/na/releases/download/v0.0.6/na_linux_i386.tar.gz
-	sha256sums_i686 = 5714f5ce9c0c8daa23c54481499327e8a0555ecc38eda4d05a0bad03d201b85f
+	source_i686 = https://github.com/moyiz/na/releases/download/v0.0.7/na_linux_i386.tar.gz
+	sha256sums_i686 = 216110787f059a184a0ae1648340f7507194732fb93c03d40bac9014beb791a8
 	arch = x86_64
-	source_x86_64 = https://github.com/moyiz/na/releases/download/v0.0.6/na_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 1feaba83e4525c17d7d25f8b3b866e5294e02155755fb230bc693a7225de7f31
+	source_x86_64 = https://github.com/moyiz/na/releases/download/v0.0.7/na_linux_x86_64.tar.gz
+	sha256sums_x86_64 = d7b6dece2afb1aefd1a0340851c55df390dbb3638555d26cfc34c83d85b1cb72
 	
 pkgname = na-bin
