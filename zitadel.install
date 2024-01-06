@@ -1,0 +1,8 @@
+post_install() {
+echo -n Generating masterkey for zitadel...
+if [ ! -f /etc/zitadel/master.key ]; then tr -dc A-Za-z0-9 </dev/urandom | head -c 32 > /etc/zitadel/master.key && echo Done || echo Error!; else echo File already exists!; fi
+echo -n "
+Before starting zitadel.service, you need to initialize your instance. Check your init.yaml and config.yaml and run:
+# USER=zitadel HOME=/var/lib/zitadel zitadel start-from-init --steps /etc/zitadel/init.yaml --config /etc/zitadel/config.yaml --masterkeyFile /etc/zitadel/master.key --tlsMode external
+"
+}

@@ -1,0 +1,6 @@
+FirstInstance:
+    Org:
+        Human:
+        # use the loginname root@zitadel.localhost
+        Username: 'root'
+        Password: 'RootPassword1!'
