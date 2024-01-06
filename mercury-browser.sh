@@ -2,18 +2,23 @@
 
 # check microprocessor architecture level
 if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v3.*supported.*$' ; then
-  _message+=$'Enjoy the fastest Firefox fork on Earth.'
+  _message=''
+  _message+=$'The fastest Firefox fork on Earth.'
+elif /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v2.*supported.*$' ; then
+  _message=''
+  _message+=$'Your processor supports x86-64-v2, but not x86-64-v3.\n'
+  _message+=$'You may want to use mercury-browser-sse3-bin.'
 else
   _message=''
-  _message+=$'Your processor does not support x86-64-v3.\n'
+  _message+=$'Your processor does not support x86-64-v2 or x86-64-v3.\n'
   _message+=$'mercury-browser may not work on your computer.'
 fi
 
-XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
-
 # Allow users to override command-line options
-if [[ -f $XDG_CONFIG_HOME/mercury-flags.conf ]]; then
-  MERCURY_USER_FLAGS="$(cat $XDG_CONFIG_HOME/mercury-flags.conf)"
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+_FLAGFILE="$XDG_CONFIG_HOME/mercury-flags.conf"
+if [[ -f "$_FLAGFILE" ]]; then
+  _USER_FLAGS=$(cat "$_FLAGFILE")
 fi
 
 # display processor support message
@@ -24,4 +29,4 @@ else
 fi
 
 # Launch
-exec /opt/mercury-browser/mercury $MERCURY_USER_FLAGS "$@"
+exec /opt/mercury-browser/mercury $_USER_FLAGS "$@"

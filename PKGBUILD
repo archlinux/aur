@@ -14,7 +14,7 @@ fi
 _pkgname="mercury-browser"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=121.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Compiler optimized, private Firefox fork"
 url="https://github.com/Alex313031/Mercury"
 license=('MPL-2.0')
@@ -44,7 +44,7 @@ _main_package() {
   )
   sha256sums=(
     'SKIP'
-    '7565aa160be433bcc030c2fc14627ce12c91fbb953d8ba8af8185ccd356022f5'
+    'c542235c03f0ca3cfed6cebb234d7637cd920dcfbba47d2a31c0814f525788ae'
   )
 }
 
@@ -52,6 +52,40 @@ _main_package() {
 pkgver() {
   printf '%s' \
     "${_pkgver:?}"
+}
+
+prepare() {
+  # desktop
+  install -Dvm644 /dev/stdin "$_pkgname.desktop" <<END
+[Desktop Entry]
+Version=1.0
+Name=Mercury
+Comment=Browse the World Wide Web
+GenericName=Web Browser
+Keywords=Internet;WWW;Browser;Web;Explorer;Mercury
+Exec=$_pkgname %u
+StartupWMClass=mercury-default
+Terminal=false
+X-MultipleArgs=true
+Type=Application
+Icon=$_pkgname
+Categories=GNOME;GTK;Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
+StartupNotify=true
+Actions=NewWindow;NewPrivateWindow;TempUserDir;
+
+[Desktop Action NewWindow]
+Name=New Window
+Exec=$_pkgname -new-window
+
+[Desktop Action NewPrivateWindow]
+Name=New Private Window
+Exec=$_pkgname -private-window
+
+[Desktop Action TempUserDir]
+Name=Open With Temporary User Profile
+Exec=$_pkgname --temp-profile
+END
 }
 
 package() {
@@ -99,15 +133,28 @@ package() {
   fi
 
   # script
+  \rm -rf "$pkgdir/usr/bin/mercury-browser"
   install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 
-  # fix permissions
-  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+  # icon
+  install -Dm644 "$pkgdir/opt/$_pkgname/browser/chrome/icons/default/default128.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"  
+
+  # .desktop
+  \rm -rf "$pkgdir/usr/share/applications/mercury-browser.desktop"
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+  # symlink duplicate file
+  ln -sf "/usr/bin/$_pkgname" "$pkgdir/opt/$_pkgname/mercury-bin"
 
   # remove unnecessary folders
   \rm -rf "${pkgdir:?}/usr/lib/"
   \rm -rf "${pkgdir:?}/usr/share/doc/"
+  \rm -rf "${pkgdir:?}/usr/share/icons"
   \rm -rf "${pkgdir:?}/usr/share/lintian/"
+  \rm -rf "${pkgdir:?}/usr/share/man/"
+
+  # fix permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
 
 _package_deb() {
@@ -130,41 +177,6 @@ _package_zip() {
   # extract archive
   install -dm755 "$pkgdir/opt/$_pkgname"
   bsdtar --strip-components="$_depth" -C "$pkgdir/opt/$_pkgname/" -xf "$_dl_filename" '*/mercury/*'
-
-  # icon
-  install -Dm644 "$pkgdir/opt/$_pkgname/browser/chrome/icons/default/default128.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-
-  # desktop
-  install -Dvm644 /dev/stdin "$pkgdir/usr/share/applications/mercury-browser.desktop" <<END
-[Desktop Entry]
-Version=1.0
-Name=Mercury
-Comment=Browse the World Wide Web
-GenericName=Web Browser
-Keywords=Internet;WWW;Browser;Web;Explorer;Mercury
-Exec=$_pkgname %u
-StartupWMClass=mercury-default
-Terminal=false
-X-MultipleArgs=true
-Type=Application
-Icon=$_pkgname
-Categories=GNOME;GTK;Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
-StartupNotify=true
-Actions=NewWindow;NewPrivateWindow;TempUserDir;
-
-[Desktop Action NewWindow]
-Name=New Window
-Exec=$_pkgname -new-window
-
-[Desktop Action NewPrivateWindow]
-Name=New Private Window
-Exec=$_pkgname -private-window
-
-[Desktop Action TempUserDir]
-Name=Open With Temporary User Profile
-Exec=$_pkgname --temp-profile
-END
 }
 
 # update version
