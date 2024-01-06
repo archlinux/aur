@@ -14,7 +14,7 @@ fi
 _pkgname="mercury-browser"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=121.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiler optimized, private Firefox fork"
 url="https://github.com/Alex313031/Mercury"
 license=('MPL-2.0')
@@ -132,7 +132,7 @@ _package_zip() {
   bsdtar --strip-components="$_depth" -C "$pkgdir/opt/$_pkgname/" -xf "$_dl_filename" '*/mercury/*'
 
   # icon
-  install -Dm644 "$pkgdir/opt/$_pkgname/browser/chrome/icons/default/default128.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "$pkgdir/opt/$_pkgname/browser/chrome/icons/default/default128.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
   # desktop
   install -Dvm644 /dev/stdin "$pkgdir/usr/share/applications/mercury-browser.desktop" <<END
@@ -142,12 +142,12 @@ Name=Mercury
 Comment=Browse the World Wide Web
 GenericName=Web Browser
 Keywords=Internet;WWW;Browser;Web;Explorer;Mercury
-Exec=mercury-browser %u
-StartupWMClass=mercury
+Exec=$_pkgname %u
+StartupWMClass=mercury-default
 Terminal=false
 X-MultipleArgs=true
 Type=Application
-Icon=mercury
+Icon=$_pkgname
 Categories=GNOME;GTK;Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
 StartupNotify=true
@@ -155,15 +155,15 @@ Actions=NewWindow;NewPrivateWindow;TempUserDir;
 
 [Desktop Action NewWindow]
 Name=New Window
-Exec=mercury-browser -new-window
+Exec=$_pkgname -new-window
 
 [Desktop Action NewPrivateWindow]
 Name=New Private Window
-Exec=mercury-browser -private-window
+Exec=$_pkgname -private-window
 
 [Desktop Action TempUserDir]
 Name=Open With Temporary User Profile
-Exec=mercury-browser --temp-profile
+Exec=$_pkgname --temp-profile
 END
 }
 
