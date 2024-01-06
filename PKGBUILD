@@ -45,10 +45,6 @@ build() {
 }
 
 check() {
-
-  # almost all tests are online, would require
-  # caldav server to run
-
   cd "${_name}-$pkgver"
   python -m venv --clear --system-site-packages .testenv
   .testenv/bin/python -m installer dist/*.whl
