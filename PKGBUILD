@@ -1,31 +1,33 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-material-you-theme-git
 _uuid=material-you-theme@asubbiah.com
-pkgver=r111.52ac824
+pkgver=r116.8222941
 pkgrel=1
 pkgdesc="Applies generated libadwaita theme from wallpaper using Material You"
 arch=('any')
 url="https://github.com/avanishsubbiah/material-you-theme"
 license=('GPL3')
-depends=('adw-gtk3' 'gnome-shell')
+depends=('adw-gtk3' 'gnome-shell' 'nodejs')
 makedepends=('git' 'npm')
-optdepends=('gdm-tools: set the GDM theme')
+optdepends=('gdm-tools: GDM theming'
+            'gnome-shell-extensions: GNOME Shell theming via User Themes extension'
+            'python-pywal: Pywal theming')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/avanishsubbiah/material-you-theme.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/material-you-theme"
+  cd material-you-theme
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/material-you-theme"
+  cd material-you-theme
 }
 
 build() {
-  cd "$srcdir/material-you-theme"
+  cd material-you-theme
 
   # Does not detect system Node.js, NPM, or SassC, 
   # so we'll install in the extension folder like it tries to do anyway
@@ -37,10 +39,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/material-you-theme"
+  cd material-you-theme
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar xvf "${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
+
+  cp -r "${_uuid}/node_modules" "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
 
   mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
