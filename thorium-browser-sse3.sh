@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
-
 # check microprocessor architecture level
 if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v3.*supported.*$' ; then
   _message=''
@@ -17,8 +15,11 @@ else
 fi
 
 # Allow users to override command-line options
-if [[ -f "$XDG_CONFIG_HOME/thorium-flags.conf" ]]; then
-  THORIUM_USER_FLAGS="$(cat $XDG_CONFIG_HOME/thorium-flags.conf)"
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+_FLAGS_FILE="$XDG_CONFIG_HOME/thorium-flags.conf"
+
+if [[ -f "$_FLAGS_FILE" ]]; then
+  _USER_FLAGS="$(cat "$_FLAGS_FILE")"
 fi
 
 # display processor support message
@@ -29,4 +30,4 @@ else
 fi
 
 # Launch
-exec /opt/thorium-browser-sse3/thorium-browser $THORIUM_USER_FLAGS "$@"
+exec /opt/thorium-browser-sse3/thorium-browser $_USER_FLAGS "$@"

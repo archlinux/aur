@@ -3,21 +3,17 @@
 # Contributor: Dominik Adrian Grzywak <starterx4 at gmail dot com>
 
 # options
-if [ ! -z "$_srcinfo" ] ; then
-  _autoupdate=false
-elif [ -z "$_pkgver" ] ; then
-  : ${_autoupdate:=true}
-else
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
   : ${_autoupdate:=false}
+else
+  : ${_autoupdate:=true}
 fi
-
-: ${_pkgver:=117.0.5938.157}
 
 # basic info
 _pkgname="thorium-browser-sse3"
 pkgname="$_pkgname-bin"
-pkgver=117.0.5938.157
-pkgrel=5
+pkgver=119.0.6045.214
+pkgrel=2
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium-SSE3"
 license=('BSD')
@@ -49,7 +45,7 @@ _main_package() {
   )
   sha256sums=(
     'SKIP'
-    'b7f8f93c82a9acc3bbb155fc7211a19e90d72427aa19af20f481fafb90db9d45'
+    '9f98088109e540a86a297634e501d7316f3b618da2594dd5d003f648484155d0'
   )
 
   pkgver() {
@@ -64,14 +60,28 @@ package() {
 
   depends+=(
     'alsa-lib'
-    'gtk3'
+    'at-spi2-core'
+    'cairo'
+    'dbus'
     'libcups'
     'libnotify' # notify-send
-    'libxss'
-    'libxtst'
+    'libxcomposite'
+    'libxkbcommon'
+    'libxrandr'
+    'mesa'
+    'nspr'
     'nss'
-    'ttf-liberation'
-    'xdg-utils'
+    'pango'
+
+    ## implicit
+    #expat
+    #glib2
+    #libdrm
+    #libx11
+    #libxcb
+    #libxdamage
+    #libxext
+    #libxfixes
   )
 
   echo "  -> Extracting the archive..."
@@ -156,23 +166,24 @@ package() {
 
 # update version
 _update_version() {
-  if [[ x"${_autoupdate::1}" != "xt" ]] ; then
+  : ${_pkgver:=${pkgver%%.r*}}
+
+  if [[ "${_autoupdate::1}" != "t" ]] ; then
     return
   fi
 
-  _repo="${url#*//*/}"
-  _response=$(curl "https://api.github.com/repos/${url#*.com/}/releases" -s)
-
-  _regex='^.*thorium-browser_([0-9\.]+)_.*\.deb.*$'
-  _pkgver_new=$(
+  local _response=$(curl -Ssf "$url/releases.atom")
+  local _tag=$(
     printf '%s' "$_response" \
-      | grep -E "$_regex" | head -1 | sed -E "s@$_regex@\1@"
+      | grep -E '"https://.*/releases/tag/.*"' \
+      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
+      | grep -Ev '[a-z]{2}' | sort -rV | head -1
   )
+  local _pkgver_new="${_tag#M}"
 
   # update _pkgver
-  if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
-    _pkgver="$_pkgver_new"
-    sed -Ei 's@^(\s*: \$\{_pkgver):=.*\}$@\1:='"${_pkgver:?}"'}@' "$startdir/PKGBUILD"
+  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+    _pkgver="${_pkgver_new:?}"
   fi
 }
 
