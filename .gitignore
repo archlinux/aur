@@ -1,0 +1,21 @@
+# Ignore makepkg files and dirs
+pkg/
+src/
+booster-um/
+
+# Ignore pacman packages
+*.pkg.tar.zst
+
+# Ignore booster-um archive
+booster-um*.zip
+
+# Do not ignore PKGBUILD files
+!PKGBUILD
+!*.install
+
+# Do not ignore common files
+!*.diff
+!*.patch
+
+# Ignore vscode
+.vscode/*
