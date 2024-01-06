@@ -2,16 +2,16 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=wrapland-git
-pkgver=0.527.0.beta.0.r50
+pkgver=0.527.0.beta.0.r53
 pkgrel=1
 pkgdesc='Qt/C++ library that wraps and mediates the libwayland client and server API'
 arch=(x86_64)
 url="https://gitlab.com/kwinft/wrapland"
 license=(LGPL)
-depends=('kwayland5')
+depends=('kwayland-git')
 provides=("wrapland")
 conflicts=("wrapland")
-makedepends=(doxygen extra-cmake-modules git kdoctools5 wayland-protocols qt6-tools microsoft-gsl)
+makedepends=(doxygen 'extra-cmake-modules>=5.240.0' git kdoctools-git wayland-protocols qt6-tools microsoft-gsl)
 source=("git+https://gitlab.com/kwinft/wrapland.git#branch=master")
 sha256sums=('SKIP')
 
@@ -24,7 +24,7 @@ build() {
   mkdir -p build
   cd build
   cmake ../${pkgname/-git} \
-    -DBUILD_QCH=ON
+    -DBUILD_TESTING=ON
 }
 
 package() {
