@@ -1,0 +1,9 @@
+post_install() {
+	cat <<eof
+$pkgname directory created on /opt/, cd into it and type ./sta (or double click on 'sta' file)
+eof
+}
+
+post_upgrade() {
+	post_install
+}
