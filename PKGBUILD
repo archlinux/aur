@@ -4,7 +4,7 @@
 #       Guidelines (as there will never be a source release)
 pkgname=rtt-rstudio
 # INFO: Upstream Binary Release Date: 2022-OCT-18
-pkgver=5.3.191267
+pkgver=6.3.191253
 pkgrel=1
 # INFO: Full publisher-provided description for reference:
 #   R-Studio is a powerful cost-effective undelete and data recovery software utility.
