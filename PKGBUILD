@@ -1,7 +1,7 @@
 # Maintainer: Allddd <allddd (at) proton (dot) me>
 
 pkgname=tuptime
-pkgver=5.2.2
+pkgver=5.2.3
 pkgrel=1
 pkgdesc='Historical and statistical system uptime reporting'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/rfmoz/tuptime'
 license=('GPL2')
 depends=('python')
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2db03803f3d44c2d4a4bba424eb6cc392092c63a6a281c003adb9bdeb4c57f55')
+sha256sums=('c1d7f32dca932ca928082b202134cc7e422e8c6e151cab429ff75339d7b0a3ff')
 install=${pkgname}.install
 
 prepare() {

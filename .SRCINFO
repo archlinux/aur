@@ -1,13 +1,13 @@
 pkgbase = tuptime
 	pkgdesc = Historical and statistical system uptime reporting
-	pkgver = 5.2.2
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = https://github.com/rfmoz/tuptime
 	install = tuptime.install
 	arch = any
 	license = GPL2
 	depends = python
-	source = https://github.com/rfmoz/tuptime/archive/5.2.2/tuptime-5.2.2.tar.gz
-	sha256sums = 2db03803f3d44c2d4a4bba424eb6cc392092c63a6a281c003adb9bdeb4c57f55
+	source = https://github.com/rfmoz/tuptime/archive/5.2.3/tuptime-5.2.3.tar.gz
+	sha256sums = c1d7f32dca932ca928082b202134cc7e422e8c6e151cab429ff75339d7b0a3ff
 
 pkgname = tuptime
