@@ -1,7 +1,7 @@
 pkgbase = rcli
 	pkgdesc = Powerful C++ library that simplifies the creation of CLI applications
 	pkgver = 1.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RickaPrincy/rcli
 	arch = any
 	license = MIT

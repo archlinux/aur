@@ -1,7 +1,7 @@
 # Maintainer: RickaPrincy <rckprincy@gmail.com>
 pkgname=rcli
 pkgver=1.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerful C++ library that simplifies the creation of CLI applications"
 arch=(any)
 url="https://github.com/RickaPrincy/rcli"
@@ -13,6 +13,6 @@ package() {
     echo "Installing to \"$pkgdir/usr/local/\""
     mkdir -p "$pkgdir/usr/local/include"
     mkdir -p "$pkgdir/usr/local/lib"
-    cp -r "include" "$pkgdir/usr/local"
-    cp -r "lib" "$pkgdir/usr/local"
+    cp -r "rcli-v$pkgver/include" "$pkgdir/usr/local"
+    cp -r "rcli-v$pkgver/lib" "$pkgdir/usr/local"
 }
