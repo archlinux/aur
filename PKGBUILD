@@ -1,3 +1,4 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 # Maintainer: JustKidding <jk@vin.ovh>
 
 pkgname=turbo-base64
@@ -18,7 +19,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DBUILD_SHARED_LIBS=ON \
         -Wno-dev
-  cmake --build build -j $(nproc)
+  cmake --build build -j "$(nproc)"
 }
 
 package() {
