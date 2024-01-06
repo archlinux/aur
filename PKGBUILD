@@ -5,7 +5,7 @@
 pkgbase=webkit2gtk-hvml
 pkgname=(webkit2gtk-{3,4}.0-hvml webkit2hbd)
 pkgver=2.34.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Web content engine for GTK (HVML)"
 url="https://hvml.fmsoft.cn/"
 arch=(x86_64)
@@ -63,7 +63,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations"
+    -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations -Wno-dangling-reference"
 
   ninja -C build-gtk3
 
@@ -80,7 +80,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations"
+    -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations -Wno-dangling-reference"
 
 
   ninja -C build-gtk4
@@ -104,7 +104,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations"
+    -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations -Wno-dangling-reference"
 
     ninja -C build-hbd
 }

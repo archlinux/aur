@@ -1,7 +1,7 @@
 pkgbase = webkit2gtk-hvml
 	pkgdesc = Web content engine for GTK (HVML)
 	pkgver = 2.34.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://hvml.fmsoft.cn/
 	arch = x86_64
 	license = custom
