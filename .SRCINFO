@@ -9,6 +9,6 @@ pkgbase = yangdownloader-appimage
 	noextract = yangdownloader-appimage-3.3.AppImage
 	options = !strip
 	source_x86_64 = yangdownloader-appimage-3.3.AppImage::https://github.com/mysteryx93/HanumanInstituteApps/releases/download/v3.3/YangDownloader-3.3_Linux_x64.AppImage
-	sha256sums_x86_64 = 9ef117522e4b921218bfe945ef550e5eb3f2c936ed6a50026e82840619c06de4
+	sha256sums_x86_64 = 9e4e8871469328e659e81a6cc14a176ac675193a2d82cbea59db1c1959acd28c
 
 pkgname = yangdownloader-appimage

@@ -13,7 +13,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mysteryx93/HanumanInstituteApps/releases/download/v${pkgver}/YangDownloader-${pkgver}_Linux_x64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('9ef117522e4b921218bfe945ef550e5eb3f2c936ed6a50026e82840619c06de4')
+sha256sums_x86_64=('9e4e8871469328e659e81a6cc14a176ac675193a2d82cbea59db1c1959acd28c')
 
 prepare() {
     chmod +x "${_appimage}"
