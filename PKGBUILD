@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.2.400
-pkgrel=2
+pkgrel=3
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -13,12 +13,18 @@ source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=453b0238cda
 		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=7c7cdfa52ed931c9eacbf08c86b9df8d4556d208
 		git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=131e3e959470875e7344d1400e1269b727efc76e
 		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=40e751793b9e36d8d0a4a45367473411e96a765a
-		cellframe-node.logrotate)
+		cellframe-node.logrotate
+		cellframe-node-logrotate.service
+		cellframe-node-logrotate.timer
+		cellframe-node.service)
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         '95ea2a9af2bdd2e08d44494673d2a9f3')
+         '95ea2a9af2bdd2e08d44494673d2a9f3'
+         '7c1087eea7336d99c4af55119673b009'
+         '47edb0d55d537e72f3de07ec6a72ea78'
+         '72472d529b38f06a78f37ac659b18d65')
 install=$pkgname.install
 conflicts=(cellframe-dashboard cellframe-wallet)
 
@@ -48,5 +54,9 @@ package() {
 
 	install -Dm 644 "$srcdir/$pkgname.logrotate" "$pkgdir/etc/logrotate.d/$pkgname"
 
-	install -Dm 644 "$srcdir/$pkgname/dist.linux/share/$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm 644 "$srcdir/$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
+
+	install -Dm 644 "$srcdir/$pkgname-logrotate.service" -t "$pkgdir/usr/lib/systemd/system"
+	
+	install -Dm 644 "$srcdir/$pkgname-logrotate.timer" -t "$pkgdir/usr/lib/systemd/system"
 }

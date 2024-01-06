@@ -14,6 +14,7 @@ showmsg() {
     ##  Run automatically:                                                ##
     ##                                                                    ##
     ##      # systemctl enable --now cellframe-node.service               ##
+    ##      # systemctl enable --now cellframe-node-logrotate.timer       ##
     ##                                                                    ##
     ##  Network configuration is set to full mode by default.             ##
     ##  you can modify the network configuration parameters in:           ##
@@ -73,11 +74,16 @@ pre_upgrade() {
 
 post_upgrade() {
     systemctl is-active --quiet cellframe-node.service && systemctl daemon-reload && systemctl restart cellframe-node.service
+    if [[ $(vercmp $2 5.2.400-3) -lt 0 ]]; then
+        echo "==> It's recommended to enable cellframe-node-logrotate.timer with: systemctl enable --now cellframe-node-logrotate.timer"
+    fi
 }
 
 pre_remove() {
     systemctl is-active --quiet cellframe-node.service && systemctl stop cellframe-node.service
+    systemctl is-active --quiet cellframe-node-logrotate.timer && systemctl stop cellframe-node-logrotate.timer
     systemctl is-enabled --quiet cellframe-node.service && systemctl disable cellframe-node.service
+    systemctl is-enabled --quiet cellframe-node-logrotate.timer && systemctl disable cellframe-node-logrotate.timer
     systemctl daemon-reload
 }
 

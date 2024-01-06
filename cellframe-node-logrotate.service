@@ -1,0 +1,5 @@
+[Unit]
+Description="Manages cellframe-node log rotation"
+
+[Service]
+ExecStart=/usr/bin/logrotate -v /etc/logrotate.d/cellframe-node
