@@ -14,7 +14,7 @@
 ## basic info
 _pkgname=wine
 pkgname="${_pkgname}${_pkgtype:-}"
-pkgver=9.0rc3
+pkgver=9.0rc4
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
@@ -77,11 +77,9 @@ source=(
   "30-win32-aliases.conf"
   "wine-binfmt.conf"
 )
-sha256sums=(
-  '729801f1c933baa63cdce60b7758b6e2ea1f2ef46a160bb57475c5917a068921'
-  '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
-  '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
-)
+b2sums=('ebff8b1763ffe3d1eb60b1302d78a662a46140e6f76e4a0caf58d3e4e4c9168f'
+        '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+        '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
 
 if [[ "${_build_staging::1}" == "t" ]] ; then
   makedepends+=('git')
@@ -92,7 +90,6 @@ if [[ "${_build_staging::1}" == "t" ]] ; then
   )
 
   source+=("git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$_pkgver")
-  sha256sums+=('SKIP')
 
   prepare() {
     # apply wine-staging patchset
