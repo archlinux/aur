@@ -1,20 +1,20 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=riscv64-lp64d-musl-bleeding-edge-toolchain
-pkgver=2023.08
-pkgrel=1.1
+pkgver=2023.11
+pkgrel=1
 pkgdesc="Ready-to-use cross-compilation toolchain provided by bootlin.com"
 arch=("x86_64")
 url="https://toolchains.bootlin.com/"
 license=("GPL")
-source=("https://toolchains.bootlin.com/downloads/releases/toolchains/riscv64-lp64d/tarballs/riscv64-lp64d--musl--bleeding-edge-2023.08-1.tar.bz2"
+source=("https://toolchains.bootlin.com/downloads/releases/toolchains/riscv64-lp64d/tarballs/riscv64-lp64d--musl--bleeding-edge-2023.11-1.tar.bz2"
         "profile.sh-riscv64-lp64d-musl-bleeding-edge-toolchain")
 install="hooks.install-riscv64-lp64d-musl-bleeding-edge-toolchain"
-sha256sums=('3687ddfbc6d4008e6b5fa2533a6e651d6db7281014917de8d2200b320f440633'
+sha256sums=('023dadabe58ff6079b27ebfde9495440180dc473b8c5da2c55e95ce68e095c15'
             '40b88111144cf9d3db70be65a3ef1f8e4812d93ff7f68a42492a26fe1e234119')
 
 build() {
-	cd "riscv64-lp64d--musl--bleeding-edge-2023.08-1"
+	cd "riscv64-lp64d--musl--bleeding-edge-2023.11-1"
 
 	sh relocate-sdk.sh "/opt/riscv64-lp64d-musl-bleeding-edge"
 }
@@ -22,7 +22,7 @@ build() {
 package() {
 	options=(!strip)
 
-	cd "riscv64-lp64d--musl--bleeding-edge-2023.08-1"
+	cd "riscv64-lp64d--musl--bleeding-edge-2023.11-1"
 
 	mkdir -p "$pkgdir/opt/riscv64-lp64d-musl-bleeding-edge/"
 	cp -a * "$pkgdir/opt/riscv64-lp64d-musl-bleeding-edge/"
