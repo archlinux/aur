@@ -1,7 +1,7 @@
 pkgbase = gitlint
 	pkgdesc = Git commit message linter
 	pkgver = 0.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorisroovers/gitlint
 	arch = any
 	license = MIT
@@ -16,7 +16,6 @@ pkgbase = gitlint
 	depends = python-arrow
 	depends = python-click
 	depends = python-sh
-	depends = sh
 	source = gitlint-0.19.1.tar.gz::https://github.com/jorisroovers/gitlint/archive/refs/tags/v0.19.1.tar.gz
 	sha256sums = 60de0fe764bd8fc86eb38990fb6704c5c4649a1fee574407b87b3c1471e12bd0
 
