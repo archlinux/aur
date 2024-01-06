@@ -1,0 +1,6 @@
+obs-backgroundremoval/
+pkg/
+src/
+*.tar.gz
+*.tar.zst
+
