@@ -9,7 +9,7 @@ _projectname=electron
 _major=29
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_dev=6
+_dev=7
 _dev_kind=alpha
 _pkgver="${_major}.0.0-${_dev_kind}.${_dev}"
 pkgver="${_pkgver/-/}"
@@ -27,6 +27,7 @@ depends=(c-ares
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
+            'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
 provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
@@ -40,10 +41,10 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('fe16cbaa1b16657820ded9616fbb7fbcfa091cb476c3b998269c0fea3c7299c1'
-                   '1a244017c7c71eac6ba483aa8de96f0f38ed55869aa15d9448eb60801a912a83')
-sha256sums_aarch64=('c397fa0a8d72754d5f2469ea3261a706b76d7d885058d3bfd20c426d001cd9b3'
-                    '5fe27ed99d509fc9c186be2d1be9ab312f7d601945a1242acc6053f6d151a3ec')
+sha256sums_x86_64=('31ed1f600ce9a9847b9165c3b84a73812eb29049d10251b56c447d3eb90658c2'
+                   '5c4c70959f4e1a3fbdd7f15f39ee10d814a5f2a1c041a3e91d558af41029029e')
+sha256sums_aarch64=('b88dbc607a9943adcea92f1161a999979bed1203d020739468c63c7eb8f10d64'
+                    '3fad13bd300d0045e48993cfbd08033702c528efb03ee77716e47092d21e69ac')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
