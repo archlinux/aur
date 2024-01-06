@@ -1,8 +1,9 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer:
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=ttf-proggy-clean
-pkgver=1.1.5
-pkgrel=2
+pkgver=1.1.7
+pkgrel=1
 pkgdesc='Monospaced fonts for programming'
 arch=(any)
 url='https://github.com/bluescan/proggyfonts/'
