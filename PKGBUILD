@@ -1,3 +1,5 @@
+# Maintainer: Victor Bonnelle <victor.bonnelle@proton.me>
+
 pkgname=ttf-lucide
 pkgver=0.306.0
 pkgrel=0
