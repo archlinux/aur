@@ -1,7 +1,7 @@
 # Maintainer: Furkan Kardame <f.kardame@manjaro.org>
 
 pkgname=cockpit-docker
-pkgver=82
+pkgver=13
 pkgrel=1
 pkgdesc='Cockpit UI for docker containers'
 arch=('any')
