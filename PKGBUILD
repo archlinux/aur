@@ -10,6 +10,7 @@ arch=('any')
 url='https://github.com/brpaz/hawkeye'
 license=('MIT')
 depends=('gtk3' 'evince' 'python-markdown')
+makedepends=('git' 'python-setuptools')
 source=('git+https://github.com/brpaz/hawkeye.git')
 md5sums=('SKIP')
 
