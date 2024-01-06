@@ -2,7 +2,7 @@
 pkgname="cellframe-dashboard"
 _nodename="cellframe-node"
 pkgver=2.13.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
 url="https://cellframe.net"
@@ -16,7 +16,7 @@ source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=d0b026a4655
 		cellframe-node-logrotate.service
 		cellframe-node.service)
 md5sums=('SKIP'
-         '95ea2a9af2bdd2e08d44494673d2a9f3'
+         '6a52220e0b285dc9e803082f36897ad4'
          '47edb0d55d537e72f3de07ec6a72ea78'
          '7c1087eea7336d99c4af55119673b009'
          '72472d529b38f06a78f37ac659b18d65')
