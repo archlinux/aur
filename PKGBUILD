@@ -2,7 +2,7 @@
 pkgname=python-questionary
 _name=${pkgname#python-}
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to build pretty command line user prompts"
 license=("MIT")
 url="https://pypi.python.org/pypi/$_name"
@@ -12,6 +12,10 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_nam
 sha256sums=('bcce898bf3dbb446ff62830c86c5c6fb9a22a54146f0f5597d3da43b10d8fc8b')
 arch=('any')
 
+prepare() {
+    cd "$_name-$pkgver"
+    sed -i -E "/^prompt_toolkit =/s/,.*$/\"/" pyproject.toml
+}
 
 build() {
     cd "$_name-$pkgver"
