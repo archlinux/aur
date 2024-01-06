@@ -1,6 +1,6 @@
 pkgbase = python-symfem
 	pkgdesc = a symbolic finite element definition library
-	pkgver = 2023.12.11
+	pkgver = 2024.1.1
 	pkgrel = 1
 	url = https://github.com/mscroggs/symfem
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-symfem
 	depends = python-sympy
 	depends = python-appdirs
 	optdepends = python-cairosvg: for plotting PNGs
-	source = symfem-2023.12.11.tar.gz::https://github.com/mscroggs/symfem/archive/v2023.12.11.tar.gz
-	sha512sums = bf38497bf924a9a41811ef6878618dcb58d566be061f1c6f08fbc071a4c3f459b2a710719c92f0ecffc7c0971b94e0a9b5051588c86bd33e0305919736df09f3
+	source = symfem-2024.1.1.tar.gz::https://github.com/mscroggs/symfem/archive/v2024.1.1.tar.gz
+	sha512sums = 8799d65b14e253698ec5fbc20073083040826c4d0d7258c56321a9280493a0946dcaeb84ba08d4936dcf1a0a4b0361d1098dddd316b5682f741e69aaef40895b
 
 pkgname = python-symfem
