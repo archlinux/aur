@@ -1,2 +1,6 @@
 *.tar.*
 *.orig
+*.log
+pkg
+src
+
