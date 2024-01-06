@@ -1,3 +1,31 @@
+_showmsg() {
+    cat << EOF
+
+    ########################################################################
+    ########################################################################
+    ##                                                                    ##
+    ##  Cellframe Dashboard - The super application with Cellframe node   ##
+    ##  ______________________________________________________________    ##
+    ##                                                                    ##
+    ##  To start:                                                         ##
+    ##                                                                    ##
+    ##   1. systemctl enable --now cellframe-node.service                 ##
+    ##                                                                    ##
+    ##   2. systemctl enable --now cellframe-dashboard.service            ##
+    ##                                                                    ##
+    ##   3. Launch Cellframe Dashboard from your applications             ##
+    ##                                                                    ##
+    ##   OPTIONAL:                                                        ##
+    ##   systemctl enable --now cellframe-node-logrotate.service          ##
+    ##                                                                    ##
+    ##   For more aggressive log rotating                                 ##
+    ##                                                                    ##
+    ########################################################################
+    ########################################################################
+
+EOF
+}
+
 post_install() {
     NODE_PATH="/opt/cellframe-node"
     DASHBOARD_PATH="/opt/cellframe-dashboard"
@@ -38,28 +66,7 @@ post_install() {
     mkdir -p $NODE_PATH/var/{run,lib/wallet,lib/global_db,lib/plugins,log}
     mkdir -p $DASHBOARD_PATH/dapps/download && chmod -R 0777 $DASHBOARD_PATH/dapps
 
-    cat << EOF
-
-    ########################################################################
-    ########################################################################
-    ##                                                                    ##
-    ##  Cellframe Dashboard - The super application with Cellframe node   ##
-    ##  ______________________________________________________________    ##
-    ##                                                                    ##
-    ##  To start:                                                         ##
-    ##                                                                    ##
-    ##   1. systemctl enable --now cellframe-node.service                 ##
-    ##                                                                    ##
-    ##   1. systemctl enable --now cellframe-dashboard.service            ##
-    ##                                                                    ##
-    ##   2. Launch Cellframe Dashboard from your applications             ##
-    ##                                                                    ##
-    ##                                                                    ##
-    ########################################################################
-    ########################################################################
-
-EOF
-
+    _showmsg
 }
 
 pre_upgrade() {
@@ -75,6 +82,7 @@ post_upgrade() {
     do
         systemctl is-enabled --quiet $_active.service && systemctl start $_active.service && echo "+++ Started $_active service..."
     done
+    _showmsg
 }
 
 pre_remove() {

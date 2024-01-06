@@ -2,7 +2,7 @@
 pkgname="cellframe-dashboard"
 _nodename="cellframe-node"
 pkgver=2.13.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
 url="https://cellframe.net"
@@ -11,9 +11,15 @@ depends=(qt5-graphicaleffects qt5-base qt5-quickcontrols2 qt5-quickcontrols logr
 makedepends=(git qt5-base qt5-declarative cmake python3)
 options=(!makeflags !buildflags)
 source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=d0b026a4655c603330390265de10ec157b76f615
-		cellframe-node.logrotate)
+		cellframe-node.logrotate
+		cellframe-node-logrotate.timer
+		cellframe-node-logrotate.service
+		cellframe-node.service)
 md5sums=('SKIP'
-         '95ea2a9af2bdd2e08d44494673d2a9f3')
+         '95ea2a9af2bdd2e08d44494673d2a9f3'
+         '47edb0d55d537e72f3de07ec6a72ea78'
+         '7c1087eea7336d99c4af55119673b009'
+         '72472d529b38f06a78f37ac659b18d65')
 conflicts=(cellframe-node cellframe-wallet)
 install=$pkgname.install
 
@@ -43,8 +49,8 @@ prepare() {
 
 EOF
 	echo "+++ Fetching submodule sources..."
-	git submodule sync &> /dev/null
-	git submodule update --init --recursive &> /dev/null
+	git submodule sync
+	git submodule update --init --recursive
 }
 
 build() {
@@ -61,5 +67,7 @@ package() {
 	install -Dm 644 "$srcdir/$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm 644 "$srcdir/$pkgname/$_nodename/LICENSE" -t "$pkgdir/usr/share/licenses/$_nodename"
 	install -Dm 644 "$srcdir/$_nodename.logrotate" "$pkgdir/etc/logrotate.d/$_nodename"
-	install -Dm 644 "$srcdir/$pkgname/$_nodename/dist.linux/share/$_nodename.service" -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm 644 "$srcdir/$_nodename-logrotate.service" -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm 644 "$srcdir/$_nodename-logrotate.timer" -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm 644 "$srcdir/$_nodename.service" -t "$pkgdir/usr/lib/systemd/system"
 }
