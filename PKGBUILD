@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=odpi
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Database Programming Interface for Drivers and Applications "
 arch=(x86_64)
 url="https://oracle.github.io/odpi/"
@@ -16,6 +16,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" PREFIX="$pkgdir/usr/" install
+	make DESTDIR="$pkgdir" PREFIX="$pkgdir/usr/" install
 }
 
