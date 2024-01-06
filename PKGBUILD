@@ -3,8 +3,8 @@
 _app_name=grist-electron
 pkgname="${_app_name}-bin"
 pkgver=0.2.8
-pkgrel=1
-pkgdesc="Unofficial Electron build of Grist, a modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database to organize your data and make you more productive."
+pkgrel=2
+pkgdesc="Grist Desktop App, built with Electron, a modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database to organize your data and make you more productive."
 arch=('x86_64')
 url='https://github.com/paulfitz/grist-electron'
 license=('Apache')
