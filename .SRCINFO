@@ -1,6 +1,6 @@
 pkgbase = vim-clipboard
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor
-	pkgver = 9.0.2143
+	pkgver = 9.1.0000
 	pkgrel = 1
 	url = https://www.vim.org
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = vim-clipboard
 	makedepends = git
 	makedepends = tcl
 	makedepends = zlib
+	makedepends = perl
 	depends = vim-runtime
 	depends = gpm
 	depends = acl
@@ -39,7 +40,7 @@ pkgbase = vim-clipboard
 	replaces = vim
 	replaces = vim-minimal
 	replaces = gvim
-	source = git+https://github.com/vim/vim.git?signed#tag=v9.0.2143
+	source = git+https://github.com/vim/vim.git?signed#tag=v9.1.0000
 	source = vimdoc.hook
 	validpgpkeys = 4F19708816918E19AAE19DEEF3F92DA383FDDE09
 	sha512sums = SKIP
