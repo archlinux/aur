@@ -1,7 +1,7 @@
 pkgbase = sing-geoip
-	pkgdesc = sing-geoip database
+	pkgdesc = sing-geoip
 	pkgver = 20231212
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/SagerNet/sing-geoip
 	arch = any
 	license = GPL3
@@ -9,11 +9,14 @@ pkgbase = sing-geoip
 	source = sing-geoip-20231212.tar.gz::https://github.com/SagerNet/sing-geoip/archive/refs/tags/20231212.tar.gz
 	sha256sums = e1055c8190a7f79a00ce3870b4f482161483ff68ffb10ed6f7915849ec513bd9
 
-pkgname = sing-geoip-db
+pkgname = sing-geoip-common
+	pkgdesc = sing-geosite (common files)
+
+pkgname = sing-geoip-rule-set
+	pkgdesc = sing-geoip (rule sets)
 	depends = sing-geoip-common
 	replaces = sing-geoip
 
-pkgname = sing-geoip-rule-set
+pkgname = sing-geoip-db
+	pkgdesc = sing-geoip (database)
 	depends = sing-geoip-common
-
-pkgname = sing-geoip-common

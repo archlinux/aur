@@ -1,11 +1,11 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
 pkgbase=sing-geoip
-pkgname=(sing-geoip-db sing-geoip-rule-set sing-geoip-common)
+pkgname=(sing-geoip-common sing-geoip-rule-set sing-geoip-db)
 pkgver=20231212
-pkgrel=3
+pkgrel=4
 
-pkgdesc='sing-geoip database'
+pkgdesc='sing-geoip'
 arch=('any')
 url="https://github.com/SagerNet/sing-geoip"
 license=('GPL3')
@@ -19,14 +19,17 @@ sha256sums=('e1055c8190a7f79a00ce3870b4f482161483ff68ffb10ed6f7915849ec513bd9')
 
 build() {
     cd "${_srcbase}" || exit
-    go run -v .
+    NO_SKIP=true go run -v .
 }
 
 package_sing-geoip-common() {
+    pkgdesc='sing-geosite (common files)'
+
     install -Dm644 "${_srcbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
 
-package_sing-geoip-db() {
+package_sing-geoip-rule-set() {
+    pkgdesc='sing-geoip (rule sets)'
     depends=(sing-geoip-common)
     replaces=(sing-geoip)
 
@@ -34,7 +37,8 @@ package_sing-geoip-db() {
     install -Dm644 "${_srcbase}/rule-set/"* "${pkgdir}/usr/share/${pkgbase}/rule-set"
 }
 
-package_sing-geoip-rule-set() {
+package_sing-geoip-db() {
+    pkgdesc='sing-geoip (database)'
     depends=(sing-geoip-common)
 
     install -dm755 "${pkgdir}/usr/share/${pkgbase}"
