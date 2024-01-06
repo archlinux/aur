@@ -4,7 +4,7 @@
 
 _name=kplotting
 pkgname=${_name}5
-pkgver=5.113.0
+pkgver=5.114.0
 pkgrel=1
 pkgdesc='Lightweight plotting framework'
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('d233596403fec84e8eafb976e591a5a40b751e00cf6f0da8c531f9108e8aee9a'
+sha256sums=('164cd1073af5f790d699afb0f90aeed43fdb716cff4ae823a617584aef45a59f'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
