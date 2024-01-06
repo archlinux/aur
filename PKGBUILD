@@ -79,8 +79,7 @@ source=(
 )
 b2sums=('205038fabe26a71528e4591ab5bf52ed6f61a60aec040a0ba3a179182b1f778449a235f27bf329331c025cbb51d4109f7ca7855e4862a2911fd1988b44e68933'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
-        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
-        'SKIP')
+        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
 
 if [[ "${_build_staging::1}" == "t" ]] ; then
   makedepends+=('git')
@@ -91,7 +90,7 @@ if [[ "${_build_staging::1}" == "t" ]] ; then
   )
 
   source+=("git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$_pkgver")
-  sha256sums+=('SKIP')
+  b2sums+=('SKIP')
 
   prepare() {
     # apply wine-staging patchset
