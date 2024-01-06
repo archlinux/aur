@@ -1,7 +1,6 @@
-
 pkgname=mingw-w64-arpack
-pkgver=3.7.0
-pkgrel=2
+pkgver=3.9.1
+pkgrel=1
 arch=('any')
 pkgdesc='Fortran77 subroutines designed to solve large scale eigenvalue problems (mingw-w64)'
 url='http://forge.scilab.org/index.php/p/arpack-ng/'
@@ -10,14 +9,9 @@ depends=('mingw-w64-lapack')
 makedepends=('mingw-w64-configure')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/opencollab/arpack-ng/archive/${pkgver}.tar.gz")
-sha256sums=('972e3fc3cd0b9d6b5a737c9bf6fd07515c0d6549319d4ffb06970e64fa3cc2d6')
+sha256sums=('f6641deb07fa69165b7815de9008af3ea47eb39b2bb97521fbf74c97aba6e844')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare () {
-  cd "$srcdir/arpack-ng-${pkgver}"
-  curl -L https://github.com/opencollab/arpack-ng/pull/239/commits/9418632214acf6d387896ab29a8f5bdff2d4e38a.patch | patch -p1
-}
 
 build() {
   cd "$srcdir/arpack-ng-${pkgver}"
