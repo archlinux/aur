@@ -1,6 +1,6 @@
 pkgbase = wine-staging-wow64
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 9.0rc3
+	pkgver = 9.0rc4
 	pkgrel = 1
 	url = https://www.winehq.org
 	install = wine.install
@@ -41,17 +41,17 @@ pkgbase = wine-staging-wow64
 	optdepends = alsa-lib
 	optdepends = cups
 	optdepends = dosbox
-	provides = wine=9.0rc3
-	provides = wine-staging=9.0rc3
-	provides = wine-wow64=9.0rc3
+	provides = wine=9.0rc4
+	provides = wine-staging=9.0rc4
+	provides = wine-wow64=9.0rc4
 	conflicts = wine
 	options = staticlibs
 	options = !lto
 	backup = usr/lib/binfmt.d/wine.conf
-	source = https://dl.winehq.org/wine/source/9.0/wine-9.0-rc3.tar.xz
+	source = https://dl.winehq.org/wine/source/9.0/wine-9.0-rc4.tar.xz
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
-	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v9.0-rc3
+	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v9.0-rc4
 	sha256sums = 729801f1c933baa63cdce60b7758b6e2ea1f2ef46a160bb57475c5917a068921
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4

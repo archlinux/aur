@@ -14,7 +14,7 @@
 ## basic info
 _pkgname=wine
 pkgname="${_pkgname}${_pkgtype:-}"
-pkgver=9.0rc3
+pkgver=9.0rc4
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
