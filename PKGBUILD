@@ -4,7 +4,7 @@
 
 _name=kactivities-stats
 pkgname=${_name}5
-pkgver=5.113.0
+pkgver=5.114.0
 pkgrel=1
 arch=(x86_64)
 pkgdesc='A library for accessing the usage data collected by the activities system'
@@ -16,7 +16,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('319cd59ee51364cb093a2a65e711ec45245caa06e16d727b3854ccc1a515df8c'
+sha256sums=('c72fec9ddb638ef4e13fbb37eedd3643c432058a07717e3acf612036aed019fe'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
