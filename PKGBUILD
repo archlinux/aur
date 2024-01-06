@@ -2,7 +2,7 @@
 _pkgname=immich-go
 pkgname=immich-go-bin
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative to the immich-CLI command that doesn't depend on a nodejs installation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/simulot/immich-go"
