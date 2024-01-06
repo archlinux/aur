@@ -1,6 +1,6 @@
 pkgbase = cpu-x
 	pkgdesc = A Free software that gathers information on CPU, motherboard and more
-	pkgver = 5.0.2
+	pkgver = 5.0.3
 	pkgrel = 1
 	url = https://thetumultuousunicornofdarkness.github.io/CPU-X
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = cpu-x
 	depends = procps-ng>=4.0.0
 	optdepends = opengl-driver: packaged openGL driver
 	optdepends = vulkan-driver: packaged Vulkan driver
-	source = cpu-x-5.0.2.tar.gz::https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/v5.0.2.tar.gz
-	sha512sums = 3677207af8ea233a5bc1e435f501f4dffbe555486b048f5b51ac818cb458d52ab7ac94830ab83e992772e339de93464b3d4cd92798b8f49a272fd5292484de7e
+	source = cpu-x-5.0.3.tar.gz::https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/v5.0.3.tar.gz
+	sha512sums = d9a29a5303101a6c00d9145265d85acec865833f175246bde550ba2dff24a924c1b2de7579b3d8e20aa163092d269af9bbb24e073585d3e18a2c726e48d9be41
 
 pkgname = cpu-x
