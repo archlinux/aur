@@ -1,36 +1,55 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
-pkgname=sing-geosite-git
-_pkgname=sing-geosite
-pkgver=20230320093818
+_pkgbase=sing-geosite
+pkgbase=${_pkgbase}-git
+pkgname=("${_pkgbase}-common-git" "${_pkgbase}-rule-set-git" "${_pkgbase}-db-git")
+pkgver=20240104053246.r0.gfc71b5c
 pkgrel=1
 
-pkgdesc='sing-geosite database'
+pkgdesc='sing-geosite'
 arch=('any')
-_repo="SagerNet/${_pkgname}"
-url="https://github.com/${_repo}"
+url="https://github.com/SagerNet/sing-geosite"
 license=('GPL3')
 
-makedepends=('go')
-conflicts=('sing-geosite')
-provides=('sing-geosite')
+makedepends=(go git)
 
-_branch=main
-source=("src.${pkgver}.tar.gz::https://codeload.github.com/${_repo}/tar.gz/refs/heads/${_branch}")
+source=("git+https://github.com/SagerNet/sing-geosite.git")
 sha256sums=(SKIP)
 
 pkgver() {
-  curl -s https://api.github.com/repos/v2fly/domain-list-community/releases/latest \
-    | grep "tag_name" | cut -d '"' -f 4
+  cd sing-geosite && git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_builddir="${_pkgname}-${_branch}"
 build () {
-  cd "$_builddir"
-  NO_SKIP=true go run -v .
+  cd ${_pkgbase} && NO_SKIP=true go run -v .
 }
 
-package() {
-    install -Dm644 "${_builddir}/geosite.db" -t "${pkgdir}/usr/share/${_pkgname}"
-    install -Dm644 "${_builddir}/LICENSE"    -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+package_sing-geosite-common-git() {
+    pkgdesc='sing-geosite (common files)'
+    provides=(sing-geosite-common)
+    conflicts=(sing-geosite-common)
+
+    install -Dm644 "sing-geosite/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
+}
+
+package_sing-geosite-rule-set-git() {
+    pkgdesc='sing-geosite (rule sets)'
+    depends=(sing-geosite-common-git)
+    replaces=(sing-geosite-git)
+    provides=(sing-geosite-rule-set)
+    conflicts=(sing-geosite-rule-set)
+
+
+    install -dm755 "${pkgdir}/usr/share/${_pkgbase}/rule-set"
+    install -Dm644 "sing-geosite/rule-set/"* "${pkgdir}/usr/share/${_pkgbase}/rule-set"
+}
+
+package_sing-geosite-db-git() {
+    pkgdesc='sing-geosite (database)'
+    depends=(sing-geosite-common-git)
+    provides=(sing-geosite-db)
+    conflicts=(sing-geosite-db)
+
+    install -dm755 "${pkgdir}/usr/share/${_pkgbase}"
+    install -Dm644 "sing-geosite/"*.db "${pkgdir}/usr/share/${_pkgbase}"
 }
