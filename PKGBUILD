@@ -14,8 +14,8 @@ _services=(
 for _svc in "${_services[@]}"; do
   _svc_packages+=("python-mypy-boto3-$_svc")
 done
-_boto3_version=1.33.1    ## NOTE: This should match the version of the python-boto3 package to avoid API mis-match
-_mypy_boto3_builder_version=7.21
+_boto3_version=1.33.13    ## NOTE: This should match the version of the python-boto3 package to avoid API mis-match
+_mypy_boto3_builder_version=7.23
 
 pkgname=python-boto3-stubs
 pkgver=${_boto3_version}
