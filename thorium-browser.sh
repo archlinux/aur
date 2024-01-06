@@ -14,11 +14,12 @@ else
   _message+=$'thorium-browser may not work on your computer.'
 fi
 
-XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
-
 # Allow users to override command-line options
-if [[ -f "$XDG_CONFIG_HOME/thorium-flags.conf" ]]; then
-  THORIUM_USER_FLAGS="$(cat $XDG_CONFIG_HOME/thorium-flags.conf)"
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+_FLAGS_FILE="$XDG_CONFIG_HOME/thorium-flags.conf"
+
+if [[ -f "$_FLAGS_FILE" ]]; then
+  _USER_FLAGS="$(cat "$_FLAGS_FILE")"
 fi
 
 # display processor support message
@@ -29,4 +30,4 @@ else
 fi
 
 # Launch
-exec /opt/thorium-browser/thorium-browser $THORIUM_USER_FLAGS "$@"
+exec /opt/thorium-browser/thorium-browser $_USER_FLAGS "$@"

@@ -3,8 +3,12 @@ msg_blue() {
   printf "${BLUE}==>${BOLD} $1${ALL_OFF}\n"
 }
 
-note() {
+note1() {
   printf "${BLUE}==>${YELLOW} NOTE:${BOLD} $1${ALL_OFF}\n"
+}
+
+note2() {
+  printf "${BLUE}==>      ${BOLD} $1${ALL_OFF}\n"
 }
 
 ALL_OFF="$(tput sgr0)"
@@ -20,14 +24,14 @@ WHITE="${BOLD}$(tput setaf 7)"
 
 post_install() {
   if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v3.*supported.*$' ; then
-    note "Custom flags should be put directly in: ~/.config/thorium-flags.conf"
-    note "The launcher is called: 'thorium-browser'"
+    note1 "Custom flags should be put directly in: ~/.config/thorium-flags.conf"
+    note2 "The launcher is called: 'thorium-browser'"
   elif /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v2.*supported.*$' ; then
-    note "Your processor supports x86-64-v2, but not x86-64-v3."
-    note "You may want to install thorium-browser-sse3-bin instead."
+    note1 "Your processor supports x86-64-v2, but not x86-64-v3."
+    note2 "You may want to install thorium-browser-sse3-bin instead."
   else
-    note "Your processor does not support x86-64-v2 or x86-64-v3."
-    note "thorium-browser may not work on your computer."
+    note1 "Your processor does not support x86-64-v2 or x86-64-v3."
+    note2 "thorium-browser may not work on your computer."
   fi
 }
 
