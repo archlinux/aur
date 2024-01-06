@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-curly
-pkgver=28.0.3
+pkgver=28.0.4
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,8 +8,8 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/PkgTTF-IosevkaTermCurly-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('8dc9cae73c0dc46cb00c6d3dc086aac390c796ecd8107df738640996ac9da36e'
-            '7484961b97b41985d54c21700e53f7142a7007d72401acbd32c0b9c6a5a0b558')
+sha256sums=('aaf094567154db25646ae9e4232acc4793242559ed162ecb878260539d5cf7b7'
+            '8c914a5c7d8d5e5be1ae07fd8591b437ece15b665f6ccc913cea050ffa8448f7')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
