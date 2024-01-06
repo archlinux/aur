@@ -4,7 +4,7 @@
 pkgname=python-caldav
 _name=${pkgname#python-}
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A CalDAV (RFC4791) client library for Python"
 arch=('any')
 url="https://github.com/python-caldav/caldav"
@@ -32,14 +32,27 @@ checkdepends=(
 source=("${_name}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('b733fb9e038e1addf725ad3bb8ec8725d6f4f401cc7203ef01936faa618f5409')
 
+prepare() {
+  cd "${_name}-$pkgver"
+
+  # Remove shebangs
+  find caldav -name "*.py" | xargs sed -i '1 {/^#!/d}'
+}
+
 build() {
   cd "${_name}-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
+
+  # almost all tests are online, would require
+  # caldav server to run
+
   cd "${_name}-$pkgver"
-  pytest -p no:warnings
+  python -m venv --clear --system-site-packages .testenv
+  .testenv/bin/python -m installer dist/*.whl
+  .testenv/bin/python -m pytest
 }
 
 package() {
