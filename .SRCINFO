@@ -1,6 +1,6 @@
 pkgbase = rtt-rstudio
 	pkgdesc = R-Studio is a powerful cost-effective undelete and data recovery software utility (non-free).
-	pkgver = 5.3.191246
+	pkgver = 5.3.191267
 	pkgrel = 1
 	url = https://www.r-studio.com/data_recovery_linux/
 	arch = x86_64
