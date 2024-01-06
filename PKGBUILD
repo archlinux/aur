@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://www.draketo.de/software/wisp"
 license=('GPL3')
 depends=('guile')
+makedepends=('python')
 source=("$pkgname-$pkgver.tar.gz::https://hg.sr.ht/~arnebab/wisp/archive/v$pkgver.tar.gz")
 sha256sums=('efe99873e88ddb908d0357c7f80ed33b99ff2ac572e227a0d9aaa9632e92a2fb')
 
