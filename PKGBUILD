@@ -1,20 +1,21 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2023.07.06.r143.g5fccabac2
+pkgver=2023.12.30.r5.gb695127
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
 url=https://github.com/yt-dlp/yt-dlp
 license=(Unlicense)
-depends=(python-certifi)
-makedepends=(python-build python-installer python-setuptools python-wheel pandoc git)
+depends=(python python-certifi python-requests)
+makedepends=(pandoc python-build python-installer python-setuptools python-wheel git)
 checkdepends=(python-pytest)
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'
             'aria2: for using aria2 as external downloader'
             'python-mutagen: for embedding thumbnail in certain formats'
+            'python-pycryptodome: for decrypting AES-128 HLS streams and various other data'
             'python-pycryptodomex: for decrypting AES-128 HLS streams and various other data'
             'python-websockets: for downloading over websocket'
             'python-brotli: brotli content encoding support'
@@ -29,7 +30,7 @@ source=(git+"${url}".git)
 sha256sums=('SKIP')
 
 pkgver() {
-    git -C "${pkgname%-git}" describe --long --tags --exclude=nightly | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C "${pkgname%-git}" describe --long --tags --abbrev=7 --exclude=nightly | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
