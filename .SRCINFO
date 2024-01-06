@@ -1,7 +1,7 @@
 pkgbase = cellframe-dashboard
 	pkgdesc = Super application for managing Cellframe node
 	pkgver = 2.13.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cellframe.net
 	install = cellframe-dashboard.install
 	arch = x86_64
@@ -24,7 +24,13 @@ pkgbase = cellframe-dashboard
 	options = !buildflags
 	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=d0b026a4655c603330390265de10ec157b76f615
 	source = cellframe-node.logrotate
+	source = cellframe-node-logrotate.timer
+	source = cellframe-node-logrotate.service
+	source = cellframe-node.service
 	md5sums = SKIP
 	md5sums = 95ea2a9af2bdd2e08d44494673d2a9f3
+	md5sums = 47edb0d55d537e72f3de07ec6a72ea78
+	md5sums = 7c1087eea7336d99c4af55119673b009
+	md5sums = 72472d529b38f06a78f37ac659b18d65
 
 pkgname = cellframe-dashboard
