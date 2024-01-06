@@ -7,7 +7,7 @@ pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
 url='https://github.com/jgraph/drawio-desktop'
 license=('Apache')
-_electronver=26
+_electronver=28
 depends=("electron$_electronver" libnotify shared-mime-info)
 makedepends=(yarn 'nodejs>=12')
 options=('!strip')
@@ -27,8 +27,8 @@ build() {
   rm -rfv drawio/src/main/webapp/META-INF drawio/src/main/webapp/WEB-INF
 
   # Electron version compatibility check
-  # echo "Checking electron version"
-  # grep -qF "\"electron\": \"^$_electronver." 'package.json'
+  echo "Checking electron version"
+  grep -qF "\"electron\": \"^$_electronver." 'package.json'
 
   # disable updater
   sed -e '/electron-updater/d' -i 'package.json'
