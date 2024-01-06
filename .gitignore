@@ -1,0 +1,5 @@
+k0sctl
+*.asc
+*.tar.*
+src/
+pkg/

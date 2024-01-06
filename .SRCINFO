@@ -1,0 +1,16 @@
+pkgbase = k0sctl
+	pkgdesc = A bootstrapping and management tool for k0s clusters.
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://github.com/k0sproject/k0sctl
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = go>=1.21
+	provides = k0sctl
+	source = git+https://github.com/k0sproject/k0sctl.git#commit=56da107d9c904a98c85a62ef741e0def95be0277
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	sha256sums = SKIP
+
+pkgname = k0sctl
