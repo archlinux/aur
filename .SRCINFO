@@ -1,14 +1,29 @@
 pkgbase = sing-geoip-git
-	pkgdesc = sing-geoip database
-	pkgver = 20230312
+	pkgdesc = sing-geoip
+	pkgver = 20231212.r1.g9c34309
 	pkgrel = 1
 	url = https://github.com/SagerNet/sing-geoip
 	arch = any
 	license = GPL3
 	makedepends = go
-	provides = sing-geoip
-	conflicts = sing-geoip
-	source = src.20230312.tar.gz::https://codeload.github.com/SagerNet/sing-geoip/tar.gz/refs/heads/main
+	makedepends = git
+	source = git+https://github.com/SagerNet/sing-geoip.git
 	sha256sums = SKIP
 
-pkgname = sing-geoip-git
+pkgname = sing-geoip-common-git
+	pkgdesc = sing-geoip (common files)
+	provides = sing-geoip-common
+	conflicts = sing-geoip-common
+
+pkgname = sing-geoip-rule-set-git
+	pkgdesc = sing-geoip (rule sets)
+	depends = sing-geoip-common-git
+	provides = sing-geoip-rule-set
+	conflicts = sing-geoip-rule-set
+	replaces = sing-geoip-git
+
+pkgname = sing-geoip-db-git
+	pkgdesc = sing-geoip (database)
+	depends = sing-geoip-common-git
+	provides = sing-geoip-db
+	conflicts = sing-geoip-db
