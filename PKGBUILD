@@ -5,7 +5,7 @@
 
 # General package information
 pkgname=krathalans-apparmor-profiles-git
-pkgver=r664.5e51904
+pkgver=r687.51ee469
 pkgrel=1
 pkgdesc="Krathalan's apparmor profiles for desktop and server software (Firefox, nginx, postfix, and more)"
 url="https://github.com/krathalan/apparmor-profiles"
@@ -18,7 +18,8 @@ makedepends=("git")
 
 # Download information
 source=("${pkgname}::git+${url}?signed" "99-apparmor-profiles.hook")
-validpgpkeys=("0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174")
+# My key, Github key (needed if the latest commit is a PR merge)
+validpgpkeys=("0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174" "5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23")
 sha256sums=('SKIP' 'bab4b1f4f8be2588d81bcaafe7ec7da4dceef0e270e09a53de3e1fe2a57a98b2')
 
 # https://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines#Git
