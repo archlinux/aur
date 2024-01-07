@@ -11,7 +11,7 @@
 _pkgname=ffmpeg
 pkgname="${_pkgname}5.1"
 pkgver=5.1.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)'
 arch=(
@@ -49,7 +49,6 @@ depends=(
   libpulse
   libraw1394
   librsvg
-  libsoxr
   libssh
   libtheora
   libva
@@ -68,6 +67,7 @@ depends=(
   rav1e
   rubberband
   sdl2
+  shaderc
   snappy
   srt
   svt-av1
@@ -76,6 +76,7 @@ depends=(
   vulkan-icd-loader
   x264
   x265
+  xz
   zimg
   zlib
 )
@@ -94,7 +95,6 @@ makedepends=(
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
-  'ffmpeg: v6.x provides libswresample.so.4, omitted from this ffmpeg5.1 pkg'
   'intel-media-sdk: Intel QuickSync support'
   'ladspa: LADSPA filters'
 )
@@ -112,6 +112,9 @@ prepare() {
   echo "Applying patches for ffnvcodec SDK 12.1..."
   git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
   git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
+  
+  echo "Applying patch to check for vulkan-headers 1.3+ instead of 1.2+..."
+  git cherry-pick -n 59707cc485c7fcc1c06b96648ce605ed558da4ac
 }
 
 build() {
@@ -147,7 +150,6 @@ build() {
     --enable-libbluray
     --enable-libbs2b
     --enable-libdav1d
-    --enable-libdc1394
     --enable-libdrm
     --enable-libfreetype
     --enable-libfribidi
@@ -165,8 +167,8 @@ build() {
     --enable-librav1e
     --enable-librsvg
     --enable-librubberband
+    --enable-libshaderc
     --enable-libsnappy
-    --enable-libsoxr
     --enable-libsrt
     --enable-libssh
     --enable-libsvtav1
@@ -179,9 +181,13 @@ build() {
     --enable-libx264
     --enable-libx265
     --enable-libxcb
+    --enable-libxcb-shape
+    --enable-libxcb-shm
+    --enable-libxcb-xfixes
     --enable-libxml2
     --enable-libzimg
     --enable-lto
+    --enable-lzma
     --enable-opencl
     --enable-opengl
     --enable-sdl2
@@ -211,6 +217,7 @@ build() {
 }
 
 package() {
+  depends+=(ffmpeg)   # ffmpeg 6.x provides libswresample.so.4, omitted from this package
   make DESTDIR="${pkgdir}" \
        -C "${_pkgname}" install
 
