@@ -1,6 +1,6 @@
 pkgbase = certbot-plugins-git
 	pkgdesc = Plugins for Certbot
-	pkgver = 2.6.0.r10.g2d8a274eb
+	pkgver = 2.8.0.r6.g926d0c7e0
 	pkgrel = 1
 	url = https://github.com/certbot/certbot
 	arch = any
@@ -10,8 +10,12 @@ pkgbase = certbot-plugins-git
 	makedepends = python-acme-git
 	makedepends = python-pyopenssl
 	makedepends = python-pyparsing
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = python-zope-interface
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	source = certbot::git+https://github.com/certbot/certbot
 	sha512sums = SKIP
 
@@ -21,11 +25,8 @@ pkgname = certbot-nginx-git
 	depends = python-acme
 	depends = python-pyopenssl
 	depends = python-pyparsing
-	depends = python-setuptools
-	depends = python-mock
-	depends = python-zope-interface
-	provides = certbot-nginx=2.6.0.r10.g2d8a274eb
-	provides = letsencrypt-nginx=2.6.0.r10.g2d8a274eb
+	provides = certbot-nginx=2.8.0.r6.g926d0c7e0
+	provides = letsencrypt-nginx=2.8.0.r6.g926d0c7e0
 	conflicts = certbot-nginx
 	conflicts = letsencrypt-nginx
 
@@ -34,11 +35,7 @@ pkgname = certbot-apache-git
 	depends = certbot
 	depends = python-acme
 	depends = python-augeas
-	depends = python-setuptools
-	depends = python-mock
-	depends = python-zope-component
-	depends = python-zope-interface
-	provides = certbot-apache=2.6.0.r10.g2d8a274eb
-	provides = letsencrypt-apache=2.6.0.r10.g2d8a274eb
+	provides = certbot-apache=2.8.0.r6.g926d0c7e0
+	provides = letsencrypt-apache=2.8.0.r6.g926d0c7e0
 	conflicts = certbot-apache
 	conflicts = letsencrypt-apache
