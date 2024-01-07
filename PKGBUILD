@@ -2,7 +2,7 @@
 
 pkgbase=openjph-git
 pkgname=('openjph-git' 'openjph-doc-git')
-pkgver=0.9.0.r4.g72d2f45
+pkgver=0.10.1.r0.ge7cf53e
 pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (git version)'
 arch=('x86_64')
@@ -20,11 +20,17 @@ build() {
     cmake -B build -S OpenJPH \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DOJPH_ENABLE_INTEL_AVX512:BOOL='OFF' \
+        -DOJPH_BUILD_TESTS:BOOL='ON' \
         -Wno-dev
-    make -C build
+    cmake --build build
     
     cd OpenJPH/docs
     doxygen
+}
+
+check() {
+    ctest --test-dir build --output-on-failure
 }
 
 package_openjph-git() {
@@ -32,7 +38,7 @@ package_openjph-git() {
     provides=('openjph')
     conflicts=('openjph')
     
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 OpenJPH/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
