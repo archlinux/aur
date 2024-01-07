@@ -1,35 +1,44 @@
-# system requirements: GNU make
-# Maintainer: sukanka <su975853527@gmail.com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=lamW
 _pkgver=2.2.3
 pkgname=r-${_pkgname,,}
-pkgver=2.2.3
-pkgrel=1
-pkgdesc='Lambert-W Function'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('BSD')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Lambert-W Function"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(BSD)
 depends=(
-  r
   r-rcpp
   r-rcppparallel
 )
+checkdepends=(
+  r-tinytest
+)
 optdepends=(
   r-covr
-  r-methods
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a1e232186673d2fc298fc45278a6ff169db428fe8a63551c9297124a05ee034b')
+md5sums=('50f63b6975649dc1fce780e6c69c54e9')
+b2sums=('10e62f7ae28aed0e2522ca36712b0e45982f309302f3c44cfeab05cc1a5ed7a4417841a518d6d8b004b18272e9d4cde952bbd9207cd058d1798a690911e2104b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" Rscript --vanilla tinytest.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
