@@ -1,6 +1,6 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.0.20
+pkgver=1.0.21
 #_zigver=0.12.0-dev.1604+caae40c21 #https://github.com/oven-sh/bun/blob/bun-v1.0.18/build.zig#L9
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU."
