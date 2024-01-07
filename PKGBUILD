@@ -1,7 +1,7 @@
 # Maintainer: Sergii Fesenko <sergii underscore f dot at outlook dot com>
 
 pkgname=lunarml-git
-pkgver=2023.09.24.r891.f8d511e
+pkgver=v0.1.0.r0.g031a459
 pkgrel=1
 pkgdesc="A Standard ML compiler that produces Lua/JavaScript "
 arch=(x86_64)
@@ -15,10 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  # there is no tags, so use info from last commit
-  local CNT=$(git rev-list --count HEAD)
-  local VERSION=$( git show -s --format='%cs.rCOMMIT_COUNT.%h' HEAD )
-  sed "s/COMMIT_COUNT/$CNT/ ; s/-/./g" <<< "$VERSION"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -26,14 +23,15 @@ build() {
   make
 }
 
-check() {
-	cd ${pkgname}
-  # make test-lua
-  # make test-lua-continuations
-  # make test-luajit
-  # make test-nodejs
-  # make test-nodejs-cps
-}
+# check is toooo long
+# check() {
+# 	cd ${pkgname}
+#   make test-lua
+#   make test-lua-continuations
+#   make test-luajit
+#   make test-nodejs
+#   make test-nodejs-cps
+# }
 
 package() {
   cd ${pkgname}

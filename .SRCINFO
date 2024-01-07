@@ -1,6 +1,6 @@
 pkgbase = lunarml-git
 	pkgdesc = A Standard ML compiler that produces Lua/JavaScript
-	pkgver = 2023.09.24.r891.f8d511e
+	pkgver = v0.1.0.r0.g031a459
 	pkgrel = 1
 	url = https://github.com/minoki/LunarML.git
 	arch = x86_64
