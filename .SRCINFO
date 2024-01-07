@@ -1,7 +1,7 @@
 pkgbase = r-jaspprocess
 	pkgdesc = Process Module required by JASP
 	pkgver = 0.18.2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/jasp-stats/jaspProcess
 	arch = any
 	groups = r-jasp
@@ -11,7 +11,6 @@ pkgbase = r-jaspprocess
 	depends = r-dagitty
 	depends = r-ggplot2
 	depends = r-ggraph
-	depends = r-grid
 	depends = r-jaspbase
 	depends = r-jaspgraphs
 	source = jaspProcess_0.18.2.tar.gz::https://github.com/jasp-stats/jaspProcess/archive/refs/tags/v0.18.2.tar.gz

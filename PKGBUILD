@@ -3,7 +3,7 @@ _pkgname=jaspProcess
 _pkgver=0.18.2
 pkgname=r-${_pkgname,,}
 pkgver=0.18.2
-pkgrel=1
+pkgrel=4
 pkgdesc="Process Module required by JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -13,7 +13,6 @@ depends=(
   r-dagitty
   r-ggplot2
   r-ggraph
-  r-grid
   r-jaspbase
   r-jaspgraphs
 )
