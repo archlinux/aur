@@ -1,7 +1,7 @@
 pkgbase = zuu
 	pkgdesc = A git hook test runner for rust programer
 	pkgver = 5.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/taishingi/zuu
 	arch = any
 	license = GPL3

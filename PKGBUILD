@@ -2,7 +2,7 @@
 
 pkgname=zuu
 pkgver=5.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A git hook test runner for rust programer" 
 provides=("zuu")
 arch=('any')
@@ -16,7 +16,7 @@ build() {
     cd $pkgname-$pkgver
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --release --all-features
 }
 
 package() {
