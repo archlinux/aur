@@ -1,13 +1,13 @@
 # Maintainer: Fallstar <fallstar at daze dot pw>
 pkgname=reaction-git
-pkgver=r124.9ce589b
+pkgver=r128.e1ff702
 pkgrel=1
 pkgdesc="A daemon that scans program outputs for repeated patterns, and takes action. Alternative to fail2ban"
 arch=('any')
 url="https://framagit.org/ppom/reaction"
 license=('AGPL')
 makedepends=('git' 'go' 'gcc')
-provides=("${pkgname}")
+provides=('reaction' 'ip46tables')
 source=("${pkgname}::git+https://framagit.org/ppom/reaction.git")
 sha256sums=('SKIP')
 
