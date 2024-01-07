@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r106.4edc841
+pkgver=r108.79c472c
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -26,6 +26,7 @@ depends=(
   'systemd-libs'
   'wayland'
   'xdg-desktop-portal'
+  'xdg-utils'
 )
 makedepends=(
   'cargo'
@@ -43,6 +44,7 @@ _submodules=(
   cosmic-bg
   cosmic-comp
   cosmic-edit
+  cosmic-files
   cosmic-greeter
   cosmic-launcher
   cosmic-notifications
@@ -69,6 +71,7 @@ source=(
   'git+https://github.com/pop-os/cosmic-bg.git'
   'git+https://github.com/pop-os/cosmic-comp.git'
   'git+https://github.com/pop-os/cosmic-edit.git'
+  'git+https://github.com/pop-os/cosmic-files.git'
   'git+https://github.com/pop-os/cosmic-greeter.git'
   'git+https://github.com/pop-os/cosmic-icons.git'
   'git+https://github.com/pop-os/cosmic-launcher.git'
@@ -103,6 +106,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -111,7 +115,7 @@ pkgver() {
 }
 
 prepare() {
-  cd cosmic-epoch
+  cd "$srcdir/cosmic-epoch"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
@@ -119,10 +123,7 @@ prepare() {
     git submodule init "${submodule#*::}"
     git config submodule."${submodule#*::}".url "$srcdir/${submodule%::*}"
     git config submodule.cosmic-icons.url "$srcdir/cosmic-icons"
-    git -c protocol.file.allow=always submodule update "${submodule#*::}"
-  done
-
-  for repo in "${__submodules[@]}"; do
+    git -c protocol.file.allow=always submodule update
     pushd "${submodule#*::}"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
     popd
@@ -166,6 +167,7 @@ check() {
 #    cosmic-applibrary
 #    cosmic-bg
 #    cosmic-edit
+#    cosmic-files
 #    cosmic-greeter
 #    cosmic-launcher
 #    cosmic-notifications
