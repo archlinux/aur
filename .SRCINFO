@@ -1,0 +1,16 @@
+pkgbase = chicken-chicken-doc
+	pkgdesc = Explore Chicken Scheme documentation locally
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/chicken-doc
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-matchable
+	depends = chicken-fmt
+	depends = chicken-sxml-transforms
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+	depends = chicken-srfi-69
+
+pkgname = chicken-chicken-doc
