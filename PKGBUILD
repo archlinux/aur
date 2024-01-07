@@ -3,7 +3,7 @@
 _pkgname=tuxedo-drivers
 pkgname=tuxedo-drivers-dkms
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
 url="https://github.com/tuxedocomputers/tuxedo-drivers"
 license=("GPL3")
@@ -24,7 +24,7 @@ provides=('tuxedo-keyboard'
           'ite_8291_lb'
           'ite_8297'
           'ite_829x')
-replaces=('tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
+conflicts=('tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 #backup=(etc/modprobe.d/tuxedo_keyboard.conf)
 source=($pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v${pkgver}.tar.gz tuxedo_io.conf dkms.conf)
 sha256sums=('fc9c5cb460db5a4b55b7fc0333654d7e3865a513ab178635e17c84fcce83a921'
