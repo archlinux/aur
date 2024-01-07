@@ -2,7 +2,7 @@
 
 pkgname=besttrace
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="IPIP.net 开发的加强版 traceroute，附带链路可视化"
 arch=('x86_64' 'i686')
 url="https://www.ipip.net/product/client.html#besttrace"
@@ -16,7 +16,7 @@ else
 fi
 
 source=("besttrace-$pkgver.zip::https://cdn.ipip.net/17mon/besttrace4linux.zip")
-md5sums=('533af89a653266c5473ae14651aa236d')
+md5sums=('22081037203f657f3686111c9881588b')
 
 package(){
     mkdir -p "$pkgdir"/usr/bin/
