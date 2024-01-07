@@ -3,7 +3,7 @@
 _name=radio-active
 pkgname=radioactive
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Play and record any radio stations around the globe right from your terminal."
 arch=('any')
 url="https://github.com/deep5050/radio-active"
@@ -12,7 +12,6 @@ depends=('ffmpeg' 'python-colorlog' 'python-pick' 'python-psutil' 'python-pyradi
 #makedepends=('python-setuptools')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('mpv: mediaplayer to use' 'vlc: mediaplayer to use')
-conflicts=("radio-active")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/deep5050/radio-active/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('816968f98b9ce5120838736703009f8b')
 
