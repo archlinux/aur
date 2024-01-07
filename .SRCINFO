@@ -18,12 +18,14 @@ pkgname = sing-geosite-common-git
 pkgname = sing-geosite-rule-set-git
 	pkgdesc = sing-geosite (rule sets)
 	depends = sing-geosite-common-git
+	provides = sing-geosite
 	provides = sing-geosite-rule-set
 	conflicts = sing-geosite-rule-set
 
 pkgname = sing-geosite-db-git
 	pkgdesc = sing-geosite (database)
 	depends = sing-geosite-common-git
+	provides = sing-geosite
 	provides = sing-geosite-db
 	conflicts = sing-geosite-db
 	replaces = sing-geosite-git
