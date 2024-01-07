@@ -1,0 +1,16 @@
+pkgbase = rust-parallel
+	pkgdesc = Using ChatGPT/GPT-3.5/GPT-4 in the terminal
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/aaronriekenberg/rust-parallel
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	conflicts = rust-parallel-bin
+	conflicts = rust-parallel-git
+	source = rust-parallel-1.13.0.tar.gz::https://github.com/aaronriekenberg/rust-parallel/archive/v1.13.0.tar.gz
+	sha256sums = 6d3ff3db8f895505774a0de0020e0809ffd30ab45fcb64d60dc83523fcace827
+
+pkgname = rust-parallel
