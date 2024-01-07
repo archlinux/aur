@@ -1,5 +1,5 @@
 diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
-index 30cc6fb12..fb27f5741 100644
+index 8d5742836..261803c32 100644
 --- a/clutter/clutter/clutter-frame-clock.c
 +++ b/clutter/clutter/clutter-frame-clock.c
 @@ -37,6 +37,8 @@ static guint signals[N_SIGNALS];
@@ -187,7 +187,7 @@ index 30cc6fb12..fb27f5741 100644
  }
  
  static void
-@@ -794,6 +880,7 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
+@@ -792,6 +878,7 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
        g_warn_if_reached ();
        break;
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
@@ -195,7 +195,7 @@ index 30cc6fb12..fb27f5741 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        break;
      case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
-@@ -918,6 +1005,10 @@ clutter_frame_clock_new (float                            refresh_rate,
+@@ -916,6 +1003,10 @@ clutter_frame_clock_new (float                            refresh_rate,
    init_frame_clock_source (frame_clock);
  
    clutter_frame_clock_set_refresh_rate (frame_clock, refresh_rate);
@@ -206,7 +206,7 @@ index 30cc6fb12..fb27f5741 100644
    frame_clock->vblank_duration_us = vblank_duration_us;
  
    return frame_clock;
-@@ -951,6 +1042,7 @@ static void
+@@ -949,6 +1040,7 @@ static void
  clutter_frame_clock_init (ClutterFrameClock *frame_clock)
  {
    frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_INIT;
@@ -277,7 +277,7 @@ index af78ec051..896a3ce11 100644
  	@properties may effect the global monitor configuration state. Possible
  	properties are:
 diff --git a/data/org.gnome.mutter.gschema.xml.in b/data/org.gnome.mutter.gschema.xml.in
-index 5d56ae2d3..572dc1ae6 100644
+index 5d56ae2d3..ada60bc5b 100644
 --- a/data/org.gnome.mutter.gschema.xml.in
 +++ b/data/org.gnome.mutter.gschema.xml.in
 @@ -5,6 +5,7 @@
@@ -288,15 +288,6 @@ index 5d56ae2d3..572dc1ae6 100644
    </flags>
  
    <schema id="org.gnome.mutter" path="/org/gnome/mutter/"
-@@ -103,7 +104,7 @@
- 
-     <key name="experimental-features"
-         flags='org.gnome.mutter.MetaExperimentalFeature'>
--      <default>[]</default>
-+      <default>["variable-refresh-rate"]</default>
-       <summary>Enable experimental features</summary>
-       <description>
-         To enable experimental features, add the feature keyword to the list.
 @@ -133,6 +134,12 @@
                                          relevant X11 clients are gone.
                                          Requires a restart.
@@ -311,10 +302,10 @@ index 5d56ae2d3..572dc1ae6 100644
      </key>
  
 diff --git a/src/backends/meta-monitor-config-manager.c b/src/backends/meta-monitor-config-manager.c
-index 60f32ff4c..d17de760e 100644
+index bdafba478..b02e6127b 100644
 --- a/src/backends/meta-monitor-config-manager.c
 +++ b/src/backends/meta-monitor-config-manager.c
-@@ -285,6 +285,7 @@ assign_monitor_crtc (MetaMonitor         *monitor,
+@@ -287,6 +287,7 @@ assign_monitor_crtc (MetaMonitor         *monitor,
      .is_primary = assign_output_as_primary,
      .is_presentation = assign_output_as_presentation,
      .is_underscanning = data->monitor_config->enable_underscanning,
@@ -322,7 +313,7 @@ index 60f32ff4c..d17de760e 100644
      .has_max_bpc = data->monitor_config->has_max_bpc,
      .max_bpc = data->monitor_config->max_bpc
    };
-@@ -691,7 +692,8 @@ create_monitor_config (MetaMonitor     *monitor,
+@@ -693,7 +694,8 @@ create_monitor_config (MetaMonitor     *monitor,
    *monitor_config = (MetaMonitorConfig) {
      .monitor_spec = meta_monitor_spec_clone (monitor_spec),
      .mode_spec = g_memdup2 (mode_spec, sizeof (MetaMonitorModeSpec)),
@@ -332,7 +323,7 @@ index 60f32ff4c..d17de760e 100644
    };
  
    monitor_config->has_max_bpc =
-@@ -1045,6 +1047,7 @@ clone_monitor_config_list (GList *monitor_configs_in)
+@@ -1047,6 +1049,7 @@ clone_monitor_config_list (GList *monitor_configs_in)
          .mode_spec = g_memdup2 (monitor_config_in->mode_spec,
                                  sizeof (MetaMonitorModeSpec)),
          .enable_underscanning = monitor_config_in->enable_underscanning,
@@ -341,10 +332,10 @@ index 60f32ff4c..d17de760e 100644
          .max_bpc = monitor_config_in->max_bpc
        };
 diff --git a/src/backends/meta-monitor-config-manager.h b/src/backends/meta-monitor-config-manager.h
-index 29ac41e92..9b9dcd7ba 100644
+index c95add73b..92c789fb2 100644
 --- a/src/backends/meta-monitor-config-manager.h
 +++ b/src/backends/meta-monitor-config-manager.h
-@@ -31,6 +31,7 @@ typedef struct _MetaMonitorConfig
+@@ -33,6 +33,7 @@ typedef struct _MetaMonitorConfig
    MetaMonitorSpec *monitor_spec;
    MetaMonitorModeSpec *mode_spec;
    gboolean enable_underscanning;
@@ -353,10 +344,10 @@ index 29ac41e92..9b9dcd7ba 100644
    unsigned int max_bpc;
  } MetaMonitorConfig;
 diff --git a/src/backends/meta-monitor-config-store.c b/src/backends/meta-monitor-config-store.c
-index fe9406fd3..8d29e3329 100644
+index 8a191a533..f6a2a51cf 100644
 --- a/src/backends/meta-monitor-config-store.c
 +++ b/src/backends/meta-monitor-config-store.c
-@@ -165,6 +165,7 @@ typedef enum
+@@ -167,6 +167,7 @@ typedef enum
    STATE_MONITOR_MODE_RATE,
    STATE_MONITOR_MODE_FLAG,
    STATE_MONITOR_UNDERSCANNING,
@@ -364,7 +355,7 @@ index fe9406fd3..8d29e3329 100644
    STATE_MONITOR_MAXBPC,
    STATE_DISABLED,
    STATE_POLICY,
-@@ -450,6 +451,10 @@ handle_start_element (GMarkupParseContext  *context,
+@@ -452,6 +453,10 @@ handle_start_element (GMarkupParseContext  *context,
            {
              parser->state = STATE_MONITOR_UNDERSCANNING;
            }
@@ -375,7 +366,7 @@ index fe9406fd3..8d29e3329 100644
          else if (g_str_equal (element_name, "maxbpc"))
            {
              parser->state = STATE_MONITOR_MAXBPC;
-@@ -547,6 +552,13 @@ handle_start_element (GMarkupParseContext  *context,
+@@ -549,6 +554,13 @@ handle_start_element (GMarkupParseContext  *context,
          return;
        }
  
@@ -389,7 +380,7 @@ index fe9406fd3..8d29e3329 100644
      case STATE_MONITOR_MAXBPC:
        {
          g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_UNKNOWN_ELEMENT,
-@@ -828,6 +840,14 @@ handle_end_element (GMarkupParseContext  *context,
+@@ -830,6 +842,14 @@ handle_end_element (GMarkupParseContext  *context,
          return;
        }
  
@@ -404,7 +395,7 @@ index fe9406fd3..8d29e3329 100644
      case STATE_MONITOR_MAXBPC:
        {
          g_assert (g_str_equal (element_name, "maxbpc"));
-@@ -1327,6 +1347,18 @@ handle_text (GMarkupParseContext *context,
+@@ -1329,6 +1349,18 @@ handle_text (GMarkupParseContext *context,
          return;
        }
  
@@ -423,7 +414,7 @@ index fe9406fd3..8d29e3329 100644
      case STATE_MONITOR_MAXBPC:
        {
          int signed_max_bpc;
-@@ -1526,6 +1558,9 @@ append_monitors (GString *buffer,
+@@ -1528,6 +1560,9 @@ append_monitors (GString *buffer,
        if (monitor_config->enable_underscanning)
          g_string_append (buffer, "        <underscanning>yes</underscanning>\n");
  
@@ -434,7 +425,7 @@ index fe9406fd3..8d29e3329 100644
          {
            g_string_append_printf (buffer, "        <maxbpc>%u</maxbpc>\n",
 diff --git a/src/backends/meta-monitor-manager-private.h b/src/backends/meta-monitor-manager-private.h
-index 242fc2353..c1b47e8dc 100644
+index 62c7f19eb..2fdfffa52 100644
 --- a/src/backends/meta-monitor-manager-private.h
 +++ b/src/backends/meta-monitor-manager-private.h
 @@ -101,6 +101,7 @@ struct _MetaOutputAssignment
@@ -446,10 +437,10 @@ index 242fc2353..c1b47e8dc 100644
    unsigned int max_bpc;
  };
 diff --git a/src/backends/meta-monitor-manager.c b/src/backends/meta-monitor-manager.c
-index 3b836f327..000d6bdd6 100644
+index 103770abf..aa4f890f7 100644
 --- a/src/backends/meta-monitor-manager.c
 +++ b/src/backends/meta-monitor-manager.c
-@@ -2136,6 +2136,15 @@ meta_monitor_manager_handle_get_current_state (MetaDBusDisplayConfig *skeleton,
+@@ -2101,6 +2101,15 @@ meta_monitor_manager_handle_get_current_state (MetaDBusDisplayConfig *skeleton,
                                   g_variant_new_boolean (is_underscanning));
          }
  
@@ -465,7 +456,7 @@ index 3b836f327..000d6bdd6 100644
        is_builtin = meta_monitor_is_laptop_panel (monitor);
        g_variant_builder_add (&monitor_properties_builder, "{sv}",
                               "is-builtin",
-@@ -2455,6 +2464,8 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
+@@ -2420,6 +2429,8 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
    g_autoptr (GVariant) properties_variant = NULL;
    gboolean enable_underscanning = FALSE;
    gboolean set_underscanning = FALSE;
@@ -474,7 +465,7 @@ index 3b836f327..000d6bdd6 100644
  
    g_variant_get (monitor_config_variant, "(ss@a{sv})",
                   &connector,
-@@ -2490,6 +2501,19 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
+@@ -2455,6 +2466,19 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
          }
      }
  
@@ -494,7 +485,7 @@ index 3b836f327..000d6bdd6 100644
    monitor_spec = meta_monitor_spec_clone (meta_monitor_get_spec (monitor));
  
    monitor_mode_spec = g_new0 (MetaMonitorModeSpec, 1);
-@@ -2499,7 +2523,8 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
+@@ -2464,7 +2488,8 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
    *monitor_config = (MetaMonitorConfig) {
      .monitor_spec = monitor_spec,
      .mode_spec = monitor_mode_spec,
@@ -505,10 +496,10 @@ index 3b836f327..000d6bdd6 100644
  
    return monitor_config;
 diff --git a/src/backends/meta-monitor.c b/src/backends/meta-monitor.c
-index 16eddf686..5818343a8 100644
+index 084048406..97e9c5cfa 100644
 --- a/src/backends/meta-monitor.c
 +++ b/src/backends/meta-monitor.c
-@@ -370,6 +370,25 @@ meta_monitor_is_underscanning (MetaMonitor *monitor)
+@@ -372,6 +372,25 @@ meta_monitor_is_underscanning (MetaMonitor *monitor)
    return meta_output_is_underscanning (output);
  }
  
@@ -535,10 +526,10 @@ index 16eddf686..5818343a8 100644
  meta_monitor_get_max_bpc (MetaMonitor  *monitor,
                            unsigned int *max_bpc)
 diff --git a/src/backends/meta-monitor.h b/src/backends/meta-monitor.h
-index d8e9fd301..49bd58254 100644
+index b780fbf28..1577edc86 100644
 --- a/src/backends/meta-monitor.h
 +++ b/src/backends/meta-monitor.h
-@@ -118,6 +118,10 @@ gboolean meta_monitor_supports_color_transform (MetaMonitor *monitor);
+@@ -120,6 +120,10 @@ gboolean meta_monitor_supports_color_transform (MetaMonitor *monitor);
  
  gboolean meta_monitor_is_underscanning (MetaMonitor *monitor);
  
@@ -550,10 +541,10 @@ index d8e9fd301..49bd58254 100644
                                     unsigned int *max_bpc);
  
 diff --git a/src/backends/meta-output.c b/src/backends/meta-output.c
-index f40fc6ec1..9b9a17811 100644
+index 1889165c4..e76a1c714 100644
 --- a/src/backends/meta-output.c
 +++ b/src/backends/meta-output.c
-@@ -64,6 +64,8 @@ typedef struct _MetaOutputPrivate
+@@ -66,6 +66,8 @@ typedef struct _MetaOutputPrivate
  
    gboolean is_underscanning;
  
@@ -562,7 +553,7 @@ index f40fc6ec1..9b9a17811 100644
    gboolean has_max_bpc;
    unsigned int max_bpc;
  
-@@ -197,6 +199,22 @@ meta_output_is_underscanning (MetaOutput *output)
+@@ -199,6 +201,22 @@ meta_output_is_underscanning (MetaOutput *output)
    return priv->is_underscanning;
  }
  
@@ -585,7 +576,7 @@ index f40fc6ec1..9b9a17811 100644
  gboolean
  meta_output_get_max_bpc (MetaOutput   *output,
                           unsigned int *max_bpc)
-@@ -268,6 +286,8 @@ meta_output_assign_crtc (MetaOutput                 *output,
+@@ -270,6 +288,8 @@ meta_output_assign_crtc (MetaOutput                 *output,
    priv->is_presentation = output_assignment->is_presentation;
    priv->is_underscanning = output_assignment->is_underscanning;
  
@@ -595,10 +586,10 @@ index f40fc6ec1..9b9a17811 100644
    if (priv->has_max_bpc)
      priv->max_bpc = output_assignment->max_bpc;
 diff --git a/src/backends/meta-output.h b/src/backends/meta-output.h
-index 03a4cc385..5161fc74d 100644
+index 9681e3f4d..ef3eb6b45 100644
 --- a/src/backends/meta-output.h
 +++ b/src/backends/meta-output.h
-@@ -144,6 +144,8 @@ typedef struct _MetaOutputInfo
+@@ -146,6 +146,8 @@ typedef struct _MetaOutputInfo
    gboolean supports_underscanning;
    gboolean supports_color_transform;
  
@@ -607,7 +598,7 @@ index 03a4cc385..5161fc74d 100644
    unsigned int max_bpc_min;
    unsigned int max_bpc_max;
  
-@@ -228,6 +230,11 @@ gboolean meta_output_is_presentation (MetaOutput *output);
+@@ -230,6 +232,11 @@ gboolean meta_output_is_presentation (MetaOutput *output);
  META_EXPORT_TEST
  gboolean meta_output_is_underscanning (MetaOutput *output);
  
@@ -620,7 +611,7 @@ index 03a4cc385..5161fc74d 100644
  gboolean meta_output_get_max_bpc (MetaOutput   *output,
                                    unsigned int *max_bpc);
 diff --git a/src/backends/meta-renderer-view.c b/src/backends/meta-renderer-view.c
-index bceb4c765..c05c23763 100644
+index 7ffe9e736..b76d9c7b3 100644
 --- a/src/backends/meta-renderer-view.c
 +++ b/src/backends/meta-renderer-view.c
 @@ -33,6 +33,7 @@
@@ -709,10 +700,10 @@ index 005828068..72ecab21b 100644
 +
 +MetaOutput *meta_renderer_view_get_output (MetaRendererView *view);
 diff --git a/src/backends/meta-settings-private.h b/src/backends/meta-settings-private.h
-index c3768c8ac..b317843b9 100644
+index 90ea6f5aa..f95cfca40 100644
 --- a/src/backends/meta-settings-private.h
 +++ b/src/backends/meta-settings-private.h
-@@ -29,9 +29,10 @@ typedef enum _MetaExperimentalFeature
+@@ -31,9 +31,10 @@ typedef enum _MetaExperimentalFeature
  {
    META_EXPERIMENTAL_FEATURE_NONE = 0,
    META_EXPERIMENTAL_FEATURE_SCALE_MONITOR_FRAMEBUFFER = (1 << 0),
@@ -726,10 +717,10 @@ index c3768c8ac..b317843b9 100644
  
  typedef enum _MetaXwaylandExtension
 diff --git a/src/backends/meta-settings.c b/src/backends/meta-settings.c
-index 1e107b0a7..96541a5bb 100644
+index e3ebfe66b..ad247f678 100644
 --- a/src/backends/meta-settings.c
 +++ b/src/backends/meta-settings.c
-@@ -296,6 +296,8 @@ experimental_features_handler (GVariant *features_variant,
+@@ -298,6 +298,8 @@ experimental_features_handler (GVariant *features_variant,
          feature = META_EXPERIMENTAL_FEATURE_RT_SCHEDULER;
        else if (g_str_equal (feature_str, "autoclose-xwayland"))
          feature = META_EXPERIMENTAL_FEATURE_AUTOCLOSE_XWAYLAND;
@@ -739,10 +730,10 @@ index 1e107b0a7..96541a5bb 100644
        if (feature)
          g_message ("Enabling experimental feature '%s'", feature_str);
 diff --git a/src/backends/native/meta-backend-native.c b/src/backends/native/meta-backend-native.c
-index f01890460..251548984 100644
+index 1296e9512..116c5cd11 100644
 --- a/src/backends/native/meta-backend-native.c
 +++ b/src/backends/native/meta-backend-native.c
-@@ -592,6 +592,9 @@ add_drm_device (MetaBackendNative  *backend_native,
+@@ -593,6 +593,9 @@ add_drm_device (MetaBackendNative  *backend_native,
    if (meta_is_udev_device_disable_modifiers (device))
      flags |= META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS;
  
@@ -753,10 +744,10 @@ index f01890460..251548984 100644
      flags |= META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY;
  
 diff --git a/src/backends/native/meta-gpu-kms.c b/src/backends/native/meta-gpu-kms.c
-index 7efd4ef9e..7e88a5e91 100644
+index 7d46955a3..f3f164794 100644
 --- a/src/backends/native/meta-gpu-kms.c
 +++ b/src/backends/native/meta-gpu-kms.c
-@@ -132,6 +132,23 @@ meta_gpu_kms_is_platform_device (MetaGpuKms *gpu_kms)
+@@ -134,6 +134,23 @@ meta_gpu_kms_is_platform_device (MetaGpuKms *gpu_kms)
    return !!(flags & META_KMS_DEVICE_FLAG_PLATFORM_DEVICE);
  }
  
@@ -781,10 +772,10 @@ index 7efd4ef9e..7e88a5e91 100644
  compare_outputs (gconstpointer one,
                   gconstpointer two)
 diff --git a/src/backends/native/meta-gpu-kms.h b/src/backends/native/meta-gpu-kms.h
-index 43ae0a7c4..b3705819a 100644
+index b55c8244c..af24ff950 100644
 --- a/src/backends/native/meta-gpu-kms.h
 +++ b/src/backends/native/meta-gpu-kms.h
-@@ -44,6 +44,7 @@ gboolean meta_gpu_kms_is_crtc_active (MetaGpuKms *gpu_kms,
+@@ -46,6 +46,7 @@ gboolean meta_gpu_kms_is_crtc_active (MetaGpuKms *gpu_kms,
  
  gboolean meta_gpu_kms_is_boot_vga (MetaGpuKms *gpu_kms);
  gboolean meta_gpu_kms_is_platform_device (MetaGpuKms *gpu_kms);
@@ -793,10 +784,10 @@ index 43ae0a7c4..b3705819a 100644
  MetaKmsDevice * meta_gpu_kms_get_kms_device (MetaGpuKms *gpu_kms);
  
 diff --git a/src/backends/native/meta-kms-connector-private.h b/src/backends/native/meta-kms-connector-private.h
-index 1f8446f5f..d689ac925 100644
+index 2db2b4c5f..09911ea90 100644
 --- a/src/backends/native/meta-kms-connector-private.h
 +++ b/src/backends/native/meta-kms-connector-private.h
-@@ -39,6 +39,7 @@ typedef enum _MetaKmsConnectorProp
+@@ -41,6 +41,7 @@ typedef enum _MetaKmsConnectorProp
    META_KMS_CONNECTOR_PROP_MAX_BPC,
    META_KMS_CONNECTOR_PROP_COLORSPACE,
    META_KMS_CONNECTOR_PROP_HDR_OUTPUT_METADATA,
@@ -805,10 +796,10 @@ index 1f8446f5f..d689ac925 100644
  } MetaKmsConnectorProp;
  
 diff --git a/src/backends/native/meta-kms-connector.c b/src/backends/native/meta-kms-connector.c
-index ed56d344d..8f8a328ec 100644
+index 0f96a5c26..385a45ca9 100644
 --- a/src/backends/native/meta-kms-connector.c
 +++ b/src/backends/native/meta-kms-connector.c
-@@ -408,6 +408,10 @@ state_set_properties (MetaKmsConnectorState *state,
+@@ -410,6 +410,10 @@ state_set_properties (MetaKmsConnectorState *state,
        state->colorspace.supported =
          supported_drm_color_spaces_to_output_color_spaces (prop->supported_variants);
      }
@@ -819,7 +810,7 @@ index ed56d344d..8f8a328ec 100644
  }
  
  static CoglSubpixelOrder
-@@ -840,6 +844,7 @@ meta_kms_connector_state_new (void)
+@@ -842,6 +846,7 @@ meta_kms_connector_state_new (void)
    state = g_new0 (MetaKmsConnectorState, 1);
    state->suggested_x = -1;
    state->suggested_y = -1;
@@ -827,7 +818,7 @@ index ed56d344d..8f8a328ec 100644
  
    return state;
  }
-@@ -1013,6 +1018,9 @@ meta_kms_connector_state_changes (MetaKmsConnectorState *state,
+@@ -1015,6 +1020,9 @@ meta_kms_connector_state_changes (MetaKmsConnectorState *state,
        !hdr_metadata_equal (&state->hdr.value, &new_state->hdr.value))
      return META_KMS_RESOURCE_CHANGE_FULL;
  
@@ -837,7 +828,7 @@ index ed56d344d..8f8a328ec 100644
    if (state->privacy_screen_state != new_state->privacy_screen_state)
      return META_KMS_RESOURCE_CHANGE_PRIVACY_SCREEN;
  
-@@ -1357,6 +1365,11 @@ init_properties (MetaKmsConnector  *connector,
+@@ -1359,6 +1367,11 @@ init_properties (MetaKmsConnector  *connector,
            .name = "HDR_OUTPUT_METADATA",
            .type = DRM_MODE_PROP_BLOB,
          },
@@ -850,10 +841,10 @@ index ed56d344d..8f8a328ec 100644
      .dpms_enum = {
        [META_KMS_CONNECTOR_DPMS_ON] =
 diff --git a/src/backends/native/meta-kms-connector.h b/src/backends/native/meta-kms-connector.h
-index b988672c3..216efc290 100644
+index db77db943..a86001bb2 100644
 --- a/src/backends/native/meta-kms-connector.h
 +++ b/src/backends/native/meta-kms-connector.h
-@@ -69,6 +69,8 @@ typedef struct _MetaKmsConnectorState
+@@ -71,6 +71,8 @@ typedef struct _MetaKmsConnectorState
      gboolean supported;
      gboolean unknown;
    } hdr;
@@ -863,10 +854,10 @@ index b988672c3..216efc290 100644
  
  META_EXPORT_TEST
 diff --git a/src/backends/native/meta-kms-crtc-private.h b/src/backends/native/meta-kms-crtc-private.h
-index 27cb0c08d..e6ed960a8 100644
+index 7d366f5d0..f40e7bbcc 100644
 --- a/src/backends/native/meta-kms-crtc-private.h
 +++ b/src/backends/native/meta-kms-crtc-private.h
-@@ -28,9 +28,17 @@ typedef enum _MetaKmsCrtcProp
+@@ -30,9 +30,17 @@ typedef enum _MetaKmsCrtcProp
    META_KMS_CRTC_PROP_ACTIVE,
    META_KMS_CRTC_PROP_GAMMA_LUT,
    META_KMS_CRTC_PROP_GAMMA_LUT_SIZE,
@@ -885,10 +876,10 @@ index 27cb0c08d..e6ed960a8 100644
                                   drmModeCrtc        *drm_crtc,
                                   int                 idx,
 diff --git a/src/backends/native/meta-kms-crtc.c b/src/backends/native/meta-kms-crtc.c
-index 707da9dc1..3eb376575 100644
+index ad796e3c9..838a4e446 100644
 --- a/src/backends/native/meta-kms-crtc.c
 +++ b/src/backends/native/meta-kms-crtc.c
-@@ -427,6 +427,11 @@ init_properties (MetaKmsCrtc       *crtc,
+@@ -429,6 +429,11 @@ init_properties (MetaKmsCrtc       *crtc,
            .name = "GAMMA_LUT_SIZE",
            .type = DRM_MODE_PROP_RANGE,
          },
@@ -901,10 +892,10 @@ index 707da9dc1..3eb376575 100644
    };
  }
 diff --git a/src/backends/native/meta-kms-impl-device-atomic.c b/src/backends/native/meta-kms-impl-device-atomic.c
-index d3fd77268..49b6fd31c 100644
+index 5e58bb549..23d2e8492 100644
 --- a/src/backends/native/meta-kms-impl-device-atomic.c
 +++ b/src/backends/native/meta-kms-impl-device-atomic.c
-@@ -333,6 +333,39 @@ add_crtc_property (MetaKmsImplDevice  *impl_device,
+@@ -335,6 +335,39 @@ add_crtc_property (MetaKmsImplDevice  *impl_device,
    return TRUE;
  }
  
@@ -944,7 +935,7 @@ index d3fd77268..49b6fd31c 100644
  static gboolean
  process_mode_set (MetaKmsImplDevice  *impl_device,
                    MetaKmsUpdate      *update,
-@@ -986,6 +1019,16 @@ meta_kms_impl_device_atomic_process_update (MetaKmsImplDevice *impl_device,
+@@ -988,6 +1021,16 @@ meta_kms_impl_device_atomic_process_update (MetaKmsImplDevice *impl_device,
                          &error))
      goto err;
  
@@ -962,10 +953,10 @@ index d3fd77268..49b6fd31c 100644
                          update,
                          req,
 diff --git a/src/backends/native/meta-kms-impl-device-simple.c b/src/backends/native/meta-kms-impl-device-simple.c
-index 2d68ba11f..9a583dc62 100644
+index 291e9e7bf..0d4202ec6 100644
 --- a/src/backends/native/meta-kms-impl-device-simple.c
 +++ b/src/backends/native/meta-kms-impl-device-simple.c
-@@ -179,6 +179,47 @@ set_connector_property (MetaKmsImplDevice     *impl_device,
+@@ -181,6 +181,47 @@ set_connector_property (MetaKmsImplDevice     *impl_device,
    return TRUE;
  }
  
@@ -1013,7 +1004,7 @@ index 2d68ba11f..9a583dc62 100644
  static gboolean
  process_connector_update (MetaKmsImplDevice  *impl_device,
                            MetaKmsUpdate      *update,
-@@ -268,6 +309,36 @@ process_connector_update (MetaKmsImplDevice  *impl_device,
+@@ -270,6 +311,36 @@ process_connector_update (MetaKmsImplDevice  *impl_device,
    return TRUE;
  }
  
@@ -1050,7 +1041,7 @@ index 2d68ba11f..9a583dc62 100644
  static CachedModeSet *
  cached_mode_set_new (GList                 *connectors,
                       const drmModeModeInfo *drm_mode,
-@@ -1522,6 +1593,13 @@ meta_kms_impl_device_simple_process_update (MetaKmsImplDevice *impl_device,
+@@ -1524,6 +1595,13 @@ meta_kms_impl_device_simple_process_update (MetaKmsImplDevice *impl_device,
                          &error))
      goto err;
  
@@ -1065,10 +1056,10 @@ index 2d68ba11f..9a583dc62 100644
      goto err;
  
 diff --git a/src/backends/native/meta-kms-types.h b/src/backends/native/meta-kms-types.h
-index c38d1ab3c..b5a21a6c7 100644
+index 90a80a13e..27bf59676 100644
 --- a/src/backends/native/meta-kms-types.h
 +++ b/src/backends/native/meta-kms-types.h
-@@ -64,6 +64,7 @@ typedef enum _MetaKmsDeviceFlag
+@@ -66,6 +66,7 @@ typedef enum _MetaKmsDeviceFlag
    META_KMS_DEVICE_FLAG_HAS_ADDFB2 = 1 << 5,
    META_KMS_DEVICE_FLAG_FORCE_LEGACY = 1 << 6,
    META_KMS_DEVICE_FLAG_DISABLE_CLIENT_MODIFIERS = 1 << 7,
@@ -1077,10 +1068,10 @@ index c38d1ab3c..b5a21a6c7 100644
  
  typedef enum _MetaKmsResourceChanges
 diff --git a/src/backends/native/meta-kms-update-private.h b/src/backends/native/meta-kms-update-private.h
-index edddd3e4a..88883a62c 100644
+index ca9f32578..149814214 100644
 --- a/src/backends/native/meta-kms-update-private.h
 +++ b/src/backends/native/meta-kms-update-private.h
-@@ -111,6 +111,16 @@ typedef struct _MetaKmsConnectorUpdate
+@@ -113,6 +113,16 @@ typedef struct _MetaKmsConnectorUpdate
    } hdr;
  } MetaKmsConnectorUpdate;
  
@@ -1097,7 +1088,7 @@ index edddd3e4a..88883a62c 100644
  typedef struct _MetaKmsPageFlipListener
  {
    gatomicrefcount ref_count;
-@@ -177,6 +187,9 @@ GList * meta_kms_update_get_page_flip_listeners (MetaKmsUpdate *update);
+@@ -179,6 +189,9 @@ GList * meta_kms_update_get_page_flip_listeners (MetaKmsUpdate *update);
  META_EXPORT_TEST
  GList * meta_kms_update_get_connector_updates (MetaKmsUpdate *update);
  
@@ -1108,10 +1099,10 @@ index edddd3e4a..88883a62c 100644
  GList * meta_kms_update_get_crtc_color_updates (MetaKmsUpdate *update);
  
 diff --git a/src/backends/native/meta-kms-update.c b/src/backends/native/meta-kms-update.c
-index 5189c5ab3..7db8aface 100644
+index 7658db0ca..8c37eddaf 100644
 --- a/src/backends/native/meta-kms-update.c
 +++ b/src/backends/native/meta-kms-update.c
-@@ -40,6 +40,7 @@ struct _MetaKmsUpdate
+@@ -42,6 +42,7 @@ struct _MetaKmsUpdate
    GList *mode_sets;
    GList *plane_assignments;
    GList *connector_updates;
@@ -1119,8 +1110,8 @@ index 5189c5ab3..7db8aface 100644
    GList *crtc_color_updates;
  
    MetaKmsCustomPageFlip *custom_page_flip;
-@@ -521,6 +522,46 @@ meta_kms_crtc_color_updates_free (MetaKmsCrtcColorUpdate *color_update)
-   g_free (color_update);
+@@ -529,6 +530,46 @@ meta_kms_crtc_color_updates_free (MetaKmsCrtcColorUpdate *color_update)
+     g_clear_pointer (&color_update->gamma.state, meta_gamma_lut_free);
  }
  
 +static MetaKmsCrtcUpdate *
@@ -1166,7 +1157,7 @@ index 5189c5ab3..7db8aface 100644
  void
  meta_kms_update_add_page_flip_listener (MetaKmsUpdate                       *update,
                                          MetaKmsCrtc                         *crtc,
-@@ -734,6 +775,12 @@ meta_kms_update_get_connector_updates (MetaKmsUpdate *update)
+@@ -742,6 +783,12 @@ meta_kms_update_get_connector_updates (MetaKmsUpdate *update)
    return update->connector_updates;
  }
  
@@ -1179,7 +1170,7 @@ index 5189c5ab3..7db8aface 100644
  GList *
  meta_kms_update_get_crtc_color_updates (MetaKmsUpdate *update)
  {
-@@ -1062,6 +1109,7 @@ meta_kms_update_free (MetaKmsUpdate *update)
+@@ -1070,6 +1117,7 @@ meta_kms_update_free (MetaKmsUpdate *update)
    g_list_free_full (update->page_flip_listeners,
                      (GDestroyNotify) meta_kms_page_flip_listener_unref);
    g_list_free_full (update->connector_updates, g_free);
@@ -1188,10 +1179,10 @@ index 5189c5ab3..7db8aface 100644
                      (GDestroyNotify) meta_kms_crtc_color_updates_free);
    g_clear_pointer (&update->custom_page_flip, meta_kms_custom_page_flip_free);
 diff --git a/src/backends/native/meta-kms-update.h b/src/backends/native/meta-kms-update.h
-index c4d120d92..524202857 100644
+index b5473d9ea..6e8f3da83 100644
 --- a/src/backends/native/meta-kms-update.h
 +++ b/src/backends/native/meta-kms-update.h
-@@ -152,6 +152,10 @@ void meta_kms_update_set_crtc_gamma (MetaKmsUpdate      *update,
+@@ -154,6 +154,10 @@ void meta_kms_update_set_crtc_gamma (MetaKmsUpdate      *update,
                                       MetaKmsCrtc        *crtc,
                                       const MetaGammaLut *gamma);
  
@@ -1203,10 +1194,10 @@ index c4d120d92..524202857 100644
                                                const int              *rectangles,
                                                int                     n_rectangles);
 diff --git a/src/backends/native/meta-output-kms.c b/src/backends/native/meta-output-kms.c
-index 7c64e4f06..018e688d0 100644
+index a74027218..b89fe4beb 100644
 --- a/src/backends/native/meta-output-kms.c
 +++ b/src/backends/native/meta-output-kms.c
-@@ -95,6 +95,26 @@ meta_output_kms_set_underscan (MetaOutputKms *output_kms,
+@@ -97,6 +97,26 @@ meta_output_kms_set_underscan (MetaOutputKms *output_kms,
      }
  }
  
@@ -1233,7 +1224,7 @@ index 7c64e4f06..018e688d0 100644
  void
  meta_output_kms_set_max_bpc (MetaOutputKms *output_kms,
                               MetaKmsUpdate *kms_update)
-@@ -488,6 +508,9 @@ meta_output_kms_new (MetaGpuKms        *gpu_kms,
+@@ -476,6 +496,9 @@ meta_output_kms_new (MetaGpuKms        *gpu_kms,
    output_info->supports_underscanning =
      meta_kms_connector_is_underscanning_supported (kms_connector);
  
@@ -1244,10 +1235,10 @@ index 7c64e4f06..018e688d0 100644
    if (max_bpc_range)
      {
 diff --git a/src/backends/native/meta-output-kms.h b/src/backends/native/meta-output-kms.h
-index 064ee2d72..bf942455d 100644
+index a27cf9b90..f8e8c3942 100644
 --- a/src/backends/native/meta-output-kms.h
 +++ b/src/backends/native/meta-output-kms.h
-@@ -37,6 +37,10 @@ void meta_output_kms_set_power_save_mode (MetaOutputKms *output_kms,
+@@ -39,6 +39,10 @@ void meta_output_kms_set_power_save_mode (MetaOutputKms *output_kms,
  void meta_output_kms_set_underscan (MetaOutputKms *output_kms,
                                      MetaKmsUpdate *kms_update);
  
@@ -1259,10 +1250,10 @@ index 064ee2d72..bf942455d 100644
                                    MetaKmsUpdate *kms_update);
  
 diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
-index 57cb20b7e..287b25272 100644
+index 6826fe925..d88b7cf0d 100644
 --- a/src/backends/native/meta-renderer-native.c
 +++ b/src/backends/native/meta-renderer-native.c
-@@ -1441,6 +1441,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+@@ -1440,6 +1440,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
                                "stage", meta_backend_get_stage (backend),
                                "layout", &view_layout,
                                "crtc", crtc,
@@ -1270,7 +1261,7 @@ index 57cb20b7e..287b25272 100644
                                "scale", scale,
                                "framebuffer", framebuffer,
                                "offscreen", offscreen,
-@@ -1567,8 +1568,11 @@ meta_renderer_native_before_redraw (MetaRendererNative *renderer_native,
+@@ -1566,8 +1567,11 @@ meta_renderer_native_before_redraw (MetaRendererNative *renderer_native,
    if (COGL_IS_ONSCREEN (framebuffer))
      {
        CoglOnscreen *onscreen = COGL_ONSCREEN (framebuffer);
@@ -1283,10 +1274,10 @@ index 57cb20b7e..287b25272 100644
  }
  
 diff --git a/src/backends/native/meta-renderer-view-native.c b/src/backends/native/meta-renderer-view-native.c
-index 81f40bda8..70b0684fd 100644
+index 52872ff3c..e69ee713e 100644
 --- a/src/backends/native/meta-renderer-view-native.c
 +++ b/src/backends/native/meta-renderer-view-native.c
-@@ -22,11 +22,28 @@
+@@ -24,11 +24,28 @@
  
  #include "backends/native/meta-renderer-view-native.h"
  
@@ -1315,7 +1306,7 @@ index 81f40bda8..70b0684fd 100644
  };
  
  G_DEFINE_TYPE (MetaRendererViewNative, meta_renderer_view_native,
-@@ -38,6 +55,104 @@ meta_renderer_view_native_new_frame (ClutterStageView *stage_view)
+@@ -40,6 +57,104 @@ meta_renderer_view_native_new_frame (ClutterStageView *stage_view)
    return (ClutterFrame *) meta_frame_native_new ();
  }
  
@@ -1420,7 +1411,7 @@ index 81f40bda8..70b0684fd 100644
  static void
  meta_renderer_view_native_class_init (MetaRendererViewNativeClass *klass)
  {
-@@ -49,4 +164,6 @@ meta_renderer_view_native_class_init (MetaRendererViewNativeClass *klass)
+@@ -51,4 +166,6 @@ meta_renderer_view_native_class_init (MetaRendererViewNativeClass *klass)
  static void
  meta_renderer_view_native_init (MetaRendererViewNative *view_native)
  {
@@ -1428,10 +1419,10 @@ index 81f40bda8..70b0684fd 100644
 +  view_native->frame_sync_mode = META_FRAME_SYNC_MODE_INIT;
  }
 diff --git a/src/backends/native/meta-renderer-view-native.h b/src/backends/native/meta-renderer-view-native.h
-index cf0e43722..4924f9cde 100644
+index 363ff1149..715b65f94 100644
 --- a/src/backends/native/meta-renderer-view-native.h
 +++ b/src/backends/native/meta-renderer-view-native.h
-@@ -27,3 +27,11 @@
+@@ -29,3 +29,11 @@
  #define META_TYPE_RENDERER_VIEW_NATIVE (meta_renderer_view_native_get_type ())
  G_DECLARE_FINAL_TYPE (MetaRendererViewNative, meta_renderer_view_native,
                        META, RENDERER_VIEW_NATIVE, MetaRendererView)
@@ -1444,10 +1435,10 @@ index cf0e43722..4924f9cde 100644
 +
 +gboolean meta_renderer_view_native_is_frame_sync_enabled (MetaRendererViewNative *view_native);
 diff --git a/src/backends/native/meta-udev.c b/src/backends/native/meta-udev.c
-index 73dd92c3e..097e8a283 100644
+index 0a9ed5fd1..fa854ce0c 100644
 --- a/src/backends/native/meta-udev.c
 +++ b/src/backends/native/meta-udev.c
-@@ -100,6 +100,13 @@ meta_is_udev_device_disable_modifiers (GUdevDevice *device)
+@@ -102,6 +102,13 @@ meta_is_udev_device_disable_modifiers (GUdevDevice *device)
                                     "mutter-device-disable-kms-modifiers");
  }
  
@@ -1462,10 +1453,10 @@ index 73dd92c3e..097e8a283 100644
  meta_is_udev_device_ignore (GUdevDevice *device)
  {
 diff --git a/src/backends/native/meta-udev.h b/src/backends/native/meta-udev.h
-index 7e19921b2..8cb5d0788 100644
+index 3283fda8e..7e556175d 100644
 --- a/src/backends/native/meta-udev.h
 +++ b/src/backends/native/meta-udev.h
-@@ -32,6 +32,8 @@ gboolean meta_is_udev_device_boot_vga (GUdevDevice *device);
+@@ -34,6 +34,8 @@ gboolean meta_is_udev_device_boot_vga (GUdevDevice *device);
  
  gboolean meta_is_udev_device_disable_modifiers (GUdevDevice *device);
  
@@ -1475,10 +1466,10 @@ index 7e19921b2..8cb5d0788 100644
  
  gboolean meta_is_udev_test_device (GUdevDevice *device);
 diff --git a/src/backends/x11/nested/meta-renderer-x11-nested.c b/src/backends/x11/nested/meta-renderer-x11-nested.c
-index d89ca1e8c..79579b096 100644
+index 8f3745d3d..a1fc93429 100644
 --- a/src/backends/x11/nested/meta-renderer-x11-nested.c
 +++ b/src/backends/x11/nested/meta-renderer-x11-nested.c
-@@ -138,6 +138,7 @@ meta_renderer_x11_nested_create_view (MetaRenderer       *renderer,
+@@ -223,6 +223,7 @@ meta_renderer_x11_nested_create_view (MetaRenderer       *renderer,
                         "stage", meta_backend_get_stage (backend),
                         "layout", &view_layout,
                         "crtc", crtc,
@@ -1487,10 +1478,10 @@ index d89ca1e8c..79579b096 100644
                         "framebuffer", COGL_FRAMEBUFFER (fake_onscreen),
                         "offscreen", COGL_FRAMEBUFFER (offscreen),
 diff --git a/src/compositor/meta-compositor-native.c b/src/compositor/meta-compositor-native.c
-index d313793ba..b7525513f 100644
+index e2e512494..2e79fce9a 100644
 --- a/src/compositor/meta-compositor-native.c
 +++ b/src/compositor/meta-compositor-native.c
-@@ -43,6 +43,9 @@ meta_compositor_native_before_paint (MetaCompositor     *compositor,
+@@ -45,6 +45,9 @@ meta_compositor_native_before_paint (MetaCompositor     *compositor,
                                                      compositor);
  #endif
  
@@ -1501,10 +1492,10 @@ index d313793ba..b7525513f 100644
    parent_class->before_paint (compositor, compositor_view);
  }
 diff --git a/src/compositor/meta-compositor-view-native.c b/src/compositor/meta-compositor-view-native.c
-index 33d8c0670..8699e6128 100644
+index e9f1ac20c..1e88ff790 100644
 --- a/src/compositor/meta-compositor-view-native.c
 +++ b/src/compositor/meta-compositor-view-native.c
-@@ -26,14 +26,20 @@
+@@ -28,14 +28,20 @@
  
  #include "backends/meta-crtc.h"
  #include "backends/native/meta-crtc-kms.h"
@@ -1525,7 +1516,7 @@ index 33d8c0670..8699e6128 100644
  struct _MetaCompositorViewNative
  {
    MetaCompositorView parent;
-@@ -41,11 +47,52 @@ struct _MetaCompositorViewNative
+@@ -43,11 +49,52 @@ struct _MetaCompositorViewNative
  #ifdef HAVE_WAYLAND
    MetaWaylandSurface *scanout_candidate;
  #endif /* HAVE_WAYLAND */
@@ -1578,7 +1569,7 @@ index 33d8c0670..8699e6128 100644
  #ifdef HAVE_WAYLAND
  static void
  update_scanout_candidate (MetaCompositorViewNative *view_native,
-@@ -269,6 +316,151 @@ meta_compositor_view_native_maybe_assign_scanout (MetaCompositorViewNative *view
+@@ -271,6 +318,151 @@ meta_compositor_view_native_maybe_assign_scanout (MetaCompositorViewNative *view
  }
  #endif /* HAVE_WAYLAND */
  
@@ -1730,7 +1721,7 @@ index 33d8c0670..8699e6128 100644
  MetaCompositorViewNative *
  meta_compositor_view_native_new (ClutterStageView *stage_view)
  {
-@@ -279,6 +471,25 @@ meta_compositor_view_native_new (ClutterStageView *stage_view)
+@@ -281,6 +473,25 @@ meta_compositor_view_native_new (ClutterStageView *stage_view)
                         NULL);
  }
  
@@ -1756,7 +1747,7 @@ index 33d8c0670..8699e6128 100644
  static void
  meta_compositor_view_native_finalize (GObject *object)
  {
-@@ -296,6 +507,7 @@ meta_compositor_view_native_class_init (MetaCompositorViewNativeClass *klass)
+@@ -298,6 +509,7 @@ meta_compositor_view_native_class_init (MetaCompositorViewNativeClass *klass)
  {
    GObjectClass *object_class = G_OBJECT_CLASS (klass);
  
@@ -1765,10 +1756,10 @@ index 33d8c0670..8699e6128 100644
  }
  
 diff --git a/src/compositor/meta-compositor-view-native.h b/src/compositor/meta-compositor-view-native.h
-index d93116267..52a2bef27 100644
+index 3cdac33d2..5ed6b8ccf 100644
 --- a/src/compositor/meta-compositor-view-native.h
 +++ b/src/compositor/meta-compositor-view-native.h
-@@ -36,3 +36,6 @@ MetaCompositorViewNative *meta_compositor_view_native_new (ClutterStageView *sta
+@@ -38,3 +38,6 @@ MetaCompositorViewNative *meta_compositor_view_native_new (ClutterStageView *sta
  void meta_compositor_view_native_maybe_assign_scanout (MetaCompositorViewNative *view_native,
                                                         MetaCompositor           *compositor);
  #endif /* HAVE_WAYLAND */
@@ -1776,10 +1767,10 @@ index d93116267..52a2bef27 100644
 +void meta_compositor_view_native_maybe_update_frame_sync_surface (MetaCompositorViewNative *view_native,
 +                                                                  MetaCompositor           *compositor);
 diff --git a/src/compositor/meta-surface-actor.c b/src/compositor/meta-surface-actor.c
-index 3dc3a5481..6414159b1 100644
+index 2a13a94b8..935a88b2a 100644
 --- a/src/compositor/meta-surface-actor.c
 +++ b/src/compositor/meta-surface-actor.c
-@@ -63,6 +63,7 @@ enum
+@@ -51,6 +51,7 @@ enum
  {
    REPAINT_SCHEDULED,
    SIZE_CHANGED,
@@ -1787,7 +1778,7 @@ index 3dc3a5481..6414159b1 100644
  
    LAST_SIGNAL,
  };
-@@ -296,6 +297,13 @@ meta_surface_actor_class_init (MetaSurfaceActorClass *klass)
+@@ -228,6 +229,13 @@ meta_surface_actor_class_init (MetaSurfaceActorClass *klass)
                                          0,
                                          NULL, NULL, NULL,
                                          G_TYPE_NONE, 0);
@@ -1801,7 +1792,7 @@ index 3dc3a5481..6414159b1 100644
  }
  
  gboolean
-@@ -543,6 +551,22 @@ meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
+@@ -457,6 +465,22 @@ meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
                                                        stage_view);
  }
  
@@ -1815,7 +1806,7 @@ index 3dc3a5481..6414159b1 100644
 +
 +  clutter_actor_get_transformed_extents (actor, &bounding_rect);
 +
-+  bound_rect = mtk_rectangle_to_graphene_rect (rect);
++  bounding_rect = mtk_rectangle_to_graphene_rect (rect);
 +
 +  return graphene_rect_contains_rect (&bounding_rect,
 +                                      &bound_rect);
@@ -1824,7 +1815,7 @@ index 3dc3a5481..6414159b1 100644
  void
  meta_surface_actor_set_input_region (MetaSurfaceActor *self,
                                       cairo_region_t   *region)
-@@ -624,6 +648,9 @@ meta_surface_actor_set_frozen (MetaSurfaceActor *self,
+@@ -538,6 +562,9 @@ meta_surface_actor_set_frozen (MetaSurfaceActor *self,
  
    priv->frozen = frozen;
  
@@ -1835,10 +1826,10 @@ index 3dc3a5481..6414159b1 100644
      {
        int i, n_rects = cairo_region_num_rectangles (priv->pending_damage);
 diff --git a/src/compositor/meta-surface-actor.h b/src/compositor/meta-surface-actor.h
-index 70eded69d..a6181e188 100644
+index ff9bedbfe..4e023239b 100644
 --- a/src/compositor/meta-surface-actor.h
 +++ b/src/compositor/meta-surface-actor.h
-@@ -42,6 +42,9 @@ gboolean meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
+@@ -39,6 +39,9 @@ gboolean meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
                                                         ClutterStageView *stage_view,
                                                         float            *unobscurred_fraction);
  
@@ -1849,10 +1840,10 @@ index 70eded69d..a6181e188 100644
                                            cairo_region_t   *region);
  void meta_surface_actor_set_opaque_region (MetaSurfaceActor *self,
 diff --git a/src/core/window-private.h b/src/core/window-private.h
-index 4df552abe..9e2b774d2 100644
+index 6c1244d52..2e785f78d 100644
 --- a/src/core/window-private.h
 +++ b/src/core/window-private.h
-@@ -702,6 +702,9 @@ void        meta_window_get_session_geometry (MetaWindow  *window,
+@@ -695,6 +695,9 @@ void        meta_window_get_session_geometry (MetaWindow  *window,
                                                int         *width,
                                                int         *height);
  
@@ -1863,10 +1854,10 @@ index 4df552abe..9e2b774d2 100644
  
  void        meta_window_update_appears_focused (MetaWindow *window);
 diff --git a/src/core/window.c b/src/core/window.c
-index f100a8bf3..63376b8a0 100644
+index aa886ffaf..603f573d3 100644
 --- a/src/core/window.c
 +++ b/src/core/window.c
-@@ -4321,6 +4321,14 @@ meta_window_get_session_geometry (MetaWindow  *window,
+@@ -4209,6 +4209,14 @@ meta_window_get_session_geometry (MetaWindow  *window,
      window->size_hints.height_inc;
  }
  
@@ -1882,7 +1873,7 @@ index f100a8bf3..63376b8a0 100644
   * meta_window_get_buffer_rect:
   * @window: a #MetaWindow
 diff --git a/src/tests/meta-monitor-test-utils.c b/src/tests/meta-monitor-test-utils.c
-index 1555a5f87..28f36c793 100644
+index 98ff445b4..e3f287593 100644
 --- a/src/tests/meta-monitor-test-utils.c
 +++ b/src/tests/meta-monitor-test-utils.c
 @@ -394,6 +394,10 @@ meta_check_monitor_configuration (MetaContext           *context,
@@ -1905,7 +1896,7 @@ index 1555a5f87..28f36c793 100644
              .max_bpc = setup->outputs[i].max_bpc,
            };
 diff --git a/src/tests/meta-monitor-test-utils.h b/src/tests/meta-monitor-test-utils.h
-index 6d2c00189..ce7dbd6b8 100644
+index 1039f99d5..e198c58d5 100644
 --- a/src/tests/meta-monitor-test-utils.h
 +++ b/src/tests/meta-monitor-test-utils.h
 @@ -105,6 +105,7 @@ typedef struct _MonitorTestCaseOutput
@@ -1954,7 +1945,7 @@ index 000000000..e7fe784dc
 +  </configuration>
 +</monitors>
 diff --git a/src/tests/monitor-store-unit-tests.c b/src/tests/monitor-store-unit-tests.c
-index d6ed7665c..0f19b1c7d 100644
+index 7633f247d..bb670f129 100644
 --- a/src/tests/monitor-store-unit-tests.c
 +++ b/src/tests/monitor-store-unit-tests.c
 @@ -48,6 +48,7 @@ typedef struct _MonitorStoreTestCaseMonitor
@@ -2037,7 +2028,7 @@ index d6ed7665c..0f19b1c7d 100644
                     meta_test_monitor_store_max_bpc);
    g_test_add_func ("/backends/monitor-store/scale",
 diff --git a/src/tests/monitor-unit-tests.c b/src/tests/monitor-unit-tests.c
-index a95767283..045adf983 100644
+index 99355f6fe..78f1b60f4 100644
 --- a/src/tests/monitor-unit-tests.c
 +++ b/src/tests/monitor-unit-tests.c
 @@ -3254,6 +3254,100 @@ meta_test_monitor_underscanning_config (void)
