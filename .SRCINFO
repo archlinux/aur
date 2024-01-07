@@ -1,6 +1,6 @@
 pkgbase = ryokucha
 	pkgdesc = A GTK4 library that includes customized widgets
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ryonakano/ryokucha
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ryokucha
 	makedepends = vala
 	depends = gtk4
 	depends = pango
-	source = ryokucha-0.1.0.tar.gz::https://github.com/ryonakano/ryokucha/archive/0.1.0.tar.gz
-	sha256sums = 89b9492b33498f46c4f4dd79ef3cbf526069a5422439766382ffdcd0ba1da159
+	source = ryokucha-0.2.0.tar.gz::https://github.com/ryonakano/ryokucha/archive/0.2.0.tar.gz
+	sha256sums = 40c038798cafd6f8f2de00b19a27b89042197a301b256b2afa8da35fcc21a2f6
 
 pkgname = ryokucha

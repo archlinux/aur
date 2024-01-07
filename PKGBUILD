@@ -1,7 +1,7 @@
 # Maintainer: Yigit Sever <yigit@yigitsever.com>
 
 pkgname=ryokucha
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A GTK4 library that includes customized widgets"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('gtk4' 'pango')
 makedepends=('meson' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('89b9492b33498f46c4f4dd79ef3cbf526069a5422439766382ffdcd0ba1da159')
+sha256sums=('40c038798cafd6f8f2de00b19a27b89042197a301b256b2afa8da35fcc21a2f6')
 
 build() {
   arch-meson ${pkgname}-${pkgver} build
