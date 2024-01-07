@@ -1,4 +1,4 @@
-From c85dfd980f28fdbaded8f8d587f7d36f11d5d3ad Mon Sep 17 00:00:00 2001
+From 6726a28f740f07f8a732a3439b0928dd1c6815d9 Mon Sep 17 00:00:00 2001
 From: Infernio <infernio@icloud.com>
 Date: Sat, 10 Jun 2023 10:55:46 +0200
 Subject: [PATCH 1/2] Make BashBugDump work globally
@@ -8,10 +8,10 @@ Subject: [PATCH 1/2] Make BashBugDump work globally
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/Mopy/bash/bash.py b/Mopy/bash/bash.py
-index dfc278d32..ae406fe3c 100644
+index 6fcb27eed..0acea367e 100644
 --- a/Mopy/bash/bash.py
 +++ b/Mopy/bash/bash.py
-@@ -66,7 +66,11 @@ def _print(s):
+@@ -64,7 +64,11 @@ def _print(s):
      if pathToProg:
          os.chdir(pathToProg)
      global _bugdump_handle
@@ -25,5 +25,5 @@ index dfc278d32..ae406fe3c 100644
      _install_bugdump()
  
 -- 
-2.41.0
+2.43.0
 

@@ -1,2 +1,2 @@
 #!/bin/bash
-python "/opt/wrye-bash/Mopy/Wrye Bash Launcher.pyw" --unix "$@"
+python "/opt/wrye-bash/Wrye Bash Launcher.pyw" "$@"

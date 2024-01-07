@@ -1,4 +1,4 @@
-From f1af10bd63671642e3a030c43c0cf303ef2b573c Mon Sep 17 00:00:00 2001
+From b7c3e6c3b0a34b8aa5169fbac2454765187bedd1 Mon Sep 17 00:00:00 2001
 From: Infernio <infernio@icloud.com>
 Date: Sat, 10 Jun 2023 10:59:38 +0200
 Subject: [PATCH 2/2] Add support for global docs to readme_url
@@ -9,10 +9,10 @@ Used for our globally installed Linux build.
  1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/Mopy/bash/bolt.py b/Mopy/bash/bolt.py
-index f69d891be..2451685a7 100644
+index 6fad4f3c5..91a3e82dd 100644
 --- a/Mopy/bash/bolt.py
 +++ b/Mopy/bash/bolt.py
-@@ -2814,8 +2814,13 @@ def readme_url(mopy, advanced=False, skip_local=False):
+@@ -2762,8 +2762,13 @@ def readme_url(mopy, advanced=False, skip_local=False):
      around only exists on Windows."""
      readme_name = (u'Wrye Bash Advanced Readme.html' if advanced else
                     u'Wrye Bash General Readme.html')
@@ -29,5 +29,5 @@ index f69d891be..2451685a7 100644
          readme = u'file:///' + readme.s.replace(u'\\', u'/')
      else:
 -- 
-2.41.0
+2.43.0
 
