@@ -1,0 +1,17 @@
+pkgbase = pascha-cli-bin
+	pkgdesc = A simple CLI program to calculate and display the date of Pascha (Easter)
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://gitlab.com/cmmescher/pascha-cli.git
+	arch = any
+	license = GPL3
+	provides = pascha
+	conflicts = pascha
+	source = https://github.com/cmmescher/pascha-cli/releases/download/v2.0/pascha-v2-0.gz
+	source = https://gitlab.com/cmmescher/pascha-cli/-/archive/v2.0/pascha-cli-v2.0.tar.gz
+	md5sums = 751b4c3d0e0a9058b4245508a1577dde
+	md5sums = f4c0abe4ae1eb6d78ce1a86987088b8b
+	sha256sums = 8a4399511c9312e9deab69ac2b5103c1b1cfbb841340f4988caa1ad5c1f43790
+	sha256sums = 7691728028210be4115d1faffbf7a1c70d3e289967f7e0e963b4171388c6ce40
+
+pkgname = pascha-cli-bin
