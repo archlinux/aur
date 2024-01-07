@@ -1,11 +1,11 @@
 pkgname=chicken-mosquitto
 _name=mosquitto
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Chicken Scheme Bindings to mosquitto MQTT client library'
 arch=('x86_64')
 license=('MIT')
-depends=("chicken" "chicken-srfi-1")
+depends=("mosquitto" "chicken" "chicken-srfi-1")
 url='http://wiki.call-cc.org/eggref/5/mosquitto'
 
 build() {
