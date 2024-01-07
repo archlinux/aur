@@ -1,0 +1,17 @@
+pkgbase = python-interegular
+	pkgdesc = Allows to check regexes for overlaps
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/MegaIng/interegular
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-interegular-e0ab881c2b4b5227b0934b243f2337e701fae008.tar.gz::https://github.com/MegaIng/interegular/archive/e0ab881c2b4b5227b0934b243f2337e701fae008.tar.gz
+	sha256sums = 5fc808d519ea8c04cdb0ce368fdff49dcd18685d7c87b42ca54e6471dabbe491
+
+pkgname = python-interegular
