@@ -1,14 +1,13 @@
 pkgbase = fup
 	pkgdesc = Command line client for gofu
-	pkgver = 1.0.0
-	pkgrel = 5
-	url = https://git.roshless.me/~roshless/fup
+	pkgver = 2
+	pkgrel = 1
+	url = https://git.roshless.me/gofu/fup
 	arch = x86_64
 	arch = i686
 	license = GPL
-	depends = glibc
-	depends = curl
-	source = https://git.roshless.me/roshless/fup/-/archive/1.0.0/fup-1.0.0.tar.gz
-	sha256sums = bb2a31d29780b1d92714f80ba9a1624e8f0a1666656492faf47bd8642993e777
+	makedepends = go
+	source = https://git.roshless.me/gofu/fup/-/archive/2/fup-2.tar.gz
+	sha256sums = b00047073ed054698a4e88c5433896445967d08847b22b0c8cefec55d8172f4b
 
 pkgname = fup
