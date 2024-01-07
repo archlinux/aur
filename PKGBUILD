@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=esetVis
-_pkgver=1.28.0
+_pkgver=1.28.2
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.28.2
 pkgrel=1
 pkgdesc='Visualizations of expressionSet Bioconductor object'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-summarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('96592291821ba5c4b66f1c476dcf5b790084bfd6730dc637030c55094b05a94b')
+sha256sums=('74a834d41fe5171446f6d231f14d6b1c276e4c3b9cbf485e20349b02f0f860f9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
