@@ -1,0 +1,13 @@
+pkgbase = virtualgps
+	pkgdesc = Virtual GPS simulates GPS receiver available on pseudo terminal
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/rkaczorek/virtualgps
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gpsd
+	source = https://github.com/nikodemusP/virtualgps/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = dce53b9cd330c0a36b50e0bb00affdc719bab243f251f4bb46366b4e295dccf8
+
+pkgname = virtualgps
