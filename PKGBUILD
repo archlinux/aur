@@ -2,7 +2,7 @@
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-pkgver=dev_2023_12
+pkgver=dev_2024_01
 
 _srcname=Odin
 pkgname=odin
@@ -17,7 +17,7 @@ makedepends=('git' 'clang' 'clang14' 'llvm14')
 provides=('odin')
 conflicts=('odin')
 source=("https://github.com/odin-lang/Odin/archive/refs/tags/${pkgver_actual}.tar.gz")
-sha256sums=('9c4a39fcfc0fb29e5060a2513931000c0c3ce491f3672faaab1429b07cad0896')
+sha256sums=('b93e64546f710d00dc9cce1a872d023024cb4220df1f8a0607e24ba35daacc53')
 
 build() {
   cd "${srcdir}/Odin-${pkgver_actual}/"
