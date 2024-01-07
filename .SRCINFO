@@ -1,23 +1,25 @@
 pkgbase = alphaplot-git
-	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot git version
+	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot
 	pkgver = 1.02.r19.gda97d1fa
-	pkgrel = 1
-	url = http://alphaplot.sourceforge.net/
+	pkgrel = 2
+	url = https://github.com/narunlifescience/AlphaPlot
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = boost
 	makedepends = cmake
-	makedepends = qt5-tools
+	makedepends = git
 	makedepends = glu
+	makedepends = qt5-tools
 	depends = gsl
 	depends = hicolor-icon-theme
 	depends = qt5-datavis3d
 	depends = qt5-script
 	depends = qt5-svg
-	provides = alphaplot
+	provides = alphaplot=1.02
 	conflicts = alphaplot
-	source = alphaplot-git::git+https://github.com/narunlifescience/AlphaPlot.git
+	conflicts = alphaplot-bin
+	source = alphaplot::git+https://github.com/narunlifescience/AlphaPlot.git
 	sha256sums = SKIP
 
 pkgname = alphaplot-git
