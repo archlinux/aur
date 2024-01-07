@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee
-pkgver=2024.01.0
+pkgver=2024.01.1
 pkgrel=1
 pkgdesc="Flowee provides the shortest path to Bitcoin Cash"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ source=("https://codeberg.org/Flowee/thehub/archive/$pkgver.tar.gz"
     "flowee.logrotate"
     "flowee.conf")
 
-sha256sums=("8c78f9307ec48af0b40514c7d501511e9281a14ba9238a3975ac2bf7b0ac49d7"
+sha256sums=("ef1e6254535eea7c18de4c809f87056d01eb30bc9d0d045e7bf0f40f0f6ef780"
     "0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e"
     "59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89")
 
@@ -25,8 +25,8 @@ build() {
   mkdir -p build
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release -Dbuild_apps=ON -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub
-  echo '#define GIT_COMMIT_ID "63dd017b"' > include/build.h
-  echo '#define BUILD_DATE "2024-01-04 21:54:15 +0100"' >> include/build.h
+  echo '#define GIT_COMMIT_ID "3f2068b5"' > include/build.h
+  echo '#define BUILD_DATE "2024-01-07 12:33:34 +0100"' >> include/build.h
   make
 }
 
