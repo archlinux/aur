@@ -1,6 +1,6 @@
 pkgbase = zuu
 	pkgdesc = A git hook test runner for rust programer
-	pkgver = 5.0.5
+	pkgver = 5.0.6
 	pkgrel = 1
 	url = https://github.com/taishingi/zuu
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = zuu
 	depends = wget
 	depends = git
 	provides = zuu
-	source = 5.0.5.tar.gz::https://github.com/taishingi/zuu/archive/refs/tags/5.0.5.tar.gz
-	sha256sums = b0f7f1bd13b4369e752b58b41d4940c0e6e2584a2433e42764814f2308679a84
+	source = 5.0.6.tar.gz::https://github.com/taishingi/zuu/archive/refs/tags/5.0.6.tar.gz
+	sha256sums = ccd14124a983117b416cb1e9a2d2fa7eb6676adcdfe8662b7de34abd98e3d75e
 
 pkgname = zuu
