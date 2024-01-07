@@ -1,0 +1,15 @@
+pkgbase = enclave-server-git
+	pkgdesc = Server-side companion for a command-line secure encrypted deniable cloud-synchronized notebook
+	pkgver = r6.a2ae2e8
+	pkgrel = 1
+	url = https://github.com/symbolicsoft/enclave
+	arch = any
+	license = GPL-2.0
+	makedepends = git
+	makedepends = go
+	provides = enclave-server
+	conflicts = enclave-server
+	source = enclave-server::git+https://github.com/symbolicsoft/enclave#branch=main
+	sha256sums = SKIP
+
+pkgname = enclave-server-git
