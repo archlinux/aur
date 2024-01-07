@@ -1,31 +1,31 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=ttf-qurancomplex-fonts
 pkgver=20231101
-pkgrel=1
+pkgrel=2
 pkgdesc="Arabic fonts by King Fahd Glorious Quran Printing Complex in al-Madinah al-Munawwarah"
 arch=('any')
 url="http://fonts.qurancomplex.gov.sa"
 license=('custom')
 source=(https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2018/10/Basmalah-Ver01.zip
-	https://fonts.qurancomplex.gov.sa/wp-content/uploads/2018/n-06/HafsNastaleeq%20Ver10.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2023/03/KFGQPC%20KufiExtV11.ttf
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2023/03/KFGQPC%20KufiStyV13.ttf
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/06/KFGQPC-An.zip
-	https://fonts.qurancomplex.gov.sa/wp-content/uploads/2014/07/KFGQPC-Dot-Font.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/06/KFGQPC-KSA.zip
-	https://fonts.qurancomplex.gov.sa/wp-content/uploads/2011/06/Outlinedv001.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2018/10/Shadatain-Ver01.zip
-	https://fonts.qurancomplex.gov.sa/download/Symbols1_Ver02.otf
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/06/UthmanTN_v2-0.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/12/UthmanTSVer1.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicBazzi_V20.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicDouri_V20.zip
-  https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2023/11/UthmanicHafs_V22.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicQaloun_V21.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicQunbul_V20.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicShuba_V20.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicSousi_V20.zip
-	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicWarsh_V21.zip)
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2018/n-06/HafsNastaleeq%20Ver10.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2023/03/KFGQPC%20KufiExtV11.ttf
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2023/03/KFGQPC%20KufiStyV13.ttf
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/06/KFGQPC-An.zip
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2014/07/KFGQPC-Dot-Font.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/06/KFGQPC-KSA.zip
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2011/06/Outlinedv001.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2018/10/Shadatain-Ver01.zip
+        https://fonts.qurancomplex.gov.sa/download/Symbols1_Ver02.otf
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/06/UthmanTN_v2-0.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/12/UthmanTSVer1.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicBazzi_V20.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicDouri_V20.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2023/11/UthmanicHafs_V22.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicQaloun_V21.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicQunbul_V20.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicShuba_V20.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicSousi_V20.zip
+        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicWarsh_V21.zip)
 sha256sums=('e696b4e60ba24e921954ad15d7209d0322641f0e52d956b3e8606ea5b3501c77'
             '56543ae78f1792b6b8911ba57dd70fb542a311ac0339b1f85563ff446d021442'
             'de03a1d293cd1bfaf278d1e5a582f6d8442e5490b0cd9d9ba6a5ee8907ceda0f'
