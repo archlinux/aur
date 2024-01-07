@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SpliceWiz
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Easy, optimized, and accurate alternative splicing analysis in R"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(MIT)
 depends=(
   r-annotationhub
@@ -78,26 +78,21 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "$_pkgname-fix-build.patch::https://github.com/alexchwong/SpliceWiz/pull/55.patch"
         "link-zlib.patch")
-md5sums=('95ad1603bebc847d12b7dc715aef923a'
-         'b2cd7b9fa49f3bf5c59316f4398f7513'
+md5sums=('9812519f59c037be4490da221b96877b'
          '6d95a56e1b05ba50e118ddbbee00f1cf')
-sha256sums=('b2f1f1ff3f963191e0fd4a5c6708cc1f8feaf688b809fd827dd537c322de68a6'
-            '40b63cd8360ba6a42d42f1dee89b742add5d561ba8d4e9e9280a945b5487cceb'
-            '9489d25045c49fed8ee2277dfa6956d28d936faff43f94029a3a4cd80652af59')
+b2sums=('562914ef49585a525a2607873cc9c36da383a0b0de9d8a88b36771ab7dd9ac260567e1695f71bbb9b8ee93a5677aa66f3baed8f0e594e2372081a725a66088c6'
+        'c81190033eaba3e11043f9eb9ab2e0275b37a40ba6d5ad821a37560c74f3dc65a0fe3e0e9c4825fcc23e6bd9a7084ff0ba144daa6ef7b564517e4af2b4471362')
 
 prepare() {
   cd "$_pkgname"
-  # fix build
-  patch -Np1 -i "../$_pkgname-fix-build.patch"
   # link to zlib
   patch -Np1 -i ../link-zlib.patch
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
