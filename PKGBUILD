@@ -1,18 +1,24 @@
 # Maintainer:
 # Contributor: Arun Narayanankutty <n.arun.lifescience@gmail.com>
 
-#: ${_pkgtype:=git}
+## useful links
+# http://alphaplot.sourceforge.net/
+# https://github.com/narunlifescience/AlphaPlot
 
-# basic info
+## options
+: ${_build_git:=false}
+
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+## basic info
 _pkgname="alphaplot"
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgname="$_pkgname${_pkgtype:-}"
 pkgver=1.02
 pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot"
-#url="http://alphaplot.sourceforge.net/"
 url="https://github.com/narunlifescience/AlphaPlot"
 arch=('i686' 'x86_64')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 
 # main package
 _main_package() {
@@ -30,12 +36,9 @@ _main_package() {
     'qt5-tools'
   )
 
-  conflicts=(
-    alphaplot-bin
-    alphaplot-git
-  )
+  conflicts=(alphaplot-bin)
 
-  if [ x"$pkgname" == x"$_pkgname" ] ; then
+  if [[ "${_build_git::1}" != "t" ]] ; then
     _main_stable
   else
     _main_git

@@ -5,7 +5,7 @@ pkgbase = alphaplot
 	url = https://github.com/narunlifescience/AlphaPlot
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = boost
 	makedepends = cmake
 	makedepends = glu
@@ -16,7 +16,6 @@ pkgbase = alphaplot
 	depends = qt5-script
 	depends = qt5-svg
 	conflicts = alphaplot-bin
-	conflicts = alphaplot-git
 	source = alphaplot-1.02.tar.gz::https://github.com/narunlifescience/AlphaPlot/archive/refs/tags/1.02.tar.gz
 	sha256sums = 90952b2036b9d25b31c0c8fb34c47ff700bb2847234dda42d900070fc60d3c61
 
