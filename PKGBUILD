@@ -12,7 +12,7 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
         "license.txt")
-sha1sums=('9b1a97dade25c188949bb122b7f28522fa24587e'
+sha1sums=('33edc7d3b31e19c9e2ffca2d19a8c6e8c9429e20'
           '178e8165b4c57b6a2c126d3440209427264e6bcb')
 
 prepare() {
