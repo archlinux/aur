@@ -1,0 +1,20 @@
+pkgbase = gummy-conf-git
+	pkgdesc = Configuration tool for gummy, screen brightness/temperature manager for Linux
+	pkgver = r3.bdecad7
+	pkgrel = 1
+	url = https://github.com/qtilities/gummy-conf
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = qtilitools
+	depends = gummy
+	depends = qt5-base
+	provides = gummy-conf
+	conflicts = gummy-conf
+	source = gummy-conf::git+https://github.com/qtilities/gummy-conf.git
+	sha512sums = SKIP
+
+pkgname = gummy-conf-git
