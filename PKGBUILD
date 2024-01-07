@@ -3,7 +3,7 @@
 pkgbase=icesugar-git
 pkgname=(icesugar{,-{doc,icesprog}}-git)
 pkgver=1.1a.r20.g2f2a1db
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="iCESugar FPGA Board (base on iCE40UP5k) "
 arch=(x86_64
@@ -67,7 +67,7 @@ package_icesugar-git() {
         icesugar-icesprog
         icestorm
         nextpnr
-        nextpnr-ice40
+        nextpnr-ice40-nightly
         riscv64-linux-gnu-gcc
         yosys)
 }

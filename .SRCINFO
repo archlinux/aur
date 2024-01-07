@@ -1,7 +1,7 @@
 pkgbase = icesugar-git
 	pkgdesc = iCESugar FPGA Board (base on iCE40UP5k)
 	pkgver = 1.1a.r20.g2f2a1db
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wuxx/icesugar
 	arch = x86_64
 	arch = aarch64
@@ -25,7 +25,7 @@ pkgname = icesugar-git
 	depends = icesugar-icesprog
 	depends = icestorm
 	depends = nextpnr
-	depends = nextpnr-ice40
+	depends = nextpnr-ice40-nightly
 	depends = riscv64-linux-gnu-gcc
 	depends = yosys
 	provides = icesugar
