@@ -1,6 +1,8 @@
 pkg
 src
+*.deb
 
+LICENSE*
 
 *.tar.zst
 *.tar.gz
