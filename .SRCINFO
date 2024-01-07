@@ -1,0 +1,15 @@
+pkgbase = chicken-apropos
+	pkgdesc = Chicken Scheme apropos
+	pkgver = 3.8.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/apropos
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-utf8
+	depends = chicken-string-utils
+	depends = chicken-symbol-utils
+	depends = chicken-check-errors>=3.4.0
+
+pkgname = chicken-apropos
