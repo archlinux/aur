@@ -15,7 +15,7 @@ arch=('x86_64' 'i386' 'aarch64' 'armv7h' 'riscv64' 'loong64')
 provides=("$_pkg")
 conflicts=("$_pkg" "$_pkg-bin")
 # This depends list base on  AUR repo wiliwili.
-# Thanks Puqns67 <me@puqns67.icu> depends list.
+# Thanks Puqns67 <me@puqns67.icu> depends list and and cmake command-line parameter.
 depends=('mpv' 'opencc' 'pystring')
 makedepends=('git' 'cmake' 'gcc' 'libwebp' 'python' 'wayland-protocols' 'libxi')
 
@@ -42,6 +42,7 @@ prepare() {
 build() {
 	# If you want to use Debug mode, deleate -DCMAKE_BUILD_TYPE=Releas
 	# If you don't want to use system library, deleate -USE-SHARED-LIB=ON
+	# and -DUSE_SYSTEM_CURL=ON -DUSE_SYSTEM_OPENCC=ON -DUSE_SYSTEM_PYSTRING=ON
 	cmake \
 		-B build \
 		-S "$_pkg" \
@@ -50,6 +51,9 @@ build() {
 		-DINSTALL=ON \
 		-DCMAKE_BUILD_TYPE=Release \
                 -USE-SHARED-LIB=ON \
+                -DUSE_SYSTEM_CURL=ON \
+                -DUSE_SYSTEM_OPENCC=ON \
+                -DUSE_SYSTEM_PYSTRING=ON \
 		-DGLFW_BUILD_WAYLAND=ON \
 		-DGLFW_BUILD_X11=ON \
 		-Wno-dev
