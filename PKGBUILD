@@ -30,7 +30,7 @@ package_sing-geosite-common() {
 package_sing-geosite-rule-set() {
     pkgdesc='sing-geosite (rule sets)'
     depends=(sing-geosite-common)
-    provide=(sing-geosite)
+    provides=(sing-geosite)
 
     install -dm755 "${pkgdir}/usr/share/${pkgbase}/rule-set"
     install -Dm644 "${_srcbase}/rule-set/"* "${pkgdir}/usr/share/${pkgbase}/rule-set"
@@ -40,7 +40,7 @@ package_sing-geosite-db() {
     pkgdesc='sing-geosite (database)'
     depends=(sing-geosite-common)
     replaces=(sing-geosite)
-    provide=(sing-geosite)
+    provides=(sing-geosite)
 
     install -dm755 "${pkgdir}/usr/share/${pkgbase}"
     install -Dm644 "${_srcbase}/"*.db "${pkgdir}/usr/share/${pkgbase}"
