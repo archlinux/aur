@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=arrowdl
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
 url="https://www.arrow-dl.com/ArrowDL"
@@ -11,7 +11,7 @@ makedepends=('boost' 'cmake' 'qt6-tools')
 conflicts=('downzemall')
 replaces=('downzemall')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/ArrowDL/archive/v$pkgver.tar.gz")
-sha256sums=('e5f5a095fdba99f323bf879541a82f3d23eb9fbdfd3e658a953a776e65114bac')
+sha256sums=('ca03d55a89ff10534b9848829d78427d6b9a14211b8a09aa5fcedc389ac2675d')
 
 prepare() {
   cd "ArrowDL-$pkgver"
@@ -46,11 +46,11 @@ package() {
   install -Dm644 ../build/src/*.qm -t "$pkgdir/opt/$pkgname/locale/"
 
   install -Dm644 web-extension/launcher/unix/launcher-manifest-chrome.json \
-    "$pkgdir/etc/chromium/native-messaging-hosts/com.setvisible.downrightnow.json"
+    "$pkgdir/etc/chromium/native-messaging-hosts/com.setvisible.arrowdl.json"
   install -Dm644 web-extension/launcher/unix/launcher-manifest-chrome.json \
-    "$pkgdir/etc/opt/chrome/native-messaging-hosts/com.setvisible.downrightnow.json"
+    "$pkgdir/etc/opt/chrome/native-messaging-hosts/com.setvisible.arrowdl.json"
   install -Dm644 web-extension/launcher/unix/launcher-manifest-firefox.json \
-    "$pkgdir/usr/lib/mozilla/native-messaging-hosts/DownRightNow.json"
+    "$pkgdir/usr/lib/mozilla/native-messaging-hosts/ArrowDL.json"
 
   install -Dm644 src/resources/logo/LICENSE.txt \
     "$pkgdir/usr/share/licenses/$pkgname/LOGO_LICENSE.txt"
