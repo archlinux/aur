@@ -15,8 +15,10 @@ pkgname = sing-geoip-common
 pkgname = sing-geoip-rule-set
 	pkgdesc = sing-geoip (rule sets)
 	depends = sing-geoip-common
+	provides = sing-geoip
 
 pkgname = sing-geoip-db
 	pkgdesc = sing-geoip (database)
 	depends = sing-geoip-common
+	provides = sing-geoip
 	replaces = sing-geoip

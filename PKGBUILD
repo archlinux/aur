@@ -31,6 +31,7 @@ package_sing-geoip-common() {
 package_sing-geoip-rule-set() {
     pkgdesc='sing-geoip (rule sets)'
     depends=(sing-geoip-common)
+    provides=(sing-geoip)
 
     install -dm755 "${pkgdir}/usr/share/${pkgbase}/rule-set"
     install -Dm644 "${_srcbase}/rule-set/"* "${pkgdir}/usr/share/${pkgbase}/rule-set"
@@ -39,6 +40,7 @@ package_sing-geoip-rule-set() {
 package_sing-geoip-db() {
     pkgdesc='sing-geoip (database)'
     depends=(sing-geoip-common)
+    provides=(sing-geoip)
     replaces=(sing-geoip)
 
     install -dm755 "${pkgdir}/usr/share/${pkgbase}"
