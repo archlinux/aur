@@ -3,7 +3,7 @@
 
 pkgname=shellgpt-git
 _pkgname=shell_gpt
-pkgver=0.9.4.r0.g1c58566
+pkgver=1.0.1.r1.g4b670cf
 pkgrel=1
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT (GPT-3.5)"
 arch=('any')
@@ -21,6 +21,7 @@ depends=(
     'python-typer'
     'python-requests'
     'python-rich'
+    'python-openai'
     'python-click'
     'python-typing_extensions'
 )

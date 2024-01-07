@@ -1,6 +1,6 @@
 pkgbase = shellgpt-git
 	pkgdesc = A command-line productivity tool powered by OpenAI's ChatGPT (GPT-3.5)
-	pkgver = 0.9.4.r0.g1c58566
+	pkgver = 1.0.1.r1.g4b670cf
 	pkgrel = 1
 	url = https://github.com/TheR1D/shell_gpt
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = shellgpt-git
 	depends = python-typer
 	depends = python-requests
 	depends = python-rich
+	depends = python-openai
 	depends = python-click
 	depends = python-typing_extensions
 	provides = shellgpt-git
