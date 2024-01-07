@@ -2,22 +2,23 @@
 
 _name=sptlrx
 pkgname=sptlrx-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=2
 pkgdesc="Timesynced Spotify lyrics in your terminal."
-arch=('x86_64' 'arm64' 'i386')
+arch=('x86_64' 'arm64' 'i386' 'armv6h')
 url="https://github.com/raitonoberu/${_name}"
 license=('MIT')
 provides=("${_name}")
 conflicts=("${_name}")
-# _url="$url/releases/download/v$pkgver/${_name}_${pkgver}_Linux"
-_url="$url/releases/download/v$pkgver/${_name}_${pkgver}_Linux"
-source_x86_64=("${_url}_x86_64.tar.gz")
+_url="$url/releases/download/v$pkgver/${_name}_${pkgver}_linux"
+source_x86_64=("${_url}_amd64.tar.gz")
 source_arm64=("${_url}_arm64.tar.gz")
-source_i386=("${_url}_i386.tar.gz")
-sha256sums_x86_64=('fe9bd16945e9671096da32261a23360c394e05e792d4d7871e232ca8f559d076')
-sha256sums_arm64=('1f2421bfa8b7c29eab5a41d5dc6e8e476aa58abf66c86e93831e47c89536cd52')
-sha256sums_i386=('869b00a01ec48f81949e52b2199a9e97a89b171a5f432ae6632df5cd7153718c')
+source_i386=("${_url}_386.tar.gz")
+source_armv6h=("${_url}_armv6.tar.gz")
+sha256sums_x86_64=('bc751bd61cfa906bd1aff3aa26e4d368bfba02d9b03514f4b06d8bf6c5d3cb3d')
+sha256sums_arm64=('49ab1d09e638e0a095ae62832fe08ecd2c3f86515525ac623ca3417e6290b28a')
+sha256sums_i386=('fe1d65dcc252335c52fa833a4005e0e389b3395cfa1204ee8efe4567c5f8c842')
+sha256sums_armv6h=('5092bbbd0b71308aed5a05b0e502ddadf9eb1b138e0677dfd131d088b6da7f09')
 
 package() {
   install -Dm755 "${_name}" "$pkgdir"/usr/bin/"${_name}"
