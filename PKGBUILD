@@ -1,7 +1,7 @@
 # Maintainer: erdii <me at erdii dot engineering>
 pkgname=backplane-cli
-pkgver=0.1.14
-pkgrel=2
+pkgver=0.1.21
+pkgrel=1
 pkgdesc="backplane-cli is a CLI tool to interact with backplane-api."
 arch=("any")
 provides=("ocm-backplane")
