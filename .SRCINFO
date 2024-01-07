@@ -1,7 +1,7 @@
 pkgbase = rust-parallel-bin
-	pkgdesc = Fast parallel commmand runner, written in Rust
+	pkgdesc = Fast parallel command runner, written in Rust
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aaronriekenberg/rust-parallel
 	arch = x86_64
 	arch = aarch64
