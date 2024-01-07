@@ -28,7 +28,7 @@ ProtectKernelLogs=true
 MemoryDenyWriteExecute=true
 RestrictRealtime=true
 LockPersonality=true
-CapabilityBoundingSet=CAP_NET_BROADCAST CAP_NET_ADMIN CAP_NET_RAW
+CapabilityBoundingSet=CAP_NET_BROADCAST CAP_NET_ADMIN CAP_NET_RAW CAP_SETPCAP
 SystemCallFilter=~@clock @cpu-emulation @debug @module @mount @obsolete @raw-io @reboot @resources @swap
 
 [Install]
