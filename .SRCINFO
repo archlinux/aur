@@ -1,7 +1,7 @@
 pkgbase = sing-geosite
 	pkgdesc = sing-geosite
 	pkgver = 20240105034708
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SagerNet/sing-geosite
 	arch = any
 	license = GPL3
