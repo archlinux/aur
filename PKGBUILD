@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.12.0.beta8.r13.g1b9b736
+pkgver=3.13.19.r25.g58509f0
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/ValveSoftware/gamescope"
 license=("custom:BSD-2-Clause")
 depends=(
     # gamescope
-    "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire" "libxmu" "glm" "benchmark"
+    "libavif" "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire" "libxmu" "glm" "benchmark"
     # wlroots
     "libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors" "seatd"
 )
