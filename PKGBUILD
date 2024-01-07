@@ -1,12 +1,12 @@
-# Maintainer: Manuel Mendez <mmendez534@gmail.com>
+# Contributor: Manuel Mendez <mmendez534@gmail.com>
 pkgname=gplot
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Simple perl wrapper for gnuplot"
 arch=(any)
 url="http://gplot.sourceforge.net"
-license=('GPLv2')
+license=('GPL2')
 groups=()
 depends=('gnuplot>=4.4' 'perl')
 source=($pkgname-$pkgver.tar.gz::http://sourceforge.net/projects/gplot/files/gplot/gplot-$pkgver.tar.gz/download)
