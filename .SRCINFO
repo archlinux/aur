@@ -1,6 +1,6 @@
 pkgbase = x16-emulator-git
 	pkgdesc = An emulator for The 8-Bit Guy's Commander X16
-	pkgver = r46.r0.gbf28f8d
+	pkgver = r46.r11.ga9582c6
 	pkgrel = 1
 	url = http://commanderx16.com/
 	arch = x86_64
