@@ -2,9 +2,9 @@
 # -*- sh -*-
 
 pkgname='makesure'
-pkgver=0.9.21
-pkgrel=2
-pkgdesc="Simple AWK-based task/command runner with declarative goals and dependencies"
+pkgver=0.9.22
+pkgrel=1
+pkgdesc='Simple AWK-based task/command runner with declarative goals and dependencies'
 arch=('any')
 url='https://github.com/xonixx/makesure'
 license=('MIT')
@@ -14,17 +14,21 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm0755 makesure        "$pkgdir/usr/bin/makesure"
-  install -Dm0644 completion.bash "$pkgdir/usr/share/bash-completion/completions/makesure"
-  install -Dm0644 LICENSE         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm0644 README.md       "$pkgdir/usr/share/docs/$pkgname/README.md"
+  # Be more verbose if standard output is a TTY
+  test -t 1 && _v='v' || _v=''
+
+  install "-${_v}Dm0755" makesure        "$pkgdir/usr/bin/makesure"
+  install "-${_v}Dm0644" completion.bash "$pkgdir/usr/share/bash-completion/completions/makesure"
+  install "-${_v}Dm0644" CHANGELOG.md    "$pkgdir/usr/share/docs/$pkgname/CHANGELOG.md"
+  install "-${_v}Dm0644" README.md       "$pkgdir/usr/share/docs/$pkgname/README.md"
+  install "-${_v}Dm0644" LICENSE         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 sha256sums=(
-  'dbbca22612d44fc3c2d972f399160202068099fee2d7c6cb5b2bbc5833448bd5'
+  '5d04967232d27e371ebe50f42ac7799e602c313be25012be8a0a275e0dac33ef'
 )
 b2sums=(
-  'cae03a297553c4e681a111f3ab854ac1d1b35211ad744806f6577d0d33ed1b300461a312d22be3cbe790a1e66bd9828058d94b498e8b3491a2e3513072cc2a4d'
+  'dfe468df43753019a9d35d2a73583b92b8acad8e3714b7043e2e42b64ae097fa3341d30533459b8923b289a6112b63467ea15e035a4541806e0830e5af32a522'
 )
 
 # eof
