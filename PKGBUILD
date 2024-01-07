@@ -5,8 +5,8 @@ _suffix=""
 pkgname=(
 		"${pkgbase}${_suffix}" "${pkgbase}-headers${_suffix}"
 )
-_rev=0c248f4ca133bbc3552304f852f5fe235b7c1b4b
-pkgver=6.6.5
+_rev=5f81e0fdc6d2b79922e9634c0444244a80a0ac4d
+pkgver=6.6.6
 pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
