@@ -1,9 +1,9 @@
 # $Id$
-# Maintainer: jeff tracy <jefftracy nine one one at aol dot com>
-# Contributor: 
+# Maintainer: Felip Manyer i Ballester <archlinux at res hyphen telae dot cat>
+# Contributor: jeff tracy <jefftracy nine one one at aol dot com>
 
 pkgname=vim-lightline-git
-pkgver=r680.b1e91b4
+pkgver=r685.1c6b455
 pkgrel=1
 pkgdesc='A light and configurable statusline/tabline for Vim'
 arch=('any')
