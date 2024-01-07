@@ -1,0 +1,19 @@
+Subject: [PATCH] Heretic & Hexen: Fix internal resources lookup on Linux
+---
+Index: src/m_misc.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/m_misc.c b/src/m_misc.c
+--- a/src/m_misc.c	(revision 9101ac391255434dc99f0ff414c802988e631e2d)
++++ b/src/m_misc.c	(revision ec2cf262e972032c93cb3f7891d91285ecbb40de)
+@@ -945,7 +945,7 @@
+ #elif defined(__APPLE__)
+     retVal = M_StringJoin(packageResourcesDir, resourceName, NULL);
+ #else // Linux
+-    retVal = M_StringJoin(PACKAGE_DATADIR, DIR_SEPARATOR_S, RD_Project_TarName, DIR_SEPARATOR_S, resourceName, NULL);
++    retVal = M_StringJoin(PACKAGE_DATADIR, DIR_SEPARATOR_S, PACKAGE_TARNAME, DIR_SEPARATOR_S, resourceName, NULL);
+ #endif
+     if(!M_FileExists(retVal))
+     {
