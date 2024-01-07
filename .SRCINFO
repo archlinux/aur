@@ -1,6 +1,6 @@
 pkgbase = magic-trace-bin
 	pkgdesc = magic-trace collects and displays high-resolution traces of what a process is doing
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/janestreet/magic-trace
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = magic-trace-bin
 	depends = fzf
 	provides = magic-trace
 	conflicts = magic-trace
-	source = magic-trace-bin-1.1.0::https://github.com/janestreet/magic-trace/releases/download/v1.1.0/magic-trace
-	sha256sums = 4dc713c85a64f5351fa67915df8b13ec48f8fdac0813fc7fc14be4f6919b3aab
+	source = magic-trace-bin-1.2.0::https://github.com/janestreet/magic-trace/releases/download/v1.2.0/magic-trace
+	sha256sums = 63374a9187cf8d0c0cd86cd79db9152a27a0bf7a862d40e9e74701accdaf94e3
 
 pkgname = magic-trace-bin
