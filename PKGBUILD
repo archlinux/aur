@@ -1,6 +1,6 @@
 # Maintainer: Madhur Ahuja <ahuja.madhur@gmail.com>
 pkgname=csvlens
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A command line CSV file viewer. It is like less but made for CSV.'
 arch=('x86_64')
