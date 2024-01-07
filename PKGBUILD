@@ -1,3 +1,4 @@
+# Maintainer: Dylan Simowitz <dsimowitz@gmail.com>
 pkgname=kubectl-pgo
 pkgver=0.4.0
 pkgrel=1
