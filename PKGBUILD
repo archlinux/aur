@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=infisical
-pkgver=0.16.4
+pkgver=0.16.7
 pkgrel=1
 pkgdesc="Fetch and inject secrets into any framework in local development"
 url="https://github.com/Infisical/infisical"
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/infisical-cli/v$pkgver.tar.gz")
-sha256sums=('9259a3bfee3c23feb99efdd6c87bac89291490a0c14f17e8271ca84aab2c5513')
+sha256sums=('9ecb30251d0be106179f5b14556b1325555f329fef30d221362122e3fc3697eb')
 
 _archive="$pkgname-infisical-cli-v$pkgver"
 
@@ -32,7 +32,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   _ld_flags="-linkmode external -X github.com/Infisical/infisical-merge/packages/util.CLI_VERSION=$pkgver"
-  go build -v -o infisical -ldflags "$_ld_flags" .
+  go build -v -o infisical -ldflags "$_ld_flags" -buildvcs=false .
 
   # Completions
   ./infisical completion bash > infisical.bash
@@ -48,7 +48,7 @@ check() {
 
   # Skip failing tests - not sure why they fail.
   _unit_tests=$(
-    go list ./... \
+    go list -buildvcs=false ./... \
       | grep -v 'github.com/Infisical/infisical-merge/detect' \
       | grep -v 'github.com/Infisical/infisical-merge/packages/cmd' \
       | sort
