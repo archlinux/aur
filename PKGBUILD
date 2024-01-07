@@ -7,6 +7,7 @@ url="https://github.com/CrunchyData/postgres-operator-client"
 license=('Apache')
 provides=('kubectl-pgo')
 conflicts=('kubectl-pgo')
+depends=('kubectl')
 source=("${url}/releases/download/v${pkgver}/kubectl-pgo-linux-amd64")
 sha256sums=('32a4f7b21b5f39b495a12bcf0d803c4535d4d0dd5245bd1db8c60d58735e1bc2')
 
