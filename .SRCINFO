@@ -1,7 +1,7 @@
 pkgbase = vencord-desktop-git
 	pkgdesc = A standalone Electron app that loads Discord & Vencord
-	pkgver = r220.b245354
-	pkgrel = 5
+	pkgver = r264.0f0bddb
+	pkgrel = 1
 	url = https://github.com/Vencord/Vesktop
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = vencord-desktop-git
 	provides = vencord
 	conflicts = vencord
 	source = vencord-desktop-git::git+https://github.com/Vencord/Vesktop.git
-	source = vencord-desktop.desktop
+	source = vesktop.desktop
 	sha256sums = SKIP
 	sha256sums = eb606c9532a79519f6e72b5a1bec2776c47e13321e3fd986ab57edaa9cb7773a
 
