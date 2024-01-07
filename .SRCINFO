@@ -1,14 +1,14 @@
 pkgbase = vdr-channelscan
 	pkgdesc = Channel scanner for VDR
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ua0lnj/vdr-plugin-channelscan
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = libnetceiver
 	depends = bzip2
-	depends = vdr-api=2.6.3
+	depends = vdr-api=2.6.5
 	depends = zlib
 	backup = etc/vdr/conf.avail/50-channelscan.conf
 	backup = var/lib/vdr/plugins/channelscan/0019.ini
