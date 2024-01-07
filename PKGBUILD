@@ -21,9 +21,24 @@ sha256sums=('32860e5c1b67c6666a11f0c2524da77d95393d607c8fbfd18849bbd8322c5b0f'
             'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
             'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
             'cc450b47539d8a3e0d3d78634c78b0019a15097d2fb4e86fa3332957abd82d89')
+noextract=("mod_tile-${pkgver}.tar.gz")
+
+prepare() {
+  if [ -d mod_tile ]
+  then
+    rm -rf mod_tile
+  fi
+  mkdir mod_tile
+  bsdtar \
+    --directory mod_tile \
+    --extract \
+    --file mod_tile-${pkgver}.tar.gz \
+    --gzip \
+    --strip-components 1
+}
 
 build() {
-  cmake -B mod_tile_build -S mod_tile-${pkgver} -DCMAKE_BUILD_TYPE:STRING=Release -DENABLE_TESTS:BOOL=ON
+  cmake -B mod_tile_build -S mod_tile -DCMAKE_BUILD_TYPE:STRING=Release -DENABLE_TESTS:BOOL=ON
   cmake --build mod_tile_build
 }
 
@@ -40,15 +55,15 @@ package_mod_tile() {
   DESTDIR="$pkgdir" cmake --install mod_tile_build --prefix /usr --strip
 
   # License
-  install -Dm644 "$srcdir"/mod_tile-${pkgver}/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+  install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 
   # Example Map
-  install -Dm644 "$srcdir"/mod_tile-${pkgver}/etc/apache2/renderd-example-map.conf "$pkgdir"/etc/httpd/conf/extra/httpd-tile-renderd-example-map.conf
+  install -Dm644 "$srcdir"/mod_tile/etc/apache2/renderd-example-map.conf "$pkgdir"/etc/httpd/conf/extra/httpd-tile-renderd-example-map.conf
   install -dm755 "$pkgdir"/usr/share/renderd
-  cp -av "$srcdir"/mod_tile-${pkgver}/utils/example-map "$pkgdir"/usr/share/renderd/example-map
+  cp -av "$srcdir"/mod_tile/utils/example-map "$pkgdir"/usr/share/renderd/example-map
 
   # "/etc/renderd.conf", "/usr/bin", "/usr/share/man" & "/var" are contained in/handled by "renderd" package
-  rm -rf "$pkgdir"/etc/renderd.conf "$pkgdir"/usr/bin "$pkgdir"/usr/share/man "$pkgdir"/var
+  rm -rf "${pkgdir:?}"/etc/renderd.conf "${pkgdir:?}"/usr/bin "${pkgdir:?}"/usr/share/man "${pkgdir:?}"/var
 }
 
 package_renderd() {
@@ -65,11 +80,11 @@ package_renderd() {
   install -Dm644 "$srcdir"/renderd.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/renderd.conf
 
   # License
-  install -Dm644 "$srcdir"/mod_tile-${pkgver}/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+  install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 
   # The creation of "/var/cache/renderd/tiles" & "/var/run/renderd" will be handled by "renderd.tmpfiles"
-  rm -rf "$pkgdir"/var
+  rm -rf "${pkgdir:?}"/var
 
   # "/etc/httpd" & "/usr/lib/httpd" are contained in "mod_tile" package
-  rm -rf "$pkgdir"/etc/httpd "$pkgdir"/usr/lib/httpd
+  rm -rf "${pkgdir:?}"/etc/httpd "${pkgdir:?}"/usr/lib/httpd
 }
