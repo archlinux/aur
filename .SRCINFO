@@ -1,0 +1,17 @@
+pkgbase = pascha-gui-bin
+	pkgdesc = A simple GUI program to calculate and display the date of Pascha (Easter)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/cmmescher/pascha-gui.git
+	arch = any
+	license = GPL3
+	depends = gtk3
+	depends = sdl2
+	depends = libmspack
+	provides = pascha-gui
+	conflicts = pascha-gui
+	source = https://github.com/cmmescher/pascha-gui/releases/download/v1.0/pascha-gui-v1-0.gz
+	md5sums = 9296598391fb34b6c847fb05601dcc3c
+	sha256sums = 701234617b7d917ecaa08f8cf581d455b1a2efaf5b20a6f9760cb2b0ad241daf
+
+pkgname = pascha-gui-bin
