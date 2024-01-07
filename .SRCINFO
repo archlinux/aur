@@ -1,7 +1,7 @@
 pkgbase = continuous-testing
 	pkgdesc = A continuous integration testing project
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/taishingi/continuous-testing
 	arch = any
 	license = GPL3

@@ -2,7 +2,7 @@
 
 pkgname=continuous-testing
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A continuous integration testing project"
 provides=("again")
 arch=('any')
@@ -21,5 +21,5 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/again"
 }
