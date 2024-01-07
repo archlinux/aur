@@ -4,8 +4,8 @@
 
 _package=net.downloadhelper.coapp
 pkgname=vdhcoapp-bin
-pkgver=2.0.10
-pkgrel=2
+pkgver=2.0.11
+pkgrel=1
 pkgdesc="Companion application for Video DownloadHelper browser add-on, precompiled binary version"
 provides=("vdhcoapp=${pkgver}")
 conflicts=('vdhcoapp')
@@ -20,7 +20,7 @@ source=(https://github.com/aclap-dev/vdhcoapp/releases/download/v${pkgver}/vdhco
         vdhcoapp-remove.hook
         vdhcoapp-user-install.hook
         vdhcoapp-user-remove.hook)
-sha256sums=('6679e124d54224ac7b8403459c0d4a4dbb6709281cfd38c5c2c5200a3e43d726'
+sha256sums=('e6a69a8ba404148b0d5932da01fb92f70e003581697fd8400275d06f0d78c4b5'
             'a2b56e6ae3f7f8933e20762baa90e69f63f0802b2e6d213b51e0bc68843e5d27'
             '3287859986d67e15e269965676bf9c75d1e853ea0ec97695811072fb8f10a7a8'
             'a08c02d934709cdea4392fce155bec0b33147e386ed154bed959c5b78788ea83'
