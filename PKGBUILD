@@ -1,6 +1,6 @@
 # Maintainer: Yigit Sever <yigit@yigitsever.com>
 pkgname=live-chart
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A real-time charting library for Vala and GTK4 based on Cairo"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk3' 'gtk4' 'libgee')
 makedepends=('meson')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('7b5f1d0807b5f6e8b09e2c1dd468af22379578b55b38afd530c0ff006bc33e53')
+sha256sums=('3f54c7569cc2a4711b5689038055aefc4321636f3e6dd4945e4be204bc9d4843')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" build
