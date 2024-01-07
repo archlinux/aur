@@ -1,7 +1,7 @@
 pkgbase = dwdiff
 	pkgdesc = A diff program that operates at the word level instead of the line level
 	pkgver = 2.1.4
-	pkgrel = 6
+	pkgrel = 7
 	url = https://os.ghalkes.nl/dwdiff.html
 	arch = x86_64
 	arch = aarch64

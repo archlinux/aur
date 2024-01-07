@@ -4,7 +4,7 @@
 
 pkgname=dwdiff
 pkgver=2.1.4
-pkgrel=6
+pkgrel=7
 pkgdesc='A diff program that operates at the word level instead of the line level'
 arch=('x86_64' 'aarch64')
 url='https://os.ghalkes.nl/dwdiff.html'
