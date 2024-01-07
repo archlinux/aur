@@ -1,6 +1,6 @@
 pkgbase = boxbuddy
 	pkgdesc = A Graphical Interface for Distrobox
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/Dvlv/BoxBuddyRS
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = boxbuddy
 	makedepends = cargo
 	depends = distrobox
 	depends = libadwaita
-	source = boxbuddy-1.0.6.tar.gz::https://github.com/Dvlv/BoxBuddyRS/archive/refs/tags/1.0.6.tar.gz
-	sha256sums = 6e028f7624fc2dba5a410e646260f8773bf14c703363d36267c3a57b160d15da
+	options = !lto
+	source = boxbuddy-1.0.7.tar.gz::https://github.com/Dvlv/BoxBuddyRS/archive/refs/tags/1.0.7.tar.gz
+	sha256sums = 88c2c3c398fe3f6335e5353e6b57ca8808a75369580ac4a9affe02fa014ed0af
 
 pkgname = boxbuddy
