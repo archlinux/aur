@@ -8,7 +8,7 @@ pkgver="${orignalVersion/-/_}"
 pkgrel=1
 pkgdesc="Cloud-Native Query - Asset Inventory Framework"
 url="https://mondoo.com"
-license=('MPL 2.0')
+license=('BUSL-1.1')
 source=(
     "https://releases.mondoo.com/cnquery/${orignalVersion}/cnquery_${orignalVersion}_linux_amd64.tar.gz"
     )
