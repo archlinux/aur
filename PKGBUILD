@@ -3,7 +3,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.7.0.r0.g4e8334e
+pkgver=0.7.0.r5.gc7ffa83
 pkgrel=1
 pkgdesc='Mod tile is a daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
@@ -30,6 +30,8 @@ pkgver() {
 }
 
 build() {
+  # Override VERSION with ${pkgver}
+  echo '#define VERSION "'${pkgver}'"' >> mod_tile/includes/config.h.in
   cmake -B mod_tile_build -S mod_tile -DCMAKE_BUILD_TYPE:STRING=Release -DENABLE_TESTS:BOOL=ON
   cmake --build mod_tile_build
 }
@@ -56,7 +58,7 @@ package_mod_tile-git() {
   cp -av "$srcdir"/mod_tile/utils/example-map "$pkgdir"/usr/share/renderd/example-map
 
   # "/etc/renderd.conf", "/usr/bin", "/usr/share/man" & "/var" are contained in/handled by "renderd" package
-  rm -rf "$pkgdir"/etc/renderd.conf "$pkgdir"/usr/bin "$pkgdir"/usr/share/man "$pkgdir"/var
+  rm -rf "${pkgdir:?}"/etc/renderd.conf "${pkgdir:?}"/usr/bin "${pkgdir:?}"/usr/share/man "${pkgdir:?}"/var
 }
 
 package_renderd-git() {
@@ -77,8 +79,8 @@ package_renderd-git() {
   install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 
   # The creation of "/var/cache/renderd/tiles" & "/var/run/renderd" will be handled by "renderd.tmpfiles"
-  rm -rf "$pkgdir"/var
+  rm -rf "${pkgdir:?}"/var
 
   # "/etc/httpd" & "/usr/lib/httpd" are contained in "mod_tile" package
-  rm -rf "$pkgdir"/etc/httpd "$pkgdir"/usr/lib/httpd
+  rm -rf "${pkgdir:?}"/etc/httpd "${pkgdir:?}"/usr/lib/httpd
 }
