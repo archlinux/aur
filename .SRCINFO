@@ -1,7 +1,7 @@
 pkgbase = radioactive
 	pkgdesc = Play and record any radio stations around the globe right from your terminal.
-	pkgver = 2.9.0
-	pkgrel = 3
+	pkgver = 2.9.1
+	pkgrel = 1
 	url = https://github.com/deep5050/radio-active
 	arch = any
 	license = MIT
@@ -16,7 +16,10 @@ pkgbase = radioactive
 	depends = python-requests-cache
 	depends = python-rich
 	depends = python-zenlog
-	source = radioactive-2.9.0.tar.gz::https://github.com/deep5050/radio-active/archive/refs/tags/v2.9.0.tar.gz
-	md5sums = 7a9a7710f094e9019d8d6f960ffa5e38
+	optdepends = mpv: mediaplayer to use
+	optdepends = vlc: mediaplayer to use
+	conflicts = radio-active
+	source = radioactive-2.9.1.tar.gz::https://github.com/deep5050/radio-active/archive/refs/tags/v2.9.1.tar.gz
+	md5sums = 816968f98b9ce5120838736703009f8b
 
 pkgname = radioactive
