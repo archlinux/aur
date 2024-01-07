@@ -1,5 +1,5 @@
 pkgname=mingw-w64-suitesparse
-pkgver=7.3.1
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (mingw-w64)"
 url="https://people.engr.tamu.edu/davis/suitesparse.html"
@@ -9,29 +9,28 @@ makedepends=('mingw-w64-cmake')
 license=('GPL')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz")
-sha256sums=('b512484396a80750acf3082adc1807ba0aabb103c2e09be5691f46f14d0a9718')
+sha256sums=('f9a5cc2316a967198463198f7bf10fb8c4332de6189b0e405419a7092bc921b7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-_subdirectories="SuiteSparse_config Mongoose AMD BTF CAMD CCOLAMD COLAMD CHOLMOD CXSparse LDL KLU UMFPACK RBio SuiteSparse_GPURuntime GPUQREngine SPQR SPEX GraphBLAS"
-
-prepare () {
-  cd "$srcdir"/SuiteSparse-${pkgver}
-}
 
 build() {
-  cd "$srcdir"
-  # we need pkgdir for CMAKE_STAGING_PREFIX, so build in package()
+  cd "$srcdir/SuiteSparse-${pkgver}"
+  for _arch in ${_architectures}
+  do
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-cmake -DSUITESPARSE_DEMOS=OFF -DBUILD_TESTING=OFF -DGRAPHBLAS_USE_JIT=OFF \
+      -DNPARTITION=1 -DBLA_VENDOR=Generic -DHAVE_GETENV_HOME=0 ..
+    make
+    popd
+  done
 }
 
 package() {
-  for _arch in ${_architectures}; do
-    for _subdir in ${_subdirectories}; do
-      cd "$srcdir/SuiteSparse-${pkgver}/${_subdir}"
-      mkdir -p build-${_arch} && cd build-${_arch}
-      LDPRELOAD= ${_arch}-cmake -DNPARTITION=1 -DBLA_VENDOR=Generic -DCMAKE_STAGING_PREFIX="$pkgdir"/usr/${_arch} -DHAVE_GETENV_HOME=0 ..
-      make install
-    done
-    rm "${pkgdir}"/usr/${_arch}/bin/*.exe
+  for _arch in ${_architectures}
+  do
+    cd "$srcdir/SuiteSparse-${pkgver}/build-${_arch}"
+    make install DESTDIR="$pkgdir"
+    rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
