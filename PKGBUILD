@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=wireguard-ui
-pkgver=0.6.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A web user interface to manage your WireGuard setup."
 arch=(i686 x86_64 armv7h aarch64)
@@ -15,7 +15,7 @@ source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         wgiptables.sh
         wgui.path
         wgui.service)
-sha256sums=('cec2ea55f0ab0a9469821b6516f28123c67dbb616ea62ab92b331efc089183cc'
+sha256sums=('17467109d4106a96af09e9d14b8c576abd945bf941330a14554b8f951b688e28'
             '99df93fd8e6916ddad872e9a1bee496de5173bc544dc2c09f5c2a688b8deac76'
             'cf5bdce2ce87b5054042a70d8630f40a0f991c64c42786824f660245b943d2be'
             '87983b041d8beb7303bb57dd7f724163a157390cdf3cd74900aff6904e9402e0'
