@@ -1,0 +1,14 @@
+pkgbase = noinputs-git
+	pkgdesc = A simple script to temporary disable input devices: a Wayland-compatible alternative to xinput.
+	pkgver = r1.6e066bf
+	pkgrel = 1
+	url = https://gitlab.com/S410/noinputs
+	arch = any
+	license = GPL-3-or-later
+	makedepends = git
+	depends = python
+	depends = python-evdev
+	source = git+https://gitlab.com/S410/noinputs.git
+	md5sums = SKIP
+
+pkgname = noinputs-git
