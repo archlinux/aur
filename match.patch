@@ -1,0 +1,93 @@
+--- a/msp.vim	2024-01-07 15:26:45.696914028 -0500
++++ b/msp.vim	2024-01-07 15:31:18.748175204 -0500
+@@ -8,6 +8,7 @@
+ " Revision History
+ " 1.0   2003-07-18      Initial version
+ " 1.1   2003-08-06      Add minimal support for C style comments
++" 1.1-1 2024-01-07      Convert regexes in keywords to matches
+ 
+ " For version 5.x: Clear all syntax items
+ " For version 6.x: Quit when a syntax file was already loaded
+@@ -82,57 +84,45 @@
+ syn match   mspRegister         "P[1-5]OUT"
+ syn match   mspRegister         "P[1-5]IN"
+ " USART
+-syn keyword mspRegister         UCTL[0-1] UCTL[0-1]_ U[0-1]CTL U[0-1]CTL_
++syn match   mspRegister         "U\([RTM]\?CTL\|BR[01]\|[TR]XBUF\)[01]_\?"
++syn match   mspRegister         "U[01]\([RTM]\?CTL\|BR[01]\|[TR]XBUF\)_\?"
+ syn keyword mspRegisterPart     PENA PEV SPB CHAR LISTEN SYNC MM SWRST
+-syn keyword mspRegister         UTCTL[0-1] UTCTL[0-1]_ U[0-1]TCTL  U[0-1]TCTL_ 
+ syn keyword mspRegisterPart     CKPH CEPL SSEL1 SSEL0 URXSE TXWAKE STC TXEPT
+-syn keyword mspRegister         URCTL[0-1] URCTL[0-1]_ U[0-1]RCTL U[0-1]RCTL_
+ syn keyword mspRegisterPart     FE PE OE BRK URXEIE URXWIE RXWAKE RXERR
+-syn keyword mspRegister         UBR[0-1][0-1] U[0-1]BR[0-1]
+-syn keyword mspRegister         UTXBUF[0-1] U[0-1]TXBUF
+-syn keyword mspRegister         URXBUF[0-1] U[0-1]RXBUF
+-syn keyword mspRegister         UMCTL[0-1] U[0-1]MCTL
+ " Timers
+-syn keyword mspRegister         T[A-B]IV T[A-B]CTL TACCTL[0-2] TBCCTL[0-6] 
+-syn keyword mspRegister         T[A-B]R TACCR[0-2] TBCCR[0-6]
+-syn keyword mspRegister         CCTL[0-2] CCR[0-2]
+-syn keyword mspRegisterPart     TASSEL[0-2] ID[0-1] MC[0-1] TACLR TAIE TAIFG
+-syn keyword mspRegisterPart     TASSEL_[0-3] ID_[0-1] MC_[0-3]
+-syn keyword mspRegisterPart     CM[0-1] CCIS[0-1] SCS SCCI CAP OUTMOD[0-2] CCIE CCI OUT COV CCIFG
+-syn keyword mspRegisterPart     OUTMOD_[0-7] CCIS_[0-3] CM_[0-3]
+-syn keyword mspRegisterPart     SHR[0-1] TBCLGRP[0-1] CNTL[0-1]
+-syn keyword mspRegisterPart     SLSHR[0-1] CLLD[0-1] SLSHR_[0-3] CLLD_[0-3]
++syn match   mspRegister         "T[AB]\(IV\|CTL\|R\)"
++syn match   mspRegister         "\(TA\|\)CC\(TL\|R\)[0-2]"
++syn match   mspRegister         "TBCC\(TL\|R\)[0-6]"
++syn match   mspRegisterPart     "TASSEL\([0-2]\|_[0-3]\)\|ID_\?[01]\|MC\([01]\|_[0-3]\)"
++syn match   mspRegisterPart     "CM\([01]\|_[0-3]\)\|CCIS\([01]\|_[0-3]\)\|SCS\|SCCI\|CAP"
++syn match   mspRegisterPart     "OUTMOD\([0-2]\|_[0-7]\)\|CCIE\|CCI\|OUT\|COV\|CCIFG"
++syn match   mspRegisterPart     "\(SHR\|TBCLGRP\|CNTL\|SLSHR\)[01]\|\(SLSHR\|CLLD\)_[0-3]"
+ " Basic Clock Module
+-syn keyword mspRegister         DCOCTL BCSCTL[1-2]
+-syn keyword mspRegisterPart     MOD[0-4] DCO[0-2] 
+-syn keyword mspRegisterPart     RSEL[0-2] XT5V DIVA[0-1] XTS XT2OFF DIVA_[0-3]
+-syn keyword mspRegisterPart     DCOR DIVS[0-1] SELS DIVM[0-1] SELM[0-1]
+-syn keyword mspRegisterPart     DIVS_[0-3] DIVM_[0-3] SELM_[0-3]
++syn match   mspRegister         "BCSCTL[12]"
++syn keyword mspRegister         DCOCTL
++syn match   mspRegisterPart     "MOD[0-4]\|DCO[0-2]"
++syn match   mspRegisterPart     "RSEL[0-2]\|XT5V\|XTS\|XT2OFF"
++syn match   mspRegisterPart     "DCOR\|SELS\|\(DIVA\|DIVS\|DIVM\|SELM\)\([01]\|_[0-3]\)"
+ " Flash Memory
+-syn keyword mspRegister         FCTL[1-3]
++syn match   mspRegister         "FCTL[1-3]"
+ syn keyword mspRegisterPart     FRKEY FWKEY FXKEY
+ syn keyword mspRegisterPart     ERASE MERAS WRT BLKWRT SEGWRT
+-syn keyword mspRegisterPart     FN[0-5] FSSEL[0-1] FSSEL_[0-3]
++syn match   mspRegisterPart     "FN[0-5]\|FSSEL\([01]\|_[0-3]\)"
+ syn keyword mspRegisterPart     BUSY KEYV ACCVIFG WAIT LOCK EMEX
+ " EPROM Control
+ syn keyword mspRegister         EPCTL EPEXE EPVPPS
+ " Comparator A
+-syn keyword mspRegister         CACTL[1-2] CAPD
+-syn keyword mspRegisterPart     CAIFG CAIE CAIES CAON CAREF[0-1] CARSEL CAEX
+-syn keyword mspRegisterPart     CAREF_[0-3]
+-syn keyword mspRegisterPart     CAOUT CAF P2CA[0-1] CACTL2[4-7] 
+-syn keyword mspRegisterPart     CAPD[0-7]
++syn match   mspRegister         "CACTL[12]"
++syn keyword mspRegister         CAPD
++syn match   mspRegisterPart     "CAREF\([01]\|_[0-3]\)\|P2CA[01]\|CACTL2[4-7]\|CAPD[0-7]"
++syn keyword mspRegisterPart     CAIFG CAIE CAIES CAON CARSEL CAEX
++syn keyword mspRegisterPart     CAOUT CAF 
+ " ADC 12
+-syn keyword mspRegister         ADC12CTL[0-1] ADC12IFG ADC12IE ADC12IV ADC12MEM
+-syn keyword mspRegister         ADC12MEM ADC12MEM[0-9] ADC12MEM1[0-5]
+-syn keyword mspRegister         ADC12MCTL[0-9] ADC12MCTL1[0-5]
++syn match   mspRegister         "ADC12\(CTL[01]\|IFG\|IE\|IV\|MEM\|\(MEM\|MCTL\)\([0-9]\|1[0-5]\)\)"
+ syn keyword mspRegisterPart     ADC12SC ENC ADC12TOVIE ADC12OVIE ADC12ON REFON REF2_5V MSH MSC
+-syn keyword mspRegisterPart     SHT[0-1]_[0-9] SHT[0-1]_1[0-5]
+-syn keyword mspRegisterPart     ADC12BUSY CONSEQ_[0-3] ADC12SSEL_[0-3] ADC12DIV_[0-7]
+-syn keyword mspRegisterPart     ISSH SHP SHS_[0-3]
+-syn keyword mspRegisterPart     CSTARTADD_[0-9] CSTARTADD_1[0-5]
+-syn keyword mspRegisterPart     INCH_[0-9] INCH_[0-5]
+-syn keyword mspRegisterPart     SREF_[0-7] EOS
++syn match   mspRegisterPart     "\(SHT[01]\|CSTARTADD\)_\([0-9]\|1[0-5]\)\|CONSEQ_[0-3]"
++syn match   mspRegisterPart     "ADC12\(SSEL_[0-3]\|DIV_[0-7]\)\|SHS_[0-3]\|INCH_[0-9]\|SREF_[0-7]"
++syn keyword mspRegisterPart     ADC12BUSY ISSH SHP EOS
+ 
+ "Interrupt Vectors
+ syn keyword mspLabel         PORT2_VECTOR UART1TX_VECTOR UART1RX_VECTOR

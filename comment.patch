@@ -1,0 +1,19 @@
+--- src/msp.vim	2024-01-07 15:35:36.598995039 -0500
++++ /home/sean/.vim/syntax/msp.vim	2024-01-07 15:31:18.748175204 -0500
+@@ -9,6 +9,7 @@
+ " 1.0   2003-07-18      Initial version
+ " 1.1   2003-08-06      Add minimal support for C style comments
+ " 1.1-1 2024-01-07      Convert regexes in keywords to matches
++"                       Add support for bash style comments
+ 
+ " For version 5.x: Clear all syntax items
+ " For version 6.x: Quit when a syntax file was already loaded
+@@ -38,7 +39,7 @@
+ syn match mspOctal      "O'[0-7]\o*'"
+ 
+ 
+-syn match mspComment    ";.*" contains=mspTodo
++syn match mspComment    "\(^\s*#\|;\).*" contains=mspTodo
+ 
+ syn region mspString    start=+"+ end=+"+
+ 

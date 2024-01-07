@@ -1,0 +1,17 @@
+pkgbase = vim-msp
+	pkgdesc = assembly language syntax highlighting for the TI MSP430 family of processors
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://www.vim.org/scripts/script.php?script_id=707
+	arch = any
+	groups = vim-plugins
+	license = none
+	depends = vim-plugin-runtime
+	source = msp_orig.vim::https://www.vim.org/scripts/download_script.php?src_id=2212
+	source = match.patch
+	source = comment.patch
+	sha512sums = f900c6079f8694b1e91369168c3716a52b3370234c263e92185f7becc4b8a9890963eb5e253b9c2e53822db4f6693717173cef08ee96c5c1ec59046976a1db99
+	sha512sums = 3ffdeca7a011570eddb30bbc286268a1722834e4e5331ed95b6cbfff1ffb872df479b4ff4847e4a21c2b5f49c93e6fc4e7199d1979b9c4121491d7f36ba4dff7
+	sha512sums = 1af8f45b6736eeefab6a5bd70e9d0e259b122d473460d96456a22459a2559f5c729a8bb0c3796345be56ae77dba938e42741caedc519c8add4d1e2cffa78eabc
+
+pkgname = vim-msp
