@@ -19,11 +19,6 @@ conflicts=("${pkgname%-cli-git}")
 source=("git+$url")
 md5sums=('SKIP')
 
-package() {
-	cd "$srcdir/${pkgname%-git}"
-	make PREFIX=/usr DESTDIR="$pkgdir/" install
-}
-
 build() {
     cmake -B build -S "$srcdir/${pkgname%-git}" \
         -DCMAKE_BUILD_TYPE='None' \
