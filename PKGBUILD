@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=smag
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Easily create graphs from cli commands and view them in the terminal.'
 url='https://github.com/aantn/smag/'
@@ -9,7 +9,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/aantn/smag//archive/v$pkgve
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
 makedepends=('cargo')
-sha256sums=('3b80c32b7556abf4190e2ffe439a004110866a116f41cce822962e85bf8bc2ca')
+sha256sums=('386c061d52cccfa841a5635bbbaf38c02247a762944661dd81bae95a2f3a70cb')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
