@@ -2,7 +2,7 @@
 # Contributor: Struan Robertson <struanrobertson@protonmail.com>
 
 pkgname=grimblast-git
-pkgver=r33.d4eccc8
+pkgver=r89.fe26a90
 pkgrel=1
 pkgdesc="A helper for screenshots within Hyprland."
 arch=("any")
@@ -12,6 +12,7 @@ provides=('grimblast')
 conflicts=('grimblast')
 depends=("hyprland" "grim" "slurp" "jq")
 optdepends=('libnotify: Notify users when a screenshot is taken'
+            'hyprpicker: Freeze the screen in area mode'
             'wl-clipboard: Copy screenshots')
 makedepends=("scdoc" "git")
 source=("git+https://github.com/hyprwm/contrib.git")
