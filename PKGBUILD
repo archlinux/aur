@@ -66,8 +66,8 @@ _main_git() {
   conflicts+=("$_pkgname")
 
   _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
-  sha256sums=('SKIP')
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
 
   pkgver() {
     cd "$_pkgsrc"
@@ -88,7 +88,7 @@ package() {
   cd "$_pkgsrc"
   # Note: DESTDIR is ignored
   make INSTALL_ROOT="${pkgdir}" install
-} 
+}
 
 # execute
 _main_package
