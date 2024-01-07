@@ -1,0 +1,14 @@
+pkgbase = chicken-fmt
+	pkgdesc = Combinator Formatting for Chicken Scheme
+	pkgver = 0.8.11.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/fmt
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-srfi-1
+	depends = chicken-srfi-13
+	depends = chicken-srfi-69
+	depends = chicken-utf8
+
+pkgname = chicken-fmt
