@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-cinebars
 pkgver=0.1.0
-_vdrapi=2.6.3
-pkgrel=22
+_vdrapi=2.6.5
+pkgrel=23
 pkgdesc="Overlays cinema-bars over the live picture"
 url="https://github.com/vdr-projects/vdr-plugin-cinebars"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
