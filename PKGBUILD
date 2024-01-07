@@ -5,7 +5,7 @@
 
 _pkgname=kwin
 pkgname=kwinft-git
-pkgver=5.27.9
+pkgver=5.27.0.beta.0.r884.g7ea0e1602
 pkgrel=1
 pkgdesc='drop-in replacement for KWin with additional libwayland wrapping Qt/C++ library Wrapland'
 arch=(x86_64)
