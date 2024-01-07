@@ -1,0 +1,27 @@
+pkgbase = python-perscache
+	pkgdesc = An easy to use decorator for persistent memoization
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/leshchenko1979/perscache
+	arch = any
+	license = MIT
+	checkdepends = python-aiohttp
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pbr
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-beartype
+	depends = python-cloudpickle
+	depends = python-gcsfs
+	depends = python-icontract
+	depends = python-pandas
+	depends = python-pyarrow
+	depends = python-yaml
+	source = git+https://github.com/leshchenko1979/perscache.git#commit=8cafd10b3b41c7299b53f2c06062911c271b4138
+	sha256sums = SKIP
+
+pkgname = python-perscache
