@@ -1,8 +1,4 @@
 # Maintainer: ApplicationMaker <Application-Maker.Uinwad@erine.email>
-# Disable certain shellcheck checks for this script
-# SC2034: Disable warnings about unused variables
-# SC2154: Disable warnings about unset variables
-# shellcheck disable=SC2034 disable=SC2154
 pkgname=pacman-mirrors-helper-git
 pkgver=r94.f5340a4
 pkgrel=1
