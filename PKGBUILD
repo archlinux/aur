@@ -2,25 +2,69 @@
 
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
-pkgver=0.17.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('x86_64')
 url="https://gitlab.com/coolercontrol/coolercontrol"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'python' 'liquidctl' 'pyside6' 'qt6-svg' 'python-apscheduler'
-         'python-matplotlib' 'python-numpy' 'python-setproctitle' 'python-jeepney' 'python-requests'
-         'python-fastapi' 'uvicorn' 'python-orjson' 'python-dataclass-wizard' 'gcc-libs' 'glibc'
-         'python-colorlog' 'python-dateutil' 'python-pillow' 'python-pydantic' 'python-urllib3')
-makedepends=('python-build' 'python-wheel' 'python-installer' 'python-poetry' 'cargo' 'npm' 'nvm')
-checkdepends=('appstream-glib' 'desktop-file-utils')
-optdepends=('nvidia-utils: NVIDIA GPU support')
-provides=("$pkgname")
-conflicts=("$pkgname" coolero)
+depends=(
+  'hicolor-icon-theme'
+  'python'
+  'liquidctl'
+  'python-setproctitle'
+  'python-fastapi'
+  'uvicorn'
+  'gcc-libs'
+  'glibc'
+  'python-pydantic'
+  'python-urllib3'
+  'webkit2gtk'
+  'gtk3'
+  'libappindicator-gtk3'
+)
+makedepends=(
+  'python-build'
+  'python-wheel'
+  'python-installer'
+  'cargo'
+  'npm'
+  'nvm'
+  'webkit2gtk'
+  'base-devel'
+  'curl'
+  'wget'
+  'file'
+  'openssl'
+  'appmenu-gtk-module'
+  'gtk3'
+  'libappindicator-gtk3'
+  'librsvg'
+  'libvips'
+)
+checkdepends=(
+  'appstream-glib'
+  'desktop-file-utils'
+)
+optdepends=(
+  'nvidia-utils: NVIDIA GPU support'
+)
+provides=(
+  "$pkgname"
+)
+conflicts=(
+  "$pkgname" coolero
+)
 # lto is handled by cargo and can conflict with makepkg settings
-options=(!lto)
-source=("https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('83b5a505f534cb76ae2cc3e54ff769eca0034740a1f5ac3a83f37de0677e81a5')
+options=(
+  !lto
+)
+source=(
+  "https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+)
+sha256sums=(
+  '83b5a505f534cb76ae2cc3e54ff769eca0034740a1f5ac3a83f37de0677e81a5'
+)
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -40,42 +84,42 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-gui"
-  python -m build --wheel --no-isolation
   cd "${srcdir}/$pkgname-$pkgver/coolercontrol-liqctld"
   python -m build --wheel --no-isolation
   # This is the new UI in preview. The above Python coolercontrol-gui package will be removed with the next release
   cd "${srcdir}/$pkgname-$pkgver/coolercontrol-ui"
   _ensure_local_nvm
-  npm install
+  npm ci
   npm run build
   cp -r dist/* "${srcdir}/$pkgname-$pkgver/coolercontrold/resources/app/"
   cd "${srcdir}/$pkgname-$pkgver/coolercontrold"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release --locked
+  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-ui/src-tauri"
+  cargo build --release --locked -F custom-protocol
 }
 
 check() {
   cd "${srcdir}/$pkgname-$pkgver"
   desktop-file-validate "packaging/metadata/$_app_id.desktop"
   appstream-util validate-relax "packaging/metadata/$_app_id.metainfo.xml"
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-gui"
-  python -m coolercontrol -v
   cd "${srcdir}/$pkgname-$pkgver/coolercontrol-liqctld"
-  python -m coolercontrol-liqctld -v
+  python -m coolercontrol_liqctld -v
   cd "${srcdir}/$pkgname-$pkgver/coolercontrold"
   export RUSTUP_TOOLCHAIN=stable
   cargo test --release --locked
+  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-ui/src-tauri"
+  cargo test --release --locked -F custom-protocol
 }
 
 package() {
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-gui"
-  python -m installer --destdir="$pkgdir" dist/*.whl
   cd "${srcdir}/$pkgname-$pkgver/coolercontrol-liqctld"
   python -m installer --destdir="$pkgdir" dist/*.whl
   cd "${srcdir}/$pkgname-$pkgver/coolercontrold"
   install -Dm755 "target/release/coolercontrold" -t "$pkgdir/usr/bin"
+  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-ui/src-tauri"
+  install -Dm755 "target/release/coolercontrol" -t "$pkgdir/usr/bin"
 
   cd "${srcdir}/$pkgname-$pkgver"
   # systemd service files
