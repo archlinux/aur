@@ -1,11 +1,12 @@
 pkgbase = dnslookup
 	pkgdesc = Simple command line utility to make DNS lookups to the specified server
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ameshkov/dnslookup
 	arch = any
 	license = GPL3
-	makedepends = go
+	makedepends = go>=1.18
+	makedepends = patch
 	conflicts = dnslookup-git
 	conflicts = dnslookup-bin
 	source = dnslookup-1.7.1.tar.gz::https://github.com/ameshkov/dnslookup/archive/refs/tags/v1.7.1.tar.gz
