@@ -1,0 +1,13 @@
+pkgbase = fcitx5-breeze1
+	pkgdesc = Fcitx5 theme to match KDE's Breeze style
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/scratch-er/fcitx5-breeze
+	arch = any
+	license = GPL3
+	provides = fcitx5-breeze=1.0.0
+	conflicts = fcitx5-breeze
+	source = fcitx5-breeze-1.0.0.tar.gz::https://github.com/scratch-er/fcitx5-breeze/archive/v1.0.0.tar.gz
+	sha512sums = cb22c5ce54df2e286f1359125ebb7b5ab4a382ef68055aa4385be66b7bae253c0468f7e9fe7645d80480fc8010e13771cc955ea1ef676829dccbb9509eca6c63
+
+pkgname = fcitx5-breeze1
