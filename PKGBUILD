@@ -3,9 +3,9 @@
 
 pkgname=('ocis')
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A file sync & share platform designed to scale"
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url="https://github.com/owncloud/ocis"
 license=('APACHE')
 depends=('glibc')

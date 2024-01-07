@@ -1,8 +1,9 @@
 pkgbase = ocis
 	pkgdesc = A file sync & share platform designed to scale
 	pkgver = 4.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/owncloud/ocis
+	arch = aarch64
 	arch = x86_64
 	license = APACHE
 	makedepends = git
