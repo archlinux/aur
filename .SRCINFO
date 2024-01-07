@@ -1,0 +1,16 @@
+pkgbase = r-rcppxptrutils
+	pkgdesc = XPtr Add-Ons for 'Rcpp'
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RcppXPtrUtils
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-rcpp
+	optdepends = r-inline
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/RcppXPtrUtils_0.1.2.tar.gz
+	md5sums = 3f646f0d2c93a5bfec9636a7e9b63c26
+	b2sums = 2d9371d20acef699663b94243f8e22a8b087c2ff1be37ae75b0c68f248dcd14ff4c3213223f900cd102ee5c58a41d9a62e0c0542f69e3e95592c157a7c8418d2
+
+pkgname = r-rcppxptrutils
