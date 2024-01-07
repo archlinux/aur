@@ -1,0 +1,15 @@
+pkgbase = kb-doom-software-renderer-git
+	pkgdesc = Doom software renderer
+	pkgver = 1.0.0.r.
+	pkgrel = 1
+	url = https://gitlab.com/bochmkrzysztof/doom-sr.git#tag=code-1.0
+	arch = x86_64
+	license = BSD
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = kb-doom-software-renderer
+	source = git+https://gitlab.com/bochmkrzysztof/doom-sr.git#tag=code-1.0
+	sha256sums = SKIP
+
+pkgname = kb-doom-software-renderer-git
