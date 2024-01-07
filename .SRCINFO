@@ -1,6 +1,6 @@
 pkgbase = webers-git
 	pkgdesc = A python program that allows components in plain html
-	pkgver = 1.0.9
+	pkgver = r45.99020a7
 	pkgrel = 1
 	url = https://github.com/spynetS/webers
 	arch = x86_64
@@ -8,5 +8,8 @@ pkgbase = webers-git
 	depends = python
 	depends = python-flagser
 	depends = python-beautifulsoup4
+	depends = git
+	source = webers::git+https://github.com/spynetS/webers.git
+	sha256sums = SKIP
 
 pkgname = webers-git
