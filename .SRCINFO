@@ -1,0 +1,16 @@
+pkgbase = bkcrack-bin
+	pkgdesc = Crack legacy zip encryption with Biham and Kocher's known plaintext attack.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/kimci86/bkcrack
+	arch = x86_64
+	license = ZLIB
+	depends = gcc-libs
+	depends = python
+	depends = glibc
+	provides = bkcrack
+	conflicts = bkcrack
+	source = https://github.com/kimci86/bkcrack/releases/download/v1.6.0/bkcrack-1.6.0-Linux.tar.gz
+	sha256sums = 39b149dcc24375d47a8767448ebb98f2d664d837a23bddc6a4edc1c94340efd1
+
+pkgname = bkcrack-bin
