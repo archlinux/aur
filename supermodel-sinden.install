@@ -1,0 +1,23 @@
+# Message displayed for a fresh install.
+post_install() { 
+  echo ""
+  echo "***************************************************************"
+  echo " Supermodel can be run by typing supermodel and it's options:"
+  echo " supermodel <romset> [options]"
+  echo ""
+  echo " Note: You need to provide the full path to the romset."
+  echo ""
+  echo " Configuration:"
+  echo " If a Config directory exists in the current directory, Supermodel"
+  echo " will use that directory. Otherwise, the emulator will create one"
+  echo " at ~/.config/supermodel. If a legacy configuration exists in"
+  echo " ~/.supermodel, that configuration will be used instead."
+  echo ""
+  echo " To use multiple mice, set any mouse inputs in"
+  echo "   Config/supermodel.ini"
+  echo " to 'MOUSEX_', where X is the mouse device number--starting from 1."
+  echo " Refer to the mouse index in the output from"
+  echo "   supermodel -print-inputs"
+  echo "***************************************************************"
+  echo ""
+}
