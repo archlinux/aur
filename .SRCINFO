@@ -1,6 +1,6 @@
 pkgbase = kuroko-git
 	pkgdesc = Dynamic, bytecode-compiled programming language and a dialect of Python (development version)
-	pkgver = 1.4.0.r26.g7023e2e
+	pkgver = 1.4.0.r47.ge413643
 	pkgrel = 1
 	url = https://github.com/kuroko-lang/kuroko
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = kuroko-git
 	makedepends = git
 	depends = glibc
 	provides = kuroko
+	provides = libkuroko
 	conflicts = kuroko
 	options = lto
 	source = git+https://github.com/kuroko-lang/kuroko.git
