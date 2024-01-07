@@ -1,6 +1,6 @@
 # Maintainer: Jules Maselbas <jmaselbas@zdiv.net>
 pkgname=wch-isp
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Firmware programmer for WCH microcontrollers over USB"
 arch=('i686' 'x86_64' 'aarch64')
@@ -30,4 +30,4 @@ package() {
   make DESTDIR="$pkgdir/" PREFIX=/usr install
   make DESTDIR="$pkgdir/" UDEVPREFIX=/usr/lib/udev install-rules
 }
-sha256sums=('cf29e5bd23f80d6f18b8eb149ba213dbf927544b118347964274017a2a645c0d')
+sha256sums=('812205a36cfe3404dee53f403b1fcd88b914ee21bcb83af47cc58ebaa288e605')
