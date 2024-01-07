@@ -2,10 +2,10 @@
 
 pkgname=rust-parallel
 pkgver=1.13.0
-pkgrel=1
-pkgdesc="Using ChatGPT/GPT-3.5/GPT-4 in the terminal"
+pkgrel=2
+pkgdesc='Fast parallel command runner, written in Rust'
 arch=('x86_64' 'aarch64')
-url="https://github.com/aaronriekenberg/rust-parallel"
+url='https://github.com/aaronriekenberg/rust-parallel'
 license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
