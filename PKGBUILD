@@ -4,7 +4,7 @@
 pkgname=wrapland-git
 pkgver=0.527.0.beta.0.r53
 pkgrel=1
-pkgdesc='Qt/C++ library that wraps and mediates the libwayland client and server API'
+pkgdesc='Qt/C++ library that wraps and mediates the libwayland client and server API for kwinft'
 arch=(x86_64)
 url="https://gitlab.com/kwinft/wrapland"
 license=(LGPL)
