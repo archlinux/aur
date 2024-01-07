@@ -1,0 +1,5 @@
+beancount_reds_plugins-*.tar.gz
+src/
+pkg/
+beancount-reds-plugins-*.pkg*
+*.log

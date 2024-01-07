@@ -1,0 +1,17 @@
+pkgbase = beancount-reds-plugins
+	pkgdesc = Miscellaneous plugins for Beancount double entry accounting
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/redstreet/beancount_reds_plugins/
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = beancount
+	depends = python-dateutil
+	source = https://files.pythonhosted.org/packages/source/b/beancount-reds-plugins/beancount_reds_plugins-0.3.0.tar.gz
+	sha256sums = deec76e1d853854fdbff1cf78a39938390ca18554a6cab21a1845ec293e58673
+
+pkgname = beancount-reds-plugins
