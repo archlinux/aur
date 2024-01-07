@@ -1,0 +1,15 @@
+pkgbase = gog-thimbleweedpark-dlc-ransome-unbeeped
+	pkgdesc = Play Thimbleweed Park with uncensored English audio. GOG version.
+	pkgver = 1.0.958.18970
+	pkgrel = 1
+	url = https://www.gog.com/en/game/thimbleweed_park_ransome_unbeeped
+	install = gog-thimbleweedpark-dlc-ransome-unbeeped.install
+	arch = any
+	license = custom
+	makedepends = lgogdownloader
+	depends = gog-thimbleweedpark>=1.0.958.19330-1
+	options = !strip
+	source = thimbleweedpark-dlc-ransome-unbeeped_1.0.958_(18970).sh::gogdownloader://1858019230/en3installer0
+	sha512sums = 5f1525380efb9a0cee18f640f8e316d42ab0b67d0f5a56d382df3b70b4010108d507df3d28fe4691cfc13da42fc655876167eff0cb90b8cfc0583f4837f813cd
+
+pkgname = gog-thimbleweedpark-dlc-ransome-unbeeped

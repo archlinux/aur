@@ -1,0 +1,7 @@
+/.vscode/
+/src
+/pkg
+*.log
+*.pkg.*
+*.tar.*
+thimbleweedpark-dlc-ransome-unbeeped_*.sh

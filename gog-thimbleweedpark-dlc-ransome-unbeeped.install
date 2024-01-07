@@ -1,0 +1,11 @@
+post_install() {
+  cat << 'EOF'
+
+    To enable the *unbeeped* voice, go to Options -> Video and check
+    the box.
+
+    This option is not sticky, so you need to turn it on each time
+    to start.
+
+EOF
+}
