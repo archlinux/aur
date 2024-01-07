@@ -35,7 +35,7 @@ package_sing-geoip-common-git() {
 package_sing-geoip-rule-set-git() {
   pkgdesc='sing-geoip (rule sets)'
   depends=(sing-geoip-common-git)
-  provides=(sing-geoip-rule-set)
+  provides=(sing-geoip sing-geoip-rule-set)
   conflicts=(sing-geoip-rule-set)
 
   install -dm755 "${pkgdir}/usr/share/${_pkgbase}/rule-set"
@@ -45,7 +45,7 @@ package_sing-geoip-rule-set-git() {
 package_sing-geoip-db-git() {
   pkgdesc='sing-geoip (database)'
   depends=(sing-geoip-common-git)
-  provides=(sing-geoip-db)
+  provides=(sing-geoip sing-geoip-db)
   conflicts=(sing-geoip-db)
   replaces=(sing-geoip-git)
 
