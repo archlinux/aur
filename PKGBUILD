@@ -5,24 +5,30 @@
 
 _pkgname=kwin
 pkgname=kwinft-git
-pkgver=5.27.0.beta.0.r764.gd913702e3
+pkgver=5.27.9
 pkgrel=1
 pkgdesc='drop-in replacement for KWin with additional libwayland wrapping Qt/C++ library Wrapland'
 arch=(x86_64)
 url="https://gitlab.com/kwinft/kwinft"
 license=(LGPL)
-depends=(python xcb-util-cursor plasma-framework kcmutils kio breeze kinit qt6-sensors wrapland disman kscreen kscreenlocker pipewire libqaccessibilityclient-qt6 xorg-xwayland kdeclarative wlroots)
-makedepends=(git 'extra-cmake-modules>=5.240.0' qt6-tools kdoctools)
-optdepends=('qt6-virtualkeyboard: virtual keyboard support for kwin-wayland')
+depends=(python xcb-util-cursor qt6-sensors wrapland-git disman-git kdisplay-git wlroots \
+         xorg-xwayland qt6-multimedia pipewire microsoft-gsl \
+         knewstuff-git kdecoration-git kcmutils-git kio-git kdeclarative-git kscreenlocker-git)
+makedepends=(git qt6-tools kdoctools extra-cmake-modules-git)
+optdepends=('qt6-virtualkeyboard: virtual keyboard support for kwin-wayland' \
+            'libplasma: plasma-framework6' \
+            'breeze>=5.80.0' \
+            'libqaccessibilityclient-qt6' \
+	    'libkscreen-git: needed if kscreenlocker-git is used' )
 provides=("$_pkgname=${pkgver}" "kwinft=${pkgver}")
 conflicts=("$_pkgname" "kwinft")
-source=("$_pkgname::git+https://gitlab.com/kwinft/kwinft.git")
-sha256sums=('SKIP')
+source=("git+https://gitlab.com/kwinft/kwinft.git")
+sha256sum=
 install=kwinft.install
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/^kwinft\@//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname/-git}"
+  git describe --long | sed 's/^kwinft\@//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -31,10 +37,10 @@ prepare() {
 
 build() {
   cd "$srcdir"/build
-  cmake "$srcdir"/$_pkgname \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+  cmake "$srcdir"/${pkgname/-git} \
+    -DQT_MAJOR_VERSION=6 \
+    -DBUILD_WITH_QT6=ON \
+    -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=OFF
   make
 }
@@ -43,3 +49,4 @@ package() {
   cd "$srcdir"/build
   make DESTDIR="$pkgdir" install
 }
+sha256sums=('SKIP')
