@@ -1,7 +1,7 @@
 
 pkgname=webers-git
 pkgver=r45.99020a7
-pkgrel=1
+pkgrel=2
 pkgdesc="A python program that allows components in plain html"
 arch=(x86_64)
 url="https://github.com/spynetS/webers"
