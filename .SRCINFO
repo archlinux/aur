@@ -1,12 +1,12 @@
 pkgbase = cargs
 	pkgdesc = A lightweight cross-platform getopt alternative that works on Linux, Windows and macOS. Command line argument parser library for C/C++. Can be used to parse argv and argc parameters.
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://likle.github.io/cargs/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	source = https://github.com/likle/cargs/archive/refs/tags/v1.0.3.tar.gz
-	md5sums = 5944cf654ed92e388f48d0438b6f28f3
+	source = https://github.com/likle/cargs/archive/refs/tags/v1.1.0.tar.gz
+	md5sums = fce94f70fc190cadd20120b6162d63b0
 
 pkgname = cargs
