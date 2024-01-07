@@ -2,15 +2,15 @@
 
 pkgname=python-acme-git
 _reponame="certbot"
-pkgver=2.6.0.r10.g2d8a274eb
+pkgver=2.8.0.r6.g926d0c7e0
 pkgrel=1
 pkgdesc="ACME protocol implementation for Python"
 arch=('any')
 license=('Apache')
 url="https://github.com/certbot/${_reponame}"
-depends=('python-setuptools' 'python-cryptography' 'python-josepy' 'python-pyopenssl'
-	'python-pyrfc3339' 'python-pytz' 'python-requests' 'python-requests-toolbelt')
-makedepends=('git')
+depends=('python-cryptography' 'python-josepy' 'python-pyopenssl'
+	'python-pyrfc3339' 'python-pytz' 'python-requests')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
 provides=("python-acme=${pkgver}")
 conflicts=("python-acme")
 source=("${_reponame}"::"git+https://github.com/certbot/${_reponame}")
@@ -24,14 +24,18 @@ pkgver() {
 	)
 }
 
+prepare() {
+	git -C "${srcdir}/${_reponame}" clean -dfx
+}
+
 build() {
 	cd "${srcdir}/${_reponame}/acme"
-	python setup.py clean
-	rm -rf build dist
-	python setup.py build
+	python -m build --wheel --no-isolation
+	make -C docs man  # man pages
 }
 
 package_python-acme-git() {
 	cd "${srcdir}/${_reponame}/acme"
-	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	python -m installer --destdir="${pkgdir}" dist/*.whl
+	install -vDm644 -t "${pkgdir}/usr/share/man/man1" docs/_build/man/*.1
 }
