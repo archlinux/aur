@@ -5,7 +5,7 @@
 
 pkgname=firefox-esr52
 pkgver=52.9.0
-pkgrel=8
+pkgrel=9
 pkgdesc='Standalone web browser from mozilla.org, Extended Support Release 52.x with NPAPI support'
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -40,7 +40,12 @@ source=("https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefo
         "linux_remove_sysctl.patch"
         "gcc11_limits.patch"
         "mach_install_ignore_errors.patch"
-        "seamonkey-use-scoped-enums-in-IDBTransaction.patch"::"https://bugs.archlinux.org/task/71113?getfile=20366")
+        "seamonkey-use-scoped-enums-in-IDBTransaction.patch"::"https://bugs.archlinux.org/task/71113?getfile=20366"
+        "RemoteSpellCheckEngineChild.patch"
+        "icu74_nsJISx4051LineBreaker.patch"
+        "gcc_lto-partitions.patch"::"https://bug1258215.bmoattachments.org/attachment.cgi?id=8766692"
+        "arc4random.patch"
+        "mathops_operand_type_mismatch_for_shr.patch"::"https://git.videolan.org/?p=ffmpeg.git;a=patch;h=effadce6c756247ea8bae32dc13bb3e6f464f0eb")
 sha256sums=('c01d09658c53c1b3a496e353a24dad03b26b81d3b1d099abc26a06f81c199dd6'
             '9efd02ff78c31f8690a12401faac2605dffcac12eaf11e1791ec4221570c2746'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
@@ -59,8 +64,13 @@ sha256sums=('c01d09658c53c1b3a496e353a24dad03b26b81d3b1d099abc26a06f81c199dd6'
             'ba7858a8cb852388c870bb9acd20bedc5e9cb0b2cf7bdfa5c334e61350279232'
             '1f324e9a5bf195a58416f622c025a9dd0aac7d802f838e44d9b55b34a0e56585'
             'f88b950d72d5edae01289fddb29dad75de075ed61735782da6687bf56af225d8'
-            '56d70daae3a867d3c026970a6b8589678f84a1e58cf14772a3d0ef1c717f6c19'
-            '6227a54ef4519c19ab8e39412bca71711fabab393491db691f7ef90dbe99f225')
+            'cc1cbddc8f984dc6e626eda530e67592ac1982f5644318b7873e989392926612'
+            '6227a54ef4519c19ab8e39412bca71711fabab393491db691f7ef90dbe99f225'
+            '979ddabbd475eee2664a63667cd4c7867ce781d5b8fc14a3de3fe51577b75bf0'
+            '0aedf9faa0be244be6fefbe25bf5f85df0ce757f7b0d45720b1baa2f6ee1f990'
+            '64118a811ecf34762c433bad92e9e895c69b8a3060e7261246519a2b6d25ff1b'
+            '0a8a8119c3b10d09f7caf3ebe9b25ae7f51001ce835cab8baafc507fb3fd6772'
+            'a50d7da9870a3fd801ad3a4d13d5c9b260acb094cf8bfa4afd95a54741173a7f')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -134,6 +144,26 @@ prepare() {
 
   # Fix for nss 3.66
   patch -Np1 -i "${srcdir}/seamonkey-use-scoped-enums-in-IDBTransaction.patch"
+  
+  # Fix for RemoteSpellCheckEngineChild
+  patch -Np1 -i "${srcdir}/RemoteSpellCheckEngineChild.patch"
+  
+  # Fix for icu 74
+  patch -Np1 -i "${srcdir}/icu74_nsJISx4051LineBreaker.patch"
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1862601
+  
+  # Fix for G++ lto-partitions=1
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1258215
+  patch -Np1 -i "${srcdir}/gcc_lto-partitions.patch"
+  
+  # Fix for arc4random
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1782988
+  patch -Np1 -i "${srcdir}/arc4random.patch"
+  
+  # Fix for ffmpeg mathops
+  # https://hg.mozilla.org/releases/mozilla-esr115/rev/e024fe4fd62c
+  cd "media/ffvpx"
+  patch -Np1 -i "${srcdir}/mathops_operand_type_mismatch_for_shr.patch"
 }
 
 build() {

@@ -1,0 +1,17 @@
+diff -Naur firefox-52.9.0esr.orig/intl/lwbrk/nsJISx4051LineBreaker.cpp firefox-52.9.0esr/intl/lwbrk/nsJISx4051LineBreaker.cpp
+--- firefox-52.9.0esr.orig/intl/lwbrk/nsJISx4051LineBreaker.cpp	2024-01-07 16:54:44.911690681 +0100
++++ firefox-52.9.0esr/intl/lwbrk/nsJISx4051LineBreaker.cpp	2024-01-07 17:18:28.544628736 +0100
+@@ -550,7 +550,12 @@
+     /* REGIONAL_INDICATOR = 39,           [RI] */ CLASS_CHARACTER,
+     /* E_BASE = 40,                       [EB] */ CLASS_BREAKABLE,
+     /* E_MODIFIER = 41,                   [EM] */ CLASS_CHARACTER,
+-    /* ZWJ = 42,                          [ZWJ]*/ CLASS_CHARACTER
++    /* ZWJ = 42,                          [ZWJ]*/ CLASS_CHARACTER,
++    /* AKSARA = 43,                       [AK] */ CLASS_CHARACTER,
++    /* AKSARA_PREBASE = 44,               [AP] */ CLASS_CHARACTER,
++    /* AKSARA_START = 45,                 [AS] */ CLASS_CHARACTER,
++    /* VIRAMA_FINAL = 46,                 [VF] */ CLASS_CHARACTER,
++    /* VIRAMA = 47,                       [VI] */ CLASS_CHARACTER
+   };
+ 
+ #if ENABLE_INTL_API

@@ -1,16 +1,35 @@
 diff -Naur firefox-52.9.0esr.orig/toolkit/mozapps/installer/packager.py firefox-52.9.0esr/toolkit/mozapps/installer/packager.py
---- firefox-52.9.0esr.orig/toolkit/mozapps/installer/packager.py	2017-04-11 04:13:24.000000000 +0200
-+++ firefox-52.9.0esr/toolkit/mozapps/installer/packager.py	2021-11-07 17:31:56.920859058 +0100
-@@ -163,8 +163,10 @@
+--- firefox-52.9.0esr.orig/toolkit/mozapps/installer/packager.py	2024-01-07 16:54:43.185021639 +0100
++++ firefox-52.9.0esr/toolkit/mozapps/installer/packager.py	2024-01-07 21:33:32.564305725 +0100
+@@ -163,17 +163,20 @@
                                    % resource],
                             extra_linker_path=gre_path,
                             extra_env=extra_env):
 -            errors.fatal('Error while running startup cache precompilation')
 -            return
+-        from mozpack.mozjar import JarReader
+-        jar = JarReader(cache)
+-        resource = '/resource/%s/' % resource
+-        for f in jar:
+-            if resource in f.filename:
+-                path = f.filename[f.filename.index(resource) + len(resource):]
+-                if registry.contains(path):
+-                    registry.add(f.filename, GeneratedFile(f.read()))
+-        jar.close()
 +            # errors.fatal('Error while running startup cache precompilation')
 +            # return
 +            # Ignore the xpcshell errors as it's buggy ATM
 +            pass
-         from mozpack.mozjar import JarReader
-         jar = JarReader(cache)
-         resource = '/resource/%s/' % resource
++        if os.path.exists(cache):
++            from mozpack.mozjar import JarReader
++            jar = JarReader(cache)
++            resource = '/resource/%s/' % resource
++            for f in jar:
++                if resource in f.filename:
++                    path = f.filename[f.filename.index(resource) + len(resource):]
++                    if registry.contains(path):
++                        registry.add(f.filename, GeneratedFile(f.read()))
++            jar.close()
+     finally:
+         if os.path.exists(cache):
+             os.remove(cache)

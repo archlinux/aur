@@ -1,0 +1,12 @@
+diff -Naur firefox-52.9.0esr.orig/extensions/spellcheck/src/mozSpellChecker.h firefox-52.9.0esr/extensions/spellcheck/src/mozSpellChecker.h
+--- firefox-52.9.0esr.orig/extensions/spellcheck/src/mozSpellChecker.h	2024-01-07 15:58:46.604431217 +0100
++++ firefox-52.9.0esr/extensions/spellcheck/src/mozSpellChecker.h	2024-01-07 16:00:47.739420245 +0100
+@@ -17,7 +17,7 @@
+ #include "nsTArray.h"
+ #include "mozISpellI18NUtil.h"
+ #include "nsCycleCollectionParticipant.h"
+-#include "RemoteSpellCheckEngineChild.h"
++#include "mozilla/RemoteSpellCheckEngineChild.h"
+ 
+ namespace mozilla {
+ class PRemoteSpellcheckEngineChild;

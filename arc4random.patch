@@ -1,0 +1,45 @@
+diff -Naur firefox-52.9.0esr.orig/ipc/chromium/src/third_party/libevent/arc4random.c firefox-52.9.0esr/ipc/chromium/src/third_party/libevent/arc4random.c
+--- firefox-52.9.0esr.orig/ipc/chromium/src/third_party/libevent/arc4random.c	2024-01-07 16:54:39.331683004 +0100
++++ firefox-52.9.0esr/ipc/chromium/src/third_party/libevent/arc4random.c	2024-01-07 19:46:19.624639689 +0100
+@@ -477,20 +477,6 @@
+ }
+ #endif
+ 
+-ARC4RANDOM_EXPORT void
+-arc4random_buf(void *_buf, size_t n)
+-{
+-	unsigned char *buf = _buf;
+-	_ARC4_LOCK();
+-	arc4_stir_if_needed();
+-	while (n--) {
+-		if (--arc4_count <= 0)
+-			arc4_stir();
+-		buf[n] = arc4_getbyte();
+-	}
+-	_ARC4_UNLOCK();
+-}
+-
+ #ifndef ARC4RANDOM_NOUNIFORM
+ /*
+  * Calculate a uniformly distributed random number less than upper_bound
+diff -Naur firefox-52.9.0esr.orig/ipc/chromium/src/third_party/libevent/linux/event2/event-config.h firefox-52.9.0esr/ipc/chromium/src/third_party/libevent/linux/event2/event-config.h
+--- firefox-52.9.0esr.orig/ipc/chromium/src/third_party/libevent/linux/event2/event-config.h	2024-01-07 16:54:39.341683019 +0100
++++ firefox-52.9.0esr/ipc/chromium/src/third_party/libevent/linux/event2/event-config.h	2024-01-07 18:37:36.641265170 +0100
+@@ -23,11 +23,15 @@
+ /* Define if libevent should not be compiled with thread support */
+ /* #undef _EVENT_DISABLE_THREAD_SUPPORT */
+ 
++#ifdef HAVE_ARC4RANDOM
+ /* Define to 1 if you have the `arc4random' function. */
+-/* #undef _EVENT_HAVE_ARC4RANDOM */
++#define EVENT__HAVE_ARC4RANDOM 1
++#endif
+ 
++#ifdef HAVE_ARC4RANDOM_BUF
+ /* Define to 1 if you have the `arc4random_buf' function. */
+-/* #undef _EVENT_HAVE_ARC4RANDOM_BUF */
++#define EVENT__HAVE_ARC4RANDOM_BUF 1
++#endif
+ 
+ /* Define to 1 if you have the <arpa/inet.h> header file. */
+ #define _EVENT_HAVE_ARPA_INET_H 1
