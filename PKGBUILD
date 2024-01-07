@@ -1,7 +1,8 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp-git
 pkgver=1.12.0_260_g19c36e59
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="https://github.com/accel-ppp/accel-ppp"
@@ -9,6 +10,7 @@ license=('GPL')
 depends=('openssl>=1.0.0' 'pcre>=8.30' 'libnl>=2.0' 'lua')
 makedepends=('git' 'cmake>=2.6' 'libnl' 'net-snmp>=5.x')
 optdepends=('accel-ppp-ipoe-dkms-git' 'accel-ppp-vlanmon-dkms-git' 'logrotate')
+provides=('accel-ppp')
 conflicts=('accel-ppp')
 install='accel-ppp.install'
 options=('docs')
@@ -61,6 +63,8 @@ build() {
 		-DNETSNMP=FALSE \
 		-DLUA=5.3 \
 		-DLUA_INCLUDE_DIR="/usr/include" \
+		-DLIB_SUFFIX='' \
+		-DCMAKE_INSTALL_LOCALSTATEDIR=/var \
         "$srcdir/${pkgname%-git}"
 	make || return 1
 }

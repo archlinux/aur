@@ -1,7 +1,7 @@
 pkgbase = accel-ppp-git
 	pkgdesc = High performance PPTP/L2TP/PPPoE/IPoE server
 	pkgver = 1.12.0_260_g19c36e59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/accel-ppp/accel-ppp
 	install = accel-ppp.install
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = accel-ppp-git
 	optdepends = accel-ppp-ipoe-dkms-git
 	optdepends = accel-ppp-vlanmon-dkms-git
 	optdepends = logrotate
+	provides = accel-ppp
 	conflicts = accel-ppp
 	options = docs
 	backup = etc/accel-ppp.conf
