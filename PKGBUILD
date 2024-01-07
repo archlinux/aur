@@ -2,7 +2,7 @@
 
 _module=dissect.cstruct
 pkgname=python-$_module
-pkgver=3.10
+pkgver=3.11
 pkgrel=1
 pkgdesc="A Dissect module implementing a parser for C-like structures."
 arch=('any')
