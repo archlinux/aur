@@ -3,7 +3,7 @@
 
 _pkgname=libchewing
 pkgname=libchewing-rust-git
-pkgver=0.5.1.r188.g587e9d6
+pkgver=0.6.0rc.1.r0.g06b577b
 pkgrel=1
 epoch=1
 pkgdesc='Intelligent Chinese phonetic input method (experimental Rust implementation)'
@@ -14,25 +14,18 @@ conflicts=("$_pkgname" "$_pkgname-git")
 provides=("$_pkgname" "$_pkgname-git")
 depends=('sqlite')
 makedepends=('cmake' 'git' 'rust')
-source=("git+https://github.com/chewing/libchewing/"
-        "git+https://github.com/corrosion-rs/corrosion.git")
-md5sums=('SKIP'
-         'SKIP')
+source=("git+https://github.com/chewing/libchewing/")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
   ( set -o pipefail
-    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-rc/rc/;s/-/./g;s/^v//'
   )
 }
 
 prepare() {
   cd "$_pkgname"
-
-  git submodule init
-  git config submodule.cmake/corrosion.url "$srcdir"/corrosion
-  git -c protocol.file.allow=always submodule update cmake/corrosion
-
   mkdir build
 }
 

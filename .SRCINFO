@@ -1,6 +1,6 @@
 pkgbase = libchewing-rust-git
 	pkgdesc = Intelligent Chinese phonetic input method (experimental Rust implementation)
-	pkgver = 0.5.1.r188.g587e9d6
+	pkgver = 0.6.0rc.1.r0.g06b577b
 	pkgrel = 1
 	epoch = 1
 	url = https://chewing.im/
@@ -16,8 +16,6 @@ pkgbase = libchewing-rust-git
 	conflicts = libchewing
 	conflicts = libchewing-git
 	source = git+https://github.com/chewing/libchewing/
-	source = git+https://github.com/corrosion-rs/corrosion.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = libchewing-rust-git
