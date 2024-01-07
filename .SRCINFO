@@ -1,6 +1,6 @@
 pkgbase = lib32-sdl2_image
 	pkgdesc = A simple library to load images of various formats as SDL surfaces
-	pkgver = 2.8.1
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://www.libsdl.org/projects/SDL_image/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lib32-sdl2_image
 	depends = lib32-sdl2
 	depends = lib32-libwebp
 	depends = sdl2_image
-	source = git+https://github.com/libsdl-org/SDL_image.git#tag=28b9daa15a59aa2829cd29944ca9ffbf049d7667
+	source = git+https://github.com/libsdl-org/SDL_image.git#tag=abcf63aa71b4e3ac32120fa9870a6500ddcdcc89
 	b2sums = SKIP
 
 pkgname = lib32-sdl2_image
