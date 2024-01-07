@@ -1,21 +1,23 @@
 # Maintainer: Neal Buchanan <neal.buchanan@gmx.com>
 
 pkgname=buckets-bin
-_pkgname=Buckets
-pkgver=0.71.1
+pkgver=0.72.1
 pkgrel=1
 pkgdesc="Private budgeting with the envelope budgeting method"
 arch=('x86_64')
+_arch="amd64"
 url="https://www.budgetwithbuckets.com/"
 license=('custom: commercial')
 depends=('alsa-lib' 'gtk3' 'libxss' 'nss')
 optdepends=()
-source=("https://github.com/buckets/application/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-noextract=("${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('b5166ec9655b4f4cb99934204e65ebcfd3dad8cf4202239a96e0e3e8463646d9')
+_pkgname=Buckets-ubuntu-22.04
+_archivename="${_pkgname}-${_arch}-${pkgver}.deb"
+source=("https://github.com/buckets/application/releases/download/v${pkgver}/${_archivename}")
+noextract=("${_archivename}")
+sha256sums=('690b3e322176c3b97e0eb4625e915fa2fd402330f1e4b4cf98ead5a99f336980')
 
 package() {
-  bsdtar -O -xf "${_pkgname}_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+  bsdtar -O -xf "${_archivename}" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
 
   install -d "${pkgdir}/usr/bin"
 
@@ -24,4 +26,3 @@ package() {
 
   ln -s /opt/${_pkgname}/buckets "${pkgdir}"/usr/bin/buckets
 }
-
