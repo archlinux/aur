@@ -7,10 +7,10 @@
 # Contributor: 
 # 
 pkgname='wg-client'
-pkgdesc='Wireguard client. Start/Stop VPN and ssh with remote listener'
+pkgdesc='Wireguard linux client (command line and gui)'
 _gitname='wg-client'
 
-pkgver=3.7.2
+pkgver=3.7.3
 pkgrel=1
 url="https://github.com/gene-git/{{project_name}}"
 

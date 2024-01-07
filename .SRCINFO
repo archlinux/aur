@@ -1,6 +1,6 @@
 pkgbase = wg-client
-	pkgdesc = Wireguard client. Start/Stop VPN and ssh with remote listener
-	pkgver = 3.7.1
+	pkgdesc = Wireguard linux client (command line and gui)
+	pkgver = 3.7.3
 	pkgrel = 1
 	url = https://github.com/gene-git/{{project_name}}
 	arch = any
@@ -10,11 +10,12 @@ pkgbase = wg-client
 	makedepends = python-wheel
 	makedepends = python-hatch
 	makedepends = rsync
-	depends = python>3.11
+	depends = python>3.10
 	depends = python-pyqt6
 	depends = hicolor-icon-theme
 	depends = python-psutil
-	source = git+https://github.com/gene-git/wg-client#tag=3.7.1
+	depends = python-netifaces
+	source = git+https://github.com/gene-git/wg-client#tag=3.7.3
 	sha512sums = SKIP
 
 pkgname = wg-client
