@@ -1,0 +1,15 @@
+pkgbase = onionmasq-git
+	pkgdesc = Experimental Tunnel interface for Arti
+	pkgver = r532.f49f4f7
+	pkgrel = 1
+	url = https://gitlab.torproject.org/tpo/core/onionmasq
+	arch = 
+	license = unknown
+	makedepends = cargo
+	makedepends = git
+	provides = onionmasq
+	conflicts = onionmasq
+	source = onionmasq::git+https://gitlab.torproject.org/tpo/core/onionmasq.git
+	md5sums = SKIP
+
+pkgname = onionmasq-git
