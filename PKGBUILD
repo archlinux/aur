@@ -2,7 +2,7 @@
 # Contributor: unclesam <web _AT_ shinobi-mail _DOT_ de>
 
 pkgname=mintstick-git
-pkgver=r270.1e49c7f
+pkgver=r272.6511182
 pkgrel=1
 pkgdesc='Format or write images to USB sticks (Linux Mint tool)'
 arch=(any)
@@ -25,14 +25,16 @@ prepare() {
   sed -i -e '/.*kde4.*/d' \
          -e 's| /usr| usr|' \
          -e 's| usr| "'"$pkgdir"'"/usr|' \
-         -e 's|^|cp |' \
+         -e 's|^|cp -r |' \
          $pkgname/debian/install
 }
 
 package() {
+  install -Dm644 $pkgname/debian/mintstick.1 -t "$pkgdir/usr/share/man/man1"
+
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/lib/mintstick"
-  install -dm755 "$pkgdir/usr/share/"{applications,mintstick,nemo/actions,polkit-1/actions}
+  install -dm755 "$pkgdir/usr/share/"{applications,icons,mintstick,nemo/actions,polkit-1/actions}
 
   cd $pkgname
   sh ./debian/install
