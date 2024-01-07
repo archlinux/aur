@@ -1,6 +1,6 @@
 pkgbase = webers-git
 	pkgdesc = A python program that allows components in plain html
-	pkgver = r45.99020a7
+	pkgver = 1
 	pkgrel = 2
 	url = https://github.com/spynetS/webers
 	arch = x86_64

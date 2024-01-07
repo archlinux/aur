@@ -1,6 +1,6 @@
 
 pkgname=webers-git
-pkgver=r45.99020a7
+pkgver=1
 pkgrel=2
 pkgdesc="A python program that allows components in plain html"
 arch=(x86_64)
