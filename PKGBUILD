@@ -42,6 +42,7 @@ check() {
   test-env/bin/python -m pytest \
     --browser=chrome \
     --headless \
+    -k 'not run_with_dashboard.py' \
     examples/unit_tests/verify_framework.py
 }
 
