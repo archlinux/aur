@@ -1,6 +1,6 @@
 pkgbase = runwhenidle
 	pkgdesc = Run a computentionally intensive program when user is not in front of the computer.
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/perk11/runwhenidle
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = runwhenidle
 	depends = libxdmcp
 	depends = libxau
 	depends = libxcb
-	source = git+https://github.com/perk11/runwhenidle.git?signed#tag=0.4.1
+	source = git+https://github.com/perk11/runwhenidle.git?signed#tag=0.5.0
 	sha256sums = SKIP
 
 pkgname = runwhenidle

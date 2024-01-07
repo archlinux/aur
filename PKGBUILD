@@ -1,6 +1,6 @@
 # Maintainer: Konstantin Pereiaslov <perk11@perk11.info>
 pkgname=runwhenidle
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Run a computentionally intensive program when user is not in front of the computer."
 arch=('x86_64')
