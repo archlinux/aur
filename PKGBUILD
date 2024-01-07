@@ -8,12 +8,12 @@
 _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname"
-pkgver=6.6.9
+pkgver=6.6.10
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-or-later)
 makedepends=(
   bc
   cpio
@@ -49,9 +49,9 @@ validpgpkeys=(
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
 sha256sums=(
-  '8ebc65af0cfc891ba63dce0546583da728434db0f5f6a54d979f25ec47f548b3'
+  '9ee627e4c109aec7fca3eda5898e81d201af2c7eb2f7d9d7d94c1f0e1205546c'
   'SKIP'
-  'da9d15179f3a0e1b19c57344c6e10b886d598f5256ea6f82adbe2940ccf68b34'
+  'ad84324ce12f7c27664e79ebeaf4f7b6b52e1abe5777454b4d72c287c928f99a'
   'SKIP'
   '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
 
