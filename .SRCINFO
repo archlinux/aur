@@ -1,0 +1,14 @@
+pkgbase = transcopy-git
+	pkgdesc = Recursively copy a directory and convert some media types to a chosen format.
+	pkgver = r7.71654c1
+	pkgrel = 1
+	url = https://gitlab.com/S410/transcopy
+	arch = any
+	license = GPL-3-or-later
+	makedepends = git
+	depends = python
+	depends = ffmpeg
+	source = git+https://gitlab.com/S410/transcopy.git
+	md5sums = SKIP
+
+pkgname = transcopy-git
