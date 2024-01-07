@@ -2,6 +2,7 @@ pkgbase = bilibili-bin
 	pkgdesc = 哔哩哔哩官方客户端linux移植版。Bilibili official desktop client
 	pkgver = 1.13.0_2
 	pkgrel = 2
+	epoch = 5
 	url = https://github.com/msojocs/bilibili-linux
 	arch = aarch64
 	arch = x86_64
