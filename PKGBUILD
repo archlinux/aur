@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-weatherforecast
 pkgver=0.2.0
-_vdrapi=2.6.3
-pkgrel=9
+_vdrapi=2.6.5
+pkgrel=10
 pkgdesc="provides a weather forecast based on forecast.io data"
 url='https://github.com/vdr-projects/vdr-plugin-weatherforecast'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
