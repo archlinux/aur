@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=local-ai
 _pkgname=LocalAI
-pkgver=2.3.1
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first."
 arch=('aarch64' 'x86_64')
@@ -18,21 +18,22 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
 prepare() {
-  cd "${_pkgname}-${pkgver}"
   export GO_TAGS="tinydream tts"
+
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   make get-sources
 }
 
 build() {
-  cd "${_pkgname}-${pkgver}"
   export GO_TAGS="tinydream tts"
 
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   install -Dm775 "${pkgname}" -t "${pkgdir}/usr/bin/"
 
@@ -48,7 +49,7 @@ package() {
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
 
-sha256sums=('9e5e557f570311e8684fedec9458a19dd52e6eeaa55b9f8446e7a3f0ba08356b'
+sha256sums=('56fce0cd62a7a09cb94e70ba8040b0863d5bea8c261a7576b8f15093b77b61cf'
   'a642a3eda0fe24fa2ebffc5ec997fdbcc2ee74b615045fe5f0e40c4efc7b8399'
   '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
   '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
