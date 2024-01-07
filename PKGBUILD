@@ -59,11 +59,11 @@ _htmldocs_enable=
 _major=6.6
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=13
+_lqxpatchrel=14
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=6.6.10.lqx1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -79,6 +79,7 @@ makedepends=(
   python
   tar
   xz
+  zstd
 )
 
 if [ -n "$_htmldocs_enable" ]; then
@@ -104,7 +105,7 @@ validpgpkeys=(
 )
 sha512sums=('458b2c34d46206f9b4ccbac54cc57aeca1eaecaf831bc441e59701bac6eadffc17f6ce24af6eadd0454964e843186539ac0d63295ad2cc32d112b60360c39a35'
             'SKIP'
-            '1ac39189b3c2d7c1ddd6f1adea89f678b5f00e0fd7b2293fe0497dc2656c04ae8d5f52824d376fbda87843f83897304f4a94b6fd3fa3ec114d32ca2214f2a53c')
+            '47d01180be76f159bb740c4a970f32464ff79fef0af93cb9097d11ec8a901066722820bbad35e0fc76861736cd74f8d4dd9db472b5b27b6bd6f4b8841b9f5c0a')
 
 
 
