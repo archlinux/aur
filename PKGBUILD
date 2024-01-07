@@ -1,4 +1,5 @@
-# Maintainer: Struan Robertson <struanrobertson@protonmail.com>
+# Maintainer: Elias Werberich <elias at werberich dot de>
+# Contributor: Struan Robertson <struanrobertson@protonmail.com>
 
 pkgname=grimblast-git
 pkgver=r33.d4eccc8
@@ -28,7 +29,7 @@ build() {
 
 package() {
   cd "$srcdir/contrib/grimblast"
-  
+
   install -Dm 644 grimblast.1 "$pkgdir/usr/share/man/man1/grimblast.1"
   install -Dm 755 grimblast "$pkgdir/usr/bin/grimblast"
 }
