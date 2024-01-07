@@ -1,22 +1,20 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=INSPEcT
-_pkgver=1.30.0
+_pkgver=1.32.1
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Modeling RNA synthesis, processing and degradation with RNA-seq data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Modeling RNA synthesis, processing and degradation with RNA-seq data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(GPL2)
 depends=(
-  r
   r-biobase
   r-biocgenerics
   r-biocparallel
   r-deseq2
   r-desolve
-  r-gdata
   r-genomeinfodb
   r-genomicalignments
   r-genomicfeatures
@@ -24,6 +22,7 @@ depends=(
   r-iranges
   r-plgem
   r-proc
+  r-readxl
   r-rootsolve
   r-rsamtools
   r-rtracklayer
@@ -38,14 +37,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9d4dd475a3052362a5da87aefc4c778e42dce49862b81ee6322549e9d0a1cedb')
+md5sums=('d6ed794228c1ef9d64e7ae97278d7ccf')
+b2sums=('29c60d50f1ce663d7b7019bd8d58c6867b1339a1865a9af773e84087b21ffde4bcdfbee2880bbb10f22b801e9aa60a788e4e2a2c4757f2774edc55f7954c7974')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
