@@ -4,54 +4,53 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=121.0b1
+pkgver=122.0b2
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
-arch=('x86_64')
-license=('MPL' 'GPL' 'LGPL')
-url="https://www.thunderbird.net/channel/#beta"
+arch=(x86_64)
+license=(MPL GPL LGPL)
+url='https://www.thunderbird.net/channel/#beta'
 depends=(
-  alsa-lib
-  botan2
-  bzip2 libbz2.so
-  cairo
-  dbus-glib
-  dbus libdbus-1.so
-  ffmpeg
-  fontconfig libfontconfig.so
-  freetype2 libfreetype.so
-  gcc-libs
-  gdk-pixbuf2
-  glib2 libglib-2.0.so
   glibc
-  gnupg
-  gtk3
   gtk3 libgdk-3.so libgtk-3.so
-  hunspell
-  icu libicui18n.so libicuuc.so
-  json-c
-  libcanberra
-  libevent
-  libffi libffi.so
-  libjpeg-turbo
-  libpulse
-  libvpx libvpx.so
-  libwebp libwebp.so libwebpdemux.so
-  libx11
-  libxcomposite
-  libxdamage
-  libxext
-  libxfixes
-  libxrender
-  libxt
   mime-types
-  nspr
+  dbus libdbus-1.so
+  dbus-glib
+  alsa-lib
   nss
-  pango libpango-1.0.so
-  pixman libpixman-1.so
+  hunspell
   sqlite
   ttf-font
+  libvpx libvpx.so
   zlib
+  bzip2 libbz2.so
+  botan2
+  libwebp libwebp.so libwebpdemux.so
+  libevent
+  libjpeg-turbo
+  libffi libffi.so
+  nspr
+  gcc-libs
+  libpulse
+  libx11
+  libxrender
+  libxfixes
+  libxext
+  libxcomposite
+  libxdamage
+  libxt
+  pango libpango-1.0.so
+  cairo
+  gdk-pixbuf2
+  freetype2 libfreetype.so
+  fontconfig libfontconfig.so
+  glib2 libglib-2.0.so
+  pixman libpixman-1.so
+  gnupg
+  json-c
+  libcanberra
+  ffmpeg
+  icu libicui18n.so libicuuc.so
 )
 makedepends=(
   cbindgen
@@ -93,12 +92,16 @@ options=(!emptydirs !makeflags !strip !lto !debug)
 provides=("thunderbird=$pkgver")
 source=(https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
         install-dir.patch
+        metainfo.patch
         "$pkgname".desktop
+        thunderbird-system-icu-74.patch # https://bugzilla.mozilla.org/show_bug.cgi?id=1862601
 )
-b2sums=('5f57b0b9fdcb49c3ad5ace7f8aebd0bddba5e2d2be28d7dc08b87098de7c0ba808015556f7d21906d0e02cfcc1239c98511d32ffd9f0bd85a3a85389046a8af5'
+b2sums=('f31192a1d61b71c081dbb1c6c1f0661d4a0d2edd132c158086464100cf94dcb63240e0706d1c3c2fd3b201cf385ff516c105d705574cc149f8b2e14adebea9b8'
         'SKIP'
         'ba188a0c1359f49390a789621b2c0bec67f4152f62c0dced26b31ec291abccfb5636dba0f8ed1f879e1a2a237e183b96b092d760e04e148a64da18660b87dcfb'
-        '3518012290b5b358d882d7d12bc2455345b89cef4abfbccaca025dfb935fcefe49806dd534e75b10c0c6a3495b7133a7feb3f11d7773a0ce252f8d68e15b5a24')
+        '2b31b26f49229f96a645f06892d576f49662de2e5c294a1c164569402f608f267762b1f4448ebea0b77030939952274cb2dfe524bf97f4fb2cdd5f7689b95bcd'
+        'c0a500055dc2c5e25b538b010e54e79bea2fb91b9b5927063f429b8931d84f28ecb4c37aaa8895c4a84dafa5066985dd2d99b8294d87c7b311d88109ca036845'
+        'a472abae3909c7100fe2367eeaac98f608ccf60385c930175701dcc96289af963a4aa91552ad84e1ffc157c8eeb166330887faff2504993519b0c46a162db470')
 validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
   4360FE2109C49763186F8E21EBE41E90F6F12F6D # Mozilla Software Releases <release@mozilla.com>
@@ -248,13 +251,13 @@ app.partner.archlinux=archlinux
 END
 
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dm644 comm/mail/branding/thunderbird/default${i}.png \
+    install -Dvm644 comm/mail/branding/thunderbird/default${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
 
-  install -Dm644 comm/mail/branding/thunderbird/content/about-logo.svg \
+  install -Dvm644 comm/mail/branding/thunderbird/content/about-logo.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
+  install -Dvm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
 
   install -Dvm644 ../$pkgname.desktop \

@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Thunderbird (Beta)
+Name=Thunderbird Beta
 Comment=Send and receive mail with Thunderbird
 Comment[ast]=Lleer y escribir corréu electrónicu
 Comment[ca]=Llegiu i escriviu correu
@@ -23,7 +23,6 @@ Comment[pt_BR]=Leia e escreva suas mensagens
 Comment[ru]=Читайте и пишите письма
 Comment[sk]=Čítajte a píšte poštu pomocou programu Thunderbird
 Comment[sv]=Läs och skriv e-post
-Comment[ug]=ئېلخەت ۋە خەۋەرلەرنى Mozilla Thunderbird دا كۆرۈش ۋە يېزىش
 Comment[uk]=Читання та написання листів
 Comment[vi]=Đọc và soạn thư điện tử
 Comment[zh_CN]=阅读邮件或新闻
@@ -50,18 +49,18 @@ GenericName[pl]=Klient poczty
 GenericName[pt_BR]=Cliente de E-mail
 GenericName[ru]=Почтовый клиент
 GenericName[sk]=Poštový klient
-GenericName[ug]=ئېلخەت دېتالى
 GenericName[uk]=Поштова програма
 GenericName[vi]=Phần mềm khách quản lý thư điện tử
 GenericName[zh_CN]=邮件新闻客户端
 GenericName[zh_TW]=郵件用戶端
-Exec=/usr/lib/thunderbird-beta/thunderbird %u
+Exec=/usr/lib/thunderbird-beta/thunderbird --class="thunderbird-beta" %u
 Terminal=false
 Type=Application
 Icon=thunderbird-beta
 Categories=Network;Email;
-MimeType=message/rfc822;x-scheme-handler/mailto;application/x-xpinstall;
+MimeType=message/rfc822;x-scheme-handler/mailto;text/calendar;text/vcard;text/x-vcard;x-scheme-handler/webcal;x-scheme-handler/webcals;x-scheme-handler/mid;
 StartupNotify=true
+StartupWMClass=thunderbird-beta
 Actions=ComposeMessage;OpenAddressBook;
 
 [Desktop Action ComposeMessage]
@@ -104,19 +103,17 @@ Name[pt_PT]=Escrever nova mensagem
 Name[rm]=Scriver in nov messadi
 Name[ro]=Scrie un mesaj nou
 Name[ru]=Создать новое сообщение
-Name[si]=නව ලිපියක් ලියන්න
 Name[sk]=Nová e-mailová správa
 Name[sl]=Sestavi novo sporočilo
 Name[sq]=Shkruani mesazh të ri
 Name[sr]=Писање нове поруке
 Name[sv_SE]=Skriv ett nytt meddelande
-Name[ta_LK]=புதிய செய்தியை எழுதுக
 Name[tr]=Yeni ileti yaz
 Name[uk]=Написати нового листа
 Name[vi]=Viết thư mới
 Name[zh_CN]=编写新消息
 Name[zh_TW]=寫一封新訊息
-Exec=/usr/lib/thunderbird-beta/thunderbird -compose
+Exec=/usr/lib/thunderbird-beta/thunderbird --class="thunderbird-beta" -compose
 
 [Desktop Action OpenAddressBook]
 Name=Open address book
@@ -158,16 +155,14 @@ Name[pt_PT]=Abrir livro de endereços
 Name[rm]=Avrir il cudeschet d'adressas
 Name[ro]=Deschide agenda de contacte
 Name[ru]=Открыть адресную книгу
-Name[si]=ලිපින පොත විවෘත කරන්න
 Name[sk]=Otvoriť adresár
 Name[sl]=Odpri adressar
 Name[sq]=Hapni libër adresash
 Name[sr]=Отвори адресар
 Name[sv_SE]=Öppna adressboken
-Name[ta_LK]=முகவரி பத்தகத்தை திறக்க
 Name[tr]=Adres defterini aç
 Name[uk]=Відкрити адресну книгу
 Name[vi]=Mở sổ địa chỉ
 Name[zh_CN]=打开通讯录
 Name[zh_TW]=開啟通訊錄
-Exec=/usr/lib/thunderbird-beta/thunderbird -addressbook
+Exec=/usr/lib/thunderbird-beta/thunderbird --class="thunderbird-beta" -addressbook
