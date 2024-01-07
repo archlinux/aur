@@ -13,8 +13,8 @@ pkgbase = pgpgram
 	depends = telegram-tdlib
 	depends = trovotutto
 	optdepends = youtube-dl
-	source = pgpgram::git+https://github.com/tallero/pgpgram.git#tag=0.4
-	sha256sums = SKIP
+	provides = python-pgpgram=0.4
+	source = pgpgram-0.4.tar.gz::https://github.com/tallero/pgpgram/archive/refs/tags/0.4.tar.gz
+	sha256sums = 9910017134149cc08d5958a148851033c33c2dbf0d599e7724404f9dc72996f95ec45947dcc7daec1d89614f9a50096c79044e06973fc5133a402e34f5605945
 
 pkgname = pgpgram
-
