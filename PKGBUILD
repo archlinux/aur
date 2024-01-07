@@ -3,6 +3,7 @@
 
 _py="python"
 _pkg="pgpgram"
+_Pkg="PGPgram"
 pkgbase="${_pkg}"
 _pkgname="${_py}-${_pkg}"
 pkgname=(
@@ -47,7 +48,7 @@ sha256sums=(
 
 package() {
   cd \
-    "${_pkg}-${pkgver}"
+    "${_Pkg}-${pkgver}"
   "${_py}" \
     setup.py \
       install \
