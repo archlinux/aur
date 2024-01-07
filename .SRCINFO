@@ -1,0 +1,11 @@
+pkgbase = chicken-symbol-utils
+	pkgdesc = Symbol Utilities for Chicken Scheme
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/symbol-utils
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-utf8
+
+pkgname = chicken-symbol-utils
