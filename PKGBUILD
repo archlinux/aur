@@ -4,7 +4,7 @@
 
 pkgbase=rio
 pkgname=('rio' 'rio-terminfo')
-pkgver=0.0.33
+pkgver=0.0.34
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64')
@@ -21,11 +21,11 @@ depends=(
 )
 makedepends=('cargo' 'cmake' 'desktop-file-utils')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('a69a4e7b6aad396d8753671d44b1f02cc061ff7bc9eb124e4669b7bcc0e7a108d52260966d0915f42dd0a5bff4789fcb0b3e1c6eaddf3f646ec1f77293894f08')
+sha512sums=('9a0a01e02a432e030b9dc01fcf62606016f57724b8bdf11b4f347a077ff373bc7e03843294e883ff4add24a6d69e9baf628ea0b05252a7028dc18e315f44a4de')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
-  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
