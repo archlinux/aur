@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-mcli
 pkgver=1.0.1
-_vdrapi=2.6.3
-pkgrel=2
+_vdrapi=2.6.5
+pkgrel=3
 pkgdesc='This is a "plugin" for the Video Disk Recorder (VDR) to access DVB-streams produced by the NetCeiver-hardware.'
 url="https://github.com/vdr-projects/vdr-plugin-mcli/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
