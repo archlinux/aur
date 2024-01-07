@@ -1,6 +1,6 @@
 pkgbase = reaction-git
 	pkgdesc = A daemon that scans program outputs for repeated patterns, and takes action. Alternative to fail2ban
-	pkgver = r124.9ce589b
+	pkgver = r128.e1ff702
 	pkgrel = 1
 	url = https://framagit.org/ppom/reaction
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = reaction-git
 	makedepends = git
 	makedepends = go
 	makedepends = gcc
-	provides = reaction-git
+	provides = reaction
+	provides = ip46tables
 	source = reaction-git::git+https://framagit.org/ppom/reaction.git
 	sha256sums = SKIP
 
