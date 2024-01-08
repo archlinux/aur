@@ -3,7 +3,7 @@
 _pkgname=licenser
 pkgname=licenser-gcc
 pkgver=0.50
-pkgrel=2
+pkgrel=3
 pkgdesc='A License management tool for your Open Source projects'
 arch=(x86_64)
 url="https://github.com/coder3101/$_pkgname"
@@ -33,6 +33,7 @@ prepare() {
 
 build() {
 		cmake -S $_pkgname-$pkgver -Bbuild \
+				-DCMAKE_BUILD_TYPE=Release \
 				-DCMAKE_CXX_COMPILER=g++ \
 				-DCMAKE_C_COMPILER=gcc \
 				-DENABLE_TESTS=off
