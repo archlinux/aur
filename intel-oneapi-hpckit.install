@@ -1,0 +1,9 @@
+post_install() {
+    echo "Only the low level compiler runtime libraries are added to the library path by default."
+    echo "If you want to use the compilers or high level libraries like MKL or oneDNN consider to execute"
+    echo ""
+    echo ". /opt/intel/oneapi/setvars.sh"
+    echo ""
+    echo "in a shell to set PATH and library paths for oneAPI."
+}
+
