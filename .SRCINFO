@@ -22,7 +22,7 @@ pkgbase = selenium-ide-bin
 	conflicts = selenium-ide
 	source = selenium-ide-4.0.1_alpha.72.AppImage::https://github.com/SeleniumHQ/selenium-ide/releases/download/4.0.1-alpha.72-linux/Selenium.IDE-4.0.1-alpha.72.AppImage
 	source = selenium-ide.sh
-	sha256sums = ad79a0e65bfbc1f5908a2341c2f5d4237d85f775a441a602fe60260f8af0d85d
+	sha256sums = cc848757fde7f627a85852b8c60d66874242bf21ec953524a68e68f6970e0d5b
 	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
 
 pkgname = selenium-ide-bin

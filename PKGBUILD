@@ -32,7 +32,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver//_/-}-linux/${_pkgname}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ad79a0e65bfbc1f5908a2341c2f5d4237d85f775a441a602fe60260f8af0d85d'
+sha256sums=('cc848757fde7f627a85852b8c60d66874242bf21ec953524a68e68f6970e0d5b'
             '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
