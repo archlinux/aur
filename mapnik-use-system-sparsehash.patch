@@ -1,0 +1,13 @@
+diff --git a/include/mapnik/palette.hpp b/include/mapnik/palette.hpp
+index 0a0216041..dda682020 100644
+--- a/include/mapnik/palette.hpp
++++ b/include/mapnik/palette.hpp
+@@ -34,7 +34,7 @@
+ MAPNIK_DISABLE_WARNING_PUSH
+ #include <mapnik/warning_ignore.hpp>
+ #ifdef USE_DENSE_HASH_MAP
+-#include <mapnik/sparsehash/dense_hash_map>
++#include <google/dense_hash_map>
+ using rgba_hash_table = google::dense_hash_map<unsigned int, unsigned char>;
+ #else
+ #include <unordered_map>
