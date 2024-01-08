@@ -1,8 +1,8 @@
 # Maintainer: jdigi78 <jdigiovanni78 at gmail dot com>
 
 pkgname=crocotile3d
-pkgver=2.2.6c
-pkgrel=3
+pkgver=2.2.7
+pkgrel=1
 
 _install_location='/usr/share'
 
@@ -10,7 +10,7 @@ source=("https://jdigi.net/AUR/Crocotile3D/Crocotile3D_v${pkgver}_linux64.tar.gz
         "${pkgname}.desktop"
         "${pkgname}.png")
 
-sha256sums=('6bf3e623c640c7894f2d9c691c7bf1b826d523574d3fefc90527e2c2654ad812'
+sha256sums=('bc34318e4398b72b729ecf0b894a5edee8bf7a8c6f2b79d3b62a484aa93a2cac'
             SKIP
             SKIP)
 
