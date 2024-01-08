@@ -22,8 +22,8 @@ sha512sums=('SKIP'
 prepare() {
 	cd "$_pkgname"
 	git submodule init
-	git config submodule.lib/libpng.url "$srcdir"/src/libpng
-	git config submodule.lib/mozjpeg.url "$srcdir"/src/mozjpeg
+	git config submodule.src/libpng.url "$srcdir"/libpng
+	git config submodule.src/mozjpeg.url "$srcdir"/mozjpeg
 	git -c protocol.file.allow=always submodule update
 }
 
