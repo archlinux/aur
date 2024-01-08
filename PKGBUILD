@@ -2,7 +2,8 @@
 pkgname=sengi-bin
 _appname=Sengi
 pkgver=1.8.0
-pkgrel=3
+_electronversion=23
+pkgrel=4
 pkgdesc="Mastodon & Pleroma Multi-account Desktop Client"
 arch=('x86_64')
 url="https://github.com/NicolasConstant/sengi"
@@ -11,7 +12,7 @@ license=('AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron23'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
@@ -19,10 +20,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('0b6a43409861217dd11a76e34de174715adaaac1c3de3927d2f6bf08c5b81a4e'
-            '04e61d970c2577e5120c97c5d01b7d5b158b59f072d60f1333b723c6bf75d0cd')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_appname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_appname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
