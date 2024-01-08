@@ -3,7 +3,7 @@ pkgname=laradumps-bin
 _pkgname=LaraDumps
 pkgver=2.4.1
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="A friendly app designed to boost your Laravel PHP coding and debugging experience."
 arch=('x86_64')
 url="https://laradumps.dev/"
@@ -35,7 +35,7 @@ sha256sums=('576d7d3777735ce625646365c5f89bfcd240f2db4faf9e1835936cd5e48f532b'
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null

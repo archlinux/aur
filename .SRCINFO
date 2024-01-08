@@ -1,7 +1,7 @@
 pkgbase = laradumps-bin
 	pkgdesc = A friendly app designed to boost your Laravel PHP coding and debugging experience.
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://laradumps.dev/
 	arch = x86_64
 	license = MIT
