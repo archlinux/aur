@@ -1,38 +1,41 @@
+# Maintainer: Manuel Hüsers <aur@huesers.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: William J. Bowman <aur@williamjbowman.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ect
-_pkgname=Efficient-Compression-Tool
-pkgver=0.9.4
+_pkgname=efficient-compression-tool
+pkgver=0.9.5
 pkgrel=1
-pkgdesc='file compressor, supports postcompression of PNG, JPEG, GZIP and ZIP files.'
-url='https://github.com/fhanau/Efficient-Compression-Tool'
-arch=('i686' 'x86_64')
+pkgdesc='File compressor, supports postcompression of PNG, JPEG, GZIP and ZIP files'
+url="https://github.com/fhanau/$_pkgname"
+arch=('x86_64')
 license=('Apache')
-source=("git+$url.git#commit=503409a4de166ad1544adcb5d4e48fef308a2727")
-md5sums=('SKIP')
 depends=('gcc-libs')
 makedepends=('nasm' 'git' 'cmake')
+source=("git+$url.git#tag=v$pkgver"
+	'git+https://github.com/glennrp/libpng.git#commit=f135775ad4e5d4408d2e12ffcc71bb36e6b48551'
+	'git+https://github.com/fhanau/mozjpeg.git#commit=182457e3e26e1e078d5dbd09137cf04865be2e49')
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
-  cd ${_pkgname}
-  git submodule init 
-  git submodule update --init --recursive --recommend-shallow
+	cd "$_pkgname"
+	git submodule init
+	git config submodule.lib/libpng.url "$srcdir"/src/libpng
+	git config submodule.lib/mozjpeg.url "$srcdir"/src/mozjpeg
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cd ${_pkgname}
-  [ -d build ] || mkdir build
-  cd build
-  cmake -DECT_FOLDER_SUPPORT=off ../src
-  make
+	cmake -B build -S "$_pkgname"/src \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release
+	cmake --build build
 }
 
 package() {
-  cd ${_pkgname}/build
-  install -Dm755 ect "$pkgdir"/usr/bin/ect 
-  cd "${pkgdir}"/usr/bin
-
-  # Some things expect this to be an all-caps name
-  ln -s ect ECT
+	DESTDIR="$pkgdir" cmake --install build
+	# Some things expect this to be an all-caps name
+	ln -s ect "$pkgdir"/usr/bin/ECT
 }
