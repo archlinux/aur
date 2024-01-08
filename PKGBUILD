@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 pkgname=ymake-git
-pkgver=0.7.1.2.gd472ca6
-pkgrel=2
+pkgver=0.7.2.4.g9a03fb1
+pkgrel=1
 pkgdesc="ymake"
 arch=('any')
 url="https://github.com/evilbinary/ymake"
@@ -18,6 +18,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname}"
     git describe --always --tags | sed 's/^v//' | sed 's|-|.|g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
