@@ -41,9 +41,6 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-#	xvfb-run --auto-servernum python -m pytest tests/
-#	export PYTHONPATH=$PYTHONPATH:.
-#	pytest
 	export TEST_GTK_VERSION='4.0'
 	local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
 	echo "$python_version"
