@@ -9,7 +9,7 @@ license=('MIT')
 depends=('cups' 'dpt-rp1-py' 'notify-send.sh')
 makedepends=('make')
 source=( "https://github.com/cristobaltapia/$pkgname/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c5e44a228aed6b7d7a824723ae93b8c242a9e031f8333a37418230834856329f')
+sha256sums=('ebc233f446dd42573199b8c9c148ff6d37d26899f3dd3ce19deb2b2d4284284b')
 
 build() {
 	cd "$pkgname-$pkgver"
