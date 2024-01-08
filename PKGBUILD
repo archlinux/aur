@@ -1,7 +1,7 @@
 # Maintainer: Gabriele Musco <gabmus@disroot.org>
 
-pkgname=envision-xr-git
-pkgver=r286.2f259d4
+pkgname=envision-git
+pkgver=r80.35b0ab9
 pkgrel=1
 pkgdesc='GUI for Monado'
 arch=(x86_64 aarch64)
@@ -23,6 +23,7 @@ depends=(
     ninja
     shaderc
     vulkan-headers
+    vte4
 )
 makedepends=(
     meson
