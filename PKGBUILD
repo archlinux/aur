@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua-tdlib
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Telegram Database Library bindings for Emilua"
 arch=('i686' 'x86_64')

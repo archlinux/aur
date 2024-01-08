@@ -1,6 +1,6 @@
 pkgbase = emilua-tdlib
 	pkgdesc = Telegram Database Library bindings for Emilua
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitlab.com/emilua/tdlib
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = emilua-tdlib
 	makedepends = boost
 	makedepends = asciidoctor
 	depends = emilua
-	source = emilua-tdlib::git+https://gitlab.com/emilua/tdlib.git#tag=v1.0.1
+	source = emilua-tdlib::git+https://gitlab.com/emilua/tdlib.git#tag=v1.0.2
 	source = td::git+https://github.com/tdlib/td.git#commit=4041ecb535802ba1c55fcd11adf5d3ada41c2be7
 	source = trial.circular::git+https://github.com/breese/trial.circular.git#commit=8b8269c1ba90f1cb3c7a8970a27ccb149069ed24
 	md5sums = SKIP
