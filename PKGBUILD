@@ -2,7 +2,7 @@
 
 pkgname=php74-mcrypt
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="mcrypt module for AUR/php74 package (>=7.2.0, <=8.4.0)"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/mcrypt"

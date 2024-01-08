@@ -1,7 +1,7 @@
 pkgbase = php74-mcrypt
 	pkgdesc = mcrypt module for AUR/php74 package (>=7.2.0, <=8.4.0)
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pecl.php.net/package/mcrypt
 	install = mcrypt.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = php74-mcrypt
 	makedepends = re2c
 	depends = php74
 	depends = libmcrypt
+	optdepends = php74-cli: The php(74) command line interpreter (for tests)
 	source = http://pecl.php.net/get/mcrypt-1.0.7.tgz
 	sha256sums = 12ea2fbbf2e2efbe790a12121f77bf096c8b84cef81d0216bec00d56e5badef4
 
