@@ -1,18 +1,18 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=inspectrum-git
-pkgver=r309.748dc33
-pkgrel=2
+pkgver=r551.e51d850
+pkgrel=1
 pkgdesc="SDR signal analyzer"
 arch=('any')
 url="https://github.com/miek/inspectrum"
 license=(GPL)
-depends=('qt5-base' 'fftw' 'liquid-dsp-git')
+depends=('qt5-base' 'fftw' 'liquid-dsp')
 conflicts=('inspectrum')
 provides=('inspectrum')
 makedepends=('cmake' 'pkg-config')
 source=("$pkgname::git+https://github.com/miek/inspectrum")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
