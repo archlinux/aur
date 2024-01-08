@@ -1,0 +1,14 @@
+pkgbase = python-tmdbapis
+	pkgdesc = A set of tools based around the requests library for safely making HTTP requests on behalf of a third party.
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://github.com/meisnate12/TMDbAPIs
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/t/tmdbapis/tmdbapis-1.2.6.tar.gz
+	sha512sums = 6a4522e5109982cc652ef93b11540ac265df70ca17910bd37fb8e08c41d2c04ed9ff2154674c31e73e6c2bfe6af30d7edbd8ae3abca168f2e94dec6766e2471f
+
+pkgname = python-tmdbapis
