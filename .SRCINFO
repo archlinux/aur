@@ -1,13 +1,13 @@
 pkgbase = gowebly-bin
 	pkgdesc = 🔥 A next-generation CLI tool to easily build amazing web applications with Go on the backend, using htmx & hyperscript and the most popular CSS frameworks on the frontend
-	pkgver = 1.10.0
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/gowebly/gowebly
 	arch = x86_64
 	license = Apache-2.0
 	provides = gowebly
 	conflicts = gowebly
-	source_x86_64 = gowebly-x64-1.10.0.tar.gz::https://github.com/gowebly/gowebly/releases/download/v1.10.0/gowebly_1.10.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 432f1695e6afb4df93927b46673316afdf8f58fce7e33c127ec95b8eada94ca6
+	source_x86_64 = gowebly-x64-2.0.2.tar.gz::https://github.com/gowebly/gowebly/releases/download/v2.0.2/gowebly_2.0.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 69165ef5ef8dc3a21d17b25e50ba811650962cc8afd748e9c231275787f08baf
 
 pkgname = gowebly-bin
