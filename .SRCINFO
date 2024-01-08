@@ -8,6 +8,7 @@ pkgbase = smw-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	depends = sed
 	depends = sdl_image
 	depends = sdl_mixer
 	depends = sdl
