@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=privaxy-bin
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The next generation tracker and advertisement blocker. It blocks ads and trackers by MITMing HTTP(s) traffic."
 arch=("x86_64")
 url="https://github.com/Barre/privaxy"
