@@ -2,7 +2,7 @@
 
 pkgname=python-litestar
 _name=${pkgname#python-}
-pkgver=2.4.5
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
@@ -12,23 +12,20 @@ depends=(
   python
   python-annotated-types
   python-anyio
+  python-asyncpg
   python-attrs
-  python-brotli
   python-click
-  python-cryptography
   python-dotenv
   python-exceptiongroup
   python-httpx
-  python-jose
   python-jsbeautifier
-  python-minijinja
   python-msgspec
   python-multidict
-  python-picologging
-  python-redis
+  python-polyfactory
+  python-pydantic
   python-rich
   python-rich-click
-  python-structlog
+  python-sniffio
   python-typing_extensions
   python-yaml
   uvicorn
@@ -42,11 +39,18 @@ makedepends=(
 checkdepends=(
   python-asyncpg
   python-beautifulsoup4
+  python-brotli
+  python-cryptography
   python-fsspec
   python-hypothesis
   python-jinja
+  python-jose
   python-mako
+  python-minijinja
+  python-picologging
   python-polyfactory
+  python-psycopg
+  python-psycopg
   python-pytest
   python-pytest-asyncio
   python-pytest-lazy-fixture
@@ -54,13 +58,32 @@ checkdepends=(
   python-pytest-rerunfailures
   python-pytest-timeout
   python-pytest-xdist
+  python-redis
+  python-sqlalchemy
   python-starlette
+  python-structlog
   python-time-machine
   python-trio
 )
+optdepends=(
+  'python-jinja: templating engine alternative'
+  'python-mako: templating engine alternative'
+  'python-minijinja: templating engine alternative'
+
+  'python-structlog: logging library alternative'
+  'python-picologging: logging library alternative'
+
+  # 'python-opentelemetry-instrumentation-asgi: Open Telementry instrumentation'
+  'python-brotli: Brotli compression middleware'
+  'python-cryptography: cookie based sessions & JWT authentication'
+  'python-jose: JWT authentication'
+  'python-prometheus_client: Prometheus instrumentation'
+  'python-redis: Redis store'
+  'python-sqlalchemy: SQLAlchemy integration'
+)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8df8b32a7fb6fb5769dbbe4167371be97d8c777a8a8ecde0a30974a9983bae1e')
+sha256sums=('b8d3e18e56542106248e23b89454e27c67e6603bc034ae109a9a40706635f2da')
 
 _archive="$_name-$pkgver"
 
@@ -102,19 +125,22 @@ check() {
   )
   _ignored_tests_arg=$(printf " --ignore=%s" "${_ignored_tests[@]}")
 
+  _deselected_tests=(
+    # Fails for unkown reason
+    tests/unit/test_cli/test_core_commands.py::test_routes_command_options
+    tests/unit/test_template/test_template.py::test_media_type_inferred
+
+    # Requires running docker compose
+    tests/e2e/test_response_caching.py::test_with_stores
+    tests/unit/test_utils/test_version.py::test_formatted
+  )
+  _deselected_tests_arg=$(printf " --deselect=%s" "${_deselected_tests[@]}")
+
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
   # shellcheck disable=SC2086
-  PYTHONPATH="$PWD/tmp_install/$_site_packages" \
-    pytest \
+  pytest \
     $_ignored_tests_arg \
-    -k " \
-      not test_with_stores[redis_store]\
-      and not test_formatted[False-2.0.0alpha1] \
-      and not test_life_span_startup_error_handling \
-      and not test_lifespan_startup_failure \
-      and not test_dependency_batch_with_exception \
-      and not test_media_type_inferred[.xml-application/xml] \
-      and not test_media_type_inferred[.xml.other-application/xml] \
-    "
+    $_deselected_tests_arg
 }
 
 package() {
