@@ -10,8 +10,8 @@ license=('MIT')
 depends=('libusb' 'libcec' 'protobuf' 'python' 'qt5-serialport' 'qt5-x11extras' 'avahi' 'mbedtls' 'flatbuffers')
 optdepends=('xorg-server: X11 grabbing')
 makedepends=('cmake')
-provides=("hyperion")
-conflicts=('hyperion' 'hyperion-git')
+provides=('hyperion' 'hyperion.ng')
+conflicts=('hyperion' 'hyperion-git' 'hyperion.ng')
 backup=('etc/hyperion/config/hyperion.config.json')
 source=("git+https://github.com/hyperion-project/${pkgname%-git}"
         "hyperion.systemd"
