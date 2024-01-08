@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-headers-xp
+	pkgdesc = MinGW-w64 headers for Windows (compiled for Windows XP target support)
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = http://mingw-w64.sourceforge.net
+	arch = any
+	license = custom
+	provides = mingw-w64-headers
+	conflicts = mingw-w64-headers
+	options = !strip
+	options = !libtool
+	options = !emptydirs
+	source = https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v11.0.0.tar.bz2
+	md5sums = 6c621754f7076548e57cfc432ec6de51
+
+pkgname = mingw-w64-headers-xp
