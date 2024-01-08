@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=annextimelog
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='CLI to track time spent on projects, backed by Git Annex'
 arch=(any)
@@ -15,7 +15,7 @@ makedepends=(python-{build,installer,wheel}
              python-poetry-core)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('a83a65aa1a6f1783068e03443949f1830eaf470a21e80be2da1f9b6f6f556aa4')
+sha256sums=('22827e0af69c3fac981f9d97d7523fa45ced2aff1f17fe1dd59fab87341dbbc6')
 
 build() {
 	cd "$_archive"
