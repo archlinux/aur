@@ -1,13 +1,13 @@
 pkgbase = govmomi
 	pkgdesc = A Go library for interacting with VMware vSphere APIs (ESXi and/or vCenter).
-	pkgver = 0.34.1
+	pkgver = 0.34.2
 	pkgrel = 1
 	url = https://github.com/vmware/govmomi
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = govmomi-0.34.1.tar.gz::https://github.com/vmware/govmomi/archive/v0.34.1.tar.gz
-	sha512sums = 2d88eb22cfbe9dc89b5c9f9402fe3e921624e3292445f4fef5103b71d646b19501ccce0a30758aff4360cc3a3de6f9d71da4c4611b4bedab79845c9b559df418
+	source = govmomi-0.34.2.tar.gz::https://github.com/vmware/govmomi/archive/v0.34.2.tar.gz
+	sha512sums = 7705c88bfd63116ae96b91c9ee925de57aa25fa32841c414a742502091bb76fd59b2898bead5b35235b76dc7c6b6fdcc10246b77772a4d5236c0a803757c9b93
 
 pkgname = govmomi
