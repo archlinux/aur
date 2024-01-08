@@ -8,6 +8,7 @@ pkgbase = eigenmath-git
 	makedepends = git
 	depends = glibc
 	provides = eigenmath
+	conflicts = eigenmath
 	source = git+https://github.com/georgeweigt/eigenmath.git
 	source = https://georgeweigt.github.io/manual/eigenmath.pdf
 	md5sums = SKIP

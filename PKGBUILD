@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/georgeweigt/eigenmath"
 license=('BSD')
 provides=('eigenmath')
+conflicts=('eigenmath')
 depends=(glibc)
 makedepends=('git')
 source=("git+https://github.com/georgeweigt/eigenmath.git"
