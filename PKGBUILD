@@ -1,8 +1,10 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=blis
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="BLAS-like Library Instantiation Software Framework"
 arch=('i686' 'x86_64')
 url="https://github.com/flame/blis"
