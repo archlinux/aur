@@ -3,7 +3,8 @@ pkgname=rao-pics-bin
 _appname="Rao Pics"
 _pkgname="@acmeelectron"
 pkgver=0.7.16
-pkgrel=2
+_electronversion=20
+pkgrel=3
 pkgdesc="RaoPics help you visit material on any devices, base on Eagle/Billfish/Pixcall and other photos material management apps."
 arch=(
     'aarch64'
@@ -15,19 +16,24 @@ license=('AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron20'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
     'openssl-1.1'
+    'nodejs'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/Rao.Pics-${pkgver}-linux-arm64-openssl-1.1.x.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/Rao.Pics-${pkgver}-linux-amd64-openssl-1.1.x.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname// /.}-${pkgver}-linux-arm64-openssl-1.1.x.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname// /.}-${pkgver}-linux-amd64-openssl-1.1.x.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('f36ebe7e755c78cbd00e2ea57c803677f3d878ba255a7ecd90751800a3100d33')
+sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_aarch64=('6e2bd0fdf5133ecd11c66dc069c75955f7e37ae6cfb8fc06a37e0f32913c9d29')
 sha256sums_x86_64=('7b53f1988cdf792b4f46c1f6e52fb28adccd0b95b47058a191f393feeb475c41')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|\"/opt/${_appname}/${_pkgname}\" %U|${pkgname%-bin}|g;s|${_pkgname}|${pkgname%-bin}|g" \
+    sed "s|\"/opt/${_appname}/${_pkgname}\"|${pkgname%-bin}|g;s|${_pkgname}|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
