@@ -15,7 +15,7 @@ pkgname=(
     icesugar-pro-doc-git
     )
 pkgver=1.1a.r22.g01d2bde
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="iCESugar FPGA Board (base on iCE40UP5k) "
 arch=(x86_64
@@ -84,7 +84,8 @@ package_icesugar-git() {
         icesugar-demo
         icesugar-doc
         icesugar-icesprog
-        icestorm
+#         icestorm
+        icestorm-nightly
         nextpnr
         nextpnr-ice40-nightly
         riscv64-linux-gnu-gcc
@@ -147,7 +148,8 @@ package_icesugar-nano-git() {
         icesugar-icesprog
         icesugar-nano-demo
         icesugar-nano-doc
-        icestorm
+#         icestorm
+        icestorm-nightly
         nextpnr
         nextpnr-ice40-nightly
         riscv64-linux-gnu-gcc
@@ -189,7 +191,8 @@ package_icesugar-pro-git() {
         icesugar-icesprog
         icesugar-pro-demo
         icesugar-pro-doc
-        icestorm
+#         icestorm
+        icestorm-nightly
         nextpnr
         nextpnr-ice40-nightly
         riscv64-linux-gnu-gcc
