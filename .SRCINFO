@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-wlr-git
 	pkgdesc = xdg-desktop-portal backend for wlroots
-	pkgver = 0.7.0.r4.g84a9cf4
+	pkgver = 0.7.0.r11.g1eaa02e
 	pkgrel = 1
 	url = https://github.com/emersion/xdg-desktop-portal-wlr
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = xdg-desktop-portal-wlr-git
 	makedepends = scdoc
 	depends = xdg-desktop-portal
 	depends = pipewire
+	depends = mesa
 	depends = libinih
 	optdepends = grim: required for the screenshot portal to function
 	optdepends = slurp: support for interactive mode for the screenshot portal; one of the built-in chooser options for the screencast portal

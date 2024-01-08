@@ -1,7 +1,7 @@
 # Maintainer: Davide Depau <davide@depau.eu>
 
 pkgname=xdg-desktop-portal-wlr-git
-pkgver=0.7.0.r4.g84a9cf4
+pkgver=0.7.0.r11.g1eaa02e
 pkgrel=1
 pkgdesc='xdg-desktop-portal backend for wlroots'
 url=https://github.com/emersion/xdg-desktop-portal-wlr
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(custom:MIT)
 provides=("${pkgname%-git}" "xdg-desktop-portal-impl")
 conflicts=("${pkgname%-git}")
-depends=(xdg-desktop-portal pipewire libinih)
+depends=(xdg-desktop-portal pipewire mesa libinih)
 makedepends=(git meson wayland-protocols wayland scdoc)
 optdepends=(
   "grim: required for the screenshot portal to function"
