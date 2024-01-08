@@ -1,0 +1,20 @@
+pkgbase = python-pytest-json-report
+	pkgdesc = A pytest plugin to report test results as JSON
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/numirias/pytest-json-report
+	arch = any
+	license = MIT
+	checkdepends = python-flaky
+	checkdepends = python-pytest-xdist
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytest
+	depends = python-pytest-metadata
+	source = python-pytest-json-report-1.5.0.tar.gz::https://github.com/numirias/pytest-json-report/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 8933f634c094e709e08c381796322e88b3cb699c4c63c3d9d789ad638d8d7cdb
+
+pkgname = python-pytest-json-report
