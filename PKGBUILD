@@ -1,7 +1,7 @@
 # Maintainer: Randall Winkhart <idgr at tutanota dot com>
 pkgname=sshyp
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A light-weight, self-hosted, synchronized password manager'
 url='https://github.com/rwinkhart/sshyp'
 arch=('any')
