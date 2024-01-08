@@ -1,15 +1,15 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=mounter-elite-plus
-pkgver=2.3.2
-pkgrel=2
-pkgdesc='The fastest ISO Manager/Converter on the planet, written in C++'
+pkgver=2.3.3
+pkgrel=1
+pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/mounter-elite-plus"
 license=('GPL3')
 makedepends=('readline')
 depends=('bash' 'coreutils' 'sudo')
 optdepends=('ccd2iso: BIN/IMG conversion support' 'mdf2iso: MDF/MDS conversion support')
-md5sums=('e36b5ece4f615095b7e75265f6859519')
+md5sums=('5c0ca3d5b7330f8d662ac45e6d8ca9aa')
 
 source=("https://github.com/siyia2/mounter-elite-plus/archive/v${pkgver}.tar.gz")
 
