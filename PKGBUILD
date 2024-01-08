@@ -1,6 +1,6 @@
 # Maintainer: nbebaw <nader.bebawy@gmx.de>
 pkgname=archub
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Archub is command-line tool designed for managing packages in AUR"
 arch=("any")
