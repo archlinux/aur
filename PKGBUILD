@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vocechat-desktop-bin
 pkgver=0.7.14
-pkgrel=1
+_electronversion=26
+pkgrel=2
 pkgdesc="VoceChat desktop version"
 arch=('x86_64')
 url="https://github.com/Privoce/vocechat-desktop"
@@ -9,13 +10,10 @@ license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron26'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    "electron${_electronversion}"
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -25,11 +23,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e5a4082d118d971446e4715600ff3a04f73ff67b352fdb6845d08a8192a888b4'
-            '56a71e36fd9a2156ef73aac45379c01c549748859fe822e12de0d2c231a2babd')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" -t "${pkgdir}/usr/bin/${pkgname%-bin}"
