@@ -2,13 +2,13 @@
 
 pkgname=jinja2-cli
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI for Jinja2"
 url="https://github.com/mattrobenolt/jinja2-cli"
 license=('BSD')
 arch=('any')
 depends=('python' 'python-jinja')
-makedepends=('python-setuptools' 'python-build')
+makedepends=('python-setuptools' 'python-build' 'python-installer')
 checkdepends=('python-pytest')
 optdepends=(
     'python-yaml: YAML support'
