@@ -1,6 +1,6 @@
 pkgbase = udp-over-tcp
 	pkgdesc = Proxy UDP traffic over a TCP stream
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/mullvad/udp-over-tcp
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = udp-over-tcp
 	makedepends = rust
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/mullvad/udp-over-tcp/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = b65baf92c9d41401bc73a77510030bc54cd2661a8020a870f2c48ac804eb64cf
+	source = https://github.com/mullvad/udp-over-tcp/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 0338b65bd979ec6ccd50e6d7642fc371bed9ea2c173a54cdd98af1ca3b25f2d0
 
 pkgname = udp-over-tcp
