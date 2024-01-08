@@ -1,17 +1,16 @@
-# system requirements: C++17, GNU make
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mosbi
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
-pkgrel=1
-pkgdesc='Molecular Signature identification using Biclustering'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('AGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Molecular Signature identification using Biclustering"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('AGPL-3.0-only')
 depends=(
-  r
   r-akmbiclust
   r-bh
   r-biclust
@@ -23,8 +22,9 @@ depends=(
   r-rcpp
   r-rcppparallel
   r-xml2
-  gcc
-  make
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-biocgenerics
@@ -35,14 +35,20 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cc07566f150101d20d02078f42331612a9e778f16e8c001555f496c1089bf3ee')
+md5sums=('f34159f8140d9fe59ea7fe2546e9cdce')
+b2sums=('6881235fa8aeef69283b0cda58bbad325e1afc4fd5648dad025affdb8fbc164a3d603df79d3f162fa87872f6d05df6645d7e2e42f31163b82895831e2e8c1e03')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
