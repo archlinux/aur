@@ -1,6 +1,6 @@
 pkgname=chameleonultragui
 pkgver=0.0.1
-pkgrel=400
+pkgrel=401
 pkgdesc='PKGBUILD for the Chameleon Ultra GUI'
 arch=('x86_64')
 url="https://github.com/GameTec-live/ChameleonUltraGUI"
