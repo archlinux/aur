@@ -1,51 +1,65 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=before-dawn
 pkgver=0.26.0
-pkgrel=3
+_electronversion=26
+_nodeversion=18
+pkgrel=4
 pkgdesc="A desktop screensaver app using web technologies"
 arch=('any')
 url="https://github.com/muffinista/before-dawn"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'electron26'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 makedepends=(
     'npm'
     'gendesk'
-    'nodejs>=18.16.1'
+    'nvm'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('15b46edeb6bf3021bb2f4928dad58f55c1aede54c43fba2272734ac9b6aa0003'
-            '86743fe625d8342fb25bb53d69d611b255c09f9fffbf6ed84413116a494bd46d')
+sha256sums=('SKIP'
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name "Before Dawn" --exec "${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
     npm ci
     sed '141,155d' -i package.json
     sed '124,139d' -i package.json
     sed "s|deb|AppImage|g" -i package.json
     npm run pack
-    cd "${srcdir}/${pkgname}-${pkgver}/dist/.icon-set"
+    cd "${srcdir}/${pkgname}.git/dist/.icon-set"
     cp icon_16x16.png icon_16.png
     cp icon_48x48.png icon_48.png
     cp icon_128x128.png icon_128.png
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/"{output,data/savers}
-    cp -r "${srcdir}/${pkgname}-${pkgver}/output/system-savers" "${pkgdir}/usr/lib/${pkgname}/output"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/output/system-savers" "${pkgdir}/usr/lib/${pkgname}/data/savers"
+    cp -r "${srcdir}/${pkgname}.git/output/system-savers" "${pkgdir}/usr/lib/${pkgname}/output"
+    cp -r "${srcdir}/${pkgname}.git/output/system-savers" "${pkgdir}/usr/lib/${pkgname}/data/savers"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16 32 48 64 128 256 512 1024;do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/.icon-set/icon_${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}.git/dist/.icon-set/icon_${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    install -Dm644  "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644  "${srcdir}/${pkgname}.git/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
