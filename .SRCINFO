@@ -8,6 +8,7 @@ pkgbase = darkplaces-git
 	arch = x86_64
 	license = GPL2
 	makedepends = xorgproto
+	makedepends = git
 	depends = hicolor-icon-theme
 	depends = libjpeg-turbo
 	depends = sdl2

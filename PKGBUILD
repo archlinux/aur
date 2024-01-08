@@ -1,5 +1,6 @@
-# Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
-# Credit: Arkham <arkham at archlinux dot us>
+# Maintainer: hasardeur <paragon dot pictures at rocketmail dot com>
+# Contributor: Michael DeGuzis <mdeguzis@gmail.com>
+# Contributor: Arkham <arkham at archlinux dot us>
 
 pkgname=darkplaces-git
 _gitname=darkplaces
@@ -10,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/xonotic/darkplaces.git"
 license=('GPL2')
 depends=( 'hicolor-icon-theme' 'libjpeg-turbo' 'sdl2')
-makedepends=('xorgproto')
+makedepends=('xorgproto' 'git')
 conflicts=('darkplaces')
 provides=('darkplaces')
 install=$pkgname.install
