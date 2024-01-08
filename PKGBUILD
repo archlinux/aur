@@ -3,7 +3,7 @@
 _pkgname="qhuaweiflash"
 pkgname="${_pkgname}-git"
 pkgver=r143.20190905.54ec963
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphic utility for flashing HUAWEI modems and routers and editing firmware files (GUI is in russian only).'
 arch=('i686' 'x86_64')
 url="https://github.com/forth32/${_pkgname}"
@@ -20,11 +20,11 @@ conflicts=("${_pkgname}")
 
 source=(
   "${_pkgname}::git+https://github.com/forth32/${_pkgname}.git"
-  'helpmessages_english.md'::"http://ix.io/3Znx"
+  'helpmessages_english.md'
 )
 sha256sums=(
   'SKIP'
-  '816e0028dcb780c9749618c4ac294a4809b9f45e468dcc0cfc75e392db2d4d9e'
+  '6deccd04bd2b86b115cbb9ed698fcfbf9f0ae9bae56862e160d90d1cde63cbc3'
 )
 
 pkgver() {
