@@ -2,21 +2,21 @@
 
 pkgname=mpv-full
 pkgver=0.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
 license=('GPL')
 url='https://mpv.io/'
 depends=(
     # official repositories:
-        'cmocka' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'cmocka' 'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libplacebo' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
         'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
         'libxpresent' 'libpipewire' 'zimg' 'sndio' 'libsixel'
     # AUR:
-        'ffmpeg' 'libplacebo-git' 'spirv-cross'
+        'spirv-cross'
 )
 makedepends=('meson' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
