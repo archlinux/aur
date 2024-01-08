@@ -1,8 +1,8 @@
 # Maintainer: bashuser30 <bashuser30@mailbox.org>
 pkgname=dl-distro-git
 _pkgname=dl-distro
-pkgver=197.8de119f
-pkgrel=2
+pkgver=421.7406427
+pkgrel=1
 pkgdesc="Bash script for downloading and verifying OS images."
 arch=('any')
 url="https://codeberg.org/bashuser30/$_pkgname"
