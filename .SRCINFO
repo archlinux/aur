@@ -6,7 +6,6 @@ pkgbase = aspe
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck
-	makedepends = reallymakepkg
 	source = aspe-v1.1.tar.gz::https://github.com/themartiancompany/aspe/archive/refs/tags/v1.1.tar.gz
 	sha256sums = 1c810836bd7a71d1650c207a5d3596b27d83e627c3376e738152ac93a939e9b2
 
