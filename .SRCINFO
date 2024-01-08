@@ -14,6 +14,7 @@ pkgbase = popcorn-fx-bin
 	depends = libxext
 	depends = libxi
 	depends = freetype2
+	depends = dbus
 	provides = popcorn-fx=0.7.5
 	conflicts = popcorn-fx
 	conflicts = popcorn-time

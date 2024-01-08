@@ -19,6 +19,7 @@ depends=(
     'libxext'
     'libxi'
     'freetype2'
+    'dbus'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.deb"
@@ -26,7 +27,7 @@ source=(
 sha256sums=('2227434d02ca074764ded5e5d3171ef2bcbde591ab5a38dc022ebb729b981a20')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
-    sed "s|/opt/${_pkgname}/${_pkgname} %U|${pkgname%-bin} --no-sandbox %U|g;s|/opt/${_pkgname}/${_pkgname}.png|${pkgname%-bin}|g" \
+    sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin}|g;s|/opt/${_pkgname}/${_pkgname}.png|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
