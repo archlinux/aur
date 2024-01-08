@@ -1,0 +1,19 @@
+#
+# Post install/upgrade for wg-client
+# Set setcap cap_chown,cap_dac_override on wg-fix-resolv
+#
+set_net_caps() {
+    prog='/usr/lib/wg-client/wg-fix-resolv'
+    echo "Setting cap_chown,cap_dac_override=ep on ${prog}"
+    /usr/bin/setcap cap_chown,cap_dac_override=ep ${prog}
+}
+post_install() {
+    vnew=$1
+    vold=$2
+    set_net_caps
+}
+post_upgrade() {
+    vnew=$1
+    set_net_caps
+}
+

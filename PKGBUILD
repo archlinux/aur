@@ -10,15 +10,17 @@ pkgname='wg-client'
 pkgdesc='Wireguard linux client (command line and gui)'
 _gitname='wg-client'
 
-pkgver=3.7.6
+pkgver=4.0.0
 pkgrel=1
 url="https://github.com/gene-git/{{project_name}}"
 
-arch=(any)
+arch=(x86_64)
 license=(MIT)
 
+install='wg-client.install'
+
 # To build docs uncommont sphinx/texlive
-depends=('python>3.10' 'python-pyqt6' 'hicolor-icon-theme' 'python-psutil' 'python-netifaces')
+depends=('python>3.10' 'python-pyqt6' 'hicolor-icon-theme' 'python-psutil' 'python-netifaces' 'libcap')
 makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'rsync'
              #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
             )
@@ -27,10 +29,8 @@ _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
-build() {
+prepare() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
 
     # To build Docs 
     # uncomment these and sphinx makedepends above
@@ -39,6 +39,18 @@ build() {
     # cd ./Docs
     # make html
     # make latexpdf
+}
+
+build() {
+    cd "${_gitname}"
+
+    echo 'Building python'
+    /usr/bin/rm -f dist/*
+    /usr/bin/python -m build --wheel --no-isolation
+
+    echo 'Building C-code'
+    cd ./src/wg_client/fix-resolv/
+    make
 }
 
 package() {
