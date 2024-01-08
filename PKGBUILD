@@ -2,21 +2,30 @@
 # Contributor: Daniel Kaes (daniel.kaes@web.de)
 
 pkgname=wiki2beamer
-pkgver=0.9.5
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="wiki2beamer is a small tool to create LaTeX Beamer presentations from text files with a wiki-like syntax. Thus, it enables the user to create beamer presentations in a less time-consuming way."
-url='http://wiki2beamer.sourceforge.net'
+url='https://wiki2beamer.github.io/'
+arch=(any)
 license=('GPL2')
 depends=('python')
-arch=('any')
-source=("http://downloads.sourceforge.net/project/wiki2beamer/wiki2beamer/wiki2beamer-${pkgver}/wiki2beamer-${pkgver}.zip")
+makedepends=(asciidoctor)
+source=("https://github.com/wiki2beamer/wiki2beamer/archive/refs/tags/wiki2beamer-v${pkgver}.tar.gz")
 
-package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/code"
-  python setup.py install --root="${pkgdir}"/
-  mkdir -p "${pkgdir}/usr/man/man1"
-  cp ../doc/man/wiki2beamer.1 "${pkgdir}/usr/man/man1"
+build() {
+  cd "${srcdir}/${pkgname}-${pkgname}-v${pkgver}/code"
 
+  python -m build --wheel
+
+  asciidoctor -b manpage -d manpage ../doc/man/wiki2beamer.adoc
 }
 
-sha1sums=('7fb3f480a8f26ca05b3709713b0f67b1b2e90653')
+package() {
+  cd "${srcdir}/${pkgname}-${pkgname}-v${pkgver}/code"
+
+  python -m installer --destdir="${pkgdir}" dist/wiki2beamer-${pkgver}-py3-none-any.whl
+
+  install -D ../doc/man/wiki2beamer.1 "${pkgdir}"/usr/share/man/man1/wiki2beamer.1
+}
+
+sha256sums=('e9662674cbf6b859bc1847e0dfa9cc89b1c2e1d1e0f727285de9a374875cb6a7')
