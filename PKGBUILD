@@ -2,7 +2,7 @@
 # Contributor: Simon Doppler (dopsi) <dop.simon@gmail.com>
 
 pkgname=firefly-iii
-pkgver=6.0.8
+pkgver=6.0.30
 pkgrel=1
 pkgdesc='PHP personal finances manager'
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('php-intl')
 makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f9d5bdb8d871cca1725407fb82f1c50b2ea7ef3f0b15d4c7c3fbde11340e8751')
+sha256sums=('01d127a83fdd9dc7202303bc665e3490b207d60076bf039337bd2f0c867992f3')
 
 backup=(
     "etc/webapps/$pkgname/config.env"
@@ -25,12 +25,7 @@ package() {
     cp -rv * "$pkgdir/usr/share/webapps/$pkgname"
     install -D "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 
-    cp -v .env.example "$pkgdir/etc/webapps/$pkgname/.env"
-    cp -v .deploy/*/.env* "$pkgdir/etc/webapps/$pkgname"
-
-    for i in '' '.heroku' ; do
-        mv -v "$pkgdir/etc/webapps/$pkgname/.env$i" "$pkgdir/etc/webapps/$pkgname/config.env$i"
-    done
+    cp -v .env.example "$pkgdir/etc/webapps/$pkgname/config.env"
 
     ln -s "/etc/webapps/$pkgname/config.env" "$pkgdir/usr/share/webapps/$pkgname/.env"
     rm -rf "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
