@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=losslesscut-git
-pkgver=3.59.1.r0.gd311656
+pkgver=3.59.1.r15.g83c910a
 _electronversion=27
 _nodeversion=18
 pkgrel=1
@@ -15,26 +15,8 @@ provides=(
     "${pkgname%-git}"
 )
 depends=(
-    #"electron${_electronversion}"
-    'libxcb'
-    'mesa'
-    'at-spi2-core'
-    'libcups'
-    'libxkbcommon'
-    'libxcomposite'
-    'gtk3'
-    'libxext'
-    'libxfixes'
-    'nspr'
-    'cairo'
-    'pango'
-    'libxdamage'
-    'nss'
-    'expat'
-    'alsa-lib'
-    'libx11'
-    'libxrandr'
-    'libdrm'
+    "electron${_electronversion}"
+    'ffmpeg'
 )
 makedepends=(
     'gendesk'
@@ -46,11 +28,13 @@ makedepends=(
     'gcc'
 )
 source=(
-    "${pkgname%-git}"::"git+${url}.git"
+    "${pkgname//-/.}::git+${url}.git"
+    "${pkgname%-git}.sh"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '1fcafb1f641b5e7c0ac1771b0d50b777b031cf92f6df612b7f6b4c3cd674aabd')
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 _ensure_local_nvm() {
@@ -60,25 +44,26 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} --no-sandbox %U"
-    cd "${srcdir}/${pkgname%-git}"
-    rm -rf ffmpeg
+    gendesk -q -f -n --categories "Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
-    sed -e '413,424d' -e '406,409d' -i package.json
+    sed -e '420,431d' -e '413,416d' -i package.json
     yarn install
-    yarn download-ffmpeg-linux-x64
     yarn prepack-linux
     yarn pack-linux
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
-    cp -r "${srcdir}/${pkgname%-git}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname%-git}"
-    ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-git}/icon-build/app-512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/icon-build/app-512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
