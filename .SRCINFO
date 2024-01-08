@@ -1,6 +1,6 @@
 pkgbase = translate-toolkit
 	pkgdesc = A toolkit to convert between various different translation formats, help process and validate localisations
-	pkgver = 3.11.1
+	pkgver = 3.12.1
 	pkgrel = 1
 	url = https://toolkit.translatehouse.org/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = translate-toolkit
 	optdepends = python-chardet: encoding detector
 	optdepends = python-levenshtein: faster matching
 	optdepends = python-cheroot: for TM Server
-	source = translate-toolkit-3.11.1.tar.gz::https://github.com/translate/translate/archive/3.11.1.tar.gz
-	sha256sums = bcdfd868560d902630338e5b76e9f46c8cefb0d40464aa386f298b285d464f5f
+	source = translate-toolkit-3.12.1.tar.gz::https://github.com/translate/translate/archive/3.12.1.tar.gz
+	sha256sums = 177f241a810e98b6b833111b6722d21ddb3111ea76478045073eb16991aa08ae
 
 pkgname = translate-toolkit
