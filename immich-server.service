@@ -18,7 +18,7 @@ Type=simple
 Restart=on-failure
 
 EnvironmentFile=/etc/immich.conf
-Environment=NODE_ENV=production
+Environment=NODE_ENV=production NVIDIA_DRIVER_CAPABILITIES=all NVIDIA_VISIBLE_DEVICES=all
 SyslogIdentifier=immich-server
 ExecStart=node dist/main immich
 
