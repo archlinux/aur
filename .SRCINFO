@@ -1,0 +1,13 @@
+pkgbase = pandoc-theoremnos
+	pkgdesc = Theorem number filter for pandoc
+	pkgver = 2.0.0a3
+	pkgrel = 1
+	url = https://github.com/tomduck/pandoc-theoremnos
+	arch = any
+	license = GPL
+	depends = pandoc-xnos>=2.5.0
+	depends = pandoc-xnos<3.0
+	source = https://github.com/tomduck/pandoc-theoremnos/archive/2.0.0a3.tar.gz
+	md5sums = 72b2d8633e4817ea2cf672da2aa7baa7
+
+pkgname = pandoc-theoremnos
