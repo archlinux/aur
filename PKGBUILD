@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fftw
-_pkgver=1.0-7
+_pkgver=1.0-8
 pkgname=r-${_pkgname,,}
-pkgver=1.0.7
-pkgrel=3
+pkgver=1.0.8
+pkgrel=1
 pkgdesc='Fast FFT and DCT Based on the FFTW Library'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,7 @@ depends=(
   fftw
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f69f63467b84e107f3e0b18d1f034a37140545e6f50e6be3b887df2b4eec3a1e')
+sha256sums=('8c7e011666a0ed76e0554abfa62cf658c055bd6efebe94d16b4462d123d08620')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
