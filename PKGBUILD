@@ -1,7 +1,7 @@
 # Maintainer: Atte Lautanala <atte@lautana.la>
 pkgname=python-keyring-pass
 _pkgname=keyring_pass
-pkgver=0.8.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='https://www.passwordstore.org backend for keyring'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-keyring' 'python-jaraco.classes' 'pass')
 makedepends=('python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/k/${_pkgname/_/-}/$_pkgname-$pkgver.tar.gz")
-sha512sums=('25a288f5e6fd92d3848bbd9ea81b4bb7aa1da2318b635ad8980eff1d6b75892759684d639f34453f2ea98dcc07ec0228ce1436f5ed9ed3d8dbbb615fbc946a8e')
+b2sums=('e95cca011ac258499dd66b5afe52981aa10555262e7c7864fe337fe75e557c83cedfb43e3cf43f7835884879d39540cebb005220b81b5a2ab49ef7da946b8765')
 
 
 build() {
@@ -23,5 +23,3 @@ package() {
     python -m installer -d "$pkgdir" dist/*.whl
     install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
