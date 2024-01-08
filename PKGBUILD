@@ -20,5 +20,5 @@ package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 	chmod 4755 "${pkgdir}/opt/${_pkgname}/chrome-sandbox"
 	mkdir -p "${pkgdir}/usr/bin"
-	ln -s "${pkgdir}/opt/${_pkgname}/${_pkgname}" "/usr/bin/${_pkgname}"
+	ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
