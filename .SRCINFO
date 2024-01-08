@@ -1,0 +1,14 @@
+pkgbase = dynssh
+	pkgdesc = Small SSH wrapper
+	pkgver = v1.1
+	pkgrel = 1
+	url = https://github.com/themartiancompany/dynssh
+	arch = any
+	license = AGPL3
+	checkdepends = shellcheck
+	makedepends = reallymakepkg
+	source = dynssh-v1.1.tar.gz::https://github.com/themartiancompany/dynssh/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 1c810836bd7a71d1650c207a5d3596b27d83e627c3376e738152ac93a939e9b2
+	sha256sums = SKIP
+
+pkgname = dynssh
