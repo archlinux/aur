@@ -1,7 +1,7 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r478.c011448
+pkgver=r482.b5b52b1
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://gitlab.freedesktop.org/mateosss/basalt"
 license=('BSD')
 depends=('eigen' 'glew' 'libpng' 'lz4' 'bzip2' 'boost' 'gtest' 'opencv' 'libpng' 'lz4' 'bzip2' 'libuvc' 'fmt' 'python')
 optdepends=('librealsense: Intel realsense support')
-makedepends=('cmake' 'ninja' 'bc' 'git')
+makedepends=('cmake' 'ninja' 'git')
 _pkgname="basalt"
 source=('git+https://gitlab.freedesktop.org/mateosss/basalt.git#branch=main'
 	'279c17d9c9eb9374c89489b449f92cb93350e8cd.patch')
@@ -38,30 +38,23 @@ build() {
 	msg "Starting CMake"
 	cd "$_pkgname"
 
-	MEM_GB_PER_JOB=1
-	read -r _ FREEMEM _ <<< "$(grep --fixed-strings 'MemAvailable' /proc/meminfo)"
-	JOBS=$(echo "scale=0 ; $FREEMEM / (1024 * 1024) / $MEM_GB_PER_JOB" | bc)
+	# -g1: Level 1 produces minimal information, enough for making backtraces in parts of the program that you don’t plan to debug.
+	# export CFLAGS="-g1"
+	# export CXXFLAGS="$CFLAGS"
 
-	if [ $JOBS == 0 ]
-	then
-		JOBS=1
-	fi
+	# -DBASALT_BUILD_SHARED_LIBRARY_ONLY=ON remove this if you want to build all of basalt
 
-	msg "Free memory: $FREEMEM. Estimated memory requirement per job (GB): $MEM_GB_PER_JOB: Using $JOBS build jobs"
-
-# -g1: Level 1 produces minimal information, enough for making backtraces in parts of the program that you don’t plan to debug.
-# -DFMT_DEPRECATED_OSTREAM: workaround for Sophos issue with fmt 9.0+ https://github.com/strasdat/Sophus/issues/366#issuecomment-1229178088
-	CFLAGS="-DFMT_DEPRECATED_OSTREAM=1 -g1" CXXFLAGS="$CFLAGS" CC=clang CXX=clang++ \
 	cmake \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
-		-DCMAKE_BUILD_TYPE="Release" \
+		-DCMAKE_BUILD_TYPE="RelWithDebInfo" \
 		-DBUILD_TESTS=OFF \
 		-DBASALT_INSTANTIATIONS_DOUBLE=OFF \
+		-DBASALT_BUILD_SHARED_LIBRARY_ONLY=ON \
 		-Bbuild \
 		-GNinja
 
 	msg "Building the project"
-	ninja -C build -j$JOBS
+	ninja -C build
 }
 
 package() {
@@ -69,7 +62,4 @@ package() {
 
 	msg "Installing files"
 	DESTDIR="${pkgdir}/" ninja -C build install
-
-	mkdir -p "$pkgdir"/usr/share/basalt/thirdparty/basalt-headers/thirdparty
-	cp -Ra "$srcdir"/basalt/thirdparty/basalt-headers/thirdparty/eigen "$pkgdir"/usr/share/basalt/thirdparty
 }
