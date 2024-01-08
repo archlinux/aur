@@ -1,7 +1,7 @@
 pkgbase = shvcli-git
 	pkgdesc = An easy-to-use CLI interface to access the SHV network
-	pkgver = r62.86131cb
-	pkgrel = 1
+	pkgver = r68.3a41dbe
+	pkgrel = 2
 	url = https://gitlab.com/elektroline-predator/shvcli
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = shvcli-git
 	makedepends = python-wheel
 	depends = pyshv
 	depends = python-prompt_toolkit
+	depends = python-pyxdg
 	provides = shvcli
 	conflicts = shvcli
 	conflicts = shvcli-git

@@ -2,13 +2,13 @@
 
 pkgname=shvcli-git
 _gitname=shvcli
-pkgver=r62.86131cb
-pkgrel=1
+pkgver=r68.3a41dbe
+pkgrel=2
 pkgdesc='An easy-to-use CLI interface to access the SHV network'
 url='https://gitlab.com/elektroline-predator/shvcli'
 arch=('any')
 license=('MIT')
-depends=('pyshv' 'python-prompt_toolkit')
+depends=('pyshv' 'python-prompt_toolkit' 'python-pyxdg')
 makedepends=('git' 'python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 conflicts=('shvcli' 'shvcli-git')
 provides=('shvcli')
