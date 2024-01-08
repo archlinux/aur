@@ -1,10 +1,11 @@
 pkgbase = sizeof-pypy
 	pkgdesc = Find the size of files and Directory
 	pkgver = 0.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ASHWIN990/sizeof
 	arch = any
 	license = GPL3
+	makedepends = sed
 	depends = pypy3
 	provides = sizeof
 	conflicts = sizeof

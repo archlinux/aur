@@ -2,13 +2,13 @@
 
 pkgname=sizeof-pypy
 pkgver=0.37
-pkgrel=1
+pkgrel=2
 pkgdesc="Find the size of files and Directory"
 arch=('any')
 url="https://github.com/ASHWIN990/sizeof"
 license=('GPL3')
 depends=('pypy3')
-makedepends=()
+makedepends=('sed')
 conflicts=('sizeof')
 provides=('sizeof')
 source=("https://sourceforge.net/projects/posix-sizeof/files/sizeof-${pkgver}.tar.gz")
