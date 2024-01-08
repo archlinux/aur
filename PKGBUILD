@@ -8,7 +8,7 @@
 
 pkgname=flexget
 _name=Flexget
-pkgver=3.10.6
+pkgver=3.11.6
 pkgrel=1
 pkgdesc="Multipurpose automation tool for downloading media content from different sources"
 arch=(any)
@@ -39,6 +39,7 @@ depends=(
   python-lxml
   python-packaging
   python-paramiko
+  python-pendulum
   python-pillow
   python-psutil
   python-pynzb
@@ -46,16 +47,19 @@ depends=(
   python-pyrss2gen
   python-pysftp
   python-rebulk
+  python-referencing
   python-requests
   python-rich
   python-rpyc
   python-sqlalchemy
+  python-typing-extensions
   python-werkzeug
   python-yaml
   python-zxcvbn
 )
 optdepends=(
   'python-boto3: SNS output plugin'
+  'python-plexapi: Plex support'
   'python-rarfile: decompress plugin'
   'python-transmissionrpc: Transmission support'
 )
@@ -67,6 +71,7 @@ makedepends=(
 )
 checkdepends=(
   python-boto3
+  python-plexapi
   python-pytest
   python-rarfile
   python-transmissionrpc
@@ -74,12 +79,12 @@ checkdepends=(
 )
 
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "flexget.service"
   "flexget@.service"
 )
 sha256sums=(
-  '06a17071616464c9889d35eb252342b3c70938599642db76d96e1589a77902ee'
+  '0c68436e33767ba70c5cbd5052cf66cd8ec098d5e4f66701edced6d5f92cfcd5'
   '117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa'
   'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
 )
@@ -95,14 +100,9 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest \
-    -k "\
-      not test_rar \
-      and not test_delete_rar \
-      and not test_list_add \
-      and not test_list_match \
-      and not test_list_remove \
-    "
+  pytest \
+    --deselect flexget/tests/test_decompress.py::TestExtract::test_delete_rar \
+    --deselect flexget/tests/test_decompress.py::TestExtract::test_rar
 }
 
 package() {
@@ -110,7 +110,7 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dvm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dvm644 -t "$pkgdir/usr/lib/systemd/user/" "$srcdir/$pkgname"{,@}.service
 
-  install -Dvm644 "$srcdir/$pkgname"{,@}.service -t "$pkgdir/usr/lib/systemd/user/"
+  install -Dvm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
