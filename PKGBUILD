@@ -1,37 +1,62 @@
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
-# Maintainer:  Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor:  Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gcstar
-_pkgname=GCstar
+_name=GCstar
 pkgver=1.8.0
-pkgrel=1
-pkgdesc="A collection management application"
-arch=('any')
-url="https://gitlab.com/${_pkgname}/${_pkgname}"
-license=('GPL')
-depends=('perl-libwww' 'perl-xml-simple' 'perl-net-snmp' 'perl-xml-parser'
-	 'perl-switch' 'perl-xml-libxml' 'perl-sort-naturally' 'perl-http-message'
-	 'perl-http-date' 'perl-http-cookies' 'perl-gd' 'perl-date-calc'
-	 'perl-lwp-protocol-https' 'perl-archive-zip' 'perl-datetime-format-strptime'
-	 'perl-gdgraph' 'perl-mp3-info' 'perl-mp3-tag' 'perl-net-freedb'
-	 'perl-ogg-vorbis-header-pureperl' 'hicolor-icon-theme' 'perl-gtk3-simplelist'
-	 'perl-json' 'perl-locale-codes')
-optdepends=('perl-image-exiftool:  to retrieve data from a mkv file')
-source=($url/-/archive/v$pkgver/${_pkgname}-v$pkgver.tar.bz2)
-sha256sums=('99a381277fa119db1541fed5a214ae28d879b449d44af607892ff4cac177ac66')
+pkgrel=2
+pkgdesc="Collection manager written in Perl and based on GTK"
+arch=(any)
+url="https://gitlab.com/GCstar/GCstar"
+license=(GPL)
+depends=(
+  hicolor-icon-theme
+  perl
+  perl-archive-zip
+  perl-date-calc
+  perl-datetime-format-strptime
+  perl-gd
+  perl-gdgraph
+  perl-gtk3-simplelist
+  perl-http-cookies
+  perl-http-date
+  perl-http-message
+  perl-json
+  perl-libwww
+  perl-locale-codes
+  perl-lwp-protocol-https
+  perl-mp3-info
+  perl-mp3-tag
+  perl-net-freedb
+  perl-net-snmp
+  perl-ogg-vorbis-header-pureperl
+  perl-sort-naturally
+  perl-switch
+  perl-xml-libxml
+  perl-xml-parser
+  perl-xml-simple
+)
+optdepends=('perl-image-exiftool: Retrieve data from mkv files')
+
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$_name-v$pkgver.tar.gz")
+sha256sums=('6e62db6f7a4ca0b2c1bd06c9cff57dae620819dd74f7c1ce5a8d21099f352c1a')
+
+_archive="$_name-v$pkgver"
 
 package() {
-  cd ${_pkgname}-v$pkgver/$pkgname
-  perl ./install --text --prefix="$pkgdir"/usr
-  install -D -m644 "$pkgdir"/usr/share/gcstar/icons/gcstar_256x256.png \
-                   "$pkgdir"/usr/share/pixmaps/gcstar.png
-  install -D -m644 "$pkgdir"/usr/share/gcstar/icons/gcstar_32x32.png \
-                   "$pkgdir"/usr/share/pixmaps/gcstar32.png
-  cp -R share/applications "$pkgdir"/usr/share
-# cleaning up 
-  rmdir "$pkgdir"/usr/share/icons/hicolor/scalable/{apps,mimetypes}
-  rmdir "$pkgdir"/usr/share/icons/hicolor/scalable/
-  rm "$pkgdir"/usr/share/applications/mimeinfo.cache
-  rm -rf "$pkgdir"/usr/share/mime
+  cd "$_archive/gcstar"
+
+  perl ./install --text --prefix="$pkgdir/usr"
+
+  cp --archive --no-preserve=ownership share/applications "$pkgdir/usr/share"
+
+  install -Dm644 "$pkgdir/usr/share/gcstar/icons/gcstar_256x256.png" "$pkgdir/usr/share/pixmaps/gcstar.png"
+  install -Dm644 "$pkgdir/usr/share/gcstar/icons/gcstar_32x32.png" "$pkgdir/usr/share/pixmaps/gcstar32.png"
+
+  rm -r \
+    "$pkgdir/usr/share/icons/hicolor/scalable" \
+    "$pkgdir/usr/share/mime"
+  rm "$pkgdir/usr/share/applications/mimeinfo.cache"
 }
