@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=karbonized-bin
 pkgver=1.12.0
-pkgrel=3
+_electronversion=25
+pkgrel=4
 pkgdesc="Awesome Image Generator for Code Snippets & Screenshots"
 arch=('x86_64')
 url="https://github.com/yossTheDev/karbonized"
@@ -9,14 +10,10 @@ license=('Apache')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron25'
-    'hicolor-icon-theme'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    "electron${_electronversion}"
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -26,11 +23,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ec525f543d01b865a12896eed63c1334fb4acc2178cc68af009bc314a8de8a62'
-            '2bd1205006e41eca5a8c91ff2afabccf8b3b1984bb9c6bc46cc9708a88b1d5b8')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|Utility|Utility;Graphics|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Utility|Utility;Graphics|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
