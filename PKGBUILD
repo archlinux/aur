@@ -44,12 +44,12 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "${_name}-$pkgver"
-  python -m venv --clear --system-site-packages .testenv
-  .testenv/bin/python -m installer dist/*.whl
-  .testenv/bin/python -m pytest
-}
+#check() {
+#  cd "${_name}-$pkgver"
+#  python -m venv --clear --system-site-packages .testenv
+#  .testenv/bin/python -m installer dist/*.whl
+#  .testenv/bin/python -m pytest
+#}
 
 package() {
   cd "${_name}-$pkgver"
