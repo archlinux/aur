@@ -1,7 +1,7 @@
 pkgbase = sshyp
 	pkgdesc = A light-weight, self-hosted, synchronized password manager
 	pkgver = 1.5.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rwinkhart/sshyp
 	arch = any
 	license = GPL-3.0-only
@@ -11,7 +11,7 @@ pkgbase = sshyp
 	optdepends = wl-clipboard: wayland clipboard support
 	optdepends = xclip: x11 clipboard support
 	optdepends = bash-completion: bash completion support
-	source = https://github.com/rwinkhart/sshyp/releases/download/v1.5.2/DEBIAN-sshyp_1.5.2-3_all.deb
+	source = https://github.com/rwinkhart/sshyp/releases/download/v1.5.2/DEBIAN-sshyp_1.5.2-1_all.deb
 	sha512sums = 5a6180ba5e1c0ad52e972e6772126dac0170344f8922b6615fe8221920d6e3ee2b4df8f9dc6ea679c3d776e2c613bd40d0851ec550a8d4c0a61bf27053201465
 
 pkgname = sshyp
