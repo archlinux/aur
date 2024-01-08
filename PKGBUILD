@@ -2,7 +2,7 @@
 # Original work by: Igor Moura <imp2@cin.ufpe.br>
 pkgname=freecad-weekly-appimage
 pkgver=0.22_35510
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose 3D CAD modeler"
 arch=('x86_64')
 url="https://www.freecadweb.org/"
@@ -12,7 +12,7 @@ provides=('freecad')
 conflicts=('freecad')
 options=('!strip')
 noextract=("freecad-${pkgver}.AppImage")
-source=("freecad-0.22_35510.AppImage::https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-35510-2024-01-05-conda-Linux-x86_64-py310.AppImage"
+source=("freecad-0.22_35510.AppImage::https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-35510-2024-01-08-conda-Linux-x86_64-py310.AppImage"
   "freecad.sh"
   "org.freecad.FreeCAD.desktop.patch")
 
