@@ -1,16 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=autorecord-manager
 _pkgname="LAR 直播自动录制"
-pkgver=4.3.4
+pkgver=4.3.5
 _electronversion=20
-pkgrel=3
+_nodeversion=16
+pkgrel=1
 pkgdesc="基于 Electron 的多平台直播自动录制软件"
 arch=('any')
 url="https://github.com/WhiteMinds/LiveAutoRecord"
 license=('LGPL3')
 conflicts=("${pkgname}")
 depends=(
-    electron${_electronversion}
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -18,18 +19,24 @@ makedepends=(
     'npm'
     'yarn'
     'git'
+    'node-gyp'
+    'make'
+    'gcc'
+)
+options=(
+    '!strip'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'ab42613343e315766f1af54fed9c5bb1d1644828665cd995b6b849fcc35b6d66')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 16
-    nvm use 16
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
@@ -38,22 +45,24 @@ build() {
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     sed "s|electron-builder\",|electron-builder --linux AppImage\",|g" -i packages/electron/package.json
     yarn install
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/shared"
+    cd "${srcdir}/${pkgname}.git/packages/shared"
     yarn build
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/manager"
+    cd "${srcdir}/${pkgname}.git/packages/manager"
     yarn build
     yarn app:build -p never
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packages/electron/build/${pkgver}/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/packages/electron/build/${pkgver}/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packages/electron/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/packages/electron/build/${pkgver}/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/packages/electron/build/${pkgver}/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/packages/electron/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
