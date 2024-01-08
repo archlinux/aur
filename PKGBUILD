@@ -1,8 +1,8 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 _pkgname=moonraker
 pkgname="${_pkgname}-git"
-pkgver=r1950.84a8538
-pkgrel=2
+pkgver=r1952.27a0295
+pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
 url="https://github.com/Arksine/moonraker"
@@ -27,9 +27,8 @@ optdepends=("polkit: enable service and machine control through moonraker"
             "python-preprocess-cancellation: enables exclude object processing"
             "python-apprise: enable [notifier] module for sending notifications"
             "python-ldap3: [authorization] using LDAP"
-            "python-msgspec: potentially improves moonraker performance"
-            # Leave the following off for now as moonraker used methods deprecated in py3.12
-            #"python-uvloop: potentially improves moonraker performance"
+            "python-msgspec: optional speedup"
+            "python-uvloop: optional speedup"
             "python-zeroconf: enable zeroconf announcements"
             "wireless_tools: network detection")
 provides=("$_pkgname")
@@ -56,8 +55,8 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  # clean wheel before build to prevent later package() runs from erroring due
-  # to `dist/*.whl` expanding to multiple files (which `python -m install` later
+  # clean wheel before build to prevent subsequent package() runs from erroring
+  # due to `dist/*.whl` expanding to multiple files (which `python -m install`
   # doesn't support)
   rm -f dist/*.whl
 
