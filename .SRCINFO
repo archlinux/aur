@@ -1,7 +1,7 @@
 pkgbase = broadcast-bin
 	pkgdesc = Advanced tool for recording your desktop. Complete with overlay support.
 	pkgver = 1.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Mobiz-Advanced-Technologies/Broadcast
 	arch = x86_64
 	license = AGPL3
@@ -10,6 +10,6 @@ pkgbase = broadcast-bin
 	source = broadcast-1.0.5.deb::https://github.com/Mobiz-Advanced-Technologies/Broadcast/releases/download/v1.0.5/broadcast_1.0.5_amd64.deb
 	source = broadcast.sh
 	sha256sums = e2a9142bb8f5e024922538cd2fd216c52ae7c44ee06c1cd8a8058ed1a28bb5e1
-	sha256sums = 7a33b2502b3c1a3352615e1c949da596e165f779c031b5c3a8297e204f28784b
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = broadcast-bin
