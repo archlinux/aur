@@ -16,7 +16,7 @@ _showmsg() {
     ##   3. Launch Cellframe Dashboard from your applications             ##
     ##                                                                    ##
     ##   OPTIONAL:                                                        ##
-    ##   systemctl enable --now cellframe-node-logrotate.service          ##
+    ##   systemctl enable --now cellframe-node-logrotate.timer            ##
     ##                                                                    ##
     ##   For more aggressive log rotating                                 ##
     ##                                                                    ##
