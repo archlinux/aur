@@ -1,7 +1,7 @@
 pkgbase = swc-mclauncher-bin
 	pkgdesc = Quickly and easily launch Software City's Minecraft-Modpacks through this beautiful and custom Minecraft Launcher!
 	pkgver = 1.1.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://projects.software-city.org/p/mc-launcher
 	arch = x86_64
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = swc-mclauncher-bin
 	provides = swc-mclauncher=1.1.11
 	conflicts = swc-mclauncher
 	source = swc-mclauncher-1.1.11.deb::https://github.com/Davis-Software/swc_mclauncher/releases/download/v1.1.11/swc_mclauncher_1.1.11_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/Davis-Software/swc_mclauncher/v1.1.11/LICENSE
+	source = LICENSE-1.1.11::https://raw.githubusercontent.com/Davis-Software/swc_mclauncher/v1.1.11/LICENSE
 	source = swc-mclauncher.sh
 	sha256sums = 7e2c8aa6fe7756e8d764eca5d5fde077b88a77ef641692c75b316e0d9910fdbc
 	sha256sums = 2fc239445e58117449b5049215f6540a4f37dd25e4ed79a7325b57e1406c1437
-	sha256sums = 23957d30be5e3cc8303f618f2be114b7372ea857a5ce505094b582bf430b4b37
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = swc-mclauncher-bin
