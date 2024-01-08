@@ -27,7 +27,10 @@ prepare() {
     # removing all *.o files (fixes issues)
     find . -type f -iname '*.o' -exec rm {} \;
     
+    # fix mglinstall script
+    echo "MGLCFLAGS += -fcommon" >> configs/Makefile.config_Linux_ARCH
     cp configs/Makefile.config_Linux_ARCH Makefile.config
+
     # The following is not needed for new Makefile.config
     # sed -i 's_/usr/X11[^/]*/_/usr/_' Makefile.config
     # sed -i 's/BSD_SOURCE/DEFAULT_SOURCE/' Makefile.config
