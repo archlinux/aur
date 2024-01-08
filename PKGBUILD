@@ -5,10 +5,10 @@
 _pkgname=icu
 pkgname=icu73
 pkgver=73.2
-pkgrel=2
+pkgrel=3
 pkgdesc='International Components for Unicode library (version 73)'
 arch=('i686' 'x86_64')
-url="http://www.icu-project.org/"
+url="https://icu.unicode.org/"
 license=('custom:icu')
 conflicts=('icu73-bin')
 depends=('gcc-libs' 'sh')
