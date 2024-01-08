@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!tmpfiles.conf
+!sysusers.conf
+!systemd.service
+!config.env

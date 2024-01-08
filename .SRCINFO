@@ -1,0 +1,22 @@
+pkgbase = photon-lemmy
+	pkgdesc = An alternative front end for Lemmy
+	pkgver = 1.25.2
+	pkgrel = 1
+	url = https://github.com/Xyphyn/photon
+	arch = any
+	license = AGPL3
+	makedepends = npm
+	depends = nodejs
+	backup = etc/photon-lemmy/config.env
+	source = photon-1.25.2.tar.gz::https://github.com/Xyphyn/photon/archive/refs/tags/v1.25.2.tar.gz
+	source = systemd.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	source = config.env
+	b2sums = 387c47736e9a26d2f89947a7ac9e89cd8796ae4d1347100213403d6471cca314c1f60af54e3c1fc416e0959ec122c04b1a7817cc461ecbdc99abf87ec05f9199
+	b2sums = fa15b1362b4a794464577181eada8432bff9842a4f0a29c4096e203139b3f333d2c25d7837f507fbfd0544a2631ed2321409e2b864a85e6faadcbea35345d2cf
+	b2sums = 02f70ad3274186cb9f5ba50e0717ebf17fc76450816174ed761d1c8a37c5f08bd906a1fe0573db647c92d91f900c67f9595478c625c2d22cf98f3769b55198d1
+	b2sums = 5c09b5b05a7e5438912fb73d140683dbaab5a450af194ec97dbc30e4118ce21e769dbb6034c40a7d3ffabfaf3b4bf757ed12d189bd9ae6fe99c084063cc52328
+	b2sums = 22567c2e2fac19a9c1acbb3ea2e811b30847429a2a14fafa21991fc8281a24bc3acb111b78e3a83b9261c193349156ccdd5b0fa20aa7c1fcd2113af47857e053
+
+pkgname = photon-lemmy

@@ -1,0 +1,19 @@
+[Unit]
+Description=Photon Lemmy - An alternative front end to Lemmy
+After=network.target
+
+[Service]
+User=photon-lemmy
+WorkingDirectory=/etc/share/webapps/photon-lemmy
+ExecStart=/usr/bin/node build
+EnvironmentFile=/etc/webapps/photon-lemmy/config.env
+Restart=on-failure
+
+# Hardening
+ProtectSystem=yes
+PrivateTmp=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
