@@ -1,6 +1,6 @@
 pkgbase = hyperion.ng-git
 	pkgdesc = The reworked version (next generation) of Hyperion, ambient light software
-	pkgver = 2.0.15.r12.2a17de37
+	pkgver = 2.0.15.r79.8907d737
 	pkgrel = 1
 	url = https://github.com/hyperion-project/hyperion.ng
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = hyperion.ng-git
 	depends = avahi
 	depends = mbedtls
 	depends = flatbuffers
+	depends = qmdnsengine
 	optdepends = xorg-server: X11 grabbing
 	provides = hyperion
 	conflicts = hyperion

@@ -1,7 +1,7 @@
 # Maintainer: Jake <aur@ja-ke.tech.de>
 
 pkgname=hyperion.ng-git
-pkgver=2.0.15.r23.d1879c2e
+pkgver=2.0.15.r79.8907d737
 pkgrel=1
 pkgdesc="The reworked version (next generation) of Hyperion, ambient light software"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -42,6 +42,7 @@ build() {
         -DUSE_SYSTEM_PROTO_LIBS=OFF \
         -DUSE_SYSTEM_MBEDTLS_LIBS=ON \
         -DUSE_SYSTEM_FLATBUFFERS_LIBS=ON \
+        -DENABLE_MDNS= \
         ..
   make
 }
