@@ -1,14 +1,14 @@
 # Maintainer: Jonas Møller <jonas.moeller2@protonmail.com>
 pkgname=hawck-git
 _pkgname=hawck
-pkgver=20230310
+pkgver=20240108
 pkgrel=1
 pkgdesc="Keyboard macro system"
 arch=("x86_64")
 url="https://github.com/snyball/hawck"
 license=('BSD')
 depends=("libnotify" "lua53" "ruby" "python" "kbd" "hicolor-icon-theme")
-makedepends=("meson" "gcc" "pkg-config" "catch2" "ninja" "git")
+makedepends=("meson" "gcc" "pkg-config" "ninja" "git")
 optdepends=("doxygen" "zenity" "polkit-gnome")
 install=$pkgname.install
 source=("git+https://github.com/snyball/hawck.git")
