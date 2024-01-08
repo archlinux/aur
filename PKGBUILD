@@ -1,9 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: AsukaMinato
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
-pkgname=go-dsp-guitar-bin
+_pkgname=dsp-guitar
+pkgname="go-${_pkgname}-bin"
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments"
 arch=(
 	'aarch64'
@@ -11,8 +12,14 @@ arch=(
 )
 url='https://github.com/andrepxx/go-dsp-guitar'
 license=('Apache')
-provides=("${pkgname%-bin}" 'dsp-guitar')
-conflicts=("${pkgname%-bin}" 'dsp-guitar')
+provides=(
+	"${pkgname%-bin}"
+	"${_pkgname}"
+)
+conflicts=(
+	"${pkgname%-bin}"
+	"${_pkgname}"
+)
 depends=(
 	'jack'
 )
@@ -21,8 +28,11 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('a39993ba8ad40ce74234e908db276841df1fd517c19385d01436d160986c77b1'
-            '4e98b6c56eb55a54a3674089acaaabf767429f57ccd03960dcd2c0c5fe8c6243')
+            '32c97107921cb1bf760b8dc19be4c17497e57d0622711c5343f7da965728a35f')
 build() {
+	sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
 	cd "${srcdir}/${pkgname%-bin}"
 	case "${CARCH}" in
         x86_64)

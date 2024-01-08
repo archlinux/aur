@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 set -e
-APPDIR=/opt/go-dsp-guitar
-cd "${APPDIR}"
-exec "./go-dsp-guitar"
+_APPDIR=/opt/@appname@
+_RUNNAME="${_APPDIR}/@runname@"
+cd "${_APPDIR}"
+exec "${_RUNNAME}" "$@"
