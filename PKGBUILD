@@ -1,4 +1,4 @@
-# Maintainer: meister1593 <leruop@gmail.com>
+# Maintainer: N/A <N/A>
 pkgname=pitchbox
 pkgver=2.0.2
 pkgrel=1.1
