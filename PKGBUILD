@@ -4,7 +4,7 @@ pkgname="${_officalname}-bin"
 _pkgname=SuwellReader
 _appname="cn.${_officalname//-/.}"
 pkgver=3.0.22.0916
-pkgrel=4
+pkgrel=5
 pkgdesc="OFD Reader Professional 3.0 From Suwell .LTD"
 providers="Beijing Suwell .LTD"
 arch=('x86_64')
@@ -15,7 +15,6 @@ conflicts=()
 depends=(
     'libxt'
     'libjpeg6-turbo'
-    'gstreamer0.10-base'
     'gtk2'
     'glu'
     'libxml2'
@@ -38,13 +37,20 @@ depends=(
     'libtasn1'
     'libpng12'
 )
+options=(
+    '!strip'
+    'emptydirs'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_downurl}/appstore/pool/appstore/c/${_appname}.appstore/${_appname}.appstore_${pkgver}-1_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('69e56165f999ca8a168d64d0e22180755c67091b700fca1e339910580b127d1f'
-            '71e0678dcf41c940fd832f6f227b0401159ded83434a8aedb96de9b16244f53e')
+            'dd09abad3a8c6174dd680940c810a878083624aeb2534b71d96d668708b5f39f')
 build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed -e "s|/usr/bin/${_officalname//-/}|${pkgname%-bin}|g" \
         -e '/Icon=/d' \
@@ -54,9 +60,9 @@ build() {
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
     cp -r "${srcdir}/opt/apps/${_appname}/files/bin/suwell/"* "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/fonts/cesi_font/"*.ttf -t "${pkgdir}/usr/share/fonts/cesi-font"
     install -Dm644 "${srcdir}/usr/share/mime/packages/"*.xml -t "${pkgdir}/usr/share/mime/packages"

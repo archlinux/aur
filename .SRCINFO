@@ -1,13 +1,12 @@
 pkgbase = suwell-reader-bin
 	pkgdesc = OFD Reader Professional 3.0 From Suwell .LTD
 	pkgver = 3.0.22.0916
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.suwell.cn/
 	arch = x86_64
 	license = custom
 	depends = libxt
 	depends = libjpeg6-turbo
-	depends = gstreamer0.10-base
 	depends = gtk2
 	depends = glu
 	depends = libxml2
@@ -29,9 +28,11 @@ pkgbase = suwell-reader-bin
 	depends = libx11
 	depends = libtasn1
 	depends = libpng12
+	options = !strip
+	options = emptydirs
 	source = suwell-reader-3.0.22.0916.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/cn.suwell.reader.appstore/cn.suwell.reader.appstore_3.0.22.0916-1_amd64.deb
 	source = suwell-reader.sh
 	sha256sums = 69e56165f999ca8a168d64d0e22180755c67091b700fca1e339910580b127d1f
-	sha256sums = 71e0678dcf41c940fd832f6f227b0401159ded83434a8aedb96de9b16244f53e
+	sha256sums = dd09abad3a8c6174dd680940c810a878083624aeb2534b71d96d668708b5f39f
 
 pkgname = suwell-reader-bin
