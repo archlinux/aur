@@ -1,0 +1,7 @@
+diff --git b/mina/src/Makevars b/mina/src/Makevars
+new file mode 100644
+index 0000000..d823922
+--- /dev/null
++++ b/mina/src/Makevars
+@@ -0,0 +1 @@
++PKG_LIBS := $(shell "${R_HOME}/bin/Rscript" -e "RcppParallel::LdFlags()")
