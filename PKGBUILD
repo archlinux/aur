@@ -4,8 +4,8 @@ _lark_whl=lark-1.1.5-py3-none-any.whl
 
 _pkgname=gdtoolkit
 pkgname=python-${_pkgname}
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.2.2
+pkgrel=1
 pkgdesc='Independent set of tools for working with GDScript - parser, linter and formatter'
 arch=(any)
 url='https://github.com/Scony/godot-gdscript-toolkit'
@@ -18,10 +18,8 @@ source=(
 	"https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
 	"https://files.pythonhosted.org/packages/py3/l/lark/${_lark_whl}"
 )
-sha256sums=(
-	'398d0c7a1d0b8c01150f31430780d7074cac34ef4292b36ac6814c7c04edc909'
-	'8476f9903e93fbde4f6c327f74d79e9b4bd0ed9294c5dfa3164ab8c581b5de2a'
-)
+sha256sums=('2f85fde94b9dceb5d602361c2a00c75e15ae3145d84f3971f34f7479de4eec39'
+            '8476f9903e93fbde4f6c327f74d79e9b4bd0ed9294c5dfa3164ab8c581b5de2a')
 
 build() {
 	cd "$_pkgname-$pkgver"
