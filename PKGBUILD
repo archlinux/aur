@@ -1,22 +1,21 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 
-# Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
+# Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-vdrboblight
-pkgver=0.0.7
-_vdrapi=2.2.0
+pkgver=0.0.8
+_vdrapi=2.6.5
 pkgrel=1
 pkgdesc="Boblight with data from softhddevice"
-url="http://projects.vdr-developer.org/projects/plg-boblight"
+url="https://github.com/vdr-projects/vdr-plugin-boblight"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('boblight' 'gcc-libs' "vdr-api=${_vdrapi}")
-makedepends=('git')
 replaces=('vdr-boblight')
 conflicts=('vdr-boblight')
 _plugname=${pkgname//vdr-/}
-source=("https://projects.vdr-developer.org/git/vdr-plugin-boblight.git/snapshot/vdr-plugin-boblight-$pkgver.tar.bz2")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-boblight/archive/refs/tags/$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('2123b6b95bc48a190633297b38de6f25')
+sha256sums=('ff3469fb8cd5332ac281197110ee7749543051d79c26966c79836b08ff8901d1')
 
 build() {
   cd "${srcdir}/vdr-plugin-boblight-$pkgver"
