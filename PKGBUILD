@@ -5,6 +5,7 @@ pkgdesc="Encoder for the FastVideoDS format"
 
 pkgver=r2.1a25c4f
 pkgrel=1
+epoch=1 # required because of the changed version numbering scheme
 
 arch=(i686 x86_64)
 
