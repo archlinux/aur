@@ -16,7 +16,9 @@ pkgbase = mbedtls-dtls
 	provides = libmbedtls.so
 	provides = libmbedx509.so
 	provides = polarssl
+	provides = mbedtls=3.5.0
 	conflicts = polarssl
+	conflicts = mbedtls
 	replaces = polarssl
 	options = staticlibs
 	source = git+https://github.com/ARMmbed/mbedtls.git#tag=1ec69067fa1351427f904362c1221b31538c8b57

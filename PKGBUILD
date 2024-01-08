@@ -26,9 +26,10 @@ provides=(
   libmbedtls.so
   libmbedx509.so
   polarssl
+  mbedtls=${pkgver}
 )
 replaces=(polarssl)
-conflicts=(polarssl)
+conflicts=(polarssl mbedtls)
 options=(staticlibs)
 _tag=1ec69067fa1351427f904362c1221b31538c8b57
 source=(git+https://github.com/ARMmbed/mbedtls.git#tag=${_tag})
