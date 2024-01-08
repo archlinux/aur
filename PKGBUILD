@@ -1,7 +1,7 @@
 # Maintainer: Alexander Fasching <fasching.a91@gmail.com>
 pkgname=direwolf-git
 _pkgname=direwolf
-pkgver=1.7.dev.A.r111.gba0313c
+pkgver=1.7.dev.A.r140.g46f31d4
 pkgrel=1
 pkgdesc="Software modem/TNC and APRS encoder/decoder"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,16 +14,13 @@ provides=('direwolf')
 conflicts=('direwolf')
 source=('git+https://github.com/wb2osz/direwolf.git#branch=dev'
         'direwolf.service'
-        'direwolf-kiss.service'
-        'https://patch-diff.githubusercontent.com/raw/wb2osz/direwolf/pull/487.patch')
+        'direwolf-kiss.service')
 sha1sums=('SKIP'
           '66366c7a4e8d3768013f9036f2681a86d4b8ad88'
-          'eea3a3fb334645cd8a1e2604dc6c6b024148722a'
-          '0934a4d695c2ab7c3ee3a396655f7f762f5fe8ca')
+          'eea3a3fb334645cd8a1e2604dc6c6b024148722a')
 sha256sums=('SKIP'
             'a1efe2bb96470bc52faa747708b195a685dc454f3d9c91f6bf4d39ab94d3608a'
-            '2a2e4acc769a20afebdfdcd21640fd17b0c4217ceb7ecb3378f9ee5c45fadc68'
-            '7bc0722cb0db9eaccd30af075ec9f5267e4c1850f38d79a718313e322d9ed070')
+            '2a2e4acc769a20afebdfdcd21640fd17b0c4217ceb7ecb3378f9ee5c45fadc68')
 
 pkgver() {
     cd "$_pkgname"
@@ -32,8 +29,7 @@ pkgver() {
 
 prepare() {
     #patch --directory="$_pkgname" --forward --strip=1 --input="${srcdir}/gpsd-version.patch"
-    cd "$_pkgname"
-    git apply "${srcdir}"/487.patch
+    true
 }
 
 build() {
