@@ -2,7 +2,7 @@
 
 pkgname=hyprland-nox
 pkgver=0.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
 url="https://github.com/hyprwm/Hyprland"
@@ -16,18 +16,18 @@ depends=('cairo'
          'libdrm'
          'libglvnd'
          'libinput'
-				 'libliftoff'
-				 'libxkbcommon'
-				 'opengl-driver'
-				 'pango'
-				 'pixman'
-				 'seatd'
-				 'systemd-libs' # libudev
-				 'tomlplusplus'
-				 'wayland')
+         'libliftoff'
+         'libxkbcommon'
+         'opengl-driver'
+         'pango'
+         'pixman'
+         'seatd'
+         'systemd-libs' # libudev
+         'tomlplusplus'
+         'wayland')
 makedepends=('cmake'
              'git'
-						 'hwdata'
+             'hwdata'
              'meson'
              'ninja'
              'wayland-protocols')
