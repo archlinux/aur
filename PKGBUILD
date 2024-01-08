@@ -16,7 +16,7 @@ md5sums=('244c8975247941198389e1bf02712c85'
          'db8f696ee85b1444d8176eb45d3373f3'
          'b7093a88b12344924668dc6c348ef8dd')
 
-build() {
+package() {
   mkdir -p ${pkgdir}/usr/share/java/javablock/ ${pkgdir}/usr/share/pixmaps \
            ${pkgdir}/usr/share/applications ${pkgdir}/usr/bin
   mv ${srcdir}/install/*.jar ${pkgdir}/usr/share/java/javablock/
