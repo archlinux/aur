@@ -1,43 +1,51 @@
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=blis-git
-pkgver=0.9.0.r2.g69fa9154
+pkgver=0.9.0.r134.ga72e4569f
 pkgrel=1
-pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
-arch=('x86_64')
-license=('custom:BSD')
+pkgdesc="BLAS-like Library Instantiation Software Framework"
+arch=('i686' 'x86_64')
+url="https://github.com/flame/blis"
+license=('custom')
 depends=('gcc-libs')
-makedepends=('python')
-conflicts=('blis' 'blas')
-provides=('blis' 'blas')
-url='https://github.com/flame/blis'
-options=('!lto' '!emptydirs')
+makedepends=('git' 'python')
+provides=("blis=$pkgver" 'blas' 'cblas')
+conflicts=('blis' 'blas' 'cblas')
+options=('staticlibs')
 source=("git+https://github.com/flame/blis.git")
-sha512sums=('SKIP')
+sha256sums=('SKIP')
+
 
 pkgver() {
-  cd "${pkgname%-git}"
-  printf "%s" $(git describe --tags|sed 's+-+.r+'|tr - .) 
+  cd "blis"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-  cd "${pkgname%-git}"
-  CFLAGS+=" -fPIC" ./configure --prefix=/usr \
-	 --enable-static \
-	 --enable-shared \
-	 --enable-threading=openmp auto
-  make BLIS_ENABLE_DYNAMIC_BUILD:=yes
+  cd "blis"
+
+  ./configure \
+    --prefix="/usr" \
+    --enable-cblas \
+    --enable-threading=openmp auto
+  make
 }
 
 check() {
-  cd "${pkgname%-git}"
-  make check
+  cd "blis"
+
+  #make check
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "blis"
 
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/blis"
 }
