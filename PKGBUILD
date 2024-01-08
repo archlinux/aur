@@ -1,6 +1,7 @@
-# Maintainer: Dan Nixon <dan@dan-nixon.com>
+# Maintainer: Timo S. Prinz <t.prinz@coliza.de>
+# Contributor: Dan Nixon <dan@dan-nixon.com>
 pkgname=qdmr
-pkgver=0.10.3
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="A GUI application for configuring and programming cheap DMR radios"
 arch=('x86_64' 'i686')
@@ -11,7 +12,7 @@ makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("qdmr-$pkgver.tar.gz::https://github.com/hmatuschek/qdmr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3bddca5e4d35811f40170c3031408ac6141023adaa80754b707b7f71068dc816')
+sha256sums=('bad499faec7533c460e72c121716141f8cca0ea613ed55143ba1780b06a49b9a')
 
 prepare() {
 	cd "$srcdir/${pkgname}-${pkgver}"
