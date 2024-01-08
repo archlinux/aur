@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
   # Override VERSION with ${pkgver}
-  echo '#define VERSION "'${pkgver}'"' >> mod_tile/includes/config.h.in
+  sed -i 's/@VERSION@/'${pkgver}'/g' mod_tile/includes/config.h.in
   cmake -B mod_tile_build -S mod_tile -DCMAKE_BUILD_TYPE:STRING=Release -DENABLE_TESTS:BOOL=ON
   cmake --build mod_tile_build
 }
@@ -58,7 +58,7 @@ package_mod_tile-git() {
   cp -av "$srcdir"/mod_tile/utils/example-map "$pkgdir"/usr/share/renderd/example-map
 
   # "/etc/renderd.conf", "/usr/bin", "/usr/share/man" & "/var" are contained in/handled by "renderd" package
-  rm -rf "${pkgdir:?}"/etc/renderd.conf "${pkgdir:?}"/usr/bin "${pkgdir:?}"/usr/share/man "${pkgdir:?}"/var
+  rm -rf "$pkgdir"/etc/renderd.conf "$pkgdir"/usr/bin "$pkgdir"/usr/share/man "$pkgdir"/var
 }
 
 package_renderd-git() {
@@ -79,8 +79,8 @@ package_renderd-git() {
   install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 
   # The creation of "/var/cache/renderd/tiles" & "/var/run/renderd" will be handled by "renderd.tmpfiles"
-  rm -rf "${pkgdir:?}"/var
+  rm -rf "$pkgdir"/var
 
   # "/etc/httpd" & "/usr/lib/httpd" are contained in "mod_tile" package
-  rm -rf "${pkgdir:?}"/etc/httpd "${pkgdir:?}"/usr/lib/httpd
+  rm -rf "$pkgdir"/etc/httpd "$pkgdir"/usr/lib/httpd
 }
