@@ -7,7 +7,6 @@ pkgdesc='Super Mario multiplayer game.'
 url='http://smwstuff.net/'
 arch=('i686' 'x86_64')
 license=('GPL')
-install=$pkgname.install
 depends=('sdl_image' 'sdl_mixer' 'sdl' 'zlib')
 makedepends=('git' 'cmake')
 provides=('smw')
@@ -32,4 +31,8 @@ build() {
 package() {
 	cd -- "$srcdir/supermariowar/build"
 	make install
+	sed -i 's/\(--datadir[[:space:]]\)[^[:space:]]*/\1\/var\/lib\/smw/' $pkgdir/usr/share/applications/supermariowar.desktop
+	sed -i 's/\(--datadir[[:space:]]\)[^[:space:]]*/\1\/var\/lib\/smw/' $pkgdir/usr/share/applications/supermariowar-leveleditor.desktop
+	sed -i 's/\(--datadir[[:space:]]\)[^[:space:]]*/\1\/var\/lib\/smw/' $pkgdir/usr/share/applications/supermariowar-worldeditor.desktop
+
 }
