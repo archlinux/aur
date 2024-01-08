@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=amphitheatre-desktop-bin
-pkgver=0.4.2
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Open source GUI application that enables you to interact with Amphitheatre"
 arch=(
@@ -17,8 +17,8 @@ makedepends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64.tar.gz")
-sha256sums_aarch64=('673aede34f723db86c5e5a1d5c95794768a568c0609346bc39b34914a7422ae3')
-sha256sums_x86_64=('eaff25b9e9ea75a22b6456a9aedd0796b3ae7eb28d552fff3c651b8fa57d7efe')
+sha256sums_aarch64=('d5da0861bc6240d888b0d55108d78a3f190f8a99c64a77ff03834d654bbe4edb')
+sha256sums_x86_64=('6d213245bc7f77a640f62cb8161045f3d0671408daddcf830bd97fcec3465951')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
 }
