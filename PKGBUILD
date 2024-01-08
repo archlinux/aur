@@ -1,4 +1,4 @@
-# Maintainer: meister1593 <leruop@gmail.com>
+# Maintainer: N/A <N/A>
 pkgname=tcgui-git
 _pkgname=tcgui
 pkgver=4cde123
