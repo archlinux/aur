@@ -1,7 +1,7 @@
 # Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
 
 pkgname=python-pdpyras
-pkgver=5.1.3
+pkgver=5.2.0
 _name=pdpyras
 pkgrel=1
 pkgdesc="Low-level PagerDuty REST API Client in Python"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-requests')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('10220c4ab0553f3ee561112e691b3b54f43f2d96663616bf0627ada4a5610171')
+sha256sums=('e1c9fed3be5d4ec532de62a493b21eff3d04210a6b0d6bba47b637c3bf4ecf88')
 
 build() {
    cd "$srcdir/$_name-$pkgver"
