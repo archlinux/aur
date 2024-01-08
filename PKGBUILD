@@ -1,7 +1,7 @@
 # Maintainer: Michael Asher <michael@wesolveeverything.com> 
 
 pkgname=electerm-bin
-pkgver=1.37.110
+pkgver=1.37.121
 pkgrel=1
 pkgdesc="An electron-based SSH/SFTP Connection manager and terminal"
 arch=('x86_64')
@@ -25,6 +25,6 @@ package() {
 	install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	install -Dm644 ${srcdir}/${_pkgname}.desktop "$pkgdir/usr/share/applications/${_pkgname}.desktop" 
 }
-sha256sums=('0e11b46b272ad3ffaacd149802f57387ba3d5f61f31cc5b39ff3aae83fae84dc'
+sha256sums=('0e42b9a75a97387f65a7ca6e04ef51f27a55681d30211dd4b9f4f2dd34753fcc'
             'b6d96207cff171127c04f59f9eb545b575b71cd93ebc355247cad63e23ca500d'
             '932fdf612b1c77487484e40ea47d1e356e08e8f3e305c69a6c9e2fdc5bfc7104')
