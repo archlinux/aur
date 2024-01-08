@@ -14,8 +14,8 @@ pkgname=(
     icesugar-pro-demo-git
     icesugar-pro-doc-git
     )
-pkgver=1.1a.r22.g01d2bde
-pkgrel=2
+pkgver=1.1a.r24.g5bcd33d
+pkgrel=1
 epoch=
 pkgdesc="iCESugar FPGA Board (base on iCE40UP5k) "
 arch=(x86_64
@@ -86,11 +86,13 @@ package_icesugar-git() {
         icesugar-icesprog
 #         icestorm
         icestorm-nightly
-        nextpnr
+#         nextpnr
         nextpnr-ice40-nightly
         riscv64-linux-gnu-gcc
         sbt
-        yosys)
+#         yosys
+        yosys-nightly
+        )
 }
 
 package_icesugar-demo-git() {
@@ -136,6 +138,7 @@ package_icesugar-icesprog-git() {
     install -Dm0755 icesprog -t "${pkgdir}/usr/bin"
     install -Dm0644 README.md -t "${pkgdir}/usr/share/${pkgbase%-git}/icesprog"
     install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgbase%-git}"
+    install -Dm0644 60-icesugar.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
 }
 
 package_icesugar-nano-git() {
@@ -150,11 +153,12 @@ package_icesugar-nano-git() {
         icesugar-nano-doc
 #         icestorm
         icestorm-nightly
-        nextpnr
+#         nextpnr
         nextpnr-ice40-nightly
         riscv64-linux-gnu-gcc
         sbt
-        yosys)
+#         yosys
+        yosys-nightly)
 }
 
 package_icesugar-nano-demo-git() {
@@ -193,11 +197,12 @@ package_icesugar-pro-git() {
         icesugar-pro-doc
 #         icestorm
         icestorm-nightly
-        nextpnr
+#         nextpnr
         nextpnr-ice40-nightly
         riscv64-linux-gnu-gcc
         sbt
-        yosys)
+#         yosys
+        yosys-nightly)
 }
 
 package_icesugar-pro-demo-git() {
