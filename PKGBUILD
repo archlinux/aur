@@ -1,7 +1,7 @@
 # Maintainer: Gabriele Musco <gabmus@disroot.org>
 
 pkgname=envision-xr-git
-pkgver=r80.35b0ab9
+pkgver=r397.7a55c433
 pkgrel=1
 pkgdesc='GUI for Monado'
 arch=(x86_64 aarch64)
