@@ -3,7 +3,7 @@
 _pkgname=concurrent-log-handler
 pkgname=python-concurrent-log-handler
 pkgver=0.9.25
-pkgrel=2
+pkgrel=3
 pkgdesc="RotatingFileHandler replacement with concurrency, gzip and Windows support"
 arch=('any')
 url="https://github.com/Preston-Landers/concurrent-log-handler"
@@ -15,17 +15,12 @@ sha256sums=('69a0ef00b4e6b8a773c97c1fab05a93bc8669c0f5be53256f5b4a8a06229d92d')
 
 build() {
   cd "$_pkgname-$pkgver" || exit
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_pkgname-$pkgver" || exit
-
-  export PYTHONHASHSEED=0
-  python setup.py install --skip-build \
-      --optimize=1 \
-      --prefix=/usr \
-      --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

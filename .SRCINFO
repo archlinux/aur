@@ -1,7 +1,7 @@
 pkgbase = python-concurrent-log-handler
 	pkgdesc = RotatingFileHandler replacement with concurrency, gzip and Windows support
 	pkgver = 0.9.25
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Preston-Landers/concurrent-log-handler
 	arch = any
 	license = Apache
