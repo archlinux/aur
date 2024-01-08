@@ -24,16 +24,10 @@ depends=(
   'python-tmdbapis'
 )
 
-makedepends=(
-  'python-setuptools'
-)
-
-optdepends=(
-  'plex-media-server'
-)
-
-backup=('etc/plexmetamanager/config.yml')
-
+makedepends=('python-setuptools')
+optdepends=('plex-media-server')
+options=('!emptydirs'  '!strip' 'staticlibs')
+backup=('var/lib/plexmetamanager/config.yml')
 source=(
   "plexmetamanager-${pkgver}.tar.gz::https://github.com/meisnate12/Plex-Meta-Manager/archive/refs/tags/v${pkgver}.tar.gz"
   'plexmetamanager.service'
@@ -42,19 +36,19 @@ source=(
 )
         
 sha256sums=('3ffa3cbecd87b3984a04d99fc7abcd2f752b99cb8d3f2dbc21fcf756acdfc2af'
-            '896036435c931410f961bd7b7ca7cc9d431a7b63e5ea14ab50cb5a5c3eebcf10'
+            'c2813181c2accbc04843ded8b101df1d58601e6c606f4a864ec4e55caea61666'
             '5adcf312386776a66d4710496e0cbe63bc2e8f5ceb5ff1901cc3d5318a681d37'
             'a8e8020062d0985e51b0241b0dc1e54d9dae3999a03ec0966c4a69c53ae8a5a2')
 
 package() {
-  mkdir -p "${pkgdir}/etc/plexmetamanager/assets"
-  install -D -m 644 "${srcdir}/Plex-Meta-Manager-${pkgver}/config/config.yml.template" "${pkgdir}/etc/plexmetamanager/config.yml"
+  mkdir -p "${pkgdir}/var/lib/plexmetamanager/assets"
+  install -D -m 644 "${srcdir}/Plex-Meta-Manager-${pkgver}/config/config.yml.template" "${pkgdir}/var/lib/plexmetamanager/config.yml"
 
   mkdir -p "${pkgdir}/usr/lib/plexmetamanager"
   cp -r "${srcdir}/Plex-Meta-Manager-${pkgver}/"* "${pkgdir}/usr/lib/plexmetamanager"
 
-  find "${pkgdir}/usr/lib/plexmetamanager" -type d -exec chmod 755 {} \;
-  find "${pkgdir}/usr/lib/plexmetamanager" -type f -exec chmod 644 {} \;
+  #find "${pkgdir}/usr/lib/plexmetamanager" -type d -exec chmod 755 {} \;
+  #find "${pkgdir}/usr/lib/plexmetamanager" -type f -exec chmod 644 {} \;
   chmod 755 "${pkgdir}/usr/lib/plexmetamanager/plex_meta_manager.py"
 
   install -D -m 644 "${srcdir}/plexmetamanager.service" "${pkgdir}/usr/lib/systemd/system/plexmetamanager.service"
