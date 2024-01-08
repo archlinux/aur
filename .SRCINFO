@@ -1,0 +1,19 @@
+pkgbase = nwg-clipman
+	pkgdesc = nwg-shell clipboard manager, a GTK3-based GUI for cliphist
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nwg-piotr/nwg-clipman
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = cliphist
+	depends = xdg-utils
+	provides = nwg-clipman
+	source = nwg-clipman-0.1.0.tar.gz::https://github.com/nwg-piotr/nwg-clipman/archive/v0.1.0.tar.gz
+	md5sums = 0b1b4c811a354c9240d5fc075756ee18
+
+pkgname = nwg-clipman
