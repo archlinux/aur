@@ -11,7 +11,7 @@ url="https://pypi.python.org/pypi/$_pkgname"
 license=('GPLv3')
 depends=('python>=3.0' 'python-romkan' 'python-termcolor')
 makedepends=('git')
-optdepends=('python-argparse: for Python ≤ 3.1' 'python-psutil: for Python ≤ 3.2' 'rsync: recommended')
+optdepends=('python-psutil: for Python ≤ 3.2' 'rsync: recommended')
 provides=('python-myougiden' 'myougiden' 'updatedb-myougiden')
 backup=('etc/myougiden/config.ini')
 source=("https://files.pythonhosted.org/packages/32/19/dcf6697149e9f421c88588fd20752cdc5fb50460470f0f523f5ffb64059c/$_pkgname-$pkgver.tar.gz")

@@ -9,7 +9,6 @@ pkgbase = python-myougiden
 	depends = python>=3.0
 	depends = python-romkan
 	depends = python-termcolor
-	optdepends = python-argparse: for Python ≤ 3.1
 	optdepends = python-psutil: for Python ≤ 3.2
 	optdepends = rsync: recommended
 	provides = python-myougiden
