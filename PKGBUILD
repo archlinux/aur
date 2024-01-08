@@ -3,21 +3,29 @@
 pkgname=fastvideods-encoder-git
 pkgdesc="Encoder for the FastVideoDS format"
 
-pkgver=1.0.0
-pkgrel=3
+pkgver=r2.1a25c4f
+pkgrel=1
 
 arch=(i686 x86_64)
 
 url="https://github.com/Gericom/FastVideoDSEncoder"
 license=("unknown")
 
-depends=(dotnet-runtime ffmpeg-compat-59)
+depends=(dotnet-runtime-6.0 ffmpeg5.1)
 makedepends=(git dotnet-sdk)
 
 provides=(FastVideoDSEncoder)
 
 source=("git+https://github.com/Gericom/FastVideoDSEncoder.git" "fix-library-path.patch")
 md5sums=("SKIP" "594a84df360613bbd562f4b77c743850")
+
+pkgver() {
+  	# move to the source directory
+	cd "${srcdir}/FastVideoDSEncoder"
+  	
+	# use the number of revisions since beginning of the history
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 prepare() {
 	# move to the source directory
