@@ -1,0 +1,34 @@
+pkgbase = nexus-wallet-bin
+	pkgdesc = The official Logical and Interface layers of the Nexus Software Stack.
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://crypto.nexus.io/wallet
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = libcups
+	depends = gtk3
+	depends = libxrandr
+	depends = libx11
+	depends = mesa
+	depends = cairo
+	depends = nspr
+	depends = expat
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxext
+	depends = at-spi2-core
+	depends = libdrm
+	depends = libxfixes
+	depends = pango
+	depends = libxkbcommon
+	depends = nss
+	depends = libxcb
+	provides = nexus-wallet=3.1.2
+	conflicts = nexus-wallet
+	source = nexus-wallet-3.1.2.deb::https://github.com/Nexusoft/NexusInterface/releases/download/v3.1.2/nexus_wallet-Linux-3.1.2.deb
+	source = LICENSE-3.1.2::https://raw.githubusercontent.com/Nexusoft/NexusInterface/v3.1.2/LICENSE
+	sha256sums = bab72f31af814ea3b0d803d74034eb44cadbae452f7e4eb7ebbfbf709300ac10
+	sha256sums = e7ee68282295100c6be4565152cb535d43086d2354760a8f006f1e980e0a3bb5
+
+pkgname = nexus-wallet-bin
