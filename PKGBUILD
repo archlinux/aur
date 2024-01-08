@@ -1,7 +1,7 @@
 # Maintainer: beeender <chenmulong@gmail.com>
 pkgname=('glrnvim')
 _pkgname="glrnvim"
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=0
 arch=('x86_64' 'i686')
 url='https://github.com/beeender/glrnvim'
