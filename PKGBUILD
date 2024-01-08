@@ -3,11 +3,13 @@
 _pkgname=licenser
 pkgname=licenser-gcc
 pkgver=0.50
-pkgrel=1
+pkgrel=2
 pkgdesc='A License management tool for your Open Source projects'
 arch=(x86_64)
 url="https://github.com/coder3101/$_pkgname"
 license=(GPL3)
+provides=(licenser)
+conflicts=(licenser)
 depends=()
 makedepends=(cmake git gcc)
 source=("$url/archive/$pkgver.tar.gz")
