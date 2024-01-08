@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
-APPDIR=/opt/shutter-encoder
-export PATH="${APPDIR}/usr/bin/${PATH:+:$PATH}"
-export LD_LIBRARY_PATH="${APPDIR}/usr/lib/x86_64-linux-gnu/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-exec "${APPDIR}/shutter-encoder" "$@"
+_APPDIR=/opt/@appname@
+_RUNNAME="${_APPDIR}/@runname@"
+export PATH="${_APPDIR}/usr/bin/${PATH:+:$PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}"
+cd "${_APPDIR}"
+exec "${_RUNNAME}" "$@" | exit
