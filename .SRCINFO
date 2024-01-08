@@ -1,0 +1,20 @@
+pkgbase = arpack-git
+	pkgdesc = Collection of Fortran77 subroutines designed to solve large scale eigenvalue problems
+	pkgver = 3.9.1.r4.g0eaf38b
+	pkgrel = 1
+	url = https://github.com/opencollab/arpack-ng
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gcc-fortran
+	makedepends = git
+	depends = gcc-libs
+	depends = lapack
+	depends = openmpi
+	provides = arpack=3.9.1.r4.g0eaf38b
+	conflicts = arpack
+	options = staticlibs
+	source = git+https://github.com/opencollab/arpack-ng.git
+	sha256sums = SKIP
+
+pkgname = arpack-git
