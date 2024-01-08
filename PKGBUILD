@@ -24,7 +24,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '68febdc70b32bbf657eb6a771da5c97722ac5a4b93fe3be4f56eb6d1ec019485')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,6 +39,11 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name "Before Dawn" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}.git"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     npm ci
     sed '141,155d' -i package.json
     sed '124,139d' -i package.json

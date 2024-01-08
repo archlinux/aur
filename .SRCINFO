@@ -15,6 +15,6 @@ pkgbase = before-dawn
 	source = before-dawn.git::git+https://github.com/muffinista/before-dawn.git#tag=v0.26.0
 	source = before-dawn.sh
 	sha256sums = SKIP
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 68febdc70b32bbf657eb6a771da5c97722ac5a4b93fe3be4f56eb6d1ec019485
 
 pkgname = before-dawn
