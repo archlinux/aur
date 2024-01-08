@@ -1,7 +1,7 @@
 pkgbase = wireguard-ui
 	pkgdesc = A web user interface to manage your WireGuard setup.
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ngoduykhanh/wireguard-ui
 	install = wireguard-ui.install
 	arch = i686
@@ -27,6 +27,6 @@ pkgbase = wireguard-ui
 	sha256sums = cf5bdce2ce87b5054042a70d8630f40a0f991c64c42786824f660245b943d2be
 	sha256sums = 87983b041d8beb7303bb57dd7f724163a157390cdf3cd74900aff6904e9402e0
 	sha256sums = 4b63dee5d287bb16a8e1a588ba24ccaeb91a4e0d2993bfeb9a1fb423bf08432d
-	sha256sums = fe98a7f947bc26d67a7714186e79343917e40e05546e23ee9acf1d04484c6809
+	sha256sums = 6722f8665bcf91c724f754a756a61a9933999da93943fb8d788a9d6b82e1de40
 
 pkgname = wireguard-ui

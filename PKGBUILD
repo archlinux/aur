@@ -2,7 +2,7 @@
 
 pkgname=wireguard-ui
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A web user interface to manage your WireGuard setup."
 arch=(i686 x86_64 armv7h aarch64)
 url="https://github.com/ngoduykhanh/${pkgname}"
@@ -20,7 +20,7 @@ sha256sums=('17467109d4106a96af09e9d14b8c576abd945bf941330a14554b8f951b688e28'
             'cf5bdce2ce87b5054042a70d8630f40a0f991c64c42786824f660245b943d2be'
             '87983b041d8beb7303bb57dd7f724163a157390cdf3cd74900aff6904e9402e0'
             '4b63dee5d287bb16a8e1a588ba24ccaeb91a4e0d2993bfeb9a1fb423bf08432d'
-            'fe98a7f947bc26d67a7714186e79343917e40e05546e23ee9acf1d04484c6809')
+            '6722f8665bcf91c724f754a756a61a9933999da93943fb8d788a9d6b82e1de40')
 conflicts=(${pkgname}-bin)
 install=${pkgname}.install
 
