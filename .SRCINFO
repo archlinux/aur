@@ -1,25 +1,23 @@
 pkgbase = boblight
 	pkgdesc = Collection of tools for driving lights connected to an external controller
-	pkgver = r479
-	pkgrel = 2
-	url = http://code.google.com/p/boblight/
+	pkgver = 2.1.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/vdr-projects/boblight/
 	arch = x86_64
 	arch = i686
 	arch = arm
 	arch = armv6h
 	arch = armv7h
 	license = GPL2
-	makedepends = glu
-	makedepends = subversion
-	depends = libusbx
+	depends = libusb
 	depends = libxext
 	depends = libxrender
 	depends = mesa
 	depends = portaudio
-	source = svn+https://boblight.googlecode.com/svn/trunk#revision=479
+	source = boblight-2.1.0.tar.gz::https://github.com/vdr-projects/boblight/archive/refs/tags/2.1.0.tar.gz
 	source = boblight.service
-	md5sums = SKIP
-	md5sums = 465a99144ad2e86a20d3433b426320b2
+	sha256sums = c2a8d1638c80a941f05d63ce131c58e66033e1918f988dc8f4288d30d7066f9d
+	sha256sums = cef865304a0819fe38e1dc0cc739da20e97da121bfc0c91f98e92b2a21998468
 
 pkgname = boblight
-
