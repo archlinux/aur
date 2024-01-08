@@ -1,6 +1,6 @@
 pkgbase = php-mcrypt
-	pkgdesc = mcrypt module for extra/php package (>=8.0.0, <=8.3.0)
-	pkgver = 1.0.6
+	pkgdesc = mcrypt module for extra/php package (>=8.0.0, <=8.4.0)
+	pkgver = 1.0.7
 	pkgrel = 1
 	epoch = 1
 	url = https://pecl.php.net/package/mcrypt
@@ -12,7 +12,7 @@ pkgbase = php-mcrypt
 	makedepends = re2c
 	depends = php
 	depends = libmcrypt
-	source = http://pecl.php.net/get/mcrypt-1.0.6.tgz
-	sha256sums = be6efd52a76ed01aabdda0ce426aed0a93db4ec06908c16a5460175c35b0d08a
+	source = http://pecl.php.net/get/mcrypt-1.0.7.tgz
+	sha256sums = 12ea2fbbf2e2efbe790a12121f77bf096c8b84cef81d0216bec00d56e5badef4
 
 pkgname = php-mcrypt

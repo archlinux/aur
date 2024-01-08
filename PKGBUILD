@@ -1,10 +1,10 @@
 # Maintainer: Adrian Sausenthaler <aur@sausenthaler.de>
 
 pkgname=php-mcrypt
-pkgver=1.0.6
+pkgver=1.0.7
 epoch=1
 pkgrel=1
-pkgdesc="mcrypt module for extra/php package (>=8.0.0, <=8.3.0)"
+pkgdesc="mcrypt module for extra/php package (>=8.0.0, <=8.4.0)"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/mcrypt"
 license=('PHP')
@@ -12,7 +12,7 @@ depends=('php' 'libmcrypt')
 makedepends=('autoconf' 're2c')
 source=(http://pecl.php.net/get/mcrypt-${pkgver}.tgz)
 install=mcrypt.install
-sha256sums=('be6efd52a76ed01aabdda0ce426aed0a93db4ec06908c16a5460175c35b0d08a')
+sha256sums=('12ea2fbbf2e2efbe790a12121f77bf096c8b84cef81d0216bec00d56e5badef4')
 
 build() {
   cd ${srcdir}/mcrypt-${pkgver}
