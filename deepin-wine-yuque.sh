@@ -1,10 +1,10 @@
 #!/bin/sh
-BOTTLENAME=Deepin-YuQue
-APPVER=3.2.2.1107
+BOTTLENAME=@bottlename@
+APPVER=@appver@
 EXEC_PATH="c:/Program Files/Yuque/yuque-desktop/语雀.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/spark_run_v4.sh"
 export MIME_TYPE=""
-export DEB_PACKAGE_NAME="deepin-wine-yuque"
+export DEB_PACKAGE_NAME=@pkgname@
 export APPRUN_CMD="deepin-wine6-stable"
 EXPORT_ENVS=""
 export SPECIFY_SHELL_DIR=`dirname $START_SHELL_PATH`
