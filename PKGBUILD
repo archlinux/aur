@@ -1,20 +1,23 @@
-# Maintainer: bashuser30 <bashuser30 at mailbox dot org>
+# Maintainer: bashuser30 <bashuser30@mailbox.org>
 pkgname=dl-distro-git
 _pkgname=dl-distro
 pkgver=197.8de119f
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash script for downloading and verifying OS images."
 arch=('any')
 url="https://codeberg.org/bashuser30/$_pkgname"
-source=("git+$url")
 license=('GPL3')
-depends=('bash' 'coreutils' 'jq' 'wget')
+depends=('bash'
+         'coreutils'
+         'jq'
+         'wget')
+makedepends=('git')
 optdepends=('gnupg'
             'minisign: Void Linux verification'
             'signify: OpenBSD verification')
-makedepends=('git')
-conflicts=('dl-distro')
 provides=('dl-distro')
+conflicts=('dl-distro')
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,5 +27,9 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_pkgname"
+
 	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 "man/$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
+	install -Dm644 "completions/bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
 }

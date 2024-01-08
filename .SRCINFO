@@ -1,7 +1,7 @@
 pkgbase = dl-distro-git
 	pkgdesc = Bash script for downloading and verifying OS images.
 	pkgver = 197.8de119f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/bashuser30/dl-distro
 	arch = any
 	license = GPL3
