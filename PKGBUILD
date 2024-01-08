@@ -1,3 +1,4 @@
+# Maintainer: Augusto Modanese <augusto.modanese@aalto.fi>
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 # Contributor: florianbw <florian.bw@gmail.com>
 # vim:set ts=2 sw=2 et:
