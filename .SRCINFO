@@ -1,6 +1,6 @@
 pkgbase = envision-xr-git
 	pkgdesc = GUI for Monado
-	pkgver = r286.2f259d4
+	pkgver = r397.7a55c433
 	pkgrel = 1
 	url = https://gitlab.com/gabmus/envision
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = envision-xr-git
 	depends = ninja
 	depends = shaderc
 	depends = vulkan-headers
+	depends = vte4
 	provides = envision
 	conflicts = envision
 	source = git+https://gitlab.com/gabmus/envision.git
