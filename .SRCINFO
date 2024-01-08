@@ -1,7 +1,7 @@
 pkgbase = madagascar-git
 	pkgdesc = Multidimensional data analysis and reproducible computational experiments.
-	pkgver = r15659.d72996857
-	pkgrel = 2
+	pkgver = r15660.e9eaa7b64
+	pkgrel = 1
 	url = https://www.reproducibility.org/wiki/Main_Page
 	arch = i686
 	arch = x86_64
@@ -23,8 +23,10 @@ pkgbase = madagascar-git
 	depends = scons
 	depends = plplot
 	optdepends = cuda: for nvcc, but not compatible with cuda12
+	provides = madagascar
+	conflicts = madagascar
 	options = strip
-	source = madagascar-git::git+https://github.com/ahay/src
+	source = madagascar::git+https://github.com/ahay/src
 	md5sums = SKIP
 
 pkgname = madagascar-git
