@@ -1,7 +1,7 @@
 pkgbase = cloudpan189-go-bin
 	pkgdesc = Cloud 189 Command Line Client (CLI), implemented based on GO.天翼云盘命令行客户端(CLI),基于GO语言实现
 	pkgver = 0.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tickstep/cloudpan189-go
 	arch = aarch64
 	arch = armv7h
@@ -11,6 +11,8 @@ pkgbase = cloudpan189-go-bin
 	provides = cloudpan189-go=0.1.3
 	conflicts = cloudpan189-go
 	conflicts = cloudpan189
+	source = cloudpan189-go.sh
+	sha256sums = 0fd2e04ea82df0048293e3a813578ab24cb14f1548415958a1265aa57621500b
 	source_aarch64 = cloudpan189-go-0.1.3-aarch64.zip::https://github.com/tickstep/cloudpan189-go/releases/download/v0.1.3/cloudpan189-go-v0.1.3-linux-arm64.zip
 	sha256sums_aarch64 = ec8729093a82092b35a68a022d548f76d40a61e6ab490f1bef9842abb8134ef7
 	source_armv7h = cloudpan189-go-0.1.3-armv7h.zip::https://github.com/tickstep/cloudpan189-go/releases/download/v0.1.3/cloudpan189-go-v0.1.3-linux-armv7.zip
