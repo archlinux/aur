@@ -1,8 +1,9 @@
-# Maintainer: James An <james@jamesan.ca>
+# Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
+# Contributor: James An <james@jamesan.ca>
 
 pkgname=minica-git
 _pkgname=${pkgname%-git}
-pkgver=r8.3a621c0
+pkgver=v1.0.2.r4.g96a5c93
 pkgrel=1
 pkgdesc='A small, simple CA intended for use in situations where the CA operator also operates each host where a certificate will be used.'
 arch=('i686' 'x86_64')
