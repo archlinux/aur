@@ -1,0 +1,14 @@
+pkgbase = backctl-git
+	pkgdesc = A Sensible Backlight Controller
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Kimitzuni/backctl
+	arch = any
+	license = GPL-2.0
+	makedepends = make
+	makedepends = gcc
+	conflicts = backctl
+	source = git+https://github.com/Kimitzuni/backctl
+	sha256sums = SKIP
+
+pkgname = backctl-git
