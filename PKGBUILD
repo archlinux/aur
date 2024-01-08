@@ -1,7 +1,8 @@
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+
 pkgname=aspe
-_pkgver=1.0
+_pkgver=1.1
 pkgver="v${_pkgver}"
 pkgrel=1
 pkgdesc="Arch Linux build source file clone tool"
@@ -21,7 +22,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=(
-  871cae6776e7e0275bca0fc9c9ff1435b6aac13323541131abc1b265ceb3a528
+  "1c810836bd7a71d1650c207a5d3596b27d83e627c3376e738152ac93a939e9b2"
 )
 
 package() {
