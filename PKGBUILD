@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <myname at malacology dot net>
 
 pkgname=tn93
-pkgver=1.0.12
+pkgver=.1.0.13.actual
 pkgrel=1
 pkgdesc="TN93 fast distance calculator"
 arch=(x86_64)
