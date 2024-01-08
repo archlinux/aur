@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgver=3.20.3
-pkgrel=2
+pkgrel=3
 pkgname=petsc
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -52,7 +52,8 @@ build() {
             --with-mpi-f90module-visibility=0 \
             --with-mpi-dir=/usr \
             --with-superlu-lib=-lsuperlu --with-superlu-include=/usr/include/superlu \
-            --with-suitesparse=1 \
+            --with-suitesparse-include=/usr/include/suitesparse \
+            --with-suitesparse-lib=[libamd.so,libbtf.so,libcamd.so,libccolamd.so,libcholmod.so,libcolamd.so,libcxsparse.so,libgraphblas.so,libklu.so,libklu_cholmod.so,liblagraph.so,liblagraphx.so,libldl.so,libparu.so,librbio.so,libspex.so,libspqr.so,libsuitesparse_mongoose.so,libsuitesparseconfig.so,libumfpack.so] \
             --with-hdf5=1 --with-hdf5-fortran-bindings=1 \
             $(sh ${srcdir}/test_optdepends.sh)"
 
