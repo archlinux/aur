@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rickrack-bin
 _pkgname=Rickrack
-pkgver=2.8.41
-pkgrel=2
+pkgver=2.8.42
+pkgrel=1
 pkgdesc="Generate harmonious colors freely.焰火十二卷(实时色彩工具箱)是一款免费且实用的色彩编辑器."
 arch=('x86_64')
 url="https://eigenmiao.com/rickrack/"
@@ -43,7 +43,6 @@ depends=(
     'qt5-base'
     'libxrandr'
     'hicolor-icon-theme'
-    'libxft'
     'krb5'
     'wayland'
     'qt5-webchannel'
@@ -54,8 +53,6 @@ depends=(
     'keyutils'
     'unixodbc'
     'orc'
-    'libxss'
-    'libselinux'
     'libglvnd'
     'gnutls'
     'qt5-websockets'
@@ -64,7 +61,6 @@ depends=(
     'libxrender'
     'libpulse'
     'gst-plugins-base-libs'
-    'tk'
     'avahi'
     'libthai'
     'expat'
@@ -76,7 +72,6 @@ depends=(
     'systemd-libs'
     'xcb-util-renderutil'
     'gstreamer'
-    'tcl'
     'pango'
     'harfbuzz'
     'libxcb'
@@ -93,11 +88,15 @@ depends=(
     'qt5-serialport'
     'libpng12'
     'openssl-1.0'
+    'qt5-speech'
+    'qt5-quick3d'
+    'qt5-remoteobjects'
+    'qt5-connectivity'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/Rickrack_v${pkgver}_en_linux_x86_64.deb"
 )
-sha256sums=('889218f03aada2ba99b2d5bbd3a7059926fd530b1b9c0d79db937126e2eba2dc')
+sha256sums=('155927c68542214a7a697a3893a640ec0b9ef082a83f1a1de38c5d1bc426cdc9')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
