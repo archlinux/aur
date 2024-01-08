@@ -3,7 +3,7 @@
 
 pkgname=firefly-iii
 pkgver=6.0.30
-pkgrel=1
+pkgrel=2
 pkgdesc='PHP personal finances manager'
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -13,9 +13,7 @@ makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('01d127a83fdd9dc7202303bc665e3490b207d60076bf039337bd2f0c867992f3')
 
-backup=(
-    "etc/webapps/$pkgname/config.env"
-    "etc/webapps/$pkgname/config.env.heroku")
+backup=("etc/webapps/$pkgname/config.env")
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"

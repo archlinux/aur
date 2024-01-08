@@ -1,14 +1,13 @@
 pkgbase = firefly-iii
 	pkgdesc = PHP personal finances manager
 	pkgver = 6.0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/firefly-iii/firefly-iii
 	arch = any
 	license = custom
 	makedepends = composer
 	depends = php-intl
 	backup = etc/webapps/firefly-iii/config.env
-	backup = etc/webapps/firefly-iii/config.env.heroku
 	source = firefly-iii-6.0.30.tar.gz::https://github.com/firefly-iii/firefly-iii/archive/v6.0.30.tar.gz
 	sha256sums = 01d127a83fdd9dc7202303bc665e3490b207d60076bf039337bd2f0c867992f3
 
