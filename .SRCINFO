@@ -1,6 +1,6 @@
 pkgbase = libubox
 	pkgdesc = C utility functions for OpenWrt
-	pkgver = r486.g5bc0146
+	pkgver = r529.g6339204
 	pkgrel = 1
 	url = https://openwrt.org/docs/techref/libubox
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = libubox
 	license = ISC
 	makedepends = git
 	makedepends = cmake
-	makedepends = lua
+	makedepends = lua51
 	depends = glibc
 	depends = json-c
 	options = staticlibs
@@ -16,4 +16,3 @@ pkgbase = libubox
 	sha256sums = SKIP
 
 pkgname = libubox
-

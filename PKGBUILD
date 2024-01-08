@@ -2,14 +2,14 @@
 # Previous maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 
 pkgname=libubox
-pkgver=r486.g5bc0146
+pkgver=r529.g6339204
 pkgrel=1
 pkgdesc="C utility functions for OpenWrt"
 arch=('i686' 'x86_64')
 url="https://openwrt.org/docs/techref/libubox"
 license=('ISC')
 depends=('glibc' 'json-c')
-makedepends=('git' 'cmake' 'lua')
+makedepends=('git' 'cmake' 'lua51')
 options=('staticlibs')
 source=("git+https://git.openwrt.org/project/libubox.git")
 sha256sums=('SKIP')
@@ -39,4 +39,9 @@ package() {
   cd "libubox"
 
   make -C "_build" DESTDIR="$pkgdir" install
+
+  if [ -d "$pkgdir/usr/local/lib" ]; then
+    mv "$pkgdir"/usr/local/lib/* "$pkgdir/usr/lib"
+    rm -r "$pkgdir/usr/local"
+  fi
 }
