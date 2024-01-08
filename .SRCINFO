@@ -1,19 +1,20 @@
 pkgbase = before-dawn-bin
 	pkgdesc = A desktop screensaver app using web technologies
 	pkgver = 0.26.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/muffinista/before-dawn
 	arch = x86_64
 	license = MIT
 	depends = electron26
 	depends = hicolor-icon-theme
+	depends = ruby
 	provides = before-dawn=0.26.0
 	conflicts = before-dawn
 	source = before-dawn-0.26.0.deb::https://github.com/muffinista/before-dawn/releases/download/v0.26.0/before-dawn_0.26.0_amd64.deb
-	source = LICENSE.txt::https://raw.githubusercontent.com/muffinista/before-dawn/v0.26.0/LICENSE.txt
+	source = LICENSE-0.26.0.txt::https://raw.githubusercontent.com/muffinista/before-dawn/v0.26.0/LICENSE.txt
 	source = before-dawn.sh
 	sha256sums = e1114355ac1a522628daf4ff5637694f3880918e6e4520d04c411f0fea6b2d28
 	sha256sums = 2f9c033e00d3ac09f44d4819c7701eae9c37ca21ca1da29f3488eadc1b3c3c51
-	sha256sums = 4b42ee4d47e0d3dfcd24bb219363a97b7b941282aa3f2482a222b8912a28591c
+	sha256sums = 68febdc70b32bbf657eb6a771da5c97722ac5a4b93fe3be4f56eb6d1ec019485
 
 pkgname = before-dawn-bin
