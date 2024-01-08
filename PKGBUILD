@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woterm-bin
 _pkgname=WoTerm
-pkgver=9.29.8
+pkgver=9.29.10
+_releasedate=202312241653
 pkgrel=1
 pkgdesc="支持常见的主流通迅协议SSH1/SSH2/SFTP/TELNET/RLOGIN/RDP/VNC/SHELL/SERIALPORT/TCP/UDP的一个跨平台工具."
 arch=("x86_64")
@@ -19,7 +20,6 @@ depends=(
     'postgresql-libs'
     'qt5-location'
     'libglvnd'
-    'dbus'
     'pango'
     'qt5-declarative'
     'libx11'
@@ -33,23 +33,27 @@ depends=(
     'gdk-pixbuf2'
     'openssl-1.1'
     'gtk3'
+    'qt5-remoteobjects'
 )
 makedepends=(
     'gendesk'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x86_64-v${pkgver}-202311132114.tar.gz"
+    "${pkgname%-bin}-${pkgver}.tar.gz::https://down.woterm.com/linux/${pkgname%-bin}-linux-${CARCH}-v${pkgver}-${_releasedate}.tar.gz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f28fbcf310437f958f1b42c1912a3c1d6415ad88a517a440ac697faf636fb8d3'
-            'f624a670d9bbea6fd84d6867cd86dabb4690ec2fd4bd5b9bd27180aa58d81345')
+sha256sums=('97add1e20bccbf296c7ac561226e13dbc67629e3a7e3a076082c8442a7b6936d'
+            'fdeeff9d7e5a7af5519df478763fdd2819b686adc4c5e9003fcc511e981294ad')
 build() {
-    gendesk -q -f -n --categories "Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} --no-sandbox %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/${pkgname%-bin}-linux-x86_64-v${pkgver}-202311132114/"* "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/${pkgname%-bin}-linux-${CARCH}-v${pkgver}-${_releasedate}/"* "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x86_64-v${pkgver}-202311132114/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-linux-${CARCH}-v${pkgver}-${_releasedate}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
