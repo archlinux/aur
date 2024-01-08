@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mark-flowy-bin
-pkgver=0.7.0
+_pkgname=MarkFlowy
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Modern markdown editor application, Build fast and efficient workflows."
 arch=("x86_64")
@@ -20,9 +21,9 @@ depends=(
     'libxcb'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${CARCH}.deb"
 )
-sha256sums=('68296a0fe860a99b8d69f0ec764bfba8caaed1294f5d9f50e5114302e21b0917')
+sha256sums=('9cbe0d172e4151178a9f9e86f982c13e244e70c929cbce53de11f8ded3ac0874')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
 }
