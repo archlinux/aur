@@ -2,7 +2,8 @@
 
 pkgname=poi-bin
 _pkgname=poi
-pkgver=10.9.2
+pkgver=11.0.0
+_pkgver="${pkgver}-beta.5"
 pkgrel=1
 pkgdesc="Scalable KanColle browser and tool"
 arch=('x86_64')
@@ -12,13 +13,12 @@ provides=("poi")
 depends=('nss' 'gtk3')
 conflicts=('poi')
 options=(!strip)
-source=("https://github.com/poooi/poi/releases/download/v${pkgver}/poi_${pkgver}_amd64.deb"
-	"poi.sh")
-sha256sums=('2429d64ea5e4566532733b069fe2cf23125d6431d498ac96c8f81679bcbec4fa'
-            '2e3837fbe43bc5154d34190f9c10bd39b860a3a0cf6eb49c04c66701d9980b94')
+source=("https://github.com/poooi/poi/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_amd64.deb")
+sha256sums=('7e979f958dca1aa78852301e1d842c2f05b4170295fcfa1538258865f573dd91')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 	chmod 4755 "${pkgdir}/opt/${_pkgname}/chrome-sandbox"
-	install -Dm755 "poi.sh" "${pkgdir}/usr/bin/poi"
+	mkdir -p "${pkgdir}/usr/bin"
+	ln -s "${pkgdir}/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
