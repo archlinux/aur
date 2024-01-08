@@ -1,21 +1,29 @@
-# system requirements: C++11
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=parallelDist
 _pkgver=0.2.6
 pkgname=r-${_pkgname,,}
-pkgver=0.2.6
-pkgrel=4
-pkgdesc='Parallel Distance Matrix Computation using Multiple Threads'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Parallel Distance Matrix Computation using Multiple Threads"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL)
 depends=(
-  r
+  blas
+  lapack
   r-rcpp
-  r-rcpparmadillo
   r-rcppparallel
-  gcc
+)
+makedepends=(
+  r-rcpparmadillo
+)
+checkdepends=(
+  r-dtw
+  r-proxy
+  r-rcppxptrutils
+  r-testthat
 )
 optdepends=(
   r-dtw
@@ -26,14 +34,20 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('30c6b3b85cf78c04a7dcd17ea7ed64356971f6ce48d15794078a18c53b249e06')
+md5sums=('c825739a2da14d2c90b7a4064639fcbc')
+b2sums=('b41497d7e4adcee2b40216f76f46921cb14999e6592a74edfb866741972569d8dfd0a55212de925899ee5591b0cc58ea757035f2e03c16100b7cca953b4dc570')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
