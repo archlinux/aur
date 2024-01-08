@@ -4,7 +4,7 @@
 
 _name=gaphor
 pkgname=python-${_name}
-pkgver=2.22.1
+pkgver=2.23.0
 pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
@@ -12,8 +12,8 @@ url="https://github.com/gaphor/${_name}"
 license=('Apache')
 depends=(
 	'gtksourceview5'
-	'python-gaphas'
-	'python-generic'
+	'python-gaphas>=4.0.0'
+	'python-generic>=1.1.2'
 	'python-jedi'
 	'python-tinycss2'
 	'python-pygit2'
@@ -41,7 +41,7 @@ checkdepends=(
 )
 provides=("${_name}")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('935e8cb8aade6256d1840fdb4a136504e30ae7a60ca8a47b5e677b376cf3d1b7')
+sha256sums=('9424a940afeb1947fcfa7aaba8b457227439e88a570cb5f98db42107d2518614')
 
 build() {
 	cd "${_name}-${pkgver}"
