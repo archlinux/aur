@@ -2,7 +2,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=libuev
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Lightweight event loop library'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 provides=('libuev.so=3-64')
 conflicts=('libuev.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('671ce75d06b2620535171bfe1751db0511a19dfcc791d4f0f0c3cb53bf237b3a')
+sha256sums=('aeeca1889a65ee1927845676da2c23f34e4c3ae770dedce8313dc6088bd92d52')
 
 build() {
   cd "$pkgname-$pkgver"
