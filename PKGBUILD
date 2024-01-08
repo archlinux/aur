@@ -2,7 +2,7 @@
 _pkgname=gotify_tray
 pkgname="${_pkgname//_/-}-bin"
 pkgver=0.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform desktop client for receiving messages from a Gotify server"
 arch=('x86_64')
 url="https://github.com/seird/gotify-tray"
@@ -72,19 +72,24 @@ depends=(
     'freetype2'
     'qt6-svg'
     'qt6-wayland'
-    'libselinux'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64_bookworm.deb")
-sha256sums=('1c98ee2d33ea2102f983ebeed64674007c661560e9bf46dd1aa6a6ec09f43187')
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64_bookworm.deb"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('1c98ee2d33ea2102f983ebeed64674007c661560e9bf46dd1aa6a6ec09f43187'
+            '1a33f0ca985a943fc6548b80423bb212d98e77243f15e9d98e509b68895c3e42')
 build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed "s|Exec=/opt/${pkgname%-bin}/${pkgname%-bin}|Exec=${pkgname%-bin}|g;s|Icon=/usr/share/icons/${pkgname%-bin}.ico|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname//_/}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
-    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/opt"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" -t "${pkgdir}/usr/bin/${pkgname%-bin}"
+    cp -r "${srcdir}/opt" "${pkgdir}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname//_/}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/${_pkgname}/gui/images/tray.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
