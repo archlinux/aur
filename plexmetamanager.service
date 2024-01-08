@@ -1,0 +1,17 @@
+# Be sure to use `systemctl edit plexmetamanager` to modify this service with an override.conf because
+# direct changes will be overwritten by package updates.
+
+[Unit]
+Description=Plex-Meta-Manager daemon
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=plexmetamanager
+Group=plexmetamanager
+SyslogIdentifier=plexmetamanager
+ExecStart=/usr/bin/python /usr/lib/plexmetamanager/plex_meta_manager.py --config /etc/plexmetamanager/config.yaml
+
+[Install]
+WantedBy=multi-user.target

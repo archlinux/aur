@@ -1,0 +1,3 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/plexmetamanager 0755 plexmetamanager plexmetamanager
+Z /var/lib/plexmetamanager - plexmetamanager plexmetamanager
