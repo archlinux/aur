@@ -1,7 +1,7 @@
 pkgbase = haskell-language-server-static
 	pkgdesc = Official haskell ide support via language server (LSP). Successor of ghcide & haskell-ide-engine.
 	pkgver = 2.5.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/haskell/haskell-language-server
 	arch = x86_64
 	license = Apache
