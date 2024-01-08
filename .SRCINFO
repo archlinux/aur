@@ -1,7 +1,7 @@
 pkgbase = mpdscribble-git
 	pkgdesc = MPD client which submits track info to {Libre,Last}.fm - master branch
-	pkgver = 0.23.r60.gd62d214
-	pkgrel = 2
+	pkgver = 0.25.r2.g9ab7a45
+	pkgrel = 3
 	url = https://github.com/MusicPlayerDaemon/mpdscribble
 	install = mpdscribble.install
 	arch = i686
@@ -20,6 +20,8 @@ pkgbase = mpdscribble-git
 	provides = mpdscribble
 	conflicts = mpdscribble
 	source = mpdscribble::git+https://github.com/MusicPlayerDaemon/mpdscribble.git
+	source = mpdscribble.sysusers
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mpdscribble-git

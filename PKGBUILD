@@ -7,8 +7,8 @@
 
 pkgname=mpdscribble-git
 _pkgname=mpdscribble
-pkgver=0.23.r60.gd62d214
-pkgrel=2
+pkgver=0.25.r2.g9ab7a45
+pkgrel=3
 pkgdesc='MPD client which submits track info to {Libre,Last}.fm - master branch'
 url='https://github.com/MusicPlayerDaemon/mpdscribble'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -18,8 +18,13 @@ makedepends=('boost' 'systemd' 'meson' 'ninja' 'git')
 provides=("mpdscribble")
 conflicts=("mpdscribble")
 install=$_pkgname.install
-source=("${_pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+source=("${_pkgname}::git+${url}.git" 'mpdscribble.sysusers')
+sha256sums=('SKIP' 'SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
+}
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
@@ -46,6 +51,8 @@ package() {
     "${pkgdir}"/usr/lib/systemd/system/mpdscribble@.service
   install -Dm644 build/systemd/user/mpdscribble.service \
     "${pkgdir}"/usr/lib/systemd/user/mpdscribble.service
+  install -Dm644 ${srcdir}/mpdscribble.sysusers \
+    "${pkgdir}"/usr/lib/sysusers.d/mpdscribble.conf
 
   # example config
   install -Dm644 doc/mpdscribble.conf \
