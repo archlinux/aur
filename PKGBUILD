@@ -89,7 +89,7 @@ _package-headers() {
   provides=("linux-headers=${pkgver}" "linux-${_kernel_tag}-headers")
   conflicts=("linux-${_kernel_tag}-headers")
 
-  cd linux_rockchip
+  cd linux-rockchip
   local _version="$(<version)"
   local builddir="$pkgdir/usr/lib/modules/$_version/build"
 
