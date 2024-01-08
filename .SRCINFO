@@ -1,7 +1,7 @@
 pkgbase = python-gotenberg-client
 	pkgdesc = A Python client for interfacing with the Gotenberg API
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/stumpylog/gotenberg-client
 	arch = any
 	license = MPL2
@@ -9,7 +9,7 @@ pkgbase = python-gotenberg-client
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-hatchling
-	source = python-gotenberg-client-0.3.0.src.tar.gz::https://github.com/stumpylog/gotenberg-client/archive/0.3.0.tar.gz
-	sha256sums = 0e1dcc8dbec53fea845b9de0a3938e337d5db29c132583f033edc2815b463796
+	source = python-gotenberg-client-0.4.1.src.tar.gz::https://github.com/stumpylog/gotenberg-client/archive/0.4.1.tar.gz
+	sha256sums = d18637f5d82fb9e6fb55ea39d2cb1cbe5c997d15fdf2951c995957cf4bf4ca6b
 
 pkgname = python-gotenberg-client
