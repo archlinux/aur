@@ -1,7 +1,7 @@
 pkgname=chicken-mosquitto
 _name=mosquitto
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Chicken Scheme Bindings to mosquitto MQTT client library'
 arch=('x86_64')
 license=('MIT')
