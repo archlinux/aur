@@ -1,5 +1,6 @@
+# Maintainer: Augusto Modanese <augusto.modanese@aalto.fi>
+# Contributor: Simon Tas <simon.tas.st@gmail.com>
 
-# Maintainer: Simon Tas <simon.tas.st@gmail.com>
 pkgname="python-myougiden"
 _pkgname="myougiden"
 pkgver=0.8.8
