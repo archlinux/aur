@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.37.110.r1.g35e99da6
+pkgver=1.37.121.r1.gd4ea3596
 _electronversion=26
 _nodeversion=20
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
-arch=('any')
+arch=('x86_64')
 url="https://electerm.html5beta.com/"
 _ghurl="https://github.com/electerm/electerm"
 license=('MIT')
@@ -24,13 +24,13 @@ makedepends=(
     'python-setuptools'
 )
 source=(
-    "${pkgname%-git}::git+${_ghurl}.git"
+    "${pkgname%-git}.git::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
             '58971a8f065ccfd2fcec7ecec47c5f26454b6ab76af6ea46473aa9a45358cfce')
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 _ensure_local_nvm() {
@@ -46,7 +46,7 @@ build() {
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories "System;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -54,18 +54,18 @@ build() {
     export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
     sed "s|pre-test|prepare-test|g" -i package.json
     sed -e "60s|snap|tar.gz|g" -e '58,60d' -i electron-builder.json
-    sed '16,19d' -i build/bin/build-linux-deb-tar.js
+    sed '10,21d' -i build/bin/build-linux-deb-tar.js
     rm -rf build/bin/build-linux-rpm-snap.js
     npm install
     npm run prepare-build
-    npm run release -l
+    npx node build/bin/build-linux-deb-tar
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}/work/app/assets/images/${pkgname%-git}.svg" \
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname%-git}.git/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/work/app/assets/images/${pkgname%-git}.svg" \
         -t "${pkgdir}/usr/share/hicolor/scalable/apps"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
