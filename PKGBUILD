@@ -6,7 +6,8 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=2.6.12
+pkgver=2.6.14
+_electronversion=28
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=('x86_64')
@@ -32,7 +33,7 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.desktop"
 )
 sha256sums=('SKIP'
@@ -45,25 +46,30 @@ _ensure_local_nvm() {
 }
 build() {
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     sed -e "3i\  \"version\": \"${pkgver}\"," \
         -e "3i\  \"description\": \"${pkgdesc}\"," \
         -e "3i\  \"author\": \"Streetwriters (Private) Limited,support@streetwriters.co,https://streetwriters.co\"," \
         -e "55i\    \"electron\": \"25.9.3\"," \
         -i package.json
-    npm install --ignore-scripts --prefer-offline --no-audit --cache "${srcdir}/npm-cache"
+    npm install --ignore-scripts --prefer-offline --no-audit
     npm run bootstrap -- --scope=web
     npx nx build:desktop @notesnook/web
     npm run bootstrap -- --scope=desktop
     npx nx run release --project @notesnook/desktop
-    npx electron-builder --linux AppImage -p never
+    npx electron-builder --linux AppImage:x64 AppImage:arm64 -p never
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/${pkgname},usr/bin}
-    cp -r "${srcdir}/${pkgname}-${pkgver}/apps/desktop/output/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/apps/desktop/output/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
     ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/apps/desktop/assets/icons/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}.git/apps/desktop/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
