@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ptree-bin
 _pkgname=PTree
-pkgver=2.2.0
+pkgver=2.2.1
 _electronversion=11
-pkgrel=2
+pkgrel=1
 pkgdesc="Design power tree and estimate consumptions"
 arch=("x86_64")
 url="https://smariel.github.io/PTree"
@@ -23,8 +23,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4c15d219bd9e2c1a4aaa1da94931d19a133ddfd9d6178e5f21fdea97ab22f54c'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+sha256sums=('289cabafe6b560591fda4440681cd5f3a2b1a521a493fc18dc866809bb7df51a'
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
