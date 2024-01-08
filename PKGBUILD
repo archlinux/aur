@@ -34,8 +34,6 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'immich.conf'
 	'nginx.immich.conf'
         'media.util.ts.patch'
-        # new reverse geocoding
-        'metadata.repository.ts.patch'
         # TODO at the moment, the latest version at install will be taken 
         # mirroring approach in docker base-image, however should we implement 
         # a simple service to keep these up-to-date since they appear to be
@@ -49,10 +47,9 @@ sha256sums=('cf090e38f9fcc52c3051c77b6e3df81543018ea7f247d9db6da28a8c9426e5d9'
             'd20455349cdb9409adb42cdbde48c30a176d2a5337ad148c6d2227ecc523c88a'
             '01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e'
             '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
-            'cc6c937806589cbbafaf03e6bd893209b6a325305468d8e357c3ac2a0143c603'
+            '15c00108d970691a72397eab19ee784bbd24eae941307bb676ebf2f25d36057c'
             'cc405c774e34cd161f00ccd882e66c2d2ce28405964bf62472ebc3f59d642060'
             'd38cdaa031f741998f2d31504381bce4db1a8771c774a2c2bac547d7d2b3c70b'
-            'cc5acbbdc534fd525ec0ef93a1dc5c82d433598a90e740a3841a84c89b802b7d'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -63,8 +60,6 @@ prepare() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
     # required to prefer /dev/dri/renderD128 over /dev/dri/card0 for ffmpeg accel (VAAPI)
     patch -p0 -i "${srcdir}/media.util.ts.patch"
-    # replace hardcoded resource directory for a more sensible one
-    patch -p0 -i "${srcdir}/metadata.repository.ts.patch"
 }
 
 build() {
