@@ -1,6 +1,6 @@
 pkgbase = seismic-unix-git
 	pkgdesc = A seismic processing and research environment developed at the Center for Wave Phenomena, Colorado School of Mines
-	pkgver = r294.c222c39a
+	pkgver = r301.fa256ad1
 	pkgrel = 1
 	url = https://wiki.seismic-unix.org/start
 	arch = i686
@@ -22,7 +22,9 @@ pkgbase = seismic-unix-git
 	depends = lib32-glibc
 	optdepends = tcsh: some scripts
 	optdepends = gcc-fortran: Fortran support
-	source = seismic-unix-git::git+https://github.com/JohnWStockwellJr/SeisUnix.git
+	provides = seismic-unix
+	conflicts = seismic-unix
+	source = seismic-unix::git+https://github.com/JohnWStockwellJr/SeisUnix.git
 	md5sums = SKIP
 
 pkgname = seismic-unix-git
