@@ -1,4 +1,4 @@
-# Maintainer: meister1593 <leruop@gmail.com>
+# Maintainer: N/A <N/A>
 
 pkgname=polaronproton-git
 _pkgname=polaronproton
