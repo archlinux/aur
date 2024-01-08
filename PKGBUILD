@@ -1,6 +1,6 @@
 # Maintainer: Randall Winkhart <idgr at tutanota dot com>
 pkgname=sshyp
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='A light-weight, self-hosted, synchronized password manager'
 url='https://github.com/rwinkhart/sshyp'
@@ -13,7 +13,7 @@ optdepends=(
     'bash-completion: bash completion support'
 )
 source=("https://github.com/rwinkhart/sshyp/releases/download/v"$pkgver"/DEBIAN-sshyp_"$pkgver"-"$pkgrel"_all.deb")
-sha512sums=('e043a3973e8151278bb33b104522450c5f210ed7d2863d2bfb5012699132064f2fca490cb285e0cf67194ecbc62326b64e37e42f9dc980e1dad4c7f1503ea28e')
+sha512sums=('5a6180ba5e1c0ad52e972e6772126dac0170344f8922b6615fe8221920d6e3ee2b4df8f9dc6ea679c3d776e2c613bd40d0851ec550a8d4c0a61bf27053201465')
 
 package() {
     tar -xf data.tar.xz -C "${pkgdir}"
