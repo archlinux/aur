@@ -1,25 +1,22 @@
 pkgbase = sofie-chef-bin
 	pkgdesc = Disrupting the industry & stirring pots
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/nrkno/sofie-chef
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
 	depends = electron26
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
-	provides = sofie-chef=0.3.2
+	provides = sofie-chef=0.3.3
 	conflicts = sofie-chef
-	source = sofie-chef-0.3.2.AppImage::https://github.com/nrkno/sofie-chef/releases/download/v0.3.2/SofieChef-0.3.2-Linux-Executable.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/nrkno/sofie-chef/v0.3.2/LICENSE
+	source = sofie-chef-0.3.3.AppImage::https://github.com/nrkno/sofie-chef/releases/download/v0.3.3/SofieChef-0.3.3-Linux-Executable.AppImage
+	source = LICENSE-0.3.3::https://raw.githubusercontent.com/nrkno/sofie-chef/v0.3.3/LICENSE
 	source = sofie-chef.sh
-	sha256sums = 7662d1f78877f7ff735edf57b0c71d7dc5efb2ffecd8ec68edda5ae17b3ae66c
-	sha256sums = 1885e72fa406407f4135fc914d88aa7b07a74c2a0ce891f74b0224919d6ee57d
-	sha256sums = 7bbf487149e8c0900124e0b51915957e6a8b87eae918837753ece15b3adab5bd
+	sha256sums = 913f848d292ab514b0f241d63e3e7c6ff7968fbf096977f821aea39193d0d9e2
+	sha256sums = ac26e60681c9ba6ec5eddf9b1afa3442d8ada9d77fe42b4515c42a2a15392c44
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = sofie-chef-bin
