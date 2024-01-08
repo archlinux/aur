@@ -1,4 +1,4 @@
-# Maintainer: meister1593 <leruop@gmail.com>
+# Maintainer: N/A <N/A>
 
 pkgname=mon2cam-bash-git
 _pkgname=mon2cam
@@ -6,6 +6,7 @@ pkgver=r33.0b424b2
 pkgrel=1
 pkgdesc="Workaround for multi-monitor Discord screensharing, forked to work as bash script"
 arch=('any')
+# Deleted repository
 url="https://github.com/Meister1593/Mon2Cam"
 license=('MIT')
 depends=(
