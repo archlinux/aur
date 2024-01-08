@@ -6,7 +6,6 @@ pkgbase = aspe-git
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck
-	makedepends = reallymakepkg
 	provides = aspe=v1.0+8+gcee1c15
 	conflicts = aspe
 	source = git+https://github.com/themartiancompany/aspe

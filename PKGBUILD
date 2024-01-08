@@ -15,8 +15,7 @@ url="${_host}/${_ns}/${_pkgname}"
 license=(
   AGPL3)
 depends=()
-makedepends=(
-  'reallymakepkg')
+makedepends=()
 checkdepends=(
   shellcheck)
 provides=(
