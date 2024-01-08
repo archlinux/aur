@@ -1,7 +1,7 @@
 pkgbase = nomacs
 	pkgdesc = A Qt image viewer
 	pkgver = 3.17.2287
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/nomacs/nomacs
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = nomacs
 	depends = qt5-svg
 	depends = quazip-qt5
 	optdepends = qt5-imageformats: support additional image formats
+	optdepends = kimageformats: support QOI (Quite OK Image Format)
 	source = git+https://github.com/nomacs/nomacs.git#tag=3.17.2287
 	source = nomacs-plugins-3.16.tar.gz::https://github.com/nomacs/nomacs-plugins/archive/3.16.tar.gz
 	b2sums = SKIP
