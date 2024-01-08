@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=venn
-_pkgver=1.11
+_pkgver=1.12
 pkgname=r-${_pkgname,,}
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc='Draw Venn Diagrams'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-qca
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('33d915c7c90078f1e76e803fa3f02ab5b74dd04de7a9700477e51e0235f19314')
+sha256sums=('ed86b69bd99ceea93352a30699a0baba3fd8cdcde907a9476e92be202ad8721d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
