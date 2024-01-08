@@ -1,7 +1,7 @@
 pkgbase = uqmi-git
 	pkgdesc = OpenWrt QMI modem utility
 	pkgver = r129.eea2924
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.openwrt.org/project/uqmi.git
 	arch = i686
 	arch = x86_64

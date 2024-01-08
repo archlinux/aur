@@ -5,7 +5,7 @@ _pkgname=uqmi
 pkgname="${_pkgname}-git"
 _gitname="${_pkgname}"
 pkgver=r129.eea2924
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenWrt QMI modem utility'
 url='https://git.openwrt.org/project/uqmi.git'
 arch=('i686' 'x86_64' 'armv5te' 'armv6' 'armv7' 'armv8' 'aarch64')
@@ -46,6 +46,11 @@ prepare() {
 
 build() {
   cd "$srcdir/$_gitname"
+  _CFLAGSADDITIONS+=" -Wno-dangling-pointer"
+  CFLAGS+="${_CFLAGSADDITIONS}"
+  CXXFLAGS+="${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
   cmake CMakeLists.txt \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
