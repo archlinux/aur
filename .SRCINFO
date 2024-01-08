@@ -13,6 +13,7 @@ pkgbase = cargo-bisect-rustc-git
 	makedepends = coreutils
 	makedepends = sed
 	makedepends = gcc
+	depends = rustup
 	depends = gcc-libs
 	depends = glibc
 	depends = openssl
