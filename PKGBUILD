@@ -1,7 +1,7 @@
 # Maintainer: Nriver <6752679+Nriver@users.noreply.github.com>
 pkgname="trilium-cn-bin"
 pkgver=0.62.5_20240108
-pkgrel=1
+pkgrel=2
 pkgdesc="Trilium Notes Chinese version"
 arch=('x86_64')
 url="https://github.com/Nriver/trilium-translation"
@@ -12,11 +12,11 @@ sha256sums=('2896430c3088bfee91c9ba575556a90fcfa9da418dde5fb9f081506274b1821d')
 package() {
     export destdir="$pkgdir/"
     # Make folders for extraction
-    mkdir -p "$pkgdir/opt/$pkgname"
+    mkdir -p "$pkgdir/opt/trilium-cn"
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/usr/share/applications"
     # Move main files
-    mv trilium-linux-x64/* "$pkgdir/opt/$pkgname"
+    mv trilium-linux-x64/* "$pkgdir/opt/trilium-cn"
 
     echo $PWD
     # Create command
