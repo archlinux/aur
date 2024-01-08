@@ -1,7 +1,7 @@
 pkgbase = python-ipware
 	pkgdesc = Returns the best matched IP address from a given HTTP(s) header in Python
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/un33k/python-ipware
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-ipware
 	makedepends = python-installer
 	makedepends = python-setuptools
 	conflicts = python-django-ipware
-	source = python-ipware-2.0.0.src.tar.gz::https://github.com/un33k/python-ipware/archive/v2.0.0.tar.gz
-	sha256sums = 79c6a1759f6e814b3d1148eda2eb5f32206303d1d5a5e89a5f6b55f06735e303
+	source = python-ipware-2.0.1.src.tar.gz::https://github.com/un33k/python-ipware/archive/v2.0.1.tar.gz
+	sha256sums = 2d8b23370e46fb622b8f223220e1fa9a4fd1359f1699e36e425fd442eaaaf0c5
 
 pkgname = python-ipware
