@@ -1,7 +1,7 @@
 pkgbase = power-profiles-daemon-patched-amd-git
 	pkgdesc = Makes power profiles handling available over D-Bus (with AMD patches by Mario Limonciello)
 	pkgver = 0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/tree/?h=f39
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = power-profiles-daemon-patched-amd-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = patchutils
 	depends = upower
 	depends = polkit
 	optdepends = python-gobject: for powerprofilesctl
@@ -20,6 +21,8 @@ pkgbase = power-profiles-daemon-patched-amd-git
 	source = https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/merge_requests/127.patch
 	source = https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/merge_requests/128.patch
 	source = https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/merge_requests/129.patch
+	source = https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/merge_requests/130.patch
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
