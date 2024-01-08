@@ -5,11 +5,13 @@ pkgver=9.22_pts7
 pkgrel=0
 epoch=
 pkgdesc="pts-tiny-7z-sfx is a tiny 7-Zip (.7z archive) extractor and self-extractor(SFX) written in standard C. It's Unix-only, actively tested on Linux."
-arch=('any')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/pts/pts-tiny-7z-sfx"
 license=('GPL v2')
 groups=()
-depends=('gcc')
+depends=()
 makedepends=("gcc")
 checkdepends=()
 optdepends=()
@@ -26,10 +28,11 @@ sha256sums=('9bc7be2f54e0ef789825ac520e3d4a5c53cd208e4c362a915ef4644cb928e9f1')
 #validpgpkeys=()
 
 build(){
-    cd ${pkgname}-${pkgver/_/-}
+    cd "${srcdir}"/${pkgname}-${pkgver/_/-}
     make
 }
 
 package() {
-    install -Dm0755 "${srcdir}/${pkgname}-${pkgver/_/-}/tiny7zx.dynamic" "${pkgdir}/usr/bin/tiny7zx"
+    cd "${srcdir}"/${pkgname}-${pkgver/_/-}
+    install -Dm0755 tiny7zx.dynamic "${pkgdir}"/usr/bin/tiny7zx
 }
