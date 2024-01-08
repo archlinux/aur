@@ -1,0 +1,14 @@
+pkgbase = licenser-gcc
+	pkgdesc = A License management tool for your Open Source projects
+	pkgver = 0.50
+	pkgrel = 1
+	url = https://github.com/coder3101/licenser
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	source = https://github.com/coder3101/licenser/archive/0.50.tar.gz
+	sha256sums = c9cb280bcb5fadab1803ee9b42e46e4bb1ae0c62b955e5894358b75915eb9359
+
+pkgname = licenser-gcc
