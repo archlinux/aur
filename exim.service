@@ -15,7 +15,7 @@ Type=exec
 ExecStart=/usr/bin/exim -bdf $DAEMON_OPTS $QUEUE_OPTS
 ExecReload=/bin/kill -HUP $MAINPID
 
-Slide=exim.slice
+Slice=exim.slice
 
 [Install]
 WantedBy=multi-user.target
