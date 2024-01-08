@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yt-dlandcut-bin
 pkgver=3.0.0
-pkgrel=3
+_electronversion=25
+pkgrel=4
 pkgdesc="Download and cut an Youtube video by providing its url and the time range"
 arch=('x86_64')
 url="https://github.com/Markkop/yt-dlandcut"
@@ -9,13 +10,10 @@ license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron25'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    "electron${_electronversion}"
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -25,11 +23,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d440f515341ec5936f09cf7d878ab4165baf7821579973ab667e4176a76b3cbc'
-            'a2ef7413941323fdf2b123a0b3b30a03d2ae67860c1e14f63001535f14bce45a')
+            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
