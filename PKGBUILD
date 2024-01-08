@@ -1,11 +1,11 @@
 pkgname=chicken-salmonella
 _name=salmonella
 pkgver=3.1.1
-pkgrel=1
-pkgdesc='Chicken Scheme A tool for testing eggs'
+pkgrel=2
+pkgdesc='A tool for testing Chicken Scheme eggs'
 arch=('x86_64')
 license=('BSD')
-depends=("chicken")
+depends=('chicken')
 url='http://wiki.call-cc.org/eggref/5/salmonella'
 
 build() {
@@ -13,7 +13,7 @@ build() {
 }
 package() {
   install -d ${pkgdir}/usr/lib/chicken/11
-  find ${srcdir} -maxdepth 1 -type f | xargs -I {} cp {} ${pkgdir}/usr/lib/chicken/11
+  find ${srcdir} -maxdepth 1 -type f -exec cp -t ${pkgdir}/usr/lib/chicken/11 {} +
 
   install -d ${pkgdir}/usr/bin
   cp -a ${srcdir}/bin/* ${pkgdir}/usr/bin
