@@ -1,7 +1,7 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=cargo-bisect-rustc-git
-pkgver=0.6.7.r557.9af234f
+pkgver=0.6.7.r563.57a9535
 pkgrel=1
 pkgdesc='Bisects rustc, either nightlies or CI artifacts'
 arch=('x86_64' 'aarch64')
@@ -18,6 +18,8 @@ sha256sums=(SKIP)
 
 prepare() {
   cd "${_git_folder}"
+  # Automatically fix Cargo.lock if it is broken
+  cargo tree > /dev/null || true
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
