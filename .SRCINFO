@@ -1,6 +1,6 @@
 pkgbase = dolphin-emu-debugfast-git
 	pkgdesc = A Gamecube and Wii emulator
-	pkgver = 5.0.r20842.g3cb5d3455f
+	pkgver = 5.0.r20916.g63453bda4d
 	pkgrel = 1
 	url = https://github.com/dolphin-emu/dolphin
 	arch = x86_64
@@ -39,7 +39,6 @@ pkgbase = dolphin-emu-debugfast-git
 	depends = lzo
 	depends = mbedtls2
 	depends = miniupnpc
-	depends = minizip-ng
 	depends = pugixml
 	depends = sdl2
 	depends = sfml
