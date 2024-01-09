@@ -2,36 +2,34 @@
 # Maintainer: Mahmut Dikcizgi <boogiepop a~t gmx com>
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 
-_pkgver=6.7
+_pkgver=6.1
 _kernel_tag="opi"
 pkgbase=linux-$_kernel_tag
 pkgname=("${pkgbase}-headers" $pkgbase)
-pkgver=6.7.0
+pkgver=6.1.43
 pkgrel=1
 arch=('aarch64')
 license=('GPL2')
-url="https://mirrors.bfsu.edu.cn/git"
-pkgdesc="Linux kernel package targeting to pretest 6.7 merges for opi" 
-makedepends=('cpio' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
+url="https://github.com/nyanmisaka"
+pkgdesc="Linux kernel package targeting to pretest 6.1 merges for opi" 
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-_name_patch='opi5plus-custom-patch'
-source=(git+$url/linux.git#tag=v6.7
-        git+https://github.com/wyf9661/${_name_patch}.git
+
+source=(git+$url/linux-rockchip.git#branch=rk-6.1-dev2
         'linux.preset'
         )
 
 sha512sums=('SKIP'
-        'SKIP'
         '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
 
 prepare() {
-  cd linux
+  cd linux-rockchip
 
   echo "-$pkgrel" > localversion.10-pkgrel
   #echo "-$_kernel_tag" > localversion.20-pkgname
   
   # this is only for local builds so there is no need to integrity check
-  for p in ../${_name_patch}/*.patch; do
+  for p in ../../custom/*.patch; do
     echo "Custom Patching with ${p}"
     patch -p1 -N -i $p || true
   done
@@ -43,7 +41,7 @@ prepare() {
 }
 
 build() {
-  cd linux
+  cd linux-rockchip
 
   unset LDFLAGS
   make ${MAKEFLAGS} Image modules
@@ -58,7 +56,7 @@ _package() {
   conflicts=("linux-${_kernel_tag}")
   backup=("etc/mkinitcpio.d/linux-${_kernel_tag}.preset")
 
-  cd linux
+  cd linux-rockchip
   
   local _version="$(<version)"
   
@@ -91,7 +89,7 @@ _package-headers() {
   provides=("linux-headers=${pkgver}" "linux-${_kernel_tag}-headers")
   conflicts=("linux-${_kernel_tag}-headers")
 
-  cd linux
+  cd linux-rockchip
   local _version="$(<version)"
   local builddir="$pkgdir/usr/lib/modules/$_version/build"
 
