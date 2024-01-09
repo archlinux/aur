@@ -1,4 +1,5 @@
 post_install() {
+  chmod -R mas:mas /usr/share/matrix-authentication-service
   cat << EOF
   ==> Generate the config.yaml, including secrets:
   # mas-cli config generate /etc/matrix-authentication-service/config.yaml
