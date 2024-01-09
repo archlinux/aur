@@ -2,7 +2,7 @@ pkgbase = gladtex
 	pkgdesc = A utility for writing LaTeX equations within HTML
 	pkgver = 1.4.2
 	pkgrel = 1
-	url = http://ans.hsh.no/home/mgg/gladtex/
+	url = https://sourceforge.net/project/gladtex/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = gladtex
 	depends = texlive-bin
 	depends = libpng
 	depends = giflib
-	source = http://downloads.sourceforge.net/project/gladtex/gladtex-1.4.2.tar.gz
+	source = https://downloads.sourceforge.net/project/gladtex/gladtex-1.4.2.tar.gz
 	source = Makefile
 	source = gladtex-1.4.2-giflib5.diff
 	md5sums = c812911a81f97daf817f700f6facd004
@@ -22,4 +22,3 @@ pkgbase = gladtex
 	sha256sums = db8b5ae596f8ef68ab35455d44e52f9c8b8a2bd293914891e6b95b41bb25306a
 
 pkgname = gladtex
-

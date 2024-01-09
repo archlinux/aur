@@ -5,12 +5,11 @@ pkgver=1.4.2
 pkgrel=1
 pkgdesc="A utility for writing LaTeX equations within HTML"
 depends=('perl' 'ghostscript' 'texlive-bin' 'libpng' 'giflib')
-#optdepends=('giflib')
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://ans.hsh.no/home/mgg/gladtex/"
+url="https://sourceforge.net/project/$pkgname/"
 source=(
-  "http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz"
+  "https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz"
   Makefile
   gladtex-1.4.2-giflib5.diff
 )
