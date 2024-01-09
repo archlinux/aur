@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=pijul
-pkgver=1.0.0.beta.7
+pkgver=1.0.0.beta.8
 _pkgver=${pkgver/.beta/-beta}
 pkgrel=1
 pkgdesc='A sound and fast distributed version control system'
@@ -12,8 +12,8 @@ depends=('glibc' 'gcc-libs' 'zstd' 'openssl' 'xxhash')
 makedepends=('rust' 'clang' 'libsodium')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$_pkgver.crate")
-sha512sums=('2055108d8a5ba3fee148e46eb3f7000995c6aac5055ae85a783093114f70a24ad7ddb38ba6d9e7c2d8998d6ff7956e42b711040f251863416ba842e590cc56d6')
-b2sums=('500afd8d0867d5135d90f3295efaba151f2913dacc4f30ba3973b5b1546167dcb5803e19f0335e0f7dfdcd1bffd405c70e928207ee35011ef738c55f4359b4fd')
+sha512sums=('eca5190ca0b7bf6a79823319793c32e372231d76508d5ff3278a767641305377893a98a9959a4a7c3e6ffca7c4ee1d1bd3828837e5e08ed44d69ec9263963432')
+b2sums=('1a9a6c55cc4ceee30a0815fd6dc0c0ceacde48c72ffcbc846d87c0c71fc86791855c61eb3fde440064fe1661b06794fbeff1d261a11ca3539caabbb37845335e')
 
 prepare() {
   cd "$pkgname-$_pkgver"
