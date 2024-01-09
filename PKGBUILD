@@ -1,9 +1,10 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: farwayer <farwayer@gmail.com>
 
 pkgname=ruby-excon
 _gemname="${pkgname#ruby-}"
-pkgver=0.104.0
+pkgver=0.109.0
 pkgrel=1
 pkgdesc='EXtended http(s) CONnections'
 arch=('any')
@@ -12,7 +13,7 @@ license=('MIT')
 depends=('ruby')
 makedepends=('git' 'rubygems' 'ruby-rdoc')
 options=('!emptydirs')
-_commit='5332be21be81ff30c23a0c768ff7b742312e4cba'
+_commit='1999ce9ea5c923b5dbbbd71ce41bd1f8548d0f09'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
