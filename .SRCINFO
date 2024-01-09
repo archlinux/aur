@@ -1,0 +1,15 @@
+pkgbase = 4shot
+	pkgdesc = Simple screenshot tool for X11-based systems.
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://github.com/savfrom4/4shot
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = libpng
+	makedepends = libx11
+	depends = git
+	source = 4shot-1.02.tar.gz::https://github.com/savfrom4/4shot/archive/refs/tags/1.02.tar.gz
+	sha256sums = 88c7ced2b3dc0029ee33b1b4ab12154cf3c638974f8c07d55c862d14389f41b4
+
+pkgname = 4shot
