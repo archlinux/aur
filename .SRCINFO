@@ -1,0 +1,13 @@
+pkgbase = tapview
+	pkgdesc = A tiny viewer/consumer for TAP (Test Anything Protocol)
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://gitlab.com/esr/tapview
+	arch = any
+	license = custom:MIT0
+	checkdepends = shellcheck
+	makedepends = asciidoctor
+	source = https://gitlab.com/esr/tapview/-/archive/1.9/tapview-1.9.tar.bz2
+	sha512sums = 8cf2a519e31f2c5d8eb86f7688386b1dcd64decee723e82dee6e1c96347dabb7d1d8fca7c1b668c2a2d5bc8bffd4b6996eb659a7aa5f30036773986db6278e89
+
+pkgname = tapview
