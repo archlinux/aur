@@ -1,7 +1,7 @@
 pkgbase = poketex
 	pkgdesc = Simple Pokedex based on TUI
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ckaznable/poketex
 	arch = x86_64
 	license = MIT
