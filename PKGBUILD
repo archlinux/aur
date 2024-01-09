@@ -1,7 +1,7 @@
 # Maintainer: AltoXorg
 
 pkgname=pigment64
-pkgver=0.3.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A library for handling conversion between N64 texture formats and modern image formats"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/decompals/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('164b37ea96bfd980c92f2e53b2210c9c3dd20a067faf5c7e979732b63945ccada074ca857467e0d1905899e719ca1315664e6d6930c7a048c146312341e18326')
+sha512sums=('bbed837f78760f0e47cd90815bf6edcadeee7a8a8cb3b53804bc2dab118a1da9514014289790d80377518407caf0ed1b3d824e4cff1bc862431c078f275ed099')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -35,4 +35,5 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" "LICENSE"
 }
