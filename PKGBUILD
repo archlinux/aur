@@ -4,12 +4,12 @@
 _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname-lts"
-pkgver=6.1.71
+pkgver=6.6.10
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-or-later)
 makedepends=(
   bc
   cpio
@@ -29,27 +29,30 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-$pkgver
+_srctag=v$pkgver-arch1
+_dl_url_arch='https://github.com/archlinux/linux'
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  config                       # the main kernel config file
+  $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+  config  # the main kernel config file
 
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   1001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
   1002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
-# https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=(
-  '2df774dd53f9ffd4e57ebf804cf597709295df6a304fe261d25220a134b7f041'
+  '9ee627e4c109aec7fca3eda5898e81d201af2c7eb2f7d9d7d94c1f0e1205546c'
   'SKIP'
-  'fcf0b005d3cde29b54a61b25bef3efb42a12ac38c039200ac8f4756618270820'
+  'ad84324ce12f7c27664e79ebeaf4f7b6b52e1abe5777454b4d72c287c928f99a'
+  'SKIP'
+  '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
 
-  '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
-  'bdd2a5a56e01e91723907afb40d28bed77b7d5107aba92c85adb3ce6967e713a'
-  '9a698eaf1a0bd740981e909b6ad9bd41300488a2a771843bf30b9bdc94aa3c3b'
+  'f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb'
+  '2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -73,6 +76,9 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 -F100 -i "../$src"
   done
+
+  # remove extra version suffix
+  sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
 
   echo "Setting config..."
   cp ../config .config
@@ -121,8 +127,8 @@ _package() {
   ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
