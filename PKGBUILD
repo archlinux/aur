@@ -3,19 +3,15 @@
 
 pkgname=ds9
 pkgver=8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="SAOImage DS9: Astronomical Data Visualization Application"
 url="http://hea-www.harvard.edu/RD/ds9/"
 arch=('x86_64')
 license=('GPL2')
-provides=(ds9)
-conflicts=(ds9-bin)
 depends=(libx11 zlib libxslt libxml2 libxft tcl tk)
 options=(!strip !lto)
 makedepends=(gcc make automake autoconf zip)
-replaces=()
-backup=()
-source=("https://github.com/SAOImageDS9/SAOImageDS9/archive/v${pkgver}.tar.gz"
+source=($pkgname-$pkgver.tar.gz::"https://github.com/SAOImageDS9/SAOImageDS9/archive/v${pkgver}.tar.gz"
         "ds9.desktop")
 md5sums=('066f1537d7f1e62cce9e291318579aa1'
          'f1738e4ec665ae9afd1b65b86e6a07f1')
