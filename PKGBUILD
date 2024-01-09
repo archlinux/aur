@@ -1,10 +1,10 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Thomas Mudrunka <harvie@@email..cz>
 # Maintainer: Thomas Mudrunka <harvie@@email..cz>
-# Contributor: otaj <jasek.ota@gmail.com>
+# Contributor: otaj <ota.jasek@proton.me>
 
 pkgname=mcelog
-pkgver=196
+pkgver=197
 pkgrel=1
 pkgdesc="Print machine check event log from x86-64 kernel"
 url="https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git"
@@ -15,7 +15,7 @@ makedepends=('git')
 options=('docs')
 backup=('etc/mcelog/mcelog.conf')
 source=("$url/snapshot/$pkgname-$pkgver.tar.gz")
-sha256sums=('5833f89b30db588311cf60a2001be61a78f8439fc60d655616cef02f3ab20a02')
+sha256sums=('fff2860d9cf17402e019f71c8fed719dd954880db107e569157cb616627bcde0')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
