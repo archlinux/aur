@@ -6,7 +6,7 @@
 pkgname=firefox-vaapi
 _pkgname=firefox
 pkgver=121.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -71,8 +71,10 @@ source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   firefox.desktop
   identity-icons-brand.svg
-  0001-enable-vaapi.patch
-  0002-remove-nvidia-blocklist.patch
+  0001-wayland-proxy.patch
+  0002-wayland-proxy.patch
+  0003-enable-vaapi.patch
+  0004-remove-nvidia-blocklist.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -83,12 +85,16 @@ sha256sums=('edc7a5159d23ff2a23e22bf5abe22231658cee2902b93b5889ee73958aa06aa4'
             'SKIP'
             '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
+            'bbec9e3ed1fe1372f587383e8ca86bb28e4dd90874dc146450e6ecdc8d30f387'
+            '2b439551262f6b1f341ff8156ad447b5196d5d5d1bf1d8f3a9f9910895d6c1de'
             '00c449422246283cd7e0bdc65d216fce4a42f755ad881106a08fb7d97eab1679'
             '75d3c213f3717cfc3f72acd4e3b6d029d373916f9ff9a1e8a3e2d7b0958760ed')
 b2sums=('80905caeb208ef5dce7b62e248c86598ca786eb7032e114ad5d10812623bfceb688832f646dfbe220ef2fcecacf11cefae2afb0f1cdc0f7952647b71c58c9602'
         'SKIP'
         'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
+        '4daf6c7d670f94d782408cd6f7fa7c6a96e109d6d368f5e41b0353e6f81f9a12f0f32b72efb734814652df42e63941312edc54446e874ce84e82862fbdee8a33'
+        '896de88f76d37ad35d34084706c70170883e8b27630714ce326e00e327257c19e5ebee84cec45f3ab5db66becb6a7b5fb925f3b37b17f5b636d3517da07b914d'
         'f84752e04c7e69b69158b9514a5227a2b71b60ccbbe5acb437d9830bfa2e725fe6784e1603890722a114abda424f9cafc007e9934310f21483b6540bc19da905'
         '87ecd8a3891a9a171173a97cf3b2b5f978be9ec876bb257d9f5e037f21dc5bd91167eabeb1c3cc181260b82cb2774c7b38ad73e1d807cc49b6d95617e2fb5d55')
 
@@ -108,13 +114,20 @@ prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1743144
+  # https://www.phoronix.com/news/Wayland-Proxy-Firefox
+  # https://mastransky.wordpress.com/2023/12/22/wayland-proxy-load-balancer/
+  # https://src.fedoraproject.org/rpms/firefox/c/5d26feb54833974e37fbf31d07d2ddf59538a157?branch=rawhide
+  patch -Np1 -i ../0001-wayland-proxy.patch
+  patch -Np1 -i ../0002-wayland-proxy.patch
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1809068
   # https://bbs.archlinux.org/viewtopic.php?id=281398
   # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/firefox-enable-vaapi.patch
-  patch -Np1 -i ../0001-enable-vaapi.patch
+  patch -Np1 -i ../0003-enable-vaapi.patch
 
   # Disable NVIDIA blocklists, to make it function with libva-nvidia-driver-git AUR package
-  patch -Np1 -i ../0002-remove-nvidia-blocklist.patch
+  patch -Np1 -i ../0004-remove-nvidia-blocklist.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -163,10 +176,11 @@ END
 build() {
   cd firefox-$pkgver
 
-  export MOZ_NOSPAM=1
-  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MOZ_ENABLE_FULL_SYMBOLS=1
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+  export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
+  export MOZ_ENABLE_FULL_SYMBOLS=1
+  export MOZ_NOSPAM=1
 
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
