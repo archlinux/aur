@@ -1,12 +1,14 @@
 pkgbase = python-pysmt-git
 	pkgdesc = A library for SMT formulae manipulation and solving
-	pkgver = 0.9.5.r14.gf81dd89
+	pkgver = 0.9.5.r53.gf7b599c
 	pkgrel = 1
 	url = https://github.com/pysmt/pysmt
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-six
 	depends = python
 	provides = python-pysmt
