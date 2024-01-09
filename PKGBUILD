@@ -1,25 +1,15 @@
-# Maintainer: David Cohen <dacohen@pm.me>
+# Maintainer: Kelvie Wong <kelvie@kelvie.ca
+# Based on PKGBUILD by David Cohen <dacohen@pm.me>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-# This PKGBUILD script and the config file are based on official Arch's linux package
-# Refer to config file to get the exact versions it's based on. Any changes to the config
-# will be on config.extra file.
-
-pkgbase=linux-git
-pkgver=6.6.rc2.r18.2cf0f7156238
+pkgbase=linux-kelvie-fw-git
+_tag=v6.7
+pkgver=6.7.r11.1a55aeb58aed
 pkgrel=1
-pkgdesc="Linus Torvalds' Mainline Linux"
+pkgdesc="Linux kernel for Kelvie's AMD Framework 13 laptop"
 url="https://www.kernel.org"
 arch=(x86_64)
 license=(GPL2)
-_userconfig="/etc/${pkgbase}/config"
-_userremote="/etc/${pkgbase}/remote"
-_userpatches="/etc/${pkgbase}/patches/patches"
-backup=(
-"${_userconfig##/}"
-"${_userremote##/}"
-"${_userpatches##/}"
-)
 makedepends=(
   bc
   cpio
@@ -35,24 +25,24 @@ makedepends=(
 options=('!strip')
 _srcname=linux-torvalds
 source=(
-  "$_srcname::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux"
+  "$_srcname::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux#tag=$_tag"
   config         # the main kernel config file
-  config.extra   # additional configs
-  config.user    # user custom config
-  remote         # custom remote config
-  patches        # user patches config
+  modprobed.db   # modprobed.db file from modprobed-db on my laptop
+  ./v12_20231205_li_meng_amd_pstate_preferred_core.mbx # in theory, a more efficient scheduler that prefers more efficient AMD cores
+  ./v2_20231126_dustin_platform_chrome_cros_ec_lpc_add_support_for_amd_framework_laptops.mbx # for ectool to work on AMD
+  ./0001-Add-a-lockdown_hibernate-parameter.patch # allow lockdown_hibernate kernel parameter
 )
+sha256sums=('SKIP'
+            '46451dbc3305d4c2e726a2f1943bddf697c5bb6815d93e5baed80bca82e53fdc'
+            'c112f19d5469bb85b889ef9d4cfd7e79f5da7a1e9c7375c1a48e279d55131ea8'
+            '62be11c4f4b0dc565a78eb9f82aa7147fd5296c1b9ec61d08e8b5c6757da80e1'
+            '7ae65ef5c7bad6dc1f733809b86a8f8b7322ebc5ae6733f0968175495d8e35f9'
+            '7d6037eb6fdbad042c63f157c095f737e8b58d2ce2f870700c95c876b7dc21c3')
+
+
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-)
-b2sums=(
-  'SKIP'                                                                                                                              # linux git source
-  '9a1770eed7e306ddd532b1df9d62c52b4f6c938d147473bed6ba92a4139654f313d7033bb6bc509f4054fa757acf33a8d73b6f36fed2a134f72d1724bf2db717'  # config
-  '249bec61fed688345a0f41245af9e8e189af3149e66a3c0dcc8e833151428232a701a35ed760ef93ceb5f25d9378c44f903f380a7051a65fb9a203c6fb51ebcd'  # config.extra
-  'SKIP'                                                                                                                              # config.user
-  'SKIP'                                                                                                                              # remote
-  'a483bfcc2f7926def88842a1b5da5170ed50e941d82e5389521c71e82015f1b1d8503efda1517f85105a5ed218bd4ca282f4381b16926cdc774c85b8b5a11615'  # patches
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -65,46 +55,33 @@ _make() {
 }
 
 pkgver() {
-  cd "$srcdir/$_srcname"
-  if [[ -n "$REMOTE_URL" ]]; then
-    # if $REMOTE_URL was created, it's safe to use $REMOTE
-    printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//').${REMOTE//[\/-]/.}"
-  else
-    printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//')"
+  slimsuffix=
+  if [[ -n "$SLIM" ]]; then
+    slimsuffix=.slim
   fi
+  cd "$srcdir/$_srcname"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//')"$slimsuffix
 }
 
 prepare() {
   cd $_srcname
 
-  if [[ -z ${IGNORE_USER_CUSTOM} ]]; then
-    [[ -f "$_userremote" ]] && source "$_userremote" || source "../${_userremote##*/}"
-  fi
-  if [[ -n "$REMOTE" && -n "$COMMIT" ]]; then
-    REMOTE_PREFIX=${source[0]##${_srcname}::git+}
-    REMOTE_PREFIX=${REMOTE_PREFIX%%torvalds/linux}
-    REMOTE_URL=${REMOTE_PREFIX}${REMOTE}
-    echo
-    echo "================================================================================"
-    echo "Build script detected custom variables \$REMOTE and \$COMMIT are being used:"
-    echo "REMOTE_PREFIX: $REMOTE_PREFIX"
-    echo "REMOTE_TIP   : $REMOTE"
-    echo "COMMIT       : $COMMIT"
-    echo "================================================================================"
-    echo
-    echo "Fetching ${REMOTE_PREFIX}${REMOTE} ${COMMIT}"
-    git fetch -t ${REMOTE_URL} ${COMMIT}
-    git checkout -f FETCH_HEAD
-  fi
-
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-  make defconfig
-  make -s kernelrelease > version
-  make mrproper
+  # make defconfig
 
   local src
+
+  # Do mboxes first cause they they don't like having a dirty working tree
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.mbx ]] || [[ $src = *.mbox ]] || continue
+    echo "Applying mbox $src..."
+    git am --quiet --whitespace=nowarn --ignore-whitespace "../$src"
+  done
+
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
@@ -113,34 +90,18 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
-  if [[ -z ${IGNORE_USER_CUSTOM} ]]; then
-    echo
-    echo "====================================== User Patches ======================================"
-    [[ -f "$_userpatches" ]] && source "$_userpatches"
-    PATCHES_PREFIX=${_userpatches%%patches}
-    for src in "${PATCHES[@]}"; do
-      [[ $src = *.patch ]] || continue
-      echo " -> Applying user patch $src..."
-      patch -Np1 < "${PATCHES_PREFIX}$src"
-      _USER_PATCHES="1"
-    done
-    echo "=========================================================================================="
-    echo
-    # Let user see the patches were applied before proceed with the build
-    [[ ! -z ${_USER_PATCHES} ]] && sleep 5
-  fi
-
   echo "Setting config..."
-  cat ../config ../config.extra > .config
-  if [[ -z ${IGNORE_USER_CUSTOM} ]]; then
-    if [[ -f "$_userconfig" ]]; then
-      cat $_userconfig >> .config
-    else
-      cat ../config.user >> .config
-    fi
+  make -s kernelrelease | sed 's/-dirty$//' > version
+
+  if [[ -n "$SLIM" && -f ../modprobed.db ]]; then
+    echo " -> Using modprobed.db..."
+    rm -f .config
+    cp ../modprobed.db .
+    yes '' | _make LSMOD=./modprobed.db LMC_KEEP="drivers/usb:fs" localmodconfig
+  else
+    cp ../config .config
+    _make olddefconfig
   fi
-  _make olddefconfig
-  diff -u ../config .config || :
 
   echo "Prepared $pkgbase version $(<version)"
 }
@@ -189,11 +150,6 @@ _package() {
 
   # remove build and source links
   rm -f "$modulesdir"/{source,build}
-
-  # install config files
-  install -Dm644 $srcdir/config.user "${pkgdir}${_userconfig}"
-  install -Dm644 $srcdir/remote "${pkgdir}${_userremote}"
-  install -Dm644 $srcdir/patches "${pkgdir}${_userpatches}"
 }
 
 _package-headers() {
@@ -209,6 +165,8 @@ _package-headers() {
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  # copy signing keys for dkms
+  install -Dt "$builddir/certs" -m 400 certs/signing_key.*
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool

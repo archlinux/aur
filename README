@@ -1,24 +1,17 @@
-These are the instructions to customize the linux-git package compilation in
-case using the current Linux mainline is not desired:
+Main changes from mainline:
+- add mbox support (for grabbing patchsets using b4)
+- allow a slimmer config using SLIM=yes (using the included modprobed.db)
+- copy signing keys for use with dkms (just add
+  $kernel_source_Dir/certs/signing_key.pem/x509 as the mok_signing_key and
+  certificate in /etc/dkms/framework.conf
 
-* How to customize the git remote / branch:
-  If a previous linux-git installation exists, please consult and edit the file
-  /etc/linux-git/remote, otherwise use the file ./remote included in this AUR
-  package.
+To grab patchsets from the kernel mailing lists, use `b4` to grab entire
+patchsets, e.g.:
 
-* How to add user-customized config options:
-  If a previous linux-git installation exists, please consult and edit the file
-  /etc/linux-git/config, otherwise use the file ./config.user included in this
-  AUR package.
+    b4 am -o . 20231126192452.97824-1-dustin@howett.net
 
-* How to add extra patches on top of the selected remote / branch:
-  If a previous linux-git installation exists, please consult and edit the file
-  /etc/linux-git/patches/patches. If not, you can add the patches
-  directly to the src/linux-torvalds/ git source. After compilation and
-  installation, you can copy the patches to the directory
-  /etc/linux-git/patches and follow the instructions included on
-  /etc/linux-git/patches/patches file.
+And add the resulting `.mbx` file to the `source` section in the PKGBUILD.
 
-Set env variable IGNORE_USER_CUSTOM to build package ignoring current
-customizations in place:
-$ IGNORE_USER_CUSTOM=1 makepkg
+You can run `makepkg` with `env SLIM=yes` in theory to not build all the
+modules, but you may want to modify `modprobed.db` to make sure it has all the
+modules you need.

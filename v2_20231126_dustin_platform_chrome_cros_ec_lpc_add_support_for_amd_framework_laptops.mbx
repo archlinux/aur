@@ -1,0 +1,334 @@
+From git@z Thu Jan  1 00:00:00 1970
+Subject: [PATCH v2 1/4] platform/chrome: cros_ec_lpc: introduce a priv
+ struct for the lpc device
+From: "Dustin L. Howett" <dustin@howett.net>
+Date: Sun, 26 Nov 2023 13:24:49 -0600
+Message-Id: <20231126192452.97824-2-dustin@howett.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+lpc_driver_data stores the MMIO port base for EC mapped memory.
+cros_ec_lpc_readmem uses this port base instead of hardcoding
+EC_LPC_ADDR_MEMMAP.
+
+Signed-off-by: Dustin L. Howett <dustin@howett.net>
+---
+ drivers/platform/chrome/cros_ec_lpc.c | 25 +++++++++++++++++++++----
+ 1 file changed, 21 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/platform/chrome/cros_ec_lpc.c b/drivers/platform/chrome/cros_ec_lpc.c
+index 356572452898..9f2ea75c76b6 100644
+--- a/drivers/platform/chrome/cros_ec_lpc.c
++++ b/drivers/platform/chrome/cros_ec_lpc.c
+@@ -34,6 +34,14 @@
+ /* True if ACPI device is present */
+ static bool cros_ec_lpc_acpi_device_found;
+ 
++/**
++ * struct cros_ec_lpc - LPC device-specific data
++ * @mmio_memory_base: The first I/O port addressing EC mapped memory.
++ */
++struct cros_ec_lpc {
++	u16 mmio_memory_base;
++};
++
+ /**
+  * struct lpc_driver_ops - LPC driver operations
+  * @read: Copy length bytes from EC address offset into buffer dest. Returns
+@@ -290,6 +298,7 @@ static int cros_ec_cmd_xfer_lpc(struct cros_ec_device *ec,
+ static int cros_ec_lpc_readmem(struct cros_ec_device *ec, unsigned int offset,
+ 			       unsigned int bytes, void *dest)
+ {
++	struct cros_ec_lpc *ec_lpc = ec->priv;
+ 	int i = offset;
+ 	char *s = dest;
+ 	int cnt = 0;
+@@ -299,13 +308,13 @@ static int cros_ec_lpc_readmem(struct cros_ec_device *ec, unsigned int offset,
+ 
+ 	/* fixed length */
+ 	if (bytes) {
+-		cros_ec_lpc_ops.read(EC_LPC_ADDR_MEMMAP + offset, bytes, s);
++		cros_ec_lpc_ops.read(ec_lpc->mmio_memory_base + offset, bytes, s);
+ 		return bytes;
+ 	}
+ 
+ 	/* string */
+ 	for (; i < EC_MEMMAP_SIZE; i++, s++) {
+-		cros_ec_lpc_ops.read(EC_LPC_ADDR_MEMMAP + i, 1, s);
++		cros_ec_lpc_ops.read(ec_lpc->mmio_memory_base + i, 1, s);
+ 		cnt++;
+ 		if (!*s)
+ 			break;
+@@ -353,9 +362,16 @@ static int cros_ec_lpc_probe(struct platform_device *pdev)
+ 	struct acpi_device *adev;
+ 	acpi_status status;
+ 	struct cros_ec_device *ec_dev;
++	struct cros_ec_lpc *ec_lpc;
+ 	u8 buf[2] = {};
+ 	int irq, ret;
+ 
++	ec_lpc = devm_kzalloc(dev, sizeof(*ec_lpc), GFP_KERNEL);
++	if (!ec_lpc)
++		return -ENOMEM;
++
++	ec_lpc->mmio_memory_base = EC_LPC_ADDR_MEMMAP;
++
+ 	/*
+ 	 * The Framework Laptop (and possibly other non-ChromeOS devices)
+ 	 * only exposes the eight I/O ports that are required for the Microchip EC.
+@@ -380,7 +396,7 @@ static int cros_ec_lpc_probe(struct platform_device *pdev)
+ 	cros_ec_lpc_ops.write = cros_ec_lpc_mec_write_bytes;
+ 	cros_ec_lpc_ops.read(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID, 2, buf);
+ 	if (buf[0] != 'E' || buf[1] != 'C') {
+-		if (!devm_request_region(dev, EC_LPC_ADDR_MEMMAP, EC_MEMMAP_SIZE,
++		if (!devm_request_region(dev, ec_lpc->mmio_memory_base, EC_MEMMAP_SIZE,
+ 					 dev_name(dev))) {
+ 			dev_err(dev, "couldn't reserve memmap region\n");
+ 			return -EBUSY;
+@@ -389,7 +405,7 @@ static int cros_ec_lpc_probe(struct platform_device *pdev)
+ 		/* Re-assign read/write operations for the non MEC variant */
+ 		cros_ec_lpc_ops.read = cros_ec_lpc_read_bytes;
+ 		cros_ec_lpc_ops.write = cros_ec_lpc_write_bytes;
+-		cros_ec_lpc_ops.read(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID, 2,
++		cros_ec_lpc_ops.read(ec_lpc->mmio_memory_base + EC_MEMMAP_ID, 2,
+ 				     buf);
+ 		if (buf[0] != 'E' || buf[1] != 'C') {
+ 			dev_err(dev, "EC ID not detected\n");
+@@ -423,6 +439,7 @@ static int cros_ec_lpc_probe(struct platform_device *pdev)
+ 	ec_dev->din_size = sizeof(struct ec_host_response) +
+ 			   sizeof(struct ec_response_get_protocol_info);
+ 	ec_dev->dout_size = sizeof(struct ec_host_request);
++	ec_dev->priv = ec_lpc;
+ 
+ 	/*
+ 	 * Some boards do not have an IRQ allotted for cros_ec_lpc,
+-- 
+2.42.0
+
+From git@z Thu Jan  1 00:00:00 1970
+Subject: [PATCH v2 2/4] platform/chrome: cros_ec_lpc: pass driver_data from
+ DMI to the device
+From: "Dustin L. Howett" <dustin@howett.net>
+Date: Sun, 26 Nov 2023 13:24:50 -0600
+Message-Id: <20231126192452.97824-3-dustin@howett.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+lpc_driver_data will be stored in drvdata until probe is complete, at
+which point it will be replaced with a cros_ec_device.
+
+Signed-off-by: Dustin L. Howett <dustin@howett.net>
+---
+ drivers/platform/chrome/cros_ec_lpc.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/platform/chrome/cros_ec_lpc.c b/drivers/platform/chrome/cros_ec_lpc.c
+index 9f2ea75c76b6..f1d1615d9b37 100644
+--- a/drivers/platform/chrome/cros_ec_lpc.c
++++ b/drivers/platform/chrome/cros_ec_lpc.c
+@@ -615,14 +615,16 @@ static int __init cros_ec_lpc_init(void)
+ {
+ 	int ret;
+ 	acpi_status status;
++	const struct dmi_system_id *dmi_match;
+ 
+ 	status = acpi_get_devices(ACPI_DRV_NAME, cros_ec_lpc_parse_device,
+ 				  &cros_ec_lpc_acpi_device_found, NULL);
+ 	if (ACPI_FAILURE(status))
+ 		pr_warn(DRV_NAME ": Looking for %s failed\n", ACPI_DRV_NAME);
+ 
+-	if (!cros_ec_lpc_acpi_device_found &&
+-	    !dmi_check_system(cros_ec_lpc_dmi_table)) {
++	dmi_match = dmi_first_match(cros_ec_lpc_dmi_table);
++
++	if (!cros_ec_lpc_acpi_device_found && !dmi_match) {
+ 		pr_err(DRV_NAME ": unsupported system.\n");
+ 		return -ENODEV;
+ 	}
+@@ -635,6 +637,9 @@ static int __init cros_ec_lpc_init(void)
+ 	}
+ 
+ 	if (!cros_ec_lpc_acpi_device_found) {
++		/* Pass the DMI match's driver data down to the platform device */
++		platform_set_drvdata(&cros_ec_lpc_device, dmi_match->driver_data);
++
+ 		/* Register the device, and it'll get hooked up automatically */
+ 		ret = platform_device_register(&cros_ec_lpc_device);
+ 		if (ret) {
+-- 
+2.42.0
+
+From git@z Thu Jan  1 00:00:00 1970
+Subject: [PATCH v2 3/4] platform/chrome: cros_ec_lpc: add a "quirks" system
+From: "Dustin L. Howett" <dustin@howett.net>
+Date: Sun, 26 Nov 2023 13:24:51 -0600
+Message-Id: <20231126192452.97824-4-dustin@howett.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Some devices ship a ChromeOS EC in a non-standard configuration. Quirks
+allow cros_ec_lpc to account for these non-standard configurations.
+
+It supports the following quirks:
+- CROS_EC_LPC_QUIRK_REMAP_MEMORY: use a different port I/O base for
+  MMIO to the EC's memory region
+- CROS_EC_LPC_QUIRK_SHORT_HOSTCMD_RESERVATION: only attempt to reserve
+  0xff (rather than 0x100) I/O ports for the host command region
+
+Signed-off-by: Dustin L. Howett <dustin@howett.net>
+---
+ drivers/platform/chrome/cros_ec_lpc.c | 42 ++++++++++++++++++++++++++-
+ 1 file changed, 41 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/platform/chrome/cros_ec_lpc.c b/drivers/platform/chrome/cros_ec_lpc.c
+index f1d1615d9b37..a65c9a8bca5e 100644
+--- a/drivers/platform/chrome/cros_ec_lpc.c
++++ b/drivers/platform/chrome/cros_ec_lpc.c
+@@ -34,6 +34,29 @@
+ /* True if ACPI device is present */
+ static bool cros_ec_lpc_acpi_device_found;
+ 
++/*
++ * Indicates that the driver should only reserve 0xFF I/O ports
++ * (rather than 0x100) for the host command mapped memory region.
++ */
++#define CROS_EC_LPC_QUIRK_SHORT_HOSTCMD_RESERVATION BIT(0)
++/*
++ * Indicates that lpc_driver_data.quirk_mmio_memory_base should
++ * be used as the base port for EC mapped memory.
++ */
++#define CROS_EC_LPC_QUIRK_REMAP_MEMORY              BIT(1)
++
++/**
++ * struct lpc_driver_data - driver data attached to a DMI device ID to indicate
++ *                          hardware quirks.
++ * @quirks: a bitfield composed of quirks from CROS_EC_LPC_QUIRK_*
++ * @quirk_mmio_memory_base: The first I/O port addressing EC mapped memory (used
++ *                          when quirks (...REMAP_MEMORY) is set.
++ */
++struct lpc_driver_data {
++	u32 quirks;
++	u16 quirk_mmio_memory_base;
++};
++
+ /**
+  * struct cros_ec_lpc - LPC device-specific data
+  * @mmio_memory_base: The first I/O port addressing EC mapped memory.
+@@ -363,8 +386,11 @@ static int cros_ec_lpc_probe(struct platform_device *pdev)
+ 	acpi_status status;
+ 	struct cros_ec_device *ec_dev;
+ 	struct cros_ec_lpc *ec_lpc;
++	struct lpc_driver_data *driver_data;
++	int region1_size = EC_HOST_CMD_REGION_SIZE;
+ 	u8 buf[2] = {};
+ 	int irq, ret;
++	u32 quirks = 0;
+ 
+ 	ec_lpc = devm_kzalloc(dev, sizeof(*ec_lpc), GFP_KERNEL);
+ 	if (!ec_lpc)
+@@ -372,6 +398,20 @@ static int cros_ec_lpc_probe(struct platform_device *pdev)
+ 
+ 	ec_lpc->mmio_memory_base = EC_LPC_ADDR_MEMMAP;
+ 
++	driver_data = platform_get_drvdata(pdev);
++	if (driver_data) {
++		quirks = driver_data->quirks;
++
++		if (quirks)
++			dev_info(dev, "loaded with quirks %8.08x\n", quirks);
++
++		if (quirks & CROS_EC_LPC_QUIRK_REMAP_MEMORY)
++			ec_lpc->mmio_memory_base = driver_data->quirk_mmio_memory_base;
++
++		if (quirks & CROS_EC_LPC_QUIRK_SHORT_HOSTCMD_RESERVATION)
++			region1_size -= 1;
++	}
++
+ 	/*
+ 	 * The Framework Laptop (and possibly other non-ChromeOS devices)
+ 	 * only exposes the eight I/O ports that are required for the Microchip EC.
+@@ -420,7 +460,7 @@ static int cros_ec_lpc_probe(struct platform_device *pdev)
+ 			return -EBUSY;
+ 		}
+ 		if (!devm_request_region(dev, EC_HOST_CMD_REGION1,
+-					 EC_HOST_CMD_REGION_SIZE, dev_name(dev))) {
++					 region1_size, dev_name(dev))) {
+ 			dev_err(dev, "couldn't reserve region1\n");
+ 			return -EBUSY;
+ 		}
+-- 
+2.42.0
+
+From git@z Thu Jan  1 00:00:00 1970
+Subject: [PATCH v2 4/4] platform/chrome: cros_ec_lpc: add quirks for the
+ Framework Laptop (AMD)
+From: "Dustin L. Howett" <dustin@howett.net>
+Date: Sun, 26 Nov 2023 13:24:52 -0600
+Message-Id: <20231126192452.97824-5-dustin@howett.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+The original Framework Laptop 13 platform (Intel 11th, 12th, and 13th
+Generation at this time) uses a Microchip embedded controller in a
+standard configuration.
+
+The newer devices in this product line--Framework Laptop 13 and 16 (AMD
+Ryzen)--use a NPCX embedded controller. However, they deviate from the
+configuration of ChromeOS platforms built with the NPCX EC.
+
+* ACPI device _SB.PCI0.LPC0.EC0 only indicates I/O ports [0x800, 0x8FE]
+  as being used, rather than the expected [0x800, 0x8FF].
+  *However*, the embedded controller does make use of all 0x100 ports.
+* The MMIO region for EC memory begins at port 0xE00 rather than the
+  expected 0x900.
+
+cros_ec_lpc's quirks system is used to address both of these issues.
+
+Signed-off-by: Dustin L. Howett <dustin@howett.net>
+---
+ drivers/platform/chrome/cros_ec_lpc.c | 18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/platform/chrome/cros_ec_lpc.c b/drivers/platform/chrome/cros_ec_lpc.c
+index a65c9a8bca5e..9373c39c3ed9 100644
+--- a/drivers/platform/chrome/cros_ec_lpc.c
++++ b/drivers/platform/chrome/cros_ec_lpc.c
+@@ -538,6 +538,13 @@ static const struct acpi_device_id cros_ec_lpc_acpi_device_ids[] = {
+ };
+ MODULE_DEVICE_TABLE(acpi, cros_ec_lpc_acpi_device_ids);
+ 
++static const struct lpc_driver_data framework_laptop_amd_lpc_driver_data __initconst = {
++	.quirks =
++		CROS_EC_LPC_QUIRK_REMAP_MEMORY |
++		CROS_EC_LPC_QUIRK_SHORT_HOSTCMD_RESERVATION,
++	.quirk_mmio_memory_base = 0xE00,
++};
++
+ static const struct dmi_system_id cros_ec_lpc_dmi_table[] __initconst = {
+ 	{
+ 		/*
+@@ -592,7 +599,16 @@ static const struct dmi_system_id cros_ec_lpc_dmi_table[] __initconst = {
+ 	},
+ 	/* A small number of non-Chromebook/box machines also use the ChromeOS EC */
+ 	{
+-		/* the Framework Laptop */
++		/* the Framework Laptop 13 (AMD Ryzen) and 16 (AMD Ryzen) */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Framework"),
++			DMI_MATCH(DMI_PRODUCT_NAME, "AMD Ryzen"),
++			DMI_MATCH(DMI_PRODUCT_FAMILY, "Laptop"),
++		},
++		.driver_data = (void *)&framework_laptop_amd_lpc_driver_data,
++	},
++	{
++		/* the Framework Laptop (Intel 11th, 12th, 13th Generation) */
+ 		.matches = {
+ 			DMI_MATCH(DMI_SYS_VENDOR, "Framework"),
+ 			DMI_MATCH(DMI_PRODUCT_NAME, "Laptop"),
+-- 
+2.42.0
+

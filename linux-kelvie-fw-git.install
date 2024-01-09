@@ -1,0 +1,21 @@
+README="$(cat << EOF
+
+===============================================================================
+
+To enable hibernate in lockdonw mode, use the params:
+
+    lockdown=confidentiality lockdown_hibernate
+
+===============================================================================
+ 
+EOF
+)"
+
+post_install() {
+	echo "${README}"
+}
+
+post_upgrade() {
+	echo "${README}"
+}
+
