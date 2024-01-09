@@ -1,6 +1,6 @@
 pkgbase = poi_arch_electron
 	pkgdesc = Scalable KanColle browser and tool, using the system provided electron
-	pkgver = 10.10.0.beta.1.9.g5bc17ee2
+	pkgver = 11.0.0.beta.3.0.g74b1220c
 	pkgrel = 1
 	url = https://github.com/poooi/poi/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = poi_arch_electron
 	makedepends = npm
 	makedepends = python2
 	makedepends = jq
-	depends = electron27
+	depends = electron
 	depends = nodejs
 	depends = nss
 	depends = libxss
