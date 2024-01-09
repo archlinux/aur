@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
     cd $sourcedir
+    version=$(git describe --long --tags | awk -F'[+_~-]' '{print $1}')
     cmake -GNinja \
     -DMKSPECS_INSTALL_DIR=lib/qt6/mkspecs/modules/ \
     -DBUILD_DOCS=OFF \
@@ -34,7 +35,9 @@ build() {
     -DQCH_INSTALL_DESTINATION=share/doc/qt6 \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DDTK_VERSION=$version
+
     ninja
     # INFO: Another cmake option is DTK_DISABLE_EX_IMAGE_FORMAT
     # If you not want to support RAW images, set it to off
