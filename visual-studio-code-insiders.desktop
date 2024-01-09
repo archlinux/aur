@@ -14,5 +14,5 @@ Keywords=vscode;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window
-Exec=/opt/visual-studio-code-insiders/code-insiders --new-window %F
+Exec=/usr/bin/code-insiders --new-window %F
 Icon=visual-studio-code-insiders
