@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.G.2024.01.05
+pkgver=0.G.2024.01.09
 _pkgver=0.G
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 license=("CCPL:by-sa")
 conflicts=('cataclysm-dda' 'cataclysm-dda-ncurses' 'cataclysm-dda-tiles')
 depends=('ncurses' 'gettext')
-makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'git' 'libbacktrace-git')
+makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'git' 'libbacktrace-git' 'qt5-base')
 optdepends=('sdl2_image: for tiles'
             'sdl2_ttf: for tiles'
             'freetype2: for tiles'
