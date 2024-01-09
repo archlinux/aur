@@ -1,10 +1,11 @@
 pkgbase = linux-opi
-	pkgdesc = Linux kernel package targeting to pretest 6.1 merges for opi
-	pkgver = 6.1.43
+	pkgdesc = Linux kernel package targeting to pretest 6.7 merges for opi
+	pkgver = 6.7.0
 	pkgrel = 1
-	url = https://github.com/nyanmisaka
+	url = https://mirrors.bfsu.edu.cn/git
 	arch = aarch64
 	license = GPL2
+	makedepends = cpio
 	makedepends = xmlto
 	makedepends = docbook-xsl
 	makedepends = kmod
@@ -15,8 +16,10 @@ pkgbase = linux-opi
 	makedepends = vboot-utils
 	makedepends = dtc
 	options = !strip
-	source = git+https://github.com/nyanmisaka/linux-rockchip.git#branch=rk-6.1-dev2
+	source = git+https://mirrors.bfsu.edu.cn/git/linux.git#tag=v6.7
+	source = git+https://github.com/wyf9661/opi5plus-custom-patch.git
 	source = linux.preset
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
 
