@@ -5,13 +5,13 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/crunchy-labs/crunchy-cli"
 license=('MIT')
 
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 
 depends=('ffmpeg' 'openssl')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crunchy-labs/crunchy-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c34fa148b114d427fb1d1182a8b7a20fb7188b547135bb8cb0a734b83f823e5f')
+sha256sums=('a274844f46f525b048b7f06eeb823a4377b1609f48d589dab321575f3b617697')
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
