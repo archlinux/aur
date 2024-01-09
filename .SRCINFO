@@ -8,7 +8,7 @@ pkgbase = emacs-lsp-booster-git
 	license = MIT
 	makedepends = cargo
 	conflicts = emacs-lsp-booster
-	source = git+https://github.com/JakeStanger/ironbar
-	sha256sums = 5f4318dbdba14f561b180d4f0bcf0821b9c7cae4b8e10691eb9133833d7473c8
+	source = git+https://github.com/blahgeek/emacs-lsp-booster
+	sha256sums = SKIP
 
 pkgname = emacs-lsp-booster-git
