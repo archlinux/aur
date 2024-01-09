@@ -1,7 +1,7 @@
 pkgbase = retdec
 	pkgdesc = A retargetable machine-code decompiler based on LLVM
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://retdec.com/
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,10 @@ pkgbase = retdec
 	optdepends = upx: To use UPX unpacker in the preprocessing stage
 	optdepends = graphviz: To generate call or control flow grpahs
 	source = https://github.com/avast/retdec/archive/refs/tags/v5.0.tar.gz
+	source = 00-fix-missing-cstdint.patch
+	source = 01-use-yaramod-v3.21.0.patch
 	sha256sums = 216dc62fd54ff06277497492dbf44bc7a91e39249d8aefdee2e4f10fc903ce85
+	sha256sums = 4e4cd25fc540b45985d5b670c41de88edac3af2efd0b708a6c83b561b23631dc
+	sha256sums = d461f420b23fe00669c24c82d94de97b8caffde84ad164ed47f19e77348c55e3
 
 pkgname = retdec

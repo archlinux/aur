@@ -1,0 +1,228 @@
+diff --git a/include/retdec/ctypes/enum_type.h b/include/retdec/ctypes/enum_type.h
+index ecd6f33..a586938 100644
+--- a/include/retdec/ctypes/enum_type.h
++++ b/include/retdec/ctypes/enum_type.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_CTYPES_ENUM_TYPE_H
+ #define RETDEC_CTYPES_ENUM_TYPE_H
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <vector>
+diff --git a/include/retdec/fileformat/types/dotnet_headers/metadata_header.h b/include/retdec/fileformat/types/dotnet_headers/metadata_header.h
+index 8645fab..57d8af6 100644
+--- a/include/retdec/fileformat/types/dotnet_headers/metadata_header.h
++++ b/include/retdec/fileformat/types/dotnet_headers/metadata_header.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_FILEFORMAT_TYPES_DOTNET_HEADERS_METADATA_HEADER_H
+ #define RETDEC_FILEFORMAT_TYPES_DOTNET_HEADERS_METADATA_HEADER_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace retdec {
+diff --git a/include/retdec/fileformat/types/dotnet_headers/metadata_table.h b/include/retdec/fileformat/types/dotnet_headers/metadata_table.h
+index 31be818..3e9d8c2 100644
+--- a/include/retdec/fileformat/types/dotnet_headers/metadata_table.h
++++ b/include/retdec/fileformat/types/dotnet_headers/metadata_table.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_FILEFORMAT_TYPES_DOTNET_HEADERS_METADATA_TABLE_H
+ #define RETDEC_FILEFORMAT_TYPES_DOTNET_HEADERS_METADATA_TABLE_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+diff --git a/include/retdec/fileformat/types/export_table/export.h b/include/retdec/fileformat/types/export_table/export.h
+index 85c1e35..f891a5b 100644
+--- a/include/retdec/fileformat/types/export_table/export.h
++++ b/include/retdec/fileformat/types/export_table/export.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_FILEFORMAT_TYPES_EXPORT_TABLE_EXPORT_H
+ #define RETDEC_FILEFORMAT_TYPES_EXPORT_TABLE_EXPORT_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace retdec {
+diff --git a/include/retdec/fileformat/types/import_table/import.h b/include/retdec/fileformat/types/import_table/import.h
+index a527e24..fcc70cf 100644
+--- a/include/retdec/fileformat/types/import_table/import.h
++++ b/include/retdec/fileformat/types/import_table/import.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_FILEFORMAT_TYPES_IMPORT_TABLE_IMPORT_H
+ #define RETDEC_FILEFORMAT_TYPES_IMPORT_TABLE_IMPORT_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace retdec {
+diff --git a/include/retdec/fileformat/types/relocation_table/relocation.h b/include/retdec/fileformat/types/relocation_table/relocation.h
+index 617f81d..f2579a4 100644
+--- a/include/retdec/fileformat/types/relocation_table/relocation.h
++++ b/include/retdec/fileformat/types/relocation_table/relocation.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_FILEFORMAT_TYPES_RELOCATION_TABLE_RELOCATION_H
+ #define RETDEC_FILEFORMAT_TYPES_RELOCATION_TABLE_RELOCATION_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+diff --git a/include/retdec/fileformat/types/rich_header/linker_info.h b/include/retdec/fileformat/types/rich_header/linker_info.h
+index 2c281f2..543957e 100644
+--- a/include/retdec/fileformat/types/rich_header/linker_info.h
++++ b/include/retdec/fileformat/types/rich_header/linker_info.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_FILEFORMAT_TYPES_RICH_HEADER_LINKER_INFO_H
+ #define RETDEC_FILEFORMAT_TYPES_RICH_HEADER_LINKER_INFO_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace retdec {
+diff --git a/include/retdec/fileformat/types/rich_header/rich_header.h b/include/retdec/fileformat/types/rich_header/rich_header.h
+index e3c60dd..0b77627 100644
+--- a/include/retdec/fileformat/types/rich_header/rich_header.h
++++ b/include/retdec/fileformat/types/rich_header/rich_header.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_FILEFORMAT_TYPES_RICH_HEADER_RICH_HEADER_H
+ #define RETDEC_FILEFORMAT_TYPES_RICH_HEADER_RICH_HEADER_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+diff --git a/include/retdec/fileformat/types/strings/string.h b/include/retdec/fileformat/types/strings/string.h
+index a89d848..fbe67e2 100644
+--- a/include/retdec/fileformat/types/strings/string.h
++++ b/include/retdec/fileformat/types/strings/string.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_FILEFORMAT_TYPES_STRINGS_STRING_H
+ #define RETDEC_FILEFORMAT_TYPES_STRINGS_STRING_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace retdec {
+diff --git a/include/retdec/fileformat/types/tls_info/tls_info.h b/include/retdec/fileformat/types/tls_info/tls_info.h
+index 6b091c6..668b927 100644
+--- a/include/retdec/fileformat/types/tls_info/tls_info.h
++++ b/include/retdec/fileformat/types/tls_info/tls_info.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_FILEFORMAT_TYPES_TLS_INFO_TLS_INFO_H
+ #define RETDEC_FILEFORMAT_TYPES_TLS_INFO_TLS_INFO_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+diff --git a/include/retdec/fileformat/utils/byte_array_buffer.h b/include/retdec/fileformat/utils/byte_array_buffer.h
+index eae0d4f..aeec585 100644
+--- a/include/retdec/fileformat/utils/byte_array_buffer.h
++++ b/include/retdec/fileformat/utils/byte_array_buffer.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_FILEFORMAT_UTILS_BYTE_ARRAY_BUFFER_H
+ #define RETDEC_FILEFORMAT_UTILS_BYTE_ARRAY_BUFFER_H
+ 
++#include <cstdint>
+ #include <streambuf>
+ 
+ namespace retdec {
+diff --git a/include/retdec/pdbparser/pdb_utils.h b/include/retdec/pdbparser/pdb_utils.h
+index 459f609..4f30696 100644
+--- a/include/retdec/pdbparser/pdb_utils.h
++++ b/include/retdec/pdbparser/pdb_utils.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_PDBPARSER_PDB_UTILS_H
+ #define RETDEC_PDBPARSER_PDB_UTILS_H
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ #include <vector>
+diff --git a/include/retdec/utils/conversion.h b/include/retdec/utils/conversion.h
+index 371e8c9..e34b27b 100644
+--- a/include/retdec/utils/conversion.h
++++ b/include/retdec/utils/conversion.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_UTILS_CONVERSION_H
+ #define RETDEC_UTILS_CONVERSION_H
+ 
++#include <cstdint>
+ #include <iomanip>
+ #include <ios>
+ #include <limits>
+diff --git a/include/retdec/utils/file_io.h b/include/retdec/utils/file_io.h
+index ff9ca0d..b4d61f8 100644
+--- a/include/retdec/utils/file_io.h
++++ b/include/retdec/utils/file_io.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_UTILS_FILE_IO_H
+ #define RETDEC_UTILS_FILE_IO_H
+ 
++#include <cstdint>
+ #include <fstream>
+ #include <vector>
+ 
+diff --git a/include/retdec/utils/string.h b/include/retdec/utils/string.h
+index 7461889..2eb9d77 100644
+--- a/include/retdec/utils/string.h
++++ b/include/retdec/utils/string.h
+@@ -8,6 +8,7 @@
+ #define RETDEC_UTILS_STRING_H
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <limits>
+ #include <map>
+ #include <string>
+diff --git a/include/retdec/yaracpp/yara_meta.h b/include/retdec/yaracpp/yara_meta.h
+index 8084064..1589c2d 100644
+--- a/include/retdec/yaracpp/yara_meta.h
++++ b/include/retdec/yaracpp/yara_meta.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_YARACPP_YARA_META_H
+ #define RETDEC_YARACPP_YARA_META_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace retdec {
+diff --git a/src/fileinfo/file_information/file_information_types/elf_core.h b/src/fileinfo/file_information/file_information_types/elf_core.h
+index 19a262e..0170bd0 100644
+--- a/src/fileinfo/file_information/file_information_types/elf_core.h
++++ b/src/fileinfo/file_information/file_information_types/elf_core.h
+@@ -7,6 +7,7 @@
+ #ifndef FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_ELF_CORE_H
+ #define FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_ELF_CORE_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+diff --git a/src/pat2yara/logic.h b/src/pat2yara/logic.h
+index 737c5e5..de603c5 100644
+--- a/src/pat2yara/logic.h
++++ b/src/pat2yara/logic.h
+@@ -7,6 +7,7 @@
+ #ifndef PAT2YARA_LOGIC_H
+ #define PAT2YARA_LOGIC_H
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ 
+diff --git a/src/unpackertool/arg_handler.h b/src/unpackertool/arg_handler.h
+index ae3a884..2ca0c4a 100644
+--- a/src/unpackertool/arg_handler.h
++++ b/src/unpackertool/arg_handler.h
+@@ -7,6 +7,7 @@
+ #ifndef UNPACKERTOOL_ARG_HANDLER_H
+ #define UNPACKERTOOL_ARG_HANDLER_H
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ #include <vector>
