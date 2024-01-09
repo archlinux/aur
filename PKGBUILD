@@ -2,11 +2,12 @@
 _pkgname='matrix-authentication-service'
 pkgname="$_pkgname-git"
 pkgver=r2156.ba95dd02
-pkgrel=1
+pkgrel=2
 pkgdesc='Authentication service for Matrix Synapse'
 arch=('x86_64')
 url="https://github.com/matrix-org/$_pkgname"
 license=('AGPL3')
+install="$_pkgname.install"
 provides=('mas-cli')
 depends=()
 makedepends=(
@@ -45,6 +46,7 @@ package() {
   install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
   install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
   cd "$_pkgname"
+  install -vd "$pkgdir/etc/$_pkgname"
   install -vd "$pkgdir/usr/share/$_pkgname/frontend"
   install -vd "$pkgdir/usr/share/$_pkgname/templates"
   install -vd "$pkgdir/usr/share/$_pkgname/translations"
