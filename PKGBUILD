@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=paws.common
-_pkgver=0.6.4
+_pkgver=0.7.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Paws Low-Level Amazon Web Services API"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(Apache)
 depends=(
   pandoc
@@ -32,12 +32,12 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8a1afe269d2fcd82ed34d090baa5f1e6')
-sha256sums=('7d5fe8e72eb3f093f1fd3339049912cc5419198b7ef85817ebaa8e9925e5efdf')
+md5sums=('265db5ec7d08f7795d7b364b942ca358')
+b2sums=('2a7637530fb3589ddd2921b795171ae3278b00ce1ec237ebdb0ff66626df45e1f9c1871c57053ca3796a73e829162cd4092fea45137a79edb91e5282d14553fb')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
