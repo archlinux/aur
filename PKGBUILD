@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=unmarked
-_pkgver=1.3.2
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
-pkgver=1.3.2
-pkgrel=3
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='Models for Data from Unmarked Animals'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a1d21619c8627419e09646cc12e09457c0ea8989caf2e674d032e59b310cf883')
+sha256sums=('1c277248ad00122f404aabd0f0bbdeaf1cd69c58b65faaf23e36ee39f1e750c7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
