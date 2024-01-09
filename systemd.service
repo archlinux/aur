@@ -1,0 +1,18 @@
+[Unit]
+Description=Matrix authentication service
+After=network.target
+
+[Service]
+User=mas
+WorkingDirectory=/usr/share/matrix-authentication-service
+ExecStart=/usr/bin/mas-cli server --migrate
+Restart=on-failure
+
+# Hardening
+ProtectSystem=yes
+PrivateTmp=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

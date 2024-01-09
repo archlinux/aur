@@ -1,0 +1,12 @@
+post_install() {
+  cat << EOF
+  ==> Generate the config.yaml, including secrets:
+  # mas-cli config generate /etc/matrix-authentication-service/config.yaml
+  ==> update the configuration as per the documentation
+  # https://matrix-org.github.io/matrix-authentication-service/index.html
+  ==> sync the config changes
+  # mas-cli config sync --prune
+  ==> start and enable the service
+  # systemctl enable --now matrix-authentication-service
+EOF
+}
