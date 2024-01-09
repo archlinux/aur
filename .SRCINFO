@@ -1,7 +1,7 @@
 pkgbase = powerline-shell-git
 	pkgdesc = A pretty prompt for your shell
 	pkgver = r588.4b19aa4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/b-ryan/powerline-shell
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = powerline-shell-git
 	makedepends = python-setuptools
 	depends = python
 	provides = powerline-shell
+	conflicts = powerline-shell
 	source = git+http://github.com/b-ryan/powerline-shell.git
 	md5sums = SKIP
 

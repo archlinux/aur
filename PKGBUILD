@@ -4,13 +4,14 @@
 pkgname="powerline-shell-git"
 _pkgname="powerline-shell"
 pkgver=r588.4b19aa4
-pkgrel=1
+pkgrel=2
 pkgdesc="A pretty prompt for your shell"
 arch=("any")
 _giturl="://github.com/b-ryan/powerline-shell"
 url="https${_giturl}"
 license=("MIT")
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=("python")
 makedepends=(
   "git" "python-setuptools"
