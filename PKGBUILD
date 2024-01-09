@@ -4,10 +4,11 @@ _name=${pkgname#python-}
 pkgver=0.6.7
 pkgrel=2
 pkgdesc="Control utilities for the ODrive high performance motor controller"
+url="https://pypi.org/project/odrive/"
 arch=('any')
 license=('MIT')
 depends=('python-aiohttp' 'python-appdirs' 'ipython' 'python-pyelftools' 'python-pyusb' 'python-setuptools')
-makedepends=(python-installer)
+makedepends=('python-installer')
 optdepends=('python-matplotlib: required to run the liveplotter')
 
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl"
