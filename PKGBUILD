@@ -27,6 +27,7 @@ build() {
   version=$(git describe --long --tags | awk -F'[+_~-]' '{print $1}')
   cmake \
     -GNinja \
+    -DMKSPECS_INSTALL_DIR=lib/qt6/mkspecs/modules \
     -DBUILD_DOCS=OFF \
     -DBUILD_EXAMPLES=OFF \
     -DQCH_INSTALL_DESTINATION=share/doc/qt6 \
@@ -36,6 +37,7 @@ build() {
     -DD_DSG_APP_DATA_FALLBACK=/var/dsg/appdata \
     -DBUILD_WITH_SYSTEMD=ON \
     -DDTK_VERSION=$version
+
   ninja
 }
 
