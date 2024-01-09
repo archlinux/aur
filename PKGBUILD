@@ -1,4 +1,5 @@
 # Maintainer: rdb <me@rdb.name>
+# Maintainer: Mitchell Stokes <mogurijin at gmail dot com>
 # Contributor: Andy Mender <andymenderunix@gmail.com>
 # Contributor: Jose Riha <jose 1711 gmail com>
 # Contributor: David Radford <croxis gmail com>
@@ -6,7 +7,7 @@
 # Contributor: Tucos <baspape@gmail.com>
 
 pkgname=panda3d
-pkgver=1.10.13
+pkgver=1.10.14
 pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="https://www.panda3d.org"
@@ -56,9 +57,9 @@ optdepends=(# Recommended
 install='panda3d.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://www.panda3d.org/download/panda3d-$pkgver/panda3d-$pkgver.tar.gz"
         'panda3d.install')
-md5sums=('5fc8c23844b4c44b14553bdfe582ffbf'
+md5sums=('7973b3fce90d63f054594dae9a3c738b'
          '057269173f3c1987953302519bc744fa')
-sha256sums=('b865882d8cbb44e7a9b1e030ecc071e689391644eb68b0d8ed78b970e8d4d2c7'
+sha256sums=('3ff568db545102f87d3e1191ba6a2f3cdc97ff2f62056973cf354743dd880591'
             'e67aaaf6e2e9b0ac56444e5a3c8140a5d1e311d356d937fa161ca9b863a3bb0f')
 
 JOBS=$(nproc)
