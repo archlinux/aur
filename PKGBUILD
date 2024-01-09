@@ -1,18 +1,18 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqmagick
-_pkgver=0.1.6
+_pkgver=0.1.7
 pkgname=r-${_pkgname,,}
-pkgver=0.1.6
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Sequence Manipulation Utilities'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="Sequence Manipulation Utilities"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(Artistic2.0)
 depends=(
-  r
   r-biostrings
   r-magrittr
+  r-yulab.utils
 )
 optdepends=(
   r-downloader
@@ -26,14 +26,15 @@ optdepends=(
   r-rsamtools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4f872c7b3f39e5b21a5820478102e0b39ecf5d7e2a12dfba263568ab250ab1f5')
+md5sums=('e2923b561cb82289ef07e4016f7376ad')
+b2sums=('e1f23726164157cc14cc1cda6df6ea6932cc8aea3474cedb79b44ede34c3ce2254eb53f4f3d6982803ceedb680c6993735b569a0279e586f319603b45b5142d9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
