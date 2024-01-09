@@ -1,0 +1,13 @@
+pkgbase = termux-setup-pacman-git
+	pkgdesc = Script to setup a pacman environment on Termux.
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/themartiancompany/termux-setup-pacman
+	arch = any
+	license = AGPL3
+	checkdepends = shellcheck
+	makedepends = git
+	source = termux-setup-pacman-git::git+https://github.com/themartiancompany/termux-setup-pacman.git
+	sha256sums = SKIP
+
+pkgname = termux-setup-pacman-git
