@@ -1,0 +1,13 @@
+pkgbase = arteixo-sans
+	pkgdesc = Tipografía corporativa del Concello de Arteixo
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://arteixo.org/informacion/identidade-corporativa/
+	arch = any
+	license = custom:unknown
+	source = https://arteixo.org/logotipos/arteixo-sans.zip
+	b2sums = cdfae0bbf1b30f90960a1411a2c4efc29043d4d03d43613500904fb7b848d2982160ab60fa8e879548acb75b0f45a21fd52ed2aa385b8ec0efe8029c8a1f5a11
+
+pkgname = otf-arteixo-sans
+
+pkgname = ttf-arteixo-sans
