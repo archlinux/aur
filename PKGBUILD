@@ -3,7 +3,7 @@
 pkgname=msdfgen-git2
 pkgver=1.11.r2.g2357140
 pkgrel=1
-pkgdesc="Multi-channel signed distance field generator"
+pkgdesc="Multi-channel signed distance field generator binary and library"
 url=https://github.com/Chlumsky/msdfgen
 arch=(x86_64)
 license=(MIT)
@@ -34,5 +34,5 @@ package()
 {
 	cd $pkgname/
 	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	cmake --install build --prefix $pkgdir/usr
+	DESTDIR="$pkgdir" cmake --install build
 }
