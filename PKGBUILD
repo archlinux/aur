@@ -9,14 +9,14 @@
 
 PKGEXT='.pkg.tar'
 _pkgname=android-studio
-_beta=1
 pkgname="${_pkgname}-beta"
 pkgver=2023.2.1.19
-pkgrel=1
+pkgrel=2
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
 license=('APACHE')
+makedepends=('zip')
 depends=(
   'fontconfig'
   'freetype2'
@@ -57,18 +57,14 @@ if [ "${CARCH}" = "i686" ]; then
 fi
 
 build() {
-  if [[ "${_beta}" -eq 0 ]]; then return 0; fi
-
   cd "${_pkgname}"
 
   # Change the product name to produce a unique WM_CLASS attribute
-  mkdir -p _resources
-  bsdtar -xf lib/resources.jar -C _resources
-  pushd _resources
-  sed "s/\"Studio\"/\"Studio Beta\"/" -i idea/AndroidStudioApplicationInfo.xml
-  bsdtar -acf ../lib/resources.jar .
-  popd
-  rm -r _resources
+  mkdir -p idea
+  bsdtar -Oxf lib/resources.jar idea/AndroidStudioApplicationInfo.xml \
+    | sed "s/\"Studio\"/\"Studio Beta\"/" > idea/AndroidStudioApplicationInfo.xml
+  zip -r lib/resources.jar idea
+  rm -r idea
 }
 
 package() {
