@@ -1,7 +1,7 @@
 #!/bin/bash
 # script: iptvorg-epg (https://github.com/iptv-org/epg)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 03/12/2023
+# rev.date: 09/01/2024
 
 # Variables
 EPG_USR=$(whoami)
@@ -9,7 +9,6 @@ EPG_EXE=$(basename $0)
 EPG_USR_HOME=$(getent passwd "$EPG_USR" | cut -d: -f6)
 EPG_SOURCE='/usr/share/iptvorg-epg'
 EPG_SITESTAT='https://raw.githubusercontent.com/iptv-org/epg/master/SITES.md'
-EPG_UPD_SITES='https://github.com/iptv-org/epg/trunk/sites'
 EPG_OUTPUT='guide.xml'
 EPG_CMD="npm run grab -- "
 EPG_VER="2023.12.1"
@@ -17,7 +16,7 @@ EPG_VER="2023.12.1"
 # Functions
 checkReq() {
 # Check all requirements
-local packages=(python libxml2 nodejs npm subversion)
+local packages=(python libxml2 nodejs npm)
 for p in ${packages[@]}; do
 	if ! pacman -Qs ${p} > /dev/null; then
 		echo "'${p}' package is not installed. Exiting."
@@ -42,19 +41,6 @@ if [ ! -d "$EPG_CFGDIR" ]; then
 	mkdir -p "$EPG_CFGDIR"
 	cp "$EPG_SOURCE/my.channels.xml" "$EPG_CFGDIR"
 	bsdtar --strip-components=1 -xzf "$EPG_SOURCE/epg-$EPG_VER.tgz" -C "$EPG_CFGDIR"
-fi
-}
-
-updateSites() {
-EPG_CFGDIR=$(realpath ${custom_dir} 2>/dev/null)
-if [[ -d "$EPG_CFGDIR/sites" ]] && [[ ! -z "$EPG_CFGDIR" ]]; then
-	echo ":: Starting update of '$EPG_CFGDIR/sites' to latest version."
-	cd "$EPG_CFGDIR"
-	svn checkout $EPG_UPD_SITES
-	exit
-else
-	echo "Missing 'sites' directory, exiting."
-	exit 1
 fi
 }
 
@@ -138,7 +124,6 @@ Options:
   --days <days>                 Override the number of days for which the program will be loaded
                                 (defaults to the value from the site config)
   --gzip                        Create a compressed version of the guide as well (default: false)
-  -u, --update                  Update iptvorg-epg home directory sites to latest version
   -ps, --printsites             Show site name and status of all available sites
   -h, --help                    Show help\n'
 
@@ -192,10 +177,6 @@ do
 			;;
 		--gzip)
 			gzip_on=1
-			;;
-		-u|--update)
-			checkReq
-			updateSites
 			;;
 		-h|--help)
 			helpMsg
