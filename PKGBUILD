@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=certbot-dns-ovh
-pkgver=2.7.4
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='OVH DNS Authenticator plugin for Certbot'
 arch=('any')
@@ -23,7 +23,7 @@ checkdepends=('python-pytest')
 # git repository is used because certbot is a huge monorepo and it's easier to
 # share the entire repository across all certbot related packages than a few
 # hundred tarballs.
-_commit='b62133e3e19367b82b5fde3d5f5ad97e6ced5447'
+_commit='e9225d1cc27345e65df40a624be188cd02976768'
 _repo='github.com-certbot-certbot'
 source=("$_repo::git+https://github.com/certbot/certbot#commit=$_commit")
 b2sums=('SKIP')
