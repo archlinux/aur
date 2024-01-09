@@ -3,7 +3,7 @@
 pkgname=python-instructor
 _name=${pkgname#python-}
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
 url="https://github.com/jxnl/instructor"

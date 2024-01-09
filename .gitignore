@@ -2,4 +2,3 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!remove-build-dependencies-cmake-ninja.patch

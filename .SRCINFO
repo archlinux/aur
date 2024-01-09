@@ -1,7 +1,7 @@
 pkgbase = python-instructor
 	pkgdesc = Structured outputs for LLMs
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jxnl/instructor
 	arch = any
 	license = MIT
