@@ -10,7 +10,6 @@ Group=postgres
 
 Environment=PGROOT=/var/lib/postgres
 Environment=PATH=/opt/$pkgbase/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-Environment=LD_LIBRARY_PATH=/opt/$pkgbase/lib
 
 SyslogIdentifier=postgres
 PIDFile=/var/lib/postgres/data$_majorver/postmaster.pid

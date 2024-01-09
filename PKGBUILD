@@ -4,7 +4,7 @@ pkgbase=postgresql16
 pkgver=16.1
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=7
+pkgrel=8
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
 sha256sums=('ce3c4d85d19b0121fe0d3f8ef1fa601f71989e86f8a66f7dc3ad546dd5564fec'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
-            'fe19a0f68a9f10435fe09efbe7407de8cbe9bf16686d63524778e90dad67f863'
+            '1b10acff7b5f80ea39c6c122569cd461a12cf90114b777ad46d438447c5c5774'
             '7d2e8243a2c024a57489276bbf8945eb8a1b8762448732d432c56911577f8756'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             'fddc68565151077b4f514345087c38ca069d049b8a17dbf7eef2826f49ccbc7b'
@@ -64,6 +64,8 @@ build() {
 
   # Fix static libs (will not link if not set)
   CFLAGS+=" -ffat-lto-objects"
+  # Add RUNPATH to locate libraries
+  LDFLAGS+=",-rpath,/opt/${pkgbase}/lib"
 
   # build
   # see bug 17943, which requires llvm15/clang15 instead of current version 16: https://www.postgresql.org/message-id/17943-56bb8c6bd4409b9f%40postgresql.org
