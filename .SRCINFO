@@ -1,7 +1,7 @@
 pkgbase = matrix-authentication-service-git
 	pkgdesc = Authentication service for Matrix Synapse
 	pkgver = r2156.ba95dd02
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/matrix-org/matrix-authentication-service
 	install = matrix-authentication-service.install
 	arch = x86_64
