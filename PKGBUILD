@@ -2,7 +2,8 @@
 pkgname=panwriter-bin
 _pkgname=PanWriter
 pkgver=0.8.6
-pkgrel=2
+_electronversion=26
+pkgrel=3
 pkgdesc="Markdown editor with pandoc integration and paginated preview."
 arch=('x86_64')
 url="https://panwriter.com/"
@@ -11,13 +12,10 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron26'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    "electron${_electronversion}"
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -27,11 +25,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('263027d6093ffb9bbac7ca707790b191c1057d35377a448c991735fe48dbc39a'
-            '101f7e653dc83cb0b69d663b4a528df35469bb6264496534d18fd668f2390b9c')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
