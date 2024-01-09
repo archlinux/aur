@@ -1,7 +1,7 @@
 # Maintainer: ab5_x <lxl66566@gmail.com>
 
 pkgname=tdl-bin
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="A Telegram downloader/tools written in Golang"
 arch=("x86_64" "aarch64" "armv7h")
