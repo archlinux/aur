@@ -11,14 +11,14 @@
 
 _qt_module=qttranslations
 pkgname=mingw-w64-qt5-translations
-pkgver=5.15.11
+pkgver=5.15.12
 pkgrel=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (translations, mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-tools')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=56065158ffc4cd0fd78f9edf4b21b77b969f8dbb
+_commit=f7745c117041e7adf9705e1de8d71086c160dd9f
 _basever=${pkgver%%+*}
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
