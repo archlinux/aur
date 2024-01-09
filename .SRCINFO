@@ -1,6 +1,6 @@
 pkgbase = r-rnetcdf
 	pkgdesc = Interface to 'NetCDF' Datasets
-	pkgver = 2.8.1
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RNetCDF
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = r-rnetcdf
 	depends = r
 	depends = udunits
 	optdepends = r-bit64
-	source = https://cran.r-project.org/src/contrib/RNetCDF_2.8-1.tar.gz
-	md5sums = 43e3fbb2fb1f0e90adf31c246fa0fccf
-	sha256sums = 660148cb7e272859145de4da64f57ec959110bd6863af67f44ebf36fc5a7513e
+	source = https://cran.r-project.org/src/contrib/RNetCDF_2.9-1.tar.gz
+	md5sums = ad7be84de579f8527241b4f08bd36117
+	b2sums = 196d30a11478056f3ccd13fa7ea74e7714bc9a08974416877614e8ec8441db1171e3f56961367daf034d9ab5aa679b4ee8dbd38a7fd06c6745a9a688c64cac81
 
 pkgname = r-rnetcdf
