@@ -6,7 +6,7 @@ pkgbase = keepass-natmsg
 	arch = any
 	license = GPL3
 	depends = keepass
-	source = https://github.com/smorks/keepassnatmsg/releases/download/v2.0.17/KeePassNatMsg.plgx
+	source = KeePassNatMsg-2.0.17.plgx::https://github.com/smorks/keepassnatmsg/releases/download/v2.0.17/KeePassNatMsg.plgx
 	sha256sums = 921e4fa9864e4ecdfb28ff6e9a84c9af78c8df8ef42a5bb373bffe55304f2e65
 
 pkgname = keepass-natmsg
