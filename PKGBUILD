@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 _pkgname=aiohttp-zlib-ng
 pkgname=python-aiohttp-zlib-ng
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Enable zlib_ng on aiohttp"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('python-aiohttp' 'python-isal')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-cov')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ea9268ed926e4d8b44bfe5e367af44f0134ee9b939a5ef0e91506f1897a0d4b8')
+sha256sums=('1d1992c118d891127e8f76083bd569c23c89311499a409bd1d707387dab8c492')
 
 build() {
 	cd "$_pkgname-$pkgver"
