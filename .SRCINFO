@@ -1,7 +1,7 @@
 pkgbase = kdsoap
 	pkgdesc = Qt-based client-side and server-side SOAP component
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/KDAB/KDSoap
 	arch = x86_64
 	license = GPL3
@@ -12,10 +12,10 @@ pkgbase = kdsoap
 	makedepends = qt6-base
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/KDAB/KDSoap/releases/download/kdsoap-2.1.1/kdsoap-2.1.1.tar.gz
-	source = https://github.com/KDAB/KDSoap/releases/download/kdsoap-2.1.1/kdsoap-2.1.1.tar.gz.asc
+	source = https://github.com/KDAB/KDSoap/releases/download/kdsoap-2.2.0/kdsoap-2.2.0.tar.gz
+	source = https://github.com/KDAB/KDSoap/releases/download/kdsoap-2.2.0/kdsoap-2.2.0.tar.gz.asc
 	validpgpkeys = E86C000370B1B9E2A9191AD53DBFB6882C9358FB
-	sha256sums = aed57f6b200ddf762f5d2898f7e9228dd0700881c4491aefe4006f7fa5f5c627
+	sha256sums = d9ef11948442197c9fa44bd6fbadc842b7280a60dfc40577af66fded637af356
 	sha256sums = SKIP
 
 pkgname = kdsoap-qt5
