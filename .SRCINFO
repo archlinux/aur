@@ -1,6 +1,6 @@
 pkgbase = 1oom-git
 	pkgdesc = 1oom is a Master of Orion (1993) game engine recreation.
-	pkgver = r1047.813ab8df
+	pkgver = r1003.6fcbd409
 	pkgrel = 1
 	url = https://github.com/1oom-fork/1oom
 	arch = x86_64
