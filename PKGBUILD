@@ -1,29 +1,27 @@
-# Maintainer: Shawn Fisher <fishbot@gmail.com>
+# Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
+# Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
-pkgname=opennhrp
-pkgver=0.14
-pkgrel=1
+pkgname='opennhrp'
+pkgver='0.14.1'
+pkgrel='1'
 pkgdesc="An opensource NHRP implementation"
-arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/opennhrp/"
-license=('custom')
+arch=('x86_64' 'aarch64')
+url="https://sourceforge.net/projects/${pkgname}"
+license=('MIT')
 depends=('linux>=3.7.4-1' 'bash' 'c-ares')
-source=("http://downloads.sourceforge.net/project/opennhrp/opennhrp/$pkgname-$pkgver.tar.bz2"
-        'MIT-LICENSE.txt')
-md5sums=('62e8f16dd3bdf0600e43fcb37aa40462'
-         'fcde66d6d3a34d2a5c48fcef0b0be04c')
+backup=("etc/${pkgname}/${pkgname}.conf")
+source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('1517d53d688ffc165a1da20c344d96b4c53e60f34bd73c64e60cb67cfca4e9ab')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
-  make
+  make SBINDIR="/usr/bin"
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 "$srcdir/MIT-LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE.txt"
+  make DESTDIR="${pkgdir}" install
+  install -Dm0644 "MIT-LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
-
-# vim:set ts=2 sw=2 et:
