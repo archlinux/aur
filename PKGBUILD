@@ -3,8 +3,9 @@ _pkgname=danmoshui
 pkgname="deepin-wine-${_pkgname}"
 _sparkname="com.${_pkgname}.spark"
 _zhsname="淡墨水字帖"
+_bottlename="Deepin-${_pkgname}"
 pkgver=0.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="DanMoShui Calligraphy on deepin wine 6.基于Deepin Wine 6的淡墨水字帖PC版。"
 arch=("x86_64")
 url="https://danmoshui.com"
@@ -21,13 +22,21 @@ depends=(
 install="${pkgname}.install"
 source=(
     "${pkgname}-${pkgver}.deb::${_downurl}/office/${_sparkname}/${_sparkname}_${pkgver}spark0_amd64.deb"
-    "LICENSE::${url}/privacy_policy"
+    "LICENSE-${pkgver}::${url}/privacy_policy"
+    "${pkgname}.install"
     "${pkgname}.sh"
 )
 sha256sums=('8e2e1d90abf308a5f7eb105db2abb684d4b39955ce4fe3c4b09b2722eeb37f0f'
-            'e984edcbcf35bb47fb35eb8f618b49a0c8e9dff561df32d65a1efab2af33a756'
-            'e557286963f29a1a61c8b58d33e529535dcb2c97ecca98c1d33f773338884ccf')
+            'bd406f5d41584e0234c580d53462045843b5670467568d1478042499f864dc87'
+            '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
+            '814a386e20b951dab769ebf1bb35def9e4588909d70f07d61d2c68a4da326556')
 build() {
+    sed "s|@bottlename@|${_bottlename}|g" -i "${srcdir}/${pkgname}.install"
+    sed -e "s|@bottlename@|${_bottlename}|g" \
+        -e "s|@pkgver@|${pkgver}|g" \
+        -e "s|@runname@|${_zhsname}|g" \
+        -e "s|@pkgname@|${pkgname}|g" \
+        -i "${srcdir}/${pkgname}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     mv "${srcdir}/opt/apps/${_sparkname}" "${srcdir}/opt/apps/${pkgname}"
     sed "s|\"/opt/apps/${_sparkname}/files/run.sh\"|${pkgname}|g;s|${_sparkname}|${pkgname}|g" \
@@ -38,5 +47,5 @@ package() {
     cp -r "${srcdir}/opt" "${pkgdir}"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_sparkname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${_sparkname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

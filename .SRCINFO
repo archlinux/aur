@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-danmoshui
 	pkgdesc = DanMoShui Calligraphy on deepin wine 6.基于Deepin Wine 6的淡墨水字帖PC版。
 	pkgver = 0.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://danmoshui.com
 	install = deepin-wine-danmoshui.install
 	arch = x86_64
@@ -13,10 +13,12 @@ pkgbase = deepin-wine-danmoshui
 	provides = danmoshui
 	conflicts = danmoshui
 	source = deepin-wine-danmoshui-0.0.6.deb::https://d.store.deepinos.org.cn/store/office/com.danmoshui.spark/com.danmoshui.spark_0.0.6spark0_amd64.deb
-	source = LICENSE::https://danmoshui.com/privacy_policy
+	source = LICENSE-0.0.6::https://danmoshui.com/privacy_policy
+	source = deepin-wine-danmoshui.install
 	source = deepin-wine-danmoshui.sh
 	sha256sums = 8e2e1d90abf308a5f7eb105db2abb684d4b39955ce4fe3c4b09b2722eeb37f0f
-	sha256sums = e984edcbcf35bb47fb35eb8f618b49a0c8e9dff561df32d65a1efab2af33a756
-	sha256sums = e557286963f29a1a61c8b58d33e529535dcb2c97ecca98c1d33f773338884ccf
+	sha256sums = bd406f5d41584e0234c580d53462045843b5670467568d1478042499f864dc87
+	sha256sums = 9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201
+	sha256sums = 814a386e20b951dab769ebf1bb35def9e4588909d70f07d61d2c68a4da326556
 
 pkgname = deepin-wine-danmoshui
