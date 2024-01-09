@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("pgburst")
 conflicts=("pgburst")
 source=("https://github.com/Jakubzik/pgburst/releases/download/v$pkgver/pgburst-$pkgver-x86_64.tar.gz")
-sha256sums=("28541182493dab961a9203e7ba2debe989d3b3bb43033680c8bf3d9117383875")
+sha256sums=("68fef9ee72ab962634547625f44c97003c5231c21e3c8ec87af5660b4fa9de71")
 
 package() {
     install -Dm755 pgburst -t "$pkgdir/usr/bin"
