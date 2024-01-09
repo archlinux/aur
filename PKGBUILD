@@ -3,44 +3,45 @@
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('x86_64')
 url="https://gitlab.com/coolercontrol/coolercontrol"
 license=('GPL3')
 depends=(
-  'hicolor-icon-theme'
-  'python'
-  'liquidctl'
-  'python-setproctitle'
-  'python-fastapi'
-  'uvicorn'
   'gcc-libs'
   'glibc'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libappindicator-gtk3'
+  'liquidctl'
+  'python'
+  'python-setproctitle'
+  'python-fastapi'
   'python-pydantic'
   'python-urllib3'
+  'uvicorn'
   'webkit2gtk'
-  'gtk3'
-  'libappindicator-gtk3'
 )
 makedepends=(
-  'python-build'
-  'python-wheel'
-  'python-installer'
-  'cargo'
-  'npm'
-  'nvm'
-  'webkit2gtk'
-  'base-devel'
-  'curl'
-  'wget'
-  'file'
-  'openssl'
   'appmenu-gtk-module'
+  'base-devel'
+  'cargo'
+  'curl'
+  'file'
   'gtk3'
   'libappindicator-gtk3'
   'librsvg'
   'libvips'
+  'nodejs>=18'
+  'npm'
+  'openssl'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+  'webkit2gtk'
+  'wget'
 )
 checkdepends=(
   'appstream-glib'
@@ -66,29 +67,10 @@ sha256sums=(
   '3377dbd54f7d506a95e53d6d0aa323af94191067479d2eca5b45d34065a1c265'
 )
 
-_ensure_local_nvm() {
-  # let's be sure we are starting clean
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-
-  export NVM_DIR="${srcdir}/$pkgname-$pkgver/coolercontrol-ui/.nvm"
-  # The init script returns 3 if version specified
-  # in ./.nvrc is not (yet) installed in $NVM_DIR
-  # but nvm itself still gets loaded ok
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
-
-prepare() {
-  _ensure_local_nvm
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-ui"
-  nvm install 18.18.2
-}
-
 build() {
   cd "${srcdir}/$pkgname-$pkgver/coolercontrol-liqctld"
   python -m build --wheel --no-isolation
-  # This is the new UI in preview. The above Python coolercontrol-gui package will be removed with the next release
   cd "${srcdir}/$pkgname-$pkgver/coolercontrol-ui"
-  _ensure_local_nvm
   npm ci
   npm run build
   cp -r dist/* "${srcdir}/$pkgname-$pkgver/coolercontrold/resources/app/"
