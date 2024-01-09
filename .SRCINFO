@@ -1,0 +1,16 @@
+pkgbase = python-lineax
+	pkgdesc = Linear solvers in JAX and Equinox
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/google/lineax
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python-equinox
+	source = lineax-0.0.4.tar.gz::https://github.com/google/lineax/archive/v0.0.4.tar.gz
+	sha512sums = 27129eb04fd1ab41f50b07fc18f91040d86419d67901fba23bd66221fabd659d5f47a90f35dfd387b09ba71ca4f0062bf9a4e4b0cfa252ec5d523e87321e53d8
+
+pkgname = python-lineax
