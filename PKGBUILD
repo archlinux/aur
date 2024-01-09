@@ -1,7 +1,7 @@
 # Maintainer: Kars Wang <jaklsy AT gmail.com>
 
 pkgname='perl-archive-tar-wrapper'
-pkgver=0.23
+pkgver=0.38
 pkgrel=1
 pkgdesc="API wrapper around the 'tar' utility"
 _dist='Archive-Tar-Wrapper'
@@ -13,8 +13,8 @@ checkdepends=()
 makedepends=('perl-extutils-makemaker>=0')
 provides=()
 options=('!emptydirs' 'purge')
-source=("http://search.cpan.org/CPAN/authors/id/M/MS/MSCHILLI/$_dist-$pkgver.tar.gz")
-sha256sums=('4c02393a513619e123cff5f6bd3021b64b3e3146fac9dc2da02329de440674fa')
+source=("http://search.cpan.org/CPAN/authors/id/A/AR/ARFREITAS/$_dist-$pkgver.tar.gz")
+sha256sums=('19f3d0daa8b95cffb68c704350dd0674a23e1d2f14d032903b7e9609edb7b37a')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"
