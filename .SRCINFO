@@ -1,0 +1,14 @@
+pkgbase = synthesis
+	pkgdesc = Robot simulation software by Autodesk
+	pkgver = 6.1.0
+	pkgrel = 1
+	url = https://github.com/Autodesk/synthesis
+	arch = x86_64
+	license = Apache-2.0
+	depends = zlib
+	noextract = synthesis-6.1.0.AppImage
+	options = !strip
+	source_x86_64 = synthesis-6.1.0.AppImage::https://github.com/Autodesk/synthesis/releases/download/v.6.1.0/SynthesisLinux6.1.AppImage
+	sha256sums_x86_64 = d9e4a93fe65e5279de6eecfa59e33a44b839024072532ff06336933c7269aec4
+
+pkgname = synthesis
