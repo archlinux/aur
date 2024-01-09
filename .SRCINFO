@@ -1,12 +1,12 @@
 pkgbase = xremap-hypr-bin
 	pkgdesc = Dynamic key remapper for X11 and Wayland
-	pkgver = 0.8.13
+	pkgver = 0.8.14
 	pkgrel = 1
 	url = https://github.com/k0kubun/xremap
 	arch = x86_64
 	license = MIT
 	provides = xremap
-	source_x86_64 = xremap-hypr-bin-0.8.13.zip::https://github.com/k0kubun/xremap/releases/download/v0.8.13/xremap-linux-x86_64-hypr.zip
-	sha256sums_x86_64 = 4eec4b61d98587f3893870929ae1eb771174279ee409840f9134e1b8026c02a4
+	source_x86_64 = xremap-hypr-bin-0.8.14.zip::https://github.com/k0kubun/xremap/releases/download/v0.8.14/xremap-linux-x86_64-hypr.zip
+	sha256sums_x86_64 = 339559d326b539bcbd7ddab275eca11b2df3b524c78d96a88934fe2d929b4df4
 
 pkgname = xremap-hypr-bin
