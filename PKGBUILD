@@ -3,10 +3,11 @@
 
 pkgname=killwine
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A shell script for killing Wine and Proton processes"
 url="https://github.com/begin-theadventure/killwine"
 arch=('any')
+depends=('wine')
 source=("killwine.sh")
 sha256sums=('373d80b5fb442ffc310f7934ef4256e6faaebbb6b860eabc44d4a77eab8303b4')
 
