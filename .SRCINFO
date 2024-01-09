@@ -1,6 +1,6 @@
 pkgbase = pascha-gui-git
 	pkgdesc = A simple GUI program to calculate and display the date of Pascha (Easter)
-	pkgver = 1.0.r0.g317a7d9
+	pkgver = 1.0.r1.gfee7669
 	pkgrel = 1
 	url = https://gitlab.com/cmmescher/pascha-gui.git
 	arch = any
