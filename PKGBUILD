@@ -1,34 +1,29 @@
+# Maintainer: VVL <v@minakov.pro>
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=pomerium-bin
-pkgver=0.19.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='Identity-aware access proxy'
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url='https://github.com/pomerium/pomerium'
 license=('Apache')
 provides=('pomerium')
 conflicts=('pomerium')
 backup=('etc/pomerium/config.yaml')
 optdepends=('pomerium-cli: CLI component for interacting with server')
-source=('pomerium.sysusers')
-source_x86_64=("pomerium-server-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/pomerium_${pkgver}-1_amd64.deb")
-source_aarch64=("pomerium-server-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/pomerium_${pkgver}-1_arm64.deb")
-sha256sums=('36b44da89f922a8017d5b26ac6fd71215e4d82525d94161f999aba6e223fd111')
-sha256sums_x86_64=('f31f757349286d609869ad4e78b312b7aa12c2713bce8235c9d78146c418249c')
-sha256sums_aarch64=('2ac4b02eec42d608137093cde5b7799255a4020361784a150e67a1cff38c62b3')
+source=("pomerium.sysusers"
+        "https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium_${pkgver}-1_amd64.deb")
+sha512sums=('1e5e7656eb5db12e0c39759ca03c463291f25e90c385105381a0e69390e98ea262615b72db73115b3d99b06f94b657ae2302b56f100be2f93f90a438fdad6833'
+            '104a064264a795cdacfeb7a606c87a4e962a6a5f6dfcaf03e543d1ea507e5a20a7f1e33cd69080137e8fafc743186b00b9affb37ee1e85b59623e380074df588')
 
 prepare() {
-	mkdir -p dump
-	bsdtar xf data.tar.gz -C dump
+	tar -xf data.tar.gz
 }
 
 package() {
-	install -Dm644 pomerium.sysusers "$pkgdir/usr/lib/sysusers.d/pomerium.conf"
-
-	cd dump
-	install -D usr/sbin/pomerium -t "$pkgdir/usr/bin/"
-	install -Dm644 usr/lib/systemd/system/pomerium.service -t "$pkgdir/usr/lib/systemd/system/"
-	install -Dm644 etc/pomerium/config.yaml -t "$pkgdir/etc/pomerium/"
+	install -Dm 755 "${srcdir}/usr/sbin/pomerium" "$pkgdir/usr/bin/pomerium"
+	install -Dm 644 "${srcdir}/usr/lib/systemd/system/pomerium.service" "$pkgdir/usr/lib/systemd/system/pomerium.service"
+	install -Dm 644 "${srcdir}/pomerium.sysusers" "$pkgdir/usr/lib/sysusers.d/pomerium.conf"
+	install -Dm 644 "${srcdir}/etc/pomerium/config.yaml" "$pkgdir/etc/pomerium/config.yaml"
 }
