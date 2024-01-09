@@ -2,4 +2,3 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!hatch-ignore-vcs.patch
