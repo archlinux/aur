@@ -1,6 +1,6 @@
 pkgbase = noinputs-git
 	pkgdesc = A simple script to temporary disable input devices: a Wayland-compatible alternative to xinput.
-	pkgver = r1.6e066bf
+	pkgver = r2.828d447
 	pkgrel = 1
 	url = https://gitlab.com/S410/noinputs
 	arch = any

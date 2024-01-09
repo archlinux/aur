@@ -1,6 +1,6 @@
 # Maintainer: Sierra410 <(my nickname)@protonmail.com>
 pkgname='noinputs-git'
-pkgver=r1.6e066bf
+pkgver=r2.828d447
 pkgrel=1
 pkgdesc="A simple script to temporary disable input devices: a Wayland-compatible alternative to xinput."
 arch=('any')
@@ -14,6 +14,7 @@ md5sums=('SKIP')
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 noinputs.py "$pkgdir/usr/bin/noinputs"
+	install -Dm755 inhibit "$pkgdir/usr/lib/udev/inhibit"
 }
 
 pkgver() {
