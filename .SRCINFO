@@ -1,7 +1,7 @@
 pkgbase = python-visdom
 	pkgdesc = A flexible tool for creating, organizing, and sharing visualizations of live, rich data. Supports Torch and Numpy.
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/facebookresearch/visdom
 	arch = any
 	license = Apache
@@ -16,6 +16,7 @@ pkgbase = python-visdom
 	depends = python-requests
 	depends = python-scipy
 	depends = python-six
+	depends = python-tornado
 	depends = python-tqdm
 	depends = python-websocket-client
 	source = python-visdom-0.2.4.tar.gz::https://files.pythonhosted.org/packages/source/v/visdom/visdom-0.2.4.tar.gz
