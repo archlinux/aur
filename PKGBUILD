@@ -2,8 +2,8 @@
 
 pkgname=cromite-bin
 pkgver=120.0.6099.199
-pkgrel=1
-_cromite_commit='672a5061d34744482fcdd58ee4c9a5cf24acbd4b'
+pkgrel=2
+_cromite_commit='1a8486dc7019af8bf252528c7f390d0da612286a'
 _launcher_ver=8
 pkgdesc='Cromite a Bromite fork with ad blocking and privacy enhancements (binary release)'
 arch=(x86_64)
@@ -27,16 +27,16 @@ conflicts=('cromite')
 options=(!strip)
 source=(cromite.desktop
         cromite.png
-				https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz)
+        https://raw.githubusercontent.com/uazo/cromite/v${pkgver}-${_cromite_commit}/LICENSE
+        https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz)
 
-source_x86_64=(https://github.com/uazo/cromite/releases/download/v${pkgver}-${_cromite_commit}/chrome-lin64.tar.gz
-              https://raw.githubusercontent.com/uazo/cromite/v${pkgver}-${_cromite_commit}/LICENSE)
+source_x86_64=(https://github.com/uazo/cromite/releases/download/v${pkgver}-${_cromite_commit}/chrome-lin64.tar.gz)
 
 sha256sums=('3ddf5b02a7eb51047770c608e23a51d7f70baf7920146c61dfc8c9c653d4e89a'
             '95ea4e28bc95c30200d832c075a04d79191110573f8bbebf881b81c4cef6c211'
-						'213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a')
-sha256sums_x86_64=('3e43603ae687258356a4f1da23e845af9cdac0f6ec8fc60d1022722a9a1ac2d0'
-                   '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a')
+sha256sums_x86_64=('654d3e6f2b29838d666b73bc5784b0c66da58efdaefbb76d6c38649798f582c0')
 
 build() {
 	make CHROMIUM_NAME=cromite -C chromium-launcher-$_launcher_ver
@@ -65,6 +65,9 @@ package() {
 		# ANGLE
 		libEGL.so
 		libGLESv2.so
+
+		# Vulkan
+		libvulkan.so.1
 
 		# SwiftShader ICD
 		libvk_swiftshader.so
