@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-tools
 	pkgdesc = A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)
-	pkgver = 5.15.11+kde+r3
+	pkgver = 5.15.12+kde+r4
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = mingw-w64-qt5-tools
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qttools#commit=38ae810be3fb4984f75b55a16d3413e35d701af1
+	source = git+https://invent.kde.org/qt/qt/qttools#commit=bd0ceb7de5d0c918ae596150e95b069dca8b9150
 	source = 0001-Fix-linguist-macro.patch
 	sha256sums = SKIP
-	sha256sums = 7625444dcf3e2eb3406fdceb951d9cfaee136f45aef26ea8f83b2f1d9b3ecabc
+	sha256sums = d4500aad5ae74b538e307812861391da0df69d74bfff8e18f4a1fb15aaa3c73b
 
 pkgname = mingw-w64-qt5-tools
