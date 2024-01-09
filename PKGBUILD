@@ -1,6 +1,6 @@
 pkgname=jcef-jetbrains-git
 pkgdesc="A simple framework for embedding Chromium-based browsers into Java-based applications. (Used for JetBrainsRuntime)"
-pkgver=111.2.1.api1.12.r0.57ca963
+pkgver=119.4.3.api1.13.r1.36c411c
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/JetBrains/jcef"
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-    JAVA_HOME=/usr/lib/jvm/$(ls /usr/lib/jvm | grep 17 | head -n 1)
+    export JAVA_HOME=/usr/lib/jvm/$(ls /usr/lib/jvm | grep 17 | head -n 1)
 
     # build native
     cd $srcdir/jcef
@@ -71,13 +71,39 @@ build() {
     $JAVA_HOME/bin/jmod create --module-path . --class-path jogl-all.jar --libs lib jogl.all.jmod
     rm -rf .tmp_extract_jar jogl-all.jar lib
 
+    # slf4j
+    cp ../third_party/slf4j/slf4j-api-2.0.0.jar .
+    cp ../jb/tools/common/slf4j-module-info.java module-info.java
+    $JAVA_HOME/bin/javac --patch-module org.slf4j=slf4j-api-2.0.0.jar module-info.java
+    mkdir tmp_jar_content && cd tmp_jar_content
+    $JAVA_HOME/bin/jar -xvf ../slf4j-api-2.0.0.jar
+    rm -rf ./META-INF/versions
+    cp ../module-info.class .
+    $JAVA_HOME/bin/jar -cvf ../slf4j.jar .
+    cd ..
+    rm -rf module-info.class module-info.java tmp_jar_content
+    $JAVA_HOME/bin/jmod create --class-path slf4j.jar org.slf4j.jmod
+    rm -rf slf4j-api-2.0.0.jar slf4j.jar
+
+    # thrift
+    cp ../third_party/thrift/libthrift-0.16.0.jar .
+    cp ../jb/tools/common/thrift-module-info.java module-info.java
+    $JAVA_HOME/bin/javac --patch-module org.apache.thrift=libthrift-0.16.0.jar module-info.java
+    $JAVA_HOME/bin/jar uf libthrift-0.16.0.jar module-info.class
+    rm module-info.class module-info.java
+    $JAVA_HOME/bin/jmod create --class-path libthrift-0.16.0.jar org.apache.thrift.jmod
+    rm -rf libthrift-0.16.0.jar
+
     # jcef
     cp ../out/linux64/jcef.jar .
     mkdir lib
     cp -R ../jcef_build/native/Release/* lib
+    cp -R ../jcef_build/remote/Release/libshared_mem_helper.so lib
+    cp -R ../jcef_build/remote/Release/cef_server lib
     find lib -name "*.so" | xargs strip -x
     strip -x lib/chrome-sandbox
     strip -x lib/jcef_helper
+    strip -x lib/cef_server
     $JAVA_HOME/bin/jmod create --module-path . --class-path jcef.jar --libs lib jcef.jmod
     rm -rf jcef.jar lib
 
