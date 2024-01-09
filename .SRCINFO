@@ -7,9 +7,9 @@ pkgbase = python-diffrax
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-hatchling
 	makedepends = python-wheel
-	depends = python-equinox
+	depends = python-optimistix
 	source = diffrax-0.5.0.tar.gz::https://github.com/patrick-kidger/diffrax/archive/v0.5.0.tar.gz
 	sha512sums = 2b3fd7beaec760d68cf345658a208e379de5e066e7f660c5c903828cc415347981660a4f5ff7ec6286620caf17fba22f57d9acf7ad865e347fe629c4e4e8ab7a
 
