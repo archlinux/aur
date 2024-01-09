@@ -5,8 +5,8 @@ pkgname=(
 #  'ctranslate2-docs'
 )
 pkgbase=ctranslate2
-pkgver=3.23.0
-pkgrel=3
+pkgver=3.24.0
+pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
 url="https://opennmt.net/CTranslate2"
@@ -35,7 +35,7 @@ makedepends=(
 #  'python-pytorch'
 #  'python-yaml'
 #)
-_commit=83caf67972751ac9ce41b4fe17e8bf1a42b95307  # tags/3.23.0^0
+_commit=c95fd4e4f8c775e6a8248fea9f7ab313c170e8dd  # tags/3.24.0^0
 source=("git+https://github.com/OpenNMT/CTranslate2.git#commit=$_commit"
         'git+https://github.com/jarro2783/cxxopts.git'
         'git+https://github.com/NVIDIA/thrust.git'
