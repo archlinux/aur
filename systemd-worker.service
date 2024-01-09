@@ -1,11 +1,11 @@
 [Unit]
-Description=Matrix authentication service
+Description=Matrix authentication service worker
 After=network.target
 
 [Service]
 User=mas
 WorkingDirectory=/usr/share/matrix-authentication-service
-ExecStart=/usr/bin/mas-cli server --migrate --no-worker -c /etc/matrix-authentication-service/config.yaml
+ExecStart=/usr/bin/mas-cli worker -c /etc/matrix-authentication-service/config.yaml
 Restart=on-failure
 
 # Hardening
