@@ -1,9 +1,9 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
-# Contributor: Adrian Perez de Castro <aperez@igalia.com>
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 
 pkgname=kcgi
-pkgver=0.13.2
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="Minimal CGI and FastCGI library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://kristaps.bsd.lv/kcgi/"
 license=('custom:ISC')
 depends=('glibc')
 makedepends=('git' 'bmake' 'libseccomp' 'libmd')
-_commit='b5e880fd47041d9f2f88f6e62c54b6e6689de4d5'
+_commit='e97370540b4917c78bf3405ddc821ffad8407d69'
 source=("git+https://github.com/kristapsdz/kcgi.git#commit=$_commit")
 b2sums=('SKIP')
 
