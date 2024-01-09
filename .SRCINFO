@@ -1,6 +1,6 @@
 pkgbase = bflat-bin
 	pkgdesc = Bflat C# compiler
-	pkgver = 7.0.1
+	pkgver = 8.0.1
 	pkgrel = 1
 	url = https://github.com/bflattened/bflat
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bflat-bin
 	provides = bflat
 	conflicts = bflat
 	options = !strip
-	source = https://github.com/bflattened/bflat/releases/download/v7.0.1/bflat-7.0.1-linux-glibc-x64.tar.gz
-	sha256sums = 9bb567b469f742bf091ccfca2bd4fd53fb529685ba7d1b4e6312c046e0350b8b
+	source = https://github.com/bflattened/bflat/releases/download/v8.0.1/bflat-8.0.1-linux-glibc-x64.tar.gz
+	sha256sums = 2f8e8e07cc5ca428c71cfa1f1771d2bf59ea31c6d40ae335b4d6d06f24cc50cb
 
 pkgname = bflat-bin
