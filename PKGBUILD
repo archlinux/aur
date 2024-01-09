@@ -2,14 +2,14 @@
 # Maintainer emeritus: R. van Elst <https://raymii.org>
 
 pkgname="simh-git"
-pkgver=4.0.Beta.1.2715.g6728b3f4
+pkgver=4.0.Beta.1.3575.g4dfb3508
 pkgrel=1
 pkgdesc="The Computer History Simulation Project"
 arch=('i686' 'x86_64')
 url="http://simh.trailing-edge.com/"
 license=('MIT')
 depends=('libpcap' 'unzip' 'sdl2' 'ttf-dejavu' 'zlib' 'libpng')
-makedepends=('unoconv')
+makedepends=('termcap' 'unoconv')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=('git+https://github.com/simh/simh.git')
@@ -48,6 +48,7 @@ package() {
   echo "Entering directory $srcdir/simh/doc."
   cd "$srcdir/simh/doc"
   unoconv -d document --format=html *.doc
+  unoconv -d document --format=pdf *.doc
   unoconv -d document --format=txt *.doc
   # install -D -t "$pkgdir/usr/share/doc/$pkgname" *.doc
   install -D -t "$pkgdir/usr/share/doc/$pkgname" *.html

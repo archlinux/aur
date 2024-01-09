@@ -1,11 +1,12 @@
 pkgbase = simh-git
 	pkgdesc = The Computer History Simulation Project
-	pkgver = 4.0.Beta.1.2715.g6728b3f4
+	pkgver = 4.0.Beta.1.3575.g4dfb3508
 	pkgrel = 1
 	url = http://simh.trailing-edge.com/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = termcap
 	makedepends = unoconv
 	depends = libpcap
 	depends = unzip
