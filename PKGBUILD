@@ -1,10 +1,10 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 # Contributor: Giulio Guzzinati <guzzinati.giulio at gmail>
 pkgname=imagej
-pkgver=1.54g
+pkgver=1.54h
 _pkgver=154
 _jar=ij-$pkgver.jar
-pkgrel=2
+pkgrel=1
 epoch=2
 pkgdesc="Image manipulation software for scientists"
 arch=('any')
@@ -20,7 +20,7 @@ source=("http://wsr.imagej.net/distros/cross-platform/ij$_pkgver.zip"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
 sha256sums=('f13e6d39ae0ac1e2635347e47d597df43716f68608221b819226559b8efa2450'
-            '2d5cebe89b2b99faadd9e9700d7358efaa9cdefea307d043f5ac1af8dcde86ed'
+            'f5a3879e98f078472d217566734aafae4c8a8c5adcc8bd180ceec454a50fe174'
             'c223a3b2437501edd92176f87bbea75d994104e1545eea6c120ef8c774c7114e'
             '799188b0b2cf1dc684dc2f029dbd31a4b44b691b51fd5e42027a994452bc038e'
             'fd1479568b116a276ca1f645589a8e37ccaf767736c6cc0dcec9672225a82572')
