@@ -4,15 +4,15 @@
 
 pkgname=ib-tws
 pkgver=10.26.1j
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
-arch=('any')
+arch=('x86_64')
 url="http://interactivebrokers.com/"
 license=('custom')
 backup=('etc/ib-tws.conf' 'etc/ib-gw.conf')
-depends=(gtk2 ttf-liberation)
-optdepends=(ffmpeg-compat-55)
+depends=(alsa-lib at-spi2-core bash cairo fontconfig freetype2 gcc-libs gdk-pixbuf2 glib2 glibc gtk3 libgl libx11 libxext libxi libxrender libxtst libxxf86vm pango)
+optdepends=(ffmpeg3.4)
 makedepends=(libarchive findutils sed)
 
 source=('LICENSE'
