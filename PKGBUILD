@@ -7,7 +7,7 @@ _basename=zoom
 pkgname=$_basename-system-qt
 pkgver=5.17.1
 _subver=1840
-pkgrel=1
+pkgrel=2
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
 license=('custom')
@@ -54,11 +54,10 @@ package() {
     patchelf --shrink-rpath zopen
 
     rm -rf Qt/bin
+    rm -rf cef/locales
 
     _replace Qt/plugins qt/plugins
     _replace Qt/qml qt/qml
-
-    #_replace cef/locales electron/locales
 
     _replace cef/chrome-sandbox electron/chrome-sandbox
     _replace cef/chrome_100_percent.pak electron/chrome_100_percent.pak
