@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
-pkgver=1.6.rc2.r584.g0aceff74
+pkgver=1.6.rc2.r588.gc5fd8c05
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (git development version)'
 arch=('x86_64')
@@ -51,7 +51,7 @@ source=("${pkgname}::git+${url}.git"
 "sway-portals.conf")
 b2sums=('SKIP'
         '71f45f9abb4e9f98a52177b227aa30ab27d02c9eef8a31400460e71c72b6d40ec396581f0b1703d4cec655aaba704077212882f643c6efb6cda951ea69b5383d'
-        'eeaa6bdfae0fa6c0445d7d02209ef9142d529f1770fd8d9d614772c276ffa7461247523399164fed70ad39b25af9a91fcf8afa23af5c193c898c44487956de7f')
+        'cdba5fd2988b7ead8b264d5b41f1c7adb47a6487be1e3a4ce98c0af2094d9964f4bc364237c4437014be18061f067aa741b0382f21365be497e06b189c5c7728')
 
 pkgver() {
   cd "$pkgname"
