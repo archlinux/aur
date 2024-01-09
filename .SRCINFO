@@ -1,0 +1,16 @@
+pkgbase = aw-watcher-media-player-git
+	pkgdesc = Watcher of system's currently playing media for ActivityWatch
+	pkgver = r16.d1da62f
+	pkgrel = 1
+	url = https://github.com/2e3s/aw-watcher-media-player
+	arch = x86_64
+	license = The Unlicense
+	makedepends = git
+	makedepends = cargo
+	depends = activitywatch
+	provides = aw-watcher-media-player
+	conflicts = aw-watcher-media-player
+	source = aw-watcher-media-player::git+https://github.com/2e3s/aw-watcher-media-player
+	sha256sums = SKIP
+
+pkgname = aw-watcher-media-player-git
