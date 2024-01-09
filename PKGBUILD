@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=phytools
-_pkgver=2.0-3
+_pkgver=2.1-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Phylogenetic Tools for Comparative Biology (and Other Things)"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(GPL)
 depends=(
   r-ape
@@ -32,12 +32,12 @@ optdepends=(
   r-rgl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b92ab43e80c629468148e705c9364d6d')
-sha256sums=('a10f5ceba81d5f8dc8e1b80e4cd00c7878842ee312ecd266809f60f70b23e82e')
+md5sums=('b03442df6f468772b8da8784eef396e2')
+b2sums=('699e9fa0c09ce3850d10a2caac64204feac28afb9fa6f976f72fc69c939086a432afdcef7aeede5ec0c44f0919e614a98106bc84dee9f16e00a355aed629410f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
