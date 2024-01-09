@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=topicmodels
-_pkgver=0.2-15
+_pkgver=0.2-16
 pkgname=r-${_pkgname,,}
-pkgver=0.2.15
+pkgver=0.2.16
 pkgrel=1
 pkgdesc='Topic Models'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-snowballc
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('71b50f78e4d7b95b5c3663d766eb15ad2061cc49d58436dc3aa56960cdaf77d0')
+sha256sums=('0d5c9c65dd7ba031ba81adc0984d3e36b0309ada2204644bf816370ae656e905')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
