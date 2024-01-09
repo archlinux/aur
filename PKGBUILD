@@ -2,8 +2,8 @@
 
 pkgname=bodo_connect-git
 _pkgname=${pkgname%-git}
-pkgver=v0.6.4.r0.g6104c88
-pkgrel=4
+pkgver=v0.6.9.r0.gbe01de3
+pkgrel=1
 pkgdesc="A library for mapping/connecting to your hosts in the whole world wide web."
 arch=("any")
 url="https://github.com/topongo/bodo_connect"
@@ -28,13 +28,13 @@ pkgver() {
 build() {
   cd "${_pkgname}"
   if command -v rustup > /dev/null 2>&1; then
-    RUSTFLAGS="-C target-cpu=native" rustup run stable \
+    RUSTFLAGS="-C target-cpu=native" rustup run nightly \
       cargo build --release
   elif rustc --version | grep -q nightly; then
     RUSTFLAGS="-C target-cpu=native" \
-      cargo build --release
+      cargo +nightly build --release
   else
-    cargo build --release
+    cargo +nightly build --release
   fi
 }
 
