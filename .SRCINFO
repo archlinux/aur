@@ -1,14 +1,12 @@
 pkgbase = archub
-	pkgdesc = Archub is command-line tool designed for managing packages in AUR
-	pkgver = 0.0.2
+	pkgdesc = Command-line tool designed for managing packages in AUR
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/nbebaw/Archub
-	arch = any
+	arch = x86_64
 	license = MIT
-	checkdepends = git
-	makedepends = git
 	depends = git
-	source = https://github.com/nbebaw/Archub/releases/download/v0.0.2/archub
-	md5sums = SKIP
+	source = https://github.com/nbebaw/Archub/releases/download/v0.0.3/archub_x86_64.tar.gz
+	sha256sums = 01ae2e23c0067aa9d7c40dbf5b54d8b527d4381a5b86cc0b4736d44dc6aeaebf
 
 pkgname = archub
