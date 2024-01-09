@@ -1,7 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=picgo-git
 _pkgname=PicGo
-pkgver=2.4.0.beta.6.r8cede85
+pkgver=2.3.1.r43.g8cede85
+_electronversion=27
+_nodeversion=16
 pkgrel=1
 pkgdesc="A simple & beautiful tool for pictures uploading built by vue-cli-electron-builder"
 arch=('any')
@@ -9,12 +11,12 @@ url="https://molunerfinn.com/PicGo/"
 _ghurl="https://github.com/Molunerfinn/PicGo"
 license=('MIT')
 depends=(
-    'electron16'
+    "electron${_electronversion}"
 )
 makedepends=(
     'npm'
     'git'
-    'nodejs>=16.0.0'
+    'nvm'
     'gendesk'
     'yarn'
 )
@@ -23,16 +25,31 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '2146576ad96310d947adc76e44a6fa6692689081f9b5eb3f1d16aa61f27c97de')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    printf "%s.r%s" "$(git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g')" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
-    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-git}"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
+    _ensure_local_nvm
+    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     sed "s|build --publish always|build --linux AppImage --publish never|g" -i package.json
-    yarn
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn global add xvfb-maybe spawn-sync
     yarn release
 }

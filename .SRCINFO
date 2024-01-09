@@ -1,19 +1,19 @@
 pkgbase = picgo-git
 	pkgdesc = A simple & beautiful tool for pictures uploading built by vue-cli-electron-builder
-	pkgver = 2.4.0.beta.6.r8cede85
+	pkgver = 2.3.1.r43.g8cede85
 	pkgrel = 1
 	url = https://molunerfinn.com/PicGo/
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = git
-	makedepends = nodejs>=16.0.0
+	makedepends = nvm
 	makedepends = gendesk
 	makedepends = yarn
-	depends = electron16
+	depends = electron27
 	source = picgo.git::git+https://github.com/Molunerfinn/PicGo.git
 	source = picgo.sh
 	sha256sums = SKIP
-	sha256sums = 2146576ad96310d947adc76e44a6fa6692689081f9b5eb3f1d16aa61f27c97de
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = picgo-git
