@@ -4,7 +4,7 @@
 
 pkgname=tmuxinator
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
 url="https://github.com/aziz/tmuxinator"
