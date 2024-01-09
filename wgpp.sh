@@ -1,7 +1,7 @@
 #!/bin/bash
 # script: wg++ (WebGrab+Plus)
-# author: Nikos Toutountzoglou, nikos.toutou@gmail.com
-# rev.date: 19/02/2023
+# author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
+# rev.date: 09/01/2024
 
 # vars
 WGPP_USR=$(whoami)
@@ -13,15 +13,13 @@ WGPP_SYS=/usr/share/wg++
 # functions
 helpMsg() {
 	echo "WebGrab+Plus EPG/XMLTV grabber"
-	echo "Usage: $WGPP_EXE [-d|--dir <CUSTOM_DIR>] [-g|--generate] [-d <CUSTOM_DIR> -g] [-u|--update] [-d <CUSTOM_DIR> -u]"
+	echo "Usage: $WGPP_EXE [-d|--dir <CUSTOM_DIR>] [-g|--generate] [-d <CUSTOM_DIR> -g]"
 	echo "       $WGPP_EXE -h|-?|--help"
 	echo
 	echo "Options:"
 	echo "  -d <CUSTOM_DIR>         Run from custom configuration folder <CUSTOM_DIR>."
 	echo "  -g                      Create new configuration folder 'wg++' in user's home directory."
 	echo "  -d <CUSTOM_DIR> -g      Create new custom configuration folder <CUSTOM_DIR>."
-	echo "  -u                      Update to latest 'siteini.pack' and channel list files."
-	echo "  -d <CUSTOM_DIR> -u      Update custom configuration folder to latest 'siteini.pack' and channel list files."
 }
 
 missingSysFiles() {
@@ -59,24 +57,6 @@ genFolder() {
 	fi
 }
 
-updateSiteIni() {
-	SITEINI_URL="https://github.com/SilentButeo2/webgrabplus-siteinipack/trunk/siteini.pack"
-	
-	if ! type svn > /dev/null; then
-		echo ":: Subversion (svn) is not installed. Please install it first before updating 'siteini.pack'."
-		exit 1
-	fi
-
-	if [ -d "$WGPP_CFGDIR/siteini.pack" ]; then
-		echo ":: Starting update of '$WGPP_CFGDIR/siteini.pack' to latest version."
-		cd "$WGPP_CFGDIR"
-		svn checkout $SITEINI_URL
-	else
-		echo ":: Missing folder 'siteini.pack', exiting."
-		exit 1
-	fi
-}
-
 runScript() {
 	cd "$WGPP_CFGDIR"
 	sudo -u $WGPP_USR ./run.net.sh
@@ -95,10 +75,6 @@ do
 			;;
 		-g|--generate|-[Gg]enerate)
 			genFolder
-			;;
-		-u|--update|-[Uu]pdate)
-			updateSiteIni
-			exit 0
 			;;
 		-?|--?|-h|--help|-[Hh]elp)
 			helpMsg

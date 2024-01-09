@@ -2,28 +2,25 @@
 
 pkgname=wg++
 pkgver=5.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="WebGrab+Plus is a multi-site incremental xmltv epg grabber"
-arch=('any')
+arch=(any)
 url="http://webgrabplus.com/"
-license=('custom')
-depends=('dotnet-runtime-7.0')
-makedepends=('subversion')
+license=(custom)
+depends=(dotnet-runtime-7.0)
 source=("${pkgname}-5.1.0.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V5.1.0/WebGrabPlus_V5.1_install.tar_0.gz"
 	"${pkgname}-${pkgver}.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V${pkgver}/WebGrabPlus_V${pkgver}_beta_install.tar.gz"
-	"wgpp.sh"
-	"svn+https://github.com/SilentButeo2/webgrabplus-siteinipack/trunk/siteini.pack")
+	'wgpp.sh')
 sha256sums=('368b14be4b0ec724ac394b59b26c05ecff3cef2864572a8cca844d56e1ce6f0f'
             '55689488b3a277c1de3c42c3406f094f1f71f3e69c01a5d7edf71f1a657eebfe'
-            'fb57d376425f06a5d471bef556963828185aa86c78096bc597d54bb9eecd66c9'
-            'SKIP')
+            'e6bbd6c1710c7114a6dc201529616cb38f8ca636b94ecbf9d98328c9affd6d1d')
 
 prepare() {
-	# Add latest siteini.pack
-	cp -r siteini.pack .$pkgname/
-	# Rename folder and cleanup
+	# Rename folder
 	mv .$pkgname $pkgname
-	rm -rf $pkgname/siteini.pack.update $pkgname/siteini.pack/.makepkg
+	# Run install.sh script
+	cd $pkgname
+	./install.sh
 }
 
 package() {
