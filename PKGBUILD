@@ -2,7 +2,7 @@
 pkgbase=python-tweakwcs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="A package for correcting alignment errors in WCS objects"
 arch=('any')
@@ -18,7 +18,12 @@ checkdepends=('python-pytest'
               'python-stsci.stimage')
 # 'python-codecov'-cov 'python-stsci.imagestats'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4bf20233cd6964ef14f4062d843aa705')
+md5sums=('09753ca67be326eec9e3e0d5b080fed9')
+
+get_pyinfo() {
+     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+             python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -40,4 +45,5 @@ package_python-tweakwcs() {
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    rm -r ${pkgdir}/$(get_pyinfo site)/{docs,notebooks}
 }
