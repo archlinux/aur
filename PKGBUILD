@@ -10,14 +10,14 @@
 
 _qt_module=qtserialport
 pkgname=mingw-w64-qt5-serialport
-pkgver=5.15.11
+pkgver=5.15.12
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to hardware and virtual serial ports (mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=3380465d5d4977326616c5e57789a81681be650e
+_commit=c3a7debff7a4c6ddaedb795290180dd99d7ac4be
 _basever=${pkgver%%+*}
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
