@@ -1,7 +1,7 @@
 pkgbase = ruby-fog-core
 	pkgdesc = Shared classes and tests for fog providers and services.
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/fog/fog-core
 	arch = any
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = ruby-fog-core
 	depends = ruby-excon
 	depends = ruby-formatador
 	depends = ruby-mime-types
-	noextract = fog-core-2.3.0.gem
+	noextract = fog-core-2.4.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-core-2.3.0.gem
-	sha256sums = bc2a33c3c301161cb6cb74ed42e8d6ea4b536a0a5ab0b7124cfdea8d7087a61a
+	source = https://rubygems.org/downloads/fog-core-2.4.0.gem
+	sha256sums = 1e204f2f3cbb376f93408e7470f6841df1c2bf03740755ad1f335062018f5d5c
 
 pkgname = ruby-fog-core
