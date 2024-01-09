@@ -2,7 +2,7 @@
 
 _pkgname=tsunami-security-scanner-plugins
 pkgname=google-tsunami-security-scanner-plugins-git
-pkgver=r28.2d44661
+pkgver=r691.9c56f2ec
 pkgrel=1
 pkgdesc="A central repository for many useful Tsunami Security Scanner plugins"
 arch=(any)
