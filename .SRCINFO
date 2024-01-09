@@ -1,6 +1,6 @@
 pkgbase = r-svmdo
 	pkgdesc = Identification of Tumor-Discriminating mRNA Signatures via Support Vector Machines Supported by Disease Ontology
-	pkgver = 1.2.0
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SVMDO
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = r-svmdo
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SVMDO_1.2.0.tar.gz
-	md5sums = 3edf50ad6544537845fe263bb490b9e5
-	sha256sums = 1e84be7ef9d851ffbaac175f973530a94498b7a9b10958ac55120eecc615117f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SVMDO_1.2.7.tar.gz
+	md5sums = 5defbad1ecee04aa756aa24d9c93478b
+	b2sums = b9321ec70aff17371a77adadb37da8c7d4ab8fc054b6f7cd5d8c8de1ae9ca8a3655c6a1d016201abf3e85268bac41df461f0a9651c59140d6fc695dff833498c
 
 pkgname = r-svmdo
