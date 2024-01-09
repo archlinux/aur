@@ -10,7 +10,7 @@ arch=('x86_64')
 url="http://xorg.freedesktop.org/"
 license=('custom')
 depends=('lib32-libxext' "${pkgname#*-}")
-makedepends=('xorg-util-macros' 'gcc-multilib')
+makedepends=('xorg-util-macros' 'lib32-gcc-libs')
 source=("http://xorg.freedesktop.org/releases/individual/lib/libXxf86dga-$pkgver.tar.gz")
 sha256sums=('87c7482b1e29b4eeb415815641c4f69c00545a8138e1b73ff1f361f7d9c22ac4')
 
