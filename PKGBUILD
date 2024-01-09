@@ -44,7 +44,7 @@ install=${_base}.install
 source=(https://web.cels.anl.gov/projects/${_base}/download/release-snapshots/${_base}-lite-${pkgver}.tar.gz
   test_optdepends.sh)
 sha512sums=('912538850eeaf6d78c090438f8198963cd787ef7ff3bbc841719b08fc738c7b20b7955850baacca4eada4a97b113492b9111d35afa33918ec52123e2f1a73f9b'
-            'b943a7add71dcc80fd8a68671398f4d5e70554b5bdba6199c440333ef6bbb4aa02cbdda5ab89f25b72389a5e3151a3c55878c0ad945c2a5769265a5601a0f90e')
+  '68bed9f836bf362b5d528af040afc2c572e87c43fac716d257862bcba06401a212adeec1fb84080a352831c22b968c9da65aa3eb5ef9e44be38ee0c0897c4b8d')
 
 _install_dir=/opt/${_base}/${_config}
 _petsc_arch=arch-${_config}
