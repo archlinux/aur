@@ -37,6 +37,8 @@ check() {
 
 package() {
   cd "${pkgname%-git}"
+  install -Dm 644 colorscripts/small/regular/* -t "$pkgdir/usr/share/${pkgname%-git}/colorscripts/small/regular"
+  install -Dm 644 colorscripts/small/shiny/* -t "$pkgdir/usr/share/${pkgname%-git}/colorscripts/small/shiny"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
