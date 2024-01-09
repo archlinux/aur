@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
   cd $sourcedir
+  version=$(git describe --long --tags | awk -F'[+_~-]' '{print $1}')
   cmake \
     -GNinja \
     -DMKSPECS_INSTALL_DIR=lib/qt6/mkspecs/modules \
@@ -34,7 +35,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DD_DSG_APP_DATA_FALLBACK=/var/dsg/appdata \
-    -DBUILD_WITH_SYSTEMD=ON
+    -DBUILD_WITH_SYSTEMD=ON \
+    -DDDTK_VERSION=$version
   ninja
 }
 
