@@ -1,62 +1,64 @@
-# Maintainer: pingplug < aur at pingplug dot me >
-# Contributor: Sergej Pupykin < pupykin dot s+arch at gmail dot com >
-# Contributor: ant32 < antreimer at gmail dot com >
-# Contributor: rubenvb < vanboxem dot ruben at gmail dot com >
-# Contributor: rkitover < rkitover at gmail dot com >
-
-_pkgver=9.0.0
-_targets="i686-w64-mingw32 x86_64-w64-mingw32"
+# Maintainer: bemxio <bemxiov@protonmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: pingplug <aur@pingplug.me>
 
 pkgname=mingw-w64-winpthreads-git
-pkgver=9.0.0.20210601
-pkgrel=1
 pkgdesc="MinGW-w64 winpthreads library (git version)"
-arch=('any')
-url="https://mingw-w64.org/doku.php"
-license=('custom')
-groups=('mingw-w64-toolchain' 'mingw-w64')
-makedepends=('git'
-             'mingw-w64-gcc-base'
-             'mingw-w64-binutils'
-             "mingw-w64-crt-git>=${pkgver}")
-provides=("mingw-w64-winpthreads=${pkgver}"
-          'mingw-w64-headers-bootstrap')
-conflicts=('mingw-w64-winpthreads'
-           'mingw-w64-headers-bootstrap')
-replaces=('mingw-w64-headers-bootstrap')
-options=('!strip' 'staticlibs' '!buildflags')
+
+pkgver=11.0.0.r548.gdddccbc
+pkgrel=1
+
+arch=(any)
+
+url="http://mingw-w64.sourceforge.net"
+license=("custom")
+
+#depends=()
+makedepends=(mingw-w64-gcc mingw-w64-binutils mingw-w64-crt)
+
+provides=(mingw-w64-winpthreads)
+conflicts=(mingw-w64-winpthreads)
+
 source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64")
-sha256sums=('SKIP')
+md5sums=("SKIP")
+
+options=("staticlibs" "!strip" "!buildflags" "!emptydirs")
+
+_targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
-  cd "${srcdir}/mingw-w64"
-  echo "${_pkgver}.`git log -1 --date=short --format=%cd | sed s/-//g`"
+    # move to the source directory
+    cd "${srcdir}/mingw-w64"
+
+    # use the most recent annotated tag reachable from the last commit
+    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}"
-  for _target in ${_targets}; do
-    msg "Building ${_target} winpthreads..."
-    mkdir -p "winpthreads-build-${_target}" && pushd "winpthreads-build-${_target}"
-    ../mingw-w64/mingw-w64-libraries/winpthreads/configure \
-        --prefix=/usr/${_target} \
-        --host=${_target} \
-        --enable-static \
-        --enable-shared
-    make
-    popd
+    for _target in ${_targets}; do
+        # make a build directory and move into it
+        mkdir -p "${srcdir}/winpthreads-build-${_target}" && cd "${srcdir}/winpthreads-build-${_target}"
+        
+        # configure the build
+        "${srcdir}/mingw-w64/mingw-w64-libraries/winpthreads/configure" \
+            --prefix="/usr/${_target}" \
+            --host="${_target}" \
+            --enable-static --enable-shared
+        
+        # build the library
+        make
   done
 }
 
 package() {
-  cd "${srcdir}"
-  for _target in ${_targets}; do
-    msg "Installing ${_target} headers"
-    pushd "winpthreads-build-${_target}"
-    make DESTDIR="${pkgdir}" install
-    ${_target}-strip --strip-unneeded "${pkgdir}"/usr/${_target}/bin/*.dll
-    popd
-  done
-}
+    for _target in ${_targets}; do
+        # move to the build directory
+        cd "${srcdir}/winpthreads-build-${_target}"
 
-# vim:set ts=2 sw=2 et:
+        # install the library
+        make DESTDIR="${pkgdir}" install
+
+        # strip unneeded symbols from the DLLs
+        "${_target}-strip" --strip-unneeded "${pkgdir}/usr/${_target}/bin"/*.dll
+    done
+}

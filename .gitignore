@@ -1,7 +1,14 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
-!*.install
-!*.patch
-!*.diff
+# Source and package folders
+src/
+pkg/
+
+# The bare Git repository
+mingw-w64/
+
+# Archive files
+*.zip
+*.tar.gz
+*.tar.bz2
+
+# Package files
+*.zst
