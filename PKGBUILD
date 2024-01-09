@@ -5,10 +5,14 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
+## options
+: ${_build_patch:=false}
+
+# basic info
 _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname"
-pkgver=6.6.10
+pkgver=6.7
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -33,31 +37,38 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-$pkgver
-_srctag=v$pkgver-arch1
-_dl_url_arch='https://github.com/archlinux/linux'
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config  # the main kernel config file
 
   1001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
   1002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
-validpgpkeys=(
-  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
-  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
-  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
-)
 sha256sums=(
-  '9ee627e4c109aec7fca3eda5898e81d201af2c7eb2f7d9d7d94c1f0e1205546c'
-  'SKIP'
-  'ad84324ce12f7c27664e79ebeaf4f7b6b52e1abe5777454b4d72c287c928f99a'
+  'ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
   'SKIP'
   '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
 
   'f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb'
   '2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db'
 )
+validpgpkeys=(
+  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
+  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
+)
+
+if [[ _build_patch == "t" ]] ; then
+  _srctag=v$pkgver-arch1
+  _dl_url_arch='https://github.com/archlinux/linux'
+  source+=(
+    $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+  )
+fi
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
