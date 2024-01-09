@@ -4,15 +4,10 @@ After=network.target
 
 [Service]
 User=mas
+Environment=HOME=/var/lib/matrix-authentication-service
 WorkingDirectory=/usr/share/matrix-authentication-service
 ExecStart=/usr/bin/mas-cli server --migrate --no-worker -c /etc/matrix-authentication-service/config.yaml
 Restart=on-failure
-
-# Hardening
-ProtectSystem=yes
-PrivateTmp=true
-MemoryDenyWriteExecute=true
-NoNewPrivileges=true
 
 [Install]
 WantedBy=multi-user.target
