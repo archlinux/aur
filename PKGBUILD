@@ -245,7 +245,7 @@ cd /usr/share/icesugar-pro/tools
 CURRENT_DIR=$(pwd)
 export PATH=${PATH}:${CURRENT_DIR}
 
-dapprog \$@
+./dapprog \$@
 EOF
 }
 
