@@ -1,0 +1,14 @@
+pkgbase = emacs-lsp-booster-git
+	pkgdesc = Emacs LSP performance booster
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/blahgeek/emacs-lsp-booster
+	changelog = changelog.txt
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	conflicts = emacs-lsp-booster
+	source = git+https://github.com/JakeStanger/ironbar
+	sha256sums = 5f4318dbdba14f561b180d4f0bcf0821b9c7cae4b8e10691eb9133833d7473c8
+
+pkgname = emacs-lsp-booster-git
