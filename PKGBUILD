@@ -3,7 +3,7 @@
 # Contributor: Igor Moura <hi@igor.mp>
 
 pkgname=freecad-appimage
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="A general purpose 3D CAD modeler (AppImage version)"
 arch=('x86_64')
@@ -14,10 +14,10 @@ provides=('freecad')
 conflicts=('freecad')
 options=('!strip')
 noextract=("freecad-${pkgver}.AppImage")
-source=("freecad-${pkgver}.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/${pkgver}/FreeCAD_${pkgver}-Linux-x86_64.AppImage"
+source=("freecad-${pkgver}.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/${pkgver}/FreeCAD-${pkgver}-Linux-x86_64.AppImage"
         "freecad.sh"
         "freecad-desktop.patch")
-sha256sums=('9b8a991934e9d1edd7aa61b7ae938339e15b253ed612fe1f554abc1db9b6ee6f'
+sha256sums=('13eecbb23c60948b41d7270b75370794576e4b0ccde302a6f3472f46e996fce6'
             '0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674'
             '63df64b9a480434b007e297e01f12ebbe49d8227c87de574110d8bf19f97f415')
 
