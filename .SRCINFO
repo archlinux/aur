@@ -1,6 +1,6 @@
 pkgbase = r-rlabkey
 	pkgdesc = Data Exchange Between R and 'LabKey' Server
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Rlabkey
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-rlabkey
 	depends = r-httr
 	depends = r-jsonlite
 	depends = r-rcpp
-	source = https://cran.r-project.org/src/contrib/Rlabkey_3.1.0.tar.gz
-	sha256sums = dc9cd3a0d7ee20bf18f9304fcf7c8968258872f0936c07149299776db33a7bce
+	source = https://cran.r-project.org/src/contrib/Rlabkey_3.2.0.tar.gz
+	sha256sums = d4d8087a38313a936d734d6e0f384ec8f800bd4b2e9c23816591927bd377d64e
 
 pkgname = r-rlabkey
