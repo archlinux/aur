@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=snappymail
-pkgver=2.29.1
+pkgver=2.32.0
 pkgrel=1
 pkgdesc='A simple, modern & fast web-based email client'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   'php-pgsql: storage backend for contacts'
   'php-sqlite: storage backend for contacts'
 )
-_commit='9b26d0f60a82b40e996ba9dfca8d4a64b9b730cc'
+_commit='b2477f2ce3581fc8d03dc8494a5c8554bd05bc24'
 source=(
   "$pkgname::git+https://github.com/the-djmaze/snappymail.git#commit=$_commit"
   'sysusers.conf'
