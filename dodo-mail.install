@@ -1,0 +1,5 @@
+# arg 1:  the new package version
+post_install() {
+	echo 'Check with <https://github.com/akissinger/dodo#prerequisites> to install and setup all required prerequisites'
+	echo 'Also create a configuration file to ~/.config/dodo/config.py, before the first start. See here: https://github.com/akissinger/dodo#configuration'
+}

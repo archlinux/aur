@@ -1,0 +1,26 @@
+pkgbase = dodo-mail-git
+	pkgdesc = A graphical, hackable email client based on notmuch
+	pkgver = r223.ed02090
+	pkgrel = 1
+	url = https://github.com/akissinger/dodo
+	install = dodo-mail.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-bleach
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
+	depends = hicolor-icon-theme
+	depends = notmuch
+	depends = w3m
+	optdepends = offlineimap: check mail and sync with a local maildir
+	optdepends = msmtp: a sendmail-compatible SMTP client to send mail
+	optdepends = python-gnupg: pgp/mime support
+	provides = dodo-mail
+	conflicts = dodo-mail
+	source = dodo-mail::git+https://github.com/akissinger/dodo
+	md5sums = SKIP
+
+pkgname = dodo-mail-git
