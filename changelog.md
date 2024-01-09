@@ -1,3 +1,9 @@
+## GE-Proton8-27
+
+- Disabled Nvidia Latency Reflex patches. After discussion with dxvk devs they are currently deemed problematic and need more work, and are known to currently cause stutters in games even when the feature is disabled. We will re-enable the patches when they are ready.
+- Fixed Farlight 84 patch that was missing a lock causing problems in SDL games
+- Backported a fix for HID devices with more than 8 axis https://bugs.winehq.org/show_bug.cgi?id=55660
+
 ## GE-Proton8-26
 
 - updated wine to bleeding edge
