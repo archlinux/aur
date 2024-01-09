@@ -14,7 +14,6 @@ depends=(
     'python-setuptools'
 )
 conflicts=('docker-autocompose')
-makedepends=('python-setuptools')
 source=($pkgname::git+https://github.com/Red5d/docker-autocompose.git)
 sha256sums=('SKIP')
 
