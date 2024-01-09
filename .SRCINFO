@@ -1,6 +1,6 @@
 pkgbase = python-debianbts
 	pkgdesc = Python library for querying Debian's Bug Tracking System
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://github.com/venthur/python-debianbts
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-debianbts
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pysimplesoap
-	source = https://github.com/venthur/python-debianbts/archive/refs/tags/4.0.1.tar.gz
-	sha256sums = 9cf0b78038e4135afb3b7a3cb9eb2d3ca76c74e8fd26756dda6c1e943cf77faa
+	source = https://github.com/venthur/python-debianbts/archive/refs/tags/4.0.2.tar.gz
+	sha256sums = 19613df0e4685f7af37e377a952d375034596b819f26eaef1275e454a29ba700
 
 pkgname = python-debianbts
