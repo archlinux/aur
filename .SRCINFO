@@ -2,6 +2,7 @@ pkgbase = python-odrive
 	pkgdesc = Control utilities for the ODrive high performance motor controller
 	pkgver = 0.6.7
 	pkgrel = 2
+	url = https://pypi.org/project/odrive/
 	arch = any
 	license = MIT
 	makedepends = python-installer
