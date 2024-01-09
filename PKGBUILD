@@ -3,7 +3,7 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=certbot
-pkgver=2.7.4
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='An ACME client'
 arch=('any')
@@ -38,7 +38,7 @@ replaces=('letsencrypt')
 # git repository is used because certbot is a huge monorepo and it's easier to
 # share the entire repository across all certbot related packages than a few
 # hundred tarballs.
-_commit='b62133e3e19367b82b5fde3d5f5ad97e6ced5447'
+_commit='e9225d1cc27345e65df40a624be188cd02976768'
 _repo="github.com-certbot-certbot"
 source=(
   "$_repo::git+https://github.com/certbot/certbot#commit=$_commit"
