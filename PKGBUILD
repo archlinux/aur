@@ -4,7 +4,7 @@ _name=Xmonk.lv2
 _pkgname=${_name,,}
 _plugin_uri="https://github.com/brummer10/$_name"
 pkgname=$_pkgname-git
-pkgver=0.4.r56.3f69d90
+pkgver=0.4.r85.4443523
 pkgrel=1
 pkgdesc='A simple sound generator LV2 plugin to have some fun with (git version)'
 arch=(x86_64)
@@ -16,11 +16,11 @@ groups=(pro-audio lv2-plugins)
 provides=($_pkgname ${_pkgname/./-}-git)
 conflicts=($_pkgname ${_pkgname/./-}-git)
 source=("$_name::git+https://github.com/brummer10/$_name.git"
-        'libxputty::git+https://github.com/brummer10/libxputty.git'
-        'libxputty-fix-asprintf.patch::https://github.com/brummer10/libxputty/commit/7eb70bf3f7bce0af9e1919d6c875cdb8efca734e.patch')
+        'lv2ui.version'
+        'libxputty::git+https://github.com/brummer10/libxputty.git')
 sha256sums=('SKIP'
-            'SKIP'
-            '15fe7e3e2ec8efe62dc9bb4c0830eaf3ed0373cd39ebd755f2d9193710ebbf76')
+            '5abe9dbb9f02b02b361f5e5393e52029cd2eae4fb4b45817ad51c8ab7a217a88'
+            'SKIP')
 
 
 pkgver() {
@@ -34,17 +34,17 @@ prepare() {
   git submodule init
   git submodule set-url libxputty "$srcdir"/libxputty
   git -c protocol.file.allow=always submodule update
-  cd libxputty
-  patch -p1 -N -r - -i "$srcdir"/libxputty-fix-asprintf.patch || true
 }
 
 build() {
   cd $_name
+  # make sure only needed symbols are export in UI shared lib
+  export GUI_LDFLAGS="-Wl,--version-script=$srcdir/lv2ui.version"
   make
 }
 
 check() {
-  lv2lint -M pack -I $_name/${_name/.lv2/}/$_name "$_plugin_uri"
+  lv2lint -M pack -I $_name/bin/$_name "$_plugin_uri"
 }
 
 package() {
