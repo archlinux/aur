@@ -36,7 +36,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DD_DSG_APP_DATA_FALLBACK=/var/dsg/appdata \
     -DBUILD_WITH_SYSTEMD=ON \
-    -DDDTK_VERSION=$version
+    -DDTK_VERSION=$version
   ninja
 }
 
