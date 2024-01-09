@@ -1,11 +1,13 @@
 pkgbase = python-pypcap
 	pkgdesc = Python libpcap module
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pynetwork/pypcap
 	arch = x86_64
 	license = custom
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = cython
 	depends = python
 	depends = libpcap
