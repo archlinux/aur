@@ -11,10 +11,15 @@ url=https://github.com/dynup/kpatch
 license=(GPL2)
 depends=(bash libelf)
 makedepends=(git)
+checkdepends=(
+  linux-headers
+  shellcheck)
 provides=(kpatch)
 conflicts=(kpatch)
-source=("${pkgname}::git+$url.git")
-sha512sums=('SKIP')
+source=("${pkgname}::git+$url.git"
+  "objs::git+https://github.com/dynup/kpatch-unit-test-objs.git")
+sha512sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}/"
@@ -22,6 +27,7 @@ pkgver() {
 }
 
 prepare() {
+  git -C "${srcdir}/${pkgname}" clean -dfx
   cd "${srcdir}/${pkgname}/"
 
   # Fix search structure
@@ -39,11 +45,21 @@ prepare() {
   # See https://github.com/dynup/kpatch/issues/966
   # Disable kmod for now
   sed -i '3s#kmod ##' Makefile
+
+  git submodule init
+  git config submodule.test/unit/objs.url "$srcdir/objs"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
   cd "${srcdir}/${pkgname}/"
   make PREFIX=/usr
+}
+
+check() {
+  cd "${srcdir}/${pkgname}/"
+  make unit
+  make check
 }
 
 package() {

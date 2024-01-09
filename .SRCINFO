@@ -6,12 +6,16 @@ pkgbase = kpatch-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	checkdepends = linux-headers
+	checkdepends = shellcheck
 	makedepends = git
 	depends = bash
 	depends = libelf
 	provides = kpatch
 	conflicts = kpatch
 	source = kpatch-git::git+https://github.com/dynup/kpatch.git
+	source = objs::git+https://github.com/dynup/kpatch-unit-test-objs.git
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = kpatch-git
