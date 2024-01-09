@@ -1,4 +1,4 @@
-From b04536fd019cb855eeb9f4bdda33daddd83fff0d Mon Sep 17 00:00:00 2001
+From 2759362b0676bda304c86d30c30bab30444ffbb9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:58:25 +0200
 Subject: [PATCH 14/32] Fix linking against shared/static PostgreSQL
@@ -8,7 +8,7 @@ Subject: [PATCH 14/32] Fix linking against shared/static PostgreSQL
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/plugins/sqldrivers/configure.json b/src/plugins/sqldrivers/configure.json
-index 7262914c64..852ba558be 100644
+index a5e3001bf6..5768d3b9a9 100644
 --- a/src/plugins/sqldrivers/configure.json
 +++ b/src/plugins/sqldrivers/configure.json
 @@ -90,9 +90,9 @@
@@ -18,11 +18,11 @@ index 7262914c64..852ba558be 100644
 -                { "type": "pkgConfig", "args": "libpq" },
                  { "type": "psqlConfig" },
 -                { "type": "psqlEnv", "libs": "-llibpq -lws2_32 -ladvapi32", "condition": "config.win32" },
-+                { "type": "psqlEnv", "libs": "-lpq -lpgcommon -lpgport -lintl -lssl -lcrypto -lshell32 -lws2_32 -lsecur32 -liconv", "condition": "config.win32 && !features.shared" },
++                { "type": "psqlEnv", "libs": "-lpq -lpgcommon -lpgport -lintl -lssl -lcrypto -lcrypt32 -lshell32 -lws2_32 -lsecur32 -liconv", "condition": "config.win32 && !features.shared" },
 +                { "type": "psqlEnv", "libs": "-lpq", "condition": "config.win32 && features.shared" },
                  { "type": "psqlEnv", "libs": "-lpq", "condition": "!config.win32" }
              ]
          },
 -- 
-2.42.0
+2.43.0
 

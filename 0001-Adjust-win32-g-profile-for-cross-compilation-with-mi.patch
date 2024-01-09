@@ -1,4 +1,4 @@
-From e1e294676110887797fcd817cc04cf9ae42af6ec Mon Sep 17 00:00:00 2001
+From b6ccf3e66d2a7988a4ffe3407feb56ad782ed586 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
 Subject: [PATCH 01/32] Adjust win32-g++ profile for cross compilation with
@@ -13,7 +13,7 @@ Also see the following issues:
 * https://github.com/Martchus/PKGBUILDs/issues/59
 * https://github.com/Martchus/PKGBUILDs/issues/60
 
-Change-Id: I127bb0516bd4acfea588a5d48c46811525a8fca8
+Change-Id: I94f5a6c44c112bd44a84f802712077bc14782b4c
 ---
  mkspecs/common/g++-win32.conf      | 51 ++++++++++++++++++++----------
  mkspecs/win32-clang-g++/qmake.conf |  4 +--
@@ -21,7 +21,7 @@ Change-Id: I127bb0516bd4acfea588a5d48c46811525a8fca8
  3 files changed, 38 insertions(+), 21 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index c3a1f3a373..793ff540a1 100644
+index c3a1f3a373..0cc6e93c93 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -8,18 +8,24 @@
@@ -95,8 +95,8 @@ index c3a1f3a373..793ff540a1 100644
 +QMAKE_LIBS_CORE         = -lz -lpcre2-16 -liconv -lversion -lnetapi32 -luserenv -lole32 -luuid -lwinmm -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32
 +QMAKE_LIBS_GUI          = $$system($${QMAKE_PKG_CONFIG} --libs harfbuzz) $$system($${QMAKE_PKG_CONFIG} --libs freetype2) \
 +                          -ljpeg -lpng -lopengl32 -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32
-+QMAKE_LIBS_GUI_STATIC   = $$system($${QMAKE_PKG_CONFIG} --static --libs harfbuzz | sed -e "'s/\\([^ ]*\\)brotli\\([^ ]*\\)/\\1brotli\\2-static/g'" ) \
-+                          $$system($${QMAKE_PKG_CONFIG} --static --libs freetype2 | sed -e "'s/\\([^ ]*\\)brotli\\([^ ]*\\)/\\1brotli\\2-static/g'" ) \
++QMAKE_LIBS_GUI_STATIC   = $$system($${QMAKE_PKG_CONFIG} --static --libs harfbuzz) \
++                          $$system($${QMAKE_PKG_CONFIG} --static --libs freetype2) \
 +                          -ljpeg -lpng -lopengl32 -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ldxgi -ld3d11
 +QMAKE_LIBS_NETWORK      = -lws2_32 -lcrypt32 -ldnsapi -liphlpapi
 +QMAKE_LIBS_NETWORK_STATIC = $$system($${QMAKE_PKG_CONFIG} --static --libs openssl) -lws2_32 -lcrypt32 -ldnsapi -liphlpapi
@@ -162,5 +162,5 @@ index 5de482f23b..3c3d22c699 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.42.0
+2.43.0
 
