@@ -1,6 +1,6 @@
 pkgbase = circuit_macros
 	pkgdesc = Tools for drawing electric circuits and other line diagrams
-	pkgver = 10.4.1
+	pkgver = 10.5
 	pkgrel = 1
 	url = https://ece.uwaterloo.ca/~aplevich/Circuit_macros/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = circuit_macros
 	depends = m4
 	depends = dpic-git
 	optdepends = texlive-core: LaTeX system to draw the diagrams
-	source = https://ece.uwaterloo.ca/~aplevich/Circuit_macros/Circuit_macros10.4.1.tar.gz
+	source = https://ece.uwaterloo.ca/~aplevich/Circuit_macros/Circuit_macros10.5.tar.gz
 	source = circuit_macros.sh
 	md5sums = 1622d611e0fadaadfbd2cd8e9d528988
 	md5sums = 298fb2cffdc119b5c9b6a01175204f90
