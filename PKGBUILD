@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=WriteXLS
-_pkgver=6.4.0
+_pkgver=6.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Cross-Platform Perl Based R Function to Create Excel 2003 (XLS) and Excel 2007 (XLSX) Files"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b62412fab12ed7ffa5f47ed4238cdb15')
-b2sums=('848296aa855563889e3473c4b00e9958d44667611114e39010d504b67787db9c5050bac51fefc65e802f67642b4add53b4170e97b136fb8caa07a90752eb73dc')
+md5sums=('b79c9e45770f56e2b87530764c12334c')
+b2sums=('3caad60a9b707181a150e5386286d8ea5dd0e88a0ebcc0af78d588adb6bb1dae804acf641ad8f6111efed8955fff7ded81d2231e1e567f6d10b8a1dbae4c5f1f')
 
 prepare() {
   # remove some vendored perl modules, use system provided versions instead
