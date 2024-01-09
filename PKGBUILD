@@ -1,15 +1,15 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=kcaldav
 pkgdesc='Simple, safe, minimal CalDAV server'
-pkgver=0.2.4
-pkgrel=1
+pkgver=0.2.5
+pkgrel=2
 url='https://kristaps.bsd.lv/kcaldav/'
 license=(custom:BSD)
 depends=(libbsd sqlite3)
 makedepends=(expat kcgi)
 arch=(x86_64)
 source=("${url}/snapshots/${pkgname}-${pkgver}.tgz")
-sha512sums=('a82867b854d7e02870625656c5469001f7c73583d9a98e7de1d3dd3db521fd7dc8d40555b80bef98b4584fcecbcbc7a7373f107babf315bcf1459bcb62be2b0e')
+sha512sums=('a559d2684f3fd742a4eac3e36cd01cf999222aed40e05472fbd28987f8de89da96ef9a4b1d118300a546f39d43b0c719c7523e9906845274e7460a40adb56e03')
 
 build () {
 	cd "${pkgname}-${pkgver}"
@@ -24,7 +24,9 @@ build () {
 
 package () {
 	cd "${pkgname}-${pkgver}"
-	make install DESTDIR="${pkgdir}"
+	make install installcgi DESTDIR="${pkgdir}" \
+		CGIPREFIX=/usr/lib/kcaldav \
+		HTDOCSPREFIX=/usr/share/kcaldav
 
 	# Fix path for manual pages
 	install -dm755 "${pkgdir}/usr/share/"
@@ -33,4 +35,3 @@ package () {
 	awk '/^\/\*/,/\*\// { print ; }' kcaldav.c > COPYING
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
-sha512sums=('fcde895297704ad77272e10463ea7636463360a6c8ab52e46ad811b86cf89464fed044883867636292e0ec1ac5060cb05deb93a18261218c8de74bfd0eac6630')
