@@ -1,20 +1,53 @@
 # Contributor: Simo Huhtiranta <simo_huhtirantaATpp_inet_fi>  
 # Contributor: Tilmann Becker <tilmann.becker@web.de>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Miguel Revilla Rodríguez <yo at miguelrevilla.com>
 
 pkgname=scribus-svn
-pkgver=25969
+pkgver=25993
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://www.scribus.net"
-depends=('hunspell' 'podofo-0.9' 'libcups' 'graphicsmagick' 'poppler'
-	 'libcdr' 'libvisio' 'libpagemaker' 'harfbuzz-icu' 'python'
-	 'qt6-declarative' 'libmspub' 'libqxp' 'hicolor-icon-theme'
-	 'libzmf' 'libfreehand' 'qt6-base' 'qt6-5compat' 'qt6-svg')
-makedepends=('subversion' 'cmake' 'qt6-tools')
-optdepends=('lib2geom: for mesh distortion')
+depends=(	boost
+			cairo
+			fontconfig
+			freetype2
+			graphicsmagick
+			harfbuzz-icu
+			hicolor-icon-theme
+			hunspell
+			icu
+			lcms2
+			libcdr
+			libcups
+			libfreehand
+			libjpeg
+			libjxl
+			libmspub
+			libpagemaker
+			libpng
+			librevenge
+			libtiff
+			libvisio
+			libqxp
+			libxml2
+			libzmf
+			openscenegraph
+			openssl
+			podofo
+			poppler
+			python
+			qt6-5compat
+			qt6-base
+			qt6-declarative
+			qt6-imageformats
+			qt6-svg
+			zlib
+		)
+makedepends=(cmake subversion qt6-tools)
+optdepends=()
 conflicts=('scribus')
 provides=('scribus')
 source=('scribus::svn://scribus.net/trunk')
@@ -33,16 +66,13 @@ build() {
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DWANT_GRAPHICSMAGICK:BOOL=YES \
 	-DCMAKE_LIBRARY_PATH:PATH=/usr/lib/qt6 \
-        -DCMAKE_SKIP_RPATH=ON \
+	-DCMAKE_SKIP_RPATH=ON \
 	-DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=FALSE \
 	-DQT_PREFIX:PATH="/usr" \
 	-DWANT_SVNVERSION:BOOL=YES \
 	-DWANT_CPP17:BOOL=YES \
 	-DWANT_CPP17=ON \
-	-DWANT_HUNSPELL=ON \
 	-DWITH_PODOFO=ON \
-	-DLIBPODOFO_INCLUDE_DIR=/usr/include/podofo-0.9 \
-	-DLIBPODOFO_LIBRARY=/usr/lib/podofo-0.9/libpodofo.so \
   make
 }
 
