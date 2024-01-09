@@ -1,0 +1,20 @@
+pkgbase = llvm-bolt
+	pkgdesc = a post-link optimizer developed to speed up large applications
+	pkgver = 17.0.6
+	pkgrel = 1
+	url = https://github.com/llvm/llvm-project/tree/main/bolt
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = llvm
+	makedepends = python
+	options = !lto
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/llvm-project-17.0.6.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/llvm-project-17.0.6.src.tar.xz.sig
+	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
+	sha512sums = 6d85bf749e0d77553cc215cbfa61cec4ac4f4f652847f56f946b6a892a99a5ea40b6ab8b39a9708a035001f007986941ccf17e4635260a8b0c1fa59e78d41e30
+	sha512sums = SKIP
+
+pkgname = llvm-bolt
