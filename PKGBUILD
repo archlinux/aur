@@ -2,8 +2,8 @@
 
 pkgbase=openjph
 pkgname=('openjph' 'openjph-doc')
-pkgver=0.10.1
-pkgrel=2
+pkgver=0.10.3
+pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15'
 arch=('x86_64')
 url='https://github.com/aous72/OpenJPH/'
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('cmake' 'doxygen' 'libtiff')
 options=('!emptydirs')
 source=("https://github.com/aous72/OpenJPH/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('74c7bb1e5c79a3afa2f3d8ad1f23af4dea3f799083684462b9fd5f6117d823a3')
+sha256sums=('9333fe0d07b19e9cee45708beb6a965d3d4aa31b19c5e0de54c9d46618bb4835')
 
 build() {
     cmake -B build -S "OpenJPH-${pkgver}" \
