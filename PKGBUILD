@@ -2,7 +2,7 @@
 # Contributor: Daniel Greve <greve.daniel.l@gmail.com>
 
 pkgname=xxd-standalone
-pkgver=9.0.2067
+pkgver=9.1.0006
 pkgrel=1
 pkgdesc="Hexdump utility from vim"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -15,7 +15,7 @@ source=("xxd-${pkgver}.c::https://raw.githubusercontent.com/vim/vim/v${pkgver}/s
         "xxd-${pkgver}.1::https://raw.githubusercontent.com/vim/vim/v${pkgver}/runtime/doc/xxd.1"
         "$pkgname-Makefile::https://raw.githubusercontent.com/vim/vim/master/src/xxd/Makefile"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/xxd-LICENSE")
-sha256sums=('081c52b38668bb1f68afbb9fef4d73eec88fc12f6ac0f8bef5abf4332d8a61d0'
+sha256sums=('e231d1c0853fb31ef29cb277829f9c1dcb8d932a1371ee14bb95e753103638a0'
             '2e12c5a5c63ad0a1eb323452caa1ea6f853b0a6fedbfae99ddd4d26d486a8b87'
             '96d7229490da56fbf6cae3791407238636b2979e1f607e535f55ec26068303c5'
             '2ac99e6ff2ee077cfec2133d0d5d2d4f14b156994c4c1896703cda98c2d21845')
