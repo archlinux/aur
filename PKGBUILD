@@ -8,8 +8,18 @@ arch=('any')
 url="https://github.com/devicetree-org/dt-schema"
 license=('BSD')
 groups=()
-depends=('python' 'python-ruamel-yaml' 'python-rfc3987' 'python-jsonschema')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+depends=(
+    python
+    python-ruamel-yaml
+    python-rfc3987
+    python-jsonschema
+)
+makedepends=(
+    python-build
+    python-installer
+    python-setuptools-scm
+    python-wheel
+)
 provides=()
 conflicts=()
 replaces=()
