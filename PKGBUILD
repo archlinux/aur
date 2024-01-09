@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RTriangle
-_pkgver=1.6-0.12
+_pkgver=1.6-0.13
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0.12
+pkgver=1.6.0.13
 pkgrel=1
 pkgdesc='Triangle - A 2D Quality Mesh Generator and Delaunay Triangulator'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bed711fa926569cc80b0735b4a042c1f9c9c9a2f271ae20a3791f7a9765d6bdb')
+sha256sums=('86dd62086c7bb6d6609502d9c1180d3d060ddad8f0dfb5f334115547c6a771e5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
