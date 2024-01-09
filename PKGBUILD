@@ -2,7 +2,7 @@
 
 pkgname=scanpy
 pkgver=1.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
 provides=(scanpy python-scanpy)
@@ -26,7 +26,7 @@ depends=(
 	'python-numba>=0.41.0'
 	'python-umap-learn>=0.3.10'
 	python-packaging
-	python-sinfo
+	python-session-info
 )
 optdepends=(
 	'python-igraph: PAGA support (also transitively needed for Louvain/Leiden)'

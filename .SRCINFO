@@ -1,7 +1,7 @@
 pkgbase = scanpy
 	pkgdesc = Single-Cell Analysis in Python
 	pkgver = 1.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theislab/scanpy
 	arch = any
 	license = BSD
@@ -27,7 +27,7 @@ pkgbase = scanpy
 	depends = python-numba>=0.41.0
 	depends = python-umap-learn>=0.3.10
 	depends = python-packaging
-	depends = python-sinfo
+	depends = python-session-info
 	optdepends = python-igraph: PAGA support (also transitively needed for Louvain/Leiden)
 	optdepends = python-louvain-igraph: Louvain clustering
 	optdepends = python-leidenalg: leiden community detection
