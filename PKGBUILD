@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
@@ -9,17 +9,15 @@ license=('Apache')
 source=("git+https://github.com/nestybox/sysbox.git#tag=v$pkgver"
         # On a recursive clone, git submodule foreach --recursive git rev-parse HEAD
         "git+https://github.com/nestybox/dockerfiles.git#commit=5b7ec2230af7fb65eb820277e8c408cfa68f79b7"
-        "git+https://github.com/nestybox/sysbox-fs.git#commit=30fd49edbd51048fed8b2ad0af327598d30b29eb"
+        "git+https://github.com/nestybox/sysbox-fs.git#commit=ff6e109d64856db9b4bce8d10226371d7797ba96"
         "git+https://github.com/nestybox/fuse.git#commit=45cd9a3d884448418546d8eaa54ee7d772e576d6"
         "git+https://github.com/nestybox/sysbox-ipc.git#commit=8ab58c1422bea9fb6c147c032d012e0568695885"
-        "git+https://github.com/nestybox/sysbox-libs.git#commit=9f50cc29d4bc301dc6850929e16129c64492114a"
-        "git+https://github.com/nestybox/libseccomp.git#commit=8249e759351de2c647fa6e4f2e7db6261a624542"
-        "git+https://github.com/nestybox/libseccomp-golang.git#commit=11a59bb55bc48351c32a814b20f284ad4e941af4"
-        "git+https://github.com/nestybox/sysbox-mgr.git#commit=4b5fb1def9abe6a256cfe62bacaf2a7d333d81d2"
-        "git+https://github.com/nestybox/sysbox-pkgr.git#commit=b560194d516b300e9e201274a29348d3626055c1"
-        "git+https://github.com/nestybox/sysbox-runc.git#commit=60ca93c783b19c63581e34aa183421ce0b9b26b7"
+        "git+https://github.com/nestybox/sysbox-libs.git#commit=a33b350b63db747998d4f0108d13f754de8a12e5"
+        "git+https://github.com/nestybox/sysbox-mgr.git#commit=03f5d7bc584fdcb2319b2c1831bd58581185fc1c"
+        "git+https://github.com/nestybox/sysbox-pkgr.git#commit=52a0029982f3819d16a60c147b8e72fb1593e67e"
+        "git+https://github.com/nestybox/sysbox-runc.git#commit=e6ca9b930c43c0f20bb93ef3ef6af5bd49fd88ce"
         Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch)
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             5264ed0c448868083a9f1bedc2846d744c9ea90e58f8555c50bbc155008512e5)
 install=install.sh
 depends=('rsync' 'fuse2')
@@ -45,8 +43,6 @@ prepare() {
 	git -C sysbox/sysbox-fs -c protocol.file.allow=always submodule update
 
 	git -C sysbox/sysbox-libs submodule init
-	git -C sysbox/sysbox-libs config submodule.libseccomp.url "$srcdir/libseccomp"
-	git -C sysbox/sysbox-libs config submodule.libseccomp-golang.url "$srcdir/libseccomp-golang"
 	git -C sysbox/sysbox-libs -c protocol.file.allow=always submodule update
 
 	# Migrate to the new protoc-gen-go-grpc generator. Set require_unimplemented_servers=false for compatibility:
