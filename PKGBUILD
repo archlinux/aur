@@ -2,7 +2,7 @@
 _pkgname='matrix-authentication-service'
 pkgname="$_pkgname-git"
 pkgver=r2156.ba95dd02
-pkgrel=3
+pkgrel=4
 pkgdesc='Authentication service for Matrix Synapse'
 arch=('x86_64')
 url="https://github.com/matrix-org/$_pkgname"
