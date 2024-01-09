@@ -2,7 +2,7 @@
 
 pkgname=python-onnx
 pkgver=1.15.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Open Neural Network Exchange'
 arch=('x86_64')
@@ -30,12 +30,11 @@ sha512sums=('SKIP')
 prepare() {
   cd "${pkgname}"
   git submodule update --init --recursive
-  # bump CMAKE_CXX_STANDARD to 17, see also https://github.com/onnx/onnx/pull/5119
-  sed -i 's#CMAKE_CXX_STANDARD 14#CMAKE_CXX_STANDARD 17#' CMakeLists.txt
 }
 
 build() {
   cd "${pkgname}"
+  CMAKE_ARGS="-DCMAKE_CXX_STANDARD=17" \
   python -m build --wheel --no-isolation
 }
 
