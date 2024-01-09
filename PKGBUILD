@@ -14,6 +14,8 @@ pkgver=0.1
 pkgrel=2
 license=(
   'AGPL3')
+depends=(
+  curl)
 makedepends=(
   'git'
 )
