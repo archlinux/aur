@@ -1,31 +1,39 @@
 # Maintainer: jlaunay
-pkgname=hyprlang-git
-pkgver=0.2.1.r3.4c28464
+_pkgname=hyprlang
+pkgname="${_pkgname}-git"
+pkgver=0.2.1.r6.d486806
 pkgrel=1
 pkgdesc="hyprlang - the hypr configuration language"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/hyprwm/hyprlang"
 license=("GPL")
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cmake')
-provides=("lib${pkgname/-git/}.so" "${pkgname/-git/}")
-conflicts=("${pkgname/-git/}")
-source=("${pkgname/-git/}::git+https://github.com/hyprwm/${pkgname/-git/}.git")
+provides=(
+	"$_pkgname=${pkgver%%.r*}"
+	"lib$_pkgname.so"
+	)
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname/-git/}"
+	cd "$_pkgname"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/${pkgname/-git/}"
-	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=${PKGDIR}/usr -S . -B build
-	cmake --build ./build --config Release --target ${pkgname/-git/} -j$(nproc)
-
+	local _cmake_options=(
+		-B build
+		-S ${pkgname/-git/}
+		-DCMAKE_BUILD_TYPE=Release
+		-DCMAKE_INSTALL_PREFIX=/usr
+		--no-warn-unused-cli
+	)
+	cmake "${_cmake_options[@]}"
+	cmake --build build
 }
 
 package() {
-	cd "${srcdir}/${pkgname/-git/}"
 	DESTDIR="$pkgdir" cmake --install build
 }
