@@ -1,3 +1,27 @@
+## GE-Proton8-26
+
+- updated wine to bleeding edge
+- updated dxvk to git
+- updated vkd3d-proton to git
+- updated dxvk-nvapi to latest upstream proton
+- pulled in latest upstream proton bleeding edge changes
+- added farlight 84 patch update
+- VR fix for Beam.NG.Drive added ([#106](https://github.com/GloriousEggroll/proton-ge-custom/pull/106) thanks gamingdoom)
+- NVIDIA Reflex implemented ([#104](https://github.com/GloriousEggroll/proton-ge-custom/pull/104) thanks loathingKernel)
+
+protonfixes:
+
+- unified fix for cpu topology workaround ([GloriousEggroll/protonfixes#167](https://github.com/GloriousEggroll/protonfixes/pull/167) thanks Root-Core)
+- unified fix for protonaudioconv workaround ([GloriousEggroll/protonfixes#168](https://github.com/GloriousEggroll/protonfixes/pull/168) thanks R1kaB3rN)
+- unified fix for xliveless xlive workaround added ([GloriousEggroll/protonfixes#170](https://github.com/GloriousEggroll/protonfixes/pull/170) thanks Root-Core)
+- unified fix for esync/fsync enable/disable added ([GloriousEggroll/protonfixes#169](https://github.com/GloriousEggroll/protonfixes/pull/169) thanks R1kaB3rN)
+- cutscene audio in BlazBlue Centralfiction workaround added (thanks spifferoo)
+- game fix added for Renegade Ops (thanks Root-Core)
+- cleanup of deprecated LAA, dxvk-async, and win32 helper functions (thanks R1kaB3rN)
+- cutscene audio fix for The Great Ace Attorney Chronicles workaround added (thanks eagleflo)
+- game fix added for The Forest (thanks Root-Core)
+- updated fix for Super Naughty Maid 2 (thanks R1kaB3rN)
+
 ## GE-Proton8-25
 
 HOTFIX:
