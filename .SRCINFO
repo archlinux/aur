@@ -1,18 +1,18 @@
 pkgbase = claude-desktop
 	pkgdesc = An Electron-based desktop application for Claude2(unofficial).
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Karenina-na/Claude-Desktop
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
-	makedepends = nodejs>=20.4.2
+	makedepends = nodejs
 	depends = electron25
 	conflicts = claude-desktop
-	source = claude-desktop-1.0.0::git+https://github.com/Karenina-na/Claude-Desktop.git#tag=v1.0.0
+	source = claude-desktop.git::git+https://github.com/Karenina-na/Claude-Desktop.git#tag=v1.0.0
 	source = claude-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 4242209b2509c3b3cdebd5a6391a7a4c39d09932db2112c84e3200285d79429d
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = claude-desktop
