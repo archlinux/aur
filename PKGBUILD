@@ -5,9 +5,9 @@
 
 _basename=zoom
 pkgname=$_basename-system-qt
-pkgver=5.17.1
-_subver=1840
-pkgrel=1
+pkgver=5.16.6
+_subver=382
+pkgrel=2
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
 license=('custom')
@@ -38,7 +38,7 @@ optdepends=('qt5-webengine: SSO login support'
             'xcompmgr: extra compositor needed by some window managers for screen sharing'
             'pulseaudio-alsa: output sound via pulseaudio' )
 source=("${pkgname}-${pkgver}.${_subver}_orig_x86_64.pkg.tar.xz"::"https://cdn.zoom.us/prod/${pkgver}.${_subver}/zoom_x86_64.pkg.tar.xz")
-b2sums=('2eb92ade31f14313e33e48d8dcad0ece2e738c142c17e84c5f5c5d21ad947b2b68f6f8bd5c58a6dec185d635ea66f9c2608fb93d92159eb11aee280b8c544016')
+sha512sums=('c70acebcda8719c12a5c69607c5b6195e16b8c70ad9cb65d1878064134988fdbfd01288df7ce8d41153614f7c5678222ad98ee3deac08f23acbacfd694860d65')
 
 _replace() {
     rm -rf $1
@@ -59,25 +59,16 @@ package() {
     _replace Qt/qml qt/qml
 
     #_replace cef/locales electron/locales
-
-    _replace cef/chrome-sandbox electron/chrome-sandbox
-    _replace cef/chrome_100_percent.pak electron/chrome_100_percent.pak
-    _replace cef/chrome_200_percent.pak electron/chrome_200_percent.pak
-    #_replace cef/resources.pak electron/resources.pak
-    _replace cef/libffmpeg.so electron/libffmpeg.so
+    #_replace cef/chrome_100_percent.pak electron/chrome_100_percent.pak
+    #_replace cef/chrome_200_percent.pak electron/chrome_200_percent.pak
+    _replace cef/libffmpeg.so opera/lib_extra/libffmpeg.so
     _replace cef/libEGL.so electron/libEGL.so
     _replace cef/libGLESv2.so electron/libGLESv2.so
     _replace cef/libsqlite3.so.0 libsqlite3.so.0
     _replace cef/libvk_swiftshader.so electron/libvk_swiftshader.so
-    _replace cef/libvulkan.so.1 electron/libvulkan.so.1
-    # cef/libVkICD_mock_icd.so (chromium thing)
-    #_replace cef/libcef.so libcef.so
+    # libVkICD_mock_icd.so ?
     #_replace cef/libVkLayer_khronos_validation.so libVkLayer_khronos_validation.so smaller binary
-
-    #_replace cef/snapshot_blob.bin electron/snapshot_blob.bin
-    #_replace cef/v8_context_snapshot.bin electron/v8_context_snapshot.bin
-    _replace cef/vk_swiftshader_icd.json electron/vk_swiftshader_icd.json
-
+    _replace cef/libvulkan.so.1 electron/libvulkan.so.1
     _replace libturbojpeg.so libturbojpeg.so
     _replace libswresample.so.4 libswresample.so.4
     _replace libquazip.so libquazip1-qt5.so
