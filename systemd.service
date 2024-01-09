@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=mas
 WorkingDirectory=/usr/share/matrix-authentication-service
-ExecStart=/usr/bin/mas-cli server --migrate
+ExecStart=/usr/bin/mas-cli server --migrate -c /etc/matrix-authentication-service/config.yaml
 Restart=on-failure
 
 # Hardening

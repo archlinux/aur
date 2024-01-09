@@ -25,7 +25,7 @@ source=(
 b2sums=('SKIP'
         'f6ffc73dfaca2ffdc3551071dfc31f94bae50393d9609bc4498901c87750560e31cf14bdeb00474d8bc51b175468501f3ad0f015ce242c5a4c571eb94ed9a851'
         '7fdd9c3762be351b9fa9948b247af9520b17bdcf8a92849a83479ca8f24dde3e56404eee24b9a05380491a63c4be55b0ceecdcc25e5de6febc5d1bce727df1ab'
-        '8d4f8e5ce049a3cf4d0ab0dff7a3d995030d806e8dadb4cba8e0ebd13dc7ab744999415bd0ba151fe649af6389ec78c738253348e7ceae70ecc43205f5433a7e')
+        'bdcb4bd4b778c5959f36ccbc7fdb220f580acb04652221db0fca1ed11ed5f0e0d16fee05762375bbf118de12110e57dfb294541ef972a034819992993ad90488')
 pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
