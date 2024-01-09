@@ -2,20 +2,20 @@
 # Maintainer: Mahmut Dikcizgi <boogiepop a~t gmx com>
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 
-_pkgver=5.10.160
+_pkgver=6.1
 _kernel_tag="opi"
 pkgbase=linux-$_kernel_tag
 pkgname=("${pkgbase}-headers" $pkgbase)
-pkgver=5.10.160
-pkgrel=28
+pkgver=6.1.43
+pkgrel=1
 arch=('aarch64')
 license=('GPL2')
-url="https://github.com/Joshua-Riek"
-pkgdesc="Linux kernel package targeting to pretest 5.10.160 merges for opi" 
+url="https://github.com/nyanmisaka"
+pkgdesc="Linux kernel package targeting to pretest 6.1 merges for opi" 
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
 
-source=(git+$url/linux-rockchip.git#tag=${pkgver}-${pkgrel}
+source=(git+$url/linux-rockchip.git#branch=rk-6.1-dev2
         'linux.preset'
         )
 
@@ -34,7 +34,7 @@ prepare() {
     patch -p1 -N -i $p || true
   done
 
-  cp -f arch/arm64/configs/rockchip_linux_defconfig ./.config
+  cp -f arch/arm64/configs/rockchip_defconfig ./.config
   
   make olddefconfig prepare
   make -s kernelrelease > version
