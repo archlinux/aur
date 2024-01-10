@@ -1,7 +1,7 @@
-From 381607a5840eac886bbc6737e19acf5b942fe671 Mon Sep 17 00:00:00 2001
+From 767e4924190a6db61a98a633894c25c74af39fd5 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 5 Oct 2023 14:44:49 -0600
-Subject: [PATCH 8/9] Linux 6.6: convert to ctime accessor functions
+Subject: [PATCH 08/10] Linux 6.6: convert to ctime accessor functions
 
 The Linux 6.6 commit "fs: add ctime accessors infrastructure"
 (9b6304c1d5) added accessor functions for an inode's ctime member.
@@ -70,7 +70,7 @@ index 2220e0530..f9ceb359e 100644
  #define gop_lookupname osi_lookupname
  
 diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
-index 4e33a189e..1eb99d1d4 100644
+index dc1e32f98..903b5dd5c 100644
 --- a/src/afs/LINUX/osi_vnodeops.c
 +++ b/src/afs/LINUX/osi_vnodeops.c
 @@ -1144,8 +1144,7 @@ vattr2inode(struct inode *ip, struct vattr *vp)
@@ -101,5 +101,5 @@ index 105e58cce..dc26b6056 100644
  dnl                above tests
  AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
 -- 
-2.42.1
+2.43.0
 

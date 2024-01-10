@@ -1,7 +1,7 @@
-From 3ea74b4e38a47c8dd3b2cde5445c5db7021267b1 Mon Sep 17 00:00:00 2001
+From c90ef42fcbe39270e8bfc3089e2cf1ce7ecbce16 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Wed, 6 Sep 2023 11:41:55 -0600
-Subject: [PATCH 7/9] LINUX: Pass an array of structs to register_sysctl
+Subject: [PATCH 07/10] LINUX: Pass an array of structs to register_sysctl
 
 The Linux 6.6 commit "sysctl: Add size to register_sysctl" (9edbfe92a0)
 renamed the Linux function register_sysctl() to register_sysctl_sz() and
@@ -57,5 +57,5 @@ index 145725575..105e58cce 100644
  dnl Linux 6.5 removed the file_operations method 'iterate'.  Filesystems should
  dnl using the iterate_shared method (introduced in linux 4.6).  Linux 6.4
 -- 
-2.42.1
+2.43.0
 

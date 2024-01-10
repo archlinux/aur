@@ -1,7 +1,7 @@
-From 0f36a779b39e7b020f2ea841b59bfe06ddf9773f Mon Sep 17 00:00:00 2001
+From 75ada815f0177b2e90ee8e2f8b08124eb9abf604 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Mon, 18 Sep 2023 12:23:01 -0600
-Subject: [PATCH 9/9] Linux 6.6: Pass request_mask to generic_fillattr
+Subject: [PATCH 09/10] Linux 6.6: Pass request_mask to generic_fillattr
 
 The Linux 6.6 commit: "fs: pass the request_mask to generic_fillattr"
 (0d72b92883) added an additional parameter to Linux's
@@ -39,7 +39,7 @@ Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
  3 files changed, 18 insertions(+)
 
 diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
-index 1eb99d1d4..8a49781b9 100644
+index 903b5dd5c..86dd7b473 100644
 --- a/src/afs/LINUX/osi_vnodeops.c
 +++ b/src/afs/LINUX/osi_vnodeops.c
 @@ -1195,7 +1195,11 @@ afs_linux_getattr(struct mnt_idmap *idmap, const struct path *path, struct kstat
@@ -88,5 +88,5 @@ index 0d6b645f4..f15c6b94d 100644
 +                       [])
 +])
 -- 
-2.42.1
+2.43.0
 
