@@ -1,7 +1,7 @@
 pkgbase = epicmickeylauncher
 	pkgdesc = Mod Installer, Level Loader & Launcher for every Epic Mickey game.
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://eml.memerdev.com
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Jonas Kalsvik <jonaskalsvik@gmail.com>
 pkgname="epicmickeylauncher"
 pkgver="0.3.8"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Mod Installer, Level Loader & Launcher for every Epic Mickey game."
 arch=('x86_64')
