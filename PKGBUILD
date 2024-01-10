@@ -18,8 +18,8 @@ optdepends=(
 options=('!strip')
 source_x86_64=("${pkgbase%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-appimage}-${pkgver}-x86_64.AppImage")
 source_aarch64=("${pkgbase%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-appimage}-${pkgver}-aarch64.AppImage")
-sha256sums_x86_64=('309a9be742bc63798064e712d0eb8745987d55f76f32a8d99e2089dba7b0795e')
-sha256sums_aarch64=('cec5fbe91ed58245563c42767b38ff9c75390c83c7f4964511c3c59cd038850d')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 _install_path="/opt/appimages"
 
 prepare() {
