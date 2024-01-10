@@ -2,7 +2,7 @@
 
 pkgname=gcfflasher
 pkgver=4.3.0_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to program the firmware of dresden elektronik's Zigbee products."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/dresden-elektronik/gcfflasher"
@@ -24,6 +24,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install "build-$pkgver"
-  cd $pkgname
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
