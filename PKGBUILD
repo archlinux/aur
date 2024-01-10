@@ -55,7 +55,7 @@ build() {
   #     update \
   #       --init
   arch-meson \
-    "${_Pkg}" \
+    "${_Pkg}-${pkgver}" \
     build
   ninja \
     -C \
