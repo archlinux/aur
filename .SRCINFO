@@ -1,13 +1,15 @@
 pkgbase = python-farama-notifications
 	pkgdesc = Notices from the Farama Foundation; given as a dependency for all of their packages.
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Farama-Foundation/Farama-Notifications
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/F/Farama-Notifications/Farama-Notifications-0.0.4.tar.gz
 	source = https://raw.githubusercontent.com/Farama-Foundation/Farama-Notifications/0.0.4/LICENSE
 	sha256sums = 13fceff2d14314cf80703c8266462ebf3733c7d165336eee998fc58e545efd18
