@@ -1,0 +1,21 @@
+pkgbase = pianobooster-qt6-git
+	pkgdesc = PianoBooster is a free (Open Source) program that plays Standard Midi Files and allows you to change the speed of playback and transpose the music etc.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/pianobooster/PianoBooster
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = qt6-base
+	depends = qt6-tools
+	depends = qt6-tools-tools
+	depends = qt6-5compat
+	depends = ftgl
+	depends = rtmidi
+	depends = fluidsynth
+	depends = fluid-soundfont-gm
+	source = git+https://github.com/pianobooster/PianoBooster.git#branch=develop
+
+pkgname = pianobooster-qt6-git
