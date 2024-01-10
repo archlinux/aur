@@ -1,0 +1,22 @@
+pkgbase = dde-shell
+	pkgdesc = New DDE shell
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-shell
+	arch = x86_64
+	arch = aarch64
+	groups = deepin
+	license = LGPL3
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = qt5-tools
+	makedepends = dtk6declarative
+	makedepends = qt6-wayland
+	makedepends = cmake
+	makedepends = ninja
+	depends = dtk6declarative
+	depends = qt6-wayland
+	source = https://github.com/linuxdeepin/dde-shell/archive/0.0.4/dde-shell-0.0.4.tar.gz
+	sha512sums = 07c3ee1d8318ad58a5490785b28cffe05f70f8e4526980a4f59a297cf9ea50e6cca672791d750adc06961e10e1d894b48b2a5d66f25832c13fc05ba3a80d64b4
+
+pkgname = dde-shell
