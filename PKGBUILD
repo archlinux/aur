@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=somafm
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc='A simple radio with built-in stations from the website somafm.com'
 url="https://github.com/alexkdeveloper/somafm"
@@ -14,7 +14,7 @@ source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  arch-meson $pkgname build
+  arch-meson somafm build
   meson compile -C build
 }
 
@@ -24,5 +24,5 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  ln -s com.github.alexkdeveloper.$pkgname "$pkgdir/usr/bin/$pkgname"
+  ln -s com.github.alexkdeveloper.somafm "$pkgdir/usr/bin/somafm"
 }
