@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.12.2
+pkgver=4.14.4
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -23,11 +23,11 @@ license=('GPL3')
 # for my mental sanity.
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'jemalloc' 'abseil-cpp' 'libdispatch'
+         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'abseil-cpp' 'libdispatch'
          'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'glibmm-2.68')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
-             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'libsigc++-3.0')
+             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 provides=(telegram-desktop)
@@ -159,6 +159,14 @@ prepare() {
     git -C "$srcdir/tdesktop" config src.cmake.url "$srcdir/submodule_cmake_helpers"
     git -C "$srcdir/tdesktop" submodule update
 
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule init
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" config src.cmake.url "$srcdir/submodule_cmake_helpers"
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule update
+
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule init
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" config src.doc/gh-pages.url "$srcdir/submodule_range-v3"
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule update
+
     git -C "$srcdir/tdesktop/cmake" submodule init
     git -C "$srcdir/tdesktop/cmake" config src.external/Implib.so.url "$srcdir/submodule_Implib.so"
     git -C "$srcdir/tdesktop/cmake" config src.external/glib/cppgir.url "$srcdir/submodule_cppgir"
@@ -167,14 +175,6 @@ prepare() {
     git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" submodule init
     git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" config src.expected-lite.url "$srcdir/submodule_expected-lite"
     git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" submodule update
-
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule init
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" config src.doc/gh-pages.url "$srcdir/submodule_range-v3"
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule update
-
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule init
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" config src.cmake.url "$srcdir/submodule_cmake_helpers"
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule update
 
     # Normal preparation here
     cd "$srcdir/tdesktop"
