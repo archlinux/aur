@@ -2,7 +2,7 @@
 
 pkgname='tremotesf'
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Remote GUI for transmission-daemon'
 _github='https://github.com/equeim/tremotesf2'
 url="${_github}"
@@ -28,5 +28,6 @@ check() {
 }
 
 package() {
+    depends+=('kwayland-integration')
     DESTDIR="$pkgdir" cmake --install build
 }
