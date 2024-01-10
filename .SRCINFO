@@ -1,0 +1,17 @@
+pkgbase = pkenv
+	pkgdesc = Packer version manager inspired by tfenv
+	pkgver = 0.5.3
+	pkgrel = 2
+	url = https://github.com/iamhsa/pkenv
+	install = pkenv.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = unzip
+	provides = pkenv
+	provides = packer
+	conflicts = packer
+	source = https://github.com/iamhsa/pkenv/archive/0.5.3.tar.gz
+	sha512sums =fc35d5eff70695a7be51abfb7b76baa0a5fdf6989cf783d73c5b2449facd50ec468569b09c43917300f16a3b69648d2e6399d1c736a32c79f9cc23458c7b1574
+
+pkgname = pkenv

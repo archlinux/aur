@@ -1,0 +1,30 @@
+post_install () {
+	common
+}
+
+post_upgrade() {
+  if [ -d "/usr/local/lib/pkenv/versions" ]; then
+    echo "Detected old pkenv paths. Moving..."
+    mv /usr/local/lib/pkenv/version{,s} /var/lib/pkenv/
+		rm -r /usr/local/lib/pkenv
+  fi
+	common
+}
+
+common () {
+	if ! getent group pkenv >/dev/null ; then
+		echo "Adding group 'pkenv'"
+		groupadd pkenv
+	fi
+
+	mkdir -p "/var/lib/pkenv/versions"
+	touch "/var/lib/pkenv/version"
+	chgrp -R pkenv "/var/lib/pkenv/versions" "/var/lib/pkenv/version"
+	chmod -R 775 "/var/lib/pkenv/versions" "/var/lib/pkenv/version"
+
+	echo '######################################'
+	echo '# In order to be able to install and change packer versions as a non-root user, please add it to the group pkenv'
+	echo '# sudo usermod -aG pkenv ${USER}'
+	echo '######################################'
+}
+
