@@ -1,6 +1,6 @@
 # Maintainer: ivanich
 pkgname=kodi-addon-inputstream-adaptive-any
-pkgver=20.3.15
+pkgver=20.3.16
 pkgrel=1
 pkgdesc="Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture"
 _koditarget=Nexus
@@ -18,7 +18,7 @@ source=("https://github.com/xbmc/${_gitname}/archive/${pkgver}-${_koditarget}.ta
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
 
-sha256sums=('1d7c933d05534e591e11fd204e836a3498fffc6a0717d5427c89acfd16fb9d40'
+sha256sums=('4651c022395f92906be40e8c923c9f90c3e9190d9dafee9e229ca1846605c5c5'
             '4e81abf81172812bc8891f69a7a80a2b846298cecaae7b5009725e28a3040c23')
 
 prepare() {
