@@ -3,7 +3,7 @@
 # Maintainer: Bence Hornák <hornak.bence@gmail.com>
 
 pkgname=anyk
-pkgver=3.28.0
+pkgver=3.29.0
 subver=0.1
 pkgrel=1
 pkgdesc='Form fill program of the Hungarian tax office (Általános Nyomtatványkitöltő (ÁNYK))'
@@ -20,7 +20,7 @@ source=("AbevJava-${pkgver}.${subver}-${pkgrel}::https://nav.gov.hu/pfile/rpmFil
         'anyk.desktop'
         'setenv'
         'anyk.sysusers')
-md5sums=('e2945573ab2b1e745a0f4d6a6d1fac3c'
+md5sums=('404775f5726ae0c28f6e3f8854a4bb61'
          '14e676f715c1008dda83ffd7c3a127ec'
          '5dae655a84d5dd76401011f5629d8f0f'
          '86e4d78220da7d2d7a9015067d48ab9f'
@@ -38,7 +38,7 @@ package() {
     install -m 644 "${srcdir}"/abevjavapath.cfg "${pkgdir}"/etc
 
     install -D "${srcdir}/${pkgname}".desktop "${pkgdir}"/usr/share/applications/"${pkgname}".desktop
-	install -Dm 644 "${srcdir}"/application/abevjava.png "${pkgdir}"/usr/share/pixmaps/abevjava.png
+    install -Dm 644 "${srcdir}"/application/abevjava.png "${pkgdir}"/usr/share/pixmaps/abevjava.png
 
     cp -r "${srcdir}"/application/* "${pkgdir}"/usr/share/abevjava
 
