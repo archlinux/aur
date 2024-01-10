@@ -10,8 +10,8 @@ pkgbase = libjuice
 	license = MPL2
 	makedepends = git
 	makedepends = cmake
-	provides = libjuice
-	conflicts = libjuice
+	depends = glibc
+	provides = libjuice.so
 	source = git+https://github.com/paullouisageneau/libjuice.git#tag=v1.3.3
 	md5sums = SKIP
 
