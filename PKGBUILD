@@ -5,7 +5,8 @@
 pkgname=whalebird-bin
 _pkgname=Whalebird
 pkgver=5.1.1
-pkgrel=2
+_electronversion=22
+pkgrel=3
 pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
 url="https://whalebird.social/"
@@ -14,17 +15,21 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron22'
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('556acfb66a0f37d7be1b838c37aa371228efd3655c6d212ac2ecd5749c9ec57a'
-            '7923440bf061d75d34e967f7f5ac538c0686ab0c23b2f522c8c6276ec823b36b')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
