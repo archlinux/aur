@@ -1,21 +1,21 @@
 pkgbase = python-azure-identity
 	pkgdesc = Microsoft Azure Identity Library for Python
-	pkgver = 1.13.0
-	pkgrel = 2
+	pkgver = 1.15.0
+	pkgrel = 1
 	url = https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity
 	arch = any
 	license = MIT
 	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python-azure-core>=1.11.0
+	depends = python-azure-core>=1.23.0
 	depends = python-azure-core<2.0.0
 	depends = python-cryptography>=2.5
-	depends = python-msal>=1.12.0
+	depends = python-msal>=1.24.0
 	depends = python-msal<2.0.0
 	depends = python-msal-extensions>=0.3.0
 	depends = python-msal-extensions<2.0.0
 	depends = python-six>=1.12.0
-	source = https://files.pythonhosted.org/packages/py3/a/azure_identity/azure_identity-1.13.0-py3-none-any.whl
-	sha256sums = bd700cebb80cd9862098587c29d8677e819beca33c62568ced6d5a8e5e332b82
+	source = https://files.pythonhosted.org/packages/py3/a/azure_identity/azure_identity-1.15.0-py3-none-any.whl
+	sha256sums = a14b1f01c7036f11f148f22cd8c16e05035293d714458d6b44ddf534d93eb912
 
 pkgname = python-azure-identity
