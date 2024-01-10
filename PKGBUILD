@@ -36,6 +36,9 @@ makedepends=(
 	'tomlplusplus>=3.1'
 	'xxhash>=0.8'
 )
+optdepends=(
+	'fancy-mouse-boot-rom: first-stage xbox bootrom'
+)
 install=$pkgname.install
 _commit='03f40b1d8e873b57eab68dc66ae9892aa5e39f89'
 source=(

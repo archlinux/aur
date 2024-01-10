@@ -30,6 +30,7 @@ pkgbase = xemu
 	depends = libhttplib.so
 	depends = sdl2
 	depends = zlib
+	optdepends = fancy-mouse-boot-rom: first-stage xbox bootrom
 	source = xemu::git+https://github.com/xemu-project/xemu.git#commit=03f40b1d8e873b57eab68dc66ae9892aa5e39f89
 	source = xemu-imgui::git+https://github.com/xemu-project/imgui.git
 	source = berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git
