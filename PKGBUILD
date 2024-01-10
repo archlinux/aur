@@ -1,15 +1,12 @@
 # Maintainer: Meow King <mr.ziqiyang@gmail.com>
 _pkgname=emacs-lsp-booster
 pkgname=emacs-lsp-booster-git
-pkgver=0.1.1 # NOTE
+pkgver=r42.b98b873 # NOTE
 pkgrel=1 # NOTE
 pkgdesc="Emacs LSP performance booster "
 arch=("x86_64")
 url="https://github.com/blahgeek/emacs-lsp-booster"
-license=('MIT') # currently no license available, previous it is BSD 3-Clause
-makedepends=(
-    "libarchive" # bsdtar
-)
+license=('MIT')
 depends=()
 makedepends=('cargo')
 conflicts=($_pkgname)
