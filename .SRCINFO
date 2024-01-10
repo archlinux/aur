@@ -1,7 +1,7 @@
 pkgbase = obs-studio-browser
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 30.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = obs-studio-browser
 	makedepends = libfdk-aac
 	makedepends = luajit
 	makedepends = nlohmann-json
-	makedepends = onevpl
+	makedepends = libvpl
 	makedepends = python>=3.11
 	makedepends = sndio
 	makedepends = swig
@@ -71,7 +71,7 @@ pkgbase = obs-studio-browser
 	depends = nss
 	optdepends = jack: JACK support
 	optdepends = libfdk-aac: FDK AAC codec support
-	optdepends = onevpl: QSV encoder support
+	optdepends = libvpl: QSV encoder support
 	optdepends = intel-media-sdk: QSV encoder support(<= Rocket Lake & >= Broadwell)
 	optdepends = onevpl-intel-gpu: QSV encoder support (>= Alder Lake)
 	optdepends = intel-media-driver: VAAPI encoder support (>= Broadwell)

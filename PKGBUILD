@@ -7,7 +7,7 @@
 
 pkgname=obs-studio-browser
 pkgver=30.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -74,7 +74,7 @@ makedepends=(
   "libfdk-aac" # Deps of FDK AAC plugin
   "luajit" # Deps of Scripting plugin
   "nlohmann-json" # Deps of Websocket plugin (headers-only lib)
-  "onevpl" # Deps of QSV plugin
+  "libvpl" # Deps of QSV plugin
   "python>=$_pythonver" # Deps of Scripting plugin
   "sndio" # Deps of sndio plugin
   "swig" # Deps of Scripting plugin
@@ -88,7 +88,7 @@ makedepends=(
 optdepends=(
   "jack: JACK support"
   "libfdk-aac: FDK AAC codec support"
-  "onevpl: QSV encoder support"
+  "libvpl: QSV encoder support"
   "intel-media-sdk: QSV encoder support(<= Rocket Lake & >= Broadwell)"
   "onevpl-intel-gpu: QSV encoder support (>= Alder Lake)"
   "intel-media-driver: VAAPI encoder support (>= Broadwell)"
