@@ -10,11 +10,12 @@ pkgbase = libdatachannel
 	license = MPL2
 	makedepends = git
 	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
 	depends = openssl
 	depends = libjuice
 	depends = libsrtp
-	provides = libdatachannel
-	conflicts = libdatachannel
+	provides = libdatachannel.so
 	source = git+https://github.com/paullouisageneau/libdatachannel.git#tag=v0.19.5
 	md5sums = SKIP
 

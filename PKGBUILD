@@ -9,9 +9,9 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/paullouisageneau/$pkgname"
 license=('MPL2')
 makedepends=('git' 'cmake')
-depends=('openssl' 'libjuice' 'libsrtp')
-provides=("$pkgname")
-conflicts=("$pkgname")
+depends=('glibc' 'gcc-libs' 'openssl' 'libjuice' 'libsrtp')
+provides=('libdatachannel.so')
+conflicts=()
 source=("git+https://github.com/paullouisageneau/$pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
 
