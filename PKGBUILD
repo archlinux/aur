@@ -1,14 +1,14 @@
 pkgname=kathara
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
-pkgdesc="Lightweight network emulation system based on Docker containers."
+pkgdesc="A lightweight container-based network emulation tool."
 arch=('any')
 url="https://www.kathara.org/"
 license=('GPL3')
 install="kathara.install"
 changelog="kathara.changelog"
 makedepends=(
-	'python310'
+	'python'
     'chrpath'
     'patchelf'
     'make'
@@ -17,7 +17,7 @@ makedepends=(
 optdepends=(
     'docker: for running network scenarios in a local environment'
     'xterm: for opening devices terminals'
-    'tmux: for opening many devices terminals'
+    'tmux: for devices terminals multiplexing'
 )
 source=("https://github.com/KatharaFramework/Kathara/archive/refs/tags/$pkgver.tar.gz")
 md5sums=('SKIP')
