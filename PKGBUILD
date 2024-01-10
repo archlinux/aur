@@ -1,5 +1,5 @@
 pkgname=pe-bear-bin
-pkgver=0.6.1
+pkgver=0.6.7
 _qtver=5.15
 pkgrel=2
 pkgdesc="Freeware reversing tool for PE files"
@@ -9,7 +9,7 @@ license=('custom')
 depends=('qt5-base')
 conflicts=('pe-bear' 'pe-bear-git')
 source=("https://github.com/hasherezade/pe-bear/releases/download/v${pkgver}/PE-bear_${pkgver}_qt${_qtver}_x64_linux.tar.xz")
-sha256sums=('ec4c095b574b71781afe37328dc71b9332e57cbbe2a7e4d29ba0fab043d530a3')
+sha256sums=('45dc8660698ef1e9a8dbb42c28206571018293c8f10ea0d9e550ead0f7a127b2')
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}/"
