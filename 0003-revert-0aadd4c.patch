@@ -1,0 +1,66 @@
+From edc974918f81dda7eb6e85f1dd08d7affe8a4283 Mon Sep 17 00:00:00 2001
+From: Ralph Torres <mail@ralphptorr.es>
+Date: Wed, 10 Jan 2024 15:56:41 +0000
+Subject: [PATCH 1/1] revert "Add support for using Pass::OTP"
+
+This reverts commit 0aadd4c82cf190ae8ac9c08e7eb142716ed33a85.
+---
+ README.md | 2 +-
+ otp.bash  | 6 +-----
+ 2 files changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/README.md b/README.md
+index bdd724b5a625..4be0b47971e1 100644
+--- a/README.md
++++ b/README.md
+@@ -218,7 +218,7 @@ URL=https://git.malte-kiefer.de/crux-ports/plain
+ ## Requirements
+ 
+ - `pass` 1.7.0 or later for extension support
+-- `oathtool` or `Pass::OTP` for generating 2FA codes
++- `oathtool` for generating 2FA codes
+ - `qrencode` for generating QR code images
+ 
+ ### Build requirements
+diff --git a/otp.bash b/otp.bash
+index eb209b86bfc2..89cc0c09269e 100755
+--- a/otp.bash
++++ b/otp.bash
+@@ -16,9 +16,8 @@
+ #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ # []
+ 
+-VERSION="1.1.2"
++VERSION="1.1.1"
+ OATH=$(which oathtool)
+-OTPTOOL=$(which otptool)
+ 
+ if [[ $PASSAGE == 1 ]]; then
+   EXT="age"
+@@ -355,7 +354,6 @@ cmd_otp_code() {
+   fi
+   while read -r line; do
+     if [[ "$line" == otpauth://* ]]; then
+-      local uri="$line"
+       otp_parse_uri "$line"
+       break
+     fi
+@@ -369,7 +367,6 @@ cmd_otp_code() {
+       [[ -n "$otp_period" ]] && cmd+=" --time-step-size=$otp_period"s
+       [[ -n "$otp_digits" ]] && cmd+=" --digits=$otp_digits"
+       cmd+=" $otp_secret"
+-      [[ -n "$OTPTOOL" ]] && cmd="$OTPTOOL $uri"
+       ;;
+ 
+     hotp)
+@@ -377,7 +374,6 @@ cmd_otp_code() {
+       cmd="$OATH -b --hotp --counter=$counter"
+       [[ -n "$otp_digits" ]] && cmd+=" --digits=$otp_digits"
+       cmd+=" $otp_secret"
+-      [[ -n "$OTPTOOL" ]] && cmd="$OTPTOOL $uri"
+       ;;
+ 
+     *)
+-- 
+2.43.0
+
