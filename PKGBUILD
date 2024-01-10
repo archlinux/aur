@@ -1,7 +1,7 @@
 # Maintainer: thek4n
 
 pkgname='note-manager'
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Simple CLI notes manager"
 arch=('any')
