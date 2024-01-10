@@ -15,11 +15,27 @@ makedepends=('git')
 conflicts=('xone-dkms'
 		   'xow')
 provides=('xone-dkms')
-source=("git+https://github.com/medusalix/xone.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/medusalix/xone.git#tag=v${pkgver}"
+  fix_6.3_compilation.patch
+)
+sha256sums=(
+  'SKIP'
+  6ce597ef7a916216584c99bd8fdf382b6a720d8550315c87142aeff2b226d70b
+)
 
 package() {
   cd "${srcdir}/${_pkgname}"
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
   find . -type f \( -name 'dkms.conf' -o -name '*.c' \) -exec sed -i "s/#VERSION#/$pkgver/" {} +
   echo 'ccflags-y += -DDEBUG' >> "Kbuild"
