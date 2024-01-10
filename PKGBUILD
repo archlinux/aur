@@ -6,7 +6,7 @@
 pkgname=openafs-modules
 _srcname=openafs
 pkgver=1.8.10
-pkgrel=5
+pkgrel=6
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -22,20 +22,22 @@ source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz
         0003-Linux-6.5-Use-register_sysctl.patch
         0004-hcrypto-rename-abort-to-_afscrypto_abort.patch
         0005-linux-Replace-fop-iterate-with-fop-iterate_shared.patch
-        0006-dir-Introduce-struct-DirEntryMax.patch
+        0006-dir-Introduce-struct-DirEntryFlex.patch
         0007-LINUX-Pass-an-array-of-structs-to-register_sysctl.patch
         0008-Linux-6.6-convert-to-ctime-accessor-functions.patch
-        0009-Linux-6.6-Pass-request_mask-to-generic_fillattr.patch)
+        0009-Linux-6.6-Pass-request_mask-to-generic_fillattr.patch
+        0010-Linux-6.7-convert-to-inode-a-mtime-accessor-funcs.patch)
 sha256sums=('9fec11364623549e8db7374072f5c8f01b841f6bfe7e85673cbce35ff43ffb07'
-            '9a726876e8a3f99db09cf16df994d01d31673df1953796c6fcd0bc95e3ecafa1'
-            '7ef226084bc37dd9298ff39c9bc903796ea07841efedc3906bcc4a744e96e57d'
-            'b1fa6425438478c79dd97dab6e32e3a8e6ed706f96c9f67c53ede367f9d1ee63'
-            '34312040d7139dd34341f567cf57e5c3ac4e1622b8a7289146f0a1204479b8a0'
-            '71ed1aee8d0b8a47ae3c1bceb82121666d8ac4b575475032e0342c45b2d380fc'
-            '9422f8950311a5b2aba2a7b9b429bfe0652b2f41aaa4519a39c7b92a35513c3f'
-            '8ab1ce60ef99c0a3538842f3b8e376c377ec4ca6867d1ccef7379edbb73e102d'
-            '0dd8946890016f3a87869eeb79e1eedf34892d1d00903cb044b70a2e43dd81d8'
-            'ae67a9390f7c9d22cc4fd06964ee5010d90fd5e4cc64ed5137aaf0b36ecfbd32')
+            '91cf2ee76afaacd7f85ec3cc9bcf35920f54e8b11b68b3b3d8036af742a44e4d'
+            '0779c389864cf514a04734abd318a4e98db88889b04b2fdbe8e2a3816cb872eb'
+            'e22896c9cff526e01336849e2032c235707450cf93f6131a8a7e3c86d84e8e5c'
+            '5dacbca5a5afa6ff99b2976fcc70fa760a4f5e9286c21a05ec233b09ce37bb11'
+            '5213e96c818842210736927e9ef5669fb6b35e6755bb71995fadf3c2ba44e04c'
+            'ee60fa3f52a397510eb5c6e2e664eb4e66e9620180a74e54d9c8e9677691f8f0'
+            '2f2bea9c8a9ea6122af2456725faa41b014687b1681a3c20a0918adf879bfb86'
+            '12f2f983dd7845758a1d0e6ab1c85358c5660022137dc4f00c3a3d4f8443e7f3'
+            '37abfa35b2b78956e258137fc66197c118084802f1fb17d4ab9546010c693e6d'
+            'cf47ce835da5015d4b0621223a4edad5b096790a4aecac2f6141b70164598243')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -56,12 +58,15 @@ prepare() {
   patch -p1 < "${srcdir}"/0003-Linux-6.5-Use-register_sysctl.patch
   patch -p1 < "${srcdir}"/0004-hcrypto-rename-abort-to-_afscrypto_abort.patch
   patch -p1 < "${srcdir}"/0005-linux-Replace-fop-iterate-with-fop-iterate_shared.patch
-  patch -p1 < "${srcdir}"/0006-dir-Introduce-struct-DirEntryMax.patch
+  patch -p1 < "${srcdir}"/0006-dir-Introduce-struct-DirEntryFlex.patch
 
   # Patches for Linux 6.6
   patch -p1 < "${srcdir}"/0007-LINUX-Pass-an-array-of-structs-to-register_sysctl.patch
   patch -p1 < "${srcdir}"/0008-Linux-6.6-convert-to-ctime-accessor-functions.patch
   patch -p1 < "${srcdir}"/0009-Linux-6.6-Pass-request_mask-to-generic_fillattr.patch
+
+  # Patches for Linux 6.7
+  patch -p1 < "${srcdir}"/0010-Linux-6.7-convert-to-inode-a-mtime-accessor-funcs.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q
