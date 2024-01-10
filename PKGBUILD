@@ -15,8 +15,7 @@ source=("git+https://github.com/paullouisageneau/$pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 prepare() {
-    cd "$pkgname"
-    git submodule update --init --recursive
+    true
 }
 
 build() {
