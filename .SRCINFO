@@ -1,0 +1,15 @@
+pkgbase = stata
+	pkgdesc = A high-level statistical language used in econometrics and statistics.
+	pkgver = 18
+	pkgrel = 1
+	url = https://www.stata.com/
+	arch = x86_64
+	license = custom
+	depends = ncurses5-compat-libs
+	depends = libpng12
+	source = local://Stata18Linux64.tar.gz
+	source = local://stata_lic.sh
+	md5sums = 43e05d773b20a8e372d3c7e3abb54b40
+	md5sums = SKIP
+
+pkgname = stata
