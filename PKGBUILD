@@ -42,7 +42,7 @@ optdepends=(
 backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://github.com/WillPower3309/swayfx"
-source=("${pkgname%-*}::git+${url}.git"
+source=("${pkgname}::git+${url}.git"
     "i3-style-fullscreen.patch::https://gist.githubusercontent.com/bim9262/0f63e6b5d8107d7d2654b61e0b7debe2/raw"
     "keep-hidden-cursor-active.patch::https://github.com/lelgenio/sway/commit/b21dc487ac4bfc086cf295e06b8d8765a99e7266.patch"
 	50-systemd-user.conf
@@ -59,12 +59,12 @@ options=(debug)
 install=sway.install
 
 pkgver() {
-	cd "$_pkgname"
+	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$_pkgname"
+    cd "$pkgname"
     patch --forward --strip=1 --input="${srcdir}/i3-style-fullscreen.patch"
     patch --forward --strip=1 --input="${srcdir}/keep-hidden-cursor-active.patch"
 }
@@ -74,7 +74,7 @@ build() {
 	arch-meson \
 		-Dwerror=false \
 		-Dsd-bus-provider=libsystemd \
-		"$_pkgname" build
+		"$pkgname" build
 	meson compile -C build
 }
 
@@ -84,7 +84,7 @@ package() {
 
 	DESTDIR="$pkgdir" meson install -C build
 
-	cd "$_pkgname"
+	cd "$pkgname"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
 		install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
