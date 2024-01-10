@@ -5,25 +5,25 @@
 
 pkgbase=droidcam
 pkgname=('droidcam' 'v4l2loopback-dc-dkms')
-pkgver=2.0.0
+pkgver=2.1.2
 pkgrel=1
 epoch=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('x86_64')
-url="https://github.com/aramg/${pkgbase}"
+url="https://github.com/dev47apps/${pkgbase}"
 license=('GPL')
 makedepends=('libappindicator-gtk3' 'gtk3' 'ffmpeg' 'libusbmuxd')
 
 source=("${pkgbase}.desktop"
         "dkms.conf"
         "${pkgbase}.conf"
-        "${pkgbase}-${pkgver}.zip::${url}/archive/v${pkgver}.zip"
+        "${pkgbase}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
 )
 
 sha256sums=('90dd73cf146fae0de0c11b46e97412d2aaca50ec879e1be2d793261e853dd0d3'
             '1e91f58ae83d433d32b483b14f1bb39cc245d2ace711b12c894de27dd2ea3413'
             '1d4b3ff98b4af9de77a24d1b6fad6e004deadf1f157eb800aa878ba1e7693dac'
-            'a81a0b31c5693f63c56cf29484639c7b827ea8ce458a367bfba1e4c850beba4e')
+            'c669ccac95a91b5a673eef6dfceb785658f337e69c2fe0f7b1d34c82ad00e04b')
 
 prepare() {
   # Generate the module loading configuration files
@@ -37,7 +37,7 @@ build() {
   # static one.
   #
   # Also libusbmuxd requires an override while linking.
-  make JPEG_DIR="" JPEG_INCLUDE="" JPEG_LIB="" JPEG=$(pkg-config --libs --cflags libturbojpeg) USBMUXD=-lusbmuxd-2.0
+  make JPEG_DIR="/usr/lib" JPEG_INCLUDE="/usr/include" JPEG_LIB="-lturbojpeg" USBMUXD=-lusbmuxd-2.0
 }
 
 package_droidcam() {
