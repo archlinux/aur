@@ -2,7 +2,7 @@
 
 pkgname=violet
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight STUN/TURN server"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/paullouisageneau/$pkgname"
@@ -38,6 +38,6 @@ package() {
     install -m755 -d "$pkgdir"/etc/violet
     install -m644 example.conf "$pkgdir"/etc/violet/violet.conf
     install -m755 -d "$pkgdir"/usr/lib/sysusers.d
-    echo "u violet - \"Violet STUM/TURN server user\"" > "$pkgdir"/usr/lib/sysusers.d/violet.conf
+    echo "u violet - \"Violet STUN/TURN server user\"" > "$pkgdir"/usr/lib/sysusers.d/violet.conf
 }
 
