@@ -4,7 +4,7 @@ _org='humanoid-path-planner'
 _pkgname='hpp-fcl'
 _pkgver=2.4.0
 pkgname=("${_pkgname}-git" "${_pkgname}-git-docs")
-pkgver=2.4.0.r2280.6981036f
+pkgver=2.4.0.r2279.51f101c9
 pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
@@ -15,12 +15,18 @@ optdepends=('doxygen')
 makedepends=('cmake' 'eigen' 'boost' 'git')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("git+${url}#branch=fetch-submodule")
-sha256sums=('SKIP')
+source=("git+${url}" "$url/pull/512.patch")
+sha256sums=('SKIP'
+            '594fda5541090f5a1f2e27ad44751c491f338bab3fe98e7739eb4593977a2064')
 
 pkgver() {
     cd "$_pkgname"
     echo "$_pkgver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$_pkgname"
+    patch -p1 -i "$srcdir/512.patch"
 }
 
 build() {
