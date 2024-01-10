@@ -55,4 +55,9 @@ VERSION_CODENAME=eagle''' >"${pkgdir}/usr/lib/electronic-wechat-uos-bin/os-relea
 DISTRIB_RELEASE=20
 DISTRIB_DESCRIPTION="UnionTech OS 20"
 DISTRIB_CODENAME=plum''' >"${pkgdir}/usr/lib/electronic-wechat-uos-bin/lsb-release"
+	if [[ ${XDG_CURRENT_DESKTOP} =~ GNOME ]]; then
+		depends+=(xdg-desktop-portal-gnome)
+	elif [[ ${XDG_CURRENT_DESKTOP} =~ KDE ]]; then
+		depends+=(xdg-desktop-portal-kde)
+	fi
 }
