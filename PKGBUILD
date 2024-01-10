@@ -2,16 +2,17 @@
 
 pkgname=fbc
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 _bootver=1.10.1
 pkgdesc="FreeBASIC Compiler (Release version)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="http://www.freebasic.net"
 license=('GPL2' 'LGPL')
-makedepends=('libffi' 'ncurses5-compat-libs')
+makedepends=('libffi' 'libxpm' 'gpm' 'libffi' 'libxrandr' 'mesa')
 provides=('fbc')
 conflicts=('freebasic' 'fbc-git')
 options=(staticlibs)
+bspkg=("https://downloads.sourceforge.net/fbc/Source%20Code/FreeBASIC-${_bootver}-source-bootstrap.tar.xz")
 source=("https://downloads.sourceforge.net/fbc/Source%20Code/FreeBASIC-${_bootver}-source.tar.gz")
 sha256sums=('SKIP')
 
@@ -31,19 +32,20 @@ fi
 if [ "$CARCH" = "armv7h" ]; then
 _arch='arm'
 fi
-
-warning "Setting up libffi compatibility headers (run update-libffi-compat as root if build fails)"
-warning "Downloading bootstrap fbc compiler"
-cd "${srcdir}"
-wget http://downloads.sourceforge.net/fbc/Binaries%20-%20Linux/FreeBASIC-${_bootver}-linux-${_arch}.tar.gz
-tar xzf FreeBASIC-${_bootver}-linux-${_arch}.tar.gz
-cd FreeBASIC-${_bootver}-linux-${_arch}
-export PATH=`pwd`/bin:${PATH}
 }
 
 build() {
+cd "${srcdir}"
+wget ${bspkg}
+tar xf FreeBASIC-${_bootver}-source-bootstrap.tar.xz
+cd FreeBASIC-${_bootver}-source-bootstrap
+make CFLAGS="$CFLAGS $(pkg-config --cflags libffi)" bootstrap-minimal
+export PATH=`pwd`/bin:${PATH}
+export FBCINCDIR=`pwd`/inc
 cd "${srcdir}/FreeBASIC-${_bootver}-source"
-make all
+make FBCFLAGS="-i $FBCINCDIR" all
+make unit-tests
+make warning-tests
 }
 
 package() {
