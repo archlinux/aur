@@ -1,0 +1,15 @@
+pkgbase = dracut-efi-manager-bin
+	pkgdesc = tool to build linux kernel efi images and manage boot entries
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ju6ge/dracut-efi-manager
+	arch = x86_64
+	source = https://github.com/ju6ge/dracut-efi-manager/releases/download/v0.3.0/dracut-efi-manager_v0.3.0_x86_64-unknown-linux-musl.zip
+	sha256sums = a5c0dc5d692cc0b53208f736ebbb3b714440cab7e15ef845b599da0cd07b6b68
+
+pkgname = dracut-efi-manager
+	depends = dracut
+
+pkgname = dracut-efi-manager-pacman-hook
+	depends = dracut-efi-manager
+	depends = pacman
