@@ -1,6 +1,6 @@
 pkgbase = ruby-reckon
 	pkgdesc = Flexibly import bank account CSV files into Ledger for command-line accounting.
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 0
 	url = https://github.com/cantino/reckon
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = ruby-reckon
 	depends = ruby-highline
 	depends = ruby-rchardet
 	depends = ruby-matrix
-	noextract = reckon-0.9.4.gem
+	noextract = reckon-0.9.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/reckon-0.9.4.gem
-	sha256sums = 56fb221efdcb3bb63dd6dc94ba319c23414c5e206a5aaea541c385fb79ae0125
+	source = https://rubygems.org/downloads/reckon-0.9.5.gem
+	sha256sums = ca013baf8a8f96a0f2b0bf4c5eb0d7a9fc6f0d74c5d1fb7c81d945c340518130
 
 pkgname = ruby-reckon
