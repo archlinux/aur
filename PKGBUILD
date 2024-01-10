@@ -2,7 +2,7 @@
 
 pkgname=dtkcore-git
 _pkgname=dtkcore
-pkgver=5.6.3.r17.gb2308b3
+pkgver=5.6.21.r1.g8c4f436
 pkgrel=1
 pkgdesc='DTK core modules'
 arch=('x86_64' 'aarch64')
