@@ -6,7 +6,7 @@
 # Maintainer: Nate Fortner <aur@nefortner.com>
 pkgname=nmap-automator-git
 _pkgname=nmap-automator
-pkgver=c5e15de8429c78aa5923010145dfac0996aba9e1
+pkgver=c5e15de842
 pkgrel=1
 epoch=
 pkgdesc="nmap wrapper/automation tool for pentesting"
@@ -17,22 +17,22 @@ groups=()
 depends=('nmap')
 makedepends=('git')
 checkdepends=()
-optdepends=('ffuf: for ffuf scans'
-			'gobuster: for gobuster scans'
-			'nikto: for nikto scans'
-			'smbmap: for smbmap scans'
-			'sslscan: for sslscan scans'
-			'droopescan: for droopescan scans'
-			'smtp-user-enum: for smtp-user-enum scans'
-			'snmp-check: for snmp-check scans'
-			'snmpwalk: for snmpwalk scans'
-			'ldapsearch: for ldapsearch scans'
-			'odat: for odat scans'
-			'dnsrecon: for dnsrecon scans'
-			'joomscan: for joomscan scans'
-			'whatweb: for whatweb scans'
-			'wfuzz: for wfuzz scans'
-			'wpscan: for wpscan scans'
+optdepends=('ffuf: for web scans'
+			'gobuster: for web scans'
+			'nikto: for web scans'
+			'smbmap: for smb scans'
+			'sslscan: for ssl scans'
+			'droopescan: for web scans'
+			'smtp-user-enum: for smtp scans'
+			'snmpcheck: for snmp scans'
+			'net-snmp: for snmp scans'
+			'openldap: for ldap scans'
+			'odat: for oracle scans'
+			'dnsrecon: for dns scans'
+			'joomscan: for joomla framework scans'
+			'whatweb: for web scans'
+			'wfuzz: for web scans'
+			'wpscan: for wordpress scans'
 			'zaproxy: for zaproxy scans')
 provides=("nmapAutomator")
 conflicts=()
@@ -69,5 +69,5 @@ package() {
 
 pkgver() {
 	cd $_pkgname
-	git rev-parse HEAD
+	git rev-parse HEAD | head -c 10
 }

@@ -1,0 +1,31 @@
+pkgbase = nmap-automator-git
+	pkgdesc = nmap wrapper/automation tool for pentesting
+	pkgver = c5e15de842
+	pkgrel = 1
+	url = https://github.com/21y4d/nmapAutomator
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nmap
+	optdepends = ffuf: for web scans
+	optdepends = gobuster: for web scans
+	optdepends = nikto: for web scans
+	optdepends = smbmap: for smb scans
+	optdepends = sslscan: for ssl scans
+	optdepends = droopescan: for web scans
+	optdepends = smtp-user-enum: for smtp scans
+	optdepends = snmpcheck: for snmp scans
+	optdepends = net-snmp: for snmp scans
+	optdepends = openldap: for ldap scans
+	optdepends = odat: for oracle scans
+	optdepends = dnsrecon: for dns scans
+	optdepends = joomscan: for joomla framework scans
+	optdepends = whatweb: for web scans
+	optdepends = wfuzz: for web scans
+	optdepends = wpscan: for wordpress scans
+	optdepends = zaproxy: for zaproxy scans
+	provides = nmapAutomator
+	source = nmap-automator::git+https://github.com/21y4d/nmapAutomator/#branch=master
+	sha256sums = SKIP
+
+pkgname = nmap-automator-git
