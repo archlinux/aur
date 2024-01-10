@@ -7,7 +7,7 @@ pkgdesc="Proposed standard to launching desktop apps with Terminal=true"
 arch=(any)
 url="https://github.com/Vladimir-csp/$_pkgname"
 makedepends=('git')
-checkdepends=('bash-bats')
+checkdepends=('bats')
 license=('GPL3')
 source=("git+$url")
 sha256sums=('SKIP')
