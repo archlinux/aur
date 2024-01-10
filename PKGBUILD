@@ -10,13 +10,13 @@
 _pkgname=ffsubsync-venv
 pkgname=python-$_pkgname
 pkgver=0.4.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Language-agnostic automatic synchronization of subtitles with video. (Installed inside a Python virtual environment)"
 arch=(any)
 url="https://github.com/smacke/ffsubsync"
 license=('MIT')
 source=('ffs.sh')
-sha256sums=('547f73f58ab3d7217b0ea211517d7ea7d0c76cbc49a1655ccd7be774ab57b396')
+sha256sums=('6c8226cc63e639ed29673d1436792caca0b0cbfd63d4e8baa3ab9350d4e3dfb8')
 depends=('ffmpeg')
 conflicts=('python-ffsubsync')
 install=ffsubsync-venv.install
@@ -25,6 +25,7 @@ package() {
   mkdir -p "$pkgdir"/usr/{bin,share/ffsubsync-venv}
   install -m 755 -o 0 -g 0 ffs.sh "$pkgdir"/usr/bin/ffs
   install -m 755 -o 0 -g 0 ffs.sh "$pkgdir"/usr/bin/ffsubsync
+  install -m 755 -o 0 -g 0 ffs.sh "$pkgdir"/usr/bin/subsync
 
   venv="$pkgdir/usr/share/ffsubsync-venv"
   python -m venv --copies "$venv"
