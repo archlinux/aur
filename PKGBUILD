@@ -6,8 +6,8 @@
 : ${_system_cflags:=false}
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton8-25
-_commit=f73e9b592ba6200bcd40d2ffed23cbc426908ed5
+_srctag=GE-Proton8-27
+_commit=989b502c4aed6efd8b210b785c163e9c6c6e233e
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.1.0
@@ -271,12 +271,12 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '4e3e8a40729e4c9e3e9e651cebe4f1aed8f9a4d22e991e6cd24608687f0eedd4'
-            '8a0c714373a0bf84fda71e9e0d69b579fb161df4f2534a2b6228f951cea93c07'
-            '63ca48b6b7c4ae616fa0f1a94a25bfcf5d9785f44e5a706f79487970f61fc6a7'
-            '316937bf50a7acef2cad01ebb4e7e49af5e82e3aa6463c864c483d0dab225f17'
-            '6d6fb0c9e99de0679c6d59fa373be090a5e4a9cac0bcaa16d8de041bfe26f53c'
-            'fe89a9eebdaf0192cfda34af53f9ab8a219c1149bde74dd87ee308ec9b07e57a'
-            'bb98931d82c49b2b348d03d7debd303e06843e27713fad57bb5c10779a5493aa')
+            '55f8264673b1260a8bd82e154080a3e3ca6b955201bcd2176162e22c15c35527'
+            'fed2fe22d893ccb34fecf7273de8ac24f40c7504f9ff0ab59d4a12055f8ebbe1'
+            'e83188bc2e1939db1ff798bbf646a010ec1eb59fbd070e4c7046358743252265'
+            'f6bfaed85713e330299e06baf2f928caf526503cc9c3eb1139fd037e0c08247a'
+            'ea2113d76b3a2fd1ded63fba46623419606506331be4edda65f59e8197ec3aef'
+            '0e80941a381f91a7d5813b8885a06c30f66a86cf133d89c46f7e05f5f624a804')
 # Optional patches
 sha256sums+=(
 )
