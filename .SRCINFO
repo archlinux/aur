@@ -1,0 +1,27 @@
+pkgbase = dtk6declarative-git
+	pkgdesc = Deepin Toolkit, declarative module for DDE look and feel
+	pkgver = 6.0.3.r0.gd1df08e
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dtk6declarative
+	arch = x86_64
+	arch = aarch64
+	groups = deepin-git
+	license = LGPL3
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = gtest
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = doxygen
+	depends = qt6-declarative
+	depends = qt6-shadertools
+	depends = qt6-5compat
+	depends = dtkcommon-git
+	depends = dtk6core-git
+	depends = dtk6gui-git
+	provides = dtk6declarative
+	conflicts = dtk6declarative
+	source = git+https://github.com/linuxdeepin/dtk6declarative
+	sha512sums = SKIP
+
+pkgname = dtk6declarative-git
