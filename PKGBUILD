@@ -76,7 +76,6 @@ prepare() {
   patch --forward --strip=1 --input="$srcdir/jpegturbo-lib64.patch"
   patch --forward --strip=1 --input="$srcdir/pyside2.patch"
   # patch --forward --strip=1 --input="$srcdir/qt5.patch"  # Holdover from trying to use Arch-provided Qt5
-  # sed -i 's/os.cpu_count() or 1/min(os.cpu_count() or 1, 8)/' src/build/make_pyside.py  # May resolve random compiler segfault on AMD
   sed -i 's/pip install --user/pip install/' rvcmds.sh
   sed -i -E 's/alias (\w+)="(.+)"/\1() { \2; };/' rvcmds.sh  # Allow commands to run in PKGBUILD
   sed -i 's,\\"${CMAKE_GENERATOR}\\","${CMAKE_GENERATOR}",' rvcmds.sh
