@@ -2,7 +2,8 @@
 
 pkgname=kubernetes-website-git
 pkgdesc="The Kubernetes documentation"
-pkgver=969a3db92.r1369.g6ebdc7cd11
+epoch=1
+pkgver=snapshot.initial.v1.27.r2491.g3cb1639c52
 pkgrel=1
 arch=('any')
 makedepends=('git' 'hugo' 'npm')
