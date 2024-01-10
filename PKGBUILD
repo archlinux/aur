@@ -7,7 +7,7 @@ _pkgbasename=shaderc
 
 pkgname=lib32-$_pkgbasename
 pkgver=2023.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of tools, libraries and tests for shader compilation (32bit)'
 url='https://github.com/google/shaderc'
 arch=('x86_64')
@@ -60,13 +60,13 @@ build() {
   cd ${_pkgbasename}-${pkgver}
   cmake \
       -B build \
+      -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX="/usr" \
       -DCMAKE_INSTALL_LIBDIR="lib32" \
       -DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects" \
       -DSHADERC_SKIP_TESTS=ON \
-      -Dglslang_SOURCE_DIR=/usr/include/glslang \
-      -G Ninja
+      -Dglslang_SOURCE_DIR=/usr/include/glslang
     ninja -C build
 
 #  cd glslc
@@ -89,4 +89,8 @@ package() {
 
   rm -r "${pkgdir}"/usr/include
 #  install -Dm 644 glslc/glslc.1 -t "${pkgdir}/usr/share/man/man1"
+
+  # Remove unused shaderc_static.pc
+  rm "${pkgdir}/usr/lib32/pkgconfig/shaderc_static.pc"
+
 }
