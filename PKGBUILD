@@ -1,11 +1,11 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=forgetpass
-pkgdesc='Simple password generator for websites'
 pkgver=1.0.15
 pkgrel=1
-arch=('x86_64' 'aarch64')
+pkgdesc='Simple password generator for websites'
 url="https://github.com/alexkdeveloper/forgetpass"
+arch=('x86_64' 'aarch64')
 license=('GPL3')
 depends=('libadwaita' 'libgee')
 makedepends=('git' 'meson' 'vala')
