@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='domain-watch-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Get notified about domain changes as they happen'
 url='https://github.com/gabe565/domain-watch'
@@ -11,17 +11,17 @@ license=('GPL-3.0')
 provides=('domain-watch')
 conflicts=('domain-watch')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.0/domain-watch_0.1.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('f0a9940be6d06a9003bb78641d0a943ecd7036cdc42cc81f79a91108ccaa7254')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.1/domain-watch_0.1.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('dd3d74c84000963133ebb6df403d49f7cba7bf34cef9bd7b6d9aaff2b3b4e3a9')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.0/domain-watch_0.1.0_linux_armv6.tar.gz")
-sha256sums_armv6h=('63f9a6caa176147155a987ede5d2ed1c76bb7294c622783bc254f74c88716c73')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.1/domain-watch_0.1.1_linux_armv6.tar.gz")
+sha256sums_armv6h=('47f59c63d0c709596ae1a5c05a503021a25432fd8420cdf7284a6b7b48ae7e0b')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.0/domain-watch_0.1.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('cf64e18f36f2af542d00b4bdf60f89158e5ee68e5810e5b958ed6c671b1a198a')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.1/domain-watch_0.1.1_linux_armv7.tar.gz")
+sha256sums_armv7h=('70f320999d575cfa6ad13e395b591f013fb9fde12f79af98728bb7284f63f094')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.0/domain-watch_0.1.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('f0bc490f67a946408bef34c86c7d960f39fa8ef5aa09bd6870a1c280e9586f3b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.1/domain-watch_0.1.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('80c198f141063bc7cc7773d91d1af29fa5fe846244aa6f4ddcc0af601f8600d8')
 
 package() {
   # bin
