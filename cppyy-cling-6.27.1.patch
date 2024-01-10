@@ -1,0 +1,32 @@
+diff --git a/cppyy_backend/include/strlcpy.h b/cppyy_backend/include/strlcpy.h
+index 460ac9e..c227c05 100644
+--- a/cppyy_backend/include/strlcpy.h
++++ b/cppyy_backend/include/strlcpy.h
+@@ -23,8 +23,8 @@
+ extern "C" {
+ #endif
+
+-size_t strlcpy(char *dst, const char *src, size_t siz);
+-size_t strlcat(char *dst, const char *src, size_t siz);
++// size_t strlcpy(char *dst, const char *src, size_t siz);
++// size_t strlcat(char *dst, const char *src, size_t siz);
+
+ #ifdef __cplusplus
+ }
+diff --git a/cppyy_backend/etc/dictpch/allHeaders.h b/cppyy_backend/etc/dictpch/allHeaders.h
+index bb14e4f..70db0aa 100644
+--- a/cppyy_backend/etc/dictpch/allHeaders.h
++++ b/cppyy_backend/etc/dictpch/allHeaders.h
+@@ -253,9 +253,9 @@
+ #if __has_include("string_view")
+ #include <string_view>
+ #endif
+-#if __has_include("charconv")
+-#include <charconv>
+-#endif
++// #if __has_include("charconv")
++// #include <charconv>
++// #endif
+ #if __has_include("filesystem")
+ #include <filesystem>
+ #endif

@@ -1,0 +1,13 @@
+diff --git a/scratch/nested-subdir/CMakeLists.txt b/scratch/nested-subdir/CMakeLists.txt
+index c3fe137..f93f2cd 100644
+--- a/scratch/nested-subdir/CMakeLists.txt
++++ b/scratch/nested-subdir/CMakeLists.txt
+@@ -7,7 +7,7 @@ add_library(
+ # Link the custom library to the scratch executable
+ build_exec(
+   EXECNAME scratch-nested-subdir-executable
+-  SOURCE_FILES scratch-nested-subdir-executable.cc
++  SOURCE_FILES scratch-nested-subdir-executable.cc lib/scratch-nested-subdir-library-source.cc
+   LIBRARIES_TO_LINK scratch-nested-subdir-lib
+                     ${libcore}
+   # use "${ns3-libs}" "${ns3-contrib-libs}" in case you want to link to all
