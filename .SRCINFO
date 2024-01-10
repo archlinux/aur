@@ -1,0 +1,18 @@
+pkgbase = libflow-git
+	pkgdesc = FlowGraph view for Gtk4
+	pkgver = rc.3
+	pkgrel = 1
+	url = https://github.com/SpikedPaladin/libflow
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	makedepends = gobject-introspection
+	depends = glibc
+	depends = glib2
+	depends = gtk4
+	source = https://github.com/SpikedPaladin/libflow/archive/rc.3.tar.gz
+	sha256sums = af7b20467e400844806b8267d56d9c34619d9135e65d1e56e5d0ea464178210e
+
+pkgname = libflow-git
