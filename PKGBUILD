@@ -5,13 +5,13 @@ pkgname=python-gymnasium
 _name=${pkgname#python-}
 pkgver=0.29.1
 _pkgver=v${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A standard API for single-agent reinforcement learning environments, with popular reference environments and related utilities (formerly Gym)"
 arch=('any')
 url="https://gymnasium.farama.org/"
 license=('MIT')
 depends=('python-numpy' 'python-cloudpickle' 'python-importlib-metadata' 'python-typing_extensions' 'python-farama-notifications')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-pygame: environment rendering, required for many provided environments'
             'python-pybox2d: required for box2d environments'
             'box2d: required for box2d environments'

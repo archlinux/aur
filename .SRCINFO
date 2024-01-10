@@ -1,10 +1,11 @@
 pkgbase = python-gymnasium
 	pkgdesc = A standard API for single-agent reinforcement learning environments, with popular reference environments and related utilities (formerly Gym)
 	pkgver = 0.29.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gymnasium.farama.org/
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
