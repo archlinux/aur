@@ -23,14 +23,21 @@ prepare() {
 build() {
     cd $pkgname
     rm -rf build
-    cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DUSE_GNUTLS=0 -DUSE_NICE=0 -DUSE_SYSTEM_JUICE=1 -DUSE_SYSTEM_SRTP=1 -DNO_TESTS=1 -DNO_EXAMPLES=1
-    cd build
-    make
+    cmake -B build -Wno-dev \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUSE_GNUTLS=0 \
+        -DUSE_NICE=0 \
+        -DUSE_SYSTEM_JUICE=1 \
+        -DUSE_SYSTEM_SRTP=1 \
+        -DNO_TESTS=1 \
+        -DNO_EXAMPLES=1
+
+    cmake --build build
 }
 
 package() {
     cd $pkgname
-    cd build
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir/" cmake --install build
 }
 
