@@ -1,0 +1,19 @@
+show_message () {
+	cat <<-EOF
+	------
+	The CGI program has been installed to /usr/lib/kcaldav, and the
+	web root files and example configuration to /usr/share/kcaldav.
+
+	These need to be copied to suitable locations, possibly in a chroot
+	or separate container, and the HTTP server configured accordingly.
+	------
+	EOF
+}
+
+post_install() {
+	show_message
+}
+post_upgrade() {
+	show_message
+}
+
