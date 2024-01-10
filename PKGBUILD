@@ -3,7 +3,7 @@
 
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -12,7 +12,7 @@ makedepends=('npm' 'nvm' 'nodejs' 'imagemagick' 'go')
 provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl' 'limactl')
 depends=('qemu')
 source=("https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b0fade801ada95a66730ea70d3811b2515a61fdb09af3de787854e1d1053f485')
+sha256sums=('c96b12cff458010a590b58a2e4bbdfd28a02dd7c7e0a390bb6cf2098da53621f')
 
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
@@ -23,7 +23,7 @@ _ensure_local_nvm() {
 
 prepare() {
     _ensure_local_nvm
-    nvm install 18.16
+    nvm install 18.19
 
 
     cd "${pkgname}-${pkgver}"
@@ -43,8 +43,7 @@ build() {
         convert -resize "${size}" "${icon}" "share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
 
-  sed -i "s|Exec=rancher-desktop|Exec=opt/${pkgname}/rancher-desktop|g" packaging/linux/rancher-desktop.desktop
-  sed -i "s|target: \[ zip \]|target: [ dir ]|g" electron-builder.yml
+  sed -i "s|target: \[ zip \]|target: [ dir ]|g" packaging/electron-builder.yml
 
   # Remove Flatpak and appimage as they are not needed
   rm packaging/linux/appimage.yml
@@ -67,10 +66,9 @@ package() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Some weird fix
-  sed -i "s|opt/rancher-desktop/||g" packaging/linux/rancher-desktop.desktop
   # Add integration for desktop env
-  install -Dm644 packaging/linux/rancher-desktop.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm644 packaging/linux/rancher-desktop.appdata.xml -t "$pkgdir/usr/share/metainfo"
+  install -Dm644 dist/linux-unpacked/resources/resources/linux/rancher-desktop.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 dist/linux-unpacked/resources/resources/linux/rancher-desktop.appdata.xml -t "$pkgdir/usr/share/metainfo"
 
   # Creating the symlink for better usage
   install -d "$pkgdir"/usr/bin/
