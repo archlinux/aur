@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=tz
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A time zone helper"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('091ac36c2fe942647b26b1850b550e48f8399fbe4fc81a4679b86095b554072564810c553c84dbae2c9ffd6760dec25fcffab77677144c3cdd434ec2fa238d5e')
+sha512sums=('f140602c951230244c11305057c2c5b03f37c285c3a609fde2b3049e56b2de983a277c488b28ea27fc92cb7d77009a570ee32bc48a75be060d13a0b38888cf28')
 
 build() {
   cd "$pkgname-$pkgver"
