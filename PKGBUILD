@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.6.10.arch1
+pkgver=6.7.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -35,7 +35,6 @@ source=(
 
   "sys-kernel_arch-sources-g14_files-0004-5.17+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.17+.patch"
 
-  0001-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-G814Jx.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
 
   0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch
@@ -59,17 +58,7 @@ source=(
 
   0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch
   amd-tablet-sfh.patch
-  v2-0002-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-m.patch
-  v6-0001-platform-x86-asus-wmi-add-support-for-ASUS-screen.patch
   
-#  v1-0001-support-for-cs35l41-support-without-_DSD.patch
-#  v1-0002-support-for-cs35l41-support-without-_DSD.patch
-#  v1-0003-support-for-cs35l41-support-without-_DSD.patch
-#  v1-0004-support-for-cs35l41-support-without-_DSD.patch
-#  v1-0005-support-for-cs35l41-support-without-_DSD.patch
-#  v1-0006-support-for-cs35l41-support-without-_DSD.patch
-#  v1-0007-support-for-cs35l41-support-without-_DSD.patch
-
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
 )
@@ -79,17 +68,16 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('9ee627e4c109aec7fca3eda5898e81d201af2c7eb2f7d9d7d94c1f0e1205546c'
+sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
             'SKIP'
-            'ad84324ce12f7c27664e79ebeaf4f7b6b52e1abe5777454b4d72c287c928f99a'
+            'b6abc3ca814e36b3d4126459b3125e2eb5af7f02ea76801e34e6b465767e11aa'
             'SKIP'
-            '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
+            '45a44ff0e957cd562d2ceb60c1c90fc19c19e808209cebb46bfacfccfb56ad96'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'cd3b097d35fbc448f10acb6fb91e1bb475c8d925053b1bb9640a8862ea3c2d3d'
-            'f6e870e44d04d256b62951d3879b9caa81e4504a2f0690c3089c1369ae91c3f5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '172dbc88d0a3cda78387f3c907fa4953c71cb1cb162f0b34f78b8b78924bc3d4'
-            'd26ea408530a224283c678028afeb32212612b08c22c35d5d2236eb9e6406908'
+            '7b99ac3c4aea644829a9e40b6393628402aad84f35a9be8a56a54ef1916651b3'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
@@ -102,8 +90,6 @@ sha256sums=('9ee627e4c109aec7fca3eda5898e81d201af2c7eb2f7d9d7d94c1f0e1205546c'
             '2480528e81377b27a4558f989bf810537b820f9f7696b52538fa01c0b81bf899'
             '1edb362a762c8858374027e30ff58ae0014e117fdc05cc7db6da50f80e7aab87'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            '7b53c02df224d57736cd9cc3f20361f7d2379e67ff98ca9c2181c3583180febe'
-            'c2ada06f7138c6a326e028bccff745e2eb3225d12a264a45dcb0671bfbe9a904'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
