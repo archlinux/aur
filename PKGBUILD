@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=libsimple
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="A bunch of C functions that are useful when writing simple code"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('ISC')
 depends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(30fd3a5c362e6191913237e449e92b49bdbb3bc2f4f17389d98c04b091e82d69)
+sha256sums=(f85a61a85384aa767e48cd64a16c2be02c4e97395d185e7c8fa1f294986109fa)
 
 
 build() {
