@@ -73,7 +73,7 @@ _subarch=39
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.4.6
+pkgver=6.7
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -94,10 +94,10 @@ makedepends=(
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld)
 options=('!strip')
 _srcname=linux-${pkgver}
-_kernel_base_commit=bc265e250410375ef3442233ad1af073023d4700
+_kernel_base_commit=0dd3ee31125508cd67f7e7172247f05b7fd1753a
 _kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=dbc3bae65d759bb7144d8c28a4c94527281cf47b
-_prjc_version=6.4-r0
+_arch_config_commit=79425d7496066714f38535eb4f37df529668e83a
+_prjc_version=6.7-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20230105
 source=(
@@ -113,12 +113,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('a395218ffd3447a9b22d248c7dd69204115567185d91d4abb712f77ce0b90571bdbcf0ea845ed4adb30d0fd448341d95c8be6e3acf46d940477d8c55d681a669'
+b2sums=('cecdbd19905e43e485ab73b352ced18b37f2a138c97a6956cadcda5d3d271001117dc1cf896b166ff019fc7f405f9539e2ed0d6112b0890efb04d182adf4fd0e'
         'SKIP'
-        'a73a9eaa59dd45ccdd564b762c3816342873e9002c54b742f481ccd79c34549131ab3b0188445139b9e5fab696b60270f8148337387619456b4674d6ff28ccb7'
-        '73438f4785fc533c901c6f4fd538f0e4a23526b15d43bfb35cc70c066c24d60006797a08e9c1bb388ca7feb7d946a7fce3b21f1065c66eeab5e8f923f817e96b'
+        'f67cb3d077708b6eeac2e33a8e5bf21988b3fdd024ccaf9258597ce9c2764998cf886b7354115524f9fce3b4aa7ea3bb69e6b2dde63bec1d5e76ba3deaad4636'
+        '96f9ea602eeebe15baee69979322fb16b09c17b9523c009977aef8ba326973f7365aeeb9e770336c1fd5b08bd15188dbc1581c38f225280999a592ebf6363421'
         'd178dad69501967382d5c841f65e4f57651042bee8117041a9baa35ab3fa73af8174b8b999ae9e72ec381c52744ccaaabb77944d59f123c04b6ed5626432d843'
-        '93de883f6360836e99f4240efd94e9ebb11efd4042f60be969cc989ed50f9151577fc709b8e374ed5857335a7349c1a5596f66126598855fd48a482df0f49ba9'
+        '0bb8f1185ec580ee9d7b729986caf078f6b09fde4e62bc65bc33afb46887191b558bd85f50a91303a6f3e7d020861036e6e1380594e7e7f3a5616fffb8dbd764'
         'cbd76f0a000e51173626009345b2de34f734c32072cf82e8e0860bbcf4eeac963ae34061ec562db8f852a4297c4633118f93c935a4783044ffb069643a03ce89')
 
 _kernelname=${pkgbase#linux}
@@ -253,7 +253,7 @@ _package() {
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
-  rm "$modulesdir"/{source,build}
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
