@@ -22,9 +22,12 @@ prepare() {
 build() {
     cd "$pkgname"
     rm -rf build
-    cmake -B build -DUSE_SYSTEM_JUICE=1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    cd build
-    make
+    cmake -B build -Wno-dev \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUSE_SYSTEM_JUICE=1
+
+    cmake --build build
 }
 
 package() {
