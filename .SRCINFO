@@ -1,7 +1,7 @@
 pkgbase = vala-panel-appmenu-xfce-git
 	pkgdesc = AppMenu (Global Menu) plugin
-	pkgver = 0.7.4
-	pkgrel = 3
+	pkgver = 0.7.6
+	pkgrel = 1
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
 	arch = x86_64
@@ -37,12 +37,12 @@ pkgname = vala-panel-appmenu-mate-git
 	depends = mate-panel
 	depends = libwnck3
 	depends = vala-panel-appmenu-common-git
-	optdepends = gtk2-ubuntu: for hiding gtk2 menus
-	optdepends = unity-gtk-module: for gtk2/gtk3 menus
+	optdepends = appmenu-gtk-module: for gtk2/gtk3 menus
 	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
 	optdepends = jayatana: for Java applications support
-	optdepends = appmenu-qt: for qt4 menus
-	optdepends = appmenu-qt5: for qt5 menus
+	optdepends = appmenu-qt4: for qt4 menus
+	provides = vala-panel-appmenu-mate=0.7.6
+	conflicts = vala-panel-appmenu-mate
 
 pkgname = vala-panel-appmenu-xfce-git
 	pkgdesc = AppMenu (Global Menu) plugin for xfce4-panel
@@ -52,12 +52,12 @@ pkgname = vala-panel-appmenu-xfce-git
 	depends = xfconf
 	depends = libwnck3
 	depends = vala-panel-appmenu-common-git
-	optdepends = gtk2-ubuntu: for hiding gtk2 menus
-	optdepends = unity-gtk-module: for gtk2/gtk3 menus
+	optdepends = appmenu-gtk-module: for gtk2/gtk3 menus
 	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
 	optdepends = jayatana: for Java applications support
-	optdepends = appmenu-qt: for qt4 menus
-	optdepends = appmenu-qt5: for qt5 menus
+	optdepends = appmenu-qt4: for qt4 menus
+	provides = vala-panel-appmenu-xfce=0.7.6
+	conflicts = vala-panel-appmenu-xfce
 
 pkgname = vala-panel-appmenu-valapanel-git
 	pkgdesc = AppMenu (Global Menu) plugin for vala-panel
@@ -66,12 +66,12 @@ pkgname = vala-panel-appmenu-valapanel-git
 	depends = vala-panel
 	depends = libwnck3
 	depends = vala-panel-appmenu-common-git
-	optdepends = gtk2-ubuntu: for hiding gtk2 menus
-	optdepends = unity-gtk-module: for gtk2/gtk3 menus
+	optdepends = appmenu-gtk-module: for gtk2/gtk3 menus
 	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
 	optdepends = jayatana: for Java applications support
-	optdepends = appmenu-qt: for qt4 menus
-	optdepends = appmenu-qt5: for qt5 menus
+	optdepends = appmenu-qt4: for qt4 menus
+	provides = vala-panel-appmenu-valapanel=0.7.6
+	conflicts = vala-panel-appmenu-valapanel
 
 pkgname = vala-panel-appmenu-budgie-git
 	pkgdesc = AppMenu (Global Menu) plugin for budgie-panel
@@ -80,8 +80,9 @@ pkgname = vala-panel-appmenu-budgie-git
 	depends = budgie-desktop
 	depends = libwnck3
 	depends = vala-panel-appmenu-common-git
-	optdepends = gtk2-ubuntu: for hiding gtk2 menus
-	optdepends = unity-gtk-module: for gtk2/gtk3 menus
+	optdepends = appmenu-gtk-module: for gtk2/gtk3 menus
 	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
 	optdepends = jayatana: for Java applications support
 	optdepends = appmenu-qt4: for qt4 menus
+	provides = vala-panel-appmenu-budgie=0.7.6
+	conflicts = vala-panel-appmenu-budgie
