@@ -2,7 +2,7 @@
 
 pkgname=python-pyairtable
 _pkgname=pyairtable
-pkgver=1.3.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Python client for the Airtable API"
 arch=("any")
@@ -12,7 +12,7 @@ options=(!emptydirs)
 depends=("python" "python-requests")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("487bcec2309761d869173a19900c43acac03970b68973f88ff1be536a4ecdba7")
+sha256sums=("c78638150ee657eef599562e921e0ba5699fb2a60196369f4445eab2d34c8b00")
 
 build() {
     cd "$_pkgname-$pkgver"
