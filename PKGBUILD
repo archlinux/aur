@@ -8,7 +8,7 @@ url="https://gitlab.com/wolfenstein3d"
 license=('GPL')
 depends=('wolf4sdl-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
-source=("https://gitlab.com/wolfenstein3d/wolfenstein3d/-/archive/$pkgver-$pkgrel/wolfenstein3d-$pkgver-$pkgrel.tar.bz2")
+source=("https://gitlab.com/wolfenstein3d/wolf3d/-/archive/$pkgver-$pkgrel/wolf3d-$pkgver-$pkgrel.tar.bz2")
 sha256sums=("SKIP")
 
 package() {
