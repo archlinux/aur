@@ -8,9 +8,9 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/paullouisageneau/$pkgname"
 license=('GPL') # GPLv2 or any later version
 makedepends=('git' 'cmake')
-depends=('libjuice')
-provides=("$pkgname")
-conflicts=("$pkgname")
+depends=('glibc' 'libjuice')
+provides=()
+conflicts=()
 source=("git+https://github.com/paullouisageneau/$pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
 

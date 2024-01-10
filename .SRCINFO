@@ -10,9 +10,8 @@ pkgbase = violet
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	depends = glibc
 	depends = libjuice
-	provides = violet
-	conflicts = violet
 	source = git+https://github.com/paullouisageneau/violet.git#tag=v0.4.4
 	md5sums = SKIP
 
