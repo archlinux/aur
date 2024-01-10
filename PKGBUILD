@@ -40,6 +40,9 @@ makedepends=(
   meson
   pkg-config
 )
+prowides=(
+  "${_pkg}=${pkgver}"
+)
 _commit="5e9dacb8080d99b15cc9e97455bf7ab41d42edd3"
 source=(
   # "git+${url}.git#commit=${_commit}")
