@@ -15,7 +15,7 @@ url="https://github.com/21y4d/nmapAutomator"
 license=('MIT')
 groups=()
 depends=('nmap')
-makedepends=()
+makedepends=('git')
 checkdepends=()
 optdepends=('ffuf: for ffuf scans'
 			'gobuster: for gobuster scans'
