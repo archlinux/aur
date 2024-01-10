@@ -7,14 +7,14 @@
 _pkgname=droidcam
 pkgname=${_pkgname}-dev
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('x86_64' 'aarch64')
 url="https://github.com/dev47apps/${_pkgname}"
 license=('GPL')
 install=${_pkgname}.install
 backup=("etc/modprobe.d/${_pkgname}.conf")
-makedepends=('gtk3' 'libappindicator-gtk3' 'ffmpeg' 'libusbmuxd')
+makedepends=('ffmpeg' 'gtk3' 'libappindicator-gtk3' 'libusbmuxd' 'pkgconf')
 conflicts=("${_pkgname}" "${_pkgname}-dkms")
 options=('!strip')
 source=("${_pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip"
@@ -34,8 +34,11 @@ prepare() {
 build() {
     cd ${_pkgname}-${pkgver}
 
+    # All JPEG* parameters are needed to use shared version of libturbojpeg instead of
+    # static one.
+    #
     # Also libusbmuxd requires an override while linking.
-    make  USBMUXD=-lusbmuxd-2.0
+    make JPEG_DIR="/usr/lib" JPEG_INCLUDE="/usr/include" JPEG_LIB="-lturbojpeg" USBMUXD=-lusbmuxd-2.0
 }
 
 package() {
