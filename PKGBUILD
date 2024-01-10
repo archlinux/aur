@@ -35,5 +35,6 @@ package() {
 	cd ${srcdir}
 	install -Dm755 "usr/bin/epic-mickey-launcher" "${pkgdir}/usr/bin/epic-mickey-launcher"
 	install -Dm755 "usr/share/applications/epic-mickey-launcher.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	cp -r "${srcdir}/usr/share/icons/" "${pkgdir}/usr/share/icons/"
+	# disabling this until 0.3.9
+	# cp -r "${srcdir}/usr/share/icons/" "${pkgdir}/usr/share/icons/"
 }
