@@ -1,7 +1,7 @@
 pkgbase = dracut-efi-manager-bin
 	pkgdesc = tool to build linux kernel efi images and manage boot entries
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ju6ge/dracut-efi-manager
 	arch = x86_64
 	source = https://github.com/ju6ge/dracut-efi-manager/releases/download/v0.3.0/dracut-efi-manager_v0.3.0_x86_64-unknown-linux-musl.zip

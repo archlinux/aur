@@ -1,7 +1,7 @@
 pkgbase=dracut-efi-manager-bin
 pkgname=(dracut-efi-manager dracut-efi-manager-pacman-hook)
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="tool to build linux kernel efi images and manage boot entries"
 arch=(x86_64)
 url="https://github.com/ju6ge/dracut-efi-manager"
@@ -12,7 +12,7 @@ sha256sums=( 'a5c0dc5d692cc0b53208f736ebbb3b714440cab7e15ef845b599da0cd07b6b68' 
 package_dracut-efi-manager() {
     depends=(dracut)
     mkdir -p $pkgdir/usr/bin
-    install -m 644 -D $srcdir/dracut-efi-manager $pkgdir/usr/bin/
+    install -m 755 -D $srcdir/dracut-efi-manager $pkgdir/usr/bin/
     mkdir -p $pkgdir/etc
     install -m 644 -D $startdir/dracut-efi-manager.toml $pkgdir/etc
 }
