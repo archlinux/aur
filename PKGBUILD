@@ -3,7 +3,7 @@
 pkgbase=nrf-command-line-tools-bin
 pkgname=(nrf-command-line-tools python-nrf-command-line-tools)
 _pkgname=${pkgbase%-bin}
-pkgver=10.23.2
+pkgver=10.23.4
 pkgrel=0
 arch=('x86_64' 'aarch64')
 makedepends=(python-wheel
@@ -19,8 +19,8 @@ url="https://www.nordicsemi.com/Products/Development-tools/nrf-command-line-tool
 _source="https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/${_pkgname}/sw/versions-10-x-x/${pkgver//./-}/${_pkgname}-${pkgver}_linux"
 source_x86_64=("${_pkgname}-${pkgver}_linux-amd64.tar.gz::$_source-amd64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}_linux-arm64.tar.gz::$_source-arm64.tar.gz")
-sha256sums_x86_64=('ccbf6d5e5d87b0ef09657106b23838fa50c9273df44ad38c1fdeab53b9de0ec8')
-sha256sums_aarch64=('002cb7ad7b2f0593555dd564a4fd80aabb28a8a3e58b0ea6f54516ac5382073b')
+sha256sums_x86_64=('fa46acb6057d8dfbe7a46138f0edc54aa0bdddc08bf775b6382c9a1d5fbdebe5')
+sha256sums_aarch64=('7f946077afec413e8175cae884723e0e16e21ac7381dba3ad1fd18ebed7e331d')
 optdepends=("nrf-udev: udev rules for nRF (Nordic Semiconductor) development kits"
     "pc-nrfconnect-programmer: Programmer app for nRF Connect for Desktop")
 
