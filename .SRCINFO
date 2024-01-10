@@ -1,10 +1,10 @@
 pkgbase = dbus-broker-git
 	pkgdesc = Linux D-Bus Message Broker
-	pkgver = 31.14.g5d475cf
+	pkgver = 35.0.gb71a541
 	pkgrel = 1
-	url = https://github.com/bus1/dbus-broker
+	url = https://github.com/bus1/dbus-broker/wiki
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = meson>=0.60.0
 	makedepends = systemd
@@ -14,8 +14,6 @@ pkgbase = dbus-broker-git
 	depends = libcap-ng>=0.6
 	depends = linux>=4.17
 	depends = systemd-libs>=230
-	provides = dbus-broker
-	conflicts = dbus-broker
 	source = dbus-broker-git::git+https://github.com/bus1/dbus-broker
 	source = c-dvar-1::git+https://github.com/c-util/c-dvar#branch=v1
 	source = c-ini-1::git+https://github.com/c-util/c-ini#branch=v1
@@ -24,6 +22,8 @@ pkgbase = dbus-broker-git
 	source = c-shquote-1::git+https://github.com/c-util/c-shquote#branch=v1
 	source = c-stdaux-1::git+https://github.com/c-util/c-stdaux#branch=v1
 	source = c-utf8-1::git+https://github.com/c-util/c-utf8#branch=v1
+	source = 0001-units-Enable-statically.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -34,3 +34,22 @@ pkgbase = dbus-broker-git
 	sha256sums = SKIP
 
 pkgname = dbus-broker-git
+	depends = audit>=3.0
+	depends = expat>=2.2
+	depends = libcap-ng>=0.6
+	depends = linux>=4.17
+	depends = systemd-libs>=230
+	depends = libaudit.so
+	depends = libcap-ng.so
+	depends = libexpat.so
+	depends = libsystemd.so
+	provides = dbus-broker
+	conflicts = dbus-broker
+
+pkgname = dbus-broker-units-git
+	pkgdesc = Linux D-Bus Message Broker - Service units
+	depends = dbus-broker
+	provides = dbus-broker-units
+	provides = dbus-units
+	conflicts = dbus-broker-units
+	conflicts = dbus-daemon-units
