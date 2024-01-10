@@ -1,0 +1,18 @@
+pkgbase = serve-d-bin
+	pkgdesc = Microsoft language server protocol implementation for D using workspace-d (Binary Distribution)
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/Pure-D/serve-d
+	arch = x86_64
+	groups = dlang
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = serve-d
+	conflicts = serve-d
+	source = https://github.com/Pure-D/serve-d/releases/download/v0.7.6/serve-d_0.7.6-linux-x86_64.tar.xz
+	source = https://raw.githubusercontent.com/Pure-D/serve-d/v0.7.6/LICENSE
+	sha256sums = 48e135a60523cf22ef3265d76aee338357543405f6731503cf550efb45e4d6bc
+	sha256sums = 84ffe9d8aa1f01fef7df2efb5525e66ff2c1c4dea65d65674e42b8d615023c98
+
+pkgname = serve-d-bin
