@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tidyseurat
-_pkgver=0.7.9
+_pkgver=0.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Brings Seurat to the Tidyverse"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(GPL3)
 depends=(
   r-cli
@@ -41,12 +41,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e112239c72797c4e3a81852c6f3bb555')
-sha256sums=('ba3600f067cd5c57ec95ac6ee43912230cc5558097196073f035765ad288df7b')
+md5sums=('844d068094e1d6b8e025cddc65eb336b')
+b2sums=('d53d63e8c75f2ca1e68a9cc9ed8a6dbf20714089cb67bd2c287f07115fa2890555bb4ca50edd58cd6b1f709de5950fb9b60b7bcb5ebd6aca1ac23248e23dff25')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
