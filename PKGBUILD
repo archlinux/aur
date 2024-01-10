@@ -2,7 +2,7 @@
 
 pkgname=forgetpass
 pkgdesc='Simple password generator for websites'
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexkdeveloper/forgetpass"
