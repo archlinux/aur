@@ -1,7 +1,7 @@
 pkgbase = waylyrics-git
 	pkgdesc = general desktop lyrics with QQMusic/NetEase Cloud Music source
-	pkgver = 0.1.0_r350.ge187f00
-	pkgrel = 2
+	pkgver = 0.1.0_r439.g1b40441
+	pkgrel = 1
 	url = https://github.com/waylyrics/waylyrics
 	arch = i686
 	arch = pentium4

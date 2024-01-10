@@ -3,8 +3,8 @@
 pkgname=waylyrics-git
 _pkgname=waylyrics
 _appname="io.poly000.${_pkgname}"
-pkgver=0.1.0_r350.ge187f00
-pkgrel=2
+pkgver=0.1.0_r439.g1b40441
+pkgrel=1
 pkgdesc="general desktop lyrics with QQMusic/NetEase Cloud Music source"
 url="https://github.com/waylyrics/waylyrics"
 conflicts=('waylyrics')
