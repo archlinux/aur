@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SVMDO
-_pkgver=1.2.7
+_pkgver=1.2.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -38,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5defbad1ecee04aa756aa24d9c93478b')
-b2sums=('b9321ec70aff17371a77adadb37da8c7d4ab8fc054b6f7cd5d8c8de1ae9ca8a3655c6a1d016201abf3e85268bac41df461f0a9651c59140d6fc695dff833498c')
+md5sums=('788f1db2c52ad72905209b3dee342113')
+b2sums=('bf279ba9bbec18714ca1b405520e7d890c2bbe461f5e00163f0234db56fe9c579766b211a1507f2b8ecf19ddde003fea0808444d9d25408537f24585d472732e')
 
 build() {
   mkdir build
