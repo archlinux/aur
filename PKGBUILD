@@ -1,44 +1,60 @@
 # Maintainer: Moabeat <moabeat@berlin.de>
 
 pkgname=beaver-notes
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 epoch=
 pkgdesc="A privacy-focused, cross-platform note-taking application."
-_electron=electron13
+_electron=electron28
 arch=('x86_64')
 url="https://www.beavernotes.com/"
 license=('MIT')
-depends=('libdbus-1.so' 'libatk-bridge-2.0.so' 'libatk-1.0.so' 'libgdk_pixbuf-2.0.so' 'libatspi.so' 'libxkbcommon.so' 'libcairo.so' 'libgdk-3.so' 'libpango-1.0.so' 'libasound.so' 'libgtk-3.so' 'nspr' 'libcups' 'mesa' 'libxshmfence' 'libxcomposite' 'libdrm' 'libxfixes' 'libxrandr' 'libxdamage' 'nss' 'hicolor-icon-theme' 'expat' 'libxcb' 'glibc' 'glib2' 'gcc-libs' 'libx11')
-makedepends=('npm' 'yarn' 'nodejs' 'imagemagick' 'libxcrypt-compat')
+depends=("$_electron" 'nspr' 'libcups' 'mesa' 'libxshmfence' 'libxcomposite' 'libdrm' 'libxfixes' 'libxrandr' 'libxdamage' 'nss' 'hicolor-icon-theme' 'expat' 'libxcb' 'glibc' 'glib2' 'gcc-libs' 'libx11')
+makedepends=('asar' 'npm' 'yarn' 'nodejs' 'imagemagick' 'libxcrypt-compat')
 provides=('beaver-notes')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Daniele-rolli/Beaver-Notes/archive/refs/tags/$pkgver.tar.gz"
         "beaver-notes.desktop")
-sha256sums=("0372805b3963024639e658a961cacbd1916d8476ce5136d91f1ce1ce6bfedd0a"
-            "988dc1020793d118dd2dc20745881ee6f4db221c61be503dc762f0d43318dfee")
+sha256sums=("33c419603fe88a164660adb8a37abca66433260e98008e030615e8bc615a407f"
+            "88c929e920a36084f5257c6d77eee2e75e6b27938c52205c55c25e08bfe89420")
+
+prepare() {
+    	_ver="$(</usr/lib/${_electron}/version)"
+    	cd "Beaver-Notes-$pkgver"
+    	yarn install
+}
 
 build() {
 	cd "Beaver-Notes-$pkgver"
 
 	# Build the application
-	yarn install
 	yarn build
-	yarn electron-builder build --config electron-builder.config.js --linux dir --x64
+	yarn run electron-builder --linux --"${!CARCH}" --dir \
+		-c.electronDist=/usr/lib/"$_electron" \
+		-c.electronVersion="$_ver"
 	
 	# Convert icon to standard conforming png format
 	convert buildResources/icon.ico buildResources/icon.png
-
-	# Remove unneccesary unpacked app
-	rm -rf dist/linux-unpacked/resources/app.asar.unpacked
 }
 
 package() {
 	cd "Beaver-Notes-$pkgver"
-	
+
+	local i686=linux-ia32-unpacked x86_64=linux-unpacked aarch64=linux-arm64-unpacked
+
+	# Install wrapper
+    	install -Dm755 /dev/null "${pkgdir}/usr/bin/$pkgname"
+    	cat >>"${pkgdir}/usr/bin/$pkgname" <<EOD
+#! /usr/bin/sh
+exec $_electron /usr/lib/beaver-notes "\$@"
+EOD
+
 	# Copy full application to destiation directory
-	install -dm 755 "$pkgdir"/opt/$pkgname
-	cp -r --no-preserve=ownership --preserve=mode dist/linux-unpacked/* "$pkgdir"/opt/$pkgname/
+    	install -d "$pkgdir/usr/lib/$pkgname/"
+    	asar e "dist/${!CARCH}/resources/app.asar" "$pkgdir/usr/lib/$pkgname/"
 	
+	# Remove unneccesary assets to prevent errors
+	rm -rf "$pkgdir/usr/lib/$pkgname/.gitbook"
+
 	# Install desktop file
 	install -Dm 644 ../beaver-notes.desktop "$pkgdir"/usr/share/applications/beaver-notes.desktop
 	
