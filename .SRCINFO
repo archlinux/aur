@@ -1,5 +1,5 @@
 pkgbase = ruby-cfpropertylist
-	pkgdesc = This is a module to read, write and manipulate both binary and XML property lists as defined by apple.
+	pkgdesc = Read, write and manipulate both binary and XML property lists as defined by apple.
 	pkgver = 3.0.6
 	pkgrel = 1
 	url = https://github.com/ckruse/CFPropertyList
