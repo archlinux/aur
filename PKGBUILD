@@ -2,7 +2,7 @@
 # Maintainer: Francesco Zardi <frazar at hotmail dot it>
 pkgname=fish-done
 _reponame='done'
-pkgver=1.19.2
+pkgver=1.19.3
 pkgrel=1
 pkgdesc='Receive notifications when long processes finish in fish shell'
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=('jq: for use with sway'
             'libnotify: notification backend'
             'notify-desktop-git: notification backend')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('802b6cdfeedb21e495c80f28ecb68f79c9f046826dc37924cbce84f877f79808')
+sha256sums=('c4119e1fa0296aecaf4939c8288d7610c5c69f53173d6cf2674e8579013214cc')
 
 check() {
 	cd "$_reponame-$pkgver"
