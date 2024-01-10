@@ -36,13 +36,18 @@ function launch(){
 	--bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
 	--bind "$HOME" "$HOME" \
 	--bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
-	env GTK_USE_PORTAL=1 electron /usr/lib/electronic-wechat-uos-bin/app.asar "$@"
+	env GTK_USE_PORTAL=1 electron$(cat /usr/lib/electronic-wechat-uos-bin/electronVer) \
+	/usr/lib/electronic-wechat-uos-bin/app.asar "$@"
 	exit $?
 }
 
 function x11Launch(){
     note '使用 XWayland / X11...'
-    launch --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks "$@" "${flagsIn}"
+    launch --ignore-gpu-blocklist \
+    --enable-gpu-rasterization \
+    --enable-zero-copy \
+    --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks \
+    "$@"
 }
 
 function probeKwinVersion(){
@@ -66,7 +71,17 @@ function waylandLaunch(){
     else
         waylandFlag="--ozone-platform=wayland"
     fi
-    launch ${waylandFlag} --ignore-gpu-blocklist --enable-features=WaylandWindowDecorations --enable-gpu-rasterization --enable-zero-copy --enable-wayland-ime --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder "$@" "${flagsIn}"
+    launch \
+    ${waylandFlag} \
+    --ignore-gpu-blocklist \
+    --enable-features=WaylandWindowDecorations \
+    --enable-gpu-rasterization \
+    --enable-zero-copy \
+    --enable-wayland-ime \
+    --disable-gpu-driver-bug-workarounds \
+    --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks \
+    --disable-features=UseChromeOSDirectVideoDecoder \
+    "$@" "${flagsIn}"
 }
 
 function note() {
@@ -81,6 +96,4 @@ function note() {
     fi
 }
 
-flagsIn="$@"
-
-main
+main "$@"
