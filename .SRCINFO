@@ -9,6 +9,7 @@ pkgbase = gnome-shell-extension-ddterm-git
 	makedepends = git
 	makedepends = gtk4
 	makedepends = libxslt
+	makedepends = xorg-server-xvfb
 	depends = gnome-shell
 	depends = gtk3
 	depends = vte3
