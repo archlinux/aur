@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
-pkgver=1.6.rc2.r588.gc5fd8c05
+pkgver=1.9.r7237.c5fd8c0
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (git development version)'
 arch=('x86_64')
@@ -53,14 +53,25 @@ b2sums=('SKIP'
         '71f45f9abb4e9f98a52177b227aa30ab27d02c9eef8a31400460e71c72b6d40ec396581f0b1703d4cec655aaba704077212882f643c6efb6cda951ea69b5383d'
         'cdba5fd2988b7ead8b264d5b41f1c7adb47a6487be1e3a4ce98c0af2094d9964f4bc364237c4437014be18061f067aa741b0382f21365be497e06b189c5c7728')
 
-pkgver() {
-  cd "$pkgname"
+_meson_setup() {
+  arch-meson "$pkgname" "$1" -D sd-bus-provider=libsystemd
+}
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+prepare() {
+  _meson_setup build-pkgver
+}
+
+pkgver() {
+  (
+    set -o pipefail
+    meson introspect --projectinfo build-pkgver | sed -n 's/.*"version": "\([^"]*\)".*/\1/;s/-dev//p' | tr -d '\n'
+  )
+  cd "$pkgname"
+  printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  arch-meson "$pkgname" build -D sd-bus-provider=libsystemd
+  _meson_setup build
   meson compile -C build
 }
 
