@@ -7,9 +7,9 @@ url="https://www.amuletmc.com/"
 license=(custom)
 
 arch=(any)
-pkgver=0.10.25
+pkgver=0.10.27
 pkgrel=1
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-cython-lint python-versioneer)
 
 depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core)
 
@@ -25,12 +25,16 @@ sha256sums=(
 	"SKIP"
 )
 
-build() {
+function prepare() {
+	sed -i 's/versioneer-518/versioneer/g' "${srcdir}/Amulet-Map-Editor-${pkgver}/pyproject.toml"
+}
+
+function build() {
 	cd "${srcdir}/Amulet-Map-Editor-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
-package() {
+function package() {
 	install -Dm755 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/amulet.png"
 	install -Dm644 "${srcdir}/amulet.desktop" "${pkgdir}/usr/share/applications/amulet.desktop"
 	cd "${srcdir}/Amulet-Map-Editor-${pkgver}"
