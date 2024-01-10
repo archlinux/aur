@@ -1,6 +1,6 @@
 pkgbase = note-manager
 	pkgdesc = Simple CLI notes manager
-	pkgver = 1.15.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/thek4n/note
 	arch = any
