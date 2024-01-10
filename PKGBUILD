@@ -19,13 +19,18 @@ license=(
 depends=()
 makedepends=(
   'git')
+optdepends=(
+  "ipfs-dlagent: alternative ipfs support"
+  "transmission-dlagent: bittorrent resources support"
+)
 provides=(
   "${_pkgname}=${pkgver}")
 conflicts=(
   "${_pkgname}")
 _url="file://${HOME}/${_pkgname}"
 source=(
-  "git+${url}")
+  "git+${url}"
+)
 sha256sums=(
   SKIP
 )
