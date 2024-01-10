@@ -17,13 +17,15 @@ md5sums=('SKIP')
 build() {
     cd $pkgname
     rm -rf build
-    cmake -B build -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DNO_TESTS=1
-    cd build
-    make
+    cmake -B build -Wno-dev \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DNO_TESTS=1
+
+    cmake --build build
 }
 
 package() {
     cd $pkgname
-    cd build
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir/" cmake --install build
 }
