@@ -19,7 +19,7 @@ sha256sums=('5d919e8fc44b7b7114b6d9762e5282535bcbade19370e032c924496e1cec1696')
 
 package() {
   cd "$pkgname-$pkgver"
-	install -Dm755 lnxrouter -t "$pkgdir/usr/bin"
+  install -Dm755 lnxrouter -t "$pkgdir/usr/bin"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/lnxrouter"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/lnxrouter"
 }
