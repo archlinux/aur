@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dwayland-git
-pkgver=5.24.3.deepin.1.4.r1.gf339073
+pkgver=5.25.0.r4.g76b3f08
 pkgrel=1
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=(x86_64)
