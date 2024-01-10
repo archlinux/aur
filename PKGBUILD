@@ -8,8 +8,8 @@ pkgname=('systemd-chromiumos'
          'systemd-chromiumos-resolvconf'
          'systemd-chromiumos-sysvcompat'
          'systemd-chromiumos-ukify')
-_tag='6eb55199ed8953019853c2bcdb2e29743d90a86d' # git rev-parse v${_tag_name}
-_tag_name=255.1
+_tag='be88ad03366b8aa059bb72b39a270128ba62b428' # git rev-parse v${_tag_name}
+_tag_name=255.2
 pkgver="${_tag_name/-/}"
 pkgrel=2
 arch=('x86_64')
@@ -181,7 +181,7 @@ package_systemd-chromiumos() {
   pkgdesc='system and service manager - chromiumos patches'
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
-           'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
+           'dbus-units' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'systemd-libs' 'libidn2' 'lz4' 'pam'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so'
@@ -194,7 +194,6 @@ package_systemd-chromiumos() {
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'systemd-ukify: combine kernel and initrd into a signed Unified Kernel Image'
               'polkit: allow administration as unprivileged user'
-              'python: Unified Kernel Image with ukify'
               'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
               'gnutls: systemd-journal-gatewayd and systemd-journal-remote'
               'qrencode: show QR codes'
@@ -338,11 +337,11 @@ package_systemd-chromiumos-ukify() {
   license=('GPL2')
   provides=('ukify' "systemd-ukify=$pkgver")
   conflicts=('systemd-ukify')
-  depends=('binutils' 'python-cryptography' 'python-pefile')
+  depends=('binutils' 'python-cryptography' 'python-pefile' 'systemd-chromiumos')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
-install -d -m0755 "$pkgdir"/usr/{lib/kernel,share/man}
+  install -d -m0755 "$pkgdir"/usr/{lib/kernel,share/man}
   mv systemd-ukify/bin "$pkgdir"/usr/bin
   mv systemd-ukify/systemd "$pkgdir"/usr/lib/systemd
   mv systemd-ukify/man1 "$pkgdir"/usr/share/man/man1
