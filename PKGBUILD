@@ -9,7 +9,7 @@ depends=(
   'pacman>5'
 )
 source=("${pkgname}.tar.gz::https://github.com/ton-blockchain/packages/releases/latest/download/ton-linux-x86-64.tar.gz")
-sha256sums=('60a0c1666cd7ca6f204cbbd5f9a603eebf7be3cac73362a1e8a853531b0d98ff')
+sha256sums=('916d2d2bcec506ce3a4fa04bdb63b60f53d1c4990fe24b9056203fc975a8bc08')
 
 package() {
   cd "$srcdir"
