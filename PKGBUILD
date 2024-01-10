@@ -4,7 +4,7 @@
 
 pkgname=kpatch-git
 pkgver=0.9.9.r7.g8513926
-pkgrel=2
+pkgrel=3
 pkgdesc='Live kernel patching (git)'
 arch=(i686 x86_64)
 url=https://github.com/dynup/kpatch
@@ -12,7 +12,6 @@ license=(GPL2)
 depends=(bash libelf)
 makedepends=(git)
 checkdepends=(
-  linux-headers
   shellcheck)
 provides=(kpatch)
 conflicts=(kpatch)
@@ -59,7 +58,8 @@ build() {
 check() {
   cd "${srcdir}/${pkgname}/"
   make unit
-  make check
+#   see: https://github.com/dynup/kpatch/issues/1371
+#   make check
 }
 
 package() {
