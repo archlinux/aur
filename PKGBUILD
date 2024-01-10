@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cloudpan189-go-bin
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Cloud 189 Command Line Client (CLI), implemented based on GO.天翼云盘命令行客户端(CLI),基于GO语言实现"
 arch=(
     'aarch64'
@@ -18,7 +18,7 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/releases/download/v
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-386.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-amd64.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('0fd2e04ea82df0048293e3a813578ab24cb14f1548415958a1265aa57621500b')
+sha256sums=('d06bb11e97128eac8f818339f5e0f6855b0a0a4166816e94d026670a8e345bee')
 sha256sums_aarch64=('ec8729093a82092b35a68a022d548f76d40a61e6ab490f1bef9842abb8134ef7')
 sha256sums_armv7h=('ba8ac3a31c61c6fb81a88e7d90167427af5d5850fb551e8422ec182c5cabb70c')
 sha256sums_i686=('f5cdf2195dc07f20cb09f716d8f916c04ee12512c2a7fe9a81d3300813a5b472')
