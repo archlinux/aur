@@ -1,20 +1,22 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
-_pkgname=hpp-fcl
-_pkgver=0.5
-pkgname=${_pkgname}-git
-pkgver=0.5.r538.5641ae1
-pkgrel=2
+_org='humanoid-path-planner'
+_pkgname='hpp-fcl'
+_pkgver=2.4.0
+pkgname=("${_pkgname}-git" "${_pkgname}-git-docs")
+pkgver=2.4.0.r2280.6981036f
+pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
-url="https://github.com/humanoid-path-planner/$pkgname"
-license=('BSD 3-clause')
-depends=('eigen' 'assimp')
-makedepends=('cmake')
+url="https://github.com/$_org/$_pkgname"
+license=('BSD')
+depends=('assimp' 'eigenpy' 'octomap' 'qhull' 'python-numpy' 'boost-libs')
+optdepends=('doxygen')
+makedepends=('cmake' 'eigen' 'boost' 'git')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("$_pkgname"::"git://github.com/nim65s/$_pkgname.git")
-md5sums=('SKIP')
+source=("git+${url}#branch=fetch-submodule")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -22,13 +24,31 @@ pkgver() {
 }
 
 build() {
-    cd "$_pkgname"
-    git submodule update --init
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
-    make
+    cmake -B "build-git" -S "$_pkgname" \
+        -DHPP_FCL_HAS_QHULL=ON \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DGENERATE_PYTHON_STUBS=ON \
+        -DINSTALL_DOCUMENTATION=ON \
+        -DBUILD_DOCUMENTATION=ON \
+        -Wno-dev
+    cmake --build "build-git"
 }
 
-package() {
-    cd "$_pkgname"
-    make DESTDIR="$pkgdir/" install
+check() {
+    cmake --build "build-git" -t test
+}
+
+package_hpp-fcl-git() {
+    DESTDIR="$pkgdir/" cmake --build "build-git" -t install
+    rm -rf "$pkgdir/usr/share/doc"
+    sed -i 's=;/usr/\.\./include/include==' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclTargets.cmake"
+    sed -i '/Boost COMPONENTS/s/python3//' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclConfig.cmake"
+    install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_hpp-fcl-git-docs() {
+    DESTDIR="$pkgdir/" cmake --build "build-git" -t install
+    rm -rf "$pkgdir"/usr/{lib,include,share/{"$_pkgname",ament_index}}
+    install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

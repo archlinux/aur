@@ -1,18 +1,28 @@
 pkgbase = hpp-fcl-git
 	pkgdesc = An extension of the Flexible Collision Library
-	pkgver = 0.5.r538.5641ae1
-	pkgrel = 2
-	url = https://github.com/humanoid-path-planner/hpp-fcl-git
+	pkgver = 2.4.0.r2280.6981036f
+	pkgrel = 1
+	url = https://github.com/humanoid-path-planner/hpp-fcl
 	arch = i686
 	arch = x86_64
-	license = BSD 3-clause
+	license = BSD
 	makedepends = cmake
-	depends = eigen
+	makedepends = eigen
+	makedepends = boost
+	makedepends = git
 	depends = assimp
+	depends = eigenpy
+	depends = octomap
+	depends = qhull
+	depends = python-numpy
+	depends = boost-libs
+	optdepends = doxygen
 	provides = hpp-fcl
 	conflicts = hpp-fcl
-	source = hpp-fcl::git://github.com/nim65s/hpp-fcl.git
-	md5sums = SKIP
+	source = git+https://github.com/humanoid-path-planner/hpp-fcl#branch=fetch-submodule
+	sha256sums = SKIP
 
 pkgname = hpp-fcl-git
+
+pkgname = hpp-fcl-git-docs
 
