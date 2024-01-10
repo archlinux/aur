@@ -1,7 +1,7 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package
 	pkgver = 0.5.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = any
 	license = MIT
@@ -43,6 +43,7 @@ pkgbase = nwg-shell
 	depends = nwg-shell-config
 	depends = nwg-shell-wallpapers
 	depends = nwg-displays
+	depends = nwg-clipman
 	depends = python-dasbus
 	depends = swaync
 	depends = gtklock
