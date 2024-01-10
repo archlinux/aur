@@ -1,0 +1,46 @@
+From bded3361f7f2ac7b4734d59de8ddb07875d9489d Mon Sep 17 00:00:00 2001
+From: Xing Guo <higuoxing@gmail.com>
+Date: Sun, 3 Dec 2023 23:09:51 +0800
+Subject: [PATCH v1] Make PostgreSQL work with newer version of libxml2.
+
+There's a breaking change of API since v2.12.0 of libxml2. This patch
+helps resolve it.
+
+See: https://github.com/GNOME/libxml2/commit/61034116d0a3c8b295c6137956adc3ae55720711
+---
+ src/backend/utils/adt/xml.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/backend/utils/adt/xml.c b/src/backend/utils/adt/xml.c
+index c401e7b821..8a391ca5fa 100644
+--- a/src/backend/utils/adt/xml.c
++++ b/src/backend/utils/adt/xml.c
+@@ -124,7 +124,11 @@ static xmlParserInputPtr xmlPgEntityLoader(const char *URL, const char *ID,
+ 										   xmlParserCtxtPtr ctxt);
+ static void xml_errsave(Node *escontext, PgXmlErrorContext *errcxt,
+ 						int sqlcode, const char *msg);
++#if LIBXML_VERSION >= 21200
++static void xml_errorHandler(void *data, const xmlError *error);
++#else
+ static void xml_errorHandler(void *data, xmlErrorPtr error);
++#endif
+ static int	errdetail_for_xml_code(int code);
+ static void chopStringInfoNewlines(StringInfo str);
+ static void appendStringInfoLineSeparator(StringInfo str);
+@@ -2023,8 +2027,11 @@ xml_errsave(Node *escontext, PgXmlErrorContext *errcxt,
+ /*
+  * Error handler for libxml errors and warnings
+  */
+-static void
+-xml_errorHandler(void *data, xmlErrorPtr error)
++#if LIBXML_VERSION >= 21200
++static void xml_errorHandler(void *data, const xmlError *error)
++#else
++static void xml_errorHandler(void *data, xmlErrorPtr error)
++#endif
+ {
+ 	PgXmlErrorContext *xmlerrcxt = (PgXmlErrorContext *) data;
+ 	xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) error->ctxt;
+-- 
+2.43.0
+
