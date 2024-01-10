@@ -1,16 +1,16 @@
 pkgbase = kaf-bin
 	pkgdesc = Kafka CLI inspired by kubectl & docker
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	license = MIT
 	conflicts = kaf-bin
 	conflicts = kaf
 	provides = kaf-bin
 	arch = aarch64
-	source_aarch64 = https://github.com/birdayz/kaf/releases/download/v0.2.6/kaf_0.2.6_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 3601683dc8f4c7da10a64483fec4c484c00cf8ed7b39076d73bdaba923ed1872
+	source_aarch64 = https://github.com/birdayz/kaf/releases/download/v0.2.7/kaf_0.2.7_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 2958a943f6b288e269520504dbdebcae7d26e9f157e16988146b88a834a4f2f5
 	arch = x86_64
-	source_x86_64 = https://github.com/birdayz/kaf/releases/download/v0.2.6/kaf_0.2.6_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 30bccf45c6d617aa1ec361a37ef4b494aba5aedbd31c58887ab8a7881fb3eab5
+	source_x86_64 = https://github.com/birdayz/kaf/releases/download/v0.2.7/kaf_0.2.7_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f158ec586e84d4cd7c550bccaf8d04b7284e94ec28a4ebe3464315e33ff45fb9
 	
 pkgname = kaf-bin
