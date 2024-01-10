@@ -12,6 +12,6 @@ pkgbase = otr
 	conflicts = otr-git
 	source = https://gitlab.com/mipimipi/otr/-/archive/v0.7.0/otr-v0.7.0.tar.gz
 	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
-	sha256sums = e1fc9ea64bb96e326d07b2f0436314bcb1fccc03eb36a6aa9db73374b1520d86
+	sha256sums = df704d57c28b61a351e7469d347daba6f99c5b41832fb9ed1361925273cd90dd
 
 pkgname = otr
