@@ -16,16 +16,16 @@ conflicts=('xone-dkms'
 		   'xow')
 provides=('xone-dkms')
 source=(
-  "git+https://github.com/medusalix/xone.git#tag=v${pkgver}"
+  https://github.com/medusalix/xone/archive/refs/tags/v${pkgver}.tar.gz
   fix_6.3_compilation.patch
 )
 sha256sums=(
-  'SKIP'
+  993f6b2b07c3236ce283d5de4da47dbfc16a86e056af504a4958d87f718ece20
   6ce597ef7a916216584c99bd8fdf382b6a720d8550315c87142aeff2b226d70b
 )
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   local src
   for src in "${source[@]}"; do
@@ -41,7 +41,7 @@ package() {
 
   echo "* Copying module into /usr/src..."
   install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-  cp -r ${srcdir}/$_pkgname/* "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+  cp -r ${srcdir}/${_pkgname}-${pkgver}/* "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 
   echo "* Blacklisting xpad module..."
   install -D -m 644 install/modprobe.conf "${pkgdir}/usr/lib/modprobe.d/xone-blacklist.conf"
