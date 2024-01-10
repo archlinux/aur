@@ -1,14 +1,16 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0
 
 _pkgname=reallymakepkg
 pkgname="${_pkgname}-git"
-pkgver=v1.0+14+gadf3d03
+pkgver=v1.0+31+g23c49a6
 pkgrel=1
 pkgdesc="System-independent makepkg"
-arch=(any)
+arch=(
+  any
+)
 _repo="https://github.com"
 _ns="themartiancompany"
 url="${_repo}/${_ns}/${_pkgname}"
@@ -16,7 +18,7 @@ license=(
   AGPL3)
 depends=()
 makedepends=(
-  git)
+  'git')
 provides=(
   "${_pkgname}=${pkgver}")
 conflicts=(
@@ -25,7 +27,8 @@ _url="file://${HOME}/${_pkgname}"
 source=(
   "git+${url}")
 sha256sums=(
-  SKIP)
+  SKIP
+)
 
 pkgver() {
   cd \
