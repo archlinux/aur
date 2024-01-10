@@ -2,7 +2,7 @@
 # -*- sh -*-
 
 pkgname='fuc-bin'
-pkgver=1.1.10
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Fast Unix Commands: Modern, performance focused unix commands (pre-compiled)'
 arch=('aarch64' 'x86_64')
@@ -40,24 +40,14 @@ package() {
 }
 
 sha256sums_aarch64=(
-  '91b6b9c85b3a27643a2b30c9c657af8a8b6a7019708ee9ab89f4fa7bb8579dea'
-  '99af30f06bb10d3670dfa2c037ef9bc75e860f58ba1047a3d0dc1aca125e674b'
+  'bbc391228552df08c75ae2ecee1c3c9c236967b199625e92b1f8081114418db2'
+  '9a581b99da4c86103215be4ed19fdeb6e65cd609fed1bd20d92bc65e72577079'
   'SKIP'
 )
-
 sha256sums_x86_64=(
-  'c9bb761c689e8a8b53ddc1f38f5d42a9db382674b176e715f760ccbcf77fb156'
-  '1698e266414f3924de89bfe270be83af1fcc1c7b9343434553f2458eeb0ceadd'
+  'f59e768ea8a095bf9fb93a36ecdf55071f9e6dd36111411408318f72ed205c8d'
+  '97ee90c8875e8948595119b3a4b1b4ff339a915d31d0cb51aa52c32eb49361be'
   'SKIP'
 )
-
-# 🪷 Beyond the Known — 365 Days of Exploration
-#
-# 📆 10th December
-#
-# If one is All One, there is only connection; not I am
-# connected.
-#
-# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
