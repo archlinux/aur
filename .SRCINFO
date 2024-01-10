@@ -1,6 +1,6 @@
 pkgbase = linux-router
 	pkgdesc = Set Linux as router in one command
-	pkgver = 0.6.7
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/garywill/linux-router
 	arch = any
@@ -12,13 +12,12 @@ pkgbase = linux-router
 	depends = iptables
 	optdepends = hostapd: WiFi hotspot capability,
 	optdepends = iw: WiFi hotspot capability,
-	optdepends = iwconfig: if iw can not recognize your adapter,
+	optdepends = iwconfig: if "iw" can not recognize your adapter,
 	optdepends = haveged: improve random entropy,
 	optdepends = qrencode: QR code support
 	provides = lnxrouter
 	provides = linuxrouter
-	source = https://github.com/garywill/linux-router/archive/refs/tags/0.6.7.tar.gz
-	md5sums = 486e4a6d5c202085f0f9367c5207d3e8
-	sha256sums = 94d26e9e3bbe9b2bfe5b1b09fcb6237cf4623ad22f8b7698af2193e2ab78c338
+	source = linux-router-0.7.1.tar.gz::https://github.com/garywill/linux-router/archive/refs/tags/0.7.1.tar.gz
+	sha256sums = 5d919e8fc44b7b7114b6d9762e5282535bcbade19370e032c924496e1cec1696
 
 pkgname = linux-router
