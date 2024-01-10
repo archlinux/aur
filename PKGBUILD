@@ -2,10 +2,10 @@
 
 pkgname=pixelchart
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Map binary data into a beautiful chart'
 arch=('any')
-url='https://pixelchart.cf/index.html'
+url='https://noraj.github.io/PixelChart/'
 license=('MIT')
 depends=('ruby' 'ruby-paint' 'ruby-docopt' 'libvips' 'imagemagick' 'ruby-rmagick' 'ruby-ruby-vips')
 options=(!emptydirs)

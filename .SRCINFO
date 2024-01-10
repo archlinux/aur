@@ -1,8 +1,8 @@
 pkgbase = pixelchart
 	pkgdesc = Map binary data into a beautiful chart
 	pkgver = 1.2.0
-	pkgrel = 1
-	url = https://pixelchart.cf/index.html
+	pkgrel = 2
+	url = https://noraj.github.io/PixelChart/
 	arch = any
 	license = MIT
 	depends = ruby
