@@ -12,9 +12,9 @@ pkgbase = sharing-gui
 	makedepends = git
 	depends = electron21
 	conflicts = sharing-gui
-	source = sharing-gui-1.4.0::git+https://github.com/imyuanx/sharing-GUI#tag=v1.4.0
+	source = sharing-gui.git::git+https://github.com/imyuanx/sharing-GUI#tag=v1.4.0
 	source = sharing-gui.sh
 	sha256sums = SKIP
-	sha256sums = 1a813b485817e6ac4c969b71dd9efd732aee8c69f7713e3ed23bab36e6405036
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = sharing-gui
