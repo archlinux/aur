@@ -9,8 +9,14 @@ shift
 shift
 envs=()
 
+function cleanup() {
+  [[ -v NEW_KUBECONFIG ]] && [[ -f "$NEW_KUBECONFIG" ]] && rm -f "$NEW_KUBECONFIG"
+  [[ -v PROXY_PID ]] && kill "$PROXY_PID"
+}
+
+trap 'EC=$?; cleanup || true; exit $EC' EXIT INT TERM
 NEW_KUBECONFIG="$(mktemp -p "$XDG_RUNTIME_DIR")"
-trap 'rm -f $NEW_KUBECONFIG' EXIT
+
 if kubectl -n "$namespace" get secrets "${name}-kubeconfig" -o jsonpath='{.data.value}' 2>/dev/null | base64 -d >"$NEW_KUBECONFIG"; then
   hasKubeconfig=true
   envs+=(KUBECONFIG="$NEW_KUBECONFIG")
@@ -18,9 +24,9 @@ else
   hasKubeconfig=false
   envs+=(KUBECONFIG="")
 fi
-if secretName="$(kubectl -n "$namespace" get openstackcluster -l cluster.x-k8s.io/cluster-name="$name" -o yaml 2>/dev/null | yq -r '.items[0].spec.identityRef.name')"; then
+if secretName="$(kubectl -n "$namespace" get openstackcluster -l cluster.x-k8s.io/cluster-name="$name" -o yaml 2>/dev/null | yq -er '.items[0].spec.identityRef.name')"; then
   hasOSConfig=true
-  mapfile -t osEnvs < <(kubectl -n "$namespace" get secret "$secretName" -o jsonpath='{.data.clouds\.yaml}' | base64 -d | yq -r '.clouds.openstack | {OS_AUTH_TYPE: .["auth_type"], OS_AUTH_URL: .auth["auth_url"], OS_APPLICATION_CREDENTIAL_ID: .auth["application_credential_id"], OS_APPLICATION_CREDENTIAL_SECRET: .auth["application_credential_secret"], OS_REGION_NAME: .["region_name"], OS_INTERFACE: .interface, OS_IDENTITY_API_VERSION: .["identity_api_version"]} | to_entries[] | "\(.key)=\(.value)"')
+  mapfile -t osEnvs < <(kubectl -n "$namespace" get secret "$secretName" -o jsonpath='{.data.clouds\.yaml}' | base64 -d | yq -er '.clouds.openstack | {OS_AUTH_TYPE: .["auth_type"], OS_AUTH_URL: .auth["auth_url"], OS_APPLICATION_CREDENTIAL_ID: .auth["application_credential_id"], OS_APPLICATION_CREDENTIAL_SECRET: .auth["application_credential_secret"], OS_REGION_NAME: .["region_name"], OS_INTERFACE: .interface, OS_IDENTITY_API_VERSION: .["identity_api_version"]} | to_entries[] | "\(.key)=\(.value)"')
   envs+=(OS_SHELL=true "${osEnvs[@]}")
 else
   hasOSConfig=false
@@ -35,5 +41,13 @@ if [[ "$hasOSConfig" == false ]]; then
 fi
 if [[ "$hasKubeconfig" == false ]]; then
   echo "KUBECONFIG missing, only setting OpenStack env" >/dev/stderr
+#elif kubectl -n "$namespace" get openstackcluster -l cluster.x-k8s.io/cluster-name="$name" -o yaml 2>/dev/null | yq -er '.items[0] | if .spec.apiServerLoadBalancer.allowedCidrs then .spec.controlPlaneEndpoint.host else null end' &>/dev/null; then
+#  proxyPodName="proxy-$name"
+#  if ! kubectl -n "$namespace" get pod "$proxyPodName" &>/dev/null; then
+#    kubectl -n "$namespace" run --image docker.io/kalaksi/tinyproxy "$proxyPodName" --restart=Never
+#  fi
+#  kubectl -n "$namespace" port-forward "$proxyPodName" 8888 &>/dev/null &
+#  export HTTPS_PROXY=http://localhost:8888
+#  PROXY_PID=$!
 fi
 env "${envs[@]}" "${@:-${SHELL:-/usr/bin/env bash}}"
