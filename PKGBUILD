@@ -6,7 +6,7 @@ pkgname=xone-dkms
 pkgver=0.3
 pkgrel=3
 pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://github.com/medusalix/xone'
 license=('GPL2')
 depends=('dkms'
@@ -33,7 +33,7 @@ package() {
     src="${src##*/}"
     src="${src%.zst}"
     [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
+    echo "* Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
