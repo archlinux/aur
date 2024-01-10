@@ -1,17 +1,17 @@
 pkgbase = lib32-zimg
 	pkgdesc = Scaling, colorspace conversion, and dithering library
-	pkgver = 3.0.4
-	pkgrel = 3
+	pkgver = 3.0.5
+	pkgrel = 1
 	url = https://github.com/sekrit-twc/zimg
 	arch = x86_64
 	license = custom:WTFPL
 	makedepends = git
-	makedepends = lib32-gcc-libs
-	depends = zimg>=3.0.4
+	depends = zimg>=3.0.5
 	depends = lib32-glibc
+	depends = lib32-gcc-libs
 	provides = libzimg.so
 	options = !emptydirs
-	source = git+https://github.com/sekrit-twc/zimg.git#tag=dd4c4dff3ce6a2877bd6ba57c1be99759b9cb2da
+	source = git+https://github.com/sekrit-twc/zimg.git#tag=e5b0de6bebbcbc66732ed5afaafef6b2c7dfef87
 	sha256sums = SKIP
 
 pkgname = lib32-zimg
