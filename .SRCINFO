@@ -13,6 +13,7 @@ pkgbase = qwlroots-git
 	makedepends = wlroots
 	makedepends = ninja
 	makedepends = wayland-protocols
+	makedepends = wlr-protocols-git
 	provides = qwlroots
 	source = qwlroots-git::git+https://github.com/vioken/qwlroots
 	sha512sums = SKIP
