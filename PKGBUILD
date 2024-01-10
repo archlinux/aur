@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=splayer-bin
 _pkgname=SPlayer
-pkgver=2.0.0_beta.5
+pkgver=2.0.0
+_electronversion=28
 pkgrel=1
 pkgdesc="A minimalist music player.一个简约的在线音乐播放器，支持网易云音乐账号登录，逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理"
 arch=(
@@ -34,9 +35,9 @@ depends=(
     'expat'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
-sha256sums=('f18173fa1cbc762b03234ed80a7b5b10ba0e27ebaf36ee926c6074f9a07a6ae8')
+sha256sums=('0364cd92f0935e6ee0d4f1158ecbfa1251fef49cfe68f7e3d9116e88c8fb65f4')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g;s|Music;|AudioVideo;|g" \
