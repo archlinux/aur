@@ -10,12 +10,10 @@ pkgbase = pianobooster-qt6-git
 	makedepends = pkg-config
 	depends = qt6-base
 	depends = qt6-tools
-	depends = qt6-tools-tools
 	depends = qt6-5compat
 	depends = ftgl
 	depends = rtmidi
 	depends = fluidsynth
-	depends = fluid-soundfont-gm
 	source = git+https://github.com/pianobooster/PianoBooster.git#branch=develop
 
 pkgname = pianobooster-qt6-git
