@@ -51,8 +51,8 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=6.1
-pkgrel=3
+pkgver=6.1.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -62,7 +62,8 @@ license=(GPL3)
 _aomver=3
 _dav1dver=1.3.0
 _ffnvcodecver=12.0.16.0
-_libjxl=0.7.0
+_libjxlver=0.7.0
+_libplacebover=6
 _libristver=0.2.7
 _libvpxver=1.13
 _srtver=1.5
@@ -97,10 +98,10 @@ depends=(
   libgl
   harfbuzz
   libiec61883
-  "libjxl>=$_libjxl"
+  "libjxl>=$_libjxlver"
   libmodplug
   libopenmpt
-  libplacebo
+  "libplacebo>=$_libplacebover"
   libpulse
   libraw1394
   librsvg
@@ -170,7 +171,7 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=d4ff0020b40b524a490cf62eccbd3a318f4c0e58
+_tag=e9c93009fc34ca9dfcf0c6f2ed90ef1df298abf7
 _deps_tag=2023-11-03
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
@@ -412,12 +413,6 @@ prepare() {
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
-  
-  # Fix VDPAU vo
-  git cherry-pick -n e9c93009fc34ca9dfcf0c6f2ed90ef1df298abf7
-  # Fix bug in av_fft_end
-  git cherry-pick -n a562cfee2e214252f8b3f516527272ae32ef9532
-  git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
 
   ### OBS changes
 
@@ -463,4 +458,3 @@ package() {
     install -D -m644 license_if_nonfree_enabled.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
 }
-
