@@ -2,7 +2,7 @@
 
 pkgname=dtkgui-git
 _pkgname=dtkgui
-pkgver=5.6.3.r8.ga69ed2e
+pkgver=5.6.21.r3.g2299e31
 pkgrel=1
 pkgdesc='Deepin Toolkit, gui module for DDE look and feel'
 arch=('x86_64' 'aarch64')
