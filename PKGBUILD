@@ -3,7 +3,7 @@
 pkgname=kubernetes-website-git
 pkgdesc="The Kubernetes documentation"
 epoch=1
-pkgver=snapshot.initial.v1.27.r2491.g3cb1639c52
+pkgver=1.29.r568.g5dc3c14946
 pkgrel=1
 arch=('any')
 makedepends=('git' 'hugo' 'npm')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/website"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed -e 's/snapshot-initial-//' -e 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
