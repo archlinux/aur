@@ -1,6 +1,6 @@
 pkgbase = swayfx-i3-style-fullscreen-git
 	pkgdesc = SwayFX: Sway, but with eye candy!
-	pkgver = r7035.f0ecffe5
+	pkgver = r7237.c5fd8c0
 	pkgrel = 1
 	url = https://github.com/WillPower3309/swayfx
 	install = sway.install
