@@ -1,11 +1,10 @@
 # Maintainer: jasmineteax <jastxakajasmineteax at gmail dot com>
-# Contributor: jasmineteax <jastxakajasmineteax at gmail dot com>
 _pkgauthor="HorizonFFXI"
 _pkgname="horizonxi-launcher"
 pkgname="${_pkgname}-bin"
 pkgver="1.2.4"
 pkgrel=1
-pkgdesc="Launcher for the popular Final Fantasy XI private server HorizonXI - https://horizonxi.com"
+pkgdesc="Launcher for the popular Final Fantasy XI private server HorizonXI"
 arch=('x86_64')
 url="https://horizonxi.com"
 license=('custom')
