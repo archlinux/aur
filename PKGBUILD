@@ -3,7 +3,7 @@
 pkgname=obs-studio-rc
 _pkgver=30.0.2
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=7
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -71,7 +71,7 @@ makedepends=(
   "libfdk-aac" # Deps of FDK AAC plugin
   "luajit" # Deps of Scripting plugin
   "nlohmann-json" # Deps of Websocket plugin (headers-only lib)
-  "onevpl" # Deps of QSV plugin
+  "libvpl" # Deps of QSV plugin
   "python>=$_pythonver" # Deps of Scripting plugin
   "sndio" # Deps of sndio plugin
   "swig" # Deps of Scripting plugin
@@ -85,7 +85,7 @@ makedepends=(
 optdepends=(
   "jack: JACK support"
   "libfdk-aac: FDK AAC codec support"
-  "onevpl: QSV encoder support"
+  "libvpl: QSV encoder support"
   "intel-media-sdk: QSV encoder support(<= Rocket Lake & >= Broadwell)"
   "onevpl-intel-gpu: QSV encoder support (>= Alder Lake)"
   "intel-media-driver: VAAPI encoder support (>= Broadwell)"
