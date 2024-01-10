@@ -1,0 +1,8 @@
+kernel_modules_dir = "/usr/lib/modules"
+efi_dir = "/boot/efi"
+
+[build_mappings]
+lts = "ArchLinuxLts.efi"
+zen = "ArchLinuxZen.efi"
+arch = "ArchLinux.efi"
+hardend = "ArchLinuxHardend.efi"
