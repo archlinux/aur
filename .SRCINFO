@@ -1,6 +1,6 @@
 pkgbase = ktlint
 	pkgdesc = An anti-bikeshedding Kotlin linter with built-in formatter
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://ktlint.github.io/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ktlint
 	makedepends = git
 	makedepends = jdk-openjdk>=21
 	depends = java-runtime>=11
-	source = git+https://github.com/pinterest/ktlint.git#commit=ebfe2d022ecf082c180e761c8f07f82caebd1561
+	source = git+https://github.com/pinterest/ktlint.git#commit=0b4193e9f524cc489632f46ee36309dcc0d79327
 	validpgpkeys = ADBC987D1A7B91DB6B0AAA81995EFBF4A3D20BEB
 	sha256sums = SKIP
 

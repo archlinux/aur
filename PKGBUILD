@@ -3,7 +3,7 @@
 # Contributor:	p2k		<uni-ulm.de: Patrick.Schneider>
 
 pkgname=ktlint
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="An anti-bikeshedding Kotlin linter with built-in formatter"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('java-runtime>=11')
 makedepends=(git 'jdk-openjdk>=21')
 validpgpkeys=(ADBC987D1A7B91DB6B0AAA81995EFBF4A3D20BEB)
-source=("git+https://github.com/pinterest/ktlint.git#commit=ebfe2d022ecf082c180e761c8f07f82caebd1561")
+source=("git+https://github.com/pinterest/ktlint.git#commit=0b4193e9f524cc489632f46ee36309dcc0d79327")
 sha256sums=('SKIP')
 
 _gradle_build() {
