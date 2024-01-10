@@ -1,20 +1,20 @@
 pkgbase = pear-rec
 	pkgdesc = An open-source, cross-platform terminal for seamless workflows
-	pkgver = 1.3.2
+	pkgver = 1.3.9
 	pkgrel = 1
 	url = https://027xiguapi.github.io/pear-rec/
 	arch = x86_64
 	license = Apache
 	makedepends = gendesk
 	makedepends = npm
-	makedepends = nodejs>=20
+	makedepends = nodejs
 	makedepends = git
 	makedepends = pnpm
 	depends = electron26
 	conflicts = pear-rec
-	source = pear-rec-1.3.2::git+https://github.com/027xiguapi/pear-rec.git#tag=v1.3.2
+	source = pear-rec.git::git+https://github.com/027xiguapi/pear-rec.git#tag=v1.3.9
 	source = pear-rec.sh
 	sha256sums = SKIP
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = pear-rec
