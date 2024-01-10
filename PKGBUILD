@@ -1,7 +1,7 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname='chia-bin'
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Binary Release, Provides GUI"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ provides=('chia' 'chia-gui')
 options=('!strip')
 source_x86_64=("https://github.com/Chia-Network/chia-blockchain/releases/download/$pkgver/chia-blockchain_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/Chia-Network/chia-blockchain/releases/download/$pkgver/chia-blockchain_${pkgver}_arm64.deb")
-sha256sums_x86_64=('28a8b1e021bea5cdce88bbf05520f1d018e2da4e54d2691143ece271ee6eb1c7')
-sha256sums_aarch64=('ff197258cbe9f9ba148a7e2fe4fad5dc53a82fb3a4cddda124b1d986d362b75f')
+sha256sums_x86_64=('5b57b1728f063e405d13307a6a54b578c7858572ec92f5d82eaab2bb18c8f0e3')
+sha256sums_aarch64=('e3c4b3c1c1e088c6a296cd1d531c049694536b0ed57af87509e0b608e61b17db')
 
 package() {
 	tar -xf data.tar.xz -C "$pkgdir"
