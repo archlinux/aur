@@ -2,7 +2,7 @@
 
 _pkgname=lxml-stubs
 pkgname=python-$_pkgname
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Type stubs for the lxml package '
 arch=('any')
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=()
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://github.com/${_pkgname:0:4}/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('97ed032dbc3a3978cddcbd4a948eb9f665292874160a014ed208f1e267c5ed927553bc3a329fa1daa48f9bc548c076945bb485b9a95c50aa780b18850918b146')
+sha512sums=('939ee4dd817cd83efe8b35aed1984f79aae25d05756296b348b3f97e1215cc5fa529074b1477b5dd52da6d476f3866c7c37feeb7ee4d63a574dd695e913d2741')
 
 build() {
   cd $_pkgname-$pkgver
