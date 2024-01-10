@@ -2,7 +2,7 @@
 pkgname="cellframe-dashboard"
 _nodename="cellframe-node"
 pkgver=2.13.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
 url="https://cellframe.net"
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(qt5-graphicaleffects qt5-base qt5-quickcontrols2 qt5-quickcontrols logrotate libxcrypt-compat)
 makedepends=(git qt5-base qt5-declarative cmake python3)
 options=(!makeflags !buildflags)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=d0b026a4655c603330390265de10ec157b76f615
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=de2175fe2f5dcd5d0132e66c95601f115d65dacc
 		cellframe-node.logrotate
 		cellframe-node-logrotate.timer
 		cellframe-node-logrotate.service
