@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spacemesh-bin
 _pkgname=Spacemesh
-pkgver=1.2.12
+pkgver=1.3.0
 _electronversion=25
 pkgrel=1
 pkgdesc="Spacemesh App (Smesher + Wallet)"
@@ -25,16 +25,16 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_downurl}/v${pkgver}/${p
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ba4ed4aaf2c44af5118b06a3099a92ef3bdc969ed964ad508a857d37ae56fd3d')
-sha256sums_aarch64=('cb0a30aad6e05b9480f8efb45ddf7bc22f5126a58471b47941aa5076a51b459c')
-sha256sums_x86_64=('fb9b74a5844b1ea1f323c851b74659a823b688f2bea20db5bc50b599e4636afe')
+sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums_aarch64=('e2774daf2460e403d52e7501843f4583ebbf604fc360ec9c2e638ac766d582c8')
+sha256sums_x86_64=('da9053115fa4407bd5a6866de2747390e1805066216852840b9a6aca3dc5752e')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}_app|${pkgname%-bin} --no-sandbox|g;s|${pkgname%-bin}_app|${pkgname%-bin}|g" \
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}_app|${pkgname%-bin}|g;s|${pkgname%-bin}_app|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}_app.desktop"
 }
 package() {
