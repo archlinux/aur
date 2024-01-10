@@ -1,7 +1,7 @@
 pkgbase = simple-music
 	pkgdesc = Light music.轻音乐
 	pkgver = 0.3.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://simple-music.netlify.app/
 	arch = any
 	license = MIT
