@@ -1,0 +1,9 @@
+post_install() {
+    echo "PE-bear has been installed."
+    echo "You can run it from the command line using 'PE-bear'."
+    echo "Signature file can be found in /usr/share/pe-bear"
+}
+
+post_upgrade() {
+    echo "Signature file is now in /usr/share/pe-bear"
+}
