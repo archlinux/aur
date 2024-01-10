@@ -4,7 +4,10 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 _pkgname=reallymakepkg
-pkgname="${_pkgname}-git"
+pkgbase="${_pkgname}-git"
+pkgname=(
+  "${pkgbase}"
+)
 pkgver=v1.0+31+g23c49a6
 pkgrel=1
 pkgdesc="System-independent makepkg"
