@@ -9,12 +9,12 @@ pkgbase = simple-music
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = pnpm
-	makedepends = nodejs>=20.1.0
+	makedepends = nvm
 	depends = electron24
 	conflicts = simple-music
-	source = simple-music-0.3.4::git+https://github.com/joey2217/simple-music#tag=v0.3.4
+	source = simple-music.git::git+https://github.com/joey2217/simple-music#tag=v0.3.4
 	source = simple-music.sh
 	sha256sums = SKIP
-	sha256sums = 220185d7181fd84a08592375901e0628548f3b99860de4322bb7864b882d33a8
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = simple-music
