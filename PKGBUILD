@@ -6,7 +6,7 @@
 # Maintainer: Nate Fortner <aur@nefortner.com>
 pkgname=nmap-automator-git
 _pkgname=nmap-automator
-pkgver=c5e15de842
+pkgver=r168.c5e15de
 pkgrel=1
 epoch=
 pkgdesc="nmap wrapper/automation tool for pentesting"
@@ -69,5 +69,5 @@ package() {
 
 pkgver() {
 	cd $_pkgname
-	git rev-parse HEAD | head -c 10
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
