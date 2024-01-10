@@ -5,7 +5,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=azcopy
-pkgver=10.22.1
+pkgver=10.22.2
 pkgrel=1
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('139913d6c9e3591cce8cd05df5d97d8ace2f294716b34003f37b6beb3a8ff4d93f7e1ae9ddabd7dbec66e113a16df6fbc6046f8a340117cf6d53eae5e6fa0b77')
+sha512sums=('c5bb7de120fb0259c1bfc01d81886835d1ecd0d4ee11b783027da431aed62f0cd8fbcde07d3ce92d38210bb50156554417a0ff39fc99e4886f817684eaf8e4ee')
 
 prepare() {
   cd "${srcdir}/azure-storage-azcopy-${pkgver}"
@@ -32,7 +32,7 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -v -o azcopy
+  go build -v -buildvcs=false -o azcopy
 
   # Completions
   ./azcopy completion bash > azcopy.bash
