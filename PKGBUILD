@@ -4,29 +4,20 @@ _org='humanoid-path-planner'
 _pkgname='hpp-fcl'
 _pkgver=2.4.0
 pkgname=("${_pkgname}-git" "${_pkgname}-git-docs")
-pkgver=2.4.0.r2279.51f101c9
+pkgver=2.4.0.r2282.8bdad148
 pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
 url="https://github.com/$_org/$_pkgname"
 license=('BSD')
-depends=('assimp' 'eigenpy' 'octomap' 'qhull' 'python-numpy' 'boost-libs')
-optdepends=('doxygen')
-makedepends=('cmake' 'eigen' 'boost' 'git')
-conflicts=($_pkgname)
-provides=($_pkgname)
-source=("git+${url}" "$url/pull/512.patch")
-sha256sums=('SKIP'
-            '594fda5541090f5a1f2e27ad44751c491f338bab3fe98e7739eb4593977a2064')
+depends=('assimp' 'eigenpy' 'octomap' 'qhull' 'python-numpy' 'boost-libs' 'gcc-libs' 'glibc' 'python')
+makedepends=('cmake' 'eigen' 'boost' 'git' 'doxygen')
+source=("git+${url}")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
     echo "$_pkgver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$_pkgname"
-    patch -p1 -i "$srcdir/512.patch"
 }
 
 build() {
@@ -46,6 +37,8 @@ check() {
 }
 
 package_hpp-fcl-git() {
+    conflicts=("$_pkgname")
+    provides=("$_pkgname")
     DESTDIR="$pkgdir/" cmake --build "build-git" -t install
     rm -rf "$pkgdir/usr/share/doc"
     sed -i 's=;/usr/\.\./include/include==' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclTargets.cmake"
@@ -54,6 +47,8 @@ package_hpp-fcl-git() {
 }
 
 package_hpp-fcl-git-docs() {
+    conflicts=("${_pkgname}-docs")
+    provides=("${_pkgname}-docs")
     DESTDIR="$pkgdir/" cmake --build "build-git" -t install
     rm -rf "$pkgdir"/usr/{lib,include,share/{"$_pkgname",ament_index}}
     install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

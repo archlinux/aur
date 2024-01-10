@@ -2,4 +2,5 @@ hpp-fcl
 src
 pkg
 *.zst
+*.sig
 *.patch
