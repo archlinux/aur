@@ -1,0 +1,12 @@
+pkgbase = replicate-cog-bin
+	pkgdesc = Containers for machine learning
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/replicate/cog
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	depends = curl
+
+pkgname = replicate-cog-bin
