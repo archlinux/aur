@@ -1,11 +1,11 @@
 pkgbase = python-pygraphviz
 	pkgdesc = Python interface to Graphviz graph drawing package
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pygraphviz.github.io
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = custom:BSD-3-clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

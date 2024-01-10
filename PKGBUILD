@@ -5,11 +5,11 @@
 _base=pygraphviz
 pkgname=python-${_base}
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to Graphviz graph drawing package"
 arch=('i686' 'x86_64')
 url="https://${_base}.github.io"
-license=('BSD')
+license=('custom:BSD-3-clause')
 depends=(python graphviz)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
@@ -24,5 +24,4 @@ package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  mv "${pkgdir}/usr/share/doc/${_base}-${pkgver}" "${pkgdir}/usr/share/doc/${pkgname}"
 }
