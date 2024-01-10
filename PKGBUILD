@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bnstruct
-_pkgver=1.0.14
+_pkgver=1.0.15
 pkgname=r-${_pkgname,,}
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc='Bayesian Network Structure Learning from Data with Missing Values'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b7a4a90918827dbbe5550ea0c7e058db49b3b8b9c68f70d5e8ce8a8646c9edc5')
+sha256sums=('5fffb6e0ba368077d621915dd9d64d5b2db3c82cb267be8d5b1d8868b0aec33f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
