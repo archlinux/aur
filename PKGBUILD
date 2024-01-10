@@ -4,11 +4,11 @@
 # Contributors: Dan Serban, Dany Martineau, RTFreedman, Harvey, Jordi De Groof, qqqqqqqqq9
 
 pkgname=mp3diags
-pkgver=1.5.02
-pkgrel=3
+pkgver=1.5.03
+pkgrel=1
 pkgdesc='Find and fix problems in MP3 files. Includes a tagger'
 arch=(x86_64)
-url=https://mp3diags.sourceforge.net/
+url=https://mp3diags.sourceforge.net
 license=(GPL2)
 depends=(boost-libs qt5-base)
 makedepends=(boost qt5-tools)
@@ -16,7 +16,7 @@ optdepends=('mp3gain: MP3 normalization support')
 #source=("https://downloads.sourceforge.net/project/mp3diags/unstable/mp3diags-src/MP3Diags-unstable-$pkgver.tar.gz")
 #sha256sums=('6dacea62988e7ffee79217cf404268ece22b3fee95474f021c22f854a9f3e8e6')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mciobanu/mp3diags/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d7d7590268fc6d8af835b448e572ad5d6bac9b6af4be9a25ca87d5f3c7f9a09a')
+sha256sums=('60fe732cb7b1c0a8f941650baf47613ea03fc5b90ff4d681cb9befd3aad16e68')
 
 #prepare() {
 #  sed -i 's|[-/]unstable||g' MP3Diags-unstable-$pkgver/desktop/MP3Diags-unstable.desktop
