@@ -4,7 +4,7 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
-pkgver=5.4.2
+pkgver=5.4.3
 pkgrel=1
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
@@ -54,18 +54,18 @@ package() {
   cd "$srcdir"
 
   # Let's be more verbose if standard output is a TTY:
-  test -t 1 && _verbose='v' || _verbose=''
+  test -t 1 && _v='v' || _v=''
 
-  install "-${_verbose}Dm0755" "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
+  install "-${_v}Dm0755" "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
   for _doc in {PRIVACY,README,CLI,SIMPLEX}.md; do
-    install  "-${_verbose}Dm0644" "$_doc" "$pkgdir/usr/share/doc/$pkgname/$_doc"
+    install  "-${_v}Dm0644" "$_doc" "$pkgdir/usr/share/doc/$pkgname/$_doc"
   done
-  install "-${_verbose}Dm0644" "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install "-${_verbose}Dm0644" "$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+  install "-${_v}Dm0644" "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install "-${_v}Dm0644" "$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 }
 
 sha256sums=(
-  'cc40866526ab384c61fcd3891761c3ee4c05c493444f5e428d2a824f2a94ae25'
+  'ede2bc8ed177bacad8297f175c49b3c96ca1eb5132fea25f750c4449175ea3ef'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
