@@ -6,14 +6,19 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 ## options
-: ${_build_patch:=false}
+: ${_build_patch:=true}
 
-# basic info
+: ${_build_clang:=false}
+: ${_build_v3:=false}
+
+[[ "${_build_v3::1}" == "t" ]] && _pkgtype+="-v3"
+
+## basic info
 _gitname="linux"
 _pkgname="$_gitname-vfio"
-pkgbase="$_pkgname"
+pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 url='https://www.kernel.org'
 arch=(x86_64)
@@ -47,7 +52,7 @@ source=(
 sha256sums=(
   'ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
   'SKIP'
-  '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
+  '45a44ff0e957cd562d2ceb60c1c90fc19c19e808209cebb46bfacfccfb56ad96'
 
   'f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb'
   '2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db'
@@ -55,10 +60,10 @@ sha256sums=(
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
-  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
+  83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-if [[ _build_patch == "t" ]] ; then
+if [[ ${_build_patch::1} == "t" ]] ; then
   _srctag=v$pkgver-arch1
   _dl_url_arch='https://github.com/archlinux/linux'
   source+=(
@@ -70,11 +75,32 @@ if [[ _build_patch == "t" ]] ; then
   )
 fi
 
+if [[ ${_build_clang::1} == "t" ]] ; then
+  makedepends+=(clang llvm lld)
+
+  export CC=clang
+  export CXX=clang++
+  export LDFLAGS+=" -fuse-ld=lld"
+
+  export HOSTCC=clang
+  export LLVM=1
+  export LLVM_IAS=1
+fi
+
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_prep_v3() {
+  [[ "${_build_v3::1}" != "t" ]] && return
+
+  export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+}
+
 prepare() {
+  _prep_v3
+
   cd $_srcname
 
   echo "Setting version..."
@@ -95,6 +121,20 @@ prepare() {
   # remove extra version suffix
   sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
 
+  if [[ ${_build_clang::1} == "t" ]] ; then
+    scripts/config --disable LTO_CLANG_FULL
+    scripts/config --enable LTO_CLANG_THIN
+
+    # disable tracers
+    scripts/config \
+      --disable CONFIG_FTRACE \
+      --disable CONFIG_FUNCTION_TRACER \
+      --disable CONFIG_STACK_TRACER
+
+    # disable numa
+    scripts/config --disable CONFIG_NUMA
+  fi
+
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
@@ -105,12 +145,16 @@ prepare() {
 }
 
 build() {
+  _prep_v3
+
   cd $_srcname
   make all
   #make htmldocs
 }
 
 _package() {
+  [ -n "$_pkgtype" ] && conflicts=("$_pkgname")
+
   pkgdesc="The $pkgdesc kernel and modules (ACS override and i915 VGA arbiter patches)"
   depends=(
     coreutils
@@ -147,6 +191,8 @@ _package() {
 }
 
 _package-headers() {
+  [ -n "$_pkgtype" ] && conflicts=("$_pkgname-headers")
+
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel (ACS override and i915 VGA arbiter patches)"
   depends=(pahole)
 
@@ -229,6 +275,8 @@ _package-headers() {
 }
 
 _package-docs() {
+  [ -n "$_pkgtype" ] && conflicts=("$_pkgname-docs")
+
   pkgdesc="Documentation for the $pkgdesc kernel (ACS override and i915 VGA arbiter patches)"
 
   cd $_srcname
