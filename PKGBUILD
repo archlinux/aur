@@ -6,11 +6,45 @@ pkgname=snapgene-viewer
 pkgver=7.1.1
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
-pkgrel=1
-pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis (freeware edition)'
+pkgrel=2
+pkgdesc='View plasmid maps, annotate features and share sequences (snapgene freeware edition)'
 arch=('x86_64')
-url='http://www.snapgene.com/products/snapgene-viewer/'
+url='https://www.snapgene.com/snapgene-viewer'
 license=('custom')
+depends=('qt6-base'
+         'qt6-webchannel'
+         'qt6-5compat'
+         'qt6-declarative'
+         'qt6-positioning'
+         'qt6-svg'
+         'qt6-webengine'
+         'libsm'
+         'fontconfig'
+         'nspr'
+         'xz'
+         'expat'
+         'glibc'
+         'gcc-libs'
+         'libc++'
+         'libc++abi'
+         'dbus'
+         'krb5'
+         'libxcb'
+         'libxkbcommon-x11'
+         'xcb-util-image'
+         'xcb-util-wm'
+         'libx11'
+         'libxkbfile'
+         'xcb-util-keysyms'
+         'xcb-util-renderutil'
+         'nss'
+         'hicolor-icon-theme'
+         'libice'
+         'libglvnd'
+         'libxext'
+         'openssl-1.1'
+         'zlib'
+)
 # A valid licence is required to use the full version of snapgene
 source=("https://cdn.snapgene.com/downloads/SnapGeneViewer/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/snapgene_viewer_"$pkgver"_linux.rpm" "snapgene-viewer")
 sha512sums=('c39ed1e5d5f1960b2d052faa086c898a56a6541982649870a0afdd122c49264e1c957a94fa6bbea9704f3c2f42536250a5d27f9485ae59addd4468c30b9951a8' '082c0fe6d8d5a6b8822d73589718d1baf9d4f651092c4beea8247e8a7af7ee9597858502124300111d020a07b3da612609caca21eb78fc889e6948d579ee7ea9')
