@@ -12,7 +12,7 @@ pkgbase = medict-bin
 	provides = medict=_3.0.1_alpha_dba43c
 	conflicts = medict
 	source = medict-_3.0.1_alpha_dba43c.tar.gz::https://github.com/terasum/medict/releases/download/v-3.0.1-alpha-dba43c/Medict_v-3.0.1-alpha-dba43c_Linux_x86_64.tar.gz
-	source = medict.png::https://raw.githubusercontent.com/terasum/medict/v-3.0.1-alpha-dba43c/build/assets/darwin/appicon.png
+	source = medict-_3.0.1_alpha_dba43c.png::https://raw.githubusercontent.com/terasum/medict/v-3.0.1-alpha-dba43c/build/assets/darwin/appicon.png
 	sha256sums = db7fdc0cc6ced987636c829ac41fafc8573e8ec6d2e4bfdf419797c0dffe9e4d
 	sha256sums = feafee440d86c5abd9d525ee78102209125c4d6e4275e99b6d4452fdc2f1995c
 

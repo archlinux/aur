@@ -19,7 +19,7 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver//_/-}/${_pkgname}_v${pkgver//_/-}_Linux_${CARCH}.tar.gz"
-    "${pkgname%-bin}.png::https://raw.githubusercontent.com/terasum/medict/v${pkgver//_/-}/build/assets/darwin/appicon.png"
+    "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/terasum/medict/v${pkgver//_/-}/build/assets/darwin/appicon.png"
 )
 sha256sums=('db7fdc0cc6ced987636c829ac41fafc8573e8ec6d2e4bfdf419797c0dffe9e4d'
             'feafee440d86c5abd9d525ee78102209125c4d6e4275e99b6d4452fdc2f1995c')
@@ -29,5 +29,5 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
