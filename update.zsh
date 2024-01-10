@@ -13,6 +13,16 @@ checksums=$(curl -L -sss ${checksum_url})
 linux_arm64_checksum=$(awk '$2~/.*Linux_arm64.*/ {print $1}' <<< "${checksums}")
 linux_x86_64_checksum=$(awk '$2~/.*Linux_x86_64.*/ {print $1}' <<< "${checksums}")
 
-perl -p -i -e "s/pkgver=.*/pkgver=${version}/; s/sha256sums_x86_64=\(\'.*\'\)/sha256sums_x86_64=(\'${linux_x86_64_checksum}\')/; s/sha256sums_aarch64=\(\'.*\'\)/sha256sums_aarch64=(\'${linux_arm64_checksum}\')/" PKGBUILD
+curversion=$(awk -F '=' '$1=="pkgver" {print $2}' PKGBUILD)
+
+pkgrel="1"
+if [ "${version}" = "${curversion}" ]
+then
+    curpkgrel=$(awk -F '=' '$1=="pkgrel" {print $2}' PKGBUILD)
+    newpkgrel=$((${curpkgrel}+1))
+    pkgrel="${newpkgrel}"
+fi
+
+perl -p -i -e "s/pkgver=.*/pkgver=${version}/; s/pkgrel=.*/pkgrel=${pkgrel}/; s/sha256sums_x86_64=\(\'.*\'\)/sha256sums_x86_64=(\'${linux_x86_64_checksum}\')/; s/sha256sums_aarch64=\(\'.*\'\)/sha256sums_aarch64=(\'${linux_arm64_checksum}\')/" PKGBUILD
 
 makepkg --printsrcinfo > .SRCINFO
