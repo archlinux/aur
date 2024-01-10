@@ -1,0 +1,13 @@
+pkgbase = ttf-academicons
+	pkgdesc = Specialist icon font for academics (without texlive-fontextra)
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://jpswalsh.github.io/academicons/
+	arch = any
+	license = SIL 1.1
+	makedepends = unzip
+	conflicts = texlive-fontsextra
+	source = https://mirrors.ctan.org/fonts/academicons.zip
+	sha512sums = 57dce32358574c3b78d47e12510f25fbce08426bd891f96ffbb7638755fc099f28944cc3f1ea20b69aefd0a62b09c74f8e57dbfc836c3495a0f87b312ec8982d
+
+pkgname = ttf-academicons
