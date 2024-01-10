@@ -1,4 +1,4 @@
-libxputty-fix-asprintf.patch
+fix-ttl-28.patch
 pkg/
 src/
 *.tar.*
