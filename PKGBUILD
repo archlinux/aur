@@ -3,7 +3,7 @@
 
 pkgname=linphone-desktop
 pkgver=5.2.0
-pkgrel=1
+pkgrel=4
 pkgdesc='A free VoIP and video softphone based on the SIP protocol'
 arch=(x86_64)
 url='http://linphone.org'
@@ -39,7 +39,7 @@ build() {
      --genericname="VoIP Client" \
      --categories=Network \
      --icon=linphone.png \
-     --exec=/opt/linphone/bin/linphone \
+     --exec=/opt/linphone/linphone-launcher \
      --terminal=false \
      --startupnotify=true \
      --comment "Linphone"
@@ -54,4 +54,12 @@ package() {
 
     mkdir -p "$pkgdir/usr/share/pixmaps/"
     install -Dm644 "$srcdir/linphone.png" "$pkgdir/usr/share/pixmaps/"
+
+    # Add linphone's own lib folder to LD_LIBRARY_PATH
+    echo "#!/bin/bash" > "$pkgdir/opt/linphone/linphone-launcher"
+    echo 'LD_LIBRARY_PATH="/opt/linphone/lib:$LD_LIBRARY_PATH" /opt/linphone/bin/linphone "$@"' >> "$pkgdir/opt/linphone/linphone-launcher"
+    chmod +x "$pkgdir/opt/linphone/linphone-launcher"
+
+    mkdir -p "$pkgdir/usr/bin/"
+    ln -s /opt/linphone/linphone-launcher "$pkgdir/usr/bin/linphone"
 }

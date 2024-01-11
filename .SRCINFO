@@ -1,7 +1,7 @@
 pkgbase = linphone-desktop
 	pkgdesc = A free VoIP and video softphone based on the SIP protocol
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 4
 	url = http://linphone.org
 	arch = x86_64
 	license = GPL
