@@ -1,18 +1,18 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=rose-pine-cursor
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Soho vibes for your mouse cursor.'
 arch=('any')
 license=('GPL3')
 url='https://github.com/rose-pine/cursor'
-source=("BreezeX-RosePine.tar.xz::$url/releases/download/v$pkgver/BreezeX-RosePine.tar.xz")
-sha256sums=('95859558840c2cc9e7c198a433479049e52b9b5c61f20312915c1dc2b0982a64')
+source=("BreezeX-RosePine-Linux.tar.xz::$url/releases/download/v$pkgver/BreezeX-RosePine-Linux.tar.xz")
+sha256sums=('b330d59ce8e0e460209f638a97ce772b78d9e6b56ccf63c8a50e9d941289a1af')
 package() {
   install -d "$pkgdir/usr/share/icons/"
   cp -a --no-preserve=ownership \
-    "BreezeX-RosePine" \
+    "BreezeX-RosePine-Linux" \
       "$pkgdir/usr/share/icons"
 }
 
