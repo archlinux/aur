@@ -1,12 +1,11 @@
 # Maintainer: Eugene 'Vindex' Stulin <tech.vindex@gmail.com>
-
 PROJECT=bbsi
 DESCR="Several scripts to facilitate some everyday tasks"
 makedepends=("make")
 depends=("bash" "ffmpeg" "yt-dlp")
-pkgver=0.2.0
-pkgrel=1
-license=("Boost")
+pkgver=0.3.1
+pkgrel=0
+license=("BSL-1.0")
 
 pkgname=${PROJECT}
 pkgdesc="${DESCR}"
@@ -14,7 +13,7 @@ arch=("any")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=$pkgname-$pkgver.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
-sha256sums=("f47030c22e37cdd1ee4a990c94bbed00f270e3c524c2aa895ecfe6deda7052d5")
+sha256sums=("e22356d520d068c34b654aa6151c970fe3fe393d7cfc7ddda666024fae0e5f22")
 
 build() {
     cd "${PROJECT}-v$pkgver"
@@ -23,5 +22,5 @@ build() {
 
 package() {
     cd "${PROJECT}-v$pkgver"
-    make DESTDIR=$pkgdir PREFIX=usr install || return 1
+    make DESTDIR=$pkgdir install || return 1
 }
