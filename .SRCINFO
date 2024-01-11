@@ -1,20 +1,20 @@
 pkgbase = alpha-badger
 	pkgdesc = UI wrapper around FFmpeg
 	pkgver = 0.4.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/NoamRa/alpha-badger
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = gendesk
-	makedepends = npm
+	makedepends = nvm
 	makedepends = nodejs
 	makedepends = git
 	depends = ffmpeg
 	depends = electron19
 	conflicts = alpha-badger
-	source = alpha-badger-0.4.1::git+https://github.com/NoamRa/alpha-badger.git#tag=v0.4.1
+	source = alpha-badger.git::git+https://github.com/NoamRa/alpha-badger.git#tag=v0.4.1
 	source = alpha-badger.sh
 	sha256sums = SKIP
-	sha256sums = 7278e78909e70f319c57e6baa6743c19883f41d186ade67ed405e085ec14fded
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = alpha-badger
