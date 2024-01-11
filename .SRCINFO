@@ -1,0 +1,33 @@
+pkgbase = r-ftsa
+	pkgdesc = Functional Time Series Analysis
+	pkgver = 6.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ftsa
+	arch = any
+	license = LGPL3
+	depends = r>=3.5.0
+	depends = r-forecast
+	depends = r-rainbow
+	depends = r-sde
+	depends = r-colorspace
+	depends = r-mass
+	depends = r-pcapp
+	depends = r-fda
+	depends = r-pdfcluster
+	depends = r-ecp
+	depends = r-strucchange
+	depends = r-e1071
+	depends = r-psych
+	depends = r-fgarch
+	depends = r-kernsmooth
+	depends = r-vars
+	depends = r-boot
+	depends = r-fdapace
+	depends = r-laplacesdemon
+	depends = r-evgam
+	depends = r-roopsd
+	depends = r-glue
+	source = https://cran.r-project.org/src/contrib/ftsa_6.3.tar.gz
+	sha256sums = 2cda35b98fc9058ed517f9ada8e9608f88f4ff9c6697a2bd885624d398408b01
+
+pkgname = r-ftsa
