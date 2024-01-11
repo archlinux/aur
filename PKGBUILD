@@ -1,11 +1,11 @@
 pkgname=hyprdots-ctl
-pkgver=v0.2.0.18.24010902
+pkgver=v0.2.0.19.24011109
 pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations"
 arch=('x86_64')
 url="https://github.com/kRHYME7/Hyprdots-ctl"
-license=('unknown') # Soon
-depends=( 'fzf' 'tree' )
+license=('GPL3')
+depends=( 'fzf' 'tree' 'ttf-jetbrains-mono-nerd' )
 makedepends=('git' 'make' 'curl')
 source=("git+https://github.com/kRHYME7/Hyprdots-ctl.git")
 md5sums=('SKIP')
