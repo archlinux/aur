@@ -1,0 +1,16 @@
+pkgbase = r-sde
+	pkgdesc = Simulation and Inference for Stochastic Differential Equations
+	pkgver = 2.0.18
+	pkgrel = 1
+	url = https://cran.r-project.org/package=sde
+	arch = any
+	license = LGPL3
+	depends = r
+	depends = r-mass
+	depends = r-stats4
+	depends = r-fda
+	depends = r-zoo
+	source = https://cran.r-project.org/src/contrib/sde_2.0.18.tar.gz
+	sha256sums = 8876a9a67ef2a19d4200b9aaf5ae3bd7d0e920f3e3291bf58d2e88aa14e669e6
+
+pkgname = r-sde
