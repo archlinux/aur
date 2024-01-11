@@ -3,7 +3,7 @@ pkgname=iptvnator-electron-bin
 _appname=IPTVnator
 pkgver=0.15.0
 _electronversion=25
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more.Use system electron."
 arch=(
     'aarch64'
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_aarch64=('1b4f212b42d85ff6a32cba69b86dba3fc3d00163342e21063caefd2ae176ceae')
 sha256sums_armv7h=('bb00a55ade5d6c4060eaa8408b997e5d572782a00810ca522546128a7be17fdd')
 sha256sums_x86_64=('d440a42bb29253f6f80041c837454e2c620d9d9827e15a317329f4877992a173')
@@ -43,7 +43,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    for icons in 16x16 512x512 1024x1024;do
+    for icons in 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${icons}/apps/${pkgname%-electron-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-electron-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
