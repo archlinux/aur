@@ -1,20 +1,21 @@
-# Maintainer: sukanka<su975853527 AT gmail dot com>
+# Maintainer: kiri@vern.cc
+# Contributor: sukanka<su975853527 AT gmail dot com>
 pkgname=clash-verge
-pkgver=1.4.5
-pkgrel=2
+pkgver=1.4.6
+pkgrel=1
 pkgdesc="A Clash GUI based on tauri, revived"
 arch=('x86_64' 'aarch64')
 url="https://github.com/clash-verge-rev/clash-verge-rev"
 license=('GPL3')
-depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator')
+depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' 'clash-meta: Another Clash Kernel')
 makedepends=('pnpm' 'cargo-tauri' 'jq' 'moreutils' 'rust')
-optdepends=('clash-meta: clash-core')
+optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.desktop"
 	'001-disable-updater.patch'
 )
 
-sha512sums=('635f03a8f9589ddccf86ba122420323176d0019474d3d80360271f66143553f3c6a1bc371cfc0e0f8eb45f9f3e420ea424d6e7f2353f88c8ffb5dc9f972ad376'
+sha512sums=('3ba745fcb8ae8e7aec1026074753a9b38f67ed24e3910e0ca23132a8fed92213a529cf3b40ba87d0a803a9f78880adbe1025ae2f493008400f27be8e8800f7e5'
             '2066dacf2e5e0135e6403cbfb825efcdf08bbcdc781407e6bb1fbb85143817b2b1abef641d20390ff7e5b3e91a509933e9eb17a64f9de7671445ac6d5363a44a'
             'd1e8992cc0de168930002adccf7953416dfac199ea11886043de58b0df366e4337d5ec548fa3bf8be30575596a5e71dd31960db72f9e067ff131feb756bc96c1')
 options=(!lto)
