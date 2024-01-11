@@ -1,6 +1,6 @@
 pkgname=mdev-cli
 pkgver=0.1.0.0
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc='A user-configurable utility for GPU vendor drivers enabling the registration of arbitrary mdev types with the VFIO-Mediated Device framework.'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/Arc-Compute/Mdev-GPU'
 license=('GPL')
 depends=('ghc-libs' 'haskell-path' 'haskell-optparse-applicative' 'haskell-bimap' 'haskell-fixed-vector' 'haskell-yamlparse-applicative' 'haskell-ioctl')
 makedepends=('ghc')
-source=("git+https://github.com/Arc-Compute/Mdev-GPU.git#commit=30d28c3bb11a038246e9401f5ffa25bd7d68c607")
+source=("git+https://github.com/Arc-Compute/Mdev-GPU.git#commit=48649a0ed9f2285c883c98610309bd677e8690ae")
 sha256sums=('SKIP')
 
 build() {
