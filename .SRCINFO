@@ -1,4 +1,4 @@
-pkgbase = mdev-cli
+pkgbase = mdev-gpu-cli
 	pkgdesc = A user-configurable utility for GPU vendor drivers enabling the registration of arbitrary mdev types with the VFIO-Mediated Device framework.
 	pkgver = 0.1.0.0
 	pkgrel = 2
@@ -14,7 +14,9 @@ pkgbase = mdev-cli
 	depends = haskell-fixed-vector
 	depends = haskell-yamlparse-applicative
 	depends = haskell-ioctl
+	conflicts = mdev-cli
+	replaces = mdev-cli
 	source = git+https://github.com/Arc-Compute/Mdev-GPU.git#commit=48649a0ed9f2285c883c98610309bd677e8690ae
 	sha256sums = SKIP
 
-pkgname = mdev-cli
+pkgname = mdev-gpu-cli

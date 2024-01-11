@@ -1,4 +1,4 @@
-pkgname=mdev-cli
+pkgname=mdev-gpu-cli
 pkgver=0.1.0.0
 pkgrel=2
 epoch=0
@@ -8,6 +8,8 @@ url='https://github.com/Arc-Compute/Mdev-GPU'
 license=('GPL')
 depends=('ghc-libs' 'haskell-path' 'haskell-optparse-applicative' 'haskell-bimap' 'haskell-fixed-vector' 'haskell-yamlparse-applicative' 'haskell-ioctl')
 makedepends=('ghc')
+conflicts=('mdev-cli')
+replaces=('mdev-cli')
 source=("git+https://github.com/Arc-Compute/Mdev-GPU.git#commit=48649a0ed9f2285c883c98610309bd677e8690ae")
 sha256sums=('SKIP')
 
@@ -15,7 +17,7 @@ build() {
     cd "$srcdir/Mdev-GPU"
 
     runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
-      --prefix=/usr --docdir=/usr/share/doc/mdev --datasubdir=haskell-mdev --enable-tests \
+      --prefix=/usr --docdir=/usr/share/doc/$pkgname --datasubdir=haskell-mdev-gpu --enable-tests \
       --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
       --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
       --ghc-option='-pie'
@@ -39,5 +41,6 @@ package() {
     cp -R "$srcdir/Mdev-GPU/etc" "$pkgdir/"
     mv "$pkgdir/etc/systemd" "$pkgdir/usr/lib/"
     sed -i 's/\/usr\/bin\/sudo //' "$pkgdir/usr/lib/systemd/system/mdev-post.service"
+    mv "$pkgdir/usr/bin/mdev-cli" "$pkgdir/usr/bin/mdev-gpu-cli"
 }
 
