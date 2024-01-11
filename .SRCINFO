@@ -1,7 +1,7 @@
 pkgbase = tty0tty-dkms-git
 	pkgdesc = tty0tty Virtual Serial Cable (DKMS and userspace variant).
 	pkgver = 1.2+46.r62.20221025.81f8aa2
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/freemed/tty0tty
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,12 @@ pkgbase = tty0tty-dkms-git
 	source = tty0tty::git+https://github.com/freemed/tty0tty.git
 	source = 50-tty0tty.rules.arch.patch
 	source = linux-6.1-fixup.patch
+	source = linux-6.6-fixup.patch
 	source = modules-load-tty0tty.conf
 	sha256sums = SKIP
 	sha256sums = 4babdbb8988fae9c603c210c9afc1a9d066f40d4a6e23d609c6ae6200bc6d645
-	sha256sums = 1118522e5b4ae8df6b6fcb41e278350c697de16922e8a3e54c49d7593a089c18
+	sha256sums = 57bfbb7dda4c67f0ae0c7736ee30a9cd491065babca43b454f76891c671bd71e
+	sha256sums = a0d662ff55930fc1faf22bdc18a01c09c74849fa0e4addbb55cd49b4f0191e16
 	sha256sums = 31e97d1ea45da90c70715073d2279fc9482e497179b4fc44645684ffe7371217
 
 pkgname = tty0tty-dkms-git

@@ -1,12 +1,9 @@
-diff -ur tty0tty-org/module/tty0tty.c tty0tty-master/module/tty0tty.c
---- tty0tty-org/module/tty0tty.c    2022-12-24 10:24:40.149392717 +0100
-+++ tty0tty-master/module/tty0tty.c 2022-12-28 20:57:06.306970029 +0100
-@@ -288,7 +288,7 @@
- #define RELEVANT_IFLAG(iflag) ((iflag) & (IGNBRK|BRKINT|IGNPAR|PARMRK|INPCK))
-
+diff -rU1 tty0tty.org/module/tty0tty.c tty0tty/module/tty0tty.c
+--- tty0tty.org/module/tty0tty.c	2024-01-11 20:08:54.922488036 +0100
++++ tty0tty/module/tty0tty.c	2024-01-11 20:10:36.829151760 +0100
+@@ -290,2 +290,5 @@
  static void tty0tty_set_termios(struct tty_struct *tty,
--				struct ktermios *old_termios)
-+				const struct ktermios *old_termios)
- {
-    unsigned int cflag;
-    unsigned int iflag;
++				#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,1,0)
++					const
++				#endif
+ 				struct ktermios *old_termios)
