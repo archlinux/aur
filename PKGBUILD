@@ -1,13 +1,16 @@
-# Maintainer: Danny Dutton <duttondj@vt.edu>
+# Maintainer: Debucquoy Anthony (tonitch) <d.tonitch@gmail.com>
+# Contributor: Danny Dutton <duttondj@vt.edu>
 
 pkgname=xinput_calibrator
 pkgver=0.7.5
-pkgrel=3
+pkgrel=1
+epoch=2
 pkgdesc="Generic touchscreen calibration program for X.Org"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.freedesktop.org/wiki/Software/xinput_calibrator/"
-license=('MIT')
-source=("http://github.com/downloads/tias/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+license=('MIT' 'X11')
+source=("https://github.com/tias/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d8edbf84523d60f52311d086a1e3ad0f3536f448360063dd8029bf6290aa65e9')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -26,4 +29,3 @@ package() {
     gzip xinput_calibrator.1
     install -Dm644 xinput_calibrator.1.gz "$pkgdir/usr/share/man/man1/xinput_calibrator.1.gz"
 }
-md5sums=('20da0a2055a5a75962add8c6b44f60fa')
