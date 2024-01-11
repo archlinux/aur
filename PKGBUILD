@@ -10,7 +10,7 @@ pkgdesc="fast logfile viewer for Analyzing Large Logfiles
 arch=('x86_64')
 url="https://github.com/esrlabs/chipmunk"
 license=('Apache-2.0')
-depends=('gtk3', 'alsa-lib', 'libdrm', 'cups')
+depends=('gtk3' 'alsa-lib' 'libdrm' 'cups')
 source=("https://github.com/esrlabs/chipmunk/releases/download/$pkgver/chipmunk@$pkgver-linux-portable.tgz")
 
 build() {
