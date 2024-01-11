@@ -1,6 +1,6 @@
 pkgbase = python-eth-keys
 	pkgdesc = A common API for Ethereum key operations with pluggable backends
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/ethereum/eth-keys
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-eth-keys
 	depends = python-coincurve
 	depends = python-eth-utils
 	depends = python-eth-typing
-	source = https://pypi.org/packages/source/e/eth-keys/eth-keys-0.4.0.tar.gz
-	sha512sums = 02df2202cc3c03a454aa517f68e6db325f5e21c7019fb7e22c9e3b4d866ebfa591755a5143f48a721ac00367fbc9502bcd864a370d06d80e770983fdcc77acdc
+	source = https://pypi.org/packages/source/e/eth-keys/eth-keys-0.5.0.tar.gz
+	sha512sums = bd173cb95fc21926496c37b5d9b826a10a22222be3634465a177bf5e691028daaff9b01b26dd60e10601d0027421b8b8034dcba8a7fa238ccc77a38016dad989
 
 pkgname = python-eth-keys

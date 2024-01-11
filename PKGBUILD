@@ -2,7 +2,7 @@
 # Contributor: Kewl <xrjy@nygb.rh.bet(rot13)>
 _base=eth-keys
 pkgname=python-${_base}
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A common API for Ethereum key operations with pluggable backends"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python-coincurve python-eth-utils python-eth-typing)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('02df2202cc3c03a454aa517f68e6db325f5e21c7019fb7e22c9e3b4d866ebfa591755a5143f48a721ac00367fbc9502bcd864a370d06d80e770983fdcc77acdc')
+sha512sums=('bd173cb95fc21926496c37b5d9b826a10a22222be3634465a177bf5e691028daaff9b01b26dd60e10601d0027421b8b8034dcba8a7fa238ccc77a38016dad989')
 
 build() {
   cd ${_base}-${pkgver}
