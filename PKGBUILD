@@ -1,12 +1,12 @@
-# Maintainer: Alexander Bruegmann <mail[at]abruegmann[dot]eu>
+# Contributor: Alexander Bruegmann <mail[at]abruegmann[dot]eu>
 pkgname=latex-digsig
 _pkgname=${pkgname#latex-}
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="LaTeX module to create a PDF file that can be digitally signed"
 arch=('any')
 url="http://home.htp-tel.de/lottermose2/tex/"
-license=('LGPLv2.1')
+license=('MIT')
 depends=('texlive-core')
 source=(
   'http://home.htp-tel.de/lottermose2/tex/dist/digsig.sty'
