@@ -1,15 +1,14 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
-pkgver=0.5.27
-pkgrel=2
+pkgver=0.5.28
+pkgrel=1
 pkgdesc="nwg-shell meta-package"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-shell"
 license=('MIT')
 depends=('foot' 'gnome-themes-extra' 'grim' 'imagemagick' 'jq'
-         'libappindicator-gtk3' 'light' 'ttf-dejavu'
-         'network-manager-applet' 'pacman-contrib' 
-         'papirus-icon-theme' 'playerctl' 'polkit-gnome' 
+         'libappindicator-gtk3' 'ttf-dejavu' 'network-manager-applet' 
+         'pacman-contrib' 'papirus-icon-theme' 'playerctl' 'polkit-gnome' 
          'python-geopy' 'python-yaml' 'slurp' 'swappy' 'sway' 'swayidle'
          'swaylock' 'swaybg' 'wl-clipboard' 'xorg-xwayland' 'wlsunset' 
          'azote' 'gopsuinfo' 'nwg-bar-bin' 'nwg-dock-bin' 'nwg-dock-hyprland-bin' 
@@ -24,7 +23,7 @@ optdepends=('chromium: suggested web browser'
 makedepends=('python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v"$pkgver"/nwg-shell-v"$pkgver".tar.gz")
 
-md5sums=('060975eed51bfffdadd73caf0690d6b6')
+md5sums=('e4011c21c8a87c5fe9930b1b7b3b7faa')
 
 package() {
   cd "${pkgname}-${pkgver}"
