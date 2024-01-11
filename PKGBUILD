@@ -1,6 +1,5 @@
 # Maintainer: Giovanni Santini <giovannisantini93@yahoo.it>
-pkgbase=git-credential-manager-core
-_pkgbase="${pkgbase/-core/}"
+pkgbase=git-credential-manager
 pkgname=("$pkgbase"
          "${pkgbase}-extras")
 pkgver=2.4.1
@@ -10,7 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/git-ecosystem/git-credential-manager"
 license=('MIT')
 makedepends=(dotnet-sdk dpkg fontconfig krb5 zlib)
-checkdepends=(dotnet-runtime-6.0 git)
+checkdepends=(dotnet-runtime-7.0 git)
 options=(!strip)
 install="$pkgname.install"
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -29,23 +28,23 @@ sha512sums=('fd0a5c0ce008f8c598bef743574013d5bf29d1e8e0d09d7bbe60dbacb224eb565ee
 #}
 
 build() {
-    cd "${_pkgbase}-${pkgver}"
+    cd "${pkgbase}-${pkgver}"
     dotnet build --configuration LinuxRelease
 }
 
 check() {
-    cd "${_pkgbase}-${pkgver}"
-    dotnet test --configuration LinuxRelease || echo "Seems some tests fail. Please report them upstream."
+    cd "${pkgbase}-${pkgver}"
+    LANG=C dotnet test --configuration LinuxRelease || echo "Seems some tests fail. Please report them upstream."
 }
 
-package_git-credential-manager-core() {
+package_git-credential-manager() {
     provides=($pkgname)
     conflicts=("${pkgname}-bin")
-    replaces=(git-credential-manager)
+    replaces=(git-credential-manager-core)
     depends+=(zlib krb5)
-    optdepends=('git-credential-manager-core-extras: additional QT UIs for logging in')
+    optdepends=("${pkgname}-extras: additional QT UIs for logging in")
 
-    cd "${_pkgbase}-${pkgver}"
+    cd "${pkgbase}-${pkgver}"
     mkdir -pv "$pkgdir/usr/bin"
     mkdir -pv "$pkgdir/usr/lib/share/$pkgname"
     mkdir -pv "$pkgdir/usr/share/licenses/$pkgname"
@@ -55,19 +54,18 @@ package_git-credential-manager-core() {
         cp -v  "out/linux/Packaging.Linux/Release/payload/$bin" "$pkgdir/usr/lib/share/$pkgname"
         ln -sv "/usr/lib/share/$pkgname/$bin" "$pkgdir/usr/bin/$bin"
     done
-    # Deal with the different naming convention
+    # The package was renamed time ago
     # https://github.com/GitCredentialManager/git-credential-manager/pull/551
     # https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/rename.md
-    ln -s "/usr/lib/share/$pkgname/git-credential-manager" "$pkgdir/usr/bin/$pkgname"
 
     cp -v LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-package_git-credential-manager-core-extras() {
+package_git-credential-manager-extras() {
     pkgdesc="Additional login UIs to Github and Bitbucket for Git Credential Manager Core"
     depends+=(zlib krb5 fontconfig "$pkgbase")
 
-    cd "${_pkgbase}-${pkgver}"
+    cd "${pkgbase}-${pkgver}"
 
     mkdir -pv "$pkgdir/usr/lib/share/$pkgbase"
     mkdir -pv "$pkgdir/usr/share/licenses/$pkgname"
@@ -79,10 +77,6 @@ package_git-credential-manager-core-extras() {
 
     # No extra UI available as of now: see
     # https://github.com/git-ecosystem/git-credential-manager/pull/1207
-    # for bin in GitHub.UI Atlassian.Bitbucket.UI
-    # do
-    #     cp -v "out/linux/Packaging.Linux/Release/payload/$bin" "$pkgdir/usr/lib/share/$pkgbase"
-    # done
 
     cp -v LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 }
