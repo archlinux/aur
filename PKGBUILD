@@ -3,12 +3,12 @@
 # Contributor: Danibspi danibspi <at> gmail <dot> com
 
 pkgname=bcunit
-pkgver=5.2.0+4+g0e0faa2
-_commit=0e0faa2bd876784f78ff446d617b8ee8e40bceab
+pkgver=5.3.7
+_commit=bd57ee7f2e29b5418bfa4a428639d42ce608d15e
 pkgrel=1
 pkgdesc="Lightweight system for writing, administering, and running unit tests in C"
 arch=(x86_64)
-url="https://github.com/BelledonneCommunications/bcunit"
+url="https://gitlab.linphone.org/BC/public/bcunit"
 license=(LGPL)
 depends=(glibc)
 makedepends=(cmake git)
