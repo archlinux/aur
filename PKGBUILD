@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=savedesktop
 _app_id=io.github.vikdevelop.SaveDesktop
-pkgver=3.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Save and load KDE Plasma, Xfce and GNOME-based DE configuration"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('hicolor-icon-theme' 'libadwaita' 'python-dbus' 'python-gobject')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('6f67c59ab72010f83ae6ea511ae2a352a301672c3eb44cd99d184fc8fcecf942'
-            '960f2fab77071b4ee1d6c62edb7ab3d2f39efe1db21a136bc43eeef5bfc9a497')
+sha256sums=('6c2edcb2e508383a38acfca929142649b7a09caa16063db9eb98820086eb32d0'
+            '2af6b49c1c166072fa3e0503e3f4b63e379d72d9b83b97f3f5dbf1a69383d79b')
 
 prepare() {
   cd "SaveDesktop-$pkgver"
@@ -30,7 +30,7 @@ check() {
 package() {
   cd "SaveDesktop-$pkgver"
   install -d "$pkgdir/usr/share/$pkgname"
-  cp -R src/* translations "$pkgdir/usr/share/$pkgname"
+  cp -R src translations "$pkgdir/usr/share/$pkgname"
   install -Dm644 "flatpak/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "flatpak/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 "flatpak/${_app_id}.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
