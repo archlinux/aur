@@ -5,12 +5,14 @@
 pkgname=dooble-bin
 _pkgname=Dooble
 pkgver=2023.11.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Web browser based on QtWebEngine"
 arch=("x86_64")
 url="https://textbrowser.github.io/dooble"
 _ghurl="https://github.com/textbrowser/dooble"
 license=('custom')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=(
   'at-spi2-core'
   'cairo'
@@ -70,8 +72,6 @@ optdependes=(
 makedepends=(
   'findutils'
 )
-provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
 source=(
   "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}_amd64.deb"
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/textbrowser/dooble/${pkgver}/LICENSE"
@@ -79,16 +79,19 @@ source=(
 )
 sha256sums=('ccbe838464b18cb3ae16580f0173df4346914504bccc6fc14db1bf537eb9da6d'
             'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
-            '2cbee36cf9e2b0a2c47c72ea97b5412e87009bc47b60bea9f8730af584b3e2c2')
+            'fb6e83ced7565462bc103d45bfd82a2ea1fde0b6e549bd8c4c887c5ecd96c2d9')
 build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
     cp "${srcdir}/opt/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN_simple.qm" \
-      "${srcdir}/opt/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN.qm"
+       "${srcdir}/opt/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN.qm"
     sed "s|/usr/bin/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-    cp -r "${srcdir}/opt" "${pkgdir}/opt"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    cp -r "${srcdir}/opt" "${pkgdir}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"

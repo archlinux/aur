@@ -1,7 +1,7 @@
 pkgbase = dooble-bin
 	pkgdesc = Web browser based on QtWebEngine
 	pkgver = 2023.11.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://textbrowser.github.io/dooble
 	arch = x86_64
 	license = custom
@@ -64,6 +64,6 @@ pkgbase = dooble-bin
 	source = dooble.sh
 	sha256sums = ccbe838464b18cb3ae16580f0173df4346914504bccc6fc14db1bf537eb9da6d
 	sha256sums = c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd
-	sha256sums = 2cbee36cf9e2b0a2c47c72ea97b5412e87009bc47b60bea9f8730af584b3e2c2
+	sha256sums = fb6e83ced7565462bc103d45bfd82a2ea1fde0b6e549bd8c4c887c5ecd96c2d9
 
 pkgname = dooble-bin
