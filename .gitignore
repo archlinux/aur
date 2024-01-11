@@ -1,6 +1,7 @@
 *
 !*.desktop
 !*.install
+!*.png
 !*.sh
 !*.sysusers
 !*.tmpfiles
