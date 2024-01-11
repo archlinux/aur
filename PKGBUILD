@@ -2,8 +2,8 @@
 
 pkgname=varicad
 _pkgname=VariCAD
-pkgver=2024.1.01
-pkgrel=2
+pkgver=2024.1.02
+pkgrel=1
 url="https://www.varicad.com/"
 pkgdesc="VariCAD is 3D/2D CAD for mechanical engineering."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=()
 depends=(libx11 libxcomposite libxdamage libxext libxfixes libxrender mime-types gtk2 hicolor-icon-theme)
 provides=(varicad)
 source=("${url}/userdata/files/release/en/${_pkgname}-${pkgver}_en-1.${arch}.rpm")
-sha256sums=('321b33ae9f67d937f95ff3a13183acc92f432c3718192288ab8796b1a574696c')
+sha256sums=('e4c44cb7a4a64a4cace4bb6178f0bab502aa9e65ea65f40302094a2a7ced469d')
 
 package() {
   # Contents of this function are inspired by the install script located at:
