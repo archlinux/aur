@@ -2,7 +2,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nmh
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful electronic mail handling system, based on a set of command-line utilities.'
 arch=('i686' 'x86_64')
 license=(BSD)
@@ -54,5 +54,5 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
-	install -D -m644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/"
+	install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/COPYRIGHT
 }

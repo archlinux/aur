@@ -1,7 +1,7 @@
 pkgbase = nmh
 	pkgdesc = Powerful electronic mail handling system, based on a set of command-line utilities.
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/nmh/
 	arch = i686
 	arch = x86_64
