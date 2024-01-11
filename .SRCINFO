@@ -1,18 +1,22 @@
 pkgbase = tmxparser-git
 	pkgdesc = Library for parsing TMX files (Tiled Maps) using TinyXML's DOM interface.
-	pkgver = 185.da62e19
+	pkgver = 189.d314b31
 	pkgrel = 1
-	url = https://github.com/andrewrk/tmxparser
+	url = https://github.com/chemodansama/tmxparser
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	makedepends = cmake
 	depends = tinyxml2
 	depends = zlib
 	conflicts = tmx-parser-svn
 	options = staticlibs
-	source = tmxparser-git::git://github.com/andrewrk/tmxparser.git
+	source = tmxparser-git::git+https://github.com/sainteos/tmxparser.git
+	source = https://patch-diff.githubusercontent.com/raw/sainteos/tmxparser/pull/84.patch
+	source = https://patch-diff.githubusercontent.com/raw/sainteos/tmxparser/pull/85.patch
 	md5sums = SKIP
+	md5sums = 89dd8b3999ac12c1542a8f80e9854e84
+	md5sums = 88f0a4f39930afa553f3d0e4596d7ee9
 
 pkgname = tmxparser-git
-
