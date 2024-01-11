@@ -3,7 +3,7 @@
 # Contributor: Chris Brannon <cmbrannon@cox.net>
 # Contributor: William Giokas <1007380@gmail.com>
 pkgname=ii
-pkgver=1.8
+pkgver=2.0
 pkgrel=1
 pkgdesc="A minimalist FIFO and filesystem-based IRC client"
 license=('MIT')
@@ -11,12 +11,11 @@ arch=('i686' 'x86_64')
 url=http://tools.suckless.org/ii
 depends=('glibc')
 source=("http://dl.suckless.org/tools/$pkgname-$pkgver.tar.gz")
-md5sums=('fc31ba3ecf6b52c5bae39b70f674543b')
+md5sums=('14a03b30ea4a7259820882d483c5c727')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i "s/CFLAGS = /CFLAGS = ${CFLAGS} /" config.mk
-  make
+  CFLAGS="${CFLAGS}" make
 }
 
 package() {
