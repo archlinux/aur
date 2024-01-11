@@ -32,8 +32,7 @@ makedepends=(
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver//_/-}"
 )
-sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('SKIP')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
