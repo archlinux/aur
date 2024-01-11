@@ -2,7 +2,8 @@
 pkgname=frappe-books-bin
 _appname="Frappe Books"
 pkgver=0.19.0
-pkgrel=2
+_electronversion=18
+pkgrel=3
 pkgdesc="Modern desktop accounting for freelancers and small-businesses."
 arch=('x86_64')
 url="https://frappebooks.com/"
@@ -14,7 +15,7 @@ conflicts=(
     "frappebooks"
 )
 depends=(
-    'electron18'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
 )
 source=(
@@ -22,10 +23,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('28aeb88e77b59dc19d01cbe8ddf1f026b818d20fc0585496ea18561771b00ef4'
-            '75f0ea8a4e397ca040ccb395ac60d1d19539bae1c197c536cc26a7966cb07bd3')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g;s|Finance|Finance;Utility|g" \
+    sed "s|\"/opt/${_appname}/${pkgname%-bin}\"|${pkgname%-bin}|g;s|Finance|Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
