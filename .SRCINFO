@@ -1,6 +1,6 @@
 pkgbase = hamlib4
-	pkgdesc = Ham radio equipment control libraries - VERSION 4.x
-	pkgver = 4.5.4
+	pkgdesc = Ham radio equipment control libraries - VERSION 4.x - INCLUDES INDI support
+	pkgver = 4.5.5
 	pkgrel = 1
 	url = http://hamlib.org
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = hamlib4
 	conflicts = hamlib
 	conflicts = hamlib-git
 	options = !emptydirs
-	source = https://github.com/Hamlib/Hamlib/releases/download/4.5.4/hamlib-4.5.4.tar.gz
-	md5sums = 853f0784f756a5d08399fe7b33c338b5
-	sha256sums = b1aea97d6093990b77d5dc4bde6b9ca06183ddb7e24da7e2367a2acc957b7ac2
+	source = https://github.com/Hamlib/Hamlib/releases/download/4.5.5/hamlib-4.5.5.tar.gz
+	md5sums = 9996f507ae570be50d09df1157f140e0
+	sha256sums = 601c89f32ed225e9527ade3d64d0d05d23202c05ae21ffa77e59d70ee4597fcd
 
 pkgname = hamlib4
