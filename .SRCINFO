@@ -1,7 +1,7 @@
 pkgbase = apple-music-bin
 	pkgdesc = An Electron app that provides a native Apple Music experience for Linux & Windows.
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgver = 2.0.5
+	pkgrel = 1
 	url = https://github.com/Alex313031/apple-music-desktop
 	arch = x86_64
 	license = BSD
@@ -19,20 +19,16 @@ pkgbase = apple-music-bin
 	depends = expat
 	depends = pango
 	depends = libxcomposite
-	depends = gcc-libs
 	depends = hicolor-icon-theme
 	depends = libxdamage
 	depends = gtk3
-	depends = glibc
 	depends = at-spi2-core
 	depends = libdrm
-	depends = glib2
-	depends = dbus
 	depends = libxcb
-	provides = apple-music=2.0.2
+	provides = apple-music=2.0.5
 	conflicts = apple-music
 	options = !strip
-	source = apple-music-2.0.2.deb::https://github.com/Alex313031/apple-music-desktop/releases/download/2.0.2/apple-music_2.0.2_amd64.deb
-	sha256sums = f23b7055c175c2abad62bd2babdcbf1e8487a8d905586c8e4fd1c6ae2e0e93d9
+	source = apple-music-2.0.5.deb::https://github.com/Alex313031/apple-music-desktop/releases/download/2.0.5/apple-music_2.0.5_amd64.deb
+	sha256sums = c58813a7bb33de5e8d9cd7ac35f4c6680a38da72a74794d880575e16f86d2e68
 
 pkgname = apple-music-bin
