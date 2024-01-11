@@ -3,20 +3,26 @@
 # Contributor: Mark Weiman (markzz) <mark.weiman@markzz.com>
 # Contributor: Katelyn Schiesser (slowbro) <katelyn.schiesser@gmail.com>
 # Contributor: Dan Ziemba <zman0900@gmail.com>
-# Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 ## options
-: ${_build_patch:=true}
+: ${_build_arch_patch:=true}
 
 : ${_build_clang:=false}
+: ${_build_tracer:=true}
+: ${_build_numa:=true}
+
+: ${_build_vfio:=true}
+: ${_build_lts:=false}
 : ${_build_v3:=false}
 
+[[ "${_build_vfio::1}" == "t" ]] && _pkgtype+="-vfio"
+[[ "${_build_lts::1}" == "t" ]] && _pkgtype+="-lts"
 [[ "${_build_v3::1}" == "t" ]] && _pkgtype+="-v3"
 
 ## basic info
 _gitname="linux"
-_pkgname="$_gitname-vfio"
-pkgbase="$_pkgname${_pkgtype:-}"
+_pkgname="$_gitname${_pkgtype:-}"
+pkgbase="$_pkgname"
 pkgver=6.7
 pkgrel=2
 pkgdesc='Linux'
@@ -42,20 +48,14 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-$pkgver
-source=(
+source+=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config  # the main kernel config file
-
-  1001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-  1002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
-sha256sums=(
+sha256sums+=(
   'ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
   'SKIP'
   '45a44ff0e957cd562d2ceb60c1c90fc19c19e808209cebb46bfacfccfb56ad96'
-
-  'f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb'
-  '2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db'
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -63,16 +63,39 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-if [[ ${_build_patch::1} == "t" ]] ; then
-  _srctag=v$pkgver-arch1
-  _dl_url_arch='https://github.com/archlinux/linux'
+if [[ ${_build_vfio::1} == "t" ]] ; then
   source+=(
-    $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+    1001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+    1002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
   )
   sha256sums+=(
-    'SKIP'
-    'SKIP'
+    'f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb'
+    '2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db'
   )
+fi
+
+if [[ ${_build_arch_patch::1} == "t" ]] ; then
+  if [[ ${_build_lts::1} == "t" ]] ; then
+    _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main'
+    source+=(
+      "$_dl_url_arch/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+      "$_dl_url_arch/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
+    )
+    sha256sums+=(
+      '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
+      '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
+    )
+  else
+    _srctag=v$pkgver-arch1
+    _dl_url_arch='https://github.com/archlinux/linux'
+    source+=(
+      $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+    )
+    sha256sums+=(
+      'SKIP'
+      'SKIP'
+    )
+  fi
 fi
 
 if [[ ${_build_clang::1} == "t" ]] ; then
@@ -87,20 +110,39 @@ if [[ ${_build_clang::1} == "t" ]] ; then
   export LLVM_IAS=1
 fi
 
+if [[ "${_build_v3::1}" == "t" ]] ; then
+  export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"}
+fi
+
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-_prep_v3() {
-  [[ "${_build_v3::1}" != "t" ]] && return
+_prepare_extra() {
+  # remove extra version suffix
+  sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
 
-  export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-  export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    scripts/config --disable LTO_CLANG_FULL
+    scripts/config --enable LTO_CLANG_THIN
+  fi
+
+  if [[ "${_build_clang::1}" == "t" ]] || [[ "${_build_tracer::1}" != "t" ]] ; then
+    echo "Disabling Tracers..."
+    scripts/config \
+      --disable CONFIG_FTRACE \
+      --disable CONFIG_FUNCTION_TRACER \
+      --disable CONFIG_STACK_TRACER
+  fi
+
+  if [[ "${_build_numa::1}" != "t" ]] ; then
+    echo "Disabling NUMA..."
+    scripts/config --disable CONFIG_NUMA
+  fi
 }
 
 prepare() {
-  _prep_v3
-
   cd $_srcname
 
   echo "Setting version..."
@@ -118,43 +160,24 @@ prepare() {
     patch -Np1 -F100 -i "../$src"
   done
 
-  # remove extra version suffix
-  sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
-
-  if [[ ${_build_clang::1} == "t" ]] ; then
-    scripts/config --disable LTO_CLANG_FULL
-    scripts/config --enable LTO_CLANG_THIN
-
-    # disable tracers
-    scripts/config \
-      --disable CONFIG_FTRACE \
-      --disable CONFIG_FUNCTION_TRACER \
-      --disable CONFIG_STACK_TRACER
-
-    # disable numa
-    scripts/config --disable CONFIG_NUMA
-  fi
-
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
   diff -u ../config .config || :
+
+  _prepare_extra
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
-  _prep_v3
-
   cd $_srcname
   make all
   #make htmldocs
 }
 
 _package() {
-  [ -n "$_pkgtype" ] && conflicts=("$_pkgname")
-
   pkgdesc="The $pkgdesc kernel and modules (ACS override and i915 VGA arbiter patches)"
   depends=(
     coreutils
@@ -191,8 +214,6 @@ _package() {
 }
 
 _package-headers() {
-  [ -n "$_pkgtype" ] && conflicts=("$_pkgname-headers")
-
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel (ACS override and i915 VGA arbiter patches)"
   depends=(pahole)
 
@@ -275,8 +296,6 @@ _package-headers() {
 }
 
 _package-docs() {
-  [ -n "$_pkgtype" ] && conflicts=("$_pkgname-docs")
-
   pkgdesc="Documentation for the $pkgdesc kernel (ACS override and i915 VGA arbiter patches)"
 
   cd $_srcname
