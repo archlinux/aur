@@ -27,6 +27,14 @@ build() {
     add_symlink "/usr/lib/systemd/system/cryptsetup-pre.target.wants/pcscd.socket" "/usr/lib/systemd/system/pcscd.socket"
     add_symlink "/usr/lib/systemd/system/cryptsetup.target.wants/cryptsetup-pre.target" "/usr/lib/systemd/system/cryptsetup-pre.target"
 
+    for FILE in $(find /usr/lib/ -maxdepth 1 -name "libp11-kit.so*"); do
+        if [[ -L "${FILE}" ]]; then
+            add_symlink "${FILE}"
+        else
+            add_binary "${FILE}"
+        fi
+    done
+
     add_binary "/usr/lib/pkcs11/librtpkcs11ecp.so"
     add_file "/usr/share/p11-kit/modules/rutoken.module"
 }

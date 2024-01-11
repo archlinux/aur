@@ -2,12 +2,12 @@
 
 pkgname=rutoken
 pkgver=2.11.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Support for cryptographic tokens from Aktiv-Soft JSC"
 url="https://www.rutoken.ru/support/download/"
 arch=('x86_64')
 license=("custom")
-depends=("glibc" "gcc-libs" "pcsclite" "ccid")
+depends=("glibc" "gcc-libs" "pcsclite" "ccid" "libp11-kit")
 options=('!strip')
 source=("https://download.rutoken.ru/Rutoken/Utilites/rtAdmin/2.4/Linux/rtadmin.zip"
         "https://download.rutoken.ru/Rutoken/PKCS11Lib/${pkgver}/Linux/x64/librtpkcs11ecp-${pkgver}-1.x86_64.rpm"
