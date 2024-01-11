@@ -49,7 +49,7 @@ _disable_debug=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-sched-ext-git
-pkgver=6.6.0.r1216273.gbac7dab4f8f5
+pkgver=6.7.0.r1236012.g6eb6c92567b1
 _srcname=sched_ext
 pkgrel=1
 pkgdesc='Linux Kernel based on the sched_ext branch'
@@ -58,15 +58,14 @@ url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python' 'clang' 'bpf' 'libbpf' 'llvm-libs' 'llvm' 'rust' 'lld')
-_lucjanver=6.5
+_lucjanver=next
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git+https://github.com/sched-ext/sched_ext.git#branch=sched_ext"
-        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
-        'config'
-        )
+        'config')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -207,11 +206,10 @@ build() {
 
 _package() {
     pkgdesc="The $pkgdesc kernel and modules"
-    depends=('coreutils' 'kmod' 'initramfs')
+    depends=('coreutils' 'kmod' 'initramfs' 'scx-scheds')
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
-                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
-                'scx-sched: Schedulers for sched-ext')
+                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
 
   cd $_srcname
@@ -326,5 +324,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('SKIP'
-        '8937fc4001143088b4c8dbd775b7d6d04163c8cdb43b3b3cbefdce1ab522f6912811c6c720d84087254c4ef6388dfa72efba304d6189d57cffd657eaa3f5c822'
-        '2244efe07fa60e8259d4167b0d3725ea06eea584e70877c7bb4df2c21772bdcf6bd18c8b4380c7259e226243f1b6486e7ba36309399756172b6b071d07443d16')
+        '7176c1617077f82b56af8322db004f24e4e7463e046dea9c64a35820d6cb1977a1bb33e084bde4623c1420cdf7fc1ccfa96c9c5b2e9992edaa070229662a8447'
+        '6740eed61a07f9456abafcd221a0582d141536c5cae32aeacbed4802a2de734ce64a33527deefe606e8eee76093fb7193552ef946f3ed6afb5f2ef284317f3fb')

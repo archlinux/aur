@@ -1,6 +1,6 @@
 pkgbase = linux-sched-ext-git
 	pkgdesc = Linux Kernel based on the sched_ext branch
-	pkgver = 6.6.0.r1216273.gbac7dab4f8f5
+	pkgver = 6.7.0.r1236012.g6eb6c92567b1
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -23,21 +23,21 @@ pkgbase = linux-sched-ext-git
 	makedepends = lld
 	options = !strip
 	source = git+https://github.com/sched-ext/sched_ext.git#branch=sched_ext
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/6.5/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/next/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = config
 	b2sums = SKIP
-	b2sums = 8937fc4001143088b4c8dbd775b7d6d04163c8cdb43b3b3cbefdce1ab522f6912811c6c720d84087254c4ef6388dfa72efba304d6189d57cffd657eaa3f5c822
-	b2sums = 2244efe07fa60e8259d4167b0d3725ea06eea584e70877c7bb4df2c21772bdcf6bd18c8b4380c7259e226243f1b6486e7ba36309399756172b6b071d07443d16
+	b2sums = 7176c1617077f82b56af8322db004f24e4e7463e046dea9c64a35820d6cb1977a1bb33e084bde4623c1420cdf7fc1ccfa96c9c5b2e9992edaa070229662a8447
+	b2sums = 6740eed61a07f9456abafcd221a0582d141536c5cae32aeacbed4802a2de734ce64a33527deefe606e8eee76093fb7193552ef946f3ed6afb5f2ef284317f3fb
 
 pkgname = linux-sched-ext-git
 	pkgdesc = The Linux Kernel based on the sched_ext branch kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
+	depends = scx-scheds
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	optdepends = scx-sched: Schedulers for sched-ext
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	provides = KSMBD-MODULE
