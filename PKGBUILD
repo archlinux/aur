@@ -3,7 +3,7 @@
 
 pkgname="fusiondirectory"
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A combination of system administrator and end user web interface, designed to handle LDAP based setups"
 url="http://fusiondirectory.org/"
 license=("GPL2")
@@ -20,10 +20,10 @@ depends=("gettext"
          "perl-path-class"
          "perl-term-readkey"
          "perl-xml-twig"
-         "php7>=7.3"
-         "php7-imagick"
-         "php7-imap"
-         "php-pear"
+         "php74"
+         "php74-imagick"
+         "php74-imap"
+         "php74-pear"
          "schema2ldif"
          "smarty3"
          "smarty3-gettext")
