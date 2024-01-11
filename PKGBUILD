@@ -3,7 +3,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=nvc-git
-pkgver=r5806.15a77fe1
+pkgver=r1.11.0.r36.gc1abb4b
 pkgrel=1
 pkgdesc="VHDL compiler and simulator"
 arch=('i686' 'x86_64' 'aarch64')
@@ -22,7 +22,7 @@ source=("git+https://github.com/nickg/${_gitname}.git")
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
