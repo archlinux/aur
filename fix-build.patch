@@ -1,0 +1,135 @@
+diff --git a/netboost/R/zzz.R b/netboost/R/zzz.R
+index 51a30bf..cc22909 100755
+--- a/netboost/R/zzz.R
++++ b/netboost/R/zzz.R
+@@ -63,35 +63,7 @@
+     # Create temp subfolder in tempdir()
+     netboostTmpCleanup()
+ 
+-    ## Add the current (real) loading path to MCUPGMA Makefiles
+-    ## (install_path.mk is loaded by definitions.mk, which is
+-    ## included in all real Makefiles).
+-    mcupgma_install <- file.path(netboostMCUPGMAPath(),
+-                                 "install_path.mk")
+-
+-    ## If this file is not existing in this location, this is a non working
+-    ## installation (may happen during build and included test-loads) (writeLines
+-    ## throws warning in R CMD check, but we do valid stuff here)
+-    if (file.exists(mcupgma_install)) {
+-        # R complains about writeLines (false positive, as not writing to STDOUT).
+-        # Replaced with write.table to pass package check.
+-        txt <- c(paste("export INSTALL_PATH := ", netboostMCUPGMAPath()),
+-                 paste("export TMP_PATH := ", netboostTmpPath()))
+-        write.table(file = mcupgma_install, as.data.frame(txt),
+-                    quote = FALSE, row.names = FALSE,
+-                    col.names = FALSE, append = FALSE, sep="")
+-        ##    filew <-file(mcupgma_install, open="w")
+-        ##    writeLines(con=filew, text=c(paste("export INSTALL_PATH := ",
+-        ##    mcupgmaPath)))
+-        ##    writeLines(con=filew, text=c(paste("export TMP_PATH := ",
+-        ##    netboostTmpPath())))
+-        ##    close(filew)
+-    }
+-    # Else successful build would be warned.
+-    else {
+-        warning(paste("File not written:", mcupgma_install,
+-                      "(okay during build, error after installation)"))
+-    }
++    Sys.setenv(TMP_PATH = netboostTmpPath())
+ }
+ 
+ ## #' If package detached, clean up temporary folders.
+diff --git a/netboost/configure.ac b/netboost/configure.ac
+index 1610705..e249d5e 100644
+--- a/netboost/configure.ac
++++ b/netboost/configure.ac
+@@ -1,5 +1,4 @@
+ AC_INIT([Netboost], 0.0.2)
+-AM_INIT_AUTOMAKE([1.9 foreign])
+ 
+ AC_CONFIG_MACRO_DIR([tools])
+ 
+@@ -13,9 +12,6 @@ m4_include([tools/ax_ext.m4])
+ AC_PROG_CC
+ AC_PROG_CPP
+ 
+-# Current CPU 
+-AX_EXT
+-
+ CC_ADD_FLAGS=""
+ AX_CHECK_COMPILE_FLAG(-Wno-deprecated, CC_ADD_FLAGS="$CC_ADD_FLAGS -Wno-deprecated", [])
+ 
+diff --git a/netboost/src/Makevars.in b/netboost/src/Makevars.in
+index c900f77..b4e4cd9 100644
+--- a/netboost/src/Makevars.in
++++ b/netboost/src/Makevars.in
+@@ -2,16 +2,12 @@
+ CXX_STD=CXX11
+ 
+ # AVX flag will be added for Linux/MacOS (and therefore GCC/Clang) by configure. ${AVX}
+-PKG_CXXFLAGS=`${R_HOME}/bin/Rscript -e "Rcpp:::CxxFlags()"` @SIMD_FLAGS@
++PKG_CXXFLAGS=`${R_HOME}/bin/Rscript -e "Rcpp:::CxxFlags()"`
+ # -Wsign-compare -Wall
+ # /arch:AVX
+ 
+ # Prefered would be stripping debugging symbols
+ # -Wl,--strip-debug (not working with BSD linker).
+-PKG_LIBS=`${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"`
+-
+-# As linker symbol stripping is not working, use "strip" tool
+-strip:	$(SHLIB)
+-		@STRIP@ -S $(SHLIB)
++PKG_LIBS := `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"` $(shell "${R_HOME}/bin/Rscript" -e "RcppParallel::LdFlags()")
+ 
+ .PHONY:	strip
+diff --git a/netboost/src/install.libs.R b/netboost/src/install.libs.R
+index 231a877..9d8c3bb 100644
+--- a/netboost/src/install.libs.R
++++ b/netboost/src/install.libs.R
+@@ -72,7 +72,7 @@ print(paste("INSTALL PATH: ",
+ ## only export of variable INSTALL_PATH.
+ ## @TODO Replace with R file writing.
+ system2("echo", paste0("export INSTALL_PATH := ",
+-                       dest_mcupgma,
++                       "/usr/lib/R/library/netboost/mcupgma",
+                        " > ",
+                        file.path(src_mcupgma, "scripts", "install_path.mk")))
+ 
+diff --git a/netboost/src/mcupgma/clustering_round/Makefile b/netboost/src/mcupgma/clustering_round/Makefile
+index 204d7cb..44b6328 100644
+--- a/netboost/src/mcupgma/clustering_round/Makefile
++++ b/netboost/src/mcupgma/clustering_round/Makefile
+@@ -35,11 +35,9 @@ COMPILER = ${CXX}
+ 
+ # compilation flags (e.g. -I paths - search paths for <> include clauses)
+ CPPFLAGS_DEBUG = -g -ftemplate-depth-64 -I./
+-CPPFLAGS = -O3 -ftemplate-depth-64 -I./
++CPPFLAGS += -ftemplate-depth-64 -I./
+ CFLAGS_DEBUG = -g -I./
+-CFLAGS = -O3 -I./
+ LDFLAGS_DEBUG = -g
+-LDFLAGS = -O3
+ 
+ #ARCH := $(shell arch)_$(shell uname -s)
+ ARCH := $(shell uname -m)_$(shell uname -s)
+@@ -124,7 +122,7 @@ $(PROGRAMS): %: $(BINDIR)/%
+ # rules for making %.o files
+ # the rest of the dependencies of %.o are listed in %.d
+ $(OBJDIR)/%.o: %.cpp
+-	${COMPILER} ${CPPFLAGS} -c $< -o $@
++	${COMPILER} ${CPPFLAGS} ${CXXFLAGS} -c $< -o $@
+ 
+ $(OFILESWITHGGO): $(OBJDIR)/%.o : %.cmdline.h
+ 
+diff --git a/netboost/src/mcupgma/clustering_util/Makefile.in b/netboost/src/mcupgma/clustering_util/Makefile.in
+index 4030b31..27916b0 100644
+--- a/netboost/src/mcupgma/clustering_util/Makefile.in
++++ b/netboost/src/mcupgma/clustering_util/Makefile.in
+@@ -60,7 +60,6 @@ CXXFLAGS += -D_GLIBCXX_CONCEPT_CHECKS -D_GLIBCXX_DEBUG
+ endif
+ 
+ ifdef PERFORM
+-CXXFLAGS += -O3
+ CXXFLAGS += -DNDEBUG
+ endif
+ 
