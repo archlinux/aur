@@ -6,13 +6,13 @@
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
 _pkgname=rstan
-_pkgver=2.32.3
+_pkgver=2.32.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="R Interface to Stan"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(GPL3)
 depends=(
   pandoc
@@ -45,12 +45,12 @@ optdepends=(
   r-v8
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6414d45665fbc9aa1fd0e7d4ef3e8d0b')
-sha256sums=('a29d9e1abf6d7c7b5ce98e10e60f14f18bad076aff4c7affa4b6263945ba549d')
+md5sums=('0d7ea5114187f589f6a2255cf1eeb397')
+b2sums=('509272c2b88ad2d1949620fc5ad7a32ab894005a829226ec9ccf39af0cd7bbbcfc4faee798f75ba4f4a984a827bae491cbdc52b7ea1c9292054382dae02bc3d9')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
