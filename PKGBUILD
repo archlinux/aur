@@ -1,19 +1,17 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=animalcules
-_pkgver=1.16.0
+_pkgver=1.18.2
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Interactive microbiome analysis toolkit'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="Interactive microbiome analysis toolkit"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=(Artistic2.0)
 depends=(
-  r
   r-ape
   r-assertthat
-  r-biomformat
   r-caret
   r-covr
   r-deseq2
@@ -21,15 +19,14 @@ depends=(
   r-dt
   r-forcats
   r-ggplot2
-  r-glmnet
   r-gunifrac
   r-limma
   r-magrittr
   r-multiassayexperiment
   r-plotly
-  r-plotroc
   r-rentrez
   r-reshape2
+  r-rocit
   r-s4vectors
   r-scales
   r-shiny
@@ -43,20 +40,24 @@ depends=(
 )
 optdepends=(
   r-biocstyle
+  r-biomformat
+  r-devtools
+  r-glmnet
   r-knitr
   r-rmarkdown
   r-testthat
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('27da24f27e8b78d11decef0f03a5ee6231453c47a4e22322426bc42fdaa586fc')
+md5sums=('aa982cf7a1ee5300e2974be6dd3fc34f')
+b2sums=('e9f9ba6651bbe8ec5393501d2e3da18f49ab90082eb6f3ba8bc7f9044daa00b4fed80b79088820db2c03446e4a36cb7bcc8fa3d9f8601e85834c0ad71f7c6fa9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
