@@ -1,7 +1,7 @@
 # Maintainer: Tricia, `creyon` <gtcreyon@gmail.com>
 pkgname=python-flash-patcher
 _name=flash-patcher
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Adobe Flash SWF file patching tool"
 arch=('any')
@@ -10,7 +10,7 @@ license=('CC-BY-SA-4.0')
 depends=('ffdec' 'python' 'python-antlr4')
 makedepends=('python-installer' 'python-hatch' 'antlr4')
 source=("https://github.com/rayyaw/flash-patcher/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('30468ef0737e908c16c9bf5e51484c1eab06a0841213a5bd7b082673a4b17addba0618cc0a988d6cc849ca6db9e966a91fd20830c5980789426be04739963e9f')
+b2sums=('429bcb593094e79b22350981bbabe6ffb69ba5ed439c43b6a81f2fa1ac9af809f45d62183277682c63eb66edad59a7363b6b2e394cccffec8981a35ee48c4126')
 
 prepare() {
     rm "${_name}-${pkgver}/flash_patcher/antlr_source/.gitkeep"
@@ -22,7 +22,9 @@ build() {
 }
 
 package() {
-    cd "${_name}-${pkgver}/build"
+    cd "${_name}-${pkgver}"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd build
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
