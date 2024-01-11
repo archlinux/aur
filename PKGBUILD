@@ -3,7 +3,7 @@
 
 pkgname=cargo-information
 _pkgname=cargo-info
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A tool to provide a detailed information about a Rust package"
 arch=('x86_64')
@@ -12,13 +12,13 @@ license=('MIT')
 depends=('gcc-libs' 'curl' 'zlib' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('7c77d8e5d232d9a1dc97c7762863121553debf84b39538b5dad0595eb616fbac236c7cd7be13c3e911a0090cf4298078a6dca129bb82e93e2f78a04dc4fbdf8e')
+sha512sums=('009c1b5edf3346b4be977890f4f2a4162576d9338d01a4e3f79cbe25a4877ac782737c4416a2274dd45f38cda80c635bffad2da7f64c5ee6ccf90848cddd28dd')
 options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {

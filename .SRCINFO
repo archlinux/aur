@@ -1,6 +1,6 @@
 pkgbase = cargo-information
 	pkgdesc = A tool to provide a detailed information about a Rust package
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/hi-rustin/cargo-information
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cargo-information
 	depends = zlib
 	depends = openssl
 	options = !lto
-	source = cargo-information-0.4.0.tar.gz::https://github.com/hi-rustin/cargo-information/archive/v0.4.0.tar.gz
-	sha512sums = 7c77d8e5d232d9a1dc97c7762863121553debf84b39538b5dad0595eb616fbac236c7cd7be13c3e911a0090cf4298078a6dca129bb82e93e2f78a04dc4fbdf8e
+	source = cargo-information-0.4.1.tar.gz::https://github.com/hi-rustin/cargo-information/archive/v0.4.1.tar.gz
+	sha512sums = 009c1b5edf3346b4be977890f4f2a4162576d9338d01a4e3f79cbe25a4877ac782737c4416a2274dd45f38cda80c635bffad2da7f64c5ee6ccf90848cddd28dd
 
 pkgname = cargo-information
