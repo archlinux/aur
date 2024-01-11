@@ -2,7 +2,7 @@
 pkgname=saber-bin
 _appname="com.adilhanney.${pkgname%-bin}"
 _pkgname=Saber
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="A (work-in-progress) cross-platform libre handwritten notes app"
 arch=(
@@ -30,8 +30,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('07c295fbb74a50ae5c27e5d0ee1a55f8ef4f3be793dcb7490d8d7df20be9d90a')
-sha256sums_aarch64=('fbeac245b1a395e6cf00c8769b3000fe5938243a21a375e8d86a03db6a0d5dcc')
-sha256sums_x86_64=('f64e7e7ebb25d480d038968cc96b91b31b407b632c71709859728dc8dc73bfee')
+sha256sums_aarch64=('8ae24225656bdd12a8d0c13be9b8fa8dc23c9a47c4dfd1d1ddcc0a30434defcb')
+sha256sums_x86_64=('6aaacab5d2fc03fe6e21a39e287095cf944768f49a2e86ccea6dbeec40a399bd')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
