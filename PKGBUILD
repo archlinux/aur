@@ -11,7 +11,7 @@ conflicts=('waylyrics')
 provides=('waylyrics')
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
-depends=('gtk4')
+depends=('gtk4' 'openssl' 'hicolor-icon-theme')
 makedepends=('cargo' 'git' 'jq' 'mimalloc')
 optdepends=(
 	'feeluown-qqmusic: QQMusic player'
