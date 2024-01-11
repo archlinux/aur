@@ -29,8 +29,10 @@ package()
 {
     # Assure that the directories exist.
     mkdir -p "${pkgdir}"/usr/bin/
+    mkdir -p "${pkgdir}"/usr/share/applications/
     mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
     mkdir -p "${pkgdir}"/usr/share/java/"${pkgname}"/
+    mkdir -p "${pkgdir}"/usr/share/pixmaps/
 
     # Install the software.
     cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/lib/ "${pkgdir}"/usr/share/java/"${pkgname}"/
