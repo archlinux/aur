@@ -1,0 +1,3 @@
+#!/bin/bash
+[[ "$1" == "" ]] && wine /usr/share/spcplay/spcplay.exe
+[[ "$1" != "" ]] && wine /usr/share/spcplay/spcplay.exe "$(winepath -w "$1")"

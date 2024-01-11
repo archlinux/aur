@@ -1,0 +1,22 @@
+pkgbase = spcplay
+	pkgdesc = SNES SPC700 Player
+	pkgver = 2.20.1.8272
+	pkgrel = 1
+	url = https://github.com/dgrfactory/spcplay
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	makedepends = gendesk
+	depends = wine
+	noextract = spcplay-2.20.1.8272.zip
+	source = https://github.com/dgrfactory/spcplay/releases/download/2.20.1.8272/spcplay-2.20.1.8272.zip
+	source = spcplay
+	source = spcplay.png
+	source = x-spc.xml
+	sha256sums = 4693c72a9ff933dcf1644d69504aa0c09286fabdbc4e415e30e171fc7047160f
+	sha256sums = 9dbe7462b0901e19f819c8e16dab24e88a013a2f1575fc50fe7c7b7c5eb04f82
+	sha256sums = 6f4127c931c5707c3a4cf1da81cd29c38f336cb3c7fc40f366681cb475217c98
+	sha256sums = fd1a7c4c7f7da7fb9a5310bdfe06e1fb7feb22b51b2e23cd78debba1ea6b92fe
+
+pkgname = spcplay
