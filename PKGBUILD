@@ -1,7 +1,7 @@
 # Maintainer:Antonio Rojas <arojas@archlinux.org>
 
 pkgname=wacomtablet
-pkgver=5.27.80
+pkgver=5.92.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='GUI for Wacom Linux drivers that supports different button/pen layout profiles'
@@ -25,7 +25,7 @@ depends=(gcc-libs
          libwacom
          libxcb
          libxi
-         plasma-framework # QML
+         libplasma # QML
          plasma5support
          qt6-base
          xf86-input-wacom)
@@ -35,7 +35,7 @@ conflicts=(kcm-wacomtablet)
 replaces=(kcm-wacomtablet)
 groups=(plasma)
 source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('d8c4638ee07933372d61bb77c93919a96392833dac4202bad78f1cdf04e96b7c'
+sha256sums=('5963692648b68c2b319db113988e00a7cd0b2b86bcb40f70c21b9e12b6600429'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
