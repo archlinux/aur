@@ -1,23 +1,24 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="nerdfetch"
-pkgver=7.0.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
 url="https://codeberg.org/thatonecalculator/NerdFetch"
 license=('GPL')
 makedepends=('git')
-source=("nerdfetch.tar.gz::https://codeberg.org/thatonecalculator/NerdFetch/archive/v${pkgver}.tar.gz")
+source=("nerdfetch.tar.gz::https://github.com/thatonecalculator/NerdFetch/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('12ab1af886d4f12c86cab1dba32a2769527fc7149cafc76613f2500e4471544d')
+sha256sums=('37c3906ac10bd51bfee9e19655a0cc37e7ba197ace629615bf91f245b42eb025')
+
+sourcedir="NerdFetch-${pkgver}"
 
 prepare() {
 	tar -xf "nerdfetch.tar.gz"
-	cd "nerdfetch"
 }
 
 package() {
-	install -Dm755 "${srcdir}/nerdfetch/nerdfetch" "$pkgdir/usr/bin/nerdfetch"
-	install -Dm644 "${srcdir}/nerdfetch/README.md" "$pkgdir/usr/share/doc/$pkgname"
-	install -Dm644 "${srcdir}/nerdfetch/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	install -Dm755 "${srcdir}/${sourcedir}/nerdfetch" "$pkgdir/usr/bin/nerdfetch"
+	install -Dm644 "${srcdir}/${sourcedir}/README.md" "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm644 "${srcdir}/${sourcedir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
