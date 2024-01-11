@@ -8,7 +8,6 @@ pkgbase = gnome-video-arcade
 	license = GPL
 	makedepends = intltool
 	makedepends = itstool
-	makedepends = gnome-doc-utils
 	depends = dconf
 	depends = dbus
 	depends = gtk3
@@ -21,4 +20,3 @@ pkgbase = gnome-video-arcade
 	sha256sums = 91287b62c2cf2bf982d132b5b1a3f3d34f117254faff134af73b0c8e2b56d026
 
 pkgname = gnome-video-arcade
-

@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://wiki.gnome.org/action/show/Apps/GnomeVideoArcade"
 license=(GPL)
 depends=(dconf dbus gtk3 libsoup libwnck3 hicolor-icon-theme mame sqlite3)
-makedepends=(intltool itstool gnome-doc-utils)
+makedepends=(intltool itstool)
 source=(http://download.gnome.org/sources/${pkgname}/$(echo ${pkgver} | cut -d. -f1,2)/${pkgname}-${pkgver}.tar.xz)
 sha256sums=('91287b62c2cf2bf982d132b5b1a3f3d34f117254faff134af73b0c8e2b56d026')
 
