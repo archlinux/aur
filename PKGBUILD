@@ -4,7 +4,7 @@
 _pkgname='ferdium'
 pkgname="$_pkgname-nightly-bin"
 _electron='electron27'
-_electronpackage='electron27-bin'
+_electronpackage='electron27'
 pkgverorg='6.6.1-nightly.20'
 pkgver='6.6.1.nightly.20'
 pkgrel='1'
