@@ -32,7 +32,7 @@ package()
 
     # Install the software.
     cp -r "${srcdir}"/Cake_Wallet_v"${pkgver}"_Linux/* "${pkgdir}"/opt/"${_pkgname}"/
-    ln -s "${pkgdir}"/opt/"${_pkgname}"/"${_pkgname}" /usr/bin/"${_pkgname}"
+    ln -s /opt/"${_pkgname}"/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}"
     install -Dm644 "${srcdir}"/Cake_Wallet_v"${pkgver}"_Linux/data/flutter_assets/assets/images/cakewallet_logo.png "${pkgdir}"/usr/share/pixmaps/"${pkgname}".png
     install -Dm644 "${srcdir}"/"${_pkgname}".desktop "${pkgdir}"/usr/share/applications/"${_pkgname}".desktop
 
