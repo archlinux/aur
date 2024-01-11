@@ -3,7 +3,8 @@
 pkgname=cqrlog-git
 _pkgname=cqrlog
 _authorname=ok2cqr
-pkgver=2.5.2.r234.g98a8ba5
+pkgver=2.5.2.r251.g0277b27
+#.r251.g0277b27
 #.r234.g98a8ba5
 #.r208.g823332c
 pkgrel=1
@@ -50,7 +51,7 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname"
 
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/usr/" install
 }
 md5sums=('SKIP')
 sha256sums=('SKIP')
