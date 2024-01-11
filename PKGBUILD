@@ -2,7 +2,7 @@
 
 pkgname=dotbot
 pkgver=1.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that bootstraps your dotfiles"
 arch=(any)
 url="https://github.com/anishathalye/dotbot"
@@ -12,17 +12,27 @@ depends=(
   python-yaml
 )
 makedepends=(
+  git
   python-build
   python-installer
   python-setuptools
   python-wheel
 )
-checkdepends=(python-pytest)
+checkdepends=(
+  python-pytest
+)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('beadd60a0c8c7fa727852304e33fbee6ad05a0fc4f42b3c20854e05ebfb1ebf6')
+_commit=840cd164d20713a8e34f3aeb4ab1121c9745fad9 # git rev-parse "$pkgver"
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
-_archive="$pkgname-$pkgver"
+_archive="$pkgname"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags | sed 's/^v//'
+}
 
 build() {
   cd "$_archive"
@@ -33,7 +43,12 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest --ignore tests/test_shim.py
+  rm -rf tmp_install
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  pytest
 }
 
 package() {
@@ -41,5 +56,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 }
