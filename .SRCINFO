@@ -1,0 +1,15 @@
+pkgbase = r-roopsd
+	pkgdesc = R Object Oriented Programming for Statistical Distribution
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ROOPSD
+	arch = any
+	license = custom:CeCILLV2
+	depends = r>=3.3
+	depends = r-r6
+	depends = r-lmoments
+	depends = r-numderiv
+	source = https://cran.r-project.org/src/contrib/ROOPSD_0.3.9.tar.gz
+	sha256sums = 22a11beeb695a88836b9c64a9b0cfdbf4fee4274f7cc601e69949b33de738775
+
+pkgname = r-roopsd
