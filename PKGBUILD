@@ -1,6 +1,6 @@
 # Maintainer: Romain Bazile <gromain.baz@gmail.com>
 pkgname=shutter-encoder
-pkgver=17.4
+pkgver=17.8
 pkgrel=1
 pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux"
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=(java-runtime ffmpeg vlc mediainfo dvdauthor mkvtoolnix-cli perl-image-e
 source=("https://www.shutterencoder.com/Shutter%20Encoder%20$pkgver%20Linux%2064bits.deb")
 options=('!strip')
 
-sha256sums=('9d1d28f535b3873f8e094c0335f7ec3dcd3e4f0171d6311dbcec0036bdff999a')
+sha256sums=('cd87285b573b3a98380fbb438d5043028f0d1a1325a25638585be5c597dbda15')
 
 prepare() {
     mkdir -p shutter-encoder
