@@ -1,8 +1,8 @@
-# Maintainer: spookyintheam <spookyintheam@proton.me>
+# Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=rose-pine-cursor
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Soho vibes for your mouse cursor.'
 arch=('any')
 license=('GPL3')
