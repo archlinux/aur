@@ -12,7 +12,7 @@ license=('custom')
 depends=('gtk3' 'libxss' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'util-linux-libs' 'libsecret' 'at-spi2-core' 'aws-session-manager-plugin')
 provides=("$_pkgname")
 source=("Leapp_${pkgver}_amd64.deb::https://asset.noovolari.com/${pkgver}/Leapp_${pkgver}_amd64.deb")
-sha512sums=(f09ef2300c7ea28af7f5cb1443c4ed250912d582bc59dc4156408bb57bd661c201eacef2f3b93d4be52b287020a5c080066ec017df6aba276bbdc8298e028739)
+sha512sums=('f09ef2300c7ea28af7f5cb1443c4ed250912d582bc59dc4156408bb57bd661c201eacef2f3b93d4be52b287020a5c080066ec017df6aba276bbdc8298e028739')
 
 package() {
     cd ${srcdir}
