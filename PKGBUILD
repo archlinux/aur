@@ -1,4 +1,4 @@
-# Maintainer: Klaus Alexander Seistrup
+# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
 
 pkgname='slang-snapshot'
@@ -6,7 +6,7 @@ _pkgname="${pkgname%-snapshot}"
 _pkgver='2.3.4-8'
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 provides=('slang')
@@ -30,10 +30,12 @@ md5sums=('c740ca7ded82fa29849046ca33c572b1')
 build() {
   cd "${_pkgname}-${_prever}" || exit 1
 
-  case "$CLAGS" in
-    *-ffat-lto-objects* ) : pass ;;
-    * ) export CFLAGS="$CFLAGS -ffat-lto-objects" ;;
-  esac
+  # We do not install libslang.a, so fat LTO object seems unnecessary.
+  # Let's keep it here, commented, just in case.
+  #case "$CLAGS" in
+  #  *-ffat-lto-objects* ) : pass ;;
+  #  * ) export CFLAGS="$CFLAGS -ffat-lto-objects" ;;
+  #esac
 
   ./configure --prefix=/usr --sysconfdir=/etc
   make
