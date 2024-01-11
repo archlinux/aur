@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=niconizer-bin
-pkgver=2.0.121
+pkgver=2.0.122
 _electronversion=28
 pkgrel=1
 pkgdesc="A desktop application that displays plain text, images, and any other HTML content on the screen."
@@ -20,9 +20,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/matzkoh/niconizer/v${pkgver}/icon/icon_512x512.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d7fe54e338f919d447b72b951c663e37340bf3f7a098ac6fc191bc0c0eddf4e1'
+sha256sums=('46d525f06fc1338f8cf37c42d4b586d8e447f1d4ba1c410764670afd9460f704'
             '7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
