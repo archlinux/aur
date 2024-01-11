@@ -16,7 +16,9 @@ depends=(
 makedepends=(
     'squashfuse'
 )
-options=(!strip)
+options=(
+    '!strip'
+)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}.AppImage")
 sha256sums=('fb9b57441fbc21fd88a919183cba4efbe32c94db2d90bdfe080ab841cdd171f5')
