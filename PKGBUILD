@@ -2,7 +2,8 @@
 pkgname=fishing-funds-bin
 _pkgname=Fishing-Funds
 pkgver=8.1.1
-pkgrel=1
+_electronversion=27
+pkgrel=2
 pkgdesc="基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发."
 arch=('x86_64')
 url="https://ff.1zilc.top/"
@@ -11,14 +12,11 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron27'
     'hicolor-icon-theme'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    "electron${_electronversion}"
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'asar'
@@ -29,12 +27,16 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ea68b80929fb292701e3180a898f75f36d5183decc915629c4a2986920078bb0'
-            '7469cb4ef004815b0ae6797d6079cb6f702fd9f140fcc4d46edc7432f8b9e1a6')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    find "${srcdir}/squashfs-root" -type d -exec chmod a+x {} \;
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed "1i\process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';" -i "${srcdir}/app.asar.unpacked/dist/main/index.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
