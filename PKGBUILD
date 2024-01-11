@@ -2,7 +2,7 @@
 # Contributors: Dan Serban, Dany Martineau, Jordi De Groof, RTFreedman
 
 pkgname="mp3diags-unstable"
-pkgver="1.5.02"
+pkgver="1.5.03"
 pkgrel=1
 pkgdesc="Identify issues with your MP3 files, fix those issues and make other changes"
 url="http://mp3diags.sourceforge.net/"
@@ -12,7 +12,7 @@ depends=("boost-libs" "qt5-base")
 makedepends=("boost")
 optdepends=('mp3gain: MP3 normalization support')
 source=("http://sourceforge.net/projects/mp3diags/files/unstable/mp3diags-src/MP3Diags-unstable-${pkgver}.tar.gz")
-sha1sums=('8764aa9cb4eac097cfeaf8ca9c0306d14a50999e')
+sha256sums=('504791a38ddb79ef54e83ce0a76cd2d056e6b1349cbd8cc88e2414bfbd9aba0d')
 
 build() {
 	cd "${srcdir}/MP3Diags-unstable-${pkgver}"

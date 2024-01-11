@@ -1,6 +1,6 @@
 pkgbase = mp3diags-unstable
 	pkgdesc = Identify issues with your MP3 files, fix those issues and make other changes
-	pkgver = 1.5.02
+	pkgver = 1.5.03
 	pkgrel = 1
 	url = http://mp3diags.sourceforge.net/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mp3diags-unstable
 	depends = boost-libs
 	depends = qt5-base
 	optdepends = mp3gain: MP3 normalization support
-	source = http://sourceforge.net/projects/mp3diags/files/unstable/mp3diags-src/MP3Diags-unstable-1.5.02.tar.gz
-	sha1sums = 8764aa9cb4eac097cfeaf8ca9c0306d14a50999e
+	source = http://sourceforge.net/projects/mp3diags/files/unstable/mp3diags-src/MP3Diags-unstable-1.5.03.tar.gz
+	sha256sums = 504791a38ddb79ef54e83ce0a76cd2d056e6b1349cbd8cc88e2414bfbd9aba0d
 
 pkgname = mp3diags-unstable
