@@ -1,0 +1,11 @@
+[Unit]
+Description="Logrotate cellframe-node.log files"
+
+[Timer]
+OnBootSec=5min
+OnCalendar=*-*-* *:00:00
+Persistent=True
+Unit=cellframe-node-logrotate.service
+
+[Install]
+WantedBy=timers.target

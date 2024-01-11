@@ -1,0 +1,99 @@
+showmsg() {
+    cat << EOF
+
+    ########################################################################
+    ########################################################################
+    ##                                                                    ##
+    ##  Cellframe node                                                    ##
+    ##  ____________                                                      ##
+    ##                                                                    ##
+    ##  To start Cellframe node manually:                                 ##
+    ##                                                                    ##
+    ##      # Run from /opt/cellframe-node/bin                            ##
+    ##                                                                    ##
+    ##  Run automatically:                                                ##
+    ##                                                                    ##
+    ##      # systemctl enable --now cellframe-node.service               ##
+    ##                                                                    ##
+    ##      OPTIONAL (for more aggressive logrotating):                   ##
+    ##      # systemctl enable --now cellframe-node-logrotate.timer       ##
+    ##                                                                    ##
+    ##  Network configuration is set to full mode by default.             ##
+    ##  you can modify the network configuration parameters in:           ##
+    ##                                                                    ##
+    ##      # /opt/cellframe-node/etc/network/*.cfg                       ##
+    ##                                                                    ##
+    ##  General configuration file:                                       ##
+    ##                                                                    ##
+    ##      # /opt/cellframe-node/etc/cellframe-node.cfg                  ##
+    ##                                                                    ##
+    ##  Documentation:                                                    ##
+    ##                                                                    ##
+    ##      https://wiki.cellframe.net/en/home                            ##
+    ##                                                                    ##
+    ##  Setup a master node:                                              ##
+    ##                                                                    ##
+    ##      https://wiki.cellframe.net/en/soft/masternode                 ##
+    ##                                                                    ##
+    ########################################################################
+    ########################################################################
+EOF
+}
+
+post_install() {
+    echo "==> Creating directories..."
+    mkdir -p /opt/cellframe-node/var/{run,lib/wallet,lib/global_db,lib/plugins,log}
+    echo "==> Copying configuration files..."
+    cp /opt/cellframe-node/share/configs/cellframe-node.cfg.tpl /opt/cellframe-node/etc/cellframe-node.cfg
+    cp /opt/cellframe-node/share/configs/network/Backbone.cfg.tpl /opt/cellframe-node/etc/network/Backbone.cfg
+    echo "==> Generating default configuration files..."
+    sed -i 's|{DEBUG_MODE}|false|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{PREFIX}|/opt/cellframe-node|g' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{AUTO_ONLINE}|true|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{SERVER_ENABLED}|true|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{SERVER_ADDR}|0.0.0.0|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{SERVER_PORT}|8079|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{NOTIFY_SRV_ADDR}|127.0.0.1|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{NOTIFY_SRV_PORT}|8080|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i "s|{DB_DRIVER}|mdbx|" /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{NODE_TYPE}|full|' /opt/cellframe-node/etc/network/Backbone.cfg
+    
+    echo "==> Creating symbolic links for executables..."
+    for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
+	do
+		ln -sf "/opt/cellframe-node/bin/$_executables" "/usr/local/bin/$_executables"
+	done
+
+    showmsg
+}
+
+pre_upgrade() {
+    for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
+	do  
+		if [[ -f "/usr/bin/$_executables" ]]; then unlink "/usr/bin/$_executables" && echo "==> Removing old symlink: ${_executables}"; fi
+	done
+}
+
+post_upgrade() {
+    systemctl is-active --quiet cellframe-node.service && systemctl daemon-reload && systemctl restart cellframe-node.service
+    if [[ $(vercmp $2 5.2.400-3) -lt 0 ]]; then
+        echo "==> It's recommended to enable cellframe-node-logrotate.timer with: systemctl enable --now cellframe-node-logrotate.timer"
+    fi
+}
+
+pre_remove() {
+    systemctl is-active --quiet cellframe-node.service && systemctl stop cellframe-node.service
+    systemctl is-active --quiet cellframe-node-logrotate.timer && systemctl stop cellframe-node-logrotate.timer
+    systemctl is-enabled --quiet cellframe-node.service && systemctl disable cellframe-node.service
+    systemctl is-enabled --quiet cellframe-node-logrotate.timer && systemctl disable cellframe-node-logrotate.timer
+    systemctl daemon-reload
+}
+
+post_remove() {
+    echo "==> Removing symbolic links for executables..."
+    for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
+	do
+		unlink "/usr/local/bin/$_executables"
+	done
+}
+
