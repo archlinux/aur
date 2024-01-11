@@ -1,13 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shutter-encoder-bin
 _pkgname="Shutter Encoder"
-pkgver=17.7
-pkgrel=2
+pkgver=17.8
+pkgrel=1
 pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux"
 arch=("x86_64")
 url="https://www.shutterencoder.com"
 _ghurl="https://github.com/paulpacifico/shutter-encoder"
 license=("GPL3")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=(
     'libxml2'
     'libxtst'
@@ -26,13 +28,11 @@ depends=(
     'ffmpeg'
     'vulkan-icd-loader'
 )
-provides=("${pkgname%-bin}-${pkgver}")
-conflicts=("${pkgname%-bin}")
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/Shutter%20Encoder%20${pkgver}%20Linux%2064bits.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9d1d28f535b3873f8e094c0335f7ec3dcd3e4f0171d6311dbcec0036bdff999a'
+sha256sums=('cd87285b573b3a98380fbb438d5043028f0d1a1325a25638585be5c597dbda15'
             '81061a2589944cf1a32c09b4d27ae5a7cfd51697de9e307526ccd3b4393910a7')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
