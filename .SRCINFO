@@ -1,0 +1,15 @@
+pkgbase = r-evgam
+	pkgdesc = Generalised Additive Extreme Value Models
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=evgam
+	arch = any
+	license = GPL3
+	depends = r>=3.5.0
+	depends = r-rcpp>1.0.8.3
+	depends = r-mgcv
+	depends = r-rcpparmadillo
+	source = https://cran.r-project.org/src/contrib/evgam_1.0.0.tar.gz
+	sha256sums = 7835174f749df9135b3a96e319fac12d2399f9339224839bc29f762c58120a39
+
+pkgname = r-evgam
