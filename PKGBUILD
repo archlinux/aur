@@ -14,7 +14,7 @@ source=(${pkgname%-git}::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "$srcdir/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
