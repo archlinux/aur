@@ -4,13 +4,13 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=reprex
-_pkgver=2.0.2
+_pkgver=2.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Prepare Reproducible Example Code via the Clipboard"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(MIT)
 depends=(
   pandoc
@@ -27,7 +27,6 @@ depends=(
   r-withr
 )
 checkdepends=(
-  r-mockr
   r-styler
   r-testthat
 )
@@ -35,7 +34,6 @@ optdepends=(
   r-covr
   r-fortunes
   r-miniui
-  r-mockr
   r-rprojroot
   r-sessioninfo
   r-shiny
@@ -44,21 +42,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dfda2989d9317160661dcec6a8f2fed8')
-sha256sums=('a85b16e26112364a65c886efea050df08c17aadf1411fd14ec27d9ef13e87092')
-
-prepare() {
-  # fix snapshot test
-  sed -e 's/Please use /i Please use /' \
-      -e 's/Use /i Use /' \
-      -e 's/\*/i/' \
-      -e 's/Working directory /i Working directory /' \
-      -i "$_pkgname/tests/testthat/_snaps/utils-io.md"
-}
+md5sums=('f9c998d2dc355b00fbde58c04d97d220')
+b2sums=('8a54ccb446850f9c209a11146513e58798877165bbf36d8f810f1c7cc1ed8c972812b7dc6a1114422674917a56549342db300e0079c4b29d7cae7415f2baf696')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
