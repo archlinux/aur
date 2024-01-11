@@ -1,7 +1,7 @@
 # Maintainer: Zola Gonano <zolagonano@protonmail.com>
 
 pkgname=torbridge-cli
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Command-line interface tool to fetch Tor bridges from BridgeDB"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=("SKIP")
 build() {
   cd "$srcdir/torbridge-cli"
 
-  cargo build --release --locked
+  cargo build --release
 }
 
 package() {
