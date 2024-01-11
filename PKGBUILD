@@ -2,13 +2,25 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 ## options
-: ${_build_patch:=true}
+: ${_build_arch_patch:=true}
+
+: ${_build_clang:=false}
+: ${_build_tracer:=true}
+: ${_build_numa:=true}
+
+: ${_build_vfio:=true}
+: ${_build_lts:=true}
+: ${_build_v3:=false}
+
+[[ "${_build_vfio::1}" == "t" ]] && _pkgtype+="-vfio"
+[[ "${_build_lts::1}" == "t" ]] && _pkgtype+="-lts"
+[[ "${_build_v3::1}" == "t" ]] && _pkgtype+="-v3"
 
 ## basic info
 _gitname="linux"
-_pkgname="$_gitname-vfio"
-pkgbase="$_pkgname-lts"
-pkgver=6.6.10
+_pkgname="$_gitname${_pkgtype:-}"
+pkgbase="$_pkgname"
+pkgver=6.6.11
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -33,22 +45,14 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-$pkgver
-_srctag=v$pkgver-arch1
-_dl_url_arch='https://github.com/archlinux/linux'
-source=(
+source+=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config  # the main kernel config file
-
-  1001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-  1002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
-sha256sums=(
-  '9ee627e4c109aec7fca3eda5898e81d201af2c7eb2f7d9d7d94c1f0e1205546c'
+sha256sums+=(
+  'afe2e5a661bb886d762684ebea71607d1ee8cb9dd100279d2810ba20d9671e52'
   'SKIP'
   '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
-
-  'f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb'
-  '2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db'
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -56,21 +60,84 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-if [[ ${_build_patch::1} == "t" ]] ; then
-  _srctag=v$pkgver-arch1
-  _dl_url_arch='https://github.com/archlinux/linux'
+if [[ ${_build_vfio::1} == "t" ]] ; then
   source+=(
-    $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+    1001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+    1002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
   )
   sha256sums+=(
-    'SKIP'
-    'SKIP'
+    'f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb'
+    '2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db'
   )
+fi
+
+if [[ ${_build_arch_patch::1} == "t" ]] ; then
+  if [[ ${_build_lts::1} == "t" ]] ; then
+    _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main'
+    source+=(
+      "$_dl_url_arch/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+      "$_dl_url_arch/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
+    )
+    sha256sums+=(
+      '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
+      '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
+    )
+  else
+    _srctag=v$pkgver-arch1
+    _dl_url_arch='https://github.com/archlinux/linux'
+    source+=(
+      $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+    )
+    sha256sums+=(
+      'SKIP'
+      'SKIP'
+    )
+  fi
+fi
+
+if [[ ${_build_clang::1} == "t" ]] ; then
+  makedepends+=(clang llvm lld)
+
+  export CC=clang
+  export CXX=clang++
+  export LDFLAGS+=" -fuse-ld=lld"
+
+  export HOSTCC=clang
+  export LLVM=1
+  export LLVM_IAS=1
+fi
+
+if [[ "${_build_v3::1}" == "t" ]] ; then
+  export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"}
 fi
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+
+_prepare_extra() {
+  # remove extra version suffix
+  sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
+
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    scripts/config --disable LTO_CLANG_FULL
+    scripts/config --enable LTO_CLANG_THIN
+  fi
+
+  if [[ "${_build_clang::1}" == "t" ]] || [[ "${_build_tracer::1}" != "t" ]] ; then
+    echo "Disabling Tracers..."
+    scripts/config \
+      --disable CONFIG_FTRACE \
+      --disable CONFIG_FUNCTION_TRACER \
+      --disable CONFIG_STACK_TRACER
+  fi
+
+  if [[ "${_build_numa::1}" != "t" ]] ; then
+    echo "Disabling NUMA..."
+    scripts/config --disable CONFIG_NUMA
+  fi
+}
 
 prepare() {
   cd $_srcname
@@ -90,13 +157,12 @@ prepare() {
     patch -Np1 -F100 -i "../$src"
   done
 
-  # remove extra version suffix
-  sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
-
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
   diff -u ../config .config || :
+
+  _prepare_extra
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
