@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=collapse
-_pkgver=2.0.7
+_pkgver=2.0.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Advanced and Fast Data Transformation"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(GPL)
 depends=(
   r-rcpp
@@ -43,12 +43,12 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a382c337ac260818787d060daad1c08e')
-sha256sums=('6c854941a96822d28f2a25d5c205483b86b547b364df1c2e83d17febc8bbfb6b')
+md5sums=('6443f67c5d8bf365150d55f562e32539')
+b2sums=('0e135986fe4caa2780a5d3b3430619812f4ac524dd3d4ce695e05927025ee1863fda729b5c36f78436a686b3a8e304a3fa3b35db286f46a4404c88073ad314a0')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
