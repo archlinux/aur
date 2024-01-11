@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drawio-desktop-git
-pkgver=22.1.16.r3.gc2973ce
+pkgver=22.1.18.r3.gecbc2f7
 _electronversion=28
-_nodeversion=16
+_nodeversion=20
 pkgrel=1
 pkgdesc="A diagramming and whiteboarding desktop app based on Electron that wraps the core draw.io editor."
 arch=(
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
