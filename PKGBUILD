@@ -1,7 +1,7 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 _pkgname=orogene
 pkgname="$_pkgname-git"
-pkgver=r374.c1d832f
+pkgver=r637.472e481
 pkgrel=1
 pkgdesc='A next-generation platform and package manager for Node.js-compatible and frontend JavaScript projects'
 arch=('x86_64')
