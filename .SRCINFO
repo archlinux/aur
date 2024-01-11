@@ -1,0 +1,18 @@
+pkgbase = r-demography
+	pkgdesc = Forecasting Mortality, Fertility, Migration and Population Data
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=demography
+	arch = any
+	license = LGPL3
+	depends = r>=3.4
+	depends = r-forecast>=8.5
+	depends = r-ftsa>=4.8
+	depends = r-cobs
+	depends = r-mgcv
+	depends = r-strucchange
+	depends = r-hmdhfdplus>=2.0.0
+	source = https://cran.r-project.org/src/contrib/demography_2.0.tar.gz
+	sha256sums = cdb946b1e3ec7c8146ebba7f25ab00617d42f7806d0c38cb67455d087774b36a
+
+pkgname = r-demography
