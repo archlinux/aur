@@ -2,7 +2,7 @@
 # Contributor: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=actor-framework
-pkgver=0.19.4
+pkgver=0.19.5
 pkgrel=1
 pkgdesc="An Open Source Implementation of the Actor Model in C++"
 arch=(i686 x86_64)
@@ -25,7 +25,8 @@ prepare(){
 	LDFLAGS=$LDFLAGS CXXFLAGS=$CXXFLAGS \
 		./configure   \
 		--prefix=/usr \
-		--disable-examples
+		--disable-examples \
+		--build-type=RelWithDebInfo
 }
 
 build() {
