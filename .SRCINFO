@@ -1,37 +1,37 @@
 pkgbase = arsse-git
 	pkgdesc = Multi-protocol RSS/Atom newsfeed synchronization server, bugfix-testing version
-	pkgver = 0.10.0
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://thearsse.com/
 	arch = any
 	license = MIT
 	makedepends = composer
-	makedepends = pandoc
-	depends = php>=7.1
-	depends = php-intl>=7.1
-	depends = php-sqlite>=7.1
+	depends = php-interpreter>=7.3
+	depends = php-intl-interpreter>=7.3
+	depends = php-sqlite-interpreter>=7.3
 	optdepends = nginx: HTTP server
 	optdepends = apache>=2.4: HTTP server
 	optdepends = percona-server: Alternate database
 	optdepends = postgresql>=10: Alternate database
-	optdepends = php-pgsql>=7.1: PostgreSQL database support
+	optdepends = php-pgsql-interpreter>=7.3: PostgreSQL database support
 	provides = arsse
 	conflicts = arsse
 	backup = etc/webapps/arsse/config.php
+	backup = etc/webapps/arsse/systemd-environment
 	backup = etc/php/php-fpm.d/arsse.conf
+	backup = etc/php-legacy/php-fpm.d/arsse.conf
 	backup = etc/webapps/arsse/nginx/example.conf
 	backup = etc/webapps/arsse/nginx/arsse.conf
 	backup = etc/webapps/arsse/nginx/arsse-loc.conf
 	backup = etc/webapps/arsse/nginx/arsse-fcgi.conf
 	backup = etc/webapps/arsse/apache/example.conf
 	backup = etc/webapps/arsse/apache/arsse.conf
+	backup = etc/webapps/arsse/apache/arsse-fcgi.conf
 	backup = etc/webapps/arsse/apache/arsse-loc.conf
 	source = git+https://code.mensbeam.com/MensBeam/arsse/
 	md5sums = SKIP
 
 pkgname = arsse-git
-	depends = php>=7.1
-	depends = php-intl>=7.1
-	depends = php-sqlite>=7.1
-	depends = php-fpm>=7.1
-
+	depends = php-interpreter>=7.3
+	depends = php-sqlite-interpreter>=7.3
+	depends = php-fpm-interpreter>=7.3
