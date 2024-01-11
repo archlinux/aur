@@ -3,7 +3,7 @@
 _pkgname="bazecor"
 _branch="development"
 pkgname="${_pkgname}-git"
-pkgver=1.3.1.2961
+pkgver=1.3.10_rc.2.3305
 pkgrel=1
 pkgdesc="Graphical configurator for Dygma Raise. Development branch"
 url="https://github.com/Dygmalab/Bazecor"
@@ -32,8 +32,7 @@ _ensure_local_nvm() {
 pkgver() {
     cd "$srcdir/$pkgname" || return
     printf "%s.%s" \
-        "$(grep "\"version\":" package.json | \
-        sed -e 's/^.*"\S*".*"\(\S*\)".*$/\1/')" \
+        "$(grep "\"version\":" package.json | sed 's/^.*"\S*".*"\(\S*\)".*$/\1/' | sed 's/-/_/g')" \
         "$(git rev-list --count HEAD)"
 }
 
