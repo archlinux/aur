@@ -70,7 +70,7 @@ post_install() {
 }
 
 pre_upgrade() {
-    for _active in cellframe-dashboard cellframe-node
+    for _active in cellframe-dashboard.service cellframe-node.service cellframe-node-logrotate.timer
     do
         systemctl is-active --quiet $_active.service && systemctl stop $_active.service && echo "+++ Stopped $_active service..."
     done
@@ -78,18 +78,18 @@ pre_upgrade() {
 
 post_upgrade() {
     systemctl daemon-reload
-    for _active in cellframe-dashboard cellframe-node
+    for _active in cellframe-dashboard.service cellframe-node.service cellframe-node-logrotate.timer
     do
-        systemctl is-enabled --quiet $_active.service && systemctl start $_active.service && echo "+++ Started $_active service..."
+        systemctl is-enabled --quiet $_active && systemctl start $_active && echo "+++ Started $_active..."
     done
     _showmsg
 }
 
 pre_remove() {
-    for _active in cellframe-dashboard cellframe-node
+    for _active in cellframe-dashboard.service cellframe-node.service cellframe-node-logrotate.timer
     do
-        systemctl is-active --quiet $_active.service && systemctl stop --quiet $_active.service && echo "+++ Stopped $_active service..."
-        systemctl is-enabled --quiet $_active.service && systemctl disable --quiet $_active.service && echo "+++ Disabled $_active service..."
+        systemctl is-active --quiet $_active && systemctl stop --quiet $_active && echo "+++ Stopped $_active..."
+        systemctl is-enabled --quiet $_active && systemctl disable --quiet $_active && echo "+++ Disabled $_active..."
     done
 }
 
@@ -97,11 +97,9 @@ pre_remove() {
 post_remove() {
     systemctl daemon-reload
     echo "+++ Removing symbolic links..."
-    for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
+    for _executables in cellframe-node-cli cellframe-node-tool cellframe-node Cellframe-Dashboard
 	do
 		unlink /usr/local/bin/$_executables
 	done
-
-    unlink /usr/local/bin/Cellframe-Dashboard
 }
 
