@@ -19,7 +19,7 @@ source=("${pkgname}-v${pkgver}-release.tar.xz::${url}/releases/download/v${pkgve
     "${_pkgname}.desktop"
     "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=("5e94b1e2aca476343f8e7a36d01a217128c2c60f989ba63229c2d610733df8b18bd9509d73c59645614bed705b6baa968b1873a70d640ceb58dc08c4b6da7204"
-    "01740eebfb6ccf59251d8b71e7f20fb37cf7234eb475e1c1edd623b540487e0e9927b0156d00a9530078298b30a41e281a8e77cca9a1563aa758d376c462d4df"
+    "5c023a15f0e6b6df6ca50192642c07b16697921bfe55fc657b0388123fb8cfc6dd90c6302fc417a2907d9c063084557b94df31617dc416bdc10041ad42359437"
     "50020f7d68335ab99e8721849b461a61753d948368db84baa2a44f1257c573d600dee511afa4c1ac7ee3335d7d357ba10d0a91ae119df112a3d9eccdab8fe2cf")
 
 package()
