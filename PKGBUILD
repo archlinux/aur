@@ -27,14 +27,15 @@ package()
     # Assure that the directories exist.
     mkdir -p "${pkgdir}"/opt/"${_pkgname}"/
     mkdir -p "${pkgdir}"/usr/bin/
-    mkdir -p "${pkgdir}"/usr/share/applications/"${pkgname}"/
+    mkdir -p "${pkgdir}"/usr/share/applications/
     mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
     mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    mkdir -p "${pkgdir}"/usr/share/pixmaps/
 
     # Install the software.
     cp -r "${srcdir}"/Cake_Wallet_v"${pkgver}"_Linux/* "${pkgdir}"/opt/"${_pkgname}"/
     ln -s /opt/"${_pkgname}"/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}"
-    install -Dm644 "${srcdir}"/Cake_Wallet_v"${pkgver}"_Linux/data/flutter_assets/assets/images/cakewallet_logo.png "${pkgdir}"/usr/share/pixmaps/"${pkgname}".png
+    install -Dm644 "${srcdir}"/Cake_Wallet_v"${pkgver}"_Linux/data/flutter_assets/assets/images/cakewallet_logo.png "${pkgdir}"/usr/share/pixmaps/"${_pkgname}".png
     install -Dm644 "${srcdir}"/"${_pkgname}".desktop "${pkgdir}"/usr/share/applications/"${_pkgname}".desktop
 
     # Install the documentation.
