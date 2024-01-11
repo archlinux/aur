@@ -3,7 +3,9 @@ _appname=aero
 pkgname="${_appname}-browser"
 _pkgname="AeroBrowser"
 pkgver=0.2.2_alpha
-pkgrel=1
+_electronversion=23
+_nodeversion=18
+pkgrel=2
 pkgdesc="A fast and lightweight web browser made with electron and react that allows you to navigate the Internet with ease."
 arch=(
     'aarch64'
@@ -19,58 +21,59 @@ provides=(
     "${pkgname}"
 )
 depends=(
-    'gtk3'
-    'expat'
-    'libxkbcommon'
-    'alsa-lib'
-    'libcups'
-    'at-spi2-core'
-    'nspr'
-    'libxrandr'
-    'libx11'
-    'libdrm'
-    'libxcomposite'
-    'mesa'
-    'libxext'
-    'nss'
-    'cairo'
-    'libxdamage'
-    'libxfixes'
-    'libxcb'
-    'pango'
-    'python'
     'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
     'git'
     'npm'
-    'nodejs'
+    'nvm'
 )
 source=(
-    "${pkgname}-${pkgver}"::"git+${_ghurl}.git#tag=v${pkgver//_/-}"
+    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver//_/-}"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --comment "${pkgdesc}" --categories "Network" --pkgname "${_appname}-browser" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    sed "55i\                    \"arm64\"," -i electron-builder.json
     sed "s|https://www.google.fr/|about:blank|g" -i src/App.js
-    npm install --cache "${srcdir}/npm-cache"
+    npm install
     npm run electron:package:linux
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
-    if [ "${CARCH}" == "aarch64" ];then
-        _osarch=linux-armv7l-unpacked
-    elif [ "${CARCH}" == "x86_64" ];then
-        _osarch=linux-unpacked
-    fi
-    cp -r "${srcdir}/${pkgname}-${pkgver}/dist/${_osarch}/"* "${pkgdir}/opt/${pkgname}"
+    case "${CARCH}" in
+        aarch64)
+            _osarch=linux-arm64-unpacked
+        ;;
+        armv7h)
+            _osarch=linux-armv7l-unpacked
+        ;;
+        x86_64)
+            _osarch=linux-unpacked
+        ;;
+    esac
+    cp -r "${srcdir}/${pkgname}.git/dist/${_osarch}/"* "${pkgdir}/opt/${pkgname}"
     ln -sf "/opt/${pkgname}/${_appname}" "${pkgdir}/usr/bin/${pkgname}"
-    for _icons in 32x32 64x64 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname}/public/icons/${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
-    done
+    install -Dm644 "${srcdir}/${pkgname}.git/public/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.MD" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE.MD" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
