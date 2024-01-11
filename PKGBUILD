@@ -1,20 +1,27 @@
-# system requirements: C++11
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proxyC
 _pkgver=0.3.4
 pkgname=r-${_pkgname,,}
-pkgver=0.3.4
-pkgrel=1
-pkgdesc='Computes Proximity in Large Sparse Matrices'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Computes Proximity in Large Sparse Matrices"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=(GPL3)
 depends=(
-  r
+  blas
   r-rcpp
-  r-rcpparmadillo
   r-rcppparallel
+)
+makedepends=(
+  r-rcpparmadillo
+)
+checkdepends=(
+  r-entropy
+  r-proxy
+  r-testthat
 )
 optdepends=(
   r-entropy
@@ -24,14 +31,20 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f39d1d3d34b4e26694e3916002ea370b2f4e745c0992e718bb024ed03a2b78ea')
+md5sums=('e57fe4d1fd003337b06845fe6c8cd591')
+b2sums=('c35d2ec7a6f506b0fb9f5ad3e0392289d147731a1f20d065ee9bde4cb8474e95854bc78be146cb64ba8b526eedc9cd2adbb44e6ef39b3523525736b80e95f901')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
