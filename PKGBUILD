@@ -1,59 +1,51 @@
 # Maintainer: Doclic <doclic@tutanota.com>
 
 pkgname=vtex2-git
-pkgver=0.1.r90.09d03a0
+pkgver=0.1.r96.1231f86
 pkgrel=1
-epoch=
 pkgdesc="A VTF conversion and creation tool"
 arch=(i686 x86_64 aarch64)
 url="https://github.com/StrataSource/vtex2"
 license=('MIT')
-groups=()
-depends=()
-makedepends=(cmake make git)
-checkdepends=()
-optdepends=(qt6-base)
+depends=('glibc' 'gcc-libs' 'qt6-base')
+makedepends=('cmake' 'git')
 provides=(vtex2)
 conflicts=(vtex2)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+https://github.com/StrataSource/vtex2.git")
-noextract=()
-md5sums=('SKIP')
+source=("git+https://github.com/StrataSource/vtex2.git"
+       "vtflib::git+https://github.com/StrataSource/VTFLib.git"
+       "fmtlib::git+https://github.com/fmtlib/fmt.git")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd vtex2
+	cd "$srcdir/vtex2"
 	printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd vtex2
-	git submodule update --init --recursive
+   cd "$srcdir/vtex2"
+   git submodule init
+   for submodule in {vtflib,fmtlib};
+   do
+       git config submodule.external/$submodule.url "$srcdir/$submodule"
+   done
+   git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	mkdir vtex2/build
-	cd vtex2/build
-	if ! pacman -Qs qt6-base > /dev/null; then
-        BUILD_GUI=0
-    else
-		BUILD_GUI=1
-	fi
-	cmake -DBUILD_GUI=$BUILD_GUI ..
-	make -j$(njproc)
+   cd "$srcdir"
+   cmake -B build \
+   -S vtex2 \
+   -DCMAKE_INSTALL_PREFIX=/usr \
+   -DBUILD_GUI=1
+   
+   cmake --build build
 }
 
 package() {
-	cd vtex2
-
-	install -Dm755 build/vtex2 "${pkgdir}"/usr/bin/vtex2
-	if [ -f build/vtfview ]; then
-		install -Dm755 build/vtfview "${pkgdir}"/usr/bin/vtfview
-	fi
-	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/vtex2/LICENSE
-	install -Dm644 README.md "${pkgdir}"/usr/share/vtex2/README.md
+   cd "$srcdir"
+   DESTDIR="$pkgdir" cmake --install build
+   install -Dm644 "$srcdir/vtex2/LICENSE" "$pkgdir/usr/share/licenses/vtex2-git/LICENSE"
 }
