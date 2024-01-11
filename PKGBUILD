@@ -2,25 +2,18 @@
 
 _name=yocto-cooker
 pkgname=python-yocto-cooker
-pkgver=1.3.0
-pkgrel=7
+pkgver=1.4.0
+pkgrel=1
 url="https://github.com/cpb-/yocto-cooker"
 pkgdesc="yocto-cooker is a easy yocto manager."
 arch=(any)
-depends=(python python-jsonschema python-urllib3)
+depends=(python python-jsonschema python-urllib3 python-pyjson5)
 makedepends=(python-setuptools)
 checkdepends=(cmake)
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cpb-/yocto-cooker/archive/refs/tags/${pkgver}.tar.gz"
-       "bumpjson.patch")
-md5sums=('19233c0f03a5a8cfb541ce0f5ed88d54'
-	'3f290d37e4242769cf4587979a081fbb')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cpb-/yocto-cooker/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=('079d58b9ea2b5da1e918afdbb9f40d2c')
 license=('GPL2')
-
-prepare() {
-    cd "$srcdir/$_name-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/bumpjson.patch"
-}
 
 build() {
     cd "$srcdir/$_name-$pkgver"
