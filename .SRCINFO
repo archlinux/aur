@@ -1,0 +1,24 @@
+pkgbase = r-stmomo
+	pkgdesc = Stochastic Mortality Modelling
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/amvillegas/StMoMo
+	arch = any
+	license = GPL3
+	depends = r>=3.2.0
+	depends = r-gnm>=1.0
+	depends = r-forecast>=6.1
+	depends = r-mass
+	depends = r-rootsolve>=1.6.5.1
+	depends = r-fanplot>=3.4
+	depends = r-reshape2>=1.4.1
+	depends = r-fields>=8.2
+	depends = r-rcolorbrewer
+	optdepends = r-demography
+	optdepends = r-knitr
+	optdepends = r-xtable
+	optdepends = r-mts
+	source = https://cran.r-project.org/src/contrib/StMoMo_0.4.1.tar.gz
+	sha256sums = 84f802b5734d2cdcd0634a265841a04b0056baf81b2fc332233ee01be5139bb0
+
+pkgname = r-stmomo
