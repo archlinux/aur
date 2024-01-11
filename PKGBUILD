@@ -2,7 +2,7 @@
 
 pkgname=python-outlines
 _name=${pkgname#python-}
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
@@ -42,7 +42,7 @@ source=(
   "fix-package-discovery.patch"
 )
 sha256sums=(
-  '8e8746d38f1e18863fdba147bceb04f96ea9bc2b751f6621d137b4979f70b6b3'
+  '094f63276f7920b5424d43f3b394a4692dde6c4b4ead6cd3b9cf13b0eba3cf6c'
   '9140b5e8436f3f75b02f74f6dabb3862f21e93e16c87e6d9a9e6209ec53a8756'
 )
 
