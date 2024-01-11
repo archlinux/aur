@@ -1,0 +1,16 @@
+pkgbase = r-lda
+	pkgdesc = Collapsed Gibbs Sampling Methods for Topic Models
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=lda
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	depends = r
+	optdepends = r-ggplot2
+	optdepends = r-penalized
+	optdepends = r-reshape2
+	source = https://cran.r-project.org/src/contrib/lda_1.4.2.tar.gz
+	md5sums = c48a92925fd43592efd14cac12ff1c5d
+	b2sums = e6dcad13cbfb393029ef8513e9d93564d6a64d05b5c978140c540bc556e4b2e7acc67977f3f16ebfcfa6657e1fe95b18f0c3ea638dd0841eaa9f2c2778a111f6
+
+pkgname = r-lda
