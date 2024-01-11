@@ -1,7 +1,9 @@
 # Maintainer: Claudia Pellegrino <aur@cpellegrino.de>
 
 pkgname=embrilliance
-pkgver=1.17.2
+#https://www.embrilliance.com/emb_downloads/1175/Embrilliance11754Setup.zip
+pkgver=1.17.5.4
+_pkgver_minor="$(cut -d . -f -3 <<< "${pkgver}")"
 pkgrel=1
 pkgdesc='Render, convert and digitize embroidery designs. Windows version.'
 arch=('x86_64')
@@ -13,14 +15,14 @@ options=('!strip')
 install="${pkgname}.install"
 
 source=(
-  "https://www.embrilliance.com/emb_downloads/Embrilliance${pkgver//./}Setup.zip"
+  "https://www.embrilliance.com/emb_downloads/${_pkgver_minor//./}/Embrilliance${pkgver//./}Setup.zip"
   "${pkgname}.bash"
   "${pkgname}.desktop"
   'LICENSE'
 )
 
 sha512sums=(
-  '05852dbc1e1ab1dfd16f22c29d49831497c34f20fee1675d3deb9c7f78b07381068943bf38415d861fe542f1b0ca5d66eb9dda49c4c036fd348e1b8d496ff8f7'
+  '3bad18c0b809b5c360c3b72d4e266964425c1df35d2257700bceaa914149fb1a1dd19908055c75cc2ef326bf3dc927c192af03514aca4b86305b2ecedf4413a1'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -51,14 +53,14 @@ package() {
       -o "${pkgdir}/usr/share/pixmaps/${pkgname}.ico" \
       "${srcdir}/${pkgname}-setup/app/Embroidery.exe"
 
+    echo >&2 'Packaging user documents'
+    mkdir -p "${pkgdir}/usr/share"
+    mv "${pkgname}-setup/app/Motifs/Embrilliance" \
+      "${pkgdir}/usr/share/${pkgname}"
+
     echo >&2 'Packaging app resources'
     mkdir -p "${pkgdir}/opt/"
     mv "${pkgname}-setup/app" "${pkgdir}/opt/${pkgname}"
-
-    echo >&2 'Packaging user documents'
-    mkdir -p "${pkgdir}/usr/share"
-    mv "${pkgname}-setup/userdocs/Embrilliance" \
-      "${pkgdir}/usr/share/${pkgname}"
 
     echo >&2 'Packaging app launcher'
     install -D -m 755 -T \
