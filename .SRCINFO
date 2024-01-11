@@ -9,7 +9,7 @@ pkgbase = marten
 	depends = crystal
 	depends = shards
 	provides = marten
-	source = https://github.com/martenframework/marten/archive/v0.3.3.tar.gz
+	source = https://github.com/martenframework/marten/archive/v0.3.4.tar.gz
 	sha256sums = 050ffa9722a4cfce0c8fc032e6754a1a7aa318f1746565eafa1974e0e9774789
 
 pkgname = marten
