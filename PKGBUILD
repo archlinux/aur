@@ -3,7 +3,7 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.63.110
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=(x86_64 aarch64)
 url='https://brave.com/download-nightly'
