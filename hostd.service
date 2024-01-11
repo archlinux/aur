@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/hostd -env
+ExecStart=/usr/bin/hostd -env -openui=false
 Restart=always
 RestartSec=15
 
