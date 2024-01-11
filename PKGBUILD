@@ -2,7 +2,8 @@
 pkgname=altus-bin
 _pkgname=Altus
 pkgver=4.8.6
-pkgrel=2
+_electronversion=22
+pkgrel=3
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support"
 arch=('x86_64')
 url="https://github.com/amanharwara/altus"
@@ -10,13 +11,10 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron22'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    "electron${_electronversion}"
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -26,11 +24,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('936984e708665eac38852c51c838b984e5df715bad0acc435c7cdba22f1d6914'
-            '9fdd14fe0607f61c0190ac113413613872b535240123cf1f1c0d16532ac4e0c1')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" \
+    sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" \
         -e "s|Categories=Chat;|Categories=Network;|g" \
         -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
