@@ -1,0 +1,66 @@
+From 8bddcc27052017b5b9cb89c24dbfdf06737b0dd3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B8rn=20Forsman?= <bjorn.forsman@gmail.com>
+Date: Mon, 4 Jul 2022 09:22:32 +0200
+Subject: [PATCH 1/2] core: fix building against python-3.10
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Specifically this build error:
+
+  In file included from src/pyuv.c:8:
+  src/handle.c: In function ‘resurrect_object’:
+  src/handle.c:17:21: error: lvalue required as left operand of assignment
+     17 |     Py_REFCNT(self) = refcnt;
+        |                     ^
+
+Fixes https://github.com/saghul/pyuv/issues/271.
+
+Co-authored-by: @polkovnikov
+---
+ src/handle.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/handle.c b/src/handle.c
+index fa308e26..c43b602e 100644
+--- a/src/handle.c
++++ b/src/handle.c
+@@ -14,7 +14,11 @@ resurrect_object(PyObject *self)
+     Py_ssize_t refcnt = Py_REFCNT(self);
+     ASSERT(Py_REFCNT(self) != 0);
+     _Py_NewReference(self);
++#if PY_MAJOR_VERSION >= 3 && PY_MINOR_VERSION >= 10
++    Py_SET_REFCNT(self, refcnt);
++#else
+     Py_REFCNT(self) = refcnt;
++#endif
+     /* If Py_REF_DEBUG, _Py_NewReference bumped _Py_RefTotal, so
+      * we need to undo that. */
+ #ifdef _Py_DEC_REFTOTAL
+
+From 2a3d42d44c6315ebd73899a35118380d2d5979b5 Mon Sep 17 00:00:00 2001
+From: Tommaso Caiazzi <tommasocaiazzi@gmail.com>
+Date: Mon, 15 May 2023 18:48:01 +0200
+Subject: [PATCH 2/2] build: fix building for Python3.11
+
+Co-authored-by: Mariano Scazzariello <marianoscazzariello@gmail.com>
+---
+ src/common.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/common.c b/src/common.c
+index ecac76ea..e6bf2935 100644
+--- a/src/common.c
++++ b/src/common.c
+@@ -39,7 +39,11 @@ pyuv_PyUnicode_EncodeFSDefault(PyObject *unicode)
+         return PyUnicode_AsEncodedString(unicode, Py_FileSystemDefaultEncoding, "surrogateescape");
+     else
+ #endif
++    #if PY_MAJOR_VERSION >= 3 && PY_MINOR_VERSION >= 11
++        return PyUnicode_AsUTF8String(unicode);
++    #else
+         return PyUnicode_EncodeUTF8(PyUnicode_AS_UNICODE(unicode), PyUnicode_GET_SIZE(unicode), "surrogateescape");
++    #endif
+ }
+ 
+ 
