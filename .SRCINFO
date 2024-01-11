@@ -1,7 +1,7 @@
 pkgbase = weimail-bin
 	pkgdesc = Native Xinchuang email client, free email client software that supports multiple Xinchuang platforms.Just used in China.
 	pkgver = 2.3.5.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ankexinchaung.cn
 	arch = x86_64
 	license = custom
@@ -26,6 +26,8 @@ pkgbase = weimail-bin
 	provides = weimail=2.3.5.9
 	conflicts = weimail
 	source = weimail-2.3.5.9.deb::https://com-store-packages.uniontech.com/pool/appstore/c/cn.ankexinchuang.weimail/cn.ankexinchuang.weimail_2.3.5.9_amd64.deb
+	source = weimail.sh
 	sha256sums = 6607e19422fb0180fd4bf925b4632ba92773470ed1969a5f6cf0687b2cbdd31d
+	sha256sums = 78e216f137a59efff84da4232b4a454a31364a381e38413f9a2ad88588723e97
 
 pkgname = weimail-bin
