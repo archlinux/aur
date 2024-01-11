@@ -1,6 +1,6 @@
 pkgbase = arsse
 	pkgdesc = Multi-protocol RSS/Atom newsfeed synchronization server
-	pkgver = 0.10.4
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://thearsse.com/
 	arch = any
@@ -9,21 +9,24 @@ pkgbase = arsse
 	optdepends = apache>=2.4: HTTP server
 	optdepends = percona-server: Alternate database
 	optdepends = postgresql>=10: Alternate database
-	optdepends = php-pgsql>=7.1: PostgreSQL database support
+	optdepends = php-pgsql-interpreter>=7.3: PostgreSQL database support
+	conflicts = arsse-git
 	backup = etc/webapps/arsse/config.php
+	backup = etc/webapps/arsse/systemd-environment
 	backup = etc/php/php-fpm.d/arsse.conf
+	backup = etc/php-legacy/php-fpm.d/arsse.conf
 	backup = etc/webapps/arsse/nginx/example.conf
 	backup = etc/webapps/arsse/nginx/arsse.conf
 	backup = etc/webapps/arsse/nginx/arsse-loc.conf
 	backup = etc/webapps/arsse/nginx/arsse-fcgi.conf
 	backup = etc/webapps/arsse/apache/example.conf
 	backup = etc/webapps/arsse/apache/arsse.conf
+	backup = etc/webapps/arsse/apache/arsse-fcgi.conf
 	backup = etc/webapps/arsse/apache/arsse-loc.conf
-	source = arsse-0.10.4.tar.gz::https://thearsse.com/releases/0.10.4.tar.gz
-	md5sums = b73c217e611e7ea6769389d14036233b
+	source = arsse-0.10.5.tar.gz::https://thearsse.com/releases/0.10.5.tar.gz
+	md5sums = ee429d39810d74b4ce07092fd4d8495f
 
 pkgname = arsse
-	depends = php>=7.1
-	depends = php-intl>=7.1
-	depends = php-sqlite>=7.1
-	depends = php-fpm>=7.1
+	depends = php-interpreter>=7.3
+	depends = php-sqlite-interpreter>=7.3
+	depends = php-fpm-interpreter>=7.3
