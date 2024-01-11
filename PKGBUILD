@@ -2,7 +2,7 @@
 
 pkgname=crocotile3d
 pkgver=2.2.7
-pkgrel=1
+pkgrel=2
 
 _install_location='/usr/share'
 
@@ -16,6 +16,7 @@ sha256sums=('bc34318e4398b72b729ecf0b894a5edee8bf7a8c6f2b79d3b62a484aa93a2cac'
 
 pkgdesc='Tile-based 3D modeling application'
 arch=('x86_64')
+url="https://www.crocotile3d.com/"
 license=('Unknown')
 options=(!strip)
 
