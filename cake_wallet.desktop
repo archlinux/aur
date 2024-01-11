@@ -5,7 +5,7 @@ Name=Cake Wallet
 GenericName=Crypto currency wallet
 NoDisplay=false
 Comment=A noncustodial multi-currency wallet.
-Icon=cake_wallet
+Icon=cakewallet_logo
 Hidden=false
 #OnlyShowIn
 #NotShowIn

@@ -27,6 +27,7 @@ package()
     # Assure that the directories exist.
     mkdir -p "${pkgdir}"/opt/"${_pkgname}"/
     mkdir -p "${pkgdir}"/usr/bin/
+    mkdir -p "${pkgdir}"/usr/share/applications/"${pkgname}"/
     mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
     mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
