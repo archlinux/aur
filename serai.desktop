@@ -1,0 +1,26 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Serai
+GenericName=Decentralised exchange
+NoDisplay=false
+Comment=A decentralised exchange.
+Icon=serai
+Hidden=false
+#OnlyShowIn
+#NotShowIn
+DBusActivatable=false
+TryExec=serai
+Exec=serai
+#Path
+Actions=
+MimeType=
+Terminal=false
+Categories=Office;Finance
+Implements=
+Keywords=
+#StartupNotify
+#StartupWMClass
+#URL
+PrefersNonDefaultGPU=false
+SingleMainWindow=true
