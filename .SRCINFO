@@ -1,7 +1,7 @@
 pkgbase = nagircbot
 	pkgdesc = IRC bot announcing Nagios status
 	pkgver = 0.0.33
-	pkgrel = 26
+	pkgrel = 27
 	url = /dev/null
 	arch = i686
 	arch = pentium4
@@ -9,7 +9,7 @@ pkgbase = nagircbot
 	license = GPL
 	depends = gcc-libs
 	depends = openssl
-	source = https://software.is.never.null/nagircbot/nagircbot-0.0.33.tgz
+	source = https://archive.debian.org/debian/pool/main/n/nagircbot/nagircbot_0.0.33.orig.tar.gz
 	sha512sums = 1e4d69cef4a425e8540ff408688cf7899c04098ec47acbd6da601f48e01f808958982e7d8a1519934bd5aa895fe0f8dedc51d80460f85097355d5bdea79fd708
 
 pkgname = nagircbot
