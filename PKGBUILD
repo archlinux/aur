@@ -25,7 +25,7 @@ prepare() {
 	cd $srcdir/mkspiffs
 	git submodule init
 	git config submodule.spiffs.url $srcdir/spiffs
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
