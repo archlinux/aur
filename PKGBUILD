@@ -19,11 +19,11 @@ BUILD_FLAGS=(CC=clang CXX=clang++ HOSTCC=clang HOSTCXX=clang++ LD=ld.lld LLVM=1 
 ###################################################################################
 
 pkgbase=linux-llvm
-pkgver=6.6.0
-_pkgver=6.6
+pkgver=6.7.0
+_pkgver=6.7
 pkgrel=1
-major=6.6
-commit=3175f498d244950892b9c8ef2c3093d01a491047
+major=6.7
+commit=79425d7496066714f38535eb4f37df529668e83a
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL2)
@@ -288,10 +288,10 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
-            'd2060f5045a30832d70a7747c780f1358a9f4cfc1811c8ccaeaab9c027b59ee4'
-            '5d5a766ea646d6b6e64f56867cbd10c64704107ac6f15123387c4b65e49d71c3'
-            'cf80842fc0b2df079905c3212faeecddde7a4c4fd0742364564f10df4f7f6aa3')
+sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
+            '45a44ff0e957cd562d2ceb60c1c90fc19c19e808209cebb46bfacfccfb56ad96'
+            'f936aae4d832ac87db8fbb9effb066dd368d092f71dd7135d1548babdb7d10c8'
+            '758690814fbe8bba6e6ab91c80352bf328d49b686c74213f85039180aecb67df')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do

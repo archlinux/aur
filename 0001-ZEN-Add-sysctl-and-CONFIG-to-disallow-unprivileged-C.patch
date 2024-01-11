@@ -1,4 +1,4 @@
-From 0f5f96ad4cb82b68c1f6669227b21ad887e8a469 Mon Sep 17 00:00:00 2001
+From 35d79b574508f84805b19ef3e1c4b21b9605e946 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
 Subject: [PATCH 1/2] ZEN: Add sysctl and CONFIG to disallow unprivileged
@@ -14,10 +14,10 @@ Our default behavior continues to match the vanilla kernel.
  5 files changed, 53 insertions(+)
 
 diff --git a/include/linux/user_namespace.h b/include/linux/user_namespace.h
-index 45f09bec0..87b20e2ee 100644
+index 6030a8235..60b7fe5fa 100644
 --- a/include/linux/user_namespace.h
 +++ b/include/linux/user_namespace.h
-@@ -148,6 +148,8 @@ static inline void set_userns_rlimit_max(struct user_namespace *ns,
+@@ -156,6 +156,8 @@ static inline void set_userns_rlimit_max(struct user_namespace *ns,
  
  #ifdef CONFIG_USER_NS
  
@@ -26,7 +26,7 @@ index 45f09bec0..87b20e2ee 100644
  static inline struct user_namespace *get_user_ns(struct user_namespace *ns)
  {
  	if (ns)
-@@ -181,6 +183,8 @@ extern bool current_in_userns(const struct user_namespace *target_ns);
+@@ -189,6 +191,8 @@ extern bool current_in_userns(const struct user_namespace *target_ns);
  struct ns_common *ns_get_owner(struct ns_common *ns);
  #else
  
@@ -36,7 +36,7 @@ index 45f09bec0..87b20e2ee 100644
  {
  	return &init_user_ns;
 diff --git a/init/Kconfig b/init/Kconfig
-index 6d35728b9..0562c8ca7 100644
+index 9ffb103fc..f91ccd3c1 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
 @@ -1226,6 +1226,22 @@ config USER_NS
@@ -63,7 +63,7 @@ index 6d35728b9..0562c8ca7 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 3b6d20dfb..200a77738 100644
+index 10917c3e1..458360cf9 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -100,6 +100,10 @@
@@ -77,7 +77,7 @@ index 3b6d20dfb..200a77738 100644
  #include <asm/pgalloc.h>
  #include <linux/uaccess.h>
  #include <asm/mmu_context.h>
-@@ -2260,6 +2264,10 @@ __latent_entropy struct task_struct *copy_process(
+@@ -2265,6 +2269,10 @@ __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -88,7 +88,7 @@ index 3b6d20dfb..200a77738 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -3413,6 +3421,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -3411,6 +3419,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -102,7 +102,7 @@ index 3b6d20dfb..200a77738 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index 354a2d294..5bc5605e7 100644
+index 157f7ce29..881fc4f5d 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -80,6 +80,9 @@
@@ -132,7 +132,7 @@ index 354a2d294..5bc5605e7 100644
  	{
  		.procname	= "tainted",
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index 1d8e47bed..fec01d016 100644
+index eabe8bcc7..ac9d1f702 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
 @@ -22,6 +22,13 @@
@@ -146,9 +146,9 @@ index 1d8e47bed..fec01d016 100644
 +int unprivileged_userns_clone;
 +#endif
 +
- static struct kmem_cache *user_ns_cachep __read_mostly;
+ static struct kmem_cache *user_ns_cachep __ro_after_init;
  static DEFINE_MUTEX(userns_state_mutex);
  
 -- 
-2.42.1
+2.43.0
 
