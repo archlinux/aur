@@ -2,7 +2,9 @@
 pkgname=wubi-dict-editor
 _zhname="五笔码表助手"
 pkgver=1.22
-pkgrel=1
+_electronversion=24
+_nodeversion=18
+pkgrel=2
 pkgdesc="五笔码表助手 for Rime ( Windows、macOS、Ubuntu ) 基于 electron 开发."
 arch=("x86_64")
 url="https://github.com/KyleBing/wubi-dict-editor"
@@ -10,33 +12,49 @@ license=('GPL3')
 conflicts=("${pkgname}")
 depends=(
     'ibus-rime'
-    'electron24'
+    "electron${_electronversion}"
+    'nodejs'
 )
 makedepends=(
-    'npm>=9'
+    'npm'
     'yarn'
-    'nodejs>=18'
+    'nvm'
     'gendesk'
     'imagemagick'
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
+    "${pkgname}.git::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'dc3a133add1ec4b5e06160b475480614b39490f0e95655c6ae027d169ea6802b')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --genericname="${_zhname} for Rime" --exec "${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    yarn install 
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
+    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --genericname="${_zhname} for Rime" --exec "${pkgname} %U"
+    cd "${srcdir}/${pkgname}.git"
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    yarn install
     yarn package
-    convert "${srcdir}/${pkgname}-${pkgver}/assets/img/appIcon/appIcon.ico" "${srcdir}/${pkgname}.png"
+    convert "${srcdir}/${pkgname}.git/assets/img/appIcon/appIcon.ico" "${srcdir}/${pkgname}.png"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/out/${_zhname}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/out/${_zhname}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-3.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }

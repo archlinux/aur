@@ -1,11 +1,15 @@
 #!/bin/sh
-_ELECTRON=/usr/bin/electron24
-APPDIR="/usr/lib/wubi-dict-editor"
-export PATH="${APPDIR}:${PATH}"
-#export LD_LIBRARY_PATH="${APPDIR}/lib:${LD_LIBRARY_PATH}"
-_ASAR="${APPDIR}/app"
+set -e
+_APPDIR="/usr/lib/@appname@"
+_ASAR="${_APPDIR}/@appasar@"
+export PATH="${_APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}/swiftshader:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
+export ELECTRON_IS_DEV=0
+export NODE_ENV=production
+cd "${_APPDIR}"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec ${_ELECTRON} ${_ASAR} "$@"
+    exec electron@electronversion@ "${_ASAR}" "$@"
 else
-    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
+    exec electron@electronversion@ "${_ASAR}" --no-sandbox "$@"
 fi
+exit
