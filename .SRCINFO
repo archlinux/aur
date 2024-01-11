@@ -1,0 +1,13 @@
+pkgbase = r-fanplot
+	pkgdesc = Visualisation of Sequential Probability Distributions Using Fan Charts
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://guyabel.github.io/fanplot/
+	arch = any
+	license = GPL3
+	depends = r>=2.10
+	depends = r-shiny
+	source = https://cran.r-project.org/src/contrib/fanplot_4.0.0.tar.gz
+	sha256sums = 6cce0c5295629e627c1f188d6a5abfd2004a18d93ac4fe67cb012a239c12ed23
+
+pkgname = r-fanplot
