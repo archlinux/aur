@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=terminal-to-html
-pkgver=3.10.0
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="Converts arbitrary shell output (with ANSI) into beautifully rendered HTML"
 arch=("x86_64" "i686")
@@ -12,7 +12,7 @@ conflicts=('terminal-to-html')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('b3b660fea60593c8a6e9f649368b043657bb5c8d737d70d2d3c832de1c26d452bfd2881afeeaeb6605d29a6b7982b3d37d0df6d15723c688571011dbb9dc0f9e')
+b2sums=('67365c35b15679e0170e137abbcd2a493bcd1fcd27f2dbcd3a5624f4080ef91492b3a5f2810d92cb06ab3434f257898e79c27c76859259927f8c257c965f2e7c')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -29,4 +29,3 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
-
