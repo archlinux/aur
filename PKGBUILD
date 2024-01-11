@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=mastR
-_pkgver=1.2.2
+_pkgver=1.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -58,8 +58,8 @@ optdepends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5bb69f6e700b3f8438f9ec52ee693fff')
-b2sums=('ff4503acac565625cba8cdd7eb5abef9afd365f8636190d95f503098f2c285dfa2d905760e007d599152e9ccab4b6db99910f490345c5711a1f973d5d19474ab')
+md5sums=('e3c3d512fc0082d6c51dab26088b79f7')
+b2sums=('0fa3f41060978d76e5447740f702e5a4d0026c032f12573c261d8d3409b4ef712addaa87987e7185d04b44682d6f7dd3ed44dc7736e808797a79985b3801d22c')
 
 build() {
   mkdir build
