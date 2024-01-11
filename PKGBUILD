@@ -4,7 +4,7 @@
 
 pkgbase=linux-kelvie-fw-git
 _tag=v6.7
-pkgver=6.7.r11.1a55aeb58aed
+pkgver=6.7.r11.19030ea736b5
 pkgrel=1
 pkgdesc="Linux kernel for Kelvie's AMD Framework 13 laptop"
 url="https://www.kernel.org"
@@ -28,9 +28,9 @@ source=(
   "$_srcname::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux#tag=$_tag"
   config         # the main kernel config file
   modprobed.db   # modprobed.db file from modprobed-db on my laptop
-  ./v12_20231205_li_meng_amd_pstate_preferred_core.mbx # in theory, a more efficient scheduler that prefers more efficient AMD cores
-  ./v2_20231126_dustin_platform_chrome_cros_ec_lpc_add_support_for_amd_framework_laptops.mbx # for ectool to work on AMD
-  ./0001-Add-a-lockdown_hibernate-parameter.patch # allow lockdown_hibernate kernel parameter
+  v12_20231205_li_meng_amd_pstate_preferred_core.mbx # in theory, a more efficient scheduler that prefers more efficient AMD cores
+  v2_20231126_dustin_platform_chrome_cros_ec_lpc_add_support_for_amd_framework_laptops.mbx # for ectool to work on AMD
+  0001-Add-a-lockdown_hibernate-parameter.patch # allow lockdown_hibernate kernel parameter
 )
 sha256sums=('SKIP'
             '46451dbc3305d4c2e726a2f1943bddf697c5bb6815d93e5baed80bca82e53fdc'
