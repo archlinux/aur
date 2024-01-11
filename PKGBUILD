@@ -21,7 +21,7 @@ else
   pkgname="$_pkgname-git"
   pkgdesc="$_pkgdesc"
 fi
-pkgver=4.0.0.r27115.g51ebebd2c4
+pkgver=4.0.0.r27298.g058ded5ac0
 pkgrel=1
 url='https://code.videolan.org/videolan/vlc'
 arch=('i686' 'x86_64')
@@ -112,9 +112,11 @@ provides=("${_name}=${pkgver}")
 options=(!emptydirs)
 source=('git+https://code.videolan.org/videolan/vlc.git'
         'vlc-live-media-2021.patch'
+        'libplacebo.patch'
         'update-vlc-plugin-cache.hook')
 b2sums=('SKIP'
         '76103422a1eaad40d33bfb7897bf25c1b5748729270974bec13f642f2861c4458f0dc07b5fb68d9ba4fae6e44d4a6c8e4d67af7ec10e0c117f1b804dd06868e3'
+        '1947cc7720915e2312bbd6202b517f0b1fd0628530462e8ff13f4b8fad2e1f6dfb73de855644a3ee6a64f378cfd88256ffd342e2af00345519ef06b74ef0b1b2'
         'fe3849f45fb91d3697573a9c23b90b78ff0bef5f94c42bc6e7c14427637f45f2fc86786803fb9b36c657ac2c50f6bf3c860cd763248711308ceab2bfcf7be49a')
 if [[ x"${_wayland::1}" == "xt" ]] ; then
   source+=(
@@ -150,6 +152,7 @@ prepare() {
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
   patch -Np1 < "${srcdir}"/vlc-live-media-2021.patch
+  patch -Np1 < "${srcdir}"/libplacebo.patch
   _prepare_wayland
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
