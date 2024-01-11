@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd src
-  [[ (-z "$CC" || "$CC" == "gcc") && (-z "$CXX" || "$CXX" == "g++") ]] \
+  [[ (-z "$CC" || "$CC" = "gcc") && (-z "$CXX" || "$CXX" = "g++") ]] \
     || echo "${YELLOW}==> WARNING:${ALL_OFF}${BOLD} Only gcc is supported. Forcing gcc.${ALL_OFF}" >&2
   CC=gcc CXX=g++ make
 }
