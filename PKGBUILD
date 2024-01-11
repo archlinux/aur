@@ -3,7 +3,7 @@
 
 pkgname=quickbms
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Files extractor and reimporter, archives and file formats parser, advanced tool for reversers and power users and much more."
 url="http://aluigi.altervista.org/quickbms.htm"
 arch=('x86_64' 'i686')
@@ -26,7 +26,9 @@ prepare() {
 
 build() {
   cd src
-  make
+  [[ (-z "$CC" || "$CC" == "gcc") && (-z "$CXX" || "$CXX" == "g++") ]] \
+    || echo "${YELLOW}==> WARNING:${ALL_OFF}${BOLD} Only gcc is supported. Forcing gcc.${ALL_OFF}" >&2
+  CC=gcc CXX=g++ make
 }
 
 package() {
