@@ -9,9 +9,9 @@ pkgbase = python-eth-keys
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-coincurve
 	depends = python-eth-utils
 	depends = python-eth-typing
+	optdepends = python-coincurve: for CoinCurveECCBackend support
 	source = https://pypi.org/packages/source/e/eth-keys/eth-keys-0.5.0.tar.gz
 	sha512sums = bd173cb95fc21926496c37b5d9b826a10a22222be3634465a177bf5e691028daaff9b01b26dd60e10601d0027421b8b8034dcba8a7fa238ccc77a38016dad989
 
