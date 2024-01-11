@@ -29,6 +29,7 @@ build() {
 	[[ -f db/state.db ]] && rm db/state.db
 	scripts/init_db_if_missing.sh
 	cargo build --release
+	cargo build --release --package ayllu-mail
 
 	npm install
 	scripts/compile_stylesheets.sh
@@ -37,10 +38,12 @@ build() {
 package() {
 	cd $_pkgname
 	install -Dm755 "target/release/ayllu" $pkgdir/usr/bin/ayllu
+	install -Dm755 "target/release/ayllu-mail" $pkgdir/usr/bin/ayllu-mail
 	install -Dm644 "LICENSE" $pkgdir/usr/share/licenses/ayllu
 	install -Dm644 "config.example.toml" $pkgdir/etc/ayllu/config.example.toml
 	install -Dm644 "contrib/systemd/system/ayllu.service" $pkgdir/usr/lib/systemd/system/ayllu.service
 	install -Dm644 "contrib/systemd/user/ayllu.service" $pkgdir/usr/lib/systemd/user/ayllu.service
+	install -Dm644 "contrib/systemd/ayllu-sysusers.conf" $pkgdir/usr/lib/sysusers.d/ayllu-sysusers.conf
 	install -Dm755 "contrib/hooks/post-commit" $pkgdir/usr/share/ayllu/hooks/post-commit
 	install -Dm755 "contrib/hooks/post-receive" $pkgdir/usr/share/ayllu/hooks/post-receive
 
