@@ -1,0 +1,11 @@
+#!/bin/bash
+
+build () {
+  add_module mlx5_core
+}
+
+help () {
+  cat << EOF
+This hook will just add mlx5_core module to initrd. Useful to use Mellanox NICs with mkinitcpio-netconf.
+EOF
+}

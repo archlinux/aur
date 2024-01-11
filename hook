@@ -1,0 +1,7 @@
+#!/usr/bin/ash
+
+run_hook () {
+}
+
+run_cleanuphook () {
+}
