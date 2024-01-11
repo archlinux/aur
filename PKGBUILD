@@ -43,15 +43,12 @@ _use_current=
 ### Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
 
-# Disable debug to lower the size of the kernel
-_disable_debug=
-
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-sched-ext-git
 pkgver=6.7.0.r1236012.g6eb6c92567b1
 _srcname=sched_ext
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Kernel based on the sched_ext branch'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -146,25 +143,6 @@ prepare() {
                            -d NEED_MULTIPLE_NODES \
                            -d NUMA_BALANCING \
                            -d NUMA_BALANCING_DEFAULT_ENABLED
-        fi
-
-    ### Disable DEBUG
-        if [ -n "$_disable_debug" ]; then
-            echo "Disabling DEBUG kernel config..."
-            scripts/config -d DEBUG_INFO \
-                           -d DEBUG_INFO_BTF \
-                           -d DEBUG_INFO_DWARF4 \
-                           -d DEBUG_INFO_DWARF5 \
-                           -d PAHOLE_HAS_SPLIT_BTF \
-                           -d DEBUG_INFO_BTF_MODULES \
-                           -d SLUB_DEBUG \
-                           -d PM_DEBUG \
-                           -d PM_ADVANCED_DEBUG \
-                           -d PM_SLEEP_DEBUG \
-                           -d ACPI_DEBUG \
-                           -d SCHED_DEBUG \
-                           -d LATENCYTOP \
-                           -d DEBUG_PREEMP
         fi
 
     ### Enable SCHED_EXT
