@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ldtk-appimage
 _pkgname=LDtk
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness"
 arch=('x86_64')
 url="https://ldtk.io/"
@@ -12,6 +12,7 @@ provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=(
   'hicolor-icon-theme'
+  'glibc'
 )
 makedepends=(
   'squashfuse'
@@ -22,7 +23,7 @@ source=(
   "${pkgname%-appimage}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/ubuntu-distribution.zip"
   "LICENSE::https://raw.githubusercontent.com/deepnight/ldtk/v${pkgver}/LICENSE"
 )
-sha256sums=('42de800f221b86ec451a1ec83f55b072cbccb633946684ddf7d19e5ade6ce143'
+sha256sums=('9cf2b1d1498684c894500ff9389a9941edddd5f3f28665a26fb0160338e9ce58'
             'f409a37a40e823efefddac3140d991141633d4db3cec4f8667bc23b846dcc335')
 build() {
   mv "${srcdir}/${_pkgname} ${pkgver} installer.AppImage" "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
