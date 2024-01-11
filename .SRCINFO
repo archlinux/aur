@@ -1,6 +1,6 @@
 pkgbase = eww-tray-wayland-git
 	pkgdesc = ElKowar's wacky widgets (ralismark's fork) (Wayland build with systray support)
-	pkgver = r37.a82ed62
+	pkgver = r46.5b507c8
 	pkgrel = 1
 	url = https://github.com/ralismark/eww
 	install = eww-tray-wayland-git.install
@@ -11,7 +11,7 @@ pkgbase = eww-tray-wayland-git
 	depends = gtk3
 	depends = gtk-layer-shell
 	depends = libdbusmenu-gtk3
-	provides = eww=r37.a82ed62
+	provides = eww=r46.5b507c8
 	conflicts = eww
 	source = git+https://github.com/ralismark/eww.git#branch=tray-3
 	b2sums = SKIP
