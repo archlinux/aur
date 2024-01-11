@@ -1,0 +1,26 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Cake Wallet
+GenericName=Crypto currency wallet
+NoDisplay=false
+Comment=A noncustodial multi-currency wallet.
+Icon=cake_wallet
+Hidden=false
+#OnlyShowIn
+#NotShowIn
+DBusActivatable=false
+TryExec=cake_wallet
+Exec=cake_wallet
+#Path
+Actions=
+MimeType=
+Terminal=false
+Categories=Office;Finance
+Implements=
+Keywords=
+#StartupNotify
+#StartupWMClass
+#URL
+PrefersNonDefaultGPU=false
+SingleMainWindow=true

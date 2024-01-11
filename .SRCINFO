@@ -1,0 +1,11 @@
+pkgbase = cake-wallet-bin
+	pkgdesc = A noncustodial multi-currency wallet.
+	pkgver = 4.12.1
+	pkgrel = 1
+	url = https://github.com/cake-tech/cake_wallet
+	arch = x86_64
+	license = MIT
+	source = cake-wallet-bin-v4.12.1.tar.gz::https://github.com/cake-tech/cake_wallet/releases/download/v4.12.1/Cake_Wallet_v4.12.1_Linux.tar.xz
+	sha512sums = 83c817f9e585814bf0949eb1d4235b234708faaf1048a72d814d7b3b645fd721f55053923a8ab3b2bdf4c32e987fae960f646459f74539ce6f6c722408362d9d
+
+pkgname = cake-wallet-bin
