@@ -1,0 +1,21 @@
+pkgbase = xournalpp-libadwaita-mockup-git
+	pkgdesc = Mockups for redesiging Xournal++ with Gtk4/Libadwaita
+	pkgver = r95.7ad03bd
+	pkgrel = 1
+	url = https://github.com/rolandlo/xournalpp-libadwaita-mockup
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = blueprint-compiler
+	depends = gtk4
+	depends = gtksourceview5
+	depends = libadwaita
+	depends = python-gobject
+	depends = poppler-glib
+	depends = python
+	source = git+https://github.com/rolandlo/xournalpp-libadwaita-mockup
+	sha256sums = SKIP
+
+pkgname = xournalpp-libadwaita-mockup-git
