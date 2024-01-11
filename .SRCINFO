@@ -1,6 +1,6 @@
 pkgbase = r-crunch
 	pkgdesc = Crunch.io Data Tools
-	pkgver = 1.30.2
+	pkgver = 1.30.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=crunch
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-crunch
 	optdepends = r-styler
 	optdepends = r-testthat>=2.0.0
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/crunch_1.30.2.tar.gz
-	sha256sums = e004a76dc78147b77d980e48b0f5e45c24d77fe2e23d3808151b3fcaf75bef9c
+	source = https://cran.r-project.org/src/contrib/crunch_1.30.3.tar.gz
+	sha256sums = 4b46864fa3b96c9a79ed05f40b4ca2383e7078020615501d7256817715d3a90f
 
 pkgname = r-crunch
