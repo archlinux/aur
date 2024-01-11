@@ -1,5 +1,12 @@
---- pachi-pachi-12.82/Makefile	2023-07-05 04:25:05.000000000 +0200
-+++ pachi-pachi-12.82.new/Makefile	2023-08-18 23:50:06.538581419 +0200
+diff -urN pachi-pachi-12.84/build.init pachi-pachi-12.84.new/build.init
+--- pachi-pachi-12.84/build.init	1970-01-01 01:00:00.000000000 +0100
++++ pachi-pachi-12.84.new/build.init	2024-01-11 19:22:56.505188320 +0100
+@@ -0,0 +1,2 @@
++#define PACHI_GIT_BRANCH   ""
++#define PACHI_GIT_HASH     ""
+diff -urN pachi-pachi-12.84/Makefile pachi-pachi-12.84.new/Makefile
+--- pachi-pachi-12.84/Makefile	2023-09-10 17:28:22.000000000 +0200
++++ pachi-pachi-12.84.new/Makefile	2024-01-11 19:23:53.467794008 +0100
 @@ -207,6 +207,7 @@
  
  ifeq ($(DCNN_DETLEF), 1)
@@ -13,16 +20,25 @@
  # Low-level dependencies last
  SUBDIRS   = $(EXTRA_SUBDIRS) pattern joseki uct uct/policy t-unit t-predict engines playout tactics
 -DATAFILES = $(EXTRA_DATAFILES) detlef54.prototxt detlef54.trained joseki19.gtp opening.dat patterns_mm.gamma patterns_mm.spat 
-+DATAFILES = $(EXTRA_DATAFILES) joseki19.gtp patterns_mm.gamma patterns_mm.spat 
++DATAFILES = $(EXTRA_DATAFILES) joseki19.gtp patterns_mm.gamma patterns_mm.spat
  
  
  ############################################################################################################
-@@ -310,7 +311,7 @@
+@@ -310,15 +311,12 @@
  	@CC="$(CC)" CFLAGS="$(CFLAGS)" ./spudfrog
  
  # Build info
--build.h: .git/HEAD .git/index Makefile
-+build.h: Makefile
+-build.h: build.h.git Makefile
++build.h: build.init Makefile
  	+@make spudfrog
  	@echo "[make] build.h"
- 	@CC="$(CC)" CFLAGS="$(CFLAGS)" ./genbuild > $@
+-	@cp build.h.git $@
++	@cp build.init $@
+ 	@CC="$(CC)" CFLAGS="$(CFLAGS)" ./genbuild >> $@
+ 
+-build.h.git: .git/HEAD .git/index
+-	@./genbuild --git > $@
+-
+ # Unit tests
+ test: FORCE
+ 	+@make -C t-unit test
