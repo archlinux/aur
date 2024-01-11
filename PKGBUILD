@@ -3,7 +3,8 @@ _appname=aero
 pkgname="${_appname}-browser-bin"
 _pkgname="Aero"
 pkgver=0.2.2_alpha
-pkgrel=1
+_electronversion=23
+pkgrel=2
 pkgdesc="A fast and lightweight web browser made with electron and react that allows you to navigate the Internet with ease."
 arch=(
     'aarch64'
@@ -19,38 +20,20 @@ provides=(
     "${pkgname%-bin}=${pkgver}"
 )
 depends=(
-    'gtk3'
-    'expat'
-    'libxkbcommon'
-    'alsa-lib'
-    'libcups'
-    'at-spi2-core'
-    'nspr'
-    'libxrandr'
-    'libx11'
-    'libdrm'
-    'libxcomposite'
-    'mesa'
-    'libxext'
-    'nss'
-    'cairo'
-    'libxdamage'
-    'libxfixes'
-    'libxcb'
-    'pango'
-    'python'
     'hicolor-icon-theme'
-)
-makedepends=(
-    'gendesk'
-    'git'
-    'npm'
+    'nspr'
+    'cairo'
+    'alsa-lib'
+    'python'
     'nodejs'
+    'libxcomposite'
+    'gtk3'
+    'nss'
 )
 source=("LICENSE-${pkgver}::https://github.com/FrostBreker/AeroBrowser/blob/v0.2.2-alpha/LICENSE.MD")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-linux-armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-linux-amd64.deb")
-sha256sums=('29415dff206af09bf31646d6a1016cc0e8602c103143afd8f2da61b06b1ea308')
+sha256sums=('22a7339edfe972c2ca45c76b7fa60cc76605105319c4655bea03f4d960ddfe36')
 sha256sums_aarch64=('527d07ef9570b5e089450ffc6ba961d7d35fb10921f9b57bf9fa827e8514f351')
 sha256sums_x86_64=('d8182227f644d67ef8929fb8354364e7b3ee7576512f958cd63807403974bbc4')
 build() {
