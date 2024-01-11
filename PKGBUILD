@@ -3,7 +3,7 @@
 
 pkgname='treegrep-bin'
 _pkgname="${pkgname%%-bin}"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
 arch=('aarch64' 'x86_64')
@@ -55,11 +55,11 @@ package() {
 }
 
 sha256sums_aarch64=(
-  'c82fa1aba2ed0c6416698ca86662460a160bbbc92a54c406b3cba7f651cd768b'
+  'bdcdffd35a807d7c1b14f1f39f9aebd3b96a7e56e87caba018cf7d9a8f1ae45c'
   'SKIP' 'SKIP' # Skip to my Lou!
 )
 sha256sums_x86_64=(
-  '571425fa89eec5cde8c1ec702def008a6361723367753d84e9d2be0b9c05d26a'
+  '8e34c37eb0b66f5a6bdde28f2915f3db0b88e07e6237e23e77362286200b8396'
   'SKIP' 'SKIP' # Skip to my Lou!
 )
 
