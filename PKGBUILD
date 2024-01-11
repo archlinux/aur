@@ -1,6 +1,6 @@
 # Maintainer: José Ronaldo <tecladin@proton.me>
 pkgname='slide-git'
-pkgver='r14.10480d8'
+pkgver=r23.9758209
 pkgrel=1
 pkgdesc="Center text in the middle of the terminal."
 arch=('x86_64')
