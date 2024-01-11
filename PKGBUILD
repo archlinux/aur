@@ -3,10 +3,10 @@
 # Contributor: getzze <getzze@gmail.com>
 
 _pkgname=mco
-_pkgver=1.15.6
+_pkgver=1.16
 pkgname=r-${_pkgname,,}
-pkgver=1.15.6
-pkgrel=10
+pkgver=1.16
+pkgrel=1
 pkgdesc='Multiple Criteria Optimization Algorithms and Related Functions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('17ebe279cb9c89b7cd8054ac50d3b657d2b10dadbc584b88da7e79c3a9680582')
+sha256sums=('5d115221d03deec973e380a6520ca871f94680397d223c4f9399ec68a17be5eb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
