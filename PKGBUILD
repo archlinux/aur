@@ -1,14 +1,15 @@
-# Maintainer: Sir-Photch <sir-photch@posteo.me>
+# Maintainer: Darius Niminenn <root at dnim dot dev>
+# Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=0.12.5
-pkgrel=2
+pkgver=1.17.0
+pkgrel=1
 pkgdesc='Call all LLM APIs using the OpenAI format'
 arch=(any)
 url='https://pypi.org/project/litellm/'
 license=(MIT)
 depends=(
-	'uvicorn'
+	'gunicorn'
 	'python'
 	'python-appdirs'
 	'python-backoff'
@@ -26,6 +27,7 @@ makedepends=(
 	'python-build'
 	'python-installer'
 	'python-poetry-core'
+	'python-wheel'
 )
 optdepends=(
 	'ollama: serve local ollama models'
@@ -34,7 +36,7 @@ optdepends=(
 source=(
 	"https://files.pythonhosted.org/packages/source/l/$pkgname/$pkgname-$pkgver.tar.gz"
 )
-sha256sums=('6c6ddaf092e41d1834c280a677e3b8592195d7843fdbaeda84b163cc044bab21')
+sha256sums=('1485b547feaaaef8768a847743aee718f7cd5b0030fadbddd7ce821e37df150e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
