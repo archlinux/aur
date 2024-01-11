@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xchat-bin
-pkgver=1.0.0
+pkgver=1.0.1
 _electronversion=27
-pkgrel=3
+pkgrel=1
 pkgdesc="使用 React+Vite、MobX 和 Electron 构建的非官方WeChat微信客户端。"
 arch=("x86_64")
 url="https://github.com/xYx-c/xchat"
@@ -18,16 +18,16 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/xYx-c/xchat/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9667f8e99a0e548b84795ccba05f65ed1d8d74fc2cd84cb20f4ca44df38ee9db'
+sha256sums=('cea38eb0032ae4f0ef2c4dfa02309677f76fb516bdfa0251c553d59e84ae16ff'
             '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed -e "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin}|g" \
+    sed -e "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" \
         -e "s|/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png|${pkgname%-bin}|g" \
         -e "s|Utility|Network|g" \
         -e '/Comment/d' \
