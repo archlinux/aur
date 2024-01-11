@@ -1,0 +1,29 @@
+pkgbase = r-fdapace
+	pkgdesc = Functional Data Analysis and Empirical Dynamics
+	pkgver = 0.5.9
+	pkgrel = 1
+	url = https://cran.r-project.org/package=fdapace
+	arch = any
+	license = BSD
+	depends = r-rcpp>=0.11.5
+	depends = r-rcppeigen
+	depends = r-hmisc
+	depends = r-mass
+	depends = r-matrix
+	depends = r-pracma
+	depends = r-numderiv
+	optdepends = r-plot3d
+	optdepends = r-rgl
+	optdepends = r-aplpack
+	optdepends = r-mgcv
+	optdepends = r-ks
+	optdepends = r-gtools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-emcluster
+	optdepends = r-minqa
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/fdapace_0.5.9.tar.gz
+	sha256sums = 0e41687ecd71ce74e470eceb6062812c5774d64da5d18dcbec20097f5a18479a
+
+pkgname = r-fdapace
