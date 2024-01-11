@@ -1,6 +1,6 @@
 pkgbase = cargo-information-git
 	pkgdesc = A tool to provide a detailed information about a Rust package (git)
-	pkgver = 0.4.0.r0.gab3a3aa
+	pkgver = 0.4.1.r0.gc3bf214
 	pkgrel = 1
 	url = https://github.com/hi-rustin/cargo-information
 	arch = x86_64

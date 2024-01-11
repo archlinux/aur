@@ -3,7 +3,7 @@
 
 pkgname=cargo-information-git
 _pkgname=cargo-info
-pkgver=0.4.0.r0.gab3a3aa
+pkgver=0.4.1.r0.gc3bf214
 pkgrel=1
 pkgdesc="A tool to provide a detailed information about a Rust package (git)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
