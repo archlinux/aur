@@ -1,5 +1,5 @@
-pkgname=mingw-w64-xorgproto
 _name=xorgproto
+pkgname=mingw-w64-$_name
 pkgver=2023.2
 pkgrel=1
 pkgdesc="combined X.Org X11 Protocol headers (mingw-w64)"
