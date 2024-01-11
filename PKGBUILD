@@ -2,8 +2,8 @@
 
 pkgname=mpd-discord-rpc-git
 pkgver=v1.7.1.r0.93628d2
-pkgrel=1
-makedepends=('rust' 'cargo')
+pkgrel=2
+makedepends=('rust' 'cargo' 'git')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Displays your currently playing song / album / artist from MPD in Discord using Rich Presence."
 license=('MIT')
