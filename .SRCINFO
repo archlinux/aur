@@ -1,0 +1,22 @@
+pkgbase = r-hmdhfdplus
+	pkgdesc = Read Human Mortality Database and Human Fertility Database Data from the Web
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=HMDHFDplus
+	arch = any
+	license = GPL2
+	depends = r>=4.1
+	depends = r-httr
+	depends = r-rvest
+	depends = r-dplyr
+	depends = r-janitor
+	depends = r-lubridate
+	depends = r-readr
+	depends = r-stringr
+	depends = r-tidyr
+	depends = r-rlang
+	optdepends = r-rcurl
+	source = https://cran.r-project.org/src/contrib/HMDHFDplus_2.0.3.tar.gz
+	sha256sums = 6784022c38b478b501707d3a27b6b7a11d152433e99760c33622ade627c0e9b3
+
+pkgname = r-hmdhfdplus
