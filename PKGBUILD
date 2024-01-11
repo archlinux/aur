@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=revezone
-pkgver=1.0.0_alpha.17
+pkgver=1.0.0_alpha.18
 _electronversion=25
 _nodeversion=18
-pkgrel=3
+pkgrel=1
 pkgdesc="A new way to use Excalidraw. A lightweight productivity tool to build Second Brain that integrates Notion-like note-taking and enhanced Excalidraw whiteboarding features."
 arch=('any')
 url="https://revezone.com/"
@@ -44,10 +44,13 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
+    pnpm config set store-dir "${srcdir}/.pnpm_store"
+    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
+    pnpm config set link-workspace-packages true
     sed '/snap/d;/deb/d' -i electron-builder.yml
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn add builder-util-runtime debug ms sax fs-extra universalify graceful-fs jsonfile js-yaml lazy-val semver lru-cache conf --cache-folder "${srcdir}/.yarn_cache"
-    yarn run build:linux
+    pnpm install
+    #pnpm add builder-util-runtime debug ms sax fs-extra universalify graceful-fs jsonfile js-yaml lazy-val semver lru-cache conf --cache-folder "${srcdir}/.yarn_cache"
+    pnpm run build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
