@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ezra-bible-app-git
-pkgver=1.2.0.r6.gb940285
+pkgver=1.12.0.r183.gb129450
 pkgrel=1
 pkgdesc='A user-friendly Bible study tool focussing on topical study based on keywords/tags'
 arch=(x86_64)
@@ -19,9 +19,8 @@ makedepends=(git
              nodejs-pug-cli
              nodejs-sword-interface # run time dep but gets baked into electron asar
              npm)
-provides=("${pkgname%-git}"
-          ezra-project-git)
-conflicts=("${provides[@]}")
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}" ezra-project-git)
 replaces=(ezra-project-git)
 source=("git+$url.git"
         "${pkgname%-git}.sh")
@@ -64,7 +63,7 @@ package() {
 	install -Dm755 "../${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm644 -t "$pkgdir/usr/share/applications/" "${pkgname%-git}.desktop"
 	install -Dm644 -t "$pkgdir/usr/lib/${pkgname%-git}/resources/" "${pkgname%-git}-linux-x64/resources/app.asar"
-	install -Dm644 -t "$pkgdir/usr/share/licences/$pkgname/" LICENSE
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 	install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}/" {CHANGELOG,README,TECH,LOC_METRICS}.md
 	install -Dm644 icons/ezra.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
 }
