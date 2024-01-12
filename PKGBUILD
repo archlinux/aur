@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=pyhgtmap
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="Fork of official phyghtmap - Generate OSM contour lines from NASA SRTM data"
 _outname="${pkgname}-v${pkgver}"
