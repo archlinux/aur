@@ -45,7 +45,7 @@ _main_package() {
   )
   sha256sums=(
     'SKIP'
-    '9f98088109e540a86a297634e501d7316f3b618da2594dd5d003f648484155d0'
+    '7acd387f8b7d4dde66e4d3eb26f0f1161e02eab0f59b9922286ca3037ede2159'
   )
 
   pkgver() {
