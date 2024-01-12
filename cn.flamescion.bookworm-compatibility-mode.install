@@ -1,13 +1,9 @@
 post_install(){
-echo "-----------------------"
-echo "Due to issues encountered during testing, the package has been temporarily removed. If you wish to continue testing, please download the old version of PKGBUILD from here: https://gitee.com/anysets/bookworm-compatibility-mode/raw/master/arch-test/cn.flamescion.bookworm-compatibility-mode.tar.gz"
-echo "由于测试中出现问题，现暂时撤包，若想继续参与测试，请从此处下载老版PKGBUILD: https://gitee.com/anysets/bookworm-compatibility-mode/raw/master/arch-test/cn.flamescion.bookworm-compatibility-mode.tar.gz"
+pkexec bash /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/bookworm-init
 }
 
 post_upgrade(){
-echo "-----------------------"
-echo "Due to issues encountered during testing, the package has been temporarily removed. If you wish to continue testing, please download the old version of PKGBUILD from here: https://gitee.com/anysets/bookworm-compatibility-mode/raw/master/arch-test/cn.flamescion.bookworm-compatibility-mode.tar.gz"
-echo "由于测试中出现问题，现暂时撤包，若想继续参与测试，请从此处下载老版PKGBUILD: https://gitee.com/anysets/bookworm-compatibility-mode/raw/master/arch-test/cn.flamescion.bookworm-compatibility-mode.tar.gz"
+pkexec bash /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/bookworm-init
 }
 
 post_remove(){
