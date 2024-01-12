@@ -1,6 +1,6 @@
 pkgbase = ldtk-appimage
 	pkgdesc = Modern and efficient 2D level editor with a strong focus on user-friendliness
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://ldtk.io/
 	arch = x86_64
@@ -8,12 +8,13 @@ pkgbase = ldtk-appimage
 	makedepends = squashfuse
 	depends = hicolor-icon-theme
 	depends = glibc
-	provides = ldtk=1.5.0
+	depends = zlib
+	provides = ldtk=1.5.1
 	conflicts = ldtk
 	options = !strip
-	source = ldtk-1.5.0.zip::https://github.com/deepnight/ldtk/releases/download/v1.5.0/ubuntu-distribution.zip
-	source = LICENSE::https://raw.githubusercontent.com/deepnight/ldtk/v1.5.0/LICENSE
-	sha256sums = 9cf2b1d1498684c894500ff9389a9941edddd5f3f28665a26fb0160338e9ce58
+	source = ldtk-1.5.1.zip::https://github.com/deepnight/ldtk/releases/download/v1.5.1/ubuntu-distribution.zip
+	source = LICENSE::https://raw.githubusercontent.com/deepnight/ldtk/v1.5.1/LICENSE
+	sha256sums = 18e5e74ede75fcd221f2a17ee7a99b5464c43c0e27197c80c684c5beae609670
 	sha256sums = f409a37a40e823efefddac3140d991141633d4db3cec4f8667bc23b846dcc335
 
 pkgname = ldtk-appimage
