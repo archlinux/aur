@@ -8,7 +8,7 @@
 
 _appname=kicad
 pkgname="$_appname-wayland"
-pkgver=7.0.9
+pkgver=7.0.10
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools, patched for Wayland'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
 )
 provides=("$_appname")
 conflicts=("$_appname")
-_commit='59f308850ed87dbe850669813dd9c23507d2b3c9'
+_commit='567c5bc8db09d04b9fab77f94d88e6493a903636'
 source=(
   "$_appname::git+https://gitlab.com/kicad/code/kicad.git#commit=$_commit"
   'fix-archive-permissions.patch'
