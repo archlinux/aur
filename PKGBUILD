@@ -8,7 +8,7 @@ pkgdesc="Launcher for the popular Final Fantasy XI private server HorizonXI"
 arch=('x86_64')
 url="https://horizonxi.com"
 license=('custom')
-groups=('')
+groups=()
 depends=('alsa-lib' 'gcc-libs' 'dbus' 'pango' 'gtk3' 'glibc' 'nss' 'libxcomposite'
 		 'libx11' 'libxrandr' 'cairo' 'libxcb' 'libxext' 'libxfixes' 'libxdamage' 
 		 'libcups' 'expat' 'glib2' 'libxkbcommon' 'libdrm' 'nspr' 'mesa' 'wayland' 'at-spi2-core') 
