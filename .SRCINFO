@@ -1,6 +1,6 @@
 pkgbase = realvnc-vnc-viewer
 	pkgdesc = VNC remote desktop client software by RealVNC
-	pkgver = 7.8.0
+	pkgver = 7.9.0
 	pkgrel = 1
 	url = https://www.realvnc.com/
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = realvnc-vnc-viewer
 	conflicts = tightvnc
 	conflicts = tigervnc
 	conflicts = turbovnc
-	source_x86_64 = https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-7.8.0-Linux-x64.deb
-	sha256sums_x86_64 = 751e1c3110ccb232b2ac11f6d0a639a2506d291e785f8596024be8e4cc5a49b2
-	source_armv7h = https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-7.8.0-Linux-ARM.deb
-	sha256sums_armv7h = 29a0eca312051675f77cbbead08af062f5dabd5b131e0bb37f57372357013c2a
-	source_aarch64 = https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-7.8.0-Linux-ARM64.deb
-	sha256sums_aarch64 = dd421ed429d7f037028c44a1f6a823962b1317861e7b8b8ef7249cd29436b2c7
+	source_x86_64 = https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-7.9.0-Linux-x64.deb
+	sha256sums_x86_64 = 83f1313f917bc4a2aa2afb887796aca33dba28db1bfca585e3010cc520437647
+	source_armv7h = https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-7.9.0-Linux-ARM.deb
+	sha256sums_armv7h = 896877c21889f4ba43986313d476ae64edd9104306e1495c691ad4b8dd7157b1
+	source_aarch64 = https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-7.9.0-Linux-ARM64.deb
+	sha256sums_aarch64 = a7f9b2805613056b7f57478cb0d2560a7bc1a09e00619299832a065a88d96358
 
 pkgname = realvnc-vnc-viewer
