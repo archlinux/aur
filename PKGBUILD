@@ -3,7 +3,7 @@
 
 pkgname=aspe
 _pkgver=1.1
-pkgver="v${_pkgver}"
+pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="Arch Linux build source file clone tool"
 arch=(any)
@@ -18,7 +18,7 @@ checkdepends=(
   shellcheck)
 _url="file://${HOME}/${pkgname}"
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
   "1c810836bd7a71d1650c207a5d3596b27d83e627c3376e738152ac93a939e9b2"
