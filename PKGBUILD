@@ -1,14 +1,14 @@
 # Maintainer: Adam Schubert <adam.schubert@sg1-game.net>
 
 pkgname=python-mixer
-pkgver=6.0.0
+pkgver=7.2.2
 pkgdesc="Mixer -- Is a fixtures replacement. Supported Django, Flask, SqlAlchemy and custom python objects."
 pkgrel=1
 arch=('any')
 license=('BSD-3')
 url='https://github.com/klen/mixer'
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/klen/mixer/tar.gz/$pkgver)
-sha256sums=('140fae4fa0b060d2b90a0e53b19db9c0d42fecd83f7059707a6f751d9c1e1328')
+sha256sums=('bd0d73259308a5e8e031677bcc280a0a40b6e438f1fef13a9ad3b68279299e5a')
 makedepends=('python-setuptools')
 depends=(
     'python-faker'
