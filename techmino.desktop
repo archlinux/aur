@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Techmino
+Comment=Techmino is fun!
+Type=Application
+Keywords=love;game;
+Categories=Game;
+Exec=techmino
+Icon=techmino
+Terminal=false
+NoDisplay=false

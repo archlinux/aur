@@ -1,0 +1,7 @@
+src/
+pkg/
+ccloader-*.tar.gz
+techmino-*.tar.gz
+Zframework/
+cold-clear/
+techmino-*.pkg.tar.zst
