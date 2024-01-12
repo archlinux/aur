@@ -4,13 +4,13 @@
 if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v3.*supported.*$' ; then
   _message=''
   _message+=$'The fastest browser on Earth.'
-elif /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v2.*supported.*$' ; then
+elif grep -qE '\bpni\b' /proc/cpuinfo ; then
   _message=''
-  _message+=$'Your processor supports x86-64-v2, but not x86-64-v3.\n'
+  _message+=$'Your processor does not support x86-64-v3 instructions.\n'
   _message+=$'You may want to use thorium-browser-sse3-bin.'
 else
   _message=''
-  _message+=$'Your processor does not support x86-64-v2 or x86-64-v3.\n'
+  _message+=$'Your processor does not support SSE3 instructions.\n'
   _message+=$'thorium-browser may not work on your computer.'
 fi
 
