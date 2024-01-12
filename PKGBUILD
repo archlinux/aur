@@ -1,5 +1,5 @@
 pkgname=gpt4all-chat
-pkgver=2.5.4
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="open-source LLM chatbots that you can run anywhere"
 arch=("x86_64")
@@ -15,6 +15,13 @@ sha256sums=('SKIP')
 prepare() {
     cd "$srcdir/gpt4all"
     git submodule update --init --recursive
+    ###
+    #/build/gpt4all-chat/src/gpt4all/gpt4all-chat/llm.cpp: In member function ‘bool LLM::checkForUpdates() const’:
+    #/build/gpt4all-chat/src/gpt4all/gpt4all-chat/llm.cpp:53:5: error: ‘Network’ has not been declared
+    #53 |     Network::globalInstance()->sendCheckForUpdates();
+    #   |     ^~~~~~~
+    ###
+    sed -i '1 a #include "network.h"' gpt4all-chat/llm.cpp
 }
 build() {
     cmake -B build-chat -S "$srcdir/gpt4all/gpt4all-chat" -G Ninja \
