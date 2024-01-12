@@ -7,7 +7,7 @@
 
 pkgname=wxformbuilder-git
 _gitname=wxFormBuilder
-pkgver=3.10.1.r231.gdf7791bf
+pkgver=4.0.0.r6.ga75305af
 pkgrel=1
 pkgdesc="Designer, GUI builder, and RAD tool For wxWidgets"
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,11 +17,8 @@ provides=('wxformbuilder')
 conflicts=('wxformbuilder' 'wxformbuilder-svn')
 depends=('wxwidgets-gtk3' 'boost')
 makedepends=('git' 'cmake')
-source=(
-  "git+https://github.com/wxFormBuilder/wxFormBuilder.git"
-  "ticpp.git::git+https://github.com/wxFormBuilder/ticpp.git"
-)
-md5sums=('SKIP' 'SKIP')
+source=("git+https://github.com/wxFormBuilder/wxFormBuilder.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"

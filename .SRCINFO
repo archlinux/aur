@@ -1,6 +1,6 @@
 pkgbase = wxformbuilder-git
 	pkgdesc = Designer, GUI builder, and RAD tool For wxWidgets
-	pkgver = 3.10.1.r231.gdf7791bf
+	pkgver = 4.0.0.r6.ga75305af
 	pkgrel = 1
 	url = https://sourceforge.net/projects/wxformbuilder/
 	arch = i686
@@ -15,8 +15,6 @@ pkgbase = wxformbuilder-git
 	conflicts = wxformbuilder
 	conflicts = wxformbuilder-svn
 	source = git+https://github.com/wxFormBuilder/wxFormBuilder.git
-	source = ticpp.git::git+https://github.com/wxFormBuilder/ticpp.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = wxformbuilder-git
