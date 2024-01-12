@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=tbls
-pkgver=1.72.0
+pkgver=1.72.1
 pkgrel=1
 pkgdesc="CI-Friendly tool for documenting a database"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=(go)
 depends=(glibc)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5aa55ac4e006e724d91066e3c36a30ef0e7f80aebd91f5bea9cced16f4764469')
+sha256sums=('16456bcf14f48ea174126322b171a8c7e6e9fcd2340ab4b0edcce16212516aa7')
 
 _archive="$pkgname-$pkgver"
 
@@ -24,7 +24,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -v
+  go build -v -buildvcs=false
 
   ./tbls completion bash > tbls.bash
   ./tbls completion fish > tbls.fish
@@ -34,32 +34,17 @@ build() {
 check() {
   cd "$_archive"
 
-  go test \
-    ./cmdutil/... \
-    ./config/... \
-    ./coverage/... \
-    ./ddl/... \
-    ./dict/... \
-    ./drivers/bq/... \
-    ./drivers/spanner/... \
-    ./output/... \
-    ./output/config/... \
-    ./output/dot/... \
-    ./output/gviz/... \
-    ./output/json/... \
-    ./output/md/... \
-    ./output/mermaid/... \
-    ./output/plantuml/... \
-    ./output/yaml/... \
-    ./schema/...
+  go test
 }
 
 package() {
   cd "$_archive"
 
-  install -Dm755 tbls "${pkgdir}/usr/bin/tbls"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 tbls "$pkgdir/usr/bin/tbls"
+
   install -Dm644 tbls.bash "$pkgdir/usr/share/bash-completion/completions/tbls"
   install -Dm644 tbls.fish "$pkgdir/usr/share/fish/vendor_completions.d/tbls.fish"
   install -Dm644 tbls.zsh "$pkgdir/usr/share/zsh/site-functions/_tbls"
+
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
