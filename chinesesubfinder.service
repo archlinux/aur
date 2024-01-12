@@ -1,0 +1,14 @@
+[Unit]
+Description = Automated Chinese subtitle download.
+Wants = network-online.target
+After = network-online.target
+
+[Service]
+User = chinesesubfinder
+Group = chinesesubfinder
+Restart = on-failure
+WorkingDirectory = /var/lib/chinesesubfinder
+ExecStart = /usr/bin/chinesesubfinder --setconfigselfpath /var/lib/chinesesubfinder
+
+[Install]
+WantedBy = multi-user.target
