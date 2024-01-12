@@ -3,7 +3,7 @@ pkgname=shinden-client-bin
 _pkgname=shinden-client
 pkgver=3.0.5
 _electronversion=23
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial client for the polish anime websites. It allows you to watch anime without being exposed to ads and pop-ups."
 arch=("x86_64")
 url="https://github.com/KlapChat-Entertainment/shinden-client"
@@ -18,12 +18,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('5bc7168349b3a8b385cef188ebfc070cb63267a5b2d319fce9df5a5abda37c4e'
-            '93543689ed5d4ea44e428797c218472c2f6a61e798f6705a59e0f7e7fb7e7418')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
-    sed "s|${pkgname%-bin}-electron %U|${pkgname%-bin}|g;s|${pkgname%-bin}-electron|${pkgname%-bin}|g" \
+    sed "s|${pkgname%-bin}-electron|${pkgname%-bin}|g;s|${pkgname%-bin}-electron|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}-electron.desktop"
-    sed "s|@electronversion@|${_electronversion}|g" -i "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
