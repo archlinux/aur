@@ -12,6 +12,7 @@ makedepends=('git' 'go')
 optdepends=('sing-box')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+backup=('etc/serenity/config.json')
 source=("${_pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 

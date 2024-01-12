@@ -14,6 +14,7 @@ pkgbase = serenity-git
 	optdepends = sing-box
 	provides = serenity
 	conflicts = serenity
+	backup = etc/serenity/config.json
 	source = serenity::git+https://github.com/SagerNet/serenity.git
 	sha512sums = SKIP
 
