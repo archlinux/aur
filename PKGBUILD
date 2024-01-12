@@ -1,25 +1,27 @@
 # Maintainer: c6parmak <can6parmak <AT> gmail <DOT> com>
 
 pkgname=oof2
-pkgver='2.1.14'
+pkgver='2.3.2'
 pkgrel=1
 pkgdesc="Finite element analysis of microstructures."
 arch=('i686' 'x86_64')
 url="http://www.ctcms.nist.gov/oof/oof2/index.html"
 license=('custom')
-depends=('python2' 'pygtk' 'libgnomecanvas' 'libmagick6' 'lapack' 'gperftools')
+depends=('python' 'gtk3' 'python-gobject' 'oofcanvas' 'libmagick6' 'lapack')
+makedepends=('cmake')
 source=("https://www.ctcms.nist.gov/oof/oof2/source/${pkgname}-${pkgver}.tar.gz"
         "LICENSE")
-md5sums=('c2c9ece407df3dd0e24af0da9745104e'
+md5sums=('a69cdd2c7fdcdc2c4311f4bfcd4cd985'
          'c1d808bd883c2e0a30b687e3fcec4847')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   export PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig
-  python2 setup.py build
+  cmake -B build -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE='Release' -Wno-dev
+  cmake --build build
 }
+
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" || return 1
-  install -m 644 -D ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cmake --install "${pkgname}-${pkgver}/build" --prefix="$pkgdir/usr"
+  install -m 644 -D LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
