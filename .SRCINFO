@@ -1,0 +1,16 @@
+pkgbase = bambootracker-bin
+	pkgdesc = A music tracker for the Yamaha YM2608 (OPNA) sound chip
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://bambootracker.github.io/BambooTracker/
+	arch = x86_64
+	license = GPL2
+	depends = qt5-base
+	depends = bash
+	depends = hicolor-icon-theme
+	provides = bambootracker
+	conflicts = bambootracker
+	source = https://github.com/BambooTracker/BambooTracker/releases/download/v0.6.3/BambooTracker-v0.6.3-linux-64bit.zip
+	md5sums = 6430a47caa638bcb939d1ffc1020e0bc
+
+pkgname = bambootracker-bin
