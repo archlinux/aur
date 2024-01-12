@@ -1,12 +1,14 @@
 pkgbase = nkf-git
 	pkgdesc = A yet another kanji code converter among networks, hosts and terminals
 	pkgver = v2_1_5.r21.ga937062
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nurse/nkf
 	arch = x86_64
 	arch = i686
 	license = custom
+	makedepends = git
 	depends = glibc
+	provides = nkf
 	conflicts = nkf
 	source = git+https://github.com/nurse/nkf
 	source = LICENSE

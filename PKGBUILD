@@ -3,7 +3,7 @@
 pkgname=nkf-git
 _pkgname=nkf
 pkgver=v2_1_5.r21.ga937062
-pkgrel=1
+pkgrel=2
 pkgdesc="A yet another kanji code converter among networks, hosts and terminals"
 arch=('x86_64' 'i686')
 url="https://github.com/nurse/nkf"
@@ -11,6 +11,7 @@ license=('custom')
 depends=('glibc')
 makedepends=('git')
 conflicts=('nkf')
+provides=('nkf')
 source=(git+https://github.com/nurse/nkf
         LICENSE)
 b2sums=('SKIP'
