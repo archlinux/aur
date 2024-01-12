@@ -1,7 +1,7 @@
 pkgbase = coolercontrol
 	pkgdesc = A program to monitor and control your cooling devices
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
 	license = GPL3
@@ -43,7 +43,7 @@ pkgbase = coolercontrol
 	conflicts = coolercontrol
 	conflicts = coolero
 	options = !lto
-	source = https://gitlab.com/coolercontrol/coolercontrol/-/archive/1.0.0/coolercontrol-1.0.0.tar.gz
-	sha256sums = 3377dbd54f7d506a95e53d6d0aa323af94191067479d2eca5b45d34065a1c265
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/archive/1.0.1/coolercontrol-1.0.1.tar.gz
+	sha256sums = 3c4a36c9b7093b1ef2729828decb4c742b115b73f4b4345a0c99184b026cea3b
 
 pkgname = coolercontrol
