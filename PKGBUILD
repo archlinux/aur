@@ -5,8 +5,8 @@
 
 _name=akonadi
 pkgname=libakonadi5
-pkgver=23.08.3
-pkgrel=2
+pkgver=23.08.4
+pkgrel=1
 pkgdesc='Libraries used by applications based on Akonadi'
 arch=(x86_64)
 url='https://kontact.kde.org'
@@ -15,7 +15,7 @@ depends=(kitemmodels5 kio5)
 makedepends=(extra-cmake-modules postgresql qt5-tools)
 conflicts=('libakonadi<24')
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('c4209f1240f03ab8f299f2799ea5ac2e6adf80268591851bbbcceb3b46fb3e41'
+sha256sums=('63fb0372e935d4cc55af14f2b869f6042ed878813f98e6660204b3bb80ed4936'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
