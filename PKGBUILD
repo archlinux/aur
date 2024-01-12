@@ -5,10 +5,11 @@ url="https://github.com/mohammadrostamiorg/dnsChanger"
 arch=('any')
 license=('MIT')
 maintainer="Mohammad Rosstami <mohammad.jayant@gmail.com>"
-source=("dnsch.sh")
+source=("dnsch.sh" "dnsch.1.gz")
 depends=('bash' 'coreutils')
 pkgrel=1
-md5sums=('SKIP')
+sha256sums=("SKIP" "SKIP")
 package() {
   install -Dm755 dnsch.sh "${pkgdir}/usr/bin/dnsch"
+  install -Dm644 dnsch.1.gz "${pkgdir}/usr/share/man/man1/dnsch.1.gz"
 }
