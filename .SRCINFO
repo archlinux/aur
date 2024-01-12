@@ -1,0 +1,21 @@
+pkgbase = subar
+	pkgdesc = A basic status bar for sway/i3wm
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sublipri/subar
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	optdepends = wireplumber
+	optdepends = mpd
+	optdepends = bom-buddy
+	source = subar-0.1.0.tar.gz::https://github.com/sublipri/subar/archive/v0.1.0.tar.gz
+	sha256sums = ae092331fe4b6c95e4faee6e1cd903dbcbfebad18502424a0666afd0f9e0fe1b
+
+pkgname = subar
