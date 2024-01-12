@@ -3,31 +3,36 @@
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
-_pkgname=aspe
+_pkgname=sus
 pkgname="${_pkgname}-git"
-pkgver=v1.0+8+gcee1c15
+pkgver="v0.1+3+g0d3bd1f"
 pkgrel=2
-pkgdesc="Arch Linux build source file clone tool"
+pkgdesc="Simple setup user script"
 arch=(any)
 _host='https://github.com'
 _ns='themartiancompany'
 url="${_host}/${_ns}/${_pkgname}"
 license=(
-  AGPL3)
+  AGPL3
+)
 depends=()
-makedepends=(
-  'reallymakepkg')
+makedepends=()
 checkdepends=(
-  shellcheck)
+  shellcheck
+)
 provides=(
-  "${_pkgname}=${pkgver}")
+  "${_pkgname}=${pkgver}"
+)
 conflicts=(
-  "${_pkgname}")
+  "${_pkgname}"
+)
 _url="file://${HOME}/${_pkgname}"
 source=(
-  "git+${url}")
+  "git+${_url}"
+)
 sha256sums=(
-  SKIP)
+  SKIP
+)
 
 pkgver() {
   cd \

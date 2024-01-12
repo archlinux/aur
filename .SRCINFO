@@ -1,1 +1,14 @@
+pkgbase = sus-git
+	pkgdesc = Simple setup user script
+	pkgver = v0.1+3+g0d3bd1f
+	pkgrel = 2
+	url = https://github.com/themartiancompany/sus
+	arch = any
+	license = AGPL3
+	checkdepends = shellcheck
+	provides = sus=v0.1+3+g0d3bd1f
+	conflicts = sus
+	source = git+file:///data/data/com.termux/files/home/sus
+	sha256sums = SKIP
 
+pkgname = sus-git
