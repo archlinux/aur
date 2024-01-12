@@ -1,8 +1,12 @@
 # Maintainer: Thomas Letan <lthms@soap.coffee>
 
+# Note about Make and parallelism:
+# We disable Make parallelism with -j1 because it looks like enabling it
+# does not play well with Dune.
+
 pkgname=spatial-shell
 pkgver=6
-pkgrel=3
+pkgrel=4
 pkgdesc='Implementing a spatial model inspired by Material Shell, for i3 and sway.'
 url=https://github.com/lthms/spatial-shell
 license=('MPL2')
@@ -33,14 +37,14 @@ build() {
   export OPAMROOT="${srcdir}/opam"
   eval $(opam env)
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make build-deps
+  make build-deps -j1
   eval $(opam env)
-  make
+  make -j1
   rm -rf "${OPAMROOT}"
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p "$pkgdir/usr/bin"
-  make DESTDIR="$pkgdir/usr" install
+  make DESTDIR="$pkgdir/usr" install -j1
 }
