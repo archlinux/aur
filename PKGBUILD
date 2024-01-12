@@ -92,12 +92,37 @@ sha256sums=(
   'SKIP'
 )
 
-pkgver() {
+_parse_ver() {
   local \
-    _pkgver \
+    _pkgver="${1}" \
     _ver \
     _rev \
     _commit
+  _ver="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F "+" \
+            '{print $1}')"
+  _rev="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F "+"
+            '{print $2}')"
+  _commit="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F "+" \
+            '{print $3}')"
+  echo \
+    "${_ver}.r${_rev}.${_commit}"
+}
+
+pkgver() {
+  local \
+    _pkgver
   cd \
     "${_pkgname}" || \
     exit
@@ -107,26 +132,8 @@ pkgver() {
       --tags | \
         sed \
           's/^GNOME_CONTROL_CENTER_//;s/_/./g;s/-/+/g')"
-  _ver="$( \
-    echo \
-      "${_pkgver}" | \
-        IFS="+" \
-          awk \
-            '{print $1}')"
-  _rev="$( \
-    echo \
-      "${_pkgver}" | \
-        IFS="+" \
-          awk \
-            '{print $2}')"
-  _commit="$( \
-    echo \
-      "${_pkgver}" | \
-        IFS="+" \
-          awk \
-            '{print $3}')"
-  echo \
-    "${_ver}.r${_rev}.${_commit}"
+  _parse_ver \
+    "${_pkgver}"
 }
 
 # shellcheck disable=SC2154
