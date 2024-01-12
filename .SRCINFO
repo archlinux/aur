@@ -1,11 +1,10 @@
 pkgbase = horizonxi-launcher-bin
-	pkgdesc = Launcher for the popular Final Fantasy XI private server HorizonXI - https://horizonxi.com
+	pkgdesc = Launcher for the popular Final Fantasy XI private server HorizonXI
 	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://horizonxi.com
 	install = horizonxi-launcher-bin.install
 	arch = x86_64
-	groups = 
 	license = custom
 	depends = alsa-lib
 	depends = gcc-libs
