@@ -10,4 +10,4 @@ Terminal=false
 Categories=Graphics;3D;Design
 StartupNotify=true
 StartupWMClass=RoomArranger
-MimeType=MimeType=application/com.roomarranger.project;application/com.roomarranger.object;
+MimeType=application/com.roomarranger.project;application/com.roomarranger.object;
