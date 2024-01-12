@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Quatrack
+Comment=Techmino Galaxy is awesome!
+Type=Application
+Keywords=love;game;
+Categories=Game;
+Exec=quatrack
+Icon=quatrack
+Terminal=false
+NoDisplay=false
