@@ -1,0 +1,42 @@
+pkgbase = what-is-electron
+	pkgdesc = Point /usr/bin/electron to any Electron version you like
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/pkgbase/what-is-electron
+	arch = any
+	license = Apache
+	provides = electron
+	provides = what-is-electron
+	conflicts = what-is-electron
+
+pkgname = electron-is-electron22
+	pkgdesc = Point /usr/bin/electron to electron22
+	depends = electron22
+
+pkgname = electron-is-electron23
+	pkgdesc = Point /usr/bin/electron to electron23
+	depends = electron23
+
+pkgname = electron-is-electron24
+	pkgdesc = Point /usr/bin/electron to electron24
+	depends = electron24
+
+pkgname = electron-is-electron25
+	pkgdesc = Point /usr/bin/electron to electron25
+	depends = electron25
+
+pkgname = electron-is-electron26
+	pkgdesc = Point /usr/bin/electron to electron26
+	depends = electron26
+
+pkgname = electron-is-electron27
+	pkgdesc = Point /usr/bin/electron to electron27
+	depends = electron27
+
+pkgname = electron-is-electron28
+	pkgdesc = Point /usr/bin/electron to electron28
+	depends = electron28
+
+pkgname = electron-is-electron29
+	pkgdesc = Point /usr/bin/electron to electron29
+	depends = electron29
