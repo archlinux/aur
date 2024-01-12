@@ -1,0 +1,17 @@
+pkgbase = docker-buildx-git
+	pkgdesc = Docker CLI plugin for extended build capabilities with BuildKit
+	pkgver = 0.12.1.r76.g78adfc80
+	pkgrel = 1
+	url = https://github.com/docker/buildx
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = docker-buildx=0.12.1.r76.g78adfc80
+	conflicts = docker-buildx
+	source = git+https://github.com/docker/buildx.git
+	sha256sums = SKIP
+
+pkgname = docker-buildx-git
