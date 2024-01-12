@@ -1,6 +1,6 @@
 pkgbase = python-cyclonedx-lib
 	pkgdesc = Render and read CycloneDX, a lightweight BOM specification document format
-	pkgver = 6.2.0
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://github.com/CycloneDX/cyclonedx-python-lib
 	arch = any
@@ -20,9 +20,9 @@ pkgbase = python-cyclonedx-lib
 	depends = python-sortedcontainers
 	conflicts = python-cyclonedx-lib-git
 	options = !strip
-	source = cyclonedx-python-lib-6.2.0.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v6.2.0.tar.gz
+	source = cyclonedx-python-lib-6.3.0.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v6.3.0.tar.gz
 	source = fix-stray-license.patch
-	sha512sums = dff040d9435a76b73930da3289149e27571cf300da58e81aaa9bc5ae71842a1ba578c1014af24072fc8f1e075afdab72c5354d84990f56d8e64c56e202d2a7ef
+	sha512sums = 4eedf9e8287dc9654bfbe42c5021c93c54a6acd0845ab39d74ae89318451d106d0ba233fd09ea6cbb5af94a7392dfa8ad4d85267dc936cd3f1a6ab4aa94e5814
 	sha512sums = 0468a4a94597ec62edabaf39668256e0aa6b42b17ac965293f59da377250452afa7b9391811305dac4808073542c3c86b70ccaebb292a171ed01b49668c006e0
 
 pkgname = python-cyclonedx-lib
