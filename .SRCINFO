@@ -1,5 +1,5 @@
 pkgbase = freecad-linkstage3-bin
-	pkgdesc = A general purpose 3D CAD modeler - Daily build of LinkDaily branch
+	pkgdesc = A general purpose 3D CAD modeler - Daily build of LinkStable branch
 	pkgver = 20231231tip.r3.g88b03571dc
 	pkgrel = 1
 	url = http://www.freecadweb.org/
