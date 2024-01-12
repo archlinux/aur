@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=k0sctl
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="A bootstrapping and management tool for k0s clusters."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -9,8 +9,8 @@ url="https://github.com/k0sproject/k0sctl"
 license=('Apache')
 makedepends=('go>=1.21')
 provides=(k0sctl)
-validpgpkeys=(5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23 )
-source=("git+https://github.com/k0sproject/k0sctl.git#commit=56da107d9c904a98c85a62ef741e0def95be0277")
+validpgpkeys=(5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23)
+source=("git+https://github.com/k0sproject/k0sctl.git#commit=372a589d00374d047bd4bb93724d8fdc2f81ac08")
 sha256sums=('SKIP')
 
 build() {
