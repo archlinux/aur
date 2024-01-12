@@ -1,0 +1,32 @@
+# Iroh DNS server configuration
+# See https://github.com/n0-computer/iroh for documentation
+
+pkarr_put_rate_limit = "disabled"
+# pkarr_put_rate_limit = "smart"
+
+[http]
+port = 8080
+# bind_addr = "0.0.0.0"
+
+[https]
+port = 8443
+domains = ["localhost"]
+cert_mode = "self_signed"
+# cert_mode = "lets_encrypt"
+# letsencrypt_contact = "admin@example.com"
+# letsencrypt_prod = true
+
+[dns]
+port = 5300
+default_soa = "irohdns.example hostmaster.irohdns.example 0 10800 3600 604800 3600"
+default_ttl = 900
+origins = ["irohdns.example.", "."]
+rr_a = "127.0.0.1"
+rr_ns = "ns1.irohdns.example."
+
+# [mainline]
+# enabled = true
+
+[metrics]
+disabled = false
+bind_addr = "127.0.0.1:9117"
