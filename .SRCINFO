@@ -1,6 +1,6 @@
 pkgbase = organicmaps-git
 	pkgdesc = A free offline maps app for travelers, tourists, hikers, and cyclists based on top of crowd-sourced OpenStreetMap data
-	pkgver = 2023.11.17_17
+	pkgver = 2024.01.09_5
 	pkgrel = 1
 	url = https://github.com/organicmaps/organicmaps
 	arch = x86_64
