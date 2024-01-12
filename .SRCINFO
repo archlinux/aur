@@ -22,6 +22,8 @@ pkgbase = xraygui-bin
 	provides = xraygui=1.8
 	conflicts = xraygui
 	source = xraygui-1.8.deb::https://github.com/AKotov-dev/XRayGUI/releases/download/v1.8/xraygui_1.8-0.mrx9_amd64.deb
+	source = xraygui.sh
 	sha256sums = 5790a63bad60a2722409dfb4165f5db0dade46555e0ca6c0d4553d556bf9aa14
+	sha256sums = 810844dac159a0c6d46da58e10d57f1b4c958749efa8c6776515240823076074
 
 pkgname = xraygui-bin
