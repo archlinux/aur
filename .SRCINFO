@@ -1,13 +1,12 @@
-pkgbase = aspe
-	pkgdesc = Arch Linux build source file clone tool
-	pkgver = v1.1
+pkgbase = sus
+	pkgdesc = Simple setup user script
+	pkgver = 0.1.1
 	pkgrel = 1
-	url = https://github.com/themartiancompany/aspe
+	url = https://github.com/themartiancompany/sus
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck
-	makedepends = reallymakepkg
-	source = aspe-v1.1.tar.gz::https://github.com/themartiancompany/aspe/archive/refs/tags/v1.1.tar.gz
-	sha256sums = 1c810836bd7a71d1650c207a5d3596b27d83e627c3376e738152ac93a939e9b2
+	source = sus-0.1.1::git+file://file:///data/data/com.termux/files/home/sus#tag=0.1.1
+	sha256sums = SKIP
 
-pkgname = aspe
+pkgname = sus

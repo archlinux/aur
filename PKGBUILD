@@ -4,11 +4,12 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 pkgname=sus
-_pkgver=0.1
-pkgver="v${_pkgver}"
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Simple setup user script"
-arch=(any)
+arch=(
+  any
+)
 _host='https://github.com'
 _ns='themartiancompany'
 url="${_host}/${_ns}/${pkgname}"
@@ -24,16 +25,17 @@ checkdepends=(
 )
 _url="file://${HOME}/${pkgname}"
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-  "git+file://${_url}"
+  # "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}::git+file://${_url}#tag=${pkgver}"
 )
 sha256sums=(
-  "1c810836bd7a71d1650c207a5d3596b27d83e627c3376e738152ac93a939e9b2"
+  # "1c810836bd7a71d1650c207a5d3596b27d83e627c3376e738152ac93a939e9b2"
+  SKIP
 )
 
 package() {
   cd \
-    "${pkgname}-${_pkgver}"
+    "${pkgname}-${pkgver}"
   make \
     PREFIX="/usr" \
     DESTDIR="${pkgdir}" \
