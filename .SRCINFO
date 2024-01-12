@@ -1,0 +1,20 @@
+pkgbase = cosmic-term-git
+	pkgdesc = COSMIC Text Editor
+	pkgver = r218.54362ec
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-term
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = cosmic-icons
+	depends = gtk3
+	depends = libxkbcommon
+	depends = wayland
+	provides = cosmic-term
+	options = !lto
+	source = git+https://github.com/pop-os/cosmic-term.git
+	sha256sums = SKIP
+
+pkgname = cosmic-term-git
