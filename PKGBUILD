@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hse-git
-pkgver=3.1.0.dev.r69.gca2bccd6
+pkgver=3.1.0.dev.r71.g6d5207f8
 pkgrel=1
 pkgdesc="Heterogeneous-memory storage engine"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^r//;s/-/./'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^r//;s/-/./g'
 }
 
 build() {
