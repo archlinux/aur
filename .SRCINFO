@@ -1,0 +1,21 @@
+pkgbase = oofcanvas
+	pkgdesc = Replacement for libgnomecanvas, designed for use in OOF2.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://www.ctcms.nist.gov/oof/oof2/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake>=3.18
+	makedepends = swig>=4.0
+	depends = gtk3
+	depends = pango
+	depends = cairomm
+	depends = python-gobject
+	depends = libmagick6
+	source = https://www.ctcms.nist.gov/oof/oofcanvas/source/oofcanvas-1.1.1.tar.gz
+	source = LICENSE
+	md5sums = 97dcadae650b22a41491242ae01e4226
+	md5sums = c1d808bd883c2e0a30b687e3fcec4847
+
+pkgname = oofcanvas
