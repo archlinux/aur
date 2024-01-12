@@ -1,0 +1,19 @@
+pkgbase = libiscsi-git
+	pkgdesc = A client-side library to implement the iSCSI protocol
+	pkgver = 1.19.0.r261.g0fac8df
+	pkgrel = 1
+	url = https://github.com/sahlberg/libiscsi
+	arch = i686
+	arch = x86_64
+	license = custom
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	depends = libgcrypt
+	provides = libiscsi=1.19.0.r261.g0fac8df
+	conflicts = libiscsi
+	options = staticlibs
+	source = git+https://github.com/sahlberg/libiscsi.git
+	sha256sums = SKIP
+
+pkgname = libiscsi-git
