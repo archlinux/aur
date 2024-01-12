@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Anime Games Launcher
+Comment=Unified launcher for all of your specific anime game needs
+Exec=anime-games-launcher
+Terminal=false
+Type=Application
+Icon=anime-games-launcher
+Categories=Game

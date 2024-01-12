@@ -1,0 +1,27 @@
+pkgbase = anime-games-launcher-bin
+	pkgdesc = Unified launcher for all of your specific anime game needs.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/an-anime-team/anime-games-launcher
+	arch = x86_64
+	license = GPL3
+	depends = libadwaita
+	depends = xdg-desktop-portal
+	depends = xdelta3
+	depends = p7zip
+	depends = git
+	depends = gtk4
+	depends = glibc
+	optdepends = mangohud: FPS Hud/GUI
+	optdepends = gamemode: Game Optimizations
+	optdepends = gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance
+	provides = anime-games-launcher
+	conflicts = anime-games-launcher-git
+	source = anime-games-launcher_1.0.0::https://github.com/an-anime-team/anime-games-launcher/releases/download/v1.0.0/anime-games-launcher
+	source = icon.png
+	source = anime-games-launcher.desktop
+	md5sums = 83dec20c5c01561d77f903a3167d4dde
+	md5sums = 3813aa35084ab351d434ff96bc33dff9
+	md5sums = 20e2fe02bfc0a3dd69aa0e2dcbeca11d
+
+pkgname = anime-games-launcher-bin
