@@ -2,7 +2,7 @@
 
 pkgname=compcert
 _dirname=CompCert
-pkgver=3.13
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="The formally verified C compiler"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('coq>=8.12.0' 'ocaml>=4.05.0'
             )
 checkdepends=('parallel')
 source=("https://github.com/AbsInt/CompCert/archive/v$pkgver.tar.gz")
-sha256sums=('eba7b8168f4d852daab057efa5aedb5c7dcbcfa7115a1122175333e591b776ef')
+sha256sums=('c4314b358962240bf3e014b0caf3f7ef620a1b9a1af6abbc639a7181c3895b20')
 
 prepare() {
   cd ${srcdir}/${_dirname}-${pkgver}
