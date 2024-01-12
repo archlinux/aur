@@ -61,7 +61,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C "${srcdir}/build" install
-  # mv $pkgdir/usr/lib/meshlab/{libIDTF,plugins/libio_e57}.so -t $pkgdir/usr/lib
 }
 
 # Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
