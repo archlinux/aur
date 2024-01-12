@@ -1,6 +1,6 @@
 pkgbase = python-mixer
 	pkgdesc = Mixer -- Is a fixtures replacement. Supported Django, Flask, SqlAlchemy and custom python objects.
-	pkgver = 6.0.0
+	pkgver = 7.2.2
 	pkgrel = 1
 	url = https://github.com/klen/mixer
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = python-mixer
 	optdepends = python-flask-sqlalchemy: SQLAlchemy ORM support and integration as Flask application
 	optdepends = python-mongoengine: Mongoengine ODM support
 	optdepends = python-sqlalchemy: SQLAlchemy ORM support
-	source = python-mixer-6.0.0.tar.gz::https://codeload.github.com/klen/mixer/tar.gz/6.0.0
-	sha256sums = 140fae4fa0b060d2b90a0e53b19db9c0d42fecd83f7059707a6f751d9c1e1328
+	source = python-mixer-7.2.2.tar.gz::https://codeload.github.com/klen/mixer/tar.gz/7.2.2
+	sha256sums = bd0d73259308a5e8e031677bcc280a0a40b6e438f1fef13a9ad3b68279299e5a
 
 pkgname = python-mixer
-
