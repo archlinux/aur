@@ -2,6 +2,7 @@
 #
 # Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
 # Maintainer: Truocolo <truocolo@aol.com>
+# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
 _pkgbase=termux-setup-pacman
 pkgbase="${_pkgbase}-git"
@@ -12,12 +13,14 @@ pkgdesc="Script to setup a pacman environment on Termux."
 _http="https://github.com"
 _ns="themartiancompany"
 url="${_http}/${_ns}/${_pkgbase}"
-pkgver=0.1
+pkgver="0.1.1"
 pkgrel=2
 license=(
-  'AGPL3')
+  'AGPL3'
+)
 depends=(
-  curl)
+  curl
+)
 makedepends=(
   'git'
 )
@@ -36,13 +39,53 @@ sha256sums=(
   'SKIP'
 )
 
+_parse_ver() {
+  local \
+    _pkgver="${1}" \
+    _out="" \
+    _ver \
+    _rev \
+    _commit
+  _ver="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $1}')"
+  _rev="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $2}')"
+  _commit="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $3}')"
+  _out=${_ver}
+  if [[ "${_rev}" != "" ]]; then
+    _out+=".r${_rev}"
+  fi
+  if [[ "${_commit}" != "" ]]; then
+    _out+=".${_commit}"
+  fi
+  echo \
+    "${_out}"
+}
+
 pkgver() {
-  cd "${pkgname}"
-  git \
-    describe \
-    --tags | \
-    sed \
-      's/-/+/g'
+  cd \
+    "${pkgname}"
+  _pkgver="$( \
+    git \
+      describe \
+      --tags | \
+      sed \
+        's/-/+/g')"
+  _parse_ver \
+    "${_pkgver}"
 }
 
 check() {

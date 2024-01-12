@@ -1,6 +1,6 @@
 pkgbase = termux-setup-pacman-git
 	pkgdesc = Script to setup a pacman environment on Termux.
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 2
 	url = https://github.com/themartiancompany/termux-setup-pacman
 	arch = any
