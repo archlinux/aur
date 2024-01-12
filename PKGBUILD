@@ -2,7 +2,8 @@
 _appname=music-player
 pkgname="lucashazardous-${_appname}-bin"
 pkgver=2.12.5
-pkgrel=2
+_electronversion=26
+pkgrel=3
 pkgdesc="Desktop Electron app for playing and downloading music."
 arch=('x86_64')
 url="https://github.com/LucasHazardous/music-player"
@@ -10,13 +11,10 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron26'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    "electron${_electronversion}"
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -28,11 +26,15 @@ source=(
 )
 sha256sums=('3b3ef8988b2365c0baae8a6832bf4985981d24deaa4c97e8fa2c919df93e7cfb'
             '4de62e75233b269ff4b9e1bf7ba805d82bd3cbeab4c204b54043dee4965f849c'
-            'cb24ff4f5fbc5df8f7153bea4c5538542f67405264d6b5bea41c75e2ed9f5e7d')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" \
+    sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" \
         -e "s|audio;|AudioVideo;|g" \
         -e "s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/squashfs-root/${_appname}.desktop"
