@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wage at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Francois Menning <f.menning@pm.me>
 pkgname=volantes-cursors-git
 pkgver=r7.b13a4bb
@@ -10,6 +10,7 @@ license=('GPL2')
 makedepends=('git' 'inkscape' 'libcanberra' 'xorg-xcursorgen')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!strip')
 source=("git+https://github.com/varlesh/volantes-cursors.git")
 sha256sums=('SKIP')
 

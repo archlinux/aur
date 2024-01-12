@@ -11,6 +11,7 @@ pkgbase = volantes-cursors-git
 	makedepends = xorg-xcursorgen
 	provides = volantes-cursors
 	conflicts = volantes-cursors
+	options = !strip
 	source = git+https://github.com/varlesh/volantes-cursors.git
 	sha256sums = SKIP
 
