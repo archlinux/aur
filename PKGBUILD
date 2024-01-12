@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cavif-git
-pkgver=1.5.1.r0.g7df78fd
+pkgver=1.5.5.r0.gd52a658
 pkgrel=1
 pkgdesc="AVIF image creator in pure Rust"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-/./'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-/./g'
 }
 
 check() {
