@@ -4,7 +4,7 @@
 _name=Fluida.lv2
 _plugin_uri="https://github.com/brummer10/$_name"
 pkgname=${_name,,}
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='An LV2 plugin which wraps the fluidsynth SF2 soundfont player'
 arch=(x86_64 aarch64)
@@ -16,7 +16,7 @@ checkdepends=(lv2lint)
 optdepends=('lv2-host: for loading the LV2 format plugin')
 groups=(lv2-plugins pro-audio)
 source=("https://github.com/brummer10/Fluida.lv2/releases/download/v$pkgver/${_name}-v$pkgver-src.tar.xz")
-sha256sums=('d9aaa6802fb2ff37c6227c8f090a20a2cf5bf900798ef8ca21f8701807ac9270')
+sha256sums=('36a67475ab2f98ac45d6e40f90d83fe7facfdb0a0d346f9eeb35d66529b6b6d3')
 
 build() {
   cd $_name-v$pkgver
