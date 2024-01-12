@@ -9,8 +9,8 @@ pkgrel=1
 pkgdesc="Virtualization viewer using QEMU over DBus"
 arch=(x86_64)
 url="https://gitlab.gnome.org/bilelmoussaoui/snowglobe/"
-depends=(postgresql icu)
-makedepends=(gtk4 glib2 desktop-file-utils meson)
+depends=(gtk4 glib2 desktop-file-utils)
+makedepends=(gcc meson)
 source=("git+https://gitlab.gnome.org/bilelmoussaoui/snowglobe.git")
 sha256sums=('SKIP')
 
