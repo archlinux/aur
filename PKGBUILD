@@ -1,10 +1,11 @@
+# Maintainer: jgmdev <jgmdev at gmail dot com>
 # Maintainer: redtide <redtid3 at gmail dot com>
 # Maintainer: Antonio O. <antonio.mx.9605 at gmail dot com>
 
 _prjname=wxFormBuilder
 pkgname=wxformbuilder
-pkgver=3.10.1
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="RAD tool for wxWidgets GUI design"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/wxFormBuilder/wxFormBuilder"
@@ -14,19 +15,16 @@ conflicts=('wxformbuilder' 'wxformbuilder-svn' 'wxformbuilder-git')
 depends=('wxwidgets-gtk3' 'boost')
 makedepends=('cmake')
 source=(
-  "https://github.com/wxFormBuilder/wxFormBuilder/releases/download/v3.10.1/wxFormBuilder-3.10.1-source-full.tar.gz"
-  "auitabart.patch"
-  "md5hh-cinttypes.patch"
+  "https://github.com/wxFormBuilder/wxFormBuilder/releases/download/v${pkgver}/wxFormBuilder-${pkgver}-source-full.tar.gz"
+  "tinyxml2-no-install.patch"
 )
 sha512sums=(
-  "de8d51b8907529fd882bcd1908fbce49381f0e75bfb0ea00b319d856d835769739e03b829b9ede5d1439513fba1e42bbc247e51cde54f89dc50efa1b0bc43a4c"
-  "ecf3df7d10852ea5137713ea5568cb42601e3bd2047d9a020288617cc503d42027de414bbd739d16e695354e2822361a6510d2a14f93b88ec4d433dc680fc16f"
-  "bbf684fe66abdb40c1845e0634d583726af5c77731b2f48662b929eb0f679704e999bc02b03efc2c1f6276131f8826bc646f8a33e90e58042074560e8432aaa4"
+  "fd50f66584a6b03d7cb2281d20649fb39b2d4923dadfa44bc244732d524a08483ed9c7a97fbf02d613b7a1e494858b9ea0d2d13a554bcca2dab277cfa892ecc1"
+  "cb941a55d67104f68a3b1ab84f19c5016d96ba52efb9ea7755be33f52af6c5ce8fba36f25e8f10d0ddd38ed9842192a6ef55a9de2b54b3428aed4e360653b7c0"
 )
 prepare() {
     cd "${_prjname}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/auitabart.patch"
-    patch --forward --strip=1 --input="${srcdir}/md5hh-cinttypes.patch"
+    patch --forward --strip=1 --input="${srcdir}/tinyxml2-no-install.patch"
 }
 build() {
   cd "${_prjname}-${pkgver}"
