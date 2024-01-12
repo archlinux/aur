@@ -2,46 +2,96 @@
 #
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
-_pkgname=dynssh
-pkgname="${_pkgname}-git"
-pkgver="v0.1.2+5+g9f1de0c"
+_pkgbase=dynssh
+pkgname="${_pkgbase}-git"
+pkgver="0.1.2+8+g25f6c6f"
 pkgrel=2
 pkgdesc="Simple SSH wrapper"
-arch=(any)
-_host='https://github.com'
+arch=(
+  any
+)
+_gl="gitlab.com"
+_gh="github.com"
+_host="https://${_gh}"
 _ns='themartiancompany'
-url="${_host}/${_ns}/${_pkgname}"
+_local="${HOME}/${_pkgbase}"
+url="${_host}/${_ns}/${_pkgbase}"
 license=(
   AGPL3)
 depends=(
-  openssh)
+  openssh
+)
 makedepends=()
 checkdepends=(
   shellcheck)
 provides=(
-  "${_pkgname}=${pkgver}")
+  "${_pkgbase}=${pkgver}")
 conflicts=(
-  "${_pkgname}")
-_url="file://${HOME}/${_pkgname}"
+  "${_pkgbase}")
+_url="file://${HOME}/${_pkgbase}"
 source=(
-  "git+${url}")
+  "git+${url}"
+  # "git+${_local}"
+)
 sha256sums=(
   SKIP)
 
+_parse_ver() {
+  local \
+    _pkgver="${1}" \
+    _out="" \
+    _ver \
+    _rev \
+    _commit
+  _ver="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $1}')"
+  _rev="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $2}')"
+  _commit="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $3}')"
+  _out=${_ver}
+  if [[ "${_rev}" != "" ]]; then
+    _out+=".r${_rev}"
+  fi
+  if [[ "${_commit}" != "" ]]; then
+    _out+=".${_commit}"
+  fi
+  echo \
+    "${_out}"
+}
+
 pkgver() {
+  local \
+    _pkgver
   cd \
-    "${_pkgname}"
-  git \
-    describe \
-    --tags | \
-    sed \
-      's/-/+/g'
+    "${_pkgbase}"
+  _pkgver="$( \
+    git \
+      describe \
+      --tags | \
+      sed \
+        's/-/+/g')"
+  _parse_ver \
+    "${_pkgver}"
 }
 
 package() {
   cd \
-    "${_pkgname}"
+    "${_pkgbase}"
   make \
     PREFIX="/usr" \
     DESTDIR="${pkgdir}" \
