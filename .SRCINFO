@@ -1,0 +1,27 @@
+pkgbase = deepin-qt6integration-git
+	pkgdesc = Qt platform theme integration plugins for DDE
+	pkgver = 6.0.4.r0.g9e98822
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/qt6integration
+	arch = x86_64
+	arch = aarch64
+	groups = deepin-git
+	license = GPL3
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = xcb-util-renderutil
+	makedepends = gtest
+	makedepends = gmock
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = dtk6widget-git
+	depends = deepin-qt6platform-plugins-git
+	depends = gcc-libs
+	provides = deepin-qt6integration
+	conflicts = deepin-qt6integration
+	source = git+https://github.com/linuxdeepin/qt6integration
+	sha512sums = SKIP
+
+pkgname = deepin-qt6integration-git
