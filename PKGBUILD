@@ -25,12 +25,12 @@ checkdepends=(
 )
 _url="file://${HOME}/${pkgname}"
 source=(
-  # "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-  "${pkgname}-${pkgver}::git+file://${_url}#tag=${pkgver}"
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+  # "${pkgname}-${pkgver}::git+file://${_url}#tag=v${pkgver}"
 )
 sha256sums=(
-  # "1c810836bd7a71d1650c207a5d3596b27d83e627c3376e738152ac93a939e9b2"
-  SKIP
+  "6ffac202a76a44e20467c1752a890e93b74f1cde4b386bec808cac74756e2526"
+  # SKIP
 )
 
 package() {

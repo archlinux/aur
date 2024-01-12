@@ -6,7 +6,7 @@ pkgbase = sus
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck
-	source = sus-0.1.1::git+file://file:///data/data/com.termux/files/home/sus#tag=0.1.1
-	sha256sums = SKIP
+	source = sus-0.1.1.tar.gz::https://github.com/themartiancompany/sus/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 6ffac202a76a44e20467c1752a890e93b74f1cde4b386bec808cac74756e2526
 
 pkgname = sus
