@@ -2,7 +2,7 @@
 
 pkgname=python-py-serializable
 _gitpkgname=serializable
-pkgver=0.16.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='Serialize and deserialize Python objects to and from JSON and XML'
 arch=('any')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-  'e121eca6d0261d1e353d5a2b7aa589677e08899d5ff2ff19b4093e043ef1e30e10a9a3ec9a74f677b94bcb8d1a3925ea68810eda0cf9ff7102097de7732f9ed1'
+  '0ceba8effc99cbd5ecb41388f0ccc3dfb3dd4b08fc9d9237a620deee92a636d56c98715c1d85352ea08652adffacad1bfca37a7ba6d833b1fe5d41187fc07875'
 )
 
 build() {
