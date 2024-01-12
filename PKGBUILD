@@ -2,15 +2,15 @@
 
 pkgname=socketcan-rs-git
 pkgver=3.3.0.r10.g7851a50
-pkgrel=1
+pkgrel=3
 pkgdesc="Linux SocketCAN access in Rust"
 arch=(aarch64
     riscv64
     x86_64)
 url="https://github.com/socketcan-rs/socketcan-rs"
 license=('MIT')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=(${pkgname%-git} rcan)
+conflicts=(${pkgname%-git} rcan)
 replaces=()
 depends=(cargo)
 makedepends=(git
