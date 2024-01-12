@@ -2,8 +2,8 @@
 
 _name=kidentitymanagement
 pkgname=${_name}5
-pkgver=23.08.3
-pkgrel=2
+pkgver=23.08.4
+pkgrel=1
 pkgdesc='KDE PIM libraries'
 arch=(x86_64)
 url='https://kontact.kde.org'
@@ -12,7 +12,7 @@ depends=(kpimtextedit5)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
 conflicts=('kidentitymanagement<24')
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('7f3483b82dd701f200297d5e6272e8fbb6df5f83438475b511668324e3aadbdd'
+sha256sums=('92736693685342c724034dd5675df858678f73fc1ed04189a7841e9b2237e89b'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
