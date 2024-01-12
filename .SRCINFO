@@ -1,0 +1,14 @@
+pkgbase = dedoc
+	pkgdesc = terminal based viewer for DevDocs
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/toiletbril/dedoc
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = gcc-libs
+	depends = openssl
+	source = dedoc-0.2.1.tar.gz::https://github.com/toiletbril/dedoc/archive/refs/tags/0.2.1.tar.gz
+	sha512sums = dc172c9cc61ed5a7126b907eb1ace5bba2b5049249d93dceb5f6b3d3acb3f92bb5616cf14bcfd3e0d0f9b0bd39b71a1655da9310bd882057f92210fbf5097106
+
+pkgname = dedoc
