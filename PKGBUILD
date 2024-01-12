@@ -3,6 +3,7 @@ pkgname=masscode-git
 _pkgname=massCode
 pkgver=v3.10.0.r2.gae9eb6b
 _electronversion=16
+_nodeversion=16
 pkgrel=1
 pkgdesc="A free and open source code snippets manager for developers"
 arch=('any')
@@ -11,7 +12,7 @@ _ghurl="https://github.com/massCodeIO/massCode"
 license=('MIT')
 makedepends=(
     'npm'
-    'pnpm>=8.0.0'
+    'pnpm'
     'git'
     'nvm'
     'gendesk'
@@ -20,40 +21,44 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-git}::git+${_ghurl}.git"
+    "${pkgname//-/.}::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '779f956756ea4f3f91df0fac3d9338d82fc8a74d54f9dea63abe305b8355420c')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname//-/.}"
     git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 16
-    nvm use 16
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
-    sed "s|@electronversion@|${_electronversion}|" -i "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname%-git}"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname%-git}"
-    sed "s|snap|AppImage|g" -i config/electron-builder.ts
+    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname//-/.}"
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
-    export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+    sed "s|snap|AppImage|g" -i config/electron-builder.ts
     pnpm install
     pnpm run build
     pnpm run release
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-git}/resources"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar -t "${pkgdir}/opt/${pkgname%-git}/resources"
     install -Dm644 "${srcdir}/${pkgname%-git}/config/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
