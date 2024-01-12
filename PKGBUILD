@@ -2,9 +2,9 @@
 
 pkgname="cidr-merger"
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple command line tool to merge ip/ip cidr/ip range, supports IPv4/IPv6."
-arch=("x86_64")
+arch=("x86_64" "aarch64" "armv7h" "armv6h")
 url="https://github.com/zhanhb/${pkgname}"
 license=("MIT")
 provides=("${pkgname}")
