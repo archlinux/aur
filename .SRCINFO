@@ -28,6 +28,7 @@ pkgbase = meshlab-git
 	depends = gmp
 	depends = mpfr
 	depends = mesa
+	depends = qhull
 	optdepends = lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support
 	optdepends = muparser: for filer_func plugins
 	optdepends = openctm-tools: for compressed triangle mesh file format
