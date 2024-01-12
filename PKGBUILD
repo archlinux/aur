@@ -2,7 +2,7 @@
 
 pkgname=python-packageurl
 _gitpkgname=packageurl-python
-pkgver=0.13.1
+pkgver=0.13.4
 pkgrel=1
 pkgdesc='A purl aka. Package URL parser and builder'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
 conflicts=('python-packageurl-git')
 options=('!strip')
 source=("${_gitpkgname}-${pkgver}.tar.gz::https://github.com/package-url/packageurl-python/archive/v${pkgver}.tar.gz")
-sha512sums=('f28c6f6c9bb05ec80a6a61da58dec3e489e42765fce551d2245c66ee02dc35a0950363fe4d85953cbf59e32df59e2ca1183691fe02eab0eb39287f13f32ff6b1')
+sha512sums=('4bf60772b5e998117573a5c8252bdd62022900a97b7b974e12831c6a16fe1891d12305802262127db754fc3af5c7b5759bf008ad79a6425965f4ca7e81cd6866')
 
 build() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
