@@ -1,40 +1,37 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=single-file
-pkgver=0.3.32
+_name=single-file-cli
+pkgver=1.1.47
 pkgrel=1
-pkgdesc="Command line tool to download a web page into a single HTML file"
-arch=('any')
-url="https://github.com/gildas-lormeau/SingleFile"
-license=('AGPL3')
-depends=('nodejs')
-makedepends=('npm')
+pkgdesc="CLI tool for saving a faithful copy of a complete web page in a single HTML file"
+arch=(any)
+url="https://github.com/gildas-lormeau/single-file-cli"
+license=(AGPL3)
+depends=(nodejs)
+makedepends=(npm)
 optdepends=(
   'chromium: for webdriver-chromium backend'
   'playwright: for playwright-{firefox,chromium} backend'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-noextract=("$pkgname-$pkgver.tar.gz")
-sha512sums=('702673a030802f5cf1f79c01f0e607085c878fb34ccacd7278ca1ede5c317a659c09e4f5993e18ae9a85e411bac0a5bbcdd0960de4309f53820cd7f3db254d65')
-b2sums=('6867019f4bc3b6bdbbf7e151452a0905fcd8059c6a51555f148347bca740423481ce8ccc1a9e92af504365f85872c0442270926a20159c772f8211a4ba5c417c')
+
+source=("https://registry.npmjs.org/$_name/-/$_name-$pkgver.tgz")
+noextract=("$_name-$pkgver.tgz")
+sha256sums=('85cfb06d1f83106ae9fecd887046ef3b1e847c4c0709aaae203700895a89656a')
 
 package() {
-  local NPM_FLAGS=(--no-audit --no-fund --no-update-notifier)
-  npm install \
-    --global \
-    --prefix "${pkgdir}/usr" \
-    "${NPM_FLAGS[@]}" \
-    "$pkgname-$pkgver.tar.gz"
+  npm install -g \
+    --cache "$srcdir/npm-cache" \
+    --prefix "$pkgdir/usr" \
+    "$srcdir/$_name-$pkgver.tgz"
+
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    "$pkgdir/usr/lib/node_modules/$_name/README.MD"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    "$pkgdir/usr/lib/node_modules/$_name/LICENSE"
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
-  chown -R root:root "${pkgdir}"
-
-  cd "$pkgdir/usr/lib/node_modules/$pkgname"
-
-  # documentation
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.MD
-
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  chown -R root:root "$pkgdir"
 }
