@@ -1,7 +1,5 @@
+ddns-go
 src
 pkg
-*.zst
-*.asar
-*.xz
-*.tar
-*.gz
+*.pkg.tar.zst
+*.tar.gz

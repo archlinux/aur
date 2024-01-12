@@ -1,0 +1,13 @@
+[Unit]
+Description = A simple, easy-to-use ddns service.
+Wants = network-online.target
+After = network-online.target
+
+[Service]
+ExecStart = /usr/bin/ddns-go -c .config/ddns-go/config.yml
+ExecStartPost = /usr/bin/mkdir -p .config/ddns-go
+Restart = always
+RestartSec = 5
+
+[Install]
+WantedBy = default.target

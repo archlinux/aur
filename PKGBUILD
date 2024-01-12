@@ -1,26 +1,51 @@
-_pkgname=ddns-go
-pkgname=${_pkgname}
-pkgver=5.6.2
+pkgname="ddns-go"
+pkgver=6.0.1
 pkgrel=1
-pkgdesc='简单好用的DDNS。自动更新域名解析到公网IP(支持阿里云、腾讯云dnspod、Cloudflare、华为云)'
+pkgdesc="A simple, easy-to-use ddns service | 简单好用的DDNS"
 license=('MIT')
-arch=('x86_64' 'i686' 'aarch64' 'armv6h')
-url="https://github.com/jeessy2/${_pkgname}"
-provides=(${_pkgname})
-conflicts=(${_pkgname})
-source=(${_pkgname}.service)
-source_x86_64=("https://github.com/jeessy2/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
-source_i686=("https://github.com/jeessy2/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_i386.tar.gz")
-source_aarch64=("https://github.com/jeessy2/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
-source_armv6h=("https://github.com/jeessy2/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv6.tar.gz")
-sha256sums=('c264ee5afaee8abed884cdd167f2e3281e08c3d74778790263163c114cd650d5')
-sha256sums_x86_64=('853d60a72e998b81335891697a038a245e86f1a7f8a6682d2200f7544edcbda0')
-sha256sums_i686=('0ec2c1d7646c0907d3a71d0665bb290583f4043f644722e3267d2c6228cb05ef')
-sha256sums_aarch64=('2d4c1e10b6adfbc6e94fff8e3200fca1574f3538b0b5690be3e303b90c8279d8')
-sha256sums_armv6h=('86a8ac7ca51c906ebab2b29f2e9eed5a4ec9cd34189864516cc430627710c735')
- 
+arch=("x86_64" "aarch64" "armv7h" "armv6h")
+url="https://github.com/jeessy2/${pkgname}"
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+backup=("etc/${pkgname}/${pkgname}.env" "etc/${pkgname}/config.yml")
+install="${pkgname}.install"
+license=("MIT")
+depends=("glibc")
+makedepends=("git" "go")
+source=("${pkgname}::git+${url}"
+        "${pkgname}.env"
+        "${pkgname}.service"
+        "${pkgname}.sysusers"
+        "${pkgname}.user.service")
+sha256sums=('SKIP'
+            'adc5116f5b965e642a826dd2ac5680a112b85b89963658dae18242cffb9224dc'
+            'f1d7ee4f2ef6c13270ff7e3b9f17a35c5faba76e7601a81cc0ac75da9e27f724'
+            '558a170cae11f423591c5487dfe5f5e72f4aa88aaf62055f79a6656b6a98235a'
+            'e6f40c329735dca3d1bd4597ffe0545c81db814499f4363a2df033f4e41a371d')
+
+build() {
+    cd "${pkgname}"
+    git checkout "v${pkgver}"
+
+    local build_time="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+    local ldflags=" \
+        -s -w \
+        -X main.version=${pkgver} \
+        -X main.buildTime=${build_time} \
+        -extldflags '${LDFLAGS}'
+    "
+    go build \
+        -trimpath \
+        -ldflags="$ldflags"
+}
+
 package() {
-    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    install -Dm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+    install -Dm755 "${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 
+    install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "${pkgname}.env" "${pkgdir}/etc/${pkgname}/${pkgname}.env"
+    install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+    install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    touch "${pkgdir}/etc/${pkgname}/config.yml"
 }
