@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sqlite-fossil
-pkgver=r29917.cb54c2d
+pkgver=r30876.f47a5f4
 pkgrel=1
 pkgdesc="Self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.sqlite.org/"
 license=('custom:Public Domain')
 depends=('glibc' 'readline' 'zlib')
 makedepends=('fossil' 'tcl')
-provides=("sqlite=$pkgver")
+provides=("sqlite=$pkgver" 'libsqlite3.so')
 conflicts=('sqlite')
 options=('staticlibs')
 source=("sqlite.fossil::fossil+https://www.sqlite.org/src")

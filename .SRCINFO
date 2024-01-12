@@ -1,6 +1,6 @@
 pkgbase = sqlite-fossil
 	pkgdesc = Self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine
-	pkgver = r29917.cb54c2d
+	pkgver = r30876.f47a5f4
 	pkgrel = 1
 	url = https://www.sqlite.org/
 	arch = i686
@@ -11,7 +11,8 @@ pkgbase = sqlite-fossil
 	depends = glibc
 	depends = readline
 	depends = zlib
-	provides = sqlite=r29917.cb54c2d
+	provides = sqlite=r30876.f47a5f4
+	provides = libsqlite3.so
 	conflicts = sqlite
 	options = staticlibs
 	source = sqlite.fossil::fossil+https://www.sqlite.org/src
