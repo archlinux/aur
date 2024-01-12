@@ -1,0 +1,15 @@
+[Unit]
+Description = Book Reader Server | 阅读3服务器版
+Wants = network-online.target
+After = network-online.target
+
+[Service]
+User = reader-server
+Group = reader-server
+Restart = on-failure
+WorkingDirectory = /var/lib/reader-server
+EnvironmentFile = -/etc/reader-server/reader-server.env
+ExecStart = /usr/bin/java -jar /usr/share/java/reader-server.jar --spring.config.additional-location=file:/etc/reader-server/ $JAVA_OPT
+
+[Install]
+WantedBy = multi-user.target

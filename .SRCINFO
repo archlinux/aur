@@ -1,0 +1,22 @@
+pkgbase = reader-server
+	pkgdesc = Book Reader Server | 阅读3服务器版
+	pkgver = 3.2.7
+	pkgrel = 1
+	url = https://github.com/hectorqin/reader
+	arch = any
+	license = GPL3
+	depends = java-runtime-headless>=8
+	backup = etc/reader-server/reader-server.env
+	backup = etc/reader-server/application.properties
+	source = https://github.com/hectorqin/reader/releases/download/v3.2.7/reader-server-3.2.7.zip
+	source = reader-server.env
+	source = reader-server.service
+	source = reader-server.sysusers
+	source = reader-server.tmpfiles
+	sha256sums = 9593408b1244fd6be41cdf9bfca69c7f2e95b6ca0cbfa07588723228c16d8f4c
+	sha256sums = 9c1993de3d0d23b7dcfdd7983f976010ce7ae1dcb4c779afd00563c7ab3cb248
+	sha256sums = 411a0c79d2180c4aa901da3766412a1485b0867d1a129f65cd5c4f07f0a0bd25
+	sha256sums = e7d9a30b52e4e342f27e3cd3e98731729025ebefcd70e1e1a42c9863420bcbd3
+	sha256sums = 4a3fa6b192b80c4e10052634e8b0d9a5aabd9268014c09876b6228f403ac2d35
+
+pkgname = reader-server
