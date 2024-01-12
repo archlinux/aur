@@ -291,7 +291,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
   gn gen out/Release --args="${_flags[*]}"
-  ninja -C out/Release chrome chrome_sandbox chromedriver.unstripped
+  ninja -C out/Release chrome chrome_sandbox chromedriver
 }
 
 package() {
@@ -303,7 +303,7 @@ package() {
   cd ../chromium-$pkgver
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
-  install -D out/Release/chromedriver.unstripped "$pkgdir/usr/bin/chromedriver"
+  install -D out/Release/chromedriver "$pkgdir/usr/bin/chromedriver"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
