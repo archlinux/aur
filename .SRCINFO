@@ -1,6 +1,6 @@
 pkgbase = r-rintrojs
 	pkgdesc = Wrapper for the 'Intro.js' Library
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rintrojs
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-rintrojs
 	depends = r-shiny
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rintrojs_0.3.3.tar.gz
-	sha256sums = fce532f6c84d99473e26f6bf101f639001eb820536676eb3275adad4d2a7c5bb
+	source = https://cran.r-project.org/src/contrib/rintrojs_0.3.4.tar.gz
+	sha256sums = d428201d7e9e5f18161f5a941506c2fb22cc58dde6eb6542a261040307242489
 
 pkgname = r-rintrojs
