@@ -5,7 +5,7 @@
 
 _pkgname=sus
 pkgname="${_pkgname}-git"
-pkgver="v0.1+3+g0d3bd1f"
+pkgver="0.1.1.r1.g6746536"
 pkgrel=2
 pkgdesc="Simple setup user script"
 arch=(any)
