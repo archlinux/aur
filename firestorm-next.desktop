@@ -1,8 +1,7 @@
 [Desktop Entry]
-Version=1.0
 Type=Application
-Name=Pre-release Firestorm Second Life viewer
-Comment=Second Life is a 3-D virtual world entirely built and owned by its residents
+Name=[PRE-RELEASE] Firestorm Second Life Viewer
+Comment=Second Life is a 3D virtual world entirely built and owned by its residents
 Exec=/usr/bin/firestorm-next
 Icon=firestorm-next
 Terminal=false
