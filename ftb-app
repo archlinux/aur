@@ -1,2 +1,0 @@
-#!/bin/bash
-exec electron22 -r /usr/lib/ftb-app/bin/preload.js /usr/lib/ftb-app/bin "$@"
