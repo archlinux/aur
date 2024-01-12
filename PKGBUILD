@@ -2,7 +2,7 @@
 pkgname=numbat
 _pkgname=numbat-cli
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
 arch=('any')
 url="https://github.com/sharkdp/numbat"
@@ -14,6 +14,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_pkgname/$_pkgname-$pkgver.crate" 
   "v$pkgver::https://github.com/sharkdp/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
+options=(!lto)
 
 sha512sums=(
   '5cecba702a4570ad8cb6a5ec12c8ff789153a86314548961b1f866dcf1c4031ea4976a6600b11b01b299f70b970aa2ec22785c2aceb0201e38251e673ba463c5'
