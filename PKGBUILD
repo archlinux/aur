@@ -1,31 +1,37 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=vanity_gpg
-pkgver=0.3.2
+# v0.3.2 build broken, requires dependency updates
+_commit=4f6fcd4233d6b658b1b03622d8f6e768538ddf1c
+pkgver=0.3.2.r3.g4f6fcd4
 pkgrel=1
 pkgdesc='Tool for generating and filtering vanity GPG keys'
 arch=('x86_64')
 url='https://github.com/RedL0tus/VanityGPG'
 license=('MIT')
-depends=('nettle' 'bzip2')
-makedepends=('cargo' 'clang' 'openssl')
-source=("$url"/archive/v"$pkgver"/"$pkgname"-"$pkgver".tar.gz)
-sha512sums=('1ccdb669b181da95f58ee1d5f2142f727183f193ba1013b27665ed4758adefd4bdff19d00782de782928f5e72ffa3ba2c47334c2bd9b63326fd388a551dc5d63')
+depends=(bzip2 gmp glibc gcc-libs nettle)
+makedepends=(cargo clang git openssl)
+#source=("$url"/archive/v"$pkgver"/"$pkgname"-"$pkgver".tar.gz)
+source=("$pkgname::git+$url#commit=$_commit")
+sha512sums=('SKIP')
+options=(!lto)
 
-export RUSTUP_TOOLCHAIN=stable
-export CARGO_TARGET_DIR=target
+pkgver() {
+  cd $pkgname
+  git describe --long --tags --abbrev=7 | sed 's/^v//; s/-/.r/; s/-/./'
+}
 
 prepare() {
-  cd VanityGPG-"$pkgver"
-  cargo fetch --target "$CARCH"-unknown-linux-gnu
+  cd $pkgname
+  cargo fetch --locked --target "$CARCH"-unknown-linux-gnu
 }
 
 build() {
-  cd VanityGPG-"$pkgver"
-  cargo build --offline --release
+  cd $pkgname
+  cargo build --frozen --release --all-targets
 }
 
 package() {
-  cd VanityGPG-"$pkgver"
+  cd $pkgname
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"
   install -Dm755 target/release/"$pkgname" -t "$pkgdir"/usr/bin
 }
