@@ -1,6 +1,6 @@
 pkgbase = numactl-git
 	pkgdesc = Simple NUMA policy support
-	pkgver = 2.0.16.r21.g693fee1
+	pkgver = 2.0.16.r52.ga3a2a82
 	pkgrel = 1
 	url = https://github.com/numactl/numactl
 	arch = i686
@@ -9,7 +9,8 @@ pkgbase = numactl-git
 	license = LGPL
 	makedepends = git
 	depends = glibc
-	provides = numactl=2.0.16.r21.g693fee1
+	provides = numactl=2.0.16.r52.ga3a2a82
+	provides = libnuma.so
 	conflicts = numactl
 	options = staticlibs
 	source = git+https://github.com/numactl/numactl.git
