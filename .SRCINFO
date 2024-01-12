@@ -1,6 +1,6 @@
 pkgbase = r-jaspjags
 	pkgdesc = JAGS Module for JASP
-	pkgver = 0.18.2
+	pkgver = 0.18.3
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspJags
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-jaspjags
 	depends = r-jaspgraphs
 	depends = r-rjags
 	depends = r-stringr
-	source = jaspJags_0.18.2.tar.gz::https://github.com/jasp-stats/jaspJags/archive/refs/tags/v0.18.2.tar.gz
-	sha256sums = 35fe76c40dad55be3837405934b954b80cce1a5b858bd029576d9db9db76ad3e
+	source = jaspJags_0.18.3.tar.gz::https://github.com/jasp-stats/jaspJags/archive/refs/tags/v0.18.3.tar.gz
+	sha256sums = 795eb36b426a1bd5c4dcfbb9599659150f8eba2066e7f5a9802fabd9d409221a
 
 pkgname = r-jaspjags
