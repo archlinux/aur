@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text bmputil-0.1.2.orig/Cargo.lock bmputil-0.1.2.new/Cargo.lock
+--- bmputil-0.1.2.orig/Cargo.lock	2023-12-01 05:45:59.000000000 +0000
++++ bmputil-0.1.2.new/Cargo.lock	2024-01-12 16:49:18.720077257 +0000
+@@ -123,7 +123,7 @@
+ 
+ [[package]]
+ name = "bmputil"
+-version = "0.1.1"
++version = "0.1.2"
+ dependencies = [
+  "anstyle",
+  "anyhow",
