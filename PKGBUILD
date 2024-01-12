@@ -1,13 +1,22 @@
-# Maintainer: Yunchuan "Winslow" Hu
+# Maintainer: Yunchuan "Winslow" Hu <i@winsloweric.com, winslows@student.ubc.ca>
 # Contributor: Mark Austin <ganthore@gmail.com>
 # Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
+# This package is forked from https://aur.archlinux.org/packages/setroubleshoot
+#
+# This package was created to use the new upstream URL and workaround a build
+# problem due to the depreciation of python-formatter.
+# Issue:
+# https://gitlab.com/setroubleshoot/setroubleshoot/-/commit/838f53a97ce44ea0f8f4d361afcb62a441f8633f
+
 # This is a nearly completely rewrite of the original PKGBUILD which consist multiple errors in the actual running & used pip
+
+# TODO: install man and app metadata
 
 pkgbase=setroubleshoot-git
 pkgname=(setroubleshoot-git setroubleshoot-server-git)
 pkgver=3.3.32.r3.g502d06c
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides tools to help diagnose SELinux problems"
 groups=('selinux')
 arch=('x86_64' 'aarch64')
@@ -18,6 +27,7 @@ provides=("setroubleshoot-git" "setroubleshoot-server-git")
 makedepends=('audit' 'dbus' 'desktop-file-utils' 'gtk3' 'libnotify' 'libreport'
              'policycoreutils' 'polkit' 'python-gobject' 'python-pydbus'
              'python-slip' 'python-systemd' 'xdg-utils' 'python-dasbus')
+
 source=(
     'setroubleshoot-git::git+https://gitlab.com/setroubleshoot/setroubleshoot#branch=main'
     'setroubleshoot.logrotate'
@@ -29,7 +39,6 @@ sha256sums=('SKIP'
             '894a75c33d568f908f0c3fa7fe4d7f82824369695194aa005fe42cf961298893'
             'eb7321b7db2fd8951c7ce3c7c42680fcfe7641c3d7be9e8d69a8fbb992a9d086'
             'fa20d1ec3522aa877fc5462d56692b318b4c8af1cd9ecb62ec41ad6647662d77')
-
 
 pkgver() {
   cd "$pkgname"
@@ -92,6 +101,11 @@ package_setroubleshoot-git() {
 }
 
 package_setroubleshoot-server-git() {
+  pkgdesc="SELinux troubleshoot server"
+
+  depends=('audit' 'dbus' 'desktop-file-utils' 'gtk3' 'libnotify' 'libreport'
+           'policycoreutils' 'polkit' 'python-gobject' 'python-pydbus'
+           'python-slip' 'python-systemd' 'xdg-utils')
   cd "${pkgbase}"
   install -m644 -D "src/sedispatch.conf" "${pkgdir}/etc/audit/plugins.d/sedispatch.conf" 
   install -m755 -D "src/sealert" "${pkgdir}/usr/bin/sealert"
@@ -133,5 +147,7 @@ done
   chmod 600 "${pkgdir}/var/lib/setroubleshoot/setroubleshoot_database.xml"
   chmod 600 "${pkgdir}/var/lib/setroubleshoot/email_alert_recipients"
   chmod 750 "${pkgdir}/etc/audit/plugins.d/"
+  
+  # SETroubleshootD requires an audit event socket to function
   sudo sed -i 's/active = no/active = yes/g' /etc/audit/plugins.d/af_unix.conf
 }
