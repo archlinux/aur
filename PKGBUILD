@@ -1,6 +1,6 @@
 # Maintainer: Jonas Kalsvik <jonaskalsvik@gmail.com>
 pkgname="epicmickeylauncher"
-pkgver="0.3.8"
+pkgver="0.3.9"
 pkgrel=3
 epoch=
 pkgdesc="Mod Installer, Level Loader & Launcher for every Epic Mickey game."
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("package::https://github.com/KjubDusJub/Epic-Mickey-Launcher/releases/download/${pkgver}/epic-mickey-launcher_${pkgver}_amd64.deb")
+source=("https://github.com/KjubDusJub/Epic-Mickey-Launcher/releases/download/${pkgver}/epic-mickey-launcher_${pkgver}_amd64.deb")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
@@ -35,6 +35,5 @@ package() {
 	cd ${srcdir}
 	install -Dm755 "usr/bin/epic-mickey-launcher" "${pkgdir}/usr/bin/epic-mickey-launcher"
 	install -Dm755 "usr/share/applications/epic-mickey-launcher.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	# disabling this until 0.3.9
-	# cp -r "${srcdir}/usr/share/icons/" "${pkgdir}/usr/share/icons/"
+	cp -r "${srcdir}/usr/share/icons/" "${pkgdir}/usr/share/icons/"
 }
