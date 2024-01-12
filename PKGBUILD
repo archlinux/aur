@@ -6,7 +6,7 @@
 
 _pkgname=aspe
 pkgname="${_pkgname}-git"
-pkgver=1.0.r8.gcee1c15
+pkgver="1.1.r1.gb89d19e"
 pkgrel=2
 pkgdesc="Arch Linux build source file clone tool"
 arch=(
