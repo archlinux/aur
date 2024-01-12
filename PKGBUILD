@@ -2,18 +2,14 @@
 #
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
 _pkgname=reallymakepkg
-pkgbase="${_pkgname}-git"
-pkgname=(
-  "${pkgbase}"
-)
-pkgver=v1.0+31+g23c49a6
+pkgname="${_pkgname}-git"
+pkgver=1.1.r1.g0adf69d
 pkgrel=1
 pkgdesc="System-independent makepkg"
-arch=(
-  any
-)
+arch=(any)
 _repo="https://github.com"
 _ns="themartiancompany"
 url="${_repo}/${_ns}/${_pkgname}"
@@ -21,11 +17,7 @@ license=(
   AGPL3)
 depends=()
 makedepends=(
-  'git')
-optdepends=(
-  "ipfs-dlagent: alternative ipfs support"
-  "transmission-dlagent: bittorrent resources support"
-)
+  git)
 provides=(
   "${_pkgname}=${pkgver}")
 conflicts=(
@@ -38,14 +30,55 @@ sha256sums=(
   SKIP
 )
 
+_parse_ver() {
+  local \
+    _pkgver="${1}" \
+    _out="" \
+    _ver \
+    _rev \
+    _commit
+  _ver="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $1}')"
+  _rev="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $2}')"
+  _commit="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $3}')"
+  _out=${_ver}
+  if [[ "${_rev}" != "" ]]; then
+    _out+=".r${_rev}"
+  fi
+  if [[ "${_commit}" != "" ]]; then
+    _out+=".${_commit}"
+  fi
+  echo \
+    "${_out}"
+}
+
 pkgver() {
+  local \
+    _pkgver
   cd \
     "${_pkgname}"
-  git \
-    describe \
-    --tags | \
-    sed \
-      's/-/+/g'
+  _pkgver="$( \
+    git \
+      describe \
+      --tags | \
+      sed \
+        's/-/+/g')"
+  _parse_ver \
+    "${_pkgver}"
 }
 
 package() {

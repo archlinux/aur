@@ -1,14 +1,12 @@
 pkgbase = reallymakepkg-git
 	pkgdesc = System-independent makepkg
-	pkgver = v1.0+31+g23c49a6
+	pkgver = 1.1.r1.g0adf69d
 	pkgrel = 1
 	url = https://github.com/themartiancompany/reallymakepkg
 	arch = any
 	license = AGPL3
 	makedepends = git
-	optdepends = ipfs-dlagent: alternative ipfs support
-	optdepends = transmission-dlagent: bittorrent resources support
-	provides = reallymakepkg=v1.0+31+g23c49a6
+	provides = reallymakepkg=1.1.r1.g0adf69d
 	conflicts = reallymakepkg
 	source = git+https://github.com/themartiancompany/reallymakepkg
 	sha256sums = SKIP
