@@ -1,6 +1,6 @@
 pkgbase = mutter-git
 	pkgdesc = Window manager and compositor for GNOME
-	pkgver = 44.1+r204+g055d277c7
+	pkgver = 46.alpha+r124+gecdd2aeb8
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = mutter-git
 
 pkgname = mutter-git
 	provides = mutter
-	provides = libmutter-13.so
+	provides = libmutter-14.so
 	conflicts = mutter
 
 pkgname = mutter-docs-git

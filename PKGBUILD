@@ -10,7 +10,7 @@ pkgname=(
   mutter-git
   mutter-docs-git
 )
-pkgver=44.1+r202+g094504337
+pkgver=46.alpha+r124+gecdd2aeb8
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -108,7 +108,7 @@ _pick() {
 }
 
 package_mutter-git() {
-  provides=(mutter libmutter-13.so)
+  provides=(mutter libmutter-14.so)
   conflicts=(mutter)
 
   meson install -C build --destdir "$pkgdir"
