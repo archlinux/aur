@@ -35,6 +35,6 @@ package() {
    ln -s "/var/lib/${pkgname}/albumart" "${pkgdir}/usr/share/webapps/${pkgname}/albumart"
    install -d "${pkgdir}/var/lib/${pkgname}/prefs"
    ln -s "/var/lib/${pkgname}/prefs"    "${pkgdir}/usr/share/webapps/${pkgname}/prefs"
-   install -d "${pkgdir}/usr/share/licenses"
-   ln -s "/usr/share/webapps/${pkgname}/LICENCE.txt" "${pkgdir}/usr/share/licenses/$pkgname"
+   install -d "${pkgdir}/usr/share/licenses/$pkgname"
+   mv "${pkgdir}/usr/share/webapps/${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/$pkgname/"
 }
