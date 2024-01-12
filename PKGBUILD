@@ -46,7 +46,7 @@ package_rio() {
   install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgbase}/" "README.md"
   install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgbase}/" "LICENSE"
   desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "misc/${pkgbase}.desktop"
-  install -Dm0644 "docs/static/assets/${pkgbase}-logo.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgbase}.svg"
+  install -Dm0644 "docs/static/assets/${pkgbase}-logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgbase}.svg"
 }
 
 package_rio-terminfo() {
