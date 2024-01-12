@@ -1,3 +1,7 @@
-/gog_thimbleweed_park_*.sh
-/patch_thimbleweed_park_*.sh
-/thimbleweed_park_en_*.sh
+/.vscode/
+/src
+/pkg
+*.log
+*.pkg.*
+*.tar.*
+thimbleweed_park_*.sh

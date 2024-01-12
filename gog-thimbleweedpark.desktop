@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Thimbleweed Park
+Comment=Neo-noir mystery point-and-click adventure set in 1987
+Exec=thimbleweedpark
+Icon=gog-thimbleweedpark
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8

@@ -1,7 +1,7 @@
 pkgbase = gog-thimbleweedpark
-	pkgdesc = Thimbleweed Park
+	pkgdesc = Neo-noir mystery point-and-click adventure set in 1987. GOG version.
 	pkgver = 1.0.958.19330
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.gog.com/game/thimbleweed_park
 	arch = x86_64
@@ -20,8 +20,9 @@ pkgbase = gog-thimbleweedpark
 	options = !strip
 	source = thimbleweed_park_en_1_0_958_19330.sh::gogdownloader://thimbleweed_park/en3installer0
 	source = thimbleweedpark.shim
+	source = gog-thimbleweedpark.desktop
 	sha512sums = 93970bcfca4d201abf5858559f0fe33d2d3e18930d10e1c6e1691fee1075d82f5e6f6b51b0200d55276ce1546308ffc8ad9db5bbb5185af90f2caf092a4adf05
 	sha512sums = e769cb50a03620f41d864c296224e3a3c7bce93613b714590caabb8cd726ccef5f1a08a664a6018ef7fd74a836340ae6165cb0801e86424639adba3513d96d18
+	sha512sums = 8abe889a8e074abc0c88844581cd800fc041fc6987e5b8a52872dc859446be6d749ba9e5c80ead6246965499a01b1c77cd34fb51d4658cd5aef4fb403c6ee437
 
 pkgname = gog-thimbleweedpark
-
