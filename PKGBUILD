@@ -5,7 +5,7 @@
 pkgname=room-arranger
 _pkgname=rooarr
 pkgver=9.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="3D room / apartment / floor planner with simple user interface."
 arch=('x86_64')
 license=('custom')

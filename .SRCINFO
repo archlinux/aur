@@ -1,7 +1,7 @@
 pkgbase = room-arranger
 	pkgdesc = 3D room / apartment / floor planner with simple user interface.
 	pkgver = 9.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.roomarranger.com
 	arch = x86_64
 	license = custom
