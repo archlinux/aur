@@ -14,6 +14,7 @@ pkgbase = git-cola-git
 	makedepends = python-rst.linker
 	makedepends = python-setuptools-scm
 	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	makedepends = python-wheel
 	makedepends = rsync
 	makedepends = git
