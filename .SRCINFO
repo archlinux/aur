@@ -1,0 +1,21 @@
+pkgbase = unixodbc-git
+	pkgdesc = An open specification for providing application developers with a predictable API with which to access Data Sources
+	pkgver = 2.3.12.r12.g9b31cd2
+	pkgrel = 1
+	url = https://www.unixodbc.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	depends = libltdl
+	depends = readline
+	provides = unixodbc=2.3.12.r12.g9b31cd2
+	conflicts = unixodbc
+	options = staticlibs
+	backup = etc/odbc.ini
+	backup = etc/odbcinst.ini
+	source = git+https://github.com/lurcher/unixODBC.git
+	sha256sums = SKIP
+
+pkgname = unixodbc-git
