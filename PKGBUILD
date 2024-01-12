@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=imibrowser
-pkgver=14.5.4738
+pkgver=14.5.4750
 pkgrel=1
 pkgdesc="iReasoning MIB browser tool for SNMP API."
 url="https://www.ireasoning.com/mibbrowser.shtml"
@@ -11,7 +11,7 @@ depends=('jre-openjdk')
 makedepends=('imagemagick')
 source=("$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
 	"iMIBrowser.desktop")
-sha256sums=('3db09eef52250b3255c54f42bb66fc84ca4e44ef019e6956a4496757c0240633'
+sha256sums=('5b7128829d539ed141bfe2d4a8e5f7e09cadb9b3cff08271bc4a541bf86634de'
             '5d2ca5f1199f429a09f700476753bfdabd111acbf4fdaf7ea43ae8ed3879aa29')
 
 prepare() {
@@ -26,7 +26,7 @@ EOF
 }
 
 package() {
-    # Install /usr/bin executable file
+	# Install /usr/bin executable file
 	install -Dm755 "$srcdir"/$pkgname.sh "$pkgdir"/usr/bin/$pkgname
 
 	# Install application files
@@ -36,7 +36,7 @@ package() {
 	install -Dm644 "$srcdir"/ireasoning/mibbrowser/scripts/sample.txt "$pkgdir"/opt/$pkgname/scripts/sample.txt
 
 	cd "$srcdir"/ireasoning/mibbrowser
-	cp -dr --no-preserve='ownership' config docs images lib mibs "$pkgdir"/opt/$pkgname
+	cp -a --no-preserve='ownership' config docs images lib mibs "$pkgdir"/opt/$pkgname
 
 	# Install license files
 	install -Dm644 "$srcdir"/ireasoning/mibbrowser/license.txt \
