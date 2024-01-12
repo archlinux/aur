@@ -1,87 +1,132 @@
-# Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
-# Maintainer: Truocolo <truocolo@aol.com>
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer:  Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Maintainer:  Truocolo <truocolo@aol.com>
 # Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
+# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
 # shellcheck disable=SC2034
-_pkgname="gnome-control-center"
+_py="python"
+_proj="gnome"
+_ns="GNOME"
+_pkgname="${_proj}-control-center"
 pkgname="${_pkgname}-git"
 pkgver=43.0+11+g997a09e1a
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop"
-url="https://gitlab.gnome.org/GNOME/${_pkgname}"
-license=(GPL2)
+url="https://gitlab.${_proj}.org/${_ns}/${_pkgname}"
+license=(
+  GPL2
+)
 arch=(
   'arm'
   'aarch64'
   'armv7h'
   'x86_64'
   'i686'
-  'pentium4')
+  'pentium4'
+  'powerpc'
+)
 provides=(
-  "${_pkgname}")
+  "${_pkgname}=${pkgver}"
+)
 conflicts=(
-  "${_pkgname}")
+  "${_pkgname}"
+)
 depends=(
   accountsservice
-  cups-pk-helper
-  gnome-bluetooth-git
-  gnome-desktop-4-git
-  gnome-online-accounts
-  gnome-settings-daemon
-  gsettings-desktop-schemas-git
-  gtk4
-  libgtop
-  libnma-git
-  nm-connection-editor
-  sound-theme-freedesktop
-  upower
-  libpwquality
-  gnome-color-manager
-  smbclient
-  libmm-glib
-  libgnomekbd
-  libibus
-  libgudev
   bolt
-  udisks2
-  libhandy
+  colord-gtk4
+  cups-pk-helper
+  "${_proj}-bluetooth-git"
+  "${_proj}-color-manager"
+  "${_proj}-desktop-4-git"
+  "${_proj}-online-accounts"
+  "${_proj}-settings-daemon"
+  "gsettings-desktop-schemas-git"
   gsound
-  colord-gtk4)
+  gtk4
+  "lib${_proj}kbd"
+  libgtop
+  libgudev
+  libhandy
+  libibus
+  libnma-git
+  libpwquality
+  libmm-glib
+  nm-connection-editor
+  smbclient
+  sound-theme-freedesktop
+  udisks2
+  upower
+)
 makedepends=(
   docbook-xsl
-  modemmanager
   git
-  python
-  meson)
+  modemmanager
+  meson
+  "${_py}"
+)
 checkdepends=(
-  python-dbusmock
-  python-gobject
-  xorg-server-xvfb)
+  "${_py}-dbusmock"
+  "${_py}-gobject"
+  xorg-server-xvfb
+)
 optdepends=(
   'system-config-printer: Printer settings'
-  'gnome-user-share: WebDAV file sharing'
-  'gnome-remote-desktop: screen sharing'
+  "${_proj}-user-share: WebDAV file sharing"
+  "${_proj}-remote-desktop: screen sharing"
   'rygel: media sharing'
   'openssh: remote login'
-  'power-profiles-daemon: Power profiles support')
+  'power-profiles-daemon: Power profiles support'
+)
 groups=(
-  gnome)
+  "${_proj}"
+)
 source=(
-  "${_pkgname}::git+https://gitlab.gnome.org/GNOME/${_pkgname}.git"
-  "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
+  "${_pkgname}::git+${url}.git"
+  "git+https://gitlab.${_proj}.org/${_ns}/lib${_proj}-volume-control.git"
+)
 sha256sums=(
   'SKIP'
-  'SKIP')
+  'SKIP'
+)
 
 pkgver() {
+  local \
+    _pkgver \
+    _ver \
+    _rev \
+    _commit
   cd \
     "${_pkgname}" || \
     exit
-  git \
-    describe \
-    --tags | \
-      sed \
-        's/^GNOME_CONTROL_CENTER_//;s/_/./g;s/-/+/g'
+  _pkgver="$( \
+    git \
+      describe \
+      --tags | \
+        sed \
+          's/^GNOME_CONTROL_CENTER_//;s/_/./g;s/-/+/g')"
+  _ver="$( \
+    echo \
+      "${_pkgver}" | \
+        IFS="+" \
+          awk \
+            '{print $1}')"
+  _rev="$( \
+    echo \
+      "${_pkgver}" | \
+        IFS="+" \
+          awk \
+            '{print $2}')"
+  _commit="$( \
+    echo \
+      "${_pkgver}" | \
+        IFS="+" \
+          awk \
+            '{print $3}')"
+  echo \
+    "${_ver}.r${_rev}.${_commit}"
 }
 
 # shellcheck disable=SC2154
@@ -102,7 +147,7 @@ prepare() {
     submodule \
     set-url \
     subprojects/gvc \
-    "${srcdir}/libgnome-volume-control"
+    "${srcdir}/lib${_proj}-volume-control"
   git \
     submodule \
     update
