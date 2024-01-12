@@ -1,11 +1,10 @@
 pkgbase = r-rpref
 	pkgdesc = Database Preferences and Skyline Computation
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rPref
 	arch = x86_64
 	license = GPL
-	depends = r
 	depends = r-dplyr
 	depends = r-igraph
 	depends = r-lazyeval
@@ -18,6 +17,7 @@ pkgbase = r-rpref
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/rPref_1.4.0.tar.gz
-	sha256sums = 5c38750829772bf55f8b8e2231618a88e9438bd884274f398a754b5758258bfa
+	md5sums = 0ccb5ebbd5143f4a25fb38900bf84f64
+	b2sums = 68d293a70c04883b7816d7f1414527db7ace8b5456bb99bb1afaf88852109c227952321cfb5a0edc0d403dcf759acbdd7490344688c85ae9a6cc5e98b888e80e
 
 pkgname = r-rpref
