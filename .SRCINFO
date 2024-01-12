@@ -1,23 +1,26 @@
 pkgbase = black-magic-debug
 	pkgdesc = Plug&Play in application debugger for microcontrollers
-	pkgver = 1.9.2
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://black-magic.org
 	arch = any
 	license = GPL
+	license = BSD
+	license = MIT
 	makedepends = git
 	makedepends = hidapi
 	makedepends = python
-	source = https://github.com/blackmagic-debug/blackmagic/releases/download/v1.9.2/blackmagic-full-source-v1_9_2.tar.gz
-	sha256sums = 7dc8c6242eebab2131cf23cc1c30dcee5f17d411ec5e465edb4f14fee0f89243
+	source = https://github.com/blackmagic-debug/blackmagic/releases/download/v1.10.2/blackmagic-full-source-v1_10_2.tar.gz
+	sha256sums = c8e8c910d7b06522ac48fc99aa192aa682050b735db978db0df2fa557b961d88
 
 pkgname = black-magic-debug-app
 	depends = libusb
 	depends = libftdi
 	depends = libhidapi-libusb.so
-	provides = black-magic-app
-	conflicts = black-magic-app
+	provides = black-magic-debug-app
+	conflicts = black-magic-debug-app
 
 pkgname = black-magic-debug-udev
-	provides = black-magic-udev
+	provides = black-magic-debug-udev
 	conflicts = black-magic-udev
+	conflicts = black-magic-debug-udev
