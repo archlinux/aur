@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Check if the script is run as root
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 
@@ -14,7 +13,7 @@ fi
 
 # Verify that argument is provided
 if [[ -z $1 ]]; then
-    echo "Usage: $0 {g|sh}"
+    echo "Usage: $0 {g|sh|ag|cf}"
     exit 1
 fi
 
@@ -26,9 +25,15 @@ case $1 in
     sh)
         nameservers=("nameserver 178.22.122.100" "nameserver 185.51.200.2")
         ;;
+    ag)
+        nameservers=("nameserver 176.103.130.130" "nameserver 176.103.130.131")
+        ;;
+    cf)
+        nameservers=("nameserver 1.1.1.1" "nameserver 1.0.0.1")
+        ;;
     *)
         echo "Invalid option: $1"
-        echo "Usage: $0 {g|sh}"
+        echo "Usage: $0 {g|sh|ag|cf}"
         exit 1
         ;;
 esac
