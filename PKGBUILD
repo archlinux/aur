@@ -44,7 +44,8 @@ build() {
   cd "$_pkgname"
   python -m build --wheel --no-isolation
 
-  make prefix=/usr doc
+  # sphinx (or, rather, rtd.linker) races against itself, leading to a spurious ENOENT
+  make -j1 prefix=/usr doc
 }
 
 check() {
