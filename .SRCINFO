@@ -1,8 +1,9 @@
 pkgbase = chainner-bin
 	pkgdesc = Node-based image processing and AI upscaling GUI
-	pkgver = 0.20.2
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/chaiNNer-org/chaiNNer/
+	install = chainner.install
 	arch = x86_64
 	license = GPL3
 	depends = libxcrypt-compat
@@ -19,7 +20,7 @@ pkgbase = chainner-bin
 	provides = chainner
 	options = !emptydirs
 	options = !strip
-	source = https://github.com/chainner-org/chainner/releases/download/v0.20.2/chainner-0.20.2-x64-linux-redhat.rpm
-	sha256sums = 52befa2caf49632fb0f760000a4c15c45b9f77b6669eed619228197a9024152a
+	source = https://github.com/chainner-org/chainner/releases/download/v0.21.0/chainner-0.21.0-x64-linux-redhat.rpm
+	sha256sums = 1c239876996b6b097f8a434ef5afdac6bbb548f92ea2ac3ec358e20e724cee22
 
 pkgname = chainner-bin
