@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reqable-bin
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols"
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('365fe278829cc67806547ae730dfad82128ff1ed7aef8fda1ddfd43f256656c7'
+sha256sums=('c1aca5d08649b14e9fe20e39062a5c10eff7312a7f9b27ebac139227d8e786e3'
             '23392e1a40e734a004a13faec6db357230d1a3893a849ceaba3d25079a403630'
             '728911f1eb0f8ac69af459050cf1aade3b6ca658e9f2242462fa1408256fde9f')
 build() {
