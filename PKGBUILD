@@ -1,24 +1,27 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Kimiblock
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=apostrophe-git
-pkgver=2.6.3.r142.gb1aee4e
-pkgrel=1
+pkgver=2.6.3.r202.gcc6bef4
+pkgrel=2
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
 url="https://world.pages.gitlab.gnome.org/apostrophe"
 license=('GPL3')
 depends=('libadwaita' 'otf-fira-mono' 'otf-fira-sans' 'python-cairo'
          'python-chardet' 'python-gobject' 'python-levenshtein' 'python-pyenchant'
-         'python-pypandoc' 'python-regex' 'python-setuptools' 'webkitgtk-6.0')
+         'python-pypandoc' 'python-regex' 'python-setuptools' 'webkitgtk-6.0' 'nodejs-reveal.js')
 makedepends=('git' 'meson' 'gobject-introspection' 'sassc')
 checkdepends=('appstream-glib')
 optdepends=('texlive-bin: for the pdftex module'
             'mathjax: for formula preview')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://gitlab.gnome.org/World/apostrophe.git')
-sha256sums=('SKIP')
+source=('git+https://gitlab.gnome.org/World/apostrophe.git'
+        2-rm-reveal-check.patch)
+sha256sums=('SKIP'
+            'a3e2eea5fca084f53fd6d0f9e61ace8e14b4c83d9c2f1d5ea74c8589c8c10b8f')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -36,6 +39,8 @@ prepare() {
 
   # W: hidden-file-or-dir
   rm apostrophe/.pylintrc
+
+  patch "${srcdir}/apostrophe/meson.build" < "${srcdir}/2-rm-reveal-check.patch"
 }
 
 build() {
