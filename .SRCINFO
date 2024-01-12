@@ -1,6 +1,6 @@
 pkgbase = choomd-git
 	pkgdesc = Adjust process OOM-killer scores based on process names and other attributes
-	pkgver = 0.1.2.r0.gc6b9deb
+	pkgver = 0.1.2.r3.g981bac7
 	pkgrel = 1
 	url = https://github.com/futpib/choomd
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = choomd-git
 	makedepends = git
 	provides = choomd
 	conflicts = choomd
+	backup = etc/choomd.toml
 	source = git+https://github.com/futpib/choomd.git
 	sha256sums = SKIP
 

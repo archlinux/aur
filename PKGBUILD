@@ -2,13 +2,14 @@
 
 _pkgname=choomd
 pkgname="${_pkgname}-git"
-pkgver=0.1.2.r0.gc6b9deb
+pkgver=0.1.2.r3.g981bac7
 pkgrel=1
 pkgdesc="Adjust process OOM-killer scores based on process names and other attributes"
 arch=('x86_64')
 url="https://github.com/futpib/choomd"
 license=('GPL3')
 depends=()
+backup=('etc/choomd.toml')
 makedepends=('rust' 'cargo' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
