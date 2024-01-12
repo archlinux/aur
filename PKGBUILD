@@ -62,7 +62,10 @@ package() {
   cd "$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  make prefix=/usr DESTDIR="$pkgdir" install-doc
+  # `make -C docs` is used instead of `make install-doc` to specify
+  # `-o man -o html` (do not remake docs, we just built them)
+  #make install-doc
+  make -C docs -o man -o html prefix=/usr DESTDIR="$pkgdir" install
 
   install -Dm644 "contrib/_${_pkgname}" -t "$pkgdir/usr/share/zsh/site-functions/"
   install -Dm644 "contrib/${_pkgname}-completion.bash" \
