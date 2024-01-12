@@ -1,0 +1,6 @@
+/choomd/
+/pkg/
+/src/
+/*.tar.*
+/*.xz
+/*.swp
