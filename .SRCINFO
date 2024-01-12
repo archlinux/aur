@@ -1,6 +1,6 @@
 pkgbase = lagrange-git
 	pkgdesc = A desktop GUI client for browsing Geminispace
-	pkgver = 1.13.7.1.r11.ga12f1c02
+	pkgver = 1.17.5.r3.gd519fad4
 	pkgrel = 1
 	url = https://gmi.skyjake.fi/lagrange/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = lagrange-git
 	depends = sdl2
 	depends = zlib
 	optdepends = mpg123
-	provides = lagrange=1.13.7.1.r11.ga12f1c02
+	provides = lagrange=1.17.5.r3.gd519fad4
 	conflicts = lagrange
 	source = git+https://github.com/skyjake/lagrange.git
 	sha256sums = SKIP

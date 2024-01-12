@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lagrange-git
-pkgver=1.13.7.1.r11.ga12f1c02
+pkgver=1.17.5.r3.gd519fad4
 pkgrel=1
 pkgdesc="A desktop GUI client for browsing Geminispace"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-/./'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-/./g'
 }
 
 build() {
