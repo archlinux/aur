@@ -1,12 +1,15 @@
-#!/bin/bash
-APPDIR="/usr/lib/houdunren-camera"
-export PATH="${APPDIR}:${PATH}"
+#!/bin/sh
+set -e
+_APPDIR="/usr/lib/@appname@"
+_ASAR="${_APPDIR}/@appasar@"
+export PATH="${_APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}/swiftshader:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
 export ELECTRON_IS_DEV=0
-_ASAR="${APPDIR}/app.asar"
+export NODE_ENV=production
+cd "${_APPDIR}"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    cd "$APPDIR"
-    exec electron@electronversion@ ${_ASAR} "$@"
+    exec electron@electronversion@ "${_ASAR}" "$@"
 else
-    cd "$APPDIR"
-    exec electron@electronversion@ ${_ASAR} --no-sandbox "$@"
+    exec electron@electronversion@ "${_ASAR}" --no-sandbox "$@"
 fi
+exit
