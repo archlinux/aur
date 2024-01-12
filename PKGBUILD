@@ -3,7 +3,7 @@
 _pkgname=fluentui-system-icons
 pkgname="ttf-${_pkgname}"
 pkgver=1.1.223
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of familiar, friendly and modern icons from Microsoft."
 arch=("any")
 conflicts=("${pkgname}")
@@ -14,10 +14,10 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=${pkgver}"
+    "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
 )
-md5sums=('SKIP')
+sha256sums=('SKIP')
 package() {
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/fonts/"*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/fonts/"*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
