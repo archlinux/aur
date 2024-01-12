@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://play.eco"
 license=("All rights reserved")
 source=(
-  EcoLinux_v${pkgver}-beta.zip
+  file://EcoLinux_v${pkgver}-beta.zip
   eco.desktop
   logo.png
 )
