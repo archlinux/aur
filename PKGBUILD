@@ -1,7 +1,7 @@
 # Maintainer: Matteo Giordano <mail at matteogiordano dot me>
 # Contributor: <agustinballesteros04@gmail.com>
 pkgname=kew
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A command-line music player"
 arch=('x86_64')
@@ -12,7 +12,7 @@ replaces=('cue-music-command')
 conflicts=('kew-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('c762da707ba5c8dde64c666feac963ff30fe8867c60aa2af0c21a18b7718e62ab7276dbc49d371ccbc5a4754bff1d1cd4b3ed800f60da94d3a13c5700bb7dd0f')
+sha512sums=('49218ae94469831a053b0ecb4cb2c6a2aa3472b5b546f76484a5e9b0b45b7ba7a5b0a13f269cd8857833c5abd08e1acdcb341f914edfc45939eedd17381c1455')
 
 build() {
     cd "$pkgname-$pkgver"
