@@ -1,0 +1,5 @@
+post_install(){
+	echo "To configure chaiNNer to use your system's python installation, run the following command:
+	echo true > ~/.config/chaiNNer/settings/use-system-python
+Note that chaiNNer will still download its integrated python as backup regardless." # indent is intentional
+}
