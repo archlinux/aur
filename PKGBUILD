@@ -2,8 +2,8 @@
 # Contributor: gls < ghostlovescorebg at gmail dot com >
 
 pkgname=rompr
-pkgver=2.08
-pkgrel=3
+pkgver=2.09
+pkgrel=1
 pkgdesc="A php web frontend to MPD and Mopidy"
 arch=('any')
 url='https://github.com/fatg3erman/RompR/'
@@ -19,7 +19,7 @@ optdepends=('apache: webserver to serve app'
             'mysql: alternate database platform to sqlite'
 	    'python: for websocket server')
 source=("https://github.com/fatg3erman/RompR/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('11e7a4cd68f455ba5f534be7a789d1b034fae7840ccd334010b4d565298b3bca')
+sha256sums=('f8fe95209af8fea7f93f8c6601b2be4c3197880e4250ebe5e763fd6aa9071493')
 install="${pkgname}.install"
 backup=("var/lib/${pkgname}/albumart"
 	"var/lib/${pkgname}/prefs")
