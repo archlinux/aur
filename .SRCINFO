@@ -1,22 +1,23 @@
 pkgbase = xteve
 	pkgdesc = M3U Proxy for Plex DVR and Emby Live TV.
 	pkgver = 2.2.0.200
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xteve.de
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	arch = armv6h
 	license = MIT
+	depends = glibc
 	source = xteve-2.2.0.200.tar.gz::https://github.com/xteve-project/xTeVe/archive/refs/tags/2.2.0.200.tar.gz
 	source = xteve.service
 	source = xteve.sysusers
 	source = xteve.tmpfiles
 	source = xteve.user.service
 	sha256sums = d17566bc840534f4a1b1223d0d2332ab6b98e8c94f02ce1e941186b7cc67c484
-	sha256sums = e43e0b770e4b55f0b4bcdc648dd3a77837a7de67541dd0d9a6f1a9b14380dba1
+	sha256sums = 4a72807f2ce7fd28b1d88f728e9aa442928433cb31b16067fd0251786f0ed228
 	sha256sums = 3159b3643846bbe4fa2e59ce1694cdc73abea1e81dc11b271f638a18ddb0782c
 	sha256sums = 93a0d4657ca04679329c8cd52a0bb834c46e8b9ec548a410e2ab9f49e3d1fc7b
-	sha256sums = c5252b64bcb7f18197fc10ad778131ca37dbe844eddd1a661d95a1a35b4f6a5b
+	sha256sums = b37977d867e54bb4b7ddf2fb3a228f282419e803d8c42a1d7f833037d40d2b52
 
 pkgname = xteve
