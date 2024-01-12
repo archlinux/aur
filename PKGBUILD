@@ -1,9 +1,10 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-doc-utils
 pkgver=0.20.10+16+gc03cc09
-pkgrel=3
+pkgrel=4
 pkgdesc="Documentation utilities for Gnome"
 arch=('any')
 license=('GPL' 'LGPL')
@@ -23,6 +24,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   rm -f m4/glib-gettext.m4
+  sed -i 's/SUBDIRS = .*/SUBDIRS = /' 'doc/Makefile.am'
   NOCONFIGURE=1 ./autogen.sh
 }
 

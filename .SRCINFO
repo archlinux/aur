@@ -1,7 +1,7 @@
 pkgbase = gnome-doc-utils
 	pkgdesc = Documentation utilities for Gnome
 	pkgver = 0.20.10+16+gc03cc09
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gnome.org
 	arch = any
 	license = GPL
