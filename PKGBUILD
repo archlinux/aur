@@ -16,7 +16,7 @@
 pkgbase=setroubleshoot-git
 pkgname=(setroubleshoot-git setroubleshoot-server-git)
 pkgver=3.3.32.r3.g502d06c
-pkgrel=3
+pkgrel=4
 pkgdesc="Provides tools to help diagnose SELinux problems"
 groups=('selinux')
 arch=('x86_64' 'aarch64')
@@ -24,6 +24,7 @@ url='https://gitlab.com/setroubleshoot'
 license=('GPL2')
 conflicts=("setroubleshoot")
 provides=("setroubleshoot-git" "setroubleshoot-server-git")
+
 makedepends=('audit' 'dbus' 'desktop-file-utils' 'gtk3' 'libnotify' 'libreport'
              'policycoreutils' 'polkit' 'python-gobject' 'python-pydbus'
              'python-slip' 'python-systemd' 'xdg-utils' 'python-dasbus')
@@ -103,9 +104,6 @@ package_setroubleshoot-git() {
 package_setroubleshoot-server-git() {
   pkgdesc="SELinux troubleshoot server"
 
-  depends=('audit' 'dbus' 'desktop-file-utils' 'gtk3' 'libnotify' 'libreport'
-           'policycoreutils' 'polkit' 'python-gobject' 'python-pydbus'
-           'python-slip' 'python-systemd' 'xdg-utils')
   cd "${pkgbase}"
   install -m644 -D "src/sedispatch.conf" "${pkgdir}/etc/audit/plugins.d/sedispatch.conf" 
   install -m755 -D "src/sealert" "${pkgdir}/usr/bin/sealert"

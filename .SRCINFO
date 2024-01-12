@@ -1,7 +1,7 @@
 pkgbase = setroubleshoot-git
 	pkgdesc = Provides tools to help diagnose SELinux problems
 	pkgver = 3.3.32.r3.g502d06c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/setroubleshoot
 	arch = x86_64
 	arch = aarch64
@@ -41,16 +41,3 @@ pkgname = setroubleshoot-git
 
 pkgname = setroubleshoot-server-git
 	pkgdesc = SELinux troubleshoot server
-	depends = audit
-	depends = dbus
-	depends = desktop-file-utils
-	depends = gtk3
-	depends = libnotify
-	depends = libreport
-	depends = policycoreutils
-	depends = polkit
-	depends = python-gobject
-	depends = python-pydbus
-	depends = python-slip
-	depends = python-systemd
-	depends = xdg-utils
