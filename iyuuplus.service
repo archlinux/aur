@@ -1,0 +1,15 @@
+[Unit]
+Description = IYUU Auto Reseed Plus.
+Wants = network-online.target
+After = network-online.target
+
+[Service]
+User = iyuuplus
+Group = iyuuplus
+Restart = on-failure
+ExecStart = /usr/bin/iyuuplus start
+ExecStop = /usr/bin/iyuuplus stop -g
+ExecReload = /usr/bin/iyuuplus reload -g
+
+[Install]
+WantedBy = multi-user.target
