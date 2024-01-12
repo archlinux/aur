@@ -1,6 +1,6 @@
 pkgbase = slade
 	pkgdesc = SLADE3 Doom editor
-	pkgver = 3.2.4
+	pkgver = 3.2.5
 	pkgrel = 1
 	url = http://slade.mancubus.net/
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = slade
 	depends = webkit2gtk
 	depends = wxwidgets-gtk3>=3.2
 	depends = zlib
-	source = https://github.com/sirjuddington/SLADE/archive/3.2.4.tar.gz
-	sha256sums = bded8e2218bc37c98c7f27894889433abf543d36038cde9e25d0162de7ac8f6e
+	source = https://github.com/sirjuddington/SLADE/archive/3.2.5.tar.gz
+	sha256sums = 7af0f63be12af561e3e5c2899b21c471415fce4f2a1f2c0c82b0ffeb20e692cf
 
 pkgname = slade
 
