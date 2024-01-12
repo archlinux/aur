@@ -1,0 +1,16 @@
+pkgbase = ips
+	pkgdesc = IP geolocation databases tool and library.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/sjzar/ips
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache
+	makedepends = go
+	depends = glibc
+	source = ips-0.3.3.tar.gz::https://github.com/sjzar/ips/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = a1671268770d884482323631dea8a2f4c21c5fb2775899a5363519974f8d6a31
+
+pkgname = ips
