@@ -1,8 +1,9 @@
 pkgbase = chinesesubfinder
 	pkgdesc = Automated Chinese subtitle download | 自动化中文字幕下载
 	pkgver = 0.55.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ChineseSubFinder/ChineseSubFinder
+	install = chinesesubfinder.install
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
@@ -19,9 +20,11 @@ pkgbase = chinesesubfinder
 	source = chinesesubfinder.service
 	source = chinesesubfinder.sysusers
 	source = chinesesubfinder.tmpfiles
+	source = chinesesubfinder.user.service
 	sha256sums = SKIP
 	sha256sums = cc25beda2192dec17dfe75cd4bb4a7feba21e11db4768da8ab288f00e8cc9fa9
 	sha256sums = d8c780bdf927d5535a9ddd34e391866a8d81981a68890a7a043efaeadb7437ee
 	sha256sums = 4ddd99ba5b6722a66f27762614320cd700b044b8e983962c83e208f5610d960a
+	sha256sums = 62d4d41b51f4a65c7d20a8f7216b5c999f4a765019c07fc20d307068a95fe3f0
 
 pkgname = chinesesubfinder

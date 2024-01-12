@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+_pkgname=chinesesubfinder
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+post_install() {
+    if [[ "$LANG" == "zh_CN.UTF-8" ]]; then
+        note "如果你想以系统用户运行 $_pkgname，请运行：
+          'sudo systemctl enable --now $_pkgname.service'...
+          以系统用户运行时，数据存放在 /var/lib/$_pkgname ...
+          如果你想以当前普通用户运行 $_pkgname，请运行：
+          'systemctl enable --user --now $_pkgname.service'...
+          以当前普通用户运行时，数据存放在 ~/.local/share/$_pkgname ..."
+    else
+        note "If you want to run $_pkgname as a system user, please run:
+         'sudo systemctl enable --now $_pkgname.service'...
+          When running as a system user, $_pkgname's data is stored in /var/lib/$_pkgname ...
+          If you want to run $_pkgname as current regular user, please run:
+          'systemctl enable --user --now $_pkgname.service'...
+          When running as a regular user, $_pkgname's data is stored in ~/.local/share/$_pkgname ..."
+    fi
+}
