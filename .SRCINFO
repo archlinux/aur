@@ -1,0 +1,26 @@
+pkgbase = deepin-qt6platform-plugins-git
+	pkgdesc = Qt platform plugins for DDE
+	pkgver = 6.0.4.r0.gab6cb58
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/qt6platform-plugins
+	arch = x86_64
+	arch = aarch64
+	groups = deepin-git
+	license = GPL3
+	makedepends = git
+	makedepends = expac
+	makedepends = libglvnd
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = libxcb
+	makedepends = libxi
+	makedepends = gtest
+	makedepends = gmock
+	depends = cairo
+	depends = qt6-base
+	provides = deepin-qt6platform-plugins
+	conflicts = deepin-qt6platform-plugins
+	source = git+https://github.com/linuxdeepin/qt6platform-plugins
+	sha512sums = SKIP
+
+pkgname = deepin-qt6platform-plugins-git
