@@ -16,7 +16,7 @@ pkgbase = mercury-browser-bin
 	source = mercury-browser_121.0.1_amd64.deb::https://github.com/Alex313031/Mercury/releases/download/v.121.0.1/mercury-browser_121.0.1_amd64.deb
 	source = mercury-browser.sh
 	sha256sums = SKIP
-	sha256sums = c542235c03f0ca3cfed6cebb234d7637cd920dcfbba47d2a31c0814f525788ae
+	sha256sums = f9e17206a6fc510623d34467ece76787741faabe3bdf02a7facd17147e1dd660
 
 pkgname = mercury-browser-bin
 	depends = alsa-lib

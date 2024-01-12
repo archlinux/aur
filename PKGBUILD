@@ -44,7 +44,7 @@ _main_package() {
   )
   sha256sums=(
     'SKIP'
-    'c542235c03f0ca3cfed6cebb234d7637cd920dcfbba47d2a31c0814f525788ae'
+    'f9e17206a6fc510623d34467ece76787741faabe3bdf02a7facd17147e1dd660'
   )
 }
 
@@ -187,14 +187,23 @@ _update_version() {
     return
   fi
 
-  local _response=$(curl -Ssf "$url/releases.atom")
-  local _tag=$(
+  local _blacklist _response _tags _tag _pkgver_new
+
+  _blacklist=(
+    "v.121.0.2" # windows only
+  )
+  _response=$(curl -Ssf "$url/releases.atom")
+  _tags=$(
     printf '%s' "$_response" \
       | grep '/releases/tag/' \
       | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}' | sort -V | tail -1
+      | grep -Ev '[a-z]{2}'
   )
-  local _pkgver_new="${_tag#v.}"
+  for i in "${_blacklist[@]}" ; do
+    _tags=${_tags/$i}
+  done
+  _tag=$(printf '%s' "$_tags" | sort -rV | head -1)
+  _pkgver_new="${_tag#v.}"
 
   # update _pkgver
   if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
