@@ -4,7 +4,7 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
-pkgver=7.4.0
+pkgver=7.4.1
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework (latest release)"
 arch=(x86_64)
@@ -34,7 +34,7 @@ source=(
   "skip-distro-check.patch"
 )
 sha256sums=(
-  'fad73c44e26051f69bbe691defb7a8d285b0d181efd19b61f8afe8c2f773c4a2'
+  '8f0f1908eea0f88e5e49dd51ebeaf52917eda2c07895416d06f08ab319ebe784'
   '0c81200e5211a2f63bc8d9941432cbf98b5988249f0ceeb1f118a14adddbaa8e'
   '50c7265492cd5cd87d81df29fa737d06dacd97586b0fafb3a0f3af8451b8c052'
   '1f25aa517b73d5d17c547757be8c6fb39e3d2f0fd128805ac42c4192348716ac'
