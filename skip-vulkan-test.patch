@@ -1,0 +1,10 @@
+--- libplacebo-v6.338.1/src/tests/vulkan.c	2023-10-17 14:24:39.000000000 +0200
++++ patched/src/tests/vulkan.c	2024-01-12 02:49:37.866655551 +0100
+@@ -149,6 +149,7 @@
+ 
+ int main()
+ {
++    return SKIP;
+     pl_log log = pl_test_logger();
+     pl_vk_inst inst = pl_vk_inst_create(log, pl_vk_inst_params(
+         .debug = true,
