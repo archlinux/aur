@@ -2,7 +2,8 @@
 _appname=kanban-desktop
 pkgname="live2d-${_appname}-bin"
 pkgver=2.8.0
-pkgrel=1
+_electronversion=22
+pkgrel=2
 pkgdesc="An AI Based live2d Kanban for Desktop Users Using Electron.基于Electron制作的桌面看板娘，支持日程提醒、小窗模式、ChatGPT集成、网页搜索、本地moc模型加载与独立设置界面等"
 arch=('x86_64')
 url="http://studio.zerolite.cn/post/338/waifuproject2-live2d-kanban-desktop/"
@@ -11,7 +12,7 @@ license=('GPL3')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 depends=(
-    'electron22'
+    "electron${_electronversion}"
     'expat'
 )
 makedepends=(
@@ -20,13 +21,17 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-AppImage.tar.gz"
-    "live2dcubismcore.min.js::https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"
+    "live2dcubismcore.min-${pkgver}.js::https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ec355432de2d20013c2c80c576dda280da5c4103441f72784a3b998a2af6094f'
             '942783587666a3a1bddea93afd349e26f798ed19dcd7a52449d0ae3322fcff7c'
-            'e36e774675a2d17dce49ee4b03fc246f73cc2aebd4189c2233822947cfeeb9b9')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname "live2d-${_appname}-bin" --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
     asar e "${srcdir}/${_appname}-${pkgver}/resources/app.asar" "${srcdir}/app.asar.unpacked"
 }
@@ -34,7 +39,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${_appname}-${pkgver}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/${_appname}-${pkgver}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/live2dcubismcore.min.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/live2dcubismcore.min-${pkgver}.js" "${pkgdir}/usr/lib/${pkgname%-bin}/live2dcubismcore.min.js"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/app.asar.unpacked/assets/applogo256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
