@@ -1,6 +1,6 @@
 pkgbase = python-uuid6
 	pkgdesc = New time-based UUID formats which are suited for use as a database key
-	pkgver = 2023.5.2
+	pkgver = 2024.01.12
 	pkgrel = 1
 	url = https://github.com/oittaa/uuid6-python
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-uuid6
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/u/uuid6/uuid6-2023.5.2.tar.gz
-	sha256sums = 03cb97f25ca7b0ac4bea2b3a205f66bfe7f58d3b179bb0f76e1d7946446b6133
+	source = uuid6-2024.01.12.tar.gz::https://github.com/oittaa/uuid6-python/archive/refs/tags/2024.01.12.tar.gz
+	sha256sums = b6a1d5fe9ff13bda7097a9448fd08f9b8220874197db9494f6a76b36a8ba70ab
 
 pkgname = python-uuid6
