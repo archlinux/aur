@@ -1,12 +1,13 @@
 pkgbase = aspe-git
 	pkgdesc = Arch Linux build source file clone tool
-	pkgver = v1.0+8+gcee1c15
+	pkgver = 1.0.r8.gcee1c15
 	pkgrel = 2
 	url = https://github.com/themartiancompany/aspe
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck
-	provides = aspe=v1.0+8+gcee1c15
+	depends = bash
+	provides = aspe=1.0.r8.gcee1c15
 	conflicts = aspe
 	source = git+https://github.com/themartiancompany/aspe
 	sha256sums = SKIP

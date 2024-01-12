@@ -78,7 +78,7 @@ _parse_ver() {
 
 pkgver() {
   local \
-    "${_pkgver}"
+    _pkgver
   cd \
     "${_pkgname}"
   _pkgver="$( \
@@ -87,6 +87,8 @@ pkgver() {
       --tags | \
       sed \
         's/-/+/g')"
+  _parse_ver \
+    "${_pkgver}"
 }
 
 package() {
