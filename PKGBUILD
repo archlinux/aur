@@ -1,7 +1,7 @@
 # Maintainer: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=testlib
-pkgver=r421.d0a0161
+pkgver=0.9.41
 pkgrel=1
 pkgdesc="A library used to write the auxiliary programs (validators, generators, and so on) for programming contest problems."
 arch=('any')
@@ -12,19 +12,16 @@ makedepends=(
 )
 
 source=(
-  'git+https://github.com/MikeMirzayanov/testlib.git'
+  "https://github.com/MikeMirzayanov/testlib/archive/refs/tags/${pkgver}.zip"
 )
 sha256sums=(
   'SKIP'
 )
 
-pkgver() {
-  cd testlib
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
-  cd testlib
+  unzip -o ${pkgver}.zip
+  cd testlib-${pkgver}
 
   # Copy testlib.h
   install -D -m644 testlib.h $pkgdir/usr/include/testlib.h
