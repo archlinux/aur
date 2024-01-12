@@ -1,5 +1,5 @@
 pkgname=coova-chilli-git
-pkgver=1.3.0
+pkgver=r2.fdcae6a
 pkgrel=1
 pkgdesc='an open-source software access controller'
 arch=('any')
@@ -30,3 +30,7 @@ package() {
 }
 
 
+pkgver() {
+    cd "$srcdir"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
