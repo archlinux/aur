@@ -1,0 +1,23 @@
+pkgbase = vdr-robotv
+	pkgdesc = VDR server plugin for roboTV
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/pipelka/vdr-plugin-robotv
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = zlib
+	depends = gcc-libs
+	depends = vdr-api=2.6.5
+	backup = etc/vdr/conf.avail/50-robotv.conf
+	backup = var/lib/vdr/plugins/robotv/allowed_hosts.conf
+	backup = var/lib/vdr/plugins/robotv/robotv.conf
+	source = vdr-robotv-0.15.0.tar.gz::https://github.com/pipelka/vdr-plugin-robotv/archive/refs/tags/0.15.0.tar.gz
+	source = vdr-robotv-fix-install-conf.patch::https://patch-diff.githubusercontent.com/raw/pipelka/vdr-plugin-robotv/pull/18.patch
+	sha256sums = 96ca5136ec8d82e4f8100889f3099f677dffdd0e85a1239d623c66420114dd36
+	sha256sums = 2d74014af6268be0d31c7ffa425e8101eb45db32086c9a1c029a77dca1280030
+
+pkgname = vdr-robotv
