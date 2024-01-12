@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ytm-dlp
 pkgname="${_pkgname}-gui-bin"
-pkgver=1.1.1
+pkgver=1.2.0
 _electronversion=26
 pkgrel=1
 pkgdesc="An ElectronJS app for downloading music off Youtube Music."
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/RENOMIZER/ytm-dlp-gui/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6dccbb513dc7924ed33e144b07ef34ceea15ddf3f5b8924e678b289ff865e697'
+sha256sums=('5f13f52d3c3f8d9bbe606da1306ef3fe1046ef621679c4c57099f04b3d9a0cbb'
             '6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e'
             'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
