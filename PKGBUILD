@@ -2,7 +2,7 @@
 
 _pkgname='bmputil'
 pkgname="${_pkgname}-git"
-pkgver=r83.e197489
+pkgver=r85.108bf36
 pkgrel=1
 pkgdesc='A management utility for debuggers running the Black Magic Debug firmware'
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 license=('MIT OR Apache-2.0')
 makedepends=('git' 'rust' 'cargo')
-source=("git+https://github.com/blackmagic-debug/bmputil.git")
+source=("git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
@@ -24,7 +24,8 @@ prepare() {
   cd "${_pkgname}"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+  # No '--locked' flag because this is a git package, it might *need* to be updated
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
