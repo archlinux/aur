@@ -1,6 +1,6 @@
 pkgbase = colmap-git
 	pkgdesc = General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
-	pkgver = 3.8.r118.ga97b8461
+	pkgver = 3.8.r184.g5d4535a2
 	pkgrel = 1
 	url = https://colmap.github.io/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = colmap-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = python-sphinx
-	makedepends = cuda-sdk
+	makedepends = cuda<12
 	depends = cgal
 	depends = ceres-solver
 	depends = gflags
@@ -26,7 +26,9 @@ pkgbase = colmap-git
 	depends = boost-libs
 	depends = qt5-base
 	depends = flann
-	optdepends = libcudart.so: for cuda sfm/mvs acceleration
+	optdepends = libcudart.so: required for dense reconstruction
+	provides = colmap
+	conflicts = colmap
 	source = colmap-git::git+https://github.com/colmap/colmap.git#branch=main
 	source = vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin
 	source = vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin
