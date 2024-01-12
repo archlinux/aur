@@ -34,14 +34,55 @@ sha256sums=(
   SKIP
 )
 
+_parse_ver() {
+  local \
+    _pkgver="${1}" \
+    _out="" \
+    _ver \
+    _rev \
+    _commit
+  _ver="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $1}')"
+  _rev="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $2}')"
+  _commit="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $3}')"
+  _out=${_ver}
+  if [[ "${_rev}" != "" ]]; then
+    _out+=".r${_rev}"
+  fi
+  if [[ "${_commit}" != "" ]]; then
+    _out+=".${_commit}"
+  fi
+  echo \
+    "${_out}"
+}
+
 pkgver() {
+  local \
+    _pkgver
   cd \
     "${_pkgname}"
-  git \
-    describe \
-    --tags | \
-    sed \
-      's/-/+/g'
+  _pkgver="$( \
+    git \
+      describe \
+      --tags | \
+      sed \
+        's/-/+/g')"
+  _parse_ver \
+    "${_pkgver}"
 }
 
 package() {
