@@ -7,7 +7,7 @@ url="https://coova.github.io/"
 license=('GPL')
 depends=('curl' 'libpcap')
 optdepends=('python')
-makedepends=('git' 'autoconf' 'make' 'gcc' 'm4')
+makedepends=('git' 'autoconf' 'make' 'gcc' 'm4' 'gengetopt')
 md5sums=('SKIP')
 
 options=(!libtool)
