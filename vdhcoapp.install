@@ -1,0 +1,11 @@
+post_install() {
+  /usr/bin/vdhcoapp install --system
+}
+
+post_upgrade() {
+  /usr/bin/vdhcoapp install --system
+}
+
+pre_remove() {
+  /usr/bin/vdhcoapp uninstall --system
+}
