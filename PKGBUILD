@@ -27,7 +27,7 @@ package() {
   rm -r "$pkgdir/opt/FTBA/jre"
 
   # set correct permission
-  chmod +x "$pkgdir/opt/FTBA/ftb-app"
+  chmod +x "$pkgdir/opt/FTBA/bin/ftb-app"
 
   # move /opt/FTBA to /usr/lib/ftb-app
   install -d "$pkgdir/usr/lib"
