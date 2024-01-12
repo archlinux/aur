@@ -3,7 +3,7 @@
 
 pkgname=actor-framework
 pkgver=0.19.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Implementation of the Actor Model in C++"
 arch=(i686 x86_64)
 url="http://actor-framework.org"
@@ -15,7 +15,7 @@ optdepends=(
 	)
 
 source=(
-	"git+https://github.com/actor-framework/actor-framework#commit=3fa129dfe5338a088a317b69928be5c13f4d0cf2"
+	"git+https://github.com/actor-framework/actor-framework#commit=83769069475ec9a1d80766f0d7c579f5b2f17b97"
 	)
 sha256sums=('SKIP')
 
