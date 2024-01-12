@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FNN
-_pkgver=1.1.3.2
+_pkgver=1.1.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Fast Nearest Neighbor Search Algorithms and Applications"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-mvtnorm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e05bd9b5adef28dc6e0cdfed2b994064')
-b2sums=('2d13e0b6a32b3cc285cc81512e704be1a3eea01f4f3b23d11a67c2489366122d59635d83fc9eae2af9b01d711d0e33dc0a70d352c398c27df25bb6388dcfa594')
+md5sums=('556e18063f6b54ff3d3117c4d8360215')
+b2sums=('d245eec52f85456054a6fa701d0cb51077d9bef3d08e839795e735b40ee5f625a751c51c2fbfe04c0705fd5bc1994fc9b28e801c3294b6ee96732f861d74082b')
 
 build() {
   mkdir build
