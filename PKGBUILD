@@ -2,14 +2,29 @@
 
 pkgname=dde-shell-git
 _pkgname=dde-shell
-pkgver=0.0.4.r2.g1bf0b28
+pkgver=0.0.4.r3.g1e88b2d
 pkgrel=1
 pkgdesc='New DDE shell'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-shell"
 license=('LGPL3')
-depends=('dtk6declarative-git' 'qt6-wayland')
-makedepends=('git' 'qt6-tools' 'qt5-tools' 'dtk6declarative-git' 'qt6-wayland' 'cmake' 'ninja')
+depends=('dtk6declarative-git'
+         'qt5-wayland'
+         'qt6-wayland'
+         'dtkgui-git'
+         'dtkwidget-git'
+)
+makedepends=('git'
+             'qt6-tools'
+             'qt5-tools'
+             'dtk6declarative-git'
+             'qt5-wayland'
+             'qt6-wayland'
+             'dtkgui-git'
+             'dtkwidget-git'
+             'cmake'
+             'ninja'
+)
 conflicts=('dde-shell')
 provides=('dde-shell')
 groups=('deepin-git')
