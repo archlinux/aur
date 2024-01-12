@@ -3,7 +3,7 @@
 pkgname=slack-desktop-wayland
 _original_pkgname=slack-desktop
 pkgver=4.36.134
-pkgrel=2
+pkgrel=3
 pkgdesc="Slack Desktop (Beta) for Linux with Wayland Support"
 arch=('x86_64')
 url="https://slack.com/downloads"
@@ -23,7 +23,7 @@ source=(
 )
 noextract=("${_original_pkgname}-${pkgver}-amd64.deb")
 b2sums=('d24e5ad17c4a340bf57c341e67f31d515cc516277fab021e9a7dd2deea02464230aacb72dff56af971df2f5d08ba2881694a9faa559a70bb53ad7d3edb944a1f'
-        '556dfdffabf790b100813bb0ff34ee48e5ec0a9e40b701f52bc8dc2bcd82f1e7701877798e6764f12a611bdc33dfeca8af63915dd713d75bb7fef9e5aac053fe')
+        '6694368fd7fb8712b41180ca60380567cf49c4632db8df3599186f1cd8c780ba67acfa90e2b5a629915744c4163cbb5a36ff0cd1fefc8789651180a20336eca9')
 provides=('slack-desktop')
 conflicts=('slack-desktop' 'slack-electron')
 
@@ -46,4 +46,8 @@ package() {
     install -dm755 "${pkgdir}/usr/share/licenses/${_original_pkgname}"
     mv "${pkgdir}/usr/lib/slack/LICENSE" "${pkgdir}/usr/share/licenses/${_original_pkgname}"
     ln -s "/usr/share/licenses/${_original_pkgname}/LICENSE" "${pkgdir}/usr/lib/slack/LICENSE"
+
+    # patch the asar file to fix/enable pipewire
+    # see https://github.com/flathub/com.slack.Slack/issues/101#issuecomment-1807073763
+    sed -i -e 's/,"WebRTCPipeWireCapturer"/,"_ebRTCPipeWireCapturer"/' "${pkgdir}/usr/lib/slack/resources/app.asar"
 }
