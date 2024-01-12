@@ -2,7 +2,7 @@
 
 _pkgname='bmpflash'
 pkgname="${_pkgname}-git"
-pkgver=r155.346831e
+pkgver=r240.33192d1
 pkgrel=1
 pkgdesc='A command line utility for setting up the on-board Flash of BMP v2.3+ hardware for use in standalone mode'
 arch=('any')
@@ -21,11 +21,7 @@ pkgver() {
 prepare() {
 	cd "${_pkgname}"
 
-	# meson subprojects ... doesn't handle alternative subproject directories currently (v1.1.1)
-	# https://github.com/mesonbuild/meson/issues/11944
-	ln -s 'deps' 'subprojects'
 	meson subprojects download
-	rm subprojects
 }
 
 build() {
@@ -37,5 +33,5 @@ package() {
 	# Not currently supported by upstream
 	# meson install -C build --destdir "${pkgdir}"
 	install -Dm755 "build/src/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
