@@ -1,7 +1,7 @@
 pkgbase = sway
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager
 	pkgver = 1.8.1
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://swaywm.org/
 	install = sway.install
@@ -51,6 +51,6 @@ pkgbase = sway
 	sha512sums = SKIP
 	sha512sums = d5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e
 	sha512sums = 156719e93d0213d1b54ce6e3a9b2dcc9246da5689dd2d3281546f9c042cbc69072f99b087e112fe777dcd786d2b9d1be1e1c9200feddffb5e2d16f8dfb27515d
-	sha512sums = 091a205bca875b6a78150b5b14ffaca996b7c7c3d6f68910e5891e5409ca070d27b3307e8c4916c1562a998d5bcb94406e961bf376d86e64c8ddf5afe5b41f76
+	sha512sums = b9e708c775825c8124d8e154e523c90b8a32715050ba06f6dbcdd08d109eed484d128ccc8dcd6a49dc9cd51a0c9035779c2706b4d7a139115e85c4f54226b775
 
 pkgname = sway
