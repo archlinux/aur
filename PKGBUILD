@@ -16,7 +16,7 @@
 pkgbase=setroubleshoot-git
 pkgname=(setroubleshoot-git setroubleshoot-server-git)
 pkgver=3.3.32.r3.g502d06c
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides tools to help diagnose SELinux problems"
 groups=('selinux')
 arch=('x86_64' 'aarch64')
