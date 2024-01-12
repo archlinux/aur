@@ -1,7 +1,7 @@
 pkgbase = rio
 	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU
 	pkgver = 0.0.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raphamorim/rio
 	arch = x86_64
 	license = MIT
