@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aniship-bin
 pkgver=0.0.4.2
-pkgrel=4
+_electronversion=16
+pkgrel=5
 pkgdesc="A convenient and functional unofficial client that allows for easy viewing of anime on PCs and laptops."
 arch=('x86_64')
 url="https://t.me/aniship"
@@ -10,7 +11,7 @@ license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron16'
+    "electron${_electronversion}"
 )
 makedepends=(
     'squashfuse'
@@ -20,11 +21,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1fbe0e6388982d71268c4f4f04bf7c3f82ac0a6dee8310f8599d93be565525d2'
-            'cddaabf4858314eee5ef72d0dbde9a89db52483e8ba51d1e799f4c6466034e6a')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" \
+    sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" \
         -e "s|Icon=${pkgname%-bin}-night|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/squashfs-root/${pkgname%-bin}-night.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} \;
