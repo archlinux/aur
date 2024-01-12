@@ -1,13 +1,13 @@
 pkgbase = cinematic-git
 	pkgdesc = Gorgeous desktop movie collections
-	pkgver = 1.1.2.r71.g2a3da03
+	pkgver = 0.10.0.r1070.g2dc9402
 	pkgrel = 1
 	url = http://gh.lacymorrow.com/cinematic/
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = git
-	makedepends = nodejs>=20.9.1
+	makedepends = nodejs
 	makedepends = npm
 	makedepends = yarn
 	depends = alsa-lib
@@ -31,7 +31,7 @@ pkgbase = cinematic-git
 	depends = libxdamage
 	provides = cinematic
 	conflicts = cinematic
-	source = cinematic::git+https://github.com/lacymorrow/cinematic.git
+	source = cinematic.git::git+https://github.com/lacymorrow/cinematic.git
 	sha256sums = SKIP
 
 pkgname = cinematic-git
