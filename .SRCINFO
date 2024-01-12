@@ -1,7 +1,7 @@
 pkgbase = techmino
 	pkgdesc = A collection of various modern block game rules, more ways to play, and some new things added for a new experience.
 	pkgver = 0.17.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/26F-Studio/Techmino
 	arch = x86_64
 	license = LGPL3
@@ -9,13 +9,13 @@ pkgbase = techmino
 	makedepends = rust
 	depends = love
 	source = techmino-0.17.15.tar.gz::https://github.com/26F-Studio/Techmino/archive/refs/tags/v0.17.15.tar.gz
-	source = ccloader-11.4.1.tar.gz::https://github.com/26F-Studio/cold_clear_ai_love2d_wrapper/archive/refs/tags/11.4.1.tar.gz
+	source = ccloader-11.4.2.tar.gz::https://github.com/26F-Studio/cold_clear_ai_love2d_wrapper/archive/refs/tags/11.4.2.tar.gz
 	source = git+https://github.com/26F-Studio/Zframework.git#tag=c498582a8cb9ddf3954c4538d383342c1ce14e88
 	source = git+https://github.com/26F-Studio/cold-clear.git#tag=23c1cd6e4aa44f2a61daa839ae08dfd3cd5f9da3
 	source = techmino.sh
 	source = techmino.desktop
 	sha256sums = 846214d06a372cb12a9ba44610342fda9cfe2cb45d44a4a7919eae7d28beaffb
-	sha256sums = 7fb201662c297ec6838db0f389718cd01ae615244b603030ab9c1a1bd089ddd0
+	sha256sums = dc70324e88927763cc68eb86f73374a585d63cdb9773f2776c4ed679944742b5
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 9c8ac53a1264722b037ee8c72f5d0bc187ef9d106a3c2f949fb20537fb4c95f7

@@ -2,10 +2,10 @@
 
 pkgname=techmino
 pkgver="0.17.15"
-_ccloader_ver="11.4.1"
+_ccloader_ver="11.4.2"
 _zframework_ver="c498582a8cb9ddf3954c4538d383342c1ce14e88"
 _coldclear_ver="23c1cd6e4aa44f2a61daa839ae08dfd3cd5f9da3"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A collection of various modern block game rules, more ways to play, and some new things added for a new experience."
 arch=(x86_64)
@@ -33,7 +33,7 @@ source=("techmino-$pkgver.tar.gz::https://github.com/26F-Studio/Techmino/archive
         "techmino.desktop")
 noextract=()
 sha256sums=("846214d06a372cb12a9ba44610342fda9cfe2cb45d44a4a7919eae7d28beaffb"
-            "7fb201662c297ec6838db0f389718cd01ae615244b603030ab9c1a1bd089ddd0"
+            "dc70324e88927763cc68eb86f73374a585d63cdb9773f2776c4ed679944742b5"
             SKIP
             SKIP
             "9c8ac53a1264722b037ee8c72f5d0bc187ef9d106a3c2f949fb20537fb4c95f7"
