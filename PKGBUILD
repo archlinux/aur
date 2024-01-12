@@ -4,7 +4,7 @@ pkgname="my-${_pkgname}-bin"
 _appname=YesPlayMusic
 pkgver=0.4.13
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="A third party music player for Netease Music.高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示。"
 arch=(
     'aarch64'
@@ -36,12 +36,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
-            'b6c98ea2bf558b83a89de827bc9e82a237676d5d1f40497d1887465023e72985')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_aarch64=('6c1a88764dbb9d068245fb70931cb3eb9d741b55910453573f22fe4f9afc2223')
 sha256sums_armv7h=('f6821487ac47c4f0a35bfd462e9cfba328cf50026a35cc9df5c76bf1cf428518')
 sha256sums_x86_64=('77337d7d59d2b7f11c38762d1baf3da4d0001fa4f7b2abe801c4b8da8ea4c0f2')
 build() {
-    sed -i "s|@electronversion@|${_electronversion}|" "$srcdir/${pkgname%-bin}.sh"
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     asar e "${srcdir}/opt/${_appname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     cp "${srcdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png" "${srcdir}/app.asar.unpacked/tray-icon.png"
