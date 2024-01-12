@@ -3,27 +3,73 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=okular
-pkgver=23.08.4
-pkgrel=1
+pkgver=24.01.90
+pkgrel=2
 pkgdesc='Document Viewer'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-graphics)
-depends=(djvulibre libspectre libkexiv2 poppler-qt5 kpty5 kactivities5 threadweaver5 kparts5 purpose5 discount phonon-qt5)
-makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools5 khtml chmlib)
-optdepends=('ebook-tools: mobi and epub support'
-            'kdegraphics-mobipocket: mobi support' 'libzip: CHM support'
-            'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
-            'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)'
-            'kde-cli-tools: to configure web shortcuts' 'plasma-workspace: to configure web shortcuts')
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('37fd73178ae287dcdcc2b2bc61aee2aa30a64765f862230315f521a94b50af11'
-            'SKIP')
+depends=(discount
+         djvulibre
+         freetype2
+         gcc-libs
+         glibc
+         plasma-activities
+         karchive
+         kbookmarks
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         ki18n
+         kio
+         kitemviews
+         kparts
+         kpty
+         ktextwidgets
+         kwallet
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         libjpeg-turbo
+         libkexiv2
+         libspectre
+         libtiff
+         phonon-qt6
+         poppler-qt6
+         purpose
+         qt6-base
+         qt6-declarative
+         qt6-speech
+         qt6-svg
+         threadweaver
+         zlib)
+makedepends=(ebook-tools
+             extra-cmake-modules
+             kdegraphics-mobipocket
+             kdoctools)
+optdepends=('calligra: ODT and ODP support'
+            'ebook-tools: mobi and epub support'
+            'kdegraphics-mobipocket: mobi support'
+            'unarchiver: Comic Book Archive support (alternative)'
+            'unrar: Comic Book Archive support')
+groups=(kde-applications
+        kde-graphics)
+source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
+        https://invent.kde.org/graphics/okular/-/commit/f23a2448.patch)
+sha256sums=('67ea6fd08e07b96a562038c65068c78762631deb96037106508c4ae3318dbfc0'
+            'SKIP'
+            '7c7d34b35338f054c03a9fd5782c9657ec4a2c731b968e84b2f9202cab8cf33d')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 options=(!zipman)
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < f23a2448.patch # Fix loading part
+}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
