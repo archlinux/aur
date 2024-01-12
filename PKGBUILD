@@ -2,7 +2,8 @@
 pkgname=newpad-bin
 _pkgname=NewPad
 pkgver=1.3.0
-pkgrel=1
+_electronversion=22
+pkgrel=2
 pkgdesc="An OblivionOcean Software, Bro.高颜值、易上手的Markdown记事本"
 arch=("x86_64")
 url="https://github.com/OblivionOcean/NewPad"
@@ -10,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'electron22'
+    "electron${_electronversion}"
 )
 makedepends=(
     'asar'
@@ -23,9 +24,13 @@ source=(
 )
 sha256sums=('cf2934d09001055e05fbf6bcdfdfd355ef6c5ca96f8419da0a2b18f1368f152a'
             '5950cbd8232f1a8804591dd285cf0c27a9b5078c2d2d51030972b334664889d4'
-            '88c08a089e6c6d073fec6010efc67916ec06e3f380f42c5326d4ab129605dd41')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
-    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
     asar e "${srcdir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     convert "${srcdir}/app.asar.unpacked/logo.ico" "${srcdir}/app.asar.unpacked/logo.png"
     cp "${srcdir}/app.asar.unpacked/logo-3.png" "${srcdir}/app.asar.unpacked/logo.png"
