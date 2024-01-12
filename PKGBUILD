@@ -9,6 +9,9 @@ arch=(x86_64 aarch64)
 url=https://github.com/stenzek/duckstation
 license=(GPL3)
 depends=(
+    sh
+    glibc
+    gcc-libs
     sdl2
     qt6-base
     libxrandr
@@ -66,10 +69,6 @@ build() {
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DBUILD_NOGUI_FRONTEND=OFF \
         -DBUILD_QT_FRONTEND=ON \
-        -DUSE_EGL=ON \
-        -DUSE_SDL2=ON \
-        -DUSE_WAYLAND=ON \
-        -DUSE_X11=ON \
         -G Ninja \
         -Wno-dev
     cmake --build build --parallel
