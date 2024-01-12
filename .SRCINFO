@@ -1,7 +1,7 @@
 pkgbase = keepassxc-wordlist-catalan
 	pkgdesc = Catalan diceware wordlists for keepassxc password generation
 	pkgver = 0.20170609
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/1ma/diceware-cat
 	arch = any
 	license = CCPL
