@@ -1,2 +1,1 @@
-d /var/lib/xteve 0755 xteve xteve
-d /tmp/xteve 0755 xteve xteve
+d /var/lib/xteve 0755 xteve xteve -

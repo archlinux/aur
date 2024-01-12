@@ -1,22 +1,39 @@
 # Maintainer: Kalani Helekunihi <i [at] am [dot] guru>
+# Maintainer: Evine Deng <evinedeng@hotmail.com>
 
 pkgname=xteve
-pkgver=2.2
+_reponame="xTeVe"
+pkgver=2.2.0.200
 pkgrel=1
-pkgdesc="IPTV Proxy for Plex DVR"
-arch=('x86_64')
+pkgdesc="M3U Proxy for Plex DVR and Emby Live TV."
+arch=("x86_64" "aarch64" "armv7h" "armv6h")
 url="https://xteve.de"
+_url="https://github.com/${pkgname}-project/${_reponame}"
 license=('MIT')
-source=("${pkgname}.service"
-	"${pkgname}.sysusers"
-	"${pkgname}.tmpfiles"
-    "https://github.com/xteve-project/xTeVe-Downloads/raw/master/"$pkgname"_linux_amd64.tar.gz")
-sha256sums=('931947d35b91d5763ba6218bdc9096b792d6e1718a9fca0a77b0ffb186c5ed36' 'dbf54529cec6663f89bdc5600df30e3328014096f61c3d43f3d8196556919ce3' '17bbf3c47404d3876f99c20ed2cc8787f8c4fea29717d18514d459af852825fb' '4fbe2999fe8fa80196060321eeabd76fda80aed713022769f0c2d45b20c0d107' )
+source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
+        "${pkgname}.service"
+        "${pkgname}.sysusers"
+        "${pkgname}.tmpfiles"
+        "${pkgname}.user.service")
+sha256sums=('d17566bc840534f4a1b1223d0d2332ab6b98e8c94f02ce1e941186b7cc67c484'
+            '219b4c59994436220236a2da73e32d1f04047c7e463e72e8c8d3cdd4c7ae819c'
+            '3159b3643846bbe4fa2e59ce1694cdc73abea1e81dc11b271f638a18ddb0782c'
+            '93a0d4657ca04679329c8cd52a0bb834c46e8b9ec548a410e2ab9f49e3d1fc7b'
+            'b37977d867e54bb4b7ddf2fb3a228f282419e803d8c42a1d7f833037d40d2b52')
 
-package() {
-	install -Dm755 ${srcdir}/xteve $pkgdir/usr/bin/${pkgname}
-	install -Dm0644 ${srcdir}/${pkgname}.sysusers ${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf
-	install -Dm0644 ${srcdir}/${pkgname}.service $pkgdir/usr/lib/systemd/system/${pkgname}.service
-	install -Dm0644 ${srcdir}/${pkgname}.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf
+build() {
+    cd "${_reponame}-${pkgver}"
+    local ldflags=" -s -w -extldflags '${LDFLAGS}'"
+    go build -trimpath -ldflags "${ldflags}" -o "${pkgname}"
 }
 
+package() {
+    install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+
+    cd "${_reponame}-${pkgver}"
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
