@@ -4,13 +4,14 @@
 pkgname=xteve
 _reponame="xTeVe"
 pkgver=2.2.0.200
-pkgrel=2
+pkgrel=3
 pkgdesc="M3U Proxy for Plex DVR and Emby Live TV."
 arch=("x86_64" "aarch64" "armv7h" "armv6h")
 url="https://xteve.de"
 _url="https://github.com/${pkgname}-project/${_reponame}"
 license=('MIT')
 depends=("glibc")
+makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers"
