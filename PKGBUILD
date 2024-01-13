@@ -1,8 +1,10 @@
+# Maintainer:  [none]
+# Contributor: dreieck
 # Contributor: Daniel Moch <daniel@danielmoch.com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 _pkgname=tootstream
 pkgname=tootstream-git
-pkgver=0.3.8.1.r1.g6dd84fc
+pkgver=0.4.0.r11.gf01781f
 pkgrel=1
 pkgdesc='Text interface for the Mastodon social network'
 provides=(tootstream)
@@ -14,7 +16,8 @@ depends=(python-mastodon
          python-humanize
          python-click
          python-colored
-         python-emoji)
+         python-emoji
+         python-pytimeparse)
 makedepends=(python-setuptools git)
 source=("git+https://github.com/magicalraccoon/tootstream")
 sha512sums=('SKIP')
