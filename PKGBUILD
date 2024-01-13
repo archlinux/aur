@@ -2,7 +2,7 @@
 
 pkgname=rubichess
 _pkgname='RubiChess'
-pkgver=20230918
+pkgver=20240112
 pkgrel=1
 pkgdesc="Just another UCI compliant chess engine"
 arch=(x86_64)
@@ -29,7 +29,8 @@ prepare() {
 build() {
     cd "${_pkgname}"
     cd src
-    make COMP=clang EVALFILE="${_rubinet}" build
+    make COMP=clang arch
+    make COMP=clang EVALFILE="${_rubinet}" compile
 }
 
 package() {
