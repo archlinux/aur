@@ -1,8 +1,8 @@
-# Maintainer: Fijxu <fijxu <at> zzls <dot> xyz>
+# Maintainer: Fijxu <fijxu at nadeko dot net>
 
 pkgname=routedns-git
 _pkgname=routedns
-pkgver=0.1.20.r67.g266797b
+pkgver=0.1.51.r16.g3aa67c5
 pkgrel=1
 pkgdesc="DNS stub resolver, proxy and router (git version)"
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('git' 'go')
 provides=('routedns')
 install=$pkgname.install
-source=("git+https://github.com/folbricht/routedns#branch=issue-327"
+source=("git+https://github.com/folbricht/routedns"
         "routedns.service"
         "config.toml.example")
 sha512sums=("SKIP"
