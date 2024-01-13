@@ -1,14 +1,18 @@
 pkgbase = cangaroo
-	pkgdesc = An Open-Source CAN Monitor
-	pkgver = 0.2.2
+	pkgdesc = Open source can bus analyzer software - with support for CANable / CANable2, CANFD, and other new features
+	pkgver = 0.2.2.r64.gca7f907
 	pkgrel = 1
-	url = https://github.com/HubertD/cangaroo
-	arch = any
+	url = https://github.com/normaldotcom/cangaroo
+	arch = aarch64
+	arch = riscv64
+	arch = x86_64
 	license = GPL
-	depends = git
-	depends = qt5-base
-	source = cangaroo::git+https://github.com/HubertD/cangaroo.git#tag=0.2.0
+	makedepends = git
+	depends = libnl
+	depends = qt5-charts
+	depends = qt5-tools
+	depends = qt5-serialport
+	source = cangaroo::git+https://github.com/normaldotcom/cangaroo.git
 	md5sums = SKIP
 
 pkgname = cangaroo
-
