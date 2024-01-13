@@ -16,6 +16,6 @@ b2sums=('344cb2b9fcc6a15c9a07b04651b193bf4687926b99ed6f5755d21646eedc04f57f32acb
         'c699be7ccfc40564b59bfa217e254c9553678f343466becebad5017d81310d7b7519837a9a25df2e09e16b6e1bd5a209d7aeb039662a206dd8966b9697c02ede')
 
 package() {
-  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
-  install -Dm755 subfinder ${pkgdir}/usr/bin/subfinder
+        install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
+        install -Dm755 subfinder ${pkgdir}/usr/bin/subfinder
 }
