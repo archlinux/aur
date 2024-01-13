@@ -2,7 +2,7 @@
 
 pkgname=anime-games-launcher-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified launcher for all of your specific anime game needs."
 url="https://github.com/an-anime-team/anime-games-launcher"
 conflicts=("anime-games-launcher-git")
@@ -35,7 +35,7 @@ source=(
 md5sums=(
     '83dec20c5c01561d77f903a3167d4dde'
     '3813aa35084ab351d434ff96bc33dff9'
-    '20e2fe02bfc0a3dd69aa0e2dcbeca11d'
+    '04994726fb0254efef25fb2d3c182850'
 )
 
 prepare() {

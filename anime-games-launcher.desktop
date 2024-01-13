@@ -6,3 +6,4 @@ Terminal=false
 Type=Application
 Icon=anime-games-launcher
 Categories=Game
+StartupWMClass=moe.launcher.anime-games-launcher
