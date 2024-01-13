@@ -2,7 +2,7 @@
 
 pkgname=python-tinygrad
 _name=${pkgname#python-}
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="You like pytorch? You like micrograd? You love tinygrad! <3"
 arch=('any')
@@ -28,10 +28,14 @@ optdepends=('python-llvmlite: for LLVM support'
             'python-safetensors: for testing support'
             'python-types-pyyaml: for testing support'
             'python-cloudpickle: for testing support'
+            'python-sentencepiece: for testing support'
+            'python-tiktoken: for testing support'
+            'python-librosa: for testing support'
+            'python-hypothesis: for testing support'
             'python-transformers: for testing support')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('9a81ee46be716b021006146b2482ae6734e3e35eccfb0c41e334f08da3f31a5a')
+sha256sums=('009441986dc5f2ab48a3a6c7ecf6c92dda0684969d8c3469e131129bbf186777')
 
 build() {
     cd "$_name-$pkgver"
