@@ -7,7 +7,6 @@ pkgbase = python-red-commons
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-flit-core
 	depends = python
 	source = Red-Commons-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/R/Red-Commons/Red-Commons-1.0.0.tar.gz

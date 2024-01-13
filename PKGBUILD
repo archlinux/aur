@@ -1,4 +1,4 @@
-# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 _name=Red-Commons
 pkgname='python-red-commons'
 pkgver=1.0.0
@@ -8,7 +8,7 @@ url="https://github.com/Cog-Creators/Red-Commons"
 license=('MIT')
 arch=('any')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-flit-core')
+makedepends=('python-build' 'python-installer' 'python-flit-core')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz")
 sha256sums=('b9bcc55c72801c33eb0c77aaf48041d018bfb5f1293053cff8a3e10e4d33e52d')
 
