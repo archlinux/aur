@@ -2,7 +2,7 @@
 # Contributor: Kartoffel
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
-pkgver=0.5.3+11.r287.20231027.ba65dd7
+pkgver=0.5.3+19.r295.20240112.4c6996d
 pkgrel=1
 arch=(
   i686
@@ -14,7 +14,6 @@ pkgdesc='A GUI tool to flash IronOS to the Pinecil V1, V2 and future other pine6
 url='https://github.com/Spagett1/PineFlash'
 license=('GPL2')
 depends=(
-  # 'atmm' # What is this? What is this for?
   'dfu-util'
   'fontconfig'
   'glibc'
@@ -52,7 +51,7 @@ prepare() {
   CARGO_HOME="${srcdir}/cargo"
   export CARGO_HOME
 
-  cargo fetch || cargo fetch # To work around the error "failed to verify the checksum of `ndk-sys v0.4.0`". See also https://github.com/rust-lang/cargo/issues/7180#issuecomment-1325636251.
+  cargo fetch || cargo fetch # Twice in order to work around the error "failed to verify the checksum of `ndk-sys v0.4.0`". See also https://github.com/rust-lang/cargo/issues/7180#issuecomment-1325636251.
 
   git log > "${srcdir}/git.log"
 }
