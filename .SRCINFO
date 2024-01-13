@@ -1,6 +1,6 @@
 pkgbase = cpp2il-git
 	pkgdesc = Work-in-progress tool to reverse unity's IL2CPP toolchain. (git version)
-	pkgver = 2022.0.7.r15.g4c5326d
+	pkgver = 2022.0.7.r17.g20ccab2
 	pkgrel = 1
 	url = https://github.com/SamboyCoding/Cpp2IL
 	arch = x86_64
