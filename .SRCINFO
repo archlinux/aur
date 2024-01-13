@@ -1,6 +1,6 @@
 pkgbase = svd2rust
 	pkgdesc = Generate Rust register maps (`struct`s) from SVD files
-	pkgver = 0.28.0
+	pkgver = 0.31.5
 	pkgrel = 1
 	url = https://github.com/japaric/svd2rust
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = svd2rust
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/rust-embedded/svd2rust/archive/v0.28.0.tar.gz
-	md5sums = d1b0f88730cdbb1b23a08cca4f8b4cb1
+	source = https://github.com/rust-embedded/svd2rust/archive/v0.31.5.tar.gz
+	md5sums = 964cd9d77ef16c0a3c2a3349da6311b7
 
 pkgname = svd2rust
