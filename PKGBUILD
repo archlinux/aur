@@ -5,29 +5,29 @@ _name=${pkgname#python-}
 pkgver=1.4.4
 pkgrel=1
 pkgdesc="assertion library for Python"
-arch=('any')
-url="https://pypi.org/project/preggy"
-license=('MIT')
+arch=(any)
+url="https://github.com/heynemann/preggy"
+license=(MIT)
 depends=(python-six python-colorama python-unidecode)
-makedepends=('python-setuptools')
+makedepends=(python-setuptools)
 checkdepends=(python-pytest)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-b2sums=('ed656f848349c0cdb0f44151ded15db1b68b7358a4633417a6889b4be9397dc0de96dbd5f43bb26f748d9cd4f16532f1954f3978690afa9e792ce24fbe942b20')
+source=("https://github.com/heynemann/preggy/archive/refs/tags/$pkgver.tar.gz")
+b2sums=('8d600e1c1e1e2948c31e7dbec907d87bd3590dfdecb22ee22a3f75ca65f22d50bc204fd0751327ac8ca22856d84f2ee7ddc1b42710f956e9c22b3e72d6047a65')
 
 build() {
-    cd $_name-$pkgver
-
-    python setup.py build
+  cd $_name-$pkgver
+  python setup.py build
 }
 
 check() {
-    cd $_name-$pkgver
-    pytest
+  cd $_name-$pkgver
+  pytest
 }
 
 package() {
-    cd $_name-$pkgver
-
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd $_name-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et:
