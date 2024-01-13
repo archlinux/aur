@@ -17,6 +17,7 @@ depends=(
 )
 makedepends=('wget' 'unzip')
 replaces=('daggerfall-unity-aur-bin')
+conflicts=('daggerfall-unity-aur-bin')
 source=(daggerfall-unity
   daggerfall.desktop
   settings-template.ini
