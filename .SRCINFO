@@ -1,6 +1,6 @@
 pkgbase = kcontacts5
 	pkgdesc = Address book API for KDE
-	pkgver = 5.113.0
+	pkgver = 5.114.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = kcontacts5
 	depends = kcodecs5
 	conflicts = kcontacts<1:5.111
 	replaces = kcontacts<1:5.111
-	source = https://download.kde.org/stable/frameworks/5.113/kcontacts-5.113.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.113/kcontacts-5.113.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.114/kcontacts-5.114.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.114/kcontacts-5.114.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = b5462d85b12a6b4caf30f0054bea9ab8ac4dcfec3a4c0816a1fc7af1c26e2cf9
+	sha256sums = 8ed35ed910350b2f465cb05eb8d7e4cb1e7819f39738a5f5fde59a20f4dad853
 	sha256sums = SKIP
 
 pkgname = kcontacts5
