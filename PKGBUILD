@@ -2,8 +2,8 @@
 
 pkgname=fern-git
 _gitname=${pkgname%-git*}
-pkgver=47.5c0110d
-pkgrel=1
+pkgver=75.0244f1a
+pkgrel=2
 pkgdesc='a curses-based mastodon client modeled off usenet news readers & pine, with an emphasis on getting to "timeline zero"'
 arch=('any')
 url="https://github.com/enkiv2/fern"
