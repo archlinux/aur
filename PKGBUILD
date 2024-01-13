@@ -2,7 +2,7 @@
 
 _pkgname=choomd
 pkgname="${_pkgname}-git"
-pkgver=0.1.2.r3.g981bac7
+pkgver=1.0.0.r0.gbd01a50
 pkgrel=1
 pkgdesc="Adjust process OOM-killer scores based on process names and other attributes"
 arch=('x86_64')
