@@ -1,8 +1,9 @@
 pkgbase = slxfig-snapshot
 	pkgdesc = Xfig-based publication quality plotting package for the S-Lang interpreter (development snapshot)
 	pkgver = 0.2.0.137
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jedsoft.org/snapshots/
+	changelog = slxfig-snapshot.changelog
 	arch = aarch64
 	arch = x86_64
 	license = GPL

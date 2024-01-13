@@ -6,7 +6,7 @@ _pkgname="${pkgname%-snapshot}"
 _pkgver='0.2.0-137'
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Xfig-based publication quality plotting package for the S-Lang interpreter (development snapshot)'
 arch=('aarch64' 'x86_64')
 url='https://jedsoft.org/snapshots/'
@@ -18,6 +18,7 @@ options=('lto')
 source=("${url}${_pkgname}-$_prever.tar.gz")
 md5sums=('46775f193f6ad206e554176b23a13c1c')               # Taken from $url
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
+changelog="$pkgname.changelog"
 
 build() {
   cd "$_pkgname-$_prever"
@@ -31,8 +32,14 @@ package() {
   cd "$_pkgname-$_prever"
 
   make DESTDIR="$pkgdir" install
-
+  # Change permissions of the gcontour module: 0644 → 0755
   chmod 0755 "$pkgdir/usr/lib/slang/v2/modules/gcontour-module.so"
+
+  # Install extra documentation
+  for _doc in changes.txt INSTALL README TODO doc/text/slxfig.txt; do
+    install -Dm0644 "$_doc" "$pkgdir/usr/share/doc/$pkgname/${_doc##*/}"
+  done
+  cp -fax examples "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 sha256sums=(
