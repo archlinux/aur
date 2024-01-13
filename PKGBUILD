@@ -1,14 +1,15 @@
-# Maintainer: shellkr <revoltism+AUR$gmail.com>
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: shellkr (https://aur.archlinux.org/account/shellkr)
 
 pkgname=fern-git
 _gitname=${pkgname%-git*}
 pkgver=75.0244f1a
-pkgrel=2
+pkgrel=3
 pkgdesc='a curses-based mastodon client modeled off usenet news readers & pine, with an emphasis on getting to "timeline zero"'
 arch=('any')
 url="https://github.com/enkiv2/fern"
 license=('BSD3')
-depends=('python2-mastodon')
+depends=('python-mastodon')
 makedepends=('git')
 provides=("$_gitname")
 source=("$_gitname::git+https://github.com/enkiv2/fern.git#branch=master")
