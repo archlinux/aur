@@ -1,18 +1,35 @@
 pkgbase = svg2tikz-git
-	pkgdesc = set of tools for converting SVG graphics to TikZ/PGF code
-	pkgver = r216.7a9959c
+	pkgdesc = Set of tools for converting SVG graphics to TikZ/PGF code.
+	pkgver = 3.0.0+9.r473.20240112.307c86a
 	pkgrel = 1
 	url = https://github.com/kjellmf/svg2tikz
 	arch = any
-	license = GPL
+	license = GPL2
+	checkdepends = python-pytest
 	makedepends = git
-	depends = python-lxml
-	optdepends = inkscape: for using the inksape extension files
-	provides = inkscape-tikz
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-poetry
+	makedepends = python-sphinx
+	makedepends = python-sphinx-argparse
+	makedepends = texlive-bin
+	depends = python>=3
+	optdepends = inkscape: for using the inksape extension files.
+	optdepends = python-inkex
+	optdepends = python-lxml
+	optdepends = xclip
+	provides = inkscape-tikz=3.0.0+9.r473.20240112.307c86a
+	provides = svg2tikz=3.0.0+9.r473.20240112.307c86a
+	provides = svg2tikz-doc=3.0.0+9.r473.20240112.307c86a
+	provides = python-svg2tikz=3.0.0+9.r473.20240112.307c86a
 	conflicts = inkscape-tikz
+	conflicts = svg2tikz
+	conflicts = svg2tikz-doc
+	conflicts = python-svg2tikz
 	replaces = inkscape-tikz-hg
-	source = git+https://github.com/kjellmf/svg2tikz
-	md5sums = SKIP
+	source = svg2tikz::git+https://github.com/kjellmf/svg2tikz
+	sha256sums = SKIP
 
 pkgname = svg2tikz-git
-
