@@ -6,7 +6,7 @@
 
 _pkgbase=dynssh
 pkgname="${_pkgbase}-git"
-pkgver="0.1.2.r10.g8862cc4"
+pkgver="0.1.2.r11.gf01f24f"
 pkgrel=2
 pkgdesc="Simple SSH wrapper"
 arch=(
