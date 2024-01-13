@@ -8,8 +8,8 @@ pkgdesc="Python's extensions to thumbor"
 arch=(any)
 url="https://github.com/thumbor/libthumbor"
 license=('MIT')
-depends=(python)
-makedepends=(python-build python-installer python-poetry python-poetry-core)
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-poetry' 'python-poetry-core')
 source=("https://github.com/thumbor/libthumbor/archive/$pkgver.tar.gz")
 b2sums=('7682aeff1b7ea0cb026d08c16e73ffed2f3b9d59aa2329ca7d3fcb910860c9f495de53cfb17b651402af5e7166043634c1df334b8a8cc2c912a352b9e36157a1')
 
