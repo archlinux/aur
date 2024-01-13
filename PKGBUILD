@@ -19,7 +19,7 @@ source=(
 md5sums=('0060a7e5ab0b54d1b978fe68745abada')
 build () {
   cd "${pkgname}-${pkgver/v/}" || exit
-  make
+  cargo build --release
 }
 
 package () {
