@@ -1,6 +1,6 @@
 pkgbase = python-tinygrad
 	pkgdesc = You like pytorch? You like micrograd? You love tinygrad! <3
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/geohot/tinygrad
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = python-tinygrad
 	optdepends = python-types-pyyaml: for testing support
 	optdepends = python-cloudpickle: for testing support
 	optdepends = python-transformers: for testing support
-	source = https://files.pythonhosted.org/packages/source/t/tinygrad/tinygrad-0.7.0.tar.gz
-	sha256sums = 9a81ee46be716b021006146b2482ae6734e3e35eccfb0c41e334f08da3f31a5a
+	source = https://files.pythonhosted.org/packages/source/t/tinygrad/tinygrad-0.8.0.tar.gz
+	sha256sums = 009441986dc5f2ab48a3a6c7ecf6c92dda0684969d8c3469e131129bbf186777
 
 pkgname = python-tinygrad
