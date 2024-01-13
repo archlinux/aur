@@ -1,7 +1,7 @@
 # Maintainer:   AstroFloyd  < AstroFloyd [at] gmail >
 pkgname=libsufr
-pkgver=0.7.7
-pkgrel=2
+pkgver=0.7.8
+pkgrel=1
 pkgdesc="A LIBrary containing Some Useful Fortran Routines"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://libsufr.sourceforge.net/"
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cmake' 'gcc-fortran')
 changelog=ChangeLog
 source=("http://sourceforge.net/projects/libsufr/files/$pkgname-$pkgver.tar.gz")
-sha512sums=('c24cb69361f8db31396e554a48eb864b7cc2c8ac437b2c0d3113e02adf9a53017973e2ff49cc9a7a6debeaaea5d9f20c8aa8d505b23e1974f19b3560fded9ca4')
+sha512sums=('0b1b4413a29e76e02ba8c4a7cbf6ca3d764ce83b8d7e6da3ac6029a1f58c608d4d20f21c0084ffde6dcf40b49b3856353d51d2aad656e692c80c997f602b9cc1')
 
 build() {
     mkdir -p "$pkgname-$pkgver"/build
