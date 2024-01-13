@@ -1,4 +1,4 @@
-pkgbase = sf-cli
+pkgbase = sf
 	pkgdesc = The Salesforce CLI for development and build automation when working with a Salesforce org
 	pkgver = 2.23.20
 	pkgrel = 1
