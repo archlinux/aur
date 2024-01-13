@@ -2,8 +2,8 @@
 
 pkgname=radicle-node-bin
 # there are no versions attached to the binaries, just upload dates.
-pkgver=20231219
-_srchash="59f506dbb5591d3fe68e638038495730c455d72a"
+pkgver=20240105
+_srchash="6bc7d297a5e7e3feecec3f61327a9adbdf532f61"
 pkgrel=1
 pkgdesc="node for radicle, a peer-to-peer GitHub alternative"
 arch=('x86_64' 'aarch64')
@@ -22,13 +22,13 @@ source_aarch64=(
 	radicle-node.service
 )
 sha256sums_x86_64=(
-	'319a977a12c3b6c37d336f8840261e871f226884508e979106ccd5f67495516c'
-	'98af02adfab933fc3c6a2ec531b638efeefa17708f22eb894753089f755e0803'
+	'36b0af962579ad8ad523aaae5b1506f8fecdb00d2033fcc0359fcfb3b3475e26'
+	'0cbfcbfcc7515bea08d63f74a0cf2ab8369ff69cc5f9422458717de3e2d7b4e3'
 	'SKIP'
 )
 sha256sums_aarch64=(
-	'80f9ef9e532e442433708e4199b027880fa39f7cad269385da1f120ee7b7bdd6'
-	'3cb1b375f73f0f67ba23be7636e7f44b63f625d807982542b8772193f311e2bd'
+	'e11fd7155a30b2c3cd32e40787d6ec009f1358cd0b7391b4d445e380b6616dc7'
+	'aaf3c81edb058338172ed6f13d0fb6dac7b8102012f9c9e62e20208064b4791b'
 	'SKIP'
 )
 install=".INSTALL"
