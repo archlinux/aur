@@ -1,6 +1,6 @@
 pkgbase = opensaucer-git
 	pkgdesc = Vehicular soccer
-	pkgver = r217.3557d96
+	pkgver = r273.742db09
 	pkgrel = 1
 	url = https://gitlab.com/luckeyproductions/games/opensaucer
 	arch = x86_64
