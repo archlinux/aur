@@ -27,5 +27,8 @@ package() {
   cp -a --no-preserve=ownership * "${pkgdir}/opt/${_appname}"
   
   chmod -R o+rX "${pkgdir}/opt/${_appname}"
+  # make the chrome-sandbox wrapper SUID, although we can't really test
+  # if it's the one it's supposed to be
+  chmod u+s "${pkgdir}/opt/${_appname}/chrome-sandbox"
   ln -s "/opt/${_appname}/sieve" "${pkgdir}/usr/bin/sieve"
 }
