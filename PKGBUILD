@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fastcluster
-_pkgver=1.2.3
+_pkgver=1.2.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Fast Hierarchical Clustering Routines for R and 'Python'"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3c0b40890f78a844cc0a6209454496bf')
-b2sums=('4bfc8d39974cf90b38f57457262e80bd14f9fa6b5a24569fc2993b368d04745e93d1ffa9a51ebd5fdf623adebe540196c74302b9e6e270846334d7650c19f0f6')
+md5sums=('252ea997088794972aac679fb6772530')
+b2sums=('03b4dc137a16511a99f50bc42b897277521fe7aecf9b6979e93aaa353735990585e5b568dba3f8fca24600922623dcbd7cfe0237a5c316fba6160d15e6480856')
 
 build() {
   mkdir build
