@@ -1,0 +1,16 @@
+pkgbase = sf-cli
+	pkgdesc = The Salesforce CLI for development and build automation when working with a Salesforce org
+	pkgver = 2.23.20
+	pkgrel = 1
+	url = https://developer.salesforce.com/tools/salesforcecli
+	arch = x86_64
+	license = unknown
+	optdepends = gnome-keyring: saving default credentials
+	provides = sf-cli
+	options = !strip
+	source_x86_64 = https://developer.salesforce.com/media/salesforce-cli/sf/versions/2.23.20/50cd2d8/sf-v2.23.20-50cd2d8-linux-x64.tar.gz
+	sha256sums_x86_64 = fbbe86be0471d5e9f3c1284d84eccfe5a828084f9d68217d01239baa4b96b22e
+	source_arm = https://developer.salesforce.com/media/salesforce-cli/sf/versions/2.23.20/50cd2d8/sf-v2.23.20-50cd2d8-linux-arm.tar.gz
+	sha256sums_arm = 191ef3dd3bc77dadc209d195a23716cdd9b475099fde8422783fe36636209b15
+
+pkgname = sf-cli
