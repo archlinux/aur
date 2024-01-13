@@ -1,10 +1,13 @@
 pkgbase = python-derpconf
 	pkgdesc = abstract loading of configuration files
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/globocom/derpconf
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/globocom/derpconf/archive/0.8.4.tar.gz
