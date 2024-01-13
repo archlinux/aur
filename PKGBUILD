@@ -1,26 +1,34 @@
-# Maintainer: Hao Long <aur@esd.cc>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Hao Long <aur@esd.cc>
 
 pkgname=mercury-parser
-pkgver=2.2.1
+_name=parser
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Extract meaningful content from the chaos of a web page (@postlight version)"
-arch=('any')
-url="https://mercury.postlight.com/web-parser/"
-license=('Apache')
-depends=('nodejs')
-makedepends=('npm' 'git')
-source=("https://registry.npmjs.org/@postlight/$pkgname/-/$pkgname-$pkgver.tgz")
-noextract=($pkgname-$pkgver.tgz)
-b2sums=('96ce7278e6f29183442bab45785c331bd7cb82844a17fc081f7dad0fb75d0b66303eff680611a329cb15dec6b82b4d11e43421c93b3199c71080d9f680457f76')
+arch=(any)
+url="https://github.com/postlight/parser"
+license=(Apache)
+depends=(nodejs)
+makedepends=(
+  git
+  npm
+)
+
+source=("https://registry.npmjs.org/@postlight/$_name/-/$_name-$pkgver.tgz")
+noextract=("$pkgname-$pkgver.tgz")
+sha256sums=('1aeea735458b89956608a0b3231d882cee73a3319f9bc10a6332b9ad553e829b')
 
 package() {
-  npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+  npm install -g \
+    --cache "$srcdir/npm-cache" \
+    --prefix "$pkgdir/usr" \
+    "$srcdir/$_name-$pkgver.tgz"
 
-  # Non-deterministic race in npm gives 777 permissions to random directories.
-  # See https://github.com/npm/cli/issues/1103 for details.
-  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    "$pkgdir/usr/lib/node_modules/@postlight/$_name/"*.md
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
-  chown -R root:root "${pkgdir}"
+  chown -R root:root "$pkgdir"
 }
