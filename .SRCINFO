@@ -1,10 +1,13 @@
 pkgbase = python-jpegiptc
 	pkgdesc = extract APP13 (iptc data) from image and raw copy APP13 to another image
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gdegoulet/JpegIPTC
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/gdegoulet/JpegIPTC/archive/refs/tags/v1.5.tar.gz
