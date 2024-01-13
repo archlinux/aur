@@ -1,0 +1,12 @@
+pkgbase = era-git
+	pkgdesc = A rainy clock in your terminal.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/kyoheiu/era
+	arch = x86_64
+	license = MIT
+	options = !strip
+	source = era::git+https://github.com/kyoheiu/era
+	sha256sums = SKIP
+
+pkgname = era-git
