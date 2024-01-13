@@ -36,16 +36,16 @@ prepare()
 
 build(){
 	cd "$srcdir/$pkgname"
-	qmake
+	qmake-qt5
 	make
 	cd canifconfig
-	qmake
+	qmake-qt5
 	make
 }
 
 
 package() {
-	cd "$srcdir/$_pkgname"
+	cd "$srcdir/$pkgname"
 	install -Dm755 "$srcdir/$pkgname/bin/cangaroo" -t "$pkgdir/usr/bin"
 	install -Dm755 "$srcdir/$pkgname/src/scripts/setup_vcan.sh" "$pkgdir/usr/bin/cangaroo-setup-vcan"
 	install -Dm755 "$srcdir/$pkgname/canifconfig/canifconfig" -t "$pkgdir/usr/bin"
