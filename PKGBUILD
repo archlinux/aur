@@ -1,6 +1,6 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 pkgname=youtube-music-uploader
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="YouTube music uploader."
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python-requests' 'python-watchdog' 'python-ytmusicapi')
 makedepends=('python-setuptools')
 source=("https://github.com/jaymoulin/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9e5ba43888a7d560c44759c22609120befe25436c381b5b6658dcc62265a961a')
+sha256sums=('f3b713d88639c83f786c3ec640ec53b85845119912d4aeb59e0b430c5b0007de')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
