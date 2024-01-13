@@ -1,0 +1,16 @@
+pkgbase = key-rack
+	pkgdesc = View and edit keys stored by apps.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/sophie-h/key-rack
+	arch = x86_64
+	license = GPL
+	checkdepends = appstream-glib
+	makedepends = cargo
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	source = git+https://gitlab.gnome.org/sophie-h/key-rack.git#commit=0fdfa4587262408f6f20eebc2c47bcadfeaa665c
+	sha256sums = SKIP
+
+pkgname = key-rack
