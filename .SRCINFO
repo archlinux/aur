@@ -1,0 +1,23 @@
+pkgbase = python-behave
+	pkgdesc = Behaviour-driven development, Python style
+	pkgver = 1.2.7.dev3
+	pkgrel = 1
+	url = https://github.com/behave/behave
+	arch = any
+	license = BSD
+	checkdepends = python-path
+	checkdepends = python-pyhamcrest
+	checkdepends = python-pytest
+	checkdepends = python-pytest-html
+	makedepends = python-setuptools
+	depends = python-cucumber-tag-expressions
+	depends = python-parse
+	depends = python-parse-type
+	depends = python-six
+	depends = python-colorama
+	source = https://github.com/behave/behave/archive/v1.2.7.dev3/python-behave-1.2.7.dev3.tar.gz
+	source = unittest-mock.patch
+	sha512sums = c12f2bb7ffc0dbca7590e711f30927dc907cd124c75c2791a9a6cb9650a51e08cb5ece05326d200a299282ca8a8d98783a8c7964321b882c9e6b6bb8b7a144a4
+	sha512sums = 999f45f2bd2f6010926cde07a71582ab8e533aeb8edd32401db7ad8c6f9245c33203415151f642ab2b78c4d2dac2050edeb94eeed2075f0de85e5135cc376bcd
+
+pkgname = python-behave

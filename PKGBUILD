@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-behave
-pkgver=1.2.7.dev2
-pkgrel=3
+pkgver=1.2.7.dev3
+pkgrel=1
 pkgdesc="Behaviour-driven development, Python style"
 url="https://github.com/behave/behave"
 license=('BSD')
@@ -12,8 +12,8 @@ depends=('python-cucumber-tag-expressions' 'python-parse' 'python-parse-type' 'p
 makedepends=('python-setuptools')
 checkdepends=('python-path' 'python-pyhamcrest' 'python-pytest' 'python-pytest-html')
 source=("https://github.com/behave/behave/archive/v$pkgver/$pkgname-$pkgver.tar.gz" "unittest-mock.patch")
-sha512sums=('5c4bba820fa1a6691ae275e3adb0b6077a1957686a9ee205d471ffddc9601b32e5b2f47cd2b3e2d7a72a31c39f171c3b2af524d7f787243585d4d95086675118'
-            '5ebb50700bbb9374d1a15ea21546f3023983304b01f12339983ebdf1aea6ef40fc87fde4ce62bab8497280741684f6fb8429cf10ad27c43a2e0b38ab1383fdff')
+sha512sums=('c12f2bb7ffc0dbca7590e711f30927dc907cd124c75c2791a9a6cb9650a51e08cb5ece05326d200a299282ca8a8d98783a8c7964321b882c9e6b6bb8b7a144a4'
+            '999f45f2bd2f6010926cde07a71582ab8e533aeb8edd32401db7ad8c6f9245c33203415151f642ab2b78c4d2dac2050edeb94eeed2075f0de85e5135cc376bcd')
 
 prepare() {
   cd behave-$pkgver
