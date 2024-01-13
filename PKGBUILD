@@ -2,8 +2,8 @@
 
 pkgbase=sing-geoip
 pkgname=(sing-geoip-common sing-geoip-rule-set sing-geoip-db)
-pkgver=20231212
-pkgrel=5
+pkgver=20240112
+pkgrel=1
 
 pkgdesc='sing-geoip'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(go)
 _srcbase="${pkgbase}-${pkgver}"
 
 source=("${_srcbase}.tar.gz::https://github.com/SagerNet/sing-geoip/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e1055c8190a7f79a00ce3870b4f482161483ff68ffb10ed6f7915849ec513bd9')
+sha256sums=('d3277611a2f0f4657c1bf4cb402543892d05155d481ee4e04b1c0ecc473df3fa')
 
 build() {
     cd "${_srcbase}" || exit
