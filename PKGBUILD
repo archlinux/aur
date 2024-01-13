@@ -3,7 +3,7 @@
 
 pkgdesc='Dynamic, bytecode-compiled programming language and a dialect of Python (development version)'
 pkgname='kuroko-git'
-pkgver=1.4.0.r47.ge413643
+pkgver=1.4.0.r60.g6e8aa9b
 pkgrel=1
 url='https://github.com/kuroko-lang/kuroko'
 arch=('aarch64' 'x86_64')
@@ -15,7 +15,14 @@ options=('lto')
 provides=('kuroko' 'libkuroko')
 sha256sums=('SKIP')
 source=("git+$url.git")
+
 _pkgname='kuroko'
+
+prepare() {
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+}
 
 pkgver() {
   cd "$_pkgname"
