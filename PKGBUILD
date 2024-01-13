@@ -9,14 +9,14 @@ pkgdesc="general desktop lyrics with QQMusic/NetEase Cloud Music source"
 url="https://github.com/waylyrics/waylyrics"
 conflicts=('waylyrics')
 provides=('waylyrics')
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('openssl' 'hicolor-icon-theme'
     # base
     'dbus' 'gcc-libs' 'glibc'
     # gtk4
     'glib2' 'cairo' 'dconf' 'gtk4')
-makedepends=('cargo' 'git' 'jq' 'mimalloc')
+makedepends=('rust' 'git' 'jq' 'mimalloc')
 optdepends=()
 
 source=("git+${url}.git")
@@ -33,7 +33,7 @@ prepare() {
     then rustup update stable
     fi
 
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target ${CARCH}-unknown-linux-gnu
 }
 
 pkgver() {
