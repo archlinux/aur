@@ -1,7 +1,7 @@
 pkgbase = defguard-client
 	pkgdesc = defguard enterprise SSO & Wireguard VPN desktop client
 	pkgver = 0.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/DefGuard/client
 	arch = x86_64
 	license = custom
