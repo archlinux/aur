@@ -16,7 +16,7 @@ depends=('openssl' 'hicolor-icon-theme'
 	'dbus' 'gcc-libs' 'glibc'
 	# gtk4
 	'glib2' 'cairo' 'dconf' 'gtk4')
-makedepends=('cargo-nightly' 'git' 'jq' 'mimalloc')
+makedepends=('cargo-nightly' 'rust-nightly' 'git' 'jq' 'mimalloc')
 optdepends=()
 
 source=("git+${url}.git")

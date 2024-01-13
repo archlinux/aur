@@ -8,6 +8,7 @@ pkgbase = waylyrics-git
 	arch = aarch64
 	license = MIT
 	makedepends = cargo-nightly
+	makedepends = rust-nightly
 	makedepends = git
 	makedepends = jq
 	makedepends = mimalloc
