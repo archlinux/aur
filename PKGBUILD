@@ -3,7 +3,7 @@
 
 pkgname=victoriametrics
 _name=VictoriaMetrics
-pkgver=1.93.5
+pkgver=1.96.0
 pkgrel=1
 pkgdesc="Fast, cost-effective and scalable time series database"
 arch=(x86_64)
@@ -15,7 +15,7 @@ backup=('etc/default/victoriametrics')
 source=("https://github.com/VictoriaMetrics/VictoriaMetrics/archive/refs/tags/v$pkgver.tar.gz"
         "victoriametrics.service"
         "victoriametrics.default")
-b2sums=('69e7cec2edfb6935c676816c5859d6620cba2aec1c03a2fbbda34b101ac03db397cc687db0ff590798f58b13ace6aa6b81384c579d0dae50b3d0334c0511822b'
+b2sums=('f241ad0da8303da4ca085ae8f447d28e23dd19f30853b96ad24551232e8030d223a27d79aa5ab56df372e10c54b82bd964e7bf69997734379a438adacff06b40'
         'dfe05a39758258ad3298332dc18f35544cbf40c3257208823321f9631581ab9bfc7465018eb02a9990d3df852887e4715478abe7816354effd781a9c13026168'
         '4405dc19795d2cbfa515e4750a2cad77c13611293176ff5aeec597f9905494902bd4496c1e90f1efe2d484e383adb39d034167673b9fe7de8b307b8cedf17b7f')
 
