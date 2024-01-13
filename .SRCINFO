@@ -1,8 +1,8 @@
 pkgbase = btrfs-snapshots-git
 	pkgdesc = Manage timestamped collections of btrfs snapshots
-	pkgver = 0.8.2.r0.4142166
+	pkgver = 0.8.2.r6.63920b2
 	pkgrel = 1
-	url = https://git.sr.ht/~jmcantrell/btrfs-snapshots
+	url = https://github.com/jmcantrell/btrfs-snapshots
 	arch = any
 	license = MIT
 	checkdepends = parallel
@@ -12,7 +12,7 @@ pkgbase = btrfs-snapshots-git
 	depends = btrfs-progs
 	provides = btrfs-snapshots
 	conflicts = btrfs-snapshots
-	source = git+https://git.sr.ht/~jmcantrell/btrfs-snapshots
+	source = git+https://github.com/jmcantrell/btrfs-snapshots
 	md5sums = SKIP
 
 pkgname = btrfs-snapshots-git
