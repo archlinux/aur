@@ -27,13 +27,14 @@ options=('!lto')
 
 pkgver() {
 	cd "${_pkgname}"
+	export RUSTUP_TOOLCHAIN=nightly
 	semver=$(cargo metadata --no-deps --format-version=1 | jq -r '.packages | .[0] | .version')
 	echo "${semver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
     cd "${_pkgname}"
-    export RUSTUP_TOOLCHAIN=nightly
+	export RUSTUP_TOOLCHAIN=nightly
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -41,7 +42,7 @@ build() {
 	cd "${_pkgname}"
 
 	export RUSTUP_TOOLCHAIN=nightly
-    export CARGO_TARGET_DIR=target
+	export CARGO_TARGET_DIR=target
 
 	# template files
 	export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${_pkgname}/themes"
