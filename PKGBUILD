@@ -1,7 +1,7 @@
 # Maintainer: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=meta-package-manager
-pkgver=5.13.1+r104+gdc5079d5
+pkgver=5.14.0
 pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url='https://kdeldycke.github.io/meta-package-manager/'
@@ -30,23 +30,18 @@ optdepends=('apt: support for apt packages'
             'zypper: support for RPM packages')
 license=('GPL2')
 arch=('any')
-source=("git+https://github.com/kdeldycke/${pkgname}.git#commit=dc5079d5ee840d6be2287bd07eed9e49fdf5e5c6")
-sha512sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
-}
+source=("https://github.com/kdeldycke/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('1eab2ba717667c93c2b4348c1de32d85a09f8d8a521a9462c373c57fca485e6e1116defb31f91e2fb1f0b7830faf094317660c0a377bb7a0de22042c9736bf91')
 
 
 build() {
     # Poetry has a bug where .gitignore files in any parent directory is used in excluding files to build, resulting in an empty package.
-    cd "$srcdir/$pkgname"
-    GIT_DIR="$srcdir/$pkgname" python -m build --wheel --no-isolation
+    cd "$srcdir/$pkgname-$pkgver"
+    GIT_DIR="$srcdir/$pkgname-$pkgver" python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" license
 }
