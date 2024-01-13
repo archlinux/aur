@@ -1,7 +1,7 @@
 pkgbase = uksmd-cachyos-nosystemd-git
 	pkgdesc = Userspace KSM helper daemon. CachyOS-version with 'uksmdstats'. Without systemd dependency, latest git checkout.
 	pkgver = 1.2.8.r108.20231220.65b9974
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/CachyOS/uksmd
 	arch = aarch64

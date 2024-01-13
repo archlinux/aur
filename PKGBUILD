@@ -11,7 +11,7 @@ _downloadname="${_pkgname}-CachyOS"
 pkgname="${_pkgname}-cachyos-nosystemd-git"
 epoch=0
 pkgver=1.2.8.r108.20231220.65b9974
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace KSM helper daemon. CachyOS-version with 'uksmdstats'. Without systemd dependency, latest git checkout."
 url='https://github.com/CachyOS/uksmd'
 # Original upstream URL: https://codeberg.org/pf-kernel/uksmd
@@ -51,14 +51,16 @@ conflicts=(
 )
 source=(
   "${_downloadname}::git+${url}.git"
-  #'disable_systemd_build.patch'
 )
 sha256sums=(
   'SKIP'
-  #'0da6e7d475536bf91d2c39f672d2c33026ea46740e5f2d6e2d84e47676d69edf'
 )
 
 prepare() {
+  cd "${srcdir}"
+
+  mkdir -p build
+
   cd "${srcdir}/${_downloadname}"
 
   git log > git.log
@@ -82,16 +84,18 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_downloadname}"
+  cd "${srcdir}"
 
-  arch-meson . build
+  arch-meson -Dsystemd=disabled "${_downloadname}" build
   meson compile -C build
 }
 
 package() {
-  cd "${srcdir}/${_downloadname}"
+  cd "${srcdir}"
 
   meson install -C build --destdir "${pkgdir}"
+
+  cd "${srcdir}/${_downloadname}"
 
   install -Dvm644 git.log "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
   install -Dvm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
