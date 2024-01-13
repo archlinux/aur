@@ -1,24 +1,43 @@
-# Maintainer: Blazej Sewera <blazejok1[at]wp.pl>
+# Maintainer:
+# Contributor: Blazej Sewera <blazejok1[at]wp.pl>
 
-pkgname=python-suntime
 _module="suntime"
+_pkgname="python-$_module"
+pkgname="$_pkgname"
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple sunset and sunrise time calculation python library"
 url="https://github.com/SatAgro/suntime"
-depends=("python" "python-six" "python-dateutil")
-makedepends=("python-setuptools")
-license=("LGPL3")
+license=("LGPL-3.0-only")
 arch=("any")
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=("e4df651dfcde332f905e57da6be49a1cc696499f11853fb0395df29104274649")
+
+depends=(
+  "python"
+  "python-dateutil"
+  "python-six"
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+
+_pkgsrc="$_module-$pkgver"
+_pkgext="tar.gz"
+source=(
+  "$_pkgsrc.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_pkgsrc.$_pkgext"
+)
+sha256sums=(
+  "e4df651dfcde332f905e57da6be49a1cc696499f11853fb0395df29104274649"
+)
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
