@@ -2,7 +2,7 @@
 
 pkgname=dataplaneapi-git
 _pkgname=dataplaneapi
-pkgver=2.7.0.r96.gd1cda1ef
+pkgver=2.7.0.r111.g56c34bbe
 pkgrel=1
 pkgdesc="HAProxy Data Plane API (git version)"
 arch=('any')
