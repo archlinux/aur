@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.11.4
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -14,9 +14,11 @@ depends=(bc
          entr
          epubcheck
          fontconfig
+         gcc-libs
          ghostscript
          git
          git-warp-time
+         glibc
          imagemagick
          inetutils
          inkscape
@@ -24,7 +26,7 @@ depends=(bc
          jq
          kindlegen
          libertinus-font
-         libgit2
+         libgit2 libgit2.so
          lua
          luarocks
          m4
@@ -70,16 +72,13 @@ depends+=("${_lua_deps[@]/#/lua-}"
           "${_lua_deps[@]/#/lua51-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
-depends+=(gcc-libs
-          glibc)
-depends+=(libgit2.so)
 makedepends=(autoconf-archive
              cargo
              node-prune
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('bb5e87400ee7e34a46688341f5007379a2bb3652d163de7ecb6b632ad6cd3844')
+sha256sums=('6a1a9572d1e4e78e7fd13e87c3880c17a74d365bd97a17653e03a82b2bab1aee')
 
 prepare() {
 	cd "$_archive"
@@ -87,23 +86,26 @@ prepare() {
 		-e 's/yarn \(install\|run\)/yarn --offline \1/' \
 		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
 	autoreconf
-	cargo fetch --locked  --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	yarn install --production --frozen-lockfile
 }
 
-build() {
+_srcenv() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+}
+
+build() {
+	_srcenv
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	./configure --prefix "/usr"
 	make
 }
 
 check() {
-	cd "$_archive"
-	export RUSTUP_TOOLCHAIN=stable
+	_srcenv
 	make check
 }
 
