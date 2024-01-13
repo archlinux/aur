@@ -2,20 +2,19 @@
 
 pkgname=python-derpconf
 _name=${pkgname#python-}
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="abstract loading of configuration files"
 arch=('any')
 url="https://github.com/globocom/derpconf"
 license=('MIT')
-depends=(python)
+depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/globocom/derpconf/archive/v$pkgver.tar.gz")
-b2sums=('b1ab949f512314a57d5708eb7b7ed9b642207060207c3e68035ddd21c21a40b44cf44b28b7a0a27a6d1dbe4147603135339de03d3c7ec4936eb7c30399570bd6')
+source=("https://github.com/globocom/derpconf/archive/$pkgver.tar.gz")
+b2sums=('d0457481147a3ed8fa059f7022fede1577eca70a2818560e662715c58d995bee6a972925b01566d8f564f807ba8885a53a5e162de96f698ef9b7aaeb35f9da3b')
 
 build() {
     cd $_name-$pkgver
-
     python setup.py build
 }
 
@@ -25,4 +24,3 @@ package() {
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
