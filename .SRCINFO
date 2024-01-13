@@ -1,5 +1,5 @@
 pkgbase = defguard-client
-	pkgdesc = The most beautiful and functional Wireguard(tm) desktop client with real 2FA
+	pkgdesc = defguard enterprise SSO & Wireguard VPN desktop client
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/DefGuard/client
