@@ -1,9 +1,14 @@
+# Maintainer: Andrej Halveland (SnipeX_ / SnipeX) <andrej.halv@gmail.com>
+#
+# Based on the AUR package by:
 # Maintainer: Dušan Mitrović <dusan@dusanmitrovic.xyz>
-pkgname=supersonic-desktop
-pkgver=0.8.2
+
+pkgname=supersonic-desktop-git
+pkgver=v0.8.2.r51.gee275cb
 pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers"
-_pkgname="${pkgname//-desktop/}"
+_pkgname="supersonic-desktop"
+_appname="supersonic"
 arch=('x86_64')
 url="https://github.com/dweymouth/supersonic"
 license=('GPL3')
@@ -18,26 +23,32 @@ optdepends=(
     "org.freedesktop.secrets: Keyring password store support"
 )
 makedepends=('go>=1.17')
+conflicts=('supersonic-desktop')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "git+${url}.git"
 )
 sha256sums=(
-    "55ce49566d3350fe789934310509763dc2646ea09cc5c8d364daca49d692b185"
+    "SKIP"
 )
+
+pkgver() {
+  cd "$_appname"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   export GOPATH="$srcdir"/gopath
 
-  cd "$srcdir/${_pkgname}-${pkgver}"
+  cd "$srcdir/${_appname}"
 
   go build -mod=readonly -modcacherw .
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  _output="${srcdir}/${_pkgname}-${pkgver}"
+  cd "$srcdir/${_appname}"
+  _output="${srcdir}/${_appname}"
 
-  install -Dm755 "${_output}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "$srcdir/${_pkgname}-${pkgver}/res/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "$srcdir/${_pkgname}-${pkgver}/res/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  install -Dm755 "${_output}/${_appname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "$srcdir/${_appname}/res/appicon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm644 "$srcdir/${_appname}/res/${_appname}-desktop.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 }
