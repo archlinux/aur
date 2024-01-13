@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+CHROOT="./buildroot"
+sudo mount --mkdir -t tmpfs -o defaults,size=20G tmpfs "${CHROOT}"
+mkarchroot "${CHROOT}/root" base-devel jdk-openjdk git
+
+cleanup() {
+    sudo umount "${CHROOT}"
+    rmdir "${CHROOT}"
+}
+trap cleanup EXIT
+
+sudo cp ./aurdeps "${CHROOT}/root"
+arch-nspawn "${CHROOT}/root" ./aurdeps
+sudo makechrootpkg -c -r "${CHROOT}"
