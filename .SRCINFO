@@ -3,7 +3,7 @@
 pkgbase = topal
 	pkgdesc = Topal is a glue program that links GnuPG and Alpine
 	pkgver = 82
-	pkgrel = 1
+	pkgrel = 2
 	url=https://zircon.org.uk/topal/
 	install = topal.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = topal
 	makedepends = gcc-ada
 	makedepends = make
 	makedepends = lynx
+	makedepends = git
 	optdepends = alpine: for which topal was mainly written for
 	optdepends = re-alpine: fork of alpine for which topal was mainly written for
 	optdepends = gnupg: to encrypt, decrypt, sign and verify e-mail

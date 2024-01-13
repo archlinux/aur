@@ -6,12 +6,12 @@
 
 pkgname=topal
 pkgver=82
-pkgrel=1
+pkgrel=2
 pkgdesc="Topal is a glue program that links GnuPG and Alpine"
 arch=("i686" "x86_64")
 url="https://zircon.org.uk/topal/"
 license=("GPL3")
-makedepends=("gcc-ada" "make" "lynx")
+makedepends=("gcc-ada" "make" "lynx" "git")
 optdepends=("alpine: for which topal was mainly written for"
             "re-alpine: fork of alpine for which topal was mainly written for"
             "gnupg: to encrypt, decrypt, sign and verify e-mail"
@@ -25,7 +25,6 @@ md5sums=('SKIP')
 
 
 build() {
-#  cp -r "${pkgname}" "${srcdir}/${pkgname}-${pkgver}"
   cd "${pkgname}"
 
 # Remove PDF build stuff
