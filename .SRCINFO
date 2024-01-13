@@ -1,7 +1,8 @@
 pkgbase = skyline-commander-git
-	pkgdesc = Golang reimplementation of Midnight Commander
-	pkgver = 0.0.1
+	pkgdesc = Golang reimplementation of Midnight Commander.
+	pkgver = r22.d20211218.gb21c999
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/vit1251/skyline-commander
 	arch = i686
 	arch = x86_64
@@ -14,13 +15,17 @@ pkgbase = skyline-commander-git
 	arch = armhf
 	arch = armel
 	arch = arm
-	license = license-free
+	arch = riscv
+	arch = riscv64
+	license = custom:license-free
 	makedepends = git
 	makedepends = go
 	makedepends = pkg-config
-	makedepends = ncurses
+	depends = glibc
 	depends = ncurses
-	source = git+https://github.com/vit1251/skyline-commander.git
+	provides = skyline-commander=r22.d20211218.gb21c999
+	conflicts = skyline-commander
+	source = skyline-commander::git+https://github.com/vit1251/skyline-commander.git
 	sha256sums = SKIP
 
 pkgname = skyline-commander-git
