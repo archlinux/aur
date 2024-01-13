@@ -4,7 +4,7 @@
 
 pkgname=mikutter
 pkgver=5.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
@@ -14,7 +14,7 @@ makedepends=('gobject-introspection')
 optdepends=('alsa-utils: sound notification support'
             'libnotify: notify support')
 source=(
-http://mikutter.hachune.net/bin/$pkgname-$pkgver.tar.gz
+https://mikutter.hachune.net/bin/$pkgname-$pkgver.tar.gz
 mikutter.desktop
 )
 sha256sums=('8f8d633fedd1a05767eacbd6840c6c268dd2a47f5cf7f7a520a38c8ea869f6c2'
