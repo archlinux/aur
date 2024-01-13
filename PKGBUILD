@@ -1,7 +1,7 @@
 # Maintainer: HunarPG <HunarSangwanPG@gmail.com>
 pkgname='porymap-git'
 pkgver=5.2.0.r14.g3d3811f
-pkgrel=2
+pkgrel=3
 pkgdesc="A map editor for the Pokémon generation 3 decompilation projects"
 arch=('x86_64')
 url="https://github.com/huderlem/porymap"

@@ -1,7 +1,7 @@
 pkgbase = porymap-git
 	pkgdesc = A map editor for the Pokémon generation 3 decompilation projects
 	pkgver = 5.2.0.r14.g3d3811f
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/huderlem/porymap
 	arch = x86_64
 	license = LGPL
@@ -50,7 +50,7 @@ pkgbase = porymap-git
 	depends = libxdmcp
 	depends = libunistring
 	depends = gendesk
-	depends = libicns
+	depends = icoutils
 	source = git+https://github.com/huderlem/porymap
 	md5sums = SKIP
 
