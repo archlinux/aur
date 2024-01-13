@@ -3,24 +3,24 @@
 pkgname=python-simple-pid
 _name=${pkgname#python-}
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and easy to use PID controller in Python"
 arch=(any)
 url="https://github.com/m-lundberg/simple-pid"
 license=(MIT)
 depends=(python)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/m-lundberg/$_name/archive/v$pkgver.tar.gz")
 b2sums=('29e54cc3e6bddd9103979a0ee1acdfb60e3bd85ef199b2a538144ec5e0c8ea45d4ce22615df618fdd920d0c0e04a50a844d598e9fc09c5873bb8d9c550548723')
 
 build() {
   cd $_name-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $_name-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
