@@ -34,7 +34,8 @@ noextract=()
 sha256sums=('c996935ff6748fe990c4e586944ce1299bb0e36b1708b8735314706fe1d1cdb5'
             '6d70d436bff95b6ca7ae270219a4288c81ccf119ad57158528fdda19585b2067'
             '4dfa4502df8d72212ccfb96cfc2509c9a1461f542adb38304af54097b30ca0d5'
-            'cba6a5df66a42ced857822e1099be00f2e37ec800f29cbbfca7210020140291b')
+            'cba6a5df66a42ced857822e1099be00f2e37ec800f29cbbfca7210020140291b'
+            'b84aeaddd9c03907d8addb2dd7e494e3d9cb2fbe8a50dac1db2ddf2fe1c0eeac')
 
 prepare() {
 
