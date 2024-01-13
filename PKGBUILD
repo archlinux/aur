@@ -3,10 +3,10 @@
 
 pkgname=('jed-git')
 _pkgname="${pkgname/-git/}"
-pkgver=0.99.20.r180.g68f0c75
-pkgrel=1
-pkgdesc='Powerful editor designed for use by programmers (built from latest git commit)'
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+pkgver='0.99.20.r180.g68f0c75'
+pkgrel='2'
+pkgdesc='Powerful scriptable editor designed for use by programmers (built from latest git commit)'
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://www.jedsoft.org/jed/'
 source=(
   'git://git.jedsoft.org/git/jed.git'
@@ -28,16 +28,20 @@ makedepends=('git' 'libxext' 'libxt')
 install="$pkgname.install"
 
 prepare() {
-  cd "$srcdir/$_pkgname" || exit 1
+  cd "$srcdir/$_pkgname"
 
   sed \
     -e "s|\(^all.*\)|\1 xjed rgrep getmail|" \
     -e "s|..DEST.*doc|$pkgdir/usr/share/doc/$pkgname|g" \
     -i src/Makefile.in
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
 }
 
 pkgver() {
-  cd "$srcdir/$_pkgname" || exit 1
+  cd "$srcdir/$_pkgname"
 
   # The usual “git describe --long” doesn't work here,
   # so let's invent our own thing:
@@ -51,7 +55,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname" || exit 1
+  cd "$srcdir/$_pkgname"
 
   ./configure --prefix=/usr JED_ROOT=/usr/share/jed
 
