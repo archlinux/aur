@@ -8,13 +8,12 @@ source=("pluto-git::git+https://github.com/PlutoLang/Pluto#tag=$pkgver")
 sha256sums=('SKIP')
 
 build () {
-	cd pluto-git
-	cd src
+	cd pluto-git/src
 	make -j PLAT=linux
 }
 
 package () {
-	cd $srcdir/pluto-git
+	cd pluto-git
 	mkdir -p $pkgdir/usr/bin
 	cp src/pluto $pkgdir/usr/bin/pluto
 	cp src/plutoc $pkgdir/usr/bin/plutoc
