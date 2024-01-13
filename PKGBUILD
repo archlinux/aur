@@ -3,7 +3,7 @@
 pkgname=waylyrics-git
 _pkgname=waylyrics
 _appname="io.poly000.${_pkgname}"
-pkgver=0.1.0_r455.g0a7276e
+pkgver=0.1.0_r457.g24110f0
 pkgrel=1
 pkgdesc="general desktop lyrics with QQMusic/NetEase Cloud Music source"
 url="https://github.com/waylyrics/waylyrics"
@@ -16,7 +16,7 @@ depends=('openssl' 'hicolor-icon-theme'
     'dbus' 'gcc-libs' 'glibc'
     # gtk4
     'glib2' 'cairo' 'dconf' 'gtk4')
-makedepends=('cargo-nightly' 'rust-nightly' 'git' 'jq' 'mimalloc')
+makedepends=('cargo' 'git' 'jq' 'mimalloc')
 optdepends=()
 
 source=("git+${url}.git")
@@ -27,10 +27,10 @@ options=('!lto')
 
 prepare() {
     cd "${_pkgname}"
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
 
     if which rustup
-    then rustup update nightly
+    then rustup update stable
     fi
 
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -38,7 +38,7 @@ prepare() {
 
 pkgver() {
     cd "${_pkgname}"
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     semver=$(cargo metadata --no-deps --format-version=1 | jq -r '.packages | .[0] | .version')
     echo "${semver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
@@ -46,7 +46,7 @@ pkgver() {
 build() {
     cd "${_pkgname}"
 
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
     # template files
