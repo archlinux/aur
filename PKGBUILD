@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-excel-writer-xlsx'
-pkgver='1.09'
+pkgver='1.11'
 pkgrel='1'
 pkgdesc="Create a new file in the Excel 2007+ XLSX format."
 arch=('any')
@@ -11,9 +11,9 @@ options=('!emptydirs')
 depends=('perl-archive-zip>=1.3')
 makedepends=()
 url='https://metacpan.org/release/Excel-Writer-XLSX'
-source=("http://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/Excel-Writer-XLSX-${pkgver}.tar.gz")
-md5sums=('654fb6dd074c483a5346aa3396f1b0f1')
-sha512sums=('a002c4a8ef3b869b64b6a024e65dba1fb350c7e5129f6a5578a3465c0d60f09a34df0a9bbac34cb19dd00db9ff063a73694ca6ae9650080fa20f65bfacc3be34')
+source=("https://cpan.metacpan.org/authors/id/J/JM/JMCNAMARA/Excel-Writer-XLSX-${pkgver}.tar.gz")
+md5sums=('a9855cb04b577a4761c10b15693dc097')
+sha512sums=('43563838be7d15a5a19a27bc79ff7a51161d4456011423babc93b50216c24e42db85b993b833f7239008e3e8a3f83048553377a44f4b7abceab97825abe56c78')
 _distdir="Excel-Writer-XLSX-${pkgver}"
 
 build() {
