@@ -1,7 +1,7 @@
 pkgbase = pass-parcellite
 	pkgdesc = Stores, retrieves, generates, and synchronizes passwords securely (Parcellite support)
 	pkgver = 1.7.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.passwordstore.org/
 	arch = any
 	license = GPL2
@@ -23,6 +23,7 @@ pkgbase = pass-parcellite
 	optdepends = wl-clipboard: for clipboard support on Wayland
 	optdepends = xclip: for clipboard support on X11
 	optdepends = xdotool: for typing support
+	optdepends = ydotool: for typing support (Wayland)
 	provides = passmenu
 	provides = pass
 	conflicts = passmenu

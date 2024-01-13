@@ -6,7 +6,7 @@
 
 pkgname=pass-parcellite
 pkgver=1.7.4
-pkgrel=5
+pkgrel=6
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely (Parcellite support)'
 arch=('any')
 url="https://www.passwordstore.org/"
@@ -28,7 +28,8 @@ optdepends=('dmenu: for passmenu'
             'vim-plugin-runtime: for redact_pass.vim'
             'wl-clipboard: for clipboard support on Wayland'
             'xclip: for clipboard support on X11'
-            'xdotool: for typing support')
+            'xdotool: for typing support'
+            'ydotool: for typing support (Wayland)')
 replaces=('passmenu')
 provides=('passmenu'
           'pass')
