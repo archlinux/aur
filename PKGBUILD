@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r1121.g27e9552e8
+pkgver=1.4.0.development.snapshot.006.r1251.g84e881dcf
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -26,13 +26,14 @@ source=('git+https://github.com/mumble-voip/mumble.git'
         'git+https://github.com/mumble-voip/minhook.git'
         'git+https://github.com/mumble-voip/mach_override.git'
         'git+https://github.com/mumble-voip/rnnoise.git'
+        'git+https://github.com/mumble-voip/SPSCQueue.git'
+        'git+https://github.com/Krzmbrzl/cmake-compiler-flags.git'
         'git+https://github.com/Krzmbrzl/FindPythonInterpreter.git'
         'git+https://github.com/wolfpld/tracy.git'
-        'git+https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent'
+        'git+https://github.com/nlohmann/json.git'
         'git+https://github.com/microsoft/GSL.git'
-        'git+https://github.com/rigtorp/SPSCQueue.git'
         'git+https://github.com/xiph/speexdsp.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -44,13 +45,14 @@ prepare() {
   git submodule init
   git config submodule.3rdparty/minhook.url "$srcdir/minhook"
   git config submodule.3rdparty/mach-override-src.url "$srcdir/mach_override"
-  git config submodule.3rdparty/speexdsp.url "$srcdir/speexdsp"
   git config submodule.3rdparty/rnnoise-src.url "$srcdir/rnnoise"
+  git config submodule.3rdparty/SPSCQueue.url "$srcdir/SPSCQueue"
+  git config submodule.3rdparty/cmake-compiler-flags-src.url "$srcdir/cmake-compiler-flags"
   git config submodule.3rdparty/FindPythonInterpreter.url "$srcdir/FindPythonInterpreter"
   git config submodule.3rdparty/tracy.url "$srcdir/tracy"
-  git config submodule.3rdparty/nlohmann_json.url "$srcdir/nlohmann_json_cmake_fetchcontent"
+  git config submodule.3rdparty/nlohmann_json.url "$srcdir/json"
   git config submodule.3rdparty/gsl.url "$srcdir/GSL"
-  git config submodule.3rdparty/SPSCQueue.url "$srcdir/SPSCQueue"
+  git config submodule.3rdparty/speexdsp.url "$srcdir/speexdsp"
   git -c protocol.file.allow=always submodule update
 
   # protobuf 23 requires C++17
