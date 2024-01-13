@@ -11,6 +11,7 @@ pkgbase = daggerfall-unity-bin
 	depends = zlib
 	depends = gcc-libs
 	depends = bash
+	replaces = daggerfall-unity-aur-bin
 	source = daggerfall-unity
 	source = daggerfall.desktop
 	source = settings-template.ini
