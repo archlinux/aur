@@ -1,22 +1,44 @@
+# Maintainer: taotieren <admin@taotieren.com>
+
 pkgname=cangaroo
-pkgver=0.2.2
+pkgver=0.2.2.r64.gca7f907
 pkgrel=1
-pkgdesc="An Open-Source CAN Monitor"
-arch=('any')
+pkgdesc="Open source can bus analyzer software - with support for CANable / CANable2, CANFD, and other new features"
+arch=(aarch64
+	riscv64
+	x86_64)
 license=('GPL')
 depends=(
-  'git'
-  'qt5-base'
+  libnl
+  qt5-charts
+  qt5-tools
+  qt5-serialport
 )
-url="https://github.com/HubertD/cangaroo"
+makedepends=(git)
+url="https://github.com/normaldotcom/cangaroo"
 
-source=("$pkgname::git+https://github.com/HubertD/cangaroo.git#tag=$pkgver")
+source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
+
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build(){
 	cd "$srcdir/$pkgname"
-	# master is the normal one. msgfilter is the current
-	git checkout $pkgver
+	qmake
+	make
+	cd canifconfig
 	qmake
 	make
 }
@@ -24,7 +46,9 @@ build(){
 
 package() {
 	cd "$srcdir/$_pkgname"
-	install -Dm755 "$srcdir/$pkgname/bin/cangaroo" "$pkgdir/usr/bin/cangaroo"
-	install -Dm644 "$srcdir/$pkgname/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 "$srcdir/$pkgname/src/assets/cangaroo.png" "$pkgdir/usr/share/pixmaps/cangaroo.png"
+	install -Dm755 "$srcdir/$pkgname/bin/cangaroo" -t "$pkgdir/usr/bin"
+	install -Dm755 "$srcdir/$pkgname/src/scripts/setup_vcan.sh" "$pkgdir/usr/bin/cangaroo-setup-vcan"
+	install -Dm755 "$srcdir/$pkgname/canifconfig/canifconfig" -t "$pkgdir/usr/bin"
+	install -Dm644 "$srcdir/$pkgname/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "$srcdir/$pkgname/src/assets/cangaroo.png" -t "$pkgdir/usr/share/pixmaps"
 }
