@@ -1,10 +1,11 @@
 # adopted from aur3 mirror
 #
 # Contributor: Adrian C. (anrxc) <anrxc..sysphere.org>
-# Maintainer: Jose Riha jose1711 gmail com
+# Contributor: Jose Riha jose1711 gmail com
+# Maintainer: Lee Chong Yew ramchyld -at- gmail -dot- com
 
 pkgname=topal
-pkgver=76
+pkgver=82
 pkgrel=1
 pkgdesc="Topal is a glue program that links GnuPG and Alpine"
 arch=("i686" "x86_64")
@@ -19,12 +20,13 @@ optdepends=("alpine: for which topal was mainly written for"
             "openssh: for remote and server mode of operation")
 install="${pkgname}.install"
 options=("!makeflags")
-source=("https://fossies.org/linux/privat/topal-package-${pkgver}.tgz")
-md5sums=('afe0010716bcb0073d31b3328c7b65ae')
+source=('git+https://dl.green-pike.co.uk/topal.git')
+md5sums=('SKIP')
 
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+#  cp -r "${pkgname}" "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
 # Remove PDF build stuff
   sed -i 's/binary topal.pdf/binary/' Makefile
@@ -35,7 +37,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
 # Install Topal binary, manual page and documentation
   install -D -m755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
