@@ -1,7 +1,7 @@
 pkgbase = hide-client
 	pkgdesc = Hide.me CLI VPN client for Linux
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eventure/hide.client.linux
 	arch = x86_64
 	arch = aarch64
