@@ -8,13 +8,16 @@ pkgname=eggdrop
 pkgver=1.9.3
 pkgrel=1
 pkgdesc="The world's most popular Open Source IRC bot."
-arch=('x86_64')
+arch=(x86_64)
 url="http://www.eggheads.org/"
-license=('GPL2')
-depends=('tcl' 'openssl' 'bash')
-source=("http://ftp.eggheads.org/pub/$pkgname/source/1.9/$pkgname-$pkgver.tar.gz"
-        "http://ftp.eggheads.org/pub/$pkgname/source/1.9/$pkgname-$pkgver.tar.gz.asc"
-        'dlopen.c' 'utf8.patch')
+license=(GPL2)
+depends=(tcl openssl bash)
+source=(
+  "http://ftp.eggheads.org/pub/$pkgname/source/1.9/$pkgname-$pkgver.tar.gz"
+  "http://ftp.eggheads.org/pub/$pkgname/source/1.9/$pkgname-$pkgver.tar.gz.asc"
+  'dlopen.c'
+  'utf8.patch'
+)
 backup=("etc/$pkgname.conf")
 b2sums=('979190536c3c0718ef4b030d8f6df817b8ee823854c104b7d6f9009c10a7f8394d59afca40fc5c9778f130788fac7e14458d62d30a55413dea4653ca00c83f0a'
         'SKIP'
@@ -63,8 +66,6 @@ check() {
 package() {
   readonly eggtmp="$pkgdir/tmp"
   mkdir -p -m 0755 "$eggtmp"
-
-  # This is ugly..
 
   cd "$srcdir/$pkgname-$pkgver"
   make install DEST="$eggtmp"
