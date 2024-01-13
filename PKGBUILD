@@ -11,7 +11,7 @@
 pkgbase=tensorflow-amd-git
 pkgname=(tensorflow-amd-git python-tensorflow-amd-git)
 pkgver=2.13
-_known_good_commit=92070027fdd41c14710a3bd21b5fca33d8408da0      
+_known_good_commit=9c817774f348dd8cc983a990deedff6b7ac8b1d6       
 # You can find the latest probably successful official build at:
 # http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r213-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
 # Look for the revision for the "ROCmSoftwarePlatform/tensorflow-upstream" repository.
