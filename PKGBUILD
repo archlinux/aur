@@ -6,25 +6,28 @@ pkgrel=1
 pkgdesc="CoreApps application family meta package"
 arch=(any)
 url="https://gitlab.com/cubocore"
-license=('GPL3')
+license=(GPL3)
 depends=(
-	'coreaction'
-	'corearchiver'
-	'corefm'
-	'coregarage'
-	'corehunt'
-	'coreimage'
-	'coreinfo'
-	'corekeyboard'
-	'corepad'
-	'corepaint'
-	'corepdf'
-	'corepins'
-	'corerenamer'
-	'coreshot'
-	'corestats'
-	'corestuff'
-	'coreterminal'
-	'coretime'
-	'coreuniverse')
+  coreaction
+  corearchiver
+  corefm
+  coregarage
+  corehunt
+  coreimage
+  coreinfo
+  corekeyboard
+  corepad
+  corepaint
+  corepdf
+  corepins
+  corerenamer
+  coreshot
+  corestats
+  corestuff
+  coreterminal
+  coretime
+  coreuniverse
+)
 optdepends=('coretoppings: additional features and plugins')
+
+# vim:set ts=2 sw=2 et:

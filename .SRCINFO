@@ -27,4 +27,3 @@ pkgbase = coreapps-meta
 	optdepends = coretoppings: additional features and plugins
 
 pkgname = coreapps-meta
-
