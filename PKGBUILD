@@ -3,16 +3,16 @@
 
 pkgname=php-oci8
 _extname=oci8
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="PHP extension for OCI8"
 arch=('x86_64')
 url="https://pecl.php.net/package/${_extname}"
 license=('PHP')
-depends=('php>=8.1.0' 'oracle-instantclient-sdk')
+depends=('php>=8.2.0' 'oracle-instantclient-sdk')
 backup=("etc/php/conf.d/${_extname}.ini")
 source=("https://pecl.php.net/get/${_extname}-${pkgver}.tgz")
-md5sums=('309190ef3ede2779a617c9375d32ea7a')
+md5sums=('bbbbb26f1791d1f27ffc05289abee2f3')
 
 build() {
   cd "${_extname}-${pkgver}"
@@ -29,3 +29,4 @@ package() {
   echo "extension=${_extname}.so" > "${_extname}.ini"
   install -D -m644 "${_extname}.ini" "${pkgdir}/etc/php/conf.d/${_extname}.ini"
 }
+
