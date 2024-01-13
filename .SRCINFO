@@ -1,15 +1,13 @@
 pkgbase = libaegis
-	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
+	pkgdesc = Portable C implementations of the AEGIS family of high-performance authenticated encryption algorithms.
 	pkgver = 0.1.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jedisct1/libaegis.git
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cmake
-	makedepends = libtool
-	makedepends = make
 	provides = libaegis
 	conflicts = libaegis
 	options = !lto

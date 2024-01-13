@@ -2,11 +2,10 @@
 
 pkgname=libaegis
 pkgver=0.1.16
-pkgrel=1
-pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
+pkgrel=2
+pkgdesc="Portable C implementations of the AEGIS family of high-performance authenticated encryption algorithms. "
 arch=('i686' 'x86_64' 'aarch64')
-depends=()
-makedepends=('cmake' 'libtool' 'make')
+makedepends=('cmake')
 url="https://github.com/jedisct1/libaegis.git"
 license=('MIT')
 options=('!lto')
