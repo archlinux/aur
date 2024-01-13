@@ -4,7 +4,7 @@
 pkgname=archivebox
 _name=ArchiveBox
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source self-hosted web archiving"
 arch=(any)
 url="https://github.com/ArchiveBox/ArchiveBox"
@@ -33,7 +33,6 @@ depends=(
   yt-dlp
 )
 makedepends=(
-  git
   python-build
   python-installer
   python-pdm
@@ -126,8 +125,6 @@ check() {
   export PATH="$PWD/test_venv/bin:$PATH"
   export PYTHONPATH="$PWD/test_venv/lib/python3.11/site-packages:$PYTHONPATH"
 
-  ln -s /usr/bin/mercury-parser "$PWD/test_venv/bin/postlight-parser"
-
   pytest tests
 }
 
@@ -140,8 +137,6 @@ package() {
 
   install -dm755 "$pkgdir/usr/bin"
   ln -s /opt/archivebox/bin/archivebox "$pkgdir/usr/bin/archivebox"
-
-  ln -s /usr/bin/mercury-parser "$pkgdir/usr/bin/postlight-parser"
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 

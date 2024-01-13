@@ -1,13 +1,12 @@
 pkgbase = archivebox
 	pkgdesc = Open source self-hosted web archiving
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArchiveBox/ArchiveBox
 	arch = any
 	license = MIT
 	checkdepends = python-bottle
 	checkdepends = python-pytest
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pdm
