@@ -6,7 +6,7 @@ pkgdesc="A GUI for BorgBackup"
 arch=('any')
 url="https://github.com/borgbase/vorta"
 license=('GPL')
-depends=('borg' 'python-appdirs' 'python-pyqt6' 'python-peewee' 'python-dateutil' 'python-secretstorage' 'python-psutil' 'python-llfuse' 'python-setuptools')
+depends=('borg' 'python-appdirs' 'python-pyqt6' 'python-peewee' 'python-dateutil' 'python-secretstorage' 'python-psutil' 'python-llfuse' 'python-setuptools' 'qt6-svg')
 makedepends=('qt6-tools'
   'python-build'
   'python-installer'
