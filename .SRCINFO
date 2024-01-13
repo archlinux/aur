@@ -1,4 +1,4 @@
-pkgbase = supersonic-desktop-git
+pkgbase = supersonic-desktop-wayland-git
 	pkgdesc = A lightweight cross-platform desktop client for Subsonic music servers
 	pkgver = v0.8.2.r51.gee275cb
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = supersonic-desktop-git
 	source = git+https://github.com/dweymouth/supersonic.git
 	sha256sums = SKIP
 
-pkgname = supersonic-desktop-git
+pkgname = supersonic-desktop-wayland-git

@@ -3,7 +3,7 @@
 # Based on the AUR package by:
 # Maintainer: Dušan Mitrović <dusan@dusanmitrovic.xyz>
 
-pkgname=supersonic-desktop-git
+pkgname=supersonic-desktop-wayland-git
 pkgver=v0.8.2.r51.gee275cb
 pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers"
@@ -42,7 +42,7 @@ build() {
 
   cd "$srcdir/${_appname}"
 
-  go build -mod=readonly -modcacherw .
+  go build -mod=readonly -modcacherw -tags=wayland .
 }
 
 package() {
