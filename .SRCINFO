@@ -1,11 +1,14 @@
 pkgbase = python-pyssim
 	pkgdesc = Module for computing Structured Similarity Image Metric (SSIM) in Python
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/pyssim
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python-pillow
 	depends = python-scipy
