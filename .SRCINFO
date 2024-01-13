@@ -1,0 +1,25 @@
+pkgbase = focus-desktop-bin
+	pkgdesc = Focus is an open-source, Kanban-style project management tool, emphasizing simplicity and efficiency.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://git.bhasher.com/bhasher/focus
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk
+	depends = gtk3
+	depends = cairo
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = gdk-pixbuf2
+	depends = libsoup
+	depends = gcc-libs
+	depends = glibc
+	depends = pango
+	provides = focus-desktop=0.3.2
+	conflicts = focus-desktop
+	source = https://git.bhasher.com/Bhasher/focus/releases/download/v0.3.2/focus_0.3.2_amd64.deb
+	source = LICENSE-0.3.2::https://git.bhasher.com/Bhasher/focus/raw/branch/master/LICENSE.md
+	sha256sums = 64dc3fbd2476ef5ff9b0705c6ec287657ef7ce96c4b72d063088eb05c519f227
+	sha256sums = 00f70f9c4cb1c351877b690002c21564dc022f7b5d7fd1273ff52c5911356384
+
+pkgname = focus-desktop-bin
