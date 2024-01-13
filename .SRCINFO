@@ -1,7 +1,7 @@
 pkgbase = uksmd-cachyos-nosystemd-git
 	pkgdesc = Userspace KSM helper daemon. CachyOS-version with 'uksmdstats'. Without systemd dependency, latest git checkout.
-	pkgver = 1.2.5.r101.20230708.72722da
-	pkgrel = 2
+	pkgver = 1.2.8.r108.20231220.65b9974
+	pkgrel = 1
 	epoch = 0
 	url = https://github.com/CachyOS/uksmd
 	arch = aarch64
@@ -20,15 +20,13 @@ pkgbase = uksmd-cachyos-nosystemd-git
 	optdepends = uksmd-openrc: For OpenRC initscript.
 	optdepends = UKSMD-BUILTIN: Necessary kernel support.
 	provides = uksmd
-	provides = uksmd-cachyos=1.2.5.r101.20230708.72722da
+	provides = uksmd-cachyos=1.2.8.r108.20231220.65b9974
 	provides = uksmd-nosystemd
 	provides = uksmd-git
-	provides = uksmdstats=1.2.5.r101.20230708.72722da
+	provides = uksmdstats=1.2.8.r108.20231220.65b9974
 	conflicts = uksmd
 	conflicts = uksmdstats
 	source = uksmd-CachyOS::git+https://github.com/CachyOS/uksmd.git
-	source = disable_systemd_build.patch
 	sha256sums = SKIP
-	sha256sums = 0da6e7d475536bf91d2c39f672d2c33026ea46740e5f2d6e2d84e47676d69edf
 
 pkgname = uksmd-cachyos-nosystemd-git
