@@ -1,9 +1,9 @@
 pkgname="ddns-go"
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="A simple, easy-to-use ddns service | 简单好用的DDNS"
 license=('MIT')
-arch=("x86_64" "aarch64" "armv7h" "armv6h")
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/jeessy2/${pkgname}"
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -26,6 +26,12 @@ sha256sums=('SKIP'
 build() {
     cd "${pkgname}"
     git checkout "v${pkgver}"
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_ENABLED=1
 
     local build_time="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
     local ldflags=" \
