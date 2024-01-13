@@ -2,9 +2,12 @@
 # Based on extra/firefox-developer-edition by Andrew Crerar <crerar@archlinux.org>
 # Based on extra/thunderbird by Levente Polyak <anthraxx[at]archlinux[dot]org>
 
+# Pull requests are welcome here:
+# https://github.com/yurikoles-aur/thunderbird-beta
+
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=122.0b2
+pkgver=122.0b4
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=(x86_64)
@@ -96,7 +99,7 @@ source=(https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thun
         "$pkgname".desktop
         thunderbird-system-icu-74.patch # https://bugzilla.mozilla.org/show_bug.cgi?id=1862601
 )
-b2sums=('f31192a1d61b71c081dbb1c6c1f0661d4a0d2edd132c158086464100cf94dcb63240e0706d1c3c2fd3b201cf385ff516c105d705574cc149f8b2e14adebea9b8'
+b2sums=('7621104e4ac7c032dcea4d36f6e388484369c43af77ee8296f3388b546e88993f049e9a42dbd46ef3d5f3ee9e7a3425f7d32d324d4276482e10184a898702866'
         'SKIP'
         'ba188a0c1359f49390a789621b2c0bec67f4152f62c0dced26b31ec291abccfb5636dba0f8ed1f879e1a2a237e183b96b092d760e04e148a64da18660b87dcfb'
         '2b31b26f49229f96a645f06892d576f49662de2e5c294a1c164569402f608f267762b1f4448ebea0b77030939952274cb2dfe524bf97f4fb2cdd5f7689b95bcd'
