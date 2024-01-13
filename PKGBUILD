@@ -1,6 +1,6 @@
 # Maintainer: Fijxu <fijxu <at> zzls <dot> xyz>
 pkgname=dnsproxy-git
-pkgver=v0.60.1.r1.g638288e
+pkgver=v0.62.0.r0.gf1ceef0
 pkgrel=1
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support (git version)"
 arch=('any')
@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
+		go mod vendor
     make build
 }
 

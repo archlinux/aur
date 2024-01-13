@@ -1,6 +1,6 @@
 pkgbase = dnsproxy-git
 	pkgdesc = Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support (git version)
-	pkgver = v0.60.1.r1.g638288e
+	pkgver = v0.62.0.r0.gf1ceef0
 	pkgrel = 1
 	url = https://github.com/AdguardTeam/dnsproxy
 	install = dnsproxy-git.install
