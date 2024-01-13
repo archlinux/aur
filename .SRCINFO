@@ -1,12 +1,16 @@
-pkgbase = daggerfall-unity-aur-bin
+pkgbase = daggerfall-unity-bin
 	pkgdesc = The Elder Scrolls: Daggerfall rebuilt using the unity engine
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.dfworkshop.net/
 	arch = x86_64
 	license = GPL3
-	depends = wget
-	depends = unzip
+	makedepends = wget
+	makedepends = unzip
+	depends = glibc
+	depends = zlib
+	depends = gcc-libs
+	depends = bash
 	source = daggerfall-unity
 	source = daggerfall.desktop
 	source = settings-template.ini
@@ -18,4 +22,4 @@ pkgbase = daggerfall-unity-aur-bin
 	sha256sums = a6a45d321dda7b98484dbe38099d8f697c3d25e570a7bfbcdd975c206cadef2f
 	sha256sums = ffba580fcf5e15edc97826ee3679048d098f016c79e057b9273876ce089e4761
 
-pkgname = daggerfall-unity-aur-bin
+pkgname = daggerfall-unity-bin

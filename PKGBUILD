@@ -1,13 +1,22 @@
+# Maintainer: Bitals <me at bitals dot xyz>
 # Contributor: james@stampatron.com
+# Contributor: Mr.Smith1974
 
-pkgname=daggerfall-unity-aur-bin
+pkgname=daggerfall-unity-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Elder Scrolls: Daggerfall rebuilt using the unity engine"
 arch=('x86_64')
 url=https://www.dfworkshop.net/
 license=('GPL3')
-depends=('wget' 'unzip')
+depends=(
+  'glibc'
+  'zlib'
+  'gcc-libs'
+  'bash'
+)
+makedepends=('wget' 'unzip')
+replaces=('daggerfall-unity-aur-bin')
 source=(daggerfall-unity
   daggerfall.desktop
   settings-template.ini
@@ -34,7 +43,7 @@ DATA_DIR="data"
 
 #Daggerfall Data Variables
 REMOTE_DATA_ID="0B0i8ZocaUWLGWHc1WlF3dHNUNTQ"
-REMOTE_DATA="https://drive.usercontent.google.com/download?id=${REMOTE_DATA_ID}&export=download&confirm=t&uuid=5151e262-ed9f-44c8-8ebe-eab55f22c78e"
+REMOTE_DATA="https://drive.usercontent.google.com/download?id=${REMOTE_DATA_ID}&export=download&confirm=yes&uuid=5151e262-ed9f-44c8-8ebe-eab55f22c78e"
 
 #SHA256 Hashes
 DATA_HASH="8be67a4ebb76ed684968f49d29cbbe57b0c10dc4554d111d64356a2355be5083"
