@@ -4,10 +4,10 @@ pkgname=motionplus
 pkgver=0.1.1
 pkgrel=4
 pkgdesc="Monitor and record video signals from many types of cameras"
-arch=('x86_64')
-license=('GPL')
+arch=(x86_64)
+license=(GPL)
 url="https://github.com/Motion-Project/motionplus"
-depends=('sqlite' 'ffmpeg' 'libmicrohttpd' 'libwebp' 'postgresql-libs' 'mariadb-libs')
+depends=(sqlite ffmpeg libmicrohttpd libwebp postgresql-libs mariadb-libs)
 optdepends=('gettext: native language support')
 backup=('etc/motionplus/motionplus.conf')
 source=("https://github.com/Motion-Project/motionplus/archive/refs/tags/release-0.1.1.tar.gz"
@@ -19,13 +19,11 @@ b2sums=('7fcc10bc87948108141acb3f3b4d8ca1759b365c3a220e0eb8c0ff92cf0091e50737ac6
 
 prepare() {
   cd $pkgname-release-$pkgver
-
   patch -Np1 -i "$srcdir"/af632f831127499ee541d9c719a930321718f294.patch
 }
 
 build() {
   cd $pkgname-release-$pkgver
-
   export TEMP_LDFLAGS="$LDFLAGS"
   autoreconf -fi
   ./configure --prefix=/usr \
@@ -39,3 +37,5 @@ package(){
   install -Dm644 data/motionplus-dist.conf "$pkgdir"/etc/motionplus/motionplus.conf
   install -Dm644 "$srcdir"/motionplus.service "$pkgdir"/usr/lib/systemd/system/motionplus.service
 }
+
+# vim:set ts=2 sw=2 et:
