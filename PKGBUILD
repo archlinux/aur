@@ -8,11 +8,11 @@ pkgname=motion-git
 pkgver=4.4.0.r44.db94a89
 pkgrel=1
 pkgdesc="Monitor and record video signals from many types of cameras"
-arch=('x86_64')
-license=('GPL')
+arch=(x86_64)
+license=(GPL)
 url="https://motion-project.github.io"
 conflicts=(motion)
-depends=('sqlite' 'ffmpeg' 'libmicrohttpd' 'libwebp' 'mariadb-libs')
+depends=(sqlite ffmpeg libmicrohttpd libwebp mariadb-libs)
 makedepends=(git)
 optdepends=('gettext: native language support')
 backup=('etc/motion/motion.conf')
@@ -50,3 +50,5 @@ package(){
   install -Dm644 "$srcdir"/motion.sysusers "$pkgdir"/usr/lib/sysusers.d/motion.conf
   install -Dm644 "$srcdir"/motion.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/motion.conf
 }
+
+# vim:set ts=2 sw=2 et:
