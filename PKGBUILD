@@ -1,14 +1,14 @@
 pkgname=candy-git
-pkgver=2.3.r0.gf1e3cff
+pkgver=3.7.r8.g7abb3ae
 pkgrel=1
-pkgdesc="A easy-to-deploy and peer-to-peer virtual private network"
+pkgdesc="Another virtual private network that supports point-to-point connections"
 url="https://github.com/lanthora/candy"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 source=("$pkgname::git+https://github.com/lanthora/candy.git" )
 sha256sums=('SKIP')
-makedepends=('cmake' 'make' 'pkgconf' 'gcc')
-depends=('spdlog' 'openssl' 'libconfig' 'uriparser')
+makedepends=('cmake' 'make' 'pkgconf' 'gcc' 'git' 'spdlog')
+depends=('zlib' 'fmt' 'glibc' 'gcc-libs' 'openssl' 'libconfig' 'uriparser')
 conflicts=('candy')
 backup=('etc/candy.conf')
 
@@ -25,9 +25,10 @@ build() {
 
 package() {
         cd "$pkgname"
-        install -D -m 600 candy.conf "$pkgdir/etc/candy.conf"
-        install -D -m 644 candy.service "$pkgdir/usr/lib/systemd/system/candy.service"
-        install -D -m 644 candy@.service "$pkgdir/usr/lib/systemd/system/candy@.service"
+        install -Dm644 candy.conf "$pkgdir/etc/candy.conf"
+        install -Dm644 candy.service "$pkgdir/usr/lib/systemd/system/candy.service"
+        install -Dm644 candy@.service "$pkgdir/usr/lib/systemd/system/candy@.service"
+        install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
         cd build
         make DESTDIR="$pkgdir/" install
 }
