@@ -3,6 +3,7 @@
 ## useful links:
 # https://www.winehq.org
 # https://gitlab.winehq.org/wine/wine
+# https://gitlab.winehq.org/wine/wine-staging
 
 ## options
 : ${_build_staging:=true}
@@ -72,8 +73,9 @@ options=(staticlibs !lto)
 
 _pkgver="${pkgver/rc/-rc}"
 _pkgsrc="$_pkgname-$_pkgver"
+_pkgext="tar.xz"
 source=(
-  "https://dl.winehq.org/wine/source/${pkgver::1}.0/$_pkgsrc.tar.xz"
+  "https://dl.winehq.org/wine/source/${pkgver::1}.0/$_pkgsrc.$_pkgext"
   "30-win32-aliases.conf"
   "wine-binfmt.conf"
 )
@@ -89,13 +91,16 @@ if [[ "${_build_staging::1}" == "t" ]] ; then
     "wine-wow64=$pkgver"
   )
 
-  source+=("git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$_pkgver")
+  _pkgsrc_staging="wine-staging-${pkgver/rc/-rc}"
+  _pkgext="tar.gz"
+  _dl_url="https://github.com/wine-staging/wine-staging"
+  source+=("$_pkgsrc_staging.$_pkgext"::"$_dl_url/archive/refs/tags/v${pkgver/rc/-rc}.$_pkgext")
   b2sums+=('SKIP')
 
   prepare() {
     # apply wine-staging patchset
     cd "$_pkgsrc"
-    ../wine-staging/staging/patchinstall.py --all
+    "../$_pkgsrc_staging/staging/patchinstall.py" --all
   }
 fi
 
