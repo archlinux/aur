@@ -293,7 +293,7 @@ index 5d56ae2d3..063eee84b 100644
      <key name="experimental-features"
          flags='org.gnome.mutter.MetaExperimentalFeature'>
 -      <default>[]</default>
-+      <default>[“variable-refresh-rate”]</default>
++      <default>['variable-refresh-rate']</default>
        <summary>Enable experimental features</summary>
        <description>
          To enable experimental features, add the feature keyword to the list.
