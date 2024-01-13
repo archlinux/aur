@@ -2,7 +2,7 @@
 pkgname=defguard-client
 pkgsrc=defguard-client
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="defguard enterprise SSO & Wireguard VPN desktop client"
 arch=('x86_64')
 url="https://github.com/DefGuard/client"
@@ -14,6 +14,7 @@ sha256sums_x86_64=('b818fb5672967e1786becefa2579b6534df45e03849a80e27d60938645d5
 package() {
     msg2 "Extracting the source debian package data.tar.xz..."
     bsdtar -xf data.tar.gz -C "$pkgdir/"
+    rm "$pkgdir"/usr/sbin/defguard-service
 }
 
 post_install() {
