@@ -6,8 +6,8 @@ pkgbase = python-simple-pid
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	source = python-simple-pid-1.0.1.tar.gz::https://github.com/m-lundberg/simple-pid/archive/v1.0.1.tar.gz
-	sha256sums = babdf0e355eaf4188860d558d732f2723d0b6586d41f81c8eba8f442a748448a
+	b2sums = 29e54cc3e6bddd9103979a0ee1acdfb60e3bd85ef199b2a538144ec5e0c8ea45d4ce22615df618fdd920d0c0e04a50a844d598e9fc09c5873bb8d9c550548723
 
 pkgname = python-simple-pid
-

@@ -5,24 +5,23 @@ _name=${pkgname#python-}
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="A simple and easy to use PID controller in Python"
-arch=('any')
+arch=(any)
 url="https://github.com/m-lundberg/simple-pid"
-license=('MIT')
-depends=()
-makedepends=('python-setuptools')
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/m-lundberg/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('babdf0e355eaf4188860d558d732f2723d0b6586d41f81c8eba8f442a748448a')
+b2sums=('29e54cc3e6bddd9103979a0ee1acdfb60e3bd85ef199b2a538144ec5e0c8ea45d4ce22615df618fdd920d0c0e04a50a844d598e9fc09c5873bb8d9c550548723')
 
 build() {
-    cd $_name-$pkgver
-
-    python setup.py build
+  cd $_name-$pkgver
+  python setup.py build
 }
 
 package() {
-    cd $_name-$pkgver
-
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd $_name-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
+# vim:set ts=2 sw=2 et:
