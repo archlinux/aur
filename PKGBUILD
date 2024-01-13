@@ -1,22 +1,22 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-bin
 _pkgbase=opengamepadui
-pkgver=v0.28.0
-pkgrel=3
+pkgver=v0.29.1
+pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
 url="https://github.com/ShadowBlip/OpenGamepadUI"
 license=('GPL')
 depends=('glibc' 'gcc-libs' 'libx11' 'libxres' 'libxcb' 'libxext' 'libxau'
-	'libxdmcp' 'gamescope' 'ryzenadj' 'vulkan-tools'
+	'libxdmcp' 'gamescope' 'vulkan-tools'
 	'mesa-utils'
 )
-optdepends=('firejail' 'bubblewrap' 'wireplumber' 'networkmanager' 'bluez' 'dbus')
+optdepends=('firejail' 'bubblewrap' 'wireplumber' 'networkmanager' 'bluez' 'dbus' 'powerstation')
 provides=('opengamepadui')
 conflicts=('opengamepadui-git')
 source=(opengamepadui-$pkgver.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/$pkgver/opengamepadui.tar.gz)
 
-sha256sums=('6f9b36790eac6d8a5b263352ce43e605a8d2ede73366d210f4cfa9b030c26408')
+sha256sums=('9706da61d1a3de477564e9e6c3a456ec08d00d4aadccf8014c3a8032b3ec6000')
 
 prepare() {
 	cd "$srcdir/${_pkgbase}"
