@@ -6,13 +6,15 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
+# Pull requests are welcome here:
+# https://github.com/yurikoles-aur/thunderbird-beta-i18n
+
 pkgbase=thunderbird-beta-i18n
 pkgver={{ pkgver }}
 pkgrel=1
 url='http://www.mozilla.com/'
 arch=('any')
 license=('MPL' 'GPL')
-depends=("thunderbird>={{ min_pkgver }}")
 
 pkgname=({% for lang_iso639 in languages.keys() %}
   'thunderbird-beta-i18n-{{ lang_iso639.lower() }}'{% end %}
