@@ -12,10 +12,10 @@ provides=('waylyrics')
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 depends=('openssl' 'hicolor-icon-theme'
-	# base
-	'dbus' 'gcc-libs' 'glibc'
-	# gtk4
-	'glib2' 'cairo' 'dconf' 'gtk4')
+    # base
+    'dbus' 'gcc-libs' 'glibc'
+    # gtk4
+    'glib2' 'cairo' 'dconf' 'gtk4')
 makedepends=('cargo-nightly' 'rust-nightly' 'git' 'jq' 'mimalloc')
 optdepends=()
 
@@ -25,43 +25,48 @@ sha256sums=('SKIP')
 
 options=('!lto')
 
-pkgver() {
-	cd "${_pkgname}"
-	export RUSTUP_TOOLCHAIN=nightly
-	semver=$(cargo metadata --no-deps --format-version=1 | jq -r '.packages | .[0] | .version')
-	echo "${semver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
-
 prepare() {
     cd "${_pkgname}"
-	export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=nightly
+
+    if which rustup
+    then rustup update nightly
+    fi
+
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
+pkgver() {
+    cd "${_pkgname}"
+    export RUSTUP_TOOLCHAIN=nightly
+    semver=$(cargo metadata --no-deps --format-version=1 | jq -r '.packages | .[0] | .version')
+    echo "${semver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
 build() {
-	cd "${_pkgname}"
+    cd "${_pkgname}"
 
-	export RUSTUP_TOOLCHAIN=nightly
-	export CARGO_TARGET_DIR=target
+    export RUSTUP_TOOLCHAIN=nightly
+    export CARGO_TARGET_DIR=target
 
-	# template files
-	export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${_pkgname}/themes"
+    # template files
+    export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${_pkgname}/themes"
 
-	cargo build --frozen --release
+    cargo build --frozen --release
 }
 
 package() {
-	cd "${_pkgname}"
+    cd "${_pkgname}"
 
-	install -vDm644 "${_appname}.desktop" -t "${pkgdir}/usr/share/applications/"
+    install -vDm644 "${_appname}.desktop" -t "${pkgdir}/usr/share/applications/"
 
-	install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
-	install -vDm644 "${_appname}.gschema.xml" -t "${pkgdir}/usr/share/glib-2.0/schemas/"
+    install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
+    install -vDm644 "${_appname}.gschema.xml" -t "${pkgdir}/usr/share/glib-2.0/schemas/"
 
-	install -vdm755 "${pkgdir}/usr/share/${_pkgname}/themes"
-	cp -arv themes/* "${pkgdir}/usr/share/${_pkgname}/themes/"
-	cp -arv res/* "${pkgdir}/usr/share/"
+    install -vdm755 "${pkgdir}/usr/share/${_pkgname}/themes"
+    cp -arv themes/* "${pkgdir}/usr/share/${_pkgname}/themes/"
+    cp -arv res/* "${pkgdir}/usr/share/"
 
-	# License
-	install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    # License
+    install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
