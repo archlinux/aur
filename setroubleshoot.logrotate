@@ -1,0 +1,6 @@
+/var/log/setroubleshoot/*.log {
+    weekly
+    rotate 2
+    missingok
+    sharedscripts
+}
