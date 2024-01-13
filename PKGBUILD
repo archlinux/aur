@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -171,7 +171,7 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=e9c93009fc34ca9dfcf0c6f2ed90ef1df298abf7
+_tag=e38092ef9395d7049f871ef4d5411eb410e283e0
 _deps_tag=2023-11-03
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
@@ -409,6 +409,11 @@ prepare() {
   ## Fix segfault with avisynthplus
   sed -i 's/RTLD_LOCAL/RTLD_DEEPBIND/g' libavformat/avisynth.c
 
+  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
+    # Fix lensfun detection
+    git cherry-pick -n e1c1dc8347f13104bc21e4100fcf4d4dddf5e5d8
+  fi
+
   ### Arch Linux changes
 
   ## https://crbug.com/1251779
@@ -429,9 +434,8 @@ prepare() {
   ## SVT changes if enabled
   if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
     rm -f "libavcodec/"libsvt_{hevc,vp9}.c
-    sed -E -n 's/general.texi/general_contents.texi/g' "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch" > "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
-    patch -Np1 -i "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    patch -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
   fi
 }
