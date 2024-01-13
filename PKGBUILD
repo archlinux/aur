@@ -2,12 +2,12 @@
 # Contributor: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=mpv-shim-default-shaders
-pkgver='2.1.0'
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Preconfigured set of MPV shaders and configurations for MPV Shim media clients."
-arch=('any')
+arch=(any)
 url='https://github.com/iwalton3/default-shader-pack'
-license=('custom')
+license=(custom)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iwalton3/default-shader-pack/archive/v$pkgver.tar.gz"
 	"FSRCNNX-LICENSE::https://raw.githubusercontent.com/igv/FSRCNN-TensorFlow/master/LICENSE"
 	"Anime4K-LICENSE::https://raw.githubusercontent.com/bloc97/Anime4K/master/LICENSE"
@@ -21,27 +21,29 @@ b2sums=('201422f2adb989b52bb0691a495f4e8a4de9e5ea9cbc87c61d9b7528ad92a8f9f219795
 options=(!strip)
 
 prepare() {
-    # extract licenses from gist-sourced shaders
-    head -n 14 "default-shader-pack-${pkgver}/shaders/KrigBilateral.glsl" > KrigBilateral-LICENSE
-    head -n 14 "default-shader-pack-${pkgver}/shaders/SSimDownscaler.glsl" > SSimDownscaler-LICENSE
-    head -n 19 "default-shader-pack-${pkgver}/shaders/FSR.glsl" > FidelityFX-LICENSE
-    head -n 20 "default-shader-pack-${pkgver}/shaders/NVScaler.glsl" > NVScaler-LICENSE
+  # extract licenses from gist-sourced shaders
+  head -n 14 "default-shader-pack-${pkgver}/shaders/KrigBilateral.glsl" > KrigBilateral-LICENSE
+  head -n 14 "default-shader-pack-${pkgver}/shaders/SSimDownscaler.glsl" > SSimDownscaler-LICENSE
+  head -n 19 "default-shader-pack-${pkgver}/shaders/FSR.glsl" > FidelityFX-LICENSE
+  head -n 20 "default-shader-pack-${pkgver}/shaders/NVScaler.glsl" > NVScaler-LICENSE
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/share/$pkgname"
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  mkdir -p "$pkgdir/usr/share/$pkgname"
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 
-    install -Dm 644 "FSRCNNX-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm 644 "Anime4K-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm 644 "StaticGrain-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm 644 "NNEDI3-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm 644 "KrigBilateral-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm 644 "SSimDownscaler-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm 644 "FidelityFX-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm 644 "NVScaler-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 "FSRCNNX-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 "Anime4K-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 "StaticGrain-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 "NNEDI3-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 "KrigBilateral-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 "SSimDownscaler-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 "FidelityFX-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 "NVScaler-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 
-    cd "${srcdir}/default-shader-pack-${pkgver}"
-    install -Dm 644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/"
-    cp -r shaders pack.json pack-hq.json pack-next.json "$pkgdir/usr/share/$pkgname/"
+  cd "${srcdir}/default-shader-pack-${pkgver}"
+  install -Dm 644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/"
+  cp -r shaders pack.json pack-hq.json pack-next.json "$pkgdir/usr/share/$pkgname/"
 }
+
+# vim:set ts=2 sw=2 et:
