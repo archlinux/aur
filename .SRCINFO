@@ -1,6 +1,6 @@
 pkgbase = kcalendarcore5
 	pkgdesc = The KDE calendar access library
-	pkgver = 5.113.0
+	pkgver = 5.114.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = kcalendarcore5
 	depends = qt5-base
 	conflicts = kcalendarcore<5.111
 	replaces = kcalendarcore<5.111
-	source = https://download.kde.org/stable/frameworks/5.113/kcalendarcore-5.113.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.113/kcalendarcore-5.113.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.114/kcalendarcore-5.114.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.114/kcalendarcore-5.114.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 82715224f349c254f3c0894840a30163df5c074aaac92b1da3577dc7f097faa2
+	sha256sums = f74cca0dc11a769b9015a6ee09400621ae630edce4ef46cb7784e31f806a352a
 	sha256sums = SKIP
 
 pkgname = kcalendarcore5
