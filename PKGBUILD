@@ -13,7 +13,7 @@ sha256sums_x86_64=('b818fb5672967e1786becefa2579b6534df45e03849a80e27d60938645d5
 
 package() {
     msg2 "Extracting the source debian package data.tar.xz..."
-    bsdtar -xf data.tar.xz -C "$pkgdir/"
+    bsdtar -xf data.tar.gz -C "$pkgdir/"
 }
 
 post_install() {
