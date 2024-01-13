@@ -2,7 +2,7 @@
 # Fri Aug 19 20:29:48 UTC 2016
 pkgbase = perl-spreadsheet-parsexlsx
 	pkgdesc = parse XLSX files
-	pkgver = 0.27
+	pkgver = 0.29
 	pkgrel = 1
 	url = https://metacpan.org/release/Spreadsheet-ParseXLSX
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = perl-spreadsheet-parsexlsx
 	depends = perl-xml-twig>=0
 	depends = perl>=5.010
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Spreadsheet-ParseXLSX-0.27.tar.gz
-	md5sums = d7ce39130e9969e6e1dc42461a138261
-	sha512sums = 435a97bb965ead28a6bd34d4b76240ef3941124b38068a9eec56aa0e9e621aa30b70eb22ef5982059c69af6df2538fdb7939803945e007f6675219ecafefa041
+	source = https://cpan.metacpan.org/authors/id/N/NU/NUDDLEGG/Spreadsheet-ParseXLSX-0.29.tar.gz
+	md5sums = 6278b358ede2188610c40ec5ea7439d7
+	sha512sums = f30ee22f00811ddfac0166c7e79e26fdcbdabbe6ee9482319f55d087e7ac5a88130611d9f6fb94db7b7bf35df999437f537e67003452a2a66aecaf1d7f7f4c34
 
 pkgname = perl-spreadsheet-parsexlsx
 
