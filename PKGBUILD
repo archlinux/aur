@@ -15,10 +15,6 @@ license=('Apache')
 depends=(
   'libmediainfo'
 )
-optdepends=(
-  'ffmpeg: replace bundled version'
-  'java-runtime>=11: replace bundled version'
-)
 install=tinyMediaManager.install
 noextract=("tmm_${pkgver}_linux.tar.xz")
 source=("tmm_${pkgver}_linux.tar.xz::https://archive.tinymediamanager.org/v${pkgver}/tinyMediaManager-${pkgver}-linux-amd64.tar.xz"
