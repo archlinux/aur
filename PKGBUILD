@@ -1,6 +1,6 @@
 pkgname=gpt4all-chat
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="open-source LLM chatbots that you can run anywhere"
 arch=("x86_64")
 url="https://github.com/nomic-ai/gpt4all"
@@ -9,8 +9,12 @@ depends=(
     "python" "qt6-base" "qt6-httpserver" "qt6-5compat" "qt6-quickcontrols2" "qt6-shadertools"
     "qt6-svg" "qt6-wayland" "qt6-webengine" "fmt")
 makedepends=("cmake" "ninja" "git" "shaderc" "vulkan-tools" "vulkan-headers")
-source=("git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=(
+    "git+$url.git#tag=v$pkgver"
+    "$url/commit/b803d51586895dd046d2284de271e2074c921df5.diff"
+)
+sha256sums=('SKIP'
+            '7041fd85f831959830dd17a9b1b46cff191ddbbbb19c9fbaa686f9c4d6194f1b')
 
 prepare() {
     cd "$srcdir/gpt4all"
@@ -21,7 +25,7 @@ prepare() {
     #53 |     Network::globalInstance()->sendCheckForUpdates();
     #   |     ^~~~~~~
     ###
-    sed -i '1 a #include "network.h"' gpt4all-chat/llm.cpp
+    git apply "$srcdir/b803d51586895dd046d2284de271e2074c921df5.diff"
 }
 build() {
     cmake -B build-chat -S "$srcdir/gpt4all/gpt4all-chat" -G Ninja \
