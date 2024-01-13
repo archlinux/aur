@@ -3,7 +3,7 @@
 #pkgbase=mutter-vrr
 pkgname=mutter-vrr
 pkgver=45.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -55,7 +55,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '602d54a277b0f101439f7d986790b78493c1533cf428c5d4afeac509fed1a2eb'
+  '7ecfa6153a297f82ae2a213563fcb8373fa26bc1bc5d595d5a9c27bf383f5391'
 )
 pkgver() {
   cd mutter
