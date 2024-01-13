@@ -1,7 +1,7 @@
 # Maintainer: éclairevoyant
 
 pkgname=leed
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Minimalist, fast, non-intrusive RSS/ATOM aggregator"
 arch=(any)
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/LeedRSS/Leed/archive/v$pkgver.
         leed.apache.conf
         leed.perm.sh)
 install=$pkgname.install
-b2sums=('4cbb578bccb4237786c1f675e1516d4c630b1842610bb9a01d9e85889265bdc43e57097223a643e30647a16ed16467c898dd901b6e604d4a489394fb03349fa4'
+b2sums=('da122921acc1e3c57d0b9029eb16fb9f44b2b070cd2c679637358795dee0a102bae7dfbda395bb14cf6d5f92cc8125c25f1d162f985a1aa14a21c60fe747ff6b'
         '0a75a9817392042c75c05c158671f413292de55fb91bbb662561cb9fd23e7a63f85b1639d7548dda53fdc01398f96079a02f358d39113d3f78f9a7177a2f0a0c'
         '71934656ebb52b68898c555618684267346b8d823f578645aea582ddde59947f340408a1616a98fab56fa8e211a54b1958179568a8e1cf45c95af6bd5d3abbb8')
 
