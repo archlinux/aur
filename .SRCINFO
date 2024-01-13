@@ -1,0 +1,13 @@
+pkgbase = linuxflip-git
+	pkgdesc = Detects and executes commands when the computer switches to and from tablet mode.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yehuthi/linuxflip
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	source = repo::git+https://github.com/yehuthi/linuxflip
+	sha256sums = SKIP
+
+pkgname = linuxflip-git
