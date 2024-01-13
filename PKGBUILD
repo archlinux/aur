@@ -6,9 +6,9 @@ _pkgname="${pkgname%-snapshot}"
 _pkgver='2.3.4-8'
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel=2
+pkgrel='3'
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 provides=('slang')
 conflicts=('slang')
 url='https://jedsoft.org/snapshots/'
@@ -21,34 +21,33 @@ depends=(
   'zlib'
 )
 backup=('etc/slsh.rc')
-options=('lto' '!makeflags')
+options=('lto')
 source=("${url}slang-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
 md5sums=('c740ca7ded82fa29849046ca33c572b1')
 
-build() {
-  cd "${_pkgname}-${_prever}" || exit 1
+prepare() {
+  # RFC-0023
+  # https://rfc.archlinux.page/0023-pack-relative-relocs/
+  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+}
 
-  # We do not install libslang.a, so fat LTO object seems unnecessary.
-  # Let's keep it here, commented, just in case.
-  #case "$CLAGS" in
-  #  *-ffat-lto-objects* ) : pass ;;
-  #  * ) export CFLAGS="$CFLAGS -ffat-lto-objects" ;;
-  #esac
+build() {
+  cd "${_pkgname}-${_prever}"
 
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 check() {
-  cd "${_pkgname}-${_prever}" || exit 1
+  cd "${_pkgname}-${_prever}"
 
   test "$CARCH" != 'i686' && make check
 }
 
 package() {
-  cd "${_pkgname}-${_prever}" || exit 1
+  cd "${_pkgname}-${_prever}"
 
   make DESTDIR="${pkgdir}" install-all
 }
