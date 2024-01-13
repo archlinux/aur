@@ -1,12 +1,5 @@
-Description: respect the CPU baseline.
- FIXME: implement multiple executables using SIMDe as distributed by Debian.
-Author: Étienne Mollier <emollier@debian.org>
-Forwarded: not-needed
-Last-Update: 2022-07-09
----
-This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
---- abpoa.orig/CMakeLists.txt
-+++ abpoa/CMakeLists.txt
+--- abPOA-1.5.0/CMakeLists.txt	2024-01-11 20:53:54.000000000 +0530
++++ abPOA-1.5.0.new/CMakeLists.txt	2024-01-13 20:40:00.587485226 +0530
 @@ -10,7 +10,7 @@
  
  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
@@ -16,38 +9,3 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  
  # build abPOA as a static library by default
  set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build all libraries as shared")
---- abpoa.orig/Makefile
-+++ abpoa/Makefile
-@@ -2,19 +2,19 @@
- EXTRA_FLAGS = -Wno-unused-function -Wno-misleading-indentation -DUSE_SIMDE -DSIMDE_ENABLE_NATIVE_ALIASES
- CFLAGS      += $(CPPFLAGS) -Wall -O3 $(EXTRA_FLAGS) $(LDFLAGS)
- 
--SIMD_FLAG   = -march=native
-+#SIMD_FLAG   = -march=native
- 
--ifneq ($(armv7),) # for ARMv7
--	SIMD_FLAG   =  -march=armv7-a -mfpu=neon -D__AVX2__
--else
--ifneq ($(armv8),) # for ARMv8
--ifneq ($(aarch64),) # for Aarch64 
--	SIMD_FLAG   =  -march=armv8-a+simd -D__AVX2__
--else # for Aarch32
--	SIMD_FLAG   =  -march=armv8-a+simd -mfpu=auto -D__AVX2__
--endif
--endif
--endif
-+#ifneq ($(armv7),) # for ARMv7
-+#	SIMD_FLAG   =  -march=armv7-a -mfpu=neon -D__AVX2__
-+#else
-+#ifneq ($(armv8),) # for ARMv8
-+#ifneq ($(aarch64),) # for Aarch64 
-+#	SIMD_FLAG   =  -march=armv8-a+simd -D__AVX2__
-+#else # for Aarch32
-+#	SIMD_FLAG   =  -march=armv8-a+simd -mfpu=auto -D__AVX2__
-+#endif
-+#endif
-+#endif
- 
- # for debug
- ifneq ($(debug),)
-

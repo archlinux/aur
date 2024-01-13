@@ -1,5 +1,3 @@
 simde.patch
 buildflags.patch
-# typos.patch
 baseline.patch
-python_baseline.patch

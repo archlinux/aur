@@ -4,7 +4,7 @@ pkgname=('abpoa' 'pyabpoa')
 pkgname=abpoa
 pkgdesc="SIMD-based C library for fast partial order alignment. https://dx.doi.org/10.1093/bioinformatics/btaa963"
 _name=abPOA
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=2
 arch=(x86_64)
 url="https://github.com/yangao07/abPOA"
@@ -18,16 +18,13 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/yangao07/abPOA/archive/
         "series"
         "buildflags.patch"
         "simde.patch"
-        "typos.patch"
-        "python_baseline.patch")
+        )
 
-b2sums=('3d2d9336b8ac12177b4abb1bebe549cf89583ef5b7f769dac10dc80d5c3349b294fdcaab38d15564a998e41d3ee691f56743e7c6905e010f5ce032cab62c0565'
-        'c6dcff29c6843d3bc4cbf54a0e8068e4f243d3ffdcf0cb03d0ba8a93420cf9b839d61b77b6def38147f1e84d0ae2e81c09c5846b4f0f5935801cc4420612696f'
-        'ca7cf211089960ded5aa807c823c441f1047108843e2eed30c4c2b747018b2a8d8dc94fc280cef38f4c16f7308fe22bf3c97d502f86e76a058fdba76aac0fadf'
-        '9b33deaf4523b5b90730576dab12425c25aff4a850ba86f1024ac1e3650bbcd7ae803574b2c557910ca8de627522b8b1354041f3a42d50dd2bc952a3fbfba205'
-        '37dfb994e3d7b011341a20a69b37c065568cb609c92b792d60cc1ca112f8d57d6346c4e9e5dd55ec9252b9db1f26bc6b72fc05c6a3fe6cf4894facd3bb7ad340'
-        '997fb5d98bfd0332009ca7c1707edb39c2ad6ced261c62fa5dec637f55b0e11bb76c634fee3e19a8672fb685babd640daac4a5879be19806e75d9e3152b8593f'
-        '8589c925c5c766a2d5ace2740f88ac5a82bcdaf073311312df7b876f70ee81ebb980740bfa6ab1c80bfe4ddbe1748803f841cf97516f1b1549c043ac4dbdae12')
+b2sums=('fa4490690bd865f83b1d0cf65cf1a24309d6f3ad8c95a0ec74c6da22ae87cf35ed9d7c63df5254b1846f6feba2d64c14b08c8aee4b052ebb60787697567aac1c'
+        'ca47e595ff4d1b27e72ccb8ca900ba1524a23444198be4e9a05b8f49688832553d8e035f391f359d5fb3324ba23178ba5ac280069c46121f0c17e6d6050c66e2'
+        'bfee3142cc01cd8ab3547e61e3921b082557e0220a2d7809bf13a9d2274379547e9ad1131008b503705dc311aae78f51137eb0b282dbb6a5a359e3e5b4f0a9bd'
+        '8295d934f470b2bf4eff817eb0eb1ae6ab051942044ad77d76f2f9ae5aaab1baca04c622bfd68e866c7e86a3e519aff32172c4af84d8e3382d130a08da08381c'
+        '59ebf7e79f80bae90dea9b03e649ac21ea31a2759d0ca340ac5060927c758e3c09327d9074db3ad0abab16d2f15293a3dc611c67388d60b94aad61dfd4a12b99')
 
 prepare() {
     # adapt patches from debian to make use SIMDe from Archlinux repo 
