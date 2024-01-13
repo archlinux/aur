@@ -4,19 +4,18 @@ pkgname=unvpk-git
 pkgver=r108.1f1f44f
 pkgrel=1
 pkgdesc="Extract Valve VPK archives"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/panzi/unvpk"
-license=('LGPL')
-depends=('fuse' 'boost-libs')
-makedepends=('git' 'cmake' 'boost')
+license=(LGPL)
+depends=(fuse boost-libs)
+makedepends=(git cmake boost)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("unvpk::git+https://github.com/panzi/unvpk.git")
-b2sums=('SKIP')
+b2sums=(SKIP)
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -26,6 +25,7 @@ build() {
 }
 
 package() {
-#	cd "$srcdir/${pkgname%-git}"
 	make -C build DESTDIR="$pkgdir" install
 }
+
+# vim:set ts=2 sw=2 et:
