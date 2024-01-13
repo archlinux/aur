@@ -3,8 +3,8 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.33.0.r0.ge415836
-pkgrel=4
+pkgver=0.33.1.r0.g06feaa0
+pkgrel=1
 pkgdesc='Feature-rich terminal-based text pager (built from latest git commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/ov'
