@@ -1,8 +1,8 @@
 pkgbase = swaystatus-git
 	pkgdesc = Generate a status line for swaybar
-	pkgver = 0.3.4.r1.5fe0338
+	pkgver = 0.4.1.r0.d2cdc04
 	pkgrel = 1
-	url = https://git.sr.ht/~jmcantrell/swaystatus
+	url = https://github.com/jmcantrell/swaystatus
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
@@ -17,7 +17,7 @@ pkgbase = swaystatus-git
 	optdepends = python-systemd: systemd journal logging
 	provides = swaystatus
 	conflicts = swaystatus
-	source = git+https://git.sr.ht/~jmcantrell/swaystatus
+	source = git+https://github.com/jmcantrell/swaystatus
 	md5sums = SKIP
 
 pkgname = swaystatus-git
