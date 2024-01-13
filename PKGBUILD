@@ -4,12 +4,12 @@
 
 pkgname=python2-logbook
 pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Logging sytem for Python that replaces the standard library’s logging module"
 arch=('i686' 'x86_64')
 url="https://logbook.readthedocs.io/en/stable/"
 license=('BSD')
-depends=('python2-six')
+depends=('python2-six' 'openssl-1.1')
 makedepends=('python2-setuptools' 'cython2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mitsuhiko/logbook/archive/$pkgver.tar.gz"
         "$pkgname-sqlalchemy-1.4.patch::https://github.com/getlogbook/logbook/pull/316.patch"
