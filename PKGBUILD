@@ -24,7 +24,5 @@ build () {
 
 package () {
   cd "${pkgname}-${pkgver/v/}" || exit
-  # make install DESTDIR="$pkgdir" PREFIX="/usr"
-  cargo build --release
-  cp ./target/release/c3 /usr/$pkgdir
+  install -Dm755 "target/release/c3" "${pkgdir}/usr/bin/c3"
 }
