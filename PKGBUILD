@@ -1,14 +1,16 @@
+# Maintainer: lanthora <lanthora@outlook.com>
+
 pkgname=candy
 pkgver=3.7
-pkgrel=1
-pkgdesc="A easy-to-deploy and peer-to-peer virtual private network"
+pkgrel=2
+pkgdesc="Another virtual private network that supports point-to-point connections"
 url="https://github.com/lanthora/candy"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
-source=("https://github.com/lanthora/candy/archive/refs/tags/v$pkgver.tar.gz" )
+source=("$pkgname-$pkgver.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v$pkgver.tar.gz" )
 sha256sums=('a2cbfdcf2350ee41bfe388a9140c3cf5ef76da592ee4ae5ac20a7841fd38dc16')
-makedepends=('cmake' 'make' 'pkgconf' 'gcc')
-depends=('spdlog' 'openssl' 'libconfig' 'uriparser')
+makedepends=('cmake' 'make' 'pkgconf' 'gcc' 'git' 'spdlog')
+depends=('zlib' 'fmt' 'glibc' 'gcc-libs' 'openssl' 'libconfig' 'uriparser')
 backup=('etc/candy.conf')
 
 build() {
@@ -19,9 +21,10 @@ build() {
 
 package() {
         cd "$pkgname-$pkgver"
-        install -D -m 600 candy.conf "$pkgdir/etc/candy.conf"
-        install -D -m 644 candy.service "$pkgdir/usr/lib/systemd/system/candy.service"
-        install -D -m 644 candy@.service "$pkgdir/usr/lib/systemd/system/candy@.service"
+        install -Dm644 candy.conf "$pkgdir/etc/candy.conf"
+        install -Dm644 candy.service "$pkgdir/usr/lib/systemd/system/candy.service"
+        install -Dm644 candy@.service "$pkgdir/usr/lib/systemd/system/candy@.service"
+        install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
         cd build
         make DESTDIR="$pkgdir/" install
 }
