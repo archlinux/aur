@@ -78,8 +78,8 @@ package() {
 
   install -m644 -D "org.fedoraproject.setroubleshootfixit.policy" "${pkgdir}/usr/share/polkit-1/actions/org.fedoraproject.setroubleshootfixit.policy"
 
-  install -m644 -D "src/SetroubleshootFixit.py" "${pkgdir}/usr/share/setroubleshoot/SetroubleshootFixit.py"
-  install -m644 -D "src/SetroubleshootPrivileged.py" "${pkgdir}/usr/share/setroubleshoot/SetroubleshootPrivileged.py"
+  install -m755 -D "src/SetroubleshootFixit.py" "${pkgdir}/usr/share/setroubleshoot/SetroubleshootFixit.py"
+  install -m755 -D "src/SetroubleshootPrivileged.py" "${pkgdir}/usr/share/setroubleshoot/SetroubleshootPrivileged.py"
 
 for lang in "as" "bg" "bn" "bn_IN" "ca" "cs" "da" "de" "el" "en_GB" "es" "eu" "fi" "fr" "fur" "gl" "gu" "he" "hi" "hr" "hu" "it" "ja" "kn" "ko" "mai" "ml" "mr" "ms" "nb" "nds" "nl" "nn" "or" "pa" "pl" "pt" "pt_BR" "ru" "si" "sk" "sr" "sr@latin" "sv" "ta" "te" "th" "tr" "uk" "zh_CN" "zh_TW"; do
   if [ -f "${srcdir}/locale/$lang/LC_MESSAGES/setroubleshoot.pmo" ]; then
