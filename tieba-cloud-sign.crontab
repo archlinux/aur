@@ -1,0 +1,1 @@
+* * * * * root /usr/bin/php /srv/tieba-cloud-sign/do.php &>/dev/null
