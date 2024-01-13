@@ -1,7 +1,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgname=actual-server
 pkgver=24.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Actual Budget Server"
 arch=('any')
 url="https://github.com/actualbudget/actual-server"
@@ -22,17 +22,16 @@ source=(
     'actual-server.service'
     'sysusers'
     'tmpfiles'
-    # Hack to work around .migrate file creation in project root
-    # (/usr/share/webapps/actual-server) which is setup to be
-    # read-only for actual user. This patch forces the file
-    # creation in the /var/lib/actual directory.
+    # Ensures the data directory is /var/lib/actual rather than
+    # the project root (/usr/share/webapps/actual-server) which
+    # is not writable by actual system user.
     # See following issue upstream:
     # https://github.com/actualbudget/actual/issues/2011#issuecomment-1837295607
     'load-config.js.patch'
 )
 noextract=()
 sha256sums=('c996935ff6748fe990c4e586944ce1299bb0e36b1708b8735314706fe1d1cdb5'
-            '6d70d436bff95b6ca7ae270219a4288c81ccf119ad57158528fdda19585b2067'
+            'b2d7e042688726b5ad374fbb08ae5ef736b31702f611595d337226981394c082'
             '4dfa4502df8d72212ccfb96cfc2509c9a1461f542adb38304af54097b30ca0d5'
             'cba6a5df66a42ced857822e1099be00f2e37ec800f29cbbfca7210020140291b'
             'b84aeaddd9c03907d8addb2dd7e494e3d9cb2fbe8a50dac1db2ddf2fe1c0eeac')

@@ -2,8 +2,6 @@
 Description=Actual Server
 
 [Service]
-Environment="ACTUAL_SERVER_FILES=/var/lib/actual/server-files"
-Environment="ACTUAL_USER_FILES=/var/lib/actual/user-files"
 Type=simple
 WorkingDirectory=/usr/share/webapps/actual-server
 User=actual
