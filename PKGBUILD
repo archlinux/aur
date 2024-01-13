@@ -34,7 +34,7 @@ prepare() {
     
     curl "${_repository}/pool/main/l/llvm-toolchain-snapshot/" --compressed -vs > repository
     for package in $_required_llvm_packages; do
-	name=$(cat repository | grep "${package}" | head -n 1 | cut -f  8 -d "\"")
+	name=$(cat repository | grep "${package}" | head -n 1 | cut -f 2 -d "\"")
 	if ! [ -f ${name} ]; then
 	    echo "Downloading ${package}"
 	    curl "${_repository}/pool/main/l/llvm-toolchain-snapshot/${name}" --output "${name}"
