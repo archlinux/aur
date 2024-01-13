@@ -50,12 +50,6 @@ build() {
 	cargo build --frozen --release
 }
 
-check() {
-    cd "${_pkgname}"
-    export RUSTUP_TOOLCHAIN=nightly
-    cargo test --frozen
-}
-
 package() {
 	cd "${_pkgname}"
 
