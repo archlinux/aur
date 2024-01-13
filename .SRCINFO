@@ -1,6 +1,6 @@
 pkgbase = kdnssd5
 	pkgdesc = Abstraction to system DNSSD features
-	pkgver = 5.113.0
+	pkgver = 5.114.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = kdnssd5
 	depends = qt5-base
 	conflicts = kdnssd<5.111
 	replaces = kdnssd<5.111
-	source = https://download.kde.org/stable/frameworks/5.113/kdnssd-5.113.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.113/kdnssd-5.113.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.114/kdnssd-5.114.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.114/kdnssd-5.114.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = d8aa224580fa75d5e6c379a14034e8d5ee140cefcdfe695621750417fc4f6bc1
+	sha256sums = c46c8a7f3a26d891471199ea3186d9e242f54f99927ec4620192949cefcc85ff
 	sha256sums = SKIP
 
 pkgname = kdnssd5
