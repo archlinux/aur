@@ -1,6 +1,6 @@
 pkgbase = pinstall
 	pkgdesc = Installer Tool for Python Programs
-	pkgver = 1.8
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/bulletmark/pinstall
 	arch = any
@@ -12,7 +12,8 @@ pkgbase = pinstall
 	makedepends = python-setuptools-scm
 	depends = python>=3.11
 	depends = sudo
-	source = pinstall-1.8.tar.gz::https://github.com/bulletmark/pinstall/archive/1.8.tar.gz
-	sha1sums = fb0c3f37109d44a164fbdaabc48bbdb193e53911
+	depends = python-packaging
+	source = pinstall-1.9.1.tar.gz::https://github.com/bulletmark/pinstall/archive/1.9.1.tar.gz
+	sha1sums = 152b86f49f82de5dc9c0d42829ba8a8f73c19dbb
 
 pkgname = pinstall
