@@ -1,6 +1,6 @@
 pkgbase = ilspycmd-git
 	pkgdesc = .NET Decompiler with support for PDB generation, ReadyToRun, Metadata (&more) - cross-platform! (git version)
-	pkgver = r7581.0bab8a01e
+	pkgver = v8.2.r42.g5a6f9b88a
 	pkgrel = 1
 	url = https://github.com/icsharpcode/ILSpy
 	arch = any

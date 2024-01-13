@@ -1,8 +1,8 @@
-# Maintainer: Fijxu <fijxu <at> zzls.xyz>
+# Maintainer: Fijxu <fijxu at nadeko dot net>
 
 pkgname=ilspycmd-git
 _pkgname=ILSpy
-pkgver=r7581.0bab8a01e
+pkgver=v8.2.r42.g5a6f9b88a
 pkgrel=1
 pkgdesc=".NET Decompiler with support for PDB generation, ReadyToRun, Metadata (&more) - cross-platform! (git version)"
 arch=('any')
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
