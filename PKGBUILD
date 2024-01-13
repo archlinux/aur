@@ -1,7 +1,7 @@
 # Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=vorta
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI for BorgBackup"
 arch=('any')
 url="https://github.com/borgbase/vorta"
@@ -16,12 +16,12 @@ options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/borgbase/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('0f627c2464bf1631711151464fe1ea59781f0c91a76cf5a081a5797a897f2929')
           
-
 build() {
   cd "$pkgname-$pkgver"
-  make translations-to-qm
+  #make translations-to-qm
   python -m build --no-isolation --wheel --skip-dependency-check
 }
+
 package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="${pkgdir:?}" dist/*.whl
