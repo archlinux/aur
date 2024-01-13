@@ -22,6 +22,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
   export NO_AT_BRIDGE=1
+  export DBUS_SESSION_BUS_ADDRESS=disabled
   make build
 }
 
