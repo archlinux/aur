@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Jose Gomez Hernandez <eduardo@edujgh.net>
 pkgname=c3c-bin
 _pkgname=c3c
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible. Stable Release (with LLVM 16)"
 arch=(x86_64)
@@ -12,11 +12,15 @@ makedepends=('binutils')
 provides=(c3c)
 conflicts=(c3c)
 
-source=('https://github.com/c3lang/c3c/releases/download/release_0.5/c3-linux.tar-6.gz')
-md5sums=('e97e051ba4115265dcd47ba486665aae')
+source=('https://github.com/c3lang/c3c/releases/download/latest/c3-linux.tar.gz')
+md5sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/linux"
+    ./c3c -V | grep "C3 Compiler Version" | tr -s " " | cut -f 2 -d ':' | cut -f 2 -d " "
+}
 
 package() {
-    echo "Hola"
     cd "${srcdir}/linux/"
 
     install -d "${pkgdir}/usr/bin"
