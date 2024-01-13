@@ -2,13 +2,13 @@
 
 pkgname=thumbor
 pkgver=7.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="open-source photo thumbnail service"
 arch=(x86_64)
 url="https://github.com/thumbor/thumbor"
 license=(MIT)
 depends=(python python-colorama python-pycurl python-opencv python-cairosvg python-tornado gifsicle python-libthumbor python-derpconf python-socketfromfd python-piexif)
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-setuptools)
 checkdepends=(python-pytest python-preggy python-pyssim)
 backup=("etc/thumbor.conf")
 source=("https://github.com/thumbor/thumbor/archive/$pkgver.tar.gz"
@@ -33,12 +33,12 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  python -m build --wheel --no-isolation
+  python setup.py build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm 644 $srcdir/thumbor.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm 644 $pkgname/$pkgname.conf -t "${pkgdir}"/etc/
