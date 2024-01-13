@@ -1,7 +1,7 @@
 pkgbase = morisawa-biz-ud-fonts
 	pkgdesc = Morisawa BIZ UD Fonts.
 	pkgver = 1.06
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
 	groups = morisawa-biz-ud-fonts
 	license = OFL
