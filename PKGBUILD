@@ -2,7 +2,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=r-linux
-pkgver=6.2.191150
+pkgver=6.3.191253
 pkgrel=1
 pkgdesc="File recovery utility for the ext2/ext3/ext4 file system"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ source_x86_64=("$pkgname-$pkgver-x64.deb::https://www.r-studio.com/downloads/RLi
 source=('rlinux.sh' 'elevate.sh')
 sha512sums=('01ea9c642f46a35a9b90896a7b93c3b03a5256100d6a1443286a5da58fcdca0c49447a48a2a6c335ab334cb53965ed4269381ecdda94af39d2f3c8542ce2cbae'
             'a98ab704660e17f062ffa75a4e326da600fb7f6af4518dadfbb7e42673b86a521e825ab81dd28995fcf375bd609fe1522a8a48d884fe7433c8b4c2022307cb32')
-sha512sums_i686=('a7d44454e75acf3449b8463b7a73ecb0d030959792bd50a4298a5f07a83a1cf12d084283533dd9628e226dc6eb8b6aeba16ed58fd5c1b4e5d33f5859a553ca52')
-sha512sums_x86_64=('7752e2bf21ccfb6d5d677e0582706f14d56f8a0f6d0880ca54240a2bccfb5f0afc845f002f1a4c2fa9351f763dc9b34a63d16d2d632e859af75f71bffcaacdac')
+sha512sums_i686=('4a9a1d3a9a25a18115c1ef06f361fd50b1c10ceed24d1421ef74af122e0b0d05519d2ae2139fedec3204d4bb253afbca3397415026afef500566ad56d40bd876')
+sha512sums_x86_64=('ea605a3cbba42165defee0abddcdf84948c3d7e28159ded6e6774c0ee2a7a1fe4e2f79a8357e2496207b9cf217f3e19b4bd3d465b67c578640c3e05a5be1a22b')
 
 prepare() {
     bsdtar xf data.tar.gz
