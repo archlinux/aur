@@ -8,8 +8,8 @@ pkgname=(
   "${_pkgbase}-docs-git"
 )
 pkgver=1.0+141.r329.20231113.af6ab25
-pkgrel=1
-pkgdesc="Software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd. Built without systemd."
+pkgrel=2
+pkgdesc="Software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd. Built without systemd, needs elogind, conflicts with systemd systems!"
 arch=(
   'i686'
   'x86_64'
@@ -30,14 +30,14 @@ source=(
   "${_pkgbase}-wiki::git+${url}.wiki.git"
   'miraclecast-use-elogind.patch'          # https://github.com/albfan/miraclecast/issues/485#issuecomment-1503174932
   'configure-fix-disable-systemd.patch'    # https://github.com/albfan/miraclecast/issues/499
-  'shared-makefile-disable-lsystemd.patch' # https://github.com/albfan/miraclecast/issues/500
+  #'shared-makefile-disable-lsystemd.patch' # https://github.com/albfan/miraclecast/issues/500
 )
 sha256sums=(
   'SKIP'
   'SKIP'
   'ad4f15e126d2a461cbfff0dd24971e5bf020a0d22a562ac217b96662b0f18c6d'
   '7b6fcd858120cf5643cccb3cbb4a2b2a9042cfc4870deb2f1b6fe62ccd3e00c8'
-  '5b2ff99a13772b450e5f3e4277e06577675941a1c85c9606fac56d26da876eff'
+  #'5b2ff99a13772b450e5f3e4277e06577675941a1c85c9606fac56d26da876eff'
 )
 
 prepare() {
@@ -55,8 +55,8 @@ prepare() {
   msg2 "Fixing 'configure.ac' to the correct behaviour to disable systemd ..."
   patch -N -p1 --follow-symlinks -i "${srcdir}/configure-fix-disable-systemd.patch"
 
-  msg2 "Fixing '-lsystemd' in 'src/shared/Makefile.am' ..."
-  patch -N -p1 --follow-symlinks -i "${srcdir}/shared-makefile-disable-lsystemd.patch"
+  #msg2 "Fixing '-lsystemd' in 'src/shared/Makefile.am' ..."
+  #patch -N -p1 --follow-symlinks -i "${srcdir}/shared-makefile-disable-lsystemd.patch"
 
   msg2 "Running ./autogen.sh ..."
   NOCONFIGURE=1 ./autogen.sh
