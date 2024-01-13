@@ -1,7 +1,7 @@
 pkgbase = cpp2il-dev-git
 	pkgdesc = Work-in-progress tool to reverse unity's IL2CPP toolchain. (git version) (development branch)
-	pkgver = 2022.1.0.pre.release.12.r6.g2acc70e
-	pkgrel = 2
+	pkgver = 2022.1.0.pre.release.14.r0.gec789f4
+	pkgrel = 1
 	url = https://github.com/SamboyCoding/Cpp2IL/tree/development
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = cpp2il-dev-git
 	makedepends = git
 	makedepends = dotnet-host
 	makedepends = dotnet-sdk
-	depends = dotnet-runtime
+	depends = dotnet-runtime-7.0
 	source = cpp2il-dev::git+https://github.com/SamboyCoding/Cpp2IL.git#branch=development
 	sha512sums = SKIP
 

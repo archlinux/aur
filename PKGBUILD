@@ -1,14 +1,14 @@
-# Maintainer: Fijxu <fijxu[at]zzls[dot]xyz>
+# Maintainer: Fijxu <fijxu at nadeko dot net>
 
 pkgname=cpp2il-dev-git
 _pkgname=cpp2il-dev
-pkgver=2022.1.0.pre.release.12.r6.g2acc70e
-pkgrel=2
+pkgver=2022.1.0.pre.release.14.r0.gec789f4
+pkgrel=1
 pkgdesc="Work-in-progress tool to reverse unity's IL2CPP toolchain. (git version) (development branch)"
 arch=('x86_64' 'aarch64')
 url='https://github.com/SamboyCoding/Cpp2IL/tree/development'
 license=('MIT')
-depends=('dotnet-runtime')
+depends=('dotnet-runtime-7.0')
 makedepends=('git' 'dotnet-host' 'dotnet-sdk')
 source=("$_pkgname::git+https://github.com/SamboyCoding/Cpp2IL.git#branch=development")
 sha512sums=('SKIP')
@@ -20,9 +20,8 @@ pkgver() {
 
 build() {
   cd $_pkgname/Cpp2IL
-
   dotnet restore
-  dotnet build Cpp2IL.csproj -c Release -r linux-x64 -f net7.0 --no-self-contained
+  dotnet build Cpp2IL.csproj -c Release -r linux-x64 --no-self-contained
 }
 
 package() {
@@ -39,6 +38,5 @@ EOF
   install -dm 755 "$pkgdir/usr/share/$_pkgname"
   install -Dm 644 -t "$pkgdir/usr/share/doc/$_pkgname/" *.md
 
-  cp -a --no-preserve=ownership ./Cpp2IL/bin/Release/net7.0/linux-x64/* \
-    "$pkgdir/usr/share/$_pkgname/"
+  cp -a --no-preserve=ownership ./Cpp2IL/bin/Release/net7.0/linux-x64/* "$pkgdir/usr/share/$_pkgname/"
 }
