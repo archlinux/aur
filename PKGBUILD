@@ -23,6 +23,7 @@ optdepends=(
     "org.freedesktop.secrets: Keyring password store support"
 )
 makedepends=('go>=1.17')
+provides=('supersonic-desktop')
 conflicts=('supersonic-desktop')
 source=(
     "git+${url}.git"
