@@ -1,6 +1,9 @@
+# Maintainer: Fijxu <fijxu at nadeko dot net>
+# Contributor: Telans
+
 _pkgname=tartube
 pkgname=tartube-git
-pkgver=2.4.260.r11.gc5745b8
+pkgver=2.5.0.r1.g43d074b
 pkgrel=1
 pkgdesc='A GUI front-end for youtube-dl, partly based on youtube-dl-gui and written in Python 3 / Gtk 3 (git version)'
 arch=('any')
