@@ -14,12 +14,12 @@ pkgbase=morisawa-biz-ud-fonts
 pkgname=(morisawa-biz-ud-mincho-fonts morisawa-biz-ud-gothic-fonts)
 pkgdesc="Morisawa BIZ UD Fonts."
 pkgver=1.06
-pkgrel=2
+pkgrel=3
 arch=('any')
 license=('OFL')
 groups=($pkgbase)
 
-g_pkgver=1.05
+g_pkgver=1.051
 _base_url_g="https://github.com/googlefonts/morisawa-biz-ud-gothic/raw/main/"
 _base_url_tg="https://github.com/googlefonts/morisawa-biz-ud-gothic/releases/download/v${g_pkgver}/"
 _base_url_m="https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/"
@@ -29,10 +29,8 @@ source=(
   "BIZ-UDGothic.otf::${_base_url_g}sources/extensions/otf/BIZ-UDGothic.otf"
   "BIZ-UDPGothic-Bold.otf::${_base_url_g}sources/extensions/otf/BIZ-UDPGothic-Bold.otf"
   "BIZ-UDPGothic.otf::${_base_url_g}sources/extensions/otf/BIZ-UDPGothic.otf"
-  "BIZUDGothic-Bold.ttf::${_base_url_tg}BIZUDGothic-Bold.ttf"
-  "BIZUDGothic-Regular.ttf::${_base_url_tg}BIZUDGothic-Regular.ttf"
-  "BIZUDPGothic-Bold.ttf::${_base_url_g}fonts/ttf/BIZUDPGothic-Bold.ttf"
-  "BIZUDPGothic-Regular.ttf::${_base_url_tg}BIZUDPGothic-Regular.ttf"
+  "${_base_url_tg}BIZUDGothic.zip"
+
   "BIZ-UDMincho-Medium.otf::${_base_url_m}sources/extensions/otf/BIZ-UDMincho-Medium.otf"
   "BIZ-UDPMincho-Medium.otf::${_base_url_m}sources/extensions/otf/BIZ-UDPMincho-Medium.otf"
   "BIZ-UDMincho-Heavy.otf::${_base_url_m}sources/extensions/otf/BIZ-UDMincho-Heavy.otf"
@@ -53,10 +51,7 @@ sha512sums=('b541d4406aee7b267a2e3c42aa9ca107b2f503d580ed290d2c468fa9f7da1442e53
             '6b834ccff4e76de77737d7f96b8733b1cb34ea3b350aaa7b9d8c0f468873c9f64c7d2dda6c3dd996ae972956b17e0728d75b80b657aba83cdb0d98d964779a7b'
             '20b4e961e40c60e9a909ee19785d788cb8927d3a766964f064db7f5b51bdf0ba24169df2e46f7de8394110dfba9185c4d6bd1c48e5cdd578d5d4d9a1625efee8'
             '999b452a7e203d0d3928eaa1e04a77e9bba2d1db5c254beb8bed1e3430ad919580884da179d23b8db0f11acc50dd50827938f874183c0a111ff5b6e5dcd11f24'
-            '3b4fa7e00db803e35bac6b042636b926a05b53ef7e5b555d6e9c92b3bdd2ae39ffa11e401d4fa846603833425c22f77cf2ba2efb650e09d4ceb85a310ba0881c'
-            'd9348438f908df89e50b3358fd2eb3782584abb0fa43090d9a25da3ff8947c6c7d3ef7b472001b391d1a8ad91320c87dda14e926ada17fc831493f06dec6283e'
-            '220a41149e69dd363f1da4c7b8badf810c148db20695c4d5616c5742da09e10d9a3a5e509b4544ce03f7c0fd889d070428e2f6a96b3386f130a2a2e610d965f7'
-            'b6ee1bc40f45bc783d01941d25b4af890b0d3ccbd2108c10821c92e1bad8803c5922495012b41dc41e0397b9343254bc069b221c2051c700c6206930ef78503f'
+            'b04b4eacfcd819045ecb69c9a6dd897777e827879c36c2079e1be92e77401b590318e5d26e88947347bccc8a12e3b210b1b757df3b42e89550172b99fc619f6c'
             'f5d9d18bb4df0256abccb7c755d7c45d61037a65c83fd21cd01084fdebd56118484de2136ecdf78d56a5c150c36a68de748b7a1475ac9fcb82f5932028064d44'
             'd49060d47c10c3b4fd5930b8727e2340f79a80dfa0e68e339124cb6b93925336e1d504d27785849187c81839aa07ae879b1842f8fbc58d42423480f54c043a84'
             'df8b8ac2611ff980d9a6e8f56f7c4371d5f2de27bcb9757b3452f4a1f99806a0f347e769877955158ce210efc5a40eaa50277b9194d9169aefaaf145581f6128'
