@@ -4,8 +4,8 @@
 # Contributor: Alex Brinister <alex_brinister at yahoo dot com>
 
 pkgname='papyrus'
-pkgver='6.5.0'
-_eclipsever='2023-06'
+pkgver='6.6.0'
+_eclipsever='2023-12'
 pkgrel=1
 pkgdesc='Graphical editing tool for UML based on eclipse.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(python perl bash)
 makedepends=(tar)
 provides=('papyrus')
 conflicts=('papyrus')
-sha256sums=('d69938cd66cc6509fcaf815825c82524a4f1d476f1b101513258a46bfacbef0e'
+sha256sums=('f5c3509e67f852214df53f9672b37bae6deb51df16ebb44da4038e25ca16a5d8'
             '0bf0ff5eacc3e955a01c171cc21d8c989707ed9eee668ce176d67cfae06c8608'
             '255f1d8b0277bb9e4a3f84d09294fe34a54485b29f67220733343f37db052b94'
             '45387c39208b4e18f70059059729dfd06ed4c3393065aebd299072c6eec888ea')
