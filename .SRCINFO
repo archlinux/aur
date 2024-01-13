@@ -1,6 +1,6 @@
 pkgbase = python-cantools
 	pkgdesc = Python CAN bus tools in Python 3
-	pkgver = 39.2.0
+	pkgver = 39.4.2
 	pkgrel = 1
 	url = https://github.com/eerimoq/cantools
 	arch = i686
@@ -10,15 +10,23 @@ pkgbase = python-cantools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-bitstruct>=6.0.0
-	depends = python-can>=2.2.0
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python>=3.8
+	depends = python-bitstruct>=8.16.1
+	depends = python-can>=3.3.4
 	depends = python-textparser>=0.21.1
 	depends = python-diskcache
 	depends = python-argparse-addons
+	depends = python-crccheck
 	optdepends = python-matplotlib: plot decoded messages
+	optdepends = mypy
+	optdepends = python-pipx
+	optdepends = python-ruff
+	optdepends = python-tox
 	provides = python-cantools
 	conflicts = python-cantools
-	source = python-cantools-39.2.0.tar.gz::https://github.com/eerimoq/cantools/archive/refs/tags/39.2.0.tar.gz
-	md5sums = 42d915595e17133baefdfd5fd0d6613f
+	source = python-cantools-39.4.2.tar.gz::https://github.com/eerimoq/cantools/archive/refs/tags/39.4.2.tar.gz
+	md5sums = f0105fa40d814e8830d8999ce154c21f
 
 pkgname = python-cantools
