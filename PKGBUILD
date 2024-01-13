@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Extract Valve VPK (V1 & V2) archives (and create V1 archives)"
 arch=(x86_64)
 url="https://github.com/panzi/rust-vpk"
-license=('GPL')
+license=(GPL)
 depends=(gcc-libs fuse2)
 makedepends=(cargo)
 source=("https://github.com/panzi/rust-vpk/archive/refs/tags/v$pkgver.tar.gz")
@@ -33,8 +33,6 @@ check() {
 
 package() {
   cd "$_repo_name-$pkgver"
-
-  # binary
   install -vDm755 -t "$pkgdir/usr/bin" target/release/rvpk
 }
 
