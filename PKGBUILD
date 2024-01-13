@@ -9,11 +9,10 @@ epoch=1
 pkgdesc="Network-wide ads and trackers blocking DNS server"
 arch=(x86_64 aarch64 armv7h armv6h)
 url="https://github.com/AdguardTeam/AdGuardHome"
-license=('GPL')
+license=(GPL)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AdguardTeam/AdGuardHome/archive/v$pkgver.tar.gz"
         "$pkgname.service"
-        "$pkgname.install"
-)
+        "$pkgname.install")
 makedepends=(go nodejs npm git)
 depends=(glibc)
 install="$pkgname.install"
@@ -47,3 +46,5 @@ package() {
   mkdir "$pkgdir/etc"
   ln -s "/var/lib/$pkgname/$_pkgname.yaml" "$pkgdir/etc/$pkgname.yaml"
 }
+
+# vim:set ts=2 sw=2 et:
