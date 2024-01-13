@@ -11,6 +11,7 @@ pkgbase = daggerfall-unity-bin
 	depends = zlib
 	depends = gcc-libs
 	depends = bash
+	conflicts = daggerfall-unity-aur-bin
 	replaces = daggerfall-unity-aur-bin
 	source = daggerfall-unity
 	source = daggerfall.desktop
