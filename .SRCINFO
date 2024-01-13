@@ -6,6 +6,7 @@ pkgbase = perl-astro-fits-header
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-starlink-ast
 	makedepends = perl-module-build
 	depends = perl-astro-fits-cfitsio
 	optdepends = perl-starlink-ast: needed for Astro::FITS::Header::AST

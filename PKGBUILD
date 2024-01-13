@@ -12,6 +12,7 @@ options=('!emptydirs')
 depends=('perl-astro-fits-cfitsio')
 makedepends=('perl-module-build')
 optdepends=('perl-starlink-ast: needed for Astro::FITS::Header::AST')
+checkdepends=('perl-starlink-ast')
 # Astro::FITS::Header::GSD and Astro::FITS::Header::NDF require perl-GSD and perl-NDF respectively
 # These are not package on AUR and I couldn't find them on CPAN either, only GH repos
 # https://github.com/Starlink/perl-GSD
