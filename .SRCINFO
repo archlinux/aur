@@ -1,0 +1,13 @@
+pkgbase = tuf-fan-boost-notification-git
+	pkgdesc = Fan Boost Mode Notification Script for ASUS TUF laptops
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MioKira/tuf-fan-boost-notification
+	arch = any
+	license = MIT
+	depends = inotify-tools
+	depends = libnotify
+	source = tuf-fan-boost-notification-git::git+https://github.com/MioKira/tuf-fan-boost-notification.git
+	sha256sums = SKIP
+
+pkgname = tuf-fan-boost-notification-git
