@@ -1,4 +1,5 @@
 # Maintainer: Uwe Koloska <kolewu@koloro.de>
+# Contributor: Necoro <arch@necoro.dev>
 
 _appname=sieve-app
 pkgname=${_appname}-bin
