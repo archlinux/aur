@@ -72,7 +72,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
 pkgver=6.7
-_upstream=arch1
+_upstream=arch2
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -111,7 +111,7 @@ validpgpkeys=(
 sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
             'SKIP'
             '45a44ff0e957cd562d2ceb60c1c90fc19c19e808209cebb46bfacfccfb56ad96'
-            'b6abc3ca814e36b3d4126459b3125e2eb5af7f02ea76801e34e6b465767e11aa'
+            'fbe4c63c0a4e09574a7f4390bba5ba7a6e4ce6dbbd59cba0ebb78b80339ea378'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
             '36981db4140b0c68c58855a9fefa336373501a0737005bbe824f6e7616808702')
 
