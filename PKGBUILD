@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-git
 _pkgbase=OpenGamepadUI
-pkgver=v0.29.1.r0.gcdff0c72
+pkgver=0.29.1.r0.gcdff0c72
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -22,11 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgbase}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "$srcdir/${_pkgbase}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c 2-
 }
 
 build() {
