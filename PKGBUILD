@@ -1,7 +1,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgname=actual-server
 pkgver=24.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Actual Budget Server"
 arch=('any')
 url="https://github.com/actualbudget/actual-server"
@@ -28,7 +28,7 @@ source=(
     # creation in the /var/lib/actual directory.
     # See following issue upstream:
     # https://github.com/actualbudget/actual/issues/2011#issuecomment-1837295607
-    # 'migrations.js.patch'
+    'load-config.js.patch'
 )
 noextract=()
 sha256sums=('c996935ff6748fe990c4e586944ce1299bb0e36b1708b8735314706fe1d1cdb5'
@@ -38,9 +38,8 @@ sha256sums=('c996935ff6748fe990c4e586944ce1299bb0e36b1708b8735314706fe1d1cdb5'
 
 prepare() {
 
-    :
-    # cd "${srcdir}/${pkgname}-${pkgver}"
-    # patch -p0 -i "${srcdir}/migrations.js.patch"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch -p0 -i "${srcdir}/load-config.js.patch"
 }
 
 build() {
@@ -57,7 +56,6 @@ package() {
     cp -r {.,}* "${pkgdir}/usr/share/webapps/actual-server"
 
     install -d -m 0750 "${pkgdir}/var/lib/actual"
-    ln -s /var/lib/actual "${pkgdir}/usr/share/webapps/actual-server/data"
 
     cd "${srcdir}"
     install -D -m 0644 sysusers "${pkgdir}/usr/lib/sysusers.d/actual-server.conf"

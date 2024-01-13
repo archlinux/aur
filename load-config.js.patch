@@ -1,0 +1,11 @@
+--- src/load-config.js	2024-01-13 10:35:50.765612414 +0000
++++ src/load-config_patched.js	2024-01-13 10:36:53.525101162 +0000
+@@ -10,7 +10,7 @@
+ debug(`project root: '${projectRoot}'`);
+ export const sqlDir = path.join(projectRoot, 'src', 'sql');
+ 
+-let defaultDataDir = fs.existsSync('/data') ? '/data' : projectRoot;
++let defaultDataDir = '/var/lib/actual';
+ debug(`default data directory: '${defaultDataDir}'`);
+ 
+ function parseJSON(path, allowMissing = false) {
