@@ -1,6 +1,6 @@
 pkgbase = r-dss
 	pkgdesc = Dispersion shrinkage for sequencing data
-	pkgver = 2.48.0
+	pkgver = 2.50.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DSS
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-dss
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DSS_2.48.0.tar.gz
-	sha256sums = 088bffd5055b380ca57b91f4cb3a4cda866c9c94cc4c94aa4fc05c87f95f54ab
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DSS_2.50.1.tar.gz
+	sha256sums = 4051ad59f9e44636a1f02ccb10127403543b7d88038e3015b1838b3f91204df2
 
 pkgname = r-dss
