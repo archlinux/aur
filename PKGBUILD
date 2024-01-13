@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.11.4.r0.ga14c919
+pkgver=0.12.0.r0.gf19a953
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -14,9 +14,11 @@ depends=(bc
          entr
          epubcheck
          fontconfig
+         gcc-libs
          ghostscript
          git
          git-warp-time
+         glibc
          imagemagick
          inetutils
          inkscape
@@ -24,7 +26,7 @@ depends=(bc
          jq
          kindlegen
          libertinus-font
-         libgit2
+         libgit2 libgit2.so
          lua
          luarocks
          m4
@@ -70,9 +72,6 @@ depends+=("${_lua_deps[@]/#/lua-}"
           "${_lua_deps[@]/#/lua51-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
-depends+=(gcc-libs
-          glibc)
-depends+=(libgit2.so)
 makedepends=(autoconf-archive
              cargo
              node-prune
@@ -95,23 +94,26 @@ prepare() {
 		-e 's/yarn \(install\|run\)/yarn --offline \1/' \
 		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
 	./bootstrap.sh
-	cargo fetch --locked  --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	yarn install --production --frozen-lockfile
 }
 
-build() {
+_srcenv() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+}
+
+build() {
+	_srcenv
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	./configure --prefix "/usr"
 	make
 }
 
 check() {
-	cd "$pkgname"
-	export RUSTUP_TOOLCHAIN=stable
+	_srcenv
 	make check
 }
 
