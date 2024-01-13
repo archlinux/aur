@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-memc
-pkgver=0.19
-pkgrel=25
+pkgver=0.20
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 
@@ -14,7 +14,7 @@ url="https://github.com/openresty/memc-nginx-module"
 license=('BSD')
 
 source=(https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz)
-sha256sums=('8c2bdbe875e4f5225d0778bfb09a2668f9281d7de6218c7b462a7ba2cee06fe8')
+sha256sums=('a42dd56dd6e2144755a127bcd2a6cc1a488258dc5cdb751d6a3e5dd5b6989239')
 
 prepare() {
 	mkdir -p build
