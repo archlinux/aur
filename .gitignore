@@ -1,8 +1,5 @@
 *
 !.gitignore
 !.SRCINFO
-!xcp.bash
-!xcp.fish
-!xcp.zsh
 !PKGBUILD
 

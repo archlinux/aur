@@ -1,7 +1,7 @@
 pkgbase = xcp
 	pkgdesc = An extended 'cp'
-	pkgver = 0.16.0
-	pkgrel = 2
+	pkgver = 0.17.0
+	pkgrel = 1
 	url = https://github.com/tarka/xcp
 	arch = i686
 	arch = x86_64
@@ -11,13 +11,7 @@ pkgbase = xcp
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = xcp-0.16.0.tar.gz::https://github.com/tarka/xcp/archive/v0.16.0.tar.gz
-	source = xcp.bash
-	source = xcp.fish
-	source = xcp.zsh
-	sha512sums = 7df09979bee61bfe1dee0446b72a718d619aa431d63a2521e0d9434f394c138529b573511262f34990bdb6e0acf27c8e5f6a2506ceb9425b47ebeb779d7b7d9a
-	sha512sums = cb5f337a5a91bdfc5ec2d1cb63b57308cf5ee52e60e2b6cd946909abb96b9c0ccaaa8c802d40e47c25fe1df41cdd20c56c324d41a4ce06515d0b0670367a0b59
-	sha512sums = 3a61b68be8722088960b132d50b453afe778845a95c65606bbd68a181adfe730627c80556cc14a97d63e83c828346f8b43e752d7490e93103512f9cfbda28270
-	sha512sums = 34da34a1f10b589b66e86ee780ee913191e67a671424930793333a00af02d2e7305b9829f6bc81ee8eaa14c34e0d61397aa3d5cae393c4b74771e201de036046
+	source = xcp-0.17.0.tar.gz::https://github.com/tarka/xcp/archive/v0.17.0.tar.gz
+	sha512sums = 2b05507216ce58199c5897a32321c7d30a3b77a131ad4f709121cf5fd5d4eda20e4d471d45478a1252d2a299f664a1460a110113e38ffaa83170ee59fda40adf
 
 pkgname = xcp
