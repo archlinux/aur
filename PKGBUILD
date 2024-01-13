@@ -5,6 +5,7 @@ _pkgname='ov'
 pkgname="${_pkgname}-git"
 pkgver=0.33.1.r0.g06feaa0
 pkgrel=1
+epoch=1
 pkgdesc='Feature-rich terminal-based text pager (built from latest git commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/ov'
@@ -20,7 +21,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/-rc\d*//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
