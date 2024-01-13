@@ -1,0 +1,12 @@
+pkgbase = era-bin
+	pkgdesc = A rainy clock in your terminal.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/kyoheiu/era
+	arch = x86_64
+	license = MIT
+	options = !strip
+	source = https://github.com/kyoheiu/era/releases/download/v0.1.3/era-v0.1.3-x86_64-linux.tar.gz
+	md5sums = 958eac74089e1b0ddbdba12b24bed33a
+
+pkgname = era-bin
