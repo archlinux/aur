@@ -8,7 +8,7 @@ pkgname=(
   "${_pkgbase}-docs-git"
 )
 pkgver=1.0+141.r329.20231113.af6ab25
-pkgrel=2
+pkgrel=3
 pkgdesc="Software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd. Built without systemd, needs elogind, conflicts with systemd systems!"
 arch=(
   'i686'
@@ -33,17 +33,16 @@ source=(
   #'shared-makefile-disable-lsystemd.patch' # https://github.com/albfan/miraclecast/issues/500
 )
 sha256sums=(
-  'SKIP'
-  'SKIP'
-  'ad4f15e126d2a461cbfff0dd24971e5bf020a0d22a562ac217b96662b0f18c6d'
-  '7b6fcd858120cf5643cccb3cbb4a2b2a9042cfc4870deb2f1b6fe62ccd3e00c8'
-  #'5b2ff99a13772b450e5f3e4277e06577675941a1c85c9606fac56d26da876eff'
+  'SKIP'                                                              # upstream git source
+  'SKIP'                                                              # upstream wiki
+  'ad4f15e126d2a461cbfff0dd24971e5bf020a0d22a562ac217b96662b0f18c6d'  # miraclecast-use-elogind.patch
+  '9411a637305f80b9713a3e6f6de665dfcf509c0f13e2a3e670b3f0e871e83eb0'  # configure-fix-disable-systemd.patch
 )
 
 prepare() {
   cd "${srcdir}/${_pkgbase}"
 
-  msg2 "Modifying sources to be 'elogind' compatible ..."
+  printf '%s\n' "Modifying sources to be 'elogind' compatible ..."
   ### Change sources to be compatible with elogind instead of systemd.
   #   Two variants are given, use only one:
   #
@@ -52,13 +51,10 @@ prepare() {
   ## (2) Use a patch:
   patch -N -p1 --follow-symlinks -i "${srcdir}/miraclecast-use-elogind.patch"
 
-  msg2 "Fixing 'configure.ac' to the correct behaviour to disable systemd ..."
+  printf '%s\n' "Fixing 'configure.ac' to the correct behaviour to disable systemd ..."
   patch -N -p1 --follow-symlinks -i "${srcdir}/configure-fix-disable-systemd.patch"
 
-  #msg2 "Fixing '-lsystemd' in 'src/shared/Makefile.am' ..."
-  #patch -N -p1 --follow-symlinks -i "${srcdir}/shared-makefile-disable-lsystemd.patch"
-
-  msg2 "Running ./autogen.sh ..."
+  printf '%s\n' "Running ./autogen.sh ..."
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -81,20 +77,20 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgbase}"
 
-  msg2 "Running ./configure ..."
+  printf '%s\n' "Running ./configure ..."
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --enable-disable-systemd
+    --disable-systemd
 
-  msg2 "Running make ..."
+  printf '%s\n' "Running make ..."
   make
 }
 
 check() {
   cd "${srcdir}/${_pkgbase}"
 
-  msg2 "Running make check ..."
+  printf '%s\n' "Running make check ..."
   make -k check
 }
 
@@ -133,15 +129,15 @@ package_miraclecast-nosystemd-git() {
 
   cd "${srcdir}/miraclecast"
 
-  msg2 "Running make install ..."
+  printf '%s\n' "Running make install ..."
   make DESTDIR="${pkgdir}/" install
 
-  msg2 "Installing additional 'binaries' ..."
+  printf '%s\n' "Installing additional 'binaries' ..."
   for _bin in miracle-vlc; do
     install -D -v -m755 "res/${_bin}" "${pkgdir}/usr/bin/${_bin}"
   done
 
-  msg2 "Installing additional ressources/ helper files ..."
+  printf '%s\n' "Installing additional ressources/ helper files ..."
   for _res in miracle-utils.sh sinkctl.protocol-extension.example wpa.conf; do
     install -D -v -m644 "res/${_res}" "${pkgdir}/usr/share/doc/miraclecast/ressources/${_res}"
   done
@@ -149,7 +145,7 @@ package_miraclecast-nosystemd-git() {
     install -D -v -m755 "res/${_resbin}" "${pkgdir}/usr/share/doc/miraclecast/ressources/${_resbin}"
   done
 
-  msg2 "Installing license files ..."
+  printf '%s\n' "Installing license files ..."
   install -d -v -m755 "${pkgdir}/usr/share/doc/miraclecast/licenses"
   for _licensefile in COPYING* LICENSE*; do
     install -D -v -m644 "${_licensefile}"                                            "${pkgdir}/usr/share/licenses/miraclecast-nosystemd-git/${_licensefile}"
@@ -171,13 +167,13 @@ package_miraclecast-docs-git() {
   )
 
 
-  msg2 "Installing wiki ..."
+  printf '%s\n' "Installing wiki ..."
   install -d -v -m755                    "${pkgdir}/usr/share/doc/miraclecast/wiki"
   cp -rv "${srcdir}/miraclecast-wiki"/*  "${pkgdir}/usr/share/doc/miraclecast/wiki"/
 
   cd "${srcdir}/miraclecast"
 
-  msg2 "Installing source repository's doc files ..."
+  printf '%s\n' "Installing source repository's doc files ..."
   for _docfile in NEWS README.md; do
     install -D -v -m644 "${_docfile}"    "${pkgdir}/usr/share/doc/miraclecast/$(basename "${_docfile}")"
   done
