@@ -1,14 +1,14 @@
 # Maintainer: AstroFloyd  < AstroFloyd [at] gmail [dt] com >
 pkgname=libthesky-data
-pkgver=20160409
+pkgver=20231226
 pkgrel=1
 pkgdesc="Data files for libTheSky"
 arch=('any')
 url="http://libthesky.sourceforge.net/"
 license=('GPL3')
 changelog=ChangeLog
-source=("http://sourceforge.net/projects/libthesky/files/$pkgname-$pkgver.tar.bz2")
-sha512sums=('b790aa70b60c6c35db85a54de3487aa5ef47710121cb6c6c13069d4d8adba822b61449eb59ce7ec9203fb4d9cf33570222ec9a65b36ac21f5d4506cddd0b35a3')
+source=("https://sourceforge.net/projects/libthesky/files/$pkgname-$pkgver.tar.bz2")
+sha512sums=('ba2242788eb2735ef7b59a4b3453e27121899d6721b6950f492be7f24707bb8609a0dc0c45e76487fd9f40c45be44412fbc3c48aaf2f83437fff7de7c6bd60c5')
 
 package() {
 	mkdir -p      ${pkgdir}/usr/share/libTheSky/
