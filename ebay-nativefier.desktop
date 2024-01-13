@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=eBay
+Comment=eBay desktop built with nativefier (electron)
+Exec=ebay-nativefier
+Icon=ebay-nativefier
+Encoding=UTF-8
+StartupWMClass=ebay-nativefier-d40211
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;WebBrowser;Application;

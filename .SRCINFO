@@ -1,0 +1,24 @@
+pkgbase = ebay-nativefier
+	pkgdesc = eBay desktop built with nativefier (electron)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://ebay.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = ebay-nativefier.png
+	source = ebay-nativefier.desktop
+	source = ebay-nativefier-inject.js
+	sha256sums = 2f30de271bd1a4bf30a78a27bb3ee4157c4d85858d9387736e4b94fb661581c3
+	sha256sums = 81a830762d02021e80dd2978bdc01bd9c2ec02ab16709827fae2feadca39250b
+	sha256sums = 22ba360d698d9bb8257e91e7360aa0cf669e7e58a512e9b7aa0ee4b0504563d8
+
+pkgname = ebay-nativefier
