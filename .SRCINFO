@@ -1,6 +1,6 @@
 pkgbase = purpose5
 	pkgdesc = Framework for providing abstractions to get the developers purposes fulfilled
-	pkgver = 5.113.0
+	pkgver = 5.114.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = purpose5
 	optdepends = prison5: QR code plugin
 	conflicts = purpose<5.111
 	replaces = purpose<5.111
-	source = https://download.kde.org/stable/frameworks/5.113/purpose-5.113.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.113/purpose-5.113.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.114/purpose-5.114.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.114/purpose-5.114.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 0ec2ad4867cf9414224f7171cba491e7a43f3a254af4920ee2e17035f366bf5c
+	sha256sums = e1930ae43795281fff7b4959e9625aa75bced7ca6cb0e157826b3fd2813b46d2
 	sha256sums = SKIP
 
 pkgname = purpose5
