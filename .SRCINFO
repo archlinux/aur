@@ -1,6 +1,6 @@
 pkgbase = pipeline-gtk
 	pkgdesc = Watch YouTube and PeerTube videos in one place
-	pkgver = v1.14.3
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = https://gitlab.com/schmiddi-on-mobile/pipeline
 	arch = x86_64
