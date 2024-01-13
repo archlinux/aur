@@ -4,7 +4,7 @@
 _appname=sieve-app
 pkgname=${_appname}-bin
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Sieve script editor app version"
 arch=('x86_64')
 url="https://github.com/thsmi/sieve/"
