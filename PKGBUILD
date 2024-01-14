@@ -1,25 +1,26 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="espeak-phonemizer"
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Uses ctypes and libespeak-ng to transform test into IPA phonemes "
 url="https://github.com/rhasspy/espeak-phonemizer"
 license=("GPL3")
 arch=("any")
 depends=("python" "espeak-ng")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
-source=("https://github.com/rhasspy/espeak-phonemizer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f3b5474fe2d1ae6512ede2d4af93e5f73c3d7aebee77f583f1a07fdbd9d05b35')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname/-/_}-${pkgver}.tar.gz")
+b2sums=('1aadcdeb4b601f98893ec2db65d1d314800236ae6afb69d7dea422b961c04259aae65974f3c5d7209ac8d2dd0cea22e8117cd5ad65b5173abe95e9a56274ffe3')
 options=("!strip")
 
 build(){
- cd "$pkgname-$pkgver"
+ cd "${pkgname/-/_}-$pkgver"
  python -m build --wheel --no-isolation
 }
 
 package(){
- cd "$pkgname-$pkgver"
+ cd "${pkgname/-/_}-$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
- rm -rf "$pkgdir/usr/lib/python3.11/site-packages/tests/"{__init__.py,__pycache__/__init__.cpython-311.pyc,__pycache__/__init__.cpython-311.opt-1.pyc}
+ # remove three files that should not be there
+ find "$pkgdir/usr/lib/" -depth -type d -name "tests" -exec rm -rf {} \;
 }
