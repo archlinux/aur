@@ -1,0 +1,657 @@
+diff -ruN pida-0.6.2.orig/pida/core/languages.py pida-0.6.2/pida/core/languages.py
+--- pida-0.6.2.orig/pida/core/languages.py	2024-01-13 23:15:03.293222648 -0300
++++ pida-0.6.2/pida/core/languages.py	2024-01-13 23:15:27.369887672 -0300
+@@ -17,9 +17,19 @@
+ from pida.core.projects import Project
+ from pida.core.service import Service
+ from pida.core.features import FeaturesConfig
+-from pida.utils.languages import (
+-    COMPLETER, LANG_PRIO,
+-    Suggestion, Definition, ValidationError, Documentation)
++#from pida.utils.languages import (COMPLETER, LANG_PRIO, Suggestion, Definition, ValidationError, Documentation)
++
++from pida.utils.addtypes import Enumeration
++LANG_PRIO = Enumeration('LANG_PRIORITIES',
++(
++    ('PERFECT', 100),
++    ('VERY_GOOD', 50),
++    ('GOOD', 10),
++    ('DEFAULT', 0),
++    ('LOW', -50),
++    ('BAD', -100),
++))
++
+ from pida.utils.path import get_relative_path
+ # locale
+ from pida.core.locale import Locale
+diff -ruN pida-0.6.2.orig/pida/editors/mooedit/mooedit.py pida-0.6.2/pida/editors/mooedit/mooedit.py
+--- pida-0.6.2.orig/pida/editors/mooedit/mooedit.py	2024-01-13 23:15:03.296555981 -0300
++++ pida-0.6.2/pida/editors/mooedit/mooedit.py	2024-01-13 23:16:00.669885393 -0300
+@@ -39,11 +39,10 @@
+ from pida.core.events import EventsConfig
+ from pida.core.document import DocumentException
+ from pida.core.options import OptionsConfig, choices
+-from pida.ui.completer import (PidaCompleter, PidaCompleterWindow, 
+-    SuggestionsList)
++#from pida.ui.completer import (PidaCompleter, PidaCompleterWindow, SuggestionsList)
+ from pygtkhelpers.gthreads import GeneratorTask, gcall, AsyncTask
+-from pida.core.languages import Suggestion
+-from pida.ui.languages import PidaDocWindow
++#from pida.core.languages import Suggestion
++#from pida.ui.languages import PidaDocWindow
+ from pida.services.buffer import view as buffer_view
+ 
+ 
+@@ -233,7 +232,7 @@
+ 
+     def set_editor(self, editor):
+         self.editor = editor
+-	self.editor_view = editor.get_view()
++        self.editor_view = editor.get_view()
+         self.editor_view.props.buffer.connect('changed', self.on_changed)
+         self.add(self.editor_view)
+         self.editor_view.show()
+@@ -525,16 +524,17 @@
+         self.svc = svc
+         self.editor = editor
+         self.document = document
+-	self.editor_view = editor.get_view()
+-        self.completer_window = PidaCompleterWindow(type_=gtk.WINDOW_POPUP,
+-            show_input=False)
++        self.editor_view = editor.get_view()
++        """
++        self.completer_window = PidaCompleterWindow(type_=gtk.WINDOW_POPUP, show_input=False)
+         self.completer = self.completer_window.widget
+         self.completer.show_all()
+         self.completer.connect("user-accept", self.accept)
+         self.completer.connect("suggestion-selected", self.suggestion_selected)
++        """
+         self.editor_view.connect("cursor-moved", self.on_cursor_moved)
+-        self.model = SuggestionsList()
+-        self.completer.set_model(self.model)
++        #self.model = SuggestionsList()
++        #self.completer.set_model(self.model)
+         
+         #self.completer.hide()
+         #self.completer_visible = False
+@@ -558,13 +558,14 @@
+         #editor.connect_after("key-press-event", self.on_after_keypress)
+ 
+     def disconnect(self):
++        return
+         #self.editor_view.disconnect_by_func(self.on_keypress)
+         #self.editor_view.disconnect_by_func(self.on_do_hide)
+         #try:
+         #    self.editor.get_toplevel().disconnect_by_func(self.on_do_hide)
+         #except ValueError: pass
+-        self.completer.disconnect_by_func(self.accept)
+-        self.completer.disconnect_by_func(self.suggestion_selected)
++        #self.completer.disconnect_by_func(self.accept)
++        #self.completer.disconnect_by_func(self.suggestion_selected)
+         #self.editor_view.disconnect_by_func(self.on_cursor_moved)
+ 
+ 
+@@ -593,9 +594,11 @@
+                 yield x
+ 
+     def get_completer_visible(self):
++        """
+         if self.completer_window and self.completer_window.window and \
+             self.completer_window.window.is_visible():
+                 return True
++        """
+         return False
+ 
+     def set_completer_visible(self, value):
+@@ -615,7 +618,7 @@
+     def hide(self):
+         if not self.completer_visible:
+             return
+-        self.completer_window.hide()
++        #self.completer_window.hide()
+         #self.completer.hide_all()
+         self.completer_visible = False
+         self.show_auto = False
+@@ -645,10 +648,12 @@
+ 
+         cmpl = self.svc.boss.get_service('language').get_completer(self.document)
+         info = self.svc.boss.get_service('language').get_info(self.document)
++        """`
+         if info:
+             self.completer.ignore_case = not info.case_sensitive
+         else:
+             self.completer.ignore_case = False
++        """
+ 
+         buf = self.editor.get_buffer()
+ 
+@@ -681,8 +686,8 @@
+         rpos = (pos[0]+abspos[0], pos[1]+abspos[1])
+         #self.completer_window.show_all()
+         #self.completer_window.move(rpos[0],rpos[1])
+-        self.completer.place(rpos[0],rpos[1] - rec.height, rec.height)
+-        self.completer_window.set_transient_for(self.svc.boss.window)
++        #self.completer.place(rpos[0],rpos[1] - rec.height, rec.height)
++        #self.completer_window.set_transient_for(self.svc.boss.window)
+         #self.completer_window.window.set_accept_focus(False)
+         #self.completer_window.window.set_focus_on_map(False)
+         #self.completer_window.window.set_skip_taskbar_hint(True)
+@@ -703,13 +708,15 @@
+             #self.completer_window.move(pos[0], pos[1])
+             #self.editor.move_child(self.completer, pos[0], pos[1])
+         #self.boss.get_service('language').
+-        self.model.clear()
++        #self.model.clear()
++        """
+         if start != pos:
+             self.completer.filter = buf.get_text(
+                 buf.get_iter_at_offset(start),
+                 buf.get_iter_at_offset(cpos))
+         else:
+             self.completer.filter = ""
++        """
+ 
+         self._task = GeneratorTask(self.update_completer_and_add, 
+                              self.add_str)
+@@ -717,10 +724,12 @@
+ 
+         self.show_auto = show_auto
+ 
++        """
+         if visible:
+             self.completer_window.show()
+             self.completer.show_all()
+             #self.completer_visible = True
++        """
+ 
+     def accept(self, widget, suggestion):
+         self._delete_typed()
+@@ -856,6 +865,7 @@
+ 
+     def add_str(self, line):
+         #print "add line", line
++        """
+         if len(self.completer) > 3000:
+             #emergency stop
+             self.svc.log.info(
+@@ -874,6 +884,7 @@
+            self.editor_view.is_focus():
+             if len(self.completer.model):
+                 self.completer_window.show()
++        """
+ 
+     def on_cursor_moved(self, widget, itr):
+         buf = self.editor.get_buffer()
+@@ -924,7 +935,7 @@
+                       etest((gtk.keysyms.Page_Down,0)))):
+                 #(65362, 65364, 65293, 65366, 65365): 
+                 if self.completer_visible:
+-                    self.completer.on_key_press_event(editor, event)
++                    #self.completer.on_key_press_event(editor, event)
+                     return True
+             elif etest(self.svc.key_close): # esc
+                 self.hide()
+@@ -955,8 +966,8 @@
+                 typed = self._get_typed()
+                 if not len(typed):
+                     self.hide()
+-                else:
+-                    self.completer.filter = typed
++                #else:
++                    #self.completer.filter = typed
+             elif len(event.string):
+                 info = self.svc.boss.get_service('language').get_info(self.document)
+                 if event.string not in info.word:
+@@ -967,7 +978,7 @@
+                         buf = self.editor.get_buffer()
+                         buf.move_mark(self.completer_start,
+                             buf.get_iter_at_offset(buf.props.cursor_position))
+-                        self.completer.filter = self._get_typed()
++                        #self.completer.filter = self._get_typed()
+                 return True
+         # we have to retest as the completer could just have been closed by
+         # a non word character but an attrib char should open it again
+@@ -994,7 +1005,7 @@
+                     #print "append typed", self._get_suggested(), self._get_typed()
+                     self._delete_suggested()
+                     self._append_typed(event.string)
+-                    self.completer.filter = self._get_typed()
++                    #self.completer.filter = self._get_typed()
+ 
+             
+             #if self.svc.opt('auto_char'):
+@@ -1292,7 +1303,7 @@
+             else:
+                 editor = self._editor_instance.create_doc(document.filename)
+             document.editor = editor
+-	    self._editor_view = editor.get_view()
++            self._editor_view = editor.get_view()
+             editor.inputter = PidaMooInput(self, editor, document)
+             self._editor_view.props.show_line_marks = True
+             editor.props.enable_bookmarks = False
+@@ -1559,7 +1570,7 @@
+             self.boss.get_service('notify').notify(
+                 data=_('No documentation found'), timeout=2000)
+             return
+-        pd = PidaDocWindow(documentation=docu)
++        #pd = PidaDocWindow(documentation=docu)
+         if not pd.valid:
+             self.notify_user(_("No documentation found"), 
+                              title=_("Show documentation"),
+diff -ruN pida-0.6.2.orig/pida/services/commander/commander.py pida-0.6.2/pida/services/commander/commander.py
+--- pida-0.6.2.orig/pida/services/commander/commander.py	2024-01-13 23:15:03.296555981 -0300
++++ pida-0.6.2/pida/services/commander/commander.py	2024-01-13 23:16:17.216550926 -0300
+@@ -18,7 +18,7 @@
+ from pida.core.events import EventsConfig
+ from pida.core.actions import ActionsConfig
+ from pida.core.options import OptionsConfig
+-
++from pida.ui.views import PidaView
+ 
+ 
+ # locale
+@@ -27,7 +27,6 @@
+ _ = locale.gettext
+ 
+ 
+-from .views import TerminalView, PythonView
+ 
+ class CommanderOptionsConfig(OptionsConfig):
+ 
+@@ -316,6 +315,299 @@
+         if (context == 'file-menu'):
+             self.svc.get_action('terminal-for-file').set_visible(kw['file_name'] is not None)
+ 
++class TerminalView(PidaView):
++
++    icon_name = 'terminal'
++
++    def create_ui(self):
++        self._pid = None
++        self._is_alive = False
++        self._last_cwd = None
++        self._hb = gtk.HBox()
++        self._hb.show()
++        self.add_main_widget(self._hb)
++        self._term = PidaTerminal(**self.svc.get_terminal_options())
++        #self._matchids = {}
++        #for match, callback in self.svc.features['matches']:
++        #    i = self._term.match_add(match)
++        #    if i < 0:
++        #        continue
++        #    self._term.match_set_cursor_type(i, gtk.gdk.HAND2)
++        #    self._matchids[i] = match
++        self._term.parent_view = self
++        self._term.connect('window-title-changed', self.on_window_title_changed)
++        self._term.connect('selection-changed', self.on_selection_changed)
++        #self._term.connect('button_press_event', self.on_button_pressed)
++        self._term.show()
++        self._create_scrollbar()
++        self._create_bar()
++        self._hb.pack_start(self._term)
++        if self.svc.opt('scrollbar_visible'):
++            self._hb.pack_start(self._scrollbar, expand=False)
++        self._hb.pack_start(self._bar, expand=False)
++        self.master = None
++        self.slave = None
++        self._init_matches()
++        #self.prep_highlights()
++
++    def _init_matches(self):
++        for args in self.svc.features['match']:
++            self._term.match_add_match(usr=self, *args)
++        for args in self.svc.features['match-callback']:
++            self._term.match_add_callback(usr=self, *args)
++        for args in self.svc.features['match-menu']:
++            self._term.match_add_menu(usr=self, *args)
++        for args in self.svc.features['match-menu-callback']:
++            self._term.match_add_menu_callback(usr=self, *args)
++
++    def _create_scrollbar(self):
++        self._scrollbar = gtk.VScrollbar()
++        self._scrollbar.set_adjustment(self._term.get_adjustment())
++        self._scrollbar.show()
++
++    def _create_bar(self):
++        self._bar = gtk.VBox(spacing=1)
++        self._stick_button = create_mini_button(
++            'pin', _('Automatic change to the current buffer\'s directory'),
++            None, toggleButton=True)
++        self._bar.pack_start(self._stick_button, expand=False)
++        self._copy_button = create_mini_button(
++            gtk.STOCK_COPY, _('Copy the selection to the clipboard'),
++            self.on_copy_clicked)
++        self._copy_button.set_sensitive(False)
++        self._bar.pack_start(self._copy_button, expand=False)
++        self._paste_button = create_mini_button(
++            gtk.STOCK_PASTE, _('Paste the contents of the clipboard'),
++            self.on_paste_clicked)
++        self._bar.pack_start(self._paste_button, expand=False)
++        self._title = gtk.Label()
++        self._title.set_alignment(0.5, 1)
++        self._title.set_padding(0, 3)
++        self._title.set_angle(270)
++        self._title.set_size_request(0,0)
++        self._bar.pack_start(self._title)
++        self._bar.show_all()
++
++    def execute(self, commandargs, env, cwd, eof_handler=None,
++                use_python_fork=False, parser_func=None):
++        title_text = ' '.join(commandargs)
++        self._is_alive = True
++        self._title.set_text(title_text)
++        if eof_handler is None:
++            self.eof_handler = self.on_exited
++        else:
++            def eof_wrapper(*args, **kwargs):
++                self._is_alive = False
++                eof_handler(self, *args, **kwargs)
++            self.eof_handler = eof_wrapper
++        if use_python_fork:
++            if parser_func == None:
++                self._python_fork(commandargs, env, cwd)
++            else:
++                self._python_fork_parse(commandargs, env, cwd, parser_func)
++        else:
++            self._vte_fork(commandargs, env, cwd)
++
++    def _python_fork_waiter(self, popen):
++        exit_code = popen.wait()
++        return exit_code
++
++    def _python_fork_complete(self, exit_code):
++        gobject.timeout_add(200, self.eof_handler, self._term)
++
++    def _python_fork_preexec_fn(self):
++        os.setpgrp()
++
++    def _python_fork(self, commandargs, env, cwd):
++        self._term.connect('commit', self.on_commit_python)
++        # TODO: Env broken
++        env = dict(os.environ)
++        env['TERM'] = 'xterm'
++        (master, slave) = os.openpty()
++        self.slave = slave
++        self.master = master
++        self._term.set_pty(master)
++        p = subprocess.Popen(commandargs, stdin=slave, stdout=slave,
++                             preexec_fn=self._python_fork_preexec_fn,
++                             stderr=slave, env=env, cwd=cwd, close_fds=True)
++        self._pid = p.pid
++        self._last_cwd = cwd
++        gobject.timeout_add(200, self._save_cwd)
++        t = AsyncTask(self._python_fork_waiter, self._python_fork_complete)
++        t.start(p)
++
++    def _python_fork_parse(self, commandargs, env, cwd, parser_func):
++        self._term.connect('commit', self.on_commit_python)
++        env = dict(os.environ)
++        env['TERM'] = 'xterm'
++        master, self.slave = os.openpty()
++        self._term.set_pty(master)
++        self.master, slave = os.openpty()
++        p = subprocess.Popen(commandargs, stdout=slave,
++                         stderr=subprocess.STDOUT, stdin=slave,
++                         close_fds=True)
++        self._pid = p.pid
++        self._last_cwd = cwd
++        gobject.timeout_add(200, self._save_cwd)
++        gobject.io_add_watch(self.master, gobject.IO_IN, 
++                                self._on_python_fork_parse_stdout, parser_func)
++        self._term.connect('key-press-event',
++                            self._on_python_fork_parse_key_press_event, self.master)
++
++    def _on_python_fork_parse_key_press_event(self, term, event, fd):
++        mapping = {
++                22: '\x7f',
++                98: "\x1bOA",
++                104:"\x1bOB",
++                100:"\x1bOD",
++                102:"\x1bOC",
++                }
++        os.write(fd, mapping.get(event.hardware_keycode, event.string))
++        return True
++
++    def _on_python_fork_parse_stdout(self, fd, state, parser = None):
++        data = os.read(fd,1024)
++        os.write(self.slave, data)
++        if parser != None:
++            parser(data)
++        return True
++
++    def _vte_env_map_to_list(self, env):
++        return ['%s=%s' % (k, v) for (k, v) in env.items()]
++
++    def _vte_fork(self, commandargs, env, cwd):
++        self._term.connect('child-exited', self.eof_handler)
++        self._pid = self._term.fork_command(commandargs[0], commandargs, env, cwd)
++        self._last_cwd = cwd
++        gobject.timeout_add(200, self._save_cwd) 
++
++    def close_view(self):
++        self.svc.boss.cmd('window', 'remove_view', view=self)
++
++    def on_exited(self, term):
++        self._is_alive = False
++        self._term.feed_text(_('Child exited')+'\r\n', '1;34')
++        self._term.feed_text(_('Press Enter/Space key to close.'))
++        self._term.connect('commit', self.on_press_any_key)
++
++    def can_be_closed(self):
++        self.kill()
++        return True
++
++    def kill(self):
++        if self._pid is not None:
++            try:
++                ostools.kill_pid(self._pid)
++            except (ostools.NoSuchProcess, ostools.AccessDenied):
++                self.svc.log.debug('PID %s has already gone' % self._pid)
++
++    def on_button_pressed(self, term, event):
++        if not event.button in [1,2] or \
++           not event.state & gtk.gdk.CONTROL_MASK:
++            return
++        line = int(event.y/self._term.get_char_height())
++        col = int(event.x/self._term.get_char_width())
++        chk = self._term.match_check(col, line)
++        if not chk:
++            return
++
++        (match, matchfun) = chk
++        if match and self._matchids.has_key(matchfun):
++            callbacks = self.svc.get_match_callbacks(self._matchids[matchfun])
++            for call in callbacks:
++                if call(self, event, match):
++                    return
++
++    def on_selection_changed(self, term):
++        self._copy_button.set_sensitive(self._term.get_has_selection())
++
++    def on_copy_clicked(self, button):
++        self._term.copy_clipboard()
++
++    def on_paste_clicked(self, button):
++        self._term.paste_clipboard()
++
++    def on_press_any_key(self, term, data, datalen):
++        if data == "\r" or data == " ":
++            self.close_view()
++
++    def on_commit_python(self, term, data, datalen):
++        if data == '\x03':
++            ostools.kill_pid(self._pid, 2)
++
++    def on_window_title_changed(self, term):
++        self._title.set_text(term.get_window_title())
++
++    def chdir(self, path):
++        """
++        Try to change into the new directory.
++        Used by pin terminals for example.
++        """
++        if ostools.get_cwd(self._pid) == path:
++            return
++        # maybe we find a good way to check if the term is currently
++        # in shell mode and maybe there is a better way to change
++        # directories somehow
++        # this is like kate does it
++        self._term.feed_child(u'cd %s\n' %path)
++
++    def _save_cwd(self):
++        try:
++            self._last_cwd = ostools.get_cwd(self._pid)
++            return True
++        except (ostools.NoSuchProcess, ostools.AccessDenied):
++            return False
++
++    def get_absolute_path(self, path):
++        """
++        Return the absolute path for path and the terminals cwd
++        """
++        try:
++            return ostools.get_absolute_path(path, self._pid)
++        except (ostools.NoSuchProcess, ostools.AccessDenied):
++            if self._last_cwd:
++                apath = os.path.abspath(os.path.join(self._last_cwd, path))
++                if os.path.exists(apath):
++                    return apath
++
++    @property
++    def is_alive(self):
++        return self._is_alive
++
++class PythonView(PidaView):
++
++    icon_name = 'terminal'
++    focus_ignore = True
++
++    def create_ui(self):
++        self.pid = None
++        self._box = gtk.HBox()
++        self._socket = gtk.Socket()
++        self._box.add(self._socket)
++        self._socket.show()
++        self._box.show()
++        self.add_main_widget(self._box)
++
++    def execute(self, file_=None, cwd=os.getcwd()):
++        commandargs = [
++            'bpython-gtk',
++            '--socket-id=%s' % self._socket.get_id(),
++            ]
++        if file_:
++            commandargs.extend(['-i', file_])
++        self.popen = p = subprocess.Popen(commandargs, cwd=cwd)
++        self._pid = p.pid
++
++    def can_be_closed(self):
++        self.kill()
++        return True
++
++    def kill(self):
++        if self._pid is not None:
++            try:
++                ostools.kill_pid(self._pid)
++            except ostools.NoSuchProcess:
++                self.svc.log_debug('PID %s has already gone' % self._pid)
+ 
+ # Service class
+ class Commander(Service):
+diff -ruN pida-0.6.2.orig/pida/services/filemanager/filemanager.py pida-0.6.2/pida/services/filemanager/filemanager.py
+--- pida-0.6.2.orig/pida/services/filemanager/filemanager.py	2024-01-13 23:15:03.299889314 -0300
++++ pida-0.6.2/pida/services/filemanager/filemanager.py	2024-01-13 23:16:29.836550062 -0300
+@@ -459,7 +459,7 @@
+         if (project_scope_count == 0):
+             separator.hide()
+         toolitem = None
+-        for proxy in self.svc.get_action('toolbar_hidden_menu').get_proxies():
++        for proxy in []:#self.svc.get_action('toolbar_hidden_menu').get_proxies():
+             if (isinstance(proxy, DropDownMenuToolButton)):
+                 toolitem = proxy
+                 break
+@@ -745,11 +745,7 @@
+         gtk.ToggleAction('toolbar_toggle_hidden',
+             _('Show Hidden Files'),
+             _('Show hidden files'),
+-            gtk.STOCK_SELECT_ALL),
+-        PidaDropDownMenuToolAction('toolbar_hidden_menu',
+-            None,
+-            _('Setup which kind of files should be hidden'),
+-            None),
++            gtk.STOCK_SELECT_ALL)
+     ]
+ 
+     accels = {
+diff -ruN pida-0.6.2.orig/pida/ui/actions.py pida-0.6.2/pida/ui/actions.py
+--- pida-0.6.2.orig/pida/ui/actions.py	1969-12-31 21:00:00.000000000 -0300
++++ pida-0.6.2/pida/ui/actions.py	2024-01-13 23:15:46.689886345 -0300
+@@ -0,0 +1,43 @@
++import gtk
++from pida.ui.dropdownmenutoolbutton import DropDownMenuToolButton
++
++class PidaMenuToolAction(gtk.Action):
++    """
++    Custom gtk.Action subclass for handling toolitems with a dropdown menu
++    attached.
++    """
++
++    __gtype_name__ = "PidaMenuToolAction"
++
++    def __init__(self, *args, **kw):
++        gtk.Action.__init__(self, *args, **kw)
++        self.set_tool_item_type(gtk.MenuToolButton)
++
++class PidaDropDownMenuToolAction(gtk.Action):
++    """
++    Custom gtk.Action subclass for handling toolitems with a dropdown menu
++    attached.
++    """
++
++    __gtype_name__ = "PidaDropDownMenuToolAction"
++
++    def __init__(self, *args, **kw):
++        gtk.Action.__init__(self, *args, **kw)
++        self.set_tool_item_type(DropDownMenuToolButton)
++        self._set_arrow = ((kw['label'] == None) or (kw['label'] == '')) and \
++                          (kw['stock_id'] == None)
++
++    def create_tool_item(self):
++        toolitem = gtk.Action.create_tool_item(self)
++        if (self._set_arrow == True):
++            toolitem.set_arrow()
++        return toolitem
++
++
++class PidaRememberToggle(gtk.ToggleAction):
++    """Remembers the state of the toggle on restart"""
++
++    __gtype_name__ = "PidaRememberToggle"
++
++    def __init__(self, *args, **kw):
++        gtk.ToggleAction.__init__(self, *args, **kw)
+diff -ruN pida-0.6.2.orig/pida/ui/languages.py pida-0.6.2/pida/ui/languages.py
+--- pida-0.6.2.orig/pida/ui/languages.py	2024-01-13 23:15:03.303222648 -0300
++++ pida-0.6.2/pida/ui/languages.py	2024-01-13 23:15:40.686553426 -0300
+@@ -1,6 +1,20 @@
+ import gtk
+-from pida.utils.languages import Documentation
++#from pida.utils.languages import Documentation
+ 
++class Documentation(InitObject):
++    """
++    Documentation of a object in the text
++    """
++    path = None
++    short = None
++    long_ = None
++
++    def __unicode__(self):
++        return self.long_ or self.short or ""
++
++    def __nonzero__(self):
++        # a documentation object is true if it holds any value
++        return bool(self.path) or bool(self.short) or bool(self.long_)
+ 
+ class PidaDocWindow(gtk.Window):
+     """
