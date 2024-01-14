@@ -8,8 +8,7 @@ pkgdesc="Flashy Synthesia Like Software For Linux, Windows and MacOS"
 arch=("x86_64")
 url="https://polymeilex.github.io/Neothesia/"
 license=("GPL")
-depends=("rust" "ffmpeg")
-makedepends=("cargo" "clang")
+depends=("rust" "ffmpeg" "clang")
 source=("https://github.com/PolyMeilex/Neothesia/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('80d27fc62daabd909df8184b60506331f5c9d14ffcbaf046ab7281d46146b06f')
 
