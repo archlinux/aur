@@ -1,18 +1,19 @@
 pkgbase = simpletex
 	pkgdesc = A free and convenient formula recognition software.
-	pkgver = 0.2.3
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://simpletex.cn/
 	arch = x86_64
 	arch = aarch64
 	license = unknown
 	makedepends = asar
+	makedepends = imagemagick
 	depends = electron13
 	depends = bash
 	provides = simpletex
-	source = https://gitee.com/simpletex/simple-tex-download/releases/download/v0.2.3/SimpleTex%20Setup%200.2.3.zip
+	source = https://gitee.com/simpletex/simple-tex-download/releases/download/v0.2.5/SimpleTex%20Setup%200.2.5.zip
 	source = simpletex.desktop
-	sha256sums = fa317e59155d94c0f96ac813b9b135951d58566b3272984ed882c47ba6a2f163
+	sha256sums = 60ad5c9eb4ae3be9d8822782f2f28a9978a164f9f9698cb02490b546c7b004a0
 	sha256sums = 4584142e974889a9759ebdb49b7f40afb710342a7f29e0c2d742854fdb636d42
 
 pkgname = simpletex

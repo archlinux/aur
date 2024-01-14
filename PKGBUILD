@@ -1,7 +1,7 @@
 # Maintainer: AronYoung <tfk6fkt at gmail dot com>
 pkgname=simpletex
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc="A free and convenient formula recognition software."
 arch=(x86_64 aarch64)
 url="https://simpletex.cn/"
@@ -12,8 +12,8 @@ provides=(simpletex)
 source=("https://gitee.com/$pkgname/simple-tex-download/releases/download/v$pkgver/SimpleTex%20Setup%20$pkgver.zip"
 	$pkgname.desktop
 )
-sha256sums=('fa317e59155d94c0f96ac813b9b135951d58566b3272984ed882c47ba6a2f163'
-	'4584142e974889a9759ebdb49b7f40afb710342a7f29e0c2d742854fdb636d42')
+sha256sums=('60ad5c9eb4ae3be9d8822782f2f28a9978a164f9f9698cb02490b546c7b004a0'
+            '4584142e974889a9759ebdb49b7f40afb710342a7f29e0c2d742854fdb636d42')
 
 prepare() {
 	bsdtar -xvf *.exe
