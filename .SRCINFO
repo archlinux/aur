@@ -1,0 +1,27 @@
+pkgbase = rtaudio5-exp
+	pkgdesc = rtaudio 5.2.0 Use when absolutely necessary! Cross-platform C++ classes for real-time audio I/O on Linux (ALSA, JACK, PulseAudio, OSS), macOS (CoreAudio, JACK), and Windows (DirectSound, ASIO, WASAPI).
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://github.com/thestk/rtaudio
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = make
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = libpulse
+	provides = rtaudio
+	provides = rtaudio5-exp
+	conflicts = rtaudio
+	conflicts = rtaudio-docs
+	conflicts = rtaudio5-exp
+	source = https://github.com/thestk/rtaudio/archive/refs/tags/5.2.0.tar.gz
+	md5sums = a4bce0860b7d8e1fb2f0df98bd655adb
+
+pkgname = rtaudio5-exp
