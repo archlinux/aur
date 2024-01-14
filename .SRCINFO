@@ -1,0 +1,17 @@
+pkgbase = appium-inspector-appimage
+	pkgdesc = Description of my project
+	pkgver = 2023.12.2
+	pkgrel = 1
+	url = https://github.com/appium/appium-inspector/
+	arch = x86_64
+	license = custom:Unlicense
+	depends = zlib
+	depends = hicolor-icon-theme
+	noextract = appium-inspector-appimage-2023.12.2.AppImage
+	options = !strip
+	source_x86_64 = appium-inspector-appimage-2023.12.2.AppImage::https://github.com/appium/appium-inspector/releases/download/v2023.12.2/Appium-Inspector-linux-2023.12.2.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/appium/appium-inspector/v2023.12.2/LICENSE
+	sha256sums_x86_64 = bb2415b621de39b8a9979f330cb8dd2fe86c76fa96fc26d0bc06e198dd62a262
+	sha256sums_x86_64 = afc4a40f552d48dd41e24d6e247a15a0712b69fc740811cb36a99e9bd98dff61
+
+pkgname = appium-inspector-appimage
