@@ -11,6 +11,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/lanthora/candy/archive/refs
 sha256sums=('a2cbfdcf2350ee41bfe388a9140c3cf5ef76da592ee4ae5ac20a7841fd38dc16')
 makedepends=('cmake' 'make' 'pkgconf' 'gcc' 'git' 'spdlog')
 depends=('zlib' 'fmt' 'glibc' 'gcc-libs' 'openssl' 'libconfig' 'uriparser')
+depends_aarch64=('spdlog')
+depends_armv7h=('spdlog')
 backup=('etc/candy.conf')
 
 build() {
