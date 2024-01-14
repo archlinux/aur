@@ -1,0 +1,17 @@
+pkgbase = feeluown-qqmusic-git
+	pkgdesc = feeluown qqmusic plugin
+	pkgver = r80.g4b21ae9
+	pkgrel = 1
+	url = https://github.com/feeluown/feeluown-qqmusic
+	arch = any
+	groups = feeluown-full
+	license = GPL3
+	makedepends = python-setuptools
+	depends = feeluown-git
+	depends = python-marshmallow
+	depends = python-requests
+	provides = feeluown-qqmusic
+	source = git+https://github.com/feeluown/feeluown-qqmusic.git
+	sha512sums = SKIP
+
+pkgname = feeluown-qqmusic-git
