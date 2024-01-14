@@ -14,7 +14,7 @@ source=(
   'https://raw.githubusercontent.com/pimterry/notes/latest-release/notes.bash_completion'
   'https://raw.githubusercontent.com/pimterry/notes/latest-release/_notes'
 )
-sha256sums=('87466c25d8d93606e53ad6cc5770d8ac66cef4e3ec87129c10ab2bb04190fd50'
+sha256sums=('65321a9cd0b3c27d3ddafa9d623716151043d7e9132456175968b567b4e2b3ea'
             '4a33a0d9e038879186656984e778fbdd8a992f79e212d760c5a79b8ebf3a7ab4'
             '8a4177d52a856dc940832e40702f971e1ae24918999502b81eea1cad79c3274a')
 
