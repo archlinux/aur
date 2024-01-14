@@ -3,7 +3,7 @@
 
 _crate="probe-rs"
 pkgname="probe-rs"
-pkgver=0.21.1
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='A collection of on chip debugging tools to communicate with microchips.'
 url='https://github.com/probe-rs/probe-rs'
@@ -12,8 +12,8 @@ license=('Apache' 'MIT')
 depends=('gcc-libs' 'libusb' 'libftdi' 'openssl' 'systemd-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/probe-rs/0.21.1/download")
-sha512sums=('d9b85f1c52a054ff8d65f1c8527e693f13f07d9e767bdd5894d6d48c52ba35ba519f9aaf2da321474a4ca12d182f997c526bc30f06805b6293d40a8d0c2da2eb')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/probe-rs/0.22.0/download")
+sha512sums=('b1bacd5c38dcfbb9fdc3f21ee7224e1ab1d72498535b924e811b50c21c97d5e71648544ff5f716299082ed862187c75f1af21f2a58f13d2a3bb8256fb38e1f18')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
