@@ -2,10 +2,10 @@
 # -*- sh -*-
 
 pkgname='most-snapshot'
-_pkgname='most'
+_pkgname="${pkgname/-snapshot/}"
 pkgver='5.2.0'
 _prever='5.2.0'
-pkgrel='4'
+pkgrel='5'
 epoch='1'
 pkgdesc="A terminal pager similar to ‘more’ and ‘less’ (latest development snapshot)"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -20,14 +20,12 @@ options=('lto')
 # Taken from https://jedsoft.org/snapshots/
 md5sums=('9677a974b85ca60c05f2c86063316faa')
 
-prepare() {
+build() {
+  cd "${srcdir}/${_pkgname}-${_prever}"
+
   # RFC-0023
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-}
-
-build() {
-  cd "${srcdir}/${_pkgname}-${_prever}"
 
   ./configure --prefix=/usr --sysconfdir=/etc
   make
