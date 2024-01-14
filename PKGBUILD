@@ -4,7 +4,7 @@
 
 pkgname=nncp
 pkgver=8.10.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
 arch=('aarch64' 'x86_64')
@@ -12,7 +12,6 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 options=('lto')
-#source=("git://git.cypherpunks.ru/nncp.git#commit=$_commit")
 source=("http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
         "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.asc"
         nncp.sysusers
@@ -33,7 +32,11 @@ install=nncp.install
 backup=(etc/nncp/nncp.hjson)
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
 
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
@@ -48,7 +51,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
 
   export PREFIX="/usr"
   export CFGPATH="/etc/nncp/nncp.hjson"
@@ -58,18 +61,18 @@ package() {
 
   ./install
 
-  install -Dm0644 "$srcdir"/nncp.sysusers \
-                    "$pkgdir"/usr/lib/sysusers.d/nncp.conf
-  install -Dm0644 "$srcdir"/nncp.tmpfiles \
-                    "$pkgdir"/usr/lib/tmpfiles.d/nncp.conf
+  install -Dm0644 "$srcdir/nncp.sysusers" \
+                    "$pkgdir/usr/lib/sysusers.d/nncp.conf"
+  install -Dm0644 "$srcdir/nncp.tmpfiles" \
+                    "$pkgdir/usr/lib/tmpfiles.d/nncp.conf"
 
   # TODO: nncp-caller
   # TODO: nncp-toss
   # TODO: nncp-check
   for unit in nncp-{daemon,uucp@}.service \
               nncp-uucp.socket; do
-    install -Dm0644 "$srcdir"/$unit \
-                      "$pkgdir"/usr/lib/systemd/system/$unit
+    install -Dm0644 "$srcdir/$unit" \
+                      "$pkgdir/usr/lib/systemd/system/$unit"
   done
 }
 
