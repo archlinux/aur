@@ -20,7 +20,7 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
 pkgver="${_pkgver}"
-pkgrel=4
+pkgrel=5
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Trains in Praha public transport reagion (PID)."
 arch=(any)
 license=('custom')
@@ -55,6 +55,7 @@ provides=(
 
 replaces=(
   "idos-timetable-data-chaps-trains-pid-20${_prevyear}"
+  "idos-timetable-data-chaps-trains-pid-20${_prevyear}-latest"
 )
 
 conflicts=(
