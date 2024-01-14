@@ -1,13 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-_pkgname='hiddify-next'
-
 # Maintainer: Meow King <mr.meowking@anche.no>
+_pkgname='hiddify-next'
 pkgname="hiddify-next-appimage"
-pkgver="0.12.3"
+pkgver="0.13.6"
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free. "
 arch=('any')
@@ -19,7 +13,7 @@ conflicts=('hiddify-next')
 source=("https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
         "hiddify-next-appimage.desktop"
         "LICENSE.md")
-sha256sums=('7a9c0864c78680827215bc38da8ba9688db015abd8d33ab963535a13b73bafbd'
+sha256sums=('eb1493185e386923ca940078d3b7175d24e8fe860bb87615a3da3d077400cc45'
             '480389ec46cb38845fda0430c8bd4732732722b1ec62681f608b240ede1e0aea'
             'f609d73370ca62925ba8c796afeeb7fb42f4a1569124f84cb25b7026c026d78a')
 
