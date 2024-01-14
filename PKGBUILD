@@ -4,7 +4,7 @@
 pkgname=('jed-git')
 _pkgname="${pkgname/-git/}"
 pkgver='0.99.20.r180.g68f0c75'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Powerful scriptable editor designed for use by programmers (built from latest git commit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://www.jedsoft.org/jed/'
@@ -34,10 +34,6 @@ prepare() {
     -e "s|\(^all.*\)|\1 xjed rgrep getmail|" \
     -e "s|..DEST.*doc|$pkgdir/usr/share/doc/$pkgname|g" \
     -i src/Makefile.in
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
 }
 
 pkgver() {
@@ -56,6 +52,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
 
   ./configure --prefix=/usr JED_ROOT=/usr/share/jed
 
