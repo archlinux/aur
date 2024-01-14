@@ -2,9 +2,9 @@
 # Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
 
-pkgname=bc-gh
+pkgname='bc-gh'
 pkgver=6.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of dc and POSIX bc with GNU extensions'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/gavinhoward/bc'
@@ -27,11 +27,12 @@ sha256sums=(
 )
 validpgpkeys=('FF360647C7A7147F27DAAEC1B132F881C306590A')
 
-_ltoflags='-flto=auto'
-: "${LTOFLAGS:=$_ltoflags}"
-
 build() {
   cd "bc-$pkgver"
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
 
   env CFLAGS="$CFLAGS -O3" \
     PREFIX=/usr ./configure.sh -p GNU -e -G -sbc.banner -sdc.tty_mode
@@ -50,12 +51,12 @@ package() {
   DESTDIR="$pkgdir" make install
 
   # If we have a tty, tell the user what we are doing
-  test -t 1 && _verbose='v' || _verbose=''
+  test -t 1 && _v='v' || _v=''
 
-  install "-${_verbose}Dm0644" LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  install "-${_v}Dm0644" LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
   for _doc in {NEWS,NOTICE,README}.md; do
-    install "-${_verbose}Dm0644" "$_doc" "$pkgdir/usr/share/doc/$pkgname/$_doc"
+    install "-${_v}Dm0644" "$_doc" "$pkgdir/usr/share/doc/$pkgname/$_doc"
   done
 }
 
