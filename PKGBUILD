@@ -1,18 +1,17 @@
 # Maintainer: Ben Mezger <me at benmezger dot nl>
 _pkgname=gitmux
 pkgname=$_pkgname-git
-pkgver=r70.5479145
+pkgver=r72.b821624
 pkgrel=1
 pkgdesc="Git in your tmux status bar"
-arch=('x86_64')
-url="https://github.com/arl/gitmux"
+arch=('x86_64' 'i686' 'aarch64')
+Url="https://github.com/arl/gitmux"
 license=('MIT')
-makedepends=('git' 'go')
-depends=('tmux')
+makedepends=('git' 'go' 'tmux')
 source=('git+https://github.com/arl/gitmux.git')
 md5sums=('SKIP')
-provides=($pkgname)
-conflicts=($_pkgname)
+provides=('gitmux-git')
+conflicts=('gitmux')
 
 pkgver() {
         cd "$srcdir/${_pkgname}"
