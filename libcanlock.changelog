@@ -1,0 +1,47 @@
+3.3.0      2021-11-24
+           Feature release to make the package more useful for servers
+           Bugfix: canlock-mhp utility no longer hangs if field name was
+            not found
+           Bugfix: Potential NULL-pointer dereference fixed in canlock
+            utility (Reported by Dennis Preiser)
+           Bugfix: Two memory leaks fixed in canlock-hfp utility
+            (Reported by Dennis Preiser)
+           Bugfix: Multiple bugs in test suite fixed, where return
+            values from library functions were not handled correctly
+            (Reported by Dennis Preiser)
+           Bugfix: Two memory leaks fixed in test suite for legacy API
+            (Found by Valgrind)
+           Bugfix: NAME sections of cl_clear_secret(), cl_get_lock(),
+            cl_split() and cl_verify() man pages fixed (Reported by
+            Julien Elie)
+           Bugfix: Typos in canlock-mhp, cl_get_key() and cl_get_lock()
+            man pages fixed (Reported by Julien Elie)
+           Bugfix: Typos in comments and documentation fixed (Reported
+            by Urs Janssen)
+           Separate library libcanlock-hp added to execute the header
+            parsers (for operating systems with POSIX API)
+           New libcanlock-hp API function to unfold header fields added
+            (Suggested by Julien Elie)
+           Manual pages added for the new library
+           Test suite extended for the new library. Tests for parser
+            functions are skipped by default (because they require the
+            installed parser utilities)
+           New libcanlock API function cl_verify_multi() added to check
+            multiple keys against multiple locks
+            Library API and ABI are backward compatible
+           Test suite extended: It now tests cl_verify_multi() too
+           canlock utility now supports the option "-m" to check
+            multiple keys against multiple locks
+           Option "-m" added to SYNOPSIS section of canlock man page
+            (Suggested by Marcel Logen)
+           Example programs added to the "examples" and "hp/examples"
+            subdirectories (Suggested by Julien Elie)
+           Documentation for RFC 8315 Section 4 added to cl_get_key()
+            and cl_get_lock() man pages (Suggested by Julien Elie)
+           Paragraph for optional User-ID (<uid> in RFC 8315 notation)
+            added to cl_get_key() and cl_get_lock() man pages (Suggested
+            by Julien Elie)
+           Examples for minimum size of local secret added to cl_get_key()
+            and cl_get_lock() man pages (Suggested by Julien Elie)
+           Removed some redundant notes from the output of "canlock -h"
+            (Suggested by Julien Elie)
