@@ -1,6 +1,6 @@
 pkgbase = python-python-ffmpeg
 	pkgdesc = Python binding for FFmpeg which provides sync and async APIs
-	pkgver = 2.0.9
+	pkgver = 2.0.10
 	pkgrel = 1
 	url = https://github.com/jonghwanhyeon/python-ffmpeg
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-python-ffmpeg
 	conflicts = python-ffmpeg
 	conflicts = python-ffmpeg-python
 	options = !emptydirs
-	source = python-ffmpeg-2.0.9.tar.gz::https://github.com/jonghwanhyeon/python-ffmpeg/archive/v2.0.9.tar.gz
-	sha256sums = 73c0f98fe0a54e9484b061013bc95a3e5762fff24e8d81e605f185919f5a5e0e
+	source = python-ffmpeg-2.0.10.tar.gz::https://github.com/jonghwanhyeon/python-ffmpeg/archive/v.2.0.10.tar.gz
+	sha256sums = 3c1cfca7658ba288e854921254409e3105e56db48c9c50af2fef34d8a690e520
 
 pkgname = python-python-ffmpeg

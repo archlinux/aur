@@ -9,7 +9,7 @@
 _module='python-ffmpeg'
 _pkgname="python-$_module"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 pkgdesc="Python binding for FFmpeg which provides sync and async APIs"
 url="https://github.com/jonghwanhyeon/python-ffmpeg"
@@ -54,8 +54,8 @@ _main_stable() {
   _pkgver="${pkgver%%.r*}"
   _pkgsrc="$_module-${_pkgver:?}"
   _pkgext="tar.gz"
-  source+=("$_pkgsrc.$_pkgext"::"$url/archive/v$_pkgver.$_pkgext")
-  sha256sums+=('73c0f98fe0a54e9484b061013bc95a3e5762fff24e8d81e605f185919f5a5e0e')
+  source+=("$_pkgsrc.$_pkgext"::"$url/archive/v.$_pkgver.$_pkgext")
+  sha256sums+=('3c1cfca7658ba288e854921254409e3105e56db48c9c50af2fef34d8a690e520')
 
   pkgver() {
     echo "${_pkgver:?}"
