@@ -2,7 +2,7 @@
 
 pkgname="espeak-phonemizer"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Uses ctypes and libespeak-ng to transform test into IPA phonemes "
 url="https://github.com/rhasspy/espeak-phonemizer"
 license=("GPL3")
@@ -21,4 +21,5 @@ build(){
 package(){
  cd "$pkgname-$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
+ rm -rf "$pkgdir/usr/lib/python3.11/site-packages/tests/"{__init__.py,__pycache__/__init__.cpython-311.pyc,__pycache__/__init__.cpython-311.opt-1.pyc}
 }

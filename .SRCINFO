@@ -1,7 +1,7 @@
 pkgbase = espeak-phonemizer
 	pkgdesc = Uses ctypes and libespeak-ng to transform test into IPA phonemes
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhasspy/espeak-phonemizer
 	arch = any
 	license = GPL3
