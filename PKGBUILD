@@ -2,7 +2,7 @@
 
 pkgname=python-outlines
 _name=${pkgname#python-}
-pkgver=0.0.23
+pkgver=0.0.24
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
@@ -10,6 +10,8 @@ url="https://github.com/outlines-dev/outlines"
 license=(Apache)
 depends=(
   python
+  python-cloudpickle
+  python-diskcache
   python-fastapi
   python-interegular
   python-jinja
@@ -19,11 +21,11 @@ depends=(
   python-numba
   python-numpy
   python-openai
-  python-perscache
   python-pydantic
   python-pytorch
   python-referencing
   python-requests
+  python-tiktoken
   python-transformers
 )
 makedepends=(
@@ -36,13 +38,16 @@ checkdepends=(
   python-pytest
   python-responses
 )
+optdepends=(
+  'python-llama-cpp: llama.cpp backend'
+)
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   "fix-package-discovery.patch"
 )
 sha256sums=(
-  '094f63276f7920b5424d43f3b394a4692dde6c4b4ead6cd3b9cf13b0eba3cf6c'
+  'b50e083a86e021edb6d32800ea0334250489980577880272b8c79df15b7e203e'
   '9140b5e8436f3f75b02f74f6dabb3862f21e93e16c87e6d9a9e6209ec53a8756'
 )
 
@@ -64,14 +69,29 @@ build() {
 check() {
   cd "$_archive"
 
-  # Tests fail due to the following import error:
-  #   ImportError: /usr/lib/python3.11/site-packages/tokenizers/tokenizers.cpython-311-x86_64-linux-gnu.so: undefined symbol: OnigDefaultSyntax
+  _ignored_tests=(
+    # Fails due to the following import error:
+    #   ImportError: /usr/lib/python3.11/site-packages/tokenizers/tokenizers.cpython-311-x86_64-linux-gnu.so: undefined symbol: OnigDefaultSyntax
+    tests/models/test_transformers.py
+    tests/generate/test_integration_transfomers.py
+
+    # Requires python-llama-cpp which I'm currently unable to install.
+    tests/models/test_llama_cpp.py
+  )
+  _ignored_tests_arg=$(printf " --ignore=%s" "${_ignored_tests[@]}")
+
+  _deselected_tests=(
+    # Fails due to the following import error:
+    #   ImportError: /usr/lib/python3.11/site-packages/tokenizers/tokenizers.cpython-311-x86_64-linux-gnu.so: undefined symbol: OnigDefaultSyntax
+    tests/test_function.py::test_function_basic
+    tests/fsm/test_regex.py::test_create_fsm_index_tokenizer
+  )
+  _deselected_tests_arg=$(printf " --deselect=%s" "${_deselected_tests[@]}")
+
+  # shellcheck disable=SC2086
   pytest \
-    --ignore tests/models/test_llama_cpp.py \
-    --ignore tests/models/test_transformers.py \
-    --ignore tests/generate/test_integration_transfomers.py \
-    --deselect tests/test_function.py::test_function_basic \
-    --deselect tests/fsm/test_regex.py::test_create_fsm_index_tokenizer
+    $_ignored_tests_arg \
+    $_deselected_tests_arg
 }
 
 package() {
