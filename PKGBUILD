@@ -1,23 +1,23 @@
-# Maintainer: Yigit Dallilar <yigit.dallilar@gmail.com>
+# Contributor: Yigit Dallilar <yigit.dallilar@gmail.com>
 
 pkgname=astroimagej
-pkgver=5.1.0
-pkgrel=2
+pkgver=5.3.2
+pkgrel=1
 pkgdesc="a simple and powerful tool for astronomical image analysis and precise photometry"
 arch=('x86_64')
 url="http://www.astro.louisville.edu/software/astroimagej/"
-depends=('java-environment-common')
+depends=('java-runtime')
 license=('GPL')
-source=("${url}installation_packages/AstroImageJ_v${pkgver}.00_linux_x64_java18.tar.gz"
+source=("${url}installation_packages/AstroImageJ-v${pkgver}.00-linux-x86_64Bit.tar.gz"
         "aij" "astroimagej.desktop" "aij_image_display_w400.png")
-sha256sums=('b0c92192dabac595377334cc9d5cb3b11318b5693ebf0484879077af23f90b0e'
+sha256sums=('1ca49ff3f343f03624601c4376b0dfae688f3502110d4ebc24d1559c88db82cd'
             '402dff16ffd0cb1c12b091bddbb75621a245c83632675f6dacd3ffb76fc3f155'
             'aa98ef015ffcbb304a972112f88bb929d73c9675d196a4717926da01785dd771'
             '2b0b4541f8be3ea8c13f4428d8a6aaa95726937c59df82762adf2bb939235930')
 
 package() {
 	cd ${srcdir}
-	tarfile="AstroImageJ_v${pkgver}.00_linux_x64_java18.tar.gz"
+	tarfile="AstroImageJ-v${pkgver}.00-linux-x86_64Bit.tar.gz"
 
 	mkdir ${pkgdir}/opt
 	mkdir -p "$pkgdir/usr/share/applications"
