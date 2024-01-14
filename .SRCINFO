@@ -1,12 +1,14 @@
 pkgbase = python-otr
 	pkgdesc = Off-The-Record Messaging protocol implementation for Python
 	pkgver = 2.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/AGProjects/python3-otr
 	arch = aarch64
 	arch = x86_64
 	license = LGPL-2.1+
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-application
 	depends = python-cryptography
 	depends = python-gmpy2
@@ -14,7 +16,7 @@ pkgbase = python-otr
 	provides = python3-otr
 	conflicts = python3-otr
 	replaces = python3-otr
-	source = https://github.com/AGProjects/python3-otr/archive/2.0.1.tar.gz
+	source = python-otr-2.0.1.tar.gz::https://github.com/AGProjects/python3-otr/archive/2.0.1.tar.gz
 	sha512sums = 3fc0a49b30e752f77be7533744a418a8471486a2860f50b7d9157f2bc25fe593cf4b486ae856cb3944695f61466a87e1ca34cdaf48eea7ef9ba2feaef78332c7
 
 pkgname = python-otr
