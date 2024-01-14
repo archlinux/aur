@@ -1,6 +1,6 @@
 pkgbase = git-ssh-git
 	pkgdesc = An SSH key manager for git
-	pkgver = r255.c72efd3
+	pkgver = r301.e08278a
 	pkgrel = 1
 	url = https://github.com/pyamsoft/git-ssh.git
 	arch = any
