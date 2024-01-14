@@ -13,7 +13,7 @@ depends=('perl>=5.008' 'perl-pgplot' 'perl-tk' 'perl-tk-zinc')
 makedepends=('perl-module-build')
 checkdepends=('perl-test-deep>=0' 'perl-test-number-delta>=0')
 url='https://metacpan.org/release/Starlink-AST'
-source=("http://search.cpan.org/CPAN/authors/id/G/GS/GSB/Starlink-AST-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/G/GS/GSB/Starlink-AST-${pkgver}.tar.gz")
 md5sums=('688173a0c9f9ba4debd36f864abd6b93')
 sha512sums=('c1f64b19ab50f3704a440208b0c82bfaaf10322c807f817dc52d742d2c1fdf0087ae07f392c97f277fa18862ca9ec102d219e13385cec1bd6f726c79a04d8d68')
 _distdir="Starlink-AST-${pkgver}"
