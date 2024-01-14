@@ -1,15 +1,19 @@
 pkgbase = zuu
 	pkgdesc = A git hook test runner for rust programer
-	pkgver = 5.0.6
-	pkgrel = 2
+	pkgver = 6.0.0
+	pkgrel = 1
 	url = https://github.com/taishingi/zuu
 	arch = any
 	license = GPL3
+	makedepends = cargo
 	depends = rustup
+	depends = git-graph
+	depends = git-igitt
+	depends = rsbadges
 	depends = wget
 	depends = git
 	provides = zuu
-	source = 5.0.6.tar.gz::https://github.com/taishingi/zuu/archive/refs/tags/5.0.6.tar.gz
-	sha256sums = ccd14124a983117b416cb1e9a2d2fa7eb6676adcdfe8662b7de34abd98e3d75e
+	source = zuu-6.0.0.tar.gz::https://static.crates.io/crates/zuu/zuu-6.0.0.crate
+	sha256sums = c3c993b8c2e8bc17091b0b07f26ac837bf842453a0af87fad144ceeb13e32952
 
 pkgname = zuu
