@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/gilbo/cork/"
 license=('LGPL3')
 depends=('gmp')
-makedepends=('clang')
-source=("git://github.com/gilbo/${_gitname}.git")
+makedepends=('clang' 'git')
+source=("git+https://github.com/gilbo/${_gitname}.git")
 md5sums=('SKIP')
 
 pkgver() {
