@@ -5,7 +5,7 @@
 
 pkgbase=bcc-git
 pkgname=('bcc-git' 'bcc-tools-git' 'python-bcc-git')
-pkgver=0.11.0.r951.gc65446b7
+pkgver=0.11.0.dev0+r1564.g3d21000a
 pkgrel=1
 pkgdesc='BPF Compiler Collection - latest git code'
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 	( set -o pipefail
-	git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+	git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/dev0+r\1/;s/-/./g' \
 	|| printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }

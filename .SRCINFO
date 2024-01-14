@@ -1,6 +1,6 @@
 pkgbase = bcc-git
 	pkgdesc = BPF Compiler Collection - latest git code
-	pkgver = 0.11.0.r951.gc65446b7
+	pkgver = 0.11.0.dev0+r1564.g3d21000a
 	pkgrel = 1
 	url = https://github.com/iovisor/bcc
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgname = bcc-git
 	optdepends = linux-hardened-headers: build modules against the HARDENED kernel
 	optdepends = bcc-tools: Python utilites using the BCC library
 	optdepends = python-bcc: Python 3 bindings for BCC
-	provides = bcc=0.11.0.r951.gc65446b7
-	provides = libbcc=0.11.0.r951.gc65446b7
+	provides = bcc=0.11.0.dev0+r1564.g3d21000a
+	provides = libbcc=0.11.0.dev0+r1564.g3d21000a
 	conflicts = bcc
 	conflicts = libbcc
 
@@ -40,7 +40,7 @@ pkgname = bcc-tools-git
 	depends = ethtool
 	optdepends = python-bcc-git: Python bindings for BCC
 	optdepends = luajit: Lua bindings for BCC
-	provides = bcc-tools=0.11.0.r951.gc65446b7
+	provides = bcc-tools=0.11.0.dev0+r1564.g3d21000a
 	conflicts = bcc-tools
 
 pkgname = python-bcc-git
@@ -50,5 +50,5 @@ pkgname = python-bcc-git
 	depends = python
 	optdepends = python-netaddr: Network address representation and manipulation
 	optdepends = python-pyroute2: Netlink and Linux network configuration
-	provides = python-bcc=0.11.0.r951.gc65446b7
+	provides = python-bcc=0.11.0.dev0+r1564.g3d21000a
 	conflicts = python-bcc
