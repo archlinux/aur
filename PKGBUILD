@@ -2,7 +2,7 @@
 # Contributor: David Baer <david.a.baer@gmail.com>
 
 pkgname=sqliteodbc
-pkgver=0.9999
+pkgver=0.99991
 pkgrel=1
 pkgdesc="ODBC driver for SQLite"
 arch=('i686' 'x86_64' 'aarch64')
@@ -33,5 +33,5 @@ package() {
     make -j1 DESTDIR="${pkgdir}/" install
     install -D -m644 license.terms "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('bbf5418e167b0e9595afccab079f4de0')
-sha512sums=('ad5fcf9ef55bc4657669298c837dbea15e340660c0cd69df25d94919c6713803c0fe6ad55177cef3e6f7615174a7d5033d19c6d69307abb2e27a32932e4ff772')
+md5sums=('f828ce0248b752a7bc9a7f0661a90171')
+sha512sums=('ba45b4646083e577e7c54995e0d929fbc2a3bc4ed1667e4422521b6c035f3775f7c5d0ae9985808b8680bc9c2b5b79606289fd047a8805c82ce34d5631239285')
