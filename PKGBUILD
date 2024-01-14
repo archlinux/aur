@@ -3,7 +3,7 @@
 pkgname=forkstat
 pkgdesc="logs process fork(), exec() and exit() activity."
 
-pkgver=0.03.01
+pkgver=0.03.02
 pkgrel=1
 
 arch=('x86_64')
@@ -28,4 +28,4 @@ package() {
 
 # vim: sts=2 sw=2 ts=2 et
 
-sha256sums=('50aa399468ba9b6729bf6eed4a746b447412bb1991228b4ee89a29c05d0871b9')
+sha256sums=('eaa4d69d674cf8871db01272d1d7d82005cc5595f83ed948e5fd24d571c78cd2')
