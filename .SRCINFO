@@ -1,15 +1,15 @@
 pkgbase = minetest-whynot
 	pkgdesc = Aims to get all existing high quality mods working together
-	pkgver = 2022.04.20
+	pkgver = 2023.12.22
 	pkgrel = 1
 	url = https://content.minetest.net/packages/bell07/whynot_game/
 	arch = any
 	license = GPLv3
 	makedepends = unzip
 	depends = minetest-common
-	noextract = whynot_game-2022.04.20.zip
+	noextract = whynot_game-2023.12.22.zip
 	options = !strip
-	source = whynot_game-2022.04.20.zip::https://content.minetest.net/packages/bell07/whynot_game/releases/11899/download/
-	sha256sums = 5d7eb997bfc3f649972071044db123b4f6f626210f4ae770d95b242e9399ea7b
+	source = whynot_game-2023.12.22.zip::https://content.minetest.net/packages/bell07/whynot_game/releases/22529/download/
+	sha256sums = 0cfae9a7433f73371f547aecd9c8dfce2894334775ee5cc5ec1eacce0e5b2f7c
 
 pkgname = minetest-whynot
