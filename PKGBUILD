@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://github.com/appium/appium-inspector/"
 license=('Apache Version 2.0')
 depends=('zlib' 'hicolor-icon-theme')
-makedepends=('grep' 'curl' 'cut')
+makedepends=('grep' 'curl' 'coreutils')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 
