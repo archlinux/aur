@@ -94,3 +94,4 @@ package() {
     install -dm 1777 "${pkgdir}/var/log/teamviewer"
     ln -s /var/log/teamviewer "${pkgdir}/opt/teamviewer/logfiles"
 }
+
