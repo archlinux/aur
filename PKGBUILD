@@ -1,13 +1,13 @@
 # Maintainer: TheFeelTrain <thefeeltrain@thefeeltrain.com>
 pkgname=(league-rpc-linux-git)
 _srcname=${pkgname%-git}
-pkgver=0.0.8.r0.g2759805
+pkgver=1.0.2.r0.g1b9acb3
 pkgrel=1
 pkgdesc="League of Legends Discord Rich Presence for Linux (WINE / Lutris)"
 arch=('x86_64')
 url="https://github.com/Its-Haze/league-rpc-linux"
 license=('GPL3')
-makedepends=('git' 'python-pypresence' 'python-psutil' 'python-requests' 'pyinstaller')
+makedepends=('git' 'python-pypresence' 'python-psutil' 'python-requests' 'pyinstaller' 'python-nest-asyncio' 'python-lcu-driver')
 provides=('league-rpc-linux')
 conflicts=('league-rpc-linux')
 source=("$_srcname"::'git+https://github.com/Its-Haze/league-rpc-linux.git')
