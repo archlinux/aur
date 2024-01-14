@@ -23,7 +23,7 @@ depends=(
 )
 
 source=(
-    "https://git.bhasher.com/Bhasher/focus/releases/download/v${pkgver}/focus_${pkgver}_amd64.deb"
+    "focus_${pkgver}_amd64.deb::https://git.bhasher.com/Bhasher/focus/releases/download/v${pkgver}/focus_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://git.bhasher.com/Bhasher/focus/raw/branch/master/LICENSE.md"
 )
 
@@ -38,10 +38,10 @@ build() {
 
 package() {
     install -Dm755 "${srcdir}/usr/bin/focus" "${pkgdir}/usr/bin/focus"
-    install -Dm644 "${srcdir}/usr/share/applications/focus.desktop" "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/applications/focus.desktop" "${pkgdir}/usr/share/applications/focus.desktop"
     for _icons in 32x32 128x128 256x256@2;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/focus.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps"
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/focus.png"
     done
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
