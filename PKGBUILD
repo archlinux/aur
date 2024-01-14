@@ -29,7 +29,7 @@ options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}-${_subver}-x86_64.pkg.tar.zst::https://download.opensuse.org/repositories/network:/retroshare/Arch_Community_standard/x86_64/${_pkgname}-gui-${pkgver}-${_subver}-x86_64.pkg.tar.zst"
                "${pkgname}-${pkgver}-${_subver}-x86_64.pkg.tar.zst.sig::https://download.opensuse.org/repositories/network:/retroshare/Arch_Community_standard/x86_64/${_pkgname}-gui-${pkgver}-${_subver}-x86_64.pkg.tar.zst.sig")
 
-b2sums_x86_64=('cd76daaa622f060565bd1a075a8bac11aa0f378bf803636ec6043e8f56104e43a89fd66cc66fc90f2d77d1112c8f639f51699dcd83840d5ced515937abf71a49'
+b2sums_x86_64=('f0036e6390d22b8a5d85a7ea03f2689f61bcab329fd399c45888650f65cd618e42448d973b9a66be078f7769e8d12e4b51469c2397e19ba6f7d936dfe6f7518e'
                'SKIP')
 
 # Import key with:

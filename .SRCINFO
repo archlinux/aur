@@ -26,7 +26,7 @@ pkgbase = retroshare-bin
 	validpgpkeys = 0080689BE757A876CB7DC26962EB1A0917280DDF
 	source_x86_64 = retroshare-bin-0.6.7-20231128-x86_64.pkg.tar.zst::https://download.opensuse.org/repositories/network:/retroshare/Arch_Community_standard/x86_64/retroshare-gui-0.6.7-20231128-x86_64.pkg.tar.zst
 	source_x86_64 = retroshare-bin-0.6.7-20231128-x86_64.pkg.tar.zst.sig::https://download.opensuse.org/repositories/network:/retroshare/Arch_Community_standard/x86_64/retroshare-gui-0.6.7-20231128-x86_64.pkg.tar.zst.sig
-	b2sums_x86_64 = cd76daaa622f060565bd1a075a8bac11aa0f378bf803636ec6043e8f56104e43a89fd66cc66fc90f2d77d1112c8f639f51699dcd83840d5ced515937abf71a49
+	b2sums_x86_64 = f0036e6390d22b8a5d85a7ea03f2689f61bcab329fd399c45888650f65cd618e42448d973b9a66be078f7769e8d12e4b51469c2397e19ba6f7d936dfe6f7518e
 	b2sums_x86_64 = SKIP
 
 pkgname = retroshare-bin
