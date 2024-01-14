@@ -1,1 +1,1 @@
-Q /var/lib/ollama 0750 ollama ollama
+Q /var/lib/ollama 0755 ollama ollama
