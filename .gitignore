@@ -15,6 +15,5 @@
 /src
 /pkg
 *.kate-swp
-logstash*/**
 *.zst
 .vscode/

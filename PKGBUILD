@@ -1,8 +1,9 @@
 # Maintainer: Aman Gupta <aman.iv0012@gmail.com>
+
 pkgbase=micropython
 pkgname=(micropython micropython-lib)
-pkgver=1.21.0
-_libver=1.21.0
+pkgver=1.22.0
+_libver=1.22.0
 pkgrel=1
 pkgdesc="Python3 for microcontrollers, with stdlib. (UNIX version)"
 arch=('i686' 'x86_64')
@@ -14,12 +15,11 @@ options=('!emptydirs')
 # They finally have a real release, without all the submodule garbage.
 source=("https://micropython.org/resources/source/micropython-$pkgver.tar.xz"
         "mlib-$_libver.tgz::https://github.com/micropython/micropython-lib/archive/v$_libver.tar.gz")
-md5sums=('7f3ec4862c47f83883868c8b7fdbff40'
-         '2b5a111d61611786fade0059fcfef203')
+md5sums=('662c576a34f723c6e939a0f15a18b659'
+         'e0ef75b2e0e5a72bbab88c70e8778d72')
 
 # todo:
 # fix 'imported as namespace package' warnings from stdlib
-
 prepare() {
   # fix makefile
   cd "$srcdir/micropython-$pkgver/ports/unix"
