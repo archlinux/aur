@@ -10,6 +10,7 @@ pkgbase = python-python-ffmpeg
 	makedepends = python-pytest-runner
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = git
 	depends = ffmpeg
 	depends = python
 	depends = python-pyee
@@ -18,7 +19,7 @@ pkgbase = python-python-ffmpeg
 	conflicts = python-ffmpeg
 	conflicts = python-ffmpeg-python
 	options = !emptydirs
-	source = python-ffmpeg-2.0.10.tar.gz::https://github.com/jonghwanhyeon/python-ffmpeg/archive/v.2.0.10.tar.gz
-	sha256sums = 3c1cfca7658ba288e854921254409e3105e56db48c9c50af2fef34d8a690e520
+	source = python-ffmpeg::git+https://github.com/jonghwanhyeon/python-ffmpeg.git#tag=v.2.0.10
+	sha256sums = SKIP
 
 pkgname = python-python-ffmpeg

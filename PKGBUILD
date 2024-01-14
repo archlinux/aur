@@ -51,13 +51,31 @@ _main_package() {
 
 # stable package
 _main_stable() {
+  _main_stable_2
+}
+
+_main_stable_1() {
   _pkgver="${pkgver%%.r*}"
   _pkgsrc="$_module-${_pkgver:?}"
   _pkgext="tar.gz"
-  source+=("$_pkgsrc.$_pkgext"::"$url/archive/v.$_pkgver.$_pkgext")
+  source+=("$_pkgsrc.$_pkgext"::"$url/archive/v$_pkgver.$_pkgext")
   sha256sums+=('3c1cfca7658ba288e854921254409e3105e56db48c9c50af2fef34d8a690e520')
 
   pkgver() {
+    echo "${_pkgver:?}"
+  }
+}
+
+_main_stable_2() {
+  _pkgsrc="$_module"
+
+  makedepends+=('git')
+
+  source=("$_module"::"git+$url.git#tag=v.${pkgver%%.r*}")
+  sha256sums=('SKIP')
+
+  pkgver() {
+    local _pkgver=$(sed -E 's&^[^0-9]+&&; s&\.r.*$&&' <<< "$pkgver")
     echo "${_pkgver:?}"
   }
 }
