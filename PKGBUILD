@@ -12,7 +12,7 @@ source=(https://framagit.org/medoc92/libupnpp-bindings/-/archive/libupnpp-bindin
 sha256sums=('178436ed6d576b6b1474e8c4b1d5b35d61311a6ab71521590e0e8ddc313b69d1')
 
 package() {
-	cd libupnpp-bindings-$pkgver
+	cd libupnpp-bindings-libupnpp-bindings-v$pkgver
 	./autogen.sh
 	./configure --prefix=/usr
 	make
