@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=tinyMediaManager
+Comment=A media management tool written in Java/Swing
+Exec=/usr/bin/tinymediamanager
+Terminal=false
+Icon=tinymediamanager
+Categories=AudioVideo;Video;Player;TV;
