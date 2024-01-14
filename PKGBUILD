@@ -1,15 +1,15 @@
 pkgname=iroh
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='IPFS reimagined'
 arch=(x86_64 aarch64)
 url='https://github.com/n0-computer/iroh'
-license=(MIT Apache)
+license=('MIT or Apache-2.0')
 depends=(gcc-libs)
 makedepends=(cargo)
 checkdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('5d6facead060ad42692aedea5e2a4bd8d7d2c7a5450b031c7cde043fb5abba882faba902ea6cec2b3f5997113720570b557edd848a4b79ff509f0db0d59bb79f')
+b2sums=('a11ae672b264ec9dc212f3b36cad7f7b325c7abc774ce88e75bdb5839ed8d1877eac3ae33641a0d1c2938da8872f51eec27b8342b68da668c5eef0ce28118fe7')
 
 prepare() {
     cd "$pkgname-$pkgver"
