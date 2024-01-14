@@ -14,7 +14,7 @@ depends=('python' 'python-mutf8' 'python-numpy')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-versioneer' 'python-wheel')
 # tests directory isn't in pypi sdist
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('1104dcd85699f6fd560b5f5b1e008bef9d9ef23622936b8f68af1663aa8e85c5')
+sha256sums=('efefff4b3d29e44c9fee6b30c37d7f68c22c397f88bcd8a6bb671a19add038fd')
 
 prepare() {
   cd "$_name-$pkgver"
