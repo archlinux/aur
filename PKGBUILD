@@ -1,8 +1,8 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-09-04.
+# PKGBUILD last time manually edited: At least on 2024-01-14.
 
-_year='23'
+_year='24'
 _prevyear="$(( ${_year} - 1 ))"
 
 _pkgname=idos-timetable-browser-license-installer
@@ -17,8 +17,8 @@ url="https://www.chaps.cz/eng/order"
 license=('custom')
 
 groups=(
-        "idos-timetable"
-       )
+  "idos-timetable"
+)
 
 depends=(
   "idos-timetable-browser"
