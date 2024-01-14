@@ -1,37 +1,54 @@
 # Maintainer:
 # Contributor: QiE2035 <qie2035@qq.com>
 
-# options
-: ${_system_electron:=true}
-: ${_pkgtype:=non-opt}
+## options
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
+  : ${_autoupdate:=false}
+else
+  : ${_autoupdate:=true}
+fi
 
-# basic info
-_pkgname=logseq-desktop
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=0.10.1
+: ${_pkgtype:=-non-opt}
+
+## basic info
+_pkgname="logseq-desktop"
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 arch=("x86_64")
 
-makedepends=(
-  'asar'
-  'gendesk'
-)
+# main package
+_main_package() {
+  makedepends=(
+    'gendesk'
+  )
 
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+  provides=("$_pkgname=$pkgver")
+  conflicts=("$_pkgname")
 
-install="$_pkgname.install"
+  options=(!debug !strip)
+  install="$_pkgname.install"
 
-_pkgsrc="Logseq-linux-x64"
-source=(
-  "$url/releases/download/$pkgver/$_pkgsrc-$pkgver.zip"
-)
-sha256sums=(
-  'b67a2dff464610f2a64952eda858eaa7a4351edb6cd4076f63804d7f5b6b7423'
-)
+  _pkgsrc="Logseq-linux-x64"
+  _pkgext="zip"
+  _install_path="usr/lib"
+  source+=("$url/releases/download/$_pkgver/$_pkgsrc-$_pkgver.$_pkgext")
+  sha256sums+=('SKIP')
+
+  # appimage - missing icon
+  if [[ "${_pkgext::1}" == "A" ]] ; then
+    source+=("$_pkgname.png"::"$url/raw/master/resources/icons/logseq.png")
+    sha256sums+=('2c04bad999ef75b874bd185b84c4df560486685f5a36c2801224ef9b67642006')
+  fi
+}
+
+# common functions
+pkgver() {
+  printf '%s' "${_pkgver:?}"
+}
 
 prepare() {
   _gen_script
@@ -51,63 +68,91 @@ prepare() {
   )
 
   gendesk "${_gendesk_options[@]}"
+
+  # appimage - extract
+  if [[ "${_pkgext::1}" == "A" ]] ; then
+    chmod +x "$_pkgsrc-$_pkgver.$_pkgext"
+    "./$_pkgsrc-$_pkgver.$_pkgext" --appimage-extract
+    ln -sf "squashfs-root" "$_pkgsrc"
+  fi
 }
 
-
 package() {
-  if [[ "${_system_electron::1}" == 't' ]] ; then
-    depends=('electron')
+  if [[ "${_pkgext::1}" == "A" ]] ; then
+    # appimage - icons
+    install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/logseq.png"
 
-    # asar
-    install -dm755 "$pkgdir/usr/lib/$_pkgname"
-    asar pack "$_pkgsrc/resources/app" "${pkgdir:?}/usr/lib/$_pkgname/app.asar"
+    # appimage - remove unneeded
+    rm -- "$_pkgsrc/AppRun"
+    rm -- "$_pkgsrc/Logseq.desktop"
+    rm -- "$_pkgsrc/Logseq.png"
   else
-    # package files
-    install -dm755 "$pkgdir/opt/$_pkgname"
-    cp -r "$srcdir/$_pkgsrc"/* "$pkgdir/opt/$_pkgname/"
+    # zip - icons
+    install -Dm644 "$_pkgsrc/resources/app/icon.png" "$pkgdir/usr/share/pixmaps/logseq.png"
   fi
 
   # desktop file
   install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-  # icons
-  install -Dm644 "$_pkgsrc/resources/app/icons/logseq.png" \
-    -t "$pkgdir/usr/share/pixmaps/"
-
   # script
   install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/logseq"
+
+  # package files
+  install -dm755 "$pkgdir/$_install_path/$_pkgname"
+  cp --reflink=auto -r "$_pkgsrc"/* "$pkgdir/$_install_path/$_pkgname/"
+
+  # fix permissions
+  chmod -R u=rwX,go=rX "$pkgdir"
 }
 
+# other functions
 _gen_script() {
   cat <<'EOF' > "$_pkgname.sh"
 #!/usr/bin/env sh
 set -e
 EOF
 
-  if [[ "${_system_electron::1}" == 't' ]] ; then
-    cat <<'EOF' >> "$_pkgname.sh"
-_ELECTRON=/usr/bin/electron
-
-APPDIR="/usr/lib/logseq-desktop"
-_ASAR="${APPDIR}/app.asar"
+  cat <<EOF >> "$_pkgname.sh"
+APPDIR="/$_install_path/logseq-desktop"
 EOF
-  else
-    cat <<'EOF' >> "$_pkgname.sh"
-APPDIR="/opt/logseq-desktop"
-_ELECTRON="${APPDIR}/Logseq"
-EOF
-  fi
 
   cat <<'EOF' >> "$_pkgname.sh"
+_ELECTRON="${APPDIR}/Logseq"
 _FLAGS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/logseq-flags.conf"
 if [ -r "$_FLAGS_FILE" ]; then
   _USER_FLAGS="$(cat "$_FLAGS_FILE")"
 fi
 
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec ${_ELECTRON} ${_ASAR} $_USER_FLAGS "$@"
+    exec ${_ELECTRON} $_USER_FLAGS "$@"
 else
-    exec ${_ELECTRON} ${_ASAR} --no-sandbox $_USER_FLAGS "$@"
+    exec ${_ELECTRON} --no-sandbox $_USER_FLAGS "$@"
 fi
 EOF
 }
+
+_update_version() {
+  : ${_pkgver:=$pkgver}
+
+  if [[ "${_autoupdate::1}" != "t" ]] ; then
+    return
+  fi
+
+  _response=$(curl -Ssf "$url/releases.atom")
+
+  _pkgver_new=$(
+    printf '%s' "$_response" \
+      | grep '/releases/tag/' \
+      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
+      | grep -Ev '[a-z]{2}' | sort -V | tail -1
+  )
+
+  # update _pkgver
+  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+    _pkgver="${_pkgver_new:?}"
+  fi
+}
+
+# execute
+_update_version
+_main_package
