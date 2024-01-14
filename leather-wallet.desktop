@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Hiro Wallet
-Exec="/opt/Hiro Wallet/stacks-wallet" -no-sandbox  %U
+Name=Leather Wallet
+Exec="/opt/Leather/leather-wallet %U"
 Terminal=false
 Type=Application
-Icon=stacks-wallet
-StartupWMClass=Hiro Wallet
-Comment=Hiro Wallet v4 — Participate in Stacking to earn bitcoin rewards
+Icon=leather-wallet
+StartupWMClass=Leather
+Comment=Leather Wallet v4 — Participate in Stacking to earn bitcoin rewards
 Categories=Finance;
