@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-09-04.
+# PKGBUILD last time manually edited: At least on 2024-01-14.
 
 url="https://www.inprop.eu/Home/Downloads"
 _pkgver() {
@@ -14,7 +14,7 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Public transport data of many Slovak cities for the IDOS timetable browser, data provided by INPROP."
 arch=(any)
 license=('custom')
