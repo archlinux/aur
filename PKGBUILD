@@ -18,7 +18,7 @@ optdepends=('reiserfsprogs: btrfs-convert utility'
             'e2fsprogs: btrfs-convert utility')
 provides=('btrfs-progs')
 conflicts=('btrfs-progs')
-_url=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/btrfs-progs/trunk/
+_url=https://gitlab.archlinux.org/archlinux/packaging/packages/btrfs-progs/-/raw/main/
 install="${pkgname}.install"
 source=(git+"https://github.com/kdave/btrfs-progs.git"
         "initcpio-hook-btrfs::${_url}initcpio-hook-btrfs?h=packages/btrfs-progs"
