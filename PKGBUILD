@@ -5,13 +5,16 @@ _zrtpcppver='6b3cd8e6783642292bad0c21e3e5e5ce45ff3e03'
 _pkgname=python3-sipsimple
 pkgname=python-sipsimple
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SIP SIMPLE SDK is a Python library for desktop operating'
 license=('GPL-3+')
 arch=('aarch64' 'x86_64')
 url="https://github.com/AGProjects/python3-sipsimple"
 makedepends=(
   'cython0'
+  'python-build'
+  'python-installer'
+  'python-wheel'
   )
 depends=(
   'alsa-lib'
@@ -44,9 +47,9 @@ provides=('python3-sipsimple')
 replaces=('python3-sipsimple')
 options=('!makeflags')
 source=(
-  "https://github.com/AGProjects/${_pkgname}/archive/${pkgver}.tar.gz"
-  "https://github.com/pjsip/pjproject/archive/${_pjsipver}.tar.gz"
-  "https://github.com/wernerd/ZRTPCPP/archive/${_zrtpcppver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/AGProjects/${_pkgname}/archive/${pkgver}.tar.gz"
+  "pjproject-${_pjsipver}.tar.gz::https://github.com/pjsip/pjproject/archive/${_pjsipver}.tar.gz"
+  "ZRTPCPP-${_zrtpcppver}.tar.gz::https://github.com/wernerd/ZRTPCPP/archive/${_zrtpcppver}.tar.gz"
   )
 sha512sums=(
   '3fa88065c1c14b9d6bc8459a4b21b67acc562b50d8051dedfea5be4b19dd550785e89af5025f8a05e3114758edf8db210aa8175cdec60790e6352998376b7bd0'
@@ -56,7 +59,7 @@ sha512sums=(
 
 prepare() {
   cd "${srcdir}"
-  cp ${_pjsipver}.tar.gz ${_pkgname}-${pkgver}/deps/
+  cp pjproject-${_pjsipver}.tar.gz ${_pkgname}-${pkgver}/deps/${_pjsipver}.tar.gz
   cp ZRTPCPP-${_zrtpcppver} ${_pkgname}-${pkgver}/deps/ZRTPCPP -R
 
   cd ${_pkgname}-${pkgver}
@@ -65,12 +68,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python3 setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # license
   install -Dm644 LICENSE \
