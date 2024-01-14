@@ -1,19 +1,19 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: Giovanni Harting <539@idlegandalf.com>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Yosef Langer (vasilevich1234 dot gmail dot ...)
 
-_commit=734ff631f254d8f17661d81e43927ba68e69f545
 pkgname=nginxbeautifier
 pkgver=1.0.19
 pkgrel=2
 pkgdesc="nginx config file formatter and beautifier"
 arch=(any)
 url="https://github.com/vasilevich/nginxbeautifier"
-license=("Apache")
-depends=("nodejs")
-makedepends=("git" "npm")
+license=(Apache)
+depends=(nodejs)
+makedepends=(git npm)
+_commit=734ff631f254d8f17661d81e43927ba68e69f545
 source=("$pkgname::git+https://github.com/vasilevich/nginxbeautifier.git#commit=${_commit}")
-sha512sums=('SKIP')
-
+b2sums=('SKIP')
 
 prepare() {
     cd "${pkgname}"
@@ -44,4 +44,6 @@ package() {
     install -d "${pkgdir}/usr/share/doc/${pkgname}"
     ln -s "/usr/lib/node_modules/${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
+
+# vim:set ts=2 sw=2 et:
 

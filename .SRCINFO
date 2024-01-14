@@ -9,7 +9,6 @@ pkgbase = nginxbeautifier
 	makedepends = npm
 	depends = nodejs
 	source = nginxbeautifier::git+https://github.com/vasilevich/nginxbeautifier.git#commit=734ff631f254d8f17661d81e43927ba68e69f545
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = nginxbeautifier
-
