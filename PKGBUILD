@@ -1,15 +1,15 @@
 # Maintainer: Beat Jäckle <beat at git dot jdmweb2 dot ch>
 
 pkgname=tigerjython
-pkgver=2.37
-pkgrel=6
+pkgver=2.39
+pkgrel=1
 pkgdesc='TigerJython IDE'
 arch=(x86_64)
 url='https://www.tigerjython.ch/'
 license=('custom')
 depends=('java-runtime>=2')
-source=("https://git.jdmweb2.ch/beat/tigerjython_pkg/raw/tag/v2.37/TigerJython.tar.gz")
-b2sums=('a51f163dc58abd0100f08f65cd682ad02c6cfb7e09333a18034d4df1f25a50a41db243f18b4444b8156bfba76dbbebef6e32a3deba428f8c4000c998b01bba7c')
+source=("https://git.jdmweb2.ch/beat/tigerjython_pkg/raw/tag/V${pkgver}/TigerJython.tar.gz")
+b2sums=('f8b4662be2363833cfc064c99bdc7f6e7789fc22648fff32a5d18ca567ab6254a2e4c6bd7cfa6e0ccfb965b1d4385badcc00a5ae8eb9811c8eabc2c1d28397cd')
 _install_path=/usr/share
 
 build() {
