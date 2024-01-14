@@ -1,7 +1,7 @@
 pkgbase = tinymediamanager-bin
 	pkgdesc = A media management tool written in Java/Swing.
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tinymediamanager.org
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,8 @@ pkgbase = tinymediamanager-bin
 	options = !strip
 	source = tinymediamanager.desktop
 	source = tinymediamanager.png
+	sha256sums = 08499a10730b6af6113c4a56e4ed7bed068d7fed282080dfd550b66d6a8ac9f5
+	sha256sums = 79b50c260b1c1c1f695c0ea1d743742d11d9a1337a2bc73985e4428752492f0f
 	source_x86_64 = https://release.tinymediamanager.org/v5/dist/tinyMediaManager-5.0-linux-amd64.tar.xz
 	sha256sums_x86_64 = 1c827e592313a1e41c763b4d782483d35c8a3406a8ddaf3eb2d6508ee020ff49
 	source_aarch64 = https://release.tinymediamanager.org/v5/dist/tinyMediaManager-5.0-linux-arm64.tar.xz
