@@ -1,6 +1,6 @@
 # Maintainer: Madhur Ahuja <ahuja.madhur@gmail.com>
 pkgname=csvlens
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A command line CSV file viewer. It is like less but made for CSV.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
         "license.txt")
-sha1sums=('33edc7d3b31e19c9e2ffca2d19a8c6e8c9429e20'
+sha1sums=('741a628cee7ca5e2bb4dca56aa58e59553b97254'
           '178e8165b4c57b6a2c126d3440209427264e6bcb')
 
 prepare() {
