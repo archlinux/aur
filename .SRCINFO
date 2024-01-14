@@ -1,7 +1,7 @@
 pkgbase = python-application
 	pkgdesc = Basic building blocks for Python applications
 	pkgver = 3.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AGProjects/python3-application
 	arch = aarch64
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-application
 	provides = python3-application
 	conflicts = python3-application
 	replaces = python3-application
-	source = https://github.com/AGProjects/python3-application/archive/release-3.0.6.tar.gz
+	source = python-application-3.0.6.tar.gz::https://github.com/AGProjects/python3-application/archive/release-3.0.6.tar.gz
 	sha512sums = 854c72d50d6f06b327e6fc501bf1dfbbf8ca09c72a4c658cb4be2489e9071fe88e28c240b5e052146197fba5b313e911967fcd5cc54cdedde4b3c0253863656a
 
 pkgname = python-application
