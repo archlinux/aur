@@ -59,10 +59,6 @@ sha256sums=(
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
 )
 
-pkgver() {
-  printf '%s' "${_pkgver}"
-}
-
 
 package() {
   _instdirbase='/opt/idos-timetable'
