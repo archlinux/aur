@@ -5,7 +5,7 @@
 pkgname=hostapd-noscan
 _pkgname=hostapd
 pkgver=2.10
-pkgrel=1
+pkgrel=4
 pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator (with \"noscan\" patch)"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="https://w1.fi/hostapd/"
@@ -17,10 +17,12 @@ backup=("etc/${_pkgname}/${_pkgname}."{accept,conf,deny,eap_user,radius_clients,
 source=("https://w1.fi/releases/${_pkgname}-${pkgver}.tar.gz"
         "config"
         "hostapd.service"
+        "hostapd@.service"
         "noscan.patch")
 sha256sums=('206e7c799b678572c2e3d12030238784bc4a9f82323b0156b4c9466f1498915d'
-            'd0bbbfec38e338938910b09704ab986f3615b15ed2e0832d368ce3e9b94e3c51'
+            '60f2d0dd943f78a90662f894ec0a97a0fc95cfbac1c2628da64f1da83e344f0b'
             '989bc6855f44c0b360e3d4cd4a146c35b7c12f8a0ced627b4b033f58edcade8e'
+            '80d82f6515df1061d2fad4a39a1efb9c4ef9828837441d556593a3f852242a95'
             'b449b6158466903c06c0ed0f19aef506351021f8b332eabc03467e9928258128')
 
 prepare() {
@@ -59,6 +61,7 @@ package() {
 
   # systemd service
   install -vDm 644 "../${_pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
+  install -vDm 644 "../${_pkgname}@.service" -t "${pkgdir}/usr/lib/systemd/system/"
 
   # license
   install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
