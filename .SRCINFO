@@ -1,0 +1,16 @@
+pkgbase = pacdb
+	pkgdesc = Pacman Database to SQLite Converter
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ryanpetris/pacdb
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = pacman
+	source = pacdb-1.0.0.tar.gz::https://github.com/ryanpetris/pacdb/archive/v1.0.0.tar.gz
+	b2sums = bb021c77e3f1d6daa9df37eb6c5c7a5182c16237a91f70c6a76fc90c25ef3e949bbb7ffb357c31c5a6f104ce79cc6f249c026b9e3ae9087b98786a3daffac6a1
+
+pkgname = pacdb
