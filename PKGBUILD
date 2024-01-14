@@ -5,13 +5,13 @@
 
 pkgname=mcstrans
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux MCS translation daemon"
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/SELinuxProject/selinux/wiki'
 license=('GPL2')
 groups=('selinux')
-depends=('libcap' 'libselinux>=3.6' 'pcre')
+depends=('libcap' 'libselinux>=3.6' 'pcre2')
 validpgpkeys=(
   '63191CE94183098689CAB8DB7EF137EC935B0EAF'  # Jason Zaman <perfinion@gentoo.org>
   'B8682847764DF60DF52D992CBC3905F235179CF1'  # Petr Lautrbach <plautrba@redhat.com>
