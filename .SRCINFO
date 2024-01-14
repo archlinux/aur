@@ -2,6 +2,7 @@ pkgbase = 2048.c
 	pkgdesc = A terminal 2048 written in c
 	pkgver = 1.0.0.r0.g3eb237f
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/mevdschee/2048.c
 	arch = any
 	license = MIT
