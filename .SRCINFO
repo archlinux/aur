@@ -17,7 +17,7 @@ pkgbase = focus-desktop-bin
 	depends = pango
 	provides = focus-desktop=0.3.2
 	conflicts = focus-desktop
-	source = https://git.bhasher.com/Bhasher/focus/releases/download/v0.3.2/focus_0.3.2_amd64.deb
+	source = focus_0.3.2_amd64.deb::https://git.bhasher.com/Bhasher/focus/releases/download/v0.3.2/focus_0.3.2_amd64.deb
 	source = LICENSE-0.3.2::https://git.bhasher.com/Bhasher/focus/raw/branch/master/LICENSE.md
 	sha256sums = 64dc3fbd2476ef5ff9b0705c6ec287657ef7ce96c4b72d063088eb05c519f227
 	sha256sums = 00f70f9c4cb1c351877b690002c21564dc022f7b5d7fd1273ff52c5911356384
