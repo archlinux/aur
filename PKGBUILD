@@ -1,8 +1,8 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-05-17.
+# PKGBUILD last time manually edited: At least on 2024-01-14.
 
-_year='23'
+_year='24'
 _fullyear="20${_year}"
 
 _pkgname="idos-timetable-data-chaps-trains-europe"
