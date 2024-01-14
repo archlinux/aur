@@ -2,7 +2,7 @@
 # Contributor: Code Liger <codeliger@protonmail.com>
 
 pkgname=video-compare
-pkgver=20240107
+pkgver=20240114
 pkgrel=1
 pkgdesc="Split screen video comparison tool using FFmpeg and SDL2"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/pixop/video-compare"
 license=('GPL')
 depends=('ffmpeg' 'sdl2' 'sdl2_ttf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pixop/video-compare/archive/${pkgver}.tar.gz")
-sha256sums=('977f3945642c9874f6b5ae30589f61411819db1f2ad7b600758bb8dfbb1b29a9')
+sha256sums=('1cc9dc6a8cc2841ff1271f42c85a0bbe7ca8689b4b11760528f40fe88b17c114')
 
 build() {
 	cd "${pkgname}-${pkgver}"
