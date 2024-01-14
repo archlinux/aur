@@ -1,6 +1,6 @@
 pkgbase = cargo-docs-rs
 	pkgdesc = Imitate the documentation build that docs.rs would do
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/dtolnay/cargo-docs-rs
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = cargo-docs-rs
 	license = Apache
 	makedepends = cargo
 	depends = gcc-libs
-	source = cargo-docs-rs-0.1.7.tar.gz::https://github.com/dtolnay/cargo-docs-rs/archive/0.1.7.tar.gz
+	source = cargo-docs-rs-0.1.8.tar.gz::https://github.com/dtolnay/cargo-docs-rs/archive/0.1.8.tar.gz
 	source = Cargo.lock
-	sha512sums = b0b45695dfb1d4df82d3c5dc99e8dd1f860e396a82c6c5b8198eac2abd4c7fe0639cbbab6bf632fea34dfd65265f9ad9ce4a55e455f78ce9870e8842814424e8
-	sha512sums = 4f709231b78edf082433eb6bbaaf71b48c4804a5d67c12b4c1711b084addaa73822b23ee13c38e1aeb5a2e7c4e79cdad5fe3760ca908cebb71dda066246f2838
+	sha512sums = 2cfb141733d1a9deccf8cb6b6a5c7f29233aa6491dc16a26c98a888264627b485be2d8a8e1af81f5fec6d9f347e6da7823f725776d6d4d37ea13a04b2ce0e147
+	sha512sums = 8342268e29e4be6c77b150cfd487295292a406bb1f62fdd7b8a63363421dc26c4daab2580385d8fe04f043d59d647fb022eaddba0c2c702a366632f709474081
 
 pkgname = cargo-docs-rs
