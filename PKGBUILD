@@ -6,7 +6,7 @@
 
 pkgname=svg2tikz-git
 _gitname="svg2tikz"
-pkgver=3.0.0+9.r473.20240112.307c86a
+pkgver=3.0.1.r477.20240114.ce9bfde
 pkgrel=1
 pkgdesc="Set of tools for converting SVG graphics to TikZ/PGF code."
 arch=('any')
@@ -81,9 +81,6 @@ pkgver() {
 
 build() {
   cd "$srcdir"/"$_gitname"
-
-  # Fix for https://github.com/xyz2tex/svg2tikz/issues/183
-  sed -i -e '1s|#!/usr/bin/env python/|#!/usr/bin/env python|' 'svg2tikz/tikz_export.py'
 
   python -m build --wheel --no-isolation
 
