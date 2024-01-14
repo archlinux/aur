@@ -8,7 +8,7 @@ pkgbase = python-upnpp
 	makedepends = libnpupnp
 	makedepends = python-devtools
 	makedepends = swig
-	source = https://www.lesbonscomptes.com/upmpdcli/downloads/libupnpp-bindings-0.26.0.tar.gz
-	sha256sums = c35aed1cc9edb307191a95662873ce3d9bf86aac797356634118eaaa2b00e348
+	source = https://framagit.org/medoc92/libupnpp-bindings/-/archive/libupnpp-bindings-v0.26.0/libupnpp-bindings-libupnpp-bindings-v0.26.0.tar.gz
+	sha256sums = 178436ed6d576b6b1474e8c4b1d5b35d61311a6ab71521590e0e8ddc313b69d1
 
 pkgname = python-upnpp

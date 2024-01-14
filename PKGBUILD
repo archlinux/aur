@@ -8,11 +8,12 @@ url="https://www.lesbonscomptes.com/upmpdcli/libupnpp-python/upnpp-python.html"
 license=(LGPL2.1)
 arch=(x86_64)
 makedepends=(libnpupnp python-devtools swig)
-source=(https://www.lesbonscomptes.com/upmpdcli/downloads/libupnpp-bindings-$pkgver.tar.gz)
-sha256sums=('c35aed1cc9edb307191a95662873ce3d9bf86aac797356634118eaaa2b00e348')
+source=(https://framagit.org/medoc92/libupnpp-bindings/-/archive/libupnpp-bindings-v$pkgver/libupnpp-bindings-libupnpp-bindings-v$pkgver.tar.gz)
+sha256sums=('178436ed6d576b6b1474e8c4b1d5b35d61311a6ab71521590e0e8ddc313b69d1')
 
 package() {
 	cd libupnpp-bindings-$pkgver
+	./autogen.sh
 	./configure --prefix=/usr
 	make
 	pythonver=$( python -c 'import site; print( site.getsitepackages()[0] )' ) # /usr/lib/python3.10/site-packages
