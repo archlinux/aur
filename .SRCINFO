@@ -1,0 +1,22 @@
+pkgbase = python-green
+	pkgdesc = Green is a clean, colorful, fast python test runner
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://github.com/CleanCut/green
+	arch = any
+	license = MIT
+	checkdepends = python-django
+	checkdepends = python-testtools
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-colorama
+	depends = python-coverage
+	depends = python-unidecode
+	depends = python-lxml
+	source = git+https://github.com/CleanCut/green.git#commit=c3ebfb5e7e9aa01654a9e5b73c9f183c4fa50de3
+	sha512sums = SKIP
+
+pkgname = python-green
