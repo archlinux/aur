@@ -2,15 +2,15 @@
 
 pkgname=python-bitwarden-keyring
 _pkgname=bitwarden-keyring
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Bitwarden-CLI as keyring provider"
 arch=('any')
 url="https://github.com/ewjoachim/bitwarden-keyring/"
 license=('MIT')
 depends=('python' 'bitwarden-cli' 'python-keyring')
-source=("${_pkgname}-${pkgver}::https://github.com/ewjoachim/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('afe23c77d5315f4d29230d4c987f6e6f622b64050640995dc7c140e670b4c1138274e932eebbbd85d6d24ac9a5e0c5df8eac85e8980e8a37430a425511354ff2')
+source=("${_pkgname}-${pkgver}::https://github.com/ewjoachim/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('4b56e9201b6b31121d5b12cce1b5f1c0d6aa2731d5c885fd7088fd57d9407feedd3e40c546c379465c953cf3103f332fb0916f0a8622ab657ffa331f112b58bf')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
