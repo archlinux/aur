@@ -1,13 +1,13 @@
 # Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
 pkgname=minetest-driftgame
 _pkgname=driftgame
-_pkgauthor=paramat
-pkgver=2020.09.15
-_cdbrel=6455
+_pkgauthor=mt-mods
+pkgver=2023.11.27
+_cdbrel=21978
 pkgrel=1
 pkgdesc="Drive a car around procedurally generated roads"
 license=("LGPLv2.1")
-sha256sums=('8c9b63c8cd4030b305467ec9cd2a1240e5e9cfa4eba0576a0be81a903ddc53ed')
+sha256sums=('aff448c5cf3ede7ff433bc561bf469301368561eb602356dcf58601a0040d5fe')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
