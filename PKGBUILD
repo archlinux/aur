@@ -1,4 +1,4 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Matt M <numbernine dot archlinux at complexnumber dot net>
 
 pkgname=jfrog-cli-bin
 _pkgname=jfrog-cli
