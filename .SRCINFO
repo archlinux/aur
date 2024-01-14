@@ -1,6 +1,6 @@
 pkgbase = libretro-melondsds-git
 	pkgdesc = Nintendo DS core
-	pkgver = 0.8.7.r23.gd13a8a2
+	pkgver = 1.0.1.r0.g949bb4d
 	pkgrel = 1
 	url = https://github.com/JesseTG/melonds-ds
 	arch = aarch64
@@ -10,16 +10,38 @@ pkgbase = libretro-melondsds-git
 	arch = pentium4
 	arch = x86_64
 	groups = libretro
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake>=3.19
 	makedepends = git
 	makedepends = libgl
 	depends = gcc-libs
 	depends = glibc
 	depends = libretro-core-info>=1.16.0.3.r2
-	provides = libretro-melondsds=0.8.7.r23.gd13a8a2
+	provides = libretro-melondsds=1.0.1.r0.g949bb4d
 	conflicts = libretro-melondsds
 	source = libretro-melondsds::git+https://github.com/JesseTG/melonds-ds.git
+	source = git+https://github.com/melonDS-emu/melonDS.git
+	source = git+https://github.com/libretro/libretro-common.git
+	source = git+https://github.com/andoalon/embed-binaries.git
+	source = git+https://github.com/g-truc/glm.git
+	source = git+https://gitlab.freedesktop.org/slirp/libslirp.git
+	source = git+https://github.com/RobLoach/pntr.git
+	source = git+https://github.com/fmtlib/fmt.git
+	source = git+https://github.com/yohhoy/yamc.git
+	source = git+https://github.com/martinmoene/span-lite.git
+	source = git+https://github.com/HowardHinnant/date.git
+	source = git+https://github.com/madler/zlib.git
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = libretro-melondsds-git
