@@ -4,62 +4,73 @@
 # Contributor: Franco Iacomella <yaco@gnu.org>
 
 pkgbase='drawpile'
-pkgname=("${pkgbase}"{,'-client','-server'})
-pkgver=2.1.20
-pkgrel=5
+pkgname=("${pkgbase}"{,'-client','-server','-tools'})
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
 url='https://drawpile.net/'
 license=('GPL3')
-makedepends=('cmake' 'extra-cmake-modules' 'karchive5' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-x11extras')
+makedepends=('cmake' 'extra-cmake-modules' 'karchive5' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'cargo')
 source=(
-    "https://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz")
+    "https://github.com/drawpile/Drawpile/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=(
-    'a2f45e8b7482854288eb7b7f9db0961c79f0129ab92216280fdb94457e0d0fa9')
+    '41122fef2d590f621226570aa62cc7bae8bd0b1cf758c3f001f37cc8c9199683')
 
-_cmakeargs+=('-Wno-dev' '-DKIS_TABLET=ON')
+_cmakeargs+=(
+		'--preset linux-release-qt5-all-make'
+		'-DCMAKE_EXPORT_COMPILE_COMMANDS=OFF'
+		'-DCMAKE_INSTALL_PREFIX=/usr'
+		'-DSOURCE_ASSETS=OFF')
 
 build() {
-	cd "${pkgbase}-${pkgver}"
-
-	# Ensure build is an empty directory
-	rm -rf 'build'
-	mkdir -p 'build'
-	cd 'build'
-
-	cmake .. -DCMAKE_BUILD_TYPE='Release' -DCMAKE_INSTALL_PREFIX='/usr' "${_cmakeargs[@]}"
-	make
+	cd "Drawpile-${pkgver}"
+	cmake "${_cmakeargs[@]}" -B build
+	cmake --build build
 }
 
 package_drawpile() {
 	pkgdesc+=' (meta package)'
 	arch=('any')
-	depends=("${pkgbase}-client" "${pkgbase}-server")
-	conflicts=("${pkgbase}-common")
+	depends=("${pkgbase}-client" "${pkgbase}-server" "${pkgbase}-tools")
+	
+	cd "Drawpile-${pkgver}"
+	
+	DESTDIR="${srcdir}/pkg" cmake --install build
 }
 
 package_drawpile-client() {
 	pkgdesc+=' (client)'
 	depends=('desktop-file-utils' 'karchive5' 'qt5-multimedia' 'qt5-x11extras')
-	optdepends=('kdnssd5: automatic service discovery (such as printers)'
-		'giflib: GIF support'
-		'miniupnpc: UPnP support'
-		'qt5-color-widgets: alternative color wheel'
+	optdepends=('qt5-color-widgets: alternative color wheel'
 		'qtkeychain-qt5: Password storage')
 	install="${pkgbase}.install"
-	cd "${pkgbase}-${pkgver}"
-
-	DESTDIR="${pkgdir}" make -C 'build' install
-	rm -rfv "${pkgdir}"/usr/bin/drawpile-srv
+	
+	cd "Drawpile-${pkgver}"
+	
+	mkdir -p "${pkgdir}"/usr/{bin,share}
+	cp -r "${srcdir}"/pkg/usr/share/* "${pkgdir}"/usr/share
+	cp "${srcdir}"/pkg/usr/bin/drawpile "${pkgdir}"/usr/bin
 }
 
 package_drawpile-server() {
 	pkgdesc+=' (server)'
 	depends=('karchive5')
 	optdepends=('libmicrohttpd: web-admin feature'
+		'libsodium: ext-auth support'
 		'libsystemd: systemd and logging support')
-	cd "${pkgbase}-${pkgver}"
+		
+	cd "Drawpile-${pkgver}"
 
-	DESTDIR="${pkgdir}" make -C 'build' install
-	rm -rfv "${pkgdir}"/usr/{share,bin/drawpile{,-2.*}}
+	mkdir -p "${pkgdir}"/usr/bin
+	cp "${srcdir}"/pkg/usr/bin/drawpile-srv "${pkgdir}"/usr/bin
+}
+
+package_drawpile-tools() {
+	pkgdesc+=' (tools)'
+	
+	cd "Drawpile-${pkgver}"
+
+	mkdir -p "${pkgdir}"/usr/bin
+	cp "${srcdir}"/pkg/usr/bin/{dprectool,drawpile-cmd,drawpile-timelapse} "${pkgdir}"/usr/bin
 }
