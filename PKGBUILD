@@ -9,14 +9,14 @@
 
 pkgname=libselinux
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 url='https://github.com/SELinuxProject/selinux'
 license=('custom')
 groups=('selinux')
 makedepends=('pkgconf' 'python' 'python-pip' 'python-setuptools' 'ruby' 'xz' 'swig')
-depends=('libsepol>=3.6' 'pcre')
+depends=('libsepol>=3.6' 'pcre2')
 optdepends=('python: python bindings'
             'ruby: ruby bindings')
 conflicts=("selinux-usr-${pkgname}")
@@ -36,6 +36,10 @@ build() {
 
   # Do not build deprecated rpm_execcon() interface. It is useless on Arch Linux anyway.
   export DISABLE_RPM=y
+
+  # Use pcre2 explicitely even though it is the default since
+  # https://github.com/SELinuxProject/selinux/commit/e0da140d82c0ebebf1060ce87d0f11276c7fc59a
+  export USE_PCRE2=y
 
   export CFLAGS="${CFLAGS} -fno-semantic-interposition"
   make swigify
