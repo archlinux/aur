@@ -26,11 +26,6 @@ makedepends=(
     'git'
 )
 
-pkgver() {
-    cd "$srcdir/$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
     cd "$srcdir/$pkgname/backend"
     CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -o focus-server .

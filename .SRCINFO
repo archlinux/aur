@@ -1,6 +1,6 @@
 pkgbase = focus-server-git
 	pkgdesc = Focus is an open-source, Kanban-style project management tool, emphasizing simplicity and efficiency.
-	pkgver = r1.1413a76
+	pkgver = r2.f3ece74
 	pkgrel = 1
 	url = https://git.bhasher.com/bhasher/focus
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = focus-server-git
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	provides = focus-server=r1.1413a76
+	provides = focus-server=r2.f3ece74
 	conflicts = focus-server
 	source = focus-server-git::git+https://git.bhasher.com/bhasher/focus.git
 	source = LICENSE::https://git.bhasher.com/Bhasher/focus/raw/branch/master/LICENSE.md
