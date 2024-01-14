@@ -1,15 +1,15 @@
 pkgbase = immich-go-bin
 	pkgdesc = An alternative to the immich-CLI command that doesn't depend on a nodejs installation
-	pkgver = 0.9.9
+	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://github.com/simulot/immich-go
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	options = !strip
-	source_x86_64 = immich-go-0.9.9-1_Linux_x86_64.tar.gz::https://github.com/simulot/immich-go/releases/download/0.9.9/immich-go_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 9af672fc316f7f4d7b98df8e1d2595d138c86c007c441948c51831fd1462e5a7
-	source_aarch64 = immich-go-0.9.9-1_Linux_aarch64.tar.gz::https://github.com/simulot/immich-go/releases/download/0.9.9/immich-go_Linux_arm64.tar.gz
-	sha256sums_aarch64 = ece19df75c83ade8972f05bd1615407ccc5b160c5d3c3a43b4f79666e8b86900
+	source_x86_64 = immich-go-0.9.10-1_Linux_x86_64.tar.gz::https://github.com/simulot/immich-go/releases/download/0.9.10/immich-go_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0ef20f7b520241dbc6f878335434e1748e8831eb475e63ff6d06a0221be5f316
+	source_aarch64 = immich-go-0.9.10-1_Linux_aarch64.tar.gz::https://github.com/simulot/immich-go/releases/download/0.9.10/immich-go_Linux_arm64.tar.gz
+	sha256sums_aarch64 = fc5001332efb307839378e80dfc53f7c3039fed3fcb0dbdc3ddda9fd6d82c255
 
 pkgname = immich-go-bin
