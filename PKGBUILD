@@ -3,7 +3,7 @@
 _pkgname="tinyMediaManager"
 pkgname="${_pkgname,,}-bin"
 pkgver=5.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A media management tool written in Java/Swing."
 provides=("${_pkgname,,}")
 conflicts=("${_pkgname,,}")
