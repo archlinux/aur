@@ -1,0 +1,14 @@
+pkgbase = rsbadges
+	pkgdesc = Create code badges from the comfort and safety of Rust
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://gitlab.com/tangram-vision-oss/rsbadges
+	arch = x86_64
+	license = BSD
+	makedepends = cargo
+	depends = rustup
+	provides = rsbadges
+	source = rsbadges-1.1.5.tar.gz::https://static.crates.io/crates/rsbadges/rsbadges-1.1.5.crate
+	sha256sums = 0c975d5e289ddcab9f80ff13653e1daf01ea23914c035f57ed642495e03d16ce
+
+pkgname = rsbadges
