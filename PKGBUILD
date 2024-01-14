@@ -1,8 +1,8 @@
 # Maintainer: Alexis Belmonte <alexbelm48@gmail.com>
 pkgname="notify-git"
-pkgrel=3
+pkgrel=0
 pkgdesc="ntfy.sh client application to receive everyday's notifications"
-pkgver=0.1.4_b7462ec
+pkgver=0.1.5_b6b21ac
 arch=('x86_64')
 url="https://github.com/ranfdev/Notify"
 license=('GPL3')
@@ -19,7 +19,10 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}" && arch-meson "${_reponame}" build ${meson_options[@]}
+    cd "${srcdir}" && \
+        arch-meson "${_reponame}" build ${meson_options[@]} ||
+        meson setup --reconfigure ||
+        meson setup --wipe;
 }
 
 build() {

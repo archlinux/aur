@@ -1,7 +1,7 @@
 pkgbase = notify-git
 	pkgdesc = ntfy.sh client application to receive everyday's notifications
-	pkgver = 0.1.4_b7462ec
-	pkgrel = 3
+	pkgver = 0.1.5_b6b21ac
+	pkgrel = 0
 	url = https://github.com/ranfdev/Notify
 	arch = x86_64
 	license = GPL3
