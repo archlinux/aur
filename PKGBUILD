@@ -1,8 +1,9 @@
-# Maintainer:  Evaggelos Balaskas <evaggelos [_AT_] balaskas [_DOT]_ gr>
+# Maintainer: Evaggelos Balaskas <aur.archlinux.org@disposable.space>
+
 pkgname=faultstat
 pkgdesc="page fault tracking tool"
 
-pkgver=0.01.02
+pkgver=0.01.11
 pkgrel=1
 
 arch=('x86_64')
@@ -19,10 +20,6 @@ source=(
     ${url}/archive/V${pkgver}.tar.gz
 )
 
-sha256sums=(
-    '4403a82f37e49b0f5d674230686465500fd3b138d6b5414e9b3de7b9a6dea57a'
-)
-
 build() {
     cd "${pkgname}-${pkgver}"
     make
@@ -35,3 +32,5 @@ package() {
 }
 
 # vim: sts=2 sw=2 ts=2 et
+
+sha256sums=('208d83cdb1710a9dfae557536e4667bee29343cbc6acb524d85d52791726b9d9')
