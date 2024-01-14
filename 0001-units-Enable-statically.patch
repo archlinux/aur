@@ -1,0 +1,60 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Fri, 8 Dec 2023 21:28:52 +0100
+Subject: [PATCH] units: Enable statically
+
+---
+ src/units/system/dbus-broker.service.in | 3 ---
+ src/units/system/meson.build            | 5 +++++
+ src/units/user/dbus-broker.service.in   | 3 ---
+ src/units/user/meson.build              | 5 +++++
+ 4 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/src/units/system/dbus-broker.service.in b/src/units/system/dbus-broker.service.in
+index cc5ae3617ea5..2f07a1e7ce77 100644
+--- a/src/units/system/dbus-broker.service.in
++++ b/src/units/system/dbus-broker.service.in
+@@ -17,6 +17,3 @@ PrivateTmp=true
+ PrivateDevices=true
+ ExecStart=@bindir@/dbus-broker-launch --scope system --audit
+ ExecReload=@bindir@/busctl call org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus ReloadConfig
+-
+-[Install]
+-Alias=dbus.service
+diff --git a/src/units/system/meson.build b/src/units/system/meson.build
+index a946b4673130..97f1d46fc5e2 100644
+--- a/src/units/system/meson.build
++++ b/src/units/system/meson.build
+@@ -8,3 +8,8 @@ configure_file(
+         configuration: conf,
+         install_dir: conf.get('systemunitdir'),
+ )
++
++install_symlink('dbus.service',
++        pointing_to: 'dbus-broker.service',
++        install_dir: conf.get('systemunitdir'),
++)
+diff --git a/src/units/user/dbus-broker.service.in b/src/units/user/dbus-broker.service.in
+index 15de0d5b611d..ffcf632e9bbd 100644
+--- a/src/units/user/dbus-broker.service.in
++++ b/src/units/user/dbus-broker.service.in
+@@ -13,6 +13,3 @@ Sockets=dbus.socket
+ ExecStart=@bindir@/dbus-broker-launch --scope user
+ ExecReload=@bindir@/busctl --user call org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus ReloadConfig
+ Slice=session.slice
+-
+-[Install]
+-Alias=dbus.service
+diff --git a/src/units/user/meson.build b/src/units/user/meson.build
+index 876ff9817bae..b45aee31f205 100644
+--- a/src/units/user/meson.build
++++ b/src/units/user/meson.build
+@@ -8,3 +8,8 @@ configure_file(
+         configuration: conf,
+         install_dir: conf.get('userunitdir'),
+ )
++
++install_symlink('dbus.service',
++        pointing_to: 'dbus-broker.service',
++        install_dir: conf.get('userunitdir'),
++)
