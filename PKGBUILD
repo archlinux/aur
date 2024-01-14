@@ -1,35 +1,81 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
+# Contributer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apple-music-desktop
-pkgver=0.1.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="An Electron app that provides a native Apple Music experience for Linux & Windows."
 arch=('x86_64')
 url="https://github.com/Alex313031/apple-music-desktop"
 license=('BSD')
-conflicts=("${pkgname}")
-depends=('bash' 'electron22' 'hicolor-icon-theme')
-makedepends=('git' 'gendesk' 'npm' 'nodejs>=16')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-    "${pkgname}.sh")
-sha256sums=('35820e4b4c8743d082b5d651e8cfa013b639681fc37272410d656bd20fb436c3'
-            '46d477df193abcfa04a478bf65e28f0d5e62ac525609161ef7658b549cbf883d')
+depends=(alsa-lib
+         at-spi2-core
+         bash
+         cairo
+         dbus
+         electron22
+         expat
+         gcc-libs
+         glib2
+         gtk3
+         hicolor-icon-theme
+         libcups
+         libdrm
+         libx11
+         libxcb
+         libxcomposite
+         libxdamage
+         libxext
+         libxfixes
+         libxkbcommon
+         libxrandr
+         mesa
+         nspr
+         nss
+         pango)
+makedepends=('npm' 'nvm')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+        "$pkgname.sh"
+        "$pkgname.desktop")
+sha256sums=('c0777633074d1f45c244e8d588f77ee6f82c1179c97a2f789a8f68e7df6b2556'
+            '336945e159e2d00c497bfcfef4d31af3b6f620a2fd6b62bc2ad92c7afadd8110'
+            'e0bf199faf01e3ea79b845214408ad3852e260d73a2e0f5be437989646c2f169')
+
+_ensure_local_nvm() {
+	# let's be sure we are starting clean
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	export NVM_DIR="${srcdir}/.nvm"
+
+	# The init script returns 3 if version specified
+	# in ./.nvrc is not (yet) installed in $NVM_DIR
+	# but nvm itself still gets loaded ok
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+	_ensure_local_nvm
+	cd "$pkgname-$pkgver"
+	nvm install
+	sed '27d;28d;29s/appimage/dir/' -i electron-builder.json
 }
+
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    sed '/zip/d;/deb/d' -i electron-builder.json
-    npm install
-    npm run build
-    npm run distLinux
+	_ensure_local_nvm
+	cd "$pkgname-$pkgver"
+	npm install --cache "${srcdir}/npm-cache"
+	npm run distLinux
 }
+
 package() {
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 144x144 256x256;do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
-    done
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm755 "$pkgname-$pkgver/dist/linux-unpacked/locales/"* -t "$pkgdir/opt/$pkgname/locales"
+	install -Dm755 "$pkgname-$pkgver/dist/linux-unpacked/resources/"* -t "$pkgdir/opt/$pkgname/resources"
+	rm -dfr "$pkgname-$pkgver/dist/linux-unpacked/"{locales,resources}
+	install -Dm755 "$pkgname-$pkgver/dist/linux-unpacked/"* -t "$pkgdir/opt/$pkgname/"
+	install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+	for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 144x144 256x256;do
+		install -Dm644 "$pkgname-$pkgver/assets/$_icons.png" \
+		"$pkgdir/usr/share/icons/hicolor/$_icons/apps/$pkgname.png"
+	done
+	install -Dm644 "$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$pkgname-$pkgver/assets/README.txt" "$pkgdir/usr/share/doc/$pkgname/README.txt"
 }

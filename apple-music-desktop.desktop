@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Apple Music
+Exec="/opt/apple-music-desktop/apple-music" %U
+Terminal=false
+Type=Application
+Icon=apple-music-desktop
+StartupWMClass=apple-music
+Keywords=apple;music;
+Comment=An Electron app that provides a native Apple Music experience.
+Categories=AudioVideo;
