@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=hdf5r
-_pkgver=1.3.8
+_pkgver=1.3.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Interface to the 'HDF5' Binary Data Format"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(Apache)
 depends=(
   hdf5
@@ -26,12 +26,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('43b6c0cb3b22cfa984f9424eaa9af143')
-sha256sums=('b53281e2cf57447965849748e972de2f7fe8df0cee3538ef5813c33c7ed2302b')
+md5sums=('68c60386888550ba88ef5168becca044')
+b2sums=('56306a4dafa664fb5e789c9c9998c69627bc68d0803beee925fd92e07c13556512b08656b6c982b61e1906469d09e90b5eeb5ce00f36ddb89ac31952a9010d47')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
