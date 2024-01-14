@@ -4,7 +4,7 @@ pkgbase = windows2usb
 	pkgrel = 1
 	url = https://github.com/ValdikSS/windows2usb
 	arch = any
-	license = Apache-2
+	license = Apache
 	makedepends = git
 	depends = bash
 	depends = awk
@@ -16,7 +16,7 @@ pkgbase = windows2usb
 	depends = wimlib
 	source = git+https://github.com/ValdikSS/windows2usb.git#tag=0.2.4
 	source = https://github.com/pbatard/rufus/raw/v3.21/res/uefi/uefi-ntfs.img
-	sha512sums = SKIP
-	sha512sums = 92fedfc1bfb0b7093cb191d75f24692f2a1b32970ab985e2b3903bc8d75d33dc9cdcda26d9afcc348992b32e8480840fec400a67d70a3287ac37abee0d06dff2
+	b2sums = SKIP
+	b2sums = 60d75a2281b4357af2bc511d4ea45f269c5dae06975eca00b158eb6321239ab7c0fae4fad4c1b57b0b2cd77a4a4409f4bdfe4c08c4ab111ac80a64d4d12cbc18
 
 pkgname = windows2usb
