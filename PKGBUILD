@@ -2,7 +2,7 @@
 
 pkgname=python-mojimoji
 _pkgname=mojimoji
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="A fast converter between Japanese hankaku and zenkaku characters"
 url="https://github.com/studio-ousia/mojimoji"
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686')
 license=('Apache')
 depends=('python')
 makedepends=('python-setuptools' 'cython')
-source=("https://github.com/studio-ousia/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('d0547589ec1858f63e05c037e296a497b4b0f9db6cea1a7fec426d8a2b109473b4a97622cc8d4262ca9a7e31f89211ca7bae660b2d121d28f070ddf1627b0f1c')
+source=("https://github.com/studio-ousia/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('e7c4981756ea402a0acdd2da430274f0179af0036cf0e4a2f5a0b34601627ee040576589948d283b095c0cb6fbeca1bdb8bd17e15397aa694eeaf77e76d28a55')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}/
