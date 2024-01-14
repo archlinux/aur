@@ -6,14 +6,16 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}
-pkgver=6454_6.3_r0_gfba31d63
+pkgver=6935_6.6.3_r0_g92e18dbc
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
 url="https://btrfs.wiki.kernel.org/index.php/Main_Page"
 license=('GPL')
-depends=('glibc' 'e2fsprogs' 'lzo' 'zlib' 'zstd' 'systemd-libs')
-makedepends=('git' 'asciidoc' 'xmlto' 'python' 'python-setuptools' 'systemd' 'python-sphinx')
+depends=('glibc' 'lzo' 'systemd-libs' 'util-linux-libs' 'zlib' 'zstd')
+makedepends=('e2fsprogs' 'git' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme' 'reiserfsprogs')
+optdepends=('reiserfsprogs: btrfs-convert utility'
+            'e2fsprogs: btrfs-convert utility')
 provides=('btrfs-progs')
 conflicts=('btrfs-progs')
 _url=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/btrfs-progs/trunk/
