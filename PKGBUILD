@@ -8,7 +8,7 @@
 
 pkgname=flexget
 _name=Flexget
-pkgver=3.11.7
+pkgver=3.11.8
 pkgrel=1
 pkgdesc="Multipurpose automation tool for downloading media content from different sources"
 arch=(any)
@@ -57,12 +57,6 @@ depends=(
   python-yaml
   python-zxcvbn
 )
-optdepends=(
-  'python-boto3: SNS output plugin'
-  'python-plexapi: Plex support'
-  'python-rarfile: decompress plugin'
-  'python-transmissionrpc: Transmission support'
-)
 makedepends=(
   python-build
   python-installer
@@ -77,6 +71,12 @@ checkdepends=(
   python-transmissionrpc
   python-vcrpy
 )
+optdepends=(
+  'python-boto3: SNS output plugin'
+  'python-plexapi: Plex support'
+  'python-rarfile: decompress plugin'
+  'python-transmissionrpc: Transmission support'
+)
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
@@ -84,7 +84,7 @@ source=(
   "flexget@.service"
 )
 sha256sums=(
-  '4e11da4c9d75f56eea54033da6b29134d2101c0e708b7965cdba9ce594475ee4'
+  'e4a40c1360d7cd0ff8b1fff78ee9d012ef90d6f6c554aa75590c12395e3d5f5c'
   '117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa'
   'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
 )
