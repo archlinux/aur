@@ -1,8 +1,8 @@
 pkgbase = svg2pdf
-	pkgdesc = Convert SVG files to PDFs.
-	pkgver = 0.9.0
+	pkgdesc = The command line interface for svg2pdf.
+	pkgver = 0.9.1
 	pkgrel = 1
-	url = https://crates.io/crates/svg2pdf
+	url = https://crates.io/crates/svg2pdf-cli
 	arch = aarch64
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = svg2pdf
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = svg2pdf-0.9.0.tar.gz::https://crates.io/api/v1/crates/svg2pdf/0.9.0/download
-	sha512sums = 0b3a2745baee8ad119788400c36bddfb2f8fd94643d46b27e94467c0e9ff5679cb3adb94c909cdc481e7a82c9543ca7a2df01eae88d812d636c62ff494231b62
+	source = svg2pdf-cli-0.9.1.tar.gz::https://crates.io/api/v1/crates/svg2pdf-cli/0.9.1/download
+	sha512sums = d73df8dd7715b6dcf7d2a60dee530d0da55af136447b25df81d60e320d69d0ab3da602f5a35650b33b50a0429f8b3dcc924eda95302706e72973f23ff3ec1ef8
 
 pkgname = svg2pdf

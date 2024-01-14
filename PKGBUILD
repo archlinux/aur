@@ -1,19 +1,19 @@
 # -*- mode: Shell-script; eval: (setq indent-tabs-mode 't); eval: (setq tab-width 4) -*-
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
-_crate="svg2pdf"
+_crate="svg2pdf-cli"
 pkgname="svg2pdf"
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
-pkgdesc='Convert SVG files to PDFs.'
-url='https://crates.io/crates/svg2pdf'
+pkgdesc='The command line interface for svg2pdf.'
+url='https://crates.io/crates/svg2pdf-cli'
 license=('Apache' 'MIT')
 
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/svg2pdf/0.9.0/download")
-sha512sums=('0b3a2745baee8ad119788400c36bddfb2f8fd94643d46b27e94467c0e9ff5679cb3adb94c909cdc481e7a82c9543ca7a2df01eae88d812d636c62ff494231b62')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/svg2pdf-cli/0.9.1/download")
+sha512sums=('d73df8dd7715b6dcf7d2a60dee530d0da55af136447b25df81d60e320d69d0ab3da602f5a35650b33b50a0429f8b3dcc924eda95302706e72973f23ff3ec1ef8')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
@@ -36,13 +36,10 @@ build() {
 	cargo build \
 		--offline \
 		--locked \
-		--features 'cli' \
 		--release
 }
 
 package() {
 	cd "$srcdir/$_crate-$pkgver"
 	install -Dm755 "target/release/svg2pdf" -t "$pkgdir/usr/bin"
-	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 'LICENSE-APACHE' -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
