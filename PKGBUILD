@@ -2,7 +2,7 @@
 
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('x86_64')
@@ -25,10 +25,7 @@ depends=(
 )
 makedepends=(
   'appmenu-gtk-module'
-  'base-devel'
   'cargo'
-  'curl'
-  'file'
   'gtk3'
   'libappindicator-gtk3'
   'librsvg'
@@ -41,7 +38,6 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
   'webkit2gtk'
-  'wget'
 )
 checkdepends=(
   'appstream-glib'
@@ -64,7 +60,7 @@ source=(
   "https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
 )
 sha256sums=(
-  '3c4a36c9b7093b1ef2729828decb4c742b115b73f4b4345a0c99184b026cea3b'
+  '6192527aabd9b9eec5b88e0af5be64e0c5b1464ee16cbd13c55e38c7521f9979'
 )
 
 build() {
