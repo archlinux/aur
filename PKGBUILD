@@ -1,4 +1,5 @@
 # Maintainer: Michael Gerdau <mgd@qata.de>
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 # Contributor: xduugu <xduugu@gmx.com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
