@@ -3,12 +3,12 @@
 _pkgname=python3-msrplib
 pkgname=python-msrplib
 pkgver=0.21.1
-pkgrel=2
+pkgrel=3
 pkgdesc="MSRP (RFC4975) client library"
 license=('LGPL-2.1+')
 arch=('aarch64' 'x86_64')
 url="https://github.com/AGProjects/python3-msrplib"
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 depends=(
   'python-application'
   'python-eventlib'
@@ -24,12 +24,12 @@ sha512sums=('ad9dd88bd40ed4df843765d733ad38bb3ee52445100a47181bac851d7f753ec06cb
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python3 setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # license
   install -Dm644 LICENSE \
