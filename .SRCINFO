@@ -1,7 +1,7 @@
 pkgbase = aider-chat
 	pkgdesc = AI pair programming in your terminal
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aider.chat/
 	arch = any
 	license = Apache2

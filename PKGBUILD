@@ -3,7 +3,7 @@
 pkgname="aider-chat"
 _pkgname="$pkgname"
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI pair programming in your terminal"
 url="https://aider.chat/"
 license=("Apache2")
@@ -42,4 +42,6 @@ build(){
 package(){
  cd "$pkgname-$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
+ # remove three files that should not be there
+ rm -rf "$pkgdir/usr/lib/python3.11/site-packages/tests/"{__init__.py,__pycache__/__init__.cpython-311.pyc,__pycache__/__init__.cpython-311.opt-1.pyc}
 }
