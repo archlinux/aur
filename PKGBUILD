@@ -1,39 +1,31 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2024-01-14.
 
 _pkgname=idos-package-updater-script
 pkgname="${_pkgname}"
 epoch=0
 pkgver=20210704.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Bash script which automates the process of updating installed IDOS timetable browser related packages by reinstalling and thus fetching the newest version."
 arch=('any')
 license=('custom')
-
 groups=(
-        "idos-timetable"
-       )
-
+  "idos-timetable"
+)
 depends=(
   "util-linux" # for 'column'-executable.
   "pacman"
   "yay"
 )
-
 makedepends=()
-
 optdepends=()
-
 provides=()
-
 conflicts=()
-
 replaces=()
 
-
 source=(
-  "idos-packages-update.sh::http://ix.io/3rUL"
+  "idos-packages-update.sh"
   "copying.txt"
 )
 
