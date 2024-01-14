@@ -1,7 +1,7 @@
 pkgbase = leather-wallet.mainnet-bin
 	pkgdesc = Leather Wallet is everything you need to manage your tokens and collectibles and will protect your tokens when you use apps.
 	pkgver = 4.14.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/leather-wallet/desktop
 	install = leather-wallet.mainnet-bin.install
 	arch = x86_64
