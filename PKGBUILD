@@ -2,7 +2,7 @@
 
 pkgname=fup
 pkgrel=1
-pkgver=2
+pkgver=3
 pkgdesc="Command line client for gofu"
 url="https://git.roshless.me/gofu/fup"
 arch=('x86_64' 'i686')
@@ -28,4 +28,4 @@ package() {
 	install -Dm755 dist/config.yml -t "$pkgdir/usr/share/$pkgname"
 }
 
-sha256sums=('b00047073ed054698a4e88c5433896445967d08847b22b0c8cefec55d8172f4b')
+sha256sums=('6e49ead6ad74a83dc5f8cf14dd3e2983549306d5c05c83644f686abea1234f02')
