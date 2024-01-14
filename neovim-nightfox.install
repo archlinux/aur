@@ -1,0 +1,4 @@
+post_install() {
+  echo 'Nightfox provides multiple flavours which are named colorschemes:'
+  echo 'nightfox, dayfox, dawnfox, duskfox, nordfox, terafox, carbonfox'
+}
