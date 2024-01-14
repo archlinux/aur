@@ -2,9 +2,9 @@
 # Contributor: Romain Gallet <romain.gallet at gmail.com>
 _packager="Romain Gallet <romain.gallet at gmail.com>"
 _deb_pkgname=leather-wallet.mainnet
-pkgver=4.14.1
+pkgver=4.14.3
 pkgname=leather-wallet.mainnet-bin
-pkgrel=2
+pkgrel=1
 pkgdesc='Leather Wallet is everything you need to manage your tokens and collectibles and will protect your tokens when you use apps.'
 arch=('x86_64')
 url="https://github.com/hirosystems/stacks-wallet"
@@ -21,7 +21,7 @@ backup=()
 options=()
 install=leather-wallet.mainnet-bin.install
 source=("$url/releases/download/v$pkgver/leather-wallet.mainnet.v$pkgver.deb" "file://leather-wallet.desktop")
-md5sums=('3c30529f8152de17dd56bca41a27688c' '5a4c65a96f8cbcd0fb2eeddd0a57ce3f')
+md5sums=('ce09f61a0550cadaa20c115f4d2c7a9c' '5a4c65a96f8cbcd0fb2eeddd0a57ce3f')
 noextract=()
 
 build() {

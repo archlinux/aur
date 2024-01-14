@@ -1,7 +1,7 @@
 pkgbase = leather-wallet.mainnet-bin
 	pkgdesc = Leather Wallet is everything you need to manage your tokens and collectibles and will protect your tokens when you use apps.
-	pkgver = 4.14.1
-	pkgrel = 2
+	pkgver = 4.14.3
+	pkgrel = 1
 	url = https://github.com/hirosystems/stacks-wallet
 	install = leather-wallet.mainnet-bin.install
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = leather-wallet.mainnet-bin
 	depends = nodejs
 	conflicts = stacks-wallet.mainnet-bin
 	replaces = stacks-wallet.mainnet-bin
-	source = https://github.com/hirosystems/stacks-wallet/releases/download/v4.14.1/leather-wallet.mainnet.v4.14.1.deb
+	source = https://github.com/hirosystems/stacks-wallet/releases/download/v4.14.3/leather-wallet.mainnet.v4.14.3.deb
 	source = file://leather-wallet.desktop
-	md5sums = 3c30529f8152de17dd56bca41a27688c
+	md5sums = ce09f61a0550cadaa20c115f4d2c7a9c
 	md5sums = 5a4c65a96f8cbcd0fb2eeddd0a57ce3f
 
 pkgname = leather-wallet.mainnet-bin
