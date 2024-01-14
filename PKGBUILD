@@ -1,6 +1,6 @@
 # Maintainer: Leo Shen <i@szclsya.me>
 pkgname=mpdris2-rs
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=0
 pkgdesc="Exposing MPRIS V2.1 D-Bus interface for mpd" 
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=('dbus')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/szclsya/$pkgname/archive/$pkgver.tar.gz"
         "mpdris2-rs.service")
-sha512sums=('94708bced9e31373956ae3fa3940b365c3b811366404fff8a1696c7d31638b40a28f64b5b613e1924745d1caf287ad8d88595fdb6ec5e8273299ee8493f6ff8f'
+sha512sums=('f157a2a050afba70066964f74e781f93ceb3404e71ee851c9d3e0f69107444579c5170562dab59bc9b9b09b1fb3e3ad2252583d04057af574ee698b745205266'
            'SKIP')
 
 build() {
