@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://directory.fedoraproject.org"
 license=('GPL')
 depends=('ldapjdk')
-makedepends=('apache-ant' 'java-environment')
+makedepends=('ant' 'java-environment')
 source=("https://github.com/dogtagpki/idm-console-framework/archive/v${pkgver}.tar.gz")
 sha256sums=('b8b43bd48ffaba6acc1e11db821afdeb62f5a42b7ab3667c16ad2a899846a8a6')
 
@@ -21,7 +21,8 @@ build() {
   /usr/bin/ant -Dlib.dir=/usr/lib \
     -Dbuilt.dir=`pwd`/built \
     -Dclassdest=/usr/share/java \
-    -Djss.local.location=/usr/lib/jss
+    -Djss.local.location=/usr/share/java \
+    -Djss.jar.name=jss.jar
 }
 
 package() {

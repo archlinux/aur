@@ -5,11 +5,10 @@ pkgbase = idm-console-framework
 	url = http://directory.fedoraproject.org
 	arch = x86_64
 	license = GPL
-	makedepends = apache-ant
+	makedepends = ant
 	makedepends = java-environment
 	depends = ldapjdk
 	source = https://github.com/dogtagpki/idm-console-framework/archive/v1.2.0.tar.gz
 	sha256sums = b8b43bd48ffaba6acc1e11db821afdeb62f5a42b7ab3667c16ad2a899846a8a6
 
 pkgname = idm-console-framework
-
