@@ -2,7 +2,7 @@
 # Contributor: Qontinuum <qontinuum.dev@protonmail.ch>
 # Contributor: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
-pkgname="python-pystray"
+pkgname=python-pystray
 pkgver=0.19.5
 pkgrel=2
 arch=(any)
