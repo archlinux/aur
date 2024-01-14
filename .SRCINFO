@@ -1,0 +1,15 @@
+pkgbase = python-fastcrc
+	pkgdesc = A hyper-fast Python module for computing CRC(8, 16, 32, 64) checksum
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/overcat/fastcrc
+	arch = x86_64
+	license = MIT
+	makedepends = maturin
+	makedepends = python-installer
+	makedepends = rust
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/f/fastcrc/fastcrc-0.3.0.tar.gz
+	sha256sums = 4e2a75359d97a59469bbcbd77513e801d3f3666a9169629578f88012c0f2d7fe
+
+pkgname = python-fastcrc
