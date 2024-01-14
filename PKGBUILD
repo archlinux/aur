@@ -12,8 +12,8 @@ pkgname=('systemd-selinux'
          'systemd-resolvconf-selinux'
          'systemd-sysvcompat-selinux'
          'systemd-ukify-selinux')
-_tag='0966fe6734417ce07d5eb82a245fdec3789714da' # git rev-parse v${_tag_name}
-_tag_name=255
+_tag='be88ad03366b8aa059bb72b39a270128ba62b428' # git rev-parse v${_tag_name}
+_tag_name=255.2
 pkgver="${_tag_name/-/}"
 pkgrel=2
 arch=('x86_64' 'aarch64')
@@ -81,10 +81,6 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
-  # network/networkd-address: don't set up firewall rules here
-  '58c6e75f263a1562f5550221af1ec1a9b6046143'
-  # core: do not make private /dev/ read-only too soon
-  'ae7482b994e6a9bc8e033de9accd24b1e1ffe2ed'
 )
 
 _reverts=(
@@ -187,7 +183,7 @@ package_systemd-selinux() {
   pkgdesc='system and service manager with SELinux support'
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
-           'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
+           'dbus-units' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'systemd-libs-selinux' 'libidn2' 'lz4' 'pam-selinux'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux-selinux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 
