@@ -1,0 +1,14 @@
+pkgbase = python-upnpp
+	pkgdesc = Python UPnP control interface based on libupnpp.
+	pkgver = 0.26.0
+	pkgrel = 1
+	url = https://www.lesbonscomptes.com/upmpdcli/libupnpp-python/upnpp-python.html
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = libnpupnp
+	makedepends = python-devtools
+	makedepends = swig
+	source = https://www.lesbonscomptes.com/upmpdcli/downloads/libupnpp-bindings-0.26.0.tar.gz
+	sha256sums = c35aed1cc9edb307191a95662873ce3d9bf86aac797356634118eaaa2b00e348
+
+pkgname = python-upnpp
