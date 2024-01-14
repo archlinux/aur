@@ -1,71 +1,86 @@
-# Maintainer: andmars <andreas.marschall @ unitybox.de>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: andmars <andreas.marschall @ unitybox.de>
 # Contributor: PyroPeter <googlemail.com @ abi1789>
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=hplip-plugin
 pkgver=3.23.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary plugin for HPs hplip printer driver library"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=(
+  x86_64
+  aarch64
+  armv6h
+  armv7h
+  i686
+)
 url="https://developers.hp.com/hp-linux-imaging-and-printing/binary_plugin.html"
-license=('custom:proprietary')
-depends=("hplip>=$pkgver") 
+license=(LicenseRef-HPLIP-LICENSE)
+depends=(
+  "hplip=1:$pkgver"
+  gcc-libs
+  glibc
+  libusb-compat
+  sane
+)
 backup=(var/lib/hp/hplip.state)
-#source=("http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-$pkgver-plugin.run")
-source=("https://developers.hp.com/sites/default/files/hplip-$pkgver-plugin.run")
-md5sums=('918066d4fa7918f8c70cb84264c6e2cd')
+
+source=(
+  "https://developers.hp.com/sites/default/files/hplip-$pkgver-plugin.run"
+  "https://developers.hp.com/sites/default/files/hplip-$pkgver-plugin.run.asc"
+)
+sha256sums=(
+  '402799c0c8e2efafc8452a5a0929b06efbfd7bee2ff8ce060bdc447b2a34067f'
+  'SKIP'
+)
+validpgpkeys=('4ABA2F66DBD5A95894910E0673D770CDA59047B9') # HPLIP (HP Linux Imaging and Printing) <hplip@hp.com>
 
 prepare() {
-    sh "hplip-$pkgver-plugin.run" --target "$srcdir/hplip-$pkgver-plugin" --noexec
+  sh "hplip-$pkgver-plugin.run" --target "$srcdir/hplip-$pkgver-plugin" --noexec
 }
 
-package(){
-    cd "$srcdir/hplip-$pkgver-plugin"
+package() {
+  cd "$srcdir/hplip-$pkgver-plugin"
 
-    if [ $CARCH = "i686" ]; then
-        _arch='x86_32'
-    elif [ $CARCH = "x86_64" ]; then
-        _arch='x86_64'
-    elif [ $CARCH = "armv6h" ]; then
-        _arch='arm32'
-    elif [ $CARCH = "armv7h" ]; then
-        _arch='arm32'
-    elif [ $CARCH = "aarch64" ]; then
-        _arch='arm64'
-    fi
+  case $CARCH in
+  "i686")
+    _arch='x86_32'
+    ;;
+  "x86_64")
+    _arch='x86_64'
+    ;;
+  "armv6h" | "armv7h")
+    _arch='arm32'
+    ;;
+  "aarch64")
+    _arch='arm64'
+    ;;
+  esac
 
-    # Create folders
-    install -d "$pkgdir/usr/share/hplip/data/firmware"
-    install -d "$pkgdir/usr/share/hplip/fax/plugins"
-    install -d "$pkgdir/usr/share/hplip/prnt/plugins"
-    install -d "$pkgdir/usr/share/hplip/scan/plugins"
-    install -d "$pkgdir/usr/share/licenses/hplip-plugin"
-    install -d "$pkgdir/var/lib/hp"
+  install -Dm644 -t "$pkgdir/usr/share/hplip" plugin.spec
+  install -Dm644 -t "$pkgdir/usr/share/hplip/data/firmware" hp_laserjet_*.fw.gz
+  install -Dm755 -t "$pkgdir/usr/share/hplip/fax/plugins" fax_marvell-"$_arch".so
+  install -Dm755 -t "$pkgdir/usr/share/hplip/prnt/plugins" hbpl1-"$_arch".so
+  install -Dm755 -t "$pkgdir/usr/share/hplip/prnt/plugins" lj-"$_arch".so
+  install -Dm755 -t "$pkgdir/usr/share/hplip/scan/plugins" bb_*-"$_arch".so
 
-    # Copy files
-    install -m644 plugin.spec                  "$pkgdir/usr/share/hplip/"
-    install -m644 hp_laserjet_*.fw.gz          "$pkgdir/usr/share/hplip/data/firmware/"
-    install -m755 fax_marvell-"$_arch".so      "$pkgdir/usr/share/hplip/fax/plugins/"
-    install -m755 hbpl1-"$_arch".so            "$pkgdir/usr/share/hplip/prnt/plugins/"
-    install -m755 lj-"$_arch".so               "$pkgdir/usr/share/hplip/prnt/plugins/"
-    install -m755 bb_*-"$_arch".so             "$pkgdir/usr/share/hplip/scan/plugins/"
-    install -m644 license.txt                  "$pkgdir/usr/share/licenses/hplip-plugin/"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" license.txt
 
-    # Create hplip.state used by hplip-tools
-    cat << EOF > hplip.state
+  # Create hplip.state used by hplip-tools
+  cat << EOF > hplip.state
 [plugin]
 installed = 1
 eula = 1
 version = $pkgver
 EOF
-    install -m644 hplip.state "$pkgdir/var/lib/hp"
+  install -Dm644 -t "$pkgdir/var/lib/hp" hplip.state
 
-    # Create symlinks
-    find "$pkgdir/usr/share/hplip" -type f -name "*.so" | while read f; do
-        lib_dir="${f%/*}"
-        lib_name="${f##*/}"
-        ln -vsf "$lib_name" "$lib_dir/${lib_name%%-*}.so"
-    done
+  # Create symlinks
+  find "$pkgdir/usr/share/hplip" -type f -name "*.so" | while read -r f; do
+    lib_dir="${f%/*}"
+    lib_name="${f##*/}"
+    ln -vsf "$lib_name" "$lib_dir/${lib_name%%-*}.so"
+  done
 }
 
 # Note: to check the install, perform: hp-diagnose_plugin
