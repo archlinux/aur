@@ -4,7 +4,7 @@
 _pkgname=dislocker
 pkgname=$_pkgname-git
 pkgver=0.7.3.r33.g1e92c11
-pkgrel=1
+pkgrel=2
 pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes"
 arch=('i686' 'x86_64')
 url="https://github.com/Aorimn/dislocker"
