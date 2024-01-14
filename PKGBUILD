@@ -18,5 +18,5 @@ source=(
 function package() {
 	npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
 	find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-	install -Dm755 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
+	install -Dm755 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
