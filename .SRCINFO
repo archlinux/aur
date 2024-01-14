@@ -1,0 +1,13 @@
+pkgbase = python-lcu-driver
+	pkgdesc = A library made to communicate with League of Legends Client API in a easy way
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/lcu-driver/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = lcu-driver-3.0.1.tar.gz::https://github.com/sousa-andre/lcu-driver/archive/refs/tags/3.0.1.tar.gz
+	sha256sums = 05437b55d898b91034dea5bbe8ad1de87836f71b286fafe6f8a149b5fd1424c0
+
+pkgname = python-lcu-driver
