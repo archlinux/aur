@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-pid-2024-latest
 	pkgdesc = 2023/2024 Timetable data for the timetable search engines by CHAPS: Trains in Praha public transport reagion (PID).
 	pkgver = 2024_01_12
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 0
 	url = https://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
@@ -19,8 +19,7 @@ pkgbase = idos-timetable-data-chaps-trains-pid-2024-latest
 	provides = idos-timetable-data-trains-pid-2024=2024_01_12
 	conflicts = idos-timetable-data-chaps-trains-pid-2024
 	conflicts = idos-timetable-data-trains-pid
-	replaces = idos-timetable-data-chaps-trains-pid-latest
-	replaces = idos-timetable-data-chaps-trains-pid-2024<=2024_01_12
+	replaces = idos-timetable-data-chaps-trains-pid-2023
 	source = vlakpid24-2024_01_12.zip::https://ttakt.chaps.cz/TTAktual/Win/Zip/VLAKPID24.ZIP
 	source = IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
