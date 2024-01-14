@@ -1,7 +1,7 @@
 pkgbase = python-instructor
 	pkgdesc = Structured outputs for LLMs
-	pkgver = 0.4.6
-	pkgrel = 2
+	pkgver = 0.4.7
+	pkgrel = 1
 	url = https://github.com/jxnl/instructor
 	arch = any
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = python-instructor
 	depends = python-rich
 	depends = python-typer
 	depends = python-typing_extensions
-	source = python-instructor-0.4.6.tar.gz::https://github.com/jxnl/instructor/archive/refs/tags/0.4.6.tar.gz
-	sha256sums = 656f2444e7448d104619bf50bc1ec2893920ec5919b659ba9f53f846de4a69e8
+	source = python-instructor-0.4.7.tar.gz::https://github.com/jxnl/instructor/archive/refs/tags/0.4.7.tar.gz
+	sha256sums = f95468efccb5cfeeb6b8ad079fe574465ab26ae9350cbcca49201d054dc57342
 
 pkgname = python-instructor
