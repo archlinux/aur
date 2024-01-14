@@ -1,13 +1,12 @@
 pkgbase = java-commons-codec
 	pkgdesc = Implementations of common encoders and decoders such as Base64, Hex, Phonetic and URLs
-	pkgver = 1.15
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = http://commons.apache.org/codec/
 	arch = any
 	license = Apache
 	depends = java-runtime>=7
-	source = http://downloads.apache.org//commons/codec/binaries/commons-codec-1.15-bin.tar.gz
-	md5sums = 3ed07a9c77bdab5ef9402eb568042c66
+	source = http://downloads.apache.org//commons/codec/binaries/commons-codec-1.16.0-bin.tar.gz
+	md5sums = c30d038177d269923a341cee30299503
 
 pkgname = java-commons-codec
-
