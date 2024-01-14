@@ -3,7 +3,7 @@
 
 _crate="cargo-clean-all"
 pkgname="cargo-clean-all"
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Recursively clean all cargo projects in a given directory that match the spec...'
 url='https://github.com/dnlmlr/cargo-clean-all'
@@ -12,8 +12,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/cargo-clean-all/0.6.1/download")
-sha512sums=('51a5ca85236d274ec588383fe18cbe14ca16be8260091f8bbe806d4728346b0e77d79be5e0c2e6d53c41b2c8ac160d2b6fed046bf18fd1549199c511ec501dec')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/cargo-clean-all/0.6.2/download")
+sha512sums=('dd3b1940ba418d73d85c861bc30ec443b522d20986e9400dbafdb6f16243407ca2cde5392c60cb25e5cd71014feebac7a78269257a00a6b58152295a54f71d3f')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
