@@ -1,6 +1,6 @@
 pkgbase = halftone
 	pkgdesc = Give your images that pixel art-like style
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/tfuxu/Halftone
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = halftone
 	depends = python-gobject
 	depends = python-wand
 	optdepends = webp-pixbuf-loader: support more image formats
-	source = git+https://github.com/tfuxu/Halftone.git#commit=e6d8d2bf43f8b88ad40ad2c5385bfc298611cd18
+	source = git+https://github.com/tfuxu/Halftone.git#commit=2afd8474017d0c750378ab87413c7bd20141917d
 	sha256sums = SKIP
 
 pkgname = halftone
