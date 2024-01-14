@@ -1,6 +1,6 @@
 pkgbase = r-timeseries
 	pkgdesc = Financial Time Series Objects (Rmetrics)
-	pkgver = 4032.108
+	pkgver = 4032.109
 	pkgrel = 1
 	url = https://cran.r-project.org/package=timeSeries
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-timeseries
 	optdepends = r-runit
 	optdepends = r-xts
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/timeSeries_4032.108.tar.gz
-	sha256sums = ed3ecfed397e117569bb4f3e229955ef7c98eedbf0d0c83a7bdfc2e452019dd5
+	source = https://cran.r-project.org/src/contrib/timeSeries_4032.109.tar.gz
+	sha256sums = 5e0c47584e0b01ea4011ed5ced217d95f8bb872611f6b029b0797d95eebd731f
 
 pkgname = r-timeseries
