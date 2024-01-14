@@ -97,7 +97,7 @@ makedepends=(
   xz
 )
 if [ "${_compiler}" = "clang" ]; then
-  makedepends+=(clang llvm lld python)
+  makedepends+=(clang llvm lld)
 fi
 options=('!strip')
 _srcname="linux-${pkgver}-rt${_rt}-xanmod${xanmod}"
