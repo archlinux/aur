@@ -1,7 +1,7 @@
 # Maintainer: fsckd <fsckdaemon at gmail dot com>
 
 pkgname=jo-git
-pkgver=0.6.r0.g9bf9f45
+pkgver=1.9.r6.g02be130
 pkgrel=1
 pkgdesc='A shell command to create JSON'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL' 'MIT')
 provides=('jo')
 conflicts=('jo')
 makedepends=('git')
-source=('git://github.com/jpmens/jo')
+source=('git+https://github.com/jpmens/jo')
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,12 +21,11 @@ pkgver() {
 build() {
   cd "$srcdir/jo"
   autoreconf -vi
-  ./configure
-  make jo
+  ./configure --prefix=/usr
+  make all
 }
 
 package() {
   cd "$srcdir/jo"
-  install -Dm755 jo "$pkgdir/usr/bin/jo"
-  install -Dm644 jo.1 "$pkgdir/usr/share/man/man1/jo.1"
+  make DESTDIR="$pkgdir" install
 }
