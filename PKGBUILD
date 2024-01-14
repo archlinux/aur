@@ -6,9 +6,9 @@
 # Maintainer: Willy Micieli <micieli at vivaldi.net>
 pkgname=rsbadges
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Create code badges from the comfort and safety of Rust"
-url="https://gitlab.com/tangram-vision-oss/rsbadges"
+url="https://gitlab.com/tangram-vision/oss/rsbadges"
 license=('BSD')
 depends=('rustup')
 makedepends=('cargo')
