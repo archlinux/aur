@@ -2,12 +2,12 @@
 pkgname=minetest-cellestial-game
 _pkgname=cellestial_game
 _pkgauthor=LMD
-pkgver=r40
-_cdbrel=6129
+pkgver=r41
+_cdbrel=18356
 pkgrel=1
 pkgdesc="Game of Life in three dimensions."
 license=("GPLv3")
-sha256sums=('1a4b9f2cc56559bd56e1bb1bb3df43dc73b55557bdd3050c59ea31be454c8abf')
+sha256sums=('8fd2653badfbac1d1f9fcff14a979e930b0eda2021fe2c3940ec608014581d82')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
