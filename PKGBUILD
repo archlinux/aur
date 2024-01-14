@@ -6,7 +6,7 @@ pkgname=pstate-frequency
 # shellcheck disable=SC2034
 pkgdesc="Easily control Intel p-state driver"
 # shellcheck disable=SC2034
-pkgver=3.13.4
+pkgver=3.14.0
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -27,23 +27,23 @@ license=('GPL2')
 url="https://github.com/pyamsoft/pstate-frequency"
 # shellcheck disable=SC2034
 backup=('etc/pstate-frequency.d/00-auto.plan'
-        'etc/pstate-frequency.d/01-powersave.plan'
-        'etc/pstate-frequency.d/02-balanced.plan'
-        'etc/pstate-frequency.d/03-performance.plan'
-        'etc/pstate-frequency.d/04-max.plan')
+  'etc/pstate-frequency.d/01-powersave.plan'
+  'etc/pstate-frequency.d/02-balanced.plan'
+  'etc/pstate-frequency.d/03-performance.plan'
+  'etc/pstate-frequency.d/04-max.plan')
 # shellcheck disable=SC2034
 source=(
-        "${url}/archive/${pkgver}.zip"
-        "00-fix-prefix.patch")
+  "${url}/archive/${pkgver}.zip"
+  "00-fix-prefix.patch")
 # shellcheck disable=SC2034
-sha256sums=('ef74e6df5b94205e01b8953df2f80d9380fbe67c3544cf4d806d1b3c7ae1c0b6'
+sha256sums=('eebdfda44a49a3481038704bc8d58b14eb877a6a3a47252ceee863a75246fe96'
             'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
 
 prepare() {
   # shellcheck disable=SC2154
   cd "${srcdir}/${pkgname}-${pkgver}" || {
-        msg "Failed to cd into ${srcdir}/${pkgname}-${pkgver}"
-        return 1
+    msg "Failed to cd into ${srcdir}/${pkgname}-${pkgver}"
+    return 1
   }
 
   # Apply patches
@@ -59,8 +59,8 @@ prepare() {
 package() {
   # shellcheck disable=SC2154
   cd "${srcdir}/${pkgname}-${pkgver}" || {
-        msg "Failed to cd into ${srcdir}/${pkgname}-${pkgver}"
-        return 1
+    msg "Failed to cd into ${srcdir}/${pkgname}-${pkgver}"
+    return 1
   }
 
   # shellcheck disable=SC2154
