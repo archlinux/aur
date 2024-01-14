@@ -1,7 +1,7 @@
 # Maintainer: Haoxiang Fei <tonyfettes AT tonyfettes DOT com>
 
 pkgname=moonbit-bin
-pkgver=0.1.0.20231204
+pkgver=0.1.0.20240108
 pkgrel=1
 pkgdesc="Intelligent developer platform for Cloud and Edge using WASM"
 arch=('x86_64')
@@ -10,16 +10,19 @@ license=('unknown')
 depends=('glibc' 'gcc-libs' 'openssl-1.1')
 provides=("moonbit")
 conflicts=("moonbit")
-source=("https://cli.moonbitlang.com/ubuntu_x86/moon"
-        "https://cli.moonbitlang.com/ubuntu_x86/moonc"
-        "https://cli.moonbitlang.com/ubuntu_x86/moonfmt"
-        "https://cli.moonbitlang.com/ubuntu_x86/moonrun"
-        "https://cli.moonbitlang.com/ubuntu_x86/mooninfo")
-sha256sums=('9b6cd3830b457cc44deaf6f050603bf073e988b173a2f01cb9fddead1bbe83a0'
-            '071816387f1febf7edb2724783c857f83779af4f901068d70ef002666fb18209'
-            '44deb6621f177da1580248c020ac00282502bfc0728bd4016d23f8eeed957ee8'
+_download_url="https://cli.moonbitlang.com/ubuntu_x86"
+source=("${_download_url}/moon"
+        "${_download_url}/moonc"
+        "${_download_url}/moonfmt"
+        "${_download_url}/moonrun"
+        "${_download_url}/mooninfo"
+        "${_download_url}/moondoc")
+sha256sums=('6fd49f2f93ef9e17687b14a997935394151daeabc696a7c8980609799742030a'
+            'ada7ebc1b125e2a3faa3f4d481cc2e25a90bf62e1d6e078b7e6724a7a40c0824'
+            '8c27894d592c910aa52f5235fa55234652b18be6a30022ce05adbaf47facb974'
             '6005aa72c4a520da457674e9052259b8e08d5f788a1636f0f7c99bd7c0891b64'
-            '9166e22cc83749bb9b34eedd43d839e738f4df81c718cc2cbb00b2e3d722e0fc')
+            '102ff20c3347dc2353bacd071c49da98d6a76e86a783e0f977151ac7ce925083'
+            '304d7f4cfff94c6f78b572310d84aa42002339fa374b679022f872bc4217af55')
 
 pkgver() {
   cd "${srcdir}"
@@ -33,4 +36,5 @@ package() {
   install -Dm 755 "${srcdir}/moonfmt"  "${pkgdir}/usr/bin/moonfmt"
   install -Dm 755 "${srcdir}/moonrun"  "${pkgdir}/usr/bin/moonrun"
   install -Dm 755 "${srcdir}/mooninfo" "${pkgdir}/usr/bin/mooninfo"
+  install -Dm 755 "${srcdir}/moondoc" "${pkgdir}/usr/bin/moondoc"
 }
