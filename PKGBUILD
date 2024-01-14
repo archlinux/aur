@@ -36,6 +36,12 @@ prepare() {
 
   # Turn LTO on and set the build type to Release
   sed -i 's,T_CODE=on,T_CODE=on -D LLAMA_LTO=on -D CMAKE_BUILD_TYPE=Release,g' llm/generate/gen_linux.sh
+
+  # Let gen_linux.sh find libcudart.so
+  sed -i 's,/usr/local/cuda/lib64,/opt/cuda/targets/x86_64-linux/lib,g' llm/generate/gen_linux.sh
+
+  # Let gpu.go find libnvidia-ml.so from the cuda package
+  sed -i 's,/opt/cuda/lib64/libnvidia-ml.so*,/opt/cuda/targets/x86_64-linux/lib/stubs/libnvidia-ml.so*,g' gpu/gpu.go
 }
 
 build() {
