@@ -1,6 +1,6 @@
 pkgbase = python-wyoming-openwakeword
 	pkgdesc = Wyoming Server for OpenWakeWord
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/rhasspy/wyoming-openwakeword
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = python-wyoming-openwakeword
 	depends = python-openwakeword
 	depends = python-onnxruntime
 	depends = python-tflite-runtime
-	source = https://github.com/rhasspy/wyoming-openwakeword/archive/refs/tags/v1.8.1.tar.gz
+	source = https://github.com/rhasspy/wyoming-openwakeword/archive/refs/tags/v1.8.2.tar.gz
 	source = wyoming-openwakeword.conf
 	source = wyoming-openwakeword.service
-	sha256sums = fd6d839fe8b2ee7d0d561cf0757132ff1edc1fa6230feb469405c00719f43ac0
+	sha256sums = 0baa6bba5f3aac7b4eb7df0aad941c35fc3352f872356566727c267429f57cc1
 	sha256sums = 522aa6621f5a69eb1e60b0be483859c3611f43fb071c310c3ab4a74a7e0637a7
 	sha256sums = 23b19f25f5d5d5d734f3fbd2fd16a794e907df8ba80d0612debe0c45515343b5
 
