@@ -2,13 +2,13 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Prostar
-_pkgver=1.34.3
+_pkgver=1.34.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Provides a GUI for DAPAR"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(Artistic2.0)
 depends=(
   r-colourpicker
@@ -24,6 +24,7 @@ depends=(
   r-htmlwidgets
   r-knitr
   r-later
+  r-markdown
   r-promises
   r-r.utils
   r-rclipboard
@@ -50,12 +51,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ab3095af56a61bfe4fe81279dffcae21')
-sha256sums=('fbd6b410007bda8fb86038bbdf17da42e97f5a0dec948c1642ae039e1023c4f0')
+md5sums=('e98dfb92b8e5e4c4bdac5b66cd6232c7')
+b2sums=('1190b2cbfb244cc2d940c212666b4323f366ffc00b4d3884d9e8e2a178b171d76a69861688009edb639d6ba7ca0d52e3138e3adb03bd8e3680b9c7da77e97330')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
