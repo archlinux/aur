@@ -2,8 +2,8 @@
 
 pkgname="aider-chat"
 _pkgname="$pkgname"
-pkgver=0.21.0
-pkgrel=2
+pkgver=0.21.1
+pkgrel=1
 pkgdesc="AI pair programming in your terminal"
 url="https://aider.chat/"
 license=("Apache2")
@@ -31,7 +31,7 @@ makedepends=("python-packaging" "python-build" "python-installer" "python-wheel"
 optdepends=("python-sounddevice: portaudio support"
             "python-soundfile: portaudio support")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('3bbd48f85652f3209fff6204fb02cbcd4c489841c9a22a12fc9eb01d9107f9462de97cc949780abcb265dfa2126be25a4078ac1c235f4d8a32fecdc9e1d68007')
+b2sums=('44b0dff0aa5bb7bd3b024b7d74469837462a41d81e48394345ba27c3f744f699eccc270c2c4030b3abe407c542d397925da88b1da62b08b42a6c46a338904e45')
 options=("!strip")
 
 build(){
@@ -43,5 +43,5 @@ package(){
  cd "$pkgname-$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
  # remove three files that should not be there
- rm -rf "$pkgdir/usr/lib/python3.11/site-packages/tests/"{__init__.py,__pycache__/__init__.cpython-311.pyc,__pycache__/__init__.cpython-311.opt-1.pyc}
+ find "$pkgdir/usr/lib/" -depth -type d \( -name "benchmark" -o -name "tests" \) -exec rm -rf {} \;
 }
