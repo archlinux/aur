@@ -7,11 +7,12 @@ _pkgsource=$(curl https://api.github.com/repos/appium/appium-inspector/releases/
 pkgname="${_pkgname}"-appimage
 pkgver="${_pkgver}"
 pkgrel=1
-pkgdesc="Description of my project"
+pkgdesc="A GUI inspector for mobile apps and more, powered by a (separately installed) Appium server."
 arch=('x86_64')
 url="https://github.com/appium/appium-inspector/"
-license=('custom:Unlicense')
+license=('Apache Version 2.0')
 depends=('zlib' 'hicolor-icon-theme')
+makedepends=('grep' 'curl' 'cut')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 

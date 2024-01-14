@@ -1,10 +1,13 @@
 pkgbase = appium-inspector-appimage
-	pkgdesc = Description of my project
+	pkgdesc = A GUI inspector for mobile apps and more, powered by a (separately installed) Appium server.
 	pkgver = 2023.12.2
 	pkgrel = 1
 	url = https://github.com/appium/appium-inspector/
 	arch = x86_64
-	license = custom:Unlicense
+	license = Apache Version 2.0
+	makedepends = grep
+	makedepends = curl
+	makedepends = cut
 	depends = zlib
 	depends = hicolor-icon-theme
 	noextract = appium-inspector-appimage-2023.12.2.AppImage
