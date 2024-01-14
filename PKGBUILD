@@ -1,8 +1,8 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-09-04.
+# PKGBUILD last time manually edited: At least on 2024-01-14.
 
-_year=23
+_year=24
 url="https://chaps.cz/eng/download/idos/zip#kotvatt"
 _zipfile="VLAK${_year}C.ZIP"
 _pkgver() {
