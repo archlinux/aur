@@ -1,0 +1,17 @@
+pkgbase = python-grep-ast
+	pkgdesc = Grep source code and see useful code context about matching lines
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/paul-gauthier/grep-ast
+	arch = any
+	license = Apache2
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-tree-sitter-languages
+	depends = python-pathspec
+	source = https://files.pythonhosted.org/packages/source/g/grep-ast/grep-ast-0.2.4.tar.gz
+	b2sums = fe182d4002078632b3aa1a05ef1757868a34c9d4beaf752d7817fa87bc9c7fe29fea7034439221192af578d2f7cf948ecad2488a0993a973c6e004ea465a0801
+
+pkgname = python-grep-ast
