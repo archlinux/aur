@@ -1,15 +1,15 @@
-# Maintainer: Amber <amber@mail.cyborgtrees.com>
-# Contributor: Andrea Scarpino <andrea at archlinux.org>
+# Maintainer: Grego Dadone <grego.dadone@gmail.com>
+# Contributor: Grego Dadone <grego.dadone@gmail.com>
 
 pkgname=amor
 pkgver=15.08.3
-pkgrel=10
+pkgrel=11
 pkgdesc='On-Screen Creature'
 url='https://projects.kde.org/projects/kde/kdetoys/amor'
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
 groups=('kde-applications')
-depends=('kxmlgui' 'kwindowsystem' 'kconfig' 'ki18n' 'kcoreaddons' 'kdbusaddons' 'kdoctools' 'qt5-x11extras')
+depends=('kxmlgui5' 'kwindowsystem5' 'kconfig5' 'ki18n5' 'kcoreaddons5' 'kdbusaddons5' 'kdoctools5' 'qt5-x11extras')
 makedepends=('cmake' 'extra-cmake-modules')
 optdepends=(
 'amor-themes-extra: 26 extra themes for KDE AMOR'
