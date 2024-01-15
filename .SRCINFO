@@ -1,10 +1,10 @@
 pkgbase = proselint
 	pkgdesc = A linter for prose
 	pkgver = 0.13.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/amperser/proselint
 	arch = any
-	license = custom:BSD-3-Clause
+	license = BSD-3-Clause
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer

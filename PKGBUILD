@@ -5,11 +5,11 @@
 pkgname=proselint
 _name=${pkgname#python-}
 pkgver=0.13.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A linter for prose"
 arch=(any)
 url="https://github.com/amperser/proselint"
-license=(custom:BSD-3-Clause)
+license=(BSD-3-Clause)
 depends=(
   python
   python-click
