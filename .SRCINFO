@@ -14,15 +14,9 @@ pkgbase = jlink-systemview
 	source = SystemView.svg
 	md5sums = 89e75b3008c53de7fc22c00da5abba01
 	md5sums = 54635efec35cdbb6f60b997a8fceee74
-<<<<<<< HEAD
 	source_i686 = SystemView_Linux_V352a_i686.tgz::https://www.segger.com/downloads/systemview/systemview_linux_tgz32
 	md5sums_i686 = 4969a113501b44d5bacd79e1ffed22e8
 	source_x86_64 = SystemView_Linux_V352a_x86_64.tgz::https://www.segger.com/downloads/systemview/systemview_linux_tgz64
-=======
-	source_i686 = SystemView_Linux_V352a_i686.tgz::https://www.segger.com/downloads/jlink/systemview_linux_tgz32
-	md5sums_i686 = 4969a113501b44d5bacd79e1ffed22e8
-	source_x86_64 = SystemView_Linux_V352a_x86_64.tgz::https://www.segger.com/downloads/jlink/systemview_linux_tgz64
->>>>>>> ec24193 (v3.52a)
 	md5sums_x86_64 = adaec607d99890d961d61d8fcd5870fb
 
 pkgname = jlink-systemview
