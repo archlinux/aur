@@ -1,7 +1,7 @@
 # Maintainer: Rsplwe <i@rsplwe.com>
 
 pkgname=snipaste
-pkgver=2.8.9-Beta
+pkgver=2.8.9_Beta
 pkgrel=1
 pkgdesc="Snip & Paste!"
 arch=('x86_64')

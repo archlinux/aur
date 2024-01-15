@@ -1,6 +1,6 @@
 pkgbase = snipaste
 	pkgdesc = Snip & Paste!
-	pkgver = 2.8.9-Beta
+	pkgver = 2.8.9_Beta
 	pkgrel = 1
 	url = https://www.snipaste.com
 	arch = x86_64
