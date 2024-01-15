@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=upscayl-rpm-bin
-pkgver=2.9.5
+pkgver=2.9.6
 pkgrel=1
 pkgdesc="Free and Open Source AI Image Upscaler (binary release, system Electron)"
 url="https://github.com/upscayl/upscayl"
@@ -13,7 +13,7 @@ optdepends=('libappindicator-gtk3')
 provides=("upscayl")
 conflicts=("upscayl")
 source=("$url/releases/download/v$pkgver/upscayl-$pkgver-linux.rpm")
-sha256sums=('e9385d2dac7ad6e82e3c06a4571d0ad184335794cdbe27465cddd2cd3b1c7df3')
+sha256sums=('29b8f0b085d8bdc71f24cf93cf8d1d544b6ce39bdc7345dc40a2492f26debc09')
 
 prepare() {
 # Create an exec file

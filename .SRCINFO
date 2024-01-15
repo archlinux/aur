@@ -1,6 +1,6 @@
 pkgbase = upscayl-rpm-bin
 	pkgdesc = Free and Open Source AI Image Upscaler (binary release, system Electron)
-	pkgver = 2.9.5
+	pkgver = 2.9.6
 	pkgrel = 1
 	url = https://github.com/upscayl/upscayl
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = upscayl-rpm-bin
 	optdepends = libappindicator-gtk3
 	provides = upscayl
 	conflicts = upscayl
-	source = https://github.com/upscayl/upscayl/releases/download/v2.9.5/upscayl-2.9.5-linux.rpm
-	sha256sums = e9385d2dac7ad6e82e3c06a4571d0ad184335794cdbe27465cddd2cd3b1c7df3
+	source = https://github.com/upscayl/upscayl/releases/download/v2.9.6/upscayl-2.9.6-linux.rpm
+	sha256sums = 29b8f0b085d8bdc71f24cf93cf8d1d544b6ce39bdc7345dc40a2492f26debc09
 
 pkgname = upscayl-rpm-bin
