@@ -1,10 +1,11 @@
 pkgbase = zfs-dkms-staging-git
 	pkgdesc = Kernel modules for the Zettabyte File System (release staging branch).
-	pkgver = 2.2.2_r27_gac592318b8
+	pkgver = 2.2.2.r27.gac592318b8
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = any
 	license = CDDL-1.0
+	makedepends = git
 	provides = ZFS-MODULE
 	provides = SPL-MODULE
 	provides = zfs-dkms
@@ -17,5 +18,6 @@ pkgbase = zfs-dkms-staging-git
 	b2sums = 58dc2494e71b50833d44c126b72acad52e9817626542afbc245b7ba82009e8c8252ebde6023592aac42d9942207e7655c0a421da9067fbdd619746ebc372d791
 
 pkgname = zfs-dkms-staging-git
-	depends = zfs-utils=2.2.2
+	depends = zfs-utils>=2.2.2
+	depends = zfs-utils<=2.2.3
 	depends = dkms

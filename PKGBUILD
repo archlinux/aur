@@ -4,9 +4,14 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 _pkgname=zfs
-pkgname=zfs-dkms-staging-git
-_pkgver=2.2.3
-pkgver=2.2.2_r27_gac592318b8
+_git_repo=https://github.com/openzfs/zfs.git
+_git_branch="$(/usr/bin/git ls-remote -h --sort=v:refname "${_git_repo}" 'zfs-*-staging' | tail -n 1)"
+_git_branch=${_git_branch##*/}
+_target_ver=${_git_branch#zfs-}
+_target_ver=${_target_ver%-staging}
+
+pkgname=${_pkgname}-dkms-staging-git
+pkgver=2.2.2.r27.gac592318b8
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch)."
 arch=('any')
@@ -14,7 +19,8 @@ url="https://zfsonlinux.org/"
 license=('CDDL-1.0')
 provides=("ZFS-MODULE" "SPL-MODULE" "zfs-dkms")
 conflicts=("zfs-dkms")
-source=("${_pkgname}::git+https://github.com/openzfs/zfs.git#branch=zfs-${_pkgver}-staging"
+makedepends=("git")
+source=("${_pkgname}::git+${_git_repo}#branch=${_git_branch}"
         "0001-only-build-the-module-in-dkms.conf.patch")
 sha256sums=('SKIP'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5')
@@ -31,11 +37,13 @@ metaver() {
 pkgver() {
     cd "${srcdir}/${_pkgname}"
 
-    printf "%s_r%s_g%s" "$(metaver)" "$(git rev-list zfs-$(metaver)..HEAD --count)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.g%s" "$(metaver)" "$(git rev-list zfs-$(metaver)..HEAD --count)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
+
+    msg2 "Staging branch set to ${_git_branch}"
 
     patch -p1 -i ../0001-only-build-the-module-in-dkms.conf.patch
 
@@ -54,14 +62,16 @@ build() {
 
     ./scripts/dkms.mkconf -n ${_pkgname} -v $(metaver) -f dkms.conf
     ./scripts/make_gitrev.sh include/zfs_gitrev.h
+    _meta_release=${pkgver#*.r}
+    sed -i -e "s/Release:[[:print:]]*/Release:       ${_meta_release/./_}/" META
 }
 
 package() {
-    depends=("zfs-utils=$(metaver)" 'dkms')
+    depends=("zfs-utils>=$(metaver)" "zfs-utils<=${_target_ver}" 'dkms')
 
     cd "${srcdir}/${_pkgname}"
 
-    dkmsdir="${pkgdir}/usr/src/${_pkgname}-$(metaver)"
+    dkmsdir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
     install -d "${dkmsdir}"/{config,scripts}
     cp -a configure dkms.conf Makefile.in META ${_pkgname}_config.h.in ${_pkgname}.release.in include/ module/ "${dkmsdir}"/
     cp config/compile config/config.* config/missing config/*sh "${dkmsdir}"/config/
