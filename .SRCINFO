@@ -1,6 +1,6 @@
 pkgbase = element-desktop-git
 	pkgdesc = Glossy Matrix collaboration client —
-	pkgver = 1.11.2.rc.1.r41.g39eee10c57
+	pkgver = 1.11.39.r16.g65f7545ba5
 	pkgrel = 1
 	url = https://element.io
 	arch = x86_64
@@ -32,15 +32,12 @@ pkgname = element-web-git
 	pkgdesc = Glossy Matrix collaboration client — web version.
 	provides = element-web
 	conflicts = element-web
-	replaces = riot-web
-	replaces = vector-web
 
 pkgname = element-desktop-git
 	pkgdesc = Glossy Matrix collaboration client — desktop version.
-	depends = element-web-git=1.11.2.rc.1.r41.g39eee10c57
+	depends = element-web-git=1.11.39.r16.g65f7545ba5
 	depends = electron
 	depends = libsecret
 	provides = element-desktop
 	conflicts = element-desktop
-	replaces = riot-desktop
 	backup = etc/element/config.json

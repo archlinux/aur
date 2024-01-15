@@ -63,7 +63,7 @@ build() {
 
 package_element-web-git() {
   pkgdesc+="web version."
-  replaces=(riot-web vector-web)
+  #replaces=(riot-web vector-web)
   provides=(element-web)
   conflicts=(element-web)
 
@@ -79,7 +79,7 @@ package_element-web-git() {
 
 package_element-desktop-git() {
   pkgdesc+="desktop version."
-  replaces=(riot-desktop)
+  #replaces=(riot-desktop)
   depends=("element-web-git=${pkgver}" ${_electron} libsecret)
   provides=(element-desktop)
   conflicts=(element-desktop)
