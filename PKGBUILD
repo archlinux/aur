@@ -2,8 +2,8 @@
 
 pkgname=hererocks
 pkgver=0.25.1
-pkgrel=5
-pkgdesc="Tool for installing Lua and LuaRocks locally"
+pkgrel=6
+pkgdesc="Python script for installing Lua/LuaJIT and LuaRocks into a local directory"
 arch=(any)
 url="https://github.com/luarocks/hererocks"
 license=(MIT)
@@ -34,7 +34,7 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest \
+  pytest \
     --deselect test/cli_test.py::TestCLI::test_install_latest_lua_with_latest_luarocks \
     --deselect test/cli_test.py::TestCLI::test_install_latest_lua_with_luarocks_from_git \
     --deselect test/cli_test.py::TestCLI::test_install_lua_5_1_without_compat_without_readline_with_old_luarocks \
