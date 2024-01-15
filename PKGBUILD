@@ -2,14 +2,14 @@
 
 pkgname=codechecker
 pkgver=6.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy"
 arch=(x86_64)
 url="https://github.com/Ericsson/codechecker"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
-  glibc
   gcc-libs
+  glibc
   python
 )
 makedepends=(
@@ -43,7 +43,7 @@ build() {
 
   make venv
   # shellcheck disable=SC1091
-  source "$(pwd)/venv/bin/activate"
+  source "$PWD/venv/bin/activate"
 
   # Parallel builds fail
   export MAKEFLAGS="-j1"

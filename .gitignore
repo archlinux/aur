@@ -3,4 +3,3 @@
 !PKGBUILD
 !.SRCINFO
 !fix-ldflags.patch
-!update-node-dependencies-vue-cli.patch.gz

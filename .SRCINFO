@@ -1,14 +1,14 @@
 pkgbase = codechecker
 	pkgdesc = Analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy
 	pkgver = 6.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ericsson/codechecker
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = npm
 	makedepends = python-pip
-	depends = glibc
 	depends = gcc-libs
+	depends = glibc
 	depends = python
 	optdepends = clang: for running Clang Static Analyzer and Clang Tidy
 	optdepends = cppcheck: for running CPPCheck analysis
