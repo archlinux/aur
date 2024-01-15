@@ -1,0 +1,14 @@
+pkgbase = musyx-extract-git
+	pkgdesc = Sample extractor for GameCube MusyX files
+	pkgver = r18.1d9e5c4
+	pkgrel = 1
+	url = https://github.com/Nisto/musyx-extract
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	provides = musyx-extract
+	source = git+https://github.com/Nisto/musyx-extract.git
+	md5sums = SKIP
+
+pkgname = musyx-extract-git
