@@ -3,11 +3,11 @@
 pkgname=python-environ-config
 _name=${pkgname#python-}
 pkgver=23.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python Application Configuration With Environment Variables"
 arch=(any)
 url="https://github.com/hynek/environ-config"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   python
   python-attrs
@@ -41,9 +41,9 @@ check() {
   cd "$_archive"
 
   rm -rf tmp_install
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
 
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH"
   pytest \
     --deselect tests/test_packaging.py::TestLegacyMetadataHack

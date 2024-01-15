@@ -1,10 +1,10 @@
 pkgbase = python-environ-config
 	pkgdesc = Python Application Configuration With Environment Variables
 	pkgver = 23.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hynek/environ-config
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-moto
 	checkdepends = python-pytest
 	makedepends = python-build
