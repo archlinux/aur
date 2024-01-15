@@ -1,8 +1,9 @@
 _name='phosh-osk-stub'
 pkgname="$_name-git"
 pkgver=0.35.0.r4.g59f99d7
-pkgrel=2
-pkgdesc="An alternative OSK for phosh"
+pkgrel=3
+pkgdesc="An experimental alternative OSK for phosh"
+install="phosh-osk-stub.install"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/guidog/$_name"
 license=('GPL-3.0-only')
@@ -27,8 +28,12 @@ conflicts=(
     ${_name}
 )
 
-source=("${_name}::git+$url")
-sha256sums=('SKIP')
+source=(
+    "${_name}::git+$url"
+    "phosh-osk-stub.install"
+)
+sha512sums=('SKIP'
+            '23dc7bc6f62cfd0e87a36c7d26683fd3df605ba3845bee8dce8ad5ab5620a44bc682361416a79f1232133bb8dc3d14e2d76e44976258609173b498c72baec105')
 
 
 pkgver() {
