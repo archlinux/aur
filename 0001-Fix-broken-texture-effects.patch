@@ -1,0 +1,161 @@
+From d2c7cc22d2b62e971bafad05568639e3f5965342 Mon Sep 17 00:00:00 2001
+From: Alexander Pavlov <t.x00100x.t@yandex.ru>
+Date: Wed, 20 Dec 2023 23:36:34 +0300
+Subject: [PATCH] Fix broken texture effects.
+
+---
+ .../Engine/Graphics/TextureEffects.cpp        | 24 +++++++++----------
+ .../Engine/Graphics/TextureEffects.cpp        | 24 +++++++++----------
+ 2 files changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/SamTFE/Sources/Engine/Graphics/TextureEffects.cpp b/SamTFE/Sources/Engine/Graphics/TextureEffects.cpp
+index 2670de2..42a1ba5 100644
+--- a/SamTFE/Sources/Engine/Graphics/TextureEffects.cpp
++++ b/SamTFE/Sources/Engine/Graphics/TextureEffects.cpp
+@@ -269,10 +269,10 @@ void AnimateRandomSurfer(CTextureEffectSource *ptes)
+   Surfer &sf =
+     (*((Surfer *) ptes->tes_tespEffectSourceProperties.tesp_achDummy));
+ 
+-  PutPixel9SLONG_WATER((long) sf.fU, (long) sf.fV, 125);
++  PutPixel9SLONG_WATER(sf.fU, sf.fV, 125);
+   sf.fU += 2*sin(sf.fAngle);
+   sf.fV += 2*cos(sf.fAngle);
+-  PutPixel9SLONG_WATER((long) sf.fU, (long) sf.fV, 250);
++  PutPixel9SLONG_WATER(sf.fU, sf.fV, 250);
+ 
+   if((RNDW&15)==0) {
+     sf.fAngle += 3.14f/7.0f;
+@@ -326,7 +326,7 @@ void AnimateRaindrops(CTextureEffectSource *ptes, int iHeight)
+       rd.iIndex++;
+ 
+       if (rd.iIndex < 8) {
+-        PutPixel9SLONG_WATER(rd.pixU, rd.pixV, (long) sin(rd.iIndex/4.0f*(-3.14f))*rd.iHeight);
++        PutPixel9SLONG_WATER(rd.pixU, rd.pixV, sin(rd.iIndex/4.0f*(-3.14f))*rd.iHeight);
+       }
+     } else {
+       rd.pixU = RNDW&(_pixBufferWidth -1);  
+@@ -369,7 +369,7 @@ void AnimateOscilator(CTextureEffectSource *ptes)
+ {
+   Oscilator &os =
+     (*((Oscilator *) ptes->tes_tespEffectSourceProperties.tesp_achDummy));
+-  PutPixel9SLONG_WATER(os.pixU, os.pixV, (long) sin(os.fAngle)*150);
++  PutPixel9SLONG_WATER(os.pixU, os.pixV, sin(os.fAngle)*150);
+   os.fAngle += (3.14f/6);
+ }
+ 
+@@ -403,7 +403,7 @@ void AnimateVertLine(CTextureEffectSource *ptes)
+     (*((VertLine *) ptes->tes_tespEffectSourceProperties.tesp_achDummy));
+   PIX pixV = vl.pixV;
+   for (int iCnt=0; iCnt<vl.uwSize; iCnt++) {
+-    PutPixelSLONG_WATER(vl.pixU, pixV, (long) (sin(vl.fAngle)*25));
++    PutPixelSLONG_WATER(vl.pixU, pixV, (sin(vl.fAngle)*25));
+     pixV = (pixV+1)&(_pixBufferHeight-1);
+   }
+   vl.fAngle += (3.14f/6);
+@@ -439,7 +439,7 @@ void AnimateHortLine(CTextureEffectSource *ptes)
+     (*((HortLine *) ptes->tes_tespEffectSourceProperties.tesp_achDummy));
+   PIX pixU = hl.pixU;
+   for (int iCnt=0; iCnt<hl.uwSize; iCnt++) {
+-    PutPixelSLONG_WATER(pixU, hl.pixV, (long) (sin(hl.fAngle)*25));
++    PutPixelSLONG_WATER(pixU, hl.pixV, (sin(hl.fAngle)*25));
+     pixU = (pixU+1)&(_pixBufferWidth-1);
+   }
+   hl.fAngle += (3.14f/6);
+@@ -622,14 +622,14 @@ void AnimateFireRoler(CTextureEffectSource *ptes)
+ {
+   FireRoler &fr =
+     (*((FireRoler *) ptes->tes_tespEffectSourceProperties.tesp_achDummy));
+-  PutPixel9UBYTE_FIRE((long) (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
+-                      (long) (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 255);
++  PutPixel9UBYTE_FIRE( (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
++                       (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 255);
+   fr.fAngle += fr.fAngleAdd;
+-  PutPixel9UBYTE_FIRE((long) (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
+-                      (long) (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 200);
++  PutPixel9UBYTE_FIRE( (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
++                       (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 200);
+   fr.fAngle += fr.fAngleAdd;
+-  PutPixel9UBYTE_FIRE((long) (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
+-                      (long) (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 150);
++  PutPixel9UBYTE_FIRE( (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
++                       (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 150);
+   fr.fAngle += fr.fAngleAdd;
+ }
+ 
+diff --git a/SamTSE/Sources/Engine/Graphics/TextureEffects.cpp b/SamTSE/Sources/Engine/Graphics/TextureEffects.cpp
+index 2670de2..42a1ba5 100644
+--- a/SamTSE/Sources/Engine/Graphics/TextureEffects.cpp
++++ b/SamTSE/Sources/Engine/Graphics/TextureEffects.cpp
+@@ -269,10 +269,10 @@ void AnimateRandomSurfer(CTextureEffectSource *ptes)
+   Surfer &sf =
+     (*((Surfer *) ptes->tes_tespEffectSourceProperties.tesp_achDummy));
+ 
+-  PutPixel9SLONG_WATER((long) sf.fU, (long) sf.fV, 125);
++  PutPixel9SLONG_WATER(sf.fU, sf.fV, 125);
+   sf.fU += 2*sin(sf.fAngle);
+   sf.fV += 2*cos(sf.fAngle);
+-  PutPixel9SLONG_WATER((long) sf.fU, (long) sf.fV, 250);
++  PutPixel9SLONG_WATER(sf.fU, sf.fV, 250);
+ 
+   if((RNDW&15)==0) {
+     sf.fAngle += 3.14f/7.0f;
+@@ -326,7 +326,7 @@ void AnimateRaindrops(CTextureEffectSource *ptes, int iHeight)
+       rd.iIndex++;
+ 
+       if (rd.iIndex < 8) {
+-        PutPixel9SLONG_WATER(rd.pixU, rd.pixV, (long) sin(rd.iIndex/4.0f*(-3.14f))*rd.iHeight);
++        PutPixel9SLONG_WATER(rd.pixU, rd.pixV, sin(rd.iIndex/4.0f*(-3.14f))*rd.iHeight);
+       }
+     } else {
+       rd.pixU = RNDW&(_pixBufferWidth -1);  
+@@ -369,7 +369,7 @@ void AnimateOscilator(CTextureEffectSource *ptes)
+ {
+   Oscilator &os =
+     (*((Oscilator *) ptes->tes_tespEffectSourceProperties.tesp_achDummy));
+-  PutPixel9SLONG_WATER(os.pixU, os.pixV, (long) sin(os.fAngle)*150);
++  PutPixel9SLONG_WATER(os.pixU, os.pixV, sin(os.fAngle)*150);
+   os.fAngle += (3.14f/6);
+ }
+ 
+@@ -403,7 +403,7 @@ void AnimateVertLine(CTextureEffectSource *ptes)
+     (*((VertLine *) ptes->tes_tespEffectSourceProperties.tesp_achDummy));
+   PIX pixV = vl.pixV;
+   for (int iCnt=0; iCnt<vl.uwSize; iCnt++) {
+-    PutPixelSLONG_WATER(vl.pixU, pixV, (long) (sin(vl.fAngle)*25));
++    PutPixelSLONG_WATER(vl.pixU, pixV, (sin(vl.fAngle)*25));
+     pixV = (pixV+1)&(_pixBufferHeight-1);
+   }
+   vl.fAngle += (3.14f/6);
+@@ -439,7 +439,7 @@ void AnimateHortLine(CTextureEffectSource *ptes)
+     (*((HortLine *) ptes->tes_tespEffectSourceProperties.tesp_achDummy));
+   PIX pixU = hl.pixU;
+   for (int iCnt=0; iCnt<hl.uwSize; iCnt++) {
+-    PutPixelSLONG_WATER(pixU, hl.pixV, (long) (sin(hl.fAngle)*25));
++    PutPixelSLONG_WATER(pixU, hl.pixV, (sin(hl.fAngle)*25));
+     pixU = (pixU+1)&(_pixBufferWidth-1);
+   }
+   hl.fAngle += (3.14f/6);
+@@ -622,14 +622,14 @@ void AnimateFireRoler(CTextureEffectSource *ptes)
+ {
+   FireRoler &fr =
+     (*((FireRoler *) ptes->tes_tespEffectSourceProperties.tesp_achDummy));
+-  PutPixel9UBYTE_FIRE((long) (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
+-                      (long) (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 255);
++  PutPixel9UBYTE_FIRE( (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
++                       (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 255);
+   fr.fAngle += fr.fAngleAdd;
+-  PutPixel9UBYTE_FIRE((long) (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
+-                      (long) (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 200);
++  PutPixel9UBYTE_FIRE( (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
++                       (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 200);
+   fr.fAngle += fr.fAngleAdd;
+-  PutPixel9UBYTE_FIRE((long) (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
+-                      (long) (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 150);
++  PutPixel9UBYTE_FIRE( (cos(fr.fAngle)*fr.fRadiusU + fr.pixU),
++                       (sin(fr.fAngle)*fr.fRadiusV + fr.pixV), 150);
+   fr.fAngle += fr.fAngleAdd;
+ }
+ 
+-- 
+2.41.0
+
