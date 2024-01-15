@@ -3,7 +3,7 @@
 pkgname=python-pytensor
 _name=${pkgname#python-}
 pkgver=2.18.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
 url="https://github.com/pymc-devs/pytensor"
@@ -115,10 +115,6 @@ check() {
   rm -rf tmp_install
   _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
-
-  # Remove non-built package to avoid it overriding the built one in
-  # tmp_install.
-  rm -r pytensor
 
   export PYTHONPATH="$PWD/tmp_install/$_site_packages"
   # shellcheck disable=SC2086
