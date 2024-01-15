@@ -4,7 +4,7 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Legend Of Zelda: Link to the Past game powered by the zelda3."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/zelda3pkg/Zeldalttp"
+arch=('pentium4' 'i386' 'i686' 'x86_64' 'aarch64')
 license=('GPL')
 depends=('zelda3-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
@@ -26,7 +26,7 @@ package() {
     else
         echo "$FILE does not exist, Starting download.."
         cd $srcdir/$pkgname-$pkgver-$pkgrel
-        wget "https://archive.org/download/zelda3_assets/zelda3_assets.dat"
+        #wget "https://archive.org/download/zelda3_assets/zelda3_assets.dat"
     fi    
     cd $srcdir/$pkgname-$pkgver-$pkgrel
     cp "$srcdir/$pkgname-$pkgver-$pkgrel/$pkgname" "$pkgdir/usr/bin"
