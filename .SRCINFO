@@ -1,5 +1,5 @@
 pkgbase = emacs-markdown-mode-git
-	pkgdesc = Emacs markdown-mode
+	pkgdesc = Emacs markdown-mode (latest git version)
 	pkgver = 2.4.r330.ge096bb9
 	pkgrel = 1
 	url = https://jblevins.org/projects/markdown-mode/

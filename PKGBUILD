@@ -5,7 +5,7 @@
 pkgname=emacs-markdown-mode-git
 pkgver=2.4.r330.ge096bb9
 pkgrel=1
-pkgdesc='Emacs markdown-mode'
+pkgdesc='Emacs markdown-mode (latest git version)'
 arch=('i686' 'x86_64')
 url='https://jblevins.org/projects/markdown-mode/'
 license=('GPL')
