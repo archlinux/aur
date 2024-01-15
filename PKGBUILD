@@ -4,7 +4,7 @@
 _pkgname='ov'
 pkgname="${_pkgname}-git"
 pkgver=0.33.1.r0.g06feaa0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Feature-rich terminal-based text pager (built from latest git commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -36,6 +36,17 @@ build() {
 
   _pkgver=$(git describe --tags --abbrev=0 --always)
   _pkgrev=$(git rev-parse --verify --short HEAD)
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
