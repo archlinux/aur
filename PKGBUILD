@@ -6,7 +6,7 @@
 # see: https://photivo.org/download/gimp#photivo_to_gimp
 
 pkgname=photivo-git
-pkgver=20230625_f22d1a3
+pkgver=20231208_259d0ae
 pkgrel=1
 epoch=1
 pkgdesc="Free and open source photo processor"
@@ -30,24 +30,15 @@ pkgver() {
 }
 
 build() {
-    cmake -G "Unix Makefiles" -S photivo -B "build-$pkgver" \
-          -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    cd "build-$pkgver"
-    make
+    cmake -S photivo -B "build-$pkgver" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build "build-$pkgver"
 }
 
 package() {
-    cd "build-$pkgver"
-    make DESTDIR="$pkgdir/" install
-    cd ..
-
-    # GIMP plugin *Export to Photivo*
-    install -Dm 755 \
-            "photivo/mm extern photivo.py" \
-            "$pkgdir/usr/lib/gimp/2.0/plug-ins/mm-extern-photivo.py"
+    DESTDIR="$pkgdir" cmake --install "build-$pkgver"
 
     # licence because Arch does not provide a *GPL3 only* one
-    sed -n '/Photivo is free software/,//p'  "photivo/README" > "build-$pkgver/LICENSE"
+    sed -n '/Photivo is free software/,//p'  "photivo/README.md" > "build-$pkgver/LICENSE"
     cat "photivo/COPYING" >> "build-$pkgver/LICENSE"
     install -Dm 644 "build-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
