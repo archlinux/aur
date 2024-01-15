@@ -6,13 +6,13 @@
 pkgname=python-mlxtend
 _name="${pkgname#python-}"
 pkgver=0.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library of Python tools and extensions for data science"
 arch=(any)
 url="https://github.com/rasbt/mlxtend"
 license=(
-  CCPL
-  custom:BSD-3-Clause
+  BSD-3-Clause
+  CC-BY-SA-4.0
 )
 depends=(
   python
@@ -64,14 +64,19 @@ build() {
 check() {
   cd "$_archive"
 
-  rm -r build
-  python -m pytest \
+  rm -rf tmp_install
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  pytest mlxtend/ \
+    --ignore mlxtend/evaluate/f_test.py \
     --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_StackingClassifier \
     --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_StackingClassifier_proba_avg_1 \
     --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_StackingClassifier_proba_concat_1 \
     --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_decision_function \
     --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_use_features_in_secondary_predict \
-    --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_use_features_in_secondary_sparse_in \
+    --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_use_features_in_secondary_sparse_input_predict \
     --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_use_probas \
     --deselect mlxtend/classifier/tests/test_stacking_cv_classifier.py::test_StackingCVClassifier \
     --deselect mlxtend/classifier/tests/test_stacking_cv_classifier.py::test_StackingClassifier_proba \

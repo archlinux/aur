@@ -1,11 +1,11 @@
 pkgbase = python-mlxtend
 	pkgdesc = Library of Python tools and extensions for data science
 	pkgver = 0.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rasbt/mlxtend
 	arch = any
-	license = CCPL
-	license = custom:BSD-3-Clause
+	license = BSD-3-Clause
+	license = CC-BY-SA-4.0
 	checkdepends = python-pytest
 	checkdepends = python-tensorflow
 	makedepends = python-build
