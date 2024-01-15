@@ -3,11 +3,11 @@
 pkgname=ruby-matrix
 _name=${pkgname#ruby-}
 pkgver=0.4.2
-pkgrel=5
-pkgdesc='An implementation of Matrix and Vector classes'
+pkgrel=6
+pkgdesc="An implementation of Matrix and Vector classes"
 arch=(any)
-url='https://github.com/ruby/matrix'
-license=('custom:BSD2')
+url="https://github.com/ruby/matrix"
+license=(BSD-2-Clause)
 
 depends=(ruby)
 makedepends=(rubygems)
@@ -84,6 +84,6 @@ package() {
 
   cp --archive --verbose tmp_install/* "$pkgdir"
 
-  install --verbose -D --mode=0644 LICENSE.txt --target-directory "$pkgdir/usr/share/licenses/$pkgname"
-  install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
+  install --verbose -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install --verbose -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
