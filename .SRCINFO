@@ -1,7 +1,7 @@
 pkgbase = python-kintree
 	pkgdesc = Fast part creation in KiCad and InvenTree
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sparkmicro/Ki-nTree
 	arch = any
 	license = GPL3

@@ -2,7 +2,7 @@
 pkgname=python-kintree
 _name=${pkgname#python-}
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
 depends=(
@@ -32,4 +32,5 @@ build() {
 package() {
     cd "$srcdir/$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    chmod 777 -R $pkgdir
 }
