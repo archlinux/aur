@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Watcher of system's currently playing media for ActivityWatch"
 arch=('x86_64')
 url="https://github.com/2e3s/$_name"
-license=('The Unlicense')
+license=('Unlicense')
 
 depends=(
     activitywatch
