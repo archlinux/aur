@@ -5,11 +5,11 @@
 
 pkgname=kubetail
 pkgver=1.6.18
-pkgrel=1
-pkgdesc='Tail Kubernetes logs from multiple pods'
+pkgrel=2
+pkgdesc="Tail Kubernetes logs from multiple pods"
 arch=(any)
-url='https://github.com/johanhaleby/kubetail'
-license=(Apache)
+url="https://github.com/johanhaleby/kubetail"
+license=(Apache-2.0)
 depends=(
   bash
   kubectl
@@ -22,10 +22,10 @@ _archive="$pkgname-$pkgver"
 package() {
   cd "$_archive"
 
-  install -Dm 755 kubetail "$pkgdir/usr/bin/kubetail"
+  install -Dm755 -t "$pkgdir/usr/bin" kubetail
 
   # Populate shell completions
-  install -Dm 644 completion/kubetail.bash "$pkgdir/usr/share/bash-completion/completions/kubetail"
-  install -Dm 644 completion/kubetail.zsh "$pkgdir/usr/share/zsh/site-functions/_kubetail"
-  install -Dm 644 completion/kubetail.fish "$pkgdir/usr/share/fish/vendor_completions.d/kubetail.fish"
+  install -Dm644 completion/kubetail.bash "$pkgdir/usr/share/bash-completion/completions/kubetail"
+  install -Dm644 completion/kubetail.zsh "$pkgdir/usr/share/zsh/site-functions/_kubetail"
+  install -Dm644 completion/kubetail.fish "$pkgdir/usr/share/fish/vendor_completions.d/kubetail.fish"
 }

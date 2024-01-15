@@ -1,10 +1,10 @@
 pkgbase = kubetail
 	pkgdesc = Tail Kubernetes logs from multiple pods
 	pkgver = 1.6.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johanhaleby/kubetail
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	depends = bash
 	depends = kubectl
 	source = kubetail-1.6.18.tar.gz::https://github.com/johanhaleby/kubetail/archive/refs/tags/1.6.18.tar.gz
