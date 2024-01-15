@@ -23,7 +23,7 @@ depends=(
 	openmpi
 	qhull
 	qt6-base
-	qt6-webkit
+	qt6-webengine
 	vtk
 	pugixml
 	fmt
