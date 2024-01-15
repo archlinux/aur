@@ -72,5 +72,5 @@ package() {
 
 	# Symlink executable
 	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "${pkgdir}/opt/${pkgname}/replay" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/opt/${pkgname}/replay" "${pkgdir}/usr/bin/${pkgname}"
 }
