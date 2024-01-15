@@ -6,7 +6,7 @@
 # Contributor: lubosz
 
 pkgname=pcl-git
-pkgver=r14238.19a822164
+pkgver=r14291.cc9c979cd
 pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
@@ -64,7 +64,7 @@ prepare() {
     export PATH="/opt/cuda/bin:$PATH"  # FIX for CUDA 12.3
 	cmake "${srcdir}/pcl" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
+		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -fPIC" \
 		-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -Wl,--as-needed" \
 		-DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -Wl,--as-needed" \
 		-DCMAKE_CUDA_ARCHITECTURES="52;60;60;62;70;72;75;80;86;86-virtual" \
@@ -87,7 +87,7 @@ prepare() {
 		-DBUILD_simulation=ON \
 		-DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc \
 		-DCMAKE_MODULE_PATH=/usr/lib/cmake/OpenVDB \
-		-DWITH_QT=QT5
+		-DWITH_QT=QT6
 }
 
 build() {

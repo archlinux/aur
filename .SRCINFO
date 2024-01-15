@@ -1,6 +1,6 @@
 pkgbase = pcl-git
 	pkgdesc = a standalone, large scale, open project for 2D/3D image and point cloud processing
-	pkgver = r14238.19a822164
+	pkgver = r14291.cc9c979cd
 	pkgrel = 1
 	url = http://pointclouds.org/
 	arch = i686
