@@ -2,7 +2,7 @@
 # Contributor: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=kaiteki-bin
 _pkgname=Kaiteki
-pkgver=2024_01
+pkgver=2024_02
 pkgrel=1
 pkgdesc="A comfy Fediverse client for microblogging instances, made with Flutter and Dart. Currently with simple Mastodon, Pleroma, Misskey and Calckey support"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/weekly-${pkgver//_/-}/linux.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c87f2919d4a25cdf47b0b6645019fe928b2eaf94c53841a2c272cbf867b53399'
+sha256sums=('1d58a8439b0f535ae9b37ffd460bdd391c38f9c74a80d361cd215301c9879b49'
             '07c295fbb74a50ae5c27e5d0ee1a55f8ef4f3be793dcb7490d8d7df20be9d90a')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
