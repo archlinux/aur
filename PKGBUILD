@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='LocalCDN addon for Firefox'
 arch=('any')
 url=https://www.localcdn.org/
-license=('MPL2')
+license=('MPL-2.0')
 groups=('firefox-addons')
 makedepends=('git' 'zip' 'strip-nondeterminism')
 source=("git+https://codeberg.org/nobody/LocalCDN.git#commit=$_commit?signed")
