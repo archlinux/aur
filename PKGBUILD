@@ -10,13 +10,18 @@ url="https://github.com/mbridak/not1mm"
 makedepends=(git python-build python-installer python-wheel)
 depends=(
 python
+gtk4
+hamradio-menus
+python-gobject
 python-pyqt5
 python-requests
 python-dicttoxml
 python-xmltodict
 python-psutil
+python-notctyparser
 python-sounddevice
 python-soundfile
+python-pyserial
 python-numpy
 )
 optdepends=(hamlib flrig)
