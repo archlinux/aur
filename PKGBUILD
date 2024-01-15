@@ -31,7 +31,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'ab42613343e315766f1af54fed9c5bb1d1644828665cd995b6b849fcc35b6d66')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -53,15 +53,15 @@ build() {
     sed "s|electron-builder\",|electron-builder --linux AppImage\",|g" -i packages/electron/package.json
     yarn install
     cd "${srcdir}/${pkgname}.git/packages/shared"
-    yarn build
+    yarn run build
     cd "${srcdir}/${pkgname}.git/packages/manager"
-    yarn build
-    yarn app:build -p never
+    yarn run build
+    yarn run app:build -p never
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/packages/electron/build/${pkgver}/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/packages/electron/build/${pkgver}/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/packages/electron/build/${pkgver}/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/packages/electron/build/${pkgver}/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.git/packages/electron/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
