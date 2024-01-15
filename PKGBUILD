@@ -1,4 +1,4 @@
-# Maintainer: Ryan Paroz <ryan@paroz.io>
+# Maintainer: TPHRyan <ryan.paroz@gmail.com>
 pkgname=git-ps-rs
 pkgver=6.9.0
 pkgrel=1
