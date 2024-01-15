@@ -1,4 +1,5 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
+# Contributor: xiota
 # Contributor: said
 # Contributor: Milos Kaurin <milos dot kaurin gmail>
 
@@ -11,15 +12,15 @@ arch=('x86_64')
 url="https://github.com/borisbrodski/sevenzipjbinding"
 license=('LGPL')
 depends=('java-runtime>8')
-makedepends=('gcc10' 'cmake' 'jdk8-openjdk')
+makedepends=('gcc' 'cmake' 'jdk8-openjdk')
 source=(https://github.com/borisbrodski/sevenzipjbinding/archive/Release-$_pkgver.tar.gz)
 md5sums=('310ce9e5d70ac42cd9390251cbfed9f1')
 
 build() {
   cd "$srcdir"/sevenzipjbinding-Release-$_pkgver
-  export CC=/usr/bin/gcc-10
-  export CXX=/usr/bin/g++-10
-  cmake -DJAVA_JDK=/usr/lib/jvm/java-8-openjdk .
+  #export CC=/usr/bin/gcc-10
+  #export CXX=/usr/bin/g++-10
+  CXXFLAGS+=" -std=c++11" cmake -DJAVA_JDK=/usr/lib/jvm/java-8-openjdk .
   make
 }
 
