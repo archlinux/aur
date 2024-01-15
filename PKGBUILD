@@ -4,7 +4,7 @@
 pkgname=('jed-git')
 _pkgname="${pkgname/-git/}"
 pkgver='0.99.20.r180.g68f0c75'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Powerful scriptable editor designed for use by programmers (built from latest git commit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://www.jedsoft.org/jed/'
@@ -15,7 +15,7 @@ source=(
 license=('GPL')
 provides=('jed' 'xjed' 'rgrep')
 conflicts=('jed' 'xjed' 'rgrep')
-options=('lto')
+options=('lto' '!makeflags')
 depends=(
   'fontconfig'
   'glibc'
