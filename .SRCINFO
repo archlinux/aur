@@ -1,11 +1,17 @@
 pkgbase = ocr-fonts
 	pkgdesc = Free versions of OCR-A and OCR-B fonts
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tsukurimashou.osdn.jp/ocr.php.en
 	arch = any
 	license = other
-	source = https://osdn.net/projects/tsukurimashou/downloads/74864/ocr-0.3.zip
-	sha256sums = 9091dc8ca4fe13ac47b34ea98e795039c9e5432357184c8891af94dc796284fd
+	source = OCRA.ttf
+	source = OCRA.otf
+	source = OCRB.ttf
+	source = OCRB.otf
+	sha256sums = db3a70dcfab1fcc0e32f88f9413876dccd267a0e377dd8afa7a18e4fe7cba018
+	sha256sums = fcd7179e54867b9f4dd826dc4c8cca0caf93d71875b73d684f4d02c32493d7d7
+	sha256sums = 67b11c470222c7bb4550e7d4c216fd06145a939208af77e5f946bcee53e70868
+	sha256sums = 87c8d5bfd541d28023d2ba3383169c49f565e10d487ebb027ea0d735ef558707
 
 pkgname = ocr-fonts
