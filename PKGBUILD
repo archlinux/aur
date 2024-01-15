@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/ccontavalli/ssh-ident"
 license=('BSD')
 depends=(openssh python)
+makedepends=(git)
 install=ssh-ident.install
 source=('git+https://github.com/ccontavalli/ssh-ident.git'
         'ssh-ident.install')

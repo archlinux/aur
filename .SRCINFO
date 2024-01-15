@@ -6,6 +6,7 @@ pkgbase = ssh-ident-git
 	install = ssh-ident.install
 	arch = any
 	license = BSD
+	makedepends = git
 	depends = openssh
 	depends = python
 	source = git+https://github.com/ccontavalli/ssh-ident.git
@@ -14,4 +15,3 @@ pkgbase = ssh-ident-git
 	sha1sums = 6ce215ed4f976e565d1ceb5d2c302c726e0716d0
 
 pkgname = ssh-ident-git
-
