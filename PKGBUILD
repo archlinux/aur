@@ -2,7 +2,7 @@
 
 _pkgname=gow
 pkgname=gow-git
-pkgver=r51.a5bfab2
+pkgver=r69.af11a6e
 pkgrel=1
 pkgdesc='Missing watch mode for Go commands'
 arch=('x86_64' 'armv7h' 'aarch64')
