@@ -166,7 +166,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.6
-_minor=10
+_minor=12
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -225,7 +225,7 @@ case "$_cpusched" in
     cachyos) # CachyOS Scheduler (EEVDF + BORE)
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     bore) ## BORE Scheduler
-        source+=("${_patchsource}/sched/0001-bore.patch");;
+        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     rt) ## EEVDF with RT patches
         source+=("${_patchsource}/misc/0001-rt.patch"
                  linux-cachyos-rt.install);;
@@ -234,7 +234,7 @@ case "$_cpusched" in
                  "${_patchsource}/sched/0001-bore-cachy-rt.patch"
                  linux-cachyos-rt.install);;
     hardened) ## Hardened Patches with BORE Scheduler
-        source+=("${_patchsource}/sched/0001-bore.patch"
+        source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
     sched-ext) ## Sched-ext with BORE
         source+=("${_patchsource}/sched/0001-sched-ext.patch"
@@ -820,8 +820,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('9ee627e4c109aec7fca3eda5898e81d201af2c7eb2f7d9d7d94c1f0e1205546c'
+sha256sums=('1fd7ec8c3d9c4e4b3a41d11e2c6d151e5fbf875dd08b3577f73afd6ee6674605'
             '01e0933bd6fd3e5fcd667ecb3c692b94d2d57dff79d64512dc2e0badac00446c'
             '3f3233256725683aa95c29ee423932a5bcc74c0653e09d502240601387c3edec'
-            'd22c1978ab28e35f1f6be65903b4bf304e5454ac98d131a1f65d1dc7c20db004'
+            'd9e0ba3fd2dc64f96544bb781c60993ad149b9446125b42c4d6e1a180a7f6e85'
             'a5bd81c759757ae46c809de0c39b84a52c8646ef1cb9469c220774ecb81aa788')
