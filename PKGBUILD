@@ -1,4 +1,3 @@
-
 # Maintainer: jonnyb <jbe@xfoo.eu>
 pkgname=stalwart-cli
 pkgver=0.5.3
