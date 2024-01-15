@@ -5,7 +5,7 @@ pkgname='most-snapshot'
 _pkgname="${pkgname/-snapshot/}"
 pkgver='5.2.0'
 _prever='5.2.0'
-pkgrel='6'
+pkgrel='7'
 epoch='1'
 pkgdesc="A terminal pager similar to ‘more’ and ‘less’ (latest development snapshot)"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -25,7 +25,14 @@ build() {
 
   # RFC-0023
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   ./configure --prefix=/usr --sysconfdir=/etc
   make
