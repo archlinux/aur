@@ -6,7 +6,7 @@
 # Contributor: ssfdust@gmail.com <ssfdust@gmail.com>
 
 pkgname=cairo-dock-plug-ins-wayland-git
-pkgver=3.4.99.alpha1.20231110.f7e1711bf
+pkgver=3.4.99.alpha1.20240113.5f62d1470
 pkgrel=1
 pkgdesc='Plugins for Cairo-Dock with wayland support'
 arch=('x86_64')
@@ -14,8 +14,7 @@ url='https://github.com/dkondor/cairo-dock-plug-ins'
 license=('GPL')
 depends=('cairo-dock-core-wayland-git')
 makedepends=('alsa-lib' 'cmake' 'dbus-sharp-glib' 'fftw' 'gnome-menus'
-             'gtk-sharp-3' 'gvfs' 'libetpan' 'libexif' 'libical' 'libpulse'
-             'libxklavier' 'lm_sensors' 'python' 'ruby' 'upower'
+             'gtk-sharp-3' 'gvfs' 'libetpan' 'libexif' 'libical' 'libpulse' 'libxklavier' 'lm_sensors' 'python' 'ruby' 'upower'
              'vala' 'vte3' 'zeitgeist')
 optdepends=('alsa-lib: Sound Control, Sound Effects applets'
             'dbus-sharp-glib: Mono API'
@@ -38,8 +37,9 @@ optdepends=('alsa-lib: Sound Control, Sound Effects applets'
 replaces=('cairo-dock-plugins')
 provides=("${pkgname%-git}" 'cairo-dock-plug-ins')
 conflicts=("${pkgname%-git}" 'cairo-dock-plug-ins')
-source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-plug-ins#branch=egl_scale")
-sha256sums=('SKIP')
+options=(debug)
+source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-plug-ins#branch=egl_scale" "01-patch-applet-bookmarks.patch")
+sha256sums=('SKIP' '104e43463a75fd19da3f3cf882516dd4dcffc08df0d361cc1bace585c951b31b')
 
 _builddir="build"
 
@@ -53,6 +53,11 @@ prepare() {
     cd "${srcdir}/${pkgname}"
 
     sed 's/gmcs/mcs/' -i CMakeLists.txt
+
+    for patch in "${srcdir}"/*.patch; do
+        msg2 "Applying $(basename "$patch")"
+        patch -Np1 -i "$patch"
+    done
 
     if [[ -d "${srcdir}/${pkgname}/${_builddir}" ]];
     then
