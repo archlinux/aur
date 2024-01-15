@@ -1,7 +1,7 @@
 # Maintainer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 pkgname=koboldcpp-cuda
-pkgver=1.53
+pkgver=1.55.1
 pkgrel=1
 pkgdesc="Full-featured CUDA build of koboldcpp"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('python' 'cblas' 'openblas' 'clblast' 'cuda')
 optdepends=('customtkinter')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('d27909c9a762379f1b5f8b68fd0dc76a')
+sha256sums=('094ba13446f3865dd496469bb1dc6070a515f43127f66eec98a2dce517a86732')
 
 build() {
   cd "$srcdir/koboldcpp-$pkgver"
