@@ -1,12 +1,14 @@
-# Maintainer: xstraok <maximkorotkov4@gmail.com>
+# Contributor: morguldir <morguldir@protonmail.com>
+# Contributor: xstraok <maximkorotkov4@gmail.com>
 # Contributor: DrakeTDL <everyone@disroot.org>
-pkgname="an-anime-game-launcher-git"
+# Based on https://aur.archlinux.org/packages/an-anime-game-launcher-git
+pkgname="anime-games-launcher-git"
 _pkgname="${pkgname%-git}"
-pkgver=3.9.4.r1.gfc9c650
+pkgver=1.0.0.r3.g762e822
 pkgrel=1
-pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
+pkgdesc="Universal linux launcher for anime games"
 arch=("x86_64")
-url="https://github.com/an-anime-team/an-anime-game-launcher"
+url="https://github.com/an-anime-team/anime-games-launcher"
 license=("GPL3")
 depends=(
   git
@@ -23,26 +25,18 @@ optdepends=(
   "gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance"
 )
 source=(
-  "git+https://github.com/an-anime-team/an-anime-game-launcher"
+  "git+https://github.com/an-anime-team/anime-games-launcher"
   "${_pkgname}.desktop"
 )
 noextract=()
-md5sums=(
-  SKIP
-  "f0cfe73897e8f49e92e0dfc41326fb0b"
-)
+md5sums=('SKIP'
+         '654ba383b74455d04c96d88ad40013ee')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${_pkgname}"
-  git switch next
-  git submodule update --init --recursive --single-branch
-  git pull
-}
 
 build() {
   cd "${_pkgname}"
@@ -55,10 +49,10 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin/"
 
-  cp target/release/anime-game-launcher "${pkgdir}/usr/lib/${pkgname}/${_pkgname}"
+  cp target/release/anime-games-launcher "${pkgdir}/usr/lib/${pkgname}/${_pkgname}"
   ln -s "/usr/lib/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 "assets/images/icon.png" "${pkgdir}/usr/share/pixmaps/an-anime-game-launcher.png"
-  install -Dm644 "assets/images/icon.png" "${pkgdir}/usr/share/icons/moe.launcher.an-anime-game-launcher.png"
-  install -Dm644 "${srcdir}/an-anime-game-launcher.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "assets/images/icon.png" "${pkgdir}/usr/share/pixmaps/anime-games-launcher.png"
+  install -Dm644 "assets/images/icon.png" "${pkgdir}/usr/share/icons/moe.launcher.anime-games-launcher.png"
+  install -Dm644 "${srcdir}/anime-games-launcher.desktop" -t "${pkgdir}/usr/share/applications"
 }

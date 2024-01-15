@@ -1,8 +1,8 @@
-pkgbase = an-anime-game-launcher-git
-	pkgdesc = A Launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 3.9.4.r1.gfc9c650
+pkgbase = anime-games-launcher-git
+	pkgdesc = Universal linux launcher for anime games
+	pkgver = 1.0.0.r3.g762e822
 	pkgrel = 1
-	url = https://github.com/an-anime-team/an-anime-game-launcher
+	url = https://github.com/an-anime-team/anime-games-launcher
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
@@ -15,9 +15,9 @@ pkgbase = an-anime-game-launcher-git
 	optdepends = mangohud: FPS Hud/GUI
 	optdepends = gamemode: Game Optimizations
 	optdepends = gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance
-	source = git+https://github.com/an-anime-team/an-anime-game-launcher
-	source = an-anime-game-launcher.desktop
+	source = git+https://github.com/an-anime-team/anime-games-launcher
+	source = anime-games-launcher.desktop
 	md5sums = SKIP
-	md5sums = f0cfe73897e8f49e92e0dfc41326fb0b
+	md5sums = 654ba383b74455d04c96d88ad40013ee
 
-pkgname = an-anime-game-launcher-git
+pkgname = anime-games-launcher-git

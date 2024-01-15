@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Anime Games Launcher
+Comment=Universal linux launcher for anime games
+Exec=anime-games-launcher
+Terminal=false
+Type=Application
+Icon=anime-games-launcher
+StartupWMClass=moe.launcher.anime-games-launcher
+Categories=Game
