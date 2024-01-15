@@ -1,4 +1,4 @@
-# Maintainer: Felix Potthast <felix_potthast AT web DOT de>
+# Maintainer: Felix Potthast <mail AT felix MINUS potthast DOT de>
 # Contributor: Philipp Joram <mail AT phijor DOT me>
 
 pkgname=picasso-3ds-git
