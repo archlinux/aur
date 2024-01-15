@@ -1,7 +1,7 @@
 pkgbase = kokkos
 	pkgdesc = C++ performance portability programming ecosystem
 	pkgver = 4.2.00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kokkos/kokkos
 	arch = x86_64
 	license = Apache

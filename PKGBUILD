@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=kokkos
 pkgver=4.2.00
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ performance portability programming ecosystem"
 arch=(x86_64)
 url="https://github.com/${pkgname}/${pkgname}"
@@ -26,8 +26,8 @@ build() {
     -DKokkos_ENABLE_OPENMP=ON \
     -DKokkos_ENABLE_THREADS=OFF \
     -DKokkos_ENABLE_SERIAL=ON \
-    -DKokkos_ENABLE_TESTS=ON \
-    -DKokkos_ENABLE_EXAMPLES=ON \
+    -DKokkos_ENABLE_TESTS=OFF \
+    -DKokkos_ENABLE_EXAMPLES=OFF \
     -Wno-dev
   cmake --build build --target all
 }
