@@ -1,5 +1,5 @@
 pkgname=php72-mcrypt
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="PHP 7.2 bindings for the unmaintained libmcrypt. For compat purposes"
 arch=('i686' 'x86_64')
@@ -24,4 +24,4 @@ package() {
   echo "extension=mcrypt.so" > ${pkgdir}/etc/php72/conf.d/mcrypt.ini
 }
 
-md5sums=('bbad401efbe75432127dbe70840ba7d5')
+md5sums=('5c3679e4d4581fb0f83fbe6f182bbf75')
