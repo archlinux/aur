@@ -17,6 +17,7 @@ pkgbase = upscayl-rpm-bin
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3
 	provides = upscayl
+	provides = upscayl-bin
 	conflicts = upscayl
 	source = https://github.com/upscayl/upscayl/releases/download/v2.9.7/upscayl-2.9.7-linux.rpm
 	sha256sums = 5ba9fa07c7da9cdc98dbe93693ead696b729019965f0e7c261b9677b7772e2ad

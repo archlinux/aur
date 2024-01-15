@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('at-spi2-core' 'electron' 'gtk3' 'libnotify' 'libsecret' 'libxss'
          'libxtst' 'nss' 'util-linux-libs' 'xdg-utils')
 optdepends=('libappindicator-gtk3')
-provides=("upscayl")
+provides=("upscayl" "upscayl-bin")
 conflicts=("upscayl")
 source=("$url/releases/download/v$pkgver/upscayl-$pkgver-linux.rpm")
 sha256sums=('5ba9fa07c7da9cdc98dbe93693ead696b729019965f0e7c261b9677b7772e2ad')
