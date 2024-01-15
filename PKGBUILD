@@ -44,6 +44,7 @@ package() {
   install -d -m 755 "${pkgdir}/usr/lib/slskd"
   cp -dpr --no-preserve=ownership "${srcdir}/slskd" "${pkgdir}/usr/lib/slskd/"
   cp -dpr --no-preserve=ownership "${srcdir}/wwwroot" "${pkgdir}/usr/lib/slskd/"
+  cp -dpr --no-preserve=ownership "${srcdir}/config" "${pkgdir}/usr/lib/slskd/"
   install -d "$pkgdir/usr/bin"
   ln -s /usr/lib/slskd/slskd ${pkgdir}/usr/bin/slskd
 
