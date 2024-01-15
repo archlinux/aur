@@ -2,7 +2,7 @@
 
 _rockname=barcodes.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=1.0.0
+pkgver=1.1.0
 _rockrel=1
 pkgrel=1
 pkgdesc='Barcodes package for the SILE typesetting system'
@@ -13,7 +13,7 @@ depends=(sile)
 makedepends=(luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('9e37074ef34328793b9fa52a4dcc6b18f2a34be714a87d0eed72cd71ea1dcc04')
+sha256sums=('301f1d667bc33cf07a28265d5c9b0c5b5c5882d65e7aa6376b5e7c832336b6da')
 
 package() {
 	cd "$_archive"
