@@ -2,7 +2,7 @@
 
 pkgname=maigret
 pkgver=0.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Collect a dossier on a person by username from thousands of sites"
 arch=(any)
 url="https://github.com/soxoj/maigret"
@@ -35,15 +35,12 @@ makedepends=(
 )
 checkdepends=(
   python-pytest
-  python-pytest-asyncio
-  python-pytest-cov
   python-pytest-httpserver
-  python-pytest-rerunfailures
   python-reportlab
 )
 
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "dont-install-tests-etc.patch"
   "fix-pytest-crash.patch"
 )
@@ -71,9 +68,12 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest \
-    --ignore tests/test_activation.py \
-    --ignore tests/test_report.py
+  # Deselected tests fail due to DeprecationWarning.
+  pytest \
+    --deselect tests/test_report.py::test_html_report \
+    --deselect tests/test_report.py::test_html_report_broken \
+    --deselect tests/test_report.py::test_text_report \
+    --deselect tests/test_report.py::test_text_report_broken
 }
 
 package() {
@@ -81,5 +81,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

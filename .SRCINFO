@@ -1,15 +1,12 @@
 pkgbase = maigret
 	pkgdesc = Collect a dossier on a person by username from thousands of sites
 	pkgver = 0.4.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/soxoj/maigret
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-pytest-asyncio
-	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-httpserver
-	checkdepends = python-pytest-rerunfailures
 	checkdepends = python-reportlab
 	makedepends = python-build
 	makedepends = python-installer
