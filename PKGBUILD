@@ -1,65 +1,56 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=super-controller
 pkgver=1.3.5
-pkgrel=3
+_electronversion=19
+_nodeversion=14
+pkgrel=4
 pkgdesc="Give your MIDI devices super powers: take control of the lights, messages, and communication between controllers."
 arch=('any')
 url="https://github.com/aolsenjazz/super-controller"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'libxext'
-    'libxkbcommon'
-    'libcups'
-    'libxdamage'
-    'alsa-lib'
-    'lib32-glibc'
-    'libxfixes'
-    'hicolor-icon-theme'
-    'expat'
-    'libxrandr'
-    'nss'
-    'libdrm'
-    'libx11'
-    'mesa'
-    'nspr'
-    'python'
-    'gtk3'
-    'libxcomposite'
-    'lib32-alsa-lib'
-    'libxcb'
-    'lib32-gcc-libs'
-    'at-spi2-core'
-    'cairo'
-    'pango'
+    
 )
 makedepends=(
     'gendesk'
-    'npm>=7'
-    'nodejs>=14'
+    'npm'
+    'nvm'
     'git'
+    'node-gyp'
+    'gcc'
+    'make'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('SKIP'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('SKIP')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
+    _ensure_local_nvm
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/npm_cache"
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     npm run post-clone
     npm run package
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
-    cp -r "${srcdir}/${pkgname}-${pkgver}/release/build/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/release/build/linux-"*/* "${pkgdir}/opt/${pkgname}"
     ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icons/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}.git/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
