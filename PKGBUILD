@@ -1,16 +1,16 @@
 # Maintainer: TPHRyan <ryan.paroz@gmail.com>
 pkgname=git-ps-rs
-pkgver=6.9.0
+pkgver=7.0.0
 pkgrel=1
-pkgdesc="A patch-stack oriented Git wrapper"
+pkgdesc="A patch stack oriented Git wrapper"
 arch=('x86_64')
 url="https://git-ps.sh"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'git' 'gpgme' 'libgpg-error' 'openssl' 'zlib')
 makedepends=('rust')
 source=("https://github.com/uptech/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('e59e985465f5cc65a300fe2e5008b333')
-sha256sums=('d2a0eb50e74529f9c125cb7d7a0f5e8c01b4debb1a0814702f7a9f28bbe524c5')
+md5sums=('ef8555860cefc1b76efe3cc8e3f304a5')
+sha256sums=('13577cd919acefcd39c3ff9416545d3bfb7be6d8dbc8e50b7c50df37c5fb99e8')
 
 build() {
 	cd "$pkgname-$pkgver"
