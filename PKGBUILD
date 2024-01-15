@@ -5,11 +5,11 @@
 pkgname=python-xhtml2pdf
 _name=${pkgname#python-}
 pkgver=0.2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for converting HTML into PDFs using ReportLab"
 arch=(any)
 url="https://github.com/xhtml2pdf/xhtml2pdf"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   python
   python-arabic-reshaper
@@ -29,18 +29,16 @@ makedepends=(
   python-installer
   python-setuptools
   python-wheel
-
+  # Documentation
   python-sphinx_rtd_theme
   python-sphinxcontrib-pdfembed
-  texlive-latexextra
   texlive-fontsextra
+  texlive-latexextra
 )
-checkdepends=(
-  python-nose
-)
+checkdepends=(python-nose)
 
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "exclude-packages.patch"
 )
 sha256sums=(
@@ -53,12 +51,13 @@ _archive="$_name-$pkgver"
 prepare() {
   cd "$_archive"
 
-  patch --forward --strip=1 --input="${srcdir}/exclude-packages.patch"
+  patch --forward --strip=1 --input="$srcdir/exclude-packages.patch"
 }
 
 build() {
   cd "$_archive"
 
+  rm -rf build
   python -m build --wheel --no-isolation
 
   export PYTHONPATH=$PWD/docs/source:$PWD
@@ -79,5 +78,5 @@ package() {
 
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
   cp -R docs/build/html "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 docs/build/man/xhtml2pdf.1 "$pkgdir/usr/share/man/man1/xhtml2pdf.1"
+  install -Dm644 -t "$pkgdir/usr/share/man/man1" docs/build/man/xhtml2pdf.1
 }
