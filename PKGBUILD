@@ -2,7 +2,7 @@
 # Contributor: Brendan MacDonell <macdonellba@gmail.com>
 _gitname=ssh-ident
 pkgname=ssh-ident-git
-pkgver=r58.ebf8282
+pkgver=r70.66a0010
 pkgrel=1
 pkgdesc="Start ssh-agent and load identities on-demand."
 arch=('any')
