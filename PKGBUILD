@@ -9,7 +9,7 @@ url="https://github.com/walles/moar"
 license=(BSD-2-Clause-Views)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
-sha256sums=('8134505c476b6265adcd34d3423cf60c69716c46c63a49e5600e77105c2ffb97')
+sha256sums=('1b1731b65d5dd32324eca826efb6f762d79e51b7dae7bbfc8f0e5460f8d370ac')
 
 build() {
 	cd "$pkgname-$pkgver"
