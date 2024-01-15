@@ -19,7 +19,7 @@
 # basic info
 _pkgname="citra${_build_channel:-}"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2067.r0.gc6bcbc02
+pkgver=2077.r0.ga2d1c4a9
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator"
 _url="https://github.com/citra-emu/citra"
@@ -27,28 +27,31 @@ url="$_url${_build_channel:-}"
 license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
 
+case "$_build_channel" in
+  -nightly)
+    pkgdesc+=" - reviewed and tested features"
+    ;;
+  -canary)
+    pkgdesc+=" - features still under review"
+    ;;
+esac
+
 # main package
 _main_package() {
   depends=(
     'ffmpeg'
-    'fmt'
-    'libbacktrace-git'
     'libfdk-aac'
-    'libinih'
-    'libusb'
     'mbedtls'
-    'openssl'
     'sndio'
-    'soundtouch'
     'speexdsp'
-    'zstd'
+
+    # AUR
+    'libbacktrace'
 
     # sdl
-    'libinih'
     'sdl2'
 
     # qt
-    'hicolor-icon-theme'
     'qt6-base'
     'qt6-multimedia'
     'sdl2'
@@ -57,8 +60,6 @@ _main_package() {
     'cmake'
     'doxygen'
     'git'
-    'glslang'
-    'nlohmann-json'
     'python'
     'qt6-multimedia'
     'qt6-tools'
@@ -228,8 +229,8 @@ _source_bylaws_libadrenotools() {
 
 _source_mozilla_cubeb() {
   source+=(
-    'google.googletest'::'git+https://github.com/google/googletest.git'
     'arsenm.sanitizers-cmake'::'git+https://github.com/arsenm/sanitizers-cmake.git'
+    'google.googletest'::'git+https://github.com/google/googletest.git'
   )
   sha256sums+=(
     'SKIP'
@@ -240,8 +241,8 @@ _source_mozilla_cubeb() {
     cd "${srcdir:?}/$_pkgsrc"
     cd "externals/cubeb"
     local -A _submodules=(
-      ['google.googletest']='googletest'
       ['arsenm.sanitizers-cmake']='cmake/sanitizers-cmake'
+      ['google.googletest']='googletest'
     )
     _submodule_update
   )
@@ -277,8 +278,8 @@ prepare() {
   }
 
   _prepare_citra
-  _prepare_mozilla_cubeb
   _prepare_bylaws_libadrenotools
+  _prepare_mozilla_cubeb
   _prepare_yuzu_emu_sirit
 
   # fix version
@@ -297,7 +298,7 @@ pkgver() {
 
 build() {
   # Fix to help cmake find libusb
-  CXXFLAGS+=" -I/usr/include/libusb-1.0"
+  #CXXFLAGS+=" -I/usr/include/libusb-1.0"
 
   local _cmake_options=(
     -S "$_pkgsrc"
@@ -305,24 +306,17 @@ build() {
 
     -DCMAKE_BUILD_TYPE="Release"
     -DCMAKE_INSTALL_PREFIX="/usr"
-    -DENABLE_LTO=ON
-
-    -DENABLE_QT_TRANSLATION=ON
 
     -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON
-
     -DUSE_DISCORD_PRESENCE=ON
-    -DUSE_SYSTEM_BOOST=OFF
+
     -DUSE_SYSTEM_FFMPEG_HEADERS=ON
-    -DUSE_SYSTEM_FMT=ON
-    #-DUSE_SYSTEM_GLSLANG=ON
-    -DUSE_SYSTEM_INIH=ON
-    -DUSE_SYSTEM_JSON=ON
-    -DUSE_SYSTEM_LIBUSB=ON
-    -DUSE_SYSTEM_SDL2=ON
-    -DUSE_SYSTEM_SOUNDTOUCH=ON
     -DUSE_SYSTEM_ZSTD=ON
+
+    -DUSE_SYSTEM_QT=ON
+    -DENABLE_QT_TRANSLATION=ON
+
     -Wno-dev
   )
 
@@ -331,12 +325,20 @@ build() {
     export NM=llvm-nm
 
     _cmake_options+=(
+      -DENABLE_LTO=ON
+
       -DCMAKE_C_COMPILER=clang
       -DCMAKE_CXX_COMPILER=clang++
 
       -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld"
       -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
       -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld"
+    )
+  else
+    # prevent gcc segfault
+    _cmake_options+=(
+      -DENABLE_LTO=OFF
+      -DCITRA_WARNINGS_AS_ERRORS=OFF
     )
   fi
 
@@ -349,8 +351,12 @@ build() {
   cmake --build build
 }
 
+check() {
+  ctest --test-dir build
+}
+
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # execute
