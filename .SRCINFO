@@ -1,0 +1,14 @@
+pkgbase = python-throttler
+	pkgdesc = Zero-dependency Python package for easy throttling with asyncio support
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/uburuntu/throttler
+	arch = any
+	license = MIT
+	checkdepends = python-pytest>=3.0
+	makedepends = python-setuptools
+	depends = python
+	source = throttler-1.2.2.tar.gz::https://github.com/uburuntu/throttler/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = 753bf1954f8580ca6ea7a9787dbacbe29f0da8fb32598a2386a3f04497d00ad9
+
+pkgname = python-throttler
