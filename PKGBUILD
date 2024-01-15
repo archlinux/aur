@@ -4,11 +4,11 @@
 
 pkgname=pg_activity
 pkgver=3.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Top-like application for PostgreSQL server activity monitoring"
 arch=(any)
 url="https://github.com/dalibo/pg_activity"
-license=(custom:PostgreSQL)
+license=(LicenseRef-PostgreSQL)
 depends=(
   python
   python-attrs
@@ -42,11 +42,15 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest \
-    -k "\
-      not test_encoding \
-      and not test_postgres_and_python_encoding \
-    "
+  rm -rf tmp_install
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  # Deselected tests failing due to trying to modify locale.
+  pytest tests/ \
+    --deselect 'tests/test_data.py::test_encoding' \
+    --deselect 'tests/test_data.py::test_postgres_and_python_encoding[unknown-EUC_TW-zh_TW.euctw]'
 }
 
 package() {
@@ -54,5 +58,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
