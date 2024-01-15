@@ -2,13 +2,13 @@
 pkgname=python-kintree
 _name=${pkgname#python-}
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
 depends=(
     'python'
     'python-digikey-api'
-    'python-flet'
+    'python-flet-0-7-x'
     'python-thefuzz'
     'python-inventree'
     'python-kiutils'
