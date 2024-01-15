@@ -1,7 +1,7 @@
 pkgbase = jed-git
 	pkgdesc = Powerful scriptable editor designed for use by programmers (built from latest git commit)
 	pkgver = 0.99.20.r180.g68f0c75
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.jedsoft.org/jed/
 	install = jed-git.install
 	arch = aarch64

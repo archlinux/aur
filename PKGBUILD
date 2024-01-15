@@ -4,7 +4,7 @@
 pkgname=('jed-git')
 _pkgname="${pkgname/-git/}"
 pkgver='0.99.20.r180.g68f0c75'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Powerful scriptable editor designed for use by programmers (built from latest git commit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://www.jedsoft.org/jed/'
@@ -55,7 +55,14 @@ build() {
 
   # RFC-0023
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   ./configure --prefix=/usr JED_ROOT=/usr/share/jed
 
