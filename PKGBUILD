@@ -3,10 +3,10 @@
 
 pkgbase=btcd
 pkgname=('btcd' 'btcwallet')
-pkgver=0.23.3
-_pkgver_btcd=v0.23.3
+pkgver=0.24.0
+_pkgver_btcd=v0.24.0
 _pkgver_btcwallet=v0.16.9
-pkgrel=3
+pkgrel=1
 pkgdesc="btcd an alternative full node Bitcoin implementation written in Go and btcwallet a secure Bitcoin wallet daemon written in Go "
 arch=('i686' 'x86_64')
 makedepends=('git' 'go')
