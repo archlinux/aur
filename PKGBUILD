@@ -1,6 +1,6 @@
-# Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
+# Based on PKGBUILD from: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=pyenv-virtualenv-git
-pkgver=v1.0.0.0.ra3bc42c
+pkgver=v1.2.2.2.r2b2b87a
 pkgrel=1
 pkgdesc='Pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)'
 arch=('any')
@@ -8,8 +8,9 @@ url='https://github.com/yyuu/pyenv-virtualenv'
 license=('MIT')
 conflicts=("pyenv-virtualenv")
 provides=("pyenv-virtualenv")
-depends=()
-source=("$pkgname::git+https://github.com/yyuu/pyenv-virtualenv")
+makedepends=('git')
+depends=('pyenv')
+source=("$pkgname::git+https://github.com/pyenv/pyenv-virtualenv")
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,11 +23,11 @@ package() {
     cd "$pkgname"
     git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
     cd ..
-    mkdir -p "${pkgdir?}"/{opt/pyenv/plugins/pyenv-virtualenv,usr/bin}
+    mkdir -p "${pkgdir?}"/{usr/share/pyenv/plugins/pyenv-virtualenv,usr/bin}
     cd "${srcdir?}/$pkgname"
-    cp -a -- * "$pkgdir"/opt/pyenv/plugins/pyenv-virtualenv
+    cp -a -- * "$pkgdir"/usr/share/pyenv/plugins/pyenv-virtualenv
 
-    for bin in $pkgdir/opt/pyenv/plugins/pyenv-virtualenv/bin/*; do
-        ln -s /opt/pyenv/plugins/pyenv-virtualenv/bin/"$(basename $bin)" "$pkgdir/usr/bin/$(basename $bin)"
+    for bin in $pkgdir/usr/share/pyenv/plugins/pyenv-virtualenv/bin/*; do
+        ln -s $pkgdir/usr/share/pyenv/plugins/pyenv-virtualenv/bin/"$(basename $bin)" "$pkgdir/usr/bin/$(basename $bin)"
     done
 }
