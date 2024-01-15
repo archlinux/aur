@@ -3,11 +3,11 @@
 pkgname=python-pyvis
 _name=${pkgname#python-}
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Python package for creating and visualizing interactive network graphs"
 arch=(any)
 url="https://github.com/WestHealth/pyvis"
-license=(custom:BSD3)
+license=(BSD-3-Clause)
 depends=(
   ipython
   python
@@ -21,11 +21,7 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-checkdepends=(
-  python-numpy
-  python-pytest
-  python-selenium
-)
+checkdepends=(python-pytest)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ff947e224d9825e4b0f3d6710075945c5c8d13bf60aa54e6396c996f34851a3a')
@@ -47,7 +43,8 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest --ignore=pyvis/tests/test_html.py
+  pytest \
+    --ignore pyvis/tests/test_html.py # Requires google-chrome & selenium
 }
 
 package() {
@@ -55,5 +52,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE_BSD.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE_BSD.txt
 }

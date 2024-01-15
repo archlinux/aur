@@ -1,13 +1,11 @@
 pkgbase = python-pyvis
 	pkgdesc = Python package for creating and visualizing interactive network graphs
 	pkgver = 0.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/WestHealth/pyvis
 	arch = any
-	license = custom:BSD3
-	checkdepends = python-numpy
+	license = BSD-3-Clause
 	checkdepends = python-pytest
-	checkdepends = python-selenium
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
