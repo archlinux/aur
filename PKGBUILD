@@ -1,7 +1,7 @@
 
 # Maintainer: jonnyb <jbe@xfoo.eu>
 pkgname=stalwart-cli
-pkgver=0.3.10
+pkgver=0.5.3
 pkgrel=1
 epoch=
 pkgdesc="Stalwart CLI"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/stalwartlabs/mail-server/releases/download/v$pkgver/$pkgname-$arch-unknown-linux-gnu.tar.gz")
 noextract=()
-sha256sums=("6076b07965621723becf807295424bc259df16b64e414b0c98878e3c3dec77a7")
+sha256sums=('c4a287cdcfbb9d8f4aa57c997d52c0875868ad1966e6580805e80eda8ea27676')
 validpgpkeys=()
 
 package() {
