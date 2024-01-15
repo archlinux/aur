@@ -5,11 +5,11 @@
 
 pkgname='littlefs-fuse'
 pkgver=2.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A FUSE wrapper that puts the littlefs in user-space'
 url='https://github.com/littlefs-project/littlefs-fuse'
 arch=('aarch64' 'x86_64')
-license=('BSD')
+license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
 depends=('fuse2' 'glibc')
 options=('lto')
 source=("littefs-$pkgver.tar.gz::https://github.com/littlefs-project/${pkgname}/archive/v${pkgver}.tar.gz")
@@ -23,6 +23,17 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   make
 }
