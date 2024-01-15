@@ -8,7 +8,7 @@ _electron=electron
 pkgbase=element-desktop-git
 pkgname=(element-web-git element-desktop-git)
 pkgver=1.11.39.r16.g65f7545ba5
-pkgrel=1
+pkgrel=2
 pkgdesc="Glossy Matrix collaboration client — "
 arch=(x86_64)
 url="https://element.io"
@@ -54,7 +54,7 @@ prepare() {
 
 build() {
   cd element-web
-  yarn build --offline
+  yarn --offline build
 
   cd ../element-desktop
   yarn run build:native
