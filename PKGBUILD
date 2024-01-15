@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theotherp/nzbhydra2/arc
         'skip-unneeded-builds.patch')
 
 sha256sums=('0a86fa942ab08290122225a1d4c0166c61e5c8fdafe68c41fc85d6b451a9a96e'
-            '2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
+            '86c2f02cb8913c3093b1669247447691329bf5bd88fee1b8f2977cff96775655'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
             'ed649f9b5d9f9f561829f8a563d28c1335945785b08b887634be15bc742cb4e7'
