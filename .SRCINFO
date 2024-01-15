@@ -1,6 +1,6 @@
 pkgbase = charls-git
 	pkgdesc = A C++ JPEG-LS library implementation
-	pkgver = 2.0.0.1.gd93464b
+	pkgver = 2.4.1.r69.gcb6a9d7
 	pkgrel = 1
 	url = https://github.com/team-charls/charls
 	arch = i686
