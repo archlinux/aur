@@ -3,7 +3,7 @@
 pkgname=python-polyfactory
 _name=${pkgname#python-}
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and powerful factories for mock data generation"
 arch=(any)
 url="https://github.com/litestar-org/polyfactory"
@@ -18,7 +18,7 @@ depends=(
   python-pymongo
   python-pytest
   python-sqlalchemy
-  python-typing-extensions
+  python-typing_extensions
 )
 makedepends=(
   python-build
@@ -47,9 +47,7 @@ build() {
 check() {
   cd "$_archive"
 
-  # Examples are broken due to relying on sqlalchemy 1.3 syntax.
-  python -m pytest \
-    --ignore=docs/examples/library_factories/sqlalchemy_factory
+  pytest tests
 }
 
 package() {
