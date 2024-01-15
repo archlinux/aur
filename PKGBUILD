@@ -3,7 +3,7 @@
 pkgname=python-aiohttp-middlewares
 _name=${pkgname#python-}
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Collection of useful middlewares for aiohttp.web applications"
 arch=(any)
 url="https://github.com/playpauseandstop/aiohttp-middlewares"
@@ -45,8 +45,8 @@ check() {
   python -m installer --destdir=tmp_install dist/*.whl
 
   _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH"
-  python -m pytest --override-ini="addopts="
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  pytest --override-ini="addopts="
 }
 
 package() {
