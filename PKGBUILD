@@ -4,16 +4,17 @@
 _pkgname=paruz
 pkgname=paruz-git
 pkgver=r26.e7aaf49
-pkgrel=1
+pkgrel=2
 pkgdesc="A fzf terminal UI for paru or pacman"
 arch=("any")
 url="https://github.com/joehillen/paruz"
 license=("UNLICENSE")
 depends=("bash" "fzf")
+makedepends=("git")
 conflicts=("paruz")
 provides=("paruz")
 optdepends=("paru: for AUR support")
-source=("git+https://github.com/joehillen/paruz")
+source=("git+https://github.com/joehillen/paruz.git")
 sha256sums=('SKIP')
 
 pkgver() {
