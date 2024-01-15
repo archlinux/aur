@@ -4,11 +4,11 @@
 pkgname='treegrep-bin'
 _pkgname="${pkgname%%-bin}"
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/4imothy/treegrep'
-license=('Custom:CC-BY-4.0')
+license=('CC-BY-4.0')
 provides=('tgrep' 'treegrep')
 conflicts=('tgrep' 'treegrep')
 _rawurl='https://raw.githubusercontent.com/4imothy/treegrep/main'

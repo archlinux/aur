@@ -1,11 +1,11 @@
 pkgbase = treegrep-bin
 	pkgdesc = Frontend for ripgrep that presents results in a tree format (pre-compiled)
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/4imothy/treegrep
 	arch = aarch64
 	arch = x86_64
-	license = Custom:CC-BY-4.0
+	license = CC-BY-4.0
 	provides = tgrep
 	provides = treegrep
 	conflicts = tgrep
