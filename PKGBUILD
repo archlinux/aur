@@ -4,30 +4,26 @@
 
 pkgname=vvvvvv
 _pkgname=VVVVVV
-pkgver=2.3.6
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc='A retro-styled 2D platformer'
 arch=('i686' 'x86_64')
 url='https://thelettervsixtim.es/'
 groups=('humblebundle3' 'humblebundle4' 'humblebundles')
 license=('custom')
-depends=('sdl2_mixer')
+depends=('sdl2')
 makedepends=('cmake')
 _datafile=data20221117.zip
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/TerryCavanagh/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+source=("https://github.com/TerryCavanagh/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.zip"
         "${_datafile}::https://thelettervsixtim.es/makeandplay/data.zip"
-        "${pkgname}.desktop"
-        "rm-srcdir-in-bin.patch")
-sha256sums=('a3366aab9e8462d330044ab1ec63927e9f5c3801c0ed96b24f08c553dcb911e9'
+        "${pkgname}.desktop")
+sha256sums=('e470599e0e46f7a5e0df224eefb1fa7ea8e36af80f8dd2f453e4a404ab547a8c'
             'c767809594f6472da9f56136e76657e38640d584164a46112250ac6293ecc0ea'
-            '8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4'
-            '1707013fe1bc924d1f9a1443d504e7cbef6eb5595fe2a5c6586945fb908f778a')
+            '8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4')
 noextract=("${_datafile}")
 
 prepare() {
   cd "${srcdir}"
-
-  patch -p1 -i "${srcdir}/rm-srcdir-in-bin.patch" -d "${_pkgname}-${pkgver}"
 
   mkdir -p data
   cd data
@@ -35,7 +31,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}/desktop_version"
+  cd "${srcdir}/${_pkgname}/desktop_version"
 
   mkdir -p build
   cd build
@@ -51,10 +47,14 @@ EOF
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
 
   install -D -m755 "desktop_version/build/${_pkgname}" \
       "${pkgdir}/usr/lib/${pkgname}/${_pkgname}"
+  cp -r \
+      "desktop_version/fonts/" \
+      "desktop_version/lang/" \
+      "${pkgdir}/usr/lib/${pkgname}/"
   install -D -m644 "LICENSE.md" \
       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
