@@ -10,7 +10,7 @@
 _pkgname="thorium-reader"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=2.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 url="https://github.com/edrlab/thorium-reader"
 license=('MIT')
@@ -105,7 +105,7 @@ prepare() {
 #!/usr/bin/env sh
 set -e
 
-APPDIR="/usr/lib/thorium-reader"
+APPDIR="/usr/share/thorium-reader"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 _ELECTRON=/usr/bin/electron
@@ -134,22 +134,18 @@ EOF
     --categories="Office"
     --mimetypes="application/epub+zip"
     --startupnotify=true
-    --custom="StartupWMClass=ThoriumReader"
+    --custom="StartupWMClass=EDRLab.ThoriumReader"
   )
 
   gendesk "${_gendesk_options[@]}"
 }
 
 build() {
-  export HOME="${startdir:?}/node-home"
-  export NVM_DIR="${startdir:?}/node-nvm"
-  export NODE_MODULE_CACHE="${startdir:?}/node-module-cache"
+  export XDG_CONFIG_HOME="${SRCDEST:-$startdir}/node-home"
+  export HOME="$XDG_CONFIG_HOME"
+  export NVM_DIR="${SRCDEST:-$startdir}/node-nvm"
 
-  #export npm_config_build_from_source=true
-  export npm_config_cache="${srcdir}/node-npm-cache"
-
-  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-  export SYSTEM_ELECTRON_VERSION=$(electron${_electronversion} -v | sed 's/^v//')
+  export SYSTEM_ELECTRON_VERSION=$(</usr/lib/electron/version)
   export ELECTRONVERSION=${SYSTEM_ELECTRON_VERSION%%.*}
 
   # set up nvm
@@ -160,15 +156,16 @@ build() {
   # build
   cd "$_pkgsrc"
   npm install --no-audit --no-fund --prefer-offline
-  npm run package:pack-only
+  npm run package:build
+  npm exec -c "electron-builder --linux --x64 --dir --publish never -c.electronDist='/usr/lib/electron' -c.electronVersion=${SYSTEM_ELECTRON_VERSION}"
 }
 
 package() {
-  install -Dm755 "$_pkgname.sh" "${pkgdir:?}/usr/bin/$_pkgname"
-  install -Dm644 "$_pkgsrc/release/linux-unpacked/resources/app.asar" -t "${pkgdir:?}/usr/lib/$_pkgname/"
-  install -Dm644 "$_pkgsrc/resources/icon.png" "${pkgdir:?}/usr/share/pixmaps/$_pkgname.png"
-  install -Dm644 "$_pkgname.desktop" -t "${pkgdir:?}/usr/share/applications/"
-  install -Dm644 "$_pkgsrc/LICENSE" -t "${pkgdir:?}/usr/share/licenses/$pkgname"
+  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "$_pkgsrc/release/linux-unpacked/resources/app.asar" -t "$pkgdir/usr/share/$_pkgname/"
+  install -Dm644 "$_pkgsrc/resources/icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # execute
