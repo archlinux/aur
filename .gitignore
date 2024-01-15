@@ -1,0 +1,4 @@
+/pkg
+/src
+/zfs
+zfs*.pkg.*
