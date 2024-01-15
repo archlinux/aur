@@ -4,7 +4,7 @@
 _pkgname=dislocker
 pkgname=$_pkgname-git
 pkgver=0.7.3.r33.g1e92c11
-pkgrel=2
+pkgrel=3
 pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes"
 arch=('i686' 'x86_64')
 url="https://github.com/Aorimn/dislocker"
@@ -29,6 +29,8 @@ build() {
         -Dlibdir=/usr/lib \
         -D WARN_FLAGS:STRING="-Wall -Wextra" \
         .
+  sed -i 's/^#include "mbedtls\/config.h"/#include "mbedtls\/mbedtls_config.h"/;' include/dislocker/ssl_bindings.h
+  #sed -i 's/# define SHA256(input, len, output) mbedtls_sha256_ret(input, len, output, 0)/# define SHA256(input, len, output) mbedtls_sha256(input, len, output, 0)/' include/dislocker/ssl_bindings.h
   make
 }
 
