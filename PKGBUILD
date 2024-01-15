@@ -4,7 +4,7 @@
 
 pkgname=manuskript-git
 _pkgname=manuskript
-pkgver=0.15.0.r1.g2f93c2f6
+pkgver=0.16.1.r0.g5a109250
 pkgrel=1
 arch=('any')
 
