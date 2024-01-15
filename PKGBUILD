@@ -22,8 +22,8 @@ depends=(
 	libxcursor
 	openmpi
 	qhull
-	qt5-base
-	qt5-webkit
+	qt6-base
+	qt6-webkit
 	vtk
 	pugixml
 	fmt
