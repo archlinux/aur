@@ -1,23 +1,20 @@
 pkgbase = chain-desktop-wallet-bin
 	pkgdesc = Crypto.com DeFi Desktop Wallet
 	pkgver = 1.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crypto.com/defi-wallet
 	arch = x86_64
 	license = Apache
 	makedepends = squashfuse
 	depends = electron19
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
 	provides = chain-desktop-wallet=1.4.6
 	conflicts = chain-desktop-wallet
 	source = chain-desktop-wallet-1.4.6.AppImage::https://github.com/crypto-com/chain-desktop-wallet/releases/download/v1.4.6/Crypto.com-DeFi-Desktop-Wallet-1.4.6.AppImage
 	source = chain-desktop-wallet.sh
 	sha256sums = 4e02ffb9e4322438b414b6040455b1a43a674a910437abdc274806f0d2d47e82
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = chain-desktop-wallet-bin
