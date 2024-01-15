@@ -1,6 +1,6 @@
 pkgbase = gnome-photos-git
 	pkgdesc = Access, organize, and share your photos on GNOME
-	pkgver = 44.0+r3.ga534601c
+	pkgver = 44.0.r3.ga534601c
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Apps/Photos
@@ -32,7 +32,7 @@ pkgbase = gnome-photos-git
 	depends = libportal-gtk3
 	depends = librsvg
 	depends = tracker3-miners
-	provides = gnome-photos=44.0+r3.ga534601c
+	provides = gnome-photos=44.0.r3.ga534601c
 	conflicts = gnome-photos
 	source = git+https://gitlab.gnome.org/GNOME/gnome-photos.git
 	source = git+https://gitlab.gnome.org/GNOME/gnome-photos/GNOME/libgd.git
