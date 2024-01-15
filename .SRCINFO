@@ -1,7 +1,7 @@
 pkgbase = gut
 	pkgdesc = An easy-to-use git client
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/julien040/gut
 	arch = aarch64
 	arch = x86_64
