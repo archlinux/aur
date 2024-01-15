@@ -1,47 +1,18 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
-# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
-
-pkgbase='python-lzstring'
-pkgname=('python-lzstring' 'python2-lzstring')
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
+pkgname=python-lzstring
+_pkgname=${pkgname#python-}
 pkgver=1.0.4
 pkgrel=1
-pkgdesc="LZ-string compression for Python"
+pkgdesc='String encoding/decoding of binary data'
 arch=('any')
-url="https://pypi.python.org/pypi/lzstring"
-license=('MIT')
-makedepends=('python' 'python-setuptools' 'git'
-	     'python2' 'python2-setuptools')
-options=(!emptydirs)
-_commit=0b2773ede157fb69f0c837b853ccc5ab9c236c58
-source=("git+https://github.com/gkovacs/lz-string-python#commit=${_commit}")
-sha256sums=('SKIP')
+url="https://github.com/gkovacs/lz-string-python"
+license=('BSD')
+depends=('python')
+makedepends=('python-setuptools')
+source=($_pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/l/lzstring/lzstring-$pkgver.tar.gz)
+sha256sums=('1afa61e598193fbcc211e0899f09a9679e33f9102bccc37fbfda0b7fef4d9ea2')
 
-prepare() {
-  cp -a "lz-string-python"{,-py2}
-}
-
-build(){
-  cd "${srcdir}/lz-string-python"
-  python setup.py build
-
-  cd "${srcdir}/lz-string-python-py2"
-  python2 setup.py build
-}
-
-package_python2-lzstring() {
-  depends=('python2' 'python2-future')
-
-  cd "${srcdir}/lz-string-python"
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  
-  install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-}
-
-package_python-lzstring() {
-  depends=('python' 'python-future')
-
-  cd "${srcdir}/lz-string-python"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  
-install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+package() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
