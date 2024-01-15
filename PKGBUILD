@@ -141,8 +141,7 @@ EOF
 }
 
 build() {
-  export XDG_CONFIG_HOME="${SRCDEST:-$startdir}/node-home"
-  export HOME="$XDG_CONFIG_HOME"
+  export HOME="${SRCDEST:-$startdir}/node-home"
   export NVM_DIR="${SRCDEST:-$startdir}/node-nvm"
 
   export SYSTEM_ELECTRON_VERSION=$(</usr/lib/electron/version)
