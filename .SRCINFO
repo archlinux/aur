@@ -1,7 +1,7 @@
 pkgbase = phosh-osk-stub-git
 	pkgdesc = An alternative OSK for phosh
 	pkgver = 0.35.0.r4.g59f99d7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/guidog/phosh-osk-stub
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = phosh-osk-stub-git
 	depends = feedbackd
 	depends = gnome-desktop
 	depends = fzf
+	depends = hunspell
 	optdepends = presage-git: predictive text entry
 	optdepends = govarnam: transliteration for Indian languages
 	provides = phosh-osk-stub

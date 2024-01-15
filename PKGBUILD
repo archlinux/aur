@@ -1,7 +1,7 @@
 _name='phosh-osk-stub'
 pkgname="$_name-git"
 pkgver=0.35.0.r4.g59f99d7
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative OSK for phosh"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/guidog/$_name"
@@ -11,6 +11,7 @@ depends=(
     feedbackd
     gnome-desktop
     fzf
+    hunspell
 )
 makedepends=(
     git
@@ -36,7 +37,7 @@ pkgver() {
 }
 
 build() {
-    arch-meson -Dgtk_doc=false "$_name" build
+    arch-meson -Dgtk_doc=false -Ddefault_osk=false "$_name" build
     meson compile -C build
 }
 
@@ -47,4 +48,3 @@ check() {
 package() {
     DESTDIR="${pkgdir}" meson install -C build
 }
-
