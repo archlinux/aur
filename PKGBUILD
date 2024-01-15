@@ -2,7 +2,7 @@
 pkgname=icalingua++-bin
 pkgver=2.11.0
 _electronversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="A branch of deleted Icalingua, with limited support"
 arch=("aarch64" "armv7h" "x86_64")
 url="https://github.com/Icalingua-plus-plus/Icalingua-plus-plus"
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=('5743ef3d19be5e41e83c3a1171a807cd0505d7f5d5f9c5abdff8926dccadc6de'
             'b088d20934708c53e50492694efefbf9a9dcb62fefb8d1d4976f36f32f84af86'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_aarch64=('a2f8c2cae5819f2c41cba3d0d11041c48d2dcc21d9ee2c6bcddff57ae1a6fd47')
 sha256sums_armv7h=('f0d71ec7ace0d8631978b5214cd5dbc6b86d7f7bc6ef959c3b1c4550e5b1e659')
 sha256sums_x86_64=('ba129cadde6b1c4375817558ea161ba66b5e404e72496edb64a9ec65fc77cbfe')
@@ -34,7 +34,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s|${pkgname%++-bin}.png|${pkgname%-bin}|g" -i "${srcdir}/${pkgname%-bin}-${pkgver}.desktop"
+    sed "s|${pkgname%++-bin}.png|${pkgname%-bin}|g;s|Exec=${pkgname%++-bin} %u|Exec=${pkgname%-bin} %U|g" -i "${srcdir}/${pkgname%-bin}-${pkgver}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
