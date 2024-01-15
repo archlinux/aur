@@ -1,0 +1,11 @@
+[Unit]
+Description = A very simple webhook server launching shell scripts.
+After = network-online.target
+
+[Service]
+EnvironmentFile = -/etc/default/webhookd
+ExecStart = /usr/bin/webhookd
+RestartSec = 5
+
+[Install]
+WantedBy = multi-user.target
