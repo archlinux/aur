@@ -3,16 +3,16 @@
 
 pkgname='slang-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver='2.3.4-8'
+_pkgver=2.3.4-8
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel='6'
+pkgrel=7
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
-provides=('slang' 'slsh')
-conflicts=('slang' 'slsh')
+provides=('libslang.so' 'slang' 'slsh')
+conflicts=('libslang.so' 'slang' 'slsh')
 url='https://jedsoft.org/snapshots/'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=(
   'glibc'
   'libpng'
