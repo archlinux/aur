@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=edencommon
-pkgver=2024.01.08.00
+pkgver=2024.01.15.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -27,7 +27,7 @@ source=(
   "build-shared-library.patch"
 )
 sha256sums=(
-  '6483402607ab83ee797c46acebde07b9c6bfd02182579dccd46780363774ef99'
+  '9be7d8a5ced42b1e8b7414abaa02e98672f3aa514797231046f71a9a30a60b07'
   '000dfb9e316e486cb047fe4c5547b716033a99bb78a9eef0e7e4d860d017a092'
 )
 options=(!lto)
@@ -61,5 +61,5 @@ package() {
 
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
