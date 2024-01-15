@@ -1,0 +1,22 @@
+pkgbase = phosh-osk-stub-git
+	pkgdesc = An alternative OSK for phosh
+	pkgver = 0.35.0.r4.g59f99d7
+	pkgrel = 1
+	url = https://gitlab.gnome.org/guidog/phosh-osk-stub
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = meson
+	makedepends = cmake
+	depends = feedbackd
+	depends = gnome-desktop
+	depends = fzf
+	optdepends = presage-git: predictive text entry
+	optdepends = govarnam: transliteration for Indian languages
+	provides = phosh-osk-stub
+	conflicts = phosh-osk-stub
+	source = phosh-osk-stub::git+https://gitlab.gnome.org/guidog/phosh-osk-stub
+	sha256sums = SKIP
+
+pkgname = phosh-osk-stub-git
