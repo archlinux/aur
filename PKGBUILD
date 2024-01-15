@@ -5,7 +5,7 @@ pkgname=slrn-snapshot-canlock
 _pkgname=slrn
 pkgver=1.0.4.9
 _prever='pre1.0.4-9'
-pkgrel=4
+pkgrel=5
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot with modern cancel-lock)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url='https://jedsoft.org/snapshots/'
@@ -56,6 +56,17 @@ prepare() {
 #   env SLRN_NO_UU=true makepkg
 build() {
   cd "$_pkgname-$_prever" || exit 1
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   case "$SLRN_NO_UU" in
     [Tt][Rr][Uu][Ee] | [Yy][Ee][Ss] | [Tt] | [Yy] | 1 )
@@ -110,15 +121,5 @@ b2sums=(
   '667654876dfb087da62288d646a78454a3387e65555e56d34835b9bd6dfe3cf47d5e61ef52e3b11b2df377660db271d1a74e4e986fa826f475cf2bd51ddf6a5d'
   '0bfd30519f681636d33ade106b35672c9d43c024c9af6580f73b3b3ddc01137124b51a29c8b93810dbe200affa97206475876eff3fd7bccc5d4b0beca05d185f'
 )
-
-# 🪷 Beyond the Known — 365 Days of Exploration
-#
-# 📆 23rd October
-#
-# There are no higher or lower states.
-#
-# There is only the state you are in.
-#
-# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
