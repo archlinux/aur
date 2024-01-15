@@ -1,7 +1,7 @@
 pkgbase = jdminecraftlauncher
 	pkgdesc = An classic styled Minecraft Launcher
-	pkgver = 5.2
-	pkgrel = 2
+	pkgver = 5.3
+	pkgrel = 1
 	url = https://codeberg.org/JakobDev/jdMinecraftLauncher
 	arch = any
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = jdminecraftlauncher
 	depends = python-minecraft-launcher-lib
 	depends = python-requests
 	optdepends = gamemode: Run Minecraft in gamemode
-	source = jdminecraftlauncher-5.2.tar.gz::https://codeberg.org/JakobDev/jdMinecraftLauncher/archive/5.2.tar.gz
-	sha256sums = 0f63819ad0c7ed27b0e4e486f3550031d12986ac4160d34ba1932c97393208db
+	source = jdminecraftlauncher-5.3.tar.gz::https://codeberg.org/JakobDev/jdMinecraftLauncher/archive/5.3.tar.gz
+	sha256sums = 89b6eeeb4aa5604d32ba78d1265dbd476c392b5f2764ffeec6f9273901d11fbc
 
 pkgname = jdminecraftlauncher
