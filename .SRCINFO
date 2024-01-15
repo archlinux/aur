@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-focused-window-dbus-git
+	pkgdesc = Allows you to get the currently focused window using a D-Bus call
+	pkgver = r15.89ab6fc
+	pkgrel = 1
+	url = https://github.com/flexagoon/focused-window-dbus
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gnome-shell>=1:43.0-1
+	provides = gnome-shell-extension-focused-window-dbus
+	conflicts = gnome-shell-extension-focused-window-dbus
+	source = focused-window-dbus::git+https://github.com/flexagoon/focused-window-dbus
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-focused-window-dbus-git
