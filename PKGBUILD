@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname" || return 1
-  CGO_ENALBED=0 go build -trimpath -buildmode=pie -mod=readonly .
+  CGO_ENABLED=0 go build -trimpath -buildmode=pie -mod=readonly .
 }
 
 package() {
