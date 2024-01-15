@@ -1,20 +1,37 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Maintainer: Truocolo <truocolo@aol.com>
 
-_pkgname=gnome-photos
+_py="python"
+_proj="gnome"
+_ns="GNOME"
+_pkg="photos"
+_pkgname="${_proj}-${_pkg}"
 pkgname="${_pkgname}-git"
-pkgver=44.0+3+ga534601c
+pkgver="44.0+r3.ga534601c"
 pkgrel=1
 epoch=1
 pkgdesc="Access, organize, and share your photos on GNOME"
 url="https://wiki.gnome.org/Apps/Photos"
-arch=(x86_64)
-license=(GPL)
+arch=(
+  x86_64
+  i686
+  pentium4
+  arm
+  armv7h
+  aarch64
+  powerpc
+)
+license=(
+  GPL
+)
 depends=(
   babl
   dleyna
   gegl
   geocode-glib-2
-  gnome-online-accounts
+  "${_proj}-online-accounts"
   gsettings-desktop-schemas
   gtk3
   libdazzle
@@ -28,25 +45,79 @@ makedepends=(
   docbook-xsl
   git
   meson
-  python
+  "${_py}"
   yelp-tools
 )
-groups=(gnome gnome-git)
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+groups=(
+  "${_proj}"
+  "${_proj}-git"
+)
+provides=(
+  "${_pkgname}=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+)
+_http="https://gitlab.${_proj}.org"
+_url="${_http}/${_ns}/${_pkgname}"
+_local="${HOME}/${_pkgname}"
 source=(
-  "git+https://gitlab.gnome.org/GNOME/gnome-photos.git"
-  "git+https://gitlab.gnome.org/GNOME/libgd.git")
-sha512sums=('SKIP'
-            'SKIP')
+  "git+${_url}.git"
+  "git+${_url}/${_ns}/libgd.git"
+)
+sha512sums=(
+  'SKIP'
+  'SKIP'
+)
+
+_parse_ver() {
+  local \
+    _pkgver="${1}" \
+    _out="" \
+    _ver \
+    _rev \
+    _commit
+  _ver="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $1}')"
+  _rev="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $2}')"
+  _commit="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $3}')"
+  _out=${_ver}
+  if [[ "${_rev}" != "" ]]; then
+    _out+=".r${_rev}"
+  fi
+  if [[ "${_commit}" != "" ]]; then
+    _out+=".${_commit}"
+  fi
+  echo \
+    "${_out}"
+}
 
 pkgver() {
+  local \
+    _pkgver
   cd \
     "${_pkgname}"
-  git \
-    describe \
-    --tags | \
-    sed 's/-/+/g'
+  _pkgver="$( \
+    git \
+      describe \
+      --tags | \
+      sed 's/-/+/g')"
+  _parse_ver \
+    "${_pkgver}"
 }
 
 prepare() {
@@ -55,39 +126,40 @@ prepare() {
 
   git \
     submodule \
-    init
+      init
   git \
     submodule \
-    set-url \
-    subprojects/libgd \
-    "${srcdir}/libgd"
+      set-url \
+        subprojects/libgd \
+        "${srcdir}/libgd"
   git \
     -c protocol.file.allow=always \
     submodule \
-    update
+      update
 }
 
-build() {
-  local \
-    meson_options=()
-  meson_options=(
-    -D manuals=true
-  )
+meson_options=(
+  -D manuals=true
+)
 
+build() {
   arch-meson \
     "${_pkgname}" \
     build \
-    "${meson_options[@]}"
+      "${meson_options[@]}"
   meson \
     compile \
-    -C build
+    -C \
+      build
 }
 
 package() {
   meson \
     install \
-    -C build \
-    --destdir "${pkgdir}"
+    -C \
+      build \
+    --destdir \
+      "${pkgdir}"
 }
 
 # vim:set sw=2 sts=-1 et:
