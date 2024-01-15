@@ -1,17 +1,17 @@
 pkgbase = krew
 	pkgdesc = Find and install kubectl plugins
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kubernetes-sigs/krew
 	install = kubectl-krew.install
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = Apache
+	license = Apache-2.0
 	makedepends = go
+	depends = git
 	depends = glibc
 	depends = kubectl
-	depends = git
 	source = krew-0.4.4.tar.gz::https://github.com/kubernetes-sigs/krew/archive/refs/tags/v0.4.4.tar.gz
 	sha256sums = dd11ef2d56a0897d38ac219f17332effbd09a3c6a1f68974635b925ba129cd35
 

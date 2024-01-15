@@ -3,18 +3,23 @@
 
 pkgname=krew
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Find and install kubectl plugins"
-arch=(x86_64 aarch64 armv7h)
+arch=(
+  x86_64
+  aarch64
+  armv7h
+)
 url="https://github.com/kubernetes-sigs/krew"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
+  git
   glibc
   kubectl
-  git
 )
 makedepends=(go)
 install=kubectl-krew.install
+
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('dd11ef2d56a0897d38ac219f17332effbd09a3c6a1f68974635b925ba129cd35')
 
@@ -31,22 +36,22 @@ build() {
 
   _ld_flags="-linkmode external"
   _ld_flags="$_ld_flags -X sigs.k8s.io/krew/internal/version.gitTag=v$pkgver"
-  go build -o . -ldflags "$_ld_flags" ./cmd/{krew,validate-krew-manifest}
+  go build -buildvcs=false -ldflags "$_ld_flags" -o . ./cmd/...
 }
 
 check() {
   cd "$_archive"
 
   unset KREW_ROOT
-  KREW_BINARY="${PWD}/${pkgname}" go test ./...
+  KREW_BINARY="$PWD/krew" go test ./...
 }
 
 package() {
   cd "$_archive"
 
-  install -Dm755 krew "${pkgdir}/usr/bin/kubectl-krew"
-  install -m755 validate-krew-manifest -t "${pkgdir}/usr/bin"
+  install -Dm755 krew "$pkgdir/usr/bin/kubectl-krew"
+  install -Dm755 validate-krew-manifest "$pkgdir/usr/bin/validate-krew-manifest"
 
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  cp -a docs/* -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  cp --archive -t "$pkgdir/usr/share/doc/$pkgname" docs/*
 }
