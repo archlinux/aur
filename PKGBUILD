@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkgname=javy
 pkgname=javy-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A JavaScript to Webassembly toolchain"
 arch=(x86_64)
@@ -13,8 +13,8 @@ source=("$url/raw/$pkgver/LICENSE.md"
 		"$url/releases/download/v$pkgver/$_pkgname-$arch-linux-v$pkgver.gz.sha256")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$arch-linux-v$pkgver.gz")
 sha256sums=('3b26cd02b9d9bf324bce59edd88c02cb93fa9a908528b805264db8cde53295e6'
-            'eaf58bae65984d050aa449cdc3e147c61faed90e25a08827bf99f766a3543eb5')
-sha256sums_x86_64=('35b70c84a892f848fc57471cb05b53fc95f518d8cbb966eca5aa1c84a0b01a31')
+            '761d283043f727a6a9961b8f02057b2fc2d5dd5b5407a88b51a9f67e22ad942a')
+sha256sums_x86_64=('11e0b69dfc3b3e9923b68942c80d0383e24ddc97cb33b2ad4d5d28c49a40c26a')
 
 package() {
 	cd "${srcdir}"
