@@ -2,7 +2,7 @@
 
 pkgname=turbo-attack-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A turbo traffic generator pentesting tool to generate random traffic with random mac and ip addresses in addition to random sequence numbers to a particular ip and port."
 arch=(aarch64
     riscv64
@@ -27,6 +27,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname}"
     git describe --tags --always | sed 's/^v//;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
