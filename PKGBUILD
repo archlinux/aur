@@ -4,12 +4,12 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2024.01.08.00
+pkgver=2024.01.15.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
 url="https://github.com/facebook/folly"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   boost-libs
   bzip2
@@ -42,7 +42,7 @@ provides=(
   libfollybenchmark.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('381fd227b1399a8ef9584b6e3f59b33b71643466e47cbd627dd6c0b8e8780b7b')
+sha256sums=('bdc141daf09b8c3428ac3fe9ae1bec2ea2c07efd796721f8dd301ad61172be57')
 options=(!lto)
 
 _archive="$pkgname-$pkgver"
