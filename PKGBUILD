@@ -45,6 +45,8 @@ optdepends=(
   'python-xrootd: For XRootD support'
   'slacker: For messaging'
 )
+provides=(snakemake)
+conflicts=(snakemake)
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('fdc3f15dd7b06fabb7da30d460e0a3b1fba08e4ea91f9c32c47a83705cdc7b6e')

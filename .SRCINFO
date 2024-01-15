@@ -42,6 +42,8 @@ pkgbase = snakemake7
 	optdepends = python-ftputil: For FTP support
 	optdepends = python-xrootd: For XRootD support
 	optdepends = slacker: For messaging
+	provides = snakemake
+	conflicts = snakemake
 	source = https://files.pythonhosted.org/packages/source/s/snakemake7/snakemake7-7.32.4.tar.gz
 	sha256sums = fdc3f15dd7b06fabb7da30d460e0a3b1fba08e4ea91f9c32c47a83705cdc7b6e
 
