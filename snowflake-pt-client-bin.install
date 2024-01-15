@@ -1,0 +1,4 @@
+post_install() {
+	echo -e "\nThis package includes an example of a snowflake config file"
+	echo -e "Append %include /etc/tor/snowflake to the end of /etc/tor/torrc file to make Tor daemon use it\n"
+}
