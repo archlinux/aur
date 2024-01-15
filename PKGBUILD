@@ -2,7 +2,7 @@
 
 pkgname=python-cfbs-git
 _name=${pkgname#python-}
-pkgver=3.2.12.r0.g5862616
+pkgver=4.0.6.r0.g1cad09d
 pkgrel=1
 pkgdesc="Tooling to build, manage and deploy CFEngine policy"
 arch=('any')
