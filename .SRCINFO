@@ -1,12 +1,15 @@
 pkgbase = python-webdriver-manager
 	pkgdesc = Simplify management of binary drivers for different browsers in Selenium
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SergeyPirogov/webdriver_manager
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	checkdepends = google-chrome
+	checkdepends = python-mock
 	checkdepends = python-pybrowsers
 	checkdepends = python-pytest
+	checkdepends = python-selenium
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
