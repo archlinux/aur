@@ -3,7 +3,7 @@
 # Contributor: asamk <asamk@gmx.de>
 
 pkgname=babeledit
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Translation editor for web apps"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 depends=('hicolor-icon-theme')
 optdepends=()
 source=("https://www.codeandweb.com/download/babeledit/${pkgver}/BabelEdit-${pkgver}.deb")
-sha256sums=('7a9e50a380f06f7f2d87657a2b37940476c77155a04422e228b9bd94492eb899')
+sha256sums=('c5cf8135b76ddcb17342e40b96592f3fe41e2d240ab45cbba642293abaff8bd5')
 
 package() {
     bsdtar -O -xf "BabelEdit-${pkgver}".deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
