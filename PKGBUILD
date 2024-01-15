@@ -8,7 +8,8 @@
 # Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica
-pkgver=13.3.1
+pkgver=14.0.0
+_pkgver=${pkgver%.[0-9]}
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with offline documentation."
 arch=('x86_64')
@@ -17,6 +18,7 @@ license=('proprietary')
 depends=(
     'openmp'
 )
+makedepends=('rsync')
 optdepends=(
     ## The following list of dependencies was inferred from namcap's output.  If
     ## you believe there is an error, please let me know.  Also feel free to
@@ -71,11 +73,19 @@ optdepends=(
     'tesseract'
     'zlib'
 )
+_source_url=$(
+    curl -q "https://www.wolfram.com/download-center/mathematica/" \
+    | grep "account.wolfram.com/dl/Mathematica" \
+    | grep "version=${_pkgver}" \
+    | grep "platform=Linux" \
+    | grep -v "includesDocumentation" \
+    | sed -E 's/.*href="([^"]+)".*/\1/'
+)
 source=(
-    "local://Mathematica_${pkgver}_BNDL_LINUX.sh"
+    "Mathematica_${pkgver}_BNDL_LINUX.sh::${_source_url}"
     "remove-xdg-scripts.patch"
 )
-md5sums=('61c8c48c3bc996ea39f14e38af668390'
+md5sums=('2e9479b7622ea8d09d465ffc53a753c4'
          '14df424ec93fad057604378c2b5c24c2')
 options=("!strip")
 
@@ -115,9 +125,16 @@ package() {
     msg2 "Running Mathematica installer"
     # https://reference.wolfram.com/language/tutorial/InstallingMathematica.html#650929293
     sh "${srcdir}/bundle/Unix/Installer/MathInstaller" \
-             -execdir="${pkgdir}/usr/bin" \
-             -targetdir="${pkgdir}/opt/Mathematica" \
-             -auto
+        -execdir="${pkgdir}/usr/bin" \
+        -targetdir="${pkgdir}/opt/Mathematica" \
+        -auto
+
+    # Install documentation
+    sh "${srcdir}/bundle/Unix/.bundle/Unix/Installer/MathInstaller" \
+        -targetdir="${pkgdir}/tmp" \
+        -auto
+    rsync -a --remove-source-files "${pkgdir}/tmp/Documentation/English" "${pkgdir}/opt/Mathematica/Documentation"
+    rm -rf "${pkgdir}/tmp"
 
     if [ -s "${pkgdir}/opt/Mathematica/InstallErrors" ]; then
         msg2 "Review installation errors:"
@@ -155,13 +172,12 @@ package() {
           ${pkgdir}/usr/share/desktop-directories \
           ${pkgdir}/usr/share/mime/packages
     cd ${pkgdir}/opt/Mathematica/SystemFiles/Installation
-    desktopFile='wolfram-mathematica13.desktop'
-    sed -Ei 's|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g' $desktopFile
-    sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica %F|g' $desktopFile
+    desktopFile="com.wolfram.Mathematica.${_pkgver}.desktop"
+    sed -Ei "s|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g" $desktopFile
+    sed -Ei "s|^(\s*Exec=).*|\1/usr/bin/Mathematica --name com.wolfram.mathematica.${_pkgver} %F|g" $desktopFile
     printf 'Categories=Science;Education;Languages;ArtificialIntelligence;Astronomy;Biology;Chemistry;ComputerScience;DataVisualization;Geography;ImageProcessing;Math;NumericalAnalysis;MedicalSoftware;Physics;ParallelComputer;\n' >> $desktopFile
-    printf 'StartupWMClass=Mathematica;\n' >> $desktopFile
     cp $desktopFile ${pkgdir}/usr/share/applications/
-    cp wolfram-all.directory ${pkgdir}/usr/share/desktop-directories/
+    cp *.directory ${pkgdir}/usr/share/desktop-directories/
     cp *.xml ${pkgdir}/usr/share/mime/packages/
 
     msg2 "Copying icons"
