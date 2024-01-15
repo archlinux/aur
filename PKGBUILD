@@ -4,17 +4,17 @@
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=2.1.r0.g1bbd317
+pkgver=2.1.r8.gcf459e5
 pkgrel=1
-epoch=3
+epoch=4
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (development snapshot)'
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
-license=('AGPL')
+license=('AGPL-3.0-or-later')
 depends=(
-  'python'
   'file'
   'less'
+  'python'
 )
 makedepends=(
   'coreutils'
@@ -39,10 +39,7 @@ optdepends=(
   'xsel: copies text to and from the clipboard'
 )
 provides=('offpunk')
-conflicts=(
-  'offpunk'
-  'av-98-offline'
-)
+conflicts=('offpunk')
 source=("git+$url")
 noextract=("$_pkgname")
 sha256sums=('SKIP')
