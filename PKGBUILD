@@ -1,8 +1,8 @@
-# Maintainer: Melissa Sproule <sprocklem@gmail.com>
+# Maintainer: Maeve Sproule <sprocklem@gmail.com>
 _pkgname="overbitenx"
 pkgname="firefox-extension-${_pkgname}"
-pkgver='0.9.2.0'
-pkgrel='4'
+pkgver='0.9.2.1'
+pkgrel='1'
 pkgdesc="Add gopher support to Firefox (beta)"
 arch=('x86_64')
 url="https://github.com/classilla/overbitenx"
@@ -11,7 +11,7 @@ groups=('firefox-addons')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/classilla/overbitenx/archive/${pkgver}.tar.gz"
         "${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/1731666/${_pkgname}-0.2-fx.xpi")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('bf3fa2cf5baaf8503d4ce15bae21071d10f3bd265937e1660765ae0e6f21f56c'
+sha256sums=('c9e121c4a8edbb64c01f8e4d38fb8f24d11d838fbfd4db925eac5784bf8a823a'
             'ad35b96f9001c51fcee16fe8a206ec4c0312b088d3a4ba0f62c33afe9eeebdd0')
 
 prepare() {
