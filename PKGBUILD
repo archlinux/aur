@@ -5,7 +5,7 @@ pkgname=slrn-snapshot
 _pkgname=slrn
 pkgver=1.0.4.9
 _prever='pre1.0.4-9'
-pkgrel=3
+pkgrel=4
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url='https://jedsoft.org/snapshots/'
@@ -33,6 +33,17 @@ b2sums=(
 #   env SLRN_NO_UU=true makepkg
 build() {
   cd "$_pkgname-$_prever"
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   case "$SLRN_NO_UU" in
     [Tt][Rr][Uu][Ee] | [Yy][Ee][Ss] | [Tt] | [Yy] | 1 )
@@ -72,15 +83,5 @@ package() {
   install -Dm0644 COPYRIGHT   "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
   install -Dm0644 doc/slrn.rc "$pkgdir/etc/slrnrc"
 }
-
-# 🪷 Beyond the Known — 365 Days of Exploration
-#
-# 📆 23rd October
-#
-# There are no higher or lower states.
-#
-# There is only the state you are in.
-#
-# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
