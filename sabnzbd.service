@@ -4,7 +4,7 @@
 # A user per service w/ shared group setup would have an override like:
 # [Service]
 # Group=sharedgroupname
-# Umask=002
+# UMask=002
 
 [Unit]
 Description=SABnzbd binary newsreader
