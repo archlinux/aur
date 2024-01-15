@@ -2,7 +2,7 @@
 # Maintainer: Leo Robinovitch <leorobinovitch@gmail.com>
 
 pkgname='wander-bin'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='An efficient terminal application/TUI for interacting with your HashiCorp Nomad cluster.'
 url='https://github.com/robinovitch61/wander'
@@ -12,14 +12,14 @@ provides=('wander')
 conflicts=('wander')
 depends=('glibc')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/robinovitch61/wander/releases/download/v1.0.0/wander_1.0.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('11e347e1d15e6fea959be615123aa9f81441afe95370b011dff8c9662e3696fb')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/robinovitch61/wander/releases/download/v1.0.1/wander_1.0.1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('24f85d4c13e9afb0820d616dc1913d2647d11f8c8782e63265ca4c904c333535')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/robinovitch61/wander/releases/download/v1.0.0/wander_1.0.0_Linux_i386.tar.gz")
-sha256sums_i686=('da268e55f842e5989617a4c8cfc1904728b273a63c3eae87ca15e42df8c5c48b')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/robinovitch61/wander/releases/download/v1.0.1/wander_1.0.1_Linux_i386.tar.gz")
+sha256sums_i686=('f60aca78c548960cdb2a3f1c1acfdc914e95585f8eecc36c5b661c909c34e291')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/robinovitch61/wander/releases/download/v1.0.0/wander_1.0.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('1409b34585856cd03d03ca303b38b999d2fb18ed7a73af9ef7805623ed418e13')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/robinovitch61/wander/releases/download/v1.0.1/wander_1.0.1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('402cdb8e4c7f9c2dec6bd5b5050007c5c77619cf5549624268913f568820e940')
 
 package() {
   install -Dm755 "./wander" "${pkgdir}/usr/bin/wander"
