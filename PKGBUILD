@@ -26,7 +26,5 @@ build() {
 
 package() {
     make -C httpd-$pkgver/support DESTDIR="$pkgdir" install
-    make -C httpd-$pkgver DESTDIR="$pkgdir" install-man
-    mkdir "$pkgdir/usr/share"
-    mv "$pkgdir/usr/man" "$pkgdir/usr/share/man"
+    make -C httpd-$pkgver DESTDIR="$pkgdir" mandir="/usr/share/man" manualdir="/usr/share/$pkgname/manual" install-man
 }
