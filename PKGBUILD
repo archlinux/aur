@@ -4,7 +4,7 @@
 
 pkgname=nncp
 pkgver=8.10.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
 arch=('aarch64' 'x86_64')
@@ -36,7 +36,14 @@ build() {
 
   # RFC-0023
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
