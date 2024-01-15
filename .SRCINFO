@@ -1,12 +1,12 @@
 pkgbase = citadel-git
 	pkgdesc = Manage your ebook library without frustrations. Calibre compatible.
-	pkgver = r178.a408af5
+	pkgver = r196.8cf1dd2
 	pkgrel = 1
 	url = https://github.com/every-day-things/citadel
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = custom:none
+	license = MIT
 	makedepends = bun
 	makedepends = cargo
 	depends = webkit2gtk
