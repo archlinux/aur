@@ -4,11 +4,11 @@
 pkgname=mercury-parser
 _name=parser
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract meaningful content from the chaos of a web page (@postlight version)"
 arch=(any)
 url="https://github.com/postlight/parser"
-license=(Apache)
+license=(Apache-2.0)
 depends=(nodejs)
 makedepends=(
   git
