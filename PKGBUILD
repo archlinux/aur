@@ -5,25 +5,34 @@ pkgname=(
   minijinja-cli
   python-minijinja
 )
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="A powerful but minimal dependency template engine for Rust compatible with Jinja/Jinja2"
 url="https://github.com/mitsuhiko/minijinja"
 arch=(x86_64)
-license=(Apache)
+license=(Apache-2.0)
 makedepends=(
   cargo
+  git
   python-build
   python-installer
+  python-markupsafe
   python-maturin
   python-wheel
 )
 checkdepends=(python-pytest)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3531fec793036a6ff806b4b800140d2878a3f48ea1ecfab732de0dbaade8a33a')
+_commit=d6adf1dcd84c24bc491c71b785eef6a42e617a23 # git rev-parse "$pkgver"
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
-_archive="$pkgbase-$pkgver"
+_archive="$pkgbase"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags
+}
 
 prepare() {
   cd "$_archive"
@@ -58,8 +67,8 @@ check() {
   _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
 
-  PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH" \
-    python -m pytest --import-mode=importlib
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  pytest
 }
 
 package_minijinja-cli() {
