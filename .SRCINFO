@@ -1,10 +1,10 @@
 pkgbase = tuc-bin
 	pkgdesc = A more powerful alternative to cut, when cut doesn’t cut it (pre-compiled)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/riquito/tuc
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = gcc-libs
 	depends = glibc
 	provides = tuc

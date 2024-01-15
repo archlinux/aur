@@ -2,14 +2,14 @@
 # -*- mode: sh -*-
 
 pkgname='tuc-bin'
-_pkgname=${pkgname%%-bin}
+_pkgname="${pkgname%%-bin}"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A more powerful alternative to cut, when cut doesn’t cut it (pre-compiled)'
 arch=('x86_64')
 url='https://github.com/riquito/tuc'
 _rawurl='https://github.com/riquito/tuc/raw/master'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 source=(
   "tuc-$pkgver::$url/releases/download/v$pkgver/tuc-linux-amd64"
   "$_rawurl/CHANGELOG.md"
