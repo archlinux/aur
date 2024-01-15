@@ -1,0 +1,12 @@
+pkgbase = gomerge
+	pkgdesc = Gomerge is a tool which allows you to quickly bulk merge, approve and close several pull requests from your terminal.
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/Cian911/gomerge
+	arch = any
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/Cian911/gomerge.git#tag=3.3.0
+	sha256sums = SKIP
+
+pkgname = gomerge
