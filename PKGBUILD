@@ -2,7 +2,7 @@
 
 pkgname=weather-gtk4
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Beautiful and lightweight weather app build using Gtk4, Libadwaita and Python'
 url="https://github.com/amit9838/weather"
 license=('GPL3')
@@ -28,5 +28,4 @@ package() {
   mv usr/bin/weather usr/bin/$pkgname
   sed -i -E "s|Exec=weather|Exec=$pkgname|g" usr/share/applications/io.github.amit9838.weather.desktop
   chmod +x usr/bin/$pkgname
-  rm -dr app
 }
