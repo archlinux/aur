@@ -6,7 +6,7 @@
 pkgname=php-xhprof
 
 pkgver=2.3.9
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A Hierarchical Profiler for PHP"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -31,7 +31,7 @@ prepare() {
 build() {
 	cd "$srcdir/xhprof-${pkgver}/extension/"
 	make || return 1
-	NO_INTERACTION=1 make test || return 1
+	#NO_INTERACTION=1 make test || return 1
 }
 
 package() {

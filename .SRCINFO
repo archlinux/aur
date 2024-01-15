@@ -1,7 +1,7 @@
 pkgbase = php-xhprof
 	pkgdesc = A Hierarchical Profiler for PHP
 	pkgver = 2.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pecl.php.net/package/xhprof
 	arch = i686
 	arch = x86_64
