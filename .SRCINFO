@@ -14,8 +14,6 @@ pkgbase = zfs-dkms-staging-git
 	source = 0001-only-build-the-module-in-dkms.conf.patch
 	sha256sums = SKIP
 	sha256sums = 8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5
-	b2sums = SKIP
-	b2sums = 58dc2494e71b50833d44c126b72acad52e9817626542afbc245b7ba82009e8c8252ebde6023592aac42d9942207e7655c0a421da9067fbdd619746ebc372d791
 
 pkgname = zfs-dkms-staging-git
 	depends = zfs-utils>=2.2.2
