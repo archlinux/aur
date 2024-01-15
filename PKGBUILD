@@ -44,7 +44,7 @@ optdepends=('python-requests-ftp: extra downloaders'
             'python-dateutil: support for more date formats')
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('1006752f48698d6954113c68738c501e1d0d0bb5abe34bdc30089543c887742e')
+sha256sums=('bb5cd9b520e7e7de5c42a6895cbafcd6f28b10fc7bbedcbc004546b6c75cc834')
 
 build() {
 	cd "$_archive"
