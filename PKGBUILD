@@ -3,11 +3,11 @@
 pkgname=python-outlines
 _name=${pkgname#python-}
 pkgver=0.0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Guided text generation"
 arch=(any)
 url="https://github.com/outlines-dev/outlines"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   python
   python-cloudpickle
