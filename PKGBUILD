@@ -4,12 +4,11 @@
 pkgname='mdsilo-bin'
 _pkgname="${pkgname%%-bin}"
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Local-first, lightweight personal wiki, RSS and podcast client (pre-compiled)'
 arch=('x86_64')
-#url='https://mdsilo.com/'
 url='https://github.com/mdSilo/mdSilo-app'
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 depends=(
   'cairo'
   'gcc-libs'
