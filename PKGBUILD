@@ -1,11 +1,17 @@
 # Maintainer:
 # Contributor: twa022 <twa022 at gmail dot com>
 
-_pkgnamefmt=LibreOfficeDev
+## useful links:
+# https://www.libreoffice.org/
+# https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/
+
+_pkgnamefmt=LibreOffice
+_LOver=24.2.0.1
+
+# basic info
 _pkgname=libreoffice
-pkgname=${_pkgname}-dev-bin
-_LOver=24.2.0.0.beta1
-pkgver=24.2.0.0beta1
+pkgname="${_pkgname}-dev-bin"
+pkgver=24.2.0.1
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 pkgrel=1
 pkgdesc="LibreOffice development branch"
@@ -28,6 +34,10 @@ provides=(
 _dl_url="https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64"
 source=("$_dl_url/${_pkgnamefmt}_${_LOver}_Linux_x86-64_rpm.tar.gz")
 sha256sums=('SKIP')
+
+pkgver() {
+  sed -E 's&\.([a-z]+)&\1&' <<< "${_LOver}"
+}
 
 package() {
   depends+=(
