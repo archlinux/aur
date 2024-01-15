@@ -1,4 +1,4 @@
-# Maintainer: Rafal Malachowicz <k5hv@archlinux.info>
+# Based on dislocker PKGBUILD maintained by: Rafal Malachowicz <k5hv@archlinux.info>
 # Based on dislocker PKGBUILD maintained by: mrxx <mrxx at cyberhome dot at>
 
 _pkgname=dislocker
