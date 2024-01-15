@@ -3,7 +3,7 @@
 
 pkgname='libcanlock'
 pkgver=3.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Standalone, modern RFC 8315 Netnews Cancel-Lock implementation for Unix'
 arch=('aarch64' 'armv7h' 'x86_64')
 url='https://micha.freeshell.org/libcanlock/'
@@ -22,7 +22,14 @@ build() {
 
   # RFC-0023
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   ./configure \
     --prefix=/usr \
