@@ -4,11 +4,11 @@ pkgver=1.0.0
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
-#_pkgrel_i386=1
-#_pkgrel_i686=1
+_pkgrel_i386=1
+pkgrel_i686=1
 pkgdesc="A reimplementation engine for the Wolfenstein3D game."
-arch=('x86_64' 'aarch64')
-url=""
+arch=('i386' 'i686' 'pentium4' 'x86_64' 'aarch64')
+url="https://gitlab.com/wolfenstein3d"
 license=('GPL')
 depends=('sdl' 'sdl_mixer')
 makedepends=('unzip')
@@ -18,8 +18,8 @@ sha256sums_aarch64=('SKIP')
 #sha256sums_i686=('SKIP')
 source_x86_64=("https://gitlab.com/wolfenstein3d/binaries/$pkgver-$pkgrel/-/raw/main/wolf4sdl-linux-x64.tar.xz")
 source_aarch64=("https://gitlab.com/wolfenstein3d/binaries/$pkgver-$pkgrel/-/raw/main/wolf4sdl-linux-arm64.tar.xz")
-#source_i386=("")
-#source_i686=("")
+source_i386=("https://gitlab.com/wolfenstein3d/binaries/$pkgver-$pkgrel/-/raw/main/wolf4sdl-linux-i686.tar.xz")
+source_i686=("https://gitlab.com/wolfenstein3d/binaries/$pkgver-$pkgrel/-/raw/main/wolf4sdl-linux-i686.tar.xz")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
