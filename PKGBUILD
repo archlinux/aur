@@ -2,9 +2,14 @@
 # Contributor: Bader <Bad3r@pm.me>
 # Acknowledgment: @pychuang (logseq-desktop-git) 
 
+# avoid cluttering user home, while allowing data to be cached
+export XDG_CONFIG_HOME="${SRCDEST:-$startdir}/node-home"
+export HOME="$XDG_CONFIG_HOME"
+
+# basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
-pkgver=0.10.1
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 arch=("x86_64")
@@ -27,7 +32,7 @@ source=(
     "$_pkgname-${pkgver}.zip::https://github.com/logseq/logseq/archive/refs/tags/${pkgver}.zip"
 )
 sha256sums=(
-    'f9a36bf7d23b1eb91a8b06dad0613da84eaa210bdb8ee68ffa887210b2726f2e'
+    '5894e163f0aa486a7d6c90b762bd19eb9c304a1c8affec20a1150d01ef8f6deb'
 )
 
 prepare() {
@@ -65,7 +70,7 @@ EOF
     )
     gendesk "${_gendesk_options[@]}"
 
-    cd "${srcdir}/$_pkgsrc"
+    cd "$_pkgsrc"
 
     # download required js modules
     yarn install
@@ -74,7 +79,7 @@ EOF
     yarn gulp:build
 
     # go to folder `static` and download required js modules in static
-    cd "${srcdir}/$_pkgsrc/static"
+    cd "static"
     yarn install
 
     # go back to the top-level folder and download clojure dependencies
@@ -83,39 +88,34 @@ EOF
 }
 
 build() {
-    cd "${srcdir}/$_pkgsrc"
+    cd "$_pkgsrc"
 
     # build
     yarn cljs:release
 
     # packaging javescript files to an executable
-    cd "${srcdir}/$_pkgsrc/static"
+    cd "static"
     yarn electron-forge package
 }
 
 package() {
-    # important files are under static/out/Logseq-linux-x64
-    cd "${srcdir}/$_pkgsrc/static/out/Logseq-linux-x64"
-
     # create destination folder and copy files
-    install -dm755 "${pkgdir}/opt/$_pkgname"
-    cp -a -r -u --verbose ./* "${pkgdir}/opt/$_pkgname"
+    install -dm755 "$pkgdir/opt/$_pkgname"
+    cp --reflink=auto -a -r -u --verbose "$_pkgsrc/static/out/Logseq-linux-x64"/* "$pkgdir/opt/$_pkgname"
 
     # User flag aware launcher
-    install -Dm755 "${srcdir}/$_pkgname.sh" "${pkgdir}/usr/bin/logseq"
+    install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/logseq"
 
     # create license folder and make soft links to actual license
-    install -dm755 "${pkgdir}/usr/share/licenses/$pkgname/"
-    ln -s "/opt/$_pkgname/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/"
-    ln -s "/opt/$_pkgname/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/$pkgname/"
+    install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
+    ln -s "/opt/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+    ln -s "/opt/$_pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/"
 
     # install readme and additional license file (the top-level AGPL3)
-    cd "${srcdir}/$_pkgsrc"
-    install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/$pkgname/"
-    install -Dm644 "LICENSE.md" -t "${pkgdir}/usr/share/licenses/$pkgname/"
+    install -Dm644 "$_pkgsrc/README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
+    install -Dm644 "$_pkgsrc/LICENSE.md" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
     # copy xdg desktop files
-    cd "${srcdir}"
-    install -dm755 "${pkgdir}/usr/share/applications"
-    install -Dm644 "$_pkgname.desktop" -t "${pkgdir}/usr/share/applications"
+    install -dm755 "$pkgdir/usr/share/applications"
+    install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 }
