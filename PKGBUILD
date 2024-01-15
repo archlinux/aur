@@ -1,6 +1,6 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=json_dto
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A small header-only library for converting data between json representation and c++ structs"
 arch=(any)
@@ -8,9 +8,9 @@ url="https://github.com/Stiffstream/json_dto"
 license=('BSD')
 depends=(rapidjson)
 makedepends=(cmake)
-checkdepends=(catch2)
+checkdepends=(catch2-v2)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Stiffstream/$pkgname/archive/v.$pkgver.tar.gz")
-sha256sums=('515a2d1510d3d8f8b240eb2149f44aeb47a70d26a7071609cca45c0ee198d1d1')
+sha256sums=('425d31c06c4e7f82d6414969fcdeaccb95ab44063c08296984ea0703de445744')
 
 build() {
     cd "$pkgname-v.$pkgver"
