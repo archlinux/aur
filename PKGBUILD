@@ -4,7 +4,7 @@
 pkgname=python-mailsuite
 _pkgname=${pkgname:7}
 pkgver=1.9.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package to make receiving, parsing, and sending email easier'
 arch=(any)
 url=https://seanthegeek.github.io/mailsuite/
@@ -13,7 +13,7 @@ depends=(python-dnspython
          python-expiringdict
          python-html2text
          python-imapclient
-         python-mail-parser
+         mailparser
          python-publicsuffix2)
 makedepends=(python-build python-hatchling python-installer)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
