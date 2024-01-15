@@ -1,3 +1,11 @@
+# Be sure to use `systemctl edit unpackerr` to modify this service with an override.conf because
+# direct changes will be overwritten by package updates.
+#
+# A user per service w/ shared group setup would have an override like:
+# [Service]
+# Group=sharedgroupname
+# UMask=002
+
 [Unit]
 Description=unpackerr Service
 Wants=network-online.target
