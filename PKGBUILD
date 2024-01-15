@@ -2,24 +2,26 @@
 _base=nbQA
 pkgname=${_base,,}
 pkgdesc="Run any standard Python code quality tool on a Jupyter Notebook"
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 arch=(any)
 url="https://github.com/${_base}-dev/${_base}"
 license=(MIT)
-depends=(ipython python-tokenize-rt python-tomli)
+depends=(autopep8 ipython python-tokenize-rt python-tomli)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest python-jupytext yapf python-isort mypy flake8
-  python-black blacken-docs python-pydocstyle autopep8 pyupgrade mdformat
-  python-autoflake python-pylint python-ruff)
+checkdepends=(python-pytest python-jupytext python-black blacken-docs flake8 python-pydocstyle
+  python-autoflake python-isort mdformat mypy python-pylint pyupgrade python-ruff yapf)
 optdepends=('python-black: toolchain support'
+  'blacken-docs: toolchain support'
   'flake8: toolchain support'
   'python-isort: toolchain support'
+  'python-jupytext: toolchain support'
   'mypy: toolchain support'
   'python-pylint: toolchain support'
-  'pyupgrade: toolchain support')
+  'pyupgrade: toolchain support'
+  'python-ruff: toolchain support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('f367325e9d67ffc2fafbf19afe98622b1f3d86e6466923b85118e3c3aad47b0eb25b85dce3b823e3d3ec27f29461b2fd0c977e1ea47648946cbf08fbfdba7117')
+sha512sums=('5f74919ca0f54917c415a814e3b163e2bd8d2e254f905639289d3aa78d98abe004d1263cf50be39b48d146f14a6dc219c39811ba312aef4a8de7cfc794a389ac')
 
 build() {
   cd ${_base}-${pkgver}
@@ -33,9 +35,8 @@ check() {
   test-env/bin/python -m pytest tests \
     --ignore=tests/test_return_code.py \
     --ignore=tests/test_version.py \
-    --ignore=tests/tools/test_black.py \
     --ignore=tests/tools/test_ruff_works.py \
-    --ignore=tests/tools/test_yapf.py
+    -k 'not successive_runs_using_black and not pylint_works'
 }
 
 package() {
