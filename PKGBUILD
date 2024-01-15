@@ -6,7 +6,7 @@ _pkgname="${pkgname%-snapshot}"
 _pkgver='2.3.4-8'
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel='5'
+pkgrel='6'
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 provides=('slang' 'slsh')
@@ -21,7 +21,7 @@ depends=(
   'zlib'
 )
 backup=('etc/slsh.rc')
-options=('lto')
+options=('lto' '!makeflags')
 source=("${url}${_pkgname}-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
@@ -32,7 +32,15 @@ build() {
 
   # RFC-0023
   # https://rfc.archlinux.page/0023-pack-relative-relocs/
-  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
+
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
