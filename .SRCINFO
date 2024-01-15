@@ -4,7 +4,7 @@ pkgbase = klaus-bin
 	pkgrel = 1
 	url = https://github.com/dmaliog/kLausqt/
 	arch = x86_64
-	license = GPL 2.0
+	license = GPL 3.0
 	depends = qt6-base>=6.6.1
 	depends = qt6-multimedia>=6.6.1
 	depends = qt6-webengine>=6.6.1

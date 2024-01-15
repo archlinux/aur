@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Arch manager that allows you to download, install, delete packages..."
 arch=('x86_64')
 url="https://github.com/dmaliog/kLausqt/"
-license=('GPL 2.0')
+license=('GPL 3.0')
 groups=()
 depends=('qt6-base>=6.6.1' 'qt6-multimedia>=6.6.1' 'qt6-webengine>=6.6.1' 'qt6-svg' 'yay>=12.2.0' 'zenity' 'libnotify' 'zip' 'tar' 'papirus-icon-theme')
 optdepends=('ocs-url')
