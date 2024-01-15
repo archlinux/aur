@@ -5,7 +5,7 @@
 # Contributor: ssfdust <ssfdust@gmail.com>
 
 pkgname=cairo-dock-core-wayland-git
-pkgver=3.4.99.alpha1.20231227.85830c2c
+pkgver=3.4.99.alpha1.20240114.cf35d658
 pkgrel=1
 pkgdesc='Light eye-candy fully themable animated dock with wayland support'
 arch=('i686' 'x86_64')
@@ -18,8 +18,9 @@ optdepends=(
 )
 provides=("${pkgname%-git}" "cairo-dock")
 conflicts=("${pkgname%-git}" "cairo-dock")
-source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new")
-sha256sums=('SKIP')
+options=(debug)
+source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new" "01-cairo-dock-dock-facility.patch")
+sha256sums=('SKIP' '9685d038d97e0b5edf882ef675504b6088b4495859c79bb80967dfbb743394ab')
 
 _builddir="build"
 
@@ -30,6 +31,12 @@ pkgver () {
 }
 
 prepare() {
+    cd "${srcdir}/${pkgname}"
+    for patch in "${srcdir}"/*.patch; do
+        msg2 "Applying $(basename "$patch")"
+        patch -Np1 -i "$patch"
+    done
+
     if [[ -d "${srcdir}/${pkgname}/${_builddir}" ]];
     then
         rm -rf "${srcdir}/${pkgname}/${_builddir}"
