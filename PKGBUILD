@@ -1,16 +1,16 @@
 #Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 pkgname=moar-bin
-pkgver=1.22.3
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=(x86_64)
 url='https://github.com/walles/moar'
-license=(BSD)
+license=(BSD-2-Clause-Views)
 source=("$url/releases/download/v$pkgver/${pkgname%-bin}-v$pkgver-linux-386"
         "${pkgname%-bin}-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
 noextract=(${pkgname%-bin}-$pkgver.tar.gz)
-sha256sums=('b6725e0eee0c09b01726d7986aa073ab4e4d445e56bb182bf55be9b9f1a3fa5a'
-            '8134505c476b6265adcd34d3423cf60c69716c46c63a49e5600e77105c2ffb97')
+sha256sums=('65ee4780db604086e528cabfcca21b550e3a5d5e6f1046d204a7d713b6a6ef1d'
+            '1b1731b65d5dd32324eca826efb6f762d79e51b7dae7bbfc8f0e5460f8d370ac')
 
 prepare() {
 	bsdtar -xvf ${pkgname%-bin}-$pkgver.tar.gz \
