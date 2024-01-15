@@ -1,0 +1,4 @@
+pkg/
+src/
+umka-lang/
+*.tar.zst

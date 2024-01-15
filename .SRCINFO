@@ -1,0 +1,17 @@
+pkgbase = umka-lang-git
+	pkgdesc = Embeddable statically typed scripting language
+	pkgver = 1.2.r24.e55d43f
+	pkgrel = 1
+	url = https://github.com/vtereshkov/umka-lang
+	arch = x86_64
+	license = custom:BSD-2-Clause
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	provides = umka-lang
+	conflicts = umka-lang
+	source = git+https://github.com/vtereshkov/umka-lang
+	md5sums = SKIP
+
+pkgname = umka-lang-git
