@@ -1,7 +1,7 @@
 pkgbase = paru-static
 	pkgdesc = Feature packed AUR helper
 	pkgver = 2.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/morganamilo/paru
 	arch = i686
 	arch = pentium4
@@ -10,6 +10,7 @@ pkgbase = paru-static
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
+	arch = riscv64
 	license = GPL3
 	makedepends = rustup
 	makedepends = cargo
