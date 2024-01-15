@@ -3,7 +3,7 @@
 
 pkgname='fastgron-git'
 _pkgname='fastgron'
-pkgver=0.7.0.r0.g5013f0b
+pkgver=0.7.7.r6.g5d5998f
 pkgrel=1
 pkgdesc='High-performance JSON to GRON (greppable, flattened JSON) converter (development version)'
 arch=('x86_64' 'aarch64')
@@ -25,6 +25,17 @@ pkgver() {
 }
 
 prepare() {
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
+
   export CFLAGS="${CFLAGS} -DNDEBUG"
   export CXXFLAGS="${CXXFLAGS} -DNDEBUG"
 
@@ -49,15 +60,5 @@ package() {
   install -vDm0644 "$_pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -vDm0644 "$_pkgname/LICENSE"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# 🪷 Beyond the Known — 365 Days of Exploration
-#
-# 📆 4th December
-#
-# Don't Mistake the Finger Pointing at the Moon for the Moon.
-#
-# Forget the moon; there is no finger!
-#
-# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
