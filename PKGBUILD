@@ -3,7 +3,7 @@
 
 pkgname=timestampit
 pkgver=0.3.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Prefix each input line with a date/time stamp (formerly timestamp/stampit)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://codeberg.org/kas/timestampit/'
@@ -25,6 +25,17 @@ options=('lto')
 
 build() {
   cd "$pkgname" || exit 1
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   make -C src
 }
