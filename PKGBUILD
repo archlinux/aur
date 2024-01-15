@@ -6,7 +6,7 @@ _pkgname="${pkgname%-snapshot}"
 _pkgver='0.2.0-137'
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Xfig-based publication quality plotting package for the S-Lang interpreter (development snapshot)'
 arch=('aarch64' 'x86_64')
 url='https://jedsoft.org/snapshots/'
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('glibc' 'slang')
 provides=('slxfig')
 conflicts=('slxfig')
-options=('lto')
+options=('lto' '!makeflags')
 source=("${url}${_pkgname}-$_prever.tar.gz")
 md5sums=('46775f193f6ad206e554176b23a13c1c')               # Taken from $url
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
@@ -23,8 +23,18 @@ changelog="$pkgname.changelog"
 build() {
   cd "$_pkgname-$_prever"
 
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
+
   ./configure --prefix=/usr
-  sed -i '/^MKINSDIR/c\MKINSDIR = mkdir -p' src/Makefile
   make
 }
 
