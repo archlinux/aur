@@ -20,6 +20,10 @@ _cachy_config=${_cachy_config-y}
 # 'sched-ext' - select 'sched-ext' Scheduler, based on EEVDF
 _cpusched=${_cpusched-rt}
 
+# Apply suggested sysctl values from them developer of the BORE Scheduler
+# base_slice and disable tuneable scaling
+_bore_tuning_sysctl=${_bore_tuning_sysctl-}
+
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=${_makenconfig-}
 
@@ -174,7 +178,7 @@ _stable=${_major}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux kernel with RT patches by CachyOS with other patches and improvements'
-pkgrel=3
+pkgrel=4
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -192,7 +196,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
     )
 fi
 
-if [ "$_cpusched" = "sched-ext" ]; then
+if [[ "$_cpusched" = "sched-ext" || "$_cpusched" = "cachyos" ]]; then
     depends+=(scx-scheds)
 fi
 
@@ -222,10 +226,11 @@ if [ -n "$_build_nvidia" ]; then
              "$_patchsource/misc/nvidia/nvidia-drm-hotplug-workqueue.patch")
 fi
 
-## ToDo: Adjust for new Scheduler Changes
+## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos) # CachyOS Scheduler (EEVDF + BORE)
-        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
+    cachyos) # CachyOS Scheduler (BORE + SCHED-EXT)
+        source+=("${_patchsource}/sched/0001-sched-ext.patch"
+                 "${_patchsource}/sched/0001-bore-cachy.patch");;
     bore) ## BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     rt) ## EEVDF with RT patches
@@ -238,10 +243,14 @@ case "$_cpusched" in
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
-    sched-ext) ## Sched-ext with BORE
-        source+=("${_patchsource}/sched/0001-sched-ext.patch"
-                 "${_patchsource}/sched/0001-bore-cachy.patch");;
+    sched-ext) ## SCHED-EXT
+        source+=("${_patchsource}/sched/0001-sched-ext.patch");;
 esac
+
+# BORE Tuning Sysctl
+if [ -n "$_bore_tuning_sysctl" ]; then
+    source+=("${_patchsource}/misc/bore-tuning-sysctl.patch")
+fi
 
 ## lrng patchset
 if [ -n "$_lrng_enable" ]; then
@@ -299,11 +308,12 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        bore|hardened|cachyos) scripts/config -e SCHED_BORE;;
+        cachyos) scripts/config -e SCHED_BORE -e SCHED_CLASS_EXT;;
+        bore|hardened) scripts/config -e SCHED_BORE;;
         eevdf) ;;
         rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
         rt-bore) scripts/config -e SCHED_BORE -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
-        sched-ext) scripts/config -e SCHED_BORE -e SCHED_CLASS_EXT;;
+        sched-ext) scripts/config -e SCHED_CLASS_EXT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -554,7 +564,7 @@ prepare() {
     ### Disable DEBUG
     # Doesn't work with sched-ext
     # More infos here: https://github.com/CachyOS/linux-cachyos/issues/187
-    if [[ "$_cpusched" != "sched-ext" &&  -n "$_disable_debug" ]]; then
+    if [[ "$_cpusched" != "sched-ext" || "$_cpusched" != "cachyos" ]] && [ -n "$_disable_debug" ]; then
         scripts/config -d DEBUG_INFO \
             -d DEBUG_INFO_BTF \
             -d DEBUG_INFO_DWARF4 \
@@ -820,8 +830,8 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('cecdbd19905e43e485ab73b352ced18b37f2a138c97a6956cadcda5d3d271001117dc1cf896b166ff019fc7f405f9539e2ed0d6112b0890efb04d182adf4fd0e'
-        'da55af914e4d3e694009d534e89c8b73b23c174662a4bab6857b3e6ad51bb03a8d9ea7439e2dca2329fbeccbc6894e52ad90538649471e5b24328ecef7485575'
+        '9c7b52c103a8506c027a28e81779ecba972f3c85f8917359282a6183d04d04407950ba55d3db13b285b722aafb68f308b16733e575e6b2f6e77b08682c7e5dc4'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        'c48424df455ac2c6bd7cf73d64a671e7541eab75e644a403ef8162adb913b34d51f52cfa1dbb162976d7b85ba4055390f1bb2f90cb539c2bdb5efec7eae270fc'
+        '6a1718dcc5cb15a784175ec49b4abe52d5a2677bf574883dc0e9e8c4fd6904b1bb9fc0d9b15a60d968b50dde138fd3ffb0824baf125194d136117881c0d5e441'
         '32cbf80413978b836eb36309d8bcbed62f09a8aabb8e6e0c8e158fa6983733da05eb72b87b605af844c3790cf1c76f02d777b856fa9920f935bcf36b3c41ad24'
         'e395035f1b0b944beca434c1e24264342088365de267cbb83b111f02a029fc78145aec73c14e458bd3ad648c8bb2c2ef30c2ff091b1dad2f9b754ecbeb45e41b')
