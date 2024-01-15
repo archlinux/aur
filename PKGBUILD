@@ -1,13 +1,12 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
-_pkgname=weather
-pkgname=$_pkgname-gtk4
+pkgname=weather-gtk4
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Beautiful and lightweight weather app build using Gtk4, Libadwaita and Python'
-pkgver=0.6.0
-pkgrel=2
-arch=('x86_64' 'aarch64')
 url="https://github.com/amit9838/weather"
 license=('GPL3')
+arch=('x86_64' 'aarch64')
 depends=('libadwaita' 'python')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
