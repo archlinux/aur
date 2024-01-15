@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=panfu-desktop-bin
 _pkgname="Panfu Desktop"
-pkgver=1.4.2
+pkgver=1.4.3
 _electronversion=11
-pkgrel=2
+pkgrel=1
 pkgdesc="The desktop application for Panfu with integrated Flash Player"
 arch=(
     "i686"
@@ -25,16 +25,16 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a8770b3f8133c0d98066fe1e96540b4dbe176f5d21b966f0373236280d1d1761'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
-sha256sums_i686=('4f216778e7ac7d858bef9b57f49e5e92a3c8161456df69b790c1d4aec7aeb0c6')
-sha256sums_x86_64=('2bb4dba841f6aed6c19ab9e8b0fe91695b078f08b3ffaa1443affbd5f7bc41d6')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums_i686=('1fd6571897ed19eddacd0cea9e3800361d4ad9e9347bed517528018b3eb46e25')
+sha256sums_x86_64=('9c8c10a07a92c6a0d0a199a27ae011bed940b103b0036845fa875f22da4d4813')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
