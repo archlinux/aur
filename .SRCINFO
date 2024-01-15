@@ -1,0 +1,16 @@
+pkgbase = gridformat
+	pkgdesc = Header-only C++-Library for grid file I/O
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/dglaeser/gridformat
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = zlib
+	depends = lz4
+	depends = xz
+	depends = hdf5-openmpi
+	source = gridformat-0.1.2.tar.gz::https://github.com/dglaeser/gridformat/archive/v0.1.2.tar.gz
+	sha512sums = e14a220323fcd01058c0376b62e6b4d3ce408dd4c481dbd20349b228713c15bd60ef050cecd67191bd334cf8404ca926e011da7e2bf5c154343ed6ccd05521c5
+
+pkgname = gridformat
