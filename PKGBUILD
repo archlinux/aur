@@ -1,4 +1,4 @@
-# Maintainer: Marcel Korpel <marcel[dot]korpel[at]gmail>
+# Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Roger Braun <davinelulinvega@gmail.com>
 # Based on work by: Lee.MaRS <leemars@gmail.com>
 # Contributor: kevku <kevku@gmx.com>
