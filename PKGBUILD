@@ -1,4 +1,5 @@
 # Maintainer: CupricReki
+# Maintainer: feschber
 
 pkgname=lan-mouse-git
 _pkgname=lan-mouse
@@ -6,14 +7,14 @@ pkgver=0.5.1.r0.g6c99f9bea3
 pkgrel=1
 pkgdesc="Software KVM Switch / mouse & keyboard sharing software for Local Area Networks"
 url="https://github.com/feschber/lan-mouse"
-license=("GPL-3.0-or-later")
+license=("GPL3")
 arch=(any)
 provides=("$_pkgname=${pkgver/\.r*/}")
 conflicts=("$_pkgname")
 source=("$_pkgname"::"git+https://github.com/ferdinandschober/$_pkgname.git")
 sha256sums=("SKIP")
-depends=(libadwaita gtk4 libx11 libxtst)
-makedepends=(cargo rust)
+depends=(libadwaita gtk4 libx11 libxtst glib2 glibc gcc-libs hicolor-icon-theme)
+makedepends=(git cargo rust desktop-file-utils)
 
 pkgver() {
   cd "$_pkgname"
@@ -41,9 +42,9 @@ check() {
 package() {
   cd "$_pkgname"
 
-  # desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$_pkgname.desktop"
+  desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "de.feschber.LanMouse.desktop"
 
-  install -Dm0644 -t "$pkgdir/usr/share/pixmaps" "resources/mouse-icon.svg"
+  install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps" "resources/de.feschber.LanMouse.svg"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
 }
