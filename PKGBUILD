@@ -3,7 +3,7 @@ pkgname=bluebubbles-bin
 _pkgname=BlueBubbles
 pkgver=1.12.7
 _subver=2B61
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Android, PC (Windows, Linux, & even macOS), and Web!"
 arch=(
     'aarch64'
@@ -35,11 +35,14 @@ makedepends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar::${_ghurl}/releases/download/v${pkgver}%${_subver}/${pkgname%-bin}-linux-aarch64.tar")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar::${_ghurl}/releases/download/v${pkgver}%${_subver}/${pkgname%-bin}-linux-x86_64.tar")
 source=("${pkgname%-bin}.sh")
-sha256sums=('4f890079812e5c20c11a589f3c71a11b091a77c8c836302a0563b03f7c44b7ea')
+sha256sums=('12abd34519533d6c13c77216ea40791d5bdb63edad389b41cfe0a264b0ad4e77')
 sha256sums_aarch64=('6df20701f6a7087d362f0b27e294929d259896bd2f36908053d00cf713e7a08b')
 sha256sums_x86_64=('8c0c3487062cb7546b5208b85cbda6794251e046256f9c422fee1ce067ffc34c')
 build() {
-    gendesk -f -n -q --icon "${pkgname%-bin}" --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -f -n -q --icon "${pkgname%-bin}" --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
