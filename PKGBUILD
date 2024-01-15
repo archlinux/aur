@@ -4,11 +4,11 @@
 
 pkgname='mycorrhiza'
 pkgver=1.14.0
-pkgrel=3
+pkgrel=5
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup'
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://codeberg.org/bouncepaw/$pkgname"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 depends=('git' 'glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -17,17 +17,23 @@ options=('lto')
 prepare() {
   cd "$pkgname"
 
-  export CGO_CPPFLAGS="$CPPFLAGS"
-  export CGO_CFLAGS="$CFLAGS"
-  export CGO_CXXFLAGS="$CXXFLAGS"
-  export CGO_LDFLAGS="$LDFLAGS"
-
   mkdir -p build
   go mod tidy
 }
 
 build() {
   cd "$pkgname"
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
