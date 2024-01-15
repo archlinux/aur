@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/slskd 0755 slskd slskd
+Z /var/lib/slskd - slskd slskd
+# L /var/log/slskd - - - - /var/lib/slskd/logs/
