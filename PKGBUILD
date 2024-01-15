@@ -23,25 +23,25 @@ _names=("${pkgname[@]#python-}")
 _names=("${_names[@]/opentelemetry-propagator/propagator\/opentelemetry-propagator}")
 _names=("${_names[@]/opentelemetry-exporter/exporter\/opentelemetry-exporter}")
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenTelemetry Python API and SDK"
 url="https://github.com/open-telemetry/opentelemetry-python"
-license=(Apache)
+license=(Apache-2.0)
 arch=(any)
 makedepends=(
   python-build
+  python-hatchling
   python-installer
   python-wheel
-  python-hatchling
 )
 checkdepends=(
+  # python-opencensus
   python-backoff
   python-deprecated
   python-flaky
   python-googleapis-common-protos
   python-grpcio
   python-importlib-metadata
-  # python-opencensus
   python-prometheus_client
   python-protobuf
   python-pytest
@@ -73,9 +73,6 @@ build() {
 }
 
 check() {
-  local site_packages
-  site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-
   cd "$_archive"
 
   rm -rf ./tmp_install
@@ -85,8 +82,11 @@ check() {
     python -m installer --destdir=tmp_install "$name"/dist/*.whl
   done
 
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+
   for name in "${_names[@]}"; do
-    PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH" python -m pytest "$name"
+    pytest "$name"
   done
 }
 
@@ -116,6 +116,7 @@ package_python-opentelemetry-sdk() {
     python-deprecated
     python-opentelemetry-api
     python-opentelemetry-semantic-conventions
+    python-psutil
     python-typing_extensions
   )
 
@@ -134,6 +135,7 @@ package_python-opentelemetry-proto() {
 package_python-opentelemetry-semantic-conventions() {
   depends=(
     python
+    python-deprecated
   )
 
   _package opentelemetry-semantic-conventions "$pkgname"
@@ -175,6 +177,7 @@ package_python-opentelemetry-propagator-jaeger() {
 package_python-opentelemetry-exporter-otlp-proto-common() {
   depends=(
     python
+    python-backoff
     python-opentelemetry-api
     python-opentelemetry-proto
     python-opentelemetry-sdk
@@ -186,7 +189,6 @@ package_python-opentelemetry-exporter-otlp-proto-common() {
 package_python-opentelemetry-exporter-otlp-proto-grpc() {
   depends=(
     python
-    python-backoff
     python-deprecated
     python-googleapis-common-protos
     python-grpcio
@@ -202,9 +204,7 @@ package_python-opentelemetry-exporter-otlp-proto-grpc() {
 package_python-opentelemetry-exporter-otlp-proto-http() {
   depends=(
     python
-    python-backoff
     python-deprecated
-    python-googleapis-common-protos
     python-opentelemetry-api
     python-opentelemetry-exporter-otlp-proto-common
     python-opentelemetry-proto

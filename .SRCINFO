@@ -1,10 +1,10 @@
 pkgbase = python-opentelemetry
 	pkgdesc = OpenTelemetry Python API and SDK
 	pkgver = 1.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-telemetry/opentelemetry-python
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-backoff
 	checkdepends = python-deprecated
 	checkdepends = python-flaky
@@ -19,9 +19,9 @@ pkgbase = python-opentelemetry
 	checkdepends = python-responses
 	checkdepends = python-typing_extensions
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-hatchling
 	source = python-opentelemetry-api-1.22.0.tar.gz::https://github.com/open-telemetry/opentelemetry-python/archive/refs/tags/v1.22.0.tar.gz
 	sha256sums = 3b5b9020dec944e6f307786d018355e7bee7d9a09c7c9ccbb080c465c854594d
 
@@ -35,6 +35,7 @@ pkgname = python-opentelemetry-sdk
 	depends = python-deprecated
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-semantic-conventions
+	depends = python-psutil
 	depends = python-typing_extensions
 
 pkgname = python-opentelemetry-proto
@@ -43,6 +44,7 @@ pkgname = python-opentelemetry-proto
 
 pkgname = python-opentelemetry-semantic-conventions
 	depends = python
+	depends = python-deprecated
 
 pkgname = python-opentelemetry-propagator-b3
 	depends = python
@@ -55,13 +57,13 @@ pkgname = python-opentelemetry-propagator-jaeger
 
 pkgname = python-opentelemetry-exporter-otlp-proto-common
 	depends = python
+	depends = python-backoff
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-proto
 	depends = python-opentelemetry-sdk
 
 pkgname = python-opentelemetry-exporter-otlp-proto-grpc
 	depends = python
-	depends = python-backoff
 	depends = python-deprecated
 	depends = python-googleapis-common-protos
 	depends = python-grpcio
@@ -72,9 +74,7 @@ pkgname = python-opentelemetry-exporter-otlp-proto-grpc
 
 pkgname = python-opentelemetry-exporter-otlp-proto-http
 	depends = python
-	depends = python-backoff
 	depends = python-deprecated
-	depends = python-googleapis-common-protos
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-exporter-otlp-proto-common
 	depends = python-opentelemetry-proto
