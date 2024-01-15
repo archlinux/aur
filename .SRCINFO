@@ -1,0 +1,13 @@
+pkgbase = python-pyaml-env
+	pkgdesc = Zero-dependency Python package for easy throttling with asyncio support
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/mkaranasou/pyaml_env
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-yaml
+	source = pyaml-env-1.2.1.tar.gz::https://github.com/mkaranasou/pyaml_env/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 889caaf2845055a63cdb4df8d3a00027088a8b4f28b631ff8eaa6470fccfa941
+
+pkgname = python-pyaml-env
