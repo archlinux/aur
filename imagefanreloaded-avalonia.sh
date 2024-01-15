@@ -6,4 +6,4 @@ export PATH="${_APPDIR}:${PATH}"
 export LD_LIBRARY_PATH="${_APPDIR}:${LD_LIBRARY_PATH}"
 export LC_CTYPE=en_US.UTF-8
 cd "${_APPDIR}"
-exec "${_RUNNAME}" "${@}"
+exec "${_RUNNAME}" "$@" | exit
