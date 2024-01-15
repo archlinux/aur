@@ -1,13 +1,12 @@
 pkgbase = cmake-lint
 	pkgdesc = Check for coding style issues in CMake files
 	pkgver = 1.4.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/cmake-lint/cmake-lint
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-mock
 	checkdepends = python-pytest
-	checkdepends = python-pytest-mock
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pytest-runner

@@ -3,14 +3,12 @@
 
 pkgname=cmake-lint
 pkgver=1.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Check for coding style issues in CMake files"
 arch=(any)
 url="https://github.com/cmake-lint/cmake-lint"
-license=(Apache)
-depends=(
-  python
-)
+license=(Apache-2.0)
+depends=(python)
 makedepends=(
   python-build
   python-installer
@@ -21,7 +19,6 @@ makedepends=(
 checkdepends=(
   python-mock
   python-pytest
-  python-pytest-mock
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
@@ -44,10 +41,12 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest \
-    --rootdir="$PWD" \
-    --config-file=/dev/null \
-    --ignore test/cli_test.py
+  rm -rf tmp_install
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  pytest --override-ini="addopts="
 }
 
 package() {
