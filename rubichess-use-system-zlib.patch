@@ -1,17 +1,20 @@
-diff --git a/src/Makefile b/src/Makefile
-index 76ea689..4bec466 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -135,8 +135,6 @@ endif
+@@ -156,12 +156,8 @@ ifeq ($(COMP),ndk)
+ 	endif
+ 	LDFLAGS += -static-libstdc++
+ endif
  
- 
- ZLIBDIR=zlib
+-
+-ZLIBDIR=zlib
 -CXXFLAGS += -Izlib
 -LDFLAGS += -Lzlib
  zlib = yes
  
  ifeq (,$(CPUFLAGS))
-@@ -322,7 +320,7 @@ $(ZLIBDIR)/libz.a:
+ ifeq ($(ARCH),native)
+@@ -382,9 +378,9 @@ endif
+ $(ZLIBDIR)/libz.a:
  	@echo Compiling zlib...
  	@cd $(ZLIBDIR); $(MYCC) $(CFLAGS) $(ARCHFLAGS) -w -c *.c; $(AR) rcs libz.a *.o; cd ..
  
@@ -20,3 +23,4 @@ index 76ea689..4bec466 100644
  	@echo $(MESSAGE)
  	$(CXX) $(CXXFLAGS) $(EXTRACXXFLAGS) $(ARCHFLAGS) *.cpp $(LDFLAGS) $(PTHREADLIB) $(EXTRALDFLAGS) $(GITDEFINE) $(NETDEF) $(NETOBJ) -o $(EXE)
  
+ objclean:

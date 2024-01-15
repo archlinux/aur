@@ -1,0 +1,17 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -339,9 +339,13 @@ default: net
+ ifneq ($(debug),yes)
+ 	@$(STRIP) $(EXE)$(EXEEXT)
+ endif
+ 
+-build: default
++build: net arch
++	@$(MAKE) compile MESSAGE='Compiling standard build ...'
++ifneq ($(debug),yes)
++	@$(STRIP) $(EXE)$(EXEEXT)
++endif
+ 
+ arch: libclean
+ 	@echo
+ 	@echo "Compiler: $(COMP)"
