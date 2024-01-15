@@ -2,11 +2,11 @@
 
 pkgname=json-schema-for-humans
 pkgver=0.47
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly generate HTML documentation from a JSON schema"
 arch=(any)
 url="https://github.com/coveooss/json-schema-for-humans"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   python
   python-click
