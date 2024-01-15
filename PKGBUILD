@@ -1,6 +1,6 @@
 # Maintainer: Peltoche <pierre.peltier@protonmail.com>
 pkgname=duckcloud
-pkgver=23.12.1
+pkgver=24.01.1
 pkgrel=1
 epoch=1
 pkgdesc="A cloud for your family"
@@ -10,7 +10,7 @@ license=(AGPL3)
 depends=(glibc)
 makedepends=(go openssl)
 optdepends=()
-backup=(etc/duckcloud/password.cred)
+backup=(etc/duckcloud)
 install=duckcloud.install
 
 source=(https://github.com/theduckcompany/duckcloud/archive/refs/tags/${pkgver}.tar.gz
@@ -19,7 +19,7 @@ source=(https://github.com/theduckcompany/duckcloud/archive/refs/tags/${pkgver}.
       ${pkgname}.tmpfiles
       LICENSE)
 
-sha256sums=('8cfe7990a19a70644a6cb2c8936629300892553437741d4df79e3eac5977fd5b'
+sha256sums=('37cee01bc182e0f7e6d374fc6c66409ffcb30f424639a5ac717eb210453f6b07'
             '33a7e3d8a674265eda550cde98d0a7fb63ad77fbdc3c4377e0e17edc2eff689e'
             'ca526231ca260be83df4dfb5cc3d7400e82a35e3f164b9799c63be9d4b1bcead'
             '8ee8d3bf748a986fdd040e56c208742045df91837de3e250d5148e0b3fd65692'
