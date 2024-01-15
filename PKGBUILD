@@ -5,24 +5,28 @@
 
 pkgname=wlr-randr
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility to manage outputs of a Wayland compositor'
 arch=('x86_64')
-url='https://sr.ht/~emersion/wlr-randr/'
+url='https://sr.ht/~emersion/wlr-randr'
+_url='https://git.sr.ht/~emersion/wlr-randr'
 license=('MIT')
 depends=('wayland')
 makedepends=('meson')
-source=("https://git.sr.ht/~emersion/wlr-randr/refs/download/v$pkgver/wlr-randr-$pkgver.tar.gz"{,.sig})
-sha256sums=('37ef025da9653d327bc7bb46c34294171d64749f5e12a3d08d124a2e81b4a089'
-            'SKIP')
+source=("$pkgname-$pkgver.tar.gz::${_url}/archive/v$pkgver.tar.gz")
+sha256sums=('918420f134fc094da0cd9cc5112b65f623abd773964bff5fa57e221204506ab2')
 validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48')
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  cd "$pkgname-v$pkgver"
+
+  arch-meson build
   meson compile -C build
 }
 
 package() {
+  cd "$pkgname-v$pkgver"
+
   meson install -C build --destdir "$pkgdir"
-  install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,16 +1,14 @@
 pkgbase = wlr-randr
 	pkgdesc = Utility to manage outputs of a Wayland compositor
 	pkgver = 0.3.1
-	pkgrel = 1
-	url = https://sr.ht/~emersion/wlr-randr/
+	pkgrel = 2
+	url = https://sr.ht/~emersion/wlr-randr
 	arch = x86_64
 	license = MIT
 	makedepends = meson
 	depends = wayland
-	source = https://git.sr.ht/~emersion/wlr-randr/refs/download/v0.3.1/wlr-randr-0.3.1.tar.gz
-	source = https://git.sr.ht/~emersion/wlr-randr/refs/download/v0.3.1/wlr-randr-0.3.1.tar.gz.sig
+	source = wlr-randr-0.3.1.tar.gz::https://git.sr.ht/~emersion/wlr-randr/archive/v0.3.1.tar.gz
 	validpgpkeys = 34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48
-	sha256sums = 37ef025da9653d327bc7bb46c34294171d64749f5e12a3d08d124a2e81b4a089
-	sha256sums = SKIP
+	sha256sums = 918420f134fc094da0cd9cc5112b65f623abd773964bff5fa57e221204506ab2
 
 pkgname = wlr-randr
