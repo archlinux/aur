@@ -1,7 +1,7 @@
 pkgbase = pgroonga
 	pkgdesc = Fast fulltext search on PostgreSQL.
-	pkgver = 3.1.5
-	pkgrel = 2
+	pkgver = 3.1.6
+	pkgrel = 1
 	url = https://github.com/pgroonga/pgroonga
 	arch = i686
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = pgroonga
 	makedepends = clang15
 	makedepends = llvm15
 	depends = groonga
-	source = http://packages.groonga.org/source/pgroonga/pgroonga-3.1.5.tar.gz
-	source = http://packages.groonga.org/source/pgroonga/pgroonga-3.1.5.tar.gz.asc
+	source = http://packages.groonga.org/source/pgroonga/pgroonga-3.1.6.tar.gz
+	source = http://packages.groonga.org/source/pgroonga/pgroonga-3.1.6.tar.gz.asc
 	validpgpkeys = 2701F317CFCCCB975CADE9C2624CF77434839225
-	sha1sums = 8ed5d80900faf23572f8f03800ee4f0854f6e74d
+	sha1sums = cc7e3f0393e9251a6bdb1cc3690d58c86b75aa4d
 	sha1sums = SKIP
-	sha256sums = 75d25efb7975d4ee6f5df4b3213d37005e9e91598640f568b39e1d4a98d09e92
+	sha256sums = 5df1e92acb6074143a3a8d1c0e93a985424d4eef4a81f06ec406bc45a76f8f20
 	sha256sums = SKIP
 
 pkgname = pgroonga
