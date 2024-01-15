@@ -3,11 +3,11 @@
 pkgname=python-pytest-memray
 _name=${pkgname#python-}
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pytest plugin for easy integration of memray memory profiler"
 arch=(any)
 url="https://github.com/bloomberg/pytest-memray"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   memray
   python
@@ -32,8 +32,8 @@ _archive="$_name-$pkgver"
 build() {
   cd "$_archive"
 
-  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver \
-    python -m build --wheel --no-isolation
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -43,8 +43,8 @@ check() {
   _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
 
-  PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH" \
-    python -m pytest tests
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH"
+  pytest tests
 }
 
 package() {

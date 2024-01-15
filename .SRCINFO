@@ -1,10 +1,10 @@
 pkgbase = python-pytest-memray
 	pkgdesc = A pytest plugin for easy integration of memray memory profiler
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bloomberg/pytest-memray
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-flaky
 	checkdepends = python-pytest-xdist
 	makedepends = python-build
