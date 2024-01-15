@@ -3,18 +3,18 @@
 # Contributor: Nils <mail n-sch de>
 
 pkgname=emacs-markdown-mode-git
-pkgver=2.1.r114.gf3928b7
+pkgver=2.4.r330.ge096bb9
 pkgrel=1
 pkgdesc='Emacs markdown-mode'
 arch=('i686' 'x86_64')
-url='http://jblevins.org/projects/markdown-mode/'
+url='https://jblevins.org/projects/markdown-mode/'
 license=('GPL')
 makedepends=('git')
 depends=('emacs')
 install=${pkgname}.install
 provides=('emacs-markdown-mode')
 conflicts=('emacs-markdown-mode')
-source=("$pkgname"::'git://github.com/jrblevin/markdown-mode.git')
+source=("$pkgname"::'git+https://github.com/jrblevin/markdown-mode.git')
 md5sums=('SKIP')
 
 pkgver() {
