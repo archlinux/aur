@@ -11,6 +11,9 @@
 # three-stage profile-guided optimization
 : ${_build_pgo:=true}
 
+# reuse existing PGO profile
+: ${_build_pgo_reuse:=true}
+
 # use mozilla-central repo, instead of mozilla-unified
 : ${_build_nightly:=false}
 
@@ -27,7 +30,7 @@
 ## basic info
 pkgname="firefox${_pkgtype:-}"
 _pkgname=firefox-nightly
-pkgver=123.0a1+20231230.1+h9660032084db
+pkgver=123.0a1+20240113.1+h23a77d3c25d7
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -266,36 +269,60 @@ build() {
 
   if [[ "${_build_pgo::1}" == "t" ]] ; then
     # Do 3-tier PGO
-    echo "Building instrumented browser..."
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate=cross
-END
-    ./mach build
+    local _old_profdata="${SRCDEST:-$startdir}/merged.profdata"
+    local _old_jarlog="${SRCDEST:-$startdir}/jarlog"
 
-    echo "Profiling instrumented browser..."
-    ./mach package
+    # Restore old profile
+    if [[ "${_build_pgo_reuse::1}" == "t" ]] ; then
+      if [[ -s "$_old_profdata" ]] ; then
+        echo "Restoring old profile data."
+        cp --reflink=auto -f "$_old_profdata" merged.profdata
+      fi
 
-    LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
-      wlheadless-run -c weston --width=1920 --height=1080 \
-      -- ./mach python build/pgo/profileserver.py
+      if [[ -s "$_old_jarlog" ]] ; then
+        echo "Restoring old jar log."
+        cp --reflink=auto -f "$_old_jarlog" jarlog
+      fi
+    fi
 
-    echo "Removing instrumented browser..."
-    ./mach clobber
+    # Make new profile
+    if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]] ; then
+      echo "Building instrumented browser..."
+      cat >.mozconfig ../mozconfig
+      echo >>.mozconfig "ac_add_options --enable-profile-generate=cross"
+      ./mach build
+
+      echo "Profiling instrumented browser..."
+      ./mach package
+
+      LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
+        wlheadless-run -c weston --width=1920 --height=1080 \
+        -- ./mach python build/pgo/profileserver.py
+
+      echo "Removing instrumented browser..."
+      ./mach clobber
+    fi
 
     echo "Building optimized browser..."
     cat >.mozconfig ../mozconfig
 
     if [[ -s merged.profdata ]] ; then
       stat -c "Profile data found (%s bytes)" merged.profdata
-      echo "ac_add_options --enable-profile-use=cross" >> .mozconfig
-      echo "ac_add_options --with-pgo-profile-path='${PWD@Q}/merged.profdata'" >> .mozconfig
+      echo >>.mozconfig "ac_add_options --enable-profile-use=cross"
+      echo >>.mozconfig "ac_add_options --with-pgo-profile-path='${PWD@Q}/merged.profdata'"
+
+      # save profdata for reuse
+      cp --reflink=auto -f merged.profdata "$_old_profdata"
     else
       echo "Profile data not found."
     fi
 
     if [[ -s jarlog ]] ; then
       stat -c "Jar log found (%s bytes)" jarlog
-      echo "ac_add_options --with-pgo-jarlog='${PWD@Q}/jarlog'" >> .mozconfig
+      echo >>.mozconfig "ac_add_options --with-pgo-jarlog='${PWD@Q}/jarlog'"
+
+      # save jarlog for reuse
+      cp --reflink=auto -f jarlog "$_old_jarlog"
     else
       echo "Jar log not found."
     fi
@@ -401,7 +428,7 @@ END
   if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
     make -C obj uploadsymbols
   else
-    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
+    cp -fvt "$startdir" obj/dist/*crashreporter-symbols.zip
   fi
 }
 

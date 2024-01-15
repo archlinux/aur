@@ -12,7 +12,7 @@ shift
 [[ -f $token && -s $token ]] || die "Invalid TOKEN-FILE ${token@Q}"
 
 for archive; do
-  [[ $(file -Ebi "$archive") == application/zstd* ]] || die "Invalid SYMBOL-ARCHIVE ${archive@Q}"
+  [[ $(file -Ebi "$archive") == application/zip* ]] || die "Invalid SYMBOL-ARCHIVE ${archive@Q}"
 done
 
 for archive; do
@@ -21,5 +21,4 @@ for archive; do
     --retry 4 --retry-connrefused --connect-timeout 120 \
     https://symbols.mozilla.org/upload/
   echo
-  mv -v "$archive" "$archive.uploaded"
 done
