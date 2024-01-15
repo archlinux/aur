@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-sched-ext-git
 pkgver=6.7.0.r1236012.g6eb6c92567b1
 _srcname=sched_ext
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux Kernel based on the sched_ext branch'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -60,7 +60,7 @@ _lucjanver=next
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git+https://github.com/sched-ext/sched_ext.git#branch=sched_ext"
-        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -302,5 +302,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('SKIP'
-        '7176c1617077f82b56af8322db004f24e4e7463e046dea9c64a35820d6cb1977a1bb33e084bde4623c1420cdf7fc1ccfa96c9c5b2e9992edaa070229662a8447'
+        'efe75d4575d6b788a36a1e90d1e0e0325a134a254b31e6b82da911579252f661a01b21a5b36aceb0e5f2f617dfd17915ddcb8fbf4fce36a327607533815a334e'
         '6740eed61a07f9456abafcd221a0582d141536c5cae32aeacbed4802a2de734ce64a33527deefe606e8eee76093fb7193552ef946f3ed6afb5f2ef284317f3fb')
