@@ -6,17 +6,18 @@
 # java 11 is current minimum & recommended version for building/playing freecol, but at runtime newer versions should work also.
 
 pkgname=freecol-git
-pkgver=0.16534.3c9127262
-pkgrel=1
+pkgver=0.16652.031fa8159
+pkgrel=2
 pkgdesc="A turn-based strategy game based on Colonization, git version"
 arch=('any')
 url="http://www.freecol.org/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 makedepends=('git' 'ant' 'junit' 'texlive-core' 'java-environment-openjdk=11')
 source=("$pkgname::git+https://git.code.sf.net/p/freecol/git"
-        'freecol-git.sh')
+        'freecol-git.sh'
+)
 sha512sums=('SKIP'
-            '1534ddff8427045577aaf14277142e4fbf6857a4ecf6221fcf4e42b747ac2cbd307a9a54a75b110bd0577e7b033ef2a66574d6e7f648c2966d9a5d3cfb0e2027')
+            'ddaf6ee6841fc99143b5cb53e88f3d377143c84c7785d2564d864040da47f086d16c443188377139d164aac49ea57a78fd355676949cb93e5e3c9678b59128fd')
 
 pkgver() {
     cd $pkgname
