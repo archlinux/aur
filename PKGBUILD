@@ -1,29 +1,49 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Anton Karmanov <a.karmanov@inventati.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
-pkgname=neovim-telescope
-pkgver=0.1.0
+# shellcheck disable=SC2034,SC2164
+
+pkgname='neovim-telescope'
+_projname='telescope.nvim'
+pkgver='0.1.5'
 pkgrel=1
-pkgdesc="Extensible fuzzy finder for lists"
+pkgdesc='Extendable fuzzy search for Neovim'
 arch=('any')
 url="https://github.com/nvim-telescope/telescope.nvim"
 license=('MIT')
 groups=('neovim-plugins')
 depends=('neovim' 'neovim-plenary')
 optdepends=(
-	'bat: for inline previews'
-	'fd'
-	'ripgrep'
-	'neovim-tree-sitter'
-	'vim-devicons')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('56d3b731ab26e0534ae28243841cf3ba51d41791b432b7b3a619004e21d5c37d')
+  'bat: for inline previews'
+  'fd'
+  'ripgrep'
+  'neovim-tree-sitter'
+  'vim-devicons'
+)
+conflicts=("${pkgname}-git")
+source=("${_projname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=('e02bef76434f7531b75ecd1b0b7f2910')
 
 package() {
-	cd "telescope.nvim-$pkgver"
-	find data doc lua plugin \
-		-not \( -path lua/tests -prune \) \
-	  -type f \
-		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  pkgdir=${pkgdir:?}
+  local dirs=(data doc lua plugin)
+  local docs=(README.md developers.md)
+
+  cd "${_projname}-${pkgver}"
+
+  find "${dirs[@]}" \
+    -not \( -path lua/tests -prune \) \
+    -type f \
+    -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  for file in "${docs[@]}"; do
+    install -Dvm644 "$file" -t "$pkgdir/usr/share/doc/$pkgname/"
+  done
+}
+
+check() {
+  cd "${_projname}-${pkgver}"
+  make test
 }
