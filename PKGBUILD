@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
-pkgver=3.0.11.1230
+pkgver=3.0.12.115
 pkgrel=1
 pkgdesc="Cross-Platform Universal Log Viewer."
 arch=('aarch64' 'x86_64')
@@ -34,20 +34,20 @@ source=(
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
             '79f34b0177dc0cbd37e4f3f7b1a880c7c3e111a6600c457b4bfab755351679d9')
-sha256sums_aarch64=('97aa0962454cc9bac6ced2913da4b1c557e4918c756c6489f2c876ff87839f9e')
-sha256sums_x86_64=('424f9e088ad12fd3c84449e7f53578afc9bee5a5d09161120567e085f959e382')
+sha256sums_aarch64=('42974b28142226c5ae0dcd97a591d8a14a255ff1ca326ca23c4e632af7bf6842')
+sha256sums_x86_64=('cab75fcb6b9b6222ce61fd29d6707cc82117dac4449be918b0e3b18f73afa367')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runappname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz" -C "${srcdir}/opt/${pkgname%-bin}"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     cp -r "${srcdir}/opt" "${pkgdir}"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
