@@ -2,7 +2,7 @@
 pkgname=bilibili
 pkgver=1.13.0_2
 _electronversion=21
-pkgrel=2
+pkgrel=3
 pkgdesc="基于哔哩哔哩官方客户端移植的Linux版本 支持漫游"
 arch=(
     'aarch64'
@@ -21,15 +21,16 @@ depends=(
 makedepends=(
     'wget'
     'perl-image-exiftool'
-    'p7zip'
     'git'
+    'asar'
+    'unzip'
 )
 source=(
     "${pkgname}::git+${url}.git#tag=v${pkgver//_/-}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '21c4d48798f22280ced9cf05e6bcbcc57c24f0952262a128c3bad0e73ba433f4')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
