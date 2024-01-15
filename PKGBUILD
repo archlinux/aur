@@ -53,7 +53,7 @@ _override_max_perf=
 pkgname=nvidia-tweaks
 pkgdesc="A collection of tweaks and improvements to the NVIDIA driver"
 pkgver=545
-pkgrel=1
+pkgrel=2
 license=('custom')
 url='https://github.com/ventureoo/nvidia-tweaks'
 depends=('NVIDIA-MODULE' 'nvidia-utils')
@@ -67,10 +67,10 @@ source=('nvidia.conf'
         'https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch-fbc.sh'
         'https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh')
 sha256sums=('dd5b97c6f69ef6ab6924cad95708a461650f314d45eefe21fd2ff5d9739a2a03'
-            'cbd585ed1e2dac6e4d07c1ff32f1eca8661fb61f786f7c8c26db29a5f864d347'
+            '91735d5de62355634c76183ba1128efb5edd96a1b5fedd970c2f2739bb203391'
             '81464bfeda86b9683a6f739a1cec1a2fe37717af5480671be70fe43f51fba420'
             'b4bde9eecd90fc9498a8d47c7bb7edfe877ae64ea9e7069c405710a76c749144'
-            'ec0c8e48e6b52e0f90843066d6b14c0a1b73b4ef0808c99651ef8b159cf7493a'
+            '003134e231827381adb83f5e6adad416d394ea4a6b66757fd643872e65fde056'
             'SKIP'
             'SKIP')
 
@@ -118,11 +118,6 @@ package() {
       install -Dm644 nvidia-patch.remove "${pkgdir}/usr/share/libalpm/hooks/nvidia-patch-remove.hook"
     fi
 
-    # Potentially fixes the loading of the nvidia-uvm module
-    install -Dm644 <(printf '%s' 'nvidia-uvm') \
-        "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
-
     # udev rules for node presence and runtime PM
-    # Fixes https://github.com/HansKristian-Work/vkd3d-proton/issues/711
     install -Dm644 60-nvidia.rules "${pkgdir}/usr/lib/udev/rules.d/71-nvidia.rules"
 }
