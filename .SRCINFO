@@ -1,8 +1,8 @@
 pkgbase = emacs-markdown-mode-git
 	pkgdesc = Emacs markdown-mode
-	pkgver = 2.1.r114.gf3928b7
+	pkgver = 2.4.r330.ge096bb9
 	pkgrel = 1
-	url = http://jblevins.org/projects/markdown-mode/
+	url = https://jblevins.org/projects/markdown-mode/
 	install = emacs-markdown-mode-git.install
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = emacs-markdown-mode-git
 	depends = emacs
 	provides = emacs-markdown-mode
 	conflicts = emacs-markdown-mode
-	source = emacs-markdown-mode-git::git://github.com/jrblevin/markdown-mode.git
+	source = emacs-markdown-mode-git::git+https://github.com/jrblevin/markdown-mode.git
 	md5sums = SKIP
 
 pkgname = emacs-markdown-mode-git
-
