@@ -1,6 +1,6 @@
 _phpbase=81
 pkgname=php${_phpbase}-mcrypt
-pkgver=1.0.4
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="php${_phpbase} bindings for the unmaintained libmcrypt. For compat purposes"
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
   echo "extension=mcrypt.so" > ${pkgdir}/etc/php${_phpbase}/conf.d/mcrypt.ini
 }
 
-md5sums=('7097fac371820ff130c90330b556f1bf')
+md5sums=('5c3679e4d4581fb0f83fbe6f182bbf75')
