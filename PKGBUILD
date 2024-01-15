@@ -1,7 +1,7 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=timg
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal Image and Video Viewer"
 arch=('any')
 url="https://github.com/hzeller/timg"
