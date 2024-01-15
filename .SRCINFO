@@ -1,7 +1,7 @@
 pkgbase = python-pymc
 	pkgdesc = Markov chain Monte Carlo for Python
 	pkgver = 5.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pymc-devs/pymc
 	arch = any
 	license = MIT
@@ -26,6 +26,6 @@ pkgbase = python-pymc
 	depends = python-typing_extensions
 	depends = python-xarray
 	source = python-pymc-5.10.3.tar.gz::https://github.com/pymc-devs/pymc/archive/refs/tags/v5.10.3.tar.gz
-	sha256sums = 32e0d317f017b2e763b39e6e5946054970b2b5b2018a01cfae614537fe0a2560
+	sha256sums = 786932f6cbd137f100200c9b5230ac6d943578eadf252d74e191941ee9791430
 
 pkgname = python-pymc
