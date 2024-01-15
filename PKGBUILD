@@ -2,7 +2,7 @@
 pkgname=bilibili
 pkgver=1.13.0_2
 _electronversion=21
-pkgrel=1
+pkgrel=2
 pkgdesc="基于哔哩哔哩官方客户端移植的Linux版本 支持漫游"
 arch=(
     'aarch64'
@@ -23,7 +23,6 @@ makedepends=(
     'perl-image-exiftool'
     'p7zip'
     'git'
-    'asar'
 )
 source=(
     "${pkgname}::git+${url}.git#tag=v${pkgver//_/-}"
@@ -37,7 +36,7 @@ build() {
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     cd "${srcdir}/${pkgname}"
-    sh "${srcdir}/${pkgname}/tools/setup-${pkgname}"
+    sh "tools/setup-${pkgname}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
@@ -46,7 +45,7 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}/res/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/${pkgname}/res/icons/${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/app/${pkgname}.png"
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644  "${srcdir}/${pkgname}/license" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
