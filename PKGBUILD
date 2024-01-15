@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine-bin
 _appname=AFFiNE
-pkgver=0.11.2
+pkgver=0.11.3
 _electronversion=27
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
@@ -24,10 +24,10 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a258d796c3c9b2b5bbdce5cce38d4ddca0e0c4417dde1866bf9e248592b0ecd6'
+sha256sums=('c668b787556d565297ce030119a9c0680cbabe1a049fa42c2e37354687207834'
             '55bc02a073dc08f696af3b0a7febace5176c20920dea55e2ceb29d9b0ac1e7ac'
             'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${_appname}" --exec "${pkgname%-bin}"
     sed -i "s|@electronversion@|${_electronversion}|" "$srcdir/${pkgname%-bin}.sh"
