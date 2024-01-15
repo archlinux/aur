@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-localflutter
 _pkgname=fluffychat
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="Chat with your friends, be careful about your flutter environment"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ makedepends=('clang'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('0f202c0f74c84b99f632946233261d9c7330fb682c27ddc4d3e3e88bddc3ab3b')
+sha256sums=('bf677e7b4c986ea5629d28f444f046334515f627c18c5dab6d6feb02d458ee0b')
 
 # Check the fluffer environment yourself
 
