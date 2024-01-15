@@ -3,23 +3,26 @@
 pkgname=python-fixit
 _name=Fixit
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Python linting framework with auto-fixes and hierarchical configuration"
 arch=(any)
 url="https://github.com/Instagram/Fixit"
 license=(
-  Apache
+  Apache-2.0
   MIT
-  custom:PSF-2.0
+  PSF-2.0
 )
 depends=(
   python
+  python-black
   python-click
   python-libcst
   python-moreorless
   python-packaging
+  python-rich
   python-tomli
   python-trailrunner
+  ufmt
 )
 makedepends=(
   python-build
@@ -57,16 +60,15 @@ check() {
   cd "$_archive"
 
   rm -rf tmp_install
-  local site_packages
-  site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
 
   # Remove failing tests
-  rm "tmp_install/$site_packages/fixit/upgrade/deprecated_import.py"
-  rm "tmp_install/$site_packages/fixit/upgrade/remove_rule_suffix.py"
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm "tmp_install/$_site_packages/fixit/upgrade/deprecated_import.py"
+  rm "tmp_install/$_site_packages/fixit/upgrade/remove_rule_suffix.py"
 
-  PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH" \
-    python -m fixit.tests
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  python -m fixit.tests
 }
 
 package() {
@@ -74,5 +76,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -D LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
