@@ -3,28 +3,20 @@
 
 pkgname=timestampit
 pkgver=0.3.3.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Prefix each input line with a date/time stamp (formerly timestamp/stampit)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://codeberg.org/kas/timestampit/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glibc')
 optdepends=('scdoc: for recompiling manual pages')
-provides=(
-  'timestamp'
-  'stampit'
-)
-conflicts=(
-  'timestamp'
-  'stampit'
-)
-source=(
-  "$pkgname-$pkgver.tar.gz::${url}archive/v$pkgver.tar.gz"
-)
+provides=('stampit' 'timestamp')
+conflicts=('stampit' 'timestamp')
+source=("$pkgname-$pkgver.tar.gz::${url}archive/v$pkgver.tar.gz")
 options=('lto')
 
 build() {
-  cd "$pkgname" || exit 1
+  cd "$pkgname"
 
   # RFC-0023
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
@@ -41,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname" || exit 1
+  cd "$pkgname"
 
   make -C src PREFIX=/usr DESTDIR="$pkgdir" install
 }
