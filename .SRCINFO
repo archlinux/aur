@@ -1,6 +1,6 @@
 pkgbase = zeldalttp
 	pkgdesc = Legend Of Zelda: Link to the Past game powered by the zelda3.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	arch = pentium4
 	arch = i386
@@ -13,7 +13,7 @@ pkgbase = zeldalttp
 	depends = wget
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/zelda3pkg/Zeldalttp/-/archive/1.0.1-1/zeldalttp-1.0.1-1.tar.bz2
+	source = https://gitlab.com/zelda3pkg/Zeldalttp/-/archive/1.0.2-1/zeldalttp-1.0.2-1.tar.bz2
 	sha256sums = SKIP
 
 pkgname = zeldalttp
