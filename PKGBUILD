@@ -3,7 +3,7 @@
 pkgname=python-picologging
 _name=${pkgname#python-}
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An optimized logging library for Python"
 arch=(x86_64)
 url="https://github.com/microsoft/picologging"
@@ -49,6 +49,7 @@ prepare() {
 build() {
   cd "$_archive"
 
+  export CMAKE_ARGS=-Wno-dev
   python -m build --wheel --no-isolation
 }
 
@@ -56,11 +57,12 @@ check() {
   cd "$_archive"
 
   rm -rf tmp_install
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
 
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH"
-  python -m pytest \
+  # Deselected test fails with MEMORY PROBLEMS in a chroot.
+  pytest \
     --deselect tests/unit/test_logger.py::test_nested_frame_stack
 }
 
