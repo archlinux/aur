@@ -1,0 +1,22 @@
+pkgbase = libobjc2
+	pkgdesc = Objective-C runtime library intended for use with Clang.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/gnustep/libobjc2
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = clang
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = libobjc2
+	conflicts = libobjc2
+	source = libobjc2::git+https://github.com/gnustep/libobjc2.git#tag=v2.1
+	source = fix_eh_trampoline.patch::https://github.com/gnustep/libobjc2/commit/365e53632e8be41e49f21ee47a63e41be424a237.patch
+	b2sums = SKIP
+	b2sums = 51c42a36f14ad1470f2c65e1c18a3dce93f4360a0081cf6ce8d4b559f839e942b401e9f61cfe1733aebeb5f3341f89d4ea6e25d7e6e27cbd5a527de5edf38baa
+
+pkgname = libobjc2
