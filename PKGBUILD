@@ -8,7 +8,8 @@
 # Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica-light
-pkgver=13.3.1
+pkgver=14.0.0
+_pkgver=${pkgver%.[0-9]}
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with online documentation."
 provides=('mathematica')
@@ -73,11 +74,19 @@ optdepends=(
     'tesseract'
     'zlib'
 )
+_source_url=$(
+    curl -q "https://www.wolfram.com/download-center/mathematica/" \
+    | grep "account.wolfram.com/dl/Mathematica" \
+    | grep "version=${pkgver%.[0-9]}" \
+    | grep "platform=Linux" \
+    | grep "includesDocumentation" \
+    | sed -E 's/.*href="([^"]+)".*/\1/'
+)
 source=(
-    "local://Mathematica_${pkgver}_LINUX.sh"
+    "Mathematica_${pkgver}_LINUX.sh::${_source_url}"
     "remove-xdg-scripts.patch"
 )
-md5sums=('c579c28c432bc031f00b95609fd9fa37'
+md5sums=('f0c5f9c44869d8fab8c3b1605b2ccb74'
          '14df424ec93fad057604378c2b5c24c2')
 options=("!strip")
 
@@ -146,13 +155,12 @@ package() {
           ${pkgdir}/usr/share/desktop-directories \
           ${pkgdir}/usr/share/mime/packages
     cd ${pkgdir}/opt/Mathematica/SystemFiles/Installation
-    desktopFile='wolfram-mathematica13.desktop'
-    sed -Ei 's|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g' $desktopFile
-    sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica %F|g' $desktopFile
+    desktopFile="com.wolfram.Mathematica.${_pkgver}.desktop"
+    sed -Ei "s|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g" $desktopFile
+    sed -Ei "s|^(\s*Exec=).*|\1/usr/bin/Mathematica --name com.wolfram.mathematica.${_pkgver} %F|g" $desktopFile
     printf 'Categories=Science;Education;Languages;ArtificialIntelligence;Astronomy;Biology;Chemistry;ComputerScience;DataVisualization;Geography;ImageProcessing;Math;NumericalAnalysis;MedicalSoftware;Physics;ParallelComputer;\n' >> $desktopFile
-    printf 'StartupWMClass=Mathematica;\n' >> $desktopFile
     cp $desktopFile ${pkgdir}/usr/share/applications/
-    cp wolfram-all.directory ${pkgdir}/usr/share/desktop-directories/
+    cp *.directory ${pkgdir}/usr/share/desktop-directories/
     cp *.xml ${pkgdir}/usr/share/mime/packages/
 
     msg2 "Copying icons"
