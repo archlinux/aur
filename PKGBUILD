@@ -14,11 +14,11 @@ arch=('x86_64')
 url="https://photivo.org/"
 license=('custom:GPL3 only')
 depends=(
-    'exiv2' 'fftw' 'graphicsmagick' 'lcms2' 'lensfun' 'liblqr'
+    'exiv2' 'fftw' 'graphicsmagick' 'lcms2' 'lensfun' 'liblqr' 'libjpeg-turbo'
     'libraw' 'qt5-base' 'shared-mime-info'
 )
 makedepends=('cmake' 'git')
-optdepends=('gimp: Gimp plugins' 'python2: Gimp to Photivo plugin')
+optdepends=('gimp: GIMP plugins' 'python2: GIMP to Photivo plugin')
 provides=('photivo')
 conflicts=('photivo')
 source=('git+https://bitbucket.org/Photivo/photivo.git')
