@@ -178,7 +178,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux hardenened BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=4
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -226,10 +226,8 @@ fi
 case "$_cpusched" in
     cachyos) # CachyOS Scheduler (EEVDF + BORE)
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
-    tt) ## TT Scheduler
-        source+=("${_patchsource}/sched/0001-tt-cachy.patch");;
     bore) ## BORE Scheduler
-        source+=("${_patchsource}/sched/0001-bore.patch");;
+        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     rt) ## EEVDF with RT patches
         source+=("${_patchsource}/misc/0001-rt.patch"
                  linux-cachyos-rt.install);;
@@ -238,7 +236,7 @@ case "$_cpusched" in
                  "${_patchsource}/sched/0001-bore-cachy-rt.patch"
                  linux-cachyos-rt.install);;
     hardened) ## Hardened Patches with BORE Scheduler
-        source+=("${_patchsource}/sched/0001-bore.patch"
+        source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
     sched-ext) ## Sched-ext with BORE
         source+=("${_patchsource}/sched/0001-sched-ext.patch"
@@ -305,7 +303,6 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        tt)  scripts/config -e TT_SCHED -e TT_ACCOUNTING_STATS;;
         bore|hardened|cachyos) scripts/config -e SCHED_BORE;;
         eevdf) ;;
         rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
@@ -829,6 +826,6 @@ done
 b2sums=('c71e651438216e86e436af032cb529c029351b72b460568bd75858f835212360d646bae27caeb3140a4234f4155553aceec3aa94d761e3a634be7c164eee86a4'
         '20f42891e01b248b0df74e0f395e58314052af1d0f364e93a67180cdae63d13299316d37f61002f13ab11b73f8cf52de91a4f49a3038c965a3cd120625d461e3'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        'a5e5c6ad326c2e3522ff6d6208e87c06a1d545dfecc47cd50dc1176dc5409cc8a2ae380e7bc0f2a191d835558fb5c7d5b7de1b2e250b019b7f45088a60bac0cf'
-        'c3a229fb84489864f0cca5bef47833494af334cca0a69433b8be98e8529d3404ba3186eae3f77331a6464b6981e118872e3f5e596f5151873c17708f07446fbd'
+        'd4bb4969dd86eb99b3659294fa5a1ef477fa9c9e05e7d36c673061f9f3acc658c26543d910d851057683426fce0844644cf1e150f60c611774cc95b0e32322ed'
+        '0c71a752ea50d5606af54aac3569baa371f88896aad98dd34d405227cd0890d76b71bec4e000bfb2b6d38021303281399c4632952cafde1cc3a6e2c876ced9ce'
         '4122b04145b0b13143ddd878ead159f8c23fa9c086908cc32524ab7c94d17da07e65c5b8dbc25b22dd0309471613e01d381e93c848a59663908420a4fe319dea')
