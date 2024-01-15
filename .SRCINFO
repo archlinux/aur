@@ -1,0 +1,19 @@
+pkgbase = glib-networking
+	pkgdesc = Network extensions for GLib
+	pkgver = 2.80alpha
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.gnome.org/GNOME/glib-networking
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	checkdepends = ca-certificates
+	makedepends = git
+	makedepends = meson
+	depends = glib2
+	depends = gnutls
+	depends = gsettings-desktop-schemas
+	depends = libproxy
+	source = git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=6bae4ab398923c9588d499fc5f5e29b69ae8dc3e
+	b2sums = SKIP
+
+pkgname = glib-networking
