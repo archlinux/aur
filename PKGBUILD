@@ -9,7 +9,7 @@
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=3.91.55
+pkgver=3.92.23
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
@@ -64,9 +64,6 @@ build() {
   # extract appimage
   chmod +x "$_filename"
   "${srcdir:?}/$_filename" --appimage-extract
-
-  # fix permissions
-  chmod -R u+rwX,go+rX,go-w "${srcdir:?}/squashfs-root"
 
   # fix apprun script
   sed -Ei \
@@ -124,6 +121,9 @@ package() {
   else
     _package_beeper
   fi
+
+  # fix permissions
+  chmod -R u+rwX,go+rX,go-w "${pkgdir:?}"
 }
 
 # update version
