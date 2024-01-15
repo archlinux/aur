@@ -3,12 +3,12 @@
 
 _pkgname='xmpp-dns'
 pkgname="${_pkgname}-git"
-pkgver=0.3.7.r2.gcbb332b
-pkgrel=2
+pkgver=0.3.10.r1.geacabf3
+pkgrel=1
 pkgdesc='Command-line tool to check XMPP SRV records (built from latest git commit)'
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url='https://salsa.debian.org/mdosch/xmpp-dns'
-license=('BSD')
+license=('BSD-2-Clause')
 provides=('xmpp-dns')
 conflicts=('xmpp-dns')
 depends=('glibc')
@@ -32,6 +32,17 @@ prepare() {
 
 build() {
   cd "$_pkgname"
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
