@@ -1,10 +1,11 @@
 pkgbase = mathematica
 	pkgdesc = A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with offline documentation.
-	pkgver = 13.3.1
+	pkgver = 14.0.0
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	arch = x86_64
 	license = proprietary
+	makedepends = rsync
 	depends = openmp
 	optdepends = alsa-lib
 	optdepends = atk
@@ -56,9 +57,9 @@ pkgbase = mathematica
 	optdepends = tesseract
 	optdepends = zlib
 	options = !strip
-	source = local://Mathematica_13.3.1_BNDL_LINUX.sh
+	source = Mathematica_14.0.0_BNDL_LINUX.sh::https://account.wolfram.com/dl/Mathematica?version=14.0&platform=Linux&downloadManager=false&signature=09d7f5942c445782756030c9300d6386f8265c6910537efd11672b0a2b38d638bf4b845786832252bbd5eca6ef9bb82519db932fdaf2424f333b2f48
 	source = remove-xdg-scripts.patch
-	md5sums = 61c8c48c3bc996ea39f14e38af668390
+	md5sums = 2e9479b7622ea8d09d465ffc53a753c4
 	md5sums = 14df424ec93fad057604378c2b5c24c2
 
 pkgname = mathematica
