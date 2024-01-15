@@ -18,7 +18,7 @@ build() {
     cd "$srcdir/rtaudio-${pkgver}"
     mkdir -p build
     cd build
-    cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH="/usr" -DRTAUDIO_API_JACK=OFF ..
+    cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH="/usr" -DRTAUDIO_API_JACK=OFF -DRTAUDIO_BUILD_TESTING=OFF ..
     make
 }
 
