@@ -1,7 +1,7 @@
 pkgbase = bc-gh
 	pkgdesc = Implementation of dc and POSIX bc with GNU extensions
 	pkgver = 6.7.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gavinhoward/bc
 	arch = aarch64
 	arch = arm
@@ -15,6 +15,7 @@ pkgbase = bc-gh
 	provides = bc
 	conflicts = bc
 	options = lto
+	options = !makeflags
 	source = bc-gh-6.7.5.tar.xz::https://github.com/gavinhoward/bc/releases/download/6.7.5/bc-6.7.5.tar.xz
 	source = bc-gh-6.7.5.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/6.7.5/bc-6.7.5.tar.xz.sig
 	validpgpkeys = FF360647C7A7147F27DAAEC1B132F881C306590A

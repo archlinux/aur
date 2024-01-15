@@ -4,7 +4,7 @@
 
 pkgname='bc-gh'
 pkgver=6.7.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Implementation of dc and POSIX bc with GNU extensions'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/gavinhoward/bc'
@@ -12,7 +12,7 @@ license=('BSD')
 provides=('bc')
 conflicts=('bc')
 depends=('glibc' 'libedit')
-options=('lto')
+options=('lto' '!makeflags')
 source=(
   "$pkgname-$pkgver.tar.xz::$url/releases/download/$pkgver/bc-$pkgver.tar.xz"
   "$pkgname-$pkgver.tar.xz.sig::$url/releases/download/$pkgver/bc-$pkgver.tar.xz.sig"
@@ -32,7 +32,14 @@ build() {
 
   # RFC-0023
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   env CFLAGS="$CFLAGS -O3" \
     PREFIX=/usr ./configure.sh -p GNU -e -G -sbc.banner -sdc.tty_mode
