@@ -1,12 +1,12 @@
 # Maintainer: Kimiblock Moe
 pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
-pkgver=r1247.71dca60
+pkgver=r1348.7768255
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
-arch=('x86_64' 'aarch64')
+arch=('any')
 url="https://github.com/keiko233/clash-nyanpasu"
-license=('GPL3')
+license=('GPL-3.0')
 depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' "clash-meta-is-mihomo")
 makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'quickjs' 'git' 'pnpm' 'clang')
 optdepends=('clash' 'clash-rs')
@@ -48,12 +48,12 @@ function prepare(){
 
 function build(){
 	cd "${srcdir}/clash-nyanpasu"
-	export RUSTFLAGS="-L /usr/lib/quickjs"
+	#export RUSTFLAGS="-L /usr/lib/quickjs"
 	#yarn install
 	#yarn run check
 	#cargo-tauri build
 	pnpm i
-	#pnpm run check
+	pnpm check
 	#pnpm dev
 	pnpm build
 }
