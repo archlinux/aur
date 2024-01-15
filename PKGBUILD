@@ -4,7 +4,7 @@
 pkgname=picasso-3ds-git
 _gitname=picasso
 pkgrel=1
-pkgver=r59.bc051ca
+pkgver=r100.d522455
 epoch=1
 pkgdesc="Picasso shader assembler for 3DS homebrew"
 arch=('any')
@@ -13,7 +13,7 @@ license=('custom')
 groups=()
 makedepends=('gcc' 'autoconf' 'automake')
 
-source=('picasso::git://github.com/fincs/picasso')
+source=('git+https://github.com/fincs/picasso.git')
 md5sums=('SKIP')
 
 pkgver() {
