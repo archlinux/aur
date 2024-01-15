@@ -20,7 +20,7 @@
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.6.11
+pkgver=6.6.12
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -50,7 +50,7 @@ source+=(
   config  # the main kernel config file
 )
 sha256sums+=(
-  'afe2e5a661bb886d762684ebea71607d1ee8cb9dd100279d2810ba20d9671e52'
+  '1fd7ec8c3d9c4e4b3a41d11e2c6d151e5fbf875dd08b3577f73afd6ee6674605'
   'SKIP'
   '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
 )
@@ -75,8 +75,8 @@ if [[ ${_build_arch_patch::1} == "t" ]] ; then
   if [[ ${_build_lts::1} == "t" ]] ; then
     _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main'
     source+=(
-      "$_dl_url_arch/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-      "$_dl_url_arch/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
+      "0001-$pkgver-disallow-unprivileged-CLONE_NEWUSER.patch"::"$_dl_url_arch/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+      "0002-$pkgver-nvidia-skip-simpledrm.patch"::"$_dl_url_arch/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
     )
     sha256sums+=(
       '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
