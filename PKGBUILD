@@ -1,21 +1,36 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
+# Maintainer: Truocolo <truocolo@aol.com>
 
 # shellcheck disable=SC2034
 _pkg="grub"
 _pkgname="arch-${_pkg}"
 pkgname="${_pkgname}-git"
-pkgver=v0.1+1+g3f11904
+pkgver="0.1.r1.g3f11904"
 pkgrel=1
 _pkgdesc=(
   'Produces a standalone GRUB binary'
   'compatible with Arch Linux.'
 )
 pkgdesc="${_pkgdesc[*]}"
-arch=('any')
-license=('AGPL3')
-url="https://gitlab.archlinux.org/tallero/${_pkgname}"
+arch=(
+  'any'
+)
+license=(
+  'AGPL3'
+)
+_gh="https://github.com"
+_arch="https://gitlab.archlinux.org"
+_arch_ns="tallero"
+_gh_ns="themartiancompany"
+_ns="${_arch_ns}"
+_http="${_arch}"
+url="${_http}/${_ns}/${_pkgname}"
 depends=(
-  "${_pkg}")
+  "${_pkg}"
+  bash
+)
 makedepends=(
   'git'
   'make'
@@ -30,24 +45,78 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-source=("${_pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+source=(
+  "${_pkgname}::git+${url}.git"
+)
+sha256sums=(
+  'SKIP'
+)
+
+_parse_ver() {
+  local \
+    _pkgver="${1}" \
+    _out="" \
+    _ver \
+    _rev \
+    _commit
+  _ver="$( \
+    echo \
+      "${_pkgver}" | \
+      awk \
+        -F '+' \
+        '{print $1}')"
+  _rev="$( \
+    echo \
+      "${_pkgver}" | \
+      awk \
+        -F '+' \
+        '{print $2}')"
+  _commit="$( \
+    echo \
+      "${_pkgver}" | \
+      awk \
+        -F '+' \
+        '{print $3}')"
+  _out=${_ver}
+  if [[ "${_rev}" != "" ]]; then
+    _out+=".r${_rev}"
+  fi
+  if [[ "${_commit}" != "" ]]; then
+    _out+=".${_commit}"
+  fi
+  echo \
+    "${_out}"
+}
 
 pkgver() {
-  cd "${_pkgname}" || \
+  local \
+    _pkgver
+  cd \
+    "${_pkgname}" || \
     exit
-  git describe --tags | \
-    sed 's/-/+/g'
+  _pkgver="$( \
+    git \
+      describe \
+        --tags | \
+      sed \
+        's/-/+/g')"
+  _parse_ver \
+    "${_pkgver}"
 }
 
 check() {
-  make -k check \
-       -C "${_pkgname}"
+  make \
+    -k check \
+    -C "${_pkgname}"
 }
 
 # shellcheck disable=SC2154
 package() {
-  make DESTDIR="${pkgdir}" \
-       PREFIX=/usr \
-       install -C "${_pkgname}"
+  make \
+    DESTDIR="${pkgdir}" \
+    PREFIX=/usr \
+    install \
+      -C "${_pkgname}"
 }
+
+# vim:set sw=2 sts=-1 et:
