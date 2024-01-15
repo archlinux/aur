@@ -8,8 +8,8 @@ license=("Apache")
 depends=("apr-util" "pcre")
 makedepends=("apr-util" "db")
 conflicts=(apache)
-source=(http://www.apache.org/dist/httpd/httpd-$pkgver.tar.bz2
-        $pkgname-Makefile.patch)
+source=("https://downloads.apache.org/httpd/httpd-$pkgver.tar.bz2"
+        "$pkgname-Makefile.patch")
 sha256sums=('fa16d72a078210a54c47dd5bef2f8b9b8a01d94909a51453956b3ec6442ea4c5'
             '2dc48d34773b0c873d10e3542f77a4f7b50d5fb9bd8c52e3bb28b76ff9587f3f')
 
