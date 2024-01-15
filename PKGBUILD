@@ -2,7 +2,7 @@
 pkgname=duckcloud
 pkgver=24.01.1
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="A cloud for your family"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url=https://duckcloud.co
@@ -10,7 +10,7 @@ license=(AGPL3)
 depends=(glibc)
 makedepends=(go openssl)
 optdepends=()
-backup=(etc/duckcloud)
+backup=(etc/duckcloud, usr/lib/systemd/system/)
 install=duckcloud.install
 
 source=(https://github.com/theduckcompany/duckcloud/archive/refs/tags/${pkgver}.tar.gz
