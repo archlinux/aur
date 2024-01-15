@@ -22,11 +22,18 @@ arch=('aarch64' 'i686' 'x86_64')
 prepare() {
 	cd "$srcdir/$_crate-$pkgver"
 
-	cargo fetch --locked
+	export RUSTUP_TOOLCHAIN=stable
+
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "$srcdir/$_crate-$pkgver"
+	
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+
+	
 	cargo build \
 		--offline \
 		--locked \
@@ -36,5 +43,5 @@ build() {
 package() {
 	cd "$srcdir/$_crate-$pkgver"
 	install -Dm755 "target/release/hf2" -t "$pkgdir/usr/bin"
-	install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE.md' -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
