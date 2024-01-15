@@ -4,12 +4,12 @@
 pkgname='fastgron-git'
 _pkgname='fastgron'
 pkgver=0.7.7.r6.g5d5998f
-pkgrel=1
+pkgrel=2
 pkgdesc='High-performance JSON to GRON (greppable, flattened JSON) converter (development version)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/adamritter/fastgron'
 license=('MIT')
-depends=('curl' 'gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc' 'libcurl.so')
 makedepends=('cmake' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
