@@ -12,7 +12,6 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     'hicolor-icon-theme'
-    "electron${_electronversion}"
 )
 makedepends=(
     'npm'

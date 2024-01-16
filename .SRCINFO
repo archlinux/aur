@@ -13,7 +13,6 @@ pkgbase = catcat-dm-react
 	makedepends = make
 	makedepends = gcc
 	depends = hicolor-icon-theme
-	depends = electron23
 	conflicts = catcat-dm-react
 	source = catcat-dm-react.git::git+https://github.com/kokolokksk/catcat-dm-react.git#tag=v1.9.6
 	sha256sums = SKIP
