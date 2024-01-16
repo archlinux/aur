@@ -3,9 +3,9 @@
 # Contributor : Axel Navarro <navarroaxel at gmail>
 
 pkgname=pycharm-community-eap
-pkgver=233.13135.95
-_pkgver=2023.3.2
-_eap=n
+pkgver=233.13763.5
+_pkgver=2023.3.3
+_eap=y
 pkgrel=1
 
 epoch=14
@@ -24,12 +24,12 @@ options=('!strip')
 _filever="$([ $_eap = y ] && echo -n $pkgver || echo -n $_pkgver)"
 source=("pycharm-community-eap.desktop")
 sha256sums=('f76a04261fb91a8ede8859f6b46352bdeb92f79210a9fc87b5ac959063cb1715')
+sha256sums_x86_64=('755062f2e070119530633de9c69cfddee0c9291e16477bff28cc30faca92f423')
+sha256sums_aarch64=('7d33169a191795c2fb10eb5c52445573cea486989c165481b7e8d6ca3d093a62')
 
 source_x86_64=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
-sha256sums_x86_64=('1a4a95648c68890f2f9eb41cbb9eb041dcd08388c75a91298dfbe73f83a858c8')
 
 source_aarch64=("https://download.jetbrains.com/python/pycharm-community-$_filever-aarch64.tar.gz")
-sha256sums_aarch64=('1d63c0ea7dec718f67ad78e0ccef76058d92f63d07afe931a4ac6ff3f74c9052')
 
 prepare() {
 	if [ -d "pycharm-community-$_pkgver" ]; then
