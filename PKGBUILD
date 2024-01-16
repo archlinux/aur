@@ -2,27 +2,27 @@
 # Co-maintainer: 1ridic <i@8f.al>
 pkgname=aliyunpan-odomu-bin
 _appname=alixby
-pkgver=3.23.81420
+pkgver=3.24.11618
 pkgrel=1
 pkgdesc="binary of aliyunpan liupan1890 forked by odomu"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/odomu/aliyunpan"
 license=('custom')
 depends=('pacman')
 optdepends=()
 provides=()
-conflicts=("${pkgname%-bin}")
+conflicts=("aliyunpan-gaozhangmin-bin")
 install=
-source=(
-    "${url}/releases/download/v${pkgver}/alixby-${pkgver}-linux-amd64.deb"
-    alixby.desktop
-)
-sha256sums=('SKIP' 'SKIP')
+source_x86_64=("${url}/releases/download/v${pkgver}/alixby-${pkgver}-linux-x64.pacman" alixby.desktop)
+sha256sums_x86_64=('a245c436bdbf8d27e79abd227f82b40b3fd3b868b9e8091863bc0c21b0da6050' 'a91453d76527d65c28fe2af69a4a7fae1ff4a1fba9ab5ff552accdd7f101554b')
+source_aarch64=("${url}/releases/download/v${pkgver}/alixby-${pkgver}-linux-aarch64.pacman" alixby.desktop)
+sha256sums_aarch64=('cc46dc1389eae3da8fc69faf9146ae1a521a3bc0868f4ee61f1f8a323b887a2c' 'a91453d76527d65c28fe2af69a4a7fae1ff4a1fba9ab5ff552accdd7f101554b')
 
 package() {
-    bsdtar -xf data.tar.xz -C "${pkgdir}"
-    mv "${pkgdir}/opt/阿里云盘小白羊" "${pkgdir}/opt/alixby"  # change dir to english
-    mv "${pkgdir}/usr/share/icons/hicolor/0x0/apps/alixby.png" "${pkgdir}/opt/alixby/" # move icon
+    mkdir "$pkgdir/opt"
+    mv "${srcdir}/opt/阿里云盘小白羊" "${pkgdir}/opt/alixby"  # change dir to english
+    # mv "${pkgdir}/usr/share/icons/hicolor/0x0/apps/alixby.png" "${pkgdir}/opt/alixby/" # move icon
+    rm .MTREE .INSTALL .PKGINFO
     rm -rf "${pkgdir}/usr/share/" # delete
     install -Dm644 "${srcdir}/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
     chmod 0755 "${pkgdir}/opt/alixby/alixby"
