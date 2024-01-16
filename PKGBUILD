@@ -7,7 +7,7 @@ set -u
 _gitauth='fragglet'
 _pkgname='lhasa'
 pkgname="${_pkgname}-git"
-pkgver=0.3.1.r395.gc6d6ca6
+pkgver=0.4.0.r46.g82d1578
 pkgrel=1
 pkgdesc='Free Software LHA implementation'
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ _giturl="https://github.com/${_gitauth}/${_pkgname}"
 #_verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 _srcdir="${_pkgname}-${pkgver}"
 source=("https://github.com/${_gitauth}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('SKIP')
 sha256sums=('SKIP')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
@@ -27,7 +28,7 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   makedepends+=('git')
   url="https://github.com/${_gitauth}/${_pkgname}"
   _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
-  source=("${_srcdir}::${url//https:/git:}.git")
+  source=("${_srcdir}::git+${url}.git")
   :;sha256sums=('SKIP')
   provides=("${_pkgname}=${pkgver%%.r*}")
   conflicts+=("${_pkgname}")
@@ -41,21 +42,17 @@ pkgver() {
 }
 fi
 
-prepare() {
-  set -u
-  cd "${_srcdir}"
-  if [ -s 'autogen.sh' ]; then
-    ./autogen.sh --prefix='/usr' --enable-static='no'
-  else
-    ./configure --prefix='/usr' --enable-static='no'
-  fi
-  set +u
-}
-
 build() {
   set -u
   cd "${_srcdir}"
-  make -s -j "$(nproc)"
+  if [ ! -s 'Makefile' ]; then
+    if [ -s 'autogen.sh' ]; then
+      ./autogen.sh --prefix='/usr' --enable-static='no'
+    else
+      ./configure --prefix='/usr' --enable-static='no'
+    fi
+  fi
+  nice make -s
   set +u
 }
 
