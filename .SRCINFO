@@ -1,0 +1,20 @@
+pkgbase = nachrichten-bin
+	pkgdesc = Stay informed without leaving your command line
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/zMoooooritz/nachrichten
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	provides = nachrichten
+	conflicts = nachrichten
+	source_x86_64 = https://github.com/zMoooooritz/nachrichten/releases/download/v0.1.6/nachrichten_0.1.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 58250bb246537c058d07e5c91d3097dc6b09424e19d6d6d452b707e50e25cf5f
+	source_armv7h = https://github.com/zMoooooritz/nachrichten/releases/download/v0.1.6/nachrichten_0.1.6_linux_armv7.tar.gz
+	sha256sums_armv7h = 1db8466a332e544e68f416427903f60c4f819b8d081c4bcd1f81f6ece211ae54
+	source_aarch64 = https://github.com/zMoooooritz/nachrichten/releases/download/v0.1.6/nachrichten_0.1.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3b00cd1cb3ff16886559b990724bf312d6d0496b4de408aa17612eb1434d0108
+
+pkgname = nachrichten-bin
