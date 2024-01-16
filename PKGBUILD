@@ -13,7 +13,7 @@ pkgname=(
   sfizz-{lib,lv2,standalone,vst3}-git
   pd-sfizz-git
 )
-pkgver=1.2.2.r0.ga6b38b8
+pkgver=1.2.3.r1.g2a45d4b
 pkgrel=1
 pkgdesc="SFZ based sampler (git version)"
 url="https://sfz.tools/sfizz"
@@ -37,18 +37,22 @@ makedepends=(
   pango
   pugixml
   simde
-  vst3sdk
+# vst3sdk FIXME: READ COMMENT BELOW
   xcb-util
   xcb-util-cursor
   xcb-util-keysyms
 )
 checkdepends=(
   lv2lint
-  catch2
+# catch2 FIXME: This is too recent for current tests
 )
 source=(
-  $_gitname::git+https://github.com/sfztools/sfizz-ui#branch=develop
+  $_gitname::git+https://github.com/sfztools/sfizz-ui
   library::git+https://github.com/sfztools/sfizz
+  git+https://github.com/steinbergmedia/vst3_base
+  git+https://github.com/steinbergmedia/vst3_pluginterfaces
+  git+https://github.com/steinbergmedia/vst3_public_sdk
+  git+https://github.com/sfztools/vstgui
   git+https://github.com/mackron/dr_libs
   git+https://github.com/sfztools/libaiff
   git+https://github.com/sfztools/stb_vorbis
@@ -59,8 +63,16 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
 b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -88,11 +100,25 @@ pkgver() {
 prepare() {
   cd $_gitname
   git submodule init
+
   git config submodule.library.url "$srcdir"/library
   git -c protocol.file.allow=always submodule update ./library
-  # Use latest HEAD of sfizz library repo, because that's what the previous
-  # version of the PKGBUILD (inadvertently) did.
-  git -c protocol.file.allow=always submodule update --remote --merge ./library
+  # Please, don't sync with latest library: sometimes can happen that it has features
+  # not yet/differently implemented in the UI due separated works/timings;
+  # we try to keep them in sync upstream anyway, expecially when tagging releases:
+  #
+  # git -c protocol.file.allow=always submodule update --remote --merge ./library
+
+  # VST3SDK FIXME:
+  # currently incompatible VSTGUI API and we need also a patched version to make it work also with Ardour,
+  # so please don't use the system version.
+  for module in base pluginterfaces public.sdk; do
+    vst3_name=vst3_${module/./_}
+    git config submodule.plugins.vst.external.VST_SDK.VST3_SDK.$module.url "$srcdir"/$vst3_name
+    git -c protocol.file.allow=always submodule update ./plugins/vst/external/VST_SDK/VST3_SDK/$module
+  done
+  git config submodule.plugins.editor.external.vstgui4.url "$srcdir"/vstgui
+  git -c protocol.file.allow=always submodule update ./plugins/editor/external/vstgui4
 
   cd library
   git submodule init
@@ -100,6 +126,7 @@ prepare() {
     git config submodule.external.st_audiofile.thirdparty.$module.url "$srcdir"/$module
     git -c protocol.file.allow=always submodule update ./external/st_audiofile/thirdparty/$module
   done
+  cd ../../
 
   # symlink tests data to top-level location so that tests can get to them (we build out of tree)
   ln -svf "$srcdir"/library/tests "$srcdir"
@@ -112,15 +139,16 @@ build() {
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_CXX_STANDARD=17
     -D PLUGIN_PUREDATA=ON
+    -D SFIZZ_GIT_SUBMODULE_CHECK=OFF
     -D SFIZZ_TESTS=ON
     -D SFIZZ_USE_SYSTEM_ABSEIL=ON
-    -D SFIZZ_USE_SYSTEM_CATCH=ON
+    -D SFIZZ_USE_SYSTEM_CATCH=OFF   # TODO
     -D SFIZZ_USE_SYSTEM_CXXOPTS=ON
     -D SFIZZ_USE_SYSTEM_GHC_FS=ON
     -D SFIZZ_USE_SYSTEM_LV2=ON
     -D SFIZZ_USE_SYSTEM_PUGIXML=ON
     -D SFIZZ_USE_SYSTEM_SIMDE=ON
-    -D SFIZZ_USE_SYSTEM_VST3SDK=ON
+    -D SFIZZ_USE_SYSTEM_VST3SDK=OFF # TODO
     -S $_gitname
     -W no-dev
   )
