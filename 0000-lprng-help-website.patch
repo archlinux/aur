@@ -1,0 +1,349 @@
+diff -pNaru5 a/man/checkpc.n b/man/checkpc.n
+--- a/man/checkpc.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/checkpc.n	2024-01-14 06:59:41.414515087 -0500
+@@ -115,17 +115,8 @@ set the debugging level on (-D5) and run
+ The debugging information will
+ help you to pinpoint the exact cause of failure.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word
+-.I subscribe
+-in the body.
+ .br
+ The software is available via
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -pNaru5 a/man/lpbanner.n b/man/lpbanner.n
+--- a/man/lpbanner.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lpbanner.n	2024-01-14 06:59:41.414515087 -0500
+@@ -89,17 +89,8 @@ pr(1), lprng_certs(1), lprng_index_certs
+ .SH "AUTHOR"
+ Patrick Powell <papowell@lprng.com>.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -pNaru5 a/man/lpc.n b/man/lpc.n
+--- a/man/lpc.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lpc.n	2024-01-14 06:59:41.414515087 -0500
+@@ -435,11 +435,9 @@ The debugging information will
+ help you to pinpoint the exact cause of failure.
+ .fi
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng mailing list is lprng@lprng.com;
+-subscribe by sending mail to lprng-request@lprng.com with
+-the word subscribe in the body.
+-The software is available from ftp://ftp.lprng.com/pub/LPRng.
++The software is available from 
++.B http://www.lprng.com/
+ .SH "AUTHOR"
+ Patrick Powell <papowell@lprng.com>.
+diff -pNaru5 a/man/lpd.conf.n b/man/lpd.conf.n
+--- a/man/lpd.conf.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lpd.conf.n	2024-01-14 06:59:41.414515087 -0500
+@@ -743,11 +743,9 @@ The debugging information will
+ help you to pinpoint the exact cause of failure.
+ .fi
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng mailing list is lprng@lprng.com;
+-subscribe by sending mail to lprng-request@lprng.com with
+-the word subscribe in the body.
+-The software is available from ftp://ftp.lprng.com/pub/LPRng.
++The software is available from 
++.B http://www.lprng.com/
+ .SH "AUTHOR"
+ Patrick Powell <papowell@lprng.com>.
+diff -pNaru5 a/man/lpd.n b/man/lpd.n
+--- a/man/lpd.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lpd.n	2024-01-14 06:59:41.417848423 -0500
+@@ -1862,17 +1862,8 @@ set the debugging level on (-D5) and run
+ The debugging information will 
+ help you to pinpoint the exact cause of failure.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -pNaru5 a/man/lpd.perms.n b/man/lpd.perms.n
+--- a/man/lpd.perms.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lpd.perms.n	2024-01-14 06:59:41.417848423 -0500
+@@ -361,17 +361,8 @@ pr(1), lprng_certs(1), lprng_index_certs
+ .SH "AUTHOR"
+ Patrick Powell <papowell@lprng.com>.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -pNaru5 a/man/lpf.n b/man/lpf.n
+--- a/man/lpf.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lpf.n	2024-01-14 06:59:41.417848423 -0500
+@@ -133,17 +133,8 @@ set the debugging level on (-D5) and run
+ The debugging information will 
+ help you to pinpoint the exact cause of failure.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -pNaru5 a/man/lp.n b/man/lp.n
+--- a/man/lp.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lp.n	2024-01-14 06:59:41.417848423 -0500
+@@ -37,20 +37,11 @@ set the debugging level on (-D5) and run
+ The debugging information will 
+ help you to pinpoint the exact cause of failure.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+ .\" This manpage-stub is written by Bernhard R. Link <brlink@debian.org>
+ .\" and available under GNU GPL v2 and any license LPRng is available under.
+ 
+diff -pNaru5 a/man/lpq.n b/man/lpq.n
+--- a/man/lpq.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lpq.n	2024-01-14 06:59:41.417848423 -0500
+@@ -280,18 +280,9 @@ set the debugging level on (-D5) and run
+ The debugging information will 
+ help you to pinpoint the exact cause of failure.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+ 
+diff -pNaru5 a/man/lprm.n b/man/lprm.n
+--- a/man/lprm.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lprm.n	2024-01-14 06:59:41.417848423 -0500
+@@ -232,17 +232,8 @@ set the debugging level on (-D5) and run
+ The debugging information will 
+ help you to pinpoint the exact cause of failure.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -pNaru5 a/man/lpr.n b/man/lpr.n
+--- a/man/lpr.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lpr.n	2024-01-14 06:59:41.417848423 -0500
+@@ -513,17 +513,8 @@ set the debugging level on (-D5) and run
+ The debugging information will 
+ help you to pinpoint the exact cause of failure.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -pNaru5 a/man/lprng_certs.n b/man/lprng_certs.n
+--- a/man/lprng_certs.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lprng_certs.n	2024-01-14 06:59:41.417848423 -0500
+@@ -221,17 +221,8 @@ pr(1), lprng_certs(1), lprng_index_certs
+ .SH "AUTHOR"
+ Patrick Powell <papowell@lprng.com>.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -pNaru5 a/man/lprng_index_certs.n b/man/lprng_index_certs.n
+--- a/man/lprng_index_certs.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lprng_index_certs.n	2024-01-14 06:59:41.417848423 -0500
+@@ -36,17 +36,8 @@ pr(1), lprng_certs(1), lprng_index_certs
+ .SH "AUTHOR"
+ Patrick Powell <papowell@lprng.com>.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -pNaru5 a/man/lpstat.n b/man/lpstat.n
+--- a/man/lpstat.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/lpstat.n	2024-01-14 06:59:41.417848423 -0500
+@@ -105,20 +105,11 @@ produce a long status format.
+ .SH "AUTHOR"
+ LPRng was written by Patrick Powell <papowell@lprng.com>.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word
+-.I subscribe
+-in the body.
+ .br
+ The software is available via
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+ .\" This manpage is written by Bernhard R. Link <brlink@debian.org>
+ .\" and available under GNU GPL v2 and any license LPRng is available under.
+ .\" The descriptions are extracted from lpstat.c from Patrick Powell <papowell@lprng.com>
+diff -pNaru5 a/man/monitor.n b/man/monitor.n
+--- a/man/monitor.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/monitor.n	2024-01-14 06:59:41.417848423 -0500
+@@ -49,17 +49,8 @@ pr(1), lprng_certs(1), lprng_index_certs
+ .SH "AUTHOR"
+ Patrick Powell <papowell@lprng.com>.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -pNaru5 a/man/printcap.n b/man/printcap.n
+--- a/man/printcap.n	2012-04-15 06:28:52.000000000 -0400
++++ b/man/printcap.n	2024-01-14 06:59:41.417848423 -0500
+@@ -1216,17 +1216,8 @@ set the debugging level on (-D5) and run
+ The debugging information will 
+ help you to pinpoint the exact cause of failure.
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/

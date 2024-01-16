@@ -2,54 +2,51 @@
 #
 # gsfilter.simple -- HP deskjet or similar sample filter
 #
-# Requires pdftops from the xpdf package, the ghostscript package, and
-# the enscript package.
-#
+# Requires
+#    poppler (xpdf): pdftops
+#    ghostscript
+#    enscript
+
+set -u
+
 # define temporary files
-infile=/tmp/infile.$$
-tempfile=/tmp/tempfile.$$
-outfile=/tmp/outfile.$$
+infile="/tmp/infile.$$"
+tempfile="/tmp/tempfile.$$"
+outfile="/tmp/outfile.$$"
 
 # choose your paper size
-GSPAPER=letter
-#GSPAPER=a4
-PAPER=Letter
-#PAPER=A4
+GSPAPER='letter'
+#GSPAPER='a4'
+PAPER='Letter'
+#PAPER='A4'
 
 # chose your printer device (run gs -h to see what is available)
-DEVICE=cdjcolor
+GSDEVICE='cdjcolor'
 
 # send the standard input to a temporary file
-cat > $infile
+cat > "${infile}"
 
 # figure out what type of file we are trying to print
-fileinfo=`file -b $infile`
-ascii=`echo $fileinfo | grep ASCII`
-pdf=`echo $fileinfo | grep PDF`
-ps=`echo $fileinfo | grep PostScript`
+fileinfo="$(file -b "${infile}")"
 
 # take various actions depending on the type of file -- send
 # results to a temporary postscript file
-if test "$ascii" != ''
-then
-    enscript -M $PAPER -o - $infile > $tempfile
-elif test "$pdf" != ''
-then
-    pdftops -paper match $infile - > $tempfile
-elif test "$ps" != ''
-then
-    cat $infile > $tempfile
-else
-    echo "Cannot print file of type  $fileinfo" | \
-	enscript -M $PAPER -o - > $tempfile
-fi
+case "${fileinfo}" in
+*ASCII*)      enscript -M "${PAPER}" -o - "${infile}" > "${tempfile}" ;;
+*PDF*)        pdftops -paper 'match' "${infile}" - > "${tempfile}" ;;
+*PostScript*) cat "${infile}" > "${tempfile}" ;;
+*)
+  echo "Cannot print file of type ${fileinfo}" | \
+  enscript -M "${PAPER}" -o - > "${tempfile}"
+  ;;
+esac
 
 # run the postscript through gs to produce device output in a file
-echo quit | gs -sOutputFile=$outfile -q -sPAPERSIZE=$GSPAPER -dSAFER \
-    -dNOPAUSE -sDEVICE=$DEVICE $tempfile > /dev/null 2> /dev/null
+echo 'quit' | gs -sOutputFile="${outfile}" -q -sPAPERSIZE="${GSPAPER}" -dSAFER \
+    -dNOPAUSE -sDEVICE="${GSDEVICE}" "${tempfile}" > /dev/null 2>&1
 
 # send output file to standard out
-cat $outfile
+cat "${outfile}"
 
 # clean up
-rm $infile $tempfile $outfile
+rm -f "${infile}" "${tempfile}" "${outfile}"

@@ -1,0 +1,46 @@
+Patch for lprng 3.9.0 adapted from Debian patch for 3.8.B
+Also works on 3.8.C
+
+https://sources.debian.org/data/main/l/lprng/3.8.B-7/debian/patches/openssl_1.1.patch
+
+This matches the gentoo patch but they didn't patch configure so autogen is run again.
+
+This patch enables automatic detection and compile of ssl 3. Don't know if it works.
+
+diff -pNaru5 a/configure b/configure
+--- a/configure	2023-04-05 15:24:36.000000000 -0400
++++ b/configure	2024-01-15 01:27:40.969868625 -0500
+@@ -8066,15 +8066,15 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+    Use char because int might match the return type of a GCC
+    builtin and then its argument prototype would still apply.  */
+ #ifdef __cplusplus
+ extern "C"
+ #endif
+-char SSL_load_error_strings ();
++char OPENSSL_init_ssl ();
+ int
+ main ()
+ {
+-return SSL_load_error_strings ();
++return OPENSSL_init_ssl ();
+   ;
+   return 0;
+ }
+ _ACEOF
+ if ac_fn_c_try_link "$LINENO"; then :
+diff -pNaru5 a/configure.ac b/configure.ac
+--- a/configure.ac	2023-04-05 15:24:24.000000000 -0400
++++ b/configure.ac	2024-01-15 01:27:14.393193582 -0500
+@@ -952,11 +952,11 @@ fi
+ SSL_LDADD=""
+ if test "$SSL_ENABLE" != ""; then
+ 	AC_CHECK_LIB([crypto], [RC4_set_key], [true], [SSL_ENABLE=""])
+ fi
+ if test "$SSL_ENABLE" != ""; then
+-	AC_CHECK_LIB([ssl], [SSL_load_error_strings], [true], [SSL_ENABLE=""], [-lcrypto])
++	AC_CHECK_LIB([ssl], [OPENSSL_init_ssl], [true], [SSL_ENABLE=""], [-lcrypto])
+ fi
+ if test "$SSL_ENABLE" != ""; then
+ 	SSL_LDADD="-lssl -lcrypto"
+ elif test "$SSL_EXPLICITLY_ENABLED" != ""; then
+ 	AC_MSG_ERROR([Unable to use OpenSSL])

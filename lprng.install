@@ -1,10 +1,49 @@
+_printcap='/etc/lprng/printcap'
+_service='lpd.service'
+
+_clean_untracked() {
+  set -u
+  local _untracked=(
+    '/usr/share/doc/lprng/lpd.conf.sample'
+    '/usr/share/doc/lprng/lpd.perms.sample'
+    '/usr/share/doc/lprng/printcap.sample'
+  )
+  # These untracked files can't be cleaned any other way
+  rm -f "${_untracked[@]}"
+  set +u
+}
+
+_post_ui() {
+  set -u
+  systemctl daemon-reload
+  if systemctl -q is-active 'org.cups.cups-lpd.socket'; then
+    echo 'You may need to disable cups-lpd with'
+    echo "  systemctl disable --now 'org.cups.cups-lpd.socket'"
+  fi
+  if ! systemctl -q is-enabled "${_service}"; then
+    echo 'Enable your lpd server with'
+    echo "  sudo systemctl enable --now '${_service}'"
+  fi
+  if ! grep -qe '^[a-zA-Z]' "${_printcap}"; then
+    echo "Add some printers to ${_printcap}"
+  fi
+  set +u
+}
+
+post_upgrade() {
+  _post_ui
+  _clean_untracked
+}
+
 post_install() {
-  mv /etc/lprng/printcap.sample /etc/lprng/lpd/lpd.conf.sample \
-    /etc/lprng/lpd/lpd.perms.sample /usr/share/doc/lprng
-  echo 'See /usr/share/doc/lprng/README to configure'
+  _post_ui
+  _clean_untracked
 }
 
 pre_remove() {
-  /usr/bin/systemctl stop lpd.service
-  /usr/bin/systemctl disable lpd.service
+  set -u
+  systemctl stop "${_service}"
+  systemctl disable "${_service}"
+  set +u
+  _clean_untracked
 }

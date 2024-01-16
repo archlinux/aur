@@ -8,67 +8,57 @@
 # is controlled by a command line option in enscript.  Duplex on pdf
 # files is controlled by a pdftops flag.
 #
-# Needs pstopdf from xpdf and enscript.
-#
-# set paper type
-PAPER=Letter
-#PAPER=A4
+# Requires
+#    poppler (xpdf): pdftops
+#    enscript
 
-# define whether duplex is desired by uncommenting appropriate lines
-#duplex=false
-duplex=true
-#duplexflag=
-duplexflag=-duplex
+set -u
 
 # define temporary files
-infile=/tmp/infile.$$
-tmpfile=/tmp/tmpfile.$$
-headfile=/tmp/headfile.$$
-tailfile=/tmp/tailfile.$$
+infile="/tmp/infile.$$"
+tempfile="/tmp/tempfile.$$"
+headfile="/tmp/headfile.$$"
+tailfile="/tmp/tailfile.$$"
 
-# touch files so if not used, cleanup doesn't complain
-touch $tmpfile
-touch $headfile
-touch $tailfile
+# choose your paper size
+PAPER='Letter'
+#PAPER='A4'
 
-# send standard input to temporary file
-cat > $infile
+# define whether duplex is desired by uncommenting appropriate lines
+#duplex='false'
+duplex='true'
+#duplexflag=''
+duplexflag='-duplex'
 
-# figure out the type of file
-fileinfo=`file -b $infile`
-ascii=`echo $fileinfo | grep ASCII`
-pdf=`echo $fileinfo | grep PDF`
-ps=`echo $fileinfo | grep PostScript`
+# send the standard input to a temporary file
+cat > "${infile}"
 
-# do conversions to postscript based on file type and put in tmpfile
-if test "$ascii" != ''
-then
-    enscript -DDuplex:$duplex -M $PAPER -o - $infile
-elif test "$pdf" != ''
-then
-    pdftops -paper match $duplexflag $infile -
-elif test "$ps" != ''
-then
+# figure out what type of file we are trying to print
+fileinfo="$(file -b "${infile}")"
 
+# do conversions to postscript based on file type and put in tempfile
+case "${fileinfo}" in
+*ASCII*)      enscript -DDuplex:"${duplex}" -M "${PAPER}" -o - "${infile}" ;;
+*PDF*)        pdftops -paper 'match' "${duplexflag}" "${infile}" - ;;
+*PostScript*)
+  if [ "${duplex}" = 'true' ]; then
     # are we doing duplex?  if so, insert a special string in postscript file
-    if test "$duplex" = true
-    then
-	sed -e "1 w $headfile" -e "2,$ w $tailfile" < $infile > /dev/null
-	cat $headfile > $tmpfile
-	echo "<< /Duplex true >> setpagedevice" >> $tmpfile
-	cat $tailfile >> $tmpfile
-    else
-
-	# if not duplex, don't do anything
-	cat $tailfile >> $tmpfile
-    fi
-
-    # send the file to standard output
-    cat $tmpfile
-else
-    echo "Cannot print file of type  $fileinfo" | \
-	enscript -DDuplex:$duplex -M $PAPER -o -
-fi
+    sed -e "1 w ${headfile}" -e "2,$ w ${tailfile}" < "${infile}" > /dev/null
+    cat "${headfile}" > "${tempfile}"
+    echo "<< /Duplex true >> setpagedevice" >> "${tempfile}"
+    cat "${tailfile}" >> "${tempfile}"
+  else
+    # if not duplex, don't do anything
+    cat "${tailfile}" >> "${tempfile}"
+  fi
+  # send the file to standard output
+  cat "${tempfile}"
+  ;;
+*)
+  echo "Cannot print file of type ${fileinfo}" | \
+  enscript -M "${PAPER}" -DDuplex:"${duplex}" -o -
+  ;;
+esac
 
 # clean up
-rm $infile $tmpfile $headfile $tailfile
+rm -f "${infile}" "${tempfile}" "${headfile}" "${tailfile}"

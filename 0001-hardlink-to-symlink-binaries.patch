@@ -1,0 +1,36 @@
+diff -pNaru5 a/src/Makefile.am b/src/Makefile.am
+--- a/src/Makefile.am	2023-03-17 17:26:01.000000000 -0400
++++ b/src/Makefile.am	2024-01-15 01:04:59.522822722 -0500
+@@ -40,12 +40,12 @@ if WITHKERBEROS
+ endif
+ endif
+ 
+ install-exec-hook:
+ 	rm -f $(DESTDIR)$(bindir)/lp $(DESTDIR)$(bindir)/cancel
+-	ln $(DESTDIR)$(bindir)/lpr $(DESTDIR)$(bindir)/lp
+-	ln $(DESTDIR)$(bindir)/lprm $(DESTDIR)$(bindir)/cancel
++	ln -s lpr $(DESTDIR)$(bindir)/lp
++	ln -s lprm $(DESTDIR)$(bindir)/cancel
+ if WITHPLUGINS
+ if WITHKERBEROS
+ 	$(mkdir_p) $(DESTDIR)$(plugindir)
+ 	ln -sf kerberos5.so $(DESTDIR)$(plugindir)/kerberos.so
+ 	ln -sf kerberos5.so $(DESTDIR)$(plugindir)/k5conn.so
+diff -pNaru5 a/src/Makefile.in b/src/Makefile.in
+--- a/src/Makefile.in	2023-04-05 15:24:37.000000000 -0400
++++ b/src/Makefile.in	2024-01-15 01:04:45.246152685 -0500
+@@ -1523,12 +1523,12 @@ uninstall-hook:
+ 	rm -f $(DESTDIR)$(bindir)/lp $(DESTDIR)$(bindir)/cancel
+ @WITHKERBEROS_TRUE@@WITHPLUGINS_TRUE@	rm -f $(DESTDIR)$(plugindir)/kerberos.so $(DESTDIR)$(plugindir)/k5conn.so
+ 
+ install-exec-hook:
+ 	rm -f $(DESTDIR)$(bindir)/lp $(DESTDIR)$(bindir)/cancel
+-	ln $(DESTDIR)$(bindir)/lpr $(DESTDIR)$(bindir)/lp
+-	ln $(DESTDIR)$(bindir)/lprm $(DESTDIR)$(bindir)/cancel
++	ln -s lpr $(DESTDIR)$(bindir)/lp
++	ln -s lprm $(DESTDIR)$(bindir)/cancel
+ @WITHKERBEROS_TRUE@@WITHPLUGINS_TRUE@	$(mkdir_p) $(DESTDIR)$(plugindir)
+ @WITHKERBEROS_TRUE@@WITHPLUGINS_TRUE@	ln -sf kerberos5.so $(DESTDIR)$(plugindir)/kerberos.so
+ @WITHKERBEROS_TRUE@@WITHPLUGINS_TRUE@	ln -sf kerberos5.so $(DESTDIR)$(plugindir)/k5conn.so
+ @WITHKERBEROS_TRUE@@WITHPLUGINS_TRUE@uninstall-local:
+ @WITHKERBEROS_TRUE@@WITHPLUGINS_TRUE@	if test -l $(DESTDIR)$(plugindir)/k5conn.so ; then \

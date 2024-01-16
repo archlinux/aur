@@ -2,34 +2,43 @@
 #
 # foofilter.sh -- Foomatic-rip-lprng is used as the print filter
 #
-infile=/tmp/infile.$$
-tempfile=/tmp/tempfile.$$
+# Requires
+#    poppler (xpdf): pdftops
+#    foomatic-filters-lprng
+#    enscript
+
+set -u
+
+# define temporary files
+infile="/tmp/infile.$$"
+tempfile="/tmp/tempfile.$$"
 
 # replace example.ppd with the appropriate ppd file for your printer
-your_ppd=$example.ppd
+your_ppd="${example}.ppd"
 
-cat > $infile
+# choose your paper size
+PAPER='Letter'
+#PAPER='A4'
 
-fileinfo=`file -b $infile`
-ascii=`echo $fileinfo | grep ASCII`
-pdf=`echo $fileinfo | grep PDF`
-ps=`echo $fileinfo | grep PostScript`
+# send the standard input to a temporary file
+cat > "${infile}"
 
-if test "$ascii" != ''
-then
-    enscript -M Letter -o - $infile > $tempfile
-elif test "$pdf" != ''
-then
-    pdftops $infile - > $tempfile
-elif test "$ps" != ''
-then
-    cat $infile > $tempfile
-else
-    echo "Can not print file of type  $fileinfo" | \
-	enscript -M Letter -o - > $tempfile
-fi
+# figure out what type of file we are trying to print
+fileinfo="$(file -b "${infile}")"
+
+# take various actions depending on the type of file -- send
+# results to a temporary postscript file
+case "${fileinfo}" in
+*ASCII*)      enscript -M "${PAPER}" -o - "${infile}" > "${tempfile}" ;;
+*PDF*)        pdftops "${infile}" - > "${tempfile}" ;;
+*PostScript*) cat "${infile}" > "${tempfile}" ;;
+*)
+  echo "Cannot print file of type ${fileinfo}" | \
+  enscript -M "${PAPER}" -o - > "${tempfile}"
+  ;;
+esac
 
 # foomatic-rip sends stuff to the standard output
-/usr/bin/foomatic-rip-lprng --lprng /etc/lprng/lpd/$your_ppd < $tempfile
+/usr/bin/foomatic-rip-lprng --lprng "/etc/lprng/lpd/${your_ppd}" < "${tempfile}"
 
-rm $infile $tempfile
+rm -f "${infile}" "${tempfile}"
