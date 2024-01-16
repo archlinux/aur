@@ -1,6 +1,6 @@
 pkgname=kdash-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="A simple and fast dashboard for Kubernetes"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(
   'pacman>5'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-rs/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux.tar.gz")
-sha256sums=('af96453dd9ee268d460d1c8fbad399298f3c52e23522db4721fd970dd82ea5a3')
+sha256sums=('fc4a6c76fee30205148cbc01f5a10226609764d1474a305e0a85e5054acc2f2e')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
