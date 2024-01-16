@@ -11,7 +11,7 @@
 _pkgname=ffsubsync-venv
 pkgname=python-$_pkgname
 pkgver=0.4.25
-pkgrel=3
+pkgrel=4
 pkgdesc="Language-agnostic automatic synchronization of subtitles with video. (Installed inside a Python virtual environment)"
 arch=(any)
 url="https://github.com/smacke/ffsubsync"
@@ -37,6 +37,19 @@ depends=(
 conflicts=('python-ffsubsync')
 install=ffsubsync-venv.install
 
+remove_pkgdir_path() {
+  # Bash function to remove "$pkgdir" from the package files.
+  # Since "$pkgdir" can contain reserved characters for regex or the separator
+  # used in a sed command, rather than using sed or awk, we use Bash string
+  # substitution, that can be made exact by quoting the variable.
+  file="$1"
+  cp "$file" "$file.tmp"
+  while IFS= read -r line; do
+    echo "${line//"$pkgdir"}"
+  done < "$file.tmp" > "$file"
+  rm "$file.tmp"
+}
+
 package() {
   mkdir -p "$pkgdir"/usr/{bin,share/ffsubsync-venv}
   install -m 755 -o 0 -g 0 ffs.sh "$pkgdir"/usr/bin/ffs
@@ -51,9 +64,12 @@ package() {
 
   # Remove make dependencies from the virtual environment
   pip uninstall --yes pip setuptools
+
   # Remove $pkgdir path from the package (it is important to exclude binary
-  # files otherwise .pyc files will be corrupted and ffs will crash)
+  # files otherwise .pyc files will be corrupted and ffs will crash).
+  export pkgdir
+  export -f remove_pkgdir_path
   find "$venv" -type f \
-    -exec grep --quiet --binary-files=without-match "$pkgdir" {} \; \
-    -exec sed --in-place "s,$pkgdir,,g" {} \;
+    -exec grep --quiet --binary-files=without-match --fixed-strings "$pkgdir" {} \; \
+    -exec bash -c 'remove_pkgdir_path "$1"' _ {} \;
 }
