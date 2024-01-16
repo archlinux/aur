@@ -2,7 +2,7 @@
 pkgname=serialportassistant-bin
 _pkgname=SerialPortAssistant
 pkgver=0.5.16
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform serial port assistant. It can run on WINDOWS, linux、android、macos system.一个跨平台的串口助手"
 arch=("x86_64")
 url="https://github.com/KangLin/SerialPortAssistant"
@@ -20,10 +20,10 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6e181536039614a311d2ce1042de45ba4f99992e668dc62261e8dd7fdf0c387f'
-            '8421edb4d28e3fbbd7818e7b25d8d5276a15be11063e9c5f368943919ec63b43')
+            '66942e97f4cac1a25292add681ae9416865d7672e9bb4e0b9c1057d43ab14b28')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@execname@|${_pkgname}|g" \
+        -e "s|@runname@|${_pkgname}-v${pkgver}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
     sed -e "s|/opt/${_pkgname}/bin/${_pkgname}.sh|${pkgname%-bin}|g" \
