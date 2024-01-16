@@ -8,8 +8,7 @@ pkgbase = annyong
 	makedepends = rubygems
 	depends = ruby
 	depends = ruby-rack
-	source = http://gems.rubyforge.org/gems/annyong-0.4.1.gem
+	source = https://rubygems.org/downloads/annyong-0.4.1.gem
 	sha256sums = 307b00a61f2d76d03a44f6958a8d4a9b35e11c39999d7fe057015af156329658
 
 pkgname = annyong
-

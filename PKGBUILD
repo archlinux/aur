@@ -9,7 +9,7 @@ url="https://github.com/remiprev/annyong"
 license=('Custom')
 depends=('ruby' 'ruby-rack')
 makedepends=('rubygems')
-source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 sha256sums=('307b00a61f2d76d03a44f6958a8d4a9b35e11c39999d7fe057015af156329658')
 
 package() {
