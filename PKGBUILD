@@ -1,25 +1,49 @@
-# Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
+# Maintainer:
+# Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
-pkgname=pyinfra
-pkgver=1.5
+_pkgname="pyinfra"
+pkgname="$_pkgname"
+pkgver=2.9
 pkgrel=1
 pkgdesc="pyinfra automates infrastructure super fast at massive scale"
-arch=('any')
 url="https://pyinfra.com/"
 license=('MIT')
-depends=("python" "python-gevent" "python-paramiko" "python-click" "python-colorama"
-         "python-docopt" "python-jinja" "python-dateutil" "python-pywinrm" "python-configparser")
-makedepends=('python-setuptools')
+arch=('any')
+
+depends=(
+  'python'
+  'python-click'
+  'python-dateutil'
+  'python-distro'
+  'python-gevent'
+  'python-jinja'
+  'python-paramiko'
+  'python-yaml'
+
+  'python-setuptools' # silence namcap
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+
+_pkgsrc="$_pkgname-$pkgver"
 source=("https://github.com/Fizzadar/pyinfra/archive/v$pkgver.tar.gz")
-sha256sums=('3918fbe08ff29cb7f540bf024aea2f74612a5859405816c1809f6d9916dfbd96')
+sha256sums=('3c8f71b557a850ae23370b4846d0631110648168c5fe9723051a7bf74ec3f50c')
+
+prepare() {
+  cd "$_pkgsrc"
+  rm -rf tests
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python3 setup.py build
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
