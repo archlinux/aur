@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-sched-ext-git
 pkgver=6.7.0.r1236012.g6eb6c92567b1
 _srcname=sched_ext
-pkgrel=4
+pkgrel=5
 pkgdesc='Linux Kernel based on the sched_ext branch'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -303,4 +303,4 @@ done
 
 b2sums=('SKIP'
         'efe75d4575d6b788a36a1e90d1e0e0325a134a254b31e6b82da911579252f661a01b21a5b36aceb0e5f2f617dfd17915ddcb8fbf4fce36a327607533815a334e'
-        '6740eed61a07f9456abafcd221a0582d141536c5cae32aeacbed4802a2de734ce64a33527deefe606e8eee76093fb7193552ef946f3ed6afb5f2ef284317f3fb')
+        'a7afc12f5600bfbaa23e14d4f78a77261aba2efc2e1f3133abc21ce7f951629d5f1a97c1732d7ff81a19cddc73fe7621a44be8c0dcc8ab1532083b21f6c40100')
