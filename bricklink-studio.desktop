@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Bricklink Stud.io
+Type=Application
+Exec=bricklink-studio %f
+Terminal=false
+MimeType=application/ldd;application/bricklink-studio
+Encoding=UTF-8
+

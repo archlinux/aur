@@ -1,0 +1,12 @@
+pkgbase = bricklink-studio
+	pkgver = 2.23.12_1
+	pkgrel = 1
+	url = https://www.bricklink.com/v3/studio/download.page
+	arch = x86_64
+	license = custom
+	makedepends = innoextract
+	depends = wine
+	noextract = Studio+2.0.exe
+	source = https://s3.amazonaws.com/blstudio/Studio2.0/Archive/2.23.12_1/Studio+2.0.exe
+
+pkgname = bricklink-studio

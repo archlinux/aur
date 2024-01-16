@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/ldd">
+        <comment>Lego Digital Designer model</comment>
+        <glob-deleteall/>
+        <glob pattern="*.ldd"/>
+    </mime-type>
+    <mime-type type="application/bricklink-studio">
+        <comment>Bricklink Stud.io model</comment>
+        <glob-deleteall/>
+        <glob pattern="*.io"/>
+    </mime-type>
+</mime-info>
