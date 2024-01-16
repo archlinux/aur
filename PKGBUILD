@@ -3,7 +3,7 @@ pkgrel=1
 _pkgname='jsettlers'
 pkgname=${_pkgname}'-git'
 
-pkgver=0.6.0.6.alpha.r2.gf7597a2f2
+pkgver=0.6.0.8.alpha.r0.g990134459
 pkgver() {
   cd  ${_pkgname}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -17,13 +17,17 @@ license=('MIT')
 provides=(${_pkgname})
 depends=('java-runtime>=11' 'sh')
 optdepends=('settlers3-demo-data')
-makedepends=('jdk11-openjdk' 'unzip')
+makedepends=('jdk11-openjdk' 'unzip' 'git')
 install=${pkgname}'.install'
 source=("jsettlers::git+https://github.com/paulwedeck/settlers-remake.git"
-        "https://services.gradle.org/distributions/gradle-${_gradlever}-all.zip")
+        "https://services.gradle.org/distributions/gradle-${_gradlever}-all.zip"
+        "jsettlers-mapcreator.desktop"
+        "jsettlers.desktop")
 noextract=("gradle-${_gradlever}-all.zip")
 sha512sums=('SKIP'
-            '2e1d05486baa9661d5c8ffead2df87874a66f6cfc958ee6840432b89d221d8b0af9e3cad3675766f5413d12aa61c5b5fb0dd82f4164e5da3022865eba9ceadbf')
+            '2e1d05486baa9661d5c8ffead2df87874a66f6cfc958ee6840432b89d221d8b0af9e3cad3675766f5413d12aa61c5b5fb0dd82f4164e5da3022865eba9ceadbf'
+            '67d61b580daeb1dd098f10af99dccf81986732d9c6720432ec78cdfc093681b8f1a537c13b7460520ab0ae7443c1dc8da765f49cc8e90c27d59d14e6ee260179'
+            '0c875bb6eb384867d46048054679ca555ff0600cbf197d170f9afda2b4a6c5e7bb275a08dad903cbf499508e2a96906a0f0267b4122f7cde8b42ed668ec17cc0')
 
 prepare() {
   # prepare gradle to use downloaded zip
