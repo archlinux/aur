@@ -75,7 +75,7 @@ source=(${source[@]}
         0001-ozone-wayland-implement-text_input_manager-fixes.patch)
         # ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip
 sha256sums=(${sha256sums[@]}
-            '8a54932b0f2098dcd334e79e4f680614f57dc192037bc495d2099e28dbc507c8'
+            '131b6fec2bca4435b2542d46df716af79a62bf80fc00c48898de640dd852aa8e'
             '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
             '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
