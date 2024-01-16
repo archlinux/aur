@@ -2,11 +2,11 @@
 
 pkgname=hyperglot
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A database and tools for detecting language support in fonts'
 arch=(any)
 url="https://github.com/rosettatype/$pkgname"
-license=(GPL3)
+license=(GPL-3.0-only)
 _py_deps=(click
           colorlog
           fonttools
