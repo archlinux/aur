@@ -3,7 +3,7 @@ pkgname=vesktop
 _pkgname=Vesktop
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
@@ -22,7 +22,7 @@ conflicts=("vencord")
 source=($url/archive/refs/tags/v$pkgver.tar.gz vesktop.desktop vesktop.sh)
 
 sha256sums=(7f20edeb4612386ae98d5dccfa4b37ad1f5336d4551de3375c3b16e81925b10a
-            80d0c3dac36676b73e0716a83467e19707c4a069f826f1ebca9e9b6a531d77a5
+            bc18764d08c902cd1f794588ea62e3797e121a46850f721f654036adf41d59c3
             b1c9ce99ba545b0baaba0eb63e5bb7a2f88cf335f66d775f32fa139ce6b479ab)
 
 prepare() {
