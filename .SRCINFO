@@ -1,7 +1,7 @@
 pkgbase = ascii-draw
 	pkgdesc = Draw diagrams and more using ASCII
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nokse22/ascii-draw
 	arch = any
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = ascii-draw
 	makedepends = vala
 	depends = gtk4
 	depends = libadwaita
+	depends = python-emoji
 	depends = python-gobject
 	depends = python-pyfiglet
 	source = ascii-draw-0.2.0.tar.gz::https://github.com/Nokse22/ascii-draw/archive/v0.2.0.tar.gz
