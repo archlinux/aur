@@ -1,15 +1,16 @@
 # Maintainer: Carson Rueter <swurl at swurl dot x y z>
 # Contributor: Tyler Veness <calcmogul at gmail dot com>
 
-pkgname=ntcore
+pkgname=cscore
 pkgver=2024.1.1
 _pkgver="v2024.1.1"
 pkgrel=1
-pkgdesc="WPILib's NetworkTables communication library"
+pkgdesc="WPILib's CameraServer communication library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
-depends=('fmt' 'eigen' 'protobuf')
+depends=('fmt' 'eigen')
 makedepends=('cmake')
+conflicts=('ntcore')
 license=('BSD' 'MIT')
 options=('!strip' 'staticlibs')
 source=("git+https://github.com/wpilibsuite/allwpilib#tag=$_pkgver")
@@ -21,9 +22,9 @@ build() {
     -DUSE_SYSTEM_EIGEN=ON \
     -DUSE_SYSTEM_FMTLIB=ON \
     -DWITH_JAVA=OFF \
-    -DWITH_CSCORE=OFF \
+    -DWITH_CSCORE=ON \
     -DWITH_NTCORE=ON \
-    -DWITH_WPIMATH=ON \
+    -DWITH_WPIMATH=OFF \
     -DWITH_WPILIB=OFF \
     -DWITH_TESTS=ON \
     -DWITH_GUI=OFF \

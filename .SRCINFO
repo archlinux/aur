@@ -1,5 +1,5 @@
-pkgbase = ntcore
-	pkgdesc = WPILib's NetworkTables communication library
+pkgbase = cscore
+	pkgdesc = WPILib's CameraServer communication library
 	pkgver = 2024.1.1
 	pkgrel = 1
 	url = https://github.com/wpilibsuite/allwpilib
@@ -9,10 +9,10 @@ pkgbase = ntcore
 	makedepends = cmake
 	depends = fmt
 	depends = eigen
-	depends = protobuf
+	conflicts = ntcore
 	options = !strip
 	options = staticlibs
 	source = git+https://github.com/wpilibsuite/allwpilib#tag=v2024.1.1
 	md5sums = SKIP
 
-pkgname = ntcore
+pkgname = cscore
