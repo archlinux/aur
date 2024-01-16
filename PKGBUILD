@@ -1,5 +1,5 @@
 pkgname=grub-theme-boot-minegrub-git
-pkgver=r101.f6e1c9a
+pkgver=r116.ef835b3
 pkgrel=1
 pkgdesc="A Grub Theme in the style of Minecraft!"
 arch=('any')
@@ -23,6 +23,7 @@ package() {
 
     install -dm755 ${pkgdir}${_themedir}
     cp -rf --no-preserve=ownership "${pkgname}"/minegrub/* ${pkgdir}${_themedir}
+    cp -rf --no-preserve=ownership "${pkgname}"/background_options/* ${pkgdir}${_themedir}/backgrounds
      
     install -Dpm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dpm644 "${pkgname}/minegrub-update.service" -t "${pkgdir}/usr/lib/systemd/system"

@@ -1,6 +1,6 @@
 pkgbase = grub-theme-boot-minegrub-git
 	pkgdesc = A Grub Theme in the style of Minecraft!
-	pkgver = r101.f6e1c9a
+	pkgver = r116.ef835b3
 	pkgrel = 1
 	url = https://github.com/Lxtharia/minegrub-theme
 	arch = any
