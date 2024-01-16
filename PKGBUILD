@@ -7,7 +7,7 @@
 set -u
 pkgname='atari800'
 #pkgname+='-git'
-pkgver=5.0.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='An emulator of the Atari 800/800XL/130XE/5200 with various extensions'
 arch=('i686' 'x86_64')
@@ -33,10 +33,10 @@ if ! :; then
   _srcdir="${pkgname%-git}-${_srcf}"
 fi
 unset _srcf
-md5sums=('f5dc10d461d0241a5978a0998028e49a'
+md5sums=('bed6188abbe73c2ac109dc954050fd46'
          '4f6ae0290954e7132c705c9f9fc37dd2'
          '82d425a60aa04f7596ffe0d3cf3dfd92')
-sha256sums=('eaa2df7b76646f1e49d5e564391707e5a4b56d961810cff6bc7c809bfa774605'
+sha256sums=('3874d02b89d83c8089f75391a4c91ecb4e94001da2020c2617be088eba1f461f'
             '832fcb80e3eb02e7d5d8d50512e82c28aef9110e4f764f288b12228e99c13f42'
             '95e03020358a0855e12ee19b62abebb336e472fcf525f7eb42dcc28419588df9')
 
@@ -96,7 +96,7 @@ package() {
     cd 'src'
   fi
   make DESTDIR="${pkgdir}/" install
-  install -Dm755 "${srcdir}/atari800.desktop" "${pkgdir}/usr/share/applications/atari800.desktop"
+  install -Dm755 "${srcdir}/atari800.desktop" -t "${pkgdir}/usr/share/applications/"
   install -Dm755 'data/atari2.png' "${pkgdir}/usr/share/pixmaps/atari800.png"
   set +u
   msg2 "\e[1;32mThis package has some options you might interested in. Have a look at _copts[@] in PKGBUILD.\e[0m"
