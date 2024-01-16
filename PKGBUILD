@@ -2,7 +2,8 @@
 pkgname=frontimer
 pkgver=0.1.17
 _electronversion=25
-pkgrel=2
+_nodeversion=20
+pkgrel=3
 pkgdesc="Desktop timer application always displayed in the forefront of the screen"
 arch=('any')
 url="https://github.com/seita1996/frontimer"
@@ -19,16 +20,16 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('SKIP'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 18
-    nvm use 18
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
@@ -36,16 +37,20 @@ build() {
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
+    cd "${srcdir}/${pkgname}.git"
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn build
-    yarn ebuilder:linux
+    yarn run build
+    yarn run ebuilder:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname}.git/src/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

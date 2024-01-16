@@ -1,7 +1,7 @@
 pkgbase = frontimer
 	pkgdesc = Desktop timer application always displayed in the forefront of the screen
 	pkgver = 0.1.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/seita1996/frontimer
 	arch = any
 	license = MIT
@@ -12,9 +12,9 @@ pkgbase = frontimer
 	makedepends = git
 	depends = electron25
 	conflicts = frontimer
-	source = frontimer-0.1.17::git+https://github.com/seita1996/frontimer.git#tag=v0.1.17
+	source = frontimer.git::git+https://github.com/seita1996/frontimer.git#tag=v0.1.17
 	source = frontimer.sh
 	sha256sums = SKIP
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = frontimer
