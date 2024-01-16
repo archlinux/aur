@@ -1,16 +1,16 @@
 pkgbase = obs-dir-watch-media
 	pkgdesc = Adds a filter you can add to media source to load the oldest or newest file in a directory
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/directory-watch-media.801/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
 	depends = obs-studio>=28
-	source = obs-dir-watch-media::git+https://github.com/exeldro/obs-dir-watch-media#commit=be0c880d3fcd30a651b82eec4fbe74c096642ae6
+	options = debug
+	source = obs-dir-watch-media::git+https://github.com/exeldro/obs-dir-watch-media#commit=cc320fba63ac250eaefac6d0b8cc20f4bc88aa4f
 	sha256sums = SKIP
 
 pkgname = obs-dir-watch-media

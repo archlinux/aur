@@ -1,29 +1,29 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-dir-watch-media
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Adds a filter you can add to media source to load the oldest or newest file in a directory"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/directory-watch-media.801/"
 license=("GPL2")
 depends=("obs-studio>=28")
 makedepends=("cmake" "git")
-source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=be0c880d3fcd30a651b82eec4fbe74c096642ae6")
+options=('debug')
+source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=cc320fba63ac250eaefac6d0b8cc20f4bc88aa4f")
 sha256sums=("SKIP")
 
 build() {
-  cd "$pkgname"
-  cmake -B build \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  cmake -B build -S $pkgname \
+  -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
-  -DLINUX_PORTABLE=OFF
+  -DLINUX_PORTABLE=OFF \
+  -Wno-dev
 
-  make -C build
+  cmake --build build
 }
 
 package() {
-  cd "$pkgname"
-  make -C build DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
