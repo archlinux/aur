@@ -3,7 +3,7 @@ pkgname=goofcord-bin
 _pkgname=GoofCord
 pkgver=1.1.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client."
 arch=(
     'aarch64'
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_aarch64=('62a38bac85262cb53acac00700ac798a02529126322f6f6ed9dcb3be56f1f682')
 sha256sums_armv7h=('52c87e904d0e98cae1d80d3e9160392832bbccaf21c208ea03f0412f739afef7')
 sha256sums_x86_64=('b631814bd26fcbb1922238fdf2d11fad182d730c76563808c32849b3ca0c84ad')
@@ -37,7 +37,7 @@ build() {
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
