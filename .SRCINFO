@@ -1,15 +1,14 @@
 pkgbase = tcping-go-bin
 	pkgdesc = Ping TCP ports. Inspired by Linux's ping utility. Written in Go
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/pouriyajamshidi/tcping
 	arch = x86_64
 	license = MIT
 	provides = tcping
 	provides = tcping-go
-	conflicts = tcping
 	conflicts = tcping-go-git
-	source = tcping-go-bin-2.4.0.tar.gz::https://github.com/pouriyajamshidi/tcping/releases/download/v2.4.0/tcping_Linux.tar.gz
-	sha256sums = 4fe818728f9ca8a8b4c9e5db66d415270f45672884a07cccd765db2b74c45130
+	source = tcping-go-bin-2.5.0.tar.gz::https://github.com/pouriyajamshidi/tcping/releases/download/v2.5.0/tcping_Linux.tar.gz
+	sha256sums = b78e4ac9c76589e1fbc22dc52f06dc1e1448267a3e6e3b4b2491b8fb21929db4
 
 pkgname = tcping-go-bin
