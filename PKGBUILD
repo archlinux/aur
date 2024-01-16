@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.16.r0.g85871982b
+pkgver=0.5.16.r2.g8b0b21921
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -72,10 +72,8 @@ optdepends=(
   'xorg-xgamma: Restore gamma on game exit')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/lutris/lutris.git'
-        'https://github.com/lutris/lutris/pull/5241.patch')
-sha256sums=('SKIP'
-            '8d1c5ef9cb317154ece98ceceaa1babe20f0e67f9794f25832af2e7bdb347355')
+source=('git+https://github.com/lutris/lutris.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -84,9 +82,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # Fix metainfo.xml
-  patch -Np1 -i ../5241.patch
 }
 
 build() {
