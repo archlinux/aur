@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -13,9 +13,11 @@ depends=('libbpf' 'bpf' 'libelf' 'zlib')
 makedepends=('python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
 options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz
-        0001-Add-systemd-services-for-scx-schedulers.patch)
+        0001-Add-systemd-services-for-scx-schedulers.patch
+        0002-Adapting-service-names-to-scheduler-names.patch)
 sha512sums=('caf969be909f2dfca7b8b82d528a50a147029e4ac788825ece3adad67fef41c6e43a37e74316238bcc13c1357a63503c940c76aeefa2e1e4f6787c1496833d05'
-            'cff5a6c076c13e935c86fb09101d4306e1e13a1436b371006201e4b725bf9f15837ba61bfe704c7acbaf1f4c6f4114a72cd6414c834014763f2de935a1d1cd31')
+            '6f8848a467e6f74f669c6734700f8e941139f754dfd889889de740af4f308fb28d3451c63be2611e70250d696e34141584647883a47c8c688f3803aa10ee28e6'
+            'af6359529caec0fa5abb6c188cae697ede9a72e13d78532ac71dd4ee0cd0e59518c0918dedcd8009a1ff218ac164400a96c198c0de102dd7e5e1461eea245961')
 
 prepare() {
  cd scx-${pkgver}
