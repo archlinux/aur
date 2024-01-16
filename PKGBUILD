@@ -1,17 +1,17 @@
 # Maintainer: Willy Micieli <micieli at vivaldi.net>
 
 pkgname=zuu
-pkgver=6.0.0
-pkgrel=2
+pkgver=7.0.0
+pkgrel=1
 pkgdesc="A git hook test runner for rust programer" 
 provides=("zuu")
 arch=('any')
 url="https://github.com/taishingi/zuu"
 license=('GPL3')
 makedepends=('cargo')
-depends=('rustup' 'git-graph' 'git-igitt-bin' 'rsbadges' 'wget' 'git')
+depends=('rustup' 'git-graph' 'rsbadges' 'wget' 'git' 'ranger' 'lazygit' 'cargo-audit')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('c3c993b8c2e8bc17091b0b07f26ac837bf842453a0af87fad144ceeb13e32952')
+sha256sums=('54da9555c364fa1eff3565d966af839cc62773e1a2ce4593523891b45078e36c')
 
 build() {
     cd $pkgname-$pkgver
