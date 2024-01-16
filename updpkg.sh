@@ -1,16 +1,16 @@
 #!/bin/bash
 
-updpkgsums
-
-_pkgnamefmt=LibreOfficeDev
-_pkgver=24.2.0.0.beta1
-pkgver=24.2.0.0beta1
+_pkgnamefmt=LibreOffice
+_pkgver=24.2.0.1
+pkgver=24.2.0.1
 
 sed -i "5s|_pkgnamefmt=.*|_pkgnamefmt=${_pkgnamefmt}|" PKGBUILD
 
 sed -i "6s|_pkgver=.*|_pkgver=${_pkgver}|" PKGBUILD
 
 sed -i "7s|pkgver=.*|pkgver=${pkgver}|" PKGBUILD
+
+updpkgsums
 
 makepkg --printsrcinfo > .SRCINFO
 
@@ -633,12 +633,6 @@ pkgname = libreoffice-dev-rw
     depends= libreoffice-dev-bin>=${pkgver}
     source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_rw.tar.gz
     sha256sums = $(sha256sum ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_rw.tar.gz | sed "s/ ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_rw.tar.gz//")
-
-pkgname = libreoffice-dev-qtz
-    pkgdesc= Weblate Localization language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=${pkgver}
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_qtz.tar.gz
-    sha256sums = $(sha256sum ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_qtz.tar.gz | sed "s/ ${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_qtz.tar.gz//")
 
 pkgname = libreoffice-dev-sa-in
     pkgdesc= Sanskrit (India) language pack for LibreOffice Dev
