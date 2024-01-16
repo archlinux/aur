@@ -1,44 +1,18 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
-
-_name=spectra
-pkgbase='python-spectra'
-pkgname=('python-spectra' 'python2-spectra')
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
+pkgname=python-spectra
+_pkgname=${pkgname#python-}
 pkgver=0.0.11
-pkgrel=2
-pkgdesc="Color scales and color conversion in Python"
+pkgrel=1
+pkgdesc="Easy color scales and color conversion for Python"
 arch=('any')
-url="https://pypi.python.org/pypi/spectra"
+url="https://github.com/jsvine/spectra"
 license=('MIT')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-options=(!emptydirs)
-source=("${_name}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/50/50/ae8d87ab681a58e246215e51715566df8074a86d244fee31fa8585fe5f9f/spectra-0.0.11.tar.gz)
-sha256sums=('8eb362a5187cb63cee13cd01186799c0c791a3ad3bec57b279132e12521762b8')
+depends=('python-colormath')
+makedepends=('python-setuptools')
+source=($_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('bb7f38ce7a89363e02d0832e84200e87649008beec432815aa0fee8f037bb496')
 
-prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
-}
-
-build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
-}
-
-package_python2-spectra() {
-  depends=('python2' 'python2-networkx' 'python2-colormath')
-
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-}
-
-package_python-spectra() {
-  depends=('python' 'python-networkx' 'python-colormath')
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+package() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }

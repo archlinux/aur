@@ -1,25 +1,13 @@
 pkgbase = python-spectra
-	pkgdesc = Color scales and color conversion in Python
+	pkgdesc = Easy color scales and color conversion for Python
 	pkgver = 0.0.11
-	pkgrel = 2
-	url = https://pypi.python.org/pypi/spectra
+	pkgrel = 1
+	url = https://github.com/jsvine/spectra
 	arch = any
 	license = MIT
-	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	options = !emptydirs
-	source = spectra-0.0.11.tar.gz::https://pypi.python.org/packages/50/50/ae8d87ab681a58e246215e51715566df8074a86d244fee31fa8585fe5f9f/spectra-0.0.11.tar.gz
-	sha256sums = 8eb362a5187cb63cee13cd01186799c0c791a3ad3bec57b279132e12521762b8
+	depends = python-colormath
+	source = spectra-0.0.11.tar.gz::https://github.com/jsvine/spectra/archive/refs/tags/v0.0.11.tar.gz
+	sha256sums = bb7f38ce7a89363e02d0832e84200e87649008beec432815aa0fee8f037bb496
 
 pkgname = python-spectra
-	depends = python
-	depends = python-networkx
-	depends = python-colormath
-
-pkgname = python2-spectra
-	depends = python2
-	depends = python2-networkx
-	depends = python2-colormath
-
