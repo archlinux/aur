@@ -4,7 +4,7 @@
 
 #Todo:
 #* add external cmake projects to source array and patch src/externla/*.cmake
-#* use system wide: levmar, libigl, qhull, structyresynth, libe57, u3d, tinygltf
+#* use system wide: levmar, libigl, structyresynth, libe57, u3d, tinygltf
 
 #Configuration:
 #Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
@@ -24,7 +24,7 @@ arch=('i686' 'x86_64')
 url="https://www.meshlab.net"
 license=('GPL2')
 depends=('bzip2' 'cgal' 'glew' 'glu' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns' 'xerces-c'
-         'gmp' 'mpfr' 'mesa')
+         'gmp' 'mpfr' 'mesa' 'qhull')
 makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'lib3ds' 'openctm-tools' 'gcc12')
 optdepends=('lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
             'muparser: for filer_func plugins'
@@ -41,8 +41,7 @@ prepare() {
 
 
 build() {
-  _cmake_flags+=( '-DALLOW_SYSTEM_QHULL=OFF'
-                  '-DCMAKE_INSTALL_PREFIX=/usr'
+  _cmake_flags+=( '-DCMAKE_INSTALL_PREFIX=/usr'
                   '-DCMAKE_BUILD_TYPE=Release'
                   '-DCMAKE_C_COMPILER=gcc-12'
                   '-DCMAKE_CXX_COMPILER=g++-12'
