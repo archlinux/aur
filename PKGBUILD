@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: noonov <noonov@gmail.com>
 
 pkgname=xyzsh
@@ -8,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/ab25cq/xyzsh"
 license=('MIT')
 depends=('oniguruma' 'gc')
-source=(http://dl.sourceforge.jp/xyzsh/60140/${pkgname}-${pkgver}.tgz)
+source=(http://osdn.net/projects/${pkgname}/downloads/60140/${pkgname}-${pkgver}.tgz)
 md5sums=('4fab43dbd794fb4af871ac6c9989526b')
 
 build() {
