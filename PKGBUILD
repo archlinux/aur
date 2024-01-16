@@ -7,10 +7,14 @@ arch=(any)
 url="https://github.com/lgpage/${pkgname}"
 license=('custom:BSD-3-clause')
 depends=(jupyterlab)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(python-build python-installer python-setuptools python-wheel jupyter_contrib_nbextensions)
 checkdepends=(python-pytest)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('f55b69ce96c449ad7a1a623135ef94c6b54894680925cce14ea08ab5d1f409a17cd6c59876a8a2f6e8b63206b58c5afb2610c60c2fb2aebe0c0a8084599aebfd')
+
+prepare() {
+  sed -i 's/typeDict/sctypeDict/' ${pkgname}-${pkgver}/nbtutor/ipython/constants/types.py
+}
 
 build() {
   cd ${pkgname}-${pkgver}
