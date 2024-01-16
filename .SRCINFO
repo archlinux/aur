@@ -5,6 +5,9 @@ pkgbase = plutolang
 	url = https://github.com/PlutoLang/Pluto
 	arch = x86_64
 	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
 	source = pluto-git::git+https://github.com/PlutoLang/Pluto#tag=0.8.1
 	sha256sums = SKIP
 
