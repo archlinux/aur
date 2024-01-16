@@ -1,5 +1,6 @@
 pkgname=gaiasky-appimage
-pkgver=3.5.3.d076b1659
+pkgver=3.5.7
+versionstr=3.5.7-3.8be0b0add
 _pkgname=gaiasky
 _appimage="${_pkgname}_${pkgver}_x86_64.appimage"
 pkgrel=1
@@ -7,11 +8,9 @@ pkgdesc="Open source 3D universe simulator for desktop and VR with support for m
 arch=(x86_64)
 license=(MPL)
 url="https://zah.uni-heidelberg.de/gaia/outreach/gaiasky"
-depends=()
-options=()
-source=(https://gaia.ari.uni-heidelberg.de/gaiasky/releases/latest/${_pkgname}_${pkgver}_x86_64.appimage)
-sha256sums=('271c7785df8082f72afa36978dac446aa5d138c010ffaf3adf30fdcbbaf40f99')
-
+depends=('java-runtime' 'xorg-xrandr')
+source=("https://gaia.ari.uni-heidelberg.de/gaiasky/releases/latest/${_pkgname}_${versionstr}_x86_64.appimage")
+sha256sums=('bddb8005ad6b6d3b86e7fe5e26b91ee1144cada04d410d3fb757c8cb39c80d7c')
 
 prepare() {
     chmod +x ${_appimage}
