@@ -18,7 +18,8 @@ pkgbase = tme
 	options = libtool
 	options = debug
 	options = !strip
-	source = https://osdn.net/dl/nme/tme-0.12rc11.tar.xz
+	options = lto
+	source = https://github.com/phabrics/nme/releases/download/0.12rc11/tme-0.12rc11.tar.xz
 	sha256sums = ea72a457e0fe8144f985e0a5bf848cd5872a807f47fad492b9e1e5fbd7c173bf
 
 pkgname = tme
