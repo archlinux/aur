@@ -4,7 +4,7 @@
 # Contributor: Martoko <mbastholm at gmail dot com>
 
 pkgname=nordvpn-bin
-pkgver=3.16.9
+pkgver=3.17.0
 pkgrel=1
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -18,13 +18,13 @@ source_x86_64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${
 source_i686=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_i386.deb")
 source_armv7h=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_armhf.deb")
 source_aarch64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_arm64.deb")
-sha256sums_x86_64=('40b87fe0aabc2ef7197dce6780bbb0ec1380a98ae8ca45252b6c72dccd2b0e4c')
-sha256sums_i686=('f36974dc329bca877050dad2621c096d4af245e638b0175544ab922e9b48cfb9')
-sha256sums_armv7h=('aa82433dce5cb6eea09e11c3985f7638c246d8476fd79b12a02dc964aa10bdb0')
-sha256sums_aarch64=('8ce0a0582b2218f3a50be0dc83c7f7cd1a1c364b3394cf68ef2b45ba173a62be')
+sha256sums_x86_64=('d12c830f9e4fe949942a00fd874fdd3e426d5694478feae5482c9f53065ebbf1')
+sha256sums_i686=('1e44484bfc3f2fb4721453b51071a85206c50b7bfdfdbf01e30029a7204e27e2')
+sha256sums_armv7h=('e4aad5a5b8827108a22afb0dbdf7764e59f9deb59ae32008412b760b20182fe0')
+sha256sums_aarch64=('87f1ed43252e56415b4340f5b4f4fea1f7663a0b6b0b036f2d9c216c10368965')
 
 # There is also ArmEABI architecture for android devices available. Download with:
-# https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.16.9_armel.deb
+# https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.17.0_armel.deb
 
 package() {
     bsdtar -O -xf *.deb data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
