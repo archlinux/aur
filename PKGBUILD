@@ -6,7 +6,7 @@
 pkgname=gotosocial-git
 _pkgname=${pkgname%-git}
 pkgver=r1546.c5eced5fd
-pkgrel=1
+pkgrel=2
 pkgdesc='ActivityPub social network server written in Golang'
 arch=('x86_64')
 url='https://gotosocial.org'
