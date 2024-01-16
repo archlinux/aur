@@ -2,22 +2,38 @@
 # Maintainer: Vej Kse <vej.kse at gmail dot com>
 
 #  This package is provided as a workaround because ffsubsync
-#  doesn't work correctly with the most recent version of its
-#  libraries. In this package, it is installed, together with
-#  its dependencies as a Python virtual environment inside the
-#  directory /usr/share/ffsubsync-venv.
+#  doesn't work correctly with the most recent version of
+#  auditok. In this package, it is installed, together with
+#  auditok as a Python virtual environment inside the
+#  directory /usr/share/ffsubsync-venv. All other dependencies
+#  are taken from the system.
 
 _pkgname=ffsubsync-venv
 pkgname=python-$_pkgname
 pkgver=0.4.25
-pkgrel=2
+pkgrel=3
 pkgdesc="Language-agnostic automatic synchronization of subtitles with video. (Installed inside a Python virtual environment)"
 arch=(any)
 url="https://github.com/smacke/ffsubsync"
 license=('MIT')
 source=('ffs.sh')
 sha256sums=('6c8226cc63e639ed29673d1436792caca0b0cbfd63d4e8baa3ab9350d4e3dfb8')
-depends=('ffmpeg')
+depends=(
+  'python'
+  'python-chardet'
+  'python-charset-normalizer'
+  'python-faust-cchardet'
+  'python-ffmpeg-python'
+  'python-future'
+  'python-numpy'
+  'python-pysubs2'
+  'python-rich'
+  'python-six'
+  'python-srt'
+  'python-tqdm'
+  'python-typing_extensions'
+  'python-webrtcvad'
+)
 conflicts=('python-ffsubsync')
 install=ffsubsync-venv.install
 
@@ -28,10 +44,13 @@ package() {
   install -m 755 -o 0 -g 0 ffs.sh "$pkgdir"/usr/bin/subsync
 
   venv="$pkgdir/usr/share/ffsubsync-venv"
-  python -m venv --copies "$venv"
+  python -m venv --system-site-packages --symlinks "$venv"
   . "$venv/bin/activate"
-  pip install wheel
+
   pip install "ffsubsync==$pkgver"
+
+  # Remove make dependencies from the virtual environment
+  pip uninstall --yes pip setuptools
   # Remove $pkgdir path from the package (it is important to exclude binary
   # files otherwise .pyc files will be corrupted and ffs will crash)
   find "$venv" -type f \
