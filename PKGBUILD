@@ -4,18 +4,18 @@
 pkgname=cpod
 _name=CPod
 _nodeversion=8.16.1
-pkgver=1.28.0
+pkgver=1.28.2
 pkgrel=1
 pkgdesc="A simple, beautiful podcast app for Windows, macOS, and Linux."
 arch=('x86_64' 'i686')
 url="https://github.com/z-------------/CPod"
-license=('Apache')
+license=('Apache-2.0')
 depends=('electron2')
 makedepends=('yarn' 'jq' 'moreutils' 'nvm' 'gulp' 'python2')
 provides=('cpod')
 conflicts=('cpod-bin' 'cpod-git')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/z-------------/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('0c20040e2855427e97fb5f8645ace3e2179bc25b136953f7dd5d12b73936115e')
+sha256sums=('aac8f4d5ba63a45141442c265252e52a65906eca8d2e449f859dd8dadf390485')
 
 prepare() {
 	cd "$_name-$pkgver"
