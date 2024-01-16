@@ -14,7 +14,6 @@ makedepends=('rust-bindgen')
 provides=('bonsai-coreutils')
 source=("git+https://git.tebibyte.media/bonsai/coreutils.git")
 md5sums=(SKIP)
-validpgpkeys=('412DD3E96EA97554E5CD210C06FA419A1698C270', 'A52C700BE43784F82FCA4E5531FF85CCB6DC7641')
 
 pkgver() {
   cd "$_repo"
