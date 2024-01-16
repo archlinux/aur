@@ -1,8 +1,8 @@
 pkgbase = tme-git
 	pkgdesc = The Machine Emulator, or tme, provides a general-purpose framework for computer emulation.
-	pkgver = 0.12rc11.r0.g4cb4b81
+	pkgver = 0.12rc11.r33.g25942ed
 	pkgrel = 1
-	url = https://nme.osdn.io
+	url = http://phabrics.com
 	install = tme-git.install
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = tme-git
 	options = libtool
 	options = debug
 	options = !strip
+	options = lto
 	source = tme::git+https://github.com/phabrics/nme.git
 	sha256sums = SKIP
 
