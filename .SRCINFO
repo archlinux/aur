@@ -5,6 +5,7 @@ pkgbase = snowflake-pt-client-bin
 	url = https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake
 	install = snowflake-pt-client-bin.install
 	arch = x86_64
+	license = BSD-3-Clause
 	depends = tor
 	optdepends = tor-browser
 	backup = etc/tor/snowflake
