@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.5.r28.g09e7905
-pkgrel=3
+pkgrel=4
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -12,9 +12,11 @@ license=('GPL-2.0-only')
 depends=('libbpf' 'bpf' 'libelf' 'zlib')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
 source=("git+https://github.com/sched-ext/scx"
-        '0001-Add-systemd-services-for-scx-schedulers.patch')
+        '0001-Add-systemd-services-for-scx-schedulers.patch'
+        '0002-Adapting-service-names-to-scheduler-names.patch')
 sha256sums=('SKIP'
-            '2c0b18309c21ff484ccd902c5665ac0510f8829fc59c5b99de00aabc579cb711')
+            '3ff5e8c8a3e9ff9aba08167f33046c8b5388907eec8db3a668160c024365fd1f'
+            '310e35f6198e3f3d647298b2b1e463eb8aa08aed66ff181a2ffc75ed37a4cc9a')
 options=(!lto)
 provides=("scx-scheds=$pkgver")
 conflicts=("scx-scheds")
