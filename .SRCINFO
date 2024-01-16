@@ -1,10 +1,10 @@
 pkgbase = nb
 	pkgdesc = A command-line note-taking, bookmarking, archiving, and knowledge base application
 	pkgver = 7.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xwmx/nb
 	arch = any
-	license = AGPL3
+	license = AGPL-3.0-or-later
 	depends = bash
 	depends = git
 	optdepends = bat: recommended
