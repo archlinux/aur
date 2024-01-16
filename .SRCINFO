@@ -1,13 +1,13 @@
 pkgbase = wireguard-vanity-keygen-bin
 	pkgdesc = WireGuard vanity key generator
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/axllent/wireguard-vanity-keygen
 	arch = x86_64
 	arch = aarch64
 	arch = i686
 	arch = arm
-	license = custom
+	license = MIT
 	depends = glibc
 	provides = wireguard-vanity-keygen
 	conflicts = wireguard-vanity-keygen

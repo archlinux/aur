@@ -3,11 +3,11 @@
 pkgname=wireguard-vanity-keygen-bin
 _shortname=wireguard-vanity-keygen
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='WireGuard vanity key generator'
 arch=('x86_64' 'aarch64' 'i686' 'arm')
 url='https://github.com/axllent/wireguard-vanity-keygen'
-license=('custom')
+license=('MIT')
 depends=('glibc')
 provides=('wireguard-vanity-keygen')
 conflicts=('wireguard-vanity-keygen')
