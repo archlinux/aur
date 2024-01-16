@@ -3,9 +3,10 @@ pkgname=image-stitching
 _pkgname="${pkgname}-electron-app"
 pkgver=1.1.0
 _electronversion=25
-pkgrel=3
+_nodeversion=14
+pkgrel=4
 pkgdesc="This Image Stitcher was specifically built to stitch images in a horizontal layout one after the other from left to right. Primarily used for stitching multiple seperate images of a single scratch together."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/DevanshuSawant/image-stitching-electron-app"
 license=('custom')
 conflicts=("${pkgname}")
@@ -21,16 +22,16 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}"
+    "${pkgname}.git::git+${url}.git#tag=${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 14
-    nvm use 14
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
@@ -39,7 +40,7 @@ build() {
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories "Graphics;Utility" --name "${pkgname}" --exec "${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -53,8 +54,8 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/out/${pkgname}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/assets/square-smt-logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    cp -r "${srcdir}/${pkgname}.git/out/${pkgname}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/src/assets/square-smt-logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/out/${pkgname}-linux-x64/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/out/${pkgname}-linux-"*/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
