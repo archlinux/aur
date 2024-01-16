@@ -5,7 +5,7 @@
 
 _pkgname=upscayl
 pkgname=$_pkgname-bin
-pkgver=2.9.5
+pkgver=2.9.8
 pkgrel=1
 pkgdesc='Free and Open Source AI Image Upscaler'
 url='https://github.com/upscayl/upscayl'
@@ -24,7 +24,7 @@ source=(
 )
 
 sha512sums=(
-  'cdbcbb7187893224666ab912fd09e374c716fadb8e96a119cba4a37a84471aec4f9126e44b10b2bde05ed11c9acb659f714a8e9cebc8f6083d99acc832ecd4ee'
+  '69a6749a997da661516b438d5a2bb5537da64b50e8f0e34689d05ffa1a35aeebce15c9c6554b0ac79abf9dc3d7f2e257cefbb8fed3dd953809a649d278a05de3'
   '7a1a702418325085d6afab949efe7724c4db42dc5a165ade02ff5b1d755fdcac5b8292cf3ee26b04e85a8f41343e1a5d36dba72afc5c6731a3bc3ea49b6c2193'
 )
 
@@ -32,6 +32,7 @@ prepare() {
   cd "$srcdir"
   unzip upscayl-${pkgver}-linux.zip -x resources/128x128.png -d upscayl
   sed -i 's| --enable-features=UseOzonePlatform --ozone-platform=wayland||' upscayl/resources/org.upscayl.Upscayl.desktop
+  printf '%s\n' 'Icon=org.upscayl.Upscayl' >> "$_pkgname"/resources/org.upscayl.Upscayl.desktop
 }
 
 package() {
