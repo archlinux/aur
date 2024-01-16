@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=geometries
-_cranver=0.2.3
+_cranver=0.2.4
 pkgname=r-${_cranname,,}
 pkgdesc="Convert Between R Objects and Geometric Structures"
 url="https://cran.r-project.org/package=geometries"
@@ -23,7 +23,7 @@ optdepends=(
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("c88fe022ca0e67c932cedb058fe74105666a1a841328a89112fc02dbadee17d53403885516e53024ec7bec794f6d5df1c06fa561dfd90442060be02c88c742b3")
+b2sums=("0d7ad3395ed6709b025bceb5faed0a5e34fb83edcd66f4dddee9a2838822eccf414b9a2f9723771529fa0dd723b35e13698249fe5a62cc90f1510e7c82e2a961")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
