@@ -1,7 +1,7 @@
 pkgbase = xorg-xwayland-osu
 	pkgdesc = run X clients under wayland (patched specifically to run osu! under Wine correctly)
-	pkgver = 23.2.3
-	pkgrel = 1
+	pkgver = 23.2.4
+	pkgrel = 2
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
@@ -37,12 +37,12 @@ pkgbase = xorg-xwayland-osu
 	conflicts = xorg-xwayland
 	replaces = xorg-server-xwayland
 	replaces = xorg-xwayland
-	source = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-23.2.3.tar.xz
-	source = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-23.2.3.tar.xz.sig
+	source = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-23.2.4.tar.xz
+	source = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-23.2.4.tar.xz.sig
 	source = xwayland-vsync.diff
 	validpgpkeys = 67DC86F2623FC5FD4BB5225D14706DBE1E4B4540
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
-	sha512sums = 37198aa2f06313a0cb2add51cc78f81b26a42f2c9d55a0d3eecf958777107ea5560961c128f2d0af055f7460ba10fadb1b9050251c2c50f2251b40ab517e79cd
+	sha512sums = ac3ff208cbef5bbe4637c335cfda226489c93b0a3768f2f4fb0201c588485ede38262fbce77ef1425b3d2a0be61b6580df53341c7b95e6072c8b6371ad29d187
 	sha512sums = SKIP
 	sha512sums = ce461fde80aeddf1ed0b412e1b79486759e3981448ccbc1af45591aa1b80a094386f0ecb1aa5bfb68ab6f2169c0a1ab9e6517cb6bc04317290077ded2f8b78b6
 
