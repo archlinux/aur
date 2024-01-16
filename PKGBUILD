@@ -1,7 +1,7 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=gottet
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Falling blocks game'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt6-base')
 makedepends=('cmake' 'qt6-tools')
 source=("https://gottcode.org/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('9f594db87c7b6ce62f105578c100ce8dac62485c6d9b09be506166a1780092d0')
+sha256sums=('0fafb1f4e43a91bfc86c6948af986605d458ec618476b803b40d5d0841d43f1a')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" \
