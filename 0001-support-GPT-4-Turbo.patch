@@ -1,30 +1,29 @@
-From 8921efb9d2ec6f4ff1706c0e468c1455b7e8a109 Mon Sep 17 00:00:00 2001
+From 615ba589f310f8985e9e56a2449b9952ec45e84a Mon Sep 17 00:00:00 2001
 From: Liao Junxuan <mikeljx@126.com>
-Date: Tue, 12 Dec 2023 20:50:42 +0800
+Date: Tue, 16 Jan 2024 17:22:53 +0800
 Subject: [PATCH] support GPT-4-Turbo
 
 source: https://github.com/mckaywrigley/chatbot-ui/issues/1022#issuecomment-1814319276
 ---
- types/openai.ts | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ types/openai.ts | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/types/openai.ts b/types/openai.ts
-index d404350..4ba8810 100644
+index 8e423da..32f0ff5 100644
 --- a/types/openai.ts
 +++ b/types/openai.ts
-@@ -12,6 +12,9 @@ export enum OpenAIModelID {
-   GPT_3_5_AZ = 'gpt-35-turbo',
+@@ -8,6 +8,8 @@ export interface OpenAIModel {
+ export enum OpenAIModelID {
+   GPT_3_5 = 'gpt-3.5-turbo',
    GPT_4 = 'gpt-4',
-   GPT_4_32K = 'gpt-4-32k',
 +  GPT_4_32K_0613 = 'gpt-4-32k-0613',
 +  GPT_4_128K = 'gpt-4-1106-preview'
-+  
  }
  
  // in case the `DEFAULT_MODEL` environment variable is not set or set to an unsupported model
-@@ -42,4 +45,16 @@ export const OpenAIModels: Record<OpenAIModelID, OpenAIModel> = {
-     maxLength: 96000,
-     tokenLimit: 32000,
+@@ -26,4 +28,16 @@ export const OpenAIModels: Record<OpenAIModelID, OpenAIModel> = {
+     maxLength: 24000,
+     tokenLimit: 8000,
    },
 +  [OpenAIModelID.GPT_4_32K_0613]: {
 +    id: OpenAIModelID.GPT_4_32K_0613,

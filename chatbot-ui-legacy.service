@@ -1,0 +1,44 @@
+[Unit]
+Description=An open source ChatGPT UI (lecacy version)
+After=network.target
+
+[Service]
+Type=exec
+
+Environment=NODE_ENV=production
+
+User=chatbot-ui
+Group=chatbot-ui
+
+WorkingDirectory=/usr/share/webapps/chatbot-ui-legacy-git
+ExecStart=/usr/bin/node node_modules/.bin/next start
+
+CapabilityBoundingSet=
+NoNewPrivileges=true
+PrivateDevices=true
+RemoveIPC=true
+LockPersonality=true
+
+ProtectControlGroups=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=noaccess
+
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+SystemCallArchitectures=native
+SystemCallFilter=@system-service @pkey
+
+[Install]
+WantedBy=multi-user.target
+
