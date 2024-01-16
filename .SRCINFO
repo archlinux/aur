@@ -4,7 +4,7 @@ pkgbase = feeluown-netease-git
 	pkgrel = 1
 	url = https://github.com/feeluown/feeluown-netease
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-pip
@@ -19,4 +19,3 @@ pkgbase = feeluown-netease-git
 	sha512sums = SKIP
 
 pkgname = feeluown-netease-git
-
