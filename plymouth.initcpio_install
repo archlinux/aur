@@ -8,16 +8,12 @@ build() {
   local PLYMOUTH_IMAGE_DIR=$(sed -n "s/^ *ImageDir *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
   local PLYMOUTH_FONT_NAME=$(sed -n "s/^ *Font *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
   local PLYMOUTH_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_FONT_NAME")
-  local PLYMOUTH_TITLE_FONT_NAME=$(sed -n "s/^ *TitleFont *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
-  local PLYMOUTH_TITLE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_TITLE_FONT_NAME")
   local PLYMOUTH_MONOSPACE_FONT_NAME=$(sed -n "s/^ *MonospaceFont *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
 
   if [ -n "$PLYMOUTH_MONOSPACE_FONT_NAME" ]; then
     local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_FONT_NAME")
-    local PLYMOUTH_MONOSPACE_BOLD_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_FONT_NAME:weight=bold")
   else
     local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} monospace)
-    local PLYMOUTH_MONOSPACE_BOLD_FONT_PATH=$(fc-match -f %{file} monospace:weight=bold)
   fi
 
   # exit if no module exists on the system for the theme
@@ -34,7 +30,6 @@ build() {
     '/usr/lib/plymouth/text.so' \
     '/usr/lib/plymouth/details.so' \
     '/usr/lib/plymouth/label-freetype.so' \
-    '/usr/lib/plymouth/label-pango.so' \
     '/usr/lib/plymouth/renderers/drm.so' \
     '/usr/lib/plymouth/renderers/frame-buffer.so' \
     "/usr/lib/plymouth/$PLYMOUTH_MODULE_NAME.so"
@@ -45,11 +40,15 @@ build() {
     '/usr/share/plymouth/themes/details/details.plymouth' \
     '/usr/share/pixmaps/archlinux-logo.png' \
     '/usr/share/plymouth/plymouthd.defaults' \
-    '/etc/plymouth/plymouthd.conf' \
-    "$PLYMOUTH_FONT_PATH" \
-    "$PLYMOUTH_TITLE_FONT_PATH" \
-    "$PLYMOUTH_MONOSPACE_FONT_PATH" \
-    "$PLYMOUTH_MONOSPACE_BOLD_FONT_PATH"
+    '/etc/plymouth/plymouthd.conf'
+
+  # copy fonts
+  if [ -n "$PLYMOUTH_FONT_PATH" ]; then
+    add_file "$PLYMOUTH_FONT_PATH" '/usr/share/fonts/Plymouth.ttf'
+  fi
+  if [ -n "$PLYMOUTH_MONOSPACE_FONT_PATH" ]; then
+    add_file "$PLYMOUTH_MONOSPACE_FONT_PATH" '/usr/share/fonts/Plymouth-monospace.ttf'
+  fi
 
   # copy xkb info and x11 locale
   if [ -d '/usr/share/X11/locale' ]; then
@@ -59,18 +58,6 @@ build() {
     add_full_dir '/usr/share/X11/xkb'
   fi
 
-  # according to upstream, plymouth expects these files and symlinks to be there, so...
-  local DEFAULT_FONT=$(fc-match -f %{file})
-  if [ ! -z $"DEFAULT_FONT" ]; then
-    add_file "$DEFAULT_FONT"
-    add_symlink '/usr/share/fonts/Plymouth.ttf' "$DEFAULT_FONT"
-  fi
-  local DEFAULT_MONOSPACE_FONT=$(fc-match -f %{file} monospace)
-  if [ ! -z $"DEFAULT_MONOSPACE_FONT" ]; then
-    add_file "$DEFAULT_MONOSPACE_FONT"
-    add_symlink '/usr/share/fonts/Plymouth-monospace.ttf' "$DEFAULT_MONOSPACE_FONT"
-  fi
-  
   # copy configured theme
   if [ -d "$PLYMOUTH_THEME_DIR" ]; then
     add_full_dir "$PLYMOUTH_THEME_DIR"

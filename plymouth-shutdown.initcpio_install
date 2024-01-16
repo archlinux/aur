@@ -1,0 +1,45 @@
+#!/bin/bash
+
+build() {
+  # get default theme settings
+  local PLYMOUTH_THEME_NAME=$(plymouth-set-default-theme)
+  local PLYMOUTH_THEME_DIR="/usr/share/plymouth/themes/$PLYMOUTH_THEME_NAME"
+  local PLYMOUTH_FONT_NAME=$(sed -n "s/^ *Font *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_FONT_NAME")
+  local PLYMOUTH_TITLE_FONT_NAME=$(sed -n "s/^ *TitleFont *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_TITLE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_TITLE_FONT_NAME")
+  local PLYMOUTH_MONOSPACE_FONT_NAME=$(sed -n "s/^ *MonospaceFont *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+
+  if [ -n "$PLYMOUTH_MONOSPACE_FONT_NAME" ]; then
+    local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_FONT_NAME")
+    local PLYMOUTH_MONOSPACE_BOLD_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_FONT_NAME:weight=bold")
+  else
+    local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} monospace)
+    local PLYMOUTH_MONOSPACE_BOLD_FONT_PATH=$(fc-match -f %{file} monospace:weight=bold)
+  fi
+
+  # copy helper binary
+  if [ -f '/lib/plymouth/plymouthd-fd-escrow' ]; then
+    add_file '/lib/plymouth/plymouthd-fd-escrow'
+  fi
+
+  # copy fonts
+  if [ -n "$PLYMOUTH_FONT_PATH" ]; then
+    add_file "$PLYMOUTH_FONT_PATH"
+  fi
+  if [ -n "$PLYMOUTH_TITLE_FONT_PATH" ]; then
+    add_file "$PLYMOUTH_TITLE_FONT_PATH"
+  fi
+  if [ -n "$PLYMOUTH_MONOSPACE_FONT_PATH" ]; then
+    add_file "$PLYMOUTH_MONOSPACE_FONT_PATH"
+    add_file "$PLYMOUTH_MONOSPACE_BOLD_FONT_PATH"
+  fi
+}
+
+help() {
+  cat <<HELPEOF
+This hook includes fonts and a helper binary in shutdown initramfs for
+Plymouth. This is needed to display the console messages during shutdown and to
+hold on to the pixel-displays fds until the end.
+HELPEOF
+}

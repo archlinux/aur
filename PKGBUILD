@@ -5,13 +5,13 @@
 
 pkgname=plymouth-git
 _pkgname=plymouth
-pkgver=23.360.11.r41.g66162119
+pkgver=24.004.60.r11.g07662e54
 pkgrel=1
 pkgdesc='Graphical boot splash screen (git version)'
 arch=('i686' 'x86_64')
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
 license=('GPL2')
-depends=('bash' 'cantarell-fonts' 'libdrm' 'libevdev' 'pango' 'systemd-libs' 'libxkbcommon')
+depends=('bash' 'cantarell-fonts' 'fontconfig' 'libdrm' 'libevdev' 'libx11' 'libxkbcommon' 'systemd-libs')
 makedepends=('gtk3' 'docbook-xsl' 'git' 'meson')
 optdepends=('gtk3: x11 renderer')
 provides=('plymouth')
@@ -22,12 +22,16 @@ source=("git+https://gitlab.freedesktop.org/$_pkgname/$_pkgname.git"
        'plymouth.initcpio_hook'
        'plymouth.initcpio_install'
        'plymouthd.conf.patch'
+       'plymouth-shutdown.initcpio_install'
+       'mkinitcpio-generate-shutdown-ramfs-plymouth.conf'
 )
 
 sha256sums=('SKIP'
             'de852646e615e06d4125eb2e646d0528d1e349bd9e9877c08c5d32c43d288b6f'
-            '907e55c7adf6701aa7bcd92c361ef9c1cd936e4f88d4616d81d1a714edc93a6b'
-            'cfd0c754437d582bbc8d2cbb545a777b00b5c77a6302522577e9d88b169e2f59')
+            '8aed4a234cdb4b9556e77f5949e7d18013746a27aab49e4b0aa87d33c6665a8d'
+            'cfd0c754437d582bbc8d2cbb545a777b00b5c77a6302522577e9d88b169e2f59'
+            '2e63bd2460ce4ca56b9a407802c35ce69072cda40679b42889d692adf2fc656c'
+            '04af86a0ec83fc92d7339e1a7fcc0d55b86b95797a1a5f1a3b8d850996a3926c')
 
 pkgver() {
   cd $_pkgname
@@ -70,6 +74,10 @@ package() {
   # Install mkinitcpio hook
   install -Dm644 $srcdir/plymouth.initcpio_hook "$pkgdir/usr/lib/initcpio/hooks/$_pkgname"
   install -Dm644 $srcdir/plymouth.initcpio_install "$pkgdir/usr/lib/initcpio/install/$_pkgname"
+  
+  # Install mkinitcpio shutdown hook and systemd drop-in snippet
+  install -Dm644 plymouth-shutdown.initcpio_install "$pkgdir/usr/lib/initcpio/install/$pkgname-shutdown"
+  install -Dm644 mkinitcpio-generate-shutdown-ramfs-plymouth.conf "$pkgdir/usr/lib/systemd/system/mkinitcpio-generate-shutdown-ramfs.service.d/plymouth.conf"
   
   # Install logo for the spinner theme
   install -Dm644 $srcdir/archlinux-logo-text-dark.png "$pkgdir/usr/share/$_pkgname/themes/spinner/watermark.png"
