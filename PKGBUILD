@@ -1,4 +1,5 @@
 # Maintainer: Jamie Smith <aur at jsmith dot dev>
+# Contributor: Dang Mai <contact at dangmai dot net>
 
 pkgname=sf-cli
 pkgver="2.23.20"
@@ -22,7 +23,6 @@ package() {
     install -dm 755 "${pkgdir}"/usr/bin
     sf_dir="sf"
     cp -a "${sf_dir}" "${pkgdir}"/opt/sf-cli
-    ln -s /opt/sfdx-cli/bin/sfdx "${pkgdir}"/usr/bin/sfdx
     ln -s /opt/sfdx-cli/bin/sf "${pkgdir}"/usr/bin/sf
 }
 sha256sums_x86_64=("fbbe86be0471d5e9f3c1284d84eccfe5a828084f9d68217d01239baa4b96b22e")
