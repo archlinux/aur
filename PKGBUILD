@@ -1,9 +1,11 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: fossdd <fossdd@pwned.life>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: malacology <guoyizhang at malacology dot net>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=gotosocial
-pkgver=0.13.0
+pkgname=gotosocial-git
+_pkgname=${pkgname%-git}
+pkgver=r1546.c5eced5fd
 pkgrel=1
 pkgdesc='ActivityPub social network server written in Golang'
 arch=('x86_64')
@@ -37,9 +39,8 @@ backup=(
   'etc/gotosocial/template/tag.tmpl'
   'etc/gotosocial/template/thread.tmpl'
 )
-_commit='f4fcffc8b56ef73c184ae17892b69181961c15c7'
 source=(
-  "$pkgname::git+https://github.com/superseriousbusiness/gotosocial#commit=$_commit"
+  "$_pkgname::git+https://github.com/superseriousbusiness/gotosocial"
   'sysusers.conf'
   'tmpfiles.conf'
   'use-fhs-directories.patch'
@@ -54,16 +55,15 @@ b2sums=('SKIP'
         '9edd4520fb99856feb82d01935588add7f805aa180f2ed0fe169cb26576bc2e1d2c1e6ab11604d977cec6a4ad8f1d5be1413e1a366de59b89c5b869136538f8c')
 
 pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   # create directory for build output
-  mkdir build
+  mkdir -p build
 
   # download dependencies
   export GOPATH="${srcdir}"
@@ -74,7 +74,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   # set Go flags
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -105,20 +105,20 @@ build() {
 
 package() {
   # systemd integration
-  install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -vDm644 "$pkgname/example/$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
+  install -vDm644 "$_pkgname/example/$_pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
 
-  cd "$pkgname"
+  cd "$_pkgname"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/bin" "build/$pkgname"
+  install -vDm755 -t "$pkgdir/usr/bin" "build/$_pkgname"
 
   # configuration
-  install -vDm640 -t "$pkgdir/etc/$pkgname" example/config.yaml
+  install -vDm640 -t "$pkgdir/etc/$_pkgname" example/config.yaml
 
   # web frontend
-  install -vd "$pkgdir/usr/share/$pkgname"
-  cp -vr web/assets/* "$pkgdir/usr/share/$pkgname"
-  cp -vr web/template "$pkgdir/etc/$pkgname"
+  install -vd "$pkgdir/usr/share/$_pkgname"
+  cp -vr web/assets/* "$pkgdir/usr/share/$_pkgname"
+  cp -vr web/template "$pkgdir/etc/$_pkgname"
 }
