@@ -1,11 +1,11 @@
-# Maintainer: Lessaire Mightyhigh <archuserrepo at pink dot horse>
+# Prev Maintainer: Xaekai <archuserrepo at pink dot horse>
 # Prev Maintainer: Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
 
 pkgname=grml-iso
-pkgver=2022.11
+pkgver=2022.11-1
 _isover="64-full_$pkgver"
 pkgrel=1
-pkgdesc="add the grml ISO image to the grub2 boot menu"
+pkgdesc="provides the grml ISO image for usage by grml-rescueboot"
 url="http://wiki.grml.org/doku.php?id=rescueboot"
 arch=('any')
 license=('GPL')
