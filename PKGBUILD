@@ -16,7 +16,7 @@
 set -u
 _pkgname='cpdf'
 pkgname="${_pkgname}"
-pkgver='2.6.1'
+pkgver='2.6.2'
 pkgrel=1
 pkgdesc='Coherent Graphics ## to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers'
 arch=('x86_64' 'i686')
@@ -54,8 +54,8 @@ else
   pkgdesc="${pkgdesc//##/cpdf}"
 fi
 unset _srcfile _srcdirname
-md5sums=('3b0937272b79c815f7b582268c5a73ac')
-sha256sums=('aa62322d7f4d8ef4b1cccbc4ddfb6ee40a4643f81c6dee59161daa88d27ef3b5')
+md5sums=('d4fc82ac386963f5a0ca5b638fcb8e49')
+sha256sums=('493bb1d739ff5863f02a95139244184d033e24459746f2f565f57c726a2417f6')
 
 _pkgver_disabled() {
   set -u
