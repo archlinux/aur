@@ -1,13 +1,12 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 _name=google-cloud-errors
-_v=1.3.1
 _r=1
-_gem=$_name-$_v.gem
 
 pkgname=ruby-$_name
-pkgver=$_v
+pkgver=1.3.1
 pkgrel=$_r
+_gem=$_name-$pkgver.gem
 pkgdesc="google-cloud-errors defines error classes for google-cloud-ruby."
 arch=('any')
 depends=(
@@ -24,5 +23,5 @@ package() {
   local _gemdir="$pkgdir/$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$_gemdir" "$_gem"
   rm "$_gemdir/cache/$_gem"
-  install -D -m644 "$_gemdir/gems/$_name-$_v/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 "$_gemdir/gems/$_name-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
