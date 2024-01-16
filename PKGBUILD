@@ -3,20 +3,20 @@
 
 pkgname='slxfig-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver='0.2.0-137'
+_pkgver=0.2.0-138
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel='3'
+pkgrel=1
 pkgdesc='Xfig-based publication quality plotting package for the S-Lang interpreter (development snapshot)'
 arch=('aarch64' 'x86_64')
 url='https://jedsoft.org/snapshots/'
-license=('GPL')
+license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
 depends=('glibc' 'slang')
 provides=('slxfig')
 conflicts=('slxfig')
 options=('lto' '!makeflags')
 source=("${url}${_pkgname}-$_prever.tar.gz")
-md5sums=('46775f193f6ad206e554176b23a13c1c')               # Taken from $url
+md5sums=('254b43911f88cd2c02d81c7eb982f085')               # Taken from $url
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 changelog="$pkgname.changelog"
 
@@ -53,10 +53,10 @@ package() {
 }
 
 sha256sums=(
-  '8c75f674f57cd190e1d7ac8f02f90ea02acddc865b0f6cd5cf35f3d03de18084'
+  '7820457eb5961ef6619cf0319934f2d4e37bdf7bd195a759be1280510beaf0f1'
 )
 b2sums=(
-  '688b46643506e86e537592c5b3a4a471014a70c46f0ea4c063cfe5a083283751008bbb48e60c96d0762b7140f74f437f8463adeb91d0772c68bfdacf5908a422'
+  '8819329e3ec2da03e690a0b3c85369b33210b2a95e5a4480a536148593790b83a0e0f0c301ee962ddd55ec9bb01034fb757c8aefc6dd048a7051702d05200c89'
 )
 
 # eof
