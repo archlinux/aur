@@ -2,8 +2,8 @@
 # Contributor: Luna Jernberg <lunajernberg@gnome.org>
 
 pkgname=tuba
-pkgver=0.6.1
-pkgrel=0.2
+pkgver=0.6.2
+pkgrel=0.1
 pkgdesc='Browse the Fediverse'
 arch=(
   aarch64 #ALARM
@@ -67,14 +67,14 @@ optdepends=(
   'hunspell-fr: French (classic/modern) spellchecking dictionaries'
   'hunspell-he: Hebrew spellchecking dictionary'
   'hunspell-hu: Hungarian spellchecking dictionary'
-  'hunspell-it: Italian dictionary for Hunspell'
+  'hunspell-it: Italian spellchecking dictionary'
   'hunspell-nl: Dutch spellchecking dictionaries'
-  'hunspell-pl: Polish dictionary for Hunspell'
-  'hunspell-ro: Romanian dictionary for Hunspell'
-  'hunspell-ru: Russian dictionary for Hunspell'
+  'hunspell-pl: Polish spellchecking dictionary'
+  'hunspell-ro: Romanian spellchecking dictionary'
+  'hunspell-ru: Russian spellchecking dictionary'
 )
 
-_commit=8a4708d699e734d17305e9b08c08e5d7c32a1ad0 # tags/0.6.1^0
+_commit=e4b2ebe6795de53d604373a31b36f1953cba3fe4 # tags/0.6.2^0
 validpgpkeys=(
   ## curl -sS https://github.com/GeopJr.gpg | gpg --import -
   '04A92A61E5CE5342F40E48DCFE5185F095BFC8C9' #Evangelos Paterakis <evan@geopjr.dev>
@@ -91,10 +91,6 @@ pkgver() {
 
 prepare() {
   cd Tuba
-
-  # Include fix for datetime check
-  # https://github.com/GeopJr/Tuba/commit/4055a4129e095848aea523b1bc1851f646353136
-  git cherry-pick --no-commit 4055a4129e095848aea523b1bc1851f646353136
 }
 
 build() {

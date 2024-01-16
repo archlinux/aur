@@ -1,7 +1,7 @@
 pkgbase = tuba
 	pkgdesc = Browse the Fediverse
-	pkgver = 0.6.1
-	pkgrel = 0.2
+	pkgver = 0.6.2
+	pkgrel = 0.1
 	url = https://tuba.geopjr.dev/
 	arch = aarch64
 	arch = armv7h
@@ -56,12 +56,12 @@ pkgbase = tuba
 	optdepends = hunspell-fr: French (classic/modern) spellchecking dictionaries
 	optdepends = hunspell-he: Hebrew spellchecking dictionary
 	optdepends = hunspell-hu: Hungarian spellchecking dictionary
-	optdepends = hunspell-it: Italian dictionary for Hunspell
+	optdepends = hunspell-it: Italian spellchecking dictionary
 	optdepends = hunspell-nl: Dutch spellchecking dictionaries
-	optdepends = hunspell-pl: Polish dictionary for Hunspell
-	optdepends = hunspell-ro: Romanian dictionary for Hunspell
-	optdepends = hunspell-ru: Russian dictionary for Hunspell
-	source = git+https://github.com/GeopJr/Tuba.git#commit=8a4708d699e734d17305e9b08c08e5d7c32a1ad0?signed
+	optdepends = hunspell-pl: Polish spellchecking dictionary
+	optdepends = hunspell-ro: Romanian spellchecking dictionary
+	optdepends = hunspell-ru: Russian spellchecking dictionary
+	source = git+https://github.com/GeopJr/Tuba.git#commit=e4b2ebe6795de53d604373a31b36f1953cba3fe4?signed
 	validpgpkeys = 04A92A61E5CE5342F40E48DCFE5185F095BFC8C9
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha256sums = SKIP
