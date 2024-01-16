@@ -1,8 +1,8 @@
 # Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
 pkgname=python-asyncclick
 _name=${pkgname#python-}
-pkgver=8.1.7
-_tagname=8.1.7.0+async
+pkgver=8.1.7.1
+_tagname=$pkgver
 pkgrel=1
 pkgdesc="Composable command line interface toolkit, async version"
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=('python-trio: Alternative async event loop'
             'python-curio: Alternative async event loop')
 options=(!strip)
 source=("$_name-$_tagname.tar.gz::$url/archive/refs/tags/$_tagname.tar.gz")
-sha256sums=('5d9efd46d994785ccf80d0b04f87dfcab2885ce91d44a5c1b2810277214da482')
+sha256sums=('d8a3ad00dc26f68193d434e07672b860049b8812039ca52d3c6c65eeec2a7ae4')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
