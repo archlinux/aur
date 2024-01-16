@@ -1,7 +1,7 @@
 pkgbase = scx-scheds
 	pkgdesc = Sched_ext schedulers
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sched-ext/scx
 	arch = x86_64
 	license = GPL-2.0-only
@@ -17,6 +17,8 @@ pkgbase = scx-scheds
 	depends = zlib
 	options = !lto
 	source = https://github.com/sched-ext/scx/archive/refs/tags/v0.1.5.tar.gz
+	source = 0001-Add-systemd-services-for-scx-schedulers.patch
 	sha512sums = caf969be909f2dfca7b8b82d528a50a147029e4ac788825ece3adad67fef41c6e43a37e74316238bcc13c1357a63503c940c76aeefa2e1e4f6787c1496833d05
+	sha512sums = cff5a6c076c13e935c86fb09101d4306e1e13a1436b371006201e4b725bf9f15837ba61bfe704c7acbaf1f4c6f4114a72cd6414c834014763f2de935a1d1cd31
 
 pkgname = scx-scheds
