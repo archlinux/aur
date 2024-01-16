@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl-git
 _pkgname=Upscayl
-pkgver=2.9.5.r4.g99b9206
+pkgver=2.9.7.r1.gb8f0b6f
 pkgrel=1
 _electronversion=27
 _nodeversion=18
@@ -52,7 +52,9 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
-    sed -e '129,167d;/"zip",/d;/"deb",/d;/"rpm"/d;s|"AppImage",|"AppImage"|g' -e '27i\  "repository": "https://github.com/TGS963/upscayl",' -i package.json
+    sed -e '129,167d;/"zip",/d;/"deb",/d;/"rpm"/d;s|"AppImage",|"AppImage"|g' \
+        -e '27i\  "repository": "https://github.com/TGS963/upscayl",' \
+        -i package.json
     npm install
     npm run dist:linux
     sed "s|${pkgname%-git}-run|${pkgname%-git} --no-sandbox|g;s|org.${pkgname%-git}.${_pkgname}|${pkgname%-git}|g" \

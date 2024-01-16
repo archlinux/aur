@@ -1,6 +1,6 @@
 pkgbase = upscayl-git
 	pkgdesc = Free and Open Source AI Image Upscaler for Linux, MacOS and Windows built with Linux-First philosophy.
-	pkgver = 2.9.5.r4.g99b9206
+	pkgver = 2.9.7.r1.gb8f0b6f
 	pkgrel = 1
 	url = https://upscayl.org/
 	arch = x86_64
