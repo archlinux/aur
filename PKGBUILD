@@ -4,7 +4,7 @@
 # Contributor: Yegorius <yegorius@domic.us>
 
 pkgname=teamcity
-pkgver=2023.11
+pkgver=2023.11.1
 pkgrel=1
 pkgdesc='Continuous integration server from JetBrains'
 arch=('any')
@@ -12,13 +12,13 @@ url="http://www.jetbrains.com/teamcity/"
 license=('custom:JetBrains TeamCity')
 depends=('java-runtime-headless')
 install="$pkgname.install"
-source=('https://download.jetbrains.com/teamcity/TeamCity-2023.11.tar.gz'
+source=("https://download.jetbrains.com/teamcity/TeamCity-$pkgver.tar.gz"
         'teamcity-agent.service'
         'teamcity-server.service'
         'teamcity-sysusers.conf'
         'teamcity-tmpfiles.conf'
         'teamcity.conf')
-sha256sums=('4a7f9784bcbc1aa0eb86851e8f79b8f652ef3c6559911062d5a8b81720572b5f'
+sha256sums=('d529ffbbb7f33e669e87f3c525d807a2e0ce8385c679060e20a3cce03d8c2a9f'
             'abe89ea6be4cb54750568f27c2173cd1b46b49b4aac0cc727d3604b1178cd8fb'
             '59e68ab2524e66f7c074ac4215a0449ed9242160946ef3364d378e015525e749'
             'b74128251ac1943ff48956bb2849731423b712d078ec76f1a8959532f0161c91'
