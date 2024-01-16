@@ -4,8 +4,8 @@
 _pkgname="mitsuba"
 _pkgver="0.6.0"
 pkgname="${_pkgname}-git"
-pkgver=0.6.0.r2172.cfeb7766
-pkgrel=3
+pkgver=0.6.0.r2173.10af06f3
+pkgrel=1
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
@@ -19,7 +19,7 @@ source=("${_pkgname}::git+https://github.com/mitsuba-renderer/mitsuba.git"
         "boost_107400.patch"
         )
 sha256sums=('SKIP'
-            '6fc5513d95182a84209b4bbdce8cd2eee3bdf25aadd5da35c6b246479c4c8939'
+            '1a28b2639a80f4e426a040b69027331131a5b69bd2d3066fcc1e002f39d13eae'
             'c4c571653c86e7c21d702f1f5cb9695edc32bf9fc05f6246e67a660693a32322')
 
 pkgver() {
