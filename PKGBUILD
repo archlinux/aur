@@ -5,7 +5,7 @@
 
 _pkgname=zfs
 _git_repo=https://github.com/openzfs/zfs.git
-_git_branch="$(/usr/bin/git ls-remote -h --sort=v:refname "${_git_repo}" 'zfs-*-staging' | tail -n 1)"
+_git_branch="$(/usr/bin/git ls-remote -h --sort=-v:refname "${_git_repo}" 'zfs-*-staging' | head -n 1)"
 _git_branch=${_git_branch##*/}
 _staging_ver=${_git_branch#zfs-}
 _staging_ver=${_staging_ver%-staging}
@@ -25,14 +25,6 @@ source=("${_pkgname}::git+${_git_repo}#branch=${_git_branch}"
 sha256sums=('SKIP'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5')
 
-pkgver() {
-    cd "${srcdir}/${_pkgname}"
-
-    METAVER=$(grep -F Version "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
-    METAVER=${METAVER##*:}
-    printf "%s.r%s.g%s" "${METAVER}" "$(git rev-list zfs-${METAVER}..HEAD --count)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
     cd "${srcdir}/${_pkgname}"
 
@@ -48,6 +40,14 @@ prepare() {
 }" configure.ac
 }
 
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+
+    METAVER=$(grep -F Version "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
+    METAVER=${METAVER##*:}
+    printf "%s.r%s.g%s" "${METAVER}" "$(git rev-list zfs-${METAVER}..HEAD --count)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
     cd "${srcdir}/${_pkgname}"
 
@@ -57,7 +57,8 @@ build() {
     autoreconf -fi
 
     ./scripts/dkms.mkconf -n ${_pkgname} -v "${pkgver}" -f dkms.conf
-    ./scripts/make_gitrev.sh include/zfs_gitrev.h
+     printf '#define\tZFS_META_GITREV "zfs-%s"\n' "${pkgver}" > include/zfs_gitrev.h
+
 }
 
 package() {
