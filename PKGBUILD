@@ -3,7 +3,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=otr-git
 _pkgname=otr
-pkgver=0.7.1
+pkgver=0.7.1.r10.gf3311cc
 pkgrel=1
 pkgdesc="Decode and cut video files from Online TV Recorder (OTR)"
 arch=(
@@ -18,33 +18,35 @@ md5sums=(SKIP)
 conflicts=(otr)
 depends=(mkvtoolnix-cli)
 makedepends=(  
-    git
-    cargo
+  git
+  cargo
 )
 
 pkgver() {
-    cd "$srcdir/$_pkgname" || return
-    ( set -o pipefail
-        git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  cd "$srcdir/$_pkgname" || return
+  (
+    set -o pipefail
+    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname" || return
-    cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cd "$srcdir/$_pkgname" || return
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"  
 }
 
 build() {
-    cd "$srcdir/$_pkgname" || return
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+  cd "$srcdir/$_pkgname" || return
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  make BUILD_FLAGS="--frozen"
 }
 
 package() {
-    cd "$srcdir/$_pkgname" || return
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
-    install -Dm644 resources/otr.desktop "$pkgdir/usr/share/applications/otr.desktop"
-    install -Dm644 resources/otrkey_mime.xml "$pkgdir/usr/share/mime/packages/otrkey_mime.xml"
+  cd "$srcdir/$_pkgname" || return
+  make DESTDIR="$pkgdir" install
+  install -Dm644 resources/otr.desktop "$pkgdir/usr/share/applications/otr.desktop"
+  install -Dm644 resources/otrkey_mime.xml "$pkgdir/usr/share/mime/packages/otrkey_mime.xml"
 }
