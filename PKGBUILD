@@ -14,7 +14,10 @@
 # reuse existing PGO profile
 : ${_build_pgo_reuse:=true}
 
-# use mozilla-central repo, instead of mozilla-unified
+# package debug symbols for upload
+: ${_build_symbols:=false}
+
+# make latest mozilla-central nightly revision
 : ${_build_nightly:=false}
 
 # target wayland only
@@ -30,7 +33,7 @@
 ## basic info
 pkgname="firefox${_pkgtype:-}"
 _pkgname=firefox-nightly
-pkgver=123.0a1+20240113.1+h23a77d3c25d7
+pkgver=123.0a1+20240114.1+hc9d8485f858a
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -47,8 +50,6 @@ depends=(
   libvpx
   libwebp
   mime-types
-  nspr-hg
-  nss-hg
   pipewire
   ttf-font
   zlib
@@ -85,6 +86,13 @@ optdepends=(
   'xdg-desktop-portal: Screensharing with Wayland'
 )
 
+if [[ "${_build_pgo::1}" == "t" ]] ; then
+  makedepends+=(
+    weston
+    xwayland-run # AUR
+  )
+fi
+
 if [[ "${_build_nightly::1}" == "t" ]] ; then
   pkgdesc+=" - nightly"
 else
@@ -102,17 +110,20 @@ else
   )
 fi
 
-if [[ "${_build_pgo::1}" == "t" ]] ; then
-  makedepends+=(
-    weston
-    xwayland-run # AUR
+if [[ "${_build_hg::1}" == "t" ]] ; then
+  depends+=(
+    nspr-hg
+    nss-hg
   )
 fi
 
-provides=('firefox-nightly')
-conflicts=('firefox-nightly')
+if [[ "$pkgname" != "firefox-nightly" ]] ; then
+  provides=('firefox-nightly')
+  conflicts=('firefox-nightly')
+fi
 
 options=(
+  !debug
   !emptydirs
   !lto
   !makeflags
@@ -120,27 +131,69 @@ options=(
 )
 
 if [[ "${_build_nightly::1}" == "t" ]] ; then
+  _get_version_info() {
+    local _info_url="https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
+    local _filename=$(
+      curl -Ssf "$_info_url/" | grep linux-x86_64\.txt \
+        | sed -E 's&^.*href=".*/(firefox-.*\.linux-x86_64\.txt)".*$&\1&'
+    )
+    local _response=$(curl -Ssf "$_info_url/$_filename")
+    _version=$(printf '%s' "$_filename" | sed -E 's&^firefox-([0-9]+\.[0-9].*)\.en-US\.linux-x86_64\.txt$&\1&')
+    _date=$(printf '%s' "$_response" | head -1 | sed -E 's&^([0-9]{8})([0-9]*)$&\1.\2&')
+    _revision=$(printf '%s' "$_response" | tail -1 | sed -E 's&^.*/rev/([a-f0-9]+)$&\1&')
+  }
+  _get_version_info
+
   _repo="https://hg.mozilla.org/mozilla-central"
+
+  source+=("hg+$_repo#revision=$_revision")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    printf '%s+%s+h%s' "${_version:?}" "${_date::11}" "${_revision::9}"
+  }
 else
   _repo="https://hg.mozilla.org/mozilla-unified"
+
+  source+=("hg+$_repo")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    cd "${_repo##*/}"
+
+    local version=$(<browser/config/version_display.txt)
+    local date=$(date +%Y%m%d) # Without TZ=UTC, to match systemd timer
+    local counter=1
+    local rev=$(hg id -i -r. | sed 's/+$//')
+
+    local last_rev=${pkgver##*+h} tmp=${pkgver#*+}; tmp=${tmp%+*}
+    local last_date=${tmp%.*} last_counter=${tmp#*.}
+    if [[ $date == $last_date ]]; then
+      if [[ $rev == $last_rev ]]; then
+        counter=$last_counter
+      else
+        counter=$((last_counter + 1))
+      fi
+    fi
+
+    echo $version+$date.$counter+h$rev
+  }
 fi
 
-source=(
-  hg+$_repo
+source+=(
   $_pkgname.desktop
   identity-icons-brand.svg
   firefox-install-dir.patch
+)
+sha256sums+=(
+  '022e9329fdb4af6267ad32a1398a9ae94a90cbb1e80dcf63e8b19e95490e7a35'
+  'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
+  'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f'
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
-)
-sha256sums=(
-  'SKIP'
-  '022e9329fdb4af6267ad32a1398a9ae94a90cbb1e80dcf63e8b19e95490e7a35'
-  'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-  'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f'
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -154,27 +207,6 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 # get your own set of keys. Feel free to contact heftig@archlinux.org for
 # more information.
 _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
-
-pkgver() {
-  cd "${_repo##*/}"
-
-  local version=$(<browser/config/version_display.txt)
-  local date=$(date +%Y%m%d) # Without TZ=UTC, to match systemd timer
-  local counter=1
-  local rev=$(hg id -i -r. | sed 's/+$//')
-
-  local last_rev=${pkgver##*+h} tmp=${pkgver#*+}; tmp=${tmp%+*}
-  local last_date=${tmp%.*} last_counter=${tmp#*.}
-  if [[ $date == $last_date ]]; then
-    if [[ $rev == $last_rev ]]; then
-      counter=$last_counter
-    else
-      counter=$((last_counter + 1))
-    fi
-  fi
-
-  echo $version+$date.$counter+h$rev
-}
 
 prepare() {
   mkdir mozbuild
@@ -219,8 +251,6 @@ ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System Libraries
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-webp
 ac_add_options --with-system-libevent
@@ -251,6 +281,13 @@ END
     echo >>../mozconfig "ac_add_options --enable-default-toolkit=cairo-gtk3-wayland-only"
   else
     echo >>../mozconfig "ac_add_options --enable-default-toolkit=cairo-gtk3-x11-wayland"
+  fi
+
+  if [[ "${_build_hg::1}" == "t" ]] ; then
+    cat >>../mozconfig <<END
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+END
   fi
 }
 
@@ -424,11 +461,14 @@ ObjectPath=/org/mozilla/${_pkgname//-/}/SearchProvider
 Version=2
 END
 
-  export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
-  if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
-    make -C obj uploadsymbols
-  else
-    cp -fvt "$startdir" obj/dist/*crashreporter-symbols.zip
+  # Package debug symbols for upload
+  if [[ "${_build_symbols::1}" == "t" ]] ; then
+    export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
+    if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
+      make -C obj uploadsymbols
+    else
+      cp -fvt "$startdir" obj/dist/*crashreporter-symbols.zip
+    fi
   fi
 }
 
