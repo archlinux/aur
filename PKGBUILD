@@ -1,11 +1,11 @@
 # Maintainer: Whyme Lyu <callme5long@gmail.com>
 pkgname=p3wm
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Three-way merge .pacnew files"
 arch=('any')
 url="https://github.com/5long/p3wm"
-license=('custom:ISC')
+license=('ISC')
 depends=(
   'bash'
   'coreutils'
