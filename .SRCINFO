@@ -1,6 +1,6 @@
 pkgbase = thefrisbee
 	pkgdesc = Disk Management
-	pkgver = 2.0
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/theCheeseboard/thefrisbee
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = thefrisbee
 	makedepends = cmake
 	makedepends = clang
 	makedepends = libcontemporary
-	source = thefrisbee::https://github.com/theCheeseboard/theFrisbee/archive/refs/tags/v2.0.tar.gz
-	sha256sums = a596f17a414de78bbaf5ff6da1f4fa0773e21f4896c59a49c5b65e73c056adb9
+	source = thefrisbee-3.0::https://github.com/theCheeseboard/theFrisbee/archive/refs/tags/v3.0.tar.gz
+	sha256sums = 8ac9b804b513e61ba80b0cc48f8d0c39cd65f97c7da4faf0bb2a70695363a78d
 
 pkgname = thefrisbee
 	depends = xdg-utils
