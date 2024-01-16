@@ -3,11 +3,11 @@
 
 pkgname='fuc-bin'
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast Unix Commands: Modern, performance focused unix commands (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/SUPERCILEX/fuc'
-license=('Apache')
+license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
 provides=('cpz' 'fuc' 'rmz')
 conflicts=('cpz' 'fuc' 'rmz' 'fuc-static-musl-bin')
 replaces=('fuc-static-musl-bin')
@@ -30,13 +30,13 @@ depends=('gcc-libs' 'glibc')
 
 package() {
   # Be more verbose if standard output is a TTY
-  test -t 1 && _verbose='v' || _verbose=''
+  test -t 1 && _v='v' || _v=''
 
   for _exe in cpz rmz; do
-    install "-${_verbose}Dm0755" "$_exe-$CARCH-$pkgver" "$pkgdir/usr/bin/$_exe"
+    install "-${_v}Dm0755" "$_exe-$CARCH-$pkgver" "$pkgdir/usr/bin/$_exe"
   done
 
-  install "-${_verbose}Dm0644" "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install "-${_v}Dm0644" "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 sha256sums_aarch64=(
