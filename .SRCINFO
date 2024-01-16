@@ -1,0 +1,15 @@
+pkgbase = bonsai-coreutils-git
+	pkgver = r82.0cbfb5c
+	pkgrel = 1
+	url = https://git.tebibyte.media/bonsai/coreutils
+	arch = any
+	license = AGPL
+	makedepends = rust-bindgen
+	depends = rust
+	provides = bonsai-coreutils
+	source = git+https://git.tebibyte.media/bonsai/coreutils.git
+	validpgpkeys = 412DD3E96EA97554E5CD210C06FA419A1698C270,
+	validpgpkeys = A52C700BE43784F82FCA4E5531FF85CCB6DC7641
+	md5sums = SKIP
+
+pkgname = bonsai-coreutils-git
