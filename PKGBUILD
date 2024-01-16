@@ -3,7 +3,7 @@
 
 pkgname=python-syncedlyrics
 _pkgname=syncedlyrics
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Get an LRC format (synchronized) lyrics for your music'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel'
             'python-poetry-core')
 checkdepends=('python-pytest')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b9800562e6ee40800b5e22d9b69b79d98a8915a14ea3b334c230fd1dc99bff4c')
+sha256sums=('3daf9a31a9a488e50952940366b328eded9281a497ddf1962bb2f3cb6a47c474')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
