@@ -1,10 +1,10 @@
 pkgbase = smiley-sans-bin
 	pkgdesc = 一款在人文观感和几何特征中寻找平衡的中文黑体
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atelier-anchor/smiley-sans
 	arch = any
-	license = OFL
+	license = OFL-1.1-RFN
 	source = smiley-sans-1.1.1.zip::https://github.com/atelier-anchor/smiley-sans/releases/download/v1.1.1/smiley-sans-v1.1.1.zip
 	source = LICENSE::https://github.com/atelier-anchor/smiley-sans/raw/v1.1.1/LICENSE
 	sha512sums = 61bcc6d8957a6a7426c3a76968bea4fb4fb8a1da4dda4036c3c9533f8cc8120bfae879b51e73dc3b0399558b03709df5781fbac94deb16ed7d6a4a3e13dd837c

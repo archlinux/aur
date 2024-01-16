@@ -5,3 +5,4 @@ LICENSE
 *.log
 *.zip
 *.pkg.tar.zst
+*.pkg.tar.zst.sig

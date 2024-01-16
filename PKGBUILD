@@ -4,10 +4,10 @@ _pkgbase='smiley-sans'
 pkgbase="${_pkgbase}-bin"
 pkgname=({otf,ttf,woff2}-${pkgbase})
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='一款在人文观感和几何特征中寻找平衡的中文黑体'
 url='https://github.com/atelier-anchor/smiley-sans'
-license=('OFL')
+license=('OFL-1.1-RFN')
 arch=('any')
 
 source=("${_pkgbase}-${pkgver}.zip"::"${url}/releases/download/v${pkgver}/${_pkgbase}-v${pkgver}.zip"
