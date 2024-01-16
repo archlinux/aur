@@ -4,7 +4,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-zlib
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A compression/decompression Library (android)"
 arch=('any')
 url="http://www.zlib.net/"
@@ -14,10 +14,12 @@ options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-environment' 'android-pkg-config' 'android-sdk-build-tools')
 source=("http://zlib.net/zlib-${pkgver}.tar.gz"
         "0001-Disable-versioning.patch"
-        "0002-Fix-CC-definition.patch")
+        "0002-Fix-CC-definition.patch"
+        "0003-Fix-missing-symbols.patch")
 md5sums=('60373b133d630f74f4a1f94c1185a53f'
          'c2d3fe1aba79ec3e75758b2f6478c980'
-         '2420be2579d725c1cf1e0aac7ae0a4fe')
+         '9426b0365165dfa868c905825c48ef8e'
+         '947d7215f8cfa3c579b4ba47bcd0a6d5')
 
 prepare() {
     cd "${srcdir}"/zlib-${pkgver}
@@ -25,6 +27,7 @@ prepare() {
 
     patch -Np1 -i ../0001-Disable-versioning.patch
     patch -Np1 -i ../0002-Fix-CC-definition.patch
+    patch -Np1 -i ../0003-Fix-missing-symbols.patch
 }
 
 build() {
