@@ -3,11 +3,11 @@
 pkgname=python-mirakuru
 _name=${pkgname#python-}
 pkgver=2.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Start your subprocess and wait for a clear indication that it's running"
 arch=(any)
 url="https://github.com/ClearcodeHQ/mirakuru"
-license=(LGPL3)
+license=(LGPL-3.0-only)
 depends=(
   python
   python-psutil
