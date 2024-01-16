@@ -1,6 +1,6 @@
 pkgbase = getpgid-git
 	pkgdesc = Executable around the gepgid(2) system call to get Process Group ID
-	pkgver = r6.52e1da9
+	pkgver = r10.d501df2
 	pkgrel = 1
 	url = https://github.com/wilriker/getpgid
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = getpgid-git
 	depends = glibc>=2.12
 	provides = getpgid
 	conflicts = getpgid
-	source = getpgid-git::git+git://github.com/wilriker/getpgid.git
+	source = getpgid-git::git+https://github.com/wilriker/getpgid
 	md5sums = SKIP
 
 pkgname = getpgid-git
-

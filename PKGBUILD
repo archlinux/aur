@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel dot coenen at gmail dot com>
 pkgname=getpgid-git
-pkgver=r6.52e1da9
+pkgver=r10.d501df2
 pkgrel=1
 pkgdesc="Executable around the gepgid(2) system call to get Process Group ID"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git'
 'make') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+git://github.com/wilriker/getpgid.git")
+source=("$pkgname::git+https://github.com/wilriker/getpgid")
 md5sums=('SKIP')
 
 pkgver() {
