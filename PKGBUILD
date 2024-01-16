@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games."
 arch=('any')
 url="https://github.com/Matoking/protontricks"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python' 'python-vdf' 'winetricks' 'python-setuptools' 'python-pillow')
 optdepends=(
   'yad: GUI for game selection', 
