@@ -6,7 +6,7 @@
 pkgname=plymouth-git
 _pkgname=plymouth
 pkgver=24.004.60.r11.g07662e54
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical boot splash screen (git version)'
 arch=('i686' 'x86_64')
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
