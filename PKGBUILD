@@ -13,5 +13,5 @@ b2sums=(dcae9efaea616187bfa7639beba60221a4b8e6864dbb01e37064a1d0614c636477fd034b
 
 package() {
 	install -Dm 755 pacproxy\_$pkgver\_linux_amd64/pacproxy $pkgdir/usr/bin/pacproxy
-	install -Dm 644 pacproxy.service $pkgdir/usr/lib/systemd/system/pacproxy.service
+	install -Dm 644 pacproxy.service -t $pkgdir/usr/lib/systemd/system
 }
