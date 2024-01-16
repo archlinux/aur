@@ -1,6 +1,6 @@
 pkgbase = thebeat
 	pkgdesc = Audio Player
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://github.com/libcontemporary/thebeat
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = thebeat
 	depends = taglib
 	depends = gstreamer
 	optdepends = cdrdao: for CD burning
-	source = thebeat::https://github.com/vicr123/theBeat/archive/v4.0.tar.gz
-	sha256sums = ad49c87d1c529d7e5f73afc9636bb243cfb6b61e5ab30da570e3ff13bf6c77e9
+	source = thebeat-4.1::https://github.com/vicr123/theBeat/archive/v4.1.tar.gz
+	sha256sums = 319e0e71fb6cf185cace7f7167d20c1661cc8a29d4092d7741cbbd2016d5ae2c
 
 pkgname = thebeat
