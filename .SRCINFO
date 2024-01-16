@@ -35,10 +35,6 @@ pkgbase = meshlab
 	optdepends = openctm-tools: for compressed triangle mesh file format
 	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=MeshLab-2023.12
 	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=2023.12
-	source = nexus::git+https://github.com/cnr-isti-vclab/nexus.git
-	source = corto::git+https://github.com/cnr-isti-vclab/corto.git
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
