@@ -14,10 +14,10 @@
 
 _pkgname=chromium-unstable
 _debname=chromium-browser-unstable
-_pkgver=v122.0.6215.0-r1241500-linux64-deb-znver2
+_pkgver=v122.0.6224.0-r1242047-linux64-deb-znver2
 
 pkgname="${_pkgname}-znver2-bin"
-pkgver=122.0.6215.0
+pkgver=122.0.6224.0
 pkgrel=1
 pkgdesc="The Chromium web browser for Linux built with the open source Clang compiler and LLD linker. (znver2 build)"
 arch=('x86_64')
@@ -61,7 +61,7 @@ options=('!emptydirs' '!strip')
 install=${_pkgname}.install
 source=("${_pkgname}_${_pkgver}.deb::https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
         "allow-user-flags.patch")
-sha1sums=('91e75a861af03c268357b37a49f69ed4e6fb38a2'
+sha1sums=('a6a55340fd254f860d31957be142c513007245ea'
           'dd5c9032644b703aba5cf7c9e6766decb66989f7')
 
 package() {
