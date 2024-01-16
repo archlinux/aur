@@ -26,13 +26,13 @@ optdepends=(
   'wl-clipboard: clipboard access for Wayland'
   'xclip: clipboard access for Xorg, AwesomeWM and GNOME 45'
 )
-checkdepends=(
-  'python-pytest-instafail' ## TODO
-  'python-pytest-cov'
-  'python-pytest-qt'
-  'python-pytest-xvfb'
-  'xclip'
-)
+#checkdepends=(
+#  'python-pytest-instafail' ## TODO
+#  'python-pytest-cov'
+#  'python-pytest-qt'
+#  'python-pytest-xvfb'
+#  'xclip'
+#)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
 sha256sums=('e483d1fa1c2612b48d812811400b4b64c1d7ed9d7edd3971a0fb121ce8fcae74'
