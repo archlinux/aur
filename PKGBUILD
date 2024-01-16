@@ -48,7 +48,9 @@ prepare() {
 
   gendesk "${_gendesk_options[@]}"
 
-  sed -i "/desktop-id/ s/com.wings3d.WINGS.desktop/$pkgname.desktop/" "$_pkgsrc/unix/wings.appdata.xml"
+  sed -e "/desktop-id/ s/com.wings3d.WINGS.desktop/$pkgname.desktop/" -i "$_pkgsrc/unix/wings.appdata.xml"
+
+  sed -e '/material[0-9]/ s/""//g' -i "$_pkgsrc/plugins_src/import_export/wpc_yafaray.erl"
 }
 
 build() {
@@ -57,17 +59,20 @@ build() {
 }
 
 package() {
-  install -Dm755 "wings.sh" "${pkgdir:?}/usr/bin/$_pkgname"
-  install -Dm644 "$_pkgname.desktop" -t "${pkgdir:-}/usr/share/applications"
+  install -Dm755 "wings.sh" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
   cd "$_pkgsrc"
   for i in 48 256 ; do
-    install -Dm644 "icons/wings_icon_${i}x${i}.png" "${pkgdir:?}/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
+    install -Dm644 "icons/wings_icon_${i}x${i}.png" "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 
   install -Dm644 unix/wings.appdata.xml "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
 
   cd build
-  install -d "$pkgdir/usr/lib/$_pkgname"
-  cp -r "$_pkgsrc-linux/lib/$_pkgsrc"/* "${pkgdir:?}/usr/lib/$_pkgname/"
+  install -dm755 "$pkgdir/usr/lib/$_pkgname"
+  cp --reflink=auto -r "$_pkgsrc-linux/lib/$_pkgsrc"/* "$pkgdir/usr/lib/$_pkgname/"
+
+  # fix permissions
+  chmod -R u=rwX,go=rX "$pkgdir"
 }
