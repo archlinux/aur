@@ -2,17 +2,17 @@
 
 pkgbase=ssh3
 pkgname=(ssh3 ssh3-server)
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='faster and rich secure shell using HTTP/3'
 url='https://github.com/francoismichel/ssh3'
-license=('Apache')
+license=('Apache-2.0')
 arch=('x86_64')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go' 'libxcrypt')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/francoismichel/ssh3/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('453f741934298f086b3cf4c99f8856d151a2ee3b14ef123139b39ea66c642e02')
-b2sums=('2ab566ef522d1565faef513c5d53737db717d61f5c409e72cea7c5ceb7adf214b8d6c9f2f0af86991fcf5e722863a252971dbff5fe500be1c619ff6da3d1b560')
+sha256sums=('6e87e654bead259fa4885802f8b2c6f7bfbde408f70fd53df92409b26dcb6e0f')
+b2sums=('a968ef563056953f46e2c77bacaa45ff7304be976e1c9e92583ecfb4429d70b703ebd9d4d72dcb54ca450b9b2d9c55b42ade006c2a4b89c13d36dfd3d1ead30e')
 
 build() {
   cd "$pkgbase-$pkgver"
@@ -23,8 +23,11 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -o ssh3 cli/client/main.go
-  go build -o ssh3-server cli/server/main.go
+  local builddate=$(date +%Y-%m-%d)
+  local linkflags="-X main.version=$pkgver -X main.buildDate=$builddate"
+
+  go build -ldflags "$linkflags" -o ssh3 ./cmd/ssh3
+  go build -ldflags "$linkflags" -o ssh3-server ./cmd/ssh3-server
 }
 
 package_ssh3() {
