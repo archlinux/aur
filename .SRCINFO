@@ -1,7 +1,7 @@
 pkgbase = libpldm
 	pkgdesc = This is a library which deals with the encoding and decoding of PLDM messages.
 	pkgver = 0.7.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/openbmc/libpldm
 	arch = aarch64
 	arch = riscv64

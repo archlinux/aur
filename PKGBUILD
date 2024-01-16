@@ -2,7 +2,7 @@
 
 pkgname=libpldm
 pkgver=0.7.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="This is a library which deals with the encoding and decoding of PLDM messages."
 arch=(aarch64
@@ -33,7 +33,7 @@ sha256sums=('789f78249cd7b1534c5efb7cb4cf2a8f79be77bc0681fc4cd5529f9e4ac95d79')
 #validpgpkeys=()
 
 build() {
-    arch-meson ${pkgname}-${pkgver} build
+    arch-meson ${pkgname}-${pkgver} build -Dabi=deprecated,stable
     ninja -C build
 }
 
