@@ -2,8 +2,8 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux-git
-pkgver=ZEsarUX.X.r433.g42142af
-_ver=X
+pkgver=ZEsarUX.X.r510.ga73734c
+_ver=11.0
 pkgrel=1
 epoch=2
 pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support. Development version."
