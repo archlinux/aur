@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
 arch=('any')
 url="https://github.com/keiko233/clash-nyanpasu"
-license=('GPL-3.0')
+license=('GPL-3.0-or-later')
 depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' "clash-meta-is-mihomo")
 makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'quickjs' 'git' 'pnpm' 'clang')
 optdepends=('clash' 'clash-rs')
@@ -67,4 +67,5 @@ package(){
 	install -Dm644 src/assets/image/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+	install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
