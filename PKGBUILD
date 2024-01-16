@@ -2,6 +2,10 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
 
+#Todo:
+#* add external cmake projects to source array and patch src/externla/*.cmake
+#* use system wide: levmar, libigl, qhull, structyresynth, libe57, u3d, tinygltf
+
 #Configuration:
 #Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
 #Use: {yay,paru} --mflags=VAR1=0,VAR2=1
@@ -27,7 +31,6 @@ optdepends=('u3d: for U3D and IDTF file support'
             'muparser: for filer_func plugins'
             'mpir: for Constructive Solid Geometry operation filters'
             'openctm-tools: for compressed triangle mesh file format')
-#also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
 source=("$pkgname::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=MeshLab-${pkgver}"
         "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=${_pkgver_vcg}"
         )
@@ -42,12 +45,12 @@ prepare() {
 
 
 build() {
-  _cmake_flags=( '-DALLOW_SYSTEM_QHULL=OFF'
-                 '-DCMAKE_INSTALL_PREFIX=/usr'
-                 '-DCMAKE_BUILD_TYPE=Release'
-                 '-DCMAKE_C_COMPILER=gcc-12'
-                 '-DCMAKE_CXX_COMPILER=g++-12'
-               )
+  _cmake_flags+=( '-DALLOW_SYSTEM_QHULL=OFF'
+                  '-DCMAKE_INSTALL_PREFIX=/usr'
+                  '-DCMAKE_BUILD_TYPE=Release'
+                  '-DCMAKE_C_COMPILER=gcc-12'
+                  '-DCMAKE_CXX_COMPILER=g++-12'
+                )
   cmake "${_cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab/src"
 # shellcheck disable=SC2046 # allow MAKEFLAGS to split when passing multiple flags.
  ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
