@@ -1,6 +1,6 @@
 # Maintainer: Starry Wang <starry.wang@suse.com>
 pkgname=hangar-git
-pkgver=v1.7.0.r1.gbe7360a
+pkgver=v1.7.1.r0.gd62307e
 pkgrel=1
 epoch=
 pkgdesc="Command line utility to mirror container images"
