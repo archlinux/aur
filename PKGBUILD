@@ -14,5 +14,5 @@ b2sums=(5259c833d3447ae4044b4382178fbf321f6f56193847f1f195c8f197153569de41861c9a
 
 package() {
 	install -Dm 755 tor-relay-scanner-$pkgver.pyz $pkgdir/usr/bin/tor-relay-scanner
-	install -Dm 644 update-tor-bridges.service $pkgdir/usr/lib/systemd/system/update-tor-bridges.service
+	install -Dm 644 update-tor-bridges.service -t $pkgdir/usr/lib/systemd/system
 }
