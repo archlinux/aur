@@ -1,6 +1,6 @@
 # Maintainer: nbebaw <nader.bebawy@gmx.de>
 pkgname=archub
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Command-line tool designed for managing packages in AUR"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/nbebaw/Archub"
 license=(MIT)
 depends=(git)
 source=("https://github.com/nbebaw/Archub/releases/download/v${pkgver}/archub_${arch}.tar.gz")
-sha256sums=('01ae2e23c0067aa9d7c40dbf5b54d8b527d4381a5b86cc0b4736d44dc6aeaebf')
+sha256sums=('60e855f5938bee44eb8145c0a84965eb3bd25f322ee9690f3b4bfd483a28ba1c')
 
 package() {
   install -Dm755 archub -t "${pkgdir}/usr/bin/"
