@@ -74,7 +74,7 @@ _subarch=39
 
 pkgbase=linux-prjc
 pkgver=6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
 arch=(x86_64)
@@ -95,9 +95,9 @@ makedepends=(
 options=('!strip')
 _srcname=linux-${pkgver}
 _kernel_base_commit=0dd3ee31125508cd67f7e7172247f05b7fd1753a
-_kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=79425d7496066714f38535eb4f37df529668e83a
-_prjc_version=6.7-r0
+_kernel_arch_tag=${pkgver}-arch3
+_arch_config_commit=89b00c9419f8155daa45cad5368552aac920f7d0
+_prjc_version=6.7-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20230105
 source=(
@@ -116,9 +116,9 @@ validpgpkeys=(
 b2sums=('cecdbd19905e43e485ab73b352ced18b37f2a138c97a6956cadcda5d3d271001117dc1cf896b166ff019fc7f405f9539e2ed0d6112b0890efb04d182adf4fd0e'
         'SKIP'
         'f67cb3d077708b6eeac2e33a8e5bf21988b3fdd024ccaf9258597ce9c2764998cf886b7354115524f9fce3b4aa7ea3bb69e6b2dde63bec1d5e76ba3deaad4636'
-        '96f9ea602eeebe15baee69979322fb16b09c17b9523c009977aef8ba326973f7365aeeb9e770336c1fd5b08bd15188dbc1581c38f225280999a592ebf6363421'
+        '5716cf57bd1b0e6ccf1df94b8fcfb389b536dac1a7d5f892badefd769dba26dd34e42fc73224011eb43532650dbf691c97111344506f8f5fe8059e7a4c37b41e'
         'd178dad69501967382d5c841f65e4f57651042bee8117041a9baa35ab3fa73af8174b8b999ae9e72ec381c52744ccaaabb77944d59f123c04b6ed5626432d843'
-        '0bb8f1185ec580ee9d7b729986caf078f6b09fde4e62bc65bc33afb46887191b558bd85f50a91303a6f3e7d020861036e6e1380594e7e7f3a5616fffb8dbd764'
+        '3d2ae6488f129a2a98911495f6fc4b6ad0b1ac9eb184780a082fd1fcf36dc34a9d828bbb2f2543460c0b6a3049e1a3c94ff8dc666d5449fc463b4c38db1206e2'
         'cbd76f0a000e51173626009345b2de34f734c32072cf82e8e0860bbcf4eeac963ae34061ec562db8f852a4297c4633118f93c935a4783044ffb069643a03ce89')
 
 _kernelname=${pkgbase#linux}
