@@ -18,17 +18,19 @@ pkgver='1.29'
 pkgrel='1'
 pkgdesc='Fax backend for CUPS supporting hylafax hylafaxplus mgetty-fax efax capisuite'
 arch=('any')
+url='http://vigna.di.unimi.it/fax4CUPS'
 license=('GPLv2')
 depends=('cups')
-url='http://vigna.di.unimi.it/fax4CUPS'
-source=("${url}/${_pkgname}-${pkgver}.tar.gz"
-        "${_pkgname}.sudo")
-install="${_pkgname}.install"
 optdepends=('hylafax: enterprise fax server'
             'hylafaxplus: enterprise fax server'
             'mgetty-fax'
             'efax: simple fax send/receive')
-
+install="${_pkgname}.install"
+source=("${url}/${_pkgname}-${pkgver}.tar.gz"
+        "${_pkgname}.sudo")
+source[0]="https://www.joonet.de/sources/fax4cups/oldsrc/fax4CUPS-${pkgver}.tar.gz"
+md5sums=('8d033b71f60afddbcd3f4f7ef316d356'
+         '275fcb6c51141015bafd335b7fabb0c0')
 sha256sums=('4e9ff3ec04a356b24412db4226630cfef82b88142e1566c867f2832f3ee6cfb3'
             '0a69cef5657d7f6787425f4609c5caa18b84af4609b92876c87bce8393925249')
 
@@ -74,7 +76,7 @@ package() {
   cat >> "${pkgdir}/${_outfile}" << EOF
 
 # Installed by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 
 # Install options:
 # _opt_HylafaxPlus='${_opt_HylafaxPlus}' # 1 for Hylafax+, 0 for Hylafax
