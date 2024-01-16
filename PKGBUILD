@@ -3,7 +3,7 @@ pkgname=interactive-data-editor-bin
 _pkgname="Interactive Data Editor"
 pkgver=2.13.1
 _electronversion=17
-pkgrel=3
+pkgrel=4
 pkgdesc="A Software to interactively edit data in a graphical manner"
 arch=('x86_64')
 url="https://koushikphy.github.io/Interactive_Data_Editor/"
@@ -38,7 +38,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Koushikphy/Interactive_Data_Editor/v${pkgver}/LICENSE"
 )
-sha256sums=('c4c3370119b55ffe3339be9d25009c47105ef9bb0c2a93764d8263a55f6f9fe9'
+sha256sums=('1ad6a7387c06572f600f4fbbbac65f6f30589c8cc00c54dc85b068e729d2a882'
             'd728fec9e20c7c6b1528b62e2525c7f98d2f99061e5b8e3bbd33d27f27271265')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
