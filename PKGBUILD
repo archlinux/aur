@@ -2,7 +2,7 @@
 
 _pkgbase=8192eu
 pkgname=8192eu-dkms-git
-pkgver=r136.6a758d5
+pkgver=r293.f2fc8af
 pkgrel=1
 pkgdesc="Driver for the Realtek 8192eu chipset (DKMS)"
 arch=('x86_64' 'i686' 'armv7h')
@@ -18,6 +18,16 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgbase"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$_pkgbase"
+  sed -E \
+    -e "s/^PACKAGE_NAME=.*$/PACKAGE_NAME=${_pkgbase}/" \
+    -e "s/^PACKAGE_VERSION=.*$/PACKAGE_VERSION=${pkgver}/" \
+    -e "s/(make'? )/\1${MAKEFLAGS} /g" \
+    -e "s/^REMAKE_INITRD=.*$//" \
+    -i dkms.conf
 }
 
 package() {
