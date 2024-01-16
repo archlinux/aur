@@ -1,12 +1,12 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 # Contributor: SiHuan <sihuan at sakuya.love>
 pkgname=majsoul-plus-bin
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Majsoul browser (Binary)"
 arch=('i686' 'x86_64')
 url="https://github.com/MajsoulPlus/majsoul-plus"
-license=('AGPL3')
+license=('AGPL-3.0')
 depends=('gtk3' 'libxss' 'nss')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'trash-cli: file deletion support (trash-put)'
@@ -22,8 +22,8 @@ source_i686=(
 	"$pkgname-$pkgver-i686.tar.gz::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v$pkgver/Majsoul_Plus-$pkgver-linux-ia32.tar.gz"
 )
 sha256sums=('be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31')
-sha256sums_i686=('61010c8886fe717942a53fa2bb4f1e6ce4ad56974a122c4a9d32c25861f340d8')
-sha256sums_x86_64=('364b825025933a8792465ab6e708af091dbb24cd54f8da78877367d59d9ab1ac')
+sha256sums_i686=('207d2755cc15a3f6e837d57982212b05e0ce05690e0b5e10c93d3612b21ae130')
+sha256sums_x86_64=('5f865dbb441fa80b29f4fcf05425dc00f4c0f3fb0b4f5011337324846138ff7b')
 
 package() {
 	targetarch="x64"
