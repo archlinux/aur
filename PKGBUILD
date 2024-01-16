@@ -3,7 +3,7 @@
 
 pkgname=nsync
 pkgver=1.26.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A C library that exports various synchronization primitives, such as mutexes"
 arch=(x86_64)
 url="https://github.com/google/nsync"
@@ -15,7 +15,7 @@ depends=(
 makedepends=(cmake)
 
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   "0001-nsync-export.patch"
 )
 sha256sums=(

@@ -1,14 +1,14 @@
 pkgbase = nsync
 	pkgdesc = A C library that exports various synchronization primitives, such as mutexes
 	pkgver = 1.26.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/google/nsync
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
 	depends = gcc-libs
 	depends = glibc
-	source = nsync-1.26.0.tar.gz::https://github.com/google/nsync/archive/refs/tags/v1.26.0.tar.gz
+	source = nsync-1.26.0.tar.gz::https://github.com/google/nsync/archive/refs/tags/1.26.0.tar.gz
 	source = 0001-nsync-export.patch
 	sha256sums = 80fc1e605bb3cf5f272811ece39c4fb6761ffcb9b30563301845cc9ff381eb8b
 	sha256sums = 7733d2979d9ec4ec7a9e7af8814544bdd68b5482ebaea1f00011ac8e1ea44258
