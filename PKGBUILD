@@ -2,7 +2,7 @@
 
 pkgname=nachrichten
 pkgver=0.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Stay informed without leaving your command line"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/zMoooooritz/${pkgname}"
@@ -36,5 +36,7 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "configs/config.yaml" "$pkgdir/usr/share/doc/$pkgname/example_config.yaml"
 }
 
