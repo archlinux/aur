@@ -1,6 +1,6 @@
 pkgbase = python-matplotlib-git
 	pkgdesc = A python plotting library for making publication quality plots, master git branch
-	pkgver = r26679.b9b02f189
+	pkgver = r49400.d0575d486f
 	pkgrel = 1
 	url = http://matplotlib.org
 	arch = i686
@@ -32,18 +32,24 @@ pkgbase = python-matplotlib-git
 	makedepends = texlive-bin
 	makedepends = python-tornado
 	makedepends = gtk3
-	makedepends = wxpython
+	makedepends = python-wxpython
 	makedepends = python-pyqt5
 	makedepends = libxkbcommon-x11
 	makedepends = python-pillow
 	makedepends = python-setuptools
 	makedepends = python-cycler
-	source = git+git://github.com/matplotlib/matplotlib.git#branch=master
+	makedepends = pybind11
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = meson-python
+	source = git+https://github.com/matplotlib/matplotlib.git#branch=main
 	source = setup.cfg
 	md5sums = SKIP
 	md5sums = 5fa7d3c374ec049e3ed592ddff0111be
 
 pkgname = python-matplotlib-git
+	depends = python-kiwisolver
 	depends = python-pytz
 	depends = python-numpy
 	depends = python-pyqt5
@@ -62,4 +68,3 @@ pkgname = python-matplotlib-git
 	provides = python-matplotlib
 	conflicts = python-matplotlib
 	conflicts = python-matplotlib2
-
