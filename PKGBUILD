@@ -2,7 +2,7 @@
 
 pkgname=bmcweb-git
 pkgver=r2563.f347756
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This is a library which deals with the encoding and decoding of PLDM messages."
 arch=(aarch64
@@ -11,24 +11,22 @@ arch=(aarch64
 url="https://github.com/openbmc/bmcweb"
 license=('Apache')
 groups=()
-depends=(glibc)
-makedepends=(
-    cmake
+depends=(
     boost
-    git
-    gtest
+    glibc
     libnghttp2
-    meson
     nlohmann-json
     openssl
     tinyxml2
     sdbusplus-git
     systemd
     zlib
-    ninja
-#     abi-dumper
-#     abi-compliance-checker
-    )
+    ninja)
+makedepends=(
+    cmake
+    git
+    gtest
+    meson)
 checkdepends=()
 optdepends=()
 provides=(${pkgname%-git})
