@@ -1,10 +1,10 @@
 pkgbase = smiley-sans
 	pkgdesc = 一款在人文观感和几何特征中寻找平衡的中文黑体
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atelier-anchor/smiley-sans
 	arch = any
-	license = OFL
+	license = OFL-1.1-RFN
 	makedepends = python-brotli
 	makedepends = python-fontmake
 	makedepends = python-fonttools
