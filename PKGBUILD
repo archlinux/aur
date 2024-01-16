@@ -2,9 +2,12 @@
 pkgname=captfencoder-bin
 _pkgname=CaptfEncoder
 pkgver=3.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A rapid cross platform network security tool suite."
-arch=("aarch64" "x86_64")
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/guyoung/CaptfEncoder"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -37,12 +40,10 @@ sha256sums=('3c0c7b76c0bd5964f77f48d9a44ccc00b59784c14fcd2ce511c6129e71c324a8'
 sha256sums_aarch64=('69f2c17bbe751978a5aa740bd02dfecfd3e16c36f629d86e56a79581149beef3')
 sha256sums_x86_64=('dfed9cbb934bae883f5ae2e6b1d71908a6a8238d7bfdf7b243d9d2c272a30462')
 build() {
-    gendesk -f -n -q --categories "Development;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    gendesk -f -n -q --categories "Development" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.bin" -t "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/bin"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}-${pkgver}-${CARCH}.bin" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.bin" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

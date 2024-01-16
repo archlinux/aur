@@ -1,7 +1,7 @@
 pkgbase = captfencoder-bin
 	pkgdesc = A rapid cross platform network security tool suite.
 	pkgver = 3.1.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/guyoung/CaptfEncoder
 	arch = aarch64
 	arch = x86_64
