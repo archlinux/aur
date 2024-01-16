@@ -181,7 +181,7 @@ prepare() {
   # Type: 3
   # Status: 2
   # Comment: Remove G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START to fix the issue where KMS thread
-  #          fails to acquire realtime priority on boot when the shell starts before the rtkit daemon
+  #          fails to acquire realtime priority on boot when the shell starts before the rtkit daemon.
   pick_mr '3327' 'mr3327.patch' 'patch'
 
   # Title: kms/crtc: Increase default deadline evasion to 1000 microseconds
@@ -189,7 +189,7 @@ prepare() {
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3373
   # Type: 3
   # Status: 2
-  # Comment: This fixes three issues that were preventing GPU copies on the Nvidia proprietary driver.
+  # Comment: This fix cursor stutter.
   pick_mr '3373' 'mr3373.patch' 'patch'
 
   # Title: Draft: Dynamic triple/double buffering (v4)
