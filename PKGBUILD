@@ -2,8 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=diffsitter
-pkgver=0.8.1
-_commit=94e7d9f
+pkgver=0.8.2
+_commit=5d6c8fa
 pkgrel=1
 pkgdesc="Tree-sitter based AST diff tool"
 arch=('x86_64' 'i686' 'arm' 'aarch64')
