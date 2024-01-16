@@ -1,25 +1,58 @@
-From e0e73ab6da4960f6291b9ba6cee5b7ae31fca15f Mon Sep 17 00:00:00 2001
-From: Nikolay Arhipov <n@arhipov.net>
-Date: Fri, 19 May 2023 18:42:48 +0300
-Subject: [PATCH] Fixed util.py
+From f0c25dd80c04c9828cfd4bd0c07550e5c2627e92 Mon Sep 17 00:00:00 2001
+From: fish47 <fish47@126.com>
+Date: Tue, 16 Jan 2024 20:38:00 +0800
+Subject: [PATCH] migrate to py3
 
 ---
- util.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ elf.py  |  3 +--
+ util.py | 11 +++++++----
+ 2 files changed, 8 insertions(+), 6 deletions(-)
 
+diff --git a/elf.py b/elf.py
+index 49aa31b..f0fb49f 100644
+--- a/elf.py
++++ b/elf.py
+@@ -1,11 +1,10 @@
+-from elftools.common.py3compat import str2bytes, bytes2str
+ from elftools.elf.elffile import ELFFile
+ 
+ from sys import argv
+ from collections import defaultdict
+ import subprocess
+ 
+-from util import u16, u32, c_str, hexdump
++from util import u16, u32, c_str, hexdump, str2bytes, bytes2str
+ from indent import indent, iprint
+ 
+ 
 diff --git a/util.py b/util.py
-index 80ff7b3..5bc15f0 100644
+index 80ff7b3..b180adc 100644
 --- a/util.py
 +++ b/util.py
-@@ -25,7 +25,7 @@ def u32(buf, off):
+@@ -1,8 +1,11 @@
+-from elftools.common.py3compat import str2bytes
+-
+ import string
+ import struct
+ 
++def bytes2str(b):
++    return b.decode('latin-1')
++
++def str2bytes(s):
++    return s.encode('latin-1')
+ 
+ def u16(buf, off):
+     buf = buf[off:off+2]
+@@ -24,8 +27,8 @@ def u32(buf, off):
+ 
  def c_str(buf, off):
      out = ""
-     while off < len(buf) and buf[off] != '\0':
+-    while off < len(buf) and buf[off] != '\0':
 -        out += buf[off]
-+        out += str(buf[off])
++    while off < len(buf) and buf[off] != 0:
++        out += chr(buf[off])
          off += 1
      return out
  
 -- 
-2.40.1
-
+2.43.0

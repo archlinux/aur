@@ -14,7 +14,7 @@ provides=("vita-parse-core")
 conflicts=("vita-parse-core")
 source=('git+https://github.com/xyzz/vita-parse-core.git' '0001-Fixed-util.py.patch' 'main')
 sha256sums=('SKIP'
-            'c65c44c28945f6cba41081f21d0239ed5c57f5e071c17771a294884e1a2ac0b0'
+            'c36bc9d72c39ea271cc14f0c53907625ff26214f1b65783369f8d64e64f83541'
             '1c4a20233aeb0743dad1d8d3e2ee790fe60603baa1588df0625b5def2d2d0dd9')
 
 
