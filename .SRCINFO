@@ -1,0 +1,23 @@
+pkgbase = python-hypothesmith-032
+	pkgdesc = Hypothesis strategies for generating Python programs, something like CSmith
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/Zac-HD/hypothesmith
+	arch = any
+	license = MPL
+	checkdepends = python-black
+	checkdepends = python-parso
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-hypothesis
+	depends = python-lark-parser
+	depends = python-libcst
+	provides = python-hypothesmith=0.3.2
+	conflicts = python-hypothesmith
+	source = https://pypi.io/packages/source/h/hypothesmith/hypothesmith-0.3.2.tar.gz
+	sha512sums = 8e84eaa02fd86a9fe2b446c516b8dccb5f5f3ec84035f70c09fd88fcbbb3cfdc5bc36d95a22734d9d9d6a841d17d8f0198ec08daf3331f39c96c7b687fe2f22a
+
+pkgname = python-hypothesmith-032
