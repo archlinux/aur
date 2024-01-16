@@ -1,7 +1,7 @@
 # Maintainer: thynkon <thynkon at protonmail dot com>
 
 pkgname=joplin-appimage
-pkgver=2.13.14
+pkgver=2.13.15
 pkgrel=1
 pkgdesc="The latest stable AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   ${url}/raw/v${pkgver}/LICENSE
 )
 sha512sums=(
-  6476397c953ec3e311bcbe9880612f30d81ce40d67dfaeb11f3001413d136ec3f8b92a605ab52d85c6a859cb437f1fbf8ae8c7a98e82d5f4d7474277db4f5b51
+  d5fc3eee37f506aabb131b14e61ce459602d9c80da61b63ef07a849987cce5ff59af913000ac27baad8e3af637ca6cb28ad4ecaea523b24b4aac1a8b0df76493
   SKIP
 )
 _filename="Joplin-${pkgver}.AppImage"
