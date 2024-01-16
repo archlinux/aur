@@ -1,6 +1,6 @@
 pkgbase = amphitheatre-desktop-bin
 	pkgdesc = Open source GUI application that enables you to interact with Amphitheatre
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/amphitheatre-app/desktop
 	arch = aarch64
@@ -8,11 +8,12 @@ pkgbase = amphitheatre-desktop-bin
 	license = Apache
 	makedepends = gendesk
 	depends = glibc
-	provides = amphitheatre-desktop=0.5.0
+	depends = gcc-libs
+	provides = amphitheatre-desktop=0.6.0
 	conflicts = amphitheatre-desktop
-	source_aarch64 = amphitheatre-desktop-0.5.0-aarch64.tar.gz::https://github.com/amphitheatre-app/desktop/releases/download/v0.5.0/amphitheatre-desktop-linux-arm64.tar.gz
-	sha256sums_aarch64 = 35acda576b31906bd99cb70e008c6ed3c6f7bbc1519088069af74f236739d25e
-	source_x86_64 = amphitheatre-desktop-0.5.0-x86_64.tar.gz::https://github.com/amphitheatre-app/desktop/releases/download/v0.5.0/amphitheatre-desktop-linux-amd64.tar.gz
-	sha256sums_x86_64 = 8d0e694ac464fea067c2ce9b4947096c322aeb3c6833a4a1cd88a783d2ea2fde
+	source_aarch64 = amphitheatre-desktop-0.6.0-aarch64.tar.gz::https://github.com/amphitheatre-app/desktop/releases/download/v0.6.0/amphitheatre-desktop-linux-arm64.tar.gz
+	sha256sums_aarch64 = a69c041a2435d451b64dc1b1c76aab8c9aeee1e00639f293bc85b5482c59b9f2
+	source_x86_64 = amphitheatre-desktop-0.6.0-x86_64.tar.gz::https://github.com/amphitheatre-app/desktop/releases/download/v0.6.0/amphitheatre-desktop-linux-amd64.tar.gz
+	sha256sums_x86_64 = b2baca45255e057a3ccdd1439827e6225abc53ead8d09e189a4d87e92b6e59ad
 
 pkgname = amphitheatre-desktop-bin
