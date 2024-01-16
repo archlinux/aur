@@ -2,7 +2,7 @@
 
 pkgname=blender-lts-bin
 pkgdesc='LTS blender version'
-pkgver='3.6.7'
+pkgver='3.6.8'
 #USA Mirror
 _mirror="https://mirror.clarkson.edu"
 
@@ -25,7 +25,7 @@ license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
 
-b2sums=('48332112c1de7da9996a9753ab8f65f8bb300a69ef691661b334ac09747da75b476210ac760f8d157facc03ae170f2151f9cf47389fbd88220653862d6464d54'
+b2sums=('0dc62f4c86a869d648f6462db10b5efcb390a09e15ad091a3d74dcbba6c3c37346ace84e9210019a1ffa6fa95faed3a23805d548fbbd3e12dcbcf6c7e2c61519'
 '903039ab42d250063286fa6a5e3687e84c9c6018a0e6654423e7649542d8394c19e6ed8ccaa549bd373ad66bc8e5b7b65203781cde26420f4e00183935e766f3')
 
 _setvars() {
