@@ -1,0 +1,15 @@
+pkgbase = cook-framework
+	pkgdesc = a wordlist generator, splitter, merger, finder, saver, creator
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = https://github.com/glitchedgitz/cook
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	conflicts = cook
+	source = cook-2.1.4.tar.gz::https://github.com/glitchedgitz/cook/archive/v2.1.4.tar.gz
+	md5sums = 5a3cd56c43710edbe269dcc007375c8b
+
+pkgname = cook-framework
