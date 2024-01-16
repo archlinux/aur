@@ -1,7 +1,7 @@
 pkgbase = threema-desktop
 	pkgdesc = Threema Desktop (Threema Web in Electron).
 	pkgver = 1.2.40
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/threema-ch/threema-web-electron
 	arch = any
 	license = AGPL
@@ -14,6 +14,6 @@ pkgbase = threema-desktop
 	source = threema.desktop
 	sha256sums = 07a3595b8eb3b4e8ab260bbb6c7a692a1e7a371d788afb0814a0bd56b92de141
 	sha256sums = 51e7a8da68164f6e3efa4a39adbd495a32c7614b6d738a1066ceb69e3e74f444
-	sha256sums = ccfdae3416e2a1f096cfaf67fd8f8dacb0d8348582fc666ecc8b5b0d08ef5bf2
+	sha256sums = c0d8c9a7b22ebcd5be82c0a1aa8502d862b5e8a2034c674baa8956dd70b1fd01
 
 pkgname = threema-desktop

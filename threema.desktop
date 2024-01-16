@@ -5,5 +5,4 @@ Exec={{binname}} %U
 Icon={{pkgname}}
 Type=Application
 StartupNotify=true
-Categories=Social Media;
-
+Categories=Categories=Network;InstantMessaging;Chat;
