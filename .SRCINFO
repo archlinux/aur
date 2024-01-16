@@ -1,4 +1,4 @@
-pkgbase = netpanzer
+pkgbase = netpanzer-appimage
 	pkgdesc = An online multiplayer tactical warfare game designed for fast action combat (AppImage)
 	pkgver = 0.8.7
 	pkgrel = 2
