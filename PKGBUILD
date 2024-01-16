@@ -1,17 +1,17 @@
 # Maintainer: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 pkgname=swww-git
-pkgver=0.7.2
-pkgrel=1
+pkgver=0.8.2
+pkgrel=0
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime."
 arch=('x86_64' 'aarch64')
-url="https://github.com/Horus645/swww"
+url="https://github.com/LGFae/swww"
 license=('GPL')
 depends=('gcc-libs' 'lz4' 'libxkbcommon')
 makedepends=('cargo' 'scdoc')
 provides=('swww')
 conflicts=('swww')
 options=(!lto)
-source=("swww::git+https://github.com/Horus645/swww.git")
+source=("swww::git+https://github.com/LGFae/swww.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd "$srcdir/swww"
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --release 
+  cargo build --release --target-dir ./target
   # manpages
   ./doc/gen.sh
   for page in $(ls ./doc/generated/*.1)
