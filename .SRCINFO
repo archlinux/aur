@@ -1,6 +1,6 @@
 pkgbase = hangar
 	pkgdesc = Command line utility to mirror container images
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/cnrancher/hangar
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = hangar
 	depends = containers-common
 	conflicts = hangar-bin
 	conflicts = hangar-git
-	source = git+https://github.com/cnrancher/hangar#tag=v1.7.0
+	source = git+https://github.com/cnrancher/hangar#tag=v1.7.1
 	sha256sums = SKIP
 
 pkgname = hangar
