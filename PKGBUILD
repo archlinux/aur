@@ -1,12 +1,12 @@
 pkgname=snowflake-pt-client-bin
 pkgver=2.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Pluggable Transport using WebRTC, inspired by Flashproxy'
 url=https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake
 arch=(x86_64)
 license=(BSD-3-Clause)
 depends=(tor)
-optdepends=(tor-browser)
+optdepends=(torbrowser-launcher)
 backup=(etc/tor/snowflake)
 install=$pkgname.install
 source=(snowflake-v$pkgver.tar.gz::$url/-/jobs/441747/artifacts/raw/snowflake-v$pkgver.tar.gz)
