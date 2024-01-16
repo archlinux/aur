@@ -5,9 +5,9 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=29.0
-_pkgver=29.1-rc1
-pkgrel=0.99
+pkgver=29.1
+_pkgver=29.1.90
+pkgrel=0.90
 pkgdesc="The extensible, customizable, self-documenting real-time display editor. Pretest version"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -33,7 +33,7 @@ validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B')
 #
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig}
         nemacs readme_or_weep.txt)
-b2sums=('2267a0ce36412e327d592219a49aedbf487b0a4d01e40e2ea0f4bdec0a0bfbc673e6a0436773706e3c9e94a640d1a41917eb9e144cc1bed49c8b27513d1f4f82'
+b2sums=('01cf0b56fc9b4cf598b187271c0996f59316f874c5bd9d17f8551cb58e33d742ccb21dcddb061f88f0c6a3f670014a2d130d026ddc97c666958a64c0fbc709fe'
         'SKIP'
         '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0'
         '98cb6458eebfa1440eea1318c6974c135d1b9e1a559fb1ca4bca35fb4697cc8cd6d33b19427efead0f3e061556ba19e774eee4f4566673494ac2470da4725b28')
