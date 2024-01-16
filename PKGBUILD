@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-pyxdf
 _name=${pkgname#python-}
-pkgver=1.16.4
+pkgver=1.16.5
 pkgrel=1
 pkgdesc="Python importer for XDF files"
 arch=('any')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
 noextract=()
-sha1sums=('137ffe21b73278082f511e3958e75374214a6234')
+sha1sums=('4aee44a86b3dd143c553e9c3b9607242c9bfe74e')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
