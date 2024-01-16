@@ -1,0 +1,14 @@
+pkgbase = sdcardformatter
+	pkgdesc = SD Memory Card Formatter for Linux
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://www.sdcard.org/downloads/sd-memory-card-formatter-for-linux/
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	source_x86_64 = https://sdcard.org/downloads/formatter/eula_linux/SDCardFormatterv1.0.2_Linux_x86_64.tgz
+	sha256sums_x86_64 = 3d961085954abeb764265184a92c1114aa4cef9cf12ca3c3337b6b63e0dbe0fb
+	source_aarch64 = https://sdcard.org/downloads/formatter/eula_linux/SDCardFormatterv1.0.2_Linux_ARM64.tgz
+	sha256sums_aarch64 = 8695a0f441129845136afee01d94d6dbccbe87ba7c904f045f2af0613f9a1978
+
+pkgname = sdcardformatter
