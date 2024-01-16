@@ -1,7 +1,7 @@
 # Maintainer: Keinv Yue <k3vinyue@gmail.com>
 
 _pkgname_prefix=globalprotect-openconnect_2.0.0-beta1_
-pkgname=globalprotect-openconnect
+pkgname=globalprotect-openconnect-git
 pkgver="2.0.0beta1"
 pkgrel=1
 pkgdesc="A GUI for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
