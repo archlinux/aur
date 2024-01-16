@@ -1,0 +1,17 @@
+pkgbase = mkdocs-backlinks-plugin
+	pkgdesc = A plugin for adding backlinks to mkdocs
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/danodic-dev/mkdocs-backlinks
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = mkdocs
+	depends = python-beautifulsoup4
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs-backlinks/mkdocs-backlinks-0.9.1.tar.gz
+	b2sums = fa474e0cc320683d51876f2f68bb709a37d76d4ca603f8374a7e991a94ee8229866c8bd6eb724f6d1e45e022f2d8a2e5d665fdf4f3ad1eb9a0209ba3d1abb728
+
+pkgname = mkdocs-backlinks-plugin
