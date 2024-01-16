@@ -1,0 +1,15 @@
+pkgbase = binder_linux-dkms-git
+	pkgdesc = Binder kernel module for Waydroid.
+	pkgver = r52.13a93a4
+	pkgrel = 1
+	url = https://github.com/choff/anbox-modules
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = binder_linux-dkms
+	conflicts = anbox-modules-dkms
+	source = git+https://github.com/choff/anbox-modules.git
+	sha512sums = SKIP
+
+pkgname = binder_linux-dkms-git
