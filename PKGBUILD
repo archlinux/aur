@@ -5,12 +5,12 @@
 #  Nils Czernia <nils at czserver dot de>
 
 pkgname=matomo
-pkgver=4.16.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="A real-time web analytics platform"
 arch=("any")
 url="https://matomo.org/"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 depends=("php" "php-gd")
 replaces=("piwik")
 optdepends=("mariadb: Database server"
@@ -20,8 +20,8 @@ install="$pkgname.install"
 source=("https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz"
         "https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz.asc")
 backup=("usr/share/webapps/${pkgname}/piwik.js" "usr/share/webapps/${pkgname}/matomo.js")
-sha256sums=('385653e35f795935b0d97340c8688d8b15ba85234a0b72320696b990cf4f0959'
-            'f07ec64f68b95b4c6ad938cac984ae966e5ecb4a87d13c4e5585c60c4910fbde')
+sha256sums=('e1db485229da10fb6e11a6a781d95a22cc34c5db86e0079411a214274209f03c'
+            'SKIP')
 
 validpgpkeys=("F529A27008477483777FC23D63BB30D0E5D2C749")
 
