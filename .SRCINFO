@@ -1,6 +1,6 @@
 pkgbase = android-x86-libwebp
 	pkgdesc = WebP library and conversion tools (android)
-	pkgver = 1.3.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://developers.google.com/speed/webp/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = android-x86-libwebp
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/webmproject/libwebp/archive/v1.3.0.tar.gz
-	md5sums = 2d818a757f2de1a93d5009a69b3c1ff8
+	source = https://github.com/webmproject/libwebp/archive/v1.3.2.tar.gz
+	md5sums = 827d510b73c73fca3343140556dd2943
 
 pkgname = android-x86-libwebp
