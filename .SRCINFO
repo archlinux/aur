@@ -1,6 +1,6 @@
 pkgbase = hexalate
 	pkgdesc = Color matching game
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://gottcode.org/hexalate/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hexalate
 	makedepends = cmake
 	makedepends = qt6-tools
 	depends = qt6-base
-	source = https://gottcode.org/hexalate/hexalate-1.2.2.tar.bz2
-	sha256sums = 7afb9e4613dd84a0c1a02f3cb2c5db916c61f3ac78cc53b185d1b7207bb41507
+	source = https://gottcode.org/hexalate/hexalate-1.2.3.tar.bz2
+	sha256sums = 4e1a8391c072d030964cc4b4953031217bc8633c0d9a326a43110e9e4e4e0a62
 
 pkgname = hexalate
