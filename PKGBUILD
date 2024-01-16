@@ -16,7 +16,7 @@
 [[ -v CMAKE_FLAGS ]] && mapfile -t -d: _cmake_flags < <(echo -n "$CMAKE_FLAGS")
 
 pkgname=meshlab
-pkgver=2022.02
+pkgver=2023.12
 _pkgver_vcg=${pkgver}
 pkgrel=2
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
@@ -51,7 +51,7 @@ build() {
                   '-DCMAKE_C_COMPILER=gcc-12'
                   '-DCMAKE_CXX_COMPILER=g++-12'
                 )
-  cmake "${_cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab/src"
+  cmake "${_cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab"
 # shellcheck disable=SC2046 # allow MAKEFLAGS to split when passing multiple flags.
  ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
 }
