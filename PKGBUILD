@@ -12,9 +12,10 @@ optdepends=('perl-x11-protocol: for computing optimal graphics parameters'
 	    "${_gtk}: graphics hosted via ${_gtk}"
 	    'sdl2: graphics hosted via SDL2')
 makedepends=('perl-x11-protocol' 'libvncserver' "${_gtk}" 'sdl2')
-source=("https://osdn.net/dl/nme/${pkgname}-${pkgver}.tar.xz")
+source=("https://github.com/phabrics/nme/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
+#source=("https://osdn.net/dl/nme/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('ea72a457e0fe8144f985e0a5bf848cd5872a807f47fad492b9e1e5fbd7c173bf')
-options=(libtool debug !strip)
+options=(libtool debug !strip lto)
 install=$pkgname.install
 
 prepare()
