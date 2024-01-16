@@ -1,0 +1,14 @@
+pkgbase = netpanzer
+	pkgdesc = An online multiplayer tactical warfare game designed for fast action combat (AppImage)
+	pkgver = 0.8.7
+	pkgrel = 2
+	url = https://github.com/netpanzer/netpanzer
+	arch = x86_64
+	license = GPL2
+	provides = netpanzer
+	conflicts = netpanzer
+	options = !strip
+	source_x86_64 = https://github.com/netpanzer/netpanzer/releases/download/0.8.7-github/NetPanzer-0.8.7-x86_64-2.AppImage
+	sha256sums_x86_64 = 541bc2e4e84104259a0c0b0ec1181e57e6866ebffdeef79593fc13a2a2ca084d
+
+pkgname = netpanzer-appimage
