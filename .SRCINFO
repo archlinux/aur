@@ -1,5 +1,5 @@
 pkgbase = kefir-git
-	pkgdesc = C17 language compiler for x86_64 systems
+	pkgdesc = C17 language compiler for x86_64 systems (upstream version)
 	pkgver = 0.3.1.dev
 	pkgrel = 1
 	url = https://kefir.protopopov.lv

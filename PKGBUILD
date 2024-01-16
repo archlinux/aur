@@ -2,7 +2,7 @@
 pkgname='kefir-git'
 pkgver=0.3.1.dev
 pkgrel=1
-pkgdesc='C17 language compiler for x86_64 systems'
+pkgdesc='C17 language compiler for x86_64 systems (upstream version)'
 provides=('kefir')
 conflicts=('kefir')
 arch=('x86_64')
