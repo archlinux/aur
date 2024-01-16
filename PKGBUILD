@@ -13,6 +13,8 @@ url='https://gotosocial.org'
 license=('AGPL3')
 depends=('glibc')
 makedepends=('git' 'go' 'yarn' 'nodejs' 'go-swagger')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 options=('!lto')
 backup=(
   'etc/gotosocial/config.yaml'
