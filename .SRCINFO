@@ -1,6 +1,6 @@
 pkgbase = r-scdesign3
 	pkgdesc = A unified framework of realistic in silico data generation and statistical model inference for single-cell and spatial omics
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scDesign3
 	arch = any
@@ -30,8 +30,8 @@ pkgbase = r-scdesign3
 	optdepends = r-rmarkdown
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scDesign3_1.0.0.tar.gz
-	md5sums = 84c2f07635607b2167f24750f952745a
-	sha256sums = 229a556fd77e2ec861d1b4e1f915b0fe4e1095095cad380319680a32a1b4d5dc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scDesign3_1.0.1.tar.gz
+	md5sums = f4f74c0f98ede2f2560f556dfb14074a
+	b2sums = b24855dc14095eceac59c92033cbde0acaec4dc735d7413c1845e4371384afef5bddb1b60d41ec025a1f78034657b8f0d31906c9c34f1a0f0e530f2a372dc31c
 
 pkgname = r-scdesign3

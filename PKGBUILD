@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scDesign3
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A unified framework of realistic in silico data generation and statistical model inference for single-cell and spatial omics"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(MIT)
 depends=(
   r-biocparallel
@@ -41,12 +41,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('84c2f07635607b2167f24750f952745a')
-sha256sums=('229a556fd77e2ec861d1b4e1f915b0fe4e1095095cad380319680a32a1b4d5dc')
+md5sums=('f4f74c0f98ede2f2560f556dfb14074a')
+b2sums=('b24855dc14095eceac59c92033cbde0acaec4dc735d7413c1845e4371384afef5bddb1b60d41ec025a1f78034657b8f0d31906c9c34f1a0f0e530f2a372dc31c')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
