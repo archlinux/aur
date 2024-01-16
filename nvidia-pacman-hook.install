@@ -1,0 +1,5 @@
+post_install () {
+  echo ">>>"
+  echo ">>> Make sure the Target package set in this hook is the one you have installed."
+  echo ">>>"
+}
