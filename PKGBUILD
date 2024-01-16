@@ -1,6 +1,6 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=zcash-bin
-pkgver=5.7.0
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="Permissionless financial system employing zero-knowledge security (bin)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=("zcash=$pkgver")
 conflicts=('zcash')
 source=("https://z.cash/downloads/zcash-$pkgver-linux64-debian-bullseye.tar.gz"
         'zcashd.service')
-sha256sums=('91bccc38e8edb83cfa7ebbef685b6b252314d92ab7dfeeed0a73ef707cd34d4e'
+sha256sums=('2b7f3654c3538cf465b9e37add0dffc1ac27ec8eee7890e0ce51f3972a875f05'
             '7b0919ac447824199aff8c17b5a5799b46414818c6aed314506c5295d0ce9ccd')
 
 package() {
