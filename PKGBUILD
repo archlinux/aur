@@ -21,4 +21,6 @@ package () {
 	mkdir -p $pkgdir/usr/bin
 	cp src/pluto $pkgdir/usr/bin/pluto
 	cp src/plutoc $pkgdir/usr/bin/plutoc
+	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
+	cp LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }
