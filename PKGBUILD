@@ -2,7 +2,7 @@
 
 pkgname=('psiphon-console-client' 'psiphon-server')
 pkgbase=psiphon-tunnel-core
-pkgver=2.0.29
+pkgver=2.0.30
 pkgrel=1
 pkgdesc="Psiphon Internet censorship circumvention system."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ export CGO_CXXFLAGS="$CXXFLAGS"
 export CGO_LDFLAGS="$LDFLAGS"
 export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-if (( $(vercmp "$(go version | cut -d' ' -f3)" go1.20) >= 0 )); then
+if (( $(vercmp "$(go version | cut -d' ' -f3)" go1.21) >= 0 )); then
 	export GOFLAGS+=" -tags=PSIPHON_DISABLE_QUIC "
 fi
 
@@ -104,4 +104,4 @@ package_psiphon-server() {
 }
 
 # sums
-sha256sums=('38ba0b8a8bd3fd1229fa7eb92b95fbaed7cea4eccfaac0915374f61010366edd')
+sha256sums=('e6a533288ae5f9595ac6080dbc1fe5c267ea4db839f1667bc77b5920ae2e33fd')
