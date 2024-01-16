@@ -14,9 +14,9 @@ provides=()
 conflicts=("aliyunpan-gaozhangmin-bin")
 install=
 source_x86_64=("${url}/releases/download/v${pkgver}/alixby-${pkgver}-linux-x64.pacman" alixby.desktop)
-sha256sums_x86_64=('a245c436bdbf8d27e79abd227f82b40b3fd3b868b9e8091863bc0c21b0da6050' 'a91453d76527d65c28fe2af69a4a7fae1ff4a1fba9ab5ff552accdd7f101554b')
+sha256sums_x86_64=('a245c436bdbf8d27e79abd227f82b40b3fd3b868b9e8091863bc0c21b0da6050' '0535fce28ff22a20e919718c31d3e415600235a560a89fde34b62352ceeedf92')
 source_aarch64=("${url}/releases/download/v${pkgver}/alixby-${pkgver}-linux-aarch64.pacman" alixby.desktop)
-sha256sums_aarch64=('cc46dc1389eae3da8fc69faf9146ae1a521a3bc0868f4ee61f1f8a323b887a2c' 'a91453d76527d65c28fe2af69a4a7fae1ff4a1fba9ab5ff552accdd7f101554b')
+sha256sums_aarch64=('cc46dc1389eae3da8fc69faf9146ae1a521a3bc0868f4ee61f1f8a323b887a2c' '0535fce28ff22a20e919718c31d3e415600235a560a89fde34b62352ceeedf92')
 
 package() {
     mkdir "$pkgdir/opt"
