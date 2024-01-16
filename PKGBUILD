@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ldtk-appimage
 _pkgname=LDtk
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   "${pkgname%-appimage}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/ubuntu-distribution.zip"
   "LICENSE::https://raw.githubusercontent.com/deepnight/ldtk/v${pkgver}/LICENSE"
 )
-sha256sums=('ff67b12d531d4a79ff45cda52f5cad0d9e8dbd844903a5be353ee01b3c66e957'
+sha256sums=('8bb1c870ab35d2cadfbf08a119d3049e7986a2a80558d2610babc67fcd502566'
             'f409a37a40e823efefddac3140d991141633d4db3cec4f8667bc23b846dcc335')
 build() {
   mv "${srcdir}/${_pkgname} ${pkgver} installer.AppImage" "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
