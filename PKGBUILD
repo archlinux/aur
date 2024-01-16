@@ -20,7 +20,7 @@ pkgver() {
 }
 
 package() {
-	cd "$_pkgname"
-	install -Dm644 -t $pkgdir/usr/share/sddm/themes/where_is_my_sddm_theme where_is_my_sddm_theme/*
-	install -Dm644 -t $pkgdir/usr/share/licenses/$pkgname/ LICENSE
+    cd "$_pkgname"
+    install -Dm644 -t $pkgdir/usr/share/sddm/themes/where_is_my_sddm_theme where_is_my_sddm_theme/*
+    install -Dm644 -t $pkgdir/usr/share/licenses/$pkgname/ LICENSE
 }
