@@ -1,10 +1,10 @@
 pkgbase = bash-supergenpass-git
 	pkgdesc = Bash shell-script implementation of SuperGenPass
-	pkgver = 0.r5.c84eaa2
+	pkgver = 0.r20.e5d9659
 	pkgrel = 1
 	url = https://github.com/lanzz/bash-supergenpass
 	arch = any
-	license = custom
+	license = MIT
 	makedepends = git
 	depends = bash
 	depends = openssl
@@ -14,4 +14,3 @@ pkgbase = bash-supergenpass-git
 	md5sums = SKIP
 
 pkgname = bash-supergenpass-git
-
