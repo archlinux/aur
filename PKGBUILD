@@ -1,7 +1,7 @@
 # Maintainer: Keinv Yue <k3vinyue@gmail.com>
 
 _pkgname_prefix=globalprotect-openconnect_2.0.0-beta1_
-pkgname=globalprotect-openconnect-git
+pkgname=globalprotect-openconnect
 pkgver="2.0.0beta1"
 pkgrel=1
 pkgdesc="A GUI for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
@@ -26,16 +26,24 @@ options=('!strip')
 package() {
   _pkg=${_pkgname_prefix}${CARCH}
 
-  install -Dm755 "${srcdir}/${_pkg}/usr/bin/gpclient" "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${_pkg}/usr/bin/gpservice" "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${_pkg}/usr/bin/gpauth" "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${_pkg}/usr/bin/gpgui" "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/share/applications"
+  install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+  install -d "${pkgdir}/usr/share/icons/hicolor/32x32/apps"
+  install -d "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+  install -d "${pkgdir}/usr/share/icons/hicolor/256x256@2/apps"
+  install -d "${pkgdir}/usr/share/polkit-1/actions"
 
-  install -Dm644 "${srcdir}/${_pkg}/usr/share/applications/gpgui.desktop" "${pkgdir}/usr/share/applications"
-  install -Dm644 "${srcdir}/${_pkg}/usr/share/icons/hicolor/scalable/apps/gpgui.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-  install -Dm644 "${srcdir}/${_pkg}/usr/share/icons/hicolor/32x32/apps/gpgui.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps"
-  install -Dm644 "${srcdir}/${_pkg}/usr/share/icons/hicolor/128x128/apps/gpgui.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-  install -Dm644 "${srcdir}/${_pkg}/usr/share/icons/hicolor/256x256@2/apps/gpgui.png" "${pkgdir}/usr/share/icons/hicolor/256x256@2/apps"
-  install -Dm644 "${srcdir}/${_pkg}/usr/share/polkit-1/actions/com.yuezk.gpgui.policy" "${pkgdir}/usr/share/polkit-1/actions"
+  install -m755 "${srcdir}/${_pkg}/usr/bin/gpclient" "${pkgdir}/usr/bin"
+  install -m755 "${srcdir}/${_pkg}/usr/bin/gpservice" "${pkgdir}/usr/bin"
+  install -m755 "${srcdir}/${_pkg}/usr/bin/gpauth" "${pkgdir}/usr/bin"
+  install -m755 "${srcdir}/${_pkg}/usr/bin/gpgui" "${pkgdir}/usr/bin"
+
+  install -m644 "${srcdir}/${_pkg}/usr/share/applications/gpgui.desktop" "${pkgdir}/usr/share/applications"
+  install -m644 "${srcdir}/${_pkg}/usr/share/icons/hicolor/scalable/apps/gpgui.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+  install -m644 "${srcdir}/${_pkg}/usr/share/icons/hicolor/32x32/apps/gpgui.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps"
+  install -m644 "${srcdir}/${_pkg}/usr/share/icons/hicolor/128x128/apps/gpgui.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+  install -m644 "${srcdir}/${_pkg}/usr/share/icons/hicolor/256x256@2/apps/gpgui.png" "${pkgdir}/usr/share/icons/hicolor/256x256@2/apps"
+  install -m644 "${srcdir}/${_pkg}/usr/share/polkit-1/actions/com.yuezk.gpgui.policy" "${pkgdir}/usr/share/polkit-1/actions"
 }
 
