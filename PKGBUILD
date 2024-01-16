@@ -24,12 +24,9 @@ arch=('i686' 'x86_64')
 url="https://www.meshlab.net"
 license=('GPL2')
 depends=('bzip2' 'cgal' 'glew' 'glu' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns' 'xerces-c')
-makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'levmar' 'lib3ds' 'mpir' 'openctm-tools' 'gcc12')
-optdepends=('u3d: for U3D and IDTF file support'
-            'lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
-            'levmar: for isoparametrization and mutualcorrs plugins'
+makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'lib3ds' 'openctm-tools' 'gcc12')
+optdepends=('lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
             'muparser: for filer_func plugins'
-            'mpir: for Constructive Solid Geometry operation filters'
             'openctm-tools: for compressed triangle mesh file format')
 source=("$pkgname::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=MeshLab-${pkgver}"
         "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=${_pkgver_vcg}"

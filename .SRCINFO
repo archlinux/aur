@@ -12,9 +12,7 @@ pkgbase = meshlab
 	makedepends = ninja
 	makedepends = git
 	makedepends = muparser
-	makedepends = levmar
 	makedepends = lib3ds
-	makedepends = mpir
 	makedepends = openctm-tools
 	makedepends = gcc12
 	depends = bzip2
@@ -27,11 +25,8 @@ pkgbase = meshlab
 	depends = qt5-script
 	depends = qt5-xmlpatterns
 	depends = xerces-c
-	optdepends = u3d: for U3D and IDTF file support
 	optdepends = lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support
-	optdepends = levmar: for isoparametrization and mutualcorrs plugins
 	optdepends = muparser: for filer_func plugins
-	optdepends = mpir: for Constructive Solid Geometry operation filters
 	optdepends = openctm-tools: for compressed triangle mesh file format
 	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=MeshLab-2023.12
 	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=2023.12
