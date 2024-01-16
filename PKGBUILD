@@ -1,5 +1,3 @@
-# Maintainer: Daniel Bermond <dbermond@archlinux.org>
-
 pkgname=vkcv-test
 pkgver=0.2.0
 pkgrel=3
