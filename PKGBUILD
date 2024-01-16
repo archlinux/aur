@@ -1,8 +1,9 @@
 # Maintainer: Willy Micieli <micieli at vivaldi.net>
+# Contributor: Willy Micieli <micieli at vivaldi.net>
 
 pkgname=zuu
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A git hook test runner for rust programer" 
 provides=("zuu")
 arch=('any')
