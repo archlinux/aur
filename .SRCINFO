@@ -1,12 +1,13 @@
 pkgbase = guapow
 	pkgdesc = On-demand and auto performance optimizer for Linux applications
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/vinifmor/guapow
 	arch = any
 	license = zlib/libpng
-	makedepends = git
-	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-aiofiles
@@ -15,7 +16,7 @@ pkgbase = guapow
 	depends = systemd
 	optdepends = inxi: required for guessing the window compositor,
 	optdepends = unclutter: required for hiding the mouse cursor
-	source = https://github.com/vinifmor/guapow/archive/1.3.3.tar.gz
-	sha512sums = 5c1f6806531e9c971fe1f651314093655ddbf356398399ab3e41944f257f24c52072e11ff606c73bced7056d69d01b616f27563d57cda2be427c32391af25663
+	source = https://github.com/vinifmor/guapow/archive/1.3.4.tar.gz
+	sha512sums = 8a75f15fe30c5eb0d03e086a612742f27b8483bf62cb2ce8e54f569815e4fd1ff2f5d31b9715a6b1b915fe7b68a014a787571e1300e1054cf5e4f53a78ee4a12
 
 pkgname = guapow
