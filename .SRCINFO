@@ -1,10 +1,10 @@
 pkgbase = libadwaita-testing
 	pkgdesc = Building blocks for modern adaptive GNOME applications
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gnome.pages.gitlab.gnome.org/libadwaita/
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	checkdepends = weston
 	makedepends = git
 	makedepends = meson
