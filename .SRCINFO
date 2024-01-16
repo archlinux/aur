@@ -1,6 +1,6 @@
 pkgbase = kuro-git
 	pkgdesc = An elegant Microsoft ToDo desktop client for Linux (a fork of Ao)
-	pkgver = 9.0.0.r5.g0555720
+	pkgver = 9.0.0.r9.g8872d85
 	pkgrel = 1
 	url = https://github.com/davidsmorais/kuro
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = kuro-git
 	depends = hicolor-icon-theme
 	provides = kuro
 	conflicts = kuro
-	source = kuro::git+https://github.com/davidsmorais/kuro.git
+	source = kuro.git::git+https://github.com/davidsmorais/kuro.git
 	source = kuro.sh
 	sha256sums = SKIP
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = kuro-git

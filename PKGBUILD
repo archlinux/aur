@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kuro-git
 _pkgname=Kuro
-pkgver=9.0.0.r5.g0555720
+pkgver=9.0.0.r9.g8872d85
 _electronversion=22
+_nodeversion=16
 pkgrel=1
 pkgdesc="An elegant Microsoft ToDo desktop client for Linux (a fork of Ao)"
 arch=('x86_64')
@@ -22,19 +23,19 @@ makedepends=(
     'gendesk'
 )
 source=(
-    "${pkgname%-git}::git+${url}.git"
+    "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 16
-    nvm use 16
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
@@ -42,20 +43,24 @@ build() {
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-git}"
-    cd "${srcdir}/${pkgname%-git}"
+    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname//-/.}"
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     sed "s|--publish never|--linux AppImage --publish never|g" -i package.json
     yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn release
+    yarn run release
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname%-git}/build/icons/png/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname//-/.}/build/icons/png/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
     
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}/license.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/license.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
