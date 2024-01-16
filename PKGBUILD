@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytm-dlp-gui
 _pkgname=YTM-DLP-GUI
-pkgver=1.1.0
+pkgver=1.2.0
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="An ElectronJS app for downloading music off Youtube Music."
 arch=('any')
 url="https://github.com/RENOMIZER/ytm-dlp-gui"
@@ -36,7 +36,7 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
-    sed '64,80d' -i forge.config.js
+    sed '63,78d' -i forge.config.js
     npm install
     npm run package
 }
