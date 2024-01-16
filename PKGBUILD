@@ -3,8 +3,8 @@
 
 _gitname=captdriver
 pkgname=${_gitname}-git
-pkgver=r138.a3036a4
-pkgrel=2
+pkgver=r170.6271924
+pkgrel=1
 pkgdesc='Open source CUPS driver for Canon CAPT printers (not stable, formerly foo2capt)'
 arch=('any')
 url='https://github.com/mounaiban/captdriver'
@@ -27,7 +27,7 @@ build() {
     automake --add-missing
     ./configure --prefix=/usr/
     make
-    ppdc -v -d . src/canon-lbp.drv
+    make ppd
 }
 
 package() {
@@ -38,8 +38,8 @@ package() {
     install -D -m 755 "${srcdir}/${_gitname}/src/rastertocapt" "${pkgdir}/usr/lib/cups/filter/rastertocapt"
 
     install -m 755 -d "${pkgdir}/usr/share/cups/model/" || return 1
-    install -D -m 644 "${srcdir}/${_gitname}/CanonLBP-2900-3000.ppd" "${pkgdir}/usr/share/cups/model/CanonLBP-2900-3000.ppd"
-    install -D -m 644 "${srcdir}/${_gitname}/CanonLBP-3010-3018-3050.ppd" "${pkgdir}/usr/share/cups/model/CanonLBP-3010-3018-3050.ppd"
+    install -D -m 644 "${srcdir}/${_gitname}/ppd/CanonLBP-2900-3000.ppd" "${pkgdir}/usr/share/cups/model/CanonLBP-2900-3000.ppd"
+    install -D -m 644 "${srcdir}/${_gitname}/ppd/CanonLBP-3010-3018-3050.ppd" "${pkgdir}/usr/share/cups/model/CanonLBP-3010-3018-3050.ppd"
 
 
 
