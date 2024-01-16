@@ -1,7 +1,7 @@
 # Maintainer: iguanajuice (no email)
 pkgname="swayfx-i3-style-fullscreen-git"
 pkgver=r7023.9cd02fc4
-pkgrel=1
+pkgrel=5
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
