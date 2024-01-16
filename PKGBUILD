@@ -1,15 +1,15 @@
 pkgbase=xrt
 pkgname=(xrt xrt-docs)
-_pkgver_major=2022
-_pkgver_minor=2
+_pkgver_major=2023
+_pkgver_minor=1
 pkgver=${_pkgver_major}.${_pkgver_minor}
-_pkgrelasever=2.14
-_pkgpatchver=354
+_pkgrelasever=2.15
+_pkgpatchver=225
 _upstream_tag=${_pkgver_major}${_pkgver_minor}0.${_pkgrelasever}.${_pkgpatchver}
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Xilinx/XRT"
-license=('EULA')
+license=('Apache-2.0 AND GPL-2.0-only')
 # TODO: check how 'libxcrypt'(libcrypt.so) is used.
 # TODO: check how 'find_package(Curses)' is used.
 # TODO: check for a complete list of dependencies
@@ -33,14 +33,10 @@ source=(
     "dma_ip_drivers-${_dma_ip_drivers_tag}.tar.gz::https://github.com/Xilinx/dma_ip_drivers/archive/${_dma_ip_drivers_tag}.tar.gz"
     # See src/runtime_src/doc/CMakeLists.txt
     "kernel-doc::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/scripts/kernel-doc?h=v4.14.52"
-    # We need to use this modified version of OpenCL.pc until Archlinux updates
-    # `opencl-headers` and brings proper `OpenCL-Headers.pc` for `oci-icd`
-    "OpenCL.pc"
 )
 sha256sums=('SKIP'
             '957ef7db9f4a604e340f89d748cf5fb8289f51194f4a15e09650270ab23e696d'
-            '6956bf3fb7ba425d9d136dad908a0aa331c6faeda522d2bce0c3756c0619985b'
-            'c08a8b724d41ac17a85b3bf855f8cfdbb1ab7a49401ea22b996e5b0e6ae2a66a')
+            '6956bf3fb7ba425d9d136dad908a0aa331c6faeda522d2bce0c3756c0619985b')
 
 prepare() {
     cd "${srcdir}/XRT/src/runtime_src/core/pcie/driver/linux/xocl/lib/"
@@ -57,7 +53,6 @@ build() {
     chmod +x ./kernel-doc
 
     export CXXFLAGS="${CXXFLAGS} -include cstdint"
-    export PKG_CONFIG_PATH="${srcdir}"
     # TODO: set `$ENV{XILINX_VITIS}/gnu/microblaze` to allow
     # `src/runtime_src/ert` to be built.
 	cmake ../src \
