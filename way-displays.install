@@ -1,10 +1,10 @@
 all_off="$(tput sgr0)"
 bold="${all_off}$(tput bold)"
 red="${bold}$(tput setaf 1)"
-green="${bold}$(tput setaf 2)"
-yellow="${bold}$(tput setaf 3)"
-blue="${bold}$(tput setaf 4)"
-magenta="${bold}$(tput setaf 5)"
+green="${bold}$(tput setaf 2)" # PR
+yellow="${bold}$(tput setaf 3)" # title
+blue="${bold}$(tput setaf 4)" # section
+magenta="${bold}$(tput setaf 5)" # issue
 
 # Colored makepkg-like functions
 note() {
@@ -32,13 +32,12 @@ magen() {
 }
 
 post_install() {
-    yello "1.9.0"
+    yello "1.10.0"
     blue  "New Features:"
-	plain "  TRANSFORM"
-	plain "  Allow exact refresh HZ up to 3d.p."
+    plain "  ${magenta}#135${all_off} add AUTO_SCALE_MIN/MAX by @dancek in ${green}#136${all_off}"
+    plain "  ${magenta}#151${all_off} add VRR_OFF hint on adaptive sync failure by @alex-courtis in ${green}#152${all_off}"
     blue  "Bug Fixes:"
-	plain "  Ignore multiple preferred modes"
-	plain "  Apply VRR_OFF via CLI and cfg.yaml"
+    plain "  ${magenta}#147${all_off} retry after cancellations up to 3 times by @alex-courtis in ${green}#149${all_off}"
     plain ""
 }
 
