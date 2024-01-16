@@ -2,8 +2,8 @@
 # Contributor: Shayne Hartford <shayneehartford@gmail.com>
 
 pkgname=plasma5-themes-layan-git
-pkgver=r73.7ab7cd7
-pkgrel=2
+pkgver=r75.c4cce9d
+pkgrel=1
 pkgdesc="A flat Design theme for KDE Plasma desktop"
 arch=(any)
 url="https://github.com/vinceliuice/Layan-kde"
@@ -26,11 +26,19 @@ pkgver() {
 prepare() {
     cd "$srcdir/${pkgname%-git}"
     sed -i "s#/usr/share#$pkgdir/usr/share#" install.sh
+    cd "$srcdir/${pkgname%-git}/sddm"
+    sed -i "s#/usr/share#$pkgdir/usr/share#" install.sh
 }
 
 package() {
+    # Install aurorae themes, kvantum themes, plasma color schemes, 
+    # plasma desktop themes, plasma look-and-feel packages.
     cd "$srcdir/${pkgname%-git}"
-
     install -d "$pkgdir/usr/share"
+    ./install.sh
+
+    # Install sddm themes.
+    cd "$srcdir/${pkgname%-git}/sddm"
+    install -d "$pkgdir/usr/share/sddm/themes"
     ./install.sh
 }
