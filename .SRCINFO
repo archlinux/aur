@@ -1,24 +1,24 @@
 pkgbase = krux-installer-bin
 	pkgdesc = A GUI based application to flash Krux firmware on K210 based devices
-	pkgver = 0.0.1
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/selfcustody/krux-installer
 	arch = x86_64
 	license = MIT
-	makedepends = squashfuse
 	depends = electron28
 	depends = libx11
 	depends = gdk-pixbuf2
 	depends = gtk2
 	depends = java-runtime
 	depends = startup-notification
-	provides = krux-installer=0.0.1
+	depends = gconf
+	provides = krux-installer=0.0.11
 	conflicts = krux-installer
-	source = krux-installer-0.0.1.AppImage::https://github.com/selfcustody/krux-installer/releases/download/v0.0.1/krux-installer_0.0.1_amd64.deb
-	source = LICENSE-0.0.1::https://raw.githubusercontent.com/selfcustody/krux-installer/v0.0.1/LICENSE
+	source = krux-installer-0.0.11.deb::https://github.com/selfcustody/krux-installer/releases/download/v0.0.11/krux-installer_0.0.11_amd64.deb
+	source = LICENSE-0.0.11::https://raw.githubusercontent.com/selfcustody/krux-installer/v0.0.11/LICENSE
 	source = krux-installer.sh
-	sha256sums = 02ec46048b0e46ea95ac53c450804cd445b32343144b1a61939ad1d9fc488f4b
+	sha256sums = 89fc4065390ac578195e7fc01e85bf2acc17e53193c3262114b03fbd82459dae
 	sha256sums = 29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = krux-installer-bin

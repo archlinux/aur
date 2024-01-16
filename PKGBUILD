@@ -2,7 +2,7 @@
 # Maintainer: qlrd <qlrddev at gmail dot com>
 pkgname=krux-installer-bin
 _pkgname="org.selfcustody.${pkgname%-bin}"
-pkgver=0.0.1
+pkgver=0.0.11
 _electronversion=28
 pkgrel=1
 pkgdesc="A GUI based application to flash Krux firmware on K210 based devices"
@@ -18,18 +18,16 @@ depends=(
     'gtk2'
     'java-runtime'
     'startup-notification'
-)
-makedepends=(
-    'squashfuse'
+    'gconf'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"    
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"    
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/selfcustody/krux-installer/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('02ec46048b0e46ea95ac53c450804cd445b32343144b1a61939ad1d9fc488f4b'
+sha256sums=('89fc4065390ac578195e7fc01e85bf2acc17e53193c3262114b03fbd82459dae'
             '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
