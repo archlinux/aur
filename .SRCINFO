@@ -1,6 +1,6 @@
 pkgbase = kapow
 	pkgdesc = Punch clock to track time spent on projects
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://gottcode.org/kapow/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kapow
 	makedepends = cmake
 	makedepends = qt6-tools
 	depends = qt6-base
-	source = https://gottcode.org/kapow/kapow-1.6.1.tar.bz2
-	sha256sums = 02d28c49dc84c53be1d42042f9e5e063369e098819d5cac89ce07fc3a8dd4a9d
+	source = https://gottcode.org/kapow/kapow-1.6.2.tar.bz2
+	sha256sums = aaeb1fe4f4fc671a7c3180757f9aa53f8466588ccce106eda84eba8c69adbf02
 
 pkgname = kapow
