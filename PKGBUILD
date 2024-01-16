@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=curlyq
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="A command line helper for curl and web scraping"
 arch=(any)
@@ -25,7 +25,7 @@ checkdepends=(
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1ed946ae3ba71e7833ecb9d9f2c504a3aa7d73d6426627485eb023da958fcf5d')
+sha256sums=('44c9e87229e5301912ef0952cf76fa4ff64261c5fa22b69cd5cb5dc36deb27ec')
 
 _archive="$pkgname-$pkgver"
 
@@ -114,6 +114,6 @@ package() {
 
   cp --archive --verbose tmp_install/* "$pkgdir"
 
-  install --verbose -D --mode=0644 LICENSE.txt --target-directory "$pkgdir/usr/share/licenses/$pkgname"
-  install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
