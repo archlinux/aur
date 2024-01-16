@@ -1,19 +1,19 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 _name=fuo-ytmusic
 pkgname=feeluown-ytmusic
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="YouTube Music for FeelUOwn music player"
 arch=('any')
 url="https://github.com/feeluown/feeluown-ytmusic"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('feeluown' 'python-pydantic' 'python-cachetools' 'python-pytube' 'python-ytmusicapi')
 makedepends=('python-setuptools' 'python-pip')
 optdepends=('feeluown-netease: Lyric source')
 source=(
 	"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
-sha256sums=('4cbfc440b22617858ec38f25258f7ec33f6d7226f79081ed39210de9d4ffb779')
+sha256sums=('38e24898f4906462b1eaa9a01ebd561ea769f52c0ff7da7c91a599e733de70e6')
 
 build() {
 	cd "$_name-$pkgver"
