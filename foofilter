@@ -39,6 +39,6 @@ case "${fileinfo}" in
 esac
 
 # foomatic-rip sends stuff to the standard output
-/usr/bin/foomatic-rip-lprng --lprng "/etc/lprng/lpd/$your_ppd" < "${tempfile}"
+/usr/bin/foomatic-rip-lprng --lprng "/etc/lprng/lpd/${your_ppd}" < "${tempfile}"
 
 rm -f "${infile}" "${tempfile}"

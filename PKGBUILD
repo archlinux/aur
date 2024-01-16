@@ -4,28 +4,32 @@
 # Contributor: Frank Thieme <frank at fthieme dot net>
 
 # TODO: Did I miss references or fix too many in man pages.
-# TODO: Fix lpc [lpd|lpq|lprm] and other internal usages? These run the CUPS executables.
+# (done) TODO: Fix lpc [lpd|lpq|lprm] and other internal usages? These run the CUPS executables.
 # TODO: Improve instructions for LPR only support for brand name printers.
 # TODO: We shouldn't be the ones to rename the binaries. Upstream should implement EXEEXT.
 # TODO: Are there better versions of these old filters?
 
 # Renaming cups binaries has race conditions where binaries are bogus or missing for a short time.
 
-set -u
-
-_opt_SSL10=1
+_opt_SSL=0
+_opt_SSLVER='' # Compiles with 3.0, don't know if it works
+#_opt_SSLVER='-1.0' # no longer needed, patched by Debian
+#_opt_SSLVER='-1.1'
 
 _primarylpr=0 # Can be changed between installs
 # 0 - cups  binaries with original name lp lpr lpq, alternate names for lprng
 # 1 - lprng binaries with original name lp lpr lpq, alternate names for cups
+# 2 - lprng binaries, original package, does not coexist with cups
 # Final test: install 0 twice, install 1 twice, install cups, install 0 twice
 
 # suffix for conflicting binaries: lpr -> lprng so tab completion will find it
 # Can be changed between installs.
 if [ "${_primarylpr}" -eq 0 ]; then
   _sfx='ng' # sources contain EXEEXT but I couldn't get it to do anything.
-else
+elif [ "${_primarylpr}" -eq 1 ]; then
   _sfx='cups'
+else
+  _sfx=''
 fi
 
 # Need: Web based printcap editor, LPInfo?
@@ -91,20 +95,22 @@ _spooldir='/var/spool/lpd'
 _printcap='/etc/lprng/printcap'
 _service='lpd.service'
 
+set -u
 pkgname='lprng'
-pkgver='3.8.C'
+pkgver='3.9.0'
 pkgrel='1'
-pkgdesc='an enhanced, extended, and portable implementation of the Berkeley LPR lpd print spooler functionality'
+pkgdesc='an enhanced, extended, and portable implementation of the Berkeley LPR lpd print spooler'
 if [ ! -z "${_sfx}" ]; then
   pkgname+='-cups'
   pkgdesc+=' that coexists with CUPS'
 fi
-arch=('i686' 'x86_64')
-url='http://lprng.sourceforge.net'
+arch=('i686' 'x86_64' 'armv6h')
+#url="http://www.lprng.com"
+url='https://lprng.sourceforge.net'
 license=('custom:Artistic')
-depends=('bash' 'file' 'grep' 'sed')
-if [ "${_opt_SSL10}" -ne 0 ]; then
-  depends+=('openssl-1.0')
+depends=('glibc' 'bash' 'file' 'grep' 'sed')
+if [ "${_opt_SSL}" -ne 0 ]; then
+  depends+=("openssl${_opt_SSLVER}")
 fi
 optdepends=(
   'poppler: pdf to ps conversion in filters (gsfilter)' # formerly xpdf
@@ -129,7 +135,6 @@ if [ ! -z "${_sfx}" ]; then
   fi
 else
   conflicts=('cups')
-  _primarylpr=0
 fi
 backup=(
   'etc/lprng/lpd/lpd.conf'
@@ -145,7 +150,7 @@ _mans=(
   'man1/lpstat.1'
   'man8/lpc.8'
 )
-if [ "${_primarylpr}" -ne 0 ]; then
+if [ "${_primarylpr}" -eq 1 ]; then
   _bins=("${_mans[@]##*/}")
   _bins=("${_bins[@]%%.*}")
   _binscups=("${_bins[@]/#/usr\/bin/}")
@@ -158,7 +163,10 @@ install="${pkgname%%-*}.install"
 _srcdir="lprng-${pkgver}"
 source=(
   "http://sourceforge.net/projects/lprng/files/lprng/lprng-${pkgver}.tar.gz"
-  '0000-lprng-help-website.patch'
+  #'0000-lprng-help-website.patch' # Clean outdated info from help files
+  '0001-hardlink-to-symlink-binaries.patch'
+  '0002-openssl_1.1.patch' # https://sources.debian.org/data/main/l/lprng/3.8.B-7/debian/patches/openssl_1.1.patch
+  '0003-lpc-lpq-lprm-suffix.manual.patch'
   'lpd.service'
   'gsfilter'
   'psfilter'
@@ -169,23 +177,27 @@ source=(
   'lpd.conf'
   'lpd.perms'
 )
-md5sums=('5901bed95e61d2bea3ba3056056af432'
-         'c9c774d21fe1304c69a62dfe8c7f77ee'
+md5sums=('10f4ec823df0e021404284037138aa8a'
+         '08fbfe9aac9aebdd88f71afc557b5e68'
+         'c8f1ae4eefe6b82d9097f095ab1557c8'
+         '06db650ad6f5704e7a177bae23500977'
          'a59c448b0e37db80422175b7a1a2c304'
-         '2a45ea95fc86bf9ae61f932aaac9d214'
+         'ce6f32b57a8e650f610523a6afaaf659'
          'd6c523f275bb63f68bf17d5ca02e4814'
-         'd8390a6cb0126dabf029fdd2c9dc07c8'
+         '1fa86ca79140bed23d59a552ac2d39b2'
          '496dfbb160f2a0308b7847541b03c8db'
          '422ad79bda6ae9d2990fdef55240e569'
          '1768d2f81d6d14c22686293ca60528c1'
          '3ef9f91dc0de273da1f5f1b20d49cd17'
          '3f861c75c2d68c0e45b4095ab39ba1c8')
-sha256sums=('694a1747a96385b89e93f43343bf35cee5c8c73353a83814106911c99f09de10'
-            'dc219daa8dccd6e02039568e54fa15bc0dd993f99eb2a79a1336d1212a831b71'
+sha256sums=('c92597671f4c7cbe8bb3f38fbc4283354db84c6abff1efb675fa2e120421915d'
+            '96828bce13d6548a02e1d9849e713c950312b5c38c2282f2c5cfc5be454c6784'
+            '269d2fdd0bbef11aa933cd4d49c06a44ce227badeec2530f199b185c7bd7f4f7'
+            'd071adace21df32507d69c908851dc94511f404ecea4095bcdbb7d8504d97241'
             '3b546e8dd8f7ef3a1025d7d59ed8187fa21a9b9cf839a9bbda9821733da046e1'
-            '78b9b6a30ab53f55407b873cbc23df3a129dcd22a2d55557b9e7ac3dc13b8c19'
+            'c6a696dea62f7ffdade6a3071d201d076ee81e4aa14283dd4072578665e5eb7a'
             'f1a8a318f210cfc3814d234cb98a3de0c7a161c0e0c5671fe1c266ee03e351ec'
-            'a13fb767cbd142100e8020aac5b0f091f50a42602768665b8e2595f74fa31c4d'
+            'ce83b23dd188876b0b66de70f8b13d12036ba2ec1b837212bce6a172308904d4'
             'be383447b74cf9b86666adeaf35f844b394c222abbcda7f5cd7fc64f79373b82'
             'fc94245b58b23c9498a10c64aed20b6120595c6c3e1412bb419126ca78123a94'
             'a4c261f5754b380ff85c454249a152cb67baf9bbf10dc95cd16026f90bacb620'
@@ -196,9 +208,23 @@ prepare() {
   set -u
   cd "${_srcdir}"
 
-  # Clean outdated info from help files
-  #cp -rp "../${_srcdir}"{,.orig}; echo "diff -Naru3 ${_srcdir}{.orig,} > 'new-0000-lprng-help-website.patch'"; false
-  patch -Nup1 -i "${srcdir}/0000-lprng-help-website.patch"
+  local _f
+  for _f in "${source[@]}"; do
+    _f="${_f%%::*}"
+    _f="${_f##*/}"
+    if [[ "${_f}" = *.manual.patch ]]; then
+      if [ "${_primarylpr}" -eq 0 ]; then
+        set +u; msg2 "Patch ${_f}"; set -u
+        patch -Nup1 -i <(sed -E -e "s:@SUFFIX@:${_sfx}:g" "${srcdir}/${_f}")
+      fi
+    elif [[ "${_f}" = *.patch ]]; then
+      set +u; msg2 "Patch ${_f}"; set -u
+      patch -Nup1 -i "${srcdir}/${_f}"
+    fi
+  done
+  #cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
+  #diff -pNaru5 'a' 'b' > '0000-new.patch'
+
   sed -e 's:/var/spool/LPD:/var/spool/lpd:g' -i 'man/lpd.n'
 
   # Clean up sbin
@@ -240,11 +266,15 @@ build() {
       --prefix='/usr'
     )
     local _lf=''
-    local _cf=' -Wno-unused-result -s'
-    if [ "${_opt_SSL10}" -ne 0 ]; then
-      _cf+=' -I/usr/include/openssl-1.0'
-      _lf+=' -L/usr/lib/openssl-1.0'
+    local _cf=' -Wno-unused-result -s -fcommon'
+    if [ "${_opt_SSL}" -ne 0 ]; then
+      if [ ! -z "${_opt_SSLVER}" ]; then
+        _cf+=" -I/usr/include/openssl${_opt_SSLVER}"
+        _lf+=" -L/usr/lib/openssl${_opt_SSLVER}"
+      fi
       _conf+=(--enable-ssl)
+    else
+      _conf+=(--disable-ssl)
     fi
     set -x
     CFLAGS="${CFLAGS}${_cf}" \
@@ -253,7 +283,7 @@ build() {
     set +x
   fi
   set -x
-  make -s # -j"$(nproc)"
+  make -s
   set +x
   set +u
 }
@@ -273,6 +303,9 @@ EOF
   cd "${srcdir}"
 
   install -d "${pkgdir}${_spooldir}"
+  if [ "${_opt_SSL}" -eq 0 ]; then
+    rm "${pkgdir}/usr/bin"/*certs "${pkgdir}/usr/share/man/man1"/*certs*
+  fi
   install -Dpm0644 'lpd.service' "${pkgdir}/usr/lib/systemd/system/${_service}"
   install -Dpm0755 'foofilter' 'gsfilter' 'psfilter' -t "${pkgdir}/usr/share/doc/${pkgname}/"
   install -Dpm0644 'printcap_remote' 'printcap_server' 'README' -t "${pkgdir}/usr/share/doc/${pkgname}/"
@@ -308,16 +341,13 @@ _postinst='${_script}' # secondary needs this to clean up afer a primary -> seco
 _primarylpr='${_primarylpr}' # This is a post-upgrade setting sent to the pre-upgrade script
 _cdir='${_cdir}'
 
-" "${startdir}/${install%.pkg}" > "${startdir}/${install}"
+" <(sed -E -e 's:^_[a-z]+=:#&:g' "${startdir}/${install%.pkg}") > "${startdir}/${install}"
   bash -n "${startdir}/${install}" || echo "${}"
 
   # Produce suffix cups or suffix lprng
   if [ ! -z "${_sfx}" ]; then
     if [ "${_primarylpr}" -ne 0 ]; then
       pushd "${pkgdir}/usr/bin"
-      # Overwrite hard links with soft links
-      ln -sf 'lpr' 'lp'
-      ln -sf 'lprm' 'cancel'
       local _ldir="usr/lib/${pkgname}/lprng"
       local _cdir="usr/lib/${pkgname}/cups"
       # folders to store conflicting lprng and cups files
@@ -370,7 +400,8 @@ else
 fi
 
 # -t to generate cups test files, test option only
-# -c to install/upgrade cups
+# -c to install/upgrade cups from pacman hook
+# Install method isn't used any more
 # -l to post-install lprng
 # -p to pre-upgrade lprng
 # -u to post-upgrade lprng
@@ -550,7 +581,7 @@ EOF
             -e "1,2 s:\b${_f^^}\b:&${_sfx}:g" \
           -i "${pkgdir}/usr/share/man/${_fx}"
       done
-      # Overwrite hard links with soft links
+      # Overwrite hard or symlinks with suffix soft links
       ln -sf "lpr${_sfx}" "lp${_sfx}"
       ln -sf "lprm${_sfx}" "cancel${_sfx}"
       # Rename man pages.

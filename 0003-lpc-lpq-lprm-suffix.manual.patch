@@ -1,0 +1,19 @@
+diff -pNaru5 a/src/common/lpc.c b/src/common/lpc.c
+--- a/src/common/lpc.c	2023-03-17 17:26:01.000000000 -0400
++++ b/src/common/lpc.c	2024-01-15 05:12:39.178363297 -0500
+@@ -322,10 +322,15 @@ void doaction( struct line_list *args )
+ 			Show_formatted_info();
+ 		}
+ 	} else if( action == OP_LPQ || action == OP_LPRM ){
+ 		pid_t pid, result;
+ 		plp_status_t status;
++		{
++			s=args->list[0];
++			args->list[0]=safestrdup2(s,"@SUFFIX@",__FILE__,__LINE__);
++			free(s);
++		}
+ 		if( args->count == 1 && Printer_DYN ){
+ 			plp_snprintf(msg,sizeof(msg), "-P%s", Printer_DYN );
+ 			Add_line_list(args,msg,0,0,0);
+ 			Check_max(args,1);
+ 			args->list[args->count] = 0;

@@ -1,6 +1,18 @@
 _printcap='/etc/lprng/printcap'
 _service='lpd.service'
 
+_clean_untracked() {
+  set -u
+  local _untracked=(
+    '/usr/share/doc/lprng/lpd.conf.sample'
+    '/usr/share/doc/lprng/lpd.perms.sample'
+    '/usr/share/doc/lprng/printcap.sample'
+  )
+  # These untracked files can't be cleaned any other way
+  rm -f "${_untracked[@]}"
+  set +u
+}
+
 _post_ui() {
   set -u
   systemctl daemon-reload
@@ -20,10 +32,12 @@ _post_ui() {
 
 post_upgrade() {
   _post_ui
+  _clean_untracked
 }
 
 post_install() {
   _post_ui
+  _clean_untracked
 }
 
 pre_remove() {
@@ -31,8 +45,5 @@ pre_remove() {
   systemctl stop "${_service}"
   systemctl disable "${_service}"
   set +u
-}
-
-post_remove() {
-  systemctl daemon-reload
+  _clean_untracked
 }

@@ -42,7 +42,7 @@ case "${fileinfo}" in
 esac
 
 # run the postscript through gs to produce device output in a file
-echo 'quit' | gs -sOutputFile="${outfile}" -q -sPAPERSIZE="$GSPAPER" -dSAFER \
+echo 'quit' | gs -sOutputFile="${outfile}" -q -sPAPERSIZE="${GSPAPER}" -dSAFER \
     -dNOPAUSE -sDEVICE="${GSDEVICE}" "${tempfile}" > /dev/null 2>&1
 
 # send output file to standard out
