@@ -1,31 +1,25 @@
-# Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
+# Maintainer: Marek Küthe <m.k@mk16.de>
+
 pkgname=pcapfix
-pkgver=1.1.4
+pkgver=1.1.7
 pkgrel=1
-epoch=
-pkgdesc="A tool of repairing your broken pcap and pcapng files"
-arch=('any')
-url="https://f00l.de/pcapfix/pcapfix-1.1.4.tar.gz"
-license=('GPL3')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://f00l.de/pcapfix/pcapfix-1.1.4.tar.gz")
-noextract=()
-md5sums=('0832151f96121d5099bc256028cd0a7d')
-validpgpkeys=()
+pkgdesc="tries to repair your broken pcap and pcapng files"
+arch=('x86_64')
+url="https://f00l.de/pcapfix/"
+license=('GPL-3.0-or-later')
+source=(https://f00l.de/$pkgname/$pkgname-$pkgver.tar.gz https://f00l.de/$pkgname/$pkgname-$pkgver.tar.gz.asc)
+sha512sums=(d8d1106349116303f35254f680916f1ea26b163f9afceb5d237eed89880810d4b7b40ebca9de58ec95af2336dd78f4e11af1a08b89f6765055843a9791c156bd 15d6758ab4c5b2cedcca1471ab2e9460de6ca7f71b33389ada3874dc3e6f66441bbab2d9a09fbc0114a93696a2f30bb4979a3fe1bc0bb38fe48988c7c029f544)
+validpgpkeys=(0CA58C10434DAB2EA5CBE63261C513806A6AE3EA)
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  make -j "$(nproc)"
+}
+
 package() {
-	mkdir -p $pkgdir/usr/bin
-	cd $srcdir/pcapfix-1.1.4
-	make
-	mv $srcdir/pcapfix-1.1.4/pcapfix $pkgdir/usr/bin
+  cd "$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir/" install
+  install -pDm644 Changelog "$pkgdir/usr/share/doc/$pkgname/Changelog"
 }
