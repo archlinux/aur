@@ -1,12 +1,12 @@
 # Maintainer: Ruben Agin <phabrics@phabrics.com>
 _gtk="${GTKMAJ:-gtk4}"
 pkgname=tme-git
-pkgver=0.12rc11.r0.g4cb4b81
+pkgver=0.12rc11.r33.g25942ed
 pkgrel=1
 pkgdesc="The Machine Emulator, or tme, provides a general-purpose framework for computer emulation."
 arch=('i686' 'x86_64')
 license=('GPL3')
-url="https://nme.osdn.io"
+url="http://phabrics.com"
 optdepends=('perl-x11-protocol: for computing optimal graphics parameters'
 	    'libvncserver: graphics hosted via VNC server'
 	    "${_gtk}: graphics hosted via ${_gtk}"
@@ -16,7 +16,7 @@ provides=('tme')
 conflicts=('tme')
 source=("tme::git+https://github.com/phabrics/nme.git")
 sha256sums=('SKIP')
-options=(libtool debug !strip)
+options=(libtool debug !strip lto)
 install=$pkgname.install
 
 pkgver() {
