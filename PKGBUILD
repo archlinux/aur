@@ -2,13 +2,17 @@
 
 pkgname=vkcv-test
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='implementation of A Vulkan framework for computer visualistics (like FSR,SS,..) simplifying building applications, for Radeon/amdgpu hardware'
 arch=('x86_64')
 license=('MIT')
 install="${pkgname}.install"
 url='https://github.com/TheJackiMonster/vkcv-framework'
-depends=('cmake' 'make' 'gcc' 'vulkan-icd-loader' 'vulkan-headers' 'vulkan-validation-layers' 'vulkan-tools' 'vulkan-radeon')
+depends=('cmake' 'make' 'gcc' 'vulkan-icd-loader' 'vulkan-headers' 'vulkan-validation-layers' 'vulkan-tools' 'vulkan-driver' 'git-lfs')
+optdepends=('vulkan-radeon: for AMD Radeon GPU'
+            'vulkan-intel: for intel GPU'
+            'nvidia-vulkan: for nvidia GPU'
+            'nvidia-vulkan-dkms: for nvidia GPU dkms mod')
 source=("git+https://github.com/TheJackiMonster/vkcv-framework/"
 	"wrapper.sh"
 	"vkcv-test.install"
@@ -20,6 +24,7 @@ sha256sums=('SKIP'
 prepare(){
  msg2 "init git submodules"
  cd ${srcdir}/vkcv-framework/
+ git lfs
  git submodule init
  git submodule update
 }
