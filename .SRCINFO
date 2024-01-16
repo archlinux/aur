@@ -10,7 +10,7 @@ pkgbase = dcpomatic
 	makedepends = which
 	makedepends = boost>=1.78.0
 	makedepends = git
-	depends = libsub>=1.6.45
+	depends = libsub>=1.6.46
 	depends = libcxml>=0.17.5
 	depends = libdcp>=1.8.89
 	depends = ffmpeg>=4.0.2
