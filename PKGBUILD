@@ -5,12 +5,12 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.14.r27.g1f1d554df
+pkgver=0.5.16.r0.g85871982b
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
-url='https://lutris.net/'
-license=('GPL3')
+url="https://lutris.net"
+license=('GPL-3.0-or-later')
 depends=(
   'cabextract'
   'curl'
@@ -44,7 +44,6 @@ checkdepends=(
   'pciutils'
   'python-nose-cover3'
   'vulkan-tools'
-  'wine'
   'xorg-server-xvfb'
   'xterm'
 )
@@ -73,12 +72,21 @@ optdepends=(
   'xorg-xgamma: Restore gamma on game exit')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/lutris/lutris.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/lutris/lutris.git'
+        'https://github.com/lutris/lutris/pull/5241.patch')
+sha256sums=('SKIP'
+            '8d1c5ef9cb317154ece98ceceaa1babe20f0e67f9794f25832af2e7bdb347355')
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+
+  # Fix metainfo.xml
+  patch -Np1 -i ../5241.patch
 }
 
 build() {
