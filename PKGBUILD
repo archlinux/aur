@@ -3,7 +3,7 @@
 _fname=Shantell-Sans
 pkgbase=${_fname,,}-font
 pkgname=(otf-${_fname,,} ttf-${_fname,,}-variable)
-pkgver=1.008
+pkgver=1.009
 pkgrel=1
 pkgdesc='a marker-style font built for creative expression, typographic play, and animation'
 arch=(any)
@@ -12,7 +12,7 @@ _url=https://github.com/arrowtype/${_fname,,}
 license=(OFL)
 _archive="${_fname//-/_}_$pkgver"
 source=("$_url/releases/download/$pkgver/$_archive.zip")
-sha256sums=('28777e7e30a28f7ff2d7877633dbc3930b71b92862727fcd639dec3a332627c9')
+sha256sums=('5605eacebd04959cb412055ae64032a02376131d4c35302784a1b45b8437d206')
 
 package_ttf-shantell-sans-variable() {
     cd "${_archive//_/ }"
