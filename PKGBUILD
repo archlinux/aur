@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=appimagepool-bin
 pkgver=5.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, modern AppImageHub Client, powered by flutter."
 arch=('x86_64')
 url="https://www.pling.com/p/1547076/"
@@ -21,12 +21,19 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz"
+    "${pkgname%-bin}.sh"
 )
-sha256sums=('265d503d064f92334a5c7f4a90988931dee9451f4831c3751b49eeea7a016769')
+sha256sums=('265d503d064f92334a5c7f4a90988931dee9451f4831c3751b49eeea7a016769'
+            'f7a7e14ccf1242147568dcee5550d92ea2363f5f8cd486cb5408066db2020375')
+build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+}
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" -t "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
     cp -r "${srcdir}/usr/bin/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-bin}.svg" \
         -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
