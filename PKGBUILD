@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=fabricatr
-_pkgver=1.0.0
+_pkgver=1.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Imagine Your Data Before You Collect It"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(MIT)
 depends=(
   r-rlang
@@ -22,12 +22,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9a30e41e08bd0098b6183dcbfafaeed8')
-sha256sums=('fbcce8c191bcc2bb80c9824d261e10684c243971c547fcded2188ebdf1fbb5f8')
+md5sums=('d0e4c325160f22c0b8697a66906b35ea')
+b2sums=('8a48540da7b0fcf167263436cfa3ed7681b6a83a82eed2a583224d63f78603ecbd5fe9b97032eb5c05808fa0bd3b942117e73942e6ac719b8c515c045b2bed85')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

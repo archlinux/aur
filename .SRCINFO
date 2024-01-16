@@ -1,6 +1,6 @@
 pkgbase = r-fabricatr
 	pkgdesc = Imagine Your Data Before You Collect It
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fabricatr
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-fabricatr
 	optdepends = r-extradistr
 	optdepends = r-mvnfast
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/fabricatr_1.0.0.tar.gz
-	md5sums = 9a30e41e08bd0098b6183dcbfafaeed8
-	sha256sums = fbcce8c191bcc2bb80c9824d261e10684c243971c547fcded2188ebdf1fbb5f8
+	source = https://cran.r-project.org/src/contrib/fabricatr_1.0.2.tar.gz
+	md5sums = d0e4c325160f22c0b8697a66906b35ea
+	b2sums = 8a48540da7b0fcf167263436cfa3ed7681b6a83a82eed2a583224d63f78603ecbd5fe9b97032eb5c05808fa0bd3b942117e73942e6ac719b8c515c045b2bed85
 
 pkgname = r-fabricatr
