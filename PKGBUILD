@@ -31,8 +31,6 @@ build(){
 package() {
     cd "${srcdir}/${pkgname}"
 
-    install -Dm644 LICENSE "$pkgdir"/usr/share/license/vkpeak/LICENSE
-
-    cd build
-    install -Dm755 vkpeak "${pkgdir}/usr/bin/vkpeak"
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/vkpeak/LICENSE
+    install -Dm755 build/vkpeak "${pkgdir}/usr/bin/vkpeak"
 }
