@@ -12,8 +12,8 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=120.0.6099.129
-pkgrel=2
+pkgver=120.0.6099.216
+pkgrel=1
 _launcher_ver=8
 _manual_clone=0
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
@@ -42,7 +42,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('be36d5abecfafdc68d9b27b0bee65136316610a295e844b99483a7520b245f85'
+sha256sums=('7e7bea15bf56f3cc920bb015fed1a1b1368267299e132e795935c5cc604adfc0'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2'
             '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
@@ -63,7 +63,7 @@ conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
 _uc_rel=1
 # _uc_ver="$pkgver-$_uc_rel"
-_uc_ver="120.0.6099.109-$_uc_rel"
+_uc_ver="120.0.6099.216-$_uc_rel"
 optdepends=("${optdepends[@]}"
             'chromium-extension-web-store: Web Store Functionality')
 source=(${source[@]}
@@ -126,7 +126,7 @@ prepare() {
   if (( _manual_clone )); then
     ./fetch-chromium-release $pkgver
   fi
-  cd "$srcdir/chromium-$pkgver"
+  cd chromium-$pkgver
 
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
@@ -223,7 +223,7 @@ prepare() {
 build() {
   make -C chromium-launcher-$_launcher_ver
 
-  cd "$srcdir/chromium-$pkgver"
+  cd chromium-$pkgver
 
   export CC=clang
   export CXX=clang++
@@ -291,7 +291,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
   gn gen out/Release --args="${_flags[*]}"
-  ninja -C out/Release chrome chrome_sandbox chromedriver
+  ninja -C out/Release chrome chrome_sandbox chromedriver.unstripped
 }
 
 package() {
@@ -300,10 +300,10 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/chromium-$pkgver"
+  cd ../chromium-$pkgver
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
-  install -D out/Release/chromedriver "$pkgdir/usr/bin/chromedriver"
+  install -D out/Release/chromedriver.unstripped "$pkgdir/usr/bin/chromedriver"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
