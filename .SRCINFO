@@ -1,0 +1,17 @@
+pkgbase = mkdocs-charts-plugin
+	pkgdesc = Mkdocs plugin to add vegalite charts to your pages
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/timvink/mkdocs-charts-plugin
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = mkdocs
+	depends = pymdown-extensions
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs-charts-plugin/mkdocs-charts-plugin-0.0.10.tar.gz
+	b2sums = 7e3da74645c7ecf4b4a7d4a848622bbeaa672bf2174c18a3e46273d3d02f2ec43a59ca959050790bed16e3ddea29412145d5c54577c205291cad26877d811061
+
+pkgname = mkdocs-charts-plugin
