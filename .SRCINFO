@@ -1,7 +1,7 @@
 pkgbase = doomrunner
 	pkgdesc = Modern preset-oriented graphical launcher of ZDoom and derivatives
-	pkgver = 1.8.1
-	pkgrel = 4
+	pkgver = 1.8.2
+	pkgrel = 1
 	url = https://github.com/Youda008/DoomRunner
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = doomrunner
 	makedepends = gcc
 	depends = qt5-base
 	backup = opt/DoomRunner
-	source = https://github.com/Youda008/DoomRunner/archive/refs/tags/v1.8.1.tar.gz
-	md5sums = 3b08b9b60ed346e99f2b3e5d4145644c
+	source = https://github.com/Youda008/DoomRunner/archive/refs/tags/v1.8.2.tar.gz
+	md5sums = 1891b7d0e30e48e598e104ae6f533595
 
 pkgname = doomrunner
