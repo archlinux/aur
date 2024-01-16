@@ -18,6 +18,6 @@ package() {
 	echo -e "UseBridges 1\nClientTransportPlugin snowflake exec /usr/bin/snowflake-client" > snowflake
 	grep -w Bridge snowflake-v$pkgver/client/torrc >> snowflake
 
-	install -Dm 644 snowflake $pkgdir/etc/tor/snowflake
-	install -Dm 644 snowflake-v$pkgver/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -Dm 644 snowflake -t $pkgdir/etc/tor
+	install -Dm 644 snowflake-v$pkgver/LICENSE -t $pkgdir/usr/share/licenses/$pkgname
 }
