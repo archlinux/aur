@@ -3,7 +3,7 @@ pkgname=desktop-schedule-bin
 _pkgname="Desktop.Schedule"
 pkgver=1.1.0
 _electronversion=16
-pkgrel=3
+pkgrel=4
 pkgdesc="A concise yet elegant desktop course schedule.简洁而不失优雅的桌面课程表"
 arch=("x86_64")
 url="https://github.com/TimFang4162/desktop-schedule"
@@ -19,11 +19,12 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64-setup-${pkgver}.tar.gz"
-    "${pkgname%-bin}.png-${pkgver}::https://raw.githubusercontent.com/TimFang4162/desktop-schedule/master/build/icons/256x256.png"
-    "${pkgname%-bin}.sh")
+    "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/TimFang4162/desktop-schedule/master/build/icons/256x256.png"
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('fdfaecc9d2d63d0e9c9b29f098eea1609e0663ad7611ff2b097c25621ed0add2'
             'f121ff2d43234e56c2d88542e89f68464464ecf51ba6e0b11ff24019f6599e6f'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -39,5 +40,5 @@ package() {
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${_pkgname//./ }-linux-x64-setup-${pkgver}/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.png-${pkgver}" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}"
 }
