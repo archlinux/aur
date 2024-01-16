@@ -4,7 +4,7 @@
 
 pkgname="mkdocs"
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Project documentation with Markdown"
 url="https://www.mkdocs.org"
 license=("BSD")
@@ -15,7 +15,6 @@ depends=("python-babel"
          "python-click"
          "python-dateutil"
          "python-ghp-import"
-         "python-importlib-metadata"
          "python-jinja"
          "python-livereload"
          "python-markdown"
@@ -31,7 +30,7 @@ makedepends=("python-hatchling" "python-pathspec" "python-build" "python-install
 optdepends=("python-lunr: to prebuild search index")
 options=("!strip")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1542e09f0c07aca03629337a25ca198f67bb8139380ada9ab3b5adaa5205419b')
+b2sums=('d1e7ac739ea3a78f2a2d294a28c721f95cb8be6c114a5131893e346254ed1937218cc0d247e75092876d7f42dc04c8060fdc8d7535326f26a8f68ec11bc7045b')
 
 build(){
  cd "$pkgname-$pkgver"
