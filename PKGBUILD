@@ -1,4 +1,5 @@
 # Maintainer: Marek Küthe <m.k@mk16.de>
+# Contributor: Po-An,Yang(Antonio) <yanganto@gmail.com>
 
 pkgname=pcapfix
 pkgver=1.1.7
