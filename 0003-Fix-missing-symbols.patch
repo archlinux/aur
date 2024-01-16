@@ -1,0 +1,11 @@
+--- a/configure 2024-01-15 17:51:11.925157599 -0300
++++ b/configure 2024-01-15 17:51:46.413390599 -0300
+@@ -231,7 +231,7 @@
+         *sparc*)
+             LDFLAGS="${LDFLAGS} -Wl,--no-warn-rwx-segments" ;;
+         esac
+-        LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so,--version-script,${SRCDIR}zlib.map"} ;;
++        LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so,--version-script,${SRCDIR}zlib.map,--undefined-version"} ;;
+   *BSD | *bsd* | DragonFly)
+         LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so.1,--version-script,${SRCDIR}zlib.map"}
+         LDCONFIG="ldconfig -m" ;;
