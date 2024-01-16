@@ -3,7 +3,7 @@
 
 pkgname=dnsproxy
 pkgver=0.63.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support"
 arch=('x86_64')
 url="https://github.com/AdguardTeam/dnsproxy"
@@ -20,13 +20,13 @@ backup=($_conf)
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     version_pkg='github.com/AdguardTeam/dnsproxy/internal/version'
-    go build --ldflags "-s -w -X ${version_pkg}.version=${pkgver}" -mod=readonly -v -trimpath -buildmode=pie
+    go build --ldflags "-linkmode=external -s -w -X ${version_pkg}.version=${pkgver}" -mod=readonly -v -trimpath -buildmode=pie
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm755 dnsproxy "${pkgdir}/usr/bin/dnsproxy"
-    install -Dm644 LICENSE "$pkgdir"/usr/share/license/dnsproxy/LICENSE
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/dnsproxy/LICENSE
     install -Dm644 README.md "$pkgdir"/usr/share/doc/dnsproxy/README.md
     install -Dm644 config.yaml.dist "$pkgdir/$_conf"
 
