@@ -2,9 +2,9 @@
 
 pkgname=nachrichten
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Stay informed without leaving your command line"
-arch=('any')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/zMoooooritz/${pkgname}"
 license=('MIT')
 makedepends=('git' 'go')

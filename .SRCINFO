@@ -1,9 +1,12 @@
 pkgbase = nachrichten
 	pkgdesc = Stay informed without leaving your command line
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zMoooooritz/nachrichten
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = go
