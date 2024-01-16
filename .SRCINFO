@@ -1,7 +1,7 @@
 pkgbase = grml-iso
-	pkgdesc = add the grml ISO image to the grub2 boot menu
+	pkgdesc = provides the grml ISO image for usage by grml-rescueboot
 	pkgver = 2022.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.grml.org/doku.php?id=rescueboot
 	install = grml-iso.install
 	arch = any
