@@ -1,14 +1,16 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
 pkgver=4.0.28740
-pkgrel=7
+pkgrel=8
 _gamename=${pkgname#gog-}
 _gamename=${_gamename//-/_}
 #INCLUDE_HD_MOD=true
 #INCLUDE_HOTA=true
+_hotaver=1.7.0
 
-pkgdesc="Heroes of Might & Magic III and its expansions: Armageddon's Blade and The Shadow of Death (with optional HD patch)"
+pkgdesc="Heroes of Might & Magic III and its expansions: Armageddon's Blade and The Shadow of Death (with optional HD patch and HotA)"
 arch=("i686" "x86_64")
 url="https://www.gog.com/game/heroes_of_might_and_magic_3_complete_edition"
+_hotaurl="https://heroes3wog.net/horn-of-the-abyss"
 license=("custom")
 groups=("games")
 
@@ -30,6 +32,7 @@ sha256sums=('eaf75707911b16850ec770a551c59e594abba60c7a879fb0c171fc442b1299b3'
             'cd18b260ed5fe0009fc89e6dc50eb9f0c13a3cea9fb569fbda1412ba348b1539'
             '57ad02e420f54e9d3403a0bd66a1d86a3fc94856922bc22da9cf6d9aa906699e'
             '493ef7009c2f4d103ed5b283fcc5dd900ff13cfb1d494052227bf7760fe0f7c7')
+
 depends=(wine unionfs-fuse util-linux)
 makedepends=(icoutils "lgogdownloader>=2.25")
 
@@ -37,16 +40,21 @@ makedepends=(icoutils "lgogdownloader>=2.25")
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 
 if [[ ${INCLUDE_HD_MOD} = true ]]; then
-  # source+=("http://vm914332.had.yt/HoMM3_HD_Latest_setup.exe"
-  source+=("http://h3hota.com/HD/HoMM3_HD_Latest_setup.exe"
+  source+=("https://h3hota.com/HD/HoMM3_HD_Latest_setup.exe"
            gog-heroes-of-might-and-magic-3-complete-edition-hd-mod
            gog-heroes-of-might-and-magic-3-complete-edition-hd-mod.desktop)
+  sha256sums+=('d5dad5e14427ef903729c12f0102d5b4a85a6ba82eede3e0852f0e5922749da9'
+               '0baeccdd5d6167ef5b07d7d66175b7e89bf5fadbef6bff51ee32b91584ed1bbb'
+               '4178301b73d3854211a43fc1d2ca94b484314f4b05c6d7d2f88bbaf0911ab6fc')
 fi
 
 if [[ ${INCLUDE_HOTA} = true ]]; then
-  source+=("http://heroes3towns.com/HotA/HotA_1.6.1_setup.exe"
+  source+=("https://heroes3towns.com/HotA/HotA_${_hotaver}_setup.exe"
            gog-heroes-of-might-and-magic-3-complete-edition-hota
            gog-heroes-of-might-and-magic-3-complete-edition-hota.desktop)
+  sha256sums+=('ee4c65497f047ef6af89454fd38a7bf1e29ff0f5d5eb0bcba1fc0e0375151236'
+               '97120c9304eb45a01327649a660022bd69c2e9d05009d1b16855522b6d27e634'
+               '412efeda87b6d74895572014c1942341afd021a9e678ad4e197bdea5bfaacf9d')
 fi
 
 build() {
@@ -67,7 +75,7 @@ build() {
 
   if [[ ${INCLUDE_HOTA} = true ]]; then
     msg "Installing HotA"
-    wine "${srcdir}/HotA_1.6.1_setup.exe" /verysilent /LOG=$(tty) /Dir="${srcdir}/${pkgname#gog-}"
+    wine "${srcdir}/HotA_${_hotaver}_setup.exe" /verysilent /LOG=$(tty) /Dir="${srcdir}/${pkgname#gog-}"
   fi
 
   msg "Extracting HKEY_LOCAL_MACHINE registry"
@@ -78,12 +86,10 @@ build() {
   mkdir -p "${srcdir}"/icons
   wrestool -x -t14 -o "${srcdir}"/icons "${srcdir}/${pkgname#gog-}/"{Heroes3,h3maped,h3ccmped}.exe
   if [[ ${INCLUDE_HD_MOD} = true ]]; then
-    wrestool -x -t14 -o "${srcdir}"/icons "${srcdir}/${pkgname#gog-}/"HD_Launcher.exe
-    rm ${srcdir}/icons/HD_Launcher.exe_14_103_1049.ico
+    wrestool -x -t14 -n102 -o "${srcdir}"/icons "${srcdir}/${pkgname#gog-}/"HD_Launcher.exe
   fi
   if [[ ${INCLUDE_HOTA} = true ]]; then
-    wrestool -x -t14 -o "${srcdir}"/icons "${srcdir}/${pkgname#gog-}/"HotA_launcher.exe
-    rm ${srcdir}/icons/HotA_launcher.exe_14_103_1049.ico
+    wrestool -x -t14 -n102 -o "${srcdir}"/icons "${srcdir}/${pkgname#gog-}/"HotA_launcher.exe
   fi
   icotool -x -o "${srcdir}"/icons "${srcdir}"/icons/*.ico
 }
