@@ -1,13 +1,13 @@
 # Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
 
 pkgname=python-remi-git
-pkgver=2022.03.07.r2.g9eeb9c2
+pkgver=2022.7.27.r24.g4be71eb
 pkgrel=1
 pkgdesc="Cross-platform GUI library which renders in a web browser."
 arch=('any')
 url="https://github.com/dddomodossola/remi/"
 license=("Apache")
-depends=("python")
+depends=("python" "python-matplotlib" "python-pillow" "python-setuptools")
 makedepends=("git")
 options=(!emptydirs)
 source=('git+https://github.com/dddomodossola/remi.git')

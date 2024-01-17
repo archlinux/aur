@@ -1,15 +1,17 @@
 pkgbase = python-remi-git
 	pkgdesc = Cross-platform GUI library which renders in a web browser.
-	pkgver = 2021.03.02.r3.ge6ca627
+	pkgver = 2022.7.27.r24.g4be71eb
 	pkgrel = 1
 	url = https://github.com/dddomodossola/remi/
 	arch = any
 	license = Apache
 	makedepends = git
 	depends = python
+	depends = python-matplotlib
+	depends = python-pillow
+	depends = python-setuptools
 	options = !emptydirs
 	source = git+https://github.com/dddomodossola/remi.git
 	sha256sums = SKIP
 
 pkgname = python-remi-git
-
