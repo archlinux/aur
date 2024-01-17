@@ -1,7 +1,7 @@
 pkgbase = aicommits
 	pkgdesc = A CLI that writes your git commit messages for you with AI
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nutlope/aicommits
 	arch = any
 	license = MIT
