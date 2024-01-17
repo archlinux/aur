@@ -4,11 +4,11 @@
 
 pkgname=crudini
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for manipulating ini files"
 arch=(any)
 url="https://github.com/pixelb/crudini"
-license=(GPL2)
+license=(GPL-2.0-only)
 depends=(
   python
   python-iniparse
@@ -44,6 +44,4 @@ package() {
   cd "$_archive"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING
 }
