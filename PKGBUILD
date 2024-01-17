@@ -9,8 +9,8 @@ url='https://github.com/r0x0r/pywebview'
 license=('BSD')
 depends=('python-bottle' 'python-cryptography' 'python-proxy_tools' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
-optdepends=('pyside2: use with QtPy, PySide2)'
-            'pyside6: use with QtPy, PySide6)'
+optdepends=('pyside2: use with QtPy, PySide2'
+            'pyside6: use with QtPy, PySide6'
             'python-gobject: use with GTK'
             'python-pygobject-stubs: use with GTK'
             'python-pyqt5: use with Qt'
