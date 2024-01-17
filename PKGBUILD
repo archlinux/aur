@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=certbox-bin
-pkgver=1.7.2
-_electronversion=27
+pkgver=1.8.0
+_electronversion=28
 pkgrel=1
 pkgdesc="A X.509 certificate toolbox on your desktop or in your browser. It allows you to easily generate entire certificate chains, issue certificates from existing roots, clone certificates, and more."
 arch=(
@@ -21,22 +21,22 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tls-inspector/certbox/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('86a899de0d14686c5fc2a444067323ed7162e88718b9d0b045653383b6059719'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
-sha256sums_aarch64=('9b5eec564743883ec9fb82de9b1137764e9591771db91065f3dbab4b022a0b25')
-sha256sums_x86_64=('9f35c5f4e3d3b5808b6bd2360262c4a282daa56be11262b315ec0d990c40173e')
+sha256sums=('6b2fa2b36ced9533ff04ff21bd9c7d22b4fd1747bcdc8a840f009943a51b628e'
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums_aarch64=('4eb01791f546c9af026054bde32249e16d35ab04110f50583f3e1696eeeaf673')
+sha256sums_x86_64=('ce828045145481408d8af880c85698bf0000a81a1311f3154df1f812f1bb7530')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
-    sed "s| %U||g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
