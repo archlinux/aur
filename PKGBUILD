@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-bigint'
-pkgver='2.003001'
+pkgver='2.003002'
 pkgrel='1'
 pkgdesc="Math::BigInt - Arbitrary size integer/float math package"
 arch=('any')
@@ -14,7 +14,7 @@ provides=('perl-math-bigfloat' 'perl-math-bigint-calc' 'perl-math-bigint-lib')
 
 url='https://metacpan.org/release/Math-BigInt'
 source=("https://cpan.metacpan.org/authors/id/P/PJ/PJACKLAM/Math-BigInt-$pkgver.tar.gz")
-b2sums=('edb5c618893bb27d7d1d87b07d7bc538be767295bebdcbf1d343f24f6da6d8a83768ca8573c57f3c0249b16f8596b6aebfde9c85040af54a183c0326aa34fe2e')
+b2sums=('31f5ed51751c111e35735a32a7e03157b729fa187322c3d629defc9d2812af7de7fc98e1c646f02adc12bfd6e415e808c6c16f0b0a5482098108ad7a7784ce55')
 _distdir="Math-BigInt-$pkgver"
 
 build() {
