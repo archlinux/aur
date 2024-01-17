@@ -1,12 +1,12 @@
 # Maintainer: Bart Libert <aur@bart.libert.email>
 _pkgname=LprGUI
 pkgname=lprgui-git
-pkgver=r22.dee6596
+pkgver=r23.4efebe9
 pkgrel=1
 pkgdesc='qt5 based frontend for lpr cli command'
 arch=(x86_64)
 url='https://github.com/KeithDHedger/LprGUI'
-license=(GPL3)
+license=(GPL-3.0-or-later)
 provides=(lpgrui)
 depends=(cups qt5-base)
 makedepends=(git make qt5-tools)
