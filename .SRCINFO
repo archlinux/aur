@@ -1,23 +1,19 @@
 pkgbase = snailfm-bin
 	pkgdesc = A radio station by the SnailDOS community. You can easily tune into SnailFM with this software.
 	pkgver = 2.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://snaildos.com/snailfm
 	arch = x86_64
 	license = ISC
 	depends = electron25
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
-	depends = expat
 	provides = snailfm=2.1.8
 	conflicts = snailfm
 	source = snailfm-2.1.8.AppImage::https://github.com/snaildos/SnailFM-Application/releases/download/v2.1.8/SnailFM-2.1.8.AppImage
 	source = snailfm.sh
 	sha256sums = aa2dc06175e213bda1149644acafa4e556913ac5dc509dd7a6bedee73c6358bb
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = snailfm-bin
