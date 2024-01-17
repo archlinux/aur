@@ -3,7 +3,7 @@
 pkgname=plasma6-runners-jetbrains-runner-git
 _pkgname=plasma6-runners-jetbrains-runner
 pkgver=r179.9f3e9d3
-pkgrel=4
+pkgrel=5
 pkgdesc="Launch your recent JetBrains projects from KRunner"
 license=('LGPL3')
 _project_name="JetBrainsRunner"
@@ -43,8 +43,4 @@ build() {
 package() {
   cd "$srcdir/$_project_name/build"
   make DESTDIR="$pkgdir" install
-
-  # hack
-  echo "Applying hack for https://github.com/alex1701c/JetBrainsRunner/issues/42"
-  mv -v "$pkgdir"/usr/lib/qt{,6}
 }
