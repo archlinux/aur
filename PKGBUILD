@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=120.0.6099.216
+pkgver=120.0.6099.224
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -31,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         icu-74.patch
         drop-flags-unsupported-by-clang16.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('7e7bea15bf56f3cc920bb015fed1a1b1368267299e132e795935c5cc604adfc0'
+sha256sums=('850a85c8d8a01041a07dfaaea8289fa5f8294b4e375e6b77997b61434e0a2f1a'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2'
             '1808df5ba4d1e2f9efa07ac6b510bec866fa6d60e44505d82aea3f6072105a71'
