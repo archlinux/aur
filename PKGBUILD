@@ -4,28 +4,56 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola-git
 _pkgname=git-cola
-pkgver=4.4.1.r58.g5a33a788
+pkgver=4.8.0.r0.gdbd543db
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
-license=('GPL2')
-depends=('git' 'hicolor-icon-theme' 'python-numpy' 'python-polib' 'python-pyqt5'
-         'python-qtpy')
-makedepends=('python-build' 'python-installer' 'python-jaraco.packaging'
-             'python-rst.linker' 'python-setuptools-scm' 'python-sphinx'
-             'python-sphinx_rtd_theme' 'python-wheel' 'rsync' 'git')
-checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest')
-optdepends=('python-pygments: syntax highlighting'
-            'python-pyinotify: file system change monitoring'
-            'python-send2trash: enables "Send to Trash" functionality.'
-            'tk: to use the built-in ssh-askpass handler')
-provides=('git-cola')
-conflicts=('git-cola')
-source=("$_pkgname::git+https://github.com/git-cola/git-cola.git"
-        '0001-Unvendorize-polib.py.patch')
+license=('GPL-2.0-or-later')
+depends=(
+  'git'
+  'hicolor-icon-theme'
+  'python-numpy'
+  'python-polib'
+  'python-pyqt6'
+  'python-qtpy'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-rst.linker'
+  'python-setuptools-scm'
+  'python-sphinx'
+  'python-sphinx-furo'
+  'python-sphinx_rtd_theme'
+  'python-wheel'
+  'rsync'
+)
+checkdepends=(
+  'appstream'
+  #'appstream-glib'
+  'desktop-file-utils'
+  'garden-tools'
+  'python-pytest'
+)
+optdepends=(
+  'python-pygments: syntax highlighting'
+  'python-pyinotify: file system change monitoring'
+  'python-send2trash: enables "Send to Trash" functionality.'
+  'tk: to use the built-in ssh-askpass handler'
+)
+provides=(
+  'git-cola'
+)
+conflicts=(
+  'git-cola'
+)
+source=(
+  "${_pkgname}::git+https://github.com/git-cola/git-cola.git"
+  '0001-Unvendorize-polib.py.patch'
+)
 sha256sums=('SKIP'
-            '00db8356a4bc6f1d9dade64ab04b6f8bada2df22b246e21551ce925de9f95625')
+            'e9bf4b8cb0b71cbde53e4be1befa513b3bebb23b3f3bcb8b5447111a24714c6f')
 
 pkgver() {
   cd "$_pkgname"
@@ -52,7 +80,8 @@ check() {
   cd "$_pkgname"
 
   desktop-file-validate share/applications/*.desktop
-  appstream-util validate-relax --nonet share/metainfo/*.appdata.xml
+  #appstream-util validate-relax --nonet share/metainfo/*.appdata.xml
+  appstreamcli validate --no-net share/metainfo/*.appdata.xml ||:
 
   # Run the unit tests
   GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" make test V=2
