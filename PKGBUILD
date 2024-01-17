@@ -3,7 +3,7 @@
 pkgname=restfox-bin
 pkgver=0.3.2
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline-first web HTTP client"
 arch=('x86_64')
 url='https://restfox.dev'
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('22c67fe9512cfd420b7e8d91afbf4c23fbacdc65a65e9a903789c23ac37867c1'
             '82601c8ed24f59528b28c23a2fb309f9743dffc860ba06ce8d253e1ed8959a16'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
@@ -29,7 +29,7 @@ build() {
         -e "s|@appasar@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}"/data.tar.gz
-    sed "s| %U||g;s|Utility|Utility;Development|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|Utility|Development|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
