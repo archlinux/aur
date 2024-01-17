@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-memento-mori
+	pkgdesc = Adds a counter to the panel which counts down the time you have left
+	pkgver = 9
+	pkgrel = 1
+	url = https://github.com/paveloom-t/gnome-shell-memento-mori
+	arch = any
+	license = GPL3
+	depends = gnome-shell>=3.38
+	noextract = source.zip
+	source = source.zip::https://extensions.gnome.org/extension-data/memento-moripaveloom.v9.shell-extension.zip
+	sha256sums = 820249d6699eb001ac380335810dae52818222e17b4d28c5a2536f9dd04949b3
+
+pkgname = gnome-shell-extension-memento-mori
