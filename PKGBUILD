@@ -4,7 +4,7 @@
 
 pkgname=sendanywhere
 pkgver=23.11.15
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 
 pkgdesc="Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time."
