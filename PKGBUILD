@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=novprog
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="A tool to graph your progress in writing a NaNoWriMo style novel"
 arch=('i686' 'x86_64')
