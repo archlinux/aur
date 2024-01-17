@@ -2,12 +2,12 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=seamonkey
-pkgver=2.53.18
-pkgrel=2
+pkgver=2.53.18.1
+pkgrel=1
 pkgdesc="SeaMonkey internet suite"
 arch=(x86_64)
 url="https://www.seamonkey-project.org"
-license=(MPL)
+license=(MPL-2.0)
 depends=(
   at-spi2-core
   bash
@@ -58,17 +58,17 @@ makedepends=(
   zip
 )
 optdepends=(
-  'networkmanager: Location detection via available WiFi networks'
   'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
   'pulseaudio: Audio support'
 )
 
 source=(
-  "https://archive.mozilla.org/pub/seamonkey/releases/$pkgver/source/seamonkey-$pkgver.source.tar.xz"
+  "https://archive.seamonkey-project.org/releases/2.53.18.1/source/seamonkey-2.53.18.1.source.tar.xz"
   "mozconfig"
 )
 sha256sums=(
-  'cef8349e2c9343871f46e08be75dbc8b02206d40df1e332c82f592b600911911'
+  '6fbd622e6554ed881f9eec00c3f346f9aeecbc459d5f9e16ef2636c563607040'
   '9554b2823d05c7d406325daec629c8b3f64e7d6a32db1bae5683c57d41de529f'
 )
 install="$pkgname.install"
