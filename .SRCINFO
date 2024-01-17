@@ -1,20 +1,20 @@
 pkgbase = wiliwili
 	pkgdesc = 专为手柄控制设计的第三方跨平台B站客户端
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/xfangfang/wiliwili
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = git
 	makedepends = libxi
+	makedepends = ninja
 	makedepends = python
 	makedepends = wayland-protocols
 	depends = mpv
 	depends = opencc
 	depends = pystring
-	conflicts = wiliwili-git
 	source = wiliwili::git+https://github.com/xfangfang/wiliwili.git#tag=v1.3.0
 	sha512sums = SKIP
 
