@@ -77,7 +77,6 @@ package_libocrs-git() {
 
     export RUSTUP_TOOLCHAIN=stable
     install -Dm0644 target/release/*.so -t "$pkgdir/usr/lib/"
-    rm -f target/release/*.so
 }
 
 package_ocrs-git() {
@@ -89,12 +88,13 @@ package_ocrs-git() {
     cd "${srcdir}/${pkgbase}/"
 
     export RUSTUP_TOOLCHAIN=stable
+    install -Dm0755 target/release/${pkgname%-git} -t "$pkgdir/usr/bin/"
 #     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
-    find target/release \
-        -maxdepth 1 \
-        -executable \
-        -type f \
-        -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
+#     find target/release \
+#         -maxdepth 1 \
+#         -executable \
+#         -type f \
+#         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 }
 
 package_chrome-extension-ocrs-git() {
