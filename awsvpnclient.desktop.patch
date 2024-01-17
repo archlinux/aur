@@ -1,11 +1,12 @@
 Add properly escaped spaces to binary path
 --- awsvpnclient.desktop	2021-06-28 17:30:30.000000000 +0200
-+++ "awsvpnclient.desktop"	2021-06-28 17:31:16.929592748 +0200
-@@ -3,7 +3,7 @@
++++ "awsvpnclient.desktop"	2024-01-17 17:34:25.372925827 +0100
+@@ -3,7 +3,8 @@
  Encoding=UTF-8
  Name=AWS VPN Client
  Comment=AWS VPN Client
 -Exec=/opt/awsvpnclient/AWS\ VPN\ Client %u
++StartupWMClass=AWS VPN Client
 +Exec=/opt/awsvpnclient/AWS\\ VPN\\ Client %u
  Path=/opt/awsvpnclient
  Icon=acvc-64.png
