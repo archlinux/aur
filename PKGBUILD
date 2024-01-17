@@ -4,7 +4,7 @@
 pkgname=bruno-electron
 _pkgname=bruno
 pkgdesc="Bruno, an opensource API Client for Exploring and Testing APIs using the system provided Electron"
-pkgver=1.5.1
+pkgver=1.6.1
 pkgrel=1
 conflicts=('bruno')
 provides=('bruno')
@@ -26,7 +26,7 @@ source=(
 )
 
 sha256sums=(
-    '5118f4eaf343d8cf355cec2cc3eb15450318b88e38dc1407954e5f9baba02f80' # bruno
+    'a048cb35ce4fd4696140f40a076a8403a76dbe9b9c65b8db2db984f7e3bd2783' # bruno
     '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051' # bruno.desktop
 )
 
@@ -36,7 +36,7 @@ prepare() {
     # disabling husky however I can since I'm not in a git repository
     sed -i -e 's/"husky":.*//g' -e 's/"husky install"/"true"/g' package.json
 
-    npm install --cache "${srcdir}/npm-cache"
+    npm install --legacy-peer-deps --cache "${srcdir}/npm-cache"
 }
 
 build() {
@@ -45,14 +45,14 @@ build() {
 
     cd "${_pkgname}-${pkgver}"
 
-    npm run build:bruno-query
     npm run build:graphql-docs
+    npm run build:bruno-query
     npm run build:web
 
     electronDist="/usr/lib/${_electron}"
     electronVer="$(cat ${electronDist}/version)"
-    sed -i -e "s~\"dist\":.*~\"dist\": \"electron-builder --linux --x64 --dir --config electron-builder-config.js -c.electronDist=${electronDist} -c.electronVersion=${electronVer}\",~g" packages/bruno-electron/package.json
-
+    sed -i -e "s~\"dist:linux\":.*~\"dist:linux\": \"electron-builder --linux --x64 --dir --config electron-builder-config.js -c.electronDist=${electronDist} -c.electronVersion=${electronVer}\",~g" packages/bruno-electron/package.json
+    
     npm run build:electron:linux
 }
 
