@@ -11,7 +11,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libssh
 pkgver=0.9.6
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Library for accessing ssh client services through C libraries (android)"
 license=('LGPL')
@@ -24,9 +24,12 @@ makedepends=('android-cmake'
              'doxygen'
              'python')
 source=("https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz"
-        'staticlibfix.patch')
+        '0001-Fix-static-lib.patch'
+        '0002-Fix-missing-prototype-error.patch')
+
 md5sums=('0174df377361221a31a9576afbaba330'
-         'cb8d77a8779db385ac57f4d2c885a31b')
+         '66588a420aac9c580c31018a5b1c78cf'
+         '768b2bee29d9f55f09f74279ef06f48d')
 
 prepare() {
     cd "${srcdir}/libssh-${pkgver}"
@@ -34,10 +37,8 @@ prepare() {
     # Disable automatic detection of openssl since it picks up openssl-1.0
     sed 's/find_package(OpenSSL)/#find_package(OpenSSL)/' -i CMakeLists.txt
 
-    # Should be included in next release:
-    # https://bugs.libssh.org/T198
-    # https://gitlab.com/libssh/libssh-mirror/merge_requests/73/diffs
-    patch -p1 -i ${srcdir}/staticlibfix.patch
+    patch -Np1 -i "../0001-Fix-static-lib.patch"
+    patch -Np1 -i "../0002-Fix-missing-prototype-error.patch"
 }
 
 build() {
