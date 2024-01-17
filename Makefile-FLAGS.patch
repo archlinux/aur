@@ -1,0 +1,22 @@
+--- Makefile	2024-01-17 16:45:50.820032476 +0200
++++ Makefile.old	2024-01-17 16:50:35.989535760 +0200
+@@ -9,7 +9,7 @@
+ INCLUDE := src/cs50.h
+ MANS := $(wildcard docs/*.3.gz)
+ 
+-CFLAGS=-Wall -Wextra -Werror -pedantic -std=c11
++CFLAGS+=-Wall -Wextra -Werror -pedantic -std=c11
+ BASENAME=libcs50
+ LIB_STATIC=$(BASENAME).a
+ LIB_OBJ=$(BASENAME).o
+@@ -36,8 +36,8 @@
+ all: $(LIBS) $(MANS)
+ 
+ $(LIBS): $(SRC) $(INCLUDE) Makefile
+-	$(CC) $(CFLAGS) -fPIC -shared $(LINKER_FLAGS) -o $(LIB_VERSION) $(SRC)
+-	$(CC) $(CFLAGS) -c -o $(LIB_OBJ) $(SRC)
++	$(CC) $(CFLAGS) -fPIC -shared $(LINKER_FLAGS) -o $(LIB_VERSION) $(SRC) ${LDFLAGS}
++	$(CC) $(CFLAGS) -c -o $(LIB_OBJ) $(SRC) $(LDFLAGS)
+ 	ar rcs $(LIB_STATIC) $(LIB_OBJ)
+ 	chmod 644 $(LIB_STATIC)
+ 	rm -f $(LIB_OBJ)

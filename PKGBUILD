@@ -6,42 +6,41 @@
 
 pkgname='libcs50'
 pkgver=11.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="CS50 Library for C"
 arch=('i686' 'x86_64')
 url='https://github.com/cs50/libcs50'
 license=('GPL-3.0-only')
+depends=('glibc')
 optdepends=('clang: compiler currently used in CS50x course (2023)')
 groups=('cs50')
 conflicts=('libcs50-git')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/cs50/${pkgname}/archive/v${pkgver}.tar.gz"
   'Makefile.patch'
+  'Makefile-FLAGS.patch'
 )
 sha256sums=('3439547f7a73cae96d9208c24bbd1f6e7cf055acaba6ac30362e8f32fd521e36'
-            '4a10efd4f4f6b6bb18152a4f28497f7f8562aaa5aaf50c401d308827b922ef3f')
+            '4a10efd4f4f6b6bb18152a4f28497f7f8562aaa5aaf50c401d308827b922ef3f'
+            '777a4af1f33c47eb5bc28b32153603928325b19dd705613d97eaf822e7123752')
 install=libcs50.install
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
   patch < "${srcdir}/Makefile.patch"
+  patch < "${srcdir}/Makefile-FLAGS.patch"
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-
-  # TODO: Get this fixed upstream. We should not have to unset our $CFLAGS and
-  #       $MAKEFLAGS.
-  CFLAGS= MAKEFLAGS= make
+  make
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-
-  # TODO: Get this fixed upstream. We should not have to unset our $CFLAGS and
-  #       $MAKEFLAGS.
-  CFLAGS= MAKEFLAGS= DESTDIR="${pkgdir}/usr" make install
+  
+  DESTDIR="${pkgdir}/usr" make install
   rm "${pkgdir}/usr/src/cs50.c"
   install -d -m 755 "${pkgdir}/usr/src/libcs50"
   install -m 644 src/cs50.c src/cs50.h -t "${pkgdir}/usr/src/libcs50"
