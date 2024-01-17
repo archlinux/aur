@@ -1,10 +1,10 @@
 pkgbase = socid-extractor
 	pkgdesc = Extract accounts info from personal pages on various sites for OSINT purpose
 	pkgver = 0.0.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/soxoj/socid-extractor
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

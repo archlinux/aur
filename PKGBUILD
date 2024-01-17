@@ -2,11 +2,11 @@
 
 pkgname=socid-extractor
 pkgver=0.0.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract accounts info from personal pages on various sites for OSINT purpose"
 arch=(any)
 url="https://github.com/soxoj/socid-extractor"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(
   python
   python-beautifulsoup4
@@ -20,7 +20,7 @@ makedepends=(
   python-wheel
 )
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0440b4bfa76f70d88f3a6ac77207b4c6437da8b490b88717fdf04c559297dde4')
 
 _archive="$pkgname-$pkgver"
@@ -40,9 +40,7 @@ build() {
 
 # Current tests interact with actual websites rather than mock ones, so test
 # results are highly unstable. Skipping testing for that reason.
-check() {
-  :
-}
+# check() {}
 
 package() {
   cd "$_archive"
