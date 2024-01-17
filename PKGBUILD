@@ -5,35 +5,34 @@ pkgname=(
   antora-cli
   antora-site-generator
 )
-pkgver=3.1.5
+pkgver=3.1.7
 pkgrel=1
 pkgdesc="A modular documentation site generator"
 arch=(any)
 url="https://antora.org"
-license=(MPL2)
+license=(MPL-2.0)
 depends=(nodejs)
 makedepends=(npm)
 source=(
-  "https://registry.npmjs.org/@$pkgbase/cli/-/cli-$pkgver.tgz"
-  "https://registry.npmjs.org/@$pkgbase/site-generator/-/site-generator-$pkgver.tgz"
+  "$pkgbase-cli-$pkgver.tar.gz::https://registry.npmjs.org/@$pkgbase/cli/-/cli-$pkgver.tgz"
+  "$pkgbase-site-generator-$pkgver.tar.gz::https://registry.npmjs.org/@$pkgbase/site-generator/-/site-generator-$pkgver.tgz"
 )
 noextract=(
   "cli-$pkgver.tgz"
   "site-generator-$pkgver.tgz"
 )
 sha256sums=(
-  '1d76ce443ae2af95170241b66d028330fdd338c3a8c112e3263e331af8722b9e'
-  '4da915f0b453573ff72aececb9c5f9f95cf20a3937b20a7ee5b8e3c5f14515cc'
+  '6008d09edf20e4763946e803149013af8b75416357111155e21aefba0efdce85'
+  '1c414527c0ada92041dbc6d5db5d6c870b07d47c643efb5655171406fd258c23'
 )
 
 _package() {
-  _pkgname="$1"
+  _file="$1"
 
-  npm install --cache "$srcdir/npm-cache" -g --prefix "$pkgdir/usr" "$srcdir/$_pkgname-$pkgver.tgz"
-
-  # Non-deterministic race in npm gives 777 permissions to random directories.
-  # See https://github.com/npm/cli/issues/1103 for details.
-  find "$pkgdir/usr" -type d -exec chmod 755 {} +
+  npm install --global \
+    --cache "$srcdir/npm-cache" \
+    --prefix "$pkgdir/usr" \
+    "$srcdir/$_file"
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
@@ -41,9 +40,9 @@ _package() {
 }
 
 package_antora-cli() {
-  _package cli
+  _package "$pkgbase-cli-$pkgver.tar.gz"
 }
 
 package_antora-site-generator() {
-  _package site-generator
+  _package "$pkgbase-site-generator-$pkgver.tar.gz"
 }
