@@ -1,6 +1,6 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.0.22
+pkgver=1.0.23
 #_zigver=0.12.0-dev.1604+caae40c21 #https://github.com/oven-sh/bun/blob/bun-v1.0.18/build.zig#L9
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU."
@@ -12,9 +12,9 @@ makedepends=(
 )
 conflicts=(bun-bin)
 source=(git+$url.git#tag=bun-v$pkgver
-        https://github.com/oven-sh/bun/releases/download/bun-v$pkgver/bun-linux-x64-baseline.zip)
+        bun-linux-x64-$pkgver.zip::https://github.com/oven-sh/bun/releases/download/bun-v$pkgver/bun-linux-x64-baseline.zip)
 b2sums=('SKIP'
-        'd8b27a729992d2499e5525a14b20e3b4a09fd02bb7073f7a2f18a616d45acd0911cd78d9ea74da5c757bebf1698ed25b8f47643a2f92e7352c91c4b6c4457744')
+        'd65c713114353dd23d69939408573af32a2eee496d8deb3c1696671a2eda480aefe6d97b53f81b62953fa46f4cb77405bb11ed13fe77445968d7eddf82ca575b')
 
 _j=$(($(nproc)/2)) #change for your system
 
