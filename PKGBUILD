@@ -1,7 +1,6 @@
 # Maintainer: oscarcl <oscar.cowderylack@gmail.com>
 pkgname=casparcg-server-git
 pkgver=2.3.3.r151.g9212c29
-_cef_version=4638
 pkgrel=1
 pkgdesc="Software used to play out professional graphics, audio and video to multiple outputs"
 arch=('x86_64')
