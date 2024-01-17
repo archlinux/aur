@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3529.bef1567a6
+pkgver=r3546.ef89d019d
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -40,7 +40,6 @@ source=(
 	'better-enums'::'git+https://github.com/aantron/better-enums.git'
 	'capstone'::'git+https://github.com/aquynh/capstone.git'
 	'concurrentqueue'::'git+https://github.com/cameron314/concurrentqueue.git'
-	'crypto-algorithms'::'git+https://github.com/KorewaWatchful/crypto-algorithms.git'
 	'cubeb'::'git+https://github.com/mozilla/cubeb.git'
 	'dirent'::'git+https://github.com/tronkko/dirent.git'
 	'fmt'::'git+https://github.com/fmtlib/fmt.git'
@@ -83,7 +82,6 @@ source=(
 
 	# submodules for vita3k-psvpfstools
 	'libb64'::'git+https://github.com/korewawatchful/libb64.git'
-	'libtomcrypt'::'git+https://github.com/korewawatchful/libtomcrypt.git'
 	'libzrif'::'git+https://github.com/KorewaWatchful/libzrif.git'
 	'psvpfsparser'::'git+https://github.com/Vita3K/psvpfsparser.git'
 	'zlib'::'git+https://github.com/korewawatchful/zlib.git'
@@ -124,7 +122,6 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'SKIP'
 
 	'SKIP'
 
@@ -135,7 +132,6 @@ sha256sums=(
 
 	'SKIP'
 
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -159,7 +155,6 @@ prepare() {
 			['better-enums']='external/better-enums'
 			['capstone']='external/capstone'
 			['concurrentqueue']='external/concurrentqueue'
-			['crypto-algorithms']='external/crypto-algorithms'
 			['cubeb']='external/cubeb'
 			['dirent']='external/dirent'
 			['fmt']='external/fmt'
@@ -235,7 +230,6 @@ prepare() {
 		cd "external/psvpfstools"
 		local -A _submodules=(
 			['libb64']='libb64'
-			['libtomcrypt']='libtomcrypt'
 			['libzrif']='libzrif'
 			['psvpfsparser']='psvpfsparser'
 			['zlib']='zlib'

@@ -2,7 +2,6 @@ better-enums/
 boost/
 capstone/
 concurrentqueue/
-crypto-algorithms/
 cubeb/
 dirent/
 dlmalloc/
@@ -16,7 +15,6 @@ imgui_club/
 LibAtrac9/
 libb64/
 libfat16/
-libtomcrypt/
 libzrif/
 nativefiledialog-extended/
 printf/
