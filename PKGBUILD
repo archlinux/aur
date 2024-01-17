@@ -150,7 +150,7 @@ package_libvirt() {
   echo 'z /var/lib/libvirt/qemu 0751' > "$pkgdir/usr/lib/tmpfiles.d/libvirt.conf"
 
   chown 0:102 "$pkgdir/usr/share/polkit-1/rules.d"
-  chmod 0750 "$pkgdir/usr/share/polkit-1/rules.d"
+  chmod 0755 "$pkgdir/usr/share/polkit-1/rules.d"
   chmod 600 "$pkgdir"/etc/libvirt/nwfilter/*.xml \
     "$pkgdir/etc/libvirt/qemu/networks/default.xml"
   chmod 700 "$pkgdir"/etc/libvirt/secrets
