@@ -1,0 +1,18 @@
+pkgbase = python-stanio
+	pkgdesc = A package to prepare inputs to Stan and reading its outputs
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/WardBrian/stanio
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pandas
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	source = stanio-0.4.0.tar.gz::https://github.com/WardBrian/stanio/archive/refs/tags/v0.4.0.tar.gz
+	b2sums = 6d3b596fa4c2006b171482959b328ddcb49f74536958c48044b139b413a9a5748985528b4d6814cd7484df363c80d1cbbe24ff16e2e05f9eb181ff3e55b65270
+
+pkgname = python-stanio
