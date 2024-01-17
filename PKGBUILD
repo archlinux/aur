@@ -1,7 +1,7 @@
 # Maintainer: Ash Price <eisleggje@gmail.com>
 
+pkgname=fcitx5-ipa-sil-git
 _pkgname=fcitx5-ipa-sil
-pkgname=${_pkgname}-git
 pkgver=r13.0df3c9f
 pkgrel=1
 pkgdesc="An fcitx5 table layout replicating the SIL IPA keyman layout"
@@ -10,8 +10,8 @@ url="https://github.com/ashprice/fcitx5-ipa-sil"
 license=('MIT')
 depends=('fcitx5-chinese-addons' 'libime')
 makedepends=('boost' 'cmake' 'git')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=('fcitx5-ipa-sil')
+conflicts=('fcitx5-ipa-sil')
 source=("git+$url.git")
 sha512sums=('SKIP')
 
