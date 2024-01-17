@@ -1,0 +1,7 @@
+nil
+nil-git
+*.tar.xz
+*.tar.zst
+*.swp
+pkg/
+src/
