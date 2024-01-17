@@ -3,11 +3,11 @@
 
 pkgname=patator
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-purpose bruteforcer"
 arch=(any)
 url="https://github.com/lanjelot/patator"
-license=(GPL2)
+license=(GPL-2.0-only)
 depends=(
   python
   python-dnspython
@@ -30,7 +30,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('b3eb75170bec398c81219665a39feff1a756ee62f7104753e2a661a29c3324cf')
 
 package() {
-  install -D -m 0755 "$srcdir/$pkgname-$pkgver/$pkgname.py" "$pkgdir/usr/bin/patator"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname.py" "$pkgdir/usr/bin/patator"
 
   _modules=(
     ftp_login

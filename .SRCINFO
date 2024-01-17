@@ -1,10 +1,10 @@
 pkgbase = patator
 	pkgdesc = A multi-purpose bruteforcer
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lanjelot/patator
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	depends = python
 	depends = python-dnspython
 	depends = python-pyasn1
