@@ -3,34 +3,16 @@ pkgname=commas
 _pkgname=Commas
 pkgver=0.29.2
 _electronversion=26
-_nodever=18
-pkgrel=2
+_nodever=16
+pkgrel=3
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
-arch=("x86_64")
+arch=("any")
 url="https://github.com/CyanSalt/commas"
 license=('ISC')
 conflicts=("${pkgname}")
 depends=(
-    'alsa-lib'
+    "electron${_electronversion}"
     'python'
-    'cairo'
-    'libxcb'
-    'libxkbcommon'
-    'gtk3'
-    'libxext'
-    'libx11'
-    'libcups'
-    'libxcomposite'
-    'libxrandr'
-    'libdrm'
-    'pango'
-    'nss'
-    'expat'
-    'libxdamage'
-    'mesa'
-    'libxfixes'
-    'nspr'
-    'at-spi2-core'
 )
 makedepends=(
     'gendesk'
@@ -39,9 +21,11 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}.sh"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -49,22 +33,26 @@ _ensure_local_nvm() {
     nvm use "${_nodever}"
 }
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
-    npm install
-    npm run pack
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export ELECTRONVERSION="${_electronversion}"
+    npm install --no-package-lock
+    npm run build
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
-    cp -r "${srcdir}/${pkgname}-${pkgver}/release/${_pkgname}-linux-x64/"* "${pkgdir}/opt/${pkgname}"
-    ln -sf "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resources/images/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/release/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/release/${_pkgname}-linux-"*/resources/{app.asar.unpacked,bin} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/resources/images/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
