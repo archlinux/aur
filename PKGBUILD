@@ -1,8 +1,8 @@
 # Maintainer: shijie.chen <xingwozhonghua@126.com>
 # Contributor: Jason <Jason@JasonServer.com>
 
-pkgname=jqtools-git
-pkgver=r285.4c901a0
+pkgname=jqtools
+pkgver=20.6.9
 pkgrel=1
 pkgdesc="A collection of small tools based on Qt development"
 arch=('x86_64')

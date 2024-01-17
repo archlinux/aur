@@ -1,0 +1,17 @@
+pkgbase = jqtools
+	pkgdesc = A collection of small tools based on Qt development
+	pkgver = 20.6.9
+	pkgrel = 1
+	url = https://github.com/188080501/JQTools
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = qt5-quickcontrols
+	depends = qt5-svg
+	depends = qt5-tools
+	source = git+https://github.com/188080501/JQTools.git
+	md5sums = SKIP
+
+pkgname = jqtools
