@@ -1,29 +1,34 @@
-# Maintainer: matt kasun <matt  at netmaker.io>
+# Maintainer: éclairevoyant
+# Contributor: matt kasun <matt at netmaker dot io>
+
 pkgname=netclient
-pkgver=0.21.1
+pkgver=0.22.0
 pkgrel=1
-pkgdesc="netclient daemon - a platform for modern, blazing fast wireguard virtual networks"
+pkgdesc="Platform for modern, blazing fast wireguard virtual networks"
 arch=(x86_64)
 url='https://github.com/gravitl/netclient'
-license=('Apache')
+license=(Apache)
+depends=(glibc)
 makedepends=(go)
-
-source=("${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ff52520a8577773e2bf7627c3654f41104e3cbd408ebce8f5c7508d344395836')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('55a2b3c0201c3933332d07f5618124a6fd37babadebbf37ef235104bfdd53631a573dee42b7bafa7df6c00bbfc548aa7a8a991b73b426d0194a9297bd2489260')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  CGO_ENABLED=0
+	cd $pkgname-$pkgver
+	CGO_ENABLED=0
 
-  go build \
-    -gcflags "all=-trimpath=${PWD}" \
-    -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-s -w  -extldflags ${LDFLAGS}" \
-    -tags headless \
-    .
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+		-tags headless \
+		.
 }
 
 package() {
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/netclient" "$pkgdir/usr/bin/netclient"
-	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/netclient.service" "$pkgdir/usr/lib/systemd/system/netclient.service"
+	cd $pkgname-$pkgver
+	install -Dm755 netclient -t "$pkgdir/usr/bin/"
+	install -Dm644 build/netclient.service -t "$pkgdir/usr/lib/systemd/system/"
 }
